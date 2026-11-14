@@ -80,28 +80,6 @@ applied	අයදුම් කළා
 note_ph	සටහන (විකල්ප)
 rounded	වටකුරු
 split	බෙදන්න
-send_kot	ස්ලිප් එවන්න
-send_kot_to	යවන්න → {kitchens}
-send_kot_again	ඊළඟ ස්ලිප් සඳහා අයිතම එක් කරන්න
-send_kot_held	රඳවා තබා ඇති අයිතම - යැවීමට රඳවා තබා නොගන්න
-reprint_kot	මුද්‍රණය නැවත තෝරන ලදී
-reprint_kot_ok	{n} අයිතම නැවත මුද්‍රණය කරන ලදී · {slips} ස්ලිප්(ය) → {kitchens}
-reprint_kot_needed	පළමුව ස්ලිප් එකක් යවන්න - ඉන්පසු ඖෂධ ඇතුළත් කර තෝරාගත් ඒවා නැවත මුද්‍රණය කරන්න
-reprint_kot_none_selected	යවන ලද සෑම අයිතමයක්ම මඟ හැරී ඇත - නැවත මුද්‍රණය කිරීමට ඒවා මත මුද්‍රණය තුළ තට්ටු කරන්න
-reprint_kot_client	යවන ලද {place} සඳහා නැවත මුද්‍රණය කරන්න ({n}) — සාප්පු උපාංගය එය මුද්‍රණය කරයි
-print_cancelled_kot	මුද්‍රණය සියල්ල අවලංගුයි
-print_cancelled_kot_ok	මුද්‍රිත {n} අවලංගු කළ අයිතම · {slips} ස්ලිප්(ය) → {kitchens}
-print_cancelled_kot_needed	පළමුව අවලංගු කළ අයිතම සහිත මේසයක් විවෘත කරන්න
-print_cancelled_kot_none	මෙම ඇණවුමේ අවලංගු කළ අයිතම නැත
-print_cancelled_kot_client	යවන ලද {place} සඳහා මුද්‍රණය අවලංගු කරන ලදී ({n}) — සාප්පු උපාංගය එය මුද්‍රණය කරයි
-kot_banner	කාරුණික බැනරය
-kot_banner_ph	බැනරය (හිස් = කිසිවක් නැත)
-kot_item_prefix	මෙනු මෙනු අයිතම උපසර්ගය
-kot_item_prefix_ph	උදා. [අවලංගු කරන ලදී]
-kot_strike	වර්ජනය අයිතමයේ නම
-kot_strike_note	වර්ජන අයිතම සටහන
-kot_strike_on	ක්‍රියාත්මකයි
-kot_strike_off	අක්රියයි
 bill_item_layout	මෙනු මෙනු අයිතම පිරිසැලසුම
 bill_item_layout_columns	තීරු
 bill_item_layout_stacked	ගොඩගැසී ඇත
@@ -130,8 +108,6 @@ bill_item_gap_em	පරතරය (එම්)
 bill_item_qty_min	ප්‍රමාණය විනාඩි (em)
 bill_item_price_min	මිල අවම (em)
 bill_item_amount_min	අවම මුදල (එම්)
-kot_item_qty_width	ප්‍රමාණ තීරුව
-kot_item_num_align	ප්‍රමාණ එල්ලය
 bill_total_qty_label	මුළු qty ලේබලය
 bill_total_subtotal_label	උප සම්පූර්ණ ලේබලය
 bill_total_grand_label	විශාල සම්පූර්ණ ලේබලය
@@ -143,36 +119,9 @@ bill_item_piece_off	අක්රියයි
 bill_total_qty	මුළු qty
 bill_total_subtotal	උප එකතුව
 bill_total_grand	විශාල එකතුව
-reprint_incl	මුද්‍රණයේ ඇත
-reprint_skip	මඟ හරින්න
-reprint_skip_meta	ප්‍රතිසාධන මුද්‍රණය මඟ හරින්න
-kot_dest_hint	සැකසීම් → මුද්‍රණ යන්ත්‍ර තුළ ඔබ {kitchens} වෙත පවරන ලද මුද්‍රණ යන්ත්‍රවල මුද්‍රණ
-kot_sent_hint	අවසන් යැවීම {kitchens} වෙත ය. මීළඟ බිල්පත සඳහා අයිතම එක් කිරීමට තට්ටු කරන්න — නැතහොත් එකම එක සඳහා නැවත මුද්‍රණය කරන්න.
-kot_sent_printing	ස්ලිප් {kitchens} වෙත යවන ලදි — මුද්‍රණය
-kot_sent_not_printed	ස්ලිප් {kitchens} වෙත යවන ලද නමුත් මුද්‍රණය කර නැත: {why}. කඩේට කියන්න, ඉන්පසු මුද්‍රණ යන්ත්‍රය සවි කර නැවත මුද්‍රණය කරන්න.
-kot_sent_screen	ස්ලිප් {kitchens} වෙත යවන ලදී
-kot_queued_shop	{place} → {kitchens} සඳහා ස්ලිප් සුරකින ලදී; සාප්පු උපාංගය එය මුද්රණය කරයි
-kot_job_label	{place} → {kitchens} සඳහා ලිස්සන්න
-kot_job_reached	{place} සඳහා ස්ලිප් {kitchens} වෙත ළඟා විය
 kot_unassigned	පැවරීම නොකළ
-kot_unassigned_held	නැවතුම්පළක් නොමැතිව {n} අයිතම තබා ඇත — යැවීමට රේඛාව මත රඳවා තබා ගන්න
-kot_station_ph	දුම්රිය ස්ථානය
-kot_station_dd	දුම්රිය ස්ථානය
-kot_station_dd_n	ස්ථානය · {stations}
-kot_set_station	මෙම ස්ථානය භාවිතා කරන්න
-kot_station_applied	{n} අයිතම මත ස්ථානය සකසා ඇත: {station}
-kot_station_cleared	{n} අයිතම වලින් ස්ථානය හිස් කරන ලදී: {station}
-kot_station_needed	මුලින්ම බෙහෙත් ශාලාවක් තෝරන්න
-kot_station_not_allowed	කොටස භාවිතා කිරීමට අවසර නැත: {station}
-kot_station_none	තවමත් ස්ථාන නොමැත - කවුන්ටර සාප්පුවක භාවිතා නොකළ (සැකසීම් → අවශ්ය නම් ප්රදේශ)
 pos_tab_items	මෙනු අයිතම එකතු කරන ලදී
 pos_tab_payment	ගෙවීම
-hold_send	කුස්සියේ ඉඳන් ඉන්න
-hold_send_on	පවත්වන ලදී
-hold_send_meta	රඳවා ඇත - මෙම ස්ලිප් මත නොවේ
-station_remove	ස්ථානය ඉවත් කරන්න
-station_remove_ph	එය ඉවත් කිරීමට ලැයිස්තුවේ ඇති ස්ථානයක් තට්ටු කරන්න
-station_removed	ස්ථානය ඉවත් කරන ලදී: {name}
 settings_hub_title	සැකසීම්
 settings_hub_help	වරකට එක් ප්‍රදේශයක් විවෘත කරන්න - අඩු අනුචලන, පැහැදිලි තේරීම්.
 settings_back	ආපසු
@@ -181,12 +130,10 @@ settings_sec_country	රට සහ බදු
 settings_sec_tills	වෙනත් උපාංග
 settings_sec_brand	ඔබේ වෙළඳ නාමය
 settings_sec_units	ඒකක සහ පරිවර්තන
-settings_sec_pickers	ප්‍රදේශ · ස්ථාන · බදු අනුපාත
+settings_sec_pickers	බදු අනුපාත
 settings_sec_printers	මුද්‍රණ යන්ත්‍ර
 settings_sec_bill	බිල් සහ ස්ලිප් ආකෘතිය
 settings_sec_selling	යෝජනා ක්රම සහ විකුණුම්
-bill_kot_tab_bill	ආරාධිත අමුත්තන්ගේ බිල්පත
-bill_kot_tab_kot	ලිස්සන්න
 settings_sec_alerts	ඇඟවීම්
 alerts_help	ඔබ වෙනුවෙන් තත්ත්‍ව පණිවිඩ කොපමණ කාලයක් තිරයේ පවතීද (මෙම පිවිසුම).
 snack_secs_ph	තත්පර (3-60, පෙරනිමි 10)
@@ -237,8 +184,6 @@ counter	කවුන්ටරය
 dine_in	කවුන්ටරය
 takeaway	රැගෙන යාම
 order	ආපනශාලා ඇණවුම
-tables	කවුන්ටර
-kitchen	අංශ
 sales	විකුණුම්
 sales_refunds	විකුණුම් සහ ආපසු ගෙවීම්
 day_close	දවස කිට්ටුයි
@@ -266,10 +211,6 @@ zero_sales_on	₹0 ඉඩ දෙන්න
 zero_sales_off	මිල අවශ්යයි
 zero_sales_saved_on	ශුන්‍ය අගය විකිණීමට අවසර ඇත
 zero_sales_saved_off	විකුණුම් සඳහා රුපියල් 0 ට වැඩි මිලක් තිබිය යුතුය
-floor_areas_help	ප්‍රදේශ යනු බිමෙහි කාමර හෝ කලාප වේ (කෑම, පාර්සලය, AC ...). පළමුව ප්රදේශයක් එකතු කරන්න, ඉන්පසු එහි කවුන්ටර දමන්න - එක් එක් ප්රදේශය බිම වෙනම කණ්ඩායමකි.
-area_new_ph	නව ප්‍රදේශය / කාමරය (උදා. AC, උද්‍යානය)
-add_area	ප්රදේශය එකතු කරන්න
-area_added	"{name}" ප්‍රදේශය සූදානම් - එයට කවුන්ටර එක් කරන්න
 no_favorites	තවමත් ප්‍රියතමයන් නොමැත - පහත ලැයිස්තුවෙන් මෙනු අයිතම එක් කරන්න.
 add_to_bill	අමුත්තන්ගේ බිල්පතට එකතු කරන්න
 added	එකතු කරන ලදී
@@ -280,19 +221,9 @@ chip_missing_customer	තෝරාගත් පාරිභෝගිකයා �
 chip_no_customer	තවම පාරිභෝගිකයෙක් නැත - නමක් ටයිප් කරන්න, ඉන්පසු ණය තට්ටු කරන්න
 credit_summary_fmt	{} පාරිභෝගිකයන් · විවෘත ණය {} · අත්තිකාරම් රඳවා ඇත {}
 recent_label	මෑත:
-kot_new_waiting	නව - බලා සිටීම
-kot_preparing	සූදානම් කිරීම
-kot_ready_serve	සූදානම් - එය සේවය කරන්න
-kot_done_cap	නිමයි
-kot_cancelled	අවලංගුයි
-kot_start_btn	ආරම්භ කරන්න
-kot_mark_ready	සූදානම් බව සලකුණු කරන්න
-kot_done_btn	කළා
-table_free	හිස් - ඇණවුමක් ආරම්භ කිරීමට තට්ටු කරන්න
 start_order	ඇණවුම ආරම්භ කරන්න
 open_bill	අමුත්තන්ගේ බිල්පත විවෘත කරන්න
 collect_payment	ගෙවීම එකතු කරන්න
-table_running	දුවනවා
 payment_pending	ගෙවීම පොරොත්තුවෙන්
 collect_at_counter	කවුන්ටරයේ එකතු කරන්න
 inventory	ඉන්වෙන්ටරි
@@ -325,7 +256,6 @@ ok	OK
 this_shop	සේවාදායක මාදිලිය
 extra_till	සේවාලාභී මාදිලිය
 off	අක්රියයි
-tables_kitchen	සාප්පු පිරිසැලසුම
 server	සේවාදායක මාදිලිය
 client	සේවාලාභී මාදිලිය
 language_currency	භාෂාව සහ මුදල්
@@ -367,8 +297,6 @@ add_item_plain	මෙනු අයිතමය එක් කරන්න
 add_note	සටහන එකතු කරන්න
 add_opening_balance	ආරම්භක ශේෂය එක් කරන්න
 add_staff	කාර්ය මණ්ඩලය එකතු කරන්න
-add_station	නැවතුම එකතු කරන්න
-add_table	කෑම මේසය එකතු කරන්න
 add_unit	ඒකකය එකතු කරන්න
 add_use_name	මෙම නම එක් කරන්න / භාවිතා කරන්න
 allow_extra_tills	අමතර මුදල් රෙජිස්ටර් වලට ඉඩ දෙන්න
@@ -421,7 +349,6 @@ share_whatsapp	බෙදාගන්න WhatsApp
 lan_pages_heading	Wi‑Fi මත පාරිභෝගික පිටු
 lan_pages_help	මෙම සාප්පුවේ Wi‑Fi මත, පාරිභෝගික පිටු සංදර්ශක පුවරුව සහ ප්‍රතිපෝෂණ සඳහා ක්‍රියා කරයි. ජංගම දත්ත මත සිටින පුද්ගලයින්ට පසුව Cloud අවශ්‍ය වේ. කාඩ්පත් පර්යන්තයක් හෝ ගෙවීම් සබැඳියක් විකල්ප වන අතර කිසි විටෙකත් කවුන්ටරය අවහිර නොකරයි.
 diag_send_heading	මෙම උපාංගයෙන් බෙදා ගන්න
-kot_dest_heading	දුම්රිය ස්ථානය
 optional_login_heading	විකල්ප පුරනය වීම
 rights_heading	අයිතිවාසිකම්
 ops_panel	දේශීය මෙහෙයුම්
@@ -448,28 +375,6 @@ till_voucher_amt_ph	වවුචර් මුදල (හිස් = සියල
 till_wallet_topup_ph	Top-up wallet මුදල
 till_voucher_issue_amt_ph	වවුචර් මුදල නිකුත් කරන්න
 till_voucher_issue_code_ph	නව වවුචර් කේතය
-split_evenly	ඒකාකාරව බෙදන්න
-waitlist	පොරොත්තු ලැයිස්තුව
-fire_course	ඊළඟ පියවර
-hold_item	කුස්සියේ ඉඳන් ඉන්න
-waiter_call	මුදල් අයකැමි අමතන්න
-waitlist_add	පොරොත්තු ලැයිස්තුවට එක් කරන්න
-floor_view_grid	ජාලකය
-floor_view_layout	පිරිසැලසුම
-floor_layout_x	X
-floor_layout_y	Y
-floor_layout_w	W
-floor_layout_h	H
-floor_layout_save	පිරිසැලසුම සුරකින්න
-floor_layout_open	කෑම මේසය විවෘත කරන්න
-floor_layout_edit	පිරිසැලසුම සංස්කරණය කරන්න
-floor_layout_pick	එහි පිරිසැලසුම සංස්කරණය කිරීමට කෑම මේසයක් තට්ටු කරන්න
-floor_layout_saved	පිරිසැලසුම සුරකින ලදී
-floor_layout_nudge_left	← 20
-floor_layout_nudge_right	→ 20
-floor_layout_nudge_up	↑ 20
-floor_layout_nudge_down	↓ 20
-sibling_pickers_help	ඒකක වැනි සක්‍රිය/අක්‍රිය තට්ටු කරන්න - ප්‍රදේශ, ස්ථාන සහ බදු අනුපාත සඟවන්න එදිනෙදා තෝරා ගන්නන්; පැකේජ පෙරනිමිය පවතිනු ඇත.
 bulk_price_apply	තොග මිල යොදන්න
 card_terminal_optional	කාඩ්පත් පර්යන්තය / ගෙවීම් සබැඳිය (අන්තර්ජාලය පවතින විට විකල්ප)
 copy_report	වාර්තාව පිටපත් කරන්න
@@ -495,7 +400,6 @@ import_day	ආනයනය කරන දිනය
 import_items_csv_plain	මෙනු අයිතම CSV ආයාත කරන්න...
 import_parties_csv	පාරිභෝගිකයින් සහ සැපයුම්කරුවන් ආනයනය කරන්න CSV...
 item_name	මෙනු මෙනු අයිතමයේ නම
-kitchen_printing	මුද්‍රණ යන්ත්‍ර
 login_id_ph	පරිශීලක නාමය
 mark_cleared	ලකුණ නිෂ්කාශනය විය
 new_party_clear	නව පාරිභෝගිකයා හෝ සැපයුම්කරු (පැහැදිලි පෝරමය)
@@ -565,15 +469,6 @@ show	පෙන්වන්න
 spreadsheet_csv	පැතුරුම්පත (CSV)
 start_fresh	අලුතින් පටන් ගන්න
 stop_extra_tills	අමතර මුදල් ලේඛන නවත්වන්න
-floor_cols_ph	තීරු
-floor_cols_fit	තිරයට ගැළපෙන
-floor_cols_fit_sub	{n} මෙතැනට ගැලපේ
-floor_cols_fits	ගැලපෙනවා
-floor_cols_scroll	පැත්තකට අනුචලනය කරයි
-floor_cols_min	තීරු: අවම වශයෙන් 1 — හෝ තිරයට ගැළපෙන පරිදි හිස්ව තබන්න
-floor_zoom_auto	ඔටෝ
-floor_zoom_out	විශාලනය කරන්න
-floor_zoom_in	විශාලනය කරන්න
 backup_auto	සෑම දිනකම ස්වයංක්‍රීයව උපස්ථ කරන ලදී · පසුගිය {when} · පසුගිය දින 14 {dir} තුළ තබා ඇත.
 backup_auto_none	සෑම දිනකම ස්වයංක්‍රීයව උපස්ථ වේ - පළමු එක මොහොතකින් ධාවනය වේ.
 backup_copy_to	පිටපත් ද {dir} වෙත යයි.
@@ -591,7 +486,6 @@ new_pair_code	නව යුගල කේතය
 pair_finishing	නිමි යුගලය... සාප්පුවේ ලෙජර් යෙදීම
 pair_opening	මුදල් ලේඛනය විවෘත කරමින්...
 pair_copied	යුගල කිරීමේ කේතය පිටපත් කරන ලදී
-kot_waiting	යැවීමට බලා සිටී
 lan_offline_waiting	සාප්පු සේවාදායකයට ළඟා විය නොහැක · {n} රැඳී සිටීම
 lan_connecting	සාප්පුව වෙත සම්බන්ධ වෙමින්...
 lan_live	සජීවීව
@@ -633,7 +527,6 @@ printers_routes_help	මෙහෙයුම් පද්ධතිය දැනට
 printer_assign_dd	සැබෑ මුද්‍රණ යන්ත්‍රය: {place}
 printer_assign_pick	සැබෑ මුද්‍රණ යන්ත්‍රය තෝරන්න
 printer_profile_heading	පිරිසැලසුම
-printer_send_heading	භාරදීම
 vp_delivery_heading	භාරදීම
 vp_delivery_help	මෙම අතථ්‍ය මුද්‍රණ යන්ත්‍රය රැකියා යවන ආකාරය — OS ලේඛනය, අමු බයිට්, හෝ ESC/POS. ස්ලිප් අන්තර්ගතය (වර්ගයේ ප්‍රමාණය, එතුම, මායිම්) තීරණය වන්නේ බිල්පත් / ස්ලිප් ආකෘතියෙන් මිස මෙහි නොවේ.
 vp_type_size_heading	වර්ගයේ ප්රමාණය
@@ -677,23 +570,13 @@ virtual_draft_send	මීළඟ අතථ්‍ය මුද්‍රණ යන�
 virtual_need_real	මුලින්ම නියම මුද්‍රණ යන්ත්‍රයක් තෝරන්න
 virtual_need_select	මකා දැමීමට අතථ්‍ය මුද්‍රණ යන්ත්‍රයක් තෝරන්න
 real_printer_selected	තෝරාගත්: {name}
-station_group_heading	අතථ්‍ය මුද්‍රණ යන්ත්‍ර
-station_group_apply	අතථ්‍ය මුද්‍රණ යන්ත්‍රය මකන්න
-station_group_applied	මකා දමන ලදී
-station_group_empty	අතථ්‍ය මුද්‍රණ යන්ත්‍රයක් තෝරන්න
-station_group_name_ph	අතථ්‍ය මුද්‍රණ යන්ත්‍ර නම (විකල්ප)
-station_group_save	අතථ්‍ය මුද්‍රණ යන්ත්‍රය සාදන්න
-station_group_saved	අතථ්‍ය මුද්‍රණ යන්ත්‍රය සුරකින ලදී
-station_manage_heading	බෙහෙත් ශාලාවක් එකතු කිරීම හෝ ඉවත් කිරීම
 printers_routes_heading	දේවල් මුද්‍රණය කරන තැන
 route_pick_heading	ස්ථානය
 route_editing	සංස්කරණය: {name}
 route_assigned	{printer} සිට {place} දක්වා එකතු කරන ලදී
 route_already_assigned	දැනටමත් මෙම ස්ථානයේ: {printer}
-route_removed	{printer} {place} වෙතින් ඉවත් කරන ලදී
 route_cleared	හිස් කරන ලදී {name}
 route_assigned_empty	මෙම ස්ථානයේ කිසිවක් නැත
-route_tap_remove	ඉවත් කිරීමට තට්ටු කරන්න
 route_tap_select	තේරීමට තට්ටු කරන්න
 route_tap_selected	තෝරාගත්
 route_pick_printer_first	පළමුව මුද්‍රණ යන්ත්‍රයක් තට්ටු කරන්න
@@ -714,35 +597,17 @@ printer_format_custom	නව අභිරුචි පැතිකඩ
 printer_format_custom_label	අභිරුචි
 printer_format_custom_added	මෙම ස්ථානය සඳහා අභිරුචි පැතිකඩ එක් කරන ලදී
 add_printer	මුද්රකය එක් කරන්න
-remove_printer	ඉවත් කරන්න
 route_pick_ph	බිල්පතක් හෝ බෙහෙත් ශාලාවක්
 route_bill	ආරාධිත අමුත්තන්ගේ බිල්පත
-route_default_kitchen	නැවතුම්පොළක් නැත (නොපවරන ලද අයිතම)
-route_kot_station	දුම්රිය ස්ථානය
 route_dont_print	මුද්‍රණ යන්ත්‍රයක් නැත
-stations_heading	ස්ථාන
-stations_help	බෙහෙත් ශාලාවේ එම කොටස සඳහා ඖෂධ සහ මුද්‍රණ යන්ත්‍ර කාණ්ඩගත කරයි. සැකසීම් → මුද්‍රණ යන්ත්‍රවලින් මුද්‍රණ යන්ත්‍ර අමුණන්න, උත්සාහ අනුපිළිවෙල සකසන්න, ඉන්පසු පළමුව එය ක්‍රියා කරයි හෝ සියල්ල මත මුද්‍රණය කරන්න. ඔබ යන විට වෙනස්කම් සුරකියි.
-station_print_heading	මෙම ස්ථානය සඳහා මුද්‍රණ යන්ත්‍ර
-station_print_help	නැවතුම්පළක් තෝරන්න, ඉන්පසු මුද්‍රණ යන්ත්‍ර එකක් හෝ කිහිපයක් අමුණන්න. ↑↓ කට්ටල උත්සාහ ඇණවුම. පලමු සාර්ථකත්වයෙන් පසුව එම ක්‍රියාව නතර වේ; අමුණා ඇති සෑම මුද්‍රණ යන්ත්‍රයකම සියලුම යැවීම්වල මුද්‍රණය කරන්න.
-station_print_pick_ph	මුද්‍රණ යන්ත්‍ර සැකසීමට ස්ථානය
 station_print_pick_first	මුලින්ම බෙහෙත් ශාලාවක් තෝරන්න
-station_print_editing	"{name}" සඳහා මුද්‍රණ යන්ත්‍ර සංස්කරණය කිරීම
-station_vps_dd	මෙම ස්ථානය සඳහා මුද්‍රණ යන්ත්‍ර
-station_vps_dd_n	{n} මුද්‍රණ යන්ත්‍ර · වෙනස් කිරීමට තට්ටු කරන්න
 station_vps_empty	තවම මුද්‍රණ යන්ත්‍ර නැත - සැකසීම් → මුද්‍රණ යන්ත්‍ර යටතේ ඒවා සොයන්න
 bill_printers_dd	අමුත්තන්ගේ බිල්පත සඳහා මුද්‍රණ යන්ත්‍ර
 bill_printers_dd_n	අමුත්තන්ගේ බිල්පත සඳහා {n} මුද්‍රණ යන්ත්‍ර · වෙනස් කිරීමට තට්ටු කරන්න
-job_layout	පිරිසැලසුම
-job_delivery	රැකියාව යවන ආකාරය
-job_delivery_help	OS ලේඛනය, අමු බයිට්, හෝ ESC/POS. බිල්පත සහ ප්‍රවේශ පත්‍රය සෑම එකක්ම තමන්ගේම තබා ගනී. ඕනෑම කාර්යයක් සොයන්න සුරකින ලද ඕනෑම මුද්‍රණ යන්ත්‍රයකට යා හැක.
 station_vp_attached	මුද්‍රණ යන්ත්‍රය අමුණා ඇත
 station_vp_detached	මුද්‍රණ යන්ත්‍රය නැවතුම්පොළෙන් ඉවත් කර ඇත
-station_print_summary	{mode} · {n} මුද්‍රණ යන්ත්‍ර
-station_print_summary_none	මෙම ස්ථානයේ තවමත් මුද්‍රණ යන්ත්‍ර නොමැත - එය මුද්‍රණය නොකෙරේ
-stations_none	තවමත් ස්ථාන නොමැත - එකක් පහතින් එක් කරන්න. කවුන්ටර සාප්පුවක ස්ථාන භාවිතයට නොගනී - හිස්ව තබන්න.
 route_up	ඉහළට
 route_down	පහළට
-route_remove	ඉවත් කරන්න
 route_clear	පැහැදිලියි
 save_printers	මුද්‍රණ යන්ත්‍ර සුරකින්න
 print_test_page	පරීක්ෂණ පිටුවක් මුද්‍රණය කරන්න
@@ -751,23 +616,15 @@ test_page_no_printer	{place} සඳහා මුද්‍රණ යන්ත්�
 test_page_pick_first	පළමුව පරීක්ෂණ පිටුවක් සඳහා මුද්‍රණ යන්ත්‍ර තෝරන්න - පසුව පරීක්ෂණ පිටුවක් මුද්‍රණය කරන්න
 test_printers_dd	පරීක්ෂණ පිටුවක් සඳහා මුද්‍රණ යන්ත්‍ර
 test_printers_dd_n	පරීක්ෂණ පිටුවක් සඳහා {n} මුද්‍රණ යන්ත්‍ර · වෙනස් කිරීමට තට්ටු කරන්න
-kot_test_printers_dd	පරීක්ෂණ මුද්‍රණය සඳහා මුද්‍රණ යන්ත්‍ර
-kot_test_printers_dd_n	පරීක්ෂණ මුද්‍රණය සඳහා {n} මුද්‍රණ යන්ත්‍ර(ය) වෙනස් කිරීමට තට්ටු කරන්න
 test_printer_picked	පරීක්ෂණය: {name}
 test_printer_cleared	පරීක්ෂා කරන්නේ නැත: {name}
 test_page_sent_n	පරීක්ෂණ පිටුව {n} මුද්‍රණ යන්ත්‍ර වෙත යවන ලදී
-test_kot_pick_first	පළමුව පරීක්ෂණ මුද්‍රණය සඳහා මුද්‍රණ යන්ත්‍ර (ය) තෝරන්න - ඉන්පසු මුද්‍රණය පරීක්ෂා කරන්න
-test_kot_sent_n	පරීක්ෂණ මුද්‍රණය {n} මුද්‍රණ යන්ත්‍ර(ය) වෙත යවන ලදී
-cancel_pick	ලකුණු කරන්න
-cancel_pick_on	සලකුණු කර ඇත
-cancel_pick_meta	අවලංගු කිරීම සඳහා ලකුණු කර ඇත
 batch_cancel	අවලංගු කිරීම සලකුණු කර ඇත
 batch_cancel_n	අවලංගු කිරීම සලකුණු කරන ලදී ({n})
 batch_cancel_none	මුලින්ම යවන ලද අයිතම එකක් හෝ කිහිපයක් සලකුණු කරන්න — පසුව අවලංගු කරන්න සලකුණු කරන්න
 batch_cancel_title	ලකුණු කළ ඖෂධ අවලංගු කරන්න - එක් හේතුවක්, එක් කොටසකට එක් ස්ලිප් එකක් අවලංගු කරන්න
 batch_cancel_ok	{n} අයිතම අවලංගුයි · {slips} අවලංගු කිරීමේ ස්ලිප්(ය) → {kitchens}
 batch_cancel_ok_noprint	{n} අයිතම අවලංගු කරන ලදී - ස්වයංක්‍රීය මුද්‍රණය ක්‍රියාවිරහිතයි, එබැවින් අවලංගු කිරීමේ ස්ලිප් නොමැත
-no_printer_kitchen_station	එම ස්ථානයට මුද්‍රණ යන්ත්‍රයක් නොමැත
 printers_saved	සුරකින ලදී
 test_page_sent	පරීක්ෂණ පිටුව යවා ඇත - මුද්‍රණ යන්ත්‍රය පරීක්ෂා කරන්න
 test_page_sent_one	පරීක්ෂණ පිටුව {name} වෙත යවා ඇත — එම මුද්‍රණ යන්ත්‍රය පරීක්ෂා කරන්න
@@ -783,10 +640,7 @@ cancelled	අවලංගු කළා
 printers_tap_find	මෙම උපාංගය භාවිත කළ හැකි මුද්‍රණ යන්ත්‍ර ලැයිස්තුගත කිරීමට සොයන්න තට්ටු කරන්න.
 printers_none_found	කිසිවක් හමු නොවීය - පද්ධති මුද්‍රණ යන්ත්‍රයේ නමක් හෝ IP එකක් ටයිප් කරන්න (උදා. 192.168.1.50).
 printer_from_find	{name} එකතු කරන ලදී
-kot_printer_ph	ස්ලිප් සඳහා මුද්රකය
 bill_printer_ph	අමුත්තන්ගේ බිල්පත් සඳහා මුද්රකය
-kot_print_on	ප්‍රවේශපත්‍ර ස්වයංක්‍රීයව මුද්‍රණය කිරීම: ක්‍රියාත්මකයි
-kot_print_off	ප්‍රවේශපත්‍ර ස්වයංක්‍රීයව මුද්‍රණය කිරීම: අක්‍රියයි
 queue_refused	සාප්පුව විසින් පිළිගනු නොලැබේ ({n}) - කවුන්ටරයේ එක් එක් පරීක්ෂා කරන්න:
 clear_not_accepted	පරීක්ෂා කර ඇත - මෙම ලැයිස්තුව ඉවත් කරන්න
 device_name_ph	මෙම උපාංගයේ නම
@@ -797,7 +651,6 @@ backup_failed	අවසාන ස්වයංක්‍රීය උපස්ථ�
 backup_overdue	දින {n} සඳහා උපස්ථයක් නැත - උපස්ථ කිරීමට හැකි වන පරිදි මෙම උපාංගයේ යෙදුම විවෘතව තබා ගන්න.
 disk_low	මෙම උපාංගයේ {mb} MB පමණක් නොමිලේ - උපස්ථ ඉක්මනින් අසාර්ථක වනු ඇත. යම් ඉඩක් නිදහස් කරන්න.
 last_seen_devices	අවසන් වරට දුටුවේ: {time}
-sync_interval	සෑම {secs}s සමමුහුර්ත කරන්න
 connection_to_shop	සාප්පුව වෙත සම්බන්ධතාවය
 supplier_name_ph	සැපයුම්කරුගේ නම (හෝ පාරිභෝගිකයා)
 supplier_ph	සැපයුම්කරු
@@ -860,7 +713,6 @@ fresh_book_tabiyat	නැවුම් = හිස් නාමාවලිය (�
 fresh_selected	නැවුම් තෝරාගත් - නාමාවලිය හිස්ව පවතී. සූදානම් වූ විට නිමයි තට්ටු කරන්න.
 gross_word	දළ
 how_start	ඔබට ආරම්භ කිරීමට අවශ්‍ය වන්නේ කෙසේද?
-kot_print_help_tabiyat	කවුන්ටර සාප්පුවක භාවිතා නොවේ.
 later_country_pack	පසුව: සැකසීම් → බදු සහ ගෙවීම් ලේබල සඳහා ඔබේ රට ඇසුරුම යොදන්න.
 local_badge	දේශීය
 mix_type_hint_tabiyat	අවශ්‍ය නම් මුදල් / UPI / කාඩ්පත / ණය හරහා බෙදන්න. ණයට ඉහත පාරිභෝගිකයෙකු අවශ්‍යයි.
@@ -911,8 +763,6 @@ staff_copy_need_source	පිටපත් කිරීමට කාගේ සැ
 staff_copy_same	ඒ එකම පුද්ගලයා - වෙනත් කෙනෙකු තෝරා ගන්න
 staff_rename_need_selected	පළමුව නැවත නම් කළ යුත්තේ කවුරුන්ද යන්න තෝරන්න
 team_pick_hint	සංස්කරණය කළ යුත්තේ කවුරුන්ද යන්න තෝරන්න - තිර, මුදල් හිමිකම් සහ ස්ථාන එම පුද්ගලයා සඳහා පමණක් දිස් වේ.
-team_stations_help	ඔවුන් භාවිතා කළ හැකි ස්ථාන
-team_stations_changed	ස්ථාන වෙනස් විය - මෙම පුද්ගලයා සඳහා පිහිටුවීම සුරකින්න
 team_features_changed	තිර වෙනස් විය - මෙම පුද්ගලයා සඳහා පිහිටුවීම සුරකින්න
 team_rights_changed	හිමිකම් වෙනස් විය - මෙම පුද්ගලයා සඳහා පිහිටුවීම සුරකින්න
 they_owe_us	ඔවුන් අපට ණයයි
@@ -996,9 +846,6 @@ service_pct_ph	සේවා% විකල්ප 0/10/12
 short_code_ph	කෙටි කේතය (MG02)
 starting_password_ph	ආරම්භක මුරපදය (විකල්ප)
 starting_pin_ph	ආරම්භය PIN (ඉලක්කම් 4–12)
-station_name_ph	ස්ථානයේ නම (විකල්ප)
-station_new_ph	කොටස (විකල්ප)
-table_name_ph	කවුන්ටරය / බේ නම
 tax_rate_ph	බදු අනුපාත නම හෝ % — සම්මත, අඩු කරන ලද, 0, 5, 12, 18, 20
 to_code_ph	කේත කිරීමට (කිලෝ)
 uncleared_no_ph	ඉහත # නොපැහැදිලි
@@ -1011,27 +858,8 @@ book_kind_month	මේ මාසයේ ලෙජර්
 book_kind_aging	කැපී පෙනෙන / හර-ණය
 book_kind_balance	ශේෂ පත්රය
 order_help	එය එක් කිරීමට මෙනු අයිතමයක් තට්ටු කරන්න.
-floor_help	මෙම වෙළඳසැල කවුන්ටරයේ විකුණනු ලැබේ. මේස සහ කෑම බිම Tabiyat හි කොටසක් නොවේ.
-kitchen_help	කවුන්ටර සාප්පුවක භාවිතා නොවේ.
-kitchen_empty	විවෘත ප්‍රවේශපත් නොමැත (කවුන්ටර වෙළඳසැල් සාමාන්‍යයෙන් මෙම තිරය භාවිතා නොකර තබයි).
-add_a_table	කෑම මේසයක් එකතු කරන්න
-add_station_heading	බෙහෙත් ශාලාවක් එකතු කරන්න
 categories_help	එම ප්‍රවර්ගය යටතේ ඉහත මෙනු අයිතමය ගොනු කිරීමට භාවිත කරන්න තට්ටු කරන්න. ඡායාරූපය කාණ්ඩයට පින්තූරයක් ලබා දෙයි; එකක් නොමැතිව එහි මුලකුරු පෙන්වයි.
 dish_search_ph	නම, ලුණු හෝ තීරු කේතය සොයන්න...
-tile_free	හිස්
-tile_occupied	වාඩිලාගෙන
-tile_food_ready	කෑම සූදානම්
-tile_bill_printed	ආරාධිත අමුත්තන්ගේ බිල්පත මුද්‍රණය කර ඇත
-tile_paid	ගෙවා ඇත
-tile_bill_btn	ආරාධිත අමුත්තන්ගේ බිල්පත
-tile_occupy_btn	අමුත්තන් අසුන් ගන්න
-tile_free_btn	කෑම මේසය හිස් කරන්න
-tile_ready_btn	කෑම මේසය හිස් කරන්න
-tile_undo_bill	අමුත්තන්ගේ බිල්පත අහෝසි කරන්න
-summary_busy	කෑම මේස කාර්යබහුලයි
-summary_to_collect	එකතු කිරීමට
-summary_on_floor	කෑම ශාලාවේ
-floor	සාප්පු යන්න
 sizes_as_items_ph	වෙනම මෙනු අයිතම ලෙස ප්‍රමාණ (විකල්ප) - Half=120, Full=200
 dish_group_ph	ශක්තිය / ඇසුරුම් කණ්ඩායම (විකල්ප) - උදා. 500mg තීරුව
 discount	වට්ටම්
@@ -1039,7 +867,6 @@ remove_discount	වට්ටම් ඉවත් කරන්න
 apply_discount	වට්ටමක් යොදන්න
 save_opening_cash	ආරම්භක මුදල් ඉතිරි කරන්න
 close_shift_print	මාරුව සහ මුද්‍රණ ස්ලිප් වසා දමන්න
-area_prices_ph	ප්‍රදේශයේ මිල ගණන් (විකල්ප) - AC=220, Parcel=210
 discount_ph	10% හෝ 50
 discount_reason_ph	හේතුව (උදා. නිත්‍ය අමුත්තා, ප්‍රමාද වූ ආහාර)
 opening_float_ph	අද උදේ ලාච්චුවට සල්ලි දැම්මා
@@ -1049,34 +876,18 @@ shift_handover	මාරුව භාරදීම
 shift_since	එතැන් සිට මෙම මාරුව
 expected_in_drawer	ලාච්චුවෙන් බලාපොරොත්තු වේ
 right_discount	වට්ටමක් දෙන්න
-floor_in_kitchen	ප්රගතියේ
-floor_eating	සේවය කළා
 pick_category	කාණ්ඩයක් තෝරන්න
 close_category_list	ප්‍රවර්ග ලැයිස්තුව වසන්න
 new_category_row	නව ප්‍රවර්ගය - ඔබ මෙනු අයිතමය සුරකින විට සාදන ලදී
 your_category	ඔබේ ප්‍රවර්ගය
 suggested_category	යෝජිත - අපගේ අයිතම වලින්
 category_search_ph	ප්‍රවර්ගය - ඔබගේ සොයන්න හෝ අලුත් එකක් ටයිප් කරන්න
-line_sent_state	යවා ඇත
-line_nc_state	අනුපූරක (NC) - අය නොකෙරේ
 cancel_item_short	අවලංගු කරන්න
-nc_short	NC
-charge_again_short	අයකිරීම
-move_short	චලනය කරන්න
 cancel_item_title	මෙම අයිතමය අවලංගු කරන්න - පසු කාර්යාලයට අවලංගු පත්‍රිකාවක් ලැබේ
-nc_item_title	මෙම මෙනු අයිතමය අනුපූරක කරන්න (NC)
-charge_again_title	මෙම මෙනු අයිතමය නැවත ආරෝපණය කරන්න
-move_item_title	මෙම මෙනු අයිතමය වෙනත් කෑම මේසයකට ගෙන යන්න
-already_cooked	දැනටමත් පිසූ (නාස්තිය)
-not_cooked_yet	තාම උයලා නෑ
 return_to_customer	පාරිභෝගිකයා වෙත ආපසු යන්න
 short_by	කෙටියෙන්
 tip_not_sale	ඉඟිය (කාර්ය මණ්ඩලය, විකිණීමක් නොවේ)
 right_settle	ගෙවීමක් ගන්න
-right_cancel_sent	යවන ලද මෙනු අයිතමයක් අවලංගු කරන්න
-right_complimentary	අනුපූරක (NC)
-right_move_table	කවුන්ටර ගෙනයන්න / ඒකාබද්ධ කරන්න
-right_reprint	ආගන්තුක බිල්පත් නැවත මුද්‍රණය කරන්න
 right_allowed	අවසර දී ඇත
 right_with_approval	අනුමැතිය ඇතිව
 right_denied	අවසර නැත
@@ -1086,25 +897,11 @@ no_server_found	කිසිවක් හමු නොවීය. සේවාද
 servers_found_pick	ඔබට සම්බන්ධ වීමට අවශ්‍ය වෙළඳසැල තට්ටු කරන්න.
 server_host_selected	{host} භාවිතා කරමින් - යුගල කිරීමේ කේතය ඇතුලත් කරන්න, පසුව දැන් යුගල කරන්න.
 print_bill	අමුත්තන්ගේ බිල්පත මුද්රණය කරන්න
-table_actions	ප්රතිවිරෝධී ක්රියා
-move_merge_table	කෑම මේසය ගෙනයන්න / ඒකාබද්ධ කරන්න
-move_help	මෙම කවුන්ටරයේ ඇණවුම නොමිලේ වගුවකට ගෙන යන්න, නැතහොත් එය ධාවනය වන එකකට ඒකාබද්ධ කරන්න.
-move_target_ph	කවුන්ටරයේ නම
 approval_pin_ph	කළමනාකරු PIN (ඇසුවහොත් පමණි)
-move_here	මෙතනින් යන්න
-merge_into	එයට ඒකාබද්ධ කරන්න
-line_reason_ph	හේතුව (උදා. පාරිභෝගිකයාගේ අදහස වෙනස් වීම, තොග අවසන්)
-line_qty_ph	අවලංගු කළ යුතු ගණන (හිස් = සියල්ල)
-line_target_ph	කෑම මේසයට යන්න (උදා. D5)
 confirm	තහවුරු කරන්න
 menu_search_ph	මෙනු අයිතමය හෝ කෙටි කේතය සොයන්න
 customer_paid_ph	පාරිභෝගිකයා ගෙවා ඇත
 tip_ph	ඉඟිය
-table_area_ph	ප්‍රදේශය (උදා. ආහාර ගැනීම, පාර්සලය, ඒසී)
-table_range_ph	එකවර බොහෝ: D1-D20
-add_these_tables	මෙම කවුන්ටර එකතු කරන්න
-remove_these_tables	මෙම කවුන්ටර ඉවත් කරන්න
-table_remove_ph	ඉවත් කරන්න: T1-T24, හෝ එක් කෑම මේසයක නම
 find_server	වෙළඳසැලේ සේවාදායකය සොයා ගන්න
 bill_format	ආගන්තුක ආගන්තුක බිල්පත් ආකෘතිය
 bill_format_help	සෑම බිල්පතකම ඔබේ සාප්පුවේ නම යටතේ මුද්රණය කර ඇත. සමඟින් වෙනම රේඛා | (උදා. MG පාර, රාජ්කොට් | Ph 98250 00000).
@@ -1112,78 +909,32 @@ bill_header_ph	ලිපිනය | දුරකථනය
 fssai_ph	ඖෂධ බලපත්ර අංක. (විකල්ප - ඔබේ වචන)
 bill_footer_ph	පාදකය (උදා. ස්තූතියි, නැවත පැමිණෙන්න)
 save_bill_format	අමුත්තන්ගේ බිල්පත් ආකෘතිය සුරකින්න
-kot_format	ස්ලිප් ආකෘතිය
-kot_format_help	ලැයිස්තුවේ ඇති ක්ෂේත්‍රයක් තට්ටු කරන්න. ඉහත තෝරාගත් ස්ලිප් වර්ගය මත එම ක්ෂේත්‍රයට පෙන්වන්න, අකුරු ප්‍රමාණය සහ බර අදාළ වේ. සෑම වර්ගයකම තමන්ගේම ප්රමාණ සහ බර තබා ගනී.
-kot_format_fields	ක්ෂේත්ර
-kot_field_next	ඊළඟ ක්ෂේත්රය
-kot_field_show	පෙන්වන්න
-kot_field_hide	සඟවන්න
 kot_field_on	පෙන්වන්න
 kot_field_off	සඟවන්න
-kot_field_size	අකුරු ප්රමාණය
-kot_field_size_ph	උදා. 16, 20, 24, 28, 32...
 kot_weight_light	ආලෝකය
 bill_kot_panel_help	බිල්පත් පිරිසැලසුම සහ අන්තර්ගත පළල. බිල්පත නිකුත් කළ හෝ පියවූ අය මුදල් අයකැමිය - සම්පූර්ණ විකුණුම් කතාව පොත්වල පවතී.
 std_size_ph	උදා. 18, 20, 26…
-kot_show_shop	සාප්පුවේ නම
-kot_hide_shop	සාප්පුව සඟවන්න
-kot_show_time	කාලය
-kot_hide_time	කාලය සඟවන්න
-kot_show_waiter	මුදල් අයකැමි
-kot_hide_waiter	මුදල් අයකැමි සඟවන්න
-kot_show_station	දුම්රිය ස්ථානය
-kot_hide_station	ස්ථානය සඟවන්න
-kot_show_table	කවුන්ටරය
-kot_hide_table	කෑම මේසය සඟවන්න
-kot_show_kot_no	ටිකට් අංකය
-kot_hide_kot_no	ප්‍රවේශපත්‍ර අංකය සඟවන්න
-kot_width	පෙරදසුන් එතුම (ස්ලිප් පටිත්තෙහි අන්තර්ගත පළල සකසන්න)
-kot_width_58	58 mm
-kot_width_80	80 mm
-kot_kind_heading	ටිකට් වර්ගය
-kot_kind_original	මුල්
-kot_kind_duplicate	අනුපිටපත් කරන්න
-kot_kind_modified	වෙනස් කර ඇත
-kot_kind_cancelled	අවලංගු කළා
-kot_style_heading	ක්ෂේත්‍ර වර්ගය ප්‍රමාණය සහ බර
-kot_style_title	මාතෘකාව
-kot_style_item_qty	මෙනු මෙනු අයිතමය · Qty
-kot_style_field_pick	ක්ෂේත්රය තෝරන්න
 kot_weight_regular	නිතිපතා
 kot_weight_bold	නිර්භීත
-kot_align	පෙළගස්වන්න
 kot_align_start	ආරම්භ කරන්න
 kot_align_center	මධ්යස්ථානය
 kot_align_end	අවසානය
 content_width	අන්තර්ගත පළල (මි.මී.)
 content_width_bill	අමුත්තන්ගේ බිල්පත් අන්තර්ගත පළල (මි.මී.)
-content_width_kot	ප්‍රවේශපත්‍ර අන්තර්ගත පළල (මි.මී.)
 content_width_ph	නැතහොත් අන්තර්ගත පළලක් ටයිප් කරන්න, 40–210 mm
 content_width_help	මෙම ස්ලිප් මුද්‍රණය කෙතරම් පළලද. බිල් එහි පළල තබා ගනී.
 content_width_bill_help	පාරිභෝගික බිල්පත කෙතරම් පුළුල් ලෙස මුද්‍රණය වේ. පෙරනිමි 210 mm (පිටුව). 58 mm පටු ස්ලිප්, 80 mm පළල ස්ලිප්, 112 mm 4-අඟල්, 210 mm A4-පළල. 40 සිට 210 දක්වා ඕනෑම අගයක් ටයිප් කරන්න. ප්‍රවේශපත්‍රවල ස්ලිප් පටිත්තෙහි ඔවුන්ගේම පළල ඇත.
-content_width_kot_help	ප්‍රවේශපත්‍ර මුද්‍රණය කෙතරම් පළලද. පෙරනිමි 80 මි.මී. 58 mm පටු ස්ලිප්, 80 mm පළල ස්ලිප්, 112 mm අඟල් 4, 210 mm පිටුව. 40 සිට 210 දක්වා ඕනෑම අගයක් ටයිප් කරන්න. බිල් පටිත්තෙහි පාරිභෝගික බිල්පත්වලට ඔවුන්ගේම පළල ඇත.
 vp_paper_width	අන්තර්ගත පළල (මි.මී.)
 vp_paper_width_ph	නැතහොත් අන්තර්ගත පළලක් ටයිප් කරන්න, 40–210 mm
 vp_paper_width_help	අන්තර්ගත පළල බිල් සහ ස්ලිප් ආකෘතිය යටතේ සකසා ඇත - බිල්පත (පෙරනිමි 210 මි.මී.) සහ ටිකට් (පෙරනිමි 80 මි.මී.) සඳහා වෙන වෙනම.
-kot_size	අකුරු ප්රමාණය
-kot_size_s	කුඩා
-kot_size_m	සාමාන්යයි
-kot_size_l	විශාල
 std_size	අකුරු ප්රමාණය
 kot_copies	පිටපත්
 kot_copies_1	1
 kot_copies_2	2
 kot_copies_3	3
-kot_title_ph	මාතෘකාව (හිස් = ටිකට්)
-kot_footer_ph	පසු කාර්යාල සටහන (විකල්ප)
-kot_preview	පෙරදසුන
-save_kot_format	Slip ආකෘතිය සුරකින්න
-test_kot_format	පරීක්ෂණ මුද්‍රණය
-test_kot_sent	ප්‍රවේශපත්‍ර පෙරදසුන යවන ලදී
 test_bill_format	අමුත්තන්ගේ බිල්පත් පරීක්ෂා කරන්න
 test_bill_sent	ආරාධිත අමුත්තන්ගේ බිල්පත් පෙරදසුන යවන ලදී
 test_print_no_printer	එම කාර්යය සඳහා මුද්‍රණ යන්ත්‍රයක් නොමැත - මෙම තිරයේ එකක් තෝරන්න
-kot_format_saved	ස්ලිප් ආකෘතිය සුරකින ලදී
 std_print	අමුත්තන්ගේ බිල්පත් මුද්‍රණ ප්‍රමාණය
 std_print_help	OS / ලේඛන මුද්‍රණ යන්ත්‍රවල සම්මත පෝට්රේට් සහ භූ දර්ශන බිල්පත් රැකියා සඳහා අකුරු ප්‍රමාණය (ලකුණු ඇතුළත් කරන්න — කුඩා/සාමාන්‍ය/විශාල නොවේ). දිශානති දෙකෙහිම එකම ප්‍රමාණය.
 std_size_s	කුඩා
@@ -1223,23 +974,16 @@ upi_qr	UPI QR
 show_upi_qr	UPI QR පෙන්වන්න
 close_upi_qr	වසන්න
 upi_qr_help	පාරිභෝගිකයා ස්කෑන් කර ගෙවයි. ඔවුන් ගෙවූ පසු ගෙවීම් ගන්න තට්ටු කරන්න. දෙවන තිරය: LAN මත සේවාදායක URL/display විවෘත කරන්න.
-kot_recall	සිහිපත් කරන්න
 recently_done	මෑතකදී කළා
-recall_kot_ph	නැවත කැඳවීමට ටිකට් #
 role_help_customer	භූමිකාව: පාරිභෝගික — ණය ලෙජරය (ඔවුන් අපට ණයයි). එකම පාරිභෝගිකයාට හෝ සැපයුම්කරුට කොටස් සැපයිය හැකිය.
 role_help_both	භූමිකාවන්: පාරිභෝගික + සැපයුම්කරු - එක් පාරිභෝගිකයෙකු හෝ සැපයුම්කරුවෙකු, ණය ලෙජරය සහ ගෙවිය යුතු ලෙජර, වාර්තාවල ශුද්ධ.
 role_help_supplier	කාර්යභාරය: සැපයුම්කරු - අපි ඔවුන්ට මිලදී ගැනීම් සඳහා ණයගැතියි.
-dine_in_pick_table	කවුන්ටර සාප්පුවක භාවිතා නොවේ
-choose_table	කවුන්ටරය තෝරන්න
-change_table	කෑම මේසය වෙනස් කරන්න
-pick_table_banner	මෙම ඇණවුම සඳහා කෑම මේසයක් තෝරන්න
 items_word	මෙනු අයිතම
 items_section	මෙනු මෙනු අයිතම
 back_to_order	නැවත පිළිවෙලට
 new_items_head	තවම යවා නැත
 price_ph	මිල
 price_ph_gst_inside	මිල ({tax} ඇතුළුව)
-cancel_needs_table	ඔබ මුදල් ගෙවන තෙක් කවුන්ටර විකුණුම් ටිකට් පතේ පවතී
 tax_rates_missing_hint	මෙම අයිතම සඳහා {tax} අනුපාතයක් නැත - අයිතම නියම කර ඇති බදු අනුපාතය (මිල දැනටමත් {tax} යටතේ {tax} ඇතුළත් වේ)
 taxable_value	බදු ගෙවිය හැකි වටිනාකම
 gst_inside_price_note	({tax} ඇතුළුව)
@@ -1260,30 +1004,11 @@ client_template_confirm	{title} වෙතින් {d} අයිතම එක්
 client_template_importing	{title} ආයාත කරමින්...
 client_template_done	{title} වෙතින් සෑම අයිතමයක්ම ඔබේ අයිතමවල ඇත.
 client_template_imported	{title} වෙතින් {d} අයිතම සහ {c} කාණ්ඩ එකතු කරන ලදී
-resv_heading	වෙන් කිරීම්
-resv_name_ph	පාරිභෝගික නම
-resv_phone_ph	දුරකථනය (විකල්ප)
-resv_guests_ph	මිනිස්සු
-resv_when_ph	කවදාද - 20:30, හෙට 13:00
-resv_table_ph	කවුන්ටරය (විකල්ප)
-resv_add	කෑම මේසයක් වෙන් කරන්න
-resv_seat	වාඩි වී ඇත
-resv_none	වෙන් කිරීම් කිසිවක් පැමිණෙන්නේ නැත.
-guests_word	අමුත්තන්
-delivery_by_ph	භාරදීම (පදින්නා හෝ කාර්ය මණ්ඩලයේ නම)
-kitchen_all_day	දැන් උයන්න: {items}
-split_bill	ආගන්තුක බිල්පත් බෙදන්න
-split_go	වෙනම අමුත්තන්ගේ බිල්පතක් සාදන්න
 cancel	අවලංගු කරන්න
 opening_client	සේවාලාභියා විවෘත කරමින්...
 preparing_desk	මේසය සූදානම් කරමින්...
 opening_server	සේවාදායකය විවෘත කරමින්...
 creating_server	සේවාදායකය නිර්මාණය කරමින්...
-split_help	එක් පාරිභෝගිකයෙකු ගෙවන · {n} තෝරාගත් අයිතම තට්ටු කරන්න
-split_send_first	පළමුව ස්ලිප් යවන්න - වෙනම බිල්පතකට යා හැක්කේ ආපසු කාර්යාලයේ ඇති අයිතම පමණි
-split_pick_some	පළමුව වෙනම බිල්පත සඳහා අයිතම තට්ටු කරන්න
-split_done	වෙනම බිල්පතක් සාදා ඇත - එය මෙම කවුන්ටරය අසල බිම
-split_marked	වෙනම අමුත්තන්ගේ බිල්පත
 order_empty_pick	ඇණවුම හිස් - අයිතම තෝරා ගැනීමට ඉහත අයිතම එකතු කරන්න තට්ටු කරන්න.
 add_dishes	ඖෂධ එකතු කරන්න
 order_so_far	මෙම ඇණවුම මත: {n} · {total}
@@ -1294,24 +1019,8 @@ pick_done_dd	නිමයි · {label}
 printer_route_mode	මෙම ස්ථානයේ මුද්‍රණ යන්ත්‍ර කිහිපයක් තිබේ නම්
 printer_mode_first	මුලින්ම එය ක්රියා කරයි
 printer_mode_all	සියල්ල මත මුද්‍රණය කරන්න
-kot_show_area	ප්රදේශය
-kot_hide_area	ප්රදේශය සඟවන්න
-kot_show_item_hdr	මෙනු මෙනු අයිතමය · Qty
-kot_hide_item_hdr	තීරු සඟවන්න
-kot_show_title	මාතෘකා රේඛාව
-kot_hide_title	මාතෘකාව සඟවන්න
-kot_field_order	මුද්‍රණ ඇණවුම
 kot_field_up	ඉහළට ගමන් කරන්න
 kot_field_down	පහළට ගමන් කරන්න
-kot_field_cycle	ඊළඟට තෝරන්න
-kot_field_select	ඊළඟට තෝරන්න
-kot_field_time	කාලය
-kot_field_kot_no	ටිකට් අංකය
-kot_field_area	ප්රදේශය
-kot_field_table	කවුන්ටරය
-kot_field_shop	සාප්පුවේ නම
-kot_field_waiter	කාර්ය මණ්ඩලය
-kot_field_station	දුම්රිය ස්ථානය
 app_template_blurb_extra	තවද: හිමිකරු සහීර්, පරිපාලක අසීෆ්, මුදල් අයකැමි නවාස්; ඉදිරිපස පැති තීරුව; පැය 4 කට පසු ඉතිහාසය; අද ගලවන්න; සංයුක්ත බිල්පත.
 dishes_n	{n} අයිතම
 recipe_ph	වට්ටෝරුව (විකල්ප - කවුන්ටර සාප්පුවක භාවිතා නොකළ)
@@ -1321,8 +1030,6 @@ low_stock_alert	අඩුයි - ඉක්මනින් මිලදී ග�
 unpriced_note	ඔබේ අයිතමවල {n} අයිතමවලට තවමත් මිලක් නැත - ඔබ එකක් සකසන තෙක් ඒවා 0 ට බිල් වේ.
 show_unpriced	මිලක් නොමැතිව භාණ්ඩ පමණක් පෙන්වන්න
 show_all_dishes	සියලුම අයිතම පෙන්වන්න
-role_waiter	මුදල් අයකැමි
-role_kitchen	ගබඩා කරන්න
 role_title_rest_ph	භූමිකාවේ මාතෘකාව (උදා. කැප්ටන්, ප්‍රධාන කුක්)
 preset_help_rest	අයකැමි: විකුණන්න. කළමනාකරු: විකිණීම + මෙනු අයිතම + අවලංගු/සංශෝධනය.
 kind_raw	සංයුක්ත කොටස්

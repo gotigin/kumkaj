@@ -68,28 +68,6 @@ applied	Fheidhmeach
 note_ph	Nóta (roghnach)
 rounded	CÉIMNITHE
 split	Roinn
-send_kot	Seol duillín
-send_kot_to	Seol → {kitchens}
-send_kot_again	Cuir míreanna leis don chéad duillín eile
-send_kot_held	Míreanna ar siúl - unhold a sheoladh
-reprint_kot	Priontáil roghnaithe arís
-reprint_kot_ok	Míreanna priontáilte {n} arís · Duillín(s) {slips} → {kitchens}
-reprint_kot_needed	Seol duillín ar dtús - ansin cuir na míreanna san áireamh agus priontáil na cinn roghnaithe arís
-reprint_kot_none_selected	Déantar gach mír seolta a scipeáil - tapáil In print ar na cinn atá le hathphriontáil
-reprint_kot_client	Priontáil arís ({n}) le haghaidh {place} seolta - priontaí an gléas siopa é
-print_cancelled_kot	Cealaíodh an priontáil go léir
-print_cancelled_kot_ok	Míreanna priontáilte {n} curtha ar ceal · Duillín(eanna) {slips} → {kitchens}
-print_cancelled_kot_needed	Oscail tábla le míreanna cealaithe ar dtús
-print_cancelled_kot_none	Níl aon mhír chealaithe san ordú seo
-print_cancelled_kot_client	Priontáil curtha ar ceal ({n}) le haghaidh {place} seolta — priontaí an gléas siopa é
-kot_banner	Meirge cineálta
-kot_banner_ph	Meirge (bán = ceann ar bith)
-kot_item_prefix	Réimír na míre
-kot_item_prefix_ph	m.sh. [CANCELLED]
-kot_strike	Stailc ainm míre
-kot_strike_note	Nóta mír stailce
-kot_strike_on	Air
-kot_strike_off	As
 bill_item_layout	Leagan amach na míre
 bill_item_layout_columns	Colúin
 bill_item_layout_stacked	Cruachta
@@ -118,8 +96,6 @@ bill_item_gap_em	Bearna (em)
 bill_item_qty_min	Íos. cainn. (em)
 bill_item_price_min	Praghas íosta (eanna)
 bill_item_amount_min	Méid na n-íosmhéid (na n-íosmhéid)
-kot_item_qty_width	Colún QTY
-kot_item_num_align	Ailínigh le Qty
 bill_total_qty_label	Lipéad qty iomlán
 bill_total_subtotal_label	Lipéad fo - iomlán
 bill_total_grand_label	Mórlipéad iomlán
@@ -131,36 +107,9 @@ bill_item_piece_off	As
 bill_total_qty	Iomlán qty
 bill_total_subtotal	Fo-iomlán
 bill_total_grand	Móriomlán
-reprint_incl	I gcló
-reprint_skip	Scipeáil
-reprint_skip_meta	Ná bac le priontáil aisghabhála
-kot_dest_hint	Priontaí ar na printéirí a shann tú do {kitchens} i bPrintéirí → Socruithe
-kot_sent_hint	Chuaigh an seoladh deireanach chuig {kitchens}. Tapáil chun míreanna a chur leis don chéad bhille eile - nó duillín priontála arís don cheann céanna.
-kot_sent_printing	Duillín seolta chuig {kitchens} — priontáil
-kot_sent_not_printed	Duillín seolta chuig {kitchens} ach NACH priontáilte: {why}. Abair leis an siopa, ansin deisigh an printéir agus priontáil arís é.
-kot_sent_screen	Duillín seolta chuig {kitchens}
-kot_queued_shop	Duillín le haghaidh {place} → {kitchens} sábháilte; priontaí an gléas siopa é
-kot_job_label	Duillín le haghaidh {place} → {kitchens}
-kot_job_reached	Shroich duillín le haghaidh {place} {kitchens}
 kot_unassigned	Neamhshannta
-kot_unassigned_held	Coinnigh míreanna {n} gan stáisiún - coinnigh ar an líne le seoladh
-kot_station_ph	Stáisiún
-kot_station_dd	Stáisiún
-kot_station_dd_n	Stáisiún · {stations}
-kot_set_station	Úsáid an stáisiún seo
-kot_station_applied	Stáisiún socraithe ar mhíreanna {n}: {station}
-kot_station_cleared	Stáisiún glanta ó mhíreanna {n}: {station}
-kot_station_needed	Roghnaigh rannóg siopa ar dtús
-kot_station_not_allowed	Ní cheadaítear alt a úsáid: {station}
-kot_station_none	Níl aon stáisiúin fós — gan úsáid ar shiopa cuntair (Socruithe → Limistéir más gá)
 pos_tab_items	Míreanna curtha leis
 pos_tab_payment	Íocaíocht
-hold_send	Coinnigh
-hold_send_on	CoimeÃ¡dta
-hold_send_meta	Ar siúl - ní ar an duillín
-station_remove	Bain stáisiún
-station_remove_ph	Tapáil stáisiún sa liosta chun é a bhaint
-station_removed	Stáisiún bainte: {name}
 settings_hub_title	Socruithe
 settings_hub_help	Oscail réimse amháin ag an am — roghanna níos lú scrollaithe, níos soiléire.
 settings_back	Ar ais
@@ -169,12 +118,10 @@ settings_sec_country	Tír & cáin
 settings_sec_tills	Gléasanna eile
 settings_sec_brand	Do bhranda
 settings_sec_units	Aonaid & tiontuithe
-settings_sec_pickers	Limistéir · stáisiúin · rátaí cánach
+settings_sec_pickers	Rátaí cánach
 settings_sec_printers	Printéirí
 settings_sec_bill	Formáid Bille & Duillín
 settings_sec_selling	Scéimeanna & díolacháin
-bill_kot_tab_bill	Bille
-bill_kot_tab_kot	Duillín
 settings_sec_alerts	Foláirimh
 alerts_help	Cé chomh fada agus a fhanann teachtaireachtaí stádais ar an scáileán duit (an logáil isteach seo).
 snack_secs_ph	Soicindí (3 -60, réamhshocrú 10)
@@ -225,8 +172,6 @@ counter	Gcuntar
 dine_in	Gcuntar
 takeaway	Beir leat
 order	Ordú
-tables	Áiritheoirí
-kitchen	Ailt
 sales	Díolacháin
 sales_refunds	Díolacháin & aisíocaíochtaí
 day_close	Dún an lae
@@ -254,10 +199,6 @@ zero_sales_on	Ceadaigh ₹0
 zero_sales_off	Teastaíonn praghas
 zero_sales_saved_on	Ceadaíodh díolacháin luach-nialas
 zero_sales_saved_off	Caithfidh praghas a bheith ag díol os cionn ₹0
-floor_areas_help	Is seomraí nó criosanna ar an urlár iad limistéir (Dine In, Beartán, AC …). Cuir limistéar ar dtús, ansin cuir cuntair ann - is grúpa ar leith é gach ceantar ar an urlár.
-area_new_ph	Réigiún / seomra nua (m.sh. AC, Gairdín)
-add_area	Cuir réimse leis
-area_added	Réimse “{name}” réidh — cuir cuntair isteach ann
 no_favorites	Gan rogha favóireach fós — cuir earraí ón liosta thíos.
 add_to_bill	Cuir leis an mbille
 added	Cuireadh leis
@@ -268,19 +209,9 @@ chip_missing_customer	Níor aimsíodh an custaiméir roghnaithe — roghnaigh ar
 chip_no_customer	Gan custaiméir fós — clóscríobh ainm, ansin sconna ar Creidmheas
 credit_summary_fmt	{} custaiméirí · creidmheas oscailte {} · réamhíocaíochtaí coimeádta {}
 recent_label	Le déanaí:
-kot_new_waiting	NUA — ag fanacht
-kot_preparing	AG ULLMHÚ
-kot_ready_serve	Réidh — freastal air
-kot_done_cap	Déanta
-kot_cancelled	CEALÚ
-kot_start_btn	Tús
-kot_mark_ready	Marc réidh
-kot_done_btn	Déanta
-table_free	Saor — sconna le haghaidh ordú a thosú
 start_order	Tosnaigh ordú
 open_bill	Bille oscailte
 collect_payment	Bailigh íocaíocht
-table_running	Rith
 payment_pending	Íocaíocht ag fanacht
 collect_at_counter	bailigh ag an meaisín taca
 inventory	Fardal
@@ -313,7 +244,6 @@ ok	Ceart go leor
 this_shop	Server
 extra_till	Client
 off	As
-tables_kitchen	Leagan amach siopa
 server	Server
 client	Client
 language_currency	& Airgeadra teanga
@@ -355,8 +285,6 @@ add_item_plain	Suimigh Comhad
 add_note	Cuir nóta leis
 add_opening_balance	Cuir i gcrích an t-aiseolas tosaigh
 add_staff	Cuir daoine léi
-add_station	Cuir stáisiún leis
-add_table	Cuir tábla leis
 add_unit	Cuir aonaid leis
 add_use_name	Cuir leis / bain úsáid as an ainm seo
 allow_extra_tills	Ceadaigh tilleacha breise
@@ -409,7 +337,6 @@ share_whatsapp	Roinn WhatsApp
 lan_pages_heading	Leathanaigh custaiméirí ar Wi-Fi
 lan_pages_help	Ar Wi-Fi an tsiopa seo, oibríonn leathanaigh na gcustaiméirí don chlár taispeána agus aiseolas. Teastaíonn Cloud ó dhaoine ar shonraí soghluaiste níos déanaí. Tá críochfort cárta nó nasc íocaíochta roghnach agus ní chuireann sé bac ar an gcuntar riamh.
 diag_send_heading	Roinn as an bhfeiste seo
-kot_dest_heading	Stáisiún
 optional_login_heading	Logáil isteach roghnach
 rights_heading	Cearta
 ops_panel	Oibríochtaí áitiúla
@@ -436,28 +363,6 @@ till_voucher_amt_ph	Méid an vása (folamh = uile)
 till_wallet_topup_ph	Méid sparán a líonadh suas
 till_voucher_issue_amt_ph	Méid vótálacha a eisiúint
 till_voucher_issue_code_ph	Cód vouchair nua
-split_evenly	Roinn go cothrom
-waitlist	Liosta feithimh
-fire_course	An chéad chéim eile
-hold_item	Coinnigh
-waiter_call	Glaoigh ar airgeadóir
-waitlist_add	Cuir leis an liosta feithimh
-floor_view_grid	Greille
-floor_view_layout	Leagan amach
-floor_layout_x	X
-floor_layout_y	Y
-floor_layout_w	W
-floor_layout_h	H
-floor_layout_save	Sábháil léaráid
-floor_layout_open	Tábla oscailte
-floor_layout_edit	Eagar an léaráid
-floor_layout_pick	Beartaigh ar tábla chun a leagan amach a chur in eagar
-floor_layout_saved	Sábháladh an leagan amach
-floor_layout_nudge_left	← 20
-floor_layout_nudge_right	→ 20
-floor_layout_nudge_up	↑ 20
-floor_layout_nudge_down	↓ 20
-sibling_pickers_help	Beartaigh Ar/Múch cosúil le haonaid — folmhaigh limistéir, stáisiúin, agus rátaí cánach ó roghnóirí laethúla; fanann réamhshocruithe pacáiste.
 bulk_price_apply	Cuir praghas iomlán i bhfeidhm
 card_terminal_optional	Críochfort cárta / nasc íocaíochta (roghnach nuair a bhíonn idirlíon ar fáil)
 copy_report	Cóipeáil tuairisc
@@ -483,7 +388,6 @@ import_day	Lá allmhairithe
 import_items_csv_plain	Importáil earraí CSV…
 import_parties_csv	Áirithigh páirtithe CSV…
 item_name	Ainm an mhíre
-kitchen_printing	Printéirí
 login_id_ph	Ainm Úsáideora
 mark_cleared	Glanadh Marc
 new_party_clear	Páirtí nua (foirm shoiléir)
@@ -553,15 +457,6 @@ show	Taispeáin
 spreadsheet_csv	Scarbhileog (CSV)
 start_fresh	Tosaigh úr
 stop_extra_tills	Stop breiseáin bhreise
-floor_cols_ph	Colúin
-floor_cols_fit	Comhréir leis an scáileán
-floor_cols_fit_sub	{n} oireann anseo
-floor_cols_fits	oiriúnach
-floor_cols_scroll	scroláil ar thaobh
-floor_cols_min	Colúin: ar a laghad 1 — nó fág folamh é chun oiriúnú don scáileán
-floor_zoom_auto	Auto
-floor_zoom_out	Zúmáil amach
-floor_zoom_in	Déan gar léi
 backup_auto	Tá cúltaca uathoibríoch déanta gach lá · {when} deireanach · coinnítear na 14 lá deireanacha i {dir}.
 backup_auto_none	Cúltaca déanta go huathoibríoch gach lá — rithfidh an chéad cheann i gceann nóiméad.
 backup_copy_to	Téann cóipeanna freisin go {dir}.
@@ -579,7 +474,6 @@ new_pair_code	Cód péireála nua
 pair_finishing	Ag críochnú péire… ag cur leabhar na siopa i bhfeidhm
 pair_opening	Ag oscailt an tsála…
 pair_copied	Cóid péireála cóipáilte
-kot_waiting	Ag fanacht le seoladh
 lan_offline_waiting	Freastalaí an tsiopa gan rochtain · ag fanacht le {n}
 lan_connecting	Ag nascadh leis an siopa…
 lan_live	Beo
@@ -621,7 +515,6 @@ printers_routes_help	Faigh printéirí atá ar eolas ag an gcóras oibriúcháin
 printer_assign_dd	Clódóir fíor: {place}
 printer_assign_pick	Roghnaigh priontála fíor
 printer_profile_heading	Leagan amach
-printer_send_heading	Seachadadh
 vp_delivery_heading	Seachadadh
 vp_delivery_help	An chaoi a seolann an printéir fíorúil seo jabanna - doiciméad OS, bearta amh, nó ESC/POS. Is é an fhormáid bhille / duillín a chinneann ábhar duillín (méid cineál, fillte, corrlaigh), ní anseo.
 vp_type_size_heading	Méid cló
@@ -665,23 +558,13 @@ virtual_draft_send	Luach socraithe don chéad printéir fíorúil eile
 virtual_need_real	Roghnaigh priontálaí fíor ar dtús
 virtual_need_select	Roghnaigh priontálaí fíorúil le scriosadh
 real_printer_selected	Roghnaithe: {name}
-station_group_heading	Printéirí fíorúla
-station_group_apply	Scrios priontálaí fíorúil
-station_group_applied	Scriosta
-station_group_empty	Roghnaigh printéir fíorúil
-station_group_name_ph	Ainm printéir fíorúil (roghnach)
-station_group_save	Cruthaigh printéir fhíorúil
-station_group_saved	Printéir fíorúil sábháilte
-station_manage_heading	Cuir leis nó bain alt siopa
 printers_routes_heading	Cá gclóitear rudaí
 route_pick_heading	Áit
 route_editing	Ag eagarthóireacht: {name}
 route_assigned	Cuireadh {printer} leis an {place}
 route_already_assigned	Ar an áit seo cheana: {printer}
-route_removed	Bainte {printer} as {place}
 route_cleared	Scaoileadh {name}
 route_assigned_empty	Ní héinne ar an áit seo
-route_tap_remove	tapáil chun a bhaint
 route_tap_select	tapáil chun roghnú
 route_tap_selected	roghnaithe
 route_pick_printer_first	Bioráin ar phrintéir ar dtús
@@ -702,35 +585,17 @@ printer_format_custom	Próifíl shaincheaptha nua
 printer_format_custom_label	Cleachtas
 printer_format_custom_added	Próifíl shaincheaptha curtha leis don áit seo
 add_printer	Cuir priontálaí leis
-remove_printer	Bain
 route_pick_ph	Bille nó rannóg siopa
 route_bill	Bille
-route_default_kitchen	Gan stáisiún (míreanna neamhshannta)
-route_kot_station	Stáisiún
 route_dont_print	Gan printéir
-stations_heading	Stáisiúin
-stations_help	Grúpálann rannóga na siopaí earraí agus na printéirí don chuid sin den siopa. Ceangail printéirí ó Socruithe → Printéirí, socraigh ord iarracht, ansin Ar dtús a oibríonn nó Priontáil ar gach. Sábhálann athruithe mar a théann tú ar aghaidh.
-station_print_heading	Printéirí don stáisiún seo
-station_print_help	Roghnaigh stáisiún, ansin ceangail printéir amháin nó níos mó. ↑ ↓ Leagann iarracht ordú. An Chéad go n-oibríonn stadanna tar éis an chéad rath; Priontáil ar gach seoltaí chuig gach printéir a ghabhann leis.
-station_print_pick_ph	Stáisiún chun clódóirí a shocrú
 station_print_pick_first	Roghnaigh rannóg siopa ar dtús
-station_print_editing	Ag eagarthóireacht printera do “{name}”
-station_vps_dd	Printéirí don stáisiún seo
-station_vps_dd_n	{n} printéir(í) · sconna chun athrú
 station_vps_empty	Gan printéirí fós — Faigh iad faoi Socruithe → Printéirí
 bill_printers_dd	Printéirí don bhille
 bill_printers_dd_n	{n} printéir(í) don bhille · sconna chun athrú
-job_layout	Leagan amach
-job_delivery	Conas a seoltar an post
-job_delivery_help	Doiciméad OS, bearta amh, nó ESC/POS. Coimeádann an bille agus an ticéad a gcuid féin. Is féidir le ceachtar den dá phost dul chuig printéir ar bith a shábháladh Find.
 station_vp_attached	Clódóir ceangailte
 station_vp_detached	Priontálaí bainte den stáisiún
-station_print_summary	{mode} · printéir(í) {n}
-station_print_summary_none	Níl aon printéir ar an stáisiún seo go fóill — ní dhéanfaidh sé printáil
-stations_none	Níl aon stáisiún fós - cuir ceann thíos leis. Ní úsáidtear stáisiúin ar shiopa cuntair - fág folamh.
 route_up	Suas
 route_down	Síos
-route_remove	Bain
 route_clear	Glan
 save_printers	Sábháil priontálaithe
 print_test_page	Clóigh leathanach tástála
@@ -739,23 +604,15 @@ test_page_no_printer	Níl aon printéir do {place} — ceangail printéir leis, 
 test_page_pick_first	Roghnaigh clódóir(í) le haghaidh leathanach tástála ar dtús — ansin Clóigh leathanach tástála
 test_printers_dd	Printéirí le haghaidh leathanach tástála
 test_printers_dd_n	{n} printéir(í) le haghaidh leathanach tástála · tapáil chun athrú
-kot_test_printers_dd	Printéirí le haghaidh tástála priontáil
-kot_test_printers_dd_n	Printéir(í) {n} le haghaidh Priontála tástála · tapáil chun athrú
 test_printer_picked	Tástáil ar: {name}
 test_printer_cleared	Ní ag tástáil ar: {name}
 test_page_sent_n	Leathanach tástála seolta chuig clódóir(í) {n}
-test_kot_pick_first	Roghnaigh printéir(í) don Phriontáil Tástála ar dtús — ansin Priontáil tástála
-test_kot_sent_n	Priontáil tástála seolta chuig printéir(í) {n}
-cancel_pick	Marc
-cancel_pick_on	Marcáilte
-cancel_pick_meta	Marcáilte le cealú
 batch_cancel	Cealaigh marcáilte
 batch_cancel_n	Cealaigh marcáilte ({n})
 batch_cancel_none	Marcáil mír seolta nó níos mó ar dtús — ansin Cealaigh marcáilte
 batch_cancel_title	Cealaigh míreanna marcáilte — cúis amháin, duillín cealaithe amháin in aghaidh na coda
 batch_cancel_ok	Míreanna {n} curtha ar ceal · Duillín cealaithe {slips} → {kitchens}
 batch_cancel_ok_noprint	Míreanna {n} curtha ar ceal — tá uathphriontáil múchta, mar sin níl duillín cealaithe ann
-no_printer_kitchen_station	Gan printéir don stáisiún sin
 printers_saved	Sábháilte
 test_page_sent	Leathanach tástála seolta — seiceáil an clódóir
 test_page_sent_one	Leathanach tástála seolta chuig {name} — seiceáil go bhfuil an printéir
@@ -771,10 +628,7 @@ cancelled	Cealaithe
 printers_tap_find	Tapaigh Faigh chun liosta a fháil de na printéirí is féidir leis an bhfeiste seo a úsáid.
 printers_none_found	Níor aimsíodh aon cheann — clóscríbhneoir córais nó IP a chlóscríobh (m.sh. 192.168.1.50).
 printer_from_find	Cuirtear {name}
-kot_printer_ph	Printéir le haghaidh sleamhnáin
 bill_printer_ph	Printéir do bhileoga
-kot_print_on	Ticéid uathchlóite: Ar siúl
-kot_print_off	Ticéid uathchlóite: Múchta
 queue_refused	Ní ghlactar leis sa siopa ({n}) — seiceáil gach ceann ag an gcoimeádaí:
 clear_not_accepted	Seiceáladh — glan an liosta seo
 device_name_ph	Ainm an ghléis seo
@@ -785,7 +639,6 @@ backup_failed	Theip ar an gcúltaca uathoibríoch deireanach: {e}
 backup_overdue	Níl cúltaca déanta le {n} lá — coinnigh an aip oscailte ar an bhfeiste seo ionas gur féidir leis cúltaca a dhéanamh.
 disk_low	Níl ach {mb} MB saor ar an bhfeiste seo — beidh na cúltacaí ag teip go luath. Déan spás a shaoradh.
 last_seen_devices	Deirtear ar deireadh: {time}
-sync_interval	Sioncrónaigh gach {secs}s
 connection_to_shop	Ceangal leis an siopa
 supplier_name_ph	Ainm soláthraí (nó páirtí)
 supplier_ph	Soláthraí
@@ -848,7 +701,6 @@ fresh_book_kirano	Fresh = catalóg folamh (cuir míreanna leis níos déanaí). 
 fresh_selected	Nua roghnaithe — fanann an catalóg folamh. Brúigh Déanta nuair atá tú réidh.
 gross_word	An-olc
 how_start	Conas ar mhaith leat tosú?
-kot_print_help_kirano	Ní úsáidtear é ar chuntar kirana.
 later_country_pack	Níos déanaí: Socruithe → cuir i bhfeidhm do phacáiste tíre le haghaidh cánach agus lipéid íocaíochta.
 local_badge	ÁITIÚIL
 mix_type_hint_kirano	Roinn idir airgead tirim / UPI / cárta / creidmheas má bheidh gá. Tá creidmheas ag teastáil ó chustaiméir os cionn.
@@ -899,8 +751,6 @@ staff_copy_need_source	Roghnaigh ar socrú le cóipeáil
 staff_copy_same	Is é sin an duine céanna — roghnaigh duine eile
 staff_rename_need_selected	Roghnaigh cé atá le athainmniú ar dtús
 team_pick_hint	Roghnaigh cé atá le cur in eagar - is don duine sin amháin a bhíonn scáileáin, cearta airgid agus stáisiúin le feiceáil.
-team_stations_help	Stáisiúin a fhéadfaidh siad a úsáid
-team_stations_changed	Athraíodh stáisiúin - Sábháil an socrú don duine seo
 team_features_changed	Athraíodh na scáileáin — Sábháil an socrú do dhuine seo
 team_rights_changed	Athraíodh cearta — Sábháil an socrú do dhuine seo
 they_owe_us	Tá fiach acu orainn
@@ -984,9 +834,6 @@ service_pct_ph	Seirbhís % roghnach 0/10/12
 short_code_ph	Ghearrchód (MG02)
 starting_password_ph	Pasfhocal tosaigh (roghnach)
 starting_pin_ph	Ag tosú PIN (4-12 dhigit)
-station_name_ph	Ainm an stáisiúin (roghnach)
-station_new_ph	Alt (roghnach)
-table_name_ph	Cuntar / ainm bá
 tax_rate_ph	Ainm ráta cánach nó % — Caighdeánach, Laghdaithe, 0, 5, 12, 18, 20
 to_code_ph	Chun códáil (kg)
 uncleared_no_ph	# nár glanadh thuas
@@ -999,27 +846,8 @@ book_kind_month	Leabhair na míosa seo
 book_kind_aging	Ascalaithe / fiach-aistarraingt
 book_kind_balance	Clár comhardaithe
 order_help	Bain úsáid as mír chun í a chur leis.
-floor_help	Díolann an siopa seo ag an gcuntar. Níl táblaí agus urlár itheacháin mar chuid de Kirano.
-kitchen_help	Ní úsáidtear é ar shiopa cuntair.
-kitchen_empty	Gan ticéid oscailte (is gnách go bhfágann siopaí cuntair an scáileán seo gan úsáid).
-add_a_table	Cuir tábla leis
-add_station_heading	Cuir rannóg siopa leis
 categories_help	Baineann Seiceáil úsáid as chun an mír thuas a chomhdú faoin gcatagóir sin. Tugann Grianghraf pictiúr don chatagóir; mura bhfuil pictiúr ann taispeánann sé a túslitrithe.
 dish_search_ph	Cuardaigh míreanna nó cód gearr…
-tile_free	Saor
-tile_occupied	Líontha
-tile_food_ready	Bia réidh
-tile_bill_printed	Bille priontáilte
-tile_paid	Íoctha
-tile_bill_btn	Bille
-tile_occupy_btn	Suigh daoine óstacha
-tile_free_btn	Bord saor
-tile_ready_btn	Bord saor
-tile_undo_bill	Ceartú bille
-summary_busy	tá boird gnóthach
-summary_to_collect	bailliú
-summary_on_floor	ar an urlár
-floor	Siopa
 sizes_as_items_ph	Méideanna mar earraí ar leith (roghnach) — Leath=120, Iomlán=200
 dish_group_ph	Grúpa méid pacáiste (roghnach) — m.sh. Atta 1kg / 5kg
 discount	Lascaine
@@ -1027,7 +855,6 @@ remove_discount	Bain an lascaine
 apply_discount	Cuir lascaine i bhfeidhm
 save_opening_cash	Sábháil airgead tosaigh
 close_shift_print	Dún aistriú agus priontáil sleamhnán
-area_prices_ph	Praghsanna ceantair (roghnach) — AC=220, Lasta=210
 discount_ph	10% nó 50
 discount_reason_ph	Cúis (m.sh. aoi rialta, bia déanach)
 opening_float_ph	Airgead tirim curtha sa tarraiceán inniu ar maidin
@@ -1037,34 +864,18 @@ shift_handover	Aistriú laistigh den athrú
 shift_since	An tslí seo ó shin
 expected_in_drawer	Sábháilte sa tarraiceán
 right_discount	Tabhair lascaine
-floor_in_kitchen	Ar siúl
-floor_eating	Freastailte
 pick_category	Roghnaigh catagóir
 close_category_list	Dún liosta na gcatagóirí
 new_category_row	Catagóir nua — cruthaithe nuair a shábhálann tú an mír
 your_category	Do chatagóir
 suggested_category	Molta - ónár míreanna
 category_search_ph	Catagóir — cuardaigh d’chatagóir féin nó clóscríobh ceann nua
-line_sent_state	Seolta
-line_nc_state	Saor in aisce (NC) — ní ghearrtar táille
 cancel_item_short	Cealaigh
-nc_short	NC
-charge_again_short	Muirear
-move_short	Bogadh
 cancel_item_title	Cealaigh an mhír seo - faigheann an chúloifig duillín cealaithe
-nc_item_title	Déan an mír seo saor in aisce (NC)
-charge_again_title	Muirearáil an mír seo arís
-move_item_title	Bog an mír seo chuig tábla eile
-already_cooked	Réamhchócaráilte (dramhaíl)
-not_cooked_yet	Níor cócaráilte fós
 return_to_customer	Fill ar ais chuig custaiméir
 short_by	Gearr ar
 tip_not_sale	Leide (na foirne, ní díolachán)
 right_settle	Glac íocaíocht
-right_cancel_sent	Cealaigh mír a sheoladh
-right_complimentary	Ar fáil saor in aisce (NC)
-right_move_table	Bog / chumasc cuntair
-right_reprint	Clóigh an bhille arís
 right_allowed	Ceadaithe
 right_with_approval	Le cead
 right_denied	Ní cheadaítear
@@ -1074,25 +885,11 @@ no_server_found	Níor aimsíodh aon rud. Ar an "Server": Socruithe → Fearais e
 servers_found_pick	Buaigh ar an siopa ar mhaith leat a nascadh.
 server_host_selected	Ag úsáid {host} — cuir isteach an cód péireála, ansin Péireáil anois.
 print_bill	Clóigh an bille
-table_actions	Gníomhartha cuntair
-move_merge_table	Bog / comhcheangail tábla
-move_help	Bog ordú an chuntair seo chuig tábla saor, nó cumasc isteach i gceann reatha é.
-move_target_ph	Ainm an chuntair
 approval_pin_ph	Bainisteoir PIN (má iarrtar amháin)
-move_here	Bog anseo
-merge_into	Comhtháthaigh isteach ann
-line_reason_ph	Cúis (m.sh. d’athraigh an custaiméir aigne, as stoc)
-line_qty_ph	Cé mhéad le cealú (folamh = uile)
-line_target_ph	Bog chuig an tábla (m.sh. D5)
 confirm	Deimhnigh
 menu_search_ph	Cuardaigh mír nó cód gearr
 customer_paid_ph	Íoc an custaiméir
 tip_ph	Leid
-table_area_ph	Réimse (m.sh. Ithe sa láthair, Pacáiste, AC)
-table_range_ph	A lán ag an am céanna: D1-D20
-add_these_tables	Cuir na cuntair seo leis
-remove_these_tables	Bain na cuntair seo
-table_remove_ph	Bain: T1-T24, nó ainm bhord amháin
 find_server	Faigh freastalaí an tsiopa
 bill_format	Formáid bhille
 bill_format_help	Arna phriontáil faoi ainm do shiopa ar gach bille. Línte ar leith le | (e.g. Bóthar MG, Rajkot | Ph 98250 00000).
@@ -1100,78 +897,32 @@ bill_header_ph	Seoladh | fón
 fssai_ph	FSSAI / ceadúnas siopa uimh. (roghnach)
 bill_footer_ph	Bunleathanach (m.sh. Go raibh maith agat, tabhair cuairt arís)
 save_bill_format	Sábháil formáid bhille
-kot_format	Formáid duillín
-kot_format_help	Tapáil réimse sa liosta. Baineann taispeáin, clómhéid agus meáchan leis an réimse sin ar an gcineál duillín a roghnaíodh thuas. Coinníonn gach cineál a mhéideanna agus a meáchain féin.
-kot_format_fields	Páirceanna
-kot_field_next	Ainmnín eile
-kot_field_show	Taispeáin
-kot_field_hide	Folaigh
 kot_field_on	taispeáin
 kot_field_off	folú
-kot_field_size	Méid cló
-kot_field_size_ph	m.sh. 16, 20, 24, 28, 32...
 kot_weight_light	Solas
 bill_kot_panel_help	Leagan amach an bhille agus leithead an ábhair. Is é airgeadóir a d'eisigh nó a shocraigh an bille - fanann an scéal iomlán díola sna leabhair.
 std_size_ph	m.sh. 18, 20, 26…
-kot_show_shop	Ainm an siopa
-kot_hide_shop	Siopa folamh
-kot_show_time	Am
-kot_hide_time	Am folaithe
-kot_show_waiter	Airgeadóir
-kot_hide_waiter	Folaigh airgeadóir
-kot_show_station	Stáisiún
-kot_hide_station	Folach an stáisiúin
-kot_show_table	Gcuntar
-kot_hide_table	Folmhaigh an tábla
-kot_show_kot_no	Ticéad Uimh
-kot_hide_kot_no	Folaigh ticéad Uimh
-kot_width	Clúdach réamhamhairc (socraigh leithead an ábhair ar an gcluaisín duillín)
-kot_width_58	58 mm
-kot_width_80	80 mm
-kot_kind_heading	Cineál ticéad
-kot_kind_original	Bunaidh
-kot_kind_duplicate	Cóip
-kot_kind_modified	Leathnaithe
-kot_kind_cancelled	Cealaithe
-kot_style_heading	Cineál réimse, méid & meáchan
-kot_style_title	Teideal
-kot_style_item_qty	Mír · Cainníocht
-kot_style_field_pick	Roghnaigh réimse
 kot_weight_regular	Rialta
 kot_weight_bold	Láidir
-kot_align	Dílíneáil
 kot_align_start	Tús
 kot_align_center	Lár
 kot_align_end	Deireadh
 content_width	Leithead ábhair (mm)
 content_width_bill	Leithead ábhair an bhille (mm)
-content_width_kot	Leithead ábhar an ticéid (mm)
 content_width_ph	Nó clóscríobh leithead an ábhair, 40–210 mm
 content_width_help	Cé chomh leathan is a phriontaí duillín seo. Coinníonn Bill a leithead féin.
 content_width_bill_help	Cé chomh leathan is atá an bille custaiméara a phriontáil. Réamhshocrú 210 mm (leathanach). Duillín caol 58 mm, duillín 80 mm ar leithead, 112 mm 4-orlach, 210 mm ar leithead A4. Clóscríobh aon luach ó 40 go 210. Tá a leithead féin ag ticéid ar an gcluaisín duillín.
-content_width_kot_help	Cé chomh leathan is atá an ticéad a phriontáil. Réamhshocrú 80 mm. Duillín caol 58 mm, duillín 80 mm ar leithead, 112 mm 4-orlach, leathanach 210 mm. Clóscríobh aon luach ó 40 go 210. Tá a leithead féin ag billí custaiméirí ar chluaisín an Bhille.
 vp_paper_width	Leithead ábhair (mm)
 vp_paper_width_ph	Nó clóscríobh leithead an ábhair, 40–210 mm
 vp_paper_width_help	Socraítear leithead an ábhair faoi fhormáid Bhille & Duillín - ar leithligh don bhille (réamhshocraithe 210 mm) agus don ticéad (80 mm réamhshocraithe).
-kot_size	Méid cló
-kot_size_s	Beag
-kot_size_m	Gnáth
-kot_size_l	Mór
 std_size	Méid cló
 kot_copies	Cóip
 kot_copies_1	1
 kot_copies_2	2
 kot_copies_3	3
-kot_title_ph	Teideal (bán = Ticéad)
-kot_footer_ph	Nóta cúloifige (roghnach)
-kot_preview	Réamhamharc
-save_kot_format	Sábháil formáid Duillín
-test_kot_format	Priontáil tástála
-test_kot_sent	Seoladh réamhamharc ar thicéad
 test_bill_format	Bille tástála
 test_bill_sent	Réamhamharc an bhille seolta
 test_print_no_printer	Níl printer ar fáil don jab sin — roghnaigh ceann ar an scáileán seo
-kot_format_saved	Formáid duillín sábháilte
 std_print	Méid cló bhille
 std_print_help	Clómhéid do jabanna bille Caighdeánach Portráidíochta agus Tírdhreacha ar OS / printéirí doiciméad (cuir isteach pointí — ní Beag/Gnáth/Mór). Méid chéanna ar an dá threoshuíomh.
 std_size_s	Beag
@@ -1211,23 +962,16 @@ upi_qr	UPI QR
 show_upi_qr	Taispeáin UPI QR
 close_upi_qr	Dún
 upi_qr_help	Déanann an custaiméir scanadh agus íocann sé. Beartaíonn Glac íocaíocht tar éis dóibh íoc. An dara scáileán: oscailte URL Freastalaí / taispeáint ar LAN.
-kot_recall	Cuimhnigh
 recently_done	Déanta le déanaí
-recall_kot_ph	Ticéad # le meabhrú
 role_help_customer	Ról: Custaiméir — khata (tá siad éigeantach dúinn). Is féidir leis an bpáirtí céanna stoc a sholáthar freisin.
 role_help_both	Róil: Custaiméir + Soláthraí — páirt amháin, leabhair khata agus íoctha, glan i dTuairiscí.
 role_help_supplier	Ról: Soláthraí — tá fiacha againn dóibh as ceannacháin.
-dine_in_pick_table	Ní úsáidtear é ar shiopa cuntair
-choose_table	Roghnaigh gcuntar
-change_table	Tábla athraithe
-pick_table_banner	Roghnaigh bord don ordú seo
 items_word	míreanna
 items_section	Míreanna
 back_to_order	Ar ais chuig ord
 new_items_head	Níor seoladh fós
 price_ph	Praghas
 price_ph_gst_inside	Praghas ({tax} san áireamh)
-cancel_needs_table	Fanann díolachán cuntair ar an ticéad go dtí go nglacann tú íocaíocht
 tax_rates_missing_hint	Gan ráta {tax} ar na míreanna seo — ar Mhíreanna socraithe Ráta Cánach (áiríonn praghsanna {tax} cheana féin faoi {tax} san áireamh)
 taxable_value	Luach inchomhdaithe
 gst_inside_price_note	({tax} san áireamh)
@@ -1248,30 +992,11 @@ client_template_confirm	Cuir míreanna {d} ó {title} leis? Fanann na míreanna 
 client_template_importing	Ag iompórtáil {title}…
 client_template_done	Tá gach earra ó {title} ar do chuid míreanna.
 client_template_imported	Cuireadh míreanna {d} agus catagóirí {c} ó {title} leis
-resv_heading	Áirithintí
-resv_name_ph	Ainm an chustaiméara
-resv_phone_ph	Fón (roghnach)
-resv_guests_ph	Daoine
-resv_when_ph	Nuair — 20:30, amárach 13:00
-resv_table_ph	Cuntar (roghnach)
-resv_add	Leabhar
-resv_seat	Ina shuí
-resv_none	Níl aon áirithintí ag teacht suas.
-guests_word	aíonna
-delivery_by_ph	Seachadadh ag (ainm an marcaigh nó an fhoirne)
-kitchen_all_day	Chun cócaireacht anois: {items}
-split_bill	Roinn an bille
-split_go	Déan bille ar leith
 cancel	Cealaigh
 opening_client	Ag oscailt an chliaint…
 preparing_desk	Ag ullmhú deasc…
 opening_server	Ag oscailt freastalaí…
 creating_server	Ag cruthú freastalaí…
-split_help	Tapáil na míreanna a n-íocann custaiméir amháin astu · {n} roghnaithe
-split_send_first	Seol duillín ar dtús — ní féidir ach le míreanna cúloifige dul chuig bille ar leith
-split_pick_some	Tapáil na míreanna don bhille ar leith ar dtús
-split_done	Bille ar leith déanta — tá sé ar an urlár in aice leis an gcuntar seo
-split_marked	bille ar leith
 order_empty_pick	Ordú folamh - tapáil Cuir na míreanna thuas leis chun míreanna a phiocadh.
 add_dishes	Cuir míreanna leis
 order_so_far	Ar an ordú seo: {n} · {total}
@@ -1282,24 +1007,8 @@ pick_done_dd	Déanta · {label}
 printer_route_mode	Má tá roinnt printéirí ar an áit seo
 printer_mode_first	Ar dtús sin a oibríonn
 printer_mode_all	Clóigh ar gach rud
-kot_show_area	Réimse
-kot_hide_area	Folaigh limistéar
-kot_show_item_hdr	Mír · Cainníocht
-kot_hide_item_hdr	Folmhaigh colúin
-kot_show_title	Líne teidil
-kot_hide_title	Folach an teideal
-kot_field_order	Ordú priontála
 kot_field_up	Bog suas
 kot_field_down	Bog síos
-kot_field_cycle	Roghnaigh an chéad cheann eile
-kot_field_select	Roghnaigh an chéad cheann eile
-kot_field_time	Am
-kot_field_kot_no	Ticéad Uimh
-kot_field_area	Réimse
-kot_field_table	Gcuntar
-kot_field_shop	Ainm an siopa
-kot_field_waiter	Foireann
-kot_field_station	Stáisiún
 app_template_blurb_extra	Chomh maith leis sin: Úinéir Zahir, Admin Asif, Cashier Nawaz; barra taoibh tosaigh; stair tar éis 4 uair an chloig; Sa lá atá inniu strip off; bille dhlúth.
 dishes_n	Míreanna {n}
 recipe_ph	Oideas (roghnach - gan úsáid ar shiopa cuntair)
@@ -1309,8 +1018,6 @@ low_stock_alert	Ag rith íseal — ceannaigh go luath: {items}
 unpriced_note	Níl aon phraghas ag míreanna {n} ar do chuid earraí fós - billeálann siad ag 0 go dtí go socróidh tú ceann.
 show_unpriced	Taispeáin ach míreanna gan phraghas
 show_all_dishes	Taispeáin gach mír
-role_waiter	Airgeadóir
-role_kitchen	Stóráil
 role_title_rest_ph	Teideal ról (m.sh. Ceannaire, Príomhchócaire)
 preset_help_rest	Cóiré: díol. Bainisteoir: díol + míreanna + neamhní/cor.
 kind_raw	Ceannaithe le haghaidh úsáide siopa

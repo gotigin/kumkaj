@@ -68,28 +68,6 @@ applied	Applikat
 note_ph	Nota (mhux obbligatorja)
 rounded	ARROTONDAT
 split	Aqsam
-send_kot	Ibgħat slip
-send_kot_to	Ibgħat → {kitchens}
-send_kot_again	Żid oġġetti għaż-żelqa li jmiss
-send_kot_held	Oġġetti miżmuma — unhold biex tibgħat
-reprint_kot	Erġa' ipprintja l-magħżula
-reprint_kot_ok	Oġġetti {n} stampati mill-ġdid · {slips} slip(s) → {kitchens}
-reprint_kot_needed	Ibgħat slip l-ewwel — imbagħad inkludi oġġetti u erġa' tipprintja dawk magħżula
-reprint_kot_none_selected	Kull oġġett mibgħut jinqabeż — tektek Stampa fuq dawk li trid terġa' tipprintja
-reprint_kot_client	Erġa' stampa ({n}) għal {place} mibgħut — l-apparat tal-ħanut jistampah
-print_cancelled_kot	Ipprintja l-ikkanċellati kollha
-print_cancelled_kot_ok	Oġġetti stampati {n} kkanċellati · {slips} slip(s) → {kitchens}
-print_cancelled_kot_needed	Iftaħ tabella b'oġġetti kkanċellati l-ewwel
-print_cancelled_kot_none	L-ebda oġġett ikkanċellat fuq din l-ordni
-print_cancelled_kot_client	Stampa kkanċellata ({n}) għal {place} mibgħuta — l-apparat tal-ħanut jistampah
-kot_banner	Bandiera tat-tip
-kot_banner_ph	Bandiera (vojta = xejn)
-kot_item_prefix	Prefiss tal-oġġett
-kot_item_prefix_ph	eż. [IKKANĊELLAT]
-kot_strike	Strike l-isem tal-oġġett
-kot_strike_note	Istrajk nota tal-oġġett
-kot_strike_on	Mixgħul
-kot_strike_off	Mitfi
 bill_item_layout	Tqassim tal-oġġetti
 bill_item_layout_columns	Kolonni
 bill_item_layout_stacked	Munzell
@@ -118,8 +96,6 @@ bill_item_gap_em	Spazju (em)
 bill_item_qty_min	Kwantità min (em)
 bill_item_price_min	Prezz min (em)
 bill_item_amount_min	Ammont min (em)
-kot_item_qty_width	Kolonna tal-kwantità
-kot_item_num_align	Allinjament tal-kwantità
 bill_total_qty_label	Tikketta tal-kwantità totali
 bill_total_subtotal_label	Tikketta tas-subtotal
 bill_total_grand_label	Tikketta tat-total
@@ -131,36 +107,9 @@ bill_item_piece_off	Mitfi
 bill_total_qty	Kwantità totali
 bill_total_subtotal	Subtotal
 bill_total_grand	Total sħiħ
-reprint_incl	Fil-istampar
-reprint_skip	Aqbeż
-reprint_skip_meta	Aqbeż l-istampar mill-ġdid
-kot_dest_hint	Jistampa fuq l-istampaturi li assenjajt lil {kitchens} f'Għażliet → Stampaturi
-kot_sent_hint	L-aħħar ibgħat marret lil {kitchens}. Tektek biex iżżid oġġetti għall-kont li jmiss — jew Istampa slip mill-ġdid għall-istess waħda.
-kot_sent_printing	Slip mibgħut lil {kitchens} — stampar
-kot_sent_not_printed	Slip mibgħut lil {kitchens} iżda MHUX stampat: {why}. Għid lill-ħanut, imbagħad waħħal l-istampatur u erġa' ipprintjah.
-kot_sent_screen	Slip mibgħut lil {kitchens}
-kot_queued_shop	Slip għal {place} → {kitchens} salvati; l-apparat tal-ħanut jistampah
-kot_job_label	Slip għal {place} → {kitchens}
-kot_job_reached	Slip għal {place} laħaq {kitchens}
 kot_unassigned	Mhux assenjat
-kot_unassigned_held	Oġġetti {n} miżmuma mingħajr stazzjon — żomm fuq il-linja biex tibgħat
-kot_station_ph	Stazzjon
-kot_station_dd	Stazzjon
-kot_station_dd_n	Stazzjon · {stations}
-kot_set_station	Uża dan l-istazzjon
-kot_station_applied	Stazzjon issettjat fuq oġġetti {n}: {station}
-kot_station_cleared	Stazzjon ikklerjat minn oġġetti {n}: {station}
-kot_station_needed	Agħżel sezzjoni tal-ħanut l-ewwel
-kot_station_not_allowed	Mhux permess li tuża s-sezzjoni: {station}
-kot_station_none	Għadu l-ebda stazzjonijiet — mhux użati f'ħanut tal-bank (Settings → Żoni jekk meħtieġ)
 pos_tab_items	Oġġetti miżjuda
 pos_tab_payment	Ħlas
-hold_send	Żomm
-hold_send_on	Miżmum
-hold_send_meta	Miżmum - mhux fuq din iż-żelqa
-station_remove	Neħħi l-istazzjon
-station_remove_ph	Agħfas stazzjon fil-lista biex tneħħih
-station_removed	Stazzjon imneħħi: {name}
 settings_hub_title	Għażliet
 settings_hub_help	Iftaħ qasam wieħed kull darba — inqas scrolling, għażliet aktar ċari.
 settings_back	Lura
@@ -169,12 +118,10 @@ settings_sec_country	Pajjiż u taxxa
 settings_sec_tills	Apparati oħra
 settings_sec_brand	Il-marka tiegħek
 settings_sec_units	Unitajiet u konverżjonijiet
-settings_sec_pickers	Żoni · stazzjonijiet · rati tat-taxxa
+settings_sec_pickers	Rati tat-taxxa
 settings_sec_printers	Stampaturi
 settings_sec_bill	Format ta' Bill & Slip
 settings_sec_selling	Skemi u bejgħ
-bill_kot_tab_bill	Kont
-bill_kot_tab_kot	Slip
 settings_sec_alerts	Twissijiet
 alerts_help	Kemm jibqgħu l-messaġġi tal-istatus fuq l-iskrin għalik (din id-dħul).
 snack_secs_ph	Sekondi (3–60, standard 10)
@@ -225,8 +172,6 @@ counter	Kontatur
 dine_in	Kontatur
 takeaway	Ħu ma' Ħdejk
 order	Ordni
-tables	Counters
-kitchen	Taqsimiet
 sales	Bejgħ
 sales_refunds	Bejgħ u rifużjonijiet
 day_close	Għeluq tal-ġurnata
@@ -254,10 +199,6 @@ zero_sales_on	Ħalli ₹0
 zero_sales_off	Jeħtieġu prezz
 zero_sales_saved_on	Bejgħ b'valur żero permess
 zero_sales_saved_off	Il-bejgħ għandu jkollu prezz ogħla minn ₹0
-floor_areas_help	Iż-żoni huma kmamar jew żoni fl-art (Dine In, Parcel, AC …). Add an area first, then put counters in it — each area is a separate group on the floor.
-area_new_ph	Żona/kamra ġdida (eż. AC, Ġnien)
-add_area	Żid żona
-area_added	Żona “{name}” lesta — żid counters fiha
 no_favorites	Għadu l-ebda favoriti — żid oġġetti mil-lista hawn taħt.
 add_to_bill	Żid mal-kont
 added	Miżjud
@@ -268,19 +209,9 @@ chip_missing_customer	Klijent magħżul nieqes — agħżel mill-ġdid
 chip_no_customer	Għadu l-ebda klijent — ikteb isem, imbagħad tektek Kreditu
 credit_summary_fmt	{} klijenti · kreditu miftuħ {} · avvanzi miżmuma {}
 recent_label	Riċenti:
-kot_new_waiting	ĠODDA — stennija
-kot_preparing	PREPARAZZJONI
-kot_ready_serve	LESTI — serviha
-kot_done_cap	MAGĦMUL
-kot_cancelled	IKKANĊELLATA
-kot_start_btn	Ibda
-kot_mark_ready	Immarka lest
-kot_done_btn	Magħmul
-table_free	Ħieles — tektek biex tibda ordni
 start_order	Ibda l-ordni
 open_bill	Kont miftuħa
 collect_payment	Iġbor il-ħlas
-table_running	Jiġri
 payment_pending	Ħlas pendenti
 collect_at_counter	iġbor fil-bank
 inventory	Inventarju
@@ -313,7 +244,6 @@ ok	OK
 this_shop	Server
 extra_till	Klijent
 off	Mitfi
-tables_kitchen	It-tqassim tal-ħanut
 server	Server
 client	Klijent
 language_currency	Lingwa u munita
@@ -355,8 +285,6 @@ add_item_plain	Żid oġġett
 add_note	Żid nota
 add_opening_balance	Żid il-bilanċ tal-ftuħ
 add_staff	Żid persunal
-add_station	Żid stazzjon
-add_table	Żid il-mejda
 add_unit	Żid l-unità
 add_use_name	Żid / uża dan l-isem
 allow_extra_tills	Ħalli tills żejda
@@ -409,7 +337,6 @@ share_whatsapp	Aqsam WhatsApp
 lan_pages_heading	Paġni tal-klijenti fuq Wi‑Fi
 lan_pages_help	Fuq il-Wi-Fi ta’ dan il-ħanut, il-paġni tal-klijenti jaħdmu għall-bord tal-wiri u l-feedback. Nies fuq data mobbli jeħtieġu Cloud aktar tard. Terminal tal-kard jew link tal-ħlas huwa fakultattiv u qatt ma jimblokka l-bank.
 diag_send_heading	Aqsam minn dan l-apparat
-kot_dest_heading	Stazzjon
 optional_login_heading	Login fakultattiv
 rights_heading	Drittijiet
 ops_panel	Operazzjonijiet lokali
@@ -436,28 +363,6 @@ till_voucher_amt_ph	Ammont tal-vawċer (vojt = kollu)
 till_wallet_topup_ph	Ammont tal-kartiera top-up
 till_voucher_issue_amt_ph	Ħruġ l-ammont ta' vawċer
 till_voucher_issue_code_ph	Kodiċi tal-vawċer ġdid
-split_evenly	Aqsam indaqs
-waitlist	Lista ta' stennija
-fire_course	Il-pass li jmiss
-hold_item	Żomm
-waiter_call	Ċempel lill-kaxxier
-waitlist_add	Żid mal-lista ta' stennija
-floor_view_grid	Grilja
-floor_view_layout	Tqassim
-floor_layout_x	X
-floor_layout_y	Y
-floor_layout_w	W
-floor_layout_h	H
-floor_layout_save	Salva it-tqassim
-floor_layout_open	Mejda miftuħa
-floor_layout_edit	Editja t-tqassim
-floor_layout_pick	Tektek mejda biex teditja t-tqassim tagħha
-floor_layout_saved	Layout salvat
-floor_layout_nudge_left	← 20
-floor_layout_nudge_right	→ 20
-floor_layout_nudge_up	↑ 20
-floor_layout_nudge_down	↓ 20
-sibling_pickers_help	Tektek On/Off bħal unitajiet — aħbi żoni, stazzjonijiet, u rati tat-taxxa minn dawk li jtellgħu minn jum għal jum; inadempjenzi tal-pakkett jibqgħu.
 bulk_price_apply	Applika prezz bl-ingrossa
 card_terminal_optional	Terminal tal-kard/link tal-ħlas (mhux obbligatorju meta l-internet ikun disponibbli)
 copy_report	Ikkopja rapport
@@ -483,7 +388,6 @@ import_day	Jum l-importazzjoni
 import_items_csv_plain	Importa oġġetti CSV...
 import_parties_csv	Importa partijiet CSV...
 item_name	Isem tal-oġġett
-kitchen_printing	Stampaturi
 login_id_ph	Isem tal-utent
 mark_cleared	Mark ikklerja
 new_party_clear	Partit ġdid (forma ċara)
@@ -553,15 +457,6 @@ show	Uri
 spreadsheet_csv	Folja tad-Dejta (CSV)
 start_fresh	Ibda frisk
 stop_extra_tills	Waqqaf tills żejda
-floor_cols_ph	Kolonni
-floor_cols_fit	Skrin tajbin
-floor_cols_fit_sub	{n} tajbin hawn
-floor_cols_fits	jaqbel
-floor_cols_scroll	scrolls ġenb
-floor_cols_min	Kolonni: mill-inqas 1 — jew ħalliha vojta biex taqbel mal-iskrin
-floor_zoom_auto	Karozza
-floor_zoom_out	Irrakkma
-floor_zoom_in	Żomm viċin
 backup_auto	Backup awtomatikament kuljum · l-aħħar {when} · l-aħħar 14-il jum jinżammu fi {dir}.
 backup_auto_none	Backup awtomatikament kuljum - l-ewwel waħda taħdem f'mument.
 backup_copy_to	Kopji jmorru wkoll għal {dir}.
@@ -579,7 +474,6 @@ new_pair_code	Kodiċi ta 'tqabbil ġdid
 pair_finishing	Jirfinaw par... japplikaw il-kotba tal-ħanut
 pair_opening	Niftaħ it-till...
 pair_copied	Kodiċi ta' tqabbil kkupjat
-kot_waiting	Stennija biex tibgħat
 lan_offline_waiting	Server tal-ħanut ma jistax jintlaħaq · {n} qed jistenna
 lan_connecting	Konnessjoni mal-ħanut...
 lan_live	Ħaj
@@ -621,7 +515,6 @@ printers_routes_help	Sib printers li s-sistema operattiva diġà taf. Assenjahom
 printer_assign_dd	Stampatur reali: {place}
 printer_assign_pick	Agħżel stampatur reali
 printer_profile_heading	Tqassim
-printer_send_heading	Kunsinna
 vp_delivery_heading	Kunsinna
 vp_delivery_help	Kif dan l-istampatur virtwali jibgħat l-impjiegi — dokument OS, bytes mhux ipproċessati, jew ESC/POS. Il-kontenut ta 'slip (daqs tat-tip, wrap, marġini) huwa deċiż mill-format tal-kont / Slip, mhux hawn.
 vp_type_size_heading	Daqs tat-tip
@@ -665,23 +558,13 @@ virtual_draft_send	Valur stabbilit għall-istampatur virtwali li jmiss
 virtual_need_real	Agħżel stampatur reali l-ewwel
 virtual_need_select	Agħżel stampatur virtwali biex tħassar
 real_printer_selected	Magħżula: {name}
-station_group_heading	Stampaturi virtwali
-station_group_apply	Ħassar stampatur virtwali
-station_group_applied	Imħassar
-station_group_empty	Agħżel stampatur virtwali
-station_group_name_ph	Isem tal-istampatur virtwali (mhux obbligatorju)
-station_group_save	Oħloq stampatur virtwali
-station_group_saved	Stampatur virtwali salvat
-station_manage_heading	Żid jew neħħi sezzjoni tal-ħanut
 printers_routes_heading	Fejn l-affarijiet jistampaw
 route_pick_heading	Post
 route_editing	Editjar: {name}
 route_assigned	Miżjud {printer} ma' {place}
 route_already_assigned	Diġà f'dan il-post: {printer}
-route_removed	Imneħħi {printer} minn {place}
 route_cleared	Imneħħija {name}
 route_assigned_empty	Xejn fuq dan il-post
-route_tap_remove	taptap biex tneħħi
 route_tap_select	taptap biex tagħżel
 route_tap_selected	magħżula
 route_pick_printer_first	Tektek stampatur l-ewwel
@@ -702,35 +585,17 @@ printer_format_custom	Profil personalizzat ġdid
 printer_format_custom_label	Adattat
 printer_format_custom_added	Profil personalizzat miżjud għal dan il-post
 add_printer	Żid stampatur
-remove_printer	Neħħi
 route_pick_ph	Bill jew sezzjoni tal-ħanut
 route_bill	Kont
-route_default_kitchen	L-ebda stazzjon (oġġetti mhux assenjati)
-route_kot_station	Stazzjon
 route_dont_print	L-ebda stampatur
-stations_heading	Stazzjonijiet
-stations_help	Is-sezzjonijiet tal-ħanut jiġbru l-oġġetti u l-printers għal dik il-parti tal-ħanut. Waħħal printers minn Settings → Printers, issettja l-ordni tal-prova, imbagħad L-ewwel li jaħdem jew Stampa fuq kollox. Bidliet ħlief kif tmur.
-station_print_heading	Stampaturi għal dan l-istazzjon
-station_print_help	Agħżel stazzjon, imbagħad waħħal printer wieħed jew aktar. ↑↓ settijiet ipprova ordni. L-ewwel li jaħdem jieqaf wara l-ewwel suċċess; Stampa fuq kull tibgħat lil kull printer mehmuż.
-station_print_pick_ph	Stazzjon biex tissettja l-stampaturi
 station_print_pick_first	Agħżel sezzjoni tal-ħanut l-ewwel
-station_print_editing	Editjar tal-stampaturi għal “{name}”
-station_vps_dd	Stampaturi għal dan l-istazzjon
-station_vps_dd_n	{n} stampatur(i) · taptap biex tbiddel
 station_vps_empty	Għadu l-ebda stampaturi — Sibhom taħt Għażliet → Stampaturi
 bill_printers_dd	Stampaturi għall-kont
 bill_printers_dd_n	{n} stampatur(i) għall-kont · taptap biex tbiddel
-job_layout	Tqassim
-job_delivery	Kif jintbagħat ix-xogħol
-job_delivery_help	Dokument tal-OS, bytes mhux ipproċessati, jew ESC/POS. Il-kont u l-biljett kull wieħed iżomm tagħhom. Kwalunkwe xogħol jista' jmur għand kwalunkwe printer Sib li jkun salvat.
 station_vp_attached	Stampatur imwaħħal
 station_vp_detached	Stampatur imneħħi mill-istazzjon
-station_print_summary	{mode} · {n} stampatur(i)
-station_print_summary_none	Għadu l-ebda stampaturi fuq dan l-istazzjon — mhux se jistampa
-stations_none	Għadu l-ebda stazzjonijiet — żid wieħed hawn taħt. L-istazzjonijiet mhumiex użati f'ħanut tal-bank — ħalli vojta.
 route_up	Il fuq
 route_down	Isfel
-route_remove	Neħħi
 route_clear	Naddaf
 save_printers	Salva stampaturi
 print_test_page	Stampa paġna tat-test
@@ -739,23 +604,15 @@ test_page_no_printer	L-ebda stampatur għal {place} — waħħal stampatur mieg�
 test_page_pick_first	Agħżel stampatur(i) għal paġna tat-test l-ewwel — imbagħad Stampa paġna tat-test
 test_printers_dd	Stampaturi għal paġna tat-test
 test_printers_dd_n	{n} stampatur(i) għal paġna tat-test · taptap biex tibdel
-kot_test_printers_dd	Printers għall-istampar tat-Test
-kot_test_printers_dd_n	Printer(i) {n} għall-istampar tat-Test · taptap biex tbiddel
 test_printer_picked	Test fuq: {name}
 test_printer_cleared	Mhux qed jittestja fuq: {name}
 test_page_sent_n	Paġna tat-test mibgħuta lil {n} stampatur(i)
-test_kot_pick_first	Agħżel printer(i) għall-istampar tat-test l-ewwel — imbagħad stampar tat-test
-test_kot_sent_n	Stampar tat-test mibgħut lil printer(i) {n}
-cancel_pick	Mark
-cancel_pick_on	Immarkat
-cancel_pick_meta	Immarkat għall-kanċellazzjoni
 batch_cancel	Ikkanċella mmarkata
 batch_cancel_n	Ikkanċella mmarkata ({n})
 batch_cancel_none	Immarka oġġett wieħed jew aktar mibgħuta l-ewwel — imbagħad Ikkanċella mmarkata
 batch_cancel_title	Ikkanċella oġġetti mmarkati - raġuni waħda, tikkanċella slip waħda għal kull sezzjoni
 batch_cancel_ok	Oġġetti {n} ikkanċellati · {slips} tikkanċella slip(s) → {kitchens}
 batch_cancel_ok_noprint	Oġġetti {n} ikkanċellati — l-istampar awtomatiku huwa mitfi, għalhekk l-ebda slip tal-kanċellament
-no_printer_kitchen_station	L-ebda printer għal dak l-istazzjon
 printers_saved	Salvat
 test_page_sent	Paġna tat-test mibgħuta — iċċekkja l-istampatur
 test_page_sent_one	Paġna tat-test mibgħuta lil {name} — iċċekkja dak l-istampatur
@@ -771,10 +628,7 @@ cancelled	Ikkanċellat
 printers_tap_find	Tektek Sib biex telenka l-stampaturi li dan it-tagħmir jista' juża.
 printers_none_found	Xejn misjub — ittajpja isem tal-stampatur tas-sistema jew IP (eż. 192.168.1.50).
 printer_from_find	Miżjud {name}
-kot_printer_ph	Printer għal slips
 bill_printer_ph	Stampatur għall-kontijiet
-kot_print_on	Biljetti stampati awtomatikament: Mixgħul
-kot_print_off	Biljetti stampati awtomatikament: Mitfi
 queue_refused	Mhux aċċettat mill-ħanut ({n}) — iċċekkja kull wieħed fil-bank:
 clear_not_accepted	Iċċekkjat — ċar din il-lista
 device_name_ph	Isem dan l-apparat
@@ -785,7 +639,6 @@ backup_failed	L-aħħar backup awtomatiku falla: {e}
 backup_overdue	Ebda backup għal {n} ijiem — żomm l-app miftuħa fuq dan l-apparat sabiex tkun tista’ tagħmel backup.
 disk_low	{mb} MB biss b'xejn fuq dan l-apparat — il-backups dalwaqt ifallu. Eħles ftit spazju.
 last_seen_devices	Dehru l-aħħar: {time}
-sync_interval	Issinkronizza kull {secs}s
 connection_to_shop	Konnessjoni mal-ħanut
 supplier_name_ph	Isem tal-fornitur (jew parti)
 supplier_ph	Fornitur
@@ -848,7 +701,6 @@ fresh_book_kirano	Frisk = katalogu vojt (żid l-oġġetti aktar tard). Ktieb = t
 fresh_selected	Frisk magħżula — il-katalgu jibqa’ vojt. Tektek Magħmul meta tkun lesta.
 gross_word	Gross
 how_start	Kif trid tibda?
-kot_print_help_kirano	Mhux użat fuq kirana counter.
 later_country_pack	Aktar tard: Għażliet → applika l-pakkett tal-pajjiż tiegħek għat-tikketti tat-taxxa u l-paga.
 local_badge	LOKALI
 mix_type_hint_kirano	Qsim fi flus kontanti / UPI / karta / kreditu jekk meħtieġ. Il-kreditu jeħtieġ klijent hawn fuq.
@@ -899,8 +751,6 @@ staff_copy_need_source	Agħżel is-setup ta' min tikkopja
 staff_copy_same	Din hija l-istess persuna - agħżel xi ħadd ieħor
 staff_rename_need_selected	Agħżel lil min se tibdel l-isem l-ewwel
 team_pick_hint	Agħżel lil min teditja — l-iskrins, id-drittijiet tal-flus, u l-istazzjonijiet jidhru għal dik il-persuna biss.
-team_stations_help	Stazzjonijiet li jistgħu jużaw
-team_stations_changed	Stazzjonijiet mibdula — Issejvja s-setup għal din il-persuna
 team_features_changed	Skrins mibdula — Issejvja s-setup għal din il-persuna
 team_rights_changed	Drittijiet mibdula — Issejvja s-setup għal din il-persuna
 they_owe_us	Huma għandhom lilna
@@ -984,9 +834,6 @@ service_pct_ph	Servizz % mhux obbligatorju 0/10/12
 short_code_ph	Kodiċi qasir (MG02)
 starting_password_ph	Password tal-bidu (mhux obbligatorju)
 starting_pin_ph	PIN tal-bidu (4–12-il ċifra)
-station_name_ph	Isem tal-istazzjon (mhux obbligatorju)
-station_new_ph	Taqsima (mhux obbligatorja)
-table_name_ph	Counter / isem tal-bajja
 tax_rate_ph	Isem tar-rata tat-taxxa jew % — Standard, Mnaqqsa, 0, 5, 12, 18, 20
 to_code_ph	Biex tikkodifika (kg)
 uncleared_no_ph	Mhux ikklerjat # hawn fuq
@@ -999,27 +846,8 @@ book_kind_month	Dan ix-xahar kotba
 book_kind_aging	Pendenti / debitu-kreditu
 book_kind_balance	Karta tal-bilanċ
 order_help	Tektek oġġett biex iżżidha.
-floor_help	Dan il-ħanut ibigħ fil-bank. L-imwejjed u l-art tal-ikel mhumiex parti minn Kirano.
-kitchen_help	Mhux użat fuq ħanut tal-bank.
-kitchen_empty	Ebda biljetti miftuħa (il-ħwienet tal-bank normalment iħallu dan l-iskrin mhux użat).
-add_a_table	Żid mejda
-add_station_heading	Żid sezzjoni tal-ħanut
 categories_help	Tektek Uża biex tiffajlja l-oġġett hawn fuq taħt dik il-kategorija. Ritratt jagħti stampa lill-kategorija; mingħajr waħda turi l-inizjali tagħha.
 dish_search_ph	Fittex oġġetti jew short code...
-tile_free	Ħieles
-tile_occupied	Okkupat
-tile_food_ready	Ikel lest
-tile_bill_printed	Kont stampat
-tile_paid	Imħallas
-tile_bill_btn	Kont
-tile_occupy_btn	Mistednin tas-sedil
-tile_free_btn	Mejda ħielsa
-tile_ready_btn	Mejda ħielsa
-tile_undo_bill	Ħoll il-kont
-summary_busy	imwejjed okkupati
-summary_to_collect	biex tiġbor
-summary_on_floor	fuq l-art
-floor	Ħanut
 sizes_as_items_ph	Daqsijiet bħala oġġetti separati (mhux obbligatorju) — Nofs=120, Sħiħ=200
 dish_group_ph	Grupp tad-daqs tal-pakkett (mhux obbligatorju) — eż. Atta 1kg / 5kg
 discount	Roħs
@@ -1027,7 +855,6 @@ remove_discount	Neħħi skont
 apply_discount	Applika skont
 save_opening_cash	Iffranka l-flus tal-ftuħ
 close_shift_print	Agħlaq ix-shift u tipprintja slip
-area_prices_ph	Prezzijiet taż-żona (mhux obbligatorju) — AC=220, Pakketti=210
 discount_ph	10% jew 50
 discount_reason_ph	Raġuni (eż. mistieden regolari, ikel tard)
 opening_float_ph	Flus kontanti mqiegħda fil-kexxun dalgħodu
@@ -1037,34 +864,18 @@ shift_handover	Trasferiment tax-shift
 shift_since	Din il-bidla peress
 expected_in_drawer	Mistennija fil-kexxun
 right_discount	Agħti skont
-floor_in_kitchen	Fil-progress
-floor_eating	Moqdija
 pick_category	Agħżel kategorija
 close_category_list	Agħlaq il-lista tal-kategoriji
 new_category_row	Kategorija ġdida — maħluqa meta tissejvja l-oġġett
 your_category	Il-kategorija tiegħek
 suggested_category	Issuġġerit — mill-oġġetti tagħna
 category_search_ph	Kategorija — fittex tiegħek jew ittajpja waħda ġdida
-line_sent_state	Mibgħuta
-line_nc_state	Kumplimentari (NC) — mhux iċċarġjat
 cancel_item_short	Ikkanċella
-nc_short	NC
-charge_again_short	Ħlas
-move_short	Nimxu
 cancel_item_title	Ikkanċella dan l-oġġett — il-back office jieħu slip tal-kanċellament
-nc_item_title	Agħmel dan l-oġġett kumplimentari (NC)
-charge_again_title	Iċċarġja dan l-oġġett mill-ġdid
-move_item_title	Mexxi dan l-oġġett għal mejda oħra
-already_cooked	Diġà imsajjar (ħela)
-not_cooked_yet	Għadu mhux imsajjar
 return_to_customer	Ritorn lill-klijent
 short_by	Qasir minn
 tip_not_sale	Tip (tal-persunal, mhux bejgħ)
 right_settle	Ħu ħlas
-right_cancel_sent	Ikkanċella oġġett mibgħut
-right_complimentary	Kumplimentari (NC)
-right_move_table	Jiċċaqlaq / jingħaqad counters
-right_reprint	Istampa l-kont mill-ġdid
 right_allowed	Permess
 right_with_approval	Bl-approvazzjoni
 right_denied	Mhux permess
@@ -1074,25 +885,11 @@ no_server_found	Xejn misjub. Fuq is-Server: Għażliet → Apparat ieħor → Ħ
 servers_found_pick	Tektek il-ħanut li trid tikkonnettja miegħu.
 server_host_selected	Bl-użu ta' {host} — daħħal il-kodiċi tat-tqabbil, imbagħad Pair issa.
 print_bill	Stampa polza
-table_actions	Kontra azzjonijiet
-move_merge_table	Ċaqlaq / amalgama mejda
-move_help	Mexxi l-ordni ta 'din il-counter għal mejda ħielsa, jew ingħaqadha f'waħda li taħdem.
-move_target_ph	Isem tal-kontro
 approval_pin_ph	PIN tal-manager (jekk mitlub biss)
-move_here	Imxi hawn
-merge_into	Għaqad fiha
-line_reason_ph	Raġuni (eż. klijent bidel il-ħsieb, out of stock)
-line_qty_ph	Kemm għandek tikkanċella (vojta = kollha)
-line_target_ph	Imxi fuq il-mejda (eż. D5)
 confirm	Ikkonferma
 menu_search_ph	Fittex oġġett jew kodiċi qasir
 customer_paid_ph	Klijent imħallas
 tip_ph	Suggeriment
-table_area_ph	Żona (eż. Dine In, Parcel, AC)
-table_range_ph	Ħafna f'daqqa: D1-D20
-add_these_tables	Żid dawn il-bankijiet
-remove_these_tables	Neħħi dawn il-bankijiet
-table_remove_ph	Neħħi: T1-T24, jew isem ta' mejda waħda
 find_server	Sib is-server tal-ħanut
 bill_format	Format tal-kont
 bill_format_help	Stampat taħt isem il-ħanut tiegħek fuq kull kont. Linji separati bi | (eż. MG Road, Rajkot | Ph 98250 00000).
@@ -1100,78 +897,32 @@ bill_header_ph	Indirizz | telefon
 fssai_ph	FSSAI / liċenzja tal-ħanut Nru. (mhux obbligatorju)
 bill_footer_ph	Footer (eż. Grazzi, erġa' żur)
 save_bill_format	Issejvja l-format tal-kont
-kot_format	Slip format
-kot_format_help	Tektek qasam fil-lista. Uri, id-daqs tat-tipa, u l-piż japplikaw għal dak il-qasam fuq it-tip ta' slip magħżul hawn fuq. Kull tip iżomm id-daqsijiet u l-piżijiet tiegħu stess.
-kot_format_fields	Oqsma
-kot_field_next	Qasam li jmiss
-kot_field_show	Uri
-kot_field_hide	Aħbi
 kot_field_on	juru
 kot_field_off	ħabi
-kot_field_size	Daqs tat-tipa
-kot_field_size_ph	eż. 16, 20, 24, 28, 32...
 kot_weight_light	Dawl
 bill_kot_panel_help	It-tqassim tal-kont u l-wisa' tal-kontenut. Kaxxier huwa min ħareġ jew ħallas il-kont - l-istorja tal-bejgħ sħiħa tibqa 'fil-kotba.
 std_size_ph	eż. 18, 20, 26...
-kot_show_shop	Isem tal-ħanut
-kot_hide_shop	Aħbi ħanut
-kot_show_time	Ħin
-kot_hide_time	Aħbi l-ħin
-kot_show_waiter	Kaxxier
-kot_hide_waiter	Aħbi kaxxier
-kot_show_station	Stazzjon
-kot_hide_station	Aħbi l-istazzjon
-kot_show_table	Kontatur
-kot_hide_table	Aħbi mejda
-kot_show_kot_no	Biljett Nru
-kot_hide_kot_no	Aħbi l-biljett Nru
-kot_width	Preview wrap (issettja l-wisa' tal-kontenut fuq it-tab tal-islip)
-kot_width_58	58 mm
-kot_width_80	80 mm
-kot_kind_heading	Tip ta' biljett
-kot_kind_original	Oriġinali
-kot_kind_duplicate	Duplikat
-kot_kind_modified	Modifikat
-kot_kind_cancelled	Ikkanċellat
-kot_style_heading	Daqs u piż tat-tip tal-qasam
-kot_style_title	Titolu
-kot_style_item_qty	Oġġett · Qty
-kot_style_field_pick	Agħżel il-qasam
 kot_weight_regular	Regolari
 kot_weight_bold	Qaħla
-kot_align	Allinja
 kot_align_start	Ibda
 kot_align_center	Ċentru
 kot_align_end	Tmiem
 content_width	Wisa' tal-kontenut (mm)
 content_width_bill	Wisa' tal-kontenut tal-kont (mm)
-content_width_kot	Wisa' tal-kontenut tal-biljett (mm)
 content_width_ph	Jew ittajpja wisa' ta' kontenut, 40–210 mm
 content_width_help	Kemm tistampa din is-slip wiesgħa. Bill iżomm il-wisa' tiegħu.
 content_width_bill_help	Kemm jistampa l-kont tal-klijent. Default 210 mm (paġna). Żlieq dejjaq ta '58 mm, żlieq ta' 80 mm wiesa ', 112 mm 4 pulzieri, 210 mm A4-wisa'. Ittajpja kwalunkwe valur minn 40 sa 210. Il-biljetti għandhom il-wisa' tagħhom fuq it-tab tal-islip.
-content_width_kot_help	Kemm jistampa l-biljett. Default 80 mm. Żlieq dejjaq ta '58 mm, żlieq wiesa' ta '80 mm, paġna ta' 112 mm 4 pulzieri, 210 mm. Ittajpja kwalunkwe valur minn 40 sa 210. Il-kontijiet tal-klijenti għandhom il-wisa' tagħhom fit-tab Bill.
 vp_paper_width	Wisa' tal-kontenut (mm)
 vp_paper_width_ph	Jew ittajpja wisa' ta' kontenut, 40–210 mm
 vp_paper_width_help	Il-wisa' tal-kontenut huwa stabbilit taħt il-format Bill & Slip — separatament għall-kont (default 210 mm) u l-biljett (default 80 mm).
-kot_size	Daqs tat-tipa
-kot_size_s	Żgħir
-kot_size_m	Normali
-kot_size_l	Kbir
 std_size	Daqs tat-tipa
 kot_copies	Kopji
 kot_copies_1	1
 kot_copies_2	2
 kot_copies_3	3
-kot_title_ph	Titolu (vojt = BILJETT)
-kot_footer_ph	Nota tal-back-office (mhux obbligatorja)
-kot_preview	Previżjoni
-save_kot_format	Ħlief Slip format
-test_kot_format	Stampar tat-test
-test_kot_sent	Preview tal-biljett mibgħut
 test_bill_format	Prova tal-kont
 test_bill_sent	Preview tal-kont bagħt
 test_print_no_printer	M'hemmx stampatur għal dak ix-xogħol — agħżel wieħed minn din l-iskrin
-kot_format_saved	Format slip salvat
 std_print	Daqs tal-istampar tal-bill
 std_print_help	Daqs tat-tipa għal xogħlijiet ta' kontijiet Standard tar-Ritratti u tal-Pajsaġġ fuq OS/printers tad-dokumenti (daħħal il-punti — mhux Żgħar/Normali/Kbir). L-istess daqs fuq iż-żewġ orjentazzjonijiet.
 std_size_s	Żgħir
@@ -1211,23 +962,16 @@ upi_qr	UPI QR
 show_upi_qr	Uri QR tal-UPI
 close_upi_qr	Agħlaq
 upi_qr_help	Il-klijent jiskenja u jħallas. Tektek Ħu l-ħlas wara li jħallsu. It-tieni skrin: tiftaħ Server URL /display fuq LAN.
-kot_recall	Tfakkar
 recently_done	Għamlet reċentement
-recall_kot_ph	Biljett # biex tfakkar
 role_help_customer	Irwol: Klijent — khata (huma jħallsulna). L-istess parti tista' wkoll tipprovdi stok.
 role_help_both	Rwoli: Klijent + Fornitur — parti waħda, ledgeri ta’ khata u li jridu jitħallsu, nett fir-Rapporti.
 role_help_supplier	Rwoli: Fornitur — ninsabu obbligati lejhom għall-xiri.
-dine_in_pick_table	Mhux użat fuq ħanut tal-bank
-choose_table	Agħżel counter
-change_table	Mejda tal-bidla
-pick_table_banner	Agħżel mejda għal din l-ordni
 items_word	oġġetti
 items_section	Oġġetti
 back_to_order	Lura għall-ordni
 new_items_head	Mhux mibgħut għadu
 price_ph	Prezz
 price_ph_gst_inside	Prezz ({tax} inkluż)
-cancel_needs_table	Il-bejgħ fil-bank jibqa' fuq il-biljett sakemm tieħu l-ħlas
 tax_rates_missing_hint	Ebda rata {tax} fuq dawn l-oġġetti — fuq Oġġetti ssettjata Rata tat-taxxa (il-prezzijiet diġà jinkludu {tax} taħt {tax} inklużi)
 taxable_value	Valur tat-taxxa
 gst_inside_price_note	({tax} inklużiv)
@@ -1248,30 +992,11 @@ client_template_confirm	Żid oġġetti {d} minn {title}? Oġġetti li diġà għ
 client_template_importing	Qed jitħalla {title}…
 client_template_done	Kull oġġett minn {title} jinsab fuq l-oġġetti tiegħek.
 client_template_imported	Oġġetti {d} miżjuda u kategoriji {c} minn {title}
-resv_heading	Riżervazzjonijiet
-resv_name_ph	Isem tal-klijent
-resv_phone_ph	Telefon (mhux obbligatorju)
-resv_guests_ph	Nies
-resv_when_ph	Meta — 20:30, għada 13:00
-resv_table_ph	Counter (mhux obbligatorju)
-resv_add	Ktieb
-resv_seat	Mdawwar
-resv_none	L-ebda prenotazzjonijiet ma qegħdin jiġu.
-guests_word	mistiedna
-delivery_by_ph	Kunsinna minn (iben il-merħla jew l-isem tal-persunal)
-kitchen_all_day	Biex issajjar issa: {items}
-split_bill	Qsim tal-kont
-split_go	Agħmel kont separat
 cancel	Ikkanċella
 opening_client	Qed niftħu l-klijent…
 preparing_desk	Qed nipprepara d-desk…
 opening_server	Qed infetaħ is-server…
 creating_server	Qed noħolqu server…
-split_help	Tektek l-oġġetti li klijent wieħed iħallas għalihom · {n} qabad
-split_send_first	Ibgħat slip l-ewwel — l-oġġetti biss li għandu back office jistgħu jmorru għal kont separat
-split_pick_some	Tektek l-oġġetti għall-kont separat l-ewwel
-split_done	Kont separat magħmul — jinsab fl-art ħdejn dan il-bank
-split_marked	kont separati
 order_empty_pick	Ordna vojta — tektek Żid oġġetti hawn fuq biex tagħżel oġġetti.
 add_dishes	Żid oġġetti
 order_so_far	F'dan l-ordni: {n} · {total}
@@ -1282,24 +1007,8 @@ pick_done_dd	Ġiet magħmula · {label}
 printer_route_mode	Jekk hemm diversi stampaturi f'dan il-post
 printer_mode_first	L-ewwel li taħdem
 printer_mode_all	Ippprintja fuq kollox
-kot_show_area	Żona
-kot_hide_area	Aħbi żona
-kot_show_item_hdr	Oġġett · Qty
-kot_hide_item_hdr	Aħbi kolonni
-kot_show_title	Linja tat-titlu
-kot_hide_title	Aħbi l-unur
-kot_field_order	Ordni tal-istampar
 kot_field_up	Ġib il-quċċata
 kot_field_down	Ħu ħdejn 'l isfel
-kot_field_cycle	Agħżel li jmiss
-kot_field_select	Agħżel li jmiss
-kot_field_time	Ħin
-kot_field_kot_no	Biljett Nru
-kot_field_area	Żona
-kot_field_table	Kontatur
-kot_field_shop	Isem tal-ħanut
-kot_field_waiter	Persunal
-kot_field_station	Stazzjon
 app_template_blurb_extra	Ukoll: Sid Zahir, Admin Asif, Kaxxier Nawaz; sidebar ta 'quddiem; storja wara 4 sigħat; Illum strip off; kont kompatt.
 dishes_n	oġġetti {n}
 recipe_ph	Riċetta (mhux obbligatorja — mhux użata f'ħanut tal-bank)
@@ -1309,8 +1018,6 @@ low_stock_alert	Qed naqsu — xtri dalwaqt: {items}
 unpriced_note	L-oġġetti {n} fuq l-oġġetti tiegħek għad m'għandhom l-ebda prezz — huma jħallsu 0 sakemm issettja wieħed.
 show_unpriced	Uri biss oġġetti mingħajr prezz
 show_all_dishes	Uri l-oġġetti kollha
-role_waiter	Kaxxier
-role_kitchen	Aħżen
 role_title_rest_ph	Titolu tar-rwol (eż. Kapitan, Kap tal-kċina)
 preset_help_rest	Kaxxier: ibiegħ. Maniġer: bejgħ + oġġetti + null/emenda.
 kind_raw	Mixtrija għall-użu tal-ħanut

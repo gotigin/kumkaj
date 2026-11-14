@@ -80,28 +80,6 @@ applied	Tillämpat
 note_ph	Anteckning (valfritt)
 rounded	AVRUNDAT
 split	Dela
-send_kot	Skicka lapp
-send_kot_to	Skicka → {kitchens}
-send_kot_again	Lägg till föremål för nästa lapp
-send_kot_held	Lagrade objekt — vänta för att skicka
-reprint_kot	Skriv ut valda igen
-reprint_kot_ok	Utskrivna {n}-objekt igen · {slips}-lapp(ar) → {kitchens}
-reprint_kot_needed	Skicka en lapp först — inkludera sedan mediciner och skriv ut de valda igen
-reprint_kot_none_selected	Varje skickat objekt hoppas över — tryck på I print på de som ska skrivas ut igen
-reprint_kot_client	Skriv ut igen ({n}) för {place} skickad — butiksenheten skriver ut det
-print_cancelled_kot	Skriv ut alla makulerade
-print_cancelled_kot_ok	Utskrivna {n} annullerade objekt · {slips}-lapp(ar) → {kitchens}
-print_cancelled_kot_needed	Öppna ett bord med inställda föremål först
-print_cancelled_kot_none	Inga annullerade varor på denna beställning
-print_cancelled_kot_client	Utskriften avbruten ({n}) för {place} skickad — butiksenheten skriver ut den
-kot_banner	Typrubrik
-kot_banner_ph	Rubrik (tom = ingen)
-kot_item_prefix	Artikelprefix
-kot_item_prefix_ph	t.ex. [MAKULERAD]
-kot_strike	Varningsobjektets namn
-kot_strike_note	Varningsanmärkning
-kot_strike_on	På
-kot_strike_off	Av
 bill_item_layout	Artikeluppställning
 bill_item_layout_columns	Kolumner
 bill_item_layout_stacked	Staplad
@@ -130,8 +108,6 @@ bill_item_gap_em	Mellanrum (em)
 bill_item_qty_min	Antal min (em)
 bill_item_price_min	Pris min (em)
 bill_item_amount_min	Belopp min (em)
-kot_item_qty_width	Antalskolumn
-kot_item_num_align	Antal justeras
 bill_total_qty_label	Etikett för totalt antal
 bill_total_subtotal_label	Etikett för delsumma
 bill_total_grand_label	Etikett för totalsumma
@@ -143,36 +119,9 @@ bill_item_piece_off	Av
 bill_total_qty	Totalt antal
 bill_total_subtotal	Delsumma
 bill_total_grand	Totalsumma
-reprint_incl	I utskrift
-reprint_skip	Hoppa över
-reprint_skip_meta	Hoppa över återutskrift
-kot_dest_hint	Skrivs ut på skrivarna du tilldelat {kitchens} under Inställningar → Skrivare
-kot_sent_hint	Senaste sändningen gick till {kitchens}. Tryck för att lägga till artiklar för nästa räkning – eller Skriv ut lappen igen för samma.
-kot_sent_printing	Slip skickas till {kitchens} — utskrift
-kot_sent_not_printed	Seddel skickad till {kitchens} men EJ utskriven: {why}. Berätta för butiken, fixa sedan skrivaren och skriv ut den igen.
-kot_sent_screen	Besked skickat till {kitchens}
-kot_queued_shop	Slip för {place} → {kitchens} sparad; butiksenheten skriver ut den
-kot_job_label	Slip för {place} → {kitchens}
-kot_job_reached	Slip för {place} nådde {kitchens}
 kot_unassigned	Otilldelad
-kot_unassigned_held	Sparade {n}-objekt utan station — håll kvar på linjen för att skicka
-kot_station_ph	Station
-kot_station_dd	Station
-kot_station_dd_n	Station · {stations}
-kot_set_station	Använd den här stationen
-kot_station_applied	Stationsuppsättning på {n}-objekt: {station}
-kot_station_cleared	Station rensad från {n}-objekt: {station}
-kot_station_needed	Välj en apoteksavdelning först
-kot_station_not_allowed	Inte tillåtet att använda avsnitt: {station}
-kot_station_none	Inga stationer ännu — oanvända i en diskbutik (Inställningar → Områden vid behov)
 pos_tab_items	Tillagda artiklar
 pos_tab_payment	Betalning
-hold_send	Parkera
-hold_send_on	Parkerad
-hold_send_meta	Hålls — inte på denna lapp
-station_remove	Ta bort station
-station_remove_ph	Tryck på en station i listan för att ta bort den
-station_removed	Station borttagen: {name}
 settings_hub_title	Inställningar
 settings_hub_help	Öppna ett område i taget — mindre scrollning, tydligare val.
 settings_back	Tillbaka
@@ -181,12 +130,10 @@ settings_sec_country	Land och skatt
 settings_sec_tills	Andra enheter
 settings_sec_brand	Ditt varumärke
 settings_sec_units	Enheter och omvandlingar
-settings_sec_pickers	Områden · stationer · skattesatser
+settings_sec_pickers	Skattesatser
 settings_sec_printers	Skrivare
 settings_sec_bill	Bill & Slip-format
 settings_sec_selling	Erbjudanden och försäljning
-bill_kot_tab_bill	Nota
-bill_kot_tab_kot	Glida
 settings_sec_alerts	Aviseringar
 alerts_help	Hur länge statusmeddelanden ligger kvar på skärmen för dig (den här inloggningen).
 snack_secs_ph	Sekunder (3–60, standard 10)
@@ -237,8 +184,6 @@ counter	Räknare
 dine_in	Räknare
 takeaway	Avhämtning
 order	Beställning
-tables	Räknare
-kitchen	Avsnitt
 sales	Försäljning
 sales_refunds	Försäljning & återbetalningar
 day_close	Dagsavslut
@@ -266,10 +211,6 @@ zero_sales_on	Tillåt 0 INR
 zero_sales_off	Kräv pris
 zero_sales_saved_on	Nollförsäljning tillåten
 zero_sales_saved_off	Försäljningen måste ha ett pris över 0 INR
-floor_areas_help	Områden är rum eller zoner på golvet (Dine In, Parcel, AC …). Lägg först till ett område och sätt sedan räknare i det - varje område är en separat grupp på golvet.
-area_new_ph	Nytt område/rum (t.ex. AC, trädgård)
-add_area	Lägg till område
-area_added	Området "{name}" är klart — lägg till räknare i det
 no_favorites	Inga favoriter än – lägg till objekt från listan nedan.
 add_to_bill	Lägg till på räkningen
 added	Tillagd
@@ -280,19 +221,9 @@ chip_missing_customer	Vald kund saknas — välj igen
 chip_no_customer	Ingen kund ännu – skriv ett namn och tryck sedan på Kredit
 credit_summary_fmt	{} kunder · öppen kredit {} · hållna förskott {}
 recent_label	Senaste:
-kot_new_waiting	NYTT — väntar
-kot_preparing	FÖRBEREDELSER
-kot_ready_serve	KLAR - servera det
-kot_done_cap	KLAR
-kot_cancelled	INSTÄLLD
-kot_start_btn	Starta
-kot_mark_ready	Markera redo
-kot_done_btn	Klart
-table_free	Gratis — tryck för att starta en beställning
 start_order	Startorder
 open_bill	Öppen räkning
 collect_payment	Samla in betalning
-table_running	Löpning
 payment_pending	Betalning väntar
 collect_at_counter	hämta vid disk
 inventory	Inventering
@@ -325,7 +256,6 @@ ok	OK
 this_shop	Server
 extra_till	Klient
 off	Av
-tables_kitchen	Butikslayout
 server	Server
 client	Klient
 language_currency	Språk och valuta
@@ -367,8 +297,6 @@ add_item_plain	Lägg till artikel
 add_note	Lägg till anteckning
 add_opening_balance	Lägg till ingående saldo
 add_staff	Lägg till personal
-add_station	Lägg till station
-add_table	Lägg till tabell
 add_unit	Lägg till enhet
 add_use_name	Lägg till / använd detta namn
 allow_extra_tills	Tillåt extra kassar
@@ -421,7 +349,6 @@ share_whatsapp	Dela WhatsApp
 lan_pages_heading	Kundsidor på Wi-Fi
 lan_pages_help	På den här butikens Wi-Fi fungerar kundsidor för visningstavlan och feedback. Personer på mobildata behöver Cloud senare. En kortterminal eller betalningslänk är valfri och blockerar aldrig disken.
 diag_send_heading	Dela av den här enheten
-kot_dest_heading	Station
 optional_login_heading	Valfri inloggning
 rights_heading	Rättigheter
 ops_panel	Lokal ops
@@ -448,28 +375,6 @@ till_voucher_amt_ph	Verifikationsbelopp (tomt = alla)
 till_wallet_topup_ph	Påfyllning av plånboksbelopp
 till_voucher_issue_amt_ph	Utfärda kupongbelopp
 till_voucher_issue_code_ph	Ny kupongkod
-split_evenly	Dela jämnt
-waitlist	Väntelista
-fire_course	Nästa steg
-hold_item	Parkera
-waiter_call	Ring kassörskan
-waitlist_add	Lägg till på väntelistan
-floor_view_grid	Rutnät
-floor_view_layout	Plan
-floor_layout_x	X
-floor_layout_y	Y
-floor_layout_w	W
-floor_layout_h	H
-floor_layout_save	Spara layout
-floor_layout_open	Öppet bord
-floor_layout_edit	Redigera layout
-floor_layout_pick	Tryck på en tabell för att redigera dess layout
-floor_layout_saved	Layouten har sparats
-floor_layout_nudge_left	← 20
-floor_layout_nudge_right	→ 20
-floor_layout_nudge_up	↑ 20
-floor_layout_nudge_down	↓ 20
-sibling_pickers_help	Tryck på På/Av som enheter — dölj områden, stationer och skattesatser från vardagsväljare; paketets standardvärden kvarstår.
 bulk_price_apply	Tillämpa bulkpris
 card_terminal_optional	Kortterminal/betalningslänk (valfritt när internet är tillgängligt)
 copy_report	Kopiera rapporten
@@ -495,7 +400,6 @@ import_day	Importdag
 import_items_csv_plain	Importera objekt CSV...
 import_parties_csv	Importera partier CSV...
 item_name	Objektets namn
-kitchen_printing	Skrivare
 login_id_ph	Användarnamn
 mark_cleared	Mark rensat
 new_party_clear	Nytt parti (tydlig form)
@@ -565,15 +469,6 @@ show	Visa
 spreadsheet_csv	Kalkylblad (CSV)
 start_fresh	Börja fräscht
 stop_extra_tills	Stoppa extra kassar
-floor_cols_ph	Kolumner
-floor_cols_fit	Passa skärm
-floor_cols_fit_sub	{n} passar här
-floor_cols_fits	passar
-floor_cols_scroll	rullar i sidled
-floor_cols_min	Kolumner: minst 1 — eller låt den vara tom för att passa skärmen
-floor_zoom_auto	Auto
-floor_zoom_out	Zooma ut
-floor_zoom_in	Zooma in
 backup_auto	Säkerhetskopieras automatiskt varje dag · senaste {when} · de senaste 14 dagarna sparas i {dir}.
 backup_auto_none	Säkerhetskopieras automatiskt varje dag – den första körs på ett ögonblick.
 backup_copy_to	Kopior går också till {dir}.
@@ -591,7 +486,6 @@ new_pair_code	Ny parningskod
 pair_finishing	Avslutar par... applicerar butikens böcker
 pair_opening	Öppnar kassan...
 pair_copied	Parningskod kopierad
-kot_waiting	Väntar på att skicka
 lan_offline_waiting	Butiksservern går inte att nå · {n} väntar
 lan_connecting	Ansluter till butik...
 lan_live	Live
@@ -633,7 +527,6 @@ printers_routes_help	Hitta skrivare som operativsystemet redan känner till. Til
 printer_assign_dd	Riktig skrivare: {place}
 printer_assign_pick	Välj riktig skrivare
 printer_profile_heading	Plan
-printer_send_heading	Leverans
 vp_delivery_heading	Leverans
 vp_delivery_help	Hur den här virtuella skrivaren skickar jobb – OS-dokument, råbyte eller ESC/POS. Slipinnehåll (typstorlek, omslag, marginaler) bestäms av räkningen / Slip-formatet, inte här.
 vp_type_size_heading	Typstorlek
@@ -677,23 +570,13 @@ virtual_draft_send	Värde inställt för nästa virtuella skrivare
 virtual_need_real	Välj en riktig skrivare först
 virtual_need_select	Välj en virtuell skrivare att ta bort
 real_printer_selected	Valt: {name}
-station_group_heading	Virtuella skrivare
-station_group_apply	Ta bort virtuell skrivare
-station_group_applied	Raderad
-station_group_empty	Välj en virtuell skrivare
-station_group_name_ph	Virtuell skrivarnamn (valfritt)
-station_group_save	Skapa virtuell skrivare
-station_group_saved	Virtuell skrivare sparad
-station_manage_heading	Lägg till eller ta bort en dispensavdelning
 printers_routes_heading	Där saker trycks
 route_pick_heading	Plats
 route_editing	Redigering: {name}
 route_assigned	Lade till {printer} till {place}
 route_already_assigned	Redan på denna plats: {printer}
-route_removed	Tog bort {printer} från {place}
 route_cleared	Rensat {name}
 route_assigned_empty	Ingen på denna plats
-route_tap_remove	tryck för att ta bort
 route_tap_select	tryck för att välja
 route_tap_selected	valt
 route_pick_printer_first	Tryck först på en skrivare
@@ -714,35 +597,17 @@ printer_format_custom	Ny anpassad profil
 printer_format_custom_label	Anpassad
 printer_format_custom_added	Anpassad profil har lagts till för denna plats
 add_printer	Lägg till skrivare
-remove_printer	Ta bort
 route_pick_ph	Bill eller en dispensavdelning
 route_bill	Nota
-route_default_kitchen	Ingen station (ej tilldelade objekt)
-route_kot_station	Station
 route_dont_print	Ingen skrivare
-stations_heading	Stationer
-stations_help	Apoteksavdelningar grupperar läkemedel och skrivarna för den delen av butiken. Bifoga skrivare från Inställningar → Skrivare, ställ in försöksordning, sedan Först som fungerar eller Skriv ut på alla. Ändringar sparas allt eftersom.
-station_print_heading	Skrivare för denna station
-station_print_help	Välj en station och anslut sedan en eller flera skrivare. ↑↓ ställer in försöksordning. Först som fungerar slutar efter den första succén; Skriv ut på alla sändningar till varje ansluten skrivare.
-station_print_pick_ph	Station för att ställa in skrivare
 station_print_pick_first	Välj en apoteksavdelning först
-station_print_editing	Redigera skrivare för "{name}"
-station_vps_dd	Skrivare för denna station
-station_vps_dd_n	{n} skrivare · tryck för att ändra
 station_vps_empty	Inga skrivare ännu — Hitta dem under Inställningar → Skrivare
 bill_printers_dd	Skrivare för räkningen
 bill_printers_dd_n	{n} skrivare för räkningen · tryck för att ändra
-job_layout	Plan
-job_delivery	Hur jobbet skickas
-job_delivery_help	OS-dokument, råbytes eller ESC/POS. Notan och biljetten behåller sina egna. Båda jobben kan gå till alla skrivare som Find har sparat.
 station_vp_attached	Skrivare ansluten
 station_vp_detached	Skrivaren har tagits bort från stationen
-station_print_summary	{mode} · {n} skrivare(r)
-station_print_summary_none	Inga skrivare på den här stationen än – den kommer inte att skrivas ut
-stations_none	Inga stationer än – lägg till en nedan. Stationer är oanvända på en diskbutik - lämna tomma.
 route_up	Upp
 route_down	Ner
-route_remove	Ta bort
 route_clear	Rensa
 save_printers	Spara skrivare
 print_test_page	Skriv ut en testsida
@@ -751,23 +616,15 @@ test_page_no_printer	Ingen skrivare för {place} — anslut en skrivare till den
 test_page_pick_first	Välj skrivare för en testsida först — sedan Skriv ut en testsida
 test_printers_dd	Skrivare för en testsida
 test_printers_dd_n	{n} skrivare för en testsida · tryck för att ändra
-kot_test_printers_dd	Skrivare för provtryck
-kot_test_printers_dd_n	{n}-skrivare för testutskrift · tryck för att ändra
 test_printer_picked	Testa på: {name}
 test_printer_cleared	Testar inte på: {name}
 test_page_sent_n	Testsida skickad till {n} skrivare(r)
-test_kot_pick_first	Välj skrivare/skrivare för testutskrift först — sedan testutskrift
-test_kot_sent_n	Testutskrift skickat till {n}-skrivare(r)
-cancel_pick	Markera
-cancel_pick_on	Märkt
-cancel_pick_meta	Markerad för annullering
 batch_cancel	Avbryt markerad
 batch_cancel_n	Avbryt markerad ({n})
 batch_cancel_none	Markera en eller flera skickade objekt först — sedan Avbryt markerade
 batch_cancel_title	Avboka märkta läkemedel — en anledning, en avbokningslapp per avsnitt
 batch_cancel_ok	{n}-föremål avbrutna · {slips}-avbokning(er) → {kitchens}
 batch_cancel_ok_noprint	{n}-objekt har avbrutits — automatisk utskrift är avstängd, så ingen avbokning
-no_printer_kitchen_station	Ingen skrivare för den stationen
 printers_saved	Sparad
 test_page_sent	Testsida skickad — kontrollera skrivaren
 test_page_sent_one	Testsida skickad till {name} — kontrollera den skrivaren
@@ -783,10 +640,7 @@ cancelled	Avbruten
 printers_tap_find	Tryck på Hitta för att lista skrivare som den här enheten kan använda.
 printers_none_found	Ingen hittades – skriv ett systemskrivarnamn eller en IP (t.ex. 192.168.1.50).
 printer_from_find	Lade till {name}
-kot_printer_ph	Skrivare för slips
 bill_printer_ph	Skrivare för räkningar
-kot_print_on	Automatisk utskrift av biljetter: På
-kot_print_off	Automatisk utskrift av biljetter: Av
 queue_refused	Godkänns inte av butiken ({n}) — kontrollera var och en vid disken:
 clear_not_accepted	Markerad – rensa den här listan
 device_name_ph	Den här enhetens namn
@@ -797,7 +651,6 @@ backup_failed	Den senaste automatiska säkerhetskopieringen misslyckades: {e}
 backup_overdue	Ingen säkerhetskopiering på {n} dagar – håll appen öppen på den här enheten så att den kan säkerhetskopiera.
 disk_low	Endast {mb} MB ledigt på den här enheten — säkerhetskopieringar kommer snart att misslyckas. Frigör lite utrymme.
 last_seen_devices	Senast sett: {time}
-sync_interval	Synkronisera var {secs}s
 connection_to_shop	Anslutning till butiken
 supplier_name_ph	Leverantörens namn (eller part)
 supplier_ph	Leverantör
@@ -860,7 +713,6 @@ fresh_book_tabiyat	Färsk = tom katalog (lägg till objekt senare). Bok = typ in
 fresh_selected	Ny markerad — katalogen förblir tom. Tryck på Klar när du är klar.
 gross_word	Grovt
 how_start	Hur vill du börja?
-kot_print_help_tabiyat	Används inte i en diskbutik.
 later_country_pack	Senare: Inställningar → tillämpa ditt landspaket för skatte- och betaletiketter.
 local_badge	LOKAL
 mix_type_hint_tabiyat	Dela på kontanter / UPI / kort / kredit om det behövs. Kredit behöver en kund ovan.
@@ -911,8 +763,6 @@ staff_copy_need_source	Välj vems inställningar du vill kopiera
 staff_copy_same	Det är samma person - välj någon annan
 staff_rename_need_selected	Välj vem du ska byta namn på först
 team_pick_hint	Välj vem du vill redigera – skärmar, pengarrättigheter och stationer visas endast för den personen.
-team_stations_help	Stationer de kan använda
-team_stations_changed	Stationer ändrade — Spara inställningarna för den här personen
 team_features_changed	Skärmarna ändrade — Spara inställningarna för den här personen
 team_rights_changed	Rättigheter ändrade — Spara inställningarna för den här personen
 they_owe_us	De är skyldiga oss
@@ -996,9 +846,6 @@ service_pct_ph	Service % valfritt 0/10/12
 short_code_ph	Kortkod (MG02)
 starting_password_ph	Startlösenord (valfritt)
 starting_pin_ph	Start-PIN (4–12 siffror)
-station_name_ph	Stationsnamn (valfritt)
-station_new_ph	Sektion (valfritt)
-table_name_ph	Namn på disk/fack
 tax_rate_ph	Skattesatsens namn eller % — Standard, Reduced, 0, 5, 12, 18, 20
 to_code_ph	Till kod (kg)
 uncleared_no_ph	Oavstämt # ovan
@@ -1011,27 +858,8 @@ book_kind_month	Böcker denna månad
 book_kind_aging	Utestående / debet-kredit
 book_kind_balance	Balansräkning
 order_help	Tryck på ett objekt för att lägga till det.
-floor_help	Denna butik säljer vid disken. Bord och en matsal ingår inte i Tabiyat.
-kitchen_help	Används inte i en diskbutik.
-kitchen_empty	Inga öppna biljetter (diskbutiker lämnar vanligtvis den här skärmen oanvänd).
-add_a_table	Lägg till en tabell
-add_station_heading	Lägg till en dispensavdelning
 categories_help	Tryck på Använd för att spara objektet ovan under den kategorin. Foto ger kategorin en bild; utan en visar den sina initialer.
 dish_search_ph	Sök namn, salt eller streckkod...
-tile_free	Gratis
-tile_occupied	Upptagen
-tile_food_ready	Mat klar
-tile_bill_printed	Nota utskriven
-tile_paid	Betalt
-tile_bill_btn	Nota
-tile_occupy_btn	Sitt gäster
-tile_free_btn	Gratis bord
-tile_ready_btn	Gratis bord
-tile_undo_bill	Ångra faktura
-summary_busy	bord upptagna
-summary_to_collect	att samla in
-summary_on_floor	på golvet
-floor	Handla
 sizes_as_items_ph	Storlekar som separata artiklar (valfritt) — Hälften=120, Hel=200
 dish_group_ph	Styrka / packgrupp (valfritt) — t.ex. 500mg remsa
 discount	Rabatt
@@ -1039,7 +867,6 @@ remove_discount	Ta bort rabatten
 apply_discount	Använd rabatt
 save_opening_cash	Spara öppningspengar
 close_shift_print	Stäng växeln och skriv ut lappen
-area_prices_ph	Områdespriser (valfritt) — AC=220, Paket=210
 discount_ph	10 % eller 50
 discount_reason_ph	Orsak (t.ex. stamgäst, sen mat)
 opening_float_ph	Kontanter lades i byrålådan i morse
@@ -1049,34 +876,18 @@ shift_handover	Skiftöverlämning
 shift_since	Denna förändring sedan
 expected_in_drawer	Förväntas i låda
 right_discount	Ge rabatt
-floor_in_kitchen	Pågår
-floor_eating	Serveras
 pick_category	Välj en kategori
 close_category_list	Stäng kategorilistan
 new_category_row	Ny kategori – skapas när du sparar objektet
 your_category	Din kategori
 suggested_category	Föreslagna — från våra varor
 category_search_ph	Kategori – sök efter din eller skriv en ny
-line_sent_state	Skickat
-line_nc_state	Gratis (NC) – debiteras inte
 cancel_item_short	Avbryt
-nc_short	NC
-charge_again_short	Ladda
-move_short	Flytta
 cancel_item_title	Avbryt den här artikeln – backoffice får en avbokningssedel
-nc_item_title	Gör detta föremål gratis (NC)
-charge_again_title	Ladda den här artikeln igen
-move_item_title	Flytta detta objekt till en annan tabell
-already_cooked	Redan tillagad (slöseri)
-not_cooked_yet	Inte kokt ännu
 return_to_customer	Återgå till kund
 short_by	Kort av
 tip_not_sale	Tips (personalens, inte en rea)
 right_settle	Ta betalt
-right_cancel_sent	Avbryt en skickad vara
-right_complimentary	Gratis (NC)
-right_move_table	Flytta / slå samman räknare
-right_reprint	Skriv ut räkningen igen
 right_allowed	Tillåtet
 right_with_approval	Med godkännande
 right_denied	Inte tillåtet
@@ -1086,25 +897,11 @@ no_server_found	Ingen hittades. På servern: Inställningar → Andra enheter �
 servers_found_pick	Tryck på butiken du vill ansluta till.
 server_host_selected	Använd {host} — ange kopplingskoden och sedan Koppla nu.
 print_bill	Skriv ut räkningen
-table_actions	Motåtgärder
-move_merge_table	Flytta / slå samman tabell
-move_help	Flytta denna räknares order till ett ledigt bord, eller slå samman det till ett löpande.
-move_target_ph	Räknarens namn
 approval_pin_ph	Chefs-PIN (endast om tillfrågad)
-move_here	Flytta hit
-merge_into	Gå in i den
-line_reason_ph	Orsak (t.ex. kunden ändrade sig, slut i lager)
-line_qty_ph	Hur många ska avbrytas (tomt = alla)
-line_target_ph	Flytta till tabell (t.ex. D5)
 confirm	Bekräfta
 menu_search_ph	Sök objekt eller kortkod
 customer_paid_ph	Kunden betalade
 tip_ph	Tips
-table_area_ph	Område (t.ex. Dine In, Parcel, AC)
-table_range_ph	Många på en gång: D1-D20
-add_these_tables	Lägg till dessa räknare
-remove_these_tables	Ta bort dessa räknare
-table_remove_ph	Ta bort: T1-T24, eller ett bords namn
 find_server	Hitta butikens server
 bill_format	Notaformat
 bill_format_help	Tryckt under din butiks namn på varje sedel. Separera rader med | (t.ex. MG Road, Rajkot | Ph 98250 00000).
@@ -1112,78 +909,32 @@ bill_header_ph	Adress | telefon
 fssai_ph	Narkotikatillstånd nr. (valfritt – din formulering)
 bill_footer_ph	Sidfot (t.ex. Tack, besök igen)
 save_bill_format	Spara fakturaformat
-kot_format	Slipformat
-kot_format_help	Tryck på ett fält i listan. Visa, teckenstorlek och vikt gäller för det fältet på den lapptyp som valts ovan. Varje sort håller sina egna storlekar och vikter.
-kot_format_fields	Fält
-kot_field_next	Nästa fält
-kot_field_show	Visa
-kot_field_hide	Göm
 kot_field_on	visa
 kot_field_off	gömma sig
-kot_field_size	Teckenstorlek
-kot_field_size_ph	t.ex. 16, 20, 24, 28, 32...
 kot_weight_light	Ljus
 bill_kot_panel_help	Billlayout och innehållsbredd. Kassören är den som utfärdade eller betalade räkningen - hela försäljningsberättelsen finns kvar i böckerna.
 std_size_ph	t.ex. 18, 20, 26...
-kot_show_shop	Butiksnamn
-kot_hide_shop	Göm butik
-kot_show_time	Tid
-kot_hide_time	Göm tid
-kot_show_waiter	Kassörska
-kot_hide_waiter	Göm kassan
-kot_show_station	Station
-kot_hide_station	Göm station
-kot_show_table	Räknare
-kot_hide_table	Göm bord
-kot_show_kot_no	Biljett nr
-kot_hide_kot_no	Göm biljett nr
-kot_width	Förhandsgranska wrap (ställ in innehållsbredd på glidfliken)
-kot_width_58	58 mm
-kot_width_80	80 mm
-kot_kind_heading	Biljetttyp
-kot_kind_original	Original
-kot_kind_duplicate	Duplicera
-kot_kind_modified	Modifierad
-kot_kind_cancelled	Avbruten
-kot_style_heading	Fälttyps storlek och vikt
-kot_style_title	Titel
-kot_style_item_qty	Artikel · Antal
-kot_style_field_pick	Välj fält
 kot_weight_regular	Vanligt
 kot_weight_bold	Fet
-kot_align	Justera
 kot_align_start	Starta
 kot_align_center	Centrerad
 kot_align_end	Slut
 content_width	Innehållsbredd (mm)
 content_width_bill	Fakturans innehållsbredd (mm)
-content_width_kot	Biljettinnehållsbredd (mm)
 content_width_ph	Eller skriv en innehållsbredd, 40–210 mm
 content_width_help	Hur brett den här slipen trycker. Bill håller sin egen bredd.
 content_width_bill_help	Hur bred kundräkningen skrivs ut. Standard 210 mm (sida). 58 mm smal slip, 80 mm bred slip, 112 mm 4 tum, 210 mm A4 bred. Ange valfritt värde från 40 till 210. Biljetterna har sin egen bredd på lappfliken.
-content_width_kot_help	Hur bred biljetten skrivs ut. Standard 80 mm. 58 mm smal slip, 80 mm bred slip, 112 mm 4-tum, 210 mm sida. Skriv valfritt värde från 40 till 210. Kundräkningar har sin egen bredd på fliken Fakturering.
 vp_paper_width	Innehållsbredd (mm)
 vp_paper_width_ph	Eller skriv en innehållsbredd, 40–210 mm
 vp_paper_width_help	Innehållsbredd ställs in under Bill & Slip-format — separat för sedeln (standard 210 mm) och biljetten (standard 80 mm).
-kot_size	Teckenstorlek
-kot_size_s	Liten
-kot_size_m	Normal
-kot_size_l	Stora
 std_size	Teckenstorlek
 kot_copies	Kopior
 kot_copies_1	1
 kot_copies_2	2
 kot_copies_3	3
-kot_title_ph	Titel (tom = BILJTT)
-kot_footer_ph	Backoffice-anteckning (valfritt)
-kot_preview	Förhandsgranska
-save_kot_format	Spara Slip-format
-test_kot_format	Provtryck
-test_kot_sent	Förhandsvisning av biljett har skickats
 test_bill_format	Testräkning
 test_bill_sent	Förhandsgranskning av faktura har skickats
 test_print_no_printer	Ingen skrivare för det jobbet – välj en på den här skärmen
-kot_format_saved	Slipformatet har sparats
 std_print	Notautskriftsstorlek
 std_print_help	Teckenstorlek för standard stående och liggande faktureringsjobb på OS/dokumentskrivare (inmatningspunkter — inte Liten/Normal/Stor). Samma storlek på båda riktningarna.
 std_size_s	Liten
@@ -1223,23 +974,16 @@ upi_qr	UPI QR
 show_upi_qr	Visa UPI QR
 close_upi_qr	Stäng
 upi_qr_help	Kunden skannar och betalar. Tryck på Ta betalning efter att de har betalat. Andra skärmen: öppna Server URL / visa på LAN.
-kot_recall	Minns
 recently_done	Nyligen gjort
-recall_kot_ph	Biljett # att återkalla
 role_help_customer	Roll: Kund – khata (de är skyldiga oss). Samma part kan också leverera lager.
 role_help_both	Roller: Kund + Leverantör — en part, khata och betalningsböcker, netto i Rapporter.
 role_help_supplier	Roll: Leverantör – vi är skyldiga dem för inköp.
-dine_in_pick_table	Används inte i en diskbutik
-choose_table	Välj disk
-change_table	Byt bord
-pick_table_banner	Välj ett bord för denna beställning
 items_word	föremål
 items_section	Föremål
 back_to_order	Tillbaka till beställning
 new_items_head	Inte skickat ännu
 price_ph	Pris
 price_ph_gst_inside	Pris ({tax} inklusive)
-cancel_needs_table	Motförsäljning stannar på biljetten tills du tar betalt
 tax_rates_missing_hint	Ingen {tax}-sats på dessa artiklar — på artiklar inställd momssats (priserna inkluderar redan {tax} under {tax} inklusive)
 taxable_value	Skattepliktigt värde
 gst_inside_price_note	({tax} inklusive)
@@ -1260,30 +1004,11 @@ client_template_confirm	Lägga till {d}-objekt från {title}? Föremål du redan
 client_template_importing	Importerar {title}...
 client_template_done	Varje föremål från {title} finns på dina föremål.
 client_template_imported	Lade till {d}-objekt och {c}-kategorier från {title}
-resv_heading	Bokningar
-resv_name_ph	Kundens namn
-resv_phone_ph	Telefon (valfritt)
-resv_guests_ph	Personer
-resv_when_ph	När — 20:30, imorgon 13:00
-resv_table_ph	Räknare (valfritt)
-resv_add	Boka
-resv_seat	Sittande
-resv_none	Inga bokningar kommer.
-guests_word	gäster
-delivery_by_ph	Leverans av (ryttare eller personalnamn)
-kitchen_all_day	Att laga mat nu: {items}
-split_bill	Delad räkning
-split_go	Gör en separat räkning
 cancel	Avbryt
 opening_client	Öppnar klient...
 preparing_desk	Förbereder skrivbordet...
 opening_server	Öppnar server...
 creating_server	Skapar server...
-split_help	Tryck på artiklarna som en kund betalar för · {n} har valts
-split_send_first	Skicka lappen först - endast varor som backoffice har kan gå till en separat räkning
-split_pick_some	Tryck först på objekten för den separata räkningen
-split_done	Separat räkning gjord - den ligger på golvet bredvid denna disk
-split_marked	separat räkning
 order_empty_pick	Beställningen är tom — tryck på Lägg till artiklar ovan för att välja artiklar.
 add_dishes	Lägg till mediciner
 order_so_far	På denna beställning: {n} · {total}
@@ -1294,24 +1019,8 @@ pick_done_dd	Klart · {label}
 printer_route_mode	Om flera skrivare på denna plats
 printer_mode_first	Först fungerar det
 printer_mode_all	Skriv ut på alla
-kot_show_area	Område
-kot_hide_area	Göm området
-kot_show_item_hdr	Artikel · Antal
-kot_hide_item_hdr	Dölj kolumner
-kot_show_title	Titelrad
-kot_hide_title	Dölj titel
-kot_field_order	Utskriftsbeställning
 kot_field_up	Flytta uppåt
 kot_field_down	Flytta ner
-kot_field_cycle	Välj nästa
-kot_field_select	Välj nästa
-kot_field_time	Tid
-kot_field_kot_no	Biljett nr
-kot_field_area	Område
-kot_field_table	Räknare
-kot_field_shop	Butiksnamn
-kot_field_waiter	Personal
-kot_field_station	Station
 app_template_blurb_extra	Även: Ägare Zahir, Admin Asif, Kassör Nawaz; främre sidofältet; historia efter 4 timmar; Klä av idag; kompakt räkning.
 dishes_n	{n} objekt
 recipe_ph	Recept (valfritt - oanvänt på en diskbutik)
@@ -1321,8 +1030,6 @@ low_stock_alert	Snart slut – köp snart: {items}
 unpriced_note	{n}-artiklar på dina föremål har inget pris än – de faktureras till 0 tills du ställer in ett.
 show_unpriced	Visa endast varor utan pris
 show_all_dishes	Visa alla objekt
-role_waiter	Kassörska
-role_kitchen	Lagra
 role_title_rest_ph	Rolltitel (t.ex. kapten, chefskock)
 preset_help_rest	Kassör: sälja. Manager: sälja + varor + ogiltigförklara/ändra.
 kind_raw	Sammansatt lager

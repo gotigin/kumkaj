@@ -80,28 +80,6 @@ applied	Zastosowano
 note_ph	Uwaga (opcjonalnie)
 rounded	ZAOKRĄGLONE
 split	Podziel
-send_kot	Wyślij kupon
-send_kot_to	Wyślij → {kitchens}
-send_kot_again	Dodaj elementy do następnego odcinka
-send_kot_held	Wstrzymane elementy — wznów wysyłanie
-reprint_kot	Drukuj ponownie wybrany
-reprint_kot_ok	Wydrukowano ponownie pozycje {n} · Paski {slips} → {kitchens}
-reprint_kot_needed	Najpierw wyślij kupon – następnie dołącz leki i wydrukuj wybrane ponownie
-reprint_kot_none_selected	Każda wysłana pozycja jest pomijana — dotknij opcji W druku na tych, które chcesz wydrukować ponownie
-reprint_kot_client	Wydrukuj ponownie ({n}) dla wysłanego {place} — urządzenie sklepowe go wydrukuje
-print_cancelled_kot	Drukuj wszystko anulowane
-print_cancelled_kot_ok	Wydrukowane pozycje anulowane {n} · Potwierdzenia {slips} → {kitchens}
-print_cancelled_kot_needed	Najpierw otwórz tabelę z anulowanymi pozycjami
-print_cancelled_kot_none	Brak anulowanych pozycji w tym zamówieniu
-print_cancelled_kot_client	Druk anulowany ({n}) dla {place} wysłany — urządzenie sklepowe go drukuje
-kot_banner	Miły baner
-kot_banner_ph	Baner (pusty = brak)
-kot_item_prefix	Przedrostek przedmiotu
-kot_item_prefix_ph	np. [ANULOWANY]
-kot_strike	Ostrzeż nazwę przedmiotu
-kot_strike_note	Uwaga dotycząca przedmiotu uderzenia
-kot_strike_on	Włączone
-kot_strike_off	Wyłączone
 bill_item_layout	Układ przedmiotu
 bill_item_layout_columns	Kolumny
 bill_item_layout_stacked	Ułożone
@@ -130,8 +108,6 @@ bill_item_gap_em	Luka (em)
 bill_item_qty_min	Ilość min (em)
 bill_item_price_min	Cena min. (em)
 bill_item_amount_min	Kwota min (em)
-kot_item_qty_width	Kolumna Ilość
-kot_item_num_align	Ilość wyrównana
 bill_total_qty_label	Etykieta z całkowitą ilością
 bill_total_subtotal_label	Etykieta sumy częściowej
 bill_total_grand_label	Wielka suma etykieta
@@ -143,36 +119,9 @@ bill_item_piece_off	Wyłączone
 bill_total_qty	Całkowita ilość
 bill_total_subtotal	Suma podrzędna
 bill_total_grand	Wielka suma
-reprint_incl	W druku
-reprint_skip	Pomiń
-reprint_skip_meta	Pomiń wydruk odzyskiwania
-kot_dest_hint	Drukuje na drukarkach przypisanych do {kitchens} w Ustawieniach → Drukarki
-kot_sent_hint	Ostatnia wysyłka poszła do {kitchens}. Stuknij, aby dodać pozycje do następnego rachunku — lub Wydrukuj ponownie odcinek tego samego rachunku.
-kot_sent_printing	Dokument wysłany do {kitchens} — drukowanie
-kot_sent_not_printed	Dokument wysłany do {kitchens}, ale NIE wydrukowany: {why}. Poinformuj sklep, a następnie napraw drukarkę i wydrukuj ją ponownie.
-kot_sent_screen	Potwierdzenie wysłane do {kitchens}
-kot_queued_shop	Poślizg dla {place} → {kitchens} zapisany; urządzenie sklepowe je wydrukuje
-kot_job_label	Poślizg dla {place} → {kitchens}
-kot_job_reached	Poślizg dla {place} osiągnął {kitchens}
 kot_unassigned	Nieprzypisany
-kot_unassigned_held	Wstrzymano elementy {n} bez stacji — wznów linię, aby wysłać
-kot_station_ph	Stacja
-kot_station_dd	Stacja
-kot_station_dd_n	Stacja · {stations}
-kot_set_station	Skorzystaj z tej stacji
-kot_station_applied	Stacja ustawiona na elementach {n}: {station}
-kot_station_cleared	Stacja została usunięta z elementów {n}: {station}
-kot_station_needed	Najpierw wybierz sekcję przychodni
-kot_station_not_allowed	Nie wolno używać sekcji: {station}
-kot_station_none	Brak jeszcze stacji — nieużywane w sklepie stacjonarnym (Ustawienia → Obszary, jeśli to konieczne)
 pos_tab_items	Dodane pozycje
 pos_tab_payment	Płatność
-hold_send	Wstrzymaj
-hold_send_on	Trzymane
-hold_send_meta	Wstrzymano — nie na tym kuponie
-station_remove	Usuń stację
-station_remove_ph	Stuknij stację na liście, aby ją usunąć
-station_removed	Stacja usunięta: {name}
 settings_hub_title	Ustawienia
 settings_hub_help	Otwieraj jeden obszar na raz — mniej przewijania, wyraźniejsze wybory.
 settings_back	Powrót
@@ -181,12 +130,10 @@ settings_sec_country	Kraj i podatek
 settings_sec_tills	Inne urządzenia
 settings_sec_brand	Twoja marka
 settings_sec_units	Jednostki i konwersje
-settings_sec_pickers	Obszary · stacje · stawki podatkowe
+settings_sec_pickers	Stawki podatkowe
 settings_sec_printers	Drukarki
 settings_sec_bill	Format rachunku i kuponu
 settings_sec_selling	Schematy i sprzedaż
-bill_kot_tab_bill	Rachunek
-bill_kot_tab_kot	Poślizg
 settings_sec_alerts	Alerty
 alerts_help	Jak długo komunikaty o statusie pozostają na ekranie (w tym logowaniu).
 snack_secs_ph	Sekundy (3–60, domyślnie 10)
@@ -237,8 +184,6 @@ counter	Licznik
 dine_in	Licznik
 takeaway	Na wynos
 order	Zamówienie
-tables	Liczniki
-kitchen	Sekcje
 sales	Sprzedaż
 sales_refunds	Sprzedaż i zwroty pieniędzy
 day_close	Dzień blisko
@@ -266,10 +211,6 @@ zero_sales_on	Zezwól na 0 INR
 zero_sales_off	Wymagaj ceny
 zero_sales_saved_on	Dozwolona sprzedaż o wartości zerowej
 zero_sales_saved_off	Sprzedaż musi mieć cenę wyższą niż 0 INR
-floor_areas_help	Obszary to pomieszczenia lub strefy na piętrze (Dine In, Parcel, AC…). Najpierw dodaj obszar, a następnie umieść w nim liczniki — każdy obszar stanowi osobną grupę na podłodze.
-area_new_ph	Nowa powierzchnia/pokój (np. klimatyzacja, ogród)
-add_area	Dodaj obszar
-area_added	Obszar „{name}” gotowy — dodaj do niego liczniki
 no_favorites	Nie ma jeszcze ulubionych — dodaj pozycje z poniższej listy.
 add_to_bill	Dodaj do rachunku
 added	Dodano
@@ -280,19 +221,9 @@ chip_missing_customer	Brak wybranego klienta — wybierz ponownie
 chip_no_customer	Nie masz jeszcze klienta — wpisz nazwę, a następnie stuknij opcję Kredyt
 credit_summary_fmt	{} klienci · otwarty kredyt {} · posiadane zaliczki {}
 recent_label	Najnowsze:
-kot_new_waiting	NOWOŚĆ — czekam
-kot_preparing	PRZYGOTOWANIE
-kot_ready_serve	GOTOWE — podawaj
-kot_done_cap	GOTOWE
-kot_cancelled	ODWOŁANY
-kot_start_btn	Zacznij
-kot_mark_ready	Oznacz gotowe
-kot_done_btn	Gotowe
-table_free	Wolne — kliknij, aby rozpocząć składanie zamówienia
 start_order	Rozpocznij zamówienie
 open_bill	Otwórz rachunek
 collect_payment	Zbierz płatność
-table_running	Bieganie
 payment_pending	Płatność oczekująca
 collect_at_counter	zbieraj przy ladzie
 inventory	Zapasy
@@ -325,7 +256,6 @@ ok	OK
 this_shop	Tryb serwera
 extra_till	Tryb klienta
 off	Wyłączone
-tables_kitchen	Układ sklepu
 server	Tryb serwera
 client	Tryb klienta
 language_currency	Język i waluta
@@ -367,8 +297,6 @@ add_item_plain	Dodaj pozycję
 add_note	Dodaj notatkę
 add_opening_balance	Dodaj saldo otwarcia
 add_staff	Dodaj personel
-add_station	Dodaj stację
-add_table	Dodaj stół jadalny
 add_unit	Dodaj jednostkę
 add_use_name	Dodaj/użyj tej nazwy
 allow_extra_tills	Zezwalaj na dodatkowe kasy
@@ -421,7 +349,6 @@ share_whatsapp	Udostępnij WhatsApp
 lan_pages_heading	Strony klientów w sieci Wi-Fi
 lan_pages_help	W sieci Wi-Fi tego sklepu strony klientów służą do wyświetlania informacji zwrotnych. Osoby korzystające z mobilnej transmisji danych będą potrzebować chmury później. Terminal kartowy lub łącze płatnicze są opcjonalne i nigdy nie blokują kasy.
 diag_send_heading	Udostępnij to urządzenie
-kot_dest_heading	Stacja
 optional_login_heading	Opcjonalne logowanie
 rights_heading	Prawa
 ops_panel	Lokalne operacje
@@ -448,28 +375,6 @@ till_voucher_amt_ph	Kwota kuponu (puste = wszystkie)
 till_wallet_topup_ph	Doładuj kwotę portfela
 till_voucher_issue_amt_ph	Wydaj kwotę kuponu
 till_voucher_issue_code_ph	Nowy kod kuponu
-split_evenly	Podziel równomiernie
-waitlist	Lista oczekujących
-fire_course	Następny krok
-hold_item	Wstrzymaj
-waiter_call	Zadzwoń do kasjera
-waitlist_add	Dodaj do listy oczekujących
-floor_view_grid	Siatka
-floor_view_layout	Układ
-floor_layout_x	X
-floor_layout_y	Y
-floor_layout_w	W
-floor_layout_h	H
-floor_layout_save	Zapisz układ
-floor_layout_open	Otwarty stół jadalny
-floor_layout_edit	Edytuj układ
-floor_layout_pick	Kliknij stół, aby edytować jego układ
-floor_layout_saved	Układ został zapisany
-floor_layout_nudge_left	← 20
-floor_layout_nudge_right	→ 20
-floor_layout_nudge_up	↑ 20
-floor_layout_nudge_down	↓ 20
-sibling_pickers_help	Kliknij opcję Włącz/Wyłącz podobne jednostki — ukryj obszary, stacje i stawki podatkowe przed codziennymi zbieraczami; domyślne ustawienia pakietu pozostają.
 bulk_price_apply	Zastosuj cenę zbiorczą
 card_terminal_optional	Terminal do kart / łącze płatnicze (opcjonalnie, jeśli dostępny jest internet)
 copy_report	Skopiuj raport
@@ -495,7 +400,6 @@ import_day	Dzień importu
 import_items_csv_plain	Importuj pozycje CSV…
 import_parties_csv	Importuj klientów i dostawców CSV…
 item_name	Nazwa przedmiotu
-kitchen_printing	Drukarki
 login_id_ph	Nazwa użytkownika
 mark_cleared	Marek oczyścił
 new_party_clear	Nowy klient lub dostawca (czytelny formularz)
@@ -565,15 +469,6 @@ show	Pokaż
 spreadsheet_csv	Arkusz kalkulacyjny (CSV)
 start_fresh	Zacznij od nowa
 stop_extra_tills	Zatrzymaj dodatkowe kasy
-floor_cols_ph	Kolumny
-floor_cols_fit	Dopasuj ekran
-floor_cols_fit_sub	{n} pasuje tutaj
-floor_cols_fits	pasuje
-floor_cols_scroll	przewija się na boki
-floor_cols_min	Kolumny: co najmniej 1 — lub pozostaw puste, aby zmieściły się na ekranie
-floor_zoom_auto	Automat
-floor_zoom_out	Pomniejsz
-floor_zoom_in	Powiększ
 backup_auto	Kopia zapasowa wykonywana automatycznie codziennie · ostatnie {when} · ostatnie 14 dni są przechowywane w {dir}.
 backup_auto_none	Kopia zapasowa tworzona automatycznie każdego dnia — pierwsza zostanie uruchomiona za chwilę.
 backup_copy_to	Kopie trafiają również do {dir}.
@@ -591,7 +486,6 @@ new_pair_code	Nowy kod parowania
 pair_finishing	Kończąca para… stosowanie ksiąg sklepowych
 pair_opening	Otwieranie kasy…
 pair_copied	Kod parowania został skopiowany
-kot_waiting	Czekam na wysłanie
 lan_offline_waiting	Serwer sklepu nieosiągalny · {n} czeka
 lan_connecting	Łączę ze sklepem…
 lan_live	Na żywo
@@ -633,7 +527,6 @@ printers_routes_help	Znajdź drukarki, które system operacyjny już zna. Przypi
 printer_assign_dd	Prawdziwa drukarka: {place}
 printer_assign_pick	Wybierz prawdziwą drukarkę
 printer_profile_heading	Układ
-printer_send_heading	Dostawa
 vp_delivery_heading	Dostawa
 vp_delivery_help	Jak ta wirtualna drukarka wysyła zadania — dokument systemu operacyjnego, surowe bajty lub ESC/POS. Treść kuponu (rozmiar typu, opakowanie, marginesy) jest ustalana na podstawie formatu rachunku/listu, a nie tutaj.
 vp_type_size_heading	Wpisz rozmiar
@@ -677,23 +570,13 @@ virtual_draft_send	Wartość ustawiona dla następnej drukarki wirtualnej
 virtual_need_real	Najpierw wybierz prawdziwą drukarkę
 virtual_need_select	Wybierz drukarkę wirtualną do usunięcia
 real_printer_selected	Wybrane: {name}
-station_group_heading	Drukarki wirtualne
-station_group_apply	Usuń drukarkę wirtualną
-station_group_applied	Usunięto
-station_group_empty	Wybierz drukarkę wirtualną
-station_group_name_ph	Nazwa drukarki wirtualnej (opcjonalnie)
-station_group_save	Utwórz wirtualną drukarkę
-station_group_saved	Drukarka wirtualna została zapisana
-station_manage_heading	Dodaj lub usuń sekcję przychodni
 printers_routes_heading	Gdzie wszystko się drukuje
 route_pick_heading	Miejsce
 route_editing	Edycja: {name}
 route_assigned	Dodano {printer} do {place}
 route_already_assigned	Już w tym miejscu: {printer}
-route_removed	Usunięto {printer} z {place}
 route_cleared	Wyczyszczono {name}
 route_assigned_empty	Żadnego w tym miejscu
-route_tap_remove	dotknij, aby usunąć
 route_tap_select	dotknij, aby wybrać
 route_tap_selected	wybrane
 route_pick_printer_first	Najpierw dotknij drukarki
@@ -714,35 +597,17 @@ printer_format_custom	Nowy profil niestandardowy
 printer_format_custom_label	Niestandardowe
 printer_format_custom_added	Dodano niestandardowy profil dla tego miejsca
 add_printer	Dodaj drukarkę
-remove_printer	Usuń
 route_pick_ph	Rachunek lub sekcja przychodni
 route_bill	Rachunek
-route_default_kitchen	Brak stacji (nieprzypisane elementy)
-route_kot_station	Stacja
 route_dont_print	Brak drukarki
-stations_heading	Stacje
-stations_help	Sekcje apteczne grupują leki i drukarki dla tej części sklepu. Podłącz drukarki, wybierając Ustawienia → Drukarki, ustaw kolejność prób, a następnie opcję Najpierw działa lub Drukuj na wszystkich. Zmiany są zapisywane na bieżąco.
-station_print_heading	Drukarki dla tej stacji
-station_print_help	Wybierz stację, a następnie podłącz jedną lub więcej drukarek. ↑↓ ustala kolejność prób. Pierwsze, co działa, kończy się po pierwszym sukcesie; Drukuj na wszystkich wysyłkach do każdej podłączonej drukarki.
-station_print_pick_ph	Stanowisko do ustawiania drukarek
 station_print_pick_first	Najpierw wybierz sekcję przychodni
-station_print_editing	Edycja drukarek dla „{name}”
-station_vps_dd	Drukarki dla tej stacji
-station_vps_dd_n	{n} drukarki · dotknij, aby zmienić
 station_vps_empty	Nie ma jeszcze drukarek — znajdź je w Ustawieniach → Drukarki
 bill_printers_dd	Drukarki za rachunek
 bill_printers_dd_n	{n} drukarki do rachunku · dotknij, aby zmienić
-job_layout	Układ
-job_delivery	Jak praca jest wysyłana
-job_delivery_help	Dokument systemu operacyjnego, surowe bajty lub ESC/POS. Rachunek i bilet zachowują swoje własne. Każde zadanie może zostać przesłane do dowolnej drukarki zapisanej przez Find.
 station_vp_attached	Drukarka podłączona
 station_vp_detached	Drukarka usunięta ze stacji
-station_print_summary	{mode} · {n} drukarki
-station_print_summary_none	Na tej stacji nie ma jeszcze drukarek — nie będzie drukować
-stations_none	Nie ma jeszcze stacji — dodaj jedną poniżej. Stacje są nieużywane w sklepie przy ladzie — pozostaw puste.
 route_up	W górę
 route_down	W dół
-route_remove	Usuń
 route_clear	Jasne
 save_printers	Oszczędzaj drukarki
 print_test_page	Wydrukuj stronę testową
@@ -751,23 +616,15 @@ test_page_no_printer	Brak drukarki przez {place} — podłącz do niej drukarkę
 test_page_pick_first	Najpierw wybierz drukarki do strony testowej, a następnie Wydrukuj stronę testową
 test_printers_dd	Drukarki do strony testowej
 test_printers_dd_n	{n} drukarek dla strony testowej · dotknij, aby zmienić
-kot_test_printers_dd	Drukarki do wydruku testowego
-kot_test_printers_dd_n	Drukarki {n} do wydruku testowego · dotknij, aby zmienić
 test_printer_picked	Testuj na: {name}
 test_printer_cleared	Nie testuję na: {name}
 test_page_sent_n	Strona testowa wysłana do {n} drukarek
-test_kot_pick_first	Najpierw wybierz drukarki do wydruku testowego, a następnie do wydruku testowego
-test_kot_sent_n	Wydruk testowy wysłany do drukarek {n}
-cancel_pick	Marek
-cancel_pick_on	Oznaczone
-cancel_pick_meta	Oznaczono do anulowania
 batch_cancel	Anuluj zaznaczone
 batch_cancel_n	Anuluj zaznaczone ({n})
 batch_cancel_none	Najpierw zaznacz jedną lub więcej wysłanych przesyłek, a następnie zaznacz opcję Anuluj
 batch_cancel_title	Anuluj zaznaczone leki — jeden powód, jeden odcinek anulowania na sekcję
 batch_cancel_ok	Anulowano pozycje {n} · {slips} anulował odcinek(-y) → {kitchens}
 batch_cancel_ok_noprint	Anulowano pozycje {n} — automatyczne drukowanie jest wyłączone, więc nie ma potwierdzenia anulowania
-no_printer_kitchen_station	Brak drukarki dla tej stacji
 printers_saved	Zapisano
 test_page_sent	Wysłano stronę testową — sprawdź drukarkę
 test_page_sent_one	Strona testowa wysłana do {name} — sprawdź tę drukarkę
@@ -783,10 +640,7 @@ cancelled	Anulowano
 printers_tap_find	Kliknij Znajdź, aby wyświetlić listę drukarek, z których może korzystać to urządzenie.
 printers_none_found	Nie znaleziono żadnej — wpisz nazwę drukarki systemowej lub adres IP (np. 192.168.1.50).
 printer_from_find	Dodano {name}
-kot_printer_ph	Drukarka do kartek
 bill_printer_ph	Drukarka do rachunków
-kot_print_on	Automatyczne drukowanie biletów: włączone
-kot_print_off	Automatyczne drukowanie biletów: wyłączone
 queue_refused	Sklep nie przyjął ({n}) — każdą sprawdź przy kasie:
 clear_not_accepted	Zaznaczone — wyczyść tę listę
 device_name_ph	Nazwa tego urządzenia
@@ -797,7 +651,6 @@ backup_failed	Ostatnia automatyczna kopia zapasowa nie powiodła się: {e}
 backup_overdue	Brak kopii zapasowej przez {n} dni — pozostaw aplikację otwartą na tym urządzeniu, aby móc wykonać kopię zapasową.
 disk_low	Tylko {mb} MB wolnego miejsca na tym urządzeniu — tworzenie kopii zapasowych wkrótce nie powiedzie się. Zwolnij trochę miejsca.
 last_seen_devices	Ostatnio widziany: {time}
-sync_interval	Synchronizuj co {secs} s
 connection_to_shop	Połączenie ze sklepem
 supplier_name_ph	Nazwa dostawcy (lub klienta)
 supplier_ph	Dostawca
@@ -860,7 +713,6 @@ fresh_book_tabiyat	Świeży = pusty katalog (dodaj pozycje później). Książka
 fresh_selected	Świeżo wybrane — katalog pozostaje pusty. Kliknij Gotowe, gdy będziesz gotowy.
 gross_word	Brutto
 how_start	Jak chcesz zacząć?
-kot_print_help_tabiyat	Nie używany w sklepie stacjonarnym.
 later_country_pack	Później: Ustawienia → zastosuj pakiet krajowy dla etykiet podatków i płatności.
 local_badge	LOKALNE
 mix_type_hint_tabiyat	W razie potrzeby podziel na gotówkę / UPI / kartę / kredyt. Kredyt potrzebuje klienta powyżej.
@@ -911,8 +763,6 @@ staff_copy_need_source	Wybierz, czyją konfigurację chcesz skopiować
 staff_copy_same	To ta sama osoba — wybierz kogoś innego
 staff_rename_need_selected	Wybierz, kogo najpierw zmienić nazwę
 team_pick_hint	Wybierz, kogo chcesz edytować — ekrany, prawa do pieniędzy i stacje będą wyświetlane tylko dla tej osoby.
-team_stations_help	Stacje, z których mogą korzystać
-team_stations_changed	Stacje zmienione — Zapisz konfigurację dla tej osoby
 team_features_changed	Zmieniono ekrany — Zapisz konfigurację dla tej osoby
 team_rights_changed	Zmieniono uprawnienia — Zapisz konfigurację dla tej osoby
 they_owe_us	Są nam winni
@@ -996,9 +846,6 @@ service_pct_ph	Usługa % opcjonalna 0/10/12
 short_code_ph	Krótki kod (MG02)
 starting_password_ph	Hasło startowe (opcjonalnie)
 starting_pin_ph	Zaczynając od PIN (4–12 cyfr)
-station_name_ph	Nazwa stacji (opcjonalnie)
-station_new_ph	Sekcja (opcjonalnie)
-table_name_ph	Nazwa licznika / pola
 tax_rate_ph	Nazwa stawki podatku lub % — Standardowa, Obniżona, 0, 5, 12, 18, 20
 to_code_ph	Do kodu (kg)
 uncleared_no_ph	Niewyjaśniony # powyżej
@@ -1011,27 +858,8 @@ book_kind_month	Księgi tego miesiąca
 book_kind_aging	Zaległość / kredyt debetowy
 book_kind_balance	Bilans
 order_help	Kliknij pozycję, aby go dodać.
-floor_help	Ten sklep sprzedaje przy kasie. Stoły i podłoga w jadalni nie są częścią Tabiyat.
-kitchen_help	Nie używany w sklepie stacjonarnym.
-kitchen_empty	Brak otwartych biletów (sklepy kasowe zwykle pozostawiają ten ekran nieużywany).
-add_a_table	Dodaj stół jadalny
-add_station_heading	Dodaj sekcję apteczną
 categories_help	Kliknij Użyj, aby umieścić powyższy pozycję w tej kategorii. Zdjęcie nadaje kategorii obraz; bez jednego pokazuje swoje inicjały.
 dish_search_ph	Wyszukaj nazwę, sól lub kod kreskowy…
-tile_free	Puste
-tile_occupied	Zajęty
-tile_food_ready	Jedzenie gotowe
-tile_bill_printed	Wydrukowano rachunek
-tile_paid	Płatny
-tile_bill_btn	Rachunek
-tile_occupy_btn	Usiądź gości
-tile_free_btn	Opuść stół jadalny
-tile_ready_btn	Opuść stół jadalny
-tile_undo_bill	Cofnij rachunek
-summary_busy	stoły w jadalni są zajęte
-summary_to_collect	zbierać
-summary_on_floor	w jadalni
-floor	Sklep
 sizes_as_items_ph	Rozmiary jako osobne pozycje (opcjonalnie) — połowa = 120, pełna = 200
 dish_group_ph	Siła/grupa opakowania (opcjonalnie) – np. Pasek 500 mg
 discount	Rabat
@@ -1039,7 +867,6 @@ remove_discount	Usuń rabat
 apply_discount	Zastosuj zniżkę
 save_opening_cash	Zaoszczędź gotówkę na otwarcie
 close_shift_print	Zamknij zmianę i wydrukuj odcinek
-area_prices_ph	Ceny obszarowe (opcjonalnie) — AC=220, Paczka=210
 discount_ph	10% lub 50
 discount_reason_ph	Powód (np. stały gość, późne jedzenie)
 opening_float_ph	Gotówka włożona do szuflady dziś rano
@@ -1049,34 +876,18 @@ shift_handover	Przekazanie zmiany
 shift_since	Ta zmiana od
 expected_in_drawer	Oczekiwane w szufladzie
 right_discount	Daj zniżkę
-floor_in_kitchen	W toku
-floor_eating	Podawane
 pick_category	Wybierz kategorię
 close_category_list	Zamknij listę kategorii
 new_category_row	Nowa kategoria — utworzona po zapisaniu pozycji
 your_category	Twoja kategoria
 suggested_category	Sugerowane — z naszych produktów
 category_search_ph	Kategoria — wyszukaj swoją lub wpisz nową
-line_sent_state	Wysłano
-line_nc_state	Bezpłatnie (NC) — nie jest pobierana opłata
 cancel_item_short	Anuluj
-nc_short	Gratis
-charge_again_short	Ładuj
-move_short	Rusz się
 cancel_item_title	Anuluj ten przedmiot — dział obsługi klienta otrzymuje potwierdzenie anulowania
-nc_item_title	Spraw, aby ten przedmiot był bezpłatny (NC)
-charge_again_title	Naładuj ten przedmiot ponownie
-move_item_title	Przenieś ten przedmiot na inny stół w jadalni
-already_cooked	Już ugotowane (marnotrawstwo)
-not_cooked_yet	Jeszcze nie ugotowane
 return_to_customer	Wróć do klienta
 short_by	Krótko
 tip_not_sale	Napiwek (dla personelu, nie na sprzedaż)
 right_settle	Przyjmij płatność
-right_cancel_sent	Anuluj wysłany przedmiot
-right_complimentary	Bezpłatne (NC)
-right_move_table	Przenieś/scal liczniki
-right_reprint	Wydrukuj rachunek ponownie
 right_allowed	Dozwolone
 right_with_approval	Z aprobatą
 right_denied	Niedozwolone
@@ -1086,25 +897,11 @@ no_server_found	Nie znaleziono żadnych. Na serwerze: Ustawienia → Inne urząd
 servers_found_pick	Kliknij sklep, z którym chcesz się połączyć.
 server_host_selected	Używając {host} — wprowadź kod parowania, a następnie Połącz teraz.
 print_bill	Wydrukuj rachunek
-table_actions	Działania przeciwne
-move_merge_table	Przenieś / połącz stół jadalny
-move_help	Przenieś zamówienie tego licznika na wolny stół lub połącz go z działającym.
-move_target_ph	Nazwa licznika
 approval_pin_ph	Menedżer PIN (tylko jeśli zostaniesz o to poproszony)
-move_here	Przenieś się tutaj
-merge_into	Wtapiaj się w to
-line_reason_ph	Powód (np. klient zmienił zdanie, brak towaru w magazynie)
-line_qty_ph	Ile anulować (puste = wszystkie)
-line_target_ph	Przejdź do stołu jadalnego (np. D5)
 confirm	Potwierdź
 menu_search_ph	Wyszukaj przedmiot lub krótki kod
 customer_paid_ph	Klient zapłacił
 tip_ph	Wskazówka
-table_area_ph	Obszar (np. Dine In, Parcel, AC)
-table_range_ph	Wiele na raz: D1-D20
-add_these_tables	Dodaj te liczniki
-remove_these_tables	Usuń te liczniki
-table_remove_ph	Usuń: T1-T24 lub nazwę jednego stołu jadalnego
 find_server	Znajdź serwer sklepu
 bill_format	Format rachunku
 bill_format_help	Drukowane pod nazwą Twojego sklepu na każdym rachunku. Oddziel linie znakiem | (np. MG Road, Rajkot | Ph 98250 00000).
@@ -1112,78 +909,32 @@ bill_header_ph	Adres | telefon
 fssai_ph	Pozwolenie na lek nr. (opcjonalnie – Twoje sformułowanie)
 bill_footer_ph	Stopka (np. Dziękuję, odwiedź ponownie)
 save_bill_format	Zapisz format rachunku
-kot_format	Format poślizgu
-kot_format_help	Kliknij pole na liście. Pokaż, rozmiar czcionki i grubość mają zastosowanie do tego pola na wybranym powyżej rodzaju kuponu. Każdy rodzaj zachowuje swoje własne rozmiary i wagę.
-kot_format_fields	Pola
-kot_field_next	Następne pole
-kot_field_show	Pokaż
-kot_field_hide	Ukryj
 kot_field_on	pokaż
 kot_field_off	ukryć
-kot_field_size	Rozmiar czcionki
-kot_field_size_ph	np. 16, 20, 24, 28, 32…
 kot_weight_light	Światło
 bill_kot_panel_help	Układ rachunku i szerokość treści. Kasjer wystawił lub uregulował rachunek — pełna historia sprzedaży pozostaje w księgach.
 std_size_ph	np. 18, 20, 26…
-kot_show_shop	Nazwa sklepu
-kot_hide_shop	Ukryj sklep
-kot_show_time	Czas
-kot_hide_time	Ukryj czas
-kot_show_waiter	Kasjer
-kot_hide_waiter	Ukryj kasjera
-kot_show_station	Stacja
-kot_hide_station	Ukryj stację
-kot_show_table	Licznik
-kot_hide_table	Ukryj stół jadalny
-kot_show_kot_no	Numer biletu
-kot_hide_kot_no	Ukryj numer biletu
-kot_width	Podgląd zawijania (ustaw szerokość zawartości na zakładce poślizgu)
-kot_width_58	58 mm
-kot_width_80	80 mm
-kot_kind_heading	Rodzaj biletu
-kot_kind_original	Oryginał
-kot_kind_duplicate	Duplikat
-kot_kind_modified	Zmodyfikowany
-kot_kind_cancelled	Anulowano
-kot_style_heading	Rozmiar i waga typu pola
-kot_style_title	Tytuł
-kot_style_item_qty	Pozycja · Ilość
-kot_style_field_pick	Wybierz pole
 kot_weight_regular	Regularne
 kot_weight_bold	Odważne
-kot_align	Wyrównaj
 kot_align_start	Zacznij
 kot_align_center	Centrum
 kot_align_end	Koniec
 content_width	Szerokość zawartości (mm)
 content_width_bill	Szerokość zawartości banknotów (mm)
-content_width_kot	Szerokość zawartości biletu (mm)
 content_width_ph	Możesz też wpisać szerokość treści 40–210 mm
 content_width_help	Jak szeroki jest wydruk tego poślizgu. Bill zachowuje swoją szerokość.
 content_width_bill_help	Szerokość wydruku rachunku klienta. Domyślnie 210 mm (strona). Wąska kartka 58 mm, szerokość 80 mm, 112 mm 4 cale, szerokość A4 210 mm. Wpisz dowolną wartość od 40 do 210. Bilety mają własną szerokość na zakładce kuponu.
-content_width_kot_help	Szerokość wydruku biletu. Domyślnie 80 mm. Pasek wąski 58 mm, pasek szeroki 80 mm, 112 mm 4 cale, strona 210 mm. Wpisz dowolną wartość od 40 do 210. Rachunki klientów mają swoją własną szerokość na karcie Rachunek.
 vp_paper_width	Szerokość zawartości (mm)
 vp_paper_width_ph	Możesz też wpisać szerokość treści 40–210 mm
 vp_paper_width_help	Szerokość treści ustalana jest w formacie Bill & Slip – osobno dla rachunku (domyślnie 210 mm) i biletu (domyślnie 80 mm).
-kot_size	Rozmiar czcionki
-kot_size_s	Mały
-kot_size_m	Normalne
-kot_size_l	Duży
 std_size	Rozmiar czcionki
 kot_copies	Kopie
 kot_copies_1	1
 kot_copies_2	2
 kot_copies_3	3
-kot_title_ph	Tytuł (puste = BILET)
-kot_footer_ph	Notatka z back-office (opcjonalnie)
-kot_preview	Podgląd
-save_kot_format	Zapisz format slajdu
-test_kot_format	Wydruk testowy
-test_kot_sent	Wysłano podgląd biletu
 test_bill_format	Rachunek testowy
 test_bill_sent	Wysłano podgląd rachunku
 test_print_no_printer	Brak drukarki dla tego zadania — wybierz ją na tym ekranie
-kot_format_saved	Zapisano format slajdu
 std_print	Rozmiar wydruku rachunku
 std_print_help	Rozmiar czcionki dla standardowych zadań rachunków w orientacji pionowej i poziomej na drukarkach z systemem operacyjnym/dokumentów (wprowadź punkty — nie Mały/Normalny/Duży). Ten sam rozmiar w obu orientacjach.
 std_size_s	Mały
@@ -1223,23 +974,16 @@ upi_qr	UPI QR
 show_upi_qr	Pokaż UPI QR
 close_upi_qr	Zamknij
 upi_qr_help	Klient skanuje i płaci. Kliknij Przyjmij płatność po zapłaceniu. Drugi ekran: otwórz adres URL serwera/wyświetl w sieci LAN.
-kot_recall	Przypomnij sobie
 recently_done	Niedawno zrobione
-recall_kot_ph	Bilet nr do przypomnienia
 role_help_customer	Rola: Klient — księga kredytowa (jest nam winien). Ten sam klient lub dostawca może również dostarczać zapasy.
 role_help_both	Role: Klient + Dostawca — jeden klient lub dostawca, księga kredytowa i księga zobowiązań, netto w Raportach.
 role_help_supplier	Rola: Dostawca — jesteśmy im winni zakupy.
-dine_in_pick_table	Nie używany w sklepie stacjonarnym
-choose_table	Wybierz licznik
-change_table	Zmień stół jadalny
-pick_table_banner	Wybierz stół do jadalni dla tego zamówienia
 items_word	przedmioty
 items_section	Przedmioty
 back_to_order	Powrót do porządku
 new_items_head	Jeszcze nie wysłane
 price_ph	Cena
 price_ph_gst_inside	Cena ({tax} włącznie)
-cancel_needs_table	Sprzedaż w kasie pozostaje na bilecie do momentu przyjęcia płatności
 tax_rates_missing_hint	Brak stawki {tax} dla tych pozycji — dla ustawionych pozycji Stawka podatku (ceny obejmują już {tax} poniżej {tax} włącznie)
 taxable_value	Wartość podlegająca opodatkowaniu
 gst_inside_price_note	({tax} włącznie)
@@ -1260,30 +1004,11 @@ client_template_confirm	Dodać elementy {d} z {title}? Przedmioty, które już p
 client_template_importing	Importowanie {title}…
 client_template_done	Każdy przedmiot z {title} znajduje się na Twoich przedmiotach.
 client_template_imported	Dodano elementy {d} i kategorie {c} z {title}
-resv_heading	Rezerwacje
-resv_name_ph	Nazwa klienta
-resv_phone_ph	Telefon (opcjonalnie)
-resv_guests_ph	Ludzie
-resv_when_ph	Kiedy — 20:30, jutro 13:00
-resv_table_ph	Licznik (opcjonalnie)
-resv_add	Rezerwuj
-resv_seat	Siedzący
-resv_none	Nie nadchodzą żadne rezerwacje.
-guests_word	goście
-delivery_by_ph	Dostawa przez (nazwisko pasażera lub pracownika)
-kitchen_all_day	Gotować teraz: {items}
-split_bill	Podzielony rachunek
-split_go	Zrób oddzielny rachunek
 cancel	Anuluj
 opening_client	Otwieram klienta…
 preparing_desk	Przygotowanie biurka…
 opening_server	Otwieram serwer…
 creating_server	Tworzę serwer…
-split_help	Kliknij pozycje, za które płaci jeden klient · Wybrane przez {n}
-split_send_first	Najpierw wyślij kupon — tylko pozycje, które znajdują się w biurze, mogą zostać wystawione na osobny rachunek
-split_pick_some	Najpierw dotknij pozycji dla osobnego rachunku
-split_done	Rachunek wystawiony osobno – leży na podłodze obok lady
-split_marked	odrębny rachunek
 order_empty_pick	Zamów puste — dotknij Dodaj elementy powyżej, aby wybrać pozycje.
 add_dishes	Dodaj leki
 order_so_far	W tej kolejności: {n} · {total}
@@ -1294,24 +1019,8 @@ pick_done_dd	Gotowe · {label}
 printer_route_mode	Jeśli w tym miejscu jest kilka drukarek
 printer_mode_first	Po pierwsze, to działa
 printer_mode_all	Drukuj na wszystkim
-kot_show_area	Obszar
-kot_hide_area	Ukryj obszar
-kot_show_item_hdr	Pozycja · Ilość
-kot_hide_item_hdr	Ukryj kolumny
-kot_show_title	Linia tytułowa
-kot_hide_title	Ukryj tytuł
-kot_field_order	Zamówienie wydruku
 kot_field_up	Przesuń się w górę
 kot_field_down	Przesuń w dół
-kot_field_cycle	Wybierz dalej
-kot_field_select	Wybierz dalej
-kot_field_time	Czas
-kot_field_kot_no	Numer biletu
-kot_field_area	Obszar
-kot_field_table	Licznik
-kot_field_shop	Nazwa sklepu
-kot_field_waiter	Personel
-kot_field_station	Stacja
 app_template_blurb_extra	Także: Właściciel Zahir, Admin Asif, Kasjer Nawaz; przedni pasek boczny; historia po 4 godzinach; Dzisiaj się rozbierz; kompaktowy rachunek.
 dishes_n	Elementy {n}
 recipe_ph	Przepis (opcjonalnie – nieużywany w sklepie)
@@ -1321,8 +1030,6 @@ low_stock_alert	Kończy się — kup wkrótce: {items}
 unpriced_note	Przedmioty {n} na Twoich przedmiotach nie mają jeszcze ceny — opłata wynosi 0, dopóki jej nie ustawisz.
 show_unpriced	Pokaż tylko przedmioty bez ceny
 show_all_dishes	Pokaż wszystkie elementy
-role_waiter	Kasjer
-role_kitchen	Sklep
 role_title_rest_ph	Stanowisko (np. kapitan, główny kucharz)
 preset_help_rest	Kasjer: sprzedaj. Menedżer: sprzedaj + przedmioty + unieważnij/zmień.
 kind_raw	Zapasy złożone

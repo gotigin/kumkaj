@@ -80,28 +80,6 @@ applied	적용
 note_ph	메모(선택)
 rounded	반올림
 split	나누기
-send_kot	전표 보내기
-send_kot_to	전송 → {kitchens}
-send_kot_again	다음 전표에 항목 추가
-send_kot_held	보류된 항목 - 전송 보류를 해제합니다.
-reprint_kot	선택 재인쇄
-reprint_kot_ok	{n} 항목을 다시 인쇄함 · {slips} 전표 → {kitchens}
-reprint_kot_needed	먼저 전표를 보낸 다음 약품을 포함하고 선택한 약품을 다시 인쇄하세요.
-reprint_kot_none_selected	보낸 모든 항목을 건너뜁니다. 다시 인쇄하려면 인쇄 중을 탭하세요.
-reprint_kot_client	전송된 {place}에 대해 다시 인쇄({n}) - 상점 장치에서 인쇄합니다.
-print_cancelled_kot	취소 모두 인쇄
-print_cancelled_kot_ok	인쇄된 {n} 취소 항목 · {slips} 전표 → {kitchens}
-print_cancelled_kot_needed	취소된 항목이 있는 테이블을 먼저 엽니다.
-print_cancelled_kot_none	이 주문에는 취소된 항목이 없습니다.
-print_cancelled_kot_client	전송된 {place}에 대한 인쇄가 취소됨({n}) — 상점 장치에서 인쇄합니다.
-kot_banner	배너
-kot_banner_ph	배너(비움=없음)
-kot_item_prefix	항목 접두사
-kot_item_prefix_ph	예: [CANCELLED] 
-kot_strike	파업 아이템 이름
-kot_strike_note	파업 아이템 참고
-kot_strike_on	켜기
-kot_strike_off	끄기
 bill_item_layout	항목 레이아웃
 bill_item_layout_columns	열
 bill_item_layout_stacked	세로
@@ -130,8 +108,6 @@ bill_item_gap_em	간격 (em)
 bill_item_qty_min	수량 최소 (em)
 bill_item_price_min	단가 최소 (em)
 bill_item_amount_min	금액 최소 (em)
-kot_item_qty_width	수량 열
-kot_item_num_align	수량 정렬
 bill_total_qty_label	총수량 라벨
 bill_total_subtotal_label	소계 라벨
 bill_total_grand_label	총계 라벨
@@ -143,36 +119,9 @@ bill_item_piece_off	끄기
 bill_total_qty	총 수량
 bill_total_subtotal	소계
 bill_total_grand	합계
-reprint_incl	인쇄 포함
-reprint_skip	건너뛰기
-reprint_skip_meta	재인쇄 제외
-kot_dest_hint	설정 → 프린터 에서 {kitchens} 에 할당된 프린터에 출력됩니다
-kot_sent_hint	마지막 전송은 {kitchens}로 이동했습니다. 탭하여 다음 청구서에 항목을 추가하거나 동일한 청구서에 대해 전표를 다시 인쇄하세요.
-kot_sent_printing	{kitchens}에 전표 전송 — 인쇄 중
-kot_sent_not_printed	{kitchens}로 전송되었지만 인쇄되지 않은 전표: {why}. 가게에 말한 다음 프린터를 수리하고 다시 인쇄하십시오.
-kot_sent_screen	{kitchens}로 전송된 전표
-kot_queued_shop	{place}에 대한 슬립 → {kitchens}가 저장되었습니다. 상점 장치가 그것을 인쇄합니다
-kot_job_label	{place} → {kitchens}용 슬립
-kot_job_reached	{place}의 슬립이 {kitchens}에 도달했습니다.
 kot_unassigned	할당되지 않음
-kot_unassigned_held	스테이션 없이 {n} 항목 보관 — 전송하려면 회선 보류를 해제하세요.
-kot_station_ph	스테이션
-kot_station_dd	스테이션
-kot_station_dd_n	역 · {stations}
-kot_set_station	이 스테이션 사용
-kot_station_applied	{n} 항목에 설정된 스테이션: {station}
-kot_station_cleared	{n} 항목에서 지워진 스테이션: {station}
-kot_station_needed	진료실을 먼저 선택하세요
-kot_station_not_allowed	섹션 사용이 허용되지 않음: {station}
-kot_station_none	아직 역 없음 - 카운터 상점에서 사용되지 않음(필요한 경우 설정 → 지역)
 pos_tab_items	담은 항목
 pos_tab_payment	결제
-hold_send	보류
-hold_send_on	대기 중
-hold_send_meta	보류 — 이 전표에는 없습니다
-station_remove	스테이션 제거
-station_remove_ph	목록의 스테이션을 탭하여 제거합니다
-station_removed	스테이션이 제거됨: {name}
 settings_hub_title	설정
 settings_hub_help	한 번에 한 영역만 엽니다 — 스크롤은 줄고 선택은 분명해집니다.
 settings_back	뒤로
@@ -181,12 +130,10 @@ settings_sec_country	국가와 세금
 settings_sec_tills	추가 계산대와 지점
 settings_sec_brand	브랜드 정보
 settings_sec_units	단위 및 변환
-settings_sec_pickers	영역 · 스테이션 · 세율
+settings_sec_pickers	세율
 settings_sec_printers	프린터
 settings_sec_bill	계산서·전표 형식
 settings_sec_selling	계획 및 판매
-bill_kot_tab_bill	계산서
-bill_kot_tab_kot	전표
 settings_sec_alerts	알림
 alerts_help	상태 메시지가 화면에 머무는 시간(이 로그인).
 snack_secs_ph	초 (3–60, 기본 10)
@@ -237,8 +184,6 @@ counter	카운터
 dine_in	카운터
 takeaway	포장
 order	주문
-tables	카운터
-kitchen	구역
 sales	판매
 sales_refunds	판매와 환불
 day_close	마감
@@ -266,10 +211,6 @@ zero_sales_on	0원 판매: 켜짐
 zero_sales_off	0원 판매: 꺼짐
 zero_sales_saved_on	0원 판매 허용 저장됨(켜짐)
 zero_sales_saved_off	0원 판매 허용 저장됨(꺼짐)
-floor_areas_help	지역은 바닥에 있는 방 또는 구역입니다(Dine In, Parcel, AC…). 먼저 영역을 추가한 다음 그 안에 카운터를 배치하세요. 각 영역은 바닥에 있는 별도의 그룹입니다.
-area_new_ph	새 구역/방 (예: AC, Garden)
-add_area	구역 추가
-area_added	“{name}” 영역 준비 - 카운터 추가
 no_favorites	아직 즐겨찾기가 없습니다 — 아래 목록에서 항목을 추가하세요.
 add_to_bill	계산서에 추가
 added	추가됨
@@ -280,19 +221,9 @@ chip_missing_customer	선택한 고객이 없습니다 — 다시 선택하세�
 chip_no_customer	아직 고객이 없습니다 — 이름을 입력하고 외상을 누르세요
 credit_summary_fmt	{} 고객 · 미결제 외상 {} · 선불 보관 {}
 recent_label	최근:
-kot_new_waiting	신규 — 대기 중
-kot_preparing	준비 중
-kot_ready_serve	준비 완료 — 서빙하세요
-kot_done_cap	완료
-kot_cancelled	취소됨
-kot_start_btn	시작
-kot_mark_ready	준비 완료로 표시
-kot_done_btn	완료
-table_free	비어 있음 — 눌러서 주문 시작
 start_order	주문 시작
 open_bill	계산서 열기
 collect_payment	결제 받기
-table_running	진행 중
 payment_pending	결제 대기 중
 collect_at_counter	카운터에서 받기
 inventory	재고
@@ -325,7 +256,6 @@ ok	확인
 this_shop	서버 모드
 extra_till	클라이언트 모드
 off	끔
-tables_kitchen	매장 레이아웃
 server	서버
 client	클라이언트
 language_currency	언어와 통화
@@ -367,8 +297,6 @@ add_item_plain	항목 추가
 add_note	메모 추가
 add_opening_balance	기초 잔액 추가
 add_staff	직원 추가
-add_station	스테이션 추가
-add_table	테이블 추가
 add_unit	단위 추가
 add_use_name	이 이름 추가 / 사용
 allow_extra_tills	추가 계산대 허용
@@ -421,7 +349,6 @@ share_whatsapp	WhatsApp 공유
 lan_pages_heading	Wi‑Fi의 고객 페이지
 lan_pages_help	이 매장의 Wi-Fi에서는 고객 페이지가 디스플레이 보드 및 피드백용으로 작동합니다. 모바일 데이터를 사용하는 사람들에게는 나중에 클라우드가 필요합니다. 카드 단말기나 결제 링크는 선택 사항이며 카운터를 차단하지 않습니다.
 diag_send_heading	이 기기 밖으로 공유
-kot_dest_heading	스테이션
 optional_login_heading	선택 로그인
 rights_heading	권한
 ops_panel	로컬 운영
@@ -448,28 +375,6 @@ till_voucher_amt_ph	바우처 금액(비움=전부)
 till_wallet_topup_ph	지갑 충전액
 till_voucher_issue_amt_ph	새 바우처 금액
 till_voucher_issue_code_ph	새 바우처 코드
-split_evenly	균등 분할
-waitlist	대기 명단
-fire_course	다음 단계
-hold_item	보류
-waiter_call	계산원에게 전화하세요
-waitlist_add	대기 명단 추가
-floor_view_grid	격자
-floor_view_layout	배치도
-floor_layout_x	X
-floor_layout_y	Y
-floor_layout_w	W
-floor_layout_h	H
-floor_layout_save	배치 저장
-floor_layout_open	테이블 열기
-floor_layout_edit	배치 편집
-floor_layout_pick	테이블을 탭해 배치를 편집하세요
-floor_layout_saved	레이아웃이 저장되었습니다.
-floor_layout_nudge_left	← 20
-floor_layout_nudge_right	→ 20
-floor_layout_nudge_up	↑ 20
-floor_layout_nudge_down	↓ 20
-sibling_pickers_help	단위처럼 On/Off — 구역·스테이션·세율을 일상 선택기에서 숨김; 팩 기본값은 유지.
 bulk_price_apply	일괄 가격 적용
 card_terminal_optional	카드 단말기/결제 링크(인터넷 있을 때 선택)
 copy_report	보고서 복사
@@ -495,7 +400,6 @@ import_day	하루 가져오기
 import_items_csv_plain	항목 CSV 가져오기…
 import_parties_csv	거래처 CSV 가져오기…
 item_name	항목 이름
-kitchen_printing	주방 인쇄
 login_id_ph	로그인 ID
 mark_cleared	청산으로 표시
 new_party_clear	새 거래처(양식 지우기)
@@ -565,15 +469,6 @@ show	보기
 spreadsheet_csv	스프레드시트(CSV)
 start_fresh	처음부터 시작
 stop_extra_tills	추가 계산대 중지
-floor_cols_ph	열 수
-floor_cols_fit	화면에 맞춤
-floor_cols_fit_sub	{n}개 들어감
-floor_cols_fits	맞음
-floor_cols_scroll	가로 스크롤
-floor_cols_min	열 수: 최소 1 — 비워 두면 화면에 맞춥니다
-floor_zoom_auto	자동
-floor_zoom_out	줌 아웃
-floor_zoom_in	줌 인
 backup_auto	매일 자동 백업 · 최근 {when} · 최근 14일치를 {dir}에 보관합니다.
 backup_auto_none	매일 자동 백업 — 첫 백업이 곧 실행됩니다.
 backup_copy_to	사본은 {dir}에도 저장됩니다.
@@ -591,7 +486,6 @@ new_pair_code	새 페어링 코드
 pair_finishing	페어링 마무리 중… 매장 장부를 적용하는 중
 pair_opening	현금을 열기 중입니다…
 pair_copied	페어링 코드가 복사됨
-kot_waiting	전송 대기 중
 lan_offline_waiting	오프라인 · {n}건 대기
 lan_connecting	매장에 연결 중…
 lan_live	실시간
@@ -633,7 +527,6 @@ printers_routes_help	운영 체제가 이미 알고 있는 프린터를 찾으�
 printer_assign_dd	{place} 프린터 선택
 printer_assign_pick	실제 프린터 선택
 printer_profile_heading	레이아웃
-printer_send_heading	전송
 vp_delivery_heading	전송
 vp_delivery_help	이 가상 프린터가 작업을 보내는 방법 — OS 문서, 원시 바이트 또는 ESC/POS. 전표 내용(글꼴 크기, 포장, 여백)은 여기가 아닌 청구서/전표 형식에 따라 결정됩니다.
 vp_type_size_heading	글자 크기
@@ -677,23 +570,13 @@ virtual_draft_send	다음 가상 프린터용 값 설정됨
 virtual_need_real	먼저 실제 프린터를 선택하세요
 virtual_need_select	삭제할 가상 프린터를 선택하세요
 real_printer_selected	실제 프린터: {name}
-station_group_heading	가상 프린터
-station_group_apply	가상 프린터 삭제
-station_group_applied	삭제됨
-station_group_empty	가상 프린터를 선택하세요
-station_group_name_ph	가상 프린터 이름(선택)
-station_group_save	가상 프린터 만들기
-station_group_saved	가상 프린터 저장됨
-station_manage_heading	진료실 섹션 추가 또는 제거
 printers_routes_heading	2. 인쇄 위치
 route_pick_heading	장소
 route_editing	편집 중: {name}
 route_assigned	{printer} 를 {place} 에 추가했습니다
 route_already_assigned	이미 이 장소: {printer}
-route_removed	{printer} 를 {place} 에서 제거했습니다
 route_cleared	{name} 를 지웠습니다
 route_assigned_empty	이 장소에 없음
-route_tap_remove	제거하려면 탭하세요
 route_tap_select	탭하여 선택
 route_tap_selected	선택됨
 route_pick_printer_first	먼저 프린터를 탭하세요
@@ -714,35 +597,17 @@ printer_format_custom	새 사용자 지정 형식
 printer_format_custom_label	사용자 지정
 printer_format_custom_added	이 경로에 사용자 지정 형식을 추가했습니다
 add_printer	프린터 추가
-remove_printer	마지막 제거
 route_pick_ph	청구서 또는 진료소 섹션
 route_bill	영수증
-route_default_kitchen	스테이션 없음(할당되지 않은 항목)
-route_kot_station	스테이션
 route_dont_print	인쇄 안 함
-stations_heading	스테이션
-stations_help	약국 섹션에는 상점의 해당 부분에 대한 의약품과 프린터가 그룹화되어 있습니다. 설정 → 프린터에서 프린터를 연결하고 시도 순서를 설정한 다음 먼저 작동하거나 모두 인쇄합니다. 진행하는 동안 변경사항이 저장됩니다.
-station_print_heading	이 스테이션의 프린터
-station_print_help	스테이션을 선택한 다음 하나 이상의 프린터를 연결하세요. ↑↓ 시도 순서를 설정합니다. 먼저 작동이 첫 번째 성공 후에 중지됩니다. 연결된 모든 프린터로 보내는 모든 내용을 인쇄합니다.
-station_print_pick_ph	프린터를 설정할 스테이션
 station_print_pick_first	진료실을 먼저 선택하세요
-station_print_editing	“{name}” 프린터 편집 중
-station_vps_dd	이 스테이션의 프린터
-station_vps_dd_n	{n}대 프린터 · 탭하여 변경
 station_vps_empty	아직 프린터 없음 — 설정 → 프린터에서 찾으세요
 bill_printers_dd	영수증용 프린터
 bill_printers_dd_n	영수증용 {n} 개의 프린터 · 변경하려면 탭하세요
-job_layout	레이아웃
-job_delivery	작업 전송 방식
-job_delivery_help	OS 문서, 원시 바이트 또는 ESC/POS. 청구서와 티켓은 각각 보관됩니다. 각 작업은 Find가 저장한 모든 프린터로 이동할 수 있습니다.
 station_vp_attached	프린터 연결됨
 station_vp_detached	스테이션에서 프린터 제거됨
-station_print_summary	{mode} · 프린터 {n}대
-station_print_summary_none	이 스테이션에 아직 프린터 없음 — 인쇄하지 않습니다
-stations_none	아직 방송국이 없습니다. 아래에서 방송국을 추가하세요. 카운터 상점에서는 스테이션이 사용되지 않습니다. 비워 두세요.
 route_up	위로
 route_down	아래로
-route_remove	마지막 제거
 route_clear	인쇄 안 함
 save_printers	프린터 저장
 print_test_page	테스트 페이지 인쇄
@@ -751,23 +616,15 @@ test_page_no_printer	{place}에 프린터 없음 — 위에서 할당한 뒤 다
 test_page_pick_first	먼저 테스트 프린터를 선택한 뒤 테스트 페이지를 인쇄하세요
 test_printers_dd	테스트 페이지 프린터
 test_printers_dd_n	테스트 프린터 {n}대 · 탭하여 변경
-kot_test_printers_dd	테스트 인쇄용 프린터
-kot_test_printers_dd_n	테스트 인쇄용 {n} 프린터 · 변경하려면 탭하세요.
 test_printer_picked	테스트: {name}
 test_printer_cleared	테스트 안 함: {name}
 test_page_sent_n	테스트 페이지를 프린터 {n}대로 보냈습니다
-test_kot_pick_first	먼저 테스트 인쇄할 프린터를 선택한 다음 테스트 인쇄를 선택하세요.
-test_kot_sent_n	{n} 프린터로 테스트 인쇄 전송됨
-cancel_pick	표시
-cancel_pick_on	표시됨
-cancel_pick_meta	취소 표시됨
 batch_cancel	표시 취소
 batch_cancel_n	표시 취소 ({n})
 batch_cancel_none	하나 이상의 보낸 항목을 먼저 표시한 다음 취소를 표시했습니다.
 batch_cancel_title	표시한 약품 취소 — 이유 하나, 구역마다 전표 하나
 batch_cancel_ok	{n} 항목 취소됨 · {slips} 전표 취소 → {kitchens}
 batch_cancel_ok_noprint	{n} 항목 취소됨 - 자동 인쇄가 꺼져 있으므로 취소 전표가 없습니다.
-no_printer_kitchen_station	해당 스테이션에 프린터가 없습니다
 printers_saved	이 기기의 프린터를 저장했습니다
 test_page_sent	테스트 페이지를 보냈습니다 — 프린터를 확인하세요
 test_page_sent_one	{name}(으)로 테스트 페이지를 보냈습니다 — 해당 프린터를 확인하세요
@@ -783,10 +640,7 @@ cancelled	취소됨
 printers_tap_find	프린터 찾기 누르기 — 시스템 프린터와 이 Wi‑Fi의 네트워크 영수증 프린터가 나열됩니다.
 printers_none_found	프린터를 찾지 못함 — 시스템 이름 또는 네트워크 주소를 입력하세요(예: 192.168.1.50).
 printer_from_find	{name} 추가됨
-kot_printer_ph	전표 프린터
 bill_printer_ph	계산서 프린터
-kot_print_on	자동 인쇄 티켓: 켜짐
-kot_print_off	티켓 자동 인쇄: 꺼짐
 queue_refused	매장에서 받지 않음 ({n}) — 계산대에서 하나씩 확인하세요:
 clear_not_accepted	확인함 — 이 목록 지우기
 device_name_ph	이 기기 이름
@@ -797,7 +651,6 @@ backup_failed	마지막 자동 백업이 실패했습니다: {e}
 backup_overdue	{n}일 동안 백업이 없습니다 — 백업되도록 이 기기에서 앱을 열어 두세요.
 disk_low	이 기기에 남은 공간이 {mb} MB뿐입니다 — 곧 백업이 실패합니다. 공간을 확보하세요.
 last_seen_devices	마지막 확인 시간: {time}
-sync_interval	매 {secs} 초마다 동기화
 connection_to_shop	매장 연결
 supplier_name_ph	공급업체 이름(또는 거래처)
 supplier_ph	공급업체
@@ -860,7 +713,6 @@ fresh_book_tabiyat	프린터
 fresh_selected	Fresh 선택됨 — 카탈로그가 비어 있습니다. 준비되면 Done을 누르세요.
 gross_word	총액
 how_start	어떻게 시작하시겠어요?
-kot_print_help_tabiyat	KOT가 전송되면 — 카운터에서든 웨이터 기기에서든 — 주방 용지가 여기서 자동으로 인쇄됩니다.
 later_country_pack	프린터
 local_badge	로컬
 mix_type_hint_tabiyat	필요하면 현금/UPI/카드/외상으로 나누세요. 외상은 위에 고객이 필요합니다.
@@ -911,8 +763,6 @@ staff_copy_need_source	복사할 사람의 설정을 선택하세요
 staff_copy_same	동일한 사람입니다. 다른 사람을 선택하세요
 staff_rename_need_selected	먼저 이름을 변경할 사람을 선택하세요
 team_pick_hint	편집할 사람을 선택하세요. 해당 사람에게만 화면, 금전적 권리, 방송국이 표시됩니다.
-team_stations_help	사용할 수 있는 역
-team_stations_changed	스테이션이 변경됨 — 이 사람에 대한 설정 저장
 team_features_changed	화면 변경 — 해당 사용자 설정 저장
 team_rights_changed	권한 변경 — 해당 사용자 설정 저장
 they_owe_us	그들이 우리에게 빚짐
@@ -996,9 +846,6 @@ service_pct_ph	서비스 % 선택 0/10/12
 short_code_ph	짧은 코드(MG02)
 starting_password_ph	시작 비밀번호(선택)
 starting_pin_ph	시작 PIN(4–12자리)
-station_name_ph	역 이름(선택사항)
-station_new_ph	섹션(선택사항)
-table_name_ph	카운터 / 베이 이름
 tax_rate_ph	세율 이름 또는 % — Standard, Reduced, 0, 5, 12, 18, 20
 to_code_ph	대상 코드(kg)
 uncleared_no_ph	위 미정산 번호
@@ -1011,27 +858,8 @@ book_kind_month	이번 달 장부
 book_kind_aging	미결제 / 차변-대변
 book_kind_balance	대차대조표
 order_help	열린 주문을 선택하거나 테이블을 선택해 새로 시작하세요. 준비된 항목을 탭하고 KOT를 보내고, 하나 이상의 항목을 청구하고, 계산서를 나눠 결제를 완료하세요.
-floor_help	이 가게는 카운터에서 판매합니다. 테이블과 식사 바닥은 Tabiyat의 일부가 아닙니다.
-kitchen_help	KOT가 전송되면 — 카운터에서든 웨이터 기기에서든 — 주방 용지가 여기서 자동으로 인쇄됩니다.
-kitchen_empty	오픈 티켓이 없습니다(카운터 상점에서는 일반적으로 이 화면을 사용하지 않은 상태로 둡니다).
-add_a_table	테이블 추가
-add_station_heading	구역 추가 · 예: OTC, 냉장, 카운터
 categories_help	카테고리는 요리가 메뉴의 어느 부분에 속하는지 보여줍니다 — 예: 스낵, 메인 코스, 비리야니. 원하는 방식으로 카테고리를 만드세요: 제안하는 이름을 선택하거나, 이름을 바꾸거나, 직접 추가하세요.
 dish_search_ph	이름, 소금 또는 바코드를 검색하세요…
-tile_free	빈 자리
-tile_occupied	착석
-tile_food_ready	음식 준비됨
-tile_bill_printed	계산서 출력
-tile_paid	결제 완료
-tile_bill_btn	계산
-tile_occupy_btn	손님 착석
-tile_free_btn	테이블 비우기
-tile_ready_btn	준비됨
-tile_undo_bill	계산서 취소
-summary_busy	테이블 사용 중
-summary_to_collect	결제 대기
-summary_on_floor	홀에서
-floor	가게
 sizes_as_items_ph	사이즈를 별도 품목으로 (선택) — 하프=120, 풀=200
 dish_group_ph	강도/팩 그룹(선택 사항) — 예: 500mg 스트립
 discount	할인
@@ -1039,7 +867,6 @@ remove_discount	할인 취소
 apply_discount	할인 적용
 save_opening_cash	시재금 저장
 close_shift_print	교대 마감 후 전표 인쇄
-area_prices_ph	구역별 가격 (선택) — 에어컨=220, 포장=210
 discount_ph	10% 또는 50
 discount_reason_ph	사유 (예: 단골, 음식 지연)
 opening_float_ph	오늘 아침 금고에 넣은 현금
@@ -1049,34 +876,18 @@ shift_handover	교대 인계
 shift_since	이번 교대 시작
 expected_in_drawer	금고 예상액
 right_discount	할인 제공
-floor_in_kitchen	진행중
-floor_eating	식사 중
 pick_category	카테고리 선택
 close_category_list	카테고리 목록 닫기
 new_category_row	새 카테고리 — 품목 저장 시 생성
 your_category	내 카테고리
 suggested_category	제안 — 우리 품목에서
 category_search_ph	카테고리 — 검색하거나 새로 입력
-line_sent_state	보냄
-line_nc_state	무료 제공 (NC) — 청구 안 함
 cancel_item_short	취소
-nc_short	무료
-charge_again_short	청구
-move_short	이동
 cancel_item_title	이 항목 취소 - 백오피스에서 취소 전표를 받습니다.
-nc_item_title	이 품목 무료 제공 (NC)
-charge_again_title	이 품목 다시 청구
-move_item_title	이 품목을 다른 테이블로 이동
-already_cooked	이미 조리됨 (손실)
-not_cooked_yet	아직 조리 안 됨
 return_to_customer	거스름돈
 short_by	부족
 tip_not_sale	팁 (직원 몫, 매출 아님)
 right_settle	결제 받기
-right_cancel_sent	보낸 품목 취소
-right_complimentary	무료 제공 (NC)
-right_move_table	카운터 이동/병합
-right_reprint	계산서 재인쇄
 right_allowed	허용
 right_with_approval	승인 필요
 right_denied	허용 안 함
@@ -1086,25 +897,11 @@ no_server_found	서버를 찾지 못했습니다. 매장 기기가 같은 Wi‑F
 servers_found_pick	연결할 매장을 탭하세요.
 server_host_selected	{host} 사용 중 — 페어링 코드를 입력한 뒤 지금 페어를 탭하세요.
 print_bill	계산서 인쇄
-table_actions	대응 조치
-move_merge_table	테이블 이동 / 합치기
-move_help	이 카운터의 주문을 사용 가능한 테이블로 이동하거나 실행 중인 테이블에 병합합니다.
-move_target_ph	카운터 이름
 approval_pin_ph	관리자 PIN (요청 시에만)
-move_here	여기로 이동
-merge_into	거기에 합치기
-line_reason_ph	이유(예: 고객의 변심, 품절)
-line_qty_ph	취소 수량 (비우면 전부)
-line_target_ph	옮길 테이블 (예: D5)
 confirm	확인
 menu_search_ph	품목 또는 단축코드 검색
 customer_paid_ph	받은 금액
 tip_ph	팁
-table_area_ph	구역 (예: 홀, 포장, 에어컨석)
-table_range_ph	한 번에 여러 개: D1-D20
-add_these_tables	이 카운터를 추가하세요
-remove_these_tables	이 카운터를 제거하세요
-table_remove_ph	삭제: T1-T24 또는 테이블 이름
 find_server	매장 서버 찾기
 bill_format	계산서 형식
 bill_format_help	모든 청구서에는 매장 이름이 인쇄되어 있습니다. |로 구분된 줄 (예: MG Road, Rajkot | Ph 98250 00000).
@@ -1112,78 +909,32 @@ bill_header_ph	주소 | 전화
 fssai_ph	의약품 허가번호 (선택 사항 - 귀하의 문구)
 bill_footer_ph	하단 문구 (예: 감사합니다, 또 오세요)
 save_bill_format	계산서 형식 저장
-kot_format	전표 형식
-kot_format_help	목록에서 필드를 탭합니다. 표시, 글꼴 크기 및 두께는 위에서 선택한 전표 종류의 해당 필드에 적용됩니다. 각 종류는 고유한 크기와 무게를 유지합니다.
-kot_format_fields	필드
-kot_field_next	다음 필드
-kot_field_show	표시
-kot_field_hide	숨기기
 kot_field_on	표시
 kot_field_off	숨김
-kot_field_size	글꼴 크기
-kot_field_size_ph	예: 16, 20, 24, 28, 32…
 kot_weight_light	얇게
 bill_kot_panel_help	청구서 레이아웃 및 내용 너비. 계산원은 청구서를 발행하거나 정산한 사람입니다. 전체 판매 이야기는 장부에 남아 있습니다.
 std_size_ph	예: 18, 20, 26…
-kot_show_shop	매장 이름
-kot_hide_shop	매장 숨기기
-kot_show_time	시간
-kot_hide_time	시간 숨기기
-kot_show_waiter	캐셔
-kot_hide_waiter	계산원 숨기기
-kot_show_station	스테이션
-kot_hide_station	스테이션 숨기기
-kot_show_table	카운터
-kot_hide_table	테이블 숨기기
-kot_show_kot_no	전표 번호
-kot_hide_kot_no	티켓 숨기기
-kot_width	미리보기 포장(슬립 탭에서 콘텐츠 너비 설정)
-kot_width_58	58 mm
-kot_width_80	80 mm
-kot_kind_heading	티켓 종류
-kot_kind_original	원본
-kot_kind_duplicate	복제
-kot_kind_modified	수정됨
-kot_kind_cancelled	취소됨
-kot_style_heading	필드 크기와 굵기
-kot_style_title	제목
-kot_style_item_qty	항목 · 수량
-kot_style_field_pick	필드 선택
 kot_weight_regular	보통
 kot_weight_bold	굵게
-kot_align	정렬
 kot_align_start	시작
 kot_align_center	중앙 정렬
 kot_align_end	끝
 content_width	콘텐츠 폭(mm)
 content_width_bill	영수증 내용 너비 (mm)
-content_width_kot	티켓 내용 폭(mm)
 content_width_ph	또는 콘텐츠 폭 입력, 40–210 mm
 content_width_help	이 전표가 인쇄되는 너비입니다. Bill은 자신의 너비를 유지합니다.
 content_width_bill_help	고객 청구서가 인쇄되는 폭입니다. 기본값은 210mm(페이지)입니다. 58mm 좁은 슬립, 80mm 넓은 슬립, 112mm 4인치, 210mm A4 너비. 40에서 210 사이의 값을 입력하세요. 티켓의 슬립 탭에는 고유한 너비가 있습니다.
-content_width_kot_help	티켓이 인쇄되는 폭입니다. 기본값은 80mm입니다. 58mm 좁은 슬립, 80mm 넓은 슬립, 112mm 4인치, 210mm 페이지. 40에서 210 사이의 값을 입력하십시오. 고객 청구서에는 청구서 탭에 고유한 너비가 있습니다.
 vp_paper_width	콘텐츠 폭(mm)
 vp_paper_width_ph	또는 콘텐츠 폭 입력, 40–210 mm
 vp_paper_width_help	내용물 너비는 지폐(기본 210mm)와 티켓(기본 80mm)에 대해 별도로 Bill & Slip 형식으로 설정됩니다.
-kot_size	글자 크기
-kot_size_s	작게
-kot_size_m	보통
-kot_size_l	크게
 std_size	글자 크기
 kot_copies	부수
 kot_copies_1	1
 kot_copies_2	2
 kot_copies_3	3
-kot_title_ph	제목(공백 = TICKET)
-kot_footer_ph	백오피스 메모(선택 사항)
-kot_preview	미리보기
-save_kot_format	전표 형식 저장
-test_kot_format	테스트 인쇄
-test_kot_sent	티켓 미리보기가 전송되었습니다.
 test_bill_format	영수증 테스트
 test_bill_sent	영수증 미리보기 전송됨
 test_print_no_printer	해당 작업용 프린터 없음 — 이 화면에서 하나 선택하세요
-kot_format_saved	전표 형식이 저장되었습니다.
 std_print	영수증 글자 크기
 std_print_help	OS/문서 프린터의 표준 세로 및 가로 청구서 작업에 대한 글꼴 크기(소형/보통/대형이 아닌 포인트 입력) 두 방향 모두 동일한 크기입니다.
 std_size_s	작게
@@ -1223,23 +974,16 @@ upi_qr	UPI QR
 show_upi_qr	UPI QR 표시
 close_upi_qr	닫기
 upi_qr_help	고객이 스캔하고 결제합니다. 결제 후 결제 받기를 탭하세요. 두 번째 화면: 서버 URL을 열고 LAN에 표시합니다.
-kot_recall	불러오기
 recently_done	방금 완료
-recall_kot_ph	회수할 티켓 번호
 role_help_customer	역할: 고객 — AR(우리가 받을 돈). 같은 업체가 공급업체도 될 수 있습니다.
 role_help_both	역할: 발송인 + 운송사 — 하나의 거래처, AR 및 AP 장부, 보고서에서 순액.
 role_help_supplier	역할: 공급업체 — 구매용 AP.
-dine_in_pick_table	카운터 상점에서는 사용되지 않음
-choose_table	카운터 선택
-change_table	테이블 변경
-pick_table_banner	이 주문의 테이블 선택
 items_word	개
 items_section	항목
 back_to_order	주문으로 돌아가기
 new_items_head	아직 안 보냄
 price_ph	가격
 price_ph_gst_inside	가격({tax} 포함)
-cancel_needs_table	카운터 판매는 결제가 완료될 때까지 티켓에 남아 있습니다.
 tax_rates_missing_hint	이 항목에는 {tax} 세율이 없습니다 — 항목 세트 세율(가격에는 이미 {tax} 포함 아래 {tax}가 포함되어 있음)
 taxable_value	과세 금액
 gst_inside_price_note	({tax} 포함)
@@ -1260,30 +1004,11 @@ client_template_confirm	{title}에서 {d} 항목을 추가하시겠습니까? �
 client_template_importing	{title} 가져오는 중…
 client_template_done	{title}의 모든 항목이 귀하의 항목에 있습니다.
 client_template_imported	{title}에서 {d} 항목 및 {c} 카테고리를 추가했습니다.
-resv_heading	예약
-resv_name_ph	고객 이름
-resv_phone_ph	전화(선택)
-resv_guests_ph	사람들
-resv_when_ph	언제 — 20:30, tomorrow 13:00
-resv_table_ph	카운터(선택사항)
-resv_add	예약
-resv_seat	착석
-resv_none	다가오는 예약이 없습니다.
-guests_word	명
-delivery_by_ph	배달 담당 (라이더 또는 직원)
-kitchen_all_day	지금 조리할 것: {items}
-split_bill	계산서 나누기
-split_go	따로 계산서 만들기
 cancel	취소
 opening_client	클라이언트 열기…
 preparing_desk	데스크 준비 중…
 opening_server	서버 열기…
 creating_server	서버 생성 중…
-split_help	고객이 지불한 항목을 탭하세요. · {n}가 선택한 항목을 탭하세요.
-split_send_first	전표를 먼저 보냅니다. 백오피스에 있는 항목만 별도의 청구서로 이동할 수 있습니다.
-split_pick_some	먼저 별도 청구 항목을 탭하세요.
-split_done	별도의 청구서가 작성되었습니다. 이 카운터 옆 층에 있습니다.
-split_marked	따로 계산
 order_empty_pick	비어 있는 주문 — 위의 항목 추가를 탭하여 항목을 선택하세요.
 add_dishes	의약품 추가
 order_so_far	이 주문: {n} · {total}
@@ -1294,24 +1019,8 @@ pick_done_dd	완료 · {label}
 printer_route_mode	해당 장소에 여러 프린터가 있는 경우
 printer_mode_first	작동하는 첫 번째 프린터
 printer_mode_all	모두 인쇄
-kot_show_area	영역
-kot_hide_area	영역 숨기기
-kot_show_item_hdr	항목 · 수량
-kot_hide_item_hdr	열 숨기기
-kot_show_title	제목 줄
-kot_hide_title	제목 숨기기
-kot_field_order	주문 인쇄
 kot_field_up	위로 이동
 kot_field_down	아래로 이동
-kot_field_cycle	다음 선택
-kot_field_select	다음 선택
-kot_field_time	시간
-kot_field_kot_no	전표 번호
-kot_field_area	영역
-kot_field_table	카운터
-kot_field_shop	매장 이름
-kot_field_waiter	직원
-kot_field_station	스테이션
 app_template_blurb_extra	또한: 소유자 Zahir, 관리자 Asif, 계산원 Nawaz; 전면 사이드바; 4시간 후의 기록; 오늘은 벗으세요; 컴팩트 빌.
 dishes_n	{n} 항목
 recipe_ph	레시피(선택 사항 - 카운터 상점에서는 사용되지 않음)
@@ -1321,8 +1030,6 @@ low_stock_alert	재고 부족 — 곧 구매하세요: {items}
 unpriced_note	항목의 {n} 항목에는 아직 가격이 없습니다. 가격을 설정할 때까지는 0으로 청구됩니다.
 show_unpriced	가격이 없는 항목만 표시
 show_all_dishes	모든 항목 표시
-role_waiter	캐셔
-role_kitchen	매장
 role_title_rest_ph	직함 (예: 캡틴, 주방장)
 preset_help_rest	캐셔: 판매. 매니저: 판매 + 항목 + 취소/수정.
 kind_raw	배합주

@@ -68,28 +68,6 @@ applied	Qoʻllangan
 note_ph	Izoh (ixtiyoriy)
 rounded	YAXLITLANGAN
 split	Boʻlish
-send_kot	Slip yuboring
-send_kot_to	Yuborish → {kitchens}
-send_kot_again	Keyingi slip uchun narsalarni qo'shing
-send_kot_held	Saqlangan elementlar — yuborish uchun ushlab turing
-reprint_kot	Tanlanganni qayta chop etish
-reprint_kot_ok	{n} elementlari qayta chop etildi · {slips} slip(lar)i → {kitchens}
-reprint_kot_needed	Avval slip yuboring — keyin elementlarni kiriting va tanlanganlarini yana chop eting
-reprint_kot_none_selected	Har bir yuborilgan element oʻtkazib yuboriladi — qayta chop etish uchun “Bosmada” ga teging
-reprint_kot_client	Yuborilgan {place} uchun qayta chop etish ({n}) — do‘kon qurilmasi uni chop etadi
-print_cancelled_kot	Barcha bekor qilinganlarni chop etish
-print_cancelled_kot_ok	Chop etilgan {n} bekor qilingan elementlar · {slips} slip(lar)i → {kitchens}
-print_cancelled_kot_needed	Avval bekor qilingan narsalar bilan jadvalni oching
-print_cancelled_kot_none	Bu buyurtmada bekor qilinmagan mahsulotlar mavjud emas
-print_cancelled_kot_client	Yuborilgan {place} uchun chop etish bekor qilindi ({n}) — do‘kon qurilmasi uni chop etadi
-kot_banner	Tur banneri
-kot_banner_ph	Banner (boʻsh = yoʻq)
-kot_item_prefix	Mahsulot prefiksi
-kot_item_prefix_ph	mas. [BEKOR]
-kot_strike	Belgilangan element nomi
-kot_strike_note	Belgilangan element qaydi
-kot_strike_on	Yoniq
-kot_strike_off	Oʻchiq
 bill_item_layout	Mahsulot joylashuvi
 bill_item_layout_columns	Ustunlar
 bill_item_layout_stacked	Qatorlab
@@ -118,8 +96,6 @@ bill_item_gap_em	Oraligʻ (em)
 bill_item_qty_min	Min. miqdor (em)
 bill_item_price_min	Min. narx (em)
 bill_item_amount_min	Min. summa (em)
-kot_item_qty_width	Miqdor ustuni
-kot_item_num_align	Miqdorni tekislash
 bill_total_qty_label	Jami miqdor yorligʻi
 bill_total_subtotal_label	Oraliq summa yorligʻi
 bill_total_grand_label	Yakuniy summa yorligʻi
@@ -131,36 +107,9 @@ bill_item_piece_off	Oʻchiq
 bill_total_qty	Jami miqdor
 bill_total_subtotal	Oraliq summa
 bill_total_grand	Yakuniy summa
-reprint_incl	Chop etishda
-reprint_skip	Oʻtkazib yuborish
-reprint_skip_meta	Tiklash chop etishni oʻtkazish
-kot_dest_hint	{kitchens} ga biriktirgan printerlarda chop etiladi: Sozlamalar → Printerlar
-kot_sent_hint	Oxirgi jo‘natma {kitchens}ga yuborildi. Keyingi hisob-kitob uchun elementlarni qo‘shish uchun bosing yoki xuddi shu hisob uchun slipni yana chop eting.
-kot_sent_printing	{kitchens} ga yuborilgan slip — chop etilmoqda
-kot_sent_not_printed	Slip {kitchens} ga yuborildi, lekin chop EMAS: {why}. Do'konga ayting, keyin printerni tuzatib, yana chop eting.
-kot_sent_screen	Slip {kitchens} raqamiga yuborildi
-kot_queued_shop	{place} uchun slip → {kitchens} saqlangan; do'kon qurilmasi uni chop etadi
-kot_job_label	{place} → {kitchens} uchun slip
-kot_job_reached	{place} uchun slip {kitchens}ga yetdi
 kot_unassigned	Tayinlanmagan
-kot_unassigned_held	{n} elementlarini stansiyasiz ushlab turing — yuborish uchun liniyada ushlab turing
-kot_station_ph	Stansiya
-kot_station_dd	Stansiya
-kot_station_dd_n	Bekat · {stations}
-kot_set_station	Shu stansiyadan foydalanish
-kot_station_applied	{n} elementlariga o'rnatilgan stantsiya: {station}
-kot_station_cleared	Stansiya {n} elementlaridan tozalandi: {station}
-kot_station_needed	Avval do'kon bo'limini tanlang
-kot_station_not_allowed	Bo'limdan foydalanishga ruxsat berilmagan: {station}
-kot_station_none	Hozircha hech qanday stantsiya yo'q — peshtaxtada ishlatilmaydi (agar kerak bo'lsa, Sozlamalar → Hududlar)
 pos_tab_items	Qoʻshilgan mahsulotlar
 pos_tab_payment	Toʻlov
-hold_send	Ushlab tur
-hold_send_on	Ushlab turilgan
-hold_send_meta	O'tkazildi - bu slipda emas
-station_remove	Stansiyani olib tashlash
-station_remove_ph	Olib tashlash uchun roʻyxatdagi stansiyani bosing
-station_removed	Stansiya olib tashlandi: {name}
 settings_hub_title	Sozlamalar
 settings_hub_help	Bir vaqtda bitta boʻlimni oching — kamroq aylantirish, aniqroq tanlov.
 settings_back	Orqaga
@@ -169,12 +118,10 @@ settings_sec_country	Mamlakat va soliq
 settings_sec_tills	Boshqa qurilmalar
 settings_sec_brand	Sizning brendingiz
 settings_sec_units	Birliklar va aylantirish
-settings_sec_pickers	Hududlar · stansiyalar · soliq stavkalari
+settings_sec_pickers	Soliq stavkalari
 settings_sec_printers	Printerlar
 settings_sec_bill	Bill & Slip formati
 settings_sec_selling	Sxemalar va savdo
-bill_kot_tab_bill	Hisob
-bill_kot_tab_kot	Slip
 settings_sec_alerts	Ogohlantirishlar
 alerts_help	Holat xabarlari siz uchun ekranda qancha turadi (shu kirish).
 snack_secs_ph	Soniya (3–60, odatiy 10)
@@ -225,8 +172,6 @@ counter	Kassa
 dine_in	Kassa
 takeaway	Olib ketish
 order	Buyurtma
-tables	Hisoblagichlar
-kitchen	Bo'limlar
 sales	Savdo
 sales_refunds	Savdo va qaytarish
 day_close	Kunni yopish
@@ -254,10 +199,6 @@ zero_sales_on	₹0 ga ruxsat
 zero_sales_off	Narx talab qilish
 zero_sales_saved_on	Nol qiymatli savdoga ruxsat
 zero_sales_saved_off	Savdo narxi ₹0 dan yuqori boʻlishi kerak
-floor_areas_help	Hududlar - poldagi xonalar yoki zonalar (Dine In, Parcel, AC ...). Avval hududni qo'shing, keyin unga hisoblagichlarni qo'ying - har bir maydon qavatda alohida guruhdir.
-area_new_ph	Yangi hudud / xona (mas. Konditsioner, Bogʻ)
-add_area	Hudud qoʻshish
-area_added	"{name}" maydoni tayyor - unga hisoblagichlarni qo'shing
 no_favorites	Hali sevimli yoʻq — pastdagi roʻyxatdan mahsulot qoʻshing.
 add_to_bill	Hisobga qoʻshish
 added	Qoʻshildi
@@ -268,19 +209,9 @@ chip_missing_customer	Tanlangan mijoz yoʻq — qayta tanlang
 chip_no_customer	Hali mijoz yoʻq — ism yozing, soʻng Nasiyani bosing
 credit_summary_fmt	{} mijoz · ochiq nasiya {} · ushlab turilgan avans {}
 recent_label	Yaqinda:
-kot_new_waiting	YANGI — kutilmoqda
-kot_preparing	TAYYORLANMOQDA
-kot_ready_serve	TAYYOR — bering
-kot_done_cap	TAYYOR
-kot_cancelled	BEKOR
-kot_start_btn	Boshlash
-kot_mark_ready	Tayyor deb belgilash
-kot_done_btn	Tayyor
-table_free	Boʻsh — buyurtma boshlash uchun bosing
 start_order	Buyurtma boshlash
 open_bill	Hisobni ochish
 collect_payment	Toʻlovni olish
-table_running	Ketmoqda
 payment_pending	Toʻlov kutilmoqda
 collect_at_counter	kassada ol
 inventory	Ombor
@@ -313,7 +244,6 @@ ok	OK
 this_shop	Server
 extra_till	Mijoz
 off	Oʻchiq
-tables_kitchen	Do'kon tartibi
 server	Server
 client	Mijoz
 language_currency	Til va valyuta
@@ -355,8 +285,6 @@ add_item_plain	Mahsulot qoʻshish
 add_note	Izoh qoʻshish
 add_opening_balance	Boshlangʻich qoldiq qoʻshish
 add_staff	Xodim qoʻshish
-add_station	Stansiya qoʻshish
-add_table	Stol qoʻshish
 add_unit	Birlik qoʻshish
 add_use_name	Bu nomni qoʻshish / ishlatish
 allow_extra_tills	Qoʻshimcha kassalarga ruxsat
@@ -409,7 +337,6 @@ share_whatsapp	WhatsApp ulashish
 lan_pages_heading	Wi‑Fi tarmog‘idagi mijozlar sahifalari
 lan_pages_help	Ushbu doʻkonning Wi‑Fi tarmogʻida mijozlar sahifalari displey va fikr-mulohaza uchun ishlaydi. Mobil internet foydalanuvchilari keyinroq bulutga muhtoj. Karta terminali yoki to'lov havolasi ixtiyoriy va hisoblagichni hech qachon bloklamaydi.
 diag_send_heading	Qurilmadan tashqariga ulashish
-kot_dest_heading	Stansiya
 optional_login_heading	Ixtiyoriy kirish
 rights_heading	Huquqlar
 ops_panel	Mahalliy amallar
@@ -436,28 +363,6 @@ till_voucher_amt_ph	Vaucher summasi (boʻsh = hammasi)
 till_wallet_topup_ph	Hamyon toʻldirish summasi
 till_voucher_issue_amt_ph	Beriladigan vaucher summasi
 till_voucher_issue_code_ph	Yangi vaucher kodi
-split_evenly	Teng boʻlish
-waitlist	Kutish roʻyxati
-fire_course	Keyingi qadam
-hold_item	Ushlab tur
-waiter_call	Kassirga qo'ng'iroq qiling
-waitlist_add	Kutish roʻyxatiga qoʻshish
-floor_view_grid	Toʻr
-floor_view_layout	Joylashuv
-floor_layout_x	X
-floor_layout_y	Y
-floor_layout_w	W
-floor_layout_h	H
-floor_layout_save	Joylashuvni saqlash
-floor_layout_open	Stolni ochish
-floor_layout_edit	Joylashuvni tahrirlash
-floor_layout_pick	Joylashuvini tahrirlash uchun stolni bosing
-floor_layout_saved	Tartib saqlandi
-floor_layout_nudge_left	← 20
-floor_layout_nudge_right	→ 20
-floor_layout_nudge_up	↑ 20
-floor_layout_nudge_down	↓ 20
-sibling_pickers_help	Birliklardagidek Yoniq/Oʻchiq bosing — hudud, stansiya va soliq stavkasini kundalik roʻyxatdan yashiring; toʻplam odatiylari qoladi.
 bulk_price_apply	Ommaviy narxni qoʻllash
 card_terminal_optional	Karta terminali / toʻlov havolasi (internet boʻlganda ixtiyoriy)
 copy_report	Hisobotni nusxalash
@@ -483,7 +388,6 @@ import_day	Kunni import qilish
 import_items_csv_plain	Mahsulotlarni CSV import qilish…
 import_parties_csv	Kontragentlarni CSV import qilish…
 item_name	Mahsulot nomi
-kitchen_printing	Printerlar
 login_id_ph	Foydalanuvchi nomi
 mark_cleared	Tozalangan deb belgilash
 new_party_clear	Yangi kontragent (shaklni tozalash)
@@ -553,15 +457,6 @@ show	Koʻrsatish
 spreadsheet_csv	Jadval (CSV)
 start_fresh	Yangidan boshlash
 stop_extra_tills	Qoʻshimcha kassalarni toʻxtatish
-floor_cols_ph	Ustunlar
-floor_cols_fit	Ekranga sigʻdirish
-floor_cols_fit_sub	{n} shu yerga sigʻadi
-floor_cols_fits	sigʻadi
-floor_cols_scroll	yon tomonga aylanadi
-floor_cols_min	Ustunlar: kamida 1 — yoki ekranga sigʻishi uchun boʻsh qoldiring
-floor_zoom_auto	Avto
-floor_zoom_out	Kichraytirish
-floor_zoom_in	Kattalashtirish
 backup_auto	Har kuni avtomatik zaxira nusxa · oxirgisi {when} · oxirgi 14 kun {dir} da saqlanadi.
 backup_auto_none	Har kuni avtomatik zaxira nusxa — birinchisi birozdan ishga tushadi.
 backup_copy_to	Nusxa {dir} ga ham boradi.
@@ -579,7 +474,6 @@ new_pair_code	Yangi juftlash kodi
 pair_finishing	Juftlash yakunlanmoqda… doʻkon daftarlari qoʻllanilmoqda
 pair_opening	Kassa ochilmoqda…
 pair_copied	Juftlash kodi nusxalandi
-kot_waiting	Yuborishni kutmoqda
 lan_offline_waiting	Serverga ulanib boʻlmaydi · {n} kutmoqda
 lan_connecting	Doʻkonga ulanmoqda…
 lan_live	Jonli
@@ -621,7 +515,6 @@ printers_routes_help	Operatsion tizim allaqachon biladigan printerlarni toping. 
 printer_assign_dd	Haqiqiy printer: {place}
 printer_assign_pick	Haqiqiy printerni tanlash
 printer_profile_heading	Joylashuv
-printer_send_heading	Yetkazib berish
 vp_delivery_heading	Yetkazib berish
 vp_delivery_help	Ushbu virtual printer vazifalarni qanday yuboradi - OS hujjati, xom baytlar yoki ESC/POS. Slip tarkibi (turi, o'rami, chekkalari) bu erda emas, hisob-kitob / Slip formatiga qarab belgilanadi.
 vp_type_size_heading	Harf oʻlchami
@@ -665,23 +558,13 @@ virtual_draft_send	Keyingi virtual printer uchun qiymat qoʻyildi
 virtual_need_real	Avval haqiqiy printerni tanlang
 virtual_need_select	Oʻchirish uchun virtual printerni tanlang
 real_printer_selected	Tanlandi: {name}
-station_group_heading	Virtual printerlar
-station_group_apply	Virtual printerni oʻchirish
-station_group_applied	Oʻchirildi
-station_group_empty	Virtual printerni tanlang
-station_group_name_ph	Virtual printer nomi (ixtiyoriy)
-station_group_save	Virtual printer yaratish
-station_group_saved	Virtual printer saqlandi
-station_manage_heading	Do'kon bo'limini qo'shing yoki olib tashlang
 printers_routes_heading	Qayerda chop etiladi
 route_pick_heading	Joy
 route_editing	Tahrirlanmoqda: {name}
 route_assigned	{printer} {place} ga qoʻshildi
 route_already_assigned	Bu joyda allaqachon: {printer}
-route_removed	{printer} {place} dan olib tashlandi
 route_cleared	{name} tozalandi
 route_assigned_empty	Bu joyda hech narsa yoʻq
-route_tap_remove	olib tashlash uchun bosing
 route_tap_select	tanlash uchun bosing
 route_tap_selected	tanlandi
 route_pick_printer_first	Avval printerni bosing
@@ -702,35 +585,17 @@ printer_format_custom	Yangi maxsus profil
 printer_format_custom_label	Maxsus
 printer_format_custom_added	Bu joy uchun maxsus profil qoʻshildi
 add_printer	Printer qoʻshish
-remove_printer	Olib tashlash
 route_pick_ph	Hisob-kitob yoki do'kon bo'limi
 route_bill	Hisob
-route_default_kitchen	Bekat yo‘q (tayinlanmagan elementlar)
-route_kot_station	Stansiya
 route_dont_print	Printer yoʻq
-stations_heading	Stansiyalar
-stations_help	Do'kon bo'limlari do'konning o'sha qismi uchun mahsulotlar va printerlarni guruhlaydi. Printerlarni Sozlamalar → Printerlar orqali ulang, sinash tartibini o‘rnating, so‘ng “Avval ishlaydi” yoki “Hammasida chop etish” ni o‘rnating. O'zgarishlar siz ketayotganda saqlanadi.
-station_print_heading	Shu stansiya printerlari
-station_print_help	Stansiyani tanlang, keyin bir yoki bir nechta printerni ulang. ↑↓ to'plamlar sinash tartibi. Birinchi muvaffaqiyatdan keyin ish to'xtaydi; Har bir biriktirilgan printerga yuborilgan barcha xabarlarda chop eting.
-station_print_pick_ph	Printer sozlash stansiyasi
 station_print_pick_first	Avval do'kon bo'limini tanlang
-station_print_editing	„{name}“ printerlari tahrirlanmoqda
-station_vps_dd	Shu stansiya printerlari
-station_vps_dd_n	{n} printer · oʻzgartirish uchun bosing
 station_vps_empty	Hali printer yoʻq — Sozlamalar → Printerlar ichidan toping
 bill_printers_dd	Hisob printerlari
 bill_printers_dd_n	hisob uchun {n} printer · oʻzgartirish uchun bosing
-job_layout	Joylashuv
-job_delivery	Ish qanday yuboriladi
-job_delivery_help	OS hujjati, xom baytlar yoki ESC/POS. Hisob-kitob va chiptaning har biri o'ziga xosdir. Har qanday ish topilgan saqlangan istalgan printerga o'tishi mumkin.
 station_vp_attached	Printer ulandi
 station_vp_detached	Printer stansiyadan olib tashlandi
-station_print_summary	{mode} · {n} printer
-station_print_summary_none	Bu stansiyada hali printer yoʻq — chop etmaydi
-stations_none	Hozircha hech qanday stansiya yoʻq — quyida bittasini qoʻshing. Stansiyalar peshtaxtada ishlatilmaydi - bo'sh qoldiring.
 route_up	Yuqoriga
 route_down	Pastga
-route_remove	Olib tashlash
 route_clear	Tozalash
 save_printers	Printerlarni saqlash
 print_test_page	Sinov sahifasini chop etish
@@ -739,23 +604,15 @@ test_page_no_printer	{place} uchun printer yoʻq — printer ulang, soʻng qayta
 test_page_pick_first	Avval sinov sahifasi uchun printer(lar)ni tanlang — soʻng Sinov sahifasini chop etish
 test_printers_dd	Sinov sahifasi printerlari
 test_printers_dd_n	sinov sahifasi uchun {n} printer · oʻzgartirish uchun bosing
-kot_test_printers_dd	Sinov chop etish uchun printerlar
-kot_test_printers_dd_n	Test chop etish uchun {n} printer(lar)i · o‘zgartirish uchun bosing
 test_printer_picked	Sinov: {name}
 test_printer_cleared	Sinov yoʻq: {name}
 test_page_sent_n	Sinov sahifasi {n} printerga yuborildi
-test_kot_pick_first	Sinov chop etish uchun avval printer(lar)ni tanlang, so‘ngra sinovdan o‘tkazing
-test_kot_sent_n	{n} printer(lar)iga sinov nashri yuborildi
-cancel_pick	Belgilash
-cancel_pick_on	Belgilangan
-cancel_pick_meta	Bekor qilish uchun belgilangan
 batch_cancel	Belgilanganlarni bekor qilish
 batch_cancel_n	Belgilanganlarni bekor qilish ({n})
 batch_cancel_none	Avval bir yoki bir nechta yuborilgan narsalarni belgilang - keyin Belgilangan Bekor qilish
 batch_cancel_title	Belgilangan narsalarni bekor qilish - bitta sabab, har bir bo'lim uchun bitta slipni bekor qilish
 batch_cancel_ok	{n} elementlari bekor qilindi · {slips} slip(lar) ni bekor qilish → {kitchens}
 batch_cancel_ok_noprint	{n} elementlari bekor qilindi — avtomatik chop etish oʻchirilgan, shuning uchun bekor qilish varaqasi yoʻq
-no_printer_kitchen_station	Bu stantsiya uchun printer yo'q
 printers_saved	Saqlandi
 test_page_sent	Sinov sahifasi yuborildi — printerni tekshiring
 test_page_sent_one	Sinov sahifasi {name} ga yuborildi — oʻsha printerni tekshiring
@@ -771,10 +628,7 @@ cancelled	Bekor qilindi
 printers_tap_find	Bu qurilma ishlata oladigan printerlar roʻyxati uchun Qidiruvni bosing.
 printers_none_found	Hech narsa topilmadi — tizim printeri nomi yoki IP yozing (mas. 192.168.1.50).
 printer_from_find	{name} qoʻshildi
-kot_printer_ph	Sliplar uchun printer
 bill_printer_ph	Hisob printeri
-kot_print_on	Chiptalarni avtomatik chop etish: Yoqilgan
-kot_print_off	Chiptalarni avtomatik chop etish: oʻchirilgan
 queue_refused	Doʻkon qabul qilmadi ({n}) — har birini kassada tekshiring:
 clear_not_accepted	Tekshirildi — bu roʻyxatni tozalang
 device_name_ph	Bu qurilmaning nomi
@@ -785,7 +639,6 @@ backup_failed	Oxirgi avtomatik zaxira nusxa amalga oshmadi: {e}
 backup_overdue	{n} kundan beri zaxira yoʻq — nusxa olishi uchun ilovani shu qurilmada ochiq tuting.
 disk_low	Bu qurilmada faqat {mb} MB boʻsh — zaxira nusxalar tez orada amalga oshmaydi. Joy boʻshating.
 last_seen_devices	Oxirgi koʻrilgan: {time}
-sync_interval	Har {secs} s da sinxron
 connection_to_shop	Doʻkonga ulanish
 supplier_name_ph	Yetkazib beruvchi nomi (yoki kontragent)
 supplier_ph	Yetkazib beruvchi
@@ -848,7 +701,6 @@ fresh_book_kirano	Yangi = bo'sh katalog (keyinroq elementlarni qo'shing). Kitob 
 fresh_selected	Fresh tanlandi — katalog boʻsh qoladi. Tayyor boʻlganingizda Tayyor ni bosing.
 gross_word	Yalpi
 how_start	Qanday boshlamoqchisiz?
-kot_print_help_kirano	Kirana peshtaxtasida ishlatilmaydi.
 later_country_pack	Keyin: Sozlamalar → soliq va toʻlov yorliqlari uchun mamlakat toʻplamini qoʻllang.
 local_badge	MAHALLIY
 mix_type_hint_kirano	Kerak boʻlsa naqd / UPI / karta / kreditga boʻling. Kredit uchun yuqorida mijoz kerak.
@@ -899,8 +751,6 @@ staff_copy_need_source	Kimning sozlamasini nusxalashni tanlang
 staff_copy_same	Bu oʻsha odam — boshqasini tanlang
 staff_rename_need_selected	Avval kimning ismini oʻzgartirishni tanlang
 team_pick_hint	Kimni tahrirlashni tanlang - ekranlar, pul huquqlari va stansiyalar faqat o'sha odam uchun ko'rinadi.
-team_stations_help	Ular foydalanishi mumkin bo'lgan stantsiyalar
-team_stations_changed	Stansiyalar oʻzgartirildi — Ushbu shaxs uchun sozlamalarni saqlang
 team_features_changed	Ekranlar oʻzgardi — shu odamning sozlamasini Saqlash
 team_rights_changed	Huquqlar oʻzgardi — shu odamning sozlamasini Saqlash
 they_owe_us	Ular bizga qarzdor
@@ -984,9 +834,6 @@ service_pct_ph	Xizmat % ixtiyoriy 0/10/12
 short_code_ph	Qisqa kod (MG02)
 starting_password_ph	Boshlangʻich parol (ixtiyoriy)
 starting_pin_ph	Boshlangʻich PIN (4–12 raqam)
-station_name_ph	Stansiya nomi (ixtiyoriy)
-station_new_ph	Bo'lim (ixtiyoriy)
-table_name_ph	Hisoblagich / ko'rfaz nomi
 tax_rate_ph	Soliq stavkasi nomi yoki % — Standart, Pasaytirilgan, 0, 5, 12, 18, 20
 to_code_ph	Qaysi kodga (kg)
 uncleared_no_ph	Yuqoridagi tozalanmagan №
@@ -999,27 +846,8 @@ book_kind_month	Shu oyning kitoblari
 book_kind_aging	Toʻlanmagan / debet-kredit
 book_kind_balance	Balans
 order_help	Qoʻshish uchun mahsulotni bosing.
-floor_help	Bu do'kon peshtaxtada sotiladi. Stollar va ovqat uchun zamin Kiranoning bir qismi emas.
-kitchen_help	Peshtaxtada ishlatilmaydi.
-kitchen_empty	Ochiq chiptalar yo'q (do'konlar odatda ushbu ekranni ishlatmasdan qoldiradi).
-add_a_table	Stol qoʻshish
-add_station_heading	Do'kon bo'limini qo'shing
 categories_help	Yuqoridagi mahsulotni shu toifaga qoʻyish uchun Ishlatishni bosing. Surat toifaga rasm beradi; boʻlmasa bosh harflari chiqadi.
 dish_search_ph	Elementlarni yoki qisqa kodni qidiring…
-tile_free	Boʻsh
-tile_occupied	Band
-tile_food_ready	Ovqat tayyor
-tile_bill_printed	Hisob chop etilgan
-tile_paid	Toʻlangan
-tile_bill_btn	Hisob
-tile_occupy_btn	Mehmonlarni oʻtqazish
-tile_free_btn	Stolni boʻshatish
-tile_ready_btn	Stolni boʻshatish
-tile_undo_bill	Hisobni bekor qilish
-summary_busy	band stollar
-summary_to_collect	undirishga
-summary_on_floor	zalda
-floor	Doʻkon
 sizes_as_items_ph	Oʻlchamlar alohida mahsulot (ixtiyoriy) — Yarim=120, Toʻliq=200
 dish_group_ph	Paket hajmi guruhi (ixtiyoriy) - masalan. Og'irligi 1 kg / 5 kg
 discount	Chegirma
@@ -1027,7 +855,6 @@ remove_discount	Chegirmani olib tashlash
 apply_discount	Chegirma qoʻllash
 save_opening_cash	Boshlangʻich naqdni saqlash
 close_shift_print	Smenani yopib varaq chop etish
-area_prices_ph	Hudud narxlari (ixtiyoriy) — Konditsioner=220, Olib ketish=210
 discount_ph	10% yoki 50
 discount_reason_ph	Sabab (mas. doimiy mehmon, kech ovqat)
 opening_float_ph	Bugun ertalab tortmaga solingan pul
@@ -1037,34 +864,18 @@ shift_handover	Smena topshirish
 shift_since	Bu smena beri
 expected_in_drawer	Tortmada kutilayotgani
 right_discount	Chegirma berish
-floor_in_kitchen	Jarayonda
-floor_eating	Berilgan
 pick_category	Toifa tanlash
 close_category_list	Toifa roʻyxatini yopish
 new_category_row	Yangi toifa — mahsulotni saqlaganda yaratiladi
 your_category	Sizning toifangiz
 suggested_category	Tavsiya etilgan - bizning mahsulotlarimizdan
 category_search_ph	Toifa — oʻzingiznikini qidiring yoki yangisini yozing
-line_sent_state	Yuborildi
-line_nc_state	Sovgʻa (NC) — haq olinmaydi
 cancel_item_short	Bekor qilish
-nc_short	NC
-charge_again_short	Haq olish
-move_short	Koʻchirish
 cancel_item_title	Ushbu elementni bekor qiling - orqa ofis bekor qilish varaqasi oladi
-nc_item_title	Bu mahsulotni sovgʻa qilish (NC)
-charge_again_title	Bu mahsulotdan qayta haq olish
-move_item_title	Bu mahsulotni boshqa stolga koʻchirish
-already_cooked	Allaqachon pishirilgan (chiqindi)
-not_cooked_yet	Hali pishirilmagan
 return_to_customer	Mijozga qaytarish
 short_by	Yetishmaydi
 tip_not_sale	Choychaqa (xodimniki, savdo emas)
 right_settle	Toʻlov qabul qilish
-right_cancel_sent	Yuborilgan mahsulotni bekor qilish
-right_complimentary	Sovgʻa (NC)
-right_move_table	Hisoblagichlarni ko'chirish / birlashtirish
-right_reprint	Hisobni qayta chop etish
 right_allowed	Ruxsat etilgan
 right_with_approval	Tasdiq bilan
 right_denied	Ruxsat etilmagan
@@ -1074,25 +885,11 @@ no_server_found	Hech narsa topilmadi. Serverda: Sozlamalar → Boshqa qurilmalar
 servers_found_pick	Ulanmoqchi boʻlgan doʻkonni bosing.
 server_host_selected	{host} ishlatilmoqda — juftlash kodini kiriting, soʻng Hozir juftlash.
 print_bill	Hisob chop etish
-table_actions	Qarshi harakatlar
-move_merge_table	Stolni koʻchirish / birlashtirish
-move_help	Ushbu hisoblagichning tartibini bepul jadvalga o'tkazing yoki uni ishlaydigan jadvalga birlashtiring.
-move_target_ph	Hisoblagich nomi
 approval_pin_ph	Menejer PIN (soʻralsa)
-move_here	Bu yerga koʻchirish
-merge_into	Unga birlashtirish
-line_reason_ph	Sabab (masalan, mijoz fikrini o'zgartirdi, stokda yo'q)
-line_qty_ph	Nechtasini bekor qilish (boʻsh = hammasi)
-line_target_ph	Stolga koʻchirish (mas. D5)
 confirm	Tasdiqlash
 menu_search_ph	Mahsulot yoki qisqa kod qidirish
 customer_paid_ph	Mijoz toʻladi
 tip_ph	Choychaqa
-table_area_ph	Hudud (mas. Joyida, Olib ketish, Konditsioner)
-table_range_ph	Bir vaqtda koʻp: D1-D20
-add_these_tables	Ushbu hisoblagichlarni qo'shing
-remove_these_tables	Ushbu hisoblagichlarni olib tashlang
-table_remove_ph	Olib tashlash: T1-T24 yoki bitta stol nomi
 find_server	Doʻkon serverini topish
 bill_format	Hisob formati
 bill_format_help	Har bir hisobda do'koningiz nomi ostida chop etiladi. Satrlarni | bilan ajrating (masalan, MG Road, Rajkot | Ph 98250 00000).
@@ -1100,78 +897,32 @@ bill_header_ph	Manzil | telefon
 fssai_ph	FSSAI / do'kon litsenziyasi №. (ixtiyoriy)
 bill_footer_ph	Pastki yozuv (mas. Rahmat, yana keling)
 save_bill_format	Hisob formatini saqlash
-kot_format	Slip formati
-kot_format_help	Roʻyxatdagi maydonni bosing. Ko'rsatish, shrift o'lchami va vazni yuqorida tanlangan slip turidagi ushbu maydonga tegishli. Har bir tur o'zining o'lchamlari va vaznini saqlaydi.
-kot_format_fields	Maydonlar
-kot_field_next	Keyingi maydon
-kot_field_show	Koʻrsatish
-kot_field_hide	Yashirish
 kot_field_on	koʻrsatish
 kot_field_off	yashirish
-kot_field_size	Shrift oʻlchami
-kot_field_size_ph	mas. 16, 20, 24, 28, 32…
 kot_weight_light	Ingichka
 bill_kot_panel_help	Bill tartibi va kontent kengligi. Kassir hisobni kim chiqargan yoki hisob-kitob qilgan - to'liq savdo hikoyasi kitoblarda qoladi.
 std_size_ph	mas. 18, 20, 26…
-kot_show_shop	Doʻkon nomi
-kot_hide_shop	Doʻkonni yashirish
-kot_show_time	Vaqt
-kot_hide_time	Vaqtni yashirish
-kot_show_waiter	Kassir
-kot_hide_waiter	Kassirni yashirish
-kot_show_station	Stansiya
-kot_hide_station	Stansiyani yashirish
-kot_show_table	Kassa
-kot_hide_table	Stolni yashirish
-kot_show_kot_no	Chipta raqami
-kot_hide_kot_no	Chipta raqamini yashirish
-kot_width	Oldindan ko'rish sarlavhasi (slip yorlig'ida kontent kengligini o'rnating)
-kot_width_58	58 mm
-kot_width_80	80 mm
-kot_kind_heading	Chipta turi
-kot_kind_original	Asl nusxa
-kot_kind_duplicate	Nusxa
-kot_kind_modified	Oʻzgartirilgan
-kot_kind_cancelled	Bekor qilindi
-kot_style_heading	Maydon oʻlchami va qalinligi
-kot_style_title	Sarlavha
-kot_style_item_qty	Mahsulot · Miqdor
-kot_style_field_pick	Maydon tanlash
 kot_weight_regular	Oddiy
 kot_weight_bold	Qalin
-kot_align	Tekislash
 kot_align_start	Boshlash
 kot_align_center	Markaz
 kot_align_end	Oxiri
 content_width	Mazmun kengligi (mm)
 content_width_bill	Hisob mazmuni kengligi (mm)
-content_width_kot	Chipta tarkibi kengligi (mm)
 content_width_ph	Yoki mazmun kengligini yozing, 40–210 mm
 content_width_help	Bu slip qanchalik keng chop etadi. Bill o'zining kengligini saqlaydi.
 content_width_bill_help	Mijoz hisobi qanchalik keng bo'ladi. Standart 210 mm (sahifa). 58 mm tor slip, 80 mm kengligida slip, 112 mm 4 dyuym, 210 mm A4 kengligi. 40 dan 210 gacha bo'lgan istalgan qiymatni kiriting. Chiptalar yorlig'ida o'z kengligiga ega.
-content_width_kot_help	Chipta qanchalik keng chop etilgan. Standart 80 mm. 58 mm tor slip, 80 mm kengligida slip, 112 mm 4 dyuym, 210 mm sahifa. 40 dan 210 gacha boʻlgan istalgan qiymatni kiriting. Hisob-kitob yorligʻida mijozlar hisoblari oʻz kengligiga ega.
 vp_paper_width	Mazmun kengligi (mm)
 vp_paper_width_ph	Yoki mazmun kengligini yozing, 40–210 mm
 vp_paper_width_help	Kontent kengligi Bill & Slip formati ostida o'rnatiladi — hisob (standart 210 mm) va chipta (standart 80 mm) uchun alohida.
-kot_size	Shrift oʻlchami
-kot_size_s	Kichik
-kot_size_m	Oddiy
-kot_size_l	Katta
 std_size	Shrift oʻlchami
 kot_copies	Nusxalar
 kot_copies_1	1
 kot_copies_2	2
 kot_copies_3	3
-kot_title_ph	Sarlavha (bo'sh = TICKET)
-kot_footer_ph	Back-ofis eslatmasi (ixtiyoriy)
-kot_preview	Koʻrib chiqish
-save_kot_format	Slip formatini saqlang
-test_kot_format	Sinov chop etish
-test_kot_sent	Chiptalarni oldindan koʻrish yuborildi
 test_bill_format	Sinov hisobi
 test_bill_sent	Hisob koʻrinishi yuborildi
 test_print_no_printer	Oʻsha ish uchun printer yoʻq — shu ekranda birini tanlang
-kot_format_saved	Slip formati saqlandi
 std_print	Hisob chop etish oʻlchami
 std_print_help	OS / hujjat printerlarida standart portret va landshaft hisob-kitob ishlari uchun shrift hajmi (nuqtalarni kiriting - Kichik/Oddiy/Katta emas). Ikkala yo'nalishda ham bir xil o'lcham.
 std_size_s	Kichik
@@ -1211,23 +962,16 @@ upi_qr	UPI QR
 show_upi_qr	UPI QR koʻrsatish
 close_upi_qr	Yopish
 upi_qr_help	Mijoz skanerlaydi va to'laydi. Toʻlovdan keyin toʻlovni qabul qilish ga teging. Ikkinchi ekran: Server URL manzilini oching / LANda ko'rsatish.
-kot_recall	Qaytarish
 recently_done	Yaqinda tugagan
-recall_kot_ph	Eslab qolish uchun # chipta
 role_help_customer	Rol: Mijoz — hisob (ular bizga qarzdor). Oʻsha kontragent zaxira ham yetkazishi mumkin.
 role_help_both	Rollar: Mijoz + Yetkazib beruvchi — bitta kontragent, hisob va toʻlov daftarlari, sof Hisobotlarda.
 role_help_supplier	Rol: Yetkazib beruvchi — xaridlar uchun ularga qarzdormiz.
-dine_in_pick_table	Peshtaxtada ishlatilmaydi
-choose_table	Hisoblagichni tanlang
-change_table	Stolni almashtirish
-pick_table_banner	Bu buyurtma uchun stol tanlang
 items_word	mahsulot
 items_section	Mahsulotlar
 back_to_order	Buyurtmaga qaytish
 new_items_head	Hali yuborilmagan
 price_ph	Narx
 price_ph_gst_inside	Narx ({tax} ichida)
-cancel_needs_table	Qarshi sotuvlar siz to'lovni qabul qilguningizcha chiptada qoladi
 tax_rates_missing_hint	Bu mahsulotlar uchun {tax} stavkasi yo‘q — belgilangan tovarlar bo‘yicha Soliq stavkasi (narxlarga {tax} ostida {tax} kiritilgan)
 taxable_value	Soliqqa tortiladigan qiymat
 gst_inside_price_note	({tax} ichida)
@@ -1248,30 +992,11 @@ client_template_confirm	{title}dan {d} elementlari qo‘shilsinmi? Sizda mavjud 
 client_template_importing	{title} import qilinmoqda…
 client_template_done	{title} dan har bir element sizning narsalaringizda.
 client_template_imported	{title}-dan {d} elementlari va {c} toifalari qo'shildi
-resv_heading	Bandlovlar
-resv_name_ph	Mijoz nomi
-resv_phone_ph	Telefon (ixtiyoriy)
-resv_guests_ph	Odamlar
-resv_when_ph	Qachon — 20:30, ertaga 13:00
-resv_table_ph	Hisoblagich (ixtiyoriy)
-resv_add	Band qilish
-resv_seat	Oʻtqazilgan
-resv_none	Yaqin bandlov yoʻq.
-guests_word	mehmon
-delivery_by_ph	Yetkazish (kuryer yoki xodim nomi)
-kitchen_all_day	Hozir pishirish: {items}
-split_bill	Hisobni boʻlish
-split_go	Alohida hisob qilish
 cancel	Bekor qilish
 opening_client	Mijoz ochilmoqda…
 preparing_desk	Kassa tayyorlanmoqda…
 opening_server	Server ochilmoqda…
 creating_server	Server yaratilmoqda…
-split_help	Bir mijoz toʻlaydigan mahsulotlarni bosing · {n} tanlagan
-split_send_first	Avval slip yuboring - faqat orqa ofisdagi narsalar alohida hisob-kitobga o'tishi mumkin
-split_pick_some	Avval alohida hisob-kitob uchun elementlarga teging
-split_done	Alohida hisob-kitob qilingan — bu peshtaxta yonida joylashgan
-split_marked	alohida hisob
 order_empty_pick	Buyurtma boʻsh — elementlarni tanlash uchun yuqoridagi elementlarni qoʻshish ga teging.
 add_dishes	Elementlarni qo'shish
 order_so_far	Shu buyurtmada: {n} · {total}
@@ -1282,24 +1007,8 @@ pick_done_dd	Tayyor · {label}
 printer_route_mode	Bu joyda bir nechta printer boʻlsa
 printer_mode_first	Birinchi ishlagani
 printer_mode_all	Hammasiga chop etish
-kot_show_area	Hudud
-kot_hide_area	Hududni yashirish
-kot_show_item_hdr	Mahsulot · Miqdor
-kot_hide_item_hdr	Ustunlarni yashirish
-kot_show_title	Sarlavha qatori
-kot_hide_title	Sarlavhani yashirish
-kot_field_order	Chop etish tartibi
 kot_field_up	Yuqoriga koʻchirish
 kot_field_down	Pastga koʻchirish
-kot_field_cycle	Keyingisini tanlash
-kot_field_select	Keyingisini tanlash
-kot_field_time	Vaqt
-kot_field_kot_no	Chipta raqami
-kot_field_area	Hudud
-kot_field_table	Kassa
-kot_field_shop	Doʻkon nomi
-kot_field_waiter	Xodimlar
-kot_field_station	Stansiya
 app_template_blurb_extra	Shuningdek: Egasi Zohir, Admin Osif, Kassir Navoz; old panel; 4 soatdan keyin tarix; Bugun echib oling; ixcham hisob.
 dishes_n	{n} elementlar
 recipe_ph	Retsept (ixtiyoriy - peshtaxtada ishlatilmaydi)
@@ -1309,8 +1018,6 @@ low_stock_alert	Tugab bormoqda — tez orada sotib oling: {items}
 unpriced_note	Elementlaringizdagi {n} mahsulotlarining narxi hali yo‘q — siz belgilamaguningizcha ular 0 dan to‘lanadi.
 show_unpriced	Faqat narxsiz narsalarni ko'rsatish
 show_all_dishes	Barcha elementlarni ko'rsatish
-role_waiter	Kassir
-role_kitchen	Do'kon
 role_title_rest_ph	Lavozim (mas. Kapitan, Bosh oshpaz)
 preset_help_rest	Kassir: sotadi. Menejer: savdo + mahsulot + bekor/tuzatish.
 kind_raw	Do'konda foydalanish uchun sotib olingan

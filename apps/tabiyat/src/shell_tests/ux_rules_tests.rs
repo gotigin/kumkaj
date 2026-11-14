@@ -6,16 +6,6 @@ mod ux_rules_tests {
         PayPart { method, amount: amount.into() }
     }
 
-    /// Change table must not seat/move the previous ticket onto the new one.
-    #[test]
-    fn change_table_opens_only_first_choose_seats_cart() {
-        assert!(pick_seats_desk_cart(None), "first Choose a table seats desk cart");
-        assert!(
-            !pick_seats_desk_cart(Some("table-a")),
-            "Change table must not drag lines onto the picked table"
-        );
-    }
-
     #[test]
     fn one_blank_way_takes_the_rest_and_same_ways_merge() {
         let parts = [part(PayMethod::Cash, "300"), part(PayMethod::Upi, ""), part(PayMethod::Cash, "50")];
@@ -133,61 +123,6 @@ mod ux_rules_tests {
         );
     }
 
-    /// Kitchen: the whole ticket card advances like its button. Without a
-    /// cursor the View never hears the finger, so match_event's card tap
-    /// was dead code and only the small button worked.
-    #[test]
-    fn kitchen_card_is_one_tap_target() {
-        let ui = include_str!("../ui_script.rs");
-        let card = ui
-            .split("let KotCard = View{")
-            .nth(1)
-            .and_then(|s| s.split("bg_ok :=").next())
-            .unwrap_or("");
-        assert!(card.contains("cursor: MouseCursor.Hand"), "KotCard needs a cursor to take the tap");
-        let handler = include_str!("../app/match_event.rs");
-        let tap = handler
-            .split("Kitchen: advance a ticket")
-            .nth(1)
-            .and_then(|s| s.split("table_range_add").next())
-            .unwrap_or("");
-        assert!(
-            tap.contains("ids!(kotcard))") && tap.contains(".finger_up(actions)"),
-            "card tap is read"
-        );
-        assert!(tap.contains("finger_up_is_tap"), "a scroll drag is not a tap");
-        assert!(tap.contains("advance_kot_from"), "the tap only leaves the state it showed");
-    }
-
-    /// Send KOT on the shop device: the line names the kitchens (no
-    /// programmer "KOT(s)"), and a paper failure stays red in every language —
-    /// the kind is set in code, not guessed from English words.
-    #[test]
-    fn kot_send_outcome_names_kitchens_and_keeps_paper_failures_red() {
-        let en = |k: &str| locale::t("en", k);
-        let (kind, msg) = kot_sent_status(&en, "Hot kitchen, Bar", true, None);
-        assert_eq!(kind, SnackKind::Success);
-        assert_eq!(msg, "Slip sent to Hot kitchen, Bar — printing");
-        let (kind, msg) = kot_sent_status(&en, "Hot kitchen", true, Some("printer offline"));
-        assert_eq!(kind, SnackKind::Error);
-        assert!(msg.contains("printer offline") && msg.contains("Tell the shop"), "{msg}");
-        let (kind, msg) = kot_sent_status(&en, "Hot kitchen", false, None);
-        assert_eq!((kind, msg.as_str()), (SnackKind::Success, "Slip sent to Hot kitchen"));
-        assert!(!msg.contains("KOT(s)"));
-
-        let gu = |k: &str| locale::t("gu", k);
-        let (kind, msg) = kot_sent_status(&gu, "Hot", true, Some("offline"));
-        assert_eq!(kind, SnackKind::Error, "{msg}");
-        assert!(!msg.contains("NOT printed") && msg.contains("Hot") && msg.contains("offline"), "{msg}");
-        let (kind, msg) = kot_sent_status(&gu, "Hot", true, None);
-        assert_eq!(kind, SnackKind::Success);
-        assert_ne!(
-            snack::classify(&msg),
-            SnackKind::Success,
-            "guessing from English words would not colour a Gujarati line: {msg}"
-        );
-    }
-
     /// Empty states name the pharmacy rail (Sell, Medicines).
     #[test]
     fn empty_states_name_the_rail_screens() {
@@ -213,30 +148,26 @@ mod ux_rules_tests {
         }
     }
 
-    /// Settings → Areas · stations · tax rates shows names, never ids, and
-    /// every row keeps its toggle target (keys line up index for index).
+    /// Settings → Tax rates shows names, never ids, and every row keeps its
+    /// toggle target (keys line up index for index).
     #[test]
     fn sibling_pickers_show_names_and_keep_their_targets() {
-        let path = std::env::temp_dir().join(format!("khaynjo-pickers-{}.sqlite3", new_id()));
+        let path = std::env::temp_dir().join(format!("tabiyat-pickers-{}.sqlite3", new_id()));
         let store = Store::open_path(&path).unwrap();
-        store.add_station("Tandoor").unwrap();
+        store.add_tax_rate("Shop GST 7%", "SHOP7", 700).unwrap();
         let rows = sibling_pickers_rows(&store, |k| locale::t("en", k));
         let keys = sibling_picker_keys(&store);
         assert_eq!(rows.len(), keys.len());
         for (row, key) in rows.iter().zip(&keys) {
             match (row, key) {
-                (ReportRow::Head(_), None) => {}
                 (ReportRow::Kv(name, _), Some(key)) => {
                     assert!(!name.contains(':'), "id leaked into the row: {name}");
-                    assert!(
-                        key.starts_with("area:") || key.starts_with("station:") || key.starts_with("tax:"),
-                        "{key}"
-                    );
+                    assert!(key.starts_with("tax:"), "{key}");
                 }
                 _ => panic!("row / key mismatch"),
             }
         }
-        assert!(rows.iter().any(|r| matches!(r, ReportRow::Kv(n, _) if n == "Tandoor")));
+        assert!(rows.iter().any(|r| matches!(r, ReportRow::Kv(n, _) if n == "Shop GST 7%")));
         drop(store);
         let _ = std::fs::remove_file(path);
     }

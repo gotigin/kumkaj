@@ -9,7 +9,7 @@
 //! Locked-template pattern: one product face per binary, templates ship
 //! empty (the owner adds their own catalogue/parties).
 
-use crate::domain::{Money, VenueMode};
+use crate::domain::Money;
 
 /// Reserved for optional future seed rows (currently unused — templates ship empty).
 #[derive(Clone, Copy, Debug)]
@@ -33,7 +33,6 @@ pub struct EntityTemplate {
     pub blurb: &'static str,
     pub how_to: &'static str,
     pub label_overrides: &'static [(&'static str, &'static str)],
-    pub venue_mode: VenueMode,
     pub qty_unit_hint: &'static str,
     pub lane_declared_label: &'static str,
     pub lane_owner_label: &'static str,
@@ -51,7 +50,6 @@ pub const KIRANO: EntityTemplate = EntityTemplate {
     // every language translates them; an overlay here would show its
     // English in every language (template_overrides_stay_empty).
     label_overrides: &[],
-    venue_mode: VenueMode::Counter,
     qty_unit_hint: "pc",
     lane_declared_label: "Tax invoice",
     lane_owner_label: "Cash memo",

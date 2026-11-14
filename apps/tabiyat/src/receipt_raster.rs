@@ -183,7 +183,6 @@ fn metrics(style: SlipStyle) -> RasterMetrics {
     }
 }
 
-
 /// Fonts tried in order for each letter: Latin/Cyrillic/Greek first, then
 /// the scripts the app's languages are written in.
 const FONTS: [&[u8]; 12] = [
@@ -213,11 +212,6 @@ pub fn escpos_picture(text: &str) -> Vec<u8> {
 /// Standard (bill) raster ESC/POS job.
 pub fn escpos_picture_standard(text: &str) -> Vec<u8> {
     escpos_picture_style(text, SlipStyle::Standard)
-}
-
-/// KOT raster ESC/POS job (same as [`escpos_picture`]).
-pub fn escpos_picture_kot(text: &str) -> Vec<u8> {
-    escpos_picture_style(text, SlipStyle::Kot)
 }
 
 /// The ESC/POS bytes that print `text` as a picture: reset, the picture in

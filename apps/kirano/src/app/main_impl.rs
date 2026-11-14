@@ -93,8 +93,8 @@ impl App {
             };
             // These caches are read while drawing, but come from the last draw:
             // after a resize (window, rail, rotation) the screen drew once with
-            // the old size and nothing drew it again — a one-column Floor stayed
-            // wider than a phone with its icons cut off. Redraw on a change.
+            // the old size and nothing drew it again — a list stayed wider
+            // than a phone with its icons cut off. Redraw on a change.
             let page_moved = {
                 let mut pv = page_viewport().lock().unwrap();
                 let moved = (pv.1 - page.1).abs() > 0.5;
@@ -103,22 +103,6 @@ impl App {
             };
             if page_moved {
                 self.ui.view(cx, path).redraw(cx);
-            }
-            // The Floor tables scroll sideways in `floor_scroll`: its box is
-            // the viewport the grid draws its visible columns for.
-            if screen == Screen::Floor {
-                let r = self.ui.view(cx, ids!(floor_scroll)).area().rect(cx);
-                if r.size.x > 1.0 {
-                    let moved = {
-                        let mut vp = floor_hviewport().lock().unwrap();
-                        let moved = (vp.1 - r.size.x).abs() > 0.5;
-                        *vp = (r.pos.x, r.size.x);
-                        moved
-                    };
-                    if moved {
-                        self.ui.widget(cx, ids!(floor_list)).redraw(cx);
-                    }
-                }
             }
         }
         if matches!(event, Event::Startup) {
@@ -383,9 +367,9 @@ impl App {
                     let mut st = app_state().lock().unwrap();
                     let host = st.device_role.is_host() && st.session.is_some();
                     if host {
-                        // refresh_live_lists updates Floor/Kitchen lists and
-                        // live print config; while on Settings it leaves
-                        // bill/KOT/printer drafts alone (do not refill form).
+                        // refresh_live_lists updates today's figures and the
+                        // live print config; while on Settings it leaves the
+                        // bill / printer drafts alone (do not refill form).
                         st.refresh_live_lists();
                     }
                     host
@@ -399,9 +383,9 @@ impl App {
             // found printers show in Settings.
             let mut problems = print_share::take_problems();
             if !problems.is_empty() {
-                // Empty KOT route is a setup gap, not success ("not printed"
+                // An empty route is a setup gap, not success ("not printed"
                 // used to match classify OK "printed" → green face). Two
-                // kitchens failing are both named (the last three, once each).
+                // printers failing are both named (the last three, once each).
                 problems.dedup();
                 let start = problems.len().saturating_sub(3);
                 self.show_warn(cx, problems[start..].join("; "));
@@ -530,14 +514,6 @@ impl App {
         }
         if let Event::NextFrame(e) = event {
             self.finish_nav_veil(cx, e);
-            let floor_ours = floor_area_autoscroll_frame()
-                .lock()
-                .unwrap()
-                .map(|frame| e.set.contains(&frame))
-                .unwrap_or(false);
-            if floor_ours {
-                self.floor_area_drag_autoscroll(cx);
-            }
             let accordion_ours = accordion_frame()
                 .lock()
                 .unwrap()
@@ -579,9 +555,6 @@ impl App {
         let sheet_open = self.window_sheet_open(cx);
         if !sheet_open {
             if self.pointer_route_printer_drag(cx, event) {
-                return;
-            }
-            if self.pointer_floor_area_drag(cx, event) {
                 return;
             }
         }

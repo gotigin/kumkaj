@@ -80,28 +80,6 @@ applied	E zbatuar
 note_ph	Shënim (opsional)
 rounded	E RRUMBULLAKUAR
 split	Ndaj
-send_kot	Dërgo fletë
-send_kot_to	Dërgo → {kitchens}
-send_kot_again	Shto artikuj për fletën tjetër
-send_kot_held	Artikujt e mbajtur - çmbajtë për t'i dërguar
-reprint_kot	Shtyp të zgjedhurat përsëri
-reprint_kot_ok	Artikujt {n} të printuara përsëri · Skeda(at) {slips} → {kitchens}
-reprint_kot_needed	Së pari dërgoni një fletë - më pas përfshini ilaçet dhe printoni përsëri ato të zgjedhura
-reprint_kot_none_selected	Çdo artikull i dërguar kapërcehet - prekni Në shtyp në ato që do të riprintoni
-reprint_kot_client	Printoni përsëri ({n}) për {place} të dërguar — pajisja e dyqanit e printon atë
-print_cancelled_kot	Shtyp të gjitha të anuluara
-print_cancelled_kot_ok	Artikujt e anuluar të printuar {n} · Skeda(at) {slips} → {kitchens}
-print_cancelled_kot_needed	Hapni fillimisht një tabelë me artikujt e anuluar
-print_cancelled_kot_none	Nuk ka artikuj të anuluar në këtë porosi
-print_cancelled_kot_client	Printimi u anulua ({n}) për {place} i dërguar — pajisja e dyqanit e printon atë
-kot_banner	Shiriti i llojit
-kot_banner_ph	Shirit (bosh = asnjë)
-kot_item_prefix	Parashtesa e artikullit
-kot_item_prefix_ph	p.sh. [ANULUAR]
-kot_strike	Emri i artikullit të shënjuar
-kot_strike_note	Shënim për artikullin
-kot_strike_on	Ndezur
-kot_strike_off	Fikur
 bill_item_layout	Paraqitja e artikujve
 bill_item_layout_columns	Kolona
 bill_item_layout_stacked	Të grumbulluara
@@ -130,8 +108,6 @@ bill_item_gap_em	Hapësira (em)
 bill_item_qty_min	Sasia min (em)
 bill_item_price_min	Çmimi min (em)
 bill_item_amount_min	Shuma min (em)
-kot_item_qty_width	Kolona e sasisë
-kot_item_num_align	Radhitja e sasisë
 bill_total_qty_label	Etiketa e sasisë totale
 bill_total_subtotal_label	Etiketa e nëntotalit
 bill_total_grand_label	Etiketa e totalit të përgjithshëm
@@ -143,36 +119,9 @@ bill_item_piece_off	Fikur
 bill_total_qty	Sasia totale
 bill_total_subtotal	Nëntotali
 bill_total_grand	Totali i përgjithshëm
-reprint_incl	Në shtypje
-reprint_skip	Anashkalo
-reprint_skip_meta	Anashkalo shtypjen e rikuperimit
-kot_dest_hint	Shtypet te printerët që i caktuat {kitchens} te Cilësimet → Printerët
-kot_sent_hint	Dërgimi i fundit shkoi te {kitchens}. Prekni për të shtuar artikuj për faturën tjetër — ose Printoni sërish fletën për të njëjtën.
-kot_sent_printing	Skedari u dërgua në {kitchens} - printim
-kot_sent_not_printed	Lëshimi u dërgua te {kitchens} por NUK u printua: {why}. Tregojini dyqanit, më pas rregulloni printerin dhe printojeni përsëri.
-kot_sent_screen	Skedari u dërgua te {kitchens}
-kot_queued_shop	Slip për {place} → {kitchens} i ruajtur; pajisja e dyqanit e printon atë
-kot_job_label	Rrëshqitje për {place} → {kitchens}
-kot_job_reached	Sfida për {place} arriti në {kitchens}
 kot_unassigned	E pacaktuar
-kot_unassigned_held	Mbajini artikujt {n} pa stacion — mbajini në linjë për të dërguar
-kot_station_ph	Stacioni
-kot_station_dd	Stacioni
-kot_station_dd_n	Stacioni · {stations}
-kot_set_station	Përdor këtë stacion
-kot_station_applied	Stacioni i vendosur në artikujt {n}: {station}
-kot_station_cleared	Stacioni i pastruar nga artikujt {n}: {station}
-kot_station_needed	Zgjidhni fillimisht një seksion dispancerie
-kot_station_not_allowed	Nuk lejohet të përdoret seksioni: {station}
-kot_station_none	Nuk ka ende stacione — të papërdorura në një dyqan sporteli (Cilësimet → Zonat nëse është e nevojshme)
 pos_tab_items	Artikujt e shtuar
 pos_tab_payment	Pagesa
-hold_send	Mbaj
-hold_send_on	E mbajtur
-hold_send_meta	Mbajtur - jo në këtë lapsus
-station_remove	Hiq stacionin
-station_remove_ph	Prekni një stacion në listë për ta hequr
-station_removed	Stacioni u hoq: {name}
 settings_hub_title	Cilësimet
 settings_hub_help	Hapni një zonë në herë — më pak rrëshqitje, zgjedhje më të qarta.
 settings_back	Prapa
@@ -181,12 +130,10 @@ settings_sec_country	Vendi dhe tatimi
 settings_sec_tills	Pajisje të tjera
 settings_sec_brand	Marka juaj
 settings_sec_units	Njësitë dhe shndërrimet
-settings_sec_pickers	Zonat · stacionet · normat e tatimit
+settings_sec_pickers	Normat e tatimit
 settings_sec_printers	Printerët
 settings_sec_bill	Formati Bill & Slip
 settings_sec_selling	Ofertat dhe shitjet
-bill_kot_tab_bill	Fatura
-bill_kot_tab_kot	Rrëshqitje
 settings_sec_alerts	Njoftimet
 alerts_help	Sa kohë qëndrojnë mesazhet e gjendjes në ekran për ju (kjo hyrje).
 snack_secs_ph	Sekonda (3–60, parazgjedhja 10)
@@ -237,8 +184,6 @@ counter	Banaku
 dine_in	Banaku
 takeaway	Për marrje
 order	Porosi
-tables	Numëruesit
-kitchen	Seksionet
 sales	Shitjet
 sales_refunds	Shitjet dhe rimbursimet
 day_close	Mbyllja e ditës
@@ -266,10 +211,6 @@ zero_sales_on	Lejo ₹0
 zero_sales_off	Kërko çmim
 zero_sales_saved_on	Shitjet me vlerë zero lejohen
 zero_sales_saved_off	Shitjet duhet të kenë çmim mbi ₹0
-floor_areas_help	Zonat janë dhoma ose zona në dysheme (Dine In, Parcel, AC ...). Fillimisht shtoni një zonë, më pas vendosni numërues - secila zonë është një grup i veçantë në dysheme.
-area_new_ph	Zonë / dhomë e re (p.sh. AC, Kopsht)
-add_area	Shto zonë
-area_added	Zona "{name}" gati - shtoni numërues në të
 no_favorites	Ende pa të preferuara — shtoni artikuj nga lista më poshtë.
 add_to_bill	Shto te fatura
 added	U shtua
@@ -280,19 +221,9 @@ chip_missing_customer	Klienti i zgjedhur mungon — zgjidheni përsëri
 chip_no_customer	Ende pa klient — shkruani një emër, pastaj prekni Kredi
 credit_summary_fmt	{} klientë · kredi e hapur {} · paradhënie të mbajtura {}
 recent_label	Të fundit:
-kot_new_waiting	E RE — në pritje
-kot_preparing	PO PËRGATITET
-kot_ready_serve	GATI — shërbeje
-kot_done_cap	U KRYE
-kot_cancelled	E ANULUAR
-kot_start_btn	Fillo
-kot_mark_ready	Shëno gati
-kot_done_btn	U krye
-table_free	E lirë — prekni për të filluar një porosi
 start_order	Fillo porosinë
 open_bill	Hap faturën
 collect_payment	Merr pagesën
-table_running	Në vazhdim
 payment_pending	Pagesa në pritje
 collect_at_counter	merr te banaku
 inventory	Inventari
@@ -325,7 +256,6 @@ ok	OK
 this_shop	Serveri
 extra_till	Terminali
 off	Fikur
-tables_kitchen	Paraqitja e dyqanit
 server	Serveri
 client	Terminali
 language_currency	Gjuha dhe monedha
@@ -367,8 +297,6 @@ add_item_plain	Shto artikull
 add_note	Shto shënim
 add_opening_balance	Shto gjendjen fillestare
 add_staff	Shto staf
-add_station	Shto stacion
-add_table	Shto tavolinë
 add_unit	Shto njësi
 add_use_name	Shto / përdor këtë emër
 allow_extra_tills	Lejo kasa shtesë
@@ -421,7 +349,6 @@ share_whatsapp	Ndaj në WhatsApp
 lan_pages_heading	Faqet e klientëve në Wi‑Fi
 lan_pages_help	Në Wi‑Fi të këtij dyqani, faqet e klientëve punojnë për tabelën e ekranit dhe komentet. Personat me të dhëna celulare kanë nevojë për Cloud më vonë. Një terminal karte ose një lidhje pagese është opsionale dhe nuk e bllokon kurrë sportelin.
 diag_send_heading	Ndaj jashtë kësaj pajisjeje
-kot_dest_heading	Stacioni
 optional_login_heading	Hyrje opsionale
 rights_heading	Të drejtat
 ops_panel	Veprime lokale
@@ -448,28 +375,6 @@ till_voucher_amt_ph	Shuma e kuponit (bosh = e gjitha)
 till_wallet_topup_ph	Shuma e mbushjes së portofolit
 till_voucher_issue_amt_ph	Shuma e kuponit për lëshim
 till_voucher_issue_code_ph	Kodi i kuponit të ri
-split_evenly	Ndaj në mënyrë të barabartë
-waitlist	Lista e pritjes
-fire_course	Hapi tjetër
-hold_item	Mbaj
-waiter_call	Thirrni arkëtarin
-waitlist_add	Shto në listën e pritjes
-floor_view_grid	Rrjetë
-floor_view_layout	Paraqitja
-floor_layout_x	X
-floor_layout_y	Y
-floor_layout_w	W
-floor_layout_h	H
-floor_layout_save	Ruaj paraqitjen
-floor_layout_open	Hap tavolinën
-floor_layout_edit	Ndrysho paraqitjen
-floor_layout_pick	Prekni një tavolinë për të ndryshuar paraqitjen e saj
-floor_layout_saved	Struktura u ruajt
-floor_layout_nudge_left	← 20
-floor_layout_nudge_right	→ 20
-floor_layout_nudge_up	↑ 20
-floor_layout_nudge_down	↓ 20
-sibling_pickers_help	Prekni Ndezur/Fikur si te njësitë — fshihni zonat, stacionet dhe normat e tatimit nga zgjedhësit e përditshëm; parazgjedhjet e paketës qëndrojnë.
 bulk_price_apply	Zbato çmimin në masë
 card_terminal_optional	Terminali i kartës / lidhja e pagesës (opsionale kur ka internet)
 copy_report	Kopjo raportin
@@ -495,7 +400,6 @@ import_day	Importo ditën
 import_items_csv_plain	Importo CSV e artikujve…
 import_parties_csv	Importo CSV e palëve…
 item_name	Emri i artikullit
-kitchen_printing	Printerët
 login_id_ph	Emri i përdoruesit
 mark_cleared	Shëno të barazuar
 new_party_clear	Palë e re (pastro formularin)
@@ -565,15 +469,6 @@ show	Shfaq
 spreadsheet_csv	Fletëllogaritëse (CSV)
 start_fresh	Fillo nga e para
 stop_extra_tills	Ndalo kasat shtesë
-floor_cols_ph	Kolona
-floor_cols_fit	Përshtat ekranin
-floor_cols_fit_sub	{n} përshtaten këtu
-floor_cols_fits	përshtatet
-floor_cols_scroll	rrëshqet anash
-floor_cols_min	Kolona: të paktën 1 — ose lëreni bosh për t’u përshtatur me ekranin
-floor_zoom_auto	Auto
-floor_zoom_out	Zvogëlo
-floor_zoom_in	Zmadho
 backup_auto	Kopje rezervë automatike çdo ditë · e fundit {when} · 14 ditët e fundit mbahen në {dir}.
 backup_auto_none	Kopje rezervë automatike çdo ditë — e para nis pas pak.
 backup_copy_to	Kopjet shkojnë edhe te {dir}.
@@ -591,7 +486,6 @@ new_pair_code	Kod i ri çiftimi
 pair_finishing	Po përfundon çiftimi… po zbatohen librat e dyqanit
 pair_opening	Po hapet kasa…
 pair_copied	Kodi i çiftimit u kopjua
-kot_waiting	Në pritje për dërgim
 lan_offline_waiting	Serveri i dyqanit i paarritshëm · {n} në pritje
 lan_connecting	Po lidhet me dyqanin…
 lan_live	Drejtpërdrejt
@@ -633,7 +527,6 @@ printers_routes_help	Gjeni printera që sistemi operativ i njeh tashmë. Caktoji
 printer_assign_dd	Printer real: {place}
 printer_assign_pick	Zgjidh printerin real
 printer_profile_heading	Paraqitja
-printer_send_heading	Dërgesë
 vp_delivery_heading	Dërgesë
 vp_delivery_help	Si dërgon punë ky printer virtual - dokument OS, bajt të papërpunuar ose ESC/POS. Përmbajtja e fletëve (madhësia e llojit, mbështjellja, kufijtë) vendoset nga formati i faturës / Slip, jo këtu.
 vp_type_size_heading	Madhësia e shkrimit
@@ -677,23 +570,13 @@ virtual_draft_send	Vlera u vendos për printerin virtual tjetër
 virtual_need_real	Zgjidhni fillimisht një printer real
 virtual_need_select	Zgjidhni një printer virtual për ta fshirë
 real_printer_selected	U zgjodh: {name}
-station_group_heading	Printerë virtualë
-station_group_apply	Fshi printerin virtual
-station_group_applied	U fshi
-station_group_empty	Zgjidhni një printer virtual
-station_group_name_ph	Emri i printerit virtual (opsional)
-station_group_save	Krijo printer virtual
-station_group_saved	Printeri virtual u ruajt
-station_manage_heading	Shtoni ose hiqni një seksion shpërndarës
 printers_routes_heading	Ku shtypen gjërat
 route_pick_heading	Vendi
 route_editing	Po ndryshohet: {name}
 route_assigned	U shtua {printer} te {place}
 route_already_assigned	Tashmë në këtë vend: {printer}
-route_removed	U hoq {printer} nga {place}
 route_cleared	U pastrua {name}
 route_assigned_empty	Asnjë në këtë vend
-route_tap_remove	prekni për të hequr
 route_tap_select	prekni për të zgjedhur
 route_tap_selected	e zgjedhur
 route_pick_printer_first	Prekni fillimisht një printer
@@ -714,35 +597,17 @@ printer_format_custom	Profil i ri i personalizuar
 printer_format_custom_label	I personalizuar
 printer_format_custom_added	Profili i personalizuar u shtua për këtë vend
 add_printer	Shto printer
-remove_printer	Hiq
 route_pick_ph	Fatura ose një seksion shpërndarës
 route_bill	Fatura
-route_default_kitchen	Asnjë stacion (artikuj të pacaktuar)
-route_kot_station	Stacioni
 route_dont_print	Pa printer
-stations_heading	Stacionet
-stations_help	Seksionet e shpërndarësve grupojnë barnat dhe printerët për atë pjesë të dyqanit. Bashkangjitni printerët nga Settings → Printers, vendosni rendin e provës, pastaj First that works ose Print on all. Ndryshimet ruhen ndërsa shkoni.
-station_print_heading	Printerët për këtë stacion
-station_print_help	Zgjidhni një stacion dhe më pas bashkëngjitni një ose më shumë printera. ↑↓ vendos rendin e provës. E para që funksionon ndalon pas suksesit të parë; Printoni në të gjitha dërgesat në çdo printer të bashkangjitur.
-station_print_pick_ph	Stacioni për të vendosur printerët
 station_print_pick_first	Zgjidhni fillimisht një seksion dispancerie
-station_print_editing	Po ndryshohen printerët për “{name}”
-station_vps_dd	Printerët për këtë stacion
-station_vps_dd_n	{n} printerë · prekni për të ndryshuar
 station_vps_empty	Ende pa printerë — Gjejini te Cilësimet → Printerët
 bill_printers_dd	Printerët për faturën
 bill_printers_dd_n	{n} printerë për faturën · prekni për të ndryshuar
-job_layout	Paraqitja
-job_delivery	Si dërgohet puna
-job_delivery_help	Dokument OS, bajtë të papërpunuar ose ESC/POS. Fatura dhe bileta mbajnë secila të tyren. Secila punë mund të shkojë në çdo printer që ka ruajtur Find.
 station_vp_attached	Printeri u bashkëngjit
 station_vp_detached	Printeri u hoq nga stacioni
-station_print_summary	{mode} · {n} printerë
-station_print_summary_none	Ende pa printerë në këtë stacion — nuk do të shtypë
-stations_none	Nuk ka ende stacione - shtoni një më poshtë. Stacionet janë të papërdorura në një sportel - lini bosh.
 route_up	Lart
 route_down	Poshtë
-route_remove	Hiq
 route_clear	Pastro
 save_printers	Ruaj printerët
 print_test_page	Shtyp një faqe prove
@@ -751,23 +616,15 @@ test_page_no_printer	Pa printer për {place} — bashkëngjitni një printer, pa
 test_page_pick_first	Zgjidhni printer(ë) për një faqe prove fillimisht — pastaj Shtyp një faqe prove
 test_printers_dd	Printerët për një faqe prove
 test_printers_dd_n	{n} printerë për një faqe prove · prekni për të ndryshuar
-kot_test_printers_dd	Printera për printim testues
-kot_test_printers_dd_n	Printer(ët) {n} për printim testues · trokitni lehtë për ta ndryshuar
 test_printer_picked	Provë te: {name}
 test_printer_cleared	Nuk po provohet te: {name}
 test_page_sent_n	Faqja e provës u dërgua te {n} printerë
-test_kot_pick_first	Zgjidh printerin(ët) për printimin e testit në fillim - më pas printimin test
-test_kot_sent_n	Printimi testues u dërgua te printerët {n}
-cancel_pick	Shëno
-cancel_pick_on	E shënuar
-cancel_pick_meta	E shënuar për anulim
 batch_cancel	Anulo të shënuarat
 batch_cancel_n	Anulo të shënuarat ({n})
 batch_cancel_none	Shënoni fillimisht një ose më shumë artikuj të dërguar - më pas të shënuar Anulo
 batch_cancel_title	Anuloni barnat e shënuara - një arsye, një fletë anulimi për seksion
 batch_cancel_ok	Artikujt {n} u anuluan · {slips} anuloni fletët(at) → {kitchens}
 batch_cancel_ok_noprint	Artikujt {n} u anuluan — printimi automatik është joaktiv, kështu që nuk ka asnjë fletë anulimi
-no_printer_kitchen_station	Nuk ka printer për atë stacion
 printers_saved	U ruajt
 test_page_sent	Faqja e provës u dërgua — kontrolloni printerin
 test_page_sent_one	Faqja e provës u dërgua te {name} — kontrolloni atë printer
@@ -783,10 +640,7 @@ cancelled	E anuluar
 printers_tap_find	Prekni Gjej për të listuar printerët që kjo pajisje mund të përdorë.
 printers_none_found	Nuk u gjet asnjë — shkruani emrin e printerit të sistemit ose një IP (p.sh. 192.168.1.50).
 printer_from_find	U shtua {name}
-kot_printer_ph	Printer për rrëshqitje
 bill_printer_ph	Printeri për faturat
-kot_print_on	Biletat e printimit automatik: Aktiv
-kot_print_off	Biletat e printimit automatik: Joaktiv
 queue_refused	Nuk u pranua nga dyqani ({n}) — kontrolloni secilën te banaku:
 clear_not_accepted	E kontrolluar — pastro këtë listë
 device_name_ph	Emri i kësaj pajisjeje
@@ -797,7 +651,6 @@ backup_failed	Kopja rezervë automatike e fundit dështoi: {e}
 backup_overdue	Pa kopje rezervë për {n} ditë — mbajeni aplikacionin hapur në këtë pajisje që të mund të bëjë kopje.
 disk_low	Vetëm {mb} MB të lira në këtë pajisje — kopjet rezervë së shpejti do të dështojnë. Lironi pak hapësirë.
 last_seen_devices	Parë së fundi: {time}
-sync_interval	Njëkohëso çdo {secs}s
 connection_to_shop	Lidhja me dyqanin
 supplier_name_ph	Emri i furnitorit (ose pala)
 supplier_ph	Furnitori
@@ -860,7 +713,6 @@ fresh_book_tabiyat	Fresh = katalog bosh (shtoni artikuj më vonë). Libri = shkr
 fresh_selected	E re e zgjedhur — katalogu qëndron bosh. Prekni U krye kur të jeni gati.
 gross_word	Bruto
 how_start	Si doni të filloni?
-kot_print_help_tabiyat	Nuk përdoret në banak.
 later_country_pack	Më vonë: Cilësimet → zbato paketën e vendit tuaj për etiketat e tatimit dhe pagesës.
 local_badge	LOKALE
 mix_type_hint_tabiyat	Ndajeni mes para / UPI / kartë / kredi nëse duhet. Kredia ka nevojë për një klient sipër.
@@ -911,8 +763,6 @@ staff_copy_need_source	Zgjidhni konfigurimin e kujt të kopjohet
 staff_copy_same	Ky është i njëjti person — zgjidhni dikë tjetër
 staff_rename_need_selected	Zgjidhni fillimisht kë të riemërtoni
 team_pick_hint	Zgjidh kë të modifikosh - ekranet, të drejtat e parave dhe stacionet shfaqen vetëm për atë person.
-team_stations_help	Stacionet që mund të përdorin
-team_stations_changed	Stacionet u ndryshuan — Ruaje konfigurimin për këtë person
 team_features_changed	Ekranet ndryshuan — Ruaj konfigurimin për këtë person
 team_rights_changed	Të drejtat ndryshuan — Ruaj konfigurimin për këtë person
 they_owe_us	Ata na kanë borxh
@@ -996,9 +846,6 @@ service_pct_ph	Shërbimi % opsional 0/10/12
 short_code_ph	Kodi i shkurtër (MG02)
 starting_password_ph	Fjalëkalimi fillestar (opsional)
 starting_pin_ph	PIN-i fillestar (4–12 shifra)
-station_name_ph	Emri i stacionit (opsionale)
-station_new_ph	Seksioni (opsionale)
-table_name_ph	numërator / emri i gjirit
 tax_rate_ph	Emri ose % e normës së tatimit — Standard, E ulët, 0, 5, 12, 18, 20
 to_code_ph	Te kodi (kg)
 uncleared_no_ph	E pabarazuar # sipër
@@ -1011,27 +858,8 @@ book_kind_month	Librat e këtij muaji
 book_kind_aging	Të papaguara / debit-kredit
 book_kind_balance	Bilanci
 order_help	Prekni një artikull për ta shtuar.
-floor_help	Ky dyqan shitet në banak. Tavolinat dhe dyshemeja e ngrënies nuk janë pjesë e Tabiyat.
-kitchen_help	Nuk përdoret në banak.
-kitchen_empty	Nuk ka bileta të hapura (tregtarët zakonisht e lënë këtë ekran të papërdorur).
-add_a_table	Shto një tavolinë
-add_station_heading	Shtoni një seksion shpërndarës
 categories_help	Prekni Përdor për ta vendosur artikullin sipër nën atë kategori. Fotoja i jep kategorisë një pamje; pa të shfaq inicialet.
 dish_search_ph	Kërkoni emrin, kripën ose barkodin…
-tile_free	E lirë
-tile_occupied	E zënë
-tile_food_ready	Ushqimi gati
-tile_bill_printed	Fatura e shtypur
-tile_paid	E paguar
-tile_bill_btn	Fatura
-tile_occupy_btn	Ul mysafirët
-tile_free_btn	Liro tavolinën
-tile_ready_btn	Liro tavolinën
-tile_undo_bill	Zhbëj faturën
-summary_busy	tavolina të zëna
-summary_to_collect	për t’u mbledhur
-summary_on_floor	në sallë
-floor	Dyqani
 sizes_as_items_ph	Madhësitë si artikuj të veçantë (opsionale) — Gjysmë=120, Plotë=200
 dish_group_ph	Grupi i forcës / paketimit (opsionale) - p.sh. Shirit 500 mg
 discount	Zbritje
@@ -1039,7 +867,6 @@ remove_discount	Hiq zbritjen
 apply_discount	Zbato zbritjen
 save_opening_cash	Ruaj paratë e hapjes
 close_shift_print	Mbyll turnin dhe shtyp fletën
-area_prices_ph	Çmimet sipas zonës (opsionale) — AC=220, Paketë=210
 discount_ph	10% ose 50
 discount_reason_ph	Arsyeja (p.sh. mysafir i rregullt, ushqim i vonuar)
 opening_float_ph	Para të futura në sirtar këtë mëngjes
@@ -1049,34 +876,18 @@ shift_handover	Dorëzimi i turnit
 shift_since	Ky turn që nga
 expected_in_drawer	Pritet në sirtar
 right_discount	Jep një zbritje
-floor_in_kitchen	Në vazhdim
-floor_eating	E shërbyer
 pick_category	Zgjidh një kategori
 close_category_list	Mbyll listën e kategorive
 new_category_row	Kategori e re — krijohet kur ruani artikullin
 your_category	Kategoria juaj
 suggested_category	Sugjeruar - nga artikujt tanë
 category_search_ph	Kategoria — kërkoni tuajat ose shkruani një të re
-line_sent_state	Dërguar
-line_nc_state	Falas (NC) — nuk faturohet
 cancel_item_short	Anulo
-nc_short	NC
-charge_again_short	Fakturo
-move_short	Zhvendos
 cancel_item_title	Anulo këtë artikull - back office merr një fletë anulimi
-nc_item_title	Bëje këtë artikull falas (NC)
-charge_again_title	Fakturo përsëri këtë artikull
-move_item_title	Zhvendose këtë artikull te një tavolinë tjetër
-already_cooked	Tashmë e gatuar (humbje)
-not_cooked_yet	Nuk është gatuar ende
 return_to_customer	Ktheje te klienti
 short_by	Mungon
 tip_not_sale	Bakshish (i stafit, jo shitje)
 right_settle	Merr pagesën
-right_cancel_sent	Anulo një artikull të dërguar
-right_complimentary	Falas (NC)
-right_move_table	Lëvizni / bashkoni numëruesit
-right_reprint	Shtyp faturën përsëri
 right_allowed	E lejuar
 right_with_approval	Me miratim
 right_denied	Nuk lejohet
@@ -1086,25 +897,11 @@ no_server_found	Nuk u gjet asnjë. Te Serveri: Cilësimet → Pajisje të tjera 
 servers_found_pick	Prekni dyqanin me të cilin doni të lidheni.
 server_host_selected	Po përdoret {host} — vendosni kodin e çiftimit, pastaj Çifto tani.
 print_bill	Shtyp faturën
-table_actions	Kundërveprimet
-move_merge_table	Zhvendos / bashko tavolinën
-move_help	Zhvendoseni rendin e këtij numëruesi në një tabelë të lirë ose bashkojeni atë në një tabelë që funksionon.
-move_target_ph	Kundëremër
 approval_pin_ph	PIN-i i menaxherit (vetëm nëse kërkohet)
-move_here	Zhvendos këtu
-merge_into	Bashko në të
-line_reason_ph	Arsyeja (p.sh. klienti ka ndërruar mendje, nuk ka magazinë)
-line_qty_ph	Sa të anulohen (bosh = të gjitha)
-line_target_ph	Zhvendos te tavolina (p.sh. D5)
 confirm	Konfirmo
 menu_search_ph	Kërko artikull ose kod të shkurtër
 customer_paid_ph	Klienti pagoi
 tip_ph	Bakshish
-table_area_ph	Zona (p.sh. Në sallë, Paketë, AC)
-table_range_ph	Shumë njëherësh: D1-D20
-add_these_tables	Shtoni këta numërues
-remove_these_tables	Hiqni këta numërues
-table_remove_ph	Hiq: T1-T24, ose emrin e një tavoline
 find_server	Gjej serverin e dyqanit
 bill_format	Formati i faturës
 bill_format_help	Shtypur nën emrin e dyqanit tuaj në çdo faturë. Linjat e ndara me | (p.sh. MG Road, Rajkot | Ph 98250 00000).
@@ -1112,78 +909,32 @@ bill_header_ph	Adresa | telefoni
 fssai_ph	Licenca e barnave nr. (opsionale - formulimi juaj)
 bill_footer_ph	Fundi (p.sh. Faleminderit, ejani përsëri)
 save_bill_format	Ruaj formatin e faturës
-kot_format	Formati i rrëshqitjes
-kot_format_help	Prekni një fushë në listë. Shfaqja, madhësia e shkronjave dhe pesha zbatohen për atë fushë në llojin e fletëve të zgjedhur më sipër. Çdo lloj mban madhësitë dhe peshën e vet.
-kot_format_fields	Fushat
-kot_field_next	Fusha tjetër
-kot_field_show	Shfaq
-kot_field_hide	Fshih
 kot_field_on	shfaq
 kot_field_off	fshih
-kot_field_size	Madhësia e gërmës
-kot_field_size_ph	p.sh. 16, 20, 24, 28, 32…
 kot_weight_light	I lehtë
 bill_kot_panel_help	Paraqitja e faturave dhe gjerësia e përmbajtjes. Arkëtari është ai që ka lëshuar ose shlyer faturën - historia e plotë e shitjes mbetet në libra.
 std_size_ph	p.sh. 18, 20, 26…
-kot_show_shop	Emri i dyqanit
-kot_hide_shop	Fshih dyqanin
-kot_show_time	Ora
-kot_hide_time	Fshih orën
-kot_show_waiter	Arkëtar
-kot_hide_waiter	Fshih arkëtarin
-kot_show_station	Stacioni
-kot_hide_station	Fshih stacionin
-kot_show_table	Banaku
-kot_hide_table	Fshih tavolinën
-kot_show_kot_no	Bileta Nr
-kot_hide_kot_no	Fshih biletën nr
-kot_width	Pamje paraprake (cakto gjerësinë e përmbajtjes në skedën e rrëshqitjes)
-kot_width_58	58 mm
-kot_width_80	80 mm
-kot_kind_heading	lloj bilete
-kot_kind_original	Origjinal
-kot_kind_duplicate	Dublikatë
-kot_kind_modified	E ndryshuar
-kot_kind_cancelled	E anuluar
-kot_style_heading	Madhësia dhe pesha e shkrimit të fushës
-kot_style_title	Titulli
-kot_style_item_qty	Artikulli · Sasia
-kot_style_field_pick	Zgjidh fushën
 kot_weight_regular	I rregullt
 kot_weight_bold	I trashë
-kot_align	Drejtimi
 kot_align_start	Fillo
 kot_align_center	Qendra
 kot_align_end	Fundi
 content_width	Gjerësia e përmbajtjes (mm)
 content_width_bill	Gjerësia e përmbajtjes së faturës (mm)
-content_width_kot	Gjerësia e përmbajtjes së biletës (mm)
 content_width_ph	Ose shkruani një gjerësi përmbajtjeje, 40–210 mm
 content_width_help	Sa e gjerë printon kjo rrëshqitje. Bill ruan gjerësinë e vet.
 content_width_bill_help	Sa gjerë printohet fatura e klientit. 210 mm e paracaktuar (faqe). Rrëshqitje e ngushtë 58 mm, rrëshqitje e gjerë 80 mm, 4 inç 112 mm, gjerësi A4 210 mm. Shkruani çdo vlerë nga 40 në 210. Biletat kanë gjerësinë e tyre në skedën e fletëve.
-content_width_kot_help	Sa gjerë printon bileta. 80 mm e paracaktuar. Rrëshqitje e ngushtë 58 mm, rrëshqitje e gjerë 80 mm, 4 inç 112 mm, faqe 210 mm. Shkruani çdo vlerë nga 40 në 210. Faturat e klientit kanë gjerësinë e tyre në skedën Bill.
 vp_paper_width	Gjerësia e përmbajtjes (mm)
 vp_paper_width_ph	Ose shkruani një gjerësi përmbajtjeje, 40–210 mm
 vp_paper_width_help	Gjerësia e përmbajtjes caktohet në formatin Bill & Slip — veçmas për faturën (parazgjedhja 210 mm) dhe biletën (e parazgjedhur 80 mm).
-kot_size	Madhësia e gërmës
-kot_size_s	E vogël
-kot_size_m	Normale
-kot_size_l	E madhe
 std_size	Madhësia e gërmës
 kot_copies	Kopje
 kot_copies_1	1
 kot_copies_2	2
 kot_copies_3	3
-kot_title_ph	Titulli (bosh = BILETË)
-kot_footer_ph	Shënim prapa zyrës (opsionale)
-kot_preview	Shembull
-save_kot_format	Formati Save Slip
-test_kot_format	Test printim
-test_kot_sent	Pamja paraprake e biletës u dërgua
 test_bill_format	Faturë prove
 test_bill_sent	Shembulli i faturës u dërgua
 test_print_no_printer	Pa printer për atë punë — zgjidhni një në këtë ekran
-kot_format_saved	Formati i rrëshqitjes u ruajt
 std_print	Madhësia e shtypjes së faturës
 std_print_help	Madhësia e shkronjave për punët e faturave standarde të portretit dhe peizazhit në printerët OS / dokumentesh (futni pikat — jo të vogla/normale/të mëdha). E njëjta madhësi në të dy orientimet.
 std_size_s	E vogël
@@ -1223,23 +974,16 @@ upi_qr	UPI QR
 show_upi_qr	Shfaq UPI QR
 close_upi_qr	Mbyll
 upi_qr_help	Klienti skanon dhe paguan. Prekni Merr pagesën pasi të paguajnë. Ekrani i dytë: hapni URL-në e serverit / shfaqni në LAN.
-kot_recall	Rikujto
 recently_done	Të kryera së fundi
-recall_kot_ph	Bileta # për të kujtuar
 role_help_customer	Roli: Klient — khata (ata na kanë borxh). E njëjta palë mund të furnizojë edhe stok.
 role_help_both	Rolet: Klient + Furnitor — një palë, libra khata dhe të pagueshëm, neto te Raportet.
 role_help_supplier	Roli: Furnitor — ne u kemi borxh për blerjet.
-dine_in_pick_table	Nuk përdoret në banak
-choose_table	Zgjidhni numëruesin
-change_table	Ndrysho tavolinën
-pick_table_banner	Zgjidhni një tavolinë për këtë porosi
 items_word	artikuj
 items_section	Artikujt
 back_to_order	Prapa te porosia
 new_items_head	Ende të padërguara
 price_ph	Çmimi
 price_ph_gst_inside	Çmimi ({tax} i përfshirë)
-cancel_needs_table	Shitjet e sportelit qëndrojnë në biletë derisa të bëni pagesën
 tax_rates_missing_hint	Nuk ka tarifë {tax} për këta artikuj — për artikujt e vendosur Norma tatimore (çmimet tashmë përfshijnë {tax} nën {tax} përfshirëse)
 taxable_value	Vlera e tatueshme
 gst_inside_price_note	({tax} i përfshirë)
@@ -1260,30 +1004,11 @@ client_template_confirm	Të shtohen artikujt {d} nga {title}? Artikujt që tashm
 client_template_importing	Po importohet {title}…
 client_template_done	Çdo artikull nga {title} është në artikujt tuaj.
 client_template_imported	Shtuar artikuj {d} dhe kategori {c} nga {title}
-resv_heading	Rezervimet
-resv_name_ph	Emri i klientit
-resv_phone_ph	Telefoni (opsional)
-resv_guests_ph	Njerëzit
-resv_when_ph	Kur — 20:30, nesër 13:00
-resv_table_ph	Numërues (opsionale)
-resv_add	Rezervo
-resv_seat	I ulur
-resv_none	Pa rezervime në vijim.
-guests_word	mysafirë
-delivery_by_ph	Dërguar nga (emri i korrierit ose stafit)
-kitchen_all_day	Për t’u gatuar tani: {items}
-split_bill	Ndaj faturën
-split_go	Bëj faturë të veçantë
 cancel	Anulo
 opening_client	Po hapet terminali…
 preparing_desk	Po përgatitet tavolina…
 opening_server	Po hapet serveri…
 creating_server	Po krijohet serveri…
-split_help	Prekni artikujt për të cilët paguan një klient · Zgjedhur {n}
-split_send_first	Fillimisht dërgoni fletën - vetëm artikujt që ka back office mund të shkojnë në një faturë të veçantë
-split_pick_some	Së pari prekni artikujt për faturën e veçantë
-split_done	U bë një faturë e veçantë - është në dyshemenë pranë këtij sporteli
-split_marked	faturë e veçantë
 order_empty_pick	Porosit bosh - trokitni lehtë mbi Shto artikujt për të zgjedhur artikujt.
 add_dishes	Shtoni ilaçe
 order_so_far	Në këtë porosi: {n} · {total}
@@ -1294,24 +1019,8 @@ pick_done_dd	U krye · {label}
 printer_route_mode	Nëse ka disa printerë në këtë vend
 printer_mode_first	I pari që punon
 printer_mode_all	Shtyp te të gjithë
-kot_show_area	Zona
-kot_hide_area	Fshih zonën
-kot_show_item_hdr	Artikulli · Sasia
-kot_hide_item_hdr	Fshih kolonat
-kot_show_title	Rreshti i titullit
-kot_hide_title	Fshih titullin
-kot_field_order	Renditja e shtypjes
 kot_field_up	Lëviz lart
 kot_field_down	Lëviz poshtë
-kot_field_cycle	Zgjidh tjetrën
-kot_field_select	Zgjidh tjetrën
-kot_field_time	Ora
-kot_field_kot_no	Bileta Nr
-kot_field_area	Zona
-kot_field_table	Banaku
-kot_field_shop	Emri i dyqanit
-kot_field_waiter	Stafi
-kot_field_station	Stacioni
 app_template_blurb_extra	Gjithashtu: Pronari Zahir, Admin Asif, Cashier Nawaz; shiriti anësor i përparmë; historia pas 4 orësh; Sot zhvishu; faturë kompakte.
 dishes_n	artikuj {n}
 recipe_ph	Receta (opsionale - e papërdorur në një shitore)
@@ -1321,8 +1030,6 @@ low_stock_alert	Po mbaron — blini së shpejti: {items}
 unpriced_note	Artikujt {n} në artikujt tuaj nuk kanë ende çmim - ata faturohen me 0 derisa të vendosni një të tillë.
 show_unpriced	Shfaq vetëm artikujt pa çmim
 show_all_dishes	Shfaq të gjithë artikujt
-role_waiter	Arkëtar
-role_kitchen	Dyqani
 role_title_rest_ph	Titulli i rolit (p.sh. kapiten, kuzhinier kryesor)
 preset_help_rest	Arkëtar: shet. Menaxher: shet + artikuj + anulim/ndryshim.
 kind_raw	Stoku i përbërë

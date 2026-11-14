@@ -68,28 +68,6 @@ applied	Toegepast
 note_ph	Notitie (optioneel)
 rounded	Afgerond
 split	Splitsen
-send_kot	Bon sturen
-send_kot_to	Verzenden → {kitchens}
-send_kot_again	Artikelen voor de volgende bon
-send_kot_held	Vastgehouden artikelen — vrijgeven om te verzenden
-reprint_kot	Selectie opnieuw printen
-reprint_kot_ok	{n} artikelen opnieuw afgedrukt · {slips} bon(nen) → {kitchens}
-reprint_kot_needed	Verstuur eerst een bon — neem daarna artikelen op en druk de gekozen opnieuw af
-reprint_kot_none_selected	Elk verzonden artikel wordt overgeslagen — tik In druk op de exemplaren om opnieuw af te drukken
-reprint_kot_client	Opnieuw afdrukken ({n}) voor {place} verzonden — het winkelapparaat drukt het af
-print_cancelled_kot	Alle geannuleerde printen
-print_cancelled_kot_ok	{n} geannuleerde artikelen afgedrukt · {slips} bon(nen) → {kitchens}
-print_cancelled_kot_needed	Open eerst een tafel met geannuleerde artikelen
-print_cancelled_kot_none	Geen geannuleerde artikelen in deze order
-print_cancelled_kot_client	Annulering afdrukken ({n}) voor {place} verzonden — het winkelapparaat drukt het af
-kot_banner	Banner
-kot_banner_ph	Banner (leeg = geen)
-kot_item_prefix	Itemvoorvoegsel
-kot_item_prefix_ph	bijv. [CANCELLED] 
-kot_strike	Artikelnaam doorhalen
-kot_strike_note	Artikelnotitie doorhalen
-kot_strike_on	Aan
-kot_strike_off	Uit
 bill_item_layout	Itemindeling
 bill_item_layout_columns	Kolommen
 bill_item_layout_stacked	Gestapeld
@@ -118,8 +96,6 @@ bill_item_gap_em	Afstand (em)
 bill_item_qty_min	Aantal min. (em)
 bill_item_price_min	Prijs min. (em)
 bill_item_amount_min	Bedrag min. (em)
-kot_item_qty_width	Aantalkolom
-kot_item_num_align	Aantaluitlijning
 bill_total_qty_label	Label totaal aantal
 bill_total_subtotal_label	Label subtotaal
 bill_total_grand_label	Label eindtotaal
@@ -131,36 +107,9 @@ bill_item_piece_off	Uit
 bill_total_qty	Totaal aantal
 bill_total_subtotal	Subtotaal
 bill_total_grand	Eindtotaal
-reprint_incl	In afdruk
-reprint_skip	Overslaan
-reprint_skip_meta	Geen herprint
-kot_dest_hint	Afdrukt op de printers die u hebt toegewezen aan {kitchens} in Instellingen → Printers
-kot_sent_hint	De laatste zending ging naar {kitchens}. Tik om artikelen voor de volgende rekening toe te voegen — of Bon opnieuw afdrukken voor dezelfde.
-kot_sent_printing	Bon naar {kitchens} — afdrukken
-kot_sent_not_printed	Bon verzonden naar {kitchens} maar NIET afgedrukt: {why}. Zeg het de winkel, herstel de printer en druk opnieuw af.
-kot_sent_screen	Bon verzonden naar {kitchens}
-kot_queued_shop	Bon voor {place} → {kitchens} opgeslagen; het winkelapparaat drukt hem af
-kot_job_label	Bon voor {place} → {kitchens}
-kot_job_reached	Bon voor {place} heeft {kitchens} bereikt
 kot_unassigned	Niet toegewezen
-kot_unassigned_held	{n} artikelen zonder station vastgehouden — vrijgeven op de regel om te verzenden
-kot_station_ph	Station
-kot_station_dd	Station
-kot_station_dd_n	Station · {stations}
-kot_set_station	Gebruik dit station
-kot_station_applied	Station gezet op {n} artikelen: {station}
-kot_station_cleared	Station gewist van {n} artikelen: {station}
-kot_station_needed	Kies eerst een winkelsectie
-kot_station_not_allowed	Sectie niet toegestaan: {station}
-kot_station_none	Nog geen stations — ongebruikt in een baliewinkel (Instellingen → Zones indien nodig)
 pos_tab_items	Toegevoegd
 pos_tab_payment	Betaling
-hold_send	Vasthouden
-hold_send_on	Gehouden
-hold_send_meta	Vastgehouden — niet op deze bon
-station_remove	Station verwijderen
-station_remove_ph	Tik op een station in de lijst om het te verwijderen
-station_removed	Station verwijderd: {name}
 settings_hub_title	Instellingen
 settings_hub_help	Open één onderdeel tegelijk — minder scrollen, duidelijkere keuzes.
 settings_back	Terug
@@ -169,12 +118,10 @@ settings_sec_country	Land & belasting
 settings_sec_tills	Extra kassa's en filialen
 settings_sec_brand	Uw merk
 settings_sec_units	Eenheden & conversies
-settings_sec_pickers	Gebieden · stations · belastingtarieven
+settings_sec_pickers	Belastingtarieven
 settings_sec_printers	Printers
 settings_sec_bill	Formaat rekening en bon
 settings_sec_selling	Regelingen & verkoop
-bill_kot_tab_bill	Rekening
-bill_kot_tab_kot	Bon
 settings_sec_alerts	Meldingen
 alerts_help	Hoe lang statusberichten voor jou op het scherm blijven (deze login).
 snack_secs_ph	Seconden (3–60, standaard 10)
@@ -225,8 +172,6 @@ counter	Balie
 dine_in	Balie
 takeaway	Afhalen
 order	Bestelling
-tables	Balies
-kitchen	Sectie
 sales	Verkopen
 sales_refunds	Verkopen en terug
 day_close	Dagsafsluiting
@@ -254,10 +199,6 @@ zero_sales_on	Nulverkopen: aan
 zero_sales_off	Nulverkopen: uit
 zero_sales_saved_on	Nulverkopen toegestaan opgeslagen (aan)
 zero_sales_saved_off	Nulverkopen toegestaan opgeslagen (uit)
-floor_areas_help	Zones zijn zalen of delen van de vloer (Ter plaatse, Pakket, Airco …). Voeg eerst een zone toe, zet er daarna balies in — elke zone is een aparte groep op de vloer.
-area_new_ph	Nieuwe zone / ruimte (bijv. AC, Garden)
-add_area	Zone toevoegen
-area_added	Zone „{name}“ klaar — voeg er balies aan toe
 no_favorites	Nog geen favorieten — voeg artikelen toe uit de lijst hieronder.
 add_to_bill	Op rekening
 added	Toegevoegd
@@ -268,19 +209,9 @@ chip_missing_customer	Gekozen klant ontbreekt – kies opnieuw
 chip_no_customer	Nog geen klant – typ een naam en tik op Krediet
 credit_summary_fmt	{} klanten · open krediet {} · voorschotten {}
 recent_label	Recent:
-kot_new_waiting	NIEUW — wacht
-kot_preparing	WORDT BEREID
-kot_ready_serve	KLAAR — serveren
-kot_done_cap	KLAAR
-kot_cancelled	GEANNULEERD
-kot_start_btn	Starten
-kot_mark_ready	Markeer klaar
-kot_done_btn	Klaar
-table_free	Vrij – tik om een bestelling te starten
 start_order	Bestelling starten
 open_bill	Rekening openen
 collect_payment	Betaling innen
-table_running	Bezig
 payment_pending	Betaling in afwachting
 collect_at_counter	innen aan de kassa
 inventory	Voorraad
@@ -313,7 +244,6 @@ ok	OK
 this_shop	Servermodus
 extra_till	Clientmodus
 off	Uit
-tables_kitchen	Winkelindeling
 server	Server
 client	Client
 language_currency	Taal en valuta
@@ -355,8 +285,6 @@ add_item_plain	Artikel toevoegen
 add_note	Notitie toevoegen
 add_opening_balance	Beginsaldo toevoegen
 add_staff	Personeel toevoegen
-add_station	Station toevoegen
-add_table	Tafel toevoegen
 add_unit	Eenheid toevoegen
 add_use_name	Deze naam toevoegen / gebruiken
 allow_extra_tills	Extra kassa's toestaan
@@ -409,7 +337,6 @@ share_whatsapp	Delen via WhatsApp
 lan_pages_heading	Klantpagina's via Wi‑Fi
 lan_pages_help	Op het Wi‑Fi van deze winkel werken klantpagina's voor het bord en de terugkoppeling. Mensen op mobiele data hebben later Cloud nodig. Een kaartterminal of betaallink is optioneel en blokkeert de balie nooit.
 diag_send_heading	Delen buiten dit apparaat
-kot_dest_heading	Station
 optional_login_heading	Optioneel inloggen
 rights_heading	Rechten
 ops_panel	Lokale ops
@@ -436,28 +363,6 @@ till_voucher_amt_ph	Voucherbedrag (leeg = alles)
 till_wallet_topup_ph	Opwaardeerbedrag
 till_voucher_issue_amt_ph	Nieuw voucherbedrag
 till_voucher_issue_code_ph	Nieuwe vouchercode
-split_evenly	Gelijk verdelen
-waitlist	Wachtlijst
-fire_course	Volgende stap
-hold_item	Vasthouden
-waiter_call	Kassier roepen
-waitlist_add	Op wachtlijst
-floor_view_grid	Raster
-floor_view_layout	Plattegrond
-floor_layout_x	X
-floor_layout_y	Y
-floor_layout_w	W
-floor_layout_h	H
-floor_layout_save	Plattegrond opslaan
-floor_layout_open	Tafel openen
-floor_layout_edit	Plattegrond bewerken
-floor_layout_pick	Tik op een tafel om de plattegrond te bewerken
-floor_layout_saved	Indeling opgeslagen
-floor_layout_nudge_left	← 20
-floor_layout_nudge_right	→ 20
-floor_layout_nudge_up	↑ 20
-floor_layout_nudge_down	↓ 20
-sibling_pickers_help	Zoals eenheden On/Off — verberg zones, stations, belastingen in de dagelijkse kiezer; pack-defaults blijven.
 bulk_price_apply	Bulkprijs toepassen
 card_terminal_optional	Pinautomaat / betaallink (optioneel met internet)
 copy_report	Rapport kopiëren
@@ -483,7 +388,6 @@ import_day	Dag importeren
 import_items_csv_plain	Artikelen-CSV importeren…
 import_parties_csv	Partijen-CSV importeren…
 item_name	Artikelnaam
-kitchen_printing	Keukenprinten
 login_id_ph	Login-id
 mark_cleared	Als verrekend markeren
 new_party_clear	Nieuwe partij (formulier wissen)
@@ -553,15 +457,6 @@ show	Tonen
 spreadsheet_csv	Spreadsheet (CSV)
 start_fresh	Opnieuw beginnen
 stop_extra_tills	Extra kassa's stoppen
-floor_cols_ph	Kolommen
-floor_cols_fit	Passend op scherm
-floor_cols_fit_sub	{n} passen hier
-floor_cols_fits	past
-floor_cols_scroll	scrolt zijwaarts
-floor_cols_min	Kolommen: minstens 1 — of laat leeg om op het scherm te passen
-floor_zoom_auto	Auto
-floor_zoom_out	Zoomen uit
-floor_zoom_in	Zoomen in
 backup_auto	Elke dag automatisch een back-up · laatste {when} · de laatste 14 dagen staan in {dir}.
 backup_auto_none	Elke dag automatisch een back-up — de eerste volgt zo.
 backup_copy_to	Kopieën gaan ook naar {dir}.
@@ -579,7 +474,6 @@ new_pair_code	Nieuwe koppelcode
 pair_finishing	Koppeling afronden… boeken van de zaak toepassen
 pair_opening	De kassa wordt geopend…
 pair_copied	Koppelcode gekopieerd
-kot_waiting	Wacht op verzenden
 lan_offline_waiting	Offline · {n} wachtend
 lan_connecting	Verbinden met de zaak…
 lan_live	Live
@@ -621,7 +515,6 @@ printers_routes_help	Zoek printers die het besturingssysteem al kent. Wijs ze to
 printer_assign_dd	Kies printer voor {place}
 printer_assign_pick	Echte printer kiezen
 printer_profile_heading	Indeling
-printer_send_heading	Aflevering
 vp_delivery_heading	Aflevering
 vp_delivery_help	Hoe deze virtuele printer taken verstuurt — OS-document, ruwe bytes of ESC/POS. Boninhoud (lettergrootte, afbreken, marges) wordt bepaald door het rekening- / bonformaat, niet hier.
 vp_type_size_heading	Lettergrootte
@@ -665,23 +558,13 @@ virtual_draft_send	Waarde gezet voor de volgende virtuele printer
 virtual_need_real	Kies eerst een echte printer
 virtual_need_select	Selecteer een virtuele printer om te verwijderen
 real_printer_selected	Echte printer: {name}
-station_group_heading	Virtuele printers
-station_group_apply	Virtuele printer verwijderen
-station_group_applied	Verwijderd
-station_group_empty	Selecteer een virtuele printer
-station_group_name_ph	Naam virtuele printer (optioneel)
-station_group_save	Virtuele printer maken
-station_group_saved	Virtuele printer opgeslagen
-station_manage_heading	Winkelsectie toevoegen of verwijderen
 printers_routes_heading	2. Waar afdrukken
 route_pick_heading	Plaats
 route_editing	Bewerken: {name}
 route_assigned	Toegevoegd {printer} aan {place}
 route_already_assigned	Al hier: {printer}
-route_removed	Verwijderd {printer} uit {place}
 route_cleared	Opgeschoond {name}
 route_assigned_empty	Geen op deze plek
-route_tap_remove	tik om te verwijderen
 route_tap_select	tik om te kiezen
 route_tap_selected	geselecteerd
 route_pick_printer_first	Tik eerst op een printer
@@ -702,35 +585,17 @@ printer_format_custom	Nieuwe aangepaste opmaak
 printer_format_custom_label	Aangepast
 printer_format_custom_added	Aangepaste opmaak toegevoegd voor deze route
 add_printer	Printer toevoegen
-remove_printer	Laatste verwijderen
 route_pick_ph	Rekening of een winkelsectie
 route_bill	Rekening
-route_default_kitchen	Geen station (niet-toegewezen artikelen)
-route_kot_station	Station
 route_dont_print	Niet afdrukken
-stations_heading	Stations
-stations_help	Winkelsecties groeperen artikelen en de printers voor dat deel van de winkel. Koppel printers via Instellingen → Printers, zet de probeervolgorde, daarna De eerste die lukt of Op alle afdrukken. Wijzigingen worden direct opgeslagen.
-station_print_heading	Printers voor dit station
-station_print_help	Kies een station en koppel daarna een of meer printers. ↑↓ zet de probeervolgorde. De eerste die lukt stopt na het eerste succes; Op alle afdrukken stuurt naar elke gekoppelde printer.
-station_print_pick_ph	Station om printers in te stellen
 station_print_pick_first	Kies eerst een winkelsectie
-station_print_editing	Printers voor “{name}” bewerken
-station_vps_dd	Printers voor dit station
-station_vps_dd_n	{n} printer(s) · tik om te wijzigen
 station_vps_empty	Nog geen printers — zoek ze onder Instellingen → Printers
 bill_printers_dd	Printers voor de rekening
 bill_printers_dd_n	{n} printer(s) voor de rekening · tik om te wijzigen
-job_layout	Indeling
-job_delivery	Hoe de taak wordt verzonden
-job_delivery_help	OS-document, ruwe bytes of ESC/POS. De rekening en de bon houden elk hun eigen instelling. Elke taak kan naar elke printer die Zoeken heeft opgeslagen.
 station_vp_attached	Printer gekoppeld
 station_vp_detached	Printer van station verwijderd
-station_print_summary	{mode} · {n} printer(s)
-station_print_summary_none	Nog geen printers op dit station — zal niet afdrukken
-stations_none	Nog geen stations — voeg er hieronder een toe. Stations zijn ongebruikt in een baliewinkel — laat leeg.
 route_up	Omhoog
 route_down	Omlaag
-route_remove	Laatste verwijderen
 route_clear	Niet afdrukken
 save_printers	Printers opslaan
 print_test_page	Testpagina afdrukken
@@ -739,23 +604,15 @@ test_page_no_printer	Geen printer voor {place} — wijs er hierboven een toe en 
 test_page_pick_first	Kies eerst testprinter(s) — daarna een testpagina afdrukken
 test_printers_dd	Printers voor testpagina
 test_printers_dd_n	{n} testprinter(s) · tik om te wijzigen
-kot_test_printers_dd	Printers voor testafdruk
-kot_test_printers_dd_n	{n} printer(s) voor testafdruk · tik om te wijzigen
 test_printer_picked	Testen op: {name}
 test_printer_cleared	Niet testen op: {name}
 test_page_sent_n	Testpagina verstuurd naar {n} printer(s)
-test_kot_pick_first	Kies eerst printer(s) voor testafdruk — daarna Testafdruk
-test_kot_sent_n	Testafdruk verzonden naar {n} printer(s)
-cancel_pick	Markeren
-cancel_pick_on	Gemarkeerd
-cancel_pick_meta	Gemarkeerd om te annuleren
 batch_cancel	Gemarkeerde annuleren
 batch_cancel_n	Gemarkeerde annuleren ({n})
 batch_cancel_none	Markeer eerst een of meer verzonden artikelen — daarna Markering annuleren
 batch_cancel_title	Gemarkeerde annuleren — één reden, één bon per sectie
 batch_cancel_ok	{n} artikelen geannuleerd · {slips} annuleerbon(nen) → {kitchens}
 batch_cancel_ok_noprint	{n} artikelen geannuleerd — automatisch afdrukken staat uit, dus geen annuleerbon
-no_printer_kitchen_station	Geen printer voor dat station
 printers_saved	Printers voor dit apparaat opgeslagen
 test_page_sent	Testpagina verstuurd — kijk bij de printer
 test_page_sent_one	Testpagina verstuurd naar {name} — kijk bij die printer
@@ -771,10 +628,7 @@ cancelled	Geannuleerd
 printers_tap_find	Tik op Printers zoeken — toont systeemprinters en netwerkbonprinters op dit Wi‑Fi.
 printers_none_found	Geen printers gevonden — typ een systeemnaam of netwerkadres (bijv. 192.168.1.50).
 printer_from_find	Toegevoegd {name}
-kot_printer_ph	Bonprinter
 bill_printer_ph	Printer voor rekeningen
-kot_print_on	Bonnen automatisch afdrukken: Aan
-kot_print_off	Bonnen automatisch afdrukken: Uit
 queue_refused	Niet aangenomen door de zaak ({n}) — controleer elk aan de kassa:
 clear_not_accepted	Gecontroleerd — lijst wissen
 device_name_ph	Naam van dit apparaat
@@ -785,7 +639,6 @@ backup_failed	De laatste automatische back-up is mislukt: {e}
 backup_overdue	Al {n} dagen geen back-up — laat de app op dit apparaat open zodat die een back-up kan maken.
 disk_low	Nog maar {mb} MB vrij op dit apparaat — back-ups mislukken binnenkort. Maak ruimte vrij.
 last_seen_devices	Laatst gezien: {time}
-sync_interval	Synchroniseer elke {secs} seconden
 connection_to_shop	Verbinding met de zaak
 supplier_name_ph	Leveranciersnaam (of partij)
 supplier_ph	Leverancier
@@ -848,7 +701,6 @@ fresh_book_kirano	Printers
 fresh_selected	Fresh gekozen – catalogus blijft leeg. Tik op Done als je klaar bent.
 gross_word	Bruto
 how_start	Hoe wilt u beginnen?
-kot_print_help_kirano	Wanneer een KOT wordt verstuurd – aan de balie of vanaf het apparaat van de ober – print het keukenpapier hier vanzelf.
 later_country_pack	Printers
 local_badge	LOKAAL
 mix_type_hint_kirano	Verdeel over contant / UPI / kaart / krediet indien nodig. Voor krediet is hierboven een klant nodig.
@@ -899,8 +751,6 @@ staff_copy_need_source	Kies wiens instellingen u wilt kopiëren
 staff_copy_same	Dit is dezelfde persoon — kies iemand anders
 staff_rename_need_selected	Kies eerst wie u wilt hernoemen
 team_pick_hint	Kies wie u bewerkt — schermen, geldrechten en stations gelden alleen voor die persoon.
-team_stations_help	Stations die ze mogen gebruiken
-team_stations_changed	Stations gewijzigd — instelling voor deze persoon opslaan
 team_features_changed	Schermen gewijzigd — Opslag instellingen voor deze persoon
 team_rights_changed	Rechten gewijzigd — Opslag instellingen voor deze persoon
 they_owe_us	Zij zijn ons schuldig
@@ -984,9 +834,6 @@ service_pct_ph	Service % optioneel 0/10/12
 short_code_ph	Korte code (MG02)
 starting_password_ph	Startwachtwoord (optioneel)
 starting_pin_ph	Start-PIN (4–12 cijfers)
-station_name_ph	Stationsnaam (optioneel)
-station_new_ph	Sectie (optioneel)
-table_name_ph	Naam balie / loket
 tax_rate_ph	Belastingtariefnaam of % — Standard, Reduced, 0, 5, 12, 18, 20
 to_code_ph	Naar code (kg)
 uncleared_no_ph	Niet-verrekend nr. hierboven
@@ -999,27 +846,8 @@ book_kind_month	Boek van deze maand
 book_kind_aging	Openstaand / debet-credit
 book_kind_balance	Balans
 order_help	Kies een open bestelling of een tafel om nieuw te starten. Tik op gereed items, stuur KOT, factureer één of meer items, splits de rekening en reken af.
-floor_help	Deze winkel verkoopt aan de balie. Tafels en een eetzaal horen niet bij Kirano.
-kitchen_help	Wanneer een KOT wordt verstuurd – aan de balie of vanaf het apparaat van de ober – print het keukenpapier hier vanzelf.
-kitchen_empty	Geen open bonnen (baliewinkels laten dit scherm meestal ongebruikt).
-add_a_table	Tafel toevoegen
-add_station_heading	Sectie toevoegen · bijv. Groente, Koeling, Kassa
 categories_help	Een categorie toont tot welk deel van het menu een gerecht behoort — bv. snacks, hoofdgerecht of biryani. Maak categorieën op jouw manier: kies onze namen, hernoem ze of voeg je eigen toe.
 dish_search_ph	Zoek artikelen of korte code…
-tile_free	Vrij
-tile_occupied	Bezet
-tile_food_ready	Eten klaar
-tile_bill_printed	Rekening geprint
-tile_paid	Betaald
-tile_bill_btn	Rekening
-tile_occupy_btn	Gasten zetten
-tile_free_btn	Tafel vrij
-tile_ready_btn	Klaar
-tile_undo_bill	Rekening ongedaan
-summary_busy	tafels bezet
-summary_to_collect	af te rekenen
-summary_on_floor	in de zaal
-floor	Winkel
 sizes_as_items_ph	Maten als aparte artikelen (optioneel) — Half=120, Heel=200
 dish_group_ph	Verpakkingsgroep (optioneel) — bijv. Atta 1kg / 5kg
 discount	Korting
@@ -1027,7 +855,6 @@ remove_discount	Korting weghalen
 apply_discount	Korting toepassen
 save_opening_cash	Wisselgeld opslaan
 close_shift_print	Dienst afsluiten en bon printen
-area_prices_ph	Prijs per zone (optioneel) — Airco=220, Afhaal=210
 discount_ph	10% of 50
 discount_reason_ph	Reden (bijv. vaste gast, eten te laat)
 opening_float_ph	Contant vanmorgen in de la gelegd
@@ -1037,34 +864,18 @@ shift_handover	Dienstoverdracht
 shift_since	Dienst sinds
 expected_in_drawer	Verwacht in de la
 right_discount	Korting geven
-floor_in_kitchen	Bezig
-floor_eating	Aan het eten
 pick_category	Categorie kiezen
 close_category_list	Categorielijst sluiten
 new_category_row	Nieuwe categorie — aangemaakt bij opslaan
 your_category	Uw categorie
 suggested_category	Voorgesteld — uit onze artikelen
 category_search_ph	Categorie — zoek de uwe of typ een nieuwe
-line_sent_state	Verzonden
-line_nc_state	Gratis (NC) — niet berekend
 cancel_item_short	Annuleren
-nc_short	Gratis
-charge_again_short	Berekenen
-move_short	Verplaatsen
 cancel_item_title	Dit artikel annuleren — het backoffice krijgt een annuleerbon
-nc_item_title	Dit artikel gratis geven (NC)
-charge_again_title	Dit artikel weer berekenen
-move_item_title	Dit artikel naar een andere tafel
-already_cooked	Al bereid (verspilling)
-not_cooked_yet	Nog niet bereid
 return_to_customer	Wisselgeld
 short_by	Tekort
 tip_not_sale	Fooi (voor personeel, geen omzet)
 right_settle	Afrekenen
-right_cancel_sent	Verzonden artikel annuleren
-right_complimentary	Gratis geven (NC)
-right_move_table	Balies verplaatsen / samenvoegen
-right_reprint	Rekening opnieuw printen
 right_allowed	Toegestaan
 right_with_approval	Met goedkeuring
 right_denied	Niet toegestaan
@@ -1074,25 +885,11 @@ no_server_found	Geen server gevonden. Controleer of het apparaat van de zaak op 
 servers_found_pick	Tik op de zaak waarmee u wilt verbinden.
 server_host_selected	Gebruikt {host} — voer de koppelcode in en tik Nu koppelen.
 print_bill	Rekening printen
-table_actions	Balieacties
-move_merge_table	Tafel verplaatsen / samenvoegen
-move_help	Verplaats de order van deze balie naar een vrije tafel, of voeg hem samen met een lopende.
-move_target_ph	Balienaam
 approval_pin_ph	Manager-pincode (alleen als gevraagd)
-move_here	Hierheen verplaatsen
-merge_into	Daarmee samenvoegen
-line_reason_ph	Reden (bijv. klant bedacht zich, niet op voorraad)
-line_qty_ph	Hoeveel annuleren (leeg = alles)
-line_target_ph	Naar tafel (bijv. D5)
 confirm	Bevestigen
 menu_search_ph	Zoek artikel of korte code
 customer_paid_ph	Klant betaalde
 tip_ph	Fooi
-table_area_ph	Zone (bijv. Zaal, Afhaal, Airco)
-table_range_ph	Meerdere tegelijk: D1-D20
-add_these_tables	Deze balies toevoegen
-remove_these_tables	Deze balies verwijderen
-table_remove_ph	Verwijderen: T1-T24, of de naam van één tafel
 find_server	Server van de zaak zoeken
 bill_format	Rekeningopmaak
 bill_format_help	Staat onder de naam van uw winkel op elke rekening. Scheid regels met | (bijv. MG Road, Rajkot | Ph 98250 00000).
@@ -1100,78 +897,32 @@ bill_header_ph	Adres | telefoon
 fssai_ph	FSSAI- / winkelvergunningsnr. (optioneel)
 bill_footer_ph	Voettekst (bijv. Bedankt, tot ziens)
 save_bill_format	Rekeningopmaak opslaan
-kot_format	Bonformaat
-kot_format_help	Tik een veld in de lijst. Tonen, lettergrootte en gewicht gelden voor dat veld bij de bonsoort die hierboven is gekozen. Elke soort houdt eigen maten en gewichten.
-kot_format_fields	Velden
-kot_field_next	Volgend veld
-kot_field_show	Tonen
-kot_field_hide	Verbergen
 kot_field_on	tonen
 kot_field_off	verberg
-kot_field_size	Lettergrootte
-kot_field_size_ph	bijv. 16, 20, 24, 28, 32…
 kot_weight_light	Licht
 bill_kot_panel_help	Rekeningopmaak en inhoudsbreedte. De kassier heeft de rekening uitgegeven of afgerekend — het hele verkoopverhaal blijft in de boeken.
 std_size_ph	bijv. 18, 20, 26…
-kot_show_shop	Naam zaak
-kot_hide_shop	Zaak verbergen
-kot_show_time	Tijd
-kot_hide_time	Tijd verbergen
-kot_show_waiter	Kassier
-kot_hide_waiter	Kassier verbergen
-kot_show_station	Station
-kot_hide_station	Station verbergen
-kot_show_table	Balie
-kot_hide_table	Tafel verbergen
-kot_show_kot_no	Bonnr.
-kot_hide_kot_no	Bonnummer verbergen
-kot_width	Voorbeeld van afbreken (zet de inhoudsbreedte op het tabblad Bon)
-kot_width_58	58 mm
-kot_width_80	80 mm
-kot_kind_heading	Bonsoort
-kot_kind_original	Origineel
-kot_kind_duplicate	Duplicaat
-kot_kind_modified	Gewijzigd
-kot_kind_cancelled	Geannuleerd
-kot_style_heading	Veldgrootte en -dikte
-kot_style_title	Titel
-kot_style_item_qty	Artikel · Aantal
-kot_style_field_pick	Veld kiezen
 kot_weight_regular	Normaal
 kot_weight_bold	Vet
-kot_align	Uitlijnen
 kot_align_start	Starten
 kot_align_center	Centreren
 kot_align_end	Eind
 content_width	Inhoudsbreedte (mm)
 content_width_bill	Breedte factuurinhoud (mm)
-content_width_kot	Inhoudsbreedte van de bon (mm)
 content_width_ph	Of typ een inhoudsbreedte, 40–210 mm
 content_width_help	Hoe breed deze bon afdrukt. De rekening houdt zijn eigen breedte.
 content_width_bill_help	Hoe breed de klantrekening afdrukt. Standaard 210 mm (pagina). 58 mm smalle bon, 80 mm brede bon, 112 mm 4 inch, 210 mm A4-breed. Typ een waarde van 40 tot 210. Bonnen hebben hun eigen breedte op het tabblad Bon.
-content_width_kot_help	Hoe breed de bon afdrukt. Standaard 80 mm. 58 mm smalle bon, 80 mm brede bon, 112 mm 4 inch, 210 mm pagina. Typ een waarde van 40 tot 210. Klantrekeningen hebben hun eigen breedte op het tabblad Rekening.
 vp_paper_width	Inhoudsbreedte (mm)
 vp_paper_width_ph	Of typ een inhoudsbreedte, 40–210 mm
 vp_paper_width_help	De inhoudsbreedte staat onder Formaat rekening en bon — apart voor de rekening (standaard 210 mm) en de bon (standaard 80 mm).
-kot_size	Lettergrootte
-kot_size_s	Klein
-kot_size_m	Normaal
-kot_size_l	Groot
 std_size	Lettergrootte
 kot_copies	Kopieën
 kot_copies_1	1
 kot_copies_2	2
 kot_copies_3	3
-kot_title_ph	Titel (leeg = TICKET)
-kot_footer_ph	Backoffice-notitie (optioneel)
-kot_preview	Voorbeeld
-save_kot_format	Bonformaat opslaan
-test_kot_format	Testafdruk
-test_kot_sent	Bonvoorbeeld verzonden
 test_bill_format	Test factuur
 test_bill_sent	Factuurvoorschijning verzonden
 test_print_no_printer	Geen printer voor die taak — kies er een op dit scherm
-kot_format_saved	Bonformaat opgeslagen
 std_print	Lettergrootte rekening
 std_print_help	Lettergrootte voor rekeningtaken in standaard portret en landschap op OS- / documentprinters (punten invoeren — niet Klein/Normaal/Groot). Dezelfde grootte in beide richtingen.
 std_size_s	Klein
@@ -1211,23 +962,16 @@ upi_qr	UPI QR
 show_upi_qr	Toon UPI-QR
 close_upi_qr	Sluiten
 upi_qr_help	De klant scant en betaalt. Tik Betaling aannemen nadat ze betaald hebben. Tweede scherm: open de server-URL /display op het LAN.
-kot_recall	Terughalen
 recently_done	Net klaar
-recall_kot_ph	Bonnummer om terug te halen
 role_help_customer	Rol: Klant — AR (zij zijn ons schuldig). Hetzelfde bedrijf kan ook leverancier zijn.
 role_help_both	Rollen: Afzender + Vervoerder — één partij, AR- en AP-boeken, netto in Rapporten.
 role_help_supplier	Rol: Leverancier — AP voor inkopen.
-dine_in_pick_table	Niet gebruikt in een baliewinkel
-choose_table	Balie kiezen
-change_table	Andere tafel
-pick_table_banner	Kies een tafel voor deze bestelling
 items_word	items
 items_section	Items
 back_to_order	Terug naar bestelling
 new_items_head	Nog niet verzonden
 price_ph	Prijs
 price_ph_gst_inside	Prijs ({tax} inbegrepen)
-cancel_needs_table	Balieverkoop blijft op de bon tot u de betaling aanneemt
 tax_rates_missing_hint	Geen {tax}-tarief op deze artikelen — stel bij Artikelen het belastingtarief in (prijzen bevatten {tax} al bij {tax} inclusief)
 taxable_value	Belastbare waarde
 gst_inside_price_note	({tax} inbegrepen)
@@ -1248,30 +992,11 @@ client_template_confirm	{d} artikelen uit {title} toevoegen? Artikelen die u al 
 client_template_importing	{title} wordt geïmporteerd…
 client_template_done	Elk artikel uit {title} staat bij uw artikelen.
 client_template_imported	{d} artikelen en {c} categorieën uit {title} toegevoegd
-resv_heading	Reserveringen
-resv_name_ph	Klantnaam
-resv_phone_ph	Telefoon (optioneel)
-resv_guests_ph	Personen
-resv_when_ph	Wanneer — 20:30, tomorrow 13:00
-resv_table_ph	Balie (optioneel)
-resv_add	Reserveren
-resv_seat	Geplaatst
-resv_none	Geen komende reserveringen.
-guests_word	gasten
-delivery_by_ph	Bezorgd door (bezorger of medewerker)
-kitchen_all_day	Nu te bereiden: {items}
-split_bill	Rekening splitsen
-split_go	Aparte rekening maken
 cancel	Annuleren
 opening_client	Client openen…
 preparing_desk	Bureau voorbereiden…
 opening_server	Bediende openen…
 creating_server	Bediende aanmaken…
-split_help	Tik de artikelen die één klant betaalt · {n} gekozen
-split_send_first	Verstuur eerst een bon — alleen artikelen die het backoffice heeft, kunnen naar een aparte rekening
-split_pick_some	Tik eerst de artikelen voor de aparte rekening
-split_done	Aparte rekening gemaakt — die ligt op de vloer naast deze balie
-split_marked	aparte rekening
 order_empty_pick	Order leeg — tik hierboven op Artikelen toevoegen om te kiezen.
 add_dishes	Artikelen toevoegen
 order_so_far	Op deze bestelling: {n} · {total}
@@ -1282,24 +1007,8 @@ pick_done_dd	Klaar · {label}
 printer_route_mode	Als er meerdere printers zijn op deze locatie
 printer_mode_first	Eerste die werkt
 printer_mode_all	Afdrukken op alle
-kot_show_area	Gebied
-kot_hide_area	Gebied verbergen
-kot_show_item_hdr	Artikel · Aantal
-kot_hide_item_hdr	Kolommen verbergen
-kot_show_title	Titelregel
-kot_hide_title	Titel verbergen
-kot_field_order	Bestelling afdrukken
 kot_field_up	Omhoog verplaatsen
 kot_field_down	Omlaag verplaatsen
-kot_field_cycle	Volgende selecteren
-kot_field_select	Volgende selecteren
-kot_field_time	Tijd
-kot_field_kot_no	Bonnr.
-kot_field_area	Gebied
-kot_field_table	Balie
-kot_field_shop	Naam zaak
-kot_field_waiter	Personeel
-kot_field_station	Station
 app_template_blurb_extra	Ook: eigenaar Zahir, admin Asif, kassier Nawaz; zijbalk vooraan; geschiedenis na 4 uur; strook Vandaag uit; compacte rekening.
 dishes_n	{n} artikelen
 recipe_ph	Recept (optioneel — ongebruikt in een baliewinkel)
@@ -1309,8 +1018,6 @@ low_stock_alert	Raakt op — koop snel bij: {items}
 unpriced_note	{n} artikelen bij u hebben nog geen prijs — ze worden met 0 afgerekend tot u er een instelt.
 show_unpriced	Alleen artikelen zonder prijs tonen
 show_all_dishes	Alle artikelen tonen
-role_waiter	Kassier
-role_kitchen	Magazijn
 role_title_rest_ph	Functie (bijv. chef de rang, chef-kok)
 preset_help_rest	Kassier: verkopen. Manager: verkopen + artikelen + annuleren/wijzigen.
 kind_raw	Gekocht voor de winkel

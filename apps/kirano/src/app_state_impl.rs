@@ -7,8 +7,6 @@ impl AppState {
             amend_cart: Cart::default(),
             amend_pay: PayMethod::Cash,
             sale_revisions: Vec::new(),
-            selected_table_id: None,
-            floor_focus_table_id: None,
             selected_customer_id: None,
             crm_segment: store::CrmSegment::BirthdayThisWeek,
             pending_loyalty_points: 0,
@@ -16,7 +14,6 @@ impl AppState {
             pending_voucher_code: String::new(),
             pending_voucher_paise: 0,
             customers: Vec::new(),
-            tables: Vec::new(),
             recent_sales: Vec::new(),
             staff: Vec::new(),
             session: None,
@@ -53,7 +50,6 @@ impl AppState {
             printer_route_sel: None,
             owner_setup_complete: false,
             onboarding_complete: false,
-            venue_mode: VenueMode::Counter,
             client_paired: false,
             extra_tills_allowed: false,
             onboard_step: 1,
@@ -64,15 +60,6 @@ impl AppState {
             books_cards: None,
             till_balance_label: String::new(),
             ops_panel_text: String::new(),
-            floor_ops_text: String::new(),
-            floor_waiter_filter: String::new(),
-            floor_columns: 4,
-            floor_zoom: 1.0,
-            floor_zoom_auto: true,
-            floor_area_tab: String::new(),
-            floor_area_order: Vec::new(),
-            floor_view_layout: false,
-            floor_layout_sel: None,
             branches_text: String::new(),
             screen: Screen::DeviceSetup,
             status: String::new(),
@@ -101,13 +88,6 @@ impl AppState {
             amount_keys_hidden: Vec::new(),
             amount_keys_peek: Vec::new(),
             books_sections_open: Vec::new(),
-            floor_sections_open: Vec::new(),
-            order_sections_open: Vec::new(),
-            kot_slip_draft: print_share::KotSlipFormat::default(),
-            kot_field_edit_idx: 0,
-            kot_edit_kind: print_share::KotSlipKind::Original,
-            kot_style_field: print_share::KotStyleField::Area,
-            bill_kot_tab_kot: false,
             bill_slip_draft: print_share::BillSlipFormat::default(),
             bill_style_field: print_share::BillStyleField::Shop,
             bill_field_edit_idx: 0,
@@ -118,8 +98,6 @@ impl AppState {
             pending_diag_export: None,
             draft_image_key: None,
             pay_parts: vec![PayPart::default()],
-            open_kots: Vec::new(),
-            stations: Vec::new(),
             categories: Vec::new(),
             dish_picker_open: false,
             dish_picks: Vec::new(),
@@ -133,19 +111,13 @@ impl AppState {
             menu_pick_open: false,
             sel_menu: None,
             menu_pick_rev: 0,
-            line_action: None,
             open_cart_line: None,
             cart_qty_busy: None,
             pending_cart_bump: None,
             cart_qty_timer: Timer::empty(),
-            picking_table: false,
-            picking_from_table_id: None,
             suggest_open: None,
             suggest_rows: Vec::new(),
             suggest_rev: 0,
-            kot_station_priority: Vec::new(),
-            kot_stations_selected: Vec::new(),
-            kot_station_default: String::new(),
             team_select_pending: false,
             team_copy_hire_pending: false,
             team_copy_edit_pending: false,
@@ -156,21 +128,14 @@ impl AppState {
             menu_list_filter: String::new(),
             menu_unpriced_only: false,
             form_resale: true,
-            kot_heads: std::collections::HashMap::new(),
             raw_materials: Vec::new(),
             reorder_levels: std::collections::HashMap::new(),
             low_stock_line: String::new(),
-            kitchen_counts_line: String::new(),
             today_cache: std::cell::RefCell::new(None),
-            reservations: Vec::new(),
             menu_category: None,
             frequent_ids: Vec::new(),
             frequent_days: 1,
             frequent_limit: 24,
-            line_cooked: false,
-            move_panel_open: false,
-            split_mode: false,
-            split_pick: Vec::new(),
             discount_panel_open: false,
             form_tab_anchor: None,
             found_servers: Vec::new(),
@@ -269,14 +234,8 @@ impl AppState {
         if self.device_role.is_host() {
             let _ = store.maybe_run_history_retention();
         }
-        // Columns belong to the selected area tab (legacy global is fallback).
-        self.floor_columns = store.floor_columns_for_area(&self.floor_area_tab);
-        self.floor_zoom = store.floor_zoom();
-        self.floor_zoom_auto = store.floor_zoom_auto();
         if self.device_role.is_host() {
             self.lan_devices = store.list_lan_devices().unwrap_or_default();
-            // A split bill's companion table goes once its bill is paid.
-            let _ = store.tidy_split_tables();
         }
         // The menu (what is sold) and the raw materials (what the kitchen
         // buys and uses up) are separate lists: nothing raw ever reaches the
@@ -285,8 +244,6 @@ impl AppState {
             store.list_products(false)?.into_iter().partition(|p| p.is_raw());
         self.products = menu;
         self.reorder_levels = store.reorder_levels().unwrap_or_default();
-        self.kitchen_counts_line = kitchen_counts_line(store);
-        self.reservations = store.upcoming_reservations().unwrap_or_default();
         self.low_stock_line = store
             .low_stock()
             .unwrap_or_default()
@@ -298,10 +255,6 @@ impl AppState {
             .join(", ");
         self.raw_materials = raw;
         self.removed_products = store.list_removed_products()?;
-        self.tables = store.list_tables()?;
-        // Floor is grid-only (Layout mode / tabs removed).
-        self.floor_view_layout = false;
-        let _ = store.set_floor_view("grid");
         self.recent_sales = store.recent_sales(30)?;
         self.staff = store.list_staff()?;
         self.customers = store.list_customers().unwrap_or_default();
@@ -315,28 +268,6 @@ impl AppState {
         self.venue_icon_key = store.venue_icon_key()?;
         self.nav_order = parse_nav_order(store.nav_order_csv()?.as_deref());
         self.nav_hidden = parse_nav_hidden(store.nav_hidden_csv()?.as_deref());
-        self.floor_area_order = parse_floor_area_order(store.floor_area_order_csv()?.as_deref());
-        self.kot_station_priority = store
-            .kot_station_priority_csv()?
-            .unwrap_or_default()
-            .split(',')
-            .map(str::trim)
-            .filter(|s| !s.is_empty())
-            .map(str::to_string)
-            .collect();
-        self.kot_stations_selected = store
-            .kot_stations_selected_csv()?
-            .unwrap_or_default()
-            .split(',')
-            .map(str::trim)
-            .filter(|s| !s.is_empty())
-            .map(str::to_string)
-            .collect();
-        self.kot_station_default = store
-            .kot_station_default()?
-            .unwrap_or_default()
-            .trim()
-            .to_string();
         if let Some(user) = self.session.as_ref().map(lan_key) {
             self.amounts_screen_hidden = store.amounts_screen_hidden(&user).unwrap_or(false);
             self.amount_keys_hidden = parse_amount_keys_hidden(
@@ -352,17 +283,9 @@ impl AppState {
             self.snack_secs = SnackKind::DEFAULT_SECS;
         }
         self.books_sections_open = parse_books_sections(store.books_sections_csv()?.as_deref());
-        self.open_kots = store.list_open_kots().unwrap_or_default();
-        self.stations = store.list_stations().unwrap_or_default();
         self.categories = store.list_categories().unwrap_or_default();
         self.owner_setup_complete = store.owner_setup_complete().unwrap_or(true);
         self.onboarding_complete = store.onboarding_complete().unwrap_or(true);
-        // Kirano product: grocery counter (no tables / KOT). Force Counter
-        // so Floor and Kitchen peers stay off the chrome.
-        if store.venue_mode().unwrap_or(VenueMode::Counter) != VenueMode::Counter {
-            let _ = store.set_venue_mode(VenueMode::Counter);
-        }
-        self.venue_mode = VenueMode::Counter;
         self.client_paired = store.client_paired().unwrap_or(false);
         self.pin_reset_required = store.pin_reset_required().unwrap_or(false);
         self.entity_template_id = store
@@ -585,7 +508,6 @@ impl AppState {
             label,
             done,
             follow,
-            table_id: self.selected_table_id.clone().unwrap_or_default(),
             staff_key: lan_key(&actor),
             queued,
         };
@@ -608,32 +530,24 @@ impl AppState {
         domain::StaffRights::for_role(role)
     }
 
-    /// On the Server: the floor and the kitchen read again from the books
-    /// (a waiter's KOT, a payment from a tablet just landed). Today's
-    /// figures follow in `sync_chrome`, which reads them itself.
+    /// On the Server: today's figures read again from the books (a payment
+    /// from a tablet just landed) — `sync_chrome` reads them itself.
     fn refresh_live_lists(&mut self) {
         self.today_cache.replace(None);
-        let Some(store) = self.store.as_ref() else {
+        if self.store.is_none() {
             return;
-        };
-        let tables = store.list_tables().unwrap_or_default();
-        let kots = store.list_open_kots().unwrap_or_default();
-        let counts = kitchen_counts_line(store);
-        self.tables = tables;
-        self.open_kots = kots;
-        self.kitchen_counts_line = counts;
-        // Client SetStandardEm / SetKotFormat updates Server printers.json +
-        // meta. Always push that onto live printers so jobs match. While the
-        // Owner is on Settings, leave kot_slip_draft / printer_draft alone —
-        // remote BOOKS_CHANGED must not wipe in-progress form overlays.
+        }
+        // Client SetStandardEm updates Server printers.json + meta. Always
+        // push that onto live printers so jobs match. While the Owner is on
+        // Settings, leave printer_draft alone — remote BOOKS_CHANGED must not
+        // wipe in-progress form overlays.
         let update_drafts = self.screen != Screen::Settings;
         self.apply_standard_print_em_to_draft_and_live(update_drafts);
-        self.apply_kot_slip_format_to_draft_and_live(update_drafts);
     }
 
     /// Reload `printers.json` into the draft, then overlay the shop Standard
-    /// bill size and KOT slip metrics from books meta. On the Server host,
-    /// push the same into the live printer config so bills/KOTs match Settings.
+    /// bill size from books meta. On the Server host, push the same into the
+    /// live printer config so bills match Settings.
     /// While on Settings, leave drafts alone (remote sync / reload must not
     /// wipe in-progress form overlays); live config still updates.
     fn sync_printer_draft_from_books(&mut self) {
@@ -646,7 +560,6 @@ impl AppState {
             self.printer_draft = print_share::printers();
         }
         self.apply_standard_print_em_to_draft_and_live(update_drafts);
-        self.apply_kot_slip_format_to_draft_and_live(update_drafts);
     }
 
     /// Overlay shop Standard bill size onto live config (and optionally the
@@ -671,79 +584,6 @@ impl AppState {
         }
     }
 
-    /// Overlay shop KOT / bill slip metrics onto live config (and optionally drafts).
-    /// When `update_drafts`, refreshes slip drafts / printer_draft formats
-    /// from books meta so a Client-saved size is not left stale.
-    fn apply_kot_slip_format_to_draft_and_live(&mut self, update_drafts: bool) {
-        let Some(store) = self.store.as_ref() else {
-            return;
-        };
-        let Ok(kot) = store.kot_slip_format() else {
-            return;
-        };
-        let bill = store.bill_slip_format().ok();
-        if update_drafts {
-            self.kot_slip_draft = kot.clone();
-            if let Some(ref bill) = bill {
-                self.bill_slip_draft = bill.clone();
-            }
-            if let Some(f) = self
-                .printer_draft
-                .formats
-                .iter_mut()
-                .find(|f| f.id == print_share::FORMAT_KOT)
-            {
-                kot.apply_to_print_format(f);
-            }
-            if let Some(ref bill) = bill {
-                self.printer_draft.set_bill_content_line(
-                    print_share::wrap_cols_for_paper_mm(bill.shown_content_width_mm()),
-                );
-            }
-        }
-        if self.device_role.is_host() {
-            let mut live = print_share::printers();
-            if let Some(f) = live
-                .formats
-                .iter_mut()
-                .find(|f| f.id == print_share::FORMAT_KOT)
-            {
-                kot.apply_to_print_format(f);
-            }
-            if let Some(ref bill) = bill {
-                live.set_bill_content_line(print_share::wrap_cols_for_paper_mm(
-                    bill.shown_content_width_mm(),
-                ));
-            }
-            print_share::configure(live);
-        }
-    }
-
-    /// Re-apply books-meta KOT size onto `printer_draft` only (no live
-    /// configure). Call before writing printers.json so a stale draft cannot
-    /// clobber a Client-saved size.
-    fn reapply_kot_slip_format_onto_printer_draft(&mut self) {
-        let Some(store) = self.store.as_ref() else {
-            return;
-        };
-        let Ok(fmt) = store.kot_slip_format() else {
-            return;
-        };
-        if let Some(f) = self
-            .printer_draft
-            .formats
-            .iter_mut()
-            .find(|f| f.id == print_share::FORMAT_KOT)
-        {
-            fmt.apply_to_print_format(f);
-        }
-        if let Ok(bill) = store.bill_slip_format() {
-            self.printer_draft.set_bill_content_line(print_share::wrap_cols_for_paper_mm(
-                bill.shown_content_width_mm(),
-            ));
-        }
-    }
-
     /// Re-apply books-meta Standard bill size onto `printer_draft` only (no
     /// live configure). Call before writing printers.json so a stale Server
     /// draft cannot overwrite a Client-saved Standard size.
@@ -757,11 +597,10 @@ impl AppState {
         self.printer_draft.set_standard_em(em);
     }
 
-    /// Flush `printer_draft` to this shop's printers.json. Re-applies
-    /// books-meta KOT and Standard sizes first so a stale Settings draft
-    /// cannot clobber a Client-saved size.
+    /// Flush `printer_draft` to this shop's printers.json. Re-applies the
+    /// books-meta Standard size first so a stale Settings draft cannot
+    /// clobber a Client-saved size.
     fn save_printer_draft(&mut self) -> Result<(), String> {
-        self.reapply_kot_slip_format_onto_printer_draft();
         self.reapply_standard_print_em_onto_printer_draft();
         let base = self
             .printers_base()
@@ -769,267 +608,12 @@ impl AppState {
         print_share::save_device_printers(&base, &self.printer_draft)
     }
 
-    /// A paired device asks for the Server's books (tables, running orders,
-    /// KOTs …); the phone worker fetches them and the screen reloads when
+    /// A paired device asks for the Server's books; the phone worker fetches them and the screen reloads when
     /// they land. Never waits. No-op on the Server.
     fn pull_from_server(&mut self) {
         if self.device_role == DeviceRole::Client {
             phone::want_sync();
         }
-    }
-
-    /// Punch ± qty onto the open table's pending lines (Server SoT).
-    /// No table selected: caller keeps lines in the local cart only.
-    fn bump_table_pending(
-        &mut self,
-        product_id: &str,
-        delta_milli: i64,
-        done: &str,
-    ) -> Result<Acted, String> {
-        let table_id = self
-            .selected_table_id
-            .clone()
-            .ok_or_else(|| "Open a table first".to_string())?;
-        let area = self.current_area();
-        self.table_action(
-            net::RunningAction::BumpPending {
-                table_id,
-                product_id: product_id.to_string(),
-                delta_milli,
-                area,
-            },
-            "",
-            done,
-            phone::Follow::Refresh,
-        )
-    }
-
-    /// Open a table on the Order desk from the Server running order (pending +
-    /// sent). First-seat / Change-table side-effects live in `open_table`.
-    fn load_table_cart(&mut self, table_id: &str) -> Result<(), String> {
-        if self.selected_table_id.as_deref() != Some(table_id) {
-            self.split_mode = false;
-            self.split_pick.clear();
-        }
-        let lines = self
-            .store
-            .as_ref()
-            .ok_or("No store")?
-            .running_order(table_id)?
-            .map(|o| o.to_cart_lines())
-            .unwrap_or_default();
-        self.cart.clear();
-        self.open_cart_line = None;
-        self.cart.set_order_type(OrderType::DineIn);
-        self.cart.lines = lines;
-        self.cart.lines.extend(self.queued_kot_lines(table_id));
-        self.selected_table_id = Some(table_id.to_string());
-        let mut ids: Vec<String> = Vec::new();
-        for l in &self.cart.lines {
-            if !l.kot_id.is_empty() && !ids.contains(&l.kot_id) {
-                ids.push(l.kot_id.clone());
-            }
-        }
-        if let Some(store) = self.store.as_ref() {
-            let mut station_by_kot = std::collections::HashMap::<String, String>::new();
-            for (id, no, at, station_id) in store.kot_heads(&ids).unwrap_or_default() {
-                // "2026-10-23T20:40:12+05:30" → "20:40"
-                let time = at.get(11..16).unwrap_or("").to_string();
-                if !station_id.trim().is_empty() {
-                    station_by_kot.insert(id.clone(), station_id);
-                }
-                self.kot_heads.insert(id, (no, time));
-            }
-            // running_lines never stored station_id — restore from the ticket
-            // so Print selected again hits the same printer as Send KOT.
-            for line in &mut self.cart.lines {
-                if line.station_id.trim().is_empty() {
-                    if let Some(sid) = station_by_kot.get(&line.kot_id) {
-                        line.station_id = sid.clone();
-                    }
-                }
-            }
-        }
-        self.apply_remembered_kot_to_unassigned();
-        Ok(())
-    }
-
-    /// First seat: write the desk's unsent lines onto `table_id` as pending.
-    fn seat_cart_onto_table(&mut self, table_id: &str) -> Result<(), String> {
-        let to_seat: Vec<CartLine> = self
-            .cart
-            .lines
-            .iter()
-            .filter(|l| !l.is_sent() && l.qty_milli > 0)
-            .cloned()
-            .collect();
-        if to_seat.is_empty() {
-            return Ok(());
-        }
-        let actor = self.actor()?;
-        if self.device_role == DeviceRole::Client {
-            let _ = self.table_action(
-                net::RunningAction::SeatPending {
-                    table_id: table_id.to_string(),
-                    lines: to_seat.clone(),
-                },
-                "",
-                "Seated",
-                phone::Follow::Refresh,
-            )?;
-            // Host may not have applied yet — keep punches visible until sync.
-            self.selected_table_id = Some(table_id.to_string());
-            self.cart.set_order_type(OrderType::DineIn);
-            self.cart.lines = to_seat;
-            return Ok(());
-        }
-        let store = self.store.as_ref().ok_or("No store")?;
-        store.seat_unsent_lines(table_id, &to_seat, &actor)?;
-        Ok(())
-    }
-
-    /// A device's KOTs for this table still waiting to reach the Server,
-    /// as ticket lines under "Waiting to send" (rebuilt from the saved
-    /// order, so they show again after a restart).
-    fn queued_kot_lines(&self, table_id: &str) -> Vec<CartLine> {
-        if self.device_role != DeviceRole::Client {
-            return Vec::new();
-        }
-        let Some(store) = self.store.as_ref() else {
-            return Vec::new();
-        };
-        let mut lines = Vec::new();
-        for item in store.lan_outbox().unwrap_or_default() {
-            if item.path != "/kot" || item.table_id != table_id {
-                continue;
-            }
-            let Ok(req) = serde_json::from_str::<net::RemoteKotRequest>(&item.body) else {
-                continue;
-            };
-            for l in req.draft.lines.into_iter().filter(|l| !l.kot_sent) {
-                lines.push(CartLine {
-                    product_id: l.product_id,
-                    name: l.name,
-                    unit_price: Money(l.unit_price_paise),
-                    qty: l.qty,
-                    qty_milli: l.qty_milli,
-                    unit_label: l.unit_label,
-                    note: l.note,
-                    base_unit_paise: l.unit_price_paise,
-                    running_line_id: format!("{QUEUED_LINE}{}", item.id),
-                    kot_id: QUEUED_KOT.into(),
-                    ..CartLine::default()
-                });
-            }
-        }
-        lines
-    }
-
-    /// Push Unit @ / Applied from the open cart row onto the running line
-    /// (so Print bill / Refresh keep the seller's pricing).
-    fn persist_cart_line_pricing(&mut self, index: usize) -> Result<(), String> {
-        let (line_id, unit_price_paise, line_total_paise) = {
-            let line = self
-                .cart
-                .lines
-                .get(index)
-                .ok_or_else(|| "Missing cart line".to_string())?;
-            let line_id = line.running_line_id.trim();
-            if line_id.is_empty() || line_id == "counter" || line_id.starts_with(QUEUED_LINE) {
-                return Ok(());
-            }
-            let line_total_paise = line.line_total_override.map(|m| m.paise()).unwrap_or(-1);
-            (
-                line_id.to_string(),
-                line.unit_price.paise(),
-                line_total_paise,
-            )
-        };
-        // Local table_action skips load_table_cart for SetLinePricing so the
-        // open line stays open. Clients still Follow::Refresh when the books
-        // bump — Applied is restored from running_lines.line_total_paise.
-        self.table_action(
-            net::RunningAction::SetLinePricing {
-                line_id,
-                unit_price_paise,
-                line_total_paise,
-            },
-            "",
-            "",
-            phone::Follow::Refresh,
-        )?;
-        Ok(())
-    }
-
-    /// Run a table action where the books are: on the Server directly, or
-    /// over the LAN from a paired device. Rights are checked by the Server
-    /// either way. `done` is what to say once it is done; a device says it
-    /// when the Server's answer comes back.
-    fn table_action(
-        &mut self,
-        action: net::RunningAction,
-        approval_pin: &str,
-        done: &str,
-        follow: phone::Follow,
-    ) -> Result<Acted, String> {
-        let actor = self.actor()?;
-        if self.device_role == DeviceRole::Client {
-            self.lan_job(
-                "/running",
-                &net::RemoteRunningRequest {
-                    approval_pin: approval_pin.trim().to_string(),
-                    request: action,
-                },
-                done.to_string(),
-                done.to_string(),
-                follow,
-                false,
-            )?;
-            return Ok(Acted::Sent);
-        }
-        let skip_reload = net::running_action_skips_full_reload(&action);
-        let store = self.store.as_ref().ok_or("No store")?;
-        let pin = Some(approval_pin).filter(|p| !p.trim().is_empty());
-        let done = net::apply_running_action(store, &actor, pin, &action)?;
-        // Cancel slip / fired course: paper once the books have it. A
-        // printer that did not take it is said on this screen
-        // (print_share::take_problems), after the action's own status.
-        if let Some(problem) = net::print_sent_kots(store, &done.kots) {
-            crate::print_share::report_problem(problem);
-        }
-        let text = done.text;
-        if skip_reload {
-            // Qty −/+, Hold, Unit @ / Applied already live in the open cart.
-            // Full reload_all froze the till on every tap; publish off-thread.
-            let db_path = store.db_path().to_path_buf();
-            std::thread::Builder::new()
-                .name("kirano-publish".into())
-                .spawn(move || {
-                    if let Ok(s) = crate::store::Store::open_path(&db_path) {
-                        net::publish_books(&s);
-                    }
-                })
-                .ok();
-            self.refresh_live_lists();
-            return Ok(Acted::Here(text));
-        }
-        // Other devices on `/wait` see the bump / seat / cancel at once.
-        net::publish_books(store);
-        self.reload_all()?;
-        if let Some(tid) = self.selected_table_id.clone() {
-            self.load_table_cart(&tid)?;
-        }
-        Ok(Acted::Here(text))
-    }
-
-    /// Floor area of the table open on the Order desk ("" = counter / no
-    /// area), for area prices.
-    fn current_area(&self) -> String {
-        self.selected_table_id
-            .as_ref()
-            .and_then(|id| self.tables.iter().find(|t| &t.id == id))
-            .map(|t| t.area.clone())
-            .unwrap_or_default()
     }
 
     /// What a "type or pick" field can offer, before narrowing.
@@ -1089,141 +673,6 @@ impl AppState {
             used
         };
         match field {
-            SuggestField::MoveTable | SuggestField::LineTable => {
-                let current = self.selected_table_id.clone();
-                self.tables
-                    .iter()
-                    .filter(|t| Some(&t.id) != current.as_ref())
-                    .map(|t| {
-                        let state = locale::t(&lang, t.floor_state.tile_key());
-                        let sub = if t.area.is_empty() { state } else { format!("{} · {state}", t.area) };
-                        SuggestRow::new(t.name.clone(), sub)
-                    })
-                    .collect()
-            }
-            SuggestField::TableArea => {
-                let enabled: Vec<String> = self
-                    .store
-                    .as_ref()
-                    .and_then(|s| s.list_picker_areas().ok())
-                    .unwrap_or_default()
-                    .into_iter()
-                    .filter(|(_, on)| *on)
-                    .map(|(n, _)| n)
-                    .collect();
-                let mut areas: Vec<String> = Vec::new();
-                for t in &self.tables {
-                    if !t.area.is_empty() && !areas.contains(&t.area) {
-                        if enabled.is_empty() || enabled.iter().any(|e| e.eq_ignore_ascii_case(&t.area))
-                        {
-                            areas.push(t.area.clone());
-                        }
-                    }
-                }
-                for a in enabled {
-                    if !areas.iter().any(|x| x.eq_ignore_ascii_case(&a)) {
-                        areas.push(a);
-                    }
-                }
-                areas
-                    .into_iter()
-                    .map(|a| {
-                        let n = self.tables.iter().filter(|t| t.area == a).count();
-                        SuggestRow::new(a, format!("{n}"))
-                    })
-                    .collect()
-            }
-            SuggestField::MenuStation => self
-                .store
-                .as_ref()
-                .and_then(|s| s.list_picker_stations().ok())
-                .unwrap_or_else(|| self.stations.clone())
-                .into_iter()
-                .map(|st| SuggestRow::new(st.name.clone(), ""))
-                .collect(),
-            // All stations (incl. picker-off) — remove needs the full list.
-            SuggestField::StationRemove | SuggestField::SettingsStationRemove => self
-                .stations
-                .iter()
-                .map(|st| SuggestRow::new(st.name.clone(), ""))
-                .collect(),
-            // Order desk: stations already on unsent dishes show Don't use
-            // (clear), others show Use. Unassigned dishes get a Don't use row
-            // that holds them off this KOT (same as Hold on the line).
-            SuggestField::KotStation => {
-                let mut stations = self
-                    .store
-                    .as_ref()
-                    .and_then(|s| s.list_picker_stations().ok())
-                    .unwrap_or_else(|| self.stations.clone());
-                // Person rights: only kitchens this signed-in user may use.
-                if let Some(session) = self.session.as_ref() {
-                    let feats = session.effective_features();
-                    stations.retain(|s| feats.allows_kot_station(&s.id));
-                }
-                // ↑↓ print priority: listed ids first, then any new stations.
-                if !self.kot_station_priority.is_empty() {
-                    let mut ordered = Vec::with_capacity(stations.len());
-                    for id in &self.kot_station_priority {
-                        if let Some(i) = stations.iter().position(|s| &s.id == id) {
-                            ordered.push(stations.remove(i));
-                        }
-                    }
-                    ordered.append(&mut stations);
-                    stations = ordered;
-                }
-                let mut counts: std::collections::HashMap<String, usize> =
-                    std::collections::HashMap::new();
-                let mut unassigned_n = 0usize;
-                for line in self.cart.lines.iter().filter(|l| !l.is_sent() && !l.hold_send) {
-                    let sid = line.kitchen_station_id(&self.products);
-                    if sid.is_empty() {
-                        unassigned_n += 1;
-                    } else {
-                        *counts.entry(sid.to_string()).or_default() += 1;
-                    }
-                }
-                let use_l = self.t("use");
-                let clear_l = self.t("dont_use");
-                let mut rows = Vec::new();
-                if unassigned_n > 0 {
-                    rows.push(
-                        SuggestRow::new(self.t("kot_unassigned"), format!("{unassigned_n}"))
-                            .with_action(clear_l.clone()),
-                    );
-                }
-                rows.extend(stations.into_iter().map(|st| {
-                    let n = counts.get(&st.id).copied().unwrap_or(0);
-                    // Checked = multi-select OR dishes already on this kitchen.
-                    let selected = n > 0
-                        || self.kot_stations_selected.iter().any(|s| s == &st.id);
-                    let sub = if n > 0 { format!("{n}") } else { String::new() };
-                    if selected {
-                        SuggestRow::new(st.name.clone(), sub).with_action(clear_l.clone())
-                    } else {
-                        SuggestRow::new(st.name.clone(), sub).with_action(use_l.clone())
-                    }
-                }));
-                rows
-            }
-            // Team → selected person: every kitchen, checked = they may use it.
-            SuggestField::TeamKotStations => {
-                let use_l = self.t("use");
-                let clear_l = self.t("dont_use");
-                let feats = &self.draft_features;
-                self.stations
-                    .iter()
-                    .map(|st| {
-                        if feats.allows_kot_station(&st.id) {
-                            SuggestRow::new(st.name.clone(), String::new())
-                                .with_action(clear_l.clone())
-                        } else {
-                            SuggestRow::new(st.name.clone(), String::new())
-                                .with_action(use_l.clone())
-                        }
-                    })
-                    .collect()
-            }
             SuggestField::MenuUnit | SuggestField::ConvFrom | SuggestField::ConvTo | SuggestField::BuyUnit => units(),
             SuggestField::MenuTax => self
                 .store
@@ -1287,14 +736,10 @@ impl AppState {
                     .map(|name| SuggestRow::new(name, here.clone()))
                     .collect()
             }
-            SuggestField::PrinterPlace => printer_place_choices(
-                &self.stations,
-                &self.printer_route_key,
-                |k| self.t(k),
-            )
+            SuggestField::PrinterPlace => printer_place_choices(&self.printer_route_key, |k| self.t(k))
             .into_iter()
             .map(|(_key, label, selected)| {
-                // Title = place name (Bill / kitchen). Pick resolves the
+                // Title = place name (Bill). Pick resolves the
                 // route key from that label. ✓ marks the place being edited.
                 let row = SuggestRow::new(label, String::new());
                 if selected {
@@ -1309,42 +754,19 @@ impl AppState {
                 self.printer_selected_id.as_deref(),
                 |k| self.t(k),
             ),
-            SuggestField::StationPrint => self
-                .stations
-                .iter()
-                .map(|s| SuggestRow::new(s.name.clone(), s.name.clone()))
-                .collect(),
-            SuggestField::StationVps | SuggestField::BillPrinters => {
-                station_virtual_printer_suggest_rows(
+            SuggestField::BillPrinters => {
+                route_virtual_printer_suggest_rows(
                     &self.printer_draft,
                     &self.printer_route_key,
                     |k| self.t(k),
                 )
             }
-            SuggestField::TestPrinters | SuggestField::KotTestPrinters => {
+            SuggestField::TestPrinters => {
                 test_printers_suggest_rows(
                     &self.printer_draft,
                     &self.test_printer_ids,
                     |k| self.t(k),
                 )
-            }
-            // Who took deliveries before, then the active staff.
-            SuggestField::DeliveryBy => {
-                let mut rows: Vec<SuggestRow> = self
-                    .store
-                    .as_ref()
-                    .and_then(|s| s.delivery_people().ok())
-                    .unwrap_or_default()
-                    .into_iter()
-                    .map(|n| SuggestRow::new(n, String::new()))
-                    .collect();
-                rows.extend(
-                    self.staff
-                        .iter()
-                        .filter(|m| m.active)
-                        .map(|m| SuggestRow::new(m.name.clone(), m.lock_label())),
-                );
-                rows
             }
             // Code to apply, country name beside it (typing either finds it).
             SuggestField::Country => fiscal::COUNTRY_PROFILES
@@ -1361,44 +783,11 @@ impl AppState {
                 .map(|b| SuggestRow::new(b.name, b.code))
                 .collect(),
             SuggestField::CustomerName => parties(false),
-            SuggestField::ResvTable => self
-                .tables
-                .iter()
-                .map(|t| {
-                    let state = locale::t(&lang, t.floor_state.tile_key());
-                    let sub = if t.area.is_empty() {
-                        state
-                    } else {
-                        format!("{} · {state}", t.area)
-                    };
-                    SuggestRow::new(t.name.clone(), sub)
-                })
-                .collect(),
-            SuggestField::FloorWaiter => self
-                .staff
-                .iter()
-                .filter(|m| m.active)
-                .map(|m| SuggestRow::new(m.name.clone(), m.lock_label()))
-                .collect(),
             SuggestField::BulkCat => self
                 .categories
                 .iter()
                 .map(|c| SuggestRow::new(c.name.clone(), ""))
                 .collect(),
-            SuggestField::FloorColumns => {
-                // Numbers only (1, 2, 3 …) — leave the field empty to fit the
-                // screen. Widen to this area's table count (not every area).
-                let area = self.floor_area_tab.as_str();
-                let widest = self
-                    .tables
-                    .iter()
-                    .filter(|t| t.area == area)
-                    .count();
-                let upto = widest.max(12).max(self.floor_columns.min(suggest::SUGGEST_LIMIT));
-                (1..=upto)
-                    .map(|n| SuggestRow::new(n.to_string(), String::new()))
-                    .collect()
-            }
         }
     }
 
@@ -1409,78 +798,6 @@ impl AppState {
         self.suggest_rows = suggest::rank(self.suggest_candidates(field), query);
         self.suggest_open = Some(field);
         self.suggest_rev = self.suggest_rev.wrapping_add(1);
-    }
-
-    /// Write Kitchen dropdown priority / multi-check / default into books meta.
-    fn persist_kot_station_prefs(&mut self) {
-        if self.store.is_none() {
-            return;
-        }
-        let op = BooksOp::SetKotStationPrefs {
-            priority_csv: self.kot_station_priority.join(","),
-            selected_csv: self.kot_stations_selected.join(","),
-            default_id: self.kot_station_default.clone(),
-        };
-        if let Err(e) = self.books_op(op) {
-            self.status = e;
-        }
-    }
-
-    /// Check a station (multi-select): remember selection + default.
-    /// Does **not** touch print priority — ↑↓ alone reorder the dropdown;
-    /// appending here made a checkbox tap jump the row.
-    fn select_kot_station(&mut self, station_id: &str) {
-        let id = station_id.trim();
-        if id.is_empty() || !self.stations.iter().any(|s| s.id == id) {
-            return;
-        }
-        if !self.kot_stations_selected.iter().any(|s| s == id) {
-            self.kot_stations_selected.push(id.to_string());
-        }
-        self.kot_station_default = id.to_string();
-        self.persist_kot_station_prefs();
-    }
-
-    /// Uncheck a station (leave others checked).
-    fn deselect_kot_station(&mut self, station_id: &str) {
-        let id = station_id.trim();
-        self.kot_stations_selected.retain(|s| s != id);
-        if self.kot_station_default == id {
-            self.kot_station_default = self
-                .kot_station_priority
-                .iter()
-                .find(|p| self.kot_stations_selected.iter().any(|s| s == *p))
-                .cloned()
-                .or_else(|| self.kot_stations_selected.first().cloned())
-                .unwrap_or_default();
-        }
-        self.persist_kot_station_prefs();
-    }
-
-    /// Put the remembered kitchen on unsent lines that still have none
-    /// (menu station and Hold left alone).
-    fn apply_remembered_kot_to_unassigned(&mut self) {
-        let default = self
-            .kot_station_priority
-            .iter()
-            .find(|p| self.kot_stations_selected.iter().any(|s| s == *p))
-            .cloned()
-            .filter(|id| !id.is_empty())
-            .unwrap_or_else(|| self.kot_station_default.trim().to_string());
-        if default.is_empty() || !self.stations.iter().any(|s| s.id == default) {
-            return;
-        }
-        let products = self.products.clone();
-        for line in self
-            .cart
-            .lines
-            .iter_mut()
-            .filter(|l| !l.is_sent() && !l.hold_send)
-        {
-            if line.kitchen_station_id(&products).is_empty() {
-                line.station_id = default.clone();
-            }
-        }
     }
 
     /// Menu screen rows: indices into `products` matching the list search
@@ -1764,13 +1081,6 @@ impl AppState {
             .map(|v| self.money(Money(v)))
             .unwrap_or_default();
         self.books_cards = Some(o);
-        Ok(())
-    }
-
-    /// Floor ops strip (open calls / waitlist) — separate from Inventory body.
-    fn refresh_floor_ops_text(&mut self) -> Result<(), String> {
-        let store = self.store.as_ref().ok_or("No store")?;
-        self.floor_ops_text = store.ops_panel_text().unwrap_or_default();
         Ok(())
     }
 
@@ -2072,16 +1382,13 @@ impl AppState {
         locale::t_overlay(&self.locale.language, key, tmpl.label_overrides)
     }
 
-    /// Reset the order desk for the next order: empty cart, no table or
-    /// customer attached. Called after a bill is paid / a KOT is sent.
+    /// Reset the order desk for the next order: empty cart, no customer
+    /// attached. Called after a bill is paid.
     fn clear_order_desk(&mut self) {
         self.cart.clear();
         self.pay_choice = PayChoice::Cash;
         self.open_cart_line = None;
-        self.selected_table_id = None;
         self.selected_customer_id = None;
-        self.split_mode = false;
-        self.split_pick.clear();
     }
 
     /// Money-lane chip words in the UI language (`lane_*_label` keys). The

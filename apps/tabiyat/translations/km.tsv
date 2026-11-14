@@ -80,28 +80,6 @@ applied	បានអនុវត្ត
 note_ph	កំណត់ចំណាំ (ស្រេចចិត្ត)
 rounded	បានបង្គត់
 split	បែង
-send_kot	ផ្ញើ​ប័ណ្ណ​
-send_kot_to	ផ្ញើ → {kitchens}
-send_kot_again	បន្ថែមធាតុសម្រាប់សន្លឹកបន្ទាប់
-send_kot_held	ធាតុដែលបានរក្សាទុក — ឈប់ទុកដើម្បីផ្ញើ
-reprint_kot	បោះពុម្ពជ្រើសរើសម្ដងទៀត
-reprint_kot_ok	បានបោះពុម្ពធាតុ {n} ម្តងទៀត · {slips} slip(s) → {kitchens}
-reprint_kot_needed	ផ្ញើសន្លឹកបៀជាមុនសិន — បន្ទាប់មកបញ្ចូលថ្នាំ ហើយបោះពុម្ពសន្លឹកដែលបានជ្រើសរើសម្តងទៀត
-reprint_kot_none_selected	រាល់ធាតុដែលបានផ្ញើត្រូវបានរំលង — ចុចលើការបោះពុម្ពនៅលើអ្វីដែលត្រូវបោះពុម្ពឡើងវិញ
-reprint_kot_client	បោះពុម្ពម្តងទៀត ({n}) សម្រាប់ {place} បានផ្ញើ — ឧបករណ៍ហាងនឹងបោះពុម្ពវា។
-print_cancelled_kot	បោះពុម្ពអ្វីដែលបានលុបចោលទាំងអស់
-print_cancelled_kot_ok	ធាតុដែលបានលុបចោល {n} ដែលបានបោះពុម្ព · {slips} slip(s) → {kitchens}
-print_cancelled_kot_needed	បើកតារាងជាមួយធាតុដែលបានលុបចោលជាមុនសិន
-print_cancelled_kot_none	គ្មាន​ទំនិញ​ដែល​បាន​លុប​ចោល​លើ​ការ​បញ្ជា​ទិញ​នេះ​ទេ។
-print_cancelled_kot_client	ការបោះពុម្ពត្រូវបានលុបចោល ({n}) សម្រាប់ {place} បានផ្ញើ — ឧបករណ៍ហាងនឹងបោះពុម្ពវា។
-kot_banner	ស្លាកប្រភេទ
-kot_banner_ph	ស្លាក (ទទេ = គ្មាន)
-kot_item_prefix	បុព្វបទទំនិញ
-kot_item_prefix_ph	ឧ. [បានលុបចោល]
-kot_strike	ឈ្មោះធាតុកូដកម្ម
-kot_strike_note	កំណត់សម្គាល់ធាតុកូដកម្ម
-kot_strike_on	បើក
-kot_strike_off	បិទ
 bill_item_layout	ប្លង់ទំនិញ
 bill_item_layout_columns	ជួរឈរ
 bill_item_layout_stacked	ដាក់ជង់
@@ -130,8 +108,6 @@ bill_item_gap_em	ចន្លោះ (em)
 bill_item_qty_min	បរិមាណអប្បបរមា (em)
 bill_item_price_min	តម្លៃអប្បបរមា (em)
 bill_item_amount_min	ទឹកប្រាក់អប្បបរមា (em)
-kot_item_qty_width	ជួរឈរបរិមាណ
-kot_item_num_align	តម្រឹមបរិមាណ
 bill_total_qty_label	ស្លាកសរុបបរិមាណ
 bill_total_subtotal_label	ស្លាកសរុបរង
 bill_total_grand_label	ស្លាកសរុបធំ
@@ -143,36 +119,9 @@ bill_item_piece_off	បិទ
 bill_total_qty	សរុបបរិមាណ
 bill_total_subtotal	សរុបរង
 bill_total_grand	សរុបធំ
-reprint_incl	រួមក្នុងការបោះពុម្ព
-reprint_skip	រំលង
-reprint_skip_meta	រំលងការបោះពុម្ពម្ដងទៀត
-kot_dest_hint	បោះពុម្ពនៅម៉ាស៊ីនដែលអ្នកភ្ជាប់ទៅ {kitchens} ក្នុង ការកំណត់ → ម៉ាស៊ីនបោះពុម្ព
-kot_sent_hint	ការផ្ញើចុងក្រោយបានទៅ {kitchens}។ ចុច​ដើម្បី​បន្ថែម​ធាតុ​សម្រាប់​វិក្កយបត្រ​បន្ទាប់ — ឬ​បោះពុម្ព​ប័ណ្ណ​ម្ដងទៀត​សម្រាប់​ប័ណ្ណ​ដដែល។
-kot_sent_printing	ស្លីបផ្ញើទៅ {kitchens} — បោះពុម្ព
-kot_sent_not_printed	Slip ផ្ញើទៅ {kitchens} ប៉ុន្តែមិនត្រូវបានបោះពុម្ពទេ៖ {why}។ ប្រាប់ហាង បន្ទាប់មកជួសជុលម៉ាស៊ីនបោះពុម្ព ហើយបោះពុម្ពម្តងទៀត។
-kot_sent_screen	ស្លីបបានផ្ញើទៅ {kitchens}
-kot_queued_shop	រអិលសម្រាប់ {place} → {kitchens} បានរក្សាទុក; ឧបករណ៍ហាងបោះពុម្ពវា។
-kot_job_label	រអិលសម្រាប់ {place} → {kitchens}
-kot_job_reached	Slip សម្រាប់ {place} បានឈានដល់ {kitchens}
 kot_unassigned	មិនបានចាត់តាំង
-kot_unassigned_held	កាន់ធាតុ {n} ដោយគ្មានស្ថានីយ៍ — ឈប់សង្កត់លើបន្ទាត់ដើម្បីផ្ញើ
-kot_station_ph	ស្ថានីយ
-kot_station_dd	ស្ថានីយ
-kot_station_dd_n	ស្ថានីយ៍ · {stations}
-kot_set_station	ប្រើស្ថានីយនេះ
-kot_station_applied	ស្ថានីយ៍ត្រូវបានកំណត់នៅលើធាតុ {n}: {station}
-kot_station_cleared	ស្ថានីយត្រូវបានសម្អាតពីធាតុ {n}៖ {station}
-kot_station_needed	ជ្រើសរើសផ្នែកចែកចាយជាមុនសិន
-kot_station_not_allowed	មិនអនុញ្ញាតឱ្យប្រើផ្នែក៖ {station}
-kot_station_none	មិន​ទាន់​មាន​ស្ថានីយ — មិន​បាន​ប្រើ​នៅ​លើ​ហាង​បញ្ជរ (ការកំណត់ → តំបន់​បើ​ចាំបាច់)
 pos_tab_items	ទំនិញដែលបានបន្ថែម
 pos_tab_payment	ការបង់
-hold_send	ពន្យារ
-hold_send_on	កំពុងពន្យារ
-hold_send_meta	បានប្រារព្ធឡើង - មិនមែននៅលើសន្លឹកបៀនេះទេ។
-station_remove	ដកស្ថានីយ
-station_remove_ph	ប៉ះស្ថានីយក្នុងបញ្ជីដើម្បីដក
-station_removed	ស្ថានីយបានដក៖ {name}
 settings_hub_title	ការកំណត់
 settings_hub_help	បើកកន្លែងមួយក្នុងមួយលើក — រំកិលតិច ជម្រើសច្បាស់។
 settings_back	ថយក្រោយ
@@ -181,12 +130,10 @@ settings_sec_country	ប្រទេស និងពន្ធ
 settings_sec_tills	ឧបករណ៍ផ្សេង
 settings_sec_brand	ម៉ាករបស់អ្នក
 settings_sec_units	ឯកតា និងការបំប្លែង
-settings_sec_pickers	កន្លែង · ស្ថានីយ · អត្រាពន្ធ
+settings_sec_pickers	អត្រាពន្ធ
 settings_sec_printers	ម៉ាស៊ីនបោះពុម្ព
 settings_sec_bill	ទម្រង់ Bill & Slip
 settings_sec_selling	គម្រោង និងការលក់
-bill_kot_tab_bill	វិក្កយបត្រ
-bill_kot_tab_kot	រអិល
 settings_sec_alerts	ការជូនដំណឹង
 alerts_help	សារស្ថានភាពនៅលើអេក្រង់អ្នកយូរប៉ុណ្ណា (វិនាទី)
 snack_secs_ph	វិនាទី (3–60 លំនាំដើម 10)
@@ -237,8 +184,6 @@ counter	តុលក់
 dine_in	តុលក់
 takeaway	យកទៅ
 order	ការកុម្ម៉ង់
-tables	បញ្ជរ
-kitchen	ផ្នែក
 sales	ការលក់
 sales_refunds	ការលក់ និងសងប្រាក់
 day_close	បិទថ្ងៃ
@@ -266,10 +211,6 @@ zero_sales_on	អនុញ្ញាត ₹0
 zero_sales_off	ត្រូវការតម្លៃ
 zero_sales_saved_on	ការលក់តម្លៃសូន្យបានអនុញ្ញាត
 zero_sales_saved_off	ការលក់ត្រូវមានតម្លៃលើស ₹0
-floor_areas_help	តំបន់គឺជាបន្ទប់ ឬតំបន់នៅលើឥដ្ឋ (Dine In, Parcel, AC …)។ បន្ថែមតំបន់មួយជាមុនសិន បន្ទាប់មកដាក់បញ្ជរនៅក្នុងវា — តំបន់នីមួយៗគឺជាក្រុមដាច់ដោយឡែកនៅលើឥដ្ឋ។
-area_new_ph	កន្លែង / បន្ទប់ថ្មី (ឧ. AC សួន)
-add_area	បន្ថែមកន្លែង
-area_added	ផ្ទៃ "{name}" រួចរាល់ — បន្ថែមបញ្ជរទៅក្នុងវា។
 no_favorites	មិនទាន់មានចូលចិត្ត — បន្ថែមទំនិញពីបញ្ជីខាងក្រោម។
 add_to_bill	បន្ថែមទៅវិក្កយបត្រ
 added	បានបន្ថែម
@@ -280,19 +221,9 @@ chip_missing_customer	អតិថិជនដែលបានជ្រើសប�
 chip_no_customer	មិនទាន់មានអតិថិជន — វាយឈ្មោះ រួចប៉ះ ជំពាក់
 credit_summary_fmt	អតិថិជន {} · ជំពាក់បើក {} · ប្រាក់មុនដែលរក្សា {}
 recent_label	ថ្មីៗ៖
-kot_new_waiting	ថ្មី — កំពុងរង់ចាំ
-kot_preparing	កំពុងរៀបចំ
-kot_ready_serve	រួច — យកទៅ
-kot_done_cap	រួចរាល់
-kot_cancelled	បានលុបចោល
-kot_start_btn	ចាប់ផ្ដើម
-kot_mark_ready	សម្គាល់រួច
-kot_done_btn	រួចរាល់
-table_free	ទំនេរ — ប៉ះដើម្បីចាប់ផ្ដើមការកុម្ម៉ង់
 start_order	ចាប់ផ្ដើមការកុម្ម៉ង់
 open_bill	បើកវិក្កយបត្រ
 collect_payment	ទទួលការបង់
-table_running	កំពុងដំណើរការ
 payment_pending	ការបង់កំពុងរង់ចាំ
 collect_at_counter	ទទួលនៅតុលក់
 inventory	ស្តុក
@@ -325,7 +256,6 @@ ok	OK
 this_shop	Server
 extra_till	ម៉ាស៊ីនភ្ញៀវ
 off	បិទ
-tables_kitchen	ប្លង់ហាង
 server	Server
 client	ម៉ាស៊ីនភ្ញៀវ
 language_currency	ភាសា និងរូបិយប័ណ្ណ
@@ -367,8 +297,6 @@ add_item_plain	បន្ថែមទំនិញ
 add_note	បន្ថែមកំណត់ចំណាំ
 add_opening_balance	បន្ថែមសមតុល្យដើម
 add_staff	បន្ថែមបុគ្គលិក
-add_station	បន្ថែមស្ថានីយ
-add_table	បន្ថែមតុ
 add_unit	បន្ថែមឯកតា
 add_use_name	បន្ថែម / ប្រើឈ្មោះនេះ
 allow_extra_tills	អនុញ្ញាតបញ្ជរបន្ថែម
@@ -421,7 +349,6 @@ share_whatsapp	ចែករំលែក WhatsApp
 lan_pages_heading	ទំព័រអតិថិជននៅលើ Wi-Fi
 lan_pages_help	នៅលើ Wi-Fi របស់ហាងនេះ ទំព័រអតិថិជនដំណើរការសម្រាប់ផ្ទាំងបង្ហាញ និងមតិកែលម្អ។ មនុស្សដែលមានទិន្នន័យចល័តត្រូវការ Cloud នៅពេលក្រោយ។ ស្ថានីយកាត ឬតំណទូទាត់គឺស្រេចចិត្ត ហើយមិនដែលបិទបញ្ជរទេ។
 diag_send_heading	យកចេញពីឧបករណ៍នេះ
-kot_dest_heading	ស្ថានីយ
 optional_login_heading	ការចូលស្រេចចិត្ត
 rights_heading	សិទ្ធិ
 ops_panel	ការងារក្នុង
@@ -448,28 +375,6 @@ till_voucher_amt_ph	ទឹកប្រាក់ប័ណ្ណ (ទទេ = ទ�
 till_wallet_topup_ph	ទឹកប្រាក់បញ្ចូលកាបូប
 till_voucher_issue_amt_ph	ទឹកប្រាក់ប័ណ្ណដែលចេញ
 till_voucher_issue_code_ph	កូដប័ណ្ណថ្មី
-split_evenly	បែងស្មើ
-waitlist	បញ្ជីរង់ចាំ
-fire_course	ជំហានបន្ទាប់
-hold_item	ពន្យារ
-waiter_call	ហៅអ្នកគិតលុយ
-waitlist_add	បន្ថែមទៅបញ្ជីរង់ចាំ
-floor_view_grid	ក្រឡា
-floor_view_layout	ប្លង់
-floor_layout_x	X
-floor_layout_y	Y
-floor_layout_w	W
-floor_layout_h	H
-floor_layout_save	រក្សាទុកប្លង់
-floor_layout_open	បើកតុ
-floor_layout_edit	កែប្លង់
-floor_layout_pick	ប៉ះតុដើម្បីកែប្លង់របស់វា
-floor_layout_saved	ប្លង់ត្រូវបានរក្សាទុក
-floor_layout_nudge_left	← 20
-floor_layout_nudge_right	→ 20
-floor_layout_nudge_up	↑ 20
-floor_layout_nudge_down	↓ 20
-sibling_pickers_help	ប៉ះ បើក/បិទ ដូចឯកតា — លាក់កន្លែង ស្ថានីយ និងអត្រាពន្ធពីជម្រើសប្រចាំថ្ងៃ; លំនាំដើមកញ្ចប់នៅដដែល។
 bulk_price_apply	អនុវត្តតម្លៃច្រើន
 card_terminal_optional	ម៉ាស៊ីនកាត / តំណបង់ (ស្រេចចិត្តពេលមានអ៊ីនធឺណិត)
 copy_report	ចម្លងរបាយការណ៍
@@ -495,7 +400,6 @@ import_day	នាំចូលថ្ងៃ
 import_items_csv_plain	នាំចូលទំនិញ CSV…
 import_parties_csv	នាំចូលភាគី CSV…
 item_name	ឈ្មោះទំនិញ
-kitchen_printing	ម៉ាស៊ីនបោះពុម្ព
 login_id_ph	ឈ្មោះអ្នកប្រើ
 mark_cleared	សម្គាល់ថាបានសម្អាត
 new_party_clear	ភាគីថ្មី (សម្អាតទម្រង់)
@@ -565,15 +469,6 @@ show	បង្ហាញ
 spreadsheet_csv	សៀវភៅបញ្ជី (CSV)
 start_fresh	ចាប់ផ្ដើមថ្មី
 stop_extra_tills	បញ្ឈប់បញ្ជរបន្ថែម
-floor_cols_ph	ជួរឈរ
-floor_cols_fit	សមអេក្រង់
-floor_cols_fit_sub	{n} សមនៅទីនេះ
-floor_cols_fits	សម
-floor_cols_scroll	រំកិលទៅចំហៀង
-floor_cols_min	ជួរឈរ៖ យ៉ាងហោចណាស់ 1 — ឬទុកទទេដើម្បីសមអេក្រង់
-floor_zoom_auto	ស្វ័យប្រវត្តិ
-floor_zoom_out	បង្រួម
-floor_zoom_in	ពង្រីក
 backup_auto	ចម្លងដោយស្វ័យប្រវត្តិរាល់ថ្ងៃ · ចុងក្រោយ {when} · 14 ថ្ងៃចុងក្រោយរក្សាក្នុង {dir}។
 backup_auto_none	ចម្លងដោយស្វ័យប្រវត្តិរាល់ថ្ងៃ — លើកទីមួយដំណើរការក្នុងពេលបន្តិច។
 backup_copy_to	ច្បាប់ចម្លងក៏ទៅ {dir} ផងដែរ។
@@ -591,7 +486,6 @@ new_pair_code	កូដផ្គូផ្គងថ្មី
 pair_finishing	កំពុងបញ្ចប់ការផ្គូផ្គង… កំពុងអនុវត្តសៀវភៅហាង
 pair_opening	កំពុងបើកបញ្ជរ…
 pair_copied	កូដផ្គូផ្គងបានចម្លង
-kot_waiting	កំពុងរង់ចាំផ្ញើ
 lan_offline_waiting	server ហាងមិនអាចទៅដល់ · {n} កំពុងរង់ចាំ
 lan_connecting	កំពុងភ្ជាប់ទៅហាង…
 lan_live	ផ្ទាល់
@@ -633,7 +527,6 @@ printers_routes_help	ស្វែងរកម៉ាស៊ីនបោះពុ�
 printer_assign_dd	ម៉ាស៊ីនពិត៖ {place}
 printer_assign_pick	ជ្រើសម៉ាស៊ីនពិត
 printer_profile_heading	ប្លង់
-printer_send_heading	ដឹកជញ្ជូន
 vp_delivery_heading	ដឹកជញ្ជូន
 vp_delivery_help	របៀបដែលម៉ាស៊ីនបោះពុម្ពនិម្មិតនេះផ្ញើការងារ — ឯកសារ OS, បៃឆៅ ឬ ESC/POS ។ មាតិការអិល (ទំហំប្រភេទ រុំ រឹម) ត្រូវបានសម្រេចដោយទម្រង់វិក្កយបត្រ/រអិល មិនមែននៅទីនេះទេ។
 vp_type_size_heading	ទំហំអក្សរ
@@ -677,23 +570,13 @@ virtual_draft_send	តម្លៃបានកំណត់សម្រាប់�
 virtual_need_real	ជ្រើសម៉ាស៊ីនពិតជាមុនសិន
 virtual_need_select	ជ្រើសម៉ាស៊ីននិម្មិតដើម្បីលុប
 real_printer_selected	បានជ្រើស៖ {name}
-station_group_heading	ម៉ាស៊ីននិម្មិត
-station_group_apply	លុបម៉ាស៊ីននិម្មិត
-station_group_applied	បានលុប
-station_group_empty	ជ្រើសម៉ាស៊ីននិម្មិត
-station_group_name_ph	ឈ្មោះម៉ាស៊ីននិម្មិត (ស្រេចចិត្ត)
-station_group_save	បង្កើតម៉ាស៊ីននិម្មិត
-station_group_saved	ម៉ាស៊ីននិម្មិតបានរក្សាទុក
-station_manage_heading	បន្ថែមឬដកផ្នែកចែកចាយ
 printers_routes_heading	កន្លែងដែលបោះពុម្ព
 route_pick_heading	កន្លែង
 route_editing	កំពុងកែ៖ {name}
 route_assigned	បានបន្ថែម {printer} ទៅ {place}
 route_already_assigned	មានរួចហើយនៅកន្លែងនេះ៖ {printer}
-route_removed	បានដក {printer} ពី {place}
 route_cleared	បានសម្អាត {name}
 route_assigned_empty	គ្មាននៅកន្លែងនេះ
-route_tap_remove	ប៉ះដើម្បីដក
 route_tap_select	ប៉ះដើម្បីជ្រើស
 route_tap_selected	បានជ្រើស
 route_pick_printer_first	ប៉ះម៉ាស៊ីនជាមុនសិន
@@ -714,35 +597,17 @@ printer_format_custom	ប្រភេទផ្ទាល់ខ្លួនថ្�
 printer_format_custom_label	ផ្ទាល់ខ្លួន
 printer_format_custom_added	ប្រភេទផ្ទាល់ខ្លួនបានបន្ថែមសម្រាប់កន្លែងនេះ
 add_printer	បន្ថែមម៉ាស៊ីនបោះពុម្ព
-remove_printer	ដកចេញ
 route_pick_ph	វិក័យប័ត្រឬផ្នែក dispensary
 route_bill	វិក្កយបត្រ
-route_default_kitchen	គ្មានស្ថានីយ៍ (ធាតុដែលមិនបានចាត់តាំង)
-route_kot_station	ស្ថានីយ
 route_dont_print	គ្មានម៉ាស៊ីន
-stations_heading	ស្ថានីយ
-stations_help	ផ្នែកចែកថ្នាំជាក្រុមថ្នាំ និងម៉ាស៊ីនបោះពុម្ពសម្រាប់ផ្នែកនោះនៃហាង។ ភ្ជាប់ម៉ាស៊ីនបោះពុម្ពពីការកំណត់ → ម៉ាស៊ីនបោះពុម្ព កំណត់លំដាប់សាកល្បង បន្ទាប់មកដំបូងដែលដំណើរការ ឬបោះពុម្ពលើទាំងអស់។ ការផ្លាស់ប្តូររក្សាទុកនៅពេលអ្នកទៅ។
-station_print_heading	ម៉ាស៊ីនសម្រាប់ស្ថានីយនេះ
-station_print_help	ជ្រើសរើសស្ថានីយ៍ បន្ទាប់មកភ្ជាប់ម៉ាស៊ីនបោះពុម្ពមួយ ឬច្រើន។ ↑↓ ឈុតសាកល្បង។ ការងារដំបូងឈប់បន្ទាប់ពីជោគជ័យដំបូង; បោះពុម្ពលើរាល់ការផ្ញើទៅគ្រប់ម៉ាស៊ីនបោះពុម្ពដែលភ្ជាប់មកជាមួយ។
-station_print_pick_ph	ស្ថានីយដែលកំណត់ម៉ាស៊ីន
 station_print_pick_first	ជ្រើសរើសផ្នែកចែកចាយជាមុនសិន
-station_print_editing	កំពុងកែម៉ាស៊ីនសម្រាប់ “{name}”
-station_vps_dd	ម៉ាស៊ីនសម្រាប់ស្ថានីយនេះ
-station_vps_dd_n	ម៉ាស៊ីន {n} · ប៉ះដើម្បីប្ដូរ
 station_vps_empty	មិនទាន់មានម៉ាស៊ីន — ស្វែងរកក្រោម ការកំណត់ → ម៉ាស៊ីនបោះពុម្ព
 bill_printers_dd	ម៉ាស៊ីនសម្រាប់វិក្កយបត្រ
 bill_printers_dd_n	ម៉ាស៊ីន {n} សម្រាប់វិក្កយបត្រ · ប៉ះដើម្បីប្ដូរ
-job_layout	ប្លង់
-job_delivery	របៀបផ្ញើការងារ
-job_delivery_help	ឯកសារ OS, បៃឆៅ ឬ ESC/POS ។ វិក្កយបត្រ និងសំបុត្រនីមួយៗរក្សាទុករៀងៗខ្លួន។ ការងារណាមួយអាចចូលទៅកាន់ម៉ាស៊ីនបោះពុម្ពណាមួយដែល Find បានរក្សាទុក។
 station_vp_attached	ម៉ាស៊ីនបានភ្ជាប់
 station_vp_detached	ម៉ាស៊ីនបានដកពីស្ថានីយ
-station_print_summary	{mode} · ម៉ាស៊ីន {n}
-station_print_summary_none	ស្ថានីយនេះមិនទាន់មានម៉ាស៊ីន — មិនបោះពុម្ព
-stations_none	មិន​ទាន់​មាន​ស្ថានីយ​នៅ​ឡើយ — បន្ថែម​មួយ​ខាងក្រោម។ ស្ថានីយ៍មិនត្រូវបានប្រើនៅលើហាងបញ្ជរ — ទុកចោល។
 route_up	ឡើង
 route_down	ចុះ
-route_remove	ដកចេញ
 route_clear	សម្អាត
 save_printers	រក្សាទុកម៉ាស៊ីនបោះពុម្ព
 print_test_page	បោះពុម្ពទំព័រសាក
@@ -751,23 +616,15 @@ test_page_no_printer	គ្មានម៉ាស៊ីនសម្រាប់ {
 test_page_pick_first	ជ្រើសម៉ាស៊ីនសម្រាប់ទំព័រសាកជាមុនសិន — រួចបោះពុម្ពទំព័រសាក
 test_printers_dd	ម៉ាស៊ីនសម្រាប់ទំព័រសាក
 test_printers_dd_n	ម៉ាស៊ីន {n} សម្រាប់ទំព័រសាក · ប៉ះដើម្បីប្ដូរ
-kot_test_printers_dd	ម៉ាស៊ីនបោះពុម្ពសម្រាប់ការបោះពុម្ពសាកល្បង
-kot_test_printers_dd_n	ម៉ាស៊ីនបោះពុម្ព {n} សម្រាប់ការបោះពុម្ពសាកល្បង · ចុចដើម្បីផ្លាស់ប្តូរ
 test_printer_picked	សាកលើ៖ {name}
 test_printer_cleared	មិនសាកលើ៖ {name}
 test_page_sent_n	ទំព័រសាកបានផ្ញើទៅម៉ាស៊ីន {n}
-test_kot_pick_first	ជ្រើសរើសម៉ាស៊ីនបោះពុម្ពសម្រាប់ការបោះពុម្ពសាកល្បងជាមុនសិន — បន្ទាប់មកសាកល្បងបោះពុម្ព
-test_kot_sent_n	ការបោះពុម្ពសាកល្បងបានផ្ញើទៅម៉ាស៊ីនបោះពុម្ព {n}
-cancel_pick	សម្គាល់
-cancel_pick_on	បានសម្គាល់
-cancel_pick_meta	បានសម្គាល់ដើម្បីលុបចោល
 batch_cancel	លុបចោលអ្វីដែលបានសម្គាល់
 batch_cancel_n	លុបចោលអ្វីដែលបានសម្គាល់ ({n})
 batch_cancel_none	សម្គាល់ធាតុដែលបានផ្ញើមួយ ឬច្រើនជាមុនសិន — បន្ទាប់មក បោះបង់
 batch_cancel_title	បោះបង់ឱសថដែលបានសម្គាល់ - ហេតុផលមួយ លុបចោលប័ណ្ណនីមួយៗក្នុងមួយផ្នែក
 batch_cancel_ok	ធាតុ {n} ត្រូវបានលុបចោល · {slips} លុបចោលសន្លឹកបៀ → {kitchens}
 batch_cancel_ok_noprint	ធាតុ {n} ត្រូវបានលុបចោល — ការបោះពុម្ពដោយស្វ័យប្រវត្តិត្រូវបានបិទ ដូច្នេះគ្មានការលុបចោលសន្លឹកបៀទេ។
-no_printer_kitchen_station	មិនមានម៉ាស៊ីនបោះពុម្ពសម្រាប់ស្ថានីយ៍នោះទេ។
 printers_saved	បានរក្សាទុក
 test_page_sent	ទំព័រសាកបានផ្ញើ — ពិនិត្យម៉ាស៊ីន
 test_page_sent_one	ទំព័រសាកបានផ្ញើទៅ {name} — ពិនិត្យម៉ាស៊ីននោះ
@@ -783,10 +640,7 @@ cancelled	បានលុបចោល
 printers_tap_find	ប៉ះស្វែងរកដើម្បីរាយម៉ាស៊ីនដែលឧបករណ៍នេះប្រើបាន។
 printers_none_found	រកមិនឃើញ — វាយឈ្មោះម៉ាស៊ីនប្រព័ន្ធ ឬ IP (ឧ. 192.168.1.50)។
 printer_from_find	បានបន្ថែម {name}
-kot_printer_ph	ម៉ាស៊ីនបោះពុម្ពសម្រាប់រអិល
 bill_printer_ph	ម៉ាស៊ីនសម្រាប់វិក្កយបត្រ
-kot_print_on	បោះពុម្ពសំបុត្រដោយស្វ័យប្រវត្តិ៖ បើក
-kot_print_off	សំបុត្របោះពុម្ពដោយស្វ័យប្រវត្តិ៖ បិទ
 queue_refused	ហាងមិនទទួល ({n}) — ពិនិត្យនីមួយៗនៅតុលក់៖
 clear_not_accepted	បានពិនិត្យ — សម្អាតបញ្ជីនេះ
 device_name_ph	ឈ្មោះឧបករណ៍នេះ
@@ -797,7 +651,6 @@ backup_failed	ច្បាប់ចម្លងស្វ័យប្រវត្
 backup_overdue	គ្មានច្បាប់ចម្លងអស់ {n} ថ្ងៃ — បើកកម្មវិធីលើឧបករណ៍នេះដើម្បីឱ្យវាចម្លង។
 disk_low	នៅសល់តែ {mb} MB លើឧបករណ៍នេះ — ច្បាប់ចម្លងនឹងបរាជ័យឆាប់ៗ។ សម្អាតទំហំ។
 last_seen_devices	បានឃើញចុងក្រោយ៖ {time}
-sync_interval	សមកាលកម្មរាល់ {secs} វិ
 connection_to_shop	ការភ្ជាប់ទៅហាង
 supplier_name_ph	ឈ្មោះអ្នកផ្គត់ផ្គង់ (ឬភាគី)
 supplier_ph	អ្នកផ្គត់ផ្គង់
@@ -860,7 +713,6 @@ fresh_book_tabiyat	ស្រស់ = កាតាឡុកទទេ (បន្�
 fresh_selected	បានជ្រើសថ្មី — បញ្ជីនៅទទេ។ ប៉ះរួចរាល់ពេលត្រៀម។
 gross_word	ដុល
 how_start	អ្នកចង់ចាប់ផ្ដើមយ៉ាងដូចម្ដេច?
-kot_print_help_tabiyat	មិន​ត្រូវ​បាន​ប្រើ​នៅ​ហាង​បញ្ជរ​។
 later_country_pack	ពេលក្រោយ៖ ការកំណត់ → អនុវត្តកញ្ចប់ប្រទេសរបស់អ្នកសម្រាប់ស្លាកពន្ធ និងបង់។
 local_badge	ក្នុង
 mix_type_hint_tabiyat	បែងតាមសាច់ប្រាក់ / UPI / កាត / ជំពាក់បើត្រូវការ។ ជំពាក់ត្រូវការអតិថិជនខាងលើ។
@@ -911,8 +763,6 @@ staff_copy_need_source	ជ្រើសអ្នកដែលការរៀបច
 staff_copy_same	នោះជាមនុស្សដដែល — ជ្រើសអ្នកផ្សេង
 staff_rename_need_selected	ជ្រើសអ្នកដែលត្រូវប្ដូរឈ្មោះជាមុនសិន
 team_pick_hint	ជ្រើសរើសអ្នកណាដែលត្រូវកែសម្រួល — អេក្រង់ សិទ្ធិប្រាក់ និងស្ថានីយ៍បង្ហាញសម្រាប់តែបុគ្គលនោះ។
-team_stations_help	ស្ថានីយ៍ដែលពួកគេអាចប្រើបាន
-team_stations_changed	ស្ថានីយ៍បានផ្លាស់ប្តូរ — រក្សាទុកការដំឡើងសម្រាប់បុគ្គលនេះ។
 team_features_changed	អេក្រង់បានផ្លាស់ — រក្សាទុកការរៀបចំសម្រាប់មនុស្សនេះ
 team_rights_changed	សិទ្ធិបានផ្លាស់ — រក្សាទុកការរៀបចំសម្រាប់មនុស្សនេះ
 they_owe_us	ពួកគេជំពាក់យើង
@@ -996,9 +846,6 @@ service_pct_ph	សេវា % ស្រេចចិត្ត 0/10/12
 short_code_ph	កូដខ្លី (MG02)
 starting_password_ph	ពាក្យសម្ងាត់ដើម (ស្រេចចិត្ត)
 starting_pin_ph	PIN ដើម (4–12 ខ្ទង់)
-station_name_ph	ឈ្មោះស្ថានីយ៍ (ជាជម្រើស)
-station_new_ph	ផ្នែក (ជាជម្រើស)
-table_name_ph	ឈ្មោះ Counter / Bay
 tax_rate_ph	ឈ្មោះអត្រាពន្ធ ឬ % — ស្តង់ដារ បញ្ចុះ 0, 5, 12, 18, 20
 to_code_ph	កូដទៅ (kg)
 uncleared_no_ph	មិនទាន់សម្អាត # ខាងលើ
@@ -1011,27 +858,8 @@ book_kind_month	សៀវភៅខែនេះ
 book_kind_aging	នៅសល់ / ជំពាក់-ជំពាក់
 book_kind_balance	តារាងតុល្យការ
 order_help	ប៉ះទំនិញដើម្បីបន្ថែម។
-floor_help	ហាងនេះលក់នៅបញ្ជរ។ តុ និងជាន់បរិភោគអាហារ មិនមែនជាផ្នែកមួយនៃ Tabiyat ទេ។
-kitchen_help	មិន​ត្រូវ​បាន​ប្រើ​នៅ​ហាង​បញ្ជរ​។
-kitchen_empty	គ្មានសំបុត្របើកទេ (ហាងបញ្ជរជាធម្មតាទុកអេក្រង់នេះមិនប្រើ)។
-add_a_table	បន្ថែមតុ
-add_station_heading	បន្ថែមផ្នែកចែកចាយ
 categories_help	ប៉ះប្រើដើម្បីដាក់ទំនិញខាងលើក្រោមប្រភេទនោះ។ រូបឱ្យប្រភេទមានរូប; គ្មានរូបវាបង្ហាញអក្សរដើម។
 dish_search_ph	ស្វែងរកឈ្មោះ អំបិល ឬបាកូដ…
-tile_free	ទំនេរ
-tile_occupied	មានគេ
-tile_food_ready	ម្ហូបរួច
-tile_bill_printed	វិក្កយបត្របានបោះពុម្ព
-tile_paid	បានបង់
-tile_bill_btn	វិក្កយបត្រ
-tile_occupy_btn	អង្គុយភ្ញៀវ
-tile_free_btn	ដោះតុ
-tile_ready_btn	ដោះតុ
-tile_undo_bill	មិនធ្វើវិក្កយបត្រវិញ
-summary_busy	តុរវល់
-summary_to_collect	ត្រូវទទួល
-summary_on_floor	នៅសាល
-floor	ហាង
 sizes_as_items_ph	ទំហំជាទំនិញដាច់ (ស្រេចចិត្ត) — កន្លះ=120 ពេញ=200
 dish_group_ph	កម្លាំង / ក្រុមកញ្ចប់ (ជាជម្រើស) — ឧ. បន្ទះ 500 មីលីក្រាម
 discount	បញ្ចុះតម្លៃ
@@ -1039,7 +867,6 @@ remove_discount	ដកការបញ្ចុះ
 apply_discount	អនុវត្តការបញ្ចុះ
 save_opening_cash	រក្សាទុកសាច់ប្រាក់ដើម
 close_shift_print	បិទវេន ហើយបោះពុម្ពសន្លឹក
-area_prices_ph	តម្លៃកន្លែង (ស្រេចចិត្ត) — AC=220 កញ្ចប់=210
 discount_ph	10% ឬ 50
 discount_reason_ph	មូលហេតុ (ឧ. ភ្ញៀវទៀង ម្ហូបយឺត)
 opening_float_ph	សាច់ប្រាក់ដាក់ក្នុងថតព្រឹកនេះ
@@ -1049,34 +876,18 @@ shift_handover	ប្រគល់វេន
 shift_since	វេននេះតាំងពី
 expected_in_drawer	រំពឹងក្នុងថត
 right_discount	ឱ្យការបញ្ចុះ
-floor_in_kitchen	កំពុងដំណើរការ
-floor_eating	បានបម្រើ
 pick_category	ជ្រើសប្រភេទ
 close_category_list	បិទបញ្ជីប្រភេទ
 new_category_row	ប្រភេទថ្មី — បង្កើតពេលអ្នករក្សាទុកទំនិញ
 your_category	ប្រភេទរបស់អ្នក
 suggested_category	បានណែនាំ - ពីធាតុរបស់យើង។
 category_search_ph	ប្រភេទ — ស្វែងរករបស់អ្នក ឬវាយថ្មី
-line_sent_state	បានផ្ញើ
-line_nc_state	ឥតគិតថ្លៃ (NC) — មិនគិតថ្លៃ
 cancel_item_short	លុបចោល
-nc_short	NC
-charge_again_short	គិតថ្លៃ
-move_short	ផ្លាស់
 cancel_item_title	បោះបង់ធាតុនេះ — ការិយាល័យខាងក្រោយទទួលបានប័ណ្ណលុបចោល
-nc_item_title	ធ្វើទំនិញនេះឱ្យឥតគិតថ្លៃ (NC)
-charge_again_title	គិតថ្លៃទំនិញនេះម្ដងទៀត
-move_item_title	ផ្លាស់ទំនិញនេះទៅតុផ្សេង
-already_cooked	បានចម្អិនរួច (ខាត)
-not_cooked_yet	មិនទាន់ចម្អិន
 return_to_customer	ប្រគល់ទៅអតិថិជន
 short_by	ខ្វះ
 tip_not_sale	ធីប (របស់បុគ្គលិក មិនមែនការលក់)
 right_settle	ទទួលការបង់
-right_cancel_sent	លុបចោលទំនិញដែលបានផ្ញើ
-right_complimentary	ឥតគិតថ្លៃ (NC)
-right_move_table	ផ្លាស់ទី/បញ្ចូលបញ្ជរ
-right_reprint	បោះពុម្ពវិក្កយបត្រម្ដងទៀត
 right_allowed	បានអនុញ្ញាត
 right_with_approval	ត្រូវអនុម័ត
 right_denied	មិនអនុញ្ញាត
@@ -1086,25 +897,11 @@ no_server_found	រកមិនឃើញ។ លើ Server៖ ការកំណ�
 servers_found_pick	ប៉ះហាងដែលអ្នកចង់ភ្ជាប់។
 server_host_selected	កំពុងប្រើ {host} — បញ្ចូលកូដផ្គូផ្គង រួចផ្គូផ្គងឥឡូវ។
 print_bill	បោះពុម្ពវិក្កយបត្រ
-table_actions	សកម្មភាពប្រឆាំង
-move_merge_table	ផ្លាស់ / បញ្ចូលតុ
-move_help	ផ្លាស់ទី​ការ​បញ្ជា​ទិញ​របស់​បញ្ជរ​នេះ​ទៅ​តារាង​ឥតគិតថ្លៃ ឬ​បញ្ចូល​វា​ទៅ​ក្នុង​ការ​ដំណើរការ។
-move_target_ph	ឈ្មោះបញ្ជរ
 approval_pin_ph	PIN អ្នកចាត់ការ (តែបើត្រូវសួរ)
-move_here	ផ្លាស់មកទីនេះ
-merge_into	បញ្ចូលទៅវា
-line_reason_ph	ហេតុផល (ឧ. អតិថិជនប្តូរចិត្ត អស់ស្តុក)
-line_qty_ph	លុបចោលប៉ុន្មាន (ទទេ = ទាំងអស់)
-line_target_ph	ផ្លាស់ទៅតុ (ឧ. D5)
 confirm	បញ្ជាក់
 menu_search_ph	ស្វែងរកទំនិញ ឬកូដខ្លី
 customer_paid_ph	អតិថិជនបានបង់
 tip_ph	ធីប
-table_area_ph	កន្លែង (ឧ. ញ៉ាំនៅទីនេះ កញ្ចប់ AC)
-table_range_ph	ច្រើនក្នុងមួយលើក៖ D1-D20
-add_these_tables	បន្ថែមបញ្ជរទាំងនេះ
-remove_these_tables	ដកបញ្ជរទាំងនេះចេញ
-table_remove_ph	ដក៖ T1-T24 ឬឈ្មោះតុមួយ
 find_server	ស្វែងរក server ហាង
 bill_format	ទម្រង់វិក្កយបត្រ
 bill_format_help	បោះពុម្ពនៅក្រោមឈ្មោះហាងរបស់អ្នកនៅលើវិក័យប័ត្រនីមួយៗ។ ញែកបន្ទាត់ជាមួយ | (ឧ. ផ្លូវ MG, Rajkot | Ph 98250 00000)។
@@ -1112,78 +909,32 @@ bill_header_ph	អាសយដ្ឋាន | ទូរស័ព្ទ
 fssai_ph	លេខអាជ្ញាប័ណ្ណគ្រឿងញៀន (ស្រេចចិត្ត - ពាក្យរបស់អ្នក)
 bill_footer_ph	បាត (ឧ. អរគុណ សូមមកម្ដងទៀត)
 save_bill_format	រក្សាទុកទម្រង់វិក្កយបត្រ
-kot_format	ទម្រង់រអិល
-kot_format_help	ប៉ះវាលមួយក្នុងបញ្ជី។ បង្ហាញ ទំហំពុម្ពអក្សរ និងទម្ងន់អនុវត្តចំពោះវាលនោះនៅលើប្រភេទរអិលដែលបានជ្រើសរើសខាងលើ។ ប្រភេទនីមួយៗរក្សាទំហំ និងទម្ងន់ផ្ទាល់ខ្លួន។
-kot_format_fields	វាល
-kot_field_next	វាលបន្ទាប់
-kot_field_show	បង្ហាញ
-kot_field_hide	លាក់
 kot_field_on	បង្ហាញ
 kot_field_off	លាក់
-kot_field_size	ទំហំអក្សរ
-kot_field_size_ph	ឧ. 16, 20, 24, 28, 32…
 kot_weight_light	ស្តើង
 bill_kot_panel_help	ប្លង់វិក័យប័ត្រ និងទទឹងមាតិកា។ អ្នកគិតលុយគឺជាអ្នកដែលចេញ ឬទូទាត់វិក្កយបត្រ — រឿងលក់ពេញលេញនៅតែមាននៅក្នុងសៀវភៅ។
 std_size_ph	ឧ. 18, 20, 26…
-kot_show_shop	ឈ្មោះហាង
-kot_hide_shop	លាក់ហាង
-kot_show_time	ម៉ោង
-kot_hide_time	លាក់ម៉ោង
-kot_show_waiter	អ្នកគិតលុយ
-kot_hide_waiter	លាក់អ្នកគិតលុយ
-kot_show_station	ស្ថានីយ
-kot_hide_station	លាក់ស្ថានីយ
-kot_show_table	តុលក់
-kot_hide_table	លាក់តុ
-kot_show_kot_no	លេខសំបុត្រ
-kot_hide_kot_no	លាក់សំបុត្រលេខ
-kot_width	មើលការរុំជាមុន (កំណត់ទទឹងមាតិកានៅលើផ្ទាំងរអិល)
-kot_width_58	58 mm
-kot_width_80	80 mm
-kot_kind_heading	ប្រភេទសំបុត្រ
-kot_kind_original	ដើម
-kot_kind_duplicate	ច្បាប់ចម្លង
-kot_kind_modified	បានកែ
-kot_kind_cancelled	បានលុបចោល
-kot_style_heading	ទំហំ និងទម្ងន់ប្រភេទវាល
-kot_style_title	ចំណងជើង
-kot_style_item_qty	ទំនិញ · បរិមាណ
-kot_style_field_pick	ជ្រើសវាល
 kot_weight_regular	ធម្មតា
 kot_weight_bold	ដិត
-kot_align	តម្រឹម
 kot_align_start	ចាប់ផ្ដើម
 kot_align_center	កណ្ដាល
 kot_align_end	ចុង
 content_width	ទទឹងខ្លឹមសារ (mm)
 content_width_bill	ទទឹងខ្លឹមសារវិក្កយបត្រ (mm)
-content_width_kot	ទទឹងមាតិកាសំបុត្រ (មម)
 content_width_ph	ឬវាយទទឹងខ្លឹមសារ 40–210 mm
 content_width_help	តើការបោះពុម្ពបន្ទះនេះមានទំហំប៉ុនណា។ ប៊ីលរក្សាទទឹងរបស់វា។
 content_width_bill_help	តើវិក្កយបត្ររបស់អតិថិជនបោះពុម្ពមានទំហំប៉ុនណា។ លំនាំដើម 210 មម (ទំព័រ) ។ រអិលតូចចង្អៀត 58 mm, ទទឹង 80 mm, 112 mm 4 អ៊ីញ, ទទឹង 210 mm A4។ វាយតម្លៃណាមួយពី 40 ដល់ 210។ សំបុត្រមានទទឹងផ្ទាល់ខ្លួននៅលើផ្ទាំងរអិល។
-content_width_kot_help	តើការបោះពុម្ពសំបុត្រមានទំហំប៉ុនណា។ លំនាំដើម 80 ម។ រអិលតូចចង្អៀត 58 mm, ទទឹង 80 mm, 112 mm 4 អ៊ីញ, 210 mm ទំព័រ។ វាយបញ្ចូលតម្លៃណាមួយពី 40 ដល់ 210។ វិក្កយបត្ររបស់អតិថិជនមានទទឹងផ្ទាល់ខ្លួននៅលើផ្ទាំងវិក័យប័ត្រ។
 vp_paper_width	ទទឹងខ្លឹមសារ (mm)
 vp_paper_width_ph	ឬវាយទទឹងខ្លឹមសារ 40–210 mm
 vp_paper_width_help	ទទឹង​ខ្លឹមសារ​ត្រូវ​បាន​កំណត់​ក្រោម​ទម្រង់ Bill & Slip — ដោយ​ឡែក​សម្រាប់​វិក្កយបត្រ (លំនាំដើម 210 mm) និង​សំបុត្រ (លំនាំដើម 80 mm)។
-kot_size	ទំហំអក្សរ
-kot_size_s	តូច
-kot_size_m	ធម្មតា
-kot_size_l	ធំ
 std_size	ទំហំអក្សរ
 kot_copies	ច្បាប់ចម្លង
 kot_copies_1	1
 kot_copies_2	2
 kot_copies_3	3
-kot_title_ph	ចំណងជើង (ទទេ = សំបុត្រ)
-kot_footer_ph	ចំណាំការិយាល័យខាងក្រោយ (ជាជម្រើស)
-kot_preview	មើលជាមុន
-save_kot_format	រក្សាទុកទម្រង់ Slip
-test_kot_format	សាកល្បងបោះពុម្ព
-test_kot_sent	បានផ្ញើការមើលសំបុត្រជាមុន
 test_bill_format	វិក្កយបត្រសាក
 test_bill_sent	មើលជាមុនវិក្កយបត្របានផ្ញើ
 test_print_no_printer	គ្មានម៉ាស៊ីនសម្រាប់ការងារនោះ — ជ្រើសមួយលើអេក្រង់នេះ
-kot_format_saved	ទម្រង់រអិលត្រូវបានរក្សាទុក
 std_print	ទំហំបោះពុម្ពវិក្កយបត្រ
 std_print_help	ទំហំពុម្ពអក្សរសម្រាប់ការងារវិក្កយបត្របញ្ឈរ និងទេសភាពនៅលើប្រព័ន្ធប្រតិបត្តិការ/ម៉ាស៊ីនបោះពុម្ពឯកសារ (បញ្ចូលចំណុច — មិនតូច/ធម្មតា/ធំ)។ ទំហំដូចគ្នានៅលើទិសដៅទាំងពីរ។
 std_size_s	តូច
@@ -1223,23 +974,16 @@ upi_qr	QR UPI
 show_upi_qr	បង្ហាញ QR UPI
 close_upi_qr	បិទ
 upi_qr_help	អតិថិជនស្កេន និងបង់ប្រាក់។ ប៉ះយកការទូទាត់បន្ទាប់ពីពួកគេបង់ប្រាក់។ អេក្រង់ទីពីរ៖ បើក Server URL / បង្ហាញនៅលើ LAN ។
-kot_recall	ហៅមកវិញ
 recently_done	ទើបរួចរាល់
-recall_kot_ph	សំបុត្រ # ដើម្បីរំលឹក
 role_help_customer	តួនាទី៖ អតិថិជន — ខាតា (ពួកគេជំពាក់យើង)។ ភាគីដដែលអាចផ្គត់ផ្គង់ស្តុកផង។
 role_help_both	តួនាទី៖ អតិថិជន + អ្នកផ្គត់ផ្គង់ — ភាគីមួយ សៀវភៅខាតា និងត្រូវបង់ សុទ្ធក្នុងរបាយការណ៍។
 role_help_supplier	តួនាទី៖ អ្នកផ្គត់ផ្គង់ — យើងជំពាក់ពួកគេសម្រាប់ការទិញ។
-dine_in_pick_table	មិន​ត្រូវ​បាន​ប្រើ​នៅ​ហាង​បញ្ជរ​
-choose_table	ជ្រើសរើសបញ្ជរ
-change_table	ប្ដូរតុ
-pick_table_banner	ជ្រើសតុសម្រាប់ការកុម្ម៉ង់នេះ
 items_word	ទំនិញ
 items_section	ទំនិញ
 back_to_order	ត្រឡប់ទៅការកុម្ម៉ង់
 new_items_head	មិនទាន់ផ្ញើ
 price_ph	តម្លៃ
 price_ph_gst_inside	តម្លៃ ({tax} ក្នុងតម្លៃ)
-cancel_needs_table	ការ​លក់​នៅ​បញ្ជរ​លក់​សំបុត្រ​នៅ​លើ​សំបុត្រ​រហូត​ដល់​អ្នក​ទទួល​ការ​ទូទាត់
 tax_rates_missing_hint	មិនមានអត្រា {tax} លើទំនិញទាំងនេះទេ — នៅលើធាតុកំណត់អត្រាពន្ធ (តម្លៃរួមបញ្ចូល {tax} ក្រោម {tax} រួចហើយ)
 taxable_value	តម្លៃជាប់ពន្ធ
 gst_inside_price_note	({tax} ក្នុងតម្លៃ)
@@ -1260,30 +1004,11 @@ client_template_confirm	បន្ថែមធាតុ {d} ពី {title}? រ�
 client_template_importing	កំពុងនាំចូល {title}…
 client_template_done	រាល់ទំនិញពី {title} គឺស្ថិតនៅលើទំនិញរបស់អ្នក។
 client_template_imported	បានបន្ថែមធាតុ {d} និងប្រភេទ {c} ពី {title}
-resv_heading	ការកក់
-resv_name_ph	ឈ្មោះអតិថិជន
-resv_phone_ph	ទូរស័ព្ទ (ស្រេចចិត្ត)
-resv_guests_ph	មនុស្ស
-resv_when_ph	ពេលណា — 20:30 ស្អែក 13:00
-resv_table_ph	បញ្ជរ (ជាជម្រើស)
-resv_add	កក់
-resv_seat	បានអង្គុយ
-resv_none	គ្មានការកក់ខាងមុខ។
-guests_word	ភ្ញៀវ
-delivery_by_ph	ដឹកដោយ (ឈ្មោះអ្នកជិះ ឬបុគ្គលិក)
-kitchen_all_day	ត្រូវចម្អិនឥឡូវ៖ {items}
-split_bill	បែងវិក្កយបត្រ
-split_go	ធ្វើវិក្កយបត្រដាច់
 cancel	លុបចោល
 opening_client	កំពុងបើកម៉ាស៊ីនភ្ញៀវ…
 preparing_desk	កំពុងរៀបចំតុ…
 opening_server	កំពុងបើក server…
 creating_server	កំពុងបង្កើត server…
-split_help	ប៉ះធាតុដែលអតិថិជនម្នាក់ចំណាយសម្រាប់ · {n} បានជ្រើសរើស
-split_send_first	ផ្ញើលិខិតបញ្ជាក់ជាមុន — មានតែធាតុដែលការិយាល័យខាងក្រោយមានប៉ុណ្ណោះដែលអាចទៅកាន់វិក្កយបត្រដាច់ដោយឡែកបាន។
-split_pick_some	ប៉ះធាតុសម្រាប់វិក្កយបត្រដាច់ដោយឡែកជាមុនសិន
-split_done	វិក្កយបត្រដាច់ដោយឡែកដែលធ្វើឡើង — វានៅជាន់ក្បែរបញ្ជរនេះ។
-split_marked	វិក្កយបត្រដាច់
 order_empty_pick	បញ្ជាទិញទទេ — ប៉ះ បន្ថែមធាតុខាងលើ ដើម្បីជ្រើសរើសធាតុ។
 add_dishes	បន្ថែមថ្នាំ
 order_so_far	លើការកុម្ម៉ង់នេះ៖ {n} · {total}
@@ -1294,24 +1019,8 @@ pick_done_dd	រួចរាល់ · {label}
 printer_route_mode	បើមានម៉ាស៊ីនច្រើននៅកន្លែងនេះ
 printer_mode_first	ដំបូងដែលដំណើរការ
 printer_mode_all	បោះពុម្ពទាំងអស់
-kot_show_area	កន្លែង
-kot_hide_area	លាក់កន្លែង
-kot_show_item_hdr	ទំនិញ · បរិមាណ
-kot_hide_item_hdr	លាក់ជួរឈរ
-kot_show_title	បន្ទាត់ចំណងជើង
-kot_hide_title	លាក់ចំណងជើង
-kot_field_order	លំដាប់បោះពុម្ព
 kot_field_up	ផ្លាស់ឡើង
 kot_field_down	ផ្លាស់ចុះ
-kot_field_cycle	ជ្រើសបន្ទាប់
-kot_field_select	ជ្រើសបន្ទាប់
-kot_field_time	ម៉ោង
-kot_field_kot_no	លេខសំបុត្រ
-kot_field_area	កន្លែង
-kot_field_table	តុលក់
-kot_field_shop	ឈ្មោះហាង
-kot_field_waiter	បុគ្គលិក
-kot_field_station	ស្ថានីយ
 app_template_blurb_extra	ផងដែរ៖ ម្ចាស់ Zahir, Admin Asif, Cashier Nawaz; របារចំហៀងខាងមុខ; ប្រវត្តិសាស្រ្តបន្ទាប់ពី 4 ម៉ោង; ថ្ងៃនេះដកខ្លួនចេញ; វិក័យប័ត្របង្រួម។
 dishes_n	ធាតុ {n}
 recipe_ph	រូបមន្ត (ជាជម្រើស — មិនប្រើនៅលើហាងបញ្ជរ)
@@ -1321,8 +1030,6 @@ low_stock_alert	កំពុងអស់ — ទិញឆាប់ៗ៖ {items}
 unpriced_note	ធាតុ {n} នៅលើរបស់របស់អ្នកមិនទាន់មានតម្លៃនៅឡើយទេ — ពួកវាចេញវិក្កយបត្រនៅ 0 រហូតដល់អ្នកកំណត់មួយ។
 show_unpriced	បង្ហាញតែទំនិញដោយគ្មានតម្លៃ
 show_all_dishes	បង្ហាញធាតុទាំងអស់។
-role_waiter	អ្នកគិតលុយ
-role_kitchen	ហាង
 role_title_rest_ph	ងារតួនាទី (ឧ. ប្រធាន មេចុងភៅ)
 preset_help_rest	អ្នកគិតលុយ៖ លក់។ អ្នកចាត់ការ៖ លក់ + ទំនិញ + លុបចោល/កែ។
 kind_raw	ភាគហ៊ុនរួម

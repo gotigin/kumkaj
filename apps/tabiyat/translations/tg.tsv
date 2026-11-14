@@ -80,28 +80,6 @@ applied	Татбиқшуда
 note_ph	Ёддошт (ихтиёрӣ)
 rounded	МУДАВВАР
 split	Тақсим
-send_kot	Слип фиристед
-send_kot_to	Фиристодан → {kitchens}
-send_kot_again	Барои слипи навбатӣ ашё илова кунед
-send_kot_held	Чизҳои нигоҳ дошташуда - барои фиристодан нигоҳ доштан
-reprint_kot	Дубора чопи интихобшуда
-reprint_kot_ok	Ададҳои {n} бори дигар чоп карда шуданд · Слип(ҳо)-и {slips} → {kitchens}
-reprint_kot_needed	Аввал варақаро фиристед — баъд доруҳоро дохил кунед ва доруҳои интихобшударо дубора чоп кунед
-reprint_kot_none_selected	Ҳар як ашёи фиристодашуда гузаронида мешавад - дар бораи онҳое, ки дубора чоп мекунанд, Дар чоп -ро клик кунед
-reprint_kot_client	Боз чоп кунед ({n}) барои {place} фиристодашуда — дастгоҳи мағоза онро чоп мекунад
-print_cancelled_kot	Чопи ҳамаи бекоршуда
-print_cancelled_kot_ok	Чопшудаи {n} ашёҳои бекоршуда · Слип(ҳо)-и {slips} → {kitchens}
-print_cancelled_kot_needed	Аввал ҷадвалро бо ашёҳои бекоршуда кушоед
-print_cancelled_kot_none	Дар ин фармоиш ягон ашёи бекоршуда
-print_cancelled_kot_client	Чоп бекор карда шуд ({n}) барои {place} фиристода шуд — дастгоҳи мағоза онро чоп мекунад
-kot_banner	Нишони навъ
-kot_banner_ph	Нишон (холӣ = ҳеҷ)
-kot_item_prefix	Пешванди мол
-kot_item_prefix_ph	мисол [БЕКОР]
-kot_strike	Номи ашёи зарба
-kot_strike_note	Қайд кардани ашё
-kot_strike_on	Фаъол
-kot_strike_off	Хомӯш
 bill_item_layout	Тарҳи молҳо
 bill_item_layout_columns	Сутунҳо
 bill_item_layout_stacked	Болои ҳам
@@ -130,8 +108,6 @@ bill_item_gap_em	Фосила (em)
 bill_item_qty_min	Миқдори камтарин (em)
 bill_item_price_min	Нархи камтарин (em)
 bill_item_amount_min	Маблағи камтарин (em)
-kot_item_qty_width	Сутуни миқдор
-kot_item_num_align	Ҳамвор кардани миқдор
 bill_total_qty_label	Нишони ҷамъи миқдор
 bill_total_subtotal_label	Нишони ҷамъи хурд
 bill_total_grand_label	Нишони ҷамъи калон
@@ -143,36 +119,9 @@ bill_item_piece_off	Хомӯш
 bill_total_qty	Ҷамъи миқдор
 bill_total_subtotal	Ҷамъи хурд
 bill_total_grand	Ҷамъи калон
-reprint_incl	Дар чоп
-reprint_skip	Гузарон
-reprint_skip_meta	Гузарондани дубора чоп
-kot_dest_hint	Дар чопгарҳое чоп мешавад, ки шумо ба {kitchens} дар Танзимот → Чопгарҳо бастаед
-kot_sent_hint	Last send went to {kitchens}. Tap to add items for the next bill — or Print slip again for the same one.
-kot_sent_printing	Слип ба {kitchens} фиристода шуд — чоп
-kot_sent_not_printed	Слип ба {kitchens} фиристода шуд, аммо чоп нашудааст: {why}. Ба мағоза бигӯед, пас принтерро таъмир кунед ва онро дубора чоп кунед.
-kot_sent_screen	Слип ба {kitchens} фиристода шуд
-kot_queued_shop	Лағжиш барои {place} → {kitchens} захира шудааст; дастгохи цех онро чоп мекунад
-kot_job_label	Лағжиш барои {place} → {kitchens}
-kot_job_reached	Слип барои {place} ба {kitchens} расид
 kot_unassigned	Таъиннашуда
-kot_unassigned_held	Ададҳои {n} бе истгоҳ нигоҳ дошта мешаванд - барои фиристодан дар хат нигоҳ доред
-kot_station_ph	Истгоҳ
-kot_station_dd	Истгоҳ
-kot_station_dd_n	Station · {stations}
-kot_set_station	Ин истгоҳро истифода баред
-kot_station_applied	Истгоҳи дар ашёи {n} насбшуда: {station}
-kot_station_cleared	Истгоҳ аз ҷузъҳои {n} тоза карда шуд: {station}
-kot_station_needed	Аввал як секцияи диспансериро интихоб кунед
-kot_station_not_allowed	Иҷозат дода намешавад, ки фасли: {station} истифода шавад
-kot_station_none	Ҳанӯз ягон истгоҳ - дар дӯкони пешфарз истифоданашуда нест (Танзимот → Майдонҳо агар лозим бошад)
 pos_tab_items	Молҳои иловашуда
 pos_tab_payment	Пардохт
-hold_send	Нигоҳ
-hold_send_on	Нигоҳ дошта шуд
-hold_send_meta	Баргузор - на дар ин варақаи
-station_remove	Хориҷи истгоҳ
-station_remove_ph	Ба истгоҳи рӯйхат зер кунед, то хориҷ шавад
-station_removed	Истгоҳ хориҷ шуд: {name}
 settings_hub_title	Танзимот
 settings_hub_help	Як ҷойро дар як вақт кушоед — ҳаракати кам, интихоби равшан.
 settings_back	Бозгашт
@@ -181,12 +130,10 @@ settings_sec_country	Кишвар ва андоз
 settings_sec_tills	Дастгоҳҳои дигар
 settings_sec_brand	Нишони шумо
 settings_sec_units	Воҳидҳо ва табдил
-settings_sec_pickers	Ҷойҳо · истгоҳҳо · меъёрҳои андоз
+settings_sec_pickers	Меъёрҳои андоз
 settings_sec_printers	Чопгарҳо
 settings_sec_bill	Формати Билл ва Слип
 settings_sec_selling	Нақшаҳо ва фурӯш
-bill_kot_tab_bill	Ҳисоб
-bill_kot_tab_kot	Лағжиш
 settings_sec_alerts	Огоҳиҳо
 alerts_help	Паёми ҳолат дар экрани шумо чанд сония мемонад (дақиқа не)
 snack_secs_ph	Сонияҳо (3–60, пешфарз 10)
@@ -237,8 +184,6 @@ counter	Мизи фурӯш
 dine_in	Мизи фурӯш
 takeaway	Бо худ бурдан
 order	Фармоиш
-tables	Ҳисобкунакҳо
-kitchen	Қисмҳо
 sales	Фурӯш
 sales_refunds	Фурӯш ва баргашт
 day_close	Пӯшидани рӯз
@@ -266,10 +211,6 @@ zero_sales_on	Иҷозаи ₹0
 zero_sales_off	Нарх лозим аст
 zero_sales_saved_on	Фурӯши нархи сифр иҷозат шуд
 zero_sales_saved_off	Фурӯш бояд нархи болотар аз ₹0 дошта бошад
-floor_areas_help	Минтақаҳо утоқҳо ё минтақаҳо дар ошёна мебошанд (Хӯрхона, Пойгоҳ, AC ...). Аввал майдонро илова кунед, пас ҳисобкунакҳоро дар он ҷойгир кунед - ҳар як минтақа як гурӯҳи алоҳида дар ошёна аст.
-area_new_ph	Ҷой / ҳуҷраи нав (мисол AC, Боғ)
-add_area	Иловаи ҷой
-area_added	Майдони "{name}" омода аст - ба он ҳисобкунакҳо илова кунед
 no_favorites	Ҳанӯз дӯстдошта нест — молро аз рӯйхати поён илова кунед.
 add_to_bill	Ба ҳисоб илова
 added	Илова шуд
@@ -280,19 +221,9 @@ chip_missing_customer	Муштарии интихобшуда нест — бо�
 chip_no_customer	Ҳанӯз муштарӣ нест — ном нависед, сипас Қарзро зер кунед
 credit_summary_fmt	муштарӣ {} · қарзи кушода {} · пешпардохти нигоҳдошта {}
 recent_label	Ба наздикӣ:
-kot_new_waiting	НАВ — интизор
-kot_preparing	ТАЙЁР МЕШАВАД
-kot_ready_serve	ТАЙЁР — бибаред
-kot_done_cap	АНҶОМ ЁФТ
-kot_cancelled	БЕКОР
-kot_start_btn	Оғоз
-kot_mark_ready	Тайёр қайд кунед
-kot_done_btn	Анҷом ёфт
-table_free	Холӣ — зер кунед, то фармоиш оғоз шавад
 start_order	Оғози фармоиш
 open_bill	Кушодани ҳисоб
 collect_payment	Гирифтани пардохт
-table_running	Идома дорад
 payment_pending	Пардохт интизор аст
 collect_at_counter	аз мизи фурӯш гиред
 inventory	Захира
@@ -325,7 +256,6 @@ ok	OK
 this_shop	Server
 extra_till	Мизоҷ
 off	Хомӯш
-tables_kitchen	Тарҳбандии мағоза
 server	Server
 client	Мизоҷ
 language_currency	Забон ва асъор
@@ -367,8 +297,6 @@ add_item_plain	Иловаи мол
 add_note	Иловаи ёддошт
 add_opening_balance	Иловаи боқимондаи оғоз
 add_staff	Иловаи корманд
-add_station	Иловаи истгоҳ
-add_table	Иловаи миз
 add_unit	Иловаи воҳид
 add_use_name	Илова / истифодаи ин ном
 allow_extra_tills	Иҷозаи қуттиҳои иловагӣ
@@ -421,7 +349,6 @@ share_whatsapp	Мубодила дар WhatsApp
 lan_pages_heading	Саҳифаҳои муштариён дар Wi‑Fi
 lan_pages_help	Дар Wi‑Fi-и ин мағоза саҳифаҳои муштариён барои таблиғи намоиш ва фикру мулоҳиза кор мекунанд. Одамоне, ки маълумотҳои мобилӣ доранд, баъдтар ба абр ниёз доранд. Терминали корт ё пайванди пардохт ихтиёрӣ аст ва ҳеҷ гоҳ ҳисобкунакро манъ намекунад.
 diag_send_heading	Баровардан аз ин дастгоҳ
-kot_dest_heading	Истгоҳ
 optional_login_heading	Воридшавии ихтиёрӣ
 rights_heading	Ҳуқуқҳо
 ops_panel	Кори дохилӣ
@@ -448,28 +375,6 @@ till_voucher_amt_ph	Маблағи ваучер (холӣ = ҳама)
 till_wallet_topup_ph	Маблағи илова ба ҳамён
 till_voucher_issue_amt_ph	Маблағи ваучери додашаванда
 till_voucher_issue_code_ph	Рамзи ваучери нав
-split_evenly	Баробар тақсим
-waitlist	Рӯйхати интизор
-fire_course	Қадами навбатӣ
-hold_item	Нигоҳ
-waiter_call	Ба кассир занг занед
-waitlist_add	Ба рӯйхати интизор илова
-floor_view_grid	Тӯр
-floor_view_layout	Тарҳ
-floor_layout_x	X
-floor_layout_y	Y
-floor_layout_w	W
-floor_layout_h	H
-floor_layout_save	Захираи тарҳ
-floor_layout_open	Кушодани миз
-floor_layout_edit	Таҳрири тарҳ
-floor_layout_pick	Ба миз зер кунед, то тарҳашро таҳрир кунед
-floor_layout_saved	Тарҳ захира карда шуд
-floor_layout_nudge_left	← 20
-floor_layout_nudge_right	→ 20
-floor_layout_nudge_up	↑ 20
-floor_layout_nudge_down	↓ 20
-sibling_pickers_help	Мисли воҳидҳо Фаъол/Хомӯшро зер кунед — ҷойҳо, истгоҳҳо ва меъёрҳои андозро аз интихобҳои рӯзона пинҳон кунед; пешфарзҳои баста мемонанд.
 bulk_price_apply	Татбиқи нархи гурӯҳӣ
 card_terminal_optional	Дастгоҳи корт / пайванди пардохт (ихтиёрӣ, вақте интернет ҳаст)
 copy_report	Нусхаи ҳисобот
@@ -495,7 +400,6 @@ import_day	Воридоти рӯз
 import_items_csv_plain	Воридоти молҳо CSV…
 import_parties_csv	Воридоти тарафҳо CSV…
 item_name	Номи мол
-kitchen_printing	Чопгарҳо
 login_id_ph	Номи корбар
 mark_cleared	Покшуда қайд кунед
 new_party_clear	Тарафи нав (варақаро пок)
@@ -565,15 +469,6 @@ show	Нишон
 spreadsheet_csv	Ҷадвал (CSV)
 start_fresh	Аз нав оғоз
 stop_extra_tills	Истодани қуттиҳои иловагӣ
-floor_cols_ph	Сутунҳо
-floor_cols_fit	Мувофиқи экран
-floor_cols_fit_sub	{n} ин ҷо меғунҷад
-floor_cols_fits	меғунҷад
-floor_cols_scroll	ба паҳлӯ меғелад
-floor_cols_min	Сутунҳо: ҳадди ақал 1 — ё холӣ гузоред, то ба экран мувофиқ шавад
-floor_zoom_auto	Худкор
-floor_zoom_out	Хурд кардан
-floor_zoom_in	Калон кардан
 backup_auto	Ҳар рӯз худкор нусха мешавад · охирин {when} · 14 рӯзи охир дар {dir} нигоҳ дошта мешавад.
 backup_auto_none	Ҳар рӯз худкор нусха мешавад — якум ба зудӣ иҷро мешавад.
 backup_copy_to	Нусхаҳо инчунин ба {dir} мераванд.
@@ -591,7 +486,6 @@ new_pair_code	Рамзи ҷуфти нав
 pair_finishing	Ҷуфт анҷом меёбад… дафтарҳои дӯкон татбиқ мешаванд
 pair_opening	Қуттӣ кушода мешавад…
 pair_copied	Рамзи ҷуфт нусха шуд
-kot_waiting	Интизори фиристодан
 lan_offline_waiting	Server-и дӯкон дастнорас · {n} интизор
 lan_connecting	Ба дӯкон пайваст мешавад…
 lan_live	Зинда
@@ -633,7 +527,6 @@ printers_routes_help	Принтерҳоеро, ки системаи опера�
 printer_assign_dd	Чопгари воқеӣ: {place}
 printer_assign_pick	Интихоби чопгари воқеӣ
 printer_profile_heading	Тарҳ
-printer_send_heading	Расондан
 vp_delivery_heading	Расондан
 vp_delivery_help	Чӣ гуна ин принтери виртуалӣ корҳоро мефиристад - ҳуҷҷати OS, байтҳои хом ё ESC/POS. Мундариҷаи слип (андозаи намуд, печондан, маржа) аз рӯи вексел / формати слип муайян карда мешавад, на дар ин ҷо.
 vp_type_size_heading	Андозаи ҳарф
@@ -677,23 +570,13 @@ virtual_draft_send	Қимат барои чопгари маҷозии навб�
 virtual_need_real	Аввал чопгари воқеиро интихоб кунед
 virtual_need_select	Чопгари маҷозиро барои нест кардан интихоб кунед
 real_printer_selected	Интихоб шуд: {name}
-station_group_heading	Чопгарҳои маҷозӣ
-station_group_apply	Нест кардани чопгари маҷозӣ
-station_group_applied	Нест шуд
-station_group_empty	Чопгари маҷозиро интихоб кунед
-station_group_name_ph	Номи чопгари маҷозӣ (ихтиёрӣ)
-station_group_save	Сохтани чопгари маҷозӣ
-station_group_saved	Чопгари маҷозӣ захира шуд
-station_manage_heading	Секцияи диспансериро илова ё хориҷ кунед
 printers_routes_heading	Ҷои чоп
 route_pick_heading	Ҷой
 route_editing	Таҳрир: {name}
 route_assigned	{printer} ба {place} илова шуд
 route_already_assigned	Аллакай дар ин ҷой: {printer}
-route_removed	{printer} аз {place} хориҷ шуд
 route_cleared	{name} пок шуд
 route_assigned_empty	Дар ин ҷой ҳеҷ нест
-route_tap_remove	зер кунед, то хориҷ шавад
 route_tap_select	зер кунед, то интихоб шавад
 route_tap_selected	интихоб шуд
 route_pick_printer_first	Аввал чопгарро зер кунед
@@ -714,35 +597,17 @@ printer_format_custom	Намуди махсуси нав
 printer_format_custom_label	Махсус
 printer_format_custom_added	Намуди махсус ба ин ҷой илова шуд
 add_printer	Иловаи чопгар
-remove_printer	Хориҷ
 route_pick_ph	Билл ё шӯъбаи диспансерӣ
 route_bill	Ҳисоб
-route_default_kitchen	Не истгоҳ (маводи таъиннашуда)
-route_kot_station	Истгоҳ
 route_dont_print	Чопгар нест
-stations_heading	Истгоҳҳо
-stations_help	Секцияхои диспансерй дорухо ва чопку-нандагонро барои он кисми магазин гурух-гурух мекунанд. Принтерҳоро аз Танзимотҳо → Принтерҳо замима кунед, тартиби кӯшишро муқаррар кунед, пас Аввал ин кор мекунад ё Дар ҳама Чоп кунед. Тағирот ҳангоми рафтан захира кунед.
-station_print_heading	Чопгарҳои ин истгоҳ
-station_print_help	Як истгоҳро интихоб кунед ва як ё якчанд принтерро пайваст кунед. ↑↓ маҷмӯи кӯшиши фармоиш. Аввалин кор пас аз муваффақияти аввал қатъ мешавад; Дар ҳама ирсолҳо ба ҳар як чопгари замимашуда чоп кунед.
-station_print_pick_ph	Истгоҳе, ки чопгарҳояш танзим мешаванд
 station_print_pick_first	Аввал як секцияи диспансериро интихоб кунед
-station_print_editing	Таҳрири чопгарҳои «{name}»
-station_vps_dd	Чопгарҳои ин истгоҳ
-station_vps_dd_n	{n} чопгар · зер кунед, то иваз шавад
 station_vps_empty	Ҳанӯз чопгар нест — аз Танзимот → Чопгарҳо ёбед
 bill_printers_dd	Чопгарҳои ҳисоб
 bill_printers_dd_n	{n} чопгар барои ҳисоб · зер кунед, то иваз шавад
-job_layout	Тарҳ
-job_delivery	Чӣ гуна кор фиристода мешавад
-job_delivery_help	Ҳуҷҷати OS, байтҳои хом ё ESC/POS. Ҳисоб ва чипта ҳар яки худро нигоҳ медорад. Ҳар як кор метавонад ба ҳама гуна чопгари Find захирашуда равад.
 station_vp_attached	Чопгар баста шуд
 station_vp_detached	Чопгар аз истгоҳ хориҷ шуд
-station_print_summary	{mode} · {n} чопгар
-station_print_summary_none	Дар ин истгоҳ ҳанӯз чопгар нест — чоп намекунад
-stations_none	Ҳанӯз ягон истгоҳ нест — якеро дар зер илова кунед. Станцияхо дар дукони пештахта истифода намешаванд — холй гузоред.
 route_up	Боло
 route_down	Поён
-route_remove	Хориҷ
 route_clear	Пок
 save_printers	Захираи чопгарҳо
 print_test_page	Чопи саҳифаи озмоиш
@@ -751,23 +616,15 @@ test_page_no_printer	Барои {place} чопгар нест — чопгар �
 test_page_pick_first	Аввал чопгар(ҳо)-ро барои саҳифаи озмоиш интихоб кунед — сипас Чопи саҳифаи озмоиш
 test_printers_dd	Чопгарҳои саҳифаи озмоиш
 test_printers_dd_n	{n} чопгар барои саҳифаи озмоиш · зер кунед, то иваз шавад
-kot_test_printers_dd	Принтерҳо барои чопи санҷишӣ
-kot_test_printers_dd_n	Принтер(ҳо)-и {n} барои чопи санҷишӣ · Барои тағир додан клик кунед
 test_printer_picked	Озмоиш: {name}
 test_printer_cleared	Озмоиш нест: {name}
 test_page_sent_n	Саҳифаи озмоиш ба {n} чопгар фиристода шуд
-test_kot_pick_first	Аввал чопгар(ҳо)-ро барои чопи санҷишӣ интихоб кунед - баъд чопи санҷишӣ
-test_kot_sent_n	Чопи санҷишӣ ба принтер(ҳо)-и {n} фиристода шуд
-cancel_pick	Қайд
-cancel_pick_on	Қайд шуд
-cancel_pick_meta	Барои бекор қайд шуд
 batch_cancel	Бекор кардани қайдшуда
 batch_cancel_n	Бекор кардани қайдшуда ({n})
 batch_cancel_none	Аввал як ё якчанд ашёи ирсолшударо қайд кунед - баъд Бекор карданро қайд кунед
 batch_cancel_title	Бекор кардани доруҳои қайдшуда - як сабаб, як лағжиши ҳар як бахш
 batch_cancel_ok	Ададҳои {n} бекор карда шуданд · {slips} лағви слип(ҳо) → {kitchens}
 batch_cancel_ok_noprint	Ададҳои {n} бекор карда шуданд — чопи худкор хомӯш аст, бинобар ин ҳеҷ гуна лағжиши бекоркунӣ вуҷуд надорад
-no_printer_kitchen_station	Барои ин истгоҳ чопгар нест
 printers_saved	Захира шуд
 test_page_sent	Саҳифаи озмоиш фиристода шуд — чопгарро санҷед
 test_page_sent_one	Саҳифаи озмоиш ба {name} фиристода шуд — он чопгарро санҷед
@@ -783,10 +640,7 @@ cancelled	Бекор шуд
 printers_tap_find	Ҷустуҷӯро зер кунед, то чопгарҳое, ки ин дастгоҳ истифода мебарад, рӯйхат шаванд.
 printers_none_found	Ҳеҷ ёфт нашуд — номи чопгари система ё IP нависед (мисол 192.168.1.50).
 printer_from_find	{name} илова шуд
-kot_printer_ph	Принтер барои слипҳо
 bill_printer_ph	Чопгар барои ҳисобҳо
-kot_print_on	Чиптаҳои чопи худкор: Фаъол
-kot_print_off	Чиптаҳои чопи худкор: Хомӯш
 queue_refused	Дӯкон қабул накард ({n}) — ҳар якеро дар мизи фурӯш санҷед:
 clear_not_accepted	Санҷида шуд — ин рӯйхатро пок кунед
 device_name_ph	Номи ин дастгоҳ
@@ -797,7 +651,6 @@ backup_failed	Нусхаи худкори охирин ноком шуд: {e}
 backup_overdue	{n} рӯз нусха нест — барномаро дар ин дастгоҳ кушода нигоҳ доред, то нусха гирад.
 disk_low	Дар ин дастгоҳ танҳо {mb} MB холӣ аст — нусхаҳо ба зудӣ ноком мешаванд. Ҷой холӣ кунед.
 last_seen_devices	Охирин дида шуд: {time}
-sync_interval	Ҳамоҳанг ҳар {secs} сония
 connection_to_shop	Пайваст ба дӯкон
 supplier_name_ph	Номи таъминкунанда (ё тараф)
 supplier_ph	Таъминкунанда
@@ -860,7 +713,6 @@ fresh_book_tabiyat	Fresh = каталоги холӣ (баъдтар ашё ил
 fresh_selected	Нав интихоб шуд — феҳрист холӣ мемонад. Вақте омодаед, Тайёрро зер кунед.
 gross_word	Нохолис
 how_start	Чӣ гуна оғоз кардан мехоҳед?
-kot_print_help_tabiyat	Дар дӯкони пешфарз истифода намешавад.
 later_country_pack	Баъдтар: Танзимот → бастаи кишвари худро барои нишонҳои андоз ва пардохт татбиқ кунед.
 local_badge	МАҲАЛЛӢ
 mix_type_hint_tabiyat	Агар лозим бошад, байни нақд / UPI / корт / қарз тақсим кунед. Қарз муштариро дар боло мехоҳад.
@@ -911,8 +763,6 @@ staff_copy_need_source	Интихоб кунед, ки танзими кӣ ну�
 staff_copy_same	Ҳамон шахс аст — каси дигарро интихоб кунед
 staff_rename_need_selected	Аввал интихоб кунед, ки номи кӣ иваз шавад
 team_pick_hint	Интихоб кунед, ки кӣ бояд таҳрир кунад - экранҳо, ҳуқуқҳои пулӣ ва истгоҳҳо танҳо барои он шахс пайдо мешаванд.
-team_stations_help	Истгоҳҳо, ки онҳо метавонанд истифода баранд
-team_stations_changed	Пойгоҳҳо иваз карда шуданд — Танзимотро барои ин шахс захира кунед
 team_features_changed	Экранҳо тағйир ёфтанд — Танзимро барои ин шахс захира кунед
 team_rights_changed	Ҳуқуқҳо тағйир ёфтанд — Танзимро барои ин шахс захира кунед
 they_owe_us	Онҳо ба мо қарздоранд
@@ -996,9 +846,6 @@ service_pct_ph	Хизмат % ихтиёрӣ 0/10/12
 short_code_ph	Рамзи кӯтоҳ (MG02)
 starting_password_ph	Пароли оғоз (ихтиёрӣ)
 starting_pin_ph	PIN-и оғоз (4–12 рақам)
-station_name_ph	Номи истгоҳ (ихтиёрӣ)
-station_new_ph	Бахш (ихтиёрӣ)
-table_name_ph	Номи ҳисобкунак / халиҷ
 tax_rate_ph	Номи меъёри андоз ё % — Оддӣ, Кам, 0, 5, 12, 18, 20
 to_code_ph	Рамзи мақсад (кг)
 uncleared_no_ph	Покнашудаи # боло
@@ -1011,27 +858,8 @@ book_kind_month	Дафтарҳои ин моҳ
 book_kind_aging	Боқимонда / қарз-қарз
 book_kind_balance	Варақаи тавозун
 order_help	Ба мол зер кунед, то илова шавад.
-floor_help	Ин магазин дар касса мефурушад. Мизу фарши ошхона ба табият дохил намешавад.
-kitchen_help	Дар дӯкони пешфарз истифода намешавад.
-kitchen_empty	Чиптаҳои кушода нест (дуконҳо одатан ин экранро истифода намебаранд).
-add_a_table	Иловаи миз
-add_station_heading	Секцияи диспансериро илова кунед
 categories_help	Истифодаро зер кунед, то моли боло дар он гурӯҳ сабт шавад. Акс ба гурӯҳ расм медиҳад; бе он ҳарфҳои аввалро нишон медиҳад.
 dish_search_ph	Ном, намак ё штрих-кодро ҷустуҷӯ кунед…
-tile_free	Холӣ
-tile_occupied	Ишғол
-tile_food_ready	Хӯрок тайёр
-tile_bill_printed	Ҳисоб чоп шуд
-tile_paid	Пардохт шуд
-tile_bill_btn	Ҳисоб
-tile_occupy_btn	Меҳмононро шинонед
-tile_free_btn	Мизро холӣ кунед
-tile_ready_btn	Мизро холӣ кунед
-tile_undo_bill	Бекор кардани ҳисоб
-summary_busy	мизҳои банд
-summary_to_collect	гирифтанӣ
-summary_on_floor	дар зал
-floor	Дӯкон
 sizes_as_items_ph	Андозаҳо ҳамчун молҳои ҷудо (ихтиёрӣ) — Ним=120, Пурра=200
 dish_group_ph	Қувват / гурӯҳи баста (ихтиёрӣ) - масалан. рахи 500 мг
 discount	Тахфиф
@@ -1039,7 +867,6 @@ remove_discount	Хориҷи тахфиф
 apply_discount	Татбиқи тахфиф
 save_opening_cash	Захираи нақди оғоз
 close_shift_print	Пӯшидани навбат ва чопи варақа
-area_prices_ph	Нархҳои ҷой (ихтиёрӣ) — AC=220, Баста=210
 discount_ph	10% ё 50
 discount_reason_ph	Сабаб (мисол меҳмони доимӣ, хӯроки дер)
 opening_float_ph	Нақде, ки имрӯз субҳ ба қуттӣ гузошта шуд
@@ -1049,34 +876,18 @@ shift_handover	Супоридани навбат
 shift_since	Ин навбат аз
 expected_in_drawer	Интизор дар қуттӣ
 right_discount	Додани тахфиф
-floor_in_kitchen	Дар ҷараён
-floor_eating	Оварда шуд
 pick_category	Интихоби гурӯҳ
 close_category_list	Пӯшидани рӯйхати гурӯҳҳо
 new_category_row	Гурӯҳи нав — ҳангоми захираи мол сохта мешавад
 your_category	Гурӯҳи шумо
 suggested_category	Пешниҳод шудааст - аз ашёи мо
 category_search_ph	Гурӯҳ — гурӯҳҳои худро ҷустуҷӯ кунед ё нав нависед
-line_sent_state	Фиристод
-line_nc_state	Меҳмонӣ (NC) — пул гирифта намешавад
 cancel_item_short	Бекор
-nc_short	NC
-charge_again_short	Пул
-move_short	Кӯчон
 cancel_item_title	Ин ашёро бекор кунед - офиси офис варақаи бекоркунӣ мегирад
-nc_item_title	Ин молро меҳмонӣ (NC) кунед
-charge_again_title	Аз ин мол боз пул гиред
-move_item_title	Ин молро ба мизе дигар кӯчонед
-already_cooked	Аллакай пухта шуд (талаф)
-not_cooked_yet	Ҳанӯз пухта нашудааст
 return_to_customer	Ба муштарӣ баргардонед
 short_by	Камтар ба
 tip_not_sale	Инъом (аз корманд, фурӯш нест)
 right_settle	Гирифтани пардохт
-right_cancel_sent	Бекор кардани моли фиристодашуда
-right_complimentary	Меҳмонӣ (NC)
-right_move_table	Ҳисобкунакҳоро интиқол / якҷоя кунед
-right_reprint	Дубора чопи ҳисоб
 right_allowed	Иҷозат
 right_with_approval	Бо тасдиқ
 right_denied	Иҷозат нест
@@ -1086,25 +897,11 @@ no_server_found	Ҳеҷ ёфт нашуд. Дар Server: Танзимот → Д
 servers_found_pick	Дӯконеро, ки пайваст шудан мехоҳед, зер кунед.
 server_host_selected	{host} истифода мешавад — рамзи ҷуфтро ворид кунед, сипас Ҳозир ҷуфт.
 print_bill	Чопи ҳисоб
-table_actions	Амалҳои муқобил
-move_merge_table	Кӯчонидан / якҷо кардани миз
-move_help	Тартиби ин ҳисобкунакро ба ҷадвали ройгон интиқол диҳед ё онро ба ҷадвали иҷрошаванда якҷоя кунед.
-move_target_ph	Номи ҳисобкунак
 approval_pin_ph	PIN-и Мудир (танҳо агар пурсанд)
-move_here	Ба ин ҷо кӯчонед
-merge_into	Ба он якҷо кунед
-line_reason_ph	Сабаб (масалан, муштарӣ ақидаашро иваз кард, захира нест)
-line_qty_ph	Чандто бекор шавад (холӣ = ҳама)
-line_target_ph	Ба миз кӯчонед (мисол D5)
 confirm	Тасдиқ
 menu_search_ph	Ҷустуҷӯи мол ё рамзи кӯтоҳ
 customer_paid_ph	Муштарӣ пардохт
 tip_ph	Инъом
-table_area_ph	Ҷой (мисол Дар ин ҷо хӯрдан, Баста, AC)
-table_range_ph	Якбора бисёр: D1-D20
-add_these_tables	Ин ҳисобкунакҳоро илова кунед
-remove_these_tables	Ин ҳисобкунакҳоро нест кунед
-table_remove_ph	Хориҷ: T1-T24, ё номи як миз
 find_server	Ёфтани server-и дӯкон
 bill_format	Тарҳи ҳисоб
 bill_format_help	Дар ҳар як вексел зери номи мағозаи шумо чоп карда мешавад. Хатҳои ҷудогона бо | (масалан, MG Road, Rajkot | Ph 98250 00000).
@@ -1112,78 +909,32 @@ bill_header_ph	Суроға | телефон
 fssai_ph	Рақами иҷозатномаи маводи мухаддир. (ихтиёрӣ - ибораи шумо)
 bill_footer_ph	Поён (мисол Ташаккур, боз биёед)
 save_bill_format	Захираи тарҳи ҳисоб
-kot_format	Формати слип
-kot_format_help	Майдонеро дар рӯйхат клик кунед. Намоиш, андозаи ҳуруф ва вазн ба он майдон дар навъи слипи дар боло интихобшуда татбиқ мешаванд. Ҳар як навъ андоза ва вазнҳои худро нигоҳ медорад.
-kot_format_fields	Майдонҳо
-kot_field_next	Майдони навбатӣ
-kot_field_show	Нишон
-kot_field_hide	Пинҳон
 kot_field_on	нишон
 kot_field_off	пинҳон
-kot_field_size	Андозаи ҳарф
-kot_field_size_ph	мисол 16, 20, 24, 28, 32…
 kot_weight_light	Сабук
 bill_kot_panel_help	Тарҳбандии ҳисоб ва паҳнои мундариҷа. Кассир онест, ки векселро додааст ё ҳисоб кардааст - ҳикояи пурраи фурӯш дар китобҳо мемонад.
 std_size_ph	мисол 18, 20, 26…
-kot_show_shop	Номи дӯкон
-kot_hide_shop	Пинҳон кардани дӯкон
-kot_show_time	Вақт
-kot_hide_time	Пинҳон кардани вақт
-kot_show_waiter	Хазинадор
-kot_hide_waiter	Кассирро пинҳон кунед
-kot_show_station	Истгоҳ
-kot_hide_station	Пинҳон кардани истгоҳ
-kot_show_table	Мизи фурӯш
-kot_hide_table	Пинҳон кардани миз
-kot_show_kot_no	Рақами чипта
-kot_hide_kot_no	Пинҳон кардани чиптаи рақами
-kot_width	Сарпӯши пешнамоиш (барои мундариҷаро дар ҷадвали слип муқаррар кунед)
-kot_width_58	58 мм
-kot_width_80	80 мм
-kot_kind_heading	Навъи чипта
-kot_kind_original	Асл
-kot_kind_duplicate	Нусха
-kot_kind_modified	Тағйирёфта
-kot_kind_cancelled	Бекор шуд
-kot_style_heading	Андоза ва ғафсии навъи майдон
-kot_style_title	Сарлавҳа
-kot_style_item_qty	Мол · Миқдор
-kot_style_field_pick	Интихоби майдон
 kot_weight_regular	Оддӣ
 kot_weight_bold	Ғафс
-kot_align	Ҳамвор
 kot_align_start	Оғоз
 kot_align_center	Марказ
 kot_align_end	Анҷом
 content_width	Паҳнои мундариҷа (мм)
 content_width_bill	Паҳнои мундариҷаи ҳисоб (мм)
-content_width_kot	Паҳнои мундариҷаи чипта (мм)
 content_width_ph	Ё паҳнои мундариҷа нависед, 40–210 мм
 content_width_help	Ин слип то чӣ андоза васеъ чоп мекунад. Билл паҳнои худро нигоҳ медорад.
 content_width_bill_help	Векселҳои муштарӣ чӣ қадар васеъ чоп мекунанд. Пешфарз 210 мм (саҳифа). Лағжиши танг 58 мм, лағжиши васеъ 80 мм, 112 мм 4 дюйм, 210 мм A4-васеъ. Ҳама гуна арзишро аз 40 то 210 ворид кунед. Чиптаҳо дар ҷадвали слип паҳнои худро доранд.
-content_width_kot_help	Чипта чӣ қадар васеъ чоп мекунад. Пешфарз 80 мм. Лағжиши танг 58 мм, лағжиши васеъ 80 мм, 112 мм 4 дюйм, саҳифаи 210 мм. Ҳама гуна арзишро аз 40 то 210 нависед. Векселҳои муштариён дар ҷадвали Вексел паҳнои худро доранд.
 vp_paper_width	Паҳнои мундариҷа (мм)
 vp_paper_width_ph	Ё паҳнои мундариҷа нависед, 40–210 мм
 vp_paper_width_help	Паҳнои мундариҷа дар формати Bill & Slip муқаррар карда мешавад - алоҳида барои вексел (пешфарз 210 мм) ва чипта (пешфарз 80 мм).
-kot_size	Андозаи ҳарф
-kot_size_s	Хурд
-kot_size_m	Оддӣ
-kot_size_l	Калон
 std_size	Андозаи ҳарф
 kot_copies	Нусхаҳо
 kot_copies_1	1
 kot_copies_2	2
 kot_copies_3	3
-kot_title_ph	Сарлавҳа (бланка = БИЛЕТ)
-kot_footer_ph	Қайд аз офис (ихтиёрӣ)
-kot_preview	Пешнамоиш
-save_kot_format	Формати Слипро захира кунед
-test_kot_format	Чопи санҷишӣ
-test_kot_sent	Пешнамоиши чипта фиристода шуд
 test_bill_format	Ҳисоби озмоиш
 test_bill_sent	Пешнамоиши ҳисоб фиристода шуд
 test_print_no_printer	Барои он кор чопгар нест — якеро дар ин экран интихоб кунед
-kot_format_saved	Формати слип захира карда шуд
 std_print	Андозаи чопи ҳисоб
 std_print_help	Андозаи шрифт барои вазифаҳои ҳисобҳои стандартии портрет ва ландшафт дар принтерҳои OS/ҳуҷҷат (нуқтаҳоро ворид кунед - на Хурд/Муқаррарӣ/Калон). Андозаи якхела дар ҳарду самт.
 std_size_s	Хурд
@@ -1223,23 +974,16 @@ upi_qr	QR-и UPI
 show_upi_qr	Нишон додани QR-и UPI
 close_upi_qr	Пӯшидан
 upi_qr_help	Муштарӣ скан мекунад ва пардохт мекунад. Пас аз пардохт пардохт кунед. Экрани дуюм: URL-и серверро кушоед /намоиш дар LAN.
-kot_recall	Бозхонд
 recently_done	Ба наздикӣ анҷом ёфт
-recall_kot_ph	Билет № барои бозхонд
 role_help_customer	Нақш: Муштарӣ — хата (онҳо ба мо қарздоранд). Ҳамон тараф метавонад захира ҳам диҳад.
 role_help_both	Нақшҳо: Муштарӣ + Таъминкунанда — як тараф, дафтарҳои хата ва пардохтшаванда, соф дар Ҳисобот.
 role_help_supplier	Нақш: Таъминкунанда — мо барои харидҳо ба онҳо қарздорем.
-dine_in_pick_table	Дар дӯкони пешфарз истифода намешавад
-choose_table	Ҳисобкунакро интихоб кунед
-change_table	Иваз кардани миз
-pick_table_banner	Барои ин фармоиш миз интихоб кунед
 items_word	молҳо
 items_section	Молҳо
 back_to_order	Бозгашт ба фармоиш
 new_items_head	Ҳанӯз фиристода нашудааст
 price_ph	Нарх
 price_ph_gst_inside	Нарх ({tax} дар нарх)
-cancel_needs_table	То он даме, ки шумо пардохт пардохт кунед, фурӯшҳои муқобил дар чипта боқӣ мемонанд
 tax_rates_missing_hint	Меъёри {tax} дар ин ашёҳо нест — дар ашёҳои муқарраршуда Меъёри андоз (нархҳо аллакай {tax}-ро дар зери {tax} дохил мекунанд)
 taxable_value	Арзиши андозбандӣ
 gst_inside_price_note	({tax} дар нарх)
@@ -1260,30 +1004,11 @@ client_template_confirm	Аз {title} ҷузъҳои {d} илова кунед? �
 client_template_importing	{title} ворид мешавад…
 client_template_done	Ҳар як ашёи {title} дар ашёи шумост.
 client_template_imported	Аз {title} ҷузъҳои {d} ва категорияҳои {c} илова карда шуданд
-resv_heading	Захираҳо
-resv_name_ph	Номи муштарӣ
-resv_phone_ph	Телефон (ихтиёрӣ)
-resv_guests_ph	Одамон
-resv_when_ph	Кай — 20:30, фардо 13:00
-resv_table_ph	Ҳисобкунак (ихтиёрӣ)
-resv_add	Захира
-resv_seat	Нишаст
-resv_none	Захираи оянда нест.
-guests_word	меҳмон
-delivery_by_ph	Расонанда (ном ё корманд)
-kitchen_all_day	Ҳозир пухтан: {items}
-split_bill	Тақсими ҳисоб
-split_go	Сохтани ҳисоби ҷудо
 cancel	Бекор
 opening_client	Мизоҷ кушода мешавад…
 preparing_desk	Миз омода мешавад…
 opening_server	Server кушода мешавад…
 creating_server	Server сохта мешавад…
-split_help	Ба ашёҳое клик кунед, ки як муштарӣ барои он пардохт мекунад · {n} интихоб кардааст
-split_send_first	Аввал слипро фиристед - танҳо ашёе, ки офис дорад, метавонад ба ҳисоби алоҳида равад
-split_pick_some	Аввал ба ҷузъҳои ҳисоби алоҳида клик кунед
-split_done	Векселҳои алоҳида тартиб дода шудаанд - он дар ошёна дар паҳлӯи ин ҳисобкунак аст
-split_marked	ҳисоби ҷудо
 order_empty_pick	Тартиби холӣ — барои интихоби ашё дар боло Иловаи ашёро клик кунед.
 add_dishes	Илова кардани доруҳо
 order_so_far	Дар ин фармоиш: {n} · {total}
@@ -1294,24 +1019,8 @@ pick_done_dd	Тайёр · {label}
 printer_route_mode	Агар дар ин ҷой чанд чопгар бошад
 printer_mode_first	Аввалине, ки кор мекунад
 printer_mode_all	Дар ҳама чоп
-kot_show_area	Ҷой
-kot_hide_area	Пинҳон кардани ҷой
-kot_show_item_hdr	Мол · Миқдор
-kot_hide_item_hdr	Пинҳон кардани сутунҳо
-kot_show_title	Сатри сарлавҳа
-kot_hide_title	Пинҳон кардани сарлавҳа
-kot_field_order	Тартиби чоп
 kot_field_up	Боло бар
 kot_field_down	Поён бар
-kot_field_cycle	Навбатиро интихоб кунед
-kot_field_select	Навбатиро интихоб кунед
-kot_field_time	Вақт
-kot_field_kot_no	Рақами чипта
-kot_field_area	Ҷой
-kot_field_table	Мизи фурӯш
-kot_field_shop	Номи дӯкон
-kot_field_waiter	Корманд
-kot_field_station	Истгоҳ
 app_template_blurb_extra	Инчунин: Соҳиб Зоҳир, Админ Осиф, Кассир Навоз; панели пеши; таърих пас аз 4 соат; Имрӯз ҷудо кунед; векселҳои компакт.
 dishes_n	{n} items
 recipe_ph	Рецепт (ихтиёрӣ - дар мағоза истифоданашуда)
@@ -1321,8 +1030,6 @@ low_stock_alert	Кам мешавад — ба зудӣ харед: {items}
 unpriced_note	Ҷузъҳои {n} дар ашёи шумо ҳоло нарх надоранд - онҳо то он даме, ки шумо онро муқаррар мекунед, аз 0 ҳисоб мекунанд.
 show_unpriced	Танҳо ашёро бе нарх нишон диҳед
 show_all_dishes	Ҳама ашёро нишон диҳед
-role_waiter	Хазинадор
-role_kitchen	Мағоза
 role_title_rest_ph	Унвони нақш (мисол Капитан, Сарпаз)
 preset_help_rest	Хазинадор: фурӯш. Мудир: фурӯш + молҳо + бекор/ислоҳ.
 kind_raw	Захираи омехта

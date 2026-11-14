@@ -5,9 +5,8 @@
 
 use crate::diag::{self, Cat};
 use crate::domain::{
-    Category, CreditLedgerEntry, Customer, DayTotals, DiningTable,
-    KitchenStation, KotTicket, PayMethod, Product, RunningOrder, Sale, SaleDraft, StaffMember,
-    TaxRate,
+    Category, CreditLedgerEntry, Customer, DayTotals, PayMethod, Product, Sale, SaleDraft,
+    StaffMember, TaxRate,
 };
 use crate::fiscal::FiscalSettings;
 use crate::store::Store;
@@ -46,8 +45,6 @@ pub struct SyncSnapshot {
     #[serde(default)]
     pub ledger: Vec<CreditLedgerEntry>,
     #[serde(default)]
-    pub tables: Vec<DiningTable>,
-    #[serde(default)]
     pub recent_sales: Vec<Sale>,
     #[serde(default)]
     pub today: DayTotals,
@@ -55,13 +52,9 @@ pub struct SyncSnapshot {
     pub outstanding_credit_paise: i64,
     #[serde(default)]
     pub day_close_text: String,
-    #[serde(default)]
-    pub open_kots: Vec<KotTicket>,
-    /// Menu groupings and kitchen stations of the Server's branch.
+    /// Menu groupings of the Server's branch.
     #[serde(default)]
     pub categories: Vec<Category>,
-    #[serde(default)]
-    pub stations: Vec<KitchenStation>,
     /// Server's branch / business identity, shown on the Client header.
     #[serde(default)]
     pub branch_name: String,
@@ -77,10 +70,6 @@ pub struct SyncSnapshot {
     pub fiscal: FiscalSettings,
     #[serde(default)]
     pub tax_rates: Vec<TaxRate>,
-    /// Every table's open order, line by line, so a waiter's device shows
-    /// what each table has and the counter can bill it.
-    #[serde(default)]
-    pub running_orders: Vec<RunningOrder>,
     /// The Server's own id (kept in its books): a device that lost the
     /// Server's address finds it again by this, never by its name.
     #[serde(default)]
@@ -116,157 +105,6 @@ fn is_zero_u64(v: &u64) -> bool {
     *v == 0
 }
 
-/// A table action a waiter's device asks the Server to do. Rights are
-/// checked on the Server; `approval_pin` is a manager's PIN typed on the
-/// device when the person's right is "With approval".
-#[derive(Clone, Debug, Serialize, Deserialize)]
-#[serde(tag = "action", rename_all = "snake_case")]
-pub enum RunningAction {
-    Cancel {
-        line_id: String,
-        #[serde(default)]
-        qty_milli: Option<i64>,
-        reason: String,
-        #[serde(default)]
-        prepared: bool,
-    },
-    /// Cancel several marked lines — one reason, one cancel slip per kitchen.
-    CancelBatch {
-        line_ids: Vec<String>,
-        reason: String,
-        #[serde(default)]
-        prepared: bool,
-    },
-    Complimentary {
-        line_id: String,
-        on: bool,
-        #[serde(default)]
-        reason: String,
-    },
-    MoveLines {
-        line_ids: Vec<String>,
-        to_table_id: String,
-    },
-    /// Some lines to a separate bill on a companion table.
-    Split {
-        line_ids: Vec<String>,
-    },
-    MoveTable {
-        from_table_id: String,
-        to_table_id: String,
-    },
-    Merge {
-        from_table_id: String,
-        into_table_id: String,
-    },
-    PrintBill {
-        table_id: String,
-    },
-    /// Paid / empty table cleared — free for the next guests.
-    TableReady {
-        table_id: String,
-    },
-    /// Guests sat down — occupy without opening a running order.
-    SeatTable {
-        table_id: String,
-    },
-    /// Accidental Print bill — back to an open table (or free if nothing left).
-    UndoBill {
-        table_id: String,
-    },
-    /// Punch or − on a table ticket before Send KOT (pending running line).
-    BumpPending {
-        table_id: String,
-        product_id: String,
-        delta_milli: i64,
-        #[serde(default)]
-        area: String,
-    },
-    /// Seat unsent cart lines onto a table as pending (pick-table / change).
-    SeatPending {
-        table_id: String,
-        lines: Vec<crate::domain::CartLine>,
-    },
-    /// Move pending (unsent) lines between tables. Order **Change table** does
-    /// not use this — that only opens the other ticket. Kept for LAN/compat;
-    /// relocating a party is Move / merge.
-    ReseatPending {
-        from_table_id: String,
-        to_table_id: String,
-    },
-    /// Unhold + send pending lines for one course (Client → Server).
-    FireCourse {
-        table_id: String,
-        course_no: i64,
-    },
-    /// Hold a pending running line off Send KOT until Fire course.
-    HoldLine {
-        line_id: String,
-        held: bool,
-    },
-    /// Queue a waiter call for a table (Floor / Order).
-    WaiterCall {
-        table_id: String,
-        kind: String,
-    },
-    /// Unit @ and Applied on an open table line (counter Order desk).
-    SetLinePricing {
-        line_id: String,
-        unit_price_paise: i64,
-        line_total_paise: i64,
-    },
-}
-
-
-/// Light till writes that already live in the open cart. Full `reload_all` +
-/// `load_table_cart` after these froze −/+ for seconds (UI looked dead, then
-/// jumped). Callers bump the cart locally and refresh floor lists only.
-pub fn running_action_skips_full_reload(action: &RunningAction) -> bool {
-    matches!(
-        action,
-        RunningAction::SetLinePricing { .. }
-            | RunningAction::BumpPending { .. }
-            | RunningAction::HoldLine { .. }
-    )
-}
-
-#[cfg(test)]
-mod running_action_reload_tests {
-    use super::*;
-
-    #[test]
-    fn qty_hold_and_pricing_skip_full_reload() {
-        assert!(running_action_skips_full_reload(&RunningAction::BumpPending {
-            table_id: "t".into(),
-            product_id: "p".into(),
-            delta_milli: -1000,
-            area: String::new(),
-        }));
-        assert!(running_action_skips_full_reload(&RunningAction::HoldLine {
-            line_id: "l".into(),
-            held: true,
-        }));
-        assert!(running_action_skips_full_reload(&RunningAction::SetLinePricing {
-            line_id: "l".into(),
-            unit_price_paise: 1,
-            line_total_paise: -1,
-        }));
-        assert!(!running_action_skips_full_reload(&RunningAction::Cancel {
-            line_id: "l".into(),
-            qty_milli: Some(1000),
-            reason: "x".into(),
-            prepared: false,
-        }));
-    }
-}
-
-#[derive(Clone, Debug, Serialize, Deserialize)]
-pub struct RemoteRunningRequest {
-    #[serde(default)]
-    pub approval_pin: String,
-    pub request: RunningAction,
-}
-
 /// A shop server found on this Wi‑Fi.
 #[derive(Clone, Debug, PartialEq, Eq, Serialize, Deserialize)]
 pub struct FoundServer {
@@ -295,10 +133,6 @@ pub struct RemoteSaleRequest {
     /// When set and customer_id is missing, Server creates/finds by name.
     #[serde(default)]
     pub customer_name: Option<String>,
-    /// Prefer Server table by name (Client UUIDs differ).
-    #[serde(default)]
-    pub table_name: Option<String>,
-    pub table_id: Option<String>,
     /// Split tenders. Empty means a single tender in `pay`.
     #[serde(default)]
     pub payments: Vec<RemoteTender>,
@@ -347,15 +181,6 @@ pub struct RemoteSaleAction {
     pub approval_pin: String,
 }
 
-#[derive(Clone, Debug, Serialize, Deserialize)]
-pub struct RemoteKotAdvance {
-    pub kot_id: String,
-    /// Status the tablet saw when tapped (`KotStatus::as_str`). Empty from
-    /// older devices: advance whatever it is now.
-    #[serde(default)]
-    pub from: String,
-}
-
 /// Correct a bill the Server owns. The Client never edits its own sales cache.
 #[derive(Clone, Debug, Serialize, Deserialize)]
 pub struct RemoteAmendRequest {
@@ -363,57 +188,6 @@ pub struct RemoteAmendRequest {
     pub draft: SaleDraft,
     pub pay: String,
     pub reason: String,
-}
-
-/// A waiter flags a table "guests are done — bill, please".
-/// The Server marks it Payment pending; release still needs payment.
-#[derive(Clone, Debug, Serialize, Deserialize)]
-pub struct RemoteTableBillingRequest {
-    #[serde(default)]
-    pub table_id: Option<String>,
-    #[serde(default)]
-    pub table_name: Option<String>,
-}
-
-/// Fire a kitchen ticket from a terminal's cart without charging it.
-#[derive(Clone, Debug, Serialize, Deserialize)]
-pub struct RemoteKotRequest {
-    pub draft: SaleDraft,
-    /// Prefer Server table by name (Client UUIDs differ).
-    #[serde(default)]
-    pub table_name: Option<String>,
-    #[serde(default)]
-    pub table_id: Option<String>,
-}
-
-/// Recovery print: selected sent lines again (paper only — not a new Send).
-/// Client asks; Server prints on its kitchen printers. Gated by person Reprint.
-#[derive(Clone, Debug, Serialize, Deserialize)]
-pub struct RemoteKotReprintLine {
-    pub kot_id: String,
-    /// Stored `running_lines.id` — Server filters the slip to these dishes.
-    #[serde(default)]
-    pub line_id: String,
-    pub name: String,
-    pub qty: i64,
-    pub qty_milli: i64,
-    #[serde(default)]
-    pub unit_label: String,
-    #[serde(default)]
-    pub note: String,
-    #[serde(default)]
-    pub applied_modifiers: Vec<crate::domain::ModifierOption>,
-    #[serde(default)]
-    pub station_id: String,
-}
-
-#[derive(Clone, Debug, Serialize, Deserialize)]
-pub struct RemoteKotReprintRequest {
-    #[serde(default)]
-    pub table_name: Option<String>,
-    #[serde(default)]
-    pub table_id: Option<String>,
-    pub lines: Vec<RemoteKotReprintLine>,
 }
 
 #[derive(Clone, Debug, Serialize, Deserialize)]
@@ -1206,14 +980,11 @@ fn build_snapshot(store: &Store) -> Result<SyncSnapshot, String> {
         customers: store.list_customers()?,
         staff,
         ledger: store.list_all_credit_ledger(2000)?,
-        tables: store.list_tables()?,
         recent_sales,
         today: store.today_totals()?,
         outstanding_credit_paise: store.outstanding_credit_total()?,
         day_close_text: store.day_close_summary()?,
-        open_kots: store.list_open_kots()?,
         categories: store.list_categories()?,
-        stations: store.list_stations()?,
         branch_name: store.active_branch().map(|b| b.name).unwrap_or_default(),
         org_name: store.saved_org_name().unwrap_or_default(),
         venue_icon_key: store
@@ -1221,7 +992,6 @@ fn build_snapshot(store: &Store) -> Result<SyncSnapshot, String> {
             .unwrap_or_default(),
         fiscal: store.fiscal_settings()?,
         tax_rates: store.list_tax_rates()?,
-        running_orders: store.list_running_orders()?,
         server_id: store.lan_server_id()?,
         rev: String::new(),
         seq: 0,
@@ -1232,513 +1002,6 @@ fn build_snapshot(store: &Store) -> Result<SyncSnapshot, String> {
         upi_vpa: store.upi_vpa()?,
         upi_payee: store.upi_payee()?,
     })
-}
-
-/// Recovery print: selected sent KOTs again on this Server's kitchen printers.
-/// Shared by the Order desk (Server) and `POST /kot_reprint` (Client).
-/// Dishes + kitchen + table come from the **stored** KOT by `kot_id` — client
-/// names / qty / kitchen / table are not authoritative. When the request
-/// carries `line_id`s, only those stored dishes reprint. Unknown ids refused.
-/// Kitchen access is `kot_stations` (not `Right::Reprint` — that is bills only).
-/// DeviceRole is never a gate.
-pub fn reprint_selected_kots(
-    store: &Store,
-    actor: &StaffMember,
-    req: &RemoteKotReprintRequest,
-) -> Result<(usize, usize, Vec<String>, Vec<String>), String> {
-    if req.lines.is_empty() {
-        return Err("Every sent dish is skipped — tap In print on the ones to reprint".into());
-    }
-    let feats = actor.effective_features();
-    let stations = store.list_stations().unwrap_or_default();
-    let priority: Vec<String> = store
-        .kot_station_priority_csv()
-        .ok()
-        .flatten()
-        .unwrap_or_default()
-        .split(',')
-        .map(str::trim)
-        .filter(|s| !s.is_empty())
-        .map(str::to_string)
-        .collect();
-    let by = actor.name.clone();
-    let unassigned = "Kitchen";
-    // kot_id → selected running_line ids (empty = whole ticket, legacy).
-    let mut by_kot: Vec<(String, Vec<String>)> = Vec::new();
-    for line in &req.lines {
-        let id = line.kot_id.trim();
-        if id.is_empty() {
-            return Err("Missing KOT id — send a KOT first, then print again".into());
-        }
-        let line_id = line.line_id.trim().to_string();
-        match by_kot.iter_mut().find(|(k, _)| k == id) {
-            Some((_, ids)) => {
-                if !line_id.is_empty() && !ids.iter().any(|x| x == &line_id) {
-                    ids.push(line_id);
-                }
-            }
-            None => {
-                let ids = if line_id.is_empty() {
-                    Vec::new()
-                } else {
-                    vec![line_id]
-                };
-                by_kot.push((id.to_string(), ids));
-            }
-        }
-    }
-    // station_id → (display name, kot_nos, item lines "name|qty")
-    let mut groups: Vec<(String, String, Vec<i64>, Vec<String>)> = Vec::new();
-    let mut dish_n = 0usize;
-    let mut table_label = String::new();
-    for (kot_id, line_ids) in &by_kot {
-        let (sid, kot_no, stored_table, items) =
-            store.kot_reprint_payload(kot_id, line_ids)?;
-        if items.is_empty() {
-            return Err(format!("KOT has no dishes to print: {kot_id}"));
-        }
-        if table_label.is_empty() && !stored_table.trim().is_empty() {
-            table_label = stored_table;
-        }
-        let name = if sid.is_empty() {
-            unassigned.to_string()
-        } else {
-            stations
-                .iter()
-                .find(|s| s.id == sid)
-                .map(|s| s.name.clone())
-                .unwrap_or_else(|| unassigned.to_string())
-        };
-        if !sid.is_empty() && !feats.allows_kot_station(&sid) {
-            return Err(format!("Not allowed to reprint kitchen: {name}"));
-        }
-        dish_n = dish_n.saturating_add(items.len());
-        match groups.iter_mut().find(|(id, _, _, _)| id == &sid) {
-            Some((_, _, nos, lines)) => {
-                if kot_no > 0 && !nos.contains(&kot_no) {
-                    nos.push(kot_no);
-                }
-                lines.extend(items);
-            }
-            None => {
-                let nos = if kot_no > 0 { vec![kot_no] } else { Vec::new() };
-                groups.push((sid, name, nos, items));
-            }
-        }
-    }
-    if !priority.is_empty() {
-        let mut ordered = Vec::with_capacity(groups.len());
-        for id in &priority {
-            if let Some(i) = groups.iter().position(|(sid, _, _, _)| sid == id) {
-                ordered.push(groups.remove(i));
-            }
-        }
-        ordered.append(&mut groups);
-        groups = ordered;
-    }
-    let now = store
-        .fiscal_settings()
-        .map(|f| f.format_now())
-        .unwrap_or_else(|_| chrono::Local::now().format("%d/%m/%Y %H:%M").to_string());
-    let shop = store.venue_title().unwrap_or_default();
-    let fmt = store.kot_slip_format().unwrap_or_default();
-    let copies = fmt.copies.max(1);
-    let mut ok = 0usize;
-    let mut errors: Vec<String> = Vec::new();
-    let mut kitchen_names: Vec<String> = Vec::new();
-    for (station_id, station_name, kot_nos, item_lines) in &groups {
-        let kot_nos_joined = if kot_nos.len() > 1 {
-            Some(format!(
-                "Was KOT No: {}",
-                kot_nos
-                    .iter()
-                    .map(|n| n.to_string())
-                    .collect::<Vec<_>>()
-                    .join(", ")
-            ))
-        } else {
-            None
-        };
-        let item_refs: Vec<&str> = item_lines.iter().map(String::as_str).collect();
-        let area_label = String::new();
-        let text = fmt.render(crate::print_share::KotSlipContent {
-            kind: crate::print_share::KotSlipKind::Duplicate,
-            cancel: false,
-            reprint: true,
-            shop_name: &shop,
-            kot_no: kot_nos.first().copied().unwrap_or(0),
-            kot_nos_label: kot_nos_joined.as_deref(),
-            when: &now,
-            created_by: &by,
-            table_label: &table_label,
-            station_name: station_name.as_str(),
-            area_label: &area_label,
-            items: &item_refs,
-        });
-        let mut printed = false;
-        let mut last_err: Option<String> = None;
-        {
-            match crate::print_share::print_route_using(
-                &crate::store::kot_printers_for_kind(
-                    &fmt,
-                    crate::print_share::KotSlipKind::Duplicate,
-                ),
-                crate::print_share::PrintKind::Kot,
-                crate::print_share::RouteKey::Kot {
-                    station_id: station_id.as_str(),
-                },
-                &text,
-                store.db_path().parent(),
-                copies.max(1),
-            ) {
-                Ok(share) if share.opened => printed = true,
-                Ok(_) => {
-                    last_err = Some(format!(
-                        "{station_name}: no printer — Settings → Printers"
-                    ));
-                }
-                Err(e) => last_err = Some(format!("{station_name}: {e}")),
-            }
-        }
-        if printed {
-            ok += 1;
-            kitchen_names.push(station_name.clone());
-        } else if let Some(e) = last_err {
-            errors.push(e);
-        }
-    }
-    if ok == 0 {
-        return Err(if errors.is_empty() {
-            "Send a KOT first — then include dishes and print selected again".into()
-        } else {
-            errors.join("; ")
-        });
-    }
-    Ok((dish_n, ok, kitchen_names, errors))
-}
-
-/// One cancel-kind slip per kitchen for the given cancelled rows
-/// (`station_id`, item line, `table_id`, area). Used by recovery print and
-/// by batch cancel (just-cancelled dishes only).
-pub fn print_cancelled_kot_rows(
-    store: &Store,
-    actor: &StaffMember,
-    lines: &[(String, String, String, String)],
-) -> Result<(usize, usize, Vec<String>, Vec<String>), String> {
-    if lines.is_empty() {
-        return Err("No cancelled dishes on this order".into());
-    }
-    let feats = actor.effective_features();
-    let stations = store.list_stations().unwrap_or_default();
-    let by = actor.name.clone();
-    let unassigned = "Kitchen";
-    let mut table_id = String::new();
-    let mut area_label = String::new();
-    let mut groups: Vec<(String, String, Vec<String>)> = Vec::new();
-    for (station_id, item, tid, area) in lines {
-        if table_id.is_empty() && !tid.is_empty() {
-            table_id = tid.clone();
-        }
-        if area_label.is_empty() && !area.is_empty() {
-            area_label = area.clone();
-        }
-        let name = if station_id.is_empty() {
-            unassigned.to_string()
-        } else {
-            stations
-                .iter()
-                .find(|s| s.id == *station_id)
-                .map(|s| s.name.clone())
-                .unwrap_or_else(|| unassigned.to_string())
-        };
-        if !station_id.is_empty() && !feats.allows_kot_station(station_id) {
-            return Err(format!("Not allowed to print kitchen: {name}"));
-        }
-        match groups.iter_mut().find(|(id, _, _)| id == station_id) {
-            Some((_, _, items)) => items.push(item.clone()),
-            None => groups.push((station_id.clone(), name, vec![item.clone()])),
-        }
-    }
-    let table_label = if table_id.is_empty() {
-        String::new()
-    } else {
-        store.table_label(&table_id).unwrap_or_default()
-    };
-    let now = store
-        .fiscal_settings()
-        .map(|f| f.format_now())
-        .unwrap_or_else(|_| chrono::Local::now().format("%d/%m/%Y %H:%M").to_string());
-    let shop = store.venue_title().unwrap_or_default();
-    let fmt = store.kot_slip_format().unwrap_or_default();
-    let copies = fmt.copies.max(1);
-    let mut ok = 0usize;
-    let mut errors: Vec<String> = Vec::new();
-    let mut kitchen_names: Vec<String> = Vec::new();
-    let dish_n = lines.len();
-    for (station_id, station_name, item_lines) in &groups {
-        let item_refs: Vec<&str> = item_lines.iter().map(String::as_str).collect();
-        let text = fmt.render(crate::print_share::KotSlipContent {
-            kind: crate::print_share::KotSlipKind::Cancelled,
-            cancel: true,
-            reprint: false,
-            shop_name: &shop,
-            kot_no: 0,
-            kot_nos_label: None,
-            when: &now,
-            created_by: &by,
-            table_label: &table_label,
-            station_name: station_name.as_str(),
-            area_label: &area_label,
-            items: &item_refs,
-        });
-        let mut printed = false;
-        let mut last_err: Option<String> = None;
-        match crate::print_share::print_route_using(
-            &crate::store::kot_printers_for_kind(&fmt, crate::print_share::KotSlipKind::Cancelled),
-            crate::print_share::PrintKind::Kot,
-            crate::print_share::RouteKey::Kot {
-                station_id: station_id.as_str(),
-            },
-            &text,
-            store.db_path().parent(),
-            copies.max(1),
-        ) {
-            Ok(share) if share.opened => printed = true,
-            Ok(_) => {
-                last_err = Some(format!(
-                    "{station_name}: no printer — Settings → Printers"
-                ));
-            }
-            Err(e) => last_err = Some(format!("{station_name}: {e}")),
-        }
-        if printed {
-            ok += 1;
-            kitchen_names.push(station_name.clone());
-        } else if let Some(e) = last_err {
-            errors.push(e);
-        }
-    }
-    if ok == 0 {
-        return Err(if errors.is_empty() {
-            "No cancelled dishes on this order".into()
-        } else {
-            errors.join("; ")
-        });
-    }
-    Ok((dish_n, ok, kitchen_names, errors))
-}
-
-/// One cancel-kind slip per kitchen with **every** cancelled dish still on
-/// this open order. Keeps per-item cancel print; this is the batch recovery
-/// / “all cancelled at once” path. Gated by `kot_stations` like reprint.
-pub fn print_cancelled_kots(
-    store: &Store,
-    actor: &StaffMember,
-    order_id: &str,
-) -> Result<(usize, usize, Vec<String>, Vec<String>), String> {
-    let lines = store.cancelled_kot_lines(order_id)?;
-    print_cancelled_kot_rows(store, actor, &lines)
-}
-
-/// Print just-sent KOTs at this (Server) device when the shop prints KOTs
-/// automatically. Counter and waiter KOTs both come through here. Returns
-/// a problem summary if any ticket failed (the KOTs are sent either way).
-pub fn print_sent_kots(store: &Store, kot_ids: &[String]) -> Option<String> {
-    if !store.kot_auto_print() {
-        return None;
-    }
-    let mut ok = 0usize;
-    let mut errors: Vec<String> = Vec::new();
-    for id in kot_ids {
-        match store.print_kot(id) {
-            Ok(_) => ok += 1,
-            Err(e) => errors.push(e),
-        }
-    }
-    if errors.is_empty() {
-        None
-    } else if ok == 0 {
-        Some(errors.join("; "))
-    } else {
-        Some(format!(
-            "{ok} slip(s) printed; others failed: {}",
-            errors.join("; ")
-        ))
-    }
-}
-
-/// What a table action leaves to do once it is in the books.
-#[derive(Debug, Default)]
-pub struct RunningDone {
-    /// Bill text, when the action printed the bill.
-    pub text: Option<String>,
-    /// Kitchen tickets it made (a cancel slip, a fired course). The caller
-    /// prints them once the books have them — never inside the write, or a
-    /// write that rolls back still leaves the kitchen holding its paper.
-    pub kots: Vec<String>,
-}
-
-impl RunningDone {
-    fn none() -> Self {
-        Self::default()
-    }
-}
-
-/// Do a table action on the Server's books. Shared by the LAN endpoint and
-/// the counter itself, so both obey the same rights. Returns the bill text
-/// and kitchen tickets the action produced, for the caller to print.
-pub fn apply_running_action(
-    store: &Store,
-    actor: &StaffMember,
-    approval_pin: Option<&str>,
-    action: &RunningAction,
-) -> Result<RunningDone, String> {
-    match action {
-        RunningAction::Cancel { line_id, qty_milli, reason, prepared } => {
-            let kot_id = store.cancel_running_line(
-                line_id,
-                *qty_milli,
-                reason,
-                *prepared,
-                actor,
-                approval_pin,
-            )?;
-            Ok(RunningDone { text: None, kots: vec![kot_id] })
-        }
-        RunningAction::CancelBatch {
-            line_ids,
-            reason,
-            prepared,
-        } => {
-            let rows = store.cancel_running_lines_batch(
-                line_ids,
-                reason,
-                *prepared,
-                actor,
-                approval_pin,
-            )?;
-            // One Cancelled slip per kitchen for this batch — not N per-item
-            // tickets via print_sent_kots. Print here so Client→Server LAN
-            // and local counter share the same path.
-            let dish_n = rows.len();
-            let text = if !store.kot_auto_print() {
-                Some(format!("batch_noprint:{dish_n}"))
-            } else {
-                match print_cancelled_kot_rows(store, actor, &rows) {
-                    Ok((n, slips, kitchens, errors)) => {
-                        let mut msg = format!(
-                            "batch_ok:{n}:{slips}:{}",
-                            if kitchens.is_empty() {
-                                "Kitchen".into()
-                            } else {
-                                kitchens.join(" · ")
-                            }
-                        );
-                        if !errors.is_empty() {
-                            msg.push('|');
-                            msg.push_str(&errors.join("; "));
-                        }
-                        Some(msg)
-                    }
-                    Err(e) => Some(format!("batch_ok:{dish_n}:0:|{e}")),
-                }
-            };
-            Ok(RunningDone {
-                text,
-                kots: Vec::new(),
-            })
-        }
-        RunningAction::Complimentary { line_id, on, reason } => {
-            store.set_running_line_complimentary(line_id, *on, reason, actor, approval_pin)?;
-            Ok(RunningDone::none())
-        }
-        RunningAction::MoveLines { line_ids, to_table_id } => {
-            store.move_running_lines(line_ids, to_table_id, actor, approval_pin)?;
-            Ok(RunningDone::none())
-        }
-        RunningAction::Split { line_ids } => {
-            store.split_running_lines(line_ids, actor)?;
-            Ok(RunningDone::none())
-        }
-        RunningAction::MoveTable { from_table_id, to_table_id } => {
-            store.move_table(from_table_id, to_table_id, actor, approval_pin)?;
-            Ok(RunningDone::none())
-        }
-        RunningAction::Merge { from_table_id, into_table_id } => {
-            store.merge_tables(from_table_id, into_table_id, actor, approval_pin)?;
-            Ok(RunningDone::none())
-        }
-        RunningAction::PrintBill { table_id } => {
-            Ok(RunningDone {
-                text: Some(store.print_running_bill(table_id, actor, approval_pin)?),
-                kots: Vec::new(),
-            })
-        }
-        RunningAction::TableReady { table_id } => {
-            store.free_table(table_id)?;
-            store.audit(actor, "table.ready", table_id)?;
-            Ok(RunningDone::none())
-        }
-        RunningAction::SeatTable { table_id } => {
-            store.seat_table(table_id, actor)?;
-            Ok(RunningDone::none())
-        }
-        RunningAction::UndoBill { table_id } => {
-            store.undo_bill_print(table_id, actor, approval_pin)?;
-            Ok(RunningDone::none())
-        }
-        RunningAction::BumpPending {
-            table_id,
-            product_id,
-            delta_milli,
-            area,
-        } => {
-            let product = store
-                .get_product(product_id)?
-                .ok_or_else(|| "Missing item".to_string())?;
-            store.bump_pending_product(table_id, &product, *delta_milli, area, actor)?;
-            Ok(RunningDone::none())
-        }
-        RunningAction::SeatPending { table_id, lines } => {
-            store.seat_unsent_lines(table_id, lines, actor)?;
-            Ok(RunningDone::none())
-        }
-        RunningAction::ReseatPending {
-            from_table_id,
-            to_table_id,
-        } => {
-            store.reseat_pending(from_table_id, to_table_id, actor)?;
-            Ok(RunningDone::none())
-        }
-        RunningAction::FireCourse {
-            table_id,
-            course_no,
-        } => {
-            let kots = store.fire_course(table_id, *course_no, actor)?;
-            Ok(RunningDone { text: None, kots })
-        }
-        RunningAction::HoldLine { line_id, held } => {
-            store.set_line_held(line_id, *held, actor)?;
-            Ok(RunningDone::none())
-        }
-        RunningAction::WaiterCall { table_id, kind } => {
-            store.queue_waiter_call(table_id, kind, actor)?;
-            Ok(RunningDone::none())
-        }
-        RunningAction::SetLinePricing {
-            line_id,
-            unit_price_paise,
-            line_total_paise,
-        } => {
-            store.set_running_line_pricing(
-                line_id,
-                *unit_price_paise,
-                *line_total_paise,
-                actor,
-            )?;
-            Ok(RunningDone::none())
-        }
-    }
 }
 
 /// Wrong pairing codes and PINs, counted per key ("pair:<ip>",
@@ -2014,60 +1277,6 @@ fn protocol_refusal(req: &Request) -> Option<Reply> {
     Some(Reply::refuse(426, message, "update_app"))
 }
 
-/// Paper a device's write leaves for after it is in the books: KOTs for the
-/// kitchen, or a bill. Printed only once the write has landed, so the
-/// kitchen never cooks from a ticket the books do not have.
-#[derive(Default)]
-struct AfterWrite {
-    kots: Vec<String>,
-    bill: Option<String>,
-}
-
-impl AfterWrite {
-    /// Print, and say what did not print — the device that asked is told
-    /// (`print_problem` on its reply), not only this screen.
-    fn print(self, store: &Store) -> Vec<String> {
-        let mut problems = Vec::new();
-        if !self.kots.is_empty() {
-            // The counter prints the kitchen's paper the moment a waiter's
-            // order lands — nobody carries anything to the kitchen.
-            if let Some(problem) = print_sent_kots(store, &self.kots) {
-                problems.push(problem);
-            }
-        }
-        if let Some(text) = &self.bill {
-            // Never put CancelBatch status codes (`batch_ok:` …) on paper —
-            // those are UI protocol, not a guest bill.
-            if text.starts_with("batch_ok:") || text.starts_with("batch_noprint:") {
-                return problems;
-            }
-            // A bill printed for a waiter prints at the counter, where the
-            // printer is; the text also goes back to the device.
-            let copies = store
-                .bill_slip_format()
-                .map(|f| f.copies.clamp(1, 3))
-                .unwrap_or(1);
-            match crate::print_share::print_route_copies(
-                crate::print_share::PrintKind::Bill,
-                crate::print_share::RouteKey::Bill,
-                text,
-                store.db_path().parent(),
-                copies,
-            ) {
-                Ok(share) if share.opened => {}
-                Ok(_) => {
-                    let problem = NO_BILL_PRINTER.to_string();
-                    // The counter hears it too: nobody else was told.
-                    crate::print_share::report_problem(problem.clone());
-                    problems.push(problem);
-                }
-                Err(e) => problems.push(format!("Bill paper not sent ({e})")),
-            }
-        }
-        problems
-    }
-}
-
 /// Where a bill finds its printer (docs/PRINTER.md → Bill tab).
 pub const NO_BILL_PRINTER: &str =
     "Bill not printed — no bill printer. Settings → Bill & KOT format → Bill → Printers for the bill";
@@ -2143,15 +1352,14 @@ fn answer_inner(db_path: &Path, req: &Request, peer: &str, guard: &Guard) -> Res
         return Ok(Reply::refuse(404, "not found", ""));
     }
     let request_id = req.header(HEADER_REQUEST);
-    // Paper queued while answering — reprints inside the write, KOTs and
-    // bills after it — is waited for once the books have committed.
+    // Paper queued while answering is waited for once the books have
+    // committed.
     let paper = crate::print_share::ConfirmPaper::start();
-    let mut after = AfterWrite::default();
     let reply = {
         // One device write is one unit of work, its reply record included:
         // a retry after a lost reply — or after a crash between the two —
         // is answered from the record, never done twice; and two devices
-        // writing to one table take turns instead of interleaving.
+        // writing take turns instead of interleaving.
         let request = store.begin()?;
         if let Some(id) = request_id
             && let Some((status, body)) = store.lan_reply(id, &device.id)?
@@ -2163,7 +1371,7 @@ fn answer_inner(db_path: &Path, req: &Request, peer: &str, guard: &Guard) -> Res
             });
         }
         let attempt = store.begin()?;
-        let reply = match write(&store, route, &req.body, &actor, &mut after) {
+        let reply = match write(&store, route, &req.body, &actor) {
             Ok(reply) => {
                 attempt.commit().map_err(|e| e.to_string())?;
                 reply
@@ -2173,7 +1381,6 @@ fn answer_inner(db_path: &Path, req: &Request, peer: &str, guard: &Guard) -> Res
             Err(e) => {
                 // Whatever the refused write did before it stopped is undone.
                 drop(attempt);
-                after = AfterWrite::default();
                 Reply::refuse(400, &e, "")
             }
         };
@@ -2186,10 +1393,10 @@ fn answer_inner(db_path: &Path, req: &Request, peer: &str, guard: &Guard) -> Res
         request.commit().map_err(|e| e.to_string())?;
         reply
     };
-    let mut problems = after.print(&store);
-    // Wake `/wait`ers now — paired tablets must see the new cart / KOT /
-    // bill without waiting for the books watcher's next poll. The books are
-    // in; only the paper is still on its way.
+    let mut problems: Vec<String> = Vec::new();
+    // Wake `/wait`ers now — paired tablets must see the new sale without
+    // waiting for the books watcher's next poll. The books are in; only the
+    // paper is still on its way.
     if (200..300).contains(&reply.status) {
         publish_books(&store);
     }
@@ -2316,9 +1523,8 @@ fn resolve_existing_settle_customer(
     Err("Customer required".into())
 }
 
-/// A signed-in phone's write, done as `actor`. Paper to print once it has
-/// landed goes in `after`.
-fn write(store: &Store, route: &str, body: &str, actor: &StaffMember, after: &mut AfterWrite) -> Result<Reply, String> {
+/// A signed-in phone's write, done as `actor`.
+fn write(store: &Store, route: &str, body: &str, actor: &StaffMember) -> Result<Reply, String> {
     match route {
         "/sale" => {
             let req: RemoteSaleRequest = serde_json::from_str(body).map_err(|e| format!("sale json: {e}"))?;
@@ -2346,27 +1552,6 @@ fn write(store: &Store, route: &str, body: &str, actor: &StaffMember, after: &mu
             }
             Ok(Reply::done())
         }
-        "/kot_advance" => {
-            let req: RemoteKotAdvance = serde_json::from_str(body).map_err(|e| format!("kot json: {e}"))?;
-            let from = Some(req.from.trim())
-                .filter(|f| !f.is_empty())
-                .map(crate::domain::KotStatus::parse);
-            if store.advance_kot_from(&req.kot_id, from, actor)? {
-                Ok(Reply::done())
-            } else {
-                // A second tap while the first was on the Wi‑Fi: say so,
-                // never move the ticket twice.
-                Ok(Reply::json(serde_json::json!({
-                    "ok": true,
-                    "message": "Ticket had already moved on — the kitchen list is up to date",
-                })))
-            }
-        }
-        "/kot_recall" => {
-            let req: RemoteKotAdvance = serde_json::from_str(body).map_err(|e| format!("kot recall json: {e}"))?;
-            store.recall_kot(&req.kot_id, actor)?;
-            Ok(Reply::done())
-        }
         "/upi_display" => {
             // Second-device LAN: amount + VPA + URI (guest chrome deferred).
             #[derive(Deserialize)]
@@ -2390,65 +1575,6 @@ fn write(store: &Store, route: &str, body: &str, actor: &StaffMember, after: &mu
             let req: RemoteAmendRequest = serde_json::from_str(body).map_err(|e| format!("amend json: {e}"))?;
             let pay = PayMethod::parse(&req.pay).ok_or_else(|| "bad pay method".to_string())?;
             Reply::of(&store.amend_sale(&req.sale_id, &req.draft, pay, &req.reason, actor)?)
-        }
-        "/table_billing" => {
-            let req: RemoteTableBillingRequest =
-                serde_json::from_str(body).map_err(|e| format!("table billing json: {e}"))?;
-            let table_id = resolve_table_id(store, req.table_name.as_deref(), req.table_id.as_deref())?
-                .ok_or_else(|| "table not found".to_string())?;
-            store.request_billing(&table_id, actor)?;
-            Ok(Reply::done())
-        }
-        "/kot" => {
-            let req: RemoteKotRequest = serde_json::from_str(body).map_err(|e| format!("kot json: {e}"))?;
-            let table_id = resolve_table_id(store, req.table_name.as_deref(), req.table_id.as_deref())?;
-            let kot_ids = store.send_kot(&req.draft, table_id.as_deref(), actor)?;
-            after.kots = kot_ids.clone();
-            Ok(Reply::json(serde_json::json!({ "ok": true, "kot_ids": kot_ids })))
-        }
-        "/kot_reprint" => {
-            // Paper only — Client asks; Server prints on kitchen printers.
-            // Person Reprint right (not DeviceRole) gates this.
-            let req: RemoteKotReprintRequest =
-                serde_json::from_str(body).map_err(|e| format!("kot reprint json: {e}"))?;
-            let (dishes, slips, kitchens, errors) = reprint_selected_kots(store, actor, &req)?;
-            Ok(Reply::json(serde_json::json!({
-                "ok": true,
-                "dishes": dishes,
-                "slips": slips,
-                "kitchens": kitchens,
-                "errors": errors,
-            })))
-        }
-        "/kot_cancelled_print" => {
-            #[derive(serde::Deserialize)]
-            struct Req {
-                order_id: String,
-            }
-            let req: Req =
-                serde_json::from_str(body).map_err(|e| format!("kot cancelled json: {e}"))?;
-            let (dishes, slips, kitchens, errors) =
-                print_cancelled_kots(store, actor, &req.order_id)?;
-            Ok(Reply::json(serde_json::json!({
-                "ok": true,
-                "dishes": dishes,
-                "slips": slips,
-                "kitchens": kitchens,
-                "errors": errors,
-            })))
-        }
-        "/running" => {
-            let req: RemoteRunningRequest = serde_json::from_str(body).map_err(|e| format!("running json: {e}"))?;
-            let pin = Some(req.approval_pin.as_str()).filter(|p| !p.trim().is_empty());
-            let done = apply_running_action(store, actor, pin, &req.request)?;
-            // Guest bill paper only for PrintBill. CancelBatch puts
-            // `batch_ok:` / `batch_noprint:` in `done.text` for the UI status
-            // line — that must never hit the bill printer.
-            if matches!(req.request, RunningAction::PrintBill { .. }) {
-                after.bill = done.text.clone();
-            }
-            after.kots = done.kots;
-            Ok(Reply::json(serde_json::json!({ "ok": true, "text": done.text })))
         }
         "/staff_pin" => {
             let req: RemoteOwnPinRequest =
@@ -2474,7 +1600,6 @@ fn write(store: &Store, route: &str, body: &str, actor: &StaffMember, after: &mu
 
 fn remote_sale(store: &Store, req: &RemoteSaleRequest, actor: &StaffMember) -> Result<Sale, String> {
     let pay = PayMethod::parse(&req.pay).ok_or_else(|| "bad pay method".to_string())?;
-    let table_id = resolve_table_id(store, req.table_name.as_deref(), req.table_id.as_deref())?;
     let customer_for = |store: &Store, needed: bool, what: &str| -> Result<Option<String>, String> {
         if !needed {
             return Ok(None);
@@ -2507,7 +1632,6 @@ fn remote_sale(store: &Store, req: &RemoteSaleRequest, actor: &StaffMember) -> R
         store.finalize_sale_redeem(
             &req.draft,
             pay,
-            table_id.as_deref(),
             customer_id.as_deref(),
             actor,
             &redeem,
@@ -2535,7 +1659,6 @@ fn remote_sale(store: &Store, req: &RemoteSaleRequest, actor: &StaffMember) -> R
         store.finalize_sale_tenders_redeem(
             &req.draft,
             &parts,
-            table_id.as_deref(),
             customer_id.as_deref(),
             actor,
             &redeem,
@@ -2551,29 +1674,6 @@ fn remote_sale(store: &Store, req: &RemoteSaleRequest, actor: &StaffMember) -> R
         store.record_settlement(&sale.id, req.tendered_paise, change, req.tip_paise, "cash", actor)?;
     }
     Ok(sale)
-}
-
-/// Client table UUIDs come from an older snapshot, so match the Server's own
-/// table by name first and only fall back to the id the terminal sent.
-fn resolve_table_id(
-    store: &Store,
-    table_name: Option<&str>,
-    table_id: Option<&str>,
-) -> Result<Option<String>, String> {
-    let tables = store.list_tables()?;
-    if let Some(name) = table_name.map(str::trim).filter(|s| !s.is_empty()) {
-        if let Some(t) = tables.iter().find(|t| t.name.eq_ignore_ascii_case(name)) {
-            return Ok(Some(t.id.clone()));
-        }
-        if let Some(t) = tables.iter().find(|t| t.id == name) {
-            return Ok(Some(t.id.clone()));
-        }
-        return Ok(None);
-    }
-    Ok(table_id
-        .map(str::trim)
-        .filter(|s| !s.is_empty())
-        .and_then(|id| tables.iter().find(|t| t.id == id).map(|t| t.id.clone())))
 }
 
 pub fn write_http_public(
@@ -2642,22 +1742,11 @@ fn public_lan_page(store: &Store, req: &Request) -> Result<Option<Reply>, String
     let route = req.route();
     let path = req.path.split('?').next().unwrap_or(route);
     match (req.method.as_str(), path) {
-        ("GET", "/display") => {
-            let table = req.query("table").unwrap_or_default();
-            let tid = if table.is_empty() {
-                None
-            } else {
-                resolve_table_id(store, Some(table), None)?
-            };
-            Ok(Some(Reply::html(store.display_order_html(tid.as_deref())?)))
-        }
-        ("GET", "/tokens") => Ok(Some(Reply::html(store.tokens_ready_html()?))),
-        ("GET", "/expo") => Ok(Some(Reply::html(store.expo_ready_html()?))),
-        ("GET", "/kiosk") => Ok(Some(Reply::html(store.kiosk_html()?))),
+        ("GET", "/display") => Ok(Some(Reply::html(store.display_order_html()?))),
         ("GET", "/feedback") => Ok(Some(Reply::html(
             r#"<!doctype html><html><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
 <title>Feedback</title><style>body{font-family:sans-serif;padding:1.5rem}button{margin:.25rem;padding:.75rem 1rem;font-size:1.2rem}</style></head>
-<body><h1>How was your meal?</h1>
+<body><h1>How was your visit?</h1>
 <form method="POST" action="/feedback"><input type="hidden" name="score" id="score" value="5"/>
 <p><button type="button" onclick="document.getElementById('score').value=5">★★★★★</button>
 <button type="button" onclick="document.getElementById('score').value=4">★★★★</button>
@@ -2665,87 +1754,16 @@ fn public_lan_page(store: &Store, req: &Request) -> Result<Option<Reply>, String
 <button type="button" onclick="document.getElementById('score').value=2">★★</button>
 <button type="button" onclick="document.getElementById('score').value=1">★</button></p>
 <p><input name="note" placeholder="Optional note" style="width:100%;padding:.5rem"/></p>
-<p><input name="table" placeholder="Table" style="width:100%;padding:.5rem"/></p>
 <button type="submit">Send</button></form></body></html>"#
                 .into(),
         ))),
         ("POST", "/feedback") => {
             let score = form_or_json_i64(&req.body, "score").unwrap_or(5);
             let note = form_or_json_str(&req.body, "note");
-            let table = form_or_json_str(&req.body, "table");
-            store.add_feedback(score, &note, &table)?;
+            store.add_feedback(score, &note, "")?;
             Ok(Some(Reply::html(
                 "<!doctype html><html><body><h1>Thank you</h1></body></html>".into(),
             )))
-        }
-        ("POST", "/kiosk_order") => {
-            #[derive(Deserialize)]
-            struct Item {
-                product_id: String,
-            }
-            #[derive(Deserialize)]
-            struct Body {
-                #[serde(default)]
-                items: Vec<Item>,
-            }
-            let body: Body = serde_json::from_str(if req.body.trim().is_empty() {
-                "{}"
-            } else {
-                &req.body
-            })
-            .unwrap_or(Body { items: Vec::new() });
-            // Counter takeaway: seat on first Parcel / Takeaway table if any.
-            let tables = store.list_tables()?;
-            let tid = tables
-                .iter()
-                .find(|t| {
-                    t.area.to_lowercase().contains("parcel")
-                        || t.name.to_lowercase().contains("take")
-                })
-                .or_else(|| tables.first())
-                .map(|t| t.id.clone());
-            if let Some(tid) = tid {
-                let ids: Vec<String> = body.items.into_iter().map(|i| i.product_id).collect();
-                store.public_add_to_table(&tid, &ids)?;
-                Ok(Some(Reply::json(serde_json::json!({
-                    "ok": true,
-                    "table_id": tid,
-                    "note": "LAN kiosk — sent to counter order"
-                }))))
-            } else {
-                Ok(Some(Reply::refuse(400, "No table for kiosk orders", "")))
-            }
-        }
-        _ if path.starts_with("/t/") => {
-            let rest = &path["/t/".len()..];
-            if req.method == "GET" {
-                let name = urlencoding_decode(rest);
-                let tid = resolve_table_id(store, Some(&name), Some(&name))?
-                    .ok_or_else(|| "Table not found".to_string())?;
-                return Ok(Some(Reply::html(store.table_order_html(&tid)?)));
-            }
-            if req.method == "POST" && rest.contains("/add") {
-                let table_part = rest.split("/add").next().unwrap_or("");
-                let name = urlencoding_decode(table_part.trim_end_matches('/'));
-                let tid = resolve_table_id(store, Some(&name), Some(&name))?
-                    .ok_or_else(|| "Table not found".to_string())?;
-                #[derive(Deserialize)]
-                struct Item {
-                    product_id: String,
-                }
-                #[derive(Deserialize)]
-                struct Body {
-                    #[serde(default)]
-                    items: Vec<Item>,
-                }
-                let body: Body =
-                    serde_json::from_str(if req.body.trim().is_empty() { "{}" } else { &req.body })
-                        .unwrap_or(Body { items: Vec::new() });
-                let ids: Vec<_> = body.items.into_iter().map(|i| i.product_id).collect();
-                store.public_add_to_table(&tid, &ids)?;
-                return Ok(Some(Reply::json(serde_json::json!({ "ok": true }))));
-            }
-            Ok(None)
         }
         _ => Ok(None),
     }
@@ -3166,13 +2184,10 @@ pub fn apply_snapshot(store: &Store, snap: &SyncSnapshot) -> Result<(), String> 
     store.prepare_client_for_server(&snap.server_id)?;
     store.in_transaction(|| {
         store.replace_catalog_from_sync(&snap.products)?;
-        store.replace_menu_meta_from_sync(&snap.categories, &snap.stations)?;
+        store.replace_menu_meta_from_sync(&snap.categories)?;
         store.replace_customers_from_sync(&snap.customers)?;
         store.replace_credit_ledger_from_sync(&snap.ledger)?;
-        store.replace_tables_from_sync(&snap.tables)?;
         store.replace_sales_cache_from_sync(&snap.recent_sales)?;
-        store.replace_kots_from_sync(&snap.open_kots)?;
-        store.replace_running_from_sync(&snap.running_orders)?;
         // Full replace — never leave another shop's people on Lock.
         store.replace_staff_cache_from_sync(&snap.staff)?;
         // Always write — empty title/org/logo means this shop has none (do not
@@ -3437,17 +2452,16 @@ mod tests {
         serde_json::from_str(&reply.body).unwrap()
     }
 
-    /// A Server with a waiter (2222), a manager (9999), a ₹200 Thali and D1.
+    /// A Server with a cashier (2222), a manager (9999) and a ₹200 Thali.
     fn lan_shop() -> (PathBuf, Store, Guard) {
         let path = std::env::temp_dir().join(format!("kirano-lan-{}.sqlite3", new_id()));
         let store = Store::open_path(&path).unwrap();
         let owner = store.list_staff().unwrap().into_iter().next().unwrap();
-        store.add_staff("Wasim", StaffRole::Waiter, "Captain", "2222", &owner).unwrap();
+        store.add_staff("Wasim", StaffRole::Cashier, "Cashier", "2222", &owner).unwrap();
         store.add_staff("Mona", StaffRole::Manager, "Manager", "9999", &owner).unwrap();
         store
             .upsert_product(&Product::new_basic(new_id(), "Thali", Money::from_rupees(200)))
             .unwrap();
-        store.add_table_in_area("D1", "Dine In").unwrap();
         (path, store, Guard::default())
     }
 
@@ -3513,6 +2527,27 @@ mod tests {
         let _ = std::fs::remove_file(path);
     }
 
+    /// A device's cash sale of one Thali, as JSON for `/sale`.
+    fn thali_sale(store: &Store) -> String {
+        let thali = store.list_products(false).unwrap().remove(0);
+        let mut cart = Cart::default();
+        cart.add_or_bump(&thali);
+        serde_json::to_string(&RemoteSaleRequest {
+            draft: cart.to_sale_draft().unwrap(),
+            pay: "cash".into(),
+            customer_id: None,
+            customer_name: None,
+            payments: Vec::new(),
+            tendered_paise: 0,
+            tip_paise: 0,
+            redeem_loyalty_points: 0,
+            redeem_wallet_paise: 0,
+            redeem_voucher_code: String::new(),
+            redeem_voucher_paise: 0,
+        })
+        .unwrap()
+    }
+
     fn snap_has_code(snap: &SyncSnapshot, code: &str) -> bool {
         serde_json::to_string(snap).unwrap().contains(&format!("\"{code}\""))
     }
@@ -3521,22 +2556,14 @@ mod tests {
     fn a_write_needs_a_sign_in_and_a_retry_is_done_once() {
         let (path, store, guard) = lan_shop();
         let (device, session) = paired_phone(&path, &store, &guard, "Wasim", "2222");
-        let thali = store.list_products(false).unwrap().remove(0);
-        let mut cart = Cart::default();
-        cart.add_or_bump(&thali);
-        let kot = serde_json::to_string(&RemoteKotRequest {
-            draft: cart.to_kot_draft().unwrap(),
-            table_name: Some("D1".into()),
-            table_id: None,
-        })
-        .unwrap();
+        let sale = thali_sale(&store);
         // The phone says nothing about who it is: the session decides.
-        let anonymous = answer(&path, &http("POST", "/kot", &[(HEADER_DEVICE, &device)], &kot), "10.0.0.5", &guard);
+        let anonymous = answer(&path, &http("POST", "/sale", &[(HEADER_DEVICE, &device)], &sale), "10.0.0.5", &guard);
         assert_eq!(body(&anonymous)["code"], "sign_in_again");
         let send = || {
             answer(
                 &path,
-                &http("POST", "/kot", &[(HEADER_DEVICE, &device), (HEADER_SESSION, &session), (HEADER_REQUEST, "req-1")], &kot),
+                &http("POST", "/sale", &[(HEADER_DEVICE, &device), (HEADER_SESSION, &session), (HEADER_REQUEST, "req-1")], &sale),
                 "10.0.0.5",
                 &guard,
             )
@@ -3546,179 +2573,23 @@ mod tests {
         // The reply was lost on the Wi‑Fi; the phone sends the same request again.
         let again = send();
         assert_eq!(again.body, first.body);
-        let d1 = store.list_tables().unwrap().into_iter().find(|t| t.name == "D1").unwrap();
-        let order = store.running_order(&d1.id).unwrap().unwrap();
-        assert_eq!(order.lines.len(), 1, "one Thali, not two");
-        let sends: Vec<_> = store.list_audit(50).unwrap().into_iter().filter(|a| a.action == "kot.send").collect();
-        assert_eq!(sends.len(), 1);
-        assert_eq!(sends[0].actor_name, "Wasim", "sent as the signed-in waiter");
+        let sales = store.recent_sales(10).unwrap();
+        assert_eq!(sales.len(), 1, "one bill, not two");
+        assert!(sales[0].created_by_name.starts_with("Wasim"), "billed as the signed-in cashier: {}", sales[0].created_by_name);
         let _ = crate::print_share::take_captured();
         let _ = std::fs::remove_file(path);
     }
 
-    /// A waiter's KOT for a kitchen with no printer: the books take it, and
-    /// the waiter's own screen hears that no paper came out — not only the
-    /// counter. A retry after a lost reply hears the same.
-    #[test]
-    fn a_waiters_kot_with_no_kitchen_printer_tells_the_waiter() {
-        crate::print_share::with_test_printers(crate::print_share::DevicePrinters::default(), || {
-            let (path, store, guard) = lan_shop();
-            let (device, session) = paired_phone(&path, &store, &guard, "Wasim", "2222");
-            let thali = store.list_products(false).unwrap().remove(0);
-            let mut cart = Cart::default();
-            cart.add_or_bump(&thali);
-            let kot = serde_json::to_string(&RemoteKotRequest {
-                draft: cart.to_kot_draft().unwrap(),
-                table_name: Some("D1".into()),
-                table_id: None,
-            })
-            .unwrap();
-            let headers = [(HEADER_DEVICE, device.as_str()), (HEADER_SESSION, session.as_str()), (HEADER_REQUEST, "paper-1")];
-            let send = || answer(&path, &http("POST", "/kot", &headers, &kot), "10.0.0.5", &guard);
-            let first = send();
-            assert_eq!(first.status, 200, "{}", first.body);
-            let problem = body(&first)["print_problem"].as_str().unwrap_or_default().to_string();
-            assert!(problem.contains(crate::print_share::NO_KOT_PRINTER), "{}", first.body);
-            assert_eq!(send().body, first.body, "a retry hears about the paper too");
-            let _ = crate::print_share::take_problems();
-            let _ = crate::print_share::take_captured();
-            let _ = std::fs::remove_file(path);
-        });
-    }
-
-    /// A tablet's cancel: refused → no slip; accepted → one cancel slip,
-    /// printed after the books committed it, and no paper complaint.
-    #[test]
-    fn a_tablets_cancel_prints_its_slip_once_the_books_have_it() {
-        let (path, store, guard) = lan_shop();
-        // Named station + route: empty "Kitchen (no station)" never prints
-        // once the shop has kitchens.
-        let hot = store.add_station("Hot").unwrap();
-        let mut printers = crate::print_share::DevicePrinters::default();
-        let kitchen = printers.add_printer("Kitchen", "192.168.1.50");
-        *printers.route_mut(crate::print_share::RouteKey::Kot {
-            station_id: &hot.id,
-        }) = vec![kitchen];
-        crate::print_share::with_test_printers(printers, || {
-            let (device, session) = paired_phone(&path, &store, &guard, "Wasim", "2222");
-            let mut thali = store.list_products(false).unwrap().remove(0);
-            thali.station_id = hot.id.clone();
-            store.upsert_product(&thali).unwrap();
-            let mut cart = Cart::default();
-            cart.add_or_bump(&thali);
-            let kot = serde_json::to_string(&RemoteKotRequest {
-                draft: cart.to_kot_draft().unwrap(),
-                table_name: Some("D1".into()),
-                table_id: None,
-            })
-            .unwrap();
-            let post = |route: &str, req: &str, body_text: &str| {
-                let headers = [(HEADER_DEVICE, device.as_str()), (HEADER_SESSION, session.as_str()), (HEADER_REQUEST, req)];
-                answer(&path, &http("POST", route, &headers, body_text), "10.0.0.5", &guard)
-            };
-            let sent = post("/kot", "k-1", &kot);
-            assert_eq!(sent.status, 200, "{}", sent.body);
-            assert!(body(&sent).get("print_problem").is_none(), "{}", sent.body);
-            assert_eq!(crate::print_share::take_captured().len(), 1, "the KOT printed");
-            let d1 = store.list_tables().unwrap().into_iter().find(|t| t.name == "D1").unwrap();
-            let line = store.running_order(&d1.id).unwrap().unwrap().lines[0].id.clone();
-            let cancel = |pin: &str| {
-                serde_json::to_string(&RemoteRunningRequest {
-                    approval_pin: pin.into(),
-                    request: RunningAction::Cancel {
-                        line_id: line.clone(),
-                        qty_milli: None,
-                        reason: "Wrong punch".into(),
-                        prepared: false,
-                    },
-                })
-                .unwrap()
-            };
-            let refused = post("/running", "c-1", &cancel(""));
-            assert_eq!(refused.status, 400, "{}", refused.body);
-            assert!(crate::print_share::take_captured().is_empty(), "a refused cancel prints nothing");
-            let done = post("/running", "c-2", &cancel("9999"));
-            assert_eq!(done.status, 200, "{}", done.body);
-            assert!(body(&done).get("print_problem").is_none(), "{}", done.body);
-            let jobs = crate::print_share::take_captured();
-            assert_eq!(jobs.len(), 1, "one cancel slip");
-            assert!(jobs[0].text.contains("CANCEL") && jobs[0].text.contains("Thali"), "{}", jobs[0].text);
-            let _ = std::fs::remove_file(path);
-        });
-    }
-
-    /// Batch cancel over LAN must not print `batch_ok:` on the bill printer.
-    #[test]
-    fn tablet_batch_cancel_never_prints_batch_ok_on_the_bill_printer() {
-        let mut printers = crate::print_share::DevicePrinters::default();
-        let kitchen = printers.add_printer("KitchenKOT", "192.168.1.50");
-        let bill = printers.add_printer("Standard", "192.168.1.51");
-        *printers.route_mut(crate::print_share::RouteKey::Kot { station_id: "" }) = vec![kitchen];
-        *printers.route_mut(crate::print_share::RouteKey::Bill) = vec![bill];
-        crate::print_share::with_test_printers(printers, || {
-            let (path, store, guard) = lan_shop();
-            let (device, session) = paired_phone(&path, &store, &guard, "Wasim", "2222");
-            let thali = store.list_products(false).unwrap().remove(0);
-            let mut cart = Cart::default();
-            cart.add_or_bump(&thali);
-            let kot = serde_json::to_string(&RemoteKotRequest {
-                draft: cart.to_kot_draft().unwrap(),
-                table_name: Some("D1".into()),
-                table_id: None,
-            })
-            .unwrap();
-            let post = |route: &str, req: &str, body_text: &str| {
-                let headers = [
-                    (HEADER_DEVICE, device.as_str()),
-                    (HEADER_SESSION, session.as_str()),
-                    (HEADER_REQUEST, req),
-                ];
-                answer(&path, &http("POST", route, &headers, body_text), "10.0.0.5", &guard)
-            };
-            assert_eq!(post("/kot", "bk-1", &kot).status, 200);
-            let _ = crate::print_share::take_captured();
-            let d1 = store.list_tables().unwrap().into_iter().find(|t| t.name == "D1").unwrap();
-            let line = store.running_order(&d1.id).unwrap().unwrap().lines[0].id.clone();
-            let cancel_body = serde_json::to_string(&RemoteRunningRequest {
-                approval_pin: "9999".into(),
-                request: RunningAction::CancelBatch {
-                    line_ids: vec![line],
-                    reason: "Table left".into(),
-                    prepared: false,
-                },
-            })
-            .unwrap();
-            let done = post("/running", "bk-2", &cancel_body);
-            assert_eq!(done.status, 200, "{}", done.body);
-            let reply = body(&done);
-            let text = reply["text"].as_str().unwrap_or_default();
-            assert!(text.starts_with("batch_ok:"), "{text}");
-            let jobs = crate::print_share::take_captured();
-            assert_eq!(jobs.len(), 1, "one kitchen slip only: {jobs:?}");
-            assert_eq!(jobs[0].kind, crate::print_share::PrintKind::Kot);
-            assert!(!jobs.iter().any(|j| j.text.contains("batch_ok:")), "{jobs:?}");
-            let _ = std::fs::remove_file(path);
-        });
-    }
-
     /// Books busy past the wait (a long write elsewhere) is "not now": a
-    /// 503 the device keeps its KOT for, with no reply recorded — so the
+    /// 503 the device keeps its payment for, with no reply recorded — so the
     /// same request, sent again once the books are free, is done (once).
     #[test]
     fn busy_books_are_a_retry_never_a_refusal() {
         let (path, store, guard) = lan_shop();
         let (device, session) = paired_phone(&path, &store, &guard, "Wasim", "2222");
-        let thali = store.list_products(false).unwrap().remove(0);
-        let mut cart = Cart::default();
-        cart.add_or_bump(&thali);
-        let kot = serde_json::to_string(&RemoteKotRequest {
-            draft: cart.to_kot_draft().unwrap(),
-            table_name: Some("D1".into()),
-            table_id: None,
-        })
-        .unwrap();
+        let sale = thali_sale(&store);
         let headers = [(HEADER_DEVICE, device.as_str()), (HEADER_SESSION, session.as_str()), (HEADER_REQUEST, "busy-1")];
-        let send = || answer(&path, &http("POST", "/kot", &headers, &kot), "10.0.0.5", &guard);
+        let send = || answer(&path, &http("POST", "/sale", &headers, &sale), "10.0.0.5", &guard);
         let holder = Store::open_path(&path).unwrap();
         let held = holder.begin().unwrap();
         let busy = send();
@@ -3728,8 +2599,7 @@ mod tests {
         let done = send();
         assert_eq!(done.status, 200, "{}", done.body);
         assert_eq!(send().body, done.body, "answered from the record");
-        let sends = store.list_audit(50).unwrap().into_iter().filter(|a| a.action == "kot.send").count();
-        assert_eq!(sends, 1);
+        assert_eq!(store.recent_sales(10).unwrap().len(), 1);
         // On the device, a 503 keeps the write waiting like a lost reply.
         assert!(lan_error_for(503, &busy.body).is_offline());
         let _ = crate::print_share::take_captured();
@@ -3822,7 +2692,7 @@ mod tests {
         cart.add_or_bump(&thali);
         let books = Store::open_path(&path).unwrap();
         let sale = books
-            .finalize_sale(&cart.to_sale_draft().unwrap(), PayMethod::Cash, None, None, &owner)
+            .finalize_sale(&cart.to_sale_draft().unwrap(), PayMethod::Cash, None, &owner)
             .unwrap();
         let (device, session) = paired_phone(&path, &store, &guard, "Wasim", "2222");
         let void = |pin: &str, id: &str| {
@@ -3847,8 +2717,8 @@ mod tests {
         let _ = std::fs::remove_file(path);
     }
 
-    /// Lunch rush: a waiter's tablet sends KOTs, a manager's tablet takes
-    /// counter payments and the counter PC bills — all at the same moment,
+    /// Rush hour: a cashier's tablet and a manager's tablet take payments
+    /// and the counter PC bills — all at the same moment,
     /// each on its own connection as in the shop. Every write lands (no
     /// "database is locked"), each exactly once, and no two bills share a
     /// number.
@@ -3857,33 +2727,12 @@ mod tests {
         const EACH: usize = 12;
         let (path, store, guard) = lan_shop();
         let owner = store.list_staff().unwrap().into_iter().find(|s| s.is_owner()).unwrap();
-        let (waiter_dev, waiter) = paired_phone(&path, &store, &guard, "Wasim", "2222");
+        let (cashier_dev, cashier) = paired_phone(&path, &store, &guard, "Wasim", "2222");
         let (manager_dev, manager) = paired_phone(&path, &store, &guard, "Mona", "9999");
         let thali = store.list_products(false).unwrap().remove(0);
         let mut cart = Cart::default();
         cart.add_or_bump(&thali);
-        let kot = serde_json::to_string(&RemoteKotRequest {
-            draft: cart.to_kot_draft().unwrap(),
-            table_name: Some("D1".into()),
-            table_id: None,
-        })
-        .unwrap();
-        let sale = serde_json::to_string(&RemoteSaleRequest {
-            draft: cart.to_sale_draft().unwrap(),
-            pay: "cash".into(),
-            customer_id: None,
-            customer_name: None,
-            table_name: None,
-            table_id: None,
-            payments: Vec::new(),
-            tendered_paise: 0,
-            tip_paise: 0,
-            redeem_loyalty_points: 0,
-            redeem_wallet_paise: 0,
-            redeem_voucher_code: String::new(),
-            redeem_voucher_paise: 0,
-        })
-        .unwrap();
+        let sale = thali_sale(&store);
         let draft = cart.to_sale_draft().unwrap();
         std::thread::scope(|s| {
             let tablet = |device: &str, session: &str, route: &'static str, body: &str, tag: &'static str| {
@@ -3903,80 +2752,56 @@ mod tests {
                     }
                 }
             };
-            s.spawn(tablet(&waiter_dev, &waiter, "/kot", &kot, "kot"));
-            s.spawn(tablet(&manager_dev, &manager, "/sale", &sale, "sale"));
+            s.spawn(tablet(&cashier_dev, &cashier, "/sale", &sale, "cashier"));
+            s.spawn(tablet(&manager_dev, &manager, "/sale", &sale, "manager"));
             s.spawn(|| {
                 let counter = Store::open_path(&path).unwrap();
                 for _ in 0..EACH {
-                    counter.finalize_sale(&draft, PayMethod::Cash, None, None, &owner).unwrap();
+                    counter.finalize_sale(&draft, PayMethod::Cash, None, &owner).unwrap();
                 }
             });
         });
         let sales = store.recent_sales(1000).unwrap();
-        assert_eq!(sales.len(), 2 * EACH, "each payment once: the tablet's and the counter's");
+        assert_eq!(sales.len(), 3 * EACH, "each payment once: both tablets' and the counter's");
         let bills: std::collections::HashSet<_> = sales.iter().map(|s| s.bill_no()).collect();
         assert_eq!(bills.len(), sales.len(), "no two bills share a number");
-        let kots = store.list_audit(1000).unwrap().into_iter().filter(|a| a.action == "kot.send").count();
-        assert_eq!(kots, EACH, "each KOT once");
-        let d1 = store.list_tables().unwrap().into_iter().find(|t| t.name == "D1").unwrap();
-        assert_eq!(store.running_order(&d1.id).unwrap().unwrap().lines.len(), EACH);
         let _ = crate::print_share::take_captured();
         let _ = std::fs::remove_file(path);
     }
 
-    /// A full house: ten tablets, each at its own table, send KOTs and pull
-    /// the books at the same moment, every other reply lost and sent again.
-    /// Every KOT lands exactly once, on its own table, and every pull is
-    /// answered — no "database is locked" with ten devices on the Wi‑Fi.
+    /// A busy day: ten tills take payments and pull the books at the same
+    /// moment, every other reply lost and sent again. Every payment lands
+    /// exactly once and every pull is answered — no "database is locked"
+    /// with ten devices on the Wi‑Fi.
     #[test]
     fn ten_tablets_at_once_lose_and_double_nothing() {
         const TABLETS: usize = 10;
         const EACH: usize = 6;
         let (path, store, guard) = lan_shop();
-        let thali = store.list_products(false).unwrap().remove(0);
-        let mut cart = Cart::default();
-        cart.add_or_bump(&thali);
-        let draft = cart.to_kot_draft().unwrap();
-        let tablets: Vec<(String, String, String)> = (0..TABLETS)
-            .map(|n| {
-                let table = format!("T{n}");
-                store.add_table_in_area(&table, "Dine In").unwrap();
-                let (device, session) = paired_phone(&path, &store, &guard, "Wasim", "2222");
-                (device, session, table)
-            })
+        let sale = thali_sale(&store);
+        let tablets: Vec<(String, String)> = (0..TABLETS)
+            .map(|_| paired_phone(&path, &store, &guard, "Wasim", "2222"))
             .collect();
         std::thread::scope(|s| {
-            for (n, (device, session, table)) in tablets.iter().enumerate() {
-                let (path, guard, draft) = (&path, &guard, &draft);
+            for (n, (device, session)) in tablets.iter().enumerate() {
+                let (path, guard, sale) = (&path, &guard, &sale);
                 s.spawn(move || {
-                    let kot = serde_json::to_string(&RemoteKotRequest {
-                        draft: draft.clone(),
-                        table_name: Some(table.clone()),
-                        table_id: None,
-                    })
-                    .unwrap();
                     for i in 0..EACH {
-                        let id = format!("tab{n}-kot{i}");
+                        let id = format!("tab{n}-sale{i}");
                         let headers = [(HEADER_DEVICE, device.as_str()), (HEADER_SESSION, session.as_str()), (HEADER_REQUEST, id.as_str())];
-                        let first = answer(path, &http("POST", "/kot", &headers, &kot), "10.0.0.5", guard);
-                        assert_eq!(first.status, 200, "tablet {n} KOT {i}: {}", first.body);
+                        let first = answer(path, &http("POST", "/sale", &headers, sale), "10.0.0.5", guard);
+                        assert_eq!(first.status, 200, "till {n} sale {i}: {}", first.body);
                         if i % 2 == 0 {
-                            let again = answer(path, &http("POST", "/kot", &headers, &kot), "10.0.0.5", guard);
-                            assert_eq!(again.body, first.body, "tablet {n} KOT {i} retried");
+                            let again = answer(path, &http("POST", "/sale", &headers, sale), "10.0.0.5", guard);
+                            assert_eq!(again.body, first.body, "till {n} sale {i} retried");
                         }
                         let pulled = answer(path, &http("GET", "/sync", &[(HEADER_DEVICE, device.as_str())], ""), "10.0.0.5", guard);
-                        assert_eq!(pulled.status, 200, "tablet {n} pull {i}: {}", pulled.body);
+                        assert_eq!(pulled.status, 200, "till {n} pull {i}: {}", pulled.body);
                     }
                 });
             }
         });
-        let kots = store.list_audit(10_000).unwrap().into_iter().filter(|a| a.action == "kot.send").count();
-        assert_eq!(kots, TABLETS * EACH, "each KOT once");
-        let tables = store.list_tables().unwrap();
-        for (_, _, name) in &tablets {
-            let table = tables.iter().find(|t| &t.name == name).unwrap();
-            assert_eq!(store.running_order(&table.id).unwrap().unwrap().lines.len(), EACH, "{name}");
-        }
+        assert_eq!(store.recent_sales(10_000).unwrap().len(), TABLETS * EACH, "each payment once");
         let _ = crate::print_share::take_captured();
         let _ = std::fs::remove_file(path);
     }
@@ -4010,7 +2835,7 @@ mod tests {
             for k in 0..3 {
                 cart.add_or_bump(&products[(n * 7 + k * 13) % products.len()]);
             }
-            let sale = store.finalize_sale(&cart.to_sale_draft().unwrap(), PayMethod::Cash, None, None, &owner).unwrap();
+            let sale = store.finalize_sale(&cart.to_sale_draft().unwrap(), PayMethod::Cash, None, &owner).unwrap();
             let days_ago = ((BILLS - 1 - n) / 300) as i64;
             if days_ago > 0 {
                 store.backdate_sale_for_test(&sale.id, &(now - chrono::Duration::days(days_ago)).to_rfc3339());
@@ -4120,238 +2945,6 @@ mod tests {
         assert!(read_request(&mut Trickle(cut.as_bytes().to_vec(), 0)).is_err());
     }
 
-    /// The waiter's tablet and the Server agree on the wire shape.
-    #[test]
-    fn running_actions_travel_as_tagged_json() {
-        let req = RemoteRunningRequest {
-            approval_pin: "9999".into(),
-            request: RunningAction::Cancel {
-                line_id: "l1".into(),
-                qty_milli: Some(1000),
-                reason: "Guest changed mind".into(),
-                prepared: true,
-            },
-        };
-        let json = serde_json::to_value(&req).unwrap();
-        assert_eq!(json["request"]["action"], "cancel");
-        let back: RemoteRunningRequest = serde_json::from_value(json).unwrap();
-        assert!(matches!(back.request, RunningAction::Cancel { prepared: true, .. }));
-        let batch = RemoteRunningRequest {
-            approval_pin: String::new(),
-            request: RunningAction::CancelBatch {
-                line_ids: vec!["l1".into(), "l2".into()],
-                reason: "Table left".into(),
-                prepared: false,
-            },
-        };
-        let bj = serde_json::to_value(&batch).unwrap();
-        assert_eq!(bj["request"]["action"], "cancel_batch");
-        let back_b: RemoteRunningRequest = serde_json::from_value(bj).unwrap();
-        assert!(matches!(
-            back_b.request,
-            RunningAction::CancelBatch { ref line_ids, .. } if line_ids.len() == 2
-        ));
-        // An older tablet that sends no PIN still parses.
-        let old: RemoteRunningRequest = serde_json::from_str(
-            r#"{"request":{"action":"print_bill","table_id":"t1"}}"#,
-        )
-        .unwrap();
-        assert!(old.approval_pin.is_empty());
-    }
-
-    /// Marked cancel: one slip per kitchen for every dish cancelled together.
-    #[test]
-    fn batch_cancel_prints_one_slip_per_kitchen() {
-        let mut printers = crate::print_share::DevicePrinters::default();
-        let kitchen = printers.add_printer("Kitchen", "192.168.1.50");
-        *printers.route_mut(crate::print_share::RouteKey::Kot { station_id: "" }) =
-            vec![kitchen];
-        crate::print_share::with_test_printers(printers, || {
-            let path = std::env::temp_dir().join(format!("kirano-batch-cancel-{}.sqlite3", new_id()));
-            let store = Store::open_path(&path).unwrap();
-            let owner = store.list_staff().unwrap().into_iter().next().unwrap();
-            store
-                .upsert_product(&Product::new_basic(new_id(), "Thali", Money::from_rupees(200)))
-                .unwrap();
-            store
-                .upsert_product(&Product::new_basic(new_id(), "Chaas", Money::from_rupees(40)))
-                .unwrap();
-            let products = store.list_products(false).unwrap();
-            let thali = products.iter().find(|p| p.name == "Thali").unwrap().clone();
-            let chaas = products.iter().find(|p| p.name == "Chaas").unwrap().clone();
-            let table = store.add_table_in_area("D1", "Dine In").unwrap();
-            let mut cart = Cart::default();
-            cart.add_or_bump(&thali);
-            cart.add_or_bump(&chaas);
-            store
-                .send_kot(&cart.to_kot_draft().unwrap(), Some(&table.id), &owner)
-                .unwrap();
-            let ids: Vec<String> = store
-                .running_order(&table.id)
-                .unwrap()
-                .unwrap()
-                .lines
-                .iter()
-                .map(|l| l.id.clone())
-                .collect();
-            assert_eq!(ids.len(), 2);
-            crate::print_share::take_captured();
-            let done = apply_running_action(
-                &store,
-                &owner,
-                None,
-                &RunningAction::CancelBatch {
-                    line_ids: ids,
-                    reason: "Table left".into(),
-                    prepared: false,
-                },
-            )
-            .unwrap();
-            assert!(done.kots.is_empty(), "batch cancel must not print via per-item KOT ids");
-            let raw = done.text.clone().unwrap_or_default();
-            assert!(raw.starts_with("batch_ok:"), "status stays off paper: {raw}");
-            let jobs = crate::print_share::take_captured();
-            assert_eq!(jobs.len(), 1, "one slip for the shared kitchen: {jobs:?}");
-            assert!(
-                jobs[0].text.contains("Thali") && jobs[0].text.contains("Chaas"),
-                "{}",
-                jobs[0].text
-            );
-            assert!(
-                jobs[0].text.contains("Thali\t"),
-                "Item and Qty must be separate columns:\n{}",
-                jobs[0].text
-            );
-            assert!(!jobs.iter().any(|j| j.text.contains("batch_ok:")), "{jobs:?}");
-            assert!(store.running_order(&table.id).unwrap().is_none());
-            let _ = std::fs::remove_file(path);
-        });
-    }
-
-    /// The LAN endpoint and the counter share one entry point, so a
-    /// waiter's tablet obeys the same rights as the counter.
-    #[test]
-    fn table_actions_from_a_tablet_obey_the_servers_rights() {
-        // Empty KOT routes skip print (and Capture); give the unassigned
-        // kitchen a printer so the cancel slip is recorded.
-        let mut printers = crate::print_share::DevicePrinters::default();
-        let kitchen = printers.add_printer(
-            "Kitchen", "192.168.1.50");
-        *printers.route_mut(crate::print_share::RouteKey::Kot { station_id: "" }) =
-            vec![kitchen];
-        crate::print_share::with_test_printers(printers, || {
-            let path = std::env::temp_dir().join(format!("kirano-net-{}.sqlite3", new_id()));
-            let store = Store::open_path(&path).unwrap();
-            let owner = store.list_staff().unwrap().into_iter().next().unwrap();
-            store.add_staff("Wasim", StaffRole::Waiter, "Captain", "2222", &owner).unwrap();
-            store.add_staff("Mona", StaffRole::Manager, "Manager", "9999", &owner).unwrap();
-            let waiter = store.list_staff().unwrap().into_iter().find(|s| s.name == "Wasim").unwrap();
-            store
-                .upsert_product(&Product::new_basic(new_id(), "Thali", Money::from_rupees(200)))
-                .unwrap();
-            let thali = store.list_products(false).unwrap().remove(0);
-            let table = store.add_table_in_area("D1", "Dine In").unwrap();
-            let mut cart = Cart::default();
-            cart.add_or_bump(&thali);
-            store.send_kot(&cart.to_kot_draft().unwrap(), Some(&table.id), &waiter).unwrap();
-            let line = store.running_order(&table.id).unwrap().unwrap().lines[0].id.clone();
-
-            let cancel = RunningAction::Cancel {
-                line_id: line.clone(),
-                qty_milli: None,
-                reason: "Wrong punch".into(),
-                prepared: false,
-            };
-            assert!(apply_running_action(&store, &waiter, None, &cancel).is_err());
-            assert!(crate::print_share::take_captured().is_empty(), "a refused cancel prints nothing");
-            let done = apply_running_action(&store, &waiter, Some("9999"), &cancel).unwrap();
-            // The action itself prints nothing: its caller prints the slip once
-            // the books have the cancel (never inside the write).
-            assert!(crate::print_share::take_captured().is_empty());
-            assert_eq!(done.kots.len(), 1);
-            assert_eq!(print_sent_kots(&store, &done.kots), None);
-            // The kitchen's cancel slip printed once (captured, never the OS).
-            let jobs = crate::print_share::take_captured();
-            assert_eq!(jobs.len(), 1);
-            assert!(jobs[0].text.contains("CANCEL") && jobs[0].text.contains("Thali"), "{}", jobs[0].text);
-            // The only item was cancelled, so there is no bill to print.
-            let print = RunningAction::PrintBill { table_id: table.id.clone() };
-            assert!(apply_running_action(&store, &waiter, None, &print).is_err(), "nothing left to bill");
-            // …and the table is free again on every tablet.
-            let snapshot = build_snapshot(&store).unwrap();
-            assert!(snapshot.running_orders.is_empty());
-            let freed = store.list_tables().unwrap().into_iter().find(|t| t.id == table.id).unwrap();
-            assert_eq!(freed.status, crate::domain::TableStatus::Available);
-            let _ = std::fs::remove_file(path);
-        });
-    }
-
-    /// Auto-print sends one paper per station, without prices; off means
-    /// no paper. Checked against captured jobs — the OS printer is never
-    /// touched by tests.
-    #[test]
-    fn sent_kots_print_one_paper_per_station_without_prices() {
-        let path = std::env::temp_dir().join(format!("kirano-kotprint-{}.sqlite3", new_id()));
-        let store = Store::open_path(&path).unwrap();
-        let owner = store.list_staff().unwrap().into_iter().next().unwrap();
-        let tandoor = store.add_station("Tandoor").unwrap();
-        let mut naan = Product::new_basic(new_id(), "Butter Naan", Money::from_rupees(45));
-        naan.station_id = tandoor.id.clone();
-        store.upsert_product(&naan).unwrap();
-        store
-            .upsert_product(&Product::new_basic(new_id(), "Chaas", Money::from_rupees(30)))
-            .unwrap();
-        let table = store.add_table_in_area("D1", "Dine In").unwrap();
-        let mut cart = Cart::default();
-        for p in store.list_products(false).unwrap() {
-            cart.add_or_bump(&p);
-        }
-        let ids = store.send_kot(&cart.to_kot_draft().unwrap(), Some(&table.id), &owner).unwrap();
-        assert_eq!(ids.len(), 2, "one KOT per station");
-
-        // Each station (and the unassigned kitchen) needs its own route —
-        // empty routes skip Capture, matching Settings.
-        let mut printers = crate::print_share::DevicePrinters::default();
-        let kitchen = printers.add_printer(
-            "Kitchen", "192.168.1.50");
-        *printers.route_mut(crate::print_share::RouteKey::Kot { station_id: "" }) =
-            vec![kitchen.clone()];
-        *printers.route_mut(crate::print_share::RouteKey::Kot {
-            station_id: &tandoor.id,
-        }) = vec![kitchen];
-        crate::print_share::with_test_printers(printers, || {
-            let _ = crate::print_share::take_captured();
-            assert_eq!(print_sent_kots(&store, &ids), None);
-            let jobs = crate::print_share::take_captured();
-            assert_eq!(jobs.len(), 2);
-            // The compact ticket (owner-styled per line) names the KOT and the
-            // table; each station's paper carries only that station's dishes.
-            let papers: Vec<String> = jobs
-                .iter()
-                .map(|j| crate::print_share::strip_kot_style_marks(&j.text))
-                .collect();
-            assert!(
-                papers.iter().any(|t| t.contains("Butter Naan") && !t.contains("Chaas")),
-                "Tandoor paper: {papers:?}"
-            );
-            assert!(
-                papers.iter().any(|t| t.contains("Chaas") && !t.contains("Butter Naan")),
-                "unassigned-kitchen paper: {papers:?}"
-            );
-            assert!(papers.iter().all(|t| t.contains("KOT") && t.contains("D1")), "{papers:?}");
-            // No money on a kitchen ticket. (Not bare digits: the ticket's
-            // time, e.g. 16:30, may contain them.)
-            assert!(
-                jobs.iter().all(|j| !j.text.contains('₹') && !j.text.contains("45.00") && !j.text.contains("30.00")),
-                "no prices"
-            );
-            store.set_kot_auto_print(false).unwrap();
-            assert_eq!(print_sent_kots(&store, &ids), None);
-            assert!(crate::print_share::take_captured().is_empty());
-        });
-        let _ = std::fs::remove_file(path);
-    }
-
     /// Stops a test's Server when dropped — also when an assertion fails,
     /// so a failing test fails instead of hanging.
     struct StopOnDrop<'a>(&'a AtomicBool);
@@ -4435,74 +3028,26 @@ mod tests {
         let _ = std::fs::remove_dir_all(device.brand_images_dir().unwrap());
     }
 
-    /// Client Order must show the Server's kitchens — never only
-    /// "Kitchen (no station)" while dishes still carry a station id.
-    #[test]
-    fn client_sync_carries_kitchen_stations_and_dish_routing() {
-        let (path, store, _) = lan_shop();
-        let tandoor = store.add_station("Tandoor").unwrap();
-        let cold = store.add_station("Cold").unwrap();
-        store
-            .set_station_picker_enabled(&cold.id, false, &store.list_staff().unwrap()[0])
-            .unwrap();
-        let mut naan = Product::new_basic(new_id(), "Butter Naan", Money::from_rupees(45));
-        naan.station_id = tandoor.id.clone();
-        store.upsert_product(&naan).unwrap();
-
-        let snap = build_snapshot(&store).unwrap();
-        assert_eq!(snap.stations.len(), 2, "snapshot must list every kitchen");
-        assert!(
-            snap.products.iter().any(|p| p.name == "Butter Naan" && p.station_id == tandoor.id),
-            "snapshot must keep dish → station"
-        );
-
-        let device_path =
-            std::env::temp_dir().join(format!("kirano-client-stations-{}.sqlite3", new_id()));
-        let device = Store::open_path(&device_path).unwrap();
-        device.prepare_as_client_terminal().unwrap();
-        apply_snapshot(&device, &snap).unwrap();
-
-        let stations = device.list_stations().unwrap();
-        assert_eq!(
-            stations.len(),
-            2,
-            "Client cache must keep Server kitchens, got {stations:?}"
-        );
-        assert!(stations.iter().any(|s| s.id == tandoor.id && s.name == "Tandoor"));
-        assert!(stations.iter().any(|s| s.id == cold.id && s.name == "Cold" && !s.picker_enabled));
-        let picker = device.list_picker_stations().unwrap();
-        assert_eq!(
-            picker.iter().map(|s| s.name.as_str()).collect::<Vec<_>>(),
-            ["Tandoor"],
-            "Order multi-check shows picker-on kitchens only"
-        );
-        let dish = device
-            .list_products(false)
-            .unwrap()
-            .into_iter()
-            .find(|p| p.name == "Butter Naan")
-            .expect("synced dish");
-        assert_eq!(dish.station_id, tandoor.id, "Client menu must keep station routing");
-
-        let _ = std::fs::remove_file(path);
-        let _ = std::fs::remove_file(device_path);
-    }
-
     /// A snapshot lands whole or not at all: one that fails partway (here a
     /// damaged table list) leaves the device's books as they were — never a
     /// menu half replaced.
     #[test]
     fn a_snapshot_lands_whole_or_not_at_all() {
         let (path, store, _) = lan_shop();
+        let owner = store.list_staff().unwrap().into_iter().find(|s| s.is_owner()).unwrap();
+        let thali = store.list_products(false).unwrap().remove(0);
+        let mut cart = Cart::default();
+        cart.add_or_bump(&thali);
+        store.finalize_sale(&cart.to_sale_draft().unwrap(), PayMethod::Cash, None, &owner).unwrap();
         let device_path = std::env::temp_dir().join(format!("kirano-device-{}.sqlite3", new_id()));
         let device = Store::open_path(&device_path).unwrap();
         let first = build_snapshot(&store).unwrap();
         apply_snapshot(&device, &first).unwrap();
         let mut broken = first.clone();
         broken.products.push(Product::new_basic(new_id(), "Chaas", Money::from_rupees(30)));
-        let twin = broken.tables[0].clone();
-        broken.tables.push(twin);
-        assert!(apply_snapshot(&device, &broken).is_err(), "the same table twice cannot be written");
+        let twin = broken.recent_sales[0].clone();
+        broken.recent_sales.push(twin);
+        assert!(apply_snapshot(&device, &broken).is_err(), "the same bill twice cannot be written");
         let menu: Vec<_> = device.list_products(false).unwrap().into_iter().map(|p| p.name).collect();
         assert_eq!(menu, ["Thali"], "the menu is still the last whole snapshot's");
         let _ = std::fs::remove_file(path);
@@ -4510,7 +3055,7 @@ mod tests {
     }
 
     /// The shop's real door: a Server on a spare port and eight devices
-    /// pairing, signing in, sending KOTs and payments (each twice, as after
+    /// pairing, signing in, sending payments (each twice, as after
     /// a lost reply) and pulling the books at the same time, over real
     /// sockets — HTTP framing, gzip, 304 and `/wait` included. Every write
     /// lands exactly once.
@@ -4528,7 +3073,7 @@ mod tests {
         let base = format!("http://{addr}");
         let running = AtomicBool::new(true);
         let code = store.pairing_code().unwrap();
-        // A manager: takes orders and payments (a waiter may not take payment).
+        // A manager: takes payments.
         let mona = staff_id(&store, "Mona");
         std::thread::scope(|s| {
             let db = path.clone();
@@ -4547,31 +3092,20 @@ mod tests {
                         let mut cart = Cart::default();
                         cart.add_or_bump(&thali);
                         for i in 0..EACH {
-                            let (route, body) = if i % 2 == 0 {
-                                let kot = RemoteKotRequest {
-                                    draft: cart.to_kot_draft().unwrap(),
-                                    table_name: Some("D1".into()),
-                                    table_id: None,
-                                };
-                                ("/kot", serde_json::to_string(&kot).unwrap())
-                            } else {
-                                let sale = RemoteSaleRequest {
-                                    draft: cart.to_sale_draft().unwrap(),
-                                    pay: "cash".into(),
-                                    customer_id: None,
-                                    customer_name: None,
-                                    table_name: None,
-                                    table_id: None,
-                                    payments: Vec::new(),
-                                    tendered_paise: 0,
-                                    tip_paise: 0,
-                                    redeem_loyalty_points: 0,
-                                    redeem_wallet_paise: 0,
-                                    redeem_voucher_code: String::new(),
-                                    redeem_voucher_paise: 0,
-                                };
-                                ("/sale", serde_json::to_string(&sale).unwrap())
+                            let sale = RemoteSaleRequest {
+                                draft: cart.to_sale_draft().unwrap(),
+                                pay: "cash".into(),
+                                customer_id: None,
+                                customer_name: None,
+                                payments: Vec::new(),
+                                tendered_paise: 0,
+                                tip_paise: 0,
+                                redeem_loyalty_points: 0,
+                                redeem_wallet_paise: 0,
+                                redeem_voucher_code: String::new(),
+                                redeem_voucher_paise: 0,
                             };
+                            let (route, body) = ("/sale", serde_json::to_string(&sale).unwrap());
                             let id = format!("device{d}-{i}");
                             let first = client_send(&link, route, &body, &id).unwrap();
                             // The reply was "lost": the same request again.
@@ -4585,9 +3119,7 @@ mod tests {
             let links: Vec<Link> = devices.into_iter().map(|h| h.join().unwrap()).collect();
 
             let books = Store::open_path(&path).unwrap();
-            assert_eq!(books.recent_sales(1000).unwrap().len(), DEVICES * EACH / 2, "each payment once");
-            let kots = books.list_audit(1000).unwrap().into_iter().filter(|a| a.action == "kot.send").count();
-            assert_eq!(kots, DEVICES * EACH / 2, "each KOT once");
+            assert_eq!(books.recent_sales(1000).unwrap().len(), DEVICES * EACH, "each payment once");
             assert_eq!(books.list_lan_devices().unwrap().len(), DEVICES);
 
             // Nothing changes now: a device holding the latest books gets

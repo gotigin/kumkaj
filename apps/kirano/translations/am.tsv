@@ -68,28 +68,6 @@ applied	የተተገበረ
 note_ph	ማስታወሻ (አማራጭ)
 rounded	የተጠጋጋ
 split	ክፈል
-send_kot	Send slip
-send_kot_to	ላክ → {kitchens}
-send_kot_again	ለቀጣዩ ሸርተቴ እቃዎችን ያክሉ
-send_kot_held	የተያዙ እቃዎች - ለመላክ ይንቀሉ
-reprint_kot	የተመረጡትን እንደገና አትም
-reprint_kot_ok	Printed {n} items again · {slips} slip(s) → {kitchens}
-reprint_kot_needed	Send a slip first — then include items and print the selected ones again
-reprint_kot_none_selected	እያንዳንዱ የተላከ ንጥል ተዘልሏል - እንደገና በሚታተሙት ላይ በህትመት ላይ መታ ያድርጉ
-reprint_kot_client	Print again ({n}) for {place} sent — the shop device prints it
-print_cancelled_kot	የተሰረዙትን ሁሉ አትም
-print_cancelled_kot_ok	Printed {n} cancelled items · {slips} slip(s) → {kitchens}
-print_cancelled_kot_needed	Open a table with cancelled items first
-print_cancelled_kot_none	በዚህ ትዕዛዝ ላይ ምንም የተሰረዙ እቃዎች የሉም
-print_cancelled_kot_client	Print cancelled ({n}) for {place} sent — the shop device prints it
-kot_banner	የአይነት ሰንደቅ
-kot_banner_ph	ሰንደቅ (ባዶ = የለም)
-kot_item_prefix	የእቃ ቅድመ ቃል
-kot_item_prefix_ph	ለምሳሌ [የተሰረዘ]
-kot_strike	Strike item name
-kot_strike_note	Strike item note
-kot_strike_on	በርቷል
-kot_strike_off	ጠፍቷል
 bill_item_layout	የእቃ አቀማመጥ
 bill_item_layout_columns	አምዶች
 bill_item_layout_stacked	ተደራራቢ
@@ -118,8 +96,6 @@ bill_item_gap_em	ክፍተት (em)
 bill_item_qty_min	ዝቅተኛ ብዛት (em)
 bill_item_price_min	ዝቅተኛ ዋጋ (em)
 bill_item_amount_min	ዝቅተኛ መጠን (em)
-kot_item_qty_width	የብዛት አምድ
-kot_item_num_align	የብዛት አሰላለፍ
 bill_total_qty_label	የጠቅላላ ብዛት መለያ
 bill_total_subtotal_label	የንዑስ ድምር መለያ
 bill_total_grand_label	የጠቅላላ ድምር መለያ
@@ -131,36 +107,9 @@ bill_item_piece_off	ጠፍቷል
 bill_total_qty	ጠቅላላ ብዛት
 bill_total_subtotal	ንዑስ ድምር
 bill_total_grand	ጠቅላላ ድምር
-reprint_incl	በህትመት ውስጥ
-reprint_skip	ዝለል
-reprint_skip_meta	የማገገሚያ ህትመት ዝለል
-kot_dest_hint	በቅንብሮች → ማተሚያዎች ውስጥ ለ {kitchens} በመደቡት ማተሚያዎች ላይ ያትማል
-kot_sent_hint	የመጨረሻው መላክ ወደ {kitchens} ሄዷል። ለቀጣዩ ሂሳብ እቃዎችን ለመጨመር መታ ያድርጉ - ወይም ለተመሳሳዩ እንደገና ያትሙ መንሸራተቻ።
-kot_sent_printing	Slip sent to {kitchens} — printing
-kot_sent_not_printed	Slip sent to {kitchens} but NOT printed: {why}. Tell the shop, then fix the printer and print it again.
-kot_sent_screen	Slip sent to {kitchens}
-kot_queued_shop	Slip for {place} → {kitchens} saved; the shop device prints it
-kot_job_label	Slip for {place} → {kitchens}
-kot_job_reached	Slip for {place} reached {kitchens}
 kot_unassigned	Unassigned
-kot_unassigned_held	ያለ ጣቢያ የተያዙ {n} እቃዎች - ለመላክ በመስመሩ ላይ ይያዙ
-kot_station_ph	ጣቢያ
-kot_station_dd	ጣቢያ
-kot_station_dd_n	Station · {stations}
-kot_set_station	ይህን ጣቢያ ተጠቀም
-kot_station_applied	Station set on {n} items: {station}
-kot_station_cleared	Station cleared from {n} items: {station}
-kot_station_needed	Pick a shop section first
-kot_station_not_allowed	ክፍል መጠቀም አይፈቀድም {station}
-kot_station_none	እስካሁን ምንም ጣቢያዎች የሉም - በቆጣሪ ሱቅ ላይ ጥቅም ላይ ያልዋለ (አስፈላጊ ከሆነ ቅንጅቶች → አካባቢዎች)
 pos_tab_items	የተጨመሩ እቃዎች
 pos_tab_payment	ክፍያ
-hold_send	ያዝ
-hold_send_on	ተይዟል
-hold_send_meta	ተይዟል - በዚህ ሸርተቴ ላይ አይደለም
-station_remove	ጣቢያ አስወግድ
-station_remove_ph	ለማስወገድ በዝርዝሩ ውስጥ ጣቢያ ይንኩ
-station_removed	ጣቢያ ተወግዷል፦ {name}
 settings_hub_title	ቅንብሮች
 settings_hub_help	በአንድ ጊዜ አንድ ክፍል ይክፈቱ — ያነሰ ማሸብለል፣ ግልጽ ምርጫ።
 settings_back	ተመለስ
@@ -169,12 +118,10 @@ settings_sec_country	ሀገር እና ግብር
 settings_sec_tills	ሌሎች መሣሪያዎች
 settings_sec_brand	የእርስዎ ምልክት
 settings_sec_units	መለኪያዎች እና ቅየራዎች
-settings_sec_pickers	አካባቢዎች · ጣቢያዎች · የግብር ተመኖች
+settings_sec_pickers	የግብር ተመኖች
 settings_sec_printers	ማተሚያዎች
 settings_sec_bill	የቢል & ተንሸራታች ቅርጸት
 settings_sec_selling	ቅናሾች እና ሽያጭ
-bill_kot_tab_bill	ሂሳብ
-bill_kot_tab_kot	Slip
 settings_sec_alerts	ማንቂያዎች
 alerts_help	የሁኔታ መልዕክቶች በማያው ላይ ለእርስዎ ምን ያህል ጊዜ እንደሚቆዩ (ይህ መግቢያ)።
 snack_secs_ph	ሰከንዶች (3–60፣ ነባሪ 10)
@@ -225,8 +172,6 @@ counter	ቆጣሪ
 dine_in	ቆጣሪ
 takeaway	ይዞ መሄድ
 order	ትዕዛዝ
-tables	ቆጣሪዎች
-kitchen	Sections
 sales	ሽያጭ
 sales_refunds	ሽያጭ እና ተመላሾች
 day_close	የቀን መዝጊያ
@@ -254,10 +199,6 @@ zero_sales_on	₹0 ፍቀድ
 zero_sales_off	ዋጋ ጠይቅ
 zero_sales_saved_on	ዜሮ ዋጋ ያላቸው ሽያጮች ተፈቅደዋል
 zero_sales_saved_off	ሽያጭ ከ ₹0 በላይ ዋጋ ሊኖረው ይገባል
-floor_areas_help	ቦታዎች ወለሉ ላይ ያሉ ክፍሎች ወይም ዞኖች ናቸው (Dine In, Parcel, AC...). መጀመሪያ አንድ ቦታ ይጨምሩ, ከዚያም ቆጣሪዎችን በውስጡ ያስቀምጡ - እያንዳንዱ ቦታ ወለሉ ላይ የተለየ ቡድን ነው.
-area_new_ph	አዲስ አካባቢ / ክፍል (ለምሳሌ ኤሲ፣ የአትክልት ስፍራ)
-add_area	አካባቢ ጨምር
-area_added	አካባቢ "{name}" ዝግጁ - ቆጣሪዎችን ወደ ውስጥ ያክሉ
 no_favorites	ገና ተወዳጅ የለም — ከታች ካለው ዝርዝር እቃዎችን ይጨምሩ።
 add_to_bill	ወደ ሂሳብ ጨምር
 added	ተጨምሯል
@@ -268,19 +209,9 @@ chip_missing_customer	የተመረጠው ደንበኛ ጠፍቷል — እንደ
 chip_no_customer	ገና ደንበኛ የለም — ስም ይጻፉ፣ ከዚያ ብድር ይንኩ
 credit_summary_fmt	{} ደንበኞች · ክፍት ብድር {} · የተያዘ ቅድሚያ {}
 recent_label	የቅርብ፦
-kot_new_waiting	አዲስ — በመጠባበቅ
-kot_preparing	በዝግጅት ላይ
-kot_ready_serve	ዝግጁ — አቅርብ
-kot_done_cap	ተጠናቋል
-kot_cancelled	ተሰርዟል
-kot_start_btn	ጀምር
-kot_mark_ready	ዝግጁ ምልክት አድርግ
-kot_done_btn	ጨርስ
-table_free	ነፃ — ትዕዛዝ ለመጀመር ይንኩ
 start_order	ትዕዛዝ ጀምር
 open_bill	ሂሳብ ክፈት
 collect_payment	ክፍያ ሰብስብ
-table_running	በሂደት ላይ
 payment_pending	ክፍያ በመጠባበቅ ላይ
 collect_at_counter	በቆጣሪ ሰብስብ
 inventory	ክምችት
@@ -313,7 +244,6 @@ ok	እሺ
 this_shop	ሰርቨር
 extra_till	ክላየንት
 off	ጠፍቷል
-tables_kitchen	Shop layout
 server	ሰርቨር
 client	ክላየንት
 language_currency	ቋንቋ እና ገንዘብ
@@ -355,8 +285,6 @@ add_item_plain	እቃ ጨምር
 add_note	ማስታወሻ ጨምር
 add_opening_balance	የመክፈቻ ቀሪ ጨምር
 add_staff	ሰራተኛ ጨምር
-add_station	ጣቢያ ጨምር
-add_table	ጠረጴዛ ጨምር
 add_unit	መለኪያ ጨምር
 add_use_name	ይህን ስም ጨምር / ተጠቀም
 allow_extra_tills	ተጨማሪ ቆጣሪዎችን ፍቀድ
@@ -409,7 +337,6 @@ share_whatsapp	በ WhatsApp አጋራ
 lan_pages_heading	የደንበኛ ገጾች በWi-Fi ላይ
 lan_pages_help	On this shop’s Wi‑Fi, customer pages work for the display board and feedback. People on mobile data need Cloud later. A card terminal or payment link is optional and never blocks the counter.
 diag_send_heading	ከዚህ መሣሪያ ውጭ አጋራ
-kot_dest_heading	ጣቢያ
 optional_login_heading	አማራጭ መግቢያ
 rights_heading	መብቶች
 ops_panel	የአካባቢ ሥራ
@@ -436,28 +363,6 @@ till_voucher_amt_ph	የቫውቸር መጠን (ባዶ = ሁሉ)
 till_wallet_topup_ph	የኪስ ቦርሳ መሙያ መጠን
 till_voucher_issue_amt_ph	የሚሰጥ የቫውቸር መጠን
 till_voucher_issue_code_ph	አዲስ የቫውቸር ኮድ
-split_evenly	እኩል ክፈል
-waitlist	የጥበቃ ዝርዝር
-fire_course	ቀጣይ ደረጃ
-hold_item	ያዝ
-waiter_call	ገንዘብ ተቀባይ ይደውሉ
-waitlist_add	ወደ የጥበቃ ዝርዝር ጨምር
-floor_view_grid	ፍርግርግ
-floor_view_layout	አቀማመጥ
-floor_layout_x	X
-floor_layout_y	Y
-floor_layout_w	W
-floor_layout_h	H
-floor_layout_save	አቀማመጥ አስቀምጥ
-floor_layout_open	ጠረጴዛ ክፈት
-floor_layout_edit	አቀማመጥ አስተካክል
-floor_layout_pick	አቀማመጡን ለማስተካከል ጠረጴዛ ይንኩ
-floor_layout_saved	አቀማመጥ ተቀምጧል
-floor_layout_nudge_left	← 20
-floor_layout_nudge_right	→ 20
-floor_layout_nudge_up	↑ 20
-floor_layout_nudge_down	↓ 20
-sibling_pickers_help	እንደ መለኪያዎች በርቷል/ጠፍቷል ይንኩ — አካባቢዎችን፣ ጣቢያዎችን እና የግብር ተመኖችን ከዕለታዊ መራጮች ይደብቁ፤ የጥቅል ነባሪዎች ይቆያሉ።
 bulk_price_apply	የጅምላ ዋጋ ተግብር
 card_terminal_optional	የካርድ ተርሚናል / የክፍያ አገናኝ (በይነመረብ ሲኖር አማራጭ)
 copy_report	ሪፖርት ቅዳ
@@ -483,7 +388,6 @@ import_day	ቀን አስመጣ
 import_items_csv_plain	የእቃዎች CSV አስመጣ…
 import_parties_csv	የተዋዋዮች CSV አስመጣ…
 item_name	የእቃ ስም
-kitchen_printing	ማተሚያዎች
 login_id_ph	የተጠቃሚ ስም
 mark_cleared	እንደተጠራቀመ ምልክት አድርግ
 new_party_clear	አዲስ ተዋዋይ (ቅጹን አጽዳ)
@@ -553,15 +457,6 @@ show	አሳይ
 spreadsheet_csv	ተመን ሰንጠረዥ (CSV)
 start_fresh	አዲስ ጀምር
 stop_extra_tills	ተጨማሪ ቆጣሪዎችን አቁም
-floor_cols_ph	አምዶች
-floor_cols_fit	ማያውን አስማማ
-floor_cols_fit_sub	{n} እዚህ ይገባሉ
-floor_cols_fits	ይገባል
-floor_cols_scroll	ወደ ጎን ይሸብልላል
-floor_cols_min	አምዶች፦ ቢያንስ 1 — ወይም ማያውን ለማስማማት ባዶ ይተዉ
-floor_zoom_auto	ራስ-ሰር
-floor_zoom_out	አሳንስ
-floor_zoom_in	አተልቅ
 backup_auto	በየቀኑ በራስ-ሰር ምትኬ ይቀመጣል · የመጨረሻው {when} · ያለፉት 14 ቀናት በ {dir} ይያዛሉ።
 backup_auto_none	በየቀኑ በራስ-ሰር ምትኬ ይቀመጣል — የመጀመሪያው በቅርቡ ይሠራል።
 backup_copy_to	ቅጂዎችም ወደ {dir} ይሄዳሉ።
@@ -579,7 +474,6 @@ new_pair_code	አዲስ የማጣመሪያ ኮድ
 pair_finishing	ማጣመር በመጨረስ ላይ… የሱቁን መዝገቦች በመተግበር
 pair_opening	ቆጣሪውን በመክፈት ላይ…
 pair_copied	የማጣመሪያ ኮድ ተቀድቷል
-kot_waiting	ለመላክ በመጠባበቅ
 lan_offline_waiting	የሱቅ ሰርቨር አልተደረሰም · {n} በመጠባበቅ
 lan_connecting	ከሱቅ ጋር በመገናኘት ላይ…
 lan_live	ቀጥታ
@@ -621,7 +515,6 @@ printers_routes_help	ስርዓተ ክወናው አስቀድሞ የሚያውቀ�
 printer_assign_dd	እውነተኛ ማተሚያ፦ {place}
 printer_assign_pick	እውነተኛ ማተሚያ ምረጥ
 printer_profile_heading	አቀማመጥ
-printer_send_heading	ማድረስ
 vp_delivery_heading	ማድረስ
 vp_delivery_help	How this virtual printer sends jobs — OS document, raw bytes, or ESC/POS. Slip content (type size, wrap, margins) is decided by the bill / Slip format, not here.
 vp_type_size_heading	የፊደል መጠን
@@ -665,23 +558,13 @@ virtual_draft_send	ለቀጣዩ ምናባዊ ማተሚያ እሴት ተቀምጧ
 virtual_need_real	መጀመሪያ እውነተኛ ማተሚያ ይምረጡ
 virtual_need_select	ለመሰረዝ ምናባዊ ማተሚያ ይምረጡ
 real_printer_selected	ተመርጧል፦ {name}
-station_group_heading	ምናባዊ ማተሚያዎች
-station_group_apply	ምናባዊ ማተሚያ ሰርዝ
-station_group_applied	ተሰርዟል
-station_group_empty	ምናባዊ ማተሚያ ይምረጡ
-station_group_name_ph	የምናባዊ ማተሚያ ስም (አማራጭ)
-station_group_save	ምናባዊ ማተሚያ ፍጠር
-station_group_saved	ምናባዊ ማተሚያ ተቀምጧል
-station_manage_heading	የሱቅ ክፍል ያክሉ ወይም ያስወግዱ
 printers_routes_heading	ነገሮች የት እንደሚታተሙ
 route_pick_heading	ቦታ
 route_editing	በማስተካከል ላይ፦ {name}
 route_assigned	{printer} ወደ {place} ተጨምሯል
 route_already_assigned	አስቀድሞ በዚህ ቦታ ላይ፦ {printer}
-route_removed	{printer} ከ {place} ተወግዷል
 route_cleared	{name} ጸድቷል
 route_assigned_empty	በዚህ ቦታ ላይ የለም
-route_tap_remove	ለማስወገድ ይንኩ
 route_tap_select	ለመምረጥ ይንኩ
 route_tap_selected	ተመርጧል
 route_pick_printer_first	መጀመሪያ ማተሚያ ይንኩ
@@ -702,35 +585,17 @@ printer_format_custom	አዲስ ብጁ መገለጫ
 printer_format_custom_label	ብጁ
 printer_format_custom_added	ለዚህ ቦታ ብጁ መገለጫ ተጨምሯል
 add_printer	ማተሚያ ጨምር
-remove_printer	አስወግድ
 route_pick_ph	ቢል ወይም የሱቅ ክፍል
 route_bill	ሂሳብ
-route_default_kitchen	ጣቢያ የለም (ያልተመደቡ እቃዎች)
-route_kot_station	ጣቢያ
 route_dont_print	ማተሚያ የለም
-stations_heading	ጣቢያዎች
-stations_help	Shop sections group items and the printers for that part of the shop. Attach printers from Settings → Printers, set try order, then First that works or Print on all. Changes save as you go.
-station_print_heading	ለዚህ ጣቢያ ማተሚያዎች
-station_print_help	Pick a station, then attach one or more printers. ↑↓ sets try order. First that works stops after the first success; Print on all sends to every attached printer.
-station_print_pick_ph	ማተሚያ የሚዘጋጅበት ጣቢያ
 station_print_pick_first	Pick a shop section first
-station_print_editing	ለ “{name}” ማተሚያዎች በማስተካከል ላይ
-station_vps_dd	ለዚህ ጣቢያ ማተሚያዎች
-station_vps_dd_n	{n} ማተሚያ · ለመቀየር ይንኩ
 station_vps_empty	ገና ማተሚያ የለም — በቅንብሮች → ማተሚያዎች ስር ያግኟቸው
 bill_printers_dd	ለሂሳቡ ማተሚያዎች
 bill_printers_dd_n	ለሂሳቡ {n} ማተሚያ · ለመቀየር ይንኩ
-job_layout	አቀማመጥ
-job_delivery	ሥራው እንዴት እንደሚላክ
-job_delivery_help	OS document, raw bytes, or ESC/POS. The bill and the ticket each keep their own. Either job can go to any printer Find has saved.
 station_vp_attached	ማተሚያ ተያይዟል
 station_vp_detached	ማተሚያ ከጣቢያ ተወግዷል
-station_print_summary	{mode} · {n} ማተሚያ
-station_print_summary_none	በዚህ ጣቢያ ላይ ገና ማተሚያ የለም — አያትምም
-stations_none	እስካሁን ምንም ጣቢያዎች የሉም - ከታች አንድ ያክሉ። ጣቢያዎች በጠረጴዛ ሱቅ ላይ ጥቅም ላይ አይውሉም - ባዶ ይተውት።
 route_up	ወደ ላይ
 route_down	ወደ ታች
-route_remove	አስወግድ
 route_clear	አጽዳ
 save_printers	ማተሚያዎችን አስቀምጥ
 print_test_page	የሙከራ ገጽ አትም
@@ -739,23 +604,15 @@ test_page_no_printer	ለ {place} ማተሚያ የለም — ማተሚያ ያያ�
 test_page_pick_first	መጀመሪያ ለሙከራ ገጽ ማተሚያ ይምረጡ — ከዚያ የሙከራ ገጽ ያትሙ
 test_printers_dd	ለሙከራ ገጽ ማተሚያዎች
 test_printers_dd_n	ለሙከራ ገጽ {n} ማተሚያ · ለመቀየር ይንኩ
-kot_test_printers_dd	Printers for Test print
-kot_test_printers_dd_n	{n} printer(s) for Test print · tap to change
 test_printer_picked	ሙከራ በ፦ {name}
 test_printer_cleared	ሙከራ አይደለም በ፦ {name}
 test_page_sent_n	የሙከራ ገጽ ወደ {n} ማተሚያ ተልኳል
-test_kot_pick_first	Pick printer(s) for Test print first — then Test print
-test_kot_sent_n	Test print sent to {n} printer(s)
-cancel_pick	ምልክት አድርግ
-cancel_pick_on	ምልክት ተደርጓል
-cancel_pick_meta	ለመሰረዝ ምልክት ተደርጓል
 batch_cancel	ምልክት የተደረገውን ሰርዝ
 batch_cancel_n	ምልክት የተደረገውን ሰርዝ ({n})
 batch_cancel_none	መጀመሪያ አንድ ወይም ከዚያ በላይ የተላኩ ዕቃዎችን ምልክት ያድርጉ - ከዚያ ምልክት የተደረገበትን ሰርዝ
 batch_cancel_title	ምልክት የተደረገባቸውን እቃዎች ሰርዝ - አንድ ምክንያት ፣ በክፍል አንድ ሸርተቴ ይሰርዙ
 batch_cancel_ok	{n} items cancelled · {slips} cancel slip(s) → {kitchens}
 batch_cancel_ok_noprint	{n} items cancelled — auto-print is off, so no cancel slip
-no_printer_kitchen_station	ለዚያ ጣቢያ ምንም አታሚ የለም።
 printers_saved	ተቀምጧል
 test_page_sent	የሙከራ ገጽ ተልኳል — ማተሚያውን ያረጋግጡ
 test_page_sent_one	የሙከራ ገጽ ወደ {name} ተልኳል — ያንን ማተሚያ ያረጋግጡ
@@ -771,10 +628,7 @@ cancelled	ተሰርዟል
 printers_tap_find	ይህ መሣሪያ ሊጠቀምባቸው የሚችላቸውን ማተሚያዎች ለመዘርዘር ፈልግን ይንኩ።
 printers_none_found	ምንም አልተገኘም — የስርዓት ማተሚያ ስም ወይም IP ይጻፉ (ለምሳሌ 192.168.1.50)።
 printer_from_find	{name} ተጨምሯል
-kot_printer_ph	Printer for slips
 bill_printer_ph	ለሂሳቦች ማተሚያ
-kot_print_on	በራስ-ህትመት ትኬቶች በርቷል
-kot_print_off	በራስ-ሰር ማተም ትኬቶች ጠፍቷል
 queue_refused	በሱቁ አልተቀበለም ({n}) — እያንዳንዱን በቆጣሪ ያረጋግጡ፦
 clear_not_accepted	ተረጋግጧል — ይህን ዝርዝር አጽዳ
 device_name_ph	የዚህ መሣሪያ ስም
@@ -785,7 +639,6 @@ backup_failed	የመጨረሻው ራስ-ሰር ምትኬ አልተሳካም፦ {
 backup_overdue	ለ {n} ቀናት ምትኬ የለም — ምትኬ እንዲቀመጥ መተግበሪያውን በዚህ መሣሪያ ክፍት ያድርጉ።
 disk_low	በዚህ መሣሪያ {mb} ሜባ ብቻ ነፃ ነው — ምትኬዎች በቅርቡ ይወድቃሉ። ቦታ ያስለቅቁ።
 last_seen_devices	መጨረሻ የታየው፦ {time}
-sync_interval	በየ {secs} ሰ ማመሳሰል
 connection_to_shop	ከሱቅ ጋር ያለ ግንኙነት
 supplier_name_ph	የአቅራቢ ስም (ወይም ተዋዋይ)
 supplier_ph	አቅራቢ
@@ -848,7 +701,6 @@ fresh_book_kirano	ትኩስ = ባዶ ካታሎግ (በኋላ እቃዎችን ያ
 fresh_selected	አዲስ ተመርጧል — መዝገቡ ባዶ ይቆያል። ዝግጁ ሲሆኑ ጨርስን ይንኩ።
 gross_word	ጠቅላላ
 how_start	እንዴት መጀመር ይፈልጋሉ?
-kot_print_help_kirano	በኪራና ቆጣሪ ላይ ጥቅም ላይ አልዋለም.
 later_country_pack	በኋላ፦ ቅንብሮች → ለግብር እና የክፍያ መለያዎች የሀገር ጥቅልዎን ይተግብሩ።
 local_badge	አካባቢ
 mix_type_hint_kirano	ከፈለጉ በጥሬ ገንዘብ / UPI / ካርድ / ብድር ይክፈሉ። ብድር ከላይ ደንበኛ ይፈልጋል።
@@ -899,8 +751,6 @@ staff_copy_need_source	የማን ዝግጅት እንደሚቀዳ ይምረጡ
 staff_copy_same	ያው ሰው ነው — ሌላ ሰው ይምረጡ
 staff_rename_need_selected	መጀመሪያ ማን እንደሚሰየም ይምረጡ
 team_pick_hint	Pick who to edit — screens, money rights, and stations appear for that person only.
-team_stations_help	Stations they may use
-team_stations_changed	Stations changed — Save setup for this person
 team_features_changed	ማያዎች ተቀይረዋል — ለዚህ ሰው ዝግጅት ያስቀምጡ
 team_rights_changed	መብቶች ተቀይረዋል — ለዚህ ሰው ዝግጅት ያስቀምጡ
 they_owe_us	እነሱ ይበድሩናል
@@ -984,9 +834,6 @@ service_pct_ph	የአገልግሎት % አማራጭ 0/10/12
 short_code_ph	አጭር ኮድ (MG02)
 starting_password_ph	የመጀመሪያ የይለፍ ቃል (አማራጭ)
 starting_pin_ph	የመጀመሪያ ፒን (4–12 አሃዝ)
-station_name_ph	Station name (optional)
-station_new_ph	Section (optional)
-table_name_ph	ቆጣሪ / የባህር ወሽመጥ ስም
 tax_rate_ph	የግብር ተመን ስም ወይም % — መደበኛ፣ ቀነሰ፣ 0፣ 5፣ 12፣ 18፣ 20
 to_code_ph	ወደ ኮድ (ኪግ)
 uncleared_no_ph	ካልተጠራቀመ # በላይ
@@ -999,27 +846,8 @@ book_kind_month	የዚህ ወር መዝገቦች
 book_kind_aging	ያልተከፈለ / ዴቢት-ክሬዲት
 book_kind_balance	የሂሳብ መዝገብ
 order_help	ለመጨመር እቃ ይንኩ።
-floor_help	This shop sells at the counter. Tables and a dining floor are not part of Kirano.
-kitchen_help	በጠረጴዛ ሱቅ ላይ ጥቅም ላይ አይውልም.
-kitchen_empty	ምንም ክፍት ትኬቶች የሉም (የቆጣሪ ሱቆች ብዙውን ጊዜ ይህን ስክሪን ጥቅም ላይ ሳይውል ይተዋሉ)።
-add_a_table	ጠረጴዛ ጨምር
-add_station_heading	የሱቅ ክፍል ያክሉ
 categories_help	ከላይ ያለውን እቃ በዚያ ምድብ ስር ለማስቀመጥ ተጠቀምን ይንኩ። ፎቶ ለምድቡ ምስል ይሰጣል፤ ከሌለ የመጀመሪያ ፊደላቱን ያሳያል።
 dish_search_ph	Search items or short code…
-tile_free	ነፃ
-tile_occupied	ተይዟል
-tile_food_ready	ምግብ ዝግጁ
-tile_bill_printed	ሂሳብ ታትሟል
-tile_paid	ተከፍሏል
-tile_bill_btn	ሂሳብ
-tile_occupy_btn	እንግዶች አስቀምጥ
-tile_free_btn	ጠረጴዛ አስለቅ
-tile_ready_btn	ጠረጴዛ አስለቅ
-tile_undo_bill	ሂሳብ ቀልብስ
-summary_busy	ጠረጴዛዎች ተይዘዋል
-summary_to_collect	የሚሰበሰብ
-summary_on_floor	በአዳራሹ ላይ
-floor	ሱቅ
 sizes_as_items_ph	መጠኖች እንደ ተለያዩ እቃዎች (አማራጭ) — ግማሽ=120፣ ሙሉ=200
 dish_group_ph	Pack size group (optional) — e.g. Atta 1kg / 5kg
 discount	ቅናሽ
@@ -1027,7 +855,6 @@ remove_discount	ቅናሽ አስወግድ
 apply_discount	ቅናሽ ተግብር
 save_opening_cash	የመክፈቻ ጥሬ ገንዘብ አስቀምጥ
 close_shift_print	ፈረቃ ዝጋ እና ወረቀት አትም
-area_prices_ph	የአካባቢ ዋጋዎች (አማራጭ) — ኤሲ=220፣ እሽግ=210
 discount_ph	10% ወይም 50
 discount_reason_ph	ምክንያት (ለምሳሌ ቋሚ እንግዳ፣ ዘግይቶ የመጣ ምግብ)
 opening_float_ph	ዛሬ ጠዋት በመሳቢያው ውስጥ የገባ ጥሬ ገንዘብ
@@ -1037,34 +864,18 @@ shift_handover	የፈረቃ መረከቢያ
 shift_since	ይህ ፈረቃ ከ
 expected_in_drawer	በመሳቢያው ውስጥ የሚጠበቅ
 right_discount	ቅናሽ ስጥ
-floor_in_kitchen	በሂደት ላይ
-floor_eating	ቀርቧል
 pick_category	ምድብ ይምረጡ
 close_category_list	የምድብ ዝርዝር ዝጋ
 new_category_row	አዲስ ምድብ — እቃውን ሲያስቀምጡ ይፈጠራል
 your_category	የእርስዎ ምድብ
 suggested_category	Suggested — from our items
 category_search_ph	ምድብ — የእርስዎን ይፈልጉ ወይም አዲስ ይጻፉ
-line_sent_state	Sent
-line_nc_state	ስጦታ (NC) — አልተከፈለም
 cancel_item_short	ሰርዝ
-nc_short	NC
-charge_again_short	ክፈል
-move_short	አንቀሳቅስ
 cancel_item_title	ይህንን ንጥል ሰርዝ - የኋላ ቢሮ የመሰረዝ ወረቀት ያገኛል
-nc_item_title	ይህን እቃ ስጦታ አድርግ (NC)
-charge_again_title	ይህን እቃ እንደገና ክፈል
-move_item_title	ይህን እቃ ወደ ሌላ ጠረጴዛ አንቀሳቅስ
-already_cooked	አስቀድሞ ተበስሏል (ብክነት)
-not_cooked_yet	ገና አልተበስልም
 return_to_customer	ለደንበኛ መልስ
 short_by	ያነሰ በ
 tip_not_sale	ትፕ (የሰራተኞች፣ ሽያጭ አይደለም)
 right_settle	ክፍያ ውሰድ
-right_cancel_sent	የተላከ እቃ ሰርዝ
-right_complimentary	ስጦታ (NC)
-right_move_table	ቆጣሪዎችን ያንቀሳቅሱ / ያዋህዱ
-right_reprint	ሂሳብ እንደገና አትም
 right_allowed	ተፈቅዷል
 right_with_approval	በፈቃድ
 right_denied	አይፈቀድም
@@ -1074,25 +885,11 @@ no_server_found	ምንም አልተገኘም። በሰርቨር ላይ፦ ቅን
 servers_found_pick	ለመገናኘት የሚፈልጉትን ሱቅ ይንኩ።
 server_host_selected	{host} በመጠቀም ላይ — የማጣመሪያ ኮዱን ያስገቡ፣ ከዚያ አሁን አጣምር።
 print_bill	ሂሳብ አትም
-table_actions	ተቃውሞ እርምጃዎች
-move_merge_table	ጠረጴዛ አንቀሳቅስ / አዋህድ
-move_help	የዚህን ቆጣሪ ትዕዛዝ ወደ ነፃ ጠረጴዛ ያንቀሳቅሱት ወይም ወደ ሩጫ ያዋህዱት።
-move_target_ph	የቆጣሪ ስም
 approval_pin_ph	የሥራ አስኪያጅ ፒን (ከተጠየቀ ብቻ)
-move_here	ወደዚህ አንቀሳቅስ
-merge_into	ወደ እሱ አዋህድ
-line_reason_ph	Reason (e.g. customer changed mind, out of stock)
-line_qty_ph	ስንት እንደሚሰረዝ (ባዶ = ሁሉ)
-line_target_ph	ወደ ጠረጴዛ አንቀሳቅስ (ለምሳሌ D5)
 confirm	አረጋግጥ
 menu_search_ph	እቃ ወይም አጭር ኮድ ፈልግ
 customer_paid_ph	ደንበኛ የከፈለው
 tip_ph	ትፕ
-table_area_ph	አካባቢ (ለምሳሌ በቦታው መብላት፣ እሽግ፣ ኤሲ)
-table_range_ph	ብዙ በአንድ ጊዜ፦ D1-D20
-add_these_tables	እነዚህን ቆጣሪዎች ያክሉ
-remove_these_tables	Remove these counters
-table_remove_ph	አስወግድ፦ T1-T24፣ ወይም የአንድ ጠረጴዛ ስም
 find_server	የሱቁን ሰርቨር ፈልግ
 bill_format	የሂሳብ ቅርጸት
 bill_format_help	Printed under your shop's name on every bill. Separate lines with | (e.g. MG Road, Rajkot | Ph 98250 00000).
@@ -1100,78 +897,32 @@ bill_header_ph	አድራሻ | ስልክ
 fssai_ph	FSSAI / የሱቅ ፈቃድ ቁጥር (አማራጭ)
 bill_footer_ph	ግርጌ (ለምሳሌ አመሰግናለሁ፣ እንደገና ይምጡ)
 save_bill_format	የሂሳብ ቅርጸት አስቀምጥ
-kot_format	Slip format
-kot_format_help	Tap a field in the list. Show, font size, and weight apply to that field on the slip kind selected above. Each kind keeps its own sizes and weights.
-kot_format_fields	መስኮች
-kot_field_next	ቀጣይ መስክ
-kot_field_show	አሳይ
-kot_field_hide	ደብቅ
 kot_field_on	አሳይ
 kot_field_off	ደብቅ
-kot_field_size	የፊደል መጠን
-kot_field_size_ph	ለምሳሌ 16፣ 20፣ 24፣ 28፣ 32…
 kot_weight_light	ቀጭን
 bill_kot_panel_help	የሂሳብ አቀማመጥ እና የይዘት ስፋት። ገንዘብ ተቀባይ ሂሳቡን ያወጣ ወይም ያስስተካከለው ሰው ነው - ሙሉው የሽያጭ መዝገብ በመጽሃፍቱ ውስጥ ይቆያል።
 std_size_ph	ለምሳሌ 18፣ 20፣ 26…
-kot_show_shop	የሱቅ ስም
-kot_hide_shop	ሱቅ ደብቅ
-kot_show_time	ሰዓት
-kot_hide_time	ሰዓት ደብቅ
-kot_show_waiter	ገንዘብ ተቀባይ
-kot_hide_waiter	ገንዘብ ተቀባይ ደብቅ
-kot_show_station	ጣቢያ
-kot_hide_station	ጣቢያ ደብቅ
-kot_show_table	ቆጣሪ
-kot_hide_table	ጠረጴዛ ደብቅ
-kot_show_kot_no	Ticket No
-kot_hide_kot_no	ቲኬቱን ደብቅ የለም
-kot_width	Preview wrap (set content width on the slip tab)
-kot_width_58	58 ሚሜ
-kot_width_80	80 ሚሜ
-kot_kind_heading	Ticket kind
-kot_kind_original	ዋና
-kot_kind_duplicate	ቅጂ
-kot_kind_modified	የተሻሻለ
-kot_kind_cancelled	ተሰርዟል
-kot_style_heading	የመስክ ፊደል መጠን እና ክብደት
-kot_style_title	ርዕስ
-kot_style_item_qty	እቃ · ብዛት
-kot_style_field_pick	መስክ ምረጥ
 kot_weight_regular	መደበኛ
 kot_weight_bold	ደማቅ
-kot_align	አሰላለፍ
 kot_align_start	ጀምር
 kot_align_center	መሃል
 kot_align_end	መጨረሻ
 content_width	የይዘት ስፋት (ሚሜ)
 content_width_bill	የሂሳብ ይዘት ስፋት (ሚሜ)
-content_width_kot	Ticket content width (mm)
 content_width_ph	ወይም የይዘት ስፋት ይጻፉ፣ 40–210 ሚሜ
 content_width_help	How wide this slip prints. Bill keeps its own width.
 content_width_bill_help	How wide the customer bill prints. Default 210 mm (page). 58 mm narrow slip, 80 mm wide slip, 112 mm 4-inch, 210 mm A4-wide. Type any value from 40 to 210. Tickets have their own width on the slip tab.
-content_width_kot_help	How wide the ticket prints. Default 80 mm. 58 mm narrow slip, 80 mm wide slip, 112 mm 4-inch, 210 mm page. Type any value from 40 to 210. Customer bills have their own width on the Bill tab.
 vp_paper_width	የይዘት ስፋት (ሚሜ)
 vp_paper_width_ph	ወይም የይዘት ስፋት ይጻፉ፣ 40–210 ሚሜ
 vp_paper_width_help	የይዘት ስፋት በቢል እና ተንሸራታች ቅርጸት ስር ተቀናብሯል - በተናጠል ለሂሳቡ (ነባሪ 210 ሚሜ) እና ለቲኬቱ (ነባሪ 80 ሚሜ) ።
-kot_size	የፊደል መጠን
-kot_size_s	ትንሽ
-kot_size_m	መደበኛ
-kot_size_l	ትልቅ
 std_size	የፊደል መጠን
 kot_copies	ቅጂዎች
 kot_copies_1	1
 kot_copies_2	2
 kot_copies_3	3
-kot_title_ph	Title (blank = TICKET)
-kot_footer_ph	የኋላ ቢሮ ማስታወሻ (አማራጭ)
-kot_preview	ቅድመ እይታ
-save_kot_format	Save Slip format
-test_kot_format	Test print
-test_kot_sent	Ticket preview sent
 test_bill_format	የሙከራ ሂሳብ
 test_bill_sent	የሂሳብ ቅድመ እይታ ተልኳል
 test_print_no_printer	ለዚያ ሥራ ማተሚያ የለም — በዚህ ማያ ላይ አንዱን ይምረጡ
-kot_format_saved	Slip format saved
 std_print	የሂሳብ የህትመት መጠን
 std_print_help	በስርዓተ ክወና/ሰነድ አታሚዎች ላይ ለመደበኛ የቁም እና የመሬት ገጽታ ሂሳብ ስራዎች የቅርጸ-ቁምፊ መጠን (ነጥቦችን ያስገቡ - ትንሽ/መደበኛ/ትልቅ አይደለም)። በሁለቱም አቅጣጫዎች ላይ ተመሳሳይ መጠን.
 std_size_s	ትንሽ
@@ -1211,23 +962,16 @@ upi_qr	UPI QR
 show_upi_qr	UPI QR አሳይ
 close_upi_qr	ዝጋ
 upi_qr_help	ደንበኛ ይቃኛል እና ይከፍላል። ከከፈሉ በኋላ ክፍያ ውሰድ የሚለውን መታ ያድርጉ። ሁለተኛ ማያ ገጽ የአገልጋይ ዩአርኤል / ማሳያን በ LAN ላይ ይክፈቱ።
-kot_recall	መልስ
 recently_done	በቅርቡ የተጠናቀቀ
-recall_kot_ph	Ticket # to recall
 role_help_customer	ሚና፦ ደንበኛ — ኻታ (እነሱ ይበድሩናል)። ተመሳሳይ ተዋዋይ ክምችትም ሊያቀርብ ይችላል።
 role_help_both	ሚናዎች፦ ደንበኛ + አቅራቢ — አንድ ተዋዋይ፣ ኻታ እና የሚከፈል መዝገቦች፣ ተጣራ በሪፖርቶች።
 role_help_supplier	ሚና፦ አቅራቢ — ለግዢዎች እንበድራቸዋለን።
-dine_in_pick_table	በቆጣሪ ሱቅ ላይ ጥቅም ላይ አይውልም
-choose_table	ቆጣሪ ይምረጡ
-change_table	ጠረጴዛ ቀይር
-pick_table_banner	ለዚህ ትዕዛዝ ጠረጴዛ ይምረጡ
 items_word	እቃዎች
 items_section	እቃዎች
 back_to_order	ወደ ትዕዛዝ ተመለስ
 new_items_head	ገና አልተላከም
 price_ph	ዋጋ
 price_ph_gst_inside	ዋጋ ({tax} በውስጥ)
-cancel_needs_table	ክፍያ እስኪወስዱ ድረስ የቆጣሪ ሽያጮች በቲኬቱ ላይ ይቆያሉ
 tax_rates_missing_hint	በእነዚህ እቃዎች ላይ ምንም የ{tax} ተመን የለም - በንጥሎች ላይ የግብር ተመን ባዘጋጁት ላይ (ዋጋዎች አስቀድመው {tax} በ{tax} ስር ያካትታሉ)
 taxable_value	የሚታክስ ዋጋ
 gst_inside_price_note	({tax} በውስጥ)
@@ -1248,30 +992,11 @@ client_template_confirm	{d} ንጥሎችን ከ{title} ያክሉ? ያለዎት �
 client_template_importing	{title} በማስመጣት ላይ…
 client_template_done	ከ{title} የመጣ እያንዳንዱ ንጥል በእርስዎ እቃዎች ውስጥ ነው።
 client_template_imported	{d} ንጥሎች እና {c} ምድቦች ከ{title} ታክለዋል
-resv_heading	ቦታ ማስያዣዎች
-resv_name_ph	የደንበኛ ስም
-resv_phone_ph	ስልክ (አማራጭ)
-resv_guests_ph	People
-resv_when_ph	መቼ — 20:30፣ ነገ 13:00
-resv_table_ph	ቆጣሪ (አማራጭ)
-resv_add	ያስይዙ
-resv_seat	ተቀምጧል
-resv_none	የሚመጣ ቦታ ማስያዣ የለም።
-guests_word	እንግዶች
-delivery_by_ph	የሚያደርሰው (የራይደር ወይም የሰራተኛ ስም)
-kitchen_all_day	አሁን የሚበስል፦ {items}
-split_bill	ሂሳብ ክፈል
-split_go	የተለየ ሂሳብ አድርግ
 cancel	ሰርዝ
 opening_client	ክላየንት በመክፈት ላይ…
 preparing_desk	ጠረጴዛ በማዘጋጀት ላይ…
 opening_server	ሰርቨር በመክፈት ላይ…
 creating_server	ሰርቨር በመፍጠር ላይ…
-split_help	Tap the items one customer pays for · {n} picked
-split_send_first	Send slip first — only items back office has can go to a separate bill
-split_pick_some	Tap the items for the separate bill first
-split_done	Separate bill made — it's on the floor next to this counter
-split_marked	የተለየ ሂሳብ
 order_empty_pick	Order empty — tap Add items above to pick items.
 add_dishes	ንጥሎችን ያክሉ
 order_so_far	በዚህ ትዕዛዝ፦ {n} · {total}
@@ -1282,24 +1007,8 @@ pick_done_dd	ጨርስ · {label}
 printer_route_mode	በዚህ ቦታ ብዙ ማተሚያዎች ካሉ
 printer_mode_first	የመጀመሪያው የሚሠራው
 printer_mode_all	በሁሉም ላይ አትም
-kot_show_area	አካባቢ
-kot_hide_area	አካባቢ ደብቅ
-kot_show_item_hdr	እቃ · ብዛት
-kot_hide_item_hdr	አምዶች ደብቅ
-kot_show_title	የርዕስ መስመር
-kot_hide_title	ርዕስ ደብቅ
-kot_field_order	የህትመት ቅደም ተከተል
 kot_field_up	ወደ ላይ አንቀሳቅስ
 kot_field_down	ወደ ታች አንቀሳቅስ
-kot_field_cycle	ቀጣዩን ምረጥ
-kot_field_select	ቀጣዩን ምረጥ
-kot_field_time	ሰዓት
-kot_field_kot_no	Ticket No
-kot_field_area	አካባቢ
-kot_field_table	ቆጣሪ
-kot_field_shop	የሱቅ ስም
-kot_field_waiter	ሰራተኛ
-kot_field_station	ጣቢያ
 app_template_blurb_extra	እንዲሁም ባለቤት ዛሂር, አስተዳዳሪ አሲፍ, ገንዘብ ተቀባይ ናዋዝ; የፊት የጎን አሞሌ; ከ 4 ሰዓታት በኋላ ታሪክ; ዛሬ አውልቆ; የታመቀ ሂሳብ.
 dishes_n	{n} items
 recipe_ph	Recipe (optional — unused on a counter shop)
@@ -1309,8 +1018,6 @@ low_stock_alert	እየቀነሰ ነው — በቅርቡ ይግዙ፦ {items}
 unpriced_note	{n} items on your items have no price yet — they bill at 0 until you set one.
 show_unpriced	Show only items without a price
 show_all_dishes	Show all items
-role_waiter	ገንዘብ ተቀባይ
-role_kitchen	Store
 role_title_rest_ph	የሚና ርዕስ (ለምሳሌ ካፒቴን፣ ዋና ምግብ አብሳይ)
 preset_help_rest	ገንዘብ ተቀባይ፦ ይሽጣል። ሥራ አስኪያጅ፦ ይሽጣል + እቃዎች + መሰረዝ/ማስተካከል።
 kind_raw	ለሱቅ አገልግሎት የተገዛ

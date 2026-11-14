@@ -281,8 +281,6 @@ fn paint_submit_busy_chrome(&mut self, cx: &mut Cx) {
         for id in [
             ids!(sidebar_settings_back),
             ids!(settings_detail_back),
-            ids!(line_action_back),
-            ids!(floor_pick_back),
         ] {
             self.ui.button(cx, id).set_visible(cx, false);
         }
@@ -614,11 +612,6 @@ fn paint_submit_busy_chrome(&mut self, cx: &mut Cx) {
                             let _ = st.refresh_reports_facet();
                         }
                     }
-                    Screen::Floor => {
-                        if facet_dirty || st.floor_ops_text.is_empty() {
-                            let _ = st.refresh_floor_ops_text();
-                        }
-                    }
                     _ => {}
                 }
             }
@@ -633,7 +626,6 @@ fn paint_submit_busy_chrome(&mut self, cx: &mut Cx) {
             pin_reveal_glyph,
             db,
             screen,
-            table_chip,
             staff_rows,
             locale_line,
             empty_msg,
@@ -712,17 +704,6 @@ fn paint_submit_busy_chrome(&mut self, cx: &mut Cx) {
                     if note.is_empty() { session_line } else { format!("{session_line} · {note}") }
                 }
                 _ => session_line,
-            };
-            let table_chip = match st
-                .selected_table_id
-                .as_ref()
-                .and_then(|id| st.tables.iter().find(|t| &t.id == id))
-            {
-                Some(t) => format!("{} · {}", t.name, st.t("dine_in")),
-                None => match st.cart.order_type {
-                    OrderType::DineIn => st.t("dine_in"),
-                    other => format!("{} order", other.label()),
-                },
             };
             let staff_rows = st
                 .staff
@@ -883,7 +864,6 @@ fn paint_submit_busy_chrome(&mut self, cx: &mut Cx) {
                     .map(|s| s.db_path().display().to_string())
                     .unwrap_or_else(|| "no db".into()),
                 st.screen,
-                table_chip,
                 staff_rows,
                 locale_line,
                 empty_msg,
@@ -1026,75 +1006,31 @@ fn paint_submit_busy_chrome(&mut self, cx: &mut Cx) {
             self.paint_backup_status(cx);
         }
         self.ui
-            .widget(cx, ids!(table_chip)).set_text(cx, &plain_display_text(&table_chip));
-        self.ui
             .widget(cx, ids!(session_chip)).set_text(cx, &plain_display_text(&session_chip));
-        // Order desk: order type chips + expense tender chips.
+        // Order desk: category chips + expense tender chips.
         {
             let mut st = app_state().lock().unwrap();
             let cart_active = !st.cart.is_empty();
             self.ui
                 .button(cx, ids!(next_order_btn))
                 .set_visible(cx, cart_active);
-            self.ui
-                .widget(cx, ids!(kitchen_empty))
-                .set_visible(cx, st.open_kots.is_empty());
-            let order_type = st.cart.order_type;
-            // The ticket's table, as a button: choose one, or change it.
-            let table_name = st
-                .selected_table_id
-                .as_ref()
-                .and_then(|id| st.tables.iter().find(|t| &t.id == id))
-                .map(|t| t.name.clone());
-            let table_btn = match &table_name {
-                Some(name) => format!("{name}  ·  {}", st.t("change_table")),
-                None => st.t("choose_table"),
-            };
-            let pending = st.cart.lines.iter().filter(|l| !l.is_sent()).count();
-            let pick_label = {
-                let base = if st.picking_from_table_id.is_some() {
-                    st.t("change_table")
-                } else {
-                    st.t("pick_table_banner")
-                };
-                if pending > 0 {
-                    format!("{base} · {pending} {}", st.t("items_word"))
-                } else {
-                    base
-                }
-            };
-            let picking = st.picking_table;
             let cats = st.menu_categories();
             let cat_sel = st.menu_category.clone();
             let searching = !st.menu_filter.trim().is_empty();
             let all_label = st.t("all_items");
-            let back_label = st.t("back_to_order");
-            self.ui
-                .view(cx, ids!(table_pick_wrap))
-                .set_visible(cx, order_type == OrderType::DineIn);
-            self.ui.button(cx, ids!(table_pick_btn)).set_text(cx, &table_btn);
-            self.ui.view(cx, ids!(floor_pick_bar)).set_visible(cx, picking);
-            self.ui
-                .widget(cx, ids!(floor_pick_label))
-                .set_text(cx, &plain_display_text(&pick_label));
-            self.ui.button(cx, ids!(floor_pick_back)).set_text(cx, &back_label);
             // Counter payment body — shown only when Settle is allowed (layout
             // also hides the whole `counter_dock` for waiters).
             self.ui.view(cx, ids!(ticket_body)).set_visible(
                 cx,
                 session_may_settle(st.session.as_ref()),
             );
-            // The customer is asked for only when it matters: credit (khata),
-            // a split that may include credit, or a delivery.
+            // The customer is asked for only when it matters: credit (khata)
+            // or a split that may include credit.
             self.ui.view(cx, ids!(ticket_extras)).set_visible(
                 cx,
                 !st.cart.is_empty()
-                    && (matches!(st.pay_choice, PayChoice::Credit | PayChoice::Split)
-                        || st.cart.order_type == OrderType::Delivery),
+                    && matches!(st.pay_choice, PayChoice::Credit | PayChoice::Split),
             );
-            self.ui
-                .widget(cx, ids!(delivery_by_input))
-                .set_visible(cx, st.cart.order_type == OrderType::Delivery);
             // The total box explains itself; the old rounding note did not.
             self.ui.widget(cx, ids!(cart_round_hint)).set_visible(cx, false);
             let resale = st.form_resale;
@@ -1506,37 +1442,16 @@ fn paint_submit_busy_chrome(&mut self, cx: &mut Cx) {
                     }
                 }
             }
-            let counter_only = !st.venue_mode.creates_kot();
-            if counter_only {
-                // Keep cart on Counter; hide restaurant order-type strip.
-                self.ui.view(cx, ids!(otype_strip)).set_visible(cx, false);
-                self.ui.view(cx, ids!(pos_sticky)).set_visible(cx, false);
-            } else {
-                self.ui.view(cx, ids!(otype_strip)).set_visible(cx, true);
-                self.ui.view(cx, ids!(pos_sticky)).set_visible(cx, true);
-                for (idle, on, kind) in [
-                    (ids!(otype_counter), ids!(otype_counter_on), OrderType::Counter),
-                    (ids!(otype_dinein), ids!(otype_dinein_on), OrderType::DineIn),
-                    (ids!(otype_takeaway), ids!(otype_takeaway_on), OrderType::Takeaway),
-                    (ids!(otype_delivery), ids!(otype_delivery_on), OrderType::Delivery),
-                ] {
-                    self.paint_choice_pair(cx, idle, on, order_type == kind);
-                }
-            }
             drop(st);
         }
 
-        {
-            let counter_only = !app_state().lock().unwrap().venue_mode.creates_kot();
-            if counter_only {
-                for path in [
-                    ids!(template_import),
-                    ids!(client_template_import),
-                    ids!(app_template_apply),
-                ] {
-                    self.ui.button(cx, path).set_visible(cx, false);
-                }
-            }
+        // Restaurant menu templates are not part of this counter product.
+        for path in [
+            ids!(template_import),
+            ids!(client_template_import),
+            ids!(app_template_apply),
+        ] {
+            self.ui.button(cx, path).set_visible(cx, false);
         }
 
         self.set_report_rows(cx, ids!(staff_label), staff_rows);
@@ -1631,82 +1546,6 @@ fn paint_submit_busy_chrome(&mut self, cx: &mut Cx) {
                     st.t("low_stock_alert").replace("{items}", &st.low_stock_line)
                 }
             };
-            let counts = {
-                let st = app_state().lock().unwrap();
-                if st.kitchen_counts_line.is_empty() {
-                    String::new()
-                } else {
-                    st.t("kitchen_all_day").replace("{items}", &st.kitchen_counts_line)
-                }
-            };
-            self.ui.widget(cx, ids!(kitchen_counts)).set_text(cx, &plain_display_text(&counts));
-            self.ui.widget(cx, ids!(kitchen_counts)).set_visible(cx, !counts.is_empty());
-            {
-                let st = app_state().lock().unwrap();
-                let station_rows = if st.stations.is_empty() {
-                    vec![ReportRow::Line(st.t("stations_none"))]
-                } else {
-                    st.stations
-                        .iter()
-                        .enumerate()
-                        .map(|(i, s)| ReportRow::Line(format!("{}. {}", i + 1, s.name)))
-                        .collect()
-                };
-                drop(st);
-                self.set_report_rows(cx, ids!(stations_label), station_rows);
-                self.paint_station_print_attach(cx);
-            }
-            {
-                let (heading, rows, has) = {
-                    let st = app_state().lock().unwrap();
-                    let recent = st
-                        .store
-                        .as_ref()
-                        .and_then(|s| s.list_recent_completed_kots(8).ok())
-                        .unwrap_or_default();
-                    let has = !recent.is_empty();
-                    let rows: Vec<ReportRow> = recent
-                        .into_iter()
-                        .map(|k| {
-                            let num = if k.kot_no > 0 {
-                                format!("#{} ", k.kot_no)
-                            } else {
-                                String::new()
-                            };
-                            ReportRow::Line(format!(
-                                "{num}{} · {}",
-                                if k.station_name.is_empty() {
-                                    st.t("kitchen")
-                                } else {
-                                    k.station_name
-                                },
-                                k.summary.chars().take(60).collect::<String>()
-                            ))
-                        })
-                        .collect();
-                    (st.t("recently_done"), rows, has)
-                };
-                self.ui
-                    .widget(cx, ids!(recently_done_heading))
-                    .set_text(cx, &plain_display_text(&heading));
-                self.ui
-                    .widget(cx, ids!(recently_done_heading))
-                    .set_visible(cx, has);
-                self.set_report_rows(cx, ids!(recently_done_label), rows);
-                self.ui
-                    .widget(cx, ids!(recently_done_label))
-                    .set_visible(cx, has);
-            }
-            {
-                let st = app_state().lock().unwrap();
-                let none = st.reservations.is_empty();
-                self.ui.widget(cx, ids!(resv_heading)).set_text(cx, &plain_display_text(&st.t("resv_heading")));
-                self.ui.widget(cx, ids!(resv_empty)).set_text(cx, &plain_display_text(&st.t("resv_none")));
-                self.ui.widget(cx, ids!(resv_empty)).set_visible(cx, none);
-                self.ui.widget(cx, ids!(resv_list)).set_visible(cx, !none);
-                self.ui.button(cx, ids!(resv_add)).set_text(cx, &st.t("resv_add"));
-            }
-            self.ui.widget(cx, ids!(resv_list)).redraw(cx);
             for id in [ids!(books_low_stock), ids!(buy_low_stock)] {
                 self.ui.widget(cx, id).set_text(cx, &plain_display_text(&low));
                 self.ui.widget(cx, id).set_visible(cx, !low.is_empty());
@@ -1774,7 +1613,7 @@ fn paint_submit_busy_chrome(&mut self, cx: &mut Cx) {
             .widget(cx, ids!(cart_charge_caption)).set_text(cx, &plain_display_text(&charge_caption));
         self.ui
             .widget(cx, ids!(cart_round_hint)).set_text(cx, &plain_display_text(&round_hint));
-        // Pinned Order strip: always show the running total next to order type.
+        // The running total at the top of the ticket column.
         {
             let st = app_state().lock().unwrap();
             let sticky = format!(
@@ -1786,228 +1625,6 @@ fn paint_submit_busy_chrome(&mut self, cx: &mut Cx) {
             self.ui
                 .label(cx, ids!(sticky_total))
                 .set_text(cx, &sticky);
-        }
-        // Send KOT: name kitchens for unsent lines. After send, keep the station
-        // field and say clearly that the last batch went — never a naked "Send KOT"
-        // that looks broken when there is nothing left to send.
-        {
-            let st = app_state().lock().unwrap();
-            let unassigned = st.t("kot_unassigned");
-            let dests = pending_kot_destinations_ordered(
-                &st.products,
-                &st.stations,
-                &st.cart.lines,
-                &unassigned,
-                &st.kot_station_priority,
-            );
-            let has_unsent = st
-                .cart
-                .lines
-                .iter()
-                .any(|l| !l.is_sent() && !l.hold_send);
-            let has_held = st
-                .cart
-                .lines
-                .iter()
-                .any(|l| !l.is_sent() && l.hold_send);
-            let has_sent = st.cart.lines.iter().any(|l| l.is_sent());
-            let ticket_open = !st.cart.lines.is_empty();
-            let dest_line = format_kot_destinations(&dests);
-            let sent_line = {
-                let mut out: Vec<(String, usize)> = Vec::new();
-                for line in st.cart.lines.iter().filter(|l| l.is_sent()) {
-                    let sid = line.kitchen_station_id(&st.products);
-                    let name = if sid.is_empty() {
-                        unassigned.clone()
-                    } else {
-                        st.stations
-                            .iter()
-                            .find(|s| s.id == sid)
-                            .map(|s| s.name.clone())
-                            .unwrap_or_else(|| sid.to_string())
-                    };
-                    match out.iter_mut().find(|(n, _)| *n == name) {
-                        Some((_, n)) => *n += 1,
-                        None => out.push((name, 1)),
-                    }
-                }
-                format_kot_destinations(&out)
-            };
-            let (btn, hint, hint_on) = if !dests.is_empty() {
-                (
-                    st.t("send_kot_to").replace("{kitchens}", &dest_line),
-                    st.t("kot_dest_hint").replace("{kitchens}", &dest_line),
-                    true,
-                )
-            } else if has_held && !has_unsent {
-                (st.t("send_kot_held"), st.t("hold_send_meta"), true)
-            } else if has_sent {
-                let kitchens = if sent_line.is_empty() {
-                    st.t("kitchen")
-                } else {
-                    sent_line.clone()
-                };
-                (
-                    st.t("send_kot_again"),
-                    st.t("kot_sent_hint").replace("{kitchens}", &kitchens),
-                    true,
-                )
-            } else {
-                (st.t("send_kot"), String::new(), false)
-            };
-            // KOT reprint: kot_stations (not bill Right::Reprint). Client vs
-            // Server only changes where printers run.
-            let may_kot_reprint = st.session.as_ref().map(|s| {
-                let feats = s.effective_features();
-                st.cart.lines.iter().any(|l| {
-                    l.is_sent()
-                        && !l.reprint_skip
-                        && l.kot_id != QUEUED_KOT
-                        && {
-                            let sid = l.kitchen_station_id(&st.products);
-                            sid.is_empty() || feats.allows_kot_station(sid)
-                        }
-                })
-            }).unwrap_or(false);
-            let reprint_n = st
-                .cart
-                .lines
-                .iter()
-                .filter(|l| l.is_sent() && !l.reprint_skip && l.kot_id != QUEUED_KOT)
-                .count();
-            let reprint_label = {
-                let base = st.t("reprint_kot");
-                if reprint_n > 0 {
-                    format!("{base} ({reprint_n})")
-                } else {
-                    base
-                }
-            };
-            let (show_cancelled_print, cancelled_label) = {
-                let mut show = false;
-                let mut n = 0usize;
-                // Two queries: only while the Order desk is on screen (the
-                // button lives there; going to Pos repaints), not on every
-                // Floor / Kitchen / LAN repaint with a table still selected.
-                if let (Some(tid), Some(store), true) = (
-                    st.selected_table_id.as_ref(),
-                    st.store.as_ref(),
-                    st.screen == Screen::Pos,
-                ) {
-                    if let Ok(Some(order)) = store.running_order(tid) {
-                        if let Ok(lines) = store.cancelled_kot_lines(&order.id) {
-                            n = lines.len();
-                            show = n > 0
-                                && st.session.as_ref().map(|s| {
-                                    let feats = s.effective_features();
-                                    lines.iter().any(|(sid, _, _, _)| {
-                                        sid.is_empty() || feats.allows_kot_station(sid)
-                                    })
-                                }).unwrap_or(false);
-                        }
-                    }
-                }
-                let base = st.t("print_cancelled_kot");
-                let label = if n > 0 {
-                    format!("{base} ({n})")
-                } else {
-                    base
-                };
-                (show, label)
-            };
-            drop(st);
-            let show_kot = {
-                let st = app_state().lock().unwrap();
-                st.venue_mode.creates_kot()
-            };
-            self.ui.button(cx, ids!(send_kot_btn)).set_text(cx, &btn);
-            self.ui.button(cx, ids!(send_kot_btn)).set_visible(cx, show_kot);
-            self.ui
-                .button(cx, ids!(reprint_kot_btn))
-                .set_visible(cx, show_kot && has_sent && may_kot_reprint);
-            self.ui
-                .button(cx, ids!(reprint_kot_btn))
-                .set_text(cx, &reprint_label);
-            let (show_batch_cancel, batch_label) = {
-                let st = app_state().lock().unwrap();
-                let n = st
-                    .cart
-                    .lines
-                    .iter()
-                    .filter(|l| {
-                        l.cancel_pick
-                            && l.is_sent()
-                            && !l.running_line_id.is_empty()
-                            && l.running_line_id != "counter"
-                            && !l.running_line_id.starts_with(QUEUED_LINE)
-                    })
-                    .count();
-                let base = st.t("batch_cancel");
-                let label = if n > 0 {
-                    st.t("batch_cancel_n").replace("{n}", &n.to_string())
-                } else {
-                    base
-                };
-                (n > 0, label)
-            };
-            self.ui
-                .button(cx, ids!(batch_cancel_btn))
-                .set_visible(cx, show_batch_cancel);
-            self.ui
-                .button(cx, ids!(batch_cancel_btn))
-                .set_text(cx, &batch_label);
-            self.ui
-                .button(cx, ids!(print_cancelled_kot_btn))
-                .set_visible(cx, show_cancelled_print);
-            self.ui
-                .button(cx, ids!(print_cancelled_kot_btn))
-                .set_text(cx, &cancelled_label);
-            {
-                let help = self.ui.widget(cx, ids!(kot_dest_help)).as_info_help();
-                let st = app_state().lock().unwrap();
-                help.set_title(cx, &st.t("kot_dest_heading"));
-                help.set_tip(&plain_display_text(&hint));
-            }
-            self.ui.widget(cx, ids!(kot_dest_help)).set_visible(cx, hint_on);
-            // Station picker stays while the ticket has dishes (sent or not).
-            self.ui
-                .view(cx, ids!(kot_station_wrap))
-                .set_visible(cx, ticket_open);
-            // Dropdown label: Kitchen, or Kitchen · Tandoor, Fryer when set.
-            {
-                let st = app_state().lock().unwrap();
-                let mut names: Vec<String> = Vec::new();
-                for line in st.cart.lines.iter().filter(|l| !l.is_sent() && !l.hold_send) {
-                    let sid = line.kitchen_station_id(&st.products);
-                    if sid.is_empty() {
-                        continue;
-                    }
-                    if let Some(name) = st.stations.iter().find(|s| s.id == sid).map(|s| s.name.clone())
-                    {
-                        if !names.iter().any(|n| n == &name) {
-                            names.push(name);
-                        }
-                    }
-                }
-                let open = st.suggest_open == Some(SuggestField::KotStation);
-                let label = if names.is_empty() {
-                    st.t("kot_station_dd")
-                } else {
-                    st.t("kot_station_dd_n")
-                        .replace("{stations}", &names.join(", "))
-                };
-                let face = if open {
-                    st.t("pick_done_dd").replace("{label}", &label)
-                } else {
-                    label
-                };
-                drop(st);
-                self.ui.button(cx, ids!(kot_station_dd)).set_text(cx, &face);
-            }
-            // Station applies on checkbox tap. No second "Use this station" button.
-            self.ui
-                .button(cx, ids!(kot_set_station))
-                .set_visible(cx, false);
         }
         {
             let total_field = self.ui.text_input(cx, ids!(cart_total_input));
@@ -2501,13 +2118,12 @@ fn paint_submit_busy_chrome(&mut self, cx: &mut Cx) {
         }
         self.ui.widget(cx, ids!(dish_pick_list)).redraw(cx);
         self.ui.widget(cx, ids!(category_pick_list)).redraw(cx);
-        // Ticket: table actions, move/merge panel, the sent-line panel, and
-        // Settle & Save's change to return.
+        // Ticket: Settle & Save's change to return, and the discount line.
         {
             let tendered_text = self.ui.text_input(cx, ids!(tendered_input)).text();
             let tip_text = self.ui.text_input(cx, ids!(tip_input)).text();
             let cash_text = self.ui.text_input(cx, ids!(mix_cash_input)).text();
-            let (table_open, move_open, line_action, cooked, line_nc, change_line, lang) = {
+            let change_line = {
                 let st = app_state().lock().unwrap();
                 let currency = st.locale.currency.clone();
                 let parse = |t: &str| -> i64 {
@@ -2537,116 +2153,8 @@ fn paint_submit_busy_chrome(&mut self, cx: &mut Cx) {
                 if tip > 0 {
                     parts.push(format!("{}: {}", st.t("tip_not_sale"), st.money(Money(tip))));
                 }
-                let line_nc = st.line_action.as_ref().and_then(|(id, _)| {
-                    st.cart.lines.iter().find(|l| &l.running_line_id == id).map(|l| l.complimentary)
-                });
-                // Bill / move only once the kitchen has something for this
-                // table — before that there is nothing to bill or move.
-                (
-                    st.selected_table_id.is_some()
-                        && st.screen == Screen::Pos
-                        && st.cart.lines.iter().any(|l| l.is_sent()),
-                    st.move_panel_open,
-                    st.line_action.as_ref().map(|(_, a)| *a),
-                    st.line_cooked,
-                    line_nc.unwrap_or(false),
-                    if parts.is_empty() { " ".to_string() } else { parts.join(" · ") },
-                    st.locale.language.clone(),
-                )
+                if parts.is_empty() { " ".to_string() } else { parts.join(" · ") }
             };
-            let t = |k: &str| locale::t(&lang, k);
-            self.ui.view(cx, ids!(table_actions_wrap)).set_visible(cx, table_open);
-            self.sync_order_sections(cx);
-            {
-                let st = app_state().lock().unwrap();
-                let bill_printed = st
-                    .selected_table_id
-                    .as_ref()
-                    .and_then(|tid| st.tables.iter().find(|t| &t.id == tid))
-                    .is_some_and(|t| t.floor_state == domain::FloorState::BillPrinted);
-                let may_print_bill =
-                    session_may_print_bill(st.session.as_ref(), bill_printed);
-                let may_settle = session_may_settle(st.session.as_ref());
-                let splitting = table_open && st.split_mode && may_settle;
-                self.ui
-                    .button(cx, ids!(print_bill_btn))
-                    .set_visible(cx, table_open && may_print_bill);
-                // Punch → Send KOT → Print bill: once every dish reached the
-                // kitchen (not still queued on this tablet) and the bill is
-                // not out yet, the bill sits under Send KOT. A reprint stays
-                // in Table actions (it needs the Reprint right).
-                let all_reached = !st.cart.lines.is_empty()
-                    && st
-                        .cart
-                        .lines
-                        .iter()
-                        .all(|l| l.is_sent() && l.kot_id != QUEUED_KOT);
-                self.ui.button(cx, ids!(print_bill_quick)).set_visible(
-                    cx,
-                    table_open && !bill_printed && may_print_bill && all_reached && !splitting,
-                );
-                // Split / bill actions are counter work — hide when Settle Denied.
-                self.ui
-                    .button(cx, ids!(table_split_btn))
-                    .set_visible(cx, table_open && may_settle);
-                self.ui
-                    .button(cx, ids!(split_evenly_btn))
-                    .set_visible(cx, table_open && may_settle);
-                self.ui.view(cx, ids!(split_bar)).set_visible(cx, splitting);
-                self.ui.button(cx, ids!(table_split_btn)).set_text(cx, &st.t("split_bill"));
-                self.ui.button(cx, ids!(split_evenly_btn)).set_text(cx, &st.t("split_evenly"));
-                self.ui.button(cx, ids!(fire_course_btn)).set_text(cx, &st.t("fire_course"));
-                self.ui.button(cx, ids!(hold_item_btn)).set_text(cx, &st.t("hold_item"));
-                self.ui.button(cx, ids!(waiter_call_btn)).set_text(cx, &st.t("waiter_call"));
-                self.ui.button(cx, ids!(split_go)).set_text(cx, &st.t("split_go"));
-                self.ui.button(cx, ids!(split_cancel)).set_text(cx, &st.t("cancel"));
-                let help = st.t("split_help").replace("{n}", &st.split_pick.len().to_string());
-                self.ui.widget(cx, ids!(split_help)).set_text(cx, &plain_display_text(&help));
-                self.ui
-                    .widget(cx, ids!(split_bill_help))
-                    .as_info_help()
-                    .set_tip(&plain_display_text(&help));
-            }
-            self.ui.view(cx, ids!(table_move_panel)).set_visible(cx, table_open && move_open);
-            // Cancel/NC/Move panel follows the open action — not only when a
-            // table chip is lit (that hid Cancel after KOT for many tickets).
-            self.ui
-                .view(cx, ids!(line_action_panel))
-                .set_visible(cx, line_action.is_some());
-            if let Some(action) = line_action {
-                let (title, reason, qty, cooked_btn, target) = match action {
-                    LineAction::Cancel => ("cancel_item_title", true, true, true, false),
-                    LineAction::CancelBatch => ("batch_cancel_title", true, false, true, false),
-                    LineAction::Complimentary if line_nc => ("charge_again_title", false, false, false, false),
-                    LineAction::Complimentary => ("nc_item_title", true, false, false, false),
-                    LineAction::Move => ("move_item_title", false, false, false, true),
-                };
-                self.ui.widget(cx, ids!(line_action_title)).set_text(cx, &plain_display_text(&t(title)));
-                self.ui.view(cx, ids!(line_reason_wrap)).set_visible(cx, reason);
-                self.ui.view(cx, ids!(line_qty_wrap)).set_visible(cx, qty);
-                self.ui.view(cx, ids!(line_cooked_wrap)).set_visible(cx, cooked_btn);
-                if cooked_btn {
-                    self.paint_choice_pair(
-                        cx,
-                        ids!(line_cooked_raw),
-                        ids!(line_cooked_raw_on),
-                        !cooked,
-                    );
-                    self.paint_choice_pair(
-                        cx,
-                        ids!(line_cooked_done),
-                        ids!(line_cooked_done_on),
-                        cooked,
-                    );
-                    for path in [ids!(line_cooked_raw), ids!(line_cooked_raw_on)] {
-                        self.ui.button(cx, path).set_text(cx, &t("not_cooked_yet"));
-                    }
-                    for path in [ids!(line_cooked_done), ids!(line_cooked_done_on)] {
-                        self.ui.button(cx, path).set_text(cx, &t("already_cooked"));
-                    }
-                }
-                self.ui.view(cx, ids!(line_target_wrap)).set_visible(cx, target);
-            }
             self.ui.widget(cx, ids!(change_label)).set_text(cx, &plain_display_text(&change_line));
             let (discount_open, discount_line) = {
                 let st = app_state().lock().unwrap();
@@ -2692,64 +2200,6 @@ fn paint_submit_busy_chrome(&mut self, cx: &mut Cx) {
                 }
             };
             self.set_report_rows(cx, ids!(shift_so_far_label), rows);
-        }
-        // Floor: summary line and the colour key's words.
-        {
-            let (summary, legend) = {
-                let st = app_state().lock().unwrap();
-                let busy = st.tables.iter().filter(|t| t.status.is_open()).count();
-                let to_collect = st
-                    .tables
-                    .iter()
-                    .filter(|t| t.floor_state == domain::FloorState::BillPrinted)
-                    .count();
-                let on_floor: i64 = st.tables.iter().map(|t| t.running_total_paise).sum();
-                let floor_visible = amount_key_visible(
-                    st.amounts_screen_hidden,
-                    &st.amount_keys_hidden,
-                    &st.amount_keys_peek,
-                    "floor_summary",
-                );
-                let summary = format!(
-                    "{busy}/{} {} · {to_collect} {} · {} {}",
-                    st.tables.len(),
-                    st.t("summary_busy"),
-                    st.t("summary_to_collect"),
-                    display_money(&st.money(Money(on_floor)), floor_visible),
-                    st.t("summary_on_floor")
-                );
-                let legend: Vec<String> = domain::FloorState::ALL.iter().map(|s| st.t(s.tile_key())).collect();
-                (summary, legend)
-            };
-            self.ui
-                .widget(cx, ids!(floor_summary))
-                .set_text(cx, &plain_display_text(&summary));
-            for (id, text) in [
-                ids!(lg_free),
-                ids!(lg_seated),
-                ids!(lg_kitchen),
-                ids!(lg_ready),
-                ids!(lg_eating),
-                ids!(lg_bill),
-                ids!(lg_paid),
-            ]
-            .into_iter()
-            .zip(legend.iter())
-            {
-                self.ui.label(cx, id).set_text(cx, text);
-            }
-            // Floor is grid-only — no Grid/Layout tabs.
-            {
-                let mut st = app_state().lock().unwrap();
-                st.floor_view_layout = false;
-                st.floor_layout_sel = None;
-            }
-            // No separate "active table" strip — the tile border already marks focus;
-            // print / view / open live on each card.
-            self.ui.view(cx, ids!(floor_toolbar)).set_visible(cx, false);
-            self.ui.widget(cx, ids!(floor_list)).set_visible(cx, true);
-            self.ui.widget(cx, ids!(floor_layout_list)).set_visible(cx, false);
-            self.ui.view(cx, ids!(floor_layout_editor)).set_visible(cx, false);
         }
         // Team: who is being edited, and their rights (draft until Save).
         // Hire/edit block only for can_manage_team; My PIN card always stays.
@@ -2816,8 +2266,6 @@ fn paint_submit_busy_chrome(&mut self, cx: &mut Cx) {
                     (ids!(feat_items), ids!(feat_items_on), on.items),
                     (ids!(feat_sales), ids!(feat_sales_on), on.sales),
                     (ids!(feat_credit), ids!(feat_credit_on), on.credit),
-                    (ids!(feat_floor), ids!(feat_floor_on), on.floor),
-                    (ids!(feat_kitchen), ids!(feat_kitchen_on), on.kitchen),
                     (ids!(feat_team), ids!(feat_team_on), on.team),
                     (ids!(feat_backup), ids!(feat_backup_on), on.backup),
                     (ids!(feat_inventory), ids!(feat_inventory_on), on.inventory),
@@ -2841,46 +2289,6 @@ fn paint_submit_busy_chrome(&mut self, cx: &mut Cx) {
                         ids!(right_settle_deny),
                         ids!(right_settle_deny_on),
                         domain::Right::Settle,
-                    ),
-                    (
-                        ids!(right_cancel_lbl),
-                        ids!(right_cancel_allowed),
-                        ids!(right_cancel_allowed_on),
-                        ids!(right_cancel_ask),
-                        ids!(right_cancel_ask_on),
-                        ids!(right_cancel_deny),
-                        ids!(right_cancel_deny_on),
-                        domain::Right::CancelSentItem,
-                    ),
-                    (
-                        ids!(right_nc_lbl),
-                        ids!(right_nc_allowed),
-                        ids!(right_nc_allowed_on),
-                        ids!(right_nc_ask),
-                        ids!(right_nc_ask_on),
-                        ids!(right_nc_deny),
-                        ids!(right_nc_deny_on),
-                        domain::Right::Complimentary,
-                    ),
-                    (
-                        ids!(right_move_lbl),
-                        ids!(right_move_allowed),
-                        ids!(right_move_allowed_on),
-                        ids!(right_move_ask),
-                        ids!(right_move_ask_on),
-                        ids!(right_move_deny),
-                        ids!(right_move_deny_on),
-                        domain::Right::MoveTable,
-                    ),
-                    (
-                        ids!(right_reprint_lbl),
-                        ids!(right_reprint_allowed),
-                        ids!(right_reprint_allowed_on),
-                        ids!(right_reprint_ask),
-                        ids!(right_reprint_ask_on),
-                        ids!(right_reprint_deny),
-                        ids!(right_reprint_deny_on),
-                        domain::Right::Reprint,
                     ),
                     (
                         ids!(right_discount_lbl),
@@ -2962,27 +2370,6 @@ fn paint_submit_busy_chrome(&mut self, cx: &mut Cx) {
                 self.ui
                     .button(cx, ids!(staff_set_login))
                     .set_visible(cx, !who.is_empty());
-                // Station checklist only on Team — open_suggest closes every
-                // other dropdown (Menu dish/category, Order kitchen, …).
-                if screen == Screen::Team {
-                    app_state()
-                        .lock()
-                        .unwrap()
-                        .open_suggest(SuggestField::TeamKotStations, "");
-                }
-            } else if manage_team {
-                // No selection (or left Team): drop the always-open station list.
-                let mut st = app_state().lock().unwrap();
-                if st.suggest_open == Some(SuggestField::TeamKotStations) {
-                    st.suggest_open = None;
-                }
-            }
-            // Leaving Team must not leave TeamKotStations owning suggest_open.
-            if screen != Screen::Team {
-                let mut st = app_state().lock().unwrap();
-                if st.suggest_open == Some(SuggestField::TeamKotStations) {
-                    st.suggest_open = None;
-                }
             }
         }
 
@@ -3112,23 +2499,6 @@ fn paint_submit_busy_chrome(&mut self, cx: &mut Cx) {
                 self.set_report_rows(cx, ids!(sibling_pickers_label), sibling_rows);
             }
             } // Settings units / siblings when those panels are open
-            if screen == Screen::Floor {
-                let filter = self.ui.text_input(cx, ids!(floor_waiter_filter)).text();
-                let ops = {
-                    let mut st = app_state().lock().unwrap();
-                    if st.floor_waiter_filter != filter {
-                        st.floor_waiter_filter = filter;
-                        // Filter change: refresh ops for the new waiter slice.
-                        let _ = st.refresh_floor_ops_text();
-                    }
-                    st.floor_ops_text.clone()
-                };
-                self.ui
-                    .widget(cx, ids!(floor_ops_label))
-                    .set_text(cx, &plain_display_text(&ops));
-                self.paint_floor_area_tabs(cx);
-                self.sync_floor_columns_field(cx, false);
-            }
             // One short ℹ tip — not the full product map.
             let tmpl_hint = if tmpl_blurb_s.is_empty() {
                 tmpl.title.to_string()

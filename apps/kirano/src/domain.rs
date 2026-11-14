@@ -264,9 +264,6 @@ pub enum StaffRole {
     /// Non-owner staff — permission preset; display name is [`StaffMember::role_title`].
     Manager,
     Cashier,
-    /// Takes orders on the floor: sells, runs tables, never touches the books.
-    Waiter,
-    Kitchen,
 }
 
 impl StaffRole {
@@ -276,8 +273,6 @@ impl StaffRole {
             Self::Admin => "admin",
             Self::Manager => "manager",
             Self::Cashier => "cashier",
-            Self::Waiter => "waiter",
-            Self::Kitchen => "kitchen",
         }
     }
 
@@ -287,8 +282,6 @@ impl StaffRole {
             "admin" => Some(Self::Admin),
             "manager" => Some(Self::Manager),
             "cashier" => Some(Self::Cashier),
-            "waiter" => Some(Self::Waiter),
-            "kitchen" => Some(Self::Kitchen),
             _ => None,
         }
     }
@@ -309,15 +302,13 @@ impl StaffRole {
             Self::Admin => "Admin",
             Self::Manager => "Manager",
             Self::Cashier => "Cashier",
-            Self::Waiter => "Waiter",
-            Self::Kitchen => "Kitchen",
         }
     }
 
     pub fn can_sell(self) -> bool {
         matches!(
             self,
-            Self::Owner | Self::Admin | Self::Manager | Self::Cashier | Self::Waiter
+            Self::Owner | Self::Admin | Self::Manager | Self::Cashier
         )
     }
 
@@ -335,20 +326,6 @@ impl StaffRole {
         matches!(self, Self::Owner | Self::Admin | Self::Manager)
     }
 
-    pub fn can_kitchen(self) -> bool {
-        // Cashier and Waiter also bump tickets: one-person shops and
-        // captains often clear "In kitchen" without a Kitchen login.
-        matches!(
-            self,
-            Self::Owner
-                | Self::Admin
-                | Self::Manager
-                | Self::Kitchen
-                | Self::Cashier
-                | Self::Waiter
-        )
-    }
-
     pub fn can_admin(self) -> bool {
         matches!(self, Self::Owner | Self::Admin)
     }
@@ -356,8 +333,6 @@ impl StaffRole {
     /// Relative job power for Team hire/edit caps (Owner highest).
     pub fn power_rank(self) -> u8 {
         match self {
-            Self::Kitchen => 1,
-            Self::Waiter => 2,
             Self::Cashier => 3,
             Self::Manager => 4,
             Self::Admin => 5,
@@ -378,8 +353,6 @@ pub struct StaffFeatures {
     pub items: bool,
     pub sales: bool,
     pub credit: bool,
-    pub floor: bool,
-    pub kitchen: bool,
     pub team: bool,
     pub backup: bool,
     /// Stock, purchases and low-stock views.
@@ -391,11 +364,6 @@ pub struct StaffFeatures {
     /// Owner-edited rights; `None` = the role's preset ([`StaffRights::for_role`]).
     #[serde(default)]
     pub rights: Option<StaffRights>,
-    /// Kitchen stations this person may send / print KOTs to.
-    /// `None` = every station (role default). `Some(ids)` = only those ids
-    /// (empty = none). Bill reprint stays [`Right::Reprint`] — separate.
-    #[serde(default)]
-    pub kot_stations: Option<Vec<String>>,
 }
 
 impl Default for StaffFeatures {
@@ -411,14 +379,11 @@ impl StaffFeatures {
             items: true,
             sales: true,
             credit: true,
-            floor: true,
-            kitchen: true,
             team: true,
             backup: true,
             inventory: true,
             branches: true,
             rights: None,
-            kot_stations: None,
         }
     }
 
@@ -430,104 +395,24 @@ impl StaffFeatures {
                 items: true,
                 sales: true,
                 credit: true,
-                floor: true,
-                kitchen: true,
                 team: false,
                 backup: false,
                 inventory: true,
                 branches: true,
                 rights: None,
-                kot_stations: None,
             },
             StaffRole::Cashier => Self {
                 sell: true,
                 items: false,
                 sales: false,
                 credit: true,
-                floor: true,
-                // Same device often is the kitchen screen — they must be
-                // able to clear "In kitchen" without a Kitchen login.
-                kitchen: true,
                 team: false,
                 backup: false,
                 inventory: false,
                 branches: false,
                 rights: None,
-                kot_stations: None,
-            },
-            // Waiter: takes orders / floor / KOT — never books, Parties,
-            // Counter settle, or day's business (Sales + Settle Denied).
-            StaffRole::Waiter => Self {
-                sell: true,
-                items: false,
-                sales: false,
-                credit: false,
-                floor: true,
-                // Captains bump Ready → Done when they serve; cooking Start
-                // still works if the shop has no separate kitchen tablet.
-                kitchen: true,
-                team: false,
-                backup: false,
-                inventory: false,
-                branches: false,
-                rights: None,
-                kot_stations: None,
-            },
-            StaffRole::Kitchen => Self {
-                sell: false,
-                items: false,
-                sales: false,
-                credit: false,
-                floor: false,
-                kitchen: true,
-                team: false,
-                backup: false,
-                inventory: false,
-                branches: false,
-                rights: None,
-                kot_stations: None,
             },
         }
-    }
-
-    /// May this person send / print a KOT for `station_id`?
-    pub fn allows_kot_station(&self, station_id: &str) -> bool {
-        let sid = station_id.trim();
-        if sid.is_empty() {
-            return true;
-        }
-        match &self.kot_stations {
-            None => true,
-            Some(ids) => ids.iter().any(|id| id == sid),
-        }
-    }
-
-    /// Toggle one station in the draft list. `all_ids` is every kitchen id
-    /// in the shop (so “all checked” collapses back to `None`).
-    pub fn toggle_kot_station(&mut self, station_id: &str, all_ids: &[String]) {
-        let sid = station_id.trim();
-        if sid.is_empty() {
-            return;
-        }
-        let mut allowed: Vec<String> = match &self.kot_stations {
-            None => all_ids.to_vec(),
-            Some(ids) => ids.clone(),
-        };
-        if let Some(i) = allowed.iter().position(|id| id == sid) {
-            allowed.remove(i);
-        } else {
-            allowed.push(sid.to_string());
-        }
-        // Same set as the shop → unrestricted (None).
-        let mut sorted_allowed = allowed.clone();
-        sorted_allowed.sort();
-        let mut sorted_all = all_ids.to_vec();
-        sorted_all.sort();
-        self.kot_stations = if sorted_allowed == sorted_all {
-            None
-        } else {
-            Some(allowed)
-        };
     }
 
     pub fn to_json(&self) -> String {
@@ -538,79 +423,30 @@ impl StaffFeatures {
         serde_json::from_str(s).unwrap_or_default()
     }
 
-    /// Screen chips only (not rights / stations) — each `true` requires ceiling `true`.
+    /// Screen chips only (not rights) — each `true` requires ceiling `true`.
     pub fn screens_within(&self, ceiling: &Self) -> bool {
         (!self.sell || ceiling.sell)
             && (!self.items || ceiling.items)
             && (!self.sales || ceiling.sales)
             && (!self.credit || ceiling.credit)
-            && (!self.floor || ceiling.floor)
-            && (!self.kitchen || ceiling.kitchen)
             && (!self.team || ceiling.team)
             && (!self.backup || ceiling.backup)
             && (!self.inventory || ceiling.inventory)
             && (!self.branches || ceiling.branches)
     }
 
-    /// Kitchen stations ⊆ ceiling (`None` = every station).
-    pub fn stations_within(&self, ceiling: &Self) -> bool {
-        match (&self.kot_stations, &ceiling.kot_stations) {
-            (_, None) => true,
-            (None, Some(_)) => false,
-            (Some(want), Some(have)) => want.iter().all(|id| have.iter().any(|h| h == id)),
-        }
-    }
-
-    /// Drop screens / stations the actor does not hold (hire/copy caps).
+    /// Drop screens the actor does not hold (hire/copy caps).
     pub fn cap_screens_to(&self, ceiling: &Self) -> Self {
         let mut out = self.clone();
         out.sell &= ceiling.sell;
         out.items &= ceiling.items;
         out.sales &= ceiling.sales;
         out.credit &= ceiling.credit;
-        out.floor &= ceiling.floor;
-        out.kitchen &= ceiling.kitchen;
         out.team &= ceiling.team;
         out.backup &= ceiling.backup;
         out.inventory &= ceiling.inventory;
         out.branches &= ceiling.branches;
-        out.kot_stations = match (&self.kot_stations, &ceiling.kot_stations) {
-            (want, None) => want.clone(),
-            (None, Some(have)) => Some(have.clone()),
-            (Some(want), Some(have)) => Some(
-                want.iter()
-                    .filter(|id| have.iter().any(|h| h == *id))
-                    .cloned()
-                    .collect(),
-            ),
-        };
         out
-    }
-}
-
-#[derive(Clone, Copy, Debug, PartialEq, Eq, Serialize, Deserialize)]
-pub enum VenueMode {
-    Counter,
-    Restaurant,
-}
-
-impl VenueMode {
-    pub fn as_str(self) -> &'static str {
-        match self {
-            Self::Counter => "counter",
-            Self::Restaurant => "restaurant",
-        }
-    }
-
-    pub fn parse(s: &str) -> Self {
-        match s.trim() {
-            "restaurant" => Self::Restaurant,
-            _ => Self::Counter,
-        }
-    }
-
-    pub fn creates_kot(self) -> bool {
-        matches!(self, Self::Restaurant)
     }
 }
 
@@ -735,13 +571,6 @@ pub fn format_qty_display(qty_milli: i64, qty_whole: i64, unit_label: &str) -> S
         }
         format!("{whole}.{frac_s} {unit}")
     }
-}
-
-/// Kitchen-ticket qty: the count (`2`) or a measured amount (`1.25 kg`).
-/// Piece display from [`format_qty_display`] is `x2`; the `x` is not a quantity.
-pub fn format_kot_qty(qty_milli: i64, qty_whole: i64, unit_label: &str) -> String {
-    let raw = format_qty_display(qty_milli, qty_whole, unit_label);
-    raw.strip_prefix('x').unwrap_or(&raw).to_string()
 }
 
 /// One open bill for bill-wise (open-item) allocation: a credit sale
@@ -1078,14 +907,6 @@ impl StaffMember {
         self.effective_features().credit
     }
 
-    pub fn can_access_floor(&self) -> bool {
-        self.effective_features().floor
-    }
-
-    pub fn can_access_kitchen(&self) -> bool {
-        self.effective_features().kitchen
-    }
-
     pub fn can_access_team(&self) -> bool {
         self.effective_features().team
     }
@@ -1095,7 +916,7 @@ impl StaffMember {
     }
 
     /// Shop Settings sections (language, printers, backup, bill format, …).
-    /// Waiters / kitchen do not open these — they still reach **My PIN** via
+    /// A cashier does not open these — they still reach **My PIN** via
     /// [`Self::can_open_settings_shell`].
     pub fn can_access_settings(&self) -> bool {
         self.is_owner() || self.can_access_backup() || self.can_access_sales()
@@ -1198,36 +1019,17 @@ impl RightLevel {
 pub enum Right {
     /// Take payment and close a bill (Settle & Save).
     Settle,
-    /// Cancel a line (or part of it) after its KOT went to the kitchen.
-    CancelSentItem,
-    /// Make a line or a whole bill complimentary (NC, ₹0).
-    Complimentary,
-    /// Move items or a whole table, or merge tables.
-    MoveTable,
-    /// Print the bill again, or a KOT again.
-    Reprint,
     /// Take money off a bill (percent or amount).
     Discount,
 }
 
 impl Right {
-    pub const ALL: [Right; 6] = [
-        Right::Settle,
-        Right::CancelSentItem,
-        Right::Complimentary,
-        Right::MoveTable,
-        Right::Reprint,
-        Right::Discount,
-    ];
+    pub const ALL: [Right; 2] = [Right::Settle, Right::Discount];
 
     /// Locale key of the right's name.
     pub fn label_key(self) -> &'static str {
         match self {
             Right::Settle => "right_settle",
-            Right::CancelSentItem => "right_cancel_sent",
-            Right::Complimentary => "right_complimentary",
-            Right::MoveTable => "right_move_table",
-            Right::Reprint => "right_reprint",
             Right::Discount => "right_discount",
         }
     }
@@ -1238,14 +1040,6 @@ pub struct StaffRights {
     #[serde(default)]
     pub settle: RightLevel,
     #[serde(default)]
-    pub cancel_sent_item: RightLevel,
-    #[serde(default)]
-    pub complimentary: RightLevel,
-    #[serde(default)]
-    pub move_table: RightLevel,
-    #[serde(default)]
-    pub reprint: RightLevel,
-    #[serde(default)]
     pub discount: RightLevel,
 }
 
@@ -1253,46 +1047,18 @@ impl StaffRights {
     pub fn all_allowed() -> Self {
         Self {
             settle: RightLevel::Allowed,
-            cancel_sent_item: RightLevel::Allowed,
-            complimentary: RightLevel::Allowed,
-            move_table: RightLevel::Allowed,
-            reprint: RightLevel::Allowed,
             discount: RightLevel::Allowed,
         }
     }
 
-    /// Restaurant defaults (Petpooja-like): the counter settles; a waiter
-    /// takes orders and moves guests but never settles money; giving food
-    /// away or cancelling what the kitchen already has needs a manager.
+    /// Defaults: the counter settles; a discount needs a manager.
     pub fn for_role(role: StaffRole) -> Self {
         use RightLevel::*;
         match role {
             StaffRole::Owner | StaffRole::Admin | StaffRole::Manager => Self::all_allowed(),
             StaffRole::Cashier => Self {
                 settle: Allowed,
-                cancel_sent_item: WithApproval,
-                complimentary: WithApproval,
-                move_table: Allowed,
-                reprint: Allowed,
                 discount: WithApproval,
-            },
-            StaffRole::Waiter => Self {
-                settle: Denied,
-                cancel_sent_item: WithApproval,
-                complimentary: Denied,
-                move_table: Allowed,
-                // Print guest bill / KOT again from Floor and Order (first and
-                // reprint). Settle stays at the counter.
-                reprint: Allowed,
-                discount: Denied,
-            },
-            StaffRole::Kitchen => Self {
-                settle: Denied,
-                cancel_sent_item: Denied,
-                complimentary: Denied,
-                move_table: Denied,
-                reprint: Denied,
-                discount: Denied,
             },
         }
     }
@@ -1300,10 +1066,6 @@ impl StaffRights {
     pub fn level(&self, right: Right) -> RightLevel {
         match right {
             Right::Settle => self.settle,
-            Right::CancelSentItem => self.cancel_sent_item,
-            Right::Complimentary => self.complimentary,
-            Right::MoveTable => self.move_table,
-            Right::Reprint => self.reprint,
             Right::Discount => self.discount,
         }
     }
@@ -1311,10 +1073,6 @@ impl StaffRights {
     pub fn set_level(&mut self, right: Right, level: RightLevel) {
         match right {
             Right::Settle => self.settle = level,
-            Right::CancelSentItem => self.cancel_sent_item = level,
-            Right::Complimentary => self.complimentary = level,
-            Right::MoveTable => self.move_table = level,
-            Right::Reprint => self.reprint = level,
             Right::Discount => self.discount = level,
         }
     }
@@ -1397,48 +1155,6 @@ impl Category {
 
     pub fn set_aliases(&mut self, aliases: &[String]) {
         self.aliases_json = serde_json::to_string(aliases).unwrap_or_else(|_| "[]".into());
-    }
-}
-
-/// Kitchen station a line is routed to (owner-named — e.g. Tandoor, Fryer).
-#[derive(Clone, Debug, Default, Serialize, Deserialize)]
-pub struct KitchenStation {
-    pub id: String,
-    pub branch_id: String,
-    pub name: String,
-    pub sort_order: i64,
-    /// Target prep minutes for KDS ageing (amber at ~⅔, red at ~⁴⁄₃). Default 15.
-    #[serde(default = "default_target_prep_mins")]
-    pub target_prep_mins: i64,
-    /// Shown in station pickers when true (like units).
-    #[serde(default = "unit_picker_default_on")]
-    pub picker_enabled: bool,
-}
-
-fn default_target_prep_mins() -> i64 {
-    15
-}
-
-/// KDS ticket age band for colouring (normal / amber / red).
-#[derive(Clone, Copy, Debug, PartialEq, Eq)]
-pub enum KotAgeBand {
-    Normal,
-    Amber,
-    Red,
-}
-
-/// Age colour from minutes since `created_at` and the station's target.
-/// With the default target of 15: normal &lt;10, amber 10–20, red &gt;20.
-pub fn kot_age_band(minutes: i64, target_prep_mins: i64) -> KotAgeBand {
-    let target = target_prep_mins.max(1);
-    let amber_at = (target * 2 / 3).max(1);
-    let red_at = (target * 4 / 3).max(amber_at + 1);
-    if minutes < amber_at {
-        KotAgeBand::Normal
-    } else if minutes < red_at {
-        KotAgeBand::Amber
-    } else {
-        KotAgeBand::Red
     }
 }
 
@@ -2094,10 +1810,6 @@ impl Product {
         serde_json::from_str(&self.area_prices_json).unwrap_or_default()
     }
 
-    pub fn set_area_prices(&mut self, prices: &[ModifierOption]) {
-        self.area_prices_json = serde_json::to_string(prices).unwrap_or_else(|_| "[]".into());
-    }
-
     /// The price at a table in `area` (case-insensitive); the item price
     /// where the area has no price of its own.
     pub fn price_in_area(&self, area: &str) -> Money {
@@ -2523,19 +2235,6 @@ pub fn menu_price_error(price: Money) -> Option<String> {
 impl CartLine {
     fn sync_qty_from_milli(&mut self) {
         self.qty = milli_to_whole_qty(self.qty_milli);
-    }
-
-    /// Station this line prints to: ticket override, else the menu item.
-    pub fn kitchen_station_id<'a>(&'a self, products: &'a [Product]) -> &'a str {
-        let own = self.station_id.trim();
-        if !own.is_empty() {
-            return own;
-        }
-        products
-            .iter()
-            .find(|p| p.id == self.product_id)
-            .map(|p| p.station_id.as_str())
-            .unwrap_or("")
     }
 
     /// Step when +/- is tapped: 1.0 unit, or 0.1 for weight units.
@@ -3213,48 +2912,6 @@ impl Cart {
             cart.charge_total = Some(Money(sale.total_paise));
         }
         cart
-    }
-
-    /// Build a sale draft.
-    ///
-    /// Line unit prices and totals stay as the seller set them on the cart.
-    /// Any bill-level round/override becomes an explicit `rounding_paise`
-    /// so accounts can reconcile: `lines_total + rounding = total`.
-    /// The lines not yet sent to the kitchen, as a draft for the next KOT.
-    /// Unlike a bill, a KOT may be all ₹0 (complimentary water is still
-    /// cooked/served), so only "nothing new" is refused.
-    pub fn to_kot_draft(&self) -> Result<SaleDraft, String> {
-        let lines: Vec<SaleLine> = self
-            .lines
-            .iter()
-            .filter(|l| !l.is_sent() && !l.hold_send && l.qty_milli > 0)
-            .map(|l| sale_line_from_cart(l, false))
-            .collect();
-        if lines.is_empty() {
-            let held = self.lines.iter().any(|l| !l.is_sent() && l.hold_send);
-            return Err(if held {
-                "Every new item is on Hold — tap Hold on a line to include it, then send".into()
-            } else {
-                "Nothing new to send — tap items first".into()
-            });
-        }
-        let total: i64 = lines.iter().map(|l| l.line_total_paise).sum();
-        Ok(SaleDraft {
-            lines,
-            lines_total_paise: total,
-            rounding_paise: 0,
-            total_paise: total,
-            tax_paise: 0,
-            order_type: self.order_type,
-            money_lane: self.money_lane,
-            user_at: None,
-            extras_json: "[]".into(),
-            delivery_by: self.delivery_by.trim().to_string(),
-            notify_phone: String::new(),
-            discount_paise: 0,
-            discount_reason: String::new(),
-            discount_approval_pin: String::new(),
-        })
     }
 
     /// Mark the cart's new lines as sent with no running order behind them
@@ -4013,493 +3670,9 @@ impl DayTotals {
     }
 }
 
-#[derive(Clone, Copy, Debug, PartialEq, Eq, Serialize, Deserialize)]
-pub enum TableStatus {
-    Available,
-    Occupied,
-    /// Guests are done; the counter has been asked for the bill.
-    /// The table is released only when payment is recorded.
-    PaymentPending,
-    /// Paid; guests leaving, table to be cleared. Never blocks: "Table
-    /// ready" frees it, seating new guests starts fresh, and it clears by
-    /// itself after [`PAID_TABLE_CLEARS_AFTER_MIN`] minutes.
-    Paid,
-}
-
 /// Minutes a paid table shows "Paid — clear the table" before it reads as
 /// free again on its own.
 pub const PAID_TABLE_CLEARS_AFTER_MIN: i64 = 15;
-
-impl TableStatus {
-    pub fn as_str(self) -> &'static str {
-        match self {
-            Self::Available => "available",
-            Self::Occupied => "occupied",
-            Self::PaymentPending => "payment_pending",
-            Self::Paid => "paid",
-        }
-    }
-
-    pub fn parse(s: &str) -> Self {
-        match s {
-            "occupied" => Self::Occupied,
-            "payment_pending" => Self::PaymentPending,
-            "paid" => Self::Paid,
-            _ => Self::Available,
-        }
-    }
-
-    /// Short floor-card wording.
-    pub fn label(self) -> &'static str {
-        match self {
-            Self::Available => "Free",
-            Self::Occupied => "Running",
-            Self::PaymentPending => "Payment pending",
-            Self::Paid => "Paid",
-        }
-    }
-
-    /// Seated with an open bill (running or waiting to pay). A paid table
-    /// is not open: it never blocks seating new guests.
-    pub fn is_open(self) -> bool {
-        matches!(self, Self::Occupied | Self::PaymentPending)
-    }
-}
-
-#[derive(Clone, Debug, Serialize, Deserialize)]
-pub struct DiningTable {
-    pub id: String,
-    pub name: String,
-    pub status: TableStatus,
-    pub active_sale_id: Option<String>,
-    /// RFC3339 instant the current seating started (empty when free).
-    #[serde(default)]
-    pub occupied_at: String,
-    /// Open-bill amount sent for this seating (paise), for the floor card.
-    #[serde(default)]
-    pub running_total_paise: i64,
-    /// When the last bill on this table was paid (RFC3339; empty if not).
-    #[serde(default)]
-    pub paid_at: String,
-    /// Where the visit stands, worked out on the Server from the table, its
-    /// order and its kitchen tickets — every device shows the same.
-    #[serde(default)]
-    pub floor_state: FloorState,
-    /// Floor area this table sits in ("Dine In", "Parcel", "AC" …). Empty =
-    /// the floor's unnamed area.
-    #[serde(default)]
-    pub area: String,
-    /// Waiter section: staff id assigned to this table (empty = unassigned).
-    #[serde(default)]
-    pub waiter_staff_id: String,
-    /// Optional drawn layout (0 = use grid).
-    #[serde(default)]
-    pub layout_x: f64,
-    #[serde(default)]
-    pub layout_y: f64,
-    #[serde(default)]
-    pub layout_w: f64,
-    #[serde(default)]
-    pub layout_h: f64,
-}
-
-/// A table's place in the guests' visit, as the floor shows it (learned from
-/// how the best restaurant systems colour their floor): free → seated → food
-/// in the kitchen → food ready → eating → bill printed → paid → free.
-#[derive(Clone, Copy, Debug, Default, PartialEq, Eq, Serialize, Deserialize)]
-pub enum FloorState {
-    #[default]
-    Free,
-    /// Guests seated; no dishes punched yet (no live order / cooking).
-    Seated,
-    /// KOTs being prepared.
-    InKitchen,
-    /// Every open KOT is Ready — serve it.
-    FoodReady,
-    /// Food served (no open KOTs); the guests are eating.
-    Eating,
-    /// Bill printed or requested; waiting for payment.
-    BillPrinted,
-    /// Paid; clear the table.
-    Paid,
-}
-
-impl FloorState {
-    /// Work out the visit's state from the table, whether it has a live
-    /// order, and its open KOTs (food tickets only — cancel slips do not
-    /// count).
-    pub fn derive(
-        status: TableStatus,
-        open_kot_statuses: &[KotStatus],
-        has_live_order: bool,
-    ) -> Self {
-        match status {
-            TableStatus::Available => Self::Free,
-            TableStatus::Paid => Self::Paid,
-            TableStatus::PaymentPending => Self::BillPrinted,
-            TableStatus::Occupied => {
-                let cooking: Vec<_> = open_kot_statuses
-                    .iter()
-                    .filter(|s| !matches!(s, KotStatus::Completed | KotStatus::Cancelled))
-                    .collect();
-                if !cooking.is_empty() {
-                    if cooking.iter().all(|s| **s == KotStatus::Ready) {
-                        Self::FoodReady
-                    } else {
-                        Self::InKitchen
-                    }
-                } else if has_live_order {
-                    Self::Eating
-                } else {
-                    Self::Seated
-                }
-            }
-        }
-    }
-
-
-    /// Short words for a floor tile and the colour key (the tile's colour
-    /// carries the rest; colours live in the floor's own design).
-    pub fn tile_key(self) -> &'static str {
-        match self {
-            Self::Free => "tile_free",
-            Self::Seated => "tile_occupied",
-            Self::InKitchen => "floor_in_kitchen",
-            Self::FoodReady => "tile_food_ready",
-            Self::Eating => "floor_eating",
-            Self::BillPrinted => "tile_bill_printed",
-            Self::Paid => "tile_paid",
-        }
-    }
-
-    pub const ALL: [FloorState; 7] = [
-        Self::Free,
-        Self::Seated,
-        Self::InKitchen,
-        Self::FoodReady,
-        Self::Eating,
-        Self::BillPrinted,
-        Self::Paid,
-    ];
-}
-
-#[derive(Clone, Copy, Debug, PartialEq, Eq, Serialize, Deserialize)]
-pub enum KotStatus {
-    New,
-    Preparing,
-    Ready,
-    Completed,
-    Cancelled,
-}
-
-impl KotStatus {
-    pub fn as_str(self) -> &'static str {
-        match self {
-            Self::New => "new",
-            Self::Preparing => "preparing",
-            Self::Ready => "ready",
-            Self::Completed => "completed",
-            Self::Cancelled => "cancelled",
-        }
-    }
-
-    pub fn parse(s: &str) -> Self {
-        match s {
-            "preparing" => Self::Preparing,
-            "ready" => Self::Ready,
-            "completed" => Self::Completed,
-            "cancelled" => Self::Cancelled,
-            _ => Self::New,
-        }
-    }
-
-    pub fn next(self) -> Option<Self> {
-        match self {
-            Self::New => Some(Self::Preparing),
-            Self::Preparing => Some(Self::Ready),
-            Self::Ready => Some(Self::Completed),
-            Self::Completed | Self::Cancelled => None,
-        }
-    }
-
-    /// Undo one bump: Completed→Ready→Preparing→New. Cancelled stays.
-    pub fn prev(self) -> Option<Self> {
-        match self {
-            Self::Completed => Some(Self::Ready),
-            Self::Ready => Some(Self::Preparing),
-            Self::Preparing => Some(Self::New),
-            Self::New | Self::Cancelled => None,
-        }
-    }
-}
-
-#[derive(Clone, Debug, Serialize, Deserialize)]
-pub struct KotTicket {
-    pub id: String,
-    pub sale_id: String,
-    pub created_at: String,
-    pub status: KotStatus,
-    pub summary: String,
-    /// Table this ticket belongs to (empty for counter orders).
-    #[serde(default)]
-    pub table_id: String,
-    /// Order amount at send time (paise) — kitchen never sees this;
-    /// it powers the floor card's running total.
-    #[serde(default)]
-    pub total_paise: i64,
-    /// Kitchen station this ticket belongs to; empty = whole order / unassigned.
-    #[serde(default)]
-    pub station_id: String,
-    /// Station display name resolved for the KDS (empty when unassigned).
-    #[serde(default)]
-    pub station_name: String,
-    /// Today's ticket number (the kitchen calls tickets by number).
-    #[serde(default)]
-    pub kot_no: i64,
-    /// `kot` (cook this) or `cancel` (stop this — a cancellation slip).
-    #[serde(default)]
-    pub kind: String,
-    /// Who sent it (waiter / cashier name).
-    #[serde(default)]
-    pub created_by: String,
-}
-
-impl KotTicket {
-    pub fn is_cancel(&self) -> bool {
-        self.kind == "cancel"
-    }
-}
-
-/// Where a table's open order stands (vision `BUSINESS_BOOKS.md` § Open
-/// orders are not books yet).
-#[derive(Clone, Copy, Debug, Default, PartialEq, Eq, Serialize, Deserialize)]
-pub enum RunningOrderStatus {
-    /// Items going to the kitchen; more can be added.
-    #[default]
-    Running,
-    /// The bill was printed for the guests; still open until settled.
-    Printed,
-    /// Paid — closed by a sale.
-    Settled,
-    /// Folded into another table's order (merge).
-    Merged,
-}
-
-impl RunningOrderStatus {
-    pub fn as_str(self) -> &'static str {
-        match self {
-            Self::Running => "running",
-            Self::Printed => "printed",
-            Self::Settled => "settled",
-            Self::Merged => "merged",
-        }
-    }
-
-    pub fn parse(s: &str) -> Self {
-        match s {
-            "printed" => Self::Printed,
-            "settled" => Self::Settled,
-            "merged" => Self::Merged,
-            _ => Self::Running,
-        }
-    }
-
-    pub fn is_open(self) -> bool {
-        matches!(self, Self::Running | Self::Printed)
-    }
-}
-
-fn running_line_total_default() -> i64 {
-    -1
-}
-
-/// One line of a table's open order: what the kitchen was told, kept even
-/// when cancelled or given free (vision §18).
-#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
-pub struct RunningLine {
-    pub id: String,
-    pub order_id: String,
-    /// KOT that carried this line to the kitchen.
-    pub kot_id: String,
-    pub product_id: String,
-    pub name: String,
-    pub unit_price_paise: i64,
-    /// Applied amount for billing (paise). `-1` = compute from unit × qty.
-    #[serde(default = "running_line_total_default")]
-    pub line_total_paise: i64,
-    pub qty_milli: i64,
-    #[serde(default)]
-    pub unit_label: String,
-    #[serde(default)]
-    pub note: String,
-    /// Cancelled after the KOT: not billed, never deleted.
-    #[serde(default)]
-    pub cancelled: bool,
-    /// Complimentary (NC): billed ₹0, real value kept for reports.
-    #[serde(default)]
-    pub complimentary: bool,
-    /// Why it was cancelled / given free.
-    #[serde(default)]
-    pub reason: String,
-    /// Cancelled after the kitchen had cooked it (wastage) vs before.
-    #[serde(default)]
-    pub prepared: bool,
-    /// Who changed it (cancel / NC) and who approved, by name.
-    #[serde(default)]
-    pub changed_by: String,
-    #[serde(default)]
-    pub approved_by: String,
-    pub created_at: String,
-    #[serde(default)]
-    pub created_by: String,
-    /// Seat number for split-by-seat (0 = unassigned).
-    #[serde(default)]
-    pub seat_no: i64,
-    /// Coursing hold: Send KOT skips until Fire course / unhold.
-    #[serde(default)]
-    pub held: bool,
-    /// Course number for fire-by-course (0 = none).
-    #[serde(default)]
-    pub course_no: i64,
-}
-
-impl Default for RunningLine {
-    fn default() -> Self {
-        Self {
-            id: String::new(),
-            order_id: String::new(),
-            kot_id: String::new(),
-            product_id: String::new(),
-            name: String::new(),
-            unit_price_paise: 0,
-            line_total_paise: running_line_total_default(),
-            qty_milli: 0,
-            unit_label: String::new(),
-            note: String::new(),
-            cancelled: false,
-            complimentary: false,
-            reason: String::new(),
-            prepared: false,
-            changed_by: String::new(),
-            approved_by: String::new(),
-            created_at: String::new(),
-            created_by: String::new(),
-            seat_no: 0,
-            held: false,
-            course_no: 0,
-        }
-    }
-}
-
-impl RunningLine {
-    /// Value at the menu price — what the line would cost if charged.
-    pub fn value_paise(&self) -> i64 {
-        Money(self.unit_price_paise).saturating_mul_milli(self.qty_milli).paise()
-    }
-
-    /// What this line adds to the bill: ₹0 when cancelled or complimentary.
-    pub fn billed_paise(&self) -> i64 {
-        if self.cancelled || self.complimentary {
-            0
-        } else if self.line_total_paise >= 0 {
-            self.line_total_paise
-        } else {
-            self.value_paise()
-        }
-    }
-
-    pub fn is_live(&self) -> bool {
-        !self.cancelled
-    }
-}
-
-/// A table's open order between KOTs and payment. One per seating.
-#[derive(Clone, Debug, Default, PartialEq, Serialize, Deserialize)]
-pub struct RunningOrder {
-    pub id: String,
-    pub table_id: String,
-    pub status: RunningOrderStatus,
-    pub opened_at: String,
-    #[serde(default)]
-    pub opened_by: String,
-    #[serde(default)]
-    pub printed_at: String,
-    #[serde(default)]
-    pub lines: Vec<RunningLine>,
-}
-
-impl RunningOrder {
-    pub fn live_lines(&self) -> impl Iterator<Item = &RunningLine> {
-        self.lines.iter().filter(|l| l.is_live())
-    }
-
-    /// Guest-bill view of live lines: same dish at the same rate (and note /
-    /// NC flag) is one row with qty summed. KOT sends stay separate on the
-    /// order; the bill must not list "2 Thali" then "3 Thali" for five.
-    pub fn bill_print_lines(&self) -> Vec<RunningLine> {
-        let mut out: Vec<RunningLine> = Vec::new();
-        for line in self.live_lines() {
-            if let Some(existing) = out.iter_mut().find(|e| {
-                e.product_id == line.product_id
-                    && e.unit_price_paise == line.unit_price_paise
-                    && e.line_total_paise == line.line_total_paise
-                    && e.complimentary == line.complimentary
-                    && e.unit_label.trim() == line.unit_label.trim()
-                    && e.note.trim() == line.note.trim()
-            }) {
-                existing.qty_milli = existing.qty_milli.saturating_add(line.qty_milli);
-            } else {
-                out.push((*line).clone());
-            }
-        }
-        out
-    }
-
-    /// Running amount for the floor card and the bill.
-    pub fn total_paise(&self) -> i64 {
-        self.lines.iter().map(RunningLine::billed_paise).sum()
-    }
-
-    /// The order as cart lines to bill: every live line, marked sent, NC at
-    /// ₹0. Cancelled lines stay on the order, off the bill.
-    pub fn to_cart_lines(&self) -> Vec<CartLine> {
-        self.live_lines()
-            .map(|l| {
-                let mut line = CartLine {
-                    product_id: l.product_id.clone(),
-                    name: l.name.clone(),
-                    unit_price: Money(l.unit_price_paise),
-                    qty: 0,
-                    qty_milli: l.qty_milli,
-                    unit_label: l.unit_label.clone(),
-                    note: l.note.clone(),
-                    base_unit_paise: l.unit_price_paise,
-                    applied_modifiers: Vec::new(),
-                    modifier_page: 0,
-                    line_total_override: None,
-                    running_line_id: l.id.clone(),
-                    complimentary: l.complimentary,
-                    kot_id: l.kot_id.clone(),
-                    hold_send: false,
-                    station_id: String::new(),
-                    reprint_skip: false,
-                cancel_pick: false,
-                };
-                line.sync_qty_from_milli();
-                let computed = line.actual_total().paise();
-                let effective = if l.line_total_paise >= 0 {
-                    l.line_total_paise
-                } else {
-                    computed
-                };
-                if !l.complimentary && effective != computed {
-                    line.line_total_override = Some(Money(effective));
-                }
-                line
-            })
-            .collect()
-    }
-}
 
 #[derive(Clone, Debug, Serialize, Deserialize)]
 pub struct AuditEvent {
@@ -4900,37 +4073,6 @@ mod tests {
     }
 
     #[test]
-    fn running_order_to_cart_lines_restores_applied_override() {
-        let mut order = RunningOrder::default();
-        order.lines.push(RunningLine {
-            id: "line-1".into(),
-            product_id: "tea".into(),
-            name: "Tea".into(),
-            unit_price_paise: 1300,
-            qty_milli: 4000,
-            line_total_paise: 5000,
-            ..Default::default()
-        });
-        let lines = order.to_cart_lines();
-        assert_eq!(lines.len(), 1);
-        assert_eq!(lines[0].line_total_override, Some(Money(5000)));
-        assert_eq!(lines[0].applied_total().paise(), 5000);
-        assert_eq!(lines[0].actual_total().paise(), 5200);
-    }
-
-    #[test]
-    fn running_line_billed_paise_uses_applied_total() {
-        let line = RunningLine {
-            unit_price_paise: 1300,
-            qty_milli: 4000,
-            line_total_paise: 5000,
-            ..Default::default()
-        };
-        assert_eq!(line.billed_paise(), 5000);
-        assert_eq!(line.value_paise(), 5200);
-    }
-
-    #[test]
     fn order_type_and_modifiers_roundtrip() {
         assert_eq!(OrderType::parse("dine_in"), OrderType::DineIn);
         assert_eq!(OrderType::parse("garbage"), OrderType::Counter);
@@ -5192,16 +4334,6 @@ mod tests {
     }
 
     #[test]
-    fn kot_age_band_default_target_fifteen() {
-        // target 15 → amber at 10, red at 20
-        assert_eq!(kot_age_band(0, 15), KotAgeBand::Normal);
-        assert_eq!(kot_age_band(9, 15), KotAgeBand::Normal);
-        assert_eq!(kot_age_band(10, 15), KotAgeBand::Amber);
-        assert_eq!(kot_age_band(19, 15), KotAgeBand::Amber);
-        assert_eq!(kot_age_band(20, 15), KotAgeBand::Red);
-    }
-
-    #[test]
     fn happy_hour_price_and_breakfast_visibility() {
         use chrono::TimeZone;
         let mut p = Product::new_basic("idli", "Idli", Money::from_rupees(40));
@@ -5257,15 +4389,6 @@ mod tests {
     }
 
     #[test]
-    fn kot_status_prev_recall_chain() {
-        assert_eq!(KotStatus::Completed.prev(), Some(KotStatus::Ready));
-        assert_eq!(KotStatus::Ready.prev(), Some(KotStatus::Preparing));
-        assert_eq!(KotStatus::Preparing.prev(), Some(KotStatus::New));
-        assert_eq!(KotStatus::New.prev(), None);
-        assert_eq!(KotStatus::Cancelled.prev(), None);
-    }
-
-    #[test]
     fn settings_access_matches_shop_admin_not_my_pin_shell() {
         let member = |role: StaffRole| StaffMember {
             id: "1".into(),
@@ -5280,15 +4403,14 @@ mod tests {
         };
         assert!(member(StaffRole::Owner).can_access_settings());
         assert!(member(StaffRole::Manager).can_access_settings());
-        assert!(!member(StaffRole::Waiter).can_access_settings());
-        assert!(!member(StaffRole::Kitchen).can_access_settings());
         assert!(!member(StaffRole::Cashier).can_access_settings());
-        // Waiter still reaches Settings shell for My PIN only.
-        assert!(member(StaffRole::Waiter).can_open_settings_shell());
-        assert!(member(StaffRole::Waiter).can_change_own_credentials());
-        assert!(!member(StaffRole::Waiter).can_manage_team());
+        assert!(!member(StaffRole::Cashier).can_access_settings());
+        assert!(!member(StaffRole::Cashier).can_access_settings());
+        // A cashier still reaches the Settings shell for My PIN only.
+        assert!(member(StaffRole::Cashier).can_open_settings_shell());
+        assert!(member(StaffRole::Cashier).can_change_own_credentials());
+        assert!(!member(StaffRole::Cashier).can_manage_team());
         assert!(member(StaffRole::Owner).can_manage_team());
     }
 }
-
 

@@ -80,28 +80,6 @@ applied	Aplicat
 note_ph	Notă (opțional)
 rounded	ROTUNJIT
 split	Împarte
-send_kot	Trimite fișa
-send_kot_to	Trimite → {kitchens}
-send_kot_again	Adaugă articole pentru fișa următoare
-send_kot_held	Articole reținute — eliberează-le ca să le trimiți
-reprint_kot	Tipărește din nou cele selectate
-reprint_kot_ok	S-au tipărit din nou {n} articole · {slips} fișă(e) → {kitchens}
-reprint_kot_needed	Trimite mai întâi o fișă — apoi include medicamente și tipărește din nou pe cele alese
-reprint_kot_none_selected	Fiecare articol trimis e sărit — atinge În tipărire pe cele de retipărit
-reprint_kot_client	Tipărește din nou ({n}) pentru {place} trimis — dispozitivul magazinului o tipărește
-print_cancelled_kot	Tipărește toate anulatele
-print_cancelled_kot_ok	S-au tipărit {n} articole anulate · {slips} fișă(e) → {kitchens}
-print_cancelled_kot_needed	Deschide mai întâi o masă cu articole anulate
-print_cancelled_kot_none	Niciun articol anulat pe această comandă
-print_cancelled_kot_client	Tipărește anulate ({n}) pentru {place} trimis — dispozitivul magazinului o tipărește
-kot_banner	Banner de tip
-kot_banner_ph	Banner (gol = niciunul)
-kot_item_prefix	Prefix articol
-kot_item_prefix_ph	ex. [ANULAT]
-kot_strike	Taie numele articolului
-kot_strike_note	Taie nota articolului
-kot_strike_on	Pornit
-kot_strike_off	Oprit
 bill_item_layout	Așezare articole
 bill_item_layout_columns	Coloane
 bill_item_layout_stacked	Pe rânduri
@@ -130,8 +108,6 @@ bill_item_gap_em	Spațiu (em)
 bill_item_qty_min	Cant. min (em)
 bill_item_price_min	Preț min (em)
 bill_item_amount_min	Sumă min (em)
-kot_item_qty_width	Coloană cant.
-kot_item_num_align	Aliniere cant.
 bill_total_qty_label	Etichetă cant. totală
 bill_total_subtotal_label	Etichetă subtotal
 bill_total_grand_label	Etichetă total general
@@ -143,36 +119,9 @@ bill_item_piece_off	Oprit
 bill_total_qty	Cant. totală
 bill_total_subtotal	Subtotal
 bill_total_grand	Total general
-reprint_incl	În tipar
-reprint_skip	Sari
-reprint_skip_meta	Sari tipărirea de recuperare
-kot_dest_hint	Se tipărește pe imprimantele atribuite pentru {kitchens} în Setări → Imprimante
-kot_sent_hint	Ultima trimitere a mers la {kitchens}. Atinge ca să adaugi articole pentru nota următoare — sau Tipărește fișa din nou pentru aceeași.
-kot_sent_printing	Fișă trimisă la {kitchens} — se tipărește
-kot_sent_not_printed	Fișă trimisă la {kitchens}, dar NETIPĂRITĂ: {why}. Spune magazinului, repară imprimanta și tipărește-o din nou.
-kot_sent_screen	Fișă trimisă la {kitchens}
-kot_queued_shop	Fișa pentru {place} → {kitchens} salvată; dispozitivul magazinului o tipărește
-kot_job_label	Fișă pentru {place} → {kitchens}
-kot_job_reached	Fișa pentru {place} a ajuns la {kitchens}
 kot_unassigned	Nealocat
-kot_unassigned_held	Reținute {n} articole fără stație — eliberează-le pe rând ca să le trimiți
-kot_station_ph	Stație
-kot_station_dd	Stație
-kot_station_dd_n	Stație · {stations}
-kot_set_station	Folosește această stație
-kot_station_applied	Stație pusă pe {n} articole: {station}
-kot_station_cleared	Stație scoasă de pe {n} articole: {station}
-kot_station_needed	Alege mai întâi o secțiune de farmacie
-kot_station_not_allowed	Nu are voie să folosească secțiunea: {station}
-kot_station_none	Nicio stație încă — nefolosită într-un magazin cu tejghea (Setări → Zone dacă e nevoie)
 pos_tab_items	Articole adăugate
 pos_tab_payment	Plată
-hold_send	Reține
-hold_send_on	Reținut
-hold_send_meta	Reținut — nu e pe această fișă
-station_remove	Elimină stația
-station_remove_ph	Atinge o stație din listă ca s-o elimini
-station_removed	Stație eliminată: {name}
 settings_hub_title	Setări
 settings_hub_help	Deschide câte o zonă — mai puțină derulare, alegeri mai clare.
 settings_back	Înapoi
@@ -181,12 +130,10 @@ settings_sec_country	Țară și taxă
 settings_sec_tills	Alte dispozitive
 settings_sec_brand	Marca ta
 settings_sec_units	Unități și conversii
-settings_sec_pickers	Zone · stații · cote de taxă
+settings_sec_pickers	Cote de taxă
 settings_sec_printers	Imprimante
 settings_sec_bill	Format notă și fișă
 settings_sec_selling	Scheme și vânzări
-bill_kot_tab_bill	Notă
-bill_kot_tab_kot	Fișă
 settings_sec_alerts	Alerte
 alerts_help	Cât rămân mesajele de stare pe ecran pentru tine (această autentificare).
 snack_secs_ph	Secunde (3–60, implicit 10)
@@ -237,8 +184,6 @@ counter	Tejghea
 dine_in	Tejghea
 takeaway	La pachet
 order	Comandă
-tables	Tejghele
-kitchen	Secțiuni
 sales	Vânzări
 sales_refunds	Vânzări și rambursări
 day_close	Închidere de zi
@@ -266,10 +211,6 @@ zero_sales_on	Permite ₹0
 zero_sales_off	Cere preț
 zero_sales_saved_on	Vânzările cu valoare zero sunt permise
 zero_sales_saved_off	Vânzările trebuie să aibă un preț peste ₹0
-floor_areas_help	Zonele sunt camere sau zone pe sală (La masă, La pachet, AC …). Adaugă mai întâi o zonă, apoi pune tejghele în ea — fiecare zonă e un grup separat pe sală.
-area_new_ph	Zonă / sală nouă (ex. AC, Grădină)
-add_area	Adaugă zonă
-area_added	Zona „{name}” e gata — adaugă tejghele în ea
 no_favorites	Încă nu sunt favorite — adaugă articole din lista de mai jos.
 add_to_bill	Adaugă la notă
 added	Adăugat
@@ -280,19 +221,9 @@ chip_missing_customer	Clientul selectat lipsește — alege din nou
 chip_no_customer	Încă niciun client — tastează un nume, apoi atinge Credit
 credit_summary_fmt	{} clienți · credit deschis {} · avansuri reținute {}
 recent_label	Recente:
-kot_new_waiting	NOU — așteaptă
-kot_preparing	SE PREGĂTEȘTE
-kot_ready_serve	GATA — servește
-kot_done_cap	GATA
-kot_cancelled	ANULAT
-kot_start_btn	Începe
-kot_mark_ready	Marchează gata
-kot_done_btn	Gata
-table_free	Liberă — atinge ca să începi o comandă
 start_order	Începe comanda
 open_bill	Deschide nota
 collect_payment	Încasează plata
-table_running	În curs
 payment_pending	Plată în așteptare
 collect_at_counter	încasează la tejghea
 inventory	Inventar
@@ -325,7 +256,6 @@ ok	OK
 this_shop	Server
 extra_till	Client
 off	Oprit
-tables_kitchen	Așezare magazin
 server	Server
 client	Client
 language_currency	Limbă și monedă
@@ -367,8 +297,6 @@ add_item_plain	Adaugă articol
 add_note	Adaugă notă
 add_opening_balance	Adaugă sold de deschidere
 add_staff	Adaugă personal
-add_station	Adaugă stație
-add_table	Adaugă masă
 add_unit	Adaugă unitate
 add_use_name	Adaugă / folosește acest nume
 allow_extra_tills	Permite case suplimentare
@@ -421,7 +349,6 @@ share_whatsapp	Partajează WhatsApp
 lan_pages_heading	Pagini pentru clienți pe Wi‑Fi
 lan_pages_help	Pe Wi‑Fi-ul acestui magazin, paginile pentru clienți merg pentru panoul de afișaj și pentru feedback. Cei pe date mobile au nevoie de Cloud mai târziu. Un terminal de card sau un link de plată este opțional și nu blochează niciodată tejgheaua.
 diag_send_heading	Partajează în afara dispozitivului
-kot_dest_heading	Stație
 optional_login_heading	Autentificare opțională
 rights_heading	Drepturi
 ops_panel	Operații locale
@@ -448,28 +375,6 @@ till_voucher_amt_ph	Sumă voucher (gol = tot)
 till_wallet_topup_ph	Sumă de încărcare a portofelului
 till_voucher_issue_amt_ph	Sumă voucher de emis
 till_voucher_issue_code_ph	Cod voucher nou
-split_evenly	Împarte egal
-waitlist	Listă de așteptare
-fire_course	Pasul următor
-hold_item	Reține
-waiter_call	Cheamă casierul
-waitlist_add	Adaugă în lista de așteptare
-floor_view_grid	Grilă
-floor_view_layout	Așezare
-floor_layout_x	X
-floor_layout_y	Y
-floor_layout_w	W
-floor_layout_h	H
-floor_layout_save	Salvează așezarea
-floor_layout_open	Deschide masa
-floor_layout_edit	Editează așezarea
-floor_layout_pick	Atinge o masă ca să-i editezi așezarea
-floor_layout_saved	Așezare salvată
-floor_layout_nudge_left	← 20
-floor_layout_nudge_right	→ 20
-floor_layout_nudge_up	↑ 20
-floor_layout_nudge_down	↓ 20
-sibling_pickers_help	Atinge Pornit/Oprit ca la unități — ascunde zone, stații și cote de taxă din listele zilnice; implicitele pachetului rămân.
 bulk_price_apply	Aplică prețul în masă
 card_terminal_optional	Terminal de card / link de plată (opțional când există internet)
 copy_report	Copiază raportul
@@ -495,7 +400,6 @@ import_day	Importă ziua
 import_items_csv_plain	Importă articole CSV…
 import_parties_csv	Importă parteneri CSV…
 item_name	Nume articol
-kitchen_printing	Imprimante
 login_id_ph	Nume de utilizator
 mark_cleared	Marchează decontat
 new_party_clear	Partener nou (golește formularul)
@@ -565,15 +469,6 @@ show	Arată
 spreadsheet_csv	Foaie de calcul (CSV)
 start_fresh	Începe de la zero
 stop_extra_tills	Oprește casele suplimentare
-floor_cols_ph	Coloane
-floor_cols_fit	Încadrează ecranul
-floor_cols_fit_sub	{n} încap aici
-floor_cols_fits	încape
-floor_cols_scroll	derulează în lateral
-floor_cols_min	Coloane: cel puțin 1 — sau lasă gol ca să încapă pe ecran
-floor_zoom_auto	Automat
-floor_zoom_out	Micșorează
-floor_zoom_in	Mărește
 backup_auto	Copie de rezervă automată în fiecare zi · ultima {when} · ultimele 14 zile se păstrează în {dir}.
 backup_auto_none	Copie de rezervă automată în fiecare zi — prima pornește într-o clipă.
 backup_copy_to	Copiile merg și în {dir}.
@@ -591,7 +486,6 @@ new_pair_code	Cod nou de împerechere
 pair_finishing	Se termină împerecherea… se aplică registrele localului
 pair_opening	Se deschide casa…
 pair_copied	Cod de împerechere copiat
-kot_waiting	Așteaptă trimiterea
 lan_offline_waiting	Serverul e inaccesibil · {n} așteaptă
 lan_connecting	Se conectează la local…
 lan_live	În direct
@@ -633,7 +527,6 @@ printers_routes_help	Găsește imprimantele pe care sistemul de operare le știe
 printer_assign_dd	Imprimantă reală: {place}
 printer_assign_pick	Alege imprimanta reală
 printer_profile_heading	Așezare
-printer_send_heading	Livrare
 vp_delivery_heading	Livrare
 vp_delivery_help	Cum trimite joburile această imprimantă virtuală — document OS, octeți bruți sau ESC/POS. Conținutul fișei (mărimea caracterelor, împachetarea, marginile) îl decide formatul notei / fișei, nu aici.
 vp_type_size_heading	Mărime literă
@@ -677,23 +570,13 @@ virtual_draft_send	Valoare setată pentru următoarea imprimantă virtuală
 virtual_need_real	Alege mai întâi o imprimantă reală
 virtual_need_select	Alege o imprimantă virtuală de șters
 real_printer_selected	Selectat: {name}
-station_group_heading	Imprimante virtuale
-station_group_apply	Șterge imprimanta virtuală
-station_group_applied	Șters
-station_group_empty	Alege o imprimantă virtuală
-station_group_name_ph	Nume imprimantă virtuală (opțional)
-station_group_save	Creează imprimantă virtuală
-station_group_saved	Imprimantă virtuală salvată
-station_manage_heading	Adaugă sau elimină o secțiune de farmacie
 printers_routes_heading	Unde se tipărește
 route_pick_heading	Loc
 route_editing	Se editează: {name}
 route_assigned	Adăugat {printer} la {place}
 route_already_assigned	Deja pe acest loc: {printer}
-route_removed	Eliminat {printer} din {place}
 route_cleared	Golit {name}
 route_assigned_empty	Nimic pe acest loc
-route_tap_remove	atinge pentru a elimina
 route_tap_select	atinge pentru a selecta
 route_tap_selected	selectat
 route_pick_printer_first	Atinge mai întâi o imprimantă
@@ -714,35 +597,17 @@ printer_format_custom	Profil personalizat nou
 printer_format_custom_label	Personalizat
 printer_format_custom_added	Profil personalizat adăugat pentru acest loc
 add_printer	Adaugă imprimantă
-remove_printer	Elimină
 route_pick_ph	Notă sau o secțiune de farmacie
 route_bill	Notă
-route_default_kitchen	Nicio stație (articole nealocate)
-route_kot_station	Stație
 route_dont_print	Nicio imprimantă
-stations_heading	Stații
-stations_help	Secțiunile de farmacie grupează medicamentele și imprimantele pentru partea aceea de magazin. Atașează imprimante din Setări → Imprimante, setează ordinea de încercare, apoi Prima care merge sau Tipărește pe toate. Modificările se salvează pe parcurs.
-station_print_heading	Imprimante pentru această stație
-station_print_help	Alege o stație, apoi atașează una sau mai multe imprimante. ↑↓ setează ordinea de încercare. Prima care merge se oprește după primul succes; Tipărește pe toate trimite la fiecare imprimantă atașată.
-station_print_pick_ph	Stație pentru setarea imprimantelor
 station_print_pick_first	Alege mai întâi o secțiune de farmacie
-station_print_editing	Se editează imprimantele pentru „{name}”
-station_vps_dd	Imprimante pentru această stație
-station_vps_dd_n	{n} imprimantă(e) · atinge pentru a schimba
 station_vps_empty	Încă nu sunt imprimante — găsește-le la Setări → Imprimante
 bill_printers_dd	Imprimante pentru notă
 bill_printers_dd_n	{n} imprimantă(e) pentru notă · atinge pentru a schimba
-job_layout	Așezare
-job_delivery	Cum se trimite lucrarea
-job_delivery_help	Document OS, octeți bruți sau ESC/POS. Nota și tichetul își păstrează fiecare setarea. Oricare job poate merge la orice imprimantă salvată de Găsește.
 station_vp_attached	Imprimantă atașată
 station_vp_detached	Imprimantă eliminată de pe stație
-station_print_summary	{mode} · {n} imprimantă(e)
-station_print_summary_none	Încă nu sunt imprimante pe această stație — nu va tipări
-stations_none	Nicio stație încă — adaugă una mai jos. Stațiile nu se folosesc într-un magazin cu tejghea — lasă gol.
 route_up	Sus
 route_down	Jos
-route_remove	Elimină
 route_clear	Golește
 save_printers	Salvează imprimantele
 print_test_page	Tipărește o pagină de test
@@ -751,23 +616,15 @@ test_page_no_printer	Nicio imprimantă pentru {place} — atașează o imprimant
 test_page_pick_first	Alege mai întâi imprimanta(ele) pentru o pagină de test — apoi Tipărește o pagină de test
 test_printers_dd	Imprimante pentru o pagină de test
 test_printers_dd_n	{n} imprimantă(e) pentru o pagină de test · atinge pentru a schimba
-kot_test_printers_dd	Imprimante pentru tipărirea de test
-kot_test_printers_dd_n	{n} imprimantă(e) pentru tipărirea de test · atinge ca să schimbi
 test_printer_picked	Test pe: {name}
 test_printer_cleared	Nu se testează pe: {name}
 test_page_sent_n	Pagină de test trimisă la {n} imprimantă(e)
-test_kot_pick_first	Alege mai întâi imprimanta(ele) pentru tipărirea de test — apoi Tipărire de test
-test_kot_sent_n	Tipărire de test trimisă la {n} imprimantă(e)
-cancel_pick	Marchează
-cancel_pick_on	Marcat
-cancel_pick_meta	Marcat pentru anulare
 batch_cancel	Anulează marcatele
 batch_cancel_n	Anulează marcatele ({n})
 batch_cancel_none	Marchează mai întâi unul sau mai multe articole trimise — apoi Anulează marcatele
 batch_cancel_title	Anulează medicamentele marcate — un motiv, o fișă de anulare pe secțiune
 batch_cancel_ok	{n} articole anulate · {slips} fișă(e) de anulare → {kitchens}
 batch_cancel_ok_noprint	{n} articole anulate — tipărirea automată e oprită, deci nicio fișă de anulare
-no_printer_kitchen_station	Nicio imprimantă pentru stația aceea
 printers_saved	Salvat
 test_page_sent	Pagină de test trimisă — verifică imprimanta
 test_page_sent_one	Pagină de test trimisă la {name} — verifică imprimanta aceea
@@ -783,10 +640,7 @@ cancelled	Anulat
 printers_tap_find	Atinge Căutare ca să listezi imprimantele pe care le poate folosi acest dispozitiv.
 printers_none_found	Nimic găsit — tastează un nume de imprimantă de sistem sau un IP (ex. 192.168.1.50).
 printer_from_find	Adăugat {name}
-kot_printer_ph	Imprimantă pentru fișe
 bill_printer_ph	Imprimantă pentru note
-kot_print_on	Tipărire automată tichete: Pornit
-kot_print_off	Tipărire automată tichete: Oprit
 queue_refused	Neacceptat de local ({n}) — verifică fiecare la casă:
 clear_not_accepted	Verificat — golește lista asta
 device_name_ph	Numele acestui dispozitiv
@@ -797,7 +651,6 @@ backup_failed	Ultima copie de rezervă automată a eșuat: {e}
 backup_overdue	Nicio copie de rezervă de {n} zile — ține aplicația deschisă pe acest dispozitiv ca să poată face backup.
 disk_low	Doar {mb} MB liberi pe acest dispozitiv — copiile de rezervă vor eșua curând. Eliberează spațiu.
 last_seen_devices	Văzut ultima dată: {time}
-sync_interval	Sincronizare la fiecare {secs} s
 connection_to_shop	Conexiune la local
 supplier_name_ph	Nume furnizor (sau partener)
 supplier_ph	Furnizor
@@ -860,7 +713,6 @@ fresh_book_tabiyat	Nou = catalog gol (adaugi articole mai târziu). Registru = s
 fresh_selected	Fresh selectat — catalogul rămâne gol. Atinge Gata când ești pregătit.
 gross_word	Brut
 how_start	Cum vrei să începi?
-kot_print_help_tabiyat	Nefolosit într-un magazin cu tejghea.
 later_country_pack	Mai târziu: Setări → aplică pachetul de țară pentru etichetele de taxă și plată.
 local_badge	LOCAL
 mix_type_hint_tabiyat	Împarte la numerar / UPI / card / credit dacă e nevoie. Creditul cere un client deasupra.
@@ -911,8 +763,6 @@ staff_copy_need_source	Alege a cui configurare se copiază
 staff_copy_same	E aceeași persoană — alege pe altcineva
 staff_rename_need_selected	Alege mai întâi pe cine redenumești
 team_pick_hint	Alege pe cine editezi — ecranele, drepturile de bani și stațiile apar doar pentru persoana aceea.
-team_stations_help	Stații pe care le pot folosi
-team_stations_changed	Stațiile s-au schimbat — salvează configurarea pentru această persoană
 team_features_changed	Ecranele s-au schimbat — Salvează configurarea pentru această persoană
 team_rights_changed	Drepturile s-au schimbat — Salvează configurarea pentru această persoană
 they_owe_us	Ei ne datorează
@@ -996,9 +846,6 @@ service_pct_ph	Serviciu % opțional 0/10/12
 short_code_ph	Cod scurt (MG02)
 starting_password_ph	Parolă de început (opțională)
 starting_pin_ph	PIN de început (4–12 cifre)
-station_name_ph	Nume stație (opțional)
-station_new_ph	Secțiune (opțional)
-table_name_ph	Nume tejghea / loc
 tax_rate_ph	Nume cotă sau % — Standard, Redus, 0, 5, 12, 18, 20
 to_code_ph	Către cod (kg)
 uncleared_no_ph	Necompensat nr. deasupra
@@ -1011,27 +858,8 @@ book_kind_month	Cărțile lunii acesteia
 book_kind_aging	Neachitat / debit-credit
 book_kind_balance	Bilanț
 order_help	Atinge un articol ca să-l adaugi.
-floor_help	Acest magazin vinde la tejghea. Mesele și o sală de mese nu fac parte din Tabiyat.
-kitchen_help	Nefolosit într-un magazin cu tejghea.
-kitchen_empty	Niciun tichet deschis (magazinele cu tejghea lasă de obicei acest ecran nefolosit).
-add_a_table	Adaugă o masă
-add_station_heading	Adaugă o secțiune de farmacie
 categories_help	Atinge Folosește ca să pui articolul de mai sus în categoria aceea. Poza dă categoriei o imagine; fără ea se arată inițialele.
 dish_search_ph	Caută nume, substanță sau cod de bare…
-tile_free	Liberă
-tile_occupied	Ocupată
-tile_food_ready	Mâncarea e gata
-tile_bill_printed	Nota tipărită
-tile_paid	Plătită
-tile_bill_btn	Notă
-tile_occupy_btn	Așază oaspeții
-tile_free_btn	Eliberează masa
-tile_ready_btn	Eliberează masa
-tile_undo_bill	Anulează nota
-summary_busy	mese ocupate
-summary_to_collect	de încasat
-summary_on_floor	în sală
-floor	Local
 sizes_as_items_ph	Mărimi ca articole separate (opțional) — Jumătate=120, Întreg=200
 dish_group_ph	Grup concentrație / ambalaj (opțional) — de ex. blister 500 mg
 discount	Reducere
@@ -1039,7 +867,6 @@ remove_discount	Elimină reducerea
 apply_discount	Aplică reducerea
 save_opening_cash	Salvează numerarul de deschidere
 close_shift_print	Închide tura și tipărește bonul
-area_prices_ph	Prețuri pe zonă (opțional) — Climatizat=220, La pachet=210
 discount_ph	10% sau 50
 discount_reason_ph	Motiv (ex. oaspete obișnuit, mâncare întârziată)
 opening_float_ph	Bani puși în sertar azi-dimineață
@@ -1049,34 +876,18 @@ shift_handover	Predare de tură
 shift_since	Tura aceasta de la
 expected_in_drawer	Așteptat în sertar
 right_discount	Dă o reducere
-floor_in_kitchen	În curs
-floor_eating	Servit
 pick_category	Alege o categorie
 close_category_list	Închide lista de categorii
 new_category_row	Categorie nouă — se creează când salvezi articolul
 your_category	Categoria ta
 suggested_category	Sugerat — din articolele noastre
 category_search_ph	Categorie — caută ale tale sau scrie una nouă
-line_sent_state	Trimis
-line_nc_state	Din partea casei (NC) — nefacturat
 cancel_item_short	Anulează
-nc_short	NC
-charge_again_short	Încasează
-move_short	Mută
 cancel_item_title	Anulează acest articol — biroul primește o fișă de anulare
-nc_item_title	Fă acest articol din partea casei (NC)
-charge_again_title	Încasează acest articol din nou
-move_item_title	Mută acest articol la altă masă
-already_cooked	Deja gătit (risipă)
-not_cooked_yet	Încă negătit
 return_to_customer	Înapoiază clientului
 short_by	Lipsește
 tip_not_sale	Bacșiș (al personalului, nu e vânzare)
 right_settle	Încasează plata
-right_cancel_sent	Anulează un articol trimis
-right_complimentary	Din partea casei (NC)
-right_move_table	Mută / unește tejghele
-right_reprint	Tipărește nota din nou
 right_allowed	Permis
 right_with_approval	Cu aprobare
 right_denied	Nepermis
@@ -1086,25 +897,11 @@ no_server_found	Nimic găsit. Pe Server: Setări → Alte dispozitive → Permit
 servers_found_pick	Atinge localul la care vrei să te conectezi.
 server_host_selected	Se folosește {host} — introdu codul de împerechere, apoi Împerechează acum.
 print_bill	Tipărește nota
-table_actions	Acțiuni tejghea
-move_merge_table	Mută / unește masa
-move_help	Mută comanda acestei tejghele la o masă liberă sau unește-o cu una în curs.
-move_target_ph	Nume tejghea
 approval_pin_ph	PIN de manager (doar dacă se cere)
-move_here	Mută aici
-merge_into	Unește în ea
-line_reason_ph	Motiv (de ex. clientul s-a răzgândit, stoc epuizat)
-line_qty_ph	Câte se anulează (gol = toate)
-line_target_ph	Mută la masa (ex. D5)
 confirm	Confirmă
 menu_search_ph	Caută articol sau cod scurt
 customer_paid_ph	Clientul a plătit
 tip_ph	Bacșiș
-table_area_ph	Zonă (ex. În local, La pachet, Climatizat)
-table_range_ph	Multe deodată: D1-D20
-add_these_tables	Adaugă aceste tejghele
-remove_these_tables	Elimină aceste tejghele
-table_remove_ph	Elimină: T1-T24 sau numele unei mese
 find_server	Găsește serverul localului
 bill_format	Format notă
 bill_format_help	Tipărit sub numele magazinului pe fiecare notă. Separă liniile cu | (de ex. MG Road, Rajkot | Tel. 98250 00000).
@@ -1112,78 +909,32 @@ bill_header_ph	Adresă | telefon
 fssai_ph	Nr. licență medicamente (opțional — formularea ta)
 bill_footer_ph	Subsol (ex. Mulțumim, reveniți)
 save_bill_format	Salvează formatul notei
-kot_format	Format fișă
-kot_format_help	Atinge un câmp din listă. Afișarea, mărimea fontului și grosimea se aplică acelui câmp pe tipul de fișă ales mai sus. Fiecare tip își păstrează mărimile și grosimile.
-kot_format_fields	Câmpuri
-kot_field_next	Câmpul următor
-kot_field_show	Arată
-kot_field_hide	Ascunde
 kot_field_on	afișează
 kot_field_off	ascunde
-kot_field_size	Mărime font
-kot_field_size_ph	ex. 16, 20, 24, 28, 32…
 kot_weight_light	Subțire
 bill_kot_panel_help	Așezarea notei și lățimea conținutului. Casierul este cine a emis sau a închis nota — toată povestea vânzării rămâne în registre.
 std_size_ph	ex. 18, 20, 26…
-kot_show_shop	Numele localului
-kot_hide_shop	Ascunde localul
-kot_show_time	Ora
-kot_hide_time	Ascunde ora
-kot_show_waiter	Casier
-kot_hide_waiter	Ascunde casierul
-kot_show_station	Stație
-kot_hide_station	Ascunde stația
-kot_show_table	Tejghea
-kot_hide_table	Ascunde masa
-kot_show_kot_no	Nr. tichet
-kot_hide_kot_no	Ascunde nr. tichet
-kot_width	Previzualizează împachetarea (setează lățimea conținutului pe fila fișă)
-kot_width_58	58 mm
-kot_width_80	80 mm
-kot_kind_heading	Tip tichet
-kot_kind_original	Exemplar
-kot_kind_duplicate	Duplicat
-kot_kind_modified	Modificat
-kot_kind_cancelled	Anulat
-kot_style_heading	Mărime și grosime câmp
-kot_style_title	Titlu
-kot_style_item_qty	Articol · Cant.
-kot_style_field_pick	Alege câmpul
 kot_weight_regular	Obișnuit
 kot_weight_bold	Aldin
-kot_align	Aliniere
 kot_align_start	Începe
 kot_align_center	Centru
 kot_align_end	Sfârșit
 content_width	Lățime conținut (mm)
 content_width_bill	Lățime conținut notă (mm)
-content_width_kot	Lățimea conținutului tichetului (mm)
 content_width_ph	Sau tastează o lățime de conținut, 40–210 mm
 content_width_help	Cât de lată se tipărește această fișă. Nota își păstrează lățimea.
 content_width_bill_help	Cât de lată se tipărește nota clientului. Implicit 210 mm (pagină). 58 mm fișă îngustă, 80 mm fișă lată, 112 mm 4 inci, 210 mm lățime A4. Scrie orice valoare de la 40 la 210. Tichetele au lățimea lor pe fila fișă.
-content_width_kot_help	Cât de lat se tipărește tichetul. Implicit 80 mm. 58 mm fișă îngustă, 80 mm fișă lată, 112 mm 4 inci, 210 mm pagină. Scrie orice valoare de la 40 la 210. Notele clientului au lățimea lor pe fila Notă.
 vp_paper_width	Lățime conținut (mm)
 vp_paper_width_ph	Sau tastează o lățime de conținut, 40–210 mm
 vp_paper_width_help	Lățimea conținutului se setează la Format notă și fișă — separat pentru notă (implicit 210 mm) și pentru tichet (implicit 80 mm).
-kot_size	Mărime font
-kot_size_s	Mic
-kot_size_m	Obișnuit
-kot_size_l	Mare
 std_size	Mărime font
 kot_copies	Copii
 kot_copies_1	1
 kot_copies_2	2
 kot_copies_3	3
-kot_title_ph	Titlu (gol = TICHET)
-kot_footer_ph	Notă de back-office (opțional)
-kot_preview	Previzualizare
-save_kot_format	Salvează formatul fișei
-test_kot_format	Tipărire de test
-test_kot_sent	Previzualizare tichet trimisă
 test_bill_format	Notă de test
 test_bill_sent	Previzualizarea notei a fost trimisă
 test_print_no_printer	Nicio imprimantă pentru lucrarea aceea — alege una pe acest ecran
-kot_format_saved	Format fișă salvat
 std_print	Mărime tipărire notă
 std_print_help	Mărimea fontului pentru joburile de notă Portret standard și Peisaj pe imprimante OS / document (introdu puncte — nu Mic/Normal/Mare). Aceeași mărime pe ambele orientări.
 std_size_s	Mic
@@ -1223,23 +974,16 @@ upi_qr	UPI QR
 show_upi_qr	Arată UPI QR
 close_upi_qr	Închide
 upi_qr_help	Clientul scanează și plătește. Atinge Încasează după ce plătește. Al doilea ecran: deschide URL-ul serverului /display pe LAN.
-kot_recall	Reia
 recently_done	Gata de curând
-recall_kot_ph	Nr. tichet de rechemat
 role_help_customer	Rol: Client — cont (ei ne datorează). Același partener poate și furniza stoc.
 role_help_both	Roluri: Client + Furnizor — un partener, cont și registre de plată, net în Rapoarte.
 role_help_supplier	Rol: Furnizor — le datorăm pentru cumpărături.
-dine_in_pick_table	Nefolosit într-un magazin cu tejghea
-choose_table	Alege tejgheaua
-change_table	Schimbă masa
-pick_table_banner	Alege o masă pentru comanda asta
 items_word	articole
 items_section	Articole
 back_to_order	Înapoi la comandă
 new_items_head	Încă netrimis
 price_ph	Preț
 price_ph_gst_inside	Preț ({tax} inclus)
-cancel_needs_table	Vânzările la tejghea rămân pe tichet până încasezi
 tax_rates_missing_hint	Nicio cotă de {tax} pe aceste articole — la Articole pune Cota de taxă (prețurile includ deja {tax} la {tax} inclus)
 taxable_value	Valoare impozabilă
 gst_inside_price_note	({tax} inclus)
@@ -1260,30 +1004,11 @@ client_template_confirm	Adaugi {d} articole din {title}? Articolele pe care le a
 client_template_importing	Se importă {title}…
 client_template_done	Fiecare articol din {title} este la articolele tale.
 client_template_imported	S-au adăugat {d} articole și {c} categorii din {title}
-resv_heading	Rezervări
-resv_name_ph	Nume client
-resv_phone_ph	Telefon (opțional)
-resv_guests_ph	Persoane
-resv_when_ph	Când — 20:30, mâine 13:00
-resv_table_ph	Tejghea (opțional)
-resv_add	Rezervă
-resv_seat	Așezat
-resv_none	Nicio rezervare în curând.
-guests_word	oaspeți
-delivery_by_ph	Livrare de (nume curier sau personal)
-kitchen_all_day	De gătit acum: {items}
-split_bill	Împarte nota
-split_go	Fă notă separată
 cancel	Anulează
 opening_client	Se deschide clientul…
 preparing_desk	Se pregătește tejgheaua…
 opening_server	Se deschide serverul…
 creating_server	Se creează serverul…
-split_help	Atinge articolele pe care le plătește un client · {n} alese
-split_send_first	Trimite mai întâi fișa — doar articolele pe care le are biroul pot merge pe o notă separată
-split_pick_some	Atinge mai întâi articolele pentru nota separată
-split_done	Notă separată făcută — e pe sală, lângă această tejghea
-split_marked	notă separată
 order_empty_pick	Comanda e goală — atinge Adaugă articole mai sus ca să alegi articole.
 add_dishes	Adaugă medicamente
 order_so_far	În comanda asta: {n} · {total}
@@ -1294,24 +1019,8 @@ pick_done_dd	Gata · {label}
 printer_route_mode	Dacă sunt mai multe imprimante pe acest loc
 printer_mode_first	Prima care merge
 printer_mode_all	Tipărește pe toate
-kot_show_area	Zonă
-kot_hide_area	Ascunde zona
-kot_show_item_hdr	Articol · Cant.
-kot_hide_item_hdr	Ascunde coloanele
-kot_show_title	Linie de titlu
-kot_hide_title	Ascunde titlul
-kot_field_order	Ordine de tipărire
 kot_field_up	Mută în sus
 kot_field_down	Mută în jos
-kot_field_cycle	Alege următorul
-kot_field_select	Alege următorul
-kot_field_time	Ora
-kot_field_kot_no	Nr. tichet
-kot_field_area	Zonă
-kot_field_table	Tejghea
-kot_field_shop	Numele localului
-kot_field_waiter	Personal
-kot_field_station	Stație
 app_template_blurb_extra	De asemenea: proprietarul Zahir, adminul Asif, casierul Nawaz; bară laterală în față; istoric după 4 ore; banda Azi oprită; notă compactă.
 dishes_n	{n} articole
 recipe_ph	Rețetă (opțional — nefolosită într-un magazin cu tejghea)
@@ -1321,8 +1030,6 @@ low_stock_alert	Se termină — cumpără curând: {items}
 unpriced_note	{n} articole de la tine nu au încă preț — se facturează cu 0 până pui unul.
 show_unpriced	Arată doar articolele fără preț
 show_all_dishes	Arată toate articolele
-role_waiter	Casier
-role_kitchen	Magazin
 role_title_rest_ph	Titlu rol (ex. Căpitan, Bucătar-șef)
 preset_help_rest	Casier: vinde. Manager: vânzare + articole + anulare/modificare.
 kind_raw	Stoc de preparare

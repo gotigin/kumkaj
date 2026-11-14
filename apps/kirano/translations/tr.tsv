@@ -68,28 +68,6 @@ applied	Uygulanan
 note_ph	Not (isteğe bağlı)
 rounded	Yuvarlanmış
 split	Böl
-send_kot	Fiş gönder
-send_kot_to	Gönder → {kitchens}
-send_kot_again	Sonraki fiş için ürün ekle
-send_kot_held	Bekletilen ürünler — göndermek için bekletmeyi kaldırın
-reprint_kot	Seçileni yeniden yazdır
-reprint_kot_ok	{n} ürün yeniden basıldı · {slips} fiş → {kitchens}
-reprint_kot_needed	Önce bir fiş gönderin — sonra ürünleri ekleyip seçilenleri yeniden basın
-reprint_kot_none_selected	Gönderilmiş her ürün atlanır — yeniden basılacaklarda Yazdırmada'ya dokunun
-reprint_kot_client	{place} için yeniden bas ({n}) gönderildi — dükkân cihazı basar
-print_cancelled_kot	Tüm iptalleri yazdır
-print_cancelled_kot_ok	{n} iptal ürün basıldı · {slips} fiş → {kitchens}
-print_cancelled_kot_needed	Önce iptal edilmiş ürünü olan bir masa açın
-print_cancelled_kot_none	Bu siparişte iptal edilmiş ürün yok
-print_cancelled_kot_client	{place} için iptaller basıldı ({n}) gönderildi — dükkân cihazı basar
-kot_banner	Banner
-kot_banner_ph	Banner (boş = yok)
-kot_item_prefix	Öğe öneki
-kot_item_prefix_ph	örn. [CANCELLED] 
-kot_strike	Ürün adının üstünü çiz
-kot_strike_note	Ürün notunun üstünü çiz
-kot_strike_on	Açık
-kot_strike_off	Kapalı
 bill_item_layout	Öğe düzeni
 bill_item_layout_columns	Sütunlar
 bill_item_layout_stacked	Yığılmış
@@ -118,8 +96,6 @@ bill_item_gap_em	Aralık (em)
 bill_item_qty_min	Adet en az (em)
 bill_item_price_min	Fiyat en az (em)
 bill_item_amount_min	Tutar en az (em)
-kot_item_qty_width	Adet sütunu
-kot_item_num_align	Adet hizası
 bill_total_qty_label	Toplam adet etiketi
 bill_total_subtotal_label	Ara toplam etiketi
 bill_total_grand_label	Genel toplam etiketi
@@ -131,36 +107,9 @@ bill_item_piece_off	Kapalı
 bill_total_qty	Toplam adet
 bill_total_subtotal	Ara toplam
 bill_total_grand	Genel toplam
-reprint_incl	Yazdırmada
-reprint_skip	Atla
-reprint_skip_meta	Yeniden yazdırmaya alma
-kot_dest_hint	Ayarlar → Yazıcılar bölümünde {kitchens}'ya atadığınız yazıcılarda yazdırılır
-kot_sent_hint	Son gönderim {kitchens} hedefine gitti. Sonraki hesap için ürün eklemek üzere dokunun — veya aynı hesap için fişi yeniden basın.
-kot_sent_printing	Fiş {kitchens} birimine gönderildi — yazdırılıyor
-kot_sent_not_printed	Fiş {kitchens} hedefine gönderildi ama BASILMADI: {why}. Dükkâna söyleyin, yazıcıyı düzeltip yeniden basın.
-kot_sent_screen	Fiş {kitchens} hedefine gönderildi
-kot_queued_shop	{place} fişi → {kitchens} kaydedildi; dükkân cihazı basar
-kot_job_label	{place} fişi → {kitchens}
-kot_job_reached	{place} fişi {kitchens} hedefine ulaştı
 kot_unassigned	Atanmamış
-kot_unassigned_held	İstasyonu olmayan {n} ürün bekletildi — göndermek için satırda bekletmeyi kaldırın
-kot_station_ph	İstasyon
-kot_station_dd	İstasyon
-kot_station_dd_n	İstasyon · {stations}
-kot_set_station	Bu istasyonu kullan
-kot_station_applied	{n} ürüne istasyon kondu: {station}
-kot_station_cleared	{n} üründen istasyon kaldırıldı: {station}
-kot_station_needed	Önce bir dükkân bölümü seçin
-kot_station_not_allowed	Bu bölüm kullanılamaz: {station}
-kot_station_none	Henüz istasyon yok — tezgah dükkânında kullanılmaz (gerekirse Ayarlar → Alanlar)
 pos_tab_items	Eklenenler
 pos_tab_payment	Ödeme
-hold_send	Beklet
-hold_send_on	Bekletildi
-hold_send_meta	Beklemede — bu fişte yok
-station_remove	İstasyonu kaldır
-station_remove_ph	Listede bir istasyona dokunarak kaldırın
-station_removed	İstasyon kaldırıldı: {name}
 settings_hub_title	Ayarlar
 settings_hub_help	Her seferinde bir bölüm açın — daha az kaydırma, daha net seçenekler.
 settings_back	Geri
@@ -169,12 +118,10 @@ settings_sec_country	Ülke ve vergi
 settings_sec_tills	Ek kasalar ve şubeler
 settings_sec_brand	Markanız
 settings_sec_units	Birimler ve dönüşümler
-settings_sec_pickers	Alanlar · İstasyonlar · Vergi oranları
+settings_sec_pickers	Vergi oranları
 settings_sec_printers	Yazıcılar
 settings_sec_bill	Hesap ve fiş biçimi
 settings_sec_selling	Şemalar ve satışlar
-bill_kot_tab_bill	Hesap
-bill_kot_tab_kot	Fiş
 settings_sec_alerts	Uyarılar
 alerts_help	Durum mesajlarının sizin için ekranda kalma süresi (bu giriş).
 snack_secs_ph	Saniye (3–60, varsayılan 10)
@@ -225,8 +172,6 @@ counter	Tezgah
 dine_in	Tezgah
 takeaway	Paket
 order	Sipariş
-tables	Tezgahlar
-kitchen	Bölüm
 sales	Satışlar
 sales_refunds	Satış ve iade
 day_close	Gün kapanışı
@@ -254,10 +199,6 @@ zero_sales_on	Sıfır satış: açık
 zero_sales_off	Sıfır satış: kapalı
 zero_sales_saved_on	Sıfır satış izni kaydedildi (açık)
 zero_sales_saved_off	Sıfır satış izni kaydedildi (kapalı)
-floor_areas_help	Alanlar salondaki oda veya bölgelerdir (Burada ye, Paket, Klima …). Önce bir alan ekleyin, sonra tezgah koyun — her alan salonda ayrı bir gruptur.
-area_new_ph	Yeni alan / oda (örn. AC, Garden)
-add_area	Alan ekle
-area_added	“{name}” alanı hazır — içine tezgah ekleyin
 no_favorites	Henüz favori yok — aşağıdaki listeden ürün ekleyin.
 add_to_bill	Hesaba ekle
 added	Eklendi
@@ -268,19 +209,9 @@ chip_missing_customer	Seçilen müşteri bulunamadı — tekrar seçin
 chip_no_customer	Henüz müşteri yok — bir isim yazın, sonra Veresiye'ye dokunun
 credit_summary_fmt	{} müşteri · açık veresiye {} · avans tutuluyor {}
 recent_label	Son:
-kot_new_waiting	YENİ — bekliyor
-kot_preparing	HAZIRLANIYOR
-kot_ready_serve	HAZIR — servis edin
-kot_done_cap	BİTTİ
-kot_cancelled	İPTAL
-kot_start_btn	Başlat
-kot_mark_ready	Hazır işaretle
-kot_done_btn	Bitti
-table_free	Boş — sipariş başlatmak için dokunun
 start_order	Siparişi başlat
 open_bill	Hesabı aç
 collect_payment	Ödemeyi al
-table_running	Devam ediyor
 payment_pending	Ödeme bekliyor
 collect_at_counter	kasada tahsil edin
 inventory	Stok
@@ -313,7 +244,6 @@ ok	Tamam
 this_shop	Sunucu modu
 extra_till	İstemci modu
 off	Kapalı
-tables_kitchen	Dükkân yerleşimi
 server	Sunucu
 client	İstemci
 language_currency	Dil ve para
@@ -355,8 +285,6 @@ add_item_plain	Öğe ekle
 add_note	Not ekle
 add_opening_balance	Açılış bakiyesi ekle
 add_staff	Personel ekle
-add_station	İstasyon ekle
-add_table	Masa ekle
 add_unit	Birim ekle
 add_use_name	Bu adı ekle / kullan
 allow_extra_tills	Ek kasalara izin ver
@@ -409,7 +337,6 @@ share_whatsapp	WhatsApp ile paylaş
 lan_pages_heading	Wi‑Fi üzerinde müşteri sayfaları
 lan_pages_help	Bu dükkânın Wi‑Fi ağında müşteri sayfaları pano ve geri bildirim içindir. Mobil veri kullananlar daha sonra buluta ihtiyaç duyar. Kart terminali veya ödeme bağlantısı isteğe bağlıdır ve tezgahı hiç durdurmaz.
 diag_send_heading	Bu cihazdan dışarı paylaş
-kot_dest_heading	İstasyon
 optional_login_heading	İsteğe bağlı giriş
 rights_heading	Yetkiler
 ops_panel	Yerel işlemler
@@ -436,28 +363,6 @@ till_voucher_amt_ph	Kupon tutarı (boş = tümü)
 till_wallet_topup_ph	Cüzdan yükleme tutarı
 till_voucher_issue_amt_ph	Yeni kupon tutarı
 till_voucher_issue_code_ph	Yeni kupon kodu
-split_evenly	Eşit böl
-waitlist	Bekleme listesi
-fire_course	Sonraki adım
-hold_item	Beklet
-waiter_call	Kasiyeri çağır
-waitlist_add	Bekleme listesine ekle
-floor_view_grid	Izgara
-floor_view_layout	Yerleşim
-floor_layout_x	X
-floor_layout_y	Y
-floor_layout_w	W
-floor_layout_h	H
-floor_layout_save	Yerleşimi kaydet
-floor_layout_open	Masayı aç
-floor_layout_edit	Yerleşimi düzenle
-floor_layout_pick	Yerleşimi düzenlemek için masaya dokunun
-floor_layout_saved	Düzen kaydedildi
-floor_layout_nudge_left	← 20
-floor_layout_nudge_right	→ 20
-floor_layout_nudge_up	↑ 20
-floor_layout_nudge_down	↓ 20
-sibling_pickers_help	Birimler gibi On/Off — alan, istasyon, vergi oranlarını günlük seçiciden gizle; paket varsayılanları kalır.
 bulk_price_apply	Toplu fiyat uygula
 card_terminal_optional	Kart terminali / ödeme bağlantısı (internet varken isteğe bağlı)
 copy_report	Raporu kopyala
@@ -483,7 +388,6 @@ import_day	Günü içe aktar
 import_items_csv_plain	Öğe CSV içe aktar…
 import_parties_csv	Taraf CSV içe aktar…
 item_name	Öğe adı
-kitchen_printing	Mutfak baskısı
 login_id_ph	Giriş kimliği
 mark_cleared	Temizlendi işaretle
 new_party_clear	Yeni taraf (formu temizle)
@@ -553,15 +457,6 @@ show	Göster
 spreadsheet_csv	E-tablo (CSV)
 start_fresh	Sıfırdan başla
 stop_extra_tills	Ek kasaları durdur
-floor_cols_ph	Sütun
-floor_cols_fit	Ekrana sığdır
-floor_cols_fit_sub	{n} sığar
-floor_cols_fits	sığar
-floor_cols_scroll	yana kayar
-floor_cols_min	Sütun: en az 1 — ya da ekrana sığdırmak için boş bırakın
-floor_zoom_auto	Otomatik
-floor_zoom_out	Yakınlaştırma dışına çık
-floor_zoom_in	Yakınlaştırma içine gir
 backup_auto	Her gün otomatik yedek · son {when} · son 14 gün {dir} içinde tutulur.
 backup_auto_none	Her gün otomatik yedek — ilki birazdan alınır.
 backup_copy_to	Kopyalar {dir} konumuna da gider.
@@ -579,7 +474,6 @@ new_pair_code	Yeni eşleştirme kodu
 pair_finishing	Eşleştirme bitiyor… dükkan defterleri uygulanıyor
 pair_opening	Kasa açılıyor…
 pair_copied	Eşleştirme kodu kopyalandı
-kot_waiting	Gönderilmeyi bekliyor
 lan_offline_waiting	Çevrimdışı · {n} bekliyor
 lan_connecting	Dükkâna bağlanıyor…
 lan_live	Canlı
@@ -621,7 +515,6 @@ printers_routes_help	İşletim sisteminin bildiği yazıcıları bulun. Hesap ve
 printer_assign_dd	{place} için yazıcı seç
 printer_assign_pick	Gerçek yazıcı seç
 printer_profile_heading	Yerleşim
-printer_send_heading	Teslimat
 vp_delivery_heading	Teslimat
 vp_delivery_help	Bu sanal yazıcı işleri nasıl gönderir — sistem belgesi, ham bayt veya ESC/POS. Fiş içeriği (punto, kaydırma, kenar boşluğu) hesap / fiş biçiminden gelir, buradan değil.
 vp_type_size_heading	Yazı boyutu
@@ -665,23 +558,13 @@ virtual_draft_send	Sonraki sanal yazıcı için değer ayarlandı
 virtual_need_real	Önce gerçek yazıcı seçin
 virtual_need_select	Silinecek sanal yazıcıyı seçin
 real_printer_selected	Gerçek yazıcı: {name}
-station_group_heading	Sanal yazıcılar
-station_group_apply	Sanal yazıcıyı sil
-station_group_applied	Silindi
-station_group_empty	Sanal yazıcı seçin
-station_group_name_ph	Sanal yazıcı adı (isteğe bağlı)
-station_group_save	Sanal yazıcı oluştur
-station_group_saved	Sanal yazıcı kaydedildi
-station_manage_heading	Bir dükkân bölümü ekle veya kaldır
 printers_routes_heading	2. Nereye yazdır
 route_pick_heading	Yer
 route_editing	Düzenleme: {name}
 route_assigned	{printer}, {place}'ye eklendi
 route_already_assigned	Zaten burada: {printer}
-route_removed	{printer}, {place}'den kaldırıldı
 route_cleared	{name} temizlendi
 route_assigned_empty	Bu yerde yok
-route_tap_remove	Kaldırmak için dokunun
 route_tap_select	seçmek için dokunun
 route_tap_selected	seçildi
 route_pick_printer_first	Önce bir yazıcıya dokunun
@@ -702,35 +585,17 @@ printer_format_custom	Yeni özel biçim
 printer_format_custom_label	Özel
 printer_format_custom_added	Bu rota için özel biçim eklendi
 add_printer	Yazıcı ekle
-remove_printer	Sonuncuyu kaldır
 route_pick_ph	Hesap veya bir dükkân bölümü
 route_bill	Fiş
-route_default_kitchen	İstasyon yok (atanmamış ürünler)
-route_kot_station	İstasyon
 route_dont_print	Yazdırma
-stations_heading	İstasyonlar
-stations_help	Dükkân bölümleri ürünleri ve o kısmın yazıcılarını gruplar. Ayarlar → Yazıcılar'dan yazıcı bağlayın, deneme sırasını koyun, sonra Çalışanı olan ilki veya Hepsi üzerinde baskı al. Değişiklikler giderken kaydolur.
-station_print_heading	Bu istasyonun yazıcıları
-station_print_help	Bir istasyon seçin, sonra bir veya daha fazla yazıcı bağlayın. ↑↓ deneme sırasını belirler. Çalışanı olan ilki ilk başarıda durur; Hepsi üzerinde baskı al bağlı her yazıcıya gönderir.
-station_print_pick_ph	Yazıcıları ayarlanacak istasyon
 station_print_pick_first	Önce bir dükkân bölümü seçin
-station_print_editing	“{name}” yazıcıları düzenleniyor
-station_vps_dd	Bu istasyonun yazıcıları
-station_vps_dd_n	{n} yazıcı · değiştirmek için dokunun
 station_vps_empty	Henüz yazıcı yok — Ayarlar → Yazıcılar altında bulun
 bill_printers_dd	Fatura için yazıcılar
 bill_printers_dd_n	Fatura için {n} yazıcı(alar) · değiştirmek için dokunun
-job_layout	Yerleşim
-job_delivery	İşin nasıl gönderildiği
-job_delivery_help	Sistem belgesi, ham bayt veya ESC/POS. Hesap ve adisyon her biri kendi ayarını tutar. Her iş, Bul'un kaydettiği herhangi bir yazıcıya gidebilir.
 station_vp_attached	Yazıcı eklendi
 station_vp_detached	Yazıcı istasyondan kaldırıldı
-station_print_summary	{mode} · {n} yazıcı
-station_print_summary_none	Bu istasyonda henüz yazıcı yok — yazdırmayacak
-stations_none	Henüz istasyon yok — aşağıya bir tane ekleyin. Tezgah dükkânında istasyon kullanılmaz — boş bırakın.
 route_up	Yukarı
 route_down	Aşağı
-route_remove	Sonuncuyu kaldır
 route_clear	Yazdırma
 save_printers	Yazıcıları kaydet
 print_test_page	Test sayfası yazdır
@@ -739,23 +604,15 @@ test_page_no_printer	{place} için yazıcı yok — yukarıda atayıp yeniden de
 test_page_pick_first	Önce test yazıcılarını seçin — sonra test sayfası yazdırın
 test_printers_dd	Test sayfası yazıcıları
 test_printers_dd_n	{n} test yazıcısı · değiştirmek için dokunun
-kot_test_printers_dd	Deneme baskısı yazıcıları
-kot_test_printers_dd_n	Deneme baskısı için {n} yazıcı · değiştirmek için dokunun
 test_printer_picked	Test: {name}
 test_printer_cleared	Test değil: {name}
 test_page_sent_n	Test sayfası {n} yazıcıya gönderildi
-test_kot_pick_first	Önce Deneme baskısı için yazıcı seçin — sonra Deneme baskısı
-test_kot_sent_n	Deneme baskısı {n} yazıcıya gönderildi
-cancel_pick	İşaretle
-cancel_pick_on	İşaretli
-cancel_pick_meta	İptal için işaretli
 batch_cancel	İşaretlileri iptal et
 batch_cancel_n	İşaretlileri iptal et ({n})
 batch_cancel_none	Önce gönderilmiş bir veya daha fazla ürünü işaretleyin — sonra İşaretlileri iptal et
 batch_cancel_title	İşaretlileri iptal et — bir gerekçe, bölüm başına bir fiş
 batch_cancel_ok	{n} ürün iptal edildi · {slips} iptal fişi → {kitchens}
 batch_cancel_ok_noprint	{n} ürün iptal edildi — otomatik basım kapalı, bu yüzden iptal fişi yok
-no_printer_kitchen_station	O istasyon için yazıcı yok
 printers_saved	Bu cihazın yazıcıları kaydedildi
 test_page_sent	Test sayfası gönderildi — yazıcıyı kontrol edin
 test_page_sent_one	Test sayfası {name} yazıcısına gönderildi — o yazıcıyı kontrol edin
@@ -771,10 +628,7 @@ cancelled	İptal
 printers_tap_find	Yazıcıları bul'a dokunun — sistem yazıcıları ve bu Wi‑Fi'deki ağ fiş yazıcıları listelenir.
 printers_none_found	Yazıcı bulunamadı — sistem adı veya ağ adresi yazın (örn. 192.168.1.50).
 printer_from_find	{name} eklendi
-kot_printer_ph	Fiş yazıcısı
 bill_printer_ph	Hesap yazıcısı
-kot_print_on	Adisyonları otomatik yazdır: Açık
-kot_print_off	Adisyonları otomatik yazdır: Kapalı
 queue_refused	Dükkânın kabul etmedikleri ({n}) — her birini kasada kontrol edin:
 clear_not_accepted	Kontrol edildi — listeyi temizle
 device_name_ph	Bu cihazın adı
@@ -785,7 +639,6 @@ backup_failed	Son otomatik yedekleme başarısız oldu: {e}
 backup_overdue	{n} gündür yedek yok — yedek alabilmesi için uygulamayı bu cihazda açık tutun.
 disk_low	Bu cihazda yalnızca {mb} MB boş alan kaldı — yedeklemeler yakında başarısız olacak. Biraz yer açın.
 last_seen_devices	Son görülme: {time}
-sync_interval	Her {secs} saniyede senkronize et
 connection_to_shop	Dükkânla bağlantı
 supplier_name_ph	Tedarikçi adı (veya taraf)
 supplier_ph	Tedarikçi
@@ -848,7 +701,6 @@ fresh_book_kirano	Yazıcılar
 fresh_selected	Fresh seçili — katalog boş kalacak. Hazır olduğunuzda Done'a dokunun.
 gross_word	Brüt
 how_start	Nasıl başlamak istersiniz?
-kot_print_help_kirano	KOT gönderildiğinde — tezgahtan veya garson cihazından — mutfak kağıdı burada kendiliğinden yazdırılır.
 later_country_pack	Yazıcılar
 local_badge	YEREL
 mix_type_hint_kirano	Gerekirse nakit / UPI / kart / veresiye olarak bölün. Veresiye için yukarıda müşteri gerekir.
@@ -899,8 +751,6 @@ staff_copy_need_source	Ayarı kopyalanacak kişinin kim olduğunu seç
 staff_copy_same	Bu aynı kişi — başka biri seçin
 staff_rename_need_selected	Önce kimin yeniden adlandırılacağını seç
 team_pick_hint	Kimi düzenleyeceğinizi seçin — ekranlar, para hakları ve istasyonlar yalnız o kişi için görünür.
-team_stations_help	Kullanabileceği istasyonlar
-team_stations_changed	İstasyonlar değişti — bu kişinin kurulumunu kaydedin
 team_features_changed	Ekranlar değiştirildi — Bu kişi için ayarları kaydet
 team_rights_changed	Yetkiler değiştirildi — Bu kişi için ayarları kaydet
 they_owe_us	Bize borçlular
@@ -984,9 +834,6 @@ service_pct_ph	Hizmet % isteğe bağlı 0/10/12
 short_code_ph	Kısa kod (MG02)
 starting_password_ph	Başlangıç parolası (isteğe bağlı)
 starting_pin_ph	Başlangıç PIN'i (4–12 rakam)
-station_name_ph	İstasyon adı (isteğe bağlı)
-station_new_ph	Bölüm (isteğe bağlı)
-table_name_ph	Tezgah / gişe adı
 tax_rate_ph	Vergi oranı adı veya % — Standard, Reduced, 0, 5, 12, 18, 20
 to_code_ph	Hedef kod (kg)
 uncleared_no_ph	Yukarıdaki mahsuplaşmamış #
@@ -999,27 +846,8 @@ book_kind_month	Bu ayın defteri
 book_kind_aging	Bakiye / borç-alacak
 book_kind_balance	Bilanço
 order_help	Açık bir sipariş seçin veya bir masa seçip yeni başlatın. Hazır ürünlere dokunun, KOT gönderin, bir veya daha fazla ürünü faturalandırın, hesabı bölün ve ödemeyi tamamlayın.
-floor_help	Bu dükkân tezgahta satar. Masalar ve yemek salonu Kirano'nun parçası değildir.
-kitchen_help	KOT gönderildiğinde — tezgahtan veya garson cihazından — mutfak kağıdı burada kendiliğinden yazdırılır.
-kitchen_empty	Açık adisyon yok (tezgah dükkânları bu ekranı genelde kullanmaz).
-add_a_table	Masa ekle
-add_station_heading	Bölüm ekle · örn. Sebze, Soğuk, Kasa
 categories_help	Kategori, bir yemeğin menünün hangi bölümüne ait olduğunu gösterir — örn. atıştırmalıklar, ana yemek veya biryani. Kategorileri kendi tarzınızda oluşturun: önerdiğimiz isimleri seçin, yeniden adlandırın veya kendi isminizi ekleyin.
 dish_search_ph	Ürün veya kısa kod ara…
-tile_free	Boş
-tile_occupied	Dolu
-tile_food_ready	Yemek hazır
-tile_bill_printed	Hesap basıldı
-tile_paid	Ödendi
-tile_bill_btn	Hesap
-tile_occupy_btn	Oturttur
-tile_free_btn	Masayı boşalt
-tile_ready_btn	Hazır
-tile_undo_bill	Hesabı geri al
-summary_busy	masa dolu
-summary_to_collect	tahsil edilecek
-summary_on_floor	salonda
-floor	Dükkân
 sizes_as_items_ph	Boyutlar ayrı ürün (isteğe bağlı) — Yarım=120, Tam=200
 dish_group_ph	Ambalaj grubu (isteğe bağlı) — ör. Atta 1 kg / 5 kg
 discount	İndirim
@@ -1027,7 +855,6 @@ remove_discount	İndirimi kaldır
 apply_discount	İndirim uygula
 save_opening_cash	Açılış nakdini kaydet
 close_shift_print	Vardiyayı kapat ve fiş yazdır
-area_prices_ph	Bölüm fiyatı (isteğe bağlı) — Klimalı=220, Paket=210
 discount_ph	%10 veya 50
 discount_reason_ph	Neden (ör. müdavim, geciken yemek)
 opening_float_ph	Bu sabah kasaya konan nakit
@@ -1037,34 +864,18 @@ shift_handover	Vardiya devri
 shift_since	Bu vardiya başlangıcı
 expected_in_drawer	Kasada olması gereken
 right_discount	İndirim yapmak
-floor_in_kitchen	Sürüyor
-floor_eating	Yemekte
 pick_category	Kategori seç
 close_category_list	Kategori listesini kapat
 new_category_row	Yeni kategori — ürün kaydedilince oluşur
 your_category	Kategoriniz
 suggested_category	Önerilen — bizim ürünlerden
 category_search_ph	Kategori — kendinizinkini arayın ya da yenisini yazın
-line_sent_state	Gönderildi
-line_nc_state	İkram (NC) — ücretsiz
 cancel_item_short	İptal
-nc_short	İkram
-charge_again_short	Ücretlendir
-move_short	Taşı
 cancel_item_title	Bu ürünü iptal et — arka ofis bir iptal fişi alır
-nc_item_title	Bu ürünü ikram yap (NC)
-charge_again_title	Bu ürünü yeniden ücretlendir
-move_item_title	Bu ürünü başka masaya taşı
-already_cooked	Zaten pişti (fire)
-not_cooked_yet	Henüz pişmedi
 return_to_customer	Para üstü
 short_by	Eksik
 tip_not_sale	Bahşiş (personelin, satış değil)
 right_settle	Ödeme al
-right_cancel_sent	Gönderilen ürünü iptal
-right_complimentary	İkram (NC)
-right_move_table	Tezgahları taşı / birleştir
-right_reprint	Hesabı yeniden yazdır
 right_allowed	İzinli
 right_with_approval	Onayla
 right_denied	İzin yok
@@ -1074,25 +885,11 @@ no_server_found	Sunucu bulunamadı. Dükkân cihazının aynı Wi‑Fi'da ve ek 
 servers_found_pick	Bağlanmak istediğiniz dükkâna dokunun.
 server_host_selected	{host} kullanılıyor — eşleştirme kodunu girin, sonra Şimdi eşleştir.
 print_bill	Hesabı yazdır
-table_actions	Tezgah işlemleri
-move_merge_table	Masa taşı / birleştir
-move_help	Bu tezgahın siparişini boş bir masaya taşıyın veya süren bir siparişe birleştirin.
-move_target_ph	Tezgah adı
 approval_pin_ph	Müdür PIN'i (istenirse)
-move_here	Buraya taşı
-merge_into	Onunla birleştir
-line_reason_ph	Gerekçe (ör. müşteri vazgeçti, stok yok)
-line_qty_ph	Kaç adet iptal (boş = hepsi)
-line_target_ph	Masaya taşı (ör. D5)
 confirm	Onayla
 menu_search_ph	Ürün veya kısa kod ara
 customer_paid_ph	Müşteri verdi
 tip_ph	Bahşiş
-table_area_ph	Bölüm (ör. Salon, Paket, Klimalı)
-table_range_ph	Tek seferde: D1-D20
-add_these_tables	Bu tezgahları ekle
-remove_these_tables	Bu tezgahları kaldır
-table_remove_ph	Kaldır: T1-T24 veya bir masanın adı
 find_server	Dükkânın sunucusunu bul
 bill_format	Hesap biçimi
 bill_format_help	Her hesabın üstünde dükkân adınızın altında basılır. Satırları | ile ayırın (ör. MG Road, Rajkot | Tel 98250 00000).
@@ -1100,78 +897,32 @@ bill_header_ph	Adres | telefon
 fssai_ph	FSSAI / dükkân ruhsat no. (isteğe bağlı)
 bill_footer_ph	Alt bilgi (ör. Teşekkürler, yine bekleriz)
 save_bill_format	Hesap biçimini kaydet
-kot_format	Fiş biçimi
-kot_format_help	Listedeki bir alana dokunun. Göster, punto ve kalınlık, yukarıda seçilen fiş türünde o alana uygulanır. Her tür kendi boyutunu ve kalınlığını tutar.
-kot_format_fields	Alanlar
-kot_field_next	Sonraki alan
-kot_field_show	Göster
-kot_field_hide	Gizle
 kot_field_on	göster
 kot_field_off	gizle
-kot_field_size	Yazı tipi boyutu
-kot_field_size_ph	örn. 16, 20, 24, 28, 32…
 kot_weight_light	İnce
 bill_kot_panel_help	Hesap düzeni ve içerik genişliği. Kasiyer hesabı kesen veya tahsil edendir — satışın tamamı defterlerde kalır.
 std_size_ph	örn. 18, 20, 26…
-kot_show_shop	Dükkân adı
-kot_hide_shop	Dükkânı gizle
-kot_show_time	Saat
-kot_hide_time	Saati gizle
-kot_show_waiter	Kasiyer
-kot_hide_waiter	Kasiyeri gizle
-kot_show_station	İstasyon
-kot_hide_station	İstasyonu gizle
-kot_show_table	Tezgah
-kot_hide_table	Masayı gizle
-kot_show_kot_no	Fiş no
-kot_hide_kot_no	Adisyon no. gizle
-kot_width	Kaydırma önizlemesi (içerik genişliğini fiş sekmesinde ayarlayın)
-kot_width_58	58 mm
-kot_width_80	80 mm
-kot_kind_heading	Adisyon türü
-kot_kind_original	Orijinal
-kot_kind_duplicate	Kopya
-kot_kind_modified	Değiştirildi
-kot_kind_cancelled	İptal
-kot_style_heading	Alan boyutu ve kalınlığı
-kot_style_title	Başlık
-kot_style_item_qty	Kalem · Adet
-kot_style_field_pick	Alan seç
 kot_weight_regular	Normal
 kot_weight_bold	Kalın
-kot_align	Hizala
 kot_align_start	Başlat
 kot_align_center	Ortala
 kot_align_end	Sonuna al
 content_width	İçerik genişliği (mm)
 content_width_bill	Fatura içeriği genişliği (mm)
-content_width_kot	Adisyon içerik genişliği (mm)
 content_width_ph	Veya içerik genişliği yazın, 40–210 mm
 content_width_help	Bu fişin genişliği. Hesap kendi genişliğini korur.
 content_width_bill_help	Müşteri hesabının basım genişliği. Varsayılan 210 mm (sayfa). Dar fiş 58 mm, geniş fiş 80 mm, 112 mm (4 inç), 210 mm A4 genişliği. 40 ile 210 arası bir değer yazın. Adisyonların genişliği fiş sekmesindedir.
-content_width_kot_help	Adisyonun basım genişliği. Varsayılan 80 mm. Dar fiş 58 mm, geniş fiş 80 mm, 112 mm (4 inç), 210 mm sayfa. 40 ile 210 arası bir değer yazın. Müşteri hesaplarının genişliği Hesap sekmesindedir.
 vp_paper_width	İçerik genişliği (mm)
 vp_paper_width_ph	Veya içerik genişliği yazın, 40–210 mm
 vp_paper_width_help	İçerik genişliği Hesap ve fiş biçimi altında ayarlanır — hesap (varsayılan 210 mm) ve adisyon (varsayılan 80 mm) ayrıdır.
-kot_size	Yazı boyutu
-kot_size_s	Küçük
-kot_size_m	Normal
-kot_size_l	Büyük
 std_size	Yazı boyutu
 kot_copies	Kopya
 kot_copies_1	1
 kot_copies_2	2
 kot_copies_3	3
-kot_title_ph	Başlık (boş = TICKET)
-kot_footer_ph	Arka ofis notu (isteğe bağlı)
-kot_preview	Önizleme
-save_kot_format	Fiş biçimini kaydet
-test_kot_format	Deneme baskısı
-test_kot_sent	Adisyon önizlemesi gönderildi
 test_bill_format	Fatura testi
 test_bill_sent	Fatura önizlemesi gönderildi
 test_print_no_printer	O iş için yazıcı yok — bu ekrandan birini seçin
-kot_format_saved	Fiş biçimi kaydedildi
 std_print	Fiş yazı boyutu
 std_print_help	Sistem / belge yazıcılarında Standart dikey ve yatay hesap işlerinin punto boyutu (punto yazın — Küçük/Normal/Büyük değil). İki yönde de aynı boyut.
 std_size_s	Küçük
@@ -1211,23 +962,16 @@ upi_qr	UPI QR
 show_upi_qr	UPI QR göster
 close_upi_qr	Kapat
 upi_qr_help	Müşteri okutur ve öder. Ödedikten sonra Ödeme al'a dokunun. İkinci ekran: LAN'da sunucu adresinin /display yolunu açın.
-kot_recall	Geri al
 recently_done	Az önce bitti
-recall_kot_ph	Geri çağrılacak adisyon no.
 role_help_customer	Rol: Müşteri — AR (bize borçlular). Aynı firma tedarikçi de olabilir.
 role_help_both	Roller: Gönderen + Taşıyıcı — tek taraf, AR ve AP defterleri, Raporlarda net.
 role_help_supplier	Rol: Tedarikçi — satın alımlar için AP.
-dine_in_pick_table	Tezgah dükkânında kullanılmaz
-choose_table	Tezgah seç
-change_table	Masayı değiştir
-pick_table_banner	Bu sipariş için masa seçin
 items_word	ürün
 items_section	Ürünler
 back_to_order	Siparişe dön
 new_items_head	Henüz gönderilmedi
 price_ph	Fiyat
 price_ph_gst_inside	Fiyat ({tax} dahil)
-cancel_needs_table	Tezgah satışları, ödeme alana kadar adisyonda kalır
 tax_rates_missing_hint	Bu ürünlerde {tax} oranı yok — Ürünler'de vergi oranını ayarlayın (fiyatlar {tax} dahil altında zaten {tax} içerir)
 taxable_value	Vergiye tabi tutar
 gst_inside_price_note	({tax} dahil)
@@ -1248,30 +992,11 @@ client_template_confirm	{title} içinden {d} ürün eklensin mi? Elinizdeki ür�
 client_template_importing	{title} içe aktarılıyor…
 client_template_done	{title} içindeki her ürün zaten sizin ürünlerinizde.
 client_template_imported	{title} kaynağından {d} ürün ve {c} kategori eklendi
-resv_heading	Rezervasyonlar
-resv_name_ph	Müşteri adı
-resv_phone_ph	Telefon (isteğe bağlı)
-resv_guests_ph	Kişiler
-resv_when_ph	Ne zaman — 20:30, tomorrow 13:00
-resv_table_ph	Tezgah (isteğe bağlı)
-resv_add	Rezerve et
-resv_seat	Oturdu
-resv_none	Yaklaşan rezervasyon yok.
-guests_word	kişi
-delivery_by_ph	Teslimat yapan (kurye veya personel)
-kitchen_all_day	Şimdi pişecek: {items}
-split_bill	Hesabı böl
-split_go	Ayrı hesap yap
 cancel	İptal
 opening_client	Müşteri açılıyor…
 preparing_desk	Masa hazırlanıyor…
 opening_server	Sunucu açılıyor…
 creating_server	Sunucu oluşturuluyor…
-split_help	Bir müşterinin ödediği ürünlere dokunun · {n} seçildi
-split_send_first	Önce fişi gönderin — ayrı hesaba yalnız arka ofiste olan ürünler gidebilir
-split_pick_some	Önce ayrı hesabın ürünlerine dokunun
-split_done	Ayrı hesap açıldı — bu tezgahın yanında salonda duruyor
-split_marked	ayrı hesap
 order_empty_pick	Sipariş boş — ürün seçmek için yukarıdaki Ürün ekle'ye dokunun.
 add_dishes	Ürün ekle
 order_so_far	Bu siparişte: {n} · {total}
@@ -1282,24 +1007,8 @@ pick_done_dd	Tamam · {label}
 printer_route_mode	Bu yerdeki birden fazla yazıcı varsa
 printer_mode_first	Çalışanı olan ilkini
 printer_mode_all	Hepsi üzerinde baskı al
-kot_show_area	Alan
-kot_hide_area	Alanı gizle
-kot_show_item_hdr	Kalem · Adet
-kot_hide_item_hdr	Sütunları gizle
-kot_show_title	Başlık satırı
-kot_hide_title	Başlığı gizle
-kot_field_order	Siparişi yazdır
 kot_field_up	Yukarı taşı
 kot_field_down	Aşağı taşı
-kot_field_cycle	Sonrakini seç
-kot_field_select	Sonrakini seç
-kot_field_time	Saat
-kot_field_kot_no	Fiş no
-kot_field_area	Alan
-kot_field_table	Tezgah
-kot_field_shop	Dükkân adı
-kot_field_waiter	Personel
-kot_field_station	İstasyon
 app_template_blurb_extra	Ayrıca: Sahip Zahir, Admin Asif, Kasiyer Nawaz; ön yan çubuk; 4 saat sonra geçmiş; Bugün şeridi kapalı; sıkışık hesap.
 dishes_n	{n} ürün
 recipe_ph	Tarif (isteğe bağlı — tezgah dükkânında kullanılmaz)
@@ -1309,8 +1018,6 @@ low_stock_alert	Azalıyor — yakında alın: {items}
 unpriced_note	Ürünlerinizden {n} tanesinin henüz fiyatı yok — siz koyana kadar 0 yazılır.
 show_unpriced	Yalnızca fiyatı olmayan ürünleri göster
 show_all_dishes	Tüm ürünleri göster
-role_waiter	Kasiyer
-role_kitchen	Depo
 role_title_rest_ph	Unvan (ör. kaptan, şef aşçı)
 preset_help_rest	Kasiyer: satış. Yönetici: satış + öğeler + iptal/düzeltme.
 kind_raw	Dükkân kullanımı için alındı

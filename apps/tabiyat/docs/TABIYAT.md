@@ -61,7 +61,9 @@ owner-facing copy.
 
 ## 4. State today
 
-- Template `tabiyat_pharmacy`, `VenueMode::Counter`
+- Template `tabiyat_pharmacy`; counter only — the restaurant floor, kitchen,
+  KOT, tables, stations and order types from the Khaynjo fork were removed
+  from the code (2026-11-14)
 - Product fields: `barcode`, `composition`, `schedule_h`, `rx_required`,
   Rx note text; search ranks barcode + composition
 - Purchase `batch_code` / `expires_on` + `expiry_alert_text` (7-day)

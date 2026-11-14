@@ -68,28 +68,6 @@ applied	An yi amfani
 note_ph	Bayanin kula (ba dole ba)
 rounded	AN KEWAYE
 split	Raba
-send_kot	Aika zamewa
-send_kot_to	Aika → {kitchens}
-send_kot_again	Ƙara abubuwa don zamewa na gaba
-send_kot_held	Abubuwan da aka riƙe - cirewa don aikawa
-reprint_kot	Sake buga zaɓaɓɓu
-reprint_kot_ok	Buga {n} abubuwa kuma · {slips} zamewa(s) → {kitchens}
-reprint_kot_needed	Aika zamewa da farko - sannan haɗa abubuwa kuma sake buga waɗanda aka zaɓa
-reprint_kot_none_selected	An tsallake kowane abu da aka aika - matsa A Buga akan waɗanda za a sake bugawa
-reprint_kot_client	Buga sake ({n}) don aikawa {place} - na'urar shagon ta buga shi
-print_cancelled_kot	Buga duk abin da aka soke
-print_cancelled_kot_ok	Bugawa {n} abubuwan da aka soke · {slips} zamewa (s) → {kitchens}
-print_cancelled_kot_needed	Bude tebur mai abubuwan da aka soke tukuna
-print_cancelled_kot_none	Babu abubuwan da aka soke akan wannan odar
-print_cancelled_kot_client	An soke bugawa ({n}) don {place} da aka aika - na'urar shagon ta buga shi
-kot_banner	Alamar iri
-kot_banner_ph	Alama (fanko = babu)
-kot_item_prefix	Farkon kaya
-kot_item_prefix_ph	misali [AN SOKE]
-kot_strike	Yajin abu sunan
-kot_strike_note	Buga bayanin kula
-kot_strike_on	Kunna
-kot_strike_off	Kashe
 bill_item_layout	Tsarin kaya
 bill_item_layout_columns	Ginshiƙai
 bill_item_layout_stacked	A jere sama
@@ -118,8 +96,6 @@ bill_item_gap_em	Tsakani (em)
 bill_item_qty_min	Mafi ƙarancin adadi (em)
 bill_item_price_min	Mafi ƙarancin farashi (em)
 bill_item_amount_min	Mafi ƙarancin adadin kuɗi (em)
-kot_item_qty_width	Ginshiƙar adadi
-kot_item_num_align	Daidaita adadi
 bill_total_qty_label	Alamar jimlar adadi
 bill_total_subtotal_label	Alamar jimla ta ƙasa
 bill_total_grand_label	Alamar babban jimla
@@ -131,36 +107,9 @@ bill_item_piece_off	Kashe
 bill_total_qty	Jimlar adadi
 bill_total_subtotal	Jimla ta ƙasa
 bill_total_grand	Babban jimla
-reprint_incl	A cikin bugu
-reprint_skip	Tsallake
-reprint_skip_meta	Tsallake sake bugu
-kot_dest_hint	Ana buga a firintocin da ka haɗa da {kitchens} a Saituna → Firintoci
-kot_sent_hint	Aika na ƙarshe ya tafi {kitchens}. Matsa don ƙara abubuwa don lissafin na gaba - ko Buga zamewa don guda ɗaya.
-kot_sent_printing	Zamewa aika zuwa {kitchens} - bugu
-kot_sent_not_printed	Zamewa aika zuwa {kitchens} amma BA buga: {why}. Fada shagon, sannan gyara firinta kuma sake buga shi.
-kot_sent_screen	An aika Slip zuwa {kitchens}
-kot_queued_shop	Zamewa don {place} → {kitchens} ajiye; na'urar shago ta buga shi
-kot_job_label	Zamewa na {place} → {kitchens}
-kot_job_reached	Slip don {place} ya kai {kitchens}
 kot_unassigned	Ba a sanyawa ba
-kot_unassigned_held	Abubuwan {n} da aka riƙe ba tare da tasha ba - kwance kan layi don aikawa
-kot_station_ph	Tasha
-kot_station_dd	Tasha
-kot_station_dd_n	Tasha · {stations}
-kot_set_station	Yi amfani da wannan tasha
-kot_station_applied	Saitin tashar akan abubuwa {n}: {station}
-kot_station_cleared	An share tashar daga abubuwa {n}: {station}
-kot_station_needed	Zabi sashin shago da farko
-kot_station_not_allowed	Ba a yarda a yi amfani da sashe: {station}
-kot_station_none	Babu tashoshi tukuna - ba a yi amfani da su a kan kantin sayar da kayayyaki (Saituna → Yankuna idan an buƙata)
 pos_tab_items	Kayayyakin da aka ƙara
 pos_tab_payment	Biya
-hold_send	Riƙe
-hold_send_on	An riƙe
-hold_send_meta	An riƙe - ba a kan wannan zamewar ba
-station_remove	Cire tasha
-station_remove_ph	Taɓa tasha a jerin don cire ta
-station_removed	An cire tasha: {name}
 settings_hub_title	Saituna
 settings_hub_help	Buɗe wuri ɗaya a lokaci — ƙarancin gungura, zaɓi a bayyane.
 settings_back	Baya
@@ -169,12 +118,10 @@ settings_sec_country	Ƙasa da haraji
 settings_sec_tills	Sauran na'urori
 settings_sec_brand	Alamarka
 settings_sec_units	Raka'o'i da canzawa
-settings_sec_pickers	Wurare · tashoshi · farashin haraji
+settings_sec_pickers	Farashin haraji
 settings_sec_printers	Firintoci
 settings_sec_bill	Tsarin Bill & Slip
 settings_sec_selling	Shirye-shirye da sayarwa
-bill_kot_tab_bill	Lissafi
-bill_kot_tab_kot	Zamewa
 settings_sec_alerts	Sanarwa
 alerts_help	Tsawon lokacin da saƙon matsayi ke kan allo a gare ka (wannan shiga).
 snack_secs_ph	Daƙiƙoƙi (3–60, tsoho 10)
@@ -225,8 +172,6 @@ counter	Tebur ciniki
 dine_in	Tebur ciniki
 takeaway	Ɗauka
 order	Oda
-tables	Ma'auni
-kitchen	Sassan
 sales	Sayarwa
 sales_refunds	Sayarwa da mayar da kuɗi
 day_close	Rufe yini
@@ -254,10 +199,6 @@ zero_sales_on	Yarda da ₹0
 zero_sales_off	Farashi dole
 zero_sales_saved_on	An yarda da sayarwa ba tare da kuɗi ba
 zero_sales_saved_off	Sayarwa dole ta kasance da farashi sama da ₹0
-floor_areas_help	Wuraren dakuna ne ko yankuna a ƙasa (Dine In, Parcel, AC…). Ƙara wani wuri da farko, sa'an nan kuma sanya counters a ciki - kowane yanki rukuni ne daban a ƙasa.
-area_new_ph	Sabon wuri / ɗaki (misali AC, Lambu)
-add_area	Ƙara wuri
-area_added	Yanki "{name}" yana shirye - ƙara ƙididdiga a ciki
 no_favorites	Babu waɗanda aka fi so tukuna — ƙara kayayyaki daga jerin ƙasa.
 add_to_bill	Ƙara a lissafi
 added	An ƙara
@@ -268,19 +209,9 @@ chip_missing_customer	Abokin cinikin da aka zaɓa ya ɓace — sake zaɓa
 chip_no_customer	Babu abokin ciniki tukuna — rubuta suna, sai ka taɓa Bashi
 credit_summary_fmt	abokan ciniki {} · bashi a buɗe {} · ci gaba da aka riƙe {}
 recent_label	Na baya-bayan nan:
-kot_new_waiting	SABO — yana jira
-kot_preparing	ANA GIRKAWA
-kot_ready_serve	A SHIRYE — kai shi
-kot_done_cap	AN GAMA
-kot_cancelled	AN SOKE
-kot_start_btn	Fara
-kot_mark_ready	Yi alama a shirye
-kot_done_btn	An gama
-table_free	Babu kowa — taɓa don fara oda
 start_order	Fara oda
 open_bill	Buɗe lissafi
 collect_payment	Karɓi biya
-table_running	Yana gudana
 payment_pending	Biya yana jira
 collect_at_counter	karɓa a tebur ciniki
 inventory	Ajiyar kaya
@@ -313,7 +244,6 @@ ok	OK
 this_shop	Server
 extra_till	Abokin haɗi
 off	Kashe
-tables_kitchen	shimfidar wuri
 server	Server
 client	Abokin haɗi
 language_currency	Harshe da kuɗi
@@ -355,8 +285,6 @@ add_item_plain	Ƙara kaya
 add_note	Ƙara bayani
 add_opening_balance	Ƙara ma'aunin farawa
 add_staff	Ƙara ma'aikaci
-add_station	Ƙara tasha
-add_table	Ƙara tebur
 add_unit	Ƙara raka'a
 add_use_name	Ƙara / yi amfani da wannan suna
 allow_extra_tills	Yarda da ƙarin akwatunan kuɗi
@@ -409,7 +337,6 @@ share_whatsapp	Raba WhatsApp
 lan_pages_heading	Shafukan abokan ciniki akan Wi-Fi
 lan_pages_help	A kan Wi‑Fi na wannan shagon, shafukan abokin ciniki suna aiki don allon nuni da amsawa. Mutanen da ke kan bayanan wayar hannu suna buƙatar Cloud daga baya. Madaidaicin katin ko hanyar biyan kuɗi zaɓi ne kuma ba zai taɓa toshe mashin ɗin ba.
 diag_send_heading	Fitar da daga wannan na'ura
-kot_dest_heading	Tasha
 optional_login_heading	Shiga na zaɓi
 rights_heading	Haƙƙoƙi
 ops_panel	Aikin gida
@@ -436,28 +363,6 @@ till_voucher_amt_ph	Adadin baucan (fanko = duka)
 till_wallet_topup_ph	Adadin ƙara walat
 till_voucher_issue_amt_ph	Adadin baucan da za a ba
 till_voucher_issue_code_ph	Sabon lambar baucan
-split_evenly	Raba daidai
-waitlist	Jerin jira
-fire_course	Mataki na gaba
-hold_item	Riƙe
-waiter_call	Kira mai kudi
-waitlist_add	Ƙara a jerin jira
-floor_view_grid	Grid
-floor_view_layout	Tsari
-floor_layout_x	X
-floor_layout_y	Y
-floor_layout_w	W
-floor_layout_h	H
-floor_layout_save	Ajiye tsari
-floor_layout_open	Buɗe tebur
-floor_layout_edit	Gyara tsari
-floor_layout_pick	Taɓa tebur don gyara tsarinsa
-floor_layout_saved	Ajiye tsarin
-floor_layout_nudge_left	← 20
-floor_layout_nudge_right	→ 20
-floor_layout_nudge_up	↑ 20
-floor_layout_nudge_down	↓ 20
-sibling_pickers_help	Taɓa Kunna/Kashe kamar raka'o'i — ɓoye wurare, tashoshi, da farashin haraji daga zaɓin yau da kullum; tsohon fakiti yana nan.
 bulk_price_apply	Yi amfani da farashi mai yawa
 card_terminal_optional	Na'urar kati / hanyar biya (zaɓi idan akwai intanet)
 copy_report	Kwafi rahoto
@@ -483,7 +388,6 @@ import_day	Shigar da yini
 import_items_csv_plain	Shigar da kayayyaki CSV…
 import_parties_csv	Shigar da jam'i CSV…
 item_name	Sunan kaya
-kitchen_printing	Firintoci
 login_id_ph	Sunan mai amfani
 mark_cleared	Yi alama an daidaita
 new_party_clear	Sabon jam'i (share fom)
@@ -553,15 +457,6 @@ show	Nuna
 spreadsheet_csv	Jadawali (CSV)
 start_fresh	Fara sabo
 stop_extra_tills	Tsayar da ƙarin akwatunan kuɗi
-floor_cols_ph	Ginshiƙai
-floor_cols_fit	Dace da allo
-floor_cols_fit_sub	{n} sun dace a nan
-floor_cols_fits	sun dace
-floor_cols_scroll	yana gungura gefe
-floor_cols_min	Ginshiƙai: aƙalla 1 — ko bar fanko don dacewa da allo
-floor_zoom_auto	Kai tsaye
-floor_zoom_out	Rage girma
-floor_zoom_in	Ƙara girma
 backup_auto	Ana yin ajiyar madadin da kansa kowace rana · ƙarshe {when} · kwanaki 14 na ƙarshe suna a {dir}.
 backup_auto_none	Ana yin ajiyar madadin da kansa kowace rana — ta farko za ta gudana nan da ɗan lokaci.
 backup_copy_to	Kwafi kuma suna zuwa {dir}.
@@ -579,7 +474,6 @@ new_pair_code	Sabon lambar haɗi
 pair_finishing	Ana gama haɗi… ana amfani da littattafan shago
 pair_opening	Ana buɗe akwatin kuɗi…
 pair_copied	An kwafi lambar haɗi
-kot_waiting	Yana jiran aikawa
 lan_offline_waiting	Ba a iya isa server na shago ba · {n} suna jira
 lan_connecting	Ana haɗawa da shago…
 lan_live	Kai tsaye
@@ -621,7 +515,6 @@ printers_routes_help	Nemo firintocin da tsarin aiki ya riga ya sani. Sanya su ga
 printer_assign_dd	Firinta na gaske: {place}
 printer_assign_pick	Zaɓi firinta na gaske
 printer_profile_heading	Tsari
-printer_send_heading	Isarwa
 vp_delivery_heading	Isarwa
 vp_delivery_help	Yadda wannan firinta mai kama-da-wane ke aika ayyuka - Takardun OS, raw bytes, ko ESC/POS. Abubuwan zamewa (girman nau'in nau'in, kunsa, margins) ana yanke hukunci ta tsarin lissafin/Slip, ba a nan ba.
 vp_type_size_heading	Girman rubutu
@@ -665,23 +558,13 @@ virtual_draft_send	An sa ƙima ga firinta na kama-da-kama na gaba
 virtual_need_real	Da fari zaɓi firinta na gaske
 virtual_need_select	Zaɓi firinta na kama-da-kama da za a goge
 real_printer_selected	An zaɓa: {name}
-station_group_heading	Firintocin kama-da-kama
-station_group_apply	Goge firinta na kama-da-kama
-station_group_applied	An goge
-station_group_empty	Zaɓi firinta na kama-da-kama
-station_group_name_ph	Sunan firinta na kama-da-kama (ba dole ba)
-station_group_save	Ƙirƙiri firinta na kama-da-kama
-station_group_saved	An ajiye firinta na kama-da-kama
-station_manage_heading	Ƙara ko cire sashin shago
 printers_routes_heading	Inda ake buga
 route_pick_heading	Wuri
 route_editing	Ana gyara: {name}
 route_assigned	An ƙara {printer} zuwa {place}
 route_already_assigned	Tuni yana a wannan wuri: {printer}
-route_removed	An cire {printer} daga {place}
 route_cleared	An share {name}
 route_assigned_empty	Babu kowa a wannan wuri
-route_tap_remove	taɓa don cirewa
 route_tap_select	taɓa don zaɓa
 route_tap_selected	an zaɓa
 route_pick_printer_first	Da fari taɓa firinta
@@ -702,35 +585,17 @@ printer_format_custom	Sabon bayani na al'ada
 printer_format_custom_label	Na al'ada
 printer_format_custom_added	An ƙara bayani na al'ada ga wannan wuri
 add_printer	Ƙara firinta
-remove_printer	Cire
 route_pick_ph	Bill ko sashin shago
 route_bill	Lissafi
-route_default_kitchen	Babu tasha (abubuwan da ba a sanya su ba)
-route_kot_station	Tasha
 route_dont_print	Babu firinta
-stations_heading	Tashoshi
-stations_help	Siyayya sassan rukunin abubuwa da firintocin wannan ɓangaren shagon. Haɗa printers daga Settings → Printers, saita gwada tsari, sannan na farko wanda ke aiki ko Buga akan duka. Canje-canje yana adana yayin da kuke tafiya.
-station_print_heading	Firintocin wannan tasha
-station_print_help	Zaɓi tasha, sannan haɗa firinta ɗaya ko fiye. ↑↓ yana saita oda. Na farko da ke aiki yana tsayawa bayan nasarar farko; Buga akan duk aika zuwa kowane firinta da aka haɗe.
-station_print_pick_ph	Tashar da za a sa firinta
 station_print_pick_first	Zabi sashin shago da farko
-station_print_editing	Ana gyara firintocin “{name}”
-station_vps_dd	Firintocin wannan tasha
-station_vps_dd_n	firinta {n} · taɓa don canzawa
 station_vps_empty	Babu firinta tukuna — nemo su a ƙarƙashin Saituna → Firintoci
 bill_printers_dd	Firintocin lissafi
 bill_printers_dd_n	firinta {n} na lissafi · taɓa don canzawa
-job_layout	Tsari
-job_delivery	Yadda ake aika aikin
-job_delivery_help	Takardun OS, raw bytes, ko ESC/POS. Kudi da tikiti kowannensu ya ajiye nasa. Kowace aiki na iya zuwa kowane firinta Nemo ya ajiye.
 station_vp_attached	An haɗa firinta
 station_vp_detached	An cire firinta daga tasha
-station_print_summary	{mode} · firinta {n}
-station_print_summary_none	Babu firinta a wannan tasha tukuna — ba zai buga ba
-stations_none	Babu tashoshi tukuna - ƙara ɗaya a ƙasa. Ba a amfani da tashoshi a kan kantin sayar da kayayyaki - bar komai.
 route_up	Sama
 route_down	Ƙasa
-route_remove	Cire
 route_clear	Share
 save_printers	Ajiye firintoci
 print_test_page	Buga shafin gwaji
@@ -739,23 +604,15 @@ test_page_no_printer	Babu firinta ga {place} — haɗa firinta, sai ka sake gwad
 test_page_pick_first	Da fari zaɓi firinta na shafin gwaji — sai ka Buga shafin gwaji
 test_printers_dd	Firintocin shafin gwaji
 test_printers_dd_n	firinta {n} na shafin gwaji · taɓa don canzawa
-kot_test_printers_dd	Na'urar bugawa don buga gwaji
-kot_test_printers_dd_n	{n} printer(s) don Buga Gwaji · matsa don canzawa
 test_printer_picked	Gwaji a: {name}
 test_printer_cleared	Ba a gwada a: {name}
 test_page_sent_n	An aika shafin gwaji zuwa firinta {n}
-test_kot_pick_first	Zabi printer (s) don Buga Gwaji da farko - sannan Gwada bugawa
-test_kot_sent_n	An aika bugu na gwaji zuwa firinta(s) {n}
-cancel_pick	Yi alama
-cancel_pick_on	An yi alama
-cancel_pick_meta	An yi alama don soke
 batch_cancel	Soke waɗanda aka yi alama
 batch_cancel_n	Soke waɗanda aka yi alama ({n})
 batch_cancel_none	Alama ɗaya ko fiye da abubuwan da aka aiko da farko - sannan Soke alama
 batch_cancel_title	Soke abubuwa masu alama - dalili ɗaya, soke zamewa ɗaya a kowane sashe
 batch_cancel_ok	An soke abubuwan {n} · {slips} soke zamewa (s) → {kitchens}
 batch_cancel_ok_noprint	An soke abubuwan {n} - an kashe bugu ta atomatik, don haka babu soke zamewa
-no_printer_kitchen_station	Babu firinta na wannan tasha
 printers_saved	An ajiye
 test_page_sent	An aika shafin gwaji — duba firinta
 test_page_sent_one	An aika shafin gwaji zuwa {name} — duba wannan firinta
@@ -771,10 +628,7 @@ cancelled	An soke
 printers_tap_find	Taɓa Nemo don jera firintocin da wannan na'ura za ta iya amfani da su.
 printers_none_found	Ba a sami kowa ba — rubuta sunan firinta na tsarin ko IP (misali 192.168.1.50).
 printer_from_find	An ƙara {name}
-kot_printer_ph	Printer don zamewa
 bill_printer_ph	Firinta na lissafi
-kot_print_on	Tikitin buga ta atomatik: Kunnawa
-kot_print_off	Tikitin bugawa ta atomatik: A kashe
 queue_refused	Shago bai karɓa ba ({n}) — duba kowanne a tebur ciniki:
 clear_not_accepted	An duba — share wannan jeri
 device_name_ph	Sunan wannan na'ura
@@ -785,7 +639,6 @@ backup_failed	Ajiyar madadin ta ƙarshe da kanta ta gaza: {e}
 backup_overdue	Babu ajiyar madadin na kwanaki {n} — bar manhaja a buɗe a wannan na'ura domin ta iya ajiyewa.
 disk_low	MB {mb} kaɗai ne suka rage a wannan na'ura — ajiyar madadin za ta gaza ba da daɗewa ba. Samar da wuri.
 last_seen_devices	An gani ƙarshe: {time}
-sync_interval	Daidaita kowane daƙiƙa {secs}
 connection_to_shop	Haɗi da shago
 supplier_name_ph	Sunan mai kaya (ko jam'i)
 supplier_ph	Mai kaya
@@ -848,7 +701,6 @@ fresh_book_kirano	Sabo = katalogin fanko (ƙara abubuwa daga baya). Littafi = ru
 fresh_selected	An zaɓi Sabo — jeri yana fanko. Taɓa An gama idan ka shirya.
 gross_word	Duka
 how_start	Yaya kake son farawa?
-kot_print_help_kirano	Ba a yi amfani da shi akan ma'aunin kirana ba.
 later_country_pack	Daga baya: Saituna → yi amfani da fakiti na ƙasarka don alamomin haraji da biya.
 local_badge	NA GIDA
 mix_type_hint_kirano	Raba a tsabar kuɗi / UPI / kati / bashi idan ana buƙata. Bashi yana buƙatar abokin ciniki a sama.
@@ -899,8 +751,6 @@ staff_copy_need_source	Zaɓi wanda za a kwafi saitin sa
 staff_copy_same	Shi ne mutum ɗaya — zaɓi wani
 staff_rename_need_selected	Da fari zaɓi wanda za a canza suna
 team_pick_hint	Zaɓi wanda za a gyara - allon fuska, haƙƙin kuɗi, da tashoshi suna bayyana ga mutumin kawai.
-team_stations_help	Tashoshin da za su iya amfani da su
-team_stations_changed	An canza tashoshi - Ajiye saitin wannan mutumin
 team_features_changed	An canza alloli — ajiye saiti ga wannan mutum
 team_rights_changed	An canza haƙƙoƙi — ajiye saiti ga wannan mutum
 they_owe_us	Suna binmu bashi
@@ -984,9 +834,6 @@ service_pct_ph	Sabis % na zaɓi 0/10/12
 short_code_ph	Gajeren lamba (MG02)
 starting_password_ph	Kalmar sirri ta farawa (ba dole ba)
 starting_pin_ph	PIN na farawa (lambobi 4–12)
-station_name_ph	Sunan tashar (na zaɓi)
-station_new_ph	Sashe (na zaɓi)
-table_name_ph	Sunan Counter / bay
 tax_rate_ph	Suna ko % na farashin haraji — Na al'ada, Rage, 0, 5, 12, 18, 20
 to_code_ph	Zuwa lamba (kg)
 uncleared_no_ph	Lambar da ba a daidaita a sama
@@ -999,27 +846,8 @@ book_kind_month	Littattafan wannan wata
 book_kind_aging	Ragowa / bashi-bashi
 book_kind_balance	Takardar daidaito
 order_help	Taɓa kaya don ƙarawa.
-floor_help	Ana siyar da wannan shagon a kantin. Tebura da falon cin abinci ba na Kirano ba ne.
-kitchen_help	Ba a amfani da shi a kan kantin sayar da kayayyaki.
-kitchen_empty	Babu buɗaɗɗen tikiti (shagunan kantuna yawanci suna barin wannan allon mara amfani).
-add_a_table	Ƙara tebur
-add_station_heading	Ƙara sashin shago
 categories_help	Taɓa Yi amfani don saka kayan da ke sama a ƙarƙashin wannan rukuni. Hoto yana ba rukuni hoto; idan babu, haruffan farko suke bayyana.
 dish_search_ph	Bincika abubuwa ko gajeriyar lamba…
-tile_free	Babu kowa
-tile_occupied	Akwai mutum
-tile_food_ready	Abinci ya shirya
-tile_bill_printed	An buga lissafi
-tile_paid	An biya
-tile_bill_btn	Lissafi
-tile_occupy_btn	Zaunar da baƙi
-tile_free_btn	Sake tebur
-tile_ready_btn	Sake tebur
-tile_undo_bill	Soke lissafi
-summary_busy	teburori a aiki
-summary_to_collect	don karɓa
-summary_on_floor	a falon
-floor	Shago
 sizes_as_items_ph	Girmomi a matsayin kayayyaki daban (ba dole ba) — Rabi=120, Cikakke=200
 dish_group_ph	Rukunin girman fakiti (na zaɓi) - misali. 1kg/5kg
 discount	Rangwame
@@ -1027,7 +855,6 @@ remove_discount	Cire rangwame
 apply_discount	Yi amfani da rangwame
 save_opening_cash	Ajiye tsabar kuɗin farawa
 close_shift_print	Rufe lokaci ka buga takarda
-area_prices_ph	Farashin wuri (ba dole ba) — AC=220, Ɗauka=210
 discount_ph	10% ko 50
 discount_reason_ph	Dalili (misali baƙo na yau da kullum, abinci ya jinkirta)
 opening_float_ph	Tsabar kuɗin da aka sa a akwati da safe
@@ -1037,34 +864,18 @@ shift_handover	Mika lokaci
 shift_since	Wannan lokaci tun
 expected_in_drawer	Ana tsammani a akwati
 right_discount	Ba da rangwame
-floor_in_kitchen	Ana kai
-floor_eating	An kai
 pick_category	Zaɓi rukuni
 close_category_list	Rufe jerin rukuni
 new_category_row	Sabon rukuni — ana ƙirƙira idan ka ajiye kaya
 your_category	Rukuninka
 suggested_category	Shawarwari - daga abubuwan mu
 category_search_ph	Rukuni — nemo naka ko rubuta sabo
-line_sent_state	An aika
-line_nc_state	Kyauta (NC) — ba a caje ba
 cancel_item_short	Soke
-nc_short	NC
-charge_again_short	Caje
-move_short	Matsar
 cancel_item_title	Soke wannan abu - ofishin baya yana samun zamewar sokewa
-nc_item_title	Mai da wannan kaya kyauta (NC)
-charge_again_title	Sake caje wannan kaya
-move_item_title	Matsar da wannan kaya zuwa wani tebur
-already_cooked	An riga an girka (ɓarna)
-not_cooked_yet	Ba a girka tukuna
 return_to_customer	Mayar wa abokin ciniki
 short_by	Ya rage
 tip_not_sale	Kyauta ga ma'aikaci (ba sayarwa ba)
 right_settle	Karɓi biya
-right_cancel_sent	Soke kaya da aka aika
-right_complimentary	Kyauta (NC)
-right_move_table	Matsar / haɗa masu ƙididdiga
-right_reprint	Sake buga lissafi
 right_allowed	An yarda
 right_with_approval	Tare da yarda
 right_denied	Ba a yarda ba
@@ -1074,25 +885,11 @@ no_server_found	Ba a sami kowa ba. A Server: Saituna → Sauran na'urori → Yar
 servers_found_pick	Taɓa shagon da kake son haɗawa da shi.
 server_host_selected	Ana amfani da {host} — shigar da lambar haɗi, sai ka Haɗa yanzu.
 print_bill	Buga lissafi
-table_actions	Ayyukan ƙiyayya
-move_merge_table	Matsar / haɗa tebur
-move_help	Matsar da odar wannan na'urar zuwa tebur kyauta, ko haɗa shi zuwa mai gudana.
-move_target_ph	Sunan mai ƙima
 approval_pin_ph	PIN na Manaja (kawai idan an tambaya)
-move_here	Matsar zuwa nan
-merge_into	Haɗa a cikinsa
-line_reason_ph	Dalili (misali abokin ciniki ya canza tunani, ya ƙare)
-line_qty_ph	Nawa za a soke (fanko = duka)
-line_target_ph	Matsar zuwa tebur (misali D5)
 confirm	Tabbatar
 menu_search_ph	Nemo kaya ko gajeren lamba
 customer_paid_ph	Abokin ciniki ya biya
 tip_ph	Kyauta ga ma'aikaci
-table_area_ph	Wuri (misali Ci a nan, Ɗauka, AC)
-table_range_ph	Da yawa a lokaci ɗaya: D1-D20
-add_these_tables	Ƙara waɗannan ƙididdiga
-remove_these_tables	Cire waɗannan ƙididdiga
-table_remove_ph	Cire: T1-T24, ko sunan tebur ɗaya
 find_server	Nemo server na shago
 bill_format	Tsarin lissafi
 bill_format_help	Buga a ƙarƙashin sunan shagon ku akan kowane lissafin kuɗi. Layi dabam tare da | (misali Hanyar MG, Rajkot | Ph 98250 00000).
@@ -1100,78 +897,32 @@ bill_header_ph	Adireshi | waya
 fssai_ph	FSSAI / lasisin shagon no. (na zaɓi)
 bill_footer_ph	Ƙasa (misali Mun gode, sake zuwa)
 save_bill_format	Ajiye tsarin lissafi
-kot_format	Tsarin zamewa
-kot_format_help	Matsa filin cikin jeri. Nunawa, girman font, da nauyi sun shafi wannan filin akan nau'in zamewar da aka zaɓa a sama. Kowane iri yana kiyaye girmansa da ma'auninsa.
-kot_format_fields	Filaye
-kot_field_next	Filin gaba
-kot_field_show	Nuna
-kot_field_hide	Ɓoye
 kot_field_on	nuna
 kot_field_off	ɓoye
-kot_field_size	Girman rubutu
-kot_field_size_ph	misali 16, 20, 24, 28, 32…
 kot_weight_light	Mai sauƙi
 bill_kot_panel_help	Tsarin lissafin da faɗin abun ciki. Cashier shine wanda ya ba da ko daidaita lissafin - cikakken labarin siyarwa ya tsaya a cikin littattafan.
 std_size_ph	misali 18, 20, 26…
-kot_show_shop	Sunan shago
-kot_hide_shop	Ɓoye shago
-kot_show_time	Lokaci
-kot_hide_time	Ɓoye lokaci
-kot_show_waiter	Mai akwatin kuɗi
-kot_hide_waiter	Ɓoye mai kuɗi
-kot_show_station	Tasha
-kot_hide_station	Ɓoye tasha
-kot_show_table	Tebur ciniki
-kot_hide_table	Ɓoye tebur
-kot_show_kot_no	Tikitin No
-kot_hide_kot_no	Ɓoye tikitin No
-kot_width	Kundin samfoti (saita faɗin abun ciki akan shafin zamewa)
-kot_width_58	58 mm
-kot_width_80	80 mm
-kot_kind_heading	Irin tikiti
-kot_kind_original	Na asali
-kot_kind_duplicate	Kwafi
-kot_kind_modified	An gyara
-kot_kind_cancelled	An soke
-kot_style_heading	Girman rubutu da nauyin fili
-kot_style_title	Take
-kot_style_item_qty	Kaya · Adadi
-kot_style_field_pick	Zaɓi fili
 kot_weight_regular	Na al'ada
 kot_weight_bold	Mai kauri
-kot_align	Daidaitawa
 kot_align_start	Fara
 kot_align_center	Tsakiya
 kot_align_end	Ƙare
 content_width	Faɗin abin ciki (mm)
 content_width_bill	Faɗin abin cikin lissafi (mm)
-content_width_kot	Faɗin abun cikin tikiti (mm)
 content_width_ph	Ko rubuta faɗin abin ciki, 40–210 mm
 content_width_help	Yaya fadin wannan zamewar kwafi. Bill yana kiyaye fadinsa.
 content_width_bill_help	Yaya fadin lissafin abokin ciniki ya buga. Tsohuwar 210 mm (shafi). 58 mm kunkuntar zamewa, 80 mm fadi da zame, 112 mm 4-inch, 210 mm A4-fadi. Buga kowace ƙima daga 40 zuwa 210. Tikiti suna da faɗin kansu akan shafin zamewa.
-content_width_kot_help	Yaya fadin tikitin kwafin. Default 80 mm. 58 mm kunkuntar zamewa, 80 mm fadi zamewa, 112 mm 4-inch, 210 mm shafi. Buga kowace ƙima daga 40 zuwa 210. Kuɗin abokin ciniki suna da faɗin nasu akan Bill tab.
 vp_paper_width	Faɗin abin ciki (mm)
 vp_paper_width_ph	Ko rubuta faɗin abin ciki, 40–210 mm
 vp_paper_width_help	An saita faɗin abun ciki a ƙarƙashin tsarin Bill & Slip - daban don lissafin (tsohuwar 210 mm) da tikitin (tsoho 80 mm).
-kot_size	Girman rubutu
-kot_size_s	Ƙanana
-kot_size_m	Na al'ada
-kot_size_l	Babba
 std_size	Girman rubutu
 kot_copies	Kwafi
 kot_copies_1	1
 kot_copies_2	2
 kot_copies_3	3
-kot_title_ph	Take (blank = TICKET)
-kot_footer_ph	Bayanan kula na baya (na zaɓi)
-kot_preview	Duban farko
-save_kot_format	Ajiye tsarin Slip
-test_kot_format	Gwaji Buga
-test_kot_sent	An aika samfotin tikitin
 test_bill_format	Lissafin gwaji
 test_bill_sent	An aika duban farko na lissafi
 test_print_no_printer	Babu firinta ga wannan aiki — zaɓi ɗaya a wannan allo
-kot_format_saved	An ajiye tsarin zamewa
 std_print	Girman bugun lissafi
 std_print_help	Girman rubutu don Madaidaicin Hoto da Ayyukan lissafin shimfidar wuri akan firintocin OS / daftarin aiki (shigar da maki - ba Ƙananan/Al'ada/Babba). Girman iri ɗaya akan bangarorin biyu.
 std_size_s	Ƙanana
@@ -1211,23 +962,16 @@ upi_qr	QR na UPI
 show_upi_qr	Nuna QR na UPI
 close_upi_qr	Rufe
 upi_qr_help	Abokin ciniki yana dubawa kuma yana biya. Matsa Dauki biya bayan sun biya. Allon na biyu: buɗe URL / nuni akan LAN.
-kot_recall	Dawo
 recently_done	Kwanan nan an gama
-recall_kot_ph	Tikitin # don tunawa
 role_help_customer	Matsayi: Abokin ciniki — khata (suna binmu bashi). Jam'i ɗaya kuma na iya kawo kaya.
 role_help_both	Matsayi: Abokin ciniki + Mai kaya — jam'i ɗaya, littattafan khata da bashi, tsantsa a Rahotanni.
 role_help_supplier	Matsayi: Mai kaya — muna binsu bashi don sayayya.
-dine_in_pick_table	Ba a amfani da shi a kan kantin sayar da kayayyaki
-choose_table	Zaɓi counter
-change_table	Canza tebur
-pick_table_banner	Zaɓi tebur ga wannan oda
 items_word	kayayyaki
 items_section	Kayayyaki
 back_to_order	Komawa oda
 new_items_head	Ba a aika tukuna
 price_ph	Farashi
 price_ph_gst_inside	Farashi ({tax} a ciki)
-cancel_needs_table	Ƙididdigar tallace-tallace ta tsaya a kan tikitin har sai kun biya kuɗi
 tax_rates_missing_hint	Babu ƙimar {tax} akan waɗannan abubuwan - akan abubuwan da aka saita ƙimar haraji (farashi sun riga sun haɗa da {tax} a ƙarƙashin haɗa {tax})
 taxable_value	Adadin da ake caje haraji
 gst_inside_price_note	({tax} a ciki)
@@ -1248,30 +992,11 @@ client_template_confirm	Ƙara abubuwan {d} daga {title}? Abubuwan da kuke da su 
 client_template_importing	Ana shigar da {title}…
 client_template_done	Kowane abu daga {title} yana kan abubuwan ku.
 client_template_imported	Ƙara abubuwan {d} da nau'ikan {c} daga {title}
-resv_heading	Ajiyar wuri
-resv_name_ph	Sunan abokin ciniki
-resv_phone_ph	Waya (ba dole ba)
-resv_guests_ph	Mutane
-resv_when_ph	Yaushe — 20:30, gobe 13:00
-resv_table_ph	Magani (na zaɓi)
-resv_add	Yi ajiya
-resv_seat	An zaunar
-resv_none	Babu ajiyar wuri da ke zuwa.
-guests_word	baƙi
-delivery_by_ph	Wanda zai kai (sunan ɗan isarwa ko ma'aikaci)
-kitchen_all_day	Za a girka yanzu: {items}
-split_bill	Raba lissafi
-split_go	Yi lissafi daban
 cancel	Soke
 opening_client	Ana buɗe abokin haɗi…
 preparing_desk	Ana shirya tebur…
 opening_server	Ana buɗe server…
 creating_server	Ana ƙirƙirar server…
-split_help	Matsa abubuwan da abokin ciniki ya biya · {n} da aka zaba
-split_send_first	Aika zamewa da farko - abubuwan da baya ofishin kawai zasu iya zuwa wani lissafin daban
-split_pick_some	Matsa abubuwan don lissafin daban da farko
-split_done	Ƙididdigar lissafin da aka yi - yana kan ƙasa kusa da wannan counter
-split_marked	lissafi daban
 order_empty_pick	Yi oda babu komai - matsa Ƙara abubuwa a sama don ɗaukar abubuwa.
 add_dishes	Ƙara abubuwa
 order_so_far	A wannan oda: {n} · {total}
@@ -1282,24 +1007,8 @@ pick_done_dd	An gama · {label}
 printer_route_mode	Idan firintoci da yawa a wannan wuri
 printer_mode_first	Na farko da ya yi aiki
 printer_mode_all	Buga a duka
-kot_show_area	Wuri
-kot_hide_area	Ɓoye wuri
-kot_show_item_hdr	Kaya · Adadi
-kot_hide_item_hdr	Ɓoye ginshiƙai
-kot_show_title	Layin take
-kot_hide_title	Ɓoye take
-kot_field_order	Tsarin bugu
 kot_field_up	Matsar sama
 kot_field_down	Matsar ƙasa
-kot_field_cycle	Zaɓi na gaba
-kot_field_select	Zaɓi na gaba
-kot_field_time	Lokaci
-kot_field_kot_no	Tikitin No
-kot_field_area	Wuri
-kot_field_table	Tebur ciniki
-kot_field_shop	Sunan shago
-kot_field_waiter	Ma'aikata
-kot_field_station	Tasha
 app_template_blurb_extra	Hakanan: Mai Zahir, Admin Asif, Cashier Nawaz; labarun gefe na gaba; tarihi bayan 4 hours; A yau cire; m lissafin.
 dishes_n	{n} abubuwa
 recipe_ph	Girke-girke (na zaɓi - ba a yi amfani da shi akan kantin sayar da kayayyaki)
@@ -1309,8 +1018,6 @@ low_stock_alert	Yana ƙarewa — saya ba da daɗewa ba: {items}
 unpriced_note	Abubuwan {n} akan abubuwanku basu da farashi tukuna - suna lissafin 0 har sai kun saita ɗaya.
 show_unpriced	Nuna abubuwa kawai ba tare da farashi ba
 show_all_dishes	Nuna duk abubuwa
-role_waiter	Mai akwatin kuɗi
-role_kitchen	Store
 role_title_rest_ph	Taken matsayi (misali Kyaftin, Babban mai girki)
 preset_help_rest	Mai akwatin kuɗi: sayar. Manaja: sayar + kayayyaki + soke/gyara.
 kind_raw	An saya don amfanin shago

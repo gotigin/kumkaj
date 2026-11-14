@@ -80,28 +80,6 @@ applied	Käytetty
 note_ph	Huomautus (valinnainen)
 rounded	PYÖRISTETTY
 split	Jaa
-send_kot	Lähetä kuitti
-send_kot_to	Lähetä → {kitchens}
-send_kot_again	Lisää kohteita seuraavaa lipuketta varten
-send_kot_held	Säilytetyt kohteet – poista pidosta lähettääksesi
-reprint_kot	Tulosta valitut uudelleen
-reprint_kot_ok	Tulostettu {n}-kohteet uudelleen · {slips}-paperi(t) → {kitchens}
-reprint_kot_needed	Lähetä ensin kuitti – sisällytä sitten lääkkeet ja tulosta valitut uudelleen
-reprint_kot_none_selected	Jokainen lähetetty kohde ohitetaan – napauta Tulostettu niiden kohdalla, jotka haluat tulostaa uudelleen
-reprint_kot_client	Tulosta uudelleen ({n}), jos {place} on lähetetty – myymälälaite tulostaa sen
-print_cancelled_kot	Tulosta kaikki perutut
-print_cancelled_kot_ok	Tulostetut {n} peruutetut tuotteet · {slips} kuitti(t) → {kitchens}
-print_cancelled_kot_needed	Avaa ensin pöytä peruutetuista kohteista
-print_cancelled_kot_none	Tässä tilauksessa ei ole peruutettuja tuotteita
-print_cancelled_kot_client	Tulostus peruutettu ({n}) {place} lähetetylle - myymälälaite tulostaa sen
-kot_banner	Lajinauha
-kot_banner_ph	Nauha (tyhjä = ei mitään)
-kot_item_prefix	Rivin etuliite
-kot_item_prefix_ph	esim. [PERUTTU]
-kot_strike	Merkitse kohteen nimi
-kot_strike_note	Merkitse kohteen huomautus
-kot_strike_on	Päällä
-kot_strike_off	Pois
 bill_item_layout	Rivien asettelu
 bill_item_layout_columns	Sarakkeet
 bill_item_layout_stacked	Pinottu
@@ -130,8 +108,6 @@ bill_item_gap_em	Väli (em)
 bill_item_qty_min	Määrän minimi (em)
 bill_item_price_min	Hinnan minimi (em)
 bill_item_amount_min	Summan minimi (em)
-kot_item_qty_width	Määräsarake
-kot_item_num_align	Määrän tasaus
 bill_total_qty_label	Kokonaismäärän otsikko
 bill_total_subtotal_label	Välisumman otsikko
 bill_total_grand_label	Loppusumman otsikko
@@ -143,36 +119,9 @@ bill_item_piece_off	Pois
 bill_total_qty	Kokonaismäärä
 bill_total_subtotal	Välisumma
 bill_total_grand	Loppusumma
-reprint_incl	Tulosteessa
-reprint_skip	Ohita
-reprint_skip_meta	Ohita palautustuloste
-kot_dest_hint	Tulostuu tulostimille, jotka määritit kohteelle {kitchens} kohdassa Asetukset → Tulostimet
-kot_sent_hint	Viimeisin lähetys lähetettiin {kitchens}:lle. Napauta lisätäksesi kohteita seuraavaan laskuun – tai tulosta kuitti uudelleen samalle laskulle.
-kot_sent_printing	Tosite lähetetty {kitchens}:lle — tulostus
-kot_sent_not_printed	Kuitti lähetetty numeroon {kitchens}, mutta EI tulostettu: {why}. Kerro liikkeelle, korjaa tulostin ja tulosta se uudelleen.
-kot_sent_screen	Kuitti lähetetty numeroon {kitchens}
-kot_queued_shop	Setti {place} → {kitchens}:lle tallennettu; kaupan laite tulostaa sen
-kot_job_label	Kansi {place} → {kitchens}:lle
-kot_job_reached	{place}:n lipsahdus saavutti {kitchens}:n
 kot_unassigned	Ei määritetty
-kot_unassigned_held	Pidetty {n}-kohteita ilman asemaa – irrota linja lähettääksesi
-kot_station_ph	Asema
-kot_station_dd	Asema
-kot_station_dd_n	Asema · {stations}
-kot_set_station	Käytä tätä asemaa
-kot_station_applied	Asemasarja {n}-tuotteille: {station}
-kot_station_cleared	Asema tyhjennetty {n} kohteista: {station}
-kot_station_needed	Valitse ensin lääkeosasto
-kot_station_not_allowed	Ei saa käyttää osaa: {station}
-kot_station_none	Ei vielä asemia – käyttämätön tiskiliikkeessä (Asetukset → Alueet tarvittaessa)
 pos_tab_items	Lisätyt tuotteet
 pos_tab_payment	Maksu
-hold_send	Pidätä
-hold_send_on	Pidätetty
-hold_send_meta	Pidetty - ei tällä lipsulla
-station_remove	Poista asema
-station_remove_ph	Poista asema napauttamalla sitä luettelossa
-station_removed	Asema poistettu: {name}
 settings_hub_title	Asetukset
 settings_hub_help	Avaa yksi alue kerrallaan — vähemmän vieritystä, selvemmät valinnat.
 settings_back	Takaisin
@@ -181,12 +130,10 @@ settings_sec_country	Maa ja vero
 settings_sec_tills	Muut laitteet
 settings_sec_brand	Oma merkki
 settings_sec_units	Yksiköt ja muunnokset
-settings_sec_pickers	Alueet · asemat · verokannat
+settings_sec_pickers	Verokannat
 settings_sec_printers	Tulostimet
 settings_sec_bill	Bill & Slip -muoto
 settings_sec_selling	Kampanjat ja myynti
-bill_kot_tab_bill	Lasku
-bill_kot_tab_kot	Lipsahdus
 settings_sec_alerts	Ilmoitukset
 alerts_help	Kuinka kauan tilaviestit pysyvät näytöllä sinulle (tämä kirjautuminen).
 snack_secs_ph	Sekuntia (3–60, oletus 10)
@@ -237,8 +184,6 @@ counter	Tiski
 dine_in	Tiski
 takeaway	Mukaan
 order	Tilaus
-tables	Laskurit
-kitchen	Osat
 sales	Myynti
 sales_refunds	Myynti ja hyvitykset
 day_close	Päivän sulku
@@ -266,10 +211,6 @@ zero_sales_on	Salli ₹0
 zero_sales_off	Vaadi hinta
 zero_sales_saved_on	Nollahintaiset myynnit sallittu
 zero_sales_saved_off	Myynnillä on oltava hinta yli ₹0
-floor_areas_help	Alueet ovat huoneita tai vyöhykkeitä lattialla (Dine In, Parcel, AC…). Lisää ensin alue ja aseta sitten laskurit siihen – jokainen alue on erillinen ryhmä lattialla.
-area_new_ph	Uusi alue / huone (esim. AC, puutarha)
-add_area	Lisää alue
-area_added	Alue “{name}” valmis – lisää siihen laskurit
 no_favorites	Ei vielä suosikkeja — lisää tuotteita alla olevasta listasta.
 add_to_bill	Lisää laskuun
 added	Lisätty
@@ -280,19 +221,9 @@ chip_missing_customer	Valittu asiakas puuttuu — valitse uudelleen
 chip_no_customer	Ei vielä asiakasta — kirjoita nimi ja napauta Luotto
 credit_summary_fmt	{} asiakasta · avoin luotto {} · pidetyt ennakot {}
 recent_label	Viimeisimmät:
-kot_new_waiting	UUSI — odottaa
-kot_preparing	VALMISTETAAN
-kot_ready_serve	VALMIS — tarjoile
-kot_done_cap	TEHTY
-kot_cancelled	PERUTTU
-kot_start_btn	Aloita
-kot_mark_ready	Merkitse valmiiksi
-kot_done_btn	Valmis
-table_free	Vapaa — napauta aloittaaksesi tilauksen
 start_order	Aloita tilaus
 open_bill	Avaa lasku
 collect_payment	Kerää maksu
-table_running	Käynnissä
 payment_pending	Maksu odottaa
 collect_at_counter	kerää tiskillä
 inventory	Varasto
@@ -325,7 +256,6 @@ ok	OK
 this_shop	Palvelin
 extra_till	Pääte
 off	Pois
-tables_kitchen	Kaupan ulkoasu
 server	Palvelin
 client	Pääte
 language_currency	Kieli ja valuutta
@@ -367,8 +297,6 @@ add_item_plain	Lisää tuote
 add_note	Lisää huomautus
 add_opening_balance	Lisää alkusaldo
 add_staff	Lisää työntekijä
-add_station	Lisää asema
-add_table	Lisää pöytä
 add_unit	Lisää yksikkö
 add_use_name	Lisää / käytä tätä nimeä
 allow_extra_tills	Salli lisäkassat
@@ -421,7 +349,6 @@ share_whatsapp	Jaa WhatsAppissa
 lan_pages_heading	Asiakassivut Wi-Fissä
 lan_pages_help	Tämän kaupan Wi-Fi-verkossa asiakassivut toimivat näyttötaulua ja palautetta varten. Mobiilidataa käyttävät ihmiset tarvitsevat pilven myöhemmin. Korttipääte tai maksulinkki on valinnainen, eikä se koskaan estä laskuria.
 diag_send_heading	Jaa tämän laitteen ulkopuolelle
-kot_dest_heading	Asema
 optional_login_heading	Valinnainen kirjautuminen
 rights_heading	Oikeudet
 ops_panel	Paikallinen käyttö
@@ -448,28 +375,6 @@ till_voucher_amt_ph	Kupongin summa (tyhjä = kaikki)
 till_wallet_topup_ph	Lompakon lataussumma
 till_voucher_issue_amt_ph	Annettavan kupongin summa
 till_voucher_issue_code_ph	Uuden kupongin koodi
-split_evenly	Jaa tasan
-waitlist	Odotuslista
-fire_course	Seuraava askel
-hold_item	Pidätä
-waiter_call	Soita kassalle
-waitlist_add	Lisää odotuslistalle
-floor_view_grid	Ruudukko
-floor_view_layout	Asettelu
-floor_layout_x	X
-floor_layout_y	Y
-floor_layout_w	W
-floor_layout_h	H
-floor_layout_save	Tallenna asettelu
-floor_layout_open	Avaa pöytä
-floor_layout_edit	Muokkaa asettelua
-floor_layout_pick	Napauta pöytää muokataksesi sen asettelua
-floor_layout_saved	Asettelu tallennettu
-floor_layout_nudge_left	← 20
-floor_layout_nudge_right	→ 20
-floor_layout_nudge_up	↑ 20
-floor_layout_nudge_down	↓ 20
-sibling_pickers_help	Napauta päälle/pois kuten yksiköissä — piilota alueet, asemat ja verokannat päivittäisistä valitsimista; paketin oletukset säilyvät.
 bulk_price_apply	Käytä joukkohinta
 card_terminal_optional	Korttipääte / maksulinkki (valinnainen, kun internet on käytettävissä)
 copy_report	Kopioi raportti
@@ -495,7 +400,6 @@ import_day	Tuo päivä
 import_items_csv_plain	Tuo tuotteiden CSV…
 import_parties_csv	Tuo osapuolten CSV…
 item_name	Tuotteen nimi
-kitchen_printing	Tulostimet
 login_id_ph	Käyttäjänimi
 mark_cleared	Merkitse täsmäytetyksi
 new_party_clear	Uusi osapuoli (tyhjennä lomake)
@@ -565,15 +469,6 @@ show	Näytä
 spreadsheet_csv	Taulukko (CSV)
 start_fresh	Aloita tyhjästä
 stop_extra_tills	Pysäytä lisäkassat
-floor_cols_ph	Sarakkeet
-floor_cols_fit	Sovita näyttöön
-floor_cols_fit_sub	{n} mahtuu tähän
-floor_cols_fits	mahtuu
-floor_cols_scroll	vierittää sivuttain
-floor_cols_min	Sarakkeet: vähintään 1 — tai jätä tyhjäksi sovittaaksesi näyttöön
-floor_zoom_auto	Automaattinen
-floor_zoom_out	Loitonna
-floor_zoom_in	Lähennä
 backup_auto	Varmuuskopioidaan automaattisesti joka päivä · viimeksi {when} · viimeiset 14 päivää säilytetään kansiossa {dir}.
 backup_auto_none	Varmuuskopioidaan automaattisesti joka päivä — ensimmäinen ajetaan hetken kuluttua.
 backup_copy_to	Kopiot menevät myös kansioon {dir}.
@@ -591,7 +486,6 @@ new_pair_code	Uusi parituskoodi
 pair_finishing	Paritus viimeistellään… liikkeen kirjoja otetaan käyttöön
 pair_opening	Kassaa avataan…
 pair_copied	Parituskoodi kopioitu
-kot_waiting	Odottaa lähetystä
 lan_offline_waiting	Liikkeen palvelimeen ei saada yhteyttä · {n} odottaa
 lan_connecting	Yhdistetään liikkeeseen…
 lan_live	Suora
@@ -633,7 +527,6 @@ printers_routes_help	Etsi tulostimet, jotka käyttöjärjestelmä jo tuntee. Mä
 printer_assign_dd	Oikea tulostin: {place}
 printer_assign_pick	Valitse oikea tulostin
 printer_profile_heading	Asettelu
-printer_send_heading	Kuljetus
 vp_delivery_heading	Kuljetus
 vp_delivery_help	Kuinka tämä virtuaalinen tulostin lähettää töitä – käyttöjärjestelmädokumentti, raakatavut tai ESC/POS. Luettelon sisältö (tyyppikoko, rivitys, marginaalit) määräytyy laskun / kuittimuodon mukaan, ei täällä.
 vp_type_size_heading	Kirjasinkoko
@@ -677,23 +570,13 @@ virtual_draft_send	Arvo asetettu seuraavalle virtuaalitulostimelle
 virtual_need_real	Valitse ensin oikea tulostin
 virtual_need_select	Valitse poistettava virtuaalitulostin
 real_printer_selected	Valittu: {name}
-station_group_heading	Virtuaalitulostimet
-station_group_apply	Poista virtuaalitulostin
-station_group_applied	Poistettu
-station_group_empty	Valitse virtuaalitulostin
-station_group_name_ph	Virtuaalitulostimen nimi (valinnainen)
-station_group_save	Luo virtuaalitulostin
-station_group_saved	Virtuaalitulostin tallennettu
-station_manage_heading	Lisää tai poista lääkeosasto
 printers_routes_heading	Minne tulostetaan
 route_pick_heading	Paikka
 route_editing	Muokataan: {name}
 route_assigned	Lisätty {printer} paikkaan {place}
 route_already_assigned	Jo tässä paikassa: {printer}
-route_removed	Poistettu {printer} paikasta {place}
 route_cleared	Tyhjennetty {name}
 route_assigned_empty	Ei mitään tässä paikassa
-route_tap_remove	napauta poistaaksesi
 route_tap_select	napauta valitaksesi
 route_tap_selected	valittu
 route_pick_printer_first	Napauta ensin tulostinta
@@ -714,35 +597,17 @@ printer_format_custom	Uusi oma profiili
 printer_format_custom_label	Oma
 printer_format_custom_added	Oma profiili lisätty tälle paikalle
 add_printer	Lisää tulostin
-remove_printer	Poista
 route_pick_ph	Lasku tai apteekkiosasto
 route_bill	Lasku
-route_default_kitchen	Ei asemaa (määrittämättömät kohteet)
-route_kot_station	Asema
 route_dont_print	Ei tulostinta
-stations_heading	Asemat
-stations_help	Myyntiosastot ryhmittelevät lääkkeet ja tulostimet kyseiseen myymälän osaan. Liitä tulostimet kohdasta Asetukset → Tulostimet, aseta kokeilujärjestys ja sitten Ensimmäinen joka toimii tai Tulosta kaikille. Muutokset tallennetaan samalla kun menet.
-station_print_heading	Tulostimet tälle asemalle
-station_print_help	Valitse asema ja liitä sitten yksi tai useampi tulostin. ↑↓ asettaa kokeilujärjestyksen. Ensimmäinen toiminta pysähtyy ensimmäisen onnistumisen jälkeen; Tulosta kaikista lähetyksistä jokaiselle liitetylle tulostimelle.
-station_print_pick_ph	Asema, jolle tulostimet asetetaan
 station_print_pick_first	Valitse ensin lääkeosasto
-station_print_editing	Muokataan tulostimia kohteelle “{name}”
-station_vps_dd	Tulostimet tälle asemalle
-station_vps_dd_n	{n} tulostinta · napauta vaihtaaksesi
 station_vps_empty	Ei vielä tulostimia — etsi ne kohdasta Asetukset → Tulostimet
 bill_printers_dd	Tulostimet laskulle
 bill_printers_dd_n	{n} tulostinta laskulle · napauta vaihtaaksesi
-job_layout	Asettelu
-job_delivery	Miten työ lähetetään
-job_delivery_help	OS-asiakirja, raakatavut tai ESC/POS. Lasku ja lippu ovat kumpikin omansa. Kumpi tahansa työ voi siirtyä mille tahansa tulostimelle, jonka Find on tallentanut.
 station_vp_attached	Tulostin liitetty
 station_vp_detached	Tulostin poistettu asemalta
-station_print_summary	{mode} · {n} tulostinta
-station_print_summary_none	Ei vielä tulostimia tällä asemalla — se ei tulosta
-stations_none	Ei vielä asemia – lisää yksi alle. Asemat ovat käyttämättömiä tiskiliikkeessä – jätä tyhjäksi.
 route_up	Ylös
 route_down	Alas
-route_remove	Poista
 route_clear	Tyhjennä
 save_printers	Tallenna tulostimet
 print_test_page	Tulosta testisivu
@@ -751,23 +616,15 @@ test_page_no_printer	Ei tulostinta paikalle {place} — liitä siihen tulostin j
 test_page_pick_first	Valitse ensin tulostimet testisivulle — sitten Tulosta testisivu
 test_printers_dd	Tulostimet testisivulle
 test_printers_dd_n	{n} tulostinta testisivulle · napauta vaihtaaksesi
-kot_test_printers_dd	Tulostimet testitulostukseen
-kot_test_printers_dd_n	{n}-tulostin(t) testitulostukseen · Muuta napauttamalla
 test_printer_picked	Testaa: {name}
 test_printer_cleared	Ei testata: {name}
 test_page_sent_n	Testisivu lähetetty {n} tulostimelle
-test_kot_pick_first	Valitse ensin tulostimet testitulostusta varten ja sitten testitulostusta varten
-test_kot_sent_n	Testitulostus lähetetty {n}-tulostimille
-cancel_pick	Merkitse
-cancel_pick_on	Merkitty
-cancel_pick_meta	Merkitty peruttavaksi
 batch_cancel	Peru merkityt
 batch_cancel_n	Peru merkityt ({n})
 batch_cancel_none	Merkitse ensin yksi tai useampi lähetetty kohde ja sitten Peruuta
 batch_cancel_title	Peruuta merkityt lääkkeet – yksi syy, yksi peruutuslappu per osa
 batch_cancel_ok	{n} tuotteet peruutettu · {slips} peruutuskuitti(t) → {kitchens}
 batch_cancel_ok_noprint	{n} tuotteet peruutettu — automaattinen tulostus on pois päältä, joten ei peruutuskuittia
-no_printer_kitchen_station	Ei tulostinta tälle asemalle
 printers_saved	Tallennettu
 test_page_sent	Testisivu lähetetty — tarkista tulostin
 test_page_sent_one	Testisivu lähetetty tulostimelle {name} — tarkista se
@@ -783,10 +640,7 @@ cancelled	Peruttu
 printers_tap_find	Napauta Etsi listataksesi tulostimet, joita tämä laite voi käyttää.
 printers_none_found	Ei löytynyt — kirjoita järjestelmätulostimen nimi tai IP (esim. 192.168.1.50).
 printer_from_find	Lisätty {name}
-kot_printer_ph	Tulostin lippaille
 bill_printer_ph	Tulostin laskuille
-kot_print_on	Liput automaattisesti tulostuvat: Päällä
-kot_print_off	Liput automaattisesti tulostuvat: Pois
 queue_refused	Liike ei hyväksynyt ({n}) — tarkista kukin tiskillä:
 clear_not_accepted	Tarkistettu — tyhjennä tämä lista
 device_name_ph	Tämän laitteen nimi
@@ -797,7 +651,6 @@ backup_failed	Viimeisin automaattinen varmuuskopio epäonnistui: {e}
 backup_overdue	Ei varmuuskopiota {n} päivään — pidä sovellus auki tällä laitteella, jotta se voi varmuuskopioida.
 disk_low	Vain {mb} Mt vapaana tällä laitteella — varmuuskopiot epäonnistuvat pian. Vapauta tilaa.
 last_seen_devices	Viimeksi nähty: {time}
-sync_interval	Synkronoi {secs} s välein
 connection_to_shop	Yhteys liikkeeseen
 supplier_name_ph	Toimittajan nimi (tai osapuoli)
 supplier_ph	Toimittaja
@@ -860,7 +713,6 @@ fresh_book_tabiyat	Tuore = tyhjä luettelo (lisää tuotteita myöhemmin). Kirja
 fresh_selected	Tyhjä valittu — luettelo pysyy tyhjänä. Napauta Valmis kun olet valmis.
 gross_word	Brutto
 how_start	Miten haluat aloittaa?
-kot_print_help_tabiyat	Ei käytetty tiskiliikkeessä.
 later_country_pack	Myöhemmin: Asetukset → käytä maapakettiasi vero- ja maksumerkintöihin.
 local_badge	PAIKALLINEN
 mix_type_hint_tabiyat	Jaa käteiselle / UPI:lle / kortille / luotolle tarvittaessa. Luotto vaatii asiakkaan ylle.
@@ -911,8 +763,6 @@ staff_copy_need_source	Valitse kenen asetukset kopioidaan
 staff_copy_same	Se on sama henkilö — valitse joku muu
 staff_rename_need_selected	Valitse ensin kenet nimetään uudelleen
 team_pick_hint	Valitse muokattava henkilö – näytöt, rahaoikeudet ja asemat näkyvät vain tälle henkilölle.
-team_stations_help	Asemat, joita he voivat käyttää
-team_stations_changed	Asemat muutettu — Tallenna tämän henkilön asetukset
 team_features_changed	Näytöt muuttuivat — tallenna tämän henkilön asetukset
 team_rights_changed	Oikeudet muuttuivat — tallenna tämän henkilön asetukset
 they_owe_us	He ovat meille velkaa
@@ -996,9 +846,6 @@ service_pct_ph	Palvelu-% valinnainen 0/10/12
 short_code_ph	Lyhytkoodi (MG02)
 starting_password_ph	Aloitussalasana (valinnainen)
 starting_pin_ph	Aloitus-PIN (4–12 numeroa)
-station_name_ph	Aseman nimi (valinnainen)
-station_new_ph	Osio (valinnainen)
-table_name_ph	Laskurin/lahden nimi
 tax_rate_ph	Verokannan nimi tai % — Normaali, Alennettu, 0, 5, 12, 18, 20
 to_code_ph	Kohdekoodi (kg)
 uncleared_no_ph	Täsmäyttämätön nro yllä
@@ -1011,27 +858,8 @@ book_kind_month	Tämän kuun kirjat
 book_kind_aging	Avoimet / debet-kredit
 book_kind_balance	Tase
 order_help	Napauta tuotetta lisätäksesi sen.
-floor_help	Tämä kauppa myy tiskillä. Pöydät ja ruokailulattia eivät kuulu Tabiyatiin.
-kitchen_help	Ei käytetty tiskiliikkeessä.
-kitchen_empty	Ei avoimia lippuja (tiskiliikkeet jättävät tämän näytön yleensä käyttämättä).
-add_a_table	Lisää pöytä
-add_station_heading	Lisää lääkeosasto
 categories_help	Napauta Käytä arkistoidaksesi yllä olevan tuotteen tuohon luokkaan. Kuva antaa luokalle kuvan; ilman sitä näytetään nimikirjaimet.
 dish_search_ph	Hae nimellä, suolalla tai viivakoodilla…
-tile_free	Vapaa
-tile_occupied	Varattu
-tile_food_ready	Ruoka valmis
-tile_bill_printed	Lasku tulostettu
-tile_paid	Maksettu
-tile_bill_btn	Lasku
-tile_occupy_btn	Istuuta vieraat
-tile_free_btn	Vapauta pöytä
-tile_ready_btn	Vapauta pöytä
-tile_undo_bill	Kumoa lasku
-summary_busy	pöytää varattu
-summary_to_collect	kerättävää
-summary_on_floor	salissa
-floor	Liike
 sizes_as_items_ph	Koot erillisinä tuotteina (valinnainen) — Puolikas=120, Täysi=200
 dish_group_ph	Vahvuus/pakkausryhmä (valinnainen) – esim. 500 mg liuska
 discount	Alennus
@@ -1039,7 +867,6 @@ remove_discount	Poista alennus
 apply_discount	Käytä alennus
 save_opening_cash	Tallenna alkukäteinen
 close_shift_print	Sulje vuoro ja tulosta lipuke
-area_prices_ph	Aluehinnat (valinnainen) — AC=220, Paketti=210
 discount_ph	10 % tai 50
 discount_reason_ph	Syy (esim. vakioasiakas, myöhäinen ruoka)
 opening_float_ph	Käteinen, joka laitettiin laatikkoon tänä aamuna
@@ -1049,34 +876,18 @@ shift_handover	Vuoron vaihto
 shift_since	Tämä vuoro alkaen
 expected_in_drawer	Odotettu laatikossa
 right_discount	Anna alennus
-floor_in_kitchen	Käynnissä
-floor_eating	Tarjoiltu
 pick_category	Valitse luokka
 close_category_list	Sulje luokkalista
 new_category_row	Uusi luokka — luodaan kun tallennat tuotteen
 your_category	Oma luokka
 suggested_category	Suositeltu - tuotteistamme
 category_search_ph	Luokka — hae omiasi tai kirjoita uusi
-line_sent_state	Lähetetty
-line_nc_state	Tarjoilu (NC) — ei veloiteta
 cancel_item_short	Peru
-nc_short	NC
-charge_again_short	Veloita
-move_short	Siirrä
 cancel_item_title	Peruuta tämä kohde – back office saa peruutuskuitin
-nc_item_title	Tee tästä tuotteesta tarjoilu (NC)
-charge_again_title	Veloita tämä tuote uudelleen
-move_item_title	Siirrä tämä tuote toiseen pöytään
-already_cooked	Jo kypsennetty (hävikki)
-not_cooked_yet	Ei vielä kypsennetty
 return_to_customer	Palauta asiakkaalle
 short_by	Vajaa
 tip_not_sale	Tippi (henkilöstön, ei myyntiä)
 right_settle	Ota maksu
-right_cancel_sent	Peru lähetetty tuote
-right_complimentary	Tarjoilu (NC)
-right_move_table	Siirrä / yhdistä laskureita
-right_reprint	Tulosta lasku uudelleen
 right_allowed	Sallittu
 right_with_approval	Hyväksynnällä
 right_denied	Ei sallittu
@@ -1086,25 +897,11 @@ no_server_found	Ei löytynyt. Palvelimella: Asetukset → Muut laitteet → Sall
 servers_found_pick	Napauta liikettä, johon haluat yhdistää.
 server_host_selected	Käytetään {host} — syötä parituskoodi ja sitten Parita nyt.
 print_bill	Tulosta lasku
-table_actions	Vastatoimet
-move_merge_table	Siirrä / yhdistä pöytä
-move_help	Siirrä tämän laskurin järjestys vapaaseen pöytään tai yhdistä se käynnissä olevaan pöytään.
-move_target_ph	Laskun nimi
 approval_pin_ph	Päällikön PIN (vain jos kysytään)
-move_here	Siirrä tähän
-merge_into	Yhdistä siihen
-line_reason_ph	Syy (esim. asiakas muutti mielensä, loppunut)
-line_qty_ph	Kuinka monta perutaan (tyhjä = kaikki)
-line_target_ph	Siirrä pöytään (esim. D5)
 confirm	Vahvista
 menu_search_ph	Hae tuotetta tai lyhytkoodia
 customer_paid_ph	Asiakas maksoi
 tip_ph	Tippi
-table_area_ph	Alue (esim. pöytään, paketti, AC)
-table_range_ph	Monta kerralla: D1-D20
-add_these_tables	Lisää nämä laskurit
-remove_these_tables	Poista nämä laskurit
-table_remove_ph	Poista: T1-T24 tai yhden pöydän nimi
 find_server	Etsi liikkeen palvelin
 bill_format	Laskun muoto
 bill_format_help	Painettu myymäläsi nimen alle jokaiseen laskuun. Erottele rivit | (esim. MG Road, Rajkot | puh. 98250 00000).
@@ -1112,78 +909,32 @@ bill_header_ph	Osoite | puhelin
 fssai_ph	Lääkelupa nro. (valinnainen – sanamuotosi)
 bill_footer_ph	Alatunniste (esim. Kiitos, tervetuloa uudelleen)
 save_bill_format	Tallenna laskun muoto
-kot_format	Slip-muoto
-kot_format_help	Napauta kenttää luettelossa. Näytä, kirjasinkoko ja paino koskevat kyseistä kenttää yllä valitussa kuitissa. Jokainen laji pitää omat kokonsa ja painonsa.
-kot_format_fields	Kentät
-kot_field_next	Seuraava kenttä
-kot_field_show	Näytä
-kot_field_hide	Piilota
 kot_field_on	näytä
 kot_field_off	piilota
-kot_field_size	Kirjasinkoko
-kot_field_size_ph	esim. 16, 20, 24, 28, 32…
 kot_weight_light	Ohut
 bill_kot_panel_help	Laskun asettelu ja sisällön leveys. Kassa on se, joka on laatinut tai maksanut laskun – koko myyntikertomus jää kirjoihin.
 std_size_ph	esim. 18, 20, 26…
-kot_show_shop	Liikkeen nimi
-kot_hide_shop	Piilota liike
-kot_show_time	Aika
-kot_hide_time	Piilota aika
-kot_show_waiter	Kassahenkilö
-kot_hide_waiter	Piilota kassa
-kot_show_station	Asema
-kot_hide_station	Piilota asema
-kot_show_table	Tiski
-kot_hide_table	Piilota pöytä
-kot_show_kot_no	Lippu nro
-kot_hide_kot_no	Piilota lippu nro
-kot_width	Esikatselun rivitys (määritä sisällön leveys liukuvälilehdellä)
-kot_width_58	58 mm
-kot_width_80	80 mm
-kot_kind_heading	Lippulaatuinen
-kot_kind_original	Alkuperäinen
-kot_kind_duplicate	Kaksoiskappale
-kot_kind_modified	Muutettu
-kot_kind_cancelled	Peruttu
-kot_style_heading	Kentän kirjasinkoko ja paksuus
-kot_style_title	Otsikko
-kot_style_item_qty	Tuote · määrä
-kot_style_field_pick	Valitse kenttä
 kot_weight_regular	Tavallinen
 kot_weight_bold	Lihava
-kot_align	Tasaus
 kot_align_start	Aloita
 kot_align_center	Keskelle
 kot_align_end	Loppu
 content_width	Sisällön leveys (mm)
 content_width_bill	Laskun sisällön leveys (mm)
-content_width_kot	Lipun sisällön leveys (mm)
 content_width_ph	Tai kirjoita sisällön leveys, 40–210 mm
 content_width_help	Kuinka leveästi tämä lappu tulostaa. Bill pitää oman leveytensä.
 content_width_bill_help	Kuinka leveäksi asiakkaan lasku tulostuu. Oletus 210 mm (sivu). 58 mm kapea liuku, 80 mm leveä liuska, 112 mm 4 tuumaa, 210 mm A4-leveä. Kirjoita mikä tahansa arvo väliltä 40 - 210. Lippujen välilehdellä on oma leveys.
-content_width_kot_help	Kuinka leveästi lippu tulostuu. Oletus 80 mm. 58 mm kapea slip, 80 mm leveä liuska, 112 mm 4 tuumaa, 210 mm sivu. Kirjoita mikä tahansa arvo väliltä 40 - 210. Asiakaslaskuilla on oma leveys Lasku-välilehdellä.
 vp_paper_width	Sisällön leveys (mm)
 vp_paper_width_ph	Tai kirjoita sisällön leveys, 40–210 mm
 vp_paper_width_help	Sisällön leveys asetetaan Bill & Slip -muodossa — erikseen laskulle (oletus 210 mm) ja lipulle (oletus 80 mm).
-kot_size	Kirjasinkoko
-kot_size_s	Pieni
-kot_size_m	Normaali
-kot_size_l	Suuri
 std_size	Kirjasinkoko
 kot_copies	Kappaleet
 kot_copies_1	1
 kot_copies_2	2
 kot_copies_3	3
-kot_title_ph	Otsikko (tyhjä = TICKET)
-kot_footer_ph	Back-office huomautus (valinnainen)
-kot_preview	Esikatselu
-save_kot_format	Tallenna Slip-muoto
-test_kot_format	Testitulostus
-test_kot_sent	Lippujen esikatselu lähetetty
 test_bill_format	Testilasku
 test_bill_sent	Laskun esikatselu lähetetty
 test_print_no_printer	Ei tulostinta tuolle työlle — valitse yksi tällä näytöllä
-kot_format_saved	Slip-muoto tallennettu
 std_print	Laskun tulostuskoko
 std_print_help	Fonttikoko vakiomuotoisille ja vaakasuuntaisille laskutöille käyttöjärjestelmä-/asiakirjatulostimissa (syötä pisteet — ei pieni/normaali/suuri). Sama koko molemmissa suunnassa.
 std_size_s	Pieni
@@ -1223,23 +974,16 @@ upi_qr	UPI QR
 show_upi_qr	Näytä UPI-QR
 close_upi_qr	Sulje
 upi_qr_help	Asiakas skannaa ja maksaa. Napauta Ota maksu maksamisen jälkeen. Toinen näyttö: avaa Palvelimen URL / näyttö lähiverkossa.
-kot_recall	Palauta
 recently_done	Äskettäin valmiit
-recall_kot_ph	Lippu # muistettavaksi
 role_help_customer	Rooli: asiakas — khata (he ovat meille velkaa). Sama osapuoli voi myös toimittaa varastoa.
 role_help_both	Roolit: asiakas + toimittaja — yksi osapuoli, khata- ja ostovelkareskontrat, netto raporteissa.
 role_help_supplier	Rooli: toimittaja — olemme heille velkaa ostoista.
-dine_in_pick_table	Ei käytetty tiskiliikkeessä
-choose_table	Valitse laskuri
-change_table	Vaihda pöytä
-pick_table_banner	Valitse pöytä tälle tilaukselle
 items_word	tuotetta
 items_section	Tuotteet
 back_to_order	Takaisin tilaukseen
 new_items_head	Ei vielä lähetetty
 price_ph	Hinta
 price_ph_gst_inside	Hinta ({tax} sisältyy)
-cancel_needs_table	Tiskimyynti pysyy lipussa, kunnes maksat
 tax_rates_missing_hint	Ei {tax}-hintaa näille tuotteille — tuotteille asetettu veroprosentti (hinnat sisältävät jo {tax} {tax} mukaan lukien)
 taxable_value	Verotettava arvo
 gst_inside_price_note	({tax} sisältyy)
@@ -1260,30 +1004,11 @@ client_template_confirm	Lisätäänkö {d} tuotteita {title}:stä? Tuotteet, jot
 client_template_importing	Tuodaan {title}…
 client_template_done	Jokainen {title}:n tuote on tuotteissasi.
 client_template_imported	Lisätty {d}-tuotteet ja {c}-luokat {title}:stä
-resv_heading	Varaukset
-resv_name_ph	Asiakkaan nimi
-resv_phone_ph	Puhelin (valinnainen)
-resv_guests_ph	Ihmiset
-resv_when_ph	Milloin — 20:30, huomenna 13:00
-resv_table_ph	Laskuri (valinnainen)
-resv_add	Varaa
-resv_seat	Istutettu
-resv_none	Ei tulevia varauksia.
-guests_word	vierasta
-delivery_by_ph	Toimittaja (kuskin tai työntekijän nimi)
-kitchen_all_day	Kypsennettävä nyt: {items}
-split_bill	Jaa lasku
-split_go	Tee erillinen lasku
 cancel	Peru
 opening_client	Avataan päätettä…
 preparing_desk	Valmistellaan pöytää…
 opening_server	Avataan palvelinta…
 creating_server	Luodaan palvelinta…
-split_help	Napauta tuotteita, joista asiakas maksaa · {n} poimittu
-split_send_first	Lähetä kuitti ensin – vain back officen tuotteet voivat mennä erilliseen laskuun
-split_pick_some	Napauta ensin erillisen laskun kohteita
-split_done	Erillinen lasku tehty - se on lattialla tämän tiskin vieressä
-split_marked	erillinen lasku
 order_empty_pick	Tilaa tyhjä – napauta yllä olevaa Lisää kohteita valitaksesi kohteita.
 add_dishes	Lisää lääkkeitä
 order_so_far	Tässä tilauksessa: {n} · {total}
@@ -1294,24 +1019,8 @@ pick_done_dd	Valmis · {label}
 printer_route_mode	Jos tässä paikassa on useita tulostimia
 printer_mode_first	Ensimmäinen joka toimii
 printer_mode_all	Tulosta kaikille
-kot_show_area	Alue
-kot_hide_area	Piilota alue
-kot_show_item_hdr	Tuote · määrä
-kot_hide_item_hdr	Piilota sarakkeet
-kot_show_title	Otsikkorivi
-kot_hide_title	Piilota otsikko
-kot_field_order	Tulostusjärjestys
 kot_field_up	Siirrä ylös
 kot_field_down	Siirrä alas
-kot_field_cycle	Valitse seuraava
-kot_field_select	Valitse seuraava
-kot_field_time	Aika
-kot_field_kot_no	Lippu nro
-kot_field_area	Alue
-kot_field_table	Tiski
-kot_field_shop	Liikkeen nimi
-kot_field_waiter	Henkilöstö
-kot_field_station	Asema
 app_template_blurb_extra	Myös: Omistaja Zahir, Admin Asif, Cashier Nawaz; etusivupalkki; historia 4 tunnin kuluttua; Tänään riisutaan; kompakti lasku.
 dishes_n	{n} tuotteet
 recipe_ph	Resepti (valinnainen - käyttämätön tiskillä)
@@ -1321,8 +1030,6 @@ low_stock_alert	Loppuu — osta pian: {items}
 unpriced_note	Tuotteidesi {n}-tuotteissa ei ole vielä hintaa – ne laskutetaan 0, kunnes asetat sen.
 show_unpriced	Näytä vain tuotteet ilman hintaa
 show_all_dishes	Näytä kaikki kohteet
-role_waiter	Kassahenkilö
-role_kitchen	Store
 role_title_rest_ph	Roolin nimi (esim. kapteeni, keittiöpäällikkö)
 preset_help_rest	Kassahenkilö: myy. Päällikkö: myy + tuotteet + mitätöi/oikaise.
 kind_raw	Yhdistelmävarasto

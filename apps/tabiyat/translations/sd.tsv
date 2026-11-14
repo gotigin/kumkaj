@@ -80,28 +80,6 @@ applied	لاڳو ٿيل
 note_ph	نوٽ (اختياري)
 rounded	گول ٿيل
 split	ورهايو
-send_kot	پرچي موڪليو
-send_kot_to	موڪليو → {kitchens}
-send_kot_again	ايندڙ سلپ لاء شيون شامل ڪريو
-send_kot_held	رکيل شيون - موڪلڻ لاءِ روڪيو
-reprint_kot	چونڊيل ٻيهر ڇپيو
-reprint_kot_ok	ٻيهر ڇپيل {n} شيون · {slips} سلپ → {kitchens}
-reprint_kot_needed	پهرين پرچي موڪليو - پوءِ دوائون شامل ڪريو ۽ چونڊيل کي ٻيهر ڇپايو
-reprint_kot_none_selected	هر موڪليل شيءِ ڇڏي وئي آهي - ٽيپ ڪريو ان پرنٽ تي ٻيهر ڇپائڻ لاءِ
-reprint_kot_client	ٻيهر ڇپايو ({n}) {place} لاءِ موڪليو ويو - دڪان جو ڊوائيس ان کي پرنٽ ڪري ٿو
-print_cancelled_kot	سڀ منسوخ ٿيل ڇپيو
-print_cancelled_kot_ok	ڇپيل {n} منسوخ ٿيل شيون · {slips} سلپ → {kitchens}
-print_cancelled_kot_needed	پهرين منسوخ ٿيل شيون سان ٽيبل کوليو
-print_cancelled_kot_none	هن آرڊر تي ڪابه منسوخ ٿيل شيون
-print_cancelled_kot_client	پرنٽ منسوخ ڪيو ويو ({n}) {place} لاءِ موڪليو ويو - دڪان جو ڊوائيس ان کي پرنٽ ڪري ٿو
-kot_banner	سٺي بينر
-kot_banner_ph	بينر (خالي = نه ڪو)
-kot_item_prefix	شئي جي پيش لفظ
-kot_item_prefix_ph	مثال طور [CANCELLED]
-kot_strike	هڙتال جي شيء جو نالو
-kot_strike_note	هڙتال واري شيءِ جو نوٽ
-kot_strike_on	چالو
-kot_strike_off	بند
 bill_item_layout	شئي جو ترتيب
 bill_item_layout_columns	ڪالمن
 bill_item_layout_stacked	اسٽيڪ ٿيل
@@ -130,8 +108,6 @@ bill_item_gap_em	خلاءُ (em)
 bill_item_qty_min	گهٽ ۾ گهٽ مقدار (ايم)
 bill_item_price_min	گهٽ ۾ گهٽ قيمت (ايم)
 bill_item_amount_min	گهٽ ۾ گهٽ رقم (ايم)
-kot_item_qty_width	مقدار ڪالمن
-kot_item_num_align	مقدار جو ترتيب
 bill_total_qty_label	ڪل مقدار جو ليبل
 bill_total_subtotal_label	ذيل جي ڪل جو ليبل
 bill_total_grand_label	مڪمل ڪل جو ليبل
@@ -143,36 +119,9 @@ bill_item_piece_off	بند
 bill_total_qty	ڪل مقدار
 bill_total_subtotal	ذيلي ڪل
 bill_total_grand	مڪمل ڪل
-reprint_incl	ڇپائي ۾
-reprint_skip	ڇڏيو
-reprint_skip_meta	بحالي ڇپائي کي ڇڏي ڏيو
-kot_dest_hint	سيٽنگس → پرنٽرز ۾ توھان مقرر ڪيل پرنٽر تي ڇپائي ٿي {kitchens}
-kot_sent_hint	آخري موڪليو ويو {kitchens} ڏانهن. ايندڙ بل لاءِ شيون شامل ڪرڻ لاءِ ٽيپ ڪريو - يا ساڳي لاءِ پرچي ٻيهر پرنٽ ڪريو.
-kot_sent_printing	پرچي موڪليو ويو {kitchens} ڏانهن - ڇپائي
-kot_sent_not_printed	پرچي موڪليو ويو {kitchens} ڏانهن پر ڇپيل ناهي: {why}. دڪان کي ٻڌايو ته پوءِ پرنٽر ٺيڪ ڪريو ۽ ان کي ٻيهر ڇپايو.
-kot_sent_screen	پرچي موڪليو ويو {kitchens} ڏانهن
-kot_queued_shop	{place} لاءِ پرچي → {kitchens} محفوظ ٿيل؛ دڪان جو ڊوائيس ان کي پرنٽ ڪري ٿو
-kot_job_label	{place} → {kitchens} لاءِ سلپ
-kot_job_reached	{place} لاءِ سلپ {kitchens} تي پهچي وئي
 kot_unassigned	اڻ مقرر ڪيل
-kot_unassigned_held	اسٽيشن کان سواءِ {n} شيون رکيا - موڪلڻ لاءِ لائن تي بيھاريو
-kot_station_ph	اسٽیشن
-kot_station_dd	اسٽیشن
-kot_station_dd_n	اسٽيشن · {stations}
-kot_set_station	هن اسٽيشن کي استعمال ڪريو
-kot_station_applied	{n} شين تي اسٽيشن سيٽ: {station}
-kot_station_cleared	اسٽيشن {n} شين مان صاف ڪئي وئي: {station}
-kot_station_needed	پهرين ڊسپينسري سيڪشن چونڊيو
-kot_station_not_allowed	سيڪشن استعمال ڪرڻ جي اجازت ناهي: {station}
-kot_station_none	اڃا تائين ڪابه اسٽيشن ناهي — هڪ ڪائونٽر جي دڪان تي غير استعمال ٿيل (سيٽنگون → علائقن جي ضرورت هجي)
 pos_tab_items	شامل ڪيل شيون
 pos_tab_payment	ادائيگي
-hold_send	روڪيو
-hold_send_on	روڪيل
-hold_send_meta	منعقد - هن پرچي تي نه
-station_remove	اسٽيشن هٽايو
-station_remove_ph	هٽائڻ لاءِ فهرست ۾ هڪ اسٽيشن تي ٽيپ ڪريو
-station_removed	اسٽيشن هٽايو ويو: {name}
 settings_hub_title	سيٽنگون
 settings_hub_help	هڪ وقت ۾ هڪ ئي علائقو کوليو — گھٽ اسڪالرنگ، واضح چونڊون.
 settings_back	پوئتي
@@ -181,12 +130,10 @@ settings_sec_country	ملڪ ۽ ٽيڪس
 settings_sec_tills	ٻيا ڊوائيسز
 settings_sec_brand	توھانجو برانڊ
 settings_sec_units	يونٽس ۽ تبديليون
-settings_sec_pickers	علائقو · اسٽيسڻ · ٽيڪس جون شرحون
+settings_sec_pickers	ٽيڪس جون شرحون
 settings_sec_printers	پرنٽر
 settings_sec_bill	بل ۽ سلپ فارميٽ
 settings_sec_selling	اسڪيمون ۽ وڪرو
-bill_kot_tab_bill	بل
-bill_kot_tab_kot	ڦِرڻ
 settings_sec_alerts	خبردار
 alerts_help	توهان لاءِ اسٽيٽس پيغام اسڪرين تي ڪيتري دير لاءِ ظاهر رهن ٿا (هن لاگ ان ۾).
 snack_secs_ph	سيڪنڊ (3–60، ڊيفالٽ 10)
@@ -237,8 +184,6 @@ counter	ڪائونٽر
 dine_in	ڪائونٽر
 takeaway	کڻي وڃو
 order	آرڊر
-tables	شمار ڪندڙ
-kitchen	حصا
 sales	وڪري
 sales_refunds	وڪري ۽ رقم واپس
 day_close	ڏينهن جو اختتام
@@ -266,10 +211,6 @@ zero_sales_on	₹0 جي اجازت ڏيو
 zero_sales_off	قيمت گهرجي
 zero_sales_saved_on	صفر قيمت وارا وڪرو اجازت ٿيل آهن
 zero_sales_saved_off	وڪرو کي ₹0 کان مٿي قيمت هجڻ گھرجي
-floor_areas_help	ايريا آهن ڪمرا يا منزل تي زونون (ڊائن ان، پارسل، اي سي ...). پھريائين ھڪڙو علائقو شامل ڪريو، پوءِ ان ۾ ڪائونٽر وجھو - ھر علائقو فرش تي ھڪڙو الڳ گروپ آھي.
-area_new_ph	نئون علائقو / ڪمرو (مثال طور ايئر ڪنڊيشن، باغ)
-add_area	علائقو شامل ڪريو
-area_added	ايريا "{name}" تيار آهي - ان ۾ شمار ڪندڙ شامل ڪريو
 no_favorites	اڃا ڪا پسنديده ناهي — هيٺ ڏنل فهرست مان شيون شامل ڪريو.
 add_to_bill	بل ۾ شامل ڪريو
 added	شامل ڪيو ويو
@@ -280,19 +221,9 @@ chip_missing_customer	منتخب ٿيل گراهڪ غائب — ٻيهر چون�
 chip_no_customer	اڃا ڪوبه گراهڪ ناهي — نالو لکو، پوءِ ڪريڊٽ تي ٽيپ ڪريو
 credit_summary_fmt	{} گراهڪ · کليل ڪريڊٽ {} · رکيون ويون اڳواڻيون {}
 recent_label	تازو:
-kot_new_waiting	نئون — انتظار
-kot_preparing	تيار ڪري رهيو آهيون
-kot_ready_serve	تيار — ان کي پيش ڪريو
-kot_done_cap	مڪمل
-kot_cancelled	منسوخ
-kot_start_btn	شروع ڪريو
-kot_mark_ready	مارڪ تيار
-kot_done_btn	ٿي ويو
-table_free	مفت — آرڊر شروع ڪرڻ لاءِ ٽئپ ڪريو
 start_order	آرڊر شروع ڪريو
 open_bill	بل کوليو
 collect_payment	ادائگي گڏ ڪريو
-table_running	ڏوڙ
 payment_pending	اداگي ملتوي
 collect_at_counter	ڪائونٽر تي گڏ ڪريو
 inventory	انوينٽري
@@ -325,7 +256,6 @@ ok	OK
 this_shop	Server
 extra_till	Client
 off	بند
-tables_kitchen	دڪان جي ترتيب
 server	Server
 client	Client
 language_currency	ٻولي ۽ ڪرنسي
@@ -367,8 +297,6 @@ add_item_plain	شيءَ شامل ڪريو
 add_note	نوٽ شامل ڪريو
 add_opening_balance	شروعاتي بيلنس شامل ڪريو
 add_staff	اسٽاف شامل ڪريو
-add_station	اسٽیشن شامل ڪريو
-add_table	ٽيبل شامل ڪريو
 add_unit	يونٽ شامل ڪريو
 add_use_name	هن نالي کي شامل / استعمال ڪريو
 allow_extra_tills	اضافي ڪيش ڪائونٽر جي اجازت ڏيو
@@ -421,7 +349,6 @@ share_whatsapp	واٽس اپ شيئر ڪريو
 lan_pages_heading	Wi‑Fi تي ڪسٽمر صفحا
 lan_pages_help	هن دڪان جي وائي فائي تي، ڪسٽمر صفحا ڊسپلي بورڊ ۽ راءِ لاءِ ڪم ڪن ٿا. موبائل ڊيٽا تي ماڻهن کي Cloud بعد ۾ ضرورت آهي. هڪ ڪارڊ ٽرمينل يا ادائگي جي لنڪ اختياري آهي ۽ ڪڏهن به ڪائونٽر کي بلاڪ نه ڪندو آهي.
 diag_send_heading	هن ڊوائيس مان شيئر ڪريو
-kot_dest_heading	اسٽیشن
 optional_login_heading	اختياري لاگ ان
 rights_heading	حق
 ops_panel	مقامي آپريشن
@@ -448,28 +375,6 @@ till_voucher_amt_ph	ووچر رقم (خالي = سڀ)
 till_wallet_topup_ph	والٽ ۾ رقم وڌائڻ
 till_voucher_issue_amt_ph	وائچر جي رقم جاري ڪريو
 till_voucher_issue_code_ph	نئون وائچر ڪوڊ
-split_evenly	برابر ورهايو
-waitlist	انتظار جي فهرست
-fire_course	اڳيون قدم
-hold_item	روڪيو
-waiter_call	ڪيشيئر کي فون ڪريو
-waitlist_add	ويٽ لسٽ ۾ شامل ڪريو
-floor_view_grid	گرڊ
-floor_view_layout	خاڪو
-floor_layout_x	X
-floor_layout_y	Y
-floor_layout_w	W
-floor_layout_h	H
-floor_layout_save	لي آئوٽ محفوظ ڪريو
-floor_layout_open	ٽيبل کوليو
-floor_layout_edit	لي آئوٽ ترميم ڪريو
-floor_layout_pick	ٽيبل تي ٽپ ڪريو ته جيئن ان جو لي آئوٽ ترميم ڪري سگهجي
-floor_layout_saved	لي آئوٽ محفوظ ڪيو ويو
-floor_layout_nudge_left	← 20
-floor_layout_nudge_right	→ 20
-floor_layout_nudge_up	↑ 20
-floor_layout_nudge_down	↓ 20
-sibling_pickers_help	يونٽس وانگر آن/آف تي ٽيپ ڪريو — علائقن، اسٽيجنز، ۽ ٽيڪس جي شرح کي روزاني چونڊ ڪندڙن کان لڪايو؛ پيڪ ڊيفالٽس برقرار رهن ٿا.
 bulk_price_apply	بلڪ قيمت لاڳو ڪريو
 card_terminal_optional	ڪارڊ ٽرمينل / ادائگي لنڪ (اختياري جڏهن انٽرنيٽ موجود هجي)
 copy_report	رپورٽ ڪاپي ڪريو
@@ -495,7 +400,6 @@ import_day	درآمد جو ڏينهن
 import_items_csv_plain	درآمد ٿيل شيون CSV...
 import_parties_csv	پارٽيون درآمد ڪريو CSV...
 item_name	شيءِ جو نالو
-kitchen_printing	پرنٽر
 login_id_ph	صارف جو نالو
 mark_cleared	مارڪ ڪيل صاف ڪري ڇڏيو
 new_party_clear	نئون پارٽي (فارم صاف ڪريو)
@@ -565,15 +469,6 @@ show	ڏيکاريو
 spreadsheet_csv	اسپريڊ شيٽ (CSV)
 start_fresh	نئون شروع ڪريو
 stop_extra_tills	اضافي ڪيش ڪائونٽر بند ڪريو
-floor_cols_ph	ڪالمن
-floor_cols_fit	اسڪرين تي فٽ ڪريو
-floor_cols_fit_sub	{n} هتي فٽ ٿئي ٿو
-floor_cols_fits	فٽ ٿئي ٿو
-floor_cols_scroll	ڪوڙا پهلو ڏانهن ڦري ٿو
-floor_cols_min	ڪالمن: گهٽ ۾ گهٽ 1 — يا اسڪرين سان فٽ ڪرڻ لاءِ خالي ڇڏي ڏيو
-floor_zoom_auto	Auto
-floor_zoom_out	ٻاهر زوم ڪريو
-floor_zoom_in	اندر زوم ڪريو
 backup_auto	هر ڏينهن پاڻمرادو بيڪ اپ ٿيو · آخري {when} · گذريل 14 ڏينهن {dir} ۾ محفوظ آهن.
 backup_auto_none	هر ڏينهن پاڻمرادو بيڪ اپ ٿيو — پهريون هڪ لمحي ۾ هلندو.
 backup_copy_to	ڪاپيون پڻ {dir} ڏانهن وڃن ٿيون.
@@ -591,7 +486,6 @@ new_pair_code	نئون جوڙي ڪوڊ
 pair_finishing	جوڙو مڪمل ڪرڻ... دوڪان جي ڪتابن تي لاڳو ڪرڻ
 pair_opening	ڪيش ڪائونٽر کوليو پيو…
 pair_copied	ڪوڊ جوڙو ڪاپي ڪيو
-kot_waiting	موڪلڻ لاءِ انتظار
 lan_offline_waiting	دوڪان سرور پهچڻ لائق ناهي · {n} انتظار ڪري رهيو آهي
 lan_connecting	دوڪان سان ڳنڍجي رهيو آهي...
 lan_live	لائيو
@@ -633,7 +527,6 @@ printers_routes_help	پرنٽر ڳوليو جيڪو آپريٽنگ سسٽم اڳ
 printer_assign_dd	اصلي پرنٽر: {place}
 printer_assign_pick	اصل پرنٽر چونڊيو
 printer_profile_heading	خاڪو
-printer_send_heading	پهچ
 vp_delivery_heading	پهچ
 vp_delivery_help	هي ورچوئل پرنٽر ڪيئن موڪلي ٿو نوڪريون - OS دستاويز، خام بائيٽ، يا ESC/POS. سلپ مواد (قسم جي سائيز، لفافي، مارجن) بل / سلپ فارميٽ طرفان فيصلو ڪيو ويو آهي، هتي نه.
 vp_type_size_heading	قسم جي سائيز
@@ -677,23 +570,13 @@ virtual_draft_send	اڳين ورچوئل پرنٽر لاءِ مقرر ٿيل ق�
 virtual_need_real	پهريان هڪ حقيقي پرنٽر چونڊيو
 virtual_need_select	هٽائڻ لاءِ هڪ ورچوئل پرنٽر چونڊيو
 real_printer_selected	چونڊيو ويو: {name}
-station_group_heading	ورچوئل پرنٽر
-station_group_apply	ورچوئل پرنٽر ختم ڪريو
-station_group_applied	حذف ٿيل
-station_group_empty	هڪ ورچوئل پرنٽر چونڊيو
-station_group_name_ph	ورچوئل پرنٽر جو نالو (اختياري)
-station_group_save	ورچوئل پرنٽر ٺاهيو
-station_group_saved	ورچوئل پرنٽر محفوظ ڪيو ويو
-station_manage_heading	ڊسپينسري سيڪشن شامل ڪريو يا ختم ڪريو
 printers_routes_heading	جتي شيون ڇاپجن ٿيون
 route_pick_heading	جڳهه
 route_editing	ايڊٽنگ: {name}
 route_assigned	شامل ڪيو {printer} ۾ {place}
 route_already_assigned	ھن جڳھ تي اڳ ئي: {printer}
-route_removed	{place} مان {printer} هٽايو ويو
 route_cleared	{name} صاف ڪيو ويو
 route_assigned_empty	ھن جڳھ تي ڪوبه ناهي
-route_tap_remove	هٽائڻ لاءِ ٽيپ ڪريو
 route_tap_select	چوڻ لاءِ ٽيپ ڪريو
 route_tap_selected	منتخب
 route_pick_printer_first	پهريان پرنٽر تي ٽيپ ڪريو
@@ -714,35 +597,17 @@ printer_format_custom	نئون ڪسٽم پروفائل
 printer_format_custom_label	ڪسٽم
 printer_format_custom_added	هن هنڌ لاءِ ڪسٽم پروفائل شامل ڪيو ويو
 add_printer	پرنٽر شامل ڪريو
-remove_printer	هٽايو
 route_pick_ph	بل يا ڊسپينسري سيڪشن
 route_bill	بل
-route_default_kitchen	ڪابه اسٽيشن نه (غير ترتيب ڏنل شيون)
-route_kot_station	اسٽیشن
 route_dont_print	ڪو پرنٽر ناهي
-stations_heading	اسٽيشنز
-stations_help	ڊسپينسري سيڪشن گروپ دوائون ۽ دڪان جي ان حصي لاءِ پرنٽر. سيٽنگون → پرنٽر مان پرنٽر ڳنڍيو، ڪوشش ڪريو آرڊر سيٽ ڪريو، پوءِ پھريون جيڪو ڪم ڪري ٿو يا سڀ پرنٽ ڪريو. تبديليون بچايو جيئن توهان وڃو.
-station_print_heading	هن اسٽيشن جا پرِنٽر
-station_print_help	هڪ اسٽيشن چونڊيو، پوء هڪ يا وڌيڪ پرنٽر ڳنڍيو. ↑↓ سيٽ آرڊر جي ڪوشش ڪريو. پهريون جيڪو ڪم پهرين ڪاميابي کان پوءِ روڪي ٿو. هر منسلڪ پرنٽر ڏانهن سڀني موڪلن تي پرنٽ ڪريو.
-station_print_pick_ph	اسٽيشن تي پرنٽر سيٽ ڪريو
 station_print_pick_first	پهرين ڊسپينسري سيڪشن چونڊيو
-station_print_editing	“{name}” جي لاءِ پرنٽر ايڊٽ ڪري رهيا آهيو
-station_vps_dd	هن اسٽيشن جا پرِنٽر
-station_vps_dd_n	{n} پرنٽر(س) · تبديل ڪرڻ لاءِ ٽيپ ڪريو
 station_vps_empty	هاڻي تائين ڪا پرنٽر ناهي — سيٽنگز → پرنٽرز هيٺ ڳوليو
 bill_printers_dd	بل لاءِ پرنٽر
 bill_printers_dd_n	{n} پرنٽر(ز) بل لاءِ · تبديل ڪرڻ لاءِ ٽيپ ڪريو
-job_layout	خاڪو
-job_delivery	نوڪري ڪيئن موڪلي وڃي ٿي
-job_delivery_help	OS دستاويز، خام بائيٽ، يا ESC/POS. بل ۽ ٽڪيٽ هر هڪ پنهنجي پنهنجي رکي ٿو. يا ته نوڪري ڪنهن به پرنٽر ڏانهن وڃي سگهي ٿي ڳوليو محفوظ ڪيو آهي.
 station_vp_attached	پرنٽر لڳايو ويو
 station_vp_detached	اسٽیشن مان پرنٽر هٽايو ويو
-station_print_summary	{mode} · {n} پرنٽر(س)
-station_print_summary_none	هن اسٽیشن تي اڃان ڪو پرنٽر نه آهي — اهو پرنٽ نه ڪندو
-stations_none	اڃان تائين ڪا به اسٽيشن ناهي - هڪ هيٺ شامل ڪريو. ڪائونٽر شاپ تي اسٽيشنون غير استعمال ٿيل آھن - خالي ڇڏي ڏيو.
 route_up	مٿي
 route_down	هيٺ
-route_remove	هٽايو
 route_clear	صاف ڪريو
 save_printers	پرنٽر محفوظ ڪريو
 print_test_page	هڪ ٽيسٽ صفحو ڇاپيو
@@ -751,23 +616,15 @@ test_page_no_printer	{place} لاءِ ڪو پرنٽر ناهي — ان سان �
 test_page_pick_first	پهريان ٽيسٽ صفحي لاءِ پرنٽر چونڊيو — پوءِ هڪ ٽيسٽ صفحو ڇاپيو
 test_printers_dd	ٽيسٽ صفحي لاءِ پرنٽر
 test_printers_dd_n	{n} پرنٽر(س) لاءِ هڪ ٽيسٽ صفحو · مٽائڻ لاءِ ٽيپ ڪريو
-kot_test_printers_dd	ٽيسٽ پرنٽ لاءِ پرنٽر
-kot_test_printers_dd_n	ٽيسٽ پرنٽ لاءِ {n} پرنٽر · تبديل ڪرڻ لاءِ ٽيپ ڪريو
 test_printer_picked	ٽيسٽ تي: {name}
 test_printer_cleared	ٽيسٽ نه پئي ڪئي وڃي: {name}
 test_page_sent_n	ٽيسٽ صفحو موڪليو ويو {n} پرنٽر(ن) ڏانهن
-test_kot_pick_first	پرنٽر چونڊيو پهرين ٽيسٽ پرنٽ لاءِ- پوءِ ٽيسٽ پرنٽ
-test_kot_sent_n	ٽيسٽ پرنٽ {n} پرنٽر ڏانهن موڪليو ويو
-cancel_pick	نشان لڳايو
-cancel_pick_on	نشان لڳايو ويو
-cancel_pick_meta	منسوخي لاءِ نشان لڳايو
 batch_cancel	نشان منسوخ ڪريو
 batch_cancel_n	نشان لڳايل کي منسوخ ڪريو ({n})
 batch_cancel_none	نشان لڳايو هڪ يا وڌيڪ موڪليل شيون پهرين - پوءِ نشان لڳايو منسوخ ڪيو ويو
 batch_cancel_title	نشان ٿيل دوائن کي منسوخ ڪريو - ھڪڙو سبب، ھڪڙو منسوخ سلپ في سيڪشن
 batch_cancel_ok	{n} شيون منسوخ ڪيون ويون · {slips} منسوخ ٿيل سلپ → {kitchens}
 batch_cancel_ok_noprint	{n} شيون منسوخ ڪيون ويون - آٽو پرنٽ بند آھي، تنھنڪري ڪا منسوخي سلپ نه آھي
-no_printer_kitchen_station	ان اسٽيشن لاءِ ڪو پرنٽر ناهي
 printers_saved	محفوظ ڪيو ويو
 test_page_sent	ٽيسٽ صفحو موڪليو ويو — پرنٽر کي چيڪ ڪريو
 test_page_sent_one	ٽيسٽ صفحو {name} ڏانهن موڪليو ويو — پرنٽر کي چيڪ ڪريو
@@ -783,10 +640,7 @@ cancelled	منسوخ ٿي ويو
 printers_tap_find	ٽپ ڪريو ڳوليو ته هن ڊوائيس ڪهڙن پرنٽرز کي استعمال ڪري سگھي ٿو.
 printers_none_found	ڪوبه نه لڌو ويو — سسٽم پرنٽر جو نالو يا IP لکڻ (مثال طور 192.168.1.50).
 printer_from_find	شامل ڪيو {name}
-kot_printer_ph	سلپس لاء پرنٽر
 bill_printer_ph	بلن لاءِ پرنٽر
-kot_print_on	خودڪار پرنٽ ٽڪيٽون: آن
-kot_print_off	خودڪار پرنٽ ٽڪيٽون: بند
 queue_refused	دڪان پاران قبول نه ٿيو ({n}) — هر هڪ کي ڪائونٽر تي چيڪ ڪريو:
 clear_not_accepted	چيڪ ڪيو — هن لسٽ کي صاف ڪريو
 device_name_ph	هن ڊوائيس جو نالو
@@ -797,7 +651,6 @@ backup_failed	آخري خودڪار بيڪ اپ ناڪام ٿيو: {e}
 backup_overdue	{n} ڏينهن لاءِ ڪا بيڪ اپ نه آهي — هن ڊوائيس تي ايپ کليل رکو ته جيئن اها بيڪ اپ ڪري سگهي.
 disk_low	هن ڊوائيس تي صرف {mb} MB خالي آهي — بيڪ اپ جلد ناڪام ٿي ويندا. ڪجهه جاءِ خالي ڪريو.
 last_seen_devices	آخري ڏٺو ويو: {time}
-sync_interval	هر {secs} سيڪنڊ ۾ هم وقت سازي
 connection_to_shop	دڪان سان ڳانڍاپو
 supplier_name_ph	سپلائر جو نالو (يا پارٽي)
 supplier_ph	سپلائر
@@ -860,7 +713,6 @@ fresh_book_tabiyat	تازو = خالي فهرست (بعد ۾ شيون شامل �
 fresh_selected	تازو چونڊيل — فهرست خالي رهي ٿي. تيار ٿيڻ تي Done تي ٽيپ ڪريو.
 gross_word	ڪُل
 how_start	توهان ڪيئن شروع ڪرڻ چاهيو ٿا؟
-kot_print_help_tabiyat	ڪائونٽر جي دڪان تي استعمال نه ڪيو ويو.
 later_country_pack	بعد ۾: سيٽنگون → توهان جي ملڪ جو پيڪ ٽيڪس ۽ ادائگي ليبل لاءِ لاڳو ڪريو.
 local_badge	مقامي
 mix_type_hint_tabiyat	في ضرورت نقد / UPI / ڪارڊ / ڪريڊٽ ۾ ورهايو. ڪريڊٽ لاءِ مٿيان گراهڪ گهرجي.
@@ -911,8 +763,6 @@ staff_copy_need_source	چونڊيو ته ڪنهن جو سيٽ اپ ڪاپي ڪر
 staff_copy_same	اهو ئي ماڻهو آهي — ڪير ٻئي چونڊيو
 staff_rename_need_selected	پهريان ڪنهن جو نالو بدلاڻو آهي چونڊيو
 team_pick_hint	چونڊيو ڪير ايڊٽ ڪرڻ لاءِ - اسڪرين، پئسي جا حق، ۽ اسٽيشنون صرف ان شخص لاءِ ظاهر ٿين ٿيون.
-team_stations_help	اهي اسٽيشنون استعمال ڪري سگهن ٿيون
-team_stations_changed	اسٽيشنون تبديل ڪيون ويون - ھن شخص لاءِ سيٽ اپ محفوظ ڪريو
 team_features_changed	اسڪرين تبديل ٿي ويون — هن شخص لاءِ سيٽ اپ محفوظ ڪريو
 team_rights_changed	حقن تبديل ٿي ويو — هن شخص لاءِ ترتيب محفوظ ڪريو
 they_owe_us	انهن تي اسان جو قرض آهي
@@ -996,9 +846,6 @@ service_pct_ph	سروس % اختياري 0/10/12
 short_code_ph	مختصر ڪوڊ (MG02)
 starting_password_ph	شروعاتي پاسورڊ (اختياري)
 starting_pin_ph	شروع ڪندي PIN (4–12 عدد)
-station_name_ph	اسٽيشن جو نالو (اختياري)
-station_new_ph	سيڪشن (اختياري)
-table_name_ph	ڪائونٽر / بي جو نالو
 tax_rate_ph	ٽيڪس جي شرح جو نالو يا ٪ — معياري، گهٽايو ويو، 0، 5، 12، 18، 20
 to_code_ph	ڪوڊ تائين (ڪلوگرام)
 uncleared_no_ph	مٿي غير صاف ٿيل #
@@ -1011,27 +858,8 @@ book_kind_month	هن مهيني ڪتاب
 book_kind_aging	باقي / ڊيبٽ-ڪريڊٽ
 book_kind_balance	بیلنس شيٽ
 order_help	هڪ شيءَ تي ٽيپ ڪريو ان کي شامل ڪرڻ لاءِ.
-floor_help	هي دڪان ڪائونٽر تي وڪرو ٿئي ٿو. ٽيبل ۽ ڊائننگ فلور تبعيت جو حصو نه آهن.
-kitchen_help	ڪائونٽر جي دڪان تي استعمال نه ڪيو ويو.
-kitchen_empty	نه کليل ٽڪيٽون (ڪائونٽر شاپ عام طور تي هن اسڪرين کي غير استعمال ٿيل ڇڏيندا آهن).
-add_a_table	هڪ ٽيبل شامل ڪريو
-add_station_heading	ڊسپينسري سيڪشن شامل ڪريو
 categories_help	مٿين شئي کي ان درجي هيٺ داخل ڪرڻ لاءِ استعمال تي ٽيپ ڪريو. فوٽو درجي کي تصوير ڏئي ٿو؛ جيڪڏهن تصوير نه هجي ته اها ان جا ابتدا ڏيکاري ٿي.
 dish_search_ph	نالو، لوڻ يا بارڪوڊ ڳولھيو...
-tile_free	مفت
-tile_occupied	مصروف
-tile_food_ready	کاڌو تيار آهي
-tile_bill_printed	بل ڇپيل
-tile_paid	ادا ٿيل
-tile_bill_btn	بل
-tile_occupy_btn	مهمان ويهاريو
-tile_free_btn	خالي ميز
-tile_ready_btn	خالي ميز
-tile_undo_bill	رسيد واپس وٺو
-summary_busy	میزون مصروف آهن
-summary_to_collect	وڻ لاءِ
-summary_on_floor	هال تي
-floor	دڪان
 sizes_as_items_ph	سائزز الڳ شيون طور (اختياري) — اڌ=120، مڪمل=200
 dish_group_ph	طاقت / پيڪ گروپ (اختياري) - مثال طور 500mg پٽي
 discount	رعايت
@@ -1039,7 +867,6 @@ remove_discount	رعايت هٽايو
 apply_discount	رعايت لاڳو ڪريو
 save_opening_cash	کراچي جو شروع ٿيندڙ نقد بچايو
 close_shift_print	شفٽ بند ڪريو ۽ پرنٽ سلپ نڪرو
-area_prices_ph	علاقائي قيمتون (اختياري) — اي سي=220، پارسل=210
 discount_ph	10٪ يا 50
 discount_reason_ph	سبب (مثال طور تي باقاعده مهمان، دير سان کاڌو)
 opening_float_ph	هن صبح دراج ۾ رکيل رقم
@@ -1049,34 +876,18 @@ shift_handover	شفٽ هينڊ اوور
 shift_since	هي شفٽ کان وٺي
 expected_in_drawer	دراز ۾ متوقع
 right_discount	رعايت ڏيو
-floor_in_kitchen	جاري آهي
-floor_eating	پيش ڪيو ويو
 pick_category	هڪ زمرہ چونڊيو
 close_category_list	زمره جي فهرست بند ڪريو
 new_category_row	نئون درجو — جڏهن توهان شيءِ محفوظ ڪريو ٿا ته ٺهندو آهي
 your_category	توهانجو درجو
 suggested_category	تجويز ڪيل - اسان جي شين مان
 category_search_ph	درجو — توهانجو ڳوليو يا نئون ٽائپ ڪريو
-line_sent_state	موڪليو ويو
-line_nc_state	مفت (NC) — چارج ناهي
 cancel_item_short	منسوخ
-nc_short	NC
-charge_again_short	چارج
-move_short	حرڪت ڪريو
 cancel_item_title	هن شئي کي منسوخ ڪريو - پوئين آفيس کي منسوخ سلپ ملي ٿي
-nc_item_title	ھن شيءَ کي مفت ڪريو (NC)
-charge_again_title	ھن شيءَ کي ٻيهر چارج ڪريو
-move_item_title	ھن شيءَ کي ڪنهن ٻئي ميز تي منتقل ڪريو
-already_cooked	پوءِ ئي پچي چڪو (ضايع ٿيل)
-not_cooked_yet	اڃا پچي نه سگهيو
 return_to_customer	ڪسٽمر ڏانهن واپس ڪريو
 short_by	گھٽ
 tip_not_sale	ٽوپ (ڪرمچاريءَ جو، وڪري جو ناهي)
 right_settle	ادائگي وٺو
-right_cancel_sent	موڪليل شيءَ کي منسوخ ڪريو
-right_complimentary	مفت (NC)
-right_move_table	ڳڻپيوڪر کي منتقل ڪريو / ضم ڪريو
-right_reprint	بل ٻيهر ڇاپيو
 right_allowed	جي اجازت آهي
 right_with_approval	منظوري سان
 right_denied	اجازت ناهي
@@ -1086,25 +897,11 @@ no_server_found	ڪوبه نه مليو. Server تي: سيٽنگون → ٻيا �
 servers_found_pick	ان دڪان تي ٽيپ ڪريو جنهن سان توهان ڳنڍڻ چاهيو ٿا.
 server_host_selected	{host} استعمال ڪندي — پئيرنگ ڪوڊ داخل ڪريو، پوءِ هاڻي پئير ڪريو.
 print_bill	بل پرنٽ ڪريو
-table_actions	ضد ڪارناما
-move_merge_table	ٽيبل کي منتقل / ملائڻ
-move_help	ھن ڪائونٽر جي آرڊر کي ھڪڙي مفت ٽيبل ڏانھن منتقل ڪريو، يا ان کي ھڪڙي ھلندڙ ھڪڙي ۾ ضم ڪريو.
-move_target_ph	نالو انسداد
 approval_pin_ph	مئنيجر PIN (صرف جيڪڏهن پڇيو وڃي)
-move_here	هتي منتقل ڪريو
-merge_into	ان ۾ شامل ڪريو
-line_reason_ph	سبب (مثال طور گراهڪ جو ذهن بدلجي ويو، اسٽاڪ کان ٻاهر)
-line_qty_ph	ڪيترا ڪينسل ڪرڻا آهن (خالي = سڀ)
-line_target_ph	ٽيبل ڏانهن منتقل ڪريو (مثال طور تي D5)
 confirm	تصديق
 menu_search_ph	شيءِ يا شارٽ ڪوڊ ڳوليو
 customer_paid_ph	گراهڪ ادا ڪيو
 tip_ph	ٽِپ
-table_area_ph	علائقو (مثال طور ڊائن ان، پارسل، اي سي)
-table_range_ph	هڪ ئي وقت ۾ ڪيترائي: D1-D20
-add_these_tables	انهن شمارن کي شامل ڪريو
-remove_these_tables	انهن شمارن کي هٽايو
-table_remove_ph	هٽايو: T1-T24، يا هڪ ٽيبل جو نالو
 find_server	دوڪان جو سرور ڳوليو
 bill_format	بل جو فارميٽ
 bill_format_help	هر بل تي توهان جي دڪان جي نالي هيٺ ڇپيل. سان الڳ لائينون | (مثال طور MG روڊ، راجڪوٽ | Ph 98250 00000).
@@ -1112,78 +909,32 @@ bill_header_ph	پتو | فون
 fssai_ph	دوا لائسنس نمبر. (اختياري - توهان جو لفظ)
 bill_footer_ph	فوٽر (مثال طور مهرباني، ٻيهر اچو)
 save_bill_format	بل جو فارميٽ محفوظ ڪريو
-kot_format	سلپ فارميٽ
-kot_format_help	لسٽ ۾ فيلڊ تي ٽيپ ڪريو. ڏيکاريو، فونٽ جي سائيز، ۽ وزن مٿي چونڊيل سلپ قسم تي ان فيلڊ تي لاڳو ٿئي ٿو. هر قسم جي پنهنجي ماپ ۽ وزن رکي ٿو.
-kot_format_fields	فيلڊز
-kot_field_next	اڳيون ميدان
-kot_field_show	ڏيکاريو
-kot_field_hide	لڪايو
 kot_field_on	ڏيکاريو
 kot_field_off	لڪايو
-kot_field_size	فونٽ جو سائيز
-kot_field_size_ph	مثال طور 16، 20، 24، 28، 32...
 kot_weight_light	روشني
 bill_kot_panel_help	بل جي ترتيب ۽ مواد جي چوٽي. ڪيشئر اهو آهي جيڪو بل جاري يا آباد ڪيو - مڪمل وڪرو ڪهاڻي ڪتابن ۾ رهي ٿي.
 std_size_ph	مثال طور 18، 20، 26...
-kot_show_shop	دڪان جو نالو
-kot_hide_shop	دڪان لڪايو
-kot_show_time	وقت
-kot_hide_time	وقت لڪايو
-kot_show_waiter	ڪيشيئر
-kot_hide_waiter	ڪيشئر لڪايو
-kot_show_station	اسٽیشن
-kot_hide_station	اسٽیشن لڪاءِ
-kot_show_table	ڪائونٽر
-kot_hide_table	ٽيبل لڪاءِ
-kot_show_kot_no	ٽڪيٽ نمبر
-kot_hide_kot_no	ٽڪيٽ نمبر لڪايو
-kot_width	پريو لفافي (سليٽ ٽيب تي مواد جي چوٽي مقرر ڪريو)
-kot_width_58	58 mm
-kot_width_80	80 mm
-kot_kind_heading	ٽڪيٽ جو قسم
-kot_kind_original	اصلي
-kot_kind_duplicate	نقل ڪريو
-kot_kind_modified	ترميم ٿيل
-kot_kind_cancelled	منسوخ ٿي ويو
-kot_style_heading	ميدان جو قسم، سائيز ۽ وزن
-kot_style_title	عنوان
-kot_style_item_qty	شئ · مقدار
-kot_style_field_pick	فيڪلڊ چونڊيو
 kot_weight_regular	عام
 kot_weight_bold	ٿلهو
-kot_align	صف سان ترتيب ڏيو
 kot_align_start	شروع ڪريو
 kot_align_center	مرڪز
 kot_align_end	آخر
 content_width	مواد جي ويڪرائي (ملی ميٽر)
 content_width_bill	بل جي مواد جي ويڪر (ايم ايم)
-content_width_kot	ٽڪيٽ مواد جي ويڪر (ايم ايم)
 content_width_ph	يا مواد جو ويڪر ٽائپ ڪريو، 40–210 ايم ايم
 content_width_help	هي پرچي ڪيترو وسيع آهي. بل پنهنجي چوٽي رکي ٿو.
 content_width_bill_help	ڪسٽمر بل پرنٽ ڪيترو وسيع آهي. ڊفالٽ 210 mm (صفحو). 58mm تنگ پرچي، 80mm ويڪر پرچي، 112mm 4 انچ، 210mm A4-ويڪر. 40 کان 210 تائين ڪا به قيمت ٽائيپ ڪريو. سلپ ٽيب تي ٽڪيٽن جي پنھنجي ويڪر آھي.
-content_width_kot_help	ٽڪيٽ پرنٽ ڪيترو وسيع آهي. ڊفالٽ 80 ملي ايم. 58 ملي ميٽر تنگ سلپ، 80 ملي ميٽر ويڪر سلپ، 112 ملي ايم 4 انچ، 210 ملي ايم پيج. 40 کان 210 تائين ڪا به قيمت ٽائيپ ڪريو. ڪسٽمر بلن جي بل جي ٽيب تي پنھنجي ويڪر آھي.
 vp_paper_width	مواد جي ويڪرائي (ملی ميٽر)
 vp_paper_width_ph	يا مواد جو ويڪر ٽائپ ڪريو، 40–210 ايم ايم
 vp_paper_width_help	مواد جي چوٽي بل ۽ سلپ فارميٽ تحت مقرر ڪئي وئي آهي - بل لاءِ الڳ (ڊفالٽ 210 ملي ايم) ۽ ٽڪيٽ (ڊفالٽ 80 ملي ايم).
-kot_size	فونٽ جو سائيز
-kot_size_s	ننڍو
-kot_size_m	عام
-kot_size_l	وڏو
 std_size	فونٽ جو سائيز
 kot_copies	ڪاپيون
 kot_copies_1	1
 kot_copies_2	2
 kot_copies_3	3
-kot_title_ph	عنوان (خالي = ٽڪيٽ)
-kot_footer_ph	پوئتي-آفيس نوٽ (اختياري)
-kot_preview	جھلڪ
-save_kot_format	سلپ فارميٽ محفوظ ڪريو
-test_kot_format	ٽيسٽ پرنٽ
-test_kot_sent	ٽڪيٽ جو ڏيک موڪليو ويو
 test_bill_format	ٽيسٽ بل
 test_bill_sent	بل جو پيش منظر موڪليو
 test_print_no_printer	ان ڪم لاءِ ڪو پرنٽر ناهي — هن اسڪرين تي هڪ چونڊيو
-kot_format_saved	سلپ فارميٽ محفوظ ڪيو ويو
 std_print	بِل پرنٽ سائيز
 std_print_help	OS / ڊاڪيومينٽ پرنٽر تي معياري پورٽريٽ ۽ لينڊ اسڪيپ بل جي نوڪرين لاءِ فونٽ جي سائيز (پوائنٽ داخل ڪريو - ننڍو/عام/وڏو نه). ساڳئي سائيز ٻنهي طرفن تي.
 std_size_s	ننڍو
@@ -1223,23 +974,16 @@ upi_qr	UPI QR
 show_upi_qr	UPI QR ڏيکاريو
 close_upi_qr	بند ڪريو
 upi_qr_help	ڪسٽمر اسڪين ۽ ادا ڪري ٿو. ٽيپ ڪريو ادائيگي وٺو ادا ڪرڻ کان پوء. ٻيو اسڪرين: کوليو سرور URL / LAN تي ڊسپلي.
-kot_recall	واپس ياد ڪريو
 recently_done	تازو ڪم ٿيو
-recall_kot_ph	ٽڪيٽ # ياد ڪرڻ لاءِ
 role_help_customer	ڪردار: گراهڪ — کاتو (انهن تي اسان جو حق آهي). ساڳي پارٽي اسٽاڪ پڻ فراهم ڪري سگهي ٿي.
 role_help_both	ڪردار: گراهڪ + فراهم ڪندڙ — هڪ پارٽي، کاتو ۽ قابل ادائيگي ليجر، رپورٽن ۾ خالص.
 role_help_supplier	ڪردار: فراهم ڪندڙ — اسان کي خريداري لاءِ انهن جو قرض آهي.
-dine_in_pick_table	ڪائونٽر جي دڪان تي استعمال نه ڪيو ويو
-choose_table	ڪائونٽر چونڊيو
-change_table	ميز تبديل ڪريو
-pick_table_banner	هن آرڊر لاءِ ٽيبل چونڊيو
 items_word	اشياءُ
 items_section	شيون
 back_to_order	آرڊر ڏانهن واپس
 new_items_head	اڃا نه موڪليو
 price_ph	اگهه
 price_ph_gst_inside	قيمت ({tax} شامل)
-cancel_needs_table	ڪائونٽر سيلز ٽڪيٽ تي رهي جيستائين توهان ادائيگي نه وٺو
 tax_rates_missing_hint	انهن شين تي {tax} جي شرح ناهي - آئٽمز تي ٽيڪس جي شرح مقرر ڪئي وئي آهي (قيمتن ۾ اڳ ۾ ئي {tax} {tax} جي تحت شامل آهي)
 taxable_value	ٽيڪس لائق قيمت
 gst_inside_price_note	({tax} سميت)
@@ -1260,30 +1004,11 @@ client_template_confirm	{title} مان {d} شيون شامل ڪريو؟ شيون
 client_template_importing	{title} درآمد ٿي رهيو آهي...
 client_template_done	{title} مان هر شئي توهان جي شين تي آهي.
 client_template_imported	{title} مان {d} شيون ۽ {c} زمرا شامل ڪيا ويا
-resv_heading	ريزروميشن
-resv_name_ph	ڪسٽمر جو نالو
-resv_phone_ph	فون (اختياري)
-resv_guests_ph	ماڻهو
-resv_when_ph	جڏهن — 20:30، سڀاڻي 13:00
-resv_table_ph	انسداد (اختياري)
-resv_add	کاتو
-resv_seat	ويٺل
-resv_none	ڪوبه ريزرويشن ناهي اچي رهيو.
-guests_word	مهمان
-delivery_by_ph	پهچائڻ (رائيڊر يا اسٽاف جو نالو) طرفان
-kitchen_all_day	هاڻي پچائڻ لاءِ: {items}
-split_bill	وڃايل بل
-split_go	الڳ بل ٺاهيو
 cancel	منسوخ
 opening_client	ڪسٽمر کوليو پيو وڃي...
 preparing_desk	ميز تيار پيو ڪيو وڃي...
 opening_server	سرور کوليو پيو وڃي...
 creating_server	سرور ٺاهي پيو وڃي...
-split_help	ٽيپ ڪريو شيون جيڪي ھڪڙو ڪسٽمر ادا ڪري ٿو · {n} چونڊيو
-split_send_first	پهرين پرچي موڪليو - صرف شيون واپس آفيس ڏانهن وڃي سگهن ٿيون هڪ الڳ بل ڏانهن
-split_pick_some	پهرين الڳ بل لاءِ شيون ٽيپ ڪريو
-split_done	الڳ بل ٺاهيو - اهو هن ڪائونٽر جي اڳيان فرش تي آهي
-split_marked	الڳ بل
 order_empty_pick	آرڊر خالي ڪريو - شيون چونڊڻ لاءِ مٿي شيون شامل ڪريو تي ٽيپ ڪريو.
 add_dishes	دوائون شامل ڪريو
 order_so_far	هن آرڊر تي: {n} · {total}
@@ -1294,24 +1019,8 @@ pick_done_dd	مڪمل ٿيو · {label}
 printer_route_mode	جيڪڏهن هن جڳھ ۾ ڪيترائي پرنٽر آهن
 printer_mode_first	پهريون جيڪو ڪم ڪري ٿو
 printer_mode_all	سڀ تي ڇپيو
-kot_show_area	علائقو
-kot_hide_area	علائقو لڪايو
-kot_show_item_hdr	شئ · مقدار
-kot_hide_item_hdr	ڪالمن کي لڪاءِ
-kot_show_title	عنوان واري لائن
-kot_hide_title	عنوان لڪاءِ
-kot_field_order	ڇپائي جو ترتيب
 kot_field_up	مٿي وڃو
 kot_field_down	هيٺ وڃو
-kot_field_cycle	اڳيون چونڊيو
-kot_field_select	اڳيون چونڊيو
-kot_field_time	وقت
-kot_field_kot_no	ٽڪيٽ نمبر
-kot_field_area	علائقو
-kot_field_table	ڪائونٽر
-kot_field_shop	دڪان جو نالو
-kot_field_waiter	عملو
-kot_field_station	اسٽیشن
 app_template_blurb_extra	پڻ: مالڪ ظهير، ايڊمن آصف، ڪيشيئر نواز؛ سامهون سائڊبار؛ تاريخ 4 ڪلاڪن کان پوء؛ اڄ پٽي بند؛ ڪمپيڪٽ بل.
 dishes_n	{n} شيون
 recipe_ph	ترڪيب (اختياري - هڪ ڪائونٽر جي دڪان تي غير استعمال ٿيل)
@@ -1321,8 +1030,6 @@ low_stock_alert	گهٽ ٿي رهيو آهي — جلد خريد ڪريو: {items
 unpriced_note	توهان جي شين تي {n} شين جي اڃا ڪا به قيمت ناهي - اهي 0 تي بل ڪندا جيستائين توهان هڪ سيٽ ڪريو.
 show_unpriced	بغير قيمت جي صرف شيون ڏيکاريو
 show_all_dishes	سڀ شيون ڏيکاريو
-role_waiter	ڪيشيئر
-role_kitchen	اسٽور
 role_title_rest_ph	ڪردار جو عنوان (مثال طور ڪيپٽن، هيڊ ڪوڪ)
 preset_help_rest	ڪيشئر: وڪرو. مينيجر: وڪرو + شيون + منسوخ/ترميم.
 kind_raw	ملائڻ وارو اسٽاڪ

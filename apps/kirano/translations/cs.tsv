@@ -68,28 +68,6 @@ applied	Aplikováno
 note_ph	Poznámka (volitelné)
 rounded	ZAOKROUHLÉ
 split	Rozdělit
-send_kot	Odeslat lístek
-send_kot_to	Odeslat → {kitchens}
-send_kot_again	Přidejte položky pro další lístek
-send_kot_held	Pozdržené položky – podržením odešlete
-reprint_kot	Tisk byl znovu vybrán
-reprint_kot_ok	Znovu vytištěné položky {n} · Složenka(y) {slips} → {kitchens}
-reprint_kot_needed	Nejprve odešlete složenku — poté zahrňte položky a znovu vybrané vytiskněte
-reprint_kot_none_selected	Každá odeslaná položka je přeskočena – klepněte na V tisku u položek, které chcete znovu vytisknout
-reprint_kot_client	Vytiskněte znovu ({n}) pro odeslané {place} – zařízení obchodu jej vytiskne
-print_cancelled_kot	Tisk všech zrušen
-print_cancelled_kot_ok	Vytištěné {n} stornované položky · {slips} lístek(y) → {kitchens}
-print_cancelled_kot_needed	Nejprve otevřete stůl se zrušenými položkami
-print_cancelled_kot_none	V této objednávce nejsou žádné zrušené položky
-print_cancelled_kot_client	Tisk zrušen ({n}) pro odeslaný {place} – zařízení obchodu jej vytiskne
-kot_banner	Laskavý banner
-kot_banner_ph	Banner (prázdný = žádný)
-kot_item_prefix	Předpona položky
-kot_item_prefix_ph	např. [ZRUŠENO]
-kot_strike	Název položky sankce
-kot_strike_note	Přeškrtněte poznámku
-kot_strike_on	Zapnuto
-kot_strike_off	Vypnuto
 bill_item_layout	Rozložení položky
 bill_item_layout_columns	Sloupce
 bill_item_layout_stacked	Skládaný
@@ -118,8 +96,6 @@ bill_item_gap_em	mezera (em)
 bill_item_qty_min	min. množství (em)
 bill_item_price_min	Cena min (em)
 bill_item_amount_min	Minimální částka (em)
-kot_item_qty_width	Sloupec množství
-kot_item_num_align	Množství zarovnat
 bill_total_qty_label	Štítek s celkovým množstvím
 bill_total_subtotal_label	Mezisoučet štítku
 bill_total_grand_label	Celkový štítek
@@ -131,36 +107,9 @@ bill_item_piece_off	Vypnuto
 bill_total_qty	Celkové množství
 bill_total_subtotal	Mezisoučet
 bill_total_grand	Celkový součet
-reprint_incl	V tisku
-reprint_skip	Přeskočit
-reprint_skip_meta	Přeskočit obnovovací tisk
-kot_dest_hint	Tiskne na tiskárnách, které jste přiřadili {kitchens} v Nastavení → Tiskárny
-kot_sent_hint	Poslední odeslání šlo do {kitchens}. Klepnutím přidáte položky pro další vyúčtování – nebo vytiskněte znovu pro stejný účet.
-kot_sent_printing	Stvrzenka odeslána do {kitchens} – tisk
-kot_sent_not_printed	Stvrzenka byla odeslána do {kitchens}, ale NENÍ vytištěna: {why}. Řekněte to prodejně, opravte tiskárnu a vytiskněte ji znovu.
-kot_sent_screen	Stvrzenka byla odeslána do {kitchens}
-kot_queued_shop	Slip pro {place} → {kitchens} uložen; zařízení obchodu jej vytiskne
-kot_job_label	Slip pro {place} → {kitchens}
-kot_job_reached	Skluz pro {place} dosáhl {kitchens}
 kot_unassigned	Nepřiřazeno
-kot_unassigned_held	Podržené položky {n} bez stanice — podržením na lince je odeslat
-kot_station_ph	stanice
-kot_station_dd	stanice
-kot_station_dd_n	Stanice · {stations}
-kot_set_station	Použijte tuto stanici
-kot_station_applied	Stanice nastavena na položky {n}: {station}
-kot_station_cleared	Stanice vymazána z položek {n}: {station}
-kot_station_needed	Nejprve vyberte sekci obchodu
-kot_station_not_allowed	Není povoleno používat sekci: {station}
-kot_station_none	Zatím žádné stanice — nepoužívané na přepážkové prodejně (Nastavení → Oblasti v případě potřeby)
 pos_tab_items	Přidané položky
 pos_tab_payment	Platba
-hold_send	Drž se z kuchyně
-hold_send_on	Zadrženo
-hold_send_meta	Drženo – ne na tomto lístku
-station_remove	Odstraňte stanici
-station_remove_ph	Klepnutím na stanici v seznamu ji odstraníte
-station_removed	Stanice odstraněna: {name}
 settings_hub_title	Nastavení
 settings_hub_help	Otevřete jednu oblast po druhé – méně posouvání, jasnější volby.
 settings_back	Zpět
@@ -169,12 +118,10 @@ settings_sec_country	Země a daně
 settings_sec_tills	Jiná zařízení
 settings_sec_brand	Vaše značka
 settings_sec_units	Jednotky a převody
-settings_sec_pickers	Oblasti · stanice · daňové sazby
+settings_sec_pickers	Daňové sazby
 settings_sec_printers	Tiskárny
 settings_sec_bill	Formát účtenky
 settings_sec_selling	Schémata a prodej
-bill_kot_tab_bill	Bille
-bill_kot_tab_kot	Uklouznout
 settings_sec_alerts	Upozornění
 alerts_help	Jak dlouho zůstávají stavové zprávy na obrazovce (toto přihlášení).
 snack_secs_ph	Sekundy (3–60, výchozí 10)
@@ -225,8 +172,6 @@ counter	Počítadlo
 dine_in	Počítadlo
 takeaway	Jídlo s sebou
 order	Objednávka
-tables	Počítadla
-kitchen	Sekce
 sales	Prodej
 sales_refunds	Prodej a vrácení peněz
 day_close	Den blízko
@@ -254,10 +199,6 @@ zero_sales_on	Povolit 0 ₹
 zero_sales_off	Vyžadovat cenu
 zero_sales_saved_on	Prodej s nulovou hodnotou povolen
 zero_sales_saved_off	Prodej musí mít cenu vyšší než 0 ₹
-floor_areas_help	Plochy jsou místnosti nebo zóny na patře (Dine In, Parcel, AC …). Nejprve přidejte oblast a poté do ní vložte žetony – každá oblast je samostatná skupina na podlaze.
-area_new_ph	Nová oblast / místnost (např. klimatizace, zahrada)
-add_area	Přidat oblast
-area_added	Oblast „{name}“ je připravena – přidejte do ní počítadla
 no_favorites	Zatím žádné oblíbené — přidejte položky ze seznamu níže.
 add_to_bill	Přidat na účet
 added	Přidáno
@@ -268,19 +209,9 @@ chip_missing_customer	Chybí vybraný zákazník – vyberte jej znovu
 chip_no_customer	Zatím žádný zákazník – zadejte jméno a klepněte na Kredit
 credit_summary_fmt	{} zákazníků · otevřený úvěr {} · držené zálohy {}
 recent_label	Nedávné:
-kot_new_waiting	NOVINKA – čekání
-kot_preparing	PŘÍPRAVA
-kot_ready_serve	PŘIPRAVENO – podávejte
-kot_done_cap	HOTOVO
-kot_cancelled	ZRUŠENO
-kot_start_btn	Začněte
-kot_mark_ready	Značka připravena
-kot_done_btn	Hotovo
-table_free	Prázdné – klepnutím zahájíte objednávku
 start_order	Zahájit objednávku
 open_bill	Otevřený účet
 collect_payment	Sbírejte platbu
-table_running	Běh
 payment_pending	Čeká se na platbu
 collect_at_counter	vyzvednout na přepážce
 inventory	Inventář
@@ -313,7 +244,6 @@ ok	OK
 this_shop	Režim serveru
 extra_till	Klientský režim
 off	Vypnuto
-tables_kitchen	Uspořádání obchodu
 server	Režim serveru
 client	Klientský režim
 language_currency	Jazyk a měna
@@ -355,8 +285,6 @@ add_item_plain	Přidat položku
 add_note	Přidat poznámku
 add_opening_balance	Přidejte počáteční zůstatek
 add_staff	Přidejte zaměstnance
-add_station	Přidat stanici
-add_table	Přidejte jídelní stůl
 add_unit	Přidat jednotku
 add_use_name	Přidejte / použijte tento název
 allow_extra_tills	Povolit další pokladny
@@ -409,7 +337,6 @@ share_whatsapp	Sdílet WhatsApp
 lan_pages_heading	Zákaznické stránky na Wi-Fi
 lan_pages_help	Na Wi-Fi tohoto obchodu fungují zákaznické stránky pro zobrazovací panel a zpětnou vazbu. Lidé s mobilními daty potřebují cloud později. Kartový terminál nebo platební odkaz jsou volitelné a nikdy neblokují přepážku.
 diag_send_heading	Sdílejte mimo toto zařízení
-kot_dest_heading	stanice
 optional_login_heading	Volitelné přihlášení
 rights_heading	Práva
 ops_panel	Místní ops
@@ -436,28 +363,6 @@ till_voucher_amt_ph	Částka voucheru (prázdné = vše)
 till_wallet_topup_ph	Dobitá částka v peněžence
 till_voucher_issue_amt_ph	Vystavit částku voucheru
 till_voucher_issue_code_ph	Nový kód voucheru
-split_evenly	Rozdělte rovnoměrně
-waitlist	Čekací listina
-fire_course	Další krok
-hold_item	Drž se z kuchyně
-waiter_call	Zavolejte pokladníka
-waitlist_add	Přidat do pořadníku
-floor_view_grid	Mřížka
-floor_view_layout	Rozložení
-floor_layout_x	X
-floor_layout_y	Y
-floor_layout_w	W
-floor_layout_h	H
-floor_layout_save	Uložit rozložení
-floor_layout_open	Otevřený jídelní stůl
-floor_layout_edit	Upravit rozložení
-floor_layout_pick	Klepnutím na jídelní stůl upravte jeho rozložení
-floor_layout_saved	Rozvržení bylo uloženo
-floor_layout_nudge_left	← 20
-floor_layout_nudge_right	→ 20
-floor_layout_nudge_up	↑ 20
-floor_layout_nudge_down	↓ 20
-sibling_pickers_help	Klepněte na Zapnuto/Vypnuto jako jednotky – skryjte oblasti, stanice a daňové sazby před každodenními výběrčími; výchozí hodnoty balíčku zůstávají.
 bulk_price_apply	Použít hromadnou cenu
 card_terminal_optional	Kartový terminál / platební odkaz (volitelné, pokud je k dispozici internet)
 copy_report	Zkopírujte zprávu
@@ -483,7 +388,6 @@ import_day	Den importu
 import_items_csv_plain	Importovat položky CSV…
 import_parties_csv	Importujte zákazníky a dodavatele CSV…
 item_name	Název položky
-kitchen_printing	Tiskárny
 login_id_ph	Uživatelské jméno
 mark_cleared	Mark vymazán
 new_party_clear	Nový zákazník nebo dodavatel (jasný formulář)
@@ -553,15 +457,6 @@ show	Zobrazit
 spreadsheet_csv	Tabulka (CSV)
 start_fresh	Začněte znovu
 stop_extra_tills	Zastavte další pokladny
-floor_cols_ph	Sloupce
-floor_cols_fit	Přizpůsobit obrazovku
-floor_cols_fit_sub	{n} se sem hodí
-floor_cols_fits	sedí
-floor_cols_scroll	roluje do stran
-floor_cols_min	Sloupce: alespoň 1 — nebo ponechejte prázdné, aby se vešly na obrazovku
-floor_zoom_auto	Auto
-floor_zoom_out	Oddálit
-floor_zoom_in	Přiblížit
 backup_auto	Automaticky zálohováno každý den · posledních {when} · posledních 14 dní je uloženo v {dir}.
 backup_auto_none	Automaticky zálohováno každý den – první se spustí během okamžiku.
 backup_copy_to	Kopie také jdou do {dir}.
@@ -579,7 +474,6 @@ new_pair_code	Nový párovací kód
 pair_finishing	Dokončení páru... použití knih obchodu
 pair_opening	Otevírání pokladny…
 pair_copied	Párovací kód zkopírován
-kot_waiting	Čekání na odeslání
 lan_offline_waiting	Server obchodu nedostupný · {n} čeká
 lan_connecting	Připojování k obchodu…
 lan_live	Živě
@@ -621,7 +515,6 @@ printers_routes_help	Najděte tiskárny, které operační systém již zná. P�
 printer_assign_dd	Skutečná tiskárna: {place}
 printer_assign_pick	Vyberte skutečnou tiskárnu
 printer_profile_heading	Rozložení
-printer_send_heading	Doručení
 vp_delivery_heading	Doručení
 vp_delivery_help	Jak tato virtuální tiskárna odesílá úlohy — dokument OS, nezpracované bajty nebo ESC/POS. O obsahu složenky (velikost písma, obtékání, okraje) rozhoduje faktura / formát složenky, nikoliv zde.
 vp_type_size_heading	Velikost typu
@@ -665,23 +558,13 @@ virtual_draft_send	Hodnota nastavená pro další virtuální tiskárnu
 virtual_need_real	Nejprve vyberte skutečnou tiskárnu
 virtual_need_select	Vyberte virtuální tiskárnu, kterou chcete odstranit
 real_printer_selected	Vybráno: {name}
-station_group_heading	Virtuální tiskárny
-station_group_apply	Smazat virtuální tiskárnu
-station_group_applied	Smazáno
-station_group_empty	Vyberte virtuální tiskárnu
-station_group_name_ph	Název virtuální tiskárny (volitelné)
-station_group_save	Vytvořte virtuální tiskárnu
-station_group_saved	Virtuální tiskárna uložena
-station_manage_heading	Přidejte nebo odeberte sekci obchodu
 printers_routes_heading	Kde se věci tisknou
 route_pick_heading	místo
 route_editing	Editace: {name}
 route_assigned	Přidáno {printer} k {place}
 route_already_assigned	Již na tomto místě: {printer}
-route_removed	Odebráno {printer} z {place}
 route_cleared	Vymazáno {name}
 route_assigned_empty	Žádné na tomto místě
-route_tap_remove	klepnutím odeberete
 route_tap_select	klepnutím vyberte
 route_tap_selected	vybrané
 route_pick_printer_first	Nejprve klepněte na tiskárnu
@@ -702,35 +585,17 @@ printer_format_custom	Nový vlastní profil
 printer_format_custom_label	Vlastní
 printer_format_custom_added	Pro toto místo byl přidán vlastní profil
 add_printer	Přidat tiskárnu
-remove_printer	Odebrat
 route_pick_ph	Účet nebo část obchodu
 route_bill	Bille
-route_default_kitchen	Žádná stanice (nepřiřazené položky)
-route_kot_station	stanice
 route_dont_print	Žádná tiskárna
-stations_heading	Stanice
-stations_help	Sekce obchodu seskupují položky a tiskárny pro danou část obchodu. Připojte tiskárny z Nastavení → Tiskárny, nastavte zkušební pořadí a poté První, co funguje nebo Tisk na všechny. Změny se ukládají za pochodu.
-station_print_heading	Tiskárny pro tuto stanici
-station_print_help	Vyberte stanici a poté připojte jednu nebo více tiskáren. ↑↓ sady zkuste pořadí. První, co funguje, se zastaví po prvním úspěchu; Tisk na všechna odesílání na každou připojenou tiskárnu.
-station_print_pick_ph	Stanice pro nastavení tiskáren
 station_print_pick_first	Nejprve vyberte sekci obchodu
-station_print_editing	Úprava tiskáren pro „{name}“
-station_vps_dd	Tiskárny pro tuto stanici
-station_vps_dd_n	{n} tiskáren · klepněte pro změnu
 station_vps_empty	Zatím žádné tiskárny — Najděte je v Nastavení → Tiskárny
 bill_printers_dd	Tiskárny na účet
 bill_printers_dd_n	{n} tiskáren na účet · klepnutím změňte
-job_layout	Rozložení
-job_delivery	Jak je úloha odeslána
-job_delivery_help	Dokument OS, nezpracované bajty nebo ESC/POS. Účet a lístek si ponechají každý svůj. Každá úloha může přejít na jakoukoli tiskárnu, kterou funkce Find uložila.
 station_vp_attached	Připojena tiskárna
 station_vp_detached	Tiskárna odstraněna ze stanice
-station_print_summary	{mode} · {n} tiskáren
-station_print_summary_none	Na této stanici zatím nejsou žádné tiskárny — nebude tisknout
-stations_none	Zatím žádné stanice – přidejte jednu níže. Stanice jsou v přepážkové prodejně nepoužívané – nechte prázdné.
 route_up	Nahoru
 route_down	Dolů
-route_remove	Odebrat
 route_clear	Jasný
 save_printers	Uložit tiskárny
 print_test_page	Vytiskněte zkušební stránku
@@ -739,23 +604,15 @@ test_page_no_printer	Žádná tiskárna pro {place} – připojte k ní tiskárn
 test_page_pick_first	Nejprve vyberte tiskárny pro zkušební stránku – poté vytiskněte zkušební stránku
 test_printers_dd	Tiskárny pro zkušební stránku
 test_printers_dd_n	{n} tiskáren pro zkušební stránku · klepněte pro změnu
-kot_test_printers_dd	Tiskárny pro zkušební tisk
-kot_test_printers_dd_n	{n} tiskárny pro zkušební tisk · klepněte pro změnu
 test_printer_picked	Test na: {name}
 test_printer_cleared	Netestuje se na: {name}
 test_page_sent_n	Zkušební stránka odeslána na {n} tiskáren
-test_kot_pick_first	Nejprve vyberte tiskárnu(y) pro zkušební tisk – poté zkušební tisk
-test_kot_sent_n	Zkušební výtisk byl odeslán do tiskáren {n}
-cancel_pick	Označit
-cancel_pick_on	Označeno
-cancel_pick_meta	Označeno ke zrušení
 batch_cancel	Zrušení označeno
 batch_cancel_n	Zrušit označeno ({n})
 batch_cancel_none	Nejprve označte jednu nebo více odeslaných položek — poté označte Zrušit
 batch_cancel_title	Zrušení označených položek — jeden důvod, jeden storno lístek na sekci
 batch_cancel_ok	Položky {n} zrušeny · {slips} zrušit složenku(y) → {kitchens}
 batch_cancel_ok_noprint	Položky {n} zrušeny – automatický tisk je vypnutý, takže žádný storno lístek
-no_printer_kitchen_station	Pro tuto stanici není žádná tiskárna
 printers_saved	Uloženo
 test_page_sent	Zkušební stránka odeslána – zkontrolujte tiskárnu
 test_page_sent_one	Zkušební stránka odeslána na {name} – zkontrolujte tuto tiskárnu
@@ -771,10 +628,7 @@ cancelled	Zrušeno
 printers_tap_find	Klepnutím na Najít zobrazíte seznam tiskáren, které toto zařízení může používat.
 printers_none_found	Nebylo nalezeno – zadejte název systémové tiskárny nebo IP (např. 192.168.1.50).
 printer_from_find	Přidáno {name}
-kot_printer_ph	Tiskárna na složenky
 bill_printer_ph	Tiskárna na účty
-kot_print_on	Automatický tisk lístků: Zapnuto
-kot_print_off	Automatický tisk lístků: Vypnuto
 queue_refused	Neakceptováno obchodem ({n}) – zkontrolujte každý u přepážky:
 clear_not_accepted	Zaškrtnuto – vymažte tento seznam
 device_name_ph	Název tohoto zařízení
@@ -785,7 +639,6 @@ backup_failed	Poslední automatické zálohování se nezdařilo: {e}
 backup_overdue	Žádná záloha po dobu {n} dní – nechte aplikaci otevřenou na tomto zařízení, aby mohla zálohovat.
 disk_low	Pouze {mb} MB volného místa na tomto zařízení — zálohování brzy selže. Uvolněte místo.
 last_seen_devices	Naposledy viděn: {time}
-sync_interval	Synchronizovat každých {secs}s
 connection_to_shop	Spojení s obchodem
 supplier_name_ph	Jméno dodavatele (nebo zákazníka)
 supplier_ph	Dodavatel
@@ -848,7 +701,6 @@ fresh_book_kirano	Čerstvé = prázdný katalog (položky přidejte později). K
 fresh_selected	Čerstvě vybráno — katalog zůstane prázdný. Až budete připraveni, klepněte na Hotovo.
 gross_word	Hrubý
 how_start	Jak chcete začít?
-kot_print_help_kirano	Nepoužívá se na pultu kirana.
 later_country_pack	Později: Nastavení → použijte svůj balíček země pro daňové a platební štítky.
 local_badge	MÍSTNÍ
 mix_type_hint_kirano	V případě potřeby rozdělit na hotovost / UPI / kartu / kredit. Kredit potřebuje zákazníka výše.
@@ -899,8 +751,6 @@ staff_copy_need_source	Vyberte, jehož nastavení chcete zkopírovat
 staff_copy_same	To je stejná osoba – vyberte si někoho jiného
 staff_rename_need_selected	Vyberte, koho chcete přejmenovat jako prvního
 team_pick_hint	Vyberte, koho chcete upravit – obrazovky, práva na peníze a stanice se zobrazí pouze této osobě.
-team_stations_help	Stanice, které mohou používat
-team_stations_changed	Stanice změněny — Uložte nastavení pro tuto osobu
 team_features_changed	Obrazovky změněny — Uložte nastavení pro tuto osobu
 team_rights_changed	Práva změněna — Uložit nastavení pro tuto osobu
 they_owe_us	Dluží nám
@@ -984,9 +834,6 @@ service_pct_ph	Služba % volitelné 0/10/12
 short_code_ph	Krátký kód (MG02)
 starting_password_ph	Počáteční heslo (volitelné)
 starting_pin_ph	Počínaje PIN (4–12 číslic)
-station_name_ph	Název stanice (volitelné)
-station_new_ph	Sekce (volitelné)
-table_name_ph	Název počítadla / pozice
 tax_rate_ph	Název daňové sazby nebo % — Standardní, Snížená, 0, 5, 12, 18, 20
 to_code_ph	Do kódu (kg)
 uncleared_no_ph	Nevymazáno # výše
@@ -999,27 +846,8 @@ book_kind_month	Knihy tohoto měsíce
 book_kind_aging	Nesplacený / debetní kredit
 book_kind_balance	Rozvaha
 order_help	Klepnutím na položku ji přidáte.
-floor_help	Tento obchod prodává na přepážce. Stoly a jídelní podlaha nejsou součástí Kirano.
-kitchen_help	Nepoužito v pultovém obchodě.
-kitchen_empty	Žádné otevřené vstupenky (přepážkové obchody obvykle nechávají tuto obrazovku nevyužitou).
-add_a_table	Přidejte jídelní stůl
-add_station_heading	Přidat sekci obchodu
 categories_help	Klepnutím na Použít zařadíte výše uvedenou položku do této kategorie. Fotografie dává kategorii obrázek; bez něj ukazuje své iniciály.
 dish_search_ph	Hledat položky nebo krátký kód…
-tile_free	Volný
-tile_occupied	Obsazeno
-tile_food_ready	Jídlo připravené
-tile_bill_printed	Bill vytištěn
-tile_paid	Zaplaceno
-tile_bill_btn	Bille
-tile_occupy_btn	Usaďte hosty
-tile_free_btn	Prázdný jídelní stůl
-tile_ready_btn	Prázdný jídelní stůl
-tile_undo_bill	Vrátit účet zpět
-summary_busy	jídelní stoly obsazeno
-summary_to_collect	sbírat
-summary_on_floor	v jídelně
-floor	Obchod
 sizes_as_items_ph	Velikosti jako samostatné položky (volitelné) — Half=120, Full=200
 dish_group_ph	Velikostní skupina balení (volitelné) – např. Atta 1kg / 5kg
 discount	Sleva
@@ -1027,7 +855,6 @@ remove_discount	Odebrat slevu
 apply_discount	Uplatnit slevu
 save_opening_cash	Ušetřete počáteční hotovost
 close_shift_print	Zavřete směnu a vytiskněte lístek
-area_prices_ph	Plošné ceny (volitelné) — AC=220, Balík=210
 discount_ph	10% nebo 50
 discount_reason_ph	Důvod (např. pravidelný host, pozdní jídlo)
 opening_float_ph	Dnes ráno hotovost do šuplíku
@@ -1037,34 +864,18 @@ shift_handover	Předání směny
 shift_since	Tento posun od r
 expected_in_drawer	Očekává se v zásuvce
 right_discount	Dejte slevu
-floor_in_kitchen	Probíhá
-floor_eating	Servírováno
 pick_category	Vyberte kategorii
 close_category_list	Zavřít seznam kategorií
 new_category_row	Nová kategorie – vytvořena při uložení položky
 your_category	Vaše kategorie
 suggested_category	Doporučeno – z našich položek
 category_search_ph	Kategorie — vyhledejte svou nebo zadejte novou
-line_sent_state	Odesláno
-line_nc_state	Bezplatné (NC) – neúčtuje se
 cancel_item_short	Zrušit
-nc_short	Bez poplatku
-charge_again_short	Nabít
-move_short	Pohybujte se
 cancel_item_title	Zrušte tuto položku – back office obdrží storno lístek
-nc_item_title	Udělat tuto položku jako doplňkovou (NC)
-charge_again_title	Nabijte tuto položku znovu
-move_item_title	Přesuňte tuto položku na jiný jídelní stůl
-already_cooked	Již uvařeno (plýtvání)
-not_cooked_yet	Ještě nevařeno
 return_to_customer	Návrat k zákazníkovi
 short_by	Zkrátka
 tip_not_sale	Spropitné (pro zaměstnance, nikoli prodej)
 right_settle	Přijměte platbu
-right_cancel_sent	Zrušit odeslanou položku
-right_complimentary	Zdarma (NC)
-right_move_table	Přesunout / sloučit počítadla
-right_reprint	Vytiskněte účet znovu
 right_allowed	Povoleno
 right_with_approval	Se souhlasem
 right_denied	Není povoleno
@@ -1074,25 +885,11 @@ no_server_found	Nebyl nalezen žádný. Na serveru: Nastavení → Ostatní zař
 servers_found_pick	Klepněte na obchod, ke kterému se chcete připojit.
 server_host_selected	Pomocí {host} — zadejte párovací kód a poté Spárovat nyní.
 print_bill	Vytisknout účet
-table_actions	Protiakce
-move_merge_table	Přesunout / sloučit jídelní stůl
-move_help	Přesuňte objednávku tohoto počítadla na volný stůl nebo ji sloučte do běžícího.
-move_target_ph	Název pultu
 approval_pin_ph	Manažer PIN (pouze na požádání)
-move_here	Přesuňte se sem
-merge_into	Spojte se do toho
-line_reason_ph	Důvod (např. zákazník změnil názor, není skladem)
-line_qty_ph	Kolik zrušit (prázdné = všechny)
-line_target_ph	Přesuňte se k jídelnímu stolu (např. D5)
 confirm	Potvrďte
 menu_search_ph	Vyhledejte položku nebo krátký kód
 customer_paid_ph	Zákazník zaplatil
 tip_ph	Spropitné
-table_area_ph	Oblast (např. Dine In, Parcel, AC)
-table_range_ph	Mnoho najednou: D1-D20
-add_these_tables	Přidejte tyto čítače
-remove_these_tables	Odstraňte tyto čítače
-table_remove_ph	Odstraňte: T1-T24 nebo název jednoho jídelního stolu
 find_server	Najděte server obchodu
 bill_format	Formát faktury
 bill_format_help	Vytištěno pod názvem vašeho obchodu na každé účtence. Oddělte řádky pomocí | (např. MG Road, Rajkot | Ph 98250 00000).
@@ -1100,78 +897,32 @@ bill_header_ph	Adresa | telefon
 fssai_ph	FSSAI / obchodní licence č. (volitelný)
 bill_footer_ph	Zápatí (např. Děkuji, navštivte znovu)
 save_bill_format	Uložit formát faktury
-kot_format	Formát skluzu
-kot_format_help	Klepněte na pole v seznamu. Zobrazení, velikost písma a tloušťka se vztahují na toto pole na výše vybraném druhu lístku. Každý druh si zachovává své vlastní velikosti a hmotnosti.
-kot_format_fields	Pole
-kot_field_next	Další pole
-kot_field_show	Zobrazit
-kot_field_hide	Skrýt
 kot_field_on	zobrazit
 kot_field_off	schovat se
-kot_field_size	Velikost písma
-kot_field_size_ph	např. 16, 20, 24, 28, 32…
 kot_weight_light	Světlo
 bill_kot_panel_help	Rozložení účtu a šířka obsahu. Pokladník je ten, kdo vystavil nebo uhradil účet – celý příběh o prodeji zůstává v knihách.
 std_size_ph	např. 18, 20, 26…
-kot_show_shop	Název obchodu
-kot_hide_shop	Skrýt obchod
-kot_show_time	Čas
-kot_hide_time	Skrýt čas
-kot_show_waiter	Pokladník
-kot_hide_waiter	Skrýt pokladníka
-kot_show_station	stanice
-kot_hide_station	Skrýt stanici
-kot_show_table	Počítadlo
-kot_hide_table	Skrýt jídelní stůl
-kot_show_kot_no	Vstupenka č
-kot_hide_kot_no	Skrýt lístek č
-kot_width	Náhled obtékání (nastavení šířky obsahu na záložce prokluzu)
-kot_width_58	58 mm
-kot_width_80	80 mm
-kot_kind_heading	Druh lístku
-kot_kind_original	Původní
-kot_kind_duplicate	Duplicitní
-kot_kind_modified	Upraveno
-kot_kind_cancelled	Zrušeno
-kot_style_heading	Typ pole velikost a hmotnost
-kot_style_title	Název
-kot_style_item_qty	Položka · Množ
-kot_style_field_pick	Vyberte pole
 kot_weight_regular	Pravidelné
 kot_weight_bold	Tučné
-kot_align	Zarovnat
 kot_align_start	Začněte
 kot_align_center	Střed
 kot_align_end	Konec
 content_width	Šířka obsahu (mm)
 content_width_bill	Šířka obsahu faktury (mm)
-content_width_kot	Šířka obsahu vstupenky (mm)
 content_width_ph	Nebo zadejte šířku obsahu 40–210 mm
 content_width_help	Jak široký se tento lístek tiskne. Bill si zachovává svou vlastní šířku.
 content_width_bill_help	Jak široký se tiskne zákaznický účet. Výchozí 210 mm (strana). 58 mm úzká lišta, 80 mm široká lišta, 112 mm 4 palce, 210 mm šířka A4. Zadejte libovolnou hodnotu od 40 do 210. Vstupenky mají svou vlastní šířku na záložce skluzu.
-content_width_kot_help	Jak široký se lístek tiskne. Výchozí 80 mm. 58 mm úzký list, 80 mm široký list, 112 mm 4 palce, 210 mm list. Zadejte libovolnou hodnotu od 40 do 210. Zákaznické účty mají svou vlastní šířku na kartě Faktura.
 vp_paper_width	Šířka obsahu (mm)
 vp_paper_width_ph	Nebo zadejte šířku obsahu 40–210 mm
 vp_paper_width_help	Šířka obsahu se nastavuje ve formátu Bill & Slip — zvlášť pro účtenku (výchozí 210 mm) a lístek (výchozí 80 mm).
-kot_size	Velikost písma
-kot_size_s	Malý
-kot_size_m	Normální
-kot_size_l	Velký
 std_size	Velikost písma
 kot_copies	kopie
 kot_copies_1	1
 kot_copies_2	2
 kot_copies_3	3
-kot_title_ph	Název (prázdné = TICKET)
-kot_footer_ph	Poznámka k back-office (volitelné)
-kot_preview	Náhled
-save_kot_format	Uložit formát lístku
-test_kot_format	Zkušební tisk
-test_kot_sent	Náhled vstupenky odeslán
 test_bill_format	Testovací účet
 test_bill_sent	Náhled faktury odeslán
 test_print_no_printer	Pro tuto úlohu není žádná tiskárna – na této obrazovce jednu vyberte
-kot_format_saved	Formát lístku byl uložen
 std_print	Velikost tisku účtu
 std_print_help	Velikost písma pro standardní fakturační úlohy na výšku a na šířku na tiskárnách OS/dokumentů (zadejte body – ne Malé/Normální/Velké). Stejná velikost na obou orientacích.
 std_size_s	Malý
@@ -1211,23 +962,16 @@ upi_qr	UPI QR
 show_upi_qr	Zobrazit UPI QR
 close_upi_qr	Zavřít
 upi_qr_help	Zákazník naskenuje a zaplatí. Po zaplacení klepněte na Převzít platbu. Druhá obrazovka: otevřete URL serveru /zobrazte v síti LAN.
-kot_recall	Odvolání
 recently_done	Nedávno hotovo
-recall_kot_ph	Vstupenka č. k odvolání
 role_help_customer	Role: Zákazník – účetní kniha (dluží nám). Stejný zákazník nebo dodavatel může také dodávat zásoby.
 role_help_both	Role: Zákazník + Dodavatel — jeden zákazník nebo dodavatel, kniha kreditů a závazků, netto v sestavách.
 role_help_supplier	Role: Dodavatel – dlužíme jim za nákupy.
-dine_in_pick_table	Nepoužito v pultovém obchodě
-choose_table	Vyberte počítadlo
-change_table	Vyměňte jídelní stůl
-pick_table_banner	Vyberte si jídelní stůl pro tuto objednávku
 items_word	položky
 items_section	Položky
 back_to_order	Zpět k objednávce
 new_items_head	Zatím neodesláno
 price_ph	Cena
 price_ph_gst_inside	Cena ({tax} včetně)
-cancel_needs_table	Prodej na přepážce zůstává na lístku, dokud neprovedete platbu
 tax_rates_missing_hint	U těchto položek není žádná sazba {tax} — u položek nastavena sazba daně (ceny již zahrnují {tax} pod {tax} včetně)
 taxable_value	Zdanitelná hodnota
 gst_inside_price_note	({tax} včetně)
@@ -1248,30 +992,11 @@ client_template_confirm	Přidat položky {d} z {title}? Položky, které již m�
 client_template_importing	Import {title}…
 client_template_done	Každá položka z {title} je na vašich položkách.
 client_template_imported	Přidány položky {d} a kategorie {c} z {title}
-resv_heading	Rezervace
-resv_name_ph	Jméno zákazníka
-resv_phone_ph	Telefon (volitelné)
-resv_guests_ph	Lidé
-resv_when_ph	Kdy — 20:30, zítra 13:00
-resv_table_ph	Počítadlo (volitelné)
-resv_add	Kniha
-resv_seat	Sedící
-resv_none	Žádné rezervace nepřicházejí.
-guests_word	hosté
-delivery_by_ph	Doručení (jméno jezdce nebo zaměstnance)
-kitchen_all_day	Vařit nyní: {items}
-split_bill	Rozdělit účet
-split_go	Vytvořte samostatný účet
 cancel	Zrušit
 opening_client	Otevírání klienta…
 preparing_desk	Příprava stolu…
 opening_server	Otevírání serveru…
 creating_server	Vytváření serveru…
-split_help	Klepněte na položky, za které zákazník platí · {n} vybral
-split_send_first	Nejprve odešlete složenku – na samostatný účet mohou jít pouze položky, které má back office
-split_pick_some	Nejprve klepněte na položky pro samostatný účet
-split_done	Vystavena samostatná bankovka – je na podlaze vedle tohoto pultu
-split_marked	samostatný účet
 order_empty_pick	Objednávka prázdná – klepnutím na Přidat položky výše vyberte položky.
 add_dishes	Přidat položky
 order_so_far	V tomto pořadí: {n} · {total}
@@ -1282,24 +1007,8 @@ pick_done_dd	Hotovo · {label}
 printer_route_mode	Pokud je na tomto místě několik tiskáren
 printer_mode_first	Nejprve to funguje
 printer_mode_all	Tisk na všechny
-kot_show_area	Oblast
-kot_hide_area	Skrýt oblast
-kot_show_item_hdr	Položka · Množ
-kot_hide_item_hdr	Skrýt sloupce
-kot_show_title	Titulní řádek
-kot_hide_title	Skrýt název
-kot_field_order	Tisková objednávka
 kot_field_up	Posuňte se nahoru
 kot_field_down	Posuňte se dolů
-kot_field_cycle	Vyberte další
-kot_field_select	Vyberte další
-kot_field_time	Čas
-kot_field_kot_no	Vstupenka č
-kot_field_area	Oblast
-kot_field_table	Počítadlo
-kot_field_shop	Název obchodu
-kot_field_waiter	Zaměstnanci
-kot_field_station	stanice
 app_template_blurb_extra	Dále: majitel Zahir, správce Asif, pokladník Nawaz; přední boční lišta; historie po 4 hodinách; Dnes se svlékněte; kompaktní účet.
 dishes_n	Položky {n}
 recipe_ph	Recept (volitelný – nepoužitý v pultovém obchodě)
@@ -1309,8 +1018,6 @@ low_stock_alert	Dochází – kupte brzy: {items}
 unpriced_note	Položky {n} na vašich položkách zatím nemají žádnou cenu – účtují se za 0, dokud ji nenastavíte.
 show_unpriced	Zobrazit pouze položky bez ceny
 show_all_dishes	Zobrazit všechny položky
-role_waiter	Pokladník
-role_kitchen	Obchod
 role_title_rest_ph	Název role (např. kapitán, hlavní kuchař)
 preset_help_rest	Pokladník: prodám. Manažer: prodat + položky + neplatné/upravit.
 kind_raw	Koupeno pro použití v obchodě

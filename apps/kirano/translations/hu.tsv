@@ -68,28 +68,6 @@ applied	Alkalmazva
 note_ph	Megjegyzés (nem kötelező)
 rounded	KEREKÍTETT
 split	Hasított
-send_kot	Célt küldeni
-send_kot_to	Küldés → {kitchens}
-send_kot_again	Tételek hozzáadása a következő laphoz
-send_kot_held	Fenntartott tételek – visszatartás a küldéshez
-reprint_kot	Nyomtatás ismét kiválasztva
-reprint_kot_ok	Ismét nyomtatott {n} tételek · {slips} cédula(k) → {kitchens}
-reprint_kot_needed	Először küldjön egy cédulát – majd vegye fel az elemeket, és nyomtassa ki újra a kiválasztottakat
-reprint_kot_none_selected	Minden elküldött tétel kimarad – koppintson a Nyomtatásban elemre az újranyomtatni kívánt tételeknél
-reprint_kot_client	Nyomtasson újra ({n}) az {place} elküldése esetén – a bolt eszköze kinyomtatja
-print_cancelled_kot	Az összes nyomtatása törölve
-print_cancelled_kot_ok	Nyomtatott {n} törölt tételek · {slips} cédula(k) → {kitchens}
-print_cancelled_kot_needed	Először nyisson meg egy táblázatot a törölt tételekkel
-print_cancelled_kot_none	Nincs törölt tétel ebben a rendelésben
-print_cancelled_kot_client	Nyomtatás megszakítva ({n}) az {place} elküldése esetén – a bolt eszköze kinyomtatja
-kot_banner	Kedves banner
-kot_banner_ph	Banner (üres = nincs)
-kot_item_prefix	Tétel előtag
-kot_item_prefix_ph	pl. [TÖRLÉS]
-kot_strike	Figyelmeztetés az elem nevére
-kot_strike_note	Figyelmeztetés a tételhez
-kot_strike_on	Be
-kot_strike_off	Ki
 bill_item_layout	Tétel elrendezése
 bill_item_layout_columns	Oszlopok
 bill_item_layout_stacked	Halmozott
@@ -118,8 +96,6 @@ bill_item_gap_em	rés (em)
 bill_item_qty_min	Min. mennyiség (em)
 bill_item_price_min	Minimális ár (em)
 bill_item_amount_min	Minimum összeg (em)
-kot_item_qty_width	Mennyiség oszlop
-kot_item_num_align	Mennyiség igazítás
 bill_total_qty_label	Teljes mennyiség címke
 bill_total_subtotal_label	Részösszeg címke
 bill_total_grand_label	Grand total címke
@@ -131,36 +107,9 @@ bill_item_piece_off	Ki
 bill_total_qty	Teljes mennyiség
 bill_total_subtotal	Részösszeg
 bill_total_grand	Végösszeg
-reprint_incl	Nyomtatásban
-reprint_skip	Kihagyás
-reprint_skip_meta	A helyreállítási nyomtatás kihagyása
-kot_dest_hint	Azon a nyomtatókon nyomtat, amelyeket a Beállítások → Nyomtatók menüpontban {kitchens}-hez rendelt
-kot_sent_hint	Az utolsó küldés az {kitchens} címre ment. Koppintson a következő számlához tételek hozzáadásához – vagy ugyanahhoz a számla újbóli nyomtatásához.
-kot_sent_printing	Nyomtatás elküldve az {kitchens} címre — nyomtatás
-kot_sent_not_printed	Az {kitchens} címre küldött, de NEM nyomtatott cédula: {why}. Szóljon az üzletnek, majd javítsa meg a nyomtatót, és nyomtassa ki újra.
-kot_sent_screen	Céllap elküldve az {kitchens} címre
-kot_queued_shop	{place} → {kitchens} cédula mentve; az üzlet eszköze kinyomtatja
-kot_job_label	Csúszda {place} → {kitchens} számára
-kot_job_reached	Az {place} szelvénye elérte az {kitchens}-et
 kot_unassigned	Nincs hozzárendelve
-kot_unassigned_held	{n} tételek tárolása állomás nélkül – tartsa le a vonalat a küldéshez
-kot_station_ph	Állomás
-kot_station_dd	Állomás
-kot_station_dd_n	Állomás · {stations}
-kot_set_station	Használja ezt az állomást
-kot_station_applied	Állomáskészlet {n} tételeken: {station}
-kot_station_cleared	Az állomás megtisztítva az {n} elemektől: {station}
-kot_station_needed	Először válasszon egy üzletrészt
-kot_station_not_allowed	Nem használható szakasz: {station}
-kot_station_none	Még nincsenek állomások – nem használtak egy pultban (Beállítások → Területek, ha szükséges)
 pos_tab_items	Hozzáadott elemek
 pos_tab_payment	Fizetés
-hold_send	Tartsa ki a konyhából
-hold_send_on	Megtartott
-hold_send_meta	Tartott – nem ezen a cédulán
-station_remove	Állomás eltávolítása
-station_remove_ph	Érintsen meg egy állomást a listában az eltávolításához
-station_removed	Állomás eltávolítva: {name}
 settings_hub_title	Beállítások
 settings_hub_help	Egyszerre csak egy területet nyisson meg – kevesebb görgetés, egyértelműbb választási lehetőségek.
 settings_back	Vissza
@@ -169,12 +118,10 @@ settings_sec_country	Ország és adó
 settings_sec_tills	Egyéb eszközök
 settings_sec_brand	Az Ön márkája
 settings_sec_units	Egységek és konverziók
-settings_sec_pickers	Területek · állomások · adókulcsok
+settings_sec_pickers	Adókulcsok
 settings_sec_printers	Nyomtatók
 settings_sec_bill	Bill & Slip formátum
 settings_sec_selling	Sémák és értékesítés
-bill_kot_tab_bill	Számla
-bill_kot_tab_kot	Csúszás
 settings_sec_alerts	Figyelmeztetések
 alerts_help	Mennyi ideig maradnak az állapotüzenetek a képernyőn az Ön számára (ez a bejelentkezés).
 snack_secs_ph	Másodpercek (3–60, alapértelmezett 10)
@@ -225,8 +172,6 @@ counter	Számláló
 dine_in	Számláló
 takeaway	Elvihető
 order	Rendelés
-tables	Számlálók
-kitchen	szakaszok
 sales	Értékesítés
 sales_refunds	Értékesítés és visszatérítés
 day_close	Nap vége
@@ -254,10 +199,6 @@ zero_sales_on	0 ₹ engedélyezése
 zero_sales_off	Ár kérése
 zero_sales_saved_on	Nulla értékű értékesítés megengedett
 zero_sales_saved_off	Az értékesítési árnak 0 ₹ felett kell lennie
-floor_areas_help	A területek a padlón lévő szobák vagy zónák (étkezni, csomag, légkondicionálás…). Először adjon hozzá egy területet, majd tegyen bele számlálókat – minden terület külön csoport a padlón.
-area_new_ph	Új terület/szoba (pl. klíma, kert)
-add_area	Terület hozzáadása
-area_added	Az „{name}” terület készen áll – adjon hozzá számlálókat
 no_favorites	Még nincsenek kedvencek – vegyen fel elemeket az alábbi listából.
 add_to_bill	Hozzáadás a számlához
 added	Hozzáadva
@@ -268,19 +209,9 @@ chip_missing_customer	Hiányzik a kiválasztott ügyfél – válasszon újra
 chip_no_customer	Még nincs ügyfél – írjon be egy nevet, majd koppintson a Credit elemre
 credit_summary_fmt	{} ügyfelek · nyitott hitel {} · visszatartott előlegek {}
 recent_label	Legutóbbi:
-kot_new_waiting	ÚJ – vár
-kot_preparing	ELŐKÉSZÍTÉS
-kot_ready_serve	KÉSZ – tálaljuk
-kot_done_cap	KÉSZ
-kot_cancelled	LEMONDVA
-kot_start_btn	Indítsa el
-kot_mark_ready	Jelöld készen
-kot_done_btn	Kész
-table_free	Üres – érintse meg a rendelés indításához
 start_order	Indítsa el a rendelést
 open_bill	Nyitott számla
 collect_payment	Gyűjtse be a fizetést
-table_running	Futás
 payment_pending	Fizetés függőben
 collect_at_counter	pultnál gyűjteni
 inventory	Leltár
@@ -313,7 +244,6 @@ ok	OK
 this_shop	Szerver mód
 extra_till	Kliens mód
 off	Ki
-tables_kitchen	Bolt elrendezése
 server	Szerver mód
 client	Kliens mód
 language_currency	Nyelv és pénznem
@@ -355,8 +285,6 @@ add_item_plain	Elem hozzáadása
 add_note	Megjegyzés hozzáadása
 add_opening_balance	Nyitóegyenleg hozzáadása
 add_staff	Adjon hozzá személyzetet
-add_station	Állomás hozzáadása
-add_table	Adjon hozzá étkezőasztalt
 add_unit	Adjon hozzá egységet
 add_use_name	Adja hozzá / használja ezt a nevet
 allow_extra_tills	Hagyjon extra kasszát
@@ -409,7 +337,6 @@ share_whatsapp	Megosztás WhatsApp
 lan_pages_heading	Ügyféloldalak a Wi-Fi-n
 lan_pages_help	Ennek az üzletnek a Wi-Fi-jén az ügyféloldalak a kijelző táblához és a visszajelzésekhez működnek. A mobiladat-kapcsolatot használóknak később szükségük lesz a felhőre. A kártyaterminál vagy fizetési link nem kötelező, és soha nem blokkolja a számlálót.
 diag_send_heading	Oszd meg ezt az eszközt
-kot_dest_heading	Állomás
 optional_login_heading	Opcionális bejelentkezés
 rights_heading	jogok
 ops_panel	Helyi műveletek
@@ -436,28 +363,6 @@ till_voucher_amt_ph	Az utalvány összege (üres = mind)
 till_wallet_topup_ph	Töltsd fel a pénztárca összegét
 till_voucher_issue_amt_ph	Az utalvány összegének kiállítása
 till_voucher_issue_code_ph	Új utalvány kód
-split_evenly	Egyenletesen elosztva
-waitlist	Várólista
-fire_course	Következő lépés
-hold_item	Tartsa ki a konyhából
-waiter_call	Hívja a pénztárost
-waitlist_add	Hozzáadás a várólistához
-floor_view_grid	Rács
-floor_view_layout	Elrendezés
-floor_layout_x	X
-floor_layout_y	Y
-floor_layout_w	W
-floor_layout_h	H
-floor_layout_save	Elrendezés mentése
-floor_layout_open	Nyitott étkezőasztal
-floor_layout_edit	Elrendezés szerkesztése
-floor_layout_pick	Érintse meg az étkezőasztalt az elrendezés szerkesztéséhez
-floor_layout_saved	Elrendezés mentve
-floor_layout_nudge_left	← 20
-floor_layout_nudge_right	→ 20
-floor_layout_nudge_up	↑ 20
-floor_layout_nudge_down	↓ 20
-sibling_pickers_help	Érintse meg a Be/Ki lehetőséget, mint az egységek – területek, állomások és adókulcsok elrejtése a napi válogatók elől; a csomag alapértelmezett értékei megmaradnak.
 bulk_price_apply	Tömeges ár alkalmazása
 card_terminal_optional	Kártyaterminál / fizetési link (opcionális, ha elérhető az internet)
 copy_report	Jelentés másolása
@@ -483,7 +388,6 @@ import_day	Import nap
 import_items_csv_plain	Elemek importálása CSV…
 import_parties_csv	Import ügyfelek és beszállítók CSV…
 item_name	Elem neve
-kitchen_printing	Nyomtatók
 login_id_ph	Felhasználónév
 mark_cleared	Mark kitisztult
 new_party_clear	Új ügyfél vagy szállító (átlátható űrlap)
@@ -553,15 +457,6 @@ show	Megjelenítés
 spreadsheet_csv	Táblázat (CSV)
 start_fresh	Kezdje frissen
 stop_extra_tills	Állítsa le az extra kasszát
-floor_cols_ph	Oszlopok
-floor_cols_fit	Fit képernyő
-floor_cols_fit_sub	{n} illik ide
-floor_cols_fits	illik
-floor_cols_scroll	oldalra görget
-floor_cols_min	Oszlopok: legalább 1 — vagy hagyja üresen, hogy elférjen a képernyőn
-floor_zoom_auto	Auto
-floor_zoom_out	Kicsinyítés
-floor_zoom_in	Nagyítás
 backup_auto	Automatikus biztonsági mentés minden nap · utolsó {when} · az utolsó 14 nap a {dir} mappában tárolódik.
 backup_auto_none	Automatikus biztonsági mentés minden nap – az első pillanatok alatt lefut.
 backup_copy_to	A másolatok a {dir} címre is mennek.
@@ -579,7 +474,6 @@ new_pair_code	Új párosítási kód
 pair_finishing	Pár befejezése… az üzlet könyveinek alkalmazása
 pair_opening	Pénztár nyitása…
 pair_copied	A párosítási kód másolva
-kot_waiting	Várakozás a küldésre
 lan_offline_waiting	A boltszerver nem érhető el · {n} vár
 lan_connecting	Kapcsolódás az üzlethez…
 lan_live	Élőben
@@ -621,7 +515,6 @@ printers_routes_help	Keresse meg az operációs rendszer által már ismert nyom
 printer_assign_dd	Valódi nyomtató: {place}
 printer_assign_pick	Válasszon valódi nyomtatót
 printer_profile_heading	Elrendezés
-printer_send_heading	Szállítás
 vp_delivery_heading	Szállítás
 vp_delivery_help	Hogyan küldi el ez a virtuális nyomtató a feladatokat – OS-dokumentum, nyers bájtok vagy ESC/POS. A szelvény tartalmát (típusméret, borítás, margók) a számla/szelvény formátuma határozza meg, nem itt.
 vp_type_size_heading	Típusméret
@@ -665,23 +558,13 @@ virtual_draft_send	Beállított érték a következő virtuális nyomtatóhoz
 virtual_need_real	Először válasszon valódi nyomtatót
 virtual_need_select	Válassza ki a törölni kívánt virtuális nyomtatót
 real_printer_selected	Kiválasztva: {name}
-station_group_heading	Virtuális nyomtatók
-station_group_apply	Törölje a virtuális nyomtatót
-station_group_applied	Törölve
-station_group_empty	Válasszon ki egy virtuális nyomtatót
-station_group_name_ph	Virtuális nyomtató neve (nem kötelező)
-station_group_save	Virtuális nyomtató létrehozása
-station_group_saved	A virtuális nyomtató mentve
-station_manage_heading	Boltrész hozzáadása vagy eltávolítása
 printers_routes_heading	Ahol a dolgokat nyomtatják
 route_pick_heading	Hely
 route_editing	Szerkesztés: {name}
 route_assigned	{printer} hozzáadva ehhez: {place}
 route_already_assigned	Már ezen a helyen: {printer}
-route_removed	{printer} eltávolítva innen: {place}
 route_cleared	Törölve {name}
 route_assigned_empty	Egyik sem ezen a helyen
-route_tap_remove	érintse meg az eltávolításhoz
 route_tap_select	érintse meg a kiválasztáshoz
 route_tap_selected	kiválasztott
 route_pick_printer_first	Először érintsen meg egy nyomtatót
@@ -702,35 +585,17 @@ printer_format_custom	Új egyéni profil
 printer_format_custom_label	Egyedi
 printer_format_custom_added	Egyéni profil hozzáadva ehhez a helyhez
 add_printer	Nyomtató hozzáadása
-remove_printer	Távolítsa el
 route_pick_ph	Bill vagy egy bolti rész
 route_bill	Számla
-route_default_kitchen	Nincs állomás (hozzá nem rendelt elemek)
-route_kot_station	Állomás
 route_dont_print	Nincs nyomtató
-stations_heading	Állomások
-stations_help	Az üzletrészek csoportosítják a termékeket és a nyomtatókat az üzlet adott részéhez. Csatlakoztassa a nyomtatókat a Beállítások → Nyomtatók menüpontban, állítsa be a próbálkozási sorrendet, majd az Első ami működik vagy a Nyomtatás mindenre lehetőséget. A változtatásokat menet közben menti.
-station_print_heading	Nyomtatók ehhez az állomáshoz
-station_print_help	Válasszon ki egy állomást, majd csatlakoztasson egy vagy több nyomtatót. ↑↓ próbasorrendet állít be. Az első, ami működik, az első siker után leáll; Nyomtasson minden küldésre minden csatlakoztatott nyomtatóra.
-station_print_pick_ph	Állomás a nyomtatók beállításához
 station_print_pick_first	Először válasszon egy üzletrészt
-station_print_editing	Nyomtatók szerkesztése a következőhöz: „{name}”
-station_vps_dd	Nyomtatók ehhez az állomáshoz
-station_vps_dd_n	{n} nyomtatók · érintse meg a módosításhoz
 station_vps_empty	Még nincsenek nyomtatók — Keresse meg őket a Beállítások → Nyomtatók alatt
 bill_printers_dd	Nyomtatók a számlához
 bill_printers_dd_n	{n} nyomtatók a számlához · érintse meg a módosításhoz
-job_layout	Elrendezés
-job_delivery	Hogyan küldik el a munkát
-job_delivery_help	OS dokumentum, nyers bájtok vagy ESC/POS. A számla és a jegy is megőrzi a magáét. Bármelyik feladat elküldhető bármely olyan nyomtatóra, amelyet a Find elmentett.
 station_vp_attached	Nyomtató mellékelve
 station_vp_detached	A nyomtatót eltávolították az állomásról
-station_print_summary	{mode} · {n} nyomtatók
-station_print_summary_none	Ezen az állomáson még nincs nyomtató – nem fog nyomtatni
-stations_none	Még nincsenek állomások – adjon hozzá egyet alább. Az állomások nem használtak egy pultban – hagyja üresen.
 route_up	Fel
 route_down	Le
-route_remove	Távolítsa el
 route_clear	Világos
 save_printers	Mentse el a nyomtatókat
 print_test_page	Nyomtasson ki egy tesztoldalt
@@ -739,23 +604,15 @@ test_page_no_printer	Nincs nyomtató a következőhöz: {place} – csatlakoztas
 test_page_pick_first	Pick printers for a test page first — then Print a test page
 test_printers_dd	Nyomtatók egy tesztoldalhoz
 test_printers_dd_n	{n} printers for a test page · tap to change
-kot_test_printers_dd	Nyomtatók tesztnyomtatáshoz
-kot_test_printers_dd_n	{n} nyomtató(k) tesztnyomtatáshoz · érintse meg a módosításhoz
 test_printer_picked	Teszt itt: {name}
 test_printer_cleared	Nincs tesztelés: {name}
 test_page_sent_n	Tesztoldal elküldve {n} nyomtatókra
-test_kot_pick_first	Először válassza ki a nyomtató(ka)t a tesztnyomtatáshoz, majd a tesztnyomtatáshoz
-test_kot_sent_n	Tesztnyomat elküldve {n} nyomtató(k)ra
-cancel_pick	Jelölés
-cancel_pick_on	Megjelölve
-cancel_pick_meta	Megszakításra megjelölve
 batch_cancel	Mégse megjelölve
 batch_cancel_n	Mégse megjelölve ({n})
 batch_cancel_none	Először jelöljön meg egy vagy több elküldött tételt, majd a Mégse jelölést
 batch_cancel_title	A megjelölt tételek törlése – egy ok, szakaszonként egy törlési lap
 batch_cancel_ok	{n} tételek törölve · {slips} törlési szelvény(ek) → {kitchens}
 batch_cancel_ok_noprint	{n} tételek törölve – az automatikus nyomtatás ki van kapcsolva, így nincs törlési szelvény
-no_printer_kitchen_station	Nincs nyomtató ehhez az állomáshoz
 printers_saved	Mentve
 test_page_sent	Tesztoldal elküldve – ellenőrizze a nyomtatót
 test_page_sent_one	Tesztoldal elküldve a {name} címre – ellenőrizze a nyomtatót
@@ -771,10 +628,7 @@ cancelled	Törölve
 printers_tap_find	Érintse meg a Keresés lehetőséget az eszköz által használható nyomtatók listájához.
 printers_none_found	Nem található – írja be a rendszernyomtató nevét vagy IP-címét (pl. 192.168.1.50).
 printer_from_find	Hozzáadva {name}
-kot_printer_ph	Nyomtató cédulákhoz
 bill_printer_ph	Nyomtató számlákhoz
-kot_print_on	Jegyek automatikus nyomtatása: Be
-kot_print_off	Jegyek automatikus nyomtatása: Ki
 queue_refused	Az üzlet nem fogadja el ({n}) – ellenőrizze mindegyiket a pultnál:
 clear_not_accepted	Bejelölve – törölje a listát
 device_name_ph	Ennek az eszköznek a neve
@@ -785,7 +639,6 @@ backup_failed	Az utolsó automatikus biztonsági mentés nem sikerült: {e}
 backup_overdue	Nincs biztonsági mentés {n} napig – tartsa nyitva az alkalmazást ezen az eszközön, hogy biztonsági másolatot készíthessen.
 disk_low	Csak {mb} MB szabad ezen az eszközön – a biztonsági mentés hamarosan meghiúsul. Szabadíts fel egy kis helyet.
 last_seen_devices	Utoljára megtekintve: {time}
-sync_interval	Szinkronizálás minden {secs}s
 connection_to_shop	Kapcsolat az üzlettel
 supplier_name_ph	Szállító (vagy ügyfél) neve
 supplier_ph	Szállító
@@ -848,7 +701,6 @@ fresh_book_kirano	Friss = üres katalógus (később adjon hozzá elemeket). Kö
 fresh_selected	Frissen kiválasztott – a katalógus üres marad. Ha készen áll, koppintson a Kész gombra.
 gross_word	Bruttó
 how_start	Hogyan akarod kezdeni?
-kot_print_help_kirano	Nem volt használva kirana pulton.
 later_country_pack	Később: Beállítások → alkalmazza az országcsomagot az adó- és fizetési címkékhez.
 local_badge	HELYI
 mix_type_hint_kirano	Oszd meg készpénz / UPI / kártya / hitel között, ha szükséges. A hitelhez a fenti ügyfél kell.
@@ -899,8 +751,6 @@ staff_copy_need_source	Válassza ki, hogy melyik beállítást szeretné másoln
 staff_copy_same	Ez ugyanaz a személy – válassz valaki mást
 staff_rename_need_selected	Válassza ki, hogy kit szeretne először átnevezni
 team_pick_hint	Válassza ki, hogy kit szeretne szerkeszteni – a képernyők, a pénzjogok és az állomások csak az adott személy számára jelennek meg.
-team_stations_help	Állomások, amelyeket használhatnak
-team_stations_changed	Állomások megváltoztak — A személy beállításainak mentése
 team_features_changed	Képernyők megváltoztak — Mentse a beállítást ehhez a személyhez
 team_rights_changed	Jogok megváltoztak — A személy beállításainak mentése
 they_owe_us	Tartoznak nekünk
@@ -984,9 +834,6 @@ service_pct_ph	Szolgáltatás % opcionális 0/10/12
 short_code_ph	Rövid kód (MG02)
 starting_password_ph	Kezdő jelszó (opcionális)
 starting_pin_ph	Kezdő PIN (4–12 számjegy)
-station_name_ph	Állomás neve (nem kötelező)
-station_new_ph	szakasz (opcionális)
-table_name_ph	Számláló / öböl neve
 tax_rate_ph	Adókulcs neve vagy % – normál, csökkentett, 0, 5, 12, 18, 20
 to_code_ph	Kódolni (kg)
 uncleared_no_ph	Tisztázatlan # fent
@@ -999,27 +846,8 @@ book_kind_month	E havi könyvek
 book_kind_aging	Tartozás / betéti jóváírás
 book_kind_balance	Mérleg
 order_help	Koppintson egy elemre a hozzáadáshoz.
-floor_help	Ez az üzlet a pultnál árul. Az asztalok és az étkezőpadló nem része Kiranonak.
-kitchen_help	Nem volt boltban használt.
-kitchen_empty	Nincsenek nyitott jegyek (a pultboltok általában kihasználatlanul hagyják ezt a képernyőt).
-add_a_table	Adjon hozzá egy étkezőasztalt
-add_station_heading	Adjon hozzá egy bolti részt
 categories_help	Koppintson a Használat elemre, hogy a fenti elemet az adott kategóriába sorolja. A Photo képet ad a kategóriának; egy nélkül a kezdőbetűit mutatja.
 dish_search_ph	Elemek vagy rövid kód keresése…
-tile_free	Üres
-tile_occupied	Elfoglalt
-tile_food_ready	Kész az étel
-tile_bill_printed	Bill nyomtatva
-tile_paid	Fizetett
-tile_bill_btn	Számla
-tile_occupy_btn	Ültesse le a vendégeket
-tile_free_btn	Távolítsa el az étkezőasztalt
-tile_ready_btn	Távolítsa el az étkezőasztalt
-tile_undo_bill	Számla visszavonása
-summary_busy	foglaltak az étkezőasztalok
-summary_to_collect	gyűjteni
-summary_on_floor	az ebédlőben
-floor	Bolt
 sizes_as_items_ph	Méretek külön tételként (opcionális) — Fél=120, Teljes=200
 dish_group_ph	Csomagméret-csoport (opcionális) – pl. 1 kg / 5 kg
 discount	Kedvezmény
@@ -1027,7 +855,6 @@ remove_discount	Távolítsa el a kedvezményt
 apply_discount	Kedvezmény alkalmazása
 save_opening_cash	Takarítson meg nyitó készpénzt
 close_shift_print	Zárja be a műszakot és a nyomtatási cédulát
-area_prices_ph	Területi árak (opcionális) — AC=220, Parcel=210
 discount_ph	10% vagy 50
 discount_reason_ph	Ok (pl. törzsvendég, késői étkezés)
 opening_float_ph	Ma reggel készpénz került a fiókba
@@ -1037,34 +864,18 @@ shift_handover	Műszak átadás
 shift_since	Ez a váltás azóta
 expected_in_drawer	Fiókban várható
 right_discount	Adj kedvezményt
-floor_in_kitchen	Folyamatban van
-floor_eating	Kiszolgált
 pick_category	Válasszon egy kategóriát
 close_category_list	Kategórialista bezárása
 new_category_row	Új kategória – az elem mentésekor jön létre
 your_category	Az Ön kategóriája
 suggested_category	Javasolt – tételeink közül
 category_search_ph	Kategória – keresse meg a sajátját, vagy írjon be egy újat
-line_sent_state	Küldött
-line_nc_state	Ingyenes (NC) – nem kell fizetni
 cancel_item_short	Mégsem
-nc_short	Nincs díj
-charge_again_short	Töltés
-move_short	Mozgás
 cancel_item_title	Törölje ezt a tételt – a back office kap egy törlési bizonylatot
-nc_item_title	Tegye ezt a tételt ingyenessé (NC)
-charge_again_title	Töltse fel újra ezt az elemet
-move_item_title	Helyezze át ezt az elemet egy másik étkezőasztalra
-already_cooked	Már megfőtt (pazarlás)
-not_cooked_yet	Még nem főtt
 return_to_customer	Vissza az ügyfélhez
 short_by	Röviden
 tip_not_sale	Tipp (személyzet, nem eladás)
 right_settle	Fogadja el a fizetést
-right_cancel_sent	Elküldött tétel törlése
-right_complimentary	Ingyenes (NC)
-right_move_table	Számlálók mozgatása/egyesítése
-right_reprint	Nyomtassa ki újra a számlát
 right_allowed	Engedélyezett
 right_with_approval	Jóváhagyással
 right_denied	Nem engedélyezett
@@ -1074,25 +885,11 @@ no_server_found	Egyik sem található. A szerveren: Beállítások → Egyéb es
 servers_found_pick	Koppintson arra az üzletre, amelyhez csatlakozni szeretne.
 server_host_selected	A {host} használatával — írja be a párosítási kódot, majd a Párosítás most.
 print_bill	Számla nyomtatása
-table_actions	Ellenlépések
-move_merge_table	Az étkezőasztal áthelyezése/egyesítése
-move_help	Helyezze át a számláló sorrendjét egy szabad asztalra, vagy egyesítse egy futó asztallal.
-move_target_ph	A számláló neve
 approval_pin_ph	Menedzser PIN (csak kérésre)
-move_here	Költözz ide
-merge_into	Egyesülj bele
-line_reason_ph	Ok (pl. az ügyfél meggondolta magát, nincs raktáron)
-line_qty_ph	Hány lemondható (üres = mind)
-line_target_ph	Menjen az étkezőasztalhoz (pl. D5)
 confirm	Erősítse meg
 menu_search_ph	Keressen elemet vagy rövid kódot
 customer_paid_ph	Az ügyfél fizetett
 tip_ph	Tipp
-table_area_ph	Terület (pl. étkezés, csomag, légkondi)
-table_range_ph	Sok egyszerre: D1-D20
-add_these_tables	Adja hozzá ezeket a számlálókat
-remove_these_tables	Távolítsa el ezeket a számlálókat
-table_remove_ph	Távolítsa el: T1-T24 vagy egy étkezőasztal nevét
 find_server	Keresse meg az üzlet szerverét
 bill_format	Számlaformátum
 bill_format_help	Minden számlán az üzlete neve alatt található. Külön sorokat | (pl. MG Road, Rajkot | Ph. 98250 00000).
@@ -1100,78 +897,32 @@ bill_header_ph	Cím | telefon
 fssai_ph	FSSAI / bolti engedély sz. (választható)
 bill_footer_ph	Lábléc (pl. Köszönöm, látogassa meg újra)
 save_bill_format	Számlaformátum mentése
-kot_format	Slip formátum
-kot_format_help	Érintsen meg egy mezőt a listában. A megjelenítés, a betűméret és a súly a fent kiválasztott cédulatípus adott mezőjére vonatkozik. Mindegyik fajtának megvan a maga mérete és súlya.
-kot_format_fields	Mezők
-kot_field_next	Következő mező
-kot_field_show	Megjelenítés
-kot_field_hide	Elrejtés
 kot_field_on	megmutat
 kot_field_off	elrejteni
-kot_field_size	Betűméret
-kot_field_size_ph	pl. 16, 20, 24, 28, 32…
 kot_weight_light	Fény
 bill_kot_panel_help	Számla elrendezése és tartalom szélessége. A pénztáros az, aki kiállította vagy kiegyenlítette a számlát – a teljes eladási történet a könyvekben marad.
 std_size_ph	például 18, 20, 26…
-kot_show_shop	Bolt neve
-kot_hide_shop	Bolt elrejtése
-kot_show_time	Idő
-kot_hide_time	Idő elrejtése
-kot_show_waiter	Pénztáros
-kot_hide_waiter	Pénztár elrejtése
-kot_show_station	Állomás
-kot_hide_station	Állomás elrejtése
-kot_show_table	Számláló
-kot_hide_table	Az étkezőasztal elrejtése
-kot_show_kot_no	Jegy sz
-kot_hide_kot_no	Jegy elrejtése
-kot_width	Előnézet tördelése (a tartalom szélességének beállítása a csúszólapon)
-kot_width_58	58 mm
-kot_width_80	80 mm
-kot_kind_heading	Jegy fajta
-kot_kind_original	Eredeti
-kot_kind_duplicate	Megkettőzés
-kot_kind_modified	Módosítva
-kot_kind_cancelled	Törölve
-kot_style_heading	Mezőtípus mérete és súlya
-kot_style_title	Cím
-kot_style_item_qty	Tétel · Menny
-kot_style_field_pick	Válassza ki a mezőt
 kot_weight_regular	Rendszeres
 kot_weight_bold	Félkövér
-kot_align	Igazítás
 kot_align_start	Indítsa el
 kot_align_center	Központ
 kot_align_end	Vége
 content_width	Tartalom szélessége (mm)
 content_width_bill	Számlatartalom szélessége (mm)
-content_width_kot	Jegytartalom szélessége (mm)
 content_width_ph	Vagy írjon be egy tartalomszélességet, 40–210 mm
 content_width_help	Milyen szélesre nyomtat ez a cédula. Bill megtartja a saját szélességét.
 content_width_bill_help	Milyen szélesre nyomtatja ki az ügyfél számláját. Alapértelmezett 210 mm (oldal). 58 mm keskeny, 80 mm széles, 112 mm 4 hüvelykes, 210 mm A4-es szélességű. Írjon be tetszőleges értéket 40 és 210 között. A jegyeknek saját szélességük van a szelvényfülön.
-content_width_kot_help	Milyen szélesre nyomtat a jegy. Alapértelmezett 80 mm. 58 mm keskeny, 80 mm széles, 112 mm 4 hüvelykes, 210 mm-es oldal. Írjon be tetszőleges értéket 40 és 210 között. Az ügyfélszámláknak saját szélességük van a Számla lapon.
 vp_paper_width	Tartalom szélessége (mm)
 vp_paper_width_ph	Vagy írjon be egy tartalomszélességet, 40–210 mm
 vp_paper_width_help	A tartalom szélessége a Bill & Slip formátumban van beállítva – külön a számlához (alapértelmezett 210 mm) és a jegyhez (alapértelmezett 80 mm).
-kot_size	Betűméret
-kot_size_s	Kicsi
-kot_size_m	Normális
-kot_size_l	Nagy
 std_size	Betűméret
 kot_copies	Másolatok
 kot_copies_1	1
 kot_copies_2	2
 kot_copies_3	3
-kot_title_ph	Cím (üres = JEGY)
-kot_footer_ph	Back-office megjegyzés (opcionális)
-kot_preview	Előnézet
-save_kot_format	Slip formátum mentése
-test_kot_format	Próbanyomat
-test_kot_sent	A jegy előnézete elküldve
 test_bill_format	Tesztszámla
 test_bill_sent	Számla előnézete elküldve
 test_print_no_printer	Nincs nyomtató ehhez a munkához – válasszon egyet ezen a képernyőn
-kot_format_saved	Célformátum mentve
 std_print	Számla nyomtatási mérete
 std_print_help	Betűméret szabványos álló és fekvő számlázási munkákhoz OS/dokumentumnyomtatókon (pontok megadása – nem Kicsi/Normál/Nagy). Mindkét irányban azonos méret.
 std_size_s	Kicsi
@@ -1211,23 +962,16 @@ upi_qr	UPI QR
 show_upi_qr	UPI QR megjelenítése
 close_upi_qr	Bezárás
 upi_qr_help	Az ügyfél beolvas és fizet. Koppintson a Fizetés fogadása fizetés után. Második képernyő: Nyissa meg a szerver URL-címét /megjelenítés a LAN-on.
-kot_recall	Visszahívás
 recently_done	Nemrég készült
-recall_kot_ph	Jegy # felidézni
 role_help_customer	Szerep: Ügyfél – hitelkönyv (tartoznak nekünk). Ugyanaz a vevő vagy szállító készletet is szállíthat.
 role_help_both	Szerepkörök: Ügyfél + Szállító – egy ügyfél vagy szállító, hitelkönyvi és fizetendő főkönyvek, nettó jelentésekben.
 role_help_supplier	Szerep: Szállító – tartozunk nekik vásárlásokkal.
-dine_in_pick_table	Nem volt boltban használt
-choose_table	Válassza ki a számlálót
-change_table	Cserélje ki az étkezőasztalt
-pick_table_banner	Válasszon étkezőasztalt ehhez a rendeléshez
 items_word	tételeket
 items_section	Tételek
 back_to_order	Vissza a rendeléshez
 new_items_head	Még nem küldték el
 price_ph	Ár
 price_ph_gst_inside	Ár ({tax})
-cancel_needs_table	A pultos eladások a fizetésig a jegyen maradnak
 tax_rates_missing_hint	Ezeken a tételeken nincs {tax} kulcs – beállított tételeknél Adókulcs (az árak már tartalmazzák az {tax}-et az {tax} alatt)
 taxable_value	Adóköteles érték
 gst_inside_price_note	({tax} beleértve)
@@ -1248,30 +992,11 @@ client_template_confirm	Hozzáadja az {d} elemeket az {title}-ből? A már megsz
 client_template_importing	{title} importálása…
 client_template_done	Az {title} minden eleme rajta van a tételeken.
 client_template_imported	{d} tételek és {c} kategóriák hozzáadva az {title}-től
-resv_heading	Fenntartások
-resv_name_ph	Ügyfél neve
-resv_phone_ph	Telefon (opcionális)
-resv_guests_ph	Emberek
-resv_when_ph	Mikor - 20:30, holnap 13:00
-resv_table_ph	Számláló (opcionális)
-resv_add	Könyv
-resv_seat	Ülve
-resv_none	Nem jön foglalás.
-guests_word	vendégek
-delivery_by_ph	Szállítás: (lovas vagy személyzet neve)
-kitchen_all_day	Főzni most: {items}
-split_bill	Megosztott számla
-split_go	Készítsen külön számlát
 cancel	Mégsem
 opening_client	Ügyfél megnyitása…
 preparing_desk	Asztal előkészítése…
 opening_server	Szerver megnyitása…
 creating_server	Szerver létrehozása…
-split_help	Koppintson azokra a tételekre, amelyekért az ügyfél fizet · {n} felvett
-split_send_first	Először küldje el a szelvényt – csak a back office tételei kerülhetnek külön számlára
-split_pick_some	Először érintse meg a külön számlához tartozó tételeket
-split_done	Külön számla készült – a pult melletti emeleten van
-split_marked	külön számlát
 order_empty_pick	Üres rendelés – érintse meg a fenti Elemek hozzáadása elemet a tételek kiválasztásához.
 add_dishes	Elemek hozzáadása
 order_so_far	Ennél a rendelésnél: {n} · {total}
@@ -1282,24 +1007,8 @@ pick_done_dd	Kész · {label}
 printer_route_mode	Ha több nyomtató van ezen a helyen
 printer_mode_first	Először is ez működik
 printer_mode_all	Nyomtatás az összesre
-kot_show_area	Terület
-kot_hide_area	Terület elrejtése
-kot_show_item_hdr	Tétel · Menny
-kot_hide_item_hdr	Oszlopok elrejtése
-kot_show_title	Címsor
-kot_hide_title	Cím elrejtése
-kot_field_order	Nyomtatási rendelés
 kot_field_up	Lépj felfelé
 kot_field_down	Mozgás lefelé
-kot_field_cycle	Válassza a következőt
-kot_field_select	Válassza a következőt
-kot_field_time	Idő
-kot_field_kot_no	Jegy sz
-kot_field_area	Terület
-kot_field_table	Számláló
-kot_field_shop	Bolt neve
-kot_field_waiter	Személyzet
-kot_field_station	Állomás
 app_template_blurb_extra	Továbbá: Zahir tulajdonos, Asif adminisztrátor, Nawaz pénztáros; elülső oldalsáv; anamnézis 4 óra elteltével; Ma vetkőzz le; kompakt számla.
 dishes_n	{n} tételek
 recipe_ph	Recept (opcionális – nem használt a pultban)
@@ -1309,8 +1018,6 @@ low_stock_alert	Fogyóban – vásárolja meg hamarosan: {items}
 unpriced_note	A tételeken szereplő {n} tételeknek még nincs ára – 0 áron számláznak, amíg be nem állítja.
 show_unpriced	Csak ár nélküli tételek megjelenítése
 show_all_dishes	Az összes elem megjelenítése
-role_waiter	Pénztáros
-role_kitchen	Bolt
 role_title_rest_ph	A szerepkör megnevezése (pl. kapitány, főszakács)
 preset_help_rest	Pénztáros: eladó. Menedzser: eladás + tételek + érvénytelenség/módosítás.
 kind_raw	Bolti használatra vásárolt

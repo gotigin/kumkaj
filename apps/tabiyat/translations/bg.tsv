@@ -80,28 +80,6 @@ applied	Приложено
 note_ph	Бележка (по избор)
 rounded	ЗАКРЪГЛЕНО
 split	Раздели
-send_kot	Изпрати фиш
-send_kot_to	Изпрати → {kitchens}
-send_kot_again	Добавяне на артикули за следващото разписване
-send_kot_held	Задържани артикули — премахнете задържането, за да изпратите
-reprint_kot	Отпечатай избраните отново
-reprint_kot_ok	Отпечатани отново {n} артикула · {slips} фиш(а) → {kitchens}
-reprint_kot_needed	Първо изпрати фиш — после включи лекарства и отпечатай избраните отново
-reprint_kot_none_selected	Всеки изпратен артикул се пропуска — натиснете В печат върху тези, които да се преиздадат
-reprint_kot_client	Повторен печат ({n}) за {place} е изпратен — устройството на магазина го печати
-print_cancelled_kot	Печат на всички отказани
-print_cancelled_kot_ok	Отпечатани {n} отменени артикула · {slips} фиш(а) → {kitchens}
-print_cancelled_kot_needed	Първо отвори маса с отменени артикули
-print_cancelled_kot_none	Няма анулирани артикули в тази поръчка
-print_cancelled_kot_client	Печат на отменените ({n}) за {place} е изпратен — устройството на магазина го печати
-kot_banner	Лента за вид
-kot_banner_ph	Лента (празно = няма)
-kot_item_prefix	Префикс на артикул
-kot_item_prefix_ph	напр. [ОТКАЗАНО]
-kot_strike	Зачертай името на артикула
-kot_strike_note	Зачертай бележката към артикула
-kot_strike_on	Вкл.
-kot_strike_off	Изкл.
 bill_item_layout	Подредба на артикули
 bill_item_layout_columns	Колони
 bill_item_layout_stacked	На редове
@@ -130,8 +108,6 @@ bill_item_gap_em	Разстояние (em)
 bill_item_qty_min	Мин. кол. (em)
 bill_item_price_min	Мин. цена (em)
 bill_item_amount_min	Мин. сума (em)
-kot_item_qty_width	Колона Кол.
-kot_item_num_align	Подравняване на кол.
 bill_total_qty_label	Етикет Общо кол.
 bill_total_subtotal_label	Етикет Междинна сума
 bill_total_grand_label	Етикет Крайна сума
@@ -143,36 +119,9 @@ bill_item_piece_off	Изкл.
 bill_total_qty	Общо кол.
 bill_total_subtotal	Междинна сума
 bill_total_grand	Крайна сума
-reprint_incl	В печат
-reprint_skip	Пропусни
-reprint_skip_meta	Пропусни повторния печат
-kot_dest_hint	Печата се на принтерите, зададени за {kitchens} в Настройки → Принтери
-kot_sent_hint	Последното изпращане беше до {kitchens}. Докоснете, за да добавите артикули за следващата сметка — или отпечатайте касовата бележка отново за същата.
-kot_sent_printing	Фишът е изпратен до {kitchens} — печата се
-kot_sent_not_printed	Фишът е изпратен до {kitchens}, но НЕ е отпечатан: {why}. Кажи на магазина, оправи принтера и отпечатай отново.
-kot_sent_screen	Фишът е изпратен до {kitchens}
-kot_queued_shop	Фиш за {place} → {kitchens} е запазен; устройството на магазина го печати
-kot_job_label	Фиш за {place} → {kitchens}
-kot_job_reached	Фишът за {place} стигна до {kitchens}
 kot_unassigned	Без назначение
-kot_unassigned_held	Задържани {n} артикула без станция — премахнете задържането на линията, за да изпратите
-kot_station_ph	Станция
-kot_station_dd	Станция
-kot_station_dd_n	Станция · {stations}
-kot_set_station	Ползвай тази станция
-kot_station_applied	Станцията е зададена на {n} артикула: {station}
-kot_station_cleared	Станцията е махната от {n} артикула: {station}
-kot_station_needed	Първо избери секция на аптеката
-kot_station_not_allowed	Не е разрешено използването на раздел: {station}
-kot_station_none	Все още няма станции — не се използват в магазин на гишето (Настройки → Зони, ако е необходимо)
 pos_tab_items	Добавени артикули
 pos_tab_payment	Плащане
-hold_send	Задръж
-hold_send_on	Задържано
-hold_send_meta	Задържано — не е на този фиш
-station_remove	Премахни станция
-station_remove_ph	Докоснете станция в списъка, за да я премахнете
-station_removed	Станцията е премахната: {name}
 settings_hub_title	Настройки
 settings_hub_help	Отваряйте по една област — по-малко превъртане, по-ясни избори.
 settings_back	Назад
@@ -181,12 +130,10 @@ settings_sec_country	Държава и данък
 settings_sec_tills	Други устройства
 settings_sec_brand	Вашата марка
 settings_sec_units	Единици и преобразувания
-settings_sec_pickers	Зони · станции · данъчни ставки
+settings_sec_pickers	Данъчни ставки
 settings_sec_printers	Принтери
 settings_sec_bill	Формат на сметка и разписка
 settings_sec_selling	Схеми и продажби
-bill_kot_tab_bill	Сметка
-bill_kot_tab_kot	Фиш
 settings_sec_alerts	Известия
 alerts_help	Колко дълго съобщенията за състояние остават на екрана за вас (това влизане).
 snack_secs_ph	Секунди (3–60, по подразбиране 10)
@@ -237,8 +184,6 @@ counter	Тезегях
 dine_in	Тезегях
 takeaway	За вкъщи
 order	Поръчка
-tables	Гишета
-kitchen	Секции
 sales	Продажби
 sales_refunds	Продажби и възстановявания
 day_close	Приключване на деня
@@ -266,10 +211,6 @@ zero_sales_on	Позволи ₹0
 zero_sales_off	Изисквай цена
 zero_sales_saved_on	Продажбите с нулева стойност са позволени
 zero_sales_saved_off	Продажбите трябва да имат цена над ₹0
-floor_areas_help	Зоните са стаи или области на етажа (Dine In, Пакет, AC ...). Добавете първо зона, след това поставете касови места в нея — всяка зона е отделна група на етажа.
-area_new_ph	Нова зона / зала (напр. Климатик, Градина)
-add_area	Добави зона
-area_added	Зона „{name}“ готова — добавете касови места в нея
 no_favorites	Още няма любими — добавете артикули от списъка по-долу.
 add_to_bill	Добави към сметката
 added	Добавено
@@ -280,19 +221,9 @@ chip_missing_customer	Избраният клиент липсва — избе�
 chip_no_customer	Още няма клиент — въведете име, после докоснете Кредит
 credit_summary_fmt	{} клиенти · открит кредит {} · задържани аванси {}
 recent_label	Скорошни:
-kot_new_waiting	НОВО — чака
-kot_preparing	ПРИГОТВЯ СЕ
-kot_ready_serve	ГОТОВО — сервирай
-kot_done_cap	ГОТОВО
-kot_cancelled	ОТКАЗАНО
-kot_start_btn	Започни
-kot_mark_ready	Отбележи готово
-kot_done_btn	Готово
-table_free	Свободна — докоснете, за да започнете поръчка
 start_order	Започни поръчка
 open_bill	Отвори сметка
 collect_payment	Събери плащане
-table_running	В ход
 payment_pending	Чака плащане
 collect_at_counter	събери на тезегяха
 inventory	Склад
@@ -325,7 +256,6 @@ ok	OK
 this_shop	Сървър
 extra_till	Клиент
 off	Изкл.
-tables_kitchen	Подредба на магазина
 server	Сървър
 client	Клиент
 language_currency	Език и валута
@@ -367,8 +297,6 @@ add_item_plain	Добави артикул
 add_note	Добави бележка
 add_opening_balance	Добави начално салдо
 add_staff	Добави персонал
-add_station	Добави станция
-add_table	Добави маса
 add_unit	Добави единица
 add_use_name	Добави / ползвай това име
 allow_extra_tills	Позволи допълнителни каси
@@ -421,7 +349,6 @@ share_whatsapp	Сподели WhatsApp
 lan_pages_heading	Страници на клиентите във Wi‐Fi
 lan_pages_help	В Wi‑Fi на този магазин клиентските страници работят за таблото и отзивите. Хората с мобилни данни ще имат нужда от Облак по-късно. Терминал за карти или връзка за плащане е по избор и никога не спира тезгяха.
 diag_send_heading	Сподели извън устройството
-kot_dest_heading	Станция
 optional_login_heading	Незадължително влизане
 rights_heading	Права
 ops_panel	Локални операции
@@ -448,28 +375,6 @@ till_voucher_amt_ph	Сума на ваучер (празно = цялата)
 till_wallet_topup_ph	Сума за зареждане на портфейла
 till_voucher_issue_amt_ph	Сума на издадения ваучер
 till_voucher_issue_code_ph	Нов код на ваучер
-split_evenly	Раздели поравно
-waitlist	Лист на чакащи
-fire_course	Следваща стъпка
-hold_item	Задръж
-waiter_call	Обадете се на касиера
-waitlist_add	Добави в листа на чакащи
-floor_view_grid	Мрежа
-floor_view_layout	Подредба
-floor_layout_x	X
-floor_layout_y	Y
-floor_layout_w	W
-floor_layout_h	H
-floor_layout_save	Запази подредбата
-floor_layout_open	Отвори маса
-floor_layout_edit	Редактирай подредбата
-floor_layout_pick	Докоснете маса, за да редактирате подредбата ѝ
-floor_layout_saved	Подредбата е запазена
-floor_layout_nudge_left	← 20
-floor_layout_nudge_right	→ 20
-floor_layout_nudge_up	↑ 20
-floor_layout_nudge_down	↓ 20
-sibling_pickers_help	Докоснете Вкл./Изкл. като при единиците — скрийте зони, станции и данъчни ставки от ежедневните списъци; подразбиранията на пакета остават.
 bulk_price_apply	Приложи обща цена
 card_terminal_optional	Картов терминал / връзка за плащане (по избор, когато има интернет)
 copy_report	Копирай отчета
@@ -495,7 +400,6 @@ import_day	Импортирай ден
 import_items_csv_plain	Импортирай артикули CSV…
 import_parties_csv	Импортирай контрагенти CSV…
 item_name	Име на артикул
-kitchen_printing	Принтери
 login_id_ph	Потребителско име
 mark_cleared	Отбележи изчистено
 new_party_clear	Нов контрагент (изчисти формуляра)
@@ -565,15 +469,6 @@ show	Покажи
 spreadsheet_csv	Таблица (CSV)
 start_fresh	Започни начисто
 stop_extra_tills	Спри допълнителните каси
-floor_cols_ph	Колони
-floor_cols_fit	Побери екрана
-floor_cols_fit_sub	{n} се побират тук
-floor_cols_fits	се побира
-floor_cols_scroll	превърта настрани
-floor_cols_min	Колони: поне 1 — или го оставете празно, за да побере екрана
-floor_zoom_auto	Авто
-floor_zoom_out	Отдалечи
-floor_zoom_in	Приближи
 backup_auto	Автоматично резервно копие всеки ден · последно {when} · последните 14 дни се пазят в {dir}.
 backup_auto_none	Автоматично резервно копие всеки ден — първото ще тръгне след малко.
 backup_copy_to	Копията отива и в {dir}.
@@ -591,7 +486,6 @@ new_pair_code	Нов код за свързване
 pair_finishing	Свързването приключва… прилагат се книгите на заведението
 pair_opening	Отваря се касата…
 pair_copied	Кодът за свързване е копиран
-kot_waiting	Чака изпращане
 lan_offline_waiting	Сървърът е недостъпен · {n} чакат
 lan_connecting	Свързване със заведението…
 lan_live	На живо
@@ -633,7 +527,6 @@ printers_routes_help	Намери принтери, които операцио�
 printer_assign_dd	Реален принтер: {place}
 printer_assign_pick	Избери реален принтер
 printer_profile_heading	Подредба
-printer_send_heading	Доставка
 vp_delivery_heading	Доставка
 vp_delivery_help	Как този виртуален принтер праща задачи — документ на ОС, сурови байтове или ESC/POS. Съдържанието на фиша (размер на шрифта, пренасяне, полета) се решава от формата на сметката / фиша, не тук.
 vp_type_size_heading	Размер на шрифта
@@ -677,23 +570,13 @@ virtual_draft_send	Стойност за следващия виртуален �
 virtual_need_real	Първо изберете реален принтер
 virtual_need_select	Изберете виртуален принтер за изтриване
 real_printer_selected	Избрано: {name}
-station_group_heading	Виртуални принтери
-station_group_apply	Изтрий виртуалния принтер
-station_group_applied	Изтрито
-station_group_empty	Изберете виртуален принтер
-station_group_name_ph	Име на виртуален принтер (по избор)
-station_group_save	Създай виртуален принтер
-station_group_saved	Виртуалният принтер е запазен
-station_manage_heading	Добавете или премахнете секция на аптека
 printers_routes_heading	Къде се печата
 route_pick_heading	Място
 route_editing	Редактиране: {name}
 route_assigned	Добавен {printer} към {place}
 route_already_assigned	Вече е на това място: {printer}
-route_removed	Премахнат {printer} от {place}
 route_cleared	Изчистено {name}
 route_assigned_empty	Няма на това място
-route_tap_remove	докоснете за премахване
 route_tap_select	докоснете за избор
 route_tap_selected	избрано
 route_pick_printer_first	Първо докоснете принтер
@@ -714,35 +597,17 @@ printer_format_custom	Нов потребителски профил
 printer_format_custom_label	По избор
 printer_format_custom_added	Добавен е потребителски профил за това място
 add_printer	Добави принтер
-remove_printer	Премахни
 route_pick_ph	Билет или секция за аптека
 route_bill	Сметка
-route_default_kitchen	Няма станция (неприсвоени елементи)
-route_kot_station	Станция
 route_dont_print	Няма принтер
-stations_heading	Станции
-stations_help	Раздели на аптеката групират лекарства и принтерите за тази част на магазина. Прикрепете принтери от Настройки → Принтери, задайте ред за опит, след това Първо работещ или Печат на всички. Промените се запазват автоматично.
-station_print_heading	Принтери за тази станция
-station_print_help	Избери станция, после закачи един или повече принтери. ↑↓ задава реда на опит. Първият, който работи, спира след първия успех; Печат на всички праща до всеки закачен принтер.
-station_print_pick_ph	Станция за задаване на принтери
 station_print_pick_first	Първо избери секция на аптеката
-station_print_editing	Редактиране на принтери за „{name}“
-station_vps_dd	Принтери за тази станция
-station_vps_dd_n	{n} принтер(а) · докоснете за промяна
 station_vps_empty	Още няма принтери — намерете ги в Настройки → Принтери
 bill_printers_dd	Принтери за сметката
 bill_printers_dd_n	{n} принтер(а) за сметката · докоснете за промяна
-job_layout	Подредба
-job_delivery	Как се изпраща задачата
-job_delivery_help	Документ на ОС, сурови байтове или ESC/POS. Сметката и фишът пазят всеки своето. Всяка задача може да отиде на всеки принтер, който Намери е запазил.
 station_vp_attached	Принтерът е закачен
 station_vp_detached	Принтерът е премахнат от станцията
-station_print_summary	{mode} · {n} принтер(а)
-station_print_summary_none	Още няма принтери на тази станция — няма да печата
-stations_none	Все още няма станции — добавете една по-долу. Станциите не се използват в магазин на гишето — оставете празно.
 route_up	Нагоре
 route_down	Надолу
-route_remove	Премахни
 route_clear	Изчисти
 save_printers	Запази принтерите
 print_test_page	Печат на пробна страница
@@ -751,23 +616,15 @@ test_page_no_printer	Няма принтер за {place} — закачете �
 test_page_pick_first	Първо изберете принтер(и) за пробна страница — после Печат на пробна страница
 test_printers_dd	Принтери за пробна страница
 test_printers_dd_n	{n} принтер(а) за пробна страница · докоснете за промяна
-kot_test_printers_dd	Принтери за пробен печат
-kot_test_printers_dd_n	{n} принтер(а) за пробен печат · докосни за промяна
 test_printer_picked	Проба на: {name}
 test_printer_cleared	Без проба на: {name}
 test_page_sent_n	Пробна страница е пратена към {n} принтер(а)
-test_kot_pick_first	Първо избери принтер(и) за пробен печат — после Пробен печат
-test_kot_sent_n	Пробният печат е изпратен до {n} принтер(а)
-cancel_pick	Маркирай
-cancel_pick_on	Маркирано
-cancel_pick_meta	Маркирано за отказ
 batch_cancel	Откажи маркираните
 batch_cancel_n	Откажи маркираните ({n})
 batch_cancel_none	Маркирайте едно или повече изпратени артикули първо — след това Отмяна на маркираните
 batch_cancel_title	Отмяна на маркирани лекарства — една причина, един отказен фиш за секция
 batch_cancel_ok	{n} артикула отменени · {slips} фиш(а) за отмяна → {kitchens}
 batch_cancel_ok_noprint	{n} артикула отменени — автопечатът е изключен, няма фиш за отмяна
-no_printer_kitchen_station	Няма принтер за тази станция
 printers_saved	Запазено
 test_page_sent	Пробната страница е пратена — проверете принтера
 test_page_sent_one	Пробна страница е пратена към {name} — проверете този принтер
@@ -783,10 +640,7 @@ cancelled	Отказано
 printers_tap_find	Докоснете Търсене, за да видите принтерите, които това устройство може да ползва.
 printers_none_found	Нищо не е намерено — въведете име на системен принтер или IP (напр. 192.168.1.50).
 printer_from_find	Добавен {name}
-kot_printer_ph	Принтер за фишове
 bill_printer_ph	Принтер за сметки
-kot_print_on	Автоматично печатане на билети: Включено
-kot_print_off	Автоматично печатане на билети: Изключено
 queue_refused	Не е прието от заведението ({n}) — проверете всяко на касата:
 clear_not_accepted	Проверено — изчисти този списък
 device_name_ph	Име на това устройство
@@ -797,7 +651,6 @@ backup_failed	Последното автоматично резервно ко�
 backup_overdue	Няма резервно копие от {n} дни — дръжте приложението отворено на това устройство, за да може да архивира.
 disk_low	Само {mb} MB свободни на това устройство — резервните копия скоро ще се провалят. Освободете място.
 last_seen_devices	Последно видяно: {time}
-sync_interval	Синхрон на всеки {secs} с
 connection_to_shop	Връзка със заведението
 supplier_name_ph	Име на доставчик (или контрагент)
 supplier_ph	Доставчик
@@ -860,7 +713,6 @@ fresh_book_tabiyat	Прясно = празен каталог (добавете 
 fresh_selected	Избрано е Fresh — каталогът остава празен. Докоснете Готово, когато сте готови.
 gross_word	Бруто
 how_start	Как искате да започнете?
-kot_print_help_tabiyat	Не се използва в магазин на гишето.
 later_country_pack	После: Настройки → приложете пакета за държавата за етикети на данък и плащане.
 local_badge	ЛОКАЛНО
 mix_type_hint_tabiyat	При нужда разделете между в брой / UPI / карта / кредит. За кредит е нужен клиент по-горе.
@@ -911,8 +763,6 @@ staff_copy_need_source	Изберете чия настройка да се ко
 staff_copy_same	Това е същият човек — изберете друг
 staff_rename_need_selected	Първо изберете кого да преименувате
 team_pick_hint	Избери кого да редактираш — екраните, паричните права и станциите са само за този човек.
-team_stations_help	Станции, които може да ползва
-team_stations_changed	Станциите са променени — Запази настройката за този човек
 team_features_changed	Екраните са променени — Запази настройката за този човек
 team_rights_changed	Правата са променени — Запази настройката за този човек
 they_owe_us	Те ни дължат
@@ -996,9 +846,6 @@ service_pct_ph	Сервиз % по избор 0/10/12
 short_code_ph	Кратък код (MG02)
 starting_password_ph	Начална парола (по избор)
 starting_pin_ph	Начален PIN (4–12 цифри)
-station_name_ph	Име на станция (по избор)
-station_new_ph	Секция (по избор)
-table_name_ph	Име на бюро / гише
 tax_rate_ph	Име или % на данъчна ставка — Стандартна, Намалена, 0, 5, 12, 18, 20
 to_code_ph	Към код (kg)
 uncleared_no_ph	Неизчистен № по-горе
@@ -1011,27 +858,8 @@ book_kind_month	Книги за този месец
 book_kind_aging	Неизплатено / дебит-кредит
 book_kind_balance	Баланс
 order_help	Докоснете артикул, за да го добавите.
-floor_help	Този магазин продава на тезгях. Маси и зала за хранене не са част от Tabiyat.
-kitchen_help	Не се използва в магазин на гишето.
-kitchen_empty	Няма отворени билети (щандовите магазини обикновено не използват този екран).
-add_a_table	Добави маса
-add_station_heading	Добавяне на секция за аптека
 categories_help	Докоснете Ползвай, за да сложите артикула по-горе в тази категория. Снимката дава картина на категорията; без нея се показват инициалите.
 dish_search_ph	Търси име, сол или баркод…
-tile_free	Свободна
-tile_occupied	Заета
-tile_food_ready	Храната е готова
-tile_bill_printed	Сметката е отпечатана
-tile_paid	Платена
-tile_bill_btn	Сметка
-tile_occupy_btn	Настани гости
-tile_free_btn	Освободи масата
-tile_ready_btn	Освободи масата
-tile_undo_bill	Отмени сметката
-summary_busy	заети маси
-summary_to_collect	за събиране
-summary_on_floor	в залата
-floor	Заведение
 sizes_as_items_ph	Размери като отделни артикули (по избор) — Половин=120, Цял=200
 dish_group_ph	Сила / група опаковка (по избор) — напр. лента 500mg
 discount	Отстъпка
@@ -1039,7 +867,6 @@ remove_discount	Махни отстъпката
 apply_discount	Приложи отстъпка
 save_opening_cash	Запази началната каса
 close_shift_print	Приключи смяната и отпечатай фиш
-area_prices_ph	Цени по зона (по избор) — Климатик=220, За вкъщи=210
 discount_ph	10% или 50
 discount_reason_ph	Причина (напр. редовен гост, закъсняла храна)
 opening_float_ph	Пари, сложени в чекмеджето тази сутрин
@@ -1049,34 +876,18 @@ shift_handover	Предаване на смяна
 shift_since	Тази смяна от
 expected_in_drawer	Очаквано в чекмеджето
 right_discount	Дай отстъпка
-floor_in_kitchen	В процес
-floor_eating	Сервирано
 pick_category	Избери категория
 close_category_list	Затвори списъка с категории
 new_category_row	Нова категория — създава се когато запазите артикула
 your_category	Вашата категория
 suggested_category	Предложено — от нашите артикули
 category_search_ph	Категория — търсете вашите или напишете нова
-line_sent_state	Изпратено
-line_nc_state	Комплимент (NC) — не се таксува
 cancel_item_short	Откажи
-nc_short	NC
-charge_again_short	Таксувай
-move_short	Премести
 cancel_item_title	Отмяна на този артикул — бек офис получава отказен фиш
-nc_item_title	Направи този артикул комплимент (NC)
-charge_again_title	Таксувай този артикул отново
-move_item_title	Премести този артикул на друга маса
-already_cooked	Вече е сготвено (брак)
-not_cooked_yet	Още не е сготвено
 return_to_customer	Върни на клиента
 short_by	Недостиг
 tip_not_sale	Бакшиш (на персонала, не е продажба)
 right_settle	Приеми плащане
-right_cancel_sent	Откажи пратен артикул
-right_complimentary	Комплимент (NC)
-right_move_table	Преместване / сливане на броячи
-right_reprint	Отпечатай сметката отново
 right_allowed	Позволено
 right_with_approval	С одобрение
 right_denied	Не е позволено
@@ -1086,25 +897,11 @@ no_server_found	Нищо не е намерено. На Сървъра: Наст
 servers_found_pick	Докоснете заведението, към което искате да се свържете.
 server_host_selected	Ползва се {host} — въведете кода за свързване, после Свържи сега.
 print_bill	Отпечатай сметка
-table_actions	Действия на бюрото
-move_merge_table	Премести / слей маса
-move_help	Преместете поръчката на този брояч на свободна маса или я слейте с текущата.
-move_target_ph	Име на гише
 approval_pin_ph	PIN на управител (само ако се поиска)
-move_here	Премести тук
-merge_into	Слей в нея
-line_reason_ph	Причина (напр. клиентът се отказа, няма наличност)
-line_qty_ph	Колко да се откажат (празно = всички)
-line_target_ph	Премести към маса (напр. D5)
 confirm	Потвърди
 menu_search_ph	Търси артикул или кратък код
 customer_paid_ph	Клиентът плати
 tip_ph	Бакшиш
-table_area_ph	Зона (напр. На място, За вкъщи, Климатик)
-table_range_ph	Много наведнъж: D1-D20
-add_these_tables	Добавете тези броячи
-remove_these_tables	Премахни тези тезгяхи
-table_remove_ph	Премахни: T1-T24 или името на една маса
 find_server	Намери сървъра на заведението
 bill_format	Формат на сметката
 bill_format_help	Печата се под името на магазина на всяка сметка. Разделяй редовете с | (напр. MG Road, Rajkot | Ph 98250 00000).
@@ -1112,78 +909,32 @@ bill_header_ph	Адрес | телефон
 fssai_ph	Номер на лиценза за лекарства (по избор — вашите думи)
 bill_footer_ph	Долен колонтитул (напр. Благодарим, заповядайте отново)
 save_bill_format	Запази формата на сметката
-kot_format	Формат на фиш
-kot_format_help	Докосни поле в списъка. Показване, размер на шрифта и дебелина важат за това поле при вида фиш, избран отгоре. Всеки вид пази своите размери и дебелини.
-kot_format_fields	Полета
-kot_field_next	Следващо поле
-kot_field_show	Покажи
-kot_field_hide	Скрий
 kot_field_on	показва
 kot_field_off	скрива
-kot_field_size	Размер на шрифта
-kot_field_size_ph	напр. 16, 20, 24, 28, 32…
 kot_weight_light	Тънък
 bill_kot_panel_help	Оформление на сметката и широчина на съдържанието. Касиерът е този, който е издал или уредил сметката — цялата история на продажбата остава в книгите.
 std_size_ph	напр. 18, 20, 26…
-kot_show_shop	Име на заведението
-kot_hide_shop	Скрий заведението
-kot_show_time	Час
-kot_hide_time	Скрий часа
-kot_show_waiter	Касиер
-kot_hide_waiter	Скрий касиер
-kot_show_station	Станция
-kot_hide_station	Скрий станцията
-kot_show_table	Тезегях
-kot_hide_table	Скрий масата
-kot_show_kot_no	Фиш №
-kot_hide_kot_no	Скрий номер на билета
-kot_width	Преглед на пренасянето (широчината е в раздела Фиш)
-kot_width_58	58 mm
-kot_width_80	80 mm
-kot_kind_heading	Вид фиш
-kot_kind_original	Оригинал
-kot_kind_duplicate	Дубликат
-kot_kind_modified	Променен
-kot_kind_cancelled	Отказано
-kot_style_heading	Размер и дебелина на полето
-kot_style_title	Заглавие
-kot_style_item_qty	Артикул · Кол.
-kot_style_field_pick	Избери поле
 kot_weight_regular	Обикновен
 kot_weight_bold	Получер
-kot_align	Подравняване
 kot_align_start	Започни
 kot_align_center	Център
 kot_align_end	Край
 content_width	Ширина на съдържанието (mm)
 content_width_bill	Ширина на сметката (mm)
-content_width_kot	Широчина на съдържанието на фиша (mm)
 content_width_ph	Или въведете ширина на съдържанието, 40–210 mm
 content_width_help	Колко широк се печати този фиш. Сметката пази своята широчина.
 content_width_bill_help	Колко широка се печати клиентската сметка. По подразбиране 210 mm (страница). 58 mm тесен фиш, 80 mm широк фиш, 112 mm 4 инча, 210 mm ширина A4. Въведи стойност от 40 до 210. Фишовете имат своя широчина в раздела Фиш.
-content_width_kot_help	Колко широк се печати фишът. По подразбиране 80 mm. 58 mm тесен фиш, 80 mm широк фиш, 112 mm 4 инча, 210 mm страница. Въведи стойност от 40 до 210. Клиентските сметки имат своя широчина в раздела Сметка.
 vp_paper_width	Ширина на съдържанието (mm)
 vp_paper_width_ph	Или въведете ширина на съдържанието, 40–210 mm
 vp_paper_width_help	Ширината на съдържанието се задава под формата за Сметка и Билет — отделно за сметката (по подразбиране 210 мм) и за билета (по подразбиране 80 мм).
-kot_size	Размер на шрифта
-kot_size_s	Малък
-kot_size_m	Нормален
-kot_size_l	Голям
 std_size	Размер на шрифта
 kot_copies	Копия
 kot_copies_1	1
 kot_copies_2	2
 kot_copies_3	3
-kot_title_ph	Заглавие (празно = TICKET)
-kot_footer_ph	Бележка за задния офис (по избор)
-kot_preview	Преглед
-save_kot_format	Запази формата на фиш
-test_kot_format	Пробен печат
-test_kot_sent	Прегледът на фиша е изпратен
 test_bill_format	Пробна сметка
 test_bill_sent	Прегледът на сметката е пратен
 test_print_no_printer	Няма принтер за тази задача — изберете един на този екран
-kot_format_saved	Форматът на фиша е запазен
 std_print	Размер на печата на сметката
 std_print_help	Размер на шрифта за стандартни портретни и пейзажни фактури на ОС / документни принтери (въведете точки — не Малък/Нормален/Голям). Същият размер и в двете ориентации.
 std_size_s	Малък
@@ -1223,23 +974,16 @@ upi_qr	UPI QR
 show_upi_qr	Покажи UPI QR
 close_upi_qr	Затвори
 upi_qr_help	Клиентите сканират и плащат. Докоснете "Приеми плащане", след като платят. Втори екран: отворете Server URL /display в LAN.
-kot_recall	Върни
 recently_done	Наскоро приключени
-recall_kot_ph	Фиш № за извикване
 role_help_customer	Роля: Клиент — тефтер (те ни дължат). Същият контрагент може и да доставя стока.
 role_help_both	Роли: Клиент + Доставчик — един контрагент, тефтер и задължения, нето в Отчети.
 role_help_supplier	Роля: Доставчик — ние им дължим за покупки.
-dine_in_pick_table	Не се използва в магазин на гишето
-choose_table	Изберете гишето
-change_table	Смени масата
-pick_table_banner	Изберете маса за тази поръчка
 items_word	артикула
 items_section	Артикули
 back_to_order	Обратно към поръчката
 new_items_head	Още не е пратено
 price_ph	Цена
 price_ph_gst_inside	Цена ({tax} включен)
-cancel_needs_table	Продажбите на гишето остават на билета, докато не получите плащането
 tax_rates_missing_hint	Няма ставка {tax} за тези елементи — в Елементи задайте Данъчна ставка (цените вече включват {tax} под {tax} включително)
 taxable_value	Данъчна основа
 gst_inside_price_note	({tax} включен)
@@ -1260,30 +1004,11 @@ client_template_confirm	Добавете {d} артикула от {title}? Ар
 client_template_importing	Внасяне на {title}…
 client_template_done	Всеки артикул от {title} е във вашите артикули.
 client_template_imported	Добавени {d} артикула и {c} категории от {title}
-resv_heading	Резервации
-resv_name_ph	Име на клиент
-resv_phone_ph	Телефон (по избор)
-resv_guests_ph	Хора
-resv_when_ph	Кога — 20:30, утре 13:00
-resv_table_ph	Бюро (по избор)
-resv_add	Резервирай
-resv_seat	Настанен
-resv_none	Няма предстоящи резервации.
-guests_word	гости
-delivery_by_ph	Доставка от (име на куриер или персонал)
-kitchen_all_day	За готвене сега: {items}
-split_bill	Раздели сметката
-split_go	Направи отделна сметка
 cancel	Откажи
 opening_client	Отваряне на клиент…
 preparing_desk	Подготовка на касата…
 opening_server	Отваряне на сървър…
 creating_server	Създаване на сървър…
-split_help	Докосни артикулите, които плаща един клиент · избрани {n}
-split_send_first	Първо изпрати фиш — в отделна сметка влизат само артикули, които бек офисът вече има
-split_pick_some	Първо докосни артикулите за отделната сметка
-split_done	Отделната сметка е готова — тя е на залата до този тезгях
-split_marked	отделна сметка
 order_empty_pick	Поръчката е празна — докосни Добави артикули отгоре, за да избереш.
 add_dishes	Добавете лекарства
 order_so_far	В тази поръчка: {n} · {total}
@@ -1294,24 +1019,8 @@ pick_done_dd	Готово · {label}
 printer_route_mode	Ако на това място има няколко принтера
 printer_mode_first	Първият, който работи
 printer_mode_all	Печат на всички
-kot_show_area	Зона
-kot_hide_area	Скрий зоната
-kot_show_item_hdr	Артикул · Кол.
-kot_hide_item_hdr	Скрий колоните
-kot_show_title	Ред за заглавие
-kot_hide_title	Скрий заглавието
-kot_field_order	Ред на печат
 kot_field_up	Премести нагоре
 kot_field_down	Премести надолу
-kot_field_cycle	Избери следващото
-kot_field_select	Избери следващото
-kot_field_time	Час
-kot_field_kot_no	Фиш №
-kot_field_area	Зона
-kot_field_table	Тезегях
-kot_field_shop	Име на заведението
-kot_field_waiter	Персонал
-kot_field_station	Станция
 app_template_blurb_extra	Също така: Собственик Захир, Администратор Асип, Касиер Наваз; странична лента отпред; история след 4 часа; Днес премахнете; компактен билет.
 dishes_n	{n} артикула
 recipe_ph	Рецепта (по избор — не се ползва на тезгях)
@@ -1321,8 +1030,6 @@ low_stock_alert	Свършва — купете скоро: {items}
 unpriced_note	{n} артикула при вашите нямат цена — смятат се с 0, докато не зададеш.
 show_unpriced	Покажи само артикули без цена
 show_all_dishes	Покажи всички артикули
-role_waiter	Касиер
-role_kitchen	Склад
 role_title_rest_ph	Длъжност (напр. Капитан, Главен готвач)
 preset_help_rest	Касиер: продава. Управител: продава + артикули + анулиране/корекция.
 kind_raw	Съставяне на склад

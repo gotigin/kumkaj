@@ -68,28 +68,6 @@ applied	ಅನ್ವಯಿಸಾಯಿನ
 note_ph	ಗಮನಿಸಿ (ಐಚ್ಛಿಕ)
 rounded	ಸುತ್ತು
 split	ಸ್ಪ್ಲಿಟ್
-send_kot	ಸ್ಲಿಪ್ ಕಡಪುಡುಲೆ
-send_kot_to	ಕಡಪುಡು → {kitchens}
-send_kot_again	ದುಂಬುದ ಸ್ಲಿಪ್ ಗ್ ಐಟಂಲೆನ್ ಸೇರಾಲೆ
-send_kot_held	ಹಿಡಿಯೊಂದಿತ್ತಿನ ವಸ್ತುಲು — ಕಡಪುಡುನಗ ಹಿಡಿಯೊಂದಿಜ್ಜಿ
-reprint_kot	ಮುದ್ರಣೊನು ಮತ್ತೆ ಆಯ್ಕೆ ಮಲ್ತೆರ್
-reprint_kot_ok	{n} ಐಟಂಲೆನ್ ಮತ್ತೆ ಮುದ್ರಿಸಯೆರ್ · {slips} ಸ್ಲಿಪ್(ಲು) → {kitchens}
-reprint_kot_needed	ಸುರುಕು ಒಂಜಿ ಸ್ಲಿಪ್ ಕಡಪುಡುಲೆ — ಅಪಗ ಐಟಂಲೆನ್ ಸೇರಾವೊಡು ಬೊಕ್ಕ ಆಯ್ಕೆ ಮಲ್ತಿನವುಲೆನ್ ಪುನರ್ ಪ್ರಿಂಟ್ ಮಲ್ಪುಲೆ
-reprint_kot_none_selected	ಪ್ರತಿಯೊಂಜಿ ಕಡಪುಡುನ ಐಟಂನ್ ಬುಡ್ದು ಪೋಪೆರ್ — ಪುನರ್ಮುದ್ರಣ ಮಲ್ಪುನವುಲೆನ್ ಮುದ್ರಣೊಡು ಒತ್ತುಲೆ
-reprint_kot_client	ಕಡಪುಡುನ {place} ಗ್ ಮತ್ತೆ ಮುದ್ರಣ ಮಲ್ಪುಲೆ ({n}) — ಅಂಗಡಿದ ಸಾಧನ ಅಯಿನ್ ಮುದ್ರಿಸವುಂಡು
-print_cancelled_kot	ಮುದ್ರಣ ಮಾತ ರದ್ದು ಆತ್ಂಡ್
-print_cancelled_kot_ok	ಮುದ್ರಿತ {n} ರದ್ದು ಆಯಿನ ಐಟಂಲು · {slips} ಸ್ಲಿಪ್(ಲು) → {kitchens}
-print_cancelled_kot_needed	ರದ್ದು ಆಯಿನ ಐಟಂಲೆನ್ ಸುರುಕು ಒಂಜಿ ಟೇಬಲ್ ನ್ ತೆರೆಲೆ
-print_cancelled_kot_none	ಈ ಆದೇಶೊಡು ರದ್ದು ಆಯಿನ ವಸ್ತುಲು ಇಜ್ಜಿ
-print_cancelled_kot_client	ಕಡಪುಡುನ {place} ಗ್ ಮುದ್ರಣ ರದ್ದು ಆತ್ಂಡ್ ({n}) — ಅಂಗಡಿದ ಸಾಧನ ಅಯಿನ್ ಮುದ್ರಣ ಮಲ್ಪುಂಡು
-kot_banner	ಎಡ್ಡೆ ಬ್ಯಾನರ್
-kot_banner_ph	ಬ್ಯಾನರ್ (ಖಾಲಿ = ಇಜ್ಜಿ)
-kot_item_prefix	ಐಟಂ ಉಪಸರ್ಗ
-kot_item_prefix_ph	ಉದಾ. [ರದ್ದು ಆತ್ಂಡ್]
-kot_strike	ಸ್ಟ್ರೈಕ್ ಐಟಂ ಪುದರ್
-kot_strike_note	ಸ್ಟ್ರೈಕ್ ಐಟಂ ಟಿಪ್ಪಣಿ
-kot_strike_on	ಆನ್
-kot_strike_off	ಆಫ್
 bill_item_layout	ಐಟಂ ಲೇಔಟ್
 bill_item_layout_columns	ಕಾಲಮ್ ಲು
 bill_item_layout_stacked	ಜೋಡಣೆ ಆತ್ಂಡ್
@@ -118,8 +96,6 @@ bill_item_gap_em	ಗ್ಯಾಪ್ (ಎಮ್)
 bill_item_qty_min	ನಿಮಿಷದ ಪ್ರಮಾಣ (ಎಮ್)
 bill_item_price_min	ಬೆಲೆ ಕನಿಷ್ಠ (ಎಮ್)
 bill_item_amount_min	ಮೊತ್ತ ಕನಿಷ್ಠ (ಎಮ್)
-kot_item_qty_width	ಪ್ರಮಾಣದ ಕಾಲಮ್
-kot_item_num_align	ಪ್ರಮಾಣದ ಜೋಡಣೆ
 bill_total_qty_label	ಒಟ್ಟು ಪ್ರಮಾಣದ ಲೇಬಲ್
 bill_total_subtotal_label	ಉಪ ಒಟ್ಟು ಲೇಬಲ್
 bill_total_grand_label	ಗ್ರ್ಯಾಂಡ್ ಒಟ್ಟು ಲೇಬಲ್
@@ -131,36 +107,9 @@ bill_item_piece_off	ಆಫ್
 bill_total_qty	ಒಟ್ಟು ಪ್ರಮಾಣ
 bill_total_subtotal	ಉಪ ಒಟ್ಟು
 bill_total_grand	ಗ್ರ್ಯಾಂಡ್ ಒಟ್ಟು
-reprint_incl	ಮುದ್ರಣೊಡು
-reprint_skip	ಬುಡ್ಲೆ
-reprint_skip_meta	ರಿಕವರಿ ಪ್ರಿಂಟ್ ನ್ ಬುಡ್ಲೆ
-kot_dest_hint	ಸೆಟ್ಟಿಂಗ್ಸ್ → ಪ್ರಿಂಟರ್ಸ್ ಡ್ {kitchens} ಗ್ ನಿಯೋಜಿಸಾಯಿನ ಪ್ರಿಂಟರ್ ಲೆಡ್ ಮುದ್ರಣ ಮಲ್ಪುಂಡು
-kot_sent_hint	ಕಡೆತ ಕಡಪುಡುನವು {kitchens} ಗ್ ಪೋಂಡು. ದುಂಬುದ ಬಿಲ್ ಗ್ ಐಟಂಲೆನ್ ಸೇರಾವುನಗ ಟ್ಯಾಪ್ ಮಲ್ಪುಲೆ — ಅತ್ತ್ಂಡ ಅದೇ ಬಿಲ್ ಗ್ ಸ್ಲಿಪ್ ನ್ ಮತ್ತೆ ಪ್ರಿಂಟ್ ಮಲ್ಪುಲೆ.
-kot_sent_printing	{kitchens} ಗ್ ಕಡಪುಡುನ ಸ್ಲಿಪ್ — ಮುದ್ರಣ
-kot_sent_not_printed	{kitchens} ಗ್ ಕಡಪುಡುನ ಸ್ಲಿಪ್ ಆಂಡ ಮುದ್ರಿತ ಆಯಿಜಿ: {why}. ಅಂಗಡಿಗ್ ಪನ್ಲೆ, ಬೊಕ್ಕ ಪ್ರಿಂಟರ್ ನ್ ಸರಿ ಮಲ್ಪುಲೆ ಬೊಕ್ಕ ಪುನರ್ ಪ್ರಿಂಟ್ ಮಲ್ಪುಲೆ.
-kot_sent_screen	ಸ್ಲಿಪ್ ನ್ {kitchens} ಗ್ ಕಡಪುಡುವೆರ್
-kot_queued_shop	{place} ಗ್ ಸ್ಲಿಪ್ → {kitchens} ಉಳಿತಾಯ ಆತ್ಂಡ್; ಅಂಗಡಿದ ಸಾಧನ ಅಯಿನ್ ಮುದ್ರಿಸವುಂಡು
-kot_job_label	{place} → {kitchens} ಗ್ ಸ್ಲಿಪ್
-kot_job_reached	{place} ಗ್ ಸ್ಲಿಪ್ {kitchens} ಗ್ ತಲುಪುಂಡು
 kot_unassigned	ನಿಯೋಜಿಸಂದಿನ
-kot_unassigned_held	ಸ್ಟೇಷನ್ ಇಜ್ಜಂದಿನ {n} ಐಟಂಲೆನ್ ಹಿಡಿಯೊಂಡು — ಕಡಪುಡುನ ಲೈನ್ ಡ್ ಅನ್ಹೋಲ್ಡ್ ಮಲ್ಪುಲೆ
-kot_station_ph	ನಿಲ್ದಾಣ
-kot_station_dd	ನಿಲ್ದಾಣ
-kot_station_dd_n	ನಿಲ್ದಾಣ · {stations}
-kot_set_station	ಈ ನಿಲ್ದಾಣೊನು ಬಳಕೆ ಮಲ್ಪುಲೆ
-kot_station_applied	{n} ಐಟಂಲೆಡ್ ಸ್ಟೇಷನ್ ಸೆಟ್: {station}
-kot_station_cleared	{n} ಐಟಂಲೆಡ್ದ್ ನಿಲ್ದಾಣೊನು ತೆರಿಪಾಯೆರ್: {station}
-kot_station_needed	ಸುರುಕು ಒಂಜಿ ಅಂಗಡಿ ವಿಭಾಗೊನು ಆಯ್ಕೆ ಮಲ್ಪುಲೆ
-kot_station_not_allowed	ವಿಭಾಗೊನು ಬಳಕೆ ಮಲ್ಪೆರೆ ಅನುಮತಿ ಇಜ್ಜಿ: {station}
-kot_station_none	ಇತ್ತೆ ನಿಲ್ದಾಣೊಲು ಇಜ್ಜಿ — ಒಂಜಿ ಕೌಂಟರ್ ಅಂಗಡಿಡ್ ಬಳಕೆ ಆಯಿಜಿ (ಸೆಟ್ಟಿಂಗ್ಸ್ → ಅಗತ್ಯ ಇತ್ತ್ಂಡ ಪ್ರದೇಶೊಲು)
 pos_tab_items	ಸೇರ್ಸಾಯಿನ ಐಟಂಲು
 pos_tab_payment	ಪಾವತಿ
-hold_send	ಅಡುಗೆಮನೆಡ್ದ್ ಹಿಡಿಯೊಡು
-hold_send_on	ನಡತ್ಂಡ್
-hold_send_meta	ಹಿಡಿತ — ಈ ಸ್ಲಿಪ್ ಡ್ ಇಜ್ಜಿ
-station_remove	ನಿಲ್ದಾಣೊನು ದೆತ್ತ್ ಪಾಡ್ಲೆ
-station_remove_ph	ಅವೆನ್ ತೆಗೆಯೆರೆ ಪಟ್ಟಿಡ್ ಒಂಜಿ ನಿಲ್ದಾಣೊನು ಟ್ಯಾಪ್ ಮಲ್ಪುಲೆ
-station_removed	ನಿಲ್ದಾಣೊನು ತೆಗೆತ್ ದ್ ದೀತೆರ್: {name}
 settings_hub_title	ಸೆಟ್ಟಿಂಗ್ಸ್
 settings_hub_help	ಒಂಜಿ ಸಲೊಟು ಒಂಜಿ ಪ್ರದೇಶೊನು ತೆರೆಲೆ — ಕಮ್ಮಿ ಸ್ಕ್ರೋಲಿಂಗ್, ಸ್ಪಷ್ಟ ಆಯ್ಕೆಲು.
 settings_back	ಪಿರ
@@ -169,12 +118,10 @@ settings_sec_country	ದೇಶ ಬೊಕ್ಕ ತೆರಿಗೆ
 settings_sec_tills	ಬೇತೆ ಸಾಧನೊಲು
 settings_sec_brand	ನಿಕ್ಲೆನ ಬ್ರಾಂಡ್
 settings_sec_units	ಘಟಕೊಲು ಬೊಕ್ಕ ಪರಿವರ್ತನೆಲು
-settings_sec_pickers	ಪ್ರದೇಶೊಲು · ನಿಲ್ದಾಣೊಲು · ತೆರಿಗೆ ದರೊಕುಲು
+settings_sec_pickers	ತೆರಿಗೆ ದರೊಕುಲು
 settings_sec_printers	ಮುದ್ರಕೊಲು
 settings_sec_bill	ಬಿಲ್ ಬೊಕ್ಕ ಸ್ಲಿಪ್ ಫಾರ್ಮ್ಯಾಟ್
 settings_sec_selling	ಯೋಜನೆಲು ಬೊಕ್ಕ ಮಾರಾಟೊಲು
-bill_kot_tab_bill	ಬಿಲ್
-bill_kot_tab_kot	ಜಾರುನು
 settings_sec_alerts	ಎಚ್ಚರಿಕೆಲು
 alerts_help	ನಿಕ್ಲೆಗ್ ಎಂಚ ಸಮಯ ಮುಟ್ಟ ಸ್ಥಿತಿ ಸಂದೇಶೊಲು ಪರದೆಡ್ ಉಪ್ಪುಂಡು (ಈ ಲಾಗ್ ಇನ್).
 snack_secs_ph	ಸೆಕೆಂಡ್ ಲು (3–60, ಡಿಫಾಲ್ಟ್ 10)
@@ -225,8 +172,6 @@ counter	ಕೌಂಟರ್
 dine_in	ಕೌಂಟರ್
 takeaway	ಟೇಕ್ ಅವೆ
 order	ಆದೇಶ
-tables	ಕೌಂಟರ್ ಲು
-kitchen	ವಿಭಾಗೊಲು
 sales	ಮಾರಾಟ
 sales_refunds	ಮಾರಾಟ ಬೊಕ್ಕ ಮರುಪಾವತಿ
 day_close	ದಿನ ಮುಚ್ಚುಂಡು
@@ -254,10 +199,6 @@ zero_sales_on	₹00 ಗ್ ಅನುಮತಿ ಕೊರ್ಲೆ
 zero_sales_off	ಬೆಲೆ ಬೋಡು
 zero_sales_saved_on	ಶೂನ್ಯ-ಮೌಲ್ಯದ ಮಾರಾಟೊಗು ಅನುಮತಿ ಉಂಡು
 zero_sales_saved_off	ಮಾರಾಟೊಗು ₹00 ಡ್ದ್ ಮಿತ್ತ್ ಬೆಲೆ ಉಪ್ಪೊಡು
-floor_areas_help	ಪ್ರದೇಶೊಲು ನೆಲತ ಮಿತ್ತ್ ಉಪ್ಪುನ ಕೊಠಡಿಲು ಅತ್ತಂದೆ ವಲಯೊಲು (ಡೈನ್ ಇನ್, ಪಾರ್ಸೆಲ್, ಎಸಿ ...). ಸುರುಕು ಒಂಜಿ ಪ್ರದೇಶೊನು ಸೇರಾವೊಡು, ಬೊಕ್ಕ ಅಯಿಟ್ ಕೌಂಟರ್ ಲೆನ್ ಪಾಡ್ಲೆ - ಪ್ರತಿಯೊಂಜಿ ಪ್ರದೇಶೊಲಾ ನೆಲಟ್ ಒಂಜಿ ಪ್ರತ್ಯೇಕ ಗುಂಪು ಆದುಂಡು.
-area_new_ph	ಪೊಸ ಜಾಗೆ / ಕೊಠಡಿ (ಉದಾ. ಎಸಿ, ತೋಟ)
-add_area	ಪ್ರದೇಶ ಸೇರಾಲೆ
-area_added	ಏರಿಯಾ “{name}” ರೆಡಿ — ಅಯಿಟ್ ಕೌಂಟರ್ ಲೆನ್ ಸೇರಾವೊಡು
 no_favorites	ಇತ್ತೆ ಮೆಚ್ಚಿನವುಲು ಇಜ್ಜಿ — ಕೆಳಕಂಡ ಪಟ್ಟಿಡ್ದ್ ಐಟಂಲೆನ್ ಸೇರಾವೊಡು.
 add_to_bill	ಬಿಲ್ ಗ್ ಸೇರಾಲೆ
 added	ಸೇರ್ಪಾದ್ಂಡ್
@@ -268,19 +209,9 @@ chip_missing_customer	ಆಯ್ಕೆ ಮಲ್ತಿನ ಗ್ರಾಹಕೆ�
 chip_no_customer	ಇತ್ತೆ ಗ್ರಾಹಕೆರ್ ಇಜ್ಜೆರ್ — ಒಂಜಿ ಪುದರ್ ಟೈಪ್ ಮಲ್ಪುಲೆ, ಬೊಕ್ಕ ಕ್ರೆಡಿಟ್ ನ್ ಒತ್ತುಲೆ
 credit_summary_fmt	{} ಗ್ರಾಹಕೆರ್ · ಓಪನ್ ಕ್ರೆಡಿಟ್ {} · ಅಡ್ವಾನ್ಸ್ ಹಿಲ್ಡ್ {}
 recent_label	ಇತ್ತೆದ:
-kot_new_waiting	ಪೊಸ — ಕಾತೊಂದುಲ್ಲೆ
-kot_preparing	ತಯಾರಿ
-kot_ready_serve	ರೆಡಿ — ಸರ್ವ್ ಮಲ್ಪುಲೆ
-kot_done_cap	ಮುಗಿಂಡ್
-kot_cancelled	ರದ್ದು ಮಲ್ತೆರ್
-kot_start_btn	ಸುರು ಮಲ್ಪುಲೆ
-kot_mark_ready	ಮಾರ್ಕ್ ರೆಡಿ
-kot_done_btn	ಮುಗಿಂಡ್
-table_free	ಖಾಲಿ ಉಂಡು — ಒಂಜಿ ಆದೇಶೊನು ಸುರು ಮಲ್ಪರೆ ಒತ್ತುಲೆ
 start_order	ಆದೇಶ ಸುರು ಮಲ್ಪುಲೆ
 open_bill	ಓಪನ್ ಬಿಲ್
 collect_payment	ಪಾವತಿನ್ ಸಂಗ್ರಹ ಮಲ್ಪುಲೆ
-table_running	ಓಡೊಂದುಲ್ಲೆ
 payment_pending	ಪಾವತಿ ಬಾಕಿ ಉಂಡು
 collect_at_counter	ಕೌಂಟರ್ ಡ್ ಸಂಗ್ರಹ ಮಲ್ಪುಲೆ
 inventory	ದಾಸ್ತಾನು
@@ -313,7 +244,6 @@ ok	ಸರಿ
 this_shop	ಸರ್ವರ್ ಮೋಡ್
 extra_till	ಕ್ಲೈಂಟ್ ಮೋಡ್
 off	ಆಫ್
-tables_kitchen	ಅಂಗಡಿದ ಲೇಔಟ್
 server	ಸರ್ವರ್ ಮೋಡ್
 client	ಕ್ಲೈಂಟ್ ಮೋಡ್
 language_currency	ಭಾಷೆ ಬೊಕ್ಕ ಕರೆನ್ಸಿ
@@ -355,8 +285,6 @@ add_item_plain	ಐಟಂ ಸೇರಾಲೆ
 add_note	ಟಿಪ್ಪಣಿ ಸೇರಾಲೆ
 add_opening_balance	ಓಪನಿಂಗ್ ಬ್ಯಾಲೆನ್ಸ್ ನ್ ಸೇರಾಲೆ
 add_staff	ಸಿಬ್ಬಂದಿಲೆನ್ ಸೇರಾಲೆ
-add_station	ನಿಲ್ದಾಣೊನು ಸೇರಾವೊಡು
-add_table	ಊಟದ ಮೇಜಿನ್ ಸೇರಾಲೆ
 add_unit	ಯುನಿಟ್ ಸೇರಾಲೆ
 add_use_name	ಈ ಪುದರ್ ನ್ ಸೇರಾಲೆ / ಬಳಕೆ ಮಲ್ಪುಲೆ
 allow_extra_tills	ಹೆಚ್ಚುವರಿ ಟಿಲ್ ಲೆನ್ ಅನುಮತಿಸಲೆ
@@ -409,7 +337,6 @@ share_whatsapp	ಶೇರ್ ಮಲ್ಪುಲೆ WhatsApp
 lan_pages_heading	ವೈ-ಫೈಡ್ ಗ್ರಾಹಕೆರೆನ ಪುಟೊಕುಲು
 lan_pages_help	ಈ ಅಂಗಡಿದ ವೈ-ಫೈಡ್, ಗ್ರಾಹಕೆರೆನ ಪುಟೊಕುಲು ಡಿಸ್ಪ್ಲೇ ಬೋರ್ಡ್ ಬೊಕ್ಕ ಪ್ರತಿಕ್ರಿಯೆಗ್ ಬೇಲೆ ಮಲ್ಪುಂಡು. ಮೊಬೈಲ್ ಡೇಟಾಡ್ ಉಪ್ಪುನ ಜನಕ್ಲೆಗ್ ನನೊಂಜಿ ಸರ್ತಿ ಕ್ಲೌಡ್ ಬೋಡು. ಒಂಜಿ ಕಾರ್ಡ್ ಟರ್ಮಿನಲ್ ಅತ್ತಂದೆ ಪಾವತಿ ಲಿಂಕ್ ಐಚ್ಛಿಕ ಆದುಂಡು ಬೊಕ್ಕ ಕೌಂಟರ್ ನ್ ಎನ್ನಗಲಾ ತಡೆಪುಜಿ.
 diag_send_heading	ಈ ಸಾಧನೊನು ಪಾಡುಲೆ
-kot_dest_heading	ನಿಲ್ದಾಣ
 optional_login_heading	ಐಚ್ಛಿಕ ಲಾಗ್ ಇನ್
 rights_heading	ಹಕ್ಕುಲು
 ops_panel	ಸ್ಥಳೀಯ ಆಪ್ಸ್
@@ -436,28 +363,6 @@ till_voucher_amt_ph	ವೌಚರ್ ಮೊತ್ತ (ಖಾಲಿ = ಮಾತಾ
 till_wallet_topup_ph	ಟಾಪ್-ಅಪ್ ವಾಲೆಟ್ ಮೊತ್ತ
 till_voucher_issue_amt_ph	ವೌಚರ್ ಮೊತ್ತೊನು ಬುಡುಗಡೆ ಮಲ್ಪುಲೆ
 till_voucher_issue_code_ph	ಪೊಸ ವೌಚರ್ ಕೋಡ್
-split_evenly	ಸಮವಾದ್ ಪಾಡ್ಲೆ
-waitlist	ನಿರೀಕ್ಷೆದ ಪಟ್ಟಿ
-fire_course	ದುಂಬುದ ಹೆಜ್ಜೆ
-hold_item	ಅಡುಗೆಮನೆಡ್ದ್ ಹಿಡಿಯೊಡು
-waiter_call	ಕ್ಯಾಶಿಯರ್ ಗ್ ಕಾಲ್ ಮಲ್ಪುಲೆ
-waitlist_add	ನಿರೀಕ್ಷೆದ ಪಟ್ಟಿಗ್ ಸೇರಾಲೆ
-floor_view_grid	ಗ್ರಿಡ್
-floor_view_layout	ಲೇಔಟ್
-floor_layout_x	X
-floor_layout_y	Y
-floor_layout_w	W
-floor_layout_h	H
-floor_layout_save	ಲೇಔಟ್ ನ್ ಉಳಿತಾಯ ಮಲ್ಪುಲೆ
-floor_layout_open	ಊಟದ ಮೇಜಿನ್ ತೆರೆಯೊಡು
-floor_layout_edit	ಲೇಔಟ್ ನ್ ಎಡಿಟ್ ಮಲ್ಪುಲೆ
-floor_layout_pick	ಅಯಿತ ಲೇಔಟ್ ನ್ ಎಡಿಟ್ ಮಲ್ಪರೆ ಒಂಜಿ ಡೈನಿಂಗ್ ಟೇಬಲ್ ನ್ ಟ್ಯಾಪ್ ಮಲ್ಪುಲೆ
-floor_layout_saved	ಲೇಔಟ್ ಉಳಿತಾಯ ಆತ್ಂಡ್
-floor_layout_nudge_left	← 20
-floor_layout_nudge_right	→ 20
-floor_layout_nudge_up	↑ 20
-floor_layout_nudge_down	↓ 20
-sibling_pickers_help	ಯುನಿಟ್ ಲೆನಲೆಕ ಆನ್/ಆಫ್ ನ್ ಟ್ಯಾಪ್ ಮಲ್ಪುಲೆ — ದಿನೊತ ಪಿಕ್ಕರ್ ಲೆಡ್ದ್ ಪ್ರದೇಶೊಲೆನ್, ನಿಲ್ದಾಣೊಲೆನ್ ಬೊಕ್ಕ ತೆರಿಗೆ ದರೊಲೆನ್ ಮರೆಮಾಚೊಡು; ಪ್ಯಾಕ್ ಡಿಫಾಲ್ಟ್ ಲು ಉಪ್ಪುಂಡು.
 bulk_price_apply	ಬಲ್ಕ್ ಬೆಲೆನ್ ಅನ್ವಯಿಸಲೆ
 card_terminal_optional	ಕಾರ್ಡ್ ಟರ್ಮಿನಲ್ / ಪಾವತಿ ಲಿಂಕ್ (ಇಂಟರ್ನೆಟ್ ಲಭ್ಯ ಆನಗ ಐಚ್ಛಿಕ)
 copy_report	ವರದಿನ್ ನಕಲ್ ಮಲ್ಪುಲೆ
@@ -483,7 +388,6 @@ import_day	ಆಮದು ದಿನ
 import_items_csv_plain	ಆಮದು ವಸ್ತುಲೆನ್ CSV…
 import_parties_csv	ಆಮದು ಗ್ರಾಹಕೆರ್ ಬೊಕ್ಕ ಪೂರೈಕೆದಾರೆರ್ CSV...
 item_name	ಐಟಂ ಪುದರ್
-kitchen_printing	ಮುದ್ರಕೊಲು
 login_id_ph	ಬಳಕೆದಾರ ಪುದರ್
 mark_cleared	ಮಾರ್ಕ್ ಕ್ಲಿಯರ್ ಆಂಡ್
 new_party_clear	ಪೊಸ ಗ್ರಾಹಕೆರ್ ಅತ್ತಂದೆ ಪೂರೈಕೆದಾರೆರ್ (ಸ್ಪಷ್ಟ ಫಾರ್ಮ್)
@@ -553,15 +457,6 @@ show	ತೋಜಾಲೆ
 spreadsheet_csv	ಸ್ಪ್ರೆಡ್ ಶೀಟ್ (CSV)
 start_fresh	ಪೊಸತ್ ಸುರು ಮಲ್ಪುಲೆ
 stop_extra_tills	ಎಕ್ಸ್ ಟ್ರಾ ಟಿಲ್ಸ್ ನ್ ನಿಲ್ಲಿಸಲೆ
-floor_cols_ph	ಕಾಲಮ್ ಲು
-floor_cols_fit	ಫಿಟ್ ಸ್ಕ್ರೀನ್
-floor_cols_fit_sub	{n} ಮುಲ್ಪ ಸರಿ ಆಪುಂಡು
-floor_cols_fits	ಸರಿ ಆಪುಂಡು
-floor_cols_scroll	ಬದಿಕ್ ಸ್ಕ್ರೋಲ್ ಮಲ್ಪುಂಡು
-floor_cols_min	ಕಾಲಮ್ ಲು: ಕನಿಷ್ಠ 1 — ಅತ್ತ್ಂಡ ಪರದೆಗ್ ಸರಿ ಆಯೆರೆ ಖಾಲಿ ಬುಡ್ಲೆ
-floor_zoom_auto	ಆಟೋ
-floor_zoom_out	ಜೂಮ್ ಔಟ್
-floor_zoom_in	ಜೂಮ್ ಇನ್ ಮಲ್ಪುಲೆ
 backup_auto	ಪ್ರತಿ ದಿನ ಸ್ವಯಂಚಾಲಿತವಾದ್ ಬ್ಯಾಕ್ ಅಪ್ ಆಪುಂಡು · ಕಡೆತ {when} · ಕಡೆತ 14 ದಿನೊಕುಲು {dir} ಡ್ ಉಪ್ಪುಂಡು.
 backup_auto_none	ಪ್ರತಿ ದಿನ ಸ್ವಯಂಚಾಲಿತವಾದ್ ಬ್ಯಾಕ್ ಅಪ್ ಆಪುಂಡು — ಸುರುತವು ಒಂಜಿ ಕ್ಷಣೊಡು ನಡಪುಂಡು.
 backup_copy_to	ಪ್ರತಿಲು {dir} ಗ್ ಲಾ ಪೋಪುಂಡು.
@@ -579,7 +474,6 @@ new_pair_code	ಪೊಸ ಜೋಡಿ ಸಂಕೇತ
 pair_finishing	ಫಿನಿಶಿಂಗ್ ಪೇರ್... ಅಂಗಡಿದ ಪುಸ್ತಕೊಲೆನ್ ಅನ್ವಯಿಸವುನ
 pair_opening	ಟಿಲ್ ನ್ ತೆರೆಯೊಂದುಲ್ಲೆ...
 pair_copied	ಜೋಡಿ ಮಲ್ಪುನ ಸಂಕೇತೊನು ನಕಲು ಮಲ್ತೆರ್
-kot_waiting	ಕಡಪುಡುನಗ ಕಾತೊಂದುಲ್ಲೆ
 lan_offline_waiting	ಅಂಗಡಿದ ಸರ್ವರ್ ನ್ ತಲುಪೆರೆ ಆಪುಜಿ · {n} ಕಾತೊಂದುಲ್ಲೆ
 lan_connecting	ಅಂಗಡಿಗ್ ಸಂಪರ್ಕ ಮಲ್ಪುನಗ...
 lan_live	ಲೈವ್
@@ -621,7 +515,6 @@ printers_routes_help	ಆಪರೇಟಿಂಗ್ ಸಿಸ್ಟಮ್ ಗ್ �
 printer_assign_dd	ನಿಜವಾದ್ ಮುದ್ರಕ: {place}
 printer_assign_pick	ನಿಜವಾದ್ ಮುದ್ರಕೊನು ಆಯ್ಕೆ ಮಲ್ಪುಲೆ
 printer_profile_heading	ಲೇಔಟ್
-printer_send_heading	ವಿತರಣೆ
 vp_delivery_heading	ವಿತರಣೆ
 vp_delivery_help	ಈ ವರ್ಚುವಲ್ ಪ್ರಿಂಟರ್ ಕೆಲಸೊಲೆನ್ ಎಂಚ ಕಡಪುಡುಂಡು — ಓಎಸ್ ಡಾಕ್ಯುಮೆಂಟ್, ರಾ ಬೈಟ್ಸ್, ಅತ್ತಂದೆ ಇಎಸ್ಸಿ/ಪಿಒಎಸ್. ಸ್ಲಿಪ್ ವಿಷಯ (ಪ್ರಕಾರದ ಗಾತ್ರ, ಸುತ್ತು, ಅಂಚುಲು) ಬಿಲ್ / ಸ್ಲಿಪ್ ಸ್ವರೂಪೊಡು ನಿರ್ಧರಿಸಲ್ಪಡುಂಡು, ಇಲ್ಲ್ ಅತ್ತ್.
 vp_type_size_heading	ಟೈಪ್ ಸೈಜ್
@@ -665,23 +558,13 @@ virtual_draft_send	ದುಂಬುದ ವರ್ಚುವಲ್ ಪ್ರಿಂ�
 virtual_need_real	ಸುರುಕು ಒಂಜಿ ನಿಜವಾಯಿನ ಮುದ್ರಕೊನು ಆಯ್ಕೆ ಮಲ್ಪುಲೆ
 virtual_need_select	ಅಳಿಸೆರೆ ಒಂಜಿ ವರ್ಚುವಲ್ ಪ್ರಿಂಟರ್ ನ್ ಆಯ್ಕೆ ಮಲ್ಪುಲೆ
 real_printer_selected	ಆಯ್ಕೆ: {name}
-station_group_heading	ವರ್ಚುವಲ್ ಪ್ರಿಂಟರ್ ಲು
-station_group_apply	ವರ್ಚುವಲ್ ಪ್ರಿಂಟರ್ ನ್ ದೆತ್ತ್ ಪಾಡ್ಲೆ
-station_group_applied	ದೆತ್ತ್ ಪಾಡ್ದೆರ್
-station_group_empty	ಒಂಜಿ ವರ್ಚುವಲ್ ಪ್ರಿಂಟರ್ ನ್ ಆಯ್ಕೆ ಮಲ್ಪುಲೆ
-station_group_name_ph	ವರ್ಚುವಲ್ ಪ್ರಿಂಟರ್ ಪುದರ್ (ಐಚ್ಛಿಕ)
-station_group_save	ವರ್ಚುವಲ್ ಪ್ರಿಂಟರ್ ನ್ ರಚನೆ ಮಲ್ಪುಲೆ
-station_group_saved	ವರ್ಚುವಲ್ ಪ್ರಿಂಟರ್ ಉಳಿತಾಯ ಆತ್ಂಡ್
-station_manage_heading	ಒಂಜಿ ಅಂಗಡಿದ ವಿಭಾಗೊನು ಸೇರಾವೊಡು ಅತ್ತ್ಂಡ ತೆಗೆತ್ ಪಾಡ್ಲೆ
 printers_routes_heading	ವಸ್ತುಲು ಎಲ್ಲಿ ಮುದ್ರಣ ಆಪುಂಡು
 route_pick_heading	ಜಾಗೆ
 route_editing	ಸಂಪಾದನೆ: {name}
 route_assigned	{place} ಗ್ {printer} ಸೇರ್ಸೊಂಡು
 route_already_assigned	ಈ ಜಾಗೆಡ್ ದುಂಬೇ ಉಂಡು: {printer}
-route_removed	{place} ಡ್ದ್ {printer} ನ್ ತೆಗೆತ್ ದ್ ದೀತೆರ್
 route_cleared	ತೆರಿಪಾಯೆರ್ {name}
 route_assigned_empty	ಈ ಜಾಗೆಡ್ ಒವ್ವೆಲಾ ಇಜ್ಜಿ
-route_tap_remove	ತೆಗೆಯೆರೆ ಒತ್ತುಲೆ
 route_tap_select	ಆಯ್ಕೆ ಮಲ್ಪರೆ ಒತ್ತುಲೆ
 route_tap_selected	ಆಯ್ಕೆ ಮಲ್ತೆರ್
 route_pick_printer_first	ಸುರುಕು ಒಂಜಿ ಪ್ರಿಂಟರ್ ನ್ ಟ್ಯಾಪ್ ಮಲ್ಪುಲೆ
@@ -702,35 +585,17 @@ printer_format_custom	ಪೊಸ ಕಸ್ಟಮ್ ಪ್ರೊಫೈಲ್
 printer_format_custom_label	ಕಸ್ಟಮ್
 printer_format_custom_added	ಈ ಜಾಗೆಗ್ ಕಸ್ಟಮ್ ಪ್ರೊಫೈಲ್ ಸೇರ್ಪಾದ್ಂಡ್
 add_printer	ಪ್ರಿಂಟರ್ ನ್ ಸೇರಾಲೆ
-remove_printer	ದೆತ್ತ್ ಪಾಡ್ಲೆ
 route_pick_ph	ಬಿಲ್ ಅತ್ತ್ಂಡ ಒಂಜಿ ಅಂಗಡಿದ ವಿಭಾಗ
 route_bill	ಬಿಲ್
-route_default_kitchen	ನಿಲ್ದಾಣ ಇಜ್ಜಿ (ನಿಯೋಜಿಸಂದಿನ ವಸ್ತುಲು)
-route_kot_station	ನಿಲ್ದಾಣ
 route_dont_print	ಮುದ್ರಕ ಇಜ್ಜಿ
-stations_heading	ನಿಲ್ದಾಣೊಲು
-stations_help	ಅಂಗಡಿ ವಿಭಾಗೊಲೆಡ್ ಗುಂಪು ವಸ್ತುಲು ಬೊಕ್ಕ ಅಂಗಡಿದ ಆ ಭಾಗೊಗು ಮುದ್ರಕೊಲು. ಸೆಟ್ಟಿಂಗ್ಸ್ → ಪ್ರಿಂಟರ್ಸ್ ಡ್ದ್ ಪ್ರಿಂಟರ್ ಲೆನ್ ಲಗತ್ತಿಸಲೆ, ಟ್ರೈ ಆರ್ಡರ್ ನ್ ಸೆಟ್ ಮಲ್ಪುಲೆ, ಬೊಕ್ಕ ಫಸ್ಟ್ ದಾಟ್ ವರ್ಕ್ಸ್ ಅತ್ತ್ಂಡ ಪ್ರಿಂಟ್ ಮಲ್ಪುಲೆ. ಈರ್ ಪೋನಗ ಬದಲಾವಣೆಲು ಉಳಿತಾಯ ಮಲ್ಪುಲೆ.
-station_print_heading	ಈ ನಿಲ್ದಾಣೊಗು ಮುದ್ರಕೊಲು
-station_print_help	ಒಂಜಿ ಸ್ಟೇಷನ್ ನ್ ಆಯ್ಕೆ ಮಲ್ಪುಲೆ, ಬೊಕ್ಕ ಒಂಜಿ ಅತ್ತಂದೆ ಜಾಸ್ತಿ ಪ್ರಿಂಟರ್ ಲೆನ್ ಲಗತ್ತಿಸಲೆ. ↑↓ ಟ್ರೈ ಆರ್ಡರ್ ನ್ ಸೆಟ್ ಮಲ್ಪುಂಡು. ಸುರುತ ಯಶಸ್ಸ್ ದ ನಂತರ ಕೆಲಸ ನಿಂತುಂಡು; ಲಗತ್ತಿಸಾಯಿನ ಪ್ರತಿಯೊಂಜಿ ಮುದ್ರಕೊಗು ಕಡಪುಡುನ ಮಾತಾ ಮೇಲೆ ಮುದ್ರಣ ಮಲ್ಪುಲೆ.
-station_print_pick_ph	ಮುದ್ರಕೊಲೆನ್ ಸೆಟ್ ಮಲ್ಪುನ ನಿಲ್ದಾಣ
 station_print_pick_first	ಸುರುಕು ಒಂಜಿ ಅಂಗಡಿ ವಿಭಾಗೊನು ಆಯ್ಕೆ ಮಲ್ಪುಲೆ
-station_print_editing	“{name}” ಗ್ ಮುದ್ರಕೊಲೆನ್ ಸಂಪಾದನೆ ಮಲ್ಪುನವು
-station_vps_dd	ಈ ನಿಲ್ದಾಣೊಗು ಮುದ್ರಕೊಲು
-station_vps_dd_n	{n} ಮುದ್ರಕೊಲು · ಬದಲಾವಣೆ ಮಲ್ಪೆರೆ ಒತ್ತುಲೆ
 station_vps_empty	ಇತ್ತೆ ಮುದ್ರಕೊಲು ಇಜ್ಜಿ — ಸೆಟ್ಟಿಂಗ್ಸ್ → ಮುದ್ರಕೊಲೆನ ಕೆಳ್ಗ್ ಅವೆನ್ ತೂಲೆ
 bill_printers_dd	ಬಿಲ್ ಗ್ ಮುದ್ರಕೊಲು
 bill_printers_dd_n	ಬಿಲ್ ಗ್ {n} ಮುದ್ರಕೊಲು · ಬದಲಾವಣೆ ಮಲ್ಪೆರೆ ಒತ್ತುಲೆ
-job_layout	ಲೇಔಟ್
-job_delivery	ಬೇಲೆನ್ ಎಂಚ ಕಡಪುಡುವೆರ್
-job_delivery_help	ಓಎಸ್ ಡಾಕ್ಯುಮೆಂಟ್, ರಾ ಬೈಟ್ಸ್, ಅತ್ತಂದೆ ಇಎಸ್ಸಿ/ಪಿಒಎಸ್. ಬಿಲ್ ಬೊಕ್ಕ ಟಿಕೆಟ್ ಒಂಜೊಂಜಿ ತನ್ನವೇ ಆದ್ ಉಪ್ಪುಂಡು. ಒಂಜಿ ಕೆಲಸೊನು ಫೈಂಡ್ ಉಳಿತಾಯ ಮಲ್ತಿನ ಏತ್ ಪ್ರಿಂಟರ್ ಗ್ ಲಾ ಪೋವೊಲಿ.
 station_vp_attached	ಮುದ್ರಕೊನು ಲಗತ್ತಿಸವೊಂಡುಂಡು
 station_vp_detached	ನಿಲ್ದಾಣೊಡ್ದ್ ಮುದ್ರಕೊನು ದೆತ್ತ್ ಪಾಡ್ದೆರ್
-station_print_summary	{mode} · {n} ಮುದ್ರಕೊಲು
-station_print_summary_none	ಈ ಸ್ಟೇಷನ್ ಡ್ ಇತ್ತೆ ಮುದ್ರಕೊಲು ಇಜ್ಜಿ — ಉಂದು ಮುದ್ರಣ ಆಪುಜಿ
-stations_none	ಇತ್ತೆ ನಿಲ್ದಾಣೊಲು ಇಜ್ಜಿ — ಕೆಳ್ಗ್ ಒಂಜಿ ಸೇರಾವೊಡು. ಕೌಂಟರ್ ಶಾಪ್ ಡ್ ಸ್ಟೇಷನ್ ಲೆನ್ ಬಳಕೆ ಮಲ್ಪುಜೆರ್ - ಖಾಲಿ ಬುಡ್ಲೆ.
 route_up	ಮಿತ್ತ್
 route_down	ಕೆಳಗ್
-route_remove	ದೆತ್ತ್ ಪಾಡ್ಲೆ
 route_clear	ತೆರಿಪಾಲೆ
 save_printers	ಮುದ್ರಕೊಲೆನ್ ಉಳಿತಾಯ ಮಲ್ಪುಲೆ
 print_test_page	ಒಂಜಿ ಪರೀಕ್ಷಾ ಪುಟೊನು ಮುದ್ರಿಸಲೆ
@@ -739,23 +604,15 @@ test_page_no_printer	{place} ಗ್ ಮುದ್ರಕ ಇಜ್ಜಿ — ಅ�
 test_page_pick_first	ಸುರುಕು ಒಂಜಿ ಪರೀಕ್ಷಾ ಪುಟೊಗು ಮುದ್ರಕೊಲೆನ್ ಆಯ್ಕೆ ಮಲ್ಪುಲೆ — ಬೊಕ್ಕ ಒಂಜಿ ಪರೀಕ್ಷಾ ಪುಟೊನು ಮುದ್ರಿಸಲೆ
 test_printers_dd	ಒಂಜಿ ಪರೀಕ್ಷಾ ಪುಟೊಗು ಮುದ್ರಕೊಲು
 test_printers_dd_n	ಒಂಜಿ ಪರೀಕ್ಷಾ ಪುಟೊಗು {n} ಮುದ್ರಕೊಲು · ಬದಲಾವಣೆ ಮಲ್ಪೆರೆ ಒತ್ತುಲೆ
-kot_test_printers_dd	ಪರೀಕ್ಷಾ ಮುದ್ರಣೊಗು ಮುದ್ರಕೊಲು
-kot_test_printers_dd_n	ಪರೀಕ್ಷಾ ಮುದ್ರಣೊಗು {n} ಮುದ್ರಕ(ಲು) · ಬದಲಾವಣೆ ಮಲ್ಪೆರೆ ಒತ್ತುಲೆ
 test_printer_picked	ಪರೀಕ್ಷೆ ಮಲ್ಪುಲೆ: {name}
 test_printer_cleared	ಪರೀಕ್ಷೆ ಮಲ್ಪುಜಿ: {name}
 test_page_sent_n	ಪರೀಕ್ಷಾ ಪುಟೊನು {n} ಮುದ್ರಕೊಲೆಗ್ ಕಡಪುಡುವೆರ್
-test_kot_pick_first	ಸುರುಕು ಟೆಸ್ಟ್ ಪ್ರಿಂಟ್ ಗ್ ಪ್ರಿಂಟರ್(ಲೆನ್) ಆಯ್ಕೆ ಮಲ್ಪುಲೆ — ಬೊಕ್ಕ ಟೆಸ್ಟ್ ಪ್ರಿಂಟ್
-test_kot_sent_n	{n} ಮುದ್ರಕೊಲೆಗ್ ಕಡಪುಡುನ ಪರೀಕ್ಷಾ ಮುದ್ರಣ
-cancel_pick	ಮಾರ್ಕ್
-cancel_pick_on	ಗುರುತು ಪಾಡ್ದೆರ್
-cancel_pick_meta	ರದ್ದು ಮಲ್ಪೆರೆ ಗುರುತು ಪಾಡ್ದೆರ್
 batch_cancel	ರದ್ದು ಗುರುತು ಪಾಡ್ದೆರ್
 batch_cancel_n	ಗುರುತು ಪಾಡ್ದ್ ರದ್ದು ಮಲ್ಪುಲೆ ({n})
 batch_cancel_none	ಸುರುಕು ಒಂಜಿ ಅತ್ತಂದೆ ಒಂಜರ್ದ್ ಜಾಸ್ತಿ ಕಡಪುಡುನ ಐಟಂಲೆನ್ ಗುರುತು ಮಲ್ಪುಲೆ — ಬೊಕ್ಕ ರದ್ದು ಗುರುತು ಮಲ್ಪುಲೆ
 batch_cancel_title	ಗುರುತು ಪಾಡ್ದಿನ ವಸ್ತುಲೆನ್ ರದ್ದು ಮಲ್ಪುಲೆ — ಒಂಜಿ ಕಾರಣ, ಒಂಜಿ ವಿಭಾಗೊಗು ಒಂಜಿ ರದ್ದು ಸ್ಲಿಪ್
 batch_cancel_ok	{n} ಐಟಂಲೆನ್ ರದ್ದು ಮಲ್ತೆರ್ · {slips} ಸ್ಲಿಪ್(ಲೆನ್) ರದ್ದು ಮಲ್ಪುಲೆ → {kitchens}
 batch_cancel_ok_noprint	{n} ಐಟಂಲೆನ್ ರದ್ದು ಮಲ್ತೆರ್ — ಸ್ವಯಂ-ಮುದ್ರಣ ಆಫ್ ಆತ್ಂಡ್, ಅಂಚಾದ್ ರದ್ದು ಸ್ಲಿಪ್ ಇಜ್ಜಿ
-no_printer_kitchen_station	ಆ ಸ್ಟೇಷನ್ ಗ್ ಪ್ರಿಂಟರ್ ಇಜ್ಜಿ
 printers_saved	ಉಳಿತಾಯ ಆತ್ಂಡ್
 test_page_sent	ಪರೀಕ್ಷಾ ಪುಟೊನು ಕಡಪುಡುವೆರ್ — ಮುದ್ರಕೊನು ತೂಲೆ
 test_page_sent_one	{name} ಗ್ ಕಡಪುಡುನ ಪರೀಕ್ಷಾ ಪುಟ — ಆ ಮುದ್ರಕೊನು ತೂಲೆ
@@ -771,10 +628,7 @@ cancelled	ರದ್ದು ಮಲ್ತೆರ್
 printers_tap_find	ಈ ಸಾಧನೊಡು ಬಳಕೆ ಆಪಿನ ಮುದ್ರಕೊಲೆನ್ ಪಟ್ಟಿ ಮಲ್ಪರೆ ಫೈಂಡ್ ನ್ ಒತ್ತುಲೆ.
 printers_none_found	ಒವ್ವೆಲಾ ತೋಜಿಜಿ — ಒಂಜಿ ಸಿಸ್ಟಮ್ ಪ್ರಿಂಟರ್ ಪುದರ್ ಅತ್ತಂಡ ಒಂಜಿ ಐಪಿನ್ ಟೈಪ್ ಮಲ್ಪುಲೆ (ಉದಾ. 192.168.1.50).
 printer_from_find	ಸೇರ್ಸೊಂಡು {name}
-kot_printer_ph	ಸ್ಲಿಪ್ಸ್ ಗ್ ಪ್ರಿಂಟರ್
 bill_printer_ph	ಬಿಲ್ಲುಲೆಗ್ ಮುದ್ರಕ
-kot_print_on	ಸ್ವಯಂ-ಮುದ್ರಣ ಟಿಕೆಟ್ ಲು: ಆನ್
-kot_print_off	ಸ್ವಯಂ-ಮುದ್ರಣ ಟಿಕೆಟ್ ಲು: ಆಫ್
 queue_refused	ಅಂಗಡಿಡ್ ಸ್ವೀಕಾರ ಆಪುಜಿ ({n}) — ಕೌಂಟರ್ ಡ್ ಪ್ರತಿಯೊಂಜಿನ್ ತೂಲೆ:
 clear_not_accepted	ತಪಾಸಣೆ ಮಲ್ತೆರ್ — ಈ ಪಟ್ಟಿನ್ ತೆರಿಪಾಲೆ
 device_name_ph	ಈ ಸಾಧನೊದ ಪುದರ್
@@ -785,7 +639,6 @@ backup_failed	ಕಡೆತ ಸ್ವಯಂಚಾಲಿತ ಬ್ಯಾಕಪ್ 
 backup_overdue	{n} ದಿನೊಕುಲೆಗ್ ಬ್ಯಾಕಪ್ ಇಜ್ಜಿ — ಈ ಸಾಧನೊಡು ಅಪ್ಲಿಕೇಶನ್ ನ್ ತೆರೆದ್ ದೀಲೆ ಅಂಚಾದ್ ಅಯಿನ್ ಬ್ಯಾಕಪ್ ಮಲ್ಪೊಲಿ.
 disk_low	ಈ ಸಾಧನೊಡು {mb} MB ಮಾತ್ರ ಉಚಿತ — ಬ್ಯಾಕಪ್ ಲು ಬೇಗನೆ ಫೇಲ್ ಆಪುಂಡು. ಒಂತೆ ಜಾಗ ಖಾಲಿ ಮಲ್ಪುಲೆ.
 last_seen_devices	ಕಡೆತ ಸರ್ತಿ ತೂಯಿನ: {time}
-sync_interval	ಪ್ರತಿ {secs}s ಗ್ ಸಿಂಕ್ ಮಲ್ಪುಲೆ
 connection_to_shop	ಅಂಗಡಿಗ್ ಕನೆಕ್ಷನ್
 supplier_name_ph	ಪೂರೈಕೆದಾರನ ಪುದರ್ (ಅತ್ತ್ಂಡ ಗ್ರಾಹಕೆರ್)
 supplier_ph	ಸಪ್ಲೈಯರ್
@@ -848,7 +701,6 @@ fresh_book_kirano	ಫ್ರೆಶ್ = ಖಾಲಿ ಕ್ಯಾಟಲಾಗ್ 
 fresh_selected	ತಾಜಾ ಆಯ್ಕೆ ಆತ್ಂಡ್ — ಕ್ಯಾಟಲಾಗ್ ಖಾಲಿ ಉಪ್ಪುಂಡು. ತಯಾರ್ ಆನಗ ಮುಗಿಂಡ್ ನ್ ಒತ್ತುಲೆ.
 gross_word	ಒಟ್ಟು
 how_start	ಈರ್ ಎಂಚ ಸುರು ಮಲ್ಪೊಡು?
-kot_print_help_kirano	ಕಿರಾಣಾ ಕೌಂಟರ್ ಡ್ ಬಳಕೆ ಆಪುಜಿ.
 later_country_pack	ನನೊಂಜಿ ಸರ್ತಿ: ಸೆಟ್ಟಿಂಗ್ಸ್ → ತೆರಿಗೆ ಬೊಕ್ಕ ಪಾವತಿ ಲೇಬಲ್ ಲೆಗ್ ನಿಕ್ಲೆನ ದೇಶದ ಪ್ಯಾಕ್ ನ್ ಅನ್ವಯಿಸೊಡು.
 local_badge	ಸ್ಥಳೀಯ
 mix_type_hint_kirano	ಬೋಡಾಂಡ ನಗದು / UPI / ಕಾರ್ಡ್ / ಕ್ರೆಡಿಟ್ ನ್ ಪಾಡ್ಲೆ. ಕ್ರೆಡಿಟ್ ಗ್ ಮಿತ್ತ್ ಒರಿ ಗ್ರಾಹಕೆರ್ ಬೋಡು.
@@ -899,8 +751,6 @@ staff_copy_need_source	ನಕಲು ಮಲ್ಪುನ ಸೆಟಪ್ ನ್ �
 staff_copy_same	ಅವು ಅದೇ ವ್ಯಕ್ತಿ - ಬೇತೆ ಒರಿನ್ ಆಯ್ಕೆ ಮಲ್ಪುಲೆ
 staff_rename_need_selected	ಸುರುಕು ಏರೆಗ್ ಪುದರ್ ಬದಲಾವಣೆ ಮಲ್ಪೊಡು ಪನ್ಪಿನೆನ್ ಆಯ್ಕೆ ಮಲ್ಪುಲೆ
 team_pick_hint	ಏರೆನ್ ಎಡಿಟ್ ಮಲ್ಪೊಡು ಪನ್ಪಿನೆನ್ ಆಯ್ಕೆ ಮಲ್ಪುಲೆ — ಪರದೆಲು, ದುಡ್ಡುದ ಹಕ್ಕುಲು, ಬೊಕ್ಕ ನಿಲ್ದಾಣೊಲು ಆ ವ್ಯಕ್ತಿಗ್ ಮಾತ್ರ ತೋಜುಂಡು.
-team_stations_help	ಅಕುಲು ಬಳಕೆ ಮಲ್ಪುನ ನಿಲ್ದಾಣೊಲು
-team_stations_changed	ನಿಲ್ದಾಣೊಲು ಬದಲಾತ್ಂಡ್ — ಈ ವ್ಯಕ್ತಿಗ್ ಸೆಟಪ್ ನ್ ಉಳಿತಾಯ ಮಲ್ಪುಲೆ
 team_features_changed	ಪರದೆಲು ಬದಲಾತ್ಂಡ್ — ಈ ವ್ಯಕ್ತಿಗ್ ಸೆಟಪ್ ನ್ ಉಳಿತಾಯ ಮಲ್ಪುಲೆ
 team_rights_changed	ಹಕ್ಕುಲು ಬದಲಾತ್ಂಡ್ — ಈ ವ್ಯಕ್ತಿಗ್ ಸೆಟಪ್ ನ್ ಉಳಿತಾಯ ಮಲ್ಪುಲೆ
 they_owe_us	ಅಕುಲು ಎಂಕ್ಲೆಗ್ ಬಾಕಿ ಉಂಡು
@@ -984,9 +834,6 @@ service_pct_ph	ಸೇವೆ % ಐಚ್ಛಿಕ 0/10/12
 short_code_ph	ಸಣ್ಣ ಸಂಕೇತ (ಎಂಜಿ02)
 starting_password_ph	ಸುರುತ ಗುಪ್ತಪದ (ಐಚ್ಛಿಕ)
 starting_pin_ph	ಸುರು PIN (4–12 ಅಂಕೆಲು)
-station_name_ph	ನಿಲ್ದಾಣದ ಪುದರ್ (ಐಚ್ಛಿಕ)
-station_new_ph	ವಿಭಾಗ (ಐಚ್ಛಿಕ)
-table_name_ph	ಕೌಂಟರ್ / ಬೇ ಪುದರ್
 tax_rate_ph	ತೆರಿಗೆ ದರೊತ ಪುದರ್ ಅತ್ತ್ಂಡ % — ಪ್ರಮಾಣಿತ, ಕಡಿಮೆ, 0, 5, 12, 18, 20
 to_code_ph	ಕೋಡ್ ಮಲ್ಪೆರೆ (ಕೆಜಿ)
 uncleared_no_ph	ಮಿತ್ತ್ ದ # ತೆರಿಪಾವೊಂದಿಜ್ಜಿ
@@ -999,27 +846,8 @@ book_kind_month	ಈ ತಿಂಗೊಲುದ ಪುಸ್ತಕೊಲು
 book_kind_aging	ಬಾಕಿ ಉಪ್ಪುನ / ಡೆಬಿಟ್-ಕ್ರೆಡಿಟ್
 book_kind_balance	ಬ್ಯಾಲೆನ್ಸ್ ಶೀಟ್
 order_help	ಒಂಜಿ ಐಟಂನ್ ಸೇರಾವುನಗ ಒತ್ತುಲೆ.
-floor_help	ಈ ಅಂಗಡಿ ಕೌಂಟರ್ ಡ್ ಮಾರಾಟ ಆಪುಂಡು. ಟೇಬಲ್ ಬೊಕ್ಕ ಒಂಜಿ ಡೈನಿಂಗ್ ಫ್ಲೋರ್ ಕಿರಾನೊದ ಭಾಗ ಅತ್ತ್.
-kitchen_help	ಕೌಂಟರ್ ಶಾಪ್ ಡ್ ಬಳಕೆ ಆಪುಜಿ.
-kitchen_empty	ತೆರೆದಿತ್ತಿನ ಟಿಕೆಟ್ ಲು ಇಜ್ಜಿ (ಕೌಂಟರ್ ಅಂಗಡಿಲು ಸಾಮಾನ್ಯವಾದ್ ಈ ಪರದೆನ್ ಬಳಕೆ ಮಲ್ಪಂದೆ ಬುಡ್ಪೆರ್).
-add_a_table	ಒಂಜಿ ಡೈನಿಂಗ್ ಟೇಬಲ್ ನ್ ಸೇರಾಲೆ
-add_station_heading	ಒಂಜಿ ಅಂಗಡಿ ವಿಭಾಗೊನು ಸೇರಾವೊಡು
 categories_help	ಆ ವಿಭಾಗೊಡು ಮಿತ್ತ್ ದ ಐಟಂನ್ ಫೈಲ್ ಮಲ್ಪರೆ ಉಪಯೋಗ ಮಲ್ಪುಲೆ ಪನ್ಪಿನೆನ್ ಒತ್ತುಲೆ. ಫೋಟೋ ವರ್ಗೊಗು ಒಂಜಿ ಚಿತ್ರೊನು ಕೊರ್ಪುಂಡು; ಒಂಜಿ ಇಜ್ಜಂದೆ ಅಯಿತ ಆರಂಭಿಕ ಅಕ್ಷರೊಲೆನ್ ತೋಜಾವುಂಡು.
 dish_search_ph	ಐಟಂಲೆನ್ ಅತ್ತ್ಂಡ ಸಣ್ಣ ಕೋಡ್ ನ್ ಸರ್ಚ್ ಮಲ್ಪುಲೆ...
-tile_free	ಖಾಲಿ ಉಂಡು
-tile_occupied	ಆಕ್ರಮಣ ಮಲ್ತೆರ್
-tile_food_ready	ಊಟ ತಯಾರ್
-tile_bill_printed	ಬಿಲ್ ಮುದ್ರಣ ಆತ್ಂಡ್
-tile_paid	ಪಾವತಿ ಮಲ್ತೆರ್
-tile_bill_btn	ಬಿಲ್
-tile_occupy_btn	ಅತಿಥಿಲೆನ್ ಕುಲ್ಲುಲೆ
-tile_free_btn	ಊಟದ ಮೇಜಿನ್ ಖಾಲಿ ಮಲ್ಪುಲೆ
-tile_ready_btn	ಊಟದ ಮೇಜಿನ್ ಖಾಲಿ ಮಲ್ಪುಲೆ
-tile_undo_bill	ಬಿಲ್ ನ್ ರದ್ದು ಮಲ್ಪುಲೆ
-summary_busy	ಊಟದ ಮೇಜಿಲು ಬಿಜಿ
-summary_to_collect	ಸಂಗ್ರಹ ಮಲ್ಪುನ
-summary_on_floor	ಊಟದ ಸಭಾಂಗಣೊಡು
-floor	ಅಂಗಡಿ
 sizes_as_items_ph	ಪ್ರತ್ಯೇಕ ವಸ್ತುಲೆನ ರೂಪೊಡು ಗಾತ್ರೊಲು (ಐಚ್ಛಿಕ) — ಅರ್ಧ=120, ಪೂರ್ತಿ=200
 dish_group_ph	ಪ್ಯಾಕ್ ಗಾತ್ರದ ಗುಂಪು (ಐಚ್ಛಿಕ) — ಉದಾ. ಅಟ್ಟ ೧ಕೆಜಿ / ೫ಕೆಜಿ
 discount	ರಿಯಾಯಿತಿ
@@ -1027,7 +855,6 @@ remove_discount	ರಿಯಾಯಿತಿನ್ ದೆತ್ತ್ ಪಾಡ್�
 apply_discount	ರಿಯಾಯಿತಿನ್ ಅನ್ವಯಿಸಲೆ
 save_opening_cash	ಸುರುತ ನಗದುನ್ ಉಳಿತಾಯ ಮಲ್ಪುಲೆ
 close_shift_print	ಶಿಫ್ಟ್ ನ್ ಮುಚ್ಚುಲೆ ಬೊಕ್ಕ ಸ್ಲಿಪ್ ನ್ ಮುದ್ರಿಸಲೆ
-area_prices_ph	ಪ್ರದೇಶದ ಬೆಲೆಲು (ಐಚ್ಛಿಕ) — AC=220, ಪಾರ್ಸೆಲ್=210
 discount_ph	೧೦% ಅತ್ತ್ಂಡ ೫೦
 discount_reason_ph	ಕಾರಣ (ಉದಾ. ನಿಯಮಿತ ಅತಿಥಿ, ತಡವಾದ್ ಆಹಾರ)
 opening_float_ph	ಇನಿ ಬೆಳಗ್ಗೆ ಡ್ರಾಯರ್ ಡ್ ದೀತಿನ ನಗದು
@@ -1037,34 +864,18 @@ shift_handover	ಶಿಫ್ಟ್ ಹಸ್ತಾಂತರ
 shift_since	ಈ ಬದಲಾವಣೆ
 expected_in_drawer	ಡ್ರಾಯರ್ ಡ್ ನಿರೀಕ್ಷೆ ಉಂಡು
 right_discount	ಒಂಜಿ ರಿಯಾಯಿತಿ ಕೊರ್ಲೆ
-floor_in_kitchen	ಪ್ರಗತಿಡ್ ಉಂಡು
-floor_eating	ಸೇವೆ ಮಲ್ತೆರ್
 pick_category	ಒಂಜಿ ವಿಭಾಗೊನು ಆಯ್ಕೆ ಮಲ್ಪುಲೆ
 close_category_list	ವರ್ಗ ಪಟ್ಟಿನ್ ಮುಚ್ಚುಲೆ
 new_category_row	ಪೊಸ ವಿಭಾಗ — ಈರ್ ಐಟಂನ್ ಉಳಿತಾಯ ಮಲ್ಪುನಗ ರಚನೆ ಆಪುಂಡು
 your_category	ನಿಕ್ಲೆನ ವಿಭಾಗ
 suggested_category	ಸೂಚಿಸಾಯಿನ — ಎಂಕಲೆನ ವಸ್ತುಲೆಡ್ದ್
 category_search_ph	ವರ್ಗ — ನಿಕ್ಲೆನವುನು ಸರ್ಚ್ ಮಲ್ಪುಲೆ ಅತ್ತ್ಂಡ ಪೊಸ ಒಂಜಿ ಟೈಪ್ ಮಲ್ಪುಲೆ
-line_sent_state	ಕಡಪುಡಿಯ
-line_nc_state	ಉಚಿತ (ಎನ್ ಸಿ) — ಶುಲ್ಕ ಬರ್ಪುಜಿ
 cancel_item_short	ರದ್ದು ಮಲ್ಪುಲೆ
-nc_short	ಶುಲ್ಕ ಇಜ್ಜಿ
-charge_again_short	ಚಾರ್ಜ್
-move_short	ಮೂವ್
 cancel_item_title	ಈ ಐಟಂನ್ ರದ್ದು ಮಲ್ಪುಲೆ — ಬ್ಯಾಕ್ ಆಫೀಸ್ ಗ್ ರದ್ದು ಮಲ್ಪುನ ಸ್ಲಿಪ್ ಬರ್ಪುಂಡು
-nc_item_title	ಈ ಐಟಂನ್ ಅಭಿನಂದನಾ ಮಲ್ಪುಲೆ (ಎನ್ ಸಿ)
-charge_again_title	ಈ ಐಟಂನ್ ಪುನರ್ ಚಾರ್ಜ್ ಮಲ್ಪುಲೆ
-move_item_title	ಈ ವಸ್ತುನ್ ಬೇತೆ ಡೈನಿಂಗ್ ಟೇಬಲ್ ಗ್ ಪಾಡ್ಲೆ
-already_cooked	ದುಂಬೇ ಬೇಯಿದ್ಂಡ್ (ವ್ಯರ್ಥ)
-not_cooked_yet	ಇತ್ತೆ ಬೇಯಿಜ್ಜಿ
 return_to_customer	ಗಿರಾಕಿಗ್ ವಾಪಸ್ ಕೊರ್ಲೆ
 short_by	ಶಾರ್ಟ್ ಬೈ
 tip_not_sale	ಸಲಹೆ (ಸಿಬ್ಬಂದಿಲೆನ, ಮಾರಾಟ ಅತ್ತ್)
 right_settle	ಪಾವತಿ ದೆತೊನ್ಲೆ
-right_cancel_sent	ಕಡಪುಡುನ ಒಂಜಿ ಐಟಂನ್ ರದ್ದು ಮಲ್ಪುಲೆ
-right_complimentary	ಅಭಿನಂದನಾ (ಎನ್ ಸಿ)
-right_move_table	ಕೌಂಟರ್ ಲೆನ್ ಮೂವ್ / ಮರ್ಜ್ ಮಲ್ಪುಲೆ
-right_reprint	ಮತ್ತೆ ಬಿಲ್ ಮುದ್ರಣ ಮಲ್ಪುಲೆ
 right_allowed	ಅನುಮತಿ ಉಂಡು
 right_with_approval	ಅನುಮೋದನೆದೊಟ್ಟುಗು
 right_denied	ಅನುಮತಿ ಇಜ್ಜಿ
@@ -1074,25 +885,11 @@ no_server_found	ಒವ್ವೆಲಾ ತೋಜಿಜಿ. ಸರ್ವರ್ ಡ
 servers_found_pick	ಈರ್ ಸಂಪರ್ಕ ಮಲ್ಪೊಡು ಪನ್ಪಿನ ಅಂಗಡಿನ್ ಟ್ಯಾಪ್ ಮಲ್ಪುಲೆ.
 server_host_selected	{host} ನ್ ಬಳಸದ್ — ಜೋಡಿ ಮಲ್ಪುನ ಸಂಕೇತೊನು ನಮೂದು ಮಲ್ಪುಲೆ, ಬೊಕ್ಕ ಇತ್ತೆ ಜೋಡಿ ಮಲ್ಪುಲೆ.
 print_bill	ಮುದ್ರಣ ಬಿಲ್
-table_actions	ಪ್ರತಿಕ್ರಮೊಲು
-move_merge_table	ಡೈನಿಂಗ್ ಟೇಬಲ್ ನ್ ಮೂವ್ / ಮರ್ಜ್ ಮಲ್ಪುಲೆ
-move_help	ಈ ಕೌಂಟರ್ ದ ಆದೇಶೊನು ಒಂಜಿ ಉಚಿತ ಟೇಬಲ್ ಗ್ ಮುಟ್ಟಾಲೆ, ಅತ್ತಂದೆ ಒಂಜಿ ರನ್ನಿಂಗ್ ಟೇಬಲ್ ಗ್ ವಿಲೀನ ಮಲ್ಪುಲೆ.
-move_target_ph	ಕೌಂಟರ್ ಪುದರ್
 approval_pin_ph	ಮ್ಯಾನೇಜರ್ PIN (ಕೇನ್ಂಡ ಮಾತ್ರ)
-move_here	ಮುಲ್ಪ ಪೋಲೆ
-merge_into	ಅಯಿಟ್ ಒಟ್ಟು ಸೇರುಲೆ
-line_reason_ph	ಕಾರಣ (ಉದಾ. ಗ್ರಾಹಕೆರ್ ಮನಸ್ ಬದಲಾವಣೆ ಮಲ್ತೆರ್, ಸ್ಟಾಕ್ ಇಜ್ಜಿ)
-line_qty_ph	ಎಂಚ ರದ್ದು ಮಲ್ಪೊಡು (ಖಾಲಿ = ಮಾತಾ)
-line_target_ph	ಡೈನಿಂಗ್ ಟೇಬಲ್ ಗ್ ಪೋಲೆ (ಉದಾ. ಡಿ5)
 confirm	ಖಚಿತ್ ಮಲ್ಪುಲೆ
 menu_search_ph	ಐಟಂ ಅತ್ತ್ಂಡ ಸಣ್ಣ ಸಂಕೇತೊನು ಸರ್ಚ್ ಮಲ್ಪುಲೆ
 customer_paid_ph	ಗ್ರಾಹಕೆರ್ ಪಾವತಿ ಮಲ್ತೆರ್
 tip_ph	ಸಲಹೆ
-table_area_ph	ಪ್ರದೇಶ (ಉದಾ. ಡೈನ್ ಇನ್, ಪಾರ್ಸೆಲ್, ಎಸಿ)
-table_range_ph	ಒಂಜೇ ಸರ್ತಿಡ್ ಮಸ್ತ್: ಡಿ1-ಡಿ20
-add_these_tables	ಈ ಕೌಂಟರ್ ಲೆನ್ ಸೇರಾಲೆ
-remove_these_tables	ಈ ಕೌಂಟರ್ ಲೆನ್ ದೆತ್ತ್ ಪಾಡ್ಲೆ
-table_remove_ph	ತೆಗೆತ್ ಪಾಡ್ಲೆ: T1-T24, ಅತ್ತ್ಂಡ ಒಂಜಿ ಡೈನಿಂಗ್ ಟೇಬಲ್ ದ ಪುದರ್
 find_server	ಅಂಗಡಿದ ಸರ್ವರ್ ನ್ ತೂಲೆ
 bill_format	ಬಿಲ್ ಫಾರ್ಮ್ಯಾಟ್
 bill_format_help	ಪ್ರತಿಯೊಂಜಿ ಬಿಲ್ ಡ್ ನಿಕ್ಲೆನ ಅಂಗಡಿದ ಪುದರ್ ಡ್ ಮುದ್ರಿತ ಆತ್ಂಡ್. ಬೇತೆ ಬೇತೆ ಸಾಲುಲು | (ಉದಾ. ಎಂಜಿ ರಸ್ತೆ, ರಾಜ್ಕೋಟ್ | ಪಿಎಚ್ 98250 00000).
@@ -1100,78 +897,32 @@ bill_header_ph	ವಿಳಾಸ | ಫೋನ್
 fssai_ph	ಎಫ್ ಎಸ್ ಎಸ್ ಎಐ / ಅಂಗಡಿ ಲೈಸೆನ್ಸ್ ನಂ. (ಇಚ್ಛೆದ)
 bill_footer_ph	ಅಡಿಟಿಪ್ಪಣಿ (ಉದಾ. ಧನ್ಯವಾದೊಲು, ಮತ್ತೆ ಭೇಟಿ ಕೊರ್ಲೆ)
 save_bill_format	ಬಿಲ್ ಫಾರ್ಮ್ಯಾಟ್ ನ್ ಉಳಿತಾಯ ಮಲ್ಪುಲೆ
-kot_format	ಸ್ಲಿಪ್ ಫಾರ್ಮ್ಯಾಟ್
-kot_format_help	ಪಟ್ಟಿಡ್ ಒಂಜಿ ಕ್ಷೇತ್ರೊನು ಟ್ಯಾಪ್ ಮಲ್ಪುಲೆ. ಮಿತ್ತ್ ಆಯ್ಕೆ ಮಲ್ತಿನ ಸ್ಲಿಪ್ ರೀತಿದ ಆ ಕ್ಷೇತ್ರೊಗು ತೋಜಾವುನ, ಫಾಂಟ್ ಗಾತ್ರ, ಬೊಕ್ಕ ತೂಕ ಅನ್ವಯ ಆಪುಂಡು. ಪ್ರತಿಯೊಂಜಿ ಬಗೆಲಾ ಅಯಿತ ಸ್ವಂತ ಗಾತ್ರೊಲೆನ್ ಬೊಕ್ಕ ತೂಕೊಲೆನ್ ದೀವೊಂದಿಪ್ಪುಂಡು.
-kot_format_fields	ಕ್ಷೇತ್ರೊಲು
-kot_field_next	ದುಂಬುದ ಕ್ಷೇತ್ರ
-kot_field_show	ತೋಜಾಲೆ
-kot_field_hide	ಮುಚ್ಚಿಲೆ
 kot_field_on	ತೋಜಾಲೆ
 kot_field_off	ಮುಚ್ಚಿದ್ ದೀಲೆ
-kot_field_size	ಫಾಂಟ್ ಗಾತ್ರ
-kot_field_size_ph	ಉದಾ. ೧೬, ೨೦, ೨೪, ೨೮, ೩೨…
 kot_weight_light	ಬೊಲ್ಪು
 bill_kot_panel_help	ಬಿಲ್ ಲೇಔಟ್ ಬೊಕ್ಕ ವಿಷಯದ ಅಗಲ. ಕ್ಯಾಶಿಯರ್ ಪಂಡ ಯಾನ್ ಬಿಲ್ ನ್ ಬುಡುಗಡೆ ಮಲ್ತೆರ್ ಅತ್ತಂದೆ ಸರಿ ಮಲ್ತೆರ್ - ಪೂರ್ತಿ ಮಾರಾಟದ ಕತೆ ಪುಸ್ತಕೊಲೆಡ್ ಉಪ್ಪುಂಡು.
 std_size_ph	ಉದಾ. ೧೮, ೨೦, ೨೬…
-kot_show_shop	ಅಂಗಡಿದ ಪುದರ್
-kot_hide_shop	ಅಂಗಡಿನ್ ಮುಚ್ಚುಲೆ
-kot_show_time	ಸಮಯ
-kot_hide_time	ಸಮಯ ಮುಚ್ಚುಲೆ
-kot_show_waiter	ಕ್ಯಾಷಿಯರ್
-kot_hide_waiter	ಕ್ಯಾಷಿಯರ್ ನ್ ಮುಚ್ಚುಲೆ
-kot_show_station	ನಿಲ್ದಾಣ
-kot_hide_station	ನಿಲ್ದಾಣೊನು ಮುಚ್ಚುಲೆ
-kot_show_table	ಕೌಂಟರ್
-kot_hide_table	ಊಟದ ಮೇಜಿನ್ ಮುಚ್ಚುಲೆ
-kot_show_kot_no	ಟಿಕೆಟ್ ಸಂಖ್ಯೆ
-kot_hide_kot_no	ಟಿಕೆಟ್ ಸಂಖ್ಯೆನ್ ಮುಚ್ಚುಲೆ
-kot_width	ಪೂರ್ವವೀಕ್ಷಣೆ ಸುತ್ತು (ಸ್ಲಿಪ್ ಟ್ಯಾಬ್ ಡ್ ವಿಷಯದ ಅಗಲೊನು ನಿಗದಿ ಮಲ್ಪುಲೆ)
-kot_width_58	58 mm
-kot_width_80	80 mm
-kot_kind_heading	ಟಿಕೆಟ್ ದ ರೀತಿ
-kot_kind_original	ಮೂಲ
-kot_kind_duplicate	ನಕಲು
-kot_kind_modified	ಮಾರ್ಪಾಡ್ ಮಲ್ತಿನ
-kot_kind_cancelled	ರದ್ದು ಮಲ್ತೆರ್
-kot_style_heading	ಕ್ಷೇತ್ರದ ಬಗೆತ ಗಾತ್ರ ಬೊಕ್ಕ ತೂಕ
-kot_style_title	ಶೀರ್ಷಿಕೆ
-kot_style_item_qty	ಐಟಂ · ಪ್ರಮಾಣ
-kot_style_field_pick	ಕ್ಷೇತ್ರೊನು ಆಯ್ಕೆ ಮಲ್ಪುಲೆ
 kot_weight_regular	ನಿಯಮಿತ
 kot_weight_bold	ಬೋಲ್ಡ್
-kot_align	ಅಲೈನ್ ಮಲ್ಪುಲೆ
 kot_align_start	ಸುರು ಮಲ್ಪುಲೆ
 kot_align_center	ಕೇಂದ್ರ
 kot_align_end	ಮುಗಿಪು
 content_width	ವಿಷಯದ ಅಗಲ (ಎಂಎಂ)
 content_width_bill	ಬಿಲ್ ವಿಷಯದ ಅಗಲ (ಎಂಎಂ)
-content_width_kot	ಟಿಕೆಟ್ ವಿಷಯದ ಅಗಲ (ಎಂಎಂ)
 content_width_ph	ಅತ್ತ್ಂಡ ಒಂಜಿ ವಿಷಯದ ಅಗಲೊನು ಟೈಪ್ ಮಲ್ಪುಲೆ, 40–210 ಮಿಮೀ
 content_width_help	ಈ ಸ್ಲಿಪ್ ಎಂಚ ಅಗಲೊಡು ಮುದ್ರಣ ಆಪುಂಡು. ಬಿಲ್ ತನ್ನ ಸ್ವಂತ ಅಗಲೊನು ದೀವೊಂದುಂಡು.
 content_width_bill_help	ಗ್ರಾಹಕೆರೆನ ಬಿಲ್ ಎಂಚ ಅಗಲ ಆಪುಂಡು. ಡಿಫಾಲ್ಟ್ 210 ಎಂಎಂ (ಪುಟ). 58 ಎಂಎಂ ಕಿರಿದಾದ ಸ್ಲಿಪ್, 80 ಎಂಎಂ ಅಗಲದ ಸ್ಲಿಪ್, 112 ಎಂಎಂ 4-ಇಂಚ್, 210 ಎಂಎಂ ಎ4-ಅಗಲ. 40 ರ್ದ್ 210 ಮುಟ್ಟ ಏತ್ ಮೌಲ್ಯೊನು ಟೈಪ್ ಮಲ್ಪುಲೆ. ಟಿಕೆಟ್ ಲೆಗ್ ಸ್ಲಿಪ್ ಟ್ಯಾಬ್ ಡ್ ಅಯಿಕ್ಲೆನ ಅಗಲ ಉಪ್ಪುಂಡು.
-content_width_kot_help	ಟಿಕೆಟ್ ಮುದ್ರಣ ಎಂಚ ಅಗಲ ಆಪುಂಡು. ಡಿಫಾಲ್ಟ್ 80 ಎಂಎಂ. 58 ಎಂಎಂ ಕಿರಿದಾದ ಸ್ಲಿಪ್, 80 ಎಂಎಂ ಅಗಲದ ಸ್ಲಿಪ್, 112 ಎಂಎಂ 4-ಇಂಚ್, 210 ಎಂಎಂ ಪುಟ. 40 ರ್ದ್ 210 ಮುಟ್ಟ ಏತ್ ಮೌಲ್ಯೊನು ಟೈಪ್ ಮಲ್ಪುಲೆ. ಗ್ರಾಹಕೆರೆನ ಬಿಲ್ಲುಲು ಬಿಲ್ ಟ್ಯಾಬ್ ಡ್ ಅಕ್ಲೆನ ಸ್ವಂತ ಅಗಲೊನು ಪಡೆಯೊಂದಿಪ್ಪುಂಡು.
 vp_paper_width	ವಿಷಯದ ಅಗಲ (ಎಂಎಂ)
 vp_paper_width_ph	ಅತ್ತ್ಂಡ ಒಂಜಿ ವಿಷಯದ ಅಗಲೊನು ಟೈಪ್ ಮಲ್ಪುಲೆ, 40–210 ಮಿಮೀ
 vp_paper_width_help	ವಿಷಯದ ಅಗಲೊನು ಬಿಲ್ & ಸ್ಲಿಪ್ ಸ್ವರೂಪೊಡು ನಿಗದಿ ಮಲ್ಪುವೆರ್ - ಬಿಲ್ (ಪೂರ್ವನಿಯೋಜಿತ 210 ಎಂಎಂ) ಬೊಕ್ಕ ಟಿಕೆಟ್ (ಪೂರ್ವನಿಯೋಜಿತ 80 ಎಂಎಂ) ಗ್ ಪ್ರತ್ಯೇಕವಾದ್.
-kot_size	ಫಾಂಟ್ ಗಾತ್ರ
-kot_size_s	ಎಲ್ಯ
-kot_size_m	ಸಾಮಾನ್ಯ
-kot_size_l	ಮಲ್ಲ
 std_size	ಫಾಂಟ್ ಗಾತ್ರ
 kot_copies	ಪ್ರತಿಲು
 kot_copies_1	1
 kot_copies_2	2
 kot_copies_3	3
-kot_title_ph	ಶೀರ್ಷಿಕೆ (ಖಾಲಿ = ಟಿಕೆಟ್)
-kot_footer_ph	ಬ್ಯಾಕ್-ಆಫೀಸ್ ಟಿಪ್ಪಣಿ (ಐಚ್ಛಿಕ)
-kot_preview	ಪೂರ್ವವೀಕ್ಷಣೆ
-save_kot_format	ಸ್ಲಿಪ್ ಫಾರ್ಮ್ಯಾಟ್ ನ್ ಉಳಿತಾಯ ಮಲ್ಪುಲೆ
-test_kot_format	ಪರೀಕ್ಷಾ ಮುದ್ರಣ
-test_kot_sent	ಟಿಕೆಟ್ ಪೂರ್ವವೀಕ್ಷಣೆ ಕಡಪುಡು
 test_bill_format	ಪರೀಕ್ಷಾ ಬಿಲ್
 test_bill_sent	ಬಿಲ್ ಪೂರ್ವವೀಕ್ಷಣೆ ಕಡಪುಡು
 test_print_no_printer	ಆ ಬೇಲೆಗ್ ಮುದ್ರಕ ಇಜ್ಜಿ — ಈ ಪರದೆಡ್ ಒಂಜಿನ್ ಆಯ್ಕೆ ಮಲ್ಪುಲೆ
-kot_format_saved	ಸ್ಲಿಪ್ ಫಾರ್ಮ್ಯಾಟ್ ಉಳಿತಾಯ ಆತ್ಂಡ್
 std_print	ಬಿಲ್ ಮುದ್ರಣದ ಗಾತ್ರ
 std_print_help	ಓಎಸ್ / ಡಾಕ್ಯುಮೆಂಟ್ ಪ್ರಿಂಟರ್ ಲೆಡ್ ಸ್ಟ್ಯಾಂಡರ್ಡ್ ಪೋರ್ಟ್ರೇಟ್ ಬೊಕ್ಕ ಲ್ಯಾಂಡ್ ಸ್ಕೇಪ್ ಬಿಲ್ ಜೋಬ್ಸ್ ಗ್ ಫಾಂಟ್ ಸೈಜ್ (ಪಾಯಿಂಟ್ ಲೆನ್ ನಮೂದು ಮಲ್ಪುಲೆ — ಎಲ್ಯ/ಸಾಮಾನ್ಯ/ಮಲ್ಲ ಅತ್ತ್). ರಡ್ಡ್ ದಿಕ್ಕುಲೆಡ್ಲಾ ಒಂಜೇ ಗಾತ್ರ.
 std_size_s	ಎಲ್ಯ
@@ -1211,23 +962,16 @@ upi_qr	UPI QR
 show_upi_qr	UPI QR ನ್ ತೋಜಾಲೆ
 close_upi_qr	ಮುಚ್ಚ
 upi_qr_help	ಗ್ರಾಹಕೆರ್ ಸ್ಕ್ಯಾನ್ ಮಲ್ಪುವೆರ್ ಬೊಕ್ಕ ಪಾವತಿ ಮಲ್ಪುವೆರ್. ಅಕುಲು ಪಾವತಿ ಮಲ್ತಿನ ಬುಕ್ಕೊ ಪಾವತಿ ದೆತೊನ್ಲೆ ಪನ್ಪಿನೆನ್ ಒತ್ತುಲೆ. ರಡ್ಡನೆ ಪರದೆ: LAN ಡ್ ಸರ್ವರ್ URL /display ನ್ ತೆರೆಲೆ.
-kot_recall	ನೆನಪು ಮಲ್ಪುಲೆ
 recently_done	ಇತ್ತೆ ಮಲ್ತೆರ್
-recall_kot_ph	ನೆನಪು ಮಲ್ಪುನ ಟಿಕೆಟ್ #
 role_help_customer	ಪಾತ್ರ: ಗ್ರಾಹಕೆರ್ — ಕ್ರೆಡಿಟ್ ಲೆಡ್ಜರ್ (ಅಕುಲು ಎಂಕ್ಲೆಗ್ ಬಾಕಿ ಉಂಡು). ಅದೇ ಗ್ರಾಹಕೆರ್ ಅತ್ತಂದೆ ಸರಬರಾಜುದಾರೆರ್ ಸ್ಟಾಕ್ ನ್ ಸಪ್ಲೈ ಮಲ್ಪೊಲಿ.
 role_help_both	ಪಾತ್ರೊಲು: ಗ್ರಾಹಕೆರ್ + ಪೂರೈಕೆದಾರೆರ್ — ಒರಿ ಗ್ರಾಹಕೆರ್ ಅತ್ತಂದೆ ಪೂರೈಕೆದಾರೆರ್, ಕ್ರೆಡಿಟ್ ಲೆಡ್ಜರ್ ಬೊಕ್ಕ ಪಾವತಿ ಮಲ್ಪುನ ಲೆಡ್ಜರ್ ಲು, ವರದಿಲೆಡ್ ನಿವ್ವಳ.
 role_help_supplier	ಪಾತ್ರ: ಪೂರೈಕೆದಾರ — ಖರೀದಿಲೆಗ್ ನಮ ಅಕ್ಲೆಗ್ ಬಾಕಿ ಉಂಡು.
-dine_in_pick_table	ಕೌಂಟರ್ ಶಾಪ್ ಡ್ ಬಳಕೆ ಆಪುಜಿ
-choose_table	ಕೌಂಟರ್ ನ್ ಆಯ್ಕೆ ಮಲ್ಪುಲೆ
-change_table	ಊಟದ ಮೇಜಿನ್ ಬದಲಾವೊಡು
-pick_table_banner	ಈ ಆದೇಶೊಗು ಒಂಜಿ ಡೈನಿಂಗ್ ಟೇಬಲ್ ನ್ ಆಯ್ಕೆ ಮಲ್ಪುಲೆ
 items_word	ಐಟಂಲು
 items_section	ಐಟಂಲು
 back_to_order	ಆದೇಶೊಗು ಪಿರ ಬಲೆ
 new_items_head	ಇತ್ತೆ ಕಡಪುಡುಜಿ
 price_ph	ಬೆಲೆ
 price_ph_gst_inside	ಬೆಲೆ ({tax} ಸೇರ್ದ್)
-cancel_needs_table	ಈರ್ ಪಾವತಿ ದೆತೊನುನ ಮುಟ್ಟ ಕೌಂಟರ್ ಸೆಲ್ಸ್ ಟಿಕೆಟ್ ಡ್ ಉಪ್ಪುಂಡು
 tax_rates_missing_hint	ಈ ವಸ್ತುಲೆಡ್ {tax} ದರ ಇಜ್ಜಿ — ವಸ್ತುಲೆಗ್ ತೆರಿಗೆ ದರ ನಿಗದಿ ಆತ್ಂಡ್ (ಬೆಲೆಲು ಈ ದುಂಬೇ {tax} ಸೇರ್ದ್ {tax} ನ್ ಒಳಗೊಂಡಿತ್ತುಂಡು)
 taxable_value	ತೆರಿಗೆ ಪಾಡುನ ಮೌಲ್ಯ
 gst_inside_price_note	({tax} ಸೇರ್ದ್)
@@ -1248,30 +992,11 @@ client_template_confirm	{title} ಡ್ದ್ {d} ಐಟಂಲೆನ್ ಸೇರ
 client_template_importing	{title} ಆಮದು ಮಲ್ಪುನ...
 client_template_done	{title} ಡ್ದ್ ಪ್ರತಿಯೊಂಜಿ ಐಟಂ ನಿಕ್ಲೆನ ಐಟಂಲೆಡ್ ಉಂಡು.
 client_template_imported	{title} ಡ್ದ್ {d} ಐಟಂಲೆನ್ ಬೊಕ್ಕ {c} ವಿಭಾಗೊಲೆನ್ ಸೇರ್ಸೊಂಡು
-resv_heading	ಮೀಸಲಾತಿ
-resv_name_ph	ಗ್ರಾಹಕೆರೆನ ಪುದರ್
-resv_phone_ph	ಫೋನ್ (ಐಚ್ಛಿಕ)
-resv_guests_ph	ಜನ
-resv_when_ph	ಏಪ — 20:30, ನಾಳೆ 13:00
-resv_table_ph	ಕೌಂಟರ್ (ಐಚ್ಛಿಕ)
-resv_add	ಪುಸ್ತಕ
-resv_seat	ಕುಲ್ಲುನ
-resv_none	ಬುಕ್ಕಿಂಗ್ ಬರ್ಪುಜಿ.
-guests_word	ಅತಿಥಿಲು
-delivery_by_ph	(ಸವಾರ ಅತ್ತಂದೆ ಸಿಬ್ಬಂದಿ ಪುದರ್) ಮೂಲಕ ವಿತರಣೆ
-kitchen_all_day	ಇತ್ತೆ ಅಡುಗೆ ಮಲ್ಪೆರೆ: {items}
-split_bill	ಸ್ಪ್ಲಿಟ್ ಬಿಲ್
-split_go	ಪ್ರತ್ಯೇಕ ಬಿಲ್ ಮಲ್ಪುಲೆ
 cancel	ರದ್ದು ಮಲ್ಪುಲೆ
 opening_client	ಕ್ಲೈಂಟ್ ನ್ ತೆರೆಯೊಂದುಲ್ಲೆರ್...
 preparing_desk	ಮೇಜಿನ್ ತಯಾರ್ ಮಲ್ತೊಂದುಲ್ಲೆ...
 opening_server	ಸರ್ವರ್ ತೆರೆಯೊಂದುಂಡು...
 creating_server	ಸರ್ವರ್ ರಚನೆ ಮಲ್ತೊಂದುಲ್ಲೆ...
-split_help	ಒರಿ ಗ್ರಾಹಕೆರ್ ಪಾವತಿ ಮಲ್ಪುನ ವಸ್ತುಲೆನ್ ಟ್ಯಾಪ್ ಮಲ್ಪುಲೆ · {n} ಆಯ್ಕೆ ಮಲ್ತೆರ್
-split_send_first	ಸುರುಕು ಸ್ಲಿಪ್ ಕಡಪುಡುಲೆ — ಬ್ಯಾಕ್ ಆಫೀಸ್ ಡ್ ಉಪ್ಪುನ ವಸ್ತುಲು ಮಾತ್ರ ಪ್ರತ್ಯೇಕ ಬಿಲ್ ಗ್ ಪೋವೊಲಿ
-split_pick_some	ಸುರುಕು ಪ್ರತ್ಯೇಕ ಬಿಲ್ ಗ್ ಐಟಂಲೆನ್ ಟ್ಯಾಪ್ ಮಲ್ಪುಲೆ
-split_done	ಪ್ರತ್ಯೇಕ ಬಿಲ್ ಮಲ್ತೆರ್ - ಉಂದು ಈ ಕೌಂಟರ್ ದ ಪಕ್ಕದ ನೆಲಟ್ ಉಂಡು
-split_marked	ಪ್ರತ್ಯೇಕ ಬಿಲ್
 order_empty_pick	ಆದೇಶ ಖಾಲಿ — ಐಟಂಲೆನ್ ದೆತೊನುನಗ ಮಿತ್ತ್ ಐಟಂಲೆನ್ ಸೇರಾಲೆ ಪನ್ಪಿನೆನ್ ಒತ್ತುಲೆ.
 add_dishes	ಐಟಂಲೆನ್ ಸೇರಾಲೆ
 order_so_far	ಈ ಆದೇಶೊಡು: {n} · {total}
@@ -1282,24 +1007,8 @@ pick_done_dd	ಮುಗಿಂಡ್ · {label}
 printer_route_mode	ಈ ಜಾಗೆಡ್ ಕೆಲವು ಮುದ್ರಕೊಲು ಇತ್ತ್ಂಡ
 printer_mode_first	ಸುರುಕು ಅಯಿನ್ ಕೆಲಸ ಮಲ್ಪುಂಡು
 printer_mode_all	ಮಾತಾ ಮುದ್ರಣ ಮಲ್ಪುಲೆ
-kot_show_area	ಪ್ರದೇಶ
-kot_hide_area	ಜಾಗೆನ್ ಮುಚ್ಚಿದ್ ದೀಲೆ
-kot_show_item_hdr	ಐಟಂ · ಪ್ರಮಾಣ
-kot_hide_item_hdr	ಕಾಲಮ್ ಲೆನ್ ಮರೆಮಾಚೊಡು
-kot_show_title	ಶೀರ್ಷಿಕೆ ಸಾಲು
-kot_hide_title	ಶೀರ್ಷಿಕೆನ್ ಮುಚ್ಚುಲೆ
-kot_field_order	ಮುದ್ರಣ ಆದೇಶ
 kot_field_up	ಮಿತ್ತ್ ಪೋಲೆ
 kot_field_down	ಕೆಳಗ್ ಪೋಲೆ
-kot_field_cycle	ದುಂಬುಗು ಆಯ್ಕೆ ಮಲ್ಪುಲೆ
-kot_field_select	ದುಂಬುಗು ಆಯ್ಕೆ ಮಲ್ಪುಲೆ
-kot_field_time	ಸಮಯ
-kot_field_kot_no	ಟಿಕೆಟ್ ಸಂಖ್ಯೆ
-kot_field_area	ಪ್ರದೇಶ
-kot_field_table	ಕೌಂಟರ್
-kot_field_shop	ಅಂಗಡಿದ ಪುದರ್
-kot_field_waiter	ಸಿಬ್ಬಂದಿ
-kot_field_station	ನಿಲ್ದಾಣ
 app_template_blurb_extra	ಅಂಚನೆ: ಮಾಲೀಕೆರ್ ಜಾಹಿರ್, ಅಡ್ಮಿನ್ ಆಸಿಫ್, ಕ್ಯಾಶಿಯರ್ ನವಾಜ್; ಎದುರುದ ಸೈಡ್ಬಾರ್; ಗಂಟೆದ ನಂತರದ ಇತಿಹಾಸ; ಇನಿ ಸ್ಟ್ರಿಪ್ ಆಫ್ ಮಲ್ಪುಲೆ; ಕಾಂಪ್ಯಾಕ್ಟ್ ಬಿಲ್.
 dishes_n	{n} ಐಟಂಲು
 recipe_ph	ಪಾಕವಿಧಾನ (ಐಚ್ಛಿಕ — ಕೌಂಟರ್ ಶಾಪ್ ಡ್ ಬಳಕೆ ಆವಂದಿನ)
@@ -1309,8 +1018,6 @@ low_stock_alert	ಕಮ್ಮಿ ಆವೊಂದುಂಡು — ಶೀಘ್ರ�
 unpriced_note	ನಿಕ್ಲೆನ ವಸ್ತುಲೆಡ್ {n} ವಸ್ತುಲೆಗ್ ಇತ್ತೆಲಾ ಬೆಲೆ ಇಜ್ಜಿ — ನಿಕುಲು ಒಂಜಿ ಸೆಟ್ ಮಲ್ಪುನ ಮುಟ್ಟ ಅವು 0 ಡ್ ಬಿಲ್ ಮಲ್ಪುಂಡು.
 show_unpriced	ಬೆಲೆ ಇಜ್ಜಂದಿನ ವಸ್ತುಲೆನ್ ಮಾತ್ರ ತೋಜಾಲೆ
 show_all_dishes	ಮಾತಾ ವಸ್ತುಲೆನ್ ತೋಜಾಲೆ
-role_waiter	ಕ್ಯಾಷಿಯರ್
-role_kitchen	ಅಂಗಡಿ
 role_title_rest_ph	ಪಾತ್ರದ ಶೀರ್ಷಿಕೆ (ಉದಾ. ಕ್ಯಾಪ್ಟನ್, ಮುಖ್ಯ ಅಡುಗೆ)
 preset_help_rest	ಕ್ಯಾಷಿಯರ್: ಮಾರಾಟ ಮಲ್ಪುಲೆ. ವ್ಯವಸ್ಥಾಪಕೆರ್: ಮಾರಾಟ + ವಸ್ತುಲು + ರದ್ದು/ತಿದ್ದುಪಡಿ.
 kind_raw	ಅಂಗಡಿದ ಉಪಯೋಗೊಗು ಕೊಂಡೊಂತೆರ್

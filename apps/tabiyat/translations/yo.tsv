@@ -80,28 +80,6 @@ applied	Ti a lo
 note_ph	Akiyesi (aṣayan)
 rounded	YIKA
 split	Pin
-send_kot	Firanṣẹ isokuso
-send_kot_to	Firanṣẹ → {kitchens}
-send_kot_again	Ṣafikun awọn nkan fun isokuso atẹle
-send_kot_held	Awọn nkan ti o wa ni idaduro - duro lati firanṣẹ
-reprint_kot	Tẹjade ti a ti yan lẹẹkansi
-reprint_kot_ok	Awọn nkan {n} ti a tẹjade lẹẹkansii · {slips} isokuso(s) → {kitchens}
-reprint_kot_needed	Fi isokuso ranṣẹ ni akọkọ - lẹhinna fi awọn oogun kun ati tẹ awọn ti o yan lẹẹkansi
-reprint_kot_none_selected	Gbogbo ohun ti a firanṣẹ ni a fo - tẹ ni titẹ ni kia kia lori awọn ti o fẹ tun tẹ sita
-reprint_kot_client	Print again ({n}) for {place} sent — the shop device prints it
-print_cancelled_kot	Tẹjade gbogbo ti paarẹ
-print_cancelled_kot_ok	Printed {n} cancelled items · {slips} slip(s) → {kitchens}
-print_cancelled_kot_needed	Ṣii tabili pẹlu awọn ohun ti o fagile ni akọkọ
-print_cancelled_kot_none	Ko si awọn ohun kan ti a fagile lori aṣẹ yii
-print_cancelled_kot_client	Ti fagilee titẹ sita ({n}) fun {place} ti a firanṣẹ - ẹrọ itaja naa tẹjade
-kot_banner	asia oninuure
-kot_banner_ph	Àsíá (òfo = kò sí)
-kot_item_prefix	Apejuwe ohun akojọ aṣayan
-kot_item_prefix_ph	f.eks. [A fagilee]
-kot_strike	Lu ohun kan orukọ
-kot_strike_note	Kọlu ohun kan akọsilẹ
-kot_strike_on	Lori
-kot_strike_off	Paa
 bill_item_layout	Ifilelẹ ohun akojọ aṣayan
 bill_item_layout_columns	Awọn ọwọn
 bill_item_layout_stacked	Tolera
@@ -130,8 +108,6 @@ bill_item_gap_em	Aafo (won)
 bill_item_qty_min	Iye min (won)
 bill_item_price_min	Iye owo iṣẹju (em)
 bill_item_amount_min	Iye min (em)
-kot_item_qty_width	ọwọn Qty
-kot_item_num_align	Qty deede
 bill_total_qty_label	Lapapọ qty aami
 bill_total_subtotal_label	Iha lapapọ aami
 bill_total_grand_label	Grand lapapọ aami
@@ -143,36 +119,9 @@ bill_item_piece_off	Paa
 bill_total_qty	Lapapọ qty
 bill_total_subtotal	Apapọ ipin
 bill_total_grand	Apapọ nla
-reprint_incl	Ninu titẹ
-reprint_skip	Rekọja
-reprint_skip_meta	Rekọja sita imularada
-kot_dest_hint	Ṣe atẹjade lori awọn atẹwe ti o yan si {kitchens} ni Eto → Awọn atẹwe
-kot_sent_hint	Ifijiṣẹ ikẹhin lọ si {kitchens}. Fọwọ ba lati ṣafikun awọn ohun kan fun iwe-owo atẹle — tabi Tẹjade isokuso lẹẹkansi fun ọkan kanna.
-kot_sent_printing	Slip sent to {kitchens} — printing
-kot_sent_not_printed	Isokuso ranṣẹ si {kitchens} ṣugbọn KO ṣe titẹ: {why}. Sọ fun ile itaja, lẹhinna ṣe atunṣe itẹwe naa ki o tun tẹ sita lẹẹkansi.
-kot_sent_screen	Isokuso ranṣẹ si {kitchens}
-kot_queued_shop	Slip for {place} → {kitchens} saved; the shop device prints it
-kot_job_label	Slip for {place} → {kitchens}
-kot_job_reached	Slip for {place} reached {kitchens}
 kot_unassigned	Ti ko ni ipin
-kot_unassigned_held	Awọn nkan {n} ti o mu laisi ibudo kan - duro lori laini lati firanṣẹ
-kot_station_ph	Ibusọ
-kot_station_dd	Ibusọ
-kot_station_dd_n	Station · {stations}
-kot_set_station	Lo ibudo yii
-kot_station_applied	Station set on {n} items: {station}
-kot_station_cleared	Ibudo nso lati awọn ohun kan {n}: {station}
-kot_station_needed	Yan apakan ibi-ifunni ni akọkọ
-kot_station_not_allowed	Ko gba ọ laaye lati lo apakan: {station}
-kot_station_none	Ko si awọn ibudo sibẹsibẹ - a ko lo lori ile itaja counter kan (Eto → Awọn agbegbe ti o ba nilo)
 pos_tab_items	Awọn ohun akojọ aṣayan ti a ṣafikun
 pos_tab_payment	Isanwo
-hold_send	Mu lati ibi idana ounjẹ
-hold_send_on	Ti o waye
-hold_send_meta	Ti o waye - kii ṣe lori isokuso yii
-station_remove	Yọ ibudo kuro
-station_remove_ph	Fọwọ ba ibudo kan ninu atokọ lati yọkuro rẹ
-station_removed	Ti kuro ni ibudo: {name}
 settings_hub_title	Eto
 settings_hub_help	Ṣii agbegbe kan ni akoko kan - yiyi kere si, awọn yiyan ti o mọ.
 settings_back	Pada
@@ -181,12 +130,10 @@ settings_sec_country	Orilẹ-ede & owo-ori
 settings_sec_tills	Awọn ẹrọ miiran
 settings_sec_brand	Aami rẹ
 settings_sec_units	Sipo & awọn iyipada
-settings_sec_pickers	Awọn agbegbe · awọn ibudo · awọn oṣuwọn owo-ori
+settings_sec_pickers	Awọn oṣuwọn owo-ori
 settings_sec_printers	Awọn ẹrọ atẹwe
 settings_sec_bill	Bill & Slip kika
 settings_sec_selling	Awọn ero & tita
-bill_kot_tab_bill	Owo alejo
-bill_kot_tab_kot	Isokuso
 settings_sec_alerts	Awọn itaniji
 alerts_help	Bawo ni awọn ifiranṣẹ ipo ṣe pẹ to loju iboju fun ọ (iwọle yii).
 snack_secs_ph	Awọn aaya (3–60, aiyipada 10)
@@ -237,8 +184,6 @@ counter	Atako
 dine_in	Atako
 takeaway	Gbigba kuro
 order	Ile ounjẹ ibere
-tables	Awọn iṣiro
-kitchen	Awọn apakan
 sales	Titaja
 sales_refunds	Tita & idapada
 day_close	Ojo sunmo
@@ -266,10 +211,6 @@ zero_sales_on	Gba 0 ₹
 zero_sales_off	Beere idiyele
 zero_sales_saved_on	Odo-iye tita laaye
 zero_sales_saved_off	Titaja gbọdọ ni idiyele ti o ga ju ₹0 lọ
-floor_areas_help	Awọn agbegbe jẹ awọn yara tabi awọn agbegbe lori ilẹ (Dine In, Parcel, AC…). Fi agbegbe kun ni akọkọ, lẹhinna fi awọn iṣiro sinu rẹ - agbegbe kọọkan jẹ ẹgbẹ ọtọtọ lori ilẹ.
-area_new_ph	Agbegbe titun / yara (fun apẹẹrẹ AC, Ọgba)
-add_area	Fi agbegbe kun
-area_added	Agbegbe “{name}” ti ṣetan — ṣafikun awọn iṣiro sinu rẹ
 no_favorites	Ko si awọn ayanfẹ sibẹsibẹ - ṣafikun awọn ohun akojọ aṣayan lati atokọ ni isalẹ.
 add_to_bill	Fi kun si owo
 added	Fi kun
@@ -280,19 +221,9 @@ chip_missing_customer	Onibara ti o yan sonu — mu lẹẹkansi
 chip_no_customer	Ko si alabara sibẹsibẹ - tẹ orukọ kan, lẹhinna tẹ Kirẹditi ni kia kia
 credit_summary_fmt	{} onibara · ṣiṣi kirẹditi {} · awọn ilọsiwaju ti o waye {}
 recent_label	Laipẹ:
-kot_new_waiting	NEW - nduro
-kot_preparing	Ìmúrasílẹ̀
-kot_ready_serve	SETAN — sin
-kot_done_cap	ṢEṢE
-kot_cancelled	A fagilee
-kot_start_btn	Bẹrẹ
-kot_mark_ready	Samisi setan
-kot_done_btn	Ti ṣe
-table_free	Ofo - tẹ ni kia kia lati bẹrẹ ibere kan
 start_order	Bẹrẹ ibere
 open_bill	Ṣii owo
 collect_payment	Gba owo sisan
-table_running	Nṣiṣẹ
 payment_pending	Owo sisan ni isunmọtosi ni
 collect_at_counter	gba ni counter
 inventory	Oja
@@ -325,7 +256,6 @@ ok	O DARA
 this_shop	Ipo olupin
 extra_till	Ipo onibara
 off	Paa
-tables_kitchen	Ifilelẹ itaja
 server	Ipo olupin
 client	Ipo onibara
 language_currency	Ede & owo
@@ -367,8 +297,6 @@ add_item_plain	Fi ohun akojọ aṣayan kun
 add_note	Fi akọsilẹ kun
 add_opening_balance	Ṣafikun iwọntunwọnsi ṣiṣi
 add_staff	Fi oṣiṣẹ kun
-add_station	Fi ibudo kun
-add_table	Fi tabili ounjẹ kun
 add_unit	Fi ẹyọkan kun
 add_use_name	Fikun-un / lo orukọ yii
 allow_extra_tills	Gba afikun tills
@@ -421,7 +349,6 @@ share_whatsapp	Pin WhatsApp
 lan_pages_heading	Awọn oju-iwe alabara lori Wi-Fi
 lan_pages_help	Lori Wi-Fi itaja yii, awọn oju-iwe alabara ṣiṣẹ fun igbimọ ifihan ati esi. Awọn eniyan lori data alagbeka nilo Awọsanma nigbamii. ebute kaadi tabi ọna asopọ isanwo jẹ iyan ati pe ko ṣe idiwọ counter.
 diag_send_heading	Pin pa yi ẹrọ
-kot_dest_heading	Ibusọ
 optional_login_heading	Iyan wiwọle
 rights_heading	Awọn ẹtọ
 ops_panel	Ops agbegbe
@@ -448,28 +375,6 @@ till_voucher_amt_ph	Iye iwe-ẹri (òfo = gbogbo)
 till_wallet_topup_ph	Top-soke apamọwọ iye
 till_voucher_issue_amt_ph	Ipinfunni iye owo iwe-ẹri
 till_voucher_issue_code_ph	Koodu iwe-ẹri tuntun
-split_evenly	Pin boṣeyẹ
-waitlist	Akojọ idaduro
-fire_course	Igbesẹ t’okan
-hold_item	Mu lati ibi idana ounjẹ
-waiter_call	Pe cashier
-waitlist_add	Fi kun si akojọ idaduro
-floor_view_grid	Akoj
-floor_view_layout	Ìfilélẹ
-floor_layout_x	X
-floor_layout_y	Y
-floor_layout_w	W
-floor_layout_h	H
-floor_layout_save	Fi eto pamọ
-floor_layout_open	Ṣii tabili ounjẹ
-floor_layout_edit	Ṣatunkọ ifilelẹ
-floor_layout_pick	Fọwọ ba tabili ounjẹ kan lati ṣatunkọ ifilelẹ rẹ
-floor_layout_saved	Ifilelẹ ti fipamọ
-floor_layout_nudge_left	← 20
-floor_layout_nudge_right	→ 20
-floor_layout_nudge_up	↑ 20
-floor_layout_nudge_down	↓ 20
-sibling_pickers_help	Tẹ Tan/Paa bi awọn ẹyọkan - tọju awọn agbegbe, awọn ibudo, ati awọn oṣuwọn owo-ori lati awọn oluyan ọjọ-si-ọjọ; poka aseku duro.
 bulk_price_apply	Waye iye owo olopobobo
 card_terminal_optional	ebute kaadi / ọna asopọ isanwo (aṣayan nigbati intanẹẹti wa)
 copy_report	Daakọ iroyin
@@ -495,7 +400,6 @@ import_day	Ojo agbewọle
 import_items_csv_plain	Ṣe agbewọle awọn nkan akojọ aṣayan CSV…
 import_parties_csv	Ṣe agbewọle awọn alabara ati awọn olupese CSV…
 item_name	Akojọ ohun akojọ orukọ
-kitchen_printing	Awọn ẹrọ atẹwe
 login_id_ph	Orukọ olumulo
 mark_cleared	Samisi nso
 new_party_clear	Onibara tabi olupese titun (fọọmu ti o han gbangba)
@@ -565,15 +469,6 @@ show	Fihan
 spreadsheet_csv	Iwe kika (CSV)
 start_fresh	Bẹrẹ alabapade
 stop_extra_tills	Da afikun tills
-floor_cols_ph	Awọn ọwọn
-floor_cols_fit	Iboju ibamu
-floor_cols_fit_sub	{n} yẹ nibi
-floor_cols_fits	yẹ
-floor_cols_scroll	yi lọ si ẹgbẹ
-floor_cols_min	Awọn ọwọn: o kere ju 1 - tabi fi silẹ ni ofo lati baamu iboju naa
-floor_zoom_auto	Aifọwọyi
-floor_zoom_out	Sun-un jade
-floor_zoom_in	Sun-un sinu
 backup_auto	Ṣe afẹyinti laifọwọyi ni gbogbo ọjọ · kẹhin {when} · awọn ọjọ 14 to kẹhin ni a tọju ni {dir}.
 backup_auto_none	Ṣe afẹyinti laifọwọyi ni gbogbo ọjọ - akọkọ nṣiṣẹ ni iṣẹju kan.
 backup_copy_to	Awọn ẹda tun lọ si {dir}.
@@ -591,7 +486,6 @@ new_pair_code	Koodu sisopọ tuntun
 pair_finishing	Ipari meji… lilo awọn iwe akọọlẹ ile itaja naa
 pair_opening	Ṣii titi…
 pair_copied	Dakọ koodu so pọ
-kot_waiting	Nduro lati firanṣẹ
 lan_offline_waiting	A ko le de ọdọ olupin itaja · {n} nduro
 lan_connecting	Nsopọ si rira…
 lan_live	Gbe
@@ -633,7 +527,6 @@ printers_routes_help	Wa awọn ẹrọ atẹwe ẹrọ ti mọ tẹlẹ. Fi wọ
 printer_assign_dd	Itẹwe gidi: {place}
 printer_assign_pick	Yan itẹwe gidi
 printer_profile_heading	Ìfilélẹ
-printer_send_heading	Ifijiṣẹ
 vp_delivery_heading	Ifijiṣẹ
 vp_delivery_help	Bii itẹwe fojuhan yii ṣe nfi awọn iṣẹ ranṣẹ - iwe OS, awọn baiti aise, tabi ESC/POS. Akoonu isokuso (iwọn iru, ipari, awọn ala) jẹ ipinnu nipasẹ iwe-owo / ọna isokuso, kii ṣe nibi.
 vp_type_size_heading	Iru iwọn
@@ -677,23 +570,13 @@ virtual_draft_send	Iye ṣeto fun atẹle foju itẹwe
 virtual_need_real	Yan itẹwe gidi kan ni akọkọ
 virtual_need_select	Yan itẹwe foju kan lati parẹ
 real_printer_selected	Ti yan: {name}
-station_group_heading	Foju itẹwe
-station_group_apply	Pa foju itẹwe
-station_group_applied	Parẹ
-station_group_empty	Yan itẹwe foju kan
-station_group_name_ph	Orukọ itẹwe foju (aṣayan)
-station_group_save	Ṣẹda foju itẹwe
-station_group_saved	Ti fipamọ itẹwe foju
-station_manage_heading	Fikun-un tabi yọ apakan ibi-ipinfunni kuro
 printers_routes_heading	Ibi ti awọn nkan tẹjade
 route_pick_heading	Ibi
 route_editing	Ṣiṣatunṣe: {name}
 route_assigned	Ṣe afikun {printer} si {place}
 route_already_assigned	Tẹlẹ lori aaye yii: {printer}
-route_removed	Ti yọ kuro {printer} lati {place}
 route_cleared	Pade {name}
 route_assigned_empty	Ko si lori ibi yi
-route_tap_remove	tẹ ni kia kia lati yọ kuro
 route_tap_select	tẹ ni kia kia lati yan
 route_tap_selected	yan
 route_pick_printer_first	Tẹ itẹwe ni akọkọ
@@ -714,35 +597,17 @@ printer_format_custom	Profaili aṣa tuntun
 printer_format_custom_label	Aṣa
 printer_format_custom_added	Profaili aṣa ti a ṣafikun fun aaye yii
 add_printer	Fi itẹwe kun
-remove_printer	Yọ kuro
 route_pick_ph	Bill tabi a dispensary apakan
 route_bill	Owo alejo
-route_default_kitchen	Ko si ibudo (awọn nkan ti a ko pin si)
-route_kot_station	Ibusọ
 route_dont_print	Ko si itẹwe
-stations_heading	Awọn ibudo
-stations_help	Awọn abala ipinfunni ẹgbẹ awọn oogun ati awọn atẹwe fun apakan ti ile itaja naa. So awọn ẹrọ atẹwe lati Eto → Awọn atẹwe, ṣeto ibere igbiyanju, lẹhinna Ni akọkọ ti o ṣiṣẹ tabi Tẹjade lori gbogbo. Awọn ayipada fipamọ bi o ṣe nlọ.
-station_print_heading	Awọn atẹwe fun ibudo yii
-station_print_help	Mu ibudo kan, lẹhinna so ọkan tabi diẹ ẹ sii atẹwe. ↑↓ ṣeto gbiyanju ibere. Ni akọkọ ti o ṣiṣẹ duro lẹhin aṣeyọri akọkọ; Tẹjade lori gbogbo awọn fifiranṣẹ si gbogbo itẹwe ti a so.
-station_print_pick_ph	Ibusọ lati ṣeto awọn atẹwe
 station_print_pick_first	Yan apakan ibi-ifunni ni akọkọ
-station_print_editing	Awọn atẹwe ṣiṣatunṣe fun “{name}”
-station_vps_dd	Awọn atẹwe fun ibudo yii
-station_vps_dd_n	{n} awọn atẹwe · tẹ ni kia kia lati yipada
 station_vps_empty	Ko si awọn atẹwe sibẹsibẹ - Wa wọn labẹ Eto → Awọn atẹwe
 bill_printers_dd	Awọn atẹwe fun owo
 bill_printers_dd_n	{n} awọn ẹrọ atẹwe fun owo naa · tẹ ni kia kia lati yipada
-job_layout	Ìfilélẹ
-job_delivery	Bawo ni a ṣe firanṣẹ iṣẹ naa
-job_delivery_help	Iwe aṣẹ OS, awọn baiti aise, tabi ESC/POS. Owo naa ati tikẹti ọkọọkan tọju tirẹ. Eyikeyi iṣẹ le lọ si eyikeyi itẹwe Wa ti fipamọ.
 station_vp_attached	Itẹwe so
 station_vp_detached	Itẹwe kuro lati ibudo
-station_print_summary	{mode} · {n} atẹwe
-station_print_summary_none	Ko si awọn atẹwe lori ibudo yii sibẹsibẹ - kii yoo tẹjade
-stations_none	Ko si awọn ibudo sibẹsibẹ - ṣafikun ọkan ni isalẹ. Awọn ibudo jẹ ajeku lori itaja counter kan - fi sofo.
 route_up	Soke
 route_down	Isalẹ
-route_remove	Yọ kuro
 route_clear	Ko o
 save_printers	Fi awọn atẹwe pamọ
 print_test_page	Tẹjade oju-iwe idanwo kan
@@ -751,23 +616,15 @@ test_page_no_printer	Ko si itẹwe fun {place} — so itẹwe kan mọ, lẹhinn
 test_page_pick_first	Yan awọn atẹwe fun oju-iwe idanwo ni akọkọ - lẹhinna Tẹjade oju-iwe idanwo kan
 test_printers_dd	Awọn atẹwe fun oju-iwe idanwo kan
 test_printers_dd_n	Awọn ẹrọ atẹwe {n} fun oju-iwe idanwo · tẹ ni kia kia lati yipada
-kot_test_printers_dd	Awọn ẹrọ atẹwe fun titẹ idanwo
-kot_test_printers_dd_n	{n} itẹwe(s) fun Titẹ Idanwo · tẹ ni kia kia lati yipada
 test_printer_picked	Idanwo lori: {name}
 test_printer_cleared	Ko ṣe idanwo lori: {name}
 test_page_sent_n	Oju-iwe idanwo ranṣẹ si awọn atẹwe {n}
-test_kot_pick_first	Mu itẹwe (awọn) fun titẹ Idanwo ni akọkọ — lẹhinna Idanwo titẹ
-test_kot_sent_n	Test print sent to {n} printer(s)
-cancel_pick	Samisi
-cancel_pick_on	Ti samisi
-cancel_pick_meta	Ti samisi fun fagilee
 batch_cancel	Fagilee ti samisi
 batch_cancel_n	Fagilee ti samisi ({n})
 batch_cancel_none	Samisi ọkan tabi diẹ ẹ sii awọn ohun ti a firanṣẹ ni akọkọ - lẹhinna Fagilee ti samisi
 batch_cancel_title	Fagilee awọn oogun ti o samisi - idi kan, yiyọ yiyọ kuro ni apakan kan
 batch_cancel_ok	{n} items cancelled · {slips} cancel slip(s) → {kitchens}
 batch_cancel_ok_noprint	Awọn ohun {n} ti fagile - titẹ sita laifọwọyi wa ni pipa, nitorinaa ko si ifagile isokuso
-no_printer_kitchen_station	Ko si itẹwe fun ibudo yẹn
 printers_saved	Ti fipamọ
 test_page_sent	Oju-iwe idanwo ranṣẹ - ṣayẹwo itẹwe naa
 test_page_sent_one	Oju-iwe idanwo ranṣẹ si {name} - ṣayẹwo itẹwe yẹn
@@ -783,10 +640,7 @@ cancelled	fagilee
 printers_tap_find	Tẹ Wa lati ṣe atokọ awọn atẹwe ẹrọ yi le lo.
 printers_none_found	Ko si ọkan ti a rii - tẹ orukọ itẹwe eto tabi IP kan (fun apẹẹrẹ 192.168.1.50).
 printer_from_find	Ti ṣe afikun {name}
-kot_printer_ph	Itẹwe fun yo
 bill_printer_ph	Itẹwe fun owo
-kot_print_on	Awọn tikẹti titẹ-laifọwọyi: Tan
-kot_print_off	Awọn tikẹti titẹ-laifọwọyi: Paa
 queue_refused	Ko gba nipasẹ ile itaja ({n}) - ṣayẹwo ọkọọkan ni tabili:
 clear_not_accepted	Ti ṣayẹwo - ko akojọ yii kuro
 device_name_ph	Orukọ ẹrọ yii
@@ -797,7 +651,6 @@ backup_failed	Afẹyinti aifọwọyi ti o kẹhin kuna: {e}
 backup_overdue	Ko si afẹyinti fun awọn ọjọ {n} - jẹ ki ohun elo naa ṣii lori ẹrọ yii ki o le ṣe afẹyinti.
 disk_low	Nikan {mb} MB ọfẹ lori ẹrọ yii - awọn afẹyinti yoo kuna laipẹ. Fi aaye diẹ silẹ.
 last_seen_devices	Ikẹhin ti a rii: {time}
-sync_interval	Muṣiṣẹpọ gbogbo {secs}s
 connection_to_shop	Asopọ si itaja
 supplier_name_ph	Orukọ olupese (tabi alabara)
 supplier_ph	Olupese
@@ -860,7 +713,6 @@ fresh_book_tabiyat	Alabapade = katalogi ofo (fi awọn ohun kan kun nigbamii). I
 fresh_selected	Ti yan tuntun - katalogi duro sofo. Tẹ Ti ṣee nigbati o ba ṣetan.
 gross_word	Lapapọ
 how_start	Bawo ni o ṣe fẹ bẹrẹ?
-kot_print_help_tabiyat	Ko lo lori a counter itaja.
 later_country_pack	Nigbamii: Eto → lo idii orilẹ-ede rẹ fun owo-ori ati awọn aami isanwo.
 local_badge	IBILE
 mix_type_hint_tabiyat	Pin kọja owo / UPI / kaadi / kirẹditi ti o ba nilo. Kirẹditi nilo alabara kan loke.
@@ -911,8 +763,6 @@ staff_copy_need_source	Yan iṣeto tani lati daakọ
 staff_copy_same	Ti o jẹ kanna eniyan - yan elomiran
 staff_rename_need_selected	Yan ẹni ti o gbọdọ tunrukọ lorukọ akọkọ
 team_pick_hint	Yan tani lati ṣatunkọ - awọn iboju, awọn ẹtọ owo, ati awọn ibudo yoo han fun ẹni yẹn nikan.
-team_stations_help	Awọn ibudo ti wọn le lo
-team_stations_changed	Awọn ibudo ti yipada - Fipamọ iṣeto fun eniyan yii
 team_features_changed	Awọn iboju ti yipada - Fipamọ iṣeto fun eniyan yii
 team_rights_changed	Awọn ẹtọ yipada - Fipamọ iṣeto fun eniyan yii
 they_owe_us	Won ni gbese wa
@@ -996,9 +846,6 @@ service_pct_ph	Iṣẹ% iyan 0/10/12
 short_code_ph	Koodu kukuru (MG02)
 starting_password_ph	Ọrọ igbaniwọle ibẹrẹ (aṣayan)
 starting_pin_ph	Bibẹrẹ PIN (awọn nọmba 4-12)
-station_name_ph	Orukọ ibudo (aṣayan)
-station_new_ph	Abala (aṣayan)
-table_name_ph	Counter / Bay orukọ
 tax_rate_ph	Orukọ oṣuwọn owo-ori tabi% - Iwọnwọn, Dinku, 0, 5, 12, 18, 20
 to_code_ph	Si koodu (kg)
 uncleared_no_ph	Aimọ # loke
@@ -1011,27 +858,8 @@ book_kind_month	Awọn akọọlẹ oṣu yii
 book_kind_aging	Dayato si / debiti-kirẹditi
 book_kind_balance	Iwe iwontunwonsi
 order_help	Fọwọ ba ohun akojọ aṣayan kan lati fi kun.
-floor_help	Ile itaja yii n ta ni ibi-itaja. Awọn tabili ati ilẹ jijẹ kii ṣe apakan ti Tabiyat.
-kitchen_help	Ko lo lori a counter itaja.
-kitchen_empty	Ko si awọn tikẹti ṣiṣi (awọn ile itaja ọja nigbagbogbo fi iboju yii silẹ ni ilokulo).
-add_a_table	Fi tabili ounjẹ kun
-add_station_heading	Ṣafikun apakan ibi-itọju kan
 categories_help	Tẹ Lo lati ṣe faili ohun akojọ aṣayan loke labẹ ẹka naa. Fọto yoo fun ẹya ni aworan kan; laisi ọkan o fihan awọn ibẹrẹ rẹ.
 dish_search_ph	Wa orukọ, iyọ tabi kooduopo…
-tile_free	Ofo
-tile_occupied	Ti tẹdo
-tile_food_ready	Ounje setan
-tile_bill_printed	Bill tejede
-tile_paid	Sanwo
-tile_bill_btn	Owo alejo
-tile_occupy_btn	Awọn alejo ijoko
-tile_free_btn	Vacate ile ijeun tabili
-tile_ready_btn	Vacate ile ijeun tabili
-tile_undo_bill	Yi owo pada
-summary_busy	ile ijeun tabili nšišẹ
-summary_to_collect	lati gba
-summary_on_floor	ninu ile ijeun alabagbepo
-floor	Itaja
 sizes_as_items_ph	Awọn iwọn bi awọn ohun akojọ aṣayan lọtọ (aṣayan) - Idaji = 120, Kikun = 200
 dish_group_ph	Agbara / ẹgbẹ idii (aṣayan) - fun apẹẹrẹ. 500mg rinhoho
 discount	Eni owo
@@ -1039,7 +867,6 @@ remove_discount	Yọ ẹdinwo kuro
 apply_discount	Waye eni
 save_opening_cash	Fi owo ṣiṣi pamọ
 close_shift_print	Pade naficula ati sita isokuso
-area_prices_ph	Awọn idiyele agbegbe (aṣayan) — AC=220, Parcel=210
 discount_ph	10% tabi 50
 discount_reason_ph	Idi (fun apẹẹrẹ alejo deede, ounjẹ pẹ)
 opening_float_ph	Owo ti a fi sinu apoti ni owurọ yi
@@ -1049,34 +876,18 @@ shift_handover	Yi lọ yi bọ handover
 shift_since	Yi naficula niwon
 expected_in_drawer	O ti ṣe yẹ ni duroa
 right_discount	Fun eni
-floor_in_kitchen	Ni ilọsiwaju
-floor_eating	Sin
 pick_category	Yan ẹka kan
 close_category_list	Pa akojọ ẹka
 new_category_row	Ẹka titun - ti a ṣẹda nigbati o ba fi ohun akojọ aṣayan pamọ
 your_category	Ẹka rẹ
 suggested_category	Daba - lati awọn nkan wa
 category_search_ph	Ẹka — wa tirẹ tabi tẹ ọkan tuntun
-line_sent_state	Ti firanṣẹ
-line_nc_state	Baramu (NC) - ko gba agbara
 cancel_item_short	Fagilee
-nc_short	Ko si idiyele
-charge_again_short	Gba agbara
-move_short	Gbe
 cancel_item_title	Fagilee nkan yii - ọfiisi ẹhin gba isokuso ifagile kan
-nc_item_title	Jẹ ki ohun akojọ aṣayan yii jẹ ibaramu (NC)
-charge_again_title	Gba agbara si nkan akojọ aṣayan yii lẹẹkansi
-move_item_title	Gbe nkan akojọ aṣayan yii lọ si tabili ounjẹ miiran
-already_cooked	Ti jinna tẹlẹ (egbin)
-not_cooked_yet	Ko jinna sibẹsibẹ
 return_to_customer	Pada si onibara
 short_by	Kukuru nipa
 tip_not_sale	Imọran (awọn oṣiṣẹ, kii ṣe tita)
 right_settle	Gba owo sisan
-right_cancel_sent	Fagilee ohun akojọ aṣayan ti a firanṣẹ
-right_complimentary	Ibaramu (NC)
-right_move_table	Gbe / dapọ awọn iṣiro
-right_reprint	Tẹ iwe-owo lẹẹkansii
 right_allowed	Ti gba laaye
 right_with_approval	Pẹlu ifọwọsi
 right_denied	Ko gba laaye
@@ -1086,25 +897,11 @@ no_server_found	Ko si ọkan ti a rii. Lori olupin naa: Eto → Awọn ẹrọ m
 servers_found_pick	Fọwọ ba ile itaja ti o fẹ sopọ si.
 server_host_selected	Lilo {host} — tẹ koodu isọpọ sii, lẹhinna Sopọ ni bayi.
 print_bill	Owo titẹ sita
-table_actions	Awọn iṣe counter
-move_merge_table	Gbe / dapọ ile ijeun tabili
-move_help	Gbe aṣẹ counter yii lọ si tabili ọfẹ, tabi dapọ si ọkan ti nṣiṣẹ.
-move_target_ph	Orukọ counter
 approval_pin_ph	Alakoso PIN (nikan ti o ba beere)
-move_here	Gbe nibi
-merge_into	Darapọ mọ rẹ
-line_reason_ph	Idi (fun apẹẹrẹ onibara yipada ọkan, ko si ni ọja)
-line_qty_ph	Bawo ni ọpọlọpọ lati fagilee (òfo = gbogbo)
-line_target_ph	Lọ si tabili ounjẹ (fun apẹẹrẹ D5)
 confirm	Jẹrisi
 menu_search_ph	Wa ohun akojọ aṣayan tabi koodu kukuru
 customer_paid_ph	Onibara san
 tip_ph	Imọran
-table_area_ph	Agbegbe (fun apẹẹrẹ Dine In, Parcel, AC)
-table_range_ph	Ọpọlọpọ ni ẹẹkan: D1-D20
-add_these_tables	Fi awọn iṣiro wọnyi kun
-remove_these_tables	Yọ awọn iṣiro wọnyi kuro
-table_remove_ph	Yọ: T1-T24, tabi ọkan ile ijeun orukọ
 find_server	Wa olupin ile itaja naa
 bill_format	Bill kika
 bill_format_help	Ti a tẹjade labẹ orukọ ile itaja rẹ lori gbogbo owo. Lọtọ ila pẹlu | (fun apẹẹrẹ MG Road, Rajkot | Ph 98250 00000).
@@ -1112,78 +909,32 @@ bill_header_ph	Adirẹsi | foonu
 fssai_ph	Iwe-aṣẹ oogun No. (aṣayan - ọrọ rẹ)
 bill_footer_ph	Ẹlẹsẹ (fun apẹẹrẹ, o ṣeun, ṣabẹwo lẹẹkansi)
 save_bill_format	Fi ọna kika owo pamọ
-kot_format	Isokuso kika
-kot_format_help	Fọwọ ba aaye kan ninu atokọ naa. Fihan, iwọn fonti, ati iwuwo lo si aaye yẹn lori iru isokuso ti a yan loke. Iru kọọkan tọju awọn iwọn ati iwuwo tirẹ.
-kot_format_fields	Awọn aaye
-kot_field_next	Aaye atẹle
-kot_field_show	Fihan
-kot_field_hide	Tọju
 kot_field_on	ifihan
 kot_field_off	tọju
-kot_field_size	Iwọn fonti
-kot_field_size_ph	f.eks. 16, 20, 24, 28, 32…
 kot_weight_light	Imọlẹ
 bill_kot_panel_help	Ifilelẹ Bill ati iwọn akoonu. Cashier ni ẹniti o funni tabi yanju owo naa - itan tita ni kikun duro ninu awọn iwe naa.
 std_size_ph	f.eks. 18, 20, 26…
-kot_show_shop	Orukọ itaja
-kot_hide_shop	Tọju itaja
-kot_show_time	Akoko
-kot_hide_time	Tọju akoko
-kot_show_waiter	Owo owo
-kot_hide_waiter	Tọju cashier
-kot_show_station	Ibusọ
-kot_hide_station	Tọju ibudo
-kot_show_table	Atako
-kot_hide_table	Tọju tabili ounjẹ
-kot_show_kot_no	Tiketi No
-kot_hide_kot_no	Tọju tikẹti No
-kot_width	Fidi awotẹlẹ (ṣeto iwọn akoonu lori taabu isokuso)
-kot_width_58	58 mm
-kot_width_80	80 mm
-kot_kind_heading	Tiketi iru
-kot_kind_original	Atilẹba
-kot_kind_duplicate	Ṣe pidánpidán
-kot_kind_modified	Títúnṣe
-kot_kind_cancelled	fagilee
-kot_style_heading	Iwọn iru aaye & iwuwo
-kot_style_title	Akọle
-kot_style_item_qty	Akojọ aṣyn ohun kan · Qty
-kot_style_field_pick	Yan aaye
 kot_weight_regular	Deede
 kot_weight_bold	Igboya
-kot_align	Sopọ
 kot_align_start	Bẹrẹ
 kot_align_center	Aarin
 kot_align_end	Ipari
 content_width	Ìbú àkóónú (mm)
 content_width_bill	Iwọn akoonu iwe-owo (mm)
-content_width_kot	Iwọn akoonu tikẹti (mm)
 content_width_ph	Tabi tẹ iwọn akoonu kan, 40-210 mm
 content_width_help	Bawo ni isokuso yii ṣe gbooro to. Bill ntọju awọn oniwe-ara iwọn.
 content_width_bill_help	Bawo ni jakejado owo onibara tẹ jade. Aiyipada 210 mm (oju-iwe). 58 mm isokuso dín, 80 mm jakejado isokuso, 112 mm 4-inch, 210 mm A4-jakejado. Tẹ eyikeyi iye lati 40 to 210. Tiketi ni ara wọn iwọn lori isokuso taabu.
-content_width_kot_help	Bawo ni awọn titẹ tikẹti jakejado. Aiyipada 80 mm. 58 mm isokuso dín, 80 mm jakejado isokuso, 112 mm 4-inch, 210 mm iwe. Tẹ eyikeyi iye lati 40 si 210. Awọn owo onibara ni iwọn tiwọn lori taabu Bill.
 vp_paper_width	Ìbú àkóónú (mm)
 vp_paper_width_ph	Tabi tẹ iwọn akoonu kan, 40-210 mm
 vp_paper_width_help	Iwọn akoonu ti ṣeto labẹ ọna kika Bill & Slip — lọtọ fun owo naa (aiyipada 210 mm) ati tikẹti (aiyipada 80 mm).
-kot_size	Iwọn fonti
-kot_size_s	Kekere
-kot_size_m	Deede
-kot_size_l	Tobi
 std_size	Iwọn fonti
 kot_copies	Awọn ẹda
 kot_copies_1	1
 kot_copies_2	2
 kot_copies_3	3
-kot_title_ph	Akọle (òfo = TICKET)
-kot_footer_ph	Akọsilẹ ile-iṣẹ afẹyinti (aṣayan)
-kot_preview	Awotẹlẹ
-save_kot_format	Fi ọna kika isokuso pamọ
-test_kot_format	Idanwo titẹ
-test_kot_sent	Tiketi awotẹlẹ rán
 test_bill_format	Owo idanwo
 test_bill_sent	Bill awotẹlẹ rán
 test_print_no_printer	Ko si itẹwe fun iṣẹ yẹn — yan ọkan loju iboju yii
-kot_format_saved	Ti fipamọ ọna kika isokuso
 std_print	Bill titẹ iwọn
 std_print_help	Iwọn Font fun Aworan Standard ati Awọn iṣẹ iwe-aṣẹ Ilẹ-ilẹ lori OS / awọn atẹwe iwe (tẹ awọn aaye sii - kii ṣe Kekere/Deede/Nla). Iwọn kanna lori awọn itọnisọna mejeeji.
 std_size_s	Kekere
@@ -1223,23 +974,16 @@ upi_qr	UPI QR
 show_upi_qr	Ṣe afihan UPI QR
 close_upi_qr	Sunmọ
 upi_qr_help	Onibara sikanu ati ki o sanwo. Tẹ Mu sisanwo lẹhin ti wọn sanwo. Iboju keji: ṣii URL olupin / ifihan lori LAN.
-kot_recall	Ranti
 recently_done	Laipe ṣe
-recall_kot_ph	Tiketi # lati ranti
 role_help_customer	Ipa: Onibara - iwe-kirẹditi kirẹditi (wọn jẹ wa). Onibara kanna tabi olupese le tun pese ọja iṣura.
 role_help_both	Awọn ipa: Onibara + Olupese - alabara kan tabi olupese, iwe-kirẹditi ati awọn iwe afọwọkọ sisan, apapọ ni Awọn ijabọ.
 role_help_supplier	Ipa: Olupese - a jẹ wọn fun awọn rira.
-dine_in_pick_table	Ko lo lori a counter itaja
-choose_table	Yan counter
-change_table	Yi tabili ounjẹ pada
-pick_table_banner	Mu tabili ounjẹ kan fun aṣẹ yii
 items_word	awọn ohun akojọ
 items_section	Awọn ohun akojọ aṣayan
 back_to_order	Pada si ibere
 new_items_head	Ko firanṣẹ sibẹsibẹ
 price_ph	Iye owo
 price_ph_gst_inside	Iye owo ({tax}pẹlu)
-cancel_needs_table	Counter tita duro lori tiketi titi ti o gba owo sisan
 tax_rates_missing_hint	Ko si oṣuwọn {tax} lori awọn nkan wọnyi - lori Iwọn owo-ori ṣeto Awọn nkan (awọn idiyele ti wa tẹlẹ pẹlu {tax} labẹ ifisi {tax})
 taxable_value	Iye owo-ori
 gst_inside_price_note	({tax} ifisi)
@@ -1260,30 +1004,11 @@ client_template_confirm	Ṣafikun awọn nkan {d} lati {title} bi? Awọn nkan t
 client_template_importing	Nkowọle {title}…
 client_template_done	Every item from {title} is on your items.
 client_template_imported	Awọn ohun {d} ti a ṣafikun ati awọn ẹka {c} lati {title}
-resv_heading	Awọn ifiṣura
-resv_name_ph	Orukọ onibara
-resv_phone_ph	Foonu (aṣayan)
-resv_guests_ph	Eniyan
-resv_when_ph	Nigbati - 20:30, ọla 13:00
-resv_table_ph	Onka (aṣayan)
-resv_add	Ni ipamọ tabili ounjẹ kan
-resv_seat	Ti joko
-resv_none	Ko si awọn ifiṣura bọ soke.
-guests_word	alejo
-delivery_by_ph	Ifijiṣẹ nipasẹ (ẹlẹṣin tabi orukọ oṣiṣẹ)
-kitchen_all_day	Lati se ni bayi: {items}
-split_bill	Pipin owo
-split_go	Ṣe iwe-owo lọtọ
 cancel	Fagilee
 opening_client	Nsii alabara…
 preparing_desk	Ngbaradi tabili…
 opening_server	Nsii olupin…
 creating_server	Ṣiṣẹda olupin…
-split_help	Tap the items one customer pays for · {n} picked
-split_send_first	Firanṣẹ isokuso akọkọ - awọn ohun kan nikan ni ọfiisi ọfiisi le lọ si iwe-owo lọtọ
-split_pick_some	Fọwọ ba awọn ohun kan fun iwe-owo lọtọ ni akọkọ
-split_done	Iwe-owo lọtọ ti a ṣe - o wa lori ilẹ lẹgbẹẹ counter yii
-split_marked	lọtọ owo
 order_empty_pick	Paṣẹ fun ofo - tẹ Fi awọn ohun kan kun ni kia kia lati mu awọn ohun kan.
 add_dishes	Fi awọn oogun kun
 order_so_far	Lori aṣẹ yii: {n} · {total}
@@ -1294,24 +1019,8 @@ pick_done_dd	Ti ṣe · {label}
 printer_route_mode	Ti o ba ti orisirisi awọn atẹwe lori ibi yi
 printer_mode_first	Akọkọ ti o ṣiṣẹ
 printer_mode_all	Tẹjade lori gbogbo
-kot_show_area	Agbegbe
-kot_hide_area	Tọju agbegbe
-kot_show_item_hdr	Akojọ aṣyn ohun kan · Qty
-kot_hide_item_hdr	Tọju awọn ọwọn
-kot_show_title	Laini akọle
-kot_hide_title	Tọju akọle
-kot_field_order	Tẹjade ibere
 kot_field_up	Gbe soke
 kot_field_down	Yi lọ si isalẹ
-kot_field_cycle	Yan atẹle
-kot_field_select	Yan atẹle
-kot_field_time	Akoko
-kot_field_kot_no	Tiketi No
-kot_field_area	Agbegbe
-kot_field_table	Atako
-kot_field_shop	Orukọ itaja
-kot_field_waiter	Oṣiṣẹ
-kot_field_station	Ibusọ
 app_template_blurb_extra	Bakannaa: Olohun Zahir, Admin Asif, Cashier Nawaz; iwaju legbe; itan lẹhin awọn wakati 4; Loni yọ kuro; owo iwapọ.
 dishes_n	Awọn nkan {n}
 recipe_ph	Ohunelo (iyan - a ko lo lori ile itaja counter kan)
@@ -1321,8 +1030,6 @@ low_stock_alert	Nṣiṣẹ kekere - ra laipẹ: {items}
 unpriced_note	Awọn ohun {n} lori awọn ohun rẹ ko ni idiyele sibẹsibẹ - wọn sanwo ni 0 titi ti o fi ṣeto ọkan.
 show_unpriced	Ṣe afihan awọn nkan nikan laisi idiyele
 show_all_dishes	Ṣe afihan gbogbo awọn nkan
-role_waiter	Owo owo
-role_kitchen	Itaja
 role_title_rest_ph	Akọle ipa (fun apẹẹrẹ Captain, Head Cook)
 preset_help_rest	Owo owo: ta. Alakoso: ta + awọn ohun akojọ aṣayan + ofo / atunṣe.
 kind_raw	Iṣakojọpọ idapọ

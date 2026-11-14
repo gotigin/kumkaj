@@ -1,16 +1,16 @@
 //! The phone's side of the shop LAN. One worker thread talks to the Server;
 //! the screen never waits on the Wi‑Fi.
 //!
-//! - **Queued** writes (KOT, payment, "bill, please") are saved on the phone
-//!   first (`lan_outbox`) and go to the Server in order — through a Wi‑Fi
-//!   drop or an app restart. Each carries its own request id, so a retry
-//!   after a lost reply is answered by the Server, not done twice. One the
-//!   Server turns down when it finally arrives (the table was settled at
-//!   the counter meanwhile) is kept on a "not accepted" list, with the
-//!   Server's words, until someone has seen it — never dropped silently.
-//! - **Now** writes (cancel, NC, move, print bill, void …) act on what the
-//!   Server holds this moment, so they are never kept for later: without
-//!   the Server they come back "can't reach the shop's server".
+//! - **Queued** writes (a payment) are saved on the phone first
+//!   (`lan_outbox`) and go to the Server in order — through a Wi‑Fi drop or
+//!   an app restart. Each carries its own request id, so a retry after a
+//!   lost reply is answered by the Server, not done twice. One the Server
+//!   turns down when it finally arrives (an item ran out meanwhile) is kept
+//!   on a "not accepted" list, with the Server's words, until someone has
+//!   seen it — never dropped silently.
+//! - **Now** writes (undo, void, settings …) act on what the Server holds
+//!   this moment, so they are never kept for later: without the Server they
+//!   come back "can't reach the shop's server".
 //! - The Server's books are pulled here too, and the screen is told when
 //!   they landed. A second thread prefers the live WebSocket (`/ws`) and
 //!   falls back to `/wait` so what another device did shows here at once;
@@ -35,10 +35,6 @@ pub enum Follow {
     Refresh,
     /// A payment: show its bill and offer Undo.
     Sale,
-    /// A printed bill: keep its text as the last receipt.
-    BillText,
-    /// The order moved: open this table once the Server agrees.
-    OpenTable(String),
 }
 
 /// One write for the Server.
@@ -47,15 +43,15 @@ pub struct Job {
     pub id: String,
     pub path: String,
     pub body: String,
-    /// What the person did ("KOT for D3"), for the waiting list and errors.
+    /// What the person did ("Payment ₹120 · counter"), for the waiting list
+    /// and errors.
     pub label: String,
     /// Status line once the Server agreed.
     pub done: String,
     pub follow: Follow,
-    pub table_id: String,
     /// Whose sign-in sends it: a staff id, or "owner".
     pub staff_key: String,
-    /// Keep it through a Wi‑Fi drop (KOT, payment); else it needs the Server now.
+    /// Keep it through a Wi‑Fi drop (a payment); else it needs the Server now.
     pub queued: bool,
 }
 
@@ -208,7 +204,6 @@ pub fn send(store: &Store, job: Job) -> Result<(), String> {
             path: job.path.clone(),
             body: job.body.clone(),
             label: job.label.clone(),
-            table_id: job.table_id.clone(),
             staff_id: job.staff_key.clone(),
             ..Default::default()
         })?;
@@ -238,7 +233,7 @@ pub fn want_sync() {
 /// A write the live socket carried got its answer (`outbox_reply`). The
 /// person hears it exactly as over HTTP: the Server's words, a refusal's
 /// reason, and what did not print (`print_problem`) — the socket used to
-/// only file the row away, so a waiter on a live link never heard "not
+/// only file the row away, so a cashier on a live link never heard "not
 /// printed" or "not accepted".
 fn answer_from_socket(store: &Store, id: &str, ok: bool, body: &serde_json::Value) {
     let label = store
@@ -364,11 +359,11 @@ fn worker(transport: &dyn Transport) {
 }
 
 /// Whether a worker round talks to the Server. Anything asked for goes at
-/// once — a KOT, a refresh, the regular pull. Unasked rounds (the 5 s tick)
+/// once — a payment, a refresh, the regular pull. Unasked rounds (the 5 s tick)
 /// knock only while the Server answers: out of reach, the next pull or the
 /// person's next action tries again, not every few seconds all evening.
-/// (An earlier backoff also skipped asked-for rounds, so a tablet's KOT
-/// could sit up to 20 s before reaching the kitchen.)
+/// (An earlier backoff also skipped asked-for rounds, so a till's payment
+/// could sit up to 20 s before reaching the counter.)
 fn round_due(asked: bool, online: Option<bool>) -> bool {
     asked || online != Some(false)
 }
@@ -568,7 +563,7 @@ pub fn pass(store: &Store, transport: &dyn Transport) -> bool {
     }
 
     // 1. Waiting writes, oldest first. One that cannot go stops the rest:
-    //    a payment must never reach the Server before its KOT.
+    //    writes reach the Server in the order they were made.
     for item in store.lan_outbox().unwrap_or_default() {
         let Some(link) = link_of(store, &item.staff_id) else {
             break;
@@ -777,7 +772,7 @@ pub(crate) fn reset_for_test() {
 mod tests {
     use super::*;
     use crate::domain::{new_id, Cart, Money, Product, StaffRole};
-    use crate::net::{Guard, RemoteKotRequest, Request};
+    use crate::net::{Guard, RemoteSaleRequest, Request};
     use std::path::Path;
     use std::sync::atomic::{AtomicBool, Ordering};
 
@@ -871,16 +866,15 @@ mod tests {
         std::env::temp_dir().join(format!("tabiyat-{name}-{}.sqlite3", new_id()))
     }
 
-    /// A Server (waiter Wasim 2222, Thali ₹200, table D1) and a phone paired
+    /// A Server (cashier Wasim 2222, Thali ₹200) and a phone paired
     /// to it with Wasim signed in. Returns (bench, phone store, Wasim's id).
     fn shop_and_phone() -> (Bench, Store, String) {
         reset_for_test();
         let server_path = temp("server");
         let server = Store::open_path(&server_path).unwrap();
         let owner = server.list_staff().unwrap().into_iter().next().unwrap();
-        server.add_staff("Wasim", StaffRole::Waiter, "Captain", "2222", &owner).unwrap();
+        server.add_staff("Wasim", StaffRole::Cashier, "Cashier", "2222", &owner).unwrap();
         server.upsert_product(&Product::new_basic(new_id(), "Thali", Money::from_rupees(200))).unwrap();
-        server.add_table_in_area("D1", "Dine In").unwrap();
         let bench = Bench {
             server: server_path,
             guard: Guard::default(),
@@ -910,33 +904,40 @@ mod tests {
         (bench, phone, wasim.id)
     }
 
-    fn kot_job(server: &Path, staff_key: &str) -> Job {
+    fn sale_job(server: &Path, staff_key: &str) -> Job {
         let books = Store::open_path(server).unwrap();
         let thali = books.list_products(false).unwrap().remove(0);
         let mut cart = Cart::default();
         cart.add_or_bump(&thali);
-        let body = serde_json::to_string(&RemoteKotRequest {
-            draft: cart.to_kot_draft().unwrap(),
-            table_name: Some("D1".into()),
-            table_id: None,
+        let body = serde_json::to_string(&RemoteSaleRequest {
+            draft: cart.to_sale_draft().unwrap(),
+            pay: "cash".into(),
+            customer_id: None,
+            customer_name: None,
+            payments: Vec::new(),
+            tendered_paise: 0,
+            tip_paise: 0,
+            redeem_loyalty_points: 0,
+            redeem_wallet_paise: 0,
+            redeem_voucher_code: String::new(),
+            redeem_voucher_paise: 0,
         })
         .unwrap();
         Job {
             id: new_id(),
-            path: "/kot".into(),
+            path: "/sale".into(),
             body,
-            label: "KOT for D1".into(),
-            done: "KOT for D1 reached the kitchen".into(),
+            label: "Payment · counter".into(),
+            done: "Payment reached the counter".into(),
             staff_key: staff_key.into(),
             queued: true,
             ..Job::default()
         }
     }
 
-    fn d1_lines(server: &Path) -> usize {
+    fn sales_on_server(server: &Path) -> usize {
         let books = Store::open_path(server).unwrap();
-        let d1 = books.list_tables().unwrap().into_iter().find(|t| t.name == "D1").unwrap();
-        books.running_order(&d1.id).unwrap().map(|o| o.lines.len()).unwrap_or(0)
+        books.recent_sales(100).unwrap().len()
     }
 
     /// A write the live socket carried: its answer reaches the screen like
@@ -946,7 +947,7 @@ mod tests {
         let _turn = one_at_a_time();
         let (bench, phone, wasim) = shop_and_phone();
         bench.up.store(false, Ordering::SeqCst);
-        let job = kot_job(&bench.server, &wasim);
+        let job = sale_job(&bench.server, &wasim);
         let id = job.id.clone();
         send(&phone, job).unwrap();
         assert!(take_done().is_empty());
@@ -957,7 +958,7 @@ mod tests {
         answer_from_socket(&phone, &id, true, &body);
         let said = take_done();
         assert_eq!(said.len(), 1);
-        assert_eq!(said[0].done, "KOT for D1 reached the kitchen");
+        assert_eq!(said[0].done, "Payment reached the counter");
         let reply = said[0].reply.as_ref().unwrap();
         assert!(reply["print_problem"].as_str().unwrap().contains("did not print"));
         assert!(phone.lan_outbox().unwrap().is_empty(), "filed as done");
@@ -966,57 +967,57 @@ mod tests {
         assert!(take_done().is_empty());
 
         // A refusal is said with the Server's words.
-        let job = kot_job(&bench.server, &wasim);
+        let job = sale_job(&bench.server, &wasim);
         let id = job.id.clone();
         send(&phone, job).unwrap();
-        let refused = serde_json::json!({ "ok": false, "error": "Not allowed to send to Tandoor", "code": "" });
+        let refused = serde_json::json!({ "ok": false, "error": "Not allowed to sell", "code": "" });
         answer_from_socket(&phone, &id, false, &refused);
         let said = take_done();
         assert_eq!(said.len(), 1);
-        assert_eq!(said[0].reply.as_ref().unwrap_err().to_string(), "Not allowed to send to Tandoor");
+        assert_eq!(said[0].reply.as_ref().unwrap_err().to_string(), "Not allowed to sell");
     }
 
     #[test]
     fn a_phone_keeps_orders_through_a_wifi_drop_and_sends_each_once() {
         let _turn = one_at_a_time();
-        // Wi‑Fi down: the KOT waits on the phone, nothing is lost.
+        // Wi‑Fi down: the payment waits on the phone, nothing is lost.
         let (bench, phone, wasim) = shop_and_phone();
         bench.up.store(false, Ordering::SeqCst);
-        send(&phone, kot_job(&bench.server, &wasim)).unwrap();
+        send(&phone, sale_job(&bench.server, &wasim)).unwrap();
         pass(&phone, &bench);
         assert_eq!(link_state().waiting, 1);
         assert_eq!(link_state().online, Some(false));
-        assert_eq!(d1_lines(&bench.server), 0);
+        assert_eq!(sales_on_server(&bench.server), 0);
         assert!(take_done().is_empty(), "nothing to report yet");
         // A "now" action while down says so plainly instead of hanging.
-        send(&phone, Job { id: new_id(), path: "/kot_advance".into(), body: r#"{"kot_id":"k"}"#.into(), staff_key: wasim.clone(), ..Job::default() }).unwrap();
+        send(&phone, Job { id: new_id(), path: "/undo".into(), body: r#"{"sale_id":"x"}"#.into(), staff_key: wasim.clone(), ..Job::default() }).unwrap();
         pass(&phone, &bench);
         let failed = take_done();
         assert_eq!(failed.len(), 1);
         assert!(failed[0].reply.as_ref().unwrap_err().is_offline());
 
-        // Wi‑Fi back: the KOT goes, and the books come down.
+        // Wi‑Fi back: the payment goes, and the books come down.
         bench.up.store(true, Ordering::SeqCst);
         pass(&phone, &bench);
-        assert_eq!(d1_lines(&bench.server), 1);
+        assert_eq!(sales_on_server(&bench.server), 1);
         let state = link_state();
         assert_eq!((state.online, state.waiting, state.refused), (Some(true), 0, 0));
         assert!(!state.updated_at.is_empty(), "the screen can say how fresh it is");
         let done = take_done();
         assert_eq!(done.len(), 1);
-        assert_eq!(done[0].done, "KOT for D1 reached the kitchen");
+        assert_eq!(done[0].done, "Payment reached the counter");
         assert!(take_synced());
-        assert!(phone.list_tables().unwrap().iter().any(|t| t.name == "D1"), "the Server's floor is on the phone");
+        assert!(phone.list_products(false).unwrap().iter().any(|p| p.name == "Thali"), "the Server's items are on the phone");
 
         // The Server did the work but its reply was lost: the retry is
-        // answered from the Server's record — still one KOT, not two.
+        // answered from the Server's record — still one sale, not two.
         bench.lose_reply.store(true, Ordering::SeqCst);
-        send(&phone, kot_job(&bench.server, &wasim)).unwrap();
+        send(&phone, sale_job(&bench.server, &wasim)).unwrap();
         pass(&phone, &bench);
-        assert_eq!(d1_lines(&bench.server), 2);
+        assert_eq!(sales_on_server(&bench.server), 2);
         assert_eq!(link_state().waiting, 1, "the phone could not tell it went");
         pass(&phone, &bench);
-        assert_eq!(d1_lines(&bench.server), 2, "sent once");
+        assert_eq!(sales_on_server(&bench.server), 2, "sent once");
         assert_eq!(link_state().waiting, 0);
         let answered = take_done();
         assert_eq!(answered.len(), 1);
@@ -1025,7 +1026,7 @@ mod tests {
         // A refusal leaves the queue (it would be refused forever) but is
         // never lost: it waits on the "not accepted" list, in the Server's
         // words, until someone has seen it.
-        let mut bad = kot_job(&bench.server, &wasim);
+        let mut bad = sale_job(&bench.server, &wasim);
         bad.body = r#"{"draft":{"lines":[]}}"#.into();
         send(&phone, bad).unwrap();
         pass(&phone, &bench);
@@ -1035,14 +1036,14 @@ mod tests {
         assert_eq!(link_state().waiting, 0);
         assert_eq!(link_state().refused, 1);
         let kept = phone.lan_refused().unwrap();
-        assert_eq!(kept[0].label, "KOT for D1");
+        assert_eq!(kept[0].label, "Payment · counter");
         assert!(!kept[0].error.is_empty(), "the Server's words are kept");
         clear_refused(&phone).unwrap();
         assert_eq!(link_state().refused, 0);
         assert!(phone.lan_refused().unwrap().is_empty());
 
         // An expired sign-in keeps the order and asks to sign in again.
-        send(&phone, kot_job(&bench.server, "someone-else")).unwrap();
+        send(&phone, sale_job(&bench.server, "someone-else")).unwrap();
         pass(&phone, &bench);
         assert!(link_state().needs_sign_in);
         assert_eq!(link_state().waiting, 1, "kept for after the sign-in");
@@ -1121,11 +1122,11 @@ mod tests {
             FoundServer { host: "192.168.1.40:7847".into(), venue: "Rajdhani".into(), server_id: new_id() },
             FoundServer { host: "192.168.1.23:7847".into(), venue: "Rajdhani".into(), server_id: id },
         ]);
-        send(&phone, kot_job(&bench.server, &wasim)).unwrap();
+        send(&phone, sale_job(&bench.server, &wasim)).unwrap();
         pass(&phone, &bench);
         assert_eq!(phone.server_url().unwrap().as_deref(), Some("http://192.168.1.23:7847"));
         pass(&phone, &bench);
-        assert_eq!(d1_lines(&bench.server), 1, "the waiting KOT reached the moved Server");
+        assert_eq!(sales_on_server(&bench.server), 1, "the waiting payment reached the moved Server");
         assert_eq!(link_state().online, Some(true));
         assert_eq!(link_state().waiting, 0);
     }
@@ -1143,11 +1144,11 @@ mod tests {
             FoundServer { host: "192.168.1.23:7847".into(), venue: String::new(), server_id: id.clone() },
             FoundServer { host: "192.168.1.24:7847".into(), venue: String::new(), server_id: id },
         ]);
-        send(&phone, kot_job(&bench.server, &wasim)).unwrap();
+        send(&phone, sale_job(&bench.server, &wasim)).unwrap();
         pass(&phone, &bench);
         assert_eq!(phone.server_url().unwrap().as_deref(), Some("http://shop"), "stays where it was");
-        assert_eq!(link_state().waiting, 1, "the KOT keeps waiting — nothing lost");
-        assert_eq!(d1_lines(&bench.server), 0);
+        assert_eq!(link_state().waiting, 1, "the payment keeps waiting — nothing lost");
+        assert_eq!(sales_on_server(&bench.server), 0);
     }
 
     /// Restarted while the Server is away, a device still says how old its

@@ -80,28 +80,6 @@ applied	Digunakan
 note_ph	Nota (pilihan)
 rounded	MEMBULAT
 split	Berpisah
-send_kot	Hantar slip
-send_kot_to	Hantar → {kitchens}
-send_kot_again	Tambah item untuk slip seterusnya
-send_kot_held	Item yang dipegang — lepaskan untuk menghantar
-reprint_kot	Cetakan dipilih semula
-reprint_kot_ok	Item {n} dicetak sekali lagi · Slip (s) {slips} → {kitchens}
-reprint_kot_needed	Hantar slip dahulu — kemudian masukkan ubat dan cetak semula yang terpilih
-reprint_kot_none_selected	Setiap item yang dihantar dilangkau — ketik Dalam cetakan pada item untuk dicetak semula
-reprint_kot_client	Cetak sekali lagi ({n}) untuk {place} dihantar — peranti kedai mencetaknya
-print_cancelled_kot	Cetak semua dibatalkan
-print_cancelled_kot_ok	Item {n} yang dicetak dibatalkan · Slip (s) {slips} → {kitchens}
-print_cancelled_kot_needed	Buka jadual dengan item yang dibatalkan dahulu
-print_cancelled_kot_none	Tiada item yang dibatalkan pada pesanan ini
-print_cancelled_kot_client	Cetakan dibatalkan ({n}) untuk {place} dihantar — peranti kedai mencetaknya
-kot_banner	Sepanduk yang baik hati
-kot_banner_ph	Sepanduk (kosong = tiada)
-kot_item_prefix	Awalan item menu menu
-kot_item_prefix_ph	cth. [DIBATALKAN]
-kot_strike	Nama item pukul
-kot_strike_note	Nota item mogok
-kot_strike_on	hidup
-kot_strike_off	Mati
 bill_item_layout	Susun atur item menu menu
 bill_item_layout_columns	Lajur
 bill_item_layout_stacked	Bertindan
@@ -130,8 +108,6 @@ bill_item_gap_em	Jurang (em)
 bill_item_qty_min	Kuantiti min (em)
 bill_item_price_min	Harga min (em)
 bill_item_amount_min	Amaun min (em)
-kot_item_qty_width	Lajur kuantiti
-kot_item_num_align	Kuantiti selaras
 bill_total_qty_label	Jumlah label kuantiti
 bill_total_subtotal_label	Sub jumlah label
 bill_total_grand_label	Label keseluruhan besar
@@ -143,36 +119,9 @@ bill_item_piece_off	Mati
 bill_total_qty	Jumlah kuantiti
 bill_total_subtotal	Jumlah kecil
 bill_total_grand	Jumlah besar
-reprint_incl	Dalam cetakan
-reprint_skip	Langkau
-reprint_skip_meta	Langkau cetakan pemulihan
-kot_dest_hint	Mencetak pada pencetak yang anda tetapkan kepada {kitchens} dalam Tetapan → Pencetak
-kot_sent_hint	Hantaran terakhir pergi ke {kitchens}. Ketik untuk menambah item untuk bil seterusnya — atau Cetak slip sekali lagi untuk bil yang sama.
-kot_sent_printing	Slip dihantar ke {kitchens} — mencetak
-kot_sent_not_printed	Slip dihantar ke {kitchens} tetapi TIDAK dicetak: {why}. Beritahu kedai, kemudian betulkan pencetak dan cetak semula.
-kot_sent_screen	Slip dihantar ke {kitchens}
-kot_queued_shop	Slip untuk {place} → {kitchens} disimpan; peranti kedai mencetaknya
-kot_job_label	Slip untuk {place} → {kitchens}
-kot_job_reached	Slip untuk {place} mencapai {kitchens}
 kot_unassigned	Tidak ditugaskan
-kot_unassigned_held	Memegang item {n} tanpa stesen — lepaskan talian untuk menghantar
-kot_station_ph	Stesen
-kot_station_dd	Stesen
-kot_station_dd_n	Stesen · {stations}
-kot_set_station	Gunakan stesen ini
-kot_station_applied	Set stesen pada item {n}: {station}
-kot_station_cleared	Stesen dibersihkan daripada item {n}: {station}
-kot_station_needed	Pilih bahagian dispensari dahulu
-kot_station_not_allowed	Tidak dibenarkan menggunakan bahagian: {station}
-kot_station_none	Tiada stesen lagi — tidak digunakan di kedai kaunter (Tetapan → Kawasan jika perlu)
 pos_tab_items	Menambah item menu
 pos_tab_payment	Bayaran
-hold_send	Tahan dari dapur
-hold_send_on	Diadakan
-hold_send_meta	Dipegang — bukan pada slip ini
-station_remove	Alih keluar stesen
-station_remove_ph	Ketik stesen dalam senarai untuk mengalih keluarnya
-station_removed	Stesen dialih keluar: {name}
 settings_hub_title	tetapan
 settings_hub_help	Buka satu kawasan pada satu masa — kurang menatal, pilihan yang lebih jelas.
 settings_back	belakang
@@ -181,12 +130,10 @@ settings_sec_country	Negara & cukai
 settings_sec_tills	Peranti lain
 settings_sec_brand	Jenama anda
 settings_sec_units	Unit & penukaran
-settings_sec_pickers	Kawasan · stesen · kadar cukai
+settings_sec_pickers	Kadar cukai
 settings_sec_printers	Pencetak
 settings_sec_bill	Format Bil & Slip
 settings_sec_selling	Skim & jualan
-bill_kot_tab_bill	Bil tetamu
-bill_kot_tab_kot	tergelincir
 settings_sec_alerts	Makluman
 alerts_help	Berapa lama mesej status kekal pada skrin untuk anda (log masuk ini).
 snack_secs_ph	Saat (3–60, lalai 10)
@@ -237,8 +184,6 @@ counter	Kaunter
 dine_in	Kaunter
 takeaway	Bawa pulang
 order	Pesanan restoran
-tables	Kaunter
-kitchen	Bahagian
 sales	Jualan
 sales_refunds	Jualan & bayaran balik
 day_close	Hari tutup
@@ -266,10 +211,6 @@ zero_sales_on	Benarkan ₹0
 zero_sales_off	Memerlukan harga
 zero_sales_saved_on	Jualan nilai sifar dibenarkan
 zero_sales_saved_off	Jualan mesti mempunyai harga melebihi ₹0
-floor_areas_help	Kawasan ialah bilik atau zon di atas lantai (Dine In, Parcel, AC …). Tambahkan kawasan dahulu, kemudian letakkan pembilang di dalamnya — setiap kawasan adalah kumpulan berasingan di atas lantai.
-area_new_ph	Kawasan / bilik baharu (cth. AC, Taman)
-add_area	Tambah kawasan
-area_added	Kawasan “{name}” sedia — tambahkan pembilang ke dalamnya
 no_favorites	Tiada kegemaran lagi — tambah item menu daripada senarai di bawah.
 add_to_bill	Tambahkan pada bil
 added	Ditambah
@@ -280,19 +221,9 @@ chip_missing_customer	Pelanggan terpilih tiada — pilih lagi
 chip_no_customer	Belum ada pelanggan — taip nama, kemudian ketik Kredit
 credit_summary_fmt	{} pelanggan · kredit terbuka {} · pendahuluan dipegang {}
 recent_label	terbaru:
-kot_new_waiting	BARU — menunggu
-kot_preparing	MENYEDIAKAN
-kot_ready_serve	SEDIA - hidangkan
-kot_done_cap	SELESAI
-kot_cancelled	DIBATALKAN
-kot_start_btn	Mulakan
-kot_mark_ready	Tandakan sedia
-kot_done_btn	Selesai
-table_free	Kosong — ketik untuk memulakan pesanan
 start_order	Mulakan pesanan
 open_bill	Buka bil
 collect_payment	Kutip bayaran
-table_running	Berlari
 payment_pending	Pembayaran belum selesai
 collect_at_counter	kumpul di kaunter
 inventory	Inventori
@@ -325,7 +256,6 @@ ok	OK
 this_shop	Mod pelayan
 extra_till	Mod pelanggan
 off	Mati
-tables_kitchen	Susun atur kedai
 server	Mod pelayan
 client	Mod pelanggan
 language_currency	Bahasa & mata wang
@@ -367,8 +297,6 @@ add_item_plain	Tambah item menu
 add_note	Tambah nota
 add_opening_balance	Tambah baki pembukaan
 add_staff	Tambah kakitangan
-add_station	Tambah stesen
-add_table	Tambah meja makan
 add_unit	Tambah unit
 add_use_name	Tambah / gunakan nama ini
 allow_extra_tills	Benarkan tills tambahan
@@ -421,7 +349,6 @@ share_whatsapp	Kongsi WhatsApp
 lan_pages_heading	Halaman pelanggan pada Wi‑Fi
 lan_pages_help	Pada Wi‑Fi kedai ini, halaman pelanggan berfungsi untuk papan paparan dan maklum balas. Orang yang menggunakan data mudah alih memerlukan Cloud kemudian. Terminal kad atau pautan pembayaran adalah pilihan dan tidak pernah menghalang kaunter.
 diag_send_heading	Kongsi peranti ini
-kot_dest_heading	Stesen
 optional_login_heading	Log masuk pilihan
 rights_heading	Hak
 ops_panel	Ops tempatan
@@ -448,28 +375,6 @@ till_voucher_amt_ph	Jumlah baucar (kosong = semua)
 till_wallet_topup_ph	Jumlah dompet tambah nilai
 till_voucher_issue_amt_ph	Jumlah baucar yang dikeluarkan
 till_voucher_issue_code_ph	Kod baucar baharu
-split_evenly	Belah sama rata
-waitlist	Senarai tunggu
-fire_course	Langkah seterusnya
-hold_item	Tahan dari dapur
-waiter_call	Panggil juruwang
-waitlist_add	Tambahkan pada senarai tunggu
-floor_view_grid	Petak
-floor_view_layout	Susun atur
-floor_layout_x	X
-floor_layout_y	Y
-floor_layout_w	W
-floor_layout_h	H
-floor_layout_save	Simpan susun atur
-floor_layout_open	Buka meja makan
-floor_layout_edit	Edit reka letak
-floor_layout_pick	Ketik meja makan untuk mengedit reka letaknya
-floor_layout_saved	Reka letak disimpan
-floor_layout_nudge_left	← 20
-floor_layout_nudge_right	→ 20
-floor_layout_nudge_up	↑ 20
-floor_layout_nudge_down	↓ 20
-sibling_pickers_help	Ketik Hidup/Mati seperti unit — sembunyikan kawasan, stesen dan kadar cukai daripada pemilih harian; pek tetap lalai.
 bulk_price_apply	Gunakan harga pukal
 card_terminal_optional	Terminal kad / pautan pembayaran (pilihan apabila internet tersedia)
 copy_report	Salin laporan
@@ -495,7 +400,6 @@ import_day	Hari import
 import_items_csv_plain	Import item menu CSV…
 import_parties_csv	Import pelanggan dan pembekal CSV…
 item_name	Nama item menu menu
-kitchen_printing	Pencetak
 login_id_ph	Nama pengguna
 mark_cleared	Mark dibersihkan
 new_party_clear	Pelanggan atau pembekal baharu (borang jelas)
@@ -565,15 +469,6 @@ show	Tunjukkan
 spreadsheet_csv	Hamparan (CSV)
 start_fresh	Mulakan dengan segar
 stop_extra_tills	Berhenti tills tambahan
-floor_cols_ph	Lajur
-floor_cols_fit	Muatkan skrin
-floor_cols_fit_sub	{n} muat di sini
-floor_cols_fits	sesuai
-floor_cols_scroll	tatal ke sisi
-floor_cols_min	Lajur: sekurang-kurangnya 1 — atau biarkan ia kosong agar muat pada skrin
-floor_zoom_auto	Automatik
-floor_zoom_out	Zum keluar
-floor_zoom_in	Zum masuk
 backup_auto	Disandarkan secara automatik setiap hari · lepas {when} · 14 hari terakhir disimpan dalam {dir}.
 backup_auto_none	Disandarkan secara automatik setiap hari — yang pertama berjalan dalam seketika.
 backup_copy_to	Salinan juga pergi ke {dir}.
@@ -591,7 +486,6 @@ new_pair_code	Kod gandingan baharu
 pair_finishing	Pasangan penamat… menggunakan lejar kedai
 pair_opening	Membuka sehingga…
 pair_copied	Kod gandingan disalin
-kot_waiting	Menunggu untuk menghantar
 lan_offline_waiting	Pelayan kedai tidak dapat dihubungi · {n} menunggu
 lan_connecting	Menyambung ke kedai…
 lan_live	Langsung
@@ -633,7 +527,6 @@ printers_routes_help	Cari pencetak yang telah diketahui oleh sistem pengendalian
 printer_assign_dd	Pencetak sebenar: {place}
 printer_assign_pick	Pilih pencetak sebenar
 printer_profile_heading	Susun atur
-printer_send_heading	Penghantaran
 vp_delivery_heading	Penghantaran
 vp_delivery_help	Cara pencetak maya ini menghantar kerja — dokumen OS, bait mentah atau ESC/POS. Kandungan slip (saiz jenis, balut, jidar) ditentukan oleh format bil / Slip, bukan di sini.
 vp_type_size_heading	Saiz taip
@@ -677,23 +570,13 @@ virtual_draft_send	Nilai ditetapkan untuk pencetak maya seterusnya
 virtual_need_real	Pilih pencetak sebenar dahulu
 virtual_need_select	Pilih pencetak maya untuk dipadamkan
 real_printer_selected	Dipilih: {name}
-station_group_heading	Pencetak maya
-station_group_apply	Padam pencetak maya
-station_group_applied	Dipadamkan
-station_group_empty	Pilih pencetak maya
-station_group_name_ph	Nama pencetak maya (pilihan)
-station_group_save	Buat pencetak maya
-station_group_saved	Pencetak maya disimpan
-station_manage_heading	Tambah atau alih keluar bahagian dispensari
 printers_routes_heading	Di mana perkara dicetak
 route_pick_heading	tempat
 route_editing	Suntingan: {name}
 route_assigned	Ditambah {printer} kepada {place}
 route_already_assigned	Sudah berada di tempat ini: {printer}
-route_removed	Dialih keluar {printer} daripada {place}
 route_cleared	Dikosongkan {name}
 route_assigned_empty	Tiada di tempat ini
-route_tap_remove	ketik untuk mengalih keluar
 route_tap_select	ketik untuk memilih
 route_tap_selected	dipilih
 route_pick_printer_first	Ketik pencetak dahulu
@@ -714,35 +597,17 @@ printer_format_custom	Profil tersuai baharu
 printer_format_custom_label	Adat
 printer_format_custom_added	Profil tersuai ditambahkan untuk tempat ini
 add_printer	Tambah pencetak
-remove_printer	Alih keluar
 route_pick_ph	Bil atau bahagian dispensari
 route_bill	Bil tetamu
-route_default_kitchen	Tiada stesen (item tidak ditetapkan)
-route_kot_station	Stesen
 route_dont_print	Tiada pencetak
-stations_heading	Stesen
-stations_help	Bahagian dispensari mengumpulkan ubat-ubatan dan pencetak untuk bahagian kedai itu. Lampirkan pencetak daripada Tetapan → Pencetak, tetapkan pesanan cuba, kemudian Pertama yang berfungsi atau Cetak pada semua. Perubahan disimpan semasa anda pergi.
-station_print_heading	Pencetak untuk stesen ini
-station_print_help	Pilih stesen, kemudian lampirkan satu atau lebih pencetak. ↑↓ set cuba order. Pertama yang berfungsi berhenti selepas kejayaan pertama; Cetak pada semua hantaran ke setiap pencetak yang dilampirkan.
-station_print_pick_ph	Stesen untuk menetapkan pencetak
 station_print_pick_first	Pilih bahagian dispensari dahulu
-station_print_editing	Mengedit pencetak untuk “{name}”
-station_vps_dd	Pencetak untuk stesen ini
-station_vps_dd_n	{n} pencetak · ketik untuk menukar
 station_vps_empty	Tiada pencetak lagi — Carinya di bawah Tetapan → Pencetak
 bill_printers_dd	Pencetak untuk bil
 bill_printers_dd_n	{n} pencetak untuk bil · ketik untuk menukar
-job_layout	Susun atur
-job_delivery	Bagaimana kerja dihantar
-job_delivery_help	Dokumen OS, bait mentah atau ESC/POS. Bil dan tiket masing-masing disimpan sendiri. Mana-mana kerja boleh pergi ke mana-mana pencetak yang telah disimpan oleh Cari.
 station_vp_attached	Pencetak dilampirkan
 station_vp_detached	Pencetak dikeluarkan dari stesen
-station_print_summary	{mode} · {n} pencetak
-station_print_summary_none	Tiada pencetak di stesen ini lagi — ia tidak akan mencetak
-stations_none	Tiada stesen lagi — tambah satu di bawah. Stesen tidak digunakan di kedai kaunter — biarkan kosong.
 route_up	Naik
 route_down	Bawah
-route_remove	Alih keluar
 route_clear	Jelas
 save_printers	Simpan pencetak
 print_test_page	Cetak halaman ujian
@@ -751,23 +616,15 @@ test_page_no_printer	Tiada pencetak untuk {place} — lampirkan pencetak padanya
 test_page_pick_first	Pilih pencetak untuk halaman ujian dahulu — kemudian Cetak halaman ujian
 test_printers_dd	Pencetak untuk halaman ujian
 test_printers_dd_n	{n} pencetak untuk halaman ujian · ketik untuk menukar
-kot_test_printers_dd	Pencetak untuk cetakan Ujian
-kot_test_printers_dd_n	Pencetak {n} untuk cetakan Ujian · ketik untuk menukar
 test_printer_picked	Ujian pada: {name}
 test_printer_cleared	Tidak diuji pada: {name}
 test_page_sent_n	Halaman ujian dihantar ke {n} pencetak
-test_kot_pick_first	Pilih pencetak untuk cetakan Ujian dahulu — kemudian Cetakan Ujian
-test_kot_sent_n	Cetakan ujian dihantar ke pencetak {n}
-cancel_pick	Tanda
-cancel_pick_on	Ditanda
-cancel_pick_meta	Ditandakan sebagai pembatalan
 batch_cancel	Batal ditandai
 batch_cancel_n	Batal ditanda ({n})
 batch_cancel_none	Tandai satu atau lebih item yang dihantar dahulu — kemudian Batal ditanda
 batch_cancel_title	Batalkan ubat bertanda — satu sebab, satu slip batal setiap bahagian
 batch_cancel_ok	Item {n} dibatalkan · {slips} batalkan slip → {kitchens}
 batch_cancel_ok_noprint	Item {n} dibatalkan — cetak automatik dimatikan, jadi tiada slip batal
-no_printer_kitchen_station	Tiada pencetak untuk stesen itu
 printers_saved	Disimpan
 test_page_sent	Halaman ujian dihantar — semak pencetak
 test_page_sent_one	Halaman ujian dihantar ke {name} — semak pencetak itu
@@ -783,10 +640,7 @@ cancelled	Dibatalkan
 printers_tap_find	Ketik Cari untuk menyenaraikan pencetak yang boleh digunakan oleh peranti ini.
 printers_none_found	Tiada ditemui — taip nama pencetak sistem atau IP (cth. 192.168.1.50).
 printer_from_find	Ditambah {name}
-kot_printer_ph	Pencetak untuk slip
 bill_printer_ph	Pencetak untuk bil
-kot_print_on	Tiket autocetak: Hidup
-kot_print_off	Autocetak tiket: Mati
 queue_refused	Tidak diterima oleh kedai ({n}) — semak setiap satu di kaunter:
 clear_not_accepted	Ditandai — kosongkan senarai ini
 device_name_ph	Nama peranti ini
@@ -797,7 +651,6 @@ backup_failed	Sandaran automatik terakhir gagal: {e}
 backup_overdue	Tiada sandaran selama {n} hari — pastikan apl dibuka pada peranti ini supaya ia boleh membuat sandaran.
 disk_low	Hanya {mb} MB percuma pada peranti ini — sandaran akan gagal tidak lama lagi. Kosongkan sedikit ruang.
 last_seen_devices	Terakhir dilihat: {time}
-sync_interval	Segerakkan setiap {secs}s
 connection_to_shop	Sambungan ke kedai
 supplier_name_ph	Nama pembekal (atau pelanggan)
 supplier_ph	Pembekal
@@ -860,7 +713,6 @@ fresh_book_tabiyat	Fresh = katalog kosong (tambah item kemudian). Buku = taip st
 fresh_selected	Baru dipilih — katalog kekal kosong. Ketik Selesai apabila bersedia.
 gross_word	kasar
 how_start	Bagaimana anda mahu bermula?
-kot_print_help_tabiyat	Tidak digunakan di kedai kaunter.
 later_country_pack	Kemudian: Tetapan → gunakan pek negara anda untuk label cukai dan bayar.
 local_badge	TEMPATAN
 mix_type_hint_tabiyat	Bahagikan tunai / UPI / kad / kredit jika perlu. Kredit memerlukan pelanggan di atas.
@@ -911,8 +763,6 @@ staff_copy_need_source	Pilih persediaan siapa untuk disalin
 staff_copy_same	Itulah orang yang sama — pilih orang lain
 staff_rename_need_selected	Pilih siapa yang hendak dinamakan semula dahulu
 team_pick_hint	Pilih siapa yang hendak diedit — skrin, hak wang dan stesen dipaparkan untuk orang itu sahaja.
-team_stations_help	Stesen yang mungkin mereka gunakan
-team_stations_changed	Stesen ditukar — Simpan persediaan untuk orang ini
 team_features_changed	Skrin ditukar — Simpan persediaan untuk orang ini
 team_rights_changed	Hak ditukar — Simpan persediaan untuk orang ini
 they_owe_us	Mereka berhutang dengan kita
@@ -996,9 +846,6 @@ service_pct_ph	Perkhidmatan % pilihan 0/10/12
 short_code_ph	Kod pendek (MG02)
 starting_password_ph	Kata laluan permulaan (pilihan)
 starting_pin_ph	Bermula PIN (4–12 digit)
-station_name_ph	Nama stesen (pilihan)
-station_new_ph	Bahagian (pilihan)
-table_name_ph	Nama kaunter / teluk
 tax_rate_ph	Nama kadar cukai atau % — Standard, Dikurangkan, 0, 5, 12, 18, 20
 to_code_ph	Kepada kod (kg)
 uncleared_no_ph	Tidak dikosongkan # di atas
@@ -1011,27 +858,8 @@ book_kind_month	Lejar bulan ini
 book_kind_aging	Tertunggak / debit-kredit
 book_kind_balance	Kunci kira-kira
 order_help	Ketik item menu untuk menambahkannya.
-floor_help	Kedai ni ada jual kat kaunter. Meja dan lantai makan bukan sebahagian daripada Tabiyat.
-kitchen_help	Tidak digunakan di kedai kaunter.
-kitchen_empty	Tiada tiket terbuka (kedai kaunter biasanya membiarkan skrin ini tidak digunakan).
-add_a_table	Tambah meja makan
-add_station_heading	Tambah bahagian dispensari
 categories_help	Ketik Gunakan untuk memfailkan item menu di atas di bawah kategori itu. Foto memberikan kategori gambar; tanpa satu ia menunjukkan inisialnya.
 dish_search_ph	Cari nama, garam atau kod bar…
-tile_free	kosong
-tile_occupied	diduduki
-tile_food_ready	Makanan siap
-tile_bill_printed	Bil dicetak
-tile_paid	Dibayar
-tile_bill_btn	Bil tetamu
-tile_occupy_btn	Tempat duduk tetamu
-tile_free_btn	Kosongkan meja makan
-tile_ready_btn	Kosongkan meja makan
-tile_undo_bill	Buat asal bil
-summary_busy	meja makan sibuk
-summary_to_collect	untuk mengumpul
-summary_on_floor	di dewan makan
-floor	Kedai
 sizes_as_items_ph	Saiz sebagai item menu berasingan (pilihan) — Separuh=120, Penuh=200
 dish_group_ph	Kekuatan / kumpulan pek (pilihan) — cth. jalur 500mg
 discount	Diskaun
@@ -1039,7 +867,6 @@ remove_discount	Alih keluar diskaun
 apply_discount	Guna diskaun
 save_opening_cash	Simpan wang tunai pembukaan
 close_shift_print	Tutup syif dan cetak slip
-area_prices_ph	Harga kawasan (pilihan) — AC=220, Petak=210
 discount_ph	10% atau 50
 discount_reason_ph	Sebab (cth. tetamu tetap, makanan lewat)
 opening_float_ph	Wang tunai dimasukkan ke dalam laci pagi ini
@@ -1049,34 +876,18 @@ shift_handover	Penyerahan syif
 shift_since	Peralihan ini sejak
 expected_in_drawer	Dijangka dalam laci
 right_discount	Beri diskaun
-floor_in_kitchen	Sedang berlangsung
-floor_eating	Dihidangkan
 pick_category	Pilih satu kategori
 close_category_list	Tutup senarai kategori
 new_category_row	Kategori baharu — dibuat apabila anda menyimpan item menu
 your_category	Kategori anda
 suggested_category	Dicadangkan — daripada item kami
 category_search_ph	Kategori — cari milik anda atau taip yang baharu
-line_sent_state	Dihantar
-line_nc_state	Percuma (NC) — tidak dicaj
 cancel_item_short	Batal
-nc_short	Tiada caj
-charge_again_short	caj
-move_short	Bergerak
 cancel_item_title	Batalkan item ini — pejabat belakang mendapat slip pembatalan
-nc_item_title	Jadikan item menu ini percuma (NC)
-charge_again_title	Caj item menu ini sekali lagi
-move_item_title	Alihkan item menu ini ke meja makan lain
-already_cooked	Sudah masak (membazir)
-not_cooked_yet	Belum masak lagi
 return_to_customer	Kembali kepada pelanggan
 short_by	Pendek oleh
 tip_not_sale	Petua (kakitangan, bukan jualan)
 right_settle	Ambil bayaran
-right_cancel_sent	Batalkan item menu yang dihantar
-right_complimentary	Percuma (NC)
-right_move_table	Gerakkan / gabungkan kaunter
-right_reprint	Cetak bil lagi
 right_allowed	dibenarkan
 right_with_approval	Dengan kelulusan
 right_denied	Tidak dibenarkan
@@ -1086,25 +897,11 @@ no_server_found	Tiada ditemui. Pada Pelayan: Tetapan → Peranti lain → Benark
 servers_found_pick	Ketik kedai yang ingin anda sambungkan.
 server_host_selected	Menggunakan {host} — masukkan kod pasangan, kemudian Pasangkan sekarang.
 print_bill	Cetak bil
-table_actions	Tindakan balas
-move_merge_table	Gerakkan / gabungkan meja makan
-move_help	Alihkan pesanan kaunter ini ke jadual percuma atau gabungkannya menjadi jadual yang sedang berjalan.
-move_target_ph	Nama kaunter
 approval_pin_ph	Pengurus PIN (hanya jika ditanya)
-move_here	Pindah ke sini
-merge_into	Bercantum ke dalamnya
-line_reason_ph	Sebab (cth. pelanggan berubah fikiran, kehabisan stok)
-line_qty_ph	Berapa banyak yang perlu dibatalkan (kosong = semua)
-line_target_ph	Beralih ke meja makan (cth. D5)
 confirm	sahkan
 menu_search_ph	Cari item menu atau kod pendek
 customer_paid_ph	Pelanggan bayar
 tip_ph	Petua
-table_area_ph	Kawasan (cth. Dine In, Parcel, AC)
-table_range_ph	Banyak sekali gus: D1-D20
-add_these_tables	Tambah kaunter ini
-remove_these_tables	Alih keluar pembilang ini
-table_remove_ph	Alih keluar: T1-T24, atau satu nama meja makan
 find_server	Cari pelayan kedai
 bill_format	Format bil
 bill_format_help	Dicetak di bawah nama kedai anda pada setiap bil. Pisahkan baris dengan | (cth. MG Road, Rajkot | Ph 98250 00000).
@@ -1112,78 +909,32 @@ bill_header_ph	Alamat | telefon
 fssai_ph	Lesen dadah no. (pilihan - perkataan anda)
 bill_footer_ph	Pengaki (cth. Terima kasih, lawati lagi)
 save_bill_format	Simpan format bil
-kot_format	Format slip
-kot_format_help	Ketik medan dalam senarai. Tunjukkan, saiz fon dan berat dikenakan pada medan itu pada jenis slip yang dipilih di atas. Setiap jenis menyimpan saiz dan beratnya sendiri.
-kot_format_fields	Padang
-kot_field_next	Medan seterusnya
-kot_field_show	Tunjukkan
-kot_field_hide	Sembunyi
 kot_field_on	tunjuk
 kot_field_off	bersembunyi
-kot_field_size	Saiz fon
-kot_field_size_ph	cth. 16, 20, 24, 28, 32…
 kot_weight_light	Cahaya
 bill_kot_panel_help	Susun atur bil dan lebar kandungan. Juruwang ialah yang mengeluarkan atau menyelesaikan bil — kisah jualan penuh kekal dalam buku.
 std_size_ph	cth. 18, 20, 26…
-kot_show_shop	Nama kedai
-kot_hide_shop	Sembunyi kedai
-kot_show_time	Masa
-kot_hide_time	Sembunyikan masa
-kot_show_waiter	Juruwang
-kot_hide_waiter	Sembunyikan juruwang
-kot_show_station	Stesen
-kot_hide_station	Sembunyikan stesen
-kot_show_table	Kaunter
-kot_hide_table	Sorok meja makan
-kot_show_kot_no	Tiket No
-kot_hide_kot_no	Sembunyikan tiket No
-kot_width	Balutan pratonton (tetapkan lebar kandungan pada tab slip)
-kot_width_58	58 mm
-kot_width_80	80 mm
-kot_kind_heading	Jenis tiket
-kot_kind_original	Asal
-kot_kind_duplicate	Pendua
-kot_kind_modified	Diubah suai
-kot_kind_cancelled	Dibatalkan
-kot_style_heading	Saiz jenis medan & berat
-kot_style_title	Tajuk
-kot_style_item_qty	Item menu menu · Kuantiti
-kot_style_field_pick	Pilih medan
 kot_weight_regular	Biasa
 kot_weight_bold	berani
-kot_align	Selaraskan
 kot_align_start	Mulakan
 kot_align_center	Pusat
 kot_align_end	tamat
 content_width	Lebar kandungan (mm)
 content_width_bill	Lebar kandungan bil (mm)
-content_width_kot	Lebar kandungan tiket (mm)
 content_width_ph	Atau taip lebar kandungan, 40–210 mm
 content_width_help	Seberapa lebar cetakan slip ini. Bill mengekalkan lebarnya sendiri.
 content_width_bill_help	Seberapa luas bil pelanggan dicetak. Lalai 210 mm (halaman). 58 mm gelincir sempit, 80 mm lebar gelincir, 112 mm 4 inci, 210 mm lebar A4. Taipkan sebarang nilai dari 40 hingga 210. Tiket mempunyai lebarnya sendiri pada tab slip.
-content_width_kot_help	Berapa luas cetakan tiket. Lalai 80 mm. Slip sempit 58 mm, slip lebar 80 mm, halaman 112 mm 4 inci, 210 mm. Taipkan sebarang nilai dari 40 hingga 210. Bil pelanggan mempunyai lebarnya sendiri pada tab Bil.
 vp_paper_width	Lebar kandungan (mm)
 vp_paper_width_ph	Atau taip lebar kandungan, 40–210 mm
 vp_paper_width_help	Lebar kandungan ditetapkan di bawah format Bil & Slip — secara berasingan untuk bil (lalai 210 mm) dan tiket (lalai 80 mm).
-kot_size	Saiz fon
-kot_size_s	Kecil
-kot_size_m	Biasalah
-kot_size_l	besar
 std_size	Saiz fon
 kot_copies	salinan
 kot_copies_1	1
 kot_copies_2	2
 kot_copies_3	3
-kot_title_ph	Tajuk (kosong = TIKET)
-kot_footer_ph	Nota pejabat belakang (pilihan)
-kot_preview	Pratonton
-save_kot_format	Simpan format Slip
-test_kot_format	Cetakan ujian
-test_kot_sent	Pratonton tiket dihantar
 test_bill_format	Bil ujian
 test_bill_sent	Pratonton bil dihantar
 test_print_no_printer	Tiada pencetak untuk kerja itu — pilih satu pada skrin ini
-kot_format_saved	Format slip disimpan
 std_print	Saiz cetakan bil
 std_print_help	Saiz fon untuk tugas bil Portrait dan Landskap Standard pada pencetak OS / dokumen (masukkan mata — bukan Kecil/Biasa/Besar). Saiz yang sama pada kedua-dua orientasi.
 std_size_s	Kecil
@@ -1223,23 +974,16 @@ upi_qr	UPI QR
 show_upi_qr	Tunjukkan UPI QR
 close_upi_qr	tutup
 upi_qr_help	Pelanggan mengimbas dan membayar. Ketik Ambil pembayaran selepas mereka membayar. Skrin kedua: buka URL Pelayan /paparan pada LAN.
-kot_recall	Ingat kembali
 recently_done	Baru-baru ini dilakukan
-recall_kot_ph	Tiket # untuk ditarik balik
 role_help_customer	Peranan: Pelanggan — lejar kredit (mereka berhutang kepada kami). Pelanggan atau pembekal yang sama juga boleh membekalkan stok.
 role_help_both	Peranan: Pelanggan + Pembekal — seorang pelanggan atau pembekal, lejar kredit dan lejar berbayar, bersih dalam Laporan.
 role_help_supplier	Peranan: Pembekal — kita berhutang kepada mereka untuk pembelian.
-dine_in_pick_table	Tidak digunakan di kedai kaunter
-choose_table	Pilih kaunter
-change_table	Tukar meja makan
-pick_table_banner	Pilih meja makan untuk pesanan ini
 items_word	item menu
 items_section	Item menu menu
 back_to_order	Kembali kepada pesanan
 new_items_head	Belum dihantar lagi
 price_ph	harga
 price_ph_gst_inside	Harga ({tax} termasuk)
-cancel_needs_table	Jualan kaunter kekal pada tiket sehingga anda mengambil pembayaran
 tax_rates_missing_hint	Tiada kadar {tax} pada item ini — pada Item ditetapkan Kadar cukai (harga sudah termasuk {tax} di bawah {tax} termasuk)
 taxable_value	Nilai bercukai
 gst_inside_price_note	({tax} termasuk)
@@ -1260,30 +1004,11 @@ client_template_confirm	Tambahkan item {d} daripada {title}? Item yang anda suda
 client_template_importing	Mengimport {title}…
 client_template_done	Setiap item daripada {title} ada pada item anda.
 client_template_imported	Menambah item {d} dan kategori {c} daripada {title}
-resv_heading	Tempahan
-resv_name_ph	Nama pelanggan
-resv_phone_ph	Telefon (pilihan)
-resv_guests_ph	Orang ramai
-resv_when_ph	Bila — 20:30, esok 13:00
-resv_table_ph	Kaunter (pilihan)
-resv_add	Tempah meja makan
-resv_seat	Duduk
-resv_none	Tiada tempahan datang.
-guests_word	tetamu
-delivery_by_ph	Penghantaran oleh (nama penunggang atau kakitangan)
-kitchen_all_day	Nak dimasak sekarang: {items}
-split_bill	Pisah bil
-split_go	Buat bil berasingan
 cancel	Batal
 opening_client	Membuka pelanggan…
 preparing_desk	Menyediakan meja…
 opening_server	Membuka pelayan…
 creating_server	Mencipta pelayan…
-split_help	Ketik item yang dibayar oleh seorang pelanggan · {n} dipilih
-split_send_first	Hantar slip dahulu — hanya barang yang ada di pejabat boleh pergi ke bil yang berasingan
-split_pick_some	Ketik item untuk bil berasingan dahulu
-split_done	Bil berasingan dibuat — ia terletak di atas lantai bersebelahan dengan kaunter ini
-split_marked	bil berasingan
 order_empty_pick	Pesan kosong — ketik Tambah item di atas untuk memilih item.
 add_dishes	Tambah ubat
 order_so_far	Atas pesanan ini: {n} · {total}
@@ -1294,24 +1019,8 @@ pick_done_dd	Selesai · {label}
 printer_route_mode	Jika beberapa pencetak di tempat ini
 printer_mode_first	Pertama yang berfungsi
 printer_mode_all	Cetak pada semua
-kot_show_area	Kawasan
-kot_hide_area	Sembunyikan kawasan
-kot_show_item_hdr	Item menu menu · Kuantiti
-kot_hide_item_hdr	Sembunyikan lajur
-kot_show_title	Baris tajuk
-kot_hide_title	Sembunyikan tajuk
-kot_field_order	Pesanan cetakan
 kot_field_up	Bergerak ke atas
 kot_field_down	Bergerak ke bawah
-kot_field_cycle	Pilih seterusnya
-kot_field_select	Pilih seterusnya
-kot_field_time	Masa
-kot_field_kot_no	Tiket No
-kot_field_area	Kawasan
-kot_field_table	Kaunter
-kot_field_shop	Nama kedai
-kot_field_waiter	Kakitangan
-kot_field_station	Stesen
 app_template_blurb_extra	Juga: Owner Zahir, Admin Asif, Cashier Nawaz; bar sisi hadapan; sejarah selepas 4 jam; Hari ini menanggalkan; bil padat.
 dishes_n	item {n}
 recipe_ph	Resipi (pilihan — tidak digunakan di kedai kaunter)
@@ -1321,8 +1030,6 @@ low_stock_alert	Hampir habis — beli segera: {items}
 unpriced_note	Item {n} pada item anda belum mempunyai harga lagi — ia mengebil pada 0 sehingga anda menetapkan satu.
 show_unpriced	Tunjukkan hanya item tanpa harga
 show_all_dishes	Tunjukkan semua item
-role_waiter	Juruwang
-role_kitchen	Kedai
 role_title_rest_ph	Tajuk peranan (cth. Kapten, Ketua tukang masak)
 preset_help_rest	Juruwang: jual. Pengurus: jual + item menu + batal/pinda.
 kind_raw	Stok pengkompaunan

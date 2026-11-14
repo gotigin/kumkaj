@@ -68,28 +68,6 @@ applied	लाविल्लें
 note_ph	नोंद (ऐच्छिक)
 rounded	राउंड
 split	वांटात
-send_kot	पर्ची धाडात
-send_kot_to	धाडात → {kitchens}
-send_kot_again	फुडल्या पर्ची खातीर वस्तू जोडात
-send_kot_held	होल्ड केल्लीं वस्तू — धाडपाक होल्ड काडात
-reprint_kot	निवडिल्ले परत छापात
-reprint_kot_ok	{n} वस्तू परत छापल्यो · {slips} पर्ची → {kitchens}
-reprint_kot_needed	पयलीं पर्ची धाडात — मागीर वस्तू घेवन वेंचिल्लीं परत छापात
-reprint_kot_none_selected	धाडिल्ली दर एक वस्तू सोडिल्ली आसा — परत छापपाचीं त्यांचेर छापणीत दामात
-reprint_kot_client	{place} खातीर परत छाप ({n}) धाडलें — दुकानचें डिव्हायस छापतलें
-print_cancelled_kot	सगळे रद्द छापात
-print_cancelled_kot_ok	{n} रद्द वस्तू छापल्यो · {slips} पर्ची → {kitchens}
-print_cancelled_kot_needed	पयलीं रद्द वस्तू आशिल्लें टेबल उगडात
-print_cancelled_kot_none	ह्या ऑर्डराचेर रद्द वस्तू नात
-print_cancelled_kot_client	{place} खातीर रद्द छाप ({n}) धाडलें — दुकानचें डिव्हायस छापतलें
-kot_banner	प्रकाराची पट्टी
-kot_banner_ph	पट्टी (रिकामी = कांयच ना)
-kot_item_prefix	वस्तुचो आदलांव
-kot_item_prefix_ph	देखीक [रद्द]
-kot_strike	वस्तूचें नांव कापात
-kot_strike_note	वस्तूचो नोट कापात
-kot_strike_on	चालू
-kot_strike_off	बंद
 bill_item_layout	वस्तूची मांडावळ
 bill_item_layout_columns	स्तंभ
 bill_item_layout_stacked	एकमेकाचेर
@@ -118,8 +96,6 @@ bill_item_gap_em	जागो (em)
 bill_item_qty_min	संख्या सगळ्यांत उणी (em)
 bill_item_price_min	किंमत सगळ्यांत उणी (em)
 bill_item_amount_min	रक्कम सगळ्यांत उणी (em)
-kot_item_qty_width	संख्येचो स्तंभ
-kot_item_num_align	संख्येची रेग
 bill_total_qty_label	एकूण संख्येचें लेबल
 bill_total_subtotal_label	उपबेरीज लेबल
 bill_total_grand_label	मुखेल बेरीज लेबल
@@ -131,36 +107,9 @@ bill_item_piece_off	बंद
 bill_total_qty	एकूण संख्या
 bill_total_subtotal	उपबेरीज
 bill_total_grand	मुखेल बेरीज
-reprint_incl	छापणीत
-reprint_skip	सोडात
-reprint_skip_meta	परत छापणी सोडात
-kot_dest_hint	{kitchens} खातीर सेटिंग → प्रिंटर हातूंत जोडिल्ले प्रिंटरांचेर छापता
-kot_sent_hint	निमाणें धाडप {kitchens} कडेन गेलें. फुडल्या बिला खातीर वस्तू जोडपाक दामात — वा त्याच खातीर पर्ची परत छापात.
-kot_sent_printing	पर्ची {kitchens} कडेन धाडली — छापता
-kot_sent_not_printed	पर्ची {kitchens} कडेन धाडली पूण छापली ना: {why}. दुकानाक सांगात, मागीर प्रिंटर दुरुस्त करून परत छापात.
-kot_sent_screen	पर्ची {kitchens} कडेन धाडली
-kot_queued_shop	{place} ची पर्ची → {kitchens} सांबाळ्ली; दुकानचें डिव्हायस ती छापतलें
-kot_job_label	{place} ची पर्ची → {kitchens}
-kot_job_reached	{place} ची पर्ची {kitchens} मेरेन पावली
 kot_unassigned	स्टेशन ना
-kot_unassigned_held	स्टेशन नाश्टानां {n} वस्तू होल्ड — धाडपाक वळेरेंत होल्ड काडात
-kot_station_ph	स्टेशन
-kot_station_dd	स्टेशन
-kot_station_dd_n	स्टेशन · {stations}
-kot_set_station	हें स्टेशन वापरात
-kot_station_applied	{n} वस्तूंचेर स्टेशन लागलें: {station}
-kot_station_cleared	{n} वस्तूं वयल्यान स्टेशन काडलें: {station}
-kot_station_needed	पयलीं दुकानचो भाग वेंचात
-kot_station_not_allowed	ह्या भागाची परवानगी ना: {station}
-kot_station_none	अजून स्टेशन नात — गल्ल्याच्या दुकानांत गरज ना (गरज आसल्यार सेटिंग → वाठार)
 pos_tab_items	जोडिल्ले वस्तू
 pos_tab_payment	फारीक
-hold_send	होल्ड
-hold_send_on	होल्ड केलां
-hold_send_meta	होल्ड — ह्या पर्चींत ना
-station_remove	स्टेशन काडात
-station_remove_ph	काडपाक वळेरेंत स्टेशनाचेर दामात
-station_removed	स्टेशन काडलें: {name}
 settings_hub_title	सेटिंग
 settings_hub_help	एक फावट एक वाठार उगडात — उणें सरकप, स्पश्ट निवड.
 settings_back	फाटीं
@@ -169,12 +118,10 @@ settings_sec_country	देश आनी कर
 settings_sec_tills	हेर यंत्रां
 settings_sec_brand	तुमची ब्रांड
 settings_sec_units	एकक आनी रूपांतर
-settings_sec_pickers	वाठार · स्टेशन · कर दर
+settings_sec_pickers	कर दर
 settings_sec_printers	प्रिंटर
 settings_sec_bill	बिल आनी पर्ची स्वरूप
 settings_sec_selling	येवजणी आनी विक्री
-bill_kot_tab_bill	बिल
-bill_kot_tab_kot	पर्ची
 settings_sec_alerts	सावधान
 alerts_help	स्थितीचे संदेश तुमच्या पडद्याचेर कितलो वेळ उरतात (ही लॉगिन).
 snack_secs_ph	सेकंद (3–60, सामान्य 10)
@@ -225,8 +172,6 @@ counter	गल्लो
 dine_in	गल्लो
 takeaway	टेकअवे
 order	ऑर्डर
-tables	गल्ले
-kitchen	विभाग
 sales	विक्री
 sales_refunds	विक्री आनी परतावो
 day_close	दीस बंद
@@ -254,10 +199,6 @@ zero_sales_on	₹0 परवानगी दिवची
 zero_sales_off	किंमत जाय पडटा
 zero_sales_saved_on	शून्य मोलाची विक्री परवानगी
 zero_sales_saved_off	विक्रीची किंमत ₹0 परस चड आसूंक जाय
-floor_areas_help	वाठार म्हळ्यार फ्लोराचेर खण वा झोन (Dine In, Parcel, AC …). पयलीं वाठार जोडात, मागीर तातूंत गल्ले दवरात — दर एक वाठार फ्लोराचेर वेगळो पंगड.
-area_new_ph	नवो वाठार / खोली (देखीक- एसी, बाग)
-add_area	क्षेत्र जोडचें
-area_added	वाठार “{name}” तयार — तातूंत गल्ले जोडात
 no_favorites	अजून आवडीचे नात — सकयल दिल्ल्या वळेरेंतल्यान आयटम जोडात.
 add_to_bill	बिलांत जोडचें
 added	जोडले
@@ -268,19 +209,9 @@ chip_missing_customer	निवडिल्लो गिरायक गळू�
 chip_no_customer	अजून गिरायक ना — नांव टाइप करात, मागीर क्रेडीट टॅप करात
 credit_summary_fmt	{} गिरायक · उक्ते पतपुरवण {} · आगाऊ दवरलेले {}
 recent_label	हालींचें:
-kot_new_waiting	NEW — वाट पळयता
-kot_preparing	तयारी करप
-kot_ready_serve	READY — ताची सेवा करप
-kot_done_cap	जालें
-kot_cancelled	रद्द केलां
-kot_start_btn	सुरवात
-kot_mark_ready	मार्क तयार
-kot_done_btn	जालें
-table_free	फुकट — ऑर्डर सुरू करपाक टॅप करात
 start_order	ऑर्डर सुरू करप
 open_bill	उक्ते बिल
 collect_payment	फारीकणी एकठांय करप
-table_running	धांवडी
 payment_pending	फारीकणी प्रलंबीत आसा
 collect_at_counter	काउंटराचेर एकठांय करप
 inventory	इनवेंटोरी
@@ -313,7 +244,6 @@ ok	OK
 this_shop	सर्वर
 extra_till	क्लायंट
 off	बंद
-tables_kitchen	दुकानची मांडावळ
 server	सर्वर
 client	क्लायंट
 language_currency	भास आनी चलन
@@ -355,8 +285,6 @@ add_item_plain	वस्त जोडात
 add_note	टिप जोडची
 add_opening_balance	उगडपाची शिल्लक जोडची
 add_staff	कर्मचारी जोडप
-add_station	स्टेशन जोडचें
-add_table	टेबल जोडचें
 add_unit	एकक जोडचें
 add_use_name	हें नांव जोडचें / वापरचें
 allow_extra_tills	अतिरिक्त टिल्स करपाक परवानगी दिवची
@@ -409,7 +337,6 @@ share_whatsapp	व्हॉट्सअॅप शेअर करात
 lan_pages_heading	Wi‑Fi चेर गिरायकाचीं पानां
 lan_pages_help	ह्या दुकानाच्या Wi‑Fi चेर गिरायकाचीं पानां डिस्प्ले बोर्ड आनी अभिप्राय खातीर चलतात. मोबायल डेटा वापरपींक मागीर Cloud जाय. कार्ड मशीन वा फारीकणी दुवो पर्यायी आसा आनी गल्लो केन्नाच थांबयना.
 diag_send_heading	हें डिव्हायस बंद शेअर करचें
-kot_dest_heading	स्टेशन
 optional_login_heading	पर्यायी लॉगीन
 rights_heading	हक्क
 ops_panel	थळावे ऑप्स
@@ -436,28 +363,6 @@ till_voucher_amt_ph	व्हाऊचर रक्कम (रिक्त = स
 till_wallet_topup_ph	टॉप-अप पाकीट रक्कम
 till_voucher_issue_amt_ph	व्हाऊचर रक्कम जारी करप
 till_voucher_issue_code_ph	नवो व्हाऊचर कोड
-split_evenly	एकसारकें वांटून घेवप
-waitlist	वेटलिस्ट
-fire_course	फुडलो पावलो
-hold_item	होल्ड
-waiter_call	कॅशियराक आपयात
-waitlist_add	वेटलिस्टांत जोडचें
-floor_view_grid	हांवेस
-floor_view_layout	रचणाय
-floor_layout_x	X
-floor_layout_y	Y
-floor_layout_w	W
-floor_layout_h	H
-floor_layout_save	मांडावळ जतनाय घेयात
-floor_layout_open	उक्ते मेज
-floor_layout_edit	मांडावळ संपादीत करप
-floor_layout_pick	ताची मांडावळ संपादीत करपाक टेबल टॅप करात
-floor_layout_saved	मांडावळ सांबाळ्ली
-floor_layout_nudge_left	← 20
-floor_layout_nudge_right	→ 20
-floor_layout_nudge_up	↑ 20
-floor_layout_nudge_down	↓ 20
-sibling_pickers_help	युनिटां सारके चालू/बंद टॅप करात — दिसपट्ट्या पिकरां कडल्यान वाठार, स्टेशनां, आनी कर दर लिपोवचे; पॅक डिफॉल्ट रावतात.
 bulk_price_apply	बल्क किंमत लागू करात
 card_terminal_optional	कार्ड टर्मिनल / फारीकणी दुवो (इंटरनेट उपलब्ध आसतना पर्यायी)
 copy_report	अहवालाची प्रत करात
@@ -483,7 +388,6 @@ import_day	आयात दीस
 import_items_csv_plain	आयटम आयात करात CSV...
 import_parties_csv	आयात पक्ष सीएसव्ही...
 item_name	आयटम नांव
-kitchen_printing	प्रिंटर
 login_id_ph	वापरप्याचें नांव
 mark_cleared	मार्क क्लियर जालो
 new_party_clear	नवो पक्ष (स्पष्ट रूप) २.
@@ -553,15 +457,6 @@ show	दाखोवचें
 spreadsheet_csv	स्प्रेडशीट (सीएसव्ही) 1.1.
 start_fresh	ताजें सुरू करचें
 stop_extra_tills	अतिरिक्त टिल्स थांबयात
-floor_cols_ph	स्तंभ
-floor_cols_fit	स्क्रीन फिट करप
-floor_cols_fit_sub	{n} हांगा बसता
-floor_cols_fits	फिट जाता
-floor_cols_scroll	कुशीक स्क्रोल करता
-floor_cols_min	स्तंभ: उण्यांत उणे 1 — वा पडद्याक बसपाक रितें सोडचें
-floor_zoom_auto	ऑटो
-floor_zoom_out	झूम आउट करात
-floor_zoom_in	झूम इन करात
 backup_auto	दर दिसा आपोआप बॅकअप घेतात · निमाणें {when} · निमाणे 14 दीस {dir} मदीं दवरतात.
 backup_auto_none	दर दिसा आपोआप बॅकअप घेता — पयलो खिणाक चलता.
 backup_copy_to	प्रतीय {dir} कडेन वतात.
@@ -579,7 +474,6 @@ new_pair_code	नवो जोडणी कोड
 pair_finishing	जोडी सोंपोवप... दुकानाचीं पुस्तकां लागू करप
 pair_opening	टिल्ल उगडून...
 pair_copied	जोडणी कोड कॉपी केला
-kot_waiting	धाडपाची वाट पळयता
 lan_offline_waiting	दुकान सर्वर पावपाक शकना · {n} वाट पळयता
 lan_connecting	खरेदी करपाक जोडप...
 lan_live	जिवें
@@ -621,7 +515,6 @@ printers_routes_help	ऑपरेटिंग सिस्टम आदींच
 printer_assign_dd	खरो प्रिंटर: {place}
 printer_assign_pick	खरो प्रिंटर निवडात
 printer_profile_heading	रचणाय
-printer_send_heading	डिलिवरी
 vp_delivery_heading	डिलिवरी
 vp_delivery_help	हो आभासी प्रिंटर काम कशें धाडटा — OS दस्तावेज, कच्चे बाइट, वा ESC/POS. पर्चीची सामग्री (अक्षर आकार, वळांव, मार्जिन) बिल / पर्ची स्वरूप थारायता, हें न्हय.
 vp_type_size_heading	प्रकार आकार
@@ -665,23 +558,13 @@ virtual_draft_send	फुडल्या आभासी मुद्रका�
 virtual_need_real	पयलीं खरो मुद्रक निवडात
 virtual_need_select	काडून उडोवपाक आभासी मुद्रक निवडात
 real_printer_selected	निवडलेले: {name}
-station_group_heading	आभासी प्रिंटर
-station_group_apply	आभासी प्रिंटर काडून उडोवप
-station_group_applied	काडून उडयलां
-station_group_empty	आभासी मुद्रक निवडात
-station_group_name_ph	आभासी मुद्रकाचें नांव (पर्यायी)
-station_group_save	आभासी प्रिंटर तयार करचो
-station_group_saved	आभासी प्रिंटर जतनाय घेतला
-station_manage_heading	दुकानचो भाग जोडात वा काडात
 printers_routes_heading	जंय गजाली छापतात
 route_pick_heading	सुवात
 route_editing	संपादन: {name}
 route_assigned	{printer} ते {place} जोडले.
 route_already_assigned	आदींच ह्या जाग्यार: {printer}
-route_removed	{place} पासून {printer} काडून उडयले.
 route_cleared	निवळ जालें {name} .
 route_assigned_empty	ह्या जाग्यार कोणूच ना
-route_tap_remove	काडपाक टॅप करात
 route_tap_select	निवडपाक टॅप करात
 route_tap_selected	निवडलेले
 route_pick_printer_first	पयलीं प्रिंटर टॅप करात
@@ -702,35 +585,17 @@ printer_format_custom	नवी सानुकूल प्रोफायल
 printer_format_custom_label	कस्टम
 printer_format_custom_added	ह्या जाग्या खातीर सानुकूल प्रोफायल जोडला
 add_printer	प्रिंटर जोडचो
-remove_printer	काडांत
 route_pick_ph	बिल वा दुकानचो भाग
 route_bill	बिल
-route_default_kitchen	स्टेशन ना (स्टेशन नाशिल्ल्यो वस्तू)
-route_kot_station	स्टेशन
 route_dont_print	प्रिंटर ना
-stations_heading	स्टेशनां
-stations_help	दुकानचे भाग वस्तू आनी त्या भागाचे प्रिंटर एकठांय दवरतात. सेटिंग → प्रिंटर हातूंतल्यान प्रिंटर लायात, यत्नाचो क्रम थारायात, मागीर पयलें, तें काम करता वा सगळ्यांचेर छापप. बदल जाता तशे सांबाळ्तात.
-station_print_heading	ह्या स्टेशनाचे प्रिंटर
-station_print_help	एक स्टेशन वेंचात, मागीर एक वा चड प्रिंटर लायात. ↑↓ यत्नाचो क्रम थारायता. पयलें, तें काम करता पयल्या यशाचेर थांबता; सगळ्यांचेर छापप दर एका लागलल्या प्रिंटराचेर धाडटा.
-station_print_pick_ph	प्रिंटर सेट करपाक स्टेशन
 station_print_pick_first	पयलीं दुकानचो भाग वेंचात
-station_print_editing	“{name}” खातीर प्रिंटर संपादीत करप.
-station_vps_dd	ह्या स्टेशनाचे प्रिंटर
-station_vps_dd_n	{n} मुद्रक (मुद्रक) · बदलपाक टॅप करात
 station_vps_empty	अजून मुद्रक नात — मांडावळी → मुद्रक खाला तांकां सोदून काडात
 bill_printers_dd	बिला खातीर प्रिंटर
 bill_printers_dd_n	{n} बिला खातीर मुद्रक (मुद्रक) · बदलपाक टॅप करात
-job_layout	रचणाय
-job_delivery	नोकरी कशी धाडटात
-job_delivery_help	OS दस्तावेज, कच्चे बाइट, वा ESC/POS. बिल आनी टिकट दोगांय आपआपलें दवरतात. खंयचेंय काम सोदींत सांबाळिल्ल्या खंयच्याय प्रिंटराचेर वचूंक शकता.
 station_vp_attached	प्रिंटर जोडला
 station_vp_detached	स्टेशनांतल्यान प्रिंटर काडून उडयलो
-station_print_summary	{mode} · {n} मुद्रक (मुद्रक)
-station_print_summary_none	ह्या स्टेशनाचेर अजून प्रिंटर नात — तो छापचो ना
-stations_none	अजून स्टेशन नात — सकयल एक जोडात. गल्ल्याच्या दुकानांत स्टेशन गरजेचें ना — रितें सोडात.
 route_up	वयर
 route_down	सकयल
-route_remove	काडांत
 route_clear	निवळ
 save_printers	प्रिंटर जतनाय घेयात
 print_test_page	चांचणी पान छापचें
@@ -739,23 +604,15 @@ test_page_no_printer	{place} खातीर प्रिंटर ना — �
 test_page_pick_first	पयलीं चांचणी पानाखातीर मुद्रक(मुद्रक) वेंचून काडात — मागीर चांचणी पान छापचें
 test_printers_dd	चांचणी पानाखातीर मुद्रक
 test_printers_dd_n	{n} चांचणी पानाखातीर मुद्रक (मुद्रक) · बदलपाक टॅप करात
-kot_test_printers_dd	चांचणी छापाचे प्रिंटर
-kot_test_printers_dd_n	चांचणी छापा खातीर {n} प्रिंटर · बदलपाक दामात
 test_printer_picked	वर चांचणी: {name}
 test_printer_cleared	चांचणी करीना: {name}
 test_page_sent_n	{n} प्रिंटर(s) कडेन धाडिल्लें चांचणी पान
-test_kot_pick_first	पयलीं चांचणी छापाचे प्रिंटर वेंचात — मागीर चांचणी छाप
-test_kot_sent_n	चांचणी छाप {n} प्रिंटरां कडेन धाडलो
-cancel_pick	मार्क
-cancel_pick_on	चिन्न केल्लें
-cancel_pick_meta	रद्द करपा खातीर चिन्न केल्लें
 batch_cancel	रद्द करपाचें चिन्न
 batch_cancel_n	रद्द करपाचें चिन्न ({n})
 batch_cancel_none	पयलीं एक वा चड धाडिल्लीं वस्तू खूण करात — मागीर खूण केल्लीं रद्द
 batch_cancel_title	खूण केल्लीं वस्तू रद्द — एक कारण, दर विभागाक एक रद्द पर्ची
 batch_cancel_ok	{n} वस्तू रद्द · {slips} रद्द पर्ची → {kitchens}
 batch_cancel_ok_noprint	{n} वस्तू रद्द — आपसूक छाप बंद आसा, म्हणून रद्द पर्ची ना
-no_printer_kitchen_station	त्या स्टेशना खातीर प्रिंटर ना
 printers_saved	जतनाय घेतल्या
 test_page_sent	चांचणी पान धाडलां — मुद्रक तपासात
 test_page_sent_one	{name} कडेन धाडिल्लें चांचणी पान — तो मुद्रक तपासात
@@ -771,10 +628,7 @@ cancelled	रद्द केलां
 printers_tap_find	हें डिव्हायस वापरूं येता अशा मुद्रकांची वळेरी करपाक सोद टॅप करात.
 printers_none_found	कोणूच मेळूंक ना — प्रणाली मुद्रक नांव वा IP टाइप करात (देखीक 192.168.1.50).
 printer_from_find	जोडले {name}
-kot_printer_ph	पर्चीचो प्रिंटर
 bill_printer_ph	बिलां खातीर प्रिंटर
-kot_print_on	टिकट आपसूक छाप: चालू
-kot_print_off	टिकट आपसूक छाप: बंद
 queue_refused	दुकानान मान्य ना ({n}) — काउंटराचेर दरेक तपासात:
 clear_not_accepted	तपासले — ही वळेरी निवळ करात
 device_name_ph	ह्या साधनाचें नांव
@@ -785,7 +639,6 @@ backup_failed	निमाणो स्वयंचलित बॅकअप अ
 backup_overdue	{n} दिसां खातीर बॅकअप ना — ऍप्लिकेशन ह्या डिव्हायसाचेर उक्तो दवरात म्हणजे तो बॅकअप घेवंक शकता.
 disk_low	ह्या डिव्हायसाचेर फकत {mb} MB मुक्त — बॅकअप बेगीन अपयशी थारतले. थोडी सुवात मुक्त करात.
 last_seen_devices	निमाणें पळयल्लें: {time}
-sync_interval	दर {secs}s समक्रमण करचें
 connection_to_shop	दुकाना कडेन जोडणी
 supplier_name_ph	पुरवणदाराचें नांव (वा पक्ष)
 supplier_ph	पुरवणदार
@@ -848,7 +701,6 @@ fresh_book_kirano	नव्यान = रिती वळेरी (वस्�
 fresh_selected	ताजें निवडलां — कॅटलॉग रितें उरता. तयार जातकच Done टॅप करात.
 gross_word	एकूण
 how_start	तुमकां कशी सुरवात करपाची आसा?
-kot_print_help_kirano	किराणा गल्ल्याचेर वापरनात.
 later_country_pack	उपरांत: मांडावळी → कर आनी फारीकणी लेबलां खातीर तुमचो देश पॅक लागू करचो.
 local_badge	थळावें
 mix_type_hint_kirano	गरज पडल्यार रोख / यूपीआय / कार्ड / क्रेडिट हांचे मदीं विभागप. पतपुरवणेक वयर गिरायक जाय.
@@ -899,8 +751,6 @@ staff_copy_need_source	कोणाचें सेटअप कॉपी कर
 staff_copy_same	तीच व्यक्ती — दुसर् याक वेंचून काडात
 staff_rename_need_selected	पयलीं कोणाचें नांव बदलचें तें निवडात
 team_pick_hint	कोणाक बदलपाचें तें वेंचात — स्क्रीन, पैशांचे हक्क आनी स्टेशन फकत त्या मनशा खातीर दिसतात.
-team_stations_help	तीं वापरूंक शकतात तीं स्टेशन
-team_stations_changed	स्टेशन बदललीं — ह्या मनशाचें सेटअप सांबाळात
 team_features_changed	पडदे बदलल्यात — ह्या व्यक्ती खातीर सेटअप जतनाय घेयात
 team_rights_changed	हक्क बदलले — ह्या व्यक्ती खातीर सेटअप जतनाय घेयात
 they_owe_us	ते आमचेर ऋणी आसात
@@ -984,9 +834,6 @@ service_pct_ph	सेवा % पर्यायी 0/10/12
 short_code_ph	लघु कोड (एमजी02) 1.1.
 starting_password_ph	पासवर्ड सुरू करप (पर्यायी) .
 starting_pin_ph	पिन सुरू करप (4-12 अंक)
-station_name_ph	स्टेशनाचें नांव (पर्यायी)
-station_new_ph	भाग (पर्यायी)
-table_name_ph	गल्लो / बे नांव
 tax_rate_ph	कर दर नांव वा % — मानक, उणें केल्लें, ०, ५, १२, १८, २०
 to_code_ph	कोड करपाक (किग्रॅ) .
 uncleared_no_ph	वयर # स्पश्ट ना
@@ -999,27 +846,8 @@ book_kind_month	ह्या म्हयन्यांत पुस्तक�
 book_kind_aging	उरिल्लें / डेबिट-क्रेडिट
 book_kind_balance	ताळेबंद
 order_help	एक आयटम जोडपाक टॅप करात.
-floor_help	ही दुकान गल्ल्याचेर विकता. मेज आनी जेवणाचो फ्लोर Kirano चो भाग नात.
-kitchen_help	गल्ल्याच्या दुकानांत वापरनात.
-kitchen_empty	उक्ती टिकट नात (गल्ल्याचीं दुकानां ही स्क्रीन चड करून वापरनात).
-add_a_table	एक टेबल जोडचें
-add_station_heading	दुकानचो भाग जोडात
 categories_help	त्या वर्गा खाला वयर दिल्लें आयटम फायल करपाक वापरात टॅप करात. फोटो वर्गाक चित्र दिता; एक नासतना तो आपलीं आद्याक्षरां दाखयता.
 dish_search_ph	वस्तू वा ल्हान कोड सोदात…
-tile_free	फुकट
-tile_occupied	सुवात घेतल्या
-tile_food_ready	जेवण तयार
-tile_bill_printed	बिल छापलें
-tile_paid	फारीक केल्लें
-tile_bill_btn	बिल
-tile_occupy_btn	सोयऱ्यांक बसप
-tile_free_btn	मुक्त मेज
-tile_ready_btn	मुक्त मेज
-tile_undo_bill	बिल पूर्ववत करचें
-summary_busy	मेज व्यस्त
-summary_to_collect	एकठांय करप
-summary_on_floor	जमनीर आसता
-floor	दुकान
 sizes_as_items_ph	वेगवेगळीं वस्तू म्हणून आकार (पर्यायी) — अर्द=120, पुराय=200
 dish_group_ph	पॅक आकाराचो पंगड (पर्यायी) — देखीक आटो 1kg / 5kg
 discount	सवलत
@@ -1027,7 +855,6 @@ remove_discount	सवलत काडून उडोवप
 apply_discount	सवलत लागू करात
 save_opening_cash	उगडपाची रोख रक्कम जतनाय घेयात
 close_shift_print	शिफ्ट बंद करात आनी स्लिप प्रिंट करात
-area_prices_ph	क्षेत्र दर (पर्यायी) — एसी = 220, पार्सल = 210
 discount_ph	१०% वा ५०%
 discount_reason_ph	कारण (देखीक- नेमान सोयरो, उशीराक जेवण)
 opening_float_ph	आज सकाळीं ड्रॉअरांत घालून दिल्लें रोख पयशे
@@ -1037,34 +864,18 @@ shift_handover	शिफ्ट हस्तांतरित करप
 shift_since	तेन्नासावन हें स्थलांतर
 expected_in_drawer	ड्रॉअरांत अपेक्षीत आसा
 right_discount	सवलत दिवची
-floor_in_kitchen	चालू आसा
-floor_eating	सेवा दिली
 pick_category	एक वर्ग वेंचून काडात
 close_category_list	श्रेणी वळेरी बंद करात
 new_category_row	नवी श्रेणी — तुमी आयटम जतनाय घेतना तयार केल्ली
 your_category	तुमचो वर्ग
 suggested_category	सुचोवणी — आमच्या वस्तूं वयल्यान
 category_search_ph	श्रेणी — तुमचो सोद वा नवो टाइप करचो
-line_sent_state	धाडलें
-line_nc_state	प्रशस्ती (एनसी) — शुल्क ना
 cancel_item_short	रद्द
-nc_short	एनसी
-charge_again_short	चार्ज
-move_short	हालोवचें
 cancel_item_title	ही वस्तू रद्द करात — बॅक ऑफिसाक रद्द पर्ची मेळटा
-nc_item_title	ही वस्तू प्रशस्ती करपासारकी करात (एनसी)
-charge_again_title	ही आयटम परतून चार्ज करात
-move_item_title	ही वस्त दुसऱ्या टेबलाचेर व्हरची
-already_cooked	पयलींच शिजयल्लें (वाया घालप) .
-not_cooked_yet	अजून शिजयल्लें ना
 return_to_customer	गिरायका कडेन परत वचप
 short_by	थोडयाच उतरांनी
 tip_not_sale	टिप (कर्मचाऱ्याची, विक्री न्हय)
 right_settle	फारीकणी घेवची
-right_cancel_sent	धाडिल्ली वस्त रद्द करात
-right_complimentary	स्तुती (एनसी) 1.1.
-right_move_table	गल्ले हालयात / एकठांय करात
-right_reprint	परतून बिल छापचें
 right_allowed	मान्यताय आसपी
 right_with_approval	मान्यताय घेवन
 right_denied	परवानगी ना
@@ -1074,25 +885,11 @@ no_server_found	कोणूच मेळूंक ना. सर्वराच
 servers_found_pick	तुमकां जोडपाक जाय आशिल्ल्या दुकानाचेर टॅप करात.
 server_host_selected	{host} वापरून — जोडणी कोड दाखयात, मागीर आतां जोडणी करात.
 print_bill	बिल छापचें
-table_actions	गल्ल्याचीं कामां
-move_merge_table	टेबल हालयप / विलीन करप
-move_help	ह्या गल्ल्याचो ऑर्डर मेकळ्या मेजाचेर व्हरात, वा चालू आशिल्ल्या ऑर्डरांत एकठांय करात.
-move_target_ph	गल्ल्याचें नांव
 approval_pin_ph	वेवस्थापक पिन (फकत विचारल्यार)
-move_here	हांगासर वचचें
-merge_into	तातूंत विलीन जावप
-line_reason_ph	कारण (देखीक गिरायकान मन बदललें, स्टॉक सोंपलो)
-line_qty_ph	कितले रद्द करचे (रिक्त = सगळे)
-line_target_ph	टेबलाचेर वचचें (देखीक- D5)
 confirm	निश्चीत
 menu_search_ph	आयटम वा शॉर्ट कोड सोदचो
 customer_paid_ph	गिरायकान फारीक केलें
 tip_ph	टीप
-table_area_ph	क्षेत्र (देखीक- डाइन इन, पार्सल, एसी)
-table_range_ph	एकाच वेळार जायते: डी१-डी२०
-add_these_tables	हे गल्ले जोडात
-remove_these_tables	हे गल्ले काडात
-table_remove_ph	काडून उडोवचें: T1-T24, वा एका टेबलाचें नांव
 find_server	दुकानाचो सर्वर सोदून काडात
 bill_format	बिल स्वरूप
 bill_format_help	दर बिलाचेर तुमच्या दुकानाच्या नावां सकयल छापता. वळेरी | न वेगळ्यो करात (देखीक MG Road, Rajkot | Ph 98250 00000).
@@ -1100,78 +897,32 @@ bill_header_ph	पत्तो | फोन
 fssai_ph	FSSAI / दुकान परवानो क्र. (पर्यायी)
 bill_footer_ph	तळटीप (देखीक- धन्यवाद, परतून भेट दिवची)
 save_bill_format	बिल स्वरूप जतनाय घेयात
-kot_format	पर्ची स्वरूप
-kot_format_help	वळेरेंत एखादें क्षेत्र दामात. दाखयात, अक्षर आकार आनी जाडसाण वयल्यान वेंचिल्ल्या पर्ची प्रकाराच्या त्या क्षेत्राक लागतात. दर एक प्रकार आपले आकार आनी जाडसाण दवरता.
-kot_format_fields	शेतां
-kot_field_next	फुडलें क्षेत्र
-kot_field_show	दाखोवचें
-kot_field_hide	लिपोवचें
 kot_field_on	दाखोवचें
 kot_field_off	लिपोवचें
-kot_field_size	फॉन्टाचो आकार
-kot_field_size_ph	उदा. १६, २०, २४, २८, ३२...
 kot_weight_light	उजवाड
 bill_kot_panel_help	बिलाची मांडावळ आनी रुंदी. कॅशियर तो जो बिल काडटा वा निवळायता — विक्रीची पुरी कथा बहिंत रावता.
 std_size_ph	उदा. १८, २०, २६ आनी...
-kot_show_shop	दुकानाचें नांव
-kot_hide_shop	दुकान लिपोवप
-kot_show_time	वेळ
-kot_hide_time	वेळ लिपोवप
-kot_show_waiter	कॅशियर
-kot_hide_waiter	कॅशियर लिपयात
-kot_show_station	स्टेशन
-kot_hide_station	स्टेशन लिपोवप
-kot_show_table	गल्लो
-kot_hide_table	टेबल लिपोवप
-kot_show_kot_no	टिकट क्र.
-kot_hide_kot_no	टिकट क्र. लिपयात
-kot_width	पूर्वदृश्य वळांव (रुंदी पर्ची टॅबाचेर थारायात)
-kot_width_58	58 mm
-kot_width_80	80 mm
-kot_kind_heading	टिकटाचो प्रकार
-kot_kind_original	मूळ
-kot_kind_duplicate	डुप्लीकेट करप
-kot_kind_modified	सुदारीत केल्लें
-kot_kind_cancelled	रद्द केलां
-kot_style_heading	शेत प्रकार आकार & वजन
-kot_style_title	शीर्षक
-kot_style_item_qty	आयटम · प्रमाण
-kot_style_field_pick	क्षेत्र निवडात
 kot_weight_regular	नियमीत
 kot_weight_bold	ठळक
-kot_align	एके वळीन दवरचें
 kot_align_start	सुरवात
 kot_align_center	केंद्र
 kot_align_end	समाप्ती
 content_width	आशय रुंदी (मिमी) 1 .
 content_width_bill	बिल सामुग्री रुंदी (मिमी) 1.1.
-content_width_kot	टिकटाची रुंदी (mm)
 content_width_ph	वा आशयाची रुंदाय, ४०-२१० मिमी
 content_width_help	ही पर्ची कितली रुंद छापता. बिल आपली रुंदी दवरता.
 content_width_bill_help	गिरायकाचें बिल कितलें रुंद छापता. आदींच 210 mm (पान). 58 mm संकीर्ण पर्ची, 80 mm रुंद पर्ची, 112 mm 4-इंच, 210 mm A4-रुंद. 40 ते 210 मेरेन खंयचेंय मोल बरयात. टिकटांची आपली रुंदी पर्ची टॅबाचेर आसा.
-content_width_kot_help	टिकट कितलें रुंद छापता. आदींच 80 mm. 58 mm संकीर्ण पर्ची, 80 mm रुंद पर्ची, 112 mm 4-इंच, 210 mm पान. 40 ते 210 मेरेन खंयचेंय मोल बरयात. गिरायक बिलांची आपली रुंदी बिल टॅबाचेर आसा.
 vp_paper_width	आशय रुंदी (मिमी) 1 .
 vp_paper_width_ph	वा आशयाची रुंदाय, ४०-२१० मिमी
 vp_paper_width_help	रुंदी बिल आनी पर्ची स्वरूपांत थारायतात — बिलाक (आदींच 210 mm) आनी टिकटाक (आदींच 80 mm) वेगळी.
-kot_size	फॉन्टाचो आकार
-kot_size_s	ल्हान
-kot_size_m	सामान्य
-kot_size_l	व्हड
 std_size	फॉन्टाचो आकार
 kot_copies	प्रतीं
 kot_copies_1	1
 kot_copies_2	2
 kot_copies_3	3
-kot_title_ph	शीर्षक (रितें = TICKET)
-kot_footer_ph	बॅक ऑफिस नोट (पर्यायी)
-kot_preview	पूर्वावलोकन
-save_kot_format	पर्ची स्वरूप सांबाळात
-test_kot_format	चांचणी छाप
-test_kot_sent	टिकटाचें नमुने धाडलें
 test_bill_format	चांचणेचें बिल
 test_bill_sent	बिलाचो पूर्वावलोकन धाडलो
 test_print_no_printer	त्या कामा खातीर प्रिंटर ना — ह्या स्क्रीनाचेर एक वेंचून काडचो
-kot_format_saved	पर्ची स्वरूप सांबाळ्लें
 std_print	बिल छापपाचो आकार
 std_print_help	OS / दस्तावेज प्रिंटरांचेर Standard उबे आनी आडवे बिल कामा खातीर अक्षर आकार (पॉइंट घालात — ल्हान/सामान्य/व्हड न्हय). दोनूय दिशा एकूच आकार.
 std_size_s	ल्हान
@@ -1211,23 +962,16 @@ upi_qr	UPI QR
 show_upi_qr	यू.पी.आय क्यू.आर. दाखय
 close_upi_qr	बंद करात
 upi_qr_help	गिरायक स्कॅन करून फारीक करता. फारीक जाले उपरांत फारीकणी घेवची दामात. दुसरी स्क्रीन: LAN चेर सर्वर URL /display उगडात.
-kot_recall	याद करात
 recently_done	हालींच केल्लें
-recall_kot_ph	परत हाडपाक टिकट #
 role_help_customer	भुमिका: गिरायक — खातें (ते आमकां रिणदार आसात). तोच पक्ष स्टॉक पुरवण लेगीत करूंक शकता.
 role_help_both	भुमिका: गिरायक + पुरवणदार - एक पक्ष, खाता आनी देय लेजर, अहवालांत जाळ.
 role_help_supplier	भुमिका: पुरवणदार - खरेदी खातीर आमी तांकां रिणदार करतात.
-dine_in_pick_table	गल्ल्याच्या दुकानांत वापरनात
-choose_table	गल्लो वेंचात
-change_table	टेबल बदलचें
-pick_table_banner	ह्या ऑर्डरा खातीर एक टेबल निवडात
 items_word	वस्तू
 items_section	वस्तू
 back_to_order	परत ऑर्डराचेर
 new_items_head	अजून धाडूंक ना
 price_ph	किंमत
 price_ph_gst_inside	किंमत ({tax} समावेशक)
-cancel_needs_table	गल्ल्याची विक्री फारीकणी घेमेरेन टिकटाचेर रावता
 tax_rates_missing_hint	ह्या वस्तूंचेर {tax} दर ना — वस्तूंनी कर दर दवरात (किंमतींत आदींच {tax} आसा, {tax} समावेशी खाला)
 taxable_value	करपात्र मोल
 gst_inside_price_note	({tax} समावेशक)
@@ -1248,30 +992,11 @@ client_template_confirm	{title} हातूंतल्यान {d} वस्�
 client_template_importing	आयात {title}...
 client_template_done	{title} हातूंतली दर एक वस्तू तुमच्या वस्तूंनी आसा.
 client_template_imported	{title} हातूंतल्यान {d} वस्तू आनी {c} श्रेणी जोडल्यो
-resv_heading	आरक्षण[बदल]
-resv_name_ph	गिरायकाचें नांव
-resv_phone_ph	फोन (पर्यायी)
-resv_guests_ph	लोक
-resv_when_ph	केन्ना — 20:30, फाल्यां 13:00
-resv_table_ph	गल्लो (पर्यायी)
-resv_add	पुस्तक
-resv_seat	बशिल्लो
-resv_none	कसलेंच बुकिंग येवंक ना.
-guests_word	सोयऱ्यांनी
-delivery_by_ph	डिलिव्हरी (रायडर वा कर्मचार् याचें नांव)
-kitchen_all_day	आतां रांदपाक: {items}
-split_bill	बिलाची वांटणी करची
-split_go	एक वेगळें बिल तयार करात
 cancel	रद्द
 opening_client	उगडपी गिरायक...
 preparing_desk	डेस्क तयार करप...
 opening_server	सर्व्हर उगडटा...
 creating_server	सर्वर तयार करप...
-split_help	एक गिरायक ज्या वस्तूंची फारीकणी करता तीं दामात · {n} वेंचलीं
-split_send_first	पयलीं पर्ची धाडात — फकत बॅक ऑफिसा मेरेन पाविल्लीं वस्तू वेगळ्या बिलांत वचूंक शकतात
-split_pick_some	पयलीं वेगळ्या बिलाचीं वस्तू दामात
-split_done	वेगळें बिल तयार — तें फ्लोराचेर ह्या गल्ल्या लागीं आसा
-split_marked	वेगळें बिल
 order_empty_pick	ऑर्डर रितो — वस्तू वेंचपाक वयर वस्तू जोडात दामात.
 add_dishes	वस्तू जोडात
 order_so_far	ह्या ऑर्डराचेर: {n} · {total}
@@ -1282,24 +1007,8 @@ pick_done_dd	जालें · {label}
 printer_route_mode	ह्या जाग्यार जर साबार प्रिंटर आसल्यार
 printer_mode_first	पयलें, तें काम करता
 printer_mode_all	सगळ्यांचेर छापप
-kot_show_area	वाठार
-kot_hide_area	सुवात लिपोवप
-kot_show_item_hdr	आयटम · प्रमाण
-kot_hide_item_hdr	स्तंभ लिपोय
-kot_show_title	शिर्षक ओळ
-kot_hide_title	शिर्षक लिपोवप
-kot_field_order	छापपाची क्रम[बदल]
 kot_field_up	वयर सरचें
 kot_field_down	सकयल वचात
-kot_field_cycle	फुडलें निवडात
-kot_field_select	फुडलें निवडात
-kot_field_time	वेळ
-kot_field_kot_no	टिकट क्र.
-kot_field_area	वाठार
-kot_field_table	गल्लो
-kot_field_shop	दुकानाचें नांव
-kot_field_waiter	कर्मचारीवर्ग
-kot_field_station	स्टेशन
 app_template_blurb_extra	आनी: धनी Zahir, एडमिन Asif, कॅशियर Nawaz; मुखारचो साइडबार; 4 वरांनी इतिहास; आयजची पट्टी बंद; संक्षिप्त बिल.
 dishes_n	{n} वस्तू
 recipe_ph	रेसिपी (पर्यायी — गल्ल्याच्या दुकानांत वापरनात)
@@ -1309,8 +1018,6 @@ low_stock_alert	उणो जायत आसा — बेगीन विक�
 unpriced_note	तुमच्या {n} वस्तूंची अजून किंमत ना — किंमत दवरमेरेन त्यो 0 चेर बिल जातात.
 show_unpriced	फकत किंमत नाशिल्लीं वस्तू दाखयात
 show_all_dishes	सगळ्यो वस्तू दाखयात
-role_waiter	कॅशियर
-role_kitchen	स्टोर
 role_title_rest_ph	भुमिकेचें नांव (देखीक कॅप्टन, हेड कूक)
 preset_help_rest	कॅशियर: विकप. वेवस्थापक: विकप + वस्तू + शून्य/दुरुस्ती करप.
 kind_raw	दुकानाच्या वापरा खातीर घेतलें

@@ -25,44 +25,6 @@ fn nav_order_csv(order: &[NavTab]) -> String {
     order.iter().map(|t| nav_tab_key(*t)).collect::<Vec<_>>().join(",")
 }
 
-/// Floor area tab order from books meta. Empty fields are the unnamed area.
-fn parse_floor_area_order(csv: Option<&str>) -> Vec<String> {
-    let Some(csv) = csv else {
-        return Vec::new();
-    };
-    // Keep empty tokens (unnamed area); trim only non-empty names.
-    csv.split(',')
-        .map(|p| {
-            let t = p.trim();
-            if t.is_empty() {
-                String::new()
-            } else {
-                t.to_string()
-            }
-        })
-        .collect()
-}
-
-fn floor_area_order_csv(order: &[String]) -> String {
-    order.join(",")
-}
-
-/// Preferred order first (that still exist), then any new areas in discovery order.
-fn order_floor_areas(present: &[String], preferred: &[String]) -> Vec<String> {
-    let mut out = Vec::with_capacity(present.len());
-    for p in preferred {
-        if present.iter().any(|a| a == p) && !out.iter().any(|a| a == p) {
-            out.push(p.clone());
-        }
-    }
-    for a in present {
-        if !out.iter().any(|x| x == a) {
-            out.push(a.clone());
-        }
-    }
-    out
-}
-
 /// Peers that must stay on the chrome (cannot be hidden in Sidebar settings).
 fn nav_tab_always_visible(tab: NavTab) -> bool {
     matches!(tab, NavTab::Settings | NavTab::Lock)
@@ -114,23 +76,18 @@ struct NavCaps {
     items: bool,
     sales: bool,
     credit: bool,
-    floor: bool,
-    kitchen: bool,
     team: bool,
     inventory: bool,
     branches: bool,
     is_owner: bool,
     /// Any unlocked session — Settings shell (My PIN) even without shop admin.
     signed_in: bool,
-    /// Tables & kitchen peers exist only when this shop runs that mode.
-    floor_on: bool,
     branch_count: usize,
 }
 
 impl NavCaps {
     fn from_session(
         session: Option<&StaffMember>,
-        floor_on: bool,
         branch_count: usize,
     ) -> Self {
         match session {
@@ -139,18 +96,14 @@ impl NavCaps {
                 items: s.can_access_items(),
                 sales: s.can_access_sales(),
                 credit: s.can_access_credit(),
-                floor: s.can_access_floor() || s.is_owner(),
-                kitchen: s.can_access_kitchen() || s.is_owner(),
                 team: s.can_manage_team(),
                 inventory: s.can_access_inventory() || s.is_owner(),
                 branches: s.can_access_branches() || s.is_owner(),
                 is_owner: s.is_owner(),
                 signed_in: true,
-                floor_on,
                 branch_count,
             },
             None => Self {
-                floor_on,
                 branch_count,
                 ..Self::default()
             },
@@ -167,7 +120,7 @@ impl NavCaps {
 }
 
 /// Day totals strip ("Today: …") — Owner and anyone with Sales access.
-/// Waiters / cashiers by default never see the shop's day's business.
+/// Cashiers by default never see the shop's day's business.
 fn session_may_see_today(session: Option<&StaffMember>) -> bool {
     match session {
         Some(s) => s.is_owner() || s.can_access_sales(),
@@ -186,29 +139,6 @@ fn session_may_settle(session: Option<&StaffMember>) -> bool {
     }
 }
 
-/// Print the bill **again** — Reprint right not Denied.
-/// First print does not use this; see [`session_may_print_bill`].
-fn session_may_reprint(session: Option<&StaffMember>) -> bool {
-    match session {
-        Some(s) => !matches!(
-            s.rights().level(domain::Right::Reprint),
-            domain::RightLevel::Denied
-        ),
-        None => false,
-    }
-}
-
-/// Print bill on Order / Floor: first print allowed without Reprint;
-/// printing again requires Reprint not Denied. Store still checks PIN when
-/// WithApproval on a reprint (`print_running_bill`).
-fn session_may_print_bill(session: Option<&StaffMember>, already_printed: bool) -> bool {
-    if already_printed {
-        session_may_reprint(session)
-    } else {
-        session.is_some()
-    }
-}
-
 /// True when this peer may appear for the signed-in person on this device.
 fn nav_tab_permitted(tab: NavTab, caps: NavCaps) -> bool {
     match tab {
@@ -220,8 +150,6 @@ fn nav_tab_permitted(tab: NavTab, caps: NavCaps) -> bool {
         NavTab::Books => caps.books_ok(),
         NavTab::Buy => caps.buy_ok(),
         NavTab::Menu => caps.items,
-        NavTab::Floor => caps.floor && caps.floor_on,
-        NavTab::Kitchen => caps.kitchen && caps.floor_on,
         NavTab::Sales => caps.sales,
         NavTab::DayClose | NavTab::Reports => caps.sales || caps.is_owner,
         NavTab::Inventory => caps.inventory,
@@ -253,11 +181,7 @@ fn nav_caps_from(st: &AppState) -> NavCaps {
         .and_then(|s| s.list_branches().ok())
         .map(|b| b.len())
         .unwrap_or(1);
-    NavCaps::from_session(
-        st.session.as_ref(),
-        st.venue_mode.creates_kot(),
-        branch_count,
-    )
+    NavCaps::from_session(st.session.as_ref(), branch_count)
 }
 
 fn nav_chrome_order_from(st: &AppState) -> Vec<NavTab> {
@@ -270,8 +194,6 @@ fn screen_for_nav_tab(tab: NavTab) -> Screen {
         NavTab::Sell => Screen::Pos,
         NavTab::Buy => Screen::Buy,
         NavTab::Menu => Screen::Menu,
-        NavTab::Floor => Screen::Floor,
-        NavTab::Kitchen => Screen::Kitchen,
         NavTab::Sales => Screen::Sales,
         NavTab::DayClose => Screen::DayClose,
         NavTab::Reports => Screen::Reports,
@@ -284,7 +206,7 @@ fn screen_for_nav_tab(tab: NavTab) -> Screen {
 }
 
 /// Post-unlock home: first chrome peer this person may open (never Lock).
-/// Waiters without Books rights must not land on Day book with every hub row.
+/// Staff without Books rights must not land on Day book with every hub row.
 fn unlocked_home_from(st: &AppState) -> Screen {
     for tab in nav_chrome_order_from(st) {
         if tab != NavTab::Lock {
@@ -312,8 +234,6 @@ fn session_may_stay_on(screen: Screen, st: &AppState) -> bool {
         Screen::Menu => caps.items,
         Screen::Books => caps.books_ok(),
         Screen::Buy => caps.buy_ok(),
-        Screen::Floor => caps.floor && caps.floor_on,
-        Screen::Kitchen => caps.kitchen && caps.floor_on,
         Screen::Sales => caps.sales,
         Screen::DayClose | Screen::Reports => caps.sales || caps.is_owner,
         Screen::Inventory => caps.inventory,
@@ -588,8 +508,6 @@ fn nav_tab_for(screen: Screen) -> Option<NavTab> {
     match screen {
         Screen::Books => Some(NavTab::Books),
         Screen::Pos => Some(NavTab::Sell),
-        Screen::Floor => Some(NavTab::Floor),
-        Screen::Kitchen => Some(NavTab::Kitchen),
         Screen::Buy => Some(NavTab::Buy),
         Screen::Menu => Some(NavTab::Menu),
         Screen::Sales => Some(NavTab::Sales),
@@ -633,14 +551,11 @@ fn setup_shows_header_back(st: &AppState) -> bool {
 }
 
 /// In-screen overlays Back dismisses **before** popping `nav_back`
-/// (Settings section, Order sheets, Floor pick). Screen-scoped so a peer
-/// jump cannot leave a phantom layer. Separate screens reached via `go`
-/// (Team, SidebarSettings) rely on visit history for ‹.
+/// (a Settings section). Screen-scoped so a peer jump cannot leave a
+/// phantom layer. Separate screens reached via `go` (Team, SidebarSettings)
+/// rely on visit history for ‹.
 fn in_screen_nested_layer(st: &AppState) -> bool {
-    (st.screen == Screen::Settings && st.settings_panel.is_some())
-        || (st.screen == Screen::Pos
-            && (st.line_action.is_some() || st.move_panel_open || st.split_mode))
-        || (st.screen == Screen::Floor && st.picking_table)
+    st.screen == Screen::Settings && st.settings_panel.is_some()
 }
 
 /// Header ‹ — browser-style. Show whenever Back can do something:

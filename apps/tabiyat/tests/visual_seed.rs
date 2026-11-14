@@ -32,7 +32,6 @@ fn seed_visual() {
         store
     };
     s.complete_onboarding().unwrap();
-    s.set_venue_mode(VenueMode::Counter).unwrap();
     s.set_venue_title("City Chemist").unwrap();
     let owner = s
         .list_staff()
@@ -71,7 +70,6 @@ fn seed_visual() {
     s.finalize_sale(
         &cart.to_sale_draft().unwrap(),
         PayMethod::Cash,
-        None,
         None,
         &owner,
     )

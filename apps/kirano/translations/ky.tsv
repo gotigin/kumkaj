@@ -68,28 +68,6 @@ applied	Колдонулган
 note_ph	Эскертүү (милдеттүү эмес)
 rounded	ТЕҢГЕКТЕНГЕН
 split	Бөлүнүү
-send_kot	Слип жөнөтүү
-send_kot_to	Жиберүү → {kitchens}
-send_kot_again	Кийинки слипке нерселерди кошуңуз
-send_kot_held	Кармалган нерселер — жөнөтүү үчүн кармап туруңуз
-reprint_kot	Кайра тандалган басып чыгаруу
-reprint_kot_ok	{n} элементтери кайра басылды · {slips} слип(лери) → {kitchens}
-reprint_kot_needed	Адегенде слип жөнөтүңүз — андан кийин элементтерди кошуп, тандалгандарды кайра басып чыгарыңыз
-reprint_kot_none_selected	Ар бир жөнөтүлгөн нерсе өткөрүлүп жиберилет — кайра басып чыгаруу үчүн басып чыгарууда дегенди таптаңыз
-reprint_kot_client	Жөнөтүлгөн {place} үчүн кайра басып чыгаруу ({n}) — дүкөн түзмөгү аны басып чыгарат
-print_cancelled_kot	Баары жокко чыгарылды басып чыгаруу
-print_cancelled_kot_ok	Басылып чыгарылган {n} жокко чыгарылган нерселер · {slips} слип(лери) → {kitchens}
-print_cancelled_kot_needed	Адегенде жокко чыгарылган нерселер менен үстөлдү ачыңыз
-print_cancelled_kot_none	Бул буйрутмада жокко чыгарылган нерселер жок
-print_cancelled_kot_client	Басып чыгаруу жокко чыгарылды ({n}) {place} үчүн жөнөтүлдү — дүкөн түзмөгү аны басып чыгарат
-kot_banner	Боорукер баннер
-kot_banner_ph	Баннер (бош = жок)
-kot_item_prefix	Менюнун префикси
-kot_item_prefix_ph	мис. [Жокко чыгарылды]
-kot_strike	Белгиленген нерсенин аталышы
-kot_strike_note	Белгиленген нерсенин эскертүүсү
-kot_strike_on	Күйүк
-kot_strike_off	Өчүк
 bill_item_layout	Меню меню пунктунун жайгашуусу
 bill_item_layout_columns	Мамычалар
 bill_item_layout_stacked	Үйүлгөн
@@ -118,8 +96,6 @@ bill_item_gap_em	Гап (эм)
 bill_item_qty_min	Саны мин (эм)
 bill_item_price_min	Минималдуу баасы (эм)
 bill_item_amount_min	Минималдуу сумма (эм)
-kot_item_qty_width	Саны тилкеси
-kot_item_num_align	Саны тууралоо
 bill_total_qty_label	Жалпы сан энбелгиси
 bill_total_subtotal_label	Кошумча жалпы энбелги
 bill_total_grand_label	Жалпы энбелги
@@ -131,36 +107,9 @@ bill_item_piece_off	Өчүк
 bill_total_qty	Жалпы саны
 bill_total_subtotal	Кошумча жалпы
 bill_total_grand	Жалпы сумма
-reprint_incl	Басмада
-reprint_skip	Өткөрүп жибер
-reprint_skip_meta	Калыбына келтирүүчү басып чыгарууну өткөрүп жиберүү
-kot_dest_hint	Орнотуулар → Принтерлерде {kitchens} үчүн сиз дайындаган принтерлерде басып чыгарат
-kot_sent_hint	Акыркы жөнөтүү {kitchens} дарегине жөнөтүлдү. Кийинки эсепке элементтерди кошуу үчүн таптап коюңуз — же ошол эле эсеп үчүн слипти кайра басып чыгаруу.
-kot_sent_printing	Слип {kitchens}ге жөнөтүлдү — басып чыгаруу
-kot_sent_not_printed	Слип {kitchens}ке жөнөтүлдү, бирок БАСЫЛБАЙТ: {why}. Дүкөнгө айтып, анан принтерди оңдоп, кайра басып чыгарыңыз.
-kot_sent_screen	Слип {kitchens}ге жөнөтүлдү
-kot_queued_shop	{place} үчүн слип → {kitchens} сакталды; дүкөн аппараты аны басып чыгарат
-kot_job_label	{place} → {kitchens} үчүн слип
-kot_job_reached	{place} үчүн слип {kitchens} жетти
 kot_unassigned	Дайындалган жок
-kot_unassigned_held	Станциясыз кармалган {n} буюмдары — жөнөтүү үчүн линияда кармап туруңуз
-kot_station_ph	Станция
-kot_station_dd	Станция
-kot_station_dd_n	Станция · {stations}
-kot_set_station	Бул станцияны колдонуңуз
-kot_station_applied	{n} элементтерине коюлган станция: {station}
-kot_station_cleared	Станция {n} элементтеринен тазаланды: {station}
-kot_station_needed	Биринчи дүкөн бөлүмүн тандаңыз
-kot_station_not_allowed	Бөлүмдү колдонууга уруксат жок: {station}
-kot_station_none	Азырынча станциялар жок — дүкөндө колдонулбайт (Керек болсо Орнотуулар → Аймактар)
 pos_tab_items	Меню элементтери кошулду
 pos_tab_payment	Төлөм
-hold_send	Ашканадан карма
-hold_send_on	өткөрүлдү
-hold_send_meta	Каралды - бул слипте эмес
-station_remove	Станцияны алып салуу
-station_remove_ph	Аны алып салуу үчүн тизмедеги станцияны таптаңыз
-station_removed	Станция алынып салынды: {name}
 settings_hub_title	Орнотуулар
 settings_hub_help	Бир убакта бир аймакты ачыңыз — азыраак сыдыруу, айкыныраак тандоо.
 settings_back	Артка
@@ -169,12 +118,10 @@ settings_sec_country	Өлкө жана салык
 settings_sec_tills	Башка аппараттар
 settings_sec_brand	Сиздин бренд
 settings_sec_units	Бирдиктер жана конверсиялар
-settings_sec_pickers	Райондор · станциялар · салык ставкалары
+settings_sec_pickers	Салык ставкалары
 settings_sec_printers	Принтерлер
 settings_sec_bill	Эсеп жана слип форматы
 settings_sec_selling	Схемалар жана сатуулар
-bill_kot_tab_bill	Коноктун эсеби
-bill_kot_tab_kot	Слип
 settings_sec_alerts	Эскертүүлөр
 alerts_help	Статус билдирүүлөрү сиз үчүн канча убакытка чейин экранда калат (бул кирүү).
 snack_secs_ph	Секунд (3–60, демейки 10)
@@ -225,8 +172,6 @@ counter	Прилавок
 dine_in	Прилавок
 takeaway	Алып кетүү
 order	Ресторан заказы
-tables	Эсептегичтер
-kitchen	Бөлүмдөр
 sales	Сатуу
 sales_refunds	Сатуу жана кайтаруу
 day_close	Күн жакын
@@ -254,10 +199,6 @@ zero_sales_on	₹0 уруксат берүү
 zero_sales_off	Бааны талап кылат
 zero_sales_saved_on	Нөлдүк баада сатууга жол берилет
 zero_sales_saved_off	Сатуулардын баасы ₹0 жогору болушу керек
-floor_areas_help	Аймактар ​​- кабаттагы бөлмөлөр же зоналар (Dine In, Parcel, AC ...). Адегенде аймакты кошуңуз, анан ага эсептегичтерди салыңыз — ар бир аймак кабатта өзүнчө топ болуп саналат.
-area_new_ph	Жаңы аймак / бөлмө (мисалы, AC, бакча)
-add_area	Аймак кошуу
-area_added	"{name}" аймагы даяр — ага эсептегичтерди кошуңуз
 no_favorites	Сүйүктүүлөр азырынча жок — төмөнкү тизмеден меню пункттарын кошуңуз.
 add_to_bill	Конок эсебине кошуу
 added	Кошулган
@@ -268,19 +209,9 @@ chip_missing_customer	Тандалган кардар жок — кайра та
 chip_no_customer	Азырынча кардар жок — атын терип, андан соң "Кредит" баскычын таптаңыз
 credit_summary_fmt	{} кардарлар · ачык кредит {} · алынган аванстар {}
 recent_label	Акыркы:
-kot_new_waiting	ЖАҢЫ — күтүүдө
-kot_preparing	ДАЯРДАНУУДА
-kot_ready_serve	ДАЯР — кызмат кыл
-kot_done_cap	АТКАРЫЛДЫ
-kot_cancelled	ЖОК КАЛДЫ
-kot_start_btn	Баштоо
-kot_mark_ready	Даяр деп белгилөө
-kot_done_btn	Бүттү
-table_free	Бош — заказ баштоо үчүн таптаңыз
 start_order	Заказ баштоо
 open_bill	Конок эсебин ачуу
 collect_payment	Төлөмдү чогултуу
-table_running	чуркоо
 payment_pending	Төлөм күтүлүүдө
 collect_at_counter	кассага чогултуу
 inventory	Инвентаризация
@@ -313,7 +244,6 @@ ok	OK
 this_shop	Сервер режими
 extra_till	Кардар режими
 off	Өчүк
-tables_kitchen	Дүкөндүн макети
 server	Сервер режими
 client	Кардар режими
 language_currency	Тил жана валюта
@@ -355,8 +285,6 @@ add_item_plain	Меню пунктун кошуу
 add_note	Эскертүү кошуу
 add_opening_balance	Ачылыш балансын кошуу
 add_staff	Кызматкерлерди кошуу
-add_station	Станция кошуу
-add_table	Тамактануучу үстөл кошуу
 add_unit	Бирдик кошуу
 add_use_name	Бул атты кошуңуз/колдонуңуз
 allow_extra_tills	Кошумча кассалык машиналарга уруксат берүү
@@ -409,7 +337,6 @@ share_whatsapp	Бөлүшүү WhatsApp
 lan_pages_heading	Wi‑Fi'дагы кардар барактары
 lan_pages_help	Бул дүкөндүн Wi‑Fi тармагында кардарлардын баракчалары дисплей тактасы жана пикир үчүн иштейт. Мобилдик дайындардагы адамдарга кийинчерээк Cloud керек. Карта терминалы же төлөм шилтемеси милдеттүү эмес жана эсептегичти эч качан бөгөттөбөйт.
 diag_send_heading	Бул түзмөктөн бөлүшүңүз
-kot_dest_heading	Станция
 optional_login_heading	Кошумча кирүү
 rights_heading	Укуктар
 ops_panel	Жергиликтүү операциялар
@@ -436,28 +363,6 @@ till_voucher_amt_ph	Ваучердин суммасы (бош = бардыгы)
 till_wallet_topup_ph	Капчыкты толуктоо
 till_voucher_issue_amt_ph	Ваучердин суммасын чыгаруу
 till_voucher_issue_code_ph	Жаңы ваучер коду
-split_evenly	Бир калыпта бөлүңүз
-waitlist	Күтүү тизмеси
-fire_course	Кийинки кадам
-hold_item	Ашканадан карма
-waiter_call	Кассирге чал
-waitlist_add	Күтүү тизмесине кошуу
-floor_view_grid	Тор
-floor_view_layout	Макет
-floor_layout_x	X
-floor_layout_y	Y
-floor_layout_w	W
-floor_layout_h	H
-floor_layout_save	Макетти сактоо
-floor_layout_open	Столду ачуу
-floor_layout_edit	Макетти түзөтүү
-floor_layout_pick	Тамактануучу үстөлдү таптап, анын схемасын түзөтүңүз
-floor_layout_saved	Макет сакталды
-floor_layout_nudge_left	← 20
-floor_layout_nudge_right	→ 20
-floor_layout_nudge_up	↑ 20
-floor_layout_nudge_down	↓ 20
-sibling_pickers_help	Күйгүзүү/Өчүрүү сыяктуу бирдиктерди таптаңыз — аймактарды, станцияларды жана салык ставкаларын күнүмдүк тандоочулардан жашырыңыз; пакеттин демейки параметрлери калат.
 bulk_price_apply	Оптом бааны колдонуу
 card_terminal_optional	Карта терминалы / төлөм шилтемеси (интернет болгондо милдеттүү)
 copy_report	Отчетту көчүрүү
@@ -483,7 +388,6 @@ import_day	Импорттоо күнү
 import_items_csv_plain	Меню пункттарын импорттоо CSV…
 import_parties_csv	Кардарларды жана жеткирүүчүлөрдү CSV импорттоо…
 item_name	Меню пунктунун аталышы
-kitchen_printing	Принтерлер
 login_id_ph	Колдонуучунун аты
 mark_cleared	Тазаланды деп белгилөө
 new_party_clear	Жаңы кардар же жеткирүүчү (форманы тазалоо)
@@ -553,15 +457,6 @@ show	Көрсөтүү
 spreadsheet_csv	Электрондук жадыбал (CSV)
 start_fresh	Жаңыдан баштаңыз
 stop_extra_tills	Кошумча кассалык машиналарды токтотуу
-floor_cols_ph	Мамычалар
-floor_cols_fit	Экранды туура
-floor_cols_fit_sub	{n} бул жерге туура келет
-floor_cols_fits	туура келет
-floor_cols_scroll	тарапка жылдырат
-floor_cols_min	Мамычалар: жок дегенде 1 — же экранга туура келүү үчүн аны бош калтырыңыз
-floor_zoom_auto	Авто
-floor_zoom_out	Кичирейтүү
-floor_zoom_in	Чоңойтуу
 backup_auto	Камдык көчүрмөсү күн сайын автоматтык түрдө жасалат · акыркы {when} · акыркы 14 күн {dir} ичинде сакталат.
 backup_auto_none	Камдык көчүрмөсү күн сайын автоматтык түрдө сакталат — биринчиси бир заматта иштейт.
 backup_copy_to	Көчүрмөлөр {dir} дарегине да барат.
@@ -579,7 +474,6 @@ new_pair_code	Жаңы жупташтыруу коду
 pair_finishing	Аяктоочу жуп… дүкөндүн китепчелерин колдонуу
 pair_opening	Касса ачылууда…
 pair_copied	Жупташтыруу коду көчүрүлдү
-kot_waiting	Жөнөтүүнү күтүүдө
 lan_offline_waiting	Дүкөн серверине жеткиликсиз · {n} күтүүдө
 lan_connecting	Дүкөнгө туташууда…
 lan_live	Жандуу
@@ -621,7 +515,6 @@ printers_routes_help	Иштетүү системасы мурунтан эле �
 printer_assign_dd	Чыныгы принтер: {place}
 printer_assign_pick	Чыныгы принтерди тандаңыз
 printer_profile_heading	Макет
-printer_send_heading	Жеткирүү
 vp_delivery_heading	Жеткирүү
 vp_delivery_help	Бул виртуалдык принтер тапшырмаларды кантип жөнөтөт — OS документи, чийки байттар же ESC/POS. Слиптин мазмуну (түрдүн өлчөмү, таңуу, четтери) бул жерде эмес, эсеп/слип форматы менен чечилет.
 vp_type_size_heading	Түр өлчөмү
@@ -665,23 +558,13 @@ virtual_draft_send	Кийинки виртуалдык принтер үчүн �
 virtual_need_real	Алгач чыныгы принтерди тандаңыз
 virtual_need_select	Жок кылуу үчүн виртуалдык принтерди тандаңыз
 real_printer_selected	Тандалган: {name}
-station_group_heading	Виртуалдык принтерлер
-station_group_apply	Виртуалдык принтерди жок кылуу
-station_group_applied	Жок кылынды
-station_group_empty	Виртуалдык принтерди тандаңыз
-station_group_name_ph	Виртуалдык принтердин аты (милдеттүү эмес)
-station_group_save	Виртуалдык принтерди түзүү
-station_group_saved	Виртуалдык принтер сакталды
-station_manage_heading	Дүкөн бөлүмүн кошуу же алып салуу
 printers_routes_heading	Нерселер басылган жерде
 route_pick_heading	Орун
 route_editing	Түзөтүү: {name}
 route_assigned	{printer} кошулду {place}
 route_already_assigned	Бул жерде мурунтан эле: {printer}
-route_removed	{place} ичинен {printer} алынып салынды
 route_cleared	Тазаланды {name}
 route_assigned_empty	Бул жерде эч ким жок
-route_tap_remove	алып салуу үчүн таптаңыз
 route_tap_select	тандоо үчүн таптаңыз
 route_tap_selected	тандалды
 route_pick_printer_first	Адегенде принтерди таптаңыз
@@ -702,35 +585,17 @@ printer_format_custom	Жаңы ыңгайлаштырылган профиль
 printer_format_custom_label	Ыңгайлаштырылган
 printer_format_custom_added	Бул жерге ыңгайлаштырылган профиль кошулду
 add_printer	Принтерди кошуу
-remove_printer	Алып салуу
 route_pick_ph	Эсеп же дүкөн бөлүмү
 route_bill	Коноктун эсеби
-route_default_kitchen	Станция жок (дайындалбаган нерселер)
-route_kot_station	Станция
 route_dont_print	Принтер жок
-stations_heading	Станциялар
-stations_help	Дүкөн бөлүмдөрү дүкөндүн ошол бөлүгү үчүн буюмдарды жана принтерлерди топтойт. Принтерлерди Орнотуулар → Принтерлерден тиркеңиз, аракет иретин орнотуңуз, андан кийин биринчи иштейт же Баарына басып чыгарыңыз. Өзгөрүүлөр сиз барган сайын сакталат.
-station_print_heading	Бул станция үчүн принтерлер
-station_print_help	Станцияны тандап, андан кийин бир же бир нече принтерди тиркиңиз. ↑↓ топтомдору аракет тартиби. Биринчи ийгиликке жеткенден кийин иш токтойт; Ар бир тиркелген принтерге бардык жөнөтүүлөрдө басып чыгаруу.
-station_print_pick_ph	Принтерди орнотуу үчүн станция
 station_print_pick_first	Биринчи дүкөн бөлүмүн тандаңыз
-station_print_editing	“{name}” үчүн принтерлерди түзөтүү
-station_vps_dd	Бул станция үчүн принтерлер
-station_vps_dd_n	{n} принтерлер · өзгөртүү үчүн таптаңыз
 station_vps_empty	Азырынча принтерлер жок — Аларды Орнотуулар → Принтерлерден табыңыз
 bill_printers_dd	Конок эсеби үчүн принтерлер
 bill_printers_dd_n	{n} конок эсеби үчүн принтерлер · өзгөртүү үчүн таптаңыз
-job_layout	Макет
-job_delivery	Жумуш кантип жөнөтүлөт
-job_delivery_help	OS документи, чийки байттар же ESC/POS. Эсеп жана билет ар бири өзүнчө сакталат. Кайсы жумуш болбосун Find сакталган принтерге өтө алат.
 station_vp_attached	Принтер тиркелген
 station_vp_detached	Принтер станциядан өчүрүлдү
-station_print_summary	{mode} · {n} принтерлер
-station_print_summary_none	Бул станцияда азырынча принтерлер жок — ал басып чыгарбайт
-stations_none	Азырынча станциялар жок — ылдыйга бирөөнү кошуңуз. Станциялар дүкөндө колдонулбайт — бош калтырыңыз.
 route_up	Өйдө
 route_down	Төмөн
-route_remove	Алып салуу
 route_clear	Таза
 save_printers	Принтерди сактаңыз
 print_test_page	Сыноо барагын басып чыгарыңыз
@@ -739,23 +604,15 @@ test_page_no_printer	{place} үчүн принтер жок — ага прин�
 test_page_pick_first	Адегенде сыноо барагы үчүн принтерлерди тандаңыз — андан кийин сыноо барагын басып чыгарыңыз
 test_printers_dd	Сыноо барагы үчүн принтерлер
 test_printers_dd_n	Сыноо барагы үчүн {n} принтерлер · өзгөртүү үчүн таптаңыз
-kot_test_printers_dd	Сыноо үчүн принтерлер
-kot_test_printers_dd_n	Сыноо үчүн {n} принтер(лери) · өзгөртүү үчүн таптаңыз
 test_printer_picked	Сыноо: {name}
 test_printer_cleared	Төмөнкүдө сыноо жок: {name}
 test_page_sent_n	Сыноо барагы {n} принтерлерине жөнөтүлдү
-test_kot_pick_first	Адегенде Сыноо басып чыгаруу үчүн принтерди(лерди) тандаңыз, андан кийин Сыноочу басып чыгаруу
-test_kot_sent_n	Сыноочу басып чыгаруу {n} принтерлерине жөнөтүлдү
-cancel_pick	Марк
-cancel_pick_on	Белгиленген
-cancel_pick_meta	Жокко чыгаруу үчүн белгиленген
 batch_cancel	Жокко чыгаруу белгиленген
 batch_cancel_n	Жокко чыгаруу белгиленген ({n})
 batch_cancel_none	Адегенде бир же бир нече жөнөтүлгөн нерсени белгилеңиз — андан кийин Жокко чыгаруу белгиленген
 batch_cancel_title	Белгиленген нерселерди жокко чыгаруу - бир себеп, ар бир бөлүмгө бир жокко чыгаруу
 batch_cancel_ok	{n} нерселер жокко чыгарылды · {slips} слип(лер) → {kitchens} жокко чыгарылды
 batch_cancel_ok_noprint	{n} элементтери жокко чыгарылды — авто басып чыгаруу өчүк, андыктан жокко чыгаруу слипи жок
-no_printer_kitchen_station	Ал станция үчүн принтер жок
 printers_saved	Сакталган
 test_page_sent	Сыноо баракчасы жөнөтүлдү — принтерди текшериңиз
 test_page_sent_one	Сыноо баракчасы {name} дарегине жөнөтүлдү — принтерди текшериңиз
@@ -771,10 +628,7 @@ cancelled	Жокко чыгарылды
 printers_tap_find	Бул түзмөк колдоно ала турган принтерлерди тизмелөө үчүн Табууну таптаңыз.
 printers_none_found	Эч ким табылган жок — системанын принтеринин атын же IP дарегин териңиз (мисалы, 192.168.1.50).
 printer_from_find	{name} кошулду
-kot_printer_ph	Слиптер үчүн принтер
 bill_printer_ph	Коноктордун эсептери үчүн принтер
-kot_print_on	Билеттерди автоматтык түрдө басып чыгаруу: Күйүк
-kot_print_off	Билеттерди автоматтык түрдө басып чыгаруу: Өчүк
 queue_refused	Дүкөн кабыл албайт ({n}) — ар бирин кассадан текшериңиз:
 clear_not_accepted	Текшерилди — бул тизмени тазалоо
 device_name_ph	Бул аппараттын аты
@@ -785,7 +639,6 @@ backup_failed	Акыркы автоматтык камдык көчүрмө ат
 backup_overdue	Камдык көчүрмө {n} күн сакталбайт — камдык көчүрмөнү сактоо үчүн колдонмону ушул түзмөктө ачык кармаңыз.
 disk_low	Бул түзмөктө {mb} МБ гана бош — камдык көчүрмөлөр жакында ишке ашпай калат. Бир аз орун бошотуңуз.
 last_seen_devices	Акыркы жолу көрүлгөн: {time}
-sync_interval	Ар бир {secs}с шайкештирүү
 connection_to_shop	Дүкөнгө туташуу
 supplier_name_ph	Жабдуучунун аты (же кардар)
 supplier_ph	Жабдуучу
@@ -848,7 +701,6 @@ fresh_book_kirano	Fresh = бош каталог (кийинирээк нерсе
 fresh_selected	Жаңы тандалган — каталог бош калат. Даяр болгондо "Бүттү" баскычын таптаңыз.
 gross_word	Гросс
 how_start	Кантип баштагыңыз келет?
-kot_print_help_kirano	Кирана эсептегичинде колдонулбайт.
 later_country_pack	Кийинчерээк: Орнотуулар → өлкөңүздүн пакетин салык жана төлөм энбелгилери үчүн колдонуңуз.
 local_badge	ЖЕРГИЛИКТҮҮ
 mix_type_hint_kirano	Керек болсо накталай акчага / UPI / картага / кредитке бөлүңүз. Кредитке жогорудагы кардар керек.
@@ -899,8 +751,6 @@ staff_copy_need_source	Көчүрүү үчүн кимдин жөндөөсүн �
 staff_copy_same	Ошол эле адам - башка бирөөнү танда
 staff_rename_need_selected	Биринчи кимдин атын өзгөртүүнү тандаңыз
 team_pick_hint	Кимди түзөтүүнү тандаңыз — экрандар, акча укуктары жана станциялар ошол адамга гана көрүнөт.
-team_stations_help	Алар колдоно турган станциялар
-team_stations_changed	Станциялар өзгөртүлдү — Бул адам үчүн орнотууларды сактаңыз
 team_features_changed	Экрандар өзгөртүлдү — Бул адам үчүн орнотууларды сактаңыз
 team_rights_changed	Укуктар өзгөртүлдү — Бул адам үчүн орнотууларды сактаңыз
 they_owe_us	Алар бизге карыз
@@ -984,9 +834,6 @@ service_pct_ph	Кызмат % кошумча 0/10/12
 short_code_ph	Кыска код (MG02)
 starting_password_ph	Баштапкы сырсөз (милдеттүү эмес)
 starting_pin_ph	PIN баштап (4–12 сан)
-station_name_ph	Станциянын аталышы (милдеттүү эмес)
-station_new_ph	Бөлүм (милдеттүү эмес)
-table_name_ph	Эсептөөчүнүн / булуңдун аты
 tax_rate_ph	Салык ставкасынын аталышы же % — Стандарттык, Азайтылган, 0, 5, 12, 18, 20
 to_code_ph	Код үчүн (кг)
 uncleared_no_ph	Жогоруда # тазаланган жок
@@ -999,27 +846,8 @@ book_kind_month	Бул айдын эсеби
 book_kind_aging	Төлөнбөгөн/дебет-кредит
 book_kind_balance	Баланс
 order_help	Аны кошуу үчүн менюдагы нерсени таптап коюңуз.
-floor_help	Бул дүкөн кассада сатылат. Столдор жана ашкана полу Киранонун бир бөлүгү эмес.
-kitchen_help	Дүкөндө колдонулбайт.
-kitchen_empty	Ачык билеттер жок (эсептөөчү дүкөндөр бул экранды колдонбой коюшат).
-add_a_table	Тамактануучу үстөл кошуу
-add_station_heading	Дүкөн бөлүмүн кошуу
 categories_help	Ошол категорияга жогорудагы меню пунктун берүү үчүн Колдонууну таптаңыз. Сүрөт категорияга сүрөттү берет; бирисиз анын баш тамгаларын көрсөтөт.
 dish_search_ph	Нерселерди же кыска кодду издөө…
-tile_free	Бош
-tile_occupied	ээлеген
-tile_food_ready	Тамак даяр
-tile_bill_printed	Коноктун эсеби басылып чыкты
-tile_paid	Төлөндү
-tile_bill_btn	Коноктун эсеби
-tile_occupy_btn	Конокторду отургузгула
-tile_free_btn	Тамактануучу столду бошот
-tile_ready_btn	Тамактануучу столду бошот
-tile_undo_bill	Конок эсебин жокко чыгаруу
-summary_busy	ашкана үстөлдөрү бош эмес
-summary_to_collect	чогултуу
-summary_on_floor	ашканада
-floor	Дүкөн
 sizes_as_items_ph	Өлчөмдөрү өзүнчө меню пункттары катары (милдеттүү эмес) — Half=120, Full=200
 dish_group_ph	Пакет өлчөмү тобу (милдеттүү эмес) — мис. Салмагы 1 кг / 5 кг
 discount	Арзандатуу
@@ -1027,7 +855,6 @@ remove_discount	Арзандатты алып салуу
 apply_discount	Арзандатуу колдонуу
 save_opening_cash	Ачылган акчаны үнөмдөңүз
 close_shift_print	Сменаны жаап, слипти басып чыгарыңыз
-area_prices_ph	Аймактык баалар (милдеттүү эмес) — AC=220, Parcel=210
 discount_ph	10% же 50
 discount_reason_ph	Себеби (мисалы, туруктуу конок, кеч тамак)
 opening_float_ph	Накталай акча бүгүн эртең менен тартмага салынды
@@ -1037,34 +864,18 @@ shift_handover	Сменалык тапшыруу
 shift_since	Бул жылыштан бери
 expected_in_drawer	Суурмада күтүлөт
 right_discount	Арзандатуу бериңиз
-floor_in_kitchen	Прогрессте
-floor_eating	Кызмат кылган
 pick_category	Категория тандаңыз
 close_category_list	Категориялар тизмесин жабуу
 new_category_row	Жаңы категория — меню пунктун сактаганда түзүлөт
 your_category	Сиздин категория
 suggested_category	Сунушталган — биздин буюмдардан
 category_search_ph	Категория — сиздикинен издеңиз же жаңысын териңиз
-line_sent_state	Жөнөтүлдү
-line_nc_state	Кошумча (NC) — төлөнбөйт
 cancel_item_short	Жокко чыгаруу
-nc_short	NC
-charge_again_short	Заряддоо
-move_short	Жылдыруу
 cancel_item_title	Бул нерсени жокко чыгаруу — бэк-офис жокко чыгаруу слипин алат
-nc_item_title	Менюнун бул пунктун акысыз кылуу (NC)
-charge_again_title	Бул меню пунктун кайра заряддаңыз
-move_item_title	Бул меню пунктун башка ашкана үстөлүнө жылдырыңыз
-already_cooked	Бышырылган (ысырап)
-not_cooked_yet	Бышыра элек
 return_to_customer	Кардарга кайтуу
 short_by	Кыскасы
 tip_not_sale	Кеңеш (кызматкерлер, сатуу эмес)
 right_settle	Төлөм алуу
-right_cancel_sent	Менюнун жөнөтүлгөн пунктун жокко чыгаруу
-right_complimentary	Акысыз (NC)
-right_move_table	Эсептегичтерди жылдыруу / бириктирүү
-right_reprint	Конок эсебин кайра басып чыгарыңыз
 right_allowed	Уруксат берилген
 right_with_approval	жактыруу менен
 right_denied	уруксат эмес
@@ -1074,25 +885,11 @@ no_server_found	Эч ким табылган жок. Серверде: Орно�
 servers_found_pick	Сиз туташкыңыз келген дүкөндү таптаңыз.
 server_host_selected	{host} колдонуу — жупташтыруу кодун киргизип, андан кийин азыр жупташтыруу.
 print_bill	Конок эсебин басып чыгаруу
-table_actions	Каршы аракеттер
-move_merge_table	Тамактануучу үстөлдү жылдыруу / бириктирүү
-move_help	Бул эсептегичтин тартибин бош столго жылдырыңыз же аны иштеп жаткан таблицага бириктириңиз.
-move_target_ph	Каршы аты
 approval_pin_ph	Менеджер PIN (суралса гана)
-move_here	Бул жакка көчүңүз
-merge_into	Ага кошулуңуз
-line_reason_ph	Себеби (мисалы, кардар оюн өзгөрттү, кампада жок)
-line_qty_ph	Канча жокко чыгаруу керек (бош = баары)
-line_target_ph	Тамактануучу столго өтүү (мис. D5)
 confirm	Ырастоо
 menu_search_ph	Меню пунктун же кыска кодду издөө
 customer_paid_ph	Кардар төлөдү
 tip_ph	Кеңеш
-table_area_ph	Аймак (мис., Dine In, Parcel, AC)
-table_range_ph	Көптөгөн дароо: D1-D20
-add_these_tables	Бул эсептегичтерди кошуңуз
-remove_these_tables	Бул эсептегичтерди алып салыңыз
-table_remove_ph	Алып салуу: T1-T24, же бир ашкананын аталышы
 find_server	Дүкөндүн серверин табыңыз
 bill_format	Коноктун эсеп форматы
 bill_format_help	Ар бир эсепке дүкөнүңүздүн аты менен басылган. | менен өзүнчө саптар (мисалы, MG Road, Rajkot | Ph 98250 00000).
@@ -1100,78 +897,32 @@ bill_header_ph	Дарек | телефон
 fssai_ph	FSSAI / дүкөн лицензиясы №. (милдеттүү эмес)
 bill_footer_ph	Колонтитул (мис. Рахмат, дагы бир жолу кириңиз)
 save_bill_format	Конок эсебинин форматын сактаңыз
-kot_format	Слип форматы
-kot_format_help	Тизмедеги талааны таптаңыз. Көрсөтүү, шрифт өлчөмү жана салмагы жогоруда тандалган слип түрүндөгү ошол талаага колдонулат. Ар бир түрү өзүнүн өлчөмүн жана салмагын сактайт.
-kot_format_fields	Талаалар
-kot_field_next	Кийинки талаа
-kot_field_show	Көрсөтүү
-kot_field_hide	Жашыруу
 kot_field_on	көрсөтүү
 kot_field_off	жашыруу
-kot_field_size	Арип өлчөмү
-kot_field_size_ph	мис. 16, 20, 24, 28, 32…
 kot_weight_light	Жарык
 bill_kot_panel_help	Эсептин макети жана мазмундун туурасы. Кассир - бул эсепти чыгарган же эсептеген адам - ​​толук сатуу окуясы китептерде калат.
 std_size_ph	мис. 18, 20, 26…
-kot_show_shop	Дүкөндүн аты
-kot_hide_shop	Дүкөндү жашыруу
-kot_show_time	Убакыт
-kot_hide_time	Убакытты жашыруу
-kot_show_waiter	Кассир
-kot_hide_waiter	Кассирди жашыруу
-kot_show_station	Станция
-kot_hide_station	Станцияны жашыруу
-kot_show_table	Прилавок
-kot_hide_table	Тамактануучу үстөлдү жашыруу
-kot_show_kot_no	Билет №
-kot_hide_kot_no	Билеттин номерин жашыруу
-kot_width	Алдын ала көрүү (слип өтмөгүндө мазмундун туурасын коюу)
-kot_width_58	58 mm
-kot_width_80	80 mm
-kot_kind_heading	Билет түрү
-kot_kind_original	Түпнуска
-kot_kind_duplicate	Дубликат
-kot_kind_modified	Өзгөртүлгөн
-kot_kind_cancelled	Жокко чыгарылды
-kot_style_heading	Талаа түрү өлчөмү жана салмагы
-kot_style_title	Аталыш
-kot_style_item_qty	Меню меню пункту · Саны
-kot_style_field_pick	Талаа тандоо
 kot_weight_regular	Регулярдуу
 kot_weight_bold	Калың
-kot_align	Тегиздөө
 kot_align_start	Баштоо
 kot_align_center	борбор
 kot_align_end	Аягы
 content_width	Мазмундун туурасы (мм)
 content_width_bill	Коноктун эсебинин мазмунунун туурасы (мм)
-content_width_kot	Билет мазмунунун туурасы (мм)
 content_width_ph	Же мазмундун туурасын териңиз, 40–210 mm
 content_width_help	Бул слип канчалык кенен басып чыгарат. Билл өзүнүн кеңдигин сактайт.
 content_width_bill_help	Кардардын эсеби канчалык кенен. Демейки 210 мм (бет). 58 мм тар тайгалак, 80 мм туурасы, 112 мм 4 дюймдук, 210 мм A4 кеңдиги. 40тан 210го чейин каалаган маанини териңиз. Билеттер слип өтмөгүндө өзүнүн туурасы бар.
-content_width_kot_help	Билет канчалык кең. Демейки 80 мм. 58 мм тар тайгалак, 80 мм туурасы тайгалак, 112 мм 4 дюймдук, 210 мм бет. 40тан 210го чейин каалаган маанини териңиз. Кардарлардын эсептеринин эсеп өтмөгүндө өзүнүн туурасы бар.
 vp_paper_width	Мазмундун туурасы (мм)
 vp_paper_width_ph	Же мазмундун туурасын териңиз, 40–210 mm
 vp_paper_width_help	Мазмундун туурасы Билл жана Слип форматында — эсеп үчүн (демейки 210 мм) жана билет үчүн (демейки 80 мм) өзүнчө орнотулган.
-kot_size	Арип өлчөмү
-kot_size_s	Кичине
-kot_size_m	Кадимки
-kot_size_l	Чоң
 std_size	Арип өлчөмү
 kot_copies	Көчүрмөлөр
 kot_copies_1	1
 kot_copies_2	2
 kot_copies_3	3
-kot_title_ph	Аталышы (бош = БИЛЕТ)
-kot_footer_ph	Бэк-офис эскертүүсү (милдеттүү эмес)
-kot_preview	Алдын ала көрүү
-save_kot_format	Слип форматын сактоо
-test_kot_format	Сыноо басып чыгаруу
-test_kot_sent	Билетти алдын ала көрүү жөнөтүлдү
 test_bill_format	Конок эсебин текшерүү
 test_bill_sent	Коноктун эсебин алдын ала көрүү жөнөтүлдү
 test_print_no_printer	Ал жумуш үчүн принтер жок — бул экрандан бирин тандаңыз
-kot_format_saved	Слип форматы сакталды
 std_print	Конок конокторунун эсебин басып чыгаруу өлчөмү
 std_print_help	OS/документ принтерлериндеги Стандарттык Портрет жана Пейзаждык эсеп тапшырмалары үчүн шрифт өлчөмү (чекиттерди киргизиңиз — Чакан/Нормал/Чоң эмес). Эки багыт боюнча бирдей өлчөмдө.
 std_size_s	Кичине
@@ -1211,23 +962,16 @@ upi_qr	UPI QR
 show_upi_qr	UPI QR көрсөтүү
 close_upi_qr	Жабуу
 upi_qr_help	Кардар сканерлеп, төлөйт. Алар төлөгөндөн кийин төлөмдү алуу баскычын таптаңыз. Экинчи экран: сервердин URL дарегин ачуу / LANдагы дисплей.
-kot_recall	Эскертүү
 recently_done	Жакында жасалды
-recall_kot_ph	Эскертүү үчүн билет #
 role_help_customer	Ролу: Кардар — кредиттик китепче (алар бизге карыз). Ошол эле кардар же жеткирүүчү да запастарды бере алат.
 role_help_both	Ролдор: Кардар + Жабдуучу - бир кардар же жеткирүүчү, кредиттик китеп жана кредитордук эсептер, Отчеттордо таза.
 role_help_supplier	Рол: Жабдуучу — биз аларды сатып алуу үчүн карызбыз.
-dine_in_pick_table	Дүкөндө колдонулбайт
-choose_table	Эсептегичти тандаңыз
-change_table	Тамактануучу үстөлдү алмаштырыңыз
-pick_table_banner	Бул буйрутма үчүн ашкана үстөлүн тандаңыз
 items_word	меню пункттары
 items_section	Меню меню пункттары
 back_to_order	Заказга кайтуу
 new_items_head	Азырынча жөнөтүлө элек
 price_ph	Баасы
 price_ph_gst_inside	Баасы ({tax} кошкондо)
-cancel_needs_table	Каршы сатуулар сиз төлөмдү алганга чейин билетте кала берет
 tax_rates_missing_hint	Бул нерселерде {tax} тарифи жок — белгиленген нерселер боюнча Салык ставкасы (бааларга {tax} камтылган {tax} камтылган)
 taxable_value	Салык салынуучу маани
 gst_inside_price_note	({tax} кошкондо)
@@ -1248,30 +992,11 @@ client_template_confirm	{title}тен {d} элементтери кошулсу�
 client_template_importing	{title} импорттолууда…
 client_template_done	{title}'тен ар бир нерсе сиздин нерселериңизде.
 client_template_imported	{title}тен {d} элементтери жана {c} категориялары кошулду
-resv_heading	Резервдер
-resv_name_ph	Кардардын аты
-resv_phone_ph	Телефон (милдеттүү эмес)
-resv_guests_ph	Адамдар
-resv_when_ph	Качан — 20:30, эртең 13:00
-resv_table_ph	Эсептегич (милдеттүү эмес)
-resv_add	Тамактануучу үстөлдү ээлеп алыңыз
-resv_seat	Отурган
-resv_none	Эч кандай ээлөөлөр келе элек.
-guests_word	коноктор
-delivery_by_ph	Жеткирүү (чабуучу же кызматкерлердин аты)
-kitchen_all_day	Азыр тамак жасоо үчүн: {items}
-split_bill	Конок эсебин бөлүү
-split_go	Коноктун өзүнчө эсебин түзүңүз
 cancel	Жокко чыгаруу
 opening_client	кардар ачылууда…
 preparing_desk	Үстөл даярдалууда…
 opening_server	Сервер ачылууда…
 creating_server	Сервер түзүлүүдө…
-split_help	Кардар төлөй турган нерселерди таптаңыз · {n} тандалган
-split_send_first	Адегенде слип жөнөтүңүз — арткы кеңседе болгон нерселер гана өзүнчө эсепке өтүшү мүмкүн
-split_pick_some	Алгач өзүнчө эсеп үчүн нерселерди таптаңыз
-split_done	Өзүнчө эсеп түзүлдү — ал ушул эсептегичтин жанында жайгашкан
-split_marked	өзүнчө конок эсеби
 order_empty_pick	Бош буйрутма — нерселерди тандоо үчүн жогорудагы нерселерди кошуу баскычын таптаңыз.
 add_dishes	Элементтерди кошуу
 order_so_far	Бул буйрутма боюнча: {n} · {total}
@@ -1282,24 +1007,8 @@ pick_done_dd	Бүттү · {label}
 printer_route_mode	Бул жерде бир нече принтер болсо
 printer_mode_first	Биринчи бул иштейт
 printer_mode_all	Баарына басып чыгаруу
-kot_show_area	Район
-kot_hide_area	Аймакты жашыруу
-kot_show_item_hdr	Меню меню пункту · Саны
-kot_hide_item_hdr	Мамычаларды жашыруу
-kot_show_title	Титул сызыгы
-kot_hide_title	Аталышын жашыруу
-kot_field_order	Басып чыгаруу тартиби
 kot_field_up	Өйдө жылдыруу
 kot_field_down	Төмөн жылдыруу
-kot_field_cycle	Кийинкиди тандаңыз
-kot_field_select	Кийинкиди тандаңыз
-kot_field_time	Убакыт
-kot_field_kot_no	Билет №
-kot_field_area	Район
-kot_field_table	Прилавок
-kot_field_shop	Дүкөндүн аты
-kot_field_waiter	Кызматкерлер
-kot_field_station	Станция
 app_template_blurb_extra	Ошондой эле: Ээси Захир, Админ Асиф, Кассир Наваз; алдыңкы каптал тилкеси; 4 сааттан кийин тарых; Бүгүн чечип алуу; компакттуу эсеп.
 dishes_n	{n} нерсе
 recipe_ph	Рецепт (милдеттүү эмес - дүкөндө колдонулбайт)
@@ -1309,8 +1018,6 @@ low_stock_alert	Азайып баратат — жакында сатып алы
 unpriced_note	Буюмдарыңыздагы {n} нерселердин азырынча баасы жок — сиз бирөөнү койгонго чейин алар 0 менен эсептешет.
 show_unpriced	Баасы жок нерселерди гана көрсөтүү
 show_all_dishes	Бардык элементтерди көрсөтүү
-role_waiter	Кассир
-role_kitchen	Дүкөн
 role_title_rest_ph	Ролдун аталышы (мисалы, капитан, башкы ашпозчу)
 preset_help_rest	Кассир: сатам. Менеджер: сатуу + меню пункттары + жокко чыгаруу / өзгөртүү.
 kind_raw	Дүкөндө колдонуу үчүн сатып алынган

@@ -2,7 +2,6 @@
 // Opt-in only (`KUMKAJ_SMOKE_SCRIPT=…`). Ignored when `KUMKAJ_ENV=production`.
 // Modes: peers | full | soak. Handshake: write need_shot; runner saves PNG.
 
-
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 enum SmokeMode {
     Peers,
@@ -94,18 +93,12 @@ fn smoke_soak_secs() -> u64 {
         .unwrap_or(0)
 }
 
-fn smoke_shop_has_floor() -> bool {
-    app_state().lock().unwrap().venue_mode.creates_kot()
-}
-
 fn smoke_peer_tour() -> Vec<Screen> {
-    let mut peers = vec![
+    vec![
         Screen::Books,
         Screen::Pos,
         Screen::Buy,
         Screen::Menu,
-        Screen::Floor,
-        Screen::Kitchen,
         Screen::Sales,
         Screen::DayClose,
         Screen::Reports,
@@ -113,12 +106,7 @@ fn smoke_peer_tour() -> Vec<Screen> {
         Screen::Credit,
         Screen::Settings,
         // Team lives under Settings → Team (not a chrome peer).
-    ];
-    // Counter shops (Kirano) have no tables or kitchen. Do not tour those screens.
-    if !smoke_shop_has_floor() {
-        peers.retain(|s| !matches!(s, Screen::Floor | Screen::Kitchen));
-    }
-    peers
+    ]
 }
 
 impl App {
@@ -348,62 +336,15 @@ impl App {
     fn smoke_run_action(&mut self, cx: &mut Cx, i: usize) -> bool {
         match i {
             0 => {
-                if !smoke_shop_has_floor() {
-                    self.go_peer(cx, Screen::Pos);
-                    self.sync_chrome(cx);
-                    self.smoke_mark(cx, "100_counter_sell");
-                    return false;
-                }
-                self.go_peer(cx, Screen::Floor);
+                self.go_peer(cx, Screen::Pos);
                 self.sync_chrome(cx);
-                // Open first non-free table into the order cart if any.
-                let tid = {
-                    let st = app_state().lock().unwrap();
-                    st.tables
-                        .iter()
-                        .find(|t| t.floor_state != domain::FloorState::Free)
-                        .map(|t| t.id.clone())
-                };
-                if let Some(tid) = tid {
-                    let mut st = app_state().lock().unwrap();
-                    let _ = st.load_table_cart(&tid);
-                }
-                self.sync_chrome(cx);
-                self.smoke_mark(cx, "100_floor_live_tables");
+                self.smoke_mark(cx, "100_counter_sell");
                 false
             }
             1 => {
-                if !smoke_shop_has_floor() {
-                    self.go_peer(cx, Screen::Books);
-                    self.sync_chrome(cx);
-                    self.smoke_mark(cx, "101_counter_books");
-                    return false;
-                }
-                self.go_peer(cx, Screen::Kitchen);
+                self.go_peer(cx, Screen::Books);
                 self.sync_chrome(cx);
-                let advanced = (|| -> Result<bool, String> {
-                    let st = app_state().lock().unwrap();
-                    let store = st.store.as_ref().ok_or("no store")?;
-                    let actor = st.session.clone().ok_or("no session")?;
-                    let open = store.list_open_kots()?;
-                    let Some(kot) = open.into_iter().find(|k| !k.is_cancel()) else {
-                        return Ok(false);
-                    };
-                    store.advance_kot(&kot.id, &actor)?;
-                    Ok(true)
-                })();
-                match advanced {
-                    Ok(true) => {
-                        let _ = app_state().lock().unwrap().reload_all();
-                        self.sync_chrome(cx);
-                        self.smoke_mark(cx, "101_kitchen_advance");
-                    }
-                    Ok(false) => self.smoke_mark(cx, "101_kitchen_no_open_kot"),
-                    Err(e) => {
-                        self.smoke_note_fail(format!("kitchen advance: {e}"));
-                        self.smoke_mark(cx, "101_kitchen_advance_fail");
-                    }
-                }
+                self.smoke_mark(cx, "101_counter_books");
                 false
             }
             2 => {
@@ -423,7 +364,7 @@ impl App {
                     let mut cart = Cart::default();
                     cart.add_or_bump(&p);
                     let draft = cart.to_sale_draft()?;
-                    let sale = store.finalize_sale(&draft, PayMethod::Cash, None, None, &actor)?;
+                    let sale = store.finalize_sale(&draft, PayMethod::Cash, None, &actor)?;
                     Ok(sale.id)
                 })();
                 match sold {
@@ -486,13 +427,8 @@ impl App {
             }
             6 => {
                 // Back/Forward visit history: peer jumps must leave ‹ usable.
-                if smoke_shop_has_floor() {
-                    self.go_peer(cx, Screen::Floor);
-                    self.go_peer(cx, Screen::Kitchen);
-                } else {
-                    self.go_peer(cx, Screen::Menu);
-                    self.go_peer(cx, Screen::Pos);
-                }
+                self.go_peer(cx, Screen::Menu);
+                self.go_peer(cx, Screen::Pos);
                 let can_back = {
                     let st = app_state().lock().unwrap();
                     !st.nav_back.is_empty()

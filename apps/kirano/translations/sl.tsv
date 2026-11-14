@@ -68,28 +68,6 @@ applied	Uporabljeno
 note_ph	Opomba (neobvezno)
 rounded	ZAOKROŽENO
 split	Razdeli
-send_kot	Pošlji listek
-send_kot_to	Pošlji → {kitchens}
-send_kot_again	Dodajte elemente za naslednji listek
-send_kot_held	Zadržani elementi — prekličite za pošiljanje
-reprint_kot	Ponovno natisni izbrano
-reprint_kot_ok	Ponovno natisnjeni predmeti {n} · lističi {slips} → {kitchens}
-reprint_kot_needed	Najprej pošljite listek — nato vključite elemente in znova natisnite izbrane
-reprint_kot_none_selected	Vsak poslani element je preskočen — tapnite V tisku na tistih, ki jih želite ponovno natisniti
-reprint_kot_client	Ponovno natisni ({n}) za poslano {place} — naprava v trgovini ga natisne
-print_cancelled_kot	Natisni vse preklicane
-print_cancelled_kot_ok	Natisnjeni {n} preklicani artikli · {slips} lističi → {kitchens}
-print_cancelled_kot_needed	Najprej odprite tabelo s preklicanimi artikli
-print_cancelled_kot_none	V tem naročilu ni preklicanih artiklov
-print_cancelled_kot_client	Tiskanje preklicano ({n}) za poslano {place} — naprava v trgovini ga natisne
-kot_banner	Pasica vrste
-kot_banner_ph	Pasica (prazno = brez)
-kot_item_prefix	Predpona artikla
-kot_item_prefix_ph	npr. [PREKLICANO]
-kot_strike	Ime prečrtanega predmeta
-kot_strike_note	Prečrtaj opombo
-kot_strike_on	Vklopljeno
-kot_strike_off	Izklopljeno
 bill_item_layout	Postavitev artiklov
 bill_item_layout_columns	Stolpci
 bill_item_layout_stacked	V vrsticah
@@ -118,8 +96,6 @@ bill_item_gap_em	Razmik (em)
 bill_item_qty_min	Min. kol. (em)
 bill_item_price_min	Min. cena (em)
 bill_item_amount_min	Min. znesek (em)
-kot_item_qty_width	Stolpec kol.
-kot_item_num_align	Poravnava kol.
 bill_total_qty_label	Oznaka skupne kol.
 bill_total_subtotal_label	Oznaka vmesne vsote
 bill_total_grand_label	Oznaka skupne vsote
@@ -131,36 +107,9 @@ bill_item_piece_off	Izklopljeno
 bill_total_qty	Skupna kol.
 bill_total_subtotal	Vmesna vsota
 bill_total_grand	Skupna vsota
-reprint_incl	V tisku
-reprint_skip	Preskoči
-reprint_skip_meta	Preskoči obnovitveni tisk
-kot_dest_hint	Tiska na tiskalnikih, ki ste jih dodelili {kitchens}, v Nastavitve → Tiskalniki
-kot_sent_hint	Zadnje pošiljanje je šlo na {kitchens}. Tapnite, če želite dodati elemente za naslednji račun — ali ponovno natisnite položnico za istega.
-kot_sent_printing	Listek poslan na {kitchens} — tiskanje
-kot_sent_not_printed	Listek poslan na {kitchens}, vendar NI natisnjen: {why}. Povejte trgovini, nato popravite tiskalnik in ga znova natisnite.
-kot_sent_screen	Listek poslan na {kitchens}
-kot_queued_shop	Listek za {place} → {kitchens} shranjen; naprava v trgovini ga natisne
-kot_job_label	Listek za {place} → {kitchens}
-kot_job_reached	Zdrs za {place} je dosegel {kitchens}
 kot_unassigned	Nedodeljen
-kot_unassigned_held	Zadržani predmeti {n} brez postaje — odložite čakanje na vrsti za pošiljanje
-kot_station_ph	Postaja
-kot_station_dd	Postaja
-kot_station_dd_n	Postaja · {stations}
-kot_set_station	Uporabi to postajo
-kot_station_applied	Postaja, nastavljena na elementih {n}: {station}
-kot_station_cleared	Postaja počiščena od predmetov {n}: {station}
-kot_station_needed	Najprej izberite razdelek trgovine
-kot_station_not_allowed	Ni dovoljeno uporabljati razdelka: {station}
-kot_station_none	Ni še postaj — neuporabljeno v trgovini (Nastavitve → Območja, če je potrebno)
 pos_tab_items	Dodani artikli
 pos_tab_payment	Plačilo
-hold_send	Zadrži
-hold_send_on	Zadržano
-hold_send_meta	Zadržano — ne na tem listku
-station_remove	Odstrani postajo
-station_remove_ph	Tapnite postajo na seznamu, da jo odstranite
-station_removed	Postaja odstranjena: {name}
 settings_hub_title	Nastavitve
 settings_hub_help	Odprite po eno področje — manj drsenja, jasnejše izbire.
 settings_back	Nazaj
@@ -169,12 +118,10 @@ settings_sec_country	Država in davek
 settings_sec_tills	Druge naprave
 settings_sec_brand	Vaša blagovna znamka
 settings_sec_units	Enote in pretvorbe
-settings_sec_pickers	Območja · postaje · davčne stopnje
+settings_sec_pickers	Davčne stopnje
 settings_sec_printers	Tiskalniki
 settings_sec_bill	Oblika računa in potrdila
 settings_sec_selling	Sheme in prodaja
-bill_kot_tab_bill	Račun
-bill_kot_tab_kot	Slip
 settings_sec_alerts	Opozorila
 alerts_help	Kako dolgo sporočila o stanju ostanejo na zaslonu za vas (ta prijava).
 snack_secs_ph	Sekunde (3–60, privzeto 10)
@@ -225,8 +172,6 @@ counter	Pult
 dine_in	Pult
 takeaway	Za s seboj
 order	Naročilo
-tables	Števci
-kitchen	Oddelki
 sales	Prodaja
 sales_refunds	Prodaja in vračila
 day_close	Zaključek dneva
@@ -254,10 +199,6 @@ zero_sales_on	Dovoli ₹0
 zero_sales_off	Zahtevaj ceno
 zero_sales_saved_on	Prodaje z ničelno vrednostjo dovoljene
 zero_sales_saved_off	Prodaje morajo imeti ceno nad ₹0
-floor_areas_help	Območja so sobe ali cone v nadstropju (Dine In, Parcel, AC …). Najprej dodajte območje, nato pa vanj postavite števce - vsako območje je ločena skupina na tleh.
-area_new_ph	Novo območje / soba (npr. Klima, Vrt)
-add_area	Dodaj območje
-area_added	Območje "{name}" je pripravljeno - vanj dodajte števce
 no_favorites	Priljubljenih še ni — dodajte artikle s spodnjega seznama.
 add_to_bill	Dodaj na račun
 added	Dodano
@@ -268,19 +209,9 @@ chip_missing_customer	Izbrani kupec manjka — izberite znova
 chip_no_customer	Kupca še ni — vnesite ime, nato tapnite Kredit
 credit_summary_fmt	{} kupcev · odprt kredit {} · zadržani predujmi {}
 recent_label	Nedavno:
-kot_new_waiting	NOVO — čaka
-kot_preparing	PRIPRAVLJA SE
-kot_ready_serve	PRIPRAVLJENO — postrezi
-kot_done_cap	KONČANO
-kot_cancelled	PREKLICANO
-kot_start_btn	Začni
-kot_mark_ready	Označi pripravljeno
-kot_done_btn	Končano
-table_free	Prosta — tapnite, da začnete naročilo
 start_order	Začni naročilo
 open_bill	Odpri račun
 collect_payment	Pobiraj plačilo
-table_running	V teku
 payment_pending	Plačilo v teku
 collect_at_counter	pobiraj na pultu
 inventory	Zaloga
@@ -313,7 +244,6 @@ ok	OK
 this_shop	Strežnik
 extra_till	Odjemalec
 off	Izklopljeno
-tables_kitchen	Postavitev trgovine
 server	Strežnik
 client	Odjemalec
 language_currency	Jezik in valuta
@@ -355,8 +285,6 @@ add_item_plain	Dodaj artikel
 add_note	Dodaj opombo
 add_opening_balance	Dodaj začetno stanje
 add_staff	Dodaj osebje
-add_station	Dodaj postajo
-add_table	Dodaj mizo
 add_unit	Dodaj enoto
 add_use_name	Dodaj / uporabi to ime
 allow_extra_tills	Dovoli dodatne blagajne
@@ -409,7 +337,6 @@ share_whatsapp	Deli WhatsApp
 lan_pages_heading	Strani strank v omrežju Wi‑Fi
 lan_pages_help	V tej trgovini Wi‑Fi strani strank delujejo za prikazno tablo in povratne informacije. Ljudje, ki uporabljajo mobilne podatke, potrebujejo oblak pozneje. Kartični terminal ali povezava za plačilo ni obvezna in nikoli ne blokira števca.
 diag_send_heading	Deli zunaj naprave
-kot_dest_heading	Postaja
 optional_login_heading	Neobvezna prijava
 rights_heading	Pravice
 ops_panel	Lokalne operacije
@@ -436,28 +363,6 @@ till_voucher_amt_ph	Znesek bona (prazno = vse)
 till_wallet_topup_ph	Znesek polnjenja denarnice
 till_voucher_issue_amt_ph	Znesek izdanega bona
 till_voucher_issue_code_ph	Nova koda bona
-split_evenly	Razdeli enakomerno
-waitlist	Čakalni seznam
-fire_course	Naslednji korak
-hold_item	Zadrži
-waiter_call	Pokliči blagajnika
-waitlist_add	Dodaj na čakalni seznam
-floor_view_grid	Mreža
-floor_view_layout	Postavitev
-floor_layout_x	X
-floor_layout_y	Y
-floor_layout_w	W
-floor_layout_h	H
-floor_layout_save	Shrani postavitev
-floor_layout_open	Odpri mizo
-floor_layout_edit	Uredi postavitev
-floor_layout_pick	Tapnite mizo, da uredite njeno postavitev
-floor_layout_saved	Postavitev shranjena
-floor_layout_nudge_left	← 20
-floor_layout_nudge_right	→ 20
-floor_layout_nudge_up	↑ 20
-floor_layout_nudge_down	↓ 20
-sibling_pickers_help	Tapnite Vklopljeno/Izklopljeno kot pri enotah — skrijte območja, postaje in davčne stopnje iz vsakodnevnih seznamov; privzete vrednosti paketa ostanejo.
 bulk_price_apply	Uporabi skupno ceno
 card_terminal_optional	Kartni terminal / povezava za plačilo (neobvezno, ko je internet)
 copy_report	Kopiraj poročilo
@@ -483,7 +388,6 @@ import_day	Uvozi dan
 import_items_csv_plain	Uvozi artikle CSV…
 import_parties_csv	Uvozi partnerje CSV…
 item_name	Ime artikla
-kitchen_printing	Tiskalniki
 login_id_ph	Uporabniško ime
 mark_cleared	Označi usklajeno
 new_party_clear	Nov partner (počisti obrazec)
@@ -553,15 +457,6 @@ show	Pokaži
 spreadsheet_csv	Preglednica (CSV)
 start_fresh	Začni znova
 stop_extra_tills	Ustavi dodatne blagajne
-floor_cols_ph	Stolpci
-floor_cols_fit	Prilagodi zaslonu
-floor_cols_fit_sub	{n} se prilega sem
-floor_cols_fits	se prilega
-floor_cols_scroll	drsi vstran
-floor_cols_min	Stolpci: vsaj 1 — ali pustite prazno, da se prilega zaslonu
-floor_zoom_auto	Samodejno
-floor_zoom_out	Pomanjšaj
-floor_zoom_in	Povečaj
 backup_auto	Samodejna varnostna kopija vsak dan · zadnja {when} · zadnjih 14 dni se hrani v {dir}.
 backup_auto_none	Samodejna varnostna kopija vsak dan — prva se zažene čez hip.
 backup_copy_to	Kopije gredo tudi v {dir}.
@@ -579,7 +474,6 @@ new_pair_code	Nova koda za povezavo
 pair_finishing	Povezovanje se končuje… uporabljajo se knjige lokala
 pair_opening	Blagajna se odpira…
 pair_copied	Koda za povezavo kopirana
-kot_waiting	Čaka na pošiljanje
 lan_offline_waiting	Strežnik ni dosegljiv · {n} čaka
 lan_connecting	Povezovanje z lokalom…
 lan_live	V živo
@@ -621,7 +515,6 @@ printers_routes_help	Poiščite tiskalnike, ki jih operacijski sistem že pozna.
 printer_assign_dd	Pravi tiskalnik: {place}
 printer_assign_pick	Izberi pravi tiskalnik
 printer_profile_heading	Postavitev
-printer_send_heading	Dostava
 vp_delivery_heading	Dostava
 vp_delivery_help	Kako ta virtualni tiskalnik pošilja opravila – dokument OS, neobdelani bajti ali ESC/POS. Vsebino listeka (velikost tipa, ovoj, robovi) določa oblika računa / listeka, ne tukaj.
 vp_type_size_heading	Velikost črk
@@ -665,23 +558,13 @@ virtual_draft_send	Vrednost nastavljena za naslednji navidezni tiskalnik
 virtual_need_real	Najprej izberite pravi tiskalnik
 virtual_need_select	Izberite navidezni tiskalnik za brisanje
 real_printer_selected	Izbrano: {name}
-station_group_heading	Navidezni tiskalniki
-station_group_apply	Izbriši navidezni tiskalnik
-station_group_applied	Izbrisano
-station_group_empty	Izberite navidezni tiskalnik
-station_group_name_ph	Ime navideznega tiskalnika (neobvezno)
-station_group_save	Ustvari navidezni tiskalnik
-station_group_saved	Navidezni tiskalnik shranjen
-station_manage_heading	Dodajte ali odstranite razdelek trgovine
 printers_routes_heading	Kje se tiska
 route_pick_heading	Mesto
 route_editing	Urejanje: {name}
 route_assigned	Dodan {printer} na {place}
 route_already_assigned	Že na tem mestu: {printer}
-route_removed	Odstranjen {printer} iz {place}
 route_cleared	Počiščeno {name}
 route_assigned_empty	Na tem mestu nič
-route_tap_remove	tapnite za odstranitev
 route_tap_select	tapnite za izbiro
 route_tap_selected	izbrano
 route_pick_printer_first	Najprej tapnite tiskalnik
@@ -702,35 +585,17 @@ printer_format_custom	Nov profil po meri
 printer_format_custom_label	Po meri
 printer_format_custom_added	Za to mesto dodan profil po meri
 add_printer	Dodaj tiskalnik
-remove_printer	Odstrani
 route_pick_ph	Račun ali del trgovine
 route_bill	Račun
-route_default_kitchen	Ni postaje (nedodeljeni elementi)
-route_kot_station	Postaja
 route_dont_print	Brez tiskalnika
-stations_heading	Postaje
-stations_help	Oddelki trgovine združujejo predmete in tiskalnike za ta del trgovine. Priložite tiskalnike iz Nastavitve → Tiskalniki, nastavite vrstni red poskusov, nato Najprej to deluje ali Natisni na vse. Spremembe shranite sproti.
-station_print_heading	Tiskalniki za to postajo
-station_print_help	Izberite postajo in nato priključite enega ali več tiskalnikov. ↑↓ nastavi vrstni red poskusov. First that delo preneha po prvem uspehu; Tiskanje pri vseh pošiljanjih na vsak priključen tiskalnik.
-station_print_pick_ph	Postaja za nastavitev tiskalnikov
 station_print_pick_first	Najprej izberite razdelek trgovine
-station_print_editing	Urejanje tiskalnikov za „{name}“
-station_vps_dd	Tiskalniki za to postajo
-station_vps_dd_n	{n} tiskalnik(ov) · tapnite za spremembo
 station_vps_empty	Tiskalnikov še ni — poiščite jih pod Nastavitve → Tiskalniki
 bill_printers_dd	Tiskalniki za račun
 bill_printers_dd_n	{n} tiskalnik(ov) za račun · tapnite za spremembo
-job_layout	Postavitev
-job_delivery	Kako se pošlje posel
-job_delivery_help	Dokument OS, neobdelani bajti ali ESC/POS. Račun in vstopnica obdržita vsak svojega. Vsako opravilo lahko gre v kateri koli tiskalnik, ki ga je Find shranil.
 station_vp_attached	Tiskalnik pripet
 station_vp_detached	Tiskalnik odstranjen s postaje
-station_print_summary	{mode} · {n} tiskalnik(ov)
-station_print_summary_none	Na tej postaji še ni tiskalnikov — ne bo tiskala
-stations_none	Ni še postaj — dodajte eno spodaj. Postaje so neuporabljene na pultu - pustite prazne.
 route_up	Gor
 route_down	Dol
-route_remove	Odstrani
 route_clear	Počisti
 save_printers	Shrani tiskalnike
 print_test_page	Natisni preskusno stran
@@ -739,23 +604,15 @@ test_page_no_printer	Ni tiskalnika za {place} — pripnite tiskalnik in poskusit
 test_page_pick_first	Najprej izberite tiskalnik(e) za preskusno stran — nato Natisni preskusno stran
 test_printers_dd	Tiskalniki za preskusno stran
 test_printers_dd_n	{n} tiskalnik(ov) za preskusno stran · tapnite za spremembo
-kot_test_printers_dd	Tiskalniki za testni tisk
-kot_test_printers_dd_n	Tiskalnik(i) {n} za preizkusni tisk · tapnite za spremembo
 test_printer_picked	Preskus na: {name}
 test_printer_cleared	Brez preskusa na: {name}
 test_page_sent_n	Preskusna stran poslana {n} tiskalniku(om)
-test_kot_pick_first	Najprej izberite tiskalnik(e) za preizkusni tisk — nato poskusni tisk
-test_kot_sent_n	Testni natis poslan na tiskalnik(e) {n}
-cancel_pick	Označi
-cancel_pick_on	Označeno
-cancel_pick_meta	Označeno za preklic
 batch_cancel	Prekliči označene
 batch_cancel_n	Prekliči označene ({n})
 batch_cancel_none	Najprej označite enega ali več poslanih predmetov — nato označite Prekliči
 batch_cancel_title	Preklic označenih artiklov — en razlog, en odpisnik na razdelek
 batch_cancel_ok	{n} predmeti preklicani · {slips} preklicni list(i) → {kitchens}
 batch_cancel_ok_noprint	Elementi {n} preklicani — samodejno tiskanje je izklopljeno, zato ni potrdila o preklicu
-no_printer_kitchen_station	Ni tiskalnika za to postajo
 printers_saved	Shranjeno
 test_page_sent	Preskusna stran poslana — preverite tiskalnik
 test_page_sent_one	Preskusna stran poslana na {name} — preverite ta tiskalnik
@@ -771,10 +628,7 @@ cancelled	Preklicano
 printers_tap_find	Tapnite Iskanje za seznam tiskalnikov, ki jih ta naprava lahko uporablja.
 printers_none_found	Nič najdenega — vnesite ime sistemskega tiskalnika ali IP (npr. 192.168.1.50).
 printer_from_find	Dodan {name}
-kot_printer_ph	Tiskalnik za listke
 bill_printer_ph	Tiskalnik za račune
-kot_print_on	Samodejno tiskanje vstopnic: vklopljeno
-kot_print_off	Samodejno tiskanje vstopnic: izklopljeno
 queue_refused	Lokal ni sprejel ({n}) — preverite vsakega na blagajni:
 clear_not_accepted	Preverjeno — počistite ta seznam
 device_name_ph	Ime te naprave
@@ -785,7 +639,6 @@ backup_failed	Zadnja samodejna varnostna kopija ni uspela: {e}
 backup_overdue	Že {n} dni ni varnostne kopije — imejte aplikacijo odprto na tej napravi, da lahko naredi kopijo.
 disk_low	Na tej napravi je prosto le {mb} MB — varnostne kopije bodo kmalu spodletele. Sprostite prostor.
 last_seen_devices	Nazadnje videno: {time}
-sync_interval	Uskladi vsakih {secs} s
 connection_to_shop	Povezava z lokalom
 supplier_name_ph	Ime dobavitelja (ali partner)
 supplier_ph	Dobavitelj
@@ -848,7 +701,6 @@ fresh_book_kirano	Sveže = prazen katalog (predmete dodajte pozneje). Knjiga = s
 fresh_selected	Izbrano Fresh — katalog ostane prazen. Tapnite Končano, ko ste pripravljeni.
 gross_word	Bruto
 how_start	Kako želite začeti?
-kot_print_help_kirano	Ni uporabljeno na števcu kirana.
 later_country_pack	Pozneje: Nastavitve → uporabite paket države za oznake davka in plačila.
 local_badge	LOKALNO
 mix_type_hint_kirano	Po potrebi razdelite na gotovino / UPI / kartico / kredit. Za kredit je zgoraj potreben kupec.
@@ -899,8 +751,6 @@ staff_copy_need_source	Izberite, čigavo nastavitev kopirati
 staff_copy_same	To je ista oseba — izberite koga drugega
 staff_rename_need_selected	Najprej izberite, koga preimenovati
 team_pick_hint	Izberite, koga želite urediti – zasloni, denarne pravice in postaje se prikažejo samo za to osebo.
-team_stations_help	Postaje, ki jih lahko uporabljajo
-team_stations_changed	Spremenjene postaje — Shranite nastavitve za to osebo
 team_features_changed	Zasloni spremenjeni — Shranite nastavitev za to osebo
 team_rights_changed	Pravice spremenjene — Shranite nastavitev za to osebo
 they_owe_us	Dolgujejo nam
@@ -984,9 +834,6 @@ service_pct_ph	Postrežba % neobvezno 0/10/12
 short_code_ph	Kratka koda (MG02)
 starting_password_ph	Začetno geslo (neobvezno)
 starting_pin_ph	Začetni PIN (4–12 števk)
-station_name_ph	Ime postaje (neobvezno)
-station_new_ph	Razdelek (neobvezno)
-table_name_ph	Ime števca/zaliva
 tax_rate_ph	Ime davčne stopnje ali % — Standardna, Znižana, 0, 5, 12, 18, 20
 to_code_ph	V kodo (kg)
 uncleared_no_ph	Neporavnana št. zgoraj
@@ -999,27 +846,8 @@ book_kind_month	Knjige tega meseca
 book_kind_aging	Neplačano / debet-kredit
 book_kind_balance	Bilanca
 order_help	Tapnite artikel, da ga dodate.
-floor_help	Ta trgovina prodaja na pultu. Mize in jedilna tla niso del Kirana.
-kitchen_help	Ni uporabljeno v trgovini na pultu.
-kitchen_empty	Ni odprtih vstopnic (programi običajno pustijo ta zaslon neuporabljen).
-add_a_table	Dodaj mizo
-add_station_heading	Dodajte razdelek trgovine
 categories_help	Tapnite Uporabi, da artikel zgoraj vložite v to kategorijo. Fotografija da kategoriji sliko; brez nje se pokažejo začetnice.
 dish_search_ph	Iskanje elementov ali kratke kode ...
-tile_free	Prosta
-tile_occupied	Zasedena
-tile_food_ready	Hrana je pripravljena
-tile_bill_printed	Račun natisnjen
-tile_paid	Plačano
-tile_bill_btn	Račun
-tile_occupy_btn	Posadi goste
-tile_free_btn	Sprosti mizo
-tile_ready_btn	Sprosti mizo
-tile_undo_bill	Razveljavi račun
-summary_busy	zasedene mize
-summary_to_collect	za pobrati
-summary_on_floor	v dvorani
-floor	Lokal
 sizes_as_items_ph	Velikosti kot ločeni artikli (neobvezno) — Polovica=120, Cel=200
 dish_group_ph	Skupina velikosti pakiranja (neobvezno) — npr. Teža 1kg/5kg
 discount	Popust
@@ -1027,7 +855,6 @@ remove_discount	Odstrani popust
 apply_discount	Uporabi popust
 save_opening_cash	Shrani začetno gotovino
 close_shift_print	Zaključi izmeno in natisni listek
-area_prices_ph	Cene območij (neobvezno) — Klima=220, S seboj=210
 discount_ph	10% ali 50
 discount_reason_ph	Razlog (npr. stalen gost, pozna hrana)
 opening_float_ph	Denar, danes zjutraj vložen v predal
@@ -1037,34 +864,18 @@ shift_handover	Predaja izmene
 shift_since	Ta izmena od
 expected_in_drawer	Pričakovano v predalu
 right_discount	Daj popust
-floor_in_kitchen	V teku
-floor_eating	Postreženo
 pick_category	Izberi kategorijo
 close_category_list	Zapri seznam kategorij
 new_category_row	Nova kategorija — ustvari se, ko shranite artikel
 your_category	Vaša kategorija
 suggested_category	Predlagano — iz naših artiklov
 category_search_ph	Kategorija — poiščite svoje ali vpišite novo
-line_sent_state	Poslano
-line_nc_state	Pogostitev (NC) — se ne zaračuna
 cancel_item_short	Prekliči
-nc_short	NC
-charge_again_short	Zaračunaj
-move_short	Premakni
 cancel_item_title	Prekliči to postavko — zaledna pisarna prejme potrdilo o preklicu
-nc_item_title	Naredi ta artikel pogostitev (NC)
-charge_again_title	Znova zaračunaj ta artikel
-move_item_title	Premakni ta artikel na drugo mizo
-already_cooked	Že kuhano (odpadek)
-not_cooked_yet	Še ni kuhano
 return_to_customer	Vrni stranki
 short_by	Manjka
 tip_not_sale	Napitnina (osebja, ni prodaja)
 right_settle	Sprejmi plačilo
-right_cancel_sent	Prekliči poslan artikel
-right_complimentary	Pogostitev (NC)
-right_move_table	Premakni/združi števce
-right_reprint	Natisni račun znova
 right_allowed	Dovoljeno
 right_with_approval	Z odobritvijo
 right_denied	Ni dovoljeno
@@ -1074,25 +885,11 @@ no_server_found	Nič najdenega. Na Strežniku: Nastavitve → Druge naprave → 
 servers_found_pick	Tapnite lokal, s katerim se želite povezati.
 server_host_selected	Uporablja se {host} — vnesite kodo za povezavo, nato Poveži zdaj.
 print_bill	Natisni račun
-table_actions	Protiukrepi
-move_merge_table	Premakni / združi mizo
-move_help	Premaknite vrstni red tega števca na prosto mizo ali ga združite z mizo v teku.
-move_target_ph	Ime števca
 approval_pin_ph	PIN vodje (samo če se vpraša)
-move_here	Premakni sem
-merge_into	Združi vanjo
-line_reason_ph	Razlog (npr. stranka si je premislila, ni na zalogi)
-line_qty_ph	Koliko preklicati (prazno = vse)
-line_target_ph	Premakni na mizo (npr. D5)
 confirm	Potrdi
 menu_search_ph	Išči artikel ali kratko kodo
 customer_paid_ph	Stranka je plačala
 tip_ph	Napitnina
-table_area_ph	Območje (npr. Na mestu, S seboj, Klima)
-table_range_ph	Veliko hkrati: D1-D20
-add_these_tables	Dodajte te števce
-remove_these_tables	Odstranite te števce
-table_remove_ph	Odstrani: T1-T24 ali ime ene mize
 find_server	Poišči strežnik lokala
 bill_format	Oblika računa
 bill_format_help	Natisnjeno pod imenom vaše trgovine na vsakem računu. Vrstice ločite z | (npr. MG Road, Rajkot | Ph 98250 00000).
@@ -1100,78 +897,32 @@ bill_header_ph	Naslov | telefon
 fssai_ph	FSSAI / dovoljenje za trgovino št. (neobvezno)
 bill_footer_ph	Noga (npr. Hvala, pridite spet)
 save_bill_format	Shrani obliko računa
-kot_format	Oblika lističa
-kot_format_help	Tapnite polje na seznamu. Prikaz, velikost pisave in teža veljajo za to polje zgoraj izbrane vrste listka. Vsaka vrsta ima svoje velikosti in teže.
-kot_format_fields	Polja
-kot_field_next	Naslednje polje
-kot_field_show	Pokaži
-kot_field_hide	Skrij
 kot_field_on	pokaži
 kot_field_off	skrij
-kot_field_size	Velikost pisave
-kot_field_size_ph	npr. 16, 20, 24, 28, 32…
 kot_weight_light	Lahka
 bill_kot_panel_help	Postavitev računa in širina vsebine. Blagajnik je tisti, ki je izdal ali poravnal račun - celotna zgodba o prodaji ostane v knjigah.
 std_size_ph	npr. 18, 20, 26…
-kot_show_shop	Ime lokala
-kot_hide_shop	Skrij lokal
-kot_show_time	Čas
-kot_hide_time	Skrij čas
-kot_show_waiter	Blagajnik
-kot_hide_waiter	Skrij blagajno
-kot_show_station	Postaja
-kot_hide_station	Skrij postajo
-kot_show_table	Pult
-kot_hide_table	Skrij mizo
-kot_show_kot_no	Št. vstopnice
-kot_hide_kot_no	Skrij vstopnico št
-kot_width	Predogled ovoja (nastavite širino vsebine na zavihku lističa)
-kot_width_58	58 mm
-kot_width_80	80 mm
-kot_kind_heading	Vrsta vozovnice
-kot_kind_original	Izvirnik
-kot_kind_duplicate	Dvojnik
-kot_kind_modified	Spremenjen
-kot_kind_cancelled	Preklicano
-kot_style_heading	Velikost in teža polja
-kot_style_title	Naslov
-kot_style_item_qty	Artikel · Kol.
-kot_style_field_pick	Izberi polje
 kot_weight_regular	Navadna
 kot_weight_bold	Krepka
-kot_align	Poravnava
 kot_align_start	Začni
 kot_align_center	Sredina
 kot_align_end	Konec
 content_width	Širina vsebine (mm)
 content_width_bill	Širina vsebine računa (mm)
-content_width_kot	Širina vsebine vstopnice (mm)
 content_width_ph	Ali vnesite širino vsebine, 40–210 mm
 content_width_help	Kako široko natisne ta listek. Bill ohranja svojo širino.
 content_width_bill_help	Kako široko se natisne račun stranke. Privzeto 210 mm (stran). 58 mm ozek listek, 80 mm širok list, 112 mm 4-palčni, 210 mm A4 širok. Vnesite poljubno vrednost od 40 do 210. Listki imajo na zavihku listek svojo širino.
-content_width_kot_help	Kako široka je vozovnica. Privzeto 80 mm. 58 mm ozek listek, 80 mm širok list, 112 mm 4-palčna, 210 mm stran. Vnesite poljubno vrednost od 40 do 210. Računi strank imajo svojo širino na zavihku Račun.
 vp_paper_width	Širina vsebine (mm)
 vp_paper_width_ph	Ali vnesite širino vsebine, 40–210 mm
 vp_paper_width_help	Širina vsebine je nastavljena v formatu Bill & Slip — ločeno za račun (privzeto 210 mm) in listek (privzeto 80 mm).
-kot_size	Velikost pisave
-kot_size_s	Majhna
-kot_size_m	Običajna
-kot_size_l	Velika
 std_size	Velikost pisave
 kot_copies	Kopije
 kot_copies_1	1
 kot_copies_2	2
 kot_copies_3	3
-kot_title_ph	Naslov (prazno = VSTOPNICA)
-kot_footer_ph	Opomba iz zaledne pisarne (neobvezno)
-kot_preview	Predogled
-save_kot_format	Shrani format lističa
-test_kot_format	Testni tisk
-test_kot_sent	Predogled vstopnice je poslan
 test_bill_format	Preskusni račun
 test_bill_sent	Predogled računa poslan
 test_print_no_printer	Za to opravilo ni tiskalnika — izberite enega na tem zaslonu
-kot_format_saved	Format lističa shranjen
 std_print	Velikost tiska računa
 std_print_help	Velikost pisave za standardna pokončna in ležeča opravila računov na OS / tiskalnikih dokumentov (vnesite točke — ne majhne/običajne/velike). Enaka velikost na obeh orientacijah.
 std_size_s	Majhna
@@ -1211,23 +962,16 @@ upi_qr	UPI QR
 show_upi_qr	Prikaži UPI QR
 close_upi_qr	Zapri
 upi_qr_help	Stranka skenira in plača. Tapnite Sprejmi plačilo, ko plačajo. Drugi zaslon: odprite URL strežnika / prikaz v LAN.
-kot_recall	Prikliči
 recently_done	Nedavno končano
-recall_kot_ph	Vstopnica # za odpoklic
 role_help_customer	Vloga: Kupec — račun (dolgujejo nam). Isti partner lahko tudi dobavlja zalogo.
 role_help_both	Vlogi: Kupec + Dobavitelj — en partner, račun in obveznosti, neto v Poročilih.
 role_help_supplier	Vloga: Dobavitelj — dolgujemo jim za nakupe.
-dine_in_pick_table	Ni uporabljeno v trgovini na pultu
-choose_table	Izberite števec
-change_table	Zamenjaj mizo
-pick_table_banner	Izberite mizo za to naročilo
 items_word	artikli
 items_section	Artikli
 back_to_order	Nazaj na naročilo
 new_items_head	Še ni poslano
 price_ph	Cena
 price_ph_gst_inside	Cena ({tax} vključeno)
-cancel_needs_table	Prodaja na okencu ostane na vstopnici, dokler ne prevzamete plačila
 tax_rates_missing_hint	Za te artikle ni stopnje {tax} — za nastavljene predmete Davčna stopnja (cene že vključujejo {tax} pod vključno {tax})
 taxable_value	Davčna osnova
 gst_inside_price_note	({tax} vključeno)
@@ -1248,30 +992,11 @@ client_template_confirm	Dodati elemente {d} iz {title}? Predmeti, ki jih že ima
 client_template_importing	Uvažanje {title}…
 client_template_done	Vsak predmet iz {title} je na vaših predmetih.
 client_template_imported	Dodani elementi {d} in kategorije {c} iz {title}
-resv_heading	Rezervacije
-resv_name_ph	Ime stranke
-resv_phone_ph	Telefon (neobvezno)
-resv_guests_ph	Ljudje
-resv_when_ph	Kdaj — 20:30, jutri 13:00
-resv_table_ph	števec (neobvezno)
-resv_add	Rezerviraj
-resv_seat	Usajen
-resv_none	Ni prihajajočih rezervacij.
-guests_word	gostje
-delivery_by_ph	Dostavi (ime dostavljavca ali osebja)
-kitchen_all_day	Za kuhati zdaj: {items}
-split_bill	Razdeli račun
-split_go	Naredi ločen račun
 cancel	Prekliči
 opening_client	Odpiranje odjemalca…
 preparing_desk	Priprava pulta…
 opening_server	Odpiranje strežnika…
 creating_server	Ustvarjanje strežnika…
-split_help	Dotaknite se predmetov, ki jih ena stranka plača · {n} izbrano
-split_send_first	Najprej pošljite položnico — samo predmeti, ki jih ima zaledna pisarna, lahko gredo na ločen račun
-split_pick_some	Najprej tapnite postavke za ločeni račun
-split_done	Narejen je ločen račun — na tleh je poleg tega pulta
-split_marked	ločen račun
 order_empty_pick	Naročite prazno — tapnite Dodaj elemente zgoraj, da izberete elemente.
 add_dishes	Dodajte elemente
 order_so_far	V tem naročilu: {n} · {total}
@@ -1282,24 +1007,8 @@ pick_done_dd	Končano · {label}
 printer_route_mode	Če je na tem mestu več tiskalnikov
 printer_mode_first	Prvi, ki dela
 printer_mode_all	Natisni na vseh
-kot_show_area	Območje
-kot_hide_area	Skrij območje
-kot_show_item_hdr	Artikel · Kol.
-kot_hide_item_hdr	Skrij stolpce
-kot_show_title	Naslovna vrstica
-kot_hide_title	Skrij naslov
-kot_field_order	Vrstni red tiska
 kot_field_up	Premakni gor
 kot_field_down	Premakni dol
-kot_field_cycle	Izberi naslednje
-kot_field_select	Izberi naslednje
-kot_field_time	Čas
-kot_field_kot_no	Št. vstopnice
-kot_field_area	Območje
-kot_field_table	Pult
-kot_field_shop	Ime lokala
-kot_field_waiter	Osebje
-kot_field_station	Postaja
 app_template_blurb_extra	Tudi: lastnik Zahir, skrbnik Asif, blagajnik Nawaz; sprednja stranska vrstica; zgodovina po 4 urah; Danes se slecite; kompakten račun.
 dishes_n	predmetov {n}
 recipe_ph	Recept (izbirno - neuporabljen v trgovini)
@@ -1309,8 +1018,6 @@ low_stock_alert	Pomanjkanje — kmalu kupite: {items}
 unpriced_note	Predmeti {n} na vaših izdelkih še nimajo cene — zaračunavajo 0, dokler je ne nastavite.
 show_unpriced	Prikaži samo artikle brez cene
 show_all_dishes	Prikaži vse elemente
-role_waiter	Blagajnik
-role_kitchen	Trgovina
 role_title_rest_ph	Naziv vloge (npr. Kapitan, Glavni kuhar)
 preset_help_rest	Blagajnik: prodaja. Vodja: prodaja + artikli + razveljavitev/popravek.
 kind_raw	Kupljen za uporabo v trgovini

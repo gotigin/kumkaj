@@ -1006,30 +1006,6 @@ fn rail_resize_drag() -> &'static Mutex<Option<f64>> {
     DRAG.get_or_init(|| Mutex::new(None))
 }
 
-/// Floor area ChipStrip drag-to-swap: tap selects; press + move swaps and
-/// persists `ui_floor_area_order`.
-#[derive(Clone)]
-struct FloorAreaDrag {
-    slot: usize,
-    start: DVec2,
-    last: DVec2,
-    origin: DVec2,
-    rects: Vec<Rect>,
-    active: bool,
-    hover: Option<usize>,
-    finger: Option<u64>,
-}
-
-fn floor_area_drag() -> &'static Mutex<Option<FloorAreaDrag>> {
-    static DRAG: OnceLock<Mutex<Option<FloorAreaDrag>>> = OnceLock::new();
-    DRAG.get_or_init(|| Mutex::new(None))
-}
-
-fn floor_area_autoscroll_frame() -> &'static Mutex<Option<NextFrame>> {
-    static FRAME: OnceLock<Mutex<Option<NextFrame>>> = OnceLock::new();
-    FRAME.get_or_init(|| Mutex::new(None))
-}
-
 fn menu_pick_viewport_w() -> &'static Mutex<f64> {
     static W: OnceLock<Mutex<f64>> = OnceLock::new();
     W.get_or_init(|| Mutex::new(0.0))
@@ -1127,7 +1103,7 @@ struct AccordionAnim {
     started: std::time::Instant,
 }
 
-/// Height tweens for SuggestList / StationCheckList / pick lists (keyed by field or widget id).
+/// Height tweens for SuggestList / CheckList / pick lists (keyed by field or widget id).
 fn list_height_anims() -> &'static Mutex<std::collections::HashMap<String, AccordionAnim>> {
     static ANIMS: OnceLock<Mutex<std::collections::HashMap<String, AccordionAnim>>> = OnceLock::new();
     ANIMS.get_or_init(|| Mutex::new(std::collections::HashMap::new()))
@@ -1242,7 +1218,6 @@ fn list_height_anims_live() -> bool {
         .any(|a| !accordion_anim_progress(a, now).1)
 }
 
-
 fn accordion_anims() -> &'static Mutex<std::collections::HashMap<String, AccordionAnim>> {
     static ANIMS: OnceLock<Mutex<std::collections::HashMap<String, AccordionAnim>>> = OnceLock::new();
     ANIMS.get_or_init(|| Mutex::new(std::collections::HashMap::new()))
@@ -1290,10 +1265,6 @@ fn accordion_estimate_h(key: &str) -> f64 {
         "payments" => 108.0,
         "outstanding" => 72.0,
         "bank" => 108.0,
-        "floor_ops" => 220.0,
-        "waitlist" | "resv" => 180.0,
-        "floor_add" | "stations" => 140.0,
-        "table_actions" => 120.0,
         "language" => 220.0,
         "role" => 160.0,
         _ => 100.0,
@@ -1357,17 +1328,6 @@ fn approve_for(
     ))
 }
 
-/// A device's KOT line still waiting for the Server: `kot_id` groups it
-/// under "Waiting to send"; `running_line_id` is this prefix + the job id.
-const QUEUED_KOT: &str = "queued";
-const QUEUED_LINE: &str = "queued:";
-
-/// A table action done on this device (with bill text when one printed),
-/// or sent to the Server — its answer shows when it comes back.
-/// Print bill with no paper: the books already moved the table to Bill.
-const BILL_ON_TABLE_NO_PAPER: &str =
-    "the table is on Bill now; printing it again counts as a reprint";
-
 /// The shift slip goes to the bill printer; say when it did not (the
 /// drawer count is saved either way, and the slip stays on the ticket).
 fn shift_slip_paper_note(sent: Result<print_share::ReceiptShare, String>) -> Option<String> {
@@ -1379,11 +1339,6 @@ fn shift_slip_paper_note(sent: Result<print_share::ReceiptShare, String>) -> Opt
         ),
         Err(e) => Some(format!("shift slip not printed ({e}); the slip stays on the ticket")),
     }
-}
-
-enum Acted {
-    Here(Option<String>),
-    Sent,
 }
 
 /// Whose saved phone sign-in sends a job: a staff id, or "owner".

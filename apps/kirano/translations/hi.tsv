@@ -68,28 +68,6 @@ applied	लगाया
 note_ph	नोट (वैकल्पिक)
 rounded	राउंड
 split	बाँटें
-send_kot	पर्ची भेजें
-send_kot_to	भेजें → {kitchens}
-send_kot_again	अगली पर्ची के लिए आइटम जोड़ें
-send_kot_held	होल्ड आइटम — भेजने के लिए होल्ड हटाएँ
-reprint_kot	चुने हुए फिर छापें
-reprint_kot_ok	{n} आइटम फिर छापे · {slips} पर्ची → {kitchens}
-reprint_kot_needed	पहले पर्ची भेजें — फिर आइटम शामिल करके चुने हुए फिर छापें
-reprint_kot_none_selected	भेजा हर आइटम छोड़ा गया है — जिन्हें फिर छापना है उन पर «छाप में» दबाएँ
-reprint_kot_client	{place} के लिए फिर छापें ({n}) भेजा — दुकान का डिवाइस छापेगा
-print_cancelled_kot	सभी रद्द छापें
-print_cancelled_kot_ok	{n} रद्द आइटम छापे · {slips} पर्ची → {kitchens}
-print_cancelled_kot_needed	पहले रद्द आइटम वाली मेज़ खोलें
-print_cancelled_kot_none	इस ऑर्डर पर कोई रद्द आइटम नहीं
-print_cancelled_kot_client	{place} के लिए रद्द छापें ({n}) भेजा — दुकान का डिवाइस छापेगा
-kot_banner	बैनर
-kot_banner_ph	बैनर (खाली = नहीं)
-kot_item_prefix	आइटम उपसर्ग
-kot_item_prefix_ph	जैसे [CANCELLED] 
-kot_strike	आइटम का नाम काटें
-kot_strike_note	आइटम का नोट काटें
-kot_strike_on	चालू
-kot_strike_off	बंद
 bill_item_layout	आइटम लेआउट
 bill_item_layout_columns	स्तंभ
 bill_item_layout_stacked	पंक्तियाँ
@@ -118,8 +96,6 @@ bill_item_gap_em	अंतर (em)
 bill_item_qty_min	संख्या न्यूनतम (em)
 bill_item_price_min	दर न्यूनतम (em)
 bill_item_amount_min	राशि न्यूनतम (em)
-kot_item_qty_width	संख्या स्तंभ
-kot_item_num_align	संख्या संरेखण
 bill_total_qty_label	कुल संख्या लेबल
 bill_total_subtotal_label	उप-योग लेबल
 bill_total_grand_label	कुल योग लेबल
@@ -131,36 +107,9 @@ bill_item_piece_off	बंद
 bill_total_qty	कुल मात्रा
 bill_total_subtotal	उप योग
 bill_total_grand	कुल योग
-reprint_incl	छाप में
-reprint_skip	छोड़ें
-reprint_skip_meta	रिकवरी प्रिंट छोड़ें
-kot_dest_hint	सेटिंग → प्रिंटर में {kitchens} को दिए प्रिंटर पर छपता है
-kot_sent_hint	पिछली बार {kitchens} को भेजा। अगले बिल के लिए आइटम जोड़ने को दबाएँ — या उसी के लिए पर्ची फिर छापें।
-kot_sent_printing	पर्ची {kitchens} को भेजी — छप रही है
-kot_sent_not_printed	पर्ची {kitchens} को भेजी पर छपी नहीं: {why}। दुकान को बताएँ, फिर प्रिंटर ठीक करके दोबारा छापें।
-kot_sent_screen	पर्ची {kitchens} को भेजी
-kot_queued_shop	{place} की पर्ची → {kitchens} सहेजी; दुकान का डिवाइस इसे छापेगा
-kot_job_label	{place} की पर्ची → {kitchens}
-kot_job_reached	{place} की पर्ची {kitchens} तक पहुँची
 kot_unassigned	बिना स्टेशन
-kot_unassigned_held	स्टेशन के बिना {n} आइटम होल्ड — भेजने के लिए पंक्ति पर होल्ड हटाएँ
-kot_station_ph	स्टेशन
-kot_station_dd	स्टेशन
-kot_station_dd_n	स्टेशन · {stations}
-kot_set_station	यह स्टेशन इस्तेमाल करें
-kot_station_applied	{n} आइटम पर स्टेशन लगाया: {station}
-kot_station_cleared	{n} आइटम से स्टेशन हटाया: {station}
-kot_station_needed	पहले दुकान का हिस्सा चुनें
-kot_station_not_allowed	इस हिस्से की अनुमति नहीं: {station}
-kot_station_none	अभी कोई स्टेशन नहीं — काउंटर वाली दुकान पर ज़रूरी नहीं (ज़रूरत हो तो सेटिंग → एरिया)
 pos_tab_items	जोड़े गए आइटम
 pos_tab_payment	भुगतान
-hold_send	रोकें
-hold_send_on	होल्ड
-hold_send_meta	होल्ड — इस पर्ची में नहीं
-station_remove	स्टेशन हटाएँ
-station_remove_ph	हटाने के लिए सूची में स्टेशन दबाएँ
-station_removed	स्टेशन हटाया: {name}
 settings_hub_title	सेटिंग
 settings_hub_help	एक बार में एक हिस्सा खोलें — कम स्क्रॉल, साफ़ विकल्प।
 settings_back	वापस
@@ -169,12 +118,10 @@ settings_sec_country	देश व कर
 settings_sec_tills	अतिरिक्त टिल और शाखाएँ
 settings_sec_brand	आपका ब्रांड
 settings_sec_units	इकाइयाँ व रूपांतरण
-settings_sec_pickers	एरिया · स्टेशन · कर दरें
+settings_sec_pickers	कर दरें
 settings_sec_printers	प्रिंटर
 settings_sec_bill	बिल और पर्ची प्रारूप
 settings_sec_selling	स्कीम व बिक्री
-bill_kot_tab_bill	बिल
-bill_kot_tab_kot	पर्ची
 settings_sec_alerts	सूचनाएँ
 alerts_help	स्थिति संदेश आपके लिए स्क्रीन पर कितनी देर रहें (इस लॉगिन के लिए)।
 snack_secs_ph	सेकंड (3–60, सामान्य 10)
@@ -225,8 +172,6 @@ counter	काउंटर
 dine_in	काउंटर
 takeaway	पैक
 order	ऑर्डर
-tables	काउंटर
-kitchen	अनुभाग
 sales	बिक्री
 sales_refunds	बिक्री और वापसी
 day_close	दिन बंद
@@ -254,10 +199,6 @@ zero_sales_on	शून्य बिक्री: चालू
 zero_sales_off	शून्य बिक्री: बंद
 zero_sales_saved_on	शून्य बिक्री की अनुमति सहेजी (चालू)
 zero_sales_saved_off	शून्य बिक्री की अनुमति सहेजी (बंद)
-floor_areas_help	एरिया फ़्लोर पर कमरे या ज़ोन हैं (Dine In, Parcel, AC …)। पहले एरिया जोड़ें, फिर उसमें काउंटर रखें — हर एरिया फ़्लोर पर अलग समूह है।
-area_new_ph	नया एरिया / कमरा (जैसे AC, Garden)
-add_area	एरिया जोड़ें
-area_added	एरिया “{name}” तैयार — उसमें काउंटर जोड़ें
 no_favorites	अभी कोई पसंदीदा नहीं — नीचे की सूची से वस्तुएँ जोड़ें।
 add_to_bill	बिल में जोड़ें
 added	जोड़ा गया
@@ -268,19 +209,9 @@ chip_missing_customer	चुना गया ग्राहक नहीं म
 chip_no_customer	अभी कोई ग्राहक नहीं — नाम लिखें, फिर Credit दबाएँ
 credit_summary_fmt	{} ग्राहक · खुला उधार {} · अग्रिम रखा {}
 recent_label	हाल का:
-kot_new_waiting	नया — प्रतीक्षा में
-kot_preparing	तैयार हो रहा है
-kot_ready_serve	तैयार — परोसें
-kot_done_cap	हो गया
-kot_cancelled	रद्द
-kot_start_btn	शुरू करें
-kot_mark_ready	तैयार चिह्नित करें
-kot_done_btn	हो गया
-table_free	खाली — ऑर्डर शुरू करने के लिए टैप करें
 start_order	ऑर्डर शुरू करें
 open_bill	बिल खोलें
 collect_payment	भुगतान लें
-table_running	चल रहा है
 payment_pending	भुगतान बाकी
 collect_at_counter	काउंटर पर लें
 inventory	स्टॉक
@@ -313,7 +244,6 @@ ok	ठीक
 this_shop	सर्वर मोड
 extra_till	क्लाइंट मोड
 off	बंद
-tables_kitchen	दुकान का ढाँचा
 server	सर्वर
 client	क्लाइंट
 language_currency	भाषा और मुद्रा
@@ -355,8 +285,6 @@ add_item_plain	आइटम जोड़ें
 add_note	नोट जोड़ें
 add_opening_balance	शुरुआती शेष जोड़ें
 add_staff	कर्मचारी जोड़ें
-add_station	स्टेशन जोड़ें
-add_table	मेज़ जोड़ें
 add_unit	इकाई जोड़ें
 add_use_name	यह नाम जोड़ें / इस्तेमाल करें
 allow_extra_tills	अतिरिक्त टिल की अनुमति दें
@@ -409,7 +337,6 @@ share_whatsapp	व्हाट्सऐप शेयर
 lan_pages_heading	Wi‑Fi पर ग्राहक पेज
 lan_pages_help	इस दुकान के Wi‑Fi पर ग्राहक पेज डिस्प्ले बोर्ड और फ़ीडबैक के लिए चलते हैं। मोबाइल डेटा वालों के लिए बाद में Cloud चाहिए। कार्ड मशीन या भुगतान लिंक वैकल्पिक है और काउंटर को कभी नहीं रोकता।
 diag_send_heading	इस डिवाइस से बाहर भेजें
-kot_dest_heading	स्टेशन
 optional_login_heading	वैकल्पिक लॉगिन
 rights_heading	अधिकार
 ops_panel	स्थानीय काम
@@ -436,28 +363,6 @@ till_voucher_amt_ph	वाउचर राशि (खाली = सब)
 till_wallet_topup_ph	वॉलेट टॉप-अप राशि
 till_voucher_issue_amt_ph	नया वाउचर राशि
 till_voucher_issue_code_ph	नया वाउचर कोड
-split_evenly	बराबर बाँटें
-waitlist	वेटलिस्ट
-fire_course	अगला कदम
-hold_item	रोकें
-waiter_call	कैशियर को बुलाएँ
-waitlist_add	वेटलिस्ट में जोड़ें
-floor_view_grid	ग्रिड
-floor_view_layout	लेआउट
-floor_layout_x	X
-floor_layout_y	Y
-floor_layout_w	W
-floor_layout_h	H
-floor_layout_save	लेआउट सहेजें
-floor_layout_open	टेबल खोलें
-floor_layout_edit	लेआउट संपादित
-floor_layout_pick	लेआउट बदलने के लिए टेबल टैप करें
-floor_layout_saved	लेआउट सहेजा
-floor_layout_nudge_left	← 20
-floor_layout_nudge_right	→ 20
-floor_layout_nudge_up	↑ 20
-floor_layout_nudge_down	↓ 20
-sibling_pickers_help	यूनिट की तरह On/Off — क्षेत्रों, स्टेशनों, कर दरों को दैनिक पिकर से छुपाएँ; पैक डिफ़ॉल्ट रहेंगे।
 bulk_price_apply	थोक कीमत लागू करें
 card_terminal_optional	कार्ड टर्मिनल / पेमेंट लिंक (इंटरनेट होने पर वैकल्पिक)
 copy_report	रिपोर्ट कॉपी करें
@@ -483,7 +388,6 @@ import_day	दिन इम्पोर्ट करें
 import_items_csv_plain	आइटम CSV इम्पोर्ट…
 import_parties_csv	पार्टी CSV इम्पोर्ट…
 item_name	आइटम का नाम
-kitchen_printing	किचन प्रिंटिंग
 login_id_ph	लॉगिन आईडी
 mark_cleared	क्लियर चिह्नित करें
 new_party_clear	नई पार्टी (फ़ॉर्म साफ़ करें)
@@ -553,15 +457,6 @@ show	दिखाएँ
 spreadsheet_csv	स्प्रेडशीट (CSV)
 start_fresh	नए सिरे से शुरू करें
 stop_extra_tills	अतिरिक्त टिल बंद करें
-floor_cols_ph	कॉलम
-floor_cols_fit	स्क्रीन जितने
-floor_cols_fit_sub	यहाँ {n} आते हैं
-floor_cols_fits	समाता है
-floor_cols_scroll	बगल में स्क्रॉल
-floor_cols_min	कॉलम: कम से कम 1 — या स्क्रीन जितने रखने के लिए खाली छोड़ें
-floor_zoom_auto	अपने आप
-floor_zoom_out	छोटा करें
-floor_zoom_in	बड़ा करें
 backup_auto	हर दिन अपने-आप बैकअप · पिछला {when} · पिछले 14 दिन {dir} में रखे जाते हैं।
 backup_auto_none	हर दिन अपने-आप बैकअप — पहला अभी चलेगा।
 backup_copy_to	प्रतियाँ {dir} में भी जाती हैं।
@@ -579,7 +474,6 @@ new_pair_code	नया पेयरिंग कोड
 pair_finishing	पेयरिंग पूरा हो रहा है… दुकान की किताबें लग रही हैं
 pair_opening	टिल खुल रहा है…
 pair_copied	पेयरिंग कोड कॉपी हो गया
-kot_waiting	भेजने की प्रतीक्षा
 lan_offline_waiting	ऑफ़लाइन · {n} प्रतीक्षा में
 lan_connecting	दुकान से जुड़ रहे हैं…
 lan_live	लाइव
@@ -621,7 +515,6 @@ printers_routes_help	वे प्रिंटर खोजें जिन्�
 printer_assign_dd	प्रिंटर चुनें — {place}
 printer_assign_pick	असली प्रिंटर चुनें
 printer_profile_heading	लेआउट
-printer_send_heading	डिलीवरी
 vp_delivery_heading	डिलीवरी
 vp_delivery_help	यह वर्चुअल प्रिंटर काम कैसे भेजता है — OS दस्तावेज़, कच्चे बाइट या ESC/POS। पर्ची की सामग्री (अक्षर आकार, लपेट, मार्जिन) बिल / पर्ची फ़ॉर्मेट तय करता है, यह नहीं।
 vp_type_size_heading	अक्षर आकार
@@ -665,23 +558,13 @@ virtual_draft_send	अगले वर्चुअल प्रिंटर क�
 virtual_need_real	पहले असली प्रिंटर चुनें
 virtual_need_select	हटाने के लिए वर्चुअल प्रिंटर चुनें
 real_printer_selected	असली प्रिंटर: {name}
-station_group_heading	वर्चुअल प्रिंटर
-station_group_apply	वर्चुअल प्रिंटर हटाएँ
-station_group_applied	हटाया
-station_group_empty	वर्चुअल प्रिंटर चुनें
-station_group_name_ph	वर्चुअल प्रिंटर का नाम (वैकल्पिक)
-station_group_save	वर्चुअल प्रिंटर बनाएँ
-station_group_saved	वर्चुअल प्रिंटर सहेजा
-station_manage_heading	दुकान का हिस्सा जोड़ें या हटाएँ
 printers_routes_heading	2. कहाँ छपे
 route_pick_heading	स्थान
 route_editing	बदल रहे हैं: {name}
 route_assigned	{printer} को {place} में जोड़ा
 route_already_assigned	इस स्थान पर पहले से: {printer}
-route_removed	{printer} को {place} से हटाया
 route_cleared	{name} साफ़ किया
 route_assigned_empty	इस स्थान पर कोई नहीं
-route_tap_remove	हटाने के लिए दबाएँ
 route_tap_select	चुनने के लिए टैप
 route_tap_selected	चयनित
 route_pick_printer_first	पहले एक प्रिंटर टैप करें
@@ -702,35 +585,17 @@ printer_format_custom	नया अपना फ़ॉर्मैट
 printer_format_custom_label	अपना
 printer_format_custom_added	इस रूट के लिए अपना फ़ॉर्मैट जोड़ा गया
 add_printer	प्रिंटर जोड़ें
-remove_printer	आखिरी हटाएँ
 route_pick_ph	बिल या दुकान का कोई हिस्सा
 route_bill	बिल
-route_default_kitchen	कोई स्टेशन नहीं (बिना स्टेशन वाले आइटम)
-route_kot_station	स्टेशन
 route_dont_print	प्रिंट न करें
-stations_heading	स्टेशन
-stations_help	दुकान के हिस्से आइटम और उस हिस्से के प्रिंटर को एक साथ रखते हैं। सेटिंग → प्रिंटर से प्रिंटर लगाएँ, कोशिश का क्रम तय करें, फिर जो पहले चले या सब पर छापें। बदलाव साथ-साथ सहेजे जाते हैं।
-station_print_heading	इस स्टेशन के प्रिंटर
-station_print_help	एक स्टेशन चुनें, फिर एक या ज़्यादा प्रिंटर लगाएँ। ↑↓ कोशिश का क्रम तय करता है। जो पहले चले पहली सफलता पर रुकता है; सब पर छापें हर लगे प्रिंटर पर भेजता है।
-station_print_pick_ph	स्टेशन जिसके प्रिंटर सेट करें
 station_print_pick_first	पहले दुकान का हिस्सा चुनें
-station_print_editing	“{name}” के प्रिंटर संपादित
-station_vps_dd	इस स्टेशन के प्रिंटर
-station_vps_dd_n	{n} प्रिंटर · बदलने के लिए टैप
 station_vps_empty	अभी प्रिंटर नहीं — सेटिंग → प्रिंटर में खोजें
 bill_printers_dd	बिल के प्रिंटर
 bill_printers_dd_n	बिल के लिए {n} प्रिंटर · बदलने के लिए दबाएँ
-job_layout	लेआउट
-job_delivery	काम कैसे भेजा जाता है
-job_delivery_help	OS दस्तावेज़, कच्चे बाइट या ESC/POS। बिल और टिकट दोनों अपना-अपना रखते हैं। कोई भी काम उस किसी भी प्रिंटर पर जा सकता है जिसे खोजें ने सहेजा है।
 station_vp_attached	प्रिंटर जोड़ा
 station_vp_detached	स्टेशन से प्रिंटर हटाया
-station_print_summary	{mode} · {n} प्रिंटर
-station_print_summary_none	इस स्टेशन पर अभी प्रिंटर नहीं — प्रिंट नहीं होगा
-stations_none	अभी कोई स्टेशन नहीं — नीचे एक जोड़ें। काउंटर वाली दुकान पर स्टेशन ज़रूरी नहीं — खाली छोड़ें।
 route_up	ऊपर
 route_down	नीचे
-route_remove	आखिरी हटाएँ
 route_clear	प्रिंट न करें
 save_printers	प्रिंटर सहेजें
 print_test_page	टेस्ट पेज छापें
@@ -739,23 +604,15 @@ test_page_no_printer	{place} के लिए प्रिंटर नहीं
 test_page_pick_first	पहले टेस्ट के प्रिंटर चुनें — फिर टेस्ट पेज छापें
 test_printers_dd	टेस्ट पेज के प्रिंटर
 test_printers_dd_n	{n} प्रिंटर टेस्ट के लिए · बदलने के लिए टैप
-kot_test_printers_dd	टेस्ट छपाई के प्रिंटर
-kot_test_printers_dd_n	टेस्ट छपाई के लिए {n} प्रिंटर · बदलने के लिए दबाएँ
 test_printer_picked	टेस्ट: {name}
 test_printer_cleared	टेस्ट नहीं: {name}
 test_page_sent_n	टेस्ट पेज {n} प्रिंटर पर भेजा
-test_kot_pick_first	पहले टेस्ट छपाई के प्रिंटर चुनें — फिर टेस्ट छपाई
-test_kot_sent_n	टेस्ट छपाई {n} प्रिंटर पर भेजी
-cancel_pick	चिह्नित
-cancel_pick_on	चिह्नित
-cancel_pick_meta	रद्द के लिए चिह्नित
 batch_cancel	चिह्नित रद्द करें
 batch_cancel_n	चिह्नित रद्द करें ({n})
 batch_cancel_none	पहले एक या ज़्यादा भेजे आइटम चिह्नित करें — फिर चिह्नित रद्द करें
 batch_cancel_title	चिह्नित सामान रद्द — एक कारण, हर अनुभाग को एक पर्ची
 batch_cancel_ok	{n} आइटम रद्द · {slips} रद्द पर्ची → {kitchens}
 batch_cancel_ok_noprint	{n} आइटम रद्द — अपने-आप छपाई बंद है, इसलिए रद्द पर्ची नहीं
-no_printer_kitchen_station	उस स्टेशन के लिए प्रिंटर नहीं
 printers_saved	इस डिवाइस के प्रिंटर सहेजे गए
 test_page_sent	टेस्ट पेज भेजा — प्रिंटर देखें
 test_page_sent_one	टेस्ट पेज {name} पर भेजा — उसी प्रिंटर को देखें
@@ -771,10 +628,7 @@ cancelled	रद्द
 printers_tap_find	प्रिंटर खोजें दबाएँ — सिस्टम प्रिंटर और इस वाई‑फ़ाई के नेटवर्क रसीद प्रिंटर सूची में आएँगे।
 printers_none_found	कोई प्रिंटर नहीं मिला — सिस्टम प्रिंटर का नाम लिखें, या नेटवर्क पता (जैसे 192.168.1.50)।
 printer_from_find	{name} जोड़ा
-kot_printer_ph	पर्ची का प्रिंटर
 bill_printer_ph	बिल का प्रिंटर
-kot_print_on	टिकट अपने-आप छपें: चालू
-kot_print_off	टिकट अपने-आप छपें: बंद
 queue_refused	दुकान ने स्वीकार नहीं किया ({n}) — हर एक को काउंटर पर जाँचें:
 clear_not_accepted	जाँच लिया — यह सूची हटाएँ
 device_name_ph	इस डिवाइस का नाम
@@ -785,7 +639,6 @@ backup_failed	पिछला अपने-आप बैकअप नहीं �
 backup_overdue	{n} दिन से बैकअप नहीं हुआ — इस डिवाइस पर ऐप खुला रखें ताकि बैकअप हो सके।
 disk_low	इस डिवाइस पर सिर्फ़ {mb} MB जगह बची है — जल्द ही बैकअप नहीं हो पाएँगे। कुछ जगह ख़ाली करें।
 last_seen_devices	आख़िरी बार दिखा: {time}
-sync_interval	हर {secs} सेकंड में सिंक
 connection_to_shop	दुकान से कनेक्शन
 supplier_name_ph	सप्लायर का नाम (या पार्टी)
 supplier_ph	सप्लायर
@@ -848,7 +701,6 @@ fresh_book_kirano	प्रिंटर
 fresh_selected	Fresh चुना — कैटलॉग खाली रहेगा। तैयार होने पर Done दबाएँ।
 gross_word	सकल
 how_start	आप कैसे शुरू करना चाहते हैं?
-kot_print_help_kirano	जब KOT भेजा जाता है — काउंटर से या वेटर के डिवाइस से — किचन का काग़ज़ यहाँ अपने आप छपता है।
 later_country_pack	प्रिंटर
 local_badge	स्थानीय
 mix_type_hint_kirano	ज़रूरत हो तो नकद / UPI / कार्ड / उधार में बाँटें। उधार के लिए ऊपर ग्राहक चाहिए।
@@ -899,8 +751,6 @@ staff_copy_need_source	चुनें किसका सेटअप कॉप
 staff_copy_same	यह वही व्यक्ति है — कोई दूसरा चुनें
 staff_rename_need_selected	पहले चुनें किसका नाम बदलना है
 team_pick_hint	चुनें किसे बदलना है — स्क्रीन, पैसे के अधिकार और स्टेशन सिर्फ़ उसी व्यक्ति के लिए दिखते हैं।
-team_stations_help	वे कौन-से स्टेशन इस्तेमाल कर सकते हैं
-team_stations_changed	स्टेशन बदले — इस व्यक्ति का सेटअप सहेजें
 team_features_changed	स्क्रीन बदलीं — इस व्यक्ति का सेटअप सहेजें
 team_rights_changed	अधिकार बदले — इस व्यक्ति का सेटअप सहेजें
 they_owe_us	वे हमारे देनदार
@@ -984,9 +834,6 @@ service_pct_ph	सेवा % वैकल्पिक 0/10/12
 short_code_ph	छोटा कोड (MG02)
 starting_password_ph	शुरुआती पासवर्ड (वैकल्पिक)
 starting_pin_ph	शुरुआती PIN (4–12 अंक)
-station_name_ph	स्टेशन का नाम (वैकल्पिक)
-station_new_ph	हिस्सा (वैकल्पिक)
-table_name_ph	काउंटर / खाने का नाम
 tax_rate_ph	कर दर का नाम या % — Standard, Reduced, 0, 5, 12, 18, 20
 to_code_ph	को कोड (kg)
 uncleared_no_ph	ऊपर वाला अनक्लियर्ड #
@@ -999,27 +846,8 @@ book_kind_month	इस महीने की बही
 book_kind_aging	बकाया / डेबिट-क्रेडिट
 book_kind_balance	बैलेंस शीट
 order_help	खुला ऑर्डर चुनें, या टेबल चुनें और नया शुरू करें। तैयार वस्तुओं पर टैप करें, KOT भेजें, एक या अधिक वस्तुओं का बिल बनाएँ, बिल बाँटें, और भुगतान निपटाएँ।
-floor_help	यह दुकान काउंटर पर बेचती है। मेज़ और डाइनिंग फ़्लोर Kirano का हिस्सा नहीं हैं।
-kitchen_help	जब KOT भेजा जाता है — काउंटर से या वेटर के डिवाइस से — किचन का काग़ज़ यहाँ अपने आप छपता है।
-kitchen_empty	कोई खुला टिकट नहीं (काउंटर वाली दुकानें आमतौर पर यह स्क्रीन इस्तेमाल नहीं करतीं)।
-add_a_table	मेज़ जोड़ें
-add_station_heading	अनुभाग जोड़ें · जैसे सब्जी, कोल्ड, बिलिंग
 categories_help	वर्ग उस मेनू भाग को दिखाता है जिसमें व्यंजन आता है — जैसे स्नैक्स, मेन कोर्स या बिरयानी। वर्ग अपने अनुसार बनाएँ: हमारे बताए नाम चुनें, उनके नाम बदलें, या अपना जोड़ें।
 dish_search_ph	आइटम या छोटा कोड खोजें…
-tile_free	खाली
-tile_occupied	व्यस्त
-tile_food_ready	खाना तैयार
-tile_bill_printed	बिल छपा
-tile_paid	भुगतान हुआ
-tile_bill_btn	बिल
-tile_occupy_btn	मेहमान बैठाएँ
-tile_free_btn	टेबल खाली करें
-tile_ready_btn	तैयार
-tile_undo_bill	बिल वापस
-summary_busy	टेबल व्यस्त
-summary_to_collect	वसूलना है
-summary_on_floor	फ़्लोर पर
-floor	दुकान
 sizes_as_items_ph	साइज़ अलग आइटम के रूप में (वैकल्पिक) — Half=120, Full=200
 dish_group_ph	पैक आकार समूह (वैकल्पिक) — जैसे आटा 1kg / 5kg
 discount	छूट
@@ -1027,7 +855,6 @@ remove_discount	छूट हटाएँ
 apply_discount	छूट लगाएँ
 save_opening_cash	शुरुआती नकद सहेजें
 close_shift_print	शिफ्ट बंद करें और पर्ची छापें
-area_prices_ph	क्षेत्र कीमतें (वैकल्पिक) — AC=220, Parcel=210
 discount_ph	10% या 50
 discount_reason_ph	कारण (जैसे नियमित मेहमान, खाने में देर)
 opening_float_ph	आज सुबह दराज़ में रखा नकद
@@ -1037,34 +864,18 @@ shift_handover	शिफ्ट हैंडओवर
 shift_since	यह शिफ्ट कब से
 expected_in_drawer	दराज़ में होना चाहिए
 right_discount	छूट देना
-floor_in_kitchen	चल रहा है
-floor_eating	भोजन कर रहे हैं
 pick_category	श्रेणी चुनें
 close_category_list	श्रेणी सूची बंद करें
 new_category_row	नई श्रेणी — आइटम सहेजने पर बनेगी
 your_category	आपकी श्रेणी
 suggested_category	सुझाव — हमारे आइटम से
 category_search_ph	श्रेणी — अपनी खोजें या नई लिखें
-line_sent_state	भेजा
-line_nc_state	मुफ़्त (NC) — शुल्क नहीं
 cancel_item_short	रद्द
-nc_short	मुफ़्त
-charge_again_short	शुल्क लें
-move_short	हटाएँ
 cancel_item_title	यह आइटम रद्द करें — बैक ऑफ़िस को रद्द पर्ची मिलती है
-nc_item_title	इस आइटम को मुफ़्त (NC) करें
-charge_again_title	इस आइटम का फिर से शुल्क लें
-move_item_title	इस आइटम को दूसरी टेबल पर ले जाएँ
-already_cooked	पहले ही बन चुका (बर्बादी)
-not_cooked_yet	अभी नहीं बना
 return_to_customer	ग्राहक को लौटाएँ
 short_by	कम है
 tip_not_sale	टिप (स्टाफ़ की, बिक्री नहीं)
 right_settle	भुगतान लेना
-right_cancel_sent	भेजा गया आइटम रद्द करना
-right_complimentary	मुफ़्त देना (NC)
-right_move_table	काउंटर बदलें / मिलाएँ
-right_reprint	बिल फिर से छापना
 right_allowed	अनुमति है
 right_with_approval	अनुमोदन के साथ
 right_denied	अनुमति नहीं
@@ -1074,25 +885,11 @@ no_server_found	कोई सर्वर नहीं मिला। देख
 servers_found_pick	जिस दुकान से जुड़ना है उसे टैप करें।
 server_host_selected	{host} इस्तेमाल — पेयरिंग कोड डालें, फिर अभी पेयर करें।
 print_bill	बिल छापें
-table_actions	काउंटर के काम
-move_merge_table	टेबल बदलें / जोड़ें
-move_help	इस काउंटर का ऑर्डर किसी खाली मेज़ पर ले जाएँ, या किसी चल रहे ऑर्डर में मिलाएँ।
-move_target_ph	काउंटर का नाम
 approval_pin_ph	मैनेजर PIN (केवल पूछे जाने पर)
-move_here	यहाँ ले जाएँ
-merge_into	इसमें जोड़ें
-line_reason_ph	कारण (जैसे ग्राहक ने मन बदला, स्टॉक ख़त्म)
-line_qty_ph	कितने रद्द करें (खाली = सब)
-line_target_ph	टेबल पर ले जाएँ (जैसे D5)
 confirm	पुष्टि करें
 menu_search_ph	आइटम या शॉर्ट कोड खोजें
 customer_paid_ph	ग्राहक ने दिया
 tip_ph	टिप
-table_area_ph	क्षेत्र (जैसे डाइन इन, पार्सल, AC)
-table_range_ph	एक साथ कई: D1-D20
-add_these_tables	ये काउंटर जोड़ें
-remove_these_tables	ये काउंटर हटाएँ
-table_remove_ph	हटाएँ: T1-T24, या किसी एक मेज़ का नाम
 find_server	दुकान का सर्वर खोजें
 bill_format	बिल का प्रारूप
 bill_format_help	हर बिल पर आपकी दुकान के नाम के नीचे छपता है। पंक्तियाँ | से अलग करें (जैसे MG Road, Rajkot | Ph 98250 00000)।
@@ -1100,78 +897,32 @@ bill_header_ph	पता | फ़ोन
 fssai_ph	FSSAI / दुकान लाइसेंस नं. (वैकल्पिक)
 bill_footer_ph	फ़ुटर (जैसे धन्यवाद, फिर आइए)
 save_bill_format	बिल प्रारूप सहेजें
-kot_format	पर्ची प्रारूप
-kot_format_help	सूची में कोई फ़ील्ड दबाएँ। दिखाएँ, अक्षर आकार और मोटाई ऊपर चुनी पर्ची के उसी फ़ील्ड पर लगते हैं। हर पर्ची अपने आकार और मोटाई रखती है।
-kot_format_fields	फ़ील्ड
-kot_field_next	अगला फ़ील्ड
-kot_field_show	दिखाएँ
-kot_field_hide	छिपाएँ
 kot_field_on	दिखाएँ
 kot_field_off	छिपाएँ
-kot_field_size	फ़ॉन्ट आकार
-kot_field_size_ph	जैसे 16, 20, 24, 28, 32…
 kot_weight_light	हल्का
 bill_kot_panel_help	बिल का लेआउट और चौड़ाई। कैशियर वह है जिसने बिल बनाया या निपटाया — पूरी बिक्री की कहानी बही में रहती है।
 std_size_ph	जैसे 18, 20, 26…
-kot_show_shop	दुकान का नाम
-kot_hide_shop	दुकान छिपाएँ
-kot_show_time	समय
-kot_hide_time	समय छिपाएँ
-kot_show_waiter	कैशियर
-kot_hide_waiter	कैशियर छिपाएँ
-kot_show_station	स्टेशन
-kot_hide_station	स्टेशन छिपाएँ
-kot_show_table	काउंटर
-kot_hide_table	मेज़ छिपाएँ
-kot_show_kot_no	पर्ची नं.
-kot_hide_kot_no	टिकट नं. छिपाएँ
-kot_width	पूर्वावलोकन लपेट (चौड़ाई पर्ची टैब पर तय करें)
-kot_width_58	58 mm
-kot_width_80	80 mm
-kot_kind_heading	टिकट का प्रकार
-kot_kind_original	मूल
-kot_kind_duplicate	प्रतिलिपि
-kot_kind_modified	बदला गया
-kot_kind_cancelled	रद्द
-kot_style_heading	फ़ील्ड आकार और मोटाई
-kot_style_title	शीर्षक
-kot_style_item_qty	आइटम · संख्या
-kot_style_field_pick	फ़ील्ड चुनें
 kot_weight_regular	सामान्य
 kot_weight_bold	मोटा
-kot_align	संरेखण
 kot_align_start	शुरू करें
 kot_align_center	बीच में
 kot_align_end	अंत में
 content_width	सामग्री चौड़ाई (मिमी)
 content_width_bill	बिल की चौड़ाई (mm)
-content_width_kot	टिकट की चौड़ाई (mm)
 content_width_ph	या सामग्री चौड़ाई लिखें, 40–210 मिमी
 content_width_help	यह पर्ची कितनी चौड़ी छपे। बिल अपनी चौड़ाई रखता है।
 content_width_bill_help	ग्राहक का बिल कितना चौड़ा छपे। पहले से 210 mm (पेज)। 58 mm संकरी पर्ची, 80 mm चौड़ी पर्ची, 112 mm 4-इंच, 210 mm A4-चौड़ा। 40 से 210 तक कोई भी मान लिखें। टिकट की अपनी चौड़ाई पर्ची टैब पर है।
-content_width_kot_help	टिकट कितना चौड़ा छपे। पहले से 80 mm। 58 mm संकरी पर्ची, 80 mm चौड़ी पर्ची, 112 mm 4-इंच, 210 mm पेज। 40 से 210 तक कोई भी मान लिखें। ग्राहक बिल की अपनी चौड़ाई बिल टैब पर है।
 vp_paper_width	सामग्री चौड़ाई (मिमी)
 vp_paper_width_ph	या सामग्री चौड़ाई लिखें, 40–210 मिमी
 vp_paper_width_help	चौड़ाई बिल व पर्ची फ़ॉर्मेट में तय होती है — बिल (पहले से 210 mm) और टिकट (पहले से 80 mm) के लिए अलग-अलग।
-kot_size	अक्षर आकार
-kot_size_s	छोटा
-kot_size_m	सामान्य
-kot_size_l	बड़ा
 std_size	अक्षर आकार
 kot_copies	प्रतियाँ
 kot_copies_1	1
 kot_copies_2	2
 kot_copies_3	3
-kot_title_ph	शीर्षक (खाली = TICKET)
-kot_footer_ph	बैक ऑफ़िस नोट (वैकल्पिक)
-kot_preview	पूर्वावलोकन
-save_kot_format	पर्ची फ़ॉर्मेट सहेजें
-test_kot_format	टेस्ट छपाई
-test_kot_sent	टिकट का नमूना भेजा
 test_bill_format	टेस्ट बिल
 test_bill_sent	बिल का नमूना भेजा
 test_print_no_printer	उस काम के लिए प्रिंटर नहीं — इसी स्क्रीन पर एक चुनें
-kot_format_saved	पर्ची फ़ॉर्मेट सहेजा
 std_print	बिल प्रिंट आकार
 std_print_help	OS / दस्तावेज़ प्रिंटर पर सामान्य खड़े और आड़े बिल के लिए अक्षर आकार (पॉइंट डालें — छोटा/सामान्य/बड़ा नहीं)। दोनों दिशाओं में एक ही आकार।
 std_size_s	छोटा
@@ -1211,23 +962,16 @@ upi_qr	UPI QR
 show_upi_qr	UPI QR दिखाएँ
 close_upi_qr	बंद
 upi_qr_help	ग्राहक स्कैन करके भुगतान करता है। भुगतान के बाद भुगतान लें दबाएँ। दूसरी स्क्रीन: LAN पर सर्वर URL /display खोलें।
-kot_recall	वापस लाएँ
 recently_done	अभी पूरे
-recall_kot_ph	वापस लाने के लिए टिकट #
 role_help_customer	भूमिका: ग्राहक — AR (वे हमारे देनदार)। वही फर्म आपूर्तिकर्ता भी हो सकती है।
 role_help_both	भूमिकाएँ: भेजने वाला + कैरियर — एक पार्टी, AR और AP बही, Reports में नेट।
 role_help_supplier	भूमिका: आपूर्तिकर्ता — खरीद के लिए AP।
-dine_in_pick_table	काउंटर वाली दुकान पर इस्तेमाल नहीं
-choose_table	काउंटर चुनें
-change_table	टेबल बदलें
-pick_table_banner	इस ऑर्डर के लिए टेबल चुनें
 items_word	आइटम
 items_section	आइटम
 back_to_order	ऑर्डर पर वापस
 new_items_head	अभी नहीं भेजा
 price_ph	कीमत
 price_ph_gst_inside	कीमत ({tax} शामिल)
-cancel_needs_table	काउंटर बिक्री भुगतान लेने तक टिकट पर रहती है
 tax_rates_missing_hint	इन आइटम पर {tax} दर नहीं — आइटम में कर दर लगाएँ (कीमतें पहले से {tax} सहित हैं, {tax} समावेशी के तहत)
 taxable_value	करयोग्य मूल्य
 gst_inside_price_note	({tax} शामिल)
@@ -1248,30 +992,11 @@ client_template_confirm	{title} से {d} आइटम जोड़ें? ज�
 client_template_importing	{title} आयात हो रहा है…
 client_template_done	{title} का हर आइटम आपके आइटम में है।
 client_template_imported	{title} से {d} आइटम और {c} श्रेणियाँ जोड़ीं
-resv_heading	आरक्षण
-resv_name_ph	ग्राहक का नाम
-resv_phone_ph	फ़ोन (वैकल्पिक)
-resv_guests_ph	लोग
-resv_when_ph	कब — 20:30, tomorrow 13:00
-resv_table_ph	काउंटर (वैकल्पिक)
-resv_add	बुक करें
-resv_seat	बैठ गए
-resv_none	कोई आने वाला आरक्षण नहीं।
-guests_word	मेहमान
-delivery_by_ph	डिलीवरी कौन ले जाएगा (राइडर या स्टाफ़)
-kitchen_all_day	अभी पकाना है: {items}
-split_bill	बिल बाँटें
-split_go	अलग बिल बनाएँ
 cancel	रद्द करें
 opening_client	क्लाइंट खुल रहा है…
 preparing_desk	डेस्क तैयार हो रहा है…
 opening_server	सर्वर खुल रहा है…
 creating_server	सर्वर बन रहा है…
-split_help	एक ग्राहक जिन आइटम का भुगतान करेगा उन्हें दबाएँ · {n} चुने
-split_send_first	पहले पर्ची भेजें — सिर्फ़ बैक ऑफ़िस तक पहुँचे आइटम अलग बिल में जा सकते हैं
-split_pick_some	पहले अलग बिल के आइटम दबाएँ
-split_done	अलग बिल बना — यह फ़्लोर पर इस काउंटर के पास है
-split_marked	अलग बिल
 order_empty_pick	ऑर्डर खाली — आइटम चुनने के लिए ऊपर आइटम जोड़ें दबाएँ।
 add_dishes	आइटम जोड़ें
 order_so_far	इस ऑर्डर में: {n} · {total}
@@ -1282,24 +1007,8 @@ pick_done_dd	हो गया · {label}
 printer_route_mode	अगर इस जगह कई प्रिंटर हों
 printer_mode_first	जो पहले चले
 printer_mode_all	सब पर छापें
-kot_show_area	एरिया
-kot_hide_area	एरिया छिपाएँ
-kot_show_item_hdr	आइटम · संख्या
-kot_hide_item_hdr	कॉलम छिपाएँ
-kot_show_title	शीर्षक पंक्ति
-kot_hide_title	शीर्षक छिपाएँ
-kot_field_order	छपाई का क्रम
 kot_field_up	ऊपर करें
 kot_field_down	नीचे करें
-kot_field_cycle	अगला चुनें
-kot_field_select	अगला चुनें
-kot_field_time	समय
-kot_field_kot_no	पर्ची नं.
-kot_field_area	एरिया
-kot_field_table	काउंटर
-kot_field_shop	दुकान का नाम
-kot_field_waiter	कर्मचारी
-kot_field_station	स्टेशन
 app_template_blurb_extra	साथ में: मालिक ज़हीर, एडमिन आसिफ़, कैशियर नवाज़; आगे का साइडबार; 4 घंटे बाद इतिहास; आज की पट्टी बंद; छोटा बिल।
 dishes_n	{n} आइटम
 recipe_ph	विधि (वैकल्पिक — काउंटर वाली दुकान पर इस्तेमाल नहीं)
@@ -1309,8 +1018,6 @@ low_stock_alert	कम हो रहा है — जल्दी खरीद�
 unpriced_note	आपके {n} आइटम की अभी कोई कीमत नहीं — कीमत डालने तक वे 0 पर बिल होते हैं।
 show_unpriced	सिर्फ़ बिना कीमत वाले आइटम दिखाएँ
 show_all_dishes	सभी आइटम दिखाएँ
-role_waiter	कैशियर
-role_kitchen	स्टोर
 role_title_rest_ph	पद (जैसे कैप्टन, मुख्य रसोइया)
 preset_help_rest	कैशियर: बेचें। मैनेजर: बेचें + आइटम + रद्द/संशोधन।
 kind_raw	दुकान के इस्तेमाल के लिए खरीदा

@@ -405,8 +405,6 @@ impl Widget for SidebarNavList {
                             NavTab::Sell => locale::t(&lang, "sell"),
                             NavTab::Buy => locale::t(&lang, "buy"),
                             NavTab::Menu => locale::t(&lang, "sidebar_menu_items"),
-                            NavTab::Floor => locale::t(&lang, "floor"),
-                            NavTab::Kitchen => locale::t(&lang, "kitchen"),
                             NavTab::Sales => locale::t(&lang, "sales"),
                             NavTab::DayClose => locale::t(&lang, "day_close"),
                             NavTab::Reports => locale::t(&lang, "nav_reports"),
@@ -631,10 +629,10 @@ enum SlipPreviewRow {
     Gap,
 }
 
-/// Kitchen-slip preview. Not a report: no headings, no money eye.
+/// Bill preview. Not a report: no headings, no money eye.
 /// `Item` and `Qty.` use the same row as each dish and its count.
 #[derive(Script, ScriptHook, Widget)]
-struct KotSlipPreview {
+struct SlipPreview {
     #[deref]
     view: View,
     #[rust]
@@ -716,7 +714,7 @@ fn slip_preview_rows(text: &str, rtl: bool) -> Vec<SlipPreviewRow> {
     rows
 }
 
-impl Widget for KotSlipPreview {
+impl Widget for SlipPreview {
     fn draw_walk(&mut self, cx: &mut Cx2d, scope: &mut Scope, walk: Walk) -> DrawStep {
         if self.page {
             // The column width is whatever this screen laid out. The picture
@@ -816,7 +814,7 @@ impl Widget for KotSlipPreview {
     }
 }
 
-impl KotSlipPreview {
+impl SlipPreview {
     /// Slip text after style marks are stripped. A tab is the Qty. column.
     pub fn set_slip(&mut self, cx: &mut Cx, text: &str) {
         let rtl = locale::is_rtl(&app_state().lock().unwrap().locale.language);

@@ -68,28 +68,6 @@ applied	Iliyotumika
 note_ph	Kumbuka (si lazima)
 rounded	Imezungushwa
 split	Gawanya
-send_kot	Tuma slipu
-send_kot_to	Iwasilize → {kitchens}
-send_kot_again	Ongeza vitu kwa karatasi inayofuata
-send_kot_held	Vipengee vilivyoshikiliwa - simamisha kutuma
-reprint_kot	Chapisha vilivyochaguliwa tena
-reprint_kot_ok	Vipengee vya {n} vimechapishwa tena · Milada ya {slips} → {kitchens}
-reprint_kot_needed	Tuma karatasi kwanza - kisha jumuisha vipengee na uchapishe vilivyochaguliwa tena
-reprint_kot_none_selected	Kila kitu kilichotumwa kimerukwa — gusa Chapisha kwenye zile za kuchapisha tena
-reprint_kot_client	Chapisha tena ({n}) kwa {place} iliyotumwa - kifaa cha duka huichapisha
-print_cancelled_kot	Chapisha zote zilizofutwa
-print_cancelled_kot_ok	Vipengee vilivyochapishwa vya {n} vilivyoghairiwa · Hati za {slips} → {kitchens}
-print_cancelled_kot_needed	Fungua jedwali iliyo na vipengee vilivyoghairiwa kwanza
-print_cancelled_kot_none	Hakuna vipengee vilivyoghairiwa kwa agizo hili
-print_cancelled_kot_client	Uchapishaji umeghairiwa ({n}) kwa {place} imetumwa - kifaa cha duka huichapisha
-kot_banner	Bango
-kot_banner_ph	Bango (tupu = hakuna)
-kot_item_prefix	Kiambishi cha bidhaa
-kot_item_prefix_ph	k.m. [CANCELLED] 
-kot_strike	Jina la kipengee cha mgomo
-kot_strike_note	Dokezo la kipengee cha mgomo
-kot_strike_on	Washa
-kot_strike_off	Zima
 bill_item_layout	Mpangilio wa bidhaa
 bill_item_layout_columns	Safu
 bill_item_layout_stacked	Imepangwa
@@ -118,8 +96,6 @@ bill_item_gap_em	Nafasi (em)
 bill_item_qty_min	Idadi ndogo (em)
 bill_item_price_min	Bei ndogo (em)
 bill_item_amount_min	Kiasi kidogo (em)
-kot_item_qty_width	Safu ya idadi
-kot_item_num_align	Mpangilio wa idadi
 bill_total_qty_label	Lebo ya idadi yote
 bill_total_subtotal_label	Lebo ya jumla ndogo
 bill_total_grand_label	Lebo ya jumla
@@ -131,36 +107,9 @@ bill_item_piece_off	Zima
 bill_total_qty	Jumla idadi
 bill_total_subtotal	Jumla ndogo
 bill_total_grand	Jumla kuu
-reprint_incl	Katika chapa
-reprint_skip	Ruka
-reprint_skip_meta	Ruka chapa ya kuokoa
-kot_dest_hint	Inachapishwa kwenye vichupa ulivyoweka kwa {kitchens} katika Majaribio → Vichupa
-kot_sent_hint	Utumaji wa mwisho ulikwenda kwa {kitchens}. Gusa ili kuongeza vipengee vya bili inayofuata - au Chapisha tena kwa bili ile ile.
-kot_sent_printing	Slipu imetumwa kwa {kitchens} — inachapisha
-kot_sent_not_printed	Slipu imetumwa kwa {kitchens} lakini HAIJAchapishwa: {why}. Liambie duka, kisha urekebishe kichapishi na uchapishe tena.
-kot_sent_screen	Slipu imetumwa kwa {kitchens}
-kot_queued_shop	Slip kwa {place} → {kitchens} imehifadhiwa; kifaa cha duka huchapisha
-kot_job_label	Telezesha kwa {place} → {kitchens}
-kot_job_reached	Kuteleza kwa {place} kumefikiwa {kitchens}
 kot_unassigned	Haijakabidhiwa
-kot_unassigned_held	Inashikilia vipengee vya {n} bila stesheni — simamisha kwenye laini ili utume
-kot_station_ph	Kituo
-kot_station_dd	Kituo
-kot_station_dd_n	Stesheni · {stations}
-kot_set_station	Tumia eneo hili
-kot_station_applied	Kituo kimewekwa kwenye vipengee vya {n}: {station}
-kot_station_cleared	Kituo kimeondolewa kwenye vipengee vya {n}: {station}
-kot_station_needed	Chagua sehemu ya duka kwanza
-kot_station_not_allowed	Hairuhusiwi kutumia sehemu: {station}
-kot_station_none	Bado hakuna stesheni — haijatumika kwenye duka la kaunta (Mipangilio → Maeneo ikihitajika)
 pos_tab_items	Zilizoongezwa
 pos_tab_payment	Malipo
-hold_send	Shikilia
-hold_send_on	Imehifadhiwa
-hold_send_meta	Imeshikiliwa - sio kwenye karatasi hii
-station_remove	Toa eneo
-station_remove_ph	Bonyeza eneo kwenye orodha ili kuilenga
-station_removed	Eneo limetolewa: {name}
 settings_hub_title	Mipangilio
 settings_hub_help	Fungua sehemu moja kwa wakati — kusogeza kidogo, machaguo wazi zaidi.
 settings_back	Rudi
@@ -169,12 +118,10 @@ settings_sec_country	Nchi na kodi
 settings_sec_tills	Kaunta za ziada na matawi
 settings_sec_brand	Brandi yako
 settings_sec_units	Vifaa na ubadilishaji
-settings_sec_pickers	Eneo · eneo · gharama za kodi
+settings_sec_pickers	Gharama za kodi
 settings_sec_printers	Printa
 settings_sec_bill	Muundo wa bili na slipu
 settings_sec_selling	Mipango na uuzaji
-bill_kot_tab_bill	Bili
-bill_kot_tab_kot	Slipu
 settings_sec_alerts	Arifa
 alerts_help	Ujumbe wa hali ukae skrini kwa muda gani kwako (kuingia huku).
 snack_secs_ph	Sekunde (3–60, chaguo-msingi 10)
@@ -225,8 +172,6 @@ counter	Kaunta
 dine_in	Kaunta
 takeaway	Chukua
 order	Oda
-tables	Counters
-kitchen	Sehemu
 sales	Mauzo
 sales_refunds	Mauzo na kurejesha
 day_close	Funga siku
@@ -254,10 +199,6 @@ zero_sales_on	Mauzo sifuri: washa
 zero_sales_off	Mauzo sifuri: zima
 zero_sales_saved_on	Ruhusa ya mauzo sifuri imehifadhiwa (washa)
 zero_sales_saved_off	Ruhusa ya mauzo sifuri imehifadhiwa (zima)
-floor_areas_help	Maeneo ni vyumba au kanda kwenye sakafu (Dine In, Parcel, AC ...). Ongeza eneo kwanza, kisha uweke vihesabio ndani yake - kila eneo ni kundi tofauti kwenye sakafu.
-area_new_ph	Eneo / chumba kipya (k.m. AC, Garden)
-add_area	Ongeza eneo
-area_added	Eneo la "{name}" liko tayari - ongeza vihesabio ndani yake
 no_favorites	Bado hakuna vipendwa — ongeza bidhaa kutoka kwenye orodha iliyo hapa chini.
 add_to_bill	Kwenye bili
 added	Imeongezwa
@@ -268,19 +209,9 @@ chip_missing_customer	Mteja aliyechaguliwa hayupo — chagua tena
 chip_no_customer	Bado hakuna mteja — andika jina, kisha gusa Mkopo
 credit_summary_fmt	{} wateja · mkopo wazi {} · avans iliyowekwa {}
 recent_label	Hivi karibuni:
-kot_new_waiting	MPYA — inasubiri
-kot_preparing	INATAYARISHWA
-kot_ready_serve	TAYARI — hudumia
-kot_done_cap	IMEKWISHA
-kot_cancelled	IMEGHAIRIWA
-kot_start_btn	Anza
-kot_mark_ready	Weka tayari
-kot_done_btn	Imekwisha
-table_free	Wazi — gusa ili kuanza oda
 start_order	Anza oda
 open_bill	Fungua bili
 collect_payment	Kusanya malipo
-table_running	Inaendelea
 payment_pending	Malipo yanasubiri
 collect_at_counter	kusanya kaunta
 inventory	Hisa
@@ -313,7 +244,6 @@ ok	Sawa
 this_shop	Hali ya seva
 extra_till	Hali ya mteja
 off	Zima
-tables_kitchen	Mpangilio wa duka
 server	Seva
 client	Mteja
 language_currency	Lugha na sarafu
@@ -355,8 +285,6 @@ add_item_plain	Ongeza bidhaa
 add_note	Ongeza kumbuka
 add_opening_balance	Ongeza salio la kuanzia
 add_staff	Ongeza mfanyakazi
-add_station	Ongeza kituo
-add_table	Ongeza meza
 add_unit	Ongeza kitengo
 add_use_name	Ongeza / tumia jina hili
 allow_extra_tills	Ruhusu kaunta za ziada
@@ -409,7 +337,6 @@ share_whatsapp	Shiriki WhatsApp
 lan_pages_heading	Kurasa za wateja kwenye Wi-Fi
 lan_pages_help	Kwenye Wi-Fi ya duka hili, kurasa za wateja hufanya kazi kwa ubao wa kuonyesha na maoni. Watu kwenye data ya mtandao wa simu wanahitaji Cloud baadaye. Kitu cha mwisho cha kadi au kiungo cha malipo ni cha hiari na hakizuii kaunta.
 diag_send_heading	Shiriki nje ya kifaa hiki
-kot_dest_heading	Kituo
 optional_login_heading	Kuingia kwa hiari
 rights_heading	Haki
 ops_panel	Operesheni za ndani
@@ -436,28 +363,6 @@ till_voucher_amt_ph	Kiasi cha vaucha (tupu = yote)
 till_wallet_topup_ph	Kiasi cha kuongeza pochi
 till_voucher_issue_amt_ph	Kiasi cha vaucha mpya
 till_voucher_issue_code_ph	Nambari ya vaucha mpya
-split_evenly	Gawanya sawasawa
-waitlist	Orodha ya kusubiri
-fire_course	Hatua inayofuata
-hold_item	Shikilia
-waiter_call	Piga mtunza fedha
-waitlist_add	Ongeza kwenye orodha
-floor_view_grid	Gridi
-floor_view_layout	Mpangilio
-floor_layout_x	X
-floor_layout_y	Y
-floor_layout_w	W
-floor_layout_h	H
-floor_layout_save	Hifadhi mpangilio
-floor_layout_open	Fungua meza
-floor_layout_edit	Hariri mpangilio
-floor_layout_pick	Gusa meza ili kuhariri mpangilio
-floor_layout_saved	Mpangilio umehifadhiwa
-floor_layout_nudge_left	← 20
-floor_layout_nudge_right	→ 20
-floor_layout_nudge_up	↑ 20
-floor_layout_nudge_down	↓ 20
-sibling_pickers_help	Kama vitengo On/Off — ficha maeneo, vituo, viwango vya kodi kwenye kichagua cha kila siku; chaguo-msingi za pakiti zibaki.
 bulk_price_apply	Tumia bei ya wingi
 card_terminal_optional	Kituo cha kadi / kiungo cha malipo (hiari ikiwa na intaneti)
 copy_report	Nakili ripoti
@@ -483,7 +388,6 @@ import_day	Ingiza siku
 import_items_csv_plain	Ingiza CSV ya bidhaa…
 import_parties_csv	Ingiza CSV ya wahusika…
 item_name	Jina la bidhaa
-kitchen_printing	Uchapishaji jikoni
 login_id_ph	Kitambulisho cha kuingia
 mark_cleared	Weka alama imekwisha
 new_party_clear	Mhusika mpya (safisha fomu)
@@ -553,15 +457,6 @@ show	Onyesha
 spreadsheet_csv	Karatasi ya hesabu (CSV)
 start_fresh	Anza upya
 stop_extra_tills	Simamisha kaunta za ziada
-floor_cols_ph	Safu wima
-floor_cols_fit	Kulingana na skrini
-floor_cols_fit_sub	zinatosha {n}
-floor_cols_fits	inatosha
-floor_cols_scroll	husogea pembeni
-floor_cols_min	Safu wima: angalau 1 — au acha wazi ilingane na skrini
-floor_zoom_auto	Otomatiki
-floor_zoom_out	Ongeza ukubwa wa kina (zoom out)
-floor_zoom_in	Punguza ukubwa wa kina (zoom in)
 backup_auto	Hifadhi ya akiba kila siku kiotomatiki · ya mwisho {when} · siku 14 za mwisho zinawekwa {dir}.
 backup_auto_none	Hifadhi ya akiba kila siku kiotomatiki — ya kwanza itafanyika punde.
 backup_copy_to	Nakala pia zinaenda {dir}.
@@ -579,7 +474,6 @@ new_pair_code	Msimbo mpya wa kuunganisha
 pair_finishing	Inakamilisha kuunganisha… inatumia vitabu vya duka
 pair_opening	Inafungua kifaa cha pesa…
 pair_copied	Msimbo wa kuunganisha umenakiliwa
-kot_waiting	Inasubiri kutumwa
 lan_offline_waiting	Nje ya mtandao · {n} zinasubiri
 lan_connecting	Inaunganisha na duka…
 lan_live	Moja kwa moja
@@ -621,7 +515,6 @@ printers_routes_help	Tafuta vichapishi ambavyo mfumo wa uendeshaji tayari unajua
 printer_assign_dd	Chagua printa kwa {place}
 printer_assign_pick	Chagua printa halisi
 printer_profile_heading	Mpangilio
-printer_send_heading	Uwasilishaji
 vp_delivery_heading	Uwasilishaji
 vp_delivery_help	Jinsi printa hii pepe hutuma kazi - hati ya Mfumo wa Uendeshaji, baiti ghafi, au ESC/POS. Yaliyomo kwenye mteremko (saizi ya aina, kanga, pambizo) huamuliwa na muundo wa muswada / Slip, sio hapa.
 vp_type_size_heading	Ukubwa wa herufi
@@ -665,23 +558,13 @@ virtual_draft_send	Thamani imewekwa kwa printa pepe ifuatayo
 virtual_need_real	Chagua printa halisi kwanza
 virtual_need_select	Chagua printa pepe ya kufuta
 real_printer_selected	Printa halisi: {name}
-station_group_heading	Printa pepe
-station_group_apply	Futa printa pepe
-station_group_applied	Imefutwa
-station_group_empty	Chagua printa pepe
-station_group_name_ph	Jina la printa pepe (hiari)
-station_group_save	Unda printa pepe
-station_group_saved	Printa pepe imehifadhiwa
-station_manage_heading	Ongeza au ondoa sehemu ya duka
 printers_routes_heading	2. Mahali pa kuchapa
 route_pick_heading	Mahali
 route_editing	Ikiwa katika mchakato: {name}
 route_assigned	Iliongezwa {printer} kwenye {place}
 route_already_assigned	Tayari hapa: {printer}
-route_removed	Ilitolewa {printer} kutoka kwa {place}
 route_cleared	Imepandikwa {name}
 route_assigned_empty	Hakuna mahali hapa
-route_tap_remove	bonyeza ili kuondoa
 route_tap_select	gusa kuchagua
 route_tap_selected	imechaguliwa
 route_pick_printer_first	Gusa printa kwanza
@@ -702,35 +585,17 @@ printer_format_custom	Muundo maalum mpya
 printer_format_custom_label	Maalum
 printer_format_custom_added	Muundo maalum umeongezwa kwa njia hii
 add_printer	Ongeza printa
-remove_printer	Ondoa ya mwisho
 route_pick_ph	Bili au sehemu ya duka
 route_bill	Bili
-route_default_kitchen	Hakuna kituo (vipengee ambavyo havijakabidhiwa)
-route_kot_station	Kituo
 route_dont_print	Usichapishe
-stations_heading	Maeneo
-stations_help	Sehemu za duka vitu vya kikundi na vichapishaji vya sehemu hiyo ya duka. Ambatisha vichapishi kutoka kwa Mipangilio → Vichapishaji, weka mpangilio wa kujaribu, kisha Kwanza hiyo inafanya kazi au Chapisha zote. Mabadiliko yahifadhi unapoendelea.
-station_print_heading	Printa za kituo hiki
-station_print_help	Chagua kituo, kisha ambatisha kichapishaji kimoja au zaidi. ↑↓ huweka mpangilio wa kujaribu. Kwanza hiyo inafanya kazi huacha baada ya mafanikio ya kwanza; Chapisha kwenye kutuma zote kwa kila kichapishi kilichoambatishwa.
-station_print_pick_ph	Kituo cha kuweka printa
 station_print_pick_first	Chagua sehemu ya duka kwanza
-station_print_editing	Inahariri printa za “{name}”
-station_vps_dd	Printa za kituo hiki
-station_vps_dd_n	{n} printa · gusa kubadili
 station_vps_empty	Bado hakuna printa — zitafute chini ya Vipimo → Printa
 bill_printers_dd	Vifaa vya kuvunja kwa fursa
 bill_printers_dd_n	{n} vifaa vya kuvunja kwa fursa · bonyeza ili kubadilisha
-job_layout	Mpangilio
-job_delivery	Jinsi kazi inavyoandikwa
-job_delivery_help	Hati ya Mfumo wa Uendeshaji, baiti ghafi, au ESC/POS. Muswada na tikiti kila moja huweka kivyake. Kazi yoyote inaweza kwenda kwa kichapishi chochote Pata imehifadhi.
 station_vp_attached	Printa imeambatishwa
 station_vp_detached	Printa imeondolewa kutoka kituo
-station_print_summary	{mode} · printa {n}
-station_print_summary_none	Bado hakuna printa kwenye kituo hiki — haitachapisha
-stations_none	Bado hakuna stesheni - ongeza moja hapa chini. Stesheni hazitumiki kwenye duka la kaunta - acha tupu.
 route_up	Juu
 route_down	Chini
-route_remove	Ondoa ya mwisho
 route_clear	Usichapishe
 save_printers	Hifadhi printa
 print_test_page	Chapisha ukurasa wa majaribio
@@ -739,23 +604,15 @@ test_page_no_printer	Hakuna printa kwa {place} — teua hapo juu, kisha jaribu t
 test_page_pick_first	Chagua printa za majaribio kwanza — kisha Chapisha ukurasa wa majaribio
 test_printers_dd	Printa za ukurasa wa majaribio
 test_printers_dd_n	{n} printa za majaribio · gusa kubadilisha
-kot_test_printers_dd	Printa za uchapishaji wa Jaribio
-kot_test_printers_dd_n	{n} kichapishi cha uchapishaji wa majaribio · gusa ili ubadilishe
 test_printer_picked	Jaribu kwenye: {name}
 test_printer_cleared	Si jaribu kwenye: {name}
 test_page_sent_n	Ukurasa wa majaribio umetumwa kwa printa {n}
-test_kot_pick_first	Chagua kichapishi kwa ajili ya uchapishaji wa Jaribio kwanza - kisha Chapisha Jaribu
-test_kot_sent_n	Chapisho la majaribio limetumwa kwa vichapishi {n}
-cancel_pick	Weka alama
-cancel_pick_on	Imewekwa alama
-cancel_pick_meta	Imewekwa alama ya kufuta
 batch_cancel	Futa zilizo alama
 batch_cancel_n	Futa zilizo alama ({n})
 batch_cancel_none	Tia alama kwenye kipengee kimoja au zaidi kilichotumwa kwanza - kisha Ghairi kutia alama
 batch_cancel_title	Ghairi vilivyotiwa alama — sababu moja, slipu moja kwa sehemu
 batch_cancel_ok	Vipengee vya {n} vimeghairiwa · Hati ya kughairi ya {slips} → {kitchens}
 batch_cancel_ok_noprint	Vipengee vya {n} vimeghairiwa - uchapishaji otomatiki umezimwa, kwa hivyo hakuna hati ya kughairi
-no_printer_kitchen_station	Hakuna kichapishaji cha kituo hicho
 printers_saved	Printa za kifaa hiki zimehifadhiwa
 test_page_sent	Ukurasa wa majaribio umetumwa — angalia printa
 test_page_sent_one	Ukurasa wa majaribio umetumwa kwa {name} — angalia printa hiyo
@@ -771,10 +628,7 @@ cancelled	Imefutwa
 printers_tap_find	Gusa Tafuta printa — inaorodhesha printa za mfumo na printa za risiti za mtandao kwenye Wi‑Fi hii.
 printers_none_found	Hakuna printa zilizopatikana — andika jina la mfumo au anwani ya mtandao (k.m. 192.168.1.50).
 printer_from_find	Iliongezwa {name}
-kot_printer_ph	Printa ya slipu
 bill_printer_ph	Printa ya bili
-kot_print_on	Tiketi za kuchapisha kiotomatiki: Imewashwa
-kot_print_off	Tiketi za kuchapisha kiotomatiki: Zimezimwa
 queue_refused	Hazikukubaliwa na duka ({n}) — kagua kila moja kaunta:
 clear_not_accepted	Nimekagua — futa orodha hii
 device_name_ph	Jina la kifaa hiki
@@ -785,7 +639,6 @@ backup_failed	Hifadhi rudufu ya kiotomatiki ya mwisho imeshindwa: {e}
 backup_overdue	Hakuna hifadhi rudufu kwa siku {n} — acha programu wazi kwenye kifaa hiki ili iweze kuhifadhi.
 disk_low	Imebaki MB {mb} tu kwenye kifaa hiki — hifadhi rudufu zitashindwa hivi karibuni. Ondoa vitu ili kupata nafasi.
 last_seen_devices	Iliyoonekana mwisho: {time}
-sync_interval	Usawazishe kila {secs}s
 connection_to_shop	Muunganisho na duka
 supplier_name_ph	Jina la msambazaji (au mhusika)
 supplier_ph	Msambazaji
@@ -848,7 +701,6 @@ fresh_book_kirano	Printa
 fresh_selected	Fresh imechaguliwa — katalogi itabaki tupu. Gusa Done ukiwa tayari.
 gross_word	Jumla kuu
 how_start	Ungependa kuanza vipi?
-kot_print_help_kirano	KOT inapotumwa — kwenye kaunta au kutoka kifaa cha mhudumu — karatasi ya jikoni huchapishwa hapa yenyewe.
 later_country_pack	Printa
 local_badge	NDANI
 mix_type_hint_kirano	Gawanya katika taslimu / UPI / kadi / mkopo ikihitajika. Mkopo unahitaji mteja hapo juu.
@@ -899,8 +751,6 @@ staff_copy_need_source	Chagua mipangilio ya mtu gani ukubadilisha
 staff_copy_same	Ni mtu huyo – chagua mtu mwingine
 staff_rename_need_selected	Chagua mtu gani kuibadilisha jina lake kwanza
 team_pick_hint	Chagua ni nani wa kubadilisha — skrini, haki za pesa na stesheni huonekana kwa ajili ya mtu huyo pekee.
-team_stations_help	Vituo wanavyoweza kutumia
-team_stations_changed	Vituo vimebadilishwa - Hifadhi mipangilio ya mtu huyu
 team_features_changed	Mipangilio imebadilishwa — Hifadhi mipangilio kwa mtu huyu
 team_rights_changed	Haki zimebadilishwa — Hifadhi mipangilio kwa mtu huyu
 they_owe_us	Wanatdaiwa
@@ -984,9 +834,6 @@ service_pct_ph	Huduma % hiari 0/10/12
 short_code_ph	Msimbo mfupi (MG02)
 starting_password_ph	Nenosiri la kuanzia (hiari)
 starting_pin_ph	PIN ya kuanzia (tarakimu 4–12)
-station_name_ph	Jina la kituo (si lazima)
-station_new_ph	Sehemu (ya hiari)
-table_name_ph	Jina la kaunta / bay
 tax_rate_ph	Jina la kiwango cha kodi au % — Standard, Reduced, 0, 5, 12, 18, 20
 to_code_ph	Msimbo kwenda (kg)
 uncleared_no_ph	Namba ambayo haijafutwa hapo juu
@@ -999,27 +846,8 @@ book_kind_month	Kitabu cha mwezi huu
 book_kind_aging	Inayodaiwa / debiti-krediti
 book_kind_balance	Karatasi ya mizania
 order_help	Chagua oda iliyo wazi, au chagua meza na uanze mpya. Gusa bidhaa zilizo tayari, tuma KOT, toa bili kwa bidhaa moja au zaidi, gawa bili, na ukamilishe malipo.
-floor_help	Duka hili linauzwa kaunta. Jedwali na sakafu ya kulia sio sehemu ya Kirano.
-kitchen_help	KOT inapotumwa — kwenye kaunta au kutoka kifaa cha mhudumu — karatasi ya jikoni huchapishwa hapa yenyewe.
-kitchen_empty	Hakuna tikiti zilizofunguliwa (kaunta kwa kawaida huacha skrini hii bila kutumika).
-add_a_table	Ongeza meza
-add_station_heading	Ongeza sehemu · mf. Mboga, Baridi, Malipo
 categories_help	Kategoria huonyesha chakula ni cha sehemu gani ya menyu — mf. vitafunwa, chakula kikuu au biryani. Unda kategoria kwa njia yako: chagua majina tunayopendekeza, yabadilishe jina au ongeza yako.
 dish_search_ph	Tafuta vitu au msimbo mfupi...
-tile_free	Wazi
-tile_occupied	Imechukuliwa
-tile_food_ready	Chakula tayari
-tile_bill_printed	Bili imechapishwa
-tile_paid	Imelipwa
-tile_bill_btn	Bili
-tile_occupy_btn	Wakalishe
-tile_free_btn	Weka meza wazi
-tile_ready_btn	Tayari
-tile_undo_bill	Tendua bili
-summary_busy	meza zinatumika
-summary_to_collect	za kukusanya
-summary_on_floor	sakafuni
-floor	Duka
 sizes_as_items_ph	Ukubwa kama bidhaa tofauti (hiari) — Nusu=120, Kamili=200
 dish_group_ph	Kikundi cha ukubwa wa pakiti (si lazima) - k.m. Kiasi 1kg / 5kg
 discount	Punguzo
@@ -1027,7 +855,6 @@ remove_discount	Ondoa punguzo
 apply_discount	Weka punguzo
 save_opening_cash	Hifadhi pesa ya kuanzia
 close_shift_print	Funga zamu na chapisha risiti
-area_prices_ph	Bei kwa eneo (hiari) — AC=220, Kifurushi=210
 discount_ph	10% au 50
 discount_reason_ph	Sababu (mf. mteja wa kawaida, chakula kimechelewa)
 opening_float_ph	Pesa iliyowekwa droo asubuhi
@@ -1037,34 +864,18 @@ shift_handover	Kukabidhi zamu
 shift_since	Zamu hii tangu
 expected_in_drawer	Inatarajiwa droo
 right_discount	Kutoa punguzo
-floor_in_kitchen	Inaendelea
-floor_eating	Wanakula
 pick_category	Chagua kundi
 close_category_list	Funga orodha ya makundi
 new_category_row	Kundi jipya — linaundwa ukihifadhi bidhaa
 your_category	Kundi lako
 suggested_category	Imependekezwa - kutoka kwa vitu vyetu
 category_search_ph	Kundi — tafuta lako au andika jipya
-line_sent_state	Imetumwa
-line_nc_state	Bure (NC) — haitozwi
 cancel_item_short	Ghairi
-nc_short	Bure
-charge_again_short	Toza
-move_short	Hamisha
 cancel_item_title	Ghairi bidhaa hii - ofisi ya nyuma inapata hati ya kughairi
-nc_item_title	Fanya bidhaa hii bure (NC)
-charge_again_title	Toza bei ya bidhaa hii tena
-move_item_title	Hamisha bidhaa hii kwenda meza nyingine
-already_cooked	Kimeshapikwa (hasara)
-not_cooked_yet	Bado haijapikwa
 return_to_customer	Chenji kwa mteja
 short_by	Pungufu
 tip_not_sale	Bakshishi (ya wafanyakazi, si mauzo)
 right_settle	Pokea malipo
-right_cancel_sent	Ghairi bidhaa iliyotumwa
-right_complimentary	Kutoa bure (NC)
-right_move_table	Sogeza / unganisha vihesabio
-right_reprint	Chapisha bili tena
 right_allowed	Inaruhusiwa
 right_with_approval	Kwa idhini
 right_denied	Hairuhusiwi
@@ -1074,25 +885,11 @@ no_server_found	Hakuna seva iliyopatikana. Hakikisha kifaa cha duka kiko kwenye 
 servers_found_pick	Gusa duka unalotaka kuunganisha.
 server_host_selected	Inatumia {host} — weka msimbo wa kuoanisha, kisha Oanisha sasa.
 print_bill	Chapisha bili
-table_actions	Vitendo vya kukabiliana
-move_merge_table	Hamisha / unganisha meza
-move_help	Sogeza agizo la kaunta hii hadi kwenye jedwali lisilolipishwa, au uiunganishe na inayoendesha.
-move_target_ph	Jina la kaunta
 approval_pin_ph	PIN ya meneja (ikiombwa tu)
-move_here	Hamishia hapa
-merge_into	Unganisha nayo
-line_reason_ph	Sababu (k.m. mteja alibadilisha nia, imeisha)
-line_qty_ph	Ngapi kughairi (tupu = zote)
-line_target_ph	Hamishia meza (mf. D5)
 confirm	Thibitisha
 menu_search_ph	Tafuta bidhaa au msimbo mfupi
 customer_paid_ph	Mteja amelipa
 tip_ph	Bakshishi
-table_area_ph	Eneo (mf. Kula hapa, Kifurushi, AC)
-table_range_ph	Nyingi kwa mara moja: D1-D20
-add_these_tables	Ongeza vihesabio hivi
-remove_these_tables	Ondoa vihesabio hivi
-table_remove_ph	Ondoa: T1-T24, au jina la meza moja
 find_server	Tafuta seva ya duka
 bill_format	Muundo wa bili
 bill_format_help	Imechapishwa chini ya jina la duka lako kwenye kila bili. Tenganisha mistari na | (k.m. MG Road, Rajkot | Ph 98250 00000).
@@ -1100,78 +897,32 @@ bill_header_ph	Anwani | simu
 fssai_ph	FSSAI / leseni ya duka No. (si lazima)
 bill_footer_ph	Chini (mf. Asante, karibu tena)
 save_bill_format	Hifadhi muundo wa bili
-kot_format	Muundo wa slipu
-kot_format_help	Gusa sehemu kwenye orodha. Onyesha, saizi ya fonti, na uzito hutumika kwenye sehemu hiyo kwenye aina ya mcheshi iliyochaguliwa hapo juu. Kila aina huweka ukubwa wake na uzito.
-kot_format_fields	Sehemu
-kot_field_next	Sehemu ifuatayo
-kot_field_show	Onyesha
-kot_field_hide	Ficha
 kot_field_on	onyesha
 kot_field_off	ficha
-kot_field_size	Ukubwa wa fonti
-kot_field_size_ph	k.m. 16, 20, 24, 28, 32…
 kot_weight_light	Nyembamba
 bill_kot_panel_help	Mpangilio wa bili na upana wa maudhui. Cashier ndiye aliyetoa au kulipa bili - habari kamili ya mauzo itasalia kwenye vitabu.
 std_size_ph	k.m. 18, 20, 26…
-kot_show_shop	Jina la duka
-kot_hide_shop	Ficha duka
-kot_show_time	Wakati
-kot_hide_time	Ficha wakati
-kot_show_waiter	Keshia
-kot_hide_waiter	Ficha mtunza fedha
-kot_show_station	Kituo
-kot_hide_station	Ficha kituo
-kot_show_table	Kaunta
-kot_hide_table	Ficha meza
-kot_show_kot_no	Nambari ya slipu
-kot_hide_kot_no	Ficha tikiti No
-kot_width	Hakiki ufunikaji (weka upana wa maudhui kwenye kichupo cha kuteleza)
-kot_width_58	58 mm
-kot_width_80	80 mm
-kot_kind_heading	Aina ya tikiti
-kot_kind_original	Asili
-kot_kind_duplicate	Nakala
-kot_kind_modified	Imebadilishwa
-kot_kind_cancelled	Imefutwa
-kot_style_heading	Ukubwa na uzito wa sehemu
-kot_style_title	Kichwa
-kot_style_item_qty	Kipengele · Idadi
-kot_style_field_pick	Chagua sehemu
 kot_weight_regular	Kawaida
 kot_weight_bold	Nzito
-kot_align	Tengeneza upya
 kot_align_start	Anza
 kot_align_center	Katikati
 kot_align_end	Mwisho
 content_width	Upana wa maudhui (mm)
 content_width_bill	Upana wa muundo wa bilio (mm)
-content_width_kot	Upana wa maudhui ya tikiti (mm)
 content_width_ph	Au andika upana wa maudhui, 40–210 mm
 content_width_help	Jinsi upana huu unachapisha. Bill huweka upana wake mwenyewe.
 content_width_bill_help	Jinsi bili ya mteja inavyochapishwa kwa upana. Chaguomsingi 210 mm (ukurasa). Utelezi mwembamba wa 58 mm, utelezi wa upana wa 80 mm, 112 mm inchi 4, upana wa 210 mm A4. Andika thamani yoyote kutoka 40 hadi 210. Tiketi zina upana wake kwenye kichupo cha kuteleza.
-content_width_kot_help	Jinsi tikiti inavyochapwa kwa upana. Chaguomsingi 80 mm. Utelezi mwembamba wa 58 mm, mteremko wa upana wa 80 mm, 112 mm inchi 4, ukurasa wa 210 mm. Andika thamani yoyote kutoka 40 hadi 210. Bili za mteja zina upana wake kwenye kichupo cha Bili.
 vp_paper_width	Upana wa maudhui (mm)
 vp_paper_width_ph	Au andika upana wa maudhui, 40–210 mm
 vp_paper_width_help	Upana wa maudhui umewekwa chini ya umbizo la Bill & Slip — kando kwa bili (chaguo-msingi 210 mm) na tiketi (chaguo-msingi 80 mm).
-kot_size	Ukubwa wa herufi
-kot_size_s	Ndogo
-kot_size_m	Kawaida
-kot_size_l	Kubwa
 std_size	Ukubwa wa herufi
 kot_copies	Nakala
 kot_copies_1	1
 kot_copies_2	2
 kot_copies_3	3
-kot_title_ph	Kichwa (tupu = TIKETI)
-kot_footer_ph	Ujumbe wa ofisi ya nyuma (si lazima)
-kot_preview	Hakiki
-save_kot_format	Hifadhi umbizo la Slip
-test_kot_format	Chapisha mtihani
-test_kot_sent	Onyesho la kukagua tiketi limetumwa
 test_bill_format	Jaribu bilio
 test_bill_sent	Mchoro wa bilio umepigwa
 test_print_no_printer	Hakuna chapa kwa kazi hiyo — chague moja kwenye skrini hii
-kot_format_saved	Umbizo la kuteleza limehifadhiwa
 std_print	Ukubwa wa kuchapisha bili
 std_print_help	Ukubwa wa fonti kwa kazi za bili za Picha ya Kawaida na Mwongozo wa Mazingira kwenye vichapishi vya Mfumo wa Uendeshaji/hati (weka pointi — si Ndogo/Kawaida/Kubwa). Ukubwa sawa kwenye mielekeo yote miwili.
 std_size_s	Ndogo
@@ -1211,23 +962,16 @@ upi_qr	UPI QR
 show_upi_qr	Onyesha QR ya UPI
 close_upi_qr	Funga
 upi_qr_help	Mteja huchanganua na kulipa. Gusa Chukua malipo baada ya wao kulipa. Skrini ya pili: fungua URL ya Seva/onyesho kwenye LAN.
-kot_recall	Rudisha
 recently_done	Yamekamilika hivi karibuni
-recall_kot_ph	Tikiti # ya kukumbuka
 role_help_customer	Jukumu: Mteja — AR (wanatudaiwa). Kampuni hiyo hiyo inaweza kuwa msambazaji pia.
 role_help_both	Majukumu: Mtumaji + Mbebaji — mhusika mmoja, vitabu vya AR na AP, halisi katika Ripoti.
 role_help_supplier	Jukumu: Msambazaji — AP kwa manunuzi.
-dine_in_pick_table	Haitumiki kwenye duka la kaunta
-choose_table	Chagua counter
-change_table	Badilisha meza
-pick_table_banner	Chagua meza kwa oda hii
 items_word	bidhaa
 items_section	Bidhaa
 back_to_order	Rudi kwenye oda
 new_items_head	Bado haijatumwa
 price_ph	Bei
 price_ph_gst_inside	Bei ({tax} imejumuishwa)
-cancel_needs_table	Uuzaji wa kaunta hukaa kwenye tikiti hadi uchukue malipo
 tax_rates_missing_hint	Hakuna kiwango cha {tax} kwa bidhaa hizi — kwa Vipengee vilivyowekwa Kiwango cha Ushuru (bei tayari zinajumuisha {tax} chini ya {tax} zikijumlishwa)
 taxable_value	Thamani inayotozwa kodi
 gst_inside_price_note	({tax} imejumuishwa)
@@ -1248,30 +992,11 @@ client_template_confirm	Ungependa kuongeza vipengee vya {d} kutoka {title}? Vipe
 client_template_importing	Inaingiza {title}…
 client_template_done	Kila bidhaa kutoka {title} iko kwenye vipengee vyako.
 client_template_imported	Vipengee vya {d} vilivyoongezwa na kategoria za {c} kutoka {title}
-resv_heading	Uhifadhi wa meza
-resv_name_ph	Jina la mteja
-resv_phone_ph	Simu (hiari)
-resv_guests_ph	Watu
-resv_when_ph	Lini — 20:30, tomorrow 13:00
-resv_table_ph	Kaunta (si lazima)
-resv_add	Hifadhi
-resv_seat	Wameketi
-resv_none	Hakuna uhifadhi unaokuja.
-guests_word	wageni
-delivery_by_ph	Anayepeleka (mpanda pikipiki au mfanyakazi)
-kitchen_all_day	Kupika sasa: {items}
-split_bill	Gawanya bili
-split_go	Tengeneza bili tofauti
 cancel	Ghairi
 opening_client	Kupanua mteja…
 preparing_desk	Kuanzisha meza…
 opening_server	Kupanua mtendaji…
 creating_server	Kuunda mtendaji…
-split_help	Gusa vitu ambavyo mteja mmoja hulipia · {n} iliyochaguliwa
-split_send_first	Tuma hati kwanza - ni vitu tu vya ofisini vinavyoweza kwenda kwa bili tofauti
-split_pick_some	Gusa vipengee vya bili tofauti kwanza
-split_done	Tenganisha bili iliyotengenezwa - iko kwenye sakafu karibu na kaunta hii
-split_marked	bili tofauti
 order_empty_pick	Agiza tupu - gusa Ongeza vipengee hapo juu ili kuchagua vipengee.
 add_dishes	Ongeza vitu
 order_so_far	Kwenye oda hii: {n} · {total}
@@ -1282,24 +1007,8 @@ pick_done_dd	Tayari · {label}
 printer_route_mode	Ikiwa kuna chapa nyingi kwenye eneo hili
 printer_mode_first	Yake ya kwanza inayofanya kazi
 printer_mode_all	Piga kwa wote
-kot_show_area	Eneo
-kot_hide_area	Fichua eneo
-kot_show_item_hdr	Kipengele · Idadi
-kot_hide_item_hdr	Fichua safu
-kot_show_title	Mstari wa kichwa
-kot_hide_title	Fichua kichwa
-kot_field_order	Piga amri
 kot_field_up	Sogeza juu
 kot_field_down	Sogeza chini
-kot_field_cycle	Chagua inayofuata
-kot_field_select	Chagua inayofuata
-kot_field_time	Wakati
-kot_field_kot_no	Nambari ya slipu
-kot_field_area	Eneo
-kot_field_table	Kaunta
-kot_field_shop	Jina la duka
-kot_field_waiter	Wafanyakazi
-kot_field_station	Kituo
 app_template_blurb_extra	Pia: Mmiliki Zahir, Msimamizi Asif, Cashier Nawaz; ukanda wa mbele; historia baada ya masaa 4; Leo vua nguo; muswada wa kompakt.
 dishes_n	{n} vitu
 recipe_ph	Kichocheo (si lazima - hakitumiki kwenye duka la kaunta)
@@ -1309,8 +1018,6 @@ low_stock_alert	Inakaribia kwisha — nunua mapema: {items}
 unpriced_note	Vipengee vya {n} kwenye bidhaa zako bado havina bei - vitatozwa 0 hadi utakapoweka kimoja.
 show_unpriced	Onyesha bidhaa tu bila bei
 show_all_dishes	Onyesha vitu vyote
-role_waiter	Keshia
-role_kitchen	Ghala
 role_title_rest_ph	Cheo (mf. kapteni, mpishi mkuu)
 preset_help_rest	Keshia: kuuza. Meneja: kuuza + bidhaa + kufuta/kurekebisha.
 kind_raw	Imenunuliwa kwa matumizi ya duka

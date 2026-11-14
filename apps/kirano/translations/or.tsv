@@ -68,28 +68,6 @@ applied	ଲାଗୁ
 note_ph	ନୋଟ୍ (ଇଚ୍ଛାଧୀନ)
 rounded	ରାଉଣ୍ଡ
 split	ଭାଗ
-send_kot	ସ୍ଲିପ୍ ପଠାନ୍ତୁ
-send_kot_to	ପଠାନ୍ତୁ → {kitchens}
-send_kot_again	ପରବର୍ତ୍ତୀ ସ୍ଲିପ୍ ପାଇଁ ଆଇଟମ୍ ଯୋଡ଼ନ୍ତୁ
-send_kot_held	ଅଟକା ଆଇଟମ୍ — ପଠାଇବାକୁ ଅଟକା ହଟାନ୍ତୁ
-reprint_kot	ବଛାଯାଇଥିବା ପୁଣି ଛାପନ୍ତୁ
-reprint_kot_ok	{n}ଟି ଆଇଟମ୍ ପୁଣି ଛପାଗଲା · {slips}ଟି ସ୍ଲିପ୍ → {kitchens}
-reprint_kot_needed	ପ୍ରଥମେ ସ୍ଲିପ୍ ପଠାନ୍ତୁ — ତା’ପରେ ଆଇଟମ୍ ଅନ୍ତର୍ଭୁକ୍ତ କରି ବଛାଯାଇଥିବା ପୁଣି ଛାପନ୍ତୁ
-reprint_kot_none_selected	ପଠାଯାଇଥିବା ପ୍ରତି ଆଇଟମ୍ ଛାଡ଼ାଯାଇଛି — ଯାହା ପୁଣି ଛାପିବେ ସେଥିରେ «ଛପାରେ» ଦବାନ୍ତୁ
-reprint_kot_client	{place} ପାଇଁ ପୁଣି ଛାପନ୍ତୁ ({n}) ପଠାଗଲା — ଦୋକାନ ଡିଭାଇସ ଛାପିବ
-print_cancelled_kot	ସବୁ ବାତିଲ୍ ଛାପ
-print_cancelled_kot_ok	{n}ଟି ବାତିଲ ଆଇଟମ୍ ଛପାଗଲା · {slips}ଟି ସ୍ଲିପ୍ → {kitchens}
-print_cancelled_kot_needed	ପ୍ରଥମେ ବାତିଲ ଆଇଟମ୍ ଥିବା ଟେବୁଲ ଖୋଲନ୍ତୁ
-print_cancelled_kot_none	ଏହି ଅର୍ଡରରେ କୌଣସି ବାତିଲ ଆଇଟମ୍ ନାହିଁ
-print_cancelled_kot_client	{place} ପାଇଁ ବାତିଲ ଛାପନ୍ତୁ ({n}) ପଠାଗଲା — ଦୋକାନ ଡିଭାଇସ ଛାପିବ
-kot_banner	ବ୍ୟାନର
-kot_banner_ph	ବ୍ୟାନର (ଖାଲି = ନାହିଁ)
-kot_item_prefix	ଆଇଟମ୍ ଉପସର୍ଗ
-kot_item_prefix_ph	ଯେପରି [CANCELLED] 
-kot_strike	ଆଇଟମ୍ ନାମ କାଟନ୍ତୁ
-kot_strike_note	ଆଇଟମ୍ ଟିପ୍ପଣୀ କାଟନ୍ତୁ
-kot_strike_on	ଚାଲୁ
-kot_strike_off	ବନ୍ଦ
 bill_item_layout	ଆଇଟମ୍ ଲେଆଉଟ୍
 bill_item_layout_columns	ସ୍ତମ୍ଭ
 bill_item_layout_stacked	ଧାଡ଼ି
@@ -118,8 +96,6 @@ bill_item_gap_em	ଫାଙ୍କ (em)
 bill_item_qty_min	ସଂଖ୍ୟା ସର୍ବନିମ୍ନ (em)
 bill_item_price_min	ଦର ସର୍ବନିମ୍ନ (em)
 bill_item_amount_min	ରାଶି ସର୍ବନିମ୍ନ (em)
-kot_item_qty_width	ସଂଖ୍ୟା ସ୍ତମ୍ଭ
-kot_item_num_align	ସଂଖ୍ୟା ସଜାଣ
 bill_total_qty_label	ମୋଟ ସଂଖ୍ୟା ଲେବଲ
 bill_total_subtotal_label	ଉପଯୋଗ ଲେବଲ
 bill_total_grand_label	ମୋଟ ଲେବଲ
@@ -131,36 +107,9 @@ bill_item_piece_off	ବନ୍ଦ
 bill_total_qty	ମୋଟ ପରିମାଣ
 bill_total_subtotal	ଉପ ମୋଟ
 bill_total_grand	ମୋଟ
-reprint_incl	ପ୍ରିଣ୍ଟରେ
-reprint_skip	ଛାଡ଼ନ୍ତୁ
-reprint_skip_meta	ରିକଭରି ପ୍ରିଣ୍ଟ ଛାଡ଼ନ୍ତୁ
-kot_dest_hint	ସେଟିଂ → ପ୍ରିଣ୍ଟରରେ {kitchens} କୁ ଦିଆଯାଇଥିବା ପ୍ରିଣ୍ଟରରେ ଛପା ହୁଏ
-kot_sent_hint	ଶେଷଥର {kitchens} କୁ ଗଲା। ପରବର୍ତ୍ତୀ ବିଲ ପାଇଁ ଆଇଟମ୍ ଯୋଡ଼ିବାକୁ ଦବାନ୍ତୁ — କିମ୍ବା ସେଥିପାଇଁ ସ୍ଲିପ୍ ପୁଣି ଛାପନ୍ତୁ।
-kot_sent_printing	ସ୍ଲିପ୍ {kitchens}କୁ ପଠାଗଲା — ଛପାଯାଉଛି
-kot_sent_not_printed	ସ୍ଲିପ୍ {kitchens} କୁ ପଠାଗଲା କିନ୍ତୁ ଛପା ହେଲା ନାହିଁ: {why}। ଦୋକାନକୁ କୁହନ୍ତୁ, ତା’ପରେ ପ୍ରିଣ୍ଟର ଠିକ୍ କରି ପୁଣି ଛାପନ୍ତୁ।
-kot_sent_screen	ସ୍ଲିପ୍ {kitchens} କୁ ପଠାଗଲା
-kot_queued_shop	{place} ର ସ୍ଲିପ୍ → {kitchens} ସଞ୍ଚୟ ହେଲା; ଦୋକାନ ଡିଭାଇସ ଏହାକୁ ଛାପିବ
-kot_job_label	{place} ର ସ୍ଲିପ୍ → {kitchens}
-kot_job_reached	{place} ର ସ୍ଲିପ୍ {kitchens} ରେ ପହଞ୍ଚିଲା
 kot_unassigned	ଅନିର୍ଦ୍ଧାରିତ
-kot_unassigned_held	ଷ୍ଟେସନ୍ ବିନା {n}ଟି ଆଇଟମ୍ ଅଟକା — ପଠାଇବାକୁ ଧାଡ଼ିରେ ଅଟକା ହଟାନ୍ତୁ
-kot_station_ph	ଷ୍ଟେସନ୍
-kot_station_dd	ଷ୍ଟେସନ୍
-kot_station_dd_n	ଷ୍ଟେସନ୍ · {stations}
-kot_set_station	ଏହି ଷ୍ଟେସନ୍ ବ୍ୟବହାର କରନ୍ତୁ
-kot_station_applied	{n}ଟି ଆଇଟମ୍‌ରେ ଷ୍ଟେସନ୍ ଦିଆଗଲା: {station}
-kot_station_cleared	{n}ଟି ଆଇଟମ୍‌ରୁ ଷ୍ଟେସନ୍ ହଟାଗଲା: {station}
-kot_station_needed	ପ୍ରଥମେ ଦୋକାନର ଏକ ବିଭାଗ ବାଛନ୍ତୁ
-kot_station_not_allowed	ଏହି ବିଭାଗ ବ୍ୟବହାରର ଅନୁମତି ନାହିଁ: {station}
-kot_station_none	ଏପର୍ଯ୍ୟନ୍ତ ଷ୍ଟେସନ୍ ନାହିଁ — କାଉଣ୍ଟର ଦୋକାନରେ ଦରକାର ନାହିଁ (ଦରକାର ହେଲେ ସେଟିଂ → ଅଞ୍ଚଳ)
 pos_tab_items	ଯୋଡ଼ାଯାଇଥିବା
 pos_tab_payment	ପେମେଣ୍ଟ
-hold_send	ରୋକ
-hold_send_on	ଅଟକା
-hold_send_meta	ଅଟକା — ଏହି ସ୍ଲିପ୍‌ରେ ନୁହେଁ
-station_remove	ଷ୍ଟେସନ୍ ହଟାନ୍ତୁ
-station_remove_ph	ହଟାଇବାକୁ ତାଲିକାରେ ଷ୍ଟେସନ୍ ଦବାନ୍ତୁ
-station_removed	ଷ୍ଟେସନ୍ ହଟାଗଲା: {name}
 settings_hub_title	ସେଟିଂ
 settings_hub_help	ଥରକେ ଗୋଟିଏ ଭାଗ ଖୋଲନ୍ତୁ — କମ୍ ସ୍କ୍ରୋଲ୍, ସ୍ପଷ୍ଟ ପସନ୍ଦ।
 settings_back	ପଛକୁ
@@ -169,12 +118,10 @@ settings_sec_country	ଦେଶ ଏବଂ ଟିକସ
 settings_sec_tills	ଅତିରିକ୍ତ ଟିଲ୍ ଓ ଶାଖା
 settings_sec_brand	ଆପଣଙ୍କ ବ୍ରାଣ୍ଡ
 settings_sec_units	ଏକକ ଓ ରୂପାନ୍ତର
-settings_sec_pickers	ଅଞ୍ଚଳ · ଷ୍ଟେସନ୍ · ଟିକସ ହାର
+settings_sec_pickers	ଟିକସ ହାର
 settings_sec_printers	ପ୍ରିଣ୍ଟର
 settings_sec_bill	ବିଲ୍ ଓ ସ୍ଲିପ୍ ଫର୍ମାଟ
 settings_sec_selling	ଯୋଜନା ଓ ବିକ୍ରି
-bill_kot_tab_bill	ବିଲ୍
-bill_kot_tab_kot	ସ୍ଲିପ୍
 settings_sec_alerts	ସୂଚନା
 alerts_help	ସ୍ଥିତି ବାର୍ତ୍ତା ଆପଣଙ୍କ ପାଇଁ ସ୍କ୍ରିନରେ କେତେ ସମୟ ରହିବ (ଏହି ଲଗଇନ୍ ପାଇଁ)।
 snack_secs_ph	ସେକେଣ୍ଡ (3–60, ଡିଫଲ୍ଟ 10)
@@ -225,8 +172,6 @@ counter	କାଉଣ୍ଟର
 dine_in	କାଉଣ୍ଟର
 takeaway	ପାର୍ସେଲ
 order	ଅର୍ଡର
-tables	କାଉଣ୍ଟର
-kitchen	ବିଭାଗ
 sales	ବିକ୍ରୟ
 sales_refunds	ବିକ୍ରୟ ଓ ଫେରସ୍ତ
 day_close	ଦିନ ବନ୍ଦ
@@ -254,10 +199,6 @@ zero_sales_on	ଶୂନ୍ୟ ବିକ୍ରୟ: ଚାଲୁ
 zero_sales_off	ଶୂନ୍ୟ ବିକ୍ରୟ: ବନ୍ଦ
 zero_sales_saved_on	ଶୂନ୍ୟ ବିକ୍ରୟ ଅନୁମତି ସଞ୍ଚିତ (ଚାଲୁ)
 zero_sales_saved_off	ଶୂନ୍ୟ ବିକ୍ରୟ ଅନୁମତି ସଞ୍ଚିତ (ବନ୍ଦ)
-floor_areas_help	ଅଞ୍ଚଳ ହେଉଛି ଚଟାଣରେ ଥିବା କୋଠରୀ କିମ୍ବା ଜୋନ୍ (Dine In, Parcel, AC …)। ପ୍ରଥମେ ଅଞ୍ଚଳ ଯୋଡ଼ନ୍ତୁ, ତା’ପରେ ସେଥିରେ କାଉଣ୍ଟର ରଖନ୍ତୁ — ପ୍ରତି ଅଞ୍ଚଳ ଚଟାଣରେ ଅଲଗା ଗୋଷ୍ଠୀ।
-area_new_ph	ନୂଆ ଅଞ୍ଚଳ / କୋଠରୀ (ଯଥା AC, Garden)
-add_area	ଅଞ୍ଚଳ ଯୋଡ଼ନ୍ତୁ
-area_added	ଅଞ୍ଚଳ “{name}” ପ୍ରସ୍ତୁତ — ସେଥିରେ କାଉଣ୍ଟର ଯୋଡ଼ନ୍ତୁ
 no_favorites	ଏପର୍ଯ୍ୟନ୍ତ କୌଣସି ପସନ୍ଦ ନାହିଁ — ତଳ ତାଲିକାରୁ ଜିନିଷ ଯୋଡନ୍ତୁ।
 add_to_bill	ବିଲରେ ଯୋଡନ୍ତୁ
 added	ଯୋଡ଼ାଗଲା
@@ -268,19 +209,9 @@ chip_missing_customer	ବଛାଯାଇଥିବା ଗ୍ରାହକ ମି�
 chip_no_customer	ଏପର୍ଯ୍ୟନ୍ତ କୌଣସି ଗ୍ରାହକ ନାହାଁନ୍ତି — ନାମ ଲେଖନ୍ତୁ, ତା’ପରେ Credit ଦବାନ୍ତୁ
 credit_summary_fmt	{} ଗ୍ରାହକ · ଖୋଲା ବାକି {} · ଅଗ୍ରିମ ରଖା {}
 recent_label	ସାମ୍ପ୍ରତିକ:
-kot_new_waiting	ନୂଆ — ଅପେକ୍ଷାରେ
-kot_preparing	ପ୍ରସ୍ତୁତ ହେଉଛି
-kot_ready_serve	ପ୍ରସ୍ତୁତ — ପରସନ୍ତୁ
-kot_done_cap	ସମ୍ପୂର୍ଣ୍ଣ
-kot_cancelled	ବାତିଲ୍
-kot_start_btn	ଆରମ୍ଭ କରନ୍ତୁ
-kot_mark_ready	ପ୍ରସ୍ତୁତ ଚିହ୍ନଟ କରନ୍ତୁ
-kot_done_btn	ହୋଇଗଲା
-table_free	ଖାଲି — ଅର୍ଡର ଆରମ୍ଭ କରିବାକୁ ଟାପ୍ କରନ୍ତୁ
 start_order	ଅର୍ଡର ଆରମ୍ଭ କରନ୍ତୁ
 open_bill	ବିଲ୍ ଖୋଲନ୍ତୁ
 collect_payment	ଦେୟ ନିଅନ୍ତୁ
-table_running	ଚାଲିଛି
 payment_pending	ଦେୟ ବାକି
 collect_at_counter	କାଉଣ୍ଟରରେ ନିଅନ୍ତୁ
 inventory	ଷ୍ଟକ
@@ -313,7 +244,6 @@ ok	ଠିକ
 this_shop	ସର୍ଭର ମୋଡ୍
 extra_till	କ୍ଲାଏଣ୍ଟ ମୋଡ୍
 off	ବନ୍ଦ
-tables_kitchen	ଦୋକାନ ସଜାଣି
 server	ସର୍ଭର
 client	କ୍ଲାଏଣ୍ଟ
 language_currency	ଭାଷା ଓ ମୁଦ୍ରା
@@ -355,8 +285,6 @@ add_item_plain	ଆଇଟମ୍ ଯୋଡ଼ନ୍ତୁ
 add_note	ନୋଟ୍ ଯୋଡ଼ନ୍ତୁ
 add_opening_balance	ଆରମ୍ଭ ବାଲାନ୍ସ ଯୋଡ଼ନ୍ତୁ
 add_staff	କର୍ମଚାରୀ ଯୋଡ଼ନ୍ତୁ
-add_station	ଷ୍ଟେସନ୍ ଯୋଡ଼ନ୍ତୁ
-add_table	ଟେବୁଲ୍ ଯୋଡ଼ନ୍ତୁ
 add_unit	ୟୁନିଟ୍ ଯୋଡ଼ନ୍ତୁ
 add_use_name	ଏହି ନାମ ଯୋଡ଼ନ୍ତୁ / ବ୍ୟବହାର କରନ୍ତୁ
 allow_extra_tills	ଅତିରିକ୍ତ ଟିଲ୍ ଅନୁମତି ଦିଅନ୍ତୁ
@@ -409,7 +337,6 @@ share_whatsapp	ୱାଟ୍ସଆପ୍ ସେୟାର
 lan_pages_heading	Wi‑Fi ରେ ଗ୍ରାହକ ପୃଷ୍ଠା
 lan_pages_help	ଏହି ଦୋକାନର Wi‑Fi ରେ ଗ୍ରାହକ ପୃଷ୍ଠା ଡିସପ୍ଲେ ବୋର୍ଡ ଓ ମତାମତ ପାଇଁ ଚାଲେ। ମୋବାଇଲ ଡାଟାରେ ଥିବା ଲୋକଙ୍କୁ ପରେ Cloud ଦରକାର। କାର୍ଡ ମେସିନ୍ କିମ୍ବା ପେମେଣ୍ଟ ଲିଙ୍କ ଇଚ୍ଛାଧୀନ ଏବଂ କାଉଣ୍ଟରକୁ କେବେ ଅଟକାଏ ନାହିଁ।
 diag_send_heading	ଏହି ଡିଭାଇସରୁ ବାହାରକୁ ସେୟାର କରନ୍ତୁ
-kot_dest_heading	ଷ୍ଟେସନ୍
 optional_login_heading	ଇଚ୍ଛାଧୀନ ଲଗଇନ୍
 rights_heading	ଅଧିକାର
 ops_panel	ସ୍ଥାନୀୟ କାମ
@@ -436,28 +363,6 @@ till_voucher_amt_ph	ଭାଉଚର୍ ରାଶି (ଖାଲି = ସବୁ)
 till_wallet_topup_ph	ୱାଲେଟ୍ ଟପ୍-ଅପ୍ ରାଶି
 till_voucher_issue_amt_ph	ନୂଆ ଭାଉଚର୍ ରାଶି
 till_voucher_issue_code_ph	ନୂଆ ଭାଉଚର୍ କୋଡ୍
-split_evenly	ସମାନ ଭାଗ
-waitlist	ୱେଟଲିଷ୍ଟ
-fire_course	ପରବର୍ତ୍ତୀ ପଦକ୍ଷେପ
-hold_item	ରୋକ
-waiter_call	କ୍ୟାସିୟରଙ୍କୁ ଡାକନ୍ତୁ
-waitlist_add	ୱେଟଲିଷ୍ଟରେ ଯୋଗ
-floor_view_grid	ଗ୍ରିଡ୍
-floor_view_layout	ଲେଆଉଟ୍
-floor_layout_x	X
-floor_layout_y	Y
-floor_layout_w	W
-floor_layout_h	H
-floor_layout_save	ଲେଆଉଟ୍ ସଞ୍ଚୟ
-floor_layout_open	ଟେବୁଲ୍ ଖୋଲନ୍ତୁ
-floor_layout_edit	ଲେଆଉଟ୍ ସମ୍ପାଦନ
-floor_layout_pick	ଲେଆଉଟ୍ ବଦଳାଇବାକୁ ଟେବୁଲ୍ ଟ୍ୟାପ୍ କରନ୍ତୁ
-floor_layout_saved	ସଜାଣି ସଞ୍ଚୟ ହେଲା
-floor_layout_nudge_left	← 20
-floor_layout_nudge_right	→ 20
-floor_layout_nudge_up	↑ 20
-floor_layout_nudge_down	↓ 20
-sibling_pickers_help	ୟୁନିଟ ଭଳି On/Off — ଅଞ୍ଚଳ, ଷ୍ଟେସନ, କର ହାର ଦୈନିକ ପିକରରୁ ଲୁଚାନ୍ତୁ; ପ୍ୟାକ ଡିଫଲ୍ଟ ରହିବ।
 bulk_price_apply	ବଲ୍କ ମୂଲ୍ୟ ପ୍ରୟୋଗ
 card_terminal_optional	କାର୍ଡ ଟର୍ମିନାଲ / ପେମେଣ୍ଟ ଲିଙ୍କ (ଇଣ୍ଟରନେଟ ଥିଲେ ବୈକଳ୍ପିକ)
 copy_report	ରିପୋର୍ଟ କପି କରନ୍ତୁ
@@ -483,7 +388,6 @@ import_day	ଦିନ ଇମ୍ପୋର୍ଟ କରନ୍ତୁ
 import_items_csv_plain	ଆଇଟମ୍ CSV ଇମ୍ପୋର୍ଟ…
 import_parties_csv	ପାର୍ଟି CSV ଇମ୍ପୋର୍ଟ…
 item_name	ଆଇଟମ୍ ନାମ
-kitchen_printing	ରୋଷେଇ ପ୍ରିଣ୍ଟିଂ
 login_id_ph	ଲଗଇନ୍ ଆଇଡି
 mark_cleared	କ୍ଲିୟର ଚିହ୍ନିତ କରନ୍ତୁ
 new_party_clear	ନୂଆ ପାର୍ଟି (ଫର୍ମ ସଫା କରନ୍ତୁ)
@@ -553,15 +457,6 @@ show	ଦେଖାନ୍ତୁ
 spreadsheet_csv	ସ୍ପ୍ରେଡସିଟ୍ (CSV)
 start_fresh	ନୂଆରୁ ଆରମ୍ଭ କରନ୍ତୁ
 stop_extra_tills	ଅତିରିକ୍ତ ଟିଲ୍ ବନ୍ଦ କରନ୍ତୁ
-floor_cols_ph	ସ୍ତମ୍ଭ
-floor_cols_fit	ସ୍କ୍ରିନ୍ ଅନୁସାରେ
-floor_cols_fit_sub	ଏଠି {n} ଧରେ
-floor_cols_fits	ଧରିଯାଏ
-floor_cols_scroll	ପାର୍ଶ୍ୱକୁ ସ୍କ୍ରୋଲ୍
-floor_cols_min	ସ୍ତମ୍ଭ: ଅତିକମରେ 1 — କିମ୍ବା ସ୍କ୍ରିନ୍ ଅନୁସାରେ ରଖିବାକୁ ଖାଲି ଛାଡନ୍ତୁ
-floor_zoom_auto	ସ୍ୱୟଂ
-floor_zoom_out	ଛୋଟ କରନ୍ତୁ
-floor_zoom_in	ବଡ଼ କରନ୍ତୁ
 backup_auto	ପ୍ରତିଦିନ ସ୍ୱୟଂଚାଳିତ ବ୍ୟାକଅପ୍ · ଶେଷ {when} · ଶେଷ 14 ଦିନ {dir} ରେ ରଖାଯାଏ।
 backup_auto_none	ପ୍ରତିଦିନ ସ୍ୱୟଂଚାଳିତ ବ୍ୟାକଅପ୍ — ପ୍ରଥମଟି ଶୀଘ୍ର ଚାଲିବ।
 backup_copy_to	ନକଲ {dir} କୁ ମଧ୍ୟ ଯାଏ।
@@ -579,7 +474,6 @@ new_pair_code	ନୂଆ ଯୋଡ଼ିବା କୋଡ୍
 pair_finishing	ଯୋଡ଼ିବା ସମାପ୍ତ ହେଉଛି… ଦୋକାନର ଖାତା ଲାଗୁ ହେଉଛି
 pair_opening	ଟିଲ ଖୋଲୁଛି…
 pair_copied	ଯୋଡ଼ିବା କୋଡ୍ କପି ହେଲା
-kot_waiting	ପଠାଇବାକୁ ଅପେକ୍ଷା
 lan_offline_waiting	ଅଫଲାଇନ୍ · {n} ଅପେକ୍ଷାରେ
 lan_connecting	ଦୋକାନ ସହ ସଂଯୋଗ ହେଉଛି…
 lan_live	ଲାଇଭ୍
@@ -621,7 +515,6 @@ printers_routes_help	ଅପରେଟିଂ ସିଷ୍ଟମ୍ ପୂର୍ବ
 printer_assign_dd	{place} ପାଇଁ ପ୍ରିଣ୍ଟର ବାଛନ୍ତୁ
 printer_assign_pick	ପ୍ରକୃତ ପ୍ରିଣ୍ଟର ବାଛନ୍ତୁ
 printer_profile_heading	ଲେଆଉଟ୍
-printer_send_heading	ଡେଲିଭରି
 vp_delivery_heading	ଡେଲିଭରି
 vp_delivery_help	ଏହି ଭର୍ଚୁଆଲ୍ ପ୍ରିଣ୍ଟର କାମ କିପରି ପଠାଏ — OS ଡକ୍ୟୁମେଣ୍ଟ, କଞ୍ଚା ବାଇଟ୍ କିମ୍ବା ESC/POS। ସ୍ଲିପ୍ ବିଷୟବସ୍ତୁ (ଅକ୍ଷର ଆକାର, ଗୁଡ଼ାଇବା, ମାର୍ଜିନ୍) ବିଲ / ସ୍ଲିପ୍ ଫର୍ମାଟ୍ ସ୍ଥିର କରେ, ଏଠାରେ ନୁହେଁ।
 vp_type_size_heading	ଅକ୍ଷର ଆକାର
@@ -665,23 +558,13 @@ virtual_draft_send	ପରବର୍ତ୍ତୀ ଭର୍ଚୁଆଲ୍ ପ୍�
 virtual_need_real	ପ୍ରଥମେ ପ୍ରକୃତ ପ୍ରିଣ୍ଟର ବାଛନ୍ତୁ
 virtual_need_select	କାଢ଼ିବାକୁ ଭର୍ଚୁଆଲ୍ ପ୍ରିଣ୍ଟର ବାଛନ୍ତୁ
 real_printer_selected	ପ୍ରକୃତ ପ୍ରିଣ୍ଟର: {name}
-station_group_heading	ଭର୍ଚୁଆଲ୍ ପ୍ରିଣ୍ଟର
-station_group_apply	ଭର୍ଚୁଆଲ୍ ପ୍ରିଣ୍ଟର କାଢ଼ନ୍ତୁ
-station_group_applied	କାଢ଼ାଗଲା
-station_group_empty	ଭର୍ଚୁଆଲ୍ ପ୍ରିଣ୍ଟର ବାଛନ୍ତୁ
-station_group_name_ph	ଭର୍ଚୁଆଲ୍ ପ୍ରିଣ୍ଟର ନାମ (ବୈକଳ୍ପିକ)
-station_group_save	ଭର୍ଚୁଆଲ୍ ପ୍ରିଣ୍ଟର ତିଆରି କରନ୍ତୁ
-station_group_saved	ଭର୍ଚୁଆଲ୍ ପ୍ରିଣ୍ଟର ସେଭ୍
-station_manage_heading	ଦୋକାନର ଏକ ବିଭାଗ ଯୋଡ଼ନ୍ତୁ କିମ୍ବା ହଟାନ୍ତୁ
 printers_routes_heading	2. କେଉଁଠି ପ୍ରିଣ୍ଟ
 route_pick_heading	ସ୍ଥାନ
 route_editing	ସମ୍ପାଦନା: {name}
 route_assigned	{printer} କୁ {place} ରେ ଯୋଡ଼ାଗଲା
 route_already_assigned	ଏହି ସ୍ଥାନରେ ପୂର୍ବରୁ: {printer}
-route_removed	{printer} କୁ {place} ରୁ ହଟାଗଲା
 route_cleared	{name} ସଫା ହେଲା
 route_assigned_empty	ଏହି ସ୍ଥାନରେ କିଛି ନାହିଁ
-route_tap_remove	ହଟାଇବାକୁ ଦବାନ୍ତୁ
 route_tap_select	ବାଛିବାକୁ ଟ୍ୟାପ୍
 route_tap_selected	ବଛା
 route_pick_printer_first	ପ୍ରଥମେ ଗୋଟିଏ ପ୍ରିଣ୍ଟର ଟ୍ୟାପ୍ କରନ୍ତୁ
@@ -702,35 +585,17 @@ printer_format_custom	ନୂଆ ନିଜସ୍ୱ ଫର୍ମାଟ୍
 printer_format_custom_label	ନିଜସ୍ୱ
 printer_format_custom_added	ଏହି ରୁଟ୍ ପାଇଁ ନିଜସ୍ୱ ଫର୍ମାଟ୍ ଯୋଡ଼ାଗଲା
 add_printer	ପ୍ରିଣ୍ଟର ଯୋଡ଼ନ୍ତୁ
-remove_printer	ଶେଷଟି କାଢ଼ନ୍ତୁ
 route_pick_ph	ବିଲ କିମ୍ବା ଦୋକାନର ଏକ ବିଭାଗ
 route_bill	ବିଲ୍
-route_default_kitchen	ଷ୍ଟେସନ୍ ନାହିଁ (ଅନିର୍ଦ୍ଧାରିତ ଆଇଟମ୍)
-route_kot_station	ଷ୍ଟେସନ୍
 route_dont_print	ପ୍ରିଣ୍ଟ କରନ୍ତୁ ନାହିଁ
-stations_heading	ଷ୍ଟେସନ୍
-stations_help	ଦୋକାନ ବିଭାଗ ଆଇଟମ୍ ଓ ଦୋକାନର ସେହି ଅଂଶର ପ୍ରିଣ୍ଟରକୁ ଏକାଠି ରଖେ। ସେଟିଂ → ପ୍ରିଣ୍ଟରରୁ ପ୍ରିଣ୍ଟର ଲଗାନ୍ତୁ, ଚେଷ୍ଟା କ୍ରମ ସ୍ଥିର କରନ୍ତୁ, ତା’ପରେ ଯାହା ପ୍ରଥମେ ଚାଲେ କିମ୍ବା ସବୁଥିରେ ଛାପନ୍ତୁ। ପରିବର୍ତ୍ତନ ସାଥେ ସାଥେ ସଞ୍ଚୟ ହୁଏ।
-station_print_heading	ଏହି ଷ୍ଟେସନ୍ ପ୍ରିଣ୍ଟର
-station_print_help	ଗୋଟିଏ ଷ୍ଟେସନ୍ ବାଛନ୍ତୁ, ତା’ପରେ ଏକ କିମ୍ବା ଅଧିକ ପ୍ରିଣ୍ଟର ଲଗାନ୍ତୁ। ↑↓ ଚେଷ୍ଟା କ୍ରମ ସ୍ଥିର କରେ। ଯାହା ପ୍ରଥମେ ଚାଲେ ପ୍ରଥମ ସଫଳତାରେ ଅଟକେ; ସବୁଥିରେ ଛାପନ୍ତୁ ପ୍ରତି ଲଗା ପ୍ରିଣ୍ଟରକୁ ପଠାଏ।
-station_print_pick_ph	ପ୍ରିଣ୍ଟର ସେଟ୍ କରିବା ଷ୍ଟେସନ୍
 station_print_pick_first	ପ୍ରଥମେ ଦୋକାନର ଏକ ବିଭାଗ ବାଛନ୍ତୁ
-station_print_editing	“{name}” ର ପ୍ରିଣ୍ଟର ସମ୍ପାଦନ
-station_vps_dd	ଏହି ଷ୍ଟେସନ୍ ପ୍ରିଣ୍ଟର
-station_vps_dd_n	{n} ପ୍ରିଣ୍ଟର · ବଦଳାଇବାକୁ ଟ୍ୟାପ୍
 station_vps_empty	ଏପର୍ଯ୍ୟନ୍ତ ପ୍ରିଣ୍ଟର ନାହିଁ — ସେଟିଙ୍ଗ୍ସ → ପ୍ରିଣ୍ଟରରେ ଖୋଜନ୍ତୁ
 bill_printers_dd	ବିଲ ପାଇଁ ପ୍ରିଣ୍ଟର
 bill_printers_dd_n	ବିଲ ପାଇଁ {n}ଟି ପ୍ରିଣ୍ଟର · ବଦଳାଇବାକୁ ଦବାନ୍ତୁ
-job_layout	ଲେଆଉଟ୍
-job_delivery	କାମ କିପରି ପଠାଯାଏ
-job_delivery_help	OS ଡକ୍ୟୁମେଣ୍ଟ, କଞ୍ଚା ବାଇଟ୍ କିମ୍ବା ESC/POS। ବିଲ ଓ ଟିକେଟ ଦୁହେଁ ନିଜ ନିଜର ରଖନ୍ତି। ଯେକୌଣସି କାମ ଖୋଜନ୍ତୁ ସଞ୍ଚୟ କରିଥିବା ଯେକୌଣସି ପ୍ରିଣ୍ଟରକୁ ଯାଇପାରେ।
 station_vp_attached	ପ୍ରିଣ୍ଟର ଯୋଡ଼ାଗଲା
 station_vp_detached	ଷ୍ଟେସନରୁ ପ୍ରିଣ୍ଟର କାଢ଼ାଗଲା
-station_print_summary	{mode} · {n} ପ୍ରିଣ୍ଟର
-station_print_summary_none	ଏହି ଷ୍ଟେସନରେ ଏପର୍ଯ୍ୟନ୍ତ ପ୍ରିଣ୍ଟର ନାହିଁ — ପ୍ରିଣ୍ଟ ହେବ ନାହିଁ
-stations_none	ଏପର୍ଯ୍ୟନ୍ତ ଷ୍ଟେସନ୍ ନାହିଁ — ତଳେ ଗୋଟିଏ ଯୋଡ଼ନ୍ତୁ। କାଉଣ୍ଟର ଦୋକାନରେ ଷ୍ଟେସନ୍ ଦରକାର ନାହିଁ — ଖାଲି ରଖନ୍ତୁ।
 route_up	ଉପରକୁ
 route_down	ତଳକୁ
-route_remove	ଶେଷଟି କାଢ଼ନ୍ତୁ
 route_clear	ପ୍ରିଣ୍ଟ କରନ୍ତୁ ନାହିଁ
 save_printers	ପ୍ରିଣ୍ଟର ସଞ୍ଚୟ କରନ୍ତୁ
 print_test_page	ପରୀକ୍ଷା ପୃଷ୍ଠା ଛାପନ୍ତୁ
@@ -739,23 +604,15 @@ test_page_no_printer	{place} ପାଇଁ ପ୍ରିଣ୍ଟର ନାହି�
 test_page_pick_first	ପ୍ରଥମେ ପରୀକ୍ଷା ପ୍ରିଣ୍ଟର ବାଛନ୍ତୁ — ତାପରେ ପରୀକ୍ଷା ପୃଷ୍ଠା ଛାପନ୍ତୁ
 test_printers_dd	ପରୀକ୍ଷା ପୃଷ୍ଠା ପ୍ରିଣ୍ଟର
 test_printers_dd_n	{n} ପରୀକ୍ଷା ପ୍ରିଣ୍ଟର · ବଦଳାଇବାକୁ ଟ୍ୟାପ୍
-kot_test_printers_dd	ପରୀକ୍ଷା ଛପା ପାଇଁ ପ୍ରିଣ୍ଟର
-kot_test_printers_dd_n	ପରୀକ୍ଷା ଛପା ପାଇଁ {n}ଟି ପ୍ରିଣ୍ଟର · ବଦଳାଇବାକୁ ଦବାନ୍ତୁ
 test_printer_picked	ପରୀକ୍ଷା: {name}
 test_printer_cleared	ପରୀକ୍ଷା ନୁହେଁ: {name}
 test_page_sent_n	ପରୀକ୍ଷା ପୃଷ୍ଠା {n} ପ୍ରିଣ୍ଟରକୁ ପଠାଗଲା
-test_kot_pick_first	ପ୍ରଥମେ ପରୀକ୍ଷା ଛପା ପାଇଁ ପ୍ରିଣ୍ଟର ବାଛନ୍ତୁ — ତା’ପରେ ପରୀକ୍ଷା ଛପା
-test_kot_sent_n	ପରୀକ୍ଷା ଛପା {n}ଟି ପ୍ରିଣ୍ଟରକୁ ପଠାଗଲା
-cancel_pick	ଚିହ୍ନ
-cancel_pick_on	ଚିହ୍ନିତ
-cancel_pick_meta	ବାତିଲ୍ ପାଇଁ ଚିହ୍ନ
 batch_cancel	ଚିହ୍ନିତ ବାତିଲ୍
 batch_cancel_n	ଚିହ୍ନିତ ବାତିଲ୍ ({n})
 batch_cancel_none	ପ୍ରଥମେ ପଠାଯାଇଥିବା ଏକ କିମ୍ବା ଅଧିକ ଆଇଟମ୍ ଚିହ୍ନିତ କରନ୍ତୁ — ତା’ପରେ ଚିହ୍ନିତ ବାତିଲ କରନ୍ତୁ
 batch_cancel_title	ଚିହ୍ନିତ ଜିନିଷ ବାତିଲ — ଏକ କାରଣ, ପ୍ରତି ବିଭାଗକୁ ଏକ ସ୍ଲିପ୍
 batch_cancel_ok	{n}ଟି ଆଇଟମ୍ ବାତିଲ · {slips}ଟି ବାତିଲ ସ୍ଲିପ୍ → {kitchens}
 batch_cancel_ok_noprint	{n}ଟି ଆଇଟମ୍ ବାତିଲ — ଆପେ ଛପା ବନ୍ଦ, ତେଣୁ ବାତିଲ ସ୍ଲିପ୍ ନାହିଁ
-no_printer_kitchen_station	ସେହି ଷ୍ଟେସନ୍ ପାଇଁ ପ୍ରିଣ୍ଟର ନାହିଁ
 printers_saved	ଏହି ଡିଭାଇସର ପ୍ରିଣ୍ଟର ସଞ୍ଚିତ ହେଲା
 test_page_sent	ପରୀକ୍ଷା ପୃଷ୍ଠା ପଠାଗଲା — ପ୍ରିଣ୍ଟର ଦେଖନ୍ତୁ
 test_page_sent_one	ପରୀକ୍ଷା ପୃଷ୍ଠା {name}କୁ ପଠାଗଲା — ସେହି ପ୍ରିଣ୍ଟର ଦେଖନ୍ତୁ
@@ -771,10 +628,7 @@ cancelled	ବାତିଲ୍
 printers_tap_find	ପ୍ରିଣ୍ଟର ଖୋଜନ୍ତୁ ଦବାନ୍ତୁ — ସିଷ୍ଟମ ପ୍ରିଣ୍ଟର ଓ ଏହି Wi‑Fiର ନେଟୱାର୍କ ରସିଦ ପ୍ରିଣ୍ଟର ତାଲିକା ହେବ।
 printers_none_found	କୌଣସି ପ୍ରିଣ୍ଟର ମିଳିଲା ନାହିଁ — ସିଷ୍ଟମ ପ୍ରିଣ୍ଟର ନାମ କିମ୍ବା ନେଟୱାର୍କ ଠିକଣା ଲେଖନ୍ତୁ (ଯଥା 192.168.1.50)।
 printer_from_find	{name} ଯୋଡ଼ାଗଲା
-kot_printer_ph	ସ୍ଲିପ୍ ପ୍ରିଣ୍ଟର
 bill_printer_ph	ବିଲ ପ୍ରିଣ୍ଟର
-kot_print_on	ଟିକେଟ ଆପେ ଛପା: ଚାଲୁ
-kot_print_off	ଟିକେଟ ଆପେ ଛପା: ବନ୍ଦ
 queue_refused	ଦୋକାନ ଗ୍ରହଣ କଲାନାହିଁ ({n}) — ପ୍ରତ୍ୟେକକୁ କାଉଣ୍ଟରରେ ଯାଞ୍ଚ କରନ୍ତୁ:
 clear_not_accepted	ଯାଞ୍ଚ କଲି — ଏହି ତାଲିକା ସଫା କରନ୍ତୁ
 device_name_ph	ଏହି ଡିଭାଇସର ନାମ
@@ -785,7 +639,6 @@ backup_failed	ଶେଷ ସ୍ୱୟଂଚାଳିତ ବ୍ୟାକଅପ୍ 
 backup_overdue	{n} ଦିନ ହେଲା ବ୍ୟାକଅପ୍ ନାହିଁ — ବ୍ୟାକଅପ୍ ପାଇଁ ଏହି ଡିଭାଇସରେ ଆପ୍ ଖୋଲା ରଖନ୍ତୁ।
 disk_low	ଏହି ଡିଭାଇସରେ କେବଳ {mb} MB ଖାଲି ଅଛି — ଶୀଘ୍ର ବ୍ୟାକଅପ୍ ବିଫଳ ହେବ। କିଛି ସ୍ଥାନ ଖାଲି କରନ୍ତୁ।
 last_seen_devices	ଶେଷ ଦେଖାଗଲା: {time}
-sync_interval	ପ୍ରତି {secs} ସେକେଣ୍ଡରେ ସିଙ୍କ୍
 connection_to_shop	ଦୋକାନ ସହ ସଂଯୋଗ
 supplier_name_ph	ଯୋଗାଣକାରୀ ନାମ (କିମ୍ବା ପାର୍ଟି)
 supplier_ph	ଯୋଗାଣକାରୀ
@@ -848,7 +701,6 @@ fresh_book_kirano	ପ୍ରିଣ୍ଟର
 fresh_selected	Fresh ବଛା — କାଟାଲଗ୍ ଖାଲି ରହିବ। ପ୍ରସ୍ତୁତ ହେଲେ Done ଦବାନ୍ତୁ।
 gross_word	ମୋଟ
 how_start	ଆପଣ କିପରି ଆରମ୍ଭ କରିବାକୁ ଚାହାଁନ୍ତି?
-kot_print_help_kirano	ଯେତେବେଳେ KOT ପଠାଯାଏ — କାଉଣ୍ଟରରୁ କିମ୍ବା ୱେଟରଙ୍କ ଡିଭାଇସରୁ — ରୋଷେଇ କାଗଜ ଏଠାରେ ନିଜେ ଛାପେ।
 later_country_pack	ପ୍ରିଣ୍ଟର
 local_badge	ସ୍ଥାନୀୟ
 mix_type_hint_kirano	ଆବଶ୍ୟକ ହେଲେ ନଗଦ / UPI / କାର୍ଡ / ଧାରରେ ବାଣ୍ଟନ୍ତୁ। ଧାର ପାଇଁ ଉପରେ ଗ୍ରାହକ ଦରକାର।
@@ -899,8 +751,6 @@ staff_copy_need_source	ବାଛନ୍ତୁ କାହାର ସେଟଅପ୍ 
 staff_copy_same	ସେ ସେହି ବ୍ୟକ୍ତି — ଅନ୍ୟ କାହାକୁ ବାଛନ୍ତୁ
 staff_rename_need_selected	ପ୍ରଥମେ ବାଛନ୍ତୁ କାହାର ନାମ ବଦଳାଇବେ
 team_pick_hint	ବାଛନ୍ତୁ କାହାକୁ ସମ୍ପାଦନା କରିବେ — ସ୍କ୍ରିନ, ଟଙ୍କା ଅଧିକାର ଓ ଷ୍ଟେସନ୍ କେବଳ ସେହି ବ୍ୟକ୍ତିଙ୍କ ପାଇଁ ଦେଖାଯାଏ।
-team_stations_help	ସେମାନେ ବ୍ୟବହାର କରିପାରୁଥିବା ଷ୍ଟେସନ୍
-team_stations_changed	ଷ୍ଟେସନ୍ ବଦଳିଲା — ଏହି ବ୍ୟକ୍ତିଙ୍କ ସେଟଅପ୍ ସଞ୍ଚୟ କରନ୍ତୁ
 team_features_changed	ସ୍କ୍ରିନ ବଦଳିଲା — ଏହି ବ୍ୟକ୍ତିଙ୍କ ସେଟଅପ୍ ସଞ୍ଚୟ କରନ୍ତୁ
 team_rights_changed	ଅଧିକାର ବଦଳିଲା — ଏହି ବ୍ୟକ୍ତିଙ୍କ ସେଟଅପ୍ ସଞ୍ଚୟ କରନ୍ତୁ
 they_owe_us	ସେମାନେ ଆମର ଦେଣଦାର
@@ -984,9 +834,6 @@ service_pct_ph	ସେବା % ଇଚ୍ଛାଧୀନ 0/10/12
 short_code_ph	ଛୋଟ କୋଡ୍ (MG02)
 starting_password_ph	ଆରମ୍ଭ ପାସୱାର୍ଡ (ଇଚ୍ଛାଧୀନ)
 starting_pin_ph	ଆରମ୍ଭ PIN (4–12 ଅଙ୍କ)
-station_name_ph	ଷ୍ଟେସନ୍ ନାମ (ଇଚ୍ଛାଧୀନ)
-station_new_ph	ବିଭାଗ (ଇଚ୍ଛାଧୀନ)
-table_name_ph	କାଉଣ୍ଟର / ଖୋପ ନାମ
 tax_rate_ph	କର ହାର ନାମ କିମ୍ବା % — Standard, Reduced, 0, 5, 12, 18, 20
 to_code_ph	କୁ କୋଡ୍ (kg)
 uncleared_no_ph	ଉପର ଅନକ୍ଲିୟର୍ଡ #
@@ -999,27 +846,8 @@ book_kind_month	ଏହି ମାସର ବହି
 book_kind_aging	ବକେୟା / ଡେବିଟ-କ୍ରେଡିଟ
 book_kind_balance	ବାଲାନ୍ସ ସିଟ୍
 order_help	ଖୋଲା ଅର୍ଡର ବାଛନ୍ତୁ, କିମ୍ବା ଟେବୁଲ୍ ବାଛି ନୂଆ ଆରମ୍ଭ କରନ୍ତୁ। ପ୍ରସ୍ତୁତ ଆଇଟମ୍ ଉପରେ ଟାପ୍ କରନ୍ତୁ, KOT ପଠାନ୍ତୁ, ଗୋଟିଏ ବା ଅଧିକ ଆଇଟମ୍ ବିଲ୍ କରନ୍ତୁ, ବିଲ୍ ବାଣ୍ଟନ୍ତୁ ଏବଂ ଦେୟ ମେଟାନ୍ତୁ।
-floor_help	ଏହି ଦୋକାନ କାଉଣ୍ଟରରେ ବିକ୍ରି କରେ। ଟେବୁଲ ଓ ଖାଇବା ଚଟାଣ Kirano ର ଅଂଶ ନୁହେଁ।
-kitchen_help	ଯେତେବେଳେ KOT ପଠାଯାଏ — କାଉଣ୍ଟରରୁ କିମ୍ବା ୱେଟରଙ୍କ ଡିଭାଇସରୁ — ରୋଷେଇ କାଗଜ ଏଠାରେ ନିଜେ ଛାପେ।
-kitchen_empty	କୌଣସି ଖୋଲା ଟିକେଟ ନାହିଁ (କାଉଣ୍ଟର ଦୋକାନ ସାଧାରଣତଃ ଏହି ସ୍କ୍ରିନ ବ୍ୟବହାର କରନ୍ତି ନାହିଁ)।
-add_a_table	ଟେବୁଲ୍ ଯୋଡନ୍ତୁ
-add_station_heading	ବିଭାଗ ଯୋଡ଼ନ୍ତୁ · ଯେପରି ପନିପରିବା, କୋଲ୍ଡ, ବିଲ୍
 categories_help	ଶ୍ରେଣୀ ଦେଖାଏ ଏକ ଖାଦ୍ୟ କେଉଁ ମେନୁ ଭାଗରେ ଆସେ — ଯେପରି ସ୍ନାକ୍ସ, ମେନ୍ କୋର୍ସ କିମ୍ବା ବିରିୟାନୀ। ଶ୍ରେଣୀ ନିଜ ମତେ ତିଆରି କରନ୍ତୁ: ଆମ ପ୍ରସ୍ତାବିତ ନାମ ବାଛନ୍ତୁ, ନାମ ବଦଳାନ୍ତୁ କିମ୍ବା ନିଜର ଯୋଡନ୍ତୁ।
 dish_search_ph	ଆଇଟମ୍ କିମ୍ବା ଛୋଟ କୋଡ ଖୋଜନ୍ତୁ…
-tile_free	ଖାଲି
-tile_occupied	ବ୍ୟସ୍ତ
-tile_food_ready	ଖାଦ୍ୟ ପ୍ରସ୍ତୁତ
-tile_bill_printed	ବିଲ୍ ଛପା
-tile_paid	ଦେୟ ହେଲା
-tile_bill_btn	ବିଲ୍
-tile_occupy_btn	ଅତିଥି ବସାନ୍ତୁ
-tile_free_btn	ଟେବୁଲ ଖାଲି କରନ୍ତୁ
-tile_ready_btn	ପ୍ରସ୍ତୁତ
-tile_undo_bill	ବିଲ୍ ଫେରାନ୍ତୁ
-summary_busy	ଟେବୁଲ ବ୍ୟସ୍ତ
-summary_to_collect	ଆଦାୟ ବାକି
-summary_on_floor	ଫ୍ଲୋରରେ
-floor	ଦୋକାନ
 sizes_as_items_ph	ଆକାର ଅଲଗା ଆଇଟମ ଭାବେ (ବୈକଳ୍ପିକ) — Half=120, Full=200
 dish_group_ph	ପ୍ୟାକ୍ ଆକାର ଗୋଷ୍ଠୀ (ଇଚ୍ଛାଧୀନ) — ଯେପରି ଅଟା 1kg / 5kg
 discount	ରିହାତି
@@ -1027,7 +855,6 @@ remove_discount	ରିହାତି ହଟାନ୍ତୁ
 apply_discount	ରିହାତି ଦିଅନ୍ତୁ
 save_opening_cash	ଆରମ୍ଭ ନଗଦ ସଞ୍ଚୟ କରନ୍ତୁ
 close_shift_print	ସିଫ୍ଟ ବନ୍ଦ କରି ସ୍ଲିପ ଛାପନ୍ତୁ
-area_prices_ph	ବିଭାଗ ଦାମ (ବୈକଳ୍ପିକ) — AC=220, Parcel=210
 discount_ph	10% ବା 50
 discount_reason_ph	କାରଣ (ଯେପରି ନିୟମିତ ଅତିଥି, ଖାଦ୍ୟରେ ବିଳମ୍ବ)
 opening_float_ph	ଆଜି ସକାଳେ ଡ୍ରୟରରେ ରଖିଥିବା ନଗଦ
@@ -1037,34 +864,18 @@ shift_handover	ସିଫ୍ଟ ହସ୍ତାନ୍ତର
 shift_since	ଏହି ସିଫ୍ଟ ଆରମ୍ଭ
 expected_in_drawer	ଡ୍ରୟରରେ ଥିବା ଉଚିତ
 right_discount	ରିହାତି ଦେବା
-floor_in_kitchen	ଚାଲୁଛି
-floor_eating	ଖାଉଛନ୍ତି
 pick_category	ବର୍ଗ ବାଛନ୍ତୁ
 close_category_list	ବର୍ଗ ତାଲିକା ବନ୍ଦ କରନ୍ତୁ
 new_category_row	ନୂଆ ବର୍ଗ — ଆଇଟମ ସଞ୍ଚୟ କଲେ ତିଆରି ହେବ
 your_category	ଆପଣଙ୍କ ବର୍ଗ
 suggested_category	ପରାମର୍ଶ — ଆମ ଆଇଟମ୍‌ରୁ
 category_search_ph	ବର୍ଗ — ନିଜର ଖୋଜନ୍ତୁ ବା ନୂଆ ଲେଖନ୍ତୁ
-line_sent_state	ପଠାଗଲା
-line_nc_state	ମାଗଣା (NC) — ଶୁଳ୍କ ନାହିଁ
 cancel_item_short	ବାତିଲ
-nc_short	ମାଗଣା
-charge_again_short	ଶୁଳ୍କ
-move_short	ଘୁଞ୍ଚାନ୍ତୁ
 cancel_item_title	ଏହି ଆଇଟମ୍ ବାତିଲ କରନ୍ତୁ — ବ୍ୟାକ୍ ଅଫିସ୍ ବାତିଲ ସ୍ଲିପ୍ ପାଏ
-nc_item_title	ଏହି ଆଇଟମକୁ ମାଗଣା କରନ୍ତୁ (NC)
-charge_again_title	ଏହି ଆଇଟମର ପୁଣି ଶୁଳ୍କ ନିଅନ୍ତୁ
-move_item_title	ଏହି ଆଇଟମକୁ ଅନ୍ୟ ଟେବୁଲକୁ ଘୁଞ୍ଚାନ୍ତୁ
-already_cooked	ଆଗରୁ ରନ୍ଧା ହୋଇସାରିଛି (ନଷ୍ଟ)
-not_cooked_yet	ଏଯାଏଁ ରନ୍ଧା ହୋଇନାହିଁ
 return_to_customer	ଗ୍ରାହକଙ୍କୁ ଫେରାନ୍ତୁ
 short_by	କମ୍ ଅଛି
 tip_not_sale	ଟିପ୍ (କର୍ମଚାରୀଙ୍କ, ବିକ୍ରି ନୁହେଁ)
 right_settle	ଦେୟ ନେବା
-right_cancel_sent	ପଠାଯାଇଥିବା ଆଇଟମ ବାତିଲ କରିବା
-right_complimentary	ମାଗଣାରେ ଦେବା (NC)
-right_move_table	କାଉଣ୍ଟର ସ୍ଥାନାନ୍ତର / ମିଶାନ୍ତୁ
-right_reprint	ବିଲ୍ ପୁଣି ଛାପିବା
 right_allowed	ଅନୁମତି ଅଛି
 right_with_approval	ଅନୁମୋଦନ ସହ
 right_denied	ଅନୁମତି ନାହିଁ
@@ -1074,25 +885,11 @@ no_server_found	କୌଣସି ସର୍ଭର ମିଳିଲା ନାହି�
 servers_found_pick	ଆପଣ ସଂଯୋଗ କରିବାକୁ ଚାହୁଁଥିବା ଦୋକାନକୁ ଟ୍ୟାପ୍ କରନ୍ତୁ।
 server_host_selected	{host} ବ୍ୟବହାର — ପେୟାରିଙ୍ଗ୍ କୋଡ୍ ଦିଅନ୍ତୁ, ତାପରେ ବର୍ତ୍ତମାନ ପେୟାର୍ କରନ୍ତୁ।
 print_bill	ବିଲ୍ ଛାପନ୍ତୁ
-table_actions	କାଉଣ୍ଟର କାମ
-move_merge_table	ଟେବୁଲ ଘୁଞ୍ଚାନ୍ତୁ / ମିଶାନ୍ତୁ
-move_help	ଏହି କାଉଣ୍ଟରର ଅର୍ଡର ଏକ ଖାଲି ଟେବୁଲକୁ ନିଅନ୍ତୁ, କିମ୍ବା ଚାଲୁଥିବା ଗୋଟିଏରେ ମିଶାନ୍ତୁ।
-move_target_ph	କାଉଣ୍ଟର ନାମ
 approval_pin_ph	ମ୍ୟାନେଜର PIN (ପଚାରିଲେ ହିଁ)
-move_here	ଏଠାକୁ ଘୁଞ୍ଚାନ୍ତୁ
-merge_into	ଏଥିରେ ମିଶାନ୍ତୁ
-line_reason_ph	କାରଣ (ଯେପରି ଗ୍ରାହକ ମନ ବଦଳାଇଲେ, ଷ୍ଟକ୍ ଶେଷ)
-line_qty_ph	କେତୋଟି ବାତିଲ (ଖାଲି = ସବୁ)
-line_target_ph	ଟେବୁଲକୁ ଘୁଞ୍ଚାନ୍ତୁ (ଯେପରି D5)
 confirm	ନିଶ୍ଚିତ କରନ୍ତୁ
 menu_search_ph	ଆଇଟମ ବା ସର୍ଟ କୋଡ୍ ଖୋଜନ୍ତୁ
 customer_paid_ph	ଗ୍ରାହକ ଦେଲେ
 tip_ph	ଟିପ୍
-table_area_ph	ବିଭାଗ (ଯେପରି ଡାଇନ୍ ଇନ୍, ପାର୍ସଲ, AC)
-table_range_ph	ଏକାଥରେ ଅନେକ: D1-D20
-add_these_tables	ଏହି କାଉଣ୍ଟରଗୁଡ଼ିକ ଯୋଡ଼ନ୍ତୁ
-remove_these_tables	ଏହି କାଉଣ୍ଟରଗୁଡ଼ିକ ହଟାନ୍ତୁ
-table_remove_ph	ହଟାନ୍ତୁ: T1-T24, କିମ୍ବା ଗୋଟିଏ ଟେବୁଲର ନାମ
 find_server	ଦୋକାନର ସର୍ଭର ଖୋଜନ୍ତୁ
 bill_format	ବିଲ୍ ଫର୍ମାଟ୍
 bill_format_help	ପ୍ରତି ବିଲରେ ଆପଣଙ୍କ ଦୋକାନ ନାମ ତଳେ ଛପା ହୁଏ। ଧାଡ଼ି | ଦ୍ୱାରା ଅଲଗା କରନ୍ତୁ (ଯେପରି MG Road, Rajkot | Ph 98250 00000)।
@@ -1100,78 +897,32 @@ bill_header_ph	ଠିକଣା | ଫୋନ୍
 fssai_ph	FSSAI / ଦୋକାନ ଲାଇସେନ୍ସ ନଂ (ଇଚ୍ଛାଧୀନ)
 bill_footer_ph	ଫୁଟର୍ (ଯେପରି ଧନ୍ୟବାଦ, ପୁଣି ଆସନ୍ତୁ)
 save_bill_format	ବିଲ୍ ଫର୍ମାଟ୍ ସଞ୍ଚୟ କରନ୍ତୁ
-kot_format	ସ୍ଲିପ୍ ଫର୍ମାଟ
-kot_format_help	ତାଲିକାରେ ଏକ ଫିଲ୍ଡ ଦବାନ୍ତୁ। ଦେଖାନ୍ତୁ, ଅକ୍ଷର ଆକାର ଓ ମୋଟେଇ ଉପରେ ବଛାଯାଇଥିବା ସ୍ଲିପ୍ ପ୍ରକାରରେ ସେହି ଫିଲ୍ଡରେ ଲାଗେ। ପ୍ରତି ପ୍ରକାର ନିଜ ଆକାର ଓ ମୋଟେଇ ରଖେ।
-kot_format_fields	କ୍ଷେତ୍ର
-kot_field_next	ପରବର୍ତ୍ତୀ କ୍ଷେତ୍ର
-kot_field_show	ଦେଖାନ୍ତୁ
-kot_field_hide	ଲୁଚାନ୍ତୁ
 kot_field_on	ଦେଖାଅ
 kot_field_off	ଲୁଚାଅ
-kot_field_size	ଫଣ୍ଟ ଆକାର
-kot_field_size_ph	ଯେପରି 16, 20, 24, 28, 32…
 kot_weight_light	ହାଲୁକା
 bill_kot_panel_help	ବିଲ ସଜାଣି ଓ ବିଷୟବସ୍ତୁ ଓସାର। କ୍ୟାସିୟର ହେଉଛନ୍ତି ଯିଏ ବିଲ ଦେଲେ କିମ୍ବା ସମାଧାନ କଲେ — ପୂରା ବିକ୍ରି କାହାଣୀ ବହିରେ ରହେ।
 std_size_ph	ଯେପରି 18, 20, 26…
-kot_show_shop	ଦୋକାନ ନାମ
-kot_hide_shop	ଦୋକାନ ଲୁଚାନ୍ତୁ
-kot_show_time	ସମୟ
-kot_hide_time	ସମୟ ଲୁଚାନ୍ତୁ
-kot_show_waiter	କ୍ୟାସିୟର
-kot_hide_waiter	କ୍ୟାସିୟର ଲୁଚାନ୍ତୁ
-kot_show_station	ଷ୍ଟେସନ୍
-kot_hide_station	ଷ୍ଟେସନ୍ ଲୁଚାନ୍ତୁ
-kot_show_table	କାଉଣ୍ଟର
-kot_hide_table	ଟେବୁଲ ଲୁଚାନ୍ତୁ
-kot_show_kot_no	ସ୍ଲିପ୍ ନମ୍ବର
-kot_hide_kot_no	ଟିକେଟ ନଂ ଲୁଚାନ୍ତୁ
-kot_width	ପୂର୍ବାବଲୋକନ ଗୁଡ଼ାଇବା (ବିଷୟବସ୍ତୁ ଓସାର ସ୍ଲିପ୍ ଟ୍ୟାବରେ ସ୍ଥିର କରନ୍ତୁ)
-kot_width_58	58 mm
-kot_width_80	80 mm
-kot_kind_heading	ଟିକେଟ ପ୍ରକାର
-kot_kind_original	ମୂଳ
-kot_kind_duplicate	ନକଲ
-kot_kind_modified	ପରିବର୍ତ୍ତିତ
-kot_kind_cancelled	ବାତିଲ୍
-kot_style_heading	କ୍ଷେତ୍ର ଆକାର ଓ ଓଜନ
-kot_style_title	ଶୀର୍ଷକ
-kot_style_item_qty	ଆଇଟମ୍ · ସଂଖ୍ୟା
-kot_style_field_pick	କ୍ଷେତ୍ର ବାଛନ୍ତୁ
 kot_weight_regular	ସାଧାରଣ
 kot_weight_bold	ମୋଟା
-kot_align	ସଜାଣି
 kot_align_start	ଆରମ୍ଭ କରନ୍ତୁ
 kot_align_center	ମଝିରେ
 kot_align_end	ଶେଷରେ
 content_width	ବିଷୟବସ୍ତୁ ଚଉଡ଼ା (ମିମି)
 content_width_bill	ବିଲ ବିଷୟବସ୍ତୁ ଓସାର (mm)
-content_width_kot	ଟିକେଟ ବିଷୟବସ୍ତୁ ଓସାର (mm)
 content_width_ph	କିମ୍ବା ବିଷୟବସ୍ତୁ ଚଉଡ଼ା ଲେଖନ୍ତୁ, 40–210 ମିମି
 content_width_help	ଏହି ସ୍ଲିପ୍ କେତେ ଓସାରରେ ଛପା ହେବ। ବିଲ ନିଜ ଓସାର ରଖେ।
 content_width_bill_help	ଗ୍ରାହକ ବିଲ କେତେ ଓସାରରେ ଛପା ହେବ। ପୂର୍ବନିର୍ଦ୍ଧାରିତ 210 mm (ପୃଷ୍ଠା)। 58 mm ସଂକୀର୍ଣ୍ଣ ସ୍ଲିପ୍, 80 mm ଓସାର ସ୍ଲିପ୍, 112 mm 4-ଇଞ୍ଚ, 210 mm A4-ଓସାର। 40 ରୁ 210 ମଧ୍ୟରେ ଯେକୌଣସି ମୂଲ୍ୟ ଲେଖନ୍ତୁ। ଟିକେଟର ନିଜ ଓସାର ସ୍ଲିପ୍ ଟ୍ୟାବରେ ଅଛି।
-content_width_kot_help	ଟିକେଟ କେତେ ଓସାରରେ ଛପା ହେବ। ପୂର୍ବନିର୍ଦ୍ଧାରିତ 80 mm। 58 mm ସଂକୀର୍ଣ୍ଣ ସ୍ଲିପ୍, 80 mm ଓସାର ସ୍ଲିପ୍, 112 mm 4-ଇଞ୍ଚ, 210 mm ପୃଷ୍ଠା। 40 ରୁ 210 ମଧ୍ୟରେ ଯେକୌଣସି ମୂଲ୍ୟ ଲେଖନ୍ତୁ। ଗ୍ରାହକ ବିଲର ନିଜ ଓସାର ବିଲ ଟ୍ୟାବରେ ଅଛି।
 vp_paper_width	ବିଷୟବସ୍ତୁ ଚଉଡ଼ା (ମିମି)
 vp_paper_width_ph	କିମ୍ବା ବିଷୟବସ୍ତୁ ଚଉଡ଼ା ଲେଖନ୍ତୁ, 40–210 ମିମି
 vp_paper_width_help	ବିଷୟବସ୍ତୁ ଓସାର ବିଲ ଓ ସ୍ଲିପ୍ ଫର୍ମାଟ୍‌ରେ ସ୍ଥିର ହୁଏ — ବିଲ (ପୂର୍ବନିର୍ଦ୍ଧାରିତ 210 mm) ଓ ଟିକେଟ (ପୂର୍ବନିର୍ଦ୍ଧାରିତ 80 mm) ପାଇଁ ଅଲଗା।
-kot_size	ଅକ୍ଷର ଆକାର
-kot_size_s	ଛୋଟ
-kot_size_m	ସାଧାରଣ
-kot_size_l	ବଡ଼
 std_size	ଅକ୍ଷର ଆକାର
 kot_copies	କପି
 kot_copies_1	1
 kot_copies_2	2
 kot_copies_3	3
-kot_title_ph	ଶୀର୍ଷକ (ଖାଲି = TICKET)
-kot_footer_ph	ବ୍ୟାକ୍ ଅଫିସ୍ ଟିପ୍ପଣୀ (ଇଚ୍ଛାଧୀନ)
-kot_preview	ପୂର୍ବାବଲୋକନ
-save_kot_format	ସ୍ଲିପ୍ ଫର୍ମାଟ୍ ସଞ୍ଚୟ କରନ୍ତୁ
-test_kot_format	ପରୀକ୍ଷା ଛପା
-test_kot_sent	ଟିକେଟ ନମୁନା ପଠାଗଲା
 test_bill_format	ପରୀକ୍ଷା ବିଲ
 test_bill_sent	ବିଲ ନମୁନା ପଠାଗଲା
 test_print_no_printer	ସେହି କାମ ପାଇଁ ପ୍ରିଣ୍ଟର ନାହିଁ — ଏହି ସ୍କ୍ରିନରେ ହିଁ ଗୋଟିଏ ବାଛନ୍ତୁ
-kot_format_saved	ସ୍ଲିପ୍ ଫର୍ମାଟ୍ ସଞ୍ଚୟ ହେଲା
 std_print	ବିଲ୍ ପ୍ରିଣ୍ଟ ଆକାର
 std_print_help	OS / ଡକ୍ୟୁମେଣ୍ଟ ପ୍ରିଣ୍ଟରରେ ସାଧାରଣ ଠିଆ ଓ ଶୋଇଥିବା ବିଲ କାମ ପାଇଁ ଅକ୍ଷର ଆକାର (ପଏଣ୍ଟ ଦିଅନ୍ତୁ — ଛୋଟ/ସାଧାରଣ/ବଡ଼ ନୁହେଁ)। ଦୁଇ ଦିଗରେ ସମାନ ଆକାର।
 std_size_s	ଛୋଟ
@@ -1211,23 +962,16 @@ upi_qr	UPI QR
 show_upi_qr	UPI QR ଦେଖାନ୍ତୁ
 close_upi_qr	ବନ୍ଦ
 upi_qr_help	ଗ୍ରାହକ ସ୍କାନ୍ କରି ପେମେଣ୍ଟ କରନ୍ତି। ପେମେଣ୍ଟ ପରେ ପେମେଣ୍ଟ ନିଅନ୍ତୁ ଦବାନ୍ତୁ। ଦ୍ୱିତୀୟ ସ୍କ୍ରିନ: LAN ରେ ସର୍ଭର URL /display ଖୋଲନ୍ତୁ।
-kot_recall	ଫେରାନ୍ତୁ
 recently_done	ଏବେ ସରିଥିବା
-recall_kot_ph	ଫେରାଇବାକୁ ଟିକେଟ #
 role_help_customer	ଭୂମିକା: ଗ୍ରାହକ — AR (ସେମାନେ ଆମ ଦେଣାଦାର)। ସେହି ଫାର୍ମ ଯୋଗାଣକାରୀ ମଧ୍ୟ ହୋଇପାରେ।
 role_help_both	ଭୂମିକା: ପଠାଉଥିବା ଲୋକ + କ୍ୟାରିଅର — ଗୋଟିଏ ପାର୍ଟି, AR ଏବଂ AP ବହି, ରିପୋର୍ଟରେ ନେଟ୍।
 role_help_supplier	ଭୂମିକା: ଯୋଗାଣକାରୀ — କିଣା ପାଇଁ AP।
-dine_in_pick_table	କାଉଣ୍ଟର ଦୋକାନରେ ବ୍ୟବହୃତ ନୁହେଁ
-choose_table	କାଉଣ୍ଟର ବାଛନ୍ତୁ
-change_table	ଟେବୁଲ୍ ବଦଳାନ୍ତୁ
-pick_table_banner	ଏହି ଅର୍ଡର ପାଇଁ ଟେବୁଲ୍ ବାଛନ୍ତୁ
 items_word	ଜିନିଷ
 items_section	ଜିନିଷ
 back_to_order	ଅର୍ଡରକୁ ଫେରନ୍ତୁ
 new_items_head	ଏଯାଏଁ ପଠାଯାଇନାହିଁ
 price_ph	ଦାମ
 price_ph_gst_inside	ମୂଲ୍ୟ ({tax} ସହିତ)
-cancel_needs_table	କାଉଣ୍ଟର ବିକ୍ରି ପେମେଣ୍ଟ ନେବା ପର୍ଯ୍ୟନ୍ତ ଟିକେଟରେ ରହେ
 tax_rates_missing_hint	ଏହି ଆଇଟମ୍‌ରେ {tax} ହାର ନାହିଁ — ଆଇଟମ୍‌ରେ ଟିକସ ହାର ଦିଅନ୍ତୁ (ଦାମ ପୂର୍ବରୁ {tax} ସହ, {tax} ଅନ୍ତର୍ଭୁକ୍ତ ଅଧୀନରେ)
 taxable_value	କରଯୋଗ୍ୟ ମୂଲ୍ୟ
 gst_inside_price_note	({tax} ସହିତ)
@@ -1248,30 +992,11 @@ client_template_confirm	{title} ରୁ {d}ଟି ଆଇଟମ୍ ଯୋଡ଼ି
 client_template_importing	{title} ଆମଦାନି…
 client_template_done	{title} ର ପ୍ରତି ଆଇଟମ୍ ଆପଣଙ୍କ ଆଇଟମ୍‌ରେ ଅଛି।
 client_template_imported	{title} ରୁ {d}ଟି ଆଇଟମ୍ ଓ {c}ଟି ବର୍ଗ ଯୋଡ଼ାଗଲା
-resv_heading	ସଂରକ୍ଷଣ
-resv_name_ph	ଗ୍ରାହକ ନାମ
-resv_phone_ph	ଫୋନ୍ (ଇଚ୍ଛାଧୀନ)
-resv_guests_ph	ଲୋକ
-resv_when_ph	କେବେ — 20:30, tomorrow 13:00
-resv_table_ph	କାଉଣ୍ଟର (ଇଚ୍ଛାଧୀନ)
-resv_add	ବୁକ୍ କରନ୍ତୁ
-resv_seat	ବସିଲେ
-resv_none	କୌଣସି ଆସନ୍ତା ବୁକିଂ ନାହିଁ।
-guests_word	ଅତିଥି
-delivery_by_ph	ଡେଲିଭରି କିଏ ନେବେ (ରାଇଡର କିମ୍ବା କର୍ମଚାରୀ)
-kitchen_all_day	ଏବେ ରାନ୍ଧିବାକୁ: {items}
-split_bill	ବିଲ୍ ବାଣ୍ଟନ୍ତୁ
-split_go	ଅଲଗା ବିଲ୍ କରନ୍ତୁ
 cancel	ବାତିଲ୍
 opening_client	କ୍ଲାଏଣ୍ଟ ଖୋଲୁଛି…
 preparing_desk	ଡେସ୍କ ପ୍ରସ୍ତୁତ ହେଉଛି…
 opening_server	ସର୍ଭର ଖୋଲୁଛି…
 creating_server	ସର୍ଭର ତିଆରି ହେଉଛି…
-split_help	ଜଣେ ଗ୍ରାହକ ଯେଉଁ ଆଇଟମ୍‌ର ଦାମ ଦେବେ ତାହା ଦବାନ୍ତୁ · {n}ଟି ବଛା
-split_send_first	ପ୍ରଥମେ ସ୍ଲିପ୍ ପଠାନ୍ତୁ — କେବଳ ବ୍ୟାକ୍ ଅଫିସ୍‌ରେ ପହଞ୍ଚିଥିବା ଆଇଟମ୍ ଅଲଗା ବିଲକୁ ଯାଇପାରେ
-split_pick_some	ପ୍ରଥମେ ଅଲଗା ବିଲର ଆଇଟମ୍ ଦବାନ୍ତୁ
-split_done	ଅଲଗା ବିଲ ହେଲା — ଏହା ଚଟାଣରେ ଏହି କାଉଣ୍ଟର ପାଖରେ ଅଛି
-split_marked	ଅଲଗା ବିଲ୍
 order_empty_pick	ଅର୍ଡର ଖାଲି — ଆଇଟମ୍ ବାଛିବାକୁ ଉପରେ ଆଇଟମ୍ ଯୋଡ଼ନ୍ତୁ ଦବାନ୍ତୁ।
 add_dishes	ଆଇଟମ୍ ଯୋଡ଼ନ୍ତୁ
 order_so_far	ଏହି ଅର୍ଡରରେ: {n} · {total}
@@ -1282,24 +1007,8 @@ pick_done_dd	ହୋଇଗଲା · {label}
 printer_route_mode	ଏହି ସ୍ଥାନରେ ଅନେକ ପ୍ରିଣ୍ଟର ଥିଲେ
 printer_mode_first	ଯାହା ପ୍ରଥମେ ଚାଲେ
 printer_mode_all	ସବୁଥିରେ ଛାପନ୍ତୁ
-kot_show_area	ଅଞ୍ଚଳ
-kot_hide_area	ଅଞ୍ଚଳ ଲୁଚାନ୍ତୁ
-kot_show_item_hdr	ଆଇଟମ୍ · ସଂଖ୍ୟା
-kot_hide_item_hdr	ସ୍ତମ୍ଭ ଲୁଚାନ୍ତୁ
-kot_show_title	ଶୀର୍ଷକ ଧାଡ଼ି
-kot_hide_title	ଶୀର୍ଷକ ଲୁଚାନ୍ତୁ
-kot_field_order	ଛପା କ୍ରମ
 kot_field_up	ଉପରକୁ ନିଅନ୍ତୁ
 kot_field_down	ତଳକୁ ନିଅନ୍ତୁ
-kot_field_cycle	ପରବର୍ତ୍ତୀ ବାଛନ୍ତୁ
-kot_field_select	ପରବର୍ତ୍ତୀ ବାଛନ୍ତୁ
-kot_field_time	ସମୟ
-kot_field_kot_no	ସ୍ଲିପ୍ ନମ୍ବର
-kot_field_area	ଅଞ୍ଚଳ
-kot_field_table	କାଉଣ୍ଟର
-kot_field_shop	ଦୋକାନ ନାମ
-kot_field_waiter	କର୍ମଚାରୀ
-kot_field_station	ଷ୍ଟେସନ୍
 app_template_blurb_extra	ସହିତ: ମାଲିକ ଜହିର, ଆଡମିନ୍ ଆସିଫ୍, କ୍ୟାସିୟର ନୱାଜ୍; ଆଗ ସାଇଡବାର୍; 4 ଘଣ୍ଟା ପରେ ଇତିହାସ; ଆଜିର ପଟି ବନ୍ଦ; ଛୋଟ ବିଲ।
 dishes_n	{n}ଟି ଆଇଟମ୍
 recipe_ph	ରେସିପି (ଇଚ୍ଛାଧୀନ — କାଉଣ୍ଟର ଦୋକାନରେ ବ୍ୟବହୃତ ନୁହେଁ)
@@ -1309,8 +1018,6 @@ low_stock_alert	କମୁଛି — ଶୀଘ୍ର କିଣନ୍ତୁ: {item
 unpriced_note	ଆପଣଙ୍କ {n}ଟି ଆଇଟମ୍‌ର ଏପର୍ଯ୍ୟନ୍ତ ଦାମ ନାହିଁ — ଦାମ ଦେବା ପର୍ଯ୍ୟନ୍ତ ସେଗୁଡ଼ିକ 0 ରେ ବିଲ ହୁଏ।
 show_unpriced	କେବଳ ଦାମ ବିନା ଆଇଟମ୍ ଦେଖାନ୍ତୁ
 show_all_dishes	ସବୁ ଆଇଟମ୍ ଦେଖାନ୍ତୁ
-role_waiter	କ୍ୟାସିୟର
-role_kitchen	ଷ୍ଟୋର
 role_title_rest_ph	ପଦ (ଯେପରି କ୍ୟାପଟେନ, ମୁଖ୍ୟ ରୋଷେୟା)
 preset_help_rest	କ୍ୟାସିୟର: ବିକ୍ରୟ। ମ୍ୟାନେଜର: ବିକ୍ରୟ + ଆଇଟମ୍ + ବାତିଲ/ସଂଶୋଧନ।
 kind_raw	ଦୋକାନ ବ୍ୟବହାର ପାଇଁ କିଣାଯାଇଥିବା

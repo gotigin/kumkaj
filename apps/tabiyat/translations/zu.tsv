@@ -80,28 +80,6 @@ applied	Kusetshenzisiwe
 note_ph	Inothi (uyazikhethela)
 rounded	I-ROUNDED
 split	Hlukanisa
-send_kot	Thumela isiliphu
-send_kot_to	Thumela → {kitchens}
-send_kot_again	Engeza izinto zesiliphu esilandelayo
-send_kot_held	Izinto ezibanjiwe — yeka ukuze uzithumele
-reprint_kot	Ukuphrinta kukhethiwe futhi
-reprint_kot_ok	Izinto ze-{n} eziphrintiwe futhi · {slips} iziliphu → {kitchens}
-reprint_kot_needed	Thumela isiliphu kuqala - bese ufaka imithi bese uphrinta ekhethiwe futhi
-reprint_kot_none_selected	Yonke into ethunyelwe yeqiwa — thepha okuthi Phrinta kulezo ozophinde uziphrinte
-reprint_kot_client	Phrinta futhi ({n}) kokuthi {place} ithunyelwe — idivayisi yesitolo iyayiphrinta
-print_cancelled_kot	Ukuphrinta kukhanseliwe
-print_cancelled_kot_ok	Izinto ezikhanseliwe ze-{n} eziphrintiwe · Isiliphu se-{slips} → {kitchens}
-print_cancelled_kot_needed	Vula itafula elinezinto ezikhanseliwe kuqala
-print_cancelled_kot_none	Azikho izinto ezikhanseliwe kuleli oda
-print_cancelled_kot_client	Ukuphrinta kukhanseliwe ({n}) kokuthi {place} kuthunyelwe — idivayisi yesitolo iyayiphrinta
-kot_banner	Isibhengezo esinomusa
-kot_banner_ph	Isibhengezo (singenalutho = akukho)
-kot_item_prefix	Isiqalo sento yemenyu
-kot_item_prefix_ph	isib. [KUKHANSISIWE]
-kot_strike	Igama lento yesiteleka
-kot_strike_note	Inothi lento yesiteleka
-kot_strike_on	Vuliwe
-kot_strike_off	Valiwe
 bill_item_layout	Isakhiwo sento yemenyu
 bill_item_layout_columns	Amakholomu
 bill_item_layout_stacked	Kustakiwe
@@ -130,8 +108,6 @@ bill_item_gap_em	Igebe (em)
 bill_item_qty_min	Imizuzu engamashumi amabili (em)
 bill_item_price_min	Inani elincane (em)
 bill_item_amount_min	Inani elincane (em)
-kot_item_qty_width	Ikholomu engu-Qty
-kot_item_num_align	Qondanisa inani
 bill_total_qty_label	Isamba selebula ye-qty
 bill_total_subtotal_label	Isamba selebula engaphansi
 bill_total_grand_label	Ilebula ephelele ephelele
@@ -143,36 +119,9 @@ bill_item_piece_off	Valiwe
 bill_total_qty	Isamba se-qty
 bill_total_subtotal	Isamba esincane
 bill_total_grand	Isamba esikhulu
-reprint_incl	Iyaphrinta
-reprint_skip	Yeqa
-reprint_skip_meta	Yeqa ukuphrinta kokuthola
-kot_dest_hint	Amaphrinta kumaphrinta owanikeze wona {kitchens} kokuthi Izilungiselelo → Amaphrinta
-kot_sent_hint	Kugcine ukuthunyelwa ku-{kitchens}. Thepha ukuze wengeze izinto zebhili elandelayo — noma Phrinta isiliphu futhi ukuze uthole yona efanayo.
-kot_sent_printing	Isiliphu sithunyelwe ku-{kitchens} — siyaphrinta
-kot_sent_not_printed	Isiliphu sithunyelwe ku-{kitchens} kodwa ASIphrintiwe: {why}. Tshela isitolo, bese ulungisa iphrinta bese uyiphrinta futhi.
-kot_sent_screen	Isiliphu sithunyelwe ku-{kitchens}
-kot_queued_shop	Isiliphu se-{place} → {kitchens} silondoloziwe; idivayisi yesitolo iyayiphrinta
-kot_job_label	Slip ku-{place} → {kitchens}
-kot_job_reached	Ukushelela kwe-{place} kufinyelele ku-{kitchens}
 kot_unassigned	Akunikeziwe
-kot_unassigned_held	Ibambe izinto ze-{n} ngaphandle kwesiteshi — yeka ukubamba kulayini ukuze uyithumele
-kot_station_ph	Isiteshi
-kot_station_dd	Isiteshi
-kot_station_dd_n	Station · {stations}
-kot_set_station	Sebenzisa lesi siteshi
-kot_station_applied	Isiteshi sisethwe ezintweni ze-{n}: {station}
-kot_station_cleared	Isiteshi sisuliwe ezintweni ze-{n}: {station}
-kot_station_needed	Khetha ingxenye ye-dispensary kuqala
-kot_station_not_allowed	Ayivunyelwe ukusebenzisa isigaba: {station}
-kot_station_none	Azikho iziteshi okwamanje — azikasetshenziswa ekhawunteni (Izilungiselelo → Izindawo uma kudingeka)
 pos_tab_items	Kwengezwe izinto zemenyu
 pos_tab_payment	Inkokhelo
-hold_send	Bamba ekhishini
-hold_send_on	Ibanjiwe
-hold_send_meta	Ibanjiwe - hhayi kulesi siliphu
-station_remove	Susa isiteshi
-station_remove_ph	Thepha isiteshi ohlwini ukuze usisuse
-station_removed	Isiteshi sisusiwe: {name}
 settings_hub_title	Izilungiselelo
 settings_hub_help	Vula indawo eyodwa ngesikhathi — ukuskrola okuncane, ukukhetha okucacile.
 settings_back	Emuva
@@ -181,12 +130,10 @@ settings_sec_country	Izwe nentela
 settings_sec_tills	Amanye amadivaysi
 settings_sec_brand	Ibhrendi yakho
 settings_sec_units	Amayunithi nokuguqulwa
-settings_sec_pickers	Izindawo · iziteshi · amanani entela
+settings_sec_pickers	Amanani entela
 settings_sec_printers	Amaphrinta
 settings_sec_bill	Ifomethi yeBill & Slip
 settings_sec_selling	Amasu nokuthengisa
-bill_kot_tab_bill	Ibhili yesivakashi sesivakashi
-bill_kot_tab_kot	Slip
 settings_sec_alerts	Izexwayiso
 alerts_help	Imilayezo yesimo ihlala isikhathi esingakanani esikrinini kuwe (lokhu kungena ngemvume).
 snack_secs_ph	Amasekhondi (3–60, okuzenzakalelayo 10)
@@ -237,8 +184,6 @@ counter	Ikhawunta
 dine_in	Ikhawunta
 takeaway	I-Takeaway
 order	I-oda yokudlela
-tables	Izinto zokubala
-kitchen	Izigaba
 sales	Ukuthengisa
 sales_refunds	Ukuthengisa nokubuyiselwa imali
 day_close	Ukuvalwa kosuku
@@ -266,10 +211,6 @@ zero_sales_on	Vumela ₹0
 zero_sales_off	Idinga inani
 zero_sales_saved_on	Ukuthengiswa kwenani eliziro kuvunyelwe
 zero_sales_saved_off	Ukuthengisa kufanele kube nenani elingaphezu kuka-R0
-floor_areas_help	Izindawo zingamagumbi noma izindawo eziphansi (Dine In, Parcel, AC ...). Faka indawo kuqala, bese ubeka izinto zokubala kuyo - indawo ngayinye iyiqembu elihlukile phansi.
-area_new_ph	Indawo / igumbi elisha (isb. AC, Garden)
-add_area	Engeza indawo
-area_added	Indawo “{name}” isilungile — engeza izinto zokubala kuyo
 no_favorites	Azikho izintandokazi okwamanje — engeza izinto zemenyu ohlwini olungezansi.
 add_to_bill	Engeza kubhili yesivakashi
 added	Kwengeziwe
@@ -280,19 +221,9 @@ chip_missing_customer	Ikhasimende elikhethiwe alikho — khetha futhi
 chip_no_customer	Alikho ikhasimende okwamanje — thayipha igama, bese uthepha okuthi Ikhredithi
 credit_summary_fmt	{} amakhasimende · ikhredithi evulekile {} · intuthuko ebanjiwe {}
 recent_label	Kwakamuva:
-kot_new_waiting	OKUSHA — ukulinda
-kot_preparing	IYALUNGISA
-kot_ready_serve	READY — yiphakele
-kot_done_cap	KWENZIWE
-kot_cancelled	KHANSISIWE
-kot_start_btn	Qala
-kot_mark_ready	Maka ngomumo
-kot_done_btn	Kwenziwe
-table_free	Akunamuntu — thepha ukuze uqale i-oda
 start_order	Qala i-oda
 open_bill	Vula ibhili yesivakashi
 collect_payment	Qoqa inkokhelo
-table_running	Ukugijima
 payment_pending	Inkokhelo ilindile
 collect_at_counter	ukuqoqa at counter
 inventory	Impahla
@@ -325,7 +256,6 @@ ok	OK
 this_shop	Imodi yeseva
 extra_till	Imodi yeklayenti
 off	Valiwe
-tables_kitchen	Isakhiwo sesitolo
 server	Imodi yeseva
 client	Imodi yeklayenti
 language_currency	Ulimi nemali
@@ -367,8 +297,6 @@ add_item_plain	Engeza into yemenyu
 add_note	Engeza inothi
 add_opening_balance	Engeza ibhalansi yokuvula
 add_staff	Engeza abasebenzi
-add_station	Engeza isiteshi
-add_table	Engeza itafula lokudlela
 add_unit	Engeza iyunithi
 add_use_name	Faka / sebenzisa leli gama
 allow_extra_tills	Vumela amarejista emali eyengeziwe
@@ -421,7 +349,6 @@ share_whatsapp	Yabelana WhatsApp
 lan_pages_heading	Amakhasi ekhasimende ku-Wi-Fi
 lan_pages_help	Ku-Wi-Fi yalesi sitolo, amakhasi ekhasimende asebenzela ibhodi lokubonisa kanye nempendulo. Abantu abakudatha yeselula badinga i-Cloud kamuva. Itheminali yekhadi noma isixhumanisi sokukhokha siyinketho futhi ayilokothi ivimbe ikhawunta.
 diag_send_heading	Yabelana ngale divayisi
-kot_dest_heading	Isiteshi
 optional_login_heading	Ukungena ngemvume ngokuzithandela
 rights_heading	Amalungelo
 ops_panel	Ama-op wendawo
@@ -448,28 +375,6 @@ till_voucher_amt_ph	Inani levawusha (elingenalutho = konke)
 till_wallet_topup_ph	Isamba se-wallet esiphezulu
 till_voucher_issue_amt_ph	Khipha inani levawusha
 till_voucher_issue_code_ph	Ikhodi yevawusha entsha
-split_evenly	Hlukanisa ngokulinganayo
-waitlist	Uhlu lokulinda
-fire_course	Isinyathelo esilandelayo
-hold_item	Bamba ekhishini
-waiter_call	Shayela othatha imali
-waitlist_add	Engeza ohlwini lokulinda
-floor_view_grid	Igridi
-floor_view_layout	Isakhiwo
-floor_layout_x	X
-floor_layout_y	Y
-floor_layout_w	W
-floor_layout_h	H
-floor_layout_save	Londoloza isakhiwo
-floor_layout_open	Vula itafula lokudlela
-floor_layout_edit	Hlela isakhiwo
-floor_layout_pick	Thepha itafula lokudlela ukuze uhlele isakhiwo salo
-floor_layout_saved	Isakhiwo silondoloziwe
-floor_layout_nudge_left	← 20
-floor_layout_nudge_right	→ 20
-floor_layout_nudge_up	↑ 20
-floor_layout_nudge_down	↓ 20
-sibling_pickers_help	Thepha okuthi Vuliwe/Vala njengamayunithi — fihla izindawo, iziteshi, namazinga entela kubakhethi bansuku zonke; hlala okuzenzakalelayo kwephakethe.
 bulk_price_apply	Faka inani lenqwaba
 card_terminal_optional	Itheminali yekhadi / isixhumanisi sokukhokha (uyazikhethela uma i-inthanethi itholakala)
 copy_report	Kopisha umbiko
@@ -495,7 +400,6 @@ import_day	Ngenisa usuku
 import_items_csv_plain	Ngenisa izinto zemenyu CSV…
 import_parties_csv	Ngenisa amakhasimende nabahlinzeki CSV…
 item_name	Igama lento yemenyu
-kitchen_printing	Amaphrinta
 login_id_ph	Igama lomsebenzisi
 mark_cleared	Umaka usuliwe
 new_party_clear	Ikhasimende elisha noma umphakeli (ifomu elicacile)
@@ -565,15 +469,6 @@ show	Bonisa
 spreadsheet_csv	Isipredishithi (CSV)
 start_fresh	Qala kabusha
 stop_extra_tills	Misa amarejista emali eyengeziwe
-floor_cols_ph	Amakholomu
-floor_cols_fit	Isikrini se-Fit
-floor_cols_fit_sub	{n} ngena lapha
-floor_cols_fits	kuyalingana
-floor_cols_scroll	ipheqa emaceleni
-floor_cols_min	Amakholomu: okungenani 1 — noma uyishiye ingenalutho ukuze ilingane esikrinini
-floor_zoom_auto	Okuzenzakalelayo
-floor_zoom_out	Hlehlisa isithombe
-floor_zoom_in	Sondeza isithombe
 backup_auto	Kwenziwe isipele ngokuzenzakalela nsuku zonke · okokugcina {when} · izinsuku zokugcina eziyi-14 zigcinwa kokuthi {dir}.
 backup_auto_none	Yenziwa isipele ngokuzenzakalelayo nsuku zonke — eyokuqala iqalisa ngemva kwesikhashana.
 backup_copy_to	Amakhophi aya kokuthi {dir}.
@@ -591,7 +486,6 @@ new_pair_code	Ikhodi yokumatanisa entsha
 pair_finishing	Ipheya yokuqeda… kusetshenziswa amaleja esitolo
 pair_opening	Ivula irejista yemali...
 pair_copied	Ikhodi yokumatanisa ikopishiwe
-kot_waiting	Ilinde ukuthumela
 lan_offline_waiting	Iseva yesitolo ayifinyeleleki · {n} ilindile
 lan_connecting	Ixhumeka esitolo...
 lan_live	Phila
@@ -633,7 +527,6 @@ printers_routes_help	Thola amaphrinta isistimu yokusebenza evele iwazi. Yabela k
 printer_assign_dd	Iphrinta yangempela: {place}
 printer_assign_pick	Khetha iphrinta yangempela
 printer_profile_heading	Isakhiwo
-printer_send_heading	Ukulethwa
 vp_delivery_heading	Ukulethwa
 vp_delivery_help	Le phrinta ebonakalayo iyithumela kanjani imisebenzi — idokhumenti ye-OS, amabhayithi aluhlaza, noma i-ESC/POS. Okuqukethwe kwe-slip (usayizi wohlobo, ukugoqa, amamajini) kunqunywa ifomethi yebhili / Slip, hhayi lapha.
 vp_type_size_heading	Uhlobo losayizi
@@ -677,23 +570,13 @@ virtual_draft_send	Inani limiselwe iphrinta elandelayo ebonakalayo
 virtual_need_real	Khetha iphrinta yangempela kuqala
 virtual_need_select	Khetha iphrinta ebonakalayo ozoyisusa
 real_printer_selected	Okukhethiwe: {name}
-station_group_heading	Amaphrinta abonakalayo
-station_group_apply	Susa iphrinta ebonakalayo
-station_group_applied	Kususiwe
-station_group_empty	Khetha iphrinta ebonakalayo
-station_group_name_ph	Igama lephrinta ebonakalayo (ongakukhetha)
-station_group_save	Dala iphrinta ebonakalayo
-station_group_saved	Iphrinta ebonakalayo ilondoloziwe
-station_manage_heading	Engeza noma susa ingxenye ye-dispensary
 printers_routes_heading	Lapho izinto ziphrinta khona
 route_pick_heading	Indawo
 route_editing	Ukuhlela: {name}
 route_assigned	Kwengezwe {printer} kokuthi {place}
 route_already_assigned	Kakade ikule ndawo: {printer}
-route_removed	Kususiwe {printer} kokuthi {place}
 route_cleared	Suliwe {name}
 route_assigned_empty	Akukho kule ndawo
-route_tap_remove	thepha ukuze ususe
 route_tap_select	thepha ukuze ukhethe
 route_tap_selected	kukhethiwe
 route_pick_printer_first	Thepha iphrinta kuqala
@@ -714,35 +597,17 @@ printer_format_custom	Iphrofayela entsha yangokwezifiso
 printer_format_custom_label	Ngokwezifiso
 printer_format_custom_added	Iphrofayela yangokwezifiso yengezwe kule ndawo
 add_printer	Engeza iphrinta
-remove_printer	Susa
 route_pick_ph	Umthethosivivinywa noma ingxenye ye-dispensary
 route_bill	Ibhili yesivakashi sesivakashi
-route_default_kitchen	Asikho isiteshi (izinto ezingabelwe)
-route_kot_station	Isiteshi
 route_dont_print	Ayikho iphrinta
-stations_heading	Iziteshi
-stations_help	Izigaba ze-dispensary ziqoqa imithi kanye namaphrinta aleyo ngxenye yesitolo. Namathisela amaphrinta asuka kokuthi Izilungiselelo → Amaphrinta, setha i-oda lokuzama, bese Kokuqala okusebenzayo noma Phrinta kukho konke. Izinguquko zilondoloza njengoba uhamba.
-station_print_heading	Amaphrinta alesi siteshi
-station_print_help	Khetha isiteshi, bese unamathisela iphrinta eyodwa noma ngaphezulu. ↑↓ isetha i-oda lokuzama. Okokuqala okusebenzayo kuyama ngemva kwempumelelo yokuqala; Phrinta kukho konke okuthunyelwe kuyo yonke iphrinta enamathiselwe.
-station_print_pick_ph	Isiteshi sokusetha amaphrinta
 station_print_pick_first	Khetha ingxenye ye-dispensary kuqala
-station_print_editing	Ukuhlela amaphrinta okuthi “{name}”
-station_vps_dd	Amaphrinta alesi siteshi
-station_vps_dd_n	{n} amaphrinta · thepha ukuze ushintshe
 station_vps_empty	Awekho amaphrinta okwamanje — Wathole ngaphansi kokuthi Izilungiselelo → Amaphrinta
 bill_printers_dd	Amaphrinta webhili yesivakashi
 bill_printers_dd_n	{n} amaphrinta webhili yesivakashi · thepha ukuze ushintshe
-job_layout	Isakhiwo
-job_delivery	Umsebenzi uthunyelwa kanjani
-job_delivery_help	Idokhumenti ye-OS, amabhayithi aluhlaza, noma i-ESC/POS. Ibhili kanye nethikithi ngayinye igcina eyakhe. Noma yimuphi umsebenzi ungaya kunoma iyiphi iphrinta Thola elondoloziwe.
 station_vp_attached	Iphrinta inamathiselwe
 station_vp_detached	Iphrinta ikhishiwe esiteshini
-station_print_summary	{mode} · {n} amaphrinta
-station_print_summary_none	Awekho amaphrinta kulesi siteshi okwamanje — ngeke siphrinte
-stations_none	Azikho iziteshi okwamanje - engeza esisodwa ngezansi. Iziteshi azisetshenziswa ekhawuntareni - shiya kungenalutho.
 route_up	Phezulu
 route_down	Phansi
-route_remove	Susa
 route_clear	Kucace
 save_printers	Londoloza amaphrinta
 print_test_page	Phrinta ikhasi lokuhlola
@@ -751,23 +616,15 @@ test_page_no_printer	Ayikho iphrinta ye-{place} — namathisela iphrinta kuyo, b
 test_page_pick_first	Khetha amaphrinta wekhasi lokuhlola kuqala — bese Uphrinta ikhasi lokuhlola
 test_printers_dd	Amaphrinta wekhasi lokuhlola
 test_printers_dd_n	{n} amaphrinta wekhasi lokuhlola · thepha ukuze ushintshe
-kot_test_printers_dd	Amaphrinta okuhlola ukuphrinta
-kot_test_printers_dd_n	Amaphrinta we-{n} wokuphrinta kokuhlola · thepha ukuze ushintshe
 test_printer_picked	Hlola ku-: {name}
 test_printer_cleared	Ayihloli ku: {name}
 test_page_sent_n	Ikhasi lokuhlola lithunyelwe {n} kumaphrinta
-test_kot_pick_first	Khetha amaphrinta wokuphrinta kokuhlola kuqala — bese uphrinta ukuhlola
-test_kot_sent_n	Ukuphrinta kokuhlola kuthunyelwe kumaphrinta we-{n}
-cancel_pick	Maka
-cancel_pick_on	Imakiwe
-cancel_pick_meta	Imakwe ukuthi ikhanselwe
 batch_cancel	Ukukhansela kumakiwe
 batch_cancel_n	Khansela okumakiwe ({n})
 batch_cancel_none	Maka into eyodwa noma ngaphezulu ethunyelwe kuqala — bese kuthi Khansela imakwe
 batch_cancel_title	Khansela imithi ephawuliwe - isizathu esisodwa, isiliphu esisodwa sokukhansela isigaba ngasinye
 batch_cancel_ok	Izinto ze-{n} zikhanseliwe · Isiliphu sokukhansela se-{slips} → {kitchens}
 batch_cancel_ok_noprint	Izinto ze-{n} zikhanseliwe — ukuphrinta okuzenzakalelayo kuvaliwe, ngakho-ke asikho isiliphu sokukhansela
-no_printer_kitchen_station	Ayikho iphrinta yaleso siteshi
 printers_saved	Kulondoloziwe
 test_page_sent	Ikhasi lokuhlola lithunyelwe — hlola iphrinta
 test_page_sent_one	Ikhasi lokuhlola lithunyelwe ku-{name} — hlola leyo phrinta
@@ -783,10 +640,7 @@ cancelled	Kukhanseliwe
 printers_tap_find	Thepha okuthi Thola ukuze ufake kuhlu amaphrinta le divayisi engawasebenzisa.
 printers_none_found	Akukho okutholakele — thayipha igama lephrinta yesistimu noma i-IP (isb. 192.168.1.50).
 printer_from_find	Kwengezwe {name}
-kot_printer_ph	Iphrinta yeziliphu
 bill_printer_ph	Iphrinta yezikweletu zezivakashi
-kot_print_on	Amathikithi okuphrinta ngokuzenzakalelayo: Vuliwe
-kot_print_off	Amathikithi aphrinte ngokuzenzakalelayo: Avaliwe
 queue_refused	Akwamukelwe isitolo ({n}) — hlola ngayinye ekhawuntarini:
 clear_not_accepted	Ihloliwe - sula lolu hlu
 device_name_ph	Igama lale divayisi
@@ -797,7 +651,6 @@ backup_failed	Ukwenza isipele okuzenzakalelayo kokugcina kwehlulekile: {e}
 backup_overdue	Asikho isipele sezinsuku ezingu-{n} — gcina uhlelo lokusebenza luvuliwe kule divayisi ukuze lukwazi ukwenza isipele.
 disk_low	Kuphela {mb} MB mahhala kule divayisi — izipele zizohluleka maduzane. Khulula isikhala.
 last_seen_devices	Ugcine ukubonwa: {time}
-sync_interval	Vumelanisa njalo {secs}s
 connection_to_shop	Ukuxhumana esitolo
 supplier_name_ph	Igama lomhlinzeki (noma ikhasimende)
 supplier_ph	Umphakeli
@@ -860,7 +713,6 @@ fresh_book_tabiyat	Okusha = ikhathalogi engenalutho (engeza izinto kamuva). Incw
 fresh_selected	Okusha okukhethiwe — ikhathalogi ihlala ingenalutho. Thepha okuthi Kwenziwe uma usulungile.
 gross_word	Ingqikithi
 how_start	Ufuna ukuqala kanjani?
-kot_print_help_tabiyat	Ayisetshenziswa kwikhawunta yesitolo.
 later_country_pack	Kamuva: Izilungiselelo → sebenzisa iphekhi yezwe lakho ukuze uthole amalebula entela namalebula okukhokha.
 local_badge	INDAWO
 mix_type_hint_tabiyat	Hlukanisa ukheshi / UPI / ikhadi / isikweletu uma kudingeka. Ikhredithi idinga ikhasimende ngenhla.
@@ -911,8 +763,6 @@ staff_copy_need_source	Khetha ukuthi ukusethwa kukabani ozokopisha
 staff_copy_same	Lowo ngumuntu ofanayo - khetha omunye umuntu
 staff_rename_need_selected	Khetha ukuthi ubani ozoqamba kabusha kuqala
 team_pick_hint	Khetha ukuthi ubani ozomhlela — izikrini, amalungelo emali, neziteshi zivela kulowo muntu kuphela.
-team_stations_help	Iziteshi abangazisebenzisa
-team_stations_changed	Iziteshi zishintshile — Londoloza ukusethwa kwalo muntu
 team_features_changed	Izikrini zishintshile — Londoloza ukusethwa kwalo muntu
 team_rights_changed	Amalungelo ashintshile — Londoloza ukusethwa kwalo muntu
 they_owe_us	Bayasikweleta
@@ -996,9 +846,6 @@ service_pct_ph	Isevisi % ngokuzikhethela 0/10/12
 short_code_ph	Ikhodi emfushane (MG02)
 starting_password_ph	Iphasiwedi yokuqala (ongakukhetha)
 starting_pin_ph	Iqala PIN (amadijithi angu-4–12)
-station_name_ph	Igama lesiteshi (uyazikhethela)
-station_new_ph	Isigaba (ongakukhetha)
-table_name_ph	Ikhawunta / igama le-bay
 tax_rate_ph	Igama lesilinganiso sentela noma i-% — Okujwayelekile, Kwehlisiwe, 0, 5, 12, 18, 20
 to_code_ph	Ikhodi (kg)
 uncleared_no_ph	Akucaciswanga # ngenhla
@@ -1011,27 +858,8 @@ book_kind_month	Amaleja enyanga
 book_kind_aging	Okusasele / debit-credit
 book_kind_balance	Ibhalansi
 order_help	Thepha into yemenyu ukuze uyengeze.
-floor_help	Lesi sitolo sidayisa ekhawuntani. Amatafula nendawo yokudlela akuyona ingxenye yeTabiyat.
-kitchen_help	Ayisetshenziswa kwikhawunta yesitolo.
-kitchen_empty	Awekho amathikithi avuliwe (izitolo zamakhawunta ngokuvamile zishiya lesi sikrini singasetshenziswa).
-add_a_table	Engeza itafula lokudlela
-add_station_heading	Engeza ingxenye ye-dispensary
 categories_help	Thepha okuthi Sebenzisa ukuze ufake into yemenyu ngenhla ngaphansi kwaleso sigaba. Isithombe sinikeza isigaba isithombe; ngaphandle kweyodwa ikhombisa ama-initials ayo.
 dish_search_ph	Sesha igama, usawoti noma ibhakhodi...
-tile_free	Akunamuntu
-tile_occupied	Kumatasatasa
-tile_food_ready	Ukudla sekulungile
-tile_bill_printed	Ibhili yesivakashi sesivakashi iphrintiwe
-tile_paid	Ikhokhiwe
-tile_bill_btn	Ibhili yesivakashi sesivakashi
-tile_occupy_btn	Hlala izivakashi
-tile_free_btn	Phuma etafuleni lokudlela
-tile_ready_btn	Phuma etafuleni lokudlela
-tile_undo_bill	Hlehlisa ibhili yesivakashi
-summary_busy	amatafula okudlela amatasatasa
-summary_to_collect	ukuqoqa
-summary_on_floor	endlini yokudlela
-floor	Thenga
 sizes_as_items_ph	Osayizi njengezinto zemenyu ezihlukene (uyazikhethela) — Half=120, Full=200
 dish_group_ph	Iqembu lamandla / lephakethe (uyazikhethela) — isb. Umthamo we-500 mg
 discount	Isaphulelo
@@ -1039,7 +867,6 @@ remove_discount	Susa isaphulelo
 apply_discount	Faka isaphulelo
 save_opening_cash	Yonga imali yokuvula
 close_shift_print	Vala i-shift bese uphrinta isiliphu
-area_prices_ph	Izintengo zendawo (uma uthanda) — AC=220, Parcel=210
 discount_ph	10% noma 50
 discount_reason_ph	Isizathu (isb. isivakashi esivamile, ukudla kwakamuva)
 opening_float_ph	Imali ifakwe edroweni namhlanje ekuseni
@@ -1049,34 +876,18 @@ shift_handover	Shift ukunikezela
 shift_since	Lokhu kushintsha kusukela
 expected_in_drawer	Kulindelwe ekhabetheni
 right_discount	Nikeza isaphulelo
-floor_in_kitchen	Kuyaqhubeka
-floor_eating	Iphakiwe
 pick_category	Khetha isigaba
 close_category_list	Vala uhlu lwesigaba
 new_category_row	Isigaba esisha — sidalwe uma ugcina into yemenyu
 your_category	Isigaba sakho
 suggested_category	Okuphakanyisiwe - kusuka ezintweni zethu
 category_search_ph	Isigaba — sesha eyakho noma thayipha entsha
-line_sent_state	Ithunyelwe
-line_nc_state	I-Complimentary (NC) — ayikhokhiswa
 cancel_item_short	Khansela
-nc_short	NC
-charge_again_short	Shaja
-move_short	Hambisa
 cancel_item_title	Khansela le nto — ihhovisi elingemuva lithola isiliphu sokukhansela
-nc_item_title	Yenza le nto yemenyu ithokomele (NC)
-charge_again_title	Shaja le nto yemenyu futhi
-move_item_title	Hambisa le nto yemenyu kwelinye itafula lokudlela
-already_cooked	Sekuphekiwe (wastage)
-not_cooked_yet	Ayikaphekwa
 return_to_customer	Buyela kukhasimende
 short_by	Kafushane nje
 tip_not_sale	Ithiphu (abasebenzi, hhayi ukuthengisa)
 right_settle	Thatha inkokhelo
-right_cancel_sent	Khansela into yemenyu ethunyelwe
-right_complimentary	I-Complimentary (NC)
-right_move_table	Hambisa / hlanganisa izinto zokubala
-right_reprint	Phrinta ibhili yesivakashi futhi
 right_allowed	Kuvunyelwe
 right_with_approval	Ngemvume
 right_denied	Akuvunyelwe
@@ -1086,25 +897,11 @@ no_server_found	Akukho okutholiwe. Kuseva: Izilungiselelo → Amanye amadivaysi 
 servers_found_pick	Thepha isitolo ofuna ukuxhuma kuso.
 server_host_selected	Usebenzisa {host} — faka ikhodi yokumatanisa, bese Bhangqa manje.
 print_bill	Phrinta ibhili yesivakashi
-table_actions	Izenzo zokuphikisa
-move_merge_table	Hambisa / hlanganisa itafula lokudlela
-move_help	Hambisa leli oda lale counter uliyise kuthebula lamahhala, noma ulihlanganise libe ngelisebenzayo.
-move_target_ph	Igama lekhawunta
 approval_pin_ph	Umphathi PIN (kuphela uma ebuzwa)
-move_here	Hambisa lapha
-merge_into	Hlanganisa kuwo
-line_reason_ph	Isizathu (isb., ikhasimende lishintshe umqondo, liphelile)
-line_qty_ph	Mangaki okumele akhanselwe (akunalutho = konke)
-line_target_ph	Hambisa etafuleni lokudlela (isb. D5)
 confirm	Qinisekisa
 menu_search_ph	Sesha into yemenyu noma ikhodi emfushane
 customer_paid_ph	Ikhasimende likhokhelwe
 tip_ph	Ithiphu
-table_area_ph	Indawo (isb. Dine In, Parcel, AC)
-table_range_ph	Abaningi ngesikhathi esisodwa: D1-D20
-add_these_tables	Engeza lezi zibali
-remove_these_tables	Susa lezi zibali
-table_remove_ph	Susa: T1-T24, noma igama letafula lokudlela elilodwa
 find_server	Thola iseva yesitolo
 bill_format	Ifomethi yebhili yesivakashi sesivakashi
 bill_format_help	Iphrintiwe ngaphansi kwegama lesitolo sakho kuwo wonke amabhili. Hlukanisa imigqa nge | (isb. MG Road, Rajkot | Ph 98250 00000).
@@ -1112,78 +909,32 @@ bill_header_ph	Ikheli | ifoni
 fssai_ph	Inombolo yelayisensi yezidakamizwa. (uma uthanda - amagama akho)
 bill_footer_ph	Unyaweni (isb. Ngiyabonga, vakashela futhi)
 save_bill_format	Londoloza ifomethi yebhili yesivakashi
-kot_format	Ifomethi yokushelela
-kot_format_help	Thepha inkambu ohlwini. Bonisa, usayizi wefonti, nesisindo sisebenza kuleyo nkambu ohlotsheni lwesiliphu olukhethwe ngenhla. Uhlobo ngalunye lugcina osayizi balo nezisindo.
-kot_format_fields	Izinkambu
-kot_field_next	Inkambu elandelayo
-kot_field_show	Bonisa
-kot_field_hide	Fihla
 kot_field_on	umbukiso
 kot_field_off	fihla
-kot_field_size	Usayizi wefonti
-kot_field_size_ph	isib. 16, 20, 24, 28, 32…
 kot_weight_light	Ukukhanya
 bill_kot_panel_help	Isakhiwo sebhili nobubanzi bokuqukethwe. UCashier nguyena okhiphe noma okhokhele ibhili — indaba yokuthengisa ephelele ihlala ezincwadini.
 std_size_ph	isib. 18, 20, 26…
-kot_show_shop	Igama lesitolo
-kot_hide_shop	Fihla isitolo
-kot_show_time	Isikhathi
-kot_hide_time	Fihla isikhathi
-kot_show_waiter	Ukheshi
-kot_hide_waiter	Fihla cashier
-kot_show_station	Isiteshi
-kot_hide_station	Fihla isiteshi
-kot_show_table	Ikhawunta
-kot_hide_table	Fihla itafula lokudlela
-kot_show_kot_no	Inombolo yethikithi
-kot_hide_kot_no	Fihla ithikithi No
-kot_width	Hlola kuqala ukugoqa (setha ububanzi bokuqukethwe kuthebhu yesiliphu)
-kot_width_58	58 mm
-kot_width_80	80 mm
-kot_kind_heading	Uhlobo lwethikithi
-kot_kind_original	Okwangempela
-kot_kind_duplicate	Impinda
-kot_kind_modified	Kulungisiwe
-kot_kind_cancelled	Kukhanseliwe
-kot_style_heading	Usayizi wohlobo lwensimu nesisindo
-kot_style_title	Isihloko
-kot_style_item_qty	Into yemenyu · Ubuningi
-kot_style_field_pick	Khetha inkambu
 kot_weight_regular	Okuvamile
 kot_weight_bold	Okugqamile
-kot_align	Qondanisa
 kot_align_start	Qala
 kot_align_center	Isikhungo
 kot_align_end	Qeda
 content_width	Ububanzi bokuqukethwe (mm)
 content_width_bill	Ububanzi bokuqukethwe kwebhili yesivakashi sesivakashi (mm)
-content_width_kot	Ububanzi bokuqukethwe kwethikithi (mm)
 content_width_ph	Noma thayipha ububanzi bokuqukethwe, 40–210 mm
 content_width_help	Ukuphrinta kwalesi siliphu kubanzi kangakanani. UBill ugcina ububanzi bawo.
 content_width_bill_help	Ukuphrinta kwebhili yekhasimende kubanzi kangakanani. Okuzenzakalelayo 210 mm (ikhasi). 58 mm ukushelela okuncane, 80 mm ububanzi ukushelela, 112 mm 4-intshi, 210 mm A4-ububanzi. Thayipha noma yiliphi inani ukusuka ku-40 ukuya ku-210. Amathikithi anobubanzi bawo kuthebhu yesiliphu.
-content_width_kot_help	Ukuphrinta kwethikithi kubanzi kangakanani. Okuzenzakalelayo 80 mm. 58 mm ukushelela okuncane, 80 mm ububanzi ukushelela, 112 mm 4-intshi, 210 mm ikhasi. Thayipha noma yiliphi inani ukusuka ku-40 kuye ku-210. Izikweletu zekhasimende zinobubanzi bazo kuthebhu yeBill.
 vp_paper_width	Ububanzi bokuqukethwe (mm)
 vp_paper_width_ph	Noma thayipha ububanzi bokuqukethwe, 40–210 mm
 vp_paper_width_help	Ububanzi bokuqukethwe busethwe ngaphansi kwefomethi yeBill & Slip — ngokwehlukana kwenkokhelo (okuzenzakalelayo 210 mm) kanye nethikithi (okuzenzakalelayo ngu-80 mm).
-kot_size	Usayizi wefonti
-kot_size_s	Encane
-kot_size_m	Okuvamile
-kot_size_l	Okukhulu
 std_size	Usayizi wefonti
 kot_copies	Amakhophi
 kot_copies_1	1
 kot_copies_2	2
 kot_copies_3	3
-kot_title_ph	Isihloko (akunalutho = TICKET)
-kot_footer_ph	Inothi lokubuyela emuva (ongakukhetha)
-kot_preview	Buka kuqala
-save_kot_format	Londoloza ifomethi ye-Slip
-test_kot_format	Hlola ukuphrinta
-test_kot_sent	Ukubuka kuqala kwethikithi kuthunyelwe
 test_bill_format	Hlola ibhili yesivakashi
 test_bill_sent	Ukuhlola kuqala kwebhili yesivakashi sesivakashi kuthunyelwe
 test_print_no_printer	Ayikho iphrinta yalowo msebenzi — khetha eyodwa kulesi sikrini
-kot_format_saved	Ifomethi yokushelela ilondoloziwe
 std_print	Usayizi wokuphrinta webhili yesivakashi sesivakashi
 std_print_help	Usayizi wefonti wemisebenzi yebhili ye-Standard Portrait kanye ne-Landscape kumaphrinta we-OS/amadokhumenti (faka amaphuzu — hhayi Okuncane/Okuvamile/Kukhulu). Usayizi ofanayo kuzo zombili izimo.
 std_size_s	Encane
@@ -1223,23 +974,16 @@ upi_qr	UPI QR
 show_upi_qr	Bonisa UPI QR
 close_upi_qr	Vala
 upi_qr_help	Ikhasimende liyaskena futhi likhokhe. Thepha okuthi Thatha inkokhelo ngemva kokukhokha. Isikrini sesibili: vula i-URL yeseva / isibonisi ku-LAN.
-kot_recall	Khumbula
 recently_done	Okusanda kwenziwa
-recall_kot_ph	Ithikithi # ozolikhumbula
 role_help_customer	Iqhaza: Ikhasimende — incwadi yezikweletu (bayasikweleta). Ikhasimende elifanayo noma umphakeli angahlinzeka ngesitoko.
 role_help_both	Izindima: Ikhasimende + Umphakeli — ikhasimende elilodwa noma umphakeli, incwadi yezikweletu namaleja akhokhelwayo, ingqikithi Yemibiko.
 role_help_supplier	Iqhaza: Umphakeli — siyabakweleta ngokuthenga.
-dine_in_pick_table	Ayisetshenziswa kwikhawunta yesitolo
-choose_table	Khetha isibali
-change_table	Shintsha itafula lokudlela
-pick_table_banner	Khetha itafula lokudlela laleli oda
 items_word	izinto zemenyu
 items_section	Izinto zemenyu
 back_to_order	Buyela ku-oda
 new_items_head	Ayikathunyelwa
 price_ph	Inani
 price_ph_gst_inside	Intengo ({tax} ihlanganisiwe)
-cancel_needs_table	Ikhawunta yokuthengisa ihlala ithikithi uze uthathe inkokhelo
 tax_rates_missing_hint	Asikho isilinganiso se-{tax} kulezi zinto — Ezintweni Setha Izinga Lentela (izintengo sezivele zifaka phakathi i-{tax} ngaphansi kwe-{tax})
 taxable_value	Inani elikhokhiswa intela
 gst_inside_price_note	({tax} kuhlanganisiwe)
@@ -1260,30 +1004,11 @@ client_template_confirm	Engeza izinto ze-{d} ukusuka ku-{title}? Izinto osuvele 
 client_template_importing	Ingenisa {title}…
 client_template_done	Yonke into esuka ku-{title} isezintweni zakho.
 client_template_imported	Kwengezwe izinto ze-{d} kanye nezigaba ze-{c} ukusuka ku-{title}
-resv_heading	Ukubhuka
-resv_name_ph	Igama lekhasimende
-resv_phone_ph	Ifoni (kuyakhetheka)
-resv_guests_ph	Abantu
-resv_when_ph	Nini - 20:30, kusasa 13:00
-resv_table_ph	Ikhawunta (kuyakhetheka)
-resv_add	Bhuka itafula lokudlela
-resv_seat	Ehlezi
-resv_none	Akukho ukubhukha okuzayo.
-guests_word	izivakashi
-delivery_by_ph	Ukulethwa ngo (umgibeli noma igama lomsebenzi)
-kitchen_all_day	Ukupheka manje: {items}
-split_bill	Hlukanisa ibhili yesivakashi
-split_go	Yenza ibhili yesivakashi ehlukene
 cancel	Khansela
 opening_client	Ivula iklayenti...
 preparing_desk	Ilungiselela ideski...
 opening_server	Ivula iseva...
 creating_server	Idala iseva...
-split_help	Thepha izinto ezikhokhelwa yikhasimende elilodwa · {n} ekhethiwe
-split_send_first	Thumela isiliphu kuqala - yizinto zasehhovisi kuphela ezingaya enkokhelweni ehlukile
-split_pick_some	Thepha izinto zebhili ehlukile kuqala
-split_done	Imali ehlukene eyenziwe — iphansi eduze kwale counter
-split_marked	ibhili yesivakashi ehlukene
 order_empty_pick	Oda akunalutho — thepha Engeza izinto ngenhla ukuze ukhethe izinto.
 add_dishes	Engeza imithi
 order_so_far	Kuleli oda: {n} · {total}
@@ -1294,24 +1019,8 @@ pick_done_dd	Kwenziwe · {label}
 printer_route_mode	Uma amaphrinta amaningana kule ndawo
 printer_mode_first	Okokuqala kuyasebenza
 printer_mode_all	Phrinta kukho konke
-kot_show_area	Indawo
-kot_hide_area	Fihla indawo
-kot_show_item_hdr	Into yemenyu · Ubuningi
-kot_hide_item_hdr	Fihla amakholomu
-kot_show_title	Umugqa wesihloko
-kot_hide_title	Fihla isihloko
-kot_field_order	Phrinta i-oda
 kot_field_up	Hambisa phezulu
 kot_field_down	Hamba phansi
-kot_field_cycle	Khetha okulandelayo
-kot_field_select	Khetha okulandelayo
-kot_field_time	Isikhathi
-kot_field_kot_no	Inombolo yethikithi
-kot_field_area	Indawo
-kot_field_table	Ikhawunta
-kot_field_shop	Igama lesitolo
-kot_field_waiter	Abasebenzi
-kot_field_station	Isiteshi
 app_template_blurb_extra	Futhi: Umnikazi u-Zahir, u-Admin Asif, uCashier Nawaz; ibha eseceleni yangaphambili; umlando ngemva kwamahora angu-4; Namuhla khumula; umthethosivivinywa ohlangene.
 dishes_n	{n} items
 recipe_ph	Iresiphi (uyazikhethela - ayisetshenziswa ekhawuntareni)
@@ -1321,8 +1030,6 @@ low_stock_alert	Iyaphela — thenga maduze: {items}
 unpriced_note	Izinto ze-{n} ezintweni zakho azinayo intengo okwamanje — zikhokha ku-0 uze usethe eyodwa.
 show_unpriced	Bonisa kuphela izinto ngaphandle kwenani
 show_all_dishes	Bonisa zonke izinto
-role_waiter	Ukheshi
-role_kitchen	Isitolo
 role_title_rest_ph	Isihloko sendima (isb. UCaptain, Head cook)
 preset_help_rest	Umthengisi: thengisa. Umphathi: thengisa + izinto zemenyu + ukuqeda/ukulungisa.
 kind_raw	Isitoko esihlanganisiwe

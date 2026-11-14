@@ -80,28 +80,6 @@ applied	लागू
 note_ph	टिप्पणी (वैकल्पिक)
 rounded	राउंड कएल
 split	बाँटू
-send_kot	पर्ची पठाउ
-send_kot_to	पठाउ → {kitchens}
-send_kot_again	अगिला पर्ची लेल सामान जोड़ू
-send_kot_held	रोकल सामान — पठेबाक लेल रोक हटाउ
-reprint_kot	चुनल फेर छापू
-reprint_kot_ok	{n} सामान फेर छापल · {slips} पर्ची → {kitchens}
-reprint_kot_needed	पहिने पर्ची पठाउ — तखन दवाइ शामिल कऽ चुनल फेर छापू
-reprint_kot_none_selected	पठाओल सभ सामान छोड़ल अछि — जे फेर छापबाक अछि ओहिपर «छापमे» दबाउ
-reprint_kot_client	{place} लेल फेर छापू ({n}) पठाओल — दोकानक डिवाइस छापत
-print_cancelled_kot	सभ रद्द छापू
-print_cancelled_kot_ok	{n} रद्द सामान छापल · {slips} पर्ची → {kitchens}
-print_cancelled_kot_needed	पहिने रद्द सामानवला टेबल खोलू
-print_cancelled_kot_none	एहि ऑर्डरपर कोनो रद्द सामान नहि
-print_cancelled_kot_client	{place} लेल रद्द छापू ({n}) पठाओल — दोकानक डिवाइस छापत
-kot_banner	प्रकार बैनर
-kot_banner_ph	बैनर (खाली = नहि)
-kot_item_prefix	सामान उपसर्ग
-kot_item_prefix_ph	जेना [CANCELLED]
-kot_strike	सामानक नाम काटू
-kot_strike_note	सामानक टिप्पणी काटू
-kot_strike_on	चालू
-kot_strike_off	बंद
 bill_item_layout	सामानक बनावट
 bill_item_layout_columns	स्तंभ
 bill_item_layout_stacked	ढेर
@@ -130,8 +108,6 @@ bill_item_gap_em	दूरी (em)
 bill_item_qty_min	मात्रा न्यूनतम (em)
 bill_item_price_min	दाम न्यूनतम (em)
 bill_item_amount_min	राशि न्यूनतम (em)
-kot_item_qty_width	मात्रा स्तंभ
-kot_item_num_align	मात्रा संरेखण
 bill_total_qty_label	कुल मात्रा लेबल
 bill_total_subtotal_label	उप-जोड़ लेबल
 bill_total_grand_label	कुल जोड़ लेबल
@@ -143,36 +119,9 @@ bill_item_piece_off	बंद
 bill_total_qty	कुल मात्रा
 bill_total_subtotal	उप-जोड़
 bill_total_grand	कुल जोड़
-reprint_incl	छापमे
-reprint_skip	छोड़ू
-reprint_skip_meta	रिकवरी छाप छोड़ू
-kot_dest_hint	सेटिंग → प्रिंटरमे {kitchens} केँ देल प्रिंटरपर छपैत अछि
-kot_sent_hint	पछिला बेर {kitchens} केँ गेल। अगिला बिल लेल सामान जोड़बाक लेल दबाउ — वा ओही लेल पर्ची फेर छापू।
-kot_sent_printing	पर्ची {kitchens} केँ पठाओल — छपि रहल अछि
-kot_sent_not_printed	पर्ची {kitchens} केँ पठाओल मुदा नहि छपल: {why}। दोकानकेँ कहू, तखन प्रिंटर ठीक कऽ फेर छापू।
-kot_sent_screen	पर्ची {kitchens} केँ पठाओल
-kot_queued_shop	{place} क पर्ची → {kitchens} सहेजल; दोकानक डिवाइस छापत
-kot_job_label	{place} क पर्ची → {kitchens}
-kot_job_reached	{place} क पर्ची {kitchens} धरि पहुँचल
 kot_unassigned	बिना सौंपल
-kot_unassigned_held	स्टेशन बिना {n} सामान रोकल — पठेबाक लेल पंक्तिपर रोक हटाउ
-kot_station_ph	स्टेशन
-kot_station_dd	स्टेशन
-kot_station_dd_n	स्टेशन · {stations}
-kot_set_station	ई स्टेशन उपयोग करू
-kot_station_applied	{n} सामानपर स्टेशन लागल: {station}
-kot_station_cleared	{n} सामानसँ स्टेशन हटल: {station}
-kot_station_needed	पहिने दवाखानाक भाग चुनू
-kot_station_not_allowed	एहि भागक अनुमति नहि: {station}
-kot_station_none	एखन धरि स्टेशन नहि — काउंटर दोकानमे जरूरी नहि (जरूरत होअए तँ सेटिंग → क्षेत्र)
 pos_tab_items	जोड़ल सामान
 pos_tab_payment	भुगतान
-hold_send	रोकू
-hold_send_on	रोकल
-hold_send_meta	रोकल — एहि पर्चीमे नहि
-station_remove	स्टेशन हटाउ
-station_remove_ph	हटेबाक लेल सूचीमे स्टेशन दबाउ
-station_removed	स्टेशन हटल: {name}
 settings_hub_title	सेटिंग
 settings_hub_help	एक बेरमे एकटा भाग खोलू — कम स्क्रॉल, साफ चुनाव।
 settings_back	पाछाँ
@@ -181,12 +130,10 @@ settings_sec_country	देश आ कर
 settings_sec_tills	आन डिवाइस
 settings_sec_brand	अहाँक ब्रांड
 settings_sec_units	इकाई आ रूपांतरण
-settings_sec_pickers	क्षेत्र · स्टेशन · कर दर
+settings_sec_pickers	कर दर
 settings_sec_printers	प्रिंटर
 settings_sec_bill	बिल आ पर्ची प्रारूप
 settings_sec_selling	योजना आ बिक्री
-bill_kot_tab_bill	बिल
-bill_kot_tab_kot	पर्ची
 settings_sec_alerts	सूचना
 alerts_help	स्थिति संदेश अहाँक लेल स्क्रीनपर कतेक काल रहैत अछि (ई लॉगिन)।
 snack_secs_ph	सेकेंड (3–60, पहिनेसँ 10)
@@ -237,8 +184,6 @@ counter	काउंटर
 dine_in	काउंटर
 takeaway	लऽ जाएब
 order	ऑर्डर
-tables	काउंटर
-kitchen	भाग
 sales	बिक्री
 sales_refunds	बिक्री आ वापसी
 day_close	दिन बंद
@@ -266,10 +211,6 @@ zero_sales_on	₹0 अनुमति
 zero_sales_off	दाम चाही
 zero_sales_saved_on	शून्य मूल्यक बिक्रीक अनुमति
 zero_sales_saved_off	बिक्रीक दाम ₹0 सँ बेसी हेबाक चाही
-floor_areas_help	क्षेत्र फ्लोरपर कोठली वा जोन अछि (Dine In, Parcel, AC …)। पहिने क्षेत्र जोड़ू, तखन ओहिमे काउंटर राखू — प्रत्येक क्षेत्र फ्लोरपर अलग समूह अछि।
-area_new_ph	नव क्षेत्र / कोठली (जेना AC, बगीचा)
-add_area	क्षेत्र जोड़ू
-area_added	क्षेत्र “{name}” तैयार — ओहिमे काउंटर जोड़ू
 no_favorites	एखन धरि पसंदीदा नहि — नीचाँक सूचीसँ सामान जोड़ू।
 add_to_bill	बिलमे जोड़ू
 added	जोड़ल
@@ -280,19 +221,9 @@ chip_missing_customer	चुनल ग्राहक नहि — फेर �
 chip_no_customer	एखन ग्राहक नहि — नाम लिखू, तखन उधार दबाउ
 credit_summary_fmt	{} ग्राहक · खुला उधार {} · राखल अग्रिम {}
 recent_label	हालिया:
-kot_new_waiting	नव — प्रतीक्षामे
-kot_preparing	बनि रहल अछि
-kot_ready_serve	तैयार — परसू
-kot_done_cap	भऽ गेल
-kot_cancelled	रद्द
-kot_start_btn	शुरू
-kot_mark_ready	तैयार चिन्हित करू
-kot_done_btn	भऽ गेल
-table_free	खाली — ऑर्डर शुरू करबाक लेल दबाउ
 start_order	ऑर्डर शुरू करू
 open_bill	बिल खोलू
 collect_payment	भुगतान लिअ
-table_running	चलि रहल
 payment_pending	भुगतान बाँकी
 collect_at_counter	काउंटरपर लिअ
 inventory	भंडार
@@ -325,7 +256,6 @@ ok	ठीक
 this_shop	सर्वर
 extra_till	क्लाइंट
 off	बंद
-tables_kitchen	दोकानक बनावट
 server	सर्वर
 client	क्लाइंट
 language_currency	भाषा आ मुद्रा
@@ -367,8 +297,6 @@ add_item_plain	सामान जोड़ू
 add_note	टिप्पणी जोड़ू
 add_opening_balance	शुरुआती शेष जोड़ू
 add_staff	कर्मचारी जोड़ू
-add_station	स्टेशन जोड़ू
-add_table	टेबल जोड़ू
 add_unit	इकाई जोड़ू
 add_use_name	ई नाम जोड़ू / उपयोग करू
 allow_extra_tills	अतिरिक्त टिलक अनुमति दिअ
@@ -421,7 +349,6 @@ share_whatsapp	WhatsApp पर बाँटू
 lan_pages_heading	Wi‑Fi पर ग्राहक पृष्ठ
 lan_pages_help	एहि दोकानक Wi‑Fi पर ग्राहक पृष्ठ डिस्प्ले बोर्ड आ प्रतिक्रिया लेल चलैत अछि। मोबाइल डाटावला लोक लेल बादमे Cloud चाही। कार्ड टर्मिनल वा भुगतान लिंक वैकल्पिक अछि आ काउंटरकेँ कहियो नहि रोकैत अछि।
 diag_send_heading	एहि डिवाइससँ बाहर बाँटू
-kot_dest_heading	स्टेशन
 optional_login_heading	वैकल्पिक लॉगिन
 rights_heading	अधिकार
 ops_panel	स्थानीय काज
@@ -448,28 +375,6 @@ till_voucher_amt_ph	वाउचर राशि (खाली = सभ)
 till_wallet_topup_ph	वॉलेट भरबाक राशि
 till_voucher_issue_amt_ph	जारी करबाक वाउचर राशि
 till_voucher_issue_code_ph	नव वाउचर कोड
-split_evenly	बराबर बाँटू
-waitlist	प्रतीक्षा सूची
-fire_course	अगिला चरण
-hold_item	रोकू
-waiter_call	कैशियरकेँ बजाउ
-waitlist_add	प्रतीक्षा सूचीमे जोड़ू
-floor_view_grid	ग्रिड
-floor_view_layout	बनावट
-floor_layout_x	X
-floor_layout_y	Y
-floor_layout_w	W
-floor_layout_h	H
-floor_layout_save	बनावट सहेजू
-floor_layout_open	टेबल खोलू
-floor_layout_edit	बनावट बदलू
-floor_layout_pick	बनावट बदलबाक लेल टेबल दबाउ
-floor_layout_saved	बनावट सहेजल
-floor_layout_nudge_left	← 20
-floor_layout_nudge_right	→ 20
-floor_layout_nudge_up	↑ 20
-floor_layout_nudge_down	↓ 20
-sibling_pickers_help	इकाई जकाँ चालू/बंद दबाउ — रोजक चुनावसँ क्षेत्र, स्टेशन आ कर दर नुकाउ; पैकक पहिनेसँ रहैत अछि।
 bulk_price_apply	थोक दाम लगाउ
 card_terminal_optional	कार्ड टर्मिनल / भुगतान लिंक (इंटरनेट रहलापर वैकल्पिक)
 copy_report	रिपोर्ट कॉपी करू
@@ -495,7 +400,6 @@ import_day	दिन आयात करू
 import_items_csv_plain	सामान CSV आयात…
 import_parties_csv	पार्टी CSV आयात…
 item_name	सामानक नाम
-kitchen_printing	प्रिंटर
 login_id_ph	उपयोगकर्ता नाम
 mark_cleared	मिलल चिन्हित करू
 new_party_clear	नव पार्टी (फॉर्म खाली)
@@ -565,15 +469,6 @@ show	देखाउ
 spreadsheet_csv	स्प्रेडशीट (CSV)
 start_fresh	नव शुरू करू
 stop_extra_tills	अतिरिक्त टिल रोकू
-floor_cols_ph	स्तंभ
-floor_cols_fit	स्क्रीनमे फिट करू
-floor_cols_fit_sub	एतए {n} अँटैत अछि
-floor_cols_fits	अँटैत अछि
-floor_cols_scroll	बगलमे स्क्रॉल होइत अछि
-floor_cols_min	स्तंभ: कम-सँ-कम 1 — वा स्क्रीनमे फिट करबाक लेल खाली छोड़ू
-floor_zoom_auto	स्वतः
-floor_zoom_out	छोट करू
-floor_zoom_in	पैघ करू
 backup_auto	प्रतिदिन अपनेसँ बैकअप होइत अछि · पछिला {when} · पछिला 14 दिन {dir} मे राखल जाइत अछि।
 backup_auto_none	प्रतिदिन अपनेसँ बैकअप होइत अछि — पहिल एकटा क्षणमे चलत।
 backup_copy_to	कॉपी {dir} मे सेहो जाइत अछि।
@@ -591,7 +486,6 @@ new_pair_code	नव पेयरिंग कोड
 pair_finishing	जोड़ब पूरा भऽ रहल अछि… दोकानक बही लगा रहल छी
 pair_opening	टिल खुजि रहल अछि…
 pair_copied	पेयरिंग कोड कॉपी भेल
-kot_waiting	पठेबाक प्रतीक्षा
 lan_offline_waiting	दोकानक सर्वर धरि नहि पहुँचि सकल · {n} प्रतीक्षामे
 lan_connecting	दोकानसँ जुड़ि रहल अछि…
 lan_live	लाइव
@@ -633,7 +527,6 @@ printers_routes_help	ऑपरेटिंग सिस्टम जे प्�
 printer_assign_dd	असली प्रिंटर: {place}
 printer_assign_pick	असली प्रिंटर चुनू
 printer_profile_heading	बनावट
-printer_send_heading	डिलीवरी
 vp_delivery_heading	डिलीवरी
 vp_delivery_help	ई वर्चुअल प्रिंटर काज कोना पठबैत अछि — OS दस्तावेज, कच्चा बाइट, वा ESC/POS। पर्चीक सामग्री (अक्षर आकार, लपेट, हाशिया) बिल / पर्ची प्रारूप तय करैत अछि, एतए नहि।
 vp_type_size_heading	अक्षर आकार
@@ -677,23 +570,13 @@ virtual_draft_send	अगिला वर्चुअल प्रिंटर �
 virtual_need_real	पहिने असली प्रिंटर चुनू
 virtual_need_select	मेटेबाक लेल वर्चुअल प्रिंटर चुनू
 real_printer_selected	चुनल: {name}
-station_group_heading	वर्चुअल प्रिंटर
-station_group_apply	वर्चुअल प्रिंटर मेटाउ
-station_group_applied	मेटाओल
-station_group_empty	वर्चुअल प्रिंटर चुनू
-station_group_name_ph	वर्चुअल प्रिंटरक नाम (वैकल्पिक)
-station_group_save	वर्चुअल प्रिंटर बनाउ
-station_group_saved	वर्चुअल प्रिंटर सहेजल
-station_manage_heading	दवाखानाक भाग जोड़ू वा हटाउ
 printers_routes_heading	की कतए छपैत अछि
 route_pick_heading	जगह
 route_editing	बदलि रहल छी: {name}
 route_assigned	{printer} केँ {place} मे जोड़ल
 route_already_assigned	एहि जगहपर पहिनेसँ अछि: {printer}
-route_removed	{printer} केँ {place} सँ हटाओल
 route_cleared	{name} साफ कएल
 route_assigned_empty	एहि जगहपर किछु नहि
-route_tap_remove	हटेबाक लेल दबाउ
 route_tap_select	चुनबाक लेल दबाउ
 route_tap_selected	चुनल
 route_pick_printer_first	पहिने प्रिंटर दबाउ
@@ -714,35 +597,17 @@ printer_format_custom	नव अपन प्रोफाइल
 printer_format_custom_label	अपन
 printer_format_custom_added	एहि जगह लेल अपन प्रोफाइल जोड़ल
 add_printer	प्रिंटर जोड़ू
-remove_printer	हटाउ
 route_pick_ph	बिल वा दवाखानाक भाग
 route_bill	बिल
-route_default_kitchen	कोनो स्टेशन नहि (बिना सौंपल सामान)
-route_kot_station	स्टेशन
 route_dont_print	प्रिंटर नहि
-stations_heading	स्टेशन
-stations_help	दवाखानाक भाग दवाइ आ दोकानक ओहि हिस्साक प्रिंटरकेँ संग रखैत अछि। सेटिंग → प्रिंटरसँ प्रिंटर लगाउ, प्रयासक क्रम राखू, तखन जे पहिने चलए वा सभपर छापू। बदलाव संग-संग सहेजल जाइत अछि।
-station_print_heading	एहि स्टेशनक प्रिंटर
-station_print_help	स्टेशन चुनू, तखन एक वा बेसी प्रिंटर लगाउ। ↑↓ प्रयासक क्रम तय करैत अछि। जे पहिने चलए पहिल सफलतापर रुकैत अछि; सभपर छापू सभ लागल प्रिंटरकेँ पठबैत अछि।
-station_print_pick_ph	प्रिंटर लगेबाक स्टेशन
 station_print_pick_first	पहिने दवाखानाक भाग चुनू
-station_print_editing	“{name}” क प्रिंटर बदलि रहल छी
-station_vps_dd	एहि स्टेशनक प्रिंटर
-station_vps_dd_n	{n} प्रिंटर · बदलबाक लेल दबाउ
 station_vps_empty	एखन धरि प्रिंटर नहि — सेटिंग → प्रिंटरमे खोजू
 bill_printers_dd	बिलक प्रिंटर
 bill_printers_dd_n	बिल लेल {n} प्रिंटर · बदलबाक लेल दबाउ
-job_layout	बनावट
-job_delivery	काज कोना पठाओल जाइत अछि
-job_delivery_help	OS दस्तावेज, कच्चा बाइट, वा ESC/POS। बिल आ टिकट दुनू अपन-अपन रखैत अछि। कोनो काज खोजू द्वारा सहेजल कोनो प्रिंटरपर जा सकैत अछि।
 station_vp_attached	प्रिंटर लागल
 station_vp_detached	स्टेशनसँ प्रिंटर हटल
-station_print_summary	{mode} · {n} प्रिंटर
-station_print_summary_none	एहि स्टेशनपर एखन धरि प्रिंटर नहि — ई नहि छापत
-stations_none	एखन धरि स्टेशन नहि — नीचाँ एकटा जोड़ू। काउंटर दोकानमे स्टेशन जरूरी नहि — खाली छोड़ू।
 route_up	ऊपर
 route_down	नीचाँ
-route_remove	हटाउ
 route_clear	साफ करू
 save_printers	प्रिंटर सहेजू
 print_test_page	टेस्ट पेज छापू
@@ -751,23 +616,15 @@ test_page_no_printer	{place} लेल प्रिंटर नहि — ओ�
 test_page_pick_first	पहिने टेस्ट पेजक प्रिंटर चुनू — तखन टेस्ट पेज छापू
 test_printers_dd	टेस्ट पेजक प्रिंटर
 test_printers_dd_n	टेस्ट पेज लेल {n} प्रिंटर · बदलबाक लेल दबाउ
-kot_test_printers_dd	टेस्ट छापक प्रिंटर
-kot_test_printers_dd_n	टेस्ट छाप लेल {n} प्रिंटर · बदलबाक लेल दबाउ
 test_printer_picked	टेस्ट एहिपर: {name}
 test_printer_cleared	एहिपर टेस्ट नहि: {name}
 test_page_sent_n	टेस्ट पेज {n} प्रिंटरपर पठाओल
-test_kot_pick_first	पहिने टेस्ट छापक प्रिंटर चुनू — तखन टेस्ट छाप
-test_kot_sent_n	टेस्ट छाप {n} प्रिंटरपर पठाओल
-cancel_pick	चिन्हित करू
-cancel_pick_on	चिन्हित
-cancel_pick_meta	रद्द लेल चिन्हित
 batch_cancel	चिन्हित रद्द करू
 batch_cancel_n	चिन्हित रद्द करू ({n})
 batch_cancel_none	पहिने एक वा बेसी पठाओल सामान चिन्हित करू — तखन चिन्हित रद्द करू
 batch_cancel_title	चिन्हित दवाइ रद्द करू — एक कारण, प्रत्येक भागकेँ एक रद्द पर्ची
 batch_cancel_ok	{n} सामान रद्द · {slips} रद्द पर्ची → {kitchens}
 batch_cancel_ok_noprint	{n} सामान रद्द — स्वतः छाप बंद अछि, तेँ रद्द पर्ची नहि
-no_printer_kitchen_station	ओहि स्टेशन लेल प्रिंटर नहि
 printers_saved	सहेजल
 test_page_sent	टेस्ट पेज पठाओल — प्रिंटर देखू
 test_page_sent_one	टेस्ट पेज {name} केँ पठाओल — ओ प्रिंटर देखू
@@ -783,10 +640,7 @@ cancelled	रद्द भेल
 printers_tap_find	एहि डिवाइसपर चलएवला प्रिंटरक सूची लेल प्रिंटर खोजू दबाउ।
 printers_none_found	किछु नहि भेटल — सिस्टम प्रिंटरक नाम वा IP लिखू (जेना 192.168.1.50)।
 printer_from_find	{name} जोड़ल
-kot_printer_ph	पर्चीक प्रिंटर
 bill_printer_ph	बिलक प्रिंटर
-kot_print_on	टिकट स्वतः छाप: चालू
-kot_print_off	टिकट स्वतः छाप: बंद
 queue_refused	दोकान स्वीकार नहि केलक ({n}) — प्रत्येक काउंटरपर जाँचू:
 clear_not_accepted	जाँचल — ई सूची साफ करू
 device_name_ph	एहि डिवाइसक नाम
@@ -797,7 +651,6 @@ backup_failed	पछिला स्वतः बैकअप विफल भ�
 backup_overdue	{n} दिनसँ बैकअप नहि — बैकअप हेबाक लेल एहि डिवाइसपर ऐप खुजल राखू।
 disk_low	एहि डिवाइसपर केवल {mb} MB खाली — बैकअप जल्दी विफल होएत। किछु जगह खाली करू।
 last_seen_devices	पछिला बेर देखल: {time}
-sync_interval	प्रत्येक {secs} सेकेंडमे सिंक
 connection_to_shop	दोकानसँ संपर्क
 supplier_name_ph	सप्लायरक नाम (वा पार्टी)
 supplier_ph	सप्लायर
@@ -860,7 +713,6 @@ fresh_book_tabiyat	ताजा = खाली सूची (बाद में
 fresh_selected	नव चुनल — सूची खाली रहत। तैयार भेलापर भऽ गेल दबाउ।
 gross_word	सकल
 how_start	कोना शुरू करए चाहैत छी?
-kot_print_help_tabiyat	काउंटर दोकानमे उपयोग नहि होइत अछि।
 later_country_pack	बादमे: सेटिंग → कर आ भुगतानक लेबल लेल अपन देशक पैक लगाउ।
 local_badge	स्थानीय
 mix_type_hint_tabiyat	जरूरत होअए तँ नकद / UPI / कार्ड / उधारमे बाँटू। उधार लेल ऊपर ग्राहक चाही।
@@ -911,8 +763,6 @@ staff_copy_need_source	चुनू ककर सेटअप कॉपी क�
 staff_copy_same	ई वएह व्यक्ति छथि — आन ककरो चुनू
 staff_rename_need_selected	पहिने चुनू ककर नाम बदलब
 team_pick_hint	चुनू ककरा बदलब — स्क्रीन, पाइक अधिकार आ स्टेशन केवल ओहि व्यक्ति लेल देखाइत अछि।
-team_stations_help	ओ जे स्टेशन उपयोग कऽ सकैत छथि
-team_stations_changed	स्टेशन बदलल — एहि व्यक्तिक सेटअप सहेजू
 team_features_changed	स्क्रीन बदलल — एहि व्यक्तिक सेटअप सहेजू
 team_rights_changed	अधिकार बदलल — एहि व्यक्तिक सेटअप सहेजू
 they_owe_us	ओ हमर देनदार
@@ -996,9 +846,6 @@ service_pct_ph	सेवा % वैकल्पिक 0/10/12
 short_code_ph	छोट कोड (MG02)
 starting_password_ph	शुरुआती पासवर्ड (वैकल्पिक)
 starting_pin_ph	शुरुआती PIN (4–12 अंक)
-station_name_ph	स्टेशनक नाम (वैकल्पिक)
-station_new_ph	भाग (वैकल्पिक)
-table_name_ph	काउंटर / खानाक नाम
 tax_rate_ph	कर दरक नाम वा % — Standard, Reduced, 0, 5, 12, 18, 20
 to_code_ph	मे कोड (kg)
 uncleared_no_ph	ऊपर नहि मिलल #
@@ -1011,27 +858,8 @@ book_kind_month	एहि मासक बही
 book_kind_aging	बकाया / डेबिट-क्रेडिट
 book_kind_balance	तुलन पत्र
 order_help	जोड़बाक लेल सामान दबाउ।
-floor_help	ई दोकान काउंटरपर बेचैत अछि। टेबल आ भोजनक फ्लोर Tabiyat क भाग नहि अछि।
-kitchen_help	काउंटर दोकानमे उपयोग नहि होइत अछि।
-kitchen_empty	कोनो खुजल टिकट नहि (काउंटर दोकान सामान्यतः ई स्क्रीन उपयोग नहि करैत अछि)।
-add_a_table	टेबल जोड़ू
-add_station_heading	दवाखानाक भाग जोड़ू
 categories_help	ऊपरक सामानकेँ ओहि श्रेणीमे राखबाक लेल उपयोग करू दबाउ। फोटो श्रेणीकेँ चित्र दैत अछि; नहि तँ पहिल अक्षर देखाइत अछि।
 dish_search_ph	नाम, सॉल्ट वा बारकोड खोजू…
-tile_free	खाली
-tile_occupied	भरल
-tile_food_ready	खाना तैयार
-tile_bill_printed	बिल छपल
-tile_paid	भुगतान भेल
-tile_bill_btn	बिल
-tile_occupy_btn	अतिथि बैसाउ
-tile_free_btn	टेबल खाली करू
-tile_ready_btn	टेबल खाली करू
-tile_undo_bill	बिल पहिने जकाँ
-summary_busy	टेबल व्यस्त
-summary_to_collect	वसूलबाक अछि
-summary_on_floor	फ्लोरपर
-floor	दोकान
 sizes_as_items_ph	आकार अलग सामान रूपमे (वैकल्पिक) — Half=120, Full=200
 dish_group_ph	शक्ति / पैक समूह (वैकल्पिक) — जेना 500mg पत्ता
 discount	छूट
@@ -1039,7 +867,6 @@ remove_discount	छूट हटाउ
 apply_discount	छूट लगाउ
 save_opening_cash	शुरुआती नकद सहेजू
 close_shift_print	शिफ्ट बंद कऽ पर्ची छापू
-area_prices_ph	क्षेत्रक दाम (वैकल्पिक) — AC=220, Parcel=210
 discount_ph	10% वा 50
 discount_reason_ph	कारण (जेना नियमित अतिथि, देरसँ खाना)
 opening_float_ph	आइ भोरे दराजमे राखल नकद
@@ -1049,34 +876,18 @@ shift_handover	शिफ्ट हस्तांतरण
 shift_since	ई शिफ्ट एहि समयसँ
 expected_in_drawer	दराजमे हेबाक चाही
 right_discount	छूट दिअ
-floor_in_kitchen	चलि रहल अछि
-floor_eating	परसल
 pick_category	श्रेणी चुनू
 close_category_list	श्रेणी सूची बंद करू
 new_category_row	नव श्रेणी — सामान सहेजलापर बनत
 your_category	अहाँक श्रेणी
 suggested_category	सुझाव — हमर सामानसँ
 category_search_ph	श्रेणी — अपन खोजू वा नव लिखू
-line_sent_state	पठाओल
-line_nc_state	मुफ्त (NC) — शुल्क नहि
 cancel_item_short	रद्द
-nc_short	NC
-charge_again_short	शुल्क
-move_short	हटाउ
 cancel_item_title	ई सामान रद्द करू — बैक ऑफिसकेँ रद्द पर्ची भेटैत अछि
-nc_item_title	ई सामान मुफ्त (NC) करू
-charge_again_title	एहि सामानक फेर शुल्क लिअ
-move_item_title	ई सामान आन टेबलपर हटाउ
-already_cooked	पहिनेसँ पाकल (बर्बादी)
-not_cooked_yet	एखन धरि नहि पाकल
 return_to_customer	ग्राहककेँ वापसी
 short_by	कम
 tip_not_sale	टिप (कर्मचारीक, बिक्री नहि)
 right_settle	भुगतान लिअ
-right_cancel_sent	पठाओल सामान रद्द करू
-right_complimentary	मुफ्त (NC)
-right_move_table	काउंटर हटाउ / मिलाउ
-right_reprint	बिल फेर छापू
 right_allowed	अनुमति
 right_with_approval	मंजूरीक संग
 right_denied	अनुमति नहि
@@ -1086,25 +897,11 @@ no_server_found	किछु नहि भेटल। सर्वरपर: �
 servers_found_pick	जाहि दोकानसँ जुड़ए चाहैत छी ओकरा दबाउ।
 server_host_selected	{host} उपयोग कऽ रहल छी — पेयरिंग कोड लिखू, तखन एखने जोड़ू।
 print_bill	बिल छापू
-table_actions	काउंटरक काज
-move_merge_table	टेबल हटाउ / मिलाउ
-move_help	एहि काउंटरक ऑर्डर खाली टेबलपर हटाउ, वा चलैत ऑर्डरमे मिलाउ।
-move_target_ph	काउंटरक नाम
 approval_pin_ph	मैनेजरक PIN (केवल पुछलापर)
-move_here	एतए हटाउ
-merge_into	एहिमे मिलाउ
-line_reason_ph	कारण (जेना ग्राहकक मन बदलल, स्टॉक खत्म)
-line_qty_ph	कतेक रद्द करब (खाली = सभ)
-line_target_ph	टेबलपर हटाउ (जेना D5)
 confirm	पुष्टि करू
 menu_search_ph	सामान वा छोट कोड खोजू
 customer_paid_ph	ग्राहक देलनि
 tip_ph	टिप
-table_area_ph	क्षेत्र (जेना Dine In, Parcel, AC)
-table_range_ph	एक संग बहुत: D1-D20
-add_these_tables	ई काउंटर जोड़ू
-remove_these_tables	ई काउंटर हटाउ
-table_remove_ph	हटाउ: T1-T24, वा एकटा टेबलक नाम
 find_server	दोकानक सर्वर खोजू
 bill_format	बिल प्रारूप
 bill_format_help	प्रत्येक बिलपर अहाँक दोकानक नामक नीचाँ छपैत अछि। पंक्ति | सँ अलग करू (जेना MG Road, Rajkot | Ph 98250 00000)।
@@ -1112,78 +909,32 @@ bill_header_ph	पता | फोन
 fssai_ph	दवाइ लाइसेंस नं. (वैकल्पिक — अहाँक शब्दमे)
 bill_footer_ph	फुटर (जेना धन्यवाद, फेर आउ)
 save_bill_format	बिल प्रारूप सहेजू
-kot_format	पर्ची प्रारूप
-kot_format_help	सूचीमे फील्ड दबाउ। देखाउ, अक्षर आकार आ मोटाई ऊपर चुनल पर्ची प्रकारक ओहि फील्डपर लगैत अछि। प्रत्येक प्रकार अपन आकार आ मोटाई रखैत अछि।
-kot_format_fields	फील्ड
-kot_field_next	अगिला फील्ड
-kot_field_show	देखाउ
-kot_field_hide	नुकाउ
 kot_field_on	देखाउ
 kot_field_off	नुकाउ
-kot_field_size	अक्षर आकार
-kot_field_size_ph	जेना 16, 20, 24, 28, 32…
 kot_weight_light	पातर
 bill_kot_panel_help	बिलक बनावट आ चौड़ाई। कैशियर ओ छथि जे बिल जारी वा निपटेलनि — पूरा बिक्रीक कथा बहीमे रहैत अछि।
 std_size_ph	जेना 18, 20, 26…
-kot_show_shop	दोकानक नाम
-kot_hide_shop	दोकान नुकाउ
-kot_show_time	समय
-kot_hide_time	समय नुकाउ
-kot_show_waiter	कैशियर
-kot_hide_waiter	कैशियर नुकाउ
-kot_show_station	स्टेशन
-kot_hide_station	स्टेशन नुकाउ
-kot_show_table	काउंटर
-kot_hide_table	टेबल नुकाउ
-kot_show_kot_no	टिकट नं.
-kot_hide_kot_no	टिकट नं. नुकाउ
-kot_width	पूर्वावलोकन लपेट (चौड़ाई पर्ची टैबपर राखू)
-kot_width_58	58 mm
-kot_width_80	80 mm
-kot_kind_heading	टिकटक प्रकार
-kot_kind_original	मूल
-kot_kind_duplicate	प्रतिलिपि
-kot_kind_modified	बदलल
-kot_kind_cancelled	रद्द भेल
-kot_style_heading	फील्डक अक्षर आकार आ मोटाई
-kot_style_title	शीर्षक
-kot_style_item_qty	सामान · मात्रा
-kot_style_field_pick	फील्ड चुनू
 kot_weight_regular	सामान्य
 kot_weight_bold	मोट
-kot_align	संरेखण
 kot_align_start	शुरू
 kot_align_center	बीचमे
 kot_align_end	अंतमे
 content_width	सामग्रीक चौड़ाई (mm)
 content_width_bill	बिलक चौड़ाई (mm)
-content_width_kot	टिकटक चौड़ाई (mm)
 content_width_ph	वा चौड़ाई लिखू, 40–210 mm
 content_width_help	ई पर्ची कतेक चौड़ा छपत। बिल अपन चौड़ाई रखैत अछि।
 content_width_bill_help	ग्राहकक बिल कतेक चौड़ा छपत। डिफॉल्ट 210 mm (पृष्ठ)। 58 mm पातर पर्ची, 80 mm चौड़ा पर्ची, 112 mm 4-इंच, 210 mm A4-चौड़ा। 40 सँ 210 धरि कोनो मान लिखू। टिकटक अपन चौड़ाई पर्ची टैबपर अछि।
-content_width_kot_help	टिकट कतेक चौड़ा छपत। डिफॉल्ट 80 mm। 58 mm पातर पर्ची, 80 mm चौड़ा पर्ची, 112 mm 4-इंच, 210 mm पृष्ठ। 40 सँ 210 धरि कोनो मान लिखू। ग्राहक बिलक अपन चौड़ाई बिल टैबपर अछि।
 vp_paper_width	सामग्रीक चौड़ाई (mm)
 vp_paper_width_ph	वा चौड़ाई लिखू, 40–210 mm
 vp_paper_width_help	चौड़ाई बिल आ पर्ची प्रारूपमे राखल जाइत अछि — बिल (डिफॉल्ट 210 mm) आ टिकट (डिफॉल्ट 80 mm) लेल अलग-अलग।
-kot_size	अक्षर आकार
-kot_size_s	छोट
-kot_size_m	सामान्य
-kot_size_l	पैघ
 std_size	अक्षर आकार
 kot_copies	प्रति
 kot_copies_1	1
 kot_copies_2	2
 kot_copies_3	3
-kot_title_ph	शीर्षक (खाली = TICKET)
-kot_footer_ph	बैक ऑफिस टिप्पणी (वैकल्पिक)
-kot_preview	पूर्वावलोकन
-save_kot_format	पर्ची प्रारूप सहेजू
-test_kot_format	टेस्ट छाप
-test_kot_sent	टिकटक नमूना पठाओल
 test_bill_format	टेस्ट बिल
 test_bill_sent	बिलक नमूना पठाओल
 test_print_no_printer	ओहि काज लेल प्रिंटर नहि — एही स्क्रीनपर एकटा चुनू
-kot_format_saved	पर्ची प्रारूप सहेजल
 std_print	बिल छापक आकार
 std_print_help	OS / दस्तावेज प्रिंटरपर सामान्य खड़ा आ पड़ल बिल लेल अक्षर आकार (पॉइंट लिखू — छोट/सामान्य/पैघ नहि)। दुनू दिशामे एके आकार।
 std_size_s	छोट
@@ -1223,23 +974,16 @@ upi_qr	UPI QR
 show_upi_qr	UPI QR देखाउ
 close_upi_qr	बंद करू
 upi_qr_help	ग्राहक स्कैन कऽ भुगतान करैत छथि। भुगतानक बाद भुगतान लिअ दबाउ। दोसर स्क्रीन: LAN पर सर्वर URL /display खोलू।
-kot_recall	वापस बजाउ
 recently_done	हालहिमे भेल
-recall_kot_ph	वापस बजेबाक टिकट #
 role_help_customer	भूमिका: ग्राहक — खाता (ओ हमर देनदार)। ओहे पार्टी स्टॉक सेहो दऽ सकैत अछि।
 role_help_both	भूमिका: ग्राहक + सप्लायर — एकटा पार्टी, खाता आ देय खाता, रिपोर्टमे शुद्ध।
 role_help_supplier	भूमिका: सप्लायर — खरीदक लेल हम हुनक देनदार।
-dine_in_pick_table	काउंटर दोकानमे उपयोग नहि
-choose_table	काउंटर चुनू
-change_table	टेबल बदलू
-pick_table_banner	एहि ऑर्डर लेल टेबल चुनू
 items_word	सामान
 items_section	सामान
 back_to_order	ऑर्डरपर घुरू
 new_items_head	एखन धरि नहि पठाओल
 price_ph	दाम
 price_ph_gst_inside	दाम ({tax} सहित)
-cancel_needs_table	काउंटरक बिक्री भुगतान लेबा धरि टिकटपर रहैत अछि
 tax_rates_missing_hint	एहि सामानपर {tax} दर नहि — सामानमे कर दर राखू (दाममे पहिनेसँ {tax} शामिल, {tax} सहितक अंतर्गत)
 taxable_value	करयोग्य मूल्य
 gst_inside_price_note	({tax} सहित)
@@ -1260,30 +1004,11 @@ client_template_confirm	{title} सँ {d} सामान जोड़ू? ज�
 client_template_importing	{title} आयात कऽ रहल छी…
 client_template_done	{title} क प्रत्येक सामान अहाँक सामानमे अछि।
 client_template_imported	{title} सँ {d} सामान आ {c} श्रेणी जोड़ल
-resv_heading	आरक्षण
-resv_name_ph	ग्राहकक नाम
-resv_phone_ph	फोन (वैकल्पिक)
-resv_guests_ph	लोक
-resv_when_ph	कखन — 20:30, काल्हि 13:00
-resv_table_ph	काउंटर (वैकल्पिक)
-resv_add	बुक करू
-resv_seat	बैसाओल
-resv_none	कोनो आबैवला बुकिंग नहि।
-guests_word	अतिथि
-delivery_by_ph	डिलीवरी करएवला (राइडर वा कर्मचारीक नाम)
-kitchen_all_day	एखन पकेबाक: {items}
-split_bill	बिल बाँटू
-split_go	अलग बिल बनाउ
 cancel	रद्द
 opening_client	क्लाइंट खुजि रहल अछि…
 preparing_desk	डेस्क तैयार भऽ रहल अछि…
 opening_server	सर्वर खुजि रहल अछि…
 creating_server	सर्वर बनि रहल अछि…
-split_help	एक ग्राहक जे सामानक भुगतान करताह ओ दबाउ · {n} चुनल
-split_send_first	पहिने पर्ची पठाउ — केवल बैक ऑफिस धरि पहुँचल सामान अलग बिलमे जा सकैत अछि
-split_pick_some	पहिने अलग बिलक सामान दबाउ
-split_done	अलग बिल बनल — ई फ्लोरपर एहि काउंटरक बगलमे अछि
-split_marked	अलग बिल
 order_empty_pick	ऑर्डर खाली — सामान चुनबाक लेल ऊपर सामान जोड़ू दबाउ।
 add_dishes	दवाइ जोड़ू
 order_so_far	एहि ऑर्डरपर: {n} · {total}
@@ -1294,24 +1019,8 @@ pick_done_dd	भऽ गेल · {label}
 printer_route_mode	जँ एहि जगह कतेको प्रिंटर होअए
 printer_mode_first	जे पहिने चलए
 printer_mode_all	सभपर छापू
-kot_show_area	क्षेत्र
-kot_hide_area	क्षेत्र नुकाउ
-kot_show_item_hdr	सामान · मात्रा
-kot_hide_item_hdr	स्तंभ नुकाउ
-kot_show_title	शीर्षक पंक्ति
-kot_hide_title	शीर्षक नुकाउ
-kot_field_order	छपाइक क्रम
 kot_field_up	ऊपर करू
 kot_field_down	नीचाँ करू
-kot_field_cycle	अगिला चुनू
-kot_field_select	अगिला चुनू
-kot_field_time	समय
-kot_field_kot_no	टिकट नं.
-kot_field_area	क्षेत्र
-kot_field_table	काउंटर
-kot_field_shop	दोकानक नाम
-kot_field_waiter	कर्मचारी
-kot_field_station	स्टेशन
 app_template_blurb_extra	संगहि: मालिक ज़हीर, एडमिन आसिफ, कैशियर नवाज़; आगाँक साइडबार; 4 घंटाक बाद इतिहास; आजुक पट्टी बंद; छोट बिल।
 dishes_n	{n} सामान
 recipe_ph	विधि (वैकल्पिक — काउंटर दोकानमे उपयोग नहि)
@@ -1321,8 +1030,6 @@ low_stock_alert	घटि रहल अछि — जल्दी कीनू: 
 unpriced_note	अहाँक {n} सामानक एखन धरि दाम नहि — दाम रखबा धरि ओ 0 पर बिल होइत अछि।
 show_unpriced	केवल बिना दामक सामान देखाउ
 show_all_dishes	सभ सामान देखाउ
-role_waiter	कैशियर
-role_kitchen	भंडार
 role_title_rest_ph	भूमिकाक नाम (जेना कैप्टन, मुख्य रसोइया)
 preset_help_rest	कैशियर: बेचब। मैनेजर: बेचब + सामान + रद्द/संशोधन।
 kind_raw	मिश्रणक स्टॉक

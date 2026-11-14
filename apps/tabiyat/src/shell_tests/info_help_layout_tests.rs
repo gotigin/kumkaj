@@ -248,9 +248,7 @@ mod info_help_layout_tests {
         assert!(strip.contains("Fixed("));
         assert!(strip.contains("flow: Right"));
         for name in [
-            "staff_role_waiter",
             "staff_role_cashier",
-            "staff_role_kitchen",
             "staff_role_manager",
             "staff_role_admin",
         ] {
@@ -269,7 +267,7 @@ mod info_help_layout_tests {
         let seg = ui
             .split("let SegBtn = Button{")
             .nth(1)
-            .and_then(|s| s.split("let KotRowBtn = Button{").next())
+            .and_then(|s| s.split("let FieldRowBtn = Button{").next())
             .unwrap_or("");
         assert!(
             seg.contains("flow: Right{wrap: true}"),
@@ -399,7 +397,7 @@ mod info_help_layout_tests {
         let seg = ui
             .split("let SegBtn = Button{")
             .nth(1)
-            .and_then(|s| s.split("let KotRowBtn").next())
+            .and_then(|s| s.split("let FieldRowBtn").next())
             .unwrap_or("");
         assert!(
             seg.contains("flow: Right{wrap: true}"),
@@ -442,32 +440,4 @@ mod info_help_layout_tests {
         );
     }
 
-    /// Cart line Hold / In print / Mark: fixed 34px height clipped labels on phone.
-    #[test]
-    fn ticket_hold_btn_is_fit_height() {
-        let ui = include_str!("../ui_script.rs");
-        let block = ui
-            .split("let TicketHoldBtn = Button{")
-            .nth(1)
-            .and_then(|s| s.split("let CartRow").next())
-            .unwrap_or("");
-        assert!(
-            block.contains("height: Fit"),
-            "TicketHoldBtn must be Fit height, not fixed 34"
-        );
-        assert!(
-            !block.lines().any(|l| l.trim() == "width: Fit height: 34"),
-            "TicketHoldBtn must not pin height: 34"
-        );
-        let cart = ui
-            .split("let CartRow = RoundedView{")
-            .nth(1)
-            .and_then(|s| s.split("details :=").next())
-            .unwrap_or("");
-        assert!(
-            cart.contains("width: Fill height: Fit")
-                && cart.contains("hold_send_btn := TicketHoldBtn"),
-            "cart action chip row must Fill-wrap inside the line column"
-        );
-    }
 }

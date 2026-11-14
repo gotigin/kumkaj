@@ -180,10 +180,7 @@ mod tests {
         );
         assert_eq!(classify("Sale undone — cart restored"), SnackKind::Success);
         assert_eq!(classify("Read-only on this extra till"), SnackKind::Warn);
-        assert_eq!(
-            classify(crate::print_share::NO_KOT_PRINTER),
-            SnackKind::Warn
-        );
+        assert_eq!(classify(crate::net::NO_BILL_PRINTER), SnackKind::Warn);
         assert_eq!(
             classify("Print again (2) for T1 sent — kitchen prints at the Server"),
             SnackKind::Success

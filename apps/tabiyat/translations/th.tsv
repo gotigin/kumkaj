@@ -80,28 +80,6 @@ applied	ที่ใช้
 note_ph	หมายเหตุ (ไม่บังคับ)
 rounded	ปัดแล้ว
 split	แบ่ง
-send_kot	ส่งสลิป
-send_kot_to	ส่ง → {kitchens}
-send_kot_again	เพิ่มสินค้าสำหรับสลิปถัดไป
-send_kot_held	สินค้าที่พักไว้ — ปลดพักเพื่อส่ง
-reprint_kot	พิมพ์รายการที่เลือกอีกครั้ง
-reprint_kot_ok	พิมพ์สินค้า {n} รายการอีกครั้ง · {slips} สลิป → {kitchens}
-reprint_kot_needed	ส่งสลิปก่อน — แล้วใส่ยาและพิมพ์รายการที่เลือกอีกครั้ง
-reprint_kot_none_selected	สินค้าที่ส่งแล้วทุกชิ้นถูกข้าม — แตะกำลังพิมพ์ที่ชิ้นที่ต้องการพิมพ์ซ้ำ
-reprint_kot_client	ส่งพิมพ์ซ้ำ ({n}) สำหรับ {place} แล้ว — อุปกรณ์ร้านเป็นผู้พิมพ์
-print_cancelled_kot	พิมพ์ที่ยกเลิกทั้งหมด
-print_cancelled_kot_ok	พิมพ์สินค้าที่ยกเลิก {n} รายการ · {slips} สลิป → {kitchens}
-print_cancelled_kot_needed	เปิดโต๊ะที่มีสินค้าถูกยกเลิกก่อน
-print_cancelled_kot_none	ไม่มีสินค้าที่ยกเลิกในออเดอร์นี้
-print_cancelled_kot_client	ส่งพิมพ์ที่ยกเลิก ({n}) สำหรับ {place} แล้ว — อุปกรณ์ร้านเป็นผู้พิมพ์
-kot_banner	แบนเนอร์
-kot_banner_ph	แบนเนอร์ (ว่าง = ไม่มี)
-kot_item_prefix	คำนำหน้าเมนู
-kot_item_prefix_ph	เช่น [CANCELLED] 
-kot_strike	ขีดฆ่าชื่อสินค้า
-kot_strike_note	ขีดฆ่าหมายเหตุสินค้า
-kot_strike_on	เปิด
-kot_strike_off	ปิด
 bill_item_layout	เลย์เอาต์รายการ
 bill_item_layout_columns	คอลัมน์
 bill_item_layout_stacked	ซ้อน
@@ -130,8 +108,6 @@ bill_item_gap_em	ช่อง (em)
 bill_item_qty_min	จำนวนต่ำสุด (em)
 bill_item_price_min	ราคาต่ำสุด (em)
 bill_item_amount_min	ยอดต่ำสุด (em)
-kot_item_qty_width	คอลัมน์จำนวน
-kot_item_num_align	จัดจำนวน
 bill_total_qty_label	ป้ายจำนวนรวม
 bill_total_subtotal_label	ป้ายยอดย่อย
 bill_total_grand_label	ป้ายยอดรวม
@@ -143,36 +119,9 @@ bill_item_piece_off	ปิด
 bill_total_qty	จำนวนรวม
 bill_total_subtotal	ยอดย่อย
 bill_total_grand	ยอดรวม
-reprint_incl	ในการพิมพ์
-reprint_skip	ข้าม
-reprint_skip_meta	ข้ามพิมพ์ซ้ำ
-kot_dest_hint	พิมพ์บนเครื่องพิมพ์ที่คุณกำหนดให้ {kitchens} ใน การตั้งค่า → เครื่องพิมพ์
-kot_sent_hint	การส่งครั้งล่าสุดไปที่ {kitchens} แตะเพื่อเพิ่มสินค้าสำหรับบิลถัดไป — หรือพิมพ์สลิปอีกครั้งสำหรับใบเดิม
-kot_sent_printing	ส่งสลิปถึง {kitchens} — กำลังพิมพ์
-kot_sent_not_printed	ส่งสลิปถึง {kitchens} แต่ไม่ได้พิมพ์: {why} บอกทางร้าน แล้วแก้เครื่องพิมพ์และพิมพ์อีกครั้ง
-kot_sent_screen	ส่งสลิปถึง {kitchens} แล้ว
-kot_queued_shop	บันทึกสลิปสำหรับ {place} → {kitchens} แล้ว อุปกรณ์ร้านเป็นผู้พิมพ์
-kot_job_label	สลิปสำหรับ {place} → {kitchens}
-kot_job_reached	สลิปสำหรับ {place} ถึง {kitchens} แล้ว
 kot_unassigned	ยังไม่มอบหมาย
-kot_unassigned_held	พักสินค้า {n} รายการที่ไม่มีสถานี — ปลดพักที่แถวเพื่อส่ง
-kot_station_ph	สถานี
-kot_station_dd	สถานี
-kot_station_dd_n	สถานี · {stations}
-kot_set_station	ใช้สถานีนี้
-kot_station_applied	ตั้งสถานีให้สินค้า {n} รายการ: {station}
-kot_station_cleared	เอาสถานีออกจากสินค้า {n} รายการ: {station}
-kot_station_needed	เลือกส่วนของร้านยาก่อน
-kot_station_not_allowed	ไม่ได้รับอนุญาตให้ใช้ส่วน: {station}
-kot_station_none	ยังไม่มีสถานี — ไม่ใช้กับร้านแบบเคาน์เตอร์ (การตั้งค่า → พื้นที่ ถ้าต้องการ)
 pos_tab_items	รายการที่เพิ่ม
 pos_tab_payment	ชำระเงิน
-hold_send	พัก
-hold_send_on	รอ
-hold_send_meta	พักไว้ — ไม่อยู่ในสลิปนี้
-station_remove	ลบสถานี
-station_remove_ph	แตะสถานีในรายการเพื่อลบออก
-station_removed	สถานีถูกลบ: {name}
 settings_hub_title	การตั้งค่า
 settings_hub_help	เปิดทีละส่วน — เลื่อนน้อยลง ตัวเลือกชัดขึ้น
 settings_back	กลับ
@@ -181,12 +130,10 @@ settings_sec_country	ประเทศและภาษี
 settings_sec_tills	เคาน์เตอร์เสริมและสาขา
 settings_sec_brand	แบรนด์ของคุณ
 settings_sec_units	หน่วยและการแปลง
-settings_sec_pickers	พื้นที่ · สถานี · อัตราภาษี
+settings_sec_pickers	อัตราภาษี
 settings_sec_printers	เครื่องพิมพ์
 settings_sec_bill	รูปแบบบิลและสลิप
 settings_sec_selling	แผนและยอดขาย
-bill_kot_tab_bill	บิล
-bill_kot_tab_kot	สลิป
 settings_sec_alerts	การแจ้งเตือน
 alerts_help	ข้อความสถานะจะแสดงบนจอนานเท่าใดสำหรับคุณ (การเข้าสู่ระบบนี้)
 snack_secs_ph	วินาที (3–60 ค่าเริ่มต้น 10)
@@ -237,8 +184,6 @@ counter	เคาน์เตอร์
 dine_in	เคาน์เตอร์
 takeaway	นำกลับ
 order	ออเดอร์
-tables	เคาน์เตอร์
-kitchen	ส่วน
 sales	ยอดขาย
 sales_refunds	ขายและคืน
 day_close	ปิดวัน
@@ -266,10 +211,6 @@ zero_sales_on	ขายศูนย์: เปิด
 zero_sales_off	ขายศูนย์: ปิด
 zero_sales_saved_on	บันทึกอนุญาตขายศูนย์แล้ว (เปิด)
 zero_sales_saved_off	บันทึกอนุญาตขายศูนย์แล้ว (ปิด)
-floor_areas_help	พื้นที่คือห้องหรือโซนบนพื้น (ทานที่ร้าน พัสดุ แอร์ …) เพิ่มพื้นที่ก่อน แล้วใส่เคาน์เตอร์ — แต่ละพื้นที่เป็นกลุ่มแยกบนพื้น
-area_new_ph	พื้นที่/ห้องใหม่ (เช่น AC, Garden)
-add_area	เพิ่มพื้นที่
-area_added	โซน “{name}” พร้อมแล้ว — เพิ่มเคาน์เตอร์เข้าไป
 no_favorites	ยังไม่มีรายการโปรด — เพิ่มสินค้าจากรายการด้านล่าง
 add_to_bill	เพิ่มลงบิล
 added	เพิ่มแล้ว
@@ -280,19 +221,9 @@ chip_missing_customer	ไม่พบลูกค้าที่เลือก 
 chip_no_customer	ยังไม่มีลูกค้า — เขียนชื่อ แล้วแตะเครดิต
 credit_summary_fmt	{} ลูกค้า · เครดิตเปิด {} · เงินล่วงหน้าที่เก็บ {}
 recent_label	ล่าสุด:
-kot_new_waiting	ใหม่ — กำลังรอ
-kot_preparing	กำลังเตรียม
-kot_ready_serve	พร้อม — เสิร์ฟได้
-kot_done_cap	เสร็จ
-kot_cancelled	ยกเลิกแล้ว
-kot_start_btn	เริ่ม
-kot_mark_ready	ทำเครื่องหมายว่าพร้อม
-kot_done_btn	เสร็จ
-table_free	ว่าง — แตะเพื่อเริ่มออเดอร์
 start_order	เริ่มออเดอร์
 open_bill	เปิดบิล
 collect_payment	เก็บเงิน
-table_running	กำลังดำเนินการ
 payment_pending	รอการชำระเงิน
 collect_at_counter	เก็บที่เคาน์เตอร์
 inventory	สต็อก
@@ -325,7 +256,6 @@ ok	ตกลง
 this_shop	โหมดเซิร์ฟเวอร์
 extra_till	โหมดไคลเอนต์
 off	ปิด
-tables_kitchen	ผังร้าน
 server	เซิร์ฟเวอร์
 client	ไคลเอนต์
 language_currency	ภาษาและสกุลเงิน
@@ -367,8 +297,6 @@ add_item_plain	เพิ่มรายการ
 add_note	เพิ่มหมายเหตุ
 add_opening_balance	เพิ่มยอดยกมา
 add_staff	เพิ่มพนักงาน
-add_station	เพิ่มสถานี
-add_table	เพิ่มโต๊ะ
 add_unit	เพิ่มหน่วย
 add_use_name	เพิ่ม / ใช้ชื่อนี้
 allow_extra_tills	อนุญาตเคาน์เตอร์เสริม
@@ -421,7 +349,6 @@ share_whatsapp	แชร์ WhatsApp
 lan_pages_heading	หน้าลูกค้าบน Wi‑Fi
 lan_pages_help	บน Wi‑Fi ของร้านนี้ หน้าลูกค้าใช้กับป้ายแสดงผลและความคิดเห็นได้ คนที่ใช้เน็ตมือถือต้องใช้คลาวด์ภายหลัง เครื่องรูดบัตรหรือลิงก์ชำระเงินเป็นทางเลือกและไม่เคยขวางเคาน์เตอร์
 diag_send_heading	แชร์ออกจากอุปกรณ์นี้
-kot_dest_heading	สถานี
 optional_login_heading	เข้าสู่ระบบแบบเลือกได้
 rights_heading	สิทธิ์
 ops_panel	งานในร้าน
@@ -448,28 +375,6 @@ till_voucher_amt_ph	ยอดบัตรกำนัล (ว่าง=ทั้
 till_wallet_topup_ph	ยอดเติมวอลเล็ต
 till_voucher_issue_amt_ph	ยอดบัตรกำนัลใหม่
 till_voucher_issue_code_ph	รหัสบัตรกำนัลใหม่
-split_evenly	แบ่งเท่าๆ
-waitlist	รายการรอ
-fire_course	ขั้นถัดไป
-hold_item	พัก
-waiter_call	เรียกแคชเชียร์
-waitlist_add	เพิ่มรายการรอ
-floor_view_grid	ตาราง
-floor_view_layout	ผัง
-floor_layout_x	X
-floor_layout_y	Y
-floor_layout_w	W
-floor_layout_h	H
-floor_layout_save	บันทึกผัง
-floor_layout_open	เปิดโต๊ะ
-floor_layout_edit	แก้ไขผัง
-floor_layout_pick	แตะโต๊ะเพื่อแก้ไขผัง
-floor_layout_saved	บันทึกผังแล้ว
-floor_layout_nudge_left	← 20
-floor_layout_nudge_right	→ 20
-floor_layout_nudge_up	↑ 20
-floor_layout_nudge_down	↓ 20
-sibling_pickers_help	เหมือนหน่วย On/Off — ซ่อนโซน สถานี อัตราภาษีจากตัวเลือกประจำวัน ค่าเริ่มต้นแพ็กยังอยู่
 bulk_price_apply	ใช้ราคาแบบกลุ่ม
 card_terminal_optional	เครื่องรูดบัตร / ลิงก์ชำระ (เลือกได้เมื่อมีเน็ต)
 copy_report	คัดลอกรายงาน
@@ -495,7 +400,6 @@ import_day	นำเข้าวัน
 import_items_csv_plain	นำเข้า CSV รายการ…
 import_parties_csv	นำเข้า CSV คู่ค้า…
 item_name	ชื่อรายการ
-kitchen_printing	พิมพ์ครัว
 login_id_ph	รหัสเข้าสู่ระบบ
 mark_cleared	ทำเครื่องหมายเคลียร์
 new_party_clear	คู่ค้าใหม่ (ล้างฟอร์ม)
@@ -565,15 +469,6 @@ show	แสดง
 spreadsheet_csv	สเปรดชีต (CSV)
 start_fresh	เริ่มใหม่
 stop_extra_tills	หยุดเคาน์เตอร์เสริม
-floor_cols_ph	คอลัมน์
-floor_cols_fit	พอดีหน้าจอ
-floor_cols_fit_sub	ใส่ได้ {n}
-floor_cols_fits	พอดี
-floor_cols_scroll	เลื่อนด้านข้าง
-floor_cols_min	คอลัมน์: อย่างน้อย 1 — หรือเว้นว่างไว้ให้พอดีหน้าจอ
-floor_zoom_auto	อัตโนมัติ
-floor_zoom_out	ซูมออก
-floor_zoom_in	ซูมเข้า
 backup_auto	สำรองอัตโนมัติทุกวัน · ล่าสุด {when} · เก็บ 14 วันล่าสุดไว้ใน {dir}
 backup_auto_none	สำรองอัตโนมัติทุกวัน — ครั้งแรกจะเริ่มในไม่ช้า
 backup_copy_to	สำเนาจะไปที่ {dir} ด้วย
@@ -591,7 +486,6 @@ new_pair_code	รหัสจับคู่ใหม่
 pair_finishing	กำลังจับคู่ให้เสร็จ… กำลังใช้บัญชีของร้าน
 pair_opening	กำลังเปิดแคชเชียร์…
 pair_copied	คัดลอกรหัสจับคู่แล้ว
-kot_waiting	รอส่ง
 lan_offline_waiting	ออฟไลน์ · รอ {n} รายการ
 lan_connecting	กำลังเชื่อมต่อกับร้าน…
 lan_live	สด
@@ -633,7 +527,6 @@ printers_routes_help	หาเครื่องพิมพ์ที่ระ�
 printer_assign_dd	เลือกเครื่องพิมพ์สำหรับ {place}
 printer_assign_pick	เลือกเครื่องพิมพ์จริง
 printer_profile_heading	เลย์เอาต์
-printer_send_heading	การส่ง
 vp_delivery_heading	การส่ง
 vp_delivery_help	เครื่องพิมพ์เสมือนนี้ส่งงานอย่างไร — เอกสารของระบบ ไบต์ดิบ หรือ ESC/POS เนื้อหาสลิป (ขนาดตัวอักษร การตัดบรรทัด ขอบ) กำหนดโดยรูปแบบบิล / สลิป ไม่ใช่ที่นี่
 vp_type_size_heading	ขนาดตัวอักษร
@@ -677,23 +570,13 @@ virtual_draft_send	ตั้งค่าสำหรับเครื่อง�
 virtual_need_real	เลือกเครื่องพิมพ์จริงก่อน
 virtual_need_select	เลือกเครื่องพิมพ์เสมือนที่จะลบ
 real_printer_selected	เครื่องพิมพ์จริง: {name}
-station_group_heading	เครื่องพิมพ์เสมือน
-station_group_apply	ลบเครื่องพิมพ์เสมือน
-station_group_applied	ลบแล้ว
-station_group_empty	เลือกเครื่องพิมพ์เสมือน
-station_group_name_ph	ชื่อเครื่องพิมพ์เสมือน (ไม่บังคับ)
-station_group_save	สร้างเครื่องพิมพ์เสมือน
-station_group_saved	บันทึกเครื่องพิมพ์เสมือนแล้ว
-station_manage_heading	เพิ่มหรือลบส่วนของร้านยา
 printers_routes_heading	2. พิมพ์ที่ไหน
 route_pick_heading	ที่
 route_editing	กำลังแก้ไข: {name}
 route_assigned	เพิ่ม {printer} ลงใน {place}
 route_already_assigned	อยู่ที่นี่แล้ว: {printer}
-route_removed	ลบ {printer} ออกจาก {place}
 route_cleared	ล้างค่า {name}
 route_assigned_empty	ไม่มีที่นี่
-route_tap_remove	แตะเพื่อลบ
 route_tap_select	แตะเพื่อเลือก
 route_tap_selected	เลือกแล้ว
 route_pick_printer_first	แตะเครื่องพิมพ์ก่อน
@@ -714,35 +597,17 @@ printer_format_custom	รูปแบบกำหนดเองใหม่
 printer_format_custom_label	กำหนดเอง
 printer_format_custom_added	เพิ่มรูปแบบกำหนดเองให้เส้นทางนี้แล้ว
 add_printer	เพิ่มเครื่องพิมพ์
-remove_printer	ลบอันท้าย
 route_pick_ph	บิลหรือส่วนของร้านยา
 route_bill	บิล
-route_default_kitchen	ไม่มีสถานี (สินค้าที่ยังไม่มอบหมาย)
-route_kot_station	สถานี
 route_dont_print	ไม่พิมพ์
-stations_heading	สถานี
-stations_help	ส่วนของร้านยาจัดกลุ่มยาและเครื่องพิมพ์ของส่วนนั้น ผูกเครื่องพิมพ์จาก การตั้งค่า → เครื่องพิมพ์ ตั้งลำดับลอง แล้วเลือกเครื่องแรกที่สำเร็จหรือพิมพ์ทุกเครื่อง การเปลี่ยนแปลงบันทึกไปเอง
-station_print_heading	เครื่องพิมพ์ของสถานีนี้
-station_print_help	เลือกสถานี แล้วผูกเครื่องพิมพ์หนึ่งเครื่องขึ้นไป ↑↓ กำหนดลำดับลอง เครื่องแรกที่สำเร็จจะหยุดหลังสำเร็จครั้งแรก พิมพ์ทุกเครื่องส่งไปทุกเครื่องที่ผูกไว้
-station_print_pick_ph	สถานีที่จะตั้งเครื่องพิมพ์
 station_print_pick_first	เลือกส่วนของร้านยาก่อน
-station_print_editing	กำลังแก้ไขเครื่องพิมพ์ของ “{name}”
-station_vps_dd	เครื่องพิมพ์ของสถานีนี้
-station_vps_dd_n	{n} เครื่องพิมพ์ · แตะเพื่อเปลี่ยน
 station_vps_empty	ยังไม่มีเครื่องพิมพ์ — ค้นหาใน การตั้งค่า → เครื่องพิมพ์
 bill_printers_dd	เครื่องพิมพ์สำหรับบิล
 bill_printers_dd_n	{n} เครื่องพิมพ์สำหรับบิล · แตะเพื่อเปลี่ยน
-job_layout	เลย์เอาต์
-job_delivery	วิธีการส่งงาน
-job_delivery_help	เอกสารของระบบ ไบต์ดิบ หรือ ESC/POS บิลและสลิปเก็บค่าของตัวเอง งานใดก็ส่งไปเครื่องพิมพ์ที่การค้นหาบันทึกไว้ได้
 station_vp_attached	แนบเครื่องพิมพ์แล้ว
 station_vp_detached	ถอดเครื่องพิมพ์ออกจากสถานีแล้ว
-station_print_summary	{mode} · {n} เครื่องพิมพ์
-station_print_summary_none	สถานีนี้ยังไม่มีเครื่องพิมพ์ — จะไม่พิมพ์
-stations_none	ยังไม่มีสถานี — เพิ่มด้านล่าง สถานีไม่ใช้กับร้านแบบเคาน์เตอร์ — เว้นว่างไว้
 route_up	ขึ้น
 route_down	ลง
-route_remove	ลบอันท้าย
 route_clear	ไม่พิมพ์
 save_printers	บันทึกเครื่องพิมพ์
 print_test_page	พิมพ์หน้าทดสอบ
@@ -751,23 +616,15 @@ test_page_no_printer	ไม่มีเครื่องพิมพ์สำ�
 test_page_pick_first	เลือกเครื่องพิมพ์ทดสอบก่อน — แล้วจึงพิมพ์หน้าทดสอบ
 test_printers_dd	เครื่องพิมพ์หน้าทดสอบ
 test_printers_dd_n	{n} เครื่องพิมพ์ทดสอบ · แตะเพื่อเปลี่ยน
-kot_test_printers_dd	เครื่องพิมพ์สำหรับทดสอบพิมพ์
-kot_test_printers_dd_n	เครื่องพิมพ์ {n} เครื่องสำหรับทดสอบพิมพ์ · แตะเพื่อเปลี่ยน
 test_printer_picked	ทดสอบที่: {name}
 test_printer_cleared	ไม่ทดสอบที่: {name}
 test_page_sent_n	ส่งหน้าทดสอบไปยังเครื่องพิมพ์ {n} เครื่อง
-test_kot_pick_first	เลือกเครื่องพิมพ์สำหรับทดสอบพิมพ์ก่อน — แล้วทดสอบพิมพ์
-test_kot_sent_n	ส่งทดสอบพิมพ์ถึงเครื่องพิมพ์ {n} เครื่อง
-cancel_pick	ทำเครื่องหมาย
-cancel_pick_on	ทำเครื่องหมายแล้ว
-cancel_pick_meta	ทำเครื่องหมายเพื่อยกเลิก
 batch_cancel	ยกเลิกที่ทำเครื่องหมาย
 batch_cancel_n	ยกเลิกที่ทำเครื่องหมาย ({n})
 batch_cancel_none	ทำเครื่องหมายสินค้าที่ส่งแล้วอย่างน้อยหนึ่งรายการก่อน — แล้วยกเลิกรายการที่ทำเครื่องหมาย
 batch_cancel_title	ยกเลิกยาที่ทำเครื่องหมาย — หนึ่งเหตุผล หนึ่งสลิปต่อส่วน
 batch_cancel_ok	ยกเลิกสินค้า {n} รายการ · {slips} สลิปยกเลิก → {kitchens}
 batch_cancel_ok_noprint	ยกเลิกสินค้า {n} รายการ — พิมพ์อัตโนมัติปิด จึงไม่มีสลิปยกเลิก
-no_printer_kitchen_station	ไม่มีเครื่องพิมพ์สำหรับสถานีนั้น
 printers_saved	บันทึกเครื่องพิมพ์ของอุปกรณ์นี้แล้ว
 test_page_sent	ส่งหน้าทดสอบแล้ว — ตรวจดูเครื่องพิมพ์
 test_page_sent_one	ส่งหน้าทดสอบไปที่ {name} แล้ว — ตรวจดูเครื่องพิมพ์นั้น
@@ -783,10 +640,7 @@ cancelled	ยกเลิก
 printers_tap_find	แตะ ค้นหาเครื่องพิมพ์ — จะแสดงเครื่องพิมพ์ระบบและเครื่องพิมพ์ใบเสร็จเครือข่ายบน Wi‑Fi นี้
 printers_none_found	ไม่พบเครื่องพิมพ์ — พิมพ์ชื่อระบบหรือที่อยู่เครือข่าย (เช่น 192.168.1.50)
 printer_from_find	เพิ่ม {name} แล้ว
-kot_printer_ph	เครื่องพิมพ์สลิป
 bill_printer_ph	เครื่องพิมพ์บิล
-kot_print_on	พิมพ์สลิปอัตโนมัติ: เปิด
-kot_print_off	พิมพ์สลิปอัตโนมัติ: ปิด
 queue_refused	ร้านไม่รับ ({n}) — ตรวจทีละรายการที่เคาน์เตอร์:
 clear_not_accepted	ตรวจแล้ว — ล้างรายการนี้
 device_name_ph	ชื่ออุปกรณ์นี้
@@ -797,7 +651,6 @@ backup_failed	การสำรองข้อมูลอัตโนมัต
 backup_overdue	ไม่ได้สำรองข้อมูลมา {n} วัน — เปิดแอปค้างไว้ในเครื่องนี้เพื่อให้สำรองข้อมูลได้
 disk_low	เครื่องนี้เหลือพื้นที่ว่างเพียง {mb} MB — อีกไม่นานจะสำรองข้อมูลไม่ได้ ช่วยเคลียร์พื้นที่
 last_seen_devices	ครั้งล่าสุดที่เห็น: {time}
-sync_interval	ซิงค์ทุก {secs} วินาที
 connection_to_shop	การเชื่อมต่อกับร้าน
 supplier_name_ph	ชื่อผู้จัดหา (หรือคู่ค้า)
 supplier_ph	ผู้จัดหา
@@ -860,7 +713,6 @@ fresh_book_tabiyat	เครื่องพิมพ์
 fresh_selected	เลือก Fresh — แคตตาล็อกจะว่าง แตะ Done เมื่อพร้อม
 gross_word	รวมยอด
 how_start	คุณต้องการเริ่มต้นอย่างไร
-kot_print_help_tabiyat	เมื่อส่ง KOT — ที่เคาน์เตอร์หรือจากอุปกรณ์ของพนักงานเสิร์ฟ — กระดาษครัวจะพิมพ์ที่นี่เอง
 later_country_pack	เครื่องพิมพ์
 local_badge	ท้องถิ่น
 mix_type_hint_tabiyat	แบ่งเป็นเงินสด / UPI / บัตร / เครดิตหากจำเป็น เครดิตต้องมีลูกค้าด้านบน
@@ -911,8 +763,6 @@ staff_copy_need_source	เลือกใครที่จะคัดลอก
 staff_copy_same	เป็นบุคคลเดียวกัน — เลือกคนอื่น
 staff_rename_need_selected	เลือกใครจะเปลี่ยนชื่อก่อน
 team_pick_hint	เลือกคนที่จะแก้ — หน้าจอ สิทธิ์เงิน และสถานีปรากฏเฉพาะคนนั้น
-team_stations_help	สถานีที่พวกเขาใช้ได้
-team_stations_changed	สถานีเปลี่ยนแล้ว — บันทึกการตั้งค่าของคนนี้
 team_features_changed	เปลี่ยนหน้าจอ — บันทึกการตั้งค่าสำหรับบุคคลนี้
 team_rights_changed	เปลี่ยนสิทธิ์ — บันทึกการตั้งค่าสำหรับบุคคลนี้
 they_owe_us	พวกเขาติดหนี้เรา
@@ -996,9 +846,6 @@ service_pct_ph	บริการ % ไม่บังคับ 0/10/12
 short_code_ph	รหัสสั้น (MG02)
 starting_password_ph	รหัสผ่านเริ่มต้น (ไม่บังคับ)
 starting_pin_ph	PIN เริ่มต้น (4–12 หลัก)
-station_name_ph	ชื่อสถานี (ไม่บังคับ)
-station_new_ph	ส่วน (ไม่บังคับ)
-table_name_ph	ชื่อเคาน์เตอร์ / ช่อง
 tax_rate_ph	ชื่ออัตราภาษีหรือ % — Standard, Reduced, 0, 5, 12, 18, 20
 to_code_ph	รหัสถึง (kg)
 uncleared_no_ph	หมายเลขที่ยังไม่เคลียร์ด้านบน
@@ -1011,27 +858,8 @@ book_kind_month	สมุดเดือนนี้
 book_kind_aging	ค้างชำระ / เดบิต-เครดิต
 book_kind_balance	งบดุล
 order_help	เลือกออเดอร์ที่เปิดอยู่ หรือเลือกโต๊ะเพื่อเริ่มใหม่ แตะรายการที่พร้อม ส่ง KOT ออกบิลหนึ่งรายการหรือมากกว่า แยกบิล และชำระเงิน
-floor_help	ร้านนี้ขายที่เคาน์เตอร์ โต๊ะและพื้นที่ทานอาหารไม่ใช่ส่วนของ Tabiyat
-kitchen_help	เมื่อส่ง KOT — ที่เคาน์เตอร์หรือจากอุปกรณ์ของพนักงานเสิร์ฟ — กระดาษครัวจะพิมพ์ที่นี่เอง
-kitchen_empty	ไม่มีสลิปที่เปิดอยู่ (ร้านแบบเคาน์เตอร์มักไม่ใช้หน้านี้)
-add_a_table	เพิ่มโต๊ะ
-add_station_heading	เพิ่มส่วน · เช่น OTC, ตู้เย็น, เคาน์เตอร์
 categories_help	หมวดหมู่แสดงว่าอาหารจานหนึ่งอยู่ในส่วนใดของเมนู — เช่น ขนมทานเล่น จานหลัก หรือบิรยานี สร้างหมวดหมู่ในแบบของคุณ: เลือกชื่อที่เราแนะนำ เปลี่ยนชื่อ หรือเพิ่มของคุณเอง
 dish_search_ph	ค้นหาชื่อ ตัวยา หรือบาร์โค้ด…
-tile_free	ว่าง
-tile_occupied	มีลูกค้า
-tile_food_ready	อาหารพร้อม
-tile_bill_printed	พิมพ์บิลแล้ว
-tile_paid	จ่ายแล้ว
-tile_bill_btn	เช็คบิล
-tile_occupy_btn	จัดที่นั่ง
-tile_free_btn	คืนโต๊ะ
-tile_ready_btn	พร้อม
-tile_undo_bill	ยกเลิกบิล
-summary_busy	โต๊ะมีลูกค้า
-summary_to_collect	รอเก็บเงิน
-summary_on_floor	ในร้าน
-floor	ร้าน
 sizes_as_items_ph	ขนาดเป็นรายการแยก (ไม่บังคับ) — ครึ่ง=120, เต็ม=200
 dish_group_ph	ความแรง / กลุ่มบรรจุ (ไม่บังคับ) — เช่น แผง 500mg
 discount	ส่วนลด
@@ -1039,7 +867,6 @@ remove_discount	ลบส่วนลด
 apply_discount	ใช้ส่วนลด
 save_opening_cash	บันทึกเงินทอนตั้งต้น
 close_shift_print	ปิดกะและพิมพ์ใบ
-area_prices_ph	ราคาตามโซน (ไม่บังคับ) — แอร์=220, ห่อกลับ=210
 discount_ph	10% หรือ 50
 discount_reason_ph	เหตุผล (เช่น ลูกค้าประจำ, อาหารช้า)
 opening_float_ph	เงินสดที่ใส่ลิ้นชักเมื่อเช้า
@@ -1049,34 +876,18 @@ shift_handover	ส่งกะ
 shift_since	กะนี้เริ่ม
 expected_in_drawer	ควรมีในลิ้นชัก
 right_discount	ให้ส่วนลด
-floor_in_kitchen	กำลังทำ
-floor_eating	กำลังทาน
 pick_category	เลือกหมวดหมู่
 close_category_list	ปิดรายการหมวดหมู่
 new_category_row	หมวดหมู่ใหม่ — สร้างเมื่อบันทึกรายการ
 your_category	หมวดหมู่ของคุณ
 suggested_category	แนะนำ — จากสินค้าของเรา
 category_search_ph	หมวดหมู่ — ค้นหาของคุณหรือพิมพ์ใหม่
-line_sent_state	ส่งแล้ว
-line_nc_state	ฟรี (NC) — ไม่คิดเงิน
 cancel_item_short	ยกเลิก
-nc_short	ฟรี
-charge_again_short	คิดเงิน
-move_short	ย้าย
 cancel_item_title	ยกเลิกสินค้านี้ — หลังร้านจะได้สลิปยกเลิก
-nc_item_title	ให้รายการนี้ฟรี (NC)
-charge_again_title	คิดเงินรายการนี้อีกครั้ง
-move_item_title	ย้ายรายการนี้ไปโต๊ะอื่น
-already_cooked	ทำไปแล้ว (สูญเสีย)
-not_cooked_yet	ยังไม่ได้ทำ
 return_to_customer	เงินทอน
 short_by	ขาดอีก
 tip_not_sale	ทิป (ของพนักงาน ไม่ใช่ยอดขาย)
 right_settle	รับชำระเงิน
-right_cancel_sent	ยกเลิกรายการที่ส่งแล้ว
-right_complimentary	ให้ฟรี (NC)
-right_move_table	ย้าย / รวมเคาน์เตอร์
-right_reprint	พิมพ์บิลซ้ำ
 right_allowed	อนุญาต
 right_with_approval	ต้องอนุมัติ
 right_denied	ไม่อนุญาต
@@ -1086,25 +897,11 @@ no_server_found	ไม่พบเซิร์ฟเวอร์ ตรวจว
 servers_found_pick	แตะร้านที่ต้องการเชื่อมต่อ
 server_host_selected	กำลังใช้ {host} — ใส่รหัสจับคู่ แล้วแตะจับคู่เลย
 print_bill	พิมพ์บิล
-table_actions	การทำงานของเคาน์เตอร์
-move_merge_table	ย้าย / รวมโต๊ะ
-move_help	ย้ายออเดอร์ของเคาน์เตอร์นี้ไปโต๊ะว่าง หรือรวมกับโต๊ะที่เปิดอยู่
-move_target_ph	ชื่อเคาน์เตอร์
 approval_pin_ph	PIN ผู้จัดการ (เมื่อถูกขอเท่านั้น)
-move_here	ย้ายมาที่นี่
-merge_into	รวมเข้าโต๊ะนั้น
-line_reason_ph	เหตุผล (เช่น ลูกค้าเปลี่ยนใจ สินค้าหมด)
-line_qty_ph	ยกเลิกกี่ชิ้น (ว่าง = ทั้งหมด)
-line_target_ph	ย้ายไปโต๊ะ (เช่น D5)
 confirm	ยืนยัน
 menu_search_ph	ค้นหารายการหรือรหัสย่อ
 customer_paid_ph	ลูกค้าจ่าย
 tip_ph	ทิป
-table_area_ph	โซน (เช่น ทานที่ร้าน, ห่อกลับ, แอร์)
-table_range_ph	หลายโต๊ะพร้อมกัน: D1-D20
-add_these_tables	เพิ่มเคาน์เตอร์เหล่านี้
-remove_these_tables	ลบเคาน์เตอร์เหล่านี้
-table_remove_ph	ลบ: T1-T24 หรือชื่อโต๊ะหนึ่งตัว
 find_server	ค้นหาเซิร์ฟเวอร์ของร้าน
 bill_format	รูปแบบบิล
 bill_format_help	พิมพ์ใต้ชื่อร้านบนทุกบิล แยกบรรทัดด้วย | (เช่น MG Road, Rajkot | Ph 98250 00000)
@@ -1112,78 +909,32 @@ bill_header_ph	ที่อยู่ | โทรศัพท์
 fssai_ph	เลขใบอนุญาตยา (ไม่บังคับ — ใช้ถ้อยคำของคุณ)
 bill_footer_ph	ท้ายบิล (เช่น ขอบคุณ แล้วพบกันใหม่)
 save_bill_format	บันทึกรูปแบบบิล
-kot_format	รูปแบบสลิप
-kot_format_help	แตะช่องในรายการ การแสดง ขนาดตัวอักษร และน้ำหนักใช้กับช่องนั้นในชนิดสลิปที่เลือกด้านบน แต่ละชนิดเก็บขนาดและน้ำหนักของตัวเอง
-kot_format_fields	ช่อง
-kot_field_next	ช่องถัดไป
-kot_field_show	แสดง
-kot_field_hide	ซ่อน
 kot_field_on	แสดง
 kot_field_off	ซ่อน
-kot_field_size	ขนาดฟอนต์
-kot_field_size_ph	เช่น 16, 20, 24, 28, 32…
 kot_weight_light	บาง
 bill_kot_panel_help	เลย์เอาต์บิลและความกว้างเนื้อหา แคชเชียร์คือผู้ออกหรือปิดบิล — เรื่องการขายทั้งก้อนอยู่ในสมุด
 std_size_ph	เช่น 18, 20, 26…
-kot_show_shop	ชื่อร้าน
-kot_hide_shop	ซ่อนร้าน
-kot_show_time	เวลา
-kot_hide_time	ซ่อนเวลา
-kot_show_waiter	แคชเชียร์
-kot_hide_waiter	ซ่อนแคชเชียร์
-kot_show_station	สถานี
-kot_hide_station	ซ่อนสถานี
-kot_show_table	เคาน์เตอร์
-kot_hide_table	ซ่อนโต๊ะ
-kot_show_kot_no	เลขสลิป
-kot_hide_kot_no	ซ่อนเลขสลิป
-kot_width	ดูการตัดบรรทัด (ตั้งความกว้างเนื้อหาที่แท็บสลิป)
-kot_width_58	58 mm
-kot_width_80	80 mm
-kot_kind_heading	ชนิดสลิป
-kot_kind_original	ต้นฉบับ
-kot_kind_duplicate	สำเนา
-kot_kind_modified	แก้ไข
-kot_kind_cancelled	ยกเลิก
-kot_style_heading	ขนาดและน้ำหนักช่อง
-kot_style_title	ชื่อเรื่อง
-kot_style_item_qty	รายการ · จำนวน
-kot_style_field_pick	เลือกช่อง
 kot_weight_regular	ปกติ
 kot_weight_bold	ตัวหนา
-kot_align	จัดแนว
 kot_align_start	เริ่ม
 kot_align_center	ตรงกลาง
 kot_align_end	จบ
 content_width	ความกว้างเนื้อหา (มม.)
 content_width_bill	ความกว้างเนื้อหาใบแจ้งหนี้ (มม.)
-content_width_kot	ความกว้างเนื้อหาสลิป (mm)
 content_width_ph	หรือพิมพ์ความกว้างเนื้อหา 40–210 มม.
 content_width_help	สลิปนี้พิมพ์กว้างเท่าไร บิลเก็บความกว้างของตัวเอง
 content_width_bill_help	บิลลูกค้าพิมพ์กว้างเท่าไร ค่าเริ่มต้น 210 mm (หน้า) สลิปแคบ 58 mm สลิปกว้าง 80 mm 4 นิ้ว 112 mm กว้าง A4 210 mm พิมพ์ค่าใดก็ได้ตั้งแต่ 40 ถึง 210 สลิปมีความกว้างของตัวเองที่แท็บสลิป
-content_width_kot_help	สลิปพิมพ์กว้างเท่าไร ค่าเริ่มต้น 80 mm สลิปแคบ 58 mm สลิปกว้าง 80 mm 4 นิ้ว 112 mm หน้า 210 mm พิมพ์ค่าใดก็ได้ตั้งแต่ 40 ถึง 210 บิลลูกค้ามีความกว้างของตัวเองที่แท็บบิล
 vp_paper_width	ความกว้างเนื้อหา (มม.)
 vp_paper_width_ph	หรือพิมพ์ความกว้างเนื้อหา 40–210 มม.
 vp_paper_width_help	ความกว้างเนื้อหาตั้งไว้ในรูปแบบบิลและสลิป — แยกสำหรับบิล (ค่าเริ่มต้น 210 mm) และสลิป (ค่าเริ่มต้น 80 mm)
-kot_size	ขนาดตัวอักษร
-kot_size_s	เล็ก
-kot_size_m	ปกติ
-kot_size_l	ใหญ่
 std_size	ขนาดตัวอักษร
 kot_copies	สำเนา
 kot_copies_1	1
 kot_copies_2	2
 kot_copies_3	3
-kot_title_ph	ชื่อเรื่อง (ว่าง = TICKET)
-kot_footer_ph	หมายเหตุหลังร้าน (ไม่บังคับ)
-kot_preview	ตัวอย่าง
-save_kot_format	บันทึกรูปแบบสลิป
-test_kot_format	ทดสอบพิมพ์
-test_kot_sent	ส่งตัวอย่างสลิปแล้ว
 test_bill_format	ทดสอบใบแจ้งหนี้
 test_bill_sent	ส่งตัวอย่างใบแจ้งหนี้แล้ว
 test_print_no_printer	ไม่มีเครื่องพิมพ์สำหรับงานนี้ — เลือกหนึ่งรายการบนหน้าจอนี้
-kot_format_saved	บันทึกรูปแบบสลิปแล้ว
 std_print	ขนาดพิมพ์บิล
 std_print_help	ขนาดตัวอักษรสำหรับงานบิลแนวตั้งและแนวนอนมาตรฐานบนเครื่องพิมพ์เอกสารของระบบ (ใส่พอยต์ — ไม่ใช่เล็ก/ปกติ/ใหญ่) ขนาดเดียวกันทั้งสองแนว
 std_size_s	เล็ก
@@ -1223,23 +974,16 @@ upi_qr	UPI QR
 show_upi_qr	แสดง QR UPI
 close_upi_qr	ปิด
 upi_qr_help	ลูกค้าสแกนและจ่าย แตะรับเงินหลังจากจ่ายแล้ว จอที่สอง: เปิด URL เซิร์ฟเวอร์ /display บน LAN
-kot_recall	เรียกคืน
 recently_done	เพิ่งเสร็จ
-recall_kot_ph	เลขสลิปที่จะเรียกกลับ
 role_help_customer	บทบาท: ลูกค้า — AR (พวกเขาเป็นหนี้เรา) บริษัทเดียวกันเป็นผู้จัดหาด้วยก็ได้
 role_help_both	บทบาท: ผู้ส่ง + ผู้ขนส่ง — คู่ค้าหนึ่งราย สมุด AR และ AP สุทธิในรายงาน
 role_help_supplier	บทบาท: ผู้จัดหา — AP สำหรับการซื้อ
-dine_in_pick_table	ไม่ใช้กับร้านแบบเคาน์เตอร์
-choose_table	เลือกเคาน์เตอร์
-change_table	เปลี่ยนโต๊ะ
-pick_table_banner	เลือกโต๊ะสำหรับออร์เดอร์นี้
 items_word	รายการ
 items_section	รายการ
 back_to_order	กลับไปที่ออร์เดอร์
 new_items_head	ยังไม่ได้ส่ง
 price_ph	ราคา
 price_ph_gst_inside	ราคา (รวม{tax})
-cancel_needs_table	ยอดขายที่เคาน์เตอร์อยู่บนสลิปจนกว่าคุณจะรับเงิน
 tax_rates_missing_hint	ไม่มีอัตรา {tax} ในสินค้าเหล่านี้ — ที่สินค้าตั้งอัตราภาษี (ราคารวม {tax} แล้วเมื่อเลือก {tax} รวมในราคา)
 taxable_value	มูลค่าที่ต้องเสียภาษี
 gst_inside_price_note	(รวม{tax})
@@ -1260,30 +1004,11 @@ client_template_confirm	เพิ่มสินค้า {d} รายการ
 client_template_importing	กำลังนำเข้า {title}…
 client_template_done	สินค้าทุกชิ้นจาก {title} อยู่ในสินค้าของคุณแล้ว
 client_template_imported	เพิ่มสินค้า {d} รายการและหมวด {c} หมวดจาก {title}
-resv_heading	การจอง
-resv_name_ph	ชื่อลูกค้า
-resv_phone_ph	โทรศัพท์ (ไม่บังคับ)
-resv_guests_ph	คน
-resv_when_ph	เมื่อไร — 20:30, tomorrow 13:00
-resv_table_ph	เคาน์เตอร์ (ไม่บังคับ)
-resv_add	จอง
-resv_seat	นั่งแล้ว
-resv_none	ไม่มีการจองที่กำลังจะมาถึง
-guests_word	คน
-delivery_by_ph	ผู้ส่ง (ไรเดอร์หรือพนักงาน)
-kitchen_all_day	ต้องทำตอนนี้: {items}
-split_bill	แยกบิล
-split_go	ทำบิลแยก
 cancel	ยกเลิก
 opening_client	เปิดลูกค้า…
 preparing_desk	เตรียมโต๊ะ…
 opening_server	เปิดพนักงานเสิร์ฟ…
 creating_server	สร้างพนักงานเสิร์ฟ…
-split_help	แตะสินค้าที่ลูกค้าคนหนึ่งจ่าย · เลือกแล้ว {n}
-split_send_first	ส่งสลิปก่อน — เฉพาะสินค้าที่หลังร้านมีแล้วจึงไปบิลแยกได้
-split_pick_some	แตะสินค้าสำหรับบิลแยกก่อน
-split_done	ทำบิลแยกแล้ว — อยู่ที่พื้นที่ข้างเคาน์เตอร์นี้
-split_marked	บิลแยก
 order_empty_pick	ออเดอร์ว่าง — แตะเพิ่มสินค้าด้านบนเพื่อเลือก
 add_dishes	เพิ่มยา
 order_so_far	ในออร์เดอร์นี้: {n} · {total}
@@ -1294,24 +1019,8 @@ pick_done_dd	เสร็จ · {label}
 printer_route_mode	หากมีเครื่องพิมพ์หลายตัวในสถานที่นี้
 printer_mode_first	ตัวแรกที่ใช้ได้
 printer_mode_all	พิมพ์ทั้งหมด
-kot_show_area	พื้นที่
-kot_hide_area	ซ่อนพื้นที่
-kot_show_item_hdr	รายการ · จำนวน
-kot_hide_item_hdr	ซ่อนคอลัมน์
-kot_show_title	บรรทัดหัวข้อ
-kot_hide_title	ซ่อนหัวข้อ
-kot_field_order	พิมพ์คำสั่ง
 kot_field_up	ย้ายขึ้น
 kot_field_down	ย้ายลง
-kot_field_cycle	เลือกถัดไป
-kot_field_select	เลือกถัดไป
-kot_field_time	เวลา
-kot_field_kot_no	เลขสลิป
-kot_field_area	พื้นที่
-kot_field_table	เคาน์เตอร์
-kot_field_shop	ชื่อร้าน
-kot_field_waiter	พนักงาน
-kot_field_station	สถานี
 app_template_blurb_extra	อีกทั้ง: เจ้าของ Zahir ผู้ดูแล Asif แคชเชียร์ Nawaz แถบข้างด้านหน้า ประวัติหลัง 4 ชั่วโมง แถบวันนี้ปิด บิลแบบกระชับ
 dishes_n	{n} รายการ
 recipe_ph	สูตร (ไม่บังคับ — ไม่ใช้กับร้านแบบเคาน์เตอร์)
@@ -1321,8 +1030,6 @@ low_stock_alert	ใกล้หมด — ควรซื้อเร็วๆ �
 unpriced_note	สินค้าของคุณ {n} รายการยังไม่มีราคา — คิดเงินที่ 0 จนกว่าจะตั้ง
 show_unpriced	แสดงเฉพาะสินค้าที่ไม่มีราคา
 show_all_dishes	แสดงสินค้าทั้งหมด
-role_waiter	แคชเชียร์
-role_kitchen	คลัง
 role_title_rest_ph	ตำแหน่ง (เช่น กัปตัน หัวหน้าเชฟ)
 preset_help_rest	แคชเชียร์: ขาย ผู้จัดการ: ขาย + รายการ + ยกเลิก/แก้ไข
 kind_raw	สต็อกสำหรับปรุง

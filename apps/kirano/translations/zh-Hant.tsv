@@ -68,28 +68,6 @@ applied	應付
 note_ph	備註（可選）
 rounded	舍入後
 split	拆分
-send_kot	發送單據
-send_kot_to	發送 → {kitchens}
-send_kot_again	為下一張單新增項目
-send_kot_held	保留的項目 — 取消保留以發送
-reprint_kot	重打所選
-reprint_kot_ok	再次列印 {n} 項目 · {slips} 單據 → {kitchens}
-reprint_kot_needed	首先發送單據 - 然後新增項目並再次列印所選項目
-reprint_kot_none_selected	每個已發送的項目都會被跳過 - 點擊要重新列印的項目上的“列印中”
-reprint_kot_client	為發送的 {place} 再次列印 ({n}) — 商店設備列印它
-print_cancelled_kot	打印全部取消
-print_cancelled_kot_ok	列印的 {n} 取消項目 · {slips} 單據 → {kitchens}
-print_cancelled_kot_needed	首先開啟一個包含已取消項目的表
-print_cancelled_kot_none	此訂單上沒有已取消的商品
-print_cancelled_kot_client	發送的 {place} 的列印已取消 ({n}) — 商店設備將其列印
-kot_banner	橫幅
-kot_banner_ph	橫幅（空=無）
-kot_item_prefix	菜名前綴
-kot_item_prefix_ph	例如 [CANCELLED]
-kot_strike	打擊物品名稱
-kot_strike_note	打擊項目備註
-kot_strike_on	開
-kot_strike_off	關
 bill_item_layout	菜品版式
 bill_item_layout_columns	列
 bill_item_layout_stacked	堆疊
@@ -118,8 +96,6 @@ bill_item_gap_em	間距 (em)
 bill_item_qty_min	數量最小 (em)
 bill_item_price_min	單價最小 (em)
 bill_item_amount_min	金額最小 (em)
-kot_item_qty_width	數量列
-kot_item_num_align	數量對齊
 bill_total_qty_label	總數量標籤
 bill_total_subtotal_label	小計標籤
 bill_total_grand_label	總計標籤
@@ -131,36 +107,9 @@ bill_item_piece_off	關
 bill_total_qty	總數量
 bill_total_subtotal	小計
 bill_total_grand	總計
-reprint_incl	列入打印
-reprint_skip	跳過
-reprint_skip_meta	不重打
-kot_dest_hint	在您設置的“設置 → 打印機”中分配給 {kitchens} 的打印機上打印
-kot_sent_hint	最後發送至 {kitchens}。點擊可為下一張帳單新增項目 - 或再次列印同一張帳單的單據。
-kot_sent_printing	寄至 {kitchens} 的單據 — 列印
-kot_sent_not_printed	單據已發送至 {kitchens} 但未列印：{why}。告訴商店，然後修復印表機並重新列印。
-kot_sent_screen	單據已發送至 {kitchens}
-kot_queued_shop	{place} → {kitchens} 的單據已儲存；商店設備列印它
-kot_job_label	{place} → {kitchens} 的滑條
-kot_job_reached	{place} 的滑差達到 {kitchens}
 kot_unassigned	未分配
-kot_unassigned_held	持有 {n} 物品無站 — 取消持有即可線上寄送
-kot_station_ph	工位
-kot_station_dd	工位
-kot_station_dd_n	站·{stations}
-kot_set_station	使用此工作站
-kot_station_applied	{n} 專案上設定的電台：{station}
-kot_station_cleared	從 {n} 專案中清除的站：{station}
-kot_station_needed	首先選擇一個商店區域
-kot_station_not_allowed	不允許使用部分：{station}
-kot_station_none	還沒有車站 - 櫃檯商店中未使用（設定 → 區域，如果需要）
 pos_tab_items	已添加
 pos_tab_payment	付款
-hold_send	暫緩
-hold_send_on	已暫存
-hold_send_meta	已舉行 — 不在這張單上
-station_remove	移除工作站
-station_remove_ph	點擊列表中的工作站以移除它
-station_removed	工作站已移除：{name}
 settings_hub_title	設置
 settings_hub_help	一次打開一個區域——少滾動，選項更清楚。
 settings_back	返回
@@ -169,12 +118,10 @@ settings_sec_country	國家與稅務
 settings_sec_tills	額外櫃檯與分店
 settings_sec_brand	您的品牌
 settings_sec_units	單位與換算
-settings_sec_pickers	區域 · 工作站 · 稅率
+settings_sec_pickers	稅率
 settings_sec_printers	打印機
 settings_sec_bill	帳單和單據格式
 settings_sec_selling	方案與銷售
-bill_kot_tab_bill	帳單
-bill_kot_tab_kot	滑
 settings_sec_alerts	提示
 alerts_help	狀態消息為你在屏幕上停留多久（本次登錄）。
 snack_secs_ph	秒數（3–60，默認 10）
@@ -225,8 +172,6 @@ counter	櫃檯
 dine_in	櫃檯
 takeaway	外帶
 order	訂單
-tables	櫃檯
-kitchen	部分
 sales	銷售
 sales_refunds	銷售與退款
 day_close	日結
@@ -254,10 +199,6 @@ zero_sales_on	零元銷售：開
 zero_sales_off	零元銷售：關
 zero_sales_saved_on	已保存零元銷售許可（開）
 zero_sales_saved_off	已保存零元銷售許可（關）
-floor_areas_help	區域是地板上的房間或區域（堂食、包裹、空調…）。首先新增一個區域，然後在其中放置計數器 - 每個區域都是地板上的一個單獨的群組。
-area_new_ph	新區域/房間（如 AC、Garden）
-add_area	添加區域
-area_added	區域“{name}”就緒 - 新增計數器到其中
 no_favorites	尚無收藏 — 從下面的列表添加商品。
 add_to_bill	加入帳單
 added	已添加
@@ -268,19 +209,9 @@ chip_missing_customer	所選客戶不存在 — 請重新選擇
 chip_no_customer	尚無客戶 — 輸入姓名，然後點賒帳
 credit_summary_fmt	{} 位客戶 · 未結賒帳 {} · 預付 {}
 recent_label	最近:
-kot_new_waiting	新單 — 等待中
-kot_preparing	準備中
-kot_ready_serve	已備好 — 請上菜
-kot_done_cap	完成
-kot_cancelled	已取消
-kot_start_btn	開始
-kot_mark_ready	標記為已備好
-kot_done_btn	完成
-table_free	空閒 — 點按開始點單
 start_order	開始點單
 open_bill	打開帳單
 collect_payment	收款
-table_running	進行中
 payment_pending	待付款
 collect_at_counter	在櫃檯收款
 inventory	庫存
@@ -313,7 +244,6 @@ ok	確定
 this_shop	服務器模式
 extra_till	客戶端模式
 off	關
-tables_kitchen	店鋪佈局
 server	服務器模式
 client	客戶端模式
 language_currency	語言與貨幣
@@ -355,8 +285,6 @@ add_item_plain	添加項目
 add_note	添加備註
 add_opening_balance	添加期初餘額
 add_staff	添加員工
-add_station	添加工位
-add_table	添加桌臺
 add_unit	添加單位
 add_use_name	添加/使用此名稱
 allow_extra_tills	允許額外櫃檯
@@ -409,7 +337,6 @@ share_whatsapp	分享到 WhatsApp
 lan_pages_heading	Wi-Fi 上的客戶頁面
 lan_pages_help	在這家商店的 Wi-Fi 上，客戶頁面可用於展示板和回饋。使用行動數據的人們稍後需要雲端。卡終端或支付連結是可選的，並且不會阻塞櫃檯。
 diag_send_heading	從本設備分享出去
-kot_dest_heading	工位
 optional_login_heading	可選登錄
 rights_heading	權限
 ops_panel	本地運營
@@ -436,28 +363,6 @@ till_voucher_amt_ph	代金券金額（空=全部）
 till_wallet_topup_ph	錢包充值金額
 till_voucher_issue_amt_ph	新代金券金額
 till_voucher_issue_code_ph	新代金券代碼
-split_evenly	平均拆分
-waitlist	候位名單
-fire_course	下一步
-hold_item	暫緩
-waiter_call	致電收銀員
-waitlist_add	加入候位
-floor_view_grid	網格
-floor_view_layout	平面圖
-floor_layout_x	X
-floor_layout_y	Y
-floor_layout_w	W
-floor_layout_h	H
-floor_layout_save	保存平面圖
-floor_layout_open	打開桌臺
-floor_layout_edit	編輯平面圖
-floor_layout_pick	點按桌臺以編輯平面位置
-floor_layout_saved	佈局已儲存
-floor_layout_nudge_left	← 20
-floor_layout_nudge_right	→ 20
-floor_layout_nudge_up	↑ 20
-floor_layout_nudge_down	↓ 20
-sibling_pickers_help	與單位相同 On/Off：從日常選擇器隱藏區域、檔口、稅率；包裝默認保留。
 bulk_price_apply	應用批量改價
 card_terminal_optional	刷卡機/支付鏈接（有網時可選）
 copy_report	複製報表
@@ -483,7 +388,6 @@ import_day	導入當天
 import_items_csv_plain	導入項目CSV…
 import_parties_csv	導入往來方CSV…
 item_name	項目名稱
-kitchen_printing	打印機
 login_id_ph	登錄編號
 mark_cleared	標記為已清算
 new_party_clear	新往來方（清空表單）
@@ -553,15 +457,6 @@ show	顯示
 spreadsheet_csv	電子表格(CSV)
 start_fresh	從頭開始
 stop_extra_tills	停止額外櫃檯
-floor_cols_ph	列
-floor_cols_fit	適應屏幕
-floor_cols_fit_sub	可放 {n} 個
-floor_cols_fits	放得下
-floor_cols_scroll	左右滾動
-floor_cols_min	列數：至少 1 — 或留空以適應屏幕
-floor_zoom_auto	自動
-floor_zoom_out	縮小
-floor_zoom_in	放大
 backup_auto	每天自動備份 · 上次 {when} · 最近 14 天保存在 {dir}。
 backup_auto_none	每天自動備份 — 第一次馬上開始。
 backup_copy_to	副本也會存到 {dir}。
@@ -579,7 +474,6 @@ new_pair_code	新的配對碼
 pair_finishing	正在完成配對… 正在套用店鋪帳簿
 pair_opening	正在打開收銀機…
 pair_copied	配對碼已複製
-kot_waiting	等待發送
 lan_offline_waiting	離線 · {n} 條等待中
 lan_connecting	正在連接店鋪…
 lan_live	實時
@@ -621,7 +515,6 @@ printers_routes_help	尋找作業系統已經辨識的印表機。將它們分�
 printer_assign_dd	為 {place} 選擇打印機
 printer_assign_pick	選擇真實打印機
 printer_profile_heading	平面圖
-printer_send_heading	外送
 vp_delivery_heading	外送
 vp_delivery_help	此虛擬印表機如何傳送作業 - 作業系統文件、原始位元組或 ESC/POS。單據內容（字號、換行、頁邊距）由帳單/單據格式決定，此處不作說明。
 vp_type_size_heading	字號
@@ -665,23 +558,13 @@ virtual_draft_send	已為下一臺虛擬打印機設置數值
 virtual_need_real	請先選擇真實打印機
 virtual_need_select	請選擇要刪除的虛擬打印機
 real_printer_selected	真實打印機：{name}
-station_group_heading	虛擬打印機
-station_group_apply	刪除虛擬打印機
-station_group_applied	已刪除
-station_group_empty	請選擇虛擬打印機
-station_group_name_ph	虛擬打印機名稱（可選）
-station_group_save	創建虛擬打印機
-station_group_saved	虛擬打印機已保存
-station_manage_heading	新增或刪除商店部分
 printers_routes_heading	2. 打印位置
 route_pick_heading	位置
 route_editing	編輯中：{name}
 route_assigned	已將 {printer} 添加到 {place}
 route_already_assigned	已在此位置：{printer}
-route_removed	已從 {place} 移除 {printer}
 route_cleared	已清空 {name}
 route_assigned_empty	此位置無
-route_tap_remove	點擊以移除
 route_tap_select	點按選擇
 route_tap_selected	已選
 route_pick_printer_first	請先點按一臺打印機
@@ -702,35 +585,17 @@ printer_format_custom	新建自定義格式
 printer_format_custom_label	自定義
 printer_format_custom_added	已為此路線添加自定義格式
 add_printer	添加打印機
-remove_printer	刪除
 route_pick_ph	帳單或商店部分
 route_bill	帳單
-route_default_kitchen	無站（未分配的項目）
-route_kot_station	工位
 route_dont_print	不打印
-stations_heading	工作站
-stations_help	商店部分將商店該部分的物品和印表機分組。從「設定」→「印表機」連接印表機，設定嘗試順序，然後選擇「第一個有效」或「全部列印」。更改隨時保存。
-station_print_heading	此工位的打印機
-station_print_help	選擇一個工作站，然後連接一台或多台印表機。 ↑↓ 設定嘗試順序。第一次成功後，第一個有效的方法就停止了；列印發送至每台連接印表機的所有發送。
-station_print_pick_ph	要設置打印機的工位
 station_print_pick_first	首先選擇一個商店區域
-station_print_editing	正在編輯“{name}”的打印機
-station_vps_dd	此工位的打印機
-station_vps_dd_n	{n} 臺打印機 · 點按更改
 station_vps_empty	尚無打印機 — 請在「設置 → 打印機」中查找
 bill_printers_dd	帳單打印機
 bill_printers_dd_n	{n} 臺帳單打印機 · 點擊以更改
-job_layout	平面圖
-job_delivery	任務發送方式
-job_delivery_help	作業系統文件、原始位元組或 ESC/POS。帳單和門票各自保留。任一作業都可以前往「尋找」已儲存的任何印表機。
 station_vp_attached	已掛接打印機
 station_vp_detached	已從工位移除打印機
-station_print_summary	{mode} · {n} 臺打印機
-station_print_summary_none	此工位尚無打印機 — 不會打印
-stations_none	還沒有電台 - 在下面添加一個。櫃檯商店中的電台未使用－留空。
 route_up	上移
 route_down	下移
-route_remove	刪除
 route_clear	清空
 save_printers	保存打印機
 print_test_page	打印測試頁
@@ -739,23 +604,15 @@ test_page_no_printer	{place} 沒有打印機——請在上方分配後再試
 test_page_pick_first	請先選擇測試打印機——再打印測試頁
 test_printers_dd	測試頁打印機
 test_printers_dd_n	{n} 臺測試打印機 · 點按更改
-kot_test_printers_dd	用於測試列印的印表機
-kot_test_printers_dd_n	用於測試列印的 {n} 印表機 · 點擊進行更改
 test_printer_picked	測試於：{name}
 test_printer_cleared	不測試：{name}
 test_page_sent_n	測試頁已發送到 {n} 臺打印機
-test_kot_pick_first	首先選擇印表機進行測試列印 - 然後選擇測試列印
-test_kot_sent_n	測試列印傳送至 {n} 印表機
-cancel_pick	標記
-cancel_pick_on	已標記
-cancel_pick_meta	已標記取消
 batch_cancel	取消已標記
 batch_cancel_n	取消已標記 ({n})
 batch_cancel_none	首先標記一個或多個已發送項目 - 然後取消標記
 batch_cancel_title	取消標記的項目 - 一個原因，每個部分一張取消單
 batch_cancel_ok	{n} 項目已取消 · {slips} 取消單 → {kitchens}
 batch_cancel_ok_noprint	{n} 項目已取消 — 自動列印已關閉，因此沒有取消單
-no_printer_kitchen_station	該站沒有印表機
 printers_saved	已保存本設備的打印機
 test_page_sent	測試頁已發送——請查看打印機
 test_page_sent_one	測試頁已發送到 {name}——請查看該打印機
@@ -771,10 +628,7 @@ cancelled	已取消
 printers_tap_find	點按「查找」，列出此設備可用的打印機。
 printers_none_found	未找到打印機——請輸入系統打印機名稱或網絡地址（如 192.168.1.50）。
 printer_from_find	已添加 {name}
-kot_printer_ph	票據印表機
 bill_printer_ph	帳單打印機
-kot_print_on	自動列印門票：開
-kot_print_off	自動列印門票：關閉
 queue_refused	店裡未接受（{n}）— 請在櫃檯逐一核對：
 clear_not_accepted	已核對 — 清空此列表
 device_name_ph	本設備名稱
@@ -785,7 +639,6 @@ backup_failed	上次自動備份失敗：{e}
 backup_overdue	已 {n} 天沒有備份 — 請讓本機上的應用保持打開，以便備份。
 disk_low	本機僅剩 {mb} MB 可用空間 — 備份很快會失敗。請清理一些空間。
 last_seen_devices	最後看到：{time}
-sync_interval	每 {secs} 秒同步一次
 connection_to_shop	與店鋪的連接
 supplier_name_ph	供應商名稱（或往來方）
 supplier_ph	供應商
@@ -848,7 +701,6 @@ fresh_book_kirano	新鮮 = 空目錄（稍後新增項目）。 Book = 在下面
 fresh_selected	已選Fresh — 目錄保持為空。準備好後點擊Done。
 gross_word	毛額
 how_start	您想如何開始？
-kot_print_help_kirano	不用於 kirana 櫃檯。
 later_country_pack	稍後：設置 → 應用國家包，以使用當地的稅和付款名稱。
 local_badge	本地
 mix_type_hint_kirano	需要時可拆分到現金/UPI/銀行卡/賒帳。賒帳需要在上方選擇顧客。
@@ -899,8 +751,6 @@ staff_copy_need_source	選擇要複製其設置的誰
 staff_copy_same	這是同一人——請選擇其他人
 staff_rename_need_selected	選擇首先重命名誰
 team_pick_hint	選擇要編輯的人 - 螢幕、資金權限和電台僅針對該人顯示。
-team_stations_help	他們可能使用的車站
-team_stations_changed	電台已更改 - 儲存此人的設置
 team_features_changed	屏幕已更改 — 保存此人員的設置
 team_rights_changed	權限已更改 — 保存此人員的設置
 they_owe_us	他們欠我們
@@ -984,9 +834,6 @@ service_pct_ph	服務 % 可選 0/10/12
 short_code_ph	短代碼（MG02）
 starting_password_ph	初始密碼（可選）
 starting_pin_ph	初始 PIN（4–12 位）
-station_name_ph	站名（可選）
-station_new_ph	部分（可選）
-table_name_ph	櫃檯/櫃檯名稱
 tax_rate_ph	稅率名稱或 % — Standard, Reduced, 0, 5, 12, 18, 20
 to_code_ph	到代碼（kg）
 uncleared_no_ph	上方未清算編號
@@ -999,27 +846,8 @@ book_kind_month	本月帳本
 book_kind_aging	未結 / 借貸
 book_kind_balance	資產負債表
 order_help	選擇一個未結訂單，或選擇桌臺開始新訂單。點選就緒菜品，發送 KOT，為一個或多個菜品結帳，拆分帳單並完成付款。
-floor_help	這家店在櫃檯有賣。桌子和餐廳地板不屬於 Kirano 的一部分。
-kitchen_help	不在櫃檯商店使用。
-kitchen_empty	沒有開放門票（櫃檯商店通常不使用此螢幕）。
-add_a_table	添加桌子
-add_station_heading	添加商店部分
 categories_help	分類顯示一道菜屬於菜單的哪一部分 — 如小吃、主菜或印度香飯。按您的方式創建分類：選擇我們建議的名稱、重命名或添加您自己的。
 dish_search_ph	搜尋項目或短代碼...
-tile_free	空閒
-tile_occupied	有客
-tile_food_ready	菜已好
-tile_bill_printed	已打單
-tile_paid	已付款
-tile_bill_btn	帳單
-tile_occupy_btn	安排入座
-tile_free_btn	清檯
-tile_ready_btn	清檯
-tile_undo_bill	撤銷帳單
-summary_busy	桌在用
-summary_to_collect	待收款
-summary_on_floor	在場
-floor	店鋪
 sizes_as_items_ph	規格作為獨立菜品（可選）— 半份=120, 整份=200
 dish_group_ph	包裝尺寸組（可選）－例如阿塔1公斤/5公斤
 discount	折扣
@@ -1027,7 +855,6 @@ remove_discount	取消折扣
 apply_discount	應用折扣
 save_opening_cash	保存備用金
 close_shift_print	交班並打印交班單
-area_prices_ph	區域價（可選）— 空調區=220, 打包=210
 discount_ph	10% 或 50
 discount_reason_ph	原因（如常客、上菜慢）
 opening_float_ph	今早放入錢箱的現金
@@ -1037,34 +864,18 @@ shift_handover	交班
 shift_since	本班次開始於
 expected_in_drawer	錢箱應有
 right_discount	給予折扣
-floor_in_kitchen	進行中
-floor_eating	用餐中
 pick_category	選擇分類
 close_category_list	關閉分類列表
 new_category_row	新分類 — 保存菜品時創建
 your_category	您的分類
 suggested_category	建議 — 來自我們的商品
 category_search_ph	分類 — 搜索已有或輸入新分類
-line_sent_state	傳送
-line_nc_state	贈送 (NC) — 不收費
 cancel_item_short	取消
-nc_short	贈送
-charge_again_short	收費
-move_short	移動
 cancel_item_title	取消此項目 — 後台收到取消單
-nc_item_title	將此菜品設為贈送 (NC)
-charge_again_title	重新對此菜品收費
-move_item_title	將此菜品移到另一桌
-already_cooked	已做好（損耗）
-not_cooked_yet	還沒做
 return_to_customer	找零
 short_by	還差
 tip_not_sale	小費（歸員工，非營業額）
 right_settle	收款
-right_cancel_sent	取消已下單菜品
-right_complimentary	贈送 (NC)
-right_move_table	移動/合併計數器
-right_reprint	重打帳單
 right_allowed	允許
 right_with_approval	需審批
 right_denied	不允許
@@ -1074,25 +885,11 @@ no_server_found	未找到服務器。請確認店內設備在同一 Wi‑Fi 並�
 servers_found_pick	點按要連接的店鋪。
 server_host_selected	正在使用 {host} — 輸入配對碼，然後點立即配對。
 print_bill	打印帳單
-table_actions	對策
-move_merge_table	換桌 / 並桌
-move_help	將此計數器的訂單移至空閒表，或將其合併到正在執行的表中。
-move_target_ph	櫃檯名稱
 approval_pin_ph	經理 PIN（需要時才填）
-move_here	移到這桌
-merge_into	併入該桌
-line_reason_ph	原因（例如顧客改變主意、缺貨）
-line_qty_ph	取消數量（空 = 全部）
-line_target_ph	移到桌（如 D5）
 confirm	確認
 menu_search_ph	搜索菜品或簡碼
 customer_paid_ph	客人付款
 tip_ph	小費
-table_area_ph	區域（如堂食、打包、空調區）
-table_range_ph	一次多個：D1-D20
-add_these_tables	新增這些計數器
-remove_these_tables	刪除這些計數器
-table_remove_ph	刪除：T1-T24，或某張桌臺的名稱
 find_server	查找店內服務器
 bill_format	帳單格式
 bill_format_help	每張帳單上都印有您商店的名稱。以 | 分隔行（例如 MG Road, Rajkot | Ph 98250 00000）。
@@ -1100,78 +897,32 @@ bill_header_ph	地址 | 電話
 fssai_ph	FSSAI / 商店許可證號（選修的）
 bill_footer_ph	頁腳（如：謝謝，歡迎再來）
 save_bill_format	保存帳單格式
-kot_format	單據格式
-kot_format_help	點擊列表中的一個欄位。顯示、字體大小和粗細適用於上面選擇的單據類型上的該欄位。每種都有自己的尺寸和重量。
-kot_format_fields	字段
-kot_field_next	下一字段
-kot_field_show	顯示
-kot_field_hide	隱藏
 kot_field_on	顯示
 kot_field_off	隱藏
-kot_field_size	字號
-kot_field_size_ph	例如 16, 20, 24, 28, 32…
 kot_weight_light	細
 bill_kot_panel_help	票據佈局和內容寬度。收銀員負責開立或結算帳單——完整的銷售故事保留在書中。
 std_size_ph	例如 18, 20, 26…
-kot_show_shop	店名
-kot_hide_shop	隱藏店名
-kot_show_time	時間
-kot_hide_time	隱藏時間
-kot_show_waiter	收銀員
-kot_hide_waiter	隱藏收銀台
-kot_show_station	工位
-kot_hide_station	隱藏工位
-kot_show_table	櫃檯
-kot_hide_table	隱藏桌臺
-kot_show_kot_no	票號
-kot_hide_kot_no	隱藏票號
-kot_width	預覽換行（在滑動標籤上設定內容寬度）
-kot_width_58	58 mm
-kot_width_80	80 mm
-kot_kind_heading	門票種類
-kot_kind_original	原件
-kot_kind_duplicate	副本
-kot_kind_modified	已修改
-kot_kind_cancelled	已取消
-kot_style_heading	字段字號與字重
-kot_style_title	標題
-kot_style_item_qty	品項 · 數量
-kot_style_field_pick	選擇字段
 kot_weight_regular	常規
 kot_weight_bold	粗體
-kot_align	對齊
 kot_align_start	開始
 kot_align_center	居中
 kot_align_end	結束
 content_width	內容寬度（毫米）
 content_width_bill	帳單內容寬度 (mm)
-content_width_kot	票據內容寬度(mm)
 content_width_ph	或輸入內容寬度，40–210 毫米
 content_width_help	此單列印多寬。比爾保持自己的寬度。
 content_width_bill_help	客戶帳單列印的寬度。預設 210 毫米（頁）。 58 毫米窄卡紙、80 毫米寬卡紙、112 毫米 4 吋、210 毫米 A4 寬紙。輸入 40 到 210 之間的任意值。票據在票據標籤上有自己的寬度。
-content_width_kot_help	票據列印的寬度。預設 80 毫米。 58 毫米窄單頁、80 毫米寬單頁、112 毫米 4 吋、210 毫米頁。鍵入 40 到 210 之間的任意值。客戶帳單在「帳單」標籤上有自己的寬度。
 vp_paper_width	內容寬度（毫米）
 vp_paper_width_ph	或輸入內容寬度，40–210 毫米
 vp_paper_width_help	內容寬度在帳單和單據格式下設定 - 分別針對帳單（預設 210 毫米）和票據（預設為 80 毫米）。
-kot_size	字號
-kot_size_s	小
-kot_size_m	標準
-kot_size_l	大
 std_size	字號
 kot_copies	份數
 kot_copies_1	1
 kot_copies_2	2
 kot_copies_3	3
-kot_title_ph	標題（空白 = 門票）
-kot_footer_ph	後台備註（選購）
-kot_preview	預覽
-save_kot_format	儲存單據格式
-test_kot_format	測試列印
-test_kot_sent	門票預覽已發送
 test_bill_format	測試帳單
 test_bill_sent	帳單預覽已發送
 test_print_no_printer	該任務沒有打印機 — 在此屏幕選擇一個
-kot_format_saved	已儲存單據格式
 std_print	帳單字號
 std_print_help	作業系統/文件印表機上標準縱向和橫向票據作業的字型大小（輸入點 - 不是小/正常/大）。兩個方向的尺寸相同。
 std_size_s	小
@@ -1211,23 +962,16 @@ upi_qr	UPI QR
 show_upi_qr	顯示 UPI 二維碼
 close_upi_qr	關閉
 upi_qr_help	客戶掃描並付款。付款後點選「接受付款」。第二個畫面：開啟伺服器 URL /在 LAN 上顯示。
-kot_recall	召回
 recently_done	剛完成
-recall_kot_ph	需要呼叫的票號#
 role_help_customer	角色：客戶 — AR（他們欠我們）。同一家公司也可以是供應商。
 role_help_both	角色：寄件人 + 承運人 — 一個往來方，AR 和 AP 帳本，報表中淨額。
 role_help_supplier	角色：供應商 — 採購的 AP。
-dine_in_pick_table	未在櫃檯商店使用
-choose_table	選擇櫃檯
-change_table	更換桌臺
-pick_table_banner	為此訂單選擇桌臺
 items_word	項
 items_section	項目
 back_to_order	返回訂單
 new_items_head	尚未發送
 price_ph	單價
 price_ph_gst_inside	價格（含{tax}）
-cancel_needs_table	櫃檯銷售會保留在門票上，直到您付款為止
 tax_rates_missing_hint	這些商品沒有 {tax} 稅率 — 商品設定了稅率（價格已包含 {tax}，包含 {tax}）
 taxable_value	應稅金額
 gst_inside_price_note	（含{tax}）
@@ -1248,30 +992,11 @@ client_template_confirm	從 {title} 新增 {d} 項目？您已有的物品保持
 client_template_importing	正在導入{title}…
 client_template_done	{title} 中的每件物品都在您的物品上。
 client_template_imported	從 {title} 新增了 {d} 項目和 {c} 類別
-resv_heading	預訂
-resv_name_ph	客戶名稱
-resv_phone_ph	電話（可選）
-resv_guests_ph	人們
-resv_when_ph	時間 — 20:30，tomorrow 13:00
-resv_table_ph	計數器（可選）
-resv_add	預訂
-resv_seat	已入座
-resv_none	暫無即將到來的預訂。
-guests_word	位
-delivery_by_ph	配送人（騎手或員工）
-kitchen_all_day	待做：{items}
-split_bill	分單
-split_go	生成單獨帳單
 cancel	取消
 opening_client	正在打開客戶端…
 preparing_desk	正在準備桌面…
 opening_server	正在打開服務員…
 creating_server	正在創建服務員…
-split_help	點選一位顧客支付的商品 · {n} 挑選的商品
-split_send_first	先寄出單據－只有後台擁有的物品才能進入單獨的帳單
-split_pick_some	首先點選單獨帳單的項目
-split_done	單獨的帳單——在櫃檯旁的地板上
-split_marked	單獨帳單
 order_empty_pick	空訂單 — 點擊上面的「新增商品」來挑選商品。
 add_dishes	新增項目
 order_so_far	本單：{n} · {total}
@@ -1282,24 +1007,8 @@ pick_done_dd	完成 · {label}
 printer_route_mode	如果此地點有多個打印機
 printer_mode_first	第一個可用的
 printer_mode_all	全部打印
-kot_show_area	區域
-kot_hide_area	隱藏區域
-kot_show_item_hdr	品項 · 數量
-kot_hide_item_hdr	隱藏列
-kot_show_title	標題行
-kot_hide_title	隱藏標題
-kot_field_order	打印訂單
 kot_field_up	上移
 kot_field_down	下移
-kot_field_cycle	選擇下一個
-kot_field_select	選擇下一個
-kot_field_time	時間
-kot_field_kot_no	票號
-kot_field_area	區域
-kot_field_table	櫃檯
-kot_field_shop	店名
-kot_field_waiter	員工
-kot_field_station	工位
 app_template_blurb_extra	另外：所有者 Zahir、管理員 Asif、收銀員 Nawaz；前側邊欄； 4小時後病史；今天脫掉；緊湊的賬單。
 dishes_n	{n} 項目
 recipe_ph	食譜（可選－櫃檯商店未使用）
@@ -1309,8 +1018,6 @@ low_stock_alert	庫存不足——儘快補貨：{items}
 unpriced_note	您的商品上的 {n} 商品還沒有價格 — 在您設定 1 之前，它們的計費價格為 0。
 show_unpriced	僅顯示沒有價格的商品
 show_all_dishes	顯示所有項目
-role_waiter	收銀員
-role_kitchen	店鋪
 role_title_rest_ph	職位（如領班、主廚）
 preset_help_rest	收銀員：銷售。經理：銷售+項目+作廢/修改。
 kind_raw	買來供商店使用

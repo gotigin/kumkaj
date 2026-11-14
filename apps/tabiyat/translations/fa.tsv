@@ -80,28 +80,6 @@ applied	اعمال‌شده
 note_ph	یادداشت (اختیاری)
 rounded	گردشده
 split	تقسیم
-send_kot	برگه ارسال کنید
-send_kot_to	فرستادن → {kitchens}
-send_kot_again	موارد را برای برگه بعدی اضافه کنید
-send_kot_held	موارد نگهداری شده - باز نگه داشتن برای ارسال
-reprint_kot	چاپ دوباره انتخاب‌شده‌ها
-reprint_kot_ok	چاپ مجدد موارد {n} · برگه(های) {slips} → {kitchens}
-reprint_kot_needed	ابتدا یک برگه بفرستید - سپس داروها را اضافه کنید و داروهای انتخاب شده را دوباره چاپ کنید
-reprint_kot_none_selected	هر مورد ارسالی نادیده گرفته می‌شود - روی در چاپ روی مواردی که می‌خواهید دوباره چاپ کنید ضربه بزنید
-reprint_kot_client	چاپ مجدد ({n}) برای {place} ارسال شده - دستگاه فروشگاه آن را چاپ می کند
-print_cancelled_kot	چاپ همه لغوشده‌ها
-print_cancelled_kot_ok	چاپ {n} موارد لغو شده · برگه(های) {slips} → {kitchens}
-print_cancelled_kot_needed	ابتدا یک جدول با موارد لغو شده باز کنید
-print_cancelled_kot_none	هیچ مورد لغو شده در این سفارش وجود ندارد
-print_cancelled_kot_client	چاپ لغو شد ({n}) برای {place} ارسال شد — دستگاه فروشگاه آن را چاپ می کند
-kot_banner	نوار نوع
-kot_banner_ph	نوار (خالی = هیچ)
-kot_item_prefix	پیشوند کالا
-kot_item_prefix_ph	مثلاً [لغو]
-kot_strike	نام مورد ضربه بزنید
-kot_strike_note	یادداشت مورد ضربه بزنید
-kot_strike_on	روشن
-kot_strike_off	خاموش
 bill_item_layout	چیدمان کالا
 bill_item_layout_columns	ستون‌ها
 bill_item_layout_stacked	روی هم
@@ -130,8 +108,6 @@ bill_item_gap_em	فاصله (em)
 bill_item_qty_min	حداقل تعداد (em)
 bill_item_price_min	حداقل قیمت (em)
 bill_item_amount_min	حداقل مبلغ (em)
-kot_item_qty_width	ستون تعداد
-kot_item_num_align	تراز تعداد
 bill_total_qty_label	برچسب جمع تعداد
 bill_total_subtotal_label	برچسب جمع جزء
 bill_total_grand_label	برچسب جمع کل
@@ -143,36 +119,9 @@ bill_item_piece_off	خاموش
 bill_total_qty	جمع تعداد
 bill_total_subtotal	جمع جزء
 bill_total_grand	جمع کل
-reprint_incl	در چاپ
-reprint_skip	رد کردن
-reprint_skip_meta	رد چاپ بازیابی
-kot_dest_hint	روی چاپگرهایی چاپ می‌شود که در تنظیمات → چاپگرها به {kitchens} داده‌اید
-kot_sent_hint	آخرین ارسال به {kitchens} رسید. برای افزودن موارد برای صورتحساب بعدی ضربه بزنید - یا دوباره برگه را برای همان مورد چاپ کنید.
-kot_sent_printing	برگه به ​​{kitchens} ارسال شد — چاپ
-kot_sent_not_printed	برگه به ​​{kitchens} ارسال شد اما چاپ نشد: {why}. به فروشگاه بگویید، سپس چاپگر را تعمیر کنید و دوباره آن را چاپ کنید.
-kot_sent_screen	برگه به ​​{kitchens} ارسال شد
-kot_queued_shop	لغزش برای {place} → {kitchens} ذخیره شد. دستگاه فروشگاه آن را چاپ می کند
-kot_job_label	لغزش برای {place} → {kitchens}
-kot_job_reached	لغزش برای {place} به {kitchens} رسید
 kot_unassigned	اختصاص داده نشده است
-kot_unassigned_held	موارد {n} را بدون ایستگاه نگه دارید — روی خط برای ارسال نگه دارید
-kot_station_ph	ایستگاه
-kot_station_dd	ایستگاه
-kot_station_dd_n	ایستگاه · {stations}
-kot_set_station	از این ایستگاه استفاده کن
-kot_station_applied	ایستگاه روی موارد {n} تنظیم شده است: {station}
-kot_station_cleared	ایستگاه از موارد {n} پاک شد: {station}
-kot_station_needed	ابتدا یک بخش داروخانه را انتخاب کنید
-kot_station_not_allowed	استفاده از بخش مجاز نیست: {station}
-kot_station_none	هنوز ایستگاهی وجود ندارد - در یک پیشخوان استفاده نشده است (تنظیمات → مناطق در صورت نیاز)
 pos_tab_items	کالاهای افزوده‌شده
 pos_tab_payment	پرداخت
-hold_send	نگه
-hold_send_on	نگه‌داشته
-hold_send_meta	برگزار شد - نه در این لغزش
-station_remove	برداشتن ایستگاه
-station_remove_ph	برای برداشتن، روی یک ایستگاه در فهرست بزنید
-station_removed	ایستگاه برداشته شد: {name}
 settings_hub_title	تنظیمات
 settings_hub_help	هر بار یک بخش را باز کنید — پیمایش کمتر، انتخاب روشن‌تر.
 settings_back	بازگشت
@@ -181,12 +130,10 @@ settings_sec_country	کشور و مالیات
 settings_sec_tills	دستگاه‌های دیگر
 settings_sec_brand	نشان شما
 settings_sec_units	واحدها و تبدیل
-settings_sec_pickers	ناحیه‌ها · ایستگاه‌ها · نرخ مالیات
+settings_sec_pickers	نرخ مالیات
 settings_sec_printers	چاپگرها
 settings_sec_bill	قالب بیل و برگه
 settings_sec_selling	طرح‌ها و فروش
-bill_kot_tab_bill	صورتحساب
-bill_kot_tab_kot	لغزش
 settings_sec_alerts	هشدارها
 alerts_help	پیام وضعیت چقدر روی صفحه برای شما بماند (این ورود).
 snack_secs_ph	ثانیه (۳–۶۰، پیش‌فرض ۱۰)
@@ -237,8 +184,6 @@ counter	پیشخوان
 dine_in	پیشخوان
 takeaway	بیرون‌بر
 order	سفارش
-tables	شمارنده ها
-kitchen	بخش ها
 sales	فروش
 sales_refunds	فروش و بازپرداخت
 day_close	بستن روز
@@ -266,10 +211,6 @@ zero_sales_on	اجازه ₹۰
 zero_sales_off	قیمت لازم است
 zero_sales_saved_on	فروش با مبلغ صفر مجاز است
 zero_sales_saved_off	فروش باید قیمتی بالاتر از ₹۰ داشته باشد
-floor_areas_help	مناطق اتاق ها یا مناطق روی زمین هستند (Dine In, Parcel, AC…). ابتدا یک منطقه را اضافه کنید، سپس شمارنده ها را در آن قرار دهید - هر منطقه یک گروه جداگانه روی زمین است.
-area_new_ph	ناحیه / اتاق تازه (مثلاً AC، باغ)
-add_area	افزودن ناحیه
-area_added	منطقه "{name}" آماده است - شمارنده ها را به آن اضافه کنید
 no_favorites	هنوز علاقه‌مندی نیست — از فهرست پایین کالا بیفزایید.
 add_to_bill	افزودن به صورتحساب
 added	افزوده شد
@@ -280,19 +221,9 @@ chip_missing_customer	مشتری انتخاب‌شده نیست — دوباره
 chip_no_customer	هنوز مشتری نیست — نامی بنویسید، سپس نسیه را بزنید
 credit_summary_fmt	{} مشتری · نسیه باز {} · پیش‌پرداخت نگه‌داشته {}
 recent_label	اخیر:
-kot_new_waiting	تازه — در انتظار
-kot_preparing	در حال آماده‌سازی
-kot_ready_serve	آماده — سرو کنید
-kot_done_cap	انجام شد
-kot_cancelled	لغو
-kot_start_btn	شروع
-kot_mark_ready	آماده علامت بزن
-kot_done_btn	انجام شد
-table_free	آزاد — برای شروع سفارش بزنید
 start_order	شروع سفارش
 open_bill	باز کردن صورتحساب
 collect_payment	گرفتن پرداخت
-table_running	در جریان
 payment_pending	پرداخت مانده
 collect_at_counter	دریافت در پیشخوان
 inventory	انبار
@@ -325,7 +256,6 @@ ok	تأیید
 this_shop	سرور
 extra_till	کلاینت
 off	خاموش
-tables_kitchen	چیدمان فروشگاه
 server	سرور
 client	کلاینت
 language_currency	زبان و واحد پول
@@ -367,8 +297,6 @@ add_item_plain	افزودن کالا
 add_note	افزودن یادداشت
 add_opening_balance	افزودن مانده آغازین
 add_staff	افزودن کارمند
-add_station	افزودن ایستگاه
-add_table	افزودن میز
 add_unit	افزودن واحد
 add_use_name	افزودن / استفاده از این نام
 allow_extra_tills	اجازه صندوق‌های اضافه
@@ -421,7 +349,6 @@ share_whatsapp	هم‌رسانی واتساپ
 lan_pages_heading	صفحات مشتری در Wi‑Fi
 lan_pages_help	در Wi‑Fi این فروشگاه، صفحات مشتریان برای صفحه نمایش و بازخورد کار می کنند. افراد دارای داده تلفن همراه بعداً به Cloud نیاز دارند. پایانه کارت یا پیوند پرداخت اختیاری است و هرگز پیشخوان را مسدود نمی کند.
 diag_send_heading	بردن از این دستگاه
-kot_dest_heading	ایستگاه
 optional_login_heading	ورود اختیاری
 rights_heading	حقوق
 ops_panel	کار محلی
@@ -448,28 +375,6 @@ till_voucher_amt_ph	مبلغ بن (خالی = همه)
 till_wallet_topup_ph	مبلغ شارژ کیف پول
 till_voucher_issue_amt_ph	مبلغ صدور بن
 till_voucher_issue_code_ph	کد بن تازه
-split_evenly	تقسیم مساوی
-waitlist	فهرست انتظار
-fire_course	مرحله بعدی
-hold_item	نگه
-waiter_call	با صندوقدار تماس بگیرید
-waitlist_add	افزودن به فهرست انتظار
-floor_view_grid	شبکه
-floor_view_layout	چیدمان
-floor_layout_x	X
-floor_layout_y	Y
-floor_layout_w	W
-floor_layout_h	H
-floor_layout_save	ذخیره چیدمان
-floor_layout_open	باز کردن میز
-floor_layout_edit	ویرایش چیدمان
-floor_layout_pick	برای ویرایش چیدمان روی یک میز بزنید
-floor_layout_saved	طرح بندی ذخیره شد
-floor_layout_nudge_left	← 20
-floor_layout_nudge_right	→ 20
-floor_layout_nudge_up	↑ 20
-floor_layout_nudge_down	↓ 20
-sibling_pickers_help	مانند واحدها روشن/خاموش بزنید — ناحیه، ایستگاه و نرخ مالیات را از انتخاب روزمره پنهان کنید؛ پیش‌فرض بسته می‌ماند.
 bulk_price_apply	اعمال قیمت گروهی
 card_terminal_optional	پایانه کارت / پیوند پرداخت (اختیاری وقتی اینترنت هست)
 copy_report	رونوشت گزارش
@@ -495,7 +400,6 @@ import_day	درون‌برد روز
 import_items_csv_plain	درون‌برد کالاها از CSV…
 import_parties_csv	درون‌برد طرف‌ها از CSV…
 item_name	نام کالا
-kitchen_printing	چاپگرها
 login_id_ph	نام کاربری
 mark_cleared	علامت تسویه‌شده
 new_party_clear	طرف تازه (پاک کردن فرم)
@@ -565,15 +469,6 @@ show	نمایان
 spreadsheet_csv	صفحه گسترده (CSV)
 start_fresh	شروع از نو
 stop_extra_tills	توقف صندوق‌های اضافه
-floor_cols_ph	ستون‌ها
-floor_cols_fit	جا شدن در صفحه
-floor_cols_fit_sub	{n} اینجا جا می‌شود
-floor_cols_fits	جا می‌شود
-floor_cols_scroll	به پهلو می‌لغزد
-floor_cols_min	ستون‌ها: دست‌کم ۱ — یا خالی بگذارید تا در صفحه جا شود
-floor_zoom_auto	خودکار
-floor_zoom_out	کوچک‌نمایی
-floor_zoom_in	بزرگ‌نمایی
 backup_auto	هر روز خودکار پشتیبان می‌شود · آخرین {when} · ۱۴ روز اخیر در {dir} می‌ماند.
 backup_auto_none	هر روز خودکار پشتیبان می‌شود — نخستین بار چند لحظه دیگر اجرا می‌شود.
 backup_copy_to	رونوشت‌ها هم به {dir} می‌روند.
@@ -591,7 +486,6 @@ new_pair_code	کد جفت‌سازی تازه
 pair_finishing	پایان جفت‌سازی… اعمال دفترهای فروشگاه
 pair_opening	در حال باز کردن صندوق…
 pair_copied	کد جفت‌سازی رونوشت شد
-kot_waiting	در انتظار فرستادن
 lan_offline_waiting	سرور فروشگاه در دسترس نیست · {n} در انتظار
 lan_connecting	در حال اتصال به فروشگاه…
 lan_live	زنده
@@ -633,7 +527,6 @@ printers_routes_help	پرینترهایی را پیدا کنید که سیستم
 printer_assign_dd	چاپگر واقعی: {place}
 printer_assign_pick	انتخاب چاپگر واقعی
 printer_profile_heading	چیدمان
-printer_send_heading	پیک
 vp_delivery_heading	پیک
 vp_delivery_help	این چاپگر مجازی چگونه کارها را ارسال می کند - سند سیستم عامل، بایت های خام یا ESC/POS. محتوای برگه (اندازه نوع، بسته بندی، حاشیه) با فرمت صورتحساب / برگه تعیین می شود، نه اینجا.
 vp_type_size_heading	اندازه حروف
@@ -677,23 +570,13 @@ virtual_draft_send	مقدار برای چاپگر مجازی بعد گذاشته
 virtual_need_real	اول یک چاپگر واقعی انتخاب کنید
 virtual_need_select	برای حذف یک چاپگر مجازی انتخاب کنید
 real_printer_selected	انتخاب شد: {name}
-station_group_heading	چاپگرهای مجازی
-station_group_apply	حذف چاپگر مجازی
-station_group_applied	حذف شد
-station_group_empty	یک چاپگر مجازی انتخاب کنید
-station_group_name_ph	نام چاپگر مجازی (اختیاری)
-station_group_save	ساخت چاپگر مجازی
-station_group_saved	چاپگر مجازی ذخیره شد
-station_manage_heading	بخش داروخانه را اضافه یا حذف کنید
 printers_routes_heading	کجا چاپ می‌شود
 route_pick_heading	جا
 route_editing	ویرایش: {name}
 route_assigned	{printer} به {place} افزوده شد
 route_already_assigned	از پیش روی این جا: {printer}
-route_removed	{printer} از {place} برداشته شد
 route_cleared	{name} پاک شد
 route_assigned_empty	هیچ‌کدام روی این جا نیست
-route_tap_remove	برای برداشتن بزنید
 route_tap_select	برای انتخاب بزنید
 route_tap_selected	انتخاب شد
 route_pick_printer_first	اول روی یک چاپگر بزنید
@@ -714,35 +597,17 @@ printer_format_custom	نمایه سفارشی تازه
 printer_format_custom_label	سفارشی
 printer_format_custom_added	نمایه سفارشی برای این جا افزوده شد
 add_printer	افزودن چاپگر
-remove_printer	برداشتن
 route_pick_ph	قبض یا بخش داروخانه
 route_bill	صورتحساب
-route_default_kitchen	بدون ایستگاه (موارد تعیین نشده)
-route_kot_station	ایستگاه
 route_dont_print	بدون چاپگر
-stations_heading	ایستگاه‌ها
-stations_help	بخش های داروخانه داروها و چاپگرهای آن قسمت از مغازه را گروه بندی می کنند. چاپگرها را از Settings → Printers ضمیمه کنید، ترتیب امتحان را تنظیم کنید، سپس First that works یا Print on all. تغییرات در حین حرکت ذخیره می شوند.
-station_print_heading	چاپگرهای این ایستگاه
-station_print_help	یک ایستگاه انتخاب کنید، سپس یک یا چند چاپگر را وصل کنید. ↑↓ ترتیب امتحان را تنظیم می کند. اول که کار بعد از اولین موفقیت متوقف می شود. روی همه ارسال‌ها به هر چاپگر متصل چاپ کنید.
-station_print_pick_ph	ایستگاهی که چاپگر می‌گیرد
 station_print_pick_first	ابتدا یک بخش داروخانه را انتخاب کنید
-station_print_editing	ویرایش چاپگرهای «{name}»
-station_vps_dd	چاپگرهای این ایستگاه
-station_vps_dd_n	{n} چاپگر · برای تغییر بزنید
 station_vps_empty	هنوز چاپگری نیست — زیر تنظیمات → چاپگرها پیدا کنید
 bill_printers_dd	چاپگرهای صورتحساب
 bill_printers_dd_n	{n} چاپگر برای صورتحساب · برای تغییر بزنید
-job_layout	چیدمان
-job_delivery	کار چگونه فرستاده می‌شود
-job_delivery_help	سند سیستم عامل، بایت های خام یا ESC/POS. صورتحساب و بلیت هر کدام خود را نگه می دارند. هر یک از این کارها می تواند به هر چاپگری که Find ذخیره کرده است برود.
 station_vp_attached	چاپگر وصل شد
 station_vp_detached	چاپگر از ایستگاه برداشته شد
-station_print_summary	{mode} · {n} چاپگر
-station_print_summary_none	هنوز چاپگری روی این ایستگاه نیست — چاپ نمی‌کند
-stations_none	هنوز ایستگاهی وجود ندارد - یکی را در زیر اضافه کنید. ایستگاه ها در پیشخوان استفاده نمی شوند - خالی بگذارید.
 route_up	بالا
 route_down	پایین
-route_remove	برداشتن
 route_clear	پاک کردن
 save_printers	ذخیره چاپگرها
 print_test_page	چاپ صفحه آزمایش
@@ -751,23 +616,15 @@ test_page_no_printer	چاپگری برای {place} نیست — یک چاپگر 
 test_page_pick_first	اول چاپگر صفحه آزمایش را انتخاب کنید — سپس چاپ صفحه آزمایش
 test_printers_dd	چاپگرهای صفحه آزمایش
 test_printers_dd_n	{n} چاپگر برای صفحه آزمایش · برای تغییر بزنید
-kot_test_printers_dd	چاپگرها برای چاپ آزمایشی
-kot_test_printers_dd_n	چاپگر(های) {n} برای چاپ آزمایشی · برای تغییر ضربه بزنید
 test_printer_picked	آزمایش روی: {name}
 test_printer_cleared	آزمایش نمی‌شود روی: {name}
 test_page_sent_n	صفحه آزمایش به {n} چاپگر فرستاده شد
-test_kot_pick_first	ابتدا چاپگر(های) را برای چاپ آزمایشی انتخاب کنید - سپس چاپ را آزمایش کنید
-test_kot_sent_n	چاپ آزمایشی به چاپگر(های) {n} ارسال شد
-cancel_pick	علامت
-cancel_pick_on	علامت‌خورده
-cancel_pick_meta	برای لغو علامت خورد
 batch_cancel	لغو علامت‌خورده‌ها
 batch_cancel_n	لغو علامت‌خورده‌ها ({n})
 batch_cancel_none	ابتدا یک یا چند مورد ارسال شده را علامت بزنید - سپس لغو علامت گذاری شد
 batch_cancel_title	لغو داروهای علامت گذاری شده - یک دلیل، یک برگه لغو در هر بخش
 batch_cancel_ok	موارد {n} لغو شدند · برگه(های) لغو {slips} → {kitchens}
 batch_cancel_ok_noprint	موارد {n} لغو شدند - چاپ خودکار خاموش است، بنابراین هیچ برگه لغوی وجود ندارد
-no_printer_kitchen_station	هیچ چاپگری برای آن ایستگاه وجود ندارد
 printers_saved	ذخیره شد
 test_page_sent	صفحه آزمایش فرستاده شد — چاپگر را ببینید
 test_page_sent_one	صفحه آزمایش به {name} فرستاده شد — آن چاپگر را ببینید
@@ -783,10 +640,7 @@ cancelled	لغو شد
 printers_tap_find	پیدا کردن را بزنید تا چاپگرهایی که این دستگاه می‌تواند استفاده کند فهرست شوند.
 printers_none_found	چیزی پیدا نشد — نام چاپگر سیستم یا یک IP بنویسید (مثلاً 192.168.1.50).
 printer_from_find	{name} افزوده شد
-kot_printer_ph	چاپگر برای لغزش
 bill_printer_ph	چاپگر صورتحساب
-kot_print_on	چاپ خودکار بلیط: روشن
-kot_print_off	چاپ خودکار بلیط: خاموش
 queue_refused	فروشگاه نپذیرفت ({n}) — هر کدام را در پیشخوان بررسی کنید:
 clear_not_accepted	بررسی شد — این فهرست پاک شود
 device_name_ph	نام این دستگاه
@@ -797,7 +651,6 @@ backup_failed	آخرین پشتیبان خودکار شکست خورد: {e}
 backup_overdue	{n} روز پشتیبان نیست — برنامه را روی این دستگاه باز نگه دارید تا بتواند پشتیبان بگیرد.
 disk_low	فقط {mb} مگابایت روی این دستگاه آزاد است — پشتیبان به‌زودی شکست می‌خورد. جا خالی کنید.
 last_seen_devices	آخرین دیده‌شدن: {time}
-sync_interval	همگام هر {secs} ثانیه
 connection_to_shop	اتصال به فروشگاه
 supplier_name_ph	نام تأمین‌کننده (یا طرف)
 supplier_ph	تأمین‌کننده
@@ -860,7 +713,6 @@ fresh_book_tabiyat	تازه = کاتالوگ خالی (بعدا موارد را 
 fresh_selected	از نو انتخاب شد — فهرست خالی می‌ماند. وقتی آماده بودید انجام شد را بزنید.
 gross_word	ناخالص
 how_start	چگونه می‌خواهید شروع کنید؟
-kot_print_help_tabiyat	در پیشخوان استفاده نمی شود.
 later_country_pack	بعداً: تنظیمات → بسته کشور را برای برچسب مالیات و پرداخت اعمال کنید.
 local_badge	محلی
 mix_type_hint_tabiyat	اگر لازم است بین نقد / UPI / کارت / نسیه تقسیم کنید. نسیه به مشتری بالا نیاز دارد.
@@ -911,8 +763,6 @@ staff_copy_need_source	انتخاب کنید راه‌اندازی چه کسی �
 staff_copy_same	همان شخص است — کس دیگری انتخاب کنید
 staff_rename_need_selected	اول انتخاب کنید چه کسی نام تازه بگیرد
 team_pick_hint	انتخاب کنید چه کسی ویرایش شود - صفحه‌ها، حقوق پول و ایستگاه‌ها فقط برای آن شخص ظاهر می‌شوند.
-team_stations_help	ایستگاه هایی که ممکن است از آنها استفاده کنند
-team_stations_changed	ایستگاه‌ها تغییر کردند - تنظیمات را برای این شخص ذخیره کنید
 team_features_changed	صفحه‌ها عوض شد — راه‌اندازی این شخص را ذخیره کنید
 team_rights_changed	حقوق عوض شد — راه‌اندازی این شخص را ذخیره کنید
 they_owe_us	آن‌ها به ما بدهکارند
@@ -996,9 +846,6 @@ service_pct_ph	درصد سرویس اختیاری ۰/۱۰/۱۲
 short_code_ph	کد کوتاه (MG02)
 starting_password_ph	گذرواژه آغازین (اختیاری)
 starting_pin_ph	PIN آغازین (۴–۱۲ رقم)
-station_name_ph	نام ایستگاه (اختیاری)
-station_new_ph	بخش (اختیاری)
-table_name_ph	شمارنده / نام خلیج
 tax_rate_ph	نام یا درصد نرخ مالیات — استاندارد، کاهش‌یافته، ۰، ۵، ۱۲، ۱۸، ۲۰
 to_code_ph	به کد (kg)
 uncleared_no_ph	شماره تطبیق‌نشده بالا
@@ -1011,27 +858,8 @@ book_kind_month	دفترهای این ماه
 book_kind_aging	مانده / بدهکار-بستانکار
 book_kind_balance	ترازنامه
 order_help	برای افزودن روی کالا بزنید.
-floor_help	این مغازه در پیشخوان به فروش می رسد. میز و غذاخوری جزء طبیعت نیست.
-kitchen_help	در پیشخوان استفاده نمی شود.
-kitchen_empty	بدون بلیط باز (پیش فروش ها معمولاً این صفحه را بدون استفاده می گذارند).
-add_a_table	افزودن یک میز
-add_station_heading	یک بخش داروخانه اضافه کنید
 categories_help	استفاده را بزنید تا کالای بالا زیر آن دسته برود. عکس به دسته تصویر می‌دهد؛ بدون آن حرف‌های اول دیده می‌شود.
 dish_search_ph	جستجوی نام، نمک یا بارکد…
-tile_free	آزاد
-tile_occupied	اشغال
-tile_food_ready	غذا آماده
-tile_bill_printed	صورتحساب چاپ شد
-tile_paid	پرداخت شد
-tile_bill_btn	صورتحساب
-tile_occupy_btn	نشاندن مهمان
-tile_free_btn	آزاد کردن میز
-tile_ready_btn	آزاد کردن میز
-tile_undo_bill	واگرد صورتحساب
-summary_busy	میز مشغول
-summary_to_collect	برای دریافت
-summary_on_floor	در سالن
-floor	فروشگاه
 sizes_as_items_ph	اندازه‌ها به‌صورت کالای جدا (اختیاری) — نصف=۱۲۰، کامل=۲۰۰
 dish_group_ph	گروه قدرت / بسته (اختیاری) - به عنوان مثال. نوار 500 میلی گرمی
 discount	تخفیف
@@ -1039,7 +867,6 @@ remove_discount	برداشتن تخفیف
 apply_discount	اعمال تخفیف
 save_opening_cash	ذخیره نقد آغازین
 close_shift_print	بستن شیفت و چاپ برگه
-area_prices_ph	قیمت ناحیه (اختیاری) — AC=۲۲۰، بیرون‌بر=۲۱۰
 discount_ph	۱۰٪ یا ۵۰
 discount_reason_ph	دلیل (مثلاً مهمان همیشگی، غذای دیر)
 opening_float_ph	نقدی که صبح در کشو گذاشته شد
@@ -1049,34 +876,18 @@ shift_handover	تحویل شیفت
 shift_since	این شیفت از
 expected_in_drawer	انتظار در کشو
 right_discount	دادن تخفیف
-floor_in_kitchen	در حال انجام است
-floor_eating	سرو شده
 pick_category	یک دسته انتخاب کنید
 close_category_list	بستن فهرست دسته
 new_category_row	دسته تازه — هنگام ذخیره کالا ساخته می‌شود
 your_category	دسته شما
 suggested_category	پیشنهادی - از اقلام ما
 category_search_ph	دسته — در مال خودتان جستجو کنید یا تازه بنویسید
-line_sent_state	ارسال شد
-line_nc_state	پذیرایی (NC) — حساب نمی‌شود
 cancel_item_short	لغو
-nc_short	NC
-charge_again_short	حساب کن
-move_short	انتقال
 cancel_item_title	این مورد را لغو کنید - دفتر پشتیبان یک برگه لغو دریافت می کند
-nc_item_title	این کالا پذیرایی شود (NC)
-charge_again_title	این کالا دوباره حساب شود
-move_item_title	این کالا به میز دیگر برود
-already_cooked	از پیش پخته (ضایعات)
-not_cooked_yet	هنوز پخته نشده
 return_to_customer	بازگشت به مشتری
 short_by	کمتر به اندازه
 tip_not_sale	انعام (مال کارکنان، فروش نیست)
 right_settle	گرفتن پرداخت
-right_cancel_sent	لغو کالای فرستاده‌شده
-right_complimentary	پذیرایی (NC)
-right_move_table	شمارنده ها را جابه جا / ادغام کنید
-right_reprint	چاپ دوباره صورتحساب
 right_allowed	مجاز
 right_with_approval	با تأیید
 right_denied	مجاز نیست
@@ -1086,25 +897,11 @@ no_server_found	چیزی پیدا نشد. روی سرور: تنظیمات → د
 servers_found_pick	روی فروشگاهی که می‌خواهید وصل شوید بزنید.
 server_host_selected	از {host} استفاده می‌شود — کد جفت‌سازی را وارد کنید، سپس اکنون جفت شود.
 print_bill	چاپ صورتحساب
-table_actions	اقدامات متقابل
-move_merge_table	انتقال / ادغام میز
-move_help	ترتیب این شمارنده را به یک جدول آزاد منتقل کنید یا آن را در یک جدول در حال اجرا ادغام کنید.
-move_target_ph	نام پیشخوان
 approval_pin_ph	PIN مدیر (فقط اگر پرسیده شد)
-move_here	انتقال به اینجا
-merge_into	ادغام در آن
-line_reason_ph	دلیل (مثلاً تغییر نظر مشتری، عدم موجودی)
-line_qty_ph	چند تا لغو شود (خالی = همه)
-line_target_ph	انتقال به میز (مثلاً D5)
 confirm	تأیید
 menu_search_ph	جستجوی کالا یا کد کوتاه
 customer_paid_ph	مشتری پرداخت کرد
 tip_ph	انعام
-table_area_ph	ناحیه (مثلاً سرو در سالن، بیرون‌بر، AC)
-table_range_ph	چندتا با هم: D1-D20
-add_these_tables	این شمارنده ها را اضافه کنید
-remove_these_tables	این شمارنده ها را بردارید
-table_remove_ph	برداشتن: T1-T24، یا نام یک میز
 find_server	پیدا کردن سرور فروشگاه
 bill_format	قالب صورتحساب
 bill_format_help	روی هر قبض تحت نام مغازه شما چاپ می شود. جدا کردن خطوط با | (به عنوان مثال، جاده MG، Rajkot | Ph 98250 00000).
@@ -1112,78 +909,32 @@ bill_header_ph	نشانی | تلفن
 fssai_ph	شماره پروانه دارو (اختیاری - عبارت شما)
 bill_footer_ph	پاورقی (مثلاً ممنون، دوباره بیایید)
 save_bill_format	ذخیره قالب صورتحساب
-kot_format	قالب لغزشی
-kot_format_help	روی یک فیلد در لیست ضربه بزنید. نمایش، اندازه قلم و وزن برای آن فیلد در نوع برگه انتخاب شده در بالا اعمال می شود. هر نوع اندازه و وزن خود را حفظ می کند.
-kot_format_fields	فیلدها
-kot_field_next	فیلد بعد
-kot_field_show	نمایان
-kot_field_hide	پنهان
 kot_field_on	نمایان
 kot_field_off	پنهان
-kot_field_size	اندازه حروف
-kot_field_size_ph	مثلاً ۱۶، ۲۰، ۲۴، ۲۸، ۳۲…
 kot_weight_light	نازک
 bill_kot_panel_help	طرح صورتحساب و عرض محتوا. صندوقدار کسی است که صورتحساب را صادر یا تسویه کرده است - داستان کامل فروش در کتاب ها باقی می ماند.
 std_size_ph	مثلاً ۱۸، ۲۰، ۲۶…
-kot_show_shop	نام فروشگاه
-kot_hide_shop	پنهان کردن فروشگاه
-kot_show_time	زمان
-kot_hide_time	پنهان کردن زمان
-kot_show_waiter	صندوقدار
-kot_hide_waiter	صندوقدار را پنهان کنید
-kot_show_station	ایستگاه
-kot_hide_station	پنهان کردن ایستگاه
-kot_show_table	پیشخوان
-kot_hide_table	پنهان کردن میز
-kot_show_kot_no	شماره بلیط
-kot_hide_kot_no	پنهان کردن شماره بلیط
-kot_width	بسته بندی پیش نمایش (عرض محتوا را در برگه لغزش تنظیم کنید)
-kot_width_58	۵۸ mm
-kot_width_80	۸۰ mm
-kot_kind_heading	نوع بلیط
-kot_kind_original	اصل
-kot_kind_duplicate	نسخه
-kot_kind_modified	تغییریافته
-kot_kind_cancelled	لغو شد
-kot_style_heading	اندازه و وزن حروف فیلد
-kot_style_title	عنوان
-kot_style_item_qty	کالا · تعداد
-kot_style_field_pick	انتخاب فیلد
 kot_weight_regular	معمولی
 kot_weight_bold	ضخیم
-kot_align	تراز
 kot_align_start	شروع
 kot_align_center	وسط
 kot_align_end	پایان
 content_width	پهنای محتوا (mm)
 content_width_bill	پهنای محتوای صورتحساب (mm)
-content_width_kot	عرض محتوای بلیط (میلی متر)
 content_width_ph	یا یک پهنای محتوا بنویسید، ۴۰–۲۱۰ mm
 content_width_help	این ورقه چقدر پهن است. بیل عرض خود را حفظ می کند.
 content_width_bill_help	چاپ صورت حساب مشتری چقدر است. 210 میلی متر پیش فرض (صفحه). لغزش باریک 58 میلی متر، لغزش عرض 80 میلی متر، 4 اینچ 112 میلی متر، عرض A4 210 میلی متر. هر مقدار را از 40 تا 210 تایپ کنید. بلیط ها در برگه برگه عرض خاص خود را دارند.
-content_width_kot_help	چاپ بلیط چقدر گسترده است. 80 میلی متر پیش فرض لغزش باریک 58 میلی متر، لغزش عرض 80 میلی متر، صفحه 4 اینچی 112 میلی متر، صفحه 210 میلی متر. هر مقداری را از 40 تا 210 تایپ کنید. صورتحساب های مشتری عرض خاص خود را در تب Bill دارند.
 vp_paper_width	پهنای محتوا (mm)
 vp_paper_width_ph	یا یک پهنای محتوا بنویسید، ۴۰–۲۱۰ mm
 vp_paper_width_help	عرض محتوا در قالب Bill & Slip تنظیم شده است - به طور جداگانه برای صورتحساب (پیش‌فرض 210 میلی‌متر) و بلیط (پیش‌فرض 80 میلی‌متر).
-kot_size	اندازه حروف
-kot_size_s	کوچک
-kot_size_m	معمولی
-kot_size_l	بزرگ
 std_size	اندازه حروف
 kot_copies	نسخه
 kot_copies_1	۱
 kot_copies_2	۲
 kot_copies_3	۳
-kot_title_ph	عنوان (خالی = بلیط)
-kot_footer_ph	یادداشت پشتیبان (اختیاری)
-kot_preview	پیش‌نمایش
-save_kot_format	فرمت Slip را ذخیره کنید
-test_kot_format	چاپ آزمایشی
-test_kot_sent	پیش نمایش بلیط ارسال شد
 test_bill_format	صورتحساب آزمایش
 test_bill_sent	پیش‌نمایش صورتحساب فرستاده شد
 test_print_no_printer	چاپگری برای آن کار نیست — روی این صفحه یکی انتخاب کنید
-kot_format_saved	قالب لغزشی ذخیره شد
 std_print	اندازه چاپ صورتحساب
 std_print_help	اندازه قلم برای کارهای صورت‌حساب استاندارد عمودی و منظره در سیستم‌عامل / چاپگر اسناد (نقاط را وارد کنید - نه کوچک/معمولی/بزرگ). اندازه یکسان در هر دو جهت
 std_size_s	کوچک
@@ -1223,23 +974,16 @@ upi_qr	QR یوپی‌آی
 show_upi_qr	نمایش QR یوپی‌آی
 close_upi_qr	بستن
 upi_qr_help	مشتری اسکن و پرداخت می کند. پس از پرداخت، روی دریافت پرداخت ضربه بزنید. صفحه دوم: URL سرور / نمایش در LAN را باز کنید.
-kot_recall	فراخوان
 recently_done	تازه انجام‌شده
-recall_kot_ph	بلیت شماره برای فراخوان
 role_help_customer	نقش: مشتری — خاتا (به ما بدهکارند). همان طرف می‌تواند کالا هم بدهد.
 role_help_both	نقش‌ها: مشتری + تأمین‌کننده — یک طرف، دفتر خاتا و پرداختنی، خالص در گزارش‌ها.
 role_help_supplier	نقش: تأمین‌کننده — برای خرید به آن‌ها بدهکاریم.
-dine_in_pick_table	در پیشخوان استفاده نمی شود
-choose_table	شمارنده را انتخاب کنید
-change_table	عوض کردن میز
-pick_table_banner	برای این سفارش یک میز انتخاب کنید
 items_word	کالا
 items_section	کالاها
 back_to_order	بازگشت به سفارش
 new_items_head	هنوز فرستاده نشده
 price_ph	قیمت
 price_ph_gst_inside	قیمت ({tax} داخل)
-cancel_needs_table	پیشخوان تا زمانی که پرداخت را انجام دهید روی بلیط باقی می ماند
 tax_rates_missing_hint	نرخ {tax} برای این موارد وجود ندارد — نرخ مالیات بر روی اقلام تنظیم شده است (قیمت‌ها از قبل شامل {tax} زیر {tax} می‌شوند)
 taxable_value	مبلغ مشمول مالیات
 gst_inside_price_note	({tax} داخل)
@@ -1260,30 +1004,11 @@ client_template_confirm	موارد {d} از {title} اضافه شود؟ اقلا
 client_template_importing	در حال درون‌برد {title}…
 client_template_done	هر مورد از {title} روی موارد شما قرار دارد.
 client_template_imported	موارد {d} و دسته‌های {c} از {title} اضافه شد
-resv_heading	رزرو
-resv_name_ph	نام مشتری
-resv_phone_ph	تلفن (اختیاری)
-resv_guests_ph	مردم
-resv_when_ph	کی — ۲۰:۳۰، فردا ۱۳:۰۰
-resv_table_ph	شمارنده (اختیاری)
-resv_add	رزرو
-resv_seat	نشست
-resv_none	رزروی در راه نیست.
-guests_word	مهمان
-delivery_by_ph	پیک (نام پیک یا کارمند)
-kitchen_all_day	اکنون بپزد: {items}
-split_bill	تقسیم صورتحساب
-split_go	ساخت صورتحساب جدا
 cancel	لغو
 opening_client	در حال باز کردن کلاینت…
 preparing_desk	در حال آماده کردن میز…
 opening_server	در حال باز کردن سرور…
 creating_server	در حال ساخت سرور…
-split_help	روی مواردی که یک مشتری برای آن پرداخت می کند ضربه بزنید · {n} انتخاب شده است
-split_send_first	ابتدا برگه را ارسال کنید - فقط مواردی که دفتر پشتیبان دارد می‌تواند به صورت‌حساب جداگانه برود
-split_pick_some	ابتدا روی موارد مربوط به صورتحساب جداگانه ضربه بزنید
-split_done	صورت‌حساب جداگانه تهیه شد - روی زمین کنار این پیشخوان است
-split_marked	صورتحساب جدا
 order_empty_pick	خالی سفارش دهید - برای انتخاب موارد، روی افزودن موارد در بالا ضربه بزنید.
 add_dishes	داروها را اضافه کنید
 order_so_far	در این سفارش: {n} · {total}
@@ -1294,24 +1019,8 @@ pick_done_dd	انجام شد · {label}
 printer_route_mode	اگر چند چاپگر روی این جا باشد
 printer_mode_first	نخستین که کار کند
 printer_mode_all	چاپ روی همه
-kot_show_area	ناحیه
-kot_hide_area	پنهان کردن ناحیه
-kot_show_item_hdr	کالا · تعداد
-kot_hide_item_hdr	پنهان کردن ستون‌ها
-kot_show_title	خط عنوان
-kot_hide_title	پنهان کردن عنوان
-kot_field_order	ترتیب چاپ
 kot_field_up	بالا بردن
 kot_field_down	پایین بردن
-kot_field_cycle	انتخاب بعدی
-kot_field_select	انتخاب بعدی
-kot_field_time	زمان
-kot_field_kot_no	شماره بلیط
-kot_field_area	ناحیه
-kot_field_table	پیشخوان
-kot_field_shop	نام فروشگاه
-kot_field_waiter	کارکنان
-kot_field_station	ایستگاه
 app_template_blurb_extra	همچنین: مالک ظاهر، ادمین آصف، صندوق نواز; نوار کناری جلو؛ سابقه پس از 4 ساعت; امروز برهنه کردن؛ صورت حساب فشرده
 dishes_n	موارد {n}
 recipe_ph	دستور غذا (اختیاری - استفاده نشده در پیشخوان)
@@ -1321,8 +1030,6 @@ low_stock_alert	رو به پایان — به‌زودی بخرید: {items}
 unpriced_note	اقلام {n} روی اقلام شما هنوز قیمتی ندارند - تا زمانی که یکی را تنظیم نکنید، 0 صورتحساب دارند.
 show_unpriced	نمایش فقط موارد بدون قیمت
 show_all_dishes	نمایش همه موارد
-role_waiter	صندوقدار
-role_kitchen	فروشگاه
 role_title_rest_ph	عنوان نقش (مثلاً کاپیتان، سرآشپز)
 preset_help_rest	صندوقدار: فروش. مدیر: فروش + کالا + ابطال/اصلاح.
 kind_raw	سهام ترکیبی

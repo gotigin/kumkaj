@@ -68,28 +68,6 @@ applied	Brukt
 note_ph	Merknad (valgfritt)
 rounded	AVRUNDET
 split	Del
-send_kot	Send lapp
-send_kot_to	Send → {kitchens}
-send_kot_again	Legg til elementer for neste slip
-send_kot_held	Holdte elementer — vent for å sende
-reprint_kot	Skriv ut valgte på nytt
-reprint_kot_ok	Utskrevet {n}-elementer igjen · {slips}-slipp(er) → {kitchens}
-reprint_kot_needed	Send en slipp først - ta med elementer og skriv ut de valgte på nytt
-reprint_kot_none_selected	Hvert sendt element hoppes over — trykk på På trykk på de som skal skrives ut på nytt
-reprint_kot_client	Skriv ut på nytt ({n}) for {place} sendt — butikkenheten skriver det ut
-print_cancelled_kot	Skriv ut alle kansellerte
-print_cancelled_kot_ok	Utskrevne {n}-kansellerte elementer · {slips}-slipp(er) → {kitchens}
-print_cancelled_kot_needed	Åpne et bord med kansellerte varer først
-print_cancelled_kot_none	Ingen kansellerte varer på denne bestillingen
-print_cancelled_kot_client	Utskrift avbrutt ({n}) for {place} sendt — butikkenheten skriver den ut
-kot_banner	Typebanner
-kot_banner_ph	Banner (tomt = ingen)
-kot_item_prefix	Vareprefiks
-kot_item_prefix_ph	f.eks. [KANSELLERT]
-kot_strike	Navn på varemerking
-kot_strike_note	Merknad om streikevarer
-kot_strike_on	På
-kot_strike_off	Av
 bill_item_layout	Vareoppsett
 bill_item_layout_columns	Kolonner
 bill_item_layout_stacked	Stablet
@@ -118,8 +96,6 @@ bill_item_gap_em	Mellomrom (em)
 bill_item_qty_min	Min. antall (em)
 bill_item_price_min	Min. pris (em)
 bill_item_amount_min	Min. beløp (em)
-kot_item_qty_width	Antallskolonne
-kot_item_num_align	Antallsjustering
 bill_total_qty_label	Etikett totalt antall
 bill_total_subtotal_label	Etikett delsumn
 bill_total_grand_label	Etikett totalsum
@@ -131,36 +107,9 @@ bill_item_piece_off	Av
 bill_total_qty	Totalt antall
 bill_total_subtotal	Delsum
 bill_total_grand	Totalsum
-reprint_incl	I utskrift
-reprint_skip	Hopp over
-reprint_skip_meta	Hopp over gjenopprettingsutskrift
-kot_dest_hint	Skriver ut på skriverne du knyttet til {kitchens} under Innstillinger → Skrivere
-kot_sent_hint	Siste sending gikk til {kitchens}. Trykk for å legge til varer for neste regning - eller skriv ut slipp igjen for den samme.
-kot_sent_printing	Slipp sendt til {kitchens} — utskrift
-kot_sent_not_printed	Slipp sendt til {kitchens}, men IKKE skrevet ut: {why}. Fortell butikken, fiks deretter skriveren og skriv den ut på nytt.
-kot_sent_screen	Slipp sendt til {kitchens}
-kot_queued_shop	Slip for {place} → {kitchens} lagret; butikkenheten skriver den ut
-kot_job_label	Slip for {place} → {kitchens}
-kot_job_reached	Slip for {place} nådde {kitchens}
 kot_unassigned	Ikke tilordnet
-kot_unassigned_held	Holdt {n}-elementer uten en stasjon — vent på linjen for å sende
-kot_station_ph	Stasjon
-kot_station_dd	Stasjon
-kot_station_dd_n	Stasjon · {stations}
-kot_set_station	Bruk denne stasjonen
-kot_station_applied	Stasjonssett på {n}-elementer: {station}
-kot_station_cleared	Stasjon fjernet fra {n}-elementer: {station}
-kot_station_needed	Velg en butikkdel først
-kot_station_not_allowed	Ikke tillatt å bruke seksjon: {station}
-kot_station_none	Ingen stasjoner ennå — ubrukt i en diskbutikk (Innstillinger → Områder om nødvendig)
 pos_tab_items	Lagte varer
 pos_tab_payment	Betaling
-hold_send	Hold
-hold_send_on	Holdt
-hold_send_meta	Holdt - ikke på denne lappen
-station_remove	Fjern stasjon
-station_remove_ph	Trykk en stasjon i listen for å fjerne den
-station_removed	Stasjon fjernet: {name}
 settings_hub_title	Innstillinger
 settings_hub_help	Åpne ett område om gangen — mindre rulling, tydeligere valg.
 settings_back	Tilbake
@@ -169,12 +118,10 @@ settings_sec_country	Land og avgift
 settings_sec_tills	Andre enheter
 settings_sec_brand	Din merkevare
 settings_sec_units	Enheter og omregninger
-settings_sec_pickers	Områder · stasjoner · avgiftssatser
+settings_sec_pickers	Avgiftssatser
 settings_sec_printers	Skrivere
 settings_sec_bill	Bill & Slip-format
 settings_sec_selling	Opplegg og salg
-bill_kot_tab_bill	Regning
-bill_kot_tab_kot	Slip
 settings_sec_alerts	Varsler
 alerts_help	Hvor lenge statusmeldinger blir på skjermen for deg (denne påloggingen).
 snack_secs_ph	Sekunder (3–60, standard 10)
@@ -225,8 +172,6 @@ counter	Disk
 dine_in	Disk
 takeaway	Ta med
 order	Bestilling
-tables	Tellere
-kitchen	Seksjoner
 sales	Salg
 sales_refunds	Salg og refusjoner
 day_close	Dagsavslutning
@@ -254,10 +199,6 @@ zero_sales_on	Tillat ₹0
 zero_sales_off	Krev pris
 zero_sales_saved_on	Nullsalg tillatt
 zero_sales_saved_off	Salg må ha en pris over ₹0
-floor_areas_help	Områder er rom eller soner på gulvet (Dine In, Parcel, AC …). Legg til et område først, og sett deretter tellere i det - hvert område er en egen gruppe på gulvet.
-area_new_ph	Nytt område / rom (f.eks. AC, Hage)
-add_area	Legg til område
-area_added	Området "{name}" er klart – legg til tellere i det
 no_favorites	Ingen favoritter ennå — legg til varer fra listen under.
 add_to_bill	Legg til regningen
 added	Lagt til
@@ -268,19 +209,9 @@ chip_missing_customer	Valgt kunde mangler — velg på nytt
 chip_no_customer	Ingen kunde ennå — skriv et navn, og trykk Kreditt
 credit_summary_fmt	{} kunder · åpen kreditt {} · holdte forskudd {}
 recent_label	Nylige:
-kot_new_waiting	NY — venter
-kot_preparing	TILBEREDES
-kot_ready_serve	KLAR — server
-kot_done_cap	FERDIG
-kot_cancelled	KANSELLERT
-kot_start_btn	Begynn
-kot_mark_ready	Merk klar
-kot_done_btn	Ferdig
-table_free	Ledig — trykk for å starte en bestilling
 start_order	Start bestilling
 open_bill	Åpne regning
 collect_payment	Ta betaling
-table_running	I gang
 payment_pending	Betaling venter
 collect_at_counter	ta i disken
 inventory	Lager
@@ -313,7 +244,6 @@ ok	OK
 this_shop	Server
 extra_till	Klient
 off	Av
-tables_kitchen	Butikkoppsett
 server	Server
 client	Klient
 language_currency	Språk og valuta
@@ -355,8 +285,6 @@ add_item_plain	Legg til vare
 add_note	Legg til merknad
 add_opening_balance	Legg til inngående saldo
 add_staff	Legg til personale
-add_station	Legg til stasjon
-add_table	Legg til bord
 add_unit	Legg til enhet
 add_use_name	Legg til / bruk dette navnet
 allow_extra_tills	Tillat ekstra kasser
@@ -409,7 +337,6 @@ share_whatsapp	Del WhatsApp
 lan_pages_heading	Kundesider på Wi-Fi
 lan_pages_help	På denne butikkens Wi-Fi fungerer kundesider for visningstavlen og tilbakemeldinger. Personer på mobildata trenger Cloud senere. En kortterminal eller betalingslenke er valgfritt og blokkerer aldri skranken.
 diag_send_heading	Del bort fra enheten
-kot_dest_heading	Stasjon
 optional_login_heading	Valgfri pålogging
 rights_heading	Rettigheter
 ops_panel	Lokal drift
@@ -436,28 +363,6 @@ till_voucher_amt_ph	Kupongbeløp (tomt = alt)
 till_wallet_topup_ph	Beløp for påfylling av lommebok
 till_voucher_issue_amt_ph	Beløp for kupong som utstedes
 till_voucher_issue_code_ph	Ny kupongkode
-split_evenly	Del likt
-waitlist	Venteliste
-fire_course	Neste trinn
-hold_item	Hold
-waiter_call	Ring kassereren
-waitlist_add	Legg til venteliste
-floor_view_grid	Rutenett
-floor_view_layout	Oppsett
-floor_layout_x	X
-floor_layout_y	Y
-floor_layout_w	W
-floor_layout_h	H
-floor_layout_save	Lagre oppsett
-floor_layout_open	Åpne bord
-floor_layout_edit	Rediger oppsett
-floor_layout_pick	Trykk et bord for å redigere oppsettet
-floor_layout_saved	Oppsettet er lagret
-floor_layout_nudge_left	← 20
-floor_layout_nudge_right	→ 20
-floor_layout_nudge_up	↑ 20
-floor_layout_nudge_down	↓ 20
-sibling_pickers_help	Trykk På/Av som enheter — skjul områder, stasjoner og avgiftssatser fra daglige velgere; pakkestandarder blir stående.
 bulk_price_apply	Bruk samlepris
 card_terminal_optional	Kortterminal / betalingslenke (valgfritt når internett er tilgjengelig)
 copy_report	Kopier rapport
@@ -483,7 +388,6 @@ import_day	Importer dagen
 import_items_csv_plain	Importer varer CSV…
 import_parties_csv	Importer parter CSV…
 item_name	Varenavn
-kitchen_printing	Skrivere
 login_id_ph	Brukernavn
 mark_cleared	Merk som avstemt
 new_party_clear	Ny part (tøm skjema)
@@ -553,15 +457,6 @@ show	Vis
 spreadsheet_csv	Regneark (CSV)
 start_fresh	Start på nytt
 stop_extra_tills	Stopp ekstra kasser
-floor_cols_ph	Kolonner
-floor_cols_fit	Tilpass skjermen
-floor_cols_fit_sub	{n} får plass her
-floor_cols_fits	får plass
-floor_cols_scroll	ruller sidelengs
-floor_cols_min	Kolonner: minst 1 — eller la det stå tomt for å tilpasse skjermen
-floor_zoom_auto	Automatisk
-floor_zoom_out	Zoom ut
-floor_zoom_in	Zoom inn
 backup_auto	Sikkerhetskopiert automatisk hver dag · sist {when} · de siste 14 dagene beholdes i {dir}.
 backup_auto_none	Sikkerhetskopieres automatisk hver dag — den første kjører om et øyeblikk.
 backup_copy_to	Kopier går også til {dir}.
@@ -579,7 +474,6 @@ new_pair_code	Ny paringskode
 pair_finishing	Fullfører paring… bruker butikkens bøker
 pair_opening	Åpner kassen…
 pair_copied	Paringskode kopiert
-kot_waiting	Venter på å sende
 lan_offline_waiting	Butikkserveren er utilgjengelig · {n} venter
 lan_connecting	Kobler til butikken…
 lan_live	Direkte
@@ -621,7 +515,6 @@ printers_routes_help	Finn skrivere som operativsystemet allerede kjenner. Tilord
 printer_assign_dd	Ekte skriver: {place}
 printer_assign_pick	Velg ekte skriver
 printer_profile_heading	Oppsett
-printer_send_heading	Levering
 vp_delivery_heading	Levering
 vp_delivery_help	Hvordan denne virtuelle skriveren sender jobber – OS-dokument, råbyte eller ESC/POS. Slipsinnhold (typestørrelse, omslag, marginer) bestemmes av regningen / Slip-formatet, ikke her.
 vp_type_size_heading	Skriftstørrelse
@@ -665,23 +558,13 @@ virtual_draft_send	Verdi satt for neste virtuelle skriver
 virtual_need_real	Velg en ekte skriver først
 virtual_need_select	Velg en virtuell skriver å slette
 real_printer_selected	Valgt: {name}
-station_group_heading	Virtuelle skrivere
-station_group_apply	Slett virtuell skriver
-station_group_applied	Slettet
-station_group_empty	Velg en virtuell skriver
-station_group_name_ph	Navn på virtuell skriver (valgfritt)
-station_group_save	Opprett virtuell skriver
-station_group_saved	Virtuell skriver lagret
-station_manage_heading	Legg til eller fjern en butikkdel
 printers_routes_heading	Hvor ting skrives ut
 route_pick_heading	Sted
 route_editing	Redigerer: {name}
 route_assigned	La til {printer} på {place}
 route_already_assigned	Allerede på dette stedet: {printer}
-route_removed	Fjernet {printer} fra {place}
 route_cleared	Tømt {name}
 route_assigned_empty	Ingen på dette stedet
-route_tap_remove	trykk for å fjerne
 route_tap_select	trykk for å velge
 route_tap_selected	valgt
 route_pick_printer_first	Trykk en skriver først
@@ -702,35 +585,17 @@ printer_format_custom	Ny tilpasset profil
 printer_format_custom_label	Tilpasset
 printer_format_custom_added	Tilpasset profil lagt til for dette stedet
 add_printer	Legg til skriver
-remove_printer	Fjern
 route_pick_ph	Bill eller en butikkdel
 route_bill	Regning
-route_default_kitchen	Ingen stasjon (ikke-tildelte elementer)
-route_kot_station	Stasjon
 route_dont_print	Ingen skriver
-stations_heading	Stasjoner
-stations_help	Butikkseksjoner grupperer varer og skrivere for den delen av butikken. Koble til skrivere fra Innstillinger → Skrivere, angi prøverekkefølge, deretter Først som fungerer eller Skriv ut på alle. Endringer lagres mens du går.
-station_print_heading	Skrivere for denne stasjonen
-station_print_help	Velg en stasjon, og koble til en eller flere skrivere. ↑↓ setter prøverekkefølge. Først som fungerer stopper etter den første suksessen; Skriv ut på alle sendinger til alle tilkoblede skrivere.
-station_print_pick_ph	Stasjon for å sette skrivere
 station_print_pick_first	Velg en butikkdel først
-station_print_editing	Redigerer skrivere for «{name}»
-station_vps_dd	Skrivere for denne stasjonen
-station_vps_dd_n	{n} skriver(e) · trykk for å endre
 station_vps_empty	Ingen skrivere ennå — finn dem under Innstillinger → Skrivere
 bill_printers_dd	Skrivere for regningen
 bill_printers_dd_n	{n} skriver(e) for regningen · trykk for å endre
-job_layout	Oppsett
-job_delivery	Hvordan jobben sendes
-job_delivery_help	OS-dokument, råbyte eller ESC/POS. Regningen og billetten holder hver sin. Begge jobbene kan gå til en hvilken som helst skriver Finn har lagret.
 station_vp_attached	Skriver knyttet
 station_vp_detached	Skriver fjernet fra stasjonen
-station_print_summary	{mode} · {n} skriver(e)
-station_print_summary_none	Ingen skrivere på denne stasjonen ennå — den vil ikke skrive ut
-stations_none	Ingen stasjoner ennå - legg til en nedenfor. Stasjoner er ubrukte i en diskbutikk - la stå tomme.
 route_up	Opp
 route_down	Ned
-route_remove	Fjern
 route_clear	Tøm
 save_printers	Lagre skrivere
 print_test_page	Skriv ut en testside
@@ -739,23 +604,15 @@ test_page_no_printer	Ingen skriver for {place} — knytt en skriver, og prøv ig
 test_page_pick_first	Velg skriver(e) for en testside først — deretter Skriv ut en testside
 test_printers_dd	Skrivere for en testside
 test_printers_dd_n	{n} skriver(e) for en testside · trykk for å endre
-kot_test_printers_dd	Skrivere for prøveutskrift
-kot_test_printers_dd_n	{n}-skriver(e) for testutskrift · trykk for å endre
 test_printer_picked	Test på: {name}
 test_printer_cleared	Tester ikke på: {name}
 test_page_sent_n	Testside sendt til {n} skriver(e)
-test_kot_pick_first	Velg skriver(e) for testutskrift først — deretter testutskrift
-test_kot_sent_n	Testutskrift sendt til {n}-skriver(e)
-cancel_pick	Merk
-cancel_pick_on	Merket
-cancel_pick_meta	Merket for avbestilling
 batch_cancel	Avbestill merkede
 batch_cancel_n	Avbestill merkede ({n})
 batch_cancel_none	Merk ett eller flere sendte elementer først — deretter Avbryt merket
 batch_cancel_title	Kanseller merkede varer - én grunn, én avbestillingsslipp per seksjon
 batch_cancel_ok	{n}-elementer kansellert · {slips}-kanseller-slipp(er) → {kitchens}
 batch_cancel_ok_noprint	{n}-elementer kansellert — automatisk utskrift er av, så ingen avbestillingsslipp
-no_printer_kitchen_station	Ingen skriver for den stasjonen
 printers_saved	Lagret
 test_page_sent	Testside sendt — sjekk skriveren
 test_page_sent_one	Testside sendt til {name} — sjekk den skriveren
@@ -771,10 +628,7 @@ cancelled	Avbestilt
 printers_tap_find	Trykk Finn for å liste skrivere denne enheten kan bruke.
 printers_none_found	Ingen funnet — skriv et systemskrivernavn eller en IP (f.eks. 192.168.1.50).
 printer_from_find	La til {name}
-kot_printer_ph	Skriver for slips
 bill_printer_ph	Skriver for regninger
-kot_print_on	Automatisk utskrift av billetter: På
-kot_print_off	Automatisk utskrift av billetter: Av
 queue_refused	Ikke godtatt av butikken ({n}) — sjekk hver enkelt i kassen:
 clear_not_accepted	Sjekket — tøm denne listen
 device_name_ph	Denne enhetens navn
@@ -785,7 +639,6 @@ backup_failed	Siste automatiske sikkerhetskopi mislyktes: {e}
 backup_overdue	Ingen sikkerhetskopi på {n} dager — hold appen åpen på denne enheten så den kan ta kopi.
 disk_low	Bare {mb} MB ledig på denne enheten — sikkerhetskopier vil snart feile. Frigjør litt plass.
 last_seen_devices	Sist sett: {time}
-sync_interval	Synk hvert {secs}. sek
 connection_to_shop	Tilkobling til butikken
 supplier_name_ph	Leverandørnavn (eller part)
 supplier_ph	Leverandør
@@ -848,7 +701,6 @@ fresh_book_kirano	Fersk = tom katalog (legg til varer senere). Bok = type åpnin
 fresh_selected	Fresh valgt — katalogen forblir tom. Trykk Ferdig når du er klar.
 gross_word	Brutto
 how_start	Hvordan vil du starte?
-kot_print_help_kirano	Ikke brukt på en kirana-disk.
 later_country_pack	Senere: Innstillinger → bruk landpakken for skatte- og betalingsetiketter.
 local_badge	LOKAL
 mix_type_hint_kirano	Del på kontant / UPI / kort / kreditt om nødvendig. Kreditt trenger en kunde over.
@@ -899,8 +751,6 @@ staff_copy_need_source	Velg hvem sitt oppsett som skal kopieres
 staff_copy_same	Det er samme person — velg noen andre
 staff_rename_need_selected	Velg hvem som skal få nytt navn først
 team_pick_hint	Velg hvem du vil redigere – skjermer, pengerettigheter og stasjoner vises kun for den personen.
-team_stations_help	Stasjoner de kan bruke
-team_stations_changed	Stasjoner endret — Lagre oppsett for denne personen
 team_features_changed	Skjermer endret — Lagre oppsett for denne personen
 team_rights_changed	Rettigheter endret — Lagre oppsett for denne personen
 they_owe_us	De skylder oss
@@ -984,9 +834,6 @@ service_pct_ph	Service % valgfritt 0/10/12
 short_code_ph	Kort kode (MG02)
 starting_password_ph	Startpassord (valgfritt)
 starting_pin_ph	Start-PIN (4–12 sifre)
-station_name_ph	Stasjonsnavn (valgfritt)
-station_new_ph	Seksjon (valgfritt)
-table_name_ph	Counter / bukt navn
 tax_rate_ph	Skattesatsnavn eller % — Standard, Redusert, 0, 5, 12, 18, 20
 to_code_ph	Til kode (kg)
 uncleared_no_ph	Uoppgjort # over
@@ -999,27 +846,8 @@ book_kind_month	Denne månedens bøker
 book_kind_aging	Utestående / debet-kreditt
 book_kind_balance	Balanse
 order_help	Trykk en vare for å legge den til.
-floor_help	Denne butikken selger i skranken. Bord og spisestue er ikke en del av Kirano.
-kitchen_help	Ikke brukt i diskbutikk.
-kitchen_empty	Ingen åpne billetter (skrankebutikker lar vanligvis denne skjermen stå ubrukt).
-add_a_table	Legg til et bord
-add_station_heading	Legg til en butikkdel
 categories_help	Trykk Bruk for å legge varen over i den kategorien. Et bilde gir kategorien et bilde; uten ett vises initialene.
 dish_search_ph	Søk etter elementer eller kort kode...
-tile_free	Ledig
-tile_occupied	Opptatt
-tile_food_ready	Maten er klar
-tile_bill_printed	Regning skrevet ut
-tile_paid	Betalt
-tile_bill_btn	Regning
-tile_occupy_btn	Sett gjester
-tile_free_btn	Frigjør bordet
-tile_ready_btn	Frigjør bordet
-tile_undo_bill	Angre regning
-summary_busy	opptatte bord
-summary_to_collect	å innkreve
-summary_on_floor	på salen
-floor	Butikk
 sizes_as_items_ph	Størrelser som egne varer (valgfritt) — Halv=120, Hel=200
 dish_group_ph	Pakningsstørrelsesgruppe (valgfritt) — f.eks. Til 1 kg / 5 kg
 discount	Rabatt
@@ -1027,7 +855,6 @@ remove_discount	Fjern rabatt
 apply_discount	Bruk rabatt
 save_opening_cash	Lagre åpningskontanter
 close_shift_print	Lukk skiftet og skriv ut lapp
-area_prices_ph	Sonepriser (valgfritt) — Klimaanlegg=220, Ta med=210
 discount_ph	10% eller 50
 discount_reason_ph	Grunn (f.eks. fast gjest, sen mat)
 opening_float_ph	Penger lagt i skuffen i morges
@@ -1037,34 +864,18 @@ shift_handover	Skiftoverlevering
 shift_since	Dette skiftet siden
 expected_in_drawer	Forventet i skuffen
 right_discount	Gi rabatt
-floor_in_kitchen	Pågår
-floor_eating	Servert
 pick_category	Velg en kategori
 close_category_list	Lukk kategorilisten
 new_category_row	Ny kategori — opprettes når du lagrer varen
 your_category	Kategorien din
 suggested_category	Foreslått - fra våre varer
 category_search_ph	Kategori — søk i dine eller skriv en ny
-line_sent_state	Sendt
-line_nc_state	På huset (NC) — ikke belastet
 cancel_item_short	Avbestill
-nc_short	NC
-charge_again_short	Belast
-move_short	Flytt
 cancel_item_title	Avbryt denne varen — backoffice får en avbestillingsslipp
-nc_item_title	Gjør denne varen gratis (NC)
-charge_again_title	Belast denne varen igjen
-move_item_title	Flytt denne varen til et annet bord
-already_cooked	Allerede laget (svinn)
-not_cooked_yet	Ikke laget ennå
 return_to_customer	Returner til kunden
 short_by	Mangler
 tip_not_sale	Tips (personalets, ikke et salg)
 right_settle	Ta imot betaling
-right_cancel_sent	Avbestill en sendt vare
-right_complimentary	På huset (NC)
-right_move_table	Flytt / slå sammen tellere
-right_reprint	Skriv ut regningen igjen
 right_allowed	Tillatt
 right_with_approval	Med godkjenning
 right_denied	Ikke tillatt
@@ -1074,25 +885,11 @@ no_server_found	Ingen funnet. På Serveren: Innstillinger → Andre enheter → 
 servers_found_pick	Trykk butikken du vil koble til.
 server_host_selected	Bruker {host} — skriv paringskoden, deretter Par nå.
 print_bill	Skriv ut regning
-table_actions	Motaksjoner
-move_merge_table	Flytt / slå sammen bord
-move_help	Flytt denne tellerens ordre til et ledig bord, eller slå det sammen til et løpende bord.
-move_target_ph	Tellernavn
 approval_pin_ph	Leder-PIN (bare hvis det spørres)
-move_here	Flytt hit
-merge_into	Slå sammen inn i den
-line_reason_ph	Årsak (f.eks. ombestemt kunden, ikke på lager)
-line_qty_ph	Hvor mange som skal avbestilles (tomt = alle)
-line_target_ph	Flytt til bord (f.eks. D5)
 confirm	Bekreft
 menu_search_ph	Søk vare eller kort kode
 customer_paid_ph	Kunden betalte
 tip_ph	Tips
-table_area_ph	Sone (f.eks. Spise inne, Ta med, Klimaanlegg)
-table_range_ph	Mange på en gang: D1-D20
-add_these_tables	Legg til disse tellerne
-remove_these_tables	Fjern disse tellerne
-table_remove_ph	Fjern: T1-T24, eller ett bords navn
 find_server	Finn butikkens server
 bill_format	Regningsformat
 bill_format_help	Trykt under butikkens navn på hver regning. Skill linjer med | (f.eks. MG Road, Rajkot | Ph 98250 00000).
@@ -1100,78 +897,32 @@ bill_header_ph	Adresse | telefon
 fssai_ph	FSSAI / butikklisensnr. (valgfri)
 bill_footer_ph	Bunntekst (f.eks. Takk, kom igjen)
 save_bill_format	Lagre regningsformat
-kot_format	Slip-format
-kot_format_help	Trykk på et felt i listen. Vis, skriftstørrelse og vekt gjelder for det feltet på slipstypen valgt ovenfor. Hver type beholder sine egne størrelser og vekter.
-kot_format_fields	Felt
-kot_field_next	Neste felt
-kot_field_show	Vis
-kot_field_hide	Skjul
 kot_field_on	vis
 kot_field_off	skjul
-kot_field_size	Skriftstørrelse
-kot_field_size_ph	f.eks. 16, 20, 24, 28, 32…
 kot_weight_light	Lett
 bill_kot_panel_help	Regningsoppsett og innholdsbredde. Kassereren er den som utstedte eller gjorde opp regningen - hele salgshistorien forblir i bøkene.
 std_size_ph	f.eks. 18, 20, 26…
-kot_show_shop	Butikknavn
-kot_hide_shop	Skjul butikk
-kot_show_time	Tid
-kot_hide_time	Skjul tid
-kot_show_waiter	Kasserer
-kot_hide_waiter	Skjul kasserer
-kot_show_station	Stasjon
-kot_hide_station	Skjul stasjon
-kot_show_table	Disk
-kot_hide_table	Skjul bord
-kot_show_kot_no	Billett nr
-kot_hide_kot_no	Skjul billett nr
-kot_width	Forhåndsvisning (angi innholdsbredden på slip-fanen)
-kot_width_58	58 mm
-kot_width_80	80 mm
-kot_kind_heading	Billetttype
-kot_kind_original	Opprinnelig
-kot_kind_duplicate	Duplikat
-kot_kind_modified	Endret
-kot_kind_cancelled	Avbestilt
-kot_style_heading	Feltets størrelse og vekt
-kot_style_title	Tittel
-kot_style_item_qty	Vare · Antall
-kot_style_field_pick	Velg felt
 kot_weight_regular	Vanlig
 kot_weight_bold	Fet
-kot_align	Justering
 kot_align_start	Begynn
 kot_align_center	Midt
 kot_align_end	Slutt
 content_width	Innholdsbredde (mm)
 content_width_bill	Regningens innholdsbredde (mm)
-content_width_kot	Billettinnholdsbredde (mm)
 content_width_ph	Eller skriv en innholdsbredde, 40–210 mm
 content_width_help	Hvor bredt denne slipen trykker. Bill holder sin egen bredde.
 content_width_bill_help	Hvor bred kunderegningen skrives ut. Standard 210 mm (side). 58 mm smal slip, 80 mm bred slip, 112 mm 4-tommer, 210 mm A4-bred. Skriv inn en hvilken som helst verdi fra 40 til 210. Billetter har sin egen bredde på slip-fanen.
-content_width_kot_help	Hvor bredt billetten skrives ut. Standard 80 mm. 58 mm smal slip, 80 mm bred slip, 112 mm 4-tommer, 210 mm side. Skriv inn en hvilken som helst verdi fra 40 til 210. Kunderegninger har sin egen bredde på fanen Regning.
 vp_paper_width	Innholdsbredde (mm)
 vp_paper_width_ph	Eller skriv en innholdsbredde, 40–210 mm
 vp_paper_width_help	Innholdsbredde settes under Bill & Slip-format — separat for regningen (standard 210 mm) og billetten (standard 80 mm).
-kot_size	Skriftstørrelse
-kot_size_s	Liten
-kot_size_m	Vanlig
-kot_size_l	Stor
 std_size	Skriftstørrelse
 kot_copies	Kopier
 kot_copies_1	1
 kot_copies_2	2
 kot_copies_3	3
-kot_title_ph	Tittel (tom = BILLETT)
-kot_footer_ph	Backoffice notat (valgfritt)
-kot_preview	Forhåndsvisning
-save_kot_format	Lagre Slip-format
-test_kot_format	Prøvetrykk
-test_kot_sent	Forhåndsvisning av billett sendt
 test_bill_format	Testregning
 test_bill_sent	Forhåndsvisning av regning sendt
 test_print_no_printer	Ingen skriver for den jobben — velg en på denne skjermen
-kot_format_saved	Slip-format lagret
 std_print	Regningens utskriftsstørrelse
 std_print_help	Skriftstørrelse for standard stående og liggende regningsjobber på OS/dokumentskrivere (inntastingspunkter — ikke Liten/Normal/Stor). Samme størrelse på begge retninger.
 std_size_s	Liten
@@ -1211,23 +962,16 @@ upi_qr	UPI QR
 show_upi_qr	Vis UPI QR
 close_upi_qr	Lukk
 upi_qr_help	Kunden skanner og betaler. Trykk på Ta betaling etter at de har betalt. Andre skjermbilde: åpne Server URL/visning på LAN.
-kot_recall	Hent tilbake
 recently_done	Nylig ferdig
-recall_kot_ph	Billettnummer for tilbakekalling
 role_help_customer	Rolle: Kunde — konto (de skylder oss). Samme part kan også levere varer.
 role_help_both	Roller: Kunde + Leverandør — én part, konto og gjeld, netto i Rapporter.
 role_help_supplier	Rolle: Leverandør — vi skylder dem for kjøp.
-dine_in_pick_table	Ikke brukt i diskbutikk
-choose_table	Velg teller
-change_table	Bytt bord
-pick_table_banner	Velg et bord for denne bestillingen
 items_word	varer
 items_section	Varer
 back_to_order	Tilbake til bestillingen
 new_items_head	Ikke sendt ennå
 price_ph	Pris
 price_ph_gst_inside	Pris ({tax} inkludert)
-cancel_needs_table	Skrankesalg blir stående på billetten til du tar betaling
 tax_rates_missing_hint	Ingen {tax}-sats på disse varene - på varer satt avgiftssats (prisene inkluderer allerede {tax} under {tax} inklusive)
 taxable_value	Avgiftspliktig verdi
 gst_inside_price_note	({tax} inkludert)
@@ -1248,30 +992,11 @@ client_template_confirm	Vil du legge til {d}-elementer fra {title}? Varer du all
 client_template_importing	Importerer {title}…
 client_template_done	Hver vare fra {title} er på varene dine.
 client_template_imported	Lagt til {d}-elementer og {c}-kategorier fra {title}
-resv_heading	Reservasjoner
-resv_name_ph	Kundens navn
-resv_phone_ph	Telefon (valgfritt)
-resv_guests_ph	Mennesker
-resv_when_ph	Når — 20:30, i morgen 13:00
-resv_table_ph	Teller (valgfritt)
-resv_add	Reserver
-resv_seat	Satt
-resv_none	Ingen reservasjoner på vei.
-guests_word	gjester
-delivery_by_ph	Leveres av (bud eller ansattnavn)
-kitchen_all_day	Å lage nå: {items}
-split_bill	Del regningen
-split_go	Lag egen regning
 cancel	Avbestill
 opening_client	Åpner klient…
 preparing_desk	Klargjør disken…
 opening_server	Åpner server…
 creating_server	Oppretter server…
-split_help	Trykk på varene en kunde betaler for · {n} plukket
-split_send_first	Send slipp først - kun varer som backoffice har kan gå til en egen regning
-split_pick_some	Trykk først på elementene for den separate regningen
-split_done	Separat regning laget - den er på gulvet ved siden av denne disken
-split_marked	egen regning
 order_empty_pick	Bestillingen er tom – trykk på Legg til varer ovenfor for å velge varer.
 add_dishes	Legg til elementer
 order_so_far	På denne bestillingen: {n} · {total}
@@ -1282,24 +1007,8 @@ pick_done_dd	Ferdig · {label}
 printer_route_mode	Hvis flere skrivere på dette stedet
 printer_mode_first	Første som virker
 printer_mode_all	Skriv ut på alle
-kot_show_area	Sone
-kot_hide_area	Skjul sone
-kot_show_item_hdr	Vare · Antall
-kot_hide_item_hdr	Skjul kolonner
-kot_show_title	Tittellinje
-kot_hide_title	Skjul tittel
-kot_field_order	Utskriftsrekkefølge
 kot_field_up	Flytt opp
 kot_field_down	Flytt ned
-kot_field_cycle	Velg neste
-kot_field_select	Velg neste
-kot_field_time	Tid
-kot_field_kot_no	Billett nr
-kot_field_area	Sone
-kot_field_table	Disk
-kot_field_shop	Butikknavn
-kot_field_waiter	Personale
-kot_field_station	Stasjon
 app_template_blurb_extra	Også: Eier Zahir, Admin Asif, Cashier Nawaz; front sidebar; historie etter 4 timer; I dag kle av; kompakt regning.
 dishes_n	{n} elementer
 recipe_ph	Oppskrift (valgfritt - ubrukt i en diskbutikk)
@@ -1309,8 +1018,6 @@ low_stock_alert	Holder på å gå tom — kjøp snart: {items}
 unpriced_note	{n}-varer på varene dine har ingen pris ennå – de faktureres til 0 til du angir en.
 show_unpriced	Vis kun varer uten pris
 show_all_dishes	Vis alle elementer
-role_waiter	Kasserer
-role_kitchen	Lager
 role_title_rest_ph	Stillingstittel (f.eks. Kaptein, Kjøkkensjef)
 preset_help_rest	Kasserer: selger. Leder: salg + varer + annuller/endre.
 kind_raw	Kjøpt for butikkbruk

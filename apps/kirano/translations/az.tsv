@@ -68,28 +68,6 @@ applied	Tətbiq olunub
 note_ph	Qeyd (istəyə bağlı)
 rounded	YUVARLAQ
 split	Böl
-send_kot	Slip göndərin
-send_kot_to	Göndər → {kitchens}
-send_kot_again	Növbəti slip üçün maddələr əlavə edin
-send_kot_held	Saxlanılan elementlər — göndərmək üçün dayandırın
-reprint_kot	Seçilənləri yenidən çap et
-reprint_kot_ok	{n} elementləri yenidən çap edildi · {slips} slip(lər) → {kitchens}
-reprint_kot_needed	Əvvəlcə slip göndərin — sonra elementləri daxil edin və seçilmişləri yenidən çap edin
-reprint_kot_none_selected	Göndərilən hər bir element atlanır — yenidən çap etmək üçün olanların üzərinə Çapda vurun
-reprint_kot_client	Göndərilən {place} üçün yenidən çap edin ({n}) — mağaza cihazı onu çap edir
-print_cancelled_kot	Ləğv olunanların hamısını çap et
-print_cancelled_kot_ok	Çap edilmiş {n} ləğv edilmiş elementlər · {slips} slip(lər) → {kitchens}
-print_cancelled_kot_needed	Əvvəlcə ləğv edilmiş elementlərlə masa açın
-print_cancelled_kot_none	Bu sifarişdə ləğv edilmiş məhsul yoxdur
-print_cancelled_kot_client	Göndərilən {place} üçün çap ləğv edildi ({n}) — mağaza cihazı onu çap edir
-kot_banner	Növ banneri
-kot_banner_ph	Banner (boş = yoxdur)
-kot_item_prefix	Məhsul prefiksi
-kot_item_prefix_ph	məs. [LƏĞV]
-kot_strike	Qeyd elementinin adı
-kot_strike_note	Zərərli element qeydi
-kot_strike_on	Açıq
-kot_strike_off	Bağlı
 bill_item_layout	Məhsul düzümü
 bill_item_layout_columns	Sütunlar
 bill_item_layout_stacked	Üst-üstə
@@ -118,8 +96,6 @@ bill_item_gap_em	Aralıq (em)
 bill_item_qty_min	Say min (em)
 bill_item_price_min	Qiymət min (em)
 bill_item_amount_min	Məbləğ min (em)
-kot_item_qty_width	Say sütunu
-kot_item_num_align	Sayın düzümü
 bill_total_qty_label	Ümumi say etiketi
 bill_total_subtotal_label	Ara cəm etiketi
 bill_total_grand_label	Yekun etiketi
@@ -131,36 +107,9 @@ bill_item_piece_off	Bağlı
 bill_total_qty	Ümumi say
 bill_total_subtotal	Ara cəm
 bill_total_grand	Yekun
-reprint_incl	Çapda
-reprint_skip	Keç
-reprint_skip_meta	Bərpa çapını keç
-kot_dest_hint	Ayarlar → Printerlər bölməsində {kitchens} üçün təyin etdiyiniz printerlərdə çap olunur
-kot_sent_hint	Son göndəriş {kitchens}-a getdi. Növbəti faktura üçün elementlər əlavə etmək üçün toxunun — və ya eyni üçün slipi yenidən çap edin.
-kot_sent_printing	{kitchens}-ə göndərilən slip — çap olunur
-kot_sent_not_printed	Slip {kitchens}-ə göndərildi, lakin çap olunmadı: {why}. Mağazaya deyin, sonra printeri düzəldin və yenidən çap edin.
-kot_sent_screen	Slip göndərildi {kitchens}
-kot_queued_shop	{place} üçün slip → {kitchens} saxlanıldı; mağaza cihazı onu çap edir
-kot_job_label	{place} → {kitchens} üçün sürüşmə
-kot_job_reached	{place} üçün slip {kitchens}-ə çatdı
 kot_unassigned	Təyin edilmədi
-kot_unassigned_held	Stansiya olmadan saxlanılan {n} elementləri — göndərmək üçün xəttdən çıxarın
-kot_station_ph	Post
-kot_station_dd	Post
-kot_station_dd_n	Stansiya · {stations}
-kot_set_station	Bu postu istifadə et
-kot_station_applied	{n} elementlərində quraşdırılmış stansiya: {station}
-kot_station_cleared	Stansiya {n} elementlərindən təmizləndi: {station}
-kot_station_needed	Əvvəlcə mağaza bölməsini seçin
-kot_station_not_allowed	Bölmənin istifadəsinə icazə verilmir: {station}
-kot_station_none	Hələ heç bir stansiya yoxdur — piştaxtada istifadə olunmur (Parametrlər → Lazım gələrsə ərazilər)
 pos_tab_items	Əlavə olunmuş məhsullar
 pos_tab_payment	Ödəniş
-hold_send	Gözlət
-hold_send_on	Gözlədilir
-hold_send_meta	Keçirildi - bu slipdə deyil
-station_remove	Postu sil
-station_remove_ph	Silmək üçün siyahıdakı posta toxunun
-station_removed	Post silindi: {name}
 settings_hub_title	Ayarlar
 settings_hub_help	Bir sahəni bir dəfəyə açın — daha az sürüşdürmə, daha aydın seçimlər.
 settings_back	Geri
@@ -169,12 +118,10 @@ settings_sec_country	Ölkə və vergi
 settings_sec_tills	Digər cihazlar
 settings_sec_brand	Sizin brend
 settings_sec_units	Vahidlər və çevrilmələr
-settings_sec_pickers	Zonalar · postlar · vergi dərəcələri
+settings_sec_pickers	Vergi dərəcələri
 settings_sec_printers	Printerlər
 settings_sec_bill	Bill & Slip formatı
 settings_sec_selling	Sxemlər və satışlar
-bill_kot_tab_bill	Hesab
-bill_kot_tab_kot	Sürüşmək
 settings_sec_alerts	Xəbərdarlıqlar
 alerts_help	Status mesajları ekranda sizin üçün (bu girişdə) nə qədər qalır.
 snack_secs_ph	Saniyə (3–60, susmaya görə 10)
@@ -225,8 +172,6 @@ counter	Kassa
 dine_in	Kassa
 takeaway	Paket
 order	Sifariş
-tables	Sayğaclar
-kitchen	Bölmələr
 sales	Satışlar
 sales_refunds	Satışlar və qaytarmalar
 day_close	Günün bağlanışı
@@ -254,10 +199,6 @@ zero_sales_on	₹0-a icazə
 zero_sales_off	Qiymət tələb et
 zero_sales_saved_on	Sıfır məbləğli satışlara icazə verildi
 zero_sales_saved_off	Satışların qiyməti ₹0-dan yuxarı olmalıdır
-floor_areas_help	Sahələr mərtəbədəki otaqlar və ya zonalardır (Dine In, Parsel, AC ...). Əvvəlcə bir sahə əlavə edin, sonra orada sayğaclar qoyun - hər bir sahə mərtəbədəki ayrı bir qrupdur.
-area_new_ph	Yeni zona / otaq (məs. Kondisioner, Bağ)
-add_area	Zona əlavə et
-area_added	“{name}” sahəsi hazırdır — ona sayğaclar əlavə edin
 no_favorites	Hələ sevimli yoxdur — aşağıdakı siyahıdan məhsul əlavə edin.
 add_to_bill	Hesaba əlavə et
 added	Əlavə olundu
@@ -268,19 +209,9 @@ chip_missing_customer	Seçilmiş müştəri yoxdur — yenidən seçin
 chip_no_customer	Hələ müştəri yoxdur — ad yazın, sonra Kreditə toxunun
 credit_summary_fmt	{} müştəri · açıq kredit {} · saxlanılan avanslar {}
 recent_label	Son:
-kot_new_waiting	YENİ — gözləyir
-kot_preparing	HAZIRLANIR
-kot_ready_serve	HAZIR — verin
-kot_done_cap	BİTDİ
-kot_cancelled	LƏĞV
-kot_start_btn	Başla
-kot_mark_ready	Hazır işarələ
-kot_done_btn	Bitdi
-table_free	Boş — sifarişə başlamaq üçün toxunun
 start_order	Sifarişə başla
 open_bill	Hesabı aç
 collect_payment	Ödənişi al
-table_running	Gedir
 payment_pending	Ödəniş gözləyir
 collect_at_counter	kassada al
 inventory	Anbar
@@ -313,7 +244,6 @@ ok	OK
 this_shop	Server
 extra_till	Klient
 off	Bağlı
-tables_kitchen	Mağaza düzeni
 server	Server
 client	Klient
 language_currency	Dil və valyuta
@@ -355,8 +285,6 @@ add_item_plain	Məhsul əlavə et
 add_note	Qeyd əlavə et
 add_opening_balance	Açılış qalığı əlavə et
 add_staff	Heyət əlavə et
-add_station	Post əlavə et
-add_table	Masa əlavə et
 add_unit	Vahid əlavə et
 add_use_name	Bu adı əlavə et / istifadə et
 allow_extra_tills	Əlavə kassalara icazə ver
@@ -409,7 +337,6 @@ share_whatsapp	WhatsApp ilə paylaş
 lan_pages_heading	Wi‑Fi-da müştəri səhifələri
 lan_pages_help	Bu mağazanın Wi‑Fi şəbəkəsində müştəri səhifələri ekran lövhəsi və rəy üçün işləyir. Mobil datadan istifadə edən insanlar daha sonra Cloud-a ehtiyac duyurlar. Kart terminalı və ya ödəniş linki isteğe bağlıdır və heç vaxt sayğacı bloklamır.
 diag_send_heading	Bu cihazdan kənara paylaş
-kot_dest_heading	Post
 optional_login_heading	İstəyə bağlı giriş
 rights_heading	Hüquqlar
 ops_panel	Yerli əməliyyatlar
@@ -436,28 +363,6 @@ till_voucher_amt_ph	Vauçer məbləği (boş = hamısı)
 till_wallet_topup_ph	Pulqabına əlavə məbləğ
 till_voucher_issue_amt_ph	Veriləcək vauçer məbləği
 till_voucher_issue_code_ph	Yeni vauçer kodu
-split_evenly	Bərabər böl
-waitlist	Gözləmə siyahısı
-fire_course	Növbəti addım
-hold_item	Gözlət
-waiter_call	Kassirə zəng edin
-waitlist_add	Gözləmə siyahısına əlavə et
-floor_view_grid	Tor
-floor_view_layout	Düzüm
-floor_layout_x	X
-floor_layout_y	Y
-floor_layout_w	W
-floor_layout_h	H
-floor_layout_save	Düzümü saxla
-floor_layout_open	Masanı aç
-floor_layout_edit	Düzümü redaktə et
-floor_layout_pick	Düzümünü redaktə etmək üçün masaya toxunun
-floor_layout_saved	Düzəliş saxlandı
-floor_layout_nudge_left	← 20
-floor_layout_nudge_right	→ 20
-floor_layout_nudge_up	↑ 20
-floor_layout_nudge_down	↓ 20
-sibling_pickers_help	Vahidlər kimi Açıq/Bağlı toxunun — zonaları, postları və vergi dərəcələrini gündəlik seçicilərdən gizlədin; paket susmaları qalır.
 bulk_price_apply	Toplu qiyməti tətbiq et
 card_terminal_optional	Kart terminalı / ödəniş keçidi (internet olanda istəyə bağlı)
 copy_report	Hesabatı köçür
@@ -483,7 +388,6 @@ import_day	Günü idxal et
 import_items_csv_plain	Məhsulları CSV idxal et…
 import_parties_csv	Tərəfləri CSV idxal et…
 item_name	Məhsul adı
-kitchen_printing	Printerlər
 login_id_ph	İstifadəçi adı
 mark_cleared	Üzləşdi işarələ
 new_party_clear	Yeni tərəf (formanı təmizlə)
@@ -553,15 +457,6 @@ show	Göstər
 spreadsheet_csv	Cədvəl (CSV)
 start_fresh	Sıfırdan başla
 stop_extra_tills	Əlavə kassaları dayandır
-floor_cols_ph	Sütunlar
-floor_cols_fit	Ekrana sığdır
-floor_cols_fit_sub	{n} bura sığır
-floor_cols_fits	sığır
-floor_cols_scroll	yana sürüşür
-floor_cols_min	Sütunlar: ən azı 1 — və ya ekrana sığdırmaq üçün boş buraxın
-floor_zoom_auto	Avto
-floor_zoom_out	Uzaqlaşdır
-floor_zoom_in	Yaxınlaşdır
 backup_auto	Hər gün avtomatik ehtiyat nüsxə · sonuncu {when} · son 14 gün {dir} qovluğunda saxlanır.
 backup_auto_none	Hər gün avtomatik ehtiyat nüsxə — birincisi bir azdan işləyəcək.
 backup_copy_to	Nüsxələr həm də {dir} qovluğuna gedir.
@@ -579,7 +474,6 @@ new_pair_code	Yeni qoşulma kodu
 pair_finishing	Qoşulma bitir… mağazanın kitabları tətbiq olunur
 pair_opening	Kassa açılır…
 pair_copied	Qoşulma kodu köçürüldü
-kot_waiting	Göndərilməyi gözləyir
 lan_offline_waiting	Mağaza serverinə çatılmır · {n} gözləyir
 lan_connecting	Mağazaya qoşulur…
 lan_live	Canlı
@@ -621,7 +515,6 @@ printers_routes_help	Əməliyyat sisteminin artıq bildiyi printerləri tapın. 
 printer_assign_dd	Həqiqi printer: {place}
 printer_assign_pick	Həqiqi printer seçin
 printer_profile_heading	Düzüm
-printer_send_heading	Çatdırılma
 vp_delivery_heading	Çatdırılma
 vp_delivery_help	Bu virtual printer işləri necə göndərir — OS sənədi, xam baytlar və ya ESC/POS. Slip məzmunu (növ ölçüsü, sarğı, kənarlar) burada deyil, qanun layihəsi / Slip formatı ilə müəyyən edilir.
 vp_type_size_heading	Şrift ölçüsü
@@ -665,23 +558,13 @@ virtual_draft_send	Növbəti virtual printer üçün dəyər qoyuldu
 virtual_need_real	Əvvəlcə həqiqi printer seçin
 virtual_need_select	Silmək üçün virtual printer seçin
 real_printer_selected	Seçildi: {name}
-station_group_heading	Virtual printerlər
-station_group_apply	Virtual printeri sil
-station_group_applied	Silindi
-station_group_empty	Virtual printer seçin
-station_group_name_ph	Virtual printer adı (istəyə bağlı)
-station_group_save	Virtual printer yarat
-station_group_saved	Virtual printer saxlandı
-station_manage_heading	Mağaza bölməsini əlavə edin və ya silin
 printers_routes_heading	Nələr harada çap olunur
 route_pick_heading	Yer
 route_editing	Redaktə: {name}
 route_assigned	{printer} {place} yerinə əlavə olundu
 route_already_assigned	Artıq bu yerdədir: {printer}
-route_removed	{printer} {place} yerindən silindi
 route_cleared	{name} təmizləndi
 route_assigned_empty	Bu yerdə heç nə yoxdur
-route_tap_remove	silmək üçün toxunun
 route_tap_select	seçmək üçün toxunun
 route_tap_selected	seçilib
 route_pick_printer_first	Əvvəlcə printerə toxunun
@@ -702,35 +585,17 @@ printer_format_custom	Yeni xüsusi profil
 printer_format_custom_label	Xüsusi
 printer_format_custom_added	Bu yer üçün xüsusi profil əlavə olundu
 add_printer	Printer əlavə et
-remove_printer	Sil
 route_pick_ph	Bill və ya mağaza bölməsi
 route_bill	Hesab
-route_default_kitchen	Stansiya yoxdur (təyin olunmamış elementlər)
-route_kot_station	Post
 route_dont_print	Printer yoxdur
-stations_heading	Postlar
-stations_help	Mağaza bölmələri mağazanın həmin hissəsi üçün əşyaları və printerləri qruplaşdırır. Parametrlər → Printerlər bölməsindən printerləri əlavə edin, sınaq sırasını təyin edin, sonra əvvəlcə işləyir və ya Hamısında çap edin. Siz getdikcə dəyişikliklər yadda saxlanılır.
-station_print_heading	Bu postun printerləri
-station_print_help	Stansiya seçin, sonra bir və ya daha çox printer əlavə edin. ↑↓ dəstləri sınaqdan keçirin. Birinci uğurdan sonra iş dayanır; Hər bir qoşulmuş printerə göndərilənlərin hamısında çap edin.
-station_print_pick_ph	Printerləri qoyulacaq post
 station_print_pick_first	Əvvəlcə mağaza bölməsini seçin
-station_print_editing	«{name}» üçün printerlər redaktə olunur
-station_vps_dd	Bu postun printerləri
-station_vps_dd_n	{n} printer · dəyişmək üçün toxunun
 station_vps_empty	Hələ printer yoxdur — Ayarlar → Printerlər altında tapın
 bill_printers_dd	Hesabın printerləri
 bill_printers_dd_n	Hesab üçün {n} printer · dəyişmək üçün toxunun
-job_layout	Düzüm
-job_delivery	İş necə göndərilir
-job_delivery_help	ƏS sənədi, xam baytlar və ya ESC/POS. Hesab və biletin hər biri özünəməxsusdur. İstənilən iş tapa bilərsiniz hər hansı bir printerə gedə bilərsiniz.
 station_vp_attached	Printer qoşuldu
 station_vp_detached	Printer postdan silindi
-station_print_summary	{mode} · {n} printer
-station_print_summary_none	Bu postda hələ printer yoxdur — çap etməyəcək
-stations_none	Hələ stansiya yoxdur — aşağıda birini əlavə edin. Stansiyalar piştaxtada istifadə olunmur - boş buraxın.
 route_up	Yuxarı
 route_down	Aşağı
-route_remove	Sil
 route_clear	Təmizlə
 save_printers	Printerləri saxla
 print_test_page	Sınaq səhifəsi çap et
@@ -739,23 +604,15 @@ test_page_no_printer	{place} üçün printer yoxdur — ona printer qoşun, sonr
 test_page_pick_first	Əvvəlcə sınaq səhifəsi üçün printer(lər) seçin — sonra Sınaq səhifəsi çap et
 test_printers_dd	Sınaq səhifəsi üçün printerlər
 test_printers_dd_n	Sınaq səhifəsi üçün {n} printer · dəyişmək üçün toxunun
-kot_test_printers_dd	Test çapı üçün printerlər
-kot_test_printers_dd_n	Test çapı üçün {n} printer(lər)i dəyişdirmək üçün vurun
 test_printer_picked	Sınaq: {name}
 test_printer_cleared	Sınaq deyil: {name}
 test_page_sent_n	Sınaq səhifəsi {n} printerə göndərildi
-test_kot_pick_first	Əvvəlcə Test çapı üçün printer(lər)i seçin, sonra Test çapını seçin
-test_kot_sent_n	{n} printer(lər)ə göndərilən sınaq çapı
-cancel_pick	İşarələ
-cancel_pick_on	İşarələnib
-cancel_pick_meta	Ləğv üçün işarələnib
 batch_cancel	İşarələnənləri ləğv et
 batch_cancel_n	İşarələnənləri ləğv et ({n})
 batch_cancel_none	Əvvəlcə bir və ya daha çox göndərilən elementi qeyd edin, sonra Ləğv et
 batch_cancel_title	İşarələnmiş elementləri ləğv edin - bir səbəb, hər bölmə üçün bir ləğv slipi
 batch_cancel_ok	{n} elementləri ləğv edildi · {slips} slip(ləri) ləğv → {kitchens}
 batch_cancel_ok_noprint	{n} elementləri ləğv edildi — avtomatik çap deaktivdir, ona görə də ləğv slipi yoxdur
-no_printer_kitchen_station	Həmin stansiya üçün printer yoxdur
 printers_saved	Saxlandı
 test_page_sent	Sınaq səhifəsi göndərildi — printeri yoxlayın
 test_page_sent_one	Sınaq səhifəsi {name} ünvanına göndərildi — həmin printeri yoxlayın
@@ -771,10 +628,7 @@ cancelled	Ləğv olundu
 printers_tap_find	Bu cihazın istifadə edə biləcəyi printerləri göstərmək üçün Tap düyməsinə toxunun.
 printers_none_found	Heç nə tapılmadı — sistem printerinin adını və ya IP yazın (məs. 192.168.1.50).
 printer_from_find	{name} əlavə olundu
-kot_printer_ph	Slips üçün printer
 bill_printer_ph	Hesablar üçün printer
-kot_print_on	Biletləri avtomatik çap edin: Aktivdir
-kot_print_off	Biletləri avtomatik çap edin: Söndür
 queue_refused	Mağaza qəbul etmədi ({n}) — hər birini kassada yoxlayın:
 clear_not_accepted	Yoxlandı — bu siyahını təmizlə
 device_name_ph	Bu cihazın adı
@@ -785,7 +639,6 @@ backup_failed	Son avtomatik ehtiyat nüsxə alınmadı: {e}
 backup_overdue	{n} gündür ehtiyat nüsxə yoxdur — ehtiyat nüsxə ala bilsin deyə tətbiqi bu cihazda açıq saxlayın.
 disk_low	Bu cihazda yalnız {mb} MB boşdur — ehtiyat nüsxələr tezliklə alınmayacaq. Bir az yer boşaldın.
 last_seen_devices	Son görülmə: {time}
-sync_interval	Hər {secs} saniyədən bir sinxron
 connection_to_shop	Mağaza ilə əlaqə
 supplier_name_ph	Təchizatçı adı (və ya tərəf)
 supplier_ph	Təchizatçı
@@ -848,7 +701,6 @@ fresh_book_kirano	Təzə = boş kataloq (elementləri sonra əlavə edin). Kitab
 fresh_selected	Təzə seçildi — kataloq boş qalır. Hazır olanda Bitdi düyməsinə toxunun.
 gross_word	Brutto
 how_start	Necə başlamaq istəyirsiniz?
-kot_print_help_kirano	Kirana sayğacında istifadə olunmur.
 later_country_pack	Sonra: Ayarlar → vergi və ödəniş etiketləri üçün ölkə paketinizi tətbiq edin.
 local_badge	YERLİ
 mix_type_hint_kirano	Lazım olsa nağd / UPI / kart / kredit arasında bölün. Kredit üçün yuxarıda müştəri lazımdır.
@@ -899,8 +751,6 @@ staff_copy_need_source	Kimin quraşdırmasının köçürüləcəyini seçin
 staff_copy_same	Bu eyni şəxsdir — başqasını seçin
 staff_rename_need_selected	Əvvəlcə adını dəyişəcəyinizi seçin
 team_pick_hint	Kimi redaktə edəcəyinizi seçin — ekranlar, pul hüquqları və stansiyalar yalnız həmin şəxs üçün görünür.
-team_stations_help	İstifadə edə biləcəkləri stansiyalar
-team_stations_changed	Stansiyalar dəyişdirildi — Bu şəxs üçün quraşdırmanı yadda saxlayın
 team_features_changed	Ekranlar dəyişdi — bu şəxs üçün quraşdırmanı Saxla
 team_rights_changed	Hüquqlar dəyişdi — bu şəxs üçün quraşdırmanı Saxla
 they_owe_us	Onlar bizə borcludur
@@ -984,9 +834,6 @@ service_pct_ph	Xidmət % istəyə bağlı 0/10/12
 short_code_ph	Qısa kod (MG02)
 starting_password_ph	Başlanğıc parol (istəyə bağlı)
 starting_pin_ph	Başlanğıc PIN (4–12 rəqəm)
-station_name_ph	Stansiyanın adı (istəyə görə)
-station_new_ph	Bölmə (isteğe bağlı)
-table_name_ph	Sayğac / bay adı
 tax_rate_ph	Vergi dərəcəsinin adı və ya % — Standart, Azaldılmış, 0, 5, 12, 18, 20
 to_code_ph	Hara kodu (kg)
 uncleared_no_ph	Yuxarıdakı üzləşməmiş №
@@ -999,27 +846,8 @@ book_kind_month	Bu ayın kitabları
 book_kind_aging	Ödənilməmiş / debet-kredit
 book_kind_balance	Balans hesabatı
 order_help	Əlavə etmək üçün məhsula toxunun.
-floor_help	Bu mağaza piştaxtada satılır. Masalar və yemək döşəməsi Kirano-nun bir hissəsi deyil.
-kitchen_help	Piştaxtada istifadə olunmayıb.
-kitchen_empty	Açıq biletlər yoxdur (birbaşa mağazalar adətən bu ekranı istifadəsiz qoyur).
-add_a_table	Masa əlavə et
-add_station_heading	Mağaza bölməsi əlavə edin
 categories_help	Yuxarıdakı məhsulu həmin kateqoriyaya salmaq üçün İstifadə et düyməsinə toxunun. Şəkil kateqoriyaya şəkil verir; olmayanda baş hərflərini göstərir.
 dish_search_ph	Elementləri və ya qısa kodu axtarın...
-tile_free	Boş
-tile_occupied	Tutulub
-tile_food_ready	Yemək hazırdır
-tile_bill_printed	Hesab çap olundu
-tile_paid	Ödənilib
-tile_bill_btn	Hesab
-tile_occupy_btn	Qonaqları oturt
-tile_free_btn	Masanı boşalt
-tile_ready_btn	Masanı boşalt
-tile_undo_bill	Hesabı geri al
-summary_busy	məşğul masa
-summary_to_collect	yığılacaq
-summary_on_floor	zalda
-floor	Mağaza
 sizes_as_items_ph	Ölçülər ayrı məhsul kimi (istəyə bağlı) — Half=120, Full=200
 dish_group_ph	Paket ölçüsü qrupu (isteğe bağlı) — məs. 1 kq / 5 kq
 discount	Endirim
@@ -1027,7 +855,6 @@ remove_discount	Endirimi sil
 apply_discount	Endirimi tətbiq et
 save_opening_cash	Açılış nağdını saxla
 close_shift_print	Növbəni bağla və slip çap et
-area_prices_ph	Zona qiymətləri (istəyə bağlı) — AC=220, Parcel=210
 discount_ph	10% və ya 50
 discount_reason_ph	Səbəb (məs. daimi qonaq, gecikən yemək)
 opening_float_ph	Bu səhər siyirməyə qoyulan nağd
@@ -1037,34 +864,18 @@ shift_handover	Növbə təhvili
 shift_since	Bu növbə buradan
 expected_in_drawer	Siyirmədə gözlənilən
 right_discount	Endirim ver
-floor_in_kitchen	Davam edir
-floor_eating	Verilib
 pick_category	Kateqoriya seçin
 close_category_list	Kateqoriya siyahısını bağla
 new_category_row	Yeni kateqoriya — məhsulu saxlayanda yaranır
 your_category	Sizin kateqoriya
 suggested_category	Təklif olunur — bizim maddələrdən
 category_search_ph	Kateqoriya — özünüzünkünü axtarın və ya yenisini yazın
-line_sent_state	Göndərildi
-line_nc_state	Kompliment (NC) — hesaba yazılmır
 cancel_item_short	Ləğv
-nc_short	NC
-charge_again_short	Hesabla
-move_short	Köçür
 cancel_item_title	Bu elementi ləğv edin - arxa ofis ləğv slipi alır
-nc_item_title	Bu məhsulu kompliment et (NC)
-charge_again_title	Bu məhsulu yenidən hesabla
-move_item_title	Bu məhsulu başqa masaya köçür
-already_cooked	Artıq bişib (itki)
-not_cooked_yet	Hələ bişməyib
 return_to_customer	Müştəriyə qaytar
 short_by	Çatışmayan
 tip_not_sale	Çaypulu (heyətindir, satış deyil)
 right_settle	Ödəniş al
-right_cancel_sent	Göndərilmiş məhsulu ləğv et
-right_complimentary	Kompliment (NC)
-right_move_table	Sayğacları köçürün / birləşdirin
-right_reprint	Hesabı yenidən çap et
 right_allowed	İcazə var
 right_with_approval	Təsdiqlə
 right_denied	İcazə yoxdur
@@ -1074,25 +885,11 @@ no_server_found	Heç nə tapılmadı. Serverdə: Ayarlar → Digər cihazlar →
 servers_found_pick	Qoşulmaq istədiyiniz mağazaya toxunun.
 server_host_selected	{host} istifadə olunur — qoşulma kodunu daxil edin, sonra İndi qoşul.
 print_bill	Hesabı çap et
-table_actions	Əks hərəkətlər
-move_merge_table	Masanı köçür / birləşdir
-move_help	Bu sayğacın sifarişini pulsuz cədvələ köçürün və ya onu işləyən bir cədvələ birləşdirin.
-move_target_ph	Sayğac adı
 approval_pin_ph	Menecer PIN-i (yalnız soruşulsa)
-move_here	Bura köçür
-merge_into	Bunun içinə birləşdir
-line_reason_ph	Səbəb (məsələn, müştəri fikrini dəyişdi, stokda yoxdur)
-line_qty_ph	Neçəsini ləğv etmək (boş = hamısı)
-line_target_ph	Masaya köçür (məs. D5)
 confirm	Təsdiq et
 menu_search_ph	Məhsul və ya qısa kod axtar
 customer_paid_ph	Müştəri ödədi
 tip_ph	Çaypulu
-table_area_ph	Zona (məs. Salon, Paket, Kondisioner)
-table_range_ph	Birdən çox: D1-D20
-add_these_tables	Bu sayğacları əlavə edin
-remove_these_tables	Bu sayğacları çıxarın
-table_remove_ph	Sil: T1-T24 və ya bir masanın adı
 find_server	Mağazanın serverini tap
 bill_format	Hesab formatı
 bill_format_help	Hər hesabda mağazanızın adı ilə çap olunur. Sətirləri | ilə ayırın (məsələn, MG Road, Rajkot | Ph 98250 00000).
@@ -1100,78 +897,32 @@ bill_header_ph	Ünvan | telefon
 fssai_ph	FSSAI / mağaza lisenziyası №. (isteğe bağlı)
 bill_footer_ph	Altlıq (məs. Təşəkkür edirik, yenə gəlin)
 save_bill_format	Hesab formatını saxla
-kot_format	Slip formatı
-kot_format_help	Siyahıda sahəyə toxunun. Göstər, şrift ölçüsü və çəki yuxarıda seçilmiş slip növündə həmin sahəyə tətbiq edilir. Hər növ öz ölçülərini və çəkisini saxlayır.
-kot_format_fields	Sahələr
-kot_field_next	Növbəti sahə
-kot_field_show	Göstər
-kot_field_hide	Gizlət
 kot_field_on	göstər
 kot_field_off	gizlət
-kot_field_size	Şrift ölçüsü
-kot_field_size_ph	məs. 16, 20, 24, 28, 32…
 kot_weight_light	Yüngül
 bill_kot_panel_help	Bill tərtibatı və məzmun eni. Kassir hesabı verən və ya hesablayan şəxsdir - tam satış hekayəsi kitablarda qalır.
 std_size_ph	məs. 18, 20, 26…
-kot_show_shop	Mağaza adı
-kot_hide_shop	Mağazanı gizlət
-kot_show_time	Vaxt
-kot_hide_time	Vaxtı gizlət
-kot_show_waiter	Kassir
-kot_hide_waiter	Kassir gizlət
-kot_show_station	Post
-kot_hide_station	Postu gizlət
-kot_show_table	Kassa
-kot_hide_table	Masanı gizlət
-kot_show_kot_no	Bilet nömrəsi
-kot_hide_kot_no	Bilet nömrəsini gizlədin
-kot_width	Önizləmə sarğısı (slip nişanında məzmun genişliyini təyin edin)
-kot_width_58	58 mm
-kot_width_80	80 mm
-kot_kind_heading	Bilet növü
-kot_kind_original	Əsl
-kot_kind_duplicate	Dublikat
-kot_kind_modified	Dəyişdirilmiş
-kot_kind_cancelled	Ləğv olundu
-kot_style_heading	Sahənin şrift ölçüsü və qalınlığı
-kot_style_title	Başlıq
-kot_style_item_qty	Məhsul · Say
-kot_style_field_pick	Sahə seçin
 kot_weight_regular	Adi
 kot_weight_bold	Qalın
-kot_align	Düzüm
 kot_align_start	Başla
 kot_align_center	Mərkəz
 kot_align_end	Son
 content_width	Məzmun eni (mm)
 content_width_bill	Hesabın məzmun eni (mm)
-content_width_kot	Bilet məzmununun eni (mm)
 content_width_ph	Və ya məzmun eni yazın, 40–210 mm
 content_width_help	Bu sürüşmə nə qədər geniş çap edir. Bill öz genişliyini saxlayır.
 content_width_bill_help	Müştəri hesabının çapı nə qədər genişdir. Defolt 210 mm (səhifə). 58 mm dar sürüşmə, 80 mm enində sürüşmə, 112 mm 4 düym, 210 mm A4 eni. 40-dan 210-a qədər istənilən dəyəri yazın. Biletlərin slip nişanında öz eni var.
-content_width_kot_help	Bilet nə qədər geniş çap olunur. Standart 80 mm. 58 mm ensiz sürüşmə, 80 mm eni sürüşmə, 112 mm 4 düym, 210 mm səhifə. 40-dan 210-a qədər istənilən dəyəri yazın. Müştəri hesablarının Bill nişanında öz eni var.
 vp_paper_width	Məzmun eni (mm)
 vp_paper_width_ph	Və ya məzmun eni yazın, 40–210 mm
 vp_paper_width_help	Məzmun eni Bill & Slip formatı altında - qanun layihəsi (defolt 210 mm) və bilet (defolt 80 mm) üçün ayrıca təyin edilir.
-kot_size	Şrift ölçüsü
-kot_size_s	Kiçik
-kot_size_m	Normal
-kot_size_l	Böyük
 std_size	Şrift ölçüsü
 kot_copies	Nüsxələr
 kot_copies_1	1
 kot_copies_2	2
 kot_copies_3	3
-kot_title_ph	Başlıq (boş = BİLET)
-kot_footer_ph	Back-ofis qeydi (istəyə görə)
-kot_preview	Önizləmə
-save_kot_format	Slip formatını saxla
-test_kot_format	Test çapı
-test_kot_sent	Biletə baxış göndərildi
 test_bill_format	Sınaq hesab
 test_bill_sent	Hesab önizləməsi göndərildi
 test_print_no_printer	Bu iş üçün printer yoxdur — bu ekranda birini seçin
-kot_format_saved	Slip formatı saxlanıldı
 std_print	Hesab çap ölçüsü
 std_print_help	OS/sənəd printerlərində Standart Portret və Landşaft hesab işləri üçün şrift ölçüsü (nöqtələri daxil edin - Kiçik/Normal/Böyük deyil). Hər iki istiqamət üzrə eyni ölçü.
 std_size_s	Kiçik
@@ -1211,23 +962,16 @@ upi_qr	UPI QR
 show_upi_qr	UPI QR göstər
 close_upi_qr	Bağla
 upi_qr_help	Müştəri skan edir və ödəyir. Ödədikdən sonra ödənişi qəbul et seçiminə toxunun. İkinci ekran: Server URL-ni açın / LAN-da göstərin.
-kot_recall	Geri çağır
 recently_done	Bu yaxın bitənlər
-recall_kot_ph	Xatırlamaq üçün bilet #
 role_help_customer	Rol: Müştəri — khata (onlar bizə borcludur). Eyni tərəf stok da verə bilər.
 role_help_both	Rollar: Müştəri + Təchizatçı — bir tərəf, khata və ödəniləcək dəftərlər, Hesabatlarda xalis.
 role_help_supplier	Rol: Təchizatçı — alışlara görə biz onlara borcluyuq.
-dine_in_pick_table	Piştaxtada istifadə olunmayıb
-choose_table	Sayğac seçin
-change_table	Masanı dəyiş
-pick_table_banner	Bu sifariş üçün masa seçin
 items_word	məhsul
 items_section	Məhsullar
 back_to_order	Sifarişə qayıt
 new_items_head	Hələ göndərilməyib
 price_ph	Qiymət
 price_ph_gst_inside	Qiymət ({tax} daxil)
-cancel_needs_table	Siz ödəniş alana qədər əks satışlar biletdə qalır
 tax_rates_missing_hint	Bu maddələr üzrə {tax} tarifi yoxdur — Əşyalar üzrə müəyyən edilmiş Vergi dərəcəsi (qiymətlərə artıq {tax} daxil olmaqla {tax} daxildir)
 taxable_value	Vergiyə cəlbedilən dəyər
 gst_inside_price_note	({tax} daxil)
@@ -1248,30 +992,11 @@ client_template_confirm	{title}-dən {d} elementləri əlavə edilsin? Artıq ə
 client_template_importing	{title} idxal olunur…
 client_template_done	{title}-dən hər bir element əşyalarınızdadır.
 client_template_imported	{title}-dən {d} elementləri və {c} kateqoriyaları əlavə edildi
-resv_heading	Rezervasiyalar
-resv_name_ph	Müştəri adı
-resv_phone_ph	Telefon (istəyə bağlı)
-resv_guests_ph	İnsanlar
-resv_when_ph	Nə vaxt — 20:30, sabah 13:00
-resv_table_ph	Sayğac (isteğe bağlı)
-resv_add	Bron et
-resv_seat	Oturduldu
-resv_none	Yaxınlaşan bron yoxdur.
-guests_word	qonaq
-delivery_by_ph	Çatdıran (kuryer və ya heyət adı)
-kitchen_all_day	İndi bişiriləcək: {items}
-split_bill	Hesabı böl
-split_go	Ayrı hesab yarat
 cancel	Ləğv
 opening_client	Klient açılır…
 preparing_desk	Masa hazırlanır…
 opening_server	Server açılır…
 creating_server	Server yaradılır…
-split_help	Müştərinin ödədiyi elementlərə toxunun · Seçilmiş {n}
-split_send_first	Əvvəlcə slip göndərin — yalnız arxa ofisdə olan əşyalar ayrıca hesaba keçə bilər
-split_pick_some	Əvvəlcə ayrı hesab üçün maddələrə toxunun
-split_done	Ayrı-ayrı hesab edilir - o, bu sayğacın yanında mərtəbədədir
-split_marked	ayrı hesab
 order_empty_pick	Sifariş boş — elementləri seçmək üçün yuxarıdakı elementləri əlavə et üzərinə klikləyin.
 add_dishes	Elementlər əlavə edin
 order_so_far	Bu sifarişdə: {n} · {total}
@@ -1282,24 +1007,8 @@ pick_done_dd	Bitdi · {label}
 printer_route_mode	Bu yerdə bir neçə printer olsa
 printer_mode_first	Birinci işləyən
 printer_mode_all	Hamısına çap et
-kot_show_area	Zona
-kot_hide_area	Zonanı gizlət
-kot_show_item_hdr	Məhsul · Say
-kot_hide_item_hdr	Sütunları gizlət
-kot_show_title	Başlıq sətri
-kot_hide_title	Başlığı gizlət
-kot_field_order	Çap sırası
 kot_field_up	Yuxarı köçür
 kot_field_down	Aşağı köçür
-kot_field_cycle	Növbətini seç
-kot_field_select	Növbətini seç
-kot_field_time	Vaxt
-kot_field_kot_no	Bilet nömrəsi
-kot_field_area	Zona
-kot_field_table	Kassa
-kot_field_shop	Mağaza adı
-kot_field_waiter	Heyət
-kot_field_station	Post
 app_template_blurb_extra	Həmçinin: Sahib Zahir, Admin Asif, Kassir Nəvaz; ön yan panel; 4 saatdan sonra tarix; Bu gün soyun; kompakt hesab.
 dishes_n	{n} maddələr
 recipe_ph	Resept (isteğe bağlı - piştaxtada istifadə olunmur)
@@ -1309,8 +1018,6 @@ low_stock_alert	Azalır — tezliklə alın: {items}
 unpriced_note	Elementlərinizdəki {n} elementlərinin hələ qiyməti yoxdur — siz təyin edənə qədər onlar 0-dan hesablanır.
 show_unpriced	Yalnız qiyməti olmayan əşyaları göstərin
 show_all_dishes	Bütün elementləri göstərin
-role_waiter	Kassir
-role_kitchen	Mağaza
 role_title_rest_ph	Vəzifə adı (məs. Kapitan, Baş aşpaz)
 preset_help_rest	Kassir: satış. Menecer: satış + məhsullar + etibarsız etmə/düzəliş.
 kind_raw	Mağaza istifadəsi üçün alınıb

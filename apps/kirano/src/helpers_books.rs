@@ -1,7 +1,3 @@
-/// "5 × Thali · 3 × Chaas": what the kitchen still has to cook.
-/// What the owner must hear about the books' safety on the device that
-/// holds them: a failing backup, none for days, a disk filling up. Empty
-/// when all is well.
 /// The shop's own words for a printer test page — its saved name and the
 /// app's language — so the owner sees their script print, not only English.
 fn test_page_own_words(st: &AppState) -> String {
@@ -13,34 +9,15 @@ fn test_page_own_words(st: &AppState) -> String {
     lines.into_iter().filter(|l| !l.is_empty()).map(|l| l + "\n").collect()
 }
 
-fn parse_printer_route_key(key: &str) -> print_share::RouteKey<'_> {
-    let key = key.trim();
-    if key == "bill" {
-        print_share::RouteKey::Bill
-    } else if let Some(rest) = key.strip_prefix("kot:") {
-        print_share::RouteKey::Kot { station_id: rest }
-    } else {
-        print_share::RouteKey::Bill
-    }
+fn parse_printer_route_key(_key: &str) -> print_share::RouteKey {
+    print_share::RouteKey::Bill
 }
 
 /// What the owner sees in the route field — never a raw `kot:<uuid>`.
-fn printer_route_display_name(
-    key: &str,
-    stations: &[domain::KitchenStation],
-    t: impl Fn(&str) -> String,
-) -> String {
+fn printer_route_display_name(key: &str, t: impl Fn(&str) -> String) -> String {
     let key = key.trim();
-    if key == "bill" {
+    if key == "bill" || key.is_empty() {
         return t("route_bill");
-    }
-    if key == "kot:" || key.is_empty() {
-        return t("route_default_kitchen");
-    }
-    if let Some(id) = key.strip_prefix("kot:") {
-        if let Some(s) = stations.iter().find(|s| s.id == id) {
-            return s.name.clone();
-        }
     }
     key.to_string()
 }
@@ -171,9 +148,9 @@ fn virtual_printers_list_rows(
     rows
 }
 
-/// Checklist rows: every virtual printer; checked = attached to focused station/place.
+/// Checklist rows: every virtual printer; checked = attached to the focused place.
 /// `subtitle` = virtual printer id. Checked action = `dont_use` (tap clears); else `use`.
-fn station_virtual_printer_suggest_rows(
+fn route_virtual_printer_suggest_rows(
     draft: &print_share::DevicePrinters,
     route_key: &str,
     t: impl Fn(&str) -> String,
@@ -220,8 +197,8 @@ fn station_virtual_printer_suggest_rows(
     rows
 }
 
-/// Toggle VP on the focused station route (`printer_route_key`).
-fn toggle_station_virtual_printer(st: &mut AppState, vp_id: &str) -> Result<String, String> {
+/// Toggle VP on the focused route (`printer_route_key`).
+fn toggle_route_virtual_printer(st: &mut AppState, vp_id: &str) -> Result<String, String> {
     if st.device_role == DeviceRole::Client {
         return Err(st.t("printers_host_only"));
     }
@@ -244,8 +221,8 @@ fn toggle_station_virtual_printer(st: &mut AppState, vp_id: &str) -> Result<Stri
     }
 }
 
-/// Reorder attached VPs on the focused station from checklist row indices.
-fn reorder_station_virtual_priority(st: &mut AppState, from_row: usize, to_row: usize) -> bool {
+/// Reorder attached VPs on the focused route from checklist row indices.
+fn reorder_route_virtual_priority(st: &mut AppState, from_row: usize, to_row: usize) -> bool {
     if st.device_role == DeviceRole::Client {
         return false;
     }
@@ -282,121 +259,10 @@ fn reorder_station_virtual_priority(st: &mut AppState, from_row: usize, to_row: 
     true
 }
 
-/// Bill + each kitchen station as (route key, label, selected) for the place
+/// The Bill place as (route key, label, selected) for the place
 /// dropdown (`SuggestField::PrinterPlace`).
-fn printer_place_choices(
-    stations: &[domain::KitchenStation],
-    focus: &str,
-    t: impl Fn(&str) -> String,
-) -> Vec<(String, String, bool)> {
-    let mut out = Vec::new();
-    out.push(("bill".into(), t("route_bill"), focus.trim() == "bill"));
-    for s in stations.iter().take(ROUTE_PLACE_BTNS.len().saturating_sub(1)) {
-        let key = format!("kot:{}", s.id);
-        let selected = focus.trim() == key;
-        out.push((key, s.name.clone(), selected));
-    }
-    out
-}
-
-/// Kitchen destinations for unsent cart lines: `(station display name, line count)`.
-/// Order follows `priority` station ids when provided; else first-seen.
-/// Empty station → `unassigned` label (caller supplies it).
-fn kot_order_ids(fmt: &print_share::KotSlipFormat) -> Vec<String> {
-    if fmt.field_order.is_empty() {
-        vec![
-            "time".into(),
-            "kot_no".into(),
-            "area".into(),
-            "table".into(),
-            "shop".into(),
-            "waiter".into(),
-            "station".into(),
-        ]
-    } else {
-        fmt.field_order.clone()
-    }
-}
-
-fn ensure_kot_field_order(fmt: &mut print_share::KotSlipFormat) {
-    if fmt.field_order.is_empty() {
-        fmt.field_order = kot_order_ids(fmt);
-    }
-}
-
-/// Human label for a KOT field-order id (Settings list — not raw `kot_no`).
-fn kot_field_order_label(id: &str, t: &impl Fn(&str) -> String) -> String {
-    match id {
-        "time" => t("kot_field_time"),
-        "kot_no" => t("kot_field_kot_no"),
-        "area" => t("kot_field_area"),
-        "table" => t("kot_field_table"),
-        "shop" => t("kot_field_shop"),
-        "waiter" => t("kot_field_waiter"),
-        "station" => t("kot_field_station"),
-        other => other.to_string(),
-    }
-}
-
-fn pending_kot_destinations(
-    products: &[domain::Product],
-    stations: &[domain::KitchenStation],
-    lines: &[domain::CartLine],
-    unassigned: &str,
-) -> Vec<(String, usize)> {
-    pending_kot_destinations_ordered(products, stations, lines, unassigned, &[])
-}
-
-fn pending_kot_destinations_ordered(
-    products: &[domain::Product],
-    stations: &[domain::KitchenStation],
-    lines: &[domain::CartLine],
-    unassigned: &str,
-    priority: &[String],
-) -> Vec<(String, usize)> {
-    let mut out: Vec<(String, String, usize)> = Vec::new(); // id, name, count
-    for line in lines.iter().filter(|l| !l.is_sent() && !l.hold_send) {
-        let sid = line.kitchen_station_id(products);
-        let name = if sid.is_empty() {
-            unassigned.to_string()
-        } else {
-            // Never relabel a real station id as "Kitchen (no station)" —
-            // that lied on Clients whose station list lagged the menu and
-            // made Send look unassigned while paper still hit a KOT printer.
-            stations
-                .iter()
-                .find(|s| s.id == sid)
-                .map(|s| s.name.clone())
-                .unwrap_or_else(|| sid.to_string())
-        };
-        match out.iter_mut().find(|(id, _, _)| id == sid) {
-            Some((_, _, n)) => *n += 1,
-            None => out.push((sid.to_string(), name, 1)),
-        }
-    }
-    if !priority.is_empty() {
-        let mut ordered = Vec::with_capacity(out.len());
-        for id in priority {
-            if let Some(i) = out.iter().position(|(sid, _, _)| sid == id) {
-                ordered.push(out.remove(i));
-            }
-        }
-        // Unassigned (empty id) and any unknown stations keep relative order after.
-        ordered.append(&mut out);
-        out = ordered;
-    }
-    out.into_iter().map(|(_, name, n)| (name, n)).collect()
-}
-
-/// Short line for the Send button / status: kitchen names only
-/// (`Tandoor · Cold`). Counts live on the station list rows, not here.
-fn format_kot_destinations(dests: &[(String, usize)]) -> String {
-    dests
-        .iter()
-        .map(|(name, _)| name.as_str())
-        .filter(|n| !n.is_empty())
-        .collect::<Vec<_>>()
-        .join(" · ")
+fn printer_place_choices(focus: &str, t: impl Fn(&str) -> String) -> Vec<(String, String, bool)> {
+    vec![("bill".into(), t("route_bill"), focus.trim() == "bill")]
 }
 
 fn printers_found_line(t: impl Fn(&str) -> String) -> String {
@@ -459,7 +325,7 @@ fn printer_display_name(p: &print_share::NamedPrinter, t: impl Fn(&str) -> Strin
 }
 
 /// The printers Find saved on this device (read-only names). Selection for a
-/// test page / Test KOT is the StationCheckList under the list.
+/// test page / Test KOT is the CheckList under the list.
 fn printers_pool_rows(
     draft: &print_share::DevicePrinters,
     _selected: Option<&str>,
@@ -529,7 +395,7 @@ fn toggle_test_printer(st: &mut AppState, printer_id: &str) -> Result<String, St
     }
 }
 
-/// Settings → areas / stations / tax rates On/Off (same pattern as units).
+/// Settings → tax rates On/Off (same pattern as units).
 /// Value column uses short On/Off pills (tap the row to flip).
 fn sibling_pickers_rows(store: &Store, t: impl Fn(&str) -> String) -> Vec<ReportRow> {
     let on_off = |on: bool| {
@@ -539,36 +405,20 @@ fn sibling_pickers_rows(store: &Store, t: impl Fn(&str) -> String) -> Vec<Report
             format!("○ {}", t("unit_picker_off"))
         }
     };
-    let mut rows = Vec::new();
-    rows.push(ReportRow::Head("Areas".into()));
-    for (name, on) in store.list_picker_areas().unwrap_or_default() {
-        rows.push(ReportRow::Kv(name, on_off(on)));
-    }
-    rows.push(ReportRow::Head("Stations".into()));
-    for s in store.list_stations().unwrap_or_default() {
-        rows.push(ReportRow::Kv(s.name, on_off(s.picker_enabled)));
-    }
-    rows.push(ReportRow::Head("Tax rates".into()));
-    for r in store.list_tax_rates().unwrap_or_default() {
-        rows.push(ReportRow::Kv(r.name, on_off(r.picker_enabled)));
-    }
-    rows
+    store
+        .list_tax_rates()
+        .unwrap_or_default()
+        .into_iter()
+        .map(|r| ReportRow::Kv(r.name, on_off(r.picker_enabled)))
+        .collect()
 }
 
-/// What each `sibling_pickers_rows` row toggles, index for index (None for
-/// the headings): `area:<name>`, `station:<id>`, `tax:<id>`. The rows show
-/// names only — they used to read "tax:<uuid> · GST 5%" so the tap handler
-/// could parse its target back out of the text.
+/// What each `sibling_pickers_rows` row toggles, index for index:
+/// `tax:<id>`. The rows show names only — they used to read
+/// "tax:<uuid> · GST 5%" so the tap handler could parse its target back out
+/// of the text.
 fn sibling_picker_keys(store: &Store) -> Vec<Option<String>> {
-    let mut keys = vec![None];
-    for (name, _) in store.list_picker_areas().unwrap_or_default() {
-        keys.push(Some(format!("area:{name}")));
-    }
-    keys.push(None);
-    for s in store.list_stations().unwrap_or_default() {
-        keys.push(Some(format!("station:{}", s.id)));
-    }
-    keys.push(None);
+    let mut keys = Vec::new();
     for r in store.list_tax_rates().unwrap_or_default() {
         keys.push(Some(format!("tax:{}", r.id)));
     }
@@ -676,16 +526,6 @@ fn backup_warning(st: &AppState) -> String {
     out.join(" ")
 }
 
-fn kitchen_counts_line(store: &Store) -> String {
-    store
-        .kitchen_all_day()
-        .unwrap_or_default()
-        .iter()
-        .map(|(name, milli)| format!("{} × {name}", milli_as_count(*milli)))
-        .collect::<Vec<_>>()
-        .join(" · ")
-}
-
 /// 2000 → "2", 1500 → "1.5" (order quantities in thousandths).
 fn milli_as_count(milli: i64) -> String {
     if milli % 1000 == 0 {
@@ -695,37 +535,3 @@ fn milli_as_count(milli: i64) -> String {
     }
 }
 
-
-/// Turn a typed/picked label (or a stored key) into `bill` / `kot:` / `kot:<id>`.
-fn resolve_printer_route_key(
-    typed: &str,
-    stations: &[domain::KitchenStation],
-    t: impl Fn(&str) -> String,
-) -> String {
-    let typed = typed.trim();
-    if typed.is_empty() {
-        return "bill".into();
-    }
-    if typed == "bill" || typed == "kot:" || typed.starts_with("kot:") {
-        return typed.to_string();
-    }
-    let bill = t("route_bill");
-    let unassigned = t("route_default_kitchen");
-    if typed.eq_ignore_ascii_case(&bill) {
-        return "bill".into();
-    }
-    if typed.eq_ignore_ascii_case(&unassigned)
-        || typed.eq_ignore_ascii_case("unassigned")
-        || typed.eq_ignore_ascii_case("unassigned items (no station)")
-    {
-        return "kot:".into();
-    }
-    if let Some(s) = stations
-        .iter()
-        .find(|s| s.name.eq_ignore_ascii_case(typed))
-    {
-        return format!("kot:{}", s.id);
-    }
-    // Unknown label — keep editing Bill rather than inventing a key.
-    "bill".into()
-}

@@ -13,10 +13,8 @@ fn add_menu_item(&mut self, cx: &mut Cx) {
         let modifiers_text = self.ui.text_input(cx, ids!(menu_modifiers_input)).text();
         let variations_text = self.ui.text_input(cx, ids!(menu_variations_input)).text();
         let group_text = self.ui.text_input(cx, ids!(menu_group_input)).text();
-        let area_prices_text = self.ui.text_input(cx, ids!(menu_area_prices_input)).text();
         let schedule_text = self.ui.text_input(cx, ids!(menu_schedule_input)).text();
         let recipe_text = self.ui.text_input(cx, ids!(menu_recipe_input)).text();
-        let station_text = self.ui.text_input(cx, ids!(menu_station_input)).text();
         let result = (|| -> Result<(), String> {
             let mut st = app_state().lock().unwrap();
             let updating = st.editing_product_id.is_some();
@@ -83,8 +81,6 @@ fn add_menu_item(&mut self, cx: &mut Cx) {
                 domain::ModifierGroup::parse_human_list(&modifiers_text, &currency)?;
             let variations = domain::ModifierOption::parse_human_list(&variations_text, &currency)
                 .map_err(|e| e.replace("Modifier", "Size"))?;
-            let area_prices = domain::ModifierOption::parse_human_list(&area_prices_text, &currency)
-                .map_err(|e| e.replace("Modifier", "Area"))?;
             let schedule = domain::ScheduleWindow::parse_human_list(&schedule_text, &currency)?;
             let resale = st.form_resale;
             let msg = st.books_op(BooksOp::SaveMenuItem {
@@ -100,10 +96,8 @@ fn add_menu_item(&mut self, cx: &mut Cx) {
                 category_name: typed.to_string(),
                 category_photo_bytes,
                 category_photo_filename,
-                station_name: station_text.trim().to_string(),
                 modifier_groups,
                 variations,
-                area_prices,
                 schedule,
                 group_name: group_text.trim().to_string(),
                 recipe_text,

@@ -80,28 +80,6 @@ applied	הוחל
 note_ph	הערה (לא חובה)
 rounded	מעוגל
 split	פצל
-send_kot	שלח תלוש
-send_kot_to	שלח → {kitchens}
-send_kot_again	הוסף פריטים לשלוש הבא
-send_kot_held	פריטים מוחזקים - בטל את ההחזקה כדי לשלוח
-reprint_kot	הדפס את הנבחרים שוב
-reprint_kot_ok	פריטי {n} מודפסים שוב · תלוש {slips} → {kitchens}
-reprint_kot_needed	שלח תחילה תלוש - לאחר מכן כלול תרופות והדפיס שוב את הנבחרות
-reprint_kot_none_selected	כל פריט שנשלח נדלג - הקש על בהדפסה על אלה כדי להדפיס מחדש
-reprint_kot_client	הדפס שוב ({n}) עבור {place} שנשלח - מכשיר החנות מדפיס אותו
-print_cancelled_kot	הדפס את כל המבוטלות
-print_cancelled_kot_ok	פריטים מודפסים {n} בוטלו · תלוש {slips} → {kitchens}
-print_cancelled_kot_needed	פתח תחילה שולחן עם פריטים שבוטלו
-print_cancelled_kot_none	אין פריטים מבוטלים בהזמנה זו
-print_cancelled_kot_client	ההדפסה בוטלה ({n}) עבור {place} שנשלחה - מכשיר החנות מדפיס אותה
-kot_banner	סרט הסוג
-kot_banner_ph	סרט (ריק = אין)
-kot_item_prefix	קידומת פריט
-kot_item_prefix_ph	למשל [מבוטל]
-kot_strike	שם הפריט
-kot_strike_note	הערת הפריט
-kot_strike_on	פועל
-kot_strike_off	כבוי
 bill_item_layout	פריסת פריט
 bill_item_layout_columns	עמודות
 bill_item_layout_stacked	מוערם
@@ -130,8 +108,6 @@ bill_item_gap_em	רווח (em)
 bill_item_qty_min	כמות מינ׳ (em)
 bill_item_price_min	מחיר מינ׳ (em)
 bill_item_amount_min	סכום מינ׳ (em)
-kot_item_qty_width	עמודת כמות
-kot_item_num_align	יישור כמות
 bill_total_qty_label	תווית כמות כוללת
 bill_total_subtotal_label	תווית ביניים
 bill_total_grand_label	תווית סה״כ
@@ -143,36 +119,9 @@ bill_item_piece_off	כבוי
 bill_total_qty	כמות כוללת
 bill_total_subtotal	ביניים
 bill_total_grand	סה״כ
-reprint_incl	בהדפסה
-reprint_skip	דלג
-reprint_skip_meta	דלג על הדפסת שחזור
-kot_dest_hint	מודפס במדפסות ששייכתם אל {kitchens} בהגדרות → מדפסות
-kot_sent_hint	השליחה האחרונה עברה ל-{kitchens}. הקש כדי להוסיף פריטים עבור החשבון הבא - או הדפס שוב תלוש עבור אותו אחד.
-kot_sent_printing	שובר נשלח אל {kitchens} - הדפסה
-kot_sent_not_printed	תלוש נשלח אל {kitchens} אך לא מודפס: {why}. ספר לחנות, ואז תקן את המדפסת והדפיס אותה שוב.
-kot_sent_screen	תלוש נשלח אל {kitchens}
-kot_queued_shop	החלק עבור {place} → {kitchens} נשמר; מכשיר החנות מדפיס אותו
-kot_job_label	החלק עבור {place} → {kitchens}
-kot_job_reached	החלקה עבור {place} הגיעה ל-{kitchens}
 kot_unassigned	לא הוקצה
-kot_unassigned_held	פריטי {n} החזיקו ללא תחנה - בטל את ההחזקה בקו לשליחה
-kot_station_ph	עמדה
-kot_station_dd	עמדה
-kot_station_dd_n	תחנה · {stations}
-kot_set_station	השתמש בעמדה הזו
-kot_station_applied	סט תחנה על פריטי {n}: {station}
-kot_station_cleared	התחנה נוקתה מפריטי {n}: {station}
-kot_station_needed	תחילה בחר מדור מרפא
-kot_station_not_allowed	אסור להשתמש בסעיף: {station}
-kot_station_none	עדיין אין תחנות - לא בשימוש בחנות דלפק (הגדרות → אזורים במידת הצורך)
 pos_tab_items	פריטים שנוספו
 pos_tab_payment	תשלום
-hold_send	החזק
-hold_send_on	מוחזק
-hold_send_meta	הוחזק - לא בתלוש הזה
-station_remove	הסר עמדה
-station_remove_ph	הקישו על עמדה ברשימה כדי להסיר אותה
-station_removed	העמדה הוסרה: {name}
 settings_hub_title	הגדרות
 settings_hub_help	פתחו אזור אחד בכל פעם — פחות גלילה, בחירות ברורות יותר.
 settings_back	חזרה
@@ -181,12 +130,10 @@ settings_sec_country	מדינה ומס
 settings_sec_tills	מכשירים אחרים
 settings_sec_brand	המותג שלכם
 settings_sec_units	יחידות והמרות
-settings_sec_pickers	אזורים · עמדות · שערי מס
+settings_sec_pickers	שערי מס
 settings_sec_printers	מדפסות
 settings_sec_bill	פורמט Bill & Slip
 settings_sec_selling	מבצעים ומכירות
-bill_kot_tab_bill	חשבון
-bill_kot_tab_kot	לְהַחלִיק
 settings_sec_alerts	התראות
 alerts_help	כמה זמן הודעות מצב נשארות על המסך עבורכם (הכניסה הזו).
 snack_secs_ph	שניות (3–60, ברירת מחדל 10)
@@ -237,8 +184,6 @@ counter	דלפק
 dine_in	דלפק
 takeaway	לקחת
 order	הזמנה
-tables	מונים
-kitchen	קטעים
 sales	מכירות
 sales_refunds	מכירות והחזרים
 day_close	סגירת יום
@@ -266,10 +211,6 @@ zero_sales_on	אפשר ₹0
 zero_sales_off	דרוש מחיר
 zero_sales_saved_on	מכירות בערך אפס מותרות
 zero_sales_saved_off	למכירות חייב להיות מחיר מעל ₹0
-floor_areas_help	אזורים הם חדרים או אזורים על הרצפה (דיין, חבילה, AC ...). הוסף אזור תחילה, ואז הכנס בו מונים - כל אזור הוא קבוצה נפרדת על הרצפה.
-area_new_ph	אזור / חדר חדש (למשל מיזוג, גינה)
-add_area	הוסף אזור
-area_added	אזור "{name}" מוכן - הוסף אליו מונים
 no_favorites	עדיין אין מועדפים — הוסיפו פריטים מהרשימה למטה.
 add_to_bill	הוסף לחשבון
 added	נוסף
@@ -280,19 +221,9 @@ chip_missing_customer	הלקוח שנבחר חסר — בחרו שוב
 chip_no_customer	עדיין אין לקוח — הקלידו שם, ואז הקישו אשראי
 credit_summary_fmt	{} לקוחות · אשראי פתוח {} · מקדמות שנשמרו {}
 recent_label	אחרונים:
-kot_new_waiting	חדש — ממתין
-kot_preparing	בהכנה
-kot_ready_serve	מוכן — הגישו
-kot_done_cap	בוצע
-kot_cancelled	בוטל
-kot_start_btn	התחל
-kot_mark_ready	סמן מוכן
-kot_done_btn	בוצע
-table_free	פנוי — הקישו כדי להתחיל הזמנה
 start_order	התחל הזמנה
 open_bill	פתח חשבון
 collect_payment	גבה תשלום
-table_running	פעיל
 payment_pending	תשלום ממתין
 collect_at_counter	גבו בדלפק
 inventory	מלאי
@@ -325,7 +256,6 @@ ok	OK
 this_shop	שרת
 extra_till	מסוף
 off	כבוי
-tables_kitchen	פריסת חנות
 server	שרת
 client	מסוף
 language_currency	שפה ומטבע
@@ -367,8 +297,6 @@ add_item_plain	הוסף פריט
 add_note	הוסף הערה
 add_opening_balance	הוסף יתרת פתיחה
 add_staff	הוסף איש צוות
-add_station	הוסף עמדה
-add_table	הוסף שולחן
 add_unit	הוסף יחידה
 add_use_name	הוסף / השתמש בשם הזה
 allow_extra_tills	אפשר קופות נוספות
@@ -421,7 +349,6 @@ share_whatsapp	שתף ב־WhatsApp
 lan_pages_heading	דפי לקוחות ב-Wi-Fi
 lan_pages_help	ב-Wi-Fi של החנות הזו, דפי לקוחות עובדים עבור לוח התצוגה והמשוב. אנשים בנתונים ניידים זקוקים לענן מאוחר יותר. מסוף כרטיס או קישור תשלום הם אופציונליים ולעולם אינם חוסמים את הדלפק.
 diag_send_heading	שתף מחוץ למכשיר הזה
-kot_dest_heading	עמדה
 optional_login_heading	כניסה אופציונלית
 rights_heading	הרשאות
 ops_panel	פעולות מקומיות
@@ -448,28 +375,6 @@ till_voucher_amt_ph	סכום השובר (ריק = הכול)
 till_wallet_topup_ph	סכום טעינת הארנק
 till_voucher_issue_amt_ph	סכום שובר להנפקה
 till_voucher_issue_code_ph	קוד שובר חדש
-split_evenly	פצל שווה בשווה
-waitlist	רשימת המתנה
-fire_course	השלב הבא
-hold_item	החזק
-waiter_call	תתקשר לקופאית
-waitlist_add	הוסף לרשימת ההמתנה
-floor_view_grid	רשת
-floor_view_layout	פריסה
-floor_layout_x	X
-floor_layout_y	Y
-floor_layout_w	W
-floor_layout_h	H
-floor_layout_save	שמור פריסה
-floor_layout_open	פתח שולחן
-floor_layout_edit	ערוך פריסה
-floor_layout_pick	הקישו על שולחן כדי לערוך את הפריסה שלו
-floor_layout_saved	הפריסה נשמרה
-floor_layout_nudge_left	← 20
-floor_layout_nudge_right	→ 20
-floor_layout_nudge_up	↑ 20
-floor_layout_nudge_down	↓ 20
-sibling_pickers_help	הקישו פועל/כבוי כמו ביחידות — הסתירו אזורים, עמדות ושערי מס מבוררי היום-יום; ברירות המחדל של החבילה נשארות.
 bulk_price_apply	החל מחיר מרוכז
 card_terminal_optional	מסוף כרטיס / קישור תשלום (אופציונלי כשיש אינטרנט)
 copy_report	העתק דוח
@@ -495,7 +400,6 @@ import_day	ייבא יום
 import_items_csv_plain	ייבא CSV של פריטים…
 import_parties_csv	ייבא CSV של צדדים…
 item_name	שם הפריט
-kitchen_printing	מדפסות
 login_id_ph	שם משתמש
 mark_cleared	סמן כמותאם
 new_party_clear	צד חדש (נקה טופס)
@@ -565,15 +469,6 @@ show	הצג
 spreadsheet_csv	גיליון (CSV)
 start_fresh	התחל מחדש
 stop_extra_tills	עצור קופות נוספות
-floor_cols_ph	עמודות
-floor_cols_fit	התאם למסך
-floor_cols_fit_sub	{n} מתאימים כאן
-floor_cols_fits	מתאים
-floor_cols_scroll	גולל לצדדים
-floor_cols_min	עמודות: לפחות 1 — או השאירו ריק כדי להתאים למסך
-floor_zoom_auto	Auto
-floor_zoom_out	הקטן
-floor_zoom_in	הגדל
 backup_auto	גיבוי אוטומטי כל יום · האחרון {when} · 14 הימים האחרונים נשמרים ב־{dir}.
 backup_auto_none	גיבוי אוטומטי כל יום — הראשון רץ בעוד רגע.
 backup_copy_to	עותקים הולכים גם אל {dir}.
@@ -591,7 +486,6 @@ new_pair_code	קוד זיווג חדש
 pair_finishing	מסיים זיווג… מחיל את ספרי החנות
 pair_opening	פותח את הקופה…
 pair_copied	קוד הזיווג הועתק
-kot_waiting	ממתין לשליחה
 lan_offline_waiting	שרת החנות לא נגיש · {n} ממתינים
 lan_connecting	מתחבר לחנות…
 lan_live	חי
@@ -633,7 +527,6 @@ printers_routes_help	מצא מדפסות שמערכת ההפעלה כבר מכי
 printer_assign_dd	מדפסת אמיתית: {place}
 printer_assign_pick	בחר מדפסת אמיתית
 printer_profile_heading	פריסה
-printer_send_heading	משלוח
 vp_delivery_heading	משלוח
 vp_delivery_help	כיצד מדפסת וירטואלית זו שולחת עבודות - מסמך מערכת הפעלה, בייטים גולמיים או ESC/POS. תוכן ההחלקה (גודל סוג, גלישה, שוליים) נקבע לפי פורמט החשבון / הסליק, לא כאן.
 vp_type_size_heading	גודל אות
@@ -677,23 +570,13 @@ virtual_draft_send	הערך נקבע למדפסת הווירטואלית הבא�
 virtual_need_real	בחרו קודם מדפסת אמיתית
 virtual_need_select	בחרו מדפסת וירטואלית למחיקה
 real_printer_selected	נבחר: {name}
-station_group_heading	מדפסות וירטואליות
-station_group_apply	מחק מדפסת וירטואלית
-station_group_applied	נמחק
-station_group_empty	בחרו מדפסת וירטואלית
-station_group_name_ph	שם מדפסת וירטואלית (לא חובה)
-station_group_save	צור מדפסת וירטואלית
-station_group_saved	המדפסת הווירטואלית נשמרה
-station_manage_heading	הוסף או הסרה של מדור מרפא
 printers_routes_heading	איפה דברים מודפסים
 route_pick_heading	מקום
 route_editing	עורכים: {name}
 route_assigned	נוסף {printer} אל {place}
 route_already_assigned	כבר במקום הזה: {printer}
-route_removed	הוסר {printer} מ־{place}
 route_cleared	נוקה {name}
 route_assigned_empty	אין במקום הזה
-route_tap_remove	הקישו להסרה
 route_tap_select	הקישו לבחירה
 route_tap_selected	נבחר
 route_pick_printer_first	הקישו קודם על מדפסת
@@ -714,35 +597,17 @@ printer_format_custom	פרופיל מותאם חדש
 printer_format_custom_label	מותאם
 printer_format_custom_added	פרופיל מותאם נוסף למקום הזה
 add_printer	הוסף מדפסת
-remove_printer	הסר
 route_pick_ph	שטר או מדור מרפא
 route_bill	חשבון
-route_default_kitchen	אין תחנה (פריטים שלא הוקצו)
-route_kot_station	עמדה
 route_dont_print	בלי מדפסת
-stations_heading	עמדות
-stations_help	חלקי המרקחת מקבצים את התרופות ואת המדפסות עבור אותו חלק של החנות. צרף מדפסות מהגדרות ← מדפסות, הגדר את סדר נסיון, ואז קודם זה עובד או הדפס על כולם. השינויים נשמרים תוך כדי תנועה.
-station_print_heading	מדפסות לעמדה הזו
-station_print_help	בחר תחנה, ולאחר מכן צרף מדפסת אחת או יותר. ↑↓ קובע סדר ניסיון. הראשון שעובד מפסיק אחרי ההצלחה הראשונה; הדפס על כל השליחה לכל מדפסת מחוברת.
-station_print_pick_ph	עמדה לקביעת מדפסות
 station_print_pick_first	תחילה בחר מדור מרפא
-station_print_editing	עורכים מדפסות עבור “{name}”
-station_vps_dd	מדפסות לעמדה הזו
-station_vps_dd_n	{n} מדפסות · הקישו לשינוי
 station_vps_empty	עדיין אין מדפסות — מצאו אותן תחת הגדרות → מדפסות
 bill_printers_dd	מדפסות לחשבון
 bill_printers_dd_n	{n} מדפסות לחשבון · הקישו לשינוי
-job_layout	פריסה
-job_delivery	איך העבודה נשלחת
-job_delivery_help	מסמך מערכת הפעלה, בייטים גולמיים או ESC/POS. החשבון והכרטיס שומרים כל אחד משלו. כל אחת מהעבודות יכולה לעבור לכל מדפסת ש-Find שמרה.
 station_vp_attached	המדפסת צורפה
 station_vp_detached	המדפסת הוסרה מהעמדה
-station_print_summary	{mode} · {n} מדפסות
-station_print_summary_none	עדיין אין מדפסות בעמדה הזו — היא לא תדפיס
-stations_none	אין עדיין תחנות - הוסף אחת למטה. תחנות אינן בשימוש בחנות דלפק - השאר ריקות.
 route_up	למעלה
 route_down	למטה
-route_remove	הסר
 route_clear	נקה
 save_printers	שמור מדפסות
 print_test_page	הדפס דף בדיקה
@@ -751,23 +616,15 @@ test_page_no_printer	אין מדפסת עבור {place} — צרפו אליו מ
 test_page_pick_first	בחרו קודם מדפסת/ות לדף בדיקה — ואז הדפס דף בדיקה
 test_printers_dd	מדפסות לדף בדיקה
 test_printers_dd_n	{n} מדפסות לדף בדיקה · הקישו לשינוי
-kot_test_printers_dd	מדפסות להדפסת ניסיון
-kot_test_printers_dd_n	מדפסות {n} להדפסת ניסיון · הקש כדי לשנות
 test_printer_picked	בדיקה ב: {name}
 test_printer_cleared	לא בודקים ב: {name}
 test_page_sent_n	דף הבדיקה נשלח אל {n} מדפסות
-test_kot_pick_first	בחר תחילה מדפסות להדפסת ניסיון - ולאחר מכן הדפסת ניסיון
-test_kot_sent_n	הדפסת ניסיון נשלחה למדפסות {n}
-cancel_pick	סמן
-cancel_pick_on	מסומן
-cancel_pick_meta	מסומן לביטול
 batch_cancel	בטל את המסומנים
 batch_cancel_n	בטל את המסומנים ({n})
 batch_cancel_none	סמן תחילה פריט אחד או יותר שנשלח - ולאחר מכן ביטול מסומן
 batch_cancel_title	ביטול תרופות מסומנות - סיבה אחת, תלוש ביטול אחד לכל סעיף
 batch_cancel_ok	פריטים {n} בוטלו · {slips} ביטול תלוש(ים) → {kitchens}
 batch_cancel_ok_noprint	פריטי {n} בוטלו - ההדפסה האוטומטית כבויה, כך שאין תלוש ביטול
-no_printer_kitchen_station	אין מדפסת לתחנה הזו
 printers_saved	נשמר
 test_page_sent	דף הבדיקה נשלח — בדקו את המדפסת
 test_page_sent_one	דף הבדיקה נשלח אל {name} — בדקו את המדפסת הזו
@@ -783,10 +640,7 @@ cancelled	בוטל
 printers_tap_find	הקישו מצא כדי לרשום מדפסות שהמכשיר הזה יכול להשתמש בהן.
 printers_none_found	לא נמצא כלום — הקלידו שם מדפסת מערכת או IP (למשל 192.168.1.50).
 printer_from_find	נוסף {name}
-kot_printer_ph	מדפסת עבור תלושים
 bill_printer_ph	מדפסת לחשבונות
-kot_print_on	הדפסה אוטומטית של כרטיסים: פועל
-kot_print_off	הדפסה אוטומטית של כרטיסים: כבוי
 queue_refused	לא התקבל על ידי החנות ({n}) — בדקו כל אחד בדלפק:
 clear_not_accepted	נבדק — נקה את הרשימה הזו
 device_name_ph	שם המכשיר הזה
@@ -797,7 +651,6 @@ backup_failed	הגיבוי האוטומטי האחרון נכשל: {e}
 backup_overdue	אין גיבוי כבר {n} ימים — השאירו את היישום פתוח במכשיר הזה כדי שיוכל לגבות.
 disk_low	רק {mb} MB פנויים במכשיר הזה — הגיבויים ייכשלו בקרוב. פנו קצת מקום.
 last_seen_devices	נראה לאחרונה: {time}
-sync_interval	סנכרון כל {secs} שנ׳
 connection_to_shop	חיבור לחנות
 supplier_name_ph	שם הספק (או הצד)
 supplier_ph	ספק
@@ -860,7 +713,6 @@ fresh_book_tabiyat	טרי = קטלוג ריק (הוסף פריטים מאוחר 
 fresh_selected	חדש נבחר — הקטלוג נשאר ריק. הקישו בוצע כשמוכנים.
 gross_word	ברוטו
 how_start	איך אתם רוצים להתחיל?
-kot_print_help_tabiyat	לא בשימוש בחנות דלפק.
 later_country_pack	אחר כך: הגדרות → החילו את חבילת המדינה שלכם לתוויות מס ותשלום.
 local_badge	מקומי
 mix_type_hint_tabiyat	פצלו בין מזומן / UPI / כרטיס / אשראי אם צריך. אשראי דורש לקוח למעלה.
@@ -911,8 +763,6 @@ staff_copy_need_source	בחרו של מי ההגדרה להעתקה
 staff_copy_same	זה אותו אדם — בחרו מישהו אחר
 staff_rename_need_selected	בחרו קודם את מי לשנות לו שם
 team_pick_hint	בחר את מי לערוך - מסכים, זכויות כסף ותחנות יופיעו עבור אותו אדם בלבד.
-team_stations_help	תחנות שבהן הם עשויים להשתמש
-team_stations_changed	תחנות השתנו — שמור את ההגדרה עבור אדם זה
 team_features_changed	המסכים השתנו — שמרו הגדרה לאדם הזה
 team_rights_changed	ההרשאות השתנו — שמרו הגדרה לאדם הזה
 they_owe_us	הם חייבים לנו
@@ -996,9 +846,6 @@ service_pct_ph	שירות % לא חובה 0/10/12
 short_code_ph	קוד קצר (MG02)
 starting_password_ph	סיסמת התחלה (לא חובה)
 starting_pin_ph	PIN התחלה (4–12 ספרות)
-station_name_ph	שם תחנה (אופציונלי)
-station_new_ph	מדור (אופציונלי)
-table_name_ph	שם מונה/מפרץ
 tax_rate_ph	שם שער מס או % — רגיל, מופחת, 0, 5, 12, 18, 20
 to_code_ph	לקוד (ק״ג)
 uncleared_no_ph	לא מותאם # למעלה
@@ -1011,27 +858,8 @@ book_kind_month	ספרי החודש
 book_kind_aging	פתוח / חובה-זכות
 book_kind_balance	מאזן
 order_help	הקישו על פריט כדי להוסיף אותו.
-floor_help	החנות הזו מוכרת בדלפק. שולחנות וקומת אוכל הם לא חלק מטבית.
-kitchen_help	לא בשימוש בחנות דלפק.
-kitchen_empty	אין כרטיסים פתוחים (חנויות דלפק בדרך כלל משאירות מסך זה ללא שימוש).
-add_a_table	הוסף שולחן
-add_station_heading	הוסף מדור מרפא
 categories_help	הקישו השתמש כדי לשייך את הפריט למעלה לקטגוריה הזו. תמונה נותנת לקטגוריה תמונה; בלי תמונה מוצגות ראשי התיבות.
 dish_search_ph	חפש שם, מלח או ברקוד...
-tile_free	פנוי
-tile_occupied	תפוס
-tile_food_ready	האוכל מוכן
-tile_bill_printed	החשבון הודפס
-tile_paid	שולם
-tile_bill_btn	חשבון
-tile_occupy_btn	הושיבו אורחים
-tile_free_btn	פנו שולחן
-tile_ready_btn	פנו שולחן
-tile_undo_bill	בטל חשבון
-summary_busy	שולחנות תפוסים
-summary_to_collect	לגבייה
-summary_on_floor	באולם
-floor	חנות
 sizes_as_items_ph	גדלים כפריטים נפרדים (לא חובה) — חצי=120, מלא=200
 dish_group_ph	קבוצת כוח / חבילה (אופציונלי) - למשל. רצועה של 500 מ"ג
 discount	הנחה
@@ -1039,7 +867,6 @@ remove_discount	הסר הנחה
 apply_discount	החל הנחה
 save_opening_cash	שמור מזומן פתיחה
 close_shift_print	סגור משמרת והדפס פתק
-area_prices_ph	מחירי אזור (לא חובה) — מיזוג=220, משלוח=210
 discount_ph	10% או 50
 discount_reason_ph	סיבה (למשל אורח קבוע, אוכל מאוחר)
 opening_float_ph	מזומן שהוכנס למגירה הבוקר
@@ -1049,34 +876,18 @@ shift_handover	מסירת משמרת
 shift_since	המשמרת הזו מאז
 expected_in_drawer	צפוי במגירה
 right_discount	תנו הנחה
-floor_in_kitchen	בתהליך
-floor_eating	הוגש
 pick_category	בחרו קטגוריה
 close_category_list	סגור רשימת קטגוריות
 new_category_row	קטגוריה חדשה — נוצרת כששומרים את הפריט
 your_category	הקטגוריה שלכם
 suggested_category	מוצע - מהפריטים שלנו
 category_search_ph	קטגוריה — חפשו את שלכם או הקלידו חדשה
-line_sent_state	נשלח
-line_nc_state	כיבוד (NC) — לא מחויב
 cancel_item_short	בטל
-nc_short	NC
-charge_again_short	חייב
-move_short	העבר
 cancel_item_title	בטל פריט זה - Back Office מקבל תלוש ביטול
-nc_item_title	הפכו את הפריט הזה לכיבוד (NC)
-charge_again_title	חייבו שוב את הפריט הזה
-move_item_title	העבירו את הפריט הזה לשולחן אחר
-already_cooked	כבר בושל (פחת)
-not_cooked_yet	עדיין לא בושל
 return_to_customer	החזירו ללקוח
 short_by	חסר
 tip_not_sale	טיפ (של הצוות, לא מכירה)
 right_settle	גבה תשלום
-right_cancel_sent	בטל פריט שנשלח
-right_complimentary	כיבוד (NC)
-right_move_table	הזז / מיזוג מונים
-right_reprint	הדפס חשבון שוב
 right_allowed	מותר
 right_with_approval	עם אישור
 right_denied	לא מותר
@@ -1086,25 +897,11 @@ no_server_found	לא נמצא. בשרת: הגדרות → מכשירים אחר�
 servers_found_pick	הקישו על החנות שאליה אתם רוצים להתחבר.
 server_host_selected	משתמשים ב־{host} — הזינו את קוד הזיווג, ואז זווג עכשיו.
 print_bill	הדפס חשבון
-table_actions	פעולות נגד
-move_merge_table	העבר / מזג שולחן
-move_help	העבר את ההזמנה של מונה זה לשולחן פנוי, או למזג אותו לשולחן פועל.
-move_target_ph	שם המונה
 approval_pin_ph	PIN מנהל משמרת (רק אם מבקשים)
-move_here	העבר לכאן
-merge_into	מזג לתוכו
-line_reason_ph	סיבה (למשל, הלקוח שינה את דעתו, אזל המלאי)
-line_qty_ph	כמה לבטל (ריק = הכול)
-line_target_ph	העבר לשולחן (למשל D5)
 confirm	אשר
 menu_search_ph	חפש פריט או קוד קצר
 customer_paid_ph	הלקוח שילם
 tip_ph	טיפ
-table_area_ph	אזור (למשל באולם, משלוח, מיזוג)
-table_range_ph	הרבה בבת אחת: D1-D20
-add_these_tables	הוסף את המונים האלה
-remove_these_tables	הסר את המונים האלה
-table_remove_ph	הסר: T1-T24, או שם של שולחן אחד
 find_server	מצא את שרת החנות
 bill_format	פורמט חשבון
 bill_format_help	מודפס תחת שם החנות שלך על כל שטר. הפרד קווים עם | (למשל MG Road, Rajkot | Ph 98250 00000).
@@ -1112,78 +909,32 @@ bill_header_ph	כתובת | טלפון
 fssai_ph	רישיון סמים מס. (אופציונלי - הניסוח שלך)
 bill_footer_ph	כותרת תחתונה (למשל תודה, בואו שוב)
 save_bill_format	שמור פורמט חשבון
-kot_format	פורמט סליפ
-kot_format_help	הקש על שדה ברשימה. הצג, גודל גופן ומשקל חלים על שדה זה בסוג ההחלקה שנבחר למעלה. כל סוג שומר על הגדלים והמשקלים שלו.
-kot_format_fields	שדות
-kot_field_next	השדה הבא
-kot_field_show	הצג
-kot_field_hide	הסתר
 kot_field_on	הצג
 kot_field_off	הסתר
-kot_field_size	גודל גופן
-kot_field_size_ph	למשל 16, 20, 24, 28, 32…
 kot_weight_light	דק
 bill_kot_panel_help	פריסת חשבונות ורוחב תוכן. הקופאי הוא מי שהנפיק או סילק את החשבון - סיפור המכירה המלא נשאר בספרים.
 std_size_ph	למשל 18, 20, 26…
-kot_show_shop	שם החנות
-kot_hide_shop	הסתר חנות
-kot_show_time	שעה
-kot_hide_time	הסתר שעה
-kot_show_waiter	קופאי
-kot_hide_waiter	הסתר קופאית
-kot_show_station	עמדה
-kot_hide_station	הסתר עמדה
-kot_show_table	דלפק
-kot_hide_table	הסתר שולחן
-kot_show_kot_no	כרטיס מס'
-kot_hide_kot_no	הסתר כרטיס מס'
-kot_width	גלישת תצוגה מקדימה (הגדר את רוחב התוכן בכרטיסיית החלקה)
-kot_width_58	58 mm
-kot_width_80	80 mm
-kot_kind_heading	סוג כרטיס
-kot_kind_original	מקור
-kot_kind_duplicate	העתק
-kot_kind_modified	שונה
-kot_kind_cancelled	בוטל
-kot_style_heading	גודל ומשקל האות של השדה
-kot_style_title	כותרת
-kot_style_item_qty	פריט · כמות
-kot_style_field_pick	בחר שדה
 kot_weight_regular	רגיל
 kot_weight_bold	מודגש
-kot_align	יישור
 kot_align_start	התחל
 kot_align_center	מרכז
 kot_align_end	סוף
 content_width	רוחב תוכן (מ״מ)
 content_width_bill	רוחב תוכן החשבון (מ״מ)
-content_width_kot	רוחב תוכן הכרטיס (מ"מ)
 content_width_ph	או הקלידו רוחב תוכן, 40–210 מ״מ
 content_width_help	כמה רחב מודפס החלק הזה. ביל שומר על הרוחב שלו.
 content_width_bill_help	כמה רחב מודפס חשבון הלקוח. ברירת מחדל 210 מ"מ (עמוד). החלקה צרה 58 מ"מ, החלקה ברוחב 80 מ"מ, 112 מ"מ 4 אינץ', רוחב A4 210 מ"מ. הקלד כל ערך מ-40 עד 210. לכרטיסים יש רוחב משלהם בלשונית ההחלקה.
-content_width_kot_help	כמה רחב מודפס הכרטיס. ברירת מחדל 80 מ"מ. החלקה צרה 58 מ"מ, החלקה ברוחב 80 מ"מ, 112 מ"מ 4 אינץ', עמוד 210 מ"מ. הקלד כל ערך מ-40 עד 210. לחשבונות של לקוחות יש רוחב משלהם בכרטיסייה 'חיוב'.
 vp_paper_width	רוחב תוכן (מ״מ)
 vp_paper_width_ph	או הקלידו רוחב תוכן, 40–210 מ״מ
 vp_paper_width_help	רוחב התוכן נקבע בפורמט Bill & Slip - בנפרד עבור החשבון (ברירת מחדל 210 מ"מ) והכרטיס (ברירת מחדל 80 מ"מ).
-kot_size	גודל גופן
-kot_size_s	קטן
-kot_size_m	רגיל
-kot_size_l	גדול
 std_size	גודל גופן
 kot_copies	עותקים
 kot_copies_1	1
 kot_copies_2	2
 kot_copies_3	3
-kot_title_ph	כותרת (ריק = TICKET)
-kot_footer_ph	הערה אחורי (אופציונלי)
-kot_preview	תצוגה מקדימה
-save_kot_format	שמור פורמט סליפ
-test_kot_format	הדפסת ניסיון
-test_kot_sent	תצוגה מקדימה של הכרטיס נשלחה
 test_bill_format	חשבון בדיקה
 test_bill_sent	תצוגה מקדימה של החשבון נשלחה
 test_print_no_printer	אין מדפסת לעבודה הזו — בחרו אחת במסך הזה
-kot_format_saved	פורמט ההחלקה נשמר
 std_print	גודל הדפסת חשבון
 std_print_help	גודל גופן עבור עבודות חשבונות סטנדרטיות לאורך ולרוחב במדפסות מערכת הפעלה / מסמכים (הזן נקודות - לא קטן/רגיל/גדול). אותו גודל בשני הכיוונים.
 std_size_s	קטן
@@ -1223,23 +974,16 @@ upi_qr	UPI QR
 show_upi_qr	הצג UPI QR
 close_upi_qr	סגור
 upi_qr_help	הלקוח סורק ומשלם. הקש על קח תשלום לאחר שהם משלמים. מסך שני: פתח את כתובת השרת/הצג ב-LAN.
-kot_recall	החזר
 recently_done	הושלמו לאחרונה
-recall_kot_ph	כרטיס מס' לזכירה
 role_help_customer	תפקיד: לקוח — khata (הם חייבים לנו). אותו צד יכול גם לספק מלאי.
 role_help_both	תפקידים: לקוח + ספק — צד אחד, ספרי khata ותשלומים, נטו בדוחות.
 role_help_supplier	תפקיד: ספק — אנחנו חייבים להם על רכישות.
-dine_in_pick_table	לא בשימוש בחנות דלפק
-choose_table	בחר מונה
-change_table	החלף שולחן
-pick_table_banner	בחרו שולחן להזמנה הזו
 items_word	פריטים
 items_section	פריטים
 back_to_order	חזרה להזמנה
 new_items_head	עדיין לא נשלח
 price_ph	מחיר
 price_ph_gst_inside	מחיר ({tax} כלול)
-cancel_needs_table	מכירה נגדית נשארת על הכרטיס עד שתיקח את התשלום
 tax_rates_missing_hint	אין שיעור {tax} על פריטים אלה - על פריטים שנקבע שיעור מס (המחירים כבר כוללים {tax} תחת {tax} כולל)
 taxable_value	ערך חייב במס
 gst_inside_price_note	({tax} כלול)
@@ -1260,30 +1004,11 @@ client_template_confirm	האם להוסיף פריטי {d} מ-{title}? פריט�
 client_template_importing	מייבא את {title}…
 client_template_done	כל פריט מ-{title} נמצא על הפריטים שלך.
 client_template_imported	נוספו פריטי {d} וקטגוריות {c} מ-{title}
-resv_heading	הזמנות מראש
-resv_name_ph	שם הלקוח
-resv_phone_ph	טלפון (לא חובה)
-resv_guests_ph	אֲנָשִׁים
-resv_when_ph	מתי — 20:30, מחר 13:00
-resv_table_ph	מונה (אופציונלי)
-resv_add	הזמן
-resv_seat	הושב
-resv_none	אין הזמנות מראש בקרוב.
-guests_word	אורחים
-delivery_by_ph	משלוח על ידי (שם שליח או איש צוות)
-kitchen_all_day	לבשל עכשיו: {items}
-split_bill	פצל חשבון
-split_go	צור חשבון נפרד
 cancel	בטל
 opening_client	פותח מסוף…
 preparing_desk	מכין שולחן…
 opening_server	פותח שרת…
 creating_server	יוצר שרת…
-split_help	הקש על הפריטים שלקוח אחד משלם עבורם · {n} בחר
-split_send_first	שלח תחילה תלוש - רק פריטים שיש במשרד יכולים לעבור לחשבון נפרד
-split_pick_some	הקש תחילה על הפריטים עבור החשבון הנפרד
-split_done	הצעת חוק נפרדת - הוא על הרצפה ליד הדלפק הזה
-split_marked	חשבון נפרד
 order_empty_pick	ההזמנה ריקה - הקש על הוסף פריטים למעלה כדי לבחור פריטים.
 add_dishes	הוסף תרופות
 order_so_far	בהזמנה הזו: {n} · {total}
@@ -1294,24 +1019,8 @@ pick_done_dd	בוצע · {label}
 printer_route_mode	אם יש כמה מדפסות במקום הזה
 printer_mode_first	הראשונה שעובדת
 printer_mode_all	הדפס בכולן
-kot_show_area	אזור
-kot_hide_area	הסתר אזור
-kot_show_item_hdr	פריט · כמות
-kot_hide_item_hdr	הסתר עמודות
-kot_show_title	שורת כותרת
-kot_hide_title	הסתר כותרת
-kot_field_order	סדר הדפסה
 kot_field_up	הזז למעלה
 kot_field_down	הזז למטה
-kot_field_cycle	בחר את הבא
-kot_field_select	בחר את הבא
-kot_field_time	שעה
-kot_field_kot_no	כרטיס מס'
-kot_field_area	אזור
-kot_field_table	דלפק
-kot_field_shop	שם החנות
-kot_field_waiter	צוות
-kot_field_station	עמדה
 app_template_blurb_extra	כמו כן: הבעלים זהיר, אדמין אסיף, הקופאי נוואז; סרגל צד קדמי; היסטוריה לאחר 4 שעות; היום להתפשט; שטר קומפקטי.
 dishes_n	פריטי {n}
 recipe_ph	מתכון (אופציונלי - לא בשימוש בחנות דלפק)
@@ -1321,8 +1030,6 @@ low_stock_alert	המלאי יורד — קנו בקרוב: {items}
 unpriced_note	לפריטים {n} על הפריטים שלך אין עדיין מחיר - הם מחויבים ב-0 עד שתגדיר אחד.
 show_unpriced	הצג רק פריטים ללא מחיר
 show_all_dishes	הצג את כל הפריטים
-role_waiter	קופאי
-role_kitchen	חנות
 role_title_rest_ph	כותרת תפקיד (למשל קפטן, טבח ראשי)
 preset_help_rest	קופאי: מוכר. מנהל משמרת: מוכר + פריטים + ביטול/תיקון.
 kind_raw	מלאי תרכובות

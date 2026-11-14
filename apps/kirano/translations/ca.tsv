@@ -68,28 +68,6 @@ applied	Aplicat
 note_ph	Nota (opcional)
 rounded	ARRODONIT
 split	Divideix
-send_kot	Envieu el resguard
-send_kot_to	Envia → {kitchens}
-send_kot_again	Afegiu elements per al següent resguard
-send_kot_held	Elements retinguts: deixa d'estar premut per enviar-los
-reprint_kot	Torna a imprimir la selecció
-reprint_kot_ok	S'han tornat a imprimir articles {n} · Tauler(s) {slips} → {kitchens}
-reprint_kot_needed	Envieu primer un document; després incloeu els elements i torneu a imprimir els seleccionats
-reprint_kot_none_selected	S'omet tots els elements enviats: toqueu Impressió sobre els que voleu tornar a imprimir
-reprint_kot_client	Torna a imprimir ({n}) per a {place} enviat: el dispositiu de la botiga l'imprimeix
-print_cancelled_kot	Imprimeix tots els anul·lats
-print_cancelled_kot_ok	Articles cancel·lats {n} impresos · Tauler(s) {slips} → {kitchens}
-print_cancelled_kot_needed	Obriu primer una taula amb elements cancel·lats
-print_cancelled_kot_none	No hi ha articles cancel·lats en aquesta comanda
-print_cancelled_kot_client	S'ha cancel·lat la impressió ({n}) per a {place} enviat: el dispositiu de la botiga l'imprimeix
-kot_banner	Bàner de tipus
-kot_banner_ph	Bàner (buit = cap)
-kot_item_prefix	Prefix d'article
-kot_item_prefix_ph	p. ex. [ANUL·LAT]
-kot_strike	Nom de l'element de toc
-kot_strike_note	Nota d'article de vaga
-kot_strike_on	Activat
-kot_strike_off	Desactivat
 bill_item_layout	Disposició de l'article
 bill_item_layout_columns	Columnes
 bill_item_layout_stacked	Apilat
@@ -118,8 +96,6 @@ bill_item_gap_em	Espai (em)
 bill_item_qty_min	Qtat mín (em)
 bill_item_price_min	Preu mín (em)
 bill_item_amount_min	Import mín (em)
-kot_item_qty_width	Columna de qtat
-kot_item_num_align	Alineació de qtat
 bill_total_qty_label	Etiqueta de qtat total
 bill_total_subtotal_label	Etiqueta de subtotal
 bill_total_grand_label	Etiqueta de total general
@@ -131,36 +107,9 @@ bill_item_piece_off	Desactivat
 bill_total_qty	Qtat total
 bill_total_subtotal	Subtotal
 bill_total_grand	Total general
-reprint_incl	A la impressió
-reprint_skip	Omet
-reprint_skip_meta	Omet la reimpressió
-kot_dest_hint	S'imprimeix a les impressores que heu assignat a {kitchens} a Ajustos → Impressores
-kot_sent_hint	L'últim enviament va ser a {kitchens}. Toqueu per afegir articles per a la següent factura, o torneu a imprimir el rebut per a la mateixa.
-kot_sent_printing	S'ha enviat el resguard a {kitchens}: impressió
-kot_sent_not_printed	L'enviament s'ha enviat a {kitchens} però NO s'ha imprès: {why}. Digues-ho a la botiga, arregla la impressora i torna a imprimir-la.
-kot_sent_screen	S'ha enviat el resguard a {kitchens}
-kot_queued_shop	Lliscament per a {place} → {kitchens} desat; el dispositiu de la botiga l'imprimeix
-kot_job_label	Lliscament per a {place} → {kitchens}
-kot_job_reached	Slip per a {place} ha arribat a {kitchens}
 kot_unassigned	Sense assignar
-kot_unassigned_held	Manteniu elements {n} sense una estació: mantén premuts a la línia per enviar-los
-kot_station_ph	Estació
-kot_station_dd	Estació
-kot_station_dd_n	Estació · {stations}
-kot_set_station	Fes servir aquesta estació
-kot_station_applied	Estació establerta en elements {n}: {station}
-kot_station_cleared	Estació esborrada dels elements {n}: {station}
-kot_station_needed	Trieu primer una secció de botiga
-kot_station_not_allowed	No es permet utilitzar la secció: {station}
-kot_station_none	Encara no hi ha estacions: no s'utilitza en una botiga de taulell (Configuració → Àrees si cal)
 pos_tab_items	Articles afegits
 pos_tab_payment	Pagament
-hold_send	Retén
-hold_send_on	Retingut
-hold_send_meta	Retingut, no en aquest resguard
-station_remove	Treu l'estació
-station_remove_ph	Toqueu una estació de la llista per treure-la
-station_removed	Estació treta: {name}
 settings_hub_title	Ajustos
 settings_hub_help	Obriu una àrea cada vegada — menys desplaçament, tries més clares.
 settings_back	Enrere
@@ -169,12 +118,10 @@ settings_sec_country	País i impost
 settings_sec_tills	Altres dispositius
 settings_sec_brand	La vostra marca
 settings_sec_units	Unitats i conversions
-settings_sec_pickers	Zones · estacions · tipus impositius
+settings_sec_pickers	Tipus impositius
 settings_sec_printers	Impressores
 settings_sec_bill	Format Bill & Slip
 settings_sec_selling	Promocions i vendes
-bill_kot_tab_bill	Compte
-bill_kot_tab_kot	Lliscar
 settings_sec_alerts	Avisos
 alerts_help	Quant de temps romanen a la pantalla els missatges d'estat per a vós (aquest inici de sessió).
 snack_secs_ph	Segons (3–60, per defecte 10)
@@ -225,8 +172,6 @@ counter	Mostrador
 dine_in	Mostrador
 takeaway	Per emportar
 order	Comanda
-tables	Comptadors
-kitchen	Seccions
 sales	Vendes
 sales_refunds	Vendes i devolucions
 day_close	Tancament del dia
@@ -254,10 +199,6 @@ zero_sales_on	Permet ₹0
 zero_sales_off	Exigeix preu
 zero_sales_saved_on	Vendes de valor zero permeses
 zero_sales_saved_off	Les vendes han de tenir un preu superior a ₹0
-floor_areas_help	Les àrees són habitacions o zones del pis (Dine In, Parcel, AC...). Afegiu-hi primer una àrea i, a continuació, poseu-hi comptadors: cada àrea és un grup separat al terra.
-area_new_ph	Zona / sala nova (p. ex. AC, Jardí)
-add_area	Afegeix zona
-area_added	Àrea "{name}" preparada: afegiu-hi comptadors
 no_favorites	Encara no hi ha preferits — afegiu articles de la llista de sota.
 add_to_bill	Afegeix al compte
 added	Afegit
@@ -268,19 +209,9 @@ chip_missing_customer	Falta el client seleccionat — trieu-lo de nou
 chip_no_customer	Encara no hi ha client — escriviu un nom i toqueu Crèdit
 credit_summary_fmt	{} clients · crèdit obert {} · bestretes retingudes {}
 recent_label	Recents:
-kot_new_waiting	NOU — en espera
-kot_preparing	EN PREPARACIÓ
-kot_ready_serve	A PUNT — serviu-lo
-kot_done_cap	FET
-kot_cancelled	ANUL·LAT
-kot_start_btn	Comença
-kot_mark_ready	Marca a punt
-kot_done_btn	Fet
-table_free	Lliure — toqueu per començar una comanda
 start_order	Comença comanda
 open_bill	Obre el compte
 collect_payment	Cobra
-table_running	En curs
 payment_pending	Pagament pendent
 collect_at_counter	cobra al mostrador
 inventory	Inventari
@@ -313,7 +244,6 @@ ok	D'acord
 this_shop	Servidor
 extra_till	Client
 off	Desactivat
-tables_kitchen	Distribució de la botiga
 server	Servidor
 client	Client
 language_currency	Llengua i moneda
@@ -355,8 +285,6 @@ add_item_plain	Afegeix article
 add_note	Afegeix nota
 add_opening_balance	Afegeix saldo d'obertura
 add_staff	Afegeix personal
-add_station	Afegeix estació
-add_table	Afegeix taula
 add_unit	Afegeix unitat
 add_use_name	Afegeix / fes servir aquest nom
 allow_extra_tills	Permet caixes extra
@@ -409,7 +337,6 @@ share_whatsapp	Comparteix per WhatsApp
 lan_pages_heading	Pàgines de clients a Wi-Fi
 lan_pages_help	A la Wi-Fi d'aquesta botiga, les pàgines dels clients funcionen per al tauler de visualització i comentaris. Les persones amb dades mòbils necessiten Cloud més tard. Un terminal de targeta o un enllaç de pagament és opcional i mai bloqueja el comptador.
 diag_send_heading	Comparteix fora d'aquest dispositiu
-kot_dest_heading	Estació
 optional_login_heading	Inici de sessió opcional
 rights_heading	Drets
 ops_panel	Operacions locals
@@ -436,28 +363,6 @@ till_voucher_amt_ph	Import del val (buit = tot)
 till_wallet_topup_ph	Import de recàrrega de la cartera
 till_voucher_issue_amt_ph	Import del val a emetre
 till_voucher_issue_code_ph	Codi del val nou
-split_evenly	Divideix a parts iguals
-waitlist	Llista d'espera
-fire_course	Següent pas
-hold_item	Retén
-waiter_call	Truqueu al caixer
-waitlist_add	Afegeix a la llista d'espera
-floor_view_grid	Graella
-floor_view_layout	Disposició
-floor_layout_x	X
-floor_layout_y	Y
-floor_layout_w	W
-floor_layout_h	H
-floor_layout_save	Desa la disposició
-floor_layout_open	Obre la taula
-floor_layout_edit	Edita la disposició
-floor_layout_pick	Toqueu una taula per editar-ne la disposició
-floor_layout_saved	S'ha desat el disseny
-floor_layout_nudge_left	← 20
-floor_layout_nudge_right	→ 20
-floor_layout_nudge_up	↑ 20
-floor_layout_nudge_down	↓ 20
-sibling_pickers_help	Toqueu Activat/Desactivat com a les unitats — amagueu zones, estacions i tipus impositius dels selectors del dia a dia; els valors del paquet es queden.
 bulk_price_apply	Aplica preu massiu
 card_terminal_optional	Terminal de targeta / enllaç de pagament (opcional quan hi ha internet)
 copy_report	Copia l'informe
@@ -483,7 +388,6 @@ import_day	Importa el dia
 import_items_csv_plain	Importa articles CSV…
 import_parties_csv	Importa parts CSV…
 item_name	Nom de l'article
-kitchen_printing	Impressores
 login_id_ph	Nom d'usuari
 mark_cleared	Marca com a conciliat
 new_party_clear	Part nova (buida el formulari)
@@ -553,15 +457,6 @@ show	Mostra
 spreadsheet_csv	Full de càlcul (CSV)
 start_fresh	Comença de zero
 stop_extra_tills	Atura les caixes extra
-floor_cols_ph	Columnes
-floor_cols_fit	Ajusta a la pantalla
-floor_cols_fit_sub	{n} hi caben
-floor_cols_fits	hi cap
-floor_cols_scroll	es desplaça de costat
-floor_cols_min	Columnes: com a mínim 1 — o deixeu-ho buit per ajustar a la pantalla
-floor_zoom_auto	Auto
-floor_zoom_out	Allunya
-floor_zoom_in	Apropa
 backup_auto	Còpia automàtica cada dia · darrera {when} · es conserven els darrers 14 dies a {dir}.
 backup_auto_none	Còpia automàtica cada dia — la primera es farà d'aquí a un moment.
 backup_copy_to	Les còpies també van a {dir}.
@@ -579,7 +474,6 @@ new_pair_code	Codi d'aparellament nou
 pair_finishing	S'acaba l'aparellament… s'apliquen els llibres de la botiga
 pair_opening	S'obre el caixa…
 pair_copied	Codi d'aparellament copiat
-kot_waiting	En espera d'enviar
 lan_offline_waiting	No es pot arribar al servidor de la botiga · {n} en espera
 lan_connecting	Connectant amb la botiga…
 lan_live	En directe
@@ -621,7 +515,6 @@ printers_routes_help	Cerqueu impressores que el sistema operatiu ja conegui. Ass
 printer_assign_dd	Impressora real: {place}
 printer_assign_pick	Selecciona la impressora real
 printer_profile_heading	Disposició
-printer_send_heading	Lliurament
 vp_delivery_heading	Lliurament
 vp_delivery_help	Com aquesta impressora virtual envia els treballs: document del sistema operatiu, bytes en brut o ESC/POS. El contingut de la fitxa (mida del tipus, embolcall, marges) es decideix pel format de la factura/de la fitxa, no aquí.
 vp_type_size_heading	Mida de lletra
@@ -665,23 +558,13 @@ virtual_draft_send	Valor posat per a la propera impressora virtual
 virtual_need_real	Seleccioneu primer una impressora real
 virtual_need_select	Seleccioneu una impressora virtual per eliminar
 real_printer_selected	Seleccionada: {name}
-station_group_heading	Impressores virtuals
-station_group_apply	Elimina la impressora virtual
-station_group_applied	Eliminada
-station_group_empty	Seleccioneu una impressora virtual
-station_group_name_ph	Nom de la impressora virtual (opcional)
-station_group_save	Crea una impressora virtual
-station_group_saved	Impressora virtual desada
-station_manage_heading	Afegeix o elimina una secció de botiga
 printers_routes_heading	On s'imprimeix
 route_pick_heading	Lloc
 route_editing	Edició: {name}
 route_assigned	Afegida {printer} a {place}
 route_already_assigned	Ja és en aquest lloc: {printer}
-route_removed	Tret {printer} de {place}
 route_cleared	Netjat {name}
 route_assigned_empty	Res en aquest lloc
-route_tap_remove	toqueu per treure
 route_tap_select	toqueu per seleccionar
 route_tap_selected	seleccionat
 route_pick_printer_first	Toqueu primer una impressora
@@ -702,35 +585,17 @@ printer_format_custom	Perfil personalitzat nou
 printer_format_custom_label	Personalitzat
 printer_format_custom_added	Perfil personalitzat afegit per a aquest lloc
 add_printer	Afegeix impressora
-remove_printer	Treu
 route_pick_ph	Factura o secció de botiga
 route_bill	Compte
-route_default_kitchen	Sense emissora (elements no assignats)
-route_kot_station	Estació
 route_dont_print	Sense impressora
-stations_heading	Estacions
-stations_help	Les seccions de la botiga agrupen els articles i les impressores d'aquesta part de la botiga. Adjunteu les impressores des de Configuració → Impressores, establiu l'ordre de prova i, a continuació, Primer que funcioni o Imprimeix a tot. Els canvis es guarden a mesura que avanceu.
-station_print_heading	Impressores d'aquesta estació
-station_print_help	Trieu una estació i, a continuació, connecteu una o més impressores. ↑↓ estableix l'ordre de prova. El primer que funciona s'atura després del primer èxit; Imprimeix en tots els enviaments a cada impressora connectada.
-station_print_pick_ph	Estació a la qual posar impressores
 station_print_pick_first	Trieu primer una secció de botiga
-station_print_editing	S'editen les impressores de «{name}»
-station_vps_dd	Impressores d'aquesta estació
-station_vps_dd_n	{n} impressora(es) · toqueu per canviar
 station_vps_empty	Encara no hi ha impressores — trobeu-les a Ajustos → Impressores
 bill_printers_dd	Impressores del compte
 bill_printers_dd_n	{n} impressora(es) per al compte · toqueu per canviar
-job_layout	Disposició
-job_delivery	Com s'envia el treball
-job_delivery_help	Document del sistema operatiu, bytes en brut o ESC/POS. El bitllet i el bitllet tenen cadascun el seu. Qualsevol de les tasques es pot anar a qualsevol impressora que hagi desat Find.
 station_vp_attached	Impressora acoblada
 station_vp_detached	Impressora treta de l'estació
-station_print_summary	{mode} · {n} impressora(es)
-station_print_summary_none	Encara no hi ha impressores en aquesta estació — no imprimirà
-stations_none	Encara no hi ha emissores; afegiu-ne una a continuació. Les estacions no s'utilitzen en un mostrador: deixeu-ho buit.
 route_up	Amunt
 route_down	Avall
-route_remove	Treu
 route_clear	Neteja
 save_printers	Desa les impressores
 print_test_page	Imprimeix una pàgina de prova
@@ -739,23 +604,15 @@ test_page_no_printer	No hi ha impressora per a {place} — acopleu-n'hi una i to
 test_page_pick_first	Trieu primer impressora(es) per a una pàgina de prova — després Imprimeix una pàgina de prova
 test_printers_dd	Impressores per a una pàgina de prova
 test_printers_dd_n	{n} impressora(es) per a una pàgina de prova · toqueu per canviar
-kot_test_printers_dd	Impressores per a la impressió de prova
-kot_test_printers_dd_n	Impressora(s) {n} per a la impressió de prova · toqueu per canviar
 test_printer_picked	Prova a: {name}
 test_printer_cleared	Sense prova a: {name}
 test_page_sent_n	Pàgina de prova enviada a {n} impressora(es)
-test_kot_pick_first	Trieu primer les impressores per a la impressió de prova i després la impressió de prova
-test_kot_sent_n	Impressió de prova enviada a impressores {n}
-cancel_pick	Marca
-cancel_pick_on	Marcat
-cancel_pick_meta	Marcat per anul·lar
 batch_cancel	Anul·la els marcats
 batch_cancel_n	Anul·la els marcats ({n})
 batch_cancel_none	Marqueu primer un o més elements enviats i, a continuació, marqueu Cancel·la
 batch_cancel_title	Cancel·la els articles marcats: un motiu, un full de cancel·lació per secció
 batch_cancel_ok	Elements {n} cancel·lats · {slips} cancel·la els rebuts → {kitchens}
 batch_cancel_ok_noprint	Elements {n} cancel·lats: la impressió automàtica està desactivada, de manera que no hi ha resguard de cancel·lació
-no_printer_kitchen_station	No hi ha impressora per a aquesta estació
 printers_saved	Desat
 test_page_sent	Pàgina de prova enviada — comproveu la impressora
 test_page_sent_one	Pàgina de prova enviada a {name} — comproveu aquella impressora
@@ -771,10 +628,7 @@ cancelled	Anul·lat
 printers_tap_find	Toqueu Troba per llistar les impressores que aquest dispositiu pot fer servir.
 printers_none_found	No se n'ha trobat cap — escriviu un nom d'impressora del sistema o una IP (p. ex. 192.168.1.50).
 printer_from_find	Afegida {name}
-kot_printer_ph	Impressora per a resguards
 bill_printer_ph	Impressora per als comptes
-kot_print_on	Impressió automàtica de bitllets: activat
-kot_print_off	Impressió automàtica de bitllets: desactivat
 queue_refused	La botiga no ho ha acceptat ({n}) — comproveu-ho cadascun al mostrador:
 clear_not_accepted	Comprovat — neteja aquesta llista
 device_name_ph	Nom d'aquest dispositiu
@@ -785,7 +639,6 @@ backup_failed	La darrera còpia automàtica ha fallat: {e}
 backup_overdue	Fa {n} dies sense còpia — deixeu l'app oberta en aquest dispositiu perquè en pugui fer.
 disk_low	Només queden {mb} MB lliures en aquest dispositiu — les còpies fallaran aviat. Allibereu espai.
 last_seen_devices	Vist per darrer cop: {time}
-sync_interval	Sincronitza cada {secs} s
 connection_to_shop	Connexió amb la botiga
 supplier_name_ph	Nom del proveïdor (o part)
 supplier_ph	Proveïdor
@@ -848,7 +701,6 @@ fresh_book_kirano	Fresc = catàleg buit (afegiu elements més tard). Llibre = ti
 fresh_selected	Nou seleccionat — el catàleg queda buit. Toqueu Fet quan estigueu a punt.
 gross_word	Brut
 how_start	Com voleu començar?
-kot_print_help_kirano	No s'utilitza en un taulell de kirana.
 later_country_pack	Més endavant: Ajustos → apliqueu el paquet del vostre país per a les etiquetes d'impost i pagament.
 local_badge	LOCAL
 mix_type_hint_kirano	Dividiu entre efectiu / UPI / targeta / crèdit si cal. El crèdit necessita un client a dalt.
@@ -899,8 +751,6 @@ staff_copy_need_source	Trieu de qui copiar la configuració
 staff_copy_same	És la mateixa persona — trieu-ne una altra
 staff_rename_need_selected	Seleccioneu primer a qui canviar el nom
 team_pick_hint	Trieu qui voleu editar: les pantalles, els drets de diners i les estacions només apareixen per a aquesta persona.
-team_stations_help	Estacions que poden utilitzar
-team_stations_changed	Estacions canviades — Desa la configuració d'aquesta persona
 team_features_changed	Pantalles canviades — Desa la configuració d'aquesta persona
 team_rights_changed	Drets canviats — Desa la configuració d'aquesta persona
 they_owe_us	Ens deuen
@@ -984,9 +834,6 @@ service_pct_ph	Servei % opcional 0/10/12
 short_code_ph	Codi curt (MG02)
 starting_password_ph	Contrasenya inicial (opcional)
 starting_pin_ph	PIN inicial (4–12 dígits)
-station_name_ph	Nom de l'estació (opcional)
-station_new_ph	Secció (opcional)
-table_name_ph	Nom del comptador/badia
 tax_rate_ph	Nom del tipus impositiu o % — Estàndard, Reduït, 0, 5, 12, 18, 20
 to_code_ph	Codi de destí (kg)
 uncleared_no_ph	Núm. no conciliat de dalt
@@ -999,27 +846,8 @@ book_kind_month	Llibres d'aquest mes
 book_kind_aging	Pendent / deure-haver
 book_kind_balance	Balanç
 order_help	Toqueu un article per afegir-lo.
-floor_help	Aquesta botiga ven al taulell. Les taules i el menjador no formen part de Kirano.
-kitchen_help	No s'utilitza en una botiga de taulell.
-kitchen_empty	No hi ha entrades obertes (les botigues solen deixar aquesta pantalla sense utilitzar).
-add_a_table	Afegeix una taula
-add_station_heading	Afegeix una secció de botiga
 categories_help	Toqueu Fes servir per classificar l'article de dalt en aquella categoria. La foto dona una imatge a la categoria; sense, en mostra les inicials.
 dish_search_ph	Cerca elements o codi curt...
-tile_free	Lliure
-tile_occupied	Ocupada
-tile_food_ready	Menjar a punt
-tile_bill_printed	Compte imprès
-tile_paid	Pagat
-tile_bill_btn	Compte
-tile_occupy_btn	Asseu els convidats
-tile_free_btn	Allibera la taula
-tile_ready_btn	Allibera la taula
-tile_undo_bill	Desfés el compte
-summary_busy	taules ocupades
-summary_to_collect	per cobrar
-summary_on_floor	a la sala
-floor	Botiga
 sizes_as_items_ph	Mides com a articles a part (opcional) — Half=120, Full=200
 dish_group_ph	Grup de mida del paquet (opcional) - p. ex. Atta 1 kg / 5 kg
 discount	Descompte
@@ -1027,7 +855,6 @@ remove_discount	Treu el descompte
 apply_discount	Aplica el descompte
 save_opening_cash	Desa l'efectiu d'obertura
 close_shift_print	Tanca el torn i imprimeix el tiquet
-area_prices_ph	Preus per zona (opcional) — AC=220, Parcel=210
 discount_ph	10% o 50
 discount_reason_ph	Motiu (p. ex. client habitual, menjar tard)
 opening_float_ph	Efectiu posat al calaix aquest matí
@@ -1037,34 +864,18 @@ shift_handover	Relleu de torn
 shift_since	Aquest torn des de
 expected_in_drawer	Esperat al calaix
 right_discount	Fer un descompte
-floor_in_kitchen	En curs
-floor_eating	Servit
 pick_category	Trieu una categoria
 close_category_list	Tanca la llista de categories
 new_category_row	Categoria nova — es crea en desar l'article
 your_category	La vostra categoria
 suggested_category	Suggerit: dels nostres articles
 category_search_ph	Categoria — cerqueu la vostra o escriviu-ne una de nova
-line_sent_state	Enviat
-line_nc_state	Cortesia (NC) — no es cobra
 cancel_item_short	Anul·la
-nc_short	NC
-charge_again_short	Cobra
-move_short	Mou
 cancel_item_title	Cancel·la aquest article: l'oficina rebran un rebut de cancel·lació
-nc_item_title	Fes aquest article de cortesia (NC)
-charge_again_title	Torna a cobrar aquest article
-move_item_title	Mou aquest article a una altra taula
-already_cooked	Ja cuinat (minva)
-not_cooked_yet	Encara no cuinat
 return_to_customer	Torna al client
 short_by	Falta
 tip_not_sale	Propina (del personal, no és una venda)
 right_settle	Cobra
-right_cancel_sent	Anul·lar un article enviat
-right_complimentary	Cortesia (NC)
-right_move_table	Moure / combinar comptadors
-right_reprint	Tornar a imprimir el compte
 right_allowed	Permès
 right_with_approval	Amb aprovació
 right_denied	No permès
@@ -1074,25 +885,11 @@ no_server_found	No se n'ha trobat cap. Al Servidor: Ajustos → Altres dispositi
 servers_found_pick	Toqueu la botiga a la qual us voleu connectar.
 server_host_selected	S'usa {host} — introduïu el codi d'aparellament i Aparella ara.
 print_bill	Imprimeix el compte
-table_actions	Contraaccions
-move_merge_table	Mou / fusiona la taula
-move_help	Mou l'ordre d'aquest comptador a una taula lliure o fusiona-la en una de corrent.
-move_target_ph	Nom del comptador
 approval_pin_ph	PIN d'encarregat (només si es demana)
-move_here	Mou aquí
-merge_into	Fusiona-hi
-line_reason_ph	Motiu (p. ex., el client ha canviat d'opinió, esgotat)
-line_qty_ph	Quants n'anul·leu (buit = tots)
-line_target_ph	Mou a la taula (p. ex. D5)
 confirm	Confirma
 menu_search_ph	Cerca article o codi curt
 customer_paid_ph	El client ha pagat
 tip_ph	Propina
-table_area_ph	Zona (p. ex. Al local, Per emportar, AC)
-table_range_ph	Moltes alhora: D1-D20
-add_these_tables	Afegiu aquests comptadors
-remove_these_tables	Traieu aquests comptadors
-table_remove_ph	Treu: T1-T24, o el nom d'una taula
 find_server	Troba el servidor de la botiga
 bill_format	Format del compte
 bill_format_help	Imprès amb el nom de la vostra botiga a cada factura. Separeu les línies amb | (p. ex., MG Road, Rajkot | Telèfon 98250 00000).
@@ -1100,78 +897,32 @@ bill_header_ph	Adreça | telèfon
 fssai_ph	FSSAI / llicència de botiga núm. (opcional)
 bill_footer_ph	Peu (p. ex. Gràcies, torneu)
 save_bill_format	Desa el format del compte
-kot_format	Format slip
-kot_format_help	Toqueu un camp de la llista. Mostra, la mida de la lletra i el pes s'apliquen a aquest camp en el tipus de llisca seleccionat anteriorment. Cada tipus manté les seves pròpies mides i pesos.
-kot_format_fields	Camps
-kot_field_next	Camp següent
-kot_field_show	Mostra
-kot_field_hide	Amaga
 kot_field_on	mostra
 kot_field_off	amaga
-kot_field_size	Mida de lletra
-kot_field_size_ph	p. ex. 16, 20, 24, 28, 32…
 kot_weight_light	Prima
 bill_kot_panel_help	Disseny de la factura i amplada del contingut. El caixer és qui va emetre o liquidar la factura: la història completa de la venda es manté als llibres.
 std_size_ph	p. ex. 18, 20, 26…
-kot_show_shop	Nom de la botiga
-kot_hide_shop	Amaga la botiga
-kot_show_time	Hora
-kot_hide_time	Amaga l'hora
-kot_show_waiter	Caixer
-kot_hide_waiter	Amaga el caixer
-kot_show_station	Estació
-kot_hide_station	Amaga l'estació
-kot_show_table	Mostrador
-kot_hide_table	Amaga la taula
-kot_show_kot_no	Bitllet núm
-kot_hide_kot_no	Amaga el número de bitllet
-kot_width	Previsualitza l'embolcall (definiu l'amplada del contingut a la pestanya de lliscament)
-kot_width_58	58 mm
-kot_width_80	80 mm
-kot_kind_heading	Tipus de bitllet
-kot_kind_original	Original
-kot_kind_duplicate	Duplicat
-kot_kind_modified	Modificat
-kot_kind_cancelled	Anul·lat
-kot_style_heading	Mida i gruix del camp
-kot_style_title	Títol
-kot_style_item_qty	Article · Qtat
-kot_style_field_pick	Selecciona el camp
 kot_weight_regular	Normal
 kot_weight_bold	Negreta
-kot_align	Alineació
 kot_align_start	Comença
 kot_align_center	Centre
 kot_align_end	Final
 content_width	Amplada del contingut (mm)
 content_width_bill	Amplada del contingut del compte (mm)
-content_width_kot	Amplada del contingut del bitllet (mm)
 content_width_ph	O escriviu una amplada de contingut, 40–210 mm
 content_width_help	Quina amplada s'imprimeix aquesta butlleta. Bill manté la seva pròpia amplada.
 content_width_bill_help	Quina amplitud s'imprimeix la factura del client. Per defecte 210 mm (pàgina). Lliscament estret de 58 mm, lliscament de 80 mm d'ample, 112 mm de 4 polzades, 210 mm d'ample A4. Escriviu qualsevol valor entre 40 i 210. Els bitllets tenen la seva pròpia amplada a la pestanya de resguard.
-content_width_kot_help	Quina amplada imprimeix el bitllet. Per defecte 80 mm. Lliscament estret de 58 mm, lliscament de 80 mm d'ample, pàgina de 112 mm, 4 polzades, 210 mm. Escriviu qualsevol valor entre 40 i 210. Les factures dels clients tenen la seva pròpia amplada a la pestanya Factura.
 vp_paper_width	Amplada del contingut (mm)
 vp_paper_width_ph	O escriviu una amplada de contingut, 40–210 mm
 vp_paper_width_help	L'amplada del contingut s'estableix al format Bill & Slip, per separat per a la factura (210 mm per defecte) i el bitllet (80 mm per defecte).
-kot_size	Mida de lletra
-kot_size_s	Petita
-kot_size_m	Normal
-kot_size_l	Gran
 std_size	Mida de lletra
 kot_copies	Còpies
 kot_copies_1	1
 kot_copies_2	2
 kot_copies_3	3
-kot_title_ph	Títol (en blanc = BILLET)
-kot_footer_ph	Nota de backoffice (opcional)
-kot_preview	Vista prèvia
-save_kot_format	Desa el format Slip
-test_kot_format	Impressió de prova
-test_kot_sent	S'ha enviat la vista prèvia del tiquet
 test_bill_format	Compte de prova
 test_bill_sent	Vista prèvia del compte enviada
 test_print_no_printer	No hi ha impressora per a aquest treball — trieu-ne una en aquesta pantalla
-kot_format_saved	Format de llisca desat
 std_print	Mida d'impressió del compte
 std_print_help	Mida del tipus de lletra per a treballs de facturació estàndard de retrat i horitzontal en impressores de SO/documents (introduïu punts, no Petit/Normal/Gran). La mateixa mida en ambdues orientacions.
 std_size_s	Petita
@@ -1211,23 +962,16 @@ upi_qr	UPI QR
 show_upi_qr	Mostra el QR UPI
 close_upi_qr	Tanca
 upi_qr_help	El client escaneja i paga. Toqueu Rebre el pagament després de pagar. Segona pantalla: obriu l'URL del servidor/display a la LAN.
-kot_recall	Recupera
 recently_done	Fets fa poc
-recall_kot_ph	Bitllet # per recordar
 role_help_customer	Rol: Client — khata (ens deuen). La mateixa part també pot subministrar estoc.
 role_help_both	Rols: Client + Proveïdor — una part, llibres de khata i a pagar, net als Informes.
 role_help_supplier	Rol: Proveïdor — els devem les compres.
-dine_in_pick_table	No s'utilitza en una botiga de taulell
-choose_table	Trieu el comptador
-change_table	Canvia la taula
-pick_table_banner	Trieu una taula per a aquesta comanda
 items_word	articles
 items_section	Articles
 back_to_order	Torna a la comanda
 new_items_head	Encara no enviat
 price_ph	Preu
 price_ph_gst_inside	Preu ({tax} inclòs)
-cancel_needs_table	Les vendes al taulell es mantenen al bitllet fins que no accepteu el pagament
 tax_rates_missing_hint	No hi ha taxa {tax} per a aquests articles, a la taxa d'impostos establerta per a articles (els preus ja inclouen {tax} sota {tax} inclòs)
 taxable_value	Base imposable
 gst_inside_price_note	({tax} inclòs)
@@ -1248,30 +992,11 @@ client_template_confirm	Vols afegir elements {d} de {title}? Els articles que ja
 client_template_importing	S'importa {title}…
 client_template_done	Tots els articles de {title} estan als vostres articles.
 client_template_imported	S'han afegit elements {d} i categories {c} de {title}
-resv_heading	Reserves
-resv_name_ph	Nom del client
-resv_phone_ph	Telèfon (opcional)
-resv_guests_ph	Gent
-resv_when_ph	Quan — 20:30, demà 13:00
-resv_table_ph	Comptador (opcional)
-resv_add	Reserva
-resv_seat	Asseguts
-resv_none	No hi ha reserves properes.
-guests_word	convidats
-delivery_by_ph	Lliurament per (nom del repartidor o del personal)
-kitchen_all_day	Per cuinar ara: {items}
-split_bill	Divideix el compte
-split_go	Fes un compte a part
 cancel	Anul·la
 opening_client	S'obre el client…
 preparing_desk	Es prepara el taulell…
 opening_server	S'obre el servidor…
 creating_server	Es crea el servidor…
-split_help	Toca els articles pels quals paga un client · {n} escollit
-split_send_first	Envieu primer el justificant: només els articles que té l'oficina poden anar a una factura independent
-split_pick_some	Toqueu primer els articles per a la factura separada
-split_done	Factura independent feta: està al terra al costat d'aquest taulell
-split_marked	compte a part
 order_empty_pick	Comanda buida: toqueu Afegeix elements a dalt per triar elements.
 add_dishes	Afegeix elements
 order_so_far	En aquesta comanda: {n} · {total}
@@ -1282,24 +1007,8 @@ pick_done_dd	Fet · {label}
 printer_route_mode	Si hi ha diverses impressores en aquest lloc
 printer_mode_first	La primera que funcioni
 printer_mode_all	Imprimeix a totes
-kot_show_area	Zona
-kot_hide_area	Amaga la zona
-kot_show_item_hdr	Article · Qtat
-kot_hide_item_hdr	Amaga les columnes
-kot_show_title	Línia de títol
-kot_hide_title	Amaga el títol
-kot_field_order	Ordre d'impressió
 kot_field_up	Puja
 kot_field_down	Baixa
-kot_field_cycle	Selecciona el següent
-kot_field_select	Selecciona el següent
-kot_field_time	Hora
-kot_field_kot_no	Bitllet núm
-kot_field_area	Zona
-kot_field_table	Mostrador
-kot_field_shop	Nom de la botiga
-kot_field_waiter	Personal
-kot_field_station	Estació
 app_template_blurb_extra	També: Propietari Zahir, Admin Asif, Caixer Nawaz; barra lateral frontal; historial després de 4 hores; Avui despulleu-vos; factura compacta.
 dishes_n	Elements {n}
 recipe_ph	Recepta (opcional: no s'utilitza en una botiga)
@@ -1309,8 +1018,6 @@ low_stock_alert	S'està acabant — compreu aviat: {items}
 unpriced_note	Els articles {n} dels vostres articles encara no tenen preu; es facturen a 0 fins que en establiu un.
 show_unpriced	Mostra només articles sense preu
 show_all_dishes	Mostra tots els elements
-role_waiter	Caixer
-role_kitchen	Botiga
 role_title_rest_ph	Títol del rol (p. ex. Capità, Cap de cuina)
 preset_help_rest	Caixer: vendre. Encarregat: vendre + articles + anul·lar/esmenar.
 kind_raw	Comprat per a ús de botiga

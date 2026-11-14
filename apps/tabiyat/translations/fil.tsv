@@ -80,28 +80,6 @@ applied	Inilapat
 note_ph	Tandaan (opsyonal)
 rounded	BILOG
 split	Hatiin
-send_kot	Magpadala ng slip
-send_kot_to	Ipadala → {kitchens}
-send_kot_again	Magdagdag ng mga item para sa susunod na slip
-send_kot_held	Mga naka-hold na item — i-unhold para ipadala
-reprint_kot	Pinili muli ang pag-print
-reprint_kot_ok	Nag-print muli ng {n} item · {slips} slip(s) → {kitchens}
-reprint_kot_needed	Magpadala muna ng slip — pagkatapos ay isama ang mga gamot at muling i-print ang mga napili
-reprint_kot_none_selected	Nilaktawan ang bawat ipinadalang item — i-tap ang Sa print sa mga ire-print muli
-reprint_kot_client	I-print muli ({n}) para sa {place} na ipinadala — ang shop device ang nagpi-print nito
-print_cancelled_kot	Nakansela lahat
-print_cancelled_kot_ok	Mga naka-print na {n} na nakanselang mga item · {slips} slip(s) → {kitchens}
-print_cancelled_kot_needed	Magbukas muna ng table na may mga nakanselang item
-print_cancelled_kot_none	Walang nakanselang mga item sa order na ito
-print_cancelled_kot_client	Nakansela ang pag-print ({n}) para sa {place} na ipinadala — ang shop device ang nagpi-print nito
-kot_banner	Mabait na banner
-kot_banner_ph	Banner (blangko = wala)
-kot_item_prefix	Prefix ng item sa menu ng menu
-kot_item_prefix_ph	hal. [KINANSELA]
-kot_strike	Pangalan ng item ng strike
-kot_strike_note	Strike item note
-kot_strike_on	Naka-on
-kot_strike_off	Naka-off
 bill_item_layout	Layout ng item sa menu ng menu
 bill_item_layout_columns	Mga hanay
 bill_item_layout_stacked	Nakasalansan
@@ -130,8 +108,6 @@ bill_item_gap_em	Agwat (em)
 bill_item_qty_min	Min ng dami (em)
 bill_item_price_min	Presyo min (em)
 bill_item_amount_min	Halaga ng min (em)
-kot_item_qty_width	Dami ng column
-kot_item_num_align	Ayos ng dami
 bill_total_qty_label	Kabuuang dami ng label
 bill_total_subtotal_label	Sub kabuuang label
 bill_total_grand_label	Malaking kabuuang label
@@ -143,36 +119,9 @@ bill_item_piece_off	Naka-off
 bill_total_qty	Kabuuang dami
 bill_total_subtotal	Bahaging kabuuan
 bill_total_grand	Malaking kabuuan
-reprint_incl	Sa print
-reprint_skip	Laktawan
-reprint_skip_meta	Laktawan ang pag-print sa pagbawi
-kot_dest_hint	Nagpi-print sa mga printer na itinalaga mo sa {kitchens} sa Mga Setting → Mga Printer
-kot_sent_hint	Ang huling pagpapadala ay napunta sa {kitchens}. I-tap para magdagdag ng mga item para sa susunod na bill — o I-print muli ang slip para sa parehong bill.
-kot_sent_printing	Ipinadala ang slip sa {kitchens} — pagpi-print
-kot_sent_not_printed	Ipinadala ang slip sa {kitchens} ngunit HINDI naka-print: {why}. Sabihin sa shop, pagkatapos ay ayusin ang printer at i-print ito muli.
-kot_sent_screen	Ipinadala ang slip sa {kitchens}
-kot_queued_shop	Slip para sa {place} → {kitchens} na-save; ang aparato ng tindahan ay nagpi-print nito
-kot_job_label	Slip para sa {place} → {kitchens}
-kot_job_reached	Ang slip para sa {place} ay umabot sa {kitchens}
 kot_unassigned	Hindi nakatalaga
-kot_unassigned_held	Hinawakan ang {n} na mga item nang walang istasyon — alisin ang pagkakahawak sa linya para ipadala
-kot_station_ph	Istasyon
-kot_station_dd	Istasyon
-kot_station_dd_n	Istasyon · {stations}
-kot_set_station	Gamitin ang istasyong ito
-kot_station_applied	Nakatakda ang istasyon sa {n} item: {station}
-kot_station_cleared	Na-clear ang istasyon mula sa {n} item: {station}
-kot_station_needed	Pumili muna ng seksyon ng dispensaryo
-kot_station_not_allowed	Hindi pinapayagang gamitin ang seksyon: {station}
-kot_station_none	Wala pang istasyon — hindi ginagamit sa isang counter shop (Mga Setting → Mga lugar kung kinakailangan)
 pos_tab_items	Nagdagdag ng mga item sa menu
 pos_tab_payment	Pagbabayad
-hold_send	Humawak mula sa kusina
-hold_send_on	Ginanap
-hold_send_meta	Hinawakan — wala sa slip na ito
-station_remove	Alisin ang istasyon
-station_remove_ph	I-tap ang isang istasyon sa listahan para alisin ito
-station_removed	Inalis ang istasyon: {name}
 settings_hub_title	Mga setting
 settings_hub_help	Buksan ang isang lugar sa isang pagkakataon — mas kaunting pag-scroll, mas malinaw na mga pagpipilian.
 settings_back	Bumalik
@@ -181,12 +130,10 @@ settings_sec_country	Bansa at buwis
 settings_sec_tills	Iba pang mga device
 settings_sec_brand	Ang iyong tatak
 settings_sec_units	Mga unit at conversion
-settings_sec_pickers	Mga lugar · istasyon · mga rate ng buwis
+settings_sec_pickers	Mga rate ng buwis
 settings_sec_printers	Mga Printer
 settings_sec_bill	Format ng Bill at Slip
 settings_sec_selling	Mga scheme at benta
-bill_kot_tab_bill	bill ng bisita
-bill_kot_tab_kot	madulas
 settings_sec_alerts	Mga alerto
 alerts_help	Gaano katagal nananatili ang mga status message sa screen para sa iyo (pag-login na ito).
 snack_secs_ph	Segundo (3–60, default 10)
@@ -237,8 +184,6 @@ counter	Kontra
 dine_in	Kontra
 takeaway	Dala-uwi
 order	Order ng restaurant
-tables	Mga counter
-kitchen	Mga seksyon
 sales	Benta
 sales_refunds	Mga benta at refund
 day_close	Malapit na araw
@@ -266,10 +211,6 @@ zero_sales_on	Payagan ang ₹0
 zero_sales_off	Nangangailangan ng presyo
 zero_sales_saved_on	Pinapayagan ang mga benta na walang halaga
 zero_sales_saved_off	Ang mga benta ay dapat na may presyong higit sa ₹0
-floor_areas_help	Ang mga lugar ay mga silid o zone sa sahig (Dine In, Parcel, AC …). Magdagdag muna ng isang lugar, pagkatapos ay maglagay ng mga counter dito — bawat lugar ay isang hiwalay na grupo sa sahig.
-area_new_ph	Bagong lugar / kwarto (hal. AC, Hardin)
-add_area	Magdagdag ng lugar
-area_added	Handa na ang lugar na “{name}” — magdagdag ng mga counter dito
 no_favorites	Wala pang mga paborito — magdagdag ng mga item sa menu mula sa listahan sa ibaba.
 add_to_bill	Idagdag sa bill
 added	Idinagdag
@@ -280,19 +221,9 @@ chip_missing_customer	Nawawala ang napiling customer — pumili muli
 chip_no_customer	Wala pang customer — mag-type ng pangalan, pagkatapos ay i-tap ang Credit
 credit_summary_fmt	{} mga customer · bukas na credit {} · mga advance na gaganapin {}
 recent_label	Kamakailan:
-kot_new_waiting	BAGO — naghihintay
-kot_preparing	PAGHAHANDA
-kot_ready_serve	HANDA - ihain ito
-kot_done_cap	TAPOS NA
-kot_cancelled	KINANSELA
-kot_start_btn	Magsimula
-kot_mark_ready	Handa na si Mark
-kot_done_btn	Tapos na
-table_free	Vacant — i-tap para magsimula ng order
 start_order	Simulan ang order
 open_bill	Buksan ang bill
 collect_payment	Kolektahin ang bayad
-table_running	Tumatakbo
 payment_pending	Nakabinbin ang pagbabayad
 collect_at_counter	kolektahin sa counter
 inventory	Imbentaryo
@@ -325,7 +256,6 @@ ok	OK
 this_shop	Server mode
 extra_till	Client mode
 off	Naka-off
-tables_kitchen	Layout ng tindahan
 server	Server mode
 client	Client mode
 language_currency	Wika at pera
@@ -367,8 +297,6 @@ add_item_plain	Magdagdag ng item sa menu
 add_note	Magdagdag ng tala
 add_opening_balance	Magdagdag ng pambungad na balanse
 add_staff	Magdagdag ng mga tauhan
-add_station	Magdagdag ng istasyon
-add_table	Magdagdag ng hapag kainan
 add_unit	Magdagdag ng unit
 add_use_name	Idagdag / gamitin ang pangalang ito
 allow_extra_tills	Payagan ang mga dagdag na tills
@@ -421,7 +349,6 @@ share_whatsapp	Ibahagi WhatsApp
 lan_pages_heading	Mga page ng customer sa Wi‑Fi
 lan_pages_help	Sa Wi‑Fi ng shop na ito, gumagana ang mga page ng customer para sa display board at feedback. Kailangan ng mga tao sa mobile data ang Cloud sa ibang pagkakataon. Ang terminal ng card o link ng pagbabayad ay opsyonal at hindi kailanman hinaharangan ang counter.
 diag_send_heading	Ibahagi ang device na ito
-kot_dest_heading	Istasyon
 optional_login_heading	Opsyonal na pag-login
 rights_heading	Mga karapatan
 ops_panel	Mga lokal na ops
@@ -448,28 +375,6 @@ till_voucher_amt_ph	Halaga ng voucher (blangko = lahat)
 till_wallet_topup_ph	halaga ng top-up na wallet
 till_voucher_issue_amt_ph	Isyu ang halaga ng voucher
 till_voucher_issue_code_ph	Bagong voucher code
-split_evenly	Hatiin nang pantay-pantay
-waitlist	Listahan ng naghihintay
-fire_course	Susunod na hakbang
-hold_item	Humawak mula sa kusina
-waiter_call	Tumawag ng cashier
-waitlist_add	Idagdag sa waitlist
-floor_view_grid	Hanay
-floor_view_layout	Ayos
-floor_layout_x	X
-floor_layout_y	Y
-floor_layout_w	W
-floor_layout_h	H
-floor_layout_save	I-save ang layout
-floor_layout_open	Buksan ang hapag kainan
-floor_layout_edit	I-edit ang layout
-floor_layout_pick	I-tap ang dining table para i-edit ang layout nito
-floor_layout_saved	Na-save ang layout
-floor_layout_nudge_left	← 20
-floor_layout_nudge_right	→ 20
-floor_layout_nudge_up	↑ 20
-floor_layout_nudge_down	↓ 20
-sibling_pickers_help	I-tap ang On/Off tulad ng mga unit — itago ang mga lugar, istasyon, at mga rate ng buwis mula sa mga pang-araw-araw na picker; pack default manatili.
 bulk_price_apply	Ilapat ang maramihang presyo
 card_terminal_optional	Terminal ng card / link ng pagbabayad (opsyonal kapag available ang internet)
 copy_report	Kopyahin ang ulat
@@ -495,7 +400,6 @@ import_day	Araw ng pag-import
 import_items_csv_plain	Mag-import ng mga item sa menu CSV…
 import_parties_csv	Mag-import ng mga customer at supplier CSV…
 item_name	Pangalan ng item sa menu ng menu
-kitchen_printing	Mga Printer
 login_id_ph	Pangalan ng gumagamit
 mark_cleared	Nag-clear si Mark
 new_party_clear	Bagong customer o supplier (malinaw na form)
@@ -565,15 +469,6 @@ show	Ipakita
 spreadsheet_csv	Talaan (CSV)
 start_fresh	Magsimula ng bago
 stop_extra_tills	Itigil ang mga extra tills
-floor_cols_ph	Mga hanay
-floor_cols_fit	Pagkasyahin ang screen
-floor_cols_fit_sub	{n} kasya dito
-floor_cols_fits	magkasya
-floor_cols_scroll	nag-scroll patagilid
-floor_cols_min	Mga Column: hindi bababa sa 1 — o iwanan itong walang laman upang magkasya sa screen
-floor_zoom_auto	Awtomatiko
-floor_zoom_out	Mag-zoom out
-floor_zoom_in	Mag-zoom in
 backup_auto	Awtomatikong bina-back up araw-araw · huling {when} · ang huling 14 na araw ay pinananatili sa {dir}.
 backup_auto_none	Awtomatikong bina-back up araw-araw — tatakbo ang una sa ilang sandali.
 backup_copy_to	Mapupunta rin ang mga kopya sa {dir}.
@@ -591,7 +486,6 @@ new_pair_code	Bagong code ng pagpapares
 pair_finishing	Tinatapos ang pares... inilalapat ang mga ledger ng shop
 pair_opening	Binubuksan ang hanggang…
 pair_copied	Nakopya ang code ng pagpapares
-kot_waiting	Naghihintay na ipadala
 lan_offline_waiting	Hindi maabot ang server ng tindahan · {n} naghihintay
 lan_connecting	Kumokonekta sa shop…
 lan_live	Mabuhay
@@ -633,7 +527,6 @@ printers_routes_help	Maghanap ng mga printer na alam na ng operating system. Ita
 printer_assign_dd	Tunay na printer: {place}
 printer_assign_pick	Piliin ang tunay na printer
 printer_profile_heading	Ayos
-printer_send_heading	Paghahatid
 vp_delivery_heading	Paghahatid
 vp_delivery_help	Paano nagpapadala ng mga trabaho ang virtual printer na ito — OS na dokumento, raw byte, o ESC/POS. Ang slip content (type size, wrap, margins) ay napagpasyahan ng bill / Slip format, hindi dito.
 vp_type_size_heading	Laki ng uri
@@ -677,23 +570,13 @@ virtual_draft_send	Itinakda ang halaga para sa susunod na virtual na printer
 virtual_need_real	Pumili muna ng totoong printer
 virtual_need_select	Pumili ng virtual na printer na tatanggalin
 real_printer_selected	Napili: {name}
-station_group_heading	Mga virtual na printer
-station_group_apply	Tanggalin ang virtual na printer
-station_group_applied	Tinanggal
-station_group_empty	Pumili ng isang virtual na printer
-station_group_name_ph	Pangalan ng virtual na printer (opsyonal)
-station_group_save	Lumikha ng virtual na printer
-station_group_saved	Na-save ang virtual na printer
-station_manage_heading	Magdagdag o mag-alis ng seksyon ng dispensaryo
 printers_routes_heading	Kung saan naka-print ang mga bagay
 route_pick_heading	Lugar
 route_editing	Pag-edit: {name}
 route_assigned	Idinagdag ang {printer} sa {place}
 route_already_assigned	Nasa lugar na ito: {printer}
-route_removed	Inalis ang {printer} mula sa {place}
 route_cleared	Na-clear {name}
 route_assigned_empty	Wala sa lugar na ito
-route_tap_remove	i-tap para alisin
 route_tap_select	i-tap para pumili
 route_tap_selected	pinili
 route_pick_printer_first	Mag-tap muna ng printer
@@ -714,35 +597,17 @@ printer_format_custom	Bagong custom na profile
 printer_format_custom_label	Pasadya
 printer_format_custom_added	Idinagdag ang custom na profile para sa lugar na ito
 add_printer	Magdagdag ng printer
-remove_printer	Alisin
 route_pick_ph	Bill o isang seksyon ng dispensaryo
 route_bill	bill ng bisita
-route_default_kitchen	Walang istasyon (hindi nakatalagang mga item)
-route_kot_station	Istasyon
 route_dont_print	Walang printer
-stations_heading	Mga istasyon
-stations_help	Pinagpangkat-pangkat ng mga seksyon ng dispensaryo ang mga gamot at ang mga printer para sa bahaging iyon ng tindahan. Mag-attach ng mga printer mula sa Mga Setting → Mga Printer, itakda ang try order, pagkatapos ay Una na gumagana o I-print sa lahat. Nai-save ang mga pagbabago habang nagpapatuloy ka.
-station_print_heading	Mga printer para sa istasyong ito
-station_print_help	Pumili ng istasyon, pagkatapos ay mag-attach ng isa o higit pang mga printer. ↑↓ nagtatakda ng try order. Ang una na gumagana ay humihinto pagkatapos ng unang tagumpay; I-print sa lahat ng ipinapadala sa bawat naka-attach na printer.
-station_print_pick_ph	Istasyon upang magtakda ng mga printer
 station_print_pick_first	Pumili muna ng seksyon ng dispensaryo
-station_print_editing	Pag-edit ng mga printer para sa “{name}”
-station_vps_dd	Mga printer para sa istasyong ito
-station_vps_dd_n	{n} printer · i-tap para baguhin
 station_vps_empty	Wala pang mga printer — Hanapin ang mga ito sa ilalim ng Mga Setting → Mga Printer
 bill_printers_dd	Mga printer para sa bill
 bill_printers_dd_n	{n} printer para sa bill · i-tap para baguhin
-job_layout	Ayos
-job_delivery	Paano ipinadala ang trabaho
-job_delivery_help	OS na dokumento, raw byte, o ESC/POS. Ang bill at ang tiket ay may kanya-kanyang hawak. Maaaring mapunta ang alinmang trabaho sa anumang printer na na-save ng Find.
 station_vp_attached	Naka-attach ang printer
 station_vp_detached	Inalis ang printer sa istasyon
-station_print_summary	{mode} · {n} mga printer
-station_print_summary_none	Wala pang mga printer sa istasyong ito — hindi ito magpi-print
-stations_none	Wala pang istasyon — magdagdag ng isa sa ibaba. Hindi ginagamit ang mga istasyon sa isang counter shop — iwanang walang laman.
 route_up	pataas
 route_down	Pababa
-route_remove	Alisin
 route_clear	Maaliwalas
 save_printers	I-save ang mga printer
 print_test_page	Mag-print ng test page
@@ -751,23 +616,15 @@ test_page_no_printer	Walang printer para sa {place} — mag-attach ng printer di
 test_page_pick_first	Pumili muna ng mga printer para sa isang test page — pagkatapos ay Mag-print ng isang test page
 test_printers_dd	Mga printer para sa isang test page
 test_printers_dd_n	{n} printer para sa isang test page · i-tap para baguhin
-kot_test_printers_dd	Mga Printer para sa Test print
-kot_test_printers_dd_n	{n} (mga) printer para sa Test print · i-tap para baguhin
 test_printer_picked	Pagsubok sa: {name}
 test_printer_cleared	Hindi naka-on ang pagsubok: {name}
 test_page_sent_n	Ipinadala ang test page sa {n} na mga printer
-test_kot_pick_first	Pumili ng (mga) printer para sa Test print muna — pagkatapos ay Test print
-test_kot_sent_n	Ipinadala ang test print sa (mga) {n} printer
-cancel_pick	Markahan
-cancel_pick_on	Minarkahan
-cancel_pick_meta	Minarkahan para sa pagkansela
 batch_cancel	Kanselahin na minarkahan
 batch_cancel_n	Kanselahin na minarkahan ({n})
 batch_cancel_none	Markahan muna ang isa o higit pang mga naipadalang item — pagkatapos ay minarkahan ang Kanselahin
 batch_cancel_title	Kanselahin ang mga may markang gamot — isang dahilan, isang cancel slip bawat seksyon
 batch_cancel_ok	Kinansela ang {n} item · {slips} cancel slip(s) → {kitchens}
 batch_cancel_ok_noprint	Kinansela ang mga item ng {n} — naka-off ang auto-print, kaya walang cancel slip
-no_printer_kitchen_station	Walang printer para sa istasyong iyon
 printers_saved	Nai-save
 test_page_sent	Naipadala ang test page — tingnan ang printer
 test_page_sent_one	Ang pahina ng pagsubok ay ipinadala sa {name} — tingnan ang printer na iyon
@@ -783,10 +640,7 @@ cancelled	Kinansela
 printers_tap_find	I-tap ang Hanapin upang ilista ang mga printer na magagamit ng device na ito.
 printers_none_found	Walang nahanap — mag-type ng pangalan ng system printer o isang IP (hal. 192.168.1.50).
 printer_from_find	Idinagdag {name}
-kot_printer_ph	Printer para sa mga slip
 bill_printer_ph	Printer para sa mga bill
-kot_print_on	Mga auto-print na ticket: Naka-on
-kot_print_off	Mga auto-print na ticket: Naka-off
 queue_refused	Hindi tinatanggap ng tindahan ({n}) — tingnan ang bawat isa sa counter:
 clear_not_accepted	May check — i-clear ang listahang ito
 device_name_ph	Pangalan ng device na ito
@@ -797,7 +651,6 @@ backup_failed	Nabigo ang huling awtomatikong pag-backup: {e}
 backup_overdue	Walang backup sa loob ng {n} araw — panatilihing bukas ang app sa device na ito para makapag-back up ito.
 disk_low	{mb} MB lang ang libre sa device na ito — malapit nang mabigo ang mga backup. Magbakante ng ilang espasyo.
 last_seen_devices	Huling nakita: {time}
-sync_interval	I-sync bawat {secs}s
 connection_to_shop	Koneksyon sa tindahan
 supplier_name_ph	Pangalan ng supplier (o customer)
 supplier_ph	Tagatustos
@@ -860,7 +713,6 @@ fresh_book_tabiyat	Fresh = walang laman na catalog (magdagdag ng mga item sa iba
 fresh_selected	Bagong napili — mananatiling walang laman ang katalogo. I-tap ang Tapos na kapag handa na.
 gross_word	Kabuuan
 how_start	Paano mo gustong magsimula?
-kot_print_help_tabiyat	Hindi ginagamit sa isang counter shop.
 later_country_pack	Mamaya: Mga Setting → ilapat ang iyong country pack para sa mga label ng buwis at pagbabayad.
 local_badge	LOKAL
 mix_type_hint_tabiyat	Hatiin sa cash / UPI / card / credit kung kinakailangan. Kailangan ng credit ang isang customer sa itaas.
@@ -911,8 +763,6 @@ staff_copy_need_source	Piliin kung kaninong setup ang kokopyahin
 staff_copy_same	Iyon ay ang parehong tao - pumili ng iba
 staff_rename_need_selected	Piliin kung sino ang unang papalitan ng pangalan
 team_pick_hint	Piliin kung sino ang ie-edit — lumalabas ang mga screen, karapatan sa pera, at istasyon para sa taong iyon lamang.
-team_stations_help	Mga istasyon na maaari nilang gamitin
-team_stations_changed	Nagbago ang mga istasyon — I-save ang setup para sa taong ito
 team_features_changed	Binago ang mga screen — I-save ang setup para sa taong ito
 team_rights_changed	Binago ang mga karapatan — I-save ang setup para sa taong ito
 they_owe_us	May utang sila sa amin
@@ -996,9 +846,6 @@ service_pct_ph	Serbisyo % opsyonal 0/10/12
 short_code_ph	Maikling code (MG02)
 starting_password_ph	Panimulang password (opsyonal)
 starting_pin_ph	Simula PIN (4–12 digit)
-station_name_ph	Pangalan ng istasyon (opsyonal)
-station_new_ph	Seksyon (opsyonal)
-table_name_ph	Pangalan ng counter / bay
 tax_rate_ph	Pangalan ng rate ng buwis o % — Karaniwan, Binawasan, 0, 5, 12, 18, 20
 to_code_ph	Sa code (kg)
 uncleared_no_ph	Hindi na-clear ang # sa itaas
@@ -1011,27 +858,8 @@ book_kind_month	Mga ledger sa buwang ito
 book_kind_aging	Natitirang / debit-credit
 book_kind_balance	Balanse sheet
 order_help	Mag-tap ng menu item para idagdag ito.
-floor_help	Nagbebenta ang tindahan na ito sa counter. Ang mga mesa at dining floor ay hindi bahagi ng Tabiyat.
-kitchen_help	Hindi ginagamit sa isang counter shop.
-kitchen_empty	Walang bukas na tiket (karaniwang iniiwan ng mga counter shop na hindi ginagamit ang screen na ito).
-add_a_table	Magdagdag ng hapag kainan
-add_station_heading	Magdagdag ng seksyon ng dispensaryo
 categories_help	I-tap ang Gamitin upang i-file ang menu item sa itaas sa ilalim ng kategoryang iyon. Ang larawan ay nagbibigay sa kategorya ng isang larawan; kung walang isa ay ipinapakita nito ang mga inisyal nito.
 dish_search_ph	Hanapin ang pangalan, asin o barcode...
-tile_free	bakante
-tile_occupied	Okupado
-tile_food_ready	Handa na ang pagkain
-tile_bill_printed	Naka-print ang bill
-tile_paid	Binayaran
-tile_bill_btn	bill ng bisita
-tile_occupy_btn	Paupuin ang mga bisita
-tile_free_btn	Iwanan ang hapag kainan
-tile_ready_btn	Iwanan ang hapag kainan
-tile_undo_bill	I-undo ang bill
-summary_busy	abala ang mga hapag kainan
-summary_to_collect	upang mangolekta
-summary_on_floor	sa dining hall
-floor	Mamili
 sizes_as_items_ph	Mga laki bilang hiwalay na mga item sa menu (opsyonal) — Kalahati=120, Buo=200
 dish_group_ph	Lakas / pangkat ng pack (opsyonal) — hal. 500mg strip
 discount	diskwento
@@ -1039,7 +867,6 @@ remove_discount	Alisin ang diskwento
 apply_discount	Mag-apply ng discount
 save_opening_cash	I-save ang pagbubukas ng cash
 close_shift_print	Isara ang shift at print slip
-area_prices_ph	Mga presyo ng lugar (opsyonal) — AC=220, Parcel=210
 discount_ph	10% o 50
 discount_reason_ph	Dahilan (hal. regular na bisita, late na pagkain)
 opening_float_ph	Inilagay ang pera sa drawer ngayong umaga
@@ -1049,34 +876,18 @@ shift_handover	Paglipat ng shift
 shift_since	Ang shift na ito mula noon
 expected_in_drawer	Inaasahan sa drawer
 right_discount	Bigyan ng discount
-floor_in_kitchen	Isinasagawa
-floor_eating	Inihain
 pick_category	Pumili ng kategorya
 close_category_list	Isara ang listahan ng kategorya
 new_category_row	Bagong kategorya — nilikha kapag nai-save mo ang item sa menu
 your_category	Iyong kategorya
 suggested_category	Iminungkahing — mula sa aming mga item
 category_search_ph	Kategorya — maghanap sa iyo o mag-type ng bago
-line_sent_state	Ipinadala
-line_nc_state	Komplimentaryo (NC) — hindi sinisingil
 cancel_item_short	Kanselahin
-nc_short	Walang bayad
-charge_again_short	singilin
-move_short	Ilipat
 cancel_item_title	Kanselahin ang item na ito — ang back office ay makakakuha ng cancel slip
-nc_item_title	Gawing komplimentaryo (NC) ang item sa menu na ito
-charge_again_title	I-charge muli ang menu item na ito
-move_item_title	Ilipat ang menu item na ito sa isa pang hapag kainan
-already_cooked	Naluto na (waste)
-not_cooked_yet	Hindi pa luto
 return_to_customer	Bumalik sa customer
 short_by	Kulang ng
 tip_not_sale	Tip (mga tauhan, hindi benta)
 right_settle	Kunin ang bayad
-right_cancel_sent	Kanselahin ang isang naipadalang item sa menu
-right_complimentary	Komplimentaryo (NC)
-right_move_table	Ilipat / pagsamahin ang mga counter
-right_reprint	I-print muli ang bill
 right_allowed	Pinayagan
 right_with_approval	Nang may pagsang-ayon
 right_denied	Hindi pinapayagan
@@ -1086,25 +897,11 @@ no_server_found	Walang nahanap. Sa Server: Mga Setting → Iba pang mga device �
 servers_found_pick	I-tap ang shop na gusto mong kumonekta.
 server_host_selected	Gamit ang {host} — ilagay ang code ng pagpapares, pagkatapos ay Ipares ngayon.
 print_bill	I-print ang bill
-table_actions	Mga kontra aksyon
-move_merge_table	Ilipat / pagsamahin ang hapag kainan
-move_help	Ilipat ang order ng counter na ito sa isang libreng table, o pagsamahin ito sa isang tumatakbo.
-move_target_ph	Pangalan ng counter
 approval_pin_ph	Manager PIN (kung tatanungin lang)
-move_here	Lumipat dito
-merge_into	Pagsamahin ito
-line_reason_ph	Dahilan (hal. nagbago ang isip ng customer, wala nang stock)
-line_qty_ph	Ilan ang kakanselahin (blangko = lahat)
-line_target_ph	Lumipat sa hapag kainan (hal. D5)
 confirm	Kumpirmahin
 menu_search_ph	Maghanap ng item sa menu o maikling code
 customer_paid_ph	Nagbayad ang customer
 tip_ph	Dagdag
-table_area_ph	Lugar (hal. Dine In, Parcel, AC)
-table_range_ph	Marami nang sabay-sabay: D1-D20
-add_these_tables	Idagdag ang mga counter na ito
-remove_these_tables	Alisin ang mga counter na ito
-table_remove_ph	Alisin: T1-T24, o pangalan ng isang hapag kainan
 find_server	Hanapin ang server ng shop
 bill_format	Format ng bill
 bill_format_help	Naka-print sa ilalim ng pangalan ng iyong tindahan sa bawat bill. Paghiwalayin ang mga linya na may | (hal. MG Road, Rajkot | Ph 98250 00000).
@@ -1112,78 +909,32 @@ bill_header_ph	Address | telepono
 fssai_ph	Drug license no. (opsyonal - ang iyong mga salita)
 bill_footer_ph	Footer (hal. Salamat, bumisita muli)
 save_bill_format	I-save ang format ng bill
-kot_format	Format ng slip
-kot_format_help	Mag-tap ng field sa listahan. Nalalapat ang palabas, laki ng font, at timbang sa field na iyon sa uri ng slip na pinili sa itaas. Ang bawat uri ay nagpapanatili ng sarili nitong sukat at timbang.
-kot_format_fields	Mga patlang
-kot_field_next	Susunod na field
-kot_field_show	Ipakita
-kot_field_hide	Magtago
 kot_field_on	palabas
 kot_field_off	itago
-kot_field_size	Laki ng font
-kot_field_size_ph	hal. 16, 20, 24, 28, 32…
 kot_weight_light	Liwanag
 bill_kot_panel_help	Layout ng bill at lapad ng nilalaman. Ang cashier ay ang nag-isyu o nag-ayos ng bayarin — ang buong kuwento ng pagbebenta ay mananatili sa mga aklat.
 std_size_ph	hal. 18, 20, 26…
-kot_show_shop	Pangalan ng tindahan
-kot_hide_shop	Itago ang tindahan
-kot_show_time	Oras
-kot_hide_time	Itago ang oras
-kot_show_waiter	Kahera
-kot_hide_waiter	Itago ang cashier
-kot_show_station	Istasyon
-kot_hide_station	Itago ang istasyon
-kot_show_table	Kontra
-kot_hide_table	Itago ang hapag kainan
-kot_show_kot_no	Ticket No
-kot_hide_kot_no	Itago ang ticket No
-kot_width	I-preview ang wrap (itakda ang lapad ng nilalaman sa slip tab)
-kot_width_58	58 mm
-kot_width_80	80 mm
-kot_kind_heading	Uri ng tiket
-kot_kind_original	Orihinal
-kot_kind_duplicate	Duplikado
-kot_kind_modified	Binago
-kot_kind_cancelled	Kinansela
-kot_style_heading	Laki at bigat ng uri ng field
-kot_style_title	Pamagat
-kot_style_item_qty	Menu item sa menu · Dami
-kot_style_field_pick	Pumili ng field
 kot_weight_regular	Karaniwan
 kot_weight_bold	Matapang
-kot_align	I-align
 kot_align_start	Magsimula
 kot_align_center	Gitna
 kot_align_end	Tapusin
 content_width	Lapad ng nilalaman (mm)
 content_width_bill	Lapad ng nilalaman ng bill (mm)
-content_width_kot	Lapad ng nilalaman ng tiket (mm)
 content_width_ph	O mag-type ng lapad ng nilalaman, 40–210 mm
 content_width_help	Gaano kalawak ang pag-print ng slip na ito. Pinapanatili ni Bill ang sarili nitong lapad.
 content_width_bill_help	Gaano kalawak ang pag-print ng bill ng customer. Default na 210 mm (pahina). 58 mm narrow slip, 80 mm wide slip, 112 mm 4-inch, 210 mm A4-wide. Mag-type ng anumang halaga mula 40 hanggang 210. Ang mga tiket ay may sariling lapad sa tab na slip.
-content_width_kot_help	Gaano kalawak ang mga print ng tiket. Default na 80 mm. 58 mm narrow slip, 80 mm wide slip, 112 mm 4-inch, 210 mm na pahina. Mag-type ng anumang halaga mula 40 hanggang 210. May sariling lapad ang mga bill ng customer sa tab na Bill.
 vp_paper_width	Lapad ng nilalaman (mm)
 vp_paper_width_ph	O mag-type ng lapad ng nilalaman, 40–210 mm
 vp_paper_width_help	Ang lapad ng nilalaman ay nakatakda sa ilalim ng Bill at Slip na format — hiwalay para sa bill (default 210 mm) at ang ticket (default na 80 mm).
-kot_size	Laki ng font
-kot_size_s	Maliit
-kot_size_m	Karaniwan
-kot_size_l	Malaki
 std_size	Laki ng font
 kot_copies	Mga kopya
 kot_copies_1	1
 kot_copies_2	2
 kot_copies_3	3
-kot_title_ph	Pamagat (blangko = TICKET)
-kot_footer_ph	back-office note (opsyonal)
-kot_preview	Silipin
-save_kot_format	I-save ang Slip na format
-test_kot_format	Subukan ang pag-print
-test_kot_sent	Ipinadala ang preview ng tiket
 test_bill_format	Subukin ang resibo
 test_bill_sent	Ipinadala ang preview ng bill
 test_print_no_printer	Walang printer para sa trabahong iyon — pumili ng isa sa screen na ito
-kot_format_saved	Na-save ang format ng slip
 std_print	Laki ng pag-print ng bill
 std_print_help	Laki ng font para sa Standard Portrait at Landscape bill na mga trabaho sa mga OS / document printer (magpasok ng mga punto — hindi Maliit/Normal/Malaki). Parehong laki sa parehong oryentasyon.
 std_size_s	Maliit
@@ -1223,23 +974,16 @@ upi_qr	UPI QR
 show_upi_qr	Ipakita ang UPI QR
 close_upi_qr	Isara
 upi_qr_help	Nag-scan at nagbabayad ang customer. I-tap ang Kumuha ng bayad pagkatapos nilang magbayad. Pangalawang screen: buksan ang Server URL /display sa LAN.
-kot_recall	Alalahanin
 recently_done	Kamakailang ginawa
-recall_kot_ph	Ticket # na maaalala
 role_help_customer	Tungkulin: Customer — credit ledger (may utang sila sa amin). Ang parehong customer o supplier ay maaari ding magbigay ng stock.
 role_help_both	Mga Tungkulin: Customer + Supplier — isang customer o supplier, credit ledger at payable ledger, net sa Reports.
 role_help_supplier	Tungkulin: Supplier — may utang tayo sa kanila para sa mga pagbili.
-dine_in_pick_table	Hindi ginagamit sa isang counter shop
-choose_table	Pumili ng counter
-change_table	Baguhin ang hapag kainan
-pick_table_banner	Pumili ng hapag kainan para sa order na ito
 items_word	mga item sa menu
 items_section	Mga item sa menu ng menu
 back_to_order	Bumalik sa order
 new_items_head	Hindi pa naipadala
 price_ph	Presyo
 price_ph_gst_inside	Presyo ({tax} kasama)
-cancel_needs_table	Ang mga counter sales ay mananatili sa tiket hanggang sa kumuha ka ng bayad
 tax_rates_missing_hint	Walang {tax} rate sa mga item na ito — sa Items set Tax rate (kasama na sa mga presyo ang {tax} sa ilalim ng {tax} inclusive)
 taxable_value	Nabubuwisan na halaga
 gst_inside_price_note	({tax} kasama)
@@ -1260,30 +1004,11 @@ client_template_confirm	Magdagdag ng {d} item mula sa {title}? Ang mga item na m
 client_template_importing	Ini-import ang {title}…
 client_template_done	Ang bawat item mula sa {title} ay nasa iyong mga item.
 client_template_imported	Nagdagdag ng {d} item at {c} na mga kategorya mula sa {title}
-resv_heading	Mga pagpapareserba
-resv_name_ph	Pangalan ng customer
-resv_phone_ph	Telepono (opsyonal)
-resv_guests_ph	Mga tao
-resv_when_ph	Kailan — 20:30, bukas 13:00
-resv_table_ph	Counter (opsyonal)
-resv_add	Magpareserba ng hapag kainan
-resv_seat	Nakaupo
-resv_none	Walang paparating na booking.
-guests_word	mga bisita
-delivery_by_ph	Paghahatid ni (pangalan ng rider o staff)
-kitchen_all_day	Lutuin ngayon: {items}
-split_bill	Hatiin ang bill
-split_go	Gumawa ng hiwalay na bill
 cancel	Kanselahin
 opening_client	Binubuksan ang kliyente…
 preparing_desk	Inihahanda ang desk…
 opening_server	Binubuksan ang server…
 creating_server	Gumagawa ng server…
-split_help	I-tap ang mga item na binabayaran ng isang customer · {n} ang napili
-split_send_first	Magpadala muna ng slip — tanging ang mga bagay na mayroon sa back office ang maaaring mapunta sa isang hiwalay na bill
-split_pick_some	I-tap muna ang mga item para sa hiwalay na bill
-split_done	Gumawa ng hiwalay na bill — ito ay nasa sahig sa tabi ng counter na ito
-split_marked	hiwalay na bill
 order_empty_pick	Walang laman ang order — i-tap ang Magdagdag ng mga item sa itaas upang pumili ng mga item.
 add_dishes	Magdagdag ng mga gamot
 order_so_far	Sa order na ito: {n} · {total}
@@ -1294,24 +1019,8 @@ pick_done_dd	Tapos na · {label}
 printer_route_mode	Kung maraming printer sa lugar na ito
 printer_mode_first	Una na gumagana
 printer_mode_all	I-print sa lahat
-kot_show_area	Lugar
-kot_hide_area	Itago ang lugar
-kot_show_item_hdr	Menu item sa menu · Dami
-kot_hide_item_hdr	Itago ang mga column
-kot_show_title	linya ng pamagat
-kot_hide_title	Itago ang pamagat
-kot_field_order	Ayos ng pag-imprenta
 kot_field_up	Umakyat
 kot_field_down	Ilipat pababa
-kot_field_cycle	Piliin ang susunod
-kot_field_select	Piliin ang susunod
-kot_field_time	Oras
-kot_field_kot_no	Ticket No
-kot_field_area	Lugar
-kot_field_table	Kontra
-kot_field_shop	Pangalan ng tindahan
-kot_field_waiter	Mga tauhan
-kot_field_station	Istasyon
 app_template_blurb_extra	Gayundin: May-ari Zahir, Admin Asif, Cashier Nawaz; sidebar sa harap; kasaysayan pagkatapos ng 4 na oras; Ngayon hubarin; compact bill.
 dishes_n	{n} item
 recipe_ph	Recipe (opsyonal — hindi ginagamit sa isang counter shop)
@@ -1321,8 +1030,6 @@ low_stock_alert	Paubos na — bumili agad: {items}
 unpriced_note	Ang {n} na mga item sa iyong mga item ay wala pang presyo — naniningil sila sa 0 hanggang sa magtakda ka ng isa.
 show_unpriced	Ipakita lamang ang mga item na walang presyo
 show_all_dishes	Ipakita ang lahat ng mga item
-role_waiter	Kahera
-role_kitchen	Tindahan
 role_title_rest_ph	Pamagat ng tungkulin (hal. Captain, Head cook)
 preset_help_rest	Cashier: ibenta. Manager: ibenta + menu item + void/amend.
 kind_raw	Pinagsasama-sama ang stock

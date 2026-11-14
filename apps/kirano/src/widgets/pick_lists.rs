@@ -26,15 +26,13 @@ impl SuggestList {
 
 impl Widget for SuggestList {
     fn draw_walk(&mut self, cx: &mut Cx2d, scope: &mut Scope, walk: Walk) -> DrawStep {
-        let cols_menu = self.field == "floor_cols";
-        let (open, rows, rev, lang, selected_cols) = {
+        let (open, rows, rev, lang) = {
             let st = app_state().lock().unwrap();
             (
                 st.suggest_open.map(|f| f.key()) == Some(self.field.as_str()),
                 st.suggest_rows.clone(),
                 st.suggest_rev,
                 st.locale.language.clone(),
-                st.floor_columns,
             )
         };
         if open && !rows.is_empty() {
@@ -98,31 +96,17 @@ impl Widget for SuggestList {
                     let Some(row) = draw_rows.get(item_id) else {
                         continue;
                     };
-                    let selected = cols_menu
-                        && selected_cols >= 1
-                        && row.value.parse::<usize>().ok() == Some(selected_cols);
-                    // The selected row is its own template (its background is
-                    // the selected wash); hit Button hover sits on top.
-                    let template = if selected { id!(ItemSel) } else { id!(Item) };
-                    let item = list.item(cx, item_id, template);
+                    let item = list.item(cx, item_id, id!(Item));
                     item.label(cx, ids!(title)).set_text(cx, &row.value);
                     item.label(cx, ids!(subtitle)).set_text(cx, &row.subtitle);
                     item.label(cx, ids!(subtitle)).set_visible(cx, !row.subtitle.is_empty());
-                    if cols_menu {
-                        item.label(cx, ids!(action)).set_visible(cx, selected);
-                        item.label(cx, ids!(action)).set_text(
-                            cx,
-                            if selected { "\u{2713}" } else { "" },
-                        );
+                    let action = if row.action.trim().is_empty() {
+                        use_text.as_str()
                     } else {
-                        let action = if row.action.trim().is_empty() {
-                            use_text.as_str()
-                        } else {
-                            row.action.as_str()
-                        };
-                        item.label(cx, ids!(action)).set_visible(cx, true);
-                        item.label(cx, ids!(action)).set_text(cx, action);
-                    }
+                        row.action.as_str()
+                    };
+                    item.label(cx, ids!(action)).set_visible(cx, true);
+                    item.label(cx, ids!(action)).set_text(cx, action);
                     item.draw_all_unscoped(cx);
                     drew += 1;
                 }
@@ -159,11 +143,10 @@ impl Widget for SuggestList {
 /// Tallest a "type or pick" list gets before it scrolls (about six rows).
 const SUGGEST_MAX_HEIGHT: f64 = 330.0;
 
-/// Order-desk kitchen dropdown: same open/rows as [`SuggestList`] for
-/// `kot_station`, but each row is a checkbox item (checked = station is on
-/// unsent dishes / Don't use).
+/// Printer checklists (Settings → Printers / Bill): same open/rows as
+/// [`SuggestList`], but each row is a checkbox item (checked = in use).
 #[derive(Script, ScriptHook, Widget)]
-struct StationCheckList {
+struct CheckList {
     #[deref]
     view: View,
     #[live]
@@ -176,7 +159,7 @@ struct StationCheckList {
     hold_rows: Vec<suggest::SuggestRow>,
 }
 
-impl StationCheckList {
+impl CheckList {
     fn is_open(&self) -> bool {
         app_state().lock().unwrap().suggest_open.map(|f| f.key()) == Some(self.field.as_str())
     }
@@ -186,7 +169,7 @@ impl StationCheckList {
     }
 }
 
-impl Widget for StationCheckList {
+impl Widget for CheckList {
     fn draw_walk(&mut self, cx: &mut Cx2d, scope: &mut Scope, walk: Walk) -> DrawStep {
         let (open, rows, lang) = {
             let st = app_state().lock().unwrap();
@@ -251,12 +234,10 @@ impl Widget for StationCheckList {
                     let is_unassigned = row.value.eq_ignore_ascii_case(&unassigned);
                     item.label(cx, ids!(title)).set_text(cx, &row.value);
                     let printer_assign = self.field == "printer_assign";
-                    let station_vps = self.field == "station_vps"
-                        || self.field == "bill_printers"
-                        || self.field == "test_printers"
-                        || self.field == "kot_test_printers";
-                    let team_stations = self.field == "team_kot_stations";
-                    // PrinterAssign / station VPs keep id in subtitle — never show it.
+                    let station_vps =
+                        self.field == "bill_printers" || self.field == "test_printers";
+                    // PrinterAssign / virtual-printer lists keep the id in the
+                    // subtitle — never show it.
                     item.label(cx, ids!(subtitle)).set_text(
                         cx,
                         if printer_assign || station_vps {
@@ -274,12 +255,9 @@ impl Widget for StationCheckList {
                     // Drawn box / filled+✓ — ☐ was missing from Noto (tofu).
                     item.view(cx, ids!(check_off)).set_visible(cx, !checked);
                     item.view(cx, ids!(check_on)).set_visible(cx, checked);
-                    // Team person access: checkboxes only — no print-order ↑↓.
                     // Test-printer checklists are multi-check only (no priority).
-                    let test_pick =
-                        self.field == "test_printers" || self.field == "kot_test_printers";
-                    if team_stations
-                        || is_unassigned
+                    let test_pick = self.field == "test_printers";
+                    if is_unassigned
                         || test_pick
                         || ((printer_assign || station_vps) && !checked)
                     {

@@ -68,28 +68,6 @@ applied	వర్తింపు
 note_ph	గమనిక (ఐచ్ఛికం)
 rounded	రౌండ్
 split	విభజించు
-send_kot	స్లిప్ పంపు
-send_kot_to	పంపు → {kitchens}
-send_kot_again	తదుపరి స్లిప్ కోసం ఐటమ్‌లు జోడించు
-send_kot_held	హోల్డ్ చేసిన ఐటమ్‌లు — పంపడానికి హోల్డ్ తీసివేయి
-reprint_kot	ఎంచుకున్నవి మళ్లీ ప్రింట్
-reprint_kot_ok	{n} ఐటమ్‌లు మళ్లీ ముద్రించారు · {slips} స్లిప్‌లు → {kitchens}
-reprint_kot_needed	ముందు స్లిప్ పంపండి — తర్వాత ఐటమ్‌లు చేర్చి ఎంచుకున్నవి మళ్లీ ముద్రించండి
-reprint_kot_none_selected	పంపిన ప్రతి ఐటమ్ దాటవేయబడింది — మళ్లీ ముద్రించాల్సిన వాటిపై «ముద్రణలో» నొక్కండి
-reprint_kot_client	{place} కోసం మళ్లీ ముద్రించు ({n}) పంపారు — దుకాణం పరికరం ముద్రిస్తుంది
-print_cancelled_kot	రద్దు అన్నీ ప్రింట్
-print_cancelled_kot_ok	{n} రద్దు చేసిన ఐటమ్‌లు ముద్రించారు · {slips} స్లిప్‌లు → {kitchens}
-print_cancelled_kot_needed	ముందు రద్దు చేసిన ఐటమ్‌లు ఉన్న టేబుల్ తెరవండి
-print_cancelled_kot_none	ఈ ఆర్డర్‌లో రద్దు చేసిన ఐటమ్‌లు లేవు
-print_cancelled_kot_client	{place} కోసం రద్దు ముద్రించు ({n}) పంపారు — దుకాణం పరికరం ముద్రిస్తుంది
-kot_banner	బ్యానర్
-kot_banner_ph	బ్యానర్ (ఖాళీ = లేదు)
-kot_item_prefix	ఐటమ్ ప్రిఫిక్స్
-kot_item_prefix_ph	ఉదా. [CANCELLED] 
-kot_strike	ఐటమ్ పేరు కొట్టివేయి
-kot_strike_note	ఐటమ్ నోట్ కొట్టివేయి
-kot_strike_on	ఆన్
-kot_strike_off	ఆఫ్
 bill_item_layout	ఐటమ్ లేఅవుట్
 bill_item_layout_columns	నిలువు వరుసలు
 bill_item_layout_stacked	వరుసలు
@@ -118,8 +96,6 @@ bill_item_gap_em	ఖాళీ (em)
 bill_item_qty_min	సంఖ్య కనిష్టం (em)
 bill_item_price_min	ధర కనిష్టం (em)
 bill_item_amount_min	మొత్తం కనిష్టం (em)
-kot_item_qty_width	సంఖ్య నిలువు
-kot_item_num_align	సంఖ్య అమరిక
 bill_total_qty_label	మొత్తం సంఖ్య లేబుల్
 bill_total_subtotal_label	ఉప మొత్తం లేబుల్
 bill_total_grand_label	మొత్తం లేబుల్
@@ -131,36 +107,9 @@ bill_item_piece_off	ఆఫ్
 bill_total_qty	మొత్తం పరిమాణం
 bill_total_subtotal	ఉప మొత్తం
 bill_total_grand	మొత్తం
-reprint_incl	ప్రింట్‌లో
-reprint_skip	దాటవేయి
-reprint_skip_meta	రికవరీ ప్రింట్ దాటవేయి
-kot_dest_hint	సెట్టింగ్‌లు → ప్రింటర్లలో {kitchens}కు ఇచ్చిన ప్రింటర్లపై ముద్రిస్తుంది
-kot_sent_hint	చివరిసారి {kitchens}కు వెళ్లింది. తదుపరి బిల్లు కోసం ఐటమ్‌లు జోడించడానికి నొక్కండి — లేదా అదే దాని కోసం స్లిప్ మళ్లీ ముద్రించండి.
-kot_sent_printing	స్లిప్ {kitchens}కు పంపబడింది — ముద్రణ
-kot_sent_not_printed	స్లిప్ {kitchens}కు పంపారు కానీ ముద్రించబడలేదు: {why}. దుకాణానికి చెప్పండి, తర్వాత ప్రింటర్ సరిచేసి మళ్లీ ముద్రించండి.
-kot_sent_screen	స్లిప్ {kitchens}కు పంపారు
-kot_queued_shop	{place} స్లిప్ → {kitchens} సేవ్ అయింది; దుకాణం పరికరం ముద్రిస్తుంది
-kot_job_label	{place} స్లిప్ → {kitchens}
-kot_job_reached	{place} స్లిప్ {kitchens}కు చేరింది
 kot_unassigned	కేటాయించనివి
-kot_unassigned_held	స్టేషన్ లేని {n} ఐటమ్‌లు హోల్డ్‌లో — పంపడానికి వరుసలో హోల్డ్ తీసివేయండి
-kot_station_ph	స్టేషన్
-kot_station_dd	స్టేషన్
-kot_station_dd_n	స్టేషన్ · {stations}
-kot_set_station	ఈ స్టేషన్ వాడు
-kot_station_applied	{n} ఐటమ్‌లకు స్టేషన్ పెట్టారు: {station}
-kot_station_cleared	{n} ఐటమ్‌ల నుండి స్టేషన్ తీసేశారు: {station}
-kot_station_needed	ముందు దుకాణంలో ఒక విభాగం ఎంచుకోండి
-kot_station_not_allowed	ఈ విభాగం వాడటానికి అనుమతి లేదు: {station}
-kot_station_none	ఇంకా స్టేషన్లు లేవు — కౌంటర్ దుకాణంలో అవసరం లేదు (కావాలంటే సెట్టింగ్‌లు → ఏరియాలు)
 pos_tab_items	జోడించినవి
 pos_tab_payment	చెల్లింపు
-hold_send	ఆపు
-hold_send_on	హోల్డ్
-hold_send_meta	హోల్డ్ — ఈ స్లిప్‌లో కాదు
-station_remove	స్టేషన్ తీసివేయి
-station_remove_ph	తీసివేయడానికి జాబితాలో స్టేషన్ నొక్కండి
-station_removed	స్టేషన్ తీసేశారు: {name}
 settings_hub_title	సెట్టింగ్‌లు
 settings_hub_help	ఒకసారి ఒక విభాగం తెరవండి — తక్కువ స్క్రోల్, స్పష్టమైన ఎంపికలు.
 settings_back	వెనుకకు
@@ -169,12 +118,10 @@ settings_sec_country	దేశం & పన్ను
 settings_sec_tills	అదనపు టిల్‌లు & శాఖలు
 settings_sec_brand	మీ బ్రాండ్
 settings_sec_units	యూనిట్లు & మార్పిడులు
-settings_sec_pickers	ఏరియాలు · స్టేషన్లు · పన్ను రేట్లు
+settings_sec_pickers	పన్ను రేట్లు
 settings_sec_printers	ప్రింటర్లు
 settings_sec_bill	బిల్ మరియు స్లిప్ ఫార్మాట్
 settings_sec_selling	స్కీమ్‌లు & అమ్మకాలు
-bill_kot_tab_bill	బిల్
-bill_kot_tab_kot	స్లిప్
 settings_sec_alerts	హెచ్చరికలు
 alerts_help	స్థితి సందేశాలు మీకు తెరపై ఎంతసేపు ఉండాలి (ఈ లాగిన్‌కు).
 snack_secs_ph	సెకన్లు (3–60, డిఫాల్ట్ 10)
@@ -225,8 +172,6 @@ counter	కౌంటర్
 dine_in	కౌంటర్
 takeaway	పార్సెల్
 order	ఆర్డర్
-tables	కౌంటర్లు
-kitchen	విభాగం
 sales	అమ్మకాలు
 sales_refunds	అమ్మకాలు మరియు వాపసు
 day_close	రోజు ముగింపు
@@ -254,10 +199,6 @@ zero_sales_on	సున్నా అమ్మకాలు: ఆన్
 zero_sales_off	సున్నా అమ్మకాలు: ఆఫ్
 zero_sales_saved_on	సున్నా అమ్మకాల అనుమతి సేవ్ (ఆన్)
 zero_sales_saved_off	సున్నా అమ్మకాల అనుమతి సేవ్ (ఆఫ్)
-floor_areas_help	ఏరియాలు ఫ్లోర్‌పై గదులు లేదా జోన్లు (Dine In, Parcel, AC …). ముందు ఒక ఏరియా జోడించండి, తర్వాత అందులో కౌంటర్లు పెట్టండి — ప్రతి ఏరియా ఫ్లోర్‌పై వేరే సమూహం.
-area_new_ph	కొత్త ఏరియా / గది (ఉదా. AC, Garden)
-add_area	ఏరియా జోడించు
-area_added	ఏరియా “{name}” సిద్ధం — అందులో కౌంటర్లు జోడించండి
 no_favorites	ఇంకా ఇష్టమైనవి లేవు — క్రింది జాబితా నుండి వస్తువులను జోడించండి.
 add_to_bill	బిల్లుకు జోడించండి
 added	జోడించబడింది
@@ -268,19 +209,9 @@ chip_missing_customer	ఎంచుకున్న కస్టమర్ లే�
 chip_no_customer	ఇంకా కస్టమర్ లేరు — పేరు రాయండి, తర్వాత Credit నొక్కండి
 credit_summary_fmt	{} కస్టమర్లు · ఓపెన్ క్రెడిట్ {} · అడ్వాన్సులు {}
 recent_label	ఇటీవలివి:
-kot_new_waiting	కొత్తది — వేచి ఉంది
-kot_preparing	సిద్ధమవుతోంది
-kot_ready_serve	సిద్ధం — వడ్డించండి
-kot_done_cap	పూర్తయింది
-kot_cancelled	రద్దు చేయబడింది
-kot_start_btn	ప్రారంభించండి
-kot_mark_ready	సిద్ధంగా గుర్తించండి
-kot_done_btn	పూర్తి
-table_free	ఖాళీ — ఆర్డర్ ప్రారంభించడానికి నొక్కండి
 start_order	ఆర్డర్ ప్రారంభించండి
 open_bill	బిల్లును తెరవండి
 collect_payment	చెల్లింపు తీసుకోండి
-table_running	నడుస్తోంది
 payment_pending	చెల్లింపు పెండింగ్
 collect_at_counter	కౌంటర్ వద్ద తీసుకోండి
 inventory	నిల్వ
@@ -313,7 +244,6 @@ ok	సరే
 this_shop	సర్వర్ మోడ్
 extra_till	క్లయింట్ మోడ్
 off	ఆఫ్
-tables_kitchen	దుకాణం అమరిక
 server	సర్వర్
 client	క్లయింట్
 language_currency	భాష మరియు కరెన్సీ
@@ -355,8 +285,6 @@ add_item_plain	ఐటమ్ జోడించు
 add_note	గమనిక జోడించు
 add_opening_balance	ప్రారంభ నిల్వ జోడించు
 add_staff	సిబ్బందిని జోడించు
-add_station	స్టేషన్ జోడించు
-add_table	టేబుల్ జోడించు
 add_unit	యూనిట్ జోడించు
 add_use_name	ఈ పేరును జోడించు / ఉపయోగించు
 allow_extra_tills	అదనపు టిల్‌లను అనుమతించు
@@ -409,7 +337,6 @@ share_whatsapp	వాట్సాప్ షేర్
 lan_pages_heading	Wi‑Fiలో కస్టమర్ పేజీలు
 lan_pages_help	ఈ దుకాణం Wi‑Fiలో కస్టమర్ పేజీలు డిస్‌ప్లే బోర్డ్, అభిప్రాయం కోసం పనిచేస్తాయి. మొబైల్ డేటాపై ఉన్నవారికి తర్వాత Cloud కావాలి. కార్డ్ టెర్మినల్ లేదా చెల్లింపు లింక్ ఐచ్ఛికం, కౌంటర్‌ను ఎప్పుడూ ఆపదు.
 diag_send_heading	ఈ పరికరం నుండి పంచుకోండి
-kot_dest_heading	స్టేషన్
 optional_login_heading	ఐచ్ఛిక లాగిన్
 rights_heading	హక్కులు
 ops_panel	స్థానిక పనులు
@@ -436,28 +363,6 @@ till_voucher_amt_ph	వౌచర్ మొత్తం (ఖాళీ = అన్
 till_wallet_topup_ph	వాలెట్ టాప్-అప్ మొత్తం
 till_voucher_issue_amt_ph	కొత్త వౌచర్ మొత్తం
 till_voucher_issue_code_ph	కొత్త వౌచర్ కోడ్
-split_evenly	సమానంగా విభజించు
-waitlist	వెయిట్‌లిస్ట్
-fire_course	తదుపరి దశ
-hold_item	ఆపు
-waiter_call	క్యాషియర్‌ను పిలువు
-waitlist_add	వెయిట్‌లిస్ట్‌కు జోడించు
-floor_view_grid	గ్రిడ్
-floor_view_layout	లేఅవుట్
-floor_layout_x	X
-floor_layout_y	Y
-floor_layout_w	W
-floor_layout_h	H
-floor_layout_save	లేఅవుట్ సేవ్
-floor_layout_open	టేబుల్ తెరువు
-floor_layout_edit	లేఅవుట్ సవరించు
-floor_layout_pick	లేఅవుట్ మార్చడానికి టేబుల్ నొక్కండి
-floor_layout_saved	అమరిక సేవ్ అయింది
-floor_layout_nudge_left	← 20
-floor_layout_nudge_right	→ 20
-floor_layout_nudge_up	↑ 20
-floor_layout_nudge_down	↓ 20
-sibling_pickers_help	యూనిట్ లాగా On/Off — ప్రాంతాలు, స్టేషన్లు, పన్ను రేట్లను రోజువారీ పికర్ నుండి దాచు; ప్యాక్ డిఫాల్ట్‌లు ఉంటాయి.
 bulk_price_apply	బల్క్ ధర వర్తించు
 card_terminal_optional	కార్డు టెర్మినల్ / పేమెంట్ లింక్ (ఇంటర్నెట్ ఉంటే ఐచ్ఛికం)
 copy_report	నివేదిక కాపీ
@@ -483,7 +388,6 @@ import_day	రోజును దిగుమతి చేయి
 import_items_csv_plain	ఐటమ్‌ల CSV దిగుమతి…
 import_parties_csv	పార్టీల CSV దిగుమతి…
 item_name	ఐటమ్ పేరు
-kitchen_printing	కిచెన్ ప్రింటింగ్
 login_id_ph	లాగిన్ ఐడీ
 mark_cleared	క్లియర్‌గా గుర్తించు
 new_party_clear	కొత్త పార్టీ (ఫారం ఖాళీ చేయి)
@@ -553,15 +457,6 @@ show	చూపించు
 spreadsheet_csv	స్ప్రెడ్‌షీట్ (CSV)
 start_fresh	కొత్తగా ప్రారంభించు
 stop_extra_tills	అదనపు టిల్‌లను ఆపు
-floor_cols_ph	నిలువు వరుసలు
-floor_cols_fit	తెరకు సరిపడా
-floor_cols_fit_sub	ఇక్కడ {n} పడతాయి
-floor_cols_fits	సరిపోతుంది
-floor_cols_scroll	పక్కకు స్క్రోల్
-floor_cols_min	నిలువు వరుసలు: కనీసం 1 — లేదా తెరకు సరిపడేలా ఖాళీగా వదలండి
-floor_zoom_auto	స్వయంచాలకం
-floor_zoom_out	చిన్నది చేయి
-floor_zoom_in	పెద్దది చేయి
 backup_auto	ప్రతిరోజూ ఆటోమేటిక్ బ్యాకప్ · చివరిది {when} · చివరి 14 రోజులు {dir} లో ఉంచబడతాయి.
 backup_auto_none	ప్రతిరోజూ ఆటోమేటిక్ బ్యాకప్ — మొదటిది కాసేపట్లో జరుగుతుంది.
 backup_copy_to	కాపీలు {dir} కి కూడా వెళ్తాయి.
@@ -579,7 +474,6 @@ new_pair_code	కొత్త జత కోడ్
 pair_finishing	జత పూర్తవుతోంది… షాప్ పుస్తకాలు వర్తింపజేయబడుతున్నాయి
 pair_opening	టిల్ తెరుస్తోంది…
 pair_copied	జత కోడ్ కాపీ అయింది
-kot_waiting	పంపడానికి వేచి ఉంది
 lan_offline_waiting	ఆఫ్‌లైన్ · {n} వేచి ఉన్నాయి
 lan_connecting	షాప్‌కు కనెక్ట్ అవుతోంది…
 lan_live	లైవ్
@@ -621,7 +515,6 @@ printers_routes_help	ఆపరేటింగ్ సిస్టమ్‌కు 
 printer_assign_dd	{place} ప్రింటర్ ఎంచుకోండి
 printer_assign_pick	నిజమైన ప్రింటర్ ఎంచుకోండి
 printer_profile_heading	లేఅవుట్
-printer_send_heading	డెలివరీ
 vp_delivery_heading	డెలివరీ
 vp_delivery_help	ఈ వర్చువల్ ప్రింటర్ పనులను ఎలా పంపుతుంది — OS డాక్యుమెంట్, ముడి బైట్లు, లేదా ESC/POS. స్లిప్ కంటెంట్ (అక్షర పరిమాణం, చుట్టడం, మార్జిన్లు) బిల్లు / స్లిప్ ఫార్మాట్ నిర్ణయిస్తుంది, ఇక్కడ కాదు.
 vp_type_size_heading	అక్షర పరిమాణం
@@ -665,23 +558,13 @@ virtual_draft_send	తదుపరి వర్చువల్ ప్రిం�
 virtual_need_real	ముందుగా నిజమైన ప్రింటర్ ఎంచుకోండి
 virtual_need_select	తొలగించడానికి వర్చువల్ ప్రింటర్ ఎంచుకోండి
 real_printer_selected	నిజమైన ప్రింటర్: {name}
-station_group_heading	వర్చువల్ ప్రింటర్లు
-station_group_apply	వర్చువల్ ప్రింటర్ తొలగించు
-station_group_applied	తొలగించబడింది
-station_group_empty	వర్చువల్ ప్రింటర్ ఎంచుకోండి
-station_group_name_ph	వర్చువల్ ప్రింటర్ పేరు (ఐచ్ఛికం)
-station_group_save	వర్చువల్ ప్రింటర్ సృష్టించు
-station_group_saved	వర్చువల్ ప్రింటర్ సేవ్ అయింది
-station_manage_heading	దుకాణం విభాగం జోడించు లేదా తీసివేయి
 printers_routes_heading	2. ఎక్కడ ప్రింట్
 route_pick_heading	స్థలం
 route_editing	మార్చుతోంది: {name}
 route_assigned	{printer}ను {place}కు జోడించారు
 route_already_assigned	ఈ స్థలంలో ఇప్పటికే: {printer}
-route_removed	{printer}ను {place} నుండి తీసేశారు
 route_cleared	{name} తుడిచేశారు
 route_assigned_empty	ఈ స్థలంలో ఏదీ లేదు
-route_tap_remove	తీసివేయడానికి నొక్కండి
 route_tap_select	ఎంచుకోవడానికి ట్యాప్
 route_tap_selected	ఎంచుకున్నది
 route_pick_printer_first	ముందు ఒక ప్రింటర్ ట్యాప్ చేయండి
@@ -702,35 +585,17 @@ printer_format_custom	కొత్త అనుకూల ఫార్మాట�
 printer_format_custom_label	అనుకూల
 printer_format_custom_added	ఈ మార్గానికి అనుకూల ఫార్మాట్ జోడించబడింది
 add_printer	ప్రింటర్ జోడించు
-remove_printer	చివరిది తొలగించు
 route_pick_ph	బిల్లు లేదా దుకాణం విభాగం
 route_bill	బిల్
-route_default_kitchen	స్టేషన్ లేదు (కేటాయించని ఐటమ్‌లు)
-route_kot_station	స్టేషన్
 route_dont_print	ప్రింట్ వద్దు
-stations_heading	స్టేషన్లు
-stations_help	దుకాణం విభాగాలు ఐటమ్‌లను, దుకాణంలో ఆ భాగం ప్రింటర్లను కలిపి ఉంచుతాయి. సెట్టింగ్‌లు → ప్రింటర్ల నుండి ప్రింటర్లు జోడించండి, ప్రయత్న క్రమం పెట్టండి, తర్వాత మొదట పనిచేసేది లేదా అన్నింటిపై ముద్రించు. మార్పులు వెంటనే సేవ్ అవుతాయి.
-station_print_heading	ఈ స్టేషన్ ప్రింటర్లు
-station_print_help	ఒక స్టేషన్ ఎంచుకోండి, తర్వాత ఒకటి లేదా ఎక్కువ ప్రింటర్లు జోడించండి. ↑↓ ప్రయత్న క్రమం పెడుతుంది. మొదట పనిచేసేది మొదటి విజయంతో ఆగుతుంది; అన్నింటిపై ముద్రించు జోడించిన ప్రతి ప్రింటర్‌కు పంపుతుంది.
-station_print_pick_ph	ప్రింటర్లు సెట్ చేయడానికి స్టేషన్
 station_print_pick_first	ముందు దుకాణంలో ఒక విభాగం ఎంచుకోండి
-station_print_editing	“{name}” ప్రింటర్లను సవరిస్తున్నారు
-station_vps_dd	ఈ స్టేషన్ ప్రింటర్లు
-station_vps_dd_n	{n} ప్రింటర్లు · మార్చడానికి నొక్కండి
 station_vps_empty	ప్రింటర్లు లేవు — సెట్టింగ్స్ → ప్రింటర్లలో కనుగొనండి
 bill_printers_dd	బిల్లు ప్రింటర్లు
 bill_printers_dd_n	బిల్లు కోసం {n} ప్రింటర్లు · మార్చడానికి నొక్కండి
-job_layout	లేఅవుట్
-job_delivery	పని ఎలా పంపబడుతుంది
-job_delivery_help	OS డాక్యుమెంట్, ముడి బైట్లు, లేదా ESC/POS. బిల్లు, టికెట్ రెండూ వాటివి అవి ఉంచుకుంటాయి. ఏ పని అయినా వెతుకు సేవ్ చేసిన ఏ ప్రింటర్‌కైనా వెళ్లవచ్చు.
 station_vp_attached	ప్రింటర్ జోడించబడింది
 station_vp_detached	స్టేషన్ నుండి ప్రింటర్ తొలగించబడింది
-station_print_summary	{mode} · {n} ప్రింటర్లు
-station_print_summary_none	ఈ స్టేషన్‌పై ప్రింటర్లు లేవు — ప్రింట్ కాదు
-stations_none	ఇంకా స్టేషన్లు లేవు — కింద ఒకటి జోడించండి. కౌంటర్ దుకాణంలో స్టేషన్లు అవసరం లేదు — ఖాళీగా వదలండి.
 route_up	పైకి
 route_down	కిందికి
-route_remove	చివరిది తొలగించు
 route_clear	ప్రింట్ వద్దు
 save_printers	ప్రింటర్లను సేవ్ చేయి
 print_test_page	టెస్ట్ పేజీ ముద్రించు
@@ -739,23 +604,15 @@ test_page_no_printer	{place}కి ప్రింటర్ లేదు — ప
 test_page_pick_first	ముందు టెస్ట్ ప్రింటర్లు ఎంచుకోండి — తర్వాత టెస్ట్ పేజీ ముద్రించండి
 test_printers_dd	టెస్ట్ పేజీ ప్రింటర్లు
 test_printers_dd_n	{n} టెస్ట్ ప్రింటర్లు · మార్చడానికి నొక్కండి
-kot_test_printers_dd	టెస్ట్ ముద్రణ ప్రింటర్లు
-kot_test_printers_dd_n	టెస్ట్ ముద్రణ కోసం {n} ప్రింటర్లు · మార్చడానికి నొక్కండి
 test_printer_picked	టెస్ట్: {name}
 test_printer_cleared	టెస్ట్ కాదు: {name}
 test_page_sent_n	టెస్ట్ పేజీ {n} ప్రింటర్లకు పంపబడింది
-test_kot_pick_first	ముందు టెస్ట్ ముద్రణ ప్రింటర్లు ఎంచుకోండి — తర్వాత టెస్ట్ ముద్రణ
-test_kot_sent_n	టెస్ట్ ముద్రణ {n} ప్రింటర్లకు పంపారు
-cancel_pick	గుర్తు
-cancel_pick_on	గుర్తించబడింది
-cancel_pick_meta	రద్దు కోసం గుర్తు
 batch_cancel	గుర్తించినవి రద్దు
 batch_cancel_n	గుర్తించినవి రద్దు ({n})
 batch_cancel_none	ముందు ఒకటి లేదా ఎక్కువ పంపిన ఐటమ్‌లు గుర్తించండి — తర్వాత గుర్తించినవి రద్దు చేయండి
 batch_cancel_title	గుర్తించిన వస్తువులు రద్దు — ఒక కారణం, ప్రతి విభాగానికి ఒక స్లిప్
 batch_cancel_ok	{n} ఐటమ్‌లు రద్దు · {slips} రద్దు స్లిప్‌లు → {kitchens}
 batch_cancel_ok_noprint	{n} ఐటమ్‌లు రద్దు — ఆటో-ముద్రణ ఆఫ్, కాబట్టి రద్దు స్లిప్ లేదు
-no_printer_kitchen_station	ఆ స్టేషన్‌కు ప్రింటర్ లేదు
 printers_saved	ఈ పరికరం ప్రింటర్లు సేవ్ అయ్యాయి
 test_page_sent	టెస్ట్ పేజీ పంపబడింది — ప్రింటర్ చూడండి
 test_page_sent_one	టెస్ట్ పేజీ {name}కి పంపబడింది — ఆ ప్రింటర్ చూడండి
@@ -771,10 +628,7 @@ cancelled	రద్దు
 printers_tap_find	ప్రింటర్లను కనుగొను నొక్కండి — సిస్టమ్ ప్రింటర్లు మరియు ఈ Wi‑Fi నెట్‌వర్క్ రసీదు ప్రింటర్లు జాబితా అవుతాయి.
 printers_none_found	ప్రింటర్లు కనబడలేదు — సిస్టమ్ ప్రింటర్ పేరు లేదా నెట్‌వర్క్ చిరునామా టైప్ చేయండి (ఉదా. 192.168.1.50).
 printer_from_find	{name} జోడించారు
-kot_printer_ph	స్లిప్ ప్రింటర్
 bill_printer_ph	బిల్లు ప్రింటర్
-kot_print_on	టికెట్ల ఆటో-ముద్రణ: ఆన్
-kot_print_off	టికెట్ల ఆటో-ముద్రణ: ఆఫ్
 queue_refused	షాప్ అంగీకరించలేదు ({n}) — ప్రతిదాన్నీ కౌంటర్ వద్ద తనిఖీ చేయండి:
 clear_not_accepted	తనిఖీ చేశాను — ఈ జాబితా తొలగించు
 device_name_ph	ఈ పరికరం పేరు
@@ -785,7 +639,6 @@ backup_failed	చివరి ఆటోమేటిక్ బ్యాకప్ 
 backup_overdue	{n} రోజులుగా బ్యాకప్ లేదు — బ్యాకప్ కోసం ఈ పరికరంలో యాప్‌ను తెరిచి ఉంచండి.
 disk_low	ఈ పరికరంలో {mb} MB మాత్రమే ఖాళీగా ఉంది — త్వరలో బ్యాకప్‌లు విఫలమవుతాయి. కొంత స్థలం ఖాళీ చేయండి.
 last_seen_devices	చివరిగా కనిపించింది: {time}
-sync_interval	ప్రతి {secs} సెకన్లకు సింక్
 connection_to_shop	షాప్‌తో కనెక్షన్
 supplier_name_ph	సరఫరాదారు పేరు (లేదా పార్టీ)
 supplier_ph	సరఫరాదారు
@@ -848,7 +701,6 @@ fresh_book_kirano	ప్రింటర్లు
 fresh_selected	Fresh ఎంచుకున్నారు — కేటలాగ్ ఖాళీగా ఉంటుంది. సిద్ధమైనప్పుడు Done నొక్కండి.
 gross_word	స్థూల
 how_start	మీరు ఎలా ప్రారంభించాలనుకుంటున్నారు?
-kot_print_help_kirano	KOT పంపినప్పుడు — కౌంటర్ నుండి లేదా వెయిటర్ పరికరం నుండి — కిచెన్ పేపర్ ఇక్కడ దానంతట అదే ముద్రిస్తుంది.
 later_country_pack	ప్రింటర్లు
 local_badge	స్థానిక
 mix_type_hint_kirano	అవసరమైతే నగదు / UPI / కార్డు / అరువుగా విభజించండి. అరువు కోసం పైన కస్టమర్ అవసరం.
@@ -899,8 +751,6 @@ staff_copy_need_source	ఎవరి సెటప్ కాపీ చేయాల
 staff_copy_same	అది అదే వ్యక్తి — మరొకరిని ఎంచుకోండి
 staff_rename_need_selected	ముందు ఎవరి పేరు మార్చాలో ఎంచుకోండి
 team_pick_hint	ఎవరిని మార్చాలో ఎంచుకోండి — స్క్రీన్లు, డబ్బు హక్కులు, స్టేషన్లు ఆ వ్యక్తికి మాత్రమే కనిపిస్తాయి.
-team_stations_help	వారు వాడగల స్టేషన్లు
-team_stations_changed	స్టేషన్లు మారాయి — ఈ వ్యక్తి సెటప్ సేవ్ చేయండి
 team_features_changed	స్క్రీన్లు మారాయి — ఈ వ్యక్తి సెటప్ సేవ్ చేయండి
 team_rights_changed	హక్కులు మారాయి — ఈ వ్యక్తి సెటప్ సేవ్ చేయండి
 they_owe_us	వారు మాకు ఇవ్వవలసినది
@@ -984,9 +834,6 @@ service_pct_ph	సేవ % ఐచ్ఛికం 0/10/12
 short_code_ph	చిన్న కోడ్ (MG02)
 starting_password_ph	ప్రారంభ పాస్‌వర్డ్ (ఐచ్ఛికం)
 starting_pin_ph	ప్రారంభ PIN (4–12 అంకెలు)
-station_name_ph	స్టేషన్ పేరు (ఐచ్ఛికం)
-station_new_ph	విభాగం (ఐచ్ఛికం)
-table_name_ph	కౌంటర్ / అర పేరు
 tax_rate_ph	పన్ను రేటు పేరు లేదా % — Standard, Reduced, 0, 5, 12, 18, 20
 to_code_ph	కు కోడ్ (kg)
 uncleared_no_ph	పైన ఉన్న అన్‌క్లియర్ #
@@ -999,27 +846,8 @@ book_kind_month	ఈ నెల పుస్తకం
 book_kind_aging	బకాయి / డెబిట్-క్రెడిట్
 book_kind_balance	బ్యాలెన్స్ షీట్
 order_help	ఓపెన్ ఆర్డర్‌ను ఎంచుకోండి, లేదా టేబుల్‌ను ఎంచుకుని కొత్తది ప్రారంభించండి. సిద్ధంగా ఉన్న వస్తువులను నొక్కండి, KOT పంపండి, ఒకటి లేదా అంతకంటే ఎక్కువ వస్తువులకు బిల్లు వేయండి, బిల్లును విభజించండి మరియు చెల్లింపు పరిష్కరించండి.
-floor_help	ఈ దుకాణం కౌంటర్ వద్ద అమ్ముతుంది. టేబుల్లు, డైనింగ్ ఫ్లోర్ Kiranoలో భాగం కాదు.
-kitchen_help	KOT పంపినప్పుడు — కౌంటర్ నుండి లేదా వెయిటర్ పరికరం నుండి — కిచెన్ పేపర్ ఇక్కడ దానంతట అదే ముద్రిస్తుంది.
-kitchen_empty	తెరిచిన టికెట్లు లేవు (కౌంటర్ దుకాణాలు సాధారణంగా ఈ స్క్రీన్ వాడవు).
-add_a_table	టేబుల్‌ను జోడించండి
-add_station_heading	విభాగం జోడించు · ఉదా. కూరగాయలు, కోల్డ్, బిల్
 categories_help	వర్గం ఒక వంటకం ఏ మెను విభాగానికి చెందినదో చూపిస్తుంది — ఉదా. స్నాక్స్, మెయిన్ కోర్స్ లేదా బిర్యానీ. వర్గాలను మీ ఇష్టానుసారం తయారు చేయండి: మేము సూచించే పేర్లను ఎంచుకోండి, వాటి పేర్లు మార్చండి లేదా మీ స్వంతదాన్ని జోడించండి.
 dish_search_ph	ఐటమ్‌లు లేదా చిన్న కోడ్ వెతకండి…
-tile_free	ఖాళీ
-tile_occupied	బిజీ
-tile_food_ready	ఆహారం సిద్ధం
-tile_bill_printed	బిల్ ప్రింట్
-tile_paid	చెల్లించారు
-tile_bill_btn	బిల్
-tile_occupy_btn	అతిథులను కూర్చోబెట్టు
-tile_free_btn	టేబుల్ ఖాళీ చేయి
-tile_ready_btn	సిద్ధం
-tile_undo_bill	బిల్ రద్దు
-summary_busy	టేబుల్స్ బిజీ
-summary_to_collect	వసూలు చేయాలి
-summary_on_floor	ఫ్లోర్‌పై
-floor	షాప్
 sizes_as_items_ph	సైజులు వేర్వేరు ఐటమ్‌లుగా (ఐచ్ఛికం) — Half=120, Full=200
 dish_group_ph	ప్యాక్ పరిమాణ సమూహం (ఐచ్ఛికం) — ఉదా. ఆటా 1kg / 5kg
 discount	డిస్కౌంట్
@@ -1027,7 +855,6 @@ remove_discount	డిస్కౌంట్ తీసివేయి
 apply_discount	డిస్కౌంట్ ఇవ్వండి
 save_opening_cash	ప్రారంభ నగదు సేవ్ చేయి
 close_shift_print	షిఫ్ట్ ముగించి స్లిప్ ప్రింట్ చేయి
-area_prices_ph	ప్రాంత ధరలు (ఐచ్ఛికం) — AC=220, Parcel=210
 discount_ph	10% లేదా 50
 discount_reason_ph	కారణం (ఉదా. రెగ్యులర్ అతిథి, ఆహారం ఆలస్యం)
 opening_float_ph	ఈ ఉదయం డ్రాయర్‌లో పెట్టిన నగదు
@@ -1037,34 +864,18 @@ shift_handover	షిఫ్ట్ అప్పగింత
 shift_since	ఈ షిఫ్ట్ మొదలు
 expected_in_drawer	డ్రాయర్‌లో ఉండాల్సింది
 right_discount	డిస్కౌంట్ ఇవ్వడం
-floor_in_kitchen	జరుగుతోంది
-floor_eating	భోజనం చేస్తున్నారు
 pick_category	వర్గం ఎంచుకోండి
 close_category_list	వర్గాల జాబితా మూసివేయి
 new_category_row	కొత్త వర్గం — ఐటమ్ సేవ్ చేసినప్పుడు ఏర్పడుతుంది
 your_category	మీ వర్గం
 suggested_category	సూచన — మా ఐటమ్‌ల నుండి
 category_search_ph	వర్గం — మీది వెతకండి లేదా కొత్తది టైప్ చేయండి
-line_sent_state	పంపినది
-line_nc_state	ఉచితం (NC) — ఛార్జ్ లేదు
 cancel_item_short	రద్దు
-nc_short	ఉచితం
-charge_again_short	ఛార్జ్
-move_short	తరలించు
 cancel_item_title	ఈ ఐటమ్ రద్దు చేయి — బ్యాక్ ఆఫీస్‌కు రద్దు స్లిప్ వస్తుంది
-nc_item_title	ఈ ఐటమ్‌ను ఉచితం చేయండి (NC)
-charge_again_title	ఈ ఐటమ్‌కు మళ్లీ ఛార్జ్ చేయండి
-move_item_title	ఈ ఐటమ్‌ను మరో టేబుల్‌కు తరలించండి
-already_cooked	ఇప్పటికే వండేశారు (వృథా)
-not_cooked_yet	ఇంకా వండలేదు
 return_to_customer	కస్టమర్‌కు తిరిగి ఇవ్వండి
 short_by	తక్కువ
 tip_not_sale	టిప్ (సిబ్బందిది, అమ్మకం కాదు)
 right_settle	చెల్లింపు తీసుకోవడం
-right_cancel_sent	పంపిన ఐటమ్ రద్దు చేయడం
-right_complimentary	ఉచితంగా ఇవ్వడం (NC)
-right_move_table	కౌంటర్లు జరుపు / కలుపు
-right_reprint	బిల్ మళ్లీ ప్రింట్ చేయడం
 right_allowed	అనుమతి ఉంది
 right_with_approval	ఆమోదంతో
 right_denied	అనుమతి లేదు
@@ -1074,25 +885,11 @@ no_server_found	సర్వర్ కనబడలేదు. షాప్ పర
 servers_found_pick	మీరు కనెక్ట్ కావాలనుకునే షాప్‌ను ట్యాప్ చేయండి.
 server_host_selected	{host} ఉపయోగిస్తున్నాం — పెయిరింగ్ కోడ్ ఇచ్చి, ఇప్పుడు పెయిర్ నొక్కండి.
 print_bill	బిల్ ప్రింట్
-table_actions	కౌంటర్ చర్యలు
-move_merge_table	టేబుల్ మార్చు / కలుపు
-move_help	ఈ కౌంటర్ ఆర్డర్‌ను ఖాళీ టేబుల్‌కు జరపండి, లేదా నడుస్తున్న దానిలో కలపండి.
-move_target_ph	కౌంటర్ పేరు
 approval_pin_ph	మేనేజర్ PIN (అడిగితేనే)
-move_here	ఇక్కడికి తరలించు
-merge_into	దీనితో కలుపు
-line_reason_ph	కారణం (ఉదా. కస్టమర్ మనసు మార్చుకున్నారు, స్టాక్ లేదు)
-line_qty_ph	ఎన్ని రద్దు (ఖాళీ = అన్నీ)
-line_target_ph	టేబుల్‌కు తరలించు (ఉదా. D5)
 confirm	నిర్ధారించు
 menu_search_ph	ఐటమ్ లేదా షార్ట్ కోడ్ వెతకండి
 customer_paid_ph	కస్టమర్ ఇచ్చింది
 tip_ph	టిప్
-table_area_ph	ప్రాంతం (ఉదా. డైన్ ఇన్, పార్సెల్, AC)
-table_range_ph	ఒకేసారి చాలా: D1-D20
-add_these_tables	ఈ కౌంటర్లు జోడించు
-remove_these_tables	ఈ కౌంటర్లు తీసివేయి
-table_remove_ph	తీసివేయి: T1-T24, లేదా ఒక టేబుల్ పేరు
 find_server	షాప్ సర్వర్ కనుగొనండి
 bill_format	బిల్ ఫార్మాట్
 bill_format_help	ప్రతి బిల్లుపై మీ దుకాణం పేరు కింద ముద్రించబడుతుంది. వరుసలను | తో వేరు చేయండి (ఉదా. MG Road, Rajkot | Ph 98250 00000).
@@ -1100,78 +897,32 @@ bill_header_ph	చిరునామా | ఫోన్
 fssai_ph	FSSAI / దుకాణం లైసెన్స్ నం. (ఐచ్ఛికం)
 bill_footer_ph	ఫుటర్ (ఉదా. ధన్యవాదాలు, మళ్లీ రండి)
 save_bill_format	బిల్ ఫార్మాట్ సేవ్ చేయి
-kot_format	స్లిప్ ఫార్మాట్
-kot_format_help	జాబితాలో ఒక ఫీల్డ్ నొక్కండి. చూపు, అక్షర పరిమాణం, మందం పైన ఎంచుకున్న స్లిప్ రకంలో ఆ ఫీల్డ్‌కు వర్తిస్తాయి. ప్రతి రకం దాని పరిమాణాలు, మందాలు ఉంచుకుంటుంది.
-kot_format_fields	ఫీల్డ్‌లు
-kot_field_next	తదుపరి ఫీల్డ్
-kot_field_show	చూపు
-kot_field_hide	దాచు
 kot_field_on	చూపు
 kot_field_off	దాచు
-kot_field_size	ఫాంట్ పరిమాణం
-kot_field_size_ph	ఉదా. 16, 20, 24, 28, 32…
 kot_weight_light	తేలిక
 bill_kot_panel_help	బిల్లు అమరిక, కంటెంట్ వెడల్పు. క్యాషియర్ అంటే బిల్లు ఇచ్చిన లేదా చెల్లించినవారు — పూర్తి అమ్మకం కథ పుస్తకాల్లో ఉంటుంది.
 std_size_ph	ఉదా. 18, 20, 26…
-kot_show_shop	షాప్ పేరు
-kot_hide_shop	షాప్ దాచు
-kot_show_time	సమయం
-kot_hide_time	సమయం దాచు
-kot_show_waiter	క్యాషియర్
-kot_hide_waiter	క్యాషియర్ దాచు
-kot_show_station	స్టేషన్
-kot_hide_station	స్టేషన్ దాచు
-kot_show_table	కౌంటర్
-kot_hide_table	టేబుల్ దాచు
-kot_show_kot_no	స్లిప్ నెం.
-kot_hide_kot_no	టికెట్ నం. దాచు
-kot_width	ప్రివ్యూ చుట్టడం (కంటెంట్ వెడల్పు స్లిప్ ట్యాబ్‌లో పెట్టండి)
-kot_width_58	58 mm
-kot_width_80	80 mm
-kot_kind_heading	టికెట్ రకం
-kot_kind_original	అసలు
-kot_kind_duplicate	నకలు
-kot_kind_modified	మార్చబడింది
-kot_kind_cancelled	రద్దు
-kot_style_heading	ఫీల్డ్ పరిమాణం & బరువు
-kot_style_title	శీర్షిక
-kot_style_item_qty	ఐటమ్ · సంఖ్య
-kot_style_field_pick	ఫీల్డ్ ఎంచుకోండి
 kot_weight_regular	సాధారణ
 kot_weight_bold	బొద్దు
-kot_align	అమరిక
 kot_align_start	ప్రారంభించండి
 kot_align_center	మధ్యలో
 kot_align_end	చివరలో
 content_width	కంటెంట్ వెడల్పు (మిమీ)
 content_width_bill	బిల్లు కంటెంట్ వెడల్పు (mm)
-content_width_kot	టికెట్ కంటెంట్ వెడల్పు (mm)
 content_width_ph	లేదా కంటెంట్ వెడల్పు టైప్ చేయండి, 40–210 మిమీ
 content_width_help	ఈ స్లిప్ ఎంత వెడల్పుగా ముద్రించాలి. బిల్లు దాని వెడల్పు అది ఉంచుకుంటుంది.
 content_width_bill_help	కస్టమర్ బిల్లు ఎంత వెడల్పుగా ముద్రించాలి. డిఫాల్ట్ 210 mm (పేజీ). 58 mm ఇరుకు స్లిప్, 80 mm వెడల్పు స్లిప్, 112 mm 4-అంగుళాలు, 210 mm A4-వెడల్పు. 40 నుండి 210 వరకు ఏ విలువైనా టైప్ చేయండి. టికెట్లకు వాటి వెడల్పు స్లిప్ ట్యాబ్‌లో ఉంది.
-content_width_kot_help	టికెట్ ఎంత వెడల్పుగా ముద్రించాలి. డిఫాల్ట్ 80 mm. 58 mm ఇరుకు స్లిప్, 80 mm వెడల్పు స్లిప్, 112 mm 4-అంగుళాలు, 210 mm పేజీ. 40 నుండి 210 వరకు ఏ విలువైనా టైప్ చేయండి. కస్టమర్ బిల్లులకు వాటి వెడల్పు బిల్లు ట్యాబ్‌లో ఉంది.
 vp_paper_width	కంటెంట్ వెడల్పు (మిమీ)
 vp_paper_width_ph	లేదా కంటెంట్ వెడల్పు టైప్ చేయండి, 40–210 మిమీ
 vp_paper_width_help	కంటెంట్ వెడల్పు బిల్లు & స్లిప్ ఫార్మాట్‌లో పెడతారు — బిల్లు (డిఫాల్ట్ 210 mm), టికెట్ (డిఫాల్ట్ 80 mm)కు వేర్వేరుగా.
-kot_size	అక్షర పరిమాణం
-kot_size_s	చిన్న
-kot_size_m	సాధారణ
-kot_size_l	పెద్ద
 std_size	అక్షర పరిమాణం
 kot_copies	కాపీలు
 kot_copies_1	1
 kot_copies_2	2
 kot_copies_3	3
-kot_title_ph	శీర్షిక (ఖాళీ = TICKET)
-kot_footer_ph	బ్యాక్ ఆఫీస్ నోట్ (ఐచ్ఛికం)
-kot_preview	ప్రివ్యూ
-save_kot_format	స్లిప్ ఫార్మాట్ సేవ్ చేయి
-test_kot_format	టెస్ట్ ముద్రణ
-test_kot_sent	టికెట్ నమూనా పంపారు
 test_bill_format	టెస్ట్ బిల్లు
 test_bill_sent	బిల్లు నమూనా పంపారు
 test_print_no_printer	ఆ పనికి ప్రింటర్ లేదు — ఈ స్క్రీన్‌పైనే ఒకటి ఎంచుకోండి
-kot_format_saved	స్లిప్ ఫార్మాట్ సేవ్ అయింది
 std_print	బిల్ ప్రింట్ పరిమాణం
 std_print_help	OS / డాక్యుమెంట్ ప్రింటర్లపై సాధారణ నిలువు, అడ్డ బిల్లు పనుల కోసం అక్షర పరిమాణం (పాయింట్లు పెట్టండి — చిన్న/సాధారణ/పెద్ద కాదు). రెండు దిశలలోనూ ఒకే పరిమాణం.
 std_size_s	చిన్న
@@ -1211,23 +962,16 @@ upi_qr	UPI QR
 show_upi_qr	UPI QR చూపు
 close_upi_qr	మూసివేయి
 upi_qr_help	కస్టమర్ స్కాన్ చేసి చెల్లిస్తారు. చెల్లించాక చెల్లింపు తీసుకో నొక్కండి. రెండో స్క్రీన్: LANలో సర్వర్ URL /display తెరవండి.
-kot_recall	తిరిగి తీసుకురా
 recently_done	ఇప్పుడే పూర్తయినవి
-recall_kot_ph	తిరిగి తేవడానికి టికెట్ #
 role_help_customer	పాత్ర: కస్టమర్ — AR (వారు మాకు అప్పు). అదే సంస్థ సరఫరాదారు కూడా కావచ్చు.
 role_help_both	పాత్రలు: పంపేవారు + క్యారియర్ — ఒక పార్టీ, AR మరియు AP పుస్తకాలు, నివేదికలలో నికర.
 role_help_supplier	పాత్ర: సరఫరాదారు — కొనుగోళ్ల కోసం AP.
-dine_in_pick_table	కౌంటర్ దుకాణంలో వాడరు
-choose_table	కౌంటర్ ఎంచుకో
-change_table	టేబుల్ మార్చండి
-pick_table_banner	ఈ ఆర్డర్ కోసం టేబుల్ ఎంచుకోండి
 items_word	వస్తువులు
 items_section	వస్తువులు
 back_to_order	ఆర్డర్‌కు తిరిగి
 new_items_head	ఇంకా పంపలేదు
 price_ph	ధర
 price_ph_gst_inside	ధర ({tax} లోపల)
-cancel_needs_table	కౌంటర్ అమ్మకాలు చెల్లింపు తీసుకునే వరకు టికెట్‌పై ఉంటాయి
 tax_rates_missing_hint	ఈ ఐటమ్‌లకు {tax} రేటు లేదు — ఐటమ్‌లలో పన్ను రేటు పెట్టండి (ధరలు ఇప్పటికే {tax} కలిపి ఉన్నాయి, {tax} కలుపుకొని కింద)
 taxable_value	పన్ను విలువ
 gst_inside_price_note	({tax} లోపల)
@@ -1248,30 +992,11 @@ client_template_confirm	{title} నుండి {d} ఐటమ్‌లు జో
 client_template_importing	{title} దిగుమతి…
 client_template_done	{title}లోని ప్రతి ఐటమ్ మీ ఐటమ్‌లలో ఉంది.
 client_template_imported	{title} నుండి {d} ఐటమ్‌లు, {c} వర్గాలు జోడించారు
-resv_heading	రిజర్వేషన్లు
-resv_name_ph	కస్టమర్ పేరు
-resv_phone_ph	ఫోన్ (ఐచ్ఛికం)
-resv_guests_ph	వ్యక్తులు
-resv_when_ph	ఎప్పుడు — 20:30, tomorrow 13:00
-resv_table_ph	కౌంటర్ (ఐచ్ఛికం)
-resv_add	బుక్ చేయి
-resv_seat	కూర్చున్నారు
-resv_none	రాబోయే బుకింగ్‌లు లేవు.
-guests_word	అతిథులు
-delivery_by_ph	డెలివరీ చేసేవారు (రైడర్ లేదా సిబ్బంది)
-kitchen_all_day	ఇప్పుడు వండాలి: {items}
-split_bill	బిల్లు విభజించు
-split_go	వేరే బిల్లు చేయి
 cancel	రద్దు
 opening_client	క్లయింట్ తెరుస్తోంది…
 preparing_desk	డెస్క్ సిద్ధం చేస్తోంది…
 opening_server	సర్వర్ తెరుస్తోంది…
 creating_server	సర్వర్ సృష్టిస్తోంది…
-split_help	ఒక కస్టమర్ చెల్లించే ఐటమ్‌లను నొక్కండి · {n} ఎంచుకున్నారు
-split_send_first	ముందు స్లిప్ పంపండి — బ్యాక్ ఆఫీస్‌కు చేరిన ఐటమ్‌లు మాత్రమే వేరే బిల్లుకు వెళ్లగలవు
-split_pick_some	ముందు వేరే బిల్లు ఐటమ్‌లను నొక్కండి
-split_done	వేరే బిల్లు చేశారు — అది ఫ్లోర్‌పై ఈ కౌంటర్ పక్కన ఉంది
-split_marked	వేరే బిల్లు
 order_empty_pick	ఆర్డర్ ఖాళీ — ఐటమ్‌లు ఎంచుకోవడానికి పైన ఐటమ్‌లు జోడించు నొక్కండి.
 add_dishes	ఐటమ్‌లు జోడించు
 order_so_far	ఈ ఆర్డర్‌లో: {n} · {total}
@@ -1282,24 +1007,8 @@ pick_done_dd	అయింది · {label}
 printer_route_mode	ఈ చోట చాలా ప్రింటర్లు ఉంటే
 printer_mode_first	మొదట పనిచేసేది
 printer_mode_all	అన్నింటిపై ముద్రించు
-kot_show_area	ఏరియా
-kot_hide_area	ఏరియా దాచు
-kot_show_item_hdr	ఐటమ్ · సంఖ్య
-kot_hide_item_hdr	కాలమ్‌లు దాచు
-kot_show_title	శీర్షిక వరుస
-kot_hide_title	శీర్షిక దాచు
-kot_field_order	ముద్రణ క్రమం
 kot_field_up	పైకి జరుపు
 kot_field_down	కిందికి జరుపు
-kot_field_cycle	తదుపరిది ఎంచుకో
-kot_field_select	తదుపరిది ఎంచుకో
-kot_field_time	సమయం
-kot_field_kot_no	స్లిప్ నెం.
-kot_field_area	ఏరియా
-kot_field_table	కౌంటర్
-kot_field_shop	షాప్ పేరు
-kot_field_waiter	సిబ్బంది
-kot_field_station	స్టేషన్
 app_template_blurb_extra	అదనంగా: యజమాని జహీర్, అడ్మిన్ ఆసిఫ్, క్యాషియర్ నవాజ్; ముందు సైడ్‌బార్; 4 గంటల తర్వాత చరిత్ర; ఈరోజు పట్టీ ఆఫ్; చిన్న బిల్లు.
 dishes_n	{n} ఐటమ్‌లు
 recipe_ph	రెసిపీ (ఐచ్ఛికం — కౌంటర్ దుకాణంలో వాడరు)
@@ -1309,8 +1018,6 @@ low_stock_alert	తగ్గుతోంది — త్వరగా కొన�
 unpriced_note	మీ ఐటమ్‌లలో {n}కు ఇంకా ధర లేదు — ధర పెట్టే వరకు అవి 0కు బిల్లవుతాయి.
 show_unpriced	ధర లేని ఐటమ్‌లు మాత్రమే చూపు
 show_all_dishes	అన్ని ఐటమ్‌లు చూపు
-role_waiter	క్యాషియర్
-role_kitchen	స్టోర్
 role_title_rest_ph	హోదా (ఉదా. కెప్టెన్, హెడ్ కుక్)
 preset_help_rest	క్యాషియర్: అమ్మండి. మేనేజర్: అమ్మండి + ఐటమ్‌లు + రద్దు/సవరణ.
 kind_raw	దుకాణం వాడకానికి కొన్నది

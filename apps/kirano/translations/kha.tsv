@@ -68,28 +68,6 @@ applied	La pyndonkam
 note_ph	Jingpynkynmaw (jied)
 rounded	BA PYLLI
 split	Jingphiah
-send_kot	Phah ia ka slip
-send_kot_to	Phah → {kitchens}
-send_kot_again	Pyndap ia ki tiar na ka bynta ka slip kaba bud
-send_kot_held	Ki tiar ba la bat — pynlait ban phah .
-reprint_kot	Print la jied biang
-reprint_kot_ok	La pynmih biang ia ki tiar {n} · Ki slip {slips} → {kitchens}
-reprint_kot_needed	Phah shwa ia ka slip — nangta kynthup ia ki tiar bad print biang ia kiba la jied .
-reprint_kot_none_selected	Man la ka jingthoh ba la phah la lyndet — tap Ha ka jingpynmih ha ki ban pynmih biang .
-reprint_kot_client	Pynmih biang ({n}) na ka bynta {place} ba la phah — ka tiar dukan ka pynmih ia ka .
-print_cancelled_kot	Pynmih ia baroh ba la pynsangeh
-print_cancelled_kot_ok	Ki tiar ba la shon {n} ba la weng · {slips} ki slip → {kitchens}
-print_cancelled_kot_needed	Plie shwa ia ka miej ryngkat bad ki tiar ba la pynsangeh .
-print_cancelled_kot_none	Ym shym la pynsangeh ia ki tiar ha kane ka jingbthah
-print_cancelled_kot_client	La pyndam noh ia ka jingpynmih ({n}) na ka bynta ka {place} ba la phah — ka tiar dukan ka pynmih ia ka
-kot_banner	Ka lama kaba bha
-kot_banner_ph	Ka lama (thylli = ym don)
-kot_item_prefix	Ka jingsdang jong ka item
-kot_item_prefix_ph	kum [LA PYNBNA]
-kot_strike	Ka kyrteng jong ka tiar
-kot_strike_note	Jingpynkynmaw ia ka jingthoh
-kot_strike_on	Ha
-kot_strike_off	Lip
 bill_item_layout	Ka jingpynbeit ia ki tiar
 bill_item_layout_columns	Ki tnum
 bill_item_layout_stacked	La buh lang
@@ -118,8 +96,6 @@ bill_item_gap_em	Ka jingkhang (em)
 bill_item_qty_min	Ka jingbun kaba duna (em)
 bill_item_price_min	Ka dor kaba rit (em)
 bill_item_amount_min	Ka jingbun kaba rit (em)
-kot_item_qty_width	Ka jingbun jong ki tduh
-kot_item_num_align	Pynbeit ia ka jingbun
 bill_total_qty_label	Ka jingdon jingem baroh
 bill_total_subtotal_label	Ka jingthoh baroh
 bill_total_grand_label	Ka jingthoh ba pura
@@ -131,36 +107,9 @@ bill_item_piece_off	Lip
 bill_total_qty	Ka jingbun baroh
 bill_total_subtotal	Ka jingkhein baroh
 bill_total_grand	Ka jingkhein kyllum
-reprint_incl	Ha ka jingpynmih
-reprint_skip	Kynthih
-reprint_skip_meta	Skip ia ka jingpynmih biang
-kot_dest_hint	Ka jingpynmih ha ki jingpynmih ba phi la ai sha {kitchens} ha ki jingpynbeit → Ki jingpynmih .
-kot_sent_hint	Ka jingphah kaba khatduh ka leit sha ka {kitchens}. Tap ban pyndap ia ki tiar na ka bynta ka bill kaba bud — lane Pynmih biang ia ka slip na ka bynta kajuh.
-kot_sent_printing	Slip ba la phah sha ka {kitchens} — jingpynmih .
-kot_sent_not_printed	Slip ba la phah sha {kitchens} hynrei YM shym la shon: {why}. Iathuh ha dukan, nangta pynbeit ia ka printer bad print biang ia ka.
-kot_sent_screen	La phah ia ka slip sha ka {kitchens} .
-kot_queued_shop	Slip na ka bynta ka {place} → {kitchens} ba la pynsah; Ka tiar dukan ka shon ia ka
-kot_job_label	Slip na ka bynta {place} → {kitchens}
-kot_job_reached	Slip na ka bynta ka {place} ka la poi sha ka {kitchens}
 kot_unassigned	Bym shym la aiti
-kot_unassigned_held	La bat ia ki tiar {n} khlem ka steshon — pynlait ia ka jingbat ha u lain ban phah .
-kot_station_ph	Steshon
-kot_station_dd	Steshon
-kot_station_dd_n	Steshon · {stations}
-kot_set_station	Pyndonkam ia kane ka station .
-kot_station_applied	Ka steshon ba la buh ha ki tiar {n}: {station}
-kot_station_cleared	La pynkhuid ia ka steshon na ki tiar {n}: {station}
-kot_station_needed	Jied shwa ia ka bynta jong ka dukan
-kot_station_not_allowed	Ym shah ban pyndonkam ia ka bynta: {station} .
-kot_station_none	Ym pat don steshon — ym pat pyndonkam ha ka dukan kaba don ha ka jaka (Ki jingpynbeit → Ki jaka lada donkam)
 pos_tab_items	Ki tiar ba la pyndap
 pos_tab_payment	Ka jingsiew
-hold_send	Ka jingbat na kamra shet
-hold_send_on	La pynlong
-hold_send_meta	La bat — ym ha kane ka slip .
-station_remove	Pynduh noh ia ka steshon
-station_remove_ph	Tap ia ka steshon ha ka list ban weng ia ka .
-station_removed	Ka steshon ba la weng: {name}
 settings_hub_title	Ki jingpynbeit
 settings_hub_help	Plie ia kawei ka jaka ha ka shisien — kham duna ka jingpynkylla, ki jingjied kiba kham shai.
 settings_back	Badien
@@ -169,12 +118,10 @@ settings_sec_country	Ka ri bad ka khajna
 settings_sec_tills	Kiwei pat ki tiar
 settings_sec_brand	Ka brand jong ngi
 settings_sec_units	Ki Unit bad ki jingpynkylla
-settings_sec_pickers	Ki jaka · ki steshon · ki dor khajna
+settings_sec_pickers	Ki dor khajna
 settings_sec_printers	Ki nongpynmih kot
 settings_sec_bill	Ka dur jong ka bill bad ka slip
 settings_sec_selling	Ki skhim bad jingdie
-bill_kot_tab_bill	Ka bill
-bill_kot_tab_kot	Btuit
 settings_sec_alerts	Ki jingmaham
 alerts_help	Katno por ki khubor status ki sah ha ka screen na ka bynta jong phi (kane ka login).
 snack_secs_ph	Ki sekhon (3-60, ka jingpynkylla 10)
@@ -225,8 +172,6 @@ counter	Ka jingkhein
 dine_in	Ka jingkhein
 takeaway	Jingbam
 order	Jingbthah
-tables	Ki nongkhein
-kitchen	Ki bynta
 sales	Ka jingdie
 sales_refunds	Ka jingdie bad jingpynphai pisa
 day_close	Ka sngi kaba khang
@@ -254,10 +199,6 @@ zero_sales_on	Ailad ₹00.
 zero_sales_off	Ka dor ba donkam
 zero_sales_saved_on	La shah ban die khlem dor
 zero_sales_saved_off	Ka jingdie ka dei ban don ka dor kaba palat ia ka ₹000.
-floor_areas_help	Ki jaka ki dei ki kamra ne ki zone kiba don ha ka mala (Ka jaka bam, ka jaka bam, ka AC ...). Pyndap shwa ia ka jaka, nangta buh ia ki counter ha ka — kawei pa kawei ka jaka ka long ka kynhun kaba kyrpang ha ka mala.
-area_new_ph	Ka jaka / kamra kaba thymmai (kum ka AC, ka kper)
-add_area	Pyndap ia ka jaka
-area_added	Ka jaka “{name}” kaba la pynkhreh — pyndap ia ki nongkhein ha ka .
 no_favorites	Ym pat don ki jingsngewtynnad — pynrung ia ki tiar na ka list harum.
 add_to_bill	Pyndap ia ka bill
 added	La pyndap
@@ -268,19 +209,9 @@ chip_missing_customer	U nongthied ba la jied u la jah — jied biang .
 chip_no_customer	Ym pat don nongthied — thoh ia ka kyrteng, nangta tap ia ka Credit .
 credit_summary_fmt	{} ki nongthied · ka ram ba plie {} · ki jingsiew lypa ba la bat {}
 recent_label	Dang shen:
-kot_new_waiting	THYMMAI — ka jingap .
-kot_preparing	KA JINGPYNKHREH
-kot_ready_serve	KA JINGPYNKREH — shakri ia ka .
-kot_done_cap	LA dep
-kot_cancelled	LA pynsangeh
-kot_start_btn	Sdang
-kot_mark_ready	U Mark u la pynkhreh
-kot_done_btn	La dep
-table_free	Ka jaka kaba thylli — tap ban sdang ia ka jingbthah .
 start_order	Sdang ka jingbthah
 open_bill	Plie ia ka bill
 collect_payment	Lum jingsiew
-table_running	Ka jingmareh
 payment_pending	Ka jingsiew dang ap
 collect_at_counter	lum ha ka counter
 inventory	Ka jingbuh jingkynmaw
@@ -313,7 +244,6 @@ ok	OK
 this_shop	Ka rukom shakri
 extra_till	Ka rukom kliant
 off	Lip
-tables_kitchen	Ka jingpynbeit ia ka dukan
 server	Ka rukom shakri
 client	Ka rukom kliant
 language_currency	Ka ktien & ka pisa
@@ -355,8 +285,6 @@ add_item_plain	Pyndap ia ka tiar
 add_note	Pynrung ia ka jingthoh
 add_opening_balance	Pyndap ia ka jingsah
 add_staff	Pynrung ia ki nongtrei
-add_station	Pyndap ia ka steshon
-add_table	Pyndap ia ka miej bam
 add_unit	Pyndap ia ka unit
 add_use_name	Add / pyndonkam ia kane ka kyrteng .
 allow_extra_tills	Ailad ia ki till ba kham bun
@@ -409,7 +337,6 @@ share_whatsapp	Ka jingsam WhatsApp
 lan_pages_heading	Ki sla jong ki nongthied ha ka Wi‐Fi
 lan_pages_help	Ha ka Wi‐Fi jong kane ka dukan, ki sla jong ki nongthied ki treikam na ka bynta ka board pyni bad ka jingai jingmut. Ki briew kiba don ha ka mobile data ki donkam ia ka Cloud hadien. Ka jaka buh card ne ka jaka siew ka long kaba lah ban jied bad kam ju khanglad ia ka jaka buh pisa.
 diag_send_heading	Share ia kane ka tiar
-kot_dest_heading	Steshon
 optional_login_heading	Ka jingrung ba lah ban jied
 rights_heading	Ki Hok
 ops_panel	Ops ha ka thain
@@ -436,28 +363,6 @@ till_voucher_amt_ph	Ka jingkhein jingdiah (thylli = baroh)
 till_wallet_topup_ph	Ka pisa ba la pyndap ha ka pla tyngka
 till_voucher_issue_amt_ph	Jingpynmih pisa ia ka voucher
 till_voucher_issue_code_ph	U code voucher ba thymmai
-split_evenly	Pyniabynta mar katjuh
-waitlist	Ka thup ap
-fire_course	Ka sienjam kaba bud
-hold_item	Ka jingbat na kamra shet
-waiter_call	Khot ia u nonglum pisa
-waitlist_add	Pynrung ha ka thup ap
-floor_view_grid	Ka grid
-floor_view_layout	Ka jingpynbeit
-floor_layout_x	X
-floor_layout_y	Y
-floor_layout_w	W
-floor_layout_h	H
-floor_layout_save	Save ia ka jingpynbeit
-floor_layout_open	Plie ia ka miej bam
-floor_layout_edit	Pynbeit ia ka jingpynbeit
-floor_layout_pick	Tap ia ka miej bam ban pynbeit ia ka jingpynbeit jong ka .
-floor_layout_saved	La pynsah ia ka jingpynbeit
-floor_layout_nudge_left	← 20
-floor_layout_nudge_right	→ 20
-floor_layout_nudge_up	↑ 20
-floor_layout_nudge_down	↓ 20
-sibling_pickers_help	Tap On/Off kum ki unit — buhrieh ia ki jaka, ki steshon, bad ki dor khajna na ki nonglum jingtip ba man ka sngi; pack ki jingpynkylla.
 bulk_price_apply	Pyndonkam ia ka dor kaba heh
 card_terminal_optional	Ka jaka buh card / ka jingpyniasoh ban siew (lah ban jied haba don ka internet)
 copy_report	Kopi ia ka kaiphod
@@ -483,7 +388,6 @@ import_day	Ka sngi wanrah
 import_items_csv_plain	Ki mar kiba wan nabar CSV...
 import_parties_csv	Ki nongthied bad ki nongsam mar kiba wan nabar CSV...
 item_name	Ka kyrteng jong ka tiar
-kitchen_printing	Ki nongpynmih kot
 login_id_ph	Kyrteng nongpyndonkam
 mark_cleared	U Mark u la pynkhuid
 new_party_clear	U nongthied ne nongsam ba thymmai (ka phorm kaba shai)
@@ -553,15 +457,6 @@ show	Pyni
 spreadsheet_csv	Ka kot jingkhein (CSV)
 start_fresh	Sdang thymmai
 stop_extra_tills	Pynsangeh noh ia ki till
-floor_cols_ph	Ki tnum
-floor_cols_fit	Ka skrin kaba biang
-floor_cols_fit_sub	{n} iahap hangne
-floor_cols_fits	iahap
-floor_cols_scroll	pynkhih sha shiliang
-floor_cols_min	Ki tnum: ym duna ia ka 1 — lane ieh thylli khnang ban iahap bad ka screen .
-floor_zoom_auto	Auto
-floor_zoom_out	Pynheh
-floor_zoom_in	Pynheh
 backup_auto	La pynkylla hi dalade man la ka sngi · ba khatduh {when} · ki 14 sngi ba khatduh la buh ha ka {dir}.
 backup_auto_none	La backup hi dalade man la ka sngi — kaba nyngkong ka iaid ha ka khyllipmat.
 backup_copy_to	Ki kopi ruh ki leit sha ka {dir}.
@@ -579,7 +474,6 @@ new_pair_code	U code pyniadei thymmai
 pair_finishing	Ka jingpynkut pair... ka jingpyntreikam ia ki kot jong ka dukan
 pair_opening	Ka jingplie ia ka till...
 pair_copied	La kopi ia u code
-kot_waiting	Ngi ap ban phah
 lan_offline_waiting	Ka shakri dukan kam lah ban poi · {n} dang ap
 lan_connecting	Ka jingpyniasoh bad ka dukan...
 lan_live	Im
@@ -621,7 +515,6 @@ printers_routes_help	Pyni ia ki printer kiba ka system treikam ka la tip lypa. A
 printer_assign_dd	Ka jingpynmih ba shisha: {place}
 printer_assign_pick	Jied ia ka nongpynmih kot ba shisha
 printer_profile_heading	Ka jingpynbeit
-printer_send_heading	Jingpynpoi
 vp_delivery_heading	Jingpynpoi
 vp_delivery_help	Kumno kane ka nongpynmih kot ba shisha ka phah ia ki kam — ka kot OS, ki byte ba thymmai, lane ka ESC/POS. Ka jingdon jong ka slip (ka jingheh jong ka jait, ka jingtap, ki marjan) la rai da ka rukom bill / Slip, ym hangne.
 vp_type_size_heading	Type ka jingheh
@@ -665,23 +558,13 @@ virtual_draft_send	Ka dor ba la buh na ka bynta ka printer ba shisha kaba bud
 virtual_need_real	Jied shwa ia u nongpynmih ba shisha .
 virtual_need_select	Jied ia ka printer ba shisha ban pyndam .
 real_printer_selected	La jied: {name}
-station_group_heading	Ki nongpynmih kot ba shisha
-station_group_apply	Pyndam noh ia ka printer ba shisha
-station_group_applied	La pyndam noh
-station_group_empty	Jied ia ka nongpynmih kot ba shisha
-station_group_name_ph	Ka kyrteng jong ka kor shon dur (ba lah ban jied)
-station_group_save	Shna ia ka kor shon dur
-station_group_saved	La buh ia ka printer ba shisha
-station_manage_heading	Pynrung ne weng ia ka bynta jong ka dukan .
 printers_routes_heading	Hangno kiei kiei ki print
 route_pick_heading	Ka jaka
 route_editing	Ka jingpynkylla: {name}
 route_assigned	La pyndap {printer} sha {place} .
 route_already_assigned	La don ha kane ka jaka: {printer} .
-route_removed	La weng {printer} na ka {place} .
 route_cleared	La pynkhuid {name}
 route_assigned_empty	Ym don ha kane ka jaka
-route_tap_remove	tap ban weng
 route_tap_select	tap ban jied
 route_tap_selected	la jied
 route_pick_printer_first	Tap nyngkong ia ka printer .
@@ -702,35 +585,17 @@ printer_format_custom	Profail ba thymmai
 printer_format_custom_label	Ka rukom
 printer_format_custom_added	La pynrung ia ka profile ba kyrpang na ka bynta kane ka jaka
 add_printer	Pyndap ia ka kor shon
-remove_printer	Pynduh noh
 route_pick_ph	Bill lane ka bynta jong ka dukan .
 route_bill	Ka bill
-route_default_kitchen	Ym don steshon (ki tiar bym shym la ai)
-route_kot_station	Steshon
 route_dont_print	Ka kor shon
-stations_heading	Ki steshon
-stations_help	Ki bynta jong ka dukan ki pyniasoh ia ki tiar bad ki nongpynmih kot na ka bynta kata ka bynta jong ka dukan. Pyniasoh ia ki printer na ki jingpynbeit → Ki printer, buh ia ka jingpynbeit ban pyrshang, nangta Nyngkong kaba treikam lane Print ha baroh. Ki jingkylla save katba nang iaid.
-station_print_heading	Ki nongpynmih kot na ka bynta kane ka steshon
-station_print_help	Jied ia ka steshon, nangta pyndait ia kawei ne bun ki nongpynmih kot. ↑↓ ka buh ia ka jingpynbeit. Nyngkong kata ka jingtrei ka sangeh hadien ka jingjop kaba nyngkong; Print ha baroh ki jingphah sha man la ka printer ba la pyndait.
-station_print_pick_ph	Steshon ban buh ia ki printer
 station_print_pick_first	Jied shwa ia ka bynta jong ka dukan
-station_print_editing	Ka jingpynkylla ia ki jingthoh na ka bynta “{name}”
-station_vps_dd	Ki nongpynmih kot na ka bynta kane ka steshon
-station_vps_dd_n	Ki nongpynmih kot {n} · tap ban pynkylla
 station_vps_empty	Ym pat don ki nongpynmih kot — Shem ia ki hapoh ki jingpynbeit → Ki nongpynmih kot .
 bill_printers_dd	Ki nongpynmih kot na ka bynta ka bill
 bill_printers_dd_n	{n} ki nongpynmih kot na ka bynta ka bill · tap ban pynkylla .
-job_layout	Ka jingpynbeit
-job_delivery	Kumno la phah ia ka kam .
-job_delivery_help	Ka kot OS, ki byte ba thymmai, lane ka ESC/POS. Ka bill bad ka tiket kawei pa kawei ka buh la ka jong ka jong ka jong ka. Kawei na ki kam ka lah ban leit sha kano kano ka printer kaba ka Find ka la save.
 station_vp_attached	La pyndait ia ka printer
 station_vp_detached	La weng noh ia ka printer na steshon
-station_print_summary	{mode} · {n} ki nongpynmih kot
-station_print_summary_none	Ym pat don ki nongpynmih kot ha kane ka steshon haduh mynta — kan nym shon .
-stations_none	Ym pat don steshon — pyndap kawei harum. Ki steshon ki long ki bym pyndonkam ha ka dukan counter — ieh thylli.
 route_up	Shaneng
 route_down	Hapoh
-route_remove	Pynduh noh
 route_clear	Pynkhuid
 save_printers	Save ia ki nongpynmih
 print_test_page	Pynmih ia ka sla test
@@ -739,23 +604,15 @@ test_page_no_printer	Ym don nongpynmih kot na ka bynta {place} — pyndait ia ka
 test_page_pick_first	Jied shwa ia ki nongpynmih na ka bynta ka sla test — nangta Print ia ka sla test .
 test_printers_dd	Ki nongpynmih na ka bynta ka sla test
 test_printers_dd_n	{n} ki nongpynmih kot na ka bynta ka sla test · nion ban pynkylla
-kot_test_printers_dd	Ki nongpynmih kot na ka bynta ka jingpynmih test
-kot_test_printers_dd_n	Ki nongpynmih {n} na ka bynta ka jingpynmih test · nion ban pynkylla
 test_printer_picked	Test ha ka: {name}
 test_printer_cleared	Ka jingtest ha ka: {name}
 test_page_sent_n	Ka sla test la phah sha ki nongpynmih kot {n} .
-test_kot_pick_first	Jied ia ki nongpynmih kot (ki) na ka bynta ka jingpynmih Test nyngkong — nangta Test shon .
-test_kot_sent_n	Ka jingpynmih test la phah sha ka jingpynmih {n}
-cancel_pick	Markos
-cancel_pick_on	La buh dak
-cancel_pick_meta	La buh dak ban pynsangeh
 batch_cancel	La pyndam noh
 batch_cancel_n	La buh dak ban weng ({n})
 batch_cancel_none	Mark shwa ia kawei ne bun ki tiar ba la phah — nangta Cancel la buh dak .
 batch_cancel_title	Pynsangeh ia ki tiar ba la buh dak — kawei ka daw, kawei ka slip pyndam ha kawei ka bynta .
 batch_cancel_ok	{n} ki tiar ba la pynsangeh · {slips} pyndam ia ki slip (ki) → {kitchens}
 batch_cancel_ok_noprint	Ki tiar {n} la pynsangeh — ka jingpynmih hi dalade ka la khang, kumta ym don slip pynsangeh
-no_printer_kitchen_station	Ym don nongpynmih kot na ka bynta kata ka steshon
 printers_saved	La pynim
 test_page_sent	Ka sla test ba la phah — peit ia ka jingpynmih .
 test_page_sent_one	Ka sla test la phah sha {name} — peit ia kata ka jingpynmih
@@ -771,10 +628,7 @@ cancelled	La weng noh
 printers_tap_find	Nion Find ban list ia ki printer kiba kane ka tiar ka lah ban pyndonkam.
 printers_none_found	Ym shym la lap — thoh ia ka kyrteng jong ka system printer lane ia ka IP (e.g. 192.168.1.50).
 printer_from_find	La pyndap {name}
-kot_printer_ph	Ka jingpynmih kot na ka bynta ki slip
 bill_printer_ph	Ka nongpynmih kot na ka bynta ki bill
-kot_print_on	Ki tiket ba la shon hi dalade: Ha
-kot_print_off	Ki tiket ba la shon hi dalade: La pynsangeh
 queue_refused	Ym pdiang da ka dukan ({n}) — peit ia kawei pa kawei ha ka counter:
 clear_not_accepted	La check — pynkhuid ia kane ka thup .
 device_name_ph	Ka kyrteng jong kane ka tiar
@@ -785,7 +639,6 @@ backup_failed	Ka jingpynkylla kaba khatduh ka la pulom: {e}
 backup_overdue	Ym don jingpynkylla na ka bynta {n} sngi — buh ia ka app ha kane ka tiar khnang ba kan lah ban pynkylla.
 disk_low	Tang {mb} MB ba laitluid ha kane ka tiar — ki jingpynkylla kin sa jah noh shen. Pyllait katto katne ka jaka.
 last_seen_devices	Ka jingshai kaba khatduh: {time}
-sync_interval	Pynbeit man la ka {secs}s
 connection_to_shop	Ka jingpyniasoh bad ka dukan .
 supplier_name_ph	Kyrteng nongsam (lane nongthied)
 supplier_ph	U nongsam
@@ -848,7 +701,6 @@ fresh_book_kirano	Fresh = katalog kaba thylli (pynrung ia ki tiar hadien). Ka ko
 fresh_selected	Ka jingjied kaba thymmai — ka katalog ka sah thylli. Tap Done ynda la dep.
 gross_word	Baroh
 how_start	Kumno phi kwah ban sdang?
-kot_print_help_kirano	Ba pyndonkam ha ka counter kirana.
 later_country_pack	Hadien: Ki jingpynbeit → pyndonkam ia ka pack ri jong phi na ka bynta ki jingthoh khajna bad jingsiew.
 local_badge	KA THANG
 mix_type_hint_kirano	Pynbynta ha ka pisa / UPI / kard / ram lada donkam. Ka kredit ka donkam ia u nongthied uba halor.
@@ -899,8 +751,6 @@ staff_copy_need_source	Jied ia ka setup jongno ban copy
 staff_copy_same	Kata ka dei kajuh ka briew — jied ia uwei pat .
 staff_rename_need_selected	Jied mano ban pynkylla kyrteng nyngkong .
 team_pick_hint	Jied mano ban pynbeit — ki screen, ki hok pisa, bad ki steshon ki paw tang na ka bynta uta u briew.
-team_stations_help	Ki steshon kiba ki lah ban pyndonkam .
-team_stations_changed	La pynkylla ia ki steshon — Pynsah ia ka jingpynbeit na ka bynta une u briew .
 team_features_changed	La pynkylla ia ki screen — Pynsah ia ka jingpynbeit na ka bynta une u briew .
 team_rights_changed	La pynkylla ia ki hok — Save ia ka jingpynbeit na ka bynta une u briew .
 they_owe_us	Ki don ram ha ngi
@@ -984,9 +834,6 @@ service_pct_ph	Ka jingshakri % kaba lah ban jied 0/10/12
 short_code_ph	U code ba lyngkot (MG02)
 starting_password_ph	Ka kyntien rung ba sdang (jied)
 starting_pin_ph	Sdang PIN (4-12 tylli ki dak)
-station_name_ph	Kyrteng jong ka steshon (da jied)
-station_new_ph	Ka bynta (jied)
-table_name_ph	Kyrteng jong u nongkhein
 tax_rate_ph	Ka kyrteng jong ka dor khajna ne % — Ka jinglong kaba thikna, kaba la pynduna, 0, 5, 12, 18, 20 .
 to_code_ph	Ban kod (kg)
 uncleared_no_ph	Ba la pynshai # haneng
@@ -999,27 +846,8 @@ book_kind_month	Ki kot jong une u bnai .
 book_kind_aging	Ka jingsah / jingsiew-jingsiew
 book_kind_balance	Ka jingkhein jingdiah
 order_help	Tap ia ka item ban pyndap ia ka.
-floor_help	Kane ka dukan ka die ha counter. Ki miej bad ka jaka bam kim dei ka bynta jong ka Kirano.
-kitchen_help	Ba pyndonkam ha ka dukan counter.
-kitchen_empty	Ym don tiket ba plie (ki dukan counter ki ju iehnoh ia kane ka screen khlem da pyndonkam).
-add_a_table	Pyndap ia ka miej bam
-add_station_heading	Pynrung ia ka bynta jong ka dukan
 categories_help	Tap Use ban file ia ka item kaba don haneng hapoh kata ka kyrdan. Photo ka ai ia ka kyrdan ia ka dur; khlem kawei ka pyni ia ki dak ba nyngkong jong ka.
 dish_search_ph	Ki tiar wad lane ki code lyngkot...
-tile_free	Kaba thylli
-tile_occupied	La shong
-tile_food_ready	Ka jingbam la pynkhreh
-tile_bill_printed	La shon ia ka bill
-tile_paid	La siew
-tile_bill_btn	Ka bill
-tile_occupy_btn	Ki nongwan shong
-tile_free_btn	Pyllait ia ka miej bam
-tile_ready_btn	Pyllait ia ka miej bam
-tile_undo_bill	Pynkylla ia ka bill
-summary_busy	Ki miej bam ki bunkam
-summary_to_collect	ban lum
-summary_on_floor	ha ka kamra bam
-floor	Dukan
 sizes_as_items_ph	Ki jingheh kum ki tiar ba kyrpang (da jied) — Shiteng=120, Ba pura=200
 dish_group_ph	Ka kynhun jong ka jingheh jong ka pack (da kaba jied) — e.g. Atta 1kg / 5kg
 discount	Ka jingpynhiar dor
@@ -1027,7 +855,6 @@ remove_discount	Pynduh noh ia ka jingpynhiar dor
 apply_discount	Pyndonkam ia ka jingpynhiar dor
 save_opening_cash	Pynlang ia ka pisa
 close_shift_print	Khang ia ka shift bad shon ia ka slip
-area_prices_ph	Ki dor jong ki jaka (da jied) — AC=220, Ki jaka=210
 discount_ph	10% lane 50
 discount_reason_ph	Ka daw (e.g. u nongwan ba man ka por, ka jingbam kaba lait por)
 opening_float_ph	La buh ia ka pisa ha ka drawer mynta ka step
@@ -1037,34 +864,18 @@ shift_handover	Ka jingaiti shift
 shift_since	Kane ka jingkylla naduh ka snem 1990.
 expected_in_drawer	La khmih lynti ha ka drawer
 right_discount	Ai jingpynhiar dor
-floor_in_kitchen	Ka dang iaid shakhmat
-floor_eating	La shakri
 pick_category	Jied ia ka kyrdan
 close_category_list	Khang ia ka thup jong ki kyrdan
 new_category_row	Ka kyrdan ba thymmai — la shna haba phi save ia ka item .
 your_category	Ka kyrdan jong ngi
 suggested_category	La ai jingmut — na ki tiar jong ngi .
 category_search_ph	Ka kyrdan — wad ia la ka jong lane thoh ia kaba thymmai .
-line_sent_state	La phah
-line_nc_state	Ka jingai khublei (NC) — ka jingsiew .
 cancel_item_short	Pynsangeh
-nc_short	Ym don jingsiew
-charge_again_short	Ka jingsiew
-move_short	Pynkynriah
 cancel_item_title	Pynsangeh ia kane ka mar — ka ophis ba shadien ka ioh ia ka slip pyndam .
-nc_item_title	Pynlong ia kane ka mar kum ka jingai khublei (NC)
-charge_again_title	Charge biang ia kane ka tiar
-move_item_title	Pynkynriah ia kane ka tiar sha kawei pat ka miej bam .
-already_cooked	La dep shet (jingpynlut)
-not_cooked_yet	Ym pat shet
 return_to_customer	Ka jingphai biang sha u nongthied
 short_by	Lyngkot da
 tip_not_sale	Tip (ki nongtrei, ym ka jingdie)
 right_settle	Shim ia ka jingsiew
-right_cancel_sent	Pynsangeh ia ka mar ba la phah
-right_complimentary	Ka jingai khublei (NC)
-right_move_table	Pynkynriah / pyniasoh ia ki jingkhein
-right_reprint	Pynmih biang ia ka bill
 right_allowed	La shah
 right_with_approval	Da ka jingmynjur
 right_denied	Ym shah
@@ -1074,25 +885,11 @@ no_server_found	Ym don ba lap. Ha ka Server: Ki jingpynbeit → Kiwei pat ki tia
 servers_found_pick	Tap ia ka dukan kaba phi kwah ban pyniasoh.
 server_host_selected	Da kaba pyndonkam {host} — pynrung ia u code jong ka pairing, nangta Pair mynta.
 print_bill	Pynmih bill
-table_actions	Ki jingleh pyrshah
-move_merge_table	Pynkynriah / pyniasoh ia ka miej bam
-move_help	Pynkynriah ia kane ka order jong u counter sha ka table kaba laitluid, lane pyniasoh ia ka sha kawei kaba iaid.
-move_target_ph	Kyrteng jong u nongkhein
 approval_pin_ph	Manager PIN (tang lada kylli)
-move_here	Pynkynriah shane
-merge_into	Pyniasoh ha ka
-line_reason_ph	Ka daw (kum u nongthied u la kylla jingmut, la duh stock)
-line_qty_ph	Katno tylli ban pyndam (thylli = baroh)
-line_target_ph	Pynkylla sha ka miej bam (ka nuksa D5)
 confirm	Pynthikna
 menu_search_ph	Ka jingwad ia ka item lane ka code lyngkot .
 customer_paid_ph	U nongthied u la siew
 tip_ph	Kaba aisbun ia ka pisa
-table_area_ph	Ka jaka (kum ka jaka bam, jaka bam, AC)
-table_range_ph	Bun ha ka shisien: D1-D20.
-add_these_tables	Pynrung ia kine ki jingkhein
-remove_these_tables	Pynduh noh ia kine ki jingkhein .
-table_remove_ph	Pynduh noh: T1-T24, lane kawei ka kyrteng jong ka miej bam
 find_server	Pyni ia ka server jong ka dukan
 bill_format	Ka rukom bill
 bill_format_help	La shon hapoh ka kyrteng jong ka dukan jong phi ha man la ka bill. Ki lain ba kyrpang bad | (e.g. Surok MG, Rajkot | Ph 98250 00000).
@@ -1100,78 +897,32 @@ bill_header_ph	Ka jaka sah | phone
 fssai_ph	FSSAI / laisen dukan no. (ba lah ban jied)
 bill_footer_ph	Hapoh (e.g. Khublei, leit jngoh biang)
 save_bill_format	Save ia ka rukom bill
-kot_format	Ka rukom slip
-kot_format_help	Tap ia ka jaka ha ka list. Pyni, ka jingheh jong ki font, bad ka jingkhia ki treikam ha kata ka jaka ha ka jait slip ba la jied haneng. Kawei pa kawei ka jait ka buh la ka jong ka jong ka jingheh bad jingkhia.
-kot_format_fields	Ki lyngkha
-kot_field_next	Ka jaka kaba bud
-kot_field_show	Pyni
-kot_field_hide	Burieh
 kot_field_on	pyni
 kot_field_off	buhrieh
-kot_field_size	Ka jingheh jong ka font
-kot_field_size_ph	kum 16, 20, 24, 28, 32...
 kot_weight_light	Ka jingshai
 bill_kot_panel_help	Ka jingpynbeit ia ka bill bad ka jingheh jong ka jingdon. U Cashier u dei uba la pynmih ne pynbeit ia ka bill — ka jingiathuhkhana ba pura jong ka jingdie ka sah ha ki kot.
 std_size_ph	kum 18, 20, 26...
-kot_show_shop	Kyrteng dukan
-kot_hide_shop	Dukan buhrieh
-kot_show_time	Ka por
-kot_hide_time	Ka por buhrieh
-kot_show_waiter	Nonglum pisa
-kot_hide_waiter	U nonglum pisa buhrieh
-kot_show_station	Steshon
-kot_hide_station	Burieh ia ka steshon
-kot_show_table	Ka jingkhein
-kot_hide_table	Pynrieh ia ka miej bam
-kot_show_kot_no	Tiket No
-kot_hide_kot_no	Pynsah ia ka tiket No .
-kot_width	Ka jingpeit lypa (buh ia ka jingheh jong ka jingdon ha ka slip tab)
-kot_width_58	58 mm
-kot_width_80	80 mm
-kot_kind_heading	Ka jait tiket
-kot_kind_original	Ka tynrai
-kot_kind_duplicate	Ka jingpynkylla
-kot_kind_modified	La pynkylla
-kot_kind_cancelled	La weng noh
-kot_style_heading	Ka jingheh & jingkhia jong ka jait lyngkha
-kot_style_title	Kyrteng
-kot_style_item_qty	Tiar · Ka Jingbun
-kot_style_field_pick	Jied ia ka jaka
 kot_weight_regular	Kaba man ka por
 kot_weight_bold	Bashlur
-kot_align	Pynbeit
 kot_align_start	Sdang
 kot_align_center	Pdeng
 kot_align_end	Kut
 content_width	Ka jingheh jong ka jingdon (mm)
 content_width_bill	Ka jingheh jong ka jingdon jong ka bill (mm)
-content_width_kot	Ka jingheh jong ka jingdon jong ka tiket (mm)
 content_width_ph	Lane thoh ia ka jingheh jong ka jingdon, 40-210 mm .
 content_width_help	Katno ka heh kane ka slip shon. U Bill u bat ia la ka jong ka jingheh.
 content_width_bill_help	Katno ka heh ka jingpynmih bill jong ki nongthied. Ka jinglong 210 mm (ka sla). 58 mm ka slip kaba rit, 80 mm ka slip kaba heh, 112 mm 4 inshi, 210 mm ka A4. Type kano kano ka jingkhein naduh 40 haduh 210. Ki tiket ki don la ka jong ka jingheh ha ka slip tab.
-content_width_kot_help	Katno ka jingpynmih tiket. Ka jinglong 80 mm. 58 mm ka slip kaba rit, 80 mm ka slip kaba heh, 112 mm 4 inshi, 210 mm ka sla. Type ia kano kano ka value naduh 40 haduh 210. Ki bill jong ki nongthied ki don la ka jong ka jingheh ha ka Bill tab.
 vp_paper_width	Ka jingheh jong ka jingdon (mm)
 vp_paper_width_ph	Lane thoh ia ka jingheh jong ka jingdon, 40-210 mm .
 vp_paper_width_help	Ia ka jingheh jong ka jingdon la buh hapoh ka rukom Bill & Slip — kyrpang na ka bynta ka bill (ba la buh 210 mm) bad ka tiket (ba la buh 80 mm).
-kot_size	Ka jingheh jong ka font
-kot_size_s	Kaba rit
-kot_size_m	Kaba thikna
-kot_size_l	Kaba heh
 std_size	Ka jingheh jong ka font
 kot_copies	Ki kopi
 kot_copies_1	1
 kot_copies_2	2
 kot_copies_3	3
-kot_title_ph	Ka kyrteng (thylli = TIKET)
-kot_footer_ph	Ka jingthoh ha ka ophis ba shadien (jied)
-kot_preview	Peit lypa
-save_kot_format	Ka rukom buh ia ka Slip
-test_kot_format	Ka jingpynmih test
-test_kot_sent	La phah ia ka jingpeit lypa ia ka tiket
 test_bill_format	Pynteh ka bill
 test_bill_sent	La phah ia ka jingpeit lypa ia ka bill
 test_print_no_printer	Ym don nongpynmih kot na ka bynta kata ka kam — jied kawei ha kane ka screen .
-kot_format_saved	La buh ia ka dur jong ka slip
 std_print	Ka jingheh jong ka jingpynmih bill
 std_print_help	Ka jingheh jong ki font na ka bynta ki kam bill ba thikna jong ka dur bad ka jaka ha ki OS / ki kor shon kot (pynrung ia ki point — ym Rit/Ba thikna/Ba heh). Kajuh ka jingheh ha baroh ar ki jingpynbeit.
 std_size_s	Kaba rit
@@ -1211,23 +962,16 @@ upi_qr	UPI QR
 show_upi_qr	Pyni UPI QR
 close_upi_qr	Khang
 upi_qr_help	U nongthied u scan bad u siew. Tap Shim ia ka jingsiew hadien ba ki la siew. Ka screen kaba ar: plie ia ka Server URL /pyni ha ka LAN.
-kot_recall	Pynkynmaw
 recently_done	Dang shen la dep
-recall_kot_ph	Tiket # ban pynkynmaw
 role_help_customer	Ka bynta: U nongthied — u nongkit ram (ki don ram ha ngi). Ujuh u nongthied ne u nongsam u lah ruh ban pynbiang stock.
 role_help_both	Ki kam: U nongthied + U nongsam — uwei u nongthied ne u nongsam, ka kot jingkhein jingdiah bad ki kot jingkhein jingdiah ba dei ban siew, net ha ki Report.
 role_help_supplier	Ka bynta: U nongsam — ngi donkam ia ki na ka bynta ki jingthied.
-dine_in_pick_table	Ym pyndonkam ha ka dukan counter .
-choose_table	Jied ia ka nongkhein
-change_table	Pynkylla ia ka miej bam
-pick_table_banner	Jied ia ka miej bam na ka bynta kane ka jingbthah
 items_word	ki tiar
 items_section	Ki tiar
 back_to_order	Ka jingbthah biang
 new_items_head	Ym pat phah
 price_ph	Ka dor
 price_ph_gst_inside	Ka dor ({tax} kynthup lang)
-cancel_needs_table	Ka jingdie ha ka jaka buh tiket ka sah ha ka tiket haduh ba phin da shim ia ka jingsiew
 tax_rates_missing_hint	Ym don dor {tax} ha kine ki mar — ha ki mar la buh dor khajna (ki dor ki la kynthup lypa ia ka {tax} hapoh ka {tax} kynthup)
 taxable_value	Ka dor ba lah ban siew khajna
 gst_inside_price_note	({tax} kynthup lang)
@@ -1248,30 +992,11 @@ client_template_confirm	Ka jingpynrung ia ki tiar {d} na ka {title}? Ki tiar kib
 client_template_importing	Ka jingwanrah {title}...
 client_template_done	Kawei pa kawei ka tiar na ka {title} ka don ha ki tiar jong phi.
 client_template_imported	La pynrung ia ki tiar {d} bad ki jait {c} na ka {title} .
-resv_heading	Ki jingbuh jaka
-resv_name_ph	Ka kyrteng jong u nongthied
-resv_phone_ph	Phone (ba lah ban jied)
-resv_guests_ph	Ki briew
-resv_when_ph	Lano — 20:30, lashai ka sngi 13:00
-resv_table_ph	Ka jingkhein (da jied)
-resv_add	Ka kot
-resv_seat	Ka jingshong
-resv_none	Ki jingpynbna ki dang wan.
-guests_word	ki nongwan
-delivery_by_ph	Ka jingpynpoi da (kyrteng jong u nongñiah ne nongtrei)
-kitchen_all_day	Ban shet mynta: {items} .
-split_bill	Pyniabynta ia ka bill
-split_go	Pynlong ia ka bill ba kyrpang
 cancel	Pynsangeh
 opening_client	Ka jingplie ia u kliant...
 preparing_desk	Ka jingpynkhreh ia ka miej...
 opening_server	Ka jingplie ia ka server...
 creating_server	Ka jingshna ia ka server...
-split_help	Tap ia ki mar ba uwei u nongthied u siew · {n} la jied
-split_send_first	Phah shwa ia ka slip — tang ki tiar kiba ka ophis ka don shadien ki lah ban leit sha ka bill ba kyrpang
-split_pick_some	Tap shwa ia ki tiar na ka bynta ka bill ba kyrpang .
-split_done	Ka bill ba la shna kyrpang — ka don ha mala hajan kane ka counter .
-split_marked	ka bill ba kyrpang
 order_empty_pick	Order kaba thylli — tap Add ia ki tiar haneng ban jied ia ki tiar.
 add_dishes	Pynrung ia ki tiar
 order_so_far	Ha kane ka jingpynbeit: {n} · {total}
@@ -1282,24 +1007,8 @@ pick_done_dd	La dep · {label}
 printer_route_mode	Lada katto katne ki nongpynmih kot ha kane ka jaka .
 printer_mode_first	Nyngkong kata ka treikam
 printer_mode_all	Pynmih ha baroh
-kot_show_area	Ka jaka
-kot_hide_area	Ka jaka buhrieh
-kot_show_item_hdr	Tiar · Ka Jingbun
-kot_hide_item_hdr	Pynrieh ia ki tduh
-kot_show_title	U lain kyrteng
-kot_hide_title	Burieh ia ka kyrteng
-kot_field_order	Ka jingbthah ban print
 kot_field_up	Pynkylla sha jrong
 kot_field_down	Pynhiar shapoh
-kot_field_cycle	Jied ia kaba bud
-kot_field_select	Jied ia kaba bud
-kot_field_time	Ka por
-kot_field_kot_no	Tiket No
-kot_field_area	Ka jaka
-kot_field_table	Ka jingkhein
-kot_field_shop	Kyrteng dukan
-kot_field_waiter	Ki nongtrei
-kot_field_station	Steshon
 app_template_blurb_extra	Kumjuh ruh: U trai u Zahir, u Admin Asif, u nongap pisa u Nawaz; ka liang ba shakhmat; ka histori hadien 4 kynta; Mynta ka sngi strip noh; ka bill kaba rit.
 dishes_n	Ki tiar {n}
 recipe_ph	Ka rukom shet (da jied — ym pyndonkam ha ka dukan kaba don hajan)
@@ -1309,8 +1018,6 @@ low_stock_alert	Ka jingduna — thied kloi: {items} .
 unpriced_note	Ki tiar {n} ha ki tiar jong phi kim pat don dor haduh mynta — ki bill ha ka 0 haduh ba phin da buh ia kawei.
 show_unpriced	Pyni tang ia ki tiar khlem dor
 show_all_dishes	Pyni ia baroh ki tiar
-role_waiter	Nonglum pisa
-role_kitchen	Dukan
 role_title_rest_ph	Ka kyrteng kam (kum u Kapten, U nongshet jingshet)
 preset_help_rest	U nongthied: die. U nongpyniaid: die + tiar + pynkylla/pynkylla.
 kind_raw	La thied na ka bynta ban pyndonkam ha dukan

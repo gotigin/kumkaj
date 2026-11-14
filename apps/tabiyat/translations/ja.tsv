@@ -80,28 +80,6 @@ applied	適用
 note_ph	メモ（任意）
 rounded	端数後
 split	分割
-send_kot	スリップを送る
-send_kot_to	送信 → {kitchens}
-send_kot_again	次の伝票に項目を追加する
-send_kot_held	保留中のアイテム — 保留を解除して送信します
-reprint_kot	選択を再印刷
-reprint_kot_ok	{n} 項目を再度印刷 · {slips} 伝票 → {kitchens}
-reprint_kot_needed	最初に伝票を送信し、次に医薬品を含めて、選択したものを再度印刷します
-reprint_kot_none_selected	送信されたすべてのアイテムはスキップされます。再印刷するアイテムで「印刷中」をタップします
-reprint_kot_client	送信された {place} に対して再度印刷 ({n}) - ショップのデバイスがそれを印刷します
-print_cancelled_kot	取消をすべて印刷
-print_cancelled_kot_ok	印刷された {n} キャンセル項目 · {slips} 伝票 → {kitchens}
-print_cancelled_kot_needed	最初にキャンセルされたアイテムを含むテーブルを開きます
-print_cancelled_kot_none	この注文にはキャンセルされた商品はありません
-print_cancelled_kot_client	送信された {place} に対して印刷がキャンセルされました ({n}) — ショップのデバイスが印刷します
-kot_banner	バナー
-kot_banner_ph	バナー（空=なし）
-kot_item_prefix	品目前置き
-kot_item_prefix_ph	例: [CANCELLED] 
-kot_strike	ストライクアイテム名
-kot_strike_note	ストライクアイテムメモ
-kot_strike_on	オン
-kot_strike_off	オフ
 bill_item_layout	品目レイアウト
 bill_item_layout_columns	列
 bill_item_layout_stacked	縦並び
@@ -130,8 +108,6 @@ bill_item_gap_em	間隔 (em)
 bill_item_qty_min	数量の最小 (em)
 bill_item_price_min	単価の最小 (em)
 bill_item_amount_min	金額の最小 (em)
-kot_item_qty_width	数量列
-kot_item_num_align	数量の揃え
 bill_total_qty_label	合計数量ラベル
 bill_total_subtotal_label	小計ラベル
 bill_total_grand_label	合計ラベル
@@ -143,36 +119,9 @@ bill_item_piece_off	オフ
 bill_total_qty	合計数量
 bill_total_subtotal	小計
 bill_total_grand	合計
-reprint_incl	印刷に含める
-reprint_skip	除外
-reprint_skip_meta	再印刷しない
-kot_dest_hint	セットアップ → プリンター で {kitchens} に割り当てたプリンターに印刷されます
-kot_sent_hint	最後の送信は {kitchens} に送られました。タップして次の請求書の項目を追加するか、同じ請求書の伝票を再度印刷します。
-kot_sent_printing	{kitchens} にスリップ送信 — 印刷中
-kot_sent_not_printed	伝票は {kitchens} に送信されましたが、印刷されませんでした: {why}。販売店に連絡し、プリンターを修理して再度印刷してください。
-kot_sent_screen	{kitchens} に送信された伝票
-kot_queued_shop	{place} → {kitchens} のスリップが保存されました。ショップのデバイスがそれを印刷します
-kot_job_label	{place}→{kitchens}用スリップ
-kot_job_reached	{place} のスリップが {kitchens} に達しました
 kot_unassigned	未割り当て
-kot_unassigned_held	ステーションなしで保留された {n} アイテム — 送信する回線で保留を解除します
-kot_station_ph	ステーション
-kot_station_dd	ステーション
-kot_station_dd_n	ステーション・{stations}
-kot_set_station	このステーションを使用
-kot_station_applied	{n} アイテムのステーション セット: {station}
-kot_station_cleared	{n} アイテムからクリアされたステーション: {station}
-kot_station_needed	まず調剤セクションを選択してください
-kot_station_not_allowed	セクションの使用は許可されていません: {station}
-kot_station_none	まだステーションはありません — カウンターショップでは未使用です (必要に応じて [設定] → [エリア])
 pos_tab_items	追加済み
 pos_tab_payment	支払い
-hold_send	ホールド
-hold_send_on	保留中
-hold_send_meta	開催 — この伝票には載っていない
-station_remove	ステーションを削除
-station_remove_ph	リスト内のステーションをタップして削除します
-station_removed	ステーションが削除されました：{name}
 settings_hub_title	設定
 settings_hub_help	一度に一つの項目を開きます — スクロールが減り、選びやすくなります。
 settings_back	戻る
@@ -181,12 +130,10 @@ settings_sec_country	国と税
 settings_sec_tills	追加レジと支店
 settings_sec_brand	あなたのブランド
 settings_sec_units	ユニットと換算
-settings_sec_pickers	領域 · ステーション · 税率
+settings_sec_pickers	税率
 settings_sec_printers	プリンター
 settings_sec_bill	請求とスリップの形式
 settings_sec_selling	シームと販売
-bill_kot_tab_bill	伝票
-bill_kot_tab_kot	スリップ
 settings_sec_alerts	お知らせ
 alerts_help	状態メッセージを画面に表示しておく時間（このログイン）。
 snack_secs_ph	秒（3–60、既定 10）
@@ -237,8 +184,6 @@ counter	カウンター
 dine_in	カウンター
 takeaway	テイクアウト
 order	注文
-tables	カウンター
-kitchen	区画
 sales	売上
 sales_refunds	売上と返金
 day_close	日次締め
@@ -266,10 +211,6 @@ zero_sales_on	ゼロ売上: オン
 zero_sales_off	ゼロ売上: オフ
 zero_sales_saved_on	ゼロ売上許可を保存しました（オン）
 zero_sales_saved_off	ゼロ売上許可を保存しました（オフ）
-floor_areas_help	エリアとは、フロア上の部屋またはゾーン (ダイニング、パーセル、エアコンなど) です。最初にエリアを追加してから、そのエリアにカウンターを配置します。各エリアはフロア上の個別のグループです。
-area_new_ph	新しいエリア/部屋（例: AC, Garden）
-add_area	エリアを追加
-area_added	エリア「{name}」の準備完了 — そこにカウンターを追加
 no_favorites	お気に入りはまだありません — 下のリストからアイテムを追加してください。
 add_to_bill	請求に追加
 added	追加済み
@@ -280,19 +221,9 @@ chip_missing_customer	選択した顧客が見つかりません — 選び直�
 chip_no_customer	顧客はまだいません — 名前を入力して「掛け」をタップ
 credit_summary_fmt	{} 顧客 · 未精算 {} · 前払い {}
 recent_label	最近:
-kot_new_waiting	新規 — 待機中
-kot_preparing	準備中
-kot_ready_serve	準備完了 — 提供してください
-kot_done_cap	完了
-kot_cancelled	キャンセル
-kot_start_btn	開始
-kot_mark_ready	準備完了にする
-kot_done_btn	完了
-table_free	空席 — タップして注文を開始
 start_order	注文を開始
 open_bill	請求を開く
 collect_payment	支払いを受け取る
-table_running	進行中
 payment_pending	支払い待ち
 collect_at_counter	カウンターで受け取る
 inventory	在庫
@@ -325,7 +256,6 @@ ok	OK
 this_shop	サーバーモード
 extra_till	クライアントモード
 off	オフ
-tables_kitchen	店内レイアウト
 server	サーバー
 client	クライアント
 language_currency	言語と通貨
@@ -367,8 +297,6 @@ add_item_plain	品目を追加
 add_note	メモを追加
 add_opening_balance	期首残高を追加
 add_staff	スタッフを追加
-add_station	ステーションを追加
-add_table	テーブルを追加
 add_unit	単位を追加
 add_use_name	この名前を追加／使う
 allow_extra_tills	追加レジを許可
@@ -421,7 +349,6 @@ share_whatsapp	WhatsAppで共有
 lan_pages_heading	Wi‑Fi 上の顧客ページ
 lan_pages_help	このショップの Wi-Fi では、顧客ページが表示ボードとフィードバックとして機能します。モバイル データを使用している人は、後でクラウドが必要になります。カード端末または支払いリンクはオプションであり、カウンターをブロックすることはありません。
 diag_send_heading	この端末の外へ共有
-kot_dest_heading	ステーション
 optional_login_heading	任意のログイン
 rights_heading	権限
 ops_panel	ローカル業務
@@ -448,28 +375,6 @@ till_voucher_amt_ph	バウチャー金額（空=全額）
 till_wallet_topup_ph	ウォレット入金額
 till_voucher_issue_amt_ph	新規バウチャー金額
 till_voucher_issue_code_ph	新規バウチャーコード
-split_evenly	均等に分割
-waitlist	ウェイティングリスト
-fire_course	次のステップ
-hold_item	ホールド
-waiter_call	レジに電話する
-waitlist_add	ウェイティングに追加
-floor_view_grid	グリッド
-floor_view_layout	レイアウト
-floor_layout_x	X
-floor_layout_y	Y
-floor_layout_w	W
-floor_layout_h	H
-floor_layout_save	レイアウトを保存
-floor_layout_open	テーブルを開く
-floor_layout_edit	レイアウト編集
-floor_layout_pick	テーブルをタップしてレイアウトを編集
-floor_layout_saved	レイアウトが保存されました
-floor_layout_nudge_left	← 20
-floor_layout_nudge_right	→ 20
-floor_layout_nudge_up	↑ 20
-floor_layout_nudge_down	↓ 20
-sibling_pickers_help	単位と同じ On/Off — エリア・ステーション・税率を日常ピッカーから隠す。パック既定は残る。
 bulk_price_apply	一括価格を適用
 card_terminal_optional	カード端末／支払いリンク（ネットがあれば任意）
 copy_report	レポートをコピー
@@ -495,7 +400,6 @@ import_day	当日分をインポート
 import_items_csv_plain	品目CSVをインポート…
 import_parties_csv	取引先CSVをインポート…
 item_name	品目名
-kitchen_printing	キッチン印刷
 login_id_ph	ログインID
 mark_cleared	クリア済みにする
 new_party_clear	新規取引先（フォームをクリア）
@@ -565,15 +469,6 @@ show	表示
 spreadsheet_csv	スプレッドシート（CSV）
 start_fresh	最初から始める
 stop_extra_tills	追加レジを停止
-floor_cols_ph	列数
-floor_cols_fit	画面に合わせる
-floor_cols_fit_sub	{n}個入る
-floor_cols_fits	収まる
-floor_cols_scroll	横スクロール
-floor_cols_min	列数：1以上 — 空欄なら画面に合わせます
-floor_zoom_auto	自動
-floor_zoom_out	縮小
-floor_zoom_in	拡大
 backup_auto	毎日自動バックアップ · 前回 {when} · 直近14日分を {dir} に保存。
 backup_auto_none	毎日自動バックアップ — 最初の分はまもなく行います。
 backup_copy_to	コピーは {dir} にも保存します。
@@ -591,7 +486,6 @@ new_pair_code	新しいペアリングコード
 pair_finishing	ペアリング完了中… 店舗の帳簿を適用しています
 pair_opening	レジを開いています…
 pair_copied	ペアリングコードをコピーしました
-kot_waiting	送信待ち
 lan_offline_waiting	オフライン · {n} 件待機中
 lan_connecting	店に接続中…
 lan_live	ライブ
@@ -633,7 +527,6 @@ printers_routes_help	オペレーティング システムがすでに認識し�
 printer_assign_dd	{place} のプリンターを選ぶ
 printer_assign_pick	実プリンターを選択
 printer_profile_heading	レイアウト
-printer_send_heading	配信
 vp_delivery_heading	配信
 vp_delivery_help	この仮想プリンターがジョブを送信する方法 (OS ドキュメント、生バイト、または ESC/POS)。伝票内容（活字サイズ、折り返し、余白）は、ここではなく請求書・伝票フォーマットにより決定されます。
 vp_type_size_heading	文字サイズ
@@ -677,23 +570,13 @@ virtual_draft_send	次の仮想プリンター用の値を設定しました
 virtual_need_real	先に実プリンターを選択してください
 virtual_need_select	削除する仮想プリンターを選択してください
 real_printer_selected	実プリンター: {name}
-station_group_heading	仮想プリンター
-station_group_apply	仮想プリンターを削除
-station_group_applied	削除しました
-station_group_empty	仮想プリンターを選択してください
-station_group_name_ph	仮想プリンター名（任意）
-station_group_save	仮想プリンターを作成
-station_group_saved	仮想プリンターを保存しました
-station_manage_heading	調剤セクションを追加または削除する
 printers_routes_heading	2. 印刷先
 route_pick_heading	場所
 route_editing	編集：{name}
 route_assigned	{printer} を {place} に追加しました
 route_already_assigned	この場所に既に: {printer}
-route_removed	{printer} を {place} から削除しました
 route_cleared	{name} をクリアしました
 route_assigned_empty	この場所にはありません
-route_tap_remove	タップして削除
 route_tap_select	タップして選択
 route_tap_selected	選択済み
 route_pick_printer_first	先にプリンターをタップ
@@ -714,35 +597,17 @@ printer_format_custom	新しいカスタム形式
 printer_format_custom_label	カスタム
 printer_format_custom_added	このルートにカスタム形式を追加しました
 add_printer	プリンターを追加
-remove_printer	末尾を削除
 route_pick_ph	請求書または調剤セクション
 route_bill	伝票
-route_default_kitchen	ステーションなし（未割り当てアイテム）
-route_kot_station	ステーション
 route_dont_print	印刷しない
-stations_heading	ステーション
-stations_help	調剤セクションでは、店内のその部分の医薬品とプリンターがグループ化されています。 「設定」→「プリンター」からプリンターを接続し、試行順序を設定してから、機能するものを最初に表示するか、すべてに印刷します。変更はそのまま保存されます。
-station_print_heading	このステーションのプリンター
-station_print_help	ステーションを選択し、1 つ以上のプリンタを接続します。 ↑↓は試行順序を設定します。まず、最初の成功後に動作が停止します。接続されているすべてのプリンターにすべての送信時に印刷します。
-station_print_pick_ph	プリンターを設定するステーション
 station_print_pick_first	まず調剤セクションを選択してください
-station_print_editing	「{name}」のプリンターを編集中
-station_vps_dd	このステーションのプリンター
-station_vps_dd_n	{n} 台のプリンター · タップして変更
 station_vps_empty	まだプリンターがありません — 設定 → プリンターで探してください
 bill_printers_dd	請求書のプリンター
 bill_printers_dd_n	請求書用の {n} プリンター · タップして変更
-job_layout	レイアウト
-job_delivery	作業の送信方法
-job_delivery_help	OS ドキュメント、生のバイト、または ESC/POS。請求書とチケットはそれぞれ独自のものを保管します。どちらのジョブも、Find が保存した任意のプリンタに送信できます。
 station_vp_attached	プリンターを付けました
 station_vp_detached	ステーションからプリンターを外しました
-station_print_summary	{mode} · プリンター {n} 台
-station_print_summary_none	このステーションにまだプリンターがありません — 印刷しません
-stations_none	まだステーションがありません。下にステーションを追加してください。カウンターショップではステーションは使用されていません - 空のままにしておきます。
 route_up	上へ
 route_down	下へ
-route_remove	末尾を削除
 route_clear	印刷しない
 save_printers	プリンターを保存
 print_test_page	テストページを印刷
@@ -751,23 +616,15 @@ test_page_no_printer	{place} にプリンターがありません — 上で割�
 test_page_pick_first	まずテスト用プリンターを選んでからテストページを印刷してください
 test_printers_dd	テストページ用プリンター
 test_printers_dd_n	テスト用プリンター {n} 台 · タップで変更
-kot_test_printers_dd	テストプリント用プリンター
-kot_test_printers_dd_n	テスト印刷用の {n} プリンタ · タップして変更します
 test_printer_picked	テスト先: {name}
 test_printer_cleared	テストしない: {name}
 test_page_sent_n	テストページを {n} 台のプリンターに送信しました
-test_kot_pick_first	最初にテスト印刷するプリンターを選択し、次にテスト印刷を選択します
-test_kot_sent_n	テスト印刷を {n} プリンタに送信
-cancel_pick	マーク
-cancel_pick_on	マーク済み
-cancel_pick_meta	取消用にマーク
 batch_cancel	マークをキャンセル
 batch_cancel_n	マークをキャンセル ({n})
 batch_cancel_none	最初に 1 つ以上の送信済みアイテムにマークを付けてから、「キャンセル」にマークを付けます
 batch_cancel_title	印を付けた薬品を取消 — 理由は一つ、区画ごとにスリップ1枚
 batch_cancel_ok	{n} 品目キャンセル · {slips} キャンセル伝票 → {kitchens}
 batch_cancel_ok_noprint	{n} アイテムがキャンセルされました - 自動印刷がオフになっているため、キャンセル伝票はありません
-no_printer_kitchen_station	そのステーションにはプリンターがありません
 printers_saved	この端末のプリンターを保存しました
 test_page_sent	テストページを送信しました — プリンターを確認してください
 test_page_sent_one	{name} にテストページを送信しました — そのプリンターを確認してください
@@ -783,10 +640,7 @@ cancelled	取消
 printers_tap_find	「プリンターを探す」をタップ — システムプリンターとこのWi‑Fiのネットワークレシートプリンターが一覧表示されます。
 printers_none_found	プリンターが見つかりません — システム名またはネットワークアドレスを入力（例: 192.168.1.50）。
 printer_from_find	{name} を追加しました
-kot_printer_ph	スリップ用プリンター
 bill_printer_ph	会計伝票のプリンター
-kot_print_on	チケットの自動印刷: オン
-kot_print_off	自動印刷チケット: オフ
 queue_refused	店で受け付けられなかったもの（{n}）— レジで一件ずつ確認してください:
 clear_not_accepted	確認済み — この一覧を消す
 device_name_ph	このデバイスの名前
@@ -797,7 +651,6 @@ backup_failed	前回の自動バックアップに失敗しました: {e}
 backup_overdue	{n} 日間バックアップがありません — バックアップのため、このデバイスでアプリを開いたままにしてください。
 disk_low	このデバイスの空き容量は {mb} MB だけです — まもなくバックアップできなくなります。空き容量を増やしてください。
 last_seen_devices	最終確認時刻：{time}
-sync_interval	各 {secs} 秒ごとに同期
 connection_to_shop	店との接続
 supplier_name_ph	仕入先名（または取引先）
 supplier_ph	仕入先
@@ -860,7 +713,6 @@ fresh_book_tabiyat	プリンター
 fresh_selected	Freshを選択中 — カタログは空のままです。準備ができたらDoneをタップ。
 gross_word	粗利益
 how_start	どのように始めますか？
-kot_print_help_tabiyat	KOTが送信されると — カウンターでもウェイターの端末でも — キッチンの紙がここで自動的に印刷されます。
 later_country_pack	プリンター
 local_badge	ローカル
 mix_type_hint_tabiyat	必要に応じて現金／UPI／カード／掛けに分割してください。掛けには上の顧客が必要です。
@@ -911,8 +763,6 @@ staff_copy_need_source	コピーする設定を持つ人物を選択してくだ
 staff_copy_same	同じ人物です — 他の人を選択してください
 staff_rename_need_selected	まず名前を変更する人物を選択してください
 team_pick_hint	編集する人を選択します - 画面、金銭権、およびステーションはその人にのみ表示されます。
-team_stations_help	使用できる駅
-team_stations_changed	ステーションが変更されました — この人の設定を保存します
 team_features_changed	スクリーンが変更されました — この人の設定を保存します
 team_rights_changed	権限が変更されました — この人の設定を保存します
 they_owe_us	当社への未払い
@@ -996,9 +846,6 @@ service_pct_ph	サービス % 任意 0/10/12
 short_code_ph	短いコード（MG02）
 starting_password_ph	開始パスワード（任意）
 starting_pin_ph	開始PIN（4–12桁）
-station_name_ph	駅名（任意）
-station_new_ph	セクション (オプション)
-table_name_ph	カウンター/ベイ名
 tax_rate_ph	税率名または % — Standard, Reduced, 0, 5, 12, 18, 20
 to_code_ph	変換先コード（kg）
 uncleared_no_ph	上の未清算番号
@@ -1011,27 +858,8 @@ book_kind_month	今月の帳簿
 book_kind_aging	未精算 / 借方・貸方
 book_kind_balance	貸借対照表
 order_help	開いている注文を選ぶか、テーブルを選んで新規開始。準備中のアイテムをタップし、KOT を送信、1つ以上のアイテムを請求、会計を分割して支払いを完了。
-floor_help	このお店はカウンターで販売しています。テーブルとダイニング フロアは Tabiyat の一部ではありません。
-kitchen_help	KOTが送信されると — カウンターでもウェイターの端末でも — キッチンの紙がここで自動的に印刷されます。
-kitchen_empty	オープンチケットはありません（カウンターショップは通常、この画面を未使用のままにしておきます）。
-add_a_table	テーブルを追加
-add_station_heading	区画を追加 · 例：OTC、冷蔵、カウンター
 categories_help	カテゴリは料理がメニューのどの部分に属するかを示します — 例：スナック、メインコース、ビリヤニ。カテゴリは自由に作成できます：提案した名前を選ぶ、名前を変更する、独自のものを追加する。
 dish_search_ph	名前、塩、バーコードを検索…
-tile_free	空席
-tile_occupied	着席
-tile_food_ready	料理完成
-tile_bill_printed	伝票印刷済
-tile_paid	支払済
-tile_bill_btn	会計
-tile_occupy_btn	着席させる
-tile_free_btn	空ける
-tile_ready_btn	準備完了
-tile_undo_bill	伝票取消
-summary_busy	卓使用中
-summary_to_collect	会計待ち
-summary_on_floor	フロア上
-floor	店
 sizes_as_items_ph	サイズを別品目に（任意）— ハーフ=120, フル=200
 dish_group_ph	強度 / パック グループ (オプション) — 例: 500mgストリップ
 discount	割引
@@ -1039,7 +867,6 @@ remove_discount	割引を外す
 apply_discount	割引を適用
 save_opening_cash	釣銭準備金を保存
 close_shift_print	シフト締め・伝票印刷
-area_prices_ph	エリア価格（任意）— AC=220, 持帰=210
 discount_ph	10% または 50
 discount_reason_ph	理由（例：常連、提供遅れ）
 opening_float_ph	今朝レジに入れた現金
@@ -1049,34 +876,18 @@ shift_handover	シフト引き継ぎ
 shift_since	このシフト開始
 expected_in_drawer	レジ内の想定額
 right_discount	割引する
-floor_in_kitchen	進行中
-floor_eating	食事中
 pick_category	カテゴリを選ぶ
 close_category_list	カテゴリ一覧を閉じる
 new_category_row	新しいカテゴリ — 品目の保存時に作成
 your_category	あなたのカテゴリ
 suggested_category	提案 — 当社のアイテムから
 category_search_ph	カテゴリ — 検索、または新しく入力
-line_sent_state	送信済
-line_nc_state	サービス (NC) — 請求なし
 cancel_item_short	取消
-nc_short	サービス
-charge_again_short	請求
-move_short	移動
 cancel_item_title	このアイテムをキャンセルします — バックオフィスがキャンセル伝票を受け取ります
-nc_item_title	この品目をサービスにする (NC)
-charge_again_title	この品目を再び請求する
-move_item_title	この品目を別のテーブルへ移動
-already_cooked	調理済み（ロス）
-not_cooked_yet	未調理
 return_to_customer	お釣り
 short_by	不足
 tip_not_sale	チップ（スタッフ分・売上外）
 right_settle	会計
-right_cancel_sent	送信済み品目の取消
-right_complimentary	サービス提供 (NC)
-right_move_table	カウンターの移動/マージ
-right_reprint	伝票を再印刷
 right_allowed	許可
 right_with_approval	承認が必要
 right_denied	不可
@@ -1086,25 +897,11 @@ no_server_found	サーバーが見つかりません。店の端末が同じ Wi�
 servers_found_pick	接続したい店をタップしてください。
 server_host_selected	{host} を使用中 — ペアリングコードを入力し、「今すぐペア」をタップ。
 print_bill	伝票を印刷
-table_actions	カウンターアクション
-move_merge_table	テーブル移動・結合
-move_help	このカウンターの注文を空きテーブルに移動するか、実行中のテーブルにマージします。
-move_target_ph	カウンター名
 approval_pin_ph	店長 PIN（求められた時のみ）
-move_here	ここへ移動
-merge_into	そこへ結合
-line_reason_ph	理由 (例: 顧客の気が変わった、在庫切れ)
-line_qty_ph	取消数（空欄 = 全部）
-line_target_ph	移動先の卓（例 D5）
 confirm	確認
 menu_search_ph	品目・ショートコードで検索
 customer_paid_ph	お預かり
 tip_ph	チップ
-table_area_ph	エリア（例：店内、持ち帰り、AC）
-table_range_ph	まとめて：D1-D20
-add_these_tables	これらのカウンターを追加します
-remove_these_tables	これらのカウンターを削除します
-table_remove_ph	削除：T1-T24、またはテーブル名
 find_server	店のサーバーを探す
 bill_format	伝票の書式
 bill_format_help	すべての請求書にお店の名前の下に印刷されます。 | で行を区切る(例: MG Road、ラージコート | Ph 98250 00000)。
@@ -1112,78 +909,32 @@ bill_header_ph	住所 | 電話
 fssai_ph	医薬品販売許可番号(オプション - あなたの言葉遣い)
 bill_footer_ph	フッター（例：ありがとうございました）
 save_bill_format	伝票の書式を保存
-kot_format	スリップ形式
-kot_format_help	リスト内のフィールドをタップします。表示、フォント サイズ、太さは、上で選択した伝票の種類のフィールドに適用されます。それぞれの種類は独自のサイズと重量を維持します。
-kot_format_fields	項目
-kot_field_next	次の項目
-kot_field_show	表示
-kot_field_hide	非表示
 kot_field_on	表示
 kot_field_off	非表示
-kot_field_size	フォントサイズ
-kot_field_size_ph	例: 16, 20, 24, 28, 32…
 kot_weight_light	細
 bill_kot_panel_help	請求書のレイアウトとコンテンツの幅。レジ担当者は、請求書を発行または決済した人です。販売の全容は帳簿に残ります。
 std_size_ph	例: 18, 20, 26…
-kot_show_shop	店名
-kot_hide_shop	店名を隠す
-kot_show_time	時刻
-kot_hide_time	時刻を隠す
-kot_show_waiter	レジ係
-kot_hide_waiter	レジ係を隠す
-kot_show_station	ステーション
-kot_hide_station	ステーションを隠す
-kot_show_table	カウンター
-kot_hide_table	テーブルを隠す
-kot_show_kot_no	スリップ番号
-kot_hide_kot_no	チケット番号を非表示にする
-kot_width	折り返しのプレビュー (スリップタブでコンテンツの幅を設定)
-kot_width_58	58 mm
-kot_width_80	80 mm
-kot_kind_heading	チケット種類
-kot_kind_original	原本
-kot_kind_duplicate	複製
-kot_kind_modified	変更
-kot_kind_cancelled	取消
-kot_style_heading	項目のサイズと太さ
-kot_style_title	タイトル
-kot_style_item_qty	品目 · 数量
-kot_style_field_pick	項目を選択
 kot_weight_regular	標準
 kot_weight_bold	太字
-kot_align	揃える
 kot_align_start	開始
 kot_align_center	中央揃え
 kot_align_end	末尾
 content_width	内容幅（mm）
 content_width_bill	請求書コンテンツの幅（mm）
-content_width_kot	チケット内容幅(mm)
 content_width_ph	または内容幅を入力、40–210 mm
 content_width_help	この伝票の印刷幅。ビルは独自の幅を維持します。
 content_width_bill_help	顧客の請求書を印刷する幅。デフォルトは 210 mm (ページ)。細幅伝票58mm、幅80mm伝票、4インチ112mm、A4幅210mm。 40 ～ 210 の任意の値を入力します。チケットの伝票タブには独自の幅があります。
-content_width_kot_help	チケットの印刷幅。デフォルトは 80 mm。 58 mm幅のスリップ、80 mm幅のスリップ、112 mm 4インチ、210 mmページ。 40 ～ 210 の任意の値を入力します。顧客の請求書には、[請求書] タブで独自の幅があります。
 vp_paper_width	内容幅（mm）
 vp_paper_width_ph	または内容幅を入力、40–210 mm
 vp_paper_width_help	コンテンツの幅は、請求書と伝票形式で、請求書 (デフォルト 210 mm) とチケット (デフォルト 80 mm) に分けて設定されます。
-kot_size	文字サイズ
-kot_size_s	小
-kot_size_m	標準
-kot_size_l	大
 std_size	文字サイズ
 kot_copies	部数
 kot_copies_1	1
 kot_copies_2	2
 kot_copies_3	3
-kot_title_ph	タイトル (空白 = チケット)
-kot_footer_ph	バックオフィスメモ (オプション)
-kot_preview	プレビュー
-save_kot_format	伝票フォーマットの保存
-test_kot_format	テストプリント
-test_kot_sent	チケットのプレビューを送信しました
 test_bill_format	請求書テスト
 test_bill_sent	請求書のプレビューが送信されました
 test_print_no_printer	そのジョブ用のプリンターがありません — この画面で一つ選択してください
-kot_format_saved	伝票フォーマットが保存されました
 std_print	伝票の文字サイズ
 std_print_help	OS/ドキュメント プリンタでの標準の縦向きおよび横向きの請求書ジョブのフォント サイズ (小/標準/大ではなく、ポイントを入力します)。どちらの方向でも同じサイズです。
 std_size_s	小
@@ -1223,23 +974,16 @@ upi_qr	UPI QR
 show_upi_qr	UPI QRを表示
 close_upi_qr	閉じる
 upi_qr_help	顧客はスキャンして支払います。支払い後に「支払いを受ける」をタップします。 2 番目の画面: LAN 上のサーバー URL /表示を開きます。
-kot_recall	戻す
 recently_done	最近完了
-recall_kot_ph	リコールするチケット番号
 role_help_customer	役割：顧客 — AR（当方への未払い）。同じ会社が仕入先にもなれます。
 role_help_both	役割：荷送人 + 運送業者 — 1つの取引先、AR と AP の帳簿、レポートでネット。
 role_help_supplier	役割：仕入先 — 仕入れの AP。
-dine_in_pick_table	カウンターショップでは使用されません
-choose_table	カウンターを選択してください
-change_table	テーブルを変更
-pick_table_banner	この注文のテーブルを選択
 items_word	品
 items_section	品目
 back_to_order	注文に戻る
 new_items_head	未送信
 price_ph	価格
 price_ph_gst_inside	価格（{tax}込み）
-cancel_needs_table	カウンター販売は支払いを受けるまでチケットに残ります
 tax_rates_missing_hint	これらの商品には {tax} 税率はありません - 税率が設定されている商品に適用されます (価格には {tax} の下に既に {tax} が含まれています)
 taxable_value	課税対象額
 gst_inside_price_note	（{tax}込み）
@@ -1260,30 +1004,11 @@ client_template_confirm	{title} から {d} 項目を追加しますか?すでに
 client_template_importing	{title} を取り込み中…
 client_template_done	{title} のすべてのアイテムはあなたのアイテムにあります。
 client_template_imported	{title} から {d} アイテムと {c} カテゴリを追加
-resv_heading	予約
-resv_name_ph	顧客名
-resv_phone_ph	電話（任意）
-resv_guests_ph	人々
-resv_when_ph	日時 — 20:30、tomorrow 13:00
-resv_table_ph	カウンター（オプション）
-resv_add	予約する
-resv_seat	着席
-resv_none	今後の予約はありません。
-guests_word	名
-delivery_by_ph	配達担当（配達員またはスタッフ）
-kitchen_all_day	今作るもの: {items}
-split_bill	会計を分ける
-split_go	別会計にする
 cancel	キャンセル
 opening_client	クライアントを開いています…
 preparing_desk	デスクを準備しています…
 opening_server	サーバーを開いています…
 creating_server	サーバーを作成しています…
-split_help	顧客が支払った商品をタップします · {n} が選択されました
-split_send_first	最初に伝票を送信 — バックオフィスが所有する品目のみを別の請求書に送信できます
-split_pick_some	まずは別請求の項目をタップ
-split_done	別途請求書が作成されました - このカウンターの隣の階にあります
-split_marked	別会計
 order_empty_pick	空の注文 — 上の「項目を追加」をタップして項目を選択します。
 add_dishes	薬を追加する
 order_so_far	この注文：{n} · {total}
@@ -1294,24 +1019,8 @@ pick_done_dd	完了 · {label}
 printer_route_mode	この場所に複数のプリンターがある場合
 printer_mode_first	最初に動作するもの
 printer_mode_all	すべてで印刷
-kot_show_area	エリア
-kot_hide_area	エリアを非表示
-kot_show_item_hdr	品目 · 数量
-kot_hide_item_hdr	カラムを非表示
-kot_show_title	タイトル行
-kot_hide_title	タイトルを非表示
-kot_field_order	オーダーを印刷
 kot_field_up	上に移動
 kot_field_down	下に移動
-kot_field_cycle	次の項目を選択
-kot_field_select	次の項目を選択
-kot_field_time	時刻
-kot_field_kot_no	スリップ番号
-kot_field_area	エリア
-kot_field_table	カウンター
-kot_field_shop	店名
-kot_field_waiter	スタッフ
-kot_field_station	ステーション
 app_template_blurb_extra	また: オーナー Zahir、管理者 Asif、レジ係 Nawaz。フロントサイドバー; 4時間後の履歴。今日は脱いでください。コンパクトなお札。
 dishes_n	{n} アイテム
 recipe_ph	レシピ (オプション - カウンターショップでは未使用)
@@ -1321,8 +1030,6 @@ low_stock_alert	残りわずか — 早めに補充: {items}
 unpriced_note	アイテムの {n} アイテムにはまだ価格がありません。価格を設定するまでは 0 で請求されます。
 show_unpriced	価格のない商品のみを表示
 show_all_dishes	すべてのアイテムを表示
-role_waiter	レジ係
-role_kitchen	店舗係
 role_title_rest_ph	役職（例: キャプテン、料理長）
 preset_help_rest	レジ係：販売。マネージャー：販売＋品目＋取消／修正。
 kind_raw	複利株式

@@ -44,8 +44,6 @@ pub struct SyncPatch {
     #[serde(default, skip_serializing_if = "Option::is_none")]
     pub ledger: Option<Vec<crate::domain::CreditLedgerEntry>>,
     #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub tables: Option<Vec<crate::domain::DiningTable>>,
-    #[serde(default, skip_serializing_if = "Option::is_none")]
     pub recent_sales: Option<Vec<crate::domain::Sale>>,
     #[serde(default, skip_serializing_if = "Option::is_none")]
     pub today: Option<crate::domain::DayTotals>,
@@ -54,11 +52,7 @@ pub struct SyncPatch {
     #[serde(default, skip_serializing_if = "Option::is_none")]
     pub day_close_text: Option<String>,
     #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub open_kots: Option<Vec<crate::domain::KotTicket>>,
-    #[serde(default, skip_serializing_if = "Option::is_none")]
     pub categories: Option<Vec<crate::domain::Category>>,
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub stations: Option<Vec<crate::domain::KitchenStation>>,
     #[serde(default, skip_serializing_if = "Option::is_none")]
     pub branch_name: Option<String>,
     #[serde(default, skip_serializing_if = "Option::is_none")]
@@ -67,8 +61,6 @@ pub struct SyncPatch {
     pub fiscal: Option<crate::fiscal::FiscalSettings>,
     #[serde(default, skip_serializing_if = "Option::is_none")]
     pub tax_rates: Option<Vec<crate::domain::TaxRate>>,
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub running_orders: Option<Vec<crate::domain::RunningOrder>>,
     #[serde(default, skip_serializing_if = "Option::is_none")]
     pub server_id: Option<String>,
     #[serde(default, skip_serializing_if = "Option::is_none")]
@@ -98,19 +90,15 @@ impl SyncPatch {
             customers: Some(snap.customers.clone()),
             staff: Some(snap.staff.clone()),
             ledger: Some(snap.ledger.clone()),
-            tables: Some(snap.tables.clone()),
             recent_sales: Some(snap.recent_sales.clone()),
             today: Some(snap.today.clone()),
             outstanding_credit_paise: Some(snap.outstanding_credit_paise),
             day_close_text: Some(snap.day_close_text.clone()),
-            open_kots: Some(snap.open_kots.clone()),
             categories: Some(snap.categories.clone()),
-            stations: Some(snap.stations.clone()),
             branch_name: Some(snap.branch_name.clone()),
             org_name: Some(snap.org_name.clone()),
             fiscal: Some(snap.fiscal.clone()),
             tax_rates: Some(snap.tax_rates.clone()),
-            running_orders: Some(snap.running_orders.clone()),
             server_id: Some(snap.server_id.clone()),
             standard_print_em: snap.standard_print_em,
             bill_header: Some(snap.bill_header.clone()),
@@ -150,9 +138,6 @@ impl SyncPatch {
         if moved(&before.ledger, &after.ledger) {
             p.ledger = Some(after.ledger.clone());
         }
-        if moved(&before.tables, &after.tables) {
-            p.tables = Some(after.tables.clone());
-        }
         if moved(&before.recent_sales, &after.recent_sales) {
             p.recent_sales = Some(after.recent_sales.clone());
         }
@@ -165,14 +150,8 @@ impl SyncPatch {
         if moved(&before.day_close_text, &after.day_close_text) {
             p.day_close_text = Some(after.day_close_text.clone());
         }
-        if moved(&before.open_kots, &after.open_kots) {
-            p.open_kots = Some(after.open_kots.clone());
-        }
         if moved(&before.categories, &after.categories) {
             p.categories = Some(after.categories.clone());
-        }
-        if moved(&before.stations, &after.stations) {
-            p.stations = Some(after.stations.clone());
         }
         if moved(&before.branch_name, &after.branch_name) {
             p.branch_name = Some(after.branch_name.clone());
@@ -185,9 +164,6 @@ impl SyncPatch {
         }
         if moved(&before.tax_rates, &after.tax_rates) {
             p.tax_rates = Some(after.tax_rates.clone());
-        }
-        if moved(&before.running_orders, &after.running_orders) {
-            p.running_orders = Some(after.running_orders.clone());
         }
         if moved(&before.server_id, &after.server_id) {
             p.server_id = Some(after.server_id.clone());
@@ -224,19 +200,15 @@ impl SyncPatch {
             customers: self.customers.unwrap_or_default(),
             staff: self.staff.unwrap_or_default(),
             ledger: self.ledger.unwrap_or_default(),
-            tables: self.tables.unwrap_or_default(),
             recent_sales: self.recent_sales.unwrap_or_default(),
             today: self.today.unwrap_or_default(),
             outstanding_credit_paise: self.outstanding_credit_paise.unwrap_or_default(),
             day_close_text: self.day_close_text.unwrap_or_default(),
-            open_kots: self.open_kots.unwrap_or_default(),
             categories: self.categories.unwrap_or_default(),
-            stations: self.stations.unwrap_or_default(),
             branch_name: self.branch_name.unwrap_or_default(),
             org_name: self.org_name.unwrap_or_default(),
             fiscal: self.fiscal.unwrap_or_default(),
             tax_rates: self.tax_rates.unwrap_or_default(),
-            running_orders: self.running_orders.unwrap_or_default(),
             server_id: self.server_id.unwrap_or_default(),
             rev: self.rev,
             seq: self.seq,
@@ -263,10 +235,8 @@ pub fn apply_patch(store: &Store, patch: &SyncPatch) -> Result<(), String> {
         if let Some(products) = &patch.products {
             store.replace_catalog_from_sync(products)?;
         }
-        if patch.categories.is_some() || patch.stations.is_some() {
-            let cats = patch.categories.clone().unwrap_or_else(|| store.list_categories().unwrap_or_default());
-            let stations = patch.stations.clone().unwrap_or_else(|| store.list_stations().unwrap_or_default());
-            store.replace_menu_meta_from_sync(&cats, &stations)?;
+        if let Some(cats) = &patch.categories {
+            store.replace_menu_meta_from_sync(cats)?;
         }
         if let Some(customers) = &patch.customers {
             store.replace_customers_from_sync(customers)?;
@@ -274,17 +244,8 @@ pub fn apply_patch(store: &Store, patch: &SyncPatch) -> Result<(), String> {
         if let Some(ledger) = &patch.ledger {
             store.replace_credit_ledger_from_sync(ledger)?;
         }
-        if let Some(tables) = &patch.tables {
-            store.replace_tables_from_sync(tables)?;
-        }
         if let Some(sales) = &patch.recent_sales {
             store.replace_sales_cache_from_sync(sales)?;
-        }
-        if let Some(kots) = &patch.open_kots {
-            store.replace_kots_from_sync(kots)?;
-        }
-        if let Some(running) = &patch.running_orders {
-            store.replace_running_from_sync(running)?;
         }
         if let Some(staff) = &patch.staff {
             // Deltas carry the full roster when staff is included.

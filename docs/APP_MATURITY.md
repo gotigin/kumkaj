@@ -21,7 +21,7 @@ first unchecked row and keeps the rows honest (what was verified, how).
 | 6 | Type sizes, spacing, responsive breakpoints match Khaynjo's tokens | ☑ | ☑ | ☑ | Breakpoints were already shared (720 / rail 220 / desk 600 \| 520). Kirano / Tabiyat components already matched; Moklanjo NavBtn, RowSecondaryBtn (15 → 14 pt), Stack*Btn, chips, role chips, customer / sale rows now use Khaynjo's padding. Moklanjo's own cards / cart rows / FieldInput keep their design |
 | 7 | Same test suites: shell_tests guards, user journeys, visual baselines (`cert/baselines`) | ☑ | ☑ | ☑ | Ported the Khaynjo guards that describe these apps (Kirano / Tabiyat +6 shell tests → 58, + `screen_preview_pixels_are_the_printed_png`; Moklanjo +4 → 27) — each one first failed on a real gap that was then fixed (FormScrollX, brand stacks, chip heights, tappable rows / picker names). Not ported (Khaynjo-only screens): kitchen / floor / order-type 2×2 / PIN prompt label / cart pitch / report Cols. User journeys were already shared. Visual baselines pinned 2026-11-14 (5 each: unlocked, rail collapsed / expanded, a work screen, Settings) from green `--tier=visual` runs |
 | 8 | WACK: packaging + `scripts/windows/run-wack.ps1` + DEV.md § Windows App Certification Kit | ☑ | ☑ | ☑ | All four: exe manifest / version info / icon (`scripts/windows/win_resources.rs`), Makepad `windows_end_session` patch, `product-cert.sh --tier=wack` (Linux pre-check, PASS ×4 2026-11-14), `run-wack.ps1` for the real run on Windows — **not yet run on a Windows machine** |
-| 9 | Full audit (all four) and fixes | ◐ | ◐ | ◐ | Done: every Khaynjo fix since the 2026-11-08 fork checked against the three (list below), runtime DSL errors, hard-coded UI strings (none), `app_t` under a guard (new lock-guard rule, clean ×4), list walks off-screen, todo!/unimplemented! (none). Open for the next pass: Kirano / Tabiyat still carry Khaynjo's floor / kitchen / order-type code paths behind counter-only switches — prune or keep deliberately; Moklanjo popup placement has no tests (`place_popup` is Khaynjo's) |
+| 9 | Full audit (all four) and fixes | ◐ | ☑ | ☑ | Done: every Khaynjo fix since the 2026-11-08 fork checked against the three (list below), runtime DSL errors, hard-coded UI strings (none), `app_t` under a guard (new lock-guard rule, clean ×4), list walks off-screen, todo!/unimplemented! (none). Kirano / Tabiyat: Khaynjo's floor / kitchen code removed (owner ask, 2026-11-14 — § Floor and kitchen removed below). Open: Moklanjo popup placement has no tests (`place_popup` is Khaynjo's) |
 
 ## Lessons to carry (from Khaynjo)
 
@@ -78,3 +78,51 @@ Read with `docs/DEV.md` (UI-thread rules, bug lists) and
 - **Android (all apps, shared Makepad):** touch selection on the AGS2 — held
   word cut by finger jitter, OS bar without Copy, Cut / Paste on read-only
   copy, Select all closing the bar. DEV.md § Text selection.
+
+## Floor and kitchen removed from Kirano and Tabiyat (2026-11-14)
+
+Owner: "Kirano and Tabiyat still carry Khaynjo's floor and kitchen code behind
+their counter-only switches — just clean this, remove it." Both apps are now
+counter shops in code, not only in settings. Same change in both (Tabiyat was
+ported from Kirano's diff, then checked for parity).
+
+Removed — shell:
+- Floor and Kitchen screens, their nav peers, slots and icons; the
+  `venue_mode` switch everywhere.
+- Sell: table pick / chip, order-type strip, Send KOT / reprint / batch
+  cancel / print cancelled, kitchen-station picker, table actions (move,
+  merge, split, split evenly, fire course, hold, call waiter), the sent-line
+  panel (cancel / NC / move); on each cart line the Hold / In print / Mark
+  buttons, the KOT group header and the "→ kitchen" destination.
+- Team: Waiter and Store (kitchen) roles, Shop / Sections features, the
+  "Cancel a sent item", "Complimentary", "Move / merge tables" and "Print
+  bill again" rights, the section checklist.
+- Settings: kitchen "sections" (Settings → Pickers is now Tax rates), the
+  Bill & KOT panel's KOT tab (KOT slip format), KOT auto-print, the
+  station printer routes; item form "Shelf / location" and area prices
+  (both only worked through tables / kitchen stations); delivery-by.
+- Waitlist, reservations, floor columns / zoom / areas, the floor dropdown
+  popup and the nav drag ghost.
+
+Removed — library:
+- Tables, areas, running orders, KOTs, kitchen stations, reservations,
+  waitlist, waiter calls, courses / holds / splits; the store code for them,
+  the 14 books ops, the LAN routes `/kot*`, `/running`, `/table_billing` and
+  the guest `/kiosk`, `/expo`, `/tokens`, `/t/…` pages; tables / KOTs /
+  stations / running orders in the LAN snapshot and live patches; the KOT
+  print kind, kitchen routes and KOT slip format; `VenueMode` (new books no
+  longer seed `venue_mode = restaurant`); finalize's table argument and the
+  KOT tickets it wrote; Waiter / Kitchen roles, the four table / KOT rights
+  and the floor / kitchen / KOT-station staff features.
+- 292 unused restaurant strings from `locale.rs` and all 110 packs.
+
+Kept on purpose (data and printing compatibility): the SQLite tables and
+columns (an older shop's books still open), cart-line / sale fields such as
+`kot_id` and `table_id`, the `kot` print format id (a bill printer may use
+that narrow slip) and saved kitchen routes in `printers.json`, the shared
+slip style types still named `Kot*`.
+
+Tests: restaurant tests removed (Kirano lib 344 → 246, shell 58 → 47,
+journeys 11 → 10); the LAN retry / concurrency and phone-queue tests now
+send counter sales instead of KOTs. `--tier=visual` re-run after each layer.
+

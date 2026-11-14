@@ -80,28 +80,6 @@ applied	Ulanylýar
 note_ph	Bellik (islege görä)
 rounded	TERJIME EDILDI
 split	Bölün
-send_kot	Çyzgy iber
-send_kot_to	→ {kitchens} iber
-send_kot_again	Indiki süýşmek üçin zatlar goşuň
-send_kot_held	Geçirilen zatlar - ibermek üçin saklaň
-reprint_kot	Saýlananlary gaýtadan çap et
-reprint_kot_ok	{n} täzeden çap edilen zatlar · {slips} süýşmek (ler) → {kitchens}
-reprint_kot_needed	Ilki bilen süýşüriň - soň dermanlary goşuň we saýlananlary täzeden çap ediň
-reprint_kot_none_selected	Iberilen her bir element atlanýar - gaýtadan çap etmek üçin çap etmek üçin basyň
-reprint_kot_client	Iberilen {place} üçin gaýtadan çap ediň ({n}) - dükan enjamy ony çap edýär
-print_cancelled_kot	Hemmesini ýatyr
-print_cancelled_kot_ok	Çap edilen {n} ýatyrylan zatlar · {slips} süýşmek (ler) → {kitchens}
-print_cancelled_kot_needed	Ilki bilen ýatyrylan zatlar bilen stol açyň
-print_cancelled_kot_none	Bu sargyt boýunça hiç hili ýatyrylan zat ýok
-print_cancelled_kot_client	Iberilen {place} üçin ýatyrylan ({n}) - dükan enjamy ony çap edýär
-kot_banner	Hoşniýetli banner
-kot_banner_ph	Banner (boş = ýok)
-kot_item_prefix	Menýu menýu elementiniň prefiksi
-kot_item_prefix_ph	meselem [Elatyryldy]
-kot_strike	Harydyň ady
-kot_strike_note	Haryt belligi
-kot_strike_on	Işlediň
-kot_strike_off	Öçürilen
 bill_item_layout	Menýu menýusynyň tertibi
 bill_item_layout_columns	Sütünler
 bill_item_layout_stacked	Toplanan
@@ -130,8 +108,6 @@ bill_item_gap_em	Aralyk (em)
 bill_item_qty_min	Mukdar min (em)
 bill_item_price_min	Bahasy min (em)
 bill_item_amount_min	Min min (em)
-kot_item_qty_width	Sütün
-kot_item_num_align	Qty deňleşdirmek
 bill_total_qty_label	Jemi bellik
 bill_total_subtotal_label	Jemi bellik
 bill_total_grand_label	Jemi bellik
@@ -143,36 +119,9 @@ bill_item_piece_off	Öçürilen
 bill_total_qty	Jemi kw
 bill_total_subtotal	Jemi
 bill_total_grand	Jemi
-reprint_incl	Çap edildi
-reprint_skip	Geçmek
-reprint_skip_meta	Dikeldiş çapyndan geçiň
-kot_dest_hint	Sazlamalar → Printerlerde {kitchens} bellän printerleriňizdäki yzlar
-kot_sent_hint	Iň soňky iberiş {kitchens}-a gitdi. Indiki töleg üçin zatlar goşmak üçin basyň - ýa-da şol bir kagyz üçin täzeden çap et.
-kot_sent_printing	{kitchens}-a iberilen çyzgy - çap etmek
-kot_sent_not_printed	Slip {kitchens}-a iberildi, ýöne çap edilmedi: {why}. Dükana aýdyň, soňra printeri düzediň we gaýtadan çap ediň.
-kot_sent_screen	Süýşmek {kitchens}-a iberildi
-kot_queued_shop	{place} → {kitchens} üçin süýşürmek; dükan enjamy ony çap edýär
-kot_job_label	{place} → {kitchens} üçin süýşmek
-kot_job_reached	{place} üçin süýşmek {kitchens}-e ýetdi
 kot_unassigned	Bellenmedik
-kot_unassigned_held	{n} elementlerini stansiýasyz saklaň - ibermek üçin setirde saklaň
-kot_station_ph	Wokzal
-kot_station_dd	Wokzal
-kot_station_dd_n	Wokzal · {stations}
-kot_set_station	Bu stansiýany ulanyň
-kot_station_applied	Wokzal {n} elementlerinde: {station}
-kot_station_cleared	Wokzal {n} elementlerinden arassalanyldy: {station}
-kot_station_needed	Ilki bilen dispanser bölümini saýlaň
-kot_station_not_allowed	Bölümi ulanmaga rugsat berilmeýär: {station}
-kot_station_none	Entek stansiýa ýok - söwda dükanynda ulanylmaýar (Sazlamalar → Gerek bolsa sebitler)
 pos_tab_items	Menýu elementleri goşuldy
 pos_tab_payment	Töleg
-hold_send	Aşhanadan tutuň
-hold_send_on	Geçirildi
-hold_send_meta	Geçirildi - bu çyzgyda däl
-station_remove	Stansiýany aýyryň
-station_remove_ph	Aýyrmak üçin sanawdaky stansiýa basyň
-station_removed	Wokzal aýryldy: {name}
 settings_hub_title	Sazlamalar
 settings_hub_help	Bir gezekde bir meýdany açyň - az aýlamak, has düşnükli saýlaw.
 settings_back	Yzyna
@@ -181,12 +130,10 @@ settings_sec_country	& Urt we salgyt
 settings_sec_tills	Beýleki enjamlar
 settings_sec_brand	Siziň markaňyz
 settings_sec_units	Bölümler we öwrülişikler
-settings_sec_pickers	Sebitler · stansiýalar · salgyt stawkalary
+settings_sec_pickers	Salgyt stawkalary
 settings_sec_printers	Çap edijiler
 settings_sec_bill	Hasap we süýşürmek formaty
 settings_sec_selling	Shemalar we satuwlar
-bill_kot_tab_bill	Myhman tölegi
-bill_kot_tab_kot	Süýşmek
 settings_sec_alerts	Duýduryşlar
 alerts_help	Status habarlary siziň üçin ekranda näçe wagt galar (bu giriş).
 snack_secs_ph	Sekuntlar (3–60, deslapky 10)
@@ -237,8 +184,6 @@ counter	Kassir
 dine_in	Kassir
 takeaway	Alma
 order	Restoran zakazy
-tables	Hasaplaýjylar
-kitchen	Bölümler
 sales	Satyş
 sales_refunds	Satyş we yzyna gaýtaryş
 day_close	Gün ýakyn
@@ -266,10 +211,6 @@ zero_sales_on	₹ 0 rugsat beriň
 zero_sales_off	Bahasy talap ediň
 zero_sales_saved_on	Nol bahasy satylmagyna rugsat berildi
 zero_sales_saved_off	Satuwda ₹ 0-dan ýokary baha bolmaly
-floor_areas_help	Meýdanlar pollardaky otaglar ýa-da zonalardyr (Dine In, Parcel, AC…). Ilki bilen bir meýdan goşuň, soňra hasaplaýjylary goýuň - her meýdan polda aýratyn topar.
-area_new_ph	Täze meýdan / otag (mes. AC, bag)
-add_area	Meýdany goşuň
-area_added	“{name}” meýdany taýýar - oňa hasaplaýjy goşuň
 no_favorites	Entek halanýanlar ýok - aşakdaky sanawdan menýu elementlerini goşuň.
 add_to_bill	Hasaba goşuň
 added	Goşuldy
@@ -280,19 +221,9 @@ chip_missing_customer	Saýlanan müşderi ýitirim - täzeden saýlaň
 chip_no_customer	Entek müşderi ýok - at ýazyň, soňra Kredit düwmesine basyň
 credit_summary_fmt	{} müşderiler · açyk karz {} · öňe gidişlikler {}
 recent_label	Soňky:
-kot_new_waiting	T NEWZE - garaşýaryn
-kot_preparing	Taýýarlyk
-kot_ready_serve	Taýýar - hyzmat ediň
-kot_done_cap	ONerine ýetirildi
-kot_cancelled	ANCatyryldy
-kot_start_btn	Başla
-kot_mark_ready	Taýýar belläň
-kot_done_btn	Boldy
-table_free	Boş - sargyt başlamak üçin basyň
 start_order	Sargyt başlaň
 open_bill	Hasaby açyň
 collect_payment	Töleg ýygnaň
-table_running	Ylgaýar
 payment_pending	Töleg garaşýar
 collect_at_counter	hasapda ýygna
 inventory	Öwsele
@@ -325,7 +256,6 @@ ok	Bolýar
 this_shop	Serwer tertibi
 extra_till	Müşderi tertibi
 off	Öçürilen
-tables_kitchen	Dükanyň ýerleşişi
 server	Serwer tertibi
 client	Müşderi tertibi
 language_currency	Dil we walýuta
@@ -367,8 +297,6 @@ add_item_plain	Menýu elementini goşuň
 add_note	Bellik goşuň
 add_opening_balance	Açylyş balansyny goşuň
 add_staff	Işgär goşuň
-add_station	Wokzal goşuň
-add_table	Nahar saçagyny goşuň
 add_unit	Bölüm goşuň
 add_use_name	Bu ady goşuň / ulanyň
 allow_extra_tills	Goşmaça töleglere rugsat beriň
@@ -421,7 +349,6 @@ share_whatsapp	WhatsApp paýlaş
 lan_pages_heading	Wi - Fi-da müşderi sahypalary
 lan_pages_help	Bu dükanyň Wi - Fi-da müşderi sahypalary displeý tagtasy we seslenme üçin işleýär. Jübi maglumatlaryndaky adamlara soň “Cloud” gerek. Kart terminaly ýa-da töleg baglanyşygy hökmany däl we hiç haçan hasaplaýjyny bloklamaýar.
 diag_send_heading	Bu enjamy paýlaşyň
-kot_dest_heading	Wokzal
 optional_login_heading	Goşmaça giriş
 rights_heading	Hukuklar
 ops_panel	Localerli ops
@@ -448,28 +375,6 @@ till_voucher_amt_ph	Talon mukdary (boş = hemmesi)
 till_wallet_topup_ph	Gapjyklaryň mukdary
 till_voucher_issue_amt_ph	Talon mukdaryny beriň
 till_voucher_issue_code_ph	Täze talon kody
-split_evenly	Deň bölüň
-waitlist	Garaşmak sanawy
-fire_course	Indiki ädim
-hold_item	Aşhanadan tutuň
-waiter_call	Kassir jaň ediň
-waitlist_add	Garaşmak sanawyna goşuň
-floor_view_grid	Gözenek
-floor_view_layout	Salgy
-floor_layout_x	X
-floor_layout_y	Y
-floor_layout_w	W
-floor_layout_h	H
-floor_layout_save	Tertibi ýazdyryň
-floor_layout_open	Nahar saçagyny açyň
-floor_layout_edit	Tertibi redaktirläň
-floor_layout_pick	Onuň ýerleşişini redaktirlemek üçin nahar stoluna basyň
-floor_layout_saved	Salgy saklandy
-floor_layout_nudge_left	← 20
-floor_layout_nudge_right	→ 20
-floor_layout_nudge_up	↑ 20
-floor_layout_nudge_down	↓ 20
-sibling_pickers_help	Bölümler ýaly Işletmek / Öçürmek - ýerleri, stansiýalary we salgyt stawkalaryny gündelik saýlaýanlardan gizläň; paketiň tertibi galýar.
 bulk_price_apply	Köp bahany ulanyň
 card_terminal_optional	Kart terminaly / töleg baglanyşygy (internet elýeterli bolanda islege bagly)
 copy_report	Hasabaty göçüriň
@@ -495,7 +400,6 @@ import_day	Import güni
 import_items_csv_plain	Menýu elementlerini import CSV…
 import_parties_csv	Müşderileri we üpjün edijileri import ediň CSV…
 item_name	Menýu menýusynyň ady
-kitchen_printing	Çap edijiler
 login_id_ph	Ulanyjy ady
 mark_cleared	Mark arassalandy
 new_party_clear	Täze müşderi ýa-da üpjün ediji (anyk görnüş)
@@ -565,15 +469,6 @@ show	Görkez
 spreadsheet_csv	Elektron tablisasy (CSV)
 start_fresh	Täze başlaň
 stop_extra_tills	Goşmaça tölegleri bes ediň
-floor_cols_ph	Sütünler
-floor_cols_fit	Ekrana laýyk
-floor_cols_fit_sub	{n} şu ýere laýyk
-floor_cols_fits	laýyk gelýär
-floor_cols_scroll	gyrada aýlaýar
-floor_cols_min	Sütünler: azyndan 1 - ýa-da ekrana gabat gelmek üçin boş goýuň
-floor_zoom_auto	Awto
-floor_zoom_out	Ulaltmak
-floor_zoom_in	Ulaltmak
 backup_auto	Her gün awtomatiki ätiýaçlandyrylýar · soňky {when} · soňky 14 gün {dir}-de saklanýar.
 backup_auto_none	Her gün awtomatiki ätiýaçlandyrylýar - birinjisi bir salymda işleýär.
 backup_copy_to	Göçürmeler {dir}-a gidýär.
@@ -591,7 +486,6 @@ new_pair_code	Täze jübüt kody
 pair_finishing	Jübüt gutarmak ... dükanyň ýazgylaryny ulanmak
 pair_opening	Şu wagta çenli açmak ...
 pair_copied	Jübüt kody göçürildi
-kot_waiting	Ibermäge garaşýaryn
 lan_offline_waiting	Dükana serwer elýeterli däl · {n} garaşýar
 lan_connecting	Dükana birikmek…
 lan_live	Göni
@@ -633,7 +527,6 @@ printers_routes_help	Operasiýa ulgamynyň eýýäm bilýän printerlerini tapy�
 printer_assign_dd	Hakyky printer: {place}
 printer_assign_pick	Hakyky printeri saýlaň
 printer_profile_heading	Salgy
-printer_send_heading	Eltip bermek
 vp_delivery_heading	Eltip bermek
 vp_delivery_help	Bu wirtual printeriň nädip iş iberýändigi - OS resminamasy, çig baýt ýa-da ESC / POS. Süýşmek mazmuny (görnüşiň ululygy, örtügi, gyralary) bärde däl-de, faktura / süýşmek formaty bilen kesgitlenýär.
 vp_type_size_heading	Görnüşi
@@ -677,23 +570,13 @@ virtual_draft_send	Indiki wirtual printer üçin baha
 virtual_need_real	Ilki hakyky printeri saýlaň
 virtual_need_select	Öçürmek üçin wirtual printer saýlaň
 real_printer_selected	Saýlanan: {name}
-station_group_heading	Wirtual printerler
-station_group_apply	Wirtual printeri pozuň
-station_group_applied	Öçürildi
-station_group_empty	Wirtual printer saýlaň
-station_group_name_ph	Wirtual printeriň ady (islege görä)
-station_group_save	Wirtual printer dörediň
-station_group_saved	Wirtual printer ýatda saklandy
-station_manage_heading	Dispanser bölümini goşuň ýa-da aýyryň
 printers_routes_heading	Nirede zatlar çap edilýär
 route_pick_heading	Placeeri
 route_editing	Redaktirleme: {name}
 route_assigned	{printer} {place} goşuldy
 route_already_assigned	Bu ýerde eýýäm: {printer}
-route_removed	{printer} {place}-den aýryldy
 route_cleared	Arassalanyldy {name}
 route_assigned_empty	Bu ýerde hiç kim ýok
-route_tap_remove	aýyrmak üçin basyň
 route_tap_select	saýlamak üçin basyň
 route_tap_selected	saýlandy
 route_pick_printer_first	Ilki printere degiň
@@ -714,35 +597,17 @@ printer_format_custom	Täze ýöriteleşdirilen profil
 printer_format_custom_label	Omörite
 printer_format_custom_added	Bu ýer üçin ýörite profil goşuldy
 add_printer	Printer goşuň
-remove_printer	Aýyr
 route_pick_ph	Hasap ýa-da dispanser bölümi
 route_bill	Myhman tölegi
-route_default_kitchen	Stansiýa ýok (berilmedik zatlar)
-route_kot_station	Wokzal
 route_dont_print	Printer ýok
-stations_heading	Stansiýalar
-stations_help	Dispanser bölümleri dermanlary we dükanyň şol bölegi üçin printerleri toparlaýar. Sazlamalar → Printerlerden printerleri dakyň, synanyşyk tertibini düzüň, soňra ilki işleýär ýa-da hemmesini çap ediň. Üýtgeşmeler gidýär.
-station_print_heading	Bu stansiýa üçin printerler
-station_print_help	Wokzal saýlaň, soňra bir ýa-da birnäçe printer dakyň. ↑↓ toplumlary synap görüň. Ilki bilen işleýän ilkinji üstünlikden soň saklanýar; Her birikdirilen printere iberýänleriň hemmesini çap ediň.
-station_print_pick_ph	Printerleri gurmak üçin stansiýa
 station_print_pick_first	Ilki bilen dispanser bölümini saýlaň
-station_print_editing	“{name}” üçin printerleri redaktirlemek
-station_vps_dd	Bu stansiýa üçin printerler
-station_vps_dd_n	{n} printerler · üýtgetmek üçin basyň
 station_vps_empty	Entek printer ýok - Sazlamalar → Printerlerden tapyň
 bill_printers_dd	Hasap üçin printerler
 bill_printers_dd_n	Hasap üçin {n} printerler · üýtgetmek üçin basyň
-job_layout	Salgy
-job_delivery	Iş nädip iberilýär
-job_delivery_help	OS resminamasy, çig baýt ýa-da ESC / POS. Hasap we bilet hersi özüne degişli. Islendik iş, ýatda saklan islendik printere gidip biler.
 station_vp_attached	Printer birikdirildi
 station_vp_detached	Printer stansiýadan aýryldy
-station_print_summary	{mode} · {n} printerler
-station_print_summary_none	Bu stansiýada entek printer ýok - çap edilmez
-stations_none	Entek stansiýa ýok - aşakda birini goşuň. Stansiýalar söwda dükanynda ulanylmaýar - boş goýuň.
 route_up	Upokarda
 route_down	Aşakda
-route_remove	Aýyr
 route_clear	Arassala
 save_printers	Printerleri ýazdyryň
 print_test_page	Synag sahypasyny çap ediň
@@ -751,23 +616,15 @@ test_page_no_printer	{place} üçin printer ýok - oňa printer dakyň, gaýtada
 test_page_pick_first	Synag sahypasy üçin ilki printerleri saýlaň - soňra synag sahypasyny çap ediň
 test_printers_dd	Synag sahypasy üçin printerler
 test_printers_dd_n	Synag sahypasy üçin {n} printerler · üýtgetmek üçin basyň
-kot_test_printers_dd	Synag üçin printerler
-kot_test_printers_dd_n	Synag çap etmek üçin {n} printer (ler) üýtgetmek üçin basyň
 test_printer_picked	Synag: {name}
 test_printer_cleared	Synag ýok: {name}
 test_page_sent_n	Synag sahypasy {n} printerlere iberildi
-test_kot_pick_first	Ilki bilen çap etmek üçin printerleri saýlaň - soň synagdan geçiriň
-test_kot_sent_n	Synag çap, {n} printerlere iberildi
-cancel_pick	Bellik
-cancel_pick_on	Bellenen
-cancel_pick_meta	Cancelatyrmak üçin bellendi
 batch_cancel	Bellenen ýatyr
 batch_cancel_n	Bellenen ýatyr ({n})
 batch_cancel_none	Ilki bilen bir ýa-da birnäçe iberilen zady belläň - soň bellikleri ýatyryň
 batch_cancel_title	Bellenen dermanlary ýatyryň - bir sebäp, bir bölüme süýşürmek
 batch_cancel_ok	{n} elementleri ýatyryldy · {slips} süýşürmek (ler) → {kitchens}
 batch_cancel_ok_noprint	{n} elementleri ýatyryldy - awtomatik çap etmek öçürildi, şonuň üçin süýşürmek ýok
-no_printer_kitchen_station	Şol stansiýa üçin printer ýok
 printers_saved	Saklandy
 test_page_sent	Iberilen synag sahypasy - printeri barlaň
 test_page_sent_one	{name}-a iberilen synag sahypasy - şol printeri barlaň
@@ -783,10 +640,7 @@ cancelled	Atyryldy
 printers_tap_find	Bu enjamyň ulanyp boljak printerlerini sanawlamak üçin tapyň.
 printers_none_found	Hiç kim tapylmady - ulgam printeriniň adyny ýa-da IP ýazyň (mes. 192.168.1.50).
 printer_from_find	{name} goşuldy
-kot_printer_ph	Süýşmek üçin printer
 bill_printer_ph	Hasaplar üçin printer
-kot_print_on	Awtomatik çap etmek biletleri: Işledilen
-kot_print_off	Awto-çap petekleri: Öçürilen
 queue_refused	Dükan ({n}) tarapyndan kabul edilmeýär - hersini hasapda barlaň:
 clear_not_accepted	Barlanyldy - bu sanawy arassalaň
 device_name_ph	Bu enjamyň ady
@@ -797,7 +651,6 @@ backup_failed	Iň soňky awtomatiki ätiýaçlyk şowsuz boldy: {e}
 backup_overdue	{n} gün ätiýaçlyk ýok - programmany ätiýaçlyk edip bilmek üçin bu enjamda açyk saklaň.
 disk_low	Bu enjamda diňe {mb} MB mugt - ätiýaçlyk nusgalary ýakyn wagtda şowsuz bolar. Biraz boş ýer boşadyň.
 last_seen_devices	Iň soňky gezek: {time}
-sync_interval	Her {secs}s sinhronlaň
 connection_to_shop	Dükana birikmek
 supplier_name_ph	Üpjün edijiniň ady (ýa-da müşderi)
 supplier_ph	Üpjün ediji
@@ -860,7 +713,6 @@ fresh_book_tabiyat	Taze = boş katalog (soňundan zatlar goşuň). Kitap = açyl
 fresh_selected	Täze saýlanan - katalog boş galýar. Taýýar bolanyňyzda ýerine ýetiriň.
 gross_word	Jemi
 how_start	Nädip başlamak isleýärsiňiz?
-kot_print_help_tabiyat	Hasap dükanynda ulanylmaýar.
 later_country_pack	Soňrak: Sazlamalar country ýurt paketini salgyt we töleg bellikleri üçin ulanyň.
 local_badge	OCerli
 mix_type_hint_tabiyat	Gerek bolsa nagt / UPI / kartoçka / karz boýunça bölüň. Karz ýokarda bir müşderä mätäç.
@@ -911,8 +763,6 @@ staff_copy_need_source	Göçürmek üçin sazlamany saýlaň
 staff_copy_same	Şol bir adam - başga birini saýla
 staff_rename_need_selected	Ilki kimiň adyny üýtgetmelidigini saýlaň
 team_pick_hint	Kimiň redaktirlemelidigini saýlaň - ekranlar, pul hukuklary we stansiýalar diňe şol adam üçin peýda bolýar.
-team_stations_help	Ulanyp biljek stansiýalary
-team_stations_changed	Stansiýalar üýtgedi - Bu adam üçin sazlamany ýazdyryň
 team_features_changed	Ekranlar üýtgedi - Bu adam üçin sazlamany ýazdyryň
 team_rights_changed	Hukuklar üýtgedi - Bu adam üçin sazlamany ýazdyryň
 they_owe_us	Olar bize bergili
@@ -996,9 +846,6 @@ service_pct_ph	Hyzmat% islege bagly 0/10/12
 short_code_ph	Gysga kod (MG02)
 starting_password_ph	Paroly başlamak (islege görä)
 starting_pin_ph	PIN başlamak (4–12 san)
-station_name_ph	Wokzalyň ady (islege görä)
-station_new_ph	Bölüm (islege görä)
-table_name_ph	Counter / aýlagyň ady
 tax_rate_ph	Salgyt stawkasynyň ady ýa-da% - Standart, azaldylan, 0, 5, 12, 18, 20
 to_code_ph	Kodlamak (kg)
 uncleared_no_ph	Aboveokardaky düşündirilmedik #
@@ -1011,27 +858,8 @@ book_kind_month	Bu aý ýazgylar
 book_kind_aging	Görnükli / debet-karz
 book_kind_balance	Balans
 order_help	Goşmak üçin menýu elementine basyň.
-floor_help	Bu dükan hasapda satylýar. Stollar we naharhana Tabiýatyň bir bölegi däl.
-kitchen_help	Hasap dükanynda ulanylmaýar.
-kitchen_empty	Açyk bilet ýok (hasap dükanlary köplenç bu ekrany ulanylmaýar).
-add_a_table	Nahar saçagy goşuň
-add_station_heading	Dispanser bölümini goşuň
 categories_help	Şol kategoriýa boýunça ýokardaky menýu elementini faýl etmek üçin ulanyň. Surat kategoriýa surat berýär; birinjisinden baş harplaryny görkezýär.
 dish_search_ph	Gözlegiň ady, duz ýa-da ştrih-kod…
-tile_free	Boş
-tile_occupied	Iş bilen meşgullanýar
-tile_food_ready	Iýmit taýýar
-tile_bill_printed	Hasap çap edildi
-tile_paid	Tölegli
-tile_bill_btn	Myhman tölegi
-tile_occupy_btn	Oturýan myhmanlar
-tile_free_btn	Boş nahar saçagy
-tile_ready_btn	Boş nahar saçagy
-tile_undo_bill	Hasaby yzyna al
-summary_busy	nahar saçaklary meşgul
-summary_to_collect	ýygnamak
-summary_on_floor	naharhanasynda
-floor	Dükan
 sizes_as_items_ph	Aýry-aýry menýu elementleri hökmünde ululyklar (islege görä) - Halfarym = 120, Doly = 200
 dish_group_ph	Güýç / paket topary (islege görä) - meselem 500mg zolak
 discount	Arzanladyş
@@ -1039,7 +867,6 @@ remove_discount	Arzanladyşy aýyryň
 apply_discount	Arzanladyş ulanyň
 save_opening_cash	Açylýan nagt tygşytlaň
 close_shift_print	Çalyşmagy ýapyň we çyzgy çap ediň
-area_prices_ph	Meýdanyň bahalary (islege görä) - AC = 220, Bölüm = 210
 discount_ph	10% ýa-da 50
 discount_reason_ph	Sebäp (meselem, adaty myhman, giç nahar)
 opening_float_ph	Şu gün irden çekmä nagt goýuldy
@@ -1049,34 +876,18 @@ shift_handover	Çalyşmak
 shift_since	Şondan bäri bu üýtgeşiklik
 expected_in_drawer	Çyzgyda garaşylýar
 right_discount	Arzanladyş beriň
-floor_in_kitchen	Dowam edilýär
-floor_eating	Hyzmat edildi
 pick_category	Kategoriýa saýlaň
 close_category_list	Kategoriýa sanawyny ýapyň
 new_category_row	Täze kategoriýa - menýu elementini ýatda saklanyňyzda döredildi
 your_category	Siziň kategoriýaňyz
 suggested_category	Teklip - önümlerimizden
 category_search_ph	Kategoriýa - özüňizi gözläň ýa-da täzesini ýazyň
-line_sent_state	Iberildi
-line_nc_state	Tölegli (NC) - töleg alynmaýar
 cancel_item_short	Elatyr
-nc_short	Mugt
-charge_again_short	Zarýad
-move_short	Göçüriň
 cancel_item_title	Bu elementi ýatyryň - arka ofis ýatyryş ýazgysyny alýar
-nc_item_title	Bu menýu elementini öwgüli ediň (NC)
-charge_again_title	Bu menýu elementini täzeden güýçlendiriň
-move_item_title	Bu menýu elementini başga nahar stoluna geçiriň
-already_cooked	Eýýäm bişirildi (isrip)
-not_cooked_yet	Entek bişirilenok
 return_to_customer	Müşderä gaýdyp geliň
 short_by	Gysgaça
 tip_not_sale	Maslahat (işgärler, satuw däl)
 right_settle	Töleg alyň
-right_cancel_sent	Iberilen menýu elementini ýatyryň
-right_complimentary	Tölegli (NC)
-right_move_table	Hasaplaýjylary süýşüriň / birleşdiriň
-right_reprint	Hasaby täzeden çap ediň
 right_allowed	Rugsat
 right_with_approval	Makullamak bilen
 right_denied	Rugsat berilmeýär
@@ -1086,25 +897,11 @@ no_server_found	Hiç kim tapylmady Serwerde: Sazlamalar → Beýleki enjamlar ex
 servers_found_pick	Birikmek isleýän dükanyňyza degiň.
 server_host_selected	{host} ulanyp - jübütleme koduny giriziň, soňra jübütläň.
 print_bill	Hasaby çap et
-table_actions	Ters hereketler
-move_merge_table	Nahar stoluny süýşüriň / birleşdiriň
-move_help	Bu hasaplaýjynyň buýrugyny mugt tablisa geçiriň ýa-da işleýän tablisa birleşdiriň.
-move_target_ph	Hasabyň ady
 approval_pin_ph	Dolandyryjy PIN (diňe soralsa)
-move_here	Şu ýere göç
-merge_into	Oňa goşulyň
-line_reason_ph	Sebäp (meselem, müşderi pikirini üýtgetdi, aksiýadan)
-line_qty_ph	Näçe ýatyrmaly (boş = hemmesi)
-line_target_ph	Nahar stoluna geçiň (mes. D5)
 confirm	Tassykla
 menu_search_ph	Menýu elementini ýa-da gysga kody gözläň
 customer_paid_ph	Müşderi töledi
 tip_ph	Maslahat
-table_area_ph	Meýdany (meselem, naharhana, posilka, AC)
-table_range_ph	Birbada köp: D1-D20
-add_these_tables	Bu hasaplaýjylary goşuň
-remove_these_tables	Bu hasaplaýjylary aýyryň
-table_remove_ph	Aýyrmak: T1-T24 ýa-da bir nahar stolunyň ady
 find_server	Dükanyň serwerini tapyň
 bill_format	Hasap formaty
 bill_format_help	Her fakturada dükanyňyzyň ady bilen çap edilýär. | Bilen aýry setirler (meselem MG ýoly, Rajkot | Ph 98250 00000).
@@ -1112,78 +909,32 @@ bill_header_ph	Salgy | telefon
 fssai_ph	Neşe serişdeleriniň ygtyýarnamasy (islege görä - sözleriňiz)
 bill_footer_ph	Aşakdaky ýazgy (meselem, sag boluň, gaýtadan baryp görüň)
 save_bill_format	Hasap görnüşini ýazdyryň
-kot_format	Süýşmek formaty
-kot_format_help	Sanawdaky bir ýere basyň. Görkezmek, şriftiň ululygy we agramy ýokarda saýlanan süýşmek görnüşinde ulanylýar. Her görnüş öz ululyklaryny we agramlaryny saklaýar.
-kot_format_fields	Meýdanlar
-kot_field_next	Indiki meýdan
-kot_field_show	Görkez
-kot_field_hide	Gizle
 kot_field_on	görkezmek
 kot_field_off	gizle
-kot_field_size	Şriftiň ululygy
-kot_field_size_ph	meselem 16, 20, 24, 28, 32…
 kot_weight_light	Lightagtylyk
 bill_kot_panel_help	Hasabyň tertibi we mazmunyň giňligi. Kassir hasaby kim çykardy ýa-da çözdi - satuwyň doly hekaýasy kitaplarda galýar.
 std_size_ph	meselem 18, 20, 26…
-kot_show_shop	Dükanyň ady
-kot_hide_shop	Dükany gizläň
-kot_show_time	Wagt
-kot_hide_time	Wagt gizläň
-kot_show_waiter	Kassir
-kot_hide_waiter	Kassiri gizläň
-kot_show_station	Wokzal
-kot_hide_station	Stansiýany gizläň
-kot_show_table	Kassir
-kot_hide_table	Nahar saçagyny gizläň
-kot_show_kot_no	Bilet belgisi
-kot_hide_kot_no	Bilet gizläň .ok
-kot_width	Gaplamany öňünden görüň (süýşmek goýmasynda mazmunyň giňligini düzüň)
-kot_width_58	58 mm
-kot_width_80	80 mm
-kot_kind_heading	Bilet görnüşi
-kot_kind_original	Asyl
-kot_kind_duplicate	Göçürme
-kot_kind_modified	Üýtgedildi
-kot_kind_cancelled	Atyryldy
-kot_style_heading	Meýdanyň görnüşi we agramy
-kot_style_title	Ady
-kot_style_item_qty	Menýu menýusy elementi
-kot_style_field_pick	Meýdany saýlaň
 kot_weight_regular	Yzygiderli
 kot_weight_bold	Batyr
-kot_align	Deňleşdir
 kot_align_start	Başla
 kot_align_center	Merkez
 kot_align_end	Ahyry
 content_width	Mazmunyň ini (mm)
 content_width_bill	Hasap mazmunynyň ini (mm)
-content_width_kot	Biletiň mazmunynyň giňligi (mm)
 content_width_ph	Ora-da mazmunyň giňligini 40–210 mm ýazyň
 content_width_help	Bu süýşmek näderejede giň. Bill öz giňligini saklaýar.
 content_width_bill_help	Müşderiniň hasaby näçeräk çap edýär. Bellenen 210 mm (sahypa). 58 mm dar süýşmek, 80 mm giňlikdäki süýşmek, 112 mm 4 dýuým, ini 210 mm. 40-dan 210-a çenli islendik bahany ýazyň. Biletleriň süýşmek goýmasynda öz giňligi bar.
-content_width_kot_help	Bilet näçe giňden çap edilýär. Bellenen 80 mm. 58 mm dar süýşmek, 80 mm giňlikdäki süýşmek, 112 mm 4 dýuým, 210 mm sahypa. 40-dan 210-a çenli islendik bahany ýazyň. Müşderiniň hasaplaşyklarynyň Hasap goýmasynda öz giňligi bar.
 vp_paper_width	Mazmunyň ini (mm)
 vp_paper_width_ph	Ora-da mazmunyň giňligini 40–210 mm ýazyň
 vp_paper_width_help	Mazmunyň giňligi “Bill & Slip” görnüşinde kesgitlenýär - töleg üçin (başlangyç 210 mm) we bilet (deslapky 80 mm).
-kot_size	Şriftiň ululygy
-kot_size_s	Kiçi
-kot_size_m	Adaty
-kot_size_l	Uly
 std_size	Şriftiň ululygy
 kot_copies	Göçürmeler
 kot_copies_1	1
 kot_copies_2	2
 kot_copies_3	3
-kot_title_ph	Ady (boş = BILIK)
-kot_footer_ph	Arka ofis belligi (islege görä)
-kot_preview	Öňünden syn
-save_kot_format	Süýş görnüşini ýatda saklaň
-test_kot_format	Synag çap
-test_kot_sent	Bilet deslapky syn
 test_bill_format	Synag tölegi
 test_bill_sent	Hasap deslapky syn iberildi
 test_print_no_printer	Bu iş üçin printer ýok - bu ekranda birini saýlaň
-kot_format_saved	Süýşmek formaty saklandy
 std_print	Hasap çap ölçegi
 std_print_help	OS / resminama printerlerinde “Standard Portret” we “Landşaft” töleg işleriniň şrift ölçegi (nokatlary giriziň - kiçi / adaty / uly däl). Iki ugur boýunça birmeňzeş ululyk.
 std_size_s	Kiçi
@@ -1223,23 +974,16 @@ upi_qr	UPI QR
 show_upi_qr	UPI QR görkeziň
 close_upi_qr	.Akyn
 upi_qr_help	Müşderi gözden geçirýär we töleýär. Tölänlerinden soň töleg alyň. Ikinji ekran: Serwer URL-ni açyň / LAN-da görkeziň.
-kot_recall	.Atlaň
 recently_done	Recentlyakynda edildi
-recall_kot_ph	Recallatlamak üçin # bilet
 role_help_customer	Rol: Müşderi - karz ýazgysy (olar bize bergidir). Birmeňzeş müşderi ýa-da üpjün ediji aksiýa üpjün edip biler.
 role_help_both	Rollar: Müşderi + üpjün ediji - bir müşderi ýa-da üpjün ediji, karz ýazgysy we tölenmeli ýazgylar, Hasabatdaky net.
 role_help_supplier	Rol: Üpjün ediji - satyn almak üçin olara bergimiz bar.
-dine_in_pick_table	Hasap dükanynda ulanylmaýar
-choose_table	Hasaplaýjyny saýlaň
-change_table	Nahar stoluny çalyşyň
-pick_table_banner	Bu sargyt üçin nahar stoluny saýlaň
 items_word	menýu elementleri
 items_section	Menýu menýu elementleri
 back_to_order	Sargyt
 new_items_head	Entek iberilmedi
 price_ph	Bahasy
 price_ph_gst_inside	Bahasy ({tax} öz içine alýar)
-cancel_needs_table	Hasap satuwlary, töleg alýançaňyz biletde galar
 tax_rates_missing_hint	Bu elementlerde {tax} stawkasy ýok - kesgitlenen salgyt stawkasy boýunça (bahalar eýýäm {tax} bilen {tax} öz içine alýar)
 taxable_value	Salgyt salynýan baha
 gst_inside_price_note	({tax} öz içine alýar)
@@ -1260,30 +1004,11 @@ client_template_confirm	{title}-den {d} elementleri goşuň? Öňküsi ýaly gal
 client_template_importing	{title} import etmek…
 client_template_done	{title}-den gelen zatlar, önümleriňizde.
 client_template_imported	{title}-den {d} elementleri we {c} kategoriýalary goşuldy
-resv_heading	Bellikler
-resv_name_ph	Müşderiniň ady
-resv_phone_ph	Telefon (islege görä)
-resv_guests_ph	Adamlar
-resv_when_ph	Haçan - 20:30, ertir 13:00
-resv_table_ph	Hasaplaýjy (islege görä)
-resv_add	Nahar stoluny ätiýaçda saklaň
-resv_seat	Oturan
-resv_none	Hiç hili bron etmez.
-guests_word	myhmanlar
-delivery_by_ph	Eltip bermek (çapyksuwar ýa-da işgärleriň ady)
-kitchen_all_day	Indi bişirmek üçin: {items}
-split_bill	Bölün
-split_go	Aýry-aýry hasaplaşyk ediň
 cancel	Elatyr
 opening_client	Müşderi açmak…
 preparing_desk	Stol taýýarlamak…
 opening_server	Serweriň açylmagy…
 creating_server	Serwer döretmek…
-split_help	Bir müşderiniň töleýän zatlaryna degiň · {n} saýlandy
-split_send_first	Ilki bilen süýşüriň - diňe ofisdäki zatlar aýratyn töleg alyp biler
-split_pick_some	Ilki bilen aýratyn hasap üçin elementlere degiň
-split_done	Aýry-aýry kanun çykaryldy - bu hasapçanyň gapdalynda
-split_marked	aýratyn kanun
 order_empty_pick	Boş zakaz ediň - elementleri saýlamak üçin ýokardaky zatlary goşuň.
 add_dishes	Derman goşuň
 order_so_far	Bu sargyt boýunça: {n} · {total}
@@ -1294,24 +1019,8 @@ pick_done_dd	·Erine ýetirildi · {label}
 printer_route_mode	Bu ýerde birnäçe printer bar bolsa
 printer_mode_first	Ilki bilen işleýär
 printer_mode_all	Hemmesini çap et
-kot_show_area	Meýdany
-kot_hide_area	Meýdany gizläň
-kot_show_item_hdr	Menýu menýusy elementi
-kot_hide_item_hdr	Sütünleri gizläň
-kot_show_title	Adyň setiri
-kot_hide_title	Ady gizläň
-kot_field_order	Çap et
 kot_field_up	Göçüriň
 kot_field_down	Aşak süýşüriň
-kot_field_cycle	Indiki saýlaň
-kot_field_select	Indiki saýlaň
-kot_field_time	Wagt
-kot_field_kot_no	Bilet belgisi
-kot_field_area	Meýdany
-kot_field_table	Kassir
-kot_field_shop	Dükanyň ady
-kot_field_waiter	Işgärler
-kot_field_station	Wokzal
 app_template_blurb_extra	Şeýle hem: eýesi Zahir, Admin Asif, Kassir Nawaz; öň gapdal paneli; 4 sagatdan soň taryh; Bu gün çykyň; ykjam faktura.
 dishes_n	{n} elementler
 recipe_ph	Resept (islege görä - söwda dükanynda ulanylmaýar)
@@ -1321,8 +1030,6 @@ low_stock_alert	Pes işleýär - basym satyn alyň: {items}
 unpriced_note	Harytlaryňyzdaky {n} elementleriniň entek bahasy ýok - birini kesgitleýänçäňiz 0-a töleýärler.
 show_unpriced	Diňe bahasyz zatlary görkeziň
 show_all_dishes	Itemshli elementleri görkez
-role_waiter	Kassir
-role_kitchen	Dükan
 role_title_rest_ph	Rol ady (meselem, kapitan, baş aşpez)
 preset_help_rest	Kassir: sat. Dolandyryjy: satmak + menýu elementleri + boş / üýtgetmek.
 kind_raw	Goşma aksiýa

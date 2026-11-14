@@ -68,28 +68,6 @@ applied	Εφαρμόστηκε
 note_ph	Σημείωση (προαιρετική)
 rounded	ΣΤΡΟΓΓΥΛΟ
 split	Διαχωρισμός
-send_kot	Αποστολή δελτίου
-send_kot_to	Αποστολή → {kitchens}
-send_kot_again	Προσθέστε στοιχεία για το επόμενο δελτίο
-send_kot_held	Αντικείμενα που βρίσκονται σε αναμονή — απενεργοποίηση για αποστολή
-reprint_kot	Εκτύπωση επιλεγμένων ξανά
-reprint_kot_ok	Εκτυπώθηκαν ξανά στοιχεία {n} · Δελτία(α) {slips} → {kitchens}
-reprint_kot_needed	Στείλτε πρώτα ένα δελτίο — μετά συμπεριλάβετε στοιχεία και εκτυπώστε ξανά τα επιλεγμένα
-reprint_kot_none_selected	Κάθε απεσταλμένο αντικείμενο παραλείπεται — πατήστε Εκτύπωση σε αυτά που θέλετε να εκτυπώσετε
-reprint_kot_client	Εκτύπωση ξανά ({n}) για το {place} που εστάλη — η συσκευή του καταστήματος το εκτυπώνει
-print_cancelled_kot	Εκτύπωση όλων των ακυρωμένων
-print_cancelled_kot_ok	Εκτυπωμένα {n} ακυρωμένα στοιχεία · Δελτία(α) {slips} → {kitchens}
-print_cancelled_kot_needed	Ανοίξτε πρώτα ένα τραπέζι με ακυρωμένα αντικείμενα
-print_cancelled_kot_none	Δεν υπάρχουν ακυρωμένα προϊόντα σε αυτήν την παραγγελία
-print_cancelled_kot_client	Η εκτύπωση ακυρώθηκε ({n}) για την αποστολή {place} — η συσκευή καταστήματος την εκτυπώνει
-kot_banner	Ετικέτα είδους
-kot_banner_ph	Ετικέτα (κενό = καμία)
-kot_item_prefix	Πρόθεμα είδους
-kot_item_prefix_ph	π.χ. [ΑΚΥΡΩΘΗΚΕ]
-kot_strike	Όνομα στοιχείου προειδοποίησης
-kot_strike_note	Σημείωση στοιχείου απεργίας
-kot_strike_on	Ενεργό
-kot_strike_off	Ανενεργό
 bill_item_layout	Διάταξη ειδών
 bill_item_layout_columns	Στήλες
 bill_item_layout_stacked	Σε στοίβα
@@ -118,8 +96,6 @@ bill_item_gap_em	Κενό (em)
 bill_item_qty_min	Ελάχ. ποσ. (em)
 bill_item_price_min	Ελάχ. τιμή (em)
 bill_item_amount_min	Ελάχ. ποσό (em)
-kot_item_qty_width	Στήλη ποσ.
-kot_item_num_align	Στοίχιση ποσ.
 bill_total_qty_label	Ετικέτα συνολ. ποσ.
 bill_total_subtotal_label	Ετικέτα υποσυνόλου
 bill_total_grand_label	Ετικέτα γενικού συνόλου
@@ -131,36 +107,9 @@ bill_item_piece_off	Ανενεργό
 bill_total_qty	Συνολ. ποσ.
 bill_total_subtotal	Υποσύνολο
 bill_total_grand	Γενικό σύνολο
-reprint_incl	Στην εκτύπωση
-reprint_skip	Παράλειψη
-reprint_skip_meta	Παράλειψη επανεκτύπωσης
-kot_dest_hint	Τυπώνει στους εκτυπωτές που ορίσατε για {kitchens} στις Ρυθμίσεις → Εκτυπωτές
-kot_sent_hint	Η τελευταία αποστολή πήγε στο {kitchens}. Πατήστε για να προσθέσετε στοιχεία για τον επόμενο λογαριασμό — ή Εκτύπωση δελτίου ξανά για τον ίδιο.
-kot_sent_printing	Το δελτίο στάλθηκε στο {kitchens} — εκτύπωση
-kot_sent_not_printed	Το απόκομμα στάλθηκε στο {kitchens} αλλά ΔΕΝ εκτυπώθηκε: {why}. Ενημερώστε το κατάστημα, μετά διορθώστε τον εκτυπωτή και εκτυπώστε τον ξανά.
-kot_sent_screen	Το δελτίο στάλθηκε στο {kitchens}
-kot_queued_shop	Slip για {place} → {kitchens} αποθηκεύτηκε. η συσκευή του καταστήματος το εκτυπώνει
-kot_job_label	Γλιστρήστε για {place} → {kitchens}
-kot_job_reached	Το slip για {place} έφτασε στο {kitchens}
 kot_unassigned	Χωρίς ανάθεση
-kot_unassigned_held	Κρατήστε στοιχεία {n} χωρίς σταθμό — κρατήστε το στη γραμμή για αποστολή
-kot_station_ph	Σταθμός
-kot_station_dd	Σταθμός
-kot_station_dd_n	Σταθμός · {stations}
-kot_set_station	Χρήση αυτού του σταθμού
-kot_station_applied	Ο σταθμός έχει οριστεί σε στοιχεία {n}: {station}
-kot_station_cleared	Ο σταθμός διαγράφηκε από στοιχεία {n}: {station}
-kot_station_needed	Επιλέξτε πρώτα ένα τμήμα καταστήματος
-kot_station_not_allowed	Δεν επιτρέπεται η χρήση ενότητας: {station}
-kot_station_none	Δεν υπάρχουν ακόμη σταθμοί — αχρησιμοποίητο σε πάγκο (Ρυθμίσεις → Περιοχές εάν χρειάζεται)
 pos_tab_items	Προστεθέντα είδη
 pos_tab_payment	Πληρωμή
-hold_send	Κράτηση
-hold_send_on	Σε κράτηση
-hold_send_meta	Κρατήθηκε — όχι σε αυτό το ολίσθημα
-station_remove	Αφαίρεση σταθμού
-station_remove_ph	Αγγίξτε έναν σταθμό στη λίστα για να τον αφαιρέσετε
-station_removed	Ο σταθμός αφαιρέθηκε: {name}
 settings_hub_title	Ρυθμίσεις
 settings_hub_help	Ανοίξτε μία περιοχή τη φορά — λιγότερη κύλιση, σαφέστερες επιλογές.
 settings_back	Πίσω
@@ -169,12 +118,10 @@ settings_sec_country	Χώρα και φόρος
 settings_sec_tills	Άλλες συσκευές
 settings_sec_brand	Η επωνυμία σας
 settings_sec_units	Μονάδες και μετατροπές
-settings_sec_pickers	Χώροι · σταθμοί · συντελεστές φόρου
+settings_sec_pickers	Συντελεστές φόρου
 settings_sec_printers	Εκτυπωτές
 settings_sec_bill	Μορφή Bill & Slip
 settings_sec_selling	Προσφορές και πωλήσεις
-bill_kot_tab_bill	Λογαριασμός
-bill_kot_tab_kot	Ολίσθημα
 settings_sec_alerts	Ειδοποιήσεις
 alerts_help	Πόσο μένουν στην οθόνη τα μηνύματα κατάστασης για εσάς (αυτή η σύνδεση).
 snack_secs_ph	Δευτερόλεπτα (3–60, προεπιλογή 10)
@@ -225,8 +172,6 @@ counter	Ταμείο
 dine_in	Ταμείο
 takeaway	Πακέτο
 order	Παραγγελία
-tables	μετρητές
-kitchen	Ενότητες
 sales	Πωλήσεις
 sales_refunds	Πωλήσεις και επιστροφές
 day_close	Κλείσιμο ημέρας
@@ -254,10 +199,6 @@ zero_sales_on	Να επιτρέπεται ₹0
 zero_sales_off	Να απαιτείται τιμή
 zero_sales_saved_on	Επιτρέπονται πωλήσεις μηδενικής αξίας
 zero_sales_saved_off	Οι πωλήσεις πρέπει να έχουν τιμή πάνω από ₹0
-floor_areas_help	Οι χώροι είναι δωμάτια ή ζώνες στον όροφο (Δειπνήστε, Αγροτεμάχιο, AC…). Προσθέστε πρώτα μια περιοχή και μετά βάλτε μετρητές σε αυτήν — κάθε περιοχή είναι μια ξεχωριστή ομάδα στο πάτωμα.
-area_new_ph	Νέος χώρος / αίθουσα (π.χ. Κλιματισμός, Κήπος)
-add_area	Προσθήκη χώρου
-area_added	Έτοιμη περιοχή "{name}" — προσθέστε μετρητές σε αυτήν
 no_favorites	Δεν υπάρχουν ακόμη αγαπημένα — προσθέστε είδη από τη λίστα κάτω.
 add_to_bill	Προσθήκη στον λογαριασμό
 added	Προστέθηκε
@@ -268,19 +209,9 @@ chip_missing_customer	Ο επιλεγμένος πελάτης λείπει — 
 chip_no_customer	Δεν υπάρχει πελάτης ακόμη — γράψτε όνομα και πατήστε Συναλλασσόμενοι
 credit_summary_fmt	{} πελάτες · ανοιχτή πίστωση {} · κρατημένες προκαταβολές {}
 recent_label	Πρόσφατα:
-kot_new_waiting	ΝΕΟ — αναμονή
-kot_preparing	ΣΕ ΕΤΟΙΜΑΣΙΑ
-kot_ready_serve	ΕΤΟΙΜΟ — σερβίρετε
-kot_done_cap	ΟΛΟΚΛΗΡΩΘΗΚΕ
-kot_cancelled	ΑΚΥΡΩΘΗΚΕ
-kot_start_btn	Έναρξη
-kot_mark_ready	Σήμανση έτοιμου
-kot_done_btn	Ολοκλήρωση
-table_free	Ελεύθερο — αγγίξτε για έναρξη παραγγελίας
 start_order	Έναρξη παραγγελίας
 open_bill	Άνοιγμα λογαριασμού
 collect_payment	Είσπραξη
-table_running	Σε εξέλιξη
 payment_pending	Εκκρεμεί πληρωμή
 collect_at_counter	είσπραξη στο ταμείο
 inventory	Αποθήκη
@@ -313,7 +244,6 @@ ok	OK
 this_shop	Server
 extra_till	Client
 off	Ανενεργό
-tables_kitchen	Διάταξη καταστήματος
 server	Server
 client	Client
 language_currency	Γλώσσα και νόμισμα
@@ -355,8 +285,6 @@ add_item_plain	Προσθήκη είδους
 add_note	Προσθήκη σημείωσης
 add_opening_balance	Προσθήκη αρχικού υπολοίπου
 add_staff	Προσθήκη προσωπικού
-add_station	Προσθήκη σταθμού
-add_table	Προσθήκη τραπεζιού
 add_unit	Προσθήκη μονάδας
 add_use_name	Προσθήκη / χρήση αυτού του ονόματος
 allow_extra_tills	Να επιτρέπονται επιπλέον ταμεία
@@ -409,7 +337,6 @@ share_whatsapp	Κοινοποίηση WhatsApp
 lan_pages_heading	Σελίδες πελατών σε Wi‑Fi
 lan_pages_help	Στο Wi‑Fi αυτού του καταστήματος, οι σελίδες πελατών λειτουργούν για τον πίνακα προβολής και τα σχόλια. Τα άτομα με δεδομένα κινητής τηλεφωνίας χρειάζονται το Cloud αργότερα. Το τερματικό κάρτας ή ο σύνδεσμος πληρωμής είναι προαιρετικός και δεν εμποδίζει ποτέ το γκισέ.
 diag_send_heading	Κοινοποίηση εκτός αυτής της συσκευής
-kot_dest_heading	Σταθμός
 optional_login_heading	Προαιρετική σύνδεση
 rights_heading	Δικαιώματα
 ops_panel	Τοπικές εργασίες
@@ -436,28 +363,6 @@ till_voucher_amt_ph	Ποσό κουπονιού (κενό = όλα)
 till_wallet_topup_ph	Ποσό φόρτισης πορτοφολιού
 till_voucher_issue_amt_ph	Ποσό έκδοσης κουπονιού
 till_voucher_issue_code_ph	Κωδικός νέου κουπονιού
-split_evenly	Ίσος διαχωρισμός
-waitlist	Λίστα αναμονής
-fire_course	Επόμενο βήμα
-hold_item	Κράτηση
-waiter_call	Καλέστε ταμία
-waitlist_add	Προσθήκη στη λίστα αναμονής
-floor_view_grid	Πλέγμα
-floor_view_layout	Διάταξη
-floor_layout_x	X
-floor_layout_y	Y
-floor_layout_w	W
-floor_layout_h	H
-floor_layout_save	Αποθήκευση διάταξης
-floor_layout_open	Άνοιγμα τραπεζιού
-floor_layout_edit	Επεξεργασία διάταξης
-floor_layout_pick	Αγγίξτε ένα τραπέζι για να επεξεργαστείτε τη διάταξη
-floor_layout_saved	Η διάταξη αποθηκεύτηκε
-floor_layout_nudge_left	← 20
-floor_layout_nudge_right	→ 20
-floor_layout_nudge_up	↑ 20
-floor_layout_nudge_down	↓ 20
-sibling_pickers_help	Πατήστε Ενεργό/Ανενεργό όπως στις μονάδες — κρύψτε χώρους, σταθμούς και συντελεστές από τις καθημερινές επιλογές· οι προεπιλογές του πακέτου μένουν.
 bulk_price_apply	Εφαρμογή μαζικής τιμής
 card_terminal_optional	Τερματικό κάρτας / σύνδεσμος πληρωμής (προαιρετικό όταν υπάρχει ίντερνετ)
 copy_report	Αντιγραφή αναφοράς
@@ -483,7 +388,6 @@ import_day	Εισαγωγή ημέρας
 import_items_csv_plain	Εισαγωγή CSV ειδών…
 import_parties_csv	Εισαγωγή CSV συναλλασσομένων…
 item_name	Όνομα είδους
-kitchen_printing	Εκτυπωτές
 login_id_ph	Όνομα χρήστη
 mark_cleared	Σήμανση ως συμφωνημένο
 new_party_clear	Νέος συναλλασσόμενος (καθαρισμός φόρμας)
@@ -553,15 +457,6 @@ show	Εμφάνιση
 spreadsheet_csv	Υπολογιστικό φύλλο (CSV)
 start_fresh	Ξεκίνα από την αρχή
 stop_extra_tills	Διακοπή επιπλέον ταμείων
-floor_cols_ph	Στήλες
-floor_cols_fit	Να χωρά στην οθόνη
-floor_cols_fit_sub	{n} χωρούν εδώ
-floor_cols_fits	χωρά
-floor_cols_scroll	κυλά στο πλάι
-floor_cols_min	Στήλες: τουλάχιστον 1 — ή αφήστε το κενό για να χωρά στην οθόνη
-floor_zoom_auto	Αυτόματο
-floor_zoom_out	Σμίκρυνση
-floor_zoom_in	Μεγέθυνση
 backup_auto	Αυτόματο αντίγραφο κάθε μέρα · τελευταίο {when} · οι τελευταίες 14 μέρες μένουν στο {dir}.
 backup_auto_none	Αυτόματο αντίγραφο κάθε μέρα — το πρώτο ξεκινά σε λίγο.
 backup_copy_to	Αντίγραφα πηγαίνουν και στο {dir}.
@@ -579,7 +474,6 @@ new_pair_code	Νέος κωδικός ζευγαρώματος
 pair_finishing	Ολοκλήρωση ζευγαρώματος… εφαρμόζονται τα βιβλία του μαγαζιού
 pair_opening	Άνοιγμα ταμείου…
 pair_copied	Ο κωδικός ζευγαρώματος αντιγράφηκε
-kot_waiting	Αναμονή αποστολής
 lan_offline_waiting	Ο server του μαγαζιού δεν αποκρίνεται · {n} σε αναμονή
 lan_connecting	Σύνδεση με το μαγαζί…
 lan_live	Ζωντανά
@@ -621,7 +515,6 @@ printers_routes_help	Βρείτε εκτυπωτές που γνωρίζει ή�
 printer_assign_dd	Πραγματικός εκτυπωτής: {place}
 printer_assign_pick	Επιλογή πραγματικού εκτυπωτή
 printer_profile_heading	Διάταξη
-printer_send_heading	Διανομή
 vp_delivery_heading	Διανομή
 vp_delivery_help	Πώς αυτός ο εικονικός εκτυπωτής στέλνει εργασίες — έγγραφο λειτουργικού συστήματος, ακατέργαστα byte ή ESC/POS. Το περιεχόμενο του δελτίου (τύπος μέγεθος, περιτύλιγμα, περιθώρια) αποφασίζεται από τη μορφή λογαριασμού / δελτίου, όχι εδώ.
 vp_type_size_heading	Μέγεθος γραμμάτων
@@ -665,23 +558,13 @@ virtual_draft_send	Τιμή για τον επόμενο εικονικό εκτ
 virtual_need_real	Διαλέξτε πρώτα πραγματικό εκτυπωτή
 virtual_need_select	Διαλέξτε εικονικό εκτυπωτή για διαγραφή
 real_printer_selected	Επιλέχθηκε: {name}
-station_group_heading	Εικονικοί εκτυπωτές
-station_group_apply	Διαγραφή εικονικού εκτυπωτή
-station_group_applied	Διαγράφηκε
-station_group_empty	Διαλέξτε εικονικό εκτυπωτή
-station_group_name_ph	Όνομα εικονικού εκτυπωτή (προαιρετικό)
-station_group_save	Δημιουργία εικονικού εκτυπωτή
-station_group_saved	Ο εικονικός εκτυπωτής αποθηκεύτηκε
-station_manage_heading	Προσθήκη ή αφαίρεση ενότητας καταστήματος
 printers_routes_heading	Πού τυπώνεται τι
 route_pick_heading	Θέση
 route_editing	Επεξεργασία: {name}
 route_assigned	Προστέθηκε {printer} στο {place}
 route_already_assigned	Ήδη σε αυτή τη θέση: {printer}
-route_removed	Αφαιρέθηκε {printer} από {place}
 route_cleared	Καθαρίστηκε {name}
 route_assigned_empty	Τίποτα σε αυτή τη θέση
-route_tap_remove	αγγίξτε για αφαίρεση
 route_tap_select	αγγίξτε για επιλογή
 route_tap_selected	επιλεγμένο
 route_pick_printer_first	Αγγίξτε πρώτα έναν εκτυπωτή
@@ -702,35 +585,17 @@ printer_format_custom	Νέο προσαρμοσμένο προφίλ
 printer_format_custom_label	Προσαρμοσμένο
 printer_format_custom_added	Προσαρμοσμένο προφίλ προστέθηκε για αυτή τη θέση
 add_printer	Προσθήκη εκτυπωτή
-remove_printer	Αφαίρεση
 route_pick_ph	Λογαριασμός ή τμήμα καταστήματος
 route_bill	Λογαριασμός
-route_default_kitchen	Χωρίς σταθμό (μη εκχωρημένα στοιχεία)
-route_kot_station	Σταθμός
 route_dont_print	Χωρίς εκτυπωτή
-stations_heading	Σταθμοί
-stations_help	Οι ενότητες καταστημάτων ομαδοποιούν τα είδη και τους εκτυπωτές για αυτό το μέρος του καταστήματος. Επισυνάψτε εκτυπωτές από τις Ρυθμίσεις → Εκτυπωτές, ορίστε τη σειρά δοκιμής και μετά Πρώτα που λειτουργεί ή Εκτύπωση σε όλους. Οι αλλαγές αποθηκεύονται καθώς προχωράτε.
-station_print_heading	Εκτυπωτές για αυτόν τον σταθμό
-station_print_help	Επιλέξτε έναν σταθμό και, στη συνέχεια, συνδέστε έναν ή περισσότερους εκτυπωτές. ↑↓ ορίζει τη σειρά δοκιμής. Πρώτα που λειτουργεί σταματά μετά την πρώτη επιτυχία. Εκτύπωση σε όλες τις αποστολές σε κάθε συνδεδεμένο εκτυπωτή.
-station_print_pick_ph	Σταθμός για ορισμό εκτυπωτών
 station_print_pick_first	Επιλέξτε πρώτα ένα τμήμα καταστήματος
-station_print_editing	Επεξεργασία εκτυπωτών για «{name}»
-station_vps_dd	Εκτυπωτές για αυτόν τον σταθμό
-station_vps_dd_n	{n} εκτυπωτής/ές · αγγίξτε για αλλαγή
 station_vps_empty	Δεν υπάρχουν ακόμη εκτυπωτές — βρείτε τους στις Ρυθμίσεις → Εκτυπωτές
 bill_printers_dd	Εκτυπωτές για τον λογαριασμό
 bill_printers_dd_n	{n} εκτυπωτής/ές για τον λογαριασμό · αγγίξτε για αλλαγή
-job_layout	Διάταξη
-job_delivery	Πώς στέλνεται η εργασία
-job_delivery_help	Έγγραφο λειτουργικού συστήματος, ακατέργαστα byte ή ESC/POS. Ο λογαριασμός και το εισιτήριο κρατούν το καθένα το δικό του. Οποιαδήποτε εργασία μπορεί να πάει σε οποιονδήποτε εκτυπωτή έχει αποθηκευτεί το Find.
 station_vp_attached	Ο εκτυπωτής συνδέθηκε
 station_vp_detached	Ο εκτυπωτής αφαιρέθηκε από τον σταθμό
-station_print_summary	{mode} · {n} εκτυπωτής/ές
-station_print_summary_none	Δεν υπάρχουν ακόμη εκτυπωτές σε αυτόν τον σταθμό — δεν θα τυπώνει
-stations_none	Δεν υπάρχουν ακόμη σταθμοί — προσθέστε έναν παρακάτω. Οι σταθμοί είναι αχρησιμοποίητοι σε ένα γκισέ — αφήστε άδειο.
 route_up	Πάνω
 route_down	Κάτω
-route_remove	Αφαίρεση
 route_clear	Καθαρισμός
 save_printers	Αποθήκευση εκτυπωτών
 print_test_page	Εκτύπωση δοκιμαστικής σελίδας
@@ -739,23 +604,15 @@ test_page_no_printer	Δεν υπάρχει εκτυπωτής για {place} —
 test_page_pick_first	Διαλέξτε πρώτα εκτυπωτή/ές για δοκιμαστική σελίδα — μετά Εκτύπωση δοκιμαστικής σελίδας
 test_printers_dd	Εκτυπωτές για δοκιμαστική σελίδα
 test_printers_dd_n	{n} εκτυπωτής/ές για δοκιμαστική σελίδα · αγγίξτε για αλλαγή
-kot_test_printers_dd	Εκτυπωτές για δοκιμαστική εκτύπωση
-kot_test_printers_dd_n	Εκτυπωτές {n} για δοκιμαστική εκτύπωση · πατήστε για αλλαγή
 test_printer_picked	Δοκιμή σε: {name}
 test_printer_cleared	Χωρίς δοκιμή σε: {name}
 test_page_sent_n	Η δοκιμαστική σελίδα στάλθηκε σε {n} εκτυπωτή/ές
-test_kot_pick_first	Επιλέξτε πρώτα εκτυπωτές για δοκιμαστική εκτύπωση — μετά δοκιμαστική εκτύπωση
-test_kot_sent_n	Η δοκιμαστική εκτύπωση στάλθηκε σε εκτυπωτές {n}
-cancel_pick	Σήμανση
-cancel_pick_on	Σημειωμένο
-cancel_pick_meta	Σημειωμένο για ακύρωση
 batch_cancel	Ακύρωση σημειωμένων
 batch_cancel_n	Ακύρωση σημειωμένων ({n})
 batch_cancel_none	Επισημάνετε πρώτα ένα ή περισσότερα απεσταλμένα στοιχεία — μετά επισήμανση Ακύρωση
 batch_cancel_title	Ακύρωση επισημασμένων στοιχείων — ένας λόγος, ένα δελτίο ακύρωσης ανά ενότητα
 batch_cancel_ok	Στοιχεία {n} ακυρώθηκαν · Δελτία(α) ακυρώσεων {slips} → {kitchens}
 batch_cancel_ok_noprint	Στοιχεία {n} ακυρώθηκαν — η αυτόματη εκτύπωση είναι απενεργοποιημένη, επομένως δεν υπάρχει ακύρωση
-no_printer_kitchen_station	Δεν υπάρχει εκτυπωτής για αυτόν τον σταθμό
 printers_saved	Αποθηκεύτηκε
 test_page_sent	Η δοκιμαστική σελίδα στάλθηκε — ελέγξτε τον εκτυπωτή
 test_page_sent_one	Η δοκιμαστική σελίδα στάλθηκε στο {name} — ελέγξτε εκείνον τον εκτυπωτή
@@ -771,10 +628,7 @@ cancelled	Ακυρώθηκε
 printers_tap_find	Πατήστε Εύρεση για να δείτε τους εκτυπωτές που μπορεί να χρησιμοποιήσει αυτή η συσκευή.
 printers_none_found	Δεν βρέθηκε τίποτα — γράψτε όνομα εκτυπωτή συστήματος ή IP (π.χ. 192.168.1.50).
 printer_from_find	Προστέθηκε {name}
-kot_printer_ph	Εκτυπωτής για σλιπ
 bill_printer_ph	Εκτυπωτής για λογαριασμούς
-kot_print_on	Αυτόματη εκτύπωση εισιτηρίων: Ενεργό
-kot_print_off	Αυτόματη εκτύπωση εισιτηρίων: Απενεργοποίηση
 queue_refused	Το μαγαζί δεν δέχτηκε ({n}) — ελέγξτε το καθένα στο ταμείο:
 clear_not_accepted	Ελέγχθηκε — καθαρισμός αυτής της λίστας
 device_name_ph	Όνομα αυτής της συσκευής
@@ -785,7 +639,6 @@ backup_failed	Το τελευταίο αυτόματο αντίγραφο απέ
 backup_overdue	Κανένα αντίγραφο εδώ και {n} μέρες — κρατήστε την εφαρμογή ανοιχτή σε αυτή τη συσκευή για να μπορεί να αντιγράφει.
 disk_low	Μόνο {mb} MB ελεύθερα σε αυτή τη συσκευή — τα αντίγραφα θα αποτύχουν σύντομα. Ελευθερώστε χώρο.
 last_seen_devices	Τελευταία εμφάνιση: {time}
-sync_interval	Συγχρονισμός κάθε {secs} δ
 connection_to_shop	Σύνδεση με το μαγαζί
 supplier_name_ph	Όνομα προμηθευτή (ή συναλλασσόμενος)
 supplier_ph	Προμηθευτής
@@ -848,7 +701,6 @@ fresh_book_kirano	Fresh = κενός κατάλογος (προσθέστε αν
 fresh_selected	Επιλέχθηκε από την αρχή — ο κατάλογος μένει άδειος. Πατήστε Έτοιμο όταν είστε έτοιμοι.
 gross_word	Μικτό
 how_start	Πώς θέλετε να ξεκινήσετε;
-kot_print_help_kirano	Δεν χρησιμοποιείται σε πάγκο kirana.
 later_country_pack	Αργότερα: Ρυθμίσεις → εφαρμόστε το πακέτο χώρας για τις ονομασίες φόρου και πληρωμής.
 local_badge	ΤΟΠΙΚΑ
 mix_type_hint_kirano	Χωρίστε σε μετρητά / UPI / κάρτα / συναλλασσόμενους αν χρειάζεται. Οι συναλλασσόμενοι θέλουν πελάτη από πάνω.
@@ -899,8 +751,6 @@ staff_copy_need_source	Διαλέξτε ποιανού τη ρύθμιση να 
 staff_copy_same	Είναι το ίδιο άτομο — διαλέξτε κάποιον άλλο
 staff_rename_need_selected	Διαλέξτε πρώτα σε ποιον αλλάζετε όνομα
 team_pick_hint	Επιλέξτε ποιον να επεξεργαστείτε — οι οθόνες, τα δικαιώματα χρημάτων και οι σταθμοί εμφανίζονται μόνο για αυτό το άτομο.
-team_stations_help	Σταθμοί που μπορούν να χρησιμοποιήσουν
-team_stations_changed	Οι σταθμοί άλλαξαν — Αποθηκεύστε τη ρύθμιση για αυτό το άτομο
 team_features_changed	Οι οθόνες άλλαξαν — Αποθήκευση ρύθμισης για αυτό το άτομο
 team_rights_changed	Τα δικαιώματα άλλαξαν — Αποθήκευση ρύθμισης για αυτό το άτομο
 they_owe_us	Μας χρωστούν
@@ -984,9 +834,6 @@ service_pct_ph	Υπηρεσία % προαιρετικά 0/10/12
 short_code_ph	Σύντομος κωδικός (MG02)
 starting_password_ph	Αρχικός κωδικός (προαιρετικό)
 starting_pin_ph	Αρχικό PIN (4–12 ψηφία)
-station_name_ph	Όνομα σταθμού (προαιρετικό)
-station_new_ph	Ενότητα (προαιρετικό)
-table_name_ph	Όνομα μετρητή / κόλπου
 tax_rate_ph	Όνομα ή % συντελεστή — Κανονικός, Μειωμένος, 0, 5, 12, 18, 20
 to_code_ph	Προς κωδικό (kg)
 uncleared_no_ph	Μη συμφωνημένο # πάνω
@@ -999,27 +846,8 @@ book_kind_month	Βιβλία αυτού του μήνα
 book_kind_aging	Ανεξόφλητα / χρέωση-πίστωση
 book_kind_balance	Ισολογισμός
 order_help	Αγγίξτε ένα είδος για να το προσθέσετε.
-floor_help	Αυτό το κατάστημα πουλάει στον πάγκο. Τα τραπέζια και η τραπεζαρία δεν αποτελούν μέρος του Kirano.
-kitchen_help	Δεν χρησιμοποιείται σε πάγκο.
-kitchen_empty	Δεν υπάρχουν ανοιχτά εισιτήρια (τα γκισέ συνήθως αφήνουν αυτήν την οθόνη αχρησιμοποίητη).
-add_a_table	Προσθήκη τραπεζιού
-add_station_heading	Προσθήκη ενότητας καταστήματος
 categories_help	Πατήστε Χρήση για να μπει το είδος πάνω σε εκείνη την κατηγορία. Η φωτογραφία δίνει εικόνα στην κατηγορία· χωρίς αυτή δείχνει τα αρχικά.
 dish_search_ph	Αναζήτηση στοιχείων ή σύντομου κώδικα…
-tile_free	Ελεύθερο
-tile_occupied	Κατειλημμένο
-tile_food_ready	Το φαγητό είναι έτοιμο
-tile_bill_printed	Ο λογαριασμός τυπώθηκε
-tile_paid	Πληρωμένο
-tile_bill_btn	Λογαριασμός
-tile_occupy_btn	Καθίστε τους επισκέπτες
-tile_free_btn	Ελευθέρωσε το τραπέζι
-tile_ready_btn	Ελευθέρωσε το τραπέζι
-tile_undo_bill	Αναίρεση λογαριασμού
-summary_busy	τραπέζια απασχολημένα
-summary_to_collect	προς είσπραξη
-summary_on_floor	στην αίθουσα
-floor	Μαγαζί
 sizes_as_items_ph	Μεγέθη ως ξεχωριστά είδη (προαιρετικό) — Μισό=120, Ολόκληρο=200
 dish_group_ph	Ομάδα μεγέθους συσκευασίας (προαιρετικό) — π.χ. Atta 1kg / 5kg
 discount	Έκπτωση
@@ -1027,7 +855,6 @@ remove_discount	Αφαίρεση έκπτωσης
 apply_discount	Εφαρμογή έκπτωσης
 save_opening_cash	Αποθήκευση αρχικών μετρητών
 close_shift_print	Κλείσιμο βάρδιας και εκτύπωση δελτίου
-area_prices_ph	Τιμές ανά χώρο (προαιρετικό) — Κλιματισμός=220, Πακέτο=210
 discount_ph	10% ή 50
 discount_reason_ph	Αιτία (π.χ. τακτικός επισκέπτης, αργό φαγητό)
 opening_float_ph	Μετρητά που μπήκαν στο συρτάρι το πρωί
@@ -1037,34 +864,18 @@ shift_handover	Παράδοση βάρδιας
 shift_since	Αυτή η βάρδια από
 expected_in_drawer	Αναμενόμενα στο συρτάρι
 right_discount	Να δίνει έκπτωση
-floor_in_kitchen	Σε εξέλιξη
-floor_eating	Σερβιρίστηκε
 pick_category	Επιλογή κατηγορίας
 close_category_list	Κλείσιμο λίστας κατηγοριών
 new_category_row	Νέα κατηγορία — δημιουργείται όταν αποθηκεύετε το είδος
 your_category	Η κατηγορία σας
 suggested_category	Προτεινόμενα — από τα είδη μας
 category_search_ph	Κατηγορία — ψάξτε τις δικές σας ή γράψτε νέα
-line_sent_state	Στάλθηκε
-line_nc_state	Κέρασμα (NC) — δεν χρεώνεται
 cancel_item_short	Ακύρωση
-nc_short	NC
-charge_again_short	Χρέωση
-move_short	Μετακίνηση
 cancel_item_title	Ακύρωση αυτού του στοιχείου — το back office λαμβάνει ένα απόδειξη ακύρωσης
-nc_item_title	Κάντε αυτό το είδος κέρασμα (NC)
-charge_again_title	Χρέωσε ξανά αυτό το είδος
-move_item_title	Μετακίνησε αυτό το είδος σε άλλο τραπέζι
-already_cooked	Ήδη μαγειρεμένο (φύρα)
-not_cooked_yet	Δεν μαγειρεύτηκε ακόμη
 return_to_customer	Επιστροφή στον πελάτη
 short_by	Λείπουν
 tip_not_sale	Φιλοδώρημα (προσωπικού, όχι πώληση)
 right_settle	Είσπραξη
-right_cancel_sent	Ακύρωση σταλμένου είδους
-right_complimentary	Κέρασμα (NC)
-right_move_table	Μετακίνηση / συγχώνευση μετρητών
-right_reprint	Εκτύπωση λογαριασμού ξανά
 right_allowed	Επιτρέπεται
 right_with_approval	Με έγκριση
 right_denied	Δεν επιτρέπεται
@@ -1074,25 +885,11 @@ no_server_found	Δεν βρέθηκε τίποτα. Στον Server: Ρυθμί�
 servers_found_pick	Αγγίξτε το μαγαζί στο οποίο θέλετε να συνδεθείτε.
 server_host_selected	Χρήση {host} — βάλτε τον κωδικό ζευγαρώματος και Ζευγάρωμα τώρα.
 print_bill	Εκτύπωση λογαριασμού
-table_actions	Αντιδράσεις
-move_merge_table	Μετακίνηση / συγχώνευση τραπεζιού
-move_help	Μετακινήστε την παραγγελία αυτού του μετρητή σε έναν ελεύθερο πίνακα ή συγχωνεύστε τον σε έναν τρέχοντα πίνακα.
-move_target_ph	Όνομα μετρητή
 approval_pin_ph	PIN διευθυντή (μόνο αν ζητηθεί)
-move_here	Μετακίνηση εδώ
-merge_into	Συγχώνευση σε αυτό
-line_reason_ph	Λόγος (π.χ. πελάτης άλλαξε γνώμη, εκτός αποθέματος)
-line_qty_ph	Πόσα να ακυρωθούν (κενό = όλα)
-line_target_ph	Μετακίνηση σε τραπέζι (π.χ. D5)
 confirm	Επιβεβαίωση
 menu_search_ph	Αναζήτηση είδους ή σύντομου κωδικού
 customer_paid_ph	Ο πελάτης πλήρωσε
 tip_ph	Φιλοδώρημα
-table_area_ph	Χώρος (π.χ. Στο κατάστημα, Πακέτο, Κλιματισμός)
-table_range_ph	Πολλά μαζί: D1-D20
-add_these_tables	Προσθέστε αυτούς τους μετρητές
-remove_these_tables	Αφαιρέστε αυτούς τους μετρητές
-table_remove_ph	Αφαίρεση: T1-T24 ή όνομα ενός τραπεζιού
 find_server	Εύρεση του server του μαγαζιού
 bill_format	Μορφή λογαριασμού
 bill_format_help	Τυπωμένο κάτω από το όνομα του καταστήματός σας σε κάθε λογαριασμό. Ξεχωρίστε τις γραμμές με | (π.χ. MG Road, Rajkot | Ph 98250 00000).
@@ -1100,78 +897,32 @@ bill_header_ph	Διεύθυνση | τηλέφωνο
 fssai_ph	FSSAI / άδεια καταστήματος αρ. (προαιρετικός)
 bill_footer_ph	Υποσέλιδο (π.χ. Ευχαριστούμε, ελάτε ξανά)
 save_bill_format	Αποθήκευση μορφής λογαριασμού
-kot_format	Μορφή ολίσθησης
-kot_format_help	Πατήστε ένα πεδίο στη λίστα. Η εμφάνιση, το μέγεθος γραμματοσειράς και το βάρος ισχύουν για αυτό το πεδίο στο είδος του δελτίου που έχει επιλεγεί παραπάνω. Κάθε είδος διατηρεί τα δικά του μεγέθη και βάρη.
-kot_format_fields	Πεδία
-kot_field_next	Επόμενο πεδίο
-kot_field_show	Εμφάνιση
-kot_field_hide	Απόκρυψη
 kot_field_on	εμφάνιση
 kot_field_off	απόκρυψη
-kot_field_size	Μέγεθος γραμμάτων
-kot_field_size_ph	π.χ. 16, 20, 24, 28, 32…
 kot_weight_light	Λεπτό
 bill_kot_panel_help	Διάταξη λογαριασμού και πλάτος περιεχομένου. Ταμίας είναι αυτός που εξέδωσε ή διευθέτησε τον λογαριασμό — η πλήρης ιστορία της πώλησης παραμένει στα βιβλία.
 std_size_ph	π.χ. 18, 20, 26…
-kot_show_shop	Όνομα μαγαζιού
-kot_hide_shop	Απόκρυψη μαγαζιού
-kot_show_time	Ώρα
-kot_hide_time	Απόκρυψη ώρας
-kot_show_waiter	Ταμίας
-kot_hide_waiter	Απόκρυψη ταμία
-kot_show_station	Σταθμός
-kot_hide_station	Απόκρυψη σταθμού
-kot_show_table	Ταμείο
-kot_hide_table	Απόκρυψη τραπεζιού
-kot_show_kot_no	Εισιτήριο Αρ
-kot_hide_kot_no	Απόκρυψη εισιτηρίου αρ
-kot_width	Αναδίπλωση προεπισκόπησης (ορίστε το πλάτος περιεχομένου στην καρτέλα του δελτίου)
-kot_width_58	58 mm
-kot_width_80	80 mm
-kot_kind_heading	Είδος εισιτηρίου
-kot_kind_original	Πρωτότυπο
-kot_kind_duplicate	Αντίγραφο
-kot_kind_modified	Τροποποιημένο
-kot_kind_cancelled	Ακυρώθηκε
-kot_style_heading	Μέγεθος και βάρος πεδίου
-kot_style_title	Τίτλος
-kot_style_item_qty	Είδος · Ποσ.
-kot_style_field_pick	Επιλογή πεδίου
 kot_weight_regular	Κανονικό
 kot_weight_bold	Έντονο
-kot_align	Στοίχιση
 kot_align_start	Έναρξη
 kot_align_center	Κέντρο
 kot_align_end	Τέλος
 content_width	Πλάτος περιεχομένου (mm)
 content_width_bill	Πλάτος περιεχομένου λογαριασμού (mm)
-content_width_kot	Πλάτος περιεχομένου εισιτηρίου (mm)
 content_width_ph	Ή γράψτε πλάτος περιεχομένου, 40–210 mm
 content_width_help	Πόσο φαρδύ έχει αυτό το δελτίο. Ο Bill διατηρεί το δικό του πλάτος.
 content_width_bill_help	Πόσο πλάτος εκτυπώνεται ο λογαριασμός του πελάτη. Προεπιλογή 210 mm (σελίδα). Στενή ολίσθηση 58 mm, ολίσθηση πλάτους 80 mm, 4 ίντσες 112 mm, πλάτος A4 210 mm. Πληκτρολογήστε οποιαδήποτε τιμή από 40 έως 210. Τα εισιτήρια έχουν το δικό τους πλάτος στην καρτέλα του δελτίου.
-content_width_kot_help	Πόσο φαρδιά τυπώνει το εισιτήριο. Προεπιλογή 80 χλστ. Στενή ολίσθηση 58 mm, ολίσθηση πλάτους 80 mm, σελίδα 4 ιντσών 112 mm, σελίδα 210 mm. Πληκτρολογήστε οποιαδήποτε τιμή από 40 έως 210. Οι λογαριασμοί πελατών έχουν το δικό τους πλάτος στην καρτέλα Bill.
 vp_paper_width	Πλάτος περιεχομένου (mm)
 vp_paper_width_ph	Ή γράψτε πλάτος περιεχομένου, 40–210 mm
 vp_paper_width_help	Το πλάτος περιεχομένου ορίζεται στη μορφή Bill & Slip — ξεχωριστά για τον λογαριασμό (προεπιλογή 210 mm) και το εισιτήριο (προεπιλογή 80 mm).
-kot_size	Μέγεθος γραμμάτων
-kot_size_s	Μικρό
-kot_size_m	Κανονικό
-kot_size_l	Μεγάλο
 std_size	Μέγεθος γραμμάτων
 kot_copies	Αντίγραφα
 kot_copies_1	1
 kot_copies_2	2
 kot_copies_3	3
-kot_title_ph	Τίτλος (κενός = ΕΙΣΙΤΗΡΙΟ)
-kot_footer_ph	Σημείωση back-office (προαιρετικό)
-kot_preview	Προεπισκόπηση
-save_kot_format	Αποθήκευση μορφής δελτίου
-test_kot_format	Δοκιμαστική εκτύπωση
-test_kot_sent	Εστάλη προεπισκόπηση εισιτηρίου
 test_bill_format	Δοκιμαστικός λογαριασμός
 test_bill_sent	Η προεπισκόπηση λογαριασμού στάλθηκε
 test_print_no_printer	Δεν υπάρχει εκτυπωτής για εκείνη την εργασία — διαλέξτε έναν σε αυτή την οθόνη
-kot_format_saved	Αποθηκεύτηκε η μορφή του δελτίου
 std_print	Μέγεθος εκτύπωσης λογαριασμού
 std_print_help	Μέγεθος γραμματοσειράς για εργασίες λογαριασμών Standard Portrait και Landscape σε εκτυπωτές OS / εγγράφων (εισαγωγή σημείων — όχι Μικρές/Κανονικές/Μεγάλες). Ίδιο μέγεθος και στους δύο προσανατολισμούς.
 std_size_s	Μικρό
@@ -1211,23 +962,16 @@ upi_qr	UPI QR
 show_upi_qr	Εμφάνιση UPI QR
 close_upi_qr	Κλείσιμο
 upi_qr_help	Ο πελάτης σαρώνει και πληρώνει. Πατήστε Λήψη πληρωμής αφού πληρώσουν. Δεύτερη οθόνη: ανοίξτε τη διεύθυνση URL διακομιστή /εμφάνιση στο LAN.
-kot_recall	Ανάκληση
 recently_done	Πρόσφατα ολοκληρωμένα
-recall_kot_ph	Εισιτήριο # για ανάκληση
 role_help_customer	Ρόλος: Πελάτης — khata (μας χρωστούν). Ο ίδιος συναλλασσόμενος μπορεί και να προμηθεύει απόθεμα.
 role_help_both	Ρόλοι: Πελάτης + Προμηθευτής — ένας συναλλασσόμενος, καθολικά khata και πληρωτέων, καθαρό στις Αναφορές.
 role_help_supplier	Ρόλος: Προμηθευτής — τους χρωστάμε για αγορές.
-dine_in_pick_table	Δεν χρησιμοποιείται σε πάγκο
-choose_table	Επιλέξτε μετρητή
-change_table	Αλλαγή τραπεζιού
-pick_table_banner	Διαλέξτε τραπέζι για αυτή την παραγγελία
 items_word	είδη
 items_section	Είδη
 back_to_order	Πίσω στην παραγγελία
 new_items_head	Δεν στάλθηκε ακόμη
 price_ph	Τιμή
 price_ph_gst_inside	Τιμή ({tax} μέσα στην τιμή)
-cancel_needs_table	Οι πωλήσεις γκισέ παραμένουν στο εισιτήριο μέχρι να πληρώσετε
 tax_rates_missing_hint	Δεν υπάρχει συντελεστής {tax} σε αυτά τα είδη — σε στοιχεία που έχουν οριστεί Φορολογικός συντελεστής (οι τιμές περιλαμβάνουν ήδη {tax} κάτω από {tax})
 taxable_value	Φορολογητέα αξία
 gst_inside_price_note	({tax} μέσα στην τιμή)
@@ -1248,30 +992,11 @@ client_template_confirm	Προσθήκη στοιχείων {d} από το {tit
 client_template_importing	Εισαγωγή {title}…
 client_template_done	Κάθε στοιχείο από το {title} βρίσκεται στα στοιχεία σας.
 client_template_imported	Προστέθηκαν στοιχεία {d} και κατηγορίες {c} από το {title}
-resv_heading	Κρατήσεις
-resv_name_ph	Όνομα πελάτη
-resv_phone_ph	Τηλέφωνο (προαιρετικό)
-resv_guests_ph	Ανθρωποι
-resv_when_ph	Πότε — 20:30, αύριο 13:00
-resv_table_ph	Μετρητής (προαιρετικό)
-resv_add	Κράτηση
-resv_seat	Κάθισαν
-resv_none	Δεν υπάρχουν επερχόμενες κρατήσεις.
-guests_word	επισκέπτες
-delivery_by_ph	Διανομή από (όνομα διανομέα ή προσωπικού)
-kitchen_all_day	Για μαγείρεμα τώρα: {items}
-split_bill	Διαχωρισμός λογαριασμού
-split_go	Δημιουργία ξεχωριστού λογαριασμού
 cancel	Ακύρωση
 opening_client	Άνοιγμα client…
 preparing_desk	Ετοιμασία γραφείου…
 opening_server	Άνοιγμα server…
 creating_server	Δημιουργία server…
-split_help	Πατήστε τα στοιχεία για τα οποία πληρώνει ένας πελάτης · Επιλέχτηκε {n}
-split_send_first	Στείλτε πρώτα το δελτίο — μόνο τα στοιχεία που έχει το back office μπορούν να μεταφερθούν σε ξεχωριστό λογαριασμό
-split_pick_some	Αγγίξτε πρώτα τα στοιχεία για τον ξεχωριστό λογαριασμό
-split_done	Έγινε ξεχωριστός λογαριασμός — βρίσκεται στο πάτωμα δίπλα σε αυτόν τον πάγκο
-split_marked	ξεχωριστός λογαριασμός
 order_empty_pick	Παραγγελία κενή — πατήστε Προσθήκη στοιχείων παραπάνω για να επιλέξετε στοιχεία.
 add_dishes	Προσθήκη στοιχείων
 order_so_far	Σε αυτή την παραγγελία: {n} · {total}
@@ -1282,24 +1007,8 @@ pick_done_dd	Έτοιμο · {label}
 printer_route_mode	Αν υπάρχουν πολλοί εκτυπωτές σε αυτή τη θέση
 printer_mode_first	Ο πρώτος που δουλεύει
 printer_mode_all	Εκτύπωση σε όλους
-kot_show_area	Χώρος
-kot_hide_area	Απόκρυψη χώρου
-kot_show_item_hdr	Είδος · Ποσ.
-kot_hide_item_hdr	Απόκρυψη στηλών
-kot_show_title	Γραμμή τίτλου
-kot_hide_title	Απόκρυψη τίτλου
-kot_field_order	Σειρά εκτύπωσης
 kot_field_up	Μετακίνηση πάνω
 kot_field_down	Μετακίνηση κάτω
-kot_field_cycle	Επιλογή επόμενου
-kot_field_select	Επιλογή επόμενου
-kot_field_time	Ώρα
-kot_field_kot_no	Εισιτήριο Αρ
-kot_field_area	Χώρος
-kot_field_table	Ταμείο
-kot_field_shop	Όνομα μαγαζιού
-kot_field_waiter	Προσωπικό
-kot_field_station	Σταθμός
 app_template_blurb_extra	Επίσης: Ιδιοκτήτης Zahir, Admin Asif, Cashier Nawaz. μπροστινή πλαϊνή μπάρα? ιστορικό μετά από 4 ώρες? Σήμερα strip off? συμπαγής λογαριασμός.
 dishes_n	Στοιχεία {n}
 recipe_ph	Συνταγή (προαιρετικό — αχρησιμοποίητο σε πάγκο)
@@ -1309,8 +1018,6 @@ low_stock_alert	Τελειώνει — αγοράστε σύντομα: {items}
 unpriced_note	Τα στοιχεία {n} στα στοιχεία σας δεν έχουν ακόμη τιμή — χρεώνονται στο 0 μέχρι να ορίσετε ένα.
 show_unpriced	Εμφάνιση μόνο στοιχείων χωρίς τιμή
 show_all_dishes	Εμφάνιση όλων των στοιχείων
-role_waiter	Ταμίας
-role_kitchen	Κατάστημα
 role_title_rest_ph	Τίτλος ρόλου (π.χ. Captain, Αρχιμάγειρας)
 preset_help_rest	Ταμίας: πώληση. Διευθυντής: πώληση + είδη + ακύρωση/διόρθωση.
 kind_raw	Αγοράστηκε για χρήση από κατάστημα

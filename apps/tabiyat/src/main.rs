@@ -24,9 +24,8 @@ use kumkaj_tabiyat::{
 use snack::SnackKind;
 
 use domain::{
-    new_id, AttachmentEntity, Cart, CartLine, Customer, DiningTable, KotStatus, Money, MoneyLane,
-    MoneyMoveKind, OrderType, PayMethod, Product, Sale, SaleRevision, StaffFeatures, StaffMember,
-    StaffRole, VenueMode,
+    new_id, AttachmentEntity, Cart, Customer, Money, MoneyLane, MoneyMoveKind, PayMethod, Product,
+    Sale, SaleRevision, StaffFeatures, StaffMember, StaffRole,
 };
 use fiscal::{FiscalSettings, TaxPricing};
 use locale::{LanguageSource, LocaleSettings, CURRENCIES, LANGUAGES};
@@ -102,7 +101,7 @@ include!("helpers.rs");
 include!("popup.rs");
 include!("selection_menu.rs");
 include!("focus_chain.rs");
-include!("widgets/product_menu_floor.rs");
+include!("widgets/product_menu.rs");
 include!("widgets/report_sidebar.rs");
 include!("widgets/pick_lists.rs");
 include!("helpers_books.rs");
@@ -127,7 +126,6 @@ include!("shell_tests/nav_order_tests.rs");
 include!("shell_tests/order_desk_tests.rs");
 include!("shell_tests/ux_rules_tests.rs");
 include!("shell_tests/menu_window_tests.rs");
-include!("shell_tests/floor_tests.rs");
 include!("shell_tests/info_help_layout_tests.rs");
 include!("shell_tests/sheet_press_tests.rs");
 include!("shell_tests/popup_tests.rs");

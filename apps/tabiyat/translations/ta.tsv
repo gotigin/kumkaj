@@ -80,28 +80,6 @@ applied	பயன்படுத்திய
 note_ph	குறிப்பு (விருப்பம்)
 rounded	வட்டம்
 split	பிரி
-send_kot	சீட்டு அனுப்பு
-send_kot_to	அனுப்பு → {kitchens}
-send_kot_again	அடுத்த சீட்டுக்குப் பொருட்களைச் சேர்
-send_kot_held	நிறுத்திய பொருட்கள் — அனுப்ப நிறுத்தத்தை நீக்கு
-reprint_kot	தேர்ந்தவை மீண்டும் அச்சிடு
-reprint_kot_ok	{n} பொருட்கள் மீண்டும் அச்சிடப்பட்டன · {slips} சீட்டுகள் → {kitchens}
-reprint_kot_needed	முதலில் சீட்டை அனுப்பவும் — பிறகு மருந்துகளைச் சேர்த்து தேர்ந்தவற்றை மீண்டும் அச்சிடவும்
-reprint_kot_none_selected	அனுப்பிய ஒவ்வொரு பொருளும் தவிர்க்கப்பட்டது — மீண்டும் அச்சிட வேண்டியவற்றில் «அச்சில்» தட்டவும்
-reprint_kot_client	{place}-க்கு மீண்டும் அச்சிடு ({n}) அனுப்பப்பட்டது — கடைச் சாதனம் அச்சிடும்
-print_cancelled_kot	ரத்து அனைத்தும் அச்சிடு
-print_cancelled_kot_ok	{n} ரத்தான பொருட்கள் அச்சிடப்பட்டன · {slips} சீட்டுகள் → {kitchens}
-print_cancelled_kot_needed	முதலில் ரத்தான பொருட்கள் உள்ள மேசையைத் திறக்கவும்
-print_cancelled_kot_none	இந்த ஆர்டரில் ரத்தான பொருட்கள் இல்லை
-print_cancelled_kot_client	{place}-க்கு ரத்து அச்சிடு ({n}) அனுப்பப்பட்டது — கடைச் சாதனம் அச்சிடும்
-kot_banner	பேனர்
-kot_banner_ph	பேனர் (வெற்று = இல்லை)
-kot_item_prefix	உருப்படி முன்னொட்டு
-kot_item_prefix_ph	எ.கா. [CANCELLED] 
-kot_strike	பொருள் பெயரை அடித்துவிடு
-kot_strike_note	பொருள் குறிப்பை அடித்துவிடு
-kot_strike_on	ஆன்
-kot_strike_off	ஆஃப்
 bill_item_layout	உருப்படி அமைப்பு
 bill_item_layout_columns	நெடுவரிசை
 bill_item_layout_stacked	வரிகள்
@@ -130,8 +108,6 @@ bill_item_gap_em	இடைவெளி (em)
 bill_item_qty_min	எண்ணிக்கை குறைந்தபட்சம் (em)
 bill_item_price_min	விலை குறைந்தபட்சம் (em)
 bill_item_amount_min	தொகை குறைந்தபட்சம் (em)
-kot_item_qty_width	எண்ணிக்கை நெடுவரிசை
-kot_item_num_align	எண் சீரமைப்பு
 bill_total_qty_label	மொத்த எண் லேபிள்
 bill_total_subtotal_label	துணை மொத்த லேபிள்
 bill_total_grand_label	மொத்த லேபிள்
@@ -143,36 +119,9 @@ bill_item_piece_off	ஆஃப்
 bill_total_qty	மொத்த எண்ணிக்கை
 bill_total_subtotal	துணை மொத்தம்
 bill_total_grand	மொத்தம்
-reprint_incl	அச்சில்
-reprint_skip	தவிர்
-reprint_skip_meta	மீட்பு அச்சு தவிர்
-kot_dest_hint	அமைப்புகள் → அச்சுப்பொறிகளில் {kitchens}-க்கு ஒதுக்கிய அச்சுப்பொறிகளில் அச்சிடும்
-kot_sent_hint	கடைசியாக {kitchens}-க்குச் சென்றது. அடுத்த பில்லுக்குப் பொருட்களைச் சேர்க்கத் தட்டவும் — அல்லது அதற்கே சீட்டை மீண்டும் அச்சிடவும்.
-kot_sent_printing	சீட்டு {kitchens}க்கு அனுப்பப்பட்டது — அச்சிடுகிறது
-kot_sent_not_printed	சீட்டு {kitchens}-க்கு அனுப்பப்பட்டது ஆனால் அச்சாகவில்லை: {why}. கடைக்குச் சொல்லி, அச்சுப்பொறியைச் சரிசெய்து மீண்டும் அச்சிடவும்.
-kot_sent_screen	சீட்டு {kitchens}-க்கு அனுப்பப்பட்டது
-kot_queued_shop	{place} சீட்டு → {kitchens} சேமிக்கப்பட்டது; கடைச் சாதனம் அச்சிடும்
-kot_job_label	{place} சீட்டு → {kitchens}
-kot_job_reached	{place} சீட்டு {kitchens}-ஐ அடைந்தது
 kot_unassigned	ஒதுக்கப்படாதவை
-kot_unassigned_held	நிலையமில்லாத {n} பொருட்கள் நிறுத்தத்தில் — அனுப்ப வரியில் நிறுத்தத்தை நீக்கவும்
-kot_station_ph	நிலையம்
-kot_station_dd	நிலையம்
-kot_station_dd_n	நிலையம் · {stations}
-kot_set_station	இந்த நிலையத்தைப் பயன்படுத்து
-kot_station_applied	{n} பொருட்களுக்கு நிலையம் அமைக்கப்பட்டது: {station}
-kot_station_cleared	{n} பொருட்களிலிருந்து நிலையம் நீக்கப்பட்டது: {station}
-kot_station_needed	முதலில் மருந்தகப் பிரிவைத் தேர்வுசெய்யவும்
-kot_station_not_allowed	இந்தப் பிரிவைப் பயன்படுத்த அனுமதி இல்லை: {station}
-kot_station_none	இன்னும் நிலையங்கள் இல்லை — கவுண்டர் கடையில் தேவையில்லை (தேவைப்பட்டால் அமைப்புகள் → பகுதிகள்)
 pos_tab_items	சேர்க்கப்பட்டவை
 pos_tab_payment	கட்டணம்
-hold_send	நிறுத்து
-hold_send_on	நிறுத்தம்
-hold_send_meta	நிறுத்தம் — இந்தச் சீட்டில் இல்லை
-station_remove	நிலையத்தை நீக்கு
-station_remove_ph	நீக்க பட்டியலில் ஒரு நிலையத்தைத் தட்டவும்
-station_removed	நிலையம் நீக்கப்பட்டது: {name}
 settings_hub_title	அமைப்புகள்
 settings_hub_help	ஒரு நேரத்தில் ஒரு பகுதியைத் திறக்கவும் — குறைந்த உருட்டல், தெளிவான தேர்வுகள்.
 settings_back	பின்செல்
@@ -181,12 +130,10 @@ settings_sec_country	நாடு & வரி
 settings_sec_tills	கூடுதல் கவுண்டர்கள் & கிளைகள்
 settings_sec_brand	உங்கள் பிராண்ட்
 settings_sec_units	அலகுகள் & மாற்றங்கள்
-settings_sec_pickers	பகுதிகள் · நிலையங்கள் · வரி விகிதங்கள்
+settings_sec_pickers	வரி விகிதங்கள்
 settings_sec_printers	அச்சுப்பொறிகள்
 settings_sec_bill	பில் மற்றும் சீட்டு வடிவம்
 settings_sec_selling	திட்டங்கள் & விற்பனை
-bill_kot_tab_bill	பில்
-bill_kot_tab_kot	சீட்டு
 settings_sec_alerts	அறிவிப்புகள்
 alerts_help	நிலைச் செய்திகள் உங்களுக்குத் திரையில் எவ்வளவு நேரம் இருக்க வேண்டும் (இந்த உள்நுழைவுக்கு).
 snack_secs_ph	விநாடிகள் (3–60, இயல்பு 10)
@@ -237,8 +184,6 @@ counter	கவுண்டர்
 dine_in	கவுண்டர்
 takeaway	பார்சல்
 order	ஆர்டர்
-tables	கவுண்டர்கள்
-kitchen	பிரிவு
 sales	விற்பனை
 sales_refunds	விற்பனை மற்றும் திரும்ப
 day_close	நாள் முடிவு
@@ -266,10 +211,6 @@ zero_sales_on	சுழிய விற்பனை: ஆன்
 zero_sales_off	சுழிய விற்பனை: ஆஃப்
 zero_sales_saved_on	சுழிய விற்பனை அனுமதி சேமிக்கப்பட்டது (ஆன்)
 zero_sales_saved_off	சுழிய விற்பனை அனுமதி சேமிக்கப்பட்டது (ஆஃப்)
-floor_areas_help	பகுதிகள் என்பவை தளத்தில் உள்ள அறைகள் அல்லது மண்டலங்கள் (Dine In, Parcel, AC …). முதலில் ஒரு பகுதியைச் சேர்த்து, பிறகு அதில் கவுண்டர்களை வைக்கவும் — ஒவ்வொரு பகுதியும் தளத்தில் தனிக் குழு.
-area_new_ph	புதிய பகுதி / அறை (எ.கா. AC, Garden)
-add_area	பகுதி சேர்
-area_added	பகுதி “{name}” தயார் — அதில் கவுண்டர்களைச் சேர்க்கவும்
 no_favorites	இன்னும் பிடித்தவை இல்லை — கீழே உள்ள பட்டியலிலிருந்து பொருட்களைச் சேர்க்கவும்.
 add_to_bill	பில்லில் சேர்
 added	சேர்க்கப்பட்டது
@@ -280,19 +221,9 @@ chip_missing_customer	தேர்ந்த வாடிக்கையாளர
 chip_no_customer	இன்னும் வாடிக்கையாளர் இல்லை — பெயரை எழுதி, பின் Credit ஐத் தட்டவும்
 credit_summary_fmt	{} வாடிக்கையாளர்கள் · திறந்த கடன் {} · முன்பணம் {}
 recent_label	சமீபத்தியவை:
-kot_new_waiting	புதியது — காத்திருக்கிறது
-kot_preparing	தயாராகிறது
-kot_ready_serve	தயார் — பரிமாறவும்
-kot_done_cap	முடிந்தது
-kot_cancelled	ரத்து செய்யப்பட்டது
-kot_start_btn	தொடங்கவும்
-kot_mark_ready	தயார் எனக் குறிக்கவும்
-kot_done_btn	முடிந்தது
-table_free	காலி — ஆர்டரைத் தொடங்க தட்டவும்
 start_order	ஆர்டரைத் தொடங்கவும்
 open_bill	பில்லைத் திறக்கவும்
 collect_payment	பணம் வசூலிக்கவும்
-table_running	நடந்து கொண்டிருக்கிறது
 payment_pending	பணம் நிலுவையில்
 collect_at_counter	கவுண்டரில் வசூலிக்கவும்
 inventory	கையிருப்பு
@@ -325,7 +256,6 @@ ok	சரி
 this_shop	சேவையக முறை
 extra_till	கிளையன்ட் முறை
 off	முடக்கு
-tables_kitchen	கடை அமைப்பு
 server	சேவையகம்
 client	கிளையன்ட்
 language_currency	மொழி மற்றும் நாணயம்
@@ -367,8 +297,6 @@ add_item_plain	பொருள் சேர்
 add_note	குறிப்பு சேர்
 add_opening_balance	தொடக்க இருப்பு சேர்
 add_staff	ஊழியர் சேர்
-add_station	நிலையம் சேர்
-add_table	மேசை சேர்
 add_unit	அலகு சேர்
 add_use_name	இந்தப் பெயரைச் சேர் / பயன்படுத்து
 allow_extra_tills	கூடுதல் கவுண்டர்களை அனுமதி
@@ -421,7 +349,6 @@ share_whatsapp	வாட்ஸ்அப் பகிர்
 lan_pages_heading	Wi‑Fi-இல் வாடிக்கையாளர் பக்கங்கள்
 lan_pages_help	இந்தக் கடையின் Wi‑Fi-இல் வாடிக்கையாளர் பக்கங்கள் காட்சிப் பலகை மற்றும் கருத்துக்காக வேலை செய்யும். மொபைல் தரவில் உள்ளவர்களுக்குப் பின்னர் Cloud தேவை. அட்டை முனையம் அல்லது கட்டண இணைப்பு விருப்பம், கவுண்டரை ஒருபோதும் தடுக்காது.
 diag_send_heading	இந்தச் சாதனத்திலிருந்து பகிர்
-kot_dest_heading	நிலையம்
 optional_login_heading	விருப்ப உள்நுழைவு
 rights_heading	உரிமைகள்
 ops_panel	உள்ளூர் பணி
@@ -448,28 +375,6 @@ till_voucher_amt_ph	வவுச்சர் தொகை (காலி = அன
 till_wallet_topup_ph	வாலட் டாப்-அப் தொகை
 till_voucher_issue_amt_ph	புதிய வவுச்சர் தொகை
 till_voucher_issue_code_ph	புதிய வவுச்சர் குறியீடு
-split_evenly	சமமாகப் பிரி
-waitlist	காத்திருப்புப் பட்டியல்
-fire_course	அடுத்த படி
-hold_item	நிறுத்து
-waiter_call	காசாளரை அழை
-waitlist_add	காத்திருப்புப் பட்டியலில் சேர்
-floor_view_grid	கிரிட்
-floor_view_layout	லேஅவுட்
-floor_layout_x	X
-floor_layout_y	Y
-floor_layout_w	W
-floor_layout_h	H
-floor_layout_save	லேஅவுட்டைச் சேமி
-floor_layout_open	மேசையைத் திற
-floor_layout_edit	லேஅவுட் திருத்து
-floor_layout_pick	லேஅவுட் திருத்த மேசையைத் தட்டவும்
-floor_layout_saved	அமைப்பு சேமிக்கப்பட்டது
-floor_layout_nudge_left	← 20
-floor_layout_nudge_right	→ 20
-floor_layout_nudge_up	↑ 20
-floor_layout_nudge_down	↓ 20
-sibling_pickers_help	யூனிட் போல On/Off — பகுதிகள், நிலையங்கள், வரி விகிதங்களை தினசரி தேர்வில் மறைக்க; பேக் இயல்புகள் இருக்கும்.
 bulk_price_apply	மொத்த விலையைப் பயன்படுத்து
 card_terminal_optional	கார்டு முனையம் / பேமெண்ட் இணைப்பு (இணையம் இருந்தால் விருப்பத்தேர்வு)
 copy_report	அறிக்கையை நகல்
@@ -495,7 +400,6 @@ import_day	நாளை இறக்குமதி செய்
 import_items_csv_plain	பொருட்கள் CSV இறக்குமதி…
 import_parties_csv	தரப்புகள் CSV இறக்குமதி…
 item_name	பொருளின் பெயர்
-kitchen_printing	சமையலறை அச்சு
 login_id_ph	உள்நுழைவு ஐடி
 mark_cleared	தீர்ந்ததாகக் குறி
 new_party_clear	புதிய தரப்பு (படிவத்தை அழி)
@@ -565,15 +469,6 @@ show	காட்டு
 spreadsheet_csv	விரிதாள் (CSV)
 start_fresh	புதிதாகத் தொடங்கு
 stop_extra_tills	கூடுதல் கவுண்டர்களை நிறுத்து
-floor_cols_ph	நெடுவரிசைகள்
-floor_cols_fit	திரைக்கு ஏற்ப
-floor_cols_fit_sub	இங்கே {n} அடங்கும்
-floor_cols_fits	அடங்கும்
-floor_cols_scroll	பக்கவாட்டு உருட்டல்
-floor_cols_min	நெடுவரிசைகள்: குறைந்தது 1 — அல்லது திரைக்கு ஏற்ப அமைய காலியாக விடுங்கள்
-floor_zoom_auto	தானாக
-floor_zoom_out	சிறிதாக்கு
-floor_zoom_in	பெரிதாக்கு
 backup_auto	ஒவ்வொரு நாளும் தானாக காப்புப்பிரதி · கடைசி {when} · கடைசி 14 நாட்கள் {dir} இல் வைக்கப்படுகின்றன.
 backup_auto_none	ஒவ்வொரு நாளும் தானாக காப்புப்பிரதி — முதலாவது விரைவில் இயங்கும்.
 backup_copy_to	நகல்கள் {dir} க்கும் செல்கின்றன.
@@ -591,7 +486,6 @@ new_pair_code	புதிய இணைப்புக் குறியீட�
 pair_finishing	இணைப்பு முடிகிறது… கடையின் புத்தகங்கள் பயன்படுத்தப்படுகின்றன
 pair_opening	டில் திறக்கப்படுகிறது…
 pair_copied	இணைப்புக் குறியீடு நகலெடுக்கப்பட்டது
-kot_waiting	அனுப்பக் காத்திருக்கிறது
 lan_offline_waiting	ஆஃப்லைன் · {n} காத்திருக்கின்றன
 lan_connecting	கடையுடன் இணைக்கிறது…
 lan_live	நேரலை
@@ -633,7 +527,6 @@ printers_routes_help	இயக்க முறைமைக்கு ஏற்க
 printer_assign_dd	{place} அச்சுப்பொறி தேர்வு
 printer_assign_pick	உண்மை அச்சுப்பொறி தேர்வு
 printer_profile_heading	லேஅவுட்
-printer_send_heading	டெலிவரி
 vp_delivery_heading	டெலிவரி
 vp_delivery_help	இந்த மெய்நிகர் அச்சுப்பொறி வேலைகளை எப்படி அனுப்பும் — OS ஆவணம், மூல பைட்டுகள் அல்லது ESC/POS. சீட்டு உள்ளடக்கம் (எழுத்து அளவு, மடிப்பு, ஓரங்கள்) பில் / சீட்டு வடிவத்தால் முடிவாகும், இங்கே அல்ல.
 vp_type_size_heading	எழுத்து அளவு
@@ -677,23 +570,13 @@ virtual_draft_send	அடுத்த மெய்நிகர் அச்ச�
 virtual_need_real	முதலில் உண்மை அச்சுப்பொறியைத் தேர்வு செய்யுங்கள்
 virtual_need_select	நீக்க மெய்நிகர் அச்சுப்பொறியைத் தேர்வு செய்யுங்கள்
 real_printer_selected	உண்மை அச்சுப்பொறி: {name}
-station_group_heading	மெய்நிகர் அச்சுப்பொறிகள்
-station_group_apply	மெய்நிகர் அச்சுப்பொறியை நீக்கு
-station_group_applied	நீக்கப்பட்டது
-station_group_empty	மெய்நிகர் அச்சுப்பொறியைத் தேர்வு செய்யுங்கள்
-station_group_name_ph	மெய்நிகர் அச்சுப்பொறி பெயர் (விருப்பம்)
-station_group_save	மெய்நிகர் அச்சுப்பொறி உருவாக்கு
-station_group_saved	மெய்நிகர் அச்சுப்பொறி சேமிக்கப்பட்டது
-station_manage_heading	மருந்தகப் பிரிவைச் சேர் அல்லது நீக்கு
 printers_routes_heading	2. எங்கே அச்சிட
 route_pick_heading	இடம்
 route_editing	திருத்துகிறது: {name}
 route_assigned	{printer} {place}-இல் சேர்க்கப்பட்டது
 route_already_assigned	இந்த இடத்தில் ஏற்கனவே: {printer}
-route_removed	{printer} {place}-இலிருந்து நீக்கப்பட்டது
 route_cleared	{name} அழிக்கப்பட்டது
 route_assigned_empty	இந்த இடத்தில் ஏதுமில்லை
-route_tap_remove	நீக்கத் தட்டவும்
 route_tap_select	தேர்வு செய்யத் தட்டவும்
 route_tap_selected	தேர்ந்தெடுக்கப்பட்டது
 route_pick_printer_first	முதலில் ஒரு அச்சுப்பொறியைத் தட்டவும்
@@ -714,35 +597,17 @@ printer_format_custom	புதிய தனிப்பயன் வடிவ�
 printer_format_custom_label	தனிப்பயன்
 printer_format_custom_added	இந்த வழிக்குத் தனிப்பயன் வடிவம் சேர்க்கப்பட்டது
 add_printer	அச்சுப்பொறி சேர்
-remove_printer	கடைசியை நீக்கு
 route_pick_ph	பில் அல்லது மருந்தகப் பிரிவு
 route_bill	பில்
-route_default_kitchen	நிலையம் இல்லை (ஒதுக்கப்படாத பொருட்கள்)
-route_kot_station	நிலையம்
 route_dont_print	அச்சிட வேண்டாம்
-stations_heading	நிலையங்கள்
-stations_help	மருந்தகப் பிரிவுகள் மருந்துகளையும் கடையின் அந்தப் பகுதியின் அச்சுப்பொறிகளையும் ஒன்றாக வைத்திருக்கும். அமைப்புகள் → அச்சுப்பொறிகளிலிருந்து அச்சுப்பொறிகளை இணைத்து, முயற்சி வரிசையை அமைத்து, பிறகு முதலில் வேலை செய்வது அல்லது அனைத்திலும் அச்சிடு. மாற்றங்கள் உடனுக்குடன் சேமிக்கப்படும்.
-station_print_heading	இந்த நிலையத்தின் அச்சுப்பொறிகள்
-station_print_help	ஒரு நிலையத்தைத் தேர்வுசெய்து, ஒன்று அல்லது அதற்கு மேற்பட்ட அச்சுப்பொறிகளை இணைக்கவும். ↑↓ முயற்சி வரிசையை அமைக்கும். முதலில் வேலை செய்வது முதல் வெற்றியில் நிற்கும்; அனைத்திலும் அச்சிடு இணைத்த ஒவ்வொரு அச்சுப்பொறிக்கும் அனுப்பும்.
-station_print_pick_ph	அச்சுப்பொறி அமைக்க நிலையம்
 station_print_pick_first	முதலில் மருந்தகப் பிரிவைத் தேர்வுசெய்யவும்
-station_print_editing	“{name}” அச்சுப்பொறிகளைத் திருத்துதல்
-station_vps_dd	இந்த நிலையத்தின் அச்சுப்பொறிகள்
-station_vps_dd_n	{n} அச்சுப்பொறி · மாற்ற தட்டவும்
 station_vps_empty	அச்சுப்பொறி இல்லை — அமைப்புகள் → அச்சுப்பொறிகளில் கண்டுபிடியுங்கள்
 bill_printers_dd	பில் அச்சுப்பொறிகள்
 bill_printers_dd_n	பில்லுக்கு {n} அச்சுப்பொறிகள் · மாற்றத் தட்டவும்
-job_layout	லேஅவுட்
-job_delivery	வேலை எப்படி அனுப்பப்படுகிறது
-job_delivery_help	OS ஆவணம், மூல பைட்டுகள் அல்லது ESC/POS. பில்லும் சீட்டும் தங்களுடையதை வைத்திருக்கும். எந்த வேலையும் தேடு சேமித்த எந்த அச்சுப்பொறிக்கும் செல்லலாம்.
 station_vp_attached	அச்சுப்பொறி இணைக்கப்பட்டது
 station_vp_detached	நிலையத்திலிருந்து அச்சுப்பொறி நீக்கப்பட்டது
-station_print_summary	{mode} · {n} அச்சுப்பொறி
-station_print_summary_none	இந்த நிலையத்தில் அச்சுப்பொறி இல்லை — அச்சிடாது
-stations_none	இன்னும் நிலையங்கள் இல்லை — கீழே ஒன்று சேர்க்கவும். கவுண்டர் கடையில் நிலையங்கள் தேவையில்லை — காலியாக விடவும்.
 route_up	மேலே
 route_down	கீழே
-route_remove	கடைசியை நீக்கு
 route_clear	அச்சிட வேண்டாம்
 save_printers	அச்சுப்பொறிகளைச் சேமி
 print_test_page	சோதனைப் பக்கம் அச்சிடு
@@ -751,23 +616,15 @@ test_page_no_printer	{place}க்கு அச்சுப்பொறி இ�
 test_page_pick_first	முதலில் சோதனை அச்சுப்பொறிகளைத் தேர்வு செய்யுங்கள் — பிறகு சோதனைப் பக்கம் அச்சிடுங்கள்
 test_printers_dd	சோதனைப் பக்க அச்சுப்பொறிகள்
 test_printers_dd_n	{n} சோதனை அச்சுப்பொறி · மாற்றத் தட்டவும்
-kot_test_printers_dd	சோதனை அச்சுக்கான அச்சுப்பொறிகள்
-kot_test_printers_dd_n	சோதனை அச்சுக்கு {n} அச்சுப்பொறிகள் · மாற்றத் தட்டவும்
 test_printer_picked	சோதனை: {name}
 test_printer_cleared	சோதனை இல்லை: {name}
 test_page_sent_n	சோதனைப் பக்கம் {n} அச்சுப்பொறிக்கு அனுப்பப்பட்டது
-test_kot_pick_first	முதலில் சோதனை அச்சுக்கு அச்சுப்பொறிகளைத் தேர்வுசெய்யவும் — பிறகு சோதனை அச்சு
-test_kot_sent_n	சோதனை அச்சு {n} அச்சுப்பொறிகளுக்கு அனுப்பப்பட்டது
-cancel_pick	குறி
-cancel_pick_on	குறிக்கப்பட்டது
-cancel_pick_meta	ரத்துக்கு குறிக்கப்பட்டது
 batch_cancel	குறித்ததை ரத்து செய்
 batch_cancel_n	குறித்ததை ரத்து ({n})
 batch_cancel_none	முதலில் அனுப்பிய ஒன்று அல்லது பல பொருட்களைக் குறிக்கவும் — பிறகு குறித்தவற்றை ரத்துசெய்
 batch_cancel_title	குறியிட்ட மருந்துகள் ரத்து — ஒரு காரணம், ஒவ்வொரு பிரிவுக்கும் ஒரு சீட்டு
 batch_cancel_ok	{n} பொருட்கள் ரத்து · {slips} ரத்துச் சீட்டுகள் → {kitchens}
 batch_cancel_ok_noprint	{n} பொருட்கள் ரத்து — தானியங்கு அச்சு முடக்கத்தில், எனவே ரத்துச் சீட்டு இல்லை
-no_printer_kitchen_station	அந்த நிலையத்துக்கு அச்சுப்பொறி இல்லை
 printers_saved	இந்தச் சாதனத்தின் அச்சுப்பொறிகள் சேமிக்கப்பட்டன
 test_page_sent	சோதனைப் பக்கம் அனுப்பப்பட்டது — அச்சுப்பொறியைப் பாருங்கள்
 test_page_sent_one	சோதனைப் பக்கம் {name}-க்கு அனுப்பப்பட்டது — அந்த அச்சுப்பொறியைப் பாருங்கள்
@@ -783,10 +640,7 @@ cancelled	ரத்து
 printers_tap_find	அச்சுப்பொறிகளைக் கண்டுபிடி அழுத்தவும் — கணினி அச்சுப்பொறிகளும் இந்த Wi‑Fi-இன் பிணைய ரசீது அச்சுப்பொறிகளும் பட்டியலாகும்.
 printers_none_found	அச்சுப்பொறிகள் இல்லை — கணினி அச்சுப்பொறி பெயர் அல்லது பிணைய முகவரி எழுதுங்கள் (எ.கா. 192.168.1.50).
 printer_from_find	{name} சேர்க்கப்பட்டது
-kot_printer_ph	சீட்டு அச்சுப்பொறி
 bill_printer_ph	பில் அச்சுப்பொறி
-kot_print_on	சீட்டுகள் தானாக அச்சிடல்: இயக்கம்
-kot_print_off	சீட்டுகள் தானாக அச்சிடல்: முடக்கம்
 queue_refused	கடை ஏற்கவில்லை ({n}) — ஒவ்வொன்றையும் கவுண்டரில் சரிபார்க்கவும்:
 clear_not_accepted	சரிபார்த்தேன் — இந்தப் பட்டியலை அழி
 device_name_ph	இந்தச் சாதனத்தின் பெயர்
@@ -797,7 +651,6 @@ backup_failed	கடைசி தானியங்கு காப்புப�
 backup_overdue	{n} நாட்களாகக் காப்புப்பிரதி இல்லை — காப்புப்பிரதி எடுக்க இந்தச் சாதனத்தில் செயலியைத் திறந்து வைக்கவும்.
 disk_low	இந்தச் சாதனத்தில் {mb} MB மட்டுமே காலியாக உள்ளது — விரைவில் காப்புப்பிரதிகள் தோல்வியடையும். கொஞ்சம் இடத்தைக் காலி செய்யவும்.
 last_seen_devices	கடைசியாகக் காணப்பட்டது: {time}
-sync_interval	ஒவ்வொரு {secs} விநாடிக்கும் ஒத்திசைவு
 connection_to_shop	கடையுடன் இணைப்பு
 supplier_name_ph	சப்ளையர் பெயர் (அல்லது தரப்பு)
 supplier_ph	சப்ளையர்
@@ -860,7 +713,6 @@ fresh_book_tabiyat	அச்சுப்பொறிகள்
 fresh_selected	Fresh தேர்ந்தது — பட்டியல் காலியாக இருக்கும். தயாரானதும் Done ஐத் தட்டவும்.
 gross_word	மொத்த விற்பனை
 how_start	எப்படித் தொடங்க விரும்புகிறீர்கள்?
-kot_print_help_tabiyat	KOT அனுப்பப்படும்போது — கவுண்டரிலிருந்தோ அல்லது பணியாளரின் சாதனத்திலிருந்தோ — சமையலறை காகிதம் இங்கே தானாகவே அச்சாகும்.
 later_country_pack	அச்சுப்பொறிகள்
 local_badge	உள்ளூர்
 mix_type_hint_tabiyat	தேவைப்பட்டால் ரொக்கம் / UPI / அட்டை / கடன் எனப் பிரிக்கவும். கடனுக்கு மேலே வாடிக்கையாளர் தேவை.
@@ -911,8 +763,6 @@ staff_copy_need_source	யாருடைய அமைப்பை நகலெ�
 staff_copy_same	அது அதே நபர் — வேறொருவரைத் தேர்வுசெய்யவும்
 staff_rename_need_selected	முதலில் யாருடைய பெயரை மாற்றுவது எனத் தேர்வுசெய்யவும்
 team_pick_hint	யாரைத் திருத்துவது எனத் தேர்வுசெய்யவும் — திரைகள், பண உரிமைகள், நிலையங்கள் அந்த நபருக்கு மட்டுமே தோன்றும்.
-team_stations_help	அவர்கள் பயன்படுத்தக்கூடிய நிலையங்கள்
-team_stations_changed	நிலையங்கள் மாறின — இந்த நபரின் அமைப்பைச் சேமிக்கவும்
 team_features_changed	திரைகள் மாறின — இந்த நபரின் அமைப்பைச் சேமிக்கவும்
 team_rights_changed	உரிமைகள் மாறின — இந்த நபரின் அமைப்பைச் சேமிக்கவும்
 they_owe_us	அவர்கள் எங்களுக்குத் தர வேண்டியது
@@ -996,9 +846,6 @@ service_pct_ph	சேவை % விருப்பம் 0/10/12
 short_code_ph	குறுகிய குறியீடு (MG02)
 starting_password_ph	தொடக்க கடவுச்சொல் (விருப்பம்)
 starting_pin_ph	தொடக்க PIN (4–12 இலக்கங்கள்)
-station_name_ph	நிலையப் பெயர் (விருப்பம்)
-station_new_ph	பிரிவு (விருப்பம்)
-table_name_ph	கவுண்டர் / அறைப் பெயர்
 tax_rate_ph	வரி விகிதப் பெயர் அல்லது % — Standard, Reduced, 0, 5, 12, 18, 20
 to_code_ph	க்கு குறியீடு (kg)
 uncleared_no_ph	மேலே உள்ள தீர்க்கப்படாத #
@@ -1011,27 +858,8 @@ book_kind_month	இந்த மாத புத்தகம்
 book_kind_aging	நிலுவை / பற்று-வரவு
 book_kind_balance	இருப்புநிலைக் குறிப்பு
 order_help	திறந்த ஆர்டரைத் தேர்ந்தெடுக்கவும், அல்லது மேசையைத் தேர்ந்தெடுத்து புதியதைத் தொடங்கவும். தயார் பொருட்களைத் தட்டவும், KOT அனுப்பவும், ஒன்று அல்லது அதற்கு மேற்பட்ட பொருட்களுக்கு பில் போடவும், பில்லைப் பிரிக்கவும், பணம் செலுத்தவும்.
-floor_help	இந்தக் கடை கவுண்டரில் விற்கிறது. மேசைகளும் உணவருந்தும் தளமும் Tabiyat-இன் பகுதி அல்ல.
-kitchen_help	KOT அனுப்பப்படும்போது — கவுண்டரிலிருந்தோ அல்லது பணியாளரின் சாதனத்திலிருந்தோ — சமையலறை காகிதம் இங்கே தானாகவே அச்சாகும்.
-kitchen_empty	திறந்த சீட்டுகள் இல்லை (கவுண்டர் கடைகள் பொதுவாக இந்தத் திரையைப் பயன்படுத்துவதில்லை).
-add_a_table	மேசையைச் சேர்க்கவும்
-add_station_heading	பிரிவைச் சேர் · எ.கா. OTC, குளிர்சாதனம், கவுண்டர்
 categories_help	வகை ஒரு உணவு எந்த மெனு பகுதியைச் சேர்ந்தது என்பதைக் காட்டுகிறது — எ.கா. சிற்றுண்டி, முதன்மை உணவு அல்லது பிரியாணி. வகைகளை உங்கள்வழியில் உருவாக்கவும்: நாங்கள் பரிந்துரைக்கும் பெயர்களைத் தேர்ந்தெடுக்கவும், மறுபெயரிடவும் அல்லது உங்களுடையதைச் சேர்க்கவும்.
 dish_search_ph	பெயர், உப்பு அல்லது பார்கோடைத் தேடு…
-tile_free	காலி
-tile_occupied	பிஸி
-tile_food_ready	உணவு தயார்
-tile_bill_printed	பில் அச்சானது
-tile_paid	செலுத்தப்பட்டது
-tile_bill_btn	பில்
-tile_occupy_btn	விருந்தினரை அமர்த்து
-tile_free_btn	மேசையை காலி செய்
-tile_ready_btn	தயார்
-tile_undo_bill	பில் ரத்து
-summary_busy	மேசைகள் பிஸி
-summary_to_collect	வசூலிக்க
-summary_on_floor	தளத்தில்
-floor	கடை
 sizes_as_items_ph	அளவுகள் தனிப் பொருட்களாக (விருப்பம்) — Half=120, Full=200
 dish_group_ph	வலிமை / பொதிக் குழு (விருப்பம்) — எ.கா. 500mg அட்டை
 discount	தள்ளுபடி
@@ -1039,7 +867,6 @@ remove_discount	தள்ளுபடியை நீக்கு
 apply_discount	தள்ளுபடி செய்
 save_opening_cash	தொடக்கப் பணத்தைச் சேமி
 close_shift_print	ஷிஃப்டை முடித்து சீட்டு அச்சிடு
-area_prices_ph	பகுதி விலைகள் (விருப்பம்) — AC=220, Parcel=210
 discount_ph	10% அல்லது 50
 discount_reason_ph	காரணம் (எ.கா. வழக்கமான விருந்தினர், உணவு தாமதம்)
 opening_float_ph	இன்று காலை டிராயரில் வைத்த பணம்
@@ -1049,34 +876,18 @@ shift_handover	ஷிஃப்ட் ஒப்படைப்பு
 shift_since	இந்த ஷிஃப்ட் தொடக்கம்
 expected_in_drawer	டிராயரில் இருக்க வேண்டியது
 right_discount	தள்ளுபடி வழங்குதல்
-floor_in_kitchen	நடைபெறுகிறது
-floor_eating	சாப்பிடுகிறார்கள்
 pick_category	வகையைத் தேர்ந்தெடு
 close_category_list	வகைப் பட்டியலை மூடு
 new_category_row	புதிய வகை — பொருளைச் சேமிக்கும்போது உருவாகும்
 your_category	உங்கள் வகை
 suggested_category	பரிந்துரை — எங்கள் பொருட்களிலிருந்து
 category_search_ph	வகை — உங்களுடையதைத் தேடுங்கள் அல்லது புதியதை எழுதுங்கள்
-line_sent_state	அனுப்பியது
-line_nc_state	இலவசம் (NC) — கட்டணம் இல்லை
 cancel_item_short	ரத்து
-nc_short	இலவசம்
-charge_again_short	கட்டணம்
-move_short	மாற்று
 cancel_item_title	இந்தப் பொருளை ரத்துசெய் — பின் அலுவலகத்துக்கு ரத்துச் சீட்டு கிடைக்கும்
-nc_item_title	இந்தப் பொருளை இலவசமாக்கு (NC)
-charge_again_title	இந்தப் பொருளுக்கு மீண்டும் கட்டணம்
-move_item_title	இந்தப் பொருளை வேறு மேசைக்கு மாற்று
-already_cooked	ஏற்கனவே சமைக்கப்பட்டது (வீணாகும்)
-not_cooked_yet	இன்னும் சமைக்கவில்லை
 return_to_customer	வாடிக்கையாளருக்குத் திருப்பிக் கொடு
 short_by	குறைவு
 tip_not_sale	டிப் (ஊழியருக்கு, விற்பனை அல்ல)
 right_settle	பணம் பெறுதல்
-right_cancel_sent	அனுப்பிய பொருளை ரத்து செய்தல்
-right_complimentary	இலவசமாக வழங்குதல் (NC)
-right_move_table	கவுண்டர்களை நகர்த்து / இணை
-right_reprint	பில்லை மீண்டும் அச்சிடுதல்
 right_allowed	அனுமதி உண்டு
 right_with_approval	ஒப்புதலுடன்
 right_denied	அனுமதி இல்லை
@@ -1086,25 +897,11 @@ no_server_found	சர்வர் கிடைக்கவில்லை. க�
 servers_found_pick	நீங்கள் இணைக்க விரும்பும் கடையைத் தட்டவும்.
 server_host_selected	{host} பயன்படுகிறது — இணைப்புக் குறியீட்டை உள்ளிட்டு, இப்போது இணை என்பதைத் தட்டவும்.
 print_bill	பில் அச்சிடு
-table_actions	கவுண்டர் செயல்கள்
-move_merge_table	மேசை மாற்று / இணை
-move_help	இந்தக் கவுண்டரின் ஆர்டரை காலி மேசைக்கு நகர்த்தவும், அல்லது நடந்துகொண்டிருப்பதில் இணைக்கவும்.
-move_target_ph	கவுண்டர் பெயர்
 approval_pin_ph	மேலாளர் PIN (கேட்டால் மட்டும்)
-move_here	இங்கு மாற்று
-merge_into	இதனுடன் இணை
-line_reason_ph	காரணம் (எ.கா. வாடிக்கையாளர் மனம் மாறினார், இருப்பு இல்லை)
-line_qty_ph	எத்தனை ரத்து (காலி = அனைத்தும்)
-line_target_ph	மேசைக்கு மாற்று (எ.கா. D5)
 confirm	உறுதிசெய்
 menu_search_ph	பொருள் அல்லது குறுக்குக் குறியீடு தேடு
 customer_paid_ph	வாடிக்கையாளர் கொடுத்தது
 tip_ph	டிப்
-table_area_ph	பகுதி (எ.கா. உணவருந்தல், பார்சல், AC)
-table_range_ph	ஒரே நேரத்தில் பல: D1-D20
-add_these_tables	இந்தக் கவுண்டர்களைச் சேர்
-remove_these_tables	இந்தக் கவுண்டர்களை நீக்கு
-table_remove_ph	நீக்கு: T1-T24, அல்லது ஒரு மேசையின் பெயர்
 find_server	கடையின் சர்வரைக் கண்டுபிடி
 bill_format	பில் வடிவம்
 bill_format_help	ஒவ்வொரு பில்லிலும் உங்கள் கடைப் பெயருக்குக் கீழே அச்சாகும். வரிகளை | கொண்டு பிரிக்கவும் (எ.கா. MG Road, Rajkot | Ph 98250 00000).
@@ -1112,78 +909,32 @@ bill_header_ph	முகவரி | தொலைபேசி
 fssai_ph	மருந்து உரிம எண் (விருப்பம் — உங்கள் சொற்களில்)
 bill_footer_ph	அடிக்குறிப்பு (எ.கா. நன்றி, மீண்டும் வருக)
 save_bill_format	பில் வடிவத்தைச் சேமி
-kot_format	சீட்டு வடிவம்
-kot_format_help	பட்டியலில் ஒரு புலத்தைத் தட்டவும். காட்டு, எழுத்து அளவு, தடிமன் மேலே தேர்ந்த சீட்டு வகையில் அந்தப் புலத்துக்குப் பொருந்தும். ஒவ்வொரு வகையும் தன் அளவுகளையும் தடிமன்களையும் வைத்திருக்கும்.
-kot_format_fields	புலங்கள்
-kot_field_next	அடுத்த புலம்
-kot_field_show	காட்டு
-kot_field_hide	மறை
 kot_field_on	காட்டு
 kot_field_off	மறை
-kot_field_size	எழுத்துரு அளவு
-kot_field_size_ph	எ.கா. 16, 20, 24, 28, 32…
 kot_weight_light	மெல்லிய
 bill_kot_panel_help	பில் அமைப்பு மற்றும் உள்ளடக்க அகலம். காசாளர் என்பவர் பில்லை வழங்கியவர் அல்லது தீர்த்தவர் — முழு விற்பனைக் கதை புத்தகங்களில் இருக்கும்.
 std_size_ph	எ.கா. 18, 20, 26…
-kot_show_shop	கடை பெயர்
-kot_hide_shop	கடையை மறை
-kot_show_time	நேரம்
-kot_hide_time	நேரத்தை மறை
-kot_show_waiter	காசாளர்
-kot_hide_waiter	காசாளரை மறை
-kot_show_station	நிலையம்
-kot_hide_station	நிலையத்தை மறை
-kot_show_table	கவுண்டர்
-kot_hide_table	மேசையை மறை
-kot_show_kot_no	சீட்டு எண்
-kot_hide_kot_no	சீட்டு எண்ணை மறை
-kot_width	முன்னோட்ட மடிப்பு (உள்ளடக்க அகலத்தைச் சீட்டு தாவலில் அமைக்கவும்)
-kot_width_58	58 mm
-kot_width_80	80 mm
-kot_kind_heading	சீட்டு வகை
-kot_kind_original	அசல்
-kot_kind_duplicate	நகல்
-kot_kind_modified	மாற்றப்பட்டது
-kot_kind_cancelled	ரத்து
-kot_style_heading	புல அளவு மற்றும் எடை
-kot_style_title	தலைப்பு
-kot_style_item_qty	உணவு · எண்ணிக்கை
-kot_style_field_pick	புலத்தைத் தேர்வு
 kot_weight_regular	சாதாரண
 kot_weight_bold	தடித்த
-kot_align	சீரமைப்பு
 kot_align_start	தொடங்கவும்
 kot_align_center	நடு
 kot_align_end	முடிவு
 content_width	உள்ளடக்க அகலம் (மிமீ)
 content_width_bill	பில் உள்ளடக்க அகலம் (mm)
-content_width_kot	சீட்டு உள்ளடக்க அகலம் (mm)
 content_width_ph	அல்லது உள்ளடக்க அகலம் எழுதுங்கள், 40–210 மிமீ
 content_width_help	இந்தச் சீட்டு எவ்வளவு அகலத்தில் அச்சாகும். பில் தன் அகலத்தை வைத்திருக்கும்.
 content_width_bill_help	வாடிக்கையாளர் பில் எவ்வளவு அகலத்தில் அச்சாகும். இயல்பு 210 mm (பக்கம்). 58 mm குறுகிய சீட்டு, 80 mm அகலச் சீட்டு, 112 mm 4-அங்குலம், 210 mm A4-அகலம். 40 முதல் 210 வரை எந்த மதிப்பையும் தட்டச்சு செய்யவும். சீட்டுகளுக்குத் தனி அகலம் சீட்டு தாவலில் உள்ளது.
-content_width_kot_help	சீட்டு எவ்வளவு அகலத்தில் அச்சாகும். இயல்பு 80 mm. 58 mm குறுகிய சீட்டு, 80 mm அகலச் சீட்டு, 112 mm 4-அங்குலம், 210 mm பக்கம். 40 முதல் 210 வரை எந்த மதிப்பையும் தட்டச்சு செய்யவும். வாடிக்கையாளர் பில்களுக்குத் தனி அகலம் பில் தாவலில் உள்ளது.
 vp_paper_width	உள்ளடக்க அகலம் (மிமீ)
 vp_paper_width_ph	அல்லது உள்ளடக்க அகலம் எழுதுங்கள், 40–210 மிமீ
 vp_paper_width_help	உள்ளடக்க அகலம் பில் & சீட்டு வடிவத்தில் அமைக்கப்படும் — பில்லுக்கு (இயல்பு 210 mm) மற்றும் சீட்டுக்கு (இயல்பு 80 mm) தனித்தனியாக.
-kot_size	எழுத்து அளவு
-kot_size_s	சிறிய
-kot_size_m	இயல்பு
-kot_size_l	பெரிய
 std_size	எழுத்து அளவு
 kot_copies	நகல்கள்
 kot_copies_1	1
 kot_copies_2	2
 kot_copies_3	3
-kot_title_ph	தலைப்பு (காலி = TICKET)
-kot_footer_ph	பின் அலுவலகக் குறிப்பு (விருப்பம்)
-kot_preview	முன்னோட்டம்
-save_kot_format	சீட்டு வடிவத்தைச் சேமி
-test_kot_format	சோதனை அச்சு
-test_kot_sent	சீட்டு மாதிரி அனுப்பப்பட்டது
 test_bill_format	சோதனை பில்
 test_bill_sent	பில் மாதிரி அனுப்பப்பட்டது
 test_print_no_printer	அந்த வேலைக்கு அச்சுப்பொறி இல்லை — இந்தத் திரையிலேயே ஒன்றைத் தேர்வுசெய்யவும்
-kot_format_saved	சீட்டு வடிவம் சேமிக்கப்பட்டது
 std_print	பில் அச்சு அளவு
 std_print_help	OS / ஆவண அச்சுப்பொறிகளில் நிலையான நீள்வாட்டு மற்றும் அகலவாட்டு பில் வேலைகளுக்கான எழுத்து அளவு (புள்ளிகளை உள்ளிடவும் — சிறிய/இயல்பு/பெரிய அல்ல). இரு திசைகளிலும் அதே அளவு.
 std_size_s	சிறிய
@@ -1223,23 +974,16 @@ upi_qr	UPI QR
 show_upi_qr	UPI QR காட்டு
 close_upi_qr	மூடு
 upi_qr_help	வாடிக்கையாளர் ஸ்கேன் செய்து செலுத்துவார். செலுத்திய பின் கட்டணம் பெறு தட்டவும். இரண்டாவது திரை: LAN-இல் சேவையக URL /display திறக்கவும்.
-kot_recall	மீட்டெடு
 recently_done	சமீபத்தில் முடிந்தவை
-recall_kot_ph	திரும்பப் பெற சீட்டு #
 role_help_customer	பாத்திரம்: வாடிக்கையாளர் — AR (அவர்கள் நமக்குக் கடன்). அதே நிறுவனம் வழங்குநராகவும் இருக்கலாம்.
 role_help_both	பாத்திரங்கள்: அனுப்புநர் + கேரியர் — ஒரு தரப்பு, AR மற்றும் AP புத்தகங்கள், அறிக்கைகளில் நிகரம்.
 role_help_supplier	பாத்திரம்: வழங்குநர் — கொள்வனவுக்கான AP.
-dine_in_pick_table	கவுண்டர் கடையில் பயன்படுத்தப்படாது
-choose_table	கவுண்டரைத் தேர்ந்தெடு
-change_table	மேசையை மாற்று
-pick_table_banner	இந்த ஆர்டருக்கு மேசையைத் தேர்ந்தெடுக்கவும்
 items_word	பொருட்கள்
 items_section	பொருட்கள்
 back_to_order	ஆர்டருக்குத் திரும்பு
 new_items_head	இன்னும் அனுப்பவில்லை
 price_ph	விலை
 price_ph_gst_inside	விலை ({tax} உட்பட)
-cancel_needs_table	கவுண்டர் விற்பனைகள் கட்டணம் பெறும் வரை சீட்டில் இருக்கும்
 tax_rates_missing_hint	இந்தப் பொருட்களுக்கு {tax} விகிதம் இல்லை — பொருட்களில் வரி விகிதத்தை அமைக்கவும் (விலைகள் ஏற்கனவே {tax} சேர்த்தவை, {tax} உள்ளடக்கம் கீழ்)
 taxable_value	வரி விதிப்பு மதிப்பு
 gst_inside_price_note	({tax} உட்பட)
@@ -1260,30 +1004,11 @@ client_template_confirm	{title}-இலிருந்து {d} பொருட�
 client_template_importing	{title} இறக்குமதி…
 client_template_done	{title}-இன் ஒவ்வொரு பொருளும் உங்கள் பொருட்களில் உள்ளது.
 client_template_imported	{title}-இலிருந்து {d} பொருட்கள், {c} வகைகள் சேர்க்கப்பட்டன
-resv_heading	முன்பதிவுகள்
-resv_name_ph	வாடிக்கையாளர் பெயர்
-resv_phone_ph	தொலைபேசி (விருப்பம்)
-resv_guests_ph	நபர்கள்
-resv_when_ph	எப்போது — 20:30, tomorrow 13:00
-resv_table_ph	கவுண்டர் (விருப்பம்)
-resv_add	முன்பதிவு செய்
-resv_seat	அமர்ந்தனர்
-resv_none	வரவிருக்கும் முன்பதிவுகள் இல்லை.
-guests_word	விருந்தினர்
-delivery_by_ph	டெலிவரி செய்பவர் (ரைடர் அல்லது ஊழியர்)
-kitchen_all_day	இப்போது சமைக்க: {items}
-split_bill	பில்லைப் பிரி
-split_go	தனி பில் உருவாக்கு
 cancel	ரத்து
 opening_client	கிளையன்ட் திறக்கப்படுகிறது…
 preparing_desk	மேசை தயாராகிறது…
 opening_server	சேவையகம் திறக்கப்படுகிறது…
 creating_server	சேவையகம் உருவாக்கப்படுகிறது…
-split_help	ஒரு வாடிக்கையாளர் செலுத்தும் பொருட்களைத் தட்டவும் · {n} தேர்வு
-split_send_first	முதலில் சீட்டை அனுப்பவும் — பின் அலுவலகத்தை அடைந்த பொருட்கள் மட்டுமே தனி பில்லுக்குச் செல்லும்
-split_pick_some	முதலில் தனி பில்லுக்கான பொருட்களைத் தட்டவும்
-split_done	தனி பில் உருவானது — அது தளத்தில் இந்தக் கவுண்டருக்கு அருகில் உள்ளது
-split_marked	தனி பில்
 order_empty_pick	ஆர்டர் காலி — பொருட்களைத் தேர்வுசெய்ய மேலே பொருட்களைச் சேர் தட்டவும்.
 add_dishes	மருந்துகளைச் சேர்
 order_so_far	இந்த ஆர்டரில்: {n} · {total}
@@ -1294,24 +1019,8 @@ pick_done_dd	முடிந்தது · {label}
 printer_route_mode	இந்த இடத்தில் பல அச்சுப்பொறிகள் இருந்தால்
 printer_mode_first	முதலில் வேலை செய்வது
 printer_mode_all	அனைத்திலும் அச்சிடு
-kot_show_area	பகுதி
-kot_hide_area	பகுதியை மறை
-kot_show_item_hdr	உணவு · எண்ணிக்கை
-kot_hide_item_hdr	நெடுவரிசைகளை மறை
-kot_show_title	தலைப்பு வரி
-kot_hide_title	தலைப்பை மறை
-kot_field_order	அச்சு வரிசை
 kot_field_up	மேலே நகர்த்து
 kot_field_down	கீழே நகர்த்து
-kot_field_cycle	அடுத்ததைத் தேர்ந்தெடு
-kot_field_select	அடுத்ததைத் தேர்ந்தெடு
-kot_field_time	நேரம்
-kot_field_kot_no	சீட்டு எண்
-kot_field_area	பகுதி
-kot_field_table	கவுண்டர்
-kot_field_shop	கடை பெயர்
-kot_field_waiter	ஊழியர்
-kot_field_station	நிலையம்
 app_template_blurb_extra	மேலும்: உரிமையாளர் ஜாஹிர், நிர்வாகி ஆசிப், காசாளர் நவாஸ்; முன் பக்கப்பட்டி; 4 மணி நேரத்துக்குப் பின் வரலாறு; இன்றைய பட்டை முடக்கம்; சிறிய பில்.
 dishes_n	{n} பொருட்கள்
 recipe_ph	செய்முறை (விருப்பம் — கவுண்டர் கடையில் பயன்படுத்தப்படாது)
@@ -1321,8 +1030,6 @@ low_stock_alert	குறைகிறது — விரைவில் வா�
 unpriced_note	உங்கள் பொருட்களில் {n}-க்கு இன்னும் விலை இல்லை — விலை அமைக்கும் வரை அவை 0-இல் பில்லாகும்.
 show_unpriced	விலையில்லாத பொருட்களை மட்டும் காட்டு
 show_all_dishes	அனைத்துப் பொருட்களையும் காட்டு
-role_waiter	காசாளர்
-role_kitchen	கடை
 role_title_rest_ph	பதவி (எ.கா. கேப்டன், தலைமை சமையல்காரர்)
 preset_help_rest	காசாளர்: விற்கவும். மேலாளர்: விற்க + பொருட்கள் + ரத்து/திருத்தம்.
 kind_raw	கலவை இருப்பு

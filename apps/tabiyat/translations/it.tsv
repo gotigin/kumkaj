@@ -80,28 +80,6 @@ applied	Applicato
 note_ph	Nota (facoltativo)
 rounded	Arrotondato
 split	Dividi
-send_kot	Invia scontrino
-send_kot_to	Invia → {kitchens}
-send_kot_again	Aggiungi articoli per il prossimo scontrino
-send_kot_held	Articoli in attesa — rilascia per inviare
-reprint_kot	Ristampa selezionati
-reprint_kot_ok	Ristampati {n} articoli · {slips} scontrino/i → {kitchens}
-reprint_kot_needed	Invia prima uno scontrino — poi includi medicinali e ristampa quelli scelti
-reprint_kot_none_selected	Gli articoli già inviati si saltano — tocca In stampa su quelli da ristampare
-reprint_kot_client	Ristampa ({n}) per {place} inviata — la stampa il dispositivo del negozio
-print_cancelled_kot	Stampa tutti gli annullati
-print_cancelled_kot_ok	Stampati {n} articoli annullati · {slips} scontrino/i → {kitchens}
-print_cancelled_kot_needed	Apri prima un tavolo con articoli annullati
-print_cancelled_kot_none	Nessun articolo annullato su questo ordine
-print_cancelled_kot_client	Annullati stampati ({n}) per {place} inviati — li stampa il dispositivo del negozio
-kot_banner	Banner
-kot_banner_ph	Banner (vuoto = nessuno)
-kot_item_prefix	Prefisso voce
-kot_item_prefix_ph	es. [CANCELLED] 
-kot_strike	Barra il nome dell'articolo
-kot_strike_note	Barra la nota dell'articolo
-kot_strike_on	Sì
-kot_strike_off	No
 bill_item_layout	Layout voci
 bill_item_layout_columns	Colonne
 bill_item_layout_stacked	Impilato
@@ -130,8 +108,6 @@ bill_item_gap_em	Spazio (em)
 bill_item_qty_min	Qtà min. (em)
 bill_item_price_min	Prezzo min. (em)
 bill_item_amount_min	Importo min. (em)
-kot_item_qty_width	Colonna qtà
-kot_item_num_align	Allineamento qtà
 bill_total_qty_label	Etichetta qtà totale
 bill_total_subtotal_label	Etichetta subtotale
 bill_total_grand_label	Etichetta totale
@@ -143,36 +119,9 @@ bill_item_piece_off	No
 bill_total_qty	Qtà totale
 bill_total_subtotal	Subtotale
 bill_total_grand	Totale
-reprint_incl	In stampa
-reprint_skip	Salta
-reprint_skip_meta	Escludi ristampa
-kot_dest_hint	Stampa sulle stampanti assegnate a {kitchens} in Impostazioni → Stampanti
-kot_sent_hint	L'ultimo invio è andato a {kitchens}. Tocca per aggiungere articoli al conto successivo — o ristampa lo scontrino per lo stesso.
-kot_sent_printing	Scontrino inviato a {kitchens} — stampa
-kot_sent_not_printed	Scontrino inviato a {kitchens} ma NON stampato: {why}. Avvisa il negozio, poi sistema la stampante e ristampa.
-kot_sent_screen	Scontrino inviato a {kitchens}
-kot_queued_shop	Scontrino di {place} → {kitchens} salvato; lo stampa il dispositivo del negozio
-kot_job_label	Scontrino di {place} → {kitchens}
-kot_job_reached	Lo scontrino di {place} è arrivato a {kitchens}
 kot_unassigned	Non assegnato
-kot_unassigned_held	{n} articoli in attesa senza stazione — rilascia sulla riga per inviare
-kot_station_ph	Stazione
-kot_station_dd	Stazione
-kot_station_dd_n	Stazione · {stations}
-kot_set_station	Usa questa stazione
-kot_station_applied	Stazione impostata su {n} articoli: {station}
-kot_station_cleared	Stazione tolta da {n} articoli: {station}
-kot_station_needed	Scegli prima una sezione della farmacia
-kot_station_not_allowed	Sezione non consentita: {station}
-kot_station_none	Ancora nessuna stazione — non si usano in un negozio al banco (Impostazioni → Aree se serve)
 pos_tab_items	Aggiunti
 pos_tab_payment	Pagamento
-hold_send	Metti in attesa
-hold_send_on	In attesa
-hold_send_meta	In attesa — non su questo scontrino
-station_remove	Rimuovi stazione
-station_remove_ph	Tocca una stazione nell'elenco per rimuoverla
-station_removed	Stazione rimossa: {name}
 settings_hub_title	Impostazioni
 settings_hub_help	Apri un'area alla volta — meno scorrimento, scelte più chiare.
 settings_back	Indietro
@@ -181,12 +130,10 @@ settings_sec_country	Paese e tasse
 settings_sec_tills	Casse extra e filiali
 settings_sec_brand	Il tuo marchio
 settings_sec_units	Unità e conversioni
-settings_sec_pickers	Aree · stazioni · aliquote fiscali
+settings_sec_pickers	Aliquote fiscali
 settings_sec_printers	Stampanti
 settings_sec_bill	Formato conto e scontrino
 settings_sec_selling	Schemi e vendite
-bill_kot_tab_bill	Conto
-bill_kot_tab_kot	Scontrino
 settings_sec_alerts	Avvisi
 alerts_help	Quanto restano sullo schermo i messaggi di stato per te (questo accesso).
 snack_secs_ph	Secondi (3–60, predefinito 10)
@@ -237,8 +184,6 @@ counter	Banco
 dine_in	Banco
 takeaway	Asporto
 order	Ordine
-tables	Banchi
-kitchen	Reparto
 sales	Vendite
 sales_refunds	Vendite e rimborsi
 day_close	Chiusura giorno
@@ -266,10 +211,6 @@ zero_sales_on	Vendite zero: attive
 zero_sales_off	Vendite zero: disattivate
 zero_sales_saved_on	Permesso vendite zero salvato (attivo)
 zero_sales_saved_off	Permesso vendite zero salvato (disattivo)
-floor_areas_help	Le aree sono sale o zone del locale (Sul posto, Asporto, AC …). Aggiungi prima un'area, poi mettici i banchi — ogni area è un gruppo a sé.
-area_new_ph	Nuova area / sala (es. AC, Garden)
-add_area	Aggiungi area
-area_added	Area «{name}» pronta — aggiungi i banchi
 no_favorites	Nessun preferito ancora — aggiungi articoli dall'elenco qui sotto.
 add_to_bill	Aggiungi al conto
 added	Aggiunto
@@ -280,19 +221,9 @@ chip_missing_customer	Cliente scelto mancante: scegli di nuovo
 chip_no_customer	Nessun cliente ancora: scrivi un nome e tocca Credito
 credit_summary_fmt	{} clienti · credito aperto {} · anticipi trattenuti {}
 recent_label	Recenti:
-kot_new_waiting	NUOVO — in attesa
-kot_preparing	IN PREPARAZIONE
-kot_ready_serve	PRONTO — da servire
-kot_done_cap	FATTO
-kot_cancelled	ANNULLATO
-kot_start_btn	Avvia
-kot_mark_ready	Segna pronto
-kot_done_btn	Fatto
-table_free	Libero: tocca per iniziare un ordine
 start_order	Inizia ordine
 open_bill	Apri conto
 collect_payment	Incassa
-table_running	In corso
 payment_pending	Pagamento in sospeso
 collect_at_counter	incassa al banco
 inventory	Scorte
@@ -325,7 +256,6 @@ ok	OK
 this_shop	Modalità server
 extra_till	Modalità client
 off	No
-tables_kitchen	Disposizione del negozio
 server	Server
 client	Client
 language_currency	Lingua e valuta
@@ -367,8 +297,6 @@ add_item_plain	Aggiungi articolo
 add_note	Aggiungi nota
 add_opening_balance	Aggiungi saldo iniziale
 add_staff	Aggiungi personale
-add_station	Aggiungi stazione
-add_table	Aggiungi tavolo
 add_unit	Aggiungi unità
 add_use_name	Aggiungi / usa questo nome
 allow_extra_tills	Consenti casse extra
@@ -421,7 +349,6 @@ share_whatsapp	Condividi WhatsApp
 lan_pages_heading	Pagine clienti sul Wi‑Fi
 lan_pages_help	Sul Wi‑Fi di questo negozio, le pagine clienti servono al tabellone e ai commenti. Chi usa i dati mobili avrà bisogno del cloud più avanti. Un terminale carte o un link di pagamento è facoltativo e non blocca mai il banco.
 diag_send_heading	Condividi fuori da questo dispositivo
-kot_dest_heading	Stazione
 optional_login_heading	Accesso facoltativo
 rights_heading	Permessi
 ops_panel	Ops locali
@@ -448,28 +375,6 @@ till_voucher_amt_ph	Importo buono (vuoto = tutto)
 till_wallet_topup_ph	Ricarica portafoglio
 till_voucher_issue_amt_ph	Importo nuovo buono
 till_voucher_issue_code_ph	Codice nuovo buono
-split_evenly	Dividi in parti uguali
-waitlist	Lista d'attesa
-fire_course	Passo successivo
-hold_item	Metti in attesa
-waiter_call	Chiama il cassiere
-waitlist_add	Aggiungi in attesa
-floor_view_grid	Griglia
-floor_view_layout	Pianta
-floor_layout_x	X
-floor_layout_y	Y
-floor_layout_w	W
-floor_layout_h	H
-floor_layout_save	Salva pianta
-floor_layout_open	Apri tavolo
-floor_layout_edit	Modifica pianta
-floor_layout_pick	Tocca un tavolo per modificare la pianta
-floor_layout_saved	Layout salvato
-floor_layout_nudge_left	← 20
-floor_layout_nudge_right	→ 20
-floor_layout_nudge_up	↑ 20
-floor_layout_nudge_down	↓ 20
-sibling_pickers_help	Come unità On/Off: nascondi aree, stazioni e tasse dal selettore giornaliero; i default del pack restano.
 bulk_price_apply	Applica prezzo massivo
 card_terminal_optional	Terminale / link di pagamento (opzionale con internet)
 copy_report	Copia report
@@ -495,7 +400,6 @@ import_day	Importa giorno
 import_items_csv_plain	Importa CSV articoli…
 import_parties_csv	Importa CSV parti…
 item_name	Nome articolo
-kitchen_printing	Stampa cucina
 login_id_ph	Id di accesso
 mark_cleared	Segna compensato
 new_party_clear	Nuova parte (pulisci modulo)
@@ -565,15 +469,6 @@ show	Mostra
 spreadsheet_csv	Foglio di calcolo (CSV)
 start_fresh	Ricomincia da zero
 stop_extra_tills	Ferma casse extra
-floor_cols_ph	Colonne
-floor_cols_fit	Adatta allo schermo
-floor_cols_fit_sub	ne stanno {n}
-floor_cols_fits	ci sta
-floor_cols_scroll	scorre di lato
-floor_cols_min	Colonne: almeno 1 — o lascia vuoto per adattare allo schermo
-floor_zoom_auto	Auto
-floor_zoom_out	Zoom indietro
-floor_zoom_in	Zoom avanti
 backup_auto	Backup automatico ogni giorno · ultimo {when} · gli ultimi 14 giorni sono in {dir}.
 backup_auto_none	Backup automatico ogni giorno: il primo parte tra poco.
 backup_copy_to	Le copie vanno anche in {dir}.
@@ -591,7 +486,6 @@ new_pair_code	Nuovo codice di associazione
 pair_finishing	Associazione in corso… applicazione dei libri del locale
 pair_opening	Apertura della cassa…
 pair_copied	Codice di associazione copiato
-kot_waiting	In attesa di invio
 lan_offline_waiting	Offline · {n} in attesa
 lan_connecting	Connessione al negozio…
 lan_live	Dal vivo
@@ -633,7 +527,6 @@ printers_routes_help	Trova le stampanti che il sistema già conosce. Assegnale a
 printer_assign_dd	Scegli stampante per {place}
 printer_assign_pick	Seleziona stampante reale
 printer_profile_heading	Layout
-printer_send_heading	Invio
 vp_delivery_heading	Invio
 vp_delivery_help	Come questa stampante virtuale invia i lavori — documento del sistema, byte grezzi o ESC/POS. Il contenuto dello scontrino (corpo, a capo, margini) lo decide il formato conto / scontrino, non qui.
 vp_type_size_heading	Corpo del testo
@@ -677,23 +570,13 @@ virtual_draft_send	Valore impostato per la prossima stampante virtuale
 virtual_need_real	Seleziona prima una stampante reale
 virtual_need_select	Seleziona una stampante virtuale da eliminare
 real_printer_selected	Stampante reale: {name}
-station_group_heading	Stampanti virtuali
-station_group_apply	Elimina stampante virtuale
-station_group_applied	Eliminato
-station_group_empty	Seleziona una stampante virtuale
-station_group_name_ph	Nome stampante virtuale (facoltativo)
-station_group_save	Crea stampante virtuale
-station_group_saved	Stampante virtuale salvata
-station_manage_heading	Aggiungi o togli una sezione della farmacia
 printers_routes_heading	2. Dove stampare
 route_pick_heading	Luogo
 route_editing	Modifica: {name}
 route_assigned	Aggiunto {printer} a {place}
 route_already_assigned	Già in questo luogo: {printer}
-route_removed	Rimosso {printer} da {place}
 route_cleared	Pulito {name}
 route_assigned_empty	Nessuna in questo luogo
-route_tap_remove	Tocca per rimuovere
 route_tap_select	tocca per selezionare
 route_tap_selected	selezionato
 route_pick_printer_first	Tocca prima una stampante
@@ -714,35 +597,17 @@ printer_format_custom	Nuovo formato personalizzato
 printer_format_custom_label	Personalizzato
 printer_format_custom_added	Formato personalizzato aggiunto a questo percorso
 add_printer	Aggiungi stampante
-remove_printer	Rimuovi ultimo
 route_pick_ph	Conto o una sezione della farmacia
 route_bill	Conto
-route_default_kitchen	Nessuna stazione (articoli non assegnati)
-route_kot_station	Stazione
 route_dont_print	Non stampare
-stations_heading	Postazioni
-stations_help	Le sezioni della farmacia raggruppano medicinali e le stampanti di quella parte. Collega stampanti da Impostazioni → Stampanti, imposta l'ordine di prova, poi Prima che funzioni o Stampa su tutti. Le modifiche si salvano man mano.
-station_print_heading	Stampanti di questa stazione
-station_print_help	Scegli una stazione, poi collega una o più stampanti. ↑↓ imposta l'ordine di prova. Prima che funzioni si ferma al primo successo; Stampa su tutti manda a ogni stampante collegata.
-station_print_pick_ph	Stazione per impostare le stampanti
 station_print_pick_first	Scegli prima una sezione della farmacia
-station_print_editing	Modifica stampanti di “{name}”
-station_vps_dd	Stampanti di questa stazione
-station_vps_dd_n	{n} stampante/i · tocca per cambiare
 station_vps_empty	Ancora nessuna stampante — trovale in Impostazioni → Stampanti
 bill_printers_dd	Stampanti per il conto
 bill_printers_dd_n	{n} stampante/i per il conto · tocca per cambiare
-job_layout	Layout
-job_delivery	Come viene inviato il lavoro
-job_delivery_help	Documento del sistema, byte grezzi o ESC/POS. Il conto e il ticket tengono ognuno il proprio. Ogni lavoro può andare a qualsiasi stampante salvata da Trova.
 station_vp_attached	Stampante collegata
 station_vp_detached	Stampante rimossa dalla stazione
-station_print_summary	{mode} · {n} stampante/i
-station_print_summary_none	Ancora nessuna stampante su questa stazione: non stamperà
-stations_none	Ancora nessuna stazione — aggiungine una sotto. In un negozio al banco le stazioni non si usano — lascia vuoto.
 route_up	Su
 route_down	Giù
-route_remove	Rimuovi ultimo
 route_clear	Non stampare
 save_printers	Salva stampanti
 print_test_page	Stampa pagina di prova
@@ -751,23 +616,15 @@ test_page_no_printer	Nessuna stampante per {place} — assegnane una sopra, poi 
 test_page_pick_first	Scegli prima le stampanti di prova — poi Stampa pagina di prova
 test_printers_dd	Stampanti per pagina di prova
 test_printers_dd_n	{n} stampante/i di prova · tocca per cambiare
-kot_test_printers_dd	Stampanti per la stampa di prova
-kot_test_printers_dd_n	{n} stampante/i per la stampa di prova · tocca per cambiare
 test_printer_picked	Prova su: {name}
 test_printer_cleared	Non testare su: {name}
 test_page_sent_n	Pagina di prova inviata a {n} stampante/i
-test_kot_pick_first	Scegli prima le stampanti per la stampa di prova — poi Stampa di prova
-test_kot_sent_n	Stampa di prova inviata a {n} stampante/i
-cancel_pick	Segna
-cancel_pick_on	Segnato
-cancel_pick_meta	Segnato per annullare
 batch_cancel	Annulla segnati
 batch_cancel_n	Annulla segnati ({n})
 batch_cancel_none	Segna prima uno o più articoli inviati — poi Annulla segnati
 batch_cancel_title	Annulla i farmaci selezionati — un motivo, uno scontrino per reparto
 batch_cancel_ok	{n} articoli annullati · {slips} scontrino/i di annullo → {kitchens}
 batch_cancel_ok_noprint	{n} articoli annullati — la stampa automatica è spenta, quindi nessuno scontrino di annullo
-no_printer_kitchen_station	Nessuna stampante per quella stazione
 printers_saved	Stampanti salvate per questo dispositivo
 test_page_sent	Pagina di prova inviata — controlla la stampante
 test_page_sent_one	Pagina di prova inviata a {name} — controlla quella stampante
@@ -783,10 +640,7 @@ cancelled	Annullato
 printers_tap_find	Tocca Trova stampanti: elenca quelle di sistema e le stampanti di ricevute di rete su questo Wi‑Fi.
 printers_none_found	Nessuna stampante trovata — digita un nome di sistema o un indirizzo di rete (es. 192.168.1.50).
 printer_from_find	Aggiunto {name}
-kot_printer_ph	Stampante scontrini
 bill_printer_ph	Stampante conti
-kot_print_on	Stampa automatica dei ticket: Sì
-kot_print_off	Stampa automatica dei ticket: No
 queue_refused	Non accettati dal locale ({n}): controlla ognuno alla cassa:
 clear_not_accepted	Controllato — svuota l'elenco
 device_name_ph	Nome di questo dispositivo
@@ -797,7 +651,6 @@ backup_failed	L'ultimo backup automatico non è riuscito: {e}
 backup_overdue	Nessun backup da {n} giorni: tieni l'app aperta su questo dispositivo perché possa farlo.
 disk_low	Restano solo {mb} MB liberi su questo dispositivo: i backup falliranno presto. Libera spazio.
 last_seen_devices	Ultima visualizzazione: {time}
-sync_interval	Sincronizza ogni {secs} secondi
 connection_to_shop	Connessione al locale
 supplier_name_ph	Nome fornitore (o parte)
 supplier_ph	Fornitore
@@ -860,7 +713,6 @@ fresh_book_tabiyat	Stampanti
 fresh_selected	Fresh selezionato — il catalogo resta vuoto. Tocca Done quando sei pronto.
 gross_word	Lordo
 how_start	Come vuoi iniziare?
-kot_print_help_tabiyat	Quando un KOT viene inviato — al banco o dal dispositivo del cameriere — la carta della cucina si stampa qui da sola.
 later_country_pack	Stampanti
 local_badge	LOCALE
 mix_type_hint_tabiyat	Dividi tra contanti / UPI / carta / credito se serve. Il credito richiede un cliente sopra.
@@ -911,8 +763,6 @@ staff_copy_need_source	Scegli la cui configurazione copiare
 staff_copy_same	È la stessa persona — scegli qualcun altro
 staff_rename_need_selected	Seleziona chi rinominare prima
 team_pick_hint	Scegli chi modificare — schermate, diritti sul denaro e stazioni compaiono solo per quella persona.
-team_stations_help	Stazioni che può usare
-team_stations_changed	Stazioni cambiate — salva la configurazione di questa persona
 team_features_changed	Schermate modificate — Salva la configurazione per questa persona
 team_rights_changed	Diritti modificati — Salva la configurazione per questa persona
 they_owe_us	Ci devono
@@ -996,9 +846,6 @@ service_pct_ph	Servizio % facoltativo 0/10/12
 short_code_ph	Codice breve (MG02)
 starting_password_ph	Password iniziale (facoltativo)
 starting_pin_ph	PIN iniziale (4–12 cifre)
-station_name_ph	Nome stazione (facoltativo)
-station_new_ph	Sezione (facoltativa)
-table_name_ph	Nome banco / postazione
 tax_rate_ph	Nome aliquota o % — Standard, Reduced, 0, 5, 12, 18, 20
 to_code_ph	Codice a (kg)
 uncleared_no_ph	N. non compensato sopra
@@ -1011,27 +858,8 @@ book_kind_month	Libro di questo mese
 book_kind_aging	In sospeso / dare-avere
 book_kind_balance	Bilancio
 order_help	Scegli un ordine aperto o un tavolo per iniziarne uno nuovo. Tocca gli articoli pronti, invia il KOT, fattura uno o più articoli, dividi il conto e incassa.
-floor_help	Questo negozio vende al banco. Tavoli e una sala da pranzo non fanno parte di Tabiyat.
-kitchen_help	Quando un KOT viene inviato — al banco o dal dispositivo del cameriere — la carta della cucina si stampa qui da sola.
-kitchen_empty	Nessun ticket aperto (i negozi al banco di solito lasciano questa schermata inutilizzata).
-add_a_table	Aggiungi un tavolo
-add_station_heading	Aggiungi reparto · es. OTC, Frigo, Banco
 categories_help	Una categoria mostra a quale parte del menu appartiene un piatto — ad es. snack, piatto principale o biryani. Crea le categorie a modo tuo: scegli i nostri nomi, rinominali o aggiungi i tuoi.
 dish_search_ph	Cerca nome, sale o codice a barre…
-tile_free	Libero
-tile_occupied	Occupato
-tile_food_ready	Piatto pronto
-tile_bill_printed	Conto stampato
-tile_paid	Pagato
-tile_bill_btn	Conto
-tile_occupy_btn	Fai sedere
-tile_free_btn	Libera tavolo
-tile_ready_btn	Pronto
-tile_undo_bill	Annulla conto
-summary_busy	tavoli occupati
-summary_to_collect	da incassare
-summary_on_floor	in sala
-floor	Negozio
 sizes_as_items_ph	Taglie come articoli separati (facoltativo) — Mezza=120, Intera=200
 dish_group_ph	Gruppo dose / confezione (facoltativo) — es. blister 500 mg
 discount	Sconto
@@ -1039,7 +867,6 @@ remove_discount	Rimuovi sconto
 apply_discount	Applica sconto
 save_opening_cash	Salva fondo cassa
 close_shift_print	Chiudi turno e stampa
-area_prices_ph	Prezzi per zona (facoltativo) — AC=220, Asporto=210
 discount_ph	10% o 50
 discount_reason_ph	Motivo (es. cliente abituale, piatto in ritardo)
 opening_float_ph	Contanti messi in cassa stamattina
@@ -1049,34 +876,18 @@ shift_handover	Cambio turno
 shift_since	Turno dalle
 expected_in_drawer	Atteso in cassa
 right_discount	Fare sconti
-floor_in_kitchen	In corso
-floor_eating	Stanno mangiando
 pick_category	Scegli categoria
 close_category_list	Chiudi elenco categorie
 new_category_row	Nuova categoria — creata al salvataggio
 your_category	La tua categoria
 suggested_category	Suggeriti — dai nostri articoli
 category_search_ph	Categoria — cerca la tua o scrivine una nuova
-line_sent_state	Inviato
-line_nc_state	Omaggio (NC) — non addebitato
 cancel_item_short	Annulla
-nc_short	Omaggio
-charge_again_short	Addebita
-move_short	Sposta
 cancel_item_title	Annulla questo articolo — il retro riceve uno scontrino di annullo
-nc_item_title	Offri questo articolo (NC)
-charge_again_title	Addebita di nuovo questo articolo
-move_item_title	Sposta questo articolo su un altro tavolo
-already_cooked	Già cucinato (spreco)
-not_cooked_yet	Non ancora cucinato
 return_to_customer	Resto al cliente
 short_by	Mancano
 tip_not_sale	Mancia (del personale, non è vendita)
 right_settle	Incassare
-right_cancel_sent	Annullare un articolo inviato
-right_complimentary	Omaggio (NC)
-right_move_table	Sposta / unisci banchi
-right_reprint	Ristampare il conto
 right_allowed	Consentito
 right_with_approval	Con approvazione
 right_denied	Non consentito
@@ -1086,25 +897,11 @@ no_server_found	Nessun server trovato. Verifica che il dispositivo del locale si
 servers_found_pick	Tocca il negozio a cui vuoi collegarti.
 server_host_selected	Usando {host}: inserisci il codice di associazione, poi Associa ora.
 print_bill	Stampa conto
-table_actions	Azioni del banco
-move_merge_table	Sposta / unisci tavolo
-move_help	Sposta l'ordine di questo banco su un tavolo libero, o uniscilo a uno in corso.
-move_target_ph	Nome del banco
 approval_pin_ph	PIN del responsabile (solo se richiesto)
-move_here	Sposta qui
-merge_into	Unisci a quello
-line_reason_ph	Motivo (es. il cliente ha cambiato idea, esaurito)
-line_qty_ph	Quanti annullare (vuoto = tutti)
-line_target_ph	Sposta al tavolo (es. D5)
 confirm	Conferma
 menu_search_ph	Cerca articolo o codice breve
 customer_paid_ph	Il cliente ha dato
 tip_ph	Mancia
-table_area_ph	Zona (es. Sala, Asporto, AC)
-table_range_ph	Più insieme: D1-D20
-add_these_tables	Aggiungi questi banchi
-remove_these_tables	Togli questi banchi
-table_remove_ph	Rimuovi: T1-T24 o il nome di un tavolo
 find_server	Trova il server del locale
 bill_format	Formato del conto
 bill_format_help	Stampato sotto il nome del tuo negozio su ogni conto. Separa le righe con | (es. MG Road, Rajkot | Tel 98250 00000).
@@ -1112,78 +909,32 @@ bill_header_ph	Indirizzo | telefono
 fssai_ph	N. licenza farmaceutica (facoltativo — il tuo testo)
 bill_footer_ph	Piè di pagina (es. Grazie, a presto)
 save_bill_format	Salva formato del conto
-kot_format	Formato scontrino
-kot_format_help	Tocca un campo dell'elenco. Mostra, corpo e peso valgono per quel campo nel tipo di scontrino scelto sopra. Ogni tipo tiene le proprie misure e pesi.
-kot_format_fields	Campi
-kot_field_next	Campo successivo
-kot_field_show	Mostra
-kot_field_hide	Nascondi
 kot_field_on	mostra
 kot_field_off	nascondi
-kot_field_size	Dimensione carattere
-kot_field_size_ph	es. 16, 20, 24, 28, 32…
 kot_weight_light	Leggero
 bill_kot_panel_help	Layout del conto e larghezza del contenuto. Il cassiere è chi ha emesso o incassato il conto — tutta la storia della vendita resta nei libri.
 std_size_ph	es. 18, 20, 26…
-kot_show_shop	Nome negozio
-kot_hide_shop	Nascondi negozio
-kot_show_time	Ora
-kot_hide_time	Nascondi ora
-kot_show_waiter	Cassiere
-kot_hide_waiter	Nascondi cassiere
-kot_show_station	Stazione
-kot_hide_station	Nascondi stazione
-kot_show_table	Banco
-kot_hide_table	Nascondi tavolo
-kot_show_kot_no	N. scontrino
-kot_hide_kot_no	Nascondi n. ticket
-kot_width	Anteprima a capo (imposta la larghezza nella scheda scontrino)
-kot_width_58	58 mm
-kot_width_80	80 mm
-kot_kind_heading	Tipo di ticket
-kot_kind_original	Originale
-kot_kind_duplicate	Duplicato
-kot_kind_modified	Modificato
-kot_kind_cancelled	Annullato
-kot_style_heading	Dimensione e peso del campo
-kot_style_title	Titolo
-kot_style_item_qty	Voce · Qtà
-kot_style_field_pick	Seleziona campo
 kot_weight_regular	Normale
 kot_weight_bold	Grassetto
-kot_align	Allinea
 kot_align_start	Avvia
 kot_align_center	Centra
 kot_align_end	Fine
 content_width	Larghezza contenuto (mm)
 content_width_bill	Larghezza contenuto fattura (mm)
-content_width_kot	Larghezza contenuto del ticket (mm)
 content_width_ph	O digita una larghezza contenuto, 40–210 mm
 content_width_help	Larghezza di questo scontrino. Il conto tiene la sua.
 content_width_bill_help	Larghezza del conto cliente. Predefinito 210 mm (pagina). Scontrino stretto 58 mm, scontrino largo 80 mm, 112 mm (4 pollici), 210 mm larghezza A4. Scrivi un valore da 40 a 210. I ticket hanno la propria larghezza nella scheda scontrino.
-content_width_kot_help	Larghezza del ticket. Predefinito 80 mm. Scontrino stretto 58 mm, scontrino largo 80 mm, 112 mm (4 pollici), 210 mm pagina. Scrivi un valore da 40 a 210. I conti cliente hanno la propria larghezza nella scheda Conto.
 vp_paper_width	Larghezza contenuto (mm)
 vp_paper_width_ph	O digita una larghezza contenuto, 40–210 mm
 vp_paper_width_help	La larghezza del contenuto si imposta in Formato conto e scontrino — a parte per il conto (predefinito 210 mm) e il ticket (predefinito 80 mm).
-kot_size	Corpo del testo
-kot_size_s	Piccolo
-kot_size_m	Normale
-kot_size_l	Grande
 std_size	Corpo del testo
 kot_copies	Copie
 kot_copies_1	1
 kot_copies_2	2
 kot_copies_3	3
-kot_title_ph	Titolo (vuoto = TICKET)
-kot_footer_ph	Nota di retro (facoltativa)
-kot_preview	Anteprima
-save_kot_format	Salva formato scontrino
-test_kot_format	Stampa di prova
-test_kot_sent	Anteprima del ticket inviata
 test_bill_format	Prova fattura
 test_bill_sent	Anteprima fattura inviata
 test_print_no_printer	Nessun stampante per quel lavoro — scegline uno su questa schermata
-kot_format_saved	Formato scontrino salvato
 std_print	Dimensione stampa conto
 std_print_help	Corpo del carattere per conti Verticale standard e Orizzontale su stampanti di sistema / documento (inserisci punti — non Piccolo/Normale/Grande). Stessa misura nei due orientamenti.
 std_size_s	Piccolo
@@ -1223,23 +974,16 @@ upi_qr	UPI QR
 show_upi_qr	Mostra QR UPI
 close_upi_qr	Chiudi
 upi_qr_help	Il cliente scansiona e paga. Tocca Incassa dopo il pagamento. Secondo schermo: apri l'URL del server /display sulla LAN.
-kot_recall	Ripristina
 recently_done	Appena fatti
-recall_kot_ph	N. ticket da richiamare
 role_help_customer	Ruolo: Cliente — AR (ci devono). La stessa ditta può essere anche fornitore.
 role_help_both	Ruoli: Mittente + Vettore — una parte, libri AR e AP, netto nei Report.
 role_help_supplier	Ruolo: Fornitore — AP per gli acquisti.
-dine_in_pick_table	Non si usa in un negozio al banco
-choose_table	Scegli banco
-change_table	Cambia tavolo
-pick_table_banner	Scegli un tavolo per questo ordine
 items_word	articoli
 items_section	Articoli
 back_to_order	Torna all'ordine
 new_items_head	Non ancora inviato
 price_ph	Prezzo
 price_ph_gst_inside	Prezzo ({tax} incluso)
-cancel_needs_table	Le vendite al banco restano sul ticket finché non incassi
 tax_rates_missing_hint	Nessuna aliquota {tax} su questi articoli — in Articoli imposta l'aliquota (i prezzi includono già {tax} sotto {tax} inclusa)
 taxable_value	Imponibile
 gst_inside_price_note	({tax} incluso)
@@ -1260,30 +1004,11 @@ client_template_confirm	Aggiungere {d} articoli da {title}? Quelli che hai già 
 client_template_importing	Importazione di {title}…
 client_template_done	Ogni articolo di {title} è già nei tuoi articoli.
 client_template_imported	Aggiunti {d} articoli e {c} categorie da {title}
-resv_heading	Prenotazioni
-resv_name_ph	Nome cliente
-resv_phone_ph	Telefono (facoltativo)
-resv_guests_ph	Persone
-resv_when_ph	Quando — 20:30, tomorrow 13:00
-resv_table_ph	Banco (facoltativo)
-resv_add	Prenota
-resv_seat	Seduti
-resv_none	Nessuna prenotazione in arrivo.
-guests_word	ospiti
-delivery_by_ph	Consegna di (rider o dipendente)
-kitchen_all_day	Da preparare: {items}
-split_bill	Dividi il conto
-split_go	Crea conto separato
 cancel	Annulla
 opening_client	Apertura cliente…
 preparing_desk	Preparazione bancone…
 opening_server	Apertura cameriere…
 creating_server	Creazione cameriere…
-split_help	Tocca gli articoli che paga un cliente · {n} scelti
-split_send_first	Invia prima lo scontrino — solo gli articoli che il retro già ha possono andare su un conto a parte
-split_pick_some	Tocca prima gli articoli del conto a parte
-split_done	Conto a parte fatto — è in sala accanto a questo banco
-split_marked	conto separato
 order_empty_pick	Ordine vuoto — tocca Aggiungi articoli sopra per scegliere.
 add_dishes	Aggiungi medicinali
 order_so_far	In questo ordine: {n} · {total}
@@ -1294,24 +1019,8 @@ pick_done_dd	Fatto · {label}
 printer_route_mode	Se ci sono più stampanti in questo locale
 printer_mode_first	Prima che funzioni
 printer_mode_all	Stampa su tutti
-kot_show_area	Area
-kot_hide_area	Nascondi area
-kot_show_item_hdr	Voce · Qtà
-kot_hide_item_hdr	Nascondi colonne
-kot_show_title	Riga titolo
-kot_hide_title	Nascondi titolo
-kot_field_order	Stampa ordine
 kot_field_up	Sposta su
 kot_field_down	Sposta giù
-kot_field_cycle	Seleziona successivo
-kot_field_select	Seleziona successivo
-kot_field_time	Ora
-kot_field_kot_no	N. scontrino
-kot_field_area	Area
-kot_field_table	Banco
-kot_field_shop	Nome negozio
-kot_field_waiter	Personale
-kot_field_station	Stazione
 app_template_blurb_extra	Inoltre: Titolare Zahir, Admin Asif, Cassiere Nawaz; barra laterale frontale; cronologia dopo 4 ore; fascia Oggi spenta; conto compatto.
 dishes_n	{n} articoli
 recipe_ph	Ricetta (facoltativa — non si usa in un negozio al banco)
@@ -1321,8 +1030,6 @@ low_stock_alert	Sta finendo — compra presto: {items}
 unpriced_note	{n} articoli dei tuoi articoli non hanno ancora un prezzo — si addebitano a 0 finché non lo imposti.
 show_unpriced	Mostra solo articoli senza prezzo
 show_all_dishes	Mostra tutti gli articoli
-role_waiter	Cassiere
-role_kitchen	Magazzino
 role_title_rest_ph	Ruolo (es. capo sala, capo cuoco)
 preset_help_rest	Cassiere: vendi. Manager: vendi + articoli + annulla/modifica.
 kind_raw	Scorte di preparazione

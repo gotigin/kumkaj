@@ -50,8 +50,6 @@ fn fit_inside_system_bars(&mut self, cx: &mut Cx) {
         }
     }
 
-
-
     /// Makepad caret visibility is `(1 - blink) * focus` from TextInput animators.
     /// Key focus can survive hide/show / list rebind without a new `Hit::KeyFocus`,
     /// so the field stays typable but the caret never blinks. Repair every field
@@ -68,7 +66,6 @@ fn fit_inside_system_bars(&mut self, cx: &mut Cx) {
             ids!(menu_list_search),
             ids!(tendered_input),
             ids!(tip_input),
-            ids!(kot_station_input),
             ids!(frequent_days_input),
             ids!(frequent_limit_input),
             ids!(amend_total_input),
@@ -248,7 +245,6 @@ fn fit_inside_system_bars(&mut self, cx: &mut Cx) {
         }
         let tmpl = store.apply_entity_template("tabiyat_pharmacy")?;
         st.entity_template_id = tmpl.id.to_string();
-        st.venue_mode = VenueMode::Counter;
         Ok(())
     }
 
@@ -393,8 +389,6 @@ fn fit_inside_system_bars(&mut self, cx: &mut Cx) {
             buy_on_account,
         );
         for (idle, on, role) in [
-            (ids!(staff_role_waiter), ids!(staff_role_waiter_on), StaffRole::Waiter),
-            (ids!(staff_role_kitchen), ids!(staff_role_kitchen_on), StaffRole::Kitchen),
         ] {
             self.paint_choice_pair(cx, idle, on, draft_role == role);
         }
@@ -503,101 +497,6 @@ fn fit_inside_system_bars(&mut self, cx: &mut Cx) {
         self.ui
             .widget(cx, ids!(printers_found_list))
             .set_visible(cx, false);
-    }
-
-    /// Kitchen printing panel only — never full `sync_chrome` after Add /
-    /// assign / Remove (that rebuilt all of Settings and froze the UI).
-    ///
-    /// Hard rule (DEV.md bug 7): this paint path must **never** `set_text` a
-    /// Kitchen → Kitchen stations: First/All + attached virtual printers summary.
-    fn paint_station_print_attach(&mut self, cx: &mut Cx) {
-        let (host, name, mode_first, n, summary) = {
-            let st = app_state().lock().unwrap();
-            let host = st.device_role != DeviceRole::Client;
-            let key = st.printer_route_key.clone();
-            let station_id = key.strip_prefix("kot:").unwrap_or("").to_string();
-            let name = if station_id.is_empty() {
-                String::new()
-            } else {
-                st.stations
-                    .iter()
-                    .find(|s| s.id == station_id)
-                    .map(|s| s.name.clone())
-                    .unwrap_or_default()
-            };
-            let route_key = parse_printer_route_key(&key);
-            let mode = st.printer_draft.print_mode_for(route_key);
-            let n = if station_id.is_empty() {
-                0
-            } else {
-                st.printer_draft.route_for(route_key).len()
-            };
-            let summary = if station_id.is_empty() {
-                st.t("station_print_pick_first")
-            } else if n == 0 {
-                st.t("station_print_summary_none")
-            } else {
-                let mode_l = st.t(match mode {
-                    print_share::RoutePrintMode::All => "printer_mode_all",
-                    print_share::RoutePrintMode::First => "printer_mode_first",
-                });
-                st.t("station_print_summary")
-                    .replace("{mode}", &mode_l)
-                    .replace("{n}", &n.to_string())
-            };
-            (
-                host,
-                name,
-                mode == print_share::RoutePrintMode::First,
-                n,
-                summary,
-            )
-        };
-        let has_station = !name.is_empty();
-        if has_station {
-            self.ui
-                .text_input(cx, ids!(station_print_input))
-                .set_text(cx, &name);
-        }
-        self.paint_choice_pair(
-            cx,
-            ids!(station_print_first),
-            ids!(station_print_first_on),
-            host && has_station && mode_first,
-        );
-        self.paint_choice_pair(
-            cx,
-            ids!(station_print_all),
-            ids!(station_print_all_on),
-            host && has_station && !mode_first,
-        );
-        let dd = if !host {
-            app_t("printers_host_only")
-        } else if !has_station {
-            app_t("station_vps_dd")
-        } else {
-            app_t("station_vps_dd_n").replace("{n}", &n.to_string())
-        };
-        let open = {
-            let st = app_state().lock().unwrap();
-            st.suggest_open == Some(SuggestField::StationVps)
-        };
-        let face = if open {
-            app_t("pick_done_dd").replace("{label}", &dd)
-        } else {
-            dd
-        };
-        self.ui.button(cx, ids!(station_vps_dd)).set_text(cx, &face);
-        self.ui
-            .widget(cx, ids!(station_print_summary))
-            .set_text(cx, &plain_display_text(&summary));
-        self.ui
-            .view(cx, ids!(station_print_mode_row))
-            .set_visible(cx, host);
-        self.ui.button(cx, ids!(station_vps_dd)).set_visible(cx, host);
-        self.ui
-            .widget(cx, ids!(station_print_summary))
-            .set_visible(cx, host);
     }
 
     /// Fill+wrap face (Stack*/SegBtn). Place chips and add-printer buttons are
@@ -947,9 +846,7 @@ fn fit_inside_system_bars(&mut self, cx: &mut Cx) {
         self.align_label(cx, ids!(lock_staff_label), rtl);
         self.align_label(cx, ids!(db_path_label), rtl);
         self.align_label(cx, ids!(audit_label), rtl);
-        self.align_label(cx, ids!(table_chip), rtl);
         self.align_label(cx, ids!(session_chip), rtl);
-        self.align_label(cx, ids!(kitchen_empty), rtl);
         self.align_label(cx, ids!(staff_label), rtl);
         self.align_label(cx, ids!(locale_label), rtl);
         self.align_label(cx, ids!(fiscal_label), rtl);
@@ -970,7 +867,6 @@ fn fit_inside_system_bars(&mut self, cx: &mut Cx) {
         self.align_label(cx, ids!(cart_natural_label), rtl);
         self.align_label(cx, ids!(cart_applied_label), rtl);
         self.align_label(cx, ids!(sticky_total), rtl);
-        self.align_label(cx, ids!(kot_dest_help), rtl);
         self.align_label(cx, ids!(cart_charge_caption), rtl);
         self.align_label(cx, ids!(cart_round_hint), rtl);
         self.align_label(cx, ids!(undo_snack_label), rtl);
@@ -1061,7 +957,6 @@ fn fit_inside_system_bars(&mut self, cx: &mut Cx) {
         self.align_label(cx, ids!(h_brand_shown_help), rtl);
         self.align_label(cx, ids!(h_units_help), rtl);
         self.align_label(cx, ids!(h_units_picker_help), rtl);
-        self.align_label(cx, ids!(h_kot_print_help_tabiyat), rtl);
         self.align_label(cx, ids!(h_restore_help), rtl);
         self.align_label(cx, ids!(day_close_help), rtl);
         self.align_label(cx, ids!(inventory_help), rtl);
@@ -1093,7 +988,6 @@ fn fit_inside_system_bars(&mut self, cx: &mut Cx) {
         self.align_label(cx, ids!(h_start_template), rtl);
         self.align_label(cx, ids!(h_your_brand), rtl);
         self.align_label(cx, ids!(h_units_heading), rtl);
-        self.align_label(cx, ids!(h_kitchen_printing), rtl);
         self.align_label(cx, ids!(h_printers), rtl);
         self.align_label(cx, ids!(h_printers_find), rtl);
         self.align_label(cx, ids!(h_printers_pool), rtl);
@@ -1144,13 +1038,9 @@ fn fit_inside_system_bars(&mut self, cx: &mut Cx) {
         self.align_label(cx, ids!(h_stamp), rtl);
         self.align_label(cx, ids!(h_payment_qr), rtl);
         self.align_label(cx, ids!(dev_size_label), rtl);
-        self.align_label(cx, ids!(nav_drag_ghost), rtl);
-        self.align_label(cx, ids!(nav_drag_ghost_label), rtl);
         self.align_label(cx, ids!(setup_server_list), rtl);
         self.align_label(cx, ids!(server_pick_title), rtl);
         self.align_label(cx, ids!(lock_login_title), rtl);
-        self.align_label(cx, ids!(floor_list), rtl);
-        self.align_label(cx, ids!(kitchen_list), rtl);
         self.align_label(cx, ids!(category_list), rtl);
         self.align_label(cx, ids!(sale_list), rtl);
         self.align_label(cx, ids!(amend_cart_list), rtl);
@@ -1166,18 +1056,9 @@ fn fit_inside_system_bars(&mut self, cx: &mut Cx) {
         self.align_input(cx, ids!(amend_total_input), rtl);
         self.align_input(cx, ids!(menu_name_input), rtl);
         for id in [
-            ids!(move_target_input),
-            ids!(move_pin_input),
-            ids!(line_reason_input),
-            ids!(line_qty_input),
-            ids!(line_target_input),
-            ids!(line_pin_input),
             ids!(menu_search_input),
             ids!(tendered_input),
             ids!(tip_input),
-            ids!(table_area_input),
-            ids!(table_range_input),
-            ids!(table_remove_input),
             ids!(bill_header_input),
             ids!(fssai_input),
             ids!(bill_footer_input),
@@ -1188,15 +1069,8 @@ fn fit_inside_system_bars(&mut self, cx: &mut Cx) {
             ids!(staff_name_input),
             ids!(menu_variations_input),
             ids!(menu_group_input),
-            ids!(menu_area_prices_input),
             ids!(menu_recipe_input),
             ids!(inv_reorder_input),
-            ids!(delivery_by_input),
-            ids!(resv_name_input),
-            ids!(resv_phone_input),
-            ids!(resv_guests_input),
-            ids!(resv_when_input),
-            ids!(resv_table_input),
             ids!(discount_input),
             ids!(discount_reason_input),
             ids!(discount_pin_input),
@@ -1206,8 +1080,6 @@ fn fit_inside_system_bars(&mut self, cx: &mut Cx) {
             self.align_input(cx, id, rtl);
         }
         for id in [
-            ids!(move_help),
-            ids!(line_action_title),
             ids!(change_label),
             ids!(h_bill_format),
             ids!(h_bill_format_help),
@@ -1254,10 +1126,6 @@ fn fit_inside_system_bars(&mut self, cx: &mut Cx) {
         self.align_input(cx, ids!(menu_tax_input), rtl);
         self.align_input(cx, ids!(menu_category_input), rtl);
         self.align_input(cx, ids!(menu_modifiers_input), rtl);
-        self.align_input(cx, ids!(menu_station_input), rtl);
-        self.align_input(cx, ids!(kot_station_input), rtl);
-        self.align_input(cx, ids!(station_remove_input), rtl);
-        self.align_input(cx, ids!(settings_station_remove_input), rtl);
         self.align_input(cx, ids!(buy_qty_input), rtl);
         self.align_input(cx, ids!(buy_cost_input), rtl);
         self.align_input(cx, ids!(buy_expense_amount), rtl);
@@ -1271,8 +1139,6 @@ fn fit_inside_system_bars(&mut self, cx: &mut Cx) {
         self.align_input(cx, ids!(payable_bill_input), rtl);
         self.align_input(cx, ids!(settle_amount_input), rtl);
         self.align_input(cx, ids!(settle_bill_input), rtl);
-        self.align_input(cx, ids!(table_name_input), rtl);
-        self.align_input(cx, ids!(station_name_input), rtl);
         self.align_input(cx, ids!(staff_name_input), rtl);
         self.align_input(cx, ids!(staff_title_input), rtl);
         self.align_input(cx, ids!(staff_pin_input), rtl);
@@ -1316,15 +1182,6 @@ fn fit_inside_system_bars(&mut self, cx: &mut Cx) {
         let s = |key: &str| locale::t(&lang, key);
         // Restaurant loop (running table, settle, floor, rights, LAN find).
         for (id, key) in [
-            (ids!(print_bill_btn), "print_bill"),
-            (ids!(print_bill_quick), "print_bill"),
-            (ids!(table_move_btn), "move_merge_table"),
-            (ids!(move_table_go), "move_here"),
-            (ids!(merge_table_go), "merge_into"),
-            (ids!(line_action_back), "back"),
-            (ids!(line_action_go), "confirm"),
-            (ids!(table_range_add), "add_these_tables"),
-            (ids!(table_remove_btn), "remove_these_tables"),
             (ids!(bill_format_save), "save_bill_format"),
             (ids!(bill_format_test), "test_bill_format"),
             (ids!(print_stamp_pick), "choose_stamp"),
@@ -1334,7 +1191,6 @@ fn fit_inside_system_bars(&mut self, cx: &mut Cx) {
             (ids!(scheme_add), "add_scheme"),
             (ids!(show_upi_qr), "show_upi_qr"),
             (ids!(upi_qr_close), "close_upi_qr"),
-            (ids!(recall_kot_btn), "kot_recall"),
             (ids!(discount_toggle), "discount"),
             (ids!(discount_remove), "remove_discount"),
             (ids!(discount_apply), "apply_discount"),
@@ -1361,26 +1217,16 @@ fn fit_inside_system_bars(&mut self, cx: &mut Cx) {
                 .set_text(cx, &s("import_aggregator_file"));
         }
         for (id, key) in [
-            (ids!(move_target_input), "move_target_ph"),
-            (ids!(move_pin_input), "approval_pin_ph"),
-            (ids!(line_reason_input), "line_reason_ph"),
-            (ids!(line_qty_input), "line_qty_ph"),
-            (ids!(line_target_input), "line_target_ph"),
-            (ids!(line_pin_input), "approval_pin_ph"),
             (ids!(menu_search_input), "menu_search_ph"),
             (ids!(printer_target_input), "printer_target_ph"),
             (ids!(tendered_input), "customer_paid_ph"),
             (ids!(tip_input), "tip_ph"),
-            (ids!(table_area_input), "table_area_ph"),
-            (ids!(table_range_input), "table_range_ph"),
-            (ids!(table_remove_input), "table_remove_ph"),
             (ids!(bill_header_input), "bill_header_ph"),
             (ids!(fssai_input), "fssai_ph"),
             (ids!(upi_vpa_input), "upi_vpa_ph"),
             (ids!(upi_payee_input), "upi_payee_ph"),
             (ids!(scheme_bogo_input), "scheme_bogo_ph"),
             (ids!(menu_schedule_input), "schedule_ph"),
-            (ids!(recall_kot_input), "recall_kot_ph"),
             (ids!(bill_footer_input), "bill_footer_ph"),
             (ids!(team_pick_input), "team_pick_ph"),
             (ids!(staff_copy_hire_input), "staff_copy_hire_ph"),
@@ -1389,15 +1235,8 @@ fn fit_inside_system_bars(&mut self, cx: &mut Cx) {
             (ids!(staff_name_input), "staff_name_ph"),
             (ids!(menu_variations_input), "sizes_as_items_ph"),
             (ids!(menu_group_input), "dish_group_ph"),
-            (ids!(menu_area_prices_input), "area_prices_ph"),
             (ids!(menu_recipe_input), "recipe_ph"),
             (ids!(inv_reorder_input), "reorder_ph"),
-            (ids!(delivery_by_input), "delivery_by_ph"),
-            (ids!(resv_name_input), "resv_name_ph"),
-            (ids!(resv_phone_input), "resv_phone_ph"),
-            (ids!(resv_guests_input), "resv_guests_ph"),
-            (ids!(resv_when_input), "resv_when_ph"),
-            (ids!(resv_table_input), "resv_table_ph"),
             (ids!(discount_input), "discount_ph"),
             (ids!(discount_reason_input), "discount_reason_ph"),
             (ids!(discount_pin_input), "approval_pin_ph"),
@@ -1406,12 +1245,7 @@ fn fit_inside_system_bars(&mut self, cx: &mut Cx) {
         ] {
             self.ui.text_input(cx, id).set_empty_text(cx, s(key));
         }
-        self.ui.text_input(cx, ids!(resv_phone_input)).set_empty_text(
-            cx,
-            phone_placeholder(&s("resv_phone_ph"), &country_code),
-        );
         for (id, key) in [
-            (ids!(move_help), "move_help"),
             (ids!(h_bill_format), "bill_format"),
             (ids!(h_bill_format_help), "bill_format_help"),
             (ids!(h_print_brand), "print_brand_kit"),
@@ -1425,13 +1259,10 @@ fn fit_inside_system_bars(&mut self, cx: &mut Cx) {
             (ids!(h_schemes), "schemes"),
             (ids!(upi_qr_help), "upi_qr_help"),
             (ids!(h_rights_help), "rights_help"),
-            (ids!(h_team_stations_help), "team_stations_help"),
             (ids!(team_pick_hint), "team_pick_hint"),
             (ids!(h_opening_float), "opening_float"),
             (ids!(h_shift_close), "shift_handover"),
             (ids!(h_split_payment), "split"),
-            (ids!(h_split_bill), "split_bill"),
-            (ids!(h_move_table), "move_merge_table"),
         ] {
             self.ui.widget(cx, id).set_text(cx, &plain_display_text(&s(key)));
         }
@@ -1439,10 +1270,6 @@ fn fit_inside_system_bars(&mut self, cx: &mut Cx) {
             .widget(cx, ids!(payment_help))
             .as_info_help()
             .set_tip(&plain_display_text(&s("mix_type_hint_tabiyat")));
-        self.ui
-            .widget(cx, ids!(move_table_help))
-            .as_info_help()
-            .set_tip(&plain_display_text(&s("move_help")));
         self.ui
             .widget(cx, ids!(upi_qr_title_help))
             .as_info_help()
@@ -1484,8 +1311,6 @@ fn fit_inside_system_bars(&mut self, cx: &mut Cx) {
         self.ui.widget(cx, ids!(h_permission_preset)).set_text(cx, &plain_display_text(&s("permission_preset")));
         self.ui.widget(cx, ids!(h_preset_help_tabiyat)).set_text(cx, &plain_display_text(&s("preset_help_rest")));
         for (idle, on, key) in [
-            (ids!(staff_role_waiter), ids!(staff_role_waiter_on), "role_waiter"),
-            (ids!(staff_role_kitchen), ids!(staff_role_kitchen_on), "role_kitchen"),
         ] {
             self.ui.button(cx, idle).set_text(cx, &s(key));
             self.ui.button(cx, on).set_text(cx, &s(key));
@@ -1533,7 +1358,6 @@ fn fit_inside_system_bars(&mut self, cx: &mut Cx) {
         self.ui
             .widget(cx, ids!(h_units_picker_help))
             .set_text(cx, &plain_display_text(&s("units_picker_help")));
-        self.ui.widget(cx, ids!(h_kot_print_help_tabiyat)).set_text(cx, &plain_display_text(&s("kot_print_help_tabiyat")));
         self.ui.widget(cx, ids!(h_restore_help)).set_text(cx, &plain_display_text(&s("restore_help")));
         self.ui
             .widget(cx, ids!(h_history_retention))
@@ -1604,8 +1428,6 @@ fn fit_inside_system_bars(&mut self, cx: &mut Cx) {
         self.ui.widget(cx, ids!(h_start_template)).set_text(cx, &plain_display_text(&s("start_template")));
         self.ui.widget(cx, ids!(h_your_brand)).set_text(cx, &plain_display_text(&s("your_brand")));
         self.ui.widget(cx, ids!(h_units_heading)).set_text(cx, &plain_display_text(&s("units_heading")));
-        self.ui.widget(cx, ids!(h_kitchen_printing)).set_text(cx, &plain_display_text(&s("settings_sec_printers")));
-        self.ui.widget(cx, ids!(h_kot_print_help_tabiyat)).set_text(cx, &plain_display_text(&s("kot_print_help_tabiyat")));
         self.ui.widget(cx, ids!(h_printers)).set_text(cx, &plain_display_text(&s("printers_heading")));
         self.ui.widget(cx, ids!(h_printers_help)).set_text(cx, &plain_display_text(&s("printers_help")));
         {
@@ -1633,15 +1455,6 @@ fn fit_inside_system_bars(&mut self, cx: &mut Cx) {
         self.ui
             .widget(cx, ids!(route_assigned_empty))
             .set_text(cx, &plain_display_text(&s("virtual_printers_empty")));
-        self.ui.widget(cx, ids!(station_manage_heading)).set_text(cx, &plain_display_text(&s("station_manage_heading")));
-        self.ui.button(cx, ids!(settings_station_add)).set_text(cx, &s("add_station"));
-        self.ui.button(cx, ids!(settings_station_remove)).set_text(cx, &s("station_remove"));
-        self.ui
-            .text_input(cx, ids!(settings_station_name_input))
-            .set_empty_text(cx, s("station_name_ph"));
-        self.ui
-            .text_input(cx, ids!(settings_station_remove_input))
-            .set_empty_text(cx, s("station_remove_ph"));
         // Find / Add / Remove / Clear / test page are Fill+wrap. Never
         // set_text them — that froze this screen (DEV.md bug 7). DSL labels
         // stay. Cancel is QuietFitBtn (Fit, no wrap).
@@ -1787,14 +1600,10 @@ fn fit_inside_system_bars(&mut self, cx: &mut Cx) {
         self.ui.button(cx, ids!(feat_branches_on)).set_text(cx, &s("branches"));
         self.ui.button(cx, ids!(feat_credit)).set_text(cx, &s("credit"));
         self.ui.button(cx, ids!(feat_credit_on)).set_text(cx, &s("credit"));
-        self.ui.button(cx, ids!(feat_floor)).set_text(cx, &s("floor"));
-        self.ui.button(cx, ids!(feat_floor_on)).set_text(cx, &s("floor"));
         self.ui.button(cx, ids!(feat_inventory)).set_text(cx, &s("inventory"));
         self.ui.button(cx, ids!(feat_inventory_on)).set_text(cx, &s("inventory"));
         self.ui.button(cx, ids!(feat_items)).set_text(cx, &s("items"));
         self.ui.button(cx, ids!(feat_items_on)).set_text(cx, &s("items"));
-        self.ui.button(cx, ids!(feat_kitchen)).set_text(cx, &s("kitchen"));
-        self.ui.button(cx, ids!(feat_kitchen_on)).set_text(cx, &s("kitchen"));
         self.ui.button(cx, ids!(feat_sales)).set_text(cx, &s("sales"));
         self.ui.button(cx, ids!(feat_sales_on)).set_text(cx, &s("sales"));
         self.ui.button(cx, ids!(feat_save)).set_text(cx, &s("save_features"));
@@ -1825,14 +1634,6 @@ fn fit_inside_system_bars(&mut self, cx: &mut Cx) {
         self.ui.text_input(cx, ids!(onboard_org_input)).set_empty_text(cx, s("org_optional_ph"));
         self.ui.button(cx, ids!(onboard_save_venue)).set_text(cx, &s("save_names"));
         self.ui.text_input(cx, ids!(onboard_venue_input)).set_empty_text(cx, s("restaurant_name_ph"));
-        self.ui.button(cx, ids!(otype_counter)).set_text(cx, &s("counter"));
-        self.ui.button(cx, ids!(otype_counter_on)).set_text(cx, &s("counter"));
-        self.ui.button(cx, ids!(otype_delivery)).set_text(cx, &s("delivery"));
-        self.ui.button(cx, ids!(otype_delivery_on)).set_text(cx, &s("delivery"));
-        self.ui.button(cx, ids!(otype_dinein)).set_text(cx, &s("dine_in"));
-        self.ui.button(cx, ids!(otype_dinein_on)).set_text(cx, &s("dine_in"));
-        self.ui.button(cx, ids!(otype_takeaway)).set_text(cx, &s("takeaway"));
-        self.ui.button(cx, ids!(otype_takeaway_on)).set_text(cx, &s("takeaway"));
         self.ui.button(cx, ids!(party_attach_add_note)).set_text(cx, &s("add_note"));
         self.ui.text_input(cx, ids!(party_attach_note)).set_empty_text(cx, s("note_gstin_ph"));
         self.ui.button(cx, ids!(party_attach_pdf)).set_text(cx, &s("attach_pdf"));
@@ -1848,7 +1649,6 @@ fn fit_inside_system_bars(&mut self, cx: &mut Cx) {
         self.ui.button(cx, ids!(receipt_print_btn)).set_text(cx, &s("print_open"));
         self.ui.button(cx, ids!(receipt_share_btn)).set_text(cx, &s("copy_receipt"));
         self.ui.button(cx, ids!(receipt_whatsapp_btn)).set_text(cx, &s("share_whatsapp"));
-        self.ui.button(cx, ids!(waitlist_add)).set_text(cx, &s("waitlist_add"));
         self.ui.button(cx, ids!(bulk_price_apply)).set_text(cx, &s("bulk_price_apply"));
         self.ui
             .widget(cx, ids!(crm_heading))
@@ -1949,32 +1749,13 @@ fn fit_inside_system_bars(&mut self, cx: &mut Cx) {
             .text_input(cx, ids!(till_voucher_issue_code))
             .set_empty_text(cx, s("till_voucher_issue_code_ph"));
         self.ui
-            .widget(cx, ids!(waitlist_heading))
-            .set_text(cx, &plain_display_text(&s("waitlist")));
-        self.ui
-            .widget(cx, ids!(sibling_pickers_help))
-            .set_text(cx, &plain_display_text(&s("sibling_pickers_help")));
-        {
-            let help = self.ui.widget(cx, ids!(floor_help)).as_info_help();
-            help.set_title(cx, &s("floor"));
-            help.set_nav_icon(cx, NavTab::Floor);
-            help.set_tip(&plain_display_text(&s("floor_help")));
-        }
+            .widget(cx, ids!(sibling_pickers_heading))
+            .set_text(cx, &plain_display_text(&s("settings_sec_pickers")));
         {
             let help = self.ui.widget(cx, ids!(settings_lan_help)).as_info_help();
             help.set_title(cx, &s("lan_pages_heading"));
             help.set_tip(&plain_display_text(&s("lan_pages_help")));
         }
-        {
-            let help = self.ui.widget(cx, ids!(kitchen_help)).as_info_help();
-            help.set_title(cx, &s("kitchen"));
-            help.set_nav_icon(cx, NavTab::Kitchen);
-            help.set_tip(&plain_display_text(&s("kitchen_help")));
-        }
-        self.ui
-            .widget(cx, ids!(floor_areas_help))
-            .as_info_help()
-            .set_tip(&plain_display_text(&s("floor_areas_help")));
         self.ui
             .widget(cx, ids!(settings_aggregator_help))
             .as_info_help()
@@ -2011,8 +1792,6 @@ fn fit_inside_system_bars(&mut self, cx: &mut Cx) {
             .widget(cx, ids!(payment_qr_image_help))
             .as_info_help()
             .set_tip(&plain_display_text(&s("payment_qr_image_help")));
-        self.sync_floor_sections(cx);
-        self.sync_order_sections(cx);
         self.sync_device_setup_sections(cx);
         self.ui.button(cx, ids!(refund_btn)).set_text(cx, &s("refund"));
         self.ui.button(cx, ids!(reports_copy)).set_text(cx, &s("copy_report"));
@@ -2025,7 +1804,6 @@ fn fit_inside_system_bars(&mut self, cx: &mut Cx) {
         self.ui.text_input(cx, ids!(sale_attach_note)).set_empty_text(cx, s("extra_note_bill_ph"));
         self.ui.button(cx, ids!(sale_attach_pdf)).set_text(cx, &s("attach_pdf"));
         self.ui.button(cx, ids!(sale_attach_photo)).set_text(cx, &s("attach_photo"));
-        // send_kot_btn text is set in sync_chrome (names the kitchens).
         self.ui.button(cx, ids!(staff_add_cashier)).set_text(cx, &s("add_staff"));
         self.ui.button(cx, ids!(staff_deactivate)).set_text(cx, &s("remove_selected"));
         self.ui.button(cx, ids!(staff_copy_hire_btn)).set_text(cx, &s("staff_copy_hire"));
@@ -2039,7 +1817,6 @@ fn fit_inside_system_bars(&mut self, cx: &mut Cx) {
         self.ui.button(cx, ids!(staff_role_admin_on)).set_text(cx, &s("role_admin"));
         // Named in sync_chrome when a person is selected (`set_login_named`).
         self.ui.button(cx, ids!(staff_set_login)).set_text(cx, &s("set_login_selected"));
-        self.ui.button(cx, ids!(station_add)).set_text(cx, &s("add_station"));
         self.ui.button(cx, ids!(stop_extra_tills)).set_text(cx, &s("stop_extra_tills"));
         self.ui.button(cx, ids!(allow_firewall)).set_text(cx, &s("allow_firewall"));
         self.ui.button(cx, ids!(copy_pair_code)).set_text(cx, &s("copy_pair_code"));
@@ -2064,7 +1841,6 @@ fn fit_inside_system_bars(&mut self, cx: &mut Cx) {
             cx,
             &s(if startup::is_on() { "autostart_on" } else { "autostart_off" }),
         );
-        self.ui.button(cx, ids!(table_add)).set_text(cx, &s("add_table"));
         {
             let tax = {
                 let st = app_state().lock().unwrap();
@@ -2095,18 +1871,11 @@ fn fit_inside_system_bars(&mut self, cx: &mut Cx) {
         self.ui.text_input(cx, ids!(onboard_item_price)).set_empty_text(cx, s("item_price_ph"));
         self.ui.text_input(cx, ids!(onboard_cust_bal)).set_empty_text(cx, s("amount_owed_ph"));
         self.ui.text_input(cx, ids!(mix_credit_input)).set_empty_text(cx, s("credit_khata_amount_ph"));
-        self.ui.text_input(cx, ids!(table_name_input)).set_empty_text(cx, s("table_name_ph"));
-        self.ui.text_input(cx, ids!(station_name_input)).set_empty_text(cx, s("station_name_ph"));
         self.ui.text_input(cx, ids!(menu_name_input)).set_empty_text(cx, s("dish_search_ph"));
         self.ui.text_input(cx, ids!(menu_aliases_input)).set_empty_text(cx, s("aliases_ph"));
         self.ui.text_input(cx, ids!(menu_unit_input)).set_empty_text(cx, s("unit_plate_ph"));
         self.ui.text_input(cx, ids!(menu_tax_input)).set_empty_text(cx, s("tax_rate_ph"));
         self.ui.text_input(cx, ids!(menu_category_input)).set_empty_text(cx, s("category_search_ph"));
-        self.ui.text_input(cx, ids!(menu_station_input)).set_empty_text(cx, s("station_new_ph"));
-        self.ui.text_input(cx, ids!(kot_station_input)).set_empty_text(cx, s("kot_station_ph"));
-        // kot_station_dd face (Kitchen / Done · …) is painted in Pos chrome —
-        // do not reset it here or open-dropdown Done · is wiped every sync.
-        self.ui.button(cx, ids!(kot_set_station)).set_text(cx, &s("kot_set_station"));
         self.ui.text_input(cx, ids!(menu_modifiers_input)).set_empty_text(cx, s("options_tabiyat_ph"));
         self.ui.text_input(cx, ids!(buy_qty_input)).set_empty_text(cx, s("qty_example_ph"));
         self.ui.text_input(cx, ids!(buy_cost_input)).set_empty_text(cx, s("unit_cost_ph"));
@@ -2151,48 +1920,6 @@ fn fit_inside_system_bars(&mut self, cx: &mut Cx) {
         self.ui.text_input(cx, ids!(branch_name_input)).set_empty_text(cx, s("new_branch_name_ph"));
         self.ui.text_input(cx, ids!(branch_code_input)).set_empty_text(cx, s("short_code_ph"));
         self.ui.widget(cx, ids!(order_help)).set_text(cx, &plain_display_text(&s("order_help")));
-        self.ui.text_input(cx, ids!(layout_x_input)).set_empty_text(cx, s("floor_layout_x"));
-        self.ui.text_input(cx, ids!(layout_y_input)).set_empty_text(cx, s("floor_layout_y"));
-        self.ui.text_input(cx, ids!(layout_w_input)).set_empty_text(cx, s("floor_layout_w"));
-        self.ui.text_input(cx, ids!(layout_h_input)).set_empty_text(cx, s("floor_layout_h"));
-        self.ui.button(cx, ids!(layout_save)).set_text(cx, &s("floor_layout_save"));
-        self.ui.button(cx, ids!(layout_open)).set_text(cx, &s("floor_layout_open"));
-        self.ui.button(cx, ids!(layout_nudge_left)).set_text(cx, &s("floor_layout_nudge_left"));
-        self.ui.button(cx, ids!(layout_nudge_right)).set_text(cx, &s("floor_layout_nudge_right"));
-        self.ui.button(cx, ids!(layout_nudge_up)).set_text(cx, &s("floor_layout_nudge_up"));
-        self.ui.button(cx, ids!(layout_nudge_down)).set_text(cx, &s("floor_layout_nudge_down"));
-        self.ui.widget(cx, ids!(floor_add_heading)).set_text(cx, &plain_display_text(&s("add_a_table")));
-        self.ui.button(cx, ids!(area_new_add)).set_text(cx, &s("add_area"));
-        self.ui.text_input(cx, ids!(area_new_input)).set_empty_text(cx, s("area_new_ph"));
-        self.ui.widget(cx, ids!(kitchen_empty)).set_text(cx, &plain_display_text(&s("kitchen_empty")));
-        self.ui.widget(cx, ids!(stations_heading)).set_text(cx, &plain_display_text(&s("stations_heading")));
-        self.ui
-            .widget(cx, ids!(stations_help))
-            .as_info_help()
-            .set_tip(&plain_display_text(&s("stations_help")));
-        self.ui.widget(cx, ids!(station_add_heading)).set_text(cx, &plain_display_text(&s("add_station_heading")));
-        self.ui
-            .widget(cx, ids!(h_station_print))
-            .set_text(cx, &plain_display_text(&s("station_print_heading")));
-        self.ui
-            .widget(cx, ids!(station_print_help))
-            .as_info_help()
-            .set_tip(&plain_display_text(&s("station_print_help")));
-        self.ui
-            .text_input(cx, ids!(station_print_input))
-            .set_empty_text(cx, s("station_print_pick_ph"));
-        self.ui
-            .button(cx, ids!(station_print_first))
-            .set_text(cx, &s("printer_mode_first"));
-        self.ui
-            .button(cx, ids!(station_print_first_on))
-            .set_text(cx, &s("printer_mode_first"));
-        self.ui
-            .button(cx, ids!(station_print_all))
-            .set_text(cx, &s("printer_mode_all"));
-        self.ui
-            .button(cx, ids!(station_print_all_on))
-            .set_text(cx, &s("printer_mode_all"));
         self.ui.widget(cx, ids!(categories_help)).set_text(cx, &plain_display_text(&s("categories_help")));
         self.ui.widget(cx, ids!(h_removed_items)).set_text(cx, &plain_display_text(&s("removed_items")));
         self.ui.widget(cx, ids!(removed_help)).set_text(cx, &plain_display_text(&s("removed_help")));

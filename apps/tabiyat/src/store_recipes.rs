@@ -345,10 +345,10 @@ mod tests {
         cart.add_or_bump(&dish);
         cart.add_or_bump(&dish); // two portions: 0.8 kg rice, 0.5 kg paneer
         let draft = cart.to_sale_draft().unwrap();
-        let first = store.finalize_sale(&draft, PayMethod::Cash, None, None, &owner).unwrap();
+        let first = store.finalize_sale(&draft, PayMethod::Cash, None, &owner).unwrap();
         // Not a whole kilo yet: still 2 on the shelf, the part is carried.
         assert_eq!(on_hand(&store, "Rice"), 2);
-        let second = store.finalize_sale(&draft, PayMethod::Cash, None, None, &owner).unwrap();
+        let second = store.finalize_sale(&draft, PayMethod::Cash, None, &owner).unwrap();
         // 1.6 kg rice used → one whole kilo off; 1.0 kg paneer → one off.
         assert_eq!(on_hand(&store, "Rice"), 1);
         assert_eq!(on_hand(&store, "Paneer"), 1);
@@ -360,7 +360,7 @@ mod tests {
 
         // The kitchen never waits on the books: a dry shelf stops at 0.
         for _ in 0..4 {
-            store.finalize_sale(&draft, PayMethod::Cash, None, None, &owner).unwrap();
+            store.finalize_sale(&draft, PayMethod::Cash, None, &owner).unwrap();
         }
         assert_eq!(on_hand(&store, "Rice"), 0);
         let low: Vec<_> = store.low_stock().unwrap().into_iter().map(|l| l.product.name).collect();

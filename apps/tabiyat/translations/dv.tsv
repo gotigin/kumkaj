@@ -80,28 +80,6 @@ applied	އެޕްލައި ކޮށްފި އެވެ
 note_ph	ނޯޓް (އިޚްތިޔާރީ)
 rounded	ވަށައިގެން
 split	ބައިކުރުން
-send_kot	ސްލިޕް ފޮނުވުން
-send_kot_to	ފޮނުވުން → {kitchens}
-send_kot_again	ދެން އޮންނަ ސްލިޕް އަށް ތަކެތި އިތުރުކުރުން
-send_kot_held	ހިފެހެއްޓިފައިވާ ތަކެތި — ފޮނުވަން ނުހިފެހެއްޓުން
-reprint_kot	އަނެއްކާވެސް ޕްރިންޓް ސެލެކްޓް ވެއްޖެއެވެ
-reprint_kot_ok	އަނެއްކާވެސް ޕްރިންޓްކޮށްފައިވަނީ {n} ތަކެތި · {slips} ސްލިޕް(ތަކެއް) → {kitchens}
-reprint_kot_needed	ފުރަތަމަ ސްލިޕް ފޮނުވުން — ދެން ބޭސްތައް ހިމަނައިގެން ހޮވާފައިވާ ތަކެތި އަލުން ޕްރިންޓް ކުރާށެވެ
-reprint_kot_none_selected	ފޮނުވާ ކޮންމެ އެއްޗެއް ސްކިޕް ވެގެން ދާނެ — އަލުން ޕްރިންޓް ކުރުމަށް އިން ޕްރިންޓް އަށް ފިތާލާށެވެ
-reprint_kot_client	Print again ({n}) for {place} sent — the shop device prints it
-print_cancelled_kot	ޕްރިންޓް ހުރިހާ ކަމެއް ކެންސަލް ކޮށްފި އެވެ
-print_cancelled_kot_ok	ޕްރިންޓްކޮށްފައިވާ {n} ކެންސަލްކޮށްފައިވާ ތަކެތި · {slips} ސްލިޕް(ތަކެއް) → {kitchens}
-print_cancelled_kot_needed	ފުރަތަމަ ކެންސަލް ކޮށްފައިވާ ތަކެތި ހުންނަ މޭޒެއް ހުޅުވާށެވެ
-print_cancelled_kot_none	މި އޯޑަރުގައި ކެންސަލް ކުރެވޭ އެއްޗެއް ނެތެވެ
-print_cancelled_kot_client	Print cancelled ({n}) for {place} sent — the shop device prints it
-kot_banner	އޯގާތެރި ބެނާއެކެވެ
-kot_banner_ph	ބެނާ (ހުސް = އެއްވެސް އެއްޗެއް ނެތް)
-kot_item_prefix	އައިޓަމް ޕްރިފިކްސް
-kot_item_prefix_ph	މ. ]ކެންސަލް ކޮށްފި[
-kot_strike	ސްޓްރައިކް އައިޓަމް ނަން
-kot_strike_note	ސްޓްރައިކް އައިޓަމް ނޯޓް
-kot_strike_on	މަތީގައި
-kot_strike_off	އޮފް
 bill_item_layout	އައިޓަމް ލޭއައުޓް
 bill_item_layout_columns	ކޮލަމްތައް
 bill_item_layout_stacked	ސްޓޭކް ކޮށްފައި ހުރެއެވެ
@@ -130,8 +108,6 @@ bill_item_gap_em	ގޭޕް (ތިޔަ)
 bill_item_qty_min	ކިއުޓީ މިން (އެމް)
 bill_item_price_min	އަގު މިން (އިން)
 bill_item_amount_min	އަދަދު މިން (އެމް)
-kot_item_qty_width	ކިއުޓީ ކޮލަމް
-kot_item_num_align	ކިއުޓީ އެލައިން ކުރުން
 bill_total_qty_label	ޖުމްލަ ކިއުޓީ ލޭބަލް
 bill_total_subtotal_label	ސަބް ޓޯޓަލް ލޭބަލް
 bill_total_grand_label	ގްރޭންޑް ޓޯޓަލް ލޭބަލް އެވެ
@@ -143,36 +119,9 @@ bill_item_piece_off	އޮފް
 bill_total_qty	ޖުމްލަ ކިއުޓީ
 bill_total_subtotal	ސަބް ޓޯޓަލް
 bill_total_grand	ގްރޭންޑް ޓޯޓަލް
-reprint_incl	ޗާޕުކޮށްގެންނެވެ
-reprint_skip	ދޫކޮށްލުން
-reprint_skip_meta	ރިކަވަރީ ޕްރިންޓް ދޫކޮށްލާށެވެ
-kot_dest_hint	ސެޓިންގސް → ޕްރިންޓަރސް ގައި {kitchens} އަށް ޙަވާލުކުރި ޕްރިންޓަރުތަކުގައި ޕްރިންޓްކުރެއެވެ
-kot_sent_hint	Last send went to {kitchens}. Tap to add items for the next bill — or Print slip again for the same one.
-kot_sent_printing	{kitchens} އަށް ފޮނުވާފައިވާ ސްލިޕް — ޕްރިންޓިންގ
-kot_sent_not_printed	{kitchens} އަށް ފޮނުވި ސްލިޕް ނަމަވެސް ޕްރިންޓް ނުކުރެވޭ: {why}. ފިހާރައަށް ކިޔައިދީ، ދެން ޕްރިންޓަރު ރަނގަޅުކޮށް އަނެއްކާވެސް ޕްރިންޓް ކޮށްލާށެވެ.
-kot_sent_screen	Slip sent to {kitchens}
-kot_queued_shop	{place} އަށް ސްލިޕް → {kitchens} ސޭވްކޮށްފައި؛ ފިހާރައިގެ ޑިވައިސް އިން އެ ޕްރިންޓް ކުރެއެވެ
-kot_job_label	{place} → {kitchens} އަށް ސްލިޕް ކޮށްލާށެވެ
-kot_job_reached	Slip for {place} reached {kitchens}
 kot_unassigned	ޙަވާލުނުކުރެވިގެންނެވެ
-kot_unassigned_held	Held {n} items without a station — unhold on the line to send
-kot_station_ph	ސްޓޭޝަން
-kot_station_dd	ސްޓޭޝަން
-kot_station_dd_n	Station · {stations}
-kot_set_station	މި ސްޓޭޝަން ބޭނުން ކުރާށެވެ
-kot_station_applied	Station set on {n} items: {station}
-kot_station_cleared	Station cleared from {n} items: {station}
-kot_station_needed	ފުރަތަމަ ޑިސްޕެންސަރީ ސެކްޝަނެއް ހޮވާށެވެ
-kot_station_not_allowed	ބޭނުން ކުރުމުގެ ހުއްދަ ނުދެވޭ ބައި: {station}
-kot_station_none	އަދި ސްޓޭޝަނެއް ނެތް — ކައުންޓަރ ފިހާރައެއްގައި ބޭނުން ނުކުރާ (ސެޓިންގސް → ބޭނުންނަމަ ސަރަހައްދުތައް)
 pos_tab_items	އިތުރުކުރި ތަކެތި
 pos_tab_payment	ފައިސާދެއްކުން
-hold_send	ހިފަހައްޓާ
-hold_send_on	ހިފެހެއްޓިފައި
-hold_send_meta	ހިފެހެއްޓިފައި — މި ސްލިޕްގައި ނޫނެވެ
-station_remove	ސްޓޭޝަން ނަގާށެވެ
-station_remove_ph	އެ ސްޓޭޝަން ނައްތާލުމަށް ލިސްޓުގައިވާ ސްޓޭޝަނަކަށް ފިތާލާށެވެ
-station_removed	ސްޓޭޝަން ނަގާފައިވަނީ: {name}
 settings_hub_title	ސެޓިންގސް
 settings_hub_help	އެއްފަހަރާ އެއް ސަރަހައްދެއް ހުޅުވާލާ — ސްކްރޯލް ކުރުން މަދު، ސާފު ޗޮއިސްތަކެވެ.
 settings_back	ފަހަތް
@@ -181,12 +130,10 @@ settings_sec_country	ޤައުމު & ޓެކްސް
 settings_sec_tills	އެހެން ޑިވައިސްތަކެވެ
 settings_sec_brand	ތިޔަ ބްރޭންޑެވެ
 settings_sec_units	ޔުނިޓްސް & ކޮންވާޝަންސް
-settings_sec_pickers	ސަރަހައްދުތައް · ސްޓޭޝަންތައް · ޓެކްސް ރޭޓްތައް
+settings_sec_pickers	ޓެކްސް ރޭޓްތައް
 settings_sec_printers	ޕްރިންޓަރުތަކެވެ
 settings_sec_bill	ބިލް އެންޑް ސްލިޕް ފޯމެޓެވެ
 settings_sec_selling	ސްކީމްސް އެންޑް ސޭލްސް
-bill_kot_tab_bill	ބިލް
-bill_kot_tab_kot	ސްލިޕް
 settings_sec_alerts	އެލާޓްތައް
 alerts_help	ތިބާއަށް ސްޓޭޓަސް މެސެޖުތައް ސްކްރީނުގައި ހުންނަނީ ކިހާ ދުވަހަކު (މި ލޮގިން) .
 snack_secs_ph	ސިކުންތު (3–60، ޑިފޯލްޓް 10)
@@ -237,8 +184,6 @@ counter	ކައުންޓަރު
 dine_in	ކައުންޓަރު
 takeaway	ގެންދިޔުމަށް
 order	ތަރުތީބު
-tables	ކައުންޓަރުތަކެވެ
-kitchen	ބައިތަކެވެ
 sales	ސޭލްސް
 sales_refunds	ސޭލްސް އެންޑް ރިފަންޑްސް
 day_close	ދުވަސް ބަންދު
@@ -266,10 +211,6 @@ zero_sales_on	0₹ އަށް ހުއްދަ ދޭށެވެ
 zero_sales_off	އަގު ހޯދަން
 zero_sales_saved_on	ޒީރޯ ވެލިއު ސޭލްސް ހުއްދަ
 zero_sales_saved_off	ސޭލްސްގެ އަގަކީ ₹0 އަށްވުރެ މަތީގެ އަގެއް އޮންނަންވާނެއެވެ
-floor_areas_help	އޭރިއާތަކަކީ ފްލޯރގައި ހުންނަ ކޮޓަރި ނުވަތަ ޒޯން (ޑައިން އިން، ޕާރުސަލް، އޭސީ ...) އެވެ. ފުރަތަމަ ސަރަހައްދެއް އިތުރުކޮށް، ދެން އޭގައި ކައުންޓަރުތައް ޖައްސާ — ކޮންމެ ސަރަހައްދަކީ ވެސް ތަޅުގައި ވަކި ގްރޫޕެކެވެ.
-area_new_ph	އައު ސަރަހައްދު / ކޮޓަރި (އެބަހީ އޭސީ، ބަގީޗާ)
-add_area	އޭރިއާ އިތުރުކުރުން
-area_added	އޭރިއާ “{name}” ތައްޔާރު — އޭގެ ތެރެއަށް ކައުންޓަރުތައް އިތުރުކުރުން
 no_favorites	އަދި ފޭވަރިޓެއް ނެތް — ތިރީގައިވާ ލިސްޓުން ތަކެތި އިތުރުކުރުން.
 add_to_bill	ބިލަށް އިތުރުކުރުން
 added	އިތުރުކޮށްފިއެވެ
@@ -280,19 +221,9 @@ chip_missing_customer	ހޮވާފައިވާ ކަސްޓަމަރެއް ގެއްލި
 chip_no_customer	އަދި ކަސްޓަމަރެއް ނެތް — ނަމެއް ލިޔެ، ދެން ކްރެޑިޓް އަށް ފިތާލާށެވެ
 credit_summary_fmt	{} ކަސްޓަމަރުން · އޯޕަން ކްރެޑިޓް {} · އެޑްވާންސްތައް ހިފެހެއްޓިފައި {}
 recent_label	ފަހުގެ:
-kot_new_waiting	އިންތިޒާރު ކުރަމުން — NEW
-kot_preparing	ތައްޔާރުވަމުން
-kot_ready_serve	ރެޑީ — އެއަށް ޚިދުމަތް ކޮށްލާށެވެ
-kot_done_cap	ނިމިއްޖު
-kot_cancelled	ކެންސަލްކޮށްފި އެވެ
-kot_start_btn	ފެށުން
-kot_mark_ready	މާކިން ތައްޔާރު
-kot_done_btn	ނިމިއްޖު
-table_free	ހިލޭ — އޯޑަރެއް ފެށުމަށް ޓެޕް ކުރާށެވެ
 start_order	އޯޑަރު ފެށުން
 open_bill	އޯޕަން ބިލް
 collect_payment	ޕޭމަންޓް އެއްކުރުން
-table_running	ދުވުން
 payment_pending	ޕޭމަންޓް ޕެންޑިންގް
 collect_at_counter	ކައުންޓަރުގައި އެއްކުރުން
 inventory	އިންވެންޓްރީ
@@ -325,7 +256,6 @@ ok	އެންމެ ރަނގަޅު
 this_shop	ސަރވަރ
 extra_till	ކްލަޔަންޓް
 off	އޮފް
-tables_kitchen	ފިހާރަ ލޭއައުޓް
 server	ސަރވަރ
 client	ކްލަޔަންޓް
 language_currency	ބަސް & ފައިސާ
@@ -367,8 +297,6 @@ add_item_plain	އައިޓަމް އިތުރުކުރުން
 add_note	ނޯޓް އިތުރުކުރުން
 add_opening_balance	އޮޕަނިންގ ބެލެންސް އިތުރުކުރުން
 add_staff	މުވައްޒަފުން އިތުރުކުރުން
-add_station	ސްޓޭޝަން އިތުރުކުރުން
-add_table	މޭޒު އިތުރުކުރުން
 add_unit	ޔުނިޓް އިތުރުކުރުން
 add_use_name	މި ނަން އިތުރުކުރުން / ބޭނުންކުރުން
 allow_extra_tills	އިތުރު ޓިލްސް އަށް ހުއްދަ ދޭށެވެ
@@ -421,7 +349,6 @@ share_whatsapp	ވަޓްސްއެޕް ޝެއާ ކުރާށެވެ
 lan_pages_heading	ވައިފައިގައި ކަސްޓަމަރުންގެ ޕޭޖްތައް
 lan_pages_help	މި ފިހާރައިގެ ވައިފައިގައި ކަސްޓަމަރުންގެ ޕޭޖްތައް ޑިސްޕްލޭ ބޯޑާއި ފީޑްބެކަށް މަސައްކަތް ކުރެއެވެ. މޯބައިލް ޑޭޓާގައި ތިބި މީހުންނަށް ކްލައުޑް ބޭނުންވަނީ ފަހުންނެވެ. ކާޑު ޓާމިނަލް ނުވަތަ ޕޭމަންޓް ލިންކަކީ އިޚްތިޔާރީ އެއްޗަކަށް ވާއިރު، ދުވަހަކުވެސް ކައުންޓަރު ބްލޮކް ނުކުރެއެވެ.
 diag_send_heading	މި ޑިވައިސް ޝެއާ އޮފް ކޮށްލާށެވެ
-kot_dest_heading	ސްޓޭޝަން
 optional_login_heading	އިޚްތިޔާރީ ލޮގިން
 rights_heading	ހައްގުތައް
 ops_panel	ލޯކަލް އޮޕްސް
@@ -448,28 +375,6 @@ till_voucher_amt_ph	ވައުޗަރުގެ އަދަދު (ހުސް = ހުރިހާ)
 till_wallet_topup_ph	ޓޮޕްއަޕް ވޮލެޓް އަދަދު
 till_voucher_issue_amt_ph	ވައުޗަރުގެ އަދަދު ދޫކުރުން
 till_voucher_issue_code_ph	އައު ވައުޗަރ ކޯޑެވެ
-split_evenly	އެއްވަރަކަށް ބަހާލާށެވެ
-waitlist	ވެއިޓްލިސްޓް
-fire_course	ދެން އޮތް ފިޔަވަޅެވެ
-hold_item	ހިފަހައްޓާ
-waiter_call	ކެޝަރ އަށް ގުޅާށެވެ
-waitlist_add	ވެއިޓްލިސްޓަށް އިތުރުކުރުން
-floor_view_grid	ގްރިޑް
-floor_view_layout	ލޭއައުޓް
-floor_layout_x	އެކްސް
-floor_layout_y	ވައި
-floor_layout_w	ޑަބްލިއު
-floor_layout_h	ހ
-floor_layout_save	ސޭވް ލޭއައުޓް
-floor_layout_open	ހުޅުވާފައި ހުންނަ މޭޒެވެ
-floor_layout_edit	އެޑިޓް ލޭއައުޓް
-floor_layout_pick	ޓޭބަލެއްގެ ލޭއައުޓް އެޑިޓް ކުރުމަށް ޓެޕް ކުރާށެވެ
-floor_layout_saved	ލޭއައުޓް ސޭވް ވެއްޖެއެވެ
-floor_layout_nudge_left	← 20
-floor_layout_nudge_right	→ 20
-floor_layout_nudge_up	↑ 20
-floor_layout_nudge_down	↓ 20
-sibling_pickers_help	އަށް ޓެޕްކުރުން — ދުވަހުން ދުވަހަށް ޕިކަރުންގެ ކިބައިން ސަރަހައްދުތަކާއި، ސްޓޭޝަންތަކާއި، ޓެކްސް ރޭޓްތައް ފޮރުވުން؛ ޕެކް ޑިފޯލްޓްސް ސްޓޭ.
 bulk_price_apply	ބަލްކް އަގު އެޕްލައި ކުރާށެވެ
 card_terminal_optional	ކާޑު ޓާމިނަލް / ޕޭމަންޓް ލިންކް (އިންޓަނެޓް ލިބޭއިރު އިޚްތިޔާރީ)
 copy_report	ރިޕޯޓް ކޮޕީކުރުން
@@ -495,7 +400,6 @@ import_day	އިމްޕޯޓް ކުރާ ދުވަހު
 import_items_csv_plain	އިމްޕޯޓް ކުރާ ތަކެތި ސީއެސްވީ...
 import_parties_csv	އިމްޕޯޓް ޕާޓީތަކުން ސީއެސްވީ...
 item_name	އައިޓަމް ނަން
-kitchen_printing	ޕްރިންޓަރުތަކެވެ
 login_id_ph	ޔޫޒަރނޭމް
 mark_cleared	މާކިން ސާފުކޮށްލިއެވެ
 new_party_clear	އައު ޕާޓީ (ސާފު ފޯމު)
@@ -565,15 +469,6 @@ show	ދެއްކުން
 spreadsheet_csv	ސްޕްރެޑްޝީޓް (ސީއެސްވީ)
 start_fresh	ތާޒާކޮށް ފަށާށެވެ
 stop_extra_tills	އިތުރު ޓިލްސް ހުއްޓާލާށެވެ
-floor_cols_ph	ކޮލަމްތައް
-floor_cols_fit	ފިޓް ސްކްރީން
-floor_cols_fit_sub	{n} މިތަނަށް ފިޓްވެއެވެ
-floor_cols_fits	ފިޓްވެއެވެ
-floor_cols_scroll	އެއްފަރާތަކަށް ސްކްރޯލް ކޮށްލައެވެ
-floor_cols_min	ކޮލަމްތައް: މަދުވެގެން 1 — ނުވަތަ ސްކްރީނަށް ފިޓްވާ ގޮތަށް ހުސްކޮށް ބާއްވާށެވެ
-floor_zoom_auto	އޮޓޯ
-floor_zoom_out	ޒޫމް އައުޓް ކޮށްލާށެވެ
-floor_zoom_in	ޒޫމް އިން ކޮށްލާށެވެ
 backup_auto	ކޮންމެ ދުވަހަކު އޮޓޮމެޓިކުން ބެކަޕް ކުރެވޭ · އެންމެ ފަހުން {when} · ފަހު 14 ދުވަސް ބެހެއްޓިފައިވަނީ {dir} ގައެވެ.
 backup_auto_none	ކޮންމެ ދުވަހަކު އޮޓޮމެޓިކުން ބެކްއަޕް ކުރެވޭ — ފުރަތަމަ އެއް ހިނދުކޮޅެއްގެ ތެރޭގައި ހިނގައެވެ.
 backup_copy_to	ކޮޕީތައް ވެސް ދަނީ {dir} އަށެވެ.
@@ -591,7 +486,6 @@ new_pair_code	އައު ޕެއަރިން ކޯޑެވެ
 pair_finishing	ފިނިޝިންގ ޕެއާ... ފިހާރައިގެ ފޮތްތައް އުނގުޅަމުން
 pair_opening	ޓިލް ހުޅުވައިގެން...
 pair_copied	ޕެއަރިންގ ކޯޑް ކޮޕީކޮށްފައި
-kot_waiting	ފޮނުވަން އިންތިޒާރުގައެވެ
 lan_offline_waiting	ޝޮޕް ސަރވަރ އަށް ނުދެވޭ · {n} އިންތިޒާރު ކުރަމުން
 lan_connecting	ފިހާރައާ ގުޅެނީ...
 lan_live	ދިރިއުޅުން
@@ -633,7 +527,6 @@ printers_routes_help	އޮޕަރޭޓިންގ ސިސްޓަމަށް މިހާރުވ�
 printer_assign_dd	ރިއަލް ޕްރިންޓަރ: {place}
 printer_assign_pick	ހަގީގީ ޕްރިންޓަރ ހޮވާށެވެ
 printer_profile_heading	ލޭއައުޓް
-printer_send_heading	ޑެލިވަރީ
 vp_delivery_heading	ޑެލިވަރީ
 vp_delivery_help	މި ވާޗުއަލް ޕްރިންޓަރުން ވަޒީފާތައް ފޮނުވާ ގޮތް — އޮއެސް ޑޮކިއުމަންޓް، ރޯ ބައިޓްސް، ނުވަތަ އީއެސްސީ/ޕީއޯއެސް. ސްލިޕް ކޮންޓެންޓް (ޓައިޕް ސައިޒް، ރެޕް، މާރޖިންސް) ނިންމަނީ ބިލް / ސްލިޕް ފޯމެޓުން، މިތަނުގައި ނޫނެވެ.
 vp_type_size_heading	ޓައިޕް ސައިޒް
@@ -677,23 +570,13 @@ virtual_draft_send	ދެން އޮންނަ ވާޗުއަލް ޕްރިންޓަރަށ
 virtual_need_real	ފުރަތަމަ ހަގީގީ ޕްރިންޓަރެއް ހޮވާށެވެ
 virtual_need_select	ޑިލީޓް ކުރަން ވާޗުއަލް ޕްރިންޓަރެއް ހޮވާށެވެ
 real_printer_selected	ހޮވާފައިވަނީ: {name}
-station_group_heading	ވާޗުއަލް ޕްރިންޓަރުތަކެވެ
-station_group_apply	ވާޗުއަލް ޕްރިންޓަރ ޑިލީޓްކުރުން
-station_group_applied	ޑިލީޓް ކޮށްފިއެވެ
-station_group_empty	ވާޗުއަލް ޕްރިންޓަރެއް ހޮވާށެވެ
-station_group_name_ph	ވާޗުއަލް ޕްރިންޓަރުގެ ނަން (އިޚްތިޔާރީ)
-station_group_save	ވާޗުއަލް ޕްރިންޓަރ އުފެއްދުން
-station_group_saved	ވާޗުއަލް ޕްރިންޓަރ ސޭވް ކުރެވިއްޖެއެވެ
-station_manage_heading	ޑިސްޕެންސަރީ ސެކްޝަނެއް އިތުރުކުރުން ނުވަތަ ނައްތާލުން
 printers_routes_heading	އެއްޗެހި ޕްރިންޓް ކުރާ ތަނެއް
 route_pick_heading	ތަން
 route_editing	އެޑިޓިންގ: {name}
 route_assigned	އިތުރުކޮށްފައިވަނީ {printer} އިން {place} .
 route_already_assigned	މިހާރުވެސް މިތަނުގައި: {printer}
-route_removed	{place} އިން {printer} ނަގާފައިވެއެވެ.
 route_cleared	ސާފުވެއްޖެ {name}
 route_assigned_empty	މިތަނުގައި އެއްވެސް މީހަކު ނެތެވެ
-route_tap_remove	ނައްތާލަން ޓެޕް ކުރާށެވެ
 route_tap_select	ސެލެކްޓް ކުރުމަށް ޓެޕް ކުރާށެވެ
 route_tap_selected	ހޮވާފައިވެއެވެ
 route_pick_printer_first	ފުރަތަމަ ޕްރިންޓަރަކަށް ފިތާލާށެވެ
@@ -714,35 +597,17 @@ printer_format_custom	އައު ކަސްޓަމް ޕްރޮފައިލް
 printer_format_custom_label	ސަޤާފަތް
 printer_format_custom_added	މިތަނަށް ކަސްޓަމް ޕްރޮފައިލް އިތުރުކޮށްފައިވެއެވެ
 add_printer	ޕްރިންޓަރ އިތުރުކުރުން
-remove_printer	ރިމޫވް
 route_pick_ph	ބިލް ނުވަތަ ޑިސްޕެންސަރީ ސެކްޝަނެއް
 route_bill	ބިލް
-route_default_kitchen	ސްޓޭޝަނެއް ނެތް (ޙަވާލުނުކުރެވޭ ތަކެތި)
-route_kot_station	ސްޓޭޝަން
 route_dont_print	ޕްރިންޓަރެއް ނެތެވެ
-stations_heading	ސްޓޭޝަންތައް
-stations_help	ޑިސްޕެންސަރީ ސެކްޝަންތަކުން ފިހާރައިގެ އެ ބަޔަށް ބޭހާއި ޕްރިންޓަރުތައް ގްރޫޕްކޮށްދެއެވެ. ސެޓިންގސް → ޕްރިންޓަރސް އިން ޕްރިންޓަރސް އެޓޭޗްކޮށް، ޓްރައި އޯޑަރ ސެޓްކޮށް، ދެން ފުރަތަމަ އެކަން ކުރެވޭތޯ ނުވަތަ ހުރިހާ އެއްޗެއްގައި ޕްރިންޓް ކުރުން. ބަދަލުތައް ސޭވް ކުރާވަރަކަށް.
-station_print_heading	މި ސްޓޭޝަނަށް ޕްރިންޓަރުތައް
-station_print_help	ސްޓޭޝަނެއް ހޮވައި، ދެން އެއް ނުވަތަ އެއަށްވުރެ ގިނަ ޕްރިންޓަރު އެޓޭޗް ކުރާށެވެ. ↑↓ ސެޓްތައް ޓްރައި އޯޑަރ. ފުރަތަމަ އެ މަސައްކަތް ހުއްޓާލަނީ ފުރަތަމަ ކާމިޔާބީއަށް ފަހު؛ އެޓޭޗް ކުރެވިފައިވާ ކޮންމެ ޕްރިންޓަރަކަށް ހުރިހާ ފޮނުވާ ހުރިހާ އެއްޗެއްގައި ޕްރިންޓްކުރުން.
-station_print_pick_ph	ޕްރިންޓަރުތައް ސެޓް ކުރުމަށް ސްޓޭޝަން
 station_print_pick_first	ފުރަތަމަ ޑިސްޕެންސަރީ ސެކްޝަނެއް ހޮވާށެވެ
-station_print_editing	“{name}” އަށް ޕްރިންޓަރުތައް އެޑިޓްކުރުން
-station_vps_dd	މި ސްޓޭޝަނަށް ޕްރިންޓަރުތައް
-station_vps_dd_n	{n} ޕްރިންޓަރ(ތަކެއް) · ބަދަލުކުރުމަށް ޓެޕް ކުރާށެވެ
 station_vps_empty	އަދި ޕްރިންޓަރެއް ނެތް — ސެޓިންގސް → ޕްރިންޓަރސްގެ ދަށުން އެތަކެތި ހޯދާށެވެ
 bill_printers_dd	ބިލަށް ޕްރިންޓަރުން
 bill_printers_dd_n	{n} ބިލަށް ޕްރިންޓަރ(ތަކެއް) · ބަދަލުކުރުމަށް ޓެޕް ކުރާށެވެ
-job_layout	ލޭއައުޓް
-job_delivery	ވަޒީފާ ފޮނުވަނީ ކިހިނެއް
-job_delivery_help	އޮއެސް ޑޮކިއުމަންޓް، ރޯ ބައިޓްސް، ނުވަތަ އީއެސްސީ/ޕީއޯއެސް އެވެ. ބިލާއި ޓިކެޓް ކޮންމެ މީހަކުވެސް އަމިއްލައަށް ބެހެއްޓޭނެއެވެ. އެއިން ކޮންމެ ވަޒީފާއެއް ވެސް ކޮންމެ ޕްރިންޓަރަކަށް ވެސް ފައިންޑް ސޭވްކޮށްފައި ހުރެދާނެ އެވެ.
 station_vp_attached	ޕްރިންޓަރ އެޓޭޗްކޮށްފައި ހުރެއެވެ
 station_vp_detached	ސްޓޭޝަނުން ޕްރިންޓަރު ނަގާފައި
-station_print_summary	{mode} · {n} ޕްރިންޓަރ(ތަކެއް)
-station_print_summary_none	މި ސްޓޭޝަންގައި އަދި ޕްރިންޓަރެއް ނެތް — ޕްރިންޓް ނުކުރާނެ
-stations_none	އަދި ސްޓޭޝަނެއް ނެތް — ތިރީގައި އެއް ސްޓޭޝަނެއް އިތުރުކޮށްލާށެވެ. ކައުންޓަރ ފިހާރައެއްގައި ސްޓޭޝަންތައް ބޭނުން ނުކުރާ — ހުސްކޮށް ދޫކޮށްލާށެވެ.
 route_up	މަތި
 route_down	ތިރި
-route_remove	ރިމޫވް
 route_clear	ސާފުކޮށް
 save_printers	ޕްރިންޓަރުތައް ސޭވްކުރުން
 print_test_page	ޓެސްޓް ޕޭޖެއް ޕްރިންޓް ކުރާށެވެ
@@ -751,23 +616,15 @@ test_page_no_printer	{place} އަށް ޕްރިންޓަރެއް ނެތް — އެ
 test_page_pick_first	ފުރަތަމަ ޓެސްޓް ޕޭޖަކަށް ޕްރިންޓަރ(ތަކެއް) ހޮވާ — ދެން ޓެސްޓް ޕޭޖެއް ޕްރިންޓްކުރުން
 test_printers_dd	ޓެސްޓް ޕޭޖަކަށް ޕްރިންޓަރުތައް
 test_printers_dd_n	{n} ޓެސްޓް ޕޭޖަކަށް ޕްރިންޓަރ(ތަކެއް) · ބަދަލުކުރުމަށް ޓެޕް ކުރާށެވެ
-kot_test_printers_dd	ޓެސްޓް ޕްރިންޓް ކުރުމަށް ޕްރިންޓަރުތައް
-kot_test_printers_dd_n	ޓެސްޓް ޕްރިންޓް ކުރުމަށް {n} ޕްރިންޓަރ(ސް) · ބަދަލު ކުރުމަށް ޓެޕް ކުރާށެވެ
 test_printer_picked	ޓެސްޓް އޮންނާނީ: {name}
 test_printer_cleared	ޓެސްޓް ނުކުރަނީ: {name}
 test_page_sent_n	{n} ޕްރިންޓަރ(ތަކަށް) ފޮނުވާ ޓެސްޓް ޕޭޖް
-test_kot_pick_first	ފުރަތަމަ ޓެސްޓް ޕްރިންޓަށް ޕްރިންޓަރ(ތަކެއް) ހޮވާ — ދެން ޓެސްޓް ޕްރިންޓް
-test_kot_sent_n	Test print sent to {n} printer(s)
-cancel_pick	މާކިން
-cancel_pick_on	މާކްކޮށްފައި
-cancel_pick_meta	ކެންސަލް ކުރުމަށް މާކްކޮށްފައި
 batch_cancel	ކެންސަލް ފާހަގަކޮށްފައި
 batch_cancel_n	ކެންސަލް ފާހަގަކޮށްފައިވަނީ ({n})
 batch_cancel_none	ފުރަތަމަ ފޮނުވާފައިވާ އެއް ނުވަތަ އެއަށްވުރެ ގިނަ އެއްޗެއް ފާހަގަކުރުން — ދެން ކެންސަލް ފާހަގަކުރުން
 batch_cancel_title	ފާހަގަކޮށްފައިވާ ބޭސްތައް ކެންސަލްކުރުން — އެއް ސަބަބަކީ، ކޮންމެ ބަޔަކަށް އެއް ކެންސަލް ސްލިޕް
 batch_cancel_ok	{n} ތަކެތި ކެންސަލްކޮށްފި · {slips} ކެންސަލް ސްލިޕް(ތަކެއް) → {kitchens}
 batch_cancel_ok_noprint	{n} ގެ ތަކެތި ކެންސަލް ކޮށްފި — އޮޓޯ ޕްރިންޓް ނިއްވާލާފައި ވާތީ، ކެންސަލް ސްލިޕް އެއް ނެތެވެ
-no_printer_kitchen_station	އެ ސްޓޭޝަނަށް ޕްރިންޓަރެއް ނެތެވެ
 printers_saved	ރައްކާކުރެވިއްޖެއެވެ
 test_page_sent	ޓެސްޓް ޕޭޖް ފޮނުވާފައި — ޕްރިންޓަރު ޗެކްކުރުން
 test_page_sent_one	{name} އަށް ފޮނުވާ ޓެސްޓް ޕޭޖް — އެ ޕްރިންޓަރ ޗެކްކުރުން
@@ -783,10 +640,7 @@ cancelled	ކެންސަލް ކޮށްފި އެވެ
 printers_tap_find	މި ޑިވައިސް ބޭނުންކުރެވޭނެ ޕްރިންޓަރުތައް ލިސްޓް ކުރުމަށް ފައިންޑް އަށް ފިތާލާށެވެ.
 printers_none_found	އެއްވެސް އެއްޗެއް ނުފެނުނު — ސިސްޓަމް ޕްރިންޓަރ ނަމެއް ނުވަތަ އައިޕީއެއް ލިޔެލާށެވެ (އެބަހީ 50.1.168.192).
 printer_from_find	އިތުރުކޮށްފައިވަނީ {name}
-kot_printer_ph	ސްލިޕްތަކަށް ޕްރިންޓަރެއް
 bill_printer_ph	ބިލްތަކަށް ޕްރިންޓަރެއް
-kot_print_on	އޮޓޯ ޕްރިންޓް ޓިކެޓް: އޮން
-kot_print_off	އޮޓޯ ޕްރިންޓް ޓިކެޓް: އޮފް
 queue_refused	ފިހާރައިން ބަލައިނުގަންނަ ({n}) — ކޮންމެ އެއްޗެއް ކައުންޓަރުގައި ޗެކްކުރުން:
 clear_not_accepted	ޗެކްކޮށްފައި — މި ލިސްޓް ސާފުކުރުން
 device_name_ph	މި ޑިވައިސްގެ ނަމެވެ
@@ -797,7 +651,6 @@ backup_failed	އެންމެ ފަހުން އޮޓޮމެޓިކް ބެކަޕް ފެއ
 backup_overdue	{n} ދުވަސް ވަންދެން ބެކަޕް ނުކުރެވޭނެ — ބެކަޕް ކުރެވޭ ގޮތަށް މި ޑިވައިސްގައި އެޕް ހުޅުވާފައި ބެހެއްޓުން.
 disk_low	މި ޑިވައިސްގައި ހިލޭ ލިބޭނީ އެންމެ {mb} އެމްބީ — ބެކަޕްތައް ވަރަށް އަވަހަށް ފެއިލްވާނެއެވެ. ކޮންމެވެސް ވަރަކަށް ޖާގަ ހުސްކޮށްލާށެވެ.
 last_seen_devices	އެންމެ ފަހުން ފެނުނީ: {time}
-sync_interval	ކޮންމެ {secs}s އެއް ސިންކް ކުރާށެވެ
 connection_to_shop	ފިހާރައާ ގުޅުން
 supplier_name_ph	ސަޕްލައި ކުރާ ފަރާތުގެ ނަން (ނުވަތަ ޕާޓީ)
 supplier_ph	ސަޕްލައި ކުރާ ފަރާތް
@@ -860,7 +713,6 @@ fresh_book_tabiyat	ފްރެޝް = ހުސް ކެޓަލަގް (ފަހުން ތަކ
 fresh_selected	ތާޒާކޮށް ހޮވާފައި — ކެޓަލަގް ހުސްވެފައި ހުރެއެވެ. ތައްޔާރު ވުމުން ޑޫން އަށް ފިތާލާށެވެ.
 gross_word	ގްރޮސް
 how_start	ފަށަން ބޭނުންވަނީ ކިހިނެއް ހެއްޔެވެ؟
-kot_print_help_tabiyat	ކައުންޓަރު ފިހާރައެއްގައި ބޭނުން ނުކުރެއެވެ.
 later_country_pack	ފަހުން: ސެޓިންގސް → ޓެކްސް އަދި ޕޭ ލޭބަލްތަކަށް ތިމާގެ ކަންޓްރީ ޕެކް އެޕްލައި ކުރާށެވެ.
 local_badge	ލޯކަލް
 mix_type_hint_tabiyat	ބޭނުންވާނަމަ ކޭޝް / ޔޫޕީއައި / ކާޑު / ކްރެޑިޓް އަށް ބަހާލުން. ކްރެޑިޓަށް ބޭނުންވަނީ މަތީގައިވާ ކަސްޓަމަރެކެވެ.
@@ -911,8 +763,6 @@ staff_copy_need_source	ކޮޕީ ކުރަން ކާކުގެ ސެޓަޕް ހޮވާ�
 staff_copy_same	އެއީ ހަމަ އެމީހަކު — އެހެން މީހަކު ހޮވާށެވެ
 staff_rename_need_selected	ފުރަތަމަ ނަން ބަދަލުކުރާނީ ކާކުތޯ ހޮވާށެވެ
 team_pick_hint	އެޑިޓް ކުރަންވީ ކާކުތޯ ހޮވާ — ސްކްރީންތަކާއި، ފައިސާގެ ހައްގުތަކާއި، ސްޓޭޝަންތައް ފެންނަނީ ހަމައެކަނި އެމީހަކަށެވެ.
-team_stations_help	އެމީހުން ބޭނުންކުރެވިދާނެ ސްޓޭޝަންތަކެވެ
-team_stations_changed	ސްޓޭޝަންތައް ބަދަލުވެއްޖެ — މި މީހާއަށް ސެޓަޕް ސޭވްކުރުން
 team_features_changed	ސްކްރީންތައް ބަދަލުވެއްޖެ — މި މީހާއަށް ސެޓަޕް ސޭވްކުރުން
 team_rights_changed	ހައްގުތައް ބަދަލުވެއްޖެ — މި މީހާއަށް ސެޓަޕް ސޭވްކުރުން
 they_owe_us	އެމީހުން އަޅުގަނޑުމެންނަށް ދަރަނިވެރިވެއެވެ
@@ -996,9 +846,6 @@ service_pct_ph	ޚިދުމަތް % އިޚްތިޔާރީ 12/10/0
 short_code_ph	ކުރު ކޯޑް (އެމްޖީ02)
 starting_password_ph	ޕާސްވޯޑް ފެށުން (އިޚްތިޔާރީ)
 starting_pin_ph	ފެށޭ ޕިން (4–12 އަދަދު)
-station_name_ph	ސްޓޭޝަންގެ ނަން (އިޚްތިޔާރީ)
-station_new_ph	ސެކްޝަން (އިޚްތިޔާރީ)
-table_name_ph	ކައުންޓަރ / ބޭ ނަން
 tax_rate_ph	ޓެކްސް ރޭޓް ނަން ނުވަތަ % — ސްޓޭންޑަރޑް، ރިޑޫސްޑް، 0، 5، 12، 18، 20
 to_code_ph	ކޯޑް ކުރުމަށް (ކިލޯ)
 uncleared_no_ph	މަތީގައިވާ # ސާފުނުވާ
@@ -1011,27 +858,8 @@ book_kind_month	މި މަހުގެ ފޮތްތަކެވެ
 book_kind_aging	އައުޓްސްޓޭންޑިންގ / ޑެބިޓް-ކްރެޑިޓް
 book_kind_balance	ބެލެންސް ޝީޓް
 order_help	އެއްޗެއް އިތުރުކުރުމަށް ޓެޕް ކުރާށެވެ.
-floor_help	މި ފިހާރަ ވިއްކަނީ ކައުންޓަރުގައެވެ. މޭޒުތަކާއި ކެއުމުގެ ތަޅުންގަނޑަކީ ތާބިޔާތުގެ ބައެއް ނޫނެވެ.
-kitchen_help	ކައުންޓަރު ފިހާރައެއްގައި ބޭނުން ނުކުރެއެވެ.
-kitchen_empty	ހުޅުވާފައި ހުންނަ ޓިކެޓް ނެތް (ކައުންޓަރު ފިހާރަތަކުން އާންމުކޮށް މި ސްކްރީން ބޭނުން ނުކޮށް ދޫކޮށްލައެވެ).
-add_a_table	މޭޒެއް އަޅާށެވެ
-add_station_heading	ޑިސްޕެންސަރީ ސެކްޝަނެއް އިތުރުކުރުން
 categories_help	އެ ކެޓަގަރީގެ ދަށުން މަތީގައިވާ އެއްޗެއް ފައިލް ކުރުމަށް ބޭނުން ކުރުމަށް ފިތާލާށެވެ. ފޮޓޯއިން ކެޓަގަރީއަށް ތަސްވީރެއް ލިބެއެވެ؛ އެއްޗެއް ނެތި އޭގެ ފުރަތަމަ އަކުރުތައް ދައްކައެވެ.
 dish_search_ph	ނަން، ލޮނު ނުވަތަ ބާކޯޑް ހޯދުން...
-tile_free	ހިލޭ
-tile_occupied	މަޝްޢޫލުވެފައިވުން
-tile_food_ready	ކާނާ ތައްޔާރު
-tile_bill_printed	ބިލް ޗާޕްކޮށްފި އެވެ
-tile_paid	ފައިސާދައްކާފައި
-tile_bill_btn	ބިލް
-tile_occupy_btn	ގޮނޑި މެހެމާނުން
-tile_free_btn	ހިލޭ މޭޒެވެ
-tile_ready_btn	ހިލޭ މޭޒެވެ
-tile_undo_bill	ބިލް އަންޑޯ
-summary_busy	މޭޒުތައް ބިޒީވެފައި ހުރެއެވެ
-summary_to_collect	އެއްކުރުމަށެވެ
-summary_on_floor	ތަޅުގައި
-floor	ފިހާރަ
 sizes_as_items_ph	ވަކި ތަކެތީގެ ގޮތުގައި ސައިޒުތައް (އިޚްތިޔާރީ) — ހާފް=120، ފުލް=200
 dish_group_ph	ބާރު / ޕެކް ގްރޫޕް (އިޚްތިޔާރީ) — މ. 500އެމްޖީ ސްޓްރިޕް އެވެ
 discount	ޑިސްކައުންޓް
@@ -1039,7 +867,6 @@ remove_discount	ޑިސްކައުންޓް ނައްތާލާށެވެ
 apply_discount	ޑިސްކައުންޓް އެޕްލައި ކުރާށެވެ
 save_opening_cash	ހުޅުވުމުގެ ފައިސާ ރައްކާކުރުން
 close_shift_print	ޝިފްޓް ބަންދުކޮށް ޕްރިންޓް ސްލިޕް
-area_prices_ph	އޭރިއާގެ އަގުތައް (އިޚްތިޔާރީ) — އޭސީ=220، ޕާރުސަލް=210
 discount_ph	%10 ނުވަތަ 50 އެވެ
 discount_reason_ph	ސަބަބު (އެބަހީ ގަވާއިދުން ގެސްޓް، ލަސް ކާނާ)
 opening_float_ph	މިއަދު ހެނދުނު ދަބަހަށް ފައިސާ ޖައްސާލިއެވެ
@@ -1049,34 +876,18 @@ shift_handover	ޝިފްޓް ޙަވާލުކުރުން
 shift_since	މި ބަދަލުގެ ފަހުން
 expected_in_drawer	އުންމީދު ކުރެވެނީ ދަބަހުގައެވެ
 right_discount	ޑިސްކައުންޓެއް ދޭށެވެ
-floor_in_kitchen	ކުރިއަށް އެބަދެއެވެ
-floor_eating	ސާރވް ކޮށްފިއެވެ
 pick_category	ކެޓަގަރީއެއް ހޮވާށެވެ
 close_category_list	ކެޓަގަރީ ލިސްޓް ބަންދުކުރުން
 new_category_row	އާ ކެޓަގަރީ — އުފެއްދުން ސޭވް ކުރާއިރު
 your_category	ތިބާގެ ކެޓަގަރީ
 suggested_category	ލަފާދީފައި — އަޅުގަނޑުމެންގެ ތަކެތިން
 category_search_ph	ކެޓަގަރީ — ތިމާގެ އެއްޗެއް ހޯދާ ނުވަތަ އާ އެއްޗެއް ޓައިޕް ކުރާށެވެ
-line_sent_state	ފޮނުވައިފި
-line_nc_state	ކޮމްޕްލިމެންޓަރީ (އެންސީ) — ޗާޖު ނުކުރެވޭނެ
 cancel_item_short	ކެންސަލް
-nc_short	އެންސީ އެވެ
-charge_again_short	ޗާޖް
-move_short	undo-type
 cancel_item_title	މި ތަކެތި ކެންސަލް ކުރުން — ބެކް އޮފީހަށް ކެންސަލް ސްލިޕް ލިބެއެވެ
-nc_item_title	މި ތަކެތި ކޮމްޕްލިމެންޓްރީ (އެންސީ) އަށް ހަދާށެވެ.
-charge_again_title	އަނެއްކާވެސް މި އެއްޗެއް ޗާޖު ކުރާށެވެ
-move_item_title	މި އެއްޗެއް އެހެން މޭޒަކަށް ބަދަލުކޮށްލާށެވެ
-already_cooked	މިހާރުވެސް ކައްކާފައި (އިސްރާފު)
-not_cooked_yet	އަދި ކައްކާފައެއް ނުވެއެވެ
 return_to_customer	ކަސްޓަމަރަށް އެނބުރި ދިއުން
 short_by	ކުރުކޮށް
 tip_not_sale	ޓިޕް (ސްޓާފްގެ، ސޭލެއް ނޫން)
 right_settle	ޕޭމަންޓް ނަގާށެވެ
-right_cancel_sent	ފޮނުވާ އެއްޗެއް ކެންސަލްކުރުން
-right_complimentary	ކޮމްޕްލިމެންޓްރީ (އެންސީ)
-right_move_table	ކައުންޓަރުތައް ބަދަލުކުރުން / އެއްކޮށްލުން
-right_reprint	އަނެއްކާވެސް ބިލް ޕްރިންޓްކުރުން
 right_allowed	ހުއްދަ
 right_with_approval	ރުހުން ލިބިގެންނެވެ
 right_denied	ހުއްދައެއް ނޫނެވެ
@@ -1086,25 +897,11 @@ no_server_found	އެއްވެސް މީހަކު ނުފެނުނެވެ. ސަރވަރ
 servers_found_pick	ގުޅެން ބޭނުންވާ ފިހާރައަށް ފިތާލާށެވެ.
 server_host_selected	{host} ބޭނުންކޮށްގެން — ޕެއަރިންގ ކޯޑް ލިޔެ، ދެން މިހާރު ޕެއަރ ކޮށްލާށެވެ.
 print_bill	ޕްރިންޓް ބިލް
-table_actions	ކައުންޓަރ އެކްޝަންސް
-move_merge_table	ޓޭބަލް ބަދަލުކުރުން / އެއްކޮށްލުން
-move_help	މި ކައުންޓަރުގެ އޯޑަރ ހިލޭ ޓޭބަލަކަށް ބަދަލުކޮށް، ނުވަތަ ދުއްވާ މޭޒެއްގެ ތެރެއަށް އެއްކޮށްލާށެވެ.
-move_target_ph	ކައުންޓަރުގެ ނަން
 approval_pin_ph	މެނޭޖަރ ޕިން (އެކަނި އެދުނީމަ)
-move_here	_މިތަނަށް ގެނޭ
-merge_into	އެއަށް އެއްކޮށްލާށެވެ
-line_reason_ph	ސަބަބު (އެބަހީ ކަސްޓަމަރުގެ ވިސްނުން ބަދަލުވުން، ސްޓޮކް ހުސްވުން)
-line_qty_ph	ކެންސަލް ކުރަންވީ ކިތައް (ހުސް = ހުރިހާ)
-line_target_ph	ތާވަލަށް ބަދަލުވުން (އެބަހީ D5)
 confirm	ކަށަވަރުކުރުން
 menu_search_ph	އައިޓަމް ނުވަތަ ކުރު ކޯޑެއް ހޯދުން
 customer_paid_ph	ކަސްޓަމަރ ޕޭޑް
 tip_ph	ކޮޅު
-table_area_ph	ސަރަހައްދު (އެބަހީ ޑައިން އިން، ޕާރުސަލް، އޭސީ)
-table_range_ph	އެއްފަހަރާ ގިނަ: ޑީ1-ޑީ20
-add_these_tables	މި ކައުންޓަރުތައް އިތުރުކޮށްލާށެވެ
-remove_these_tables	މި ކައުންޓަރުތައް ނަގާށެވެ
-table_remove_ph	ނައްތާލާ: T1-T24، ނުވަތަ އެއް މޭޒުގެ ނަން
 find_server	ފިހާރައިގެ ސަރވަރ ހޯދާށެވެ
 bill_format	ބިލް ފޯމެޓެވެ
 bill_format_help	ކޮންމެ ބިލެއްގައި ތިޔަ ފިހާރައިގެ ނަމުގައި ޗާޕްކޮށްފައި ހުރެއެވެ. އާއި އެކު ވަކި ސަފުހާތަކެއް | (އެބަހީ އެމްޖީ ރޯޑް، ރާޖްކޮޓް | ފޯނު 98250 00000).
@@ -1112,78 +909,32 @@ bill_header_ph	އެޑްރެސް | ފޯނު
 fssai_ph	މަސްތުވާތަކެތީގެ ލައިސަންސް ނަންބަރު. (އިޚްތިޔާރީ — ތިބާގެ ބަސްތައް)
 bill_footer_ph	ފޫޓަރ (އެބަހީ ޝުކުރިއްޔާ، އަނެއްކާވެސް ޒިޔާރަތް ކުރައްވާ)
 save_bill_format	ބިލް ފޯމެޓް ސޭވްކުރުން
-kot_format	ސްލިޕް ފޯމެޓެވެ
-kot_format_help	ލިސްޓުގައިވާ ދާއިރާއަކަށް ޓެޕް ކުރާށެވެ. މަތީގައި ހޮވާފައިވާ ސްލިޕް ވައްތަރުގައި އެ ދާއިރާއަށް ޝޯ، ފޮންޓް ސައިޒް، އަދި ބަރުދަން އަމަލުކުރެވޭނެއެވެ. ކޮންމެ ބާވަތެއްގެ ވެސް ސައިޒުތަކާއި ބަރުދަންތައް ބެހެއްޓިފައި ހުރެއެވެ.
-kot_format_fields	ދަނޑުތަކެވެ
-kot_field_next	ދެން އޮތް ދާއިރާ
-kot_field_show	ދެއްކުން
-kot_field_hide	ފޮރުވުން
 kot_field_on	ދެއްކާށެވެ
 kot_field_off	ފޮރުވުން
-kot_field_size	ފޮންޓް ސައިޒް
-kot_field_size_ph	މިސާލަކަށް 16، 20، 24، 28، 32...
 kot_weight_light	އަލި
 bill_kot_panel_help	ބިލް ލޭއައުޓް އަދި ކޮންޓެންޓް ވިޑްތް. ކެޝަރަކީ ބިލް ދޫކުރި ނުވަތަ ސެޓްލް ކުރި މީހާ — ފުރިހަމަ ސޭލް ވާހަކަ ފޮތްތަކުގައި ހުރެއެވެ.
 std_size_ph	މިސާލަކަށް 18، 20، 26...
-kot_show_shop	ފިހާރައިގެ ނަން
-kot_hide_shop	ފޮރުވާ ފިހާރަ
-kot_show_time	ގަޑި
-kot_hide_time	ވަގުތު ފޮރުވާށެވެ
-kot_show_waiter	ކެޝަރ
-kot_hide_waiter	ފޮރުވާ ކެޝަރ
-kot_show_station	ސްޓޭޝަން
-kot_hide_station	ސްޓޭޝަން ފޮރުވާށެވެ
-kot_show_table	ކައުންޓަރު
-kot_hide_table	މޭޒު ފޮރުވާށެވެ
-kot_show_kot_no	ޓިކެޓް ނަންބަރެވެ
-kot_hide_kot_no	ފޮރުވާ ޓިކެޓް ނަންބަރު
-kot_width	ޕްރިވިއު ރެޕް (ސްލިޕް ޓެބްގައި ކޮންޓެންޓް ވިޑްތް ސެޓްކުރުން)
-kot_width_58	58 އެމްއެމް އެވެ
-kot_width_80	80 އެމްއެމް އެވެ
-kot_kind_heading	ޓިކެޓް ވައްތަރެވެ
-kot_kind_original	އަސްލު
-kot_kind_duplicate	ޑަބިލިކޭޓް ކުރުން
-kot_kind_modified	ބަދަލުކޮށްފައި
-kot_kind_cancelled	ކެންސަލް ކޮށްފި އެވެ
-kot_style_heading	ދަނޑު ވައްތަރުގެ ސައިޒް & ބަރުދަން
-kot_style_title	ސުރުހީ
-kot_style_item_qty	އައިޓަމް · ކިއުޓީ
-kot_style_field_pick	ފީލްޑް ހޮވާށެވެ
 kot_weight_regular	ޢާންމު
 kot_weight_bold	ބޯލްޑް
-kot_align	އެލައިން ކުރުން
 kot_align_start	ފެށުން
 kot_align_center	މެދު
 kot_align_end	ނިމުން
 content_width	ކޮންޓެންޓް ފުޅާމިން (އެމްއެމް)
 content_width_bill	ބިލް ކޮންޓެންޓް ފުޅާމިން (އެމްއެމް)
-content_width_kot	ޓިކެޓްގެ ކޮންޓެންޓް ފުޅާމިން (އެމްއެމް)
 content_width_ph	ނުވަތަ ކޮންޓެންޓް ފުޅާމިން، 40–210 އެމްއެމް ޓައިޕް ކުރާށެވެ
 content_width_help	މި ސްލިޕް ޕްރިންޓް ކުރަނީ ކިހާ ފުޅާކޮށް ހެއްޔެވެ. ބިލް އަމިއްލައަށް ފުޅާމިން ގެންގުޅެއެވެ.
 content_width_bill_help	ކަސްޓަމަރުގެ ބިލް ޕްރިންޓް ކުރާ މިންވަރު ކިހާ ފުޅާކޮށް ހެއްޔެވެ. ޑިފޯލްޓް 210 އެމްއެމް (ޞަފްޙާ) އެވެ. 58 އެމްއެމް ހަނި ސްލިޕް، 80 އެމްއެމް ފުޅާ ސްލިޕް، 112 އެމްއެމް 4 އިންޗި، 210 އެމްއެމް އޭ4 ފުޅާމިނެވެ. 40 އިން 210 އަށް އެއްވެސް އަގެއް ޓައިޕް ކުރާށެވެ.ޓިކެޓްތަކުގެ އަމިއްލަ ފުޅާމިން ސްލިޕް ޓެބްގައި ހުރެއެވެ.
-content_width_kot_help	ކިހާ ފުޅާކޮށް ޓިކެޓް ޕްރިންޓް ކުރަނީ. ޑިފޯލްޓް 80 އެމްއެމް އެވެ. 58 އެމްއެމް ހަނި ސްލިޕް، 80 އެމްއެމް ފުޅާ ސްލިޕް، 112 އެމްއެމް 4 އިންޗި، 210 އެމްއެމް ޕޭޖެވެ. 40 އިން 210 އަށް އެއްވެސް އަގެއް ޓައިޕް ކުރާށެވެ.ކަސްޓަމަރ ބިލްތަކުގެ އަމިއްލަ ފުޅާމިން ބިލް ޓެބްގައި ހުރެއެވެ.
 vp_paper_width	ކޮންޓެންޓް ފުޅާމިން (އެމްއެމް)
 vp_paper_width_ph	ނުވަތަ ކޮންޓެންޓް ފުޅާމިން، 40–210 އެމްއެމް ޓައިޕް ކުރާށެވެ
 vp_paper_width_help	ކޮންޓެންޓް ވިޑްތް ސެޓްކޮށްފައިވަނީ ބިލް އެންޑް ސްލިޕް ފޯމެޓްގެ ދަށުން — ބިލަށް (ޑިފޯލްޓް 210 އެމްއެމް) އަދި ޓިކެޓަށް (ޑިފޯލްޓް 80 އެމްއެމް) ވަކިވަކިންނެވެ.
-kot_size	ފޮންޓް ސައިޒް
-kot_size_s	view-size
-kot_size_m	layer-mode-effects
-kot_size_l	view-size
 std_size	ފޮންޓް ސައިޒް
 kot_copies	ކޮޕީ
 kot_copies_1	1
 kot_copies_2	2
 kot_copies_3	3
-kot_title_ph	ސުރުޚީ (ހުސް = ޓިކެޓް)
-kot_footer_ph	ބެކް-އޮފީސް ނޯޓް (އިޚްތިޔާރީ)
-kot_preview	ޕްރިވިއު
-save_kot_format	ސޭވް ސްލިޕް ފޯމެޓް
-test_kot_format	ޓެސްޓް ޕްރިންޓް
-test_kot_sent	ޓިކެޓް ޕްރިވިއު ފޮނުވައިފި އެވެ
 test_bill_format	ޓެސްޓް ބިލް
 test_bill_sent	ބިލް ޕްރިވިއު ފޮނުވައިފި އެވެ
 test_print_no_printer	އެ ވަޒީފާއަށް ޕްރިންޓަރެއް ނެތް — މި ސްކްރީނުން އެއްޗެއް ހޮވާށެވެ
-kot_format_saved	ސްލިޕް ފޯމެޓް ސޭވް ކުރެވިއްޖެއެވެ
 std_print	ބިލް ޕްރިންޓް ސައިޒް
 std_print_help	އޮއެސް / ޑޮކިއުމެންޓް ޕްރިންޓަރުތަކުގައި ސްޓޭންޑަރޑް ޕޯޓްރެއިޓް އަދި ލޭންޑްސްކޭޕް ބިލް ޖޮބްތަކަށް ފޮންޓް ސައިޒް (ޕޮއިންޓްތައް އެންޓަރކުރުން — ކުޑަ/އާދައިގެ/ބޮޑު ނޫން) . ދެ އޮރިއެންޓޭޝަންގައި ވެސް އެއް ސައިޒެކެވެ.
 std_size_s	view-size
@@ -1223,23 +974,16 @@ upi_qr	ޔޫޕީއައި ކިއުއާރު
 show_upi_qr	ޔޫޕީއައި ކިއުއާރު ދައްކާށެވެ
 close_upi_qr	ލެއްޕުން
 upi_qr_help	ކަސްޓަމަރު ސްކޭންކޮށް ފައިސާ ދައްކައެވެ. އެމީހުން ފައިސާ ދެއްކުމަށްފަހު ޕޭމަންޓް ނަގާ އަށް ފިތާލާށެވެ. ދެވަނަ ސްކްރީން: ލޭންގައި ސަރވަރ ޔޫ.އާރ.އެލް /ޑިސްޕްލޭ ހުޅުވާށެވެ.
-kot_recall	ހަނދާންކުރުން
 recently_done	ދާދިފަހުން ކޮށްފި އެވެ
-recall_kot_ph	ޓިކެޓް # ހަނދާން ނައްތާލަން
 role_help_customer	ދައުރު: ކަސްޓަމަރ — ޚަތާ (އެމީހުން އަޅުގަނޑުމެންނަށް ދަރަނިވެރިވެއެވެ). ހަމަ ޕާޓީއަށް ވެސް ސްޓޮކް ސަޕްލައި ކުރެވޭނެ.
 role_help_both	ރޯލްސް: ކަސްޓަމަރ + ސަޕްލައިއަރ — އެއް ޕާޓީ، ޚަތާ އަދި ޕޭޔަބަލް ލެޖަރސް، ނެޓް އިން ރިޕޯޓްސް.
 role_help_supplier	ދައުރު: ސަޕްލައި ކުރާ ފަރާތް — އަޅުގަނޑުމެން އެމީހުންނަށް ދަރަނިވެރިވަނީ ގަންނަ ތަކެތި.
-dine_in_pick_table	ކައުންޓަރު ފިހާރައެއްގައި ބޭނުން ނުކުރެއެވެ
-choose_table	ކައުންޓަރ ހޮވާށެވެ
-change_table	ޗޭންޖް ޓޭބަލް
-pick_table_banner	މި އޯޑަރަށް މޭޒެއް ހޮވާށެވެ
 items_word	ތަކެތި
 items_section	ތަކެތި
 back_to_order	އަނބުރާ އޯޑަރަށް
 new_items_head	އަދި ފޮނުވާފައެއް ނުވެއެވެ
 price_ph	އަގު
 price_ph_gst_inside	އަގު ({tax} ހިމެނޭ ގޮތަށް)
-cancel_needs_table	ކައުންޓަރު ސޭލްސް ޓިކެޓްގައި ހުންނަނީ ޕޭމަންޓް ނަގަންދެނެވެ
 tax_rates_missing_hint	މި ތަކެތީގެ މައްޗަށް {tax} ރޭޓެއް ނެތް — on Items set ޓެކްސް ރޭޓް (އަގުތަކުގައި މިހާރުވެސް {tax} ހިމެނޭ ގޮތަށް {tax} ހިމެނޭ)
 taxable_value	ޓެކްސް ނެގޭ އަގު
 gst_inside_price_note	({tax} ހިމެނޭ ގޮތަށް)
@@ -1260,30 +1004,11 @@ client_template_confirm	Add {d} items from {title}? Items you already have stay 
 client_template_importing	އިމްޕޯޓް ކުރަނީ {title}...
 client_template_done	Every item from {title} is on your items.
 client_template_imported	Added {d} items and {c} categories from {title}
-resv_heading	ރިޒަރވޭޝަން ހެދުން
-resv_name_ph	ކަސްޓަމަރުގެ ނަން
-resv_phone_ph	ފޯނު (އިޚްތިޔާރީ)
-resv_guests_ph	މީހުން
-resv_when_ph	ކޮން އިރަކު — 20:30، މާދަމާ 13:00
-resv_table_ph	ކައުންޓަރ (އިޚްތިޔާރީ)
-resv_add	ބުކްކުރޭ
-resv_seat	ބައިސްވި
-resv_none	އިތުރަށް ބުކްތަކެއް ނެތް.
-guests_word	ގެސްޓްތައް
-delivery_by_ph	ފޮނުވާ މީހާ (ރައިޑަރ ނުވަތަ ސްޓާފްގެ ނަން)
-kitchen_all_day	މިހާރު ދަންނަން: {items}
-split_bill	ބިލް ބައިކުރޭ
-split_go	ވަކި ބިލެއް ހަދާ
 cancel	ކެންސަލް
 opening_client	ކްލައިންޓް ހުޅުވަނީ…
 preparing_desk	ޑެސްކް ތައްޔާރުކުރަނީ…
 opening_server	ސަރވަރ ހުޅުވަނީ…
 creating_server	ސަރވަރ ހެދުނީ…
-split_help	އެއް ކަސްޓަމަރަކު ފައިސާ ދައްކާ ތަކެތި ޓެޕް ކުރާށެވެ · {n} ހޮވާފައި
-split_send_first	ފުރަތަމަ ސްލިޕް ފޮނުވުން — ވަކި ބިލަކަށް ދެވޭނީ ހަމައެކަނި ބެކް އޮފީހުގައި ހުރި ތަކެތި
-split_pick_some	ފުރަތަމަ ވަކި ބިލަށް ބޭނުންވާ ތަކެތި ޓެޕް ކުރާށެވެ
-split_done	ވަކި ބިލެއް ހަދާފައި — އެއީ މި ކައުންޓަރުގެ ކައިރީގައި ހުރި ތަޅުގައި
-split_marked	ވަކި ބިލް
 order_empty_pick	ހުސްކޮށް އޯޑަރު ކުރާށެވެ — ތަކެތި ހޮވަން މަތީގައިވާ ތަކެތި އެޑް އަށް ފިތާލާށެވެ.
 add_dishes	ބޭސްތައް އަޅާށެވެ
 order_so_far	މި އޯޑަރުގައި: {n} · {total}
@@ -1294,24 +1019,8 @@ pick_done_dd	ނިމިއްޖެ · {label}
 printer_route_mode	މި ތަނުގައި ޕްރިންޓަރު ގިނަވެއްޖެނަމަ
 printer_mode_first	ފުރަތަމަ ކާމިޔާބުވާ އެއް
 printer_mode_all	ހުރިހާ އެއްޗަކަށް ޕްރިންޓްކުރޭ
-kot_show_area	ހިސާބު
-kot_hide_area	ހިސާބު ފޮރުވާ
-kot_show_item_hdr	އައިޓަމް · ކިއުޓީ
-kot_hide_item_hdr	ކޮލަމް ފޮރުވާ
-kot_show_title	ސުރުޚީ ލައިން
-kot_hide_title	ސުރުޚީ ފޮރުވާ
-kot_field_order	ޕްރިންޓް ތަރުތީބު
 kot_field_up	މަތަށް
 kot_field_down	ތިރަށް
-kot_field_cycle	ދެން އިޚްތިޔާރުކުރޭ
-kot_field_select	ދެން އިޚްތިޔާރުކުރޭ
-kot_field_time	ގަޑި
-kot_field_kot_no	ޓިކެޓް ނަންބަރެވެ
-kot_field_area	ހިސާބު
-kot_field_table	ކައުންޓަރު
-kot_field_shop	ފިހާރައިގެ ނަން
-kot_field_waiter	މުވައްޒަފުން
-kot_field_station	ސްޓޭޝަން
 app_template_blurb_extra	އަދި: އޯނަރ ޒާހިރު، އެޑްމިން އާސިފް، ކެޝަރ ނަވާޒް؛ ކުރިމަތީ ސައިޑްބާ؛ 4 ގަޑިއިރު ފަހުން ތާރީޚު؛ މިއަދު ސްޓްރިޕް އޮފް؛ ކޮމްޕެކްޓް ބިލެކެވެ.
 dishes_n	{n} items
 recipe_ph	ރެސިޕީ (އިޚްތިޔާރީ — ކައުންޓަރ ފިހާރައެއްގައި ބޭނުން ނުކުރާ)
@@ -1321,8 +1030,6 @@ low_stock_alert	މަދުވެދާނެ — އަވަސް ގަންނާ: {items}
 unpriced_note	ތިބާގެ ތަކެތީގައި ހުންނަ {n} ތަކެތީގެ އަގެއް އަދި ނެތް — އެމީހުން ބިލް ކުރަނީ އެއްޗެއް ކަނޑައަޅަންދެން 0 ގައެވެ.
 show_unpriced	އަގު ނެތް ތަކެތި އެކަނި ދައްކާށެވެ
 show_all_dishes	ހުރިހާ އެއްޗެއް ދައްކާށެވެ
-role_waiter	ކެޝަރ
-role_kitchen	ސްޓޯރ
 role_title_rest_ph	މަޤާމުގެ ނަން (އެބަހީ ކެޕްޓަން، ބޮޑު ކައްކު)
 preset_help_rest	ކެޝަރ: ވިއްކާ. މެނޭޖަރ: ވިއްކުން + ތަކެތި + ބާތިލް/އިސްލާހުކުރުން.
 kind_raw	ކޮމްޕައުންޑިންގ ސްޓޮކް

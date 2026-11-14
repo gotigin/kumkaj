@@ -34,36 +34,6 @@ impl ShiftClose {
     }
 }
 
-/// A table booking.
-#[derive(Clone, Debug, PartialEq, Eq)]
-pub struct Reservation {
-    pub id: String,
-    pub name: String,
-    pub phone: String,
-    pub guests: i64,
-    /// Local time, "YYYY-MM-DD HH:MM".
-    pub at: String,
-    pub table_name: String,
-    pub status: String,
-}
-
-/// "20:30" (today), "tomorrow 13:00" or "2026-10-26 20:30" → "YYYY-MM-DD HH:MM".
-fn parse_booking_time(text: &str, now: chrono::NaiveDateTime) -> Result<String, String> {
-    let t = text.trim().to_lowercase();
-    let bad = || format!("Write the time as 20:30, tomorrow 13:00 or 2026-10-26 20:30 (not \"{}\")", text.trim());
-    let (day, clock) = match t.rsplit_once(' ') {
-        Some((d, c)) => (d.trim().to_string(), c.trim().to_string()),
-        None => (String::new(), t.clone()),
-    };
-    let time = chrono::NaiveTime::parse_from_str(&clock, "%H:%M").map_err(|_| bad())?;
-    let date = match day.as_str() {
-        "" | "today" => now.date(),
-        "tomorrow" => now.date() + chrono::Duration::days(1),
-        d => chrono::NaiveDate::parse_from_str(d, "%Y-%m-%d").map_err(|_| bad())?,
-    };
-    Ok(date.and_time(time).format("%Y-%m-%d %H:%M").to_string())
-}
-
 fn today() -> String {
     Local::now().format("%Y-%m-%d").to_string()
 }
@@ -275,112 +245,6 @@ impl Store {
         Ok(out)
     }
 
-    /// The owner's day at a glance: by staff, by order type, by hour, top
-    /// items, discounts.
-    /// Book a table: guest name, phone, how many, when ("20:30", "tomorrow
-    /// 13:00", "2026-10-26 20:30") and optionally which table.
-    pub fn add_reservation(
-        &self,
-        name: &str,
-        phone: &str,
-        guests: i64,
-        when: &str,
-        table_name: &str,
-        actor: &StaffMember,
-    ) -> Result<Reservation, String> {
-        self.assert_server_writer("Book tables")?;
-        let name = name.trim();
-        if name.is_empty() {
-            return Err("Guest name required".into());
-        }
-        if guests < 0 {
-            return Err("Guests can't be negative".into());
-        }
-        let table_name = table_name.trim();
-        if !table_name.is_empty()
-            && !self.list_tables()?.iter().any(|t| t.name.eq_ignore_ascii_case(table_name))
-        {
-            return Err(format!("No table named \"{table_name}\""));
-        }
-        let at = parse_booking_time(when, Local::now().naive_local())?;
-        let r = Reservation {
-            id: crate::domain::new_id(),
-            name: name.to_string(),
-            phone: phone.trim().to_string(),
-            guests,
-            at,
-            table_name: table_name.to_string(),
-            status: "booked".into(),
-        };
-        self.conn
-            .execute(
-                "INSERT INTO reservations(id, name, phone, guests, at, table_name, status, created_at, created_by)
-                 VALUES(?1, ?2, ?3, ?4, ?5, ?6, 'booked', ?7, ?8)",
-                params![r.id, r.name, r.phone, r.guests, r.at, r.table_name, Local::now().to_rfc3339(), actor.name],
-            )
-            .map_err(|e| e.to_string())?;
-        self.audit(actor, "reservation.add", &format!("{} · {} · {}", r.name, r.guests, r.at))?;
-        Ok(r)
-    }
-
-    /// Bookings still to come (and those up to two hours late), soonest first.
-    pub fn upcoming_reservations(&self) -> Result<Vec<Reservation>, String> {
-        let from = (Local::now().naive_local() - chrono::Duration::hours(2))
-            .format("%Y-%m-%d %H:%M")
-            .to_string();
-        let mut stmt = self
-            .conn
-            .prepare(
-                "SELECT id, name, phone, guests, at, table_name, status FROM reservations
-                  WHERE status = 'booked' AND at >= ?1 ORDER BY at, name",
-            )
-            .map_err(|e| e.to_string())?;
-        let rows = stmt
-            .query_map(params![from], |r| {
-                Ok(Reservation {
-                    id: r.get(0)?,
-                    name: r.get(1)?,
-                    phone: r.get(2)?,
-                    guests: r.get(3)?,
-                    at: r.get(4)?,
-                    table_name: r.get(5)?,
-                    status: r.get(6)?,
-                })
-            })
-            .map_err(|e| e.to_string())?;
-        rows.collect::<Result<_, _>>().map_err(|e| e.to_string())
-    }
-
-    /// Guests arrived ("seated") or the booking is off ("cancelled").
-    pub fn set_reservation_status(&self, id: &str, status: &str, actor: &StaffMember) -> Result<(), String> {
-        self.assert_server_writer("Change bookings")?;
-        if !matches!(status, "seated" | "cancelled") {
-            return Err("Unknown booking status".into());
-        }
-        let n = self
-            .conn
-            .execute(
-                "UPDATE reservations SET status = ?2 WHERE id = ?1 AND status = 'booked'",
-                params![id, status],
-            )
-            .map_err(|e| e.to_string())?;
-        if n == 0 {
-            return Err("That booking is no longer open".into());
-        }
-        self.audit(actor, &format!("reservation.{status}"), id)?;
-        Ok(())
-    }
-
-    /// Names that took delivery orders out before, most used first.
-    pub fn delivery_people(&self) -> Result<Vec<String>, String> {
-        let mut stmt = self
-            .conn
-            .prepare("SELECT delivery_by FROM sale_delivery GROUP BY delivery_by ORDER BY COUNT(*) DESC LIMIT 30")
-            .map_err(|e| e.to_string())?;
-        let rows = stmt.query_map([], |r| r.get(0)).map_err(|e| e.to_string())?;
-        rows.collect::<Result<_, _>>().map_err(|e| e.to_string())
-    }
-
     pub fn restaurant_day_report_text(&self) -> Result<String, String> {
         let day = today();
         let fiscal = self.fiscal_settings()?;
@@ -583,31 +447,6 @@ mod tests {
     }
 
     #[test]
-    fn booking_times_read_the_way_people_say_them() {
-        let now = chrono::NaiveDate::from_ymd_opt(2026, 10, 25).unwrap().and_hms_opt(12, 0, 0).unwrap();
-        assert_eq!(super::parse_booking_time("20:30", now).unwrap(), "2026-10-25 20:30");
-        assert_eq!(super::parse_booking_time("Tomorrow 13:00", now).unwrap(), "2026-10-26 13:00");
-        assert_eq!(super::parse_booking_time("2026-11-01 19:15", now).unwrap(), "2026-11-01 19:15");
-        assert!(super::parse_booking_time("evening", now).is_err());
-    }
-
-    /// A booking shows until the guests are seated or it is cancelled.
-    #[test]
-    fn a_booking_waits_until_seated_or_cancelled() {
-        let (store, path) = shop();
-        let owner = store.list_staff().unwrap().into_iter().next().unwrap();
-        assert!(store.add_reservation("Mehta", "98", 4, "tomorrow 20:30", "Z9", &owner).is_err(), "no such table");
-        let r = store.add_reservation("Mehta", "98765", 4, "tomorrow 20:30", "", &owner).unwrap();
-        store.add_reservation("Shah", "", 2, "tomorrow 13:00", "", &owner).unwrap();
-        let names: Vec<_> = store.upcoming_reservations().unwrap().into_iter().map(|r| r.name).collect();
-        assert_eq!(names, vec!["Shah".to_string(), "Mehta".to_string()], "soonest first");
-        store.set_reservation_status(&r.id, "seated", &owner).unwrap();
-        assert!(store.set_reservation_status(&r.id, "cancelled", &owner).is_err());
-        assert_eq!(store.upcoming_reservations().unwrap().len(), 1);
-        let _ = std::fs::remove_file(path);
-    }
-
-    #[test]
     fn day_report_totals_sizes_and_toppings_sold() {
         use crate::domain::{ModifierGroup, ModifierOption};
         let (store, path) = shop();
@@ -641,7 +480,6 @@ mod tests {
                 &cart.to_sale_draft().unwrap(),
                 PayMethod::Cash,
                 None,
-                None,
                 &owner,
             )
             .unwrap();
@@ -655,25 +493,6 @@ mod tests {
         let _ = std::fs::remove_file(path);
     }
 
-    /// A delivery order remembers who took it out; the day report totals
-    /// by them and the name is offered next time.
-    #[test]
-    fn deliveries_are_totalled_by_who_took_them() {
-        let (store, path) = shop();
-        let owner = store.list_staff().unwrap().into_iter().next().unwrap();
-        let thali = store.list_products(false).unwrap().remove(0);
-        let mut cart = Cart::default();
-        cart.add_or_bump(&thali);
-        cart.set_order_type(crate::domain::OrderType::Delivery);
-        cart.delivery_by = "  Ravi ".into();
-        store.finalize_sale(&cart.to_sale_draft().unwrap(), PayMethod::Cash, None, None, &owner).unwrap();
-        let report = store.restaurant_day_report_text().unwrap();
-        assert!(report.contains("Deliveries by") && report.contains("Ravi · 1 bill"), "{report}");
-        assert_eq!(store.delivery_people().unwrap(), vec!["Ravi".to_string()]);
-        let _ = crate::print_share::take_captured();
-        let _ = std::fs::remove_file(path);
-    }
-
     #[test]
     fn shift_handover_names_the_variance_and_starts_the_next_shift() {
         let (store, path) = shop();
@@ -683,7 +502,7 @@ mod tests {
         for pay in [PayMethod::Cash, PayMethod::Cash, PayMethod::Upi] {
             let mut cart = Cart::default();
             cart.add_or_bump(&thali);
-            store.finalize_sale(&cart.to_sale_draft().unwrap(), pay, None, None, &owner).unwrap();
+            store.finalize_sale(&cart.to_sale_draft().unwrap(), pay, None, &owner).unwrap();
         }
         let so_far = store.shift_so_far(&owner).unwrap();
         assert_eq!(so_far.bills, 3);
@@ -722,13 +541,13 @@ mod tests {
         assert_eq!(cart.applied_total(), Money::from_rupees(360));
         let draft = cart.to_sale_draft().unwrap();
         assert_eq!(draft.lines.iter().map(|l| l.line_total_paise).sum::<i64>(), Money::from_rupees(360).paise());
-        assert!(store.finalize_sale(&draft, PayMethod::Cash, None, None, &cashier).unwrap_err().contains("why"));
+        assert!(store.finalize_sale(&draft, PayMethod::Cash, None, &cashier).unwrap_err().contains("why"));
         cart.discount.as_mut().unwrap().reason = "Regular customer".into();
         let draft = cart.to_sale_draft().unwrap();
-        assert!(store.finalize_sale(&draft, PayMethod::Cash, None, None, &cashier).unwrap_err().contains("approval"));
+        assert!(store.finalize_sale(&draft, PayMethod::Cash, None, &cashier).unwrap_err().contains("approval"));
         cart.discount.as_mut().unwrap().approval_pin = "9999".into();
         let draft = cart.to_sale_draft().unwrap();
-        let sale = store.finalize_sale(&draft, PayMethod::Cash, None, None, &cashier).unwrap();
+        let sale = store.finalize_sale(&draft, PayMethod::Cash, None, &cashier).unwrap();
         assert_eq!(sale.total_paise, Money::from_rupees(360).paise());
         let report = store.restaurant_day_report_text().unwrap();
         assert!(report.contains("Discounts") && report.contains("Regular customer (approved by Mona)"), "{report}");

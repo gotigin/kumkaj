@@ -68,28 +68,6 @@ applied	प्रयुक्तम्
 note_ph	टिप्पणी (वैकल्पिकम्) ९.
 rounded	गोलम्
 split	विभक्तः
-send_kot	स्लिप् प्रेषयतु
-send_kot_to	प्रेषयतु → {kitchens} .
-send_kot_again	अग्रिमस्लिप् कृते वस्तूनि योजयन्तु
-send_kot_held	धारितानि वस्तूनि — प्रेषयितुं अनहोल्ड्
-reprint_kot	पुनः मुद्रणं चयनितम्
-reprint_kot_ok	पुनः {n} वस्तूनि मुद्रितानि · {slips} स्लिप(s) → {kitchens}
-reprint_kot_needed	प्रथमं स्लिप् प्रेषयन्तु — ततः वस्तूनि समाविष्ट्य चयनितानि पुनः मुद्रयन्तु
-reprint_kot_none_selected	प्रत्येकं प्रेषितं द्रव्यं त्यक्तं भवति — पुनः मुद्रणार्थं तेषु In print इति ट्याप् कुर्वन्तु
-reprint_kot_client	प्रेषितस्य {place} कृते पुनः मुद्रयन्तु ({n}) — दुकानयन्त्रं तत् मुद्रयति
-print_cancelled_kot	सर्वाणि रद्दीकृतानि मुद्रयन्तु
-print_cancelled_kot_ok	मुद्रितं {n} रद्दं कृतं वस्तु · {slips} स्लिप(s) → {kitchens}
-print_cancelled_kot_needed	प्रथमं रद्दीकृतवस्तूनाम् एकं सारणीं उद्घाटयन्तु
-print_cancelled_kot_none	अस्मिन् आदेशे रद्दीकृतवस्तूनि नास्ति
-print_cancelled_kot_client	प्रेषितस्य {place} कृते मुद्रणं रद्दं ({n}) — दुकानयन्त्रं तत् मुद्रयति
-kot_banner	दयालु बैनर
-kot_banner_ph	बैनर (रिक्त = कोऽपि) २.
-kot_item_prefix	मेनू मेनू मद उपसर्गः
-kot_item_prefix_ph	यथा--- [CANCELLED] ९.
-kot_strike	द्रव्यस्य नाम प्रहारं कुर्वन्तु
-kot_strike_note	स्ट्राइक आइटम नोट
-kot_strike_on	पर
-kot_strike_off	अफ
 bill_item_layout	मेनू मेनू मद लेआउट्
 bill_item_layout_columns	स्तम्भाः
 bill_item_layout_stacked	स्तम्भितम्
@@ -118,8 +96,6 @@ bill_item_gap_em	गप (एम्) ९.
 bill_item_qty_min	मात्रा मि (एम्) .
 bill_item_price_min	मूल्यं न्यूनतम (एम्) .
 bill_item_amount_min	राशि मिन (एम्) .
-kot_item_qty_width	Qty स्तम्भ
-kot_item_num_align	संख्या-संरेखणम्
 bill_total_qty_label	कुल qty लेबल
 bill_total_subtotal_label	उप कुल लेबल
 bill_total_grand_label	भव्य कुल लेबल
@@ -131,36 +107,9 @@ bill_item_piece_off	अफ
 bill_total_qty	कुल qty
 bill_total_subtotal	उप कुल
 bill_total_grand	भव्य कुल
-reprint_incl	मुद्रितरूपेण
-reprint_skip	त्यजतु
-reprint_skip_meta	पुनर्प्राप्तिमुद्रणं त्यजन्तु
-kot_dest_hint	सेटिंग्स् → प्रिंटर्स् इत्यत्र भवता {kitchens} नियुक्तेषु मुद्रकेषु मुद्रयति
-kot_sent_hint	अन्तिमः प्रेषणं {kitchens} प्रति गतः। अग्रिमबिलस्य कृते वस्तूनि योजयितुं ट्याप् कुर्वन्तु — अथवा पुनः तस्यैव कृते स्लिप् मुद्रयन्तु ।
-kot_sent_printing	{kitchens} प्रति प्रेषिता स्लिप् — मुद्रणम्
-kot_sent_not_printed	स्लिप् {kitchens} प्रति प्रेषिता परन्तु न मुद्रिता: {why}. दुकानं वदतु, ततः मुद्रकं समाधाय पुनः मुद्रयतु।
-kot_sent_screen	{kitchens} कृते प्रेषितः स्लिप्
-kot_queued_shop	{place} कृते स्लिप → {kitchens} रक्षितः; दुकानयन्त्रं तत् मुद्रयति
-kot_job_label	{place} → {kitchens} कृते स्लिप् कुर्वन्तु
-kot_job_reached	{place} कृते स्लिप् {kitchens} यावत् अभवत्
 kot_unassigned	अनिर्दिष्टः
-kot_unassigned_held	स्टेशनं विना {n} वस्तूनि धारितवान् — प्रेषयितुं रेखायां अनहोल्ड्
-kot_station_ph	स्टेशन
-kot_station_dd	स्टेशन
-kot_station_dd_n	स्टेशन · {stations}
-kot_set_station	एतस्य स्टेशनस्य उपयोगं कुर्वन्तु
-kot_station_applied	{n} द्रव्येषु सेट् स्टेशनम्: {station}
-kot_station_cleared	{n} मदेभ्यः स्टेशनं स्वच्छं कृतम्: {station}
-kot_station_needed	प्रथमं दुकानखण्डं चिनुत
-kot_station_not_allowed	विभागस्य उपयोगः अनुमतः नास्ति: {station}
-kot_station_none	अद्यापि कोऽपि स्टेशनः नास्ति — काउण्टर-दुकाने अप्रयुक्तम् (सेटिंग्स् → आवश्यकतानुसारं क्षेत्राणि)
 pos_tab_items	मेनू-वस्तूनि योजिताः
 pos_tab_payment	भुक्ति
-hold_send	पाकशालातः धारयन्तु
-hold_send_on	आयोजितः
-hold_send_meta	धारितः — न अस्मिन् स्लिप्-उपरि
-station_remove	स्टेशनं निष्कासयन्तु
-station_remove_ph	सूचीस्थं स्टेशनं निष्कासयितुं ट्याप् कुर्वन्तु
-station_removed	स्टेशन हटाया: {name} .
 settings_hub_title	सेटिंग्स्
 settings_hub_help	एकैकं क्षेत्रं उद्घाटयन्तु — न्यूनं स्क्रॉलं, स्पष्टतरविकल्पाः ।
 settings_back	पृष्ठतः
@@ -169,12 +118,10 @@ settings_sec_country	देश & कर
 settings_sec_tills	अन्ये यन्त्राणि
 settings_sec_brand	भवतः ब्राण्ड्
 settings_sec_units	इकाइ एवं रूपांतरण
-settings_sec_pickers	क्षेत्राणि · स्टेशनाः · करदराणि
+settings_sec_pickers	करदराणि
 settings_sec_printers	मुद्रकाः
 settings_sec_bill	बिल एण्ड स्लिप प्रारूप
 settings_sec_selling	योजना एवं विक्रय
-bill_kot_tab_bill	अतिथि बिल
-bill_kot_tab_kot	स्खलनं
 settings_sec_alerts	अलर्ट्स्
 alerts_help	भवतः कृते कियत्कालं यावत् स्थितिसन्देशाः पर्दायां तिष्ठन्ति (एतत् प्रवेशः)।
 snack_secs_ph	सेकण्ड् (३–६०, पूर्वनिर्धारित १०) २.
@@ -225,8 +172,6 @@ counter	गणकम्
 dine_in	गणकम्
 takeaway	टेकअवे
 order	भोजनालयस्य आदेशः
-tables	गणकाः
-kitchen	खण्डाः
 sales	विक्रयः
 sales_refunds	विक्रय एवं धनवापसी
 day_close	दिवसः समाप्तः
@@ -254,10 +199,6 @@ zero_sales_on	₹0 अनुमन्यताम्
 zero_sales_off	मूल्यं आवश्यकम्
 zero_sales_saved_on	शून्यमूल्यविक्रयणस्य अनुमतिः अस्ति
 zero_sales_saved_off	विक्रयस्य मूल्यं ₹0 इत्यस्मात् अधिकं भवितुमर्हति
-floor_areas_help	क्षेत्राणि तलस्य कक्ष्याः वा क्षेत्राणि वा (Dine In, Parcel, AC ...) भवन्ति । प्रथमं क्षेत्रं योजयन्तु, ततः तस्मिन् गणकान् स्थापयन्तु — प्रत्येकं क्षेत्रं तलस्य पृथक् समूहः भवति ।
-area_new_ph	नवीनः क्षेत्रः / कक्षः (उदा. एसी, उद्यानम्) .
-add_area	क्षेत्रफलं योजयन्तु
-area_added	क्षेत्रं “{name}” सज्जम् — तस्मिन् काउण्टर् योजयन्तु
 no_favorites	अद्यापि प्रियाः नास्ति — अधोलिखितायाः सूचीतः मेनू-वस्तूनि योजयन्तु ।
 add_to_bill	बिलम् योजयतु
 added	योजितम्
@@ -268,19 +209,9 @@ chip_missing_customer	चयनितः ग्राहकः अनुपल�
 chip_no_customer	अद्यापि कोऽपि ग्राहकः नास्ति — नाम टङ्कयन्तु, ततः Credit इति ट्याप् कुर्वन्तु
 credit_summary_fmt	{} ग्राहकाः · मुक्तं ऋणं {} · अग्रिमाणि धारितानि {}
 recent_label	अद्यतनम् : १.
-kot_new_waiting	NEW — प्रतीक्षमाणः
-kot_preparing	सज्जता
-kot_ready_serve	READY — तस्य सेवां कुर्वन्तु
-kot_done_cap	DONE इति
-kot_cancelled	CANCELED इति
-kot_start_btn	आरभत
-kot_mark_ready	मार्क सज्जः
-kot_done_btn	कृतम्
-table_free	रिक्तम् — आदेशं आरभ्य ट्याप् कुर्वन्तु
 start_order	आदेशं आरभत
 open_bill	विधेयकं उद्घाटयतु
 collect_payment	भुगतान संग्रह करें
-table_running	धावति
 payment_pending	भुगतान लंबित
 collect_at_counter	काउण्टरे संग्रहयन्तु
 inventory	इन्वेण्ट्री
@@ -313,7 +244,6 @@ ok	ठीकम्
 this_shop	सर्वर मोड
 extra_till	क्लायन्ट् मोड्
 off	अफ
-tables_kitchen	दुकान विन्यास
 server	सर्वर मोड
 client	क्लायन्ट् मोड्
 language_currency	भाषा एवं मुद्रा
@@ -355,8 +285,6 @@ add_item_plain	मेनू मदं योजयन्तु
 add_note	टिप्पणी योजयतु
 add_opening_balance	उद्घाटन संतुलनं योजयन्तु
 add_staff	कर्मचारीं योजयन्तु
-add_station	स्टेशनं योजयन्तु
-add_table	भोजनमेजं योजयन्तु
 add_unit	एककं योजयतु
 add_use_name	एतत् नाम योजयतु / उपयुज्यताम्
 allow_extra_tills	अतिरिक्त टिल् अनुमन्यताम्
@@ -409,7 +337,6 @@ share_whatsapp	शेयर WhatsApp
 lan_pages_heading	Wi‐Fi इत्यत्र ग्राहकपृष्ठानि
 lan_pages_help	अस्य दुकानस्य Wi‐Fi इत्यत्र ग्राहकपृष्ठानि प्रदर्शनफलकस्य प्रतिक्रियायाः च कृते कार्यं कुर्वन्ति । मोबाईल डाटा इत्यत्र जनानां पश्चात् Cloud इत्यस्य आवश्यकता भवति। कार्ड् टर्मिनल् अथवा पेमेण्ट् लिङ्क् वैकल्पिकं भवति तथा च कदापि काउण्टरं अवरुद्धं न करोति ।
 diag_send_heading	एतत् यन्त्रं साझां कुर्वन्तु
-kot_dest_heading	स्टेशन
 optional_login_heading	वैकल्पिकं प्रवेशः
 rights_heading	अधिकारः
 ops_panel	स्थानीय ops
@@ -436,28 +363,6 @@ till_voucher_amt_ph	वाउचर राशि (रिक्त = सर्व
 till_wallet_topup_ph	टॉप-अप बटुए राशि
 till_voucher_issue_amt_ph	वाउचर राशि जारी करें
 till_voucher_issue_code_ph	नवीन वाउचर कोड
-split_evenly	समं विभक्तम्
-waitlist	प्रतीक्षासूची
-fire_course	अग्रिमः सोपानः
-hold_item	पाकशालातः धारयन्तु
-waiter_call	कैशियरं आह्वयन्तु
-waitlist_add	प्रतीक्षासूचौ योजयतु
-floor_view_grid	जालम्
-floor_view_layout	विन्यासः
-floor_layout_x	X
-floor_layout_y	Y
-floor_layout_w	W
-floor_layout_h	H
-floor_layout_save	विन्यासं रक्षतु
-floor_layout_open	भोजनमेजं उद्घाटयतु
-floor_layout_edit	विन्यास सम्पादयतु
-floor_layout_pick	भोजनमेजस्य विन्यासं सम्पादयितुं ट्याप् कुर्वन्तु
-floor_layout_saved	विन्यासः रक्षितः
-floor_layout_nudge_left	← 20
-floor_layout_nudge_right	→ 20
-floor_layout_nudge_up	↑ 20
-floor_layout_nudge_down	↓ 20
-sibling_pickers_help	यूनिट् इव On/Off इति ट्याप् कुर्वन्तु — दैनन्दिन-उत्कर्षकेभ्यः क्षेत्राणि, स्टेशनाः, कर-दराः च गोपयन्तु; pack defaults तिष्ठन्ति।
 bulk_price_apply	बल्क मूल्यं प्रयोजयन्तु
 card_terminal_optional	कार्ड टर्मिनल् / भुगतानलिङ्क् (अन्तर्जाल उपलब्धे वैकल्पिकम्)
 copy_report	प्रतिवेदनं प्रतिलिख्यताम्
@@ -483,7 +388,6 @@ import_day	आयातदिवसः
 import_items_csv_plain	मेनू आइटम आयात करें CSV...
 import_parties_csv	आयात ग्राहक एवं आपूर्तिकर्ता CSV...
 item_name	मेनू मेनू मदस्य नाम
-kitchen_printing	मुद्रकाः
 login_id_ph	उपयोक्तृनाम
 mark_cleared	मार्कः स्वच्छः अभवत्
 new_party_clear	नवीन ग्राहकः अथवा आपूर्तिकर्ता (स्पष्टं प्रपत्रम्) २.
@@ -553,15 +457,6 @@ show	दर्शयतु
 spreadsheet_csv	स्प्रेडशीट (CSV) ९.
 start_fresh	नवीनतया आरभत
 stop_extra_tills	अतिरिक्त टिल् स्थगयन्तु
-floor_cols_ph	स्तम्भाः
-floor_cols_fit	स्क्रीन फिट्
-floor_cols_fit_sub	{n} अत्र उपयुक्तम्
-floor_cols_fits	फिट् भवति
-floor_cols_scroll	पार्श्वतः स्क्रॉल करोति
-floor_cols_min	स्तम्भाः : न्यूनातिन्यूनं १ — अथवा पटलस्य अनुरूपं रिक्तं त्यजन्तु
-floor_zoom_auto	ऑटो
-floor_zoom_out	जूम आउट् कुर्वन्तु
-floor_zoom_in	जूम इन करें
 backup_auto	प्रतिदिनं स्वयमेव बैकअप क्रियते · अन्तिमः {when} · अन्तिमाः १४ दिवसाः {dir} इत्यत्र स्थापिताः भवन्ति ।
 backup_auto_none	प्रतिदिनं स्वयमेव बैकअप कृतः — प्रथमः क्षणमात्रेण धावति ।
 backup_copy_to	प्रतिलिपानि अपि {dir} यावत् गच्छन्ति।
@@ -579,7 +474,6 @@ new_pair_code	नवीनः युग्मसंहिता
 pair_finishing	युग्मं समाप्तं... दुकानस्य लेजरं प्रयोजयन्
 pair_opening	टिल् उद्घाट्य...
 pair_copied	युग्मीकरणसङ्केतः प्रतिलिपिकृतः
-kot_waiting	प्रेषयितुं प्रतीक्षमाणः
 lan_offline_waiting	दुकान सर्वर अप्राप्य · {n} प्रतीक्षा
 lan_connecting	दुकानं प्रति सम्बद्धं भवति...
 lan_live	लाइव
@@ -621,7 +515,6 @@ printers_routes_help	प्रचालनतन्त्रं पूर्व�
 printer_assign_dd	वास्तविक मुद्रक: {place}
 printer_assign_pick	वास्तविकं मुद्रकं चिनोतु
 printer_profile_heading	विन्यासः
-printer_send_heading	प्रसवः
 vp_delivery_heading	प्रसवः
 vp_delivery_help	एषः आभासीमुद्रकः कथं कार्याणि प्रेषयति — OS दस्तावेजः, कच्चा बाइट्, अथवा ESC/POS । स्लिप् सामग्री (प्रकारस्य आकारः, रैप्, मार्जिन्स्) बिल / स्लिप् प्रारूपेण निर्णयः भवति, अत्र न ।
 vp_type_size_heading	आकारः प्रकारः
@@ -665,23 +558,13 @@ virtual_draft_send	अग्रिम-वर्चुअल् मुद्र�
 virtual_need_real	प्रथमं वास्तविकं मुद्रकं चिनोतु
 virtual_need_select	विलोपयितुं वर्चुअल् मुद्रकं चिनोतु
 real_printer_selected	चयनितम् : {name} .
-station_group_heading	आभासी मुद्रकाः
-station_group_apply	आभासी मुद्रकं विलोपयन्तु
-station_group_applied	विलोपितम्
-station_group_empty	आभासीमुद्रकं चिनोतु
-station_group_name_ph	आभासी मुद्रकस्य नाम (वैकल्पिकम्) २.
-station_group_save	आभासी मुद्रकं रचयन्तु
-station_group_saved	आभासी मुद्रकः रक्षितः
-station_manage_heading	दुकानखण्डं योजयन्तु वा निष्कासयन्तु वा
 printers_routes_heading	यत्र वस्तूनि मुद्रयन्ति
 route_pick_heading	स्थानम्
 route_editing	सम्पादनम् : {name} .
 route_assigned	योजितः {printer} to {place}
 route_already_assigned	पूर्वमेव अस्मिन् स्थाने : {printer}
-route_removed	{place} इत्यस्मात् {printer} निष्कासितम् ।
 route_cleared	स्वच्छ {name} .
 route_assigned_empty	अस्मिन् स्थाने कोऽपि नास्ति
-route_tap_remove	निष्कासयितुं ट्याप् कुर्वन्तु
 route_tap_select	चयनं कर्तुं ट्याप् कुर्वन्तु
 route_tap_selected	चयनितम्
 route_pick_printer_first	प्रथमं मुद्रकं ट्याप् कुर्वन्तु
@@ -702,35 +585,17 @@ printer_format_custom	नवीनं कस्टम् प्रोफाइ�
 printer_format_custom_label	प्रथा
 printer_format_custom_added	अस्य स्थानस्य कृते कस्टम् प्रोफाइल योजितम्
 add_printer	मुद्रकं योजयतु
-remove_printer	निष्कासयतु
 route_pick_ph	विधेयकं वा दुकानखण्डं वा
 route_bill	अतिथि बिल
-route_default_kitchen	न स्टेशन (अनिर्दिष्टवस्तूनि) .
-route_kot_station	स्टेशन
 route_dont_print	न मुद्रकः
-stations_heading	स्टेशनाः
-stations_help	दुकानविभागाः दुकानस्य तस्य भागस्य वस्तूनि मुद्रकाः च समूहयन्ति। सेटिंग्स् → मुद्रकाः तः मुद्रकाः संलग्नं कुर्वन्तु, try order सेट् कुर्वन्तु, ततः प्रथमं तत् कार्यं करोति अथवा सर्वेषु मुद्रयन्तु । परिवर्तनं यथा गच्छसि तथा रक्षति।
-station_print_heading	अस्य स्टेशनस्य कृते मुद्रकाः
-station_print_help	एकं स्टेशनं चिनुत, ततः एकं वा अधिकं वा मुद्रकं संलग्नं कुर्वन्तु । ↑↓ प्रयत्नक्रमं सेट् करोति। प्रथमं यत् कार्यं करोति तत् प्रथमसफलतायाः अनन्तरं स्थगयति; प्रत्येकं संलग्नमुद्रकं प्रति सर्वेषु प्रेषणं मुद्रयन्तु।
-station_print_pick_ph	मुद्रकाः सेट् कर्तुं स्टेशनम्
 station_print_pick_first	प्रथमं दुकानखण्डं चिनुत
-station_print_editing	“{name}” कृते मुद्रकसम्पादनम् ।
-station_vps_dd	अस्य स्टेशनस्य कृते मुद्रकाः
-station_vps_dd_n	{n} मुद्रकाः · परिवर्तनार्थं ट्याप् कुर्वन्तु
 station_vps_empty	अद्यापि मुद्रकाः नास्ति — सेटिंग्स् → मुद्रकाः इत्यस्य अधः तान् अन्वेष्टुम्
 bill_printers_dd	बिलस्य कृते मुद्रकाः
 bill_printers_dd_n	{n} बिलस्य कृते मुद्रकाः · परिवर्तनार्थं ट्याप् कुर्वन्तु
-job_layout	विन्यासः
-job_delivery	कथं कार्यं प्रेष्यते
-job_delivery_help	ओएस दस्तावेजः, कच्चा बाइट्, अथवा ESC/POS । बिलं टिकटं च प्रत्येकं स्वकीयं धारयति। एकं कार्यं Find इत्यनेन रक्षितं कस्मिन् अपि मुद्रके गन्तुं शक्नोति ।
 station_vp_attached	मुद्रकः संलग्नः
 station_vp_detached	स्टेशनतः मुद्रकः निष्कासितः
-station_print_summary	{mode} · {n} मुद्रकाः
-station_print_summary_none	अस्मिन् स्टेशने अद्यापि मुद्रकाः नास्ति — मुद्रणं न करिष्यति
-stations_none	अद्यापि कोऽपि स्टेशनः नास्ति — अधः एकं योजयन्तु । काउण्टर-दुकाने स्टेशनाः अप्रयुक्ताः सन्ति — रिक्तं त्यजन्तु ।
 route_up	उप
 route_down	अधः
-route_remove	निष्कासयतु
 route_clear	स्पष्टम्
 save_printers	मुद्रकाः रक्षन्तु
 print_test_page	परीक्षणपृष्ठं मुद्रयन्तु
@@ -739,23 +604,15 @@ test_page_no_printer	{place} कृते मुद्रकः नास्त�
 test_page_pick_first	प्रथमं परीक्षणपृष्ठस्य कृते मुद्रकाः चिनुत — ततः परीक्षणपृष्ठं मुद्रयन्तु
 test_printers_dd	परीक्षणपृष्ठस्य कृते मुद्रकाः
 test_printers_dd_n	{n} परीक्षणपृष्ठस्य कृते मुद्रकाः · परिवर्तनार्थं ट्याप् कुर्वन्तु
-kot_test_printers_dd	परीक्षणमुद्रणार्थं मुद्रकाः
-kot_test_printers_dd_n	{n} मुद्रक(s) for Test print · परिवर्तनार्थं ट्याप् कुर्वन्तु
 test_printer_picked	परीक्षणम् : {name} .
 test_printer_cleared	न परीक्षणं भवति: {name}
 test_page_sent_n	परीक्षणपृष्ठं {n} मुद्रकेभ्यः प्रेषितम्
-test_kot_pick_first	प्रथमं Test print कृते printer(s) चिनुत — ततः Test print इति
-test_kot_sent_n	{n} मुद्रक(s) कृते प्रेषितः परीक्षणमुद्रणम्
-cancel_pick	मार्क
-cancel_pick_on	चिह्नितम्
-cancel_pick_meta	रद्दीकरणार्थं चिह्नितम्
 batch_cancel	रद्दं चिह्नितम्
 batch_cancel_n	रद्दीकरणं चिह्नितम् ({n})
 batch_cancel_none	प्रथमं एकं वा अधिकं वा प्रेषितं वस्तु चिह्नितव्यम् — ततः Cancel इति चिह्नितम्
 batch_cancel_title	चिह्नितानि वस्तूनि रद्दं कुर्वन्तु — एकं कारणं, प्रतिखण्डं एकं रद्दीकरणस्लिप्
 batch_cancel_ok	{n} द्रव्यं रद्दं · {slips} रद्दं स्लिप(s) → {kitchens}
 batch_cancel_ok_noprint	{n} वस्तूनि रद्दीकृतानि — स्वयमेव मुद्रणं निष्क्रियम् अस्ति, अतः रद्दीकरणस्लिप् नास्ति
-no_printer_kitchen_station	तस्य स्टेशनस्य कृते मुद्रकः नास्ति
 printers_saved	रक्षितम्
 test_page_sent	परीक्षणपृष्ठं प्रेषितम् — मुद्रकं परीक्ष्यताम्
 test_page_sent_one	{name} प्रति प्रेषितं परीक्षणपृष्ठं — तत् मुद्रकं पश्यन्तु
@@ -771,10 +628,7 @@ cancelled	रद्दं कृतम्
 printers_tap_find	एतत् यन्त्रं उपयोक्तुं शक्नोति इति मुद्रकान् सूचीतुं अन्वेष्टुं ट्याप् कुर्वन्तु ।
 printers_none_found	कोऽपि न लब्धः — प्रणालीमुद्रकस्य नाम अथवा IP (उदा. 192.168.1.50) टङ्कयन्तु ।
 printer_from_find	योजितम् {name} .
-kot_printer_ph	स्लिप्स् कृते मुद्रकः
 bill_printer_ph	बिलानां कृते मुद्रकः
-kot_print_on	स्वचालितमुद्रणटिकटम् : चालू
-kot_print_off	स्वचालितमुद्रणटिकटम् : अवरम्
 queue_refused	दुकानेन न स्वीकृतम् ({n}) — प्रत्येकं काउण्टरे पश्यन्तु :
 clear_not_accepted	परीक्षितम् — एतां सूचीं स्वच्छं कुर्वन्तु
 device_name_ph	अस्य यन्त्रस्य नाम
@@ -785,7 +639,6 @@ backup_failed	अन्तिमः स्वचालितः बैकअप�
 backup_overdue	{n} दिवसान् यावत् बैकअपः नास्ति — एप् अस्मिन् उपकरणे उद्घाटितं स्थापयन्तु येन सः बैकअपं कर्तुं शक्नोति।
 disk_low	अस्मिन् उपकरणे केवलं {mb} MB निःशुल्कं — बैकअपं शीघ्रमेव विफलं भविष्यति । किञ्चित् स्थानं मुक्तं कुरुत।
 last_seen_devices	अन्तिमवारं दृष्टः : {time}
-sync_interval	प्रत्येकं {secs}s समन्वयनम्
 connection_to_shop	दुकानेन सह सम्पर्कः
 supplier_name_ph	आपूर्तिकर्तानाम (अथवा ग्राहकः) .
 supplier_ph	आपूर्तिकर्ता
@@ -848,7 +701,6 @@ fresh_book_kirano	ताजा = रिक्त सूची (पश्चा�
 fresh_selected	ताजा चयनितम् — सूचीपत्रं रिक्तं तिष्ठति । सज्जे सति Done इति ट्याप् कुर्वन्तु।
 gross_word	स्थूल
 how_start	कथं आरम्भं कर्तुम् इच्छसि ?
-kot_print_help_kirano	किराणगणके न प्रयुक्तम् ।
 later_country_pack	पश्चात्: सेटिंग्स् → कर-वेतन-लेबल्-कृते स्वस्य देश-पैकं प्रयोजयन्तु ।
 local_badge	स्थानीय
 mix_type_hint_kirano	आवश्यकतानुसारं नकदं / UPI / कार्डं / क्रेडिट् मध्ये विभक्तम्। ऋणस्य उपरि ग्राहकस्य आवश्यकता भवति।
@@ -899,8 +751,6 @@ staff_copy_need_source	प्रतिलिपिं कर्तुं कस�
 staff_copy_same	स एव व्यक्तिः — अन्यं कञ्चित् चिनुत
 staff_rename_need_selected	प्रथमं कस्य नामकरणं कर्तव्यमिति चिनोतु
 team_pick_hint	कस्य सम्पादनं कर्तव्यमिति चिनुत — तस्य व्यक्तिस्य कृते एव पटलाः, धनाधिकाराः, स्टेशनाः च दृश्यन्ते ।
-team_stations_help	स्टेशनाः ते उपयोक्तुं शक्नुवन्ति
-team_stations_changed	स्टेशनाः परिवर्तिताः — अस्य व्यक्तिस्य कृते सेटअपं रक्षन्तु
 team_features_changed	स्क्रीन परिवर्तितानि — अस्य व्यक्तिस्य कृते सेटअपं रक्षतु
 team_rights_changed	अधिकाराः परिवर्तिताः — अस्य व्यक्तिस्य कृते सेटअपं रक्षन्तु
 they_owe_us	ते अस्माकं ऋणी भवन्ति
@@ -984,9 +834,6 @@ service_pct_ph	सेवा % वैकल्पिक 0/10/12
 short_code_ph	लघु कोड (MG02) .
 starting_password_ph	गुप्तशब्दस्य आरम्भः (वैकल्पिकः) २.
 starting_pin_ph	आरम्भः PIN (४–१२ अङ्काः) २.
-station_name_ph	स्टेशनस्य नाम (वैकल्पिकम्) .
-station_new_ph	खण्डः (वैकल्पिकः) २.
-table_name_ph	गणक / खाड़ी नाम
 tax_rate_ph	करदरनाम वा % — मानकं, न्यूनीकृतं, ०, ५, १२, १८, २०
 to_code_ph	कोडं कर्तुं (किलो) .
 uncleared_no_ph	उपरि # अस्पष्टम्
@@ -999,27 +846,8 @@ book_kind_month	अस्मिन् मासे लेजर्
 book_kind_aging	बकाया / डेबिट-क्रेडिट
 book_kind_balance	तुलनपत्रम्
 order_help	तत् योजयितुं मेनू-वस्तुं ट्याप् कुर्वन्तु ।
-floor_help	एतत् दुकानं काउण्टरे विक्रीयते। मेजः, भोजनतलं च किरानो-नगरस्य भागः नास्ति ।
-kitchen_help	काउण्टर-दुकाने न प्रयुक्तम्।
-kitchen_empty	मुक्तटिकटं नास्ति (काउण्टर-दुकानानि प्रायः एतत् पटलं अप्रयुक्तं त्यजन्ति)।
-add_a_table	भोजनमेजं योजयन्तु
-add_station_heading	एकं दुकानखण्डं योजयन्तु
 categories_help	तस्य वर्गस्य अधः उपरि मेनू-वस्तुं सञ्चिकां कर्तुं Use इति ट्याप् कुर्वन्तु । फोटो श्रेणीं चित्रं ददाति; एकं विना तस्य आद्याक्षराणि दर्शयति।
 dish_search_ph	वस्तूनि अन्वेष्टुम् अथवा लघुसङ्केतः...
-tile_free	रिक्त
-tile_occupied	व्याप्तः
-tile_food_ready	भोजनं सज्जम्
-tile_bill_printed	विधेयकं मुद्रितम्
-tile_paid	भुक्त
-tile_bill_btn	अतिथि बिल
-tile_occupy_btn	अतिथिं आसनं कुर्वन्तु
-tile_free_btn	भोजनमेजं रिक्तं कुर्वन्तु
-tile_ready_btn	भोजनमेजं रिक्तं कुर्वन्तु
-tile_undo_bill	बिल पूर्ववतं कुर्वन्तु
-summary_busy	भोजनमेजः व्यस्तः
-summary_to_collect	संग्रहीतुं
-summary_on_floor	भोजनालये
-floor	दुकान
 sizes_as_items_ph	पृथक् मेनू-वस्तूनाम् (वैकल्पिकम्) आकाराः — Half=120, Full=200
 dish_group_ph	प्याक आकारसमूहः (वैकल्पिकः) — उदा. अट्टा १किलो / ५किलो
 discount	छूट
@@ -1027,7 +855,6 @@ remove_discount	छूटं निष्कासयन्तु
 apply_discount	छूटं प्रयोजयन्तु
 save_opening_cash	उद्घाटन नगदं रक्षन्तु
 close_shift_print	शिफ्टं बन्दं कृत्वा स्लिप् मुद्रयन्तु
-area_prices_ph	क्षेत्रमूल्यानि (वैकल्पिकम्) — एसी=220, पार्सल=210
 discount_ph	१०% वा ५०
 discount_reason_ph	कारणम् (उदा. नियमितः अतिथिः, विलम्बेन भोजनम्) २.
 opening_float_ph	अद्य प्रातःकाले दराजमध्ये नगदं स्थापितं
@@ -1037,34 +864,18 @@ shift_handover	हस्तान्तरणं शिफ्टं कुर्
 shift_since	ततः परं एतत् परिवर्तनम्
 expected_in_drawer	दराजमध्ये अपेक्षितम्
 right_discount	छूटं ददातु
-floor_in_kitchen	प्रगतिशीलः अस्ति
-floor_eating	सेवित
 pick_category	एकं वर्गं चिनुत
 close_category_list	श्रेणीसूचीं बन्दं कुर्वन्तु
 new_category_row	नूतनः वर्गः — यदा भवान् मेनू-वस्तु रक्षति तदा निर्मितः
 your_category	भवतः वर्गः
 suggested_category	सुझावः — अस्माकं वस्तूनि
 category_search_ph	श्रेणी — भवतः अन्वेषणं कुर्वन्तु अथवा नूतनं टङ्कयन्तु
-line_sent_state	प्रेषित
-line_nc_state	प्रशंसात्मक (NC) — न आरोपितम्
 cancel_item_short	रद्दं कुर्वन्तु
-nc_short	न शुल्कम्
-charge_again_short	आरोपः
-move_short	चाल
 cancel_item_title	एतत् द्रव्यं रद्दं कुरुत — पृष्ठकार्यालयेन रद्दीकरणस्लिप् प्राप्यते
-nc_item_title	एतत् मेनू-वस्तुं निःशुल्कं कुर्वन्तु (NC)
-charge_again_title	पुनः एतत् मेनू-वस्तु चार्जं कुर्वन्तु
-move_item_title	एतत् मेनू-वस्तु अन्यस्मिन् भोजनमेजं प्रति स्थानान्तरयन्तु
-already_cooked	पूर्वमेव पक्त्वा (अपव्ययम्) २.
-not_cooked_yet	अद्यापि न पक्त्वा
 return_to_customer	ग्राहकं प्रति प्रत्यागच्छन्तु
 short_by	संक्षेपेण
 tip_not_sale	टिप् (कर्मचारिणां, न तु विक्रयः) २.
 right_settle	भुगतानं गृहाण
-right_cancel_sent	प्रेषितं मेनू-वस्तु रद्दं कुर्वन्तु
-right_complimentary	प्रशंसनीय (एन.सी.) ९.
-right_move_table	गणकान् चालयन्तु / विलीनयन्तु
-right_reprint	पुनः बिलम् मुद्रयन्तु
 right_allowed	अनुमतम्
 right_with_approval	अनुमोदनेन सह
 right_denied	न अनुमतम्
@@ -1074,25 +885,11 @@ no_server_found	न कश्चित् लब्धः। सर्वरे:
 servers_found_pick	यस्मिन् दुकाने भवन्तः सम्बद्धं कर्तुम् इच्छन्ति तत् ट्याप् कुर्वन्तु।
 server_host_selected	{host} इत्यस्य उपयोगेन — युग्मीकरणसङ्केतं प्रविष्टं कुर्वन्तु, ततः अधुना Pair कुर्वन्तु ।
 print_bill	बिल मुद्रयन्तु
-table_actions	प्रतिकर्मणाम्
-move_merge_table	भोजनमेजं चालयन्तु / विलीनयन्तु
-move_help	अस्य गणकस्य आदेशं मुक्तसारणीं प्रति चालयन्तु, अथवा चालितसारणीयां विलीनयन्तु ।
-move_target_ph	गणक नाम
 approval_pin_ph	प्रबन्धकः PIN (पृष्टे एव) २.
-move_here	अत्र गच्छतु
-merge_into	तस्मिन् विलीयताम्
-line_reason_ph	कारणम् (उदा. ग्राहकस्य मनः परिवर्तितम्, स्टॉकः नास्ति)
-line_qty_ph	कियन्तः रद्दाः कर्तव्याः (रिक्ताः = सर्वे) २.
-line_target_ph	भोजनमेजं प्रति गच्छन्तु (उदा. D5) ।
 confirm	पुष्टिं कुर्वन्तु
 menu_search_ph	मेनू मदं वा लघुसङ्केतं वा अन्वेष्टुम्
 customer_paid_ph	ग्राहकः भुक्तवान्
 tip_ph	टिप्
-table_area_ph	क्षेत्रफलम् (उदा. Dine In, Parcel, AC) २.
-table_range_ph	एकदा एव बहवः : D1-D20
-add_these_tables	एतानि गणकानि योजयन्तु
-remove_these_tables	एतानि गणकानि निष्कासयन्तु
-table_remove_ph	निष्कासयन्तु: T1-T24, अथवा एकस्य भोजनमेजस्य नाम
 find_server	दुकानस्य सर्वरं अन्वेष्टुम्
 bill_format	विधेयक प्रारूप
 bill_format_help	प्रत्येकं बिलस्य उपरि भवतः दुकानस्य नाम्ना मुद्रितम्। सह पङ्क्तयः पृथक् | (जैसे एमजी रोड, राजकोट | Ph 98250 00000)।
@@ -1100,78 +897,32 @@ bill_header_ph	पता | phone
 fssai_ph	FSSAI / दुकान अनुज्ञापत्र सं. (वैकल्पिक)
 bill_footer_ph	पादलेखः (उदा. धन्यवादः, पुनः आगच्छन्तु)
 save_bill_format	बिल प्रारूपं रक्षन्तु
-kot_format	स्लिप प्रारूप
-kot_format_help	सूचीस्थं क्षेत्रं ट्याप् कुर्वन्तु । उपरि चयनितस्लिप् प्रकारे तस्मिन् क्षेत्रे दर्शयतु, फ़ॉन्ट् आकारः, भारः च प्रवर्तते । प्रत्येकं प्रकारं स्वस्य आकारं भारं च रक्षति ।
-kot_format_fields	क्षेत्राणि
-kot_field_next	अग्रिमः क्षेत्रः
-kot_field_show	दर्शयतु
-kot_field_hide	गोपयतु
 kot_field_on	दर्शयतु
 kot_field_off	गोपयतु
-kot_field_size	फन्ट् आकारः
-kot_field_size_ph	यथा--- १६, २०, २४, २८, ३२...
 kot_weight_light	प्रकाशः
 bill_kot_panel_help	बिलविन्यासः सामग्रीविस्तारः च। कैशियरः एव बिलम् निर्गतवान् अथवा निराकृतवान् — पूर्णविक्रयकथा पुस्तकेषु तिष्ठति ।
 std_size_ph	यथा--- 18, 20, 26…
-kot_show_shop	दुकान नाम
-kot_hide_shop	आपणनाम गोपयतु
-kot_show_time	कालः
-kot_hide_time	समयं गोपयतु
-kot_show_waiter	कैशियर
-kot_hide_waiter	कैशियरं गोपयतु
-kot_show_station	स्टेशन
-kot_hide_station	स्टेशनं गोपयन्तु
-kot_show_table	गणकम्
-kot_hide_table	भोजनमेजं गोपयन्तु
-kot_show_kot_no	टिकट नं
-kot_hide_kot_no	टिकटं गोपयन्तु न
-kot_width	पूर्वावलोकनवेष्टनम् (स्लिप् ट्याब् इत्यत्र सामग्रीविस्तारं सेट् कुर्वन्तु)
-kot_width_58	58 mm
-kot_width_80	80 mm
-kot_kind_heading	टिकट प्रकार
-kot_kind_original	मूल
-kot_kind_duplicate	डुप्लिकेट्
-kot_kind_modified	परिवर्तित
-kot_kind_cancelled	रद्दं कृतम्
-kot_style_heading	क्षेत्र प्रकार आकार & वजन
-kot_style_title	शीर्षकम्
-kot_style_item_qty	मेनू मेनू मद · मात्रा
-kot_style_field_pick	क्षेत्रं चिनोतु
 kot_weight_regular	नियमित
 kot_weight_bold	बोल्ड
-kot_align	संरेखणं कुर्वन्तु
 kot_align_start	आरभत
 kot_align_center	केन्द्र
 kot_align_end	अन्तम्
 content_width	सामग्री चौड़ाई (मि.मी.) २.
 content_width_bill	पत्रविस्तारः (mm)
-content_width_kot	टिकट सामग्री चौड़ाई (मि.मी.) .
 content_width_ph	अथवा सामग्रीविस्तारः, ४०–२१० मि.मी
 content_width_help	कियत् विस्तृतं एषा स्लिप् मुद्रयति। बिलः स्वस्य विस्तारं रक्षति।
 content_width_bill_help	ग्राहकस्य बिलम् कियत् विस्तृतं मुद्रयति। पूर्वनिर्धारित 210 मिमी (पृष्ठ)। ५८ मि.मी.संकीर्णः स्लिप्, ८० मि.मी.विस्तृतः स्लिप्, ११२ मि.मी.४-इञ्च्, २१० मि.मी. 40 तः 210 पर्यन्तं किमपि मूल्यं टङ्कयन्तु।टिकटस्य स्वकीया विस्तारः स्लिप् ट्याब् इत्यत्र भवति।
-content_width_kot_help	टिकटं कियत् विस्तृतं मुद्रयति। पूर्वनिर्धारित 80 मि.मी. ५८ मिमी संकीर्ण पर्ची, ८० मिमी चौड़ा पर्ची, ११२ मिमी ४-इञ्च, २१० मिमी पृष्ठ। 40 तः 210 पर्यन्तं किमपि मूल्यं टङ्कयन्तु ग्राहकबिलानां स्वकीया विस्तारः Bill ट्याब् मध्ये भवति।
 vp_paper_width	सामग्री चौड़ाई (मि.मी.) २.
 vp_paper_width_ph	अथवा सामग्रीविस्तारः, ४०–२१० मि.मी
 vp_paper_width_help	सामग्रीविस्तारः Bill & Slip प्रारूपस्य अन्तर्गतं सेट् भवति — बिलस्य (पूर्वनिर्धारितं 210 mm) टिकटस्य (पूर्वनिर्धारितं 80 mm) च पृथक् पृथक् ।
-kot_size	फन्ट् आकारः
-kot_size_s	लघु
-kot_size_m	सामान्यम्
-kot_size_l	बृहत्
 std_size	फन्ट् आकारः
 kot_copies	प्रतिलिपानि
 kot_copies_1	1
 kot_copies_2	2
 kot_copies_3	3
-kot_title_ph	शीर्षक (रिक्त = टिकट) २.
-kot_footer_ph	पृष्ठकार्यालयस्य टिप्पणी (वैकल्पिकम्) २.
-kot_preview	पूर्वावलोकनम्
-save_kot_format	Slip प्रारूपं रक्षतु
-test_kot_format	परीक्षण मुद्रण
-test_kot_sent	टिकट पूर्वावलोकनं प्रेषितम्
 test_bill_format	परीक्षणविधेयकम्
 test_bill_sent	विधेयक पूर्वावलोकनं प्रेषितम्
 test_print_no_printer	तस्य कार्यस्य कृते मुद्रकः नास्ति — अस्मिन् पटले एकं चिनोतु
-kot_format_saved	स्लिप प्रारूपं रक्षितम्
 std_print	बिल मुद्रण आकार
 std_print_help	OS / दस्तावेजमुद्रकेषु Standard Portrait तथा ​​Landscape बिलकार्यस्य कृते फन्ट् आकारः (बिन्दून् प्रविष्टं कुर्वन्तु — लघु/सामान्य/बृहत् न)। उभयभिमुखीकरणेषु समानः आकारः ।
 std_size_s	लघु
@@ -1211,23 +962,16 @@ upi_qr	UPI QR
 show_upi_qr	UPI QR दिखाएँ
 close_upi_qr	निमील्यताम्
 upi_qr_help	ग्राहकः स्कैन् कृत्वा भुक्तिं करोति। तेषां भुक्तिं कृत्वा भुगतानं गृह्यताम् इति ट्याप् कुर्वन्तु। द्वितीयः पटलः : LAN इत्यत्र Server URL /display इत्येतत् उद्घाटयन्तु ।
-kot_recall	स्मरणं कुरुत
 recently_done	अद्यतनं कृतम्
-recall_kot_ph	टिकट # स्मरणार्थम्
 role_help_customer	भूमिका : ग्राहकः — क्रेडिट् लेजर (ते अस्माकं ऋणी सन्ति)। स एव ग्राहकः आपूर्तिकर्ता वा स्टॉकस्य आपूर्तिं अपि कर्तुं शक्नोति।
 role_help_both	भूमिकाः : ग्राहकः + आपूर्तिकर्ता — एकः ग्राहकः अथवा आपूर्तिकर्ता, क्रेडिट् लेजरः तथा देयलेजरः, रिपोर्ट्स् मध्ये शुद्धः।
 role_help_supplier	भूमिका : आपूर्तिकर्ता — वयं तेषां क्रयणार्थं ऋणी स्मः।
-dine_in_pick_table	काउण्टर-दुकाने न प्रयुक्तम्
-choose_table	गणकं चिनोतु
-change_table	भोजनमेजं परिवर्तयन्तु
-pick_table_banner	अस्य आदेशस्य कृते भोजनमेजं चिनुत
 items_word	मेनू-वस्तूनाम्
 items_section	मेनू मेनू वस्तूनि
 back_to_order	क्रमं प्रति पुनः
 new_items_head	अद्यापि न प्रेषितम्
 price_ph	मूल्यम्
 price_ph_gst_inside	मूल्य ({tax} सहित)
-cancel_needs_table	यावत् भवन्तः भुक्तिं न गृह्णन्ति तावत् काउण्टरविक्रयः टिकटे एव तिष्ठति
 tax_rates_missing_hint	एतेषु वस्तूनि {tax} दरः नास्ति — on Items set Tax rate (मूल्येषु पूर्वमेव {tax} समाविष्टस्य अन्तर्गतं {tax} अन्तर्भवति)
 taxable_value	करयोग्य मूल्य
 gst_inside_price_note	({tax} समावेशी) २.
@@ -1248,30 +992,11 @@ client_template_confirm	{title} तः {d} वस्तूनि योजयन
 client_template_importing	आयात {title}...
 client_template_done	{title} इत्यस्य प्रत्येकं द्रव्यं भवतः वस्तूनाम् उपरि अस्ति।
 client_template_imported	{title} तः {d} वस्तूनि {c} श्रेणयः च योजिताः
-resv_heading	आरक्षण
-resv_name_ph	ग्राहकस्य नाम
-resv_phone_ph	दूरभाष (वैकल्पिकम्) ९.
-resv_guests_ph	जनाः
-resv_when_ph	कदा — २०:३०, श्वः १३:००
-resv_table_ph	गणकः (वैकल्पिकः) २.
-resv_add	भोजनमेजं आरक्षन्तु
-resv_seat	उपविष्टः
-resv_none	न बुकिंग् आगच्छन्ति।
-guests_word	अतिथयः
-delivery_by_ph	(सवारस्य वा कर्मचारीनाम) द्वारा वितरणम्
-kitchen_all_day	अधुना पाकं कर्तुं : {items}
-split_bill	विभक्तं विधेयकम्
-split_go	पृथक् बिलं कुरुत
 cancel	रद्दं कुर्वन्तु
 opening_client	क्लायन्ट् उद्घाटयन्...
 preparing_desk	मेजस्य सज्जीकरणम्...
 opening_server	सर्वरं उद्घाटयन्...
 creating_server	सर्वरं निर्माय...
-split_help	एकः ग्राहकः · {n} उद्धृतवान् तानि वस्तूनि ट्याप् कुर्वन्तु
-split_send_first	प्रथमं स्लिप् प्रेषयन्तु — केवलं पृष्ठकार्यालयस्य वस्तूनि एव पृथक् बिलं गन्तुं शक्नुवन्ति
-split_pick_some	प्रथमं पृथक् बिलस्य कृते वस्तूनि ट्याप् कुर्वन्तु
-split_done	पृथक् बिलम् निर्मितम् — अस्य काउण्टरस्य पार्श्वे तलम् अस्ति
-split_marked	पृथक् विधेयक
 order_empty_pick	रिक्तं आदेशयन्तु — वस्तूनि चिन्वितुं उपरि वस्तूनि योजयन्तु इति ट्याप् कुर्वन्तु ।
 add_dishes	वस्तूनि योजयन्तु
 order_so_far	अस्मिन् क्रमे : {n} · {total} .
@@ -1282,24 +1007,8 @@ pick_done_dd	कृतम् · {label} .
 printer_route_mode	यदि अस्मिन् स्थाने अनेकाः मुद्रकाः
 printer_mode_first	प्रथमं तत् कार्यं करोति
 printer_mode_all	सर्वेषु मुद्रयन्तु
-kot_show_area	क्षेत्रफलम्
-kot_hide_area	क्षेत्रं गोपयन्तु
-kot_show_item_hdr	मेनू मेनू मद · मात्रा
-kot_hide_item_hdr	स्तम्भान् गोपयन्तु
-kot_show_title	शीर्षक पङ्क्तिः
-kot_hide_title	शीर्षकं गोपयतु
-kot_field_order	मुद्रणक्रमः
 kot_field_up	उपरि गच्छतु
 kot_field_down	अधः गच्छतु
-kot_field_cycle	अग्रिमम् चिनोतु
-kot_field_select	अग्रिमम् चिनोतु
-kot_field_time	कालः
-kot_field_kot_no	टिकट नं
-kot_field_area	क्षेत्रफलम्
-kot_field_table	गणकम्
-kot_field_shop	दुकान नाम
-kot_field_waiter	कर्मचारी
-kot_field_station	स्टेशन
 app_template_blurb_extra	अपि च : स्वामी जाहिर, एड्मिन् आसिफ, कैशियर नवाज; अग्रे पार्श्वपट्टिका; ४ घण्टानां अनन्तरं इतिहासः; अद्य पट्टिकां कृत्वा; संकुचित विधेयक।
 dishes_n	{n} आइटम
 recipe_ph	नुस्खा (वैकल्पिकम् — काउण्टर-दुकाने अप्रयुक्तम्)
@@ -1309,8 +1018,6 @@ low_stock_alert	क्षीणः — शीघ्रं क्रीणीत:
 unpriced_note	भवतः वस्तूनाम् {n}-वस्तूनाम् अद्यापि मूल्यं नास्ति — ते 0 इति बिलम् अयच्छन्ति यावत् भवन्तः एकं न सेट् कुर्वन्ति ।
 show_unpriced	केवलं मूल्यं विना वस्तूनि दर्शयन्तु
 show_all_dishes	सर्वाणि वस्तूनि दर्शयतु
-role_waiter	कैशियर
-role_kitchen	संग्रहः
 role_title_rest_ph	भूमिका उपाधि (उदा. कप्तान, मुख्य पाककर्त्ता) २.
 preset_help_rest	कैशियरः विक्रयति। प्रबन्धकः विक्रयणं + मेनू-वस्तूनाम् + शून्यं/संशोधनम् ।
 kind_raw	दुकानस्य उपयोगाय क्रीतम्

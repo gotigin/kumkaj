@@ -80,28 +80,6 @@ applied	Применета
 note_ph	Забелешка (изборно)
 rounded	ЗАКЛУЖЕНИ
 split	Сплит
-send_kot	Испрати ливче
-send_kot_to	Испрати → {kitchens}
-send_kot_again	Додадете ставки за следното ливче
-send_kot_held	Задржани ставки — оддржете за да испратите
-reprint_kot	Повторно избрано печатење
-reprint_kot_ok	Испечатени {n} ставки повторно · {slips} ливчиња → {kitchens}
-reprint_kot_needed	Прво испратете ливче - потоа вклучете ги лековите и повторно испечатете ги избраните
-reprint_kot_none_selected	Секоја испратена ставка е прескокната - допрете Во печатење на оние што ќе се препечатат
-reprint_kot_client	Повторно печатење ({n}) за испратено {place} - уредот за продавница го печати
-print_cancelled_kot	Отпечатените сите се откажани
-print_cancelled_kot_ok	Отпечатени {n} откажани ставки · {slips} ливчиња → {kitchens}
-print_cancelled_kot_needed	Прво отворете маса со откажани ставки
-print_cancelled_kot_none	Нема откажани ставки на оваа нарачка
-print_cancelled_kot_client	Печатењето е откажано ({n}) за испратено {place} - уредот од продавницата го печати
-kot_banner	Љубезен банер
-kot_banner_ph	Банер (празно = нема)
-kot_item_prefix	Префикс на ставката од менито
-kot_item_prefix_ph	на пр. [ОТКАЖАНО]
-kot_strike	Име на ставка за штрајк
-kot_strike_note	Забелешка за штрајк
-kot_strike_on	Вклучено
-kot_strike_off	Исклучено
 bill_item_layout	Распоред на ставки од менито
 bill_item_layout_columns	Колони
 bill_item_layout_stacked	Наредени
@@ -130,8 +108,6 @@ bill_item_gap_em	Јаз (ем)
 bill_item_qty_min	Количина мин (ем)
 bill_item_price_min	Цена мин.
 bill_item_amount_min	Износ мин.
-kot_item_qty_width	Количина колона
-kot_item_num_align	Количина порамни
 bill_total_qty_label	Вкупна количина етикета
 bill_total_subtotal_label	Под вкупен ознака
 bill_total_grand_label	Голема вкупна етикета
@@ -143,36 +119,9 @@ bill_item_piece_off	Исклучено
 bill_total_qty	Вкупна количина
 bill_total_subtotal	Под вкупно
 bill_total_grand	Голема сума
-reprint_incl	Во печатење
-reprint_skip	Прескокни
-reprint_skip_meta	Прескокнете го печатењето за враќање
-kot_dest_hint	Печати на печатачите на кои сте им доделиле {kitchens} во Поставки → Печатачи
-kot_sent_hint	Последното испраќање отиде на {kitchens}. Допрете за да додадете ставки за следната сметка - или Печатете го листот повторно за истата.
-kot_sent_printing	Лизга испратена до {kitchens} — печатење
-kot_sent_not_printed	Лизга е испратена до {kitchens}, но НЕ е испечатена: {why}. Кажете му на продавницата, потоа поправете го печатачот и испечатете го повторно.
-kot_sent_screen	Лизга е испратена до {kitchens}
-kot_queued_shop	Се лизга за {place} → {kitchens} е зачувано; уредот за продавница го печати
-kot_job_label	Се лизга за {place} → {kitchens}
-kot_job_reached	Лизгањето за {place} достигна до {kitchens}
 kot_unassigned	Недоделени
-kot_unassigned_held	Задржете {n} ставки без станица - отдржете го на линијата за испраќање
-kot_station_ph	Станица
-kot_station_dd	Станица
-kot_station_dd_n	Станица · {stations}
-kot_set_station	Користете ја оваа станица
-kot_station_applied	Станица поставена на {n} ставки: {station}
-kot_station_cleared	Станицата е исчистена од {n} ставки: {station}
-kot_station_needed	Прво изберете диспанзерски дел
-kot_station_not_allowed	Не е дозволено да се користи делот: {station}
-kot_station_none	Сè уште нема станици — неискористени на шалтер (Поставки → Области доколку е потребно)
 pos_tab_items	Додадени ставки од менито
 pos_tab_payment	Плаќање
-hold_send	Држете од кујната
-hold_send_on	Одржана
-hold_send_meta	Се одржа - не на оваа ливче
-station_remove	Отстранете ја станицата
-station_remove_ph	Допрете станица во списокот за да ја отстраните
-station_removed	Станицата е отстранета: {name}
 settings_hub_title	Поставки
 settings_hub_help	Отворете една област во исто време - помалку лизгање, појасни избори.
 settings_back	Назад
@@ -181,12 +130,10 @@ settings_sec_country	Земја и данок
 settings_sec_tills	Други уреди
 settings_sec_brand	Вашиот бренд
 settings_sec_units	Единици и конверзии
-settings_sec_pickers	Области · станици · даночни стапки
+settings_sec_pickers	Даночни стапки
 settings_sec_printers	Принтери
 settings_sec_bill	Формат Bill & Slip
 settings_sec_selling	Шеми и продажба
-bill_kot_tab_bill	Гостин гостин сметка
-bill_kot_tab_kot	Лизгање
 settings_sec_alerts	Известувања
 alerts_help	Колку долго пораките за статус остануваат на екранот за вас (ова најавување).
 snack_secs_ph	Секунди (3–60, стандардно 10)
@@ -237,8 +184,6 @@ counter	Бројач
 dine_in	Бројач
 takeaway	Готова храна
 order	Ресторан нарачка
-tables	Бројачи
-kitchen	Секции
 sales	Продажба
 sales_refunds	Продажба и рефундирање
 day_close	Затворен ден
@@ -266,10 +211,6 @@ zero_sales_on	Дозволи 0 ₹
 zero_sales_off	Потребна цена
 zero_sales_saved_on	Дозволена е продажба со нулта вредност
 zero_sales_saved_off	Продажбата мора да има цена над 0 ₹
-floor_areas_help	Области се соби или зони на подот (Вечеш внатре, парцела, климатизација…). Прво додадете област, а потоа ставете бројачи во неа - секоја област е посебна група на подот.
-area_new_ph	Нова област / соба (на пр. климатизација, градина)
-add_area	Додадете област
-area_added	Областа „{name}“ е подготвена - додадете бројачи во неа
 no_favorites	Сè уште нема омилени — додајте ставки од менито од списокот подолу.
 add_to_bill	Додај во сметката за гости
 added	Додадено
@@ -280,19 +221,9 @@ chip_missing_customer	Недостасува избран клиент - изб�
 chip_no_customer	Сè уште нема клиент - напишете име, па допрете Кредит
 credit_summary_fmt	{} клиенти · отворен кредит {} · задржани аванси {}
 recent_label	Неодамнешни:
-kot_new_waiting	НОВО - чекање
-kot_preparing	ПОДГОТОВКА
-kot_ready_serve	ПОДГОТВЕН - послужете го
-kot_done_cap	ГОТОВО
-kot_cancelled	ОТКАЖАНО
-kot_start_btn	Започнете
-kot_mark_ready	Означете го подготвеноста
-kot_done_btn	Готово
-table_free	Слободно - допрете за да започнете нарачка
 start_order	Започнете нарачка
 open_bill	Отворете сметка за гости
 collect_payment	Соберете плаќање
-table_running	Трчање
 payment_pending	Плаќањето е во тек
 collect_at_counter	собирајте на шалтер
 inventory	Инвентар
@@ -325,7 +256,6 @@ ok	OK
 this_shop	Серверски режим
 extra_till	Клиент режим
 off	Исклучено
-tables_kitchen	Распоред на продавница
 server	Серверски режим
 client	Клиент режим
 language_currency	Јазик и валута
@@ -367,8 +297,6 @@ add_item_plain	Додадете ставка од менито
 add_note	Додадете белешка
 add_opening_balance	Додадете салдо за отворање
 add_staff	Додадете персонал
-add_station	Додадете станица
-add_table	Додадете трпезариска маса
 add_unit	Додадете единица
 add_use_name	Додадете / користете го ова име
 allow_extra_tills	Дозволете дополнителни каси
@@ -421,7 +349,6 @@ share_whatsapp	Сподели WhatsApp
 lan_pages_heading	Страници со клиенти на Wi‑Fi
 lan_pages_help	На Wi‑Fi на оваа продавница, страниците на клиентите работат за таблата за прикажување и повратните информации. На луѓето на мобилни податоци им треба Облак подоцна. Терминалот за картичка или врската за плаќање е изборен и никогаш не го блокира бројачот.
 diag_send_heading	Споделете го овој уред
-kot_dest_heading	Станица
 optional_login_heading	Изборно најавување
 rights_heading	Права
 ops_panel	Локални операции
@@ -448,28 +375,6 @@ till_voucher_amt_ph	Износ на ваучер (празно = сите)
 till_wallet_topup_ph	Дополнителен износ на паричник
 till_voucher_issue_amt_ph	Издадете износ на ваучер
 till_voucher_issue_code_ph	Нов код за ваучер
-split_evenly	Поделете рамномерно
-waitlist	Листа на чекање
-fire_course	Следен чекор
-hold_item	Држете од кујната
-waiter_call	Јавете се на касиерката
-waitlist_add	Додај во листа на чекање
-floor_view_grid	Решетка
-floor_view_layout	Распоред
-floor_layout_x	X
-floor_layout_y	Y
-floor_layout_w	W
-floor_layout_h	H
-floor_layout_save	Зачувај распоред
-floor_layout_open	Отворена трпезариска маса
-floor_layout_edit	Уреди распоред
-floor_layout_pick	Допрете трпезариска маса за да го уредите нејзиниот распоред
-floor_layout_saved	Распоредот е зачуван
-floor_layout_nudge_left	← 20
-floor_layout_nudge_right	→ 20
-floor_layout_nudge_up	↑ 20
-floor_layout_nudge_down	↓ 20
-sibling_pickers_help	Допрете Вклучено/Исклучено како единици — сокријте области, станици и даночни стапки од секојдневните избирачи; остануваат стандардните пакети.
 bulk_price_apply	Примени рефус цена
 card_terminal_optional	Терминал за картичка/врска за плаќање (опционално кога е достапен интернет)
 copy_report	Копирај извештај
@@ -495,7 +400,6 @@ import_day	Ден на увоз
 import_items_csv_plain	Увезете ставки од менито CSV…
 import_parties_csv	Увезете клиенти и добавувачи CSV…
 item_name	Име на ставката од менито
-kitchen_printing	Принтери
 login_id_ph	Корисничко име
 mark_cleared	Означете исчистено
 new_party_clear	Нов клиент или добавувач (јасна форма)
@@ -565,15 +469,6 @@ show	Прикажи
 spreadsheet_csv	Табеларен лист (CSV)
 start_fresh	Започнете свежо
 stop_extra_tills	Стоп за дополнителни каси
-floor_cols_ph	Колони
-floor_cols_fit	Поставете го екранот
-floor_cols_fit_sub	{n} се вклопуваат овде
-floor_cols_fits	одговара
-floor_cols_scroll	свитоци настрана
-floor_cols_min	Колони: најмалку 1 — или оставете го празен за да одговара на екранот
-floor_zoom_auto	Автоматски
-floor_zoom_out	Одзумирај
-floor_zoom_in	Зумирајте
 backup_auto	Се прави резервна копија автоматски секој ден · последните {when} · последните 14 дена се чуваат во {dir}.
 backup_auto_none	Се прави резервна копија автоматски секој ден - првата се извршува за миг.
 backup_copy_to	Копиите исто така одат на {dir}.
@@ -591,7 +486,6 @@ new_pair_code	Нов код за спарување
 pair_finishing	Завршен пар… примена на книгите на продавницата
 pair_opening	Отворање на касата…
 pair_copied	Кодот за спарување е копиран
-kot_waiting	Се чека да се испрати
 lan_offline_waiting	Серверот за купување е недостапен · {n} чека
 lan_connecting	Се поврзува со продавница…
 lan_live	Во живо
@@ -633,7 +527,6 @@ printers_routes_help	Најдете печатачи што оперативни
 printer_assign_dd	Вистински печатач: {place}
 printer_assign_pick	Изберете вистински печатач
 printer_profile_heading	Распоред
-printer_send_heading	Испорака
 vp_delivery_heading	Испорака
 vp_delivery_help	Како овој виртуелен печатач испраќа задачи - документ за ОС, необработени бајти или ESC/POS. Содржината на ливчињата (големина на типот, обвивката, маргините) се одлучува според форматот на сметката / ливчето, а не овде.
 vp_type_size_heading	Големина на типот
@@ -677,23 +570,13 @@ virtual_draft_send	Поставена вредност за следниот в�
 virtual_need_real	Прво изберете вистински печатач
 virtual_need_select	Изберете виртуелен печатач за бришење
 real_printer_selected	Избрано: {name}
-station_group_heading	Виртуелни печатачи
-station_group_apply	Избришете виртуелен печатач
-station_group_applied	Избришано
-station_group_empty	Изберете виртуелен печатач
-station_group_name_ph	Име на виртуелен печатач (изборно)
-station_group_save	Создадете виртуелен печатач
-station_group_saved	Виртуелниот печатач е зачуван
-station_manage_heading	Додадете или отстранете дел од диспанзерот
 printers_routes_heading	Каде што се печатат работите
 route_pick_heading	Место
 route_editing	Уредување: {name}
 route_assigned	Додадено е {printer} во {place}
 route_already_assigned	Веќе на ова место: {printer}
-route_removed	Отстрането {printer} од {place}
 route_cleared	Исчистено {name}
 route_assigned_empty	Никој на ова место
-route_tap_remove	допрете за да го отстраните
 route_tap_select	допрете за да изберете
 route_tap_selected	избрани
 route_pick_printer_first	Прво допрете печатач
@@ -714,35 +597,17 @@ printer_format_custom	Нов прилагоден профил
 printer_format_custom_label	Прилагодено
 printer_format_custom_added	Додаден е приспособен профил за ова место
 add_printer	Додадете печатач
-remove_printer	Отстрани
 route_pick_ph	Сметка или диспанзерски дел
 route_bill	Гостин гостин сметка
-route_default_kitchen	Нема станица (недоделени ставки)
-route_kot_station	Станица
 route_dont_print	Нема печатач
-stations_heading	Станици
-stations_help	Диспанзерските делови ги групираат лековите и печатачите за тој дел од продавницата. Прикачете печатачи од Поставки → Печатачи, поставете редослед на обиди, потоа Прво што работи или Печатете на сите. Промените се зачувуваат додека одите.
-station_print_heading	Принтери за оваа станица
-station_print_help	Изберете станица, а потоа прикачете еден или повеќе печатачи. ↑↓ го поставува редоследот на обидот. Прво што работи престанува по првиот успех; Печатете на сите праќања до секој прикачен печатач.
-station_print_pick_ph	Станица за поставување печатачи
 station_print_pick_first	Прво изберете диспанзерски дел
-station_print_editing	Уредување печатачи за „{name}“
-station_vps_dd	Принтери за оваа станица
-station_vps_dd_n	{n} печатачи · допрете за промена
 station_vps_empty	Сè уште нема печатачи — Најдете ги под Поставки → Печатачи
 bill_printers_dd	Принтери за сметката за гости
 bill_printers_dd_n	{n} печатачи за сметката за гости · допрете за промена
-job_layout	Распоред
-job_delivery	Како се испраќа работата
-job_delivery_help	ОС документ, необработени бајти или ESC/POS. Сметката и билетот секој си го задржува своето. Секоја задача може да оди на кој било печатач што го зачувал Find.
 station_vp_attached	Прикачен печатач
 station_vp_detached	Печатачот е отстранет од станицата
-station_print_summary	{mode} · {n} печатачи
-station_print_summary_none	Сè уште нема печатачи на оваа станица - нема да печати
-stations_none	Сè уште нема станици - додајте една подолу. Станиците се неискористени на шалтер - оставете празен.
 route_up	Горе
 route_down	Долу
-route_remove	Отстрани
 route_clear	Јасно
 save_printers	Зачувајте печатачи
 print_test_page	Печатете тест страница
@@ -751,23 +616,15 @@ test_page_no_printer	Нема печатач за {place} — прикачете
 test_page_pick_first	Прво изберете печатачи за тест страница - потоа Печатете тест страница
 test_printers_dd	Принтери за тест страница
 test_printers_dd_n	{n} печатачи за тест страница · допрете за промена
-kot_test_printers_dd	Принтери за тест печатење
-kot_test_printers_dd_n	{n} печатачи за тест печатење · допрете за да промените
 test_printer_picked	Тестирајте на: {name}
 test_printer_cleared	Не се тестира на: {name}
 test_page_sent_n	Тест страницата е испратена до {n} печатачи
-test_kot_pick_first	Прво изберете печатач(и) за тест печатење — потоа тест печатење
-test_kot_sent_n	Тест печатење испратено до печатачите {n}
-cancel_pick	Означи
-cancel_pick_on	Означени
-cancel_pick_meta	Означено за откажување
 batch_cancel	Означено е откажување
 batch_cancel_n	Означено е откажување ({n})
 batch_cancel_none	Прво означете една или повеќе испратени ставки - потоа означени Откажи
 batch_cancel_title	Откажете ги означените лекови - една причина, едно откажување по дел
 batch_cancel_ok	{n} ставки се откажани · {slips} откажани листови → {kitchens}
 batch_cancel_ok_noprint	Ставките {n} се откажани — автоматското печатење е исклучено, така што нема откажување
-no_printer_kitchen_station	Нема печатач за таа станица
 printers_saved	Зачувано
 test_page_sent	Испратена е тест-страница - проверете го печатачот
 test_page_sent_one	Тест страницата е испратена на {name} — проверете го тој печатач
@@ -783,10 +640,7 @@ cancelled	Откажано
 printers_tap_find	Допрете Најдете за да ги наведете печатачите што може да ги користи овој уред.
 printers_none_found	Никој не е пронајден - напишете име на системски печатач или IP (на пр. 192.168.1.50).
 printer_from_find	Додадено {name}
-kot_printer_ph	Печатач за ливчиња
 bill_printer_ph	Печатач за сметки за гости
-kot_print_on	Автоматско печатење билети: вклучено
-kot_print_off	Автоматско печатење билети: Исклучено
 queue_refused	Не е прифатено од продавницата ({n}) - проверете го секој на шалтер:
 clear_not_accepted	Проверено - исчистете ја оваа листа
 device_name_ph	Името на овој уред
@@ -797,7 +651,6 @@ backup_failed	Последната автоматска резервна коп�
 backup_overdue	Нема резервна копија {n} дена - држете ја апликацијата отворена на уредов за да може да прави резервна копија.
 disk_low	Само {mb} MB бесплатно на овој уред - резервните копии наскоро ќе пропаднат. Ослободете малку простор.
 last_seen_devices	Последен пат виден: {time}
-sync_interval	Синхронизирајте се на секои {secs} секунди
 connection_to_shop	Поврзување со продавница
 supplier_name_ph	Име на добавувачот (или клиент)
 supplier_ph	Добавувачот
@@ -860,7 +713,6 @@ fresh_book_tabiyat	Свеж = празен каталог (додајте ста
 fresh_selected	Свежо избран - каталогот останува празен. Допрете Готово кога сте подготвени.
 gross_word	Бруто
 how_start	Како сакате да започнете?
-kot_print_help_tabiyat	Не се користи на шалтер.
 later_country_pack	Подоцна: Поставки → применете ја вашата земја пакет за ознаки за данок и плаќање.
 local_badge	ЛОКАЛНИ
 mix_type_hint_tabiyat	Поделете на готовина / UPI / картичка / кредит доколку е потребно. Кредит има потреба од клиент погоре.
@@ -911,8 +763,6 @@ staff_copy_need_source	Изберете чие поставување да се 
 staff_copy_same	Тоа е истата личност - изберете некој друг
 staff_rename_need_selected	Изберете кој прво да преименувате
 team_pick_hint	Изберете кој да уредувате - екраните, правата за пари и станиците се појавуваат само за таа личност.
-team_stations_help	Станици што можат да ги користат
-team_stations_changed	Станиците се променети - Зачувајте го поставувањето за ова лице
 team_features_changed	Променети екрани — Зачувајте го поставувањето за ова лице
 team_rights_changed	Правата се променети - Зачувајте го поставувањето за ова лице
 they_owe_us	Ни должат
@@ -996,9 +846,6 @@ service_pct_ph	% на услуга опционално 0/10/12
 short_code_ph	Краток код (MG02)
 starting_password_ph	Почетна лозинка (изборно)
 starting_pin_ph	Почетен PIN (4–12 цифри)
-station_name_ph	Име на станицата (изборно)
-station_new_ph	Дел (опционално)
-table_name_ph	Бројач / име на заливот
 tax_rate_ph	Име на даночна стапка или % — стандардна, намалена, 0, 5, 12, 18, 20
 to_code_ph	За кодирање (кг)
 uncleared_no_ph	Неразјаснето # погоре
@@ -1011,27 +858,8 @@ book_kind_month	Леџери за овој месец
 book_kind_aging	Заостанати / дебитно-кредит
 book_kind_balance	Биланс на состојба
 order_help	Допрете ставка од менито за да ја додадете.
-floor_help	Оваа продавница се продава на шалтер. Масите и трпезаријата не се дел од Табијат.
-kitchen_help	Не се користи на шалтер.
-kitchen_empty	Нема отворени билети (шалтерските продавници обично го оставаат овој екран неискористен).
-add_a_table	Додадете трпезариска маса
-add_station_heading	Додадете дел за диспанзер
 categories_help	Допрете Користи за да ја поднесете ставката од менито погоре под таа категорија. Фото и дава слика на категоријата; без еден ги покажува неговите иницијали.
 dish_search_ph	Пребарајте име, сол или баркод…
-tile_free	Слободно
-tile_occupied	Окупирана
-tile_food_ready	Храна подготвена
-tile_bill_printed	Испечатена сметка за гостите
-tile_paid	Платено
-tile_bill_btn	Гостин гостин сметка
-tile_occupy_btn	Седнете гости
-tile_free_btn	Ослободете ја трпезариската маса
-tile_ready_btn	Ослободете ја трпезариската маса
-tile_undo_bill	Врати сметка за гости
-summary_busy	трпезариски маси зафатени
-summary_to_collect	да се соберат
-summary_on_floor	во трпезаријата
-floor	Купувајте
 sizes_as_items_ph	Големини како посебни ставки од менито (изборно) - Half=120, Full=200
 dish_group_ph	Група за јачина / пакување (опционално) - на пр. Лента од 500 мг
 discount	Попуст
@@ -1039,7 +867,6 @@ remove_discount	Отстранете го попустот
 apply_discount	Примени попуст
 save_opening_cash	Заштедете готовина за отворање
 close_shift_print	Затворете го менувачот и отпечатете го листот
-area_prices_ph	Цени во областа (незадолжително) - AC=220, Parcel=210
 discount_ph	10% или 50
 discount_reason_ph	Причина (на пр. редовен гостин, доцна храна)
 opening_float_ph	Готовина ставена во фиока утрово
@@ -1049,34 +876,18 @@ shift_handover	Предавање смена
 shift_since	Оваа промена оттогаш
 expected_in_drawer	Се очекува во фиока
 right_discount	Дајте попуст
-floor_in_kitchen	Во тек
-floor_eating	Послужено
 pick_category	Изберете категорија
 close_category_list	Затворете го списокот со категории
 new_category_row	Нова категорија — создадена кога ќе ја зачувате ставката од менито
 your_category	Вашата категорија
 suggested_category	Предложено - од нашите ставки
 category_search_ph	Категорија — побарајте ја вашата или напишете нова
-line_sent_state	Испратено
-line_nc_state	Бесплатно (NC) - не се наплаќа
 cancel_item_short	Откажи
-nc_short	NC
-charge_again_short	Полнење
-move_short	Премести
 cancel_item_title	Откажи ја оваа ставка - back office добива уплатница за откажување
-nc_item_title	Направете ја оваа ставка од менито бесплатна (NC)
-charge_again_title	Наполнете ја оваа ставка од менито повторно
-move_item_title	Преместете ја оваа ставка од менито на друга трпезариска маса
-already_cooked	Веќе сварено (трошење)
-not_cooked_yet	Сè уште не е сварено
 return_to_customer	Врати се на клиентот
 short_by	Накратко
 tip_not_sale	Совет (на персоналот, а не на продажба)
 right_settle	Земете плаќање
-right_cancel_sent	Откажете испратена ставка од менито
-right_complimentary	Бесплатно (NC)
-right_move_table	Преместување / спојување бројачи
-right_reprint	Испечатете ја сметката за гости повторно
 right_allowed	Дозволено
 right_with_approval	Со одобрение
 right_denied	Не е дозволено
@@ -1086,25 +897,11 @@ no_server_found	Никој не е пронајден. На серверот: П
 servers_found_pick	Допрете ја продавницата во која сакате да се поврзете.
 server_host_selected	Користејќи {host} — внесете го кодот за спарување, па Спари сега.
 print_bill	Печатете сметка за гости
-table_actions	Контра акции
-move_merge_table	Преместување / спојување на трпезариска маса
-move_help	Преместете го овој редослед на бројачот во бесплатна табела или спојте го во тековната.
-move_target_ph	шалтер име
 approval_pin_ph	Менаџер PIN (само ако е побарано)
-move_here	Преместете се овде
-merge_into	Спојувајте се во него
-line_reason_ph	Причина (на пр. клиентот се предомислил, нема залиха)
-line_qty_ph	Колку да откажете (празно = сите)
-line_target_ph	Премести на трпезариска маса (на пр. D5)
 confirm	Потврди
 menu_search_ph	Пребарајте ставка од менито или краток код
 customer_paid_ph	Клиентот платил
 tip_ph	Совет
-table_area_ph	Област (на пр. вечера, парцела, климатизација)
-table_range_ph	Многу одеднаш: D1-D20
-add_these_tables	Додадете ги овие бројачи
-remove_these_tables	Отстранете ги овие бројачи
-table_remove_ph	Отстрани: T1-T24, или име на една трпезариска маса
 find_server	Најдете го серверот на продавницата
 bill_format	Формат на сметка за гости за гости
 bill_format_help	Испечатено под името на вашата продавница на секоја сметка. Одделете ги линиите со | (на пр. MG Road, Rajkot | Ph 98250 00000).
@@ -1112,78 +909,32 @@ bill_header_ph	Адреса | телефон
 fssai_ph	Дозвола за лекови бр. (незадолжително - вашата формулација)
 bill_footer_ph	Подножје (на пр. Ви благодариме, посетете повторно)
 save_bill_format	Зачувајте го форматот на сметката за гости
-kot_format	Формат на лизгање
-kot_format_help	Допрете поле во списокот. Прикажувањето, големината на фонтот и тежината се применуваат на тоа поле на видот на ливчето избрано погоре. Секој вид има свои големини и тежини.
-kot_format_fields	Полиња
-kot_field_next	Следното поле
-kot_field_show	Прикажи
-kot_field_hide	Скриј
 kot_field_on	покажуваат
 kot_field_off	скриј
-kot_field_size	Големина на фонтот
-kot_field_size_ph	на пр. 16, 20, 24, 28, 32…
 kot_weight_light	Светлина
 bill_kot_panel_help	Распоред на сметката и ширина на содржината. Касиер е тој што ја издал или подмирил сметката - целата приказна за продажбата останува во книгите.
 std_size_ph	на пр. 18, 20, 26…
-kot_show_shop	Име на продавницата
-kot_hide_shop	Скриј продавница
-kot_show_time	Време
-kot_hide_time	Сокриј го времето
-kot_show_waiter	Касиерка
-kot_hide_waiter	Скриј касиерка
-kot_show_station	Станица
-kot_hide_station	Скриј станица
-kot_show_table	Бројач
-kot_hide_table	Скриј трпезариска маса
-kot_show_kot_no	Билет бр
-kot_hide_kot_no	Сокриј билет бр
-kot_width	Преглед на обвивката (поставете ја ширината на содржината на картичката за лизгање)
-kot_width_58	58 mm
-kot_width_80	80 mm
-kot_kind_heading	Вид на билет
-kot_kind_original	Оригинален
-kot_kind_duplicate	Дупликат
-kot_kind_modified	Изменето
-kot_kind_cancelled	Откажано
-kot_style_heading	Големина и тежина на типот на поле
-kot_style_title	Наслов
-kot_style_item_qty	Ставка од менито · Кол
-kot_style_field_pick	Изберете поле
 kot_weight_regular	Редовни
 kot_weight_bold	Задебелен
-kot_align	Порамни
 kot_align_start	Започнете
 kot_align_center	Центар
 kot_align_end	Крај
 content_width	Ширина на содржината (мм)
 content_width_bill	Ширина на содржината на сметката за гости (мм)
-content_width_kot	Ширина на содржината на билетот (мм)
 content_width_ph	Или напишете ширина на содржината, 40–210 mm
 content_width_help	Колку широки отпечатоците на овој ливче. Бил ја задржува својата ширина.
 content_width_bill_help	Колку широк печати сметката на клиентите. Стандардно 210 mm (страница). 58 мм тесен лизгач, 80 мм широк лизга, 112 мм 4-инчи, 210 мм широк А4. Напишете која било вредност од 40 до 210. Билетите имаат своја ширина на ливчето за лизгање.
-content_width_kot_help	Колку широк печати билетот. Стандардно 80 mm. 58 mm тесен лизгач, 80 mm широк лизга, 112 mm 4-инчи, 210 mm страница. Внесете која било вредност од 40 до 210. Сметките на клиентите имаат своја ширина на картичката Сметка.
 vp_paper_width	Ширина на содржината (мм)
 vp_paper_width_ph	Или напишете ширина на содржината, 40–210 mm
 vp_paper_width_help	Ширината на содржината е поставена во формат Bill & Slip - одделно за сметката (стандардно 210 mm) и тикетот (стандардно 80 mm).
-kot_size	Големина на фонтот
-kot_size_s	Мали
-kot_size_m	Нормално
-kot_size_l	Големи
 std_size	Големина на фонтот
 kot_copies	Копии
 kot_copies_1	1
 kot_copies_2	2
 kot_copies_3	3
-kot_title_ph	Наслов (празно = БИЛЕТ)
-kot_footer_ph	Белешка од задната канцеларија (изборно)
-kot_preview	Преглед
-save_kot_format	Формат на зачувај ливче
-test_kot_format	Тест печатење
-test_kot_sent	Испратен е преглед на билетите
 test_bill_format	Тест сметка за гости
 test_bill_sent	Испратен е преглед на сметката за гостите
 test_print_no_printer	Нема печатач за таа работа - изберете еден на овој екран
-kot_format_saved	Форматот на лизгање е зачуван
 std_print	Големина на печатење на сметката за гости гости
 std_print_help	Големина на фонтот за задачи за сметки за стандарден портрет и пејзаж на оперативен систем / печатачи за документи (внесувајте точки - не Мали/Нормални/Големи). Иста големина на двете ориентации.
 std_size_s	Мали
@@ -1223,23 +974,16 @@ upi_qr	UPI QR
 show_upi_qr	Прикажи UPI QR
 close_upi_qr	Затвори
 upi_qr_help	Клиентот скенира и плаќа. Допрете Земете плаќање откако ќе платат. Втор екран: отворете URL на серверот /прикажи на LAN.
-kot_recall	Да се ​​потсетиме
 recently_done	Неодамна направено
-recall_kot_ph	Билет # за отповикување
 role_help_customer	Улога: Клиент - кредитна книга (ни должат). Истиот клиент или добавувач може да снабдува и залихи.
 role_help_both	Улоги: Клиент + Добавувач - еден клиент или добавувач, кредитна книга и книги за плаќање, нето во извештаите.
 role_help_supplier	Улога: Добавувач - им должиме за купување.
-dine_in_pick_table	Не се користи на шалтер
-choose_table	Изберете бројач
-change_table	Променете ја трпезариската маса
-pick_table_banner	Изберете трпезариска маса за оваа нарачка
 items_word	ставки од менито
 items_section	Ставки од менито
 back_to_order	Назад на нарачка
 new_items_head	Сè уште не е испратено
 price_ph	Цена
 price_ph_gst_inside	Цена (вклучувајќи {tax})
-cancel_needs_table	Продажбата на шалтер останува на билетот додека не извршите уплата
 tax_rates_missing_hint	Нема {tax} стапка на овие ставки - на ставки поставени Даночна стапка (цените веќе вклучуваат {tax} под {tax} вклучувајќи)
 taxable_value	Оданочена вредност
 gst_inside_price_note	(вклучувајќи {tax})
@@ -1260,30 +1004,11 @@ client_template_confirm	Додадете {d} ставки од {title}? Пред
 client_template_importing	Се увезува {title}…
 client_template_done	Секоја ставка од {title} е на вашите ставки.
 client_template_imported	Додадени {d} ставки и {c} категории од {title}
-resv_heading	Резервации
-resv_name_ph	Име на клиентот
-resv_phone_ph	Телефон (опционално)
-resv_guests_ph	Луѓе
-resv_when_ph	Кога — 20:30, утре 13:00 часот
-resv_table_ph	Бројач (опционално)
-resv_add	Резервирајте трпезариска маса
-resv_seat	Седнати
-resv_none	Нема резервации кои доаѓаат.
-guests_word	гости
-delivery_by_ph	Испорака по (име на возач или персонал)
-kitchen_all_day	За готвење сега: {items}
-split_bill	Поделете сметка за гости
-split_go	Направете посебна сметка за гости
 cancel	Откажи
 opening_client	Се отвора клиентот…
 preparing_desk	Се подготвува биро…
 opening_server	Се отвора серверот…
 creating_server	Се создава сервер…
-split_help	Допрете ги ставките за кои еден клиент плаќа · Избрани {n}
-split_send_first	Прво испратете го листот - само предметите што ги има back office може да одат на посебна сметка
-split_pick_some	Прво допрете ги ставките за посебната сметка
-split_done	Направена посебна сметка - таа е на подот до овој шалтер
-split_marked	посебна сметка за гости
 order_empty_pick	Нарачајте празно - допрете Додај ставки погоре за да изберете ставки.
 add_dishes	Додадете лекови
 order_so_far	По оваа нарачка: {n} · {total}
@@ -1294,24 +1019,8 @@ pick_done_dd	Готово · {label}
 printer_route_mode	Ако неколку печатачи на ова место
 printer_mode_first	Прво тоа функционира
 printer_mode_all	Печатете на сите
-kot_show_area	Површина
-kot_hide_area	Скриј област
-kot_show_item_hdr	Ставка од менито · Кол
-kot_hide_item_hdr	Скриј колони
-kot_show_title	Насловната линија
-kot_hide_title	Сокриј наслов
-kot_field_order	Нарачка за печатење
 kot_field_up	Движете се нагоре
 kot_field_down	Движете се надолу
-kot_field_cycle	Изберете следно
-kot_field_select	Изберете следно
-kot_field_time	Време
-kot_field_kot_no	Билет бр
-kot_field_area	Површина
-kot_field_table	Бројач
-kot_field_shop	Име на продавницата
-kot_field_waiter	Персонал
-kot_field_station	Станица
 app_template_blurb_extra	Исто така: Сопственик Захир, админ Асиф, касиер Наваз; предна странична лента; историја по 4 часа; Денес соблечете се; компактна сметка.
 dishes_n	{n} ставки
 recipe_ph	Рецепт (опционално - неискористен на шалтер)
@@ -1321,8 +1030,6 @@ low_stock_alert	При крај - купи наскоро: {items}
 unpriced_note	{n} ставките на вашите ставки сè уште немаат цена - тие се наплаќаат на 0 додека не поставите една.
 show_unpriced	Прикажи само артикли без цена
 show_all_dishes	Прикажи ги сите ставки
-role_waiter	Касиерка
-role_kitchen	Продавница
 role_title_rest_ph	Наслов на улогата (на пр. капетан, главен готвач)
 preset_help_rest	Касиерка: продаде. Менаџер: продаде + ставки од менито + неважечки/измени.
 kind_raw	Залихи за соединување
