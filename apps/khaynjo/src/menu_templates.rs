@@ -11,7 +11,36 @@ use std::path::{Path, PathBuf};
 
 use serde::{Deserialize, Serialize};
 
+use crate::domain::{ModifierGroup, ModifierOption, ScheduleWindow};
 use crate::menu_images::{self, SHELF_KEY_PREFIX};
+
+/// Pack format this build writes and reads in full. `0` = a hand-written
+/// pack (menu names, aliases, prices, photos only); `2` = written by
+/// "Export template" ([`crate::store::Store::export_app_template`]) and
+/// carrying every item field below. A pack newer than this is refused —
+/// half-applying a shop's setup is worse than asking for an app update.
+pub const PACK_FORMAT: u32 = 2;
+/// The only app whose packs this build imports (`app` in both pack files).
+pub const PACK_APP: &str = "khaynjo";
+
+fn is_zero_u32(v: &u32) -> bool {
+    *v == 0
+}
+fn is_zero_i64(v: &i64) -> bool {
+    *v == 0
+}
+fn yes() -> bool {
+    true
+}
+fn is_true(v: &bool) -> bool {
+    *v
+}
+fn is_false(v: &bool) -> bool {
+    !*v
+}
+fn is_dish(v: &String) -> bool {
+    v.is_empty() || v == crate::domain::ITEM_KIND_DISH
+}
 
 #[derive(Clone, Debug, Serialize, Deserialize)]
 pub struct MenuTemplate {
@@ -19,8 +48,17 @@ pub struct MenuTemplate {
     pub title: String,
     #[serde(default)]
     pub blurb: String,
+    /// [`PACK_FORMAT`] of an exported pack; 0 / absent = hand-written.
+    #[serde(default, skip_serializing_if = "is_zero_u32")]
+    pub format: u32,
+    /// [`PACK_APP`] for exported packs; empty = hand-written (any app reads it).
+    #[serde(default, skip_serializing_if = "String::is_empty")]
+    pub app: String,
     #[serde(default)]
     pub categories: Vec<TemplateCategory>,
+    /// Items in no category (raw materials, mostly). Older apps ignore this.
+    #[serde(default, skip_serializing_if = "Vec::is_empty")]
+    pub items: Vec<TemplateItem>,
 }
 
 #[derive(Clone, Debug, Serialize, Deserialize)]
@@ -35,7 +73,12 @@ pub struct TemplateCategory {
     pub items: Vec<TemplateItem>,
 }
 
-#[derive(Clone, Debug, Serialize, Deserialize)]
+/// One menu (or stock) item. Everything after `image` is optional and only
+/// written by "Export template": a hand-written pack leaves them out and
+/// gets today's defaults (a dish, on the menu, no station / tax / stock).
+/// Stations, tax rates, areas and recipe items are named, never ids — ids
+/// differ on every device.
+#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
 pub struct TemplateItem {
     pub name: String,
     #[serde(default)]
@@ -45,6 +88,89 @@ pub struct TemplateItem {
     pub price: i64,
     #[serde(default)]
     pub image: String,
+    /// Exact price in paise when it is not whole rupees (wins over `price`).
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub price_paise: Option<i64>,
+    /// `dish` (default) / `resale` / `raw` — [`crate::domain::ITEM_KIND_DISH`].
+    #[serde(default, skip_serializing_if = "is_dish")]
+    pub kind: String,
+    /// On the menu now (off = "out of stock" at the till).
+    #[serde(default = "yes", skip_serializing_if = "is_true")]
+    pub available: bool,
+    #[serde(default, skip_serializing_if = "String::is_empty")]
+    pub unit: String,
+    /// Dish family ("Paneer Tikka" for Half and Full).
+    #[serde(default, skip_serializing_if = "String::is_empty")]
+    pub group: String,
+    /// Kitchen station name (`stations` in `shop_defaults.json`).
+    #[serde(default, skip_serializing_if = "String::is_empty")]
+    pub station: String,
+    /// Tax rate name (`tax_rates` in `shop_defaults.json`).
+    #[serde(default, skip_serializing_if = "String::is_empty")]
+    pub tax_rate: String,
+    #[serde(default, skip_serializing_if = "is_zero_i64")]
+    pub tax_bps: i64,
+    /// Count stock for this item (the count itself never travels).
+    #[serde(default, skip_serializing_if = "is_false")]
+    pub track_stock: bool,
+    /// Low-stock line when it differs from the app's default.
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub reorder_at: Option<i64>,
+    /// Size / add-on groups with their choices and prices.
+    #[serde(default, skip_serializing_if = "Vec::is_empty")]
+    pub modifiers: Vec<ModifierGroup>,
+    /// Price by floor area: `name` = the area.
+    #[serde(default, skip_serializing_if = "Vec::is_empty")]
+    pub area_prices: Vec<ModifierOption>,
+    #[serde(default, skip_serializing_if = "Vec::is_empty")]
+    pub schedule: Vec<ScheduleWindow>,
+    #[serde(default, skip_serializing_if = "String::is_empty")]
+    pub allergens: String,
+    /// What one portion uses up, by stock item name.
+    #[serde(default, skip_serializing_if = "Vec::is_empty")]
+    pub recipe: Vec<TemplateRecipeLine>,
+}
+
+/// One recipe ingredient: `qty_milli` thousandths of the item's unit.
+#[derive(Clone, Debug, Default, PartialEq, Eq, Serialize, Deserialize)]
+pub struct TemplateRecipeLine {
+    pub item: String,
+    pub qty_milli: i64,
+}
+
+impl Default for TemplateItem {
+    fn default() -> Self {
+        Self {
+            name: String::new(),
+            aliases: Vec::new(),
+            price: 0,
+            image: String::new(),
+            price_paise: None,
+            kind: String::new(),
+            available: true,
+            unit: String::new(),
+            group: String::new(),
+            station: String::new(),
+            tax_rate: String::new(),
+            tax_bps: 0,
+            track_stock: false,
+            reorder_at: None,
+            modifiers: Vec::new(),
+            area_prices: Vec::new(),
+            schedule: Vec::new(),
+            allergens: String::new(),
+            recipe: Vec::new(),
+        }
+    }
+}
+
+impl TemplateItem {
+    /// Price in paise: `price_paise` when set, else whole rupees.
+    pub fn price_in_paise(&self) -> i64 {
+        self.price_paise
+            .unwrap_or_else(|| self.price.saturating_mul(100))
+            .max(0)
+    }
 }
 
 impl MenuTemplate {
@@ -53,7 +179,21 @@ impl MenuTemplate {
     }
 
     pub fn item_count(&self) -> usize {
-        self.categories.iter().map(|c| c.items.len()).sum()
+        self.categories.iter().map(|c| c.items.len()).sum::<usize>() + self.items.len()
+    }
+
+    /// Every item, categorised first, then the uncategorised ones.
+    pub fn all_items(&self) -> impl Iterator<Item = &TemplateItem> {
+        self.categories
+            .iter()
+            .flat_map(|c| c.items.iter())
+            .chain(self.items.iter())
+    }
+
+    /// Refuse a pack this build cannot apply in full: another app's, or a
+    /// newer format. Hand-written packs (format 0, no app) always pass.
+    pub fn check_compatible(&self) -> Result<(), String> {
+        check_pack_header(self.format, &self.app)
     }
 
     /// Resolve a template-relative or shelf image key to a file on disk.
@@ -78,11 +218,29 @@ fn load_one(dir: &Path) -> Option<MenuTemplate> {
     load_from_dir(dir)
 }
 
+/// Same rule for `template.json` and `shop_defaults.json` headers.
+pub fn check_pack_header(format: u32, app: &str) -> Result<(), String> {
+    let app = app.trim();
+    if !app.is_empty() && !app.eq_ignore_ascii_case(PACK_APP) {
+        return Err(format!("This template is for {app}, not Khaynjo"));
+    }
+    if format > PACK_FORMAT {
+        return Err("This template needs a newer Khaynjo — update the app first".into());
+    }
+    Ok(())
+}
+
 /// Load one `template.json` from a pack folder (bundled, cached, or fixture).
 pub fn load_from_dir(dir: &Path) -> Option<MenuTemplate> {
+    read_from_dir(dir).ok()
+}
+
+/// [`load_from_dir`] that says why a pack could not be read.
+pub fn read_from_dir(dir: &Path) -> Result<MenuTemplate, String> {
     let path = dir.join("template.json");
-    let raw = std::fs::read_to_string(&path).ok()?;
-    let mut tmpl: MenuTemplate = serde_json::from_str(&raw).ok()?;
+    let raw = std::fs::read_to_string(&path).map_err(|e| format!("template.json: {e}"))?;
+    let mut tmpl: MenuTemplate =
+        serde_json::from_str(&raw).map_err(|e| format!("template.json: {e}"))?;
     if tmpl.id.trim().is_empty() {
         tmpl.id = dir
             .file_name()
@@ -92,7 +250,7 @@ pub fn load_from_dir(dir: &Path) -> Option<MenuTemplate> {
     if tmpl.title.trim().is_empty() {
         tmpl.title = menu_images::title_from_kebab(&tmpl.id);
     }
-    Some(tmpl)
+    Ok(tmpl)
 }
 
 /// Every client template on disk, sorted by title.

@@ -448,10 +448,6 @@ impl OpenList {
         }
     }
 
-    fn stays_open(self) -> bool {
-        matches!(self, OpenList::Suggest(f) if f.stays_open())
-    }
-
     /// Every list a tap on its field opens.
     fn tap_targets() -> impl Iterator<Item = OpenList> {
         SuggestField::ALL
@@ -463,7 +459,7 @@ impl OpenList {
 }
 
 /// Every `AnchoredPopup` in the window (each draws only while open).
-const APP_POPUPS: [&[LiveId]; 1] = [ids!(floor_cols_popup)];
+const APP_POPUPS: [&[LiveId]; 0] = [];
 
 impl App {
     /// The open list's own ground: its field, its dropdown button, the list
@@ -509,10 +505,7 @@ impl App {
         if OpenList::current() == Some(list) {
             return;
         }
-        let text = match list {
-            OpenList::Suggest(f) if f.opens_unfiltered() => String::new(),
-            _ => self.ui.text_input(cx, list.input()).text(),
-        };
+        let text = self.ui.text_input(cx, list.input()).text();
         {
             let mut st = app_state().lock().unwrap();
             match list {
@@ -535,10 +528,9 @@ impl App {
         self.redraw_suggest_lists(cx);
     }
 
-    /// Close whatever list is open (not one that stays open). True when one
-    /// closed.
+    /// Close whatever list is open. True when one closed.
     fn close_open_list(&mut self, cx: &mut Cx) -> bool {
-        let Some(list) = OpenList::current().filter(|l| !l.stays_open()) else {
+        let Some(list) = OpenList::current() else {
             return false;
         };
         self.force_close_list(cx, list);
@@ -563,11 +555,6 @@ impl App {
                 OpenList::DishPicker => st.dish_picker_open = false,
                 OpenList::CategoryPicker => st.category_picker_open = false,
             }
-        }
-        // Outside tap / Back cleared suggest_open but left the Kitchen
-        // (and similar) face stuck on "Done · …" until a later sync_chrome.
-        if let OpenList::Suggest(SuggestField::KotStation) = list {
-            self.paint_kot_station_dd(cx);
         }
         self.ui.widget(cx, list.list()).redraw(cx);
         self.redraw_popups(cx);
@@ -619,7 +606,6 @@ impl App {
                 // A tap on an ℹ shows its tip again on release.
                 self.ui.callout_tooltip(cx, ids!(app_callout)).hide(cx);
                 if let Some(list) = OpenList::current()
-                    && !list.stays_open()
                     && !self.list_owns_point(cx, list, abs)
                 {
                     self.close_open_list(cx);

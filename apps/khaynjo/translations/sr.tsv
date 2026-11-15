@@ -41,7 +41,7 @@ remove	Уклони
 removed_items	Уклоњене ставке менија
 removed_help	Ресторе враћа ставку менија у мени тачно онако како је била — цена, фотографија и категорија. Наша полица са посуђем се никада не уклања, тако да се јело увек може поново додати.
 restore_item	Врати
-empty_catalog	Још нема посуђа. Отворите Мени, додајте јело (име + цена), а затим наручите.
+empty_catalog	Још нема посуђа.
 total	Укупно
 cash	Цасх
 upi	UPI
@@ -103,23 +103,14 @@ bill_item_qty	Кти
 bill_item_price	Цена
 bill_item_amount	Износ
 bill_item_note	Белешка о јелу
-bill_item_col_gap	Размак у колони
 bill_item_col_order	Редослед колоне
 bill_item_col_sep	Правила колона
-bill_item_gap_tight	Чврсто
-bill_item_gap_comfort	Удобан
-bill_item_gap_wide	Широко
-bill_item_num_width	Број колоне
-bill_item_num_compact	Збијено
-bill_item_num_comfort	Удобан
-bill_item_num_wide	Широко
-bill_item_num_align	Бројеви се поравнавају
-bill_item_gap_em	јаз (ем)
-bill_item_qty_min	Количина мин (ем)
-bill_item_price_min	Цена мин (ем)
-bill_item_amount_min	Мин. износ (ем)
-kot_item_qty_width	Колона Колона
-kot_item_num_align	Кти алигн
+slip_columns	Колоне
+slip_col_width	Ширина (mm)
+slip_col_start	Почетни размак (px)
+slip_col_end	Завршни размак (px)
+slip_col_align	Поравнање текста
+slip_columns_help	Ширина сваке колоне укључује њен почетни и завршни размак. Текст се прелама унутар своје колоне; оно што прелази ширину садржаја одсеца се, на папиру и у прегледу.
 bill_total_qty_label	Ознака укупне количине
 bill_total_subtotal_label	Ознака суб тотал
 bill_total_grand_label	Укупна ознака
@@ -221,7 +212,6 @@ sidebar_order_saved	Редослед бочне траке је сачуван
 sidebar_visibility_saved	Видљивост бочне траке је сачувана
 amounts_hide	Сакриј се
 amounts_show	Схов
-printers_none_hint	Прво сачувајте штампач на овом уређају, а затим га додајте у Билл или кухињу
 counter	Шанк
 dine_in	Дине-ин
 takeaway	Такеаваи
@@ -328,8 +318,6 @@ selected_language	Изабрано
 continue	Настави
 this_device	ОВАЈ УРЕЂАЈ
 device_use_q	Како ће се овај уређај користити?
-last_server_mode	Вас Сервер — додирните за наставак
-last_client_mode	Био је клијент — додирните да бисте наставили
 choose_server	Изаберите сервер
 choose_server_hint	Отворите постојећи сервер или га креирајте за неко друго предузеће.
 create_new_server	Креирајте нови сервер
@@ -391,7 +379,7 @@ attachments_last_expense	Прилози (последњи трошак)
 bank	Банка
 bank_in	Банка у
 bank_out	Новац из банке
-bank_reconciliation	Банковно помирење (означите на изводу из банке)
+bank_reconciliation	Банковно помирење
 bank_to_till	Банка → до
 book_add_dish	Књига — додајте јело / ставку менија
 book_opening_credit	Главна књига — почетни кредит
@@ -744,7 +732,6 @@ station_print_pick_first	Прво изаберите кухињску стани
 station_print_editing	Уређивање штампача за „{name}“
 station_vps_dd	Штампачи за ову станицу
 station_vps_dd_n	{n} штампачи · додирните да бисте променили
-station_vps_empty	Још нема штампача — Пронађите их под Подешавања → Штампачи
 bill_printers_dd	Штампачи за рачун
 bill_printers_dd_n	{n} штампачи за рачун · додирните да бисте променили
 job_layout	Лаиоут
@@ -889,7 +876,7 @@ net_word	Нет
 offline_badge	ВАН МРЕЖЕ
 optional_login_help	Опционо пријављивање (ид + лозинка). Власник поставља једном; само корисник може касније да промени лозинку.
 or_unlock_login	Или откључајте помоћу ИД-а за пријаву + лозинке
-permission_preset	Посао (подешава екране и новчане акције)
+permission_preset	Посао
 preset_help_khaynjo	Благајник: продам. Менаџер: продати + ставке менија + поништити/изменити.
 product_locked_khaynjo	Khaynjo
 product_only_khaynjo	Ова апликација је само Khaynjo — оперативни систем ресторана. Остала трговинска лица се испоручују као засебни Kumkaj производи.
@@ -961,10 +948,6 @@ pin_hint_paired	Екстра до упаривања — откључајте з
 pin_hint_pair_first	Екстра до — прво упарите са уређајем продавнице
 unlock_to_continue	Откључајте да бисте наставили
 no_staff_yet	Још нема особља — откључајте као Власник, а затим Тим
-status_server_set_pin	Режим сервера — поставите власника PIN
-status_server_tills	Режим сервера — могу се придружити додатне касе. Откључај
-status_server_unlock	Режим сервера — откључајте као власник
-status_client_unlock	Режим клијента — откључајте за продају
 icon_new_selected	Икона: изабрана нова датотека — додирните Сачувај бренд
 icon_custom	Икона: прилагођена ознака места
 icon_default	Икона: Kumkaj ознака (подразумевано) — изаберите прилагођену
@@ -1033,7 +1016,7 @@ book_kind_balance	Биланс стања
 order_help	Додирните ставку менија да бисте је додали.
 floor_help	Додирните трпезаријски сто да бисте преузели или променили редослед. Боје показују бесплатно → седи → кухиња → спремно → јело → рачун → плаћено. Листа чекања, резервације и столови за ручавање налазе се у одељцима испод.
 kitchen_help	Кухињске карте (KOT), најновије последње. Старт → Спремно → Готово помера тикет. Улазнице никада не показују цене.
-kitchen_empty	Нема отворених карата. Овде се појављује KOT послато из Реда или Трпезарије.
+kitchen_empty	Нема отворених карата.
 add_a_table	Додајте трпезаријски сто
 add_station_heading	Додајте кухињску станицу
 categories_help	Додирните Користи да бисте горњу ставку менија унели у ту категорију. Фотографија даје категорији слику; без једног показује своје иницијале.
@@ -1131,7 +1114,6 @@ bill_format_help	Одштампано под именом вашег ресто�
 bill_header_ph	Адреса | телефон
 fssai_ph	лиценца ФССАИ бр. (Индија)
 bill_footer_ph	Подножје (нпр. хвала, посетите поново)
-save_bill_format	Сачувајте формат рачуна
 reset_bill_format	Ресетујте на подразумеване вредности
 bill_format_reset	Формат рачуна је ресетован на подразумевани
 reset_kot_format	Ресетујте на подразумеване вредности
@@ -1201,13 +1183,11 @@ kot_copies_3	3
 kot_title_ph	Наслов (празно = KOT - НАРУЏБИНА КУХИЊЕ)
 kot_footer_ph	Напомена о кухињи (опционо, без цене)
 kot_preview	Преглед
-save_kot_format	Сачувај формат KOT
 test_kot_format	Пробајте тест KOT
 test_kot_sent	Преглед улазнице за кухињу је послан
 test_bill_format	Тестни рачун
 test_bill_sent	Преглед рачуна је послат
 test_print_no_printer	Нема штампача за тај посао — изаберите један на овом екрану
-kot_format_saved	KOT формат је сачуван
 std_print	Величина штампања рачуна
 std_print_help	Величина фонта за стандардне послове рачуна за портрет и пејзаж на ОС / штампачима докумената (унесите тачке — не Смалл/Нормал/Ларге). Иста величина на обе оријентације. Величине кухињских плочица су на картици KOT.
 std_size_s	Мала
@@ -1264,7 +1244,6 @@ new_items_head	Још није послато
 price_ph	Цена
 price_ph_gst_inside	Цена ({tax} укључујући)
 cancel_needs_table	Отворите ову поруџбину са екрана трпезарије (трпезаријски сто) да бисте отказали након што је кухиња добије — шалтер KOT остаје на карти док не преузмете уплату
-tax_rates_missing_hint	Не {tax} стопа на ова јела — на менију постављена Пореска стопа (цене већ укључују {tax} испод {tax} укључујући)
 taxable_value	Опорезива вредност
 gst_inside_price_note	({tax} укључујући)
 start_with_template	Почните са нашим шаблоном менија
@@ -1318,9 +1297,7 @@ order_empty_pick	Наручите празно — додирните Додај
 add_dishes	Додајте јела
 order_so_far	Овим редоследом: {n} · {total}
 no_dish_match	Ниједно јело не одговара „{q}“
-pick_dishes_help	Додирните јело да бисте га додали · изаберите категорију да бисте сузили листу
 pick_done	Готово
-pick_done_dd	Готово · {label}
 printer_route_mode	Ако више штампача на овом месту
 printer_mode_first	Прво то ради
 printer_mode_all	Штампајте на свим
@@ -1368,3 +1345,22 @@ recent_changes	Недавне промене
 lane_declared_label	Пореска фактура
 lane_owner_label	Новац
 money_lane_bill	Рачун: {lane}
+sel_copy	Копирај
+sel_select_all	Изабери све
+sel_copied	Копирано
+items_tmpl_khaynjo	Шаблон артикала Khaynjo
+items_tmpl_named	Шаблон {name}
+app_tmpl_named	Шаблон апликације {name}
+private_code_ph	12-цифрени код
+stamp_on	Печат: у фајлу
+pay_qr_on	КР плаћање: у евиденцији
+pay_qr_off	Плаћање КР: нема
+items_tmpl_heading	Шаблони ставки
+items_tmpl_help	Јела, категорије и фотографије за ваш мени. Подешавања радње и особље остају непромењени.
+public_tmpl_help	Почетни менији које свако може да преузме. Интернет је потребан једном.
+private_tmpl_help	Клијентски менији закључани 12-цифреним кодом од вашег Khaynjo контакта.
+printers_screen_tip	Претрага приказује штампаче које овај уређај може да користи и чува их за ову радњу. Штампачи рачуна: Формат рачуна и KOT → Рачун. Кухиња: Кухиња → Кухињске станице.
+printers_found_none	Није пронађен ниједан штампач.
+kot_copy_from	Копирај из
+kot_copy_from_help	Копира величину, дебљину и поравнање сваког реда из те врсте у ову. Ова врста задржава свој банер, префикс ставке и прецртавање. Сачувајте KOT формат да бисте га задржали.
+nav_loading	Учитавање…

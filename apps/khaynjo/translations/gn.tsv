@@ -41,7 +41,7 @@ remove	Ojepe’a
 removed_items	Umi mba’e ojeipe’áva
 removed_help	Restaurar omoĩ jey pe mba’e menúpe oĩ haguéichaite — hepykue, ta’ãngamýi ha categoría. Ñande estante de platos araka’eve ndojepe’ái, upévare ikatu akóinte oñembojehe’a jey peteĩ tembi’u.
 restore_item	Oñemoĩjey
-empty_catalog	Ndaipóri gueteri tembi'u. Eipe’a Menú, emoĩ peteĩ tembi’u (héra + hepykue), upéi ejagarra peteĩ pedido.
+empty_catalog	Ndaipóri gueteri tembi'u.
 total	Total rehegua
 cash	Efectivo rehegua
 upi	UPI
@@ -103,23 +103,14 @@ bill_item_qty	Hetakue
 bill_item_price	Precio
 bill_item_amount	Monto rehegua
 bill_item_note	Nota plato rehegua
-bill_item_col_gap	Columna ñemo’ãha
 bill_item_col_order	Columna ñemohenda
 bill_item_col_sep	Umi regla columna rehegua
-bill_item_gap_tight	Apretado
-bill_item_gap_comfort	Oĩ porã
-bill_item_gap_wide	Ancho
-bill_item_num_width	Umi columna papapy rehegua
-bill_item_num_compact	Compacto rehegua
-bill_item_num_comfort	Oĩ porã
-bill_item_num_wide	Ancho
-bill_item_num_align	Papapykuéra oñemohenda
-bill_item_gap_em	Gap (em) rehegua .
-bill_item_qty_min	Cantidad min (em) rehegua .
-bill_item_price_min	Precio min (em) rehegua.
-bill_item_amount_min	Cantidad min (em) rehegua .
-kot_item_qty_width	Quty columna rehegua
-kot_item_num_align	Qty alineado rehegua
+slip_columns	Columna-kuéra
+slip_col_width	Pe (mm)
+slip_col_start	Ñepyrũha pa’ũ (px)
+slip_col_end	Pahaha pa’ũ (px)
+slip_col_align	Moñe’ẽrã ñembohysýi
+slip_columns_help	Peteĩteĩ columna pe oguereko ipype iñepyrũha ha ipahaha pa’ũ. Moñe’ẽrã oñembojere icolumna ryepýpe; contenido pe rehasáva oñeikytĩ kuatiápe ha jehechaukápe.
 bill_total_qty_label	Total qty etiqueta rehegua
 bill_total_subtotal_label	Sub etiqueta total rehegua
 bill_total_grand_label	Etiqueta gran total rehegua
@@ -221,7 +212,6 @@ sidebar_order_saved	Orden de barra lateral oñeñongatu
 sidebar_visibility_saved	Ojeñongatu barra lateral jehechauka
 amounts_hide	Oñomi
 amounts_show	Ohechauka
-printers_none_hint	Eñongatu raẽ peteĩ impresora ko aparátope, upéi emoĩ Bill térã peteĩ kosináme
 counter	Contador rehegua
 dine_in	Okaru-pype
 takeaway	Ojegueraha haguã
@@ -328,8 +318,6 @@ selected_language	Ojeporavóva
 continue	Esegíkena
 this_device	KO DISPOSITIVO
 device_use_q	Mbaʼéichapa ojeporúta ko aparáto?
-last_server_mode	Ha’ékuri Servidor — epoko eñepyrũ hag̃ua
-last_client_mode	Ha’ékuri Cliente — epoko eñepyrũ hag̃ua
 choose_server	Eiporavo peteĩ servidor
 choose_server_hint	Eipe’a peteĩ servidor oĩmava, térã ejapo peteĩ ambue negocio-pe g̃uarã.
 create_new_server	Ejapo servidor pyahu
@@ -391,7 +379,7 @@ attachments_last_expense	Umi adjunto (gasto paha) .
 bank	Banco
 bank_in	Banco en
 bank_out	Banco osẽva
-bank_reconciliation	Reconciliación bancaria (emoĩ peteĩ marca nde estado bancario rehe) .
+bank_reconciliation	Reconciliación bancaria
 bank_to_till	Banco → till
 book_add_dish	Aranduka — omoĩ tembi’u / mba’e
 book_opening_credit	Aranduka — crédito apertura rehegua
@@ -744,7 +732,6 @@ station_print_pick_first	Eiporavo raẽ peteĩ estación de cocina
 station_print_editing	Impresora ñemboheko “{name}”-pe g̃uarã.
 station_vps_dd	Impresora ko emisora-pe guarã
 station_vps_dd_n	{n} impresorakuéra · epoko emoambue hag̃ua
-station_vps_empty	Ndaipóri gueteri impresora — Eheka umíva Ñemboheko → Impresora guýpe
 bill_printers_dd	Impresora-kuéra pe factura-pe guarã
 bill_printers_dd_n	{n} impresorakuéra factura-pe g̃uarã · epoko emoambue hag̃ua
 job_layout	Diseño rehegua
@@ -889,7 +876,7 @@ net_word	Net rehegua
 offline_badge	OFFLINE rehegua
 optional_login_help	Oike opcional (id + contraseña). Ijára omoĩ peteĩ jey; puruhára añoite ikatu omoambue ñe’ẽñemi upe rire.
 or_unlock_login	Térã ojedesblokea id de ingreso + contraseña reheve
-permission_preset	Tembiapo (omohenda pantalla ha pirapire acción) .
+permission_preset	Tembiapo
 preset_help_khaynjo	Cajero: ovende. Moakãhára: ovende + mba’e + omboyke/omoambue.
 product_locked_khaynjo	Khaynjo
 product_only_khaynjo	Ko app ha’e Khaynjo añoite — sistema operativo restaurante rehegua. Ambue comercio hova oñemondo producto Kumkaj separado ramo.
@@ -961,10 +948,6 @@ pin_hint_paired	Extra hasta emparejado — desbloqueo oñevende haguã
 pin_hint_pair_first	Extra till — embojoaju pe tembipuru tenda rehegua raẽ
 unlock_to_continue	Edesblokea eñepyrũ hag̃ua
 no_staff_yet	Ndaipóri gueteri personal — desbloqueo Propietario ramo, upéi Equipo
-status_server_set_pin	Modo Servidor — emohenda Ijára PIN .
-status_server_tills	Modo Servidor — umi tills extra ikatu ojoaju. Desbloqueo
-status_server_unlock	Modo Servidor — ojepe’a Ijára ramo
-status_client_unlock	Modo Cliente — ojepe’a oñevende hag̃ua
 icon_new_selected	Icono: archivo pyahu ojeporavóva — epoko Ñongatu marca rehe
 icon_custom	Icono: marca personalizada tenda rehegua
 icon_default	Icono: Kumkaj marca (por defecto) — eiporavo peteĩ jeporupyre
@@ -1033,7 +1016,7 @@ book_kind_balance	Balance rehegua
 order_help	Epoko peteĩ mbaʼére remoĩ hag̃ua.
 floor_help	Epoko peteĩ mesa de comedor rehe regueraha térã remoambue hag̃ua pe pedido. Umi sa’y ohechauka gratis → oguapy → cocina → listo → okaru → factura → ojepagáva. Lista de espera, reserva ha mesa adicional-comida oĩ umi sección iguýpe.
 kitchen_help	Boletos de cocina (KOT), ipyahuvéva ipahaitépe. Ñepyrũ → Oĩma → Ojejapo omomýi peteĩ boleto. Umi boleto araka'eve ndohechaukái precio.
-kitchen_empty	Ndaipóri boleto abierto. Peteĩ KOT oñemondova’ekue Orden térã Comedor-gui ojehechauka ko’ápe.
+kitchen_empty	Ndaipóri boleto abierto.
 add_a_table	Oñemoĩ pype peteĩ mesa ojekaru haguã
 add_station_heading	Oñemoĩve peteĩ estación de cocina
 categories_help	Epoko Eipuru emoĩ hag̃ua pe mbaʼe oĩva yvate upe categoría guýpe. Ta’anga ome’ẽ pe categoría-pe peteĩ ta’anga; peteĩ’ỹre ohechauka iñepyrũrã.
@@ -1131,7 +1114,6 @@ bill_format_help	Oñeimprimi nde restaurante réra guýpe opaite factura-pe. Oje
 bill_header_ph	Dirección | teléfono rupive
 fssai_ph	FSSAI licencia no. (India) .
 bill_footer_ph	Footer (e.g. Aguyje, evisita jey)
-save_bill_format	Oñongatu formato factura rehegua
 reset_bill_format	Oñemoĩjey ñepyrũrãme
 bill_format_reset	Factura formato oñemohenda jey por defecto-pe
 reset_kot_format	Oñemoĩjey ñepyrũrãme
@@ -1201,13 +1183,11 @@ kot_copies_3	3
 kot_title_ph	Título (blanco = KOT - ORDEN DE COCINA) .
 kot_footer_ph	Nota de cocina (opcional, ndaipóri precio) .
 kot_preview	Tembiecharã tenondegua
-save_kot_format	Oñongatu KOT formato
 test_kot_format	Ñeha'ã KOT .
 test_kot_sent	Boleto de cocina previsualización oñemondo
 test_bill_format	Factura de prueba rehegua
 test_bill_sent	Bill previsualización oñemondova’ekue
 test_print_no_printer	Ndaipóri impresora upe tembiaporãme g̃uarã — eiporavo peteĩ ko pantalla-pe
-kot_format_saved	KOT formato oñeñongatu
 std_print	Factura impresión tuichakue
 std_print_help	Fuente tuichakue umi tembiapo factura Retrato ha Paisaje Estándar-pe g̃uarã umi impresora SO / kuatia rehegua (emoinge punto — ndahaꞌei Michĩ/Normal/Tuicháva). Peteĩchagua tuichakue mokõive orientación-pe. Umi tamaño deslizante cocina rehegua oĩ pe ficha KOT-pe.
 std_size_s	Michĩ
@@ -1264,7 +1244,6 @@ new_items_head	Noñemondói gueteri
 price_ph	Precio
 price_ph_gst_inside	Precio ({tax} avei)
 cancel_needs_table	Eipe'a ko pedido pantalla Comedor-gui (peteî mesa comedor) ekansela haguã cocina oreko rire — mostrador KOTs opyta boleto rehe regueraha peve pago
-tax_rates_missing_hint	Ndaipóri {tax} tasa ko’ã tembi’úre — Menú-pe omoĩ Tasa Impuesto (umi precio oikema {tax} {tax} guýpe)
 taxable_value	Valor imponible rehegua
 gst_inside_price_note	({tax} oikehápe)
 start_with_template	Eñepyrũ ore plantilla menú rehegua reheve
@@ -1318,9 +1297,7 @@ order_empty_pick	Ordenar vacío — epoko Emoĩ tembi’u yvate gotyo eiporavo h
 add_dishes	Oñemoĩ pype tembi’u
 order_so_far	Ko tembiapoukapy rehe: {n} · {total}
 no_dish_match	Ndaipóri tembi’u ojoajúva “{q}” rehe.
-pick_dishes_help	Epoko peteĩ tembi’u rehe emoĩ hag̃ua · eiporavo peteĩ categoría emboguejy hag̃ua lista
 pick_done	Ojejapo
-pick_done_dd	Ojejapo · {label} .
 printer_route_mode	Heta impresora ramo ko tendápe
 printer_mode_first	Primero upéva osẽ porã
 printer_mode_all	Eimprimi opavave ári
@@ -1368,3 +1345,22 @@ recent_changes	Umi ñemoambue nda’aréi ojejapóva
 lane_declared_label	Factura tributaria rehegua
 lane_owner_label	Memo efectivo rehegua
 money_lane_bill	Proyecto de ley: {lane} .
+sel_copy	Ekopia
+sel_select_all	Eiporavo opavave
+sel_copied	Okopiáma
+items_tmpl_khaynjo	Khaynjo mba'e ñemboguatarã
+items_tmpl_named	{name} ñemboguatarã
+app_tmpl_named	{name} app ñemboguatarã
+private_code_ph	Código 12 papapy
+stamp_on	Sello: archivo-pe
+pay_qr_on	QR de pago: archivo-pe
+pay_qr_off	Pago QR: ndaipóri
+items_tmpl_heading	Mba'e techaukaha
+items_tmpl_help	Tembi'u, mba'e jehaipy ha ta'anga ne menu-pe guarã. Tenda ñemboheko ha mba'apoharakuéra opyta ojeguáicha.
+public_tmpl_help	Menu ñepyrũrã oimeraẽva ikatúva omboguejy. Oikotevẽ internet peteĩ jey.
+private_tmpl_help	Cliente menu oñeñongatúva 12 papapy código rehe ne Khaynjo kuatiápe guive.
+printers_screen_tip	Jeheka ohechauka umi impresora ko mba'e ikatúva oipuru ha oñongatu ko tendápe guarã. Impresora cuenta-pe guarã: Cuenta ha KOT formato → Cuenta. Tembiapoha: Tembiapoha → Tembiapoha estación.
+printers_found_none	Ndojejuhúi impresora.
+kot_copy_from	Kopia ko'águi
+kot_copy_from_help	Okopia peteĩteĩ línea tuichakue, ipohyikue ha iñembohysýi upe tipo-gui ko'ápe. Ko tipo oñongatu ijehegui banner, prefijo ha tachado. Eñongatu formato KOT reñongatu hag̃ua.
+nav_loading	Henyhẽhína…

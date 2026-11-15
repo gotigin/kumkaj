@@ -39,7 +39,7 @@ adding_item	Añadiendo tarifa
 editing_item	Editando
 save	Guardar
 remove	Quitar
-empty_catalog	Aún no hay tarifas. Abra Tarifas y servicios, añada una (nombre + precio, unidad kg), luego Envíos.
+empty_catalog	Aún no hay tarifas.
 counter_sale	Envío en mostrador
 total	Total
 cash	Efectivo
@@ -171,8 +171,6 @@ selected_language	Seleccionado
 continue	Continuar
 this_device	ESTE DISPOSITIVO
 device_use_q	¿Cómo se usará este dispositivo?
-last_server_mode	Era servidor — toca para continuar
-last_client_mode	Era cliente — toca para continuar
 choose_server	Elige un servidor
 choose_server_hint	Este dispositivo ya tiene servidores. Abre uno o crea un servidor nuevo para otro negocio.
 create_new_server	Crear servidor nuevo
@@ -501,8 +499,6 @@ job_layout	Diseño
 job_delivery	Cómo se envía el trabajo
 job_size	Tamaño de fuente
 job_size_ph	p. ej. 18, 20, 26…
-save_receipt_format	Guardar formato de recibo
-save_label_format	Guardar formato de etiqueta
 test_receipt_format	Probar recibo
 test_label_format	Probar etiqueta
 test_receipt_sent	Recibo de ejemplo enviado
@@ -610,7 +606,7 @@ units_heading	Unidades
 booking_measures	Medidas del envío
 drawer_count	Conteo de caja (opcional)
 spreadsheet_csv	Hoja de cálculo (CSV)
-bank_reconciliation	Conciliación bancaria (marca contra tu extracto)
+bank_reconciliation	Conciliación bancaria
 book_add_product	Envío — añadir producto / tarifa
 book_opening_credit	Envío — crédito inicial
 account_kind	Tipo de cuenta (toca uno)
@@ -650,7 +646,7 @@ net_word	Neto
 offline_badge	SIN CONEXIÓN
 optional_login_help	Acceso opcional (id + contraseña). El dueño lo pone una vez; después solo el usuario puede cambiar la contraseña.
 or_unlock_login	O desbloquear con id de acceso + contraseña
-permission_preset	Puesto (define pantallas y derechos)
+permission_preset	Puesto
 preset_help_moklanjo	Cajero: vender. Gerente: vender + artículos + anular/modificar.
 product_locked_moklanjo	Moklanjo
 product_only_moklanjo	Esta app es solo Moklanjo: libros y mostrador de envíos. Otros oficios tendrán sus propios productos más adelante.
@@ -698,10 +694,6 @@ pin_hint_paired	Caja extra emparejada: desbloquear para vender
 pin_hint_pair_first	Caja extra: empareja primero con el dispositivo tienda
 unlock_to_continue	Desbloquear para continuar
 no_staff_yet	Aún no hay personal: desbloquear como Dueño, luego Equipo
-status_server_set_pin	Modo servidor — fijar PIN del dueño
-status_server_tills	Modo servidor — las cajas extra pueden unirse. Desbloquear
-status_server_unlock	Modo servidor — desbloquear como Dueño
-status_client_unlock	Modo cliente — desbloquear para vender
 icon_new_selected	Icono: archivo nuevo seleccionado — toca Guardar marca
 icon_custom	Icono: marca propia de tu tienda
 icon_default	Icono: marca Kumkaj (predeterminada) — elige la tuya
@@ -834,3 +826,7 @@ role_help_supplier	Rol: Proveedor — AP de compras.
 lane_declared_label	Envío a cuenta
 lane_owner_label	Envío al contado
 money_lane_bill	Factura: {lane}
+sel_copy	Copiar
+sel_select_all	Seleccionar todo
+sel_copied	Copiado
+nav_loading	Cargando…

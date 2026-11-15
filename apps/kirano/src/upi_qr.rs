@@ -69,10 +69,10 @@ mod tests {
 
     #[test]
     fn uri_builds_with_correct_am_for_paise() {
-        let u = upi_pay_uri("shop@upi", "Rajdhani", 12_550).unwrap();
+        let u = upi_pay_uri("shop@upi", "Asha", 12_550).unwrap();
         assert!(u.starts_with("upi://pay?pa=shop@upi"));
         assert!(u.contains("&am=125.50&cu=INR"), "{u}");
-        assert!(u.contains("&pn=Rajdhani"));
+        assert!(u.contains("&pn=Asha"));
     }
 
     #[test]

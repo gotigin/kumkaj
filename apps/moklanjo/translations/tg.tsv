@@ -39,7 +39,7 @@ adding_item	Илова кардани меъёри нав
 editing_item	Таҳрир мешавад
 save	Захира
 remove	Хориҷ
-empty_catalog	Ҳанӯз нархҳо нест. Нархҳо ва хидматҳоро кушоед, якеро (ном + нарх, воҳиди кг) илова кунед, пас брон кунед.
+empty_catalog	Ҳанӯз нархҳо нест.
 counter_sale	Бронкунии муқобил
 total	Ҷамъ
 cash	Нақд
@@ -171,8 +171,6 @@ selected_language	Интихобшуда
 continue	Давом
 this_device	ИН ДАСТГОҲ
 device_use_q	Ин дастгоҳ чӣ гуна истифода мешавад?
-last_server_mode	Server буд — зер кунед, то давом диҳед
-last_client_mode	Мизоҷ буд — зер кунед, то давом диҳед
 choose_server	Интихоби server
 choose_server_hint	Server-и мавҷударо кушоед, ё барои тиҷорати дигар яке созед.
 create_new_server	Сохтани server-и нав
@@ -501,8 +499,6 @@ job_layout	Тарҳ
 job_delivery	Чӣ гуна кор фиристода мешавад
 job_size	Андозаи ҳарф
 job_size_ph	мисол 18, 20, 26…
-save_receipt_format	Формати квитансияро захира кунед
-save_label_format	Формати барчаспро захира кунед
 test_receipt_format	Квитансияи санҷишӣ
 test_label_format	Нишони санҷишӣ
 test_receipt_sent	Намунаи квитансия фиристода шуд
@@ -610,7 +606,7 @@ units_heading	Воҳидҳо
 booking_measures	Тадбирҳои фармоиш
 drawer_count	Шумораи қуттӣ (ихтиёрӣ)
 spreadsheet_csv	Ҷадвал (CSV)
-bank_reconciliation	Мутобиқати бонк (бо изҳороти бонки худ муқоиса кунед)
+bank_reconciliation	Мутобиқати бонк
 book_add_product	Китоб - илова кардани маҳсулот / нарх
 book_opening_credit	Дафтар — қарзи оғоз
 account_kind	Навъи ҳисоб (якеро зер кунед)
@@ -650,7 +646,7 @@ net_word	Соф
 offline_badge	БЕ ШАБАКА
 optional_login_help	Воридшавии ихтиёрӣ (шиноснома + парол). Соҳиб як бор мегузорад; танҳо корбар баъдтар паролро иваз мекунад.
 or_unlock_login	Ё бо шиносномаи воридшавӣ + парол кушоед
-permission_preset	Вазифа (экранҳо ва ҳуқуқҳоро муқаррар мекунад)
+permission_preset	Вазифа
 preset_help_moklanjo	Хазинадор: фурӯш. Мудир: фурӯш + молҳо + бекор/ислоҳ.
 product_locked_moklanjo	Мокланжо
 product_only_moklanjo	Ин барнома танҳо Moklanjo аст - китобҳо + мизи фармоишӣ. Дигар намудҳои тиҷорат баъдтар ҳамчун маҳсулоти алоҳида фиристода мешаванд.
@@ -698,10 +694,6 @@ pin_hint_paired	Қуттии иловагӣ ҷуфт шуд — барои фу�
 pin_hint_pair_first	Қуттии иловагӣ — аввал ба дастгоҳи дӯкон ҷуфт кунед
 unlock_to_continue	Барои давом кушоед
 no_staff_yet	Ҳанӯз корманд нест — ҳамчун Соҳиб кушоед, сипас Даста
-status_server_set_pin	Ҳолати Server — PIN-и Соҳибро гузоред
-status_server_tills	Ҳолати Server — қуттиҳои иловагӣ ҳамроҳ шуда метавонанд. Кушоед
-status_server_unlock	Ҳолати Server — ҳамчун Соҳиб кушоед
-status_client_unlock	Ҳолати Мизоҷ — барои фурӯш кушоед
 icon_new_selected	Нишон: файли нав интихоб шуд — Захираи нишонро зер кунед
 icon_custom	Нишон: нишони махсуси ҷой
 icon_default	Нишон: нишони Kumkaj (пешфарз) — якеи махсус интихоб кунед
@@ -834,3 +826,7 @@ role_help_supplier	Нақш: Таъминкунанда - AP барои хари
 lane_declared_label	Бронкунии ҳисоб
 lane_owner_label	Бронкунии пули нақд
 money_lane_bill	Ҳисоб: {lane}
+sel_copy	Нусха бардоштан
+sel_select_all	Ҳамаро интихоб кардан
+sel_copied	Нусха бардошта шуд
+nav_loading	Боркунӣ…

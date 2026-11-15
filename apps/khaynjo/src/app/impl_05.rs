@@ -327,7 +327,16 @@ fn print_or_share_receipt(&mut self, cx: &mut Cx, text: &str) {
     /// **not** treat bare key_focus as a field — Buttons also call
     /// `set_key_focus`, which would stall `sync_chrome`.
     fn text_field_has_focus(&mut self, cx: &mut Cx) -> bool {
-        if cx.get_ime_area_rect().size.y > 0.0 {
+        // Makepad never clears its IME area: after a field loses focus (or its
+        // screen is gone) `get_ime_area_rect` still returns that field's last
+        // rect, and every sync_chrome took the typing early-return — the
+        // header kept "Locked" after a PIN unlock, the Menu private-template
+        // card never repainted. Count the IME only while the focused area is
+        // the field that owns it (TextInput focuses and shows the IME with
+        // the same draw_bg area).
+        let ime = cx.get_ime_area_rect();
+        let focus = cx.key_focus();
+        if ime.size.y > 0.0 && !focus.is_empty() && focus.rect(cx) == ime {
             return true;
         }
         // Before the first IME rect / DidShow: known FieldInputs + cart lines.
@@ -342,14 +351,13 @@ fn print_or_share_receipt(&mut self, cx: &mut Cx, text: &str) {
             ids!(bill_field_value),
             ids!(bill_footer_input),
             ids!(bill_header_input),
-            ids!(bill_item_amount_min_input),
-            ids!(bill_item_gap_em_input),
+            ids!(bill_col_end_input),
+            ids!(bill_col_start_input),
+            ids!(bill_col_width_input),
             ids!(bill_item_hdr_amount_input),
             ids!(bill_item_hdr_item_input),
             ids!(bill_item_hdr_price_input),
             ids!(bill_item_hdr_qty_input),
-            ids!(bill_item_price_min_input),
-            ids!(bill_item_qty_min_input),
             ids!(bill_printers_input),
             ids!(bill_total_grand_label_input),
             ids!(bill_total_paid_label_input),
@@ -408,11 +416,12 @@ fn print_or_share_receipt(&mut self, cx: &mut Cx, text: &str) {
             ids!(kot_banner_input),
             ids!(kot_field_size_input),
             ids!(kot_footer_input),
-            ids!(kot_item_gap_em_input),
+            ids!(kot_col_end_input),
+            ids!(kot_col_start_input),
+            ids!(kot_col_width_input),
             ids!(kot_item_hdr_item_input),
             ids!(kot_item_hdr_qty_input),
             ids!(kot_item_prefix_input),
-            ids!(kot_item_qty_min_input),
             ids!(kot_station_input),
             ids!(kot_test_printers_input),
             ids!(kot_title_input),
@@ -492,6 +501,7 @@ fn print_or_share_receipt(&mut self, cx: &mut Cx, text: &str) {
             ids!(staff_edit_login_input),
             ids!(staff_edit_name_input),
             ids!(staff_edit_password_input),
+            ids!(staff_edit_pin_input),
             ids!(staff_login_input),
             ids!(staff_name_input),
             ids!(staff_password_input),
@@ -550,7 +560,11 @@ fn print_or_share_receipt(&mut self, cx: &mut Cx, text: &str) {
             let host = self.ui.widget(cx, list_path);
             let list = host.portal_list(cx, ids!(list));
             for i in 0..n {
-                let item = list.item(cx, i, live_id!(Item));
+                // Only rows that exist can hold focus: `item` built every
+                // cart line on each call (sync_chrome runs this often).
+                let Some((_, item)) = list.get_item(i) else {
+                    continue;
+                };
                 for field_id in [ids!(unit_price), ids!(line_total), ids!(note)] {
                     let field = item.text_input(cx, field_id);
                     let area = field.area();
@@ -582,6 +596,10 @@ fn print_or_share_receipt(&mut self, cx: &mut Cx, text: &str) {
         // same event; leaving the screen under an open sheet stranded it.
         if self.ui.modal(cx, ids!(upi_qr_modal)).is_open() {
             self.ui.modal(cx, ids!(upi_qr_modal)).close(cx);
+            return true;
+        }
+        if self.ui.modal(cx, ids!(printers_modal)).is_open() {
+            self.close_printers_modal(cx);
             return true;
         }
         if self.ui.modal(cx, ids!(lock_staff_modal)).is_open() {
@@ -700,7 +718,7 @@ fn print_or_share_receipt(&mut self, cx: &mut Cx, text: &str) {
                 }
                 Some(prev)
             } else {
-                // Empty stack: setup / SidebarSettings have a fixed parent.
+                // Empty stack: setup screens have a fixed parent.
                 // Peers with no history stay put (platform Back is a no-op).
                 match st.screen {
                     Screen::Lock | Screen::ClientPair | Screen::Onboard => {
@@ -717,10 +735,6 @@ fn print_or_share_receipt(&mut self, cx: &mut Cx, text: &str) {
                             _ => "Pick Server Mode or Client Mode — Back left unlock".into(),
                         };
                         Some(Screen::DeviceSetup)
-                    }
-                    Screen::SidebarSettings => {
-                        st.nav_forward.clear();
-                        Some(Screen::Settings)
                     }
                     _ => None,
                 }
@@ -1125,6 +1139,8 @@ fn print_or_share_receipt(&mut self, cx: &mut Cx, text: &str) {
             "role" => Some(ids!(setup_role_body)),
             "public_templates" => Some(ids!(setup_public_tmpl_body)),
             "private_template" => Some(ids!(setup_private_tmpl_body)),
+            "menu_public_tmpl" => Some(ids!(menu_public_tmpl_body)),
+            "menu_private_tmpl" => Some(ids!(menu_private_tmpl_body)),
             _ => None,
         }
     }
@@ -1511,6 +1527,65 @@ fn print_or_share_receipt(&mut self, cx: &mut Cx, text: &str) {
         }
     }
 
+    /// Menu → Item templates accordions (the onboarding Shop templates pattern).
+    fn sync_menu_tmpl_sections(&mut self, cx: &mut Cx) {
+        let (open, public_cap, private_cap) = {
+            let st = app_state().lock().unwrap();
+            (
+                st.menu_tmpl_open.clone(),
+                st.t("app_template_public_hdr").to_uppercase(),
+                st.t("app_template_private_hdr").to_uppercase(),
+            )
+        };
+        let animating = accordion_anims().lock().unwrap();
+        for (key, hdr, body, caption) in [
+            (
+                "menu_public_tmpl",
+                ids!(menu_public_tmpl_hdr),
+                ids!(menu_public_tmpl_body),
+                public_cap,
+            ),
+            (
+                "menu_private_tmpl",
+                ids!(menu_private_tmpl_hdr),
+                ids!(menu_private_tmpl_body),
+                private_cap,
+            ),
+        ] {
+            let is_open = open.iter().any(|k| k == key);
+            let mark = if is_open {
+                ACCORDION_MARK_OPEN
+            } else {
+                ACCORDION_MARK_CLOSED
+            };
+            self.ui
+                .button(cx, hdr)
+                .set_text(cx, &format!("{mark}  {caption}"));
+            if animating.contains_key(key) {
+                continue;
+            }
+            self.ui.view(cx, body).set_visible(cx, is_open);
+            if let Some(mut v) = self.ui.view(cx, body).borrow_mut() {
+                v.walk.height = Size::fit();
+            }
+        }
+    }
+
+    fn toggle_menu_tmpl_section(&mut self, cx: &mut Cx, key: &str) {
+        let will_open = {
+            let mut st = app_state().lock().unwrap();
+            if let Some(i) = st.menu_tmpl_open.iter().position(|k| k == key) {
+                st.menu_tmpl_open.remove(i);
+                false
+            } else {
+                st.menu_tmpl_open.push(key.to_string());
+                true
+            }
+        };
+        self.start_section_height_anim(cx, key, will_open);
+        self.sync_menu_tmpl_sections(cx);
+    }
+
     fn toggle_device_setup_section(&mut self, cx: &mut Cx, key: &str) {
         let will_open = {
             let mut st = app_state().lock().unwrap();
@@ -1611,8 +1686,12 @@ fn print_or_share_receipt(&mut self, cx: &mut Cx, text: &str) {
 
     /// Settings → Sidebar: pill toggles + Enable/Disable All.
     fn handle_sidebar_nav_list_actions(&mut self, cx: &mut Cx, actions: &Actions) {
-        if app_state().lock().unwrap().screen != Screen::SidebarSettings {
-            return;
+        // The list lives on the Settings hub (was its own Sidebar screen).
+        {
+            let st = app_state().lock().unwrap();
+            if st.screen != Screen::Settings || st.settings_panel.is_some() {
+                return;
+            }
         }
         if self.ui.button(cx, ids!(sidebar_enable_all)).clicked(actions) {
             self.set_all_sidebar_visibility(cx, true);
@@ -1656,12 +1735,18 @@ fn print_or_share_receipt(&mut self, cx: &mut Cx, text: &str) {
                 };
                 if let Some(target) = target {
                     st.nav_order.swap(item_id, target);
-                    if let Some(store) = st.store.as_ref() {
-                        let _ = store.set_nav_order_csv(&nav_order_csv(&st.nav_order));
-                    }
+                    let done = st.t("sidebar_order_saved");
+                    let _ = st.save_nav_layout(done);
                     changed_order = true;
                 }
                 break;
+            }
+            if item.button(cx, ids!(face)).clicked(actions) {
+                // A row opens its screen, rights checked like the rail (owner,
+                // 2026-11-14); the switch and ↑↓ keep their own hits on top.
+                let tab = app_state().lock().unwrap().nav_order[item_id];
+                self.open_nav_tab(cx, tab);
+                return;
             }
             if !item.button(cx, ids!(toggle_hit)).clicked(actions) {
                 continue;
@@ -1676,9 +1761,8 @@ fn print_or_share_receipt(&mut self, cx: &mut Cx, text: &str) {
             } else {
                 st.nav_hidden.push(tab);
             }
-            if let Some(store) = st.store.as_ref() {
-                let _ = store.set_nav_hidden_csv(&nav_hidden_csv(&st.nav_hidden));
-            }
+            let done = st.t("sidebar_visibility_saved");
+            let _ = st.save_nav_layout(done);
             changed_vis = true;
             break;
         }
@@ -1707,9 +1791,8 @@ fn print_or_share_receipt(&mut self, cx: &mut Cx, text: &str) {
                     .filter(|t| !nav_tab_always_visible(*t))
                     .collect()
             };
-            if let Some(store) = st.store.as_ref() {
-                let _ = store.set_nav_hidden_csv(&nav_hidden_csv(&st.nav_hidden));
-            }
+            let done = st.t("sidebar_visibility_saved");
+            let _ = st.save_nav_layout(done);
         }
         let msg = app_state().lock().unwrap().t("sidebar_visibility_saved");
         self.set_status(cx, msg);

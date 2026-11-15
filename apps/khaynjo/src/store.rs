@@ -17,6 +17,7 @@ use crate::locale::{self, LanguageSource, LocaleSettings};
 use chrono::{Local, NaiveDate};
 use rusqlite::{params, Connection, OptionalExtension};
 use sha2::{Digest, Sha256};
+use std::collections::BTreeMap;
 use std::fs;
 use std::path::{Path, PathBuf};
 
@@ -118,6 +119,13 @@ mod service;
 mod recipes;
 #[path = "store_ops.rs"]
 mod ops;
+#[path = "store_template.rs"]
+mod template;
+pub use template::{
+    diff_packs, lint_pack, slug as template_slug, template_pref_keys, AreaSpec, ConversionSpec,
+    SchemeSpec, ShopDefaultsFile, ShopDefaultsStaff, StationSpec, TableSpec, TaxRateSpec,
+    TemplateExport, TemplateSections, TemplateSummary, UnitSpec, TEMPLATE_PREF_EXTRA_KEYS,
+};
 pub use recipes::{milli_as_typed, recipe_as_typed, LowStock, RecipeLine, DEFAULT_REORDER_AT};
 pub use service::{Reservation, ShiftClose};
 pub use ops::{
@@ -153,6 +161,32 @@ pub struct StaffHire<'a> {
     pub password: &'a str,
     pub features: StaffFeatures,
 }
+
+/// Books settings that are the **shop's**, not the device's. A Client
+/// mirrors the Server's value for each on every sync
+/// (`net::SyncSnapshot::shop_prefs`, live deltas too). Owner rule
+/// (2026-11-14): Server and Client differ only in how they connect; what a
+/// screen shows comes from the shop's settings and the person's role. A
+/// Client that kept its own defaults showed GST wording, Tax invoice,
+/// UPI/Card/Credit/Split and sidebar items the shop had turned off.
+/// Device-only meta stays out: floor zoom/columns/view, Kitchen station
+/// filter, language, lock choices, sync interval, Day book accordions.
+pub const SHOP_PREF_KEYS: &[&str] = &[
+    "show_tax_chrome",
+    "show_tax_invoice",
+    "pay_methods",
+    "show_today_bar",
+    "ui_nav_hidden",
+    "ui_nav_order",
+    "business_day_mode",
+    "history_retention",
+    "history_retention_hours",
+    "allow_zero_sales",
+    "kot_auto_print",
+    "frequent_days",
+    "frequent_limit",
+    "currency",
+];
 
 impl Store {
     /// Open the active local server DB.
@@ -1366,168 +1400,6 @@ impl Store {
             self.meta_set("pay_methods", "cash")?;
         }
         Ok(())
-    }
-
-    /// Apply shop prefs from a pack's `shop_defaults.json` (private templates).
-    /// Nothing client-specific is hardcoded here — names, PINs, chrome flags
-    /// and KOT prefs all come from that file.
-    pub fn apply_shop_defaults_file(&self, path: &std::path::Path) -> Result<(), String> {
-        self.assert_server_writer("Apply shop defaults")?;
-        let raw = std::fs::read_to_string(path)
-            .map_err(|e| format!("Read {}: {e}", path.display()))?;
-        let d: ShopDefaultsFile = serde_json::from_str(&raw)
-            .map_err(|e| format!("shop_defaults.json: {e}"))?;
-        self.apply_shop_defaults(&d)
-    }
-
-    fn apply_shop_defaults(&self, d: &ShopDefaultsFile) -> Result<(), String> {
-        if d.deactivate_tax_rates {
-            self.conn
-                .execute(
-                    "UPDATE tax_rates SET active = 0, picker_enabled = 0",
-                    [],
-                )
-                .map_err(|e| e.to_string())?;
-        }
-        if d.clear_product_tax {
-            self.conn
-                .execute(
-                    "UPDATE products SET tax_rate_id = '', tax_bps = 0",
-                    [],
-                )
-                .map_err(|e| e.to_string())?;
-        }
-        if let Some(bps) = d.service_charge_bps {
-            self.set_service_charge_bps(bps)?;
-        }
-        let owner = self
-            .list_staff()?
-            .into_iter()
-            .find(|s| s.is_owner())
-            .ok_or_else(|| "Owner account missing".to_string())?;
-        if let (Some(name), Some(login)) = (
-            d.owner_name.as_deref().map(str::trim).filter(|s| !s.is_empty()),
-            d.owner_login_id
-                .as_deref()
-                .map(str::trim)
-                .filter(|s| !s.is_empty()),
-        ) {
-            self.assert_login_id_free(login, Some(&owner.id))?;
-            let n = self
-                .conn
-                .execute(
-                    "UPDATE staff SET name = ?1, login_id = ?2 WHERE id = ?3 AND role = 'owner' AND active = 1",
-                    params![name, login, owner.id],
-                )
-                .map_err(|e| e.to_string())?;
-            if n == 0 {
-                return Err("Owner account missing".into());
-            }
-        }
-        let owner = self
-            .list_staff()?
-            .into_iter()
-            .find(|s| s.is_owner())
-            .ok_or_else(|| "Owner account missing".to_string())?;
-        let existing = self.list_staff()?;
-        for hire in &d.staff {
-            let role = StaffRole::parse(&hire.role)
-                .ok_or_else(|| format!("Unknown staff role '{}'", hire.role))?;
-            let features = match hire.features.trim() {
-                "all" => StaffFeatures::all(),
-                _ => StaffFeatures::for_role(role),
-            };
-            let title = if hire.role_title.trim().is_empty() {
-                role.default_title()
-            } else {
-                hire.role_title.trim()
-            };
-            let already = existing.iter().any(|s| {
-                s.active
-                    && (s.name.eq_ignore_ascii_case(hire.name.trim())
-                        || (role == StaffRole::Admin && s.role == StaffRole::Admin))
-            });
-            if !already {
-                self.add_staff_with_features(
-                    &StaffHire {
-                        name: hire.name.trim(),
-                        role,
-                        role_title: title,
-                        pin: hire.pin.trim(),
-                        login_id: hire.login_id.trim(),
-                        password: "",
-                        features,
-                    },
-                    &owner,
-                )?;
-            } else if !hire.login_id.trim().is_empty() {
-                if let Some(s) = existing.iter().find(|s| {
-                    s.active
-                        && (s.name.eq_ignore_ascii_case(hire.name.trim())
-                            || (role == StaffRole::Admin && s.role == StaffRole::Admin))
-                }) {
-                    self.ensure_template_login(&s.id, hire.login_id.trim())?;
-                }
-            }
-        }
-        if let Some(mode) = d.business_day_mode.as_deref().map(str::trim).filter(|s| !s.is_empty())
-        {
-            self.meta_set("business_day_mode", mode)?;
-        }
-        if let Some(v) = d.history_retention.as_deref() {
-            self.meta_set("history_retention", v)?;
-        }
-        if let Some(v) = d.history_retention_hours.as_deref() {
-            self.meta_set("history_retention_hours", v)?;
-        }
-        if let Some(v) = d.show_today_bar {
-            self.meta_set("show_today_bar", if v { "1" } else { "0" })?;
-        }
-        if let Some(v) = d.show_tax_chrome {
-            self.meta_set("show_tax_chrome", if v { "1" } else { "0" })?;
-        }
-        if let Some(v) = d.show_tax_invoice {
-            self.meta_set("show_tax_invoice", if v { "1" } else { "0" })?;
-        }
-        if let Some(v) = d.pay_methods.as_deref().map(str::trim).filter(|s| !s.is_empty()) {
-            self.meta_set("pay_methods", v)?;
-        }
-        if let Some(v) = d.nav_hidden_csv.as_deref() {
-            self.set_nav_hidden_csv(v)?;
-        }
-        match d.kot_slip.as_deref().map(str::trim).filter(|s| !s.is_empty()) {
-            Some("default") | None => {
-                let kot = crate::print_share::KotSlipFormat::default().clamped();
-                self.set_kot_slip_format(&kot)?;
-            }
-            Some(other) => {
-                return Err(format!("Unknown kot_slip '{other}' in shop_defaults.json"));
-            }
-        }
-        Ok(())
-    }
-
-    /// Apply a downloaded catalogue pack: menu import + optional
-    /// `shop_defaults.json` from that pack (no prestored client data in the app).
-    pub fn apply_app_template_pack(
-        &self,
-        pack_dir: &std::path::Path,
-        apply_shop_defaults: bool,
-    ) -> Result<CatalogueImport, String> {
-        self.assert_server_writer("Apply app template")?;
-        let tmpl = crate::menu_templates::load_from_dir(pack_dir)
-            .ok_or_else(|| format!("No template.json in {}", pack_dir.display()))?;
-        let summary = self.import_menu_template_in(&tmpl, Some(pack_dir))?;
-        let defaults_path = pack_dir.join("shop_defaults.json");
-        if apply_shop_defaults || defaults_path.is_file() {
-            if !defaults_path.is_file() {
-                return Err(
-                    "Pack declares shop defaults but shop_defaults.json is missing".into(),
-                );
-            }
-            self.apply_shop_defaults_file(&defaults_path)?;
-        }
-        Ok(summary)
     }
 
     /// First-run on Server: Owner chooses their PIN. Marks setup complete and
@@ -2797,12 +2669,13 @@ impl Store {
     }
 
     /// Order-desk GST / tax estimate lines and GST-in-price placeholders.
-    /// Default on. Rajdhani App Template turns it off — tax maths and
-    /// Settings → Country & tax stay; only the till wording hides.
+    /// **Default off** — owner decision (2026-11-14): no GST wording on any
+    /// shop until the Owner turns it on in Settings → Country & tax. Tax
+    /// maths and that Settings section stay; only the till wording hides.
     pub fn show_tax_chrome(&self) -> Result<bool, String> {
         Ok(match self.meta_get("show_tax_chrome")?.as_deref() {
-            Some(v) => v.trim() != "0",
-            None => true,
+            Some(v) => v.trim() == "1",
+            None => false,
         })
     }
 
@@ -2811,13 +2684,65 @@ impl Store {
         self.meta_set("show_tax_chrome", if on { "1" } else { "0" })
     }
 
-    /// Order-desk **Tax invoice** chip (Cash memo always stays). Default on.
-    /// Rajdhani App Template turns it off — Owner can Show again in Settings.
+    /// Order-desk **Tax invoice** chip (Cash memo always stays). **Default
+    /// off** (owner decision 2026-11-14, every shop, not only Rajdhani) —
+    /// the Owner can Show it in Settings → Country & tax.
     pub fn show_tax_invoice(&self) -> Result<bool, String> {
         Ok(match self.meta_get("show_tax_invoice")?.as_deref() {
-            Some(v) => v.trim() != "0",
-            None => true,
+            Some(v) => v.trim() == "1",
+            None => false,
         })
+    }
+
+    /// The shop's settings for a Client to mirror ([`SHOP_PREF_KEYS`]): each
+    /// key's stored value, `None` when the shop never set it (same default
+    /// on both sides). The till flags go resolved, so a Client on another
+    /// app version can never fall back to a different default.
+    pub fn shop_prefs_for_sync(&self) -> Result<BTreeMap<String, Option<String>>, String> {
+        let mut out = BTreeMap::new();
+        for key in SHOP_PREF_KEYS {
+            out.insert((*key).to_string(), self.meta_get(key)?);
+        }
+        let flag = |on: bool| Some(if on { "1" } else { "0" }.to_string());
+        out.insert("show_tax_chrome".into(), flag(self.show_tax_chrome()?));
+        out.insert("show_tax_invoice".into(), flag(self.show_tax_invoice()?));
+        out.insert("show_today_bar".into(), flag(self.show_today_bar()?));
+        out.insert("allow_zero_sales".into(), flag(self.allow_zero_sales()?));
+        out.insert("kot_auto_print".into(), flag(self.kot_auto_print()));
+        out.insert("pay_methods".into(), Some(self.pay_methods_csv()?));
+        Ok(out)
+    }
+
+    /// Tests: write or clear one raw meta key.
+    #[cfg(test)]
+    pub fn meta_set_for_test(&self, key: &str, value: Option<&str>) {
+        match value {
+            Some(v) => self.meta_set(key, v).unwrap(),
+            None => {
+                self.conn.execute("DELETE FROM meta WHERE key = ?1", params![key]).unwrap();
+            }
+        }
+    }
+
+    /// Mirror the shop's settings on this Client. Only [`SHOP_PREF_KEYS`]
+    /// are taken; a key the shop has not set is removed here too; a key an
+    /// older Server does not send is left alone.
+    pub fn apply_shop_prefs_from_sync(
+        &self,
+        prefs: &BTreeMap<String, Option<String>>,
+    ) -> Result<(), String> {
+        for key in SHOP_PREF_KEYS {
+            match prefs.get(*key) {
+                Some(Some(v)) => self.meta_set(key, v)?,
+                Some(None) => {
+                    self.conn
+                        .execute("DELETE FROM meta WHERE key = ?1", params![key])
+                        .map_err(|e| e.to_string())?;
+                }
+                None => {}
+            }
+        }
+        Ok(())
     }
 
     pub fn set_show_tax_invoice(&self, on: bool) -> Result<(), String> {
@@ -2997,11 +2922,43 @@ impl Store {
         }
     }
 
+    /// True when another row of `table` in this branch already has `name`
+    /// (any case; `except_id` is the row being renamed). Ids stay the key
+    /// everywhere, but kitchen stations and dining tables are told apart **by
+    /// name** — on KOT papers, the Floor, bills and pickers — so two with one
+    /// name would confuse people (owner, 2026-11-13).
+    fn name_taken(&self, table: &str, name: &str, except_id: &str) -> Result<bool, String> {
+        debug_assert!(matches!(table, "kitchen_stations" | "tables_dining"));
+        // Exact (case-sensitive) after trimming: "Tandoor" and "tandoor" are
+        // two names the owner chose on purpose; "Tandoor " is the same one.
+        let wanted = name.trim();
+        let branch_id = self.active_branch_id()?;
+        let mut stmt = self
+            .conn
+            .prepare(&format!("SELECT id, name FROM {table} WHERE branch_id = ?1"))
+            .map_err(|e| e.to_string())?;
+        let rows = stmt
+            .query_map(params![branch_id], |r| {
+                Ok((r.get::<_, String>(0)?, r.get::<_, String>(1)?))
+            })
+            .map_err(|e| e.to_string())?;
+        for row in rows {
+            let (id, n) = row.map_err(|e| e.to_string())?;
+            if id != except_id && n.trim() == wanted {
+                return Ok(true);
+            }
+        }
+        Ok(false)
+    }
+
     pub fn add_table(&self, name: &str) -> Result<DiningTable, String> {
         self.assert_server_writer("Add tables")?;
         let name = name.trim();
         if name.is_empty() {
             return Err("Table name required".into());
+        }
+        if self.name_taken("tables_dining", name, "")? {
+            return Err(format!("A table named {name} already exists"));
         }
         let id = new_id();
         self.conn
@@ -3039,6 +2996,9 @@ impl Store {
         let name = name.trim();
         if name.is_empty() {
             return Err("Table name required".into());
+        }
+        if self.name_taken("tables_dining", name, table_id)? {
+            return Err(format!("A table named {name} already exists"));
         }
         let n = self
             .conn
@@ -3577,14 +3537,15 @@ impl Store {
     /// most kitchens still run).
     /// Legacy whole-floor columns (this device only). Prefer
     /// [`floor_columns_for_area`] — kept as the default when an area has
-    /// no entry yet. Unset → **4** (Dine In / Parcel and any new area).
-    /// Explicit `0` still means fit the screen.
+    /// no entry yet. Unset → **0 = fit the screen** (redesign 2026-11-13: a
+    /// fixed 4 cropped tiles off every phone, tablet and 1280 px laptop with
+    /// the rail). A number the owner chose is kept.
     pub fn floor_columns(&self) -> usize {
         self.meta_get("ui_floor_columns")
             .ok()
             .flatten()
             .and_then(|v| v.trim().parse().ok())
-            .unwrap_or(4)
+            .unwrap_or(0)
     }
 
     pub fn set_floor_columns(&self, cols: usize) -> Result<(), String> {
@@ -3746,6 +3707,13 @@ impl Store {
         self.assert_server_writer("Change the KOT format")?;
         let clamped = fmt.clone().clamped();
         self.meta_set("kot_slip_format", &clamped.to_json())?;
+        // A saved format is current by definition: the one-shot upgrades in
+        // [`Self::kot_slip_format`] must never rewrite it. Without these, a
+        // shop that saved (or imported from an app template) a KOT with its
+        // title shown before ever reading the old one got the compact
+        // default back on the next read.
+        self.meta_set("kot_slip_compact_v1", "1")?;
+        self.meta_set("kot_slip_type_v2", "1")?;
         if let Some(base) = self.path.parent() {
             let mut printers = crate::print_share::load_device_printers(base);
             if let Some(f) = printers
@@ -5040,7 +5008,7 @@ impl Store {
         let fiscal = self.fiscal_settings()?;
         let rows = self.party_position_report()?;
         let mut out = String::from(
-            "Party net position (one firm · AR and AP separate · net = who owes whom)\n",
+            "Party net position\n",
         );
         if rows.is_empty() {
             out.push_str("No AR/AP balances.\n");
@@ -5098,8 +5066,9 @@ impl Store {
         let currency = self.locale_settings()?.currency;
         let fiscal = self.fiscal_settings()?;
         let rows = self.party_position_report()?;
+        // Rows say "they owe us" / "we owe them" — no key line (cluster text,
+        // owner 2026-11-14).
         let mut out = String::from("Debit / credit (party books)\n");
-        out.push_str("Debit = they owe us (AR) · Credit = we owe them (AP)\n");
         if rows.is_empty() {
             out.push_str("No open balances.\n");
             return Ok(out);
@@ -5172,8 +5141,7 @@ impl Store {
              Liabilities\n\
                Creditors (we owe them) {}\n\
                Total liabilities {}\n\
-             Net position (assets − liabilities) {}\n\
-             (Operating snapshot — statutory balance-sheet formats are a separate, later filing view.)\n",
+             Net position (assets − liabilities) {}\n",
             Money(bank).format_localized(&currency, &fiscal),
             Money(till).format_localized(&currency, &fiscal),
             Money(ar).format_localized(&currency, &fiscal),
@@ -5326,7 +5294,7 @@ impl Store {
              {} {}\n\
              {} {}\n\
              Cash {} · {} {} · Card {}\n\
-             {} (credit / debit to party) {}\n\
+             {} {}\n\
              Expenses {} ({})\n\
              Net (gross − expenses) {}\n\
              Bank in {} · Bank out {}\n\
@@ -6221,6 +6189,19 @@ impl Store {
         self.meta_set(&format!("ui_snack_secs:{user_key}"), &format!("{secs}"))
     }
 
+    /// The nav item (its key) this person last had selected on this
+    /// device — Unlock brings them back to it. `user_key` = `"owner"` or a
+    /// staff id; nothing saved = their first unlock here.
+    pub fn last_nav_key(&self, user_key: &str) -> Result<Option<String>, String> {
+        Ok(self
+            .meta_get(&format!("ui_last_nav:{user_key}"))?
+            .filter(|k| !k.trim().is_empty()))
+    }
+
+    pub fn set_last_nav_key(&self, user_key: &str, key: &str) -> Result<(), String> {
+        self.meta_set(&format!("ui_last_nav:{user_key}"), key)
+    }
+
     /// Per-user amount visibility (`user_key` = `"owner"` or a staff id).
     /// Global across screens for that user; not shared with other users.
     fn amount_vis_meta(&self, kind: &str, user_key: &str) -> Result<Option<String>, String> {
@@ -6383,6 +6364,21 @@ impl Store {
             .join("brand_images");
         fs::create_dir_all(&dir).map_err(|e| e.to_string())?;
         Ok(dir)
+    }
+
+    /// Longest edge the shop mark is stored at: it shows small in the app
+    /// and on a slip (576 dots across at most).
+    pub const VENUE_ICON_MAX_EDGE: u32 = 512;
+
+    /// The shop mark from picture bytes (an app template's logo). Same file
+    /// and key as [`Self::import_venue_icon`], so a picked logo replaces it.
+    pub fn set_venue_icon_bytes(&self, bytes: &[u8]) -> Result<String, String> {
+        let file_name = "venue_icon.webp";
+        let dest = self.brand_images_dir()?.join(file_name);
+        crate::media::encode_bytes_as_webp_fit(bytes, &dest, Self::VENUE_ICON_MAX_EDGE)?;
+        let key = format!("custom:{file_name}");
+        self.set_venue_icon_key(Some(&key))?;
+        Ok(key)
     }
 
     pub fn import_venue_icon(&self, source: &Path) -> Result<String, String> {
@@ -6826,6 +6822,7 @@ impl Store {
             .iter()
             .map(|c| c.items.len().saturating_add(1))
             .sum::<usize>()
+            .saturating_add(tmpl.items.len())
             .max(1);
         let mut step = 0usize;
         report_import_progress(0, total)?;
@@ -6837,6 +6834,13 @@ impl Store {
             .map(|p| p.name.trim().to_lowercase())
             .collect();
         let mut seen = existing;
+        // An exported pack is one shop's menu: two items may share a name
+        // (in different categories). Only what this shop already had is
+        // skipped. Hand-written packs keep the first of a repeated name.
+        let exported = tmpl.format >= 2;
+        let stations = self.list_stations()?;
+        let rates = self.list_tax_rates()?;
+        let mut added: Vec<(String, &crate::menu_templates::TemplateItem)> = Vec::new();
         for cat_spec in &tmpl.categories {
             import_cancelled()?;
             let cat_name = cat_spec.name.trim();
@@ -6874,40 +6878,61 @@ impl Store {
             step += 1;
             report_import_progress(step.min(total), total)?;
             for item in &cat_spec.items {
-                let name = item.name.trim();
-                if name.is_empty() {
-                    step += 1;
-                    report_import_progress(step.min(total), total)?;
-                    continue;
-                }
-                if !seen.insert(name.to_lowercase()) {
-                    summary.items_kept += 1;
-                    step += 1;
-                    report_import_progress(step.min(total), total)?;
-                    continue;
-                }
-                let mut p = Product::new_basic(
-                    new_id(),
-                    name,
-                    Money::from_rupees(item.price.max(0)),
-                );
-                p.category_id = cat_id.clone();
-                if !item.aliases.is_empty() {
-                    p.set_aliases(&item.aliases);
-                }
-                if let Some(path) = resolve(&item.image) {
-                    if let Ok(key) = self.import_item_image(&p.id, &path) {
-                        p.image_key = Some(key);
-                    }
-                }
-                self.upsert_product(&p)?;
-                summary.items_added += 1;
+                self.import_template_item(
+                    item, &cat_id, &stations, &rates, &resolve, &mut seen, exported, &mut added,
+                    &mut summary,
+                )?;
                 step += 1;
                 report_import_progress(step.min(total), total)?;
             }
         }
+        for item in &tmpl.items {
+            self.import_template_item(
+                item, "", &stations, &rates, &resolve, &mut seen, exported, &mut added,
+                &mut summary,
+            )?;
+            step += 1;
+            report_import_progress(step.min(total), total)?;
+        }
+        self.apply_template_item_links(tmpl, &added)?;
         report_import_progress(total, total)?;
         Ok(summary)
+    }
+
+    /// One template item into the menu (see [`Self::import_menu_template_in`]).
+    #[allow(clippy::too_many_arguments)]
+    fn import_template_item<'t>(
+        &self,
+        item: &'t crate::menu_templates::TemplateItem,
+        category_id: &str,
+        stations: &[KitchenStation],
+        rates: &[TaxRate],
+        resolve: &dyn Fn(&str) -> Option<PathBuf>,
+        seen: &mut std::collections::HashSet<String>,
+        exported: bool,
+        added: &mut Vec<(String, &'t crate::menu_templates::TemplateItem)>,
+        summary: &mut CatalogueImport,
+    ) -> Result<(), String> {
+        let name = item.name.trim();
+        if name.is_empty() {
+            return Ok(());
+        }
+        let key = name.to_lowercase();
+        let had = if exported { seen.contains(&key) } else { !seen.insert(key.clone()) };
+        if had {
+            summary.items_kept += 1;
+            return Ok(());
+        }
+        let mut p = self.product_from_template_item(item, category_id, stations, rates);
+        if let Some(path) = resolve(&item.image) {
+            if let Ok(key) = self.import_item_image(&p.id, &path) {
+                p.image_key = Some(key);
+            }
+        }
+        self.upsert_product(&p)?;
+        added.push((p.id.clone(), item));
+        summary.items_added += 1;
+        Ok(())
     }
 
     pub fn add_category(&self, name: &str) -> Result<Category, String> {
@@ -7037,6 +7062,12 @@ impl Store {
             return Err("Station name required".into());
         }
         let branch_id = self.active_branch_id()?;
+        // One name, one kitchen: two "Tandoor"s cannot be told apart on KOTs,
+        // printers or the Kitchen tabs. Case-insensitive, same branch.
+        let taken = self.name_taken("kitchen_stations", name, "")?;
+        if taken {
+            return Err(format!("A kitchen station named {name} already exists"));
+        }
         let next: i64 = self
             .conn
             .query_row(
@@ -10430,8 +10461,30 @@ impl Store {
         hire: &StaffHire<'_>,
         actor: &StaffMember,
     ) -> Result<String, String> {
+        self.add_staff_inner(hire, actor, false)
+    }
+
+    /// A person from an app template. A pack carries no PINs: with an empty
+    /// `pin` the person has none and cannot sign in until the Owner gives
+    /// them a first one ([`Self::set_first_staff_pin`]).
+    pub(crate) fn add_staff_from_template(
+        &self,
+        hire: &StaffHire<'_>,
+        actor: &StaffMember,
+    ) -> Result<String, String> {
+        self.add_staff_inner(hire, actor, hire.pin.trim().is_empty())
+    }
+
+    fn add_staff_inner(
+        &self,
+        hire: &StaffHire<'_>,
+        actor: &StaffMember,
+        no_pin: bool,
+    ) -> Result<String, String> {
         self.assert_server_writer("Add staff")?;
-        if !(4..=12).contains(&hire.pin.len()) || !hire.pin.chars().all(|c| c.is_ascii_digit()) {
+        if !no_pin
+            && (!(4..=12).contains(&hire.pin.len()) || !hire.pin.chars().all(|c| c.is_ascii_digit()))
+        {
             return Err("PIN must be 4–12 digits".into());
         }
         let name = hire.name.trim();
@@ -10454,7 +10507,7 @@ impl Store {
                 t.to_string()
             }
         };
-        let hash = hash_pin(hire.pin)?;
+        let hash = if no_pin { String::new() } else { hash_pin(hire.pin)? };
         let password_hash = if hire.password.trim().is_empty() {
             String::new()
         } else {
@@ -10931,6 +10984,43 @@ impl Store {
             return Err("Staff not found".into());
         }
         self.audit(actor, "staff.pin", "own PIN updated")?;
+        Ok(())
+    }
+
+    /// The Owner (or whoever manages the team) gives a person their first
+    /// PIN — only while they have none, e.g. after an app template brought
+    /// the team in without PINs. Once set, only the person changes it
+    /// ([`Self::set_staff_pin`]).
+    pub fn set_first_staff_pin(
+        &self,
+        staff_id: &str,
+        pin: &str,
+        actor: &StaffMember,
+    ) -> Result<(), String> {
+        self.assert_server_writer("Set a first PIN")?;
+        if !actor.can_manage_team() {
+            return Err("Not allowed to manage team".into());
+        }
+        if !(4..=12).contains(&pin.len()) || !pin.chars().all(|c| c.is_ascii_digit()) {
+            return Err("PIN must be 4–12 digits".into());
+        }
+        let target = self
+            .list_staff()?
+            .into_iter()
+            .find(|s| s.id == staff_id && s.active)
+            .ok_or_else(|| "Staff not found".to_string())?;
+        if target.has_pin() {
+            return Err("Only they can change their own PIN".into());
+        }
+        Self::assert_team_target_rank_ok(actor, &target)?;
+        let hash = hash_pin(pin)?;
+        self.conn
+            .execute(
+                "UPDATE staff SET pin_hash = ?1 WHERE id = ?2 AND active = 1 AND pin_hash = ''",
+                params![hash, staff_id],
+            )
+            .map_err(|e| e.to_string())?;
+        self.audit(actor, "staff.first_pin", &target.name)?;
         Ok(())
     }
 
@@ -13354,60 +13444,6 @@ pub struct CatalogueImport {
     pub items_kept: usize,
 }
 
-/// Pack-local shop prefs (`shop_defaults.json` next to `template.json`).
-/// Private templates (e.g. Rajdhani) ship this; the app does not hardcode names.
-#[derive(Clone, Debug, Default, serde::Deserialize)]
-struct ShopDefaultsFile {
-    #[serde(default)]
-    owner_name: Option<String>,
-    #[serde(default)]
-    owner_login_id: Option<String>,
-    #[serde(default)]
-    staff: Vec<ShopDefaultsStaff>,
-    #[serde(default)]
-    deactivate_tax_rates: bool,
-    #[serde(default)]
-    clear_product_tax: bool,
-    #[serde(default)]
-    service_charge_bps: Option<i64>,
-    #[serde(default)]
-    business_day_mode: Option<String>,
-    #[serde(default)]
-    history_retention: Option<String>,
-    #[serde(default)]
-    history_retention_hours: Option<String>,
-    #[serde(default)]
-    show_today_bar: Option<bool>,
-    #[serde(default)]
-    show_tax_chrome: Option<bool>,
-    #[serde(default)]
-    show_tax_invoice: Option<bool>,
-    #[serde(default)]
-    pay_methods: Option<String>,
-    #[serde(default)]
-    nav_hidden_csv: Option<String>,
-    /// `"default"` → [`crate::print_share::KotSlipFormat::default`].
-    #[serde(default)]
-    kot_slip: Option<String>,
-}
-
-#[derive(Clone, Debug, Default, serde::Deserialize)]
-struct ShopDefaultsStaff {
-    #[serde(default)]
-    name: String,
-    #[serde(default)]
-    role: String,
-    #[serde(default)]
-    role_title: String,
-    #[serde(default)]
-    pin: String,
-    #[serde(default)]
-    login_id: String,
-    /// `"all"` or `"role"` (default).
-    #[serde(default)]
-    features: String,
-}
-
 /// Optional progress wake for long menu imports (UI sets this from a worker).
 static IMPORT_PROGRESS_NOTIFY: std::sync::Mutex<Option<fn(usize, usize)>> =
     std::sync::Mutex::new(None);
@@ -14754,6 +14790,19 @@ mod tests {
             .join("catalogue/private-src/rajdhani");
         let summary = store.apply_app_template_pack(&pack, true).unwrap();
         assert!(summary.items_added > 0);
+        // The pack names the shop and brings its logo (owner, 2026-11-14) —
+        // both show on the next screen, where the Owner may replace them.
+        assert_eq!(store.venue_title().unwrap(), "Rajdhani");
+        assert_eq!(store.venue_icon_key().unwrap().as_deref(), Some("custom:venue_icon.webp"));
+        let mark = image::open(store.brand_images_dir().unwrap().join("venue_icon.webp")).unwrap();
+        assert!(mark.width() <= Store::VENUE_ICON_MAX_EDGE && mark.width() >= 256, "{}", mark.width());
+        // "Choose logo" on that screen replaces it: same file, same key.
+        let picked = std::env::temp_dir().join(format!("khaynjo-picked-logo-{}.png", new_id()));
+        image::RgbImage::new(40, 30).save(&picked).unwrap();
+        assert_eq!(store.import_venue_icon(&picked).unwrap(), "custom:venue_icon.webp");
+        let mark = image::open(store.brand_images_dir().unwrap().join("venue_icon.webp")).unwrap();
+        assert_eq!((mark.width(), mark.height()), (40, 30), "the picked logo replaced the template's");
+        let _ = std::fs::remove_file(picked);
         assert!(
             store.list_tax_rates().unwrap().is_empty(),
             "active tax rates must be off after App Template"
@@ -14805,20 +14854,16 @@ mod tests {
         assert_eq!(waiter.role, StaffRole::Waiter);
         assert_eq!(waiter.login_id, "nawaz");
         assert_eq!(waiter.lock_label(), "Nawaz (Waiter) · nawaz");
-        assert!(
-            store
-                .authenticate_staff_pin(&waiter.id, "0000")
-                .unwrap()
-                .is_some(),
-            "Nawaz default PIN is 0000"
-        );
-        assert!(
-            store
-                .authenticate_staff_pin(&admin.id, "1111")
-                .unwrap()
-                .is_some(),
-            "Asif default PIN is 1111"
-        );
+        // A pack carries no PINs (owner, 2026-11-14): Asif and Nawaz cannot
+        // sign in until the Owner gives each a first PIN in Team.
+        for person in [admin, waiter] {
+            assert!(!person.has_pin(), "{} came with a PIN", person.name);
+            for guess in ["0000", "1111", "1234"] {
+                assert!(store.authenticate_staff_pin(&person.id, guess).unwrap().is_none());
+            }
+        }
+        store.set_first_staff_pin(&waiter.id, "2468", owner).unwrap();
+        assert!(store.authenticate_staff_pin(&waiter.id, "2468").unwrap().is_some());
         assert!(
             matches!(
                 store.history_retention().unwrap(),
@@ -14842,6 +14887,29 @@ mod tests {
         );
         // Admin cannot rename Owner.
         assert!(store.rename_staff(&owner.id, "Nope", admin).is_err());
+        let _ = std::fs::remove_file(path);
+    }
+
+    #[test]
+    fn menu_level_pack_import_keeps_staff_and_shop_settings() {
+        let path = temp_db();
+        let store = Store::open_path(&path).unwrap();
+        let staff_before = store.list_staff().unwrap().len();
+        let pay_before = store.pay_methods_csv().unwrap();
+        let tax_chrome_before = store.show_tax_chrome().unwrap();
+        let pack = PathBuf::from(env!("CARGO_MANIFEST_DIR"))
+            .join("catalogue/private-src/rajdhani");
+        assert!(pack.join("shop_defaults.json").is_file());
+        // Menu screen → Private template: items only — never the shop's name
+        // or logo.
+        let title_before = store.venue_title().unwrap();
+        let summary = store.apply_app_template_pack(&pack, false).unwrap();
+        assert!(summary.items_added > 0);
+        assert_eq!(store.venue_title().unwrap(), title_before);
+        assert_eq!(store.venue_icon_key().unwrap(), None);
+        assert_eq!(store.list_staff().unwrap().len(), staff_before);
+        assert_eq!(store.pay_methods_csv().unwrap(), pay_before);
+        assert_eq!(store.show_tax_chrome().unwrap(), tax_chrome_before);
         let _ = std::fs::remove_file(path);
     }
 
@@ -16569,8 +16637,8 @@ mod tests {
         assert_eq!(store.saved_org_name().unwrap(), "");
         store.meta_set("org_name", DEFAULT_ORG_NAME).unwrap();
         assert_eq!(store.saved_org_name().unwrap(), "");
-        store.set_venue_title("Rajdhani Thali").unwrap();
-        assert_eq!(store.org_name().unwrap(), "Rajdhani Thali", "reports fall back to the shop's name");
+        store.set_venue_title("Demo Kitchen").unwrap();
+        assert_eq!(store.org_name().unwrap(), "Demo Kitchen", "reports fall back to the shop's name");
         store.meta_set("venue_title", "Server af76697b").unwrap();
         assert_eq!(store.venue_title().unwrap(), "");
         let _ = std::fs::remove_file(path);
@@ -16771,6 +16839,18 @@ mod tests {
         let tandoor = store.add_station("Tandoor").unwrap();
         assert!(store.add_category("  ").is_err());
         assert!(store.add_station("").is_err());
+        // The same name twice would be two kitchens nobody can tell apart.
+        // Case-sensitive: only surrounding spaces are ignored.
+        assert!(store.add_station("Tandoor").is_err());
+        assert!(store.add_station("  Tandoor ").is_err());
+        // Tables too: KOTs, bills and the Floor name them.
+        let d1 = store.add_table("D1").unwrap();
+        let d2 = store.add_table("D2").unwrap();
+        assert!(store.add_table(" D1 ").is_err());
+        assert!(store.rename_table(&d2.id, "D1").is_err());
+        store.rename_table(&d1.id, "D1").unwrap();
+        // A different case is a different name.
+        store.add_table("d1").unwrap();
 
         let mut p = test_product("Paneer tikka", 220);
         p.category_id = starters.id.clone();

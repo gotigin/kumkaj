@@ -39,7 +39,7 @@ adding_item	Adăugarea unui tarif nou
 editing_item	Editare
 save	Salvează
 remove	Elimină
-empty_catalog	Niciun tarif încă. Deschide Tarife și servicii, adaugă unul (nume + preț, unitate kg), apoi Expediere.
+empty_catalog	Niciun tarif încă.
 counter_sale	Expediere la tejghea
 total	Total
 cash	Numerar
@@ -171,8 +171,6 @@ selected_language	Selectat
 continue	Continuă
 this_device	ACEST DISPOZITIV
 device_use_q	Cum va fi folosit acest dispozitiv?
-last_server_mode	Era Server — atinge ca să continui
-last_client_mode	Era Client — atinge ca să continui
 choose_server	Alege un server
 choose_server_hint	Deschide un server existent sau creează unul pentru altă afacere.
 create_new_server	Creează server nou
@@ -501,8 +499,6 @@ job_layout	Așezare
 job_delivery	Cum se trimite lucrarea
 job_size	Mărime font
 job_size_ph	ex. 18, 20, 26…
-save_receipt_format	Salvează formatul chitanței
-save_label_format	Salvează formatul etichetei
 test_receipt_format	Chitanță de test
 test_label_format	Etichetă de test
 test_receipt_sent	Chitanță mostră trimisă
@@ -610,7 +606,7 @@ units_heading	Unități
 booking_measures	Măsuri de expediere
 drawer_count	Numărătoare sertar (opțional)
 spreadsheet_csv	Foaie de calcul (CSV)
-bank_reconciliation	Reconciliere bancară (bifați față de extrasul bancar)
+bank_reconciliation	Reconciliere bancară
 book_add_product	Registru — adaugă produs / tarif
 book_opening_credit	Registru — credit de deschidere
 account_kind	Tip de cont (atinge unul)
@@ -650,7 +646,7 @@ net_word	Net
 offline_badge	DECONECTAT
 optional_login_help	Autentificare opțională (id + parolă). Proprietarul setează o dată; doar utilizatorul poate schimba parola mai târziu.
 or_unlock_login	Sau deblochează cu id de autentificare + parolă
-permission_preset	Post (setează ecranele și drepturile)
+permission_preset	Post
 preset_help_moklanjo	Casier: vinde. Manager: vânzare + articole + anulare/modificare.
 product_locked_moklanjo	Moklanjo
 product_only_moklanjo	Aplicația aceasta este doar Moklanjo — registre + tejghea de expediere. Celelalte meserii vin mai târziu ca produse separate.
@@ -698,10 +694,6 @@ pin_hint_paired	Casă suplimentară împerecheată — deblochează ca să vinzi
 pin_hint_pair_first	Casă suplimentară — împerecheaz-o întâi cu dispozitivul localului
 unlock_to_continue	Deblochează ca să continui
 no_staff_yet	Încă nu e personal — deblochează ca Proprietar, apoi Echipă
-status_server_set_pin	Mod Server — setează PIN-ul Proprietarului
-status_server_tills	Mod Server — casele suplimentare se pot alătura. Deblochează
-status_server_unlock	Mod Server — deblochează ca Proprietar
-status_client_unlock	Mod Client — deblochează ca să vinzi
 icon_new_selected	Pictogramă: fișier nou selectat — atinge Salvează marca
 icon_custom	Pictogramă: marcă proprie a localului
 icon_default	Pictogramă: marca Kumkaj (implicit) — alege una proprie
@@ -834,3 +826,7 @@ role_help_supplier	Rol: Furnizor — AP pentru achiziții.
 lane_declared_label	Expediere în cont
 lane_owner_label	Expediere cu numerar
 money_lane_bill	Notă: {lane}
+sel_copy	Copiază
+sel_select_all	Selectează tot
+sel_copied	Copiat
+nav_loading	Se încarcă…

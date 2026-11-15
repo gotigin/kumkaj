@@ -39,7 +39,7 @@ adding_item	Lägger till en ny kurs
 editing_item	Redigerar
 save	Spara
 remove	Ta bort
-empty_catalog	Inga priser ännu. Öppna priser och tjänster, lägg till en (namn + pris, enhet kg), sedan Bokning.
+empty_catalog	Inga priser ännu.
 counter_sale	Motbokning
 total	Totalt
 cash	Kontant
@@ -171,8 +171,6 @@ selected_language	Vald
 continue	Fortsätt
 this_device	DENNA ENHET
 device_use_q	Hur kommer den här enheten att användas?
-last_server_mode	Var server — tryck för att fortsätta
-last_client_mode	Var klient — tryck för att fortsätta
 choose_server	Välj en server
 choose_server_hint	Öppna en befintlig server eller skapa en för ett annat företag.
 create_new_server	Skapa ny server
@@ -501,8 +499,6 @@ job_layout	Plan
 job_delivery	Hur jobbet skickas
 job_size	Teckenstorlek
 job_size_ph	t.ex. 18, 20, 26...
-save_receipt_format	Spara kvittoformat
-save_label_format	Spara etikettformat
 test_receipt_format	Testkvitto
 test_label_format	Testetikett
 test_receipt_sent	Provkvitto skickat
@@ -610,7 +606,7 @@ units_heading	Enheter
 booking_measures	Bokningsåtgärder
 drawer_count	Antal lådor (valfritt)
 spreadsheet_csv	Kalkylblad (CSV)
-bank_reconciliation	Bankavstämning (kryssa av mot ditt kontoutdrag)
+bank_reconciliation	Bankavstämning
 book_add_product	Boka — lägg till produkt/pris
 book_opening_credit	Bok — inledande kredit
 account_kind	Kontotyp (tryck på en)
@@ -650,7 +646,7 @@ net_word	Netto
 offline_badge	OFFLINE
 optional_login_help	Valfri inloggning (id + lösenord). Ägaren sätter en gång; endast användaren kan ändra lösenordet senare.
 or_unlock_login	Eller lås upp med inloggnings-id + lösenord
-permission_preset	Jobb (ställer in skärmar och rättigheter)
+permission_preset	Jobb
 preset_help_moklanjo	Kassör: sälja. Manager: sälja + varor + ogiltigförklara/ändra.
 product_locked_moklanjo	Moklanjo
 product_only_moklanjo	Denna app är endast Moklanjo — böcker + bokningsdisk. Andra handelsansikter skickas som separata produkter senare.
@@ -698,10 +694,6 @@ pin_hint_paired	Extra till parat – lås upp för att sälja
 pin_hint_pair_first	Extra till — koppla ihop till butiksenheten först
 unlock_to_continue	Lås upp för att fortsätta
 no_staff_yet	Ingen personal ännu – lås upp som ägare och sedan Team
-status_server_set_pin	Serverläge — ställ in ägarens PIN-kod
-status_server_tills	Serverläge — extra kassar kan gå med. Lås upp
-status_server_unlock	Serverläge — lås upp som ägare
-status_client_unlock	Klientläge — lås upp för att sälja
 icon_new_selected	Ikon: ny fil vald — tryck på Spara varumärke
 icon_custom	Ikon: anpassat platsmärke
 icon_default	Ikon: Kumkaj-märke (standard) — välj en anpassad
@@ -834,3 +826,7 @@ role_help_supplier	Roll: Leverantör — AP för inköp.
 lane_declared_label	Kontobokning
 lane_owner_label	Kontantbokning
 money_lane_bill	Nota: {lane}
+sel_copy	Kopiera
+sel_select_all	Markera allt
+sel_copied	Kopierat
+nav_loading	Läser in…

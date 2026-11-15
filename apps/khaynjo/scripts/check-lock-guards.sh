@@ -22,6 +22,12 @@ FNR == 1 { depth=0; guard=0; guarddepth=0; guardline=0 }
   if (guard && line ~ /self\.(sync_[a-z_]+|paint_[a-z_]+|set_status|show_(warn|ok|snack)|go|go_peer)\(cx/ && line !~ /self\.paint_choice_pair\(/ && depth >= guarddepth) {
     printf "FLAG %s:%d (guard from %d): %s\n", FILENAME, FNR, guardline, line; flags++
   }
+  # app_t() locks app_state() for the language: under a live guard it
+  # deadlocks too (Menu template download froze Khaynjo, 2026-11-13). Use
+  # st.t() while holding the guard.
+  if (guard && line ~ /(^|[^_.a-z])app_t\(/ && depth >= guarddepth) {
+    printf "FLAG %s:%d (guard from %d): %s\n", FILENAME, FNR, guardline, line; flags++
+  }
   if (line ~ /let (mut )?st = app_state\(\)\.lock\(\)/) {
     guard=1; guardline=FNR; guarddepth=depth + opens - closes
   }

@@ -81,6 +81,11 @@ fn main() {
         println!("cargo:rustc-cfg=kumkaj_hide_console");
     }
 
+    // Windows .exe: manifest, version info, icon (WACK; scripts/windows/win_resources.rs).
+    let label = vars.get("KUMKAJ_APP_LABEL").cloned().unwrap_or_default();
+    embed_windows_resources(&manifest_dir, &label);
+    println!("cargo:rerun-if-changed=../../scripts/windows/win_resources.rs");
+
     for (key, value) in vars {
         println!("cargo:rustc-env={key}={value}");
     }
@@ -125,3 +130,5 @@ fn bake_translations(manifest_dir: &PathBuf) {
     src.push_str("];\n");
     fs::write(out_dir.join("translations.rs"), src).expect("write translations.rs");
 }
+
+include!("../../scripts/windows/win_resources.rs");

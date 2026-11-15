@@ -41,7 +41,7 @@ remove	ਹਟਾਓ
 removed_items	ਹਟਾਈਆਂ ਆਈਟਮਾਂ
 removed_help	ਵਾਪਸ ਲਿਆਉਣ ਨਾਲ ਆਈਟਮ ਪਹਿਲਾਂ ਵਾਂਗ ਹੀ ਮੀਨੂ ਵਿੱਚ ਆ ਜਾਂਦੀ ਹੈ — ਕੀਮਤ, ਫੋਟੋ ਤੇ ਸ਼੍ਰੇਣੀ। ਸਾਡਾ ਪਕਵਾਨਾਂ ਵਾਲਾ ਸ਼ੈਲਫ਼ ਕਦੇ ਨਹੀਂ ਹਟਦਾ, ਇਸ ਲਈ ਕੋਈ ਵੀ ਪਕਵਾਨ ਫਿਰ ਜੋੜਿਆ ਜਾ ਸਕਦਾ ਹੈ।
 restore_item	ਵਾਪਸ ਲਿਆਓ
-empty_catalog	ਅਜੇ ਕੋਈ ਆਈਟਮ ਨਹੀਂ। ਮੀਨੂ ਤੇ ਆਈਟਮਾਂ ਖੋਲ੍ਹੋ, ਇੱਕ ਜੋੜੋ (ਨਾਂ + ਕੀਮਤ), ਫਿਰ ਆਰਡਰ ਲਓ।
+empty_catalog	ਅਜੇ ਕੋਈ ਆਈਟਮ ਨਹੀਂ।
 total	ਕੁੱਲ
 cash	ਨਕਦ
 upi	यूपीआई
@@ -103,23 +103,14 @@ bill_item_qty	ਮਾਤਰਾ
 bill_item_price	ਦਰ
 bill_item_amount	ਰਕਮ
 bill_item_note	ਨੋਟ
-bill_item_col_gap	ਕਾਲਮ ਫਾਸਲਾ
 bill_item_col_order	ਕਾਲਮ ਕ੍ਰਮ
 bill_item_col_sep	ਕਾਲਮ ਰੇਖਾ
-bill_item_gap_tight	ਖਿੱਚਿਆ
-bill_item_gap_comfort	ਆਰਾਮਦਾਇਕ
-bill_item_gap_wide	ਚੌੜਾ
-bill_item_num_width	ਅੰਕ ਕਾਲਮ
-bill_item_num_compact	ਛੋਟਾ
-bill_item_num_comfort	ਆਰਾਮਦਾਇਕ
-bill_item_num_wide	ਚੌੜਾ
-bill_item_num_align	ਅੰਕ ਇਕਸਾਰ
-bill_item_gap_em	ਫਾਸਲਾ (em)
-bill_item_qty_min	ਗਿਣਤੀ ਘੱਟੋ-ਘੱਟ (em)
-bill_item_price_min	ਦਰ ਘੱਟੋ-ਘੱਟ (em)
-bill_item_amount_min	ਰਕਮ ਘੱਟੋ-ਘੱਟ (em)
-kot_item_qty_width	ਗਿਣਤੀ ਕਾਲਮ
-kot_item_num_align	ਗਿਣਤੀ ਇਕਸਾਰ
+slip_columns	ਕਾਲਮ
+slip_col_width	ਚੌੜਾਈ (mm)
+slip_col_start	ਸ਼ੁਰੂਆਤੀ ਥਾਂ (px)
+slip_col_end	ਅੰਤਲੀ ਥਾਂ (px)
+slip_col_align	ਲਿਖਤ ਦੀ ਇਕਸਾਰਤਾ
+slip_columns_help	ਹਰ ਕਾਲਮ ਦੀ ਚੌੜਾਈ ਵਿੱਚ ਉਸਦੀ ਸ਼ੁਰੂਆਤੀ ਅਤੇ ਅੰਤਲੀ ਥਾਂ ਸ਼ਾਮਲ ਹੈ। ਲਿਖਤ ਆਪਣੇ ਕਾਲਮ ਦੇ ਅੰਦਰ ਹੀ ਲਪੇਟੀ ਜਾਂਦੀ ਹੈ; ਸਮੱਗਰੀ ਦੀ ਚੌੜਾਈ ਤੋਂ ਬਾਹਰ ਵਾਲਾ ਹਿੱਸਾ ਕਾਗਜ਼ ਅਤੇ ਝਲਕ ਦੋਵਾਂ ਵਿੱਚ ਕੱਟਿਆ ਜਾਂਦਾ ਹੈ।
 bill_total_qty_label	ਕੁੱਲ ਗਿਣਤੀ ਲੇਬਲ
 bill_total_subtotal_label	ਉਪ-ਜੋੜ ਲੇਬਲ
 bill_total_grand_label	ਕੁੱਲ ਲੇਬਲ
@@ -221,7 +212,6 @@ sidebar_order_saved	ਸਾਈਡਬਾਰ ਦਾ ਕ੍ਰਮ ਸਾਂਭਿਆ
 sidebar_visibility_saved	ਸਾਈਡਬਾਰ ਦੀ ਦਿੱਖ ਸਾਂਭੀ
 amounts_hide	ਲੁਕਾਓ
 amounts_show	ਵਿਖਾਓ
-printers_none_hint	ਪਹਿਲਾਂ ਇਸ ਡਿਵਾਈਸ 'ਤੇ ਪ੍ਰਿੰਟਰ ਸਾਂਭੋ, ਫਿਰ ਉਸ ਨੂੰ ਬਿੱਲ ਜਾਂ ਕਿਸੇ ਰਸੋਈ ਵਿੱਚ ਜੋੜੋ
 counter	ਕਾਊਂਟਰ
 dine_in	ਬੈਠ ਕੇ
 takeaway	ਪਾਰਸਲ
@@ -328,8 +318,6 @@ selected_language	ਚੁਣੀ ਹੋਈ
 continue	ਅੱਗੇ ਵਧੋ
 this_device	ਇਹ ਡਿਵਾਈਸ
 device_use_q	ਇਹ ਡਿਵਾਈਸ ਕਿਵੇਂ ਵਰਤੀ ਜਾਵੇਗੀ?
-last_server_mode	ਪਹਿਲਾਂ ਸਰਵਰ ਸੀ — ਜਾਰੀ ਰੱਖਣ ਲਈ ਟੈਪ ਕਰੋ
-last_client_mode	ਪਹਿਲਾਂ ਕਲਾਇੰਟ ਸੀ — ਜਾਰੀ ਰੱਖਣ ਲਈ ਟੈਪ ਕਰੋ
 choose_server	ਸਰਵਰ ਚੁਣੋ
 choose_server_hint	ਇਸ ਡਿਵਾਈਸ 'ਤੇ ਪਹਿਲਾਂ ਹੀ ਸਰਵਰ ਹਨ। ਇੱਕ ਖੋਲ੍ਹੋ, ਜਾਂ ਦੂਜੇ ਕਾਰੋਬਾਰ ਲਈ ਨਵਾਂ ਸਰਵਰ ਬਣਾਓ।
 create_new_server	ਨਵਾਂ ਸਰਵਰ ਬਣਾਓ
@@ -391,7 +379,7 @@ attachments_last_expense	ਅਟੈਚਮੈਂਟ (ਆਖਰੀ ਖਰਚ)
 bank	ਬੈਂਕ
 bank_in	ਬੈਂਕ ਵਿੱਚ ਪਾਓ
 bank_out	ਬੈਂਕ ਤੋਂ ਕੱਢੋ
-bank_reconciliation	ਬੈਂਕ ਮਿਲਾਨ (ਆਪਣੇ ਬੈਂਕ ਸਟੇਟਮੈਂਟ ਨਾਲ ਟਿੱਕ ਕਰੋ)
+bank_reconciliation	ਬੈਂਕ ਮਿਲਾਨ
 bank_to_till	ਬੈਂਕ → ਟਿੱਲ
 book_add_dish	ਬੁੱਕ — ਪਕਵਾਨ / ਆਈਟਮ ਜੋੜੋ
 book_opening_credit	ਬੁੱਕ — ਸ਼ੁਰੂਆਤੀ ਉਧਾਰ
@@ -744,7 +732,6 @@ station_print_pick_first	ਪਹਿਲਾਂ ਰਸੋਈ ਸਟੇਸ਼ਨ ਚ�
 station_print_editing	“{name}” ਦੇ ਪ੍ਰਿੰਟਰ ਸੋਧ
 station_vps_dd	ਇਸ ਸਟੇਸ਼ਨ ਦੇ ਪ੍ਰਿੰਟਰ
 station_vps_dd_n	{n} ਪ੍ਰਿੰਟਰ · ਬਦਲਣ ਲਈ ਟੈਪ
-station_vps_empty	ਹਾਲੇ ਪ੍ਰਿੰਟਰ ਨਹੀਂ — ਸੈਟਿੰਗਾਂ → ਪ੍ਰਿੰਟਰਾਂ ਵਿੱਚ ਲੱਭੋ
 bill_printers_dd	ਬਿੱਲ ਦੇ ਪ੍ਰਿੰਟਰ
 bill_printers_dd_n	ਬਿੱਲ ਲਈ {n} ਪ੍ਰਿੰਟਰ · ਬਦਲਣ ਲਈ ਦਬਾਓ
 job_layout	ਲੇਆਉਟ
@@ -889,7 +876,7 @@ net_word	ਨੈੱਟ
 offline_badge	ਆਫ਼ਲਾਈਨ
 optional_login_help	ਵਿਕਲਪਿਕ ਲਾਗਇਨ (ਆਈਡੀ + ਪਾਸਵਰਡ)। ਮਾਲਕ ਇੱਕ ਵਾਰ ਲਗਾਉਂਦਾ ਹੈ; ਬਾਅਦ ਵਿੱਚ ਸਿਰਫ਼ ਵਰਤੋਂਕਾਰ ਹੀ ਪਾਸਵਰਡ ਬਦਲ ਸਕਦਾ ਹੈ।
 or_unlock_login	ਜਾਂ ਲਾਗਇਨ ਆਈਡੀ + ਪਾਸਵਰਡ ਨਾਲ ਅਨਲਾਕ ਕਰੋ
-permission_preset	ਇਜਾਜ਼ਤ ਪ੍ਰੀਸੈੱਟ (ਕਿਸ ਤੱਕ ਪਹੁੰਚ)
+permission_preset	ਇਜਾਜ਼ਤ ਪ੍ਰੀਸੈੱਟ
 preset_help_khaynjo	ਕੈਸ਼ੀਅਰ: ਵੇਚੋ। ਮੈਨੇਜਰ: ਵੇਚੋ + ਆਈਟਮਾਂ + ਰੱਦ/ਸੋਧ।
 product_locked_khaynjo	Khaynjo
 product_only_khaynjo	ਇਹ ਐਪ ਸਿਰਫ਼ Khaynjo ਹੈ — ਰੈਸਟੋਰੈਂਟ ਓਪਰੇਟਿੰਗ ਸਿਸਟਮ। ਹੋਰ ਕਾਰੋਬਾਰਾਂ ਲਈ ਵੱਖਰੇ Kumkaj ਉਤਪਾਦ ਹਨ।
@@ -961,10 +948,6 @@ pin_hint_paired	ਵਾਧੂ ਟਿੱਲ ਜੁੜਿਆ — ਵੇਚਣ ਲ�
 pin_hint_pair_first	ਵਾਧੂ ਟਿੱਲ — ਪਹਿਲਾਂ ਦੁਕਾਨ ਡਿਵਾਈਸ ਨਾਲ ਜੋੜੋ
 unlock_to_continue	ਜਾਰੀ ਰੱਖਣ ਲਈ ਅਨਲਾਕ ਕਰੋ
 no_staff_yet	ਅਜੇ ਕੋਈ ਸਟਾਫ਼ ਨਹੀਂ — ਮਾਲਕ ਵਜੋਂ ਅਨਲਾਕ ਕਰੋ, ਫਿਰ Team
-status_server_set_pin	ਸਰਵਰ ਮੋਡ — ਮਾਲਕ PIN ਲਗਾਓ
-status_server_tills	ਸਰਵਰ ਮੋਡ — ਵਾਧੂ ਟਿੱਲ ਜੁੜ ਸਕਦੇ ਹਨ। ਅਨਲਾਕ ਕਰੋ
-status_server_unlock	ਸਰਵਰ ਮੋਡ — ਮਾਲਕ ਵਜੋਂ ਅਨਲਾਕ ਕਰੋ
-status_client_unlock	ਕਲਾਇੰਟ ਮੋਡ — ਵੇਚਣ ਲਈ ਅਨਲਾਕ ਕਰੋ
 icon_new_selected	ਆਈਕਨ: ਨਵੀਂ ਫਾਈਲ ਚੁਣੀ — ਬ੍ਰਾਂਡ ਸੰਭਾਲੋ ਦਬਾਓ
 icon_custom	ਆਈਕਨ: ਤੁਹਾਡੀ ਦੁਕਾਨ ਦਾ ਨਿਸ਼ਾਨ
 icon_default	ਆਈਕਨ: Kumkaj ਨਿਸ਼ਾਨ (ਡਿਫਾਲਟ) — ਆਪਣਾ ਚੁਣੋ
@@ -1033,7 +1016,7 @@ book_kind_balance	ਬੈਲੈਂਸ ਸ਼ੀਟ
 order_help	ਖੁੱਲ੍ਹਾ ਆਰਡਰ ਚੁਣੋ, ਜਾਂ ਟੇਬਲ ਚੁਣ ਕੇ ਨਵਾਂ ਸ਼ੁਰੂ ਕਰੋ। ਤਿਆਰ ਚੀਜ਼ਾਂ ’ਤੇ ਟੈਪ ਕਰੋ, KOT ਭੇਜੋ, ਇੱਕ ਜਾਂ ਵੱਧ ਚੀਜ਼ਾਂ ਦਾ ਬਿਲ ਬਣਾਓ, ਬਿਲ ਵੰਡੋ ਅਤੇ ਭੁਗਤਾਨ ਨਿਪਟਾਓ।
 floor_help	ਹਰ ਟੇਬਲ ਦਿਖਾਉਂਦਾ ਹੈ ਕਿ ਮਹਿਮਾਨ ਬੈਠੇ ਹਨ ਜਾਂ ਨਹੀਂ, ਉਨ੍ਹਾਂ ਦਾ ਖੁੱਲ੍ਹਾ ਬਿਲ ਕੀ ਹੈ ਅਤੇ ਅੱਗੇ ਕਿਸਨੂੰ ਸੇਵਾ ਚਾਹੀਦੀ ਹੈ।
 kitchen_help	ਹਰ ਵੈਰੀਐਂਟ ਜਾਂ ਹਰ ਚੀਜ਼ ਅਨੁਸਾਰ ਤਿਆਰ ਮਾਤਰਾ ਟ੍ਰੈਕ ਕਰੋ — KOT ਵਿੱਚ ਜਿਵੇਂ ਚਾਹੋ ਦਰਜ ਕਰੋ।
-kitchen_empty	ਫ਼ਿਲਹਾਲ ਕੁਝ ਖੁੱਲ੍ਹਾ ਨਹੀਂ — ਨਵੇਂ ਆਰਡਰ ਇੱਥੇ ਦਿਖਣਗੇ।
+kitchen_empty	ਫ਼ਿਲਹਾਲ ਕੁਝ ਖੁੱਲ੍ਹਾ ਨਹੀਂ।
 add_a_table	ਟੇਬਲ ਸ਼ਾਮਲ ਕਰੋ
 add_station_heading	ਸਟੇਸ਼ਨ ਸ਼ਾਮਲ ਕਰੋ · ਜਿਵੇਂ ਤੰਦੂਰ, ਸਾਊਥ ਇੰਡੀਅਨ
 categories_help	ਸ਼੍ਰੇਣੀ ਦਿਖਾਉਂਦੀ ਹੈ ਕਿ ਪਕਵਾਨ ਕਿਸ ਮੈਨੂ ਹਿੱਸੇ ਵਿੱਚ ਆਉਂਦਾ ਹੈ — ਜਿਵੇਂ ਸਨੈਕਸ, ਮੇਨ ਕੋਰਸ ਜਾਂ ਬਿਰਿਆਨੀ। ਸ਼੍ਰੇਣੀਆਂ ਆਪਣੇ ਤਰੀਕੇ ਨਾਲ ਬਣਾਓ: ਸਾਡੇ ਸੁਝਾਏ ਨਾਮ ਚੁਣੋ, ਉਨ੍ਹਾਂ ਦੇ ਨਾਮ ਬਦਲੋ ਜਾਂ ਆਪਣਾ ਸ਼ਾਮਲ ਕਰੋ।
@@ -1131,7 +1114,6 @@ bill_format_help	ਹਰ ਬਿੱਲ 'ਤੇ ਤੁਹਾਡੇ ਰੈਸਟੋ�
 bill_header_ph	ਪਤਾ | ਫ਼ੋਨ
 fssai_ph	FSSAI ਲਾਇਸੈਂਸ ਨੰ. (ਭਾਰਤ)
 bill_footer_ph	ਫੁੱਟਰ (ਜਿਵੇਂ ਧੰਨਵਾਦ, ਫਿਰ ਆਇਓ)
-save_bill_format	ਬਿੱਲ ਫਾਰਮੈਟ ਸੰਭਾਲੋ
 reset_bill_format	ਡਿਫਾਲਟ ’ਤੇ ਵਾਪਸ
 bill_format_reset	ਬਿੱਲ ਫਾਰਮੈਟ ਡਿਫਾਲਟ ’ਤੇ
 reset_kot_format	ਡਿਫਾਲਟ ’ਤੇ ਵਾਪਸ
@@ -1201,13 +1183,11 @@ kot_copies_3	3
 kot_title_ph	ਸਿਰਲੇਖ (ਖਾਲੀ = KOT - KITCHEN ORDER)
 kot_footer_ph	ਰਸੋਈ ਨੋਟ (ਵਿਕਲਪਿਕ, ਕੀਮਤ ਨਹੀਂ)
 kot_preview	ਝਲਕ
-save_kot_format	KOT ਫਾਰਮੈਟ ਸੰਭਾਲੋ
 test_kot_format	ਟੈਸਟ KOT
 test_kot_sent	ਰਸੋਈ ਟਿਕਟ ਦਾ ਨਮੂਨਾ ਭੇਜਿਆ
 test_bill_format	ਟੈਸਟ ਬਿੱਲ
 test_bill_sent	ਬਿੱਲ ਦਾ ਨਮੂਨਾ ਭੇਜਿਆ
 test_print_no_printer	ਉਸ ਕੰਮ ਲਈ ਪ੍ਰਿੰਟਰ ਨਹੀਂ — ਇਸੇ ਸਕ੍ਰੀਨ 'ਤੇ ਇੱਕ ਚੁਣੋ
-kot_format_saved	KOT ਫਾਰਮੈਟ ਸੰਭਾਲਿਆ
 std_print	ਬਿੱਲ ਪ੍ਰਿੰਟ ਆਕਾਰ
 std_print_help	ਸਟੈਂਡਰਡ ਪੋਰਟਰੇਟ ਅਤੇ ਲੈਂਡਸਕੇਪ ਬਿੱਲ ਜੌਬਾਂ ਲਈ ਅੱਖਰ ਆਕਾਰ (ਥਰਮਲ KOT ਵੱਖਰਾ)। ਦੋਵੇਂ ਓਰੀਐਂਟੇਸ਼ਨਾਂ 'ਤੇ ਇੱਕੋ ਆਕਾਰ।
 std_size_s	ਛੋਟਾ
@@ -1264,7 +1244,6 @@ new_items_head	ਹਾਲੇ ਨਹੀਂ ਭੇਜਿਆ
 price_ph	ਕੀਮਤ
 price_ph_gst_inside	ਕੀਮਤ ({tax} ਸਮੇਤ)
 cancel_needs_table	ਰਸੋਈ ਤੋਂ ਬਾਅਦ ਰੱਦ ਕਰਨ ਲਈ ਇਹ ਆਰਡਰ ਫਲੋਰ (ਮੇਜ਼) ਤੋਂ ਖੋਲ੍ਹੋ — ਕਾਊਂਟਰ KOT ਭੁਗਤਾਨ ਤੱਕ ਟਿਕਟ ਉੱਤੇ ਰਹਿੰਦੇ ਹਨ
-tax_rates_missing_hint	ਇਨ੍ਹਾਂ ਪਕਵਾਨਾਂ ਤੇ {tax} ਦਰ ਨਹੀਂ — ਮੀਨੂ ਵਿੱਚ ਟੈਕਸ ਦਰ ਸੈੱਟ ਕਰੋ ({tax} inclusive ਵਿੱਚ ਕੀਮਤ ਵਿੱਚ ਪਹਿਲਾਂ ਤੋਂ {tax} ਹੈ)
 taxable_value	ਟੈਕਸਯੋਗ ਮੁੱਲ
 gst_inside_price_note	({tax} ਸਮੇਤ)
 start_with_template	ਸਾਡੇ ਮੀਨੂ ਟੈਂਪਲੇਟ ਨਾਲ ਸ਼ੁਰੂ ਕਰੋ
@@ -1318,9 +1297,7 @@ order_empty_pick	ਆਰਡਰ ਖਾਲੀ ਹੈ — ਪਕਵਾਨ ਚੁਣ�
 add_dishes	ਪਕਵਾਨ ਜੋੜੋ
 order_so_far	ਇਸ ਆਰਡਰ ਵਿੱਚ: {n} · {total}
 no_dish_match	“{q}” ਨਾਲ ਮੇਲ ਖਾਂਦਾ ਕੋਈ ਪਕਵਾਨ ਨਹੀਂ
-pick_dishes_help	ਪਕਵਾਨ ਜੋੜਨ ਲਈ ਦਬਾਓ · ਸੂਚੀ ਛੋਟੀ ਕਰਨ ਲਈ ਸ਼੍ਰੇਣੀ ਚੁਣੋ
 pick_done	ਹੋ ਗਿਆ
-pick_done_dd	ਹੋ ਗਿਆ · {label}
 printer_route_mode	ਜੇ ਇਸ ਥਾਂ ਕਈ ਪ੍ਰਿੰਟਰ ਹੋਣ
 printer_mode_first	ਜੋ ਪਹਿਲਾਂ ਚੱਲੇ
 printer_mode_all	ਸਭ 'ਤੇ ਛਾਪੋ
@@ -1368,3 +1345,22 @@ recent_changes	ਤਾਜ਼ਾ ਬਦਲਾਅ
 lane_declared_label	ਟੈਕਸ ਇਨਵੌਇਸ
 lane_owner_label	ਕੈਸ਼ ਮੀਮੋ
 money_lane_bill	ਬਿੱਲ: {lane}
+sel_copy	ਕਾਪੀ ਕਰੋ
+sel_select_all	ਸਭ ਚੁਣੋ
+sel_copied	ਕਾਪੀ ਹੋ ਗਿਆ
+items_tmpl_khaynjo	Khaynjo ਆਈਟਮ ਟੈਂਪਲੇਟ
+items_tmpl_named	{name} ਟੈਂਪਲੇਟ
+app_tmpl_named	{name} ਐਪ ਟੈਂਪਲੇਟ
+private_code_ph	12 ਅੰਕਾਂ ਦਾ ਕੋਡ
+stamp_on	ਸਟੈਂਪ: ਫਾਈਲ ’ਤੇ
+pay_qr_on	ਭੁਗਤਾਨ QR: ਫਾਈਲ ’ਤੇ
+pay_qr_off	ਭੁਗਤਾਨ QR: ਨਹੀਂ
+items_tmpl_heading	ਆਈਟਮ ਟੈਂਪਲੇਟ
+items_tmpl_help	ਤੁਹਾਡੇ ਮੀਨੂ ਲਈ ਪਕਵਾਨ, ਸ਼੍ਰੇਣੀਆਂ ਅਤੇ ਫੋਟੋਆਂ। ਦੁਕਾਨ ਦੀਆਂ ਸੈਟਿੰਗਾਂ ਅਤੇ ਸਟਾਫ਼ ਜਿਵੇਂ ਹਨ ਉਵੇਂ ਹੀ ਰਹਿੰਦੇ ਹਨ।
+public_tmpl_help	ਸ਼ੁਰੂਆਤੀ ਮੀਨੂ ਜਿਨ੍ਹਾਂ ਨੂੰ ਕੋਈ ਵੀ ਡਾਊਨਲੋਡ ਕਰ ਸਕਦਾ ਹੈ। ਇੱਕ ਵਾਰ ਇੰਟਰਨੈੱਟ ਚਾਹੀਦਾ ਹੈ।
+private_tmpl_help	ਤੁਹਾਡੇ Khaynjo ਸੰਪਰਕ ਤੋਂ ਮਿਲੇ 12-ਅੰਕਾਂ ਦੇ ਕੋਡ ਨਾਲ ਸੁਰੱਖਿਅਤ ਗਾਹਕ ਮੀਨੂ।
+printers_screen_tip	ਲੱਭੋ ਇਸ ਡਿਵਾਈਸ ਦੇ ਵਰਤਣਯੋਗ ਪ੍ਰਿੰਟਰ ਦਿਖਾਉਂਦਾ ਹੈ ਅਤੇ ਇਸ ਦੁਕਾਨ ਲਈ ਸੰਭਾਲਦਾ ਹੈ। ਬਿੱਲ ਪ੍ਰਿੰਟਰ: ਬਿੱਲ ਅਤੇ KOT ਫਾਰਮੈਟ → ਬਿੱਲ। ਰਸੋਈ: ਰਸੋਈ → ਰਸੋਈ ਸਟੇਸ਼ਨ।
+printers_found_none	ਕੋਈ ਪ੍ਰਿੰਟਰ ਨਹੀਂ ਮਿਲਿਆ।
+kot_copy_from	ਇਸ ਤੋਂ ਕਾਪੀ ਕਰੋ
+kot_copy_from_help	ਉਸ ਕਿਸਮ ਦੀ ਹਰ ਲਾਈਨ ਦਾ ਆਕਾਰ, ਮੋਟਾਈ ਅਤੇ ਇਕਸਾਰਤਾ ਇਸ ਵਿੱਚ ਕਾਪੀ ਕਰਦਾ ਹੈ। ਇਹ ਕਿਸਮ ਆਪਣਾ ਬੈਨਰ, ਆਈਟਮ ਅਗੇਤਰ ਅਤੇ ਕੱਟੀ ਲਕੀਰ ਰੱਖਦੀ ਹੈ। ਰੱਖਣ ਲਈ KOT ਫਾਰਮੈਟ ਸੇਵ ਕਰੋ।
+nav_loading	ਲੋਡ ਹੋ ਰਿਹਾ ਹੈ…

@@ -41,7 +41,7 @@ remove	ہٹاوُن
 removed_items	ہٹاونہٕ آمٕتۍ چیٖز
 removed_help	ریسٹور چھُ چیٖز واپس مینوَس پیٹھ تِتھۍ پٲٹھۍ تھاوان یُتھ یہِ اوس — قۭمت، فوٹو تہٕ زمرہ۔ سانہِ پکوانن ہُند شیلف چھُنہٕ زانہہ ہٹاونہٕ یوان، لہذا ہیکہِ ہمیشہٕ اکھ ڈِش دوبارٕ شٲمِل کٔرِتھ۔
 restore_item	بحال کٔرِو
-empty_catalog	وُنیُک تام چھُنہٕ کانٛہہ ڈِش۔ مینو کھولِو، اکھ ڈِش شٲمِل کٔرِو (ناو + قۭمت)، پتہٕ نِیو آرڈر۔
+empty_catalog	وُنیُک تام چھُنہٕ کانٛہہ ڈِش۔
 total	کُل
 cash	نَقَد
 upi	UPI
@@ -103,23 +103,14 @@ bill_item_qty	تعداد
 bill_item_price	قۭمَت
 bill_item_amount	رقم
 bill_item_note	ڈش نوٹ
-bill_item_col_gap	کالمُک فرق
 bill_item_col_order	کالم ترتیب
 bill_item_col_sep	کالم اصول
-bill_item_gap_tight	تنگ
-bill_item_gap_comfort	آرام دہ
-bill_item_gap_wide	وسیع
-bill_item_num_width	نمبر کالم
-bill_item_num_compact	کمپیکٹ
-bill_item_num_comfort	آرام دہ
-bill_item_num_wide	وسیع
-bill_item_num_align	نمبر چِھ سیدھ گژھان
-bill_item_gap_em	گیپ (em)
-bill_item_qty_min	کم از کم مقدار (em)
-bill_item_price_min	قیمت کم از کم (em)
-bill_item_amount_min	رقم کم از کم (em)
-kot_item_qty_width	Qty کالم
-kot_item_num_align	Qty سیدھ
+slip_columns	کالَم
+slip_col_width	چوڑٲے (mm)
+slip_col_start	شروعاتُک جاے (px)
+slip_col_end	آخرُک جاے (px)
+slip_col_align	متنٕچ ترتیٖب
+slip_columns_help	پرٛتھ کالمُک چوڑٲے منٛز چھےٚ تمیٚک شروعات تہٕ آخرُک جاے شامل۔ متن چھُ پنٕنِس کالمس اندر لپیٹنہٕ یِوان؛ مواد کہِ چوڑٲے نیٚبر یُس چھُ سُہ چھُ کاغزس پؠٹھ تہٕ پیش نظارس منٛز کٹنہٕ یِوان۔
 bill_total_qty_label	کل qty لیبل
 bill_total_subtotal_label	ذیلی کُل لیبل
 bill_total_grand_label	گرینڈ ٹوٹل لیبل
@@ -221,7 +212,6 @@ sidebar_order_saved	سایڈ بار آرڈر آو محفوظ کرنہٕ
 sidebar_visibility_saved	سایڈ بار ویزیبلٹی آو محفوظ کرنہٕ
 amounts_hide	چھُپاوُن
 amounts_show	ہاوُن
-printers_none_hint	گۄڈٕ کٔرِو یَتھ ڈیوایسَس پیٹھ اکھ پرنٹر محفوظ تہٕ پتہٕ کٔرِو یہِ بِلہِ یا کچنس منٛز شٲمِل
 counter	کاؤنٹر
 dine_in	ڈاین-ان
 takeaway	نِیُن
@@ -328,8 +318,6 @@ selected_language	ژارنہٕ آمُت
 continue	جاری
 this_device	یہِ ڈیوائس
 device_use_q	یہِ آلہٕ کِتھ کٔنۍ ییہِ استعمال کرنہٕ؟
-last_server_mode	اوس Server — جٲری تھاونہٕ خٲطرٕ ٹیپ
-last_client_mode	اوس Client — جٲری تھاونہٕ خٲطرٕ ٹیپ
 choose_server	سرور ژٲرِو
 choose_server_hint	اکھ موجودٕ سرور کھولو، یا بیٚیِس کارٕبارٕ خٲطرٕ بنٲیِو یہِ۔
 create_new_server	نْو سْرور بنٲیِو
@@ -391,7 +379,7 @@ attachments_last_expense	اٹیچمینٹ (ٲخری اخراجات)
 bank	بینک
 bank_in	بینک اِن
 bank_out	بینک آؤٹ
-bank_reconciliation	بینک مصالحت (تُہنٛدِس بینک سٹیٹمنٹَس خٕلاف کٔرِو ٹِک)
+bank_reconciliation	بینک مصالحت
 bank_to_till	بینک → کَش کاؤنٹر
 book_add_dish	کتاب — ڈِش / چیٖز شٲمِل
 book_opening_credit	کتاب — اوپننگ کریڈٹ
@@ -744,7 +732,6 @@ station_print_pick_first	گۄڈٕ ژٲرِو کچن سٹیشن
 station_print_editing	"{name}" خٲطرٕ چھُ اؠڈِٹ کَرنہٕ آمُت
 station_vps_dd	امہ سٹیشنک پرنٹر
 station_vps_dd_n	{n} پرنٹر · بدلاونہٕ خٲطرٕ ٹیپ کٔرِو
-station_vps_empty	وٕنیُک تام چھُنہٕ کانٛہہ پرنٹر — تِم ژھٲنڈِو سیٹنگَن → پرنٹرَن
 bill_printers_dd	بلہٕ خٲطرٕ پرنٹر
 bill_printers_dd_n	{n} بِلہِ خٲطرٕ پرنٹر · بدلاونہٕ خٲطرٕ ٹیپ کٔرِو
 job_layout	خاکہ
@@ -889,7 +876,7 @@ net_word	نیٹ
 offline_badge	آف لائن
 optional_login_help	اختیاری لاگ اِن (ID + پاس وٲرڈ)۔ مٲلک چُھ یہٕ اکہ لٹہٕ سیٹ کران۔ صرف اِستِمال کَرن وول ہیکہِ پَتہٕ پاس وٲرڈ بَدلٲوِتھ۔
 or_unlock_login	یا لاگ اِن آی ڈی + پاس وأرڈ سۭتۍ ان لاک
-permission_preset	نوکری (سکرین تہٕ پٲنسہٕ عملہٕ سیٹ کران)
+permission_preset	نوکری
 preset_help_khaynjo	کیشیئر: کٕنُن۔ منیجر: کٕنُن + چیٖز + کالعدم / ترمیم۔
 product_locked_khaynjo	Khaynjo
 product_only_khaynjo	یہِ ایپ چھُ صرف Khaynjo — ریسٹورنٹ آپریٹنگ سسٹم۔ باقٕے تِجارتی قٕسٕم چھِ الگ Kumkaj مصنوعاتن ہٕنٛدِس طورس پیٹھ ظٲہر گژھان۔
@@ -961,10 +948,6 @@ pin_hint_paired	اضٲفی کَش کاؤنٹر جوڑِتھ — کٕننہٕ خ�
 pin_hint_pair_first	اضٲفی کَش کاؤنٹر — گۄڈٕ کٔرِو دُکانٕک ڈیوایسَس سۭتۍ جوڑ
 unlock_to_continue	جٲری تھاونہٕ خٲطرٕ کٔرِو ان لاک
 no_staff_yet	وٕنیُک تام کانٛہہ سٹاف نہٕ — بطور مٲلک، پتہٕ ٹیم انلاک
-status_server_set_pin	Server موڈ — سیٹ مالک PIN
-status_server_tills	Server موڈ — اضٲفی کَش کاؤنٹر ہیکن شٲمِل گٔژھِتھ۔ انلاک کٔرِو
-status_server_unlock	Server موڈ — انلاک کْریو بطور مالک
-status_client_unlock	Client موڈ — کٕننہٕ خٲطرٕ انلاک کٔرِو
 icon_new_selected	آئیکن: نٔو فایل منتخب — ٹیپ کٔرِو برانڈ محفوظ
 icon_custom	آئیکن: کسٹم وینیو مارک
 icon_default	آئیکن: Kumkaj مارک (ڈیفالٹ) — کسٹم اکھ منتخب
@@ -1033,7 +1016,7 @@ book_kind_balance	بیلنس شیٹ
 order_help	اکھ چیٖز شٲمِل کرنہٕ خٲطرٕ دبٲیِو۔
 floor_help	آرڈر نِنہٕ یا بدلاونہٕ خٲطرٕ کٔرِو أکِس ٹیبلَس پٮ۪ٹھ دبٲیِو۔ رنگ چھِ مُفت → کچنس → بِہِتھ → کھٮ۪نہٕ → → بِل ادا کرنہٕ خٲطرٕ تیار → ہاوان۔ ویٹنگ لِسٹ، رِزرویشن، تہٕ ایڈ ٹیبل چھِ بۄنہٕ کَنہِ دِنہٕ آمٕتۍ سیکشنَن منٛز۔
 kitchen_help	کچن ٹکٹ (KOT)، نٔو ٲخری شروع کٔرِو → تیار → کرنہٕ آمُت چھُ اکھ ٹکٹ پکان۔ ٹکٹ چھِنہٕ زانہہ قۭمتھ ہاوان۔
-kitchen_empty	کانٛہہ تہِ کھُلہٕ ٹکٹ چھُ نہٕ۔ آرڈر یا ہالَس پیٹھ سوزنہٕ آمُت اکھ KOT چھُ یَتہِ ظٲہِر گژھان۔
+kitchen_empty	کانٛہہ تہِ کھُلہٕ ٹکٹ چھُ نہٕ۔
 add_a_table	ٹیبل کٔرِو شٲمِل
 add_station_heading	کچن سٹیشن کٔر ایڈ
 categories_help	اَتھ زمرَس تَحَت کَرنہٕ خٲطرٕ کٔرِو اِستِمال کَرنہٕ خٲطرٕ۔ فوٹو چھُ زمرَس اکھ تصویر دِوان۔ اکہِ ورٲے چھُ یہِ امِکۍ ابتدٲیی حروف ہاوان۔
@@ -1131,7 +1114,6 @@ bill_format_help	پرٮ۪تھ بِلہِ پٮ۪ٹھ چھاپنہٕ یِوان ت
 bill_header_ph	ایڈریس | فون
 fssai_ph	FSSAI لایسنس نمبر۔ (ہندوستان)
 bill_footer_ph	فوٹر (مثلاً شُکریہ، دُبارٕ وزِٹ)
-save_bill_format	بِلہِ ہُنٛد فارمیٹ کٔرِو محفوظ
 reset_bill_format	ڈیفالٹَس کُن کٔرِو ری سیٹ
 bill_format_reset	بِل فارمیٹ کَرنہٕ آمُت ڈیفالٹَس کُن دُبارٕ سیٹ
 reset_kot_format	ڈیفالٹَس کُن کٔرِو ری سیٹ
@@ -1201,13 +1183,11 @@ kot_copies_3	3
 kot_title_ph	عنوان (خٲلی = KOT - کچن آرڈر)
 kot_footer_ph	کچن نوٹ (اختیاری، کانہہ قیمت)
 kot_preview	جھلک
-save_kot_format	محفوظ KOT فارمیٹ
 test_kot_format	ٹیسٹ KOT
 test_kot_sent	کچن ٹکٹ پیش نظارہ آو سوزنہٕ
 test_bill_format	ٹیسٹ بِل
 test_bill_sent	بِلُک پیش نظارٕ آو سوزنہٕ
 test_print_no_printer	اَمہِ نوکری خٲطرٕ چھُنہٕ کانٛہہ پرنٹر — یَتھ سکرینس پیٹھ اکھ ژٲرِو
-kot_format_saved	KOT فارمیٹ محفوظ
 std_print	بِلہِ ہُنٛد پرنٹ سایِز
 std_print_help	او ایس/ ڈاکیومینٹ پرنٹرَن پیٹھ سٹینڈرڈ پورٹریٹ تہٕ لینڈ سکیپ بِل جابَن خٲطرٕ فانٹ سایِز (دَرٕج کٔرِو پوینٹَس — لۄکُٹ/نارمل/بٔڑ نہٕ)۔ دۄشوٕنی واقفَن پیٹھ چھُ اَکی سائز۔ کچن سلپ سایِز چھُ KOT ٹیبس پیٹھ۔
 std_size_s	لَکُٹ
@@ -1264,7 +1244,6 @@ new_items_head	وُنیُک تام چھُنہٕ سوزنہٕ آم
 price_ph	قۭمَت
 price_ph_gst_inside	قٲمت ({tax} شمولیت)
 cancel_needs_table	کچنَس منٛز گژھنہٕ پتہٕ کٔرِو یہِ آرڈر ہالَس پیٹھ (اکھ میز) منسوخ — کاؤنٹر KOT چھِ ٹکٹَس پیٹھ روزان یوٚتام نہٕ تُہۍ ادائیگی نِوِو
-tax_rates_missing_hint	یِمَن ڈِشَن پیٹھ کانٛہہ {tax} ریٹ — مینو سیٹ ٹیکس ریٹَس پیٹھ (قۭمتَن منٛز چھِ گۄڈَے {tax} شٲمِل {tax} شمولیت)
 taxable_value	قٲبل ٹیکس ویلیو
 gst_inside_price_note	({tax} شمولیت)
 start_with_template	سٲنِس مینو ٹیمپلیٹ سۭتۍ کٔرِو شروٗع
@@ -1318,9 +1297,7 @@ order_empty_pick	آرڈر خٲلی — پکوان تُلنہٕ خٲطرٕ کٔر
 add_dishes	ڈِش کٔرِو شٲمِل
 order_so_far	اتھ ترتیبس پیٹھ: {n} · {total}
 no_dish_match	کانٛہہ تہِ ڈِش چھُنہٕ "{q}"
-pick_dishes_help	اکھ ڈِش شٲمِل کرنہٕ خٲطرٕ دبٲیِو · فہرست کم کرنہٕ خٲطرٕ ژٲرِو اکھ زمرٕ
 pick_done	مُکمل
-pick_done_dd	کَرنہٕ آمُت · {label}
 printer_route_mode	اگر اتھ جایہ واریاہ پرنٹر
 printer_mode_first	گۄڈٕ یُس کٲم کران چھُ
 printer_mode_all	سارنی پیٹھ چھاپ
@@ -1368,3 +1345,22 @@ recent_changes	حالٕے تبدیلیہٕ
 lane_declared_label	ٹیکس انوائس
 lane_owner_label	کیش میمو
 money_lane_bill	بل: {lane}
+sel_copy	کاپی کٔرِو
+sel_select_all	سۄری ژارِو
+sel_copied	کاپی گَو
+items_tmpl_khaynjo	Khaynjo آئٹم ٹیمپلیٹ
+items_tmpl_named	{name} ٹیمپلیٹ
+app_tmpl_named	{name} ایپ ٹیمپلیٹ
+private_code_ph	12 ہندسن ہُند کوڈ
+stamp_on	سٹیمپ: فایلہِ پیٹھ
+pay_qr_on	ادٲیگی QR: فایلَس پیٹھ
+pay_qr_off	اَدٲیگی QR: کانٛہہ تہِ
+items_tmpl_heading	آیٹم ٹیمپلیٹ
+items_tmpl_help	تُہندِس مینوٗ خٲطرٕ کھینہٕ، زٲژ تہٕ فوٹو۔ دُکانِچ سیٹِنگ تہٕ اسٹاف رَوان یِتھٕے پٲٹھۍ۔
+public_tmpl_help	شروٗعاتی مینوٗ یِم کانٛہہ تہِ ڈاوَن لوڈ ہیٚکہِ کٔرِتھ۔ اکہِ لٹہِ انٹرنیٹ ضروٗری۔
+private_tmpl_help	تُہندِس Khaynjo رابطہٕ پیٚٹھٕ میلٕن وٲلِس 12 ہندسن ہٕندِس کوڈس سٟتؠ محفوٗظ گاہک مینوٗ۔
+printers_screen_tip	ژھانڈ ہاوان یِم پرنٹر یہِ ڈیوائس ہیٚکہِ استعمال کٔرِتھ تہٕ یِمن کران محفوظ یتھ دُکانہِ خٲطرٕ۔ بِل پرنٹر: بِل تہٕ KOT فارمیٹ ← بِل۔ رَنہٕ کوٚٹھ: رَنہٕ کوٚٹھ ← رَنہٕ کوٚٹھہِ سٹیشن۔
+printers_found_none	کانٛہہ پرنٹر چھُنہٕ میوٗلمُت۔
+kot_copy_from	یِتھ پٮ۪ٹھۍ کاپی کٔرِو
+kot_copy_from_help	تَتھ قٕسمٕچ ہر لایِنٕچ سایِز، موٹٲے تہٕ ترتیب یِتھ مَنٛز کاپی کران۔ یہِ قٕسم تھاوان پنُن بینر، آیِٹَم سابقہٕ تہٕ کٹ لایِن۔ تھاوٕنہٕ خٲطرٕ KOT فارمیٹ محفوظ کٔرِو۔
+nav_loading	لوڈ گژھان…

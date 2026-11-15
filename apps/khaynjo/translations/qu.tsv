@@ -41,7 +41,7 @@ remove	Qulluy
 removed_items	Menú nisqapi kaqkunamanta hurqusqa
 removed_help	Kutichiy menú elementota menú kaqpi kutichin imaynachus karqan hina — chanin, foto chaymanta categoría. Platokuna estanteykuqa manan hayk’aqpas horqokunchu, chaymi sapa kutilla huk platota yapaykusunman.
 restore_item	Kutichiy
-empty_catalog	Manaraqmi platokuna kanchu. Menú kichay, huk platota yapay (suti + chanin), chaymanta huk pedidota hap'iy.
+empty_catalog	Manaraqmi platokuna kanchu.
 total	Llapan
 cash	Qullqi
 upi	UPI
@@ -103,23 +103,14 @@ bill_item_qty	Yupay
 bill_item_price	Precio
 bill_item_amount	Cantidad nisqa
 bill_item_note	Nota de plato
-bill_item_col_gap	Columna ch’usaq
 bill_item_col_order	Columna nisqapa ordennin
 bill_item_col_sep	Columna kamachiykuna
-bill_item_gap_tight	K'iti
-bill_item_gap_comfort	Sumaqllaña
-bill_item_gap_wide	Ancho
-bill_item_num_width	Yupay columnakuna
-bill_item_num_compact	Compacto nisqa
-bill_item_num_comfort	Sumaqllaña
-bill_item_num_wide	Ancho
-bill_item_num_align	Yupaykunam hukllanakunku
-bill_item_gap_em	Ch'usaq (em) .
-bill_item_qty_min	Yupay min (em)
-bill_item_price_min	Precio min (em) .
-bill_item_amount_min	Cantidad min (em) .
-kot_item_qty_width	Quty columna
-kot_item_num_align	Yupay chiqachay
+slip_columns	Columnakuna
+slip_col_width	Kinray (mm)
+slip_col_start	Qallariy chusaq (px)
+slip_col_end	Tukukuy chusaq (px)
+slip_col_align	Qillqa allichay
+slip_columns_help	Sapa columnap kinraynin qallariy chusaqta tukukuy chusaqta ima hap’in. Qillqaqa columnan ukhupi muyun; contenidop kinraynin hawan kaqqa p’anqapi qhawarichiypi ima kuchusqa kanqa.
 bill_total_qty_label	Total qty etiqueta
 bill_total_subtotal_label	Sub total etiqueta
 bill_total_grand_label	Grand total nisqa etiqueta
@@ -221,7 +212,6 @@ sidebar_order_saved	Lado barra orden waqaychasqa
 sidebar_visibility_saved	Lado barra rikuy waqaychasqa
 amounts_hide	Pakakuy
 amounts_show	Qhawachiy
-printers_none_hint	Ñawpaqta huk impresora kay dispositivopi waqaychay, chaymanta yapay Invitado invitado facturaman utaq huk cocinaman
 counter	Contador
 dine_in	Ukupi mikhuy
 takeaway	Apakuy
@@ -328,8 +318,6 @@ selected_language	Akllasqa
 continue	Hinallayá ruway
 this_device	KAY DISPOSITIVO
 device_use_q	¿Imaynatataq kay aparatota apaykachakunqa?
-last_server_mode	Servidor karqan — ñit'iy hinalla ruwanaykipaq
-last_client_mode	Cliente karqan — ñit'iy hinalla ruwanaykipaq
 choose_server	Huk sirwiqta akllay
 choose_server_hint	Huk kachkaq servidorta kichay, utaq huk negociopaq hukta ruway.
 create_new_server	Musuq sirwiqta paqarichiy
@@ -391,7 +379,7 @@ attachments_last_expense	Adjuntos (qhipa gasto) .
 bank	Banco
 bank_in	Banco in
 bank_out	Bancomanta qullqi lluqsichiy
-bank_reconciliation	Bancopi allipunachiy (bancomanta willakuyniykipi marcay) .
+bank_reconciliation	Bancopi allipunachiy
 bank_to_till	Banco → qullqi waqaychaq
 book_add_dish	Libro mayor — plato / menú elemento yapay
 book_opening_credit	Libro mayor — kichay qullqi
@@ -744,7 +732,6 @@ station_print_pick_first	Ñawpaqtaqa cocinapi huk estacionta akllay
 station_print_editing	“{name}” nisqapaq impresorakunata allichay.
 station_vps_dd	Kay estacionpaq impresorakuna
 station_vps_dd_n	{n} impresorakuna · ñit’iy cambianaykipaq
-station_vps_empty	Manaraqmi impresorakuna kanchu — Tariy Ajustes → Impresoras nisqapi
 bill_printers_dd	Invitado qullqipaq impresorakuna
 bill_printers_dd_n	{n} impresorakuna invitado qullqipaq · ñit'iy tikranaykipaq
 job_layout	Diseño
@@ -889,7 +876,7 @@ net_word	Llika
 offline_badge	OFFLINE nisqa
 optional_login_help	Munasqa yaykuy (id + contraseña). Dueñoqa huk kutillatam churan; ruwaqllam qhipaman yaykuna rimata tikrayta atin.
 or_unlock_login	Utaq yaykuy id + contraseñawan kichay
-permission_preset	Llamkana (pantallakunata hinaspa qullqi ruwaykunata churan) .
+permission_preset	Llamkana
 preset_help_khaynjo	Cajero: rantikuy. Kamachiq: rantiy + menú nisqapi kaqkuna + ch'usaq/allinchay.
 product_locked_khaynjo	Khaynjo
 product_only_khaynjo	Kay app Khaynjolla — mikhuy wasi llamkana sistema. Huk qhatuy uyakuna sapaq Kumkaj rurukuna hina buque.
@@ -961,10 +948,6 @@ pin_hint_paired	Yapa caja registradora parisqa — kichay ranqhanapaq
 pin_hint_pair_first	Yapa qullqi waqaychaq — ñawpaqta tienda dispositivoman parischay
 unlock_to_continue	Kichayta hinalla ruwanaykipaq
 no_staff_yet	Manaraq llamk'aq — Dueño hina kichay, chaymanta Equipo
-status_server_set_pin	Modo Servidor — churay Dueño PIN .
-status_server_tills	Modo Servidor — yapasqa qullqi waqaychanakuna hukllanakunkuman. Desbloquear
-status_server_unlock	Modo Servidor — Dueño hina kichay
-status_client_unlock	Modo Cliente — kichay ranqhanapaq
 icon_new_selected	Icono: musuq willañiqi akllasqa — Marka waqaychay ñit'iy
 icon_custom	Icono: marca de lugar personalizado
 icon_default	Icon: Kumkaj marka (ñawpaqmanta) — huk sapanchasqa akllay
@@ -1033,7 +1016,7 @@ book_kind_balance	Balance nisqa
 order_help	Huk menú nisqapi ñit’iy chayta yapanaykipaq.
 floor_help	Mikhuna mesata ñit’iy pedidota hap’inaykipaq otaq cambianaykipaq. Colores rikuchin gratis → tiyasqa → cocina → listo → mikhuy → invitado factura → pagasqa. Suyakuy lista, reservakuna, chaymanta yapay-mikhuy mesakuna uraypi t'aqakunapi kachkan.
 kitchen_help	Boletos de cocina (KOT), aswan musuq qhipa kaq. Qallariy → Listo → Tukusqa huk boletota kuyuchin. Boletokunaqa manan hayk’aqpas preciokunata rikuchinchu.
-kitchen_empty	Mana kichasqa boletokuna. Kaypi rikurin Orden utaq Comedormanta apachisqa KOT.
+kitchen_empty	Mana kichasqa boletokuna.
 add_a_table	Mikhuna mesata yapay
 add_station_heading	Huk cocina estacionta yapay
 categories_help	Utilizar ñit’iy chay categoría nisqapi hawapi kaq menú nisqapi kaqta archivanaykipaq. Fotoqa categoría nisqamanmi huk siq’ita qun; mana huklla kaptinqa qallariy qillqankunatam qawachin.
@@ -1131,7 +1114,6 @@ bill_format_help	Sapa invitado facturapi restauranteykipa sutinwan imprimisqa. S
 bill_header_ph	Dirección | telefonowan
 fssai_ph	FSSAI licencia no. (India) .
 bill_footer_ph	Chaki qillqa (e.g. Gracias, yapamanta watukuy)
-save_bill_format	Invitado factura formatota waqaychay
 reset_bill_format	Ñawpaqmanta churasqaman kutichiy
 bill_format_reset	Invitado invitado factura formato ñawpaqmanta churasqa
 reset_kot_format	Ñawpaqmanta churasqaman kutichiy
@@ -1201,13 +1183,11 @@ kot_copies_3	3
 kot_title_ph	Titulo (ch'usaq = KOT - KITCHEN ORDER) .
 kot_footer_ph	Cocinamanta willakuy (munasqa, mana qullqiyuq) .
 kot_preview	Ñawpaqta qhaway
-save_kot_format	KOT nisqa formatopi waqaychay
 test_kot_format	Pruebata ruway KOT .
 test_kot_sent	Cocina boleto ñawpaq qhaway apachisqa
 test_bill_format	Invitado factura prueba
 test_bill_sent	Invitado invitado factura ñawpaq qhaway apachisqa
 test_print_no_printer	Mana chay llamkanapaq impresora — kay pantallapi hukta akllay
-kot_format_saved	KOT formato waqaychasqa
 std_print	Invitado invitado factura impreso sayaynin
 std_print_help	Estándar Portrait chaymanta Landscape invitado factura llamkanakuna OS / qillqa impresorakunapi qillqap sayaynin (puntokuna yaykuy — mana Huch'uy/Normal/Hatunchu). Iskaynin orientacionkunapi kaqlla sayayniyuq. Cocina slip tamañokuna KOT tablapi kachkan.
 std_size_s	Huch’uylla
@@ -1264,7 +1244,6 @@ new_items_head	Manaraqmi apachisqachu
 price_ph	Precio
 price_ph_gst_inside	Precio ({tax} nisqawan)
 cancel_needs_table	Kay kamachiyta kichay pantalla Mikhuna wasimanta (huk mikhuy mesa) cancelanaykipaq cocinapi chayta kasqanmanta — contador KOTs boletopi qhipakunku qullqita jap’inaykikama
-tax_rates_missing_hint	Mana {tax} tarifa kay mikhuykunapi — Menú nisqapi churasqa Tasa Impuesto (preciokunapiqa kachkanña {tax} {tax} nisqamanta urayman)
 taxable_value	Valor imponible nisqa
 gst_inside_price_note	({tax} llapanpi)
 start_with_template	Qallarina plantilla de menú nisqaykuwan
@@ -1318,9 +1297,7 @@ order_empty_pick	Ch’usaq kamachiy — ñit’iy Yapay platokunata platokunata 
 add_dishes	Mikhukunata yapay
 order_so_far	Kay kamachiypi: {n} · {total}
 no_dish_match	Mana ima mikhuypas “{q}” nisqawan tupanchu.
-pick_dishes_help	Huk platota ñit’iy yapanaykipaq · huk categoría nisqa akllay listata pisiyachinaykipaq
 pick_done	Rurasqa
-pick_done_dd	Rurasqa · {label} .
 printer_route_mode	Sichus achka impresorakuna kay sitiopi
 printer_mode_first	Ñawpaqtaqa chaymi llamkan
 printer_mode_all	Tukuypi imprimiy
@@ -1368,3 +1345,22 @@ recent_changes	Kunan pacha tikrakuykuna
 lane_declared_label	Impuesto nisqamanta factura
 lane_owner_label	Memo de efectivo nisqa
 money_lane_bill	Invitado invitado qullqi: {lane}
+sel_copy	Copiay
+sel_select_all	Llapanta akllay
+sel_copied	Copiasqañam
+items_tmpl_khaynjo	Khaynjo imakunapa plantillan
+items_tmpl_named	{name} plantilla
+app_tmpl_named	{name} app plantilla
+private_code_ph	12 yupaykunayuq código
+stamp_on	Sello: archivopi
+pay_qr_on	Pagay QR: archivopi
+pay_qr_off	Pagay QR: mana imapas
+items_tmpl_heading	Imakuna plantillakuna
+items_tmpl_help	Mikhuykuna, rakikuna, fotokunapas menuykipaq. Tiendap churakuyninkuna llamkaqkunapas kasqanmanta qhipakunku.
+public_tmpl_help	Qallariy menukuna pipas uraykachiyta atin. Huk kutilla internet necesitakun.
+private_tmpl_help	Khaynjo willaqniykimanta 12 yupay codigowan wichqasqa clientekunap menunkuna.
+printers_screen_tip	Maskay rikuchin kay equipo atinan impresorakunata, kay tiendapaqtaq waqaychan. Cuenta impresorakuna: Cuenta KOT formato → Cuenta. Yanuna wasi: Yanuna wasi → Yanuna estacionkuna.
+printers_found_none	Mana impresora tarikunchu.
+kot_copy_from	Kaymanta copiay
+kot_copy_from_help	Chay laya sapa siq'ip hatun kayninta, rakhu kayninta, churakuyninta kayman copian. Kay laya kikin bannerninta, imap prefijonta, siq'isqanta waqaychan. Waqaychanapaq KOT formatota waqaychay.
+nav_loading	Cargachkan…

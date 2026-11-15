@@ -41,7 +41,7 @@ remove	Eemalda
 removed_items	Eemaldatud üksused
 removed_help	Taastamine paneb üksuse uuesti menüüsse täpselt sellisena, nagu see oli – hind, foto ja kategooria. Meie nõuderiiulit ei eemaldata kunagi, nii et roogi saab alati uuesti lisada.
 restore_item	Taasta
-empty_catalog	Nõusid veel pole. Avage menüü, lisage roog (nimi + hind), seejärel võtke tellimus.
+empty_catalog	Nõusid veel pole.
 total	Kokku
 cash	Sularaha
 upi	UPI
@@ -103,23 +103,14 @@ bill_item_qty	Kogus
 bill_item_price	Hind
 bill_item_amount	Summa
 bill_item_note	Nõu märkus
-bill_item_col_gap	Veeru vahe
 bill_item_col_order	Veergude järjekord
 bill_item_col_sep	Veeru reeglid
-bill_item_gap_tight	Tihe
-bill_item_gap_comfort	Mugav
-bill_item_gap_wide	Lai
-bill_item_num_width	Numbriveerud
-bill_item_num_compact	Kompaktne
-bill_item_num_comfort	Mugav
-bill_item_num_wide	Lai
-bill_item_num_align	Numbrid joondatud
-bill_item_gap_em	Vahe (em)
-bill_item_qty_min	Kogus min (em)
-bill_item_price_min	Hind min (em)
-bill_item_amount_min	Summa min (em)
-kot_item_qty_width	Kogus veerg
-kot_item_num_align	Koguse joondamine
+slip_columns	Veerud
+slip_col_width	Laius (mm)
+slip_col_start	Algusvahe (px)
+slip_col_end	Lõpuvahe (px)
+slip_col_align	Teksti joondus
+slip_columns_help	Iga veeru laius sisaldab selle algus- ja lõpuvahet. Tekst murdub oma veeru sees; mis jääb sisu laiusest välja, lõigatakse ära – paberil ja eelvaates.
 bill_total_qty_label	Kogukoguse silt
 bill_total_subtotal_label	Alasumma silt
 bill_total_grand_label	Totaalne etikett
@@ -221,7 +212,6 @@ sidebar_order_saved	Külgriba järjekord salvestatud
 sidebar_visibility_saved	Külgriba nähtavus on salvestatud
 amounts_hide	Peida
 amounts_show	Näita
-printers_none_hint	Esmalt salvestage printer sellesse seadmesse ja seejärel lisage see Billi või kööki
 counter	Loendur
 dine_in	Einestamine
 takeaway	Kaasa
@@ -328,8 +318,6 @@ selected_language	Valitud
 continue	Jätka
 this_device	SEE SEADE
 device_use_q	Kuidas seda seadet kasutatakse?
-last_server_mode	Oli server – puudutage jätkamiseks
-last_client_mode	Oli klient – puudutage jätkamiseks
 choose_server	Valige server
 choose_server_hint	Avage olemasolev server või looge see teise ettevõtte jaoks.
 create_new_server	Loo uus server
@@ -391,7 +379,7 @@ attachments_last_expense	Manused (viimane kulu)
 bank	pank
 bank_in	Pank sisse
 bank_out	Pank välja
-bank_reconciliation	Panga vastavusse viimine (märkige oma pangaväljavõttel linnuke)
+bank_reconciliation	Panga vastavusse viimine
 bank_to_till	Pank → kassa
 book_add_dish	Broneeri – lisa roog/ese
 book_opening_credit	Raamat — algustiitrid
@@ -744,7 +732,6 @@ station_print_pick_first	Kõigepealt valige köögijaam
 station_print_editing	Printerite redigeerimine "{name}" jaoks
 station_vps_dd	Selle jaama printerid
 station_vps_dd_n	{n} printerid · puudutage muutmiseks
-station_vps_empty	Printereid pole veel – leiate need jaotisest Seaded → Printerid
 bill_printers_dd	Printerid arve jaoks
 bill_printers_dd_n	{n} printerid arve jaoks · puudutage muutmiseks
 job_layout	Paigutus
@@ -889,7 +876,7 @@ net_word	Neto
 offline_badge	OFFLINE
 optional_login_help	Valikuline sisselogimine (id + parool). Omanik komplekteerib üks kord; ainult kasutaja saab hiljem parooli muuta.
 or_unlock_login	Või avage sisselogimise ID + parool
-permission_preset	Töö (määrab ekraanid ja rahatoimingud)
+permission_preset	Töö
 preset_help_khaynjo	Kassapidaja: müüa. Haldaja: müüa + esemed + tühine/muuda.
 product_locked_khaynjo	Khaynjo
 product_only_khaynjo	See rakendus on ainult Khaynjo – restorani operatsioonisüsteem. Muud kaubanduspinnad tarnitakse eraldi Kumkaj toodetena.
@@ -961,10 +948,6 @@ pin_hint_paired	Lisa kuni sidumiseni – müümiseks avage lukustus
 pin_hint_pair_first	Lisakass – esmalt siduge poeseadmega
 unlock_to_continue	Jätkamiseks avage lukustus
 no_staff_yet	Töötajaid pole veel – avage omanikuna ja seejärel meeskonnana
-status_server_set_pin	Serverirežiim – määrake omanik PIN
-status_server_tills	Serverirežiim – liituda saavad lisakassad. Avage lukustus
-status_server_unlock	Serverirežiim – avage omanikuna lukustus
-status_client_unlock	Kliendirežiim – avage müümiseks
 icon_new_selected	Ikoon: uus fail on valitud – puudutage Salvesta bränd
 icon_custom	Ikoon: kohandatud koha märk
 icon_default	Ikoon: Kumkaj märk (vaikimisi) – valige kohandatud
@@ -1033,7 +1016,7 @@ book_kind_balance	Bilanss
 order_help	Üksuse lisamiseks puudutage seda.
 floor_help	Tellimuse vastuvõtmiseks või muutmiseks puudutage söögilauda. Värvid tasuta → istuvad → köök → valmis → söömine → arve → tasutud. Ootenimekiri, broneeringud ja söögilauad on allolevates jaotistes.
 kitchen_help	Köögipiletid (KOT), uusimad viimased. Start → Valmis → Valmis liigutab piletit edasi. Piletid ei näita kunagi hindu.
-kitchen_empty	Avatud pileteid pole. Siin kuvatakse KOT, mis saadeti tellimusest või söögisaalist.
+kitchen_empty	Avatud pileteid pole.
 add_a_table	Lisage söögilaud
 add_station_heading	Lisage köögijaam
 categories_help	Puudutage valikut Kasuta, et salvestada ülaltoodud üksus selle kategooria alla. Foto annab kategooriale pildi; ilma üheta näitab see oma initsiaale.
@@ -1131,7 +1114,6 @@ bill_format_help	Trükitakse igale arvele teie restorani nime alla. Eraldage rea
 bill_header_ph	Aadress | telefon
 fssai_ph	FSSAI tegevusloa nr. (India)
 bill_footer_ph	Jalus (nt aitäh, külastage uuesti)
-save_bill_format	Salvesta arve vorming
 reset_bill_format	Lähtestage vaikeseadetele
 bill_format_reset	Arve vorming lähtestati vaikeväärtusele
 reset_kot_format	Lähtestage vaikeseadetele
@@ -1201,13 +1183,11 @@ kot_copies_3	3
 kot_title_ph	Pealkiri (tühi = KOT – KÖÖGI KORD)
 kot_footer_ph	Köögimärkus (valikuline, hinnad puuduvad)
 kot_preview	Eelvaade
-save_kot_format	Salvestage vorming KOT
 test_kot_format	Proovi KOT
 test_kot_sent	Köögipileti eelvaade saadetud
 test_bill_format	Testarve
 test_bill_sent	Arve eelvaade saadetud
 test_print_no_printer	Selle töö jaoks pole printerit – valige sellel ekraanil üks printer
-kot_format_saved	KOT vorming salvestatud
 std_print	Arve trükisuurus
 std_print_help	Fondi suurus standardsete püstpaigutus- ja rõhtpaigutustega arvete jaoks OS-i / dokumendiprinterites (sisestage punktid — mitte Väike/Tavaline/Suur). Mõlemal suunal sama suurus. Köögilipikute suurused on vahekaardil KOT.
 std_size_s	Väike
@@ -1264,7 +1244,6 @@ new_items_head	Pole veel saadetud
 price_ph	Hind
 price_ph_gst_inside	Hind ({tax} kaasa arvatud)
 cancel_needs_table	Avage see tellimus söögisaali ekraanilt (söögilaud), et tühistada pärast seda, kui köök on selle kätte saanud – loendurid KOT jäävad piletile kuni makse sooritamiseni
-tax_rates_missing_hint	Nendel roogadel ei ole määra {tax} – menüüs määratud Maksumäär (hinnad sisaldavad juba {tax} punkti {tax} all)
 taxable_value	Maksustatav väärtus
 gst_inside_price_note	({tax} kaasa arvatud)
 start_with_template	Alustage meie menüümalliga
@@ -1318,9 +1297,7 @@ order_empty_pick	Telli tühjaks – puudutage roogade valimiseks ülalpool Lisa 
 add_dishes	Lisa nõud
 order_so_far	Sellel tellimusel: {n} · {total}
 no_dish_match	Ükski roog ei vasta “{q}”
-pick_dishes_help	Puudutage rooga selle lisamiseks · valige loendi kitsendamiseks kategooria
 pick_done	Valmis
-pick_done_dd	Valmis · {label}
 printer_route_mode	Kui selles kohas on mitu printerit
 printer_mode_first	Esiteks see töötab
 printer_mode_all	Trüki kõigile
@@ -1368,3 +1345,22 @@ recent_changes	Viimased muudatused
 lane_declared_label	Maksuarve
 lane_owner_label	Sularaha memo
 money_lane_bill	Arve: {lane}
+sel_copy	Kopeeri
+sel_select_all	Vali kõik
+sel_copied	Kopeeritud
+items_tmpl_khaynjo	Khaynjo toodete mall
+items_tmpl_named	{name} mall
+app_tmpl_named	{name} rakenduse mall
+private_code_ph	12-kohaline kood
+stamp_on	Tempel: failis
+pay_qr_on	Makse QR: failis
+pay_qr_off	Makse QR: puudub
+items_tmpl_heading	Kaubamallid
+items_tmpl_help	Toidud, kategooriad ja fotod teie menüü jaoks. Poe seaded ja töötajad jäävad samaks.
+public_tmpl_help	Algmenüüd, mida igaüks saab alla laadida. Internetti on vaja üks kord.
+private_tmpl_help	Kliendimenüüd, mis on lukustatud teie Khaynjo kontakti 12-kohalise koodiga.
+printers_screen_tip	Otsi loetleb printerid, mida see seade saab kasutada, ja salvestab need selle poe jaoks. Arveprinterid: Arve ja KOT vorming → Arve. Köök: Köök → Köögijaamad.
+printers_found_none	Printereid ei leitud.
+kot_copy_from	Kopeeri
+kot_copy_from_help	Kopeerib selle liigi iga rea suuruse, paksuse ja joonduse sellesse. See liik säilitab oma bänneri, kauba eesliite ja läbikriipsutuse. Säilitamiseks salvesta KOT-vorming.
+nav_loading	Laadimine…

@@ -366,26 +366,51 @@ fn confirm_line_action(&mut self, cx: &mut Cx) {
         Ok(msg)
     }
 
-    /// Print the open table's bill (table turns 🟢 on every device).
+    /// Print the bill: the open table's (table turns 🟢 on every device), or
+    /// an order with no table — Counter, Takeaway, Delivery — the same step
+    /// (owner, 2026-11-15): every dish with the kitchen first, printing again
+    /// needs the Reprint right, then Take payment.
     fn print_table_bill(&mut self, cx: &mut Cx) {
         self.commit_open_cart_line_fields(cx);
         let pin = self.ui.text_input(cx, ids!(move_pin_input)).text();
         let result = (|| -> Result<String, String> {
             let mut st = app_state().lock().unwrap();
-            let table_id = st
-                .selected_table_id
-                .clone()
-                .ok_or_else(|| "Open a table first".to_string())?;
             if st.cart.lines.iter().any(|l| !l.is_sent()) {
                 return Err("Send the new items to the kitchen first (Send KOT), then Print bill".into());
             }
-            let done = "Bill printed — take payment when the guests pay";
-            let acted = st.table_action(
-                net::RunningAction::PrintBill { table_id },
-                &pin,
-                done,
-                phone::Follow::BillText,
-            )?;
+            let table_id = st.selected_table_id.clone();
+            let (action, done, no_paper) = match table_id {
+                Some(table_id) => (
+                    net::RunningAction::PrintBill { table_id },
+                    "Bill printed — take payment when the guests pay",
+                    BILL_ON_TABLE_NO_PAPER,
+                ),
+                None => {
+                    if st.cart.is_empty() {
+                        return Err("Cart is empty".into());
+                    }
+                    if st.cart.lines.iter().any(|l| l.kot_id == QUEUED_KOT) {
+                        return Err("The kitchen ticket is still on its way to the shop device — Print bill once it is there".into());
+                    }
+                    let place = st.t(st.cart.order_type.as_str());
+                    (
+                        net::RunningAction::PrintCounterBill {
+                            lines: st.cart.to_bill_lines(),
+                            place,
+                            reprint: st.cart.bill_printed,
+                        },
+                        "Bill printed — take payment when the customer pays",
+                        BILL_PRINTED_NO_PAPER,
+                    )
+                }
+            };
+            let counter = matches!(action, net::RunningAction::PrintCounterBill { .. });
+            let acted = st.table_action(action, &pin, done, phone::Follow::BillText)?;
+            if counter {
+                // The order's bill is out, as a table's is: printing again
+                // is a reprint.
+                st.cart.bill_printed = true;
+            }
             // The counter's printer prints it; a tablet's copy printed there.
             let Acted::Here(text) = acted else {
                 return Ok("Printing the bill at the counter…".to_string());
@@ -409,10 +434,10 @@ fn confirm_line_action(&mut self, cx: &mut Cx) {
                 copies,
             ) {
                 Ok(share) if share.opened => Ok(done.to_string()),
-                // The table is on Bill either way; say the paper truth, and
+                // The order is on Bill either way; say the paper truth, and
                 // that printing again counts as a reprint.
-                Ok(_) => Ok(format!("{} · {}", net::NO_BILL_PRINTER, BILL_ON_TABLE_NO_PAPER)),
-                Err(e) => Ok(format!("Bill not printed ({e}) · {BILL_ON_TABLE_NO_PAPER}")),
+                Ok(_) => Ok(format!("{} · {}", net::NO_BILL_PRINTER, no_paper)),
+                Err(e) => Ok(format!("Bill not printed ({e}) · {no_paper}")),
             }
         })();
         match result {
@@ -634,7 +659,7 @@ fn confirm_line_action(&mut self, cx: &mut Cx) {
                     .replace("{c}", &st.money(Money((total - entered).max(0))))
             }
         };
-        self.ui.label(cx, ids!(buy_parts_status)).set_text(cx, &text);
+        self.ui.widget(cx, ids!(buy_parts_status)).set_text(cx, &text);
         self.ui.button(cx, ids!(buy_parts_add)).set_text(cx, &app_state().lock().unwrap().t("add_another_way"));
     }
 
@@ -1595,8 +1620,8 @@ fn confirm_line_action(&mut self, cx: &mut Cx) {
         Ok(msg)
     }
 
-    /// Kitchen dropdown face: `Kitchen`, `Kitchen · Tandoor`, or
-    /// `Done · …` while the checklist is open. Names exactly what the Send
+    /// Kitchen dropdown face: `Kitchen` or `Kitchen · Tandoor` (ComboField
+    /// draws ˅ / ˄ for open / closed). Names exactly what the Send
     /// button names ([`AppState::kot_send_destinations`]) — including
     /// "Kitchen (no station)" — and only when nothing is waiting to send,
     /// the kitchen the next dish will go to. It used to fall back to the
@@ -1621,18 +1646,14 @@ fn confirm_line_action(&mut self, cx: &mut Cx) {
                     names.push(name);
                 }
             }
-            let open = st.suggest_open == Some(SuggestField::KotStation);
             let label = if names.is_empty() {
                 st.t("kot_station_dd")
             } else {
                 st.t("kot_station_dd_n")
                     .replace("{stations}", &names.join(", "))
             };
-            let face = if open {
-                st.t("pick_done_dd").replace("{label}", &label)
-            } else {
-                label
-            };
+            // A dropdown face is its label only; ComboField draws ˅ / ˄.
+            let face = label;
             (face, ())
         };
         self.ui.button(cx, ids!(kot_station_dd)).set_text(cx, &face);

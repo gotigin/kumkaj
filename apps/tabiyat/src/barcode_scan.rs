@@ -32,11 +32,6 @@ pub fn decode_barcode_image(img: &DynamicImage) -> Result<DecodeHit, String> {
     if let Some(hit) = decode_recovery_strip(&gray) {
         return Ok(hit);
     }
-    // Best-effort: mid-row run-length patterns (may fail on arbitrary photos).
-    let y_mid = h / 3;
-    if let Some(hit) = scan_visual_awb_hint(&gray, y_mid) {
-        return Ok(hit);
-    }
     Err("No barcode found — use wedge scanner or a clearer photo".into())
 }
 
@@ -106,16 +101,6 @@ fn decode_recovery_strip(
         payload,
         format: "Tabiyat-Strip".into(),
     })
-}
-
-/// Look for a human-readable `*…*` pattern painted as wide dark/light modules
-/// in the top quiet zone of synthetic images (optional second channel).
-fn scan_visual_awb_hint(
-    gray: &image::ImageBuffer<Luma<u8>, Vec<u8>>,
-    _y: u32,
-) -> Option<DecodeHit> {
-    let _ = gray;
-    None
 }
 
 /// Build a synthetic barcode image for the given payload (tests + self-check).
@@ -206,7 +191,7 @@ mod tests {
 
     #[test]
     fn synthetic_round_trip() {
-        let payload = "AWB-2601";
+        let payload = "8901234567890";
         let png = synthetic_barcode_png(payload, 640, 80).unwrap();
         let hit = decode_barcode_bytes(&png).unwrap();
         assert_eq!(hit.payload, payload);

@@ -41,7 +41,7 @@ remove	Sil
 removed_items	Silinmiş məhsullar
 removed_help	Bərpa məhsulu menyuya olduğu kimi qaytarır — qiymət, şəkil və kateqoriya. Yemək rəfimiz heç vaxt silinmir, ona görə yeməyi həmişə yenidən əlavə etmək olar.
 restore_item	Bərpa et
-empty_catalog	Hələ yemək yoxdur. Menyunu açın, yemək əlavə edin (ad + qiymət), sonra sifariş qəbul edin.
+empty_catalog	Hələ yemək yoxdur.
 total	Cəmi
 cash	Nağd
 upi	UPI
@@ -103,23 +103,14 @@ bill_item_qty	Say
 bill_item_price	Qiymət
 bill_item_amount	Məbləğ
 bill_item_note	Yemək qeydi
-bill_item_col_gap	Sütun aralığı
 bill_item_col_order	Sütun sırası
 bill_item_col_sep	Sütun xətləri
-bill_item_gap_tight	Sıx
-bill_item_gap_comfort	Rahat
-bill_item_gap_wide	Geniş
-bill_item_num_width	Rəqəm sütunları
-bill_item_num_compact	Yığcam
-bill_item_num_comfort	Rahat
-bill_item_num_wide	Geniş
-bill_item_num_align	Rəqəmlərin düzümü
-bill_item_gap_em	Aralıq (em)
-bill_item_qty_min	Say min (em)
-bill_item_price_min	Qiymət min (em)
-bill_item_amount_min	Məbləğ min (em)
-kot_item_qty_width	Say sütunu
-kot_item_num_align	Sayın düzümü
+slip_columns	Sütunlar
+slip_col_width	En (mm)
+slip_col_start	Başlanğıc boşluğu (px)
+slip_col_end	Son boşluq (px)
+slip_col_align	Mətn düzləndirmə
+slip_columns_help	Hər sütunun eni onun başlanğıc və son boşluğunu da əhatə edir. Mətn öz sütunu daxilində sətirlərə bölünür; məzmun enindən kənarda qalan hissə həm kağızda, həm də önizləmədə kəsilir.
 bill_total_qty_label	Ümumi say etiketi
 bill_total_subtotal_label	Ara cəm etiketi
 bill_total_grand_label	Yekun etiketi
@@ -221,7 +212,6 @@ sidebar_order_saved	Yan panel sırası saxlandı
 sidebar_visibility_saved	Yan panel görünüşü saxlandı
 amounts_hide	Gizlət
 amounts_show	Göstər
-printers_none_hint	Əvvəlcə bu cihazda printer saxlayın, sonra onu Hesaba və ya mətbəxə əlavə edin
 counter	Kassa
 dine_in	Salonda
 takeaway	Paket
@@ -328,8 +318,6 @@ selected_language	Seçilib
 continue	Davam et
 this_device	BU CİHAZ
 device_use_q	Bu cihaz necə istifadə olunacaq?
-last_server_mode	Server idi — davam etmək üçün toxunun
-last_client_mode	Klient idi — davam etmək üçün toxunun
 choose_server	Server seçin
 choose_server_hint	Mövcud serveri açın və ya başqa biznes üçün yenisini yaradın.
 create_new_server	Yeni server yarat
@@ -391,7 +379,7 @@ attachments_last_expense	Əlavələr (son xərc)
 bank	Bank
 bank_in	Banka giriş
 bank_out	Bankdan çıxış
-bank_reconciliation	Bank üzləşdirməsi (bank çıxarışınızla işarələyin)
+bank_reconciliation	Bank üzləşdirməsi
 bank_to_till	Bank → kassa
 book_add_dish	Kitab — yemək / məhsul əlavə et
 book_opening_credit	Kitab — açılış krediti
@@ -744,7 +732,6 @@ station_print_pick_first	Əvvəlcə mətbəx postu seçin
 station_print_editing	«{name}» üçün printerlər redaktə olunur
 station_vps_dd	Bu postun printerləri
 station_vps_dd_n	{n} printer · dəyişmək üçün toxunun
-station_vps_empty	Hələ printer yoxdur — Ayarlar → Printerlər altında tapın
 bill_printers_dd	Hesabın printerləri
 bill_printers_dd_n	Hesab üçün {n} printer · dəyişmək üçün toxunun
 job_layout	Maket
@@ -889,7 +876,7 @@ net_word	Xalis
 offline_badge	OFLAYN
 optional_login_help	İstəyə bağlı giriş (id + parol). Sahib bir dəfə qoyur; parolu sonra yalnız istifadəçi dəyişə bilər.
 or_unlock_login	Və ya giriş id-si + parol ilə kilidi açın
-permission_preset	Vəzifə (ekranları və pul əməllərini qoyur)
+permission_preset	Vəzifə
 preset_help_khaynjo	Kassir: satış. Menecer: satış + məhsullar + etibarsız etmə/düzəliş.
 product_locked_khaynjo	Khaynjo
 product_only_khaynjo	Bu tətbiq yalnız Khaynjo-dur — restoran əməliyyat sistemi. Digər ticarət üzləri ayrı Kumkaj məhsulları kimi çıxır.
@@ -961,10 +948,6 @@ pin_hint_paired	Əlavə kassa qoşulub — satış üçün kilidi açın
 pin_hint_pair_first	Əlavə kassa — əvvəlcə mağaza cihazına qoşulun
 unlock_to_continue	Davam etmək üçün kilidi açın
 no_staff_yet	Hələ heyət yoxdur — Sahib kimi kilidi açın, sonra Heyət
-status_server_set_pin	Server rejimi — Sahib PIN-ini qoyun
-status_server_tills	Server rejimi — əlavə kassalar qoşula bilər. Kilidi açın
-status_server_unlock	Server rejimi — Sahib kimi kilidi açın
-status_client_unlock	Klient rejimi — satış üçün kilidi açın
 icon_new_selected	Nişan: yeni fayl seçildi — Brendi saxla düyməsinə toxunun
 icon_custom	Nişan: xüsusi məkan işarəsi
 icon_default	Nişan: Kumkaj işarəsi (susma) — xüsusi birini seçin
@@ -1033,7 +1016,7 @@ book_kind_balance	Balans hesabatı
 order_help	Əlavə etmək üçün məhsula toxunun.
 floor_help	Sifariş almaq və ya dəyişmək üçün masaya toxunun. Rənglər göstərir: boş → oturdulub → mətbəx → hazır → yeyilir → hesab → ödənilib. Gözləmə siyahısı, rezervasiyalar və masa əlavəsi aşağıdakı bölmələrdədir.
 kitchen_help	Mətbəx biletləri (KOT), ən yeni sonda. Başla → Hazır → Bitdi bileti irəli aparır. Biletlərdə qiymət göstərilmir.
-kitchen_empty	Açıq bilet yoxdur. Sifariş və ya Zaldan göndərilən KOT burada görünür.
+kitchen_empty	Açıq bilet yoxdur.
 add_a_table	Masa əlavə et
 add_station_heading	Mətbəx postu əlavə et
 categories_help	Yuxarıdakı məhsulu həmin kateqoriyaya salmaq üçün İstifadə et düyməsinə toxunun. Şəkil kateqoriyaya şəkil verir; olmayanda baş hərflərini göstərir.
@@ -1131,7 +1114,6 @@ bill_format_help	Hər hesabda restoranınızın adının altında çap olunur. S
 bill_header_ph	Ünvan | telefon
 fssai_ph	FSSAI lisenziya № (Hindistan)
 bill_footer_ph	Altlıq (məs. Təşəkkür edirik, yenə gəlin)
-save_bill_format	Hesab formatını saxla
 reset_bill_format	Susmaya qaytar
 bill_format_reset	Hesab formatı susmaya qaytarıldı
 reset_kot_format	Susmaya qaytar
@@ -1201,13 +1183,11 @@ kot_copies_3	3
 kot_title_ph	Başlıq (boş = KOT - KITCHEN ORDER)
 kot_footer_ph	Mətbəx qeydi (istəyə bağlı, qiymətsiz)
 kot_preview	Önizləmə
-save_kot_format	KOT formatını saxla
 test_kot_format	Sınaq KOT
 test_kot_sent	Mətbəx bileti önizləməsi göndərildi
 test_bill_format	Sınaq hesab
 test_bill_sent	Hesab önizləməsi göndərildi
 test_print_no_printer	Bu iş üçün printer yoxdur — bu ekranda birini seçin
-kot_format_saved	KOT formatı saxlandı
 std_print	Hesab çap ölçüsü
 std_print_help	ƏS / sənəd printerlərində Standart Şaquli və Üfüqi hesab işləri üçün şrift ölçüsü (punkt yazın — Kiçik/Normal/Böyük yox). Hər iki istiqamətdə eyni ölçü. Mətbəx slipinin ölçüləri KOT vərəqindədir.
 std_size_s	Kiçik
@@ -1264,7 +1244,6 @@ new_items_head	Hələ göndərilməyib
 price_ph	Qiymət
 price_ph_gst_inside	Qiymət ({tax} daxil)
 cancel_needs_table	Mətbəx aldıqdan sonra ləğv etmək üçün bu sifarişi Zaldan (masadan) açın — kassa KOT-ları ödəniş alınana qədər biletdə qalır
-tax_rates_missing_hint	Bu yeməklərdə {tax} dərəcəsi yoxdur — Menyuda Vergi dərəcəsini qoyun (qiymətlər {tax} daxil altında artıq {tax} ehtiva edir)
 taxable_value	Vergiyə cəlbedilən dəyər
 gst_inside_price_note	({tax} daxil)
 start_with_template	Menyumuzun şablonu ilə başla
@@ -1318,9 +1297,7 @@ order_empty_pick	Sifariş boşdur — yemək seçmək üçün yuxarıda Yemək �
 add_dishes	Yemək əlavə et
 order_so_far	Bu sifarişdə: {n} · {total}
 no_dish_match	«{q}» ilə uyğun yemək yoxdur
-pick_dishes_help	Əlavə etmək üçün yeməyə toxunun · siyahını daraltmaq üçün kateqoriya seçin
 pick_done	Bitdi
-pick_done_dd	Bitdi · {label}
 printer_route_mode	Bu yerdə bir neçə printer olsa
 printer_mode_first	Birinci işləyən
 printer_mode_all	Hamısına çap et
@@ -1368,3 +1345,22 @@ recent_changes	Son dəyişikliklər
 lane_declared_label	Vergi fakturası
 lane_owner_label	Nağd qəbz
 money_lane_bill	Hesab: {lane}
+sel_copy	Köçür
+sel_select_all	Hamısını seç
+sel_copied	Köçürüldü
+items_tmpl_khaynjo	Khaynjo məhsul şablonu
+items_tmpl_named	{name} şablonu
+app_tmpl_named	{name} tətbiq şablonu
+private_code_ph	12 rəqəmli kod
+stamp_on	Möhür: faylda
+pay_qr_on	Ödəniş QR: faylda
+pay_qr_off	Ödəniş QR: yoxdur
+items_tmpl_heading	Məhsul şablonları
+items_tmpl_help	Menyunuz üçün yeməklər, kateqoriyalar və şəkillər. Mağaza ayarları və işçilər olduğu kimi qalır.
+public_tmpl_help	Hər kəsin endirə biləcəyi başlanğıc menyular. Bir dəfə internet lazımdır.
+private_tmpl_help	Khaynjo əlaqənizdən gələn 12 rəqəmli kodla qorunan müştəri menyuları.
+printers_screen_tip	Axtar bu cihazın istifadə edə biləcəyi printerləri göstərir və bu mağaza üçün saxlayır. Hesab printerləri: Hesab və KOT formatı → Hesab. Mətbəx: Mətbəx → Mətbəx stansiyaları.
+printers_found_none	Printer tapılmadı.
+kot_copy_from	Buradan kopyala
+kot_copy_from_help	O növün hər sətrinin ölçüsünü, qalınlığını və düzülüşünü bu növə köçürür. Bu növ öz bannerini, məhsul prefiksini və üstündən xətti saxlayır. Saxlamaq üçün KOT formatını yadda saxlayın.
+nav_loading	Yüklənir…

@@ -39,7 +39,7 @@ adding_item	ᱢᱤᱫ ᱱᱟᱶᱟ ᱫᱚᱨ ᱥᱮᱞᱮᱫ
 editing_item	ᱥᱟᱥᱟᱯᱲᱟᱣ
 save	ᱥᱟᱸᱪᱟᱣ ᱢᱮ
 remove	ᱚᱪᱚᱜᱽ ᱢᱮ
-empty_catalog	ᱱᱤᱛ ᱦᱚᱸ ᱫᱚᱨ ᱵᱟᱹᱱᱩᱜᱼᱟ ᱾ ᱫᱚᱨ ᱟᱨ ᱥᱮᱵᱟ ᱠᱚ ᱡᱷᱤᱡᱽ ᱢᱮ, ᱢᱤᱫ ᱥᱮᱞᱮᱫ ᱢᱮ (ᱧᱩᱛᱩᱢ + ᱜᱚᱱᱚᱝ, ᱭᱩᱱᱤᱴ ᱠᱮᱡᱤ), ᱚᱱᱟ ᱛᱟᱭᱚᱢ ᱵᱩᱠᱤᱝ ᱢᱮ ᱾
+empty_catalog	ᱱᱤᱛ ᱦᱚᱸ ᱫᱚᱨ ᱵᱟᱹᱱᱩᱜᱼᱟ ᱾
 counter_sale	ᱠᱟᱣᱩᱱᱴᱟᱨ ᱵᱩᱠᱤᱝ
 total	ᱢᱩᱴ
 cash	ᱴᱟᱠᱟ
@@ -171,8 +171,6 @@ selected_language	ᱵᱟᱪᱷᱟᱣ ᱟᱠᱟᱱᱟ
 continue	ᱞᱟᱦᱟᱜ ᱢᱮ
 this_device	ᱱᱚᱶᱟ ᱥᱟᱫᱷᱚᱱ
 device_use_q	ᱱᱚᱣᱟ ᱥᱟᱫᱷᱚᱱ ᱪᱮᱫ ᱞᱮᱠᱟ ᱵᱮᱵᱷᱟᱨᱚᱜᱼᱟ?
-last_server_mode	ᱥᱮᱨᱵᱷᱟᱨ ᱛᱟᱦᱮᱸ ᱠᱟᱱᱟ — ᱞᱟᱦᱟᱜ ᱞᱟᱹᱜᱤᱫ ᱴᱮᱯ ᱢᱮ
-last_client_mode	ᱪᱮᱫ ᱠᱞᱟᱭᱮᱱᱴ ᱛᱟᱦᱮᱸ ᱠᱟᱱᱟᱭ — ᱞᱟᱦᱟᱜ ᱞᱟᱹᱜᱤᱫ ᱴᱮᱯ ᱢᱮ
 choose_server	ᱢᱤᱫ ᱥᱮᱨᱵᱷᱟᱨ ᱵᱟᱪᱷᱟᱣ ᱢᱮ
 choose_server_hint	ᱢᱮᱱᱟᱜ ᱥᱮᱨᱵᱷᱟᱨ ᱡᱷᱤᱡᱽ ᱢᱮ, ᱟᱨᱵᱟᱝ ᱮᱴᱟᱜ ᱵᱮᱯᱟᱨ ᱞᱟᱹᱜᱤᱫ ᱢᱤᱫ ᱵᱮᱱᱟᱣ ᱢᱮ ᱾
 create_new_server	ᱱᱟᱶᱟ ᱥᱮᱨᱵᱷᱟᱨ ᱵᱮᱱᱟᱣ ᱢᱮ
@@ -501,8 +499,6 @@ job_layout	ᱞᱮᱭᱟᱣᱩᱴ
 job_delivery	ᱪᱮᱫ ᱞᱮᱠᱟ ᱪᱟᱹᱠᱨᱤ ᱠᱚ ᱠᱩᱞ ᱟᱠᱟᱱᱟ
 job_size	ᱯᱷᱚᱱᱴ ᱥᱟᱭᱤᱡᱽ
 job_size_ph	ᱡᱮᱞᱠᱟ 18, 20, 26...
-save_receipt_format	ᱨᱟᱹᱥᱤᱫ ᱨᱩᱯ ᱥᱟᱧᱪᱟᱣ ᱢᱮ
-save_label_format	ᱞᱮᱵᱮᱞ ᱨᱩᱯ ᱥᱟᱧᱪᱟᱣ ᱢᱮ
 test_receipt_format	ᱵᱤᱱᱤᱰ ᱨᱟᱹᱥᱤᱫ
 test_label_format	ᱵᱤᱱᱤᱰ ᱞᱮᱵᱮᱞ
 test_receipt_sent	ᱥᱮᱢᱯᱩᱞ ᱨᱟᱹᱥᱤᱫ ᱠᱩᱞ ᱦᱩᱭ ᱮᱱᱟ
@@ -610,7 +606,7 @@ units_heading	ᱭᱩᱱᱤᱴ
 booking_measures	ᱵᱩᱠᱤᱝ ᱡᱚᱠᱷᱟ
 drawer_count	ᱰᱨᱚᱭᱟᱨ ᱞᱮᱠᱷᱟ (ᱚᱯᱥᱚᱱᱟᱞ)
 spreadsheet_csv	ᱥᱯᱨᱮᱰᱥᱤᱴ (ᱥᱤ ᱮᱥ ᱵᱤ)
-bank_reconciliation	ᱵᱮᱝᱠ ᱥᱩᱯᱩᱨ (ᱟᱢᱟᱜ ᱵᱮᱝᱠ ᱥᱴᱮᱴᱢᱮᱱᱴ ᱨᱮ ᱴᱤᱠ ᱚᱯᱷ)
+bank_reconciliation	ᱵᱮᱝᱠ ᱥᱩᱯᱩᱨ
 book_add_product	ᱯᱚᱛᱚᱵ — ᱯᱨᱚᱰᱟᱠᱴ / ᱫᱚᱨ ᱥᱮᱞᱮᱫ ᱢᱮ
 book_opening_credit	ᱯᱚᱛᱚᱵ — ᱠᱨᱮᱰᱤᱴ ᱡᱷᱤᱡᱽ
 account_kind	ᱮᱠᱟᱣᱩᱱᱴ ᱞᱮᱠᱟᱱ (ᱢᱤᱫ ᱴᱮᱯ)
@@ -650,7 +646,7 @@ net_word	ᱱᱮᱴ
 offline_badge	ᱚᱯᱷᱞᱟᱭᱤᱱ
 optional_login_help	ᱚᱯᱥᱚᱱᱟᱞ ᱞᱚᱜᱤᱱ (ᱟᱭᱤ ᱰᱤ + ᱯᱟᱥᱣᱟᱨᱰ)᱾ ᱢᱟᱞᱤᱠ ᱢᱤᱫ ᱫᱷᱟᱣ ᱥᱮᱴ ᱮᱫᱟᱭ; ᱥᱩᱢᱩᱝ ᱵᱮᱵᱷᱟᱨᱤᱭᱟᱹ ᱜᱮ ᱛᱟᱭᱚᱢ ᱛᱮ ᱯᱟᱥᱣᱟᱨᱰ ᱵᱚᱫᱚᱞ ᱫᱟᱲᱮᱭᱟᱜᱼᱟᱭ᱾
 or_unlock_login	ᱟᱨ ᱵᱟᱝ ᱞᱚᱜᱤᱱ ᱟᱭᱤ ᱰᱤ + ᱯᱟᱥᱣᱟᱨᱰ ᱥᱟᱶ ᱚᱱᱞᱚᱠ
-permission_preset	ᱱᱩᱠᱨᱤ (ᱥᱠᱨᱤᱱ ᱟᱨ ᱦᱚᱠ ᱥᱮᱴ)
+permission_preset	ᱱᱩᱠᱨᱤ
 preset_help_moklanjo	ᱠᱮᱥᱤᱭᱟᱨ: ᱟᱠᱨᱤᱧ ᱢᱮ᱾ ᱢᱮᱱᱮᱡᱟᱨ: ᱟᱠᱨᱤᱧ + ᱡᱤᱱᱤᱥ + ᱵᱟᱝ/ᱥᱚᱫᱚᱨ᱾
 product_locked_moklanjo	ᱢᱚᱠᱞᱟᱱᱡᱚ
 product_only_moklanjo	ᱱᱚᱣᱟ ᱮᱯ ᱫᱚ ᱥᱩᱢᱩᱝ ᱢᱚᱠᱞᱟᱱᱡᱚ ᱠᱟᱱᱟ — ᱯᱚᱛᱚᱵ + ᱵᱩᱠᱤᱝ ᱰᱮᱥᱠ ᱾ ᱮᱴᱟᱜ ᱵᱮᱯᱟᱨ ᱠᱚ ᱫᱚ ᱛᱟᱭᱚᱢ ᱛᱮ ᱡᱩᱫᱟᱹ ᱡᱩᱫᱟᱹ ᱡᱤᱱᱤᱥ ᱞᱮᱠᱟ ᱡᱟᱦᱟᱡᱽ ᱨᱮᱭᱟᱜ ᱥᱟᱢᱟᱝ ᱫᱟᱯᱨᱟᱢ ᱦᱩᱭᱩᱜ ᱛᱟᱠᱚᱣᱟ ᱾
@@ -698,10 +694,6 @@ pin_hint_paired	ᱵᱟᱹᱲᱛᱤ ᱡᱚᱲᱟᱣ ᱦᱟᱹᱵᱤᱡ — ᱟᱠ
 pin_hint_pair_first	ᱵᱟᱹᱲᱛᱤ ᱴᱤᱞ — ᱯᱩᱭᱞᱩ ᱫᱚᱠᱟᱱ ᱥᱟᱫᱷᱚᱱ ᱥᱟᱶ ᱡᱚᱲᱟᱣ ᱢᱮ
 unlock_to_continue	ᱞᱟᱦᱟᱜ ᱞᱟᱹᱜᱤᱫ ᱠᱩᱞᱩᱯ ᱡᱷᱤᱡᱽ ᱢᱮ
 no_staff_yet	ᱱᱤᱛ ᱦᱚᱸ ᱪᱮᱫ ᱠᱟᱹᱢᱤᱭᱟᱹ ᱵᱟᱹᱱᱩᱜ ᱠᱚᱣᱟ — ᱢᱟᱞᱤᱠ ᱞᱮᱠᱟᱛᱮ ᱚᱱᱞᱚᱠ ᱢᱮ, ᱛᱚᱵᱮ ᱫᱚᱞ
-status_server_set_pin	ᱥᱮᱨᱵᱷᱟᱨ ᱢᱳᱰ — ᱢᱟᱞᱤᱠ ᱯᱤᱱ ᱥᱮᱴ ᱢᱮ
-status_server_tills	ᱥᱮᱨᱵᱷᱟᱨ ᱢᱳᱰ — ᱵᱟᱹᱲᱛᱤ ᱴᱤᱞ ᱠᱚ ᱡᱚᱲᱟᱣ ᱫᱟᱲᱮᱭᱟᱜᱼᱟ ᱾ ᱠᱩᱞᱩᱯ ᱡᱷᱤᱡᱽ ᱢᱮ
-status_server_unlock	ᱥᱮᱨᱵᱷᱟᱨ ᱢᱳᱰ — ᱢᱟᱞᱤᱠ ᱞᱮᱠᱟᱛᱮ ᱡᱷᱤᱡᱽ ᱢᱮ
-status_client_unlock	ᱠᱞᱟᱭᱮᱱᱴ ᱢᱳᱰ — ᱟᱠᱨᱤᱧ ᱞᱟᱹᱜᱤᱫ ᱚᱱᱞᱚᱠ ᱩᱱᱩᱫᱩᱜ
 icon_new_selected	ᱪᱤᱱᱦᱟᱹ: ᱱᱟᱶᱟ ᱨᱮᱫ ᱵᱟᱪᱷᱟᱣ ᱮᱱᱟ — ᱵᱨᱟᱱᱰ ᱥᱟᱧᱪᱟᱣ ᱨᱮ ᱴᱮᱯ ᱢᱮ
 icon_custom	ᱪᱤᱱᱦᱟᱹ: ᱟᱢᱟᱜ ᱡᱟᱭᱜᱟ ᱪᱤᱱᱦᱟᱹ
 icon_default	ᱟᱭᱠᱚᱱ: ᱠᱩᱢᱠᱟᱡᱽ ᱪᱤᱱᱦᱟᱹ (ᱰᱤᱯᱷᱚᱞᱴ) — ᱢᱤᱫ ᱠᱟᱥᱴᱚᱢ ᱵᱟᱪᱷᱟᱣ ᱢᱮ
@@ -834,3 +826,7 @@ role_help_supplier	ᱵᱷᱩᱢᱤᱠᱟ: ᱥᱟᱨᱵᱦᱟᱨᱤᱡ — ᱠᱤ
 lane_declared_label	ᱮᱠᱟᱣᱩᱱᱴ ᱵᱩᱠᱤᱝ
 lane_owner_label	ᱴᱟᱠᱟ ᱵᱩᱠᱤᱝ
 money_lane_bill	ᱵᱤᱞ: {lane}
+sel_copy	ᱱᱚᱠᱚᱞ ᱢᱮ
+sel_select_all	ᱡᱚᱛᱚ ᱵᱟᱪᱷᱟᱣ ᱢᱮ
+sel_copied	ᱱᱚᱠᱚᱞ ᱮᱱᱟ
+nav_loading	ᱞᱚᱰ ᱦᱩᱭ ᱠᱟᱱᱟ…

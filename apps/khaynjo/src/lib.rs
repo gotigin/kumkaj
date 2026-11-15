@@ -37,6 +37,8 @@ pub mod snack;
 pub mod startup;
 pub mod store;
 pub mod suggest;
+#[cfg(not(target_os = "android"))]
+pub mod template_cli;
 pub mod thumbs;
 pub mod uninstall_wipe;
 pub mod upi_qr;

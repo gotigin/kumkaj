@@ -39,7 +39,7 @@ adding_item	'N Nuwe tarief by Voeg
 editing_item	Redigeer
 save	Stoor
 remove	Verwyder
-empty_catalog	Nog geen tariewe nie. Maak Tariewe & dienste oop, voeg een by (naam + prys, eenheid kg), dan Bespreking.
+empty_catalog	Nog geen tariewe nie.
 counter_sale	Konto beenaming
 total	Totaal
 cash	Kontant
@@ -171,8 +171,6 @@ selected_language	Geselekteer
 continue	Gaan voort
 this_device	HIERDIE TOESTEL
 device_use_q	Hoe sal hierdie toestel gebruik word?
-last_server_mode	Was Bediener – tik om voort te gaan
-last_client_mode	Was Kliënt – tik om voort te gaan
 choose_server	Kies 'n bediener
 choose_server_hint	Open 'n bestaande bediener of skep een vir 'n ander besigheid.
 create_new_server	Skep nuwe bediener
@@ -501,8 +499,6 @@ job_layout	Opstelling
 job_delivery	Hoe die taak gestuur word
 job_size	Lettergrootte
 job_size_ph	bv. 18, 20, 26…
-save_receipt_format	Save receipt format
-save_label_format	Save label format
 test_receipt_format	Test receipt
 test_label_format	Test label
 test_receipt_sent	Sample receipt sent
@@ -610,7 +606,7 @@ units_heading	Eenhede
 booking_measures	Besprekingsmaatreëls
 drawer_count	Lade-aantal (opsioneel)
 spreadsheet_csv	Spreadsheets (CSV)
-bank_reconciliation	Bankversoenlikheid (aankruis teenoor jou bankafschrift)
+bank_reconciliation	Bankversoenlikheid
 book_add_product	Bespreek — voeg produk / tarief by
 book_opening_credit	Boeking — oopende krediet
 account_kind	Rekeningsoort (tjop een)
@@ -650,7 +646,7 @@ net_word	Netto
 offline_badge	AFKANTING
 optional_login_help	Opsionele aanmelding (ID + wagwoord). Eienaar stel een keer; slegs die gebruiker kan later wagwoord verander.
 or_unlock_login	Of ontgrendel met aanmeldings-ID en wagwoord
-permission_preset	Werk (stel skerms en regte in)
+permission_preset	Werk
 preset_help_moklanjo	Kasier: verkoop. Bestuurder: verkoop + items + leegmaak/bewerk.
 product_locked_moklanjo	Moklanjo
 product_only_moklanjo	This app is Moklanjo only — books + booking desk. Other trade faces ship as separate products later.
@@ -698,10 +694,6 @@ pin_hint_paired	Ekstra kas gekoppel — ontsluit om te verkoop
 pin_hint_pair_first	Ekstra kas — paar eers met die winkeltoestel
 unlock_to_continue	Ontsluit om voort te gaan
 no_staff_yet	Nog personeel nie – ontsluit as Eienaar, dan span
-status_server_set_pin	Bedienermodus – stel Eienaarpin in
-status_server_tills	Bedienermodus – ekstra kasse kan aansluit. Ontsluit
-status_server_unlock	Bedienermodus – ontsluit as Eienaar
-status_client_unlock	Kliëntmodus – ontsluit om te verkoop
 icon_new_selected	Ikon: nuwe lêer gekies – tik Opslaan handelsmerk
 icon_custom	Ikon: aangepaste besigheidsmerk
 icon_default	Ikon: Kumkaj-merk (standaard) – kies 'n aangepaste een
@@ -834,3 +826,7 @@ role_help_supplier	Role: Supplier — AP for purchases.
 lane_declared_label	Rekeningbespreking
 lane_owner_label	Kontantbespreking
 money_lane_bill	Faktuur: {lane}
+sel_copy	Kopieer
+sel_select_all	Kies alles
+sel_copied	Gekopieer
+nav_loading	Laai tans…

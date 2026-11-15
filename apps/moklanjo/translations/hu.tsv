@@ -39,7 +39,7 @@ adding_item	Új árfolyam hozzáadása
 editing_item	Szerkesztés
 save	Mentés
 remove	Távolítsa el
-empty_catalog	Még nincsenek díjak. Nyissa meg az Árak és szolgáltatások lehetőséget, adjon hozzá egyet (név + ár, egység kg), majd a Foglalás.
+empty_catalog	Még nincsenek díjak.
 counter_sale	Pult foglalás
 total	Összesen
 cash	Készpénz
@@ -171,8 +171,6 @@ selected_language	Kiválasztva
 continue	Folytatás
 this_device	EZ A KÉSZÜLÉK
 device_use_q	Hogyan fogják használni ezt a készüléket?
-last_server_mode	Volt szerver – érintse meg a folytatáshoz
-last_client_mode	Ügyfél volt – érintse meg a folytatáshoz
 choose_server	Válasszon egy szervert
 choose_server_hint	Nyisson meg egy meglévő szervert, vagy hozzon létre egyet egy másik vállalkozás számára.
 create_new_server	Új szerver létrehozása
@@ -501,8 +499,6 @@ job_layout	Elrendezés
 job_delivery	Hogyan küldik el a munkát
 job_size	Betűméret
 job_size_ph	például 18, 20, 26…
-save_receipt_format	Mentse a nyugta formátumát
-save_label_format	Címkeformátum mentése
 test_receipt_format	Teszt nyugta
 test_label_format	Tesztcímke
 test_receipt_sent	Nyugtaminta elküldve
@@ -610,7 +606,7 @@ units_heading	Egységek
 booking_measures	Foglalási intézkedések
 drawer_count	Fiókok száma (opcionális)
 spreadsheet_csv	Táblázat (CSV)
-bank_reconciliation	Banki egyeztetés (pipálja ki a bankszámlakivonaton)
+bank_reconciliation	Banki egyeztetés
 book_add_product	Foglaljon – termék hozzáadása/értéke
 book_opening_credit	Könyv — nyitó kredit
 account_kind	Számla típusa (koppintson egyet)
@@ -650,7 +646,7 @@ net_word	Nettó
 offline_badge	OFFLINE
 optional_login_help	Opcionális bejelentkezés (azonosító + jelszó). A tulajdonos egyszer állítja be; csak a felhasználó módosíthatja később a jelszavát.
 or_unlock_login	Vagy oldja fel a bejelentkezési azonosítóval + jelszóval
-permission_preset	Munka (beállítja a képernyőket és a jogokat)
+permission_preset	Munka
 preset_help_moklanjo	Pénztáros: eladó. Menedzser: eladás + tételek + érvénytelenség/módosítás.
 product_locked_moklanjo	Moklanjo
 product_only_moklanjo	Ez az alkalmazás csak Moklanjo - könyvek + foglalási pult. Az egyéb kereskedelmi arculatokat később külön termékként szállítjuk.
@@ -698,10 +694,6 @@ pin_hint_paired	Extra ig párosítva – oldja fel az eladáshoz
 pin_hint_pair_first	Extra till — először párosítsa a bolti eszközt
 unlock_to_continue	A folytatáshoz oldja fel a zárolást
 no_staff_yet	Még nincs személyzet – oldja fel tulajdonosként, majd csapatként
-status_server_set_pin	Szerver mód — a tulajdonos beállítása PIN
-status_server_tills	Szerver mód – extra kasszák csatlakozhatnak. Oldja fel
-status_server_unlock	Szerver mód – feloldása tulajdonosként
-status_client_unlock	Kliens mód – a zárolás feloldása az eladáshoz
 icon_new_selected	Ikon: új fájl kiválasztva – érintse meg a Márka mentése lehetőséget
 icon_custom	Ikon: egyedi helyszín jelölés
 icon_default	Ikon: Kumkaj jel (alapértelmezett) – válasszon egy egyénit
@@ -834,3 +826,7 @@ role_help_supplier	Szerep: Szállító – AP a vásárlásokhoz.
 lane_declared_label	Számlafoglalás
 lane_owner_label	Készpénzes foglalás
 money_lane_bill	Számla: {lane}
+sel_copy	Másolás
+sel_select_all	Az összes kijelölése
+sel_copied	Másolva
+nav_loading	Betöltés…

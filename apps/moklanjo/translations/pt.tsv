@@ -39,7 +39,7 @@ adding_item	A adicionar tarifa
 editing_item	A editar
 save	Guardar
 remove	Remover
-empty_catalog	Ainda sem tarifas. Abra Tarifas e serviços, adicione uma (nome + preço, unidade kg), depois Envios.
+empty_catalog	Ainda sem tarifas.
 counter_sale	Envio no balcão
 total	Total
 cash	Dinheiro
@@ -171,8 +171,6 @@ selected_language	Selecionado
 continue	Continuar
 this_device	ESTE DISPOSITIVO
 device_use_q	Como este dispositivo será usado?
-last_server_mode	Era servidor — toque para continuar
-last_client_mode	Era cliente — toque para continuar
 choose_server	Escolher um servidor
 choose_server_hint	Este dispositivo já tem servidores. Abra um ou crie um novo servidor para outro negócio.
 create_new_server	Criar novo servidor
@@ -501,8 +499,6 @@ job_layout	Layout
 job_delivery	Como o trabalho é enviado
 job_size	Tamanho da fonte
 job_size_ph	ex. 18, 20, 26…
-save_receipt_format	Salvar formato de recibo
-save_label_format	Salvar formato de etiqueta
 test_receipt_format	Recibo de teste
 test_label_format	Etiqueta de teste
 test_receipt_sent	Exemplo de recibo enviado
@@ -610,7 +606,7 @@ units_heading	Unidades
 booking_measures	Medidas do envio
 drawer_count	Contagem da gaveta (opcional)
 spreadsheet_csv	Folha de cálculo (CSV)
-bank_reconciliation	Conciliação bancária (marque com o seu extrato)
+bank_reconciliation	Conciliação bancária
 book_add_product	Envio — adicionar produto / tarifa
 book_opening_credit	Envio — crédito inicial
 account_kind	Tipo de conta (toque num)
@@ -650,7 +646,7 @@ net_word	Líquido
 offline_badge	OFFLINE
 optional_login_help	Acesso opcional (id + senha). O dono define uma vez; depois só o utilizador pode alterar a senha.
 or_unlock_login	Ou desbloquear com id de acesso + senha
-permission_preset	Trabalho (define telas e direitos)
+permission_preset	Trabalho
 preset_help_moklanjo	Caixa: vender. Gerente: vender + itens + anular/alterar.
 product_locked_moklanjo	Moklanjo
 product_only_moklanjo	Este app é só Moklanjo: livros e balcão de envios. Outros ramos terão produtos próprios depois.
@@ -698,10 +694,6 @@ pin_hint_paired	Caixa extra emparelhada — desbloquear para vender
 pin_hint_pair_first	Caixa extra — emparelhe primeiro com o dispositivo loja
 unlock_to_continue	Desbloquear para continuar
 no_staff_yet	Ainda sem funcionários — desbloquear como Dono, depois Equipa
-status_server_set_pin	Modo servidor — definir PIN do dono
-status_server_tills	Modo servidor — caixas extra podem juntar-se. Desbloquear
-status_server_unlock	Modo servidor — desbloquear como Dono
-status_client_unlock	Modo cliente — desbloquear para vender
 icon_new_selected	Ícone: novo arquivo selecionado — toque em Salvar marca
 icon_custom	Ícone: marca própria da loja
 icon_default	Ícone: marca Kumkaj (padrão) — escolha a sua
@@ -834,3 +826,7 @@ role_help_supplier	Função: Fornecedor — AP para compras.
 lane_declared_label	Reserva de conta
 lane_owner_label	Reserva em dinheiro
 money_lane_bill	Conta: {lane}
+sel_copy	Copiar
+sel_select_all	Selecionar tudo
+sel_copied	Copiado
+nav_loading	Carregando…

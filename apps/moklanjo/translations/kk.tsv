@@ -39,7 +39,7 @@ adding_item	Жаңа тариф қосу
 editing_item	Өңдеу
 save	Сақтау
 remove	Алып тастау
-empty_catalog	Әлі тарифтер жоқ. Тарифтер мен қызметтерді ашыңыз, біреуін қосыңыз (атауы + баға, кг бірлік), содан кейін Брондау.
+empty_catalog	Әлі тарифтер жоқ.
 counter_sale	Қарсы брондау
 total	Барлығы
 cash	Қолма-қол
@@ -171,8 +171,6 @@ selected_language	Таңдалған
 continue	Жалғастыру
 this_device	ОСЫ ҚҰРЫЛҒЫ
 device_use_q	Бұл құрылғы қалай қолданылады?
-last_server_mode	Сервер еді — жалғастыру үшін түртіңіз
-last_client_mode	Клиент еді — жалғастыру үшін түртіңіз
 choose_server	Сервер таңдаңыз
 choose_server_hint	Бар серверді ашыңыз немесе басқа бизнеске жаңасын жасаңыз.
 create_new_server	Жаңа сервер жасау
@@ -501,8 +499,6 @@ job_layout	Орналасу
 job_delivery	Тапсырма қалай жіберіледі
 job_size	Қаріп өлшемі
 job_size_ph	мыс. 18, 20, 26…
-save_receipt_format	Түбіртек пішімін сақтау
-save_label_format	Белгі пішімін сақтау
 test_receipt_format	Сынақ түбіртегі
 test_label_format	Сынақ белгісі
 test_receipt_sent	Түбіртек үлгісі жіберілді
@@ -610,7 +606,7 @@ units_heading	Өлшем бірліктері
 booking_measures	Брондау шаралары
 drawer_count	Жәшік санауы (міндетті емес)
 spreadsheet_csv	Кесте (CSV)
-bank_reconciliation	Банк салыстыруы (банк үзіндісіне қарсы белгілеңіз)
+bank_reconciliation	Банк салыстыруы
 book_add_product	Брондау — өнімді / бағаны қосыңыз
 book_opening_credit	Кітап — бастапқы несие
 account_kind	Шот түрі (біреуін түртіңіз)
@@ -650,7 +646,7 @@ net_word	Таза
 offline_badge	ОФЛАЙН
 optional_login_help	Міндетті емес кіру (id + құпиясөз). Иесі бір рет қояды; құпиясөзді кейін тек пайдаланушы өзгерте алады.
 or_unlock_login	Немесе кіру id + құпиясөзбен құлыпты ашыңыз
-permission_preset	Тапсырма (экрандар мен құқықтарды орнатады)
+permission_preset	Тапсырма
 preset_help_moklanjo	Кассир: сатады. Басқарушы: сату + тауар + күшін жою/түзету.
 product_locked_moklanjo	Мокланжо
 product_only_moklanjo	Бұл қолданба тек Мокланжо — кітаптар + брондау үстелі. Басқа сауда беттері кейінірек бөлек өнімдер ретінде жеткізіледі.
@@ -698,10 +694,6 @@ pin_hint_paired	Қосымша касса жұпталған — сату үші
 pin_hint_pair_first	Қосымша касса — алдымен дүкен құрылғысымен жұптаңыз
 unlock_to_continue	Жалғастыру үшін құлыпты ашыңыз
 no_staff_yet	Әлі қызметкер жоқ — Иесі болып құлыпты ашып, содан Топ
-status_server_set_pin	Сервер режимі — Иесінің PIN қойыңыз
-status_server_tills	Сервер режимі — қосымша кассалар қосыла алады. Құлыпты ашыңыз
-status_server_unlock	Сервер режимі — Иесі болып құлыпты ашыңыз
-status_client_unlock	Клиент режимі — сату үшін құлыпты ашыңыз
 icon_new_selected	Белгіше: жаңа файл таңдалды — Брендті сақтауды түртіңіз
 icon_custom	Белгіше: өз орнының белгісі
 icon_default	Белгіше: Kumkaj белгісі (әдепкі) — өзін таңдаңыз
@@ -834,3 +826,7 @@ role_help_supplier	Рөл: Жеткізуші — сатып алулар үші
 lane_declared_label	Есептік жазбаны брондау
 lane_owner_label	Қолма-қол ақшаны брондау
 money_lane_bill	Шот: {lane}
+sel_copy	Көшіру
+sel_select_all	Барлығын таңдау
+sel_copied	Көшірілді
+nav_loading	Жүктелуде…

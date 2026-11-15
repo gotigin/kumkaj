@@ -39,7 +39,7 @@ adding_item	Manampy taha vaovao
 editing_item	Fanitsiana
 save	Tehirizo
 remove	Esory
-empty_catalog	Tsy mbola misy sarany. Sokafy ny sarany & serivisy, ampio iray (anarana + vidiny, unit kg), avy eo Famandrihana.
+empty_catalog	Tsy mbola misy sarany.
 counter_sale	Counter famandrihana
 total	Fitambarany
 cash	Vola
@@ -171,8 +171,6 @@ selected_language	Voafantina
 continue	Tohizo
 this_device	ITY FITAOVANA ITY
 device_use_q	Ahoana no hampiasana ity fitaovana ity?
-last_server_mode	Taloha Server — kitiho mba hanohy
-last_client_mode	Taloha Client — kitiho mba hanohy
 choose_server	Fidio ny mpizara
 choose_server_hint	Sokafy ny mpizara efa misy, na mamorona iray ho an'ny orinasa hafa.
 create_new_server	Mametraha mpizara vaovao
@@ -501,8 +499,6 @@ job_layout	Endrika
 job_delivery	Ahoana ny fandefasana ny asa
 job_size	Haben'ny soratra
 job_size_ph	oh: 18, 20, 26…
-save_receipt_format	Tehirizo ny endrika fandraisana
-save_label_format	Tehirizo ny endrika etikety
 test_receipt_format	Taratasy fanamarinana
 test_label_format	Label fitsapana
 test_receipt_sent	Santionany rosia nalefa
@@ -610,7 +606,7 @@ units_heading	Singan-javatra
 booking_measures	Fepetra famandrihana
 drawer_count	Fandaharana ny boaty (tsy voatery)
 spreadsheet_csv	Tabilao (CSV)
-bank_reconciliation	Fifanarahana amin'ny banky (manamarina amin'ny fanambarana anao amin'ny banky)
+bank_reconciliation	Fifanarahana amin'ny banky
 book_add_product	Boky — ampio ny vokatra / sarany
 book_opening_credit	Boky — trosa fanombohana
 account_kind	Karazana kaonty (tsindrio iray)
@@ -650,7 +646,7 @@ net_word	Neto
 offline_badge	TSY MIFANDRAISANA AMIN'NY INTERNET
 optional_login_help	Fidirana tsy voatery (id + teny miafina). Ny tompony no mametraka indray mandeha; ny mpampiasa ihany no afaka manova ny teny miafina avy eo.
 or_unlock_login	Na sokafy amin'ny id fidirana + teny miafina
-permission_preset	Asa (mametraka efijery sy zo)
+permission_preset	Asa
 preset_help_moklanjo	Mpivarotra: mivarotra. Tale: mivarotra + entana + manafoana/manitsy.
 product_locked_moklanjo	Moklanjo
 product_only_moklanjo	Moklanjo ihany ity fampiharana ity — boky + birao famandrihana. Ny varotra hafa dia miatrika sambo ho vokatra misaraka any aoriana.
@@ -698,10 +694,6 @@ pin_hint_paired	Kaonty fanampiny nifandray — sokafy mba hivarotra
 pin_hint_pair_first	Kaonty fanampiny — mifandraisa amin'ny fitaovan'ny fivarotana aloha
 unlock_to_continue	Sokafy mba hanohy
 no_staff_yet	Tsy mbola misy mpiasa — sokafy ho Tompony, avy eo Ekipa
-status_server_set_pin	Server Fomba — apetraho ho Tompony PIN
-status_server_tills	Server Fomba — afaka miditra ny kaonty fanampiny. Sokafy
-status_server_unlock	Server Fomba — sokafy ho Tompony
-status_client_unlock	Client Fomba — sokafy mba hivarotra
 icon_new_selected	Sary famantarana: rakitra vaovao voafantina — kitiho ny Tehirizo ny marika
 icon_custom	Sary famantarana: famantarana toerana manokana
 icon_default	Sary famantarana: marika Kumkaj (mahazatra) — mifidiana manokana
@@ -834,3 +826,7 @@ role_help_supplier	Anjara: Mpamatsy - AP amin'ny fividianana.
 lane_declared_label	Famandrihana kaonty
 lane_owner_label	Famandrihana vola
 money_lane_bill	Paositra: {lane}
+sel_copy	Adikao
+sel_select_all	Fidio daholo
+sel_copied	Voadika
+nav_loading	Mampiditra…

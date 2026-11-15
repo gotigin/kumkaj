@@ -41,7 +41,7 @@ remove	काढा
 removed_items	काढलेले पदार्थ
 removed_help	पुन्हा आणल्यास पदार्थ पहिल्यासारखाच मेनूवर येतो — किंमत, फोटो आणि श्रेणी. आमचा पदार्थांचा शेल्फ कधीही काढला जात नाही, त्यामुळे कोणताही पदार्थ पुन्हा जोडता येतो.
 restore_item	पुन्हा आणा
-empty_catalog	अद्याप आयटम नाहीत. मेनू व आयटम उघडा, एक जोडा (नाव + किंमत), मग ऑर्डर घ्या.
+empty_catalog	अद्याप आयटम नाहीत.
 total	एकूण
 cash	रोख
 upi	यूपीआई
@@ -103,23 +103,14 @@ bill_item_qty	संख्या
 bill_item_price	दर
 bill_item_amount	रक्कम
 bill_item_note	नोंद
-bill_item_col_gap	स्तंभ अंतर
 bill_item_col_order	स्तंभ क्रम
 bill_item_col_sep	स्तंभ रेषा
-bill_item_gap_tight	घट्ट
-bill_item_gap_comfort	आरामदायी
-bill_item_gap_wide	रुंद
-bill_item_num_width	अंक स्तंभ
-bill_item_num_compact	लहान
-bill_item_num_comfort	आरामदायी
-bill_item_num_wide	रुंद
-bill_item_num_align	अंक जुळणी
-bill_item_gap_em	अंतर (em)
-bill_item_qty_min	संख्या किमान (em)
-bill_item_price_min	दर किमान (em)
-bill_item_amount_min	रक्कम किमान (em)
-kot_item_qty_width	संख्या स्तंभ
-kot_item_num_align	संख्या जुळणी
+slip_columns	स्तंभ
+slip_col_width	रुंदी (mm)
+slip_col_start	सुरुवातीची जागा (px)
+slip_col_end	शेवटची जागा (px)
+slip_col_align	मजकूर संरेखन
+slip_columns_help	प्रत्येक स्तंभाच्या रुंदीत त्याची सुरुवातीची आणि शेवटची जागा समाविष्ट आहे. मजकूर आपल्या स्तंभातच गुंडाळला जातो; मजकुराच्या रुंदीबाहेरचे कागदावर आणि पूर्वावलोकनात कापले जाते.
 bill_total_qty_label	एकूण संख्या लेबल
 bill_total_subtotal_label	उपबेरीज लेबल
 bill_total_grand_label	एकूण लेबल
@@ -221,7 +212,6 @@ sidebar_order_saved	साइडबारचा क्रम जतन केल
 sidebar_visibility_saved	साइडबारची दृश्यता जतन केली
 amounts_hide	लपवा
 amounts_show	दाखवा
-printers_none_hint	आधी या डिव्हाइसवर प्रिंटर जतन करा, मग तो बिलाला किंवा एखाद्या स्वयंपाकघराला जोडा
 counter	काउंटर
 dine_in	तिथे जेवण
 takeaway	पार्सल
@@ -328,8 +318,6 @@ selected_language	निवडलेली
 continue	पुढे जा
 this_device	हे डिव्हाइस
 device_use_q	हे डिव्हाइस कसे वापरले जाईल?
-last_server_mode	आधी सर्व्हर होते — पुढे जाण्यासाठी टॅप करा
-last_client_mode	आधी क्लायंट होते — पुढे जाण्यासाठी टॅप करा
 choose_server	सर्व्हर निवडा
 choose_server_hint	या डिव्हाइसवर आधीच सर्व्हर आहेत. एक उघडा, किंवा दुसऱ्या व्यवसायासाठी नवीन सर्व्हर बनवा.
 create_new_server	नवीन सर्व्हर बनवा
@@ -391,7 +379,7 @@ attachments_last_expense	जोडपत्रे (शेवटचा खर्�
 bank	बँक
 bank_in	बँकेत टाका
 bank_out	बँकेतून काढा
-bank_reconciliation	बँक ताळमेळ (तुमच्या बँक स्टेटमेंटशी टिक करा)
+bank_reconciliation	बँक ताळमेळ
 bank_to_till	बँक → टिल
 book_add_dish	बुक — पदार्थ / आयटम जोडा
 book_opening_credit	बुक — सुरुवातीचे उधार
@@ -744,7 +732,6 @@ station_print_pick_first	आधी स्वयंपाकघर स्टे�
 station_print_editing	“{name}” चे प्रिंटर संपादित
 station_vps_dd	या स्टेशनचे प्रिंटर
 station_vps_dd_n	{n} प्रिंटर · बदलण्यासाठी टॅप
-station_vps_empty	अद्याप प्रिंटर नाहीत — सेटिंग्ज → प्रिंटरमध्ये शोधा
 bill_printers_dd	बिलाचे प्रिंटर
 bill_printers_dd_n	बिलासाठी {n} प्रिंटर · बदलायला दाबा
 job_layout	लेआउट
@@ -889,7 +876,7 @@ net_word	नेट
 offline_badge	ऑफलाइन
 optional_login_help	ऐच्छिक लॉगिन (आयडी + पासवर्ड). मालक एकदा लावतो; नंतर फक्त वापरकर्ताच पासवर्ड बदलू शकतो.
 or_unlock_login	किंवा लॉगिन आयडी + पासवर्डने अनलॉक करा
-permission_preset	परवानगी प्रीसेट (कशाला पहुँच)
+permission_preset	परवानगी प्रीसेट
 preset_help_khaynjo	कॅशियर: विक्री. व्यवस्थापक: विक्री + आयटम + रद्द/दुरुस्ती.
 product_locked_khaynjo	Khaynjo
 product_only_khaynjo	हे ॲप फक्त Khaynjo आहे — रेस्टॉरंट ऑपरेटिंग सिस्टम. इतर व्यवसायांसाठी वेगळी Kumkaj उत्पादने येतात.
@@ -961,10 +948,6 @@ pin_hint_paired	अतिरिक्त टिल जोडले — विक
 pin_hint_pair_first	अतिरिक्त टिल — आधी दुकान डिव्हाइसशी जोडा
 unlock_to_continue	पुढे जाण्यासाठी अनलॉक करा
 no_staff_yet	अद्याप कर्मचारी नाही — मालक म्हणून अनलॉक करा, मग Team
-status_server_set_pin	सर्व्हर मोड — मालक PIN लावा
-status_server_tills	सर्व्हर मोड — अतिरिक्त टिल जोडू शकतात. अनलॉक करा
-status_server_unlock	सर्व्हर मोड — मालक म्हणून अनलॉक करा
-status_client_unlock	क्लायंट मोड — विक्रीसाठी अनलॉक करा
 icon_new_selected	चिन्ह: नवीन फाइल निवडली — ब्रँड जतन करा दाबा
 icon_custom	चिन्ह: तुमच्या दुकानाची खूण
 icon_default	चिन्ह: Kumkaj खूण (डीफॉल्ट) — स्वतःची निवडा
@@ -1033,7 +1016,7 @@ book_kind_balance	ताळेबंद
 order_help	उघडा ऑर्डर निवडा, किंवा टेबल निवडून नवा सुरू करा. तयार वस्तूंवर टॅप करा, KOT पाठवा, एक किंवा अधिक वस्तूंचे बिल करा, बिल वाटा आणि पेमेंट निकाली काढा.
 floor_help	प्रत्येक टेबल दाखवतो पाहुणे बसले आहेत का, त्यांचे उघडे बिल काय आहे आणि पुढे कोणाला सेवा हवी.
 kitchen_help	प्रत्येक व्हेरिएंट किंवा प्रत्येक वस्तूमागे तयार मात्रा ट्रॅक करा — KOT मध्ये हवे तसे नोंदवा.
-kitchen_empty	सध्या काही उघडे नाही — नवे ऑर्डर येथे दिसतील.
+kitchen_empty	सध्या काही उघडे नाही.
 add_a_table	टेबल जोडा
 add_station_heading	स्टेशन जोडा · उदा. तंदूर, साउथ इंडियन
 categories_help	वर्ग दाखवतो की पदार्थ कोणत्या मेनू भागात मोडतो — उदा. स्नॅक्स, मेन कोर्स किंवा बिर्याणी. वर्ग आपल्याप्रमाणे बनवा: आमची सुचवलेली नावे निवडा, त्यांची नावे बदला किंवा आपला जोडा.
@@ -1131,7 +1114,6 @@ bill_format_help	प्रत्येक बिलावर तुमच्य�
 bill_header_ph	पत्ता | फोन
 fssai_ph	FSSAI परवाना क्र. (भारत)
 bill_footer_ph	फूटर (उदा. धन्यवाद, पुन्हा या)
-save_bill_format	बिल स्वरूप जतन करा
 reset_bill_format	डीफॉल्टवर परत
 bill_format_reset	बिल स्वरूप डीफॉल्टवर
 reset_kot_format	डीफॉल्टवर परत
@@ -1201,13 +1183,11 @@ kot_copies_3	3
 kot_title_ph	शीर्षक (रिकामे = KOT - KITCHEN ORDER)
 kot_footer_ph	स्वयंपाकघर नोंद (पर्यायी, किंमती नाहीत)
 kot_preview	पूर्वावलोकन
-save_kot_format	KOT स्वरूप जतन करा
 test_kot_format	चाचणी KOT
 test_kot_sent	स्वयंपाकघर तिकिटाचा नमुना पाठवला
 test_bill_format	चाचणी बिल
 test_bill_sent	बिलाचा नमुना पाठवला
 test_print_no_printer	त्या कामासाठी प्रिंटर नाही — याच स्क्रीनवर एक निवडा
-kot_format_saved	KOT स्वरूप जतन
 std_print	बिल प्रिंट आकार
 std_print_help	स्टँडर्ड पोर्ट्रेट आणि लँडस्केप बिल जॉबसाठी अक्षर आकार (थर्मल KOT वेगळे). दोन्ही ओरिएंटेशनवर समान आकार.
 std_size_s	लहान
@@ -1264,7 +1244,6 @@ new_items_head	अजून पाठवले नाही
 price_ph	किंमत
 price_ph_gst_inside	किंमत ({tax} अंतर्भूत)
 cancel_needs_table	स्वयंपाकघरानंतर रद्द करण्यासाठी हा ऑर्डर फ्लोर (टेबल) वरून उघडा — काउंटर KOT पेमेंट होईपर्यंत तिकीटावर राहतात
-tax_rates_missing_hint	या पदार्थांवर {tax} दर नाही — मेनूमध्ये कर दर सेट करा ({tax} inclusive मध्ये किंमतीत आधीच {tax} आहे)
 taxable_value	करपात्र मूल्य
 gst_inside_price_note	({tax} अंतर्भूत)
 start_with_template	आमच्या मेनू साच्याने सुरुवात
@@ -1318,9 +1297,7 @@ order_empty_pick	ऑर्डर रिकामा आहे — पदार�
 add_dishes	पदार्थ जोडा
 order_so_far	या ऑर्डरमध्ये: {n} · {total}
 no_dish_match	“{q}” शी जुळणारा पदार्थ नाही
-pick_dishes_help	पदार्थ जोडण्यासाठी दाबा · यादी कमी करण्यासाठी श्रेणी निवडा
 pick_done	झाले
-pick_done_dd	झाले · {label}
 printer_route_mode	या ठिकाणी अनेक प्रिंटर असल्यास
 printer_mode_first	आधी चालणारा
 printer_mode_all	सर्वांवर छापा
@@ -1368,3 +1345,22 @@ recent_changes	अलीकडील बदल
 lane_declared_label	कर चलन
 lane_owner_label	कॅश मेमो
 money_lane_bill	बिल: {lane}
+sel_copy	कॉपी करा
+sel_select_all	सर्व निवडा
+sel_copied	कॉपी झाले
+items_tmpl_khaynjo	Khaynjo वस्तू टेम्पलेट
+items_tmpl_named	{name} टेम्पलेट
+app_tmpl_named	{name} अ‍ॅप टेम्पलेट
+private_code_ph	12 अंकी कोड
+stamp_on	स्टॅम्प: फाइलवर
+pay_qr_on	पेमेंट QR: फाइलवर
+pay_qr_off	पेमेंट QR: नाही
+items_tmpl_heading	आयटम टेम्पलेट
+items_tmpl_help	तुमच्या मेनूसाठी पदार्थ, श्रेणी आणि फोटो. दुकानाची सेटिंग्ज आणि कर्मचारी आहेत तसेच राहतात.
+public_tmpl_help	कोणीही डाउनलोड करू शकेल असे सुरुवातीचे मेनू. एकदा इंटरनेट लागते.
+private_tmpl_help	तुमच्या Khaynjo संपर्काकडून मिळालेल्या 12-अंकी कोडने सुरक्षित ग्राहक मेनू.
+printers_screen_tip	शोधा हे डिव्हाइस वापरू शकेल असे प्रिंटर दाखवते आणि या दुकानासाठी जतन करते. बिल प्रिंटर: बिल व KOT फॉरमॅट → बिल. स्वयंपाकघर: स्वयंपाकघर → स्वयंपाकघर स्टेशन.
+printers_found_none	एकही प्रिंटर सापडला नाही.
+kot_copy_from	यातून कॉपी करा
+kot_copy_from_help	त्या प्रकारातील प्रत्येक ओळीचा आकार, जाडी आणि संरेखन यात कॉपी करते. हा प्रकार स्वतःचा बॅनर, आयटम उपसर्ग आणि खोडरेषा ठेवतो. ठेवण्यासाठी KOT फॉरमॅट जतन करा.
+nav_loading	लोड होत आहे…

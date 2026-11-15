@@ -240,10 +240,16 @@ impl App {
                 st.data_base = Some(dir);
             }
         }
-        let base = st.data_base.clone();
         drop(st);
-        // Android: start unpacking APK shelf/templates into filesDir early so
-        // Create server often finds them ready (Server jobs also block on ensure).
+    }
+
+    /// Android: unpack the APK item shelf / templates into filesDir ahead of
+    /// time — only on a device that is (or becomes) the Server. A Client
+    /// never imports them (its items come from the Server); unpacking
+    /// thousands of photos on a first Client open starved the books open on
+    /// a slow phone and left the setup screen waiting. Server jobs still call
+    /// `ensure_android_menu_assets` themselves before they need the files.
+    fn prewarm_menu_assets(base: Option<PathBuf>) {
         if let Some(base) = base {
             let _ = std::thread::Builder::new()
                 .name("khaynjo-menu-assets".into())
@@ -274,6 +280,7 @@ impl App {
             return;
         }
         self.resolve_data_base(cx);
+        Self::prewarm_menu_assets(app_state().lock().unwrap().data_base.clone());
         let result = (|| -> Result<(), String> {
             let base = {
                 let mut st = app_state().lock().unwrap();
@@ -493,9 +500,8 @@ impl App {
             menu_import_running().lock().unwrap().as_ref(),
             Some(MenuImportKind::AppTemplate { .. } | MenuImportKind::ShelfFromDir { .. })
         ) || catalogue_fetch_busy().load(std::sync::atomic::Ordering::SeqCst);
-        // Locks app_state (app_t) — must run before the guard below.
         let download_text = if catalogue_fetch_busy().load(std::sync::atomic::Ordering::SeqCst) {
-            catalogue_download_progress_text()
+            catalogue_download_progress_text(&app_t("app_template_download_progress"))
         } else {
             None
         };
@@ -551,7 +557,13 @@ impl App {
                 st.t("cancel"),
                 progress,
                 pub_status,
-                st.catalogue_private_title.clone(),
+                // App level: the private pack applies menu + shop settings.
+                if st.catalogue_private_title.is_empty() {
+                    String::new()
+                } else {
+                    st.t("app_tmpl_named")
+                        .replace("{name}", &template_client_name(&st.catalogue_private_title))
+                },
                 st.catalogue_selected_public_id.clone(),
                 st.catalogue_public.clone(),
                 !st.catalogue_private_title.is_empty(),
@@ -560,15 +572,42 @@ impl App {
         self.ui
             .widget(cx, ids!(app_template_heading))
             .set_text(cx, &plain_display_text(&heading));
-        self.ui
-            .widget(cx, ids!(app_template_blurb))
-            .set_text(cx, &plain_display_text(&blurb));
+        // Idle: the explanation is the heading's ℹ tip; busy: the stable
+        // "Downloading template…" line above the live progress.
+        let blurb_w = self.ui.widget(cx, ids!(app_template_blurb));
+        blurb_w.set_visible(cx, app_busy);
+        if app_busy {
+            blurb_w.set_text(cx, &plain_display_text(&blurb));
+        }
+        {
+            let (help, public_help, private_help) = {
+                let st = app_state().lock().unwrap();
+                (
+                    st.t("app_template_blurb"),
+                    st.t("public_tmpl_help"),
+                    st.t("private_tmpl_help"),
+                )
+            };
+            for (id, tip) in [
+                (ids!(app_template_help), help),
+                (ids!(setup_public_tmpl_help), public_help),
+                (ids!(setup_private_tmpl_help), private_help),
+            ] {
+                self.ui
+                    .widget(cx, id)
+                    .as_info_help()
+                    .set_tip(&plain_display_text(&tip));
+            }
+        }
         self.ui
             .widget(cx, ids!(setup_public_tmpl_status))
             .set_text(cx, &plain_display_text(&pub_status));
         self.ui
             .widget(cx, ids!(private_tmpl_title))
             .set_text(cx, &plain_display_text(&priv_title));
+        self.ui
+            .text_input(cx, ids!(private_tmpl_code))
+            .set_empty_text(cx, app_t("private_code_ph"));
         self.ui
             .button(cx, ids!(private_tmpl_import))
             .set_visible(cx, has_private && !app_busy);
@@ -723,13 +762,9 @@ impl App {
         // First Server lock → Owner; else remembered chip.
         st.apply_lock_role_selection();
         st.screen = Screen::Lock;
-        st.status = if !st.owner_setup_complete {
-            locale::t(&st.locale.language, "status_server_set_pin")
-        } else if st.extra_tills_allowed {
-            locale::t(&st.locale.language, "status_server_tills")
-        } else {
-            locale::t(&st.locale.language, "status_server_unlock")
-        };
+        // No "Server Mode — set Owner PIN / unlock as Owner" line: the PIN
+        // prompt and its ℹ say it (cluster text, owner 2026-11-14).
+        st.status.clear();
     }
 
     /// Start Client Mode without blocking the UI (first open migrates the
@@ -823,9 +858,10 @@ impl App {
                 st.pair_note.clear();
                 st.apply_lock_role_selection();
                 st.screen = Screen::Lock;
-                let msg = locale::t(&st.locale.language, "status_client_unlock");
-                st.status = msg.clone();
-                (Screen::Lock, msg)
+                // No "Client Mode — unlock to sell" bar: the PIN prompt and its
+                // ℹ say it, and the warning outlived the unlock (2026-11-14).
+                st.status.clear();
+                (Screen::Lock, String::new())
             } else {
                 st.client_paired = false;
                 st.products.clear();
@@ -836,10 +872,10 @@ impl App {
                 st.recent_sales.clear();
                 st.apply_lock_role_selection();
                 st.screen = Screen::ClientPair;
-                let msg: String =
-                    "Client Mode — find the Server, tap the shop you want, then Pair".into();
-                st.status = msg.clone();
-                (Screen::ClientPair, msg)
+                // The pairing screen's ℹ says how (an English-only warning bar
+                // used to repeat it).
+                st.status.clear();
+                (Screen::ClientPair, String::new())
             };
             (old, msg, screen)
         };
@@ -1437,6 +1473,7 @@ impl App {
                         said = Some(status);
                         match answer.follow {
                             phone::Follow::Refresh => {}
+                            phone::Follow::Quiet => said = None,
                             phone::Follow::BillText => {
                                 receipt = reply["text"].as_str().map(str::to_string);
                             }
@@ -1595,7 +1632,7 @@ impl App {
                 st.pin_visible = false;
                 st.lock_as_owner = true;
                 st.failed_unlocks = 0;
-                st.screen = unlocked_home_from(&st);
+                st.screen = unlocked_home_from(&mut st);
                 st.status = format!("New Owner PIN set — welcome back, {}", member.lock_label());
                 let _ = st.refresh_books_overview();
                 let _ = st.reload_all();
@@ -1808,7 +1845,7 @@ impl App {
                         // Main till is a visit root — no Back into setup.
                         st.nav_back.clear();
                         st.nav_forward.clear();
-                        st.screen = unlocked_home_from(&st);
+                        st.screen = unlocked_home_from(&mut st);
                         st.status = match &note {
                             Some(note) => format!("Welcome, {} · {note}", member.lock_label()),
                             None => format!("Welcome, {}", member.lock_label()),
@@ -1903,7 +1940,7 @@ impl App {
             st.screen = if st.device_role.is_host() && !st.onboarding_complete {
                 Screen::Onboard
             } else {
-                unlocked_home_from(&st)
+                unlocked_home_from(&mut st)
             };
             st.status = format!("Welcome, {}", member.lock_label());
             let _ = st.reload_all();
@@ -2009,13 +2046,17 @@ impl App {
                 .flatten()
         };
         let mut st = app_state().lock().unwrap();
-        if st.menu_category != cat {
+        let changed = st.menu_category != cat;
+        if changed {
             st.menu_category = cat;
             st.menu_pick_rev = st.menu_pick_rev.wrapping_add(1);
         }
         drop(st);
-        self.sync_chrome(cx);
-        let _ = cx;
+        // The dish tap that follows refreshes the screen itself: a second
+        // full refresh here doubled every tap's work.
+        if changed {
+            self.sync_chrome(cx);
+        }
     }
 
     fn apply_pending_menu_pick_tab(&mut self, cx: &mut Cx) {
@@ -2078,7 +2119,9 @@ impl App {
             *menu_pick_last_scroll_x().lock().unwrap() = None;
             return;
         }
-        if menu_pick_scroll_programmatic() {
+        // A held swipe moves the strip with the finger; snapping now would
+        // jump the page under it. The release snaps (MenuPickPager).
+        if menu_pick_scroll_programmatic() || menu_pick_swipe_held() {
             *menu_pick_scroll_watch_frame().lock().unwrap() = Some(cx.new_next_frame());
             return;
         }
@@ -2198,12 +2241,32 @@ impl App {
         self.sync_chrome(cx);
     }
 
+    /// Thumbnail decodes finished on the image pool (`load_thumb_at`). Commit
+    /// any result no Image widget took (a tile whose initials are showing has
+    /// its Image hidden and sees no events), then redraw once so every list
+    /// that asked picks its texture up from the cache.
+    fn handle_thumb_decodes(&mut self, cx: &mut Cx, actions: &Actions) {
+        let mut landed = false;
+        for action in actions.iter() {
+            if let Some(AsyncImageLoad { image_path, result }) = action.downcast_ref() {
+                if let Some(result) = result.borrow_mut().take() {
+                    process_async_image_load(cx, image_path, result);
+                }
+                landed = true;
+            }
+        }
+        if landed {
+            self.ui.redraw(cx);
+        }
+    }
+
     /// A sheet covers the window (Add dishes or the UPI QR). While one is
     /// open, nothing behind it may start a gesture: nav tabs, the rail
     /// divider, Floor area tabs, the sidebar list, printer rows, edge swipes.
     fn window_sheet_open(&self, cx: &Cx) -> bool {
         app_state().lock().unwrap().menu_pick_open
             || self.ui.modal(cx, ids!(upi_qr_modal)).is_open()
+            || self.ui.modal(cx, ids!(printers_modal)).is_open()
     }
 
     /// The open sheet's visible rect and its close targets. The overlay's
@@ -2229,13 +2292,18 @@ impl App {
             };
             return Some((sheet, done));
         }
-        if self.ui.modal(cx, ids!(upi_qr_modal)).is_open() {
-            let sheet = self.ui.view(cx, ids!(upi_qr_sheet)).area().rect(cx);
-            // Not drawn yet: treat every press as inside rather than guess.
-            if sheet.size.x < 1.0 || sheet.size.y < 1.0 {
-                return None;
+        for (modal, sheet) in [
+            (ids!(upi_qr_modal), ids!(upi_qr_sheet)),
+            (ids!(printers_modal), ids!(printers_sheet)),
+        ] {
+            if self.ui.modal(cx, modal).is_open() {
+                let sheet = self.ui.view(cx, sheet).area().rect(cx);
+                // Not drawn yet: treat every press as inside rather than guess.
+                if sheet.size.x < 1.0 || sheet.size.y < 1.0 {
+                    return None;
+                }
+                return Some((sheet, Vec::new()));
             }
-            return Some((sheet, Vec::new()));
         }
         None
     }
@@ -2245,6 +2313,9 @@ impl App {
             self.close_menu_window(cx);
         }
         self.ui.modal(cx, ids!(upi_qr_modal)).close(cx);
+        if self.ui.modal(cx, ids!(printers_modal)).is_open() {
+            self.close_printers_modal(cx);
+        }
     }
 
     /// Done and the dimmed area around a window-covering sheet, for a mouse
@@ -2336,10 +2407,10 @@ impl App {
             (no_match || frequent_empty || added_empty, empty_msg)
         };
         self.ui
-            .label(cx, ids!(menu_no_match))
+            .widget(cx, ids!(menu_no_match))
             .set_visible(cx, show_empty);
         if show_empty {
-            self.ui.label(cx, ids!(menu_no_match)).set_text(cx, &empty_msg);
+            self.ui.widget(cx, ids!(menu_no_match)).set_text(cx, &empty_msg);
         }
         self.ui.widget(cx, ids!(product_list)).redraw(cx);
         self.snap_menu_pick_scroll_to_category(cx);
@@ -2420,6 +2491,62 @@ impl App {
         let path = image_key_path(draft_key.as_deref(), &dir);
         let preview = self.ui.widget(cx, ids!(draft_preview));
         apply_thumb_avatar(cx, &preview, &name, &path);
+    }
+
+    /// Menu window grid (the window stays open for the next dish): a tap
+    /// anywhere on a card adds one, the same as its +; − takes one back. A
+    /// tap on − or + is that button's alone, never also the card's, and the
+    /// release of a page swipe is no tap. True when a card took the batch.
+    fn menu_pick_card_tap(&mut self, cx: &mut Cx, actions: &Actions) -> bool {
+        if menu_pick_swipe_took_press() {
+            return false;
+        }
+        let searching = !app_state().lock().unwrap().menu_filter.trim().is_empty();
+        let page_count = if searching {
+            1
+        } else {
+            let st = app_state().lock().unwrap();
+            menu_pick_tab_keys(&st).len().min(MENU_PICK_PAGE_MAX)
+        };
+        let cols = *product_grid_cols().lock().unwrap();
+        let slots: [&[LiveId]; 6] = [ids!(c0), ids!(c1), ids!(c2), ids!(c3), ids!(c4), ids!(c5)];
+        enum CardTap {
+            Add(usize),
+            Minus(usize),
+        }
+        let mut tapped: Option<(usize, CardTap)> = None;
+        'pages: for pi in 0..page_count {
+            let widget = self.ui.widget(cx, MENU_PICK_GRIDS[pi]);
+            let list = widget.portal_list(cx, ids!(list));
+            for (row_id, item) in list.items_with_actions(actions) {
+                for (col, path) in slots.iter().enumerate().take(cols) {
+                    let index = row_id * cols + col;
+                    let tile = item.widget(cx, *path).view(cx, ids!(tile));
+                    if tile.button(cx, ids!(minus)).clicked(actions) {
+                        tapped = Some((pi, CardTap::Minus(index)));
+                        break 'pages;
+                    } else if tile.button(cx, ids!(plus)).clicked(actions)
+                        || tile.finger_up(actions).is_some_and(finger_up_is_tap)
+                    {
+                        tapped = Some((pi, CardTap::Add(index)));
+                        break 'pages;
+                    }
+                }
+            }
+        }
+        match tapped {
+            Some((pi, CardTap::Add(index))) => {
+                self.align_menu_pick_cart_page(cx, pi);
+                self.add_product_to_cart(cx, index);
+                true
+            }
+            Some((pi, CardTap::Minus(index))) => {
+                self.align_menu_pick_cart_page(cx, pi);
+                self.remove_product_from_cart(cx, index);
+                true
+            }
+            None => false,
+        }
     }
 
     /// A tile in the menu window: one more of that dish on the order.
@@ -2951,7 +3078,7 @@ impl App {
                 .store
                 .as_ref()
                 .map(|s| s.floor_columns_for_area(&area))
-                .unwrap_or(4);
+                .unwrap_or(0);
         }
         self.sync_floor_columns_field(cx, true);
         // Same as category chips: paint idle/active faces from state now —
@@ -2998,7 +3125,7 @@ impl App {
                     .store
                     .as_ref()
                     .map(|s| s.floor_columns_for_area(&st.floor_area_tab))
-                    .unwrap_or(4);
+                    .unwrap_or(0);
                 cols_changed = st.floor_columns != cols;
                 st.floor_columns = cols;
             }

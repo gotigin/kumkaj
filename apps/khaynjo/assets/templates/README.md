@@ -1,7 +1,10 @@
 # Menu templates (`assets/templates/`)
 
 Optional **public/demo** menu JSON folders for local experiments. They are
-**not** DeviceSetup chips.
+**not** DeviceSetup chips and **not** offered on Menu (the Café / Khaynjo
+starter chips were removed 2026-11-13). Menu → Item templates offers the
+same two kinds as DeviceSetup, at menu-items level: the public **Khaynjo
+Items Template** and a private pack by 12-digit code (items only).
 
 Production DeviceSetup has two optional templates only:
 

@@ -39,7 +39,7 @@ adding_item	Afegir una nova tarifa
 editing_item	Edició
 save	Desa
 remove	Treu
-empty_catalog	Encara no hi ha tarifes. Obre Tarifes i serveis, afegeix-ne una (nom + preu, unitat kg), després Reserva.
+empty_catalog	Encara no hi ha tarifes.
 counter_sale	Reserva al taulell
 total	Total
 cash	Efectiu
@@ -171,8 +171,6 @@ selected_language	Seleccionat
 continue	Continua
 this_device	AQUEST DISPOSITIU
 device_use_q	Com s'utilitzarà aquest dispositiu?
-last_server_mode	Era Servidor — toqueu per continuar
-last_client_mode	Era Client — toqueu per continuar
 choose_server	Trieu un servidor
 choose_server_hint	Obriu un servidor existent o creeu-ne un per a un altre negoci.
 create_new_server	Crea un servidor nou
@@ -501,8 +499,6 @@ job_layout	Disposició
 job_delivery	Com s'envia el treball
 job_size	Mida de lletra
 job_size_ph	p. ex. 18, 20, 26…
-save_receipt_format	Desa el format del rebut
-save_label_format	Desa el format de l'etiqueta
 test_receipt_format	Rebut de prova
 test_label_format	Etiqueta de prova
 test_receipt_sent	Rebut de mostra enviat
@@ -610,7 +606,7 @@ units_heading	Unitats
 booking_measures	Mesures de reserva
 drawer_count	Recompte del calaix (opcional)
 spreadsheet_csv	Full de càlcul (CSV)
-bank_reconciliation	Conciliació bancària (marqueu contra l'extracte)
+bank_reconciliation	Conciliació bancària
 book_add_product	Llibre — afegir producte / tarifa
 book_opening_credit	Llibre — crèdit d'obertura
 account_kind	Tipus de compte (toqueu-ne un)
@@ -650,7 +646,7 @@ net_word	Net
 offline_badge	SENSE XARXA
 optional_login_help	Inici de sessió opcional (id + contrasenya). El propietari el posa un cop; només l'usuari pot canviar la contrasenya després.
 or_unlock_login	O desbloquegeu amb id d'inici de sessió + contrasenya
-permission_preset	Feina (estableix pantalles i drets)
+permission_preset	Feina
 preset_help_moklanjo	Caixer: vendre. Encarregat: vendre + articles + anul·lar/esmenar.
 product_locked_moklanjo	Moklanjo
 product_only_moklanjo	Aquesta aplicació només és Moklanjo: llibres + taulell de reserves. Altres cares comercials s'envien com a productes separats més tard.
@@ -698,10 +694,6 @@ pin_hint_paired	Caixa extra aparellada — desbloquegeu per vendre
 pin_hint_pair_first	Caixa extra — aparelleu primer amb el dispositiu de la botiga
 unlock_to_continue	Desbloquegeu per continuar
 no_staff_yet	Encara no hi ha personal — desbloquegeu com a Propietari i després Equip
-status_server_set_pin	Mode servidor — poseu el PIN del propietari
-status_server_tills	Mode servidor — les caixes extra s'hi poden unir. Desbloquegeu
-status_server_unlock	Mode servidor — desbloquegeu com a Propietari
-status_client_unlock	Mode client — desbloquegeu per vendre
 icon_new_selected	Icona: fitxer nou seleccionat — toqueu Desa la marca
 icon_custom	Icona: marca pròpia del local
 icon_default	Icona: marca Kumkaj (per defecte) — trieu-ne una de pròpia
@@ -834,3 +826,7 @@ role_help_supplier	Funció: Proveïdor — AP per a compres.
 lane_declared_label	Reserves de compte
 lane_owner_label	Reserva en efectiu
 money_lane_bill	Compte: {lane}
+sel_copy	Copia
+sel_select_all	Selecciona-ho tot
+sel_copied	Copiat
+nav_loading	S'està carregant…

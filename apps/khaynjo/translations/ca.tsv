@@ -41,7 +41,7 @@ remove	Treu
 removed_items	Articles trets
 removed_help	Restaurar torna l'article al menú tal com era — preu, foto i categoria. El nostre prestatge de plats no s'elimina mai, així que un plat es pot tornar a afegir sempre.
 restore_item	Restaura
-empty_catalog	Encara no hi ha plats. Obriu el Menú, afegiu un plat (nom + preu) i preneu una comanda.
+empty_catalog	Encara no hi ha plats.
 total	Total
 cash	Efectiu
 upi	UPI
@@ -103,23 +103,14 @@ bill_item_qty	Qtat
 bill_item_price	Preu
 bill_item_amount	Import
 bill_item_note	Nota del plat
-bill_item_col_gap	Espai de columna
 bill_item_col_order	Ordre de columnes
 bill_item_col_sep	Línies de columna
-bill_item_gap_tight	Estret
-bill_item_gap_comfort	Còmode
-bill_item_gap_wide	Ample
-bill_item_num_width	Columnes numèriques
-bill_item_num_compact	Compacte
-bill_item_num_comfort	Còmode
-bill_item_num_wide	Ample
-bill_item_num_align	Alineació dels números
-bill_item_gap_em	Espai (em)
-bill_item_qty_min	Qtat mín (em)
-bill_item_price_min	Preu mín (em)
-bill_item_amount_min	Import mín (em)
-kot_item_qty_width	Columna de qtat
-kot_item_num_align	Alineació de qtat
+slip_columns	Columnes
+slip_col_width	Amplada (mm)
+slip_col_start	Espai inicial (px)
+slip_col_end	Espai final (px)
+slip_col_align	Alineació del text
+slip_columns_help	L’amplada de cada columna inclou el seu espai inicial i final. El text s’ajusta dins la seva columna; el que sobrepassa l’amplada del contingut es retalla, en paper i a la previsualització.
 bill_total_qty_label	Etiqueta de qtat total
 bill_total_subtotal_label	Etiqueta de subtotal
 bill_total_grand_label	Etiqueta de total general
@@ -221,7 +212,6 @@ sidebar_order_saved	Ordre de la barra lateral desat
 sidebar_visibility_saved	Visibilitat de la barra lateral desada
 amounts_hide	Amaga
 amounts_show	Mostra
-printers_none_hint	Deseu primer una impressora en aquest dispositiu i després afegiu-la al Compte o a una cuina
 counter	Mostrador
 dine_in	Al local
 takeaway	Per emportar
@@ -328,8 +318,6 @@ selected_language	Seleccionada
 continue	Continua
 this_device	AQUEST DISPOSITIU
 device_use_q	Com s'utilitzarà aquest dispositiu?
-last_server_mode	Era Servidor — toqueu per continuar
-last_client_mode	Era Client — toqueu per continuar
 choose_server	Trieu un servidor
 choose_server_hint	Obriu un servidor existent o creeu-ne un per a un altre negoci.
 create_new_server	Crea un servidor nou
@@ -391,7 +379,7 @@ attachments_last_expense	Adjunts (darrera despesa)
 bank	Banc
 bank_in	Entrada a banc
 bank_out	Sortida de banc
-bank_reconciliation	Conciliació bancària (marqueu contra l'extracte)
+bank_reconciliation	Conciliació bancària
 bank_to_till	Banc → caixa
 book_add_dish	Llibre — afegeix plat / article
 book_opening_credit	Llibre — crèdit d'obertura
@@ -744,7 +732,6 @@ station_print_pick_first	Trieu primer una estació de cuina
 station_print_editing	S'editen les impressores de «{name}»
 station_vps_dd	Impressores d'aquesta estació
 station_vps_dd_n	{n} impressora(es) · toqueu per canviar
-station_vps_empty	Encara no hi ha impressores — trobeu-les a Ajustos → Impressores
 bill_printers_dd	Impressores del compte
 bill_printers_dd_n	{n} impressora(es) per al compte · toqueu per canviar
 job_layout	Disseny
@@ -889,7 +876,7 @@ net_word	Net
 offline_badge	SENSE XARXA
 optional_login_help	Inici de sessió opcional (id + contrasenya). El propietari el posa un cop; només l'usuari pot canviar la contrasenya després.
 or_unlock_login	O desbloquegeu amb id d'inici de sessió + contrasenya
-permission_preset	Feina (posa pantalles i accions de diners)
+permission_preset	Feina
 preset_help_khaynjo	Caixer: vendre. Encarregat: vendre + articles + anul·lar/esmenar.
 product_locked_khaynjo	Khaynjo
 product_only_khaynjo	Aquesta app és només Khaynjo — sistema operatiu de restaurant. Les altres cares de negoci surten com a productes Kumkaj a part.
@@ -961,10 +948,6 @@ pin_hint_paired	Caixa extra aparellada — desbloquegeu per vendre
 pin_hint_pair_first	Caixa extra — aparelleu primer amb el dispositiu de la botiga
 unlock_to_continue	Desbloquegeu per continuar
 no_staff_yet	Encara no hi ha personal — desbloquegeu com a Propietari i després Equip
-status_server_set_pin	Mode servidor — poseu el PIN del propietari
-status_server_tills	Mode servidor — les caixes extra s'hi poden unir. Desbloquegeu
-status_server_unlock	Mode servidor — desbloquegeu com a Propietari
-status_client_unlock	Mode client — desbloquegeu per vendre
 icon_new_selected	Icona: fitxer nou seleccionat — toqueu Desa la marca
 icon_custom	Icona: marca pròpia del local
 icon_default	Icona: marca Kumkaj (per defecte) — trieu-ne una de pròpia
@@ -1033,7 +1016,7 @@ book_kind_balance	Balanç
 order_help	Toqueu un article per afegir-lo.
 floor_help	Toqueu una taula per prendre o canviar la comanda. Els colors mostren lliure → assegut → cuina → a punt → menjant → compte → pagat. La llista d'espera, les reserves i afegir taules són a les seccions de sota.
 kitchen_help	Tiquets de cuina (KOT), el més nou al final. Comença → A punt → Fet fa avançar un tiquet. Els tiquets no mostren mai preus.
-kitchen_empty	No hi ha tiquets oberts. Un KOT enviat des de Comanda o Sala apareix aquí.
+kitchen_empty	No hi ha tiquets oberts.
 add_a_table	Afegeix una taula
 add_station_heading	Afegeix una estació de cuina
 categories_help	Toqueu Fes servir per classificar l'article de dalt en aquella categoria. La foto dona una imatge a la categoria; sense, en mostra les inicials.
@@ -1131,7 +1114,6 @@ bill_format_help	S'imprimeix sota el nom del restaurant a cada compte. Separeu l
 bill_header_ph	Adreça | telèfon
 fssai_ph	Núm. de llicència FSSAI (Índia)
 bill_footer_ph	Peu (p. ex. Gràcies, torneu)
-save_bill_format	Desa el format del compte
 reset_bill_format	Torna al valor per defecte
 bill_format_reset	Format del compte tornat al valor per defecte
 reset_kot_format	Torna al valor per defecte
@@ -1201,13 +1183,11 @@ kot_copies_3	3
 kot_title_ph	Títol (buit = KOT - KITCHEN ORDER)
 kot_footer_ph	Nota de cuina (opcional, sense preus)
 kot_preview	Vista prèvia
-save_kot_format	Desa el format de KOT
 test_kot_format	KOT de prova
 test_kot_sent	Vista prèvia del tiquet de cuina enviada
 test_bill_format	Compte de prova
 test_bill_sent	Vista prèvia del compte enviada
 test_print_no_printer	No hi ha impressora per a aquest treball — trieu-ne una en aquesta pantalla
-kot_format_saved	Format de KOT desat
 std_print	Mida d'impressió del compte
 std_print_help	Mida de lletra per als treballs de compte Vertical i Horitzontal estàndard en impressores del SO / de document (escriviu punts — no Petita/Normal/Gran). La mateixa mida en les dues orientacions. Les mides del tiquet de cuina són a la pestanya KOT.
 std_size_s	Petita
@@ -1264,7 +1244,6 @@ new_items_head	Encara no enviat
 price_ph	Preu
 price_ph_gst_inside	Preu ({tax} inclòs)
 cancel_needs_table	Obriu aquesta comanda des de la Sala (una taula) per anul·lar després que la cuina la tingui — els KOT del mostrador queden al tiquet fins que cobreu
-tax_rates_missing_hint	No hi ha tipus de {tax} en aquests plats — al Menú poseu el tipus impositiu (els preus ja inclouen {tax} sota {tax} inclòs)
 taxable_value	Base imposable
 gst_inside_price_note	({tax} inclòs)
 start_with_template	Comença amb la nostra plantilla de menú
@@ -1318,9 +1297,7 @@ order_empty_pick	Comanda buida — toqueu Afegeix plats a dalt per triar plats.
 add_dishes	Afegeix plats
 order_so_far	En aquesta comanda: {n} · {total}
 no_dish_match	Cap plat no coincideix amb «{q}»
-pick_dishes_help	Toqueu un plat per afegir-lo · trieu una categoria per reduir la llista
 pick_done	Fet
-pick_done_dd	Fet · {label}
 printer_route_mode	Si hi ha diverses impressores en aquest lloc
 printer_mode_first	La primera que funcioni
 printer_mode_all	Imprimeix a totes
@@ -1368,3 +1345,22 @@ recent_changes	Canvis recents
 lane_declared_label	Factura fiscal
 lane_owner_label	Nota d'efectiu
 money_lane_bill	Compte: {lane}
+sel_copy	Copia
+sel_select_all	Selecciona-ho tot
+sel_copied	Copiat
+items_tmpl_khaynjo	Plantilla d'articles Khaynjo
+items_tmpl_named	Plantilla {name}
+app_tmpl_named	Plantilla d'aplicació {name}
+private_code_ph	Codi de 12 xifres
+stamp_on	Segell: al fitxer
+pay_qr_on	QR de pagament: al fitxer
+pay_qr_off	QR de pagament: cap
+items_tmpl_heading	Plantilles d'articles
+items_tmpl_help	Plats, categories i fotos per al teu menú. La configuració de la botiga i el personal es mantenen igual.
+public_tmpl_help	Menús inicials que tothom pot baixar. Cal internet una vegada.
+private_tmpl_help	Menús de client protegits amb un codi de 12 dígits del teu contacte de Khaynjo.
+printers_screen_tip	Cerca mostra les impressores que aquest dispositiu pot fer servir i les desa per a aquesta botiga. Impressores de tiquets: Format de tiquet i KOT → Tiquet. Cuina: Cuina → Estacions de cuina.
+printers_found_none	No s'ha trobat cap impressora.
+kot_copy_from	Copia de
+kot_copy_from_help	Copia la mida, el gruix i l'alineació de cada línia d'aquest tipus a aquest. Aquest tipus conserva el seu bàner, el prefix d'article i el ratllat. Desa el format KOT per conservar-ho.
+nav_loading	S'està carregant…

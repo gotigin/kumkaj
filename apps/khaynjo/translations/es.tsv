@@ -41,7 +41,7 @@ remove	Quitar
 removed_items	Artículos eliminados
 removed_help	Restaurar devuelve el artículo al menú tal como estaba: precio, foto y categoría. Nuestra estantería de platos nunca se elimina, así que siempre puedes volver a añadir un plato.
 restore_item	Restaurar
-empty_catalog	Aún no hay artículos. Abra Menú y artículos, añada uno (nombre + precio), luego tome un pedido.
+empty_catalog	Aún no hay artículos.
 total	Total
 cash	Efectivo
 upi	UPI
@@ -103,23 +103,14 @@ bill_item_qty	Cant.
 bill_item_price	Precio
 bill_item_amount	Importe
 bill_item_note	Nota
-bill_item_col_gap	Hueco de columnas
 bill_item_col_order	Orden de columnas
 bill_item_col_sep	Líneas de columna
-bill_item_gap_tight	Apretado
-bill_item_gap_comfort	Cómodo
-bill_item_gap_wide	Ancho
-bill_item_num_width	Columnas numéricas
-bill_item_num_compact	Compacto
-bill_item_num_comfort	Cómodo
-bill_item_num_wide	Ancho
-bill_item_num_align	Alineación de números
-bill_item_gap_em	Hueco (em)
-bill_item_qty_min	Cant. mínima (em)
-bill_item_price_min	Precio mínimo (em)
-bill_item_amount_min	Importe mínimo (em)
-kot_item_qty_width	Columna de cant.
-kot_item_num_align	Alineación de cant.
+slip_columns	Columnas
+slip_col_width	Ancho (mm)
+slip_col_start	Espacio inicial (px)
+slip_col_end	Espacio final (px)
+slip_col_align	Alineación del texto
+slip_columns_help	El ancho de cada columna incluye su espacio inicial y final. El texto se ajusta dentro de su columna; lo que sobrepasa el ancho del contenido se recorta, en papel y en la vista previa.
 bill_total_qty_label	Etiqueta cant. total
 bill_total_subtotal_label	Etiqueta subtotal
 bill_total_grand_label	Etiqueta total
@@ -221,7 +212,6 @@ sidebar_order_saved	Pedido de la barra lateral guardado
 sidebar_visibility_saved	Visibilidad de la barra lateral guardada
 amounts_hide	Ocultar
 amounts_show	Mostrar
-printers_none_hint	Guarde primero una impresora en este dispositivo, luego añádala a la cuenta o a cocina
 counter	Mostrador
 dine_in	En mesa
 takeaway	Para llevar
@@ -328,8 +318,6 @@ selected_language	Seleccionado
 continue	Continuar
 this_device	ESTE DISPOSITIVO
 device_use_q	¿Cómo se usará este dispositivo?
-last_server_mode	Era servidor — toca para continuar
-last_client_mode	Era cliente — toca para continuar
 choose_server	Elige un servidor
 choose_server_hint	Este dispositivo ya tiene servidores. Abre uno o crea un servidor nuevo para otro negocio.
 create_new_server	Crear servidor nuevo
@@ -391,7 +379,7 @@ attachments_last_expense	Adjuntos (último gasto)
 bank	Banco
 bank_in	Ingreso a banco
 bank_out	Retiro de banco
-bank_reconciliation	Conciliación bancaria (marca contra tu extracto)
+bank_reconciliation	Conciliación bancaria
 bank_to_till	Banco → caja
 book_add_dish	Pedido — añadir plato / artículo
 book_opening_credit	Envío — crédito inicial
@@ -744,7 +732,6 @@ station_print_pick_first	Elija primero una estación de cocina
 station_print_editing	Editando impresoras de “{name}”
 station_vps_dd	Impresoras de esta estación
 station_vps_dd_n	{n} impresora(s) · toque para cambiar
-station_vps_empty	Aún no hay impresoras — búsquelas en Ajustes → Impresoras
 bill_printers_dd	Impresoras para la cuenta
 bill_printers_dd_n	{n} impresora(s) para la cuenta · toque para cambiar
 job_layout	Diseño
@@ -889,7 +876,7 @@ net_word	Neto
 offline_badge	SIN CONEXIÓN
 optional_login_help	Acceso opcional (id + contraseña). El dueño lo pone una vez; después solo el usuario puede cambiar la contraseña.
 or_unlock_login	O desbloquear con id de acceso + contraseña
-permission_preset	Preajuste de permisos (qué puede acceder)
+permission_preset	Preajuste de permisos
 preset_help_khaynjo	Cajero: vender. Gerente: vender + artículos + anular/modificar.
 product_locked_khaynjo	Khaynjo
 product_only_khaynjo	Esta app es solo Khaynjo, el sistema para restaurantes. Otros oficios tienen sus propios productos Kumkaj.
@@ -961,10 +948,6 @@ pin_hint_paired	Caja extra emparejada: desbloquear para vender
 pin_hint_pair_first	Caja extra: empareja primero con el dispositivo tienda
 unlock_to_continue	Desbloquear para continuar
 no_staff_yet	Aún no hay personal: desbloquear como Dueño, luego Equipo
-status_server_set_pin	Modo servidor — fijar PIN del dueño
-status_server_tills	Modo servidor — las cajas extra pueden unirse. Desbloquear
-status_server_unlock	Modo servidor — desbloquear como Dueño
-status_client_unlock	Modo cliente — desbloquear para vender
 icon_new_selected	Icono: archivo nuevo seleccionado — toca Guardar marca
 icon_custom	Icono: marca propia de tu tienda
 icon_default	Icono: marca Kumkaj (predeterminada) — elige la tuya
@@ -1033,7 +1016,7 @@ book_kind_balance	Balance general
 order_help	Elige un pedido abierto o una mesa para empezar uno nuevo. Toca artículos preparados, envía el KOT, factura uno o más artículos, divide la cuenta y cobra.
 floor_help	Cada mesa muestra si hay comensales, su cuenta abierta y quién necesita atención.
 kitchen_help	Registra lo listo por variante o por artículo: anótalo en el KOT como prefieras.
-kitchen_empty	Nada abierto ahora: los pedidos nuevos aparecen aquí.
+kitchen_empty	Nada abierto ahora.
 add_a_table	Añadir una mesa
 add_station_heading	Añadir estación · p. ej. Tandoor, Sur de la India
 categories_help	Una categoría indica a qué parte del menú pertenece un plato: aperitivos, plato principal o biryani. Crea categorías a tu manera: elige nuestros nombres, renómbralos o añade los tuyos.
@@ -1131,7 +1114,6 @@ bill_format_help	Se imprime bajo el nombre del restaurante en cada cuenta. Separ
 bill_header_ph	Dirección | teléfono
 fssai_ph	N.º licencia FSSAI (India)
 bill_footer_ph	Pie (ej. Gracias, vuelva pronto)
-save_bill_format	Guardar formato de cuenta
 reset_bill_format	Restablecer predeterminado
 bill_format_reset	Formato de cuenta restablecido
 reset_kot_format	Restablecer predeterminado
@@ -1201,13 +1183,11 @@ kot_copies_3	3
 kot_title_ph	Título (vacío = KOT - KITCHEN ORDER)
 kot_footer_ph	Nota de cocina (opcional, sin precios)
 kot_preview	Vista previa
-save_kot_format	Guardar formato KOT
 test_kot_format	Probar KOT
 test_kot_sent	Vista previa del ticket de cocina enviada
 test_bill_format	Probar recibo
 test_bill_sent	Vista previa del recibo enviada
 test_print_no_printer	No hay impresora para ese trabajo — elija una en esta pantalla
-kot_format_saved	Formato KOT guardado
 std_print	Tamaño de impresión de factura
 std_print_help	Tamaño de tipo para facturas Standard Vertical y Horizontal (KOT térmico aparte). Mismo tamaño en ambas orientaciones.
 std_size_s	Pequeño
@@ -1264,7 +1244,6 @@ new_items_head	Sin enviar
 price_ph	Precio
 price_ph_gst_inside	Precio ({tax} incluido)
 cancel_needs_table	Abre este pedido desde Sala (una mesa) para cancelar tras cocina — los KOT de mostrador quedan en el ticket hasta cobrar
-tax_rates_missing_hint	Sin tipo de {tax} en estos platos — en Menú fija el tipo ({tax} inclusive ya incluye {tax} en el precio)
 taxable_value	Base imponible
 gst_inside_price_note	({tax} incluido)
 start_with_template	Empezar con nuestra plantilla de menú
@@ -1318,9 +1297,7 @@ order_empty_pick	Pedido vacío — toca «Añadir platos» arriba para elegir pl
 add_dishes	Añadir platos
 order_so_far	En este pedido: {n} · {total}
 no_dish_match	Ningún plato coincide con «{q}»
-pick_dishes_help	Toca un plato para añadirlo · elige una categoría para acotar
 pick_done	Listo
-pick_done_dd	Listo · {label}
 printer_route_mode	Si hay varias impresoras en este lugar
 printer_mode_first	La primera que funcione
 printer_mode_all	Imprimir en todas
@@ -1368,3 +1345,22 @@ recent_changes	Cambios recientes
 lane_declared_label	Factura fiscal
 lane_owner_label	Nota de caja
 money_lane_bill	Factura: {lane}
+sel_copy	Copiar
+sel_select_all	Seleccionar todo
+sel_copied	Copiado
+items_tmpl_khaynjo	Plantilla de artículos Khaynjo
+items_tmpl_named	Plantilla {name}
+app_tmpl_named	Plantilla de app {name}
+private_code_ph	Código de 12 dígitos
+stamp_on	Sello: en archivo
+pay_qr_on	QR de pago: en archivo
+pay_qr_off	QR de pago: ninguno
+items_tmpl_heading	Plantillas de artículos
+items_tmpl_help	Platos, categorías y fotos para tu menú. La configuración de la tienda y el personal se mantienen igual.
+public_tmpl_help	Menús iniciales que cualquiera puede descargar. Se necesita internet una vez.
+private_tmpl_help	Menús de cliente protegidos con un código de 12 dígitos de tu contacto de Khaynjo.
+printers_screen_tip	Buscar muestra las impresoras que este dispositivo puede usar y las guarda para esta tienda. Impresoras de cuenta: Formato de cuenta y KOT → Cuenta. Cocina: Cocina → Estaciones de cocina.
+printers_found_none	No se encontraron impresoras.
+kot_copy_from	Copiar de
+kot_copy_from_help	Copia el tamaño, el grosor y la alineación de cada línea de ese tipo a este. Este tipo conserva su propio banner, prefijo de artículo y tachado. Guarda el formato KOT para conservarlo.
+nav_loading	Cargando…

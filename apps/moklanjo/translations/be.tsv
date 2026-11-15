@@ -39,7 +39,7 @@ adding_item	Даданне новага тарыфа
 editing_item	Рэдагаванне
 save	Захаваць
 remove	Выдаліць
-empty_catalog	Тарыфаў пакуль няма. Адкрыйце Разлікі і паслугі, дадайце адзін (назва + цана, адзінка кг), затым Бронь.
+empty_catalog	Тарыфаў пакуль няма.
 counter_sale	Супрацьстаўленне браніравання
 total	Разам
 cash	Наяўныя
@@ -171,8 +171,6 @@ selected_language	Выбранае
 continue	Працягнуць
 this_device	ГЭТАЯ ПРЫЛАДА
 device_use_q	Як будзе выкарыстоўвацца гэта прылада?
-last_server_mode	Быў сервер — націсніце, каб працягнуць
-last_client_mode	Быў кліентам — націсніце, каб працягнуць
 choose_server	Выберыце сервер
 choose_server_hint	Адкрыйце існуючы сервер або стварыце яго для іншай кампаніі.
 create_new_server	Стварыць новы сервер
@@ -501,8 +499,6 @@ job_layout	Макет
 job_delivery	Як адпраўляецца заданне
 job_size	Памер шрыфта
 job_size_ph	напр. 18, 20, 26…
-save_receipt_format	Save receipt format
-save_label_format	Save label format
 test_receipt_format	Test receipt
 test_label_format	Test label
 test_receipt_sent	Sample receipt sent
@@ -610,7 +606,7 @@ units_heading	Адзінкі
 booking_measures	Меры бранювання
 drawer_count	Колькасць скрынь (неабавязкова)
 spreadsheet_csv	Табліца (CSV)
-bank_reconciliation	Банкаўская зверка (пастаўце галачку насупраць выпіскі з банкаўскага рахунку)
+bank_reconciliation	Банкаўская зверка
 book_add_product	Бранюванне — дадаць тавар / тарыф
 book_opening_credit	Кніга — адкрыццё крэдыту
 account_kind	Тып уліковага запісу (націсніце адзін)
@@ -650,7 +646,7 @@ net_word	Сетка
 offline_badge	ПА-ЗА СЯБОЙ
 optional_login_help	Дадатковы лагін (id + пароль). Уладальнік усталёўвае адзін раз; толькі карыстальнік можа змяніць пароль пазней.
 or_unlock_login	Або разблакіраваць з дапамогай лагіна + пароля
-permission_preset	Задача (наладжвае экраны і правы)
+permission_preset	Задача
 preset_help_moklanjo	Касір: Прадаем. Менеджэр: прадаць + тавары + ануляваць/змяніць.
 product_locked_moklanjo	Moklanjo
 product_only_moklanjo	This app is Moklanjo only — books + booking desk. Other trade faces ship as separate products later.
@@ -698,10 +694,6 @@ pin_hint_paired	Дадаткова да спалучэння — разблак�
 pin_hint_pair_first	Extra till — спалучэнне з прыладай у краме спачатку
 unlock_to_continue	Разблакіруйце, каб працягнуць
 no_staff_yet	Пакуль няма супрацоўнікаў — разблакіруйце як уладальнік, а затым каманда
-status_server_set_pin	Рэжым сервера — усталяваць уладальніка PIN
-status_server_tills	Рэжым сервера - дадатковыя касы могуць далучыцца. Разблакіраваць
-status_server_unlock	Рэжым сервера — разблакіраваць як уладальнік
-status_client_unlock	Рэжым кліента — разблакіроўка для продажу
 icon_new_selected	Значок: выбраны новы файл — націсніце Захаваць брэнд
 icon_custom	Значок: нестандартная адзнака месца правядзення
 icon_default	Значок: знак Kumkaj (па змаўчанні) — выберыце карыстацкі
@@ -834,3 +826,7 @@ role_help_supplier	Role: Supplier — AP for purchases.
 lane_declared_label	Брань рахунку
 lane_owner_label	Наяўная браня
 money_lane_bill	Рахунак: {lane}
+sel_copy	Капіяваць
+sel_select_all	Вылучыць усё
+sel_copied	Скапіявана
+nav_loading	Загрузка…

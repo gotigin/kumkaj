@@ -39,7 +39,7 @@ adding_item	Ajout d'un tarif
 editing_item	Modification
 save	Enregistrer
 remove	Retirer
-empty_catalog	Aucun tarif pour l'instant. Ouvrez Tarifs et services, ajoutez-en un (nom + prix, unité kg), puis Envois.
+empty_catalog	Aucun tarif pour l'instant.
 counter_sale	Envoi au comptoir
 total	Total
 cash	Espèces
@@ -171,8 +171,6 @@ selected_language	Sélectionnée
 continue	Continuer
 this_device	CET APPAREIL
 device_use_q	Comment cet appareil sera-t-il utilisé ?
-last_server_mode	Était serveur — touchez pour continuer
-last_client_mode	Était client — touchez pour continuer
 choose_server	Choisir un serveur
 choose_server_hint	Cet appareil a déjà des serveurs. Ouvrez-en un, ou créez un nouveau serveur pour une autre entreprise.
 create_new_server	Créer un nouveau serveur
@@ -501,8 +499,6 @@ job_layout	Mise en page
 job_delivery	Mode d'envoi du travail
 job_size	Taille de police
 job_size_ph	ex. 18, 20, 26…
-save_receipt_format	Enregistrer le format de reçu
-save_label_format	Enregistrer le format d'étiquette
 test_receipt_format	Tester le reçu
 test_label_format	Tester l'étiquette
 test_receipt_sent	Reçu d'exemple envoyé
@@ -610,7 +606,7 @@ units_heading	Unités
 booking_measures	Mesures d'envoi
 drawer_count	Comptage de caisse (facultatif)
 spreadsheet_csv	Tableur (CSV)
-bank_reconciliation	Rapprochement bancaire (cochez face à votre relevé)
+bank_reconciliation	Rapprochement bancaire
 book_add_product	Envoi — ajouter produit / tarif
 book_opening_credit	Envoi — crédit d'ouverture
 account_kind	Type de compte (touchez-en un)
@@ -650,7 +646,7 @@ net_word	Net
 offline_badge	HORS LIGNE
 optional_login_help	Connexion facultative (id + mot de passe). Le propriétaire la définit une fois ; ensuite seul l'utilisateur peut changer le mot de passe.
 or_unlock_login	Ou déverrouiller avec id de connexion + mot de passe
-permission_preset	Poste (règle les écrans et les droits)
+permission_preset	Poste
 preset_help_moklanjo	Caissier : vendre. Responsable : vendre + articles + annuler/modifier.
 product_locked_moklanjo	Moklanjo
 product_only_moklanjo	Cette app est uniquement Moklanjo : livres et guichet d'envoi. Les autres métiers auront leurs propres produits plus tard.
@@ -698,10 +694,6 @@ pin_hint_paired	Caisse supplémentaire appairée — déverrouiller pour vendre
 pin_hint_pair_first	Caisse supplémentaire — appairez d'abord à l'appareil boutique
 unlock_to_continue	Déverrouiller pour continuer
 no_staff_yet	Pas encore de personnel — déverrouiller en Propriétaire, puis Équipe
-status_server_set_pin	Mode serveur — définir le PIN du propriétaire
-status_server_tills	Mode serveur — les caisses supplémentaires peuvent rejoindre. Déverrouiller
-status_server_unlock	Mode serveur — déverrouiller en Propriétaire
-status_client_unlock	Mode client — déverrouiller pour vendre
 icon_new_selected	Icône : nouveau fichier sélectionné — touchez Enregistrer la marque
 icon_custom	Icône : marque personnalisée de la boutique
 icon_default	Icône : marque Kumkaj (par défaut) — choisissez la vôtre
@@ -834,3 +826,7 @@ role_help_supplier	Rôle : Fournisseur — AP des achats.
 lane_declared_label	Envoi en compte
 lane_owner_label	Envoi au comptant
 money_lane_bill	Facture : {lane}
+sel_copy	Copier
+sel_select_all	Tout sélectionner
+sel_copied	Copié
+nav_loading	Chargement…

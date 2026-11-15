@@ -1,5 +1,11 @@
 impl MatchEvent for App {
     fn handle_startup(&mut self, cx: &mut Cx) {
+        // Pages and work desks pan with a mouse press-drag: a drag on copy
+        // pans; mouse selection starts on a 0.5 s still hold, double / triple
+        // click, Ctrl+A or right-click (Khaynjo lesson, 2026-11-13 — without
+        // this a drag that started on text selected instead of panning).
+        makepad_widgets::text_flow::MOUSE_HOLD_TO_SELECT
+            .store(true, std::sync::atomic::Ordering::Relaxed);
         app_state().lock().unwrap().live_timer = cx.start_interval(LIVE_REFRESH_SECS);
         self.sync_chrome(cx);
     }
@@ -34,13 +40,17 @@ impl MatchEvent for App {
             self.ui.widget(cx, ids!(paired_list)).redraw(cx);
             return;
         }
-        let (undo_hit, snack_hit) = {
+        let (undo_hit, snack_hit, format_hit) = {
             let st = app_state().lock().unwrap();
             (
                 !st.undo_timer.is_empty() && st.undo_timer.is_timer(e).is_some(),
                 !st.snack_timer.is_empty() && st.snack_timer.is_timer(e).is_some(),
+                !st.format_save_timer.is_empty() && st.format_save_timer.is_timer(e).is_some(),
             )
         };
+        if format_hit {
+            self.flush_format_autosave(cx);
+        }
         if undo_hit {
             self.clear_undo_snackbar(cx);
             self.sync_chrome(cx);
@@ -109,8 +119,10 @@ impl MatchEvent for App {
 
     fn handle_actions(&mut self, cx: &mut Cx, actions: &Actions) {
         let _span = stall_span("handle_actions");
+        self.handle_thumb_decodes(cx, actions);
         self.refresh_form_tab_anchor(cx);
         let _ = self.handle_form_field_returned(cx, actions);
+        self.handle_selection_actions(cx, actions);
         self.tab_chevron_clicks(cx, actions);
         self.handle_actions_nav_books_lock(cx, actions);
         self.handle_actions_parties(cx, actions);

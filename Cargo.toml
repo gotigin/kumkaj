@@ -41,6 +41,15 @@ exclude = [
 ]
 resolver = "2"
 
+# Every dependency (Makepad included) is optimised in dev builds; the app
+# crates themselves stay unoptimised and debuggable. Unoptimised Makepad text
+# layout, widget creation and tree lookups made `cargo khaynjo-dev` freeze for
+# 1–2 s on taps that take ~0.1 s in release (first + Add dishes 2.2 s →
+# 0.19 s, start-up 1.4 s → none; measured 2026-11-13). One-time cost: a
+# clean dev build of the dependencies takes about a minute longer.
+[profile.dev.package."*"]
+opt-level = 2
+
 # Image codecs are optimised even in dev builds. Unoptimised, one ~470×1024
 # dish photo took ~250 ms to decode, so photo thumbs crawled in during
 # `cargo khaynjo-dev` / `cargo moklanjo-dev`. Build speed only — no product

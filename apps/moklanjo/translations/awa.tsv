@@ -39,7 +39,7 @@ adding_item	नवा दर जोड़त हन
 editing_item	बदलत हन
 save	सहेजौ
 remove	हटावौ
-empty_catalog	अबहीं कौनौ दर नाहीं। दर अउर सेवा खोलौ, एक जोड़ौ (नाम + दाम, इकाई kg), फिर बुकिंग।
+empty_catalog	अबहीं कौनौ दर नाहीं।
 counter_sale	काउंटर बुकिंग
 total	कुल
 cash	नकद
@@ -171,8 +171,6 @@ selected_language	चुना
 continue	आगे बढ़ौ
 this_device	ई डिवाइस
 device_use_q	ई डिवाइस कइसे इस्तेमाल होई?
-last_server_mode	सर्वर रहा — आगे बढ़ै का दबावौ
-last_client_mode	क्लाइंट रहा — आगे बढ़ै का दबावौ
 choose_server	सर्वर चुनौ
 choose_server_hint	पुरान सर्वर खोलौ, या दूसर कारोबार खातिर नवा बनावौ।
 create_new_server	नवा सर्वर बनावौ
@@ -501,8 +499,6 @@ job_layout	बनावट
 job_delivery	काम कइसे भेजा जात है
 job_size	अक्षर आकार
 job_size_ph	जइसे 18, 20, 26…
-save_receipt_format	रसीद कै रूप सहेजौ
-save_label_format	लेबल कै रूप सहेजौ
 test_receipt_format	टेस्ट रसीद
 test_label_format	टेस्ट लेबल
 test_receipt_sent	नमूना रसीद भेजी
@@ -610,7 +606,7 @@ units_heading	इकाई
 booking_measures	बुकिंग कै नाप
 drawer_count	दराज गिनती (मर्जी कै)
 spreadsheet_csv	स्प्रेडसीट (CSV)
-bank_reconciliation	बैंक मिलान (बैंक ब्यौरा से मिलाइके टिक करौ)
+bank_reconciliation	बैंक मिलान
 book_add_product	बही — उत्पाद / दर जोड़ौ
 book_opening_credit	बही — सुरू कै उधार
 account_kind	खाता कै किसिम (एक दबावौ)
@@ -650,7 +646,7 @@ net_word	सुद्ध
 offline_badge	ऑफलाइन
 optional_login_help	मर्जी कै लॉगिन (id + पासवर्ड)। मालिक एक बार रखत हैं; बाद मा बस उपयोगकर्ता पासवर्ड बदल सकत है।
 or_unlock_login	या लॉगिन id + पासवर्ड से अनलॉक करौ
-permission_preset	काम (स्क्रीन अउर अधिकार तय करत है)
+permission_preset	काम
 preset_help_moklanjo	कैसियर: बेचब। मैनेजर: बेचब + सामान + रद्द/सुधार।
 product_locked_moklanjo	Moklanjo
 product_only_moklanjo	ई ऐप बस Moklanjo है — बही + बुकिंग डेस्क। दूसर कारोबार कै रूप बाद मा अलग उत्पाद के रूप मा आइहैं।
@@ -698,10 +694,6 @@ pin_hint_paired	अतिरिक्त टिल जुड़ा — बेच
 pin_hint_pair_first	अतिरिक्त टिल — पहिले दुकान कै डिवाइस से जोड़ौ
 unlock_to_continue	आगे बढ़ै खातिर अनलॉक करौ
 no_staff_yet	अबहीं तक करमचारी नाहीं — मालिक के रूप मा अनलॉक करौ, फिर टीम
-status_server_set_pin	सर्वर मोड — मालिक कै PIN रखौ
-status_server_tills	सर्वर मोड — अतिरिक्त टिल जुड़ सकत हैं। अनलॉक करौ
-status_server_unlock	सर्वर मोड — मालिक के रूप मा अनलॉक करौ
-status_client_unlock	क्लाइंट मोड — बेचै खातिर अनलॉक करौ
 icon_new_selected	आइकन: नवा फाइल चुनी — ब्रांड सहेजौ दबावौ
 icon_custom	आइकन: आपन दुकान कै निसान
 icon_default	आइकन: Kumkaj निसान (डिफॉल्ट) — आपन चुनौ
@@ -834,3 +826,7 @@ role_help_supplier	भूमिका: सप्लायर — खरीद �
 lane_declared_label	खाता बुकिंग
 lane_owner_label	नकद बुकिंग
 money_lane_bill	बिल: {lane}
+sel_copy	कॉपी करौ
+sel_select_all	सब चुनौ
+sel_copied	कॉपी होइ गा
+nav_loading	लोड होत अहै…

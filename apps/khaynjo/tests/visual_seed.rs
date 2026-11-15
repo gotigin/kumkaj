@@ -1,6 +1,7 @@
-//! Seeds a realistic restaurant (Rajdhani-style floor: D1–D8, P1–P4, every
-//! visit state, photos and initials) into a shop database so the UI can be
-//! looked at, not guessed (docs/DEV.md § Look at the screen). Opt-in only.
+//! Seeds a neutral demo restaurant ("Demo Kitchen": D1–D8, P1–P4, every
+//! visit state, photos and initials — never a client's menu or staff) into
+//! a shop database so the UI can be looked at, not guessed (docs/DEV.md
+//! § Look at the screen). Opt-in only.
 //!
 //! Prefer a data folder (creates the local Server + Owner PIN **1234**):
 //! ```text
@@ -20,7 +21,7 @@ fn seed_visual() {
     let s = if let Ok(base) = std::env::var("SEED_DATA_DIR") {
         let base = PathBuf::from(base);
         std::fs::create_dir_all(&base).unwrap();
-        let (_, store) = local_servers::create_local_server(&base, "Rajdhani Thali").unwrap();
+        let (_, store) = local_servers::create_local_server(&base, "Demo Kitchen").unwrap();
         store.complete_owner_setup("1234").unwrap();
         store
     } else {
@@ -31,7 +32,7 @@ fn seed_visual() {
         store
     };
     s.complete_onboarding().unwrap();
-    s.set_venue_title("Rajdhani Thali").unwrap();
+    s.set_venue_title("Demo Kitchen").unwrap();
     let owner = s
         .list_staff()
         .unwrap()
@@ -46,19 +47,19 @@ fn seed_visual() {
     let shelf = std::path::Path::new(env!("CARGO_MANIFEST_DIR")).join("assets/items");
     // A real-sized menu in categories, so the order desk chips and tile
     // grid are looked at with something to show.
-    let thali = s.add_category("Thali").unwrap().id;
+    let mains = s.add_category("Mains").unwrap().id;
     let south = s.add_category("South Indian").unwrap().id;
     let starters = s.add_category("Starters").unwrap().id;
     let drinks = s.add_category("Drinks").unwrap().id;
     let dishes = [
         (
-            "Gujarati Thali",
-            250,
-            &thali,
+            "Dal Makhani",
+            220,
+            &mains,
             Some("indian-mains/dal-makhani.webp"),
         ),
-        ("Kathiyawadi Thali", 280, &thali, None),
-        ("Mini Thali", 160, &thali, None),
+        ("Paneer Butter Masala", 260, &mains, None),
+        ("Veg Biryani", 210, &mains, None),
         (
             "Masala Dosa",
             120,
@@ -71,8 +72,8 @@ fn seed_visual() {
         ("Paneer Tikka (Half)", 140, &starters, None),
         ("Paneer Tikka (Full)", 240, &starters, None),
         ("Hara Bhara Kabab", 160, &starters, None),
-        ("Chaas", 30, &drinks, None),
-        ("Sosyo", 25, &drinks, None),
+        ("Buttermilk", 30, &drinks, None),
+        ("Bottled Water", 20, &drinks, None),
         ("Masala Chai", 20, &drinks, None),
         ("Fresh Lime Soda", 60, &drinks, None),
     ];
@@ -82,8 +83,8 @@ fn seed_visual() {
         if name.starts_with("Paneer") {
             p.group_name = "Paneer Tikka".into();
         }
-        // Bottled Sosyo is bought and resold as is; counted like stock.
-        if name == "Sosyo" {
+        // Bottled water is bought and resold as is; counted like stock.
+        if name == "Bottled Water" {
             p.kind = ITEM_KIND_RESALE.into();
             p.stock_qty = 24;
         }
@@ -120,18 +121,18 @@ fn seed_visual() {
         s.send_kot(&c.to_kot_draft().unwrap(), Some(&t(table)), &owner)
             .unwrap()
     };
-    kot(&s, "D1", &["Gujarati Thali", "Chaas"]);
+    kot(&s, "D1", &["Dal Makhani", "Buttermilk"]);
     let k2 = kot(&s, "D2", &["Masala Dosa"]);
     for _ in 0..2 {
         s.advance_kot(&k2[0], &owner).unwrap();
     }
-    let k3 = kot(&s, "D3", &["Paneer Tikka (Full)", "Sosyo"]);
+    let k3 = kot(&s, "D3", &["Paneer Tikka (Full)", "Bottled Water"]);
     for k in &k3 {
         for _ in 0..3 {
             s.advance_kot(k, &owner).unwrap();
         }
     }
-    let k4 = kot(&s, "D4", &["Gujarati Thali", "Gujarati Thali"]);
+    let k4 = kot(&s, "D4", &["Veg Biryani", "Veg Biryani"]);
     for _ in 0..3 {
         s.advance_kot(&k4[0], &owner).unwrap();
     }
@@ -148,7 +149,7 @@ fn seed_visual() {
         &owner,
     )
     .unwrap();
-    kot(&s, "P1", &["Sosyo", "Chaas"]);
+    kot(&s, "P1", &["Bottled Water", "Buttermilk"]);
     for x in s.list_tables().unwrap() {
         println!("{} {:?} {:?}", x.name, x.area, x.floor_state);
     }

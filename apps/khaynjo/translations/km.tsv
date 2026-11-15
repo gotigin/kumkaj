@@ -41,7 +41,7 @@ remove	ដកចេញ
 removed_items	ទំនិញដែលបានដក
 removed_help	ការស្ដារនាំទំនិញត្រឡប់ទៅម៉ឺនុយដូចដើម — តម្លៃ រូប និងប្រភេទ។ ធ្នើម្ហូបរបស់យើងមិនត្រូវបានដក ដូច្នេះម្ហូបអាចបន្ថែមវិញបានជានិច្ច។
 restore_item	ស្ដារ
-empty_catalog	មិនទាន់មានម្ហូប។ បើកម៉ឺនុយ បន្ថែមម្ហូប (ឈ្មោះ + តម្លៃ) រួចទទួលការកុម្ម៉ង់។
+empty_catalog	មិនទាន់មានម្ហូប។
 total	សរុប
 cash	សាច់ប្រាក់
 upi	UPI
@@ -103,23 +103,14 @@ bill_item_qty	បរិមាណ
 bill_item_price	តម្លៃ
 bill_item_amount	ទឹកប្រាក់
 bill_item_note	កំណត់ចំណាំម្ហូប
-bill_item_col_gap	ចន្លោះជួរឈរ
 bill_item_col_order	លំដាប់ជួរឈរ
 bill_item_col_sep	បន្ទាត់ជួរឈរ
-bill_item_gap_tight	តឹង
-bill_item_gap_comfort	ស្រួល
-bill_item_gap_wide	ទូលាយ
-bill_item_num_width	ជួរឈរលេខ
-bill_item_num_compact	តឹង
-bill_item_num_comfort	ស្រួល
-bill_item_num_wide	ទូលាយ
-bill_item_num_align	តម្រឹមលេខ
-bill_item_gap_em	ចន្លោះ (em)
-bill_item_qty_min	បរិមាណអប្បបរមា (em)
-bill_item_price_min	តម្លៃអប្បបរមា (em)
-bill_item_amount_min	ទឹកប្រាក់អប្បបរមា (em)
-kot_item_qty_width	ជួរឈរបរិមាណ
-kot_item_num_align	តម្រឹមបរិមាណ
+slip_columns	ជួរឈរ
+slip_col_width	ទទឹង (mm)
+slip_col_start	ចន្លោះដើម (px)
+slip_col_end	ចន្លោះចុង (px)
+slip_col_align	ការតម្រឹមអត្ថបទ
+slip_columns_help	ទទឹងនៃជួរឈរនីមួយៗរួមបញ្ចូលចន្លោះដើម និងចន្លោះចុងរបស់វា។ អត្ថបទរុំនៅក្នុងជួរឈររបស់វា; អ្វីដែលលើសពីទទឹងមាតិកានឹងត្រូវកាត់ចេញ ទាំងលើក្រដាស និងក្នុងការមើលជាមុន។
 bill_total_qty_label	ស្លាកសរុបបរិមាណ
 bill_total_subtotal_label	ស្លាកសរុបរង
 bill_total_grand_label	ស្លាកសរុបធំ
@@ -221,7 +212,6 @@ sidebar_order_saved	លំដាប់ចំហៀងបានរក្សាទ
 sidebar_visibility_saved	ការបង្ហាញចំហៀងបានរក្សាទុក
 amounts_hide	លាក់
 amounts_show	បង្ហាញ
-printers_none_hint	រក្សាទុកម៉ាស៊ីនបោះពុម្ពលើឧបករណ៍នេះជាមុនសិន រួចបន្ថែមទៅវិក្កយបត្រ ឬផ្ទះបាយ
 counter	តុលក់
 dine_in	ញ៉ាំនៅទីនេះ
 takeaway	យកទៅ
@@ -328,8 +318,6 @@ selected_language	បានជ្រើស
 continue	បន្ត
 this_device	ឧបករណ៍នេះ
 device_use_q	ឧបករណ៍នេះនឹងប្រើយ៉ាងដូចម្ដេច?
-last_server_mode	ធ្លាប់ជា Server — ប៉ះដើម្បីបន្ត
-last_client_mode	ធ្លាប់ជាម៉ាស៊ីនភ្ញៀវ — ប៉ះដើម្បីបន្ត
 choose_server	ជ្រើស server
 choose_server_hint	បើក server ដែលមាន ឬបង្កើតសម្រាប់អាជីវកម្មផ្សេង។
 create_new_server	បង្កើត server ថ្មី
@@ -391,7 +379,7 @@ attachments_last_expense	ឯកសារភ្ជាប់ (ចំណាយច�
 bank	ធនាគារ
 bank_in	ធនាគារចូល
 bank_out	ធនាគារចេញ
-bank_reconciliation	ផ្គូផ្គងធនាគារ (ធីកជាមួយរបាយការណ៍ធនាគាររបស់អ្នក)
+bank_reconciliation	ផ្គូផ្គងធនាគារ
 bank_to_till	ធនាគារ → បញ្ជរ
 book_add_dish	សៀវភៅ — បន្ថែមម្ហូប / ទំនិញ
 book_opening_credit	សៀវភៅ — ជំពាក់ដើម
@@ -744,7 +732,6 @@ station_print_pick_first	ជ្រើសស្ថានីយផ្ទះបា�
 station_print_editing	កំពុងកែម៉ាស៊ីនសម្រាប់ “{name}”
 station_vps_dd	ម៉ាស៊ីនសម្រាប់ស្ថានីយនេះ
 station_vps_dd_n	ម៉ាស៊ីន {n} · ប៉ះដើម្បីប្ដូរ
-station_vps_empty	មិនទាន់មានម៉ាស៊ីន — ស្វែងរកក្រោម ការកំណត់ → ម៉ាស៊ីនបោះពុម្ព
 bill_printers_dd	ម៉ាស៊ីនសម្រាប់វិក្កយបត្រ
 bill_printers_dd_n	ម៉ាស៊ីន {n} សម្រាប់វិក្កយបត្រ · ប៉ះដើម្បីប្ដូរ
 job_layout	ប្លង់
@@ -889,7 +876,7 @@ net_word	សុទ្ធ
 offline_badge	ក្រៅបណ្ដាញ
 optional_login_help	ការចូលស្រេចចិត្ត (អត្តសញ្ញាណ + ពាក្យសម្ងាត់)។ ម្ចាស់កំណត់ម្ដង; មានតែអ្នកប្រើប្ដូរពាក្យសម្ងាត់ពេលក្រោយបាន។
 or_unlock_login	ឬដោះសោដោយអត្តសញ្ញាណចូល + ពាក្យសម្ងាត់
-permission_preset	ការងារ (កំណត់អេក្រង់ និងសកម្មភាពលុយ)
+permission_preset	ការងារ
 preset_help_khaynjo	អ្នកគិតលុយ៖ លក់។ អ្នកចាត់ការ៖ លក់ + ទំនិញ + លុបចោល/កែ។
 product_locked_khaynjo	Khaynjo
 product_only_khaynjo	កម្មវិធីនេះជា Khaynjo តែប៉ុណ្ណោះ — ប្រព័ន្ធដំណើរការភោជនីយដ្ឋាន។ មុខជំនួញផ្សេងចេញជាផលិតផល Kumkaj ដាច់ដោយឡែក។
@@ -961,10 +948,6 @@ pin_hint_paired	បញ្ជរបន្ថែមបានផ្គូផ្គ�
 pin_hint_pair_first	បញ្ជរបន្ថែម — ផ្គូផ្គងទៅឧបករណ៍ហាងជាមុនសិន
 unlock_to_continue	ដោះសោដើម្បីបន្ត
 no_staff_yet	មិនទាន់មានបុគ្គលិក — ដោះសោជាម្ចាស់ រួចក្រុម
-status_server_set_pin	របៀប Server — កំណត់ PIN ម្ចាស់
-status_server_tills	របៀប Server — បញ្ជរបន្ថែមអាចចូលរួម។ ដោះសោ
-status_server_unlock	របៀប Server — ដោះសោជាម្ចាស់
-status_client_unlock	របៀបម៉ាស៊ីនភ្ញៀវ — ដោះសោដើម្បីលក់
 icon_new_selected	រូបតំណាង៖ ឯកសារថ្មីបានជ្រើស — ប៉ះរក្សាទុកម៉ាក
 icon_custom	រូបតំណាង៖ ស្លាកទីតាំងផ្ទាល់ខ្លួន
 icon_default	រូបតំណាង៖ ស្លាក Kumkaj (លំនាំដើម) — ជ្រើសមួយផ្ទាល់ខ្លួន
@@ -1033,7 +1016,7 @@ book_kind_balance	តារាងតុល្យការ
 order_help	ប៉ះទំនិញដើម្បីបន្ថែម។
 floor_help	ប៉ះតុដើម្បីទទួល ឬប្ដូរការកុម្ម៉ង់។ ពណ៌បង្ហាញទំនេរ → អង្គុយ → ផ្ទះបាយ → រួច → កំពុងញ៉ាំ → វិក្កយបត្រ → បានបង់។ បញ្ជីរង់ចាំ ការកក់ និងបន្ថែមតុនៅផ្នែកខាងក្រោម។
 kitchen_help	សន្លឹកផ្ទះបាយ (KOT) ថ្មីបំផុតនៅចុង។ ចាប់ផ្ដើម → រួច → រួចរាល់ រំកិលសន្លឹក។ សន្លឹកមិនដែលបង្ហាញតម្លៃ។
-kitchen_empty	គ្មានសន្លឹកបើក។ KOT ផ្ញើពីការកុម្ម៉ង់ ឬសាលបង្ហាញនៅទីនេះ។
+kitchen_empty	គ្មានសន្លឹកបើក។
 add_a_table	បន្ថែមតុ
 add_station_heading	បន្ថែមស្ថានីយផ្ទះបាយ
 categories_help	ប៉ះប្រើដើម្បីដាក់ទំនិញខាងលើក្រោមប្រភេទនោះ។ រូបឱ្យប្រភេទមានរូប; គ្មានរូបវាបង្ហាញអក្សរដើម។
@@ -1131,7 +1114,6 @@ bill_format_help	បោះពុម្ពក្រោមឈ្មោះភោជ
 bill_header_ph	អាសយដ្ឋាន | ទូរស័ព្ទ
 fssai_ph	លេខអាជ្ញាប័ណ្ណ FSSAI (ឥណ្ឌា)
 bill_footer_ph	បាត (ឧ. អរគុណ សូមមកម្ដងទៀត)
-save_bill_format	រក្សាទុកទម្រង់វិក្កយបត្រ
 reset_bill_format	ត្រឡប់ទៅលំនាំដើម
 bill_format_reset	ទម្រង់វិក្កយបត្របានត្រឡប់ទៅលំនាំដើម
 reset_kot_format	ត្រឡប់ទៅលំនាំដើម
@@ -1201,13 +1183,11 @@ kot_copies_3	3
 kot_title_ph	ចំណងជើង (ទទេ = KOT - KITCHEN ORDER)
 kot_footer_ph	កំណត់ចំណាំផ្ទះបាយ (ស្រេចចិត្ត គ្មានតម្លៃ)
 kot_preview	មើលជាមុន
-save_kot_format	រក្សាទុកទម្រង់ KOT
 test_kot_format	KOT សាក
 test_kot_sent	មើលជាមុនសន្លឹកផ្ទះបាយបានផ្ញើ
 test_bill_format	វិក្កយបត្រសាក
 test_bill_sent	មើលជាមុនវិក្កយបត្របានផ្ញើ
 test_print_no_printer	គ្មានម៉ាស៊ីនសម្រាប់ការងារនោះ — ជ្រើសមួយលើអេក្រង់នេះ
-kot_format_saved	ទម្រង់ KOT បានរក្សាទុក
 std_print	ទំហំបោះពុម្ពវិក្កយបត្រ
 std_print_help	ទំហំអក្សរសម្រាប់ការងារវិក្កយបត្រ បញ្ឈរ និងផ្ដេកស្តង់ដារលើម៉ាស៊ីនប្រព័ន្ធ / ឯកសារ (បញ្ចូលចំណុច — មិនមែនតូច/ធម្មតា/ធំ)។ ទំហំដដែលទាំងពីរទិស។ ទំហំសន្លឹកផ្ទះបាយនៅផ្ទាំង KOT។
 std_size_s	តូច
@@ -1264,7 +1244,6 @@ new_items_head	មិនទាន់ផ្ញើ
 price_ph	តម្លៃ
 price_ph_gst_inside	តម្លៃ ({tax} ក្នុងតម្លៃ)
 cancel_needs_table	បើកការកុម្ម៉ង់នេះពីសាល (តុ) ដើម្បីលុបចោលក្រោយផ្ទះបាយទទួល — KOT តុលក់នៅលើសន្លឹករហូតអ្នកទទួលការបង់
-tax_rates_missing_hint	គ្មានអត្រា {tax} លើម្ហូបទាំងនេះ — នៅម៉ឺនុយកំណត់អត្រាពន្ធ (តម្លៃមាន {tax} រួចហើយក្រោម {tax} ក្នុងតម្លៃ)
 taxable_value	តម្លៃជាប់ពន្ធ
 gst_inside_price_note	({tax} ក្នុងតម្លៃ)
 start_with_template	ចាប់ផ្ដើមដោយគំរូម៉ឺនុយរបស់យើង
@@ -1318,9 +1297,7 @@ order_empty_pick	ការកុម្ម៉ង់ទទេ — ប៉ះបន�
 add_dishes	បន្ថែមម្ហូប
 order_so_far	លើការកុម្ម៉ង់នេះ៖ {n} · {total}
 no_dish_match	គ្មានម្ហូបត្រូវ “{q}”
-pick_dishes_help	ប៉ះម្ហូបដើម្បីបន្ថែម · ជ្រើសប្រភេទដើម្បីបង្រួមបញ្ជី
 pick_done	រួចរាល់
-pick_done_dd	រួចរាល់ · {label}
 printer_route_mode	បើមានម៉ាស៊ីនច្រើននៅកន្លែងនេះ
 printer_mode_first	ដំបូងដែលដំណើរការ
 printer_mode_all	បោះពុម្ពទាំងអស់
@@ -1368,3 +1345,22 @@ recent_changes	ការផ្លាស់ប្ដូរថ្មីៗ
 lane_declared_label	វិក្កយបត្រពន្ធ
 lane_owner_label	កំណត់ចំណាំសាច់ប្រាក់
 money_lane_bill	វិក្កយបត្រ៖ {lane}
+sel_copy	ចម្លង
+sel_select_all	ជ្រើសរើសទាំងអស់
+sel_copied	បានចម្លង
+items_tmpl_khaynjo	គំរូទំនិញ Khaynjo
+items_tmpl_named	គំរូ {name}
+app_tmpl_named	គំរូកម្មវិធី {name}
+private_code_ph	លេខកូដ 12 ខ្ទង់
+stamp_on	ត្រា៖ មានឯកសារ
+pay_qr_on	QR បង់៖ មានឯកសារ
+pay_qr_off	QR បង់៖ គ្មាន
+items_tmpl_heading	គំរូមុខទំនិញ
+items_tmpl_help	ម្ហូប ប្រភេទ និងរូបថតសម្រាប់ម៉ឺនុយរបស់អ្នក។ ការកំណត់ហាង និងបុគ្គលិកនៅដដែល។
+public_tmpl_help	ម៉ឺនុយចាប់ផ្ដើមដែលអ្នកណាក៏អាចទាញយកបាន។ ត្រូវការអ៊ីនធឺណិតម្ដង។
+private_tmpl_help	ម៉ឺនុយអតិថិជនដែលចាក់សោដោយលេខកូដ 12 ខ្ទង់ពីទំនាក់ទំនង Khaynjo របស់អ្នក។
+printers_screen_tip	ស្វែងរកបង្ហាញម៉ាស៊ីនបោះពុម្ពដែលឧបករណ៍នេះអាចប្រើបាន ហើយរក្សាទុកសម្រាប់ហាងនេះ។ ម៉ាស៊ីនបោះពុម្ពវិក្កយបត្រ៖ ទម្រង់វិក្កយបត្រ និង KOT → វិក្កយបត្រ។ ផ្ទះបាយ៖ ផ្ទះបាយ → ស្ថានីយផ្ទះបាយ។
+printers_found_none	រកមិនឃើញម៉ាស៊ីនបោះពុម្ពទេ។
+kot_copy_from	ចម្លងពី
+kot_copy_from_help	ចម្លងទំហំ កម្រាស់ និងការតម្រឹមនៃបន្ទាត់នីមួយៗពីប្រភេទនោះមកប្រភេទនេះ។ ប្រភេទនេះរក្សាបដា បុព្វបទមុខទំនិញ និងការគូសឆូតរបស់ខ្លួន។ រក្សាទុកទម្រង់ KOT ដើម្បីរក្សាវា។
+nav_loading	កំពុងផ្ទុក…

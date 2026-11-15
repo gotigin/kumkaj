@@ -221,6 +221,21 @@ fn restore_busy() -> &'static std::sync::atomic::AtomicBool {
     &BUSY
 }
 
+/// A worker holds the books (import / restore / backup / printer search…):
+/// the UI runs no SQL then — busy_timeout waits look like a freeze.
+fn heavy_books_job() -> bool {
+    restore_busy().load(std::sync::atomic::Ordering::SeqCst)
+        || csv_import_busy().load(std::sync::atomic::Ordering::SeqCst)
+        || backup_busy().load(std::sync::atomic::Ordering::SeqCst)
+        || backup_copy_busy().load(std::sync::atomic::Ordering::SeqCst)
+        || branch_busy().load(std::sync::atomic::Ordering::SeqCst)
+        || diag_export_busy().load(std::sync::atomic::Ordering::SeqCst)
+        || printer_add_busy().load(std::sync::atomic::Ordering::SeqCst)
+        || print_share::is_finding_printers()
+        || role_open_busy().load(std::sync::atomic::Ordering::SeqCst)
+        || client_pair_busy().load(std::sync::atomic::Ordering::SeqCst)
+}
+
 fn restore_cancel() -> &'static std::sync::atomic::AtomicBool {
     static CANCEL: std::sync::atomic::AtomicBool = std::sync::atomic::AtomicBool::new(false);
     &CANCEL
@@ -507,6 +522,21 @@ fn request_books_job_cancel() {
     }
 }
 
+/// The job (receipt / AWB label) whose "no printer" warning opened the
+/// Printers sheet: tapping a printer there gives it this job.
+fn printers_sheet_route() -> &'static Mutex<Option<print_share::RouteKey>> {
+    static SLOT: OnceLock<Mutex<Option<print_share::RouteKey>>> = OnceLock::new();
+    SLOT.get_or_init(|| Mutex::new(None))
+}
+
+/// Set by a Find printers tap (sheet or panel). The scan wakes the UI once,
+/// when it is done, so the Signal hook cannot see it running; this flag
+/// says a scan was started and its end is still to be acted on.
+fn find_printers_armed() -> &'static std::sync::atomic::AtomicBool {
+    static ARMED: std::sync::atomic::AtomicBool = std::sync::atomic::AtomicBool::new(false);
+    &ARMED
+}
+
 fn printer_add_busy() -> &'static std::sync::atomic::AtomicBool {
     static BUSY: std::sync::atomic::AtomicBool = std::sync::atomic::AtomicBool::new(false);
     &BUSY
@@ -721,12 +751,33 @@ fn set_role_open_interrupt(handle: Option<rusqlite::InterruptHandle>) {
     *role_open_interrupt().lock().unwrap() = handle;
 }
 
+/// Every role open, and every Cancel, starts a new generation. A worker's
+/// result lands only while its generation is still current, so Cancel hands
+/// the Server / Client choice back at once — the worker may still be inside a
+/// slow first open on a phone; what it returns later is closed and dropped.
+fn role_open_gen() -> &'static std::sync::atomic::AtomicU64 {
+    static GEN: std::sync::atomic::AtomicU64 = std::sync::atomic::AtomicU64::new(0);
+    &GEN
+}
+
+fn role_open_stale(open_gen: u64) -> bool {
+    role_open_gen().load(std::sync::atomic::Ordering::SeqCst) != open_gen
+}
+
 fn request_role_open_cancel() {
     role_open_cancel().store(true, std::sync::atomic::Ordering::SeqCst);
-    set_books_work_status(&app_t("cancelling"));
     if let Some(handle) = role_open_interrupt().lock().unwrap().as_ref() {
         handle.interrupt();
     }
+    role_open_gen().fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+    // A result that landed but was not shown yet is the cancelled one too.
+    if let Some(Ok(ready)) = role_open_once().lock().unwrap().take() {
+        let _ = std::thread::Builder::new()
+            .name("role-open-drop".into())
+            .spawn(move || drop(ready));
+    }
+    role_open_busy().store(false, std::sync::atomic::Ordering::SeqCst);
+    clear_books_work_status();
     makepad_widgets::makepad_platform::thread::SignalToUI::set_ui_signal();
 }
 
@@ -742,19 +793,82 @@ fn role_open_once() -> &'static Mutex<Option<Result<RoleOpenReady, String>>> {
     SLOT.get_or_init(|| Mutex::new(None))
 }
 
+/// When each stage of the current Server / Client open happened — logged
+/// once the screen is up (`role_open` in diag, `Kumkaj open:` in the log).
+/// An AGS2 Client tap once took 12–20 s to show pairing and nothing said
+/// where (2026-11-14): the next slow open says which stage it was.
+#[derive(Default)]
+struct RoleOpenTimes {
+    what: String,
+    started: Option<std::time::Instant>,
+    worker_done: Option<std::time::Instant>,
+    ui_took: Option<std::time::Instant>,
+}
+
+fn role_open_times() -> &'static Mutex<RoleOpenTimes> {
+    static TIMES: OnceLock<Mutex<RoleOpenTimes>> = OnceLock::new();
+    TIMES.get_or_init(|| Mutex::new(RoleOpenTimes::default()))
+}
+
+/// The UI took the worker's result (stage 3 of 4).
+fn note_role_open_ui_took() {
+    role_open_times().lock().unwrap().ui_took = Some(std::time::Instant::now());
+}
+
+/// Log the open that just ended: worker, wait for the UI, screen, total.
+fn log_role_open_times() {
+    let t = std::mem::take(&mut *role_open_times().lock().unwrap());
+    let Some(started) = t.started else {
+        return;
+    };
+    let now = std::time::Instant::now();
+    let ms = |a: Option<std::time::Instant>, b: std::time::Instant| {
+        a.map(|a| b.saturating_duration_since(a).as_millis().to_string()).unwrap_or_else(|| "-".into())
+    };
+    let worker = t.worker_done.unwrap_or(now);
+    let ui = t.ui_took.unwrap_or(now);
+    let total = now.saturating_duration_since(started).as_millis();
+    let msg = format!(
+        "{}: worker {} ms · wait for the UI {} ms · screen {} ms · total {total} ms",
+        t.what,
+        ms(Some(started), worker),
+        ms(t.worker_done, ui),
+        ms(t.ui_took, now),
+    );
+    makepad_widgets::log!("Kumkaj open: {msg}");
+    if total >= 2000 {
+        diag::warn(diag::Cat::Ui, "role_open", &msg);
+    } else {
+        diag::info(diag::Cat::Ui, "role_open", &msg);
+    }
+}
+
 fn role_open_start(status: &str) -> bool {
     if role_open_busy().swap(true, std::sync::atomic::Ordering::SeqCst) {
         return false;
     }
+    *role_open_times().lock().unwrap() = RoleOpenTimes {
+        what: status.trim_end_matches('…').trim().to_string(),
+        started: Some(std::time::Instant::now()),
+        ..RoleOpenTimes::default()
+    };
     role_open_cancel().store(false, std::sync::atomic::Ordering::SeqCst);
+    role_open_gen().fetch_add(1, std::sync::atomic::Ordering::SeqCst);
     set_role_open_interrupt(None);
     set_books_work_status(status);
     makepad_widgets::makepad_platform::thread::SignalToUI::set_ui_signal();
     true
 }
 
-fn role_open_finish(result: Result<RoleOpenReady, String>) {
+fn role_open_finish(open_gen: u64, result: Result<RoleOpenReady, String>) {
+    if role_open_stale(open_gen) {
+        // Cancelled meanwhile: the Server / Client choice is already back.
+        // Close what this worker opened, here on the worker.
+        drop(result);
+        return;
+    }
     set_role_open_interrupt(None);
+    role_open_times().lock().unwrap().worker_done = Some(std::time::Instant::now());
     let ok = result.is_ok();
     *role_open_once().lock().unwrap() = Some(result);
     if ok {
@@ -762,6 +876,7 @@ fn role_open_finish(result: Result<RoleOpenReady, String>) {
     } else {
         role_open_busy().store(false, std::sync::atomic::Ordering::SeqCst);
         clear_books_work_status();
+        log_role_open_times();
     }
     makepad_widgets::makepad_platform::thread::SignalToUI::set_ui_signal();
 }
@@ -780,6 +895,7 @@ fn drop_store_off_ui(old: Option<Store>) {
 fn end_role_open_busy() {
     role_open_busy().store(false, std::sync::atomic::Ordering::SeqCst);
     clear_books_work_status();
+    log_role_open_times();
 }
 
 fn role_cancelled() -> bool {
@@ -791,36 +907,37 @@ fn client_mode_job(base: PathBuf) {
     if !role_open_start(&app_t("opening_client")) {
         return;
     }
+    let open_gen = role_open_gen().load(std::sync::atomic::Ordering::SeqCst);
     let _ = std::thread::Builder::new()
         .name("moklanjo-client-mode".into())
         .spawn(move || {
             net::stop_server();
             let result = (|| -> Result<RoleOpenReady, String> {
-                if role_cancelled() {
+                if role_open_stale(open_gen) {
                     return Err("Cancelled".into());
                 }
                 let store = local_servers::open_client_store_cancellable(&base, |handle| {
                     set_role_open_interrupt(Some(handle))
                 })
                 .map_err(|e| {
-                    if role_cancelled() {
+                    if role_open_stale(open_gen) {
                         "Cancelled".into()
                     } else {
                         e
                     }
                 })?;
                 set_role_open_interrupt(None);
-                if role_cancelled() {
+                if role_open_stale(open_gen) {
                     return Err("Cancelled".into());
                 }
                 store.prepare_as_client_terminal()?;
                 store.set_device_role("client")?;
-                if role_cancelled() {
+                if role_open_stale(open_gen) {
                     return Err("Cancelled".into());
                 }
                 Ok(RoleOpenReady::Client(store))
             })();
-            role_open_finish(result);
+            role_open_finish(open_gen, result);
         });
 }
 
@@ -829,18 +946,19 @@ fn server_new_job(base: PathBuf, name: String) {
     if !role_open_start(&app_t("creating_server")) {
         return;
     }
+    let open_gen = role_open_gen().load(std::sync::atomic::Ordering::SeqCst);
     let _ = std::thread::Builder::new()
         .name("moklanjo-server-new".into())
         .spawn(move || {
             net::stop_server();
             let result = (|| -> Result<RoleOpenReady, String> {
                 let (_info, store) = local_servers::create_local_server(&base, &name)?;
-                if role_cancelled() {
+                if role_open_stale(open_gen) {
                     return Err("Cancelled".into());
                 }
                 Ok(RoleOpenReady::ServerNew(store))
             })();
-            role_open_finish(result);
+            role_open_finish(open_gen, result);
         });
 }
 
@@ -849,13 +967,14 @@ fn server_existing_job(base: PathBuf, server_id: String, switching_in: bool) {
     if !role_open_start(&app_t("opening_server")) {
         return;
     }
+    let open_gen = role_open_gen().load(std::sync::atomic::Ordering::SeqCst);
     let _ = std::thread::Builder::new()
         .name("moklanjo-server-open".into())
         .spawn(move || {
             net::stop_server();
             let result = (|| -> Result<RoleOpenReady, String> {
                 let store = local_servers::open_server(&base, &server_id)?;
-                if role_cancelled() {
+                if role_open_stale(open_gen) {
                     return Err("Cancelled".into());
                 }
                 Ok(RoleOpenReady::ServerExisting {
@@ -863,7 +982,7 @@ fn server_existing_job(base: PathBuf, server_id: String, switching_in: bool) {
                     switching_in,
                 })
             })();
-            role_open_finish(result);
+            role_open_finish(open_gen, result);
         });
 }
 
@@ -1211,6 +1330,10 @@ fn ime_suppress_refocus() -> &'static Mutex<bool> {
 /// diagnostics) so the slow path can be moved off the UI thread with
 /// Progress + Cancel (DEV.md 7b). Long ones (≥ 1 s) are warnings.
 const UI_STALL_LOG_MS: f64 = 250.0;
+
+/// Receipt / label format autosave: applied this long after the last typed
+/// width or size (or at once on leaving the screen).
+const FORMAT_AUTOSAVE_SECS: f64 = 0.8;
 
 fn note_ui_stall(event: &Event, took: Duration, tree: (u64, u64, u64, u64, u64)) {
     let ms = took.as_secs_f64() * 1000.0;

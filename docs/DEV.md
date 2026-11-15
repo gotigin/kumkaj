@@ -204,6 +204,27 @@ on every OS — never gate one on the device.
    chargeable kg, draft thumb). Full `sync_chrome` on every keystroke reloads
    Settings SQL and can hide the Android IME / freeze the shell. Reserve it
    for open, pick, Escape, Back, and focus-elsewhere close.
+9. **A dropdown looks like one** (owner 2026-11-14). Every control that
+   opens a pick list — a type-or-pick field or a dropdown button — sits in
+   `mod.widgets.ComboField{field: "<SuggestField key>" …}` (`"category"` =
+   the item form's category picker). After the control draws, ComboField
+   paints ˅ at its right edge, ˄ while the list is open; the state is read
+   from app state at draw time and re-checked on every event, and an open
+   list with no rows reads as closed. A dropdown button's face is its label
+   only. The old `Done · {label}` open face (`pick_done_dd`) stayed on the
+   button whenever the list closed another way (outside press, Back, a
+   screen change) — removed in all four apps. New pick list → wrap its
+   control in ComboField; never a face that changes with open state.
+10. **No printer saved → Find printers right there** (owner 2026-11-14).
+   Never tell the owner to go to Settings → Printers. A printer checklist
+   (bill, kitchen station, test page / KOT, assign) with no printer saved
+   shows one row, a **Find printers** button (`FIND_PRINTERS_ROW` →
+   `FindItem`); a "no printer" warning snack (`snack::wants_find_printers`)
+   carries the same button. Both open the **Printers sheet**
+   (`printers_modal`): the Printers panel's own Find / Cancel / saved list;
+   Done reopens the checklist that opened it with the printers just found.
+   Moklanjo's sheet also saves what Find found and gives the tapped printer
+   the job that was missing (receipt / AWB label).
 
 Manual check (mouse *and* finger): open each kind — Floor Columns, a type-or-
 pick field (Buy item), a dropdown button (Order Kitchen, Settings printers) —
@@ -246,7 +267,7 @@ every OS — never gate one on the device.
    else ignores it exactly as before. App row/card taps keep using
    `finger_up_is_tap` (bug **7h**) — a cancel is not a `FingerUp`.
 5. **Copy takes focus on a tap or a long-press, not on the press**
-   (`text_flow_touch_focus`). A swipe that starts on a selectable WrapLabel
+   (`text_selection`). A swipe that starts on a selectable WrapLabel
    no longer pulls key focus off the field being typed in (that dropped the
    soft keyboard mid-scroll and the page jumped). A tap on copy still focuses
    it (so it still blurs a field); mouse is unchanged.
@@ -274,6 +295,13 @@ every OS — never gate one on the device.
    change, run the smoke and grep the app log for `Kumkaj stall`; anything
    ≥ 1 s in a release build moves to a worker with Progress + Cancel (bug
    **7b**). On Android the same lines are in `adb logcat` under `Makepad`.
+   The stall meter only sees App event handling: a Makepad shader compile
+   or a worker that is slow is invisible to it. **Opening the books** (Server
+   / Client) therefore logs its own stages once the screen is up —
+   `Kumkaj open: Opening Client: worker N ms · wait for the UI N ms · screen
+   N ms · total N ms` and `role_open` in diagnostics (≥ 2 s as a warning),
+   every app (`runtime.rs`: `role_open_times`, added 2026-11-14 after an
+   AGS2 Client tap took 12–20 s with nothing saying where).
 8. **Progress text never outlives its job.** A worker's progress line goes
    on the status line through `show_work_status` (no snack — a toast per
    tick only flickered); when the job ends without a result line of its own,
@@ -303,6 +331,35 @@ every OS — never gate one on the device.
     content:// URI through JNI on Android, `fs::copy` elsewhere) — ran on
     the UI thread right after the save dialog and froze the till for seconds
     on a busy shop. It now shows the same "Making backup copy…" + Cancel.
+13. **Measure the dev build too, and per tap** (2026-11-13). The owner runs
+    `khaynjo-dev --hot` (unoptimized), where the same work costs ~10× more.
+    Two freezes the release A/B never showed: Settings → Bill & KOT 1.4 s
+    (the slip preview was rendered three times per open, each a 3× page
+    PNG **encoded then decoded** on the UI thread) and 1.4 s on the first
+    actions after start (the Floor tile tap scan ran on **every** action
+    batch on every screen and built every Floor row with `item()`). Rules:
+    a picture shown on screen goes to the texture as pixels
+    (`KotSlipPreview::show_slip`, `slip_page_gray`) and is skipped when its
+    key is unchanged; an action scan over list items runs only while that
+    screen shows and only over drawn items (`get_item`, never `item()`).
+    Find such paths by sampling the main thread: run the app under
+    `gdb -batch` with a command file of `thread 1` / `bt` / `continue`
+    repeated, and `kill -INT` the app every 50 ms during the slow tap.
+    Same evening: dish photos in lists decode on Makepad's image pool
+    (`load_thumb_at` in draw → `load_image_file_by_path_async`;
+    `App::handle_thumb_decodes` commits results no hidden Image took and
+    redraws once), and the workspace builds every dependency at
+    `opt-level = 2` in dev (`[profile.dev.package."*"]`) — first + Add
+    dishes 2.2 s → 0.19 s, start-up 1.4 s → none in `khaynjo-dev`.
+14. **A slow screen switch answers the tap with a loading screen** (Khaynjo
+    `go_with`, owner 2026-11-13). Every switch is timed from `go_with_now`
+    to its first draw (`note_nav_draw`); a screen whose last switch took
+    ≥ 1 s first shows `nav_loading` for one frame and switches on the next
+    `NextFrame` (`finish_nav_veil`), so the window never sits frozen on the
+    old screen. Fast switches are untouched (no flash). Test it with
+    `KUMKAJ_NAV_VEIL_MS=1` (log: `Kumkaj nav: loading screen for …`).
+    Work that can take seconds still goes to a worker with Progress +
+    Cancel (bug **7b**) — the loading screen is for paint cost only.
 
 Manual check (finger *and* mouse): swipe a list starting on a button (no
 pressed flash, no click), tap a small button with a little jitter (clicks),
@@ -310,6 +367,81 @@ press a button and drag off it (face drops, release does nothing), drag back
 on (pressed again), tap fast (pressed flash), start typing in a field and
 swipe the page from a label (keyboard stays up), open a busy job and let it
 finish (progress line clears).
+
+## Text selection (agent guide — every app and site)
+
+Product rule: [`DESIGN.md`](DESIGN.md) § Text selection & copy. Makepad
+side: **one** patch, `patches/makepad/text_selection.rs.patch` (last in
+`PATCHES`, after everything else that touches `text_flow` / `view` /
+`text_input` / `web`). It replaced 14 piecemeal patches
+(`text_flow_selection*`, `view_document_*`, `markdown_selectable_interactive`,
+`widget_steals_document_selection`, `text_flow_touch_*`) — some of them
+hand-edited into malformed hunks, so from 2026-11-12 `setup-makepad.sh`
+could not rebuild `vendor/makepad` at all.
+
+What the patch holds:
+
+| Piece | Where |
+|---|---|
+| Per-block select: mouse drag any direction, double-click word, triple-click block; touch long-press = word, drag extends; swipe scrolls | `TextFlow::handle_event`, `word_bounds_at`, `commit_touch_selection` |
+| Touch hold timer (0.5 s) on **every** touch platform. Android's OS `Event::LongPress` reaches a block only if it still owns the finger capture — on a scrolling page it did not, and Android never selected (owner, 2026-11-13); the OS event is now a second, idempotent trigger | `TextFlow::touch_hold` |
+| Touch selection lives like Chrome's: a touch press keeps the current selection (no reset on FingerDown / FingerMove / FingerCancel for touch); a swipe keeps it even when the press moved key focus (`touch_selected`, `focus_lost_in_touch`); a tap clears it | `TextFlow` |
+| Held word stays: a finger moving on after the hold grows the selection by **whole words** on the side it went and never cuts the held word (`touch_word`, `touch_word_extend`). Before, the first finger jitter set the end to the finger and "Khaynjo" became "Kha" (AGS2, 2026-11-14 — Xvfb `/touch` never jitters) | `TextFlow` |
+| Android OS bar for read-only copy: `cx.show_read_only_clipboard_actions` (op field `read_only`) → **Copy / Select all** only (Cut only copied, Paste did nothing). Java side via `apply-android-activity-bridge.sh`: `showClipboardActions(…, boolean readOnly)` (`KUMKAJ_CLIP_BAR_READ_ONLY`, JNI `(ZIIIIIZ)V` — an unbridged activity crashes on the first touch selection) and the show/finish order fix (`KUMKAJ_CLIP_BAR_RACE`: the block and the root both ask for the bar after a hold; `finish()` of the first reset `mHasSelection`, so the bar opened as Paste / Select all with no Copy). Copy on the bar clears a finger selection (Android only — other platforms query the copy text with the same `TextCopy` when opening their own menu); Select all from a finger selection's bar / menu brings the bar back | `cx_api.rs`, `android.rs`, `android_jni.rs`, `view.rs` (`selection_root_touch_clear`, `selection_root_select_all`) |
+| Verify on a real Android device, not only Xvfb: `adb shell input swipe x y x y 900` = hold, `input swipe` from a knob = knob drag, read the clipboard with `service call clipboard 2 s16 com.android.shell` (API 26; decode the item String16 after `text/plain`), and `screencap` (AGS2 shows the live frame again since 2026-11-14) | — |
+| Touch knobs: after a finger selection the root draws a knob + stem under each end (`draw_sel_handle`, `SEL_HANDLE_R` 9 px, 24 px touch target); a touch on a knob is claimed by the root (`t.handled`), holds the other end as a root-owned anchor (`root_gap`) and moves this end through `selection_root_extend` with the finger→edge offset; on lift the menu comes back for the whole selection. A tap elsewhere clears the selection and the knobs; a hold that starts a new selection clears the old one everywhere | `View::selection_root_*`, `draw_selection_handles`, `selection_ends` (new widget method, forwarded by the derive) |
+| Aligned blocks: a parent that right / centre-aligns moves a block after it drew; hit tests and selection rects add `align_delta` (area now − `drawn_pos`). Before, a press on right-aligned text picked another word and the menu opened far away | `TextFlow::align_delta` |
+| Remote `/touch?k=start|move|stop|long&x=&y=` — one-finger TouchUpdate (and the OS long-press) injected like Android, so touch selection is tested on Xvfb | `remote.rs` |
+| `selection_leaf()` — a selectable TextFlow, forwarded through `#[deref]` / `#[wrap]` wrappers (WrapLabel → Markdown → TextFlow), so a root finds blocks, never a container that only delegates | `widget.rs`, `derive_widget.rs` |
+| `View { selection_root: true }`: raw Ctrl/Cmd+A (unless a TextInput owns focus) selects every visible leaf; raw `TextCopy` after Select all answers all leaves in tree order; any primary press clears it; right-click emits `TextSelectionAction::Menu` **only on text or a live selection** — never over a control (`selection_root_point_on_control`), a tile or blank page | `view.rs` (`selection_root_*`), `ViewRef::set_selection_root` |
+| Cross-block drag: while a block reports `selection_drag_anchor()` (its committed drag), the root re-hits the pointer after the children each move — block under it, else the one on the pointer's own line, else the vertically nearest — and sets the rest of the anchor block, every block between (tree order) and the part under the pointer; `TextCopy` answers that span. `select_from_gaps` (sites) starts the same drag from a margin. Wheel under a held drag scrolls the anchor block's innermost scroll view (`selection_root_scroll_by`) and re-hits two frames; pointer past the top / bottom 24 px auto-scrolls each frame (`selection_root_edge_scroll`). TextFlow keeps a drag through a wheel while a button is held (an orphan block still clears on a wheel with no button). The per-move re-hit (a tree walk) runs **only while a drag is live**: `text_flow::SELECTION_DRAG_LIVE` (set at the drag commit / touch commit, cleared on up / scroll) gates it, so plain mouse moves cost nothing. A View's scroll bars handle the event **after** its children (pre-patch order — moving them first broke chip-strip taps). | `view.rs` (`selection_root_extend`, `_hit`, `_scroll_by`, `_edge_scroll`), `widget.rs` `selection_drag_anchor`, `text_flow.rs` |
+| `TextSelectionAction::Menu { abs, touch, rect }` — right-click (root, `rect` zero-size at the pointer) or end of a touch selection / knob drag (TextFlow, root: `rect` = the whole selection; apps put a touch menu above it, centred) | `text_flow.rs`, `view.rs` |
+| Band under the ink: a block **with** a selection opens a fresh band draw call (appending let it join an older colour call under the block's own pill / card background); TextInput redraws the selected glyphs over its band, clipped to each run (its glyphs sit in an older text call) | `TextFlow::begin`, `TextInput::draw_selected_ink` |
+| UTF-8 safe ranges and empty-layout guards | `layouter.rs`, `TextFlow::get_text_for_range` |
+| X11: `UTF8_STRING` interned with create (it was only-if-exists → atom 0 on a bare X server → every Copy offered an invalid target) | `xlib_app.rs` |
+| wasm: right-click and end-of-touch-selection open the `web.js` Copy / Select all menu (`FromWasmShowClipboardActions`); Select all sends Ctrl/Cmd+A, no synthetic click | `web.js`, `web.rs`, `from_wasm.rs` |
+
+App side (each app its own copy; Khaynjo first): `src/selection_menu.rs`
+(menu widget on the overlay, open state in `AppState::sel_menu`, same
+outside-press rule as dropdowns, Copy via a `TextCopy` through the UI +
+`arboard`), `main_column` / sheet roots in `ui_script.rs`, roots cleared on
+every screen change (`sel_screen_changed`), strings `sel_copy` /
+`sel_select_all` / `sel_copied` in all packs.
+
+**Mouse drag pans in apps (regression fixed 2026-11-13):** with every block
+owning its press, a mouse drag that started on text selected it, and
+`TextFlow::is_drag_selecting()` (true from the bare press) made `WrapLabel`
+block all scrolling — the Order desk, page and chip strips stopped panning
+from text. Now `is_drag_selecting()` is true only for a committed drag, and
+apps set `text_flow::MOUSE_HOLD_TO_SELECT` at startup (Khaynjo
+`handle_startup`): a mouse drag before a 0.5 s hold pans like touch. A/B'd
+against the pre-session build (`total_word` 891 → 537 px on both).
+
+**Stale IME area (bug, fixed 2026-11-13):** Makepad sets `cx.ime_area` when a
+TextInput shows the IME and never clears it, so `cx.get_ime_area_rect()`
+keeps the last field's rect after it loses focus or its screen is hidden.
+Khaynjo's `text_field_has_focus` trusted that rect alone and `sync_chrome`
+stayed in its typing early-return: the header kept "Locked" after a PIN
+unlock, a card repainted after a button tap in a focused form never showed.
+Count the IME only while `cx.key_focus()` is the area that owns it (same
+rect — TextInput focuses and shows the IME with `draw_bg.area()`), and drop
+key focus on a screen change (`show_screen`).
+
+**Patch hygiene (do not regress):** never hand-edit hunks. Change
+`vendor/makepad`, regenerate the patch with `diff -u` against a tree built
+from every *other* patch, then rebuild into a temp `VENDOR` (sed
+`setup-makepad.sh`) and `diff -rq` it against the live tree — equal or it
+is not done.
+
+**Verify:** Linux — release build with `KUMKAJ_ENV=development` on a
+private Xvfb with `--remote`: `/k?k=press&c=KeyA&ctrl=1` (Select all),
+`/m?k=down&b=1` (right-click → menu), click Copy, read
+`xclip -o -selection clipboard`. A remote `Ctrl+C` does **not** copy (the X11
+key path that turns Ctrl+C into `TextCopy` is bypassed) — use the menu's
+Copy, which runs the same `TextCopy`. Sites — wasm in headless Chromium over
+CDP (`Input.dispatchMouseEvent` drag / right-click, `rawKeyDown` Ctrl+A,
+`Input.dispatchTouchEvent` hold / swipe). Android — long-press a block: the
+OS Copy / Select all bar.
 
 ## Desktop window size & maximize
 
@@ -338,7 +470,7 @@ Platform ops: `MaximizeWindow` / `RestoreWindow` in `linux_wayland.rs`.
 
 RTL text alignment rides on two more vendor patches: `TextFlow::paragraph_align_x` in `vendor/makepad/widgets/src/text_flow.rs` (resting paragraph alignment; open table cells still override it) and `pub TextInput::label_align` in `vendor/makepad/widgets/src/text_input.rs` (patch files `patches/makepad/text_flow_paragraph_align.rs.patch` and `patches/makepad/text_input_label_align_pub.rs.patch`, applied by `scripts/setup-makepad.sh`). Each app sets them from `apply_text_alignment` while `locale::is_rtl` is active; glyph shaping and bidi ordering are Makepad’s own (rustybuzz + unicode-bidi in `draw/src/text/shaper.rs`). The window layout is not mirrored.
 
-**Mouse cursor state** (`patches/makepad/mouse_cursor_state.rs.patch`): Wayland mapped `MouseCursor::Arrow` to the context-menu shape (focused buttons looked like a menu); it now matches Default. Widget `SetCursor` is ignored while the pointer is in the window-edge resize band so Text/Hand cannot wipe Nw/E/S/…. `View` / `Button` / `TextInput` re-assert their cursor on `FingerHoverOver` (HoverIn only fires once); focused buttons keep Hand; caption drag uses Grab. Both apps also set `ColResize` while hovering the rail divider.
+**Mouse cursor state** (`patches/makepad/mouse_cursor_state.rs.patch`): Wayland mapped `MouseCursor::Arrow` to the context-menu shape (focused buttons looked like a menu); it now matches Default. Widget `SetCursor` is ignored while the pointer is in the window-edge resize band so Text/Hand cannot wipe Nw/E/S/…. `View` / `Button` / `TextInput` re-assert their cursor on `FingerHoverOver` (HoverIn only fires once); focused buttons keep Hand; caption drag uses Grab. Both apps also set `ColResize` while hovering the rail divider. **The cursor is the shape of what is under the pointer, now (2026-11-13, owner: "stuck on its last state"):** (1) `Cx::set_cursor` — a HoverOut reset to `Default` never overrides another widget's shape set in the same dispatch (tree order used to let the old widget's reset win); (2) a `View` with `cursor` sets `Default` on HoverOut (tappable rows/tiles kept the Hand over plain page); (3) Wayland and X11 send one synthetic `MouseMove` at the pointer after the first draw that follows a MouseUp or Scroll, so a click that opens a sheet / changes the screen, or a scroll, re-hovers with the new layout without a pointer move (A/B on Xvfb via XFixes cursor name: Settings → Language row click under a still pointer was `hand2` before, `text` after). Windows / macOS still re-hover only on the next motion. All in `text_selection.rs.patch` (the consolidated last patch).
 
 **Bugs we hit (do not reintroduce)**
 
@@ -430,7 +562,7 @@ So “this tab is active” **cannot** be expressed by leaving a Button focused 
 6c. **Floor (and other heavy expand-to-content grids) freeze Android** — Same full-height PortalList rule as (6): Khaynjo Floor with ~44 tables drew every `FloorTile` (Overlay + 7 bg faces + icons) every frame, so the phone could not scroll (2026-11). **Rule:** fixed-pitch expand-to-content lists that are expensive per row use `page_window` / `floor_page_window` + `top_gap`/`list_box` (see `MenuList` / `FloorList`) so only on-screen rows draw; redraw on `Event::Scroll`. Also never put `Label{width: Fill, flow: Right{wrap: true}}` on those tiles (bug 7). Books/Inventory/Reports facet SQL must not re-run on every `sync_chrome` Signal — gate with `FACET_DIRTY` / empty text.
 6b. **Android 8.0 (API 26) boot crash / black SurfaceView** — (1) `InputDevice.isEnabled()` is API 27+ → `NoSuchMethodError` (guard `SDK_INT >= 27`). (2) Inline `WindowInsetsAnimation.Callback` in `ResizingLayout` makes old ART fail class verify (`ClassNotFoundException`) and leave a black GL surface — keep the callback in `ImeInsetsAnimationHelper.java` and attach only via `Class.forName` when `SDK_INT >= 30` (`scripts/apply-android-activity-bridge.sh`). (3) Cargo plain `dev` on phone is too slow for first paint; use `cargo *-android-dev` (`android-dev` profile). That profile must stay **opt-level 3** with only `debug = "line-tables-only"` — full DWARF (`debug = true`) made a ~400MB `libmakepad.so` whose load alone left a black SurfaceView for many seconds on Mali-T830. (4) First drawable can precede layout settling — Makepad does a few follow-up `redraw_all`s (`android_post_layout_redraw` patch) so DeviceSetup is not stuck on `pass.clear_color`. (5) On some Huawei API 26 devices `adb exec-out screencap` captures only the window background and **misses the Makepad SurfaceView** — use a system screenshot (`adb shell input keyevent 120`) to verify paint. Worse, that "background" is Makepad's **snapshot backdrop** (`mSurfaceSnapshotBackdrop`, the last PixelCopy of the surface): it looks exactly like the app, only stale — an old screen, a finished job's progress line, a missing header (AGS2, 2026-11-10). Never diagnose a "stuck" or "glitchy" screen from screencap there; `dumpsys activity <pkg>/.MakepadApp` shows whether the cover / snapshot overlays are actually VISIBLE.
 6d. **Android soft keyboard ▾ hide bounces back / retap silent** — Two related Makepad IME bugs (patches `android_ime_dismiss` + `android_ime_retap_show`; Java `SHOW_FORCED` / InsetsController via `apply-android-activity-bridge.sh`). **(▾ bounce)** System hide left the `TextInput` focused; a `ShowTextIME` already in `platform_ops` (or the next draw) called `showKeyboard` again after `last_ime_config` was cleared. Fix: on `ResizeTextIME` DidHide (no physical keyboard) call `text_ime_was_dismissed()` only (mirror iOS); skip `ShowTextIME` while `text_ime_dismissed`; never re-arm the dismiss latch in `CxKeyboard::set_key_focus` when the new area is `Empty`. **Do not** `set_key_focus(Empty)` inside DidHide — that fires KeyFocusLost → `hide_text_ime` (clears the latch) and mid-gesture focus loss wrecks Android touch-scroll (ScrollY + ScrollX / `axis_lock` / `capture_overload`). App Back / outside tap still clears focus via `dismiss_soft_keyboard`. Do **not** “fix” bounce by dropping `ime_show_requested` / retap redraw — that regresses retap. **(Retap silent)** Config-only dedupe of `ShowTextIME` left retaps no-ops when OEM dismiss kept `last_ime_config` set. Fix: `request_ime_show()` on KeyFocus / FingerDown + redraw; `ShowTextIME` calls `showKeyboard` when config changed **or** `ime_show_requested`. Never treat `!last_ime_visible` alone as show-again.
-6e. **Do not regress Android / desk touch-scroll when fixing IME** — Load-bearing Makepad patches: `scroll_axis_lock`, `drag_scroll_touch_only`, `scroll_touch_over_buttons`, `scroll_touch_orphan_unblock`, `text_flow_touch_scroll`, `text_input_touch_scroll`, `text_flow_selection`. Page `ScrollYView` and Floor `area_scroll` keep `mouse_capture_overload: true` + `axis_lock: true`. **Never** clear key focus from `ResizeTextIME` DidHide / keyboard-height callbacks (bug **6d**). **Never** “simplify” capture_overload off, drop axis_lock, or re-enable TextFlow / TextInput select-drag on touch FingerMove (that steals vertical swipe — Lock PIN and ClientPair fields need `text_input_touch_scroll`). **`WrapLabel` / site `Markdown` typography default is `selectable: true`** (every app **and** Makepad website — [`DESIGN.md`](DESIGN.md) § Text selection & copy). Set `selectable: false` **only** inside tap targets (Kitchen KotCard, cart lines, floor tiles, site nav tiles, snack bars, button faces, InfoHelp titles) — select-drag there steals the press / can freeze page swipe until FingerUp. Touch select starts on long-press (`text_flow_touch_scroll`); vertical swipe still scrolls. KitchenList (and other heavy expand-to-content lists) use `page_window` + `top_gap`/`list_box` so touch-move redraw does not draw every card (bug **6c**). When adding whitespace above a sideways Area strip (Floor Columns↔tables gap), put the pad **inside** that `ScrollXView` — parent `spacing` between Columns and `FloorList` is a dead zone for Area pan.
+6e. **Do not regress Android / desk touch-scroll when fixing IME** — Load-bearing Makepad patches: `scroll_axis_lock`, `drag_scroll_touch_only`, `scroll_touch_over_buttons`, `scroll_touch_orphan_unblock`, `text_input_touch_scroll`, `text_selection`. Page `ScrollYView` and Floor `area_scroll` keep `mouse_capture_overload: true` + `axis_lock: true`. **Never** clear key focus from `ResizeTextIME` DidHide / keyboard-height callbacks (bug **6d**). **Never** “simplify” capture_overload off, drop axis_lock, or re-enable TextFlow / TextInput select-drag on touch FingerMove (that steals vertical swipe — Lock PIN and ClientPair fields need `text_input_touch_scroll`). **`WrapLabel` / site `Markdown` typography default is `selectable: true`** (every app **and** Makepad website — [`DESIGN.md`](DESIGN.md) § Text selection & copy). Set `selectable: false` **only** inside tap targets (Kitchen KotCard, cart lines, floor tiles, site nav tiles, snack bars, button faces, InfoHelp titles) — select-drag there steals the press / can freeze page swipe until FingerUp. Touch select starts on long-press (`text_selection`: the OS long-press on Android / iOS, a 0.5 s hold elsewhere); vertical swipe still scrolls. KitchenList (and other heavy expand-to-content lists) use `page_window` + `top_gap`/`list_box` so touch-move redraw does not draw every card (bug **6c**). When adding whitespace above a sideways Area strip (Floor Columns↔tables gap), put the pad **inside** that `ScrollXView` — parent `spacing` between Columns and `FloorList` is a dead zone for Area pan.
 6f. **Android soft-keyboard field lift (focus above the IME)** — When a text
     field takes focus and the soft keyboard is open, stock Makepad
     `KeyboardView` shifts the page so the **focused field** stays visible
@@ -524,6 +656,7 @@ So “this tab is active” **cannot** be expressed by leaving a Button focused 
 7h. **Row and card taps use `finger_up_is_tap`, not `was_tap()`** — `was_tap` gives up after 0.5 s or 5 px (mouse), while the page waits 8 px before scrolling: a slow press or a 6 px drift was neither a tap nor a scroll. A tap read from raw pointer events (printer rows) needs press and release on the same row within tap travel — a release alone is the end of a scroll.
 7i. **Never pre-mark a scroll handled before dispatch** — Makepad hands a wheel / trackpad delta to the innermost scroll view that can move and marks the axis handled only when it moved. Setting `handled_x` before `ui.handle_event` (`claim_hstrip_nested_scroll`, removed from Moklanjo 2026-11-02 and Khaynjo 2026-11-07) made each sideways strip move one step and then stop.
 7j. **Dropdown that would not close, reopened itself, and drifted (Khaynjo Floor Columns, 2026-11-08)** — Picking a number or tapping outside closed the list and the same frame reopened it (`Modal::close` → `revert_key_focus` → the field's `KeyFocus` → "focus opens the list"); the panel was placed once from the field's rect, so scrolling the Floor left a gap the size of the scroll; leaving Floor with it open left an invisible modal swallowing every press on every screen. Moklanjo had no outside-press close at all (a finger could only pick). Fixed by the rules in § Dropdowns, pick lists and tips — not by patching that one control.
+7k. **Add dishes: fast taps and the category swipe (Khaynjo, Kirano, Tabiyat — owner 2026-11-15)** — Measured on a 1,376-dish shop (debug build): every dish tap drew **all 27 category pages** (`dish_grid_draw 27×`, ~200 tiles) and ran `sync_chrome` twice, ~45 ms per tap; opening the window took a 244 ms draw. Now (1) a `ProductList` page away from the window keeps its room and draws nothing (`menu_pick_page_near`: the page in view and one each side, from `menu_pick_scroll_now`); (2) `menu_pick_card_tap` answers a dish tap at the top of `handle_actions`, before the ~7,400 lookups the rest of it makes, and `align_menu_pick_cart_page` refreshes only when the page changed — ~10 ms + 3 ms per tap, no stall on open. (3) A sideways finger swipe or mouse press-drag on the dishes turns the category page and its tab (the tabs already moved the pages): the dish list takes the press for its own up/down scroll (`capture_overload`), so `MenuPickPager::pager_swipe` reads the raw pointer (`popup_pointer`), moves the strip with it once the travel is sideways past 12 px, and on release lands one page on (a fifth of a page or a flick) or springs back; the release is never also a dish tap (`menu_pick_swipe_took_press`), and the per-frame snap waits while the swipe is held. Measure with `KUMKAJ_STALL_LOG_MS=2` (logs every event and every `stall_span`). (4) Whenever the category changes (tab, swipe, page step) the tab strip scrolls the active tab into the clear band between ‹ and › (`reveal_active_category_chip`; only on a change, so a strip scrolled by hand is not pulled back) — an active tab in the strip's hidden part looked like none was on (owner, 2026-11-15). Tests: `a_swipe_turns_one_page_or_springs_back`, `only_pages_near_the_window_draw`.
 8. **Page-scroll list rows cropped / page won’t scroll** — A `PortalList` inside a page `ScrollYView` must claim **full content height** (`list_content_height` + `page_owns_scroll`) so the page owns the wheel. Guessing a short Fixed row pitch (Khaynjo Inventory `StockList` at 62 while `StockRowView` is Fit, 2026-10) clips the last rows into the next sibling (tip-pool `ReportText`) and leaves the page with almost nothing to scroll — the “missing” rows are clipped *inside* the under-tall list, not below it. **Over-tall (empty cream band):** Fit-row lists must also **shrink** when `drawn_range_extent` is clearly shorter than the reserved walk (Order cart above Kitchen station; Moklanjo cart). Grow-only `.max(row)` left the gap forever. Kitchen `page_window` virtualization must not run on short lists (≤8) — a bad `first` became a huge `top_gap` under “To cook now”. Kitchen Live / Recall / Stations are **tabs**, not one buried scroll. **Rule for every app:** Fit-row expand-to-content lists use a **generous seed + `remember_content_row`** (same pattern as `CustomerList` / Moklanjo `SaleList`). Fixed-pitch cards (`MenuCard` 140, `DishRow` 104) keep a constant that matches the DSL. Never “fix” one screen’s crop without sweeping the same hardcoded underestimates elsewhere. Do not reintroduce nested list scroll for these lists — that eats the page wheel at the bottom edge.
 
 8b. **Kitchen Live card body is one dish per line** — Store KOT `summary` stays compact (`·` / `, ` joined) for print/sync, but the Live card must not paint that run-on (it truncated mid-name and was unreadable for cooks, cancel slips especially, 2026-11-08). `kitchen_card_body` reformats for the card (table / station on their own lines, `×qty  name` per dish); KotCard height + `max_lines` leave room; paper still has the full ticket.
@@ -597,7 +730,9 @@ ActionStack{ New item StackSecondaryBtn; Add rate StackPrimaryBtn }
 
 ### Nav order (no live drag — 2026-11-10)
 
-Live rail/footer **drag-to-swap was removed**: it mixed with scroll and felt broken. Order chrome peers only in **Settings → Sidebar** with **↑ ↓** on each row (show/hide stays the pill switch). `pointer_nav_drag` / `pointer_sidebar_settings_drag` are no-ops; do not reintroduce press-drag on the live bars.
+Live rail/footer **drag-to-swap was removed**: it mixed with scroll and felt broken. Order chrome peers only on **Settings** with **↑ ↓** on each row (show/hide stays the pill switch; a tap on the row opens that screen). `pointer_nav_drag` / `pointer_sidebar_settings_drag` are no-ops; do not reintroduce press-drag on the live bars.
+
+**Settings is one list of nav items** (owner, 2026-11-15; all four apps). Every Settings section (Language & currency … Privacy, Team & PINs) is a nav item like Day book or Floor: one continuous list in the sidebar-row design (icon, ↑↓, switch), **Enable All / Disable All at the top**, no "Sidebar" heading (its tip now sits in the Settings ℹ). A switched-on section takes a rail / bottom-bar slot and opens that section; its slot lights up while the section is open (`nav_tab_for_settings_panel`). Sections start **hidden on the bars**: a tab missing from the saved `ui_nav_order` was never shown to that shop, so `parse_nav_layout` hides it (`nav_tab_default_hidden`) and an upgrade adds no slots; a missing tab takes its place in the default order, after its nearest default neighbour the saved list has. Staff without shop Settings see only the My PIN row (`settings_hub_team_row`); sections never take their slots (`NavCaps.shop_settings`), and a first unlock skips sections (`first_allowed_work_tab`). Slots: one per nav item on each bar — Khaynjo 28, Kirano / Tabiyat 25, Moklanjo 27 (`rail_xN` / `nav_xN` after each app's original slots). Moklanjo's Team was already a rail item and stays as it was; only its sections start hidden. **Default order = the names in dictionary order, ignoring case**, in the app language (owner, 2026-11-15, `default_nav_order`); the owner's own arrangement always wins. A saved order equal to one the app shipped (`SHIPPED_NAV_ORDERS`) was never arranged, so it takes the default too. **Unlock lands where that person last was** (owner, 2026-11-15: "first time the first item is fine then the next time the last selected one for that user"; never a fixed screen such as Day book). `paint_nav_tabs` remembers the selected item per person on this device (`remember_nav_tab` → meta `ui_last_nav:<owner|staff id>`; a Settings section or Team counts even when it is not on the bar; written only when it changes and never while a worker holds the books). `unlocked_home_from` takes it while that person may still open it (on their bar, or a Settings item they have the rights for), else the first item on the bar (Lock and sections skipped) — so with the default order a first unlock is the first screen by name. The landing then runs as a tap on that item (`nav_tab_after_unlock` → `open_nav_tab` after `sync_chrome`): Day close loads its figures, Books its overview, a section opens; the first chrome paint after an unlock is a full one even on Settings (header line, that person's rail). Rights taken away while on a screen still bounce to the first item (`first_allowed_work_screen`). Tests: `unlock_returns_each_person_to_their_last_item`, `default_order_is_the_names_in_dictionary_order`, `settings_sections_join_older_layouts_hidden_on_the_bars`.
 
 1. **Slots are positions.** `paint_nav_tabs` paints slot N with `nav_order[N]`; the order lives in books meta `ui_nav_order` (`Store::nav_order_csv` / `set_nav_order_csv`). ↑↓ swaps two slots and re-saves. Never hard-code tab→slot.
 2. **Footer vertical air.** Bottom bar: outer `bottom_nav` top pad ~4 (bottom 0 — bug **7d**), strip top/bottom ~4/8 (≥ `bar_size`), chip face vertical pad ~8 so icons+labels look **vertically centered** — not a tall empty band above the chips left over from the old drag lane.
@@ -616,7 +751,7 @@ Live rail/footer **drag-to-swap was removed**: it mixed with scroll and felt bro
 | `ChipBtn` / `ChipBtnActive` | Short strip filter chips only — never one-shot actions |
 | `nav_tab_for` | `Screen` → which bottom peer is active |
 | `paint_nav_tabs` | Exactly one footer peer visible-as-selected |
-| `pointer_nav_drag` / `pointer_sidebar_settings_drag` | No-ops — chrome reorder is Settings → Sidebar ↑↓ only |
+| `pointer_nav_drag` / `pointer_sidebar_settings_drag` | No-ops — chrome reorder is the Settings nav list ↑↓ only |
 | `paint_choice_pair` / `clear_button_animators` | Dual-choice visibility + animator clear |
 | `paint_choice_state` | All dual choices after chrome sync |
 | `locale::en` + `english_chrome_never_returns_raw_keys` | Human labels, never snake_case keys |
@@ -730,6 +865,19 @@ Equivalent: `./apps/moklanjo/scripts/android-dev.sh`
 Requires `ANDROID_HOME` (or `~/Android/Sdk`), a connected device/emulator, and Makepad’s Android toolchain (auto-installed on first run). Builds, installs, and launches **`com.moklanjo.debug`** (from `apps/moklanjo/env/development.env`).
 
 **Launcher / logo:** Master art is `apps/moklanjo/assets/moklanjo-app-icon.png`. Run `./apps/moklanjo/scripts/generate-icons.sh` (Khaynjo: `./apps/khaynjo/scripts/generate-icons.sh`) to rebuild Android mipmaps, desktop `icon_*.png` / `icon.ico`, and in-app **`kumkaj-mark.webp`** (WebP only — no PNG/AVIF brand marks). Nav icons are WebP under `resources/nav/`. Android launcher mipmaps stay PNG (platform requirement). Desktop `icon_*.png` / `.ico` stay on disk for MSI/window chrome but are **not** packed into APK assets (`prune_android_runtime_assets` in cargo-makepad via `apply-android-activity-bridge.sh`). Reinstall Android after regenerating.
+
+**First run after an install: a ~33 s freeze on the AGS2 (measured 2026-11-14).**
+Android draws all text with Makepad's Slug path (`draw/src/text/fonts.rs`
+`default_slug_min_dpxs_per_em` is 0 off desktop), and each text-style variant
+compiles a ~400 KB shader (`draw/src/shader/draw_glyph.rs`, band / curve
+loops) — about 33 s on the Mali-T830, with the UI frozen and no `Kumkaj
+stall` line (compiles are outside App events). The program binary is cached
+(`cache/shader_<hash>…bin`), so it hits the first launch of every build that
+changes a text variant, and every Play update. Candidate fixes, each needs an
+AGS2 A/B before it ships: MSDF for normal sizes on Android (a Slug threshold
+above body text), Slug loops the driver need not unroll, or a prewarm behind
+the splash. Measure with `adb logcat` (`Makepad GL:` once per process, then the
+gap before the first frame).
 
 Android has **no** Splash `--hot` like desktop — each invocation rebuilds and relaunches. Day-to-day UI iteration stays on `cargo moklanjo-dev`; use `cargo moklanjo-android-dev` to verify on device.
 
@@ -858,7 +1006,7 @@ Makepad loads fonts from **`<crate>/resources/`** next to the `.exe` (crate name
 
 ### WorldFonts / packaged icon fonts (all desktop packages)
 
-Floor tile actions, header eye, chevrons, and other glyph buttons use **Font Awesome** via `WorldFonts` → `icons` (`fa-solid-900.ttf`). Sidebar nav pictures are **WebP** under `resources/nav/` — those can look fine while FA buttons show empty rectangles.
+Floor tile actions, header eye, chevrons, and other glyph buttons use **Font Awesome** via `WorldFonts` → `icons` (`fa-solid-900.ttf`). Sidebar nav pictures are **WebP** under `resources/nav/` (Settings rows: `resources/settings/`, same 64 px rounded-square style) — those can look fine while FA buttons show empty rectangles. **A slot icon has no layout `src:`** (rail / bottom bar): a layout picture loads on the Image's first draw and replaces the one `load_nav_icon_once` set before it, and the loader then believes its icon is up — with hidden or reordered tabs every slot showed its layout picture (Order wore Day book's, 2026-11-14). Guard: `slot_icons_have_no_layout_picture` (every app). Fixed rows (Settings, Day book shortcuts) may keep a `src:`.
 
 | Rule | Detail |
 |---|---|
@@ -896,6 +1044,67 @@ Linker is set in [`.cargo/config.toml`](../.cargo/config.toml) (`x86_64-w64-ming
 
 **On a Windows machine with Rust:** the same scripts pick `x86_64-pc-windows-msvc` when available and build natively.
 
+### Windows App Certification Kit (WACK)
+
+All four apps are built to pass Microsoft's Windows App Certification Kit —
+the Store runs the same checks on every upload. Two steps:
+
+**1. On Linux (every build, automated)** — `./scripts/product-cert.sh --tier=wack [app…]`
+(also part of `--tier=store`) cross-builds the production `.exe` and runs
+`scripts/windows/wack-precheck.sh <exe> [<msix>]`:
+
+| Check | Why WACK cares | Where it comes from |
+|---|---|---|
+| PE32+ x64, GUI subsystem | platform-appropriate files | Rust `x86_64-pc-windows-gnu`, `kumkaj_hide_console` (production) |
+| `DYNAMIC_BASE`, `HIGH_ENTROPY_VA`, `NX_COMPAT` | binary analyzer (ASLR / DEP) | mingw linker defaults |
+| Application manifest: `asInvoker`, Windows 10/11 `supportedOS`, PerMonitorV2 | UAC, OS-version, high-DPI tests | `scripts/windows/win_resources.rs` via each `apps/<app>/build.rs` (`windres`) |
+| Version info (CompanyName, ProductName, File/ProductVersion, OriginalFilename) and the icon | file-version / branding checks, Explorer | same; version from `Cargo.toml`, name from `KUMKAJ_APP_LABEL`, icon `resources/icon.ico` |
+| MSIX: Identity + Publisher CN, `runFullTrust`, `Windows.Desktop` MinVersion 10.x, every logo present, BlockMap, no `.pdb` | package sanity, manifest resources, branding | `scripts/build-msix.sh` / `scripts/msix/pack_msix.sh` |
+
+**2. On Windows (before a Store submission)** — copy `dist/` and `scripts/windows/` to
+the Windows machine (or share the workspace folder with it), open
+an **elevated** PowerShell and run:
+
+```powershell
+.\scripts\windows\run-wack.ps1 -Package Z:\dist\Khaynjo-1.0.10.msix   # Store path
+.\scripts\windows\run-wack.ps1 -Package Z:\dist\Khaynjo-1.0.10.msi    # sideload path
+.\scripts\windows\run-wack.ps1 -Cleanup                               # remove the test cert
+```
+
+Needs the Windows SDK components *Windows App Certification Kit* and *Signing
+Tools for Desktop Apps*. For an `.msix` the script reads the Publisher from
+the package, makes a throw-away test certificate with that subject, trusts it
+in `LocalMachine\TrustedPeople`, signs a **copy** (the original stays the
+unsigned Store upload), removes any installed copy of the same identity, then
+runs `appcert.exe test -appxpackagepath …`. For an `.msi` it runs WACK's
+desktop-app tests with `msiexec /i … /qn` and `/x … /qn`. It prints the
+report path, the overall result and every test that did not pass; exit 1 on
+FAIL.
+
+Install the kit with the **current** SDK, unattended (elevated):
+`winget install --id Microsoft.WindowsSDK.10.0.26100 -e --silent --override "/features OptionId.WindowsSoftwareLogoToolkit OptionId.SigningTools /quiet /norestart"`
+(`OptionId.WindowsSoftwareLogoToolkit` is WACK). The 2018 kit (10.0.17763)
+reports *App resources* as "blocked from execution" on every MSIX — with or
+without a `resources.pri` — so do not judge a package with it.
+
+First real run, 2026-11-15 (Windows 10 19045 VM, WACK 10.0.26100):
+`Khaynjo-1.0.10.msix` **Overall PASS**, 24 tests. Only the *optional*
+*Blocked executables* test flags `CreateProcessW` and the strings `cmd` /
+`PowerShell` / `REG` in the exe (printing and the data dialog) — allowed for
+a `runFullTrust` desktop app, and optional tests do not decide the result.
+
+`.ps1` files must parse in **Windows PowerShell 5.1**, which reads a file
+without a BOM as Windows-1252: an em dash's last UTF-8 byte becomes a curly
+quote and closes the string (`run-wack.ps1` and the uninstall data dialog did
+not parse until 2026-11-15). Keep them ASCII or UTF-8 with a BOM —
+`product-cert.sh` (xcomp tier) refuses others.
+
+Known, expected results: an unsigned `.msi` / `.exe` fails *Digitally signed
+files* (needs a real code-signing certificate — the Store path does not, the
+Store signs the package). Shutdown / restart-manager: Makepad now closes the
+window on `WM_ENDSESSION` like the close button (patch `windows_end_session`),
+so the app exits when Windows ends the session or an installer asks it to.
+
 ### Receipts, printing and files on Android
 
 Makepad exposes the clipboard (`Cx::copy_to_clipboard` → `ClipboardManager`).
@@ -931,8 +1140,10 @@ Desktop stages them beside the app (`copy_app_menu_assets_if_present` in
 `scripts/windows-env.sh`; MSI via `scripts/build-msi.sh`). Android packs the
 same two folders into the APK (`apply-android-activity-bridge.sh` →
 cargo-makepad) and extracts them into the app files dir on Server open so
-`catalogue_root` / `templates_root` match desktop. Menu → **Import complete
-template** and **Client menu** disappear only if those folders are missing.
+`catalogue_root` / `templates_root` match desktop. Menu → **Item templates →
+Public templates** hides only when the shelf is neither bundled nor expected
+from the CDN; the private items template comes from the catalogue (12-digit
+code), not from these folders.
 **Shelf** / **named client** imports run on the Server and copy each photo
 into `item_images` as `custom:…`; Clients pull missing photos over LAN
 (`GET /item-image`) into a local cache. Initials show only until that fetch
@@ -967,8 +1178,9 @@ Lock screen: **Owner** | **Staff** (pick staff, then PIN), or optional **login i
 Chrome peers are a long strip (phone bottom nav / desktop rail), not a More
 bucket — Day book, Booking/Order, Floor/Kitchen (Khaynjo), Sales, Settings,
 Lock, and the rest. Feature flags and person rights hide peers the signed-in
-person cannot use. Unlock lands on the **first permitted peer**
-(`unlocked_home_from`), not a hard-coded Day book.
+person cannot use. Unlock returns each person to the item they last had
+selected on this device, first time the **first permitted peer**
+(`unlocked_home_from`) — never a hard-coded Day book.
 
 ## Data location
 
@@ -1047,9 +1259,24 @@ pages, and fallback when WS cannot upgrade.
 | `welcome` | S→C | `{seq, rev}` — Server tip after subscribe |
 | `delta` | S→C | `{seq, prev_seq, rev, full, …domains}` — apply in order |
 | `need_sync` | S→C | gap or unknown Client tip — Client must `GET /sync` then resume |
-| `ping` / `pong` | either | heartbeat (~15s); missed pong → reconnect |
+| `ping` / `pong` | either | heartbeat (~15s); nothing heard for 45 s → close, `/wait`, reconnect |
 | `outbox` | C→S | `{id, path, body, request_id}` — durable queue item over WS |
 | `outbox_reply` | S→C | `{id, ok, body\|error, code?}` — same semantics as HTTP write |
+
+**Both loops poll; neither parks in a read.** Each side reads with a short
+timeout (`lan_ws::POLL`, 100 ms) and, between reads, sends what is waiting:
+the phone its queued `outbox` frames and ping, the Server its queued deltas
+and ping. Until 2026-11-14 both read for 25–35 s at a time, so a tablet's
+KOT handed to the socket sat until the Server next spoke (**24 s** measured
+on an idle link; owner: "the print was instantaneous, now > 5 s"), and the
+Server's news sat until the phone spoke. Now ≈70 ms for the KOT's answer and
+≈100 ms for news. Guard: `the_live_socket_carries_a_kot_and_the_news_at_once`
+(Khaynjo) / `the_live_socket_carries_a_write_and_the_news_at_once` (the other
+apps), real sockets, < 1 s each. Also: nothing heard for `SILENT_MAX` (45 s;
+both sides ping every 15 s) closes the socket; bytes read together with the
+`101` head are the Server's first frames and go to tungstenite
+(`from_partially_read`), never dropped; a phone write answered ≥ 1.5 s after
+it was asked logs `lan_write_slow` (diag) with its time — measure, don't guess.
 
 **An answer on the socket is said on the screen**, exactly like an HTTP
 write's: `phone::answer_from_socket` (each app's own copy) files the row
@@ -1057,6 +1284,28 @@ write's: `phone::answer_from_socket` (each app's own copy) files the row
 Khaynjo's `print_problem`. Until 2026-11-07 it only filed the row, so a
 device on a live link never heard "not accepted", "not printed", or got a
 payment's Undo. A resend's second reply finds no row and says nothing.
+
+**Shop settings on every device (2026-11-14).** Each app's
+`store::SHOP_PREF_KEYS` lists the books settings that are the *shop's*
+(Khaynjo: GST wording `show_tax_chrome`, `show_tax_invoice`, `pay_methods`,
+`show_today_bar`, sidebar `ui_nav_hidden` / `ui_nav_order`,
+`business_day_mode`, history retention, `allow_zero_sales`, `kot_auto_print`,
+frequent-items window, `currency`; Kirano / Tabiyat the subset they have;
+Moklanjo sidebar, currency, booking measures, NDR attempts). The Server sends
+them in every snapshot (`SyncSnapshot::shop_prefs`) and in a delta when any
+moved; the Client writes exactly those keys (absent on the Server → removed on
+the Client; on/off flags go resolved so app versions cannot disagree on a
+default). Until then a Client kept its **own** defaults: the Owner on a
+tablet saw GST lines, Tax invoice, UPI/Card/Credit/Split and every sidebar
+item the shop had hidden. A Client never writes these keys itself: the
+sidebar goes `BooksOp::SetNavLayout` over `/books` like every other setting
+(`AppState::save_nav_layout`). Device-only meta stays out of the list (floor
+zoom/columns/view, Kitchen station filter, language, lock choices, sync
+interval, Day book accordions). **Adding a setting that changes what a screen
+shows:** put its key in `SHOP_PREF_KEYS` and give Clients a `BooksOp` — or the
+tablet shows its own default. Guards:
+`a_client_shows_the_shops_settings_not_its_own_defaults` (every app),
+`a_settings_change_rides_the_next_delta` (Khaynjo).
 
 **Rev + seq.** `rev` remains the snapshot content hash (304 / If-None-Match).
 `seq` is a monotonic per-Server counter bumped on every published change.
@@ -1512,8 +1761,7 @@ Makepad visual traps found this way (do not reintroduce):
     - **Same action everywhere:** ‹, mouse Back, Alt+←, left-edge swipe, and
       Android Back all call `navigate_back` (overlays first, then pop).
       Mouse Forward / Alt+→ / right-edge swipe call `navigate_forward`.
-    - Empty-stack fallbacks: SidebarSettings → Settings; Lock / ClientPair /
-      Onboard → DeviceSetup. Paint via `paint_header_back_chrome` (also after
+    - Empty-stack fallbacks: Lock / ClientPair / Onboard → DeviceSetup. Paint via `paint_header_back_chrome` (also after
       Settings panel open and DeviceSetup Language accordion).
     - **Setup fence:** once Back opens **Server/Client** (`DeviceSetup`), drop
       Forward and never restore **Onboard** via Forward/‹ history. Leaving
@@ -1552,15 +1800,15 @@ Makepad visual traps found this way (do not reintroduce):
     (`portal_list_mouse_drag_promote`) — without that, Settings printer
     assign and similar capped checklists only moved the page. Both apps’
     page `ScrollYView` / `ScrollXView` (and Moklanjo `booking_desk_hscroll`)
-    set `axis_lock: true`. Open dropdown faces use
-    `Done · {label}` (`pick_done_dd`) — no second Done under the list. Horizontal tab strips (`ScrollXView`) mouse
+    set `axis_lock: true`. Dropdown faces are their label only; ComboField
+    draws ˅ / ˄ (§ Dropdowns rule 9). Horizontal tab strips (`ScrollXView`) mouse
     press-drag on whitespace around chips (nav drag-to-swap on a chip is
     not stolen); desk panes set `scroll_bar_x.mouse_capture_overload: true`
     (Makepad patch `drag_scroll_touch_only`).
-    Selectable `WrapLabel` / TextFlow yields sideways drags to an ancestor
-    ScrollX (commits text-select only when the drag is mostly vertical —
-    `text_flow_selection`). On **touch**, vertical swipe always scrolls the
-    page; text select-drag starts on long-press only (`text_flow_touch_scroll`,
+    A mouse drag on selectable `WrapLabel` / TextFlow copy selects in any
+    direction (along a line too); desk ScrollX pans from whitespace and the
+    scrollbar, not from copy (`text_selection`). On **touch**, a swipe always
+    scrolls the page; text select starts on a long-press only (`text_selection`,
     `text_input_touch_scroll`) — otherwise WrapLabels and focused fields
     (Lock PIN, ClientPair) stole every swipe. InfoHelp titles and text
     inside tap targets stay `selectable: false`; other display WrapLabels
@@ -1760,7 +2008,7 @@ chrome peer — never “nav only.”
 | Surface | Rule | Code (per app) |
 |---|---|---|
 | Bottom nav / side rail | Only peers `nav_tab_permitted` allows | `paint_nav_tabs` ← `current_nav_chrome_order` |
-| Unlock home | First permitted peer (**not** hard-coded Day book) | `unlocked_home_from` |
+| Unlock home | That person's last selected item on this device, else their first permitted peer (**never** a hard-coded Day book) | `unlocked_home_from` ← `remembered_nav_tab` / `first_allowed_work_tab` |
 | Day book hub rows (Sell/Buy/Day close/Reports/Parties) | Same rights as those peers — hide the **slot** | `books_*_slot` visibility in paint/chrome sync |
 | TODAY / BILLS / bank accordions + header today bar | Owner or Sales only | `session_may_see_today` → `sync_books_sections` / `today_bar` |
 | Settings chrome | Any signed-in person (`can_open_settings_shell`) — shop rows need `can_access_settings`; Waiter sees **My PIN** only | Settings hub + Team |
@@ -1997,7 +2245,7 @@ a snack when unlocked (errors/warnings also on lock). Higher priority replaces a
 lower one; dismiss ✕ or timeout clears. Module: `apps/*/src/snack.rs`.
 
 **Do not regress (Android scroll):** snack / undo snack labels must keep
-`selectable: false` (tap-target exception — bug **6e** / `text_flow_touch_scroll`).
+`selectable: false` (tap-target exception — bug **6e** / `text_selection`).
 Error snacks are the usual trigger (long text + bar appearing under a finger).
 Display text elsewhere stays selectable per [`DESIGN.md`](DESIGN.md).
 

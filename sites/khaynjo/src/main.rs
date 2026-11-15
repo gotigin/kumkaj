@@ -864,7 +864,8 @@ impl MatchEvent for App {
         self.apply_gates(cx);
         self.paint_floor(cx);
         self.paint_nav_active(cx);
-        // Document chrome: PageUp/Ctrl+A reach the page without a prior click.
+        // Keys go to the page from the start (the `page` selection root also
+        // answers Ctrl/Cmd+A with nothing focused).
         self.ui.view(cx, ids!(page)).set_key_focus(cx);
         self.pending_section = self.section_from_page(cx);
         self.pending_frames = 120;

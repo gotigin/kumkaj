@@ -2006,6 +2006,58 @@ impl Store {
         order: &RunningOrder,
         cashier_name: &str,
     ) -> Result<String, String> {
+        self.format_bill_text_at(order, cashier_name, None)
+    }
+
+    /// Print the bill of an order with no table (Counter, Takeaway,
+    /// Delivery) — the same step and the same bill as a table's
+    /// [`Self::print_running_bill`]: every dish must be with the kitchen,
+    /// and printing again needs the Reprint right. `place` is the order
+    /// type ("Counter"), printed where a table's name goes. The order stays
+    /// on the till; the books get the audit row.
+    pub fn print_counter_bill(
+        &self,
+        lines: &[crate::domain::RunningLine],
+        place: &str,
+        reprint: bool,
+        actor: &StaffMember,
+        approval_pin: Option<&str>,
+    ) -> Result<String, String> {
+        self.assert_server_writer("Print the bill")?;
+        let order = RunningOrder {
+            id: String::new(),
+            table_id: String::new(),
+            status: RunningOrderStatus::Running,
+            opened_at: Local::now().to_rfc3339(),
+            opened_by: String::new(),
+            printed_at: String::new(),
+            lines: lines.to_vec(),
+        };
+        if order.live_lines().next().is_none() {
+            return Err("Nothing on this bill".into());
+        }
+        let unsent = order.live_lines().filter(|l| l.kot_id.is_empty()).count();
+        if unsent > 0 {
+            return Err(format!(
+                "{unsent} dish(es) on this order are not with the kitchen yet — Send KOT (or remove them), then Print bill"
+            ));
+        }
+        if reprint {
+            self.check_right(actor, Right::Reprint, approval_pin)?;
+        }
+        let text = self.format_bill_text_at(&order, actor.name.trim(), Some(place))?;
+        self.audit(actor, if reprint { "bill.reprint" } else { "bill.print" }, place)?;
+        Ok(text)
+    }
+
+    /// [`Self::format_running_bill_text`]; `place` replaces the table line
+    /// for an order with no table.
+    fn format_bill_text_at(
+        &self,
+        order: &RunningOrder,
+        cashier_name: &str,
+        place: Option<&str>,
+    ) -> Result<String, String> {
         let fiscal = self.fiscal_settings()?;
         let currency = self.locale_settings()?.currency;
         let money = |p: i64| Money(p).format_localized(&currency, &fiscal);
@@ -2051,14 +2103,19 @@ impl Store {
             &format!("Date: {when}"),
             rtl,
         );
-        let table = self.table_label(&order.table_id)?;
-        let area = self
-            .table_area_label(&order.table_id)
-            .unwrap_or_default();
-        let place = if area.trim().is_empty() {
-            format!("Table: {table}")
-        } else {
-            format!("{area}: {table}")
+        let place = match place {
+            Some(p) => p.to_string(),
+            None => {
+                let table = self.table_label(&order.table_id)?;
+                let area = self
+                    .table_area_label(&order.table_id)
+                    .unwrap_or_default();
+                if area.trim().is_empty() {
+                    format!("Table: {table}")
+                } else {
+                    format!("{area}: {table}")
+                }
+            }
         };
         crate::print_share::append_bill_field(
             &mut out,
@@ -3207,6 +3264,53 @@ mod tests {
         assert_eq!(shop.table("D1").status, TableStatus::Occupied);
         // Leaving is not paying.
         assert!(shop.store.free_table(&d1.id).is_err());
+    }
+
+    /// An order with no table takes the table's Print bill step (owner,
+    /// 2026-11-15): refused while a dish is not with the kitchen, then the
+    /// same bill with the order type where a table's name goes, and printing
+    /// again needs the Reprint right.
+    #[test]
+    fn a_counter_order_prints_its_bill_like_a_table() {
+        let shop = shop();
+        let mut cart = Cart::default();
+        cart.add_or_bump(&shop.thali);
+        cart.add_or_bump(&shop.thali);
+        cart.add_or_bump(&shop.chaas);
+        let refused = shop
+            .store
+            .print_counter_bill(&cart.to_bill_lines(), "Counter", false, &shop.cashier, None)
+            .unwrap_err();
+        assert!(refused.contains("not with the kitchen"), "{refused}");
+        let kots = shop.store.send_kot(&cart.to_kot_draft().unwrap(), None, &shop.waiter).unwrap();
+        cart.mark_new_lines_sent(&kots[0]);
+        let bill = shop
+            .store
+            .print_counter_bill(&cart.to_bill_lines(), "Counter", false, &shop.cashier, None)
+            .unwrap();
+        let plain = crate::print_share::strip_kot_style_marks(&bill);
+        assert!(plain.contains("Counter"), "the order type stands for the table:\n{plain}");
+        assert!(plain.contains("Thali") && plain.contains("Chaas"), "{plain}");
+        assert!(plain.contains("430"), "total of 2 Thali + 1 Chaas:\n{plain}");
+        assert!(plain.contains("Cashier: Cash"), "{plain}");
+        // Printing again is a reprint: the kitchen's preset may not.
+        shop.store
+            .add_staff("Raju", StaffRole::Kitchen, "Cook", "3333", &shop.owner)
+            .unwrap();
+        let cook = shop
+            .store
+            .list_staff()
+            .unwrap()
+            .into_iter()
+            .find(|s| s.name == "Raju")
+            .unwrap();
+        assert!(shop
+            .store
+            .print_counter_bill(&cart.to_bill_lines(), "Counter", true, &cook, None)
+            .is_err());
+        shop.store
+            .print_counter_bill(&cart.to_bill_lines(), "Counter", true, &shop.cashier, None)
+            .unwrap();
     }
 
     #[test]

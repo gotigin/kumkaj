@@ -41,7 +41,7 @@ remove	ತೆಗೆದುಹಾಕಿ
 removed_items	ತೆಗೆದ ಐಟಂಗಳು
 removed_help	ಮರುಸ್ಥಾಪಿಸಿದರೆ ಐಟಂ ಮೊದಲಿದ್ದಂತೆಯೇ ಮೆನುಗೆ ಬರುತ್ತದೆ — ಬೆಲೆ, ಫೋಟೋ ಮತ್ತು ವರ್ಗ. ನಮ್ಮ ಖಾದ್ಯಗಳ ಶೆಲ್ಫ್ ಎಂದಿಗೂ ತೆಗೆಯುವುದಿಲ್ಲ, ಆದ್ದರಿಂದ ಯಾವುದೇ ಖಾದ್ಯವನ್ನು ಮತ್ತೆ ಸೇರಿಸಬಹುದು.
 restore_item	ಮರುಸ್ಥಾಪಿಸಿ
-empty_catalog	ಇನ್ನೂ ಐಟಂಗಳಿಲ್ಲ. ಮೆನು ಮತ್ತು ಐಟಂಗಳನ್ನು ತೆರೆಯಿರಿ, ಒಂದನ್ನು ಸೇರಿಸಿ (ಹೆಸರು + ಬೆಲೆ), ನಂತರ ಆರ್ಡರ್ ತೆಗೆದುಕೊಳ್ಳಿ.
+empty_catalog	ಇನ್ನೂ ಐಟಂಗಳಿಲ್ಲ.
 total	ಒಟ್ಟು
 cash	ನಗದು
 upi	यूपीआई
@@ -103,23 +103,14 @@ bill_item_qty	ಪ್ರಮಾಣ
 bill_item_price	ದರ
 bill_item_amount	ಮೊತ್ತ
 bill_item_note	ಟಿಪ್ಪಣಿ
-bill_item_col_gap	ಕಂಭ ಅಂತರ
 bill_item_col_order	ಕಂಭ ಕ್ರಮ
 bill_item_col_sep	ಕಂಭ ಗೆರೆ
-bill_item_gap_tight	ಬಿಗಿ
-bill_item_gap_comfort	ಆರಾಮದಾಯಕ
-bill_item_gap_wide	ಅಗಲ
-bill_item_num_width	ಸಂಖ್ಯೆ ಕಂಭ
-bill_item_num_compact	ಚಿಕ್ಕ
-bill_item_num_comfort	ಆರಾಮದಾಯಕ
-bill_item_num_wide	ಅಗಲ
-bill_item_num_align	ಸಂಖ್ಯೆ ಜೋಡಣೆ
-bill_item_gap_em	ಅಂತರ (em)
-bill_item_qty_min	ಸಂಖ್ಯೆ ಕನಿಷ್ಠ (em)
-bill_item_price_min	ದರ ಕನಿಷ್ಠ (em)
-bill_item_amount_min	ಮೊತ್ತ ಕನಿಷ್ಠ (em)
-kot_item_qty_width	ಸಂಖ್ಯೆ ಕಂಭ
-kot_item_num_align	ಸಂಖ್ಯೆ ಜೋಡಣೆ
+slip_columns	ಕಾಲಮ್‌ಗಳು
+slip_col_width	ಅಗಲ (mm)
+slip_col_start	ಆರಂಭದ ಜಾಗ (px)
+slip_col_end	ಕೊನೆಯ ಜಾಗ (px)
+slip_col_align	ಪಠ್ಯ ಜೋಡಣೆ
+slip_columns_help	ಪ್ರತಿ ಕಾಲಮ್‌ನ ಅಗಲದಲ್ಲಿ ಅದರ ಆರಂಭ ಮತ್ತು ಕೊನೆಯ ಜಾಗ ಸೇರಿದೆ. ಪಠ್ಯ ತನ್ನ ಕಾಲಮ್ ಒಳಗೇ ಸುತ್ತುತ್ತದೆ; ವಿಷಯದ ಅಗಲವನ್ನು ಮೀರಿದ್ದು ಕಾಗದದಲ್ಲೂ ಪೂರ್ವವೀಕ್ಷಣೆಯಲ್ಲೂ ಕತ್ತರಿಸಲ್ಪಡುತ್ತದೆ.
 bill_total_qty_label	ಒಟ್ಟು ಸಂಖ್ಯೆ ಲೇಬಲ್
 bill_total_subtotal_label	ಉಪಮೊತ್ತ ಲೇಬಲ್
 bill_total_grand_label	ಒಟ್ಟು ಲೇಬಲ್
@@ -221,7 +212,6 @@ sidebar_order_saved	ಸೈಡ್‌ಬಾರ್ ಕ್ರಮ ಉಳಿಸಲಾ�
 sidebar_visibility_saved	ಸೈಡ್‌ಬಾರ್ ಗೋಚರತೆ ಉಳಿಸಲಾಗಿದೆ
 amounts_hide	ಮರೆಮಾಡಿ
 amounts_show	ತೋರಿಸಿ
-printers_none_hint	ಮೊದಲು ಈ ಸಾಧನದಲ್ಲಿ ಒಂದು ಮುದ್ರಕ ಉಳಿಸಿ, ನಂತರ ಅದನ್ನು ಬಿಲ್ ಅಥವಾ ಒಂದು ಅಡುಗೆಮನೆಗೆ ಸೇರಿಸಿ
 counter	ಕೌಂಟರ್
 dine_in	ಅಲ್ಲಿಯೇ ಊಟ
 takeaway	ಪಾರ್ಸೆಲ್
@@ -328,8 +318,6 @@ selected_language	ಆಯ್ಕೆಮಾಡಿದ
 continue	ಮುಂದುವರಿಸಿ
 this_device	ಈ ಸಾಧನ
 device_use_q	ಈ ಸಾಧನವನ್ನು ಹೇಗೆ ಬಳಸಲಾಗುತ್ತದೆ?
-last_server_mode	ಹಿಂದೆ ಸರ್ವರ್ — ಮುಂದುವರಿಸಲು ಟ್ಯಾಪ್ ಮಾಡಿ
-last_client_mode	ಹಿಂದೆ ಕ್ಲೈಂಟ್ — ಮುಂದುವರಿಸಲು ಟ್ಯಾಪ್ ಮಾಡಿ
 choose_server	ಸರ್ವರ್ ಆಯ್ಕೆಮಾಡಿ
 choose_server_hint	ಈ ಸಾಧನದಲ್ಲಿ ಈಗಾಗಲೇ ಸರ್ವರ್‌ಗಳಿವೆ. ಒಂದನ್ನು ತೆರೆಯಿರಿ, ಅಥವಾ ಮತ್ತೊಂದು ವ್ಯವಹಾರಕ್ಕಾಗಿ ಹೊಸ ಸರ್ವರ್ ರಚಿಸಿ.
 create_new_server	ಹೊಸ ಸರ್ವರ್ ರಚಿಸಿ
@@ -391,7 +379,7 @@ attachments_last_expense	ಲಗತ್ತುಗಳು (ಕೊನೆಯ ಖರ್�
 bank	ಬ್ಯಾಂಕ್
 bank_in	ಬ್ಯಾಂಕ್‌ಗೆ ಹಾಕಿ
 bank_out	ಬ್ಯಾಂಕ್‌ನಿಂದ ತೆಗೆಯಿರಿ
-bank_reconciliation	ಬ್ಯಾಂಕ್ ಹೊಂದಾಣಿಕೆ (ನಿಮ್ಮ ಬ್ಯಾಂಕ್ ಸ್ಟೇಟ್‌ಮೆಂಟ್‌ನೊಂದಿಗೆ ಟಿಕ್ ಮಾಡಿ)
+bank_reconciliation	ಬ್ಯಾಂಕ್ ಹೊಂದಾಣಿಕೆ
 bank_to_till	ಬ್ಯಾಂಕ್ → ಟಿಲ್
 book_add_dish	ಬುಕ್ — ಖಾದ್ಯ / ಐಟಂ ಸೇರಿಸಿ
 book_opening_credit	ಬುಕ್ — ಆರಂಭಿಕ ಸಾಲ
@@ -744,7 +732,6 @@ station_print_pick_first	ಮೊದಲು ಅಡುಗೆ ಸ್ಟೇಷನ್ �
 station_print_editing	“{name}” ಮುದ್ರಕಗಳನ್ನು ಸಂಪಾದಿಸುತ್ತಿದ್ದೀರಿ
 station_vps_dd	ಈ ಸ್ಟೇಷನ್ ಮುದ್ರಕಗಳು
 station_vps_dd_n	{n} ಮುದ್ರಕಗಳು · ಬದಲಾಯಿಸಲು ಟ್ಯಾಪ್
-station_vps_empty	ಇನ್ನೂ ಮುದ್ರಕಗಳಿಲ್ಲ — ಸೆಟ್ಟಿಂಗ್‌ಗಳು → ಮುದ್ರಕಗಳಲ್ಲಿ ಹುಡುಕಿ
 bill_printers_dd	ಬಿಲ್ ಮುದ್ರಕಗಳು
 bill_printers_dd_n	ಬಿಲ್‌ಗೆ {n} ಮುದ್ರಕಗಳು · ಬದಲಿಸಲು ಒತ್ತಿ
 job_layout	ಲೇಔಟ್
@@ -889,7 +876,7 @@ net_word	ನಿವ್ವಳ
 offline_badge	ಆಫ್‌ಲೈನ್
 optional_login_help	ಐಚ್ಛಿಕ ಲಾಗಿನ್ (ಐಡಿ + ಪಾಸ್‌ವರ್ಡ್). ಮಾಲೀಕರು ಒಮ್ಮೆ ಹೊಂದಿಸುತ್ತಾರೆ; ನಂತರ ಬಳಕೆದಾರರು ಮಾತ್ರ ಪಾಸ್‌ವರ್ಡ್ ಬದಲಾಯಿಸಬಹುದು.
 or_unlock_login	ಅಥವಾ ಲಾಗಿನ್ ಐಡಿ + ಪಾಸ್‌ವರ್ಡ್‌ನೊಂದಿಗೆ ಅನ್‌ಲಾಕ್ ಮಾಡಿ
-permission_preset	ಅನುಮತಿ ಪ್ರಿಸೆಟ್ (ಯಾವುದಕ್ಕೆ ಪ್ರವೇಶ)
+permission_preset	ಅನುಮತಿ ಪ್ರಿಸೆಟ್
 preset_help_khaynjo	ಕ್ಯಾಷಿಯರ್: ಮಾರಾಟ. ಮ್ಯಾನೇಜರ್: ಮಾರಾಟ + ಐಟಂ + ರದ್ದು/ತಿದ್ದುಪಡಿ.
 product_locked_khaynjo	Khaynjo
 product_only_khaynjo	ಈ ಆ್ಯಪ್ Khaynjo ಮಾತ್ರ — ರೆಸ್ಟೋರೆಂಟ್ ಕಾರ್ಯ ವ್ಯವಸ್ಥೆ. ಇತರ ವ್ಯಾಪಾರಗಳಿಗೆ ಬೇರೆ Kumkaj ಉತ್ಪನ್ನಗಳಿವೆ.
@@ -961,10 +948,6 @@ pin_hint_paired	ಹೆಚ್ಚುವರಿ ಟಿಲ್ ಜೋಡಿಸಲಾ�
 pin_hint_pair_first	ಹೆಚ್ಚುವರಿ ಟಿಲ್ — ಮೊದಲು ಅಂಗಡಿ ಸಾಧನಕ್ಕೆ ಜೋಡಿಸಿ
 unlock_to_continue	ಮುಂದುವರಿಸಲು ಅನ್‌ಲಾಕ್ ಮಾಡಿ
 no_staff_yet	ಇನ್ನೂ ಸಿಬ್ಬಂದಿ ಇಲ್ಲ — ಮಾಲೀಕರಾಗಿ ಅನ್‌ಲಾಕ್ ಮಾಡಿ, ನಂತರ Team
-status_server_set_pin	ಸರ್ವರ್ ಮೋಡ್ — ಮಾಲೀಕ PIN ಹೊಂದಿಸಿ
-status_server_tills	ಸರ್ವರ್ ಮೋಡ್ — ಹೆಚ್ಚುವರಿ ಟಿಲ್‌ಗಳು ಸೇರಬಹುದು. ಅನ್‌ಲಾಕ್ ಮಾಡಿ
-status_server_unlock	ಸರ್ವರ್ ಮೋಡ್ — ಮಾಲೀಕರಾಗಿ ಅನ್‌ಲಾಕ್ ಮಾಡಿ
-status_client_unlock	ಕ್ಲೈಂಟ್ ಮೋಡ್ — ಮಾರಾಟಕ್ಕೆ ಅನ್‌ಲಾಕ್ ಮಾಡಿ
 icon_new_selected	ಐಕಾನ್: ಹೊಸ ಫೈಲ್ ಆಯ್ಕೆಯಾಗಿದೆ — ಬ್ರಾಂಡ್ ಉಳಿಸಿ ಒತ್ತಿರಿ
 icon_custom	ಐಕಾನ್: ನಿಮ್ಮ ಅಂಗಡಿಯ ಗುರುತು
 icon_default	ಐಕಾನ್: Kumkaj ಗುರುತು (ಡೀಫಾಲ್ಟ್) — ನಿಮ್ಮದನ್ನು ಆಯ್ಕೆಮಾಡಿ
@@ -1033,7 +1016,7 @@ book_kind_balance	ಬ್ಯಾಲೆನ್ಸ್ ಶೀಟ್
 order_help	ತೆರೆದ ಆರ್ಡರ್ ಆಯ್ಕೆಮಾಡಿ, ಅಥವಾ ಟೇಬಲ್ ಆಯ್ಕೆಮಾಡಿ ಹೊಸದನ್ನು ಪ್ರಾರಂಭಿಸಿ. ಸಿದ್ಧ ವಸ್ತುಗಳನ್ನು ಟ್ಯಾಪ್ ಮಾಡಿ, KOT ಕಳುಹಿಸಿ, ಒಂದು ಅಥವಾ ಹೆಚ್ಚು ವಸ್ತುಗಳಿಗೆ ಬಿಲ್ ಮಾಡಿ, ಬಿಲ್ ಹಂಚಿ ಮತ್ತು ಪಾವತಿ ಇತ್ಯರ್ಥಪಡಿಸಿ.
 floor_help	ಪ್ರತಿ ಟೇಬಲ್ ಅತಿಥಿಗಳು ಕುಳಿತಿದ್ದಾರೆಯೇ, ಅವರ ತೆರೆದ ಬಿಲ್ ಏನು ಮತ್ತು ಮುಂದೆ ಯಾರಿಗೆ ಸೇವೆ ಬೇಕು ಎಂಬುದನ್ನು ತೋರಿಸುತ್ತದೆ.
 kitchen_help	ಪ್ರತಿ ರೂಪಾಂತರ ಅಥವಾ ಪ್ರತಿ ವಸ್ತುವಿನಂತೆ ಸಿದ್ಧ ಪ್ರಮಾಣವನ್ನು ಟ್ರ್ಯಾಕ್ ಮಾಡಿ — KOT ನಲ್ಲಿ ಬಯಸಿದಂತೆ ದಾಖಲಿಸಿ.
-kitchen_empty	ಸದ್ಯಕ್ಕೆ ಏನೂ ತೆರೆದಿಲ್ಲ — ಹೊಸ ಆರ್ಡರ್‌ಗಳು ಇಲ್ಲಿ ಕಾಣಿಸುತ್ತವೆ.
+kitchen_empty	ಸದ್ಯಕ್ಕೆ ಏನೂ ತೆರೆದಿಲ್ಲ.
 add_a_table	ಟೇಬಲ್ ಸೇರಿಸಿ
 add_station_heading	ಸ್ಟೇಷನ್ ಸೇರಿಸಿ · ಉದಾ. ತಂದೂರ್, ಸೌತ್ ಇಂಡಿಯನ್
 categories_help	ವರ್ಗವು ಒಂದು ಖಾದ್ಯವು ಯಾವ ಮೆನು ಭಾಗಕ್ಕೆ ಸೇರಿದೆ ಎಂದು ತೋರಿಸುತ್ತದೆ — ಉದಾ. ಸ್ನಾಕ್ಸ್, ಮುಖ್ಯ ಕೋರ್ಸ್ ಅಥವಾ ಬಿರಿಯಾನಿ. ವರ್ಗಗಳನ್ನು ನಿಮ್ಮ ರೀತಿಯಲ್ಲಿ ಮಾಡಿ: ನಾವು ಸೂಚಿಸುವ ಹೆಸರುಗಳನ್ನು ಆರಿಸಿ, ಮರುಹೆಸರಿಸಿ ಅಥವಾ ನಿಮ್ಮದನ್ನು ಸೇರಿಸಿ.
@@ -1131,7 +1114,6 @@ bill_format_help	ಪ್ರತಿ ಬಿಲ್‌ನಲ್ಲಿ ನಿಮ್ಮ 
 bill_header_ph	ವಿಳಾಸ | ಫೋನ್
 fssai_ph	FSSAI ಪರವಾನಗಿ ಸಂ. (ಭಾರತ)
 bill_footer_ph	ಫೂಟರ್ (ಉದಾ. ಧನ್ಯವಾದ, ಮತ್ತೆ ಬನ್ನಿ)
-save_bill_format	ಬಿಲ್ ಸ್ವರೂಪ ಉಳಿಸಿ
 reset_bill_format	ಡೀಫಾಲ್ಟ್‌ಗೆ ಮರುಹೊಂದಿಸಿ
 bill_format_reset	ಬಿಲ್ ಸ್ವರೂಪ ಡೀಫಾಲ್ಟ್‌ಗೆ
 reset_kot_format	ಡೀಫಾಲ್ಟ್‌ಗೆ ಮರುಹೊಂದಿಸಿ
@@ -1201,13 +1183,11 @@ kot_copies_3	3
 kot_title_ph	ಶೀರ್ಷಿಕೆ (ಖಾಲಿ = KOT - KITCHEN ORDER)
 kot_footer_ph	ಅಡುಗೆ ಟಿಪ್ಪಣಿ (ಐಚ್ಛಿಕ, ಬೆಲೆ ಇಲ್ಲ)
 kot_preview	ಪೂರ್ವವೀಕ್ಷಣೆ
-save_kot_format	KOT ಸ್ವರೂಪ ಉಳಿಸಿ
 test_kot_format	ಪರೀಕ್ಷಾ KOT
 test_kot_sent	ಅಡುಗೆಮನೆ ಟಿಕೆಟ್ ಮಾದರಿ ಕಳುಹಿಸಲಾಗಿದೆ
 test_bill_format	ಪರೀಕ್ಷಾ ಬಿಲ್
 test_bill_sent	ಬಿಲ್ ಮಾದರಿ ಕಳುಹಿಸಲಾಗಿದೆ
 test_print_no_printer	ಆ ಕೆಲಸಕ್ಕೆ ಮುದ್ರಕವಿಲ್ಲ — ಈ ಪರದೆಯಲ್ಲೇ ಒಂದನ್ನು ಆಯ್ಕೆಮಾಡಿ
-kot_format_saved	KOT ಸ್ವರೂಪ ಉಳಿಸಲಾಗಿದೆ
 std_print	ಬಿಲ್ ಪ್ರಿಂಟ್ ಗಾತ್ರ
 std_print_help	ಸ್ಟ್ಯಾಂಡರ್ಡ್ ಪೋರ್ಟ್ರೇಟ್ ಮತ್ತು ಲ್ಯಾಂಡ್‌ಸ್ಕೇಪ್ ಬಿಲ್ ಕೆಲಸಗಳ ಅಕ್ಷರ ಗಾತ್ರ (ಥರ್ಮಲ್ KOT ಪ್ರತ್ಯೇಕ). ಎರಡೂ ದಿಕ್ಕುಗಳಲ್ಲಿ ಒಂದೇ ಗಾತ್ರ.
 std_size_s	ಚಿಕ್ಕ
@@ -1264,7 +1244,6 @@ new_items_head	ಇನ್ನೂ ಕಳುಹಿಸಿಲ್ಲ
 price_ph	ಬೆಲೆ
 price_ph_gst_inside	ಬೆಲೆ ({tax} ಒಳಗೊಂಡಿದೆ)
 cancel_needs_table	ಅಡುಗೆಯ ನಂತರ ರದ್ದು ಮಾಡಲು ಈ ಆರ್ಡರ್ ಅನ್ನು ಫ್ಲೋರ್ (ಮೇಜು) ನಿಂದ ತೆರೆಯಿರಿ — ಕೌಂಟರ್ KOTಗಳು ಪಾವತಿ ವರೆಗೆ ಟಿಕೆಟ್‌ನಲ್ಲಿ ಉಳಿಯುತ್ತವೆ
-tax_rates_missing_hint	ಈ ಖಾದ್ಯಗಳಲ್ಲಿ {tax} ದರವಿಲ್ಲ — ಮೆನುವಿನಲ್ಲಿ ತೆರಿಗೆ ದರ ಹೊಂದಿಸಿ ({tax} inclusiveನಲ್ಲಿ ಬೆಲೆಯಲ್ಲಿ ಈಗಾಗಲೇ {tax} ಇದೆ)
 taxable_value	ತೆರಿಗೆ ಮೌಲ್ಯ
 gst_inside_price_note	({tax} ಒಳಗೊಂಡಿದೆ)
 start_with_template	ನಮ್ಮ ಮೆನು ಟೆಂಪ್ಲೇಟ್‌ನಿಂದ ಆರಂಭಿಸಿ
@@ -1318,9 +1297,7 @@ order_empty_pick	ಆರ್ಡರ್ ಖಾಲಿ — ಖಾದ್ಯ ಆಯ್�
 add_dishes	ಖಾದ್ಯ ಸೇರಿಸಿ
 order_so_far	ಈ ಆರ್ಡರ್‌ನಲ್ಲಿ: {n} · {total}
 no_dish_match	“{q}” ಗೆ ಹೊಂದುವ ಖಾದ್ಯ ಇಲ್ಲ
-pick_dishes_help	ಖಾದ್ಯ ಸೇರಿಸಲು ಒತ್ತಿ · ಪಟ್ಟಿ ಕಿರಿದಾಗಿಸಲು ವರ್ಗ ಆಯ್ಕೆಮಾಡಿ
 pick_done	ಆಯಿತು
-pick_done_dd	ಆಯಿತು · {label}
 printer_route_mode	ಈ ಸ್ಥಳದಲ್ಲಿ ಹಲವು ಮುದ್ರಕಗಳಿದ್ದರೆ
 printer_mode_first	ಮೊದಲು ಕೆಲಸ ಮಾಡುವುದು
 printer_mode_all	ಎಲ್ಲದರಲ್ಲೂ ಮುದ್ರಿಸಿ
@@ -1368,3 +1345,22 @@ recent_changes	ಇತ್ತೀಚಿನ ಬದಲಾವಣೆಗಳು
 lane_declared_label	ತೆರಿಗೆ ಇನ್‌ವಾಯ್ಸ್
 lane_owner_label	ಕ್ಯಾಶ್ ಮೆಮೊ
 money_lane_bill	ಬಿಲ್: {lane}
+sel_copy	ನಕಲಿಸಿ
+sel_select_all	ಎಲ್ಲವನ್ನೂ ಆಯ್ಕೆಮಾಡಿ
+sel_copied	ನಕಲಿಸಲಾಗಿದೆ
+items_tmpl_khaynjo	Khaynjo ವಸ್ತು ಟೆಂಪ್ಲೇಟ್
+items_tmpl_named	{name} ಟೆಂಪ್ಲೇಟ್
+app_tmpl_named	{name} ಆ್ಯಪ್ ಟೆಂಪ್ಲೇಟ್
+private_code_ph	12 ಅಂಕಿಯ ಕೋಡ್
+stamp_on	ಸ್ಟ್ಯಾಂಪ್: ಫೈಲ್‌ನಲ್ಲಿ
+pay_qr_on	ಪಾವತಿ QR: ಫೈಲ್‌ನಲ್ಲಿ
+pay_qr_off	ಪಾವತಿ QR: ಇಲ್ಲ
+items_tmpl_heading	ಐಟಂ ಟೆಂಪ್ಲೇಟ್‌ಗಳು
+items_tmpl_help	ನಿಮ್ಮ ಮೆನುಗಾಗಿ ಖಾದ್ಯಗಳು, ವರ್ಗಗಳು ಮತ್ತು ಫೋಟೋಗಳು. ಅಂಗಡಿ ಸೆಟ್ಟಿಂಗ್‌ಗಳು ಮತ್ತು ಸಿಬ್ಬಂದಿ ಹಾಗೆಯೇ ಇರುತ್ತಾರೆ.
+public_tmpl_help	ಯಾರು ಬೇಕಾದರೂ ಡೌನ್‌ಲೋಡ್ ಮಾಡಬಹುದಾದ ಆರಂಭಿಕ ಮೆನುಗಳು. ಒಮ್ಮೆ ಇಂಟರ್ನೆಟ್ ಬೇಕು.
+private_tmpl_help	ನಿಮ್ಮ Khaynjo ಸಂಪರ್ಕದಿಂದ ಬರುವ 12-ಅಂಕಿಯ ಕೋಡ್‌ನಿಂದ ಸುರಕ್ಷಿತ ಗ್ರಾಹಕ ಮೆನುಗಳು.
+printers_screen_tip	ಹುಡುಕಿ ಈ ಸಾಧನ ಬಳಸಬಹುದಾದ ಪ್ರಿಂಟರ್‌ಗಳನ್ನು ತೋರಿಸಿ ಈ ಅಂಗಡಿಗಾಗಿ ಉಳಿಸುತ್ತದೆ. ಬಿಲ್ ಪ್ರಿಂಟರ್‌ಗಳು: ಬಿಲ್ ಮತ್ತು KOT ಫಾರ್ಮ್ಯಾಟ್ → ಬಿಲ್. ಅಡುಗೆಮನೆ: ಅಡುಗೆಮನೆ → ಅಡುಗೆಮನೆ ಸ್ಟೇಷನ್‌ಗಳು.
+printers_found_none	ಯಾವುದೇ ಪ್ರಿಂಟರ್ ಸಿಗಲಿಲ್ಲ.
+kot_copy_from	ಇದರಿಂದ ನಕಲಿಸಿ
+kot_copy_from_help	ಆ ಪ್ರಕಾರದ ಪ್ರತಿ ಸಾಲಿನ ಗಾತ್ರ, ದಪ್ಪ ಮತ್ತು ಜೋಡಣೆಯನ್ನು ಇದಕ್ಕೆ ನಕಲಿಸುತ್ತದೆ. ಈ ಪ್ರಕಾರ ತನ್ನದೇ ಬ್ಯಾನರ್, ಐಟಂ ಪೂರ್ವಪದ ಮತ್ತು ಹೊಡೆಗೆರೆ ಉಳಿಸಿಕೊಳ್ಳುತ್ತದೆ. ಉಳಿಸಿಕೊಳ್ಳಲು KOT ಫಾರ್ಮ್ಯಾಟ್ ಉಳಿಸಿ.
+nav_loading	ಲೋಡ್ ಆಗುತ್ತಿದೆ…

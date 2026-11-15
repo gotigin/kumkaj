@@ -81,6 +81,11 @@ fn main() {
         println!("cargo:rustc-cfg=kumkaj_hide_console");
     }
 
+    // Windows .exe: manifest, version info, icon (WACK; scripts/windows/win_resources.rs).
+    let label = vars.get("KUMKAJ_APP_LABEL").cloned().unwrap_or_default();
+    embed_windows_resources(&manifest_dir, &label);
+    println!("cargo:rerun-if-changed=../../scripts/windows/win_resources.rs");
+
     for (key, value) in vars {
         println!("cargo:rustc-env={key}={value}");
     }
@@ -168,3 +173,5 @@ fn collect_asset_files(dir: &PathBuf, rel: &str, out: &mut Vec<String>) {
         }
     }
 }
+
+include!("../../scripts/windows/win_resources.rs");

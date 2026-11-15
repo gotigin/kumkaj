@@ -41,7 +41,7 @@ remove	Xóa
 removed_items	Mục đã xóa
 removed_help	Khôi phục đưa mục trở lại thực đơn đúng như cũ — giá, ảnh và danh mục. Kệ món của chúng tôi không bao giờ bị xóa, nên luôn có thể thêm lại món.
 restore_item	Khôi phục
-empty_catalog	Chưa có mục. Mở Thực đơn & mục, thêm một cái (tên + giá), rồi nhận đơn.
+empty_catalog	Chưa có mục.
 total	Tổng
 cash	Tiền mặt
 upi	UPI
@@ -103,23 +103,14 @@ bill_item_qty	SL
 bill_item_price	Đơn giá
 bill_item_amount	Thành tiền
 bill_item_note	Ghi chú
-bill_item_col_gap	Khoảng cột
 bill_item_col_order	Thứ tự cột
 bill_item_col_sep	Kẻ cột
-bill_item_gap_tight	Sát
-bill_item_gap_comfort	Thoải mái
-bill_item_gap_wide	Rộng
-bill_item_num_width	Cột số
-bill_item_num_compact	Gọn
-bill_item_num_comfort	Thoải mái
-bill_item_num_wide	Rộng
-bill_item_num_align	Căn số
-bill_item_gap_em	Khoảng (em)
-bill_item_qty_min	SL tối thiểu (em)
-bill_item_price_min	Đơn giá tối thiểu (em)
-bill_item_amount_min	Thành tiền tối thiểu (em)
-kot_item_qty_width	Cột SL
-kot_item_num_align	Căn SL
+slip_columns	Cột
+slip_col_width	Chiều rộng (mm)
+slip_col_start	Khoảng đầu (px)
+slip_col_end	Khoảng cuối (px)
+slip_col_align	Căn chỉnh chữ
+slip_columns_help	Chiều rộng mỗi cột đã gồm khoảng đầu và khoảng cuối của nó. Chữ xuống dòng trong cột của nó; phần vượt quá chiều rộng nội dung bị cắt, trên giấy và trong bản xem trước.
 bill_total_qty_label	Nhãn tổng SL
 bill_total_subtotal_label	Nhãn tạm tính
 bill_total_grand_label	Nhãn tổng
@@ -221,7 +212,6 @@ sidebar_order_saved	Đơn hàng trên thanh bên đã được lưu
 sidebar_visibility_saved	Độ hiển thị của thanh bên đã được lưu
 amounts_hide	Ẩn
 amounts_show	Hiện
-printers_none_hint	Lưu máy in trên thiết bị này trước, sau đó thêm vào Hóa đơn hoặc Bếp
 counter	Quầy
 dine_in	Ăn tại chỗ
 takeaway	Mang đi
@@ -328,8 +318,6 @@ selected_language	Đã chọn
 continue	Tiếp tục
 this_device	THIẾT BỊ NÀY
 device_use_q	Thiết bị này sẽ được dùng thế nào?
-last_server_mode	Trước là máy chủ — chạm để tiếp tục
-last_client_mode	Trước là máy khách — chạm để tiếp tục
 choose_server	Chọn máy chủ
 choose_server_hint	Thiết bị này đã có máy chủ. Mở một cái, hoặc tạo máy chủ mới cho doanh nghiệp khác.
 create_new_server	Tạo máy chủ mới
@@ -391,7 +379,7 @@ attachments_last_expense	Đính kèm (chi phí cuối)
 bank	Ngân hàng
 bank_in	Gửi ngân hàng
 bank_out	Rút ngân hàng
-bank_reconciliation	Đối chiếu ngân hàng (đánh dấu theo sao kê)
+bank_reconciliation	Đối chiếu ngân hàng
 bank_to_till	Ngân hàng → quầy
 book_add_dish	Đặt — thêm món / mục
 book_opening_credit	Gửi — nợ đầu kỳ
@@ -744,7 +732,6 @@ station_print_pick_first	Hãy chọn trạm bếp trước
 station_print_editing	Đang sửa máy in của “{name}”
 station_vps_dd	Máy in của trạm này
 station_vps_dd_n	{n} máy in · chạm để đổi
-station_vps_empty	Chưa có máy in — tìm trong Cài đặt → Máy in
 bill_printers_dd	Máy in cho hóa đơn
 bill_printers_dd_n	{n} máy in cho hóa đơn · nhấn để thay đổi
 job_layout	Bố cục
@@ -889,7 +876,7 @@ net_word	Ròng
 offline_badge	NGOẠI TUYẾN
 optional_login_help	Đăng nhập tùy chọn (mã + mật khẩu). Chủ đặt một lần; sau đó chỉ người dùng mới đổi được mật khẩu.
 or_unlock_login	Hoặc mở khóa bằng mã đăng nhập + mật khẩu
-permission_preset	Mẫu quyền (truy cập gì)
+permission_preset	Mẫu quyền
 preset_help_khaynjo	Thu ngân: bán. Quản lý: bán + mục + hủy/sửa.
 product_locked_khaynjo	Khaynjo
 product_only_khaynjo	Ứng dụng này chỉ là Khaynjo — hệ thống vận hành nhà hàng. Ngành khác có sản phẩm Kumkaj riêng.
@@ -961,10 +948,6 @@ pin_hint_paired	Quầy phụ đã ghép — mở khóa để bán
 pin_hint_pair_first	Quầy phụ — ghép với thiết bị cửa hàng trước
 unlock_to_continue	Mở khóa để tiếp tục
 no_staff_yet	Chưa có nhân viên — mở khóa với tư cách Chủ, rồi Nhóm
-status_server_set_pin	Chế độ máy chủ — đặt PIN chủ
-status_server_tills	Chế độ máy chủ — quầy phụ có thể tham gia. Mở khóa
-status_server_unlock	Chế độ máy chủ — mở khóa với tư cách Chủ
-status_client_unlock	Chế độ máy khách — mở khóa để bán
 icon_new_selected	Biểu tượng: đã chọn tệp mới — chạm Lưu thương hiệu
 icon_custom	Biểu tượng: dấu hiệu cửa hàng của bạn
 icon_default	Biểu tượng: dấu Kumkaj (mặc định) — chọn của bạn
@@ -1033,7 +1016,7 @@ book_kind_balance	Bảng cân đối
 order_help	Chọn một đơn đang mở, hoặc chọn bàn và bắt đầu đơn mới. Chạm vào món sẵn sàng, gửi KOT, tính tiền một hoặc nhiều món, chia hóa đơn và thanh toán.
 floor_help	Mỗi bàn cho thấy khách có đang ngồi không, hóa đơn đang mở của họ là gì và ai cần phục vụ tiếp theo.
 kitchen_help	Theo dõi số lượng đã sẵn sàng theo biến thể hoặc theo món — ghi vào KOT theo cách bạn muốn.
-kitchen_empty	Hiện không có gì đang mở — các đơn mới sẽ xuất hiện ở đây.
+kitchen_empty	Hiện không có gì đang mở.
 add_a_table	Thêm bàn
 add_station_heading	Thêm trạm · ví dụ Tandoor, Nam Ấn
 categories_help	Danh mục cho thấy một món thuộc phần nào của thực đơn — ví dụ món ăn nhẹ, món chính hoặc biryani. Tạo danh mục theo cách của bạn: chọn tên chúng tôi gợi ý, đổi tên chúng hoặc thêm của riêng bạn.
@@ -1131,7 +1114,6 @@ bill_format_help	In dưới tên nhà hàng trên mọi hóa đơn. Ngăn dòng 
 bill_header_ph	Địa chỉ | điện thoại
 fssai_ph	Số giấy phép FSSAI (Ấn Độ)
 bill_footer_ph	Chân trang (vd. Cảm ơn, hẹn gặp lại)
-save_bill_format	Lưu mẫu hóa đơn
 reset_bill_format	Đặt lại mặc định
 bill_format_reset	Đã đặt lại mẫu hóa đơn
 reset_kot_format	Đặt lại mặc định
@@ -1201,13 +1183,11 @@ kot_copies_3	3
 kot_title_ph	Tiêu đề (trống = KOT - KITCHEN ORDER)
 kot_footer_ph	Ghi chú bếp (tùy chọn, không giá)
 kot_preview	Xem trước
-save_kot_format	Lưu định dạng KOT
 test_kot_format	Kiểm tra KOT
 test_kot_sent	Vé nhà bếp xem trước đã được gửi
 test_bill_format	Kiểm tra hóa đơn
 test_bill_sent	Xem trước hóa đơn đã được gửi
 test_print_no_printer	Không có máy in cho công việc đó — chọn một cái trên màn hình này
-kot_format_saved	Đã lưu định dạng KOT
 std_print	Cỡ in hóa đơn
 std_print_help	Cỡ chữ cho hóa đơn Standard Dọc và Ngang (KOT nhiệt riêng). Cùng cỡ ở cả hai hướng.
 std_size_s	Nhỏ
@@ -1264,7 +1244,6 @@ new_items_head	Chưa gửi
 price_ph	Giá
 price_ph_gst_inside	Giá (gồm {tax})
 cancel_needs_table	Mở đơn này từ Sàn (một bàn) để hủy sau bếp — KOT quầy ở trên phiếu đến khi thanh toán
-tax_rates_missing_hint	Không có thuế suất {tax} trên các món này — trong Thực đơn đặt thuế suất ({tax} inclusive thì giá đã gồm {tax})
 taxable_value	Giá trị chịu thuế
 gst_inside_price_note	(gồm {tax})
 start_with_template	Bắt đầu với mẫu thực đơn
@@ -1318,9 +1297,7 @@ order_empty_pick	Đơn trống — chạm “Thêm món” phía trên để ch�
 add_dishes	Thêm món
 order_so_far	Trong đơn này: {n} · {total}
 no_dish_match	Không có món nào khớp “{q}”
-pick_dishes_help	Chạm món để thêm · chọn nhóm để thu hẹp
 pick_done	Xong
-pick_done_dd	Xong · {label}
 printer_route_mode	Nếu có nhiều máy in tại địa điểm này
 printer_mode_first	Máy đầu tiên hoạt động
 printer_mode_all	In trên tất cả
@@ -1368,3 +1345,22 @@ recent_changes	Thay đổi gần đây
 lane_declared_label	Hóa đơn thuế
 lane_owner_label	Phiếu tiền mặt
 money_lane_bill	Bill: {lane}
+sel_copy	Sao chép
+sel_select_all	Chọn tất cả
+sel_copied	Đã sao chép
+items_tmpl_khaynjo	Mẫu món Khaynjo
+items_tmpl_named	Mẫu {name}
+app_tmpl_named	Mẫu ứng dụng {name}
+private_code_ph	Mã 12 chữ số
+stamp_on	Tem: đã lưu
+pay_qr_on	QR thanh toán: đã lưu
+pay_qr_off	QR thanh toán: không
+items_tmpl_heading	Mẫu món
+items_tmpl_help	Món ăn, danh mục và ảnh cho thực đơn của bạn. Cài đặt cửa hàng và nhân viên vẫn giữ nguyên.
+public_tmpl_help	Thực đơn khởi đầu mà ai cũng tải được. Cần internet một lần.
+private_tmpl_help	Thực đơn khách hàng được khóa bằng mã 12 chữ số từ người liên hệ Khaynjo của bạn.
+printers_screen_tip	Tìm sẽ liệt kê các máy in thiết bị này dùng được và lưu chúng cho cửa hàng này. Máy in hóa đơn: Định dạng hóa đơn & KOT → Hóa đơn. Bếp: Bếp → Trạm bếp.
+printers_found_none	Không tìm thấy máy in nào.
+kot_copy_from	Sao chép từ
+kot_copy_from_help	Sao chép cỡ chữ, độ đậm và căn lề của mọi dòng từ loại đó sang loại này. Loại này giữ biểu ngữ, tiền tố món và gạch ngang của riêng nó. Lưu định dạng KOT để giữ lại.
+nav_loading	Đang tải…

@@ -41,7 +41,7 @@ remove	Usuń
 removed_items	Usunięte pozycje
 removed_help	Przywróć umieszcza pozycję z powrotem w menu dokładnie tak, jak była — cena, zdjęcie i kategoria. Nasza półka z naczyniami nigdy nie jest usuwana, więc zawsze można dołożyć nowe danie.
 restore_item	Przywróć
-empty_catalog	Nie ma jeszcze naczyń. Otwórz Menu, dodaj danie (nazwa + cena), a następnie złóż zamówienie.
+empty_catalog	Nie ma jeszcze naczyń.
 total	Razem
 cash	Gotówka
 upi	UPI
@@ -103,23 +103,14 @@ bill_item_qty	Ilość
 bill_item_price	Cena
 bill_item_amount	Kwota
 bill_item_note	Uwaga dotycząca dania
-bill_item_col_gap	Szczelina kolumny
 bill_item_col_order	Kolejność kolumn
 bill_item_col_sep	Reguły kolumnowe
-bill_item_gap_tight	Ciasno
-bill_item_gap_comfort	Wygodne
-bill_item_gap_wide	Szeroki
-bill_item_num_width	Kolumny liczbowe
-bill_item_num_compact	Kompaktowy
-bill_item_num_comfort	Wygodne
-bill_item_num_wide	Szeroki
-bill_item_num_align	Liczby się zgadzają
-bill_item_gap_em	Luka (em)
-bill_item_qty_min	Ilość min (em)
-bill_item_price_min	Cena min. (em)
-bill_item_amount_min	Kwota min (em)
-kot_item_qty_width	Kolumna Ilość
-kot_item_num_align	Ilość wyrównana
+slip_columns	Kolumny
+slip_col_width	Szerokość (mm)
+slip_col_start	Odstęp na początku (px)
+slip_col_end	Odstęp na końcu (px)
+slip_col_align	Wyrównanie tekstu
+slip_columns_help	Szerokość każdej kolumny obejmuje jej odstęp na początku i na końcu. Tekst zawija się w obrębie swojej kolumny; to, co wykracza poza szerokość treści, jest obcinane – na papierze i w podglądzie.
 bill_total_qty_label	Etykieta z całkowitą ilością
 bill_total_subtotal_label	Etykieta sumy częściowej
 bill_total_grand_label	Wielka suma etykieta
@@ -221,7 +212,6 @@ sidebar_order_saved	Zapisano zamówienie na pasku bocznym
 sidebar_visibility_saved	Zapisano widoczność paska bocznego
 amounts_hide	Ukryj
 amounts_show	Pokaż
-printers_none_hint	Najpierw zapisz drukarkę na tym urządzeniu, a następnie dodaj ją do Billa lub kuchni
 counter	Licznik
 dine_in	Zjedz obiad
 takeaway	Na wynos
@@ -328,8 +318,6 @@ selected_language	Wybrane
 continue	Kontynuuj
 this_device	TO URZĄDZENIE
 device_use_q	Jak będzie używane to urządzenie?
-last_server_mode	Był serwer — kliknij, aby kontynuować
-last_client_mode	Był klientem — dotknij, aby kontynuować
 choose_server	Wybierz serwer
 choose_server_hint	Otwórz istniejący serwer lub utwórz go dla innej firmy.
 create_new_server	Utwórz nowy serwer
@@ -391,7 +379,7 @@ attachments_last_expense	Załączniki (ostatni wydatek)
 bank	Banku
 bank_in	Bank w
 bank_out	Z banku
-bank_reconciliation	Uzgodnienie konta bankowego (zaznaczyć na wyciągu bankowym)
+bank_reconciliation	Uzgodnienie konta bankowego
 bank_to_till	Bank → kasa
 book_add_dish	Zarezerwuj — dodaj danie/przedmiot
 book_opening_credit	Księga — kredyt początkowy
@@ -744,7 +732,6 @@ station_print_pick_first	Najpierw wybierz stację kuchenną
 station_print_editing	Edycja drukarek dla „{name}”
 station_vps_dd	Drukarki dla tej stacji
 station_vps_dd_n	{n} drukarki · dotknij, aby zmienić
-station_vps_empty	Nie ma jeszcze drukarek — znajdź je w Ustawieniach → Drukarki
 bill_printers_dd	Drukarki za rachunek
 bill_printers_dd_n	{n} drukarki do rachunku · dotknij, aby zmienić
 job_layout	Układ
@@ -889,7 +876,7 @@ net_word	Netto
 offline_badge	W trybie offline
 optional_login_help	Opcjonalny login (id + hasło). Właściciel ustawia raz; tylko użytkownik może później zmienić hasło.
 or_unlock_login	Lub odblokuj za pomocą identyfikatora logowania + hasła
-permission_preset	Praca (ustawia ekrany i akcje pieniężne)
+permission_preset	Praca
 preset_help_khaynjo	Kasjer: sprzedaj. Menedżer: sprzedaj + przedmioty + unieważnij/zmień.
 product_locked_khaynjo	Khaynjo
 product_only_khaynjo	Ta aplikacja jest dostępna tylko w wersji Khaynjo — system operacyjny dla restauracji. Inne twarze handlowe są dostarczane jako oddzielne Kumkaj produkty.
@@ -961,10 +948,6 @@ pin_hint_paired	Dodatkowe do sparowania — odblokuj, aby sprzedać
 pin_hint_pair_first	Dodatkowa kasa — najpierw sparuj z urządzeniem sklepowym
 unlock_to_continue	Odblokuj, aby kontynuować
 no_staff_yet	Nie ma jeszcze personelu — odblokuj jako właściciel, a następnie jako zespół
-status_server_set_pin	Tryb serwera — ustaw właściciela PIN
-status_server_tills	Tryb serwera — można dołączyć dodatkowe kasy. Odblokuj
-status_server_unlock	Tryb serwera — odblokuj jako właściciel
-status_client_unlock	Tryb Klienta — odblokuj, aby sprzedawać
 icon_new_selected	Ikona: wybrany nowy plik — kliknij Zapisz markę
 icon_custom	Ikona: niestandardowy znak miejsca
 icon_default	Ikona: znak Kumkaj (domyślny) — wybierz niestandardową
@@ -1033,7 +1016,7 @@ book_kind_balance	Bilans
 order_help	Kliknij pozycję, aby go dodać.
 floor_help	Kliknij stół, aby przyjąć lub zmienić kolejność. Kolory pokazują wolne → siedzące → kuchnia → gotowe → jedzenie → rachunek → zapłacony. Lista oczekujących, rezerwacje i dodatkowe stoły znajdują się w poniższych sekcjach.
 kitchen_help	Bilety kuchenne (KOT), najnowsze na końcu. Start → Gotowe → Gotowe przesuwa bilet dalej. Bilety nigdy nie pokazują cen.
-kitchen_empty	Brak otwartych biletów. Tutaj pojawia się KOT wysłany z sali zamówień lub jadalni.
+kitchen_empty	Brak otwartych biletów.
 add_a_table	Dodaj stół jadalny
 add_station_heading	Dodaj stację kuchenną
 categories_help	Kliknij Użyj, aby umieścić powyższy pozycję w tej kategorii. Zdjęcie nadaje kategorii obraz; bez jednego pokazuje swoje inicjały.
@@ -1131,7 +1114,6 @@ bill_format_help	Drukowane pod nazwą Twojej restauracji na każdym rachunku. Od
 bill_header_ph	Adres | telefon
 fssai_ph	Licencja FSSAI nr. (Indie)
 bill_footer_ph	Stopka (np. Dziękuję, odwiedź ponownie)
-save_bill_format	Zapisz format rachunku
 reset_bill_format	Przywróć ustawienia domyślne
 bill_format_reset	Format rachunku przywrócony do wartości domyślnych
 reset_kot_format	Przywróć ustawienia domyślne
@@ -1201,13 +1183,11 @@ kot_copies_3	3
 kot_title_ph	Tytuł (puste = KOT - ZAMÓWIENIE KUCHNI)
 kot_footer_ph	Notatka kuchenna (opcjonalnie, bez cen)
 kot_preview	Podgląd
-save_kot_format	Zapisz format KOT
 test_kot_format	Próbny KOT
 test_kot_sent	Wysłano podgląd biletu kuchennego
 test_bill_format	Rachunek testowy
 test_bill_sent	Wysłano podgląd rachunku
 test_print_no_printer	Brak drukarki dla tego zadania — wybierz ją na tym ekranie
-kot_format_saved	Zapisano format KOT
 std_print	Rozmiar wydruku rachunku
 std_print_help	Rozmiar czcionki dla standardowych zadań rachunków w orientacji pionowej i poziomej na drukarkach z systemem operacyjnym/dokumentów (wprowadź punkty — nie Mały/Normalny/Duży). Ten sam rozmiar w obu orientacjach. Rozmiary pasków kuchennych znajdują się w zakładce KOT.
 std_size_s	Mały
@@ -1264,7 +1244,6 @@ new_items_head	Jeszcze nie wysłane
 price_ph	Cena
 price_ph_gst_inside	Cena ({tax} włącznie)
 cancel_needs_table	Otwórz to zamówienie na ekranie Jadalnia (stół jadalny), aby anulować je po przyjęciu go przez kuchnię — licznik KOT pozostaje na bilecie do czasu przyjęcia płatności
-tax_rates_missing_hint	Brak stawki {tax} na te dania — na zestaw menu Stawka podatku (ceny zawierają już {tax} poniżej {tax} włącznie)
 taxable_value	Wartość podlegająca opodatkowaniu
 gst_inside_price_note	({tax} włącznie)
 start_with_template	Zacznij od naszego szablonu menu
@@ -1318,9 +1297,7 @@ order_empty_pick	Zamów puste — dotknij Dodaj dania powyżej, aby wybrać dani
 add_dishes	Dodaj dania
 order_so_far	W tej kolejności: {n} · {total}
 no_dish_match	Żadne danie nie pasuje do „{q}”
-pick_dishes_help	Stuknij danie, aby je dodać · wybierz kategorię, aby zawęzić listę
 pick_done	Gotowe
-pick_done_dd	Gotowe · {label}
 printer_route_mode	Jeśli w tym miejscu jest kilka drukarek
 printer_mode_first	Po pierwsze, to działa
 printer_mode_all	Drukuj na wszystkim
@@ -1368,3 +1345,22 @@ recent_changes	Ostatnie zmiany
 lane_declared_label	Faktura VAT
 lane_owner_label	Notatka gotówkowa
 money_lane_bill	Rachunek: {lane}
+sel_copy	Kopiuj
+sel_select_all	Zaznacz wszystko
+sel_copied	Skopiowano
+items_tmpl_khaynjo	Szablon pozycji Khaynjo
+items_tmpl_named	Szablon {name}
+app_tmpl_named	Szablon aplikacji {name}
+private_code_ph	12-cyfrowy kod
+stamp_on	Znaczek: w aktach
+pay_qr_on	QR płatności: w pliku
+pay_qr_off	QR płatności: brak
+items_tmpl_heading	Szablony pozycji
+items_tmpl_help	Dania, kategorie i zdjęcia do Twojego menu. Ustawienia sklepu i personel pozostają bez zmian.
+public_tmpl_help	Menu startowe, które każdy może pobrać. Internet potrzebny raz.
+private_tmpl_help	Menu klientów zablokowane 12-cyfrowym kodem od Twojego kontaktu w Khaynjo.
+printers_screen_tip	Szukaj pokazuje drukarki, których to urządzenie może używać, i zapisuje je dla tego sklepu. Drukarki rachunków: Format rachunku i KOT → Rachunek. Kuchnia: Kuchnia → Stanowiska kuchni.
+printers_found_none	Nie znaleziono drukarek.
+kot_copy_from	Kopiuj z
+kot_copy_from_help	Kopiuje rozmiar, grubość i wyrównanie każdego wiersza z tego rodzaju do tego. Ten rodzaj zachowuje własny baner, prefiks pozycji i przekreślenie. Zapisz format KOT, aby to zachować.
+nav_loading	Wczytywanie…

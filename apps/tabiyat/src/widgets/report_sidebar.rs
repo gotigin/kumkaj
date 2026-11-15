@@ -188,6 +188,12 @@ struct ReportText {
     measured: f64,
     #[rust]
     settle: NextFrame,
+    /// Rows are tap targets (Settings → Units, Areas · stations · tax
+    /// rates): the row takes the press (a View emits FingerUp only with a
+    /// cursor — without one these taps never fired, Khaynjo 2026-11-13) and
+    /// its text is not selectable (text inside a tap target is not copy).
+    #[live]
+    tappable: bool,
 }
 
 impl Widget for ReportText {
@@ -251,6 +257,16 @@ impl Widget for ReportText {
                                 v.clone()
                             };
                             set_report_label(cx, &item, ids!(row.v), &shown, align_x);
+                            if self.tappable {
+                                if let Some(mut r) = item.view(cx, ids!(row)).borrow_mut() {
+                                    r.cursor = Some(MouseCursor::Hand);
+                                }
+                                for id in [ids!(row.k), ids!(row.v)] {
+                                    if let Some(mut l) = item.widget(cx, id).borrow_mut::<WrapLabel>() {
+                                        l.markdown.text_flow.selectable = false;
+                                    }
+                                }
+                            }
                             item
                         }
                         ReportRow::Line(t) => {
@@ -384,23 +400,8 @@ impl Widget for SidebarNavList {
                     let item = list.item(cx, item_id, id!(Item));
                     let label = {
                         let lang = app_state().lock().unwrap().locale.language.clone();
-                        match tab {
-                            NavTab::Books => locale::t(&lang, "books"),
-                            NavTab::Sell => locale::t(&lang, "sell"),
-                            NavTab::Buy => locale::t(&lang, "buy"),
-                            NavTab::Menu => locale::t(&lang, "sidebar_menu_items"),
-                            NavTab::Floor => locale::t(&lang, "floor"),
-                            NavTab::Kitchen => locale::t(&lang, "kitchen"),
-                            NavTab::Sales => locale::t(&lang, "sales"),
-                            NavTab::DayClose => locale::t(&lang, "day_close"),
-                            NavTab::Reports => locale::t(&lang, "nav_reports"),
-                            NavTab::Inventory => locale::t(&lang, "inventory"),
-                            NavTab::Branches => locale::t(&lang, "branches"),
-                            NavTab::Credit => locale::t(&lang, "credit"),
-                            NavTab::Team => locale::t(&lang, "team"),
-                            NavTab::Settings => locale::t(&lang, "nav_settings"),
-                            NavTab::Lock => locale::t(&lang, "nav_lock"),
-                        }
+                        // Shown to shop admins only, so Team reads "Team & PINs".
+                        locale::t(&lang, nav_tab_label_key(tab, false))
                     };
                     let visible = nav_tab_is_visible(&hidden, tab);
                     let always = nav_tab_always_visible(tab);
@@ -471,9 +472,9 @@ struct StockList {
 
 impl Widget for StockList {
     fn draw_walk(&mut self, cx: &mut Cx2d, scope: &mut Scope, walk: Walk) -> DrawStep {
-        let (items, raw, resale, low, levels) = {
+        let (items, resale, low, levels) = {
             let st = app_state().lock().unwrap();
-            (st.stock_items(), st.t("kind_raw"), st.t("kind_resale"), st.t("low_badge"), st.reorder_levels.clone())
+            (st.stock_items(), st.t("kind_resale"), st.t("low_badge"), st.reorder_levels.clone())
         };
         // Full content height + page scroll (CustomerList / SaleList rule).
         // A short Fixed pitch (old 62) clipped the last Fit rows into the
@@ -495,7 +496,7 @@ impl Widget for StockList {
                     let item = list.item(cx, item_id, id!(Item));
                     item.label(cx, ids!(stock_name)).set_text(cx, &p.name);
                     item.label(cx, ids!(stock_kind))
-                        .set_text(cx, if p.is_raw() { &raw } else { &resale });
+                        .set_text(cx, &resale);
                     item.label(cx, ids!(stock_qty))
                         .set_text(cx, &p.format_on_hand());
                     let reorder_at = levels.get(&p.id).copied().unwrap_or(store::DEFAULT_REORDER_AT);
@@ -615,10 +616,10 @@ enum SlipPreviewRow {
     Gap,
 }
 
-/// Kitchen-slip preview. Not a report: no headings, no money eye.
+/// Bill preview. Not a report: no headings, no money eye.
 /// `Item` and `Qty.` use the same row as each dish and its count.
 #[derive(Script, ScriptHook, Widget)]
-struct KotSlipPreview {
+struct SlipPreview {
     #[deref]
     view: View,
     #[rust]
@@ -638,6 +639,10 @@ struct KotSlipPreview {
     /// Last column width that laid out. Used when this frame's width is not ready yet.
     #[rust]
     page_width: f64,
+    /// `slip_preview_key` of the picture on screen (0 = none). Bill & KOT
+    /// repaints run several times per tap; the same picture is not redrawn.
+    #[rust]
+    page_key: u64,
 }
 
 fn preview_viewport(cx: &Cx) -> f64 {
@@ -696,7 +701,7 @@ fn slip_preview_rows(text: &str, rtl: bool) -> Vec<SlipPreviewRow> {
     rows
 }
 
-impl Widget for KotSlipPreview {
+impl Widget for SlipPreview {
     fn draw_walk(&mut self, cx: &mut Cx2d, scope: &mut Scope, walk: Walk) -> DrawStep {
         if self.page {
             // The column width is whatever this screen laid out. The picture
@@ -796,7 +801,7 @@ impl Widget for KotSlipPreview {
     }
 }
 
-impl KotSlipPreview {
+impl SlipPreview {
     /// Slip text after style marks are stripped. A tab is the Qty. column.
     pub fn set_slip(&mut self, cx: &mut Cx, text: &str) {
         let rtl = locale::is_rtl(&app_state().lock().unwrap().locale.language);
@@ -805,25 +810,47 @@ impl KotSlipPreview {
             self.rows = rows;
             self.measured = 0.0;
             self.page = false;
+            self.page_key = 0;
             self.view.redraw(cx);
         }
     }
 
-    /// Show the print picture. One scale, chosen on draw, keeps the print's
-    /// ratio: big enough to read, and fitted to the screen when that still is.
-    /// `type_px` is the body-type height in the picture.
-    pub fn set_page(&mut self, cx: &mut Cx, png: &[u8], png_w: u32, png_h: u32, type_px: f64) {
-        let img = self.view.image(cx, ids!(slip));
-        if img.load_png_from_data(cx, png).is_err() {
+    /// Show the print picture of `text`. One scale, chosen on draw, keeps the
+    /// print's ratio: big enough to read, and fitted to the screen when that
+    /// still is. The same picture as last time is not drawn again, and it goes
+    /// to the screen as pixels (no PNG encode / decode on the UI thread).
+    pub fn show_slip(
+        &mut self,
+        cx: &mut Cx,
+        text: &str,
+        metrics: &receipt_raster::RasterMetrics,
+        landscape: bool,
+        size_em: f32,
+    ) {
+        let type_px = print_share::preview_type_px(size_em, metrics.page_dots());
+        let key = print_share::slip_preview_key(text, metrics, landscape, type_px);
+        if self.page && self.page_key == key {
             return;
         }
+        let (gray, w, h) = print_share::slip_page_gray(text, metrics, landscape);
+        let Ok(buf) = makepad_widgets::makepad_draw::image_cache::ImageBuffer::new(
+            &gray,
+            w as usize,
+            h as usize,
+        ) else {
+            return;
+        };
+        let img = self.view.image(cx, ids!(slip));
+        let texture = buf.into_new_texture(cx);
+        img.set_texture(cx, Some(texture));
         if let Some(mut inner) = img.borrow_mut() {
             inner.walk.width = Size::fill();
             inner.walk.height = Size::fill();
             inner.redraw(cx);
         }
         self.page = true;
-        self.page_px = (png_w.max(1) as f64, png_h.max(1) as f64);
+        self.page_key = key;
+        self.page_px = (w.max(1) as f64, h.max(1) as f64);
         self.type_px = type_px.max(1.0);
         self.rows.clear();
         self.walk.width = Size::fill();

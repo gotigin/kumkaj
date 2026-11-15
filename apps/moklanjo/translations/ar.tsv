@@ -39,7 +39,7 @@ adding_item	إضافة سعر جديد
 editing_item	التحرير
 save	حفظ
 remove	إزالة
-empty_catalog	لا أسعار بعد. افتح الأسعار والخدمات، أضف واحداً (الاسم + السعر، الوحدة كغ)، ثم الحجز.
+empty_catalog	لا أسعار بعد.
 counter_sale	حجز الكاونتر
 total	المجموع
 cash	نقداً
@@ -171,8 +171,6 @@ selected_language	المختارة
 continue	متابعة
 this_device	هذا الجهاز
 device_use_q	كيف سيُستخدم هذا الجهاز؟
-last_server_mode	كان خادمًا — اضغط للمتابعة
-last_client_mode	كان عميلًا — اضغط للمتابعة
 choose_server	اختر خادماً
 choose_server_hint	هذا الجهاز لديه خوادم بالفعل. افتح واحداً أو أنشئ خادماً جديداً لنشاط آخر.
 create_new_server	إنشاء خادم جديد
@@ -501,8 +499,6 @@ job_layout	التخطيط
 job_delivery	طريقة إرسال المهمة
 job_size	حجم الخط
 job_size_ph	مثال 18, 20, 26…
-save_receipt_format	حفظ تنسيق الإيصال
-save_label_format	حفظ تنسيق التسمية
 test_receipt_format	إيصال الاختبار
 test_label_format	تسمية الاختبار
 test_receipt_sent	تم إرسال إيصال العينة
@@ -610,7 +606,7 @@ units_heading	الوحدات
 booking_measures	مقاسات الحجز
 drawer_count	عد الدرج (اختياري)
 spreadsheet_csv	جدول البيانات (CSV)
-bank_reconciliation	التسوية البنكية (علّم مقابل كشف حسابك)
+bank_reconciliation	التسوية البنكية
 book_add_product	احجز — أضف منتجاً / سعراً
 book_opening_credit	احجز — رصيد افتتاحي
 account_kind	نوع الحساب (اضغط واحداً)
@@ -650,7 +646,7 @@ net_word	الصافي
 offline_badge	دون اتصال
 optional_login_help	دخول اختياري (معرف + كلمة مرور). يضبطه المالك مرة واحدة؛ وبعدها يمكن للمستخدم فقط تغيير كلمة المرور.
 or_unlock_login	أو افتح القفل بمعرف الدخول + كلمة المرور
-permission_preset	الوظيفة (ضبط الشاشات والحقوق)
+permission_preset	الوظيفة
 preset_help_moklanjo	أمين الصندوق: البيع. المدير: البيع + الأصناف + الإلغاء/التعديل.
 product_locked_moklanjo	Moklanjo
 product_only_moklanjo	هذا التطبيق Moklanjo فقط — الدفاتر ومكتب الحجز. ستأتي منتجات منفصلة للمهن الأخرى لاحقًا.
@@ -698,10 +694,6 @@ pin_hint_paired	الكاونتر الإضافي مقترن — افتح القف
 pin_hint_pair_first	الكاونتر الإضافي — اقترن بجهاز المتجر أولاً
 unlock_to_continue	افتح القفل للمتابعة
 no_staff_yet	لا موظفون بعد — افتح القفل كمالك، ثم الفريق
-status_server_set_pin	وضع الخادم — عيّن رمز المالك
-status_server_tills	وضع الخادم — يمكن للكاونترات الإضافية الانضمام. افتح القفل
-status_server_unlock	وضع الخادم — افتح القفل كمالك
-status_client_unlock	وضع العميل — افتح القفل للبيع
 icon_new_selected	الأيقونة: تم اختيار ملف جديد — اضغط حفظ العلامة
 icon_custom	الأيقونة: شعار متجرك الخاص
 icon_default	الأيقونة: شعار Kumkaj (الافتراضي) — اختر شعارك
@@ -834,3 +826,7 @@ role_help_supplier	الدور: المورد - AP للمشتريات.
 lane_declared_label	حجز الحساب
 lane_owner_label	الحجز النقدي
 money_lane_bill	الفاتورة: {lane}
+sel_copy	نسخ
+sel_select_all	تحديد الكل
+sel_copied	تم النسخ
+nav_loading	جارٍ التحميل…

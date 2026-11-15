@@ -69,6 +69,17 @@ The floor toy uses Khaynjo's own visit words and tile colours, copied into
 `src/floor.rs` (Free → Occupied → In kitchen → Food ready → Served → Bill
 printed → Paid → Free). As in the app, a table frees only once it is paid.
 
+Text selection (2026-11-13) follows the app's one model (`docs/DESIGN.md`
+§ Text selection & copy): a drag selects across every block like a browser
+page — from text or a margin, through cards and columns, with the wheel or
+the window edge scrolling under it; double-click a word, long-press on touch.
+`page` is the selection root (`select_from_gaps: true`; Ctrl/Cmd+A, Copy of
+what is highlighted, right-click or end-of-long-press **Copy / Select all**
+menu from `web.js`). Floor-toy tiles (tap targets), step discs
+and the footer mark stay `selectable: false`. Checked in headless Chromium: drag down / up / from a margin / across the
+feature grid columns, drag + wheel, edge auto-scroll (natively to the footer),
+Ctrl+A, pills, phone long-press + menu Copy, swipe-on-text still scrolls.
+
 ## World shelf (chapter 8)
 
 ```bash
@@ -83,12 +94,7 @@ Photos load per page; reviewed rejects and sources are in
 
 ## Remaining (do next)
 
-1. **Site text selection** — disabled on purpose. Document-host select
-   across Markdown islands and per-card `selection_gestures` both
-   selected some cards and skipped neighbors (feature grid / KOT).
-   Keep `selectable: false` in `src/ui.rs` until one approach works on
-   every visible card. Canonical note: `docs/DESIGN.md` § Text selection.
-2. **14 world-shelf photos** — need a free-license *plated* dish (not
+1. **14 world-shelf photos** — need a free-license *plated* dish (not
    people / plants / wrong cuisine). Then update research metadata and
    re-run `build-world-shelf.sh`:
 

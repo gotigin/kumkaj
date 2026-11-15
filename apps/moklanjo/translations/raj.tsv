@@ -39,7 +39,7 @@ adding_item	नवो दर जोड़ रिया है
 editing_item	संपादन
 save	बचाओ
 remove	हटाओ
-empty_catalog	अजै तांई दर कोनी। दर अर सेवा खोलो, एक जोड़ो (नांव + मोल, इकाई kg), फेर बुकिंग।
+empty_catalog	अजै तांई दर कोनी।
 counter_sale	काउंटर बुकिंग
 total	कुल
 cash	नकद
@@ -171,8 +171,6 @@ selected_language	चुण्यो गयो
 continue	जारी राखो
 this_device	यो उपकरण
 device_use_q	इण उपकरण रो उपयोग कियां कर्यो जावेला?
-last_server_mode	सर्वर हो — जारी राखण रै वास्तै टैप करो
-last_client_mode	ग्राहक हो — जारी राखण रै वास्तै टैप करो
 choose_server	एक सर्वर चुणो
 choose_server_hint	कोई मौजूदा सर्वर खोलो, या फेर दूजा कारोबार रै वास्तै बणाओ।
 create_new_server	नयो सर्वर बणाओ
@@ -501,8 +499,6 @@ job_layout	लेआउट
 job_delivery	नौकरी कियां भेजी जावै है
 job_size	फॉन्ट रो आकार
 job_size_ph	जियां कै 18, 20, 26…
-save_receipt_format	रसीद फॉर्मेट बचाओ
-save_label_format	लेबल फॉर्मेट बचाओ
 test_receipt_format	रसीद जाँच
 test_label_format	लेबल जाँच
 test_receipt_sent	नमूनो रसीद भेजी
@@ -610,7 +606,7 @@ units_heading	इकाइयां
 booking_measures	बुकिंग माप
 drawer_count	दराज री गिणती (वैकल्पिक)
 spreadsheet_csv	स्प्रेडशीट (CSV)
-bank_reconciliation	बैंक सुलह (आपरै बैंक विवरण रै खिलाफ टिक लगाओ)
+bank_reconciliation	बैंक सुलह
 book_add_product	बुक — उत्पाद / दर जोड़ो
 book_opening_credit	किताब — ओपनिंग क्रेडिट
 account_kind	खाता री किस्म (एक माथै टैप करो)
@@ -650,7 +646,7 @@ net_word	शुद्ध
 offline_badge	ऑफलाइन
 optional_login_help	वैकल्पिक लॉगिन (आईडी + पासवर्ड)। मालिक एक बार सेट कर देवै है; फगत उपयोगकर्ता ही बाद मांय पासवर्ड बदल सकै है।
 or_unlock_login	या फेर लॉगिन आईडी + पासवर्ड सूं अनलॉक करो
-permission_preset	काम (स्क्रीन अर अधिकार तय करै है)
+permission_preset	काम
 preset_help_moklanjo	कैशियर: बेचो। प्रबंधक: बेचो + वस्तुवां + शून्य/संशोधित करो।
 product_locked_moklanjo	Moklanjo
 product_only_moklanjo	आ ऐप सिरफ Moklanjo है — किताब + बुकिंग डेस्क। और व्यापार रा उत्पाद पैछै अलग आवैला।
@@ -698,10 +694,6 @@ pin_hint_paired	जोड़ी बणाबा तांई अतिरिक�
 pin_hint_pair_first	अतिरिक्त टिल — पैली दुकान रै उपकरण सूं जोड़ो
 unlock_to_continue	जारी राखबा तांई ताळो खोलो
 no_staff_yet	अबार तांई कोई स्टाफ कोनी — मालिक रै रूप मांय अनलॉक करो, फेर टीम
-status_server_set_pin	सर्वर मोड — मालिक PIN सेट करो
-status_server_tills	सर्वर मोड — अतिरिक्त टिल जुड़ सकै है। ताळो खोलो
-status_server_unlock	सर्वर मोड — मालिक रै रूप मांय अनलॉक करो
-status_client_unlock	ग्राहक मोड — बेचबा रै वास्तै अनलॉक करो
 icon_new_selected	आइकन: नयी फाइल चुणी गई है — ब्रांड बचाओ माथै टैप करो
 icon_custom	आइकन: कस्टम वेन्यू रो निशान
 icon_default	आइकन: Kumkaj चिन्ह (डिफ़ॉल्ट) — एक कस्टम रो चयन करो
@@ -834,3 +826,7 @@ role_help_supplier	भूमिका: सप्लायर — खरीद �
 lane_declared_label	खातो बुकिंग
 lane_owner_label	नकद बुकिंग
 money_lane_bill	बिल: {lane}
+sel_copy	कॉपी करो
+sel_select_all	सगळो चुणो
+sel_copied	कॉपी होयग्यो
+nav_loading	लोड हो रह्यो है…

@@ -7,6 +7,16 @@
 /// against the DSL.
 const HEADER_CONTROLS: &[&str] = &["rail_expand_btn", "header_back", "amounts_eye"];
 
+/// Every control in `nav_rail` that is not a nav row (rows are never a drag).
+/// The sidebar's empty top corner and the space under its last row move the
+/// window like the empty header (owner, 2026-11-14: with the window's top
+/// bar above the screen there was nothing left to drag). The gaps between
+/// rows stay the sidebar's own, so a finger can still scroll a long one.
+/// `nav_order_tests::rail_controls_are_not_window_drag` checks this list.
+const RAIL_CONTROLS: &[&str] = &["rail_collapse_btn"];
+/// The sidebar's right edge stays its scroll bar's.
+const RAIL_SCROLLBAR_PX: f64 = 12.0;
+
 impl AppMain for App {
     fn script_mod(vm: &mut ScriptVm) -> ScriptValue {
         crate::makepad_widgets::script_mod(vm);
@@ -69,7 +79,10 @@ impl App {
             if role_open_busy().load(std::sync::atomic::Ordering::SeqCst) {
                 if let Event::Actions(actions) = event {
                     if self.ui.button(cx, ids!(device_role_cancel)).clicked(actions) {
+                        // Back to the Server / Client choice now — the worker's
+                        // late result is dropped (`role_open_gen`).
                         request_role_open_cancel();
+                        self.set_status(cx, app_t("cancelled"));
                     }
                 }
                 self.ui.handle_event(cx, event, &mut Scope::empty());
@@ -85,19 +98,24 @@ impl App {
             let screen = app_state().lock().unwrap().screen;
             let path = Self::screen_scroll_view(screen);
             let r = self.ui.view(cx, path).area().rect(cx);
-            if r.size.y > 1.0 {
-                *page_viewport().lock().unwrap() = (r.pos.y, r.size.y);
+            let page = if r.size.y > 1.0 {
+                (r.pos.y, r.size.y)
             } else {
                 let r = self.ui.view(cx, ids!(body_stack)).area().rect(cx);
-                *page_viewport().lock().unwrap() = (r.pos.y, r.size.y);
-            }
-            // The Floor tables scroll sideways in `floor_scroll`: its box is
-            // the viewport the grid draws its visible columns for.
-            if screen == Screen::Floor {
-                let r = self.ui.view(cx, ids!(floor_scroll)).area().rect(cx);
-                if r.size.x > 1.0 {
-                    *floor_hviewport().lock().unwrap() = (r.pos.x, r.size.x);
-                }
+                (r.pos.y, r.size.y)
+            };
+            // These caches are read while drawing, but come from the last draw:
+            // after a resize (window, rail, rotation) the screen drew once with
+            // the old size and nothing drew it again — a list stayed wider
+            // than a phone with its icons cut off. Redraw on a change.
+            let page_moved = {
+                let mut pv = page_viewport().lock().unwrap();
+                let moved = (pv.1 - page.1).abs() > 0.5;
+                *pv = page;
+                moved
+            };
+            if page_moved {
+                self.ui.view(cx, path).redraw(cx);
             }
         }
         if matches!(event, Event::Startup) {
@@ -172,7 +190,6 @@ impl App {
                 || shelf_mat_busy().load(std::sync::atomic::Ordering::SeqCst)
                 || backup_copy_busy().load(std::sync::atomic::Ordering::SeqCst)
                 || backup_busy().load(std::sync::atomic::Ordering::SeqCst)
-                || aggregator_import_busy().load(std::sync::atomic::Ordering::SeqCst)
                 || diag_export_busy().load(std::sync::atomic::Ordering::SeqCst)
             {
                 self.paint_import_progress_chrome(cx);
@@ -206,20 +223,6 @@ impl App {
                         self.paint_submit_busy_chrome(cx);
                         self.sync_chrome(cx);
                     }
-                }
-            }
-            if let Some(result) = aggregator_import_once().lock().unwrap().take() {
-                match result {
-                    Ok(msg) => {
-                        let _ = app_state().lock().unwrap().reload_all();
-                        self.set_status(cx, msg);
-                        self.sync_chrome(cx);
-                    }
-                    Err(e) if e == "Cancelled" => {
-                        self.set_status(cx, app_t("cancelled"));
-                        self.sync_chrome(cx);
-                    }
-                    Err(e) => self.set_status(cx, e),
                 }
             }
             if let Some(result) = diag_export_once().lock().unwrap().take() {
@@ -303,8 +306,6 @@ impl App {
             }
             // Menu import completion (progress is painted above while busy).
             if let Some(outcome) = menu_import_once().lock().unwrap().take() {
-                let was_app_template =
-                    matches!(&outcome.kind, MenuImportKind::AppTemplate { .. });
                 let msg = match outcome.result {
                     Ok(done) => {
                         let reload = app_state().lock().unwrap().reload_all();
@@ -317,8 +318,7 @@ impl App {
                                     .t("template_imported")
                                     .replace("{d}", &done.items_added.to_string())
                                     .replace("{c}", &done.categories_added.to_string()),
-                                MenuImportKind::Client { title, .. }
-                                | MenuImportKind::AppTemplate { title, .. } => st
+                                MenuImportKind::Client { title, .. } => st
                                     .t("client_template_imported")
                                     .replace("{d}", &done.items_added.to_string())
                                     .replace("{c}", &done.categories_added.to_string())
@@ -336,13 +336,7 @@ impl App {
                 match msg {
                     Ok(m) => {
                         self.set_status(cx, m);
-                        if was_app_template {
-                            // Cash memo by default — tax invoice is opt-in with tax off.
-                            app_state().lock().unwrap().money_lane = MoneyLane::Owner;
-                            self.finish_app_template_to_lock(cx, true);
-                        } else {
-                            self.sync_chrome(cx);
-                        }
+                        self.sync_chrome(cx);
                     }
                     Err(e) if e == "Cancelled" => {
                         self.set_status(cx, app_t("cancelled"));
@@ -362,9 +356,9 @@ impl App {
                     let mut st = app_state().lock().unwrap();
                     let host = st.device_role.is_host() && st.session.is_some();
                     if host {
-                        // refresh_live_lists updates Floor/Kitchen lists and
-                        // live print config; while on Settings it leaves
-                        // bill/KOT/printer drafts alone (do not refill form).
+                        // refresh_live_lists updates today's figures and the
+                        // live print config; while on Settings it leaves the
+                        // bill / printer drafts alone (do not refill form).
                         st.refresh_live_lists();
                     }
                     host
@@ -378,16 +372,18 @@ impl App {
             // found printers show in Settings.
             let mut problems = print_share::take_problems();
             if !problems.is_empty() {
-                // Empty KOT route is a setup gap, not success ("not printed"
+                // An empty route is a setup gap, not success ("not printed"
                 // used to match classify OK "printed" → green face). Two
-                // kitchens failing are both named (the last three, once each).
+                // printers failing are both named (the last three, once each).
                 problems.dedup();
                 let start = problems.len().saturating_sub(3);
                 self.show_warn(cx, problems[start..].join("; "));
             }
-            if app_state().lock().unwrap().screen == Screen::Settings {
+            let printers_sheet = self.ui.modal(cx, ids!(printers_modal)).is_open();
+            if printers_sheet || app_state().lock().unwrap().screen == Screen::Settings {
                 // Only rebuild the found list when Find is running or just
                 // finished — thumbs / LAN Signals used to rebuild it every wake.
+                // The Printers sheet runs the same Find on any screen.
                 let finding = print_share::is_finding_printers();
                 static WAS_FINDING: std::sync::atomic::AtomicBool =
                     std::sync::atomic::AtomicBool::new(false);
@@ -428,6 +424,9 @@ impl App {
                     } else {
                         self.show_found_printers(cx);
                     }
+                    if printers_sheet {
+                        self.paint_printers_modal(cx);
+                    }
                 }
                 if cancel_edge {
                     self.set_status(cx, app_t("cancelled"));
@@ -450,6 +449,7 @@ impl App {
                 self.paint_submit_busy_chrome(cx);
             }
             if let Some(result) = role_open_once().lock().unwrap().take() {
+                note_role_open_ui_took();
                 match result {
                     Ok(RoleOpenReady::Client(store)) => {
                         if role_cancelled() {
@@ -504,15 +504,11 @@ impl App {
         }
         self.apply_pending_menu_pick_tab(cx);
         self.match_event(cx, event);
+        if let Event::Draw(_) = event {
+            note_nav_draw();
+        }
         if let Event::NextFrame(e) = event {
-            let floor_ours = floor_area_autoscroll_frame()
-                .lock()
-                .unwrap()
-                .map(|frame| e.set.contains(&frame))
-                .unwrap_or(false);
-            if floor_ours {
-                self.floor_area_drag_autoscroll(cx);
-            }
+            self.finish_nav_veil(cx, e);
             let accordion_ours = accordion_frame()
                 .lock()
                 .unwrap()
@@ -546,15 +542,14 @@ impl App {
         // used to carry an open list onto the next screen. The press itself
         // still reaches whatever is under it.
         self.route_popup_input(cx, event);
+        // Copy / Select all menu: same outside-press rule (selection_menu.rs).
+        self.route_selection_menu_input(cx, event);
         // A sheet over the window (Add dishes, UPI QR) owns every press: the
         // nav tabs, Floor area tabs, sidebar list, and printer rows behind it
         // must not start a drag under the dishes the finger is scrolling.
         let sheet_open = self.window_sheet_open(cx);
         if !sheet_open {
             if self.pointer_route_printer_drag(cx, event) {
-                return;
-            }
-            if self.pointer_floor_area_drag(cx, event) {
                 return;
             }
         }
@@ -577,19 +572,16 @@ impl App {
         // press on it closes the sheet instead of moving the window.
         if let Event::WindowDragQuery(dq) = event
             && !sheet_open
+            && self.window_drag_at(cx, dq.abs)
         {
-            let header = self.ui.view(cx, ids!(header)).area().rect(cx);
-            if header.size.x > 1.0 && header.contains(dq.abs) {
-                let on_control = HEADER_CONTROLS.iter().any(|name| {
-                    let r = self.ui.button(cx, &[LiveId::from_str(name)]).area().rect(cx);
-                    r.size.x > 1.0 && r.contains(dq.abs)
-                });
-                if !on_control {
-                    dq.response
-                        .set(makepad_widgets::WindowDragQueryResponse::Caption);
-                }
-            }
+            dq.response
+                .set(makepad_widgets::WindowDragQueryResponse::Caption);
         }
+        // One selection root at a time (selection_menu.rs): a sheet over the
+        // page owns Ctrl/Cmd+A and Copy while it is open.
+        self.ui
+            .view(cx, ids!(main_column))
+            .set_selection_root(!sheet_open);
         self.ui.handle_event(cx, event, &mut Scope::empty());
         // A control in the 48 px edge strip (Done, pay, send, a sideways tab
         // strip) took this press: the control wins, the edge swipe disarms.
@@ -598,5 +590,51 @@ impl App {
         if matches!(event, Event::LiveEdit | Event::ScriptReapply | Event::Startup) {
             self.sync_chrome(cx);
         }
+    }
+}
+
+impl App {
+    /// Window chrome with nothing to press: the empty header, and the
+    /// sidebar's top corner and the space under its last row. A press there
+    /// moves the window on desktop (`WindowDragQuery` → `Caption`). Page
+    /// content never is — a press on its empty space starts a selection.
+    fn window_drag_at(&self, cx: &mut Cx, abs: DVec2) -> bool {
+        let over = |rect: Rect| rect.size.x > 1.0 && rect.contains(abs);
+        let header = self.ui.view(cx, ids!(header)).area().rect(cx);
+        if over(header) {
+            return !HEADER_CONTROLS.iter().any(|name| {
+                let r = self.ui.button(cx, &[LiveId::from_str(name)]).area().rect(cx);
+                over(r)
+            });
+        }
+        let rail = self.ui.view(cx, ids!(nav_rail));
+        if !rail.visible() {
+            return false;
+        }
+        let r = rail.area().rect(cx);
+        if !over(r) || abs.x >= r.pos.x + r.size.x - RAIL_SCROLLBAR_PX {
+            return false;
+        }
+        if RAIL_CONTROLS.iter().any(|name| {
+            let b = self.ui.button(cx, &[LiveId::from_str(name)]).area().rect(cx);
+            over(b)
+        }) {
+            return false;
+        }
+        let rows: Vec<Rect> = self
+            .nav_slot_wrappers(true)
+            .iter()
+            .map(|path| self.ui.view(cx, path))
+            .filter(|v| v.visible())
+            .map(|v| v.area().rect(cx))
+            .filter(|r| r.size.y > 1.0)
+            .collect();
+        let (Some(top), Some(bottom)) = (
+            rows.iter().map(|r| r.pos.y).reduce(f64::min),
+            rows.iter().map(|r| r.pos.y + r.size.y).reduce(f64::max),
+        ) else {
+            return true;
+        };
+        abs.y < top || abs.y > bottom
     }
 }

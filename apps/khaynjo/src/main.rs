@@ -13,14 +13,15 @@ pub use makepad_widgets;
 use crate::{
     books_op, business_day, catalogue_remote, diag, domain, entity_template, fiscal, locale,
     local_servers, lan_images, menu_images, menu_templates, net, notify, phone, precise,
-    privacy_policy, print_share, schemes, snack, startup, store, suggest, thumbs, upi_qr,
+    privacy_policy, print_share, receipt_raster, schemes, snack, startup, store, suggest, thumbs,
+    upi_qr,
 };
 #[cfg(not(target_os = "android"))]
 use kumkaj_khaynjo::{
     books_op, business_day, catalogue_remote, diag, domain, entity_template, fiscal, locale,
     local_servers, lan_images, menu_images, menu_templates, net, notify, phone, precise,
-    privacy_policy, print_share, schemes, snack, startup, store, suggest, thumbs, uninstall_wipe,
-    upi_qr,
+    privacy_policy, print_share, receipt_raster, schemes, snack, startup, store, suggest, thumbs,
+    uninstall_wipe, upi_qr,
 };
 use snack::SnackKind;
 
@@ -78,6 +79,10 @@ fn main() {
     if uninstall_wipe::try_run() {
         return;
     }
+    // `--export-template` / `--check-template` (docs/CATALOGUE_URLS.md).
+    if let Some(code) = kumkaj_khaynjo::template_cli::try_run() {
+        std::process::exit(code);
+    }
     desktop_entry::app_main();
 }
 
@@ -105,6 +110,7 @@ include!("widgets/product_menu_floor.rs");
 include!("widgets/report_sidebar.rs");
 include!("widgets/pick_lists.rs");
 include!("popup.rs");
+include!("selection_menu.rs");
 include!("helpers_books.rs");
 include!("widgets/catalog_cart.rs");
 include!("widgets/sales_people.rs");

@@ -39,7 +39,7 @@ adding_item	Aggiunta tariffa
 editing_item	Modifica
 save	Salva
 remove	Rimuovi
-empty_catalog	Nessuna tariffa ancora. Apri Tariffe e servizi, aggiungine una (nome + prezzo, unità kg), poi Spedizioni.
+empty_catalog	Nessuna tariffa ancora.
 counter_sale	Spedizione al banco
 total	Totale
 cash	Contanti
@@ -171,8 +171,6 @@ selected_language	Selezionata
 continue	Continua
 this_device	QUESTO DISPOSITIVO
 device_use_q	Come verrà usato questo dispositivo?
-last_server_mode	Era server — tocca per continuare
-last_client_mode	Era client — tocca per continuare
 choose_server	Scegli un server
 choose_server_hint	Questo dispositivo ha già dei server. Aprine uno o creane uno nuovo per un'altra attività.
 create_new_server	Crea nuovo server
@@ -501,8 +499,6 @@ job_layout	Layout
 job_delivery	Come viene inviato il lavoro
 job_size	Dimensione carattere
 job_size_ph	es. 18, 20, 26…
-save_receipt_format	Salva formato ricevuta
-save_label_format	Salva formato etichetta
 test_receipt_format	Prova ricevuta
 test_label_format	Prova etichetta
 test_receipt_sent	Ricevuta di esempio inviata
@@ -610,7 +606,7 @@ units_heading	Unità
 booking_measures	Misure spedizione
 drawer_count	Conteggio cassa (facoltativo)
 spreadsheet_csv	Foglio di calcolo (CSV)
-bank_reconciliation	Riconciliazione bancaria (spunta con l'estratto)
+bank_reconciliation	Riconciliazione bancaria
 book_add_product	Spedizione — aggiungi prodotto / tariffa
 book_opening_credit	Spedizione — credito iniziale
 account_kind	Tipo conto (tocca uno)
@@ -650,7 +646,7 @@ net_word	Netto
 offline_badge	OFFLINE
 optional_login_help	Accesso facoltativo (id + password). Il titolare lo imposta una volta; poi solo l'utente può cambiare la password.
 or_unlock_login	Oppure sblocca con id di accesso + password
-permission_preset	Ruolo (imposta schermate e diritti)
+permission_preset	Ruolo
 preset_help_moklanjo	Cassiere: vendi. Manager: vendi + articoli + annulla/modifica.
 product_locked_moklanjo	Moklanjo
 product_only_moklanjo	Questa app è solo Moklanjo: libri e banco spedizioni. Gli altri mestieri avranno prodotti propri più avanti.
@@ -698,10 +694,6 @@ pin_hint_paired	Cassa extra abbinata — sblocca per vendere
 pin_hint_pair_first	Cassa extra — abbina prima al dispositivo negozio
 unlock_to_continue	Sblocca per continuare
 no_staff_yet	Ancora nessun personale — sblocca come Titolare, poi Squadra
-status_server_set_pin	Modalità server — imposta PIN titolare
-status_server_tills	Modalità server — le casse extra possono unirsi. Sblocca
-status_server_unlock	Modalità server — sblocca come Titolare
-status_client_unlock	Modalità client — sblocca per vendere
 icon_new_selected	Icona: nuovo file selezionato — tocca Salva marchio
 icon_custom	Icona: marchio proprio del negozio
 icon_default	Icona: marchio Kumkaj (predefinito) — scegline uno tuo
@@ -834,3 +826,7 @@ role_help_supplier	Ruolo: Fornitore — AP degli acquisti.
 lane_declared_label	Spedizione in conto
 lane_owner_label	Spedizione in contanti
 money_lane_bill	Fattura: {lane}
+sel_copy	Copia
+sel_select_all	Seleziona tutto
+sel_copied	Copiato
+nav_loading	Caricamento…

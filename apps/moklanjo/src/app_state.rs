@@ -78,6 +78,11 @@ struct AppState {
     undo_sale_id: Option<String>,
     undo_snack_text: String,
     undo_timer: Timer,
+    /// Receipt / label format autosave: typing a width or size restarts a
+    /// short timer; when it fires (or the person leaves) the format is
+    /// applied. No Save button to forget (owner, 2026-11-14).
+    format_save_timer: Timer,
+    format_save_job: bool,
     snack_text: String,
     snack_kind: SnackKind,
     snack_timer: Timer,
@@ -115,6 +120,15 @@ struct AppState {
     snack_secs: f64,
     /// Settings hub: the one section open (`None` = the hub list).
     settings_panel: Option<&'static str>,
+    /// A Settings section nav item was tapped: open this section once the
+    /// Settings screen is up.
+    settings_panel_after_go: Option<&'static str>,
+    /// Unlock lands as a tap on this nav item would (`unlocked_home_from`);
+    /// `sync_chrome` runs it once.
+    nav_tab_after_unlock: Option<NavTab>,
+    /// Whose last selected nav item is written to the books, and which (a
+    /// repaint does not write it again).
+    last_nav_saved: Option<(String, NavTab)>,
     /// Last form FieldInput that held key focus (Tab chain; survives NavControl).
     form_tab_anchor: Option<LiveId>,
     /// Enter advanced to the next form field this action pass — skip submit.
@@ -238,6 +252,8 @@ struct AppState {
     books_report_kind: BooksReportKind,
     /// The field whose "type or pick" list is open, and its rows.
     suggest_open: Option<SuggestField>,
+    /// Open Copy / Select all menu (selection_menu.rs), read at draw time.
+    sel_menu: Option<SelMenuOpen>,
     suggest_rows: Vec<suggest::SuggestRow>,
     /// Bumped on every refresh so the list scrolls back to the top.
     suggest_rev: u64,

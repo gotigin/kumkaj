@@ -53,7 +53,6 @@ fn open_shop() -> Shop {
     let store = Store::open_path(&path).unwrap();
     store.complete_onboarding().unwrap();
     let owner = store.complete_owner_setup("1234").unwrap();
-    store.set_venue_mode(VenueMode::Counter).unwrap();
     store.set_venue_title("Journey Kirana").unwrap();
     store
         .add_staff("Ravi", StaffRole::Cashier, "Helper", "2222", &owner)
@@ -112,7 +111,7 @@ impl Shop {
         }
         let draft = cart.to_sale_draft().unwrap();
         self.store
-            .finalize_sale(&draft, PayMethod::Cash, None, None, &self.cashier)
+            .finalize_sale(&draft, PayMethod::Cash, None, &self.cashier)
             .unwrap()
     }
 }
@@ -189,7 +188,6 @@ fn journey_credit_settle_and_refund_clears_khata() {
         .finalize_sale(
             &draft,
             PayMethod::Credit,
-            None,
             Some(&party.id),
             &shop.cashier,
         )
@@ -220,7 +218,6 @@ fn journey_credit_settle_and_refund_clears_khata() {
         .finalize_sale(
             &draft2,
             PayMethod::Credit,
-            None,
             Some(&party.id),
             &shop.cashier,
         )
@@ -259,7 +256,6 @@ fn journey_resale_stock_and_day_book() {
         .finalize_sale(
             &cart.to_sale_draft().unwrap(),
             PayMethod::Upi,
-            None,
             None,
             &shop.cashier,
         )
@@ -303,7 +299,6 @@ fn journey_split_tender_cash_and_upi() {
         .finalize_sale_tenders(
             &draft,
             &[(PayMethod::Cash, cash), (PayMethod::Upi, upi)],
-            None,
             None,
             &shop.cashier,
         )
@@ -400,22 +395,3 @@ fn journey_staff_pins_and_books_report() {
     );
 }
 
-/// Legacy gated path: Counter venue refuses kitchen tickets (Floor/KOT off).
-#[test]
-fn journey_legacy_kot_gated_on_counter() {
-    let shop = open_shop();
-    assert_eq!(shop.store.venue_mode().unwrap(), VenueMode::Counter);
-    let mut cart = Cart::default();
-    cart.add_or_bump(&shop.atta);
-    let draft = cart.to_kot_draft().unwrap();
-    let err = shop
-        .store
-        .send_kot(&draft, None, &shop.cashier)
-        .expect_err("Counter must gate send_kot");
-    assert!(
-        err.to_lowercase().contains("table")
-            || err.to_lowercase().contains("kitchen")
-            || err.to_lowercase().contains("setting"),
-        "expected gated-path message, got: {err}"
-    );
-}

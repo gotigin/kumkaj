@@ -41,7 +41,7 @@ remove	ꯂꯣꯠꯎ
 removed_items	ꯂꯣꯠꯈꯤꯕ ꯄꯣꯠ
 removed_help	ꯍꯟꯕꯤꯔꯛꯄꯅ ꯄꯣꯠ ꯑꯗꯨ ꯃꯦꯅꯨꯗ ꯃꯍꯧꯁꯥꯒꯤ ꯃꯇꯨꯡ ꯏꯟꯅ ꯍꯟꯕꯤꯔꯛꯏ — ꯃꯃꯜ, ꯁꯛꯇꯝ ꯑꯃꯁꯨꯡ ꯐꯨꯡ. ꯑꯩꯈꯣꯌꯒꯤ ꯆꯥꯛꯀꯤ ꯐꯝ ꯂꯣꯠꯇꯦ, ꯃꯗꯨꯅ ꯆꯥꯛ ꯍꯟꯅ ꯍꯥꯞꯆꯤꯟꯕ ꯌꯥꯏ.
 restore_item	ꯍꯟꯕꯤꯔꯛꯎ
-empty_catalog	ꯆꯥꯛ ꯍꯧꯖꯤꯛ ꯂꯩꯇꯦ. ꯃꯦꯅꯨ ꯍꯥꯡꯗꯣꯛꯎ, ꯆꯥꯛ ꯍꯥꯞꯆꯤꯟꯕꯤꯌꯨ (ꯃꯤꯡ + ꯃꯃꯜ), ꯃꯗꯨꯒꯤ ꯃꯇꯨꯡꯗ ꯌꯥꯕ ꯂꯧꯕꯤꯌꯨ.
+empty_catalog	ꯆꯥꯛ ꯍꯧꯖꯤꯛ ꯂꯩꯇꯦ.
 total	ꯑꯄꯨꯟꯕ
 cash	ꯁꯦꯟ
 upi	UPI
@@ -103,23 +103,14 @@ bill_item_qty	ꯃꯁꯤꯡ
 bill_item_price	ꯃꯃꯜ
 bill_item_amount	ꯁꯦꯟ
 bill_item_note	ꯆꯥꯛꯀꯤ ꯋꯥꯍꯩ
-bill_item_col_gap	ꯀꯣꯂꯝꯒꯤ ꯂꯝꯕꯤ
 bill_item_col_order	ꯀꯣꯂꯝꯒꯤ ꯃꯇꯥꯡ
 bill_item_col_sep	ꯀꯣꯂꯝꯒꯤ ꯂꯥꯏꯟ
-bill_item_gap_tight	ꯑꯄꯤꯛꯄ
-bill_item_gap_comfort	ꯅꯨꯡꯉꯥꯏꯕ
-bill_item_gap_wide	ꯑꯋꯥꯡꯕ
-bill_item_num_width	ꯃꯁꯤꯡꯒꯤ ꯀꯣꯂꯝ
-bill_item_num_compact	ꯑꯄꯤꯛꯄ
-bill_item_num_comfort	ꯅꯨꯡꯉꯥꯏꯕ
-bill_item_num_wide	ꯑꯋꯥꯡꯕ
-bill_item_num_align	ꯃꯁꯤꯡ ꯆꯨꯝꯅꯕꯤꯌꯨ
-bill_item_gap_em	ꯂꯝꯕꯤ (em)
-bill_item_qty_min	ꯃꯁꯤꯡ ꯍꯦꯟꯅ ꯄꯤꯛꯄ (em)
-bill_item_price_min	ꯃꯃꯜ ꯍꯦꯟꯅ ꯄꯤꯛꯄ (em)
-bill_item_amount_min	ꯁꯦꯟ ꯍꯦꯟꯅ ꯄꯤꯛꯄ (em)
-kot_item_qty_width	ꯃꯁꯤꯡꯒꯤ ꯀꯣꯂꯝ
-kot_item_num_align	ꯃꯁꯤꯡ ꯆꯨꯝꯅꯕꯤꯌꯨ
+slip_columns	ꯀꯣꯂꯝꯁꯤꯡ
+slip_col_width	ꯄꯥꯛ (mm)
+slip_col_start	ꯍꯧꯔꯛꯐꯝꯒꯤ ꯃꯐꯝ (px)
+slip_col_end	ꯂꯣꯏꯔꯛꯐꯝꯒꯤ ꯃꯐꯝ (px)
+slip_col_align	ꯏꯕꯒꯤ ꯂꯩꯃꯤꯟ
+slip_columns_help	ꯀꯣꯂꯝ ꯈꯨꯗꯤꯡꯃꯛꯀꯤ ꯄꯥꯛꯇꯥ ꯃꯁꯤꯒꯤ ꯍꯧꯔꯛꯐꯝ ꯑꯃꯁꯨꯡ ꯂꯣꯏꯔꯛꯐꯝꯒꯤ ꯃꯐꯝ ꯌꯥꯎꯏ꯫ ꯏꯕ ꯑꯁꯤ ꯃꯁꯥꯒꯤ ꯀꯣꯂꯝꯒꯤ ꯃꯅꯨꯡꯗꯥ ꯀꯣꯌꯁꯤꯜꯂꯤ; ꯀꯟꯇꯦꯟꯇꯀꯤ ꯄꯥꯛ ꯍꯦꯟꯒꯠꯂꯕꯥ ꯑꯗꯨ ꯆꯦ ꯑꯃꯁꯨꯡ ꯄ꯭ꯔꯤꯚ꯭ꯌꯨꯗꯥ ꯀꯀꯊꯠꯂꯤ꯫
 bill_total_qty_label	ꯃꯁꯤꯡ ꯑꯄꯨꯟꯕꯒꯤ ꯃꯤꯡ
 bill_total_subtotal_label	ꯑꯄꯨꯟꯕ ꯑꯄꯤꯛꯄꯒꯤ ꯃꯤꯡ
 bill_total_grand_label	ꯑꯄꯨꯟꯕ ꯑꯆꯧꯕꯒꯤ ꯃꯤꯡ
@@ -221,7 +212,6 @@ sidebar_order_saved	ꯃꯄꯥꯟꯒꯤ ꯃꯇꯥꯡ ꯊꯝꯂꯦ
 sidebar_visibility_saved	ꯃꯄꯥꯟꯒꯤ ꯎꯕ ꯊꯝꯂꯦ
 amounts_hide	ꯂꯥꯞꯄꯤꯌꯨ
 amounts_show	ꯎꯠꯂꯨ
-printers_none_hint	ꯃꯁꯤꯟ ꯑꯁꯤꯗ ꯄ꯭ꯔꯤꯟꯇꯔ ꯍꯧꯖꯤꯛ ꯊꯝꯕꯤꯌꯨ, ꯃꯗꯨꯒꯤ ꯃꯇꯨꯡꯗ ꯕꯤꯜ ꯅꯠꯇ꯭ꯔꯒ ꯆꯥꯛꯍꯣꯡꯗ ꯍꯥꯞꯆꯤꯟꯕꯤꯌꯨ
 counter	ꯌꯣꯟꯕꯒꯤ ꯐꯝ
 dine_in	ꯃꯐꯝ ꯑꯁꯤꯗ ꯆꯥꯕꯤꯌꯨ
 takeaway	ꯄꯨꯔꯛꯄꯤꯌꯨ
@@ -328,8 +318,6 @@ selected_language	ꯈꯟꯈꯤ
 continue	ꯃꯈꯥ ꯆꯠꯂꯨ
 this_device	ꯃꯁꯤꯟ ꯑꯁꯤ
 device_use_q	ꯃꯁꯤꯟ ꯑꯁꯤ ꯀꯔꯝꯅ ꯁꯤꯖꯤꯟꯅꯒꯅꯤ?
-last_server_mode	Server ꯑꯣꯏꯔꯝꯃꯤ — ꯅꯝꯃꯨ, ꯃꯈꯥ ꯆꯠꯅꯕ
-last_client_mode	ꯈꯣꯡꯖꯦꯜ ꯑꯣꯏꯔꯝꯃꯤ — ꯅꯝꯃꯨ, ꯃꯈꯥ ꯆꯠꯅꯕ
 choose_server	server ꯈꯟꯕꯤꯌꯨ
 choose_server_hint	ꯂꯩꯔꯤꯕ server ꯍꯥꯡꯗꯣꯛꯎ, ꯅꯠꯇ꯭ꯔꯒ ꯂꯨꯆꯤꯡ ꯑꯇꯣꯞꯄꯒꯤꯗꯃꯛ ꯁꯥꯕꯤꯌꯨ.
 create_new_server	server ꯑꯅꯧꯕ ꯁꯥꯕꯤꯌꯨ
@@ -391,7 +379,7 @@ attachments_last_expense	ꯌꯣꯟꯕ (ꯆꯥꯟꯕ ꯑꯔꯣꯏꯕ)
 bank	ꯕꯦꯡꯛ
 bank_in	ꯕꯦꯡꯛ ꯆꯪꯕ
 bank_out	ꯕꯦꯡꯛ ꯊꯣꯔꯛꯄ
-bank_reconciliation	ꯕꯦꯡꯛ ꯆꯨꯝꯅꯕ (ꯅꯍꯥꯛꯀꯤ ꯕꯦꯡꯛ ꯔꯤꯄꯣꯔꯇꯒ ꯌꯦꯡꯕꯤꯌꯨ)
+bank_reconciliation	ꯕꯦꯡꯛ ꯆꯨꯝꯅꯕ
 bank_to_till	ꯕꯦꯡꯛ → ꯐꯝ
 book_add_dish	ꯂꯥꯏꯔꯤꯛ — ꯆꯥꯛ / ꯄꯣꯠ ꯍꯥꯞꯆꯤꯟꯕꯤꯌꯨ
 book_opening_credit	ꯂꯥꯏꯔꯤꯛ — ꯍꯧꯔꯤꯕ ꯂꯦꯟꯕ
@@ -744,7 +732,6 @@ station_print_pick_first	ꯆꯥꯛꯍꯣꯡꯒꯤ ꯐꯝꯂꯝ ꯍꯧꯖꯤꯛ �
 station_print_editing	“{name}”ꯒꯤ ꯄ꯭ꯔꯤꯟꯇꯔ ꯁꯦꯝꯂꯤ
 station_vps_dd	ꯐꯝꯂꯝ ꯑꯁꯤꯒꯤ ꯄ꯭ꯔꯤꯟꯇꯔ
 station_vps_dd_n	ꯄ꯭ꯔꯤꯟꯇꯔ {n} · ꯅꯝꯃꯨ, ꯍꯣꯡꯗꯣꯛꯅꯕ
-station_vps_empty	ꯄ꯭ꯔꯤꯟꯇꯔ ꯍꯧꯖꯤꯛ ꯂꯩꯇꯦ — ꯁꯦꯝꯐꯝ → ꯄ꯭ꯔꯤꯟꯇꯔꯒꯤ ꯃꯈꯥꯗ ꯊꯤꯕꯤꯌꯨ
 bill_printers_dd	ꯕꯤꯜꯒꯤ ꯄ꯭ꯔꯤꯟꯇꯔ
 bill_printers_dd_n	ꯕꯤꯜꯒꯤ ꯄ꯭ꯔꯤꯟꯇꯔ {n} · ꯅꯝꯃꯨ, ꯍꯣꯡꯗꯣꯛꯅꯕ
 job_layout	ꯁꯦꯝꯗꯣꯛ
@@ -889,7 +876,7 @@ net_word	ꯁꯦꯟꯊꯣꯛ
 offline_badge	ꯑꯣꯟꯂꯥꯏꯟ ꯌꯥꯎꯗꯕ
 optional_login_help	ꯆꯪꯕ ꯌꯥꯕ ꯑꯣꯏꯔꯕꯗꯤ (ꯃꯁꯛ + ꯄꯥꯁꯋꯥꯔꯗ). ꯃꯄꯨꯅ ꯃꯇꯝ ꯑꯃ ꯊꯝꯏ; ꯁꯤꯖꯤꯟꯅꯔꯤꯕꯅꯈꯛꯇ ꯃꯇꯨꯡꯗ ꯄꯥꯁꯋꯥꯔꯗ ꯍꯣꯡꯗꯣꯛꯄ ꯌꯥꯏ.
 or_unlock_login	ꯅꯠꯇ꯭ꯔꯒ ꯆꯪꯕꯒꯤ ꯃꯁꯛ + ꯄꯥꯁꯋꯥꯔꯗꯅ ꯍꯥꯡꯗꯣꯛꯎ
-permission_preset	ꯊꯕꯛ (ꯁ꯭ꯛꯔꯤꯟ ꯑꯃꯁꯨꯡ ꯁꯦꯟꯒꯤ ꯊꯕꯛ ꯊꯝꯏ)
+permission_preset	ꯊꯕꯛ
 preset_help_khaynjo	ꯁꯦꯟ ꯌꯦꯡꯕ: ꯌꯣꯟꯕ. ꯃꯄꯨꯔꯣꯏ: ꯌꯣꯟꯕ + ꯄꯣꯠ + ꯇꯣꯛꯄ/ꯁꯦꯝꯕ.
 product_locked_khaynjo	Khaynjo
 product_only_khaynjo	ꯑꯦꯞ ꯑꯁꯤ Khaynjoꯈꯛꯇꯅꯤ — ꯔꯦꯁ꯭ꯇꯨꯔꯦꯟꯇ ꯊꯕꯛ ꯇꯧꯕ ꯁꯤꯁ꯭ꯇꯦꯝ. ꯂꯨꯆꯤꯡ ꯑꯇꯣꯞꯄꯒꯤ ꯃꯃꯥꯏ Kumkaj ꯄꯣꯠ ꯇꯣꯈꯥꯏ ꯑꯣꯏꯅ ꯊꯣꯔꯛꯏ.
@@ -961,10 +948,6 @@ pin_hint_paired	ꯐꯝ ꯍꯦꯟꯕ ꯄꯦꯌꯔ ꯇꯧꯔꯦ — ꯍꯥꯡꯗ�
 pin_hint_pair_first	ꯐꯝ ꯍꯦꯟꯕ — ꯀꯦꯟꯐꯝꯒꯤ ꯃꯁꯤꯟ ꯍꯧꯖꯤꯛ ꯄꯦꯌꯔ
 unlock_to_continue	ꯍꯥꯡꯗꯣꯛꯎ, ꯃꯈꯥ ꯆꯠꯅꯕ
 no_staff_yet	ꯊꯕꯛꯇꯧꯕ ꯍꯧꯖꯤꯛ ꯂꯩꯇꯦ — ꯃꯄꯨ ꯑꯣꯏꯅ ꯍꯥꯡꯗꯣꯛꯎ, ꯃꯗꯨꯒꯤ ꯃꯇꯨꯡꯗ ꯂꯨꯞ
-status_server_set_pin	Server ꯃꯣꯗ — ꯃꯄꯨꯒꯤ PIN ꯊꯝꯕꯤꯌꯨ
-status_server_tills	Server ꯃꯣꯗ — ꯐꯝ ꯍꯦꯟꯕ ꯌꯥꯎꯕ ꯌꯥꯏ. ꯍꯥꯡꯗꯣꯛꯎ
-status_server_unlock	Server ꯃꯣꯗ — ꯃꯄꯨ ꯑꯣꯏꯅ ꯍꯥꯡꯗꯣꯛꯎ
-status_client_unlock	ꯈꯣꯡꯖꯦꯜ ꯃꯣꯗ — ꯍꯥꯡꯗꯣꯛꯎ, ꯌꯣꯟꯅꯕ
 icon_new_selected	ꯃꯁꯛ: ꯐꯥꯏꯜ ꯑꯅꯧꯕ ꯈꯟꯈꯤ — ꯃꯤꯡ ꯊꯝꯕꯤꯌꯨ ꯅꯝꯃꯨ
 icon_custom	ꯃꯁꯛ: ꯐꯝꯒꯤ ꯃꯁꯥꯒꯤ ꯃꯤꯡ
 icon_default	ꯃꯁꯛ: Kumkaj ꯃꯤꯡ (ꯃꯔꯨ) — ꯃꯁꯥꯒꯤ ꯑꯃ ꯈꯟꯕꯤꯌꯨ
@@ -1033,7 +1016,7 @@ book_kind_balance	ꯕꯦꯂꯦꯟꯁ ꯁꯤꯠ
 order_help	ꯄꯣꯠ ꯅꯝꯃꯨ, ꯍꯥꯞꯆꯤꯟꯅꯕ.
 floor_help	ꯐꯝ ꯅꯝꯃꯨ, ꯌꯥꯕ ꯂꯧꯅꯕ ꯅꯠꯇ꯭ꯔꯒ ꯍꯣꯡꯗꯣꯛꯅꯕ. ꯃꯆꯨꯅ ꯍꯥꯏꯗꯕ → ꯐꯝ ꯂꯩꯕ → ꯆꯥꯛꯍꯣꯡ → ꯁꯦꯝꯃꯤ → ꯆꯥꯔꯤ → ꯕꯤꯜ → ꯄꯤꯔꯦ ꯎꯠꯏ. ꯉꯥꯏꯕ ꯂꯤꯁ꯭ꯇ, ꯕꯨꯛ ꯑꯃꯁꯨꯡ ꯐꯝ ꯍꯥꯞꯆꯤꯟꯕ ꯃꯈꯥꯒꯤ ꯁꯔꯨꯛꯇ ꯂꯩ.
 kitchen_help	ꯆꯥꯛꯍꯣꯡꯒꯤ ꯂꯥꯏꯔꯤꯛ (KOT), ꯑꯅꯧꯕ ꯑꯔꯣꯏꯕꯗ. ꯍꯧꯕꯤꯌꯨ → ꯁꯦꯝꯃꯤ → ꯂꯣꯏꯔꯦ ꯂꯥꯏꯔꯤꯛ ꯃꯈꯥ ꯆꯠꯍꯟꯏ. ꯂꯥꯏꯔꯤꯛꯅ ꯃꯃꯜ ꯎꯠꯇꯦ.
-kitchen_empty	ꯍꯥꯡꯗꯣꯛꯂꯤꯕ ꯂꯥꯏꯔꯤꯛ ꯂꯩꯇꯦ. ꯌꯥꯕ ꯅꯠꯇ꯭ꯔꯒ ꯂꯝꯗꯒꯤ ꯊꯥꯔꯕ KOT ꯃꯐꯝ ꯑꯁꯤꯗ ꯎꯏ.
+kitchen_empty	ꯍꯥꯡꯗꯣꯛꯂꯤꯕ ꯂꯥꯏꯔꯤꯛ ꯂꯩꯇꯦ.
 add_a_table	ꯐꯝ ꯍꯥꯞꯆꯤꯟꯕꯤꯌꯨ
 add_station_heading	ꯆꯥꯛꯍꯣꯡꯒꯤ ꯐꯝꯂꯝ ꯍꯥꯞꯆꯤꯟꯕꯤꯌꯨ
 categories_help	ꯁꯤꯖꯤꯟꯅꯕꯤꯌꯨ ꯅꯝꯃꯨ, ꯃꯊꯛꯀꯤ ꯄꯣꯠ ꯐꯨꯡ ꯑꯗꯨꯒꯤ ꯃꯈꯥꯗ ꯊꯝꯅꯕ. ꯁꯛꯇꯝꯅ ꯐꯨꯡꯗ ꯁꯛꯇꯝ ꯄꯤ; ꯂꯩꯇꯕꯗꯤ ꯃꯌꯦꯛ ꯑꯍꯥꯟꯕ ꯎꯠꯏ.
@@ -1131,7 +1114,6 @@ bill_format_help	ꯕꯤꯜ ꯈꯨꯗꯤꯡꯃꯛꯇ ꯅꯍꯥꯛꯀꯤ ꯔꯦꯁ
 bill_header_ph	ꯂꯩꯐꯝ | ꯐꯣꯟ
 fssai_ph	FSSAI ꯂꯥꯏꯁꯦꯟꯁ ꯅꯝꯕꯔ (ꯏꯟꯗꯤꯌꯥ)
 bill_footer_ph	ꯃꯈꯥ ꯋꯥꯍꯩ (ꯈꯨꯗꯝ ꯊꯥꯒꯠꯆꯔꯤ, ꯍꯟꯅ ꯂꯥꯛꯎ)
-save_bill_format	ꯕꯤꯜꯒꯤ ꯁꯦꯝꯗꯣꯛ ꯊꯝꯕꯤꯌꯨ
 reset_bill_format	ꯃꯔꯨꯗ ꯍꯟꯕꯤꯔꯛꯎ
 bill_format_reset	ꯕꯤꯜꯒꯤ ꯁꯦꯝꯗꯣꯛ ꯃꯔꯨꯗ ꯍꯟꯈꯤ
 reset_kot_format	ꯃꯔꯨꯗ ꯍꯟꯕꯤꯔꯛꯎ
@@ -1201,13 +1183,11 @@ kot_copies_3	3
 kot_title_ph	ꯃꯤꯡꯃꯛ (ꯍꯥꯏꯗꯕ = KOT - KITCHEN ORDER)
 kot_footer_ph	ꯆꯥꯛꯍꯣꯡꯒꯤ ꯋꯥꯍꯩ (ꯌꯥꯕ ꯑꯣꯏꯔꯕꯗꯤ, ꯃꯃꯜ ꯂꯩꯇꯦ)
 kot_preview	ꯃꯃꯥꯡ ꯌꯦꯡꯕ
-save_kot_format	KOT ꯁꯦꯝꯗꯣꯛ ꯊꯝꯕꯤꯌꯨ
 test_kot_format	KOT ꯊꯣꯛꯄꯤꯌꯨ
 test_kot_sent	ꯆꯥꯛꯍꯣꯡꯒꯤ ꯂꯥꯏꯔꯤꯛ ꯃꯃꯥꯡ ꯌꯦꯡꯕ ꯊꯥꯔꯦ
 test_bill_format	ꯕꯤꯜ ꯊꯣꯛꯄꯤꯌꯨ
 test_bill_sent	ꯕꯤꯜ ꯃꯃꯥꯡ ꯌꯦꯡꯕ ꯊꯥꯔꯦ
 test_print_no_printer	ꯊꯕꯛ ꯑꯗꯨꯒꯤ ꯄ꯭ꯔꯤꯟꯇꯔ ꯂꯩꯇꯦ — ꯁ꯭ꯛꯔꯤꯟ ꯑꯁꯤꯗ ꯑꯃ ꯈꯟꯕꯤꯌꯨ
-kot_format_saved	KOT ꯁꯦꯝꯗꯣꯛ ꯊꯝꯂꯦ
 std_print	ꯕꯤꯜ ꯄ꯭ꯔꯤꯟꯇꯀꯤ ꯆꯥꯎꯕ
 std_print_help	OS / ꯂꯥꯏꯔꯤꯛ ꯄ꯭ꯔꯤꯟꯇꯔꯗ Standard Portrait ꯑꯃꯁꯨꯡ Landscape ꯕꯤꯜ ꯊꯕꯛꯀꯤ ꯃꯌꯦꯛ ꯆꯥꯎꯕ (ꯄꯣꯏꯟꯇ ꯏꯕꯤꯌꯨ — ꯄꯤꯛꯄ/ꯃꯇꯧ/ꯆꯥꯎꯕ ꯅꯠꯇꯦ). ꯃꯥꯏ ꯑꯅꯤꯗ ꯆꯥꯎꯕ ꯑꯗꯨ. ꯆꯥꯛꯍꯣꯡꯒꯤ ꯂꯥꯏꯔꯤꯛ ꯆꯥꯎꯕ KOT ꯇꯦꯕꯇ ꯂꯩ.
 std_size_s	ꯄꯤꯛꯄ
@@ -1264,7 +1244,6 @@ new_items_head	ꯍꯧꯖꯤꯛ ꯊꯥꯗꯦ
 price_ph	ꯃꯃꯜ
 price_ph_gst_inside	ꯃꯃꯜ ({tax} ꯌꯥꯎꯔꯦ)
 cancel_needs_table	ꯆꯥꯛꯍꯣꯡꯅ ꯂꯧꯔꯕ ꯃꯇꯨꯡꯗ ꯇꯣꯛꯅꯕ ꯌꯥꯕ ꯑꯁꯤ ꯂꯝꯗꯒꯤ (ꯐꯝ ꯑꯃ) ꯍꯥꯡꯗꯣꯛꯎ — ꯌꯣꯟꯕꯒꯤ ꯐꯝꯒꯤ KOT ꯄꯤꯕ ꯂꯧꯐꯥꯎꯕ ꯂꯥꯏꯔꯤꯛꯇ ꯂꯩ
-tax_rates_missing_hint	ꯆꯥꯛ ꯑꯁꯤꯗ {tax} ꯆꯥꯡ ꯂꯩꯇꯦ — ꯃꯦꯅꯨꯗ ꯀꯔꯒꯤ ꯆꯥꯡ ꯊꯝꯕꯤꯌꯨ (ꯃꯃꯜꯅ {tax} ꯌꯥꯎꯔꯦ ꯍꯥꯏꯕꯒꯤ ꯃꯈꯥꯗ {tax} ꯌꯥꯎꯔꯦ)
 taxable_value	ꯀꯔ ꯄꯤꯅꯕ ꯃꯃꯜ
 gst_inside_price_note	({tax} ꯌꯥꯎꯔꯦ)
 start_with_template	ꯑꯩꯈꯣꯌꯒꯤ ꯃꯦꯅꯨ ꯃꯤꯡꯗꯒꯤ ꯍꯧꯕꯤꯌꯨ
@@ -1318,9 +1297,7 @@ order_empty_pick	ꯌꯥꯕ ꯍꯥꯏꯗꯕ — ꯆꯥꯛ ꯈꯟꯅꯕ ꯃꯊꯛ�
 add_dishes	ꯆꯥꯛ ꯍꯥꯞꯆꯤꯟꯕꯤꯌꯨ
 order_so_far	ꯌꯥꯕ ꯑꯁꯤꯗ: {n} · {total}
 no_dish_match	“{q}”ꯒ ꯆꯥꯟꯅꯕ ꯆꯥꯛ ꯂꯩꯇꯦ
-pick_dishes_help	ꯆꯥꯛ ꯑꯃ ꯅꯝꯃꯨ, ꯍꯥꯞꯆꯤꯟꯅꯕ · ꯐꯨꯡ ꯈꯟꯕꯤꯌꯨ, ꯂꯤꯁ꯭ꯇ ꯇꯦꯟꯍꯟꯅꯕ
 pick_done	ꯂꯣꯏꯔꯦ
-pick_done_dd	ꯂꯣꯏꯔꯦ · {label}
 printer_route_mode	ꯐꯝ ꯑꯁꯤꯗ ꯄ꯭ꯔꯤꯟꯇꯔ ꯌꯥꯝꯕ ꯂꯩꯔꯕꯗꯤ
 printer_mode_first	ꯊꯕꯛ ꯇꯧꯕ ꯑꯍꯥꯟꯕ
 printer_mode_all	ꯄꯨꯝꯅꯃꯛꯇ ꯄ꯭ꯔꯤꯟꯇ ꯇꯧꯕꯤꯌꯨ
@@ -1368,3 +1345,22 @@ recent_changes	ꯍꯧꯖꯤꯛꯀꯤ ꯍꯣꯡꯗꯣꯛꯄ
 lane_declared_label	ꯀꯔꯒꯤ ꯕꯤꯜ
 lane_owner_label	ꯁꯦꯟꯒꯤ ꯋꯥꯍꯩ
 money_lane_bill	ꯕꯤꯜ: {lane}
+sel_copy	ꯀꯣꯄꯤ ꯇꯧ
+sel_select_all	ꯄꯨꯝꯅꯃꯛ ꯈꯟꯕ
+sel_copied	ꯀꯣꯄꯤ ꯇꯧꯔꯦ
+items_tmpl_khaynjo	Khaynjo ꯄꯣꯠꯂꯝꯒꯤ ꯇꯦꯝꯄ꯭ꯂꯦꯠ
+items_tmpl_named	{name} ꯇꯦꯝꯄ꯭ꯂꯦꯠ
+app_tmpl_named	{name} ꯑꯦꯞ ꯇꯦꯝꯄ꯭ꯂꯦꯠ
+private_code_ph	ꯃꯁꯤꯡ 12ꯒꯤ ꯀꯣꯗ
+stamp_on	ꯁꯤꯜ: ꯐꯥꯏꯜꯗ ꯂꯩ
+pay_qr_on	ꯄꯤꯕ QR: ꯐꯥꯏꯜꯗ ꯂꯩ
+pay_qr_off	ꯄꯤꯕ QR: ꯂꯩꯇꯦ
+items_tmpl_heading	ꯑꯥꯏꯇꯦꯝ ꯇꯦꯝꯞꯂꯦꯠ
+items_tmpl_help	ꯅꯍꯥꯛꯀꯤ ꯃꯦꯅꯨꯒꯤꯗꯃꯛ ꯆꯥꯛꯆꯥ, ꯃꯈꯜ ꯑꯃꯁꯨꯡ ꯐꯣꯇꯣ। ꯗꯣꯀꯥꯅꯒꯤ ꯁꯦꯇꯤꯡ ꯑꯃꯁꯨꯡ ꯁ꯭ꯇꯥꯐ ꯂꯩꯔꯤꯕꯒꯨꯝꯅꯥ ꯂꯩꯒꯅꯤ।
+public_tmpl_help	ꯀꯅꯥꯒꯨꯝꯕꯥ ꯑꯃꯅꯥ ꯗꯥꯎꯅꯂꯣꯗ ꯇꯧꯕꯥ ꯌꯥꯕꯥ ꯍꯧꯔꯛꯐꯝ ꯃꯦꯅꯨ। ꯑꯃꯨꯛ ꯏꯟꯇꯔꯅꯦꯠ ꯃꯊꯧ ꯇꯩ।
+private_tmpl_help	ꯅꯍꯥꯛꯀꯤ Khaynjo ꯊꯥꯖꯤꯟꯅꯕꯗꯒꯤ ꯐꯪꯂꯛꯄꯥ ꯃꯁꯤꯡ 12 ꯂꯩꯕꯥ ꯀꯣꯗꯅꯥ ꯉꯥꯛꯊꯣꯛꯂꯕꯥ ꯀꯁ꯭ꯇꯃꯔ ꯃꯦꯅꯨ।
+printers_screen_tip	ꯊꯤꯕꯅꯥ ꯗꯤꯚꯥꯏꯁ ꯑꯁꯤꯅꯥ ꯁꯤꯖꯤꯟꯅꯕꯥ ꯌꯥꯕꯥ ꯄ꯭ꯔꯤꯟꯇꯔꯁꯤꯡ ꯎꯠꯂꯤ ꯑꯃꯁꯨꯡ ꯗꯣꯀꯥꯟ ꯑꯁꯤꯒꯤꯗꯃꯛ ꯊꯃꯖꯤꯜꯂꯤ꯫ ꯕꯤꯜ ꯄ꯭ꯔꯤꯟꯇꯔ: ꯕꯤꯜ ꯑꯃꯁꯨꯡ KOT ꯐꯣꯔꯃꯦꯠ → ꯕꯤꯜ꯫ ꯆꯥꯛꯆꯥ-ꯌꯨꯝ: ꯆꯥꯛꯆꯥ-ꯌꯨꯝ → ꯆꯥꯛꯆꯥ-ꯌꯨꯝꯒꯤ ꯁ꯭ꯇꯦꯁꯟ꯫
+printers_found_none	ꯄ꯭ꯔꯤꯟꯇꯔ ꯑꯃꯠꯇꯥ ꯐꯪꯗꯦ꯫
+kot_copy_from	মসিদগী কোপি তৌ
+kot_copy_from_help	মখল অদুগী লাইন খুদিংমগী চাউরবা, অচাউবা অমসুং লৈতেংনবা মসিদা কোপি তৌই। মখল অসিনা মশাগী বেনর, আইতেম প্রিফিক্স অমসুং স্ত্রাইক থম্লি। থম্নবা KOT ফোর্মেত সেভ তৌ।
+nav_loading	লোড তৌরি…

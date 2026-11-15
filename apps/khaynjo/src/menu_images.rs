@@ -455,6 +455,31 @@ pub fn match_rank(text: &str, query: &str) -> Option<u8> {
     }
 }
 
+/// How well a menu item answers a typed search, names first (owner
+/// 2026-11-14): a name match ranks 0–4 ([`match_rank`]); an item matched
+/// only by an alias or its dish group ranks after every name match (10–14).
+/// One exception, also the owner's (2026-10-25): a short code typed exactly
+/// (an alias equal to the whole query, "101") is a direct pick and leads
+/// with the exact names. `None` = no handle matches.
+pub fn name_then_alias_rank(p: &crate::domain::Product, query: &str) -> Option<u8> {
+    let name = match_rank(&p.name, query);
+    if name == Some(0) || p.aliases().iter().any(|a| match_rank(a, query) == Some(0)) {
+        return Some(0);
+    }
+    if let Some(r) = name {
+        return Some(r);
+    }
+    let group = (!p.group_name.is_empty())
+        .then(|| match_rank(&p.group_name, query))
+        .flatten();
+    let alias = p
+        .aliases()
+        .iter()
+        .filter_map(|a| match_rank(a, query))
+        .min();
+    alias.into_iter().chain(group).min().map(|r| r + 10)
+}
+
 /// Shelf dishes for the item picker, as indexes into `dishes`. A blank
 /// query browses the whole shelf (folder, then name). Otherwise best
 /// matches first: by dish name, then dishes whose shelf folder matches
@@ -478,6 +503,31 @@ pub fn search_shelf(dishes: &[ShelfDish], query: &str) -> Vec<usize> {
 
 #[cfg(test)]
 mod tests {
+    /// Owner 2026-11-14: search looks at real names and aliases, and shows
+    /// the name matches first, then the alias-only ones.
+    #[test]
+    fn search_ranks_name_matches_before_alias_matches() {
+        use crate::domain::{Money, Product};
+        let mut by_name = Product::new_basic("a", "Tandoori Roti", Money(2000));
+        let mut by_alias = Product::new_basic("b", "ચીકન તંદુરી", Money(15000));
+        by_alias.aliases_json = r#"["Chicken Tandoori"]"#.into();
+        let name_rank = name_then_alias_rank(&by_name, "tandoori").unwrap();
+        let alias_rank = name_then_alias_rank(&by_alias, "tandoori").unwrap();
+        assert!(name_rank < alias_rank, "name {name_rank} must rank before alias {alias_rank}");
+        assert!(name_then_alias_rank(&by_alias, "chicken").is_some(), "the alias alone finds it");
+        assert!(name_then_alias_rank(&by_alias, "ચીકન").is_some(), "the real name finds it");
+        assert_eq!(name_then_alias_rank(&by_name, "paneer"), None);
+        by_name.group_name = "Breads".into();
+        assert!(name_then_alias_rank(&by_name, "breads").unwrap() >= 10, "group only = after names");
+        // A short code typed exactly is a direct pick: it leads even a name
+        // that merely contains it ("Dosa 1012 Special").
+        let mut coded = Product::new_basic("c", "Masala Dosa", Money(9000));
+        coded.aliases_json = r#"["101"]"#.into();
+        let contains = Product::new_basic("d", "Dosa 1012 Special", Money(12000));
+        assert_eq!(name_then_alias_rank(&coded, "101"), Some(0));
+        assert!(name_then_alias_rank(&contains, "101").unwrap() > 0);
+    }
+
     use super::*;
 
     #[test]

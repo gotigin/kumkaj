@@ -39,7 +39,7 @@ adding_item	ಒಂಜಿ ಪೊಸ ದರೊನು ಸೇರಾವುನ
 editing_item	ಸಂಪಾದನೆ
 save	ಉಳಿತಾಯ ಮಲ್ಪುಲೆ
 remove	ದೆತ್ತ್ ಪಾಡ್ಲೆ
-empty_catalog	ಇತ್ತೆ ದರೊಕುಲು ಇಜ್ಜಿ. ದರೊಲು ಬೊಕ್ಕ ಸೇವೆಲೆನ್ ತೆರೆಲೆ, ಒಂಜಿ ಸೇರಾವೊಡು (ಪುದರ್ + ಬೆಲೆ, ಯುನಿಟ್ ಕೆಜಿ), ಬೊಕ್ಕ ಬುಕ್ಕಿಂಗ್ ಮಲ್ಪುಲೆ.
+empty_catalog	ಇತ್ತೆ ದರೊಕುಲು ಇಜ್ಜಿ.
 counter_sale	ಕೌಂಟರ್ ಬುಕ್ಕಿಂಗ್
 total	ಒಟ್ಟು
 cash	ನಗದು
@@ -171,8 +171,6 @@ selected_language	ಆಯ್ಕೆ ಆಯಿನ
 continue	ಮುಂದುವರಿಸಲೆ
 this_device	ಈ ಸಾಧನ
 device_use_q	ಈ ಸಾಧನೊನು ಎಂಚ ಬಳಕೆ ಮಲ್ಪುವೆರು?
-last_server_mode	ಸರ್ವರ್ ಆದಿತ್ತ್ಂಡ್ — ಮುಂದುವರಿಸರೆ ಟ್ಯಾಪ್ ಮಲ್ಪುಲೆ
-last_client_mode	ಕ್ಲೈಂಟ್ ಆದಿತ್ತ್ಂಡ್ — ಮುಂದುವರಿಸರೆ ಟ್ಯಾಪ್ ಮಲ್ಪುಲೆ
 choose_server	ಒಂಜಿ ಸರ್ವರ್ ನ್ ಆಯ್ಕೆ ಮಲ್ಪುಲೆ
 choose_server_hint	ಒಂಜಿ ಇತ್ತಿನ ಸರ್ವರ್ ನ್ ತೆರೆಲೆ, ಅತ್ತ್ಂಡ ಬೇತೆ ವ್ಯವಹಾರೊಗು ಒಂಜಿನ್ ರಚನೆ ಮಲ್ಪುಲೆ.
 create_new_server	ಪೊಸ ಸರ್ವರ್ ನ್ ರಚನೆ ಮಲ್ಪುಲೆ
@@ -501,8 +499,6 @@ job_layout	ಲೇಔಟ್
 job_delivery	ಬೇಲೆನ್ ಎಂಚ ಕಡಪುಡುವೆರ್
 job_size	ಫಾಂಟ್ ಗಾತ್ರ
 job_size_ph	ಉದಾ. ೧೮, ೨೦, ೨೬…
-save_receipt_format	ರಸೀದಿ ಸ್ವರೂಪೊನು ಉಳಿತಾಯ ಮಲ್ಪುಲೆ
-save_label_format	ಲೇಬಲ್ ಸ್ವರೂಪೊನು ಉಳಿತಾಯ ಮಲ್ಪುಲೆ
 test_receipt_format	ಪರೀಕ್ಷೆದ ರಶೀದಿ
 test_label_format	ಪರೀಕ್ಷಾ ಲೇಬಲ್
 test_receipt_sent	ಮಾದರಿ ರಸೀದಿನ್ ಕಡಪುಡುವೆರ್
@@ -610,7 +606,7 @@ units_heading	ಘಟಕೊಲು
 booking_measures	ಬುಕ್ಕಿಂಗ್ ಕ್ರಮೊಕುಲು
 drawer_count	ಡ್ರಾಯರ್ ಲೆಕ್ಕ (ಐಚ್ಛಿಕ)
 spreadsheet_csv	ಸ್ಪ್ರೆಡ್ ಶೀಟ್ (CSV)
-bank_reconciliation	ಬ್ಯಾಂಕ್ ರೆಕನ್ಸಿಲಿಯೇಶನ್ (ನಿಕ್ಲೆನ ಬ್ಯಾಂಕ್ ಸ್ಟೇಟ್ಮೆಂಟ್ ಗ್ ಟಿಕ್ ಆಫ್ ಮಲ್ಪುಲೆ)
+bank_reconciliation	ಬ್ಯಾಂಕ್ ರೆಕನ್ಸಿಲಿಯೇಶನ್
 book_add_product	ಬುಕ್ — ಉತ್ಪನ್ನ / ದರ ಸೇರ್ಪಾಲೆ
 book_opening_credit	ಪುಸ್ತಕ — ಸುರುತ ಕ್ರೆಡಿಟ್
 account_kind	ಖಾತೆದ ಬಗೆ (ಒಂಜಿ ಟ್ಯಾಪ್ ಮಲ್ಪುಲೆ)
@@ -650,7 +646,7 @@ net_word	ನಿವ್ವಳ
 offline_badge	ಆಫ್ಲೈನ್
 optional_login_help	ಐಚ್ಛಿಕ ಲಾಗಿನ್ (ಐಡಿ + ಗುಪ್ತಪದ). ಒಂಜಿ ಸರ್ತಿ ಮಾಲೀಕೆರ್ ಸೆಟ್ ಮಲ್ಪುವೆರ್; ನನೊಂಜಿ ಸರ್ತಿ ಗುಪ್ತಪದೊನು ಬಳಕೆದಾರೆರ್ ಮಾತ್ರ ಬದಲಾವೊಲಿ.
 or_unlock_login	ಅತ್ತ್ಂಡ ಲಾಗ್ ಇನ್ ಐಡಿ + ಪಾಸ್ ವರ್ಡ್ ಡ್ ಅನ್ ಲಾಕ್ ಮಲ್ಪುಲೆ
-permission_preset	ಕೆಲಸ (ಪರದೆಲೆನ್ ಬೊಕ್ಕ ಹಕ್ಕುಲೆನ್ ಸೆಟ್ ಮಲ್ಪುಂಡು)
+permission_preset	ಕೆಲಸ
 preset_help_moklanjo	ಕ್ಯಾಷಿಯರ್: ಮಾರಾಟ ಮಲ್ಪುಲೆ. ವ್ಯವಸ್ಥಾಪಕೆರ್: ಮಾರಾಟ + ವಸ್ತುಲು + ರದ್ದು/ತಿದ್ದುಪಡಿ.
 product_locked_moklanjo	ಮೊಕ್ಲಾಂಜೊ
 product_only_moklanjo	ಈ ಅಪ್ಲಿಕೇಶನ್ ಮೊಕ್ಲಾಂಜೊ ಮಾತ್ರ — ಪುಸ್ತಕೊಲು + ಬುಕ್ಕಿಂಗ್ ಡೆಸ್ಕ್. ಬೇತೆ ವ್ಯಾಪಾರದ ಮುಖೊಲು ನನೊಂಜಿ ಸರ್ತಿ ಪ್ರತ್ಯೇಕ ಉತ್ಪನ್ನೊಲೆನ ರೂಪೊಡು ಸಾಗಾಣಿಕೆ ಆಪುಂಡು.
@@ -698,10 +694,6 @@ pin_hint_paired	ಎಕ್ಸ್ ಟ್ರಾ ಟಿಲ್ ಪೇರ್ಡ್ —
 pin_hint_pair_first	ಎಕ್ಸ್ ಟ್ರಾ ಟಿಲ್ — ಸುರುಕು ಅಂಗಡಿದ ಸಾಧನೊಗು ಜೋಡಿ ಮಲ್ಪುಲೆ
 unlock_to_continue	ಮುಂದುವರಿಸರೆ ಅನ್ಲಾಕ್ ಮಲ್ಪುಲೆ
 no_staff_yet	ಇತ್ತೆ ಸಿಬ್ಬಂದಿ ಇಜ್ಜೆರ್ — ಮಾಲೀಕೆರ್ ಆದ್ ಅನ್ಲಾಕ್ ಮಲ್ಪುಲೆ, ಅಪಗ ತಂಡ
-status_server_set_pin	ಸರ್ವರ್ ಮೋಡ್ — ಮಾಲೀಕೆರ್ PIN ನ್ ಸೆಟ್ ಮಲ್ಪುಲೆ
-status_server_tills	ಸರ್ವರ್ ಮೋಡ್ — ಎಕ್ಸ್ ಟ್ರಾ ಟಿಲ್ಸ್ ಸೇರೊಲಿ. ಅನ್ಲಾಕ್ ಮಲ್ಪುಲೆ
-status_server_unlock	ಸರ್ವರ್ ಮೋಡ್ — ಒನರ್ ಆದ್ ಅನ್ಲಾಕ್ ಮಲ್ಪುಲೆ
-status_client_unlock	ಕ್ಲೈಂಟ್ ಮೋಡ್ — ಮಾರಾಟ ಮಲ್ಪೆರೆ ಅನ್ಲಾಕ್ ಮಲ್ಪುಲೆ
 icon_new_selected	ಐಕಾನ್: ಪೊಸ ಫೈಲ್ ನ್ ಆಯ್ಕೆ ಮಲ್ತೆರ್ — ಬ್ರಾಂಡ್ ನ್ ಉಳಿಸಲೆ ಪನ್ಪಿನೆನ್ ಒತ್ತುಲೆ
 icon_custom	ಐಕಾನ್: ಕಸ್ಟಮ್ ವೆನ್ಯೂ ಮಾರ್ಕ್
 icon_default	ಐಕಾನ್: Kumkaj ಗುರುತು (ಡೀಫಾಲ್ಟ್) — ಒಂಜಿ ಕಸ್ಟಮ್ ನ್ ಆಯ್ಕೆ ಮಲ್ಪುಲೆ
@@ -834,3 +826,7 @@ role_help_supplier	ಪಾತ್ರ: ಪೂರೈಕೆದಾರ — ಖರೀದ
 lane_declared_label	ಖಾತೆ ಬುಕ್ಕಿಂಗ್
 lane_owner_label	ನಗದು ಬುಕ್ಕಿಂಗ್
 money_lane_bill	ಬಿಲ್: {lane}
+sel_copy	ನಕಲ್ ಮಲ್ಪುಲೆ
+sel_select_all	ಮಾತಾ ಆಯ್ಕೆ ಮಲ್ಪುಲೆ
+sel_copied	ನಕಲ್ ಆಂಡ್
+nav_loading	ಲೋಡ್ ಆವೊಂದುಂಡು…

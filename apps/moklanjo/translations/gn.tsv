@@ -39,7 +39,7 @@ adding_item	Oñemoĩvo peteĩ tasa pyahu
 editing_item	Edición rehegua
 save	Oñongatu
 remove	Ojepe’a
-empty_catalog	Ndaipóri gueteri tasa. Eipe’a Tarifa & servicios, emoĩ peteĩ (téra + precio, unidad kg), upéi Reserva.
+empty_catalog	Ndaipóri gueteri tasa.
 counter_sale	Reserva contador rehegua
 total	Total rehegua
 cash	Efectivo rehegua
@@ -171,8 +171,6 @@ selected_language	Ojeporavóva
 continue	Esegíkena
 this_device	KO DISPOSITIVO
 device_use_q	Mbaʼéichapa ojeporúta ko aparáto?
-last_server_mode	Ha’ékuri Servidor — epoko eñepyrũ hag̃ua
-last_client_mode	Ha’ékuri Cliente — epoko eñepyrũ hag̃ua
 choose_server	Eiporavo peteĩ servidor
 choose_server_hint	Eipe’a peteĩ servidor oĩmava, térã ejapo peteĩ ambue negocio-pe g̃uarã.
 create_new_server	Ejapo servidor pyahu
@@ -501,8 +499,6 @@ job_layout	Diseño rehegua
 job_delivery	Mba’éichapa oñemondo tembiapo
 job_size	Fuente tuichakue
 job_size_ph	p.e. 18, 20, 26 rehegua...
-save_receipt_format	Oñongatu formato recibo rehegua
-save_label_format	Eñongatu formato etiqueta rehegua
 test_receipt_format	Prueba recibo rehegua
 test_label_format	Etiqueta de prueba rehegua
 test_receipt_sent	Recibo muestra oñemondova’ekue
@@ -610,7 +606,7 @@ units_heading	Unidad-kuéra rehegua
 booking_measures	Umi medida ojejapóva reserva rehegua
 drawer_count	Cajón jepapa (opcional) .
 spreadsheet_csv	Hoja de cálculo (CSV) rehegua .
-bank_reconciliation	Reconciliación bancaria (emoĩ peteĩ marca nde estado bancario rehe) .
+bank_reconciliation	Reconciliación bancaria
 book_add_product	Aranduka — omoĩve producto / tasa
 book_opening_credit	Aranduka — crédito apertura rehegua
 account_kind	Cuenta tipo (epoko peteĩva rehe) .
@@ -650,7 +646,7 @@ net_word	Net rehegua
 offline_badge	OFFLINE rehegua
 optional_login_help	Oike opcional (id + contraseña). Ijára omoĩ peteĩ jey; puruhára añoite ikatu omoambue ñe’ẽñemi upe rire.
 or_unlock_login	Térã ojedesblokea id de ingreso + contraseña reheve
-permission_preset	Tembiapo (omohenda pantalla ha derecho) .
+permission_preset	Tembiapo
 preset_help_moklanjo	Cajero: ovende. Moakãhára: ovende + mba’e + omboyke/omoambue.
 product_locked_moklanjo	Moklanjo rehegua
 product_only_moklanjo	Ko app ha’e Moklanjo añoite — aranduka + escritorio de reserva. Ambue comercio ombohovái buque producto separado ramo upe rire.
@@ -698,10 +694,6 @@ pin_hint_paired	Extra hasta emparejado — desbloqueo oñevende haguã
 pin_hint_pair_first	Extra till — embojoaju pe tembipuru tenda rehegua raẽ
 unlock_to_continue	Edesblokea eñepyrũ hag̃ua
 no_staff_yet	Ndaipóri gueteri personal — desbloqueo Propietario ramo, upéi Equipo
-status_server_set_pin	Modo Servidor — emohenda Ijára PIN .
-status_server_tills	Modo Servidor — umi tills extra ikatu ojoaju. Desbloqueo
-status_server_unlock	Modo Servidor — ojepe’a Ijára ramo
-status_client_unlock	Modo Cliente — ojepe’a oñevende hag̃ua
 icon_new_selected	Icono: archivo pyahu ojeporavóva — epoko Ñongatu marca rehe
 icon_custom	Icono: marca personalizada tenda rehegua
 icon_default	Icono: Kumkaj marca (por defecto) — eiporavo peteĩ jeporupyre
@@ -834,3 +826,7 @@ role_help_supplier	Papel: Proveedor — AP ojejogua hag̃ua.
 lane_declared_label	Reserva cuenta rehegua
 lane_owner_label	Reserva efectivo rehegua
 money_lane_bill	Proyecto de ley: {lane} .
+sel_copy	Ekopia
+sel_select_all	Eiporavo opavave
+sel_copied	Okopiáma
+nav_loading	Henyhẽhína…

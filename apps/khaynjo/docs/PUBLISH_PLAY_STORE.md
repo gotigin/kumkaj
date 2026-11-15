@@ -55,6 +55,12 @@ Outputs under `dist/khaynjo-android/`:
 
 If the `.jks` (or password file) is missing, the APK stays Makepad debug-signed — fine to try out, **not** for Play.
 
+**`…/cargo_makepad/src/android/res" is not a directory` (path under another home):** the
+cached `cargo-makepad` binary still carries the folder the workspace was built in
+(`env!("CARGO_MANIFEST_DIR")`) — the workspace moved. `touch
+vendor/makepad-full/tools/cargo_makepad/src/main.rs` and re-run the package script; it
+rebuilds the tool (hit 2026-11-15 after `/home/eight` → `/home/four`).
+
 ## Versioning on Play
 
 | Field | Source | Rule |

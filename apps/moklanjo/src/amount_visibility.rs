@@ -370,7 +370,7 @@ fn nav_tab_for(screen: Screen, reports_nav: ReportsNav) -> Option<NavTab> {
         Screen::Branches => Some(NavTab::Branches),
         Screen::Credit => Some(NavTab::Credit),
         Screen::Team => Some(NavTab::Team),
-        Screen::Settings | Screen::SidebarSettings => Some(NavTab::Settings),
+        Screen::Settings => Some(NavTab::Settings),
         Screen::Lock => Some(NavTab::Lock),
         Screen::DeviceSetup | Screen::Onboard | Screen::ClientPair => None,
     }
@@ -405,8 +405,7 @@ fn setup_shows_header_back(st: &AppState) -> bool {
 }
 
 /// In-screen overlays Back dismisses **before** popping `nav_back`
-/// (Settings section). SidebarSettings is a separate screen — ‹ comes from
-/// visit history after `go`.
+/// (Settings section).
 fn in_screen_nested_layer(st: &AppState) -> bool {
     st.screen == Screen::Settings && st.settings_panel.is_some()
 }

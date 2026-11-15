@@ -39,7 +39,7 @@ adding_item	Yeni tarife ekleniyor
 editing_item	Düzenleniyor
 save	Kaydet
 remove	Kaldır
-empty_catalog	Henüz tarife yok. Tarifeler ve hizmetleri açın, bir tane ekleyin (isim + fiyat, birim kg), sonra Gönderi.
+empty_catalog	Henüz tarife yok.
 counter_sale	Tezgah gönderisi
 total	Toplam
 cash	Nakit
@@ -171,8 +171,6 @@ selected_language	Seçili
 continue	Devam
 this_device	BU CİHAZ
 device_use_q	Bu cihaz nasıl kullanılacak?
-last_server_mode	Önceden sunucuydu — devam etmek için dokunun
-last_client_mode	Önceden istemciydi — devam etmek için dokunun
 choose_server	Sunucu seç
 choose_server_hint	Bu cihazda zaten sunucular var. Birini açın veya başka bir işletme için yeni sunucu oluşturun.
 create_new_server	Yeni sunucu oluştur
@@ -501,8 +499,6 @@ job_layout	Yerleşim
 job_delivery	İşin nasıl gönderildiği
 job_size	Yazı tipi boyutu
 job_size_ph	örn. 18, 20, 26…
-save_receipt_format	Makbuz biçimini kaydet
-save_label_format	Etiket biçimini kaydet
 test_receipt_format	Test makbuzu
 test_label_format	Test etiketi
 test_receipt_sent	Örnek makbuz gönderildi
@@ -610,7 +606,7 @@ units_heading	Birimler
 booking_measures	Gönderi ölçüleri
 drawer_count	Çekmece sayımı (isteğe bağlı)
 spreadsheet_csv	E-tablo (CSV)
-bank_reconciliation	Banka mutabakatı (ekstrenizle işaretleyin)
+bank_reconciliation	Banka mutabakatı
 book_add_product	Gönderi — ürün / tarife ekle
 book_opening_credit	Gönderi — açılış kredisi
 account_kind	Hesap türü (birine dokun)
@@ -650,7 +646,7 @@ net_word	Net
 offline_badge	ÇEVRİMDIŞI
 optional_login_help	İsteğe bağlı giriş (kimlik + parola). Sahibi bir kez ayarlar; sonrasında parolayı yalnızca kullanıcı değiştirebilir.
 or_unlock_login	Veya giriş kimliği + parola ile kilidi açın
-permission_preset	İş (ekranları ve hakları ayarlar)
+permission_preset	İş
 preset_help_moklanjo	Kasiyer: satış. Yönetici: satış + öğeler + iptal/düzeltme.
 product_locked_moklanjo	Moklanjo
 product_only_moklanjo	Bu uygulama yalnızca Moklanjo — defterler + gönderi masası. Diğer işler için ürünler daha sonra ayrı gelecek.
@@ -698,10 +694,6 @@ pin_hint_paired	Ek kasa eşleştirildi — satış için kilidi açın
 pin_hint_pair_first	Ek kasa — önce dükkan cihazına eşleştirin
 unlock_to_continue	Devam etmek için kilidi açın
 no_staff_yet	Henüz personel yok — Sahip olarak kilidi açın, sonra Ekip
-status_server_set_pin	Sunucu modu — sahip PIN'ini belirleyin
-status_server_tills	Sunucu modu — ek kasalar katılabilir. Kilidi açın
-status_server_unlock	Sunucu modu — Sahip olarak kilidi açın
-status_client_unlock	İstemci modu — satış için kilidi açın
 icon_new_selected	Simge: yeni dosya seçildi — Markayı kaydet'e dokunun
 icon_custom	Simge: kendi mağaza işaretiniz
 icon_default	Simge: Kumkaj işareti (varsayılan) — kendinizinkini seçin
@@ -834,3 +826,7 @@ role_help_supplier	Rol: Tedarikçi — Satın almalar için AP.
 lane_declared_label	Hesap rezervasyonu
 lane_owner_label	Nakit rezervasyon
 money_lane_bill	Fatura: {lane}
+sel_copy	Kopyala
+sel_select_all	Tümünü seç
+sel_copied	Kopyalandı
+nav_loading	Yükleniyor…

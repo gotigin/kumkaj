@@ -51,6 +51,8 @@ impl AppState {
             undo_sale_id: None,
             undo_snack_text: String::new(),
             undo_timer: Timer::empty(),
+            format_save_timer: Timer::empty(),
+            format_save_job: false,
             snack_text: String::new(),
             snack_kind: SnackKind::Info,
             snack_timer: Timer::empty(),
@@ -66,11 +68,14 @@ impl AppState {
             country_browse: String::new(),
             venue_title: String::new(),
             venue_icon_key: None,
-            nav_order: NAV_TABS.to_vec(),
-            nav_hidden: Vec::new(),
+            nav_order: default_nav_order("en"),
+            nav_hidden: parse_nav_layout(None, None, "en").1,
             amounts_screen_hidden: false,
             snack_secs: SnackKind::DEFAULT_SECS,
             settings_panel: None,
+            settings_panel_after_go: None,
+            nav_tab_after_unlock: None,
+            last_nav_saved: None,
             form_tab_anchor: None,
             form_tab_skip_submit: false,
             amount_keys_hidden: Vec::new(),
@@ -139,6 +144,7 @@ impl AppState {
             ops_reason: None,
             books_report_kind: BooksReportKind::Today,
             suggest_open: None,
+            sel_menu: None,
             suggest_rows: Vec::new(),
             suggest_rev: 0,
         };
@@ -212,8 +218,13 @@ impl AppState {
         self.extra_tills_allowed = store.extra_tills_allowed().unwrap_or(false);
         self.venue_title = store.venue_title()?;
         self.venue_icon_key = store.venue_icon_key()?;
-        self.nav_order = parse_nav_order(store.nav_order_csv()?.as_deref());
-        self.nav_hidden = parse_nav_hidden(store.nav_hidden_csv()?.as_deref());
+        let (order, hidden) = parse_nav_layout(
+            store.nav_order_csv()?.as_deref(),
+            store.nav_hidden_csv()?.as_deref(),
+            &self.locale.language,
+        );
+        self.nav_order = order;
+        self.nav_hidden = hidden;
         if let Some(user) = self.session.as_ref().map(lan_key) {
             self.amounts_screen_hidden = store.amounts_screen_hidden(&user).unwrap_or(false);
             self.amount_keys_hidden = parse_amount_keys_hidden(
@@ -358,10 +369,11 @@ impl AppState {
         let _ = self.refresh_local_servers();
         self.apply_platform_language_preview();
         self.screen = Screen::DeviceSetup;
+        // A known role shows as the selected Server / Client button — no
+        // status line restating it (cluster text, owner 2026-11-14).
         self.status = match self.device_role {
-            DeviceRole::Server => self.t("last_server_mode"),
-            DeviceRole::Client => self.t("last_client_mode"),
             DeviceRole::Unset => self.t("device_use_q"),
+            _ => String::new(),
         };
         // Warm LAN only after they confirm Server + extra tills on Lock path.
         // Do not start the server while the chooser is open.
@@ -473,6 +485,25 @@ impl AppState {
         let msg = store.apply_books_op(op, &actor)?;
         let _ = self.reload_all();
         Ok(msg)
+    }
+
+    /// Sidebar show/hide and order are the shop's: every device shows the
+    /// same rail (role rights still hide what a person may not open). The
+    /// shop device writes its books; an extra till asks the shop and gets the
+    /// shop's layout back with the next sync — it used to write only its own
+    /// copy (2026-11-14). `done` is the line the person reads once saved.
+    fn save_nav_layout(&mut self, done: String) -> Result<(), String> {
+        let hidden = nav_hidden_csv(&self.nav_hidden);
+        let order = nav_order_csv(&self.nav_order);
+        if self.device_role == DeviceRole::Client {
+            let op = BooksOp::SetNavLayout { hidden, order };
+            let label = op.label();
+            self.lan_job("/books", &op, label, done, phone::Follow::Refresh, false)?;
+            return Ok(());
+        }
+        let store = self.store.as_ref().ok_or("No store")?;
+        store.set_nav_hidden_csv(&hidden)?;
+        store.set_nav_order_csv(&order)
     }
 
     /// Hand a write to the device's LAN worker (Client only). `queued`
@@ -819,6 +850,35 @@ impl AppState {
         self.snack_secs = store
             .snack_secs(&user)
             .unwrap_or(SnackKind::DEFAULT_SECS);
+    }
+
+    /// Unlock brings each person back to the nav item they last had
+    /// selected on this device (owner, 2026-11-15). Written only when it
+    /// changes, and never while a worker holds the books (the write would
+    /// wait on it — a freeze); the next paint writes it then.
+    fn remember_nav_tab(&mut self, tab: Option<NavTab>) {
+        let Some(tab) = tab.filter(|t| *t != NavTab::Lock) else {
+            return;
+        };
+        let Some(user) = self.session.as_ref().map(lan_key) else {
+            return;
+        };
+        if self
+            .last_nav_saved
+            .as_ref()
+            .is_some_and(|(u, t)| *u == user && *t == tab)
+        {
+            return;
+        }
+        if heavy_books_job() || client_pair_busy().load(std::sync::atomic::Ordering::SeqCst) {
+            return;
+        }
+        let Some(store) = self.store.as_ref() else {
+            return;
+        };
+        if store.set_last_nav_key(&user, nav_tab_key(tab)).is_ok() {
+            self.last_nav_saved = Some((user, tab));
+        }
     }
 
     fn money(&self, m: Money) -> String {

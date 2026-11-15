@@ -1,5 +1,40 @@
 #[cfg(test)]
 mod info_help_layout_tests {
+
+    /// No explanations in the layout (owner, 2026-11-13 and again 2026-11-14:
+    /// "use the toolbar ℹ … avoid clustering texts"). A label's literal text
+    /// is a title, a value or a short state — never a paragraph or an
+    /// instruction; those go in the heading's InfoHelp `tip:`. 60+ characters
+    /// in a WrapLabel / Label body fails here; DESIGN.md "Explanations live
+    /// in ℹ" has the rule, `scripts/ui-text-inventory.sh` the visible check.
+    #[test]
+    fn layout_labels_carry_no_explanations() {
+        const LONGEST: usize = 60;
+        let ui = include_str!("../ui_script.rs");
+        let mut long = Vec::new();
+        let mut rest = ui;
+        while let Some(i) = rest.find(" := ") {
+            let after = &rest[i + 4..];
+            let is_label = after.starts_with("WrapLabel{") || after.starts_with("Label{");
+            let id_start = rest[..i].rfind(char::is_whitespace).map_or(0, |j| j + 1);
+            let id = &rest[id_start..i];
+            if is_label {
+                let block = &after[..after.find("\n}").or_else(|| after.find('}')).unwrap_or(after.len())];
+                for key in ["body: \"", "text: \""] {
+                    if let Some(k) = block.find(key) {
+                        let lit = &block[k + key.len()..];
+                        let end = lit.find('"').unwrap_or(lit.len());
+                        if lit[..end].chars().count() >= LONGEST {
+                            long.push(format!("{id}: {}", &lit[..end]));
+                        }
+                    }
+                }
+            }
+            rest = &rest[i + 4..];
+        }
+        assert!(long.is_empty(), "inline explanations (make them ℹ tips): {long:#?}");
+    }
+
     /// InfoHelp root stays Fill so the trail can absorb leftover row width.
     #[test]
     fn infohelp_default_is_fill_so_trail_absorbs() {
@@ -248,9 +283,7 @@ mod info_help_layout_tests {
         assert!(strip.contains("Fixed("));
         assert!(strip.contains("flow: Right"));
         for name in [
-            "staff_role_waiter",
             "staff_role_cashier",
-            "staff_role_kitchen",
             "staff_role_manager",
             "staff_role_admin",
         ] {
@@ -269,7 +302,7 @@ mod info_help_layout_tests {
         let seg = ui
             .split("let SegBtn = Button{")
             .nth(1)
-            .and_then(|s| s.split("let KotRowBtn = Button{").next())
+            .and_then(|s| s.split("let FieldRowBtn = Button{").next())
             .unwrap_or("");
         assert!(
             seg.contains("flow: Right{wrap: true}"),
@@ -338,4 +371,108 @@ mod info_help_layout_tests {
             .unwrap_or(ui.len());
         &ui[start..end]
     }
+
+    /// Form ScrollX under headings gets vertical margin; ChipStrip does not
+    /// (Overlay Lock tabs would float).
+    #[test]
+    fn form_scroll_x_has_vertical_margin_chipstrip_does_not() {
+        let ui = include_str!("../ui_script.rs");
+        let form = ui
+            .split("let FormScrollX = ScrollXView{")
+            .nth(1)
+            .and_then(|s| s.split("let ").next())
+            .unwrap_or("");
+        assert!(
+            form.contains("top: 8.") && form.contains("bottom: 8."),
+            "FormScrollX must pad top/bottom 8 so strips are not flush"
+        );
+        let chip = ui
+            .split("let ChipStrip = ScrollXView{")
+            .nth(1)
+            .and_then(|s| s.split("let ").next())
+            .unwrap_or("");
+        assert!(
+            !chip.contains("margin:"),
+            "ChipStrip must stay marginless (Overlay chevrons)"
+        );
+        assert!(
+            ui.contains("buy_pay_mode_scroll := FormScrollX{"),
+            "Buy pay-mode chips must scroll (not Fill-share SegBtns)"
+        );
+        // FormScrollX was used but never defined here until 2026-11-14 — a
+        // runtime DSL error that silently dropped both strips.
+        assert!(ui.contains("let FormScrollX = ScrollXView{"), "FormScrollX must be defined");
+        assert!(
+            ui.contains("part_methods_scroll := FormScrollX{"),
+            "PartsList expense chips must scroll (not Fill-share SegBtns)"
+        );
+        assert!(
+            ui.contains("till_pay_scroll := FormScrollX{"),
+            "Take payment chips must scroll on phone widths"
+        );
+    }
+
+    /// Word buttons must grow with ink — fixed 34/40px faces clip Gujarati / phone.
+    #[test]
+    fn text_chip_and_seg_buttons_use_fit_height() {
+        let ui = include_str!("../ui_script.rs");
+        let chip = ui
+            .split("let ChipBtn = Button{")
+            .nth(1)
+            .and_then(|s| s.split("let ChipBtnActive").next())
+            .unwrap_or("");
+        assert!(
+            chip.contains("height: Fit"),
+            "ChipBtn must use Fit height"
+        );
+        assert!(
+            !chip.contains("height: 34"),
+            "ChipBtn must not pin height 34"
+        );
+        let seg = ui
+            .split("let SegBtn = Button{")
+            .nth(1)
+            .and_then(|s| s.split("let FieldRowBtn").next())
+            .unwrap_or("");
+        assert!(
+            seg.contains("flow: Right{wrap: true}"),
+            "SegBtn must wrap labels when squeezed"
+        );
+        assert!(
+            !ui.contains("height: 40 flow: Overlay"),
+            "never clip SegBtn/ChipBtn in height:40 overlay shells"
+        );
+    }
+
+    /// Brand title+id must be Fill Down stacks — Fit+Fit Right cropped
+    /// "Khaynjo (2282(" on phone chrome (header / Lock / DeviceSetup).
+    #[test]
+    fn brand_title_stacks_are_fill_not_fit_right_pairs() {
+        let ui = include_str!("../ui_script.rs");
+        for id in [
+            "brand_title := WrapLabel{",
+            "lock_brand_title := WrapLabel{",
+            "setup_brand_title := WrapLabel{",
+        ] {
+            let block = ui
+                .split(id)
+                .nth(1)
+                .and_then(|s| s.split('}').next())
+                .unwrap_or("");
+            assert!(
+                block.contains("width: Fill"),
+                "{id} must be Fill so long shop names wrap, got {block:?}"
+            );
+            assert!(
+                !block.lines().take(6).any(|l| l.trim() == "width: Fit"),
+                "{id} must not be Fit beside a peer id (crops on 375)"
+            );
+        }
+        // No nested Fit+Fit Right row wrapping brand_title again.
+        assert!(
+            !ui.contains("brand_title := WrapLabel{\n                                                    width: Fit"),
+            "brand_title must not sit Fit in a Right peer row"
+        );
+    }
+
 }

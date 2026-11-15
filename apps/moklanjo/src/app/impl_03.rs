@@ -627,16 +627,175 @@ fn fit_inside_system_bars(&mut self, cx: &mut Cx) {
 
     /// Notes & attachments of the picked record: one row each in a card,
     /// or the hint while there are none.
-    fn show_attachments(&mut self, cx: &mut Cx, hint: &[LiveId], list: &[LiveId], summary: &str, empty: &str) {
+    /// Attachment rows, or nothing: an empty list needs no words (the
+    /// "(no attachments yet — select a sale)" line was English-only cluster
+    /// text, owner 2026-11-14).
+    fn show_attachments(&mut self, cx: &mut Cx, hint: &[LiveId], list: &[LiveId], summary: &str) {
         let rows: Vec<ReportRow> = summary
             .lines()
             .map(str::trim)
             .filter(|l| !l.is_empty() && *l != "Attachments:")
             .map(|l| ReportRow::Line(l.to_string()))
             .collect();
-        self.ui.widget(cx, hint).set_text(cx, &plain_display_text(empty));
-        self.ui.widget(cx, hint).set_visible(cx, rows.is_empty());
+        self.ui.widget(cx, hint).set_text(cx, "");
+        self.ui.widget(cx, hint).set_visible(cx, false);
         self.set_report_rows(cx, list, rows);
+    }
+
+    /// The Printers sheet (owner 2026-11-14): a job had no printer, so Find
+    /// runs here and a tap gives the job a printer — no trip to Settings →
+    /// Printers. `route` is the job that was missing one.
+    fn open_printers_modal(&mut self, cx: &mut Cx, route: print_share::RouteKey) {
+        if app_state().lock().unwrap().device_role == DeviceRole::Client {
+            self.set_status(cx, app_t("printers_host_only"));
+            return;
+        }
+        *printers_sheet_route().lock().unwrap() = Some(route);
+        self.paint_printers_modal(cx);
+        self.ui.modal(cx, ids!(printers_modal)).open(cx);
+    }
+
+    fn close_printers_modal(&mut self, cx: &mut Cx) {
+        self.ui.modal(cx, ids!(printers_modal)).close(cx);
+        *printers_sheet_route().lock().unwrap() = None;
+        self.sync_chrome(cx);
+    }
+
+    /// Find's results join the saved printers (same names stay one row),
+    /// so they can be picked here and under Where things print.
+    fn save_found_printers_to_pool(&mut self) -> Result<usize, String> {
+        let found = print_share::found_printers();
+        let mut st = app_state().lock().unwrap();
+        let mut added = 0;
+        for name in found {
+            let known = st
+                .printer_draft
+                .printers
+                .iter()
+                .any(|p| p.target.trim().eq_ignore_ascii_case(name.trim()));
+            if !known && !name.trim().is_empty() {
+                st.printer_draft.add_printer(&name, &name);
+                added += 1;
+            }
+        }
+        if added > 0 {
+            let base = st.data_base.clone().ok_or("No store path to save printers")?;
+            print_share::save_device_printers(&base, &st.printer_draft)?;
+        }
+        Ok(added)
+    }
+
+    /// Find / Cancel, the search line, and the saved printers as buttons
+    /// (✓ on the ones already printing this job).
+    fn paint_printers_modal(&mut self, cx: &mut Cx) {
+        let route = printers_sheet_route()
+            .lock()
+            .unwrap()
+            .unwrap_or(print_share::RouteKey::Receipt);
+        let (title, tip, find, cancel, ok, line, hint, picks, finding) = {
+            let st = app_state().lock().unwrap();
+            let finding = print_share::is_finding_printers()
+                && !print_share::find_printers_was_cancelled();
+            let job = st.t(match route {
+                print_share::RouteKey::Label => "route_label",
+                _ => "route_receipt",
+            });
+            let on_route = st.printer_draft.route_for(route).to_vec();
+            let picks: Vec<String> = st
+                .printer_draft
+                .printers
+                .iter()
+                .take(6)
+                .map(|p| {
+                    if on_route.iter().any(|id| id == &p.id) {
+                        format!("\u{2713} {}", p.label)
+                    } else {
+                        p.label.clone()
+                    }
+                })
+                .collect();
+            let hint = if picks.is_empty() {
+                String::new()
+            } else {
+                format!("{job} · {}", st.t("route_add_printer_ph"))
+            };
+            (
+                st.t("printers_heading"),
+                st.t("printers_help"),
+                st.t("find_printers"),
+                st.t("cancel"),
+                st.t("ok"),
+                printers_found_line(|k| st.t(k)),
+                hint,
+                picks,
+                finding,
+            )
+        };
+        self.ui.widget(cx, ids!(pm_title)).set_text(cx, &plain_display_text(&title));
+        self.ui
+            .widget(cx, ids!(pm_title_help))
+            .as_info_help()
+            .set_tip(&plain_display_text(&tip));
+        // Find / Cancel swap by visibility only — the Find face keeps its text.
+        let find_btn = self.ui.button(cx, ids!(pm_find_btn));
+        if find_btn.text() != find {
+            find_btn.set_text(cx, &find);
+        }
+        find_btn.set_visible(cx, !finding);
+        self.ui.button(cx, ids!(pm_find_cancel)).set_text(cx, &cancel);
+        self.ui.button(cx, ids!(pm_find_cancel)).set_visible(cx, finding);
+        self.ui.button(cx, ids!(pm_close)).set_text(cx, &ok);
+        self.ui
+            .widget(cx, ids!(pm_found_label))
+            .set_text(cx, &plain_display_text(&line));
+        self.ui
+            .widget(cx, ids!(pm_found_label))
+            .set_visible(cx, !line.trim().is_empty());
+        self.ui
+            .widget(cx, ids!(pm_pick_hint))
+            .set_text(cx, &plain_display_text(&hint));
+        self.ui
+            .widget(cx, ids!(pm_pick_hint))
+            .set_visible(cx, !hint.is_empty());
+        for (i, id) in PM_PICKS.iter().enumerate() {
+            let b = self.ui.button(cx, id);
+            match picks.get(i) {
+                Some(label) => {
+                    if b.text() != *label {
+                        b.set_text(cx, label);
+                    }
+                    b.set_visible(cx, true);
+                }
+                None => b.set_visible(cx, false),
+            }
+        }
+    }
+
+    /// A saved printer tapped in the sheet: it prints the missing job now.
+    fn pick_printer_in_modal(&mut self, cx: &mut Cx, index: usize) {
+        let route = printers_sheet_route()
+            .lock()
+            .unwrap()
+            .unwrap_or(print_share::RouteKey::Receipt);
+        let result = {
+            let mut st = app_state().lock().unwrap();
+            let Some(pid) = st.printer_draft.printers.get(index).map(|p| p.id.clone()) else {
+                return;
+            };
+            let list = st.printer_draft.route_mut(route);
+            if !list.iter().any(|id| id == &pid) {
+                list.push(pid);
+            }
+            match st.data_base.clone() {
+                Some(base) => print_share::save_device_printers(&base, &st.printer_draft)
+                    .map(|()| st.t("printers_saved")),
+                None => Err("No store path to save printers".into()),
+            }
+        };
+        match result {
+            Ok(msg) | Err(msg) => self.set_status(cx, msg),
+        }
+        self.paint_printers_modal(cx);
     }
 
     /// Settings → Printers: what the printer search says, and the printers

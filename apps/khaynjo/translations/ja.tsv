@@ -41,7 +41,7 @@ remove	削除
 removed_items	削除した品目
 removed_help	復元すると品目は元のままメニューに戻ります — 価格・写真・カテゴリもそのままです。当店の料理棚は削除されないので、いつでも料理を追加し直せます。
 restore_item	復元
-empty_catalog	品目がまだありません。メニューと品目を開き、1つ追加（名前＋価格）してから注文へ。
+empty_catalog	品目がまだありません。
 total	合計
 cash	現金
 upi	UPI
@@ -103,23 +103,14 @@ bill_item_qty	数量
 bill_item_price	単価
 bill_item_amount	金額
 bill_item_note	メモ
-bill_item_col_gap	列の間隔
 bill_item_col_order	列の順
 bill_item_col_sep	列の罫線
-bill_item_gap_tight	狭い
-bill_item_gap_comfort	ゆったり
-bill_item_gap_wide	広い
-bill_item_num_width	数値列
-bill_item_num_compact	詰めて
-bill_item_num_comfort	ゆったり
-bill_item_num_wide	広い
-bill_item_num_align	数値の揃え
-bill_item_gap_em	間隔 (em)
-bill_item_qty_min	数量の最小 (em)
-bill_item_price_min	単価の最小 (em)
-bill_item_amount_min	金額の最小 (em)
-kot_item_qty_width	数量列
-kot_item_num_align	数量の揃え
+slip_columns	列
+slip_col_width	幅 (mm)
+slip_col_start	先頭の余白 (px)
+slip_col_end	末尾の余白 (px)
+slip_col_align	文字揃え
+slip_columns_help	各列の幅には先頭と末尾の余白が含まれます。文字は列の中で折り返し、内容の幅からはみ出した部分は用紙でもプレビューでも切り取られます。
 bill_total_qty_label	合計数量ラベル
 bill_total_subtotal_label	小計ラベル
 bill_total_grand_label	合計ラベル
@@ -221,7 +212,6 @@ sidebar_order_saved	サイドバーの注文が保存されました
 sidebar_visibility_saved	サイドバーの表示設定が保存されました
 amounts_hide	非表示
 amounts_show	表示
-printers_none_hint	まずこのデバイスにプリンターを登録し、その後請求書または厨房に追加してください
 counter	カウンター
 dine_in	店内
 takeaway	テイクアウト
@@ -328,8 +318,6 @@ selected_language	選択中
 continue	続ける
 this_device	この端末
 device_use_q	この端末はどう使いますか？
-last_server_mode	前回はサーバー — タップして続行
-last_client_mode	前回はクライアント — タップして続行
 choose_server	サーバーを選ぶ
 choose_server_hint	この端末にはサーバーがあります。1つ開くか、別の事業用に新規作成してください。
 create_new_server	新規サーバー作成
@@ -391,7 +379,7 @@ attachments_last_expense	添付（前回の経費）
 bank	銀行
 bank_in	銀行へ入金
 bank_out	銀行から出金
-bank_reconciliation	銀行照合（明細とチェック）
+bank_reconciliation	銀行照合
 bank_to_till	銀行→レジ
 book_add_dish	注文 — 料理／品目を追加
 book_opening_credit	受付 — 期首の掛け
@@ -744,7 +732,6 @@ station_print_pick_first	先に厨房ステーションを選択してくださ�
 station_print_editing	「{name}」のプリンターを編集中
 station_vps_dd	このステーションのプリンター
 station_vps_dd_n	{n} 台のプリンター · タップして変更
-station_vps_empty	まだプリンターがありません — 設定 → プリンターで探してください
 bill_printers_dd	請求書のプリンター
 bill_printers_dd_n	請求書用の {n} プリンター · タップして変更
 job_layout	レイアウト
@@ -889,7 +876,7 @@ net_word	純額
 offline_badge	オフライン
 optional_login_help	任意ログイン（ID＋パスワード）。オーナーが一度設定し、その後はユーザー本人だけがパスワードを変更できます。
 or_unlock_login	またはログインID＋パスワードで解除
-permission_preset	権限プリセット（アクセス範囲）
+permission_preset	権限プリセット
 preset_help_khaynjo	レジ係：販売。マネージャー：販売＋品目＋取消／修正。
 product_locked_khaynjo	Khaynjo
 product_only_khaynjo	このアプリは Khaynjo 専用（飲食店向けシステム）です。他の業種には別の Kumkaj 製品があります。
@@ -961,10 +948,6 @@ pin_hint_paired	追加レジがペアリング済み — 販売するにはロ�
 pin_hint_pair_first	追加レジ — まず店舗端末とペアリング
 unlock_to_continue	続けるにはロック解除
 no_staff_yet	スタッフがまだいません — オーナーとして解除し、次にチームへ
-status_server_set_pin	サーバーモード — オーナーPINを設定
-status_server_tills	サーバーモード — 追加レジが参加できます。ロック解除
-status_server_unlock	サーバーモード — オーナーとしてロック解除
-status_client_unlock	クライアントモード — 販売するにはロック解除
 icon_new_selected	アイコン：新しいファイルを選択 — ブランドを保存をタップ
 icon_custom	アイコン：自店のマーク
 icon_default	アイコン：Kumkaj マーク（既定）— 独自のものを選択
@@ -1033,7 +1016,7 @@ book_kind_balance	貸借対照表
 order_help	開いている注文を選ぶか、テーブルを選んで新規開始。準備中のアイテムをタップし、KOT を送信、1つ以上のアイテムを請求、会計を分割して支払いを完了。
 floor_help	各テーブルは、ゲストが着席しているか、未精算の請求はいくらか、次に誰がサービスを必要としているかを表示します。
 kitchen_help	バリアント別またはアイテム別に準備量を記録 — KOT に好きな方法で記録。
-kitchen_empty	現在開いているものはありません — 新しい注文はここに表示されます。
+kitchen_empty	現在開いているものはありません。
 add_a_table	テーブルを追加
 add_station_heading	ステーションを追加 · 例：タンドール、南インド
 categories_help	カテゴリは料理がメニューのどの部分に属するかを示します — 例：スナック、メインコース、ビリヤニ。カテゴリは自由に作成できます：提案した名前を選ぶ、名前を変更する、独自のものを追加する。
@@ -1131,7 +1114,6 @@ bill_format_help	毎回の伝票で店名の下に印刷されます。| で改�
 bill_header_ph	住所 | 電話
 fssai_ph	FSSAI 許可番号（インド）
 bill_footer_ph	フッター（例：ありがとうございました）
-save_bill_format	伝票の書式を保存
 reset_bill_format	既定に戻す
 bill_format_reset	伝票書式を既定に戻しました
 reset_kot_format	既定に戻す
@@ -1201,13 +1183,11 @@ kot_copies_3	3
 kot_title_ph	タイトル（空 = KOT - KITCHEN ORDER）
 kot_footer_ph	厨房メモ（任意・価格なし）
 kot_preview	プレビュー
-save_kot_format	KOT形式を保存
 test_kot_format	KOT テスト
 test_kot_sent	キッチンチケットのプレビューが送信されました
 test_bill_format	請求書テスト
 test_bill_sent	請求書のプレビューが送信されました
 test_print_no_printer	そのジョブ用のプリンターがありません — この画面で一つ選択してください
-kot_format_saved	KOT形式を保存しました
 std_print	伝票の文字サイズ
 std_print_help	標準タテ・ヨコ伝票の文字サイズ（サーマルKOTは別）。両向きで同じサイズ。
 std_size_s	小
@@ -1264,7 +1244,6 @@ new_items_head	未送信
 price_ph	価格
 price_ph_gst_inside	価格（{tax}込み）
 cancel_needs_table	キッチン後に取消すにはフロア（テーブル）からこの注文を開いてください — カウンターKOTは会計まで伝票に残ります
-tax_rates_missing_hint	これらの料理に{tax}税率がありません — メニューで税率を設定（{tax} inclusiveでは価格に既に{tax}込み）
 taxable_value	課税対象額
 gst_inside_price_note	（{tax}込み）
 start_with_template	メニューのテンプレートで始める
@@ -1318,9 +1297,7 @@ order_empty_pick	注文は空です — 上の「料理を追加」をタップ�
 add_dishes	料理を追加
 order_so_far	この注文：{n} · {total}
 no_dish_match	「{q}」に合う料理はありません
-pick_dishes_help	料理をタップして追加 · カテゴリで絞り込み
 pick_done	完了
-pick_done_dd	完了 · {label}
 printer_route_mode	この場所に複数のプリンターがある場合
 printer_mode_first	最初に動作するもの
 printer_mode_all	すべてで印刷
@@ -1368,3 +1345,22 @@ recent_changes	最近の変更
 lane_declared_label	税金請求書
 lane_owner_label	現金メモ
 money_lane_bill	請求書：{lane}
+sel_copy	コピー
+sel_select_all	すべて選択
+sel_copied	コピーしました
+items_tmpl_khaynjo	Khaynjo 商品テンプレート
+items_tmpl_named	{name} テンプレート
+app_tmpl_named	{name} アプリテンプレート
+private_code_ph	12桁のコード
+stamp_on	スタンプ：保存済み
+pay_qr_on	支払いQR：保存済み
+pay_qr_off	支払いQR：なし
+items_tmpl_heading	商品テンプレート
+items_tmpl_help	メニュー用の料理・カテゴリー・写真。店舗の設定とスタッフはそのままです。
+public_tmpl_help	誰でもダウンロードできるスターターメニュー。インターネットが一度必要です。
+private_tmpl_help	Khaynjo担当者から届く12桁のコードで保護された顧客用メニュー。
+printers_screen_tip	検索で、この端末で使えるプリンターを一覧にして、この店舗用に保存します。会計伝票のプリンター：伝票とKOTの書式 → 伝票。キッチン：キッチン → キッチンステーション。
+printers_found_none	プリンターが見つかりません。
+kot_copy_from	コピー元
+kot_copy_from_help	その種類の各行のサイズ・太さ・配置をこの種類にコピーします。この種類のバナー、品目の接頭辞、取り消し線はそのままです。保持するには KOT 形式を保存してください。
+nav_loading	読み込み中…

@@ -39,7 +39,7 @@ adding_item	Pridáva sa nová sadzba
 editing_item	Úprava
 save	Uložiť
 remove	Odstrániť
-empty_catalog	Zatiaľ žiadne sadzby. Otvorte Ceny a služby, pridajte jednu (názov + cena, jednotka kg) a potom Rezervácia.
+empty_catalog	Zatiaľ žiadne sadzby.
 counter_sale	Rezervácia na prepážke
 total	Celkom
 cash	Hotovosť
@@ -171,8 +171,6 @@ selected_language	Vybrané
 continue	Pokračovať
 this_device	TOTO ZARIADENIE
 device_use_q	Ako sa bude toto zariadenie používať?
-last_server_mode	Bol server – klepnutím pokračujte
-last_client_mode	Bol klient – klepnutím pokračujte
 choose_server	Vyberte server
 choose_server_hint	Otvorte existujúci server alebo vytvorte jeden pre inú firmu.
 create_new_server	Vytvorte nový server
@@ -501,8 +499,6 @@ job_layout	Rozloženie
 job_delivery	Ako sa úloha odosiela
 job_size	Veľkosť písma
 job_size_ph	napr. 18, 20, 26…
-save_receipt_format	Uložiť formát účtenky
-save_label_format	Uložiť formát štítku
 test_receipt_format	Skúšobný doklad
 test_label_format	Testovací štítok
 test_receipt_sent	Vzor potvrdenia bol odoslaný
@@ -610,7 +606,7 @@ units_heading	Jednotky
 booking_measures	Rezervačné opatrenia
 drawer_count	Počet zásuviek (voliteľné)
 spreadsheet_csv	Tabuľkový hárok (CSV)
-bank_reconciliation	Bankové odsúhlasenie (zaškrtnite pri výpise z účtu)
+bank_reconciliation	Bankové odsúhlasenie
 book_add_product	Rezervovať — pridať produkt/hodnotiť
 book_opening_credit	Kniha — otvárací kredit
 account_kind	Druh účtu (klepnite na jeden)
@@ -650,7 +646,7 @@ net_word	Čistý
 offline_badge	OFFLINE
 optional_login_help	Voliteľné prihlásenie (id + heslo). Vlastník nastaví raz; heslo môže neskôr zmeniť iba používateľ.
 or_unlock_login	Alebo odomknite pomocou prihlasovacieho mena + hesla
-permission_preset	Úloha (nastavuje obrazovky a práva)
+permission_preset	Úloha
 preset_help_moklanjo	Pokladník: predám. Manažér: predaj + položky + neplatnosť/zmena.
 product_locked_moklanjo	Moklanjo
 product_only_moklanjo	Táto aplikácia je len Moklanjo - knihy + rezervačný pult. Ostatné obchodné plochy sa dodávajú ako samostatné produkty neskôr.
@@ -698,10 +694,6 @@ pin_hint_paired	Extra do spárovania – odomknite na predaj
 pin_hint_pair_first	Extra till — najskôr spárujte so zariadením obchodu
 unlock_to_continue	Ak chcete pokračovať, odomknite
 no_staff_yet	Zatiaľ žiadny personál – odomknite ako vlastník, potom tím
-status_server_set_pin	Režim servera — nastavte vlastníka PIN
-status_server_tills	Režim servera – môžu sa pripojiť ďalšie pokladne. Odomknúť
-status_server_unlock	Režim servera – odomknite ako vlastník
-status_client_unlock	Klientsky režim – odomknite a predajte
 icon_new_selected	Ikona: vybratý nový súbor – klepnite na Uložiť značku
 icon_custom	Ikona: vlastné označenie miesta konania
 icon_default	Ikona: Značka Kumkaj (predvolené) — vyberte si vlastnú
@@ -834,3 +826,7 @@ role_help_supplier	Úloha: Dodávateľ – AP pre nákupy.
 lane_declared_label	Rezervácia účtu
 lane_owner_label	Rezervácia v hotovosti
 money_lane_bill	Účet: {lane}
+sel_copy	Kopírovať
+sel_select_all	Vybrať všetko
+sel_copied	Skopírované
+nav_loading	Načítava sa…

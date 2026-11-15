@@ -14,7 +14,7 @@ function Get-KumkajWipeCategories {
     Add-Type -AssemblyName System.Drawing | Out-Null
 
     $form = New-Object System.Windows.Forms.Form
-    $form.Text = "Uninstall $AppLabel — local data"
+    $form.Text = "Uninstall $AppLabel - local data"
     $form.Size = New-Object System.Drawing.Size(520, 320)
     $form.StartPosition = "CenterScreen"
     $form.FormBorderStyle = "FixedDialog"
@@ -31,19 +31,19 @@ function Get-KumkajWipeCategories {
     $cbRecords = New-Object System.Windows.Forms.CheckBox
     $cbRecords.Location = New-Object System.Drawing.Point(20, 78)
     $cbRecords.Size = New-Object System.Drawing.Size(460, 40)
-    $cbRecords.Text = "Business records — sales, payments, day books (shop setup stays)"
+    $cbRecords.Text = "Business records - sales, payments, day books (shop setup stays)"
     $form.Controls.Add($cbRecords)
 
     $cbSetup = New-Object System.Windows.Forms.CheckBox
     $cbSetup.Location = New-Object System.Drawing.Point(20, 122)
     $cbSetup.Size = New-Object System.Drawing.Size(460, 40)
-    $cbSetup.Text = "Shop setup — products, rates, staff, brand, empty books (also clears records)"
+    $cbSetup.Text = "Shop setup - products, rates, staff, brand, empty books (also clears records)"
     $form.Controls.Add($cbSetup)
 
     $cbUi = New-Object System.Windows.Forms.CheckBox
     $cbUi.Location = New-Object System.Drawing.Point(20, 166)
     $cbUi.Size = New-Object System.Drawing.Size(460, 40)
-    $cbUi.Text = "Screen preferences — sidebar, amount visibility, window size, language"
+    $cbUi.Text = "Screen preferences - sidebar, amount visibility, window size, language"
     $form.Controls.Add($cbUi)
 
     $ok = New-Object System.Windows.Forms.Button

@@ -81,19 +81,21 @@ Do not extract a shared core. Do not ship sibling restaurant chrome:
 | Makepad 2 shell, nav, locales | `src/main.rs`, `src/locale*.rs` |
 | Buy / inventory / UPI QR | `src/store_ops.rs`, `src/upi_qr.rs` |
 
-Venue is `VenueMode::Counter`. Floor / Kitchen / table seed are gated
-off and must not appear in owner-facing copy.
+Kirano is a counter shop only: the restaurant floor, kitchen, KOT, tables,
+stations and order types inherited from the Khaynjo fork were removed from
+the code (2026-11-14), not just switched off. They must not come back in
+owner-facing copy or code.
 
 ------------------------------------------------------------------------
 
 ## 4. Kirano-specific state
 
 - Locked product face: `kirano_kirana` (`src/entity_template.rs`,
-  `VenueMode::Counter`, Tax invoice / Cash memo). A new shop stays empty until the owner imports the neighbourhood shelf (`assets/items`, `assets/templates/neighbourhood`).
+  Tax invoice / Cash memo). A new shop stays empty until the owner imports the neighbourhood shelf (`assets/items`, `assets/templates/neighbourhood`).
 - Parties: **Customer** (khata/AR) and **Supplier** / wholesaler (AP) —
   role labels on one party UUID.
 - Shell: **Books · Sell · Buy · Items · Sales · Inventory · Credit ·
-  Reports · …** (Floor/Kitchen gated off by Counter venue).
+  Reports · …** (no Floor / Kitchen — counter only).
 - Brand art: `assets/kirano-app-icon.png` (orange cart + green leaf);
   theme tokens in `docs/DESIGN.md` § Color tokens — Kirano.
 

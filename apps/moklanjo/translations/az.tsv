@@ -39,7 +39,7 @@ adding_item	Yeni tarif əlavə etmək
 editing_item	Redaktə
 save	Saxla
 remove	Sil
-empty_catalog	Hələ heç bir tarif yoxdur. Tarifləri və xidmətləri açın, birini əlavə edin (ad + qiymət, vahid kq), sonra Rezervasiya edin.
+empty_catalog	Hələ heç bir tarif yoxdur.
 counter_sale	Kassa rezervasiyası
 total	Cəmi
 cash	Nağd
@@ -171,8 +171,6 @@ selected_language	Seçilib
 continue	Davam et
 this_device	BU CİHAZ
 device_use_q	Bu cihaz necə istifadə olunacaq?
-last_server_mode	Server idi — davam etmək üçün toxunun
-last_client_mode	Klient idi — davam etmək üçün toxunun
 choose_server	Server seçin
 choose_server_hint	Mövcud serveri açın və ya başqa biznes üçün yenisini yaradın.
 create_new_server	Yeni server yarat
@@ -501,8 +499,6 @@ job_layout	Düzüm
 job_delivery	İş necə göndərilir
 job_size	Şrift ölçüsü
 job_size_ph	məs. 18, 20, 26…
-save_receipt_format	Qəbz formatını saxla
-save_label_format	Etiket formatını saxla
 test_receipt_format	Sınaq qəbz
 test_label_format	Sınaq etiket
 test_receipt_sent	Nümunə qəbz göndərildi
@@ -610,7 +606,7 @@ units_heading	Vahidlər
 booking_measures	Sifariş ölçüləri
 drawer_count	Siyirmə sayımı (istəyə bağlı)
 spreadsheet_csv	Cədvəl (CSV)
-bank_reconciliation	Bank üzləşdirməsi (bank çıxarışınızla işarələyin)
+bank_reconciliation	Bank üzləşdirməsi
 book_add_product	Sifariş et — məhsul / tarif əlavə et
 book_opening_credit	Kitab — açılış krediti
 account_kind	Hesab növü (birinə toxunun)
@@ -650,7 +646,7 @@ net_word	Xalis
 offline_badge	OFLAYN
 optional_login_help	İstəyə bağlı giriş (id + parol). Sahib bir dəfə qoyur; parolu sonra yalnız istifadəçi dəyişə bilər.
 or_unlock_login	Və ya giriş id-si + parol ilə kilidi açın
-permission_preset	Vəzifə (ekranları və hüquqları təyin edir)
+permission_preset	Vəzifə
 preset_help_moklanjo	Kassir: satış. Menecer: satış + məhsullar + etibarsız etmə/düzəliş.
 product_locked_moklanjo	Moklanjo
 product_only_moklanjo	Bu tətbiq yalnız Moklanjodur — kitablar + qəbul masası. Digər ticarət üzləri sonra ayrı məhsullar kimi çıxacaq.
@@ -698,10 +694,6 @@ pin_hint_paired	Əlavə kassa qoşulub — satış üçün kilidi açın
 pin_hint_pair_first	Əlavə kassa — əvvəlcə mağaza cihazına qoşulun
 unlock_to_continue	Davam etmək üçün kilidi açın
 no_staff_yet	Hələ heyət yoxdur — Sahib kimi kilidi açın, sonra Heyət
-status_server_set_pin	Server rejimi — Sahib PIN-ini qoyun
-status_server_tills	Server rejimi — əlavə kassalar qoşula bilər. Kilidi açın
-status_server_unlock	Server rejimi — Sahib kimi kilidi açın
-status_client_unlock	Klient rejimi — satış üçün kilidi açın
 icon_new_selected	Nişan: yeni fayl seçildi — Brendi saxla düyməsinə toxunun
 icon_custom	Nişan: xüsusi məkan işarəsi
 icon_default	Nişan: Kumkaj işarəsi (susma) — xüsusi birini seçin
@@ -834,3 +826,7 @@ role_help_supplier	Rol: Təchizatçı — alışlar üçün AP.
 lane_declared_label	Hesab bronlaşdırması
 lane_owner_label	Nəğd rezervasiya
 money_lane_bill	Hesab: {lane}
+sel_copy	Köçür
+sel_select_all	Hamısını seç
+sel_copied	Köçürüldü
+nav_loading	Yüklənir…

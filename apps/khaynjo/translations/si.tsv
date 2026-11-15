@@ -41,7 +41,7 @@ remove	ඉවත් කරන්න
 removed_items	මෙනු අයිතම ඉවත් කරන ලදී
 removed_help	ප්‍රතිසාධනය මෙනු අයිතමය තිබූ ආකාරයටම ආපසු මෙනු අයිතමය මත තබයි - මිල, ඡායාරූප සහ ප්‍රවර්ගය. අපගේ පිඟන් රාක්කය කිසි විටෙකත් ඉවත් නොකෙරේ, එබැවින් සෑම විටම පිඟානක් නැවත එකතු කළ හැකිය.
 restore_item	ප්‍රතිෂ්ඨාපනය කරන්න
-empty_catalog	තවම කෑම වර්ග නැත. මෙනුව විවෘත කරන්න, කෑමක් එකතු කරන්න (නම + මිල), ඉන්පසු ඇණවුමක් ගන්න.
+empty_catalog	තවම කෑම වර්ග නැත.
 total	මුළු
 cash	මුදල්
 upi	UPI
@@ -103,23 +103,14 @@ bill_item_qty	ප්‍රමාණය
 bill_item_price	මිල
 bill_item_amount	මුදල
 bill_item_note	පිඟන් සටහන
-bill_item_col_gap	තීරු පරතරය
 bill_item_col_order	තීරු අනුපිළිවෙල
 bill_item_col_sep	තීරු නීති
-bill_item_gap_tight	තදයි
-bill_item_gap_comfort	සුවපහසුයි
-bill_item_gap_wide	පුළුල්
-bill_item_num_width	අංක තීරු
-bill_item_num_compact	සංයුක්ත
-bill_item_num_comfort	සුවපහසුයි
-bill_item_num_wide	පුළුල්
-bill_item_num_align	ඉලක්කම් පෙළගස්වයි
-bill_item_gap_em	පරතරය (එම්)
-bill_item_qty_min	ප්‍රමාණය විනාඩි (em)
-bill_item_price_min	මිල අවම (em)
-bill_item_amount_min	අවම මුදල (එම්)
-kot_item_qty_width	ප්‍රමාණ තීරුව
-kot_item_num_align	ප්‍රමාණ එල්ලය
+slip_columns	තීරු
+slip_col_width	පළල (mm)
+slip_col_start	ආරම්භක ඉඩ (px)
+slip_col_end	අවසාන ඉඩ (px)
+slip_col_align	පෙළ පෙළගැස්ම
+slip_columns_help	සෑම තීරුවකම පළලට එහි ආරම්භක සහ අවසාන ඉඩ ඇතුළත් වේ. පෙළ තම තීරුව තුළම ඔතා යයි; අන්තර්ගත පළලෙන් ඔබ්බට ඇති දේ කඩදාසියේ සහ පෙරදසුනේ කැපී යයි.
 bill_total_qty_label	මුළු qty ලේබලය
 bill_total_subtotal_label	උප සම්පූර්ණ ලේබලය
 bill_total_grand_label	විශාල සම්පූර්ණ ලේබලය
@@ -221,7 +212,6 @@ sidebar_order_saved	පැති තීරු ඇණවුම සුරකින
 sidebar_visibility_saved	පැති තීරු දෘශ්‍යතාව සුරකින ලදී
 amounts_hide	සඟවන්න
 amounts_show	පෙන්වන්න
-printers_none_hint	පළමුව මෙම උපාංගයේ මුද්‍රණ යන්ත්‍රයක් සුරකින්න, පසුව එය අමුත්තන්ගේ බිල්පතට හෝ මුළුතැන්ගෙයකට එක් කරන්න
 counter	කවුන්ටරය
 dine_in	කෑමට - ඇතුල් වන්න
 takeaway	රැගෙන යාම
@@ -328,8 +318,6 @@ selected_language	තෝරා ගන්නා ලදී
 continue	දිගටම කරගෙන යන්න
 this_device	මෙම උපාංගය
 device_use_q	මෙම උපාංගය භාවිතා කරන්නේ කෙසේද?
-last_server_mode	සේවාදායකය විය — ඉදිරියට යාමට තට්ටු කරන්න
-last_client_mode	සේවාදායකයා විය - ඉදිරියට යාමට තට්ටු කරන්න
 choose_server	සේවාදායකයක් තෝරන්න
 choose_server_hint	පවතින සේවාදායකයක් විවෘත කරන්න, නැතහොත් වෙනත් ව්‍යාපාරයක් සඳහා එකක් සාදන්න.
 create_new_server	නව සේවාදායකයක් සාදන්න
@@ -391,7 +379,7 @@ attachments_last_expense	ඇමුණුම් (අවසන් වියදම�
 bank	බැංකුව
 bank_in	බැංකුව තුළ
 bank_out	බැංකුවෙන් මුදල්
-bank_reconciliation	බැංකු ප්‍රතිසන්ධානය (ඔබේ බැංකු ප්‍රකාශයට එරෙහිව ලකුණු කරන්න)
+bank_reconciliation	බැංකු ප්‍රතිසන්ධානය
 bank_to_till	බැංකු → මුදල් ලේඛනය
 book_add_dish	ලෙජරය - පිඟාන / මෙනු අයිතමය එක් කරන්න
 book_opening_credit	ලෙජරය - විවෘත ණය
@@ -744,7 +732,6 @@ station_print_pick_first	මුලින්ම කුස්සියට උප�
 station_print_editing	"{name}" සඳහා මුද්‍රණ යන්ත්‍ර සංස්කරණය කිරීම
 station_vps_dd	මෙම ස්ථානය සඳහා මුද්‍රණ යන්ත්‍ර
 station_vps_dd_n	{n} මුද්‍රණ යන්ත්‍ර · වෙනස් කිරීමට තට්ටු කරන්න
-station_vps_empty	තවම මුද්‍රණ යන්ත්‍ර නැත - සැකසීම් → මුද්‍රණ යන්ත්‍ර යටතේ ඒවා සොයන්න
 bill_printers_dd	අමුත්තන්ගේ බිල්පත සඳහා මුද්‍රණ යන්ත්‍ර
 bill_printers_dd_n	අමුත්තන්ගේ බිල්පත සඳහා {n} මුද්‍රණ යන්ත්‍ර · වෙනස් කිරීමට තට්ටු කරන්න
 job_layout	පිරිසැලසුම
@@ -889,7 +876,7 @@ net_word	ශුද්ධ
 offline_badge	නොබැඳි
 optional_login_help	විකල්ප පුරනය වීම (id + මුරපදය). හිමිකරු එක් වරක් සකසයි; පසුව මුරපදය වෙනස් කළ හැක්කේ පරිශීලකයාට පමණි.
 or_unlock_login	නැතහොත් පිවිසුම් හැඳුනුම්පත + මුරපදය සමඟ අගුළු ඇරීම
-permission_preset	රැකියාව (තිර සහ මුදල් ක්‍රියා සකසයි)
+permission_preset	රැකියාව
 preset_help_khaynjo	අයකැමි: විකුණන්න. කළමනාකරු: විකිණීම + මෙනු අයිතම + අවලංගු/සංශෝධනය.
 product_locked_khaynjo	Khaynjo
 product_only_khaynjo	මෙම යෙදුම Khaynjo පමණි - අවන්හල් මෙහෙයුම් පද්ධතිය. වෙනත් වෙළඳ මුහුණු වෙනම Kumkaj නිෂ්පාදන ලෙස නැව්ගත කෙරේ.
@@ -961,10 +948,6 @@ pin_hint_paired	අමතර මුදල් ලේඛනය යුගල කර
 pin_hint_pair_first	අමතර මුදල් ලේඛනය - පළමුව සාප්පු උපාංගයට යුගල කරන්න
 unlock_to_continue	දිගටම කරගෙන යාමට අගුලු හරින්න
 no_staff_yet	තවම කාර්ය මණ්ඩලයක් නැත - හිමිකරු ලෙස අගුළු හරින්න, පසුව කණ්ඩායම
-status_server_set_pin	සේවාදායක මාදිලිය - හිමිකරු සකසන්න PIN
-status_server_tills	සේවාදායක මාදිලිය - අමතර මුදල් රෙජිස්ටර් වලට සම්බන්ධ විය හැක. අගුළු හරින්න
-status_server_unlock	සේවාදායක මාදිලිය - හිමිකරු ලෙස අගුළු ඇරීම
-status_client_unlock	සේවාලාභී ප්‍රකාරය - විකිණීමට අගුළු හරින්න
 icon_new_selected	නිරූපකය: නව ගොනුවක් තෝරා ඇත - වෙළඳ නාමය සුරකින්න තට්ටු කරන්න
 icon_custom	නිරූපකය: අභිරුචි ස්ථාන සලකුණ
 icon_default	නිරූපකය: Kumkaj ලකුණ (පෙරනිමිය) — අභිරුචි එකක් තෝරන්න
@@ -1033,7 +1016,7 @@ book_kind_balance	ශේෂ පත්රය
 order_help	එය එක් කිරීමට මෙනු අයිතමයක් තට්ටු කරන්න.
 floor_help	ඇණවුම ගැනීමට හෝ වෙනස් කිරීමට කෑම මේසයක් තට්ටු කරන්න. වර්ණ පෙන්වන්නේ නොමිලේ → වාඩි වී සිටින → මුළුතැන්ගෙය → සූදානම් → ආහාර ගැනීම → අමුත්තන්ගේ බිල්පත් → ගෙවා ඇත. පොරොත්තු ලේඛනය, වෙන් කිරීම්, සහ කෑම මේස පහත කොටස්වල ඇත.
 kitchen_help	මුළුතැන්ගෙයි ටිකට්පත් (KOT), අලුත්ම අන්තිම. ආරම්භය → සූදානම් → නිමයි ටිකට් පතක් දිගේ ගෙන යයි. ප්‍රවේශපත්‍ර කිසිවිටෙක මිල ගණන් නොපෙන්වයි.
-kitchen_empty	විවෘත ප්රවේශපත් නොමැත. ඇණවුමෙන් හෝ කෑම ශාලාවෙන් එවන ලද KOT එකක් මෙහි පෙන්වයි.
+kitchen_empty	විවෘත ප්රවේශපත් නොමැත.
 add_a_table	කෑම මේසයක් එකතු කරන්න
 add_station_heading	මුළුතැන්ගෙයි ස්ථානයක් එක් කරන්න
 categories_help	එම ප්‍රවර්ගය යටතේ ඉහත මෙනු අයිතමය ගොනු කිරීමට භාවිත කරන්න තට්ටු කරන්න. ඡායාරූපය කාණ්ඩයට පින්තූරයක් ලබා දෙයි; එකක් නොමැතිව එහි මුලකුරු පෙන්වයි.
@@ -1131,7 +1114,6 @@ bill_format_help	සෑම ආගන්තුක බිල්පතකම ඔබ
 bill_header_ph	ලිපිනය | දුරකථනය
 fssai_ph	FSSAI බලපත්‍ර අංකය. (ඉන්දියාව)
 bill_footer_ph	පාදකය (උදා. ස්තූතියි, නැවත පැමිණෙන්න)
-save_bill_format	අමුත්තන්ගේ බිල්පත් ආකෘතිය සුරකින්න
 reset_bill_format	පෙරනිමියට යළි පිහිටුවන්න
 bill_format_reset	ආගන්තුක ආගන්තුක බිල්පත් ආකෘතිය පෙරනිමියට යළි පිහිටුවන ලදී
 reset_kot_format	පෙරනිමියට යළි පිහිටුවන්න
@@ -1201,13 +1183,11 @@ kot_copies_3	3
 kot_title_ph	මාතෘකාව (හිස් = KOT - KITCHEN ORDER)
 kot_footer_ph	මුළුතැන්ගෙයි සටහන (විකල්ප, මිල ගණන් නැත)
 kot_preview	පෙරදසුන
-save_kot_format	KOT ආකෘතිය සුරකින්න
 test_kot_format	පරීක්ෂණයක් උත්සාහ කරන්න KOT
 test_kot_sent	මුළුතැන්ගෙයි ටිකට් පෙරදසුන යවා ඇත
 test_bill_format	අමුත්තන්ගේ බිල්පත් පරීක්ෂා කරන්න
 test_bill_sent	ආරාධිත අමුත්තන්ගේ බිල්පත් පෙරදසුන යවන ලදී
 test_print_no_printer	එම කාර්යය සඳහා මුද්‍රණ යන්ත්‍රයක් නොමැත - මෙම තිරයේ එකක් තෝරන්න
-kot_format_saved	KOT ආකෘතිය සුරකින ලදී
 std_print	අමුත්තන්ගේ බිල්පත් මුද්‍රණ ප්‍රමාණය
 std_print_help	OS / ලේඛන මුද්‍රණ යන්ත්‍රවල සම්මත පෝට්රේට් සහ භූ දර්ශන ආගන්තුක බිල්පත් රැකියා සඳහා අකුරු ප්‍රමාණය (ලකුණු ඇතුළත් කරන්න — කුඩා/සාමාන්‍ය/විශාල නොවේ). දිශානති දෙකෙහිම එකම ප්‍රමාණය. මුළුතැන්ගෙයි ස්ලිප් ප්‍රමාණයන් KOT ටැබය මත ඇත.
 std_size_s	කුඩා
@@ -1264,7 +1244,6 @@ new_items_head	තවම යවා නැත
 price_ph	මිල
 price_ph_gst_inside	මිල ({tax} ඇතුළුව)
 cancel_needs_table	මෙම ඇණවුම කුස්සියේ ඇති පසු අවලංගු කිරීමට භෝජන ශාලා තිරයෙන් (කෑම මේසයක්) විවෘත කරන්න - කවුන්ටරය KOTs ඔබ මුදල් ගෙවන තෙක් ටිකට් පතේ රැඳී සිටින්න
-tax_rates_missing_hint	මෙම කෑම වර්ග සඳහා {tax} අනුපාතයක් නැත - මෙනු සකසන ලද බදු අනුපාතය (මිල දැනටමත් {tax} යටතේ {tax} ඇතුළත් වේ)
 taxable_value	බදු ගෙවිය හැකි වටිනාකම
 gst_inside_price_note	({tax} ඇතුළුව)
 start_with_template	අපගේ මෙනු ආකෘතියෙන් ආරම්භ කරන්න
@@ -1318,9 +1297,7 @@ order_empty_pick	හිස් ඇණවුමක් කරන්න - පිඟ�
 add_dishes	පිඟන් එකතු කරන්න
 order_so_far	මෙම ඇණවුම මත: {n} · {total}
 no_dish_match	"{q}" කිසිදු කෑමක් නොගැලපේ
-pick_dishes_help	එය එක් කිරීමට කෑමක් තට්ටු කරන්න · ලැයිස්තුව පටු කිරීමට ප්‍රවර්ගයක් තෝරන්න
 pick_done	කළා
-pick_done_dd	නිමයි · {label}
 printer_route_mode	මෙම ස්ථානයේ මුද්‍රණ යන්ත්‍ර කිහිපයක් තිබේ නම්
 printer_mode_first	මුලින්ම එය ක්රියා කරයි
 printer_mode_all	සියල්ල මත මුද්‍රණය කරන්න
@@ -1368,3 +1345,22 @@ recent_changes	මෑත වෙනස්කම්
 lane_declared_label	බදු ඉන්වොයිසිය
 lane_owner_label	මුදල් සංදේශය
 money_lane_bill	ආරාධිත අමුත්තන්ගේ බිල්පත: {lane}
+sel_copy	පිටපත් කරන්න
+sel_select_all	සියල්ල තෝරන්න
+sel_copied	පිටපත් කළා
+items_tmpl_khaynjo	Khaynjo අයිතම සැකිල්ල
+items_tmpl_named	{name} සැකිල්ල
+app_tmpl_named	{name} යෙදුම් සැකිල්ල
+private_code_ph	ඉලක්කම් 12 කේතය
+stamp_on	මුද්දරය: ගොනුවේ
+pay_qr_on	ගෙවීම් QR: ගොනුවේ
+pay_qr_off	ගෙවීම් QR: කිසිවක් නැත
+items_tmpl_heading	අයිතම අච්චු
+items_tmpl_help	ඔබේ මෙනුව සඳහා කෑම, කාණ්ඩ සහ ඡායාරූප. වෙළඳසැල් සැකසුම් සහ කාර්ය මණ්ඩලය එලෙසම පවතී.
+public_tmpl_help	ඕනෑම කෙනෙකුට බාගත කළ හැකි ආරම්භක මෙනු. වරක් අන්තර්ජාලය අවශ්‍යයි.
+private_tmpl_help	ඔබේ Khaynjo සම්බන්ධතාවයෙන් ලැබෙන ඉලක්කම් 12 කේතයකින් ආරක්ෂිත පාරිභෝගික මෙනු.
+printers_screen_tip	සොයන්න මඟින් මෙම උපාංගයට භාවිත කළ හැකි මුද්‍රණ යන්ත්‍ර පෙන්වා මෙම වෙළඳසැල සඳහා සුරකියි. බිල් මුද්‍රණ යන්ත්‍ර: බිල් සහ KOT ආකෘතිය → බිල්. කුස්සිය: කුස්සිය → කුස්සි ස්ථාන.
+printers_found_none	මුද්‍රණ යන්ත්‍ර හමු නොවීය.
+kot_copy_from	මෙයින් පිටපත් කරන්න
+kot_copy_from_help	එම වර්ගයේ සෑම පේළියකම ප්‍රමාණය, ඝනකම සහ පෙළගැස්ම මෙයට පිටපත් කරයි. මෙම වර්ගය එහිම බැනරය, අයිතම උපසර්ගය සහ කපා හැරීම තබා ගනී. තබා ගැනීමට KOT ආකෘතිය සුරකින්න.
+nav_loading	පූරණය වෙමින්…

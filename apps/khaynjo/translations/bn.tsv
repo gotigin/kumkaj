@@ -41,7 +41,7 @@ remove	সরান
 removed_items	সরানো আইটেম
 removed_help	ফিরিয়ে আনলে আইটেমটি আগের মতোই মেনুতে ফিরে আসে — দাম, ছবি ও বিভাগ। আমাদের খাবারের তাক কখনও সরানো হয় না, তাই যেকোনো খাবার আবার যোগ করা যায়।
 restore_item	ফিরিয়ে আনুন
-empty_catalog	এখনও কোনো আইটেম নেই। মেনু ও আইটেম খুলুন, একটি যোগ করুন (নাম + দাম), তারপর অর্ডার নিন।
+empty_catalog	এখনও কোনো আইটেম নেই।
 total	মোট
 cash	নগদ
 upi	यूपीआई
@@ -103,23 +103,14 @@ bill_item_qty	পরিমাণ
 bill_item_price	দর
 bill_item_amount	পরিমাণ
 bill_item_note	নোট
-bill_item_col_gap	কলামের ফাঁক
 bill_item_col_order	কলামের ক্রম
 bill_item_col_sep	কলামের রেখা
-bill_item_gap_tight	আঁট
-bill_item_gap_comfort	আরামদায়ক
-bill_item_gap_wide	চওড়া
-bill_item_num_width	সংখ্যার কলাম
-bill_item_num_compact	ছোট
-bill_item_num_comfort	আরামদায়ক
-bill_item_num_wide	চওড়া
-bill_item_num_align	সংখ্যা সারিবদ্ধ
-bill_item_gap_em	ফাঁক (em)
-bill_item_qty_min	সংখ্যা সর্বনিম্ন (em)
-bill_item_price_min	দর সর্বনিম্ন (em)
-bill_item_amount_min	টাকা সর্বনিম্ন (em)
-kot_item_qty_width	সংখ্যার কলাম
-kot_item_num_align	সংখ্যা সারিবদ্ধ
+slip_columns	কলাম
+slip_col_width	প্রস্থ (mm)
+slip_col_start	শুরুর ফাঁকা স্থান (px)
+slip_col_end	শেষের ফাঁকা স্থান (px)
+slip_col_align	লেখার সারিবদ্ধতা
+slip_columns_help	প্রতিটি কলামের প্রস্থে তার শুরু ও শেষের ফাঁকা স্থান অন্তর্ভুক্ত। লেখা নিজের কলামের ভেতরেই মোড়ানো হয়; বিষয়বস্তুর প্রস্থের বাইরে যা থাকে তা কাগজে ও প্রিভিউতে কেটে যায়।
 bill_total_qty_label	মোট সংখ্যা লেবেল
 bill_total_subtotal_label	উপমোট লেবেল
 bill_total_grand_label	সর্বমোট লেবেল
@@ -221,7 +212,6 @@ sidebar_order_saved	সাইডবারের ক্রম রাখা হল
 sidebar_visibility_saved	সাইডবারের দৃশ্যমানতা রাখা হলো
 amounts_hide	লুকান
 amounts_show	দেখান
-printers_none_hint	আগে এই ডিভাইসে একটি প্রিন্টার রাখুন, তারপর সেটি বিল বা কোনো রান্নাঘরে যোগ করুন
 counter	কাউন্টার
 dine_in	বসে খাওয়া
 takeaway	পার্সেল
@@ -328,8 +318,6 @@ selected_language	বাছাই করা
 continue	এগিয়ে যান
 this_device	এই ডিভাইস
 device_use_q	এই ডিভাইসটি কীভাবে ব্যবহার হবে?
-last_server_mode	আগে সার্ভার ছিল — চালিয়ে যেতে ট্যাপ করুন
-last_client_mode	আগে ক্লায়েন্ট ছিল — চালিয়ে যেতে ট্যাপ করুন
 choose_server	সার্ভার বাছুন
 choose_server_hint	এই ডিভাইসে ইতিমধ্যে সার্ভার আছে। একটি খুলুন, অথবা অন্য ব্যবসার জন্য নতুন সার্ভার তৈরি করুন।
 create_new_server	নতুন সার্ভার তৈরি করুন
@@ -391,7 +379,7 @@ attachments_last_expense	সংযুক্তি (শেষ খরচ)
 bank	ব্যাংক
 bank_in	ব্যাংকে জমা
 bank_out	ব্যাংক থেকে তুলুন
-bank_reconciliation	ব্যাংক মিলান (আপনার ব্যাংক স্টেটমেন্টের সাথে টিক দিন)
+bank_reconciliation	ব্যাংক মিলান
 bank_to_till	ব্যাংক → টিল
 book_add_dish	বুক — খাবার / আইটেম যোগ করুন
 book_opening_credit	বুক — শুরুর বাকি
@@ -744,7 +732,6 @@ station_print_pick_first	আগে রান্নাঘর স্টেশন �
 station_print_editing	“{name}”-এর প্রিন্টার সম্পাদনা
 station_vps_dd	এই স্টেশনের প্রিন্টার
 station_vps_dd_n	{n} প্রিন্টার · বদলাতে ট্যাপ
-station_vps_empty	এখনো প্রিন্টার নেই — সেটিংস → প্রিন্টারে খুঁজুন
 bill_printers_dd	বিলের প্রিন্টার
 bill_printers_dd_n	বিলের জন্য {n}টি প্রিন্টার · বদলাতে চাপুন
 job_layout	লেআউট
@@ -889,7 +876,7 @@ net_word	নেট
 offline_badge	অফলাইন
 optional_login_help	ঐচ্ছিক লগইন (আইডি + পাসওয়ার্ড)। মালিক একবার সেট করেন; পরে শুধু ব্যবহারকারীই পাসওয়ার্ড বদলাতে পারেন।
 or_unlock_login	অথবা লগইন আইডি + পাসওয়ার্ড দিয়ে আনলক করুন
-permission_preset	অনুমতি প্রিসেট (কী অ্যাক্সেস)
+permission_preset	অনুমতি প্রিসেট
 preset_help_khaynjo	ক্যাশিয়ার: বিক্রি। ম্যানেজার: বিক্রি + আইটেম + বাতিল/সংশোধন।
 product_locked_khaynjo	Khaynjo
 product_only_khaynjo	এই অ্যাপ শুধু Khaynjo — রেস্তোরাঁর অপারেটিং সিস্টেম। অন্য ব্যবসার জন্য আলাদা Kumkaj পণ্য আছে।
@@ -961,10 +948,6 @@ pin_hint_paired	অতিরিক্ত টিল জোড়া লেগে�
 pin_hint_pair_first	অতিরিক্ত টিল — আগে দোকান ডিভাইসে জোড়া লাগান
 unlock_to_continue	চালিয়ে যেতে আনলক করুন
 no_staff_yet	এখনও কোনো কর্মী নেই — মালিক হিসেবে আনলক করুন, তারপর Team
-status_server_set_pin	সার্ভার মোড — মালিকের PIN সেট করুন
-status_server_tills	সার্ভার মোড — অতিরিক্ত টিল যোগ দিতে পারে। আনলক করুন
-status_server_unlock	সার্ভার মোড — মালিক হিসেবে আনলক করুন
-status_client_unlock	ক্লায়েন্ট মোড — বিক্রির জন্য আনলক করুন
 icon_new_selected	আইকন: নতুন ফাইল বেছে নেওয়া হয়েছে — ব্র্যান্ড সংরক্ষণ করুন চাপুন
 icon_custom	আইকন: আপনার দোকানের চিহ্ন
 icon_default	আইকন: Kumkaj চিহ্ন (ডিফল্ট) — নিজেরটি বেছে নিন
@@ -1033,7 +1016,7 @@ book_kind_balance	ব্যালেন্স শিট
 order_help	একটি খোলা অর্ডার বেছে নিন, অথবা টেবিল বেছে নতুন শুরু করুন। তৈরি আইটেমে ট্যাপ করুন, KOT পাঠান, এক বা একাধিক আইটেমের বিল করুন, বিল ভাগ করুন এবং পেমেন্ট মেটান।
 floor_help	প্রতিটি টেবিল দেখায় অতিথিরা বসে আছেন কিনা, তাদের খোলা বিল কী এবং কার পরবর্তী পরিবেশন দরকার।
 kitchen_help	প্রতি ভ্যারিয়েন্ট বা প্রতি আইটেমে তৈরি পরিমাণ ট্র্যাক করুন — KOT-তে যেভাবে চান রেকর্ড করুন।
-kitchen_empty	এখন কিছু খোলা নেই — নতুন অর্ডার এখানে দেখা যাবে।
+kitchen_empty	এখন কিছু খোলা নেই।
 add_a_table	টেবিল যোগ করুন
 add_station_heading	স্টেশন যোগ করুন · যেমন তন্দুর, সাউথ ইন্ডিয়ান
 categories_help	বিভাগ দেখায় একটি খাবার কোন মেনু অংশের — যেমন স্ন্যাকস, মেইন কোর্স বা বিরিয়ানি। বিভাগ নিজের মতো তৈরি করুন: আমাদের প্রস্তাবিত নাম বেছে নিন, নাম বদলান অথবা নিজের মতো যোগ করুন।
@@ -1131,7 +1114,6 @@ bill_format_help	প্রতিটি বিলে আপনার রেস্
 bill_header_ph	ঠিকানা | ফোন
 fssai_ph	FSSAI লাইসেন্স নং (ভারত)
 bill_footer_ph	ফুটার (যেমন ধন্যবাদ, আবার আসবেন)
-save_bill_format	বিল ফরম্যাট সংরক্ষণ
 reset_bill_format	ডিফল্টে ফিরুন
 bill_format_reset	বিল ফরম্যাট ডিফল্টে
 reset_kot_format	ডিফল্টে ফিরুন
@@ -1201,13 +1183,11 @@ kot_copies_3	3
 kot_title_ph	শিরোনাম (খালি = KOT - KITCHEN ORDER)
 kot_footer_ph	রান্নাঘর নোট (ঐচ্ছিক, দাম নেই)
 kot_preview	পূর্বরূপ
-save_kot_format	KOT বিন্যাস সংরক্ষণ
 test_kot_format	টেস্ট KOT
 test_kot_sent	রান্নাঘরের টিকিটের নমুনা পাঠানো হলো
 test_bill_format	টেস্ট বিল
 test_bill_sent	বিলের নমুনা পাঠানো হলো
 test_print_no_printer	ওই কাজের প্রিন্টার নেই — এই স্ক্রিনেই একটি বাছুন
-kot_format_saved	KOT বিন্যাস সংরক্ষিত
 std_print	বিল প্রিন্ট আকার
 std_print_help	স্ট্যান্ডার্ড পোর্ট্রেট ও ল্যান্ডস্কেপ বিল কাজের অক্ষরের আকার (থার্মাল KOT আলাদা)। দুই অভিমুখেই একই আকার।
 std_size_s	ছোট
@@ -1264,7 +1244,6 @@ new_items_head	এখনও পাঠানো হয়নি
 price_ph	দাম
 price_ph_gst_inside	দাম ({tax} সহ)
 cancel_needs_table	রান্নাঘরের পর বাতিল করতে এই অর্ডার ফ্লোর (টেবিল) থেকে খুলুন — কাউন্টার KOT পেমেন্ট পর্যন্ত টিকিটে থাকে
-tax_rates_missing_hint	এই খাবারে {tax} হার নেই — মেনুতে কর হার সেট করুন ({tax} inclusive-এ দামে আগে থেকে {tax} আছে)
 taxable_value	করযোগ্য মূল্য
 gst_inside_price_note	({tax} সহ)
 start_with_template	আমাদের মেনু টেমপ্লেট দিয়ে শুরু
@@ -1318,9 +1297,7 @@ order_empty_pick	অর্ডার খালি — পদ বাছতে উ�
 add_dishes	পদ যোগ করুন
 order_so_far	এই অর্ডারে: {n} · {total}
 no_dish_match	“{q}” মেলে এমন কোনো পদ নেই
-pick_dishes_help	পদ যোগ করতে চাপুন · তালিকা ছোট করতে বিভাগ বাছুন
 pick_done	হয়ে গেছে
-pick_done_dd	হয়ে গেছে · {label}
 printer_route_mode	এই জায়গায় কয়েকটি প্রিন্টার থাকলে
 printer_mode_first	যেটা আগে চলে
 printer_mode_all	সবগুলোতে ছাপুন
@@ -1368,3 +1345,22 @@ recent_changes	সাম্প্রতিক পরিবর্তন
 lane_declared_label	কর চালান
 lane_owner_label	ক্যাশ মেমো
 money_lane_bill	বিল: {lane}
+sel_copy	কপি করুন
+sel_select_all	সব নির্বাচন করুন
+sel_copied	কপি হয়েছে
+items_tmpl_khaynjo	Khaynjo আইটেম টেমপ্লেট
+items_tmpl_named	{name} টেমপ্লেট
+app_tmpl_named	{name} অ্যাপ টেমপ্লেট
+private_code_ph	১২-সংখ্যার কোড
+stamp_on	স্ট্যাম্প: ফাইলে
+pay_qr_on	পেমেন্ট QR: ফাইলে
+pay_qr_off	পেমেন্ট QR: নেই
+items_tmpl_heading	আইটেম টেমপ্লেট
+items_tmpl_help	আপনার মেনুর জন্য খাবার, বিভাগ ও ছবি। দোকানের সেটিংস ও কর্মীরা যেমন আছে তেমনই থাকে।
+public_tmpl_help	যে কেউ ডাউনলোড করতে পারে এমন শুরুর মেনু। একবার ইন্টারনেট লাগবে।
+private_tmpl_help	আপনার Khaynjo যোগাযোগের দেওয়া ১২-সংখ্যার কোড দিয়ে সুরক্ষিত গ্রাহক মেনু।
+printers_screen_tip	খুঁজুন এই ডিভাইস যে প্রিন্টারগুলো ব্যবহার করতে পারে তা দেখায় এবং এই দোকানের জন্য সেভ করে। বিল প্রিন্টার: বিল ও KOT ফরম্যাট → বিল। রান্নাঘর: রান্নাঘর → রান্নাঘর স্টেশন।
+printers_found_none	কোনো প্রিন্টার পাওয়া যায়নি।
+kot_copy_from	এখান থেকে কপি করুন
+kot_copy_from_help	সেই ধরনের প্রতিটি লাইনের আকার, পুরুত্ব ও সারিবিন্যাস এতে কপি করে। এই ধরন নিজের ব্যানার, আইটেম উপসর্গ ও কাটা দাগ রাখে। রাখতে KOT ফরম্যাট সংরক্ষণ করুন।
+nav_loading	লোড হচ্ছে…

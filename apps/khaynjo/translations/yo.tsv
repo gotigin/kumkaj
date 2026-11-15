@@ -41,7 +41,7 @@ remove	Yọ kuro
 removed_items	Awọn ohun akojọ aṣayan kuro
 removed_help	Pada sipo fi ohun akojọ aṣayan pada si ori akojọ aṣayan gangan bi o ti jẹ - idiyele, fọto ati ẹka. Selifu ti awọn awopọ ko yọkuro rara, nitorinaa satelaiti le tun ṣafikun nigbagbogbo.
 restore_item	Mu pada
-empty_catalog	Ko si awopọ sibẹsibẹ. Ṣii Akojọ aṣyn, ṣafikun satelaiti kan (orukọ + idiyele), lẹhinna gba aṣẹ kan.
+empty_catalog	Ko si awopọ sibẹsibẹ.
 total	Lapapọ
 cash	Owo owo
 upi	UPI
@@ -103,23 +103,14 @@ bill_item_qty	Iye
 bill_item_price	Iye owo
 bill_item_amount	Iye
 bill_item_note	Akọsilẹ satelaiti
-bill_item_col_gap	Aafo iwe
 bill_item_col_order	Ilana ọwọn
 bill_item_col_sep	Awọn ofin ọwọn
-bill_item_gap_tight	Din
-bill_item_gap_comfort	Itunu
-bill_item_gap_wide	Gbooro
-bill_item_num_width	Awọn ọwọn nọmba
-bill_item_num_compact	Iwapọ
-bill_item_num_comfort	Itunu
-bill_item_num_wide	Gbooro
-bill_item_num_align	Awọn nọmba ṣe deede
-bill_item_gap_em	Aafo (won)
-bill_item_qty_min	Iye min (won)
-bill_item_price_min	Iye owo iṣẹju (em)
-bill_item_amount_min	Iye min (em)
-kot_item_qty_width	ọwọn Qty
-kot_item_num_align	Qty deede
+slip_columns	Àwọn ọ̀wọ̀n
+slip_col_width	Fífẹ̀ (mm)
+slip_col_start	Àyè ìbẹ̀rẹ̀ (px)
+slip_col_end	Àyè ìparí (px)
+slip_col_align	Ìtòlẹ́sẹẹsẹ ọ̀rọ̀
+slip_columns_help	Fífẹ̀ ọ̀wọ̀n kọ̀ọ̀kan ní àyè ìbẹ̀rẹ̀ àti ìparí rẹ̀ nínú. Ọ̀rọ̀ máa ń ká sínú ọ̀wọ̀n rẹ̀; ohun tó bá kọjá fífẹ̀ àkóónú ni a ó gé, lórí ìwé àti nínú àwòtẹ́lẹ̀.
 bill_total_qty_label	Lapapọ qty aami
 bill_total_subtotal_label	Iha lapapọ aami
 bill_total_grand_label	Grand lapapọ aami
@@ -221,7 +212,6 @@ sidebar_order_saved	Ibere legbe ti o ti fipamọ
 sidebar_visibility_saved	Ti fipamọ hihan legbe
 amounts_hide	Tọju
 amounts_show	Fihan
-printers_none_hint	Ṣafipamọ itẹwe sori ẹrọ ni akọkọ, lẹhinna ṣafikun si Bill tabi ibi idana ounjẹ
 counter	Atako
 dine_in	Ounjẹ-inu
 takeaway	Gbigba kuro
@@ -328,8 +318,6 @@ selected_language	Ti yan
 continue	Tesiwaju
 this_device	ẸRỌ YI
 device_use_q	Bawo ni yoo ṣe lo ẹrọ yii?
-last_server_mode	Je Server — tẹ ni kia kia lati tẹsiwaju
-last_client_mode	Njẹ Onibara - tẹ ni kia kia lati tẹsiwaju
 choose_server	Yan olupin kan
 choose_server_hint	Ṣii olupin ti o wa tẹlẹ, tabi ṣẹda ọkan fun iṣowo miiran.
 create_new_server	Ṣẹda titun olupin
@@ -391,7 +379,7 @@ attachments_last_expense	Awọn asomọ (owo ti o kẹhin)
 bank	Banki
 bank_in	Bank sinu
 bank_out	Owo jade ti awọn ile ifowo pamo
-bank_reconciliation	Ilaja banki (fi ami si si alaye banki rẹ)
+bank_reconciliation	Ilaja banki
 bank_to_till	Banki → titi di
 book_add_dish	Ledger - ṣafikun satelaiti / ohun akojọ aṣayan
 book_opening_credit	Leja - ṣiṣi kirẹditi
@@ -744,7 +732,6 @@ station_print_pick_first	Yan ibudo idana ni akọkọ
 station_print_editing	Awọn atẹwe ṣiṣatunṣe fun “{name}”
 station_vps_dd	Awọn atẹwe fun ibudo yii
 station_vps_dd_n	{n} awọn atẹwe · tẹ ni kia kia lati yipada
-station_vps_empty	Ko si awọn atẹwe sibẹsibẹ - Wa wọn labẹ Eto → Awọn atẹwe
 bill_printers_dd	Awọn atẹwe fun owo
 bill_printers_dd_n	{n} awọn ẹrọ atẹwe fun owo naa · tẹ ni kia kia lati yipada
 job_layout	Ìfilélẹ
@@ -889,7 +876,7 @@ net_word	Apapọ
 offline_badge	Aisinipo
 optional_login_help	Iyan iwọle (id + ọrọ igbaniwọle). Eni tosaaju lẹẹkan; olumulo nikan le yi ọrọ igbaniwọle pada nigbamii.
 or_unlock_login	Tabi ṣii pẹlu wiwọle id + ọrọigbaniwọle
-permission_preset	Iṣẹ (ṣeto awọn iboju ati awọn iṣe owo)
+permission_preset	Iṣẹ
 preset_help_khaynjo	Owo owo: ta. Alakoso: ta + awọn ohun akojọ aṣayan + ofo / atunṣe.
 product_locked_khaynjo	Khaynjo
 product_only_khaynjo	Ohun elo yii jẹ Khaynjo nikan - ẹrọ iṣẹ ṣiṣe ounjẹ. Awọn oju-ọja iṣowo miiran gbe omi bi awọn ọja Kumkaj lọtọ.
@@ -961,10 +948,6 @@ pin_hint_paired	Afikun till so pọ - šii lati ta
 pin_hint_pair_first	Afikun till - bata si ẹrọ itaja ni akọkọ
 unlock_to_continue	Ṣii silẹ lati tẹsiwaju
 no_staff_yet	Ko si oṣiṣẹ sibẹsibẹ - ṣii bi Olohun, lẹhinna Ẹgbẹ
-status_server_set_pin	Ipo olupin - ṣeto Olohun PIN
-status_server_tills	Ipo olupin — afikun tills le darapo. Ṣii silẹ
-status_server_unlock	Ipo olupin – sii bi Olohun
-status_client_unlock	Ipo Onibara — ṣii silẹ lati ta
 icon_new_selected	Aami: faili titun ti a ti yan - tẹ Fipamọ ami iyasọtọ ni kia kia
 icon_custom	Aami: ami ibi isere aṣa
 icon_default	Aami: Kumkaj ami (aiyipada) - yan ọkan aṣa
@@ -1033,7 +1016,7 @@ book_kind_balance	Iwe iwontunwonsi
 order_help	Fọwọ ba ohun akojọ aṣayan kan lati fi kun.
 floor_help	Fọwọ ba tabili ounjẹ kan lati mu tabi yi aṣẹ pada. Awọn awọ ṣe afihan ọfẹ → joko → ibi idana → ṣetan → jijẹ → owo → isanwo. Akojọ idaduro, awọn ifiṣura, ati awọn tabili ounjẹ afikun wa ni awọn apakan ni isalẹ.
 kitchen_help	Tiketi ibi idana ounjẹ (KOT), tuntun kẹhin. Bẹrẹ → Ṣetan → Ti ṣee gbe tikẹti kan lọ. Tiketi ko fihan awọn idiyele.
-kitchen_empty	Ko si awọn tikẹti ṣiṣi. A KOT ti a firanṣẹ lati Bere fun tabi gbongan jijẹ fihan nibi.
+kitchen_empty	Ko si awọn tikẹti ṣiṣi.
 add_a_table	Fi tabili ounjẹ kun
 add_station_heading	Fi ibudo idana kun
 categories_help	Tẹ Lo lati ṣe faili ohun akojọ aṣayan loke labẹ ẹka naa. Fọto yoo fun ẹya ni aworan kan; laisi ọkan o fihan awọn ibẹrẹ rẹ.
@@ -1131,7 +1114,6 @@ bill_format_help	Ti tẹjade labẹ orukọ ile ounjẹ rẹ lori gbogbo owo. L�
 bill_header_ph	Adirẹsi | foonu
 fssai_ph	FSSAI iwe-ašẹ No. (India)
 bill_footer_ph	Ẹlẹsẹ (fun apẹẹrẹ, o ṣeun, ṣabẹwo lẹẹkansi)
-save_bill_format	Fi ọna kika owo pamọ
 reset_bill_format	Tunto si aiyipada
 bill_format_reset	Atunto kika Bill si aiyipada
 reset_kot_format	Tunto si aiyipada
@@ -1201,13 +1183,11 @@ kot_copies_3	3
 kot_title_ph	Akọle (òfo = KOT - IBERE idana)
 kot_footer_ph	Akọsilẹ ibi idana (aṣayan, ko si awọn idiyele)
 kot_preview	Awotẹlẹ
-save_kot_format	Fipamọ ọna kika KOT
 test_kot_format	Gbiyanju idanwo kan KOT
 test_kot_sent	Awotẹlẹ tikẹti idana ti firanṣẹ
 test_bill_format	Owo idanwo
 test_bill_sent	Bill awotẹlẹ rán
 test_print_no_printer	Ko si itẹwe fun iṣẹ yẹn — yan ọkan loju iboju yii
-kot_format_saved	KOT ọna kika ti a fipamọ
 std_print	Bill titẹ iwọn
 std_print_help	Iwọn Font fun Aworan Standard ati Awọn iṣẹ iwe-aṣẹ Ilẹ-ilẹ lori OS / awọn atẹwe iwe (tẹ awọn aaye sii - kii ṣe Kekere/Deede/Nla). Iwọn kanna lori awọn itọnisọna mejeeji. Awọn iwọn isokuso ibi idana wa lori taabu KOT.
 std_size_s	Kekere
@@ -1264,7 +1244,6 @@ new_items_head	Ko firanṣẹ sibẹsibẹ
 price_ph	Iye owo
 price_ph_gst_inside	Iye owo ({tax}pẹlu)
 cancel_needs_table	Ṣii aṣẹ yii lati iboju gbongan ile jijẹ (tabili ile ijeun) lati fagilee lẹhin ibi idana ounjẹ - counter KOTs duro lori tikẹti titi ti o fi gba owo sisan
-tax_rates_missing_hint	Ko si oṣuwọn {tax} lori awọn ounjẹ wọnyi - lori Iwọn owo-ori ṣeto Akojọ aṣyn (awọn idiyele ti wa tẹlẹ pẹlu {tax} labẹ {tax} ifisi)
 taxable_value	Iye owo-ori
 gst_inside_price_note	({tax} ifisi)
 start_with_template	Bẹrẹ pẹlu awoṣe akojọ aṣayan wa
@@ -1318,9 +1297,7 @@ order_empty_pick	Paṣẹ fun ofo - tẹ Fi awọn awopọ sii ni kia kia lati m
 add_dishes	Fi awọn ounjẹ kun
 order_so_far	Lori aṣẹ yii: {n} · {total}
 no_dish_match	Ko si satelaiti ibaamu “{q}”
-pick_dishes_help	Fọwọ ba satelaiti kan lati ṣafikun · mu ẹka kan lati dín atokọ naa
 pick_done	Ti ṣe
-pick_done_dd	Ti ṣe · {label}
 printer_route_mode	Ti o ba ti orisirisi awọn atẹwe lori ibi yi
 printer_mode_first	Akọkọ ti o ṣiṣẹ
 printer_mode_all	Tẹjade lori gbogbo
@@ -1368,3 +1345,22 @@ recent_changes	Awọn ayipada to ṣẹṣẹ
 lane_declared_label	risiti owo-ori
 lane_owner_label	Akọsilẹ owo
 money_lane_bill	Iwe owo: {lane}
+sel_copy	Daakọ
+sel_select_all	Yan gbogbo rẹ̀
+sel_copied	A ti daakọ
+items_tmpl_khaynjo	Àdàkọ ohun Khaynjo
+items_tmpl_named	Àdàkọ {name}
+app_tmpl_named	Àdàkọ áàpù {name}
+private_code_ph	Kóòdù oní-nọ́mbà 12
+stamp_on	Ontẹ: lori faili
+pay_qr_on	Isanwo QR: lori faili
+pay_qr_off	Isanwo QR: ko si
+items_tmpl_heading	Àwọn àdàkọ ohun kan
+items_tmpl_help	Oúnjẹ, ẹ̀ka àti àwòrán fún mẹ́nù rẹ. Ètò ṣọ́ọ̀bù àti òṣìṣẹ́ máa wà bí wọ́n ṣe wà.
+public_tmpl_help	Mẹ́nù ìbẹ̀rẹ̀ tí ẹnikẹ́ni lè gbà sílẹ̀. Ó nílò íńtánẹ́ẹ̀tì lẹ́ẹ̀kan.
+private_tmpl_help	Mẹ́nù oníbàárà tí a tì pa pẹ̀lú kóòdù oní-nọ́ńbà 12 láti ọ̀dọ̀ alábàáṣepọ̀ Khaynjo rẹ.
+printers_screen_tip	Wá máa ń fi àwọn ẹ̀rọ ìtẹ̀wé tí ẹ̀rọ yìí lè lò hàn, ó sì ń fi wọ́n pamọ́ fún ṣọ́ọ̀bù yìí. Ẹ̀rọ ìtẹ̀wé owó: Ìrísí owó àti KOT → Owó. Ilé ìdáná: Ilé ìdáná → Àwọn ibùdó ilé ìdáná.
+printers_found_none	A kò rí ẹ̀rọ ìtẹ̀wé kankan.
+kot_copy_from	Daakọ lati
+kot_copy_from_help	O n daakọ iwọn, ìwúwo ati títò ìlà kọọkan lati iru yẹn sí èyí. Iru yìí ń pa àsíá rẹ̀, ìbẹ̀rẹ̀ ohun àti ìlà ìparẹ́ rẹ̀ mọ́. Fi ọna KOT pamọ́ láti pa á mọ́.
+nav_loading	Ń gbé e wọlé…

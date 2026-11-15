@@ -2,6 +2,40 @@
 mod ux_rules_tests {
     use super::*;
 
+    /// No explanations in the layout (owner, 2026-11-13 and again 2026-11-14:
+    /// "use the toolbar ℹ … avoid clustering texts"). A label's literal text
+    /// is a title, a value or a short state — never a paragraph or an
+    /// instruction; those go in the heading's InfoHelp `tip:`. 60+ characters
+    /// in a WrapLabel / Label body fails here; DESIGN.md "Explanations live
+    /// in ℹ" has the rule, `scripts/ui-text-inventory.sh` the visible check.
+    #[test]
+    fn layout_labels_carry_no_explanations() {
+        const LONGEST: usize = 60;
+        let ui = include_str!("../ui_script.rs");
+        let mut long = Vec::new();
+        let mut rest = ui;
+        while let Some(i) = rest.find(" := ") {
+            let after = &rest[i + 4..];
+            let is_label = after.starts_with("WrapLabel{") || after.starts_with("Label{");
+            let id_start = rest[..i].rfind(char::is_whitespace).map_or(0, |j| j + 1);
+            let id = &rest[id_start..i];
+            if is_label {
+                let block = &after[..after.find("\n}").or_else(|| after.find('}')).unwrap_or(after.len())];
+                for key in ["body: \"", "text: \""] {
+                    if let Some(k) = block.find(key) {
+                        let lit = &block[k + key.len()..];
+                        let end = lit.find('"').unwrap_or(lit.len());
+                        if lit[..end].chars().count() >= LONGEST {
+                            long.push(format!("{id}: {}", &lit[..end]));
+                        }
+                    }
+                }
+            }
+            rest = &rest[i + 4..];
+        }
+        assert!(long.is_empty(), "inline explanations (make them ℹ tips): {long:#?}");
+    }
+
     fn part(method: PayMethod, amount: &str) -> PayPart {
         PayPart { method, amount: amount.into() }
     }
@@ -270,15 +304,91 @@ mod ux_rules_tests {
         );
     }
 
-    /// Empty states name screens the way the rail does (Order, Menu) — no
-    /// "Ordering screen" or "Menu & items" a waiter cannot find.
+    /// Empty states are a short fact (owner, 2026-11-14): no instructions —
+    /// the ℹ explains and the button beside it acts — and never a screen
+    /// name a waiter cannot find on the rail ("Ordering screen", "Menu &
+    /// items").
     #[test]
     fn empty_states_name_the_rail_screens() {
-        let kitchen = locale::t("en", "kitchen_empty");
-        assert!(kitchen.contains("Order") && !kitchen.contains("Ordering"), "{kitchen}");
-        let menu = locale::t("en", "empty_catalog");
-        assert!(menu.contains("Open Menu,") && !menu.contains("Menu & items"), "{menu}");
+        for key in ["kitchen_empty", "empty_catalog"] {
+            let text = locale::t("en", key);
+            assert!(!text.contains("Ordering") && !text.contains("Menu & items"), "{text}");
+            assert!(
+                !text.contains("Open ") && !text.contains("Tap ") && !text.contains(" then ") && text.chars().count() <= 40,
+                "instructions in an empty state: {text}"
+            );
+        }
         assert_eq!(locale::t("en", "nav_items"), "Menu");
         assert_eq!(locale::t("en", "sell"), "Order");
+    }
+
+    /// Settings → Areas · stations · tax rates shows names, never ids, and
+    /// every row keeps its toggle target (keys line up index for index).
+    #[test]
+    fn sibling_pickers_show_names_and_keep_their_targets() {
+        let path = std::env::temp_dir().join(format!("khaynjo-pickers-{}.sqlite3", new_id()));
+        let store = Store::open_path(&path).unwrap();
+        store.add_station("Tandoor").unwrap();
+        let rows = sibling_pickers_rows(&store, |k| locale::t("en", k));
+        let keys = sibling_picker_keys(&store);
+        assert_eq!(rows.len(), keys.len());
+        for (row, key) in rows.iter().zip(&keys) {
+            match (row, key) {
+                (ReportRow::Head(_), None) => {}
+                (ReportRow::Kv(name, _), Some(key)) => {
+                    assert!(!name.contains(':'), "id leaked into the row: {name}");
+                    assert!(
+                        key.starts_with("area:") || key.starts_with("station:") || key.starts_with("tax:"),
+                        "{key}"
+                    );
+                }
+                _ => panic!("row / key mismatch"),
+            }
+        }
+        assert!(rows.iter().any(|r| matches!(r, ReportRow::Kv(n, _) if n == "Tandoor")));
+        drop(store);
+        let _ = std::fs::remove_file(path);
+    }
+
+    /// Report lists whose rows are tapped (match_event: `ids!(row)` finger_up)
+    /// must be `tappable` — the row View hears the finger only with a cursor;
+    /// these taps were dead before (same class as the KotCard card tap).
+    #[test]
+    fn tapped_report_lists_are_tappable() {
+        let ui = include_str!("../ui_script.rs");
+        for id in ["sibling_pickers_label", "units_label"] {
+            let decl = ui
+                .split(&format!("{id} := mod.widgets.ReportText{{"))
+                .nth(1)
+                .and_then(|s| s.split('}').next())
+                .unwrap_or("");
+            assert!(decl.contains("tappable: true"), "{id} rows are tapped — set tappable: true");
+        }
+    }
+
+    /// Settings → Printers is Find + the saved printers, nothing else (owner,
+    /// 2026-11-13): no per-printer send-method chips, no test-page picker or
+    /// button, no "(none yet — tap Find)" placeholder, no idle "Tap Find…" line.
+    #[test]
+    fn printers_screen_is_find_and_the_list_only() {
+        let ui = include_str!("../ui_script.rs");
+        for decl in [
+            "printers_delivery_list := mod.widgets.PrinterDeliveryList{visible: false}",
+            "printers_test_dd := StackSecondaryBtn{text: \"Printers for a test page\" flow: Down visible: false}",
+            "printers_pool_label := mod.widgets.ReportText{visible: false}",
+        ] {
+            assert!(ui.contains(decl), "missing: {decl}");
+        }
+        let test_btn = ui
+            .split("print_test_btn := ")
+            .next()
+            .and_then(|s| s.rsplit("ActionStack{").next())
+            .unwrap_or("");
+        assert!(test_btn.contains("visible: false"), "Print a test page must stay hidden");
+        let paint = include_str!("../app/impl_03.rs");
+        assert!(paint.contains("ids!(printers_test_dd)).set_visible(cx, false)"));
+        assert!(paint.contains("ids!(print_test_btn)).set_visible(cx, false)"));
+        let empty = print_share::DevicePrinters::default();
+        assert!(printers_pool_rows(&empty, None, |k| locale::t("en", k)).is_empty());
     }
 }

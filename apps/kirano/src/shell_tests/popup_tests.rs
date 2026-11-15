@@ -71,21 +71,16 @@ mod popup_tests {
         assert!(!popup_anchor_on_page(rect(0.0, 300.0, 0.0, 0.0), page));
     }
 
-    /// Lists that a dropdown button opens never open from a field tap, and
-    /// only the Team checklist survives an outside press.
+    /// Lists that a dropdown button opens never open from a field tap.
     #[test]
     fn chrome_opened_lists_are_marked() {
         for f in SuggestField::ALL {
-            if f.opener().is_some() {
-                assert!(f.opens_by_chrome(), "{f:?}");
+            assert_eq!(f.opens_by_chrome(), f.opener().is_some(), "{f:?}");
+            if f.opens_by_chrome() {
+                assert!(!OpenList::tap_targets().any(|l| l == OpenList::Suggest(f)), "{f:?}");
             }
-            assert_eq!(f.stays_open(), f == SuggestField::TeamKotStations);
         }
-        assert!(SuggestField::TeamKotStations.opens_by_chrome());
-        assert!(SuggestField::FloorColumns.opens_by_chrome());
-        assert!(SuggestField::FloorColumns.opens_unfiltered());
-        assert!(!OpenList::tap_targets().any(|l| l == OpenList::Suggest(SuggestField::FloorColumns)));
-        assert!(!OpenList::tap_targets().any(|l| l == OpenList::Suggest(SuggestField::KotStation)));
+        assert!(SuggestField::PrinterPlace.opens_by_chrome());
         assert!(OpenList::tap_targets().any(|l| l == OpenList::DishPicker));
     }
 }

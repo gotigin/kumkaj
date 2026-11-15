@@ -39,7 +39,7 @@ adding_item	Додавање нове стопе
 editing_item	Уређивање
 save	Сачувај
 remove	Уклони
-empty_catalog	Још нема тарифа. Отворите Цене и услуге, додајте један (име + цена, јединица кг), а затим Резервација.
+empty_catalog	Још нема тарифа.
 counter_sale	Резервација на шалтеру
 total	Укупно
 cash	Цасх
@@ -171,8 +171,6 @@ selected_language	Изабрано
 continue	Настави
 this_device	ОВАЈ УРЕЂАЈ
 device_use_q	Како ће се овај уређај користити?
-last_server_mode	Вас Сервер — додирните за наставак
-last_client_mode	Био је клијент — додирните да бисте наставили
 choose_server	Изаберите сервер
 choose_server_hint	Отворите постојећи сервер или га креирајте за неко друго предузеће.
 create_new_server	Креирајте нови сервер
@@ -501,8 +499,6 @@ job_layout	Лаиоут
 job_delivery	Како се посао шаље
 job_size	Величина фонта
 job_size_ph	нпр. 18, 20, 26…
-save_receipt_format	Сачувајте формат признанице
-save_label_format	Сачувајте формат етикете
 test_receipt_format	Пробни пријем
 test_label_format	Тест лабел
 test_receipt_sent	Узорак признанице је послат
@@ -610,7 +606,7 @@ units_heading	Јединице
 booking_measures	Мере резервације
 drawer_count	Број фиока (опционо)
 spreadsheet_csv	Табела (CSV)
-bank_reconciliation	Банковно помирење (означите на изводу из банке)
+bank_reconciliation	Банковно помирење
 book_add_product	Резервишите — додајте производ / цену
 book_opening_credit	Главна књига — почетни кредит
 account_kind	Врста налога (додирните један)
@@ -650,7 +646,7 @@ net_word	Нет
 offline_badge	ВАН МРЕЖЕ
 optional_login_help	Опционо пријављивање (ид + лозинка). Власник поставља једном; само корисник може касније да промени лозинку.
 or_unlock_login	Или откључајте помоћу ИД-а за пријаву + лозинке
-permission_preset	Посао (подешава екране и права)
+permission_preset	Посао
 preset_help_moklanjo	Благајник: продам. Менаџер: продати + ставке менија + поништити/изменити.
 product_locked_moklanjo	Моклањо
 product_only_moklanjo	Ова апликација је само Моклањо — књиге + пулт за резервације. Остала трговинска лица се касније испоручују као засебни производи.
@@ -698,10 +694,6 @@ pin_hint_paired	Екстра до упаривања — откључајте з
 pin_hint_pair_first	Екстра до — прво упарите са уређајем продавнице
 unlock_to_continue	Откључајте да бисте наставили
 no_staff_yet	Још нема особља — откључајте као Власник, а затим Тим
-status_server_set_pin	Режим сервера — поставите власника PIN
-status_server_tills	Режим сервера — могу се придружити додатне касе. Откључај
-status_server_unlock	Режим сервера — откључајте као власник
-status_client_unlock	Режим клијента — откључајте за продају
 icon_new_selected	Икона: изабрана нова датотека — додирните Сачувај бренд
 icon_custom	Икона: прилагођена ознака места
 icon_default	Икона: Kumkaj ознака (подразумевано) — изаберите прилагођену
@@ -834,3 +826,7 @@ role_help_supplier	Улога: Добављач — АП за куповину.
 lane_declared_label	Резервација рачуна
 lane_owner_label	Резервација готовине
 money_lane_bill	Рачун: {lane}
+sel_copy	Копирај
+sel_select_all	Изабери све
+sel_copied	Копирано
+nav_loading	Учитавање…

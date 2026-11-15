@@ -39,7 +39,7 @@ adding_item	Bætir við nýju gengi
 editing_item	Klippingu
 save	Vista
 remove	Fjarlægja
-empty_catalog	Engir taxtar ennþá. Opnaðu Verð og þjónustu, bættu við einu (nafn + verð, eining kg), síðan Bókun.
+empty_catalog	Engir taxtar ennþá.
 counter_sale	Afgreiðslubókun
 total	Samtals
 cash	Reiðufé
@@ -171,8 +171,6 @@ selected_language	Valið
 continue	Halda áfram
 this_device	ÞETTA TÆKI
 device_use_q	Hvernig verður þetta tæki notað?
-last_server_mode	Var þjónn — pikkaðu á til að halda áfram
-last_client_mode	Var viðskiptavinur — bankaðu á til að halda áfram
 choose_server	Veldu netþjón
 choose_server_hint	Opnaðu núverandi netþjón eða búðu til einn fyrir annað fyrirtæki.
 create_new_server	Búðu til nýjan netþjón
@@ -501,8 +499,6 @@ job_layout	Skipulag
 job_delivery	Hvernig starfið er sent
 job_size	Leturstærð
 job_size_ph	t.d. 18, 20, 26...
-save_receipt_format	Vista kvittunarsnið
-save_label_format	Vista merkimiðasnið
 test_receipt_format	Prófkvittun
 test_label_format	Prófunarmerki
 test_receipt_sent	Dæmi um kvittun send
@@ -610,7 +606,7 @@ units_heading	Einingar
 booking_measures	Bókunarráðstafanir
 drawer_count	Skúffufjöldi (valfrjálst)
 spreadsheet_csv	Töflureiknir (CSV)
-bank_reconciliation	Bankaafstemming (merktu við við bankayfirlitið þitt)
+bank_reconciliation	Bankaafstemming
 book_add_product	Bóka — bæta við vöru / verð
 book_opening_credit	Fjárhagsbók — upphafsinneign
 account_kind	Reikningstegund (smelltu á einn)
@@ -650,7 +646,7 @@ net_word	Nettó
 offline_badge	ÓTENGT
 optional_login_help	Valfrjáls innskráning (auðkenni + lykilorð). Eigandi setur einu sinni; aðeins notandinn getur breytt lykilorðinu síðar.
 or_unlock_login	Eða opnaðu með innskráningarauðkenni + lykilorði
-permission_preset	Starf (stillir skjái og réttindi)
+permission_preset	Starf
 preset_help_moklanjo	Gjaldkeri: selja. Framkvæmdastjóri: selja + matseðill + ógilda / breyta.
 product_locked_moklanjo	Moklanjo
 product_only_moklanjo	Þetta app er eingöngu Moklanjo - bækur + bókunarskrifborð. Önnur viðskipti eru send sem aðskildar vörur síðar.
@@ -698,10 +694,6 @@ pin_hint_paired	Auka þar til parað - opnaðu til að selja
 pin_hint_pair_first	Auka til — para fyrst við búðartækið
 unlock_to_continue	Opnaðu til að halda áfram
 no_staff_yet	Ekkert starfsfólk ennþá - opnaðu sem eigandi, síðan teymi
-status_server_set_pin	Server Mode - stilltu eiganda PIN
-status_server_tills	Server Mode - auka kassar geta tekið þátt. Opnaðu
-status_server_unlock	Server Mode - opnaðu sem eigandi
-status_client_unlock	Viðskiptavinastilling - opnaðu til að selja
 icon_new_selected	Tákn: ný skrá valin — pikkaðu á Vista vörumerki
 icon_custom	Tákn: sérsniðið vettvangsmerki
 icon_default	Tákn: Kumkaj merki (sjálfgefið) — veldu sérsniðið
@@ -834,3 +826,7 @@ role_help_supplier	Hlutverk: Birgir - AP fyrir innkaup.
 lane_declared_label	Bókun reiknings
 lane_owner_label	Bókun í reiðufé
 money_lane_bill	Reikningur: {lane}
+sel_copy	Afrita
+sel_select_all	Velja allt
+sel_copied	Afritað
+nav_loading	Hleður…

@@ -9,6 +9,10 @@ struct ProductList {
     /// When set (Add dishes horizontal pages), draw this tab instead of `menu_category`.
     #[rust]
     page_category: Option<String>,
+    /// This grid's page in the Add dishes pager. Pages away from the window
+    /// keep their room but draw nothing (`menu_pick_page_near`).
+    #[rust]
+    pager_page: Option<usize>,
 }
 
 #[derive(Script, ScriptHook, Widget)]
@@ -17,6 +21,47 @@ struct MenuPickPager {
     view: View,
     #[rust]
     last_scroll_x: f64,
+    /// A press on the dish pages, until it is a swipe, a scroll or a tap.
+    #[rust]
+    swipe: Option<PagerSwipe>,
+}
+
+/// One press on the dish pages. The dish list takes the press for its own
+/// up/down scroll, so the pager reads the raw pointer: once the travel is
+/// sideways it moves the strip with the finger / mouse, and the release
+/// lands on the next or previous category (owner, 2026-11-15).
+#[derive(Clone, Copy, Debug)]
+struct PagerSwipe {
+    start: DVec2,
+    start_time: f64,
+    start_x: f64,
+    /// `None` until the press travelled `PAGER_SWIPE_DECIDE`; then sideways
+    /// (`true`, the pager's) or up/down (`false`, the list's).
+    sideways: Option<bool>,
+}
+
+/// Travel before a press counts as a swipe (under the 24 px tap travel, so
+/// a short sideways swipe is never also a dish tap).
+const PAGER_SWIPE_DECIDE: f64 = 12.0;
+/// Release past this share of a page, or a flick, turns the page.
+const PAGER_SWIPE_TURN_SHARE: f64 = 0.2;
+const PAGER_FLICK_PX: f64 = 30.0;
+const PAGER_FLICK_SPEED: f64 = 400.0;
+
+/// Page a swipe lands on: the next / previous one when the release went far
+/// enough or flicked, else back to where it started.
+fn pager_swipe_target(start_page: usize, dx: f64, secs: f64, page_w: f64, pages: usize) -> usize {
+    let speed = if secs > 0.0 { dx.abs() / secs } else { 0.0 };
+    let turn = dx.abs() >= page_w * PAGER_SWIPE_TURN_SHARE
+        || (dx.abs() >= PAGER_FLICK_PX && speed >= PAGER_FLICK_SPEED);
+    let last = pages.saturating_sub(1);
+    if !turn {
+        start_page.min(last)
+    } else if dx < 0.0 {
+        (start_page + 1).min(last)
+    } else {
+        start_page.saturating_sub(1)
+    }
 }
 
 /// How much of each dish the open order already has (milli-units), for the
@@ -32,6 +77,16 @@ fn cart_qty_by_product(lines: &[domain::CartLine]) -> std::collections::HashMap<
 
 impl Widget for ProductList {
     fn draw_walk(&mut self, cx: &mut Cx2d, scope: &mut Scope, walk: Walk) -> DrawStep {
+        // Away from the window: keep the page's room, draw nothing.
+        if let Some(page) = self.pager_page {
+            let page_w = *menu_pick_viewport_w().lock().unwrap();
+            let x = *menu_pick_scroll_now().lock().unwrap();
+            if !menu_pick_page_near(page, x, page_w) {
+                cx.walk_turtle(walk);
+                return DrawStep::done();
+            }
+        }
+        let _span = stall_span("dish_grid_draw");
         let (products, area, currency, fiscal, lang, in_cart, rev) = {
             let st = app_state().lock().unwrap();
             let cat = self
@@ -146,6 +201,90 @@ impl Widget for ProductList {
 }
 
 impl MenuPickPager {
+    /// Swipe the dish pages sideways with a finger or a mouse press-drag
+    /// (owner, 2026-11-15): the strip follows the pointer; the release turns
+    /// to the next / previous category or springs back, and the category
+    /// tab follows. Returns true for a sideways move it took.
+    fn pager_swipe(&mut self, cx: &mut Cx, scroll: &ViewRef, event: &Event) -> bool {
+        use std::sync::atomic::Ordering::Relaxed;
+        let Some(pointer) = popup_pointer(event) else {
+            return false;
+        };
+        let pages = self.page_count();
+        match pointer {
+            PopupPointer::Press { abs, time } => {
+                MENU_PICK_SWIPE_TOOK_PRESS.store(false, Relaxed);
+                MENU_PICK_SWIPE_HELD.store(false, Relaxed);
+                let on_pages = scroll.area().rect(cx).contains(abs);
+                self.swipe = (pages > 1 && on_pages && !menu_pick_scroll_programmatic()).then(|| {
+                    PagerSwipe {
+                        start: abs,
+                        start_time: time,
+                        start_x: scroll.get_scroll_pos().x,
+                        sideways: None,
+                    }
+                });
+                false
+            }
+            PopupPointer::Move { abs } => {
+                let Some(swipe) = self.swipe.as_mut() else {
+                    return false;
+                };
+                let d = abs - swipe.start;
+                if swipe.sideways.is_none() {
+                    if d.length() < PAGER_SWIPE_DECIDE {
+                        return false;
+                    }
+                    let sideways = d.x.abs() > d.y.abs();
+                    swipe.sideways = Some(sideways);
+                    if sideways {
+                        MENU_PICK_SWIPE_HELD.store(true, Relaxed);
+                        MENU_PICK_SWIPE_TOOK_PRESS.store(true, Relaxed);
+                    }
+                }
+                if swipe.sideways != Some(true) {
+                    return false;
+                }
+                let page_w = *menu_pick_viewport_w().lock().unwrap();
+                let max_x = (page_w * pages.saturating_sub(1) as f64).max(0.0);
+                let x = (swipe.start_x - d.x).clamp(0.0, max_x);
+                scroll.set_scroll_pos(cx, dvec2(x, 0.0));
+                *menu_pick_scroll_now().lock().unwrap() = x;
+                self.view.redraw(cx);
+                true
+            }
+            PopupPointer::Release { abs, time } => {
+                let Some(swipe) = self.swipe.take() else {
+                    return false;
+                };
+                if swipe.sideways == Some(true) {
+                    let page_w = *menu_pick_viewport_w().lock().unwrap();
+                    if page_w > 8.0 {
+                        let start_page = (swipe.start_x / page_w).round() as usize;
+                        let target = pager_swipe_target(
+                            start_page,
+                            abs.x - swipe.start.x,
+                            time - swipe.start_time,
+                            page_w,
+                            pages,
+                        );
+                        let x = target as f64 * page_w;
+                        scroll.set_scroll_pos(cx, dvec2(x, 0.0));
+                        *menu_pick_scroll_now().lock().unwrap() = x;
+                        self.last_scroll_x = x;
+                        queue_menu_pick_tab_from_scroll(target);
+                    }
+                    MENU_PICK_SWIPE_HELD.store(false, Relaxed);
+                    self.view.redraw(cx);
+                }
+                // The list and the card under the press still see the
+                // release (their drag ends; the card's tap is refused by
+                // `menu_pick_swipe_took_press`).
+                false
+            }
+        }
+    }
+
     fn page_count(&self) -> usize {
         let st = app_state().lock().unwrap();
         if !st.menu_filter.trim().is_empty() {
@@ -199,11 +338,10 @@ impl Widget for MenuPickPager {
         }
         let scroll = self.view.view(cx, ids!(pick_scroll));
         let strip = scroll.view(cx, ids!(pick_strip));
-        if searching {
-            scroll.set_visible(cx, false);
-        } else {
-            scroll.set_visible(cx, n > 1);
-        }
+        // The grids live inside the scroll: hiding it while searching hid
+        // the one results page too, so no dish ever matched (regression
+        // 33e663d, owner 2026-11-14). Searching = one page, no paging.
+        scroll.set_visible(cx, true);
         if let Some(mut strip_v) = strip.borrow_mut() {
             strip_v.walk.width = Size::Fixed(vp_w * n as f64);
         }
@@ -213,6 +351,7 @@ impl Widget for MenuPickPager {
             grid.set_visible(cx, show);
             if let Some(mut pl) = grid.borrow_mut::<ProductList>() {
                 pl.walk.width = Size::Fixed(vp_w.max(1.0));
+                pl.pager_page = Some(i);
                 let key = keys.get(i).cloned().flatten();
                 pl.page_category = if searching {
                     None
@@ -229,11 +368,16 @@ impl Widget for MenuPickPager {
             let cur = scroll.get_scroll_pos().x;
             if (cur - want_x).abs() > 1.0
                 && menu_pick_scroll_anim().lock().unwrap().is_none()
+                && !menu_pick_swipe_held()
+                // A swipe's release queued its page: the category follows
+                // on the next frame — do not pull the strip back first.
+                && pending_menu_pick_tab().lock().unwrap().is_none()
             {
                 scroll.set_scroll_pos(cx, dvec2(want_x, 0.0));
                 self.last_scroll_x = want_x;
             }
         }
+        *menu_pick_scroll_now().lock().unwrap() = scroll.get_scroll_pos().x;
         while let Some(step) = self.view.draw_walk(cx, scope, walk).step() {
             let _ = step;
         }
@@ -242,6 +386,11 @@ impl Widget for MenuPickPager {
 
     fn handle_event(&mut self, cx: &mut Cx, event: &Event, scope: &mut Scope) {
         let scroll = self.view.view(cx, ids!(pick_scroll));
+        // A sideways move of a held swipe is the pager's alone: the list
+        // under it must not scroll up/down with the finger's wobble.
+        if self.pager_swipe(cx, &scroll, event) {
+            return;
+        }
         let before = scroll.get_scroll_pos().x;
         self.view.handle_event(cx, event, scope);
         let after = scroll.get_scroll_pos().x;
@@ -937,5 +1086,40 @@ impl Widget for FloorLayoutList {
             return;
         }
         self.view.handle_event(cx, event, scope);
+    }
+}
+
+#[cfg(test)]
+mod menu_pick_pager_tests {
+    use super::*;
+
+    /// Owner, 2026-11-15: a sideways swipe on the dishes turns the category
+    /// page (and its tab) like the tabs do; a short one springs back.
+    #[test]
+    fn a_swipe_turns_one_page_or_springs_back() {
+        let w = 700.0;
+        // Far enough left → next page; right → previous page.
+        assert_eq!(pager_swipe_target(3, -200.0, 0.5, w, 10), 4);
+        assert_eq!(pager_swipe_target(3, 200.0, 0.5, w, 10), 2);
+        // A short slow drag springs back; a short quick flick turns.
+        assert_eq!(pager_swipe_target(3, -60.0, 0.6, w, 10), 3);
+        assert_eq!(pager_swipe_target(3, -60.0, 0.1, w, 10), 4);
+        // Never past the first or the last page.
+        assert_eq!(pager_swipe_target(0, 300.0, 0.2, w, 10), 0);
+        assert_eq!(pager_swipe_target(9, -300.0, 0.2, w, 10), 9);
+    }
+
+    /// Only the page in the window and its neighbours draw — drawing every
+    /// category page made each dish tap redraw ~200 tiles.
+    #[test]
+    fn only_pages_near_the_window_draw() {
+        let w = 700.0;
+        let near = |x: f64| (0..27).filter(|&p| menu_pick_page_near(p, x, w)).collect::<Vec<_>>();
+        assert_eq!(near(0.0), vec![0, 1]);
+        assert_eq!(near(5.0 * w), vec![4, 5, 6]);
+        // Mid-swipe between 5 and 6: both, plus one each side.
+        assert_eq!(near(5.5 * w), vec![4, 5, 6, 7]);
+        // No width yet (first frame): draw everything rather than nothing.
+        assert!(menu_pick_page_near(20, 0.0, 0.0));
     }
 }

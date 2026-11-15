@@ -41,7 +41,7 @@ remove	Удалить
 removed_items	Удалённые позиции
 removed_help	Восстановить вернёт позицию в меню точно такой, как была — цена, фото и категория. Наша полка блюд не удаляется, поэтому блюдо всегда можно добавить снова.
 restore_item	Восстановить
-empty_catalog	Позиций пока нет. Откройте Меню и позиции, добавьте одну (имя + цена), затем примите заказ.
+empty_catalog	Позиций пока нет.
 total	Итого
 cash	Наличные
 upi	UPI
@@ -103,23 +103,14 @@ bill_item_qty	Кол-во
 bill_item_price	Цена
 bill_item_amount	Сумма
 bill_item_note	Заметка
-bill_item_col_gap	Зазор столбцов
 bill_item_col_order	Порядок столбцов
 bill_item_col_sep	Линии столбцов
-bill_item_gap_tight	Плотно
-bill_item_gap_comfort	Удобно
-bill_item_gap_wide	Широко
-bill_item_num_width	Числовые столбцы
-bill_item_num_compact	Компактно
-bill_item_num_comfort	Удобно
-bill_item_num_wide	Широко
-bill_item_num_align	Выравнивание чисел
-bill_item_gap_em	Зазор (em)
-bill_item_qty_min	Мин. кол-во (em)
-bill_item_price_min	Мин. цена (em)
-bill_item_amount_min	Мин. сумма (em)
-kot_item_qty_width	Столбец кол-ва
-kot_item_num_align	Выравнивание кол-ва
+slip_columns	Столбцы
+slip_col_width	Ширина (mm)
+slip_col_start	Отступ в начале (px)
+slip_col_end	Отступ в конце (px)
+slip_col_align	Выравнивание текста
+slip_columns_help	Ширина каждого столбца включает его отступы в начале и в конце. Текст переносится внутри своего столбца; всё, что выходит за ширину содержимого, обрезается — на бумаге и в предпросмотре.
 bill_total_qty_label	Подпись итога кол-ва
 bill_total_subtotal_label	Подпись подытога
 bill_total_grand_label	Подпись итога
@@ -221,7 +212,6 @@ sidebar_order_saved	Заказ в боковой панели сохранён
 sidebar_visibility_saved	Видимость боковой панели сохранена
 amounts_hide	Скрыть
 amounts_show	Показать
-printers_none_hint	Сначала сохраните принтер на этом устройстве, затем добавьте его в чек или кухню
 counter	Стойка
 dine_in	В зале
 takeaway	С собой
@@ -328,8 +318,6 @@ selected_language	Выбрано
 continue	Продолжить
 this_device	ЭТО УСТРОЙСТВО
 device_use_q	Как будет использоваться это устройство?
-last_server_mode	Был сервером — нажмите, чтобы продолжить
-last_client_mode	Был клиентом — нажмите, чтобы продолжить
 choose_server	Выбрать сервер
 choose_server_hint	На этом устройстве уже есть серверы. Откройте один или создайте новый для другого бизнеса.
 create_new_server	Создать новый сервер
@@ -391,7 +379,7 @@ attachments_last_expense	Вложения (последний расход)
 bank	Банк
 bank_in	Внести в банк
 bank_out	Снять из банка
-bank_reconciliation	Банковская сверка (отмечать по выписке)
+bank_reconciliation	Банковская сверка
 bank_to_till	Банк → касса
 book_add_dish	Заказ — добавить блюдо / позицию
 book_opening_credit	Отправка — начальный кредит
@@ -744,7 +732,6 @@ station_print_pick_first	Сначала выберите кухонную ста
 station_print_editing	Правка принтеров «{name}»
 station_vps_dd	Принтеры этой станции
 station_vps_dd_n	{n} принтер(ов) · нажмите, чтобы изменить
-station_vps_empty	Пока нет принтеров — найдите их в Настройки → Принтеры
 bill_printers_dd	Принтеры для чека
 bill_printers_dd_n	{n} принтер(ов) для чека · коснитесь, чтобы изменить
 job_layout	Макет
@@ -889,7 +876,7 @@ net_word	Нетто
 offline_badge	ОФЛАЙН
 optional_login_help	Необязательный вход (ID + пароль). Владелец задаёт один раз; позже только сам пользователь может менять пароль.
 or_unlock_login	Или разблокировать по ID входа + паролю
-permission_preset	Набор прав (к чему доступ)
+permission_preset	Набор прав
 preset_help_khaynjo	Кассир: продажа. Менеджер: продажа + позиции + аннуляция/правка.
 product_locked_khaynjo	Khaynjo
 product_only_khaynjo	Это приложение — только Khaynjo, система для ресторанов. Для других отраслей есть отдельные продукты Kumkaj.
@@ -961,10 +948,6 @@ pin_hint_paired	Дополнительная касса подключена —
 pin_hint_pair_first	Дополнительная касса — сначала подключиться к устройству магазина
 unlock_to_continue	Разблокировать, чтобы продолжить
 no_staff_yet	Персонала пока нет — разблокировать как Владелец, затем Команда
-status_server_set_pin	Режим сервера — задать PIN владельца
-status_server_tills	Режим сервера — дополнительные кассы могут подключиться. Разблокировать
-status_server_unlock	Режим сервера — разблокировать как Владелец
-status_client_unlock	Режим клиента — разблокировать для продажи
 icon_new_selected	Значок: выбран новый файл — нажмите Сохранить бренд
 icon_custom	Значок: собственный знак магазина
 icon_default	Значок: знак Kumkaj (по умолчанию) — выберите свой
@@ -1033,7 +1016,7 @@ book_kind_balance	Баланс
 order_help	Выберите открытый заказ или стол, чтобы начать новый. Нажимайте готовые позиции, отправляйте KOT, выставляйте счёт на одну или несколько позиций, делите счёт и принимайте оплату.
 floor_help	Каждый стол показывает, сидят ли гости, каков их открытый счёт и кому нужно обслуживание дальше.
 kitchen_help	Отслеживайте готовность по варианту или по позиции — записывайте в KOT как удобно.
-kitchen_empty	Сейчас ничего не открыто — новые заказы появятся здесь.
+kitchen_empty	Сейчас ничего не открыто.
 add_a_table	Добавить стол
 add_station_heading	Добавить станцию · напр. Тандыр, Южноиндийская
 categories_help	Категория показывает, к какой части меню относится блюдо — например, закуски, основное блюдо или бирьяни. Создавайте категории по-своему: выбирайте предложенные имена, переименовывайте или добавляйте свои.
@@ -1131,7 +1114,6 @@ bill_format_help	Печатается под названием заведени
 bill_header_ph	Адрес | телефон
 fssai_ph	№ лицензии FSSAI (Индия)
 bill_footer_ph	Нижняя строка (напр. Спасибо, ждём снова)
-save_bill_format	Сохранить формат счёта
 reset_bill_format	Сбросить
 bill_format_reset	Формат счёта сброшен
 reset_kot_format	Сбросить
@@ -1201,13 +1183,11 @@ kot_copies_3	3
 kot_title_ph	Заголовок (пусто = KOT - KITCHEN ORDER)
 kot_footer_ph	Кухонная заметка (необязательно, без цен)
 kot_preview	Просмотр
-save_kot_format	Сохранить формат KOT
 test_kot_format	Тест KOT
 test_kot_sent	Предпросмотр кухонного чека отправлен
 test_bill_format	Тест билла
 test_bill_sent	Предпросмотр билла отправлен
 test_print_no_printer	Принтер для этого задания отсутствует — выберите один на этом экране
-kot_format_saved	Формат KOT сохранён
 std_print	Размер печати счёта
 std_print_help	Размер шрифта для счетов Standard (книжная и альбомная; термо-KOT отдельно). Один размер для обеих ориентаций.
 std_size_s	Мелкий
@@ -1264,7 +1244,6 @@ new_items_head	Ещё не отправлено
 price_ph	Цена
 price_ph_gst_inside	Цена ({tax} включён)
 cancel_needs_table	Откройте этот заказ с Зала (стола), чтобы отменить после кухни — KOT стойки остаются на чеке до оплаты
-tax_rates_missing_hint	Нет ставки {tax} на этих блюдах — в Меню задайте ставку (при {tax} inclusive цена уже с {tax})
 taxable_value	Налогооблагаемая база
 gst_inside_price_note	({tax} включён)
 start_with_template	Начать с нашего шаблона меню
@@ -1318,9 +1297,7 @@ order_empty_pick	Заказ пуст — нажмите «Добавить бл�
 add_dishes	Добавить блюда
 order_so_far	В этом заказе: {n} · {total}
 no_dish_match	Нет блюд по запросу «{q}»
-pick_dishes_help	Нажмите блюдо, чтобы добавить · выберите категорию, чтобы сузить список
 pick_done	Готово
-pick_done_dd	Готово · {label}
 printer_route_mode	Если несколько принтеров в этом месте
 printer_mode_first	Первый рабочий
 printer_mode_all	Печать на всех
@@ -1368,3 +1345,22 @@ recent_changes	Последние изменения
 lane_declared_label	Налоговый счёт
 lane_owner_label	Кассовый чек
 money_lane_bill	Билл: {lane}
+sel_copy	Копировать
+sel_select_all	Выделить всё
+sel_copied	Скопировано
+items_tmpl_khaynjo	Шаблон блюд Khaynjo
+items_tmpl_named	Шаблон {name}
+app_tmpl_named	Шаблон приложения {name}
+private_code_ph	12-значный код
+stamp_on	Штамп: в файле
+pay_qr_on	QR оплаты: в файле
+pay_qr_off	QR оплаты: нет
+items_tmpl_heading	Шаблоны позиций
+items_tmpl_help	Блюда, категории и фото для вашего меню. Настройки магазина и персонал остаются без изменений.
+public_tmpl_help	Стартовые меню, которые может скачать любой. Интернет нужен один раз.
+private_tmpl_help	Меню клиентов, закрытые 12-значным кодом от вашего контакта Khaynjo.
+printers_screen_tip	Поиск показывает принтеры, которыми может пользоваться это устройство, и сохраняет их для этого магазина. Принтеры счетов: Формат счёта и KOT → Счёт. Кухня: Кухня → Кухонные станции.
+printers_found_none	Принтеры не найдены.
+kot_copy_from	Копировать из
+kot_copy_from_help	Копирует размер, толщину и выравнивание каждой строки из того вида в этот. Этот вид сохраняет свой баннер, префикс позиций и зачёркивание. Сохраните формат KOT, чтобы оставить изменения.
+nav_loading	Загрузка…

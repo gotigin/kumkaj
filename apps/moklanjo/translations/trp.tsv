@@ -39,7 +39,7 @@ adding_item	কৱতাল রাং রৱমানি
 editing_item	সুনামজাক
 save	মুথাংদি
 remove	কুথার খাইদি
-empty_catalog	তাবুকবো রাতেস কৱরৱি. খোলোবৱি রাং তেই সামুংও, কাইসা রৱদি (মুং + রাং, উনিত কগ), আবোনি উলো বোকিং খলাই দি.
+empty_catalog	তাবুকবো রাতেস কৱরৱি.
 counter_sale	কাউনতার বোক খাইমানি
 total	জত
 cash	রাং
@@ -171,8 +171,6 @@ selected_language	চংজাক
 continue	তুলাংদি
 this_device	ওহ দেভিচে
 device_use_q	ও দেভিচে ন বাহাই খে উসে খলাই নাই?
-last_server_mode	Server উংখা — সুকাং থাংনা বাগুই তাপ দি
-last_client_mode	Client উংখা — সুকাং থাংনা বাগুই তাপ দি
 choose_server	সেরভের চংদি
 choose_server_hint	কাইসা তংনাই সেরভের ন খলক দি, এবা তেই কাইসা সামুংনি বাগুই কাইসা সুনাম দি.
 create_new_server	সেরভের কুতাল সুনামদি
@@ -501,8 +499,6 @@ job_layout	নকসা
 job_delivery	সামুং বাহাই খে রহরজাক
 job_size	ফনত কতরমা
 job_size_ph	উ.গ. 18, 20, 26...
-save_receipt_format	রাসিদ ফোরমাত মৱথাংদি
-save_label_format	লাবেল নি ফোরম মৱথাংদি
 test_receipt_format	তেসত মানমা
 test_label_format	তেসত নি মুং
 test_receipt_sent	সামপলে রিসিত রোহোরজাক খা
@@ -610,7 +606,7 @@ units_heading	উনিত
 booking_measures	বোক খাইনানি লামা
 drawer_count	দরাউএর লেখামুং (চাজাক)
 spreadsheet_csv	সুনামজাক বিজাপ (CSV)
-bank_reconciliation	বানক নি কুথালাইমুং (নিনি বানক নি ককতুমা বাই তিচক খাই দি)
+bank_reconciliation	বানক নি কুথালাইমুং
 book_add_product	বুখুক — মানৱি / রাং রৱদি
 book_opening_credit	বিজাপ — চরেদিত ফুআরমানি
 account_kind	খাতা নি মুং (কাইসা ন চলিচক)
@@ -650,7 +646,7 @@ net_word	নেত
 offline_badge	ওফলিনে
 optional_login_help	ওপতিওনাল লগিন (ইদ + পাসুওরদ). ওউনের কাইসা সেত খলাইও; ওনলয় থে উসের চান চাঙে পাসুওরদ লাতের.
 or_unlock_login	এবা লগিন ইদ + ককতুমা বাই লচক ফিয়গুই দি
-permission_preset	সামুং (সকরিন তেই হোকনো সৱনামদি)
+permission_preset	সামুং
 preset_help_moklanjo	চাশিএর: ফালদি. মানাগের: ফালদি + মানুইরক + সুকাকজাক/সুনামদি.
 product_locked_moklanjo	মোকলানজো
 product_only_moklanjo	ও আপপ মোকলানজো সিমি সে — বিজাপ + বোকিং দেসক. কুবুন তরাদে নি বৱসকাংও শিপ ৱংৱি ৱংনাই.
@@ -698,10 +694,6 @@ pin_hint_paired	জরা উংমা জরা তেইব — ফালন�
 pin_hint_pair_first	কুবাংমা জরা — সুকাং দুকানি মানুই বাই পাইর খলাই দি
 unlock_to_continue	তুলাংনা বাগুই লচক ফিয়ক দি
 no_staff_yet	তাবুক জরাও সামুং তাংনাইরক কুরুই — মালিক উঙুই ফুআরজাক, আবনি উল তেআম
-status_server_set_pin	Server মদে — নকফাংন সুনামদি PIN
-status_server_tills	Server মদে — কুবাংমা তিলস উঙুই মান. লচক খুলকদি
-status_server_unlock	Server মদে — মালিক উঙুই ফুআরুই রুদি
-status_client_unlock	Client মদে — ফালনা বাগুই লচক খুলকদি
 icon_new_selected	ইচন: কুতাল ফিলে চংজাক — বরানদ মুথাংদি
 icon_custom	ইচন: সুনামজাকমানি জাগানি মারি
 icon_default	ইচন: Kumkaj মারি (সুকাংনি) — কাইসা সুক চংদি
@@ -834,3 +826,7 @@ role_help_supplier	রোলে: ফাইমানি — AP নি বাগ�
 lane_declared_label	খাতা বোক খাইমানি
 lane_owner_label	রাং বোক খাইমানি
 money_lane_bill	বিল: {lane}
+sel_copy	চপয় খাইদি
+sel_select_all	জত বাছায় খাইদি
+sel_copied	চপয় খাইখা
+nav_loading	Load khlaiwi tongo…

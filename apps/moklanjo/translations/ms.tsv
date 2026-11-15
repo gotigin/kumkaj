@@ -39,7 +39,7 @@ adding_item	Menambah kadar baharu
 editing_item	Mengedit
 save	Jimat
 remove	Alih keluar
-empty_catalog	Tiada kadar lagi. Buka Kadar & perkhidmatan, tambah satu (nama + harga, unit kg), kemudian Tempahan.
+empty_catalog	Tiada kadar lagi.
 counter_sale	Tempahan kaunter
 total	Jumlah
 cash	Tunai
@@ -171,8 +171,6 @@ selected_language	Dipilih
 continue	teruskan
 this_device	PERANTI INI
 device_use_q	Bagaimanakah peranti ini akan digunakan?
-last_server_mode	Was Server — ketik untuk meneruskan
-last_client_mode	Adakah Pelanggan — ketik untuk meneruskan
 choose_server	Pilih pelayan
 choose_server_hint	Buka pelayan sedia ada atau buat satu untuk perniagaan lain.
 create_new_server	Buat pelayan baharu
@@ -501,8 +499,6 @@ job_layout	Susun atur
 job_delivery	Bagaimana kerja dihantar
 job_size	Saiz fon
 job_size_ph	cth. 18, 20, 26…
-save_receipt_format	Simpan format resit
-save_label_format	Simpan format label
 test_receipt_format	Resit ujian
 test_label_format	Label ujian
 test_receipt_sent	Contoh resit dihantar
@@ -610,7 +606,7 @@ units_heading	Unit
 booking_measures	Langkah-langkah tempahan
 drawer_count	Kiraan laci (pilihan)
 spreadsheet_csv	Hamparan (CSV)
-bank_reconciliation	Penyesuaian bank (tandakan pada penyata bank anda)
+bank_reconciliation	Penyesuaian bank
 book_add_product	Tempah — tambah produk / kadar
 book_opening_credit	Lejar — kredit pembukaan
 account_kind	Jenis akaun (ketik satu)
@@ -650,7 +646,7 @@ net_word	bersih
 offline_badge	LUAR TALIAN
 optional_login_help	Log masuk pilihan (id + kata laluan). Set pemilik sekali; hanya pengguna boleh menukar kata laluan kemudian.
 or_unlock_login	Atau buka kunci dengan id log masuk + kata laluan
-permission_preset	Kerja (menetapkan skrin dan hak)
+permission_preset	Kerja
 preset_help_moklanjo	Juruwang: jual. Pengurus: jual + item menu + batal/pinda.
 product_locked_moklanjo	Moklanjo
 product_only_moklanjo	Apl ini adalah Moklanjo sahaja — buku + meja tempahan. Perdagangan lain akan dihantar sebagai produk berasingan kemudian.
@@ -698,10 +694,6 @@ pin_hint_paired	Tambahan sehingga berpasangan — buka kunci untuk menjual
 pin_hint_pair_first	Tambahan sehingga — pasangkan ke peranti kedai dahulu
 unlock_to_continue	Buka kunci untuk meneruskan
 no_staff_yet	Belum ada kakitangan — buka kunci sebagai Pemilik, kemudian Pasukan
-status_server_set_pin	Mod Pelayan — tetapkan Pemilik PIN
-status_server_tills	Mod Pelayan — bahagian tambahan boleh menyertai. Buka kunci
-status_server_unlock	Mod Pelayan — buka kunci sebagai Pemilik
-status_client_unlock	Mod Pelanggan — buka kunci untuk menjual
 icon_new_selected	Ikon: fail baharu dipilih — ketik Simpan jenama
 icon_custom	Ikon: tanda tempat tersuai
 icon_default	Ikon: Kumkaj tanda (lalai) — pilih yang tersuai
@@ -834,3 +826,7 @@ role_help_supplier	Peranan: Pembekal — AP untuk pembelian.
 lane_declared_label	Tempahan akaun
 lane_owner_label	Tempahan tunai
 money_lane_bill	Bil: {lane}
+sel_copy	Salin
+sel_select_all	Pilih semua
+sel_copied	Disalin
+nav_loading	Memuatkan…

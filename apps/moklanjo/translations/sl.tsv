@@ -39,7 +39,7 @@ adding_item	Dodajanje nove stopnje
 editing_item	Urejanje
 save	Shrani
 remove	Odstrani
-empty_catalog	Stopenj še ni. Odprite Cene in storitve, dodajte enega (ime + cena, enota kg), nato Rezervacija.
+empty_catalog	Stopenj še ni.
 counter_sale	Rezervacije na okencu
 total	Skupaj
 cash	Gotovina
@@ -171,8 +171,6 @@ selected_language	Izbrano
 continue	Nadaljuj
 this_device	TA NAPRAVA
 device_use_q	Kako bo uporabljena ta naprava?
-last_server_mode	Bil je Strežnik — tapnite za nadaljevanje
-last_client_mode	Bil je Odjemalec — tapnite za nadaljevanje
 choose_server	Izberite strežnik
 choose_server_hint	Odprite obstoječi strežnik ali ustvarite enega za drug posel.
 create_new_server	Ustvari nov strežnik
@@ -501,8 +499,6 @@ job_layout	Postavitev
 job_delivery	Kako se pošlje posel
 job_size	Velikost pisave
 job_size_ph	npr. 18, 20, 26…
-save_receipt_format	Shrani obliko potrdila
-save_label_format	Shrani obliko oznake
 test_receipt_format	Prejem testa
 test_label_format	Testna nalepka
 test_receipt_sent	Vzorec potrdila je poslan
@@ -610,7 +606,7 @@ units_heading	Enote
 booking_measures	Rezervacijski ukrepi
 drawer_count	Štetje predala (neobvezno)
 spreadsheet_csv	Preglednica (CSV)
-bank_reconciliation	Uskladitev z banko (označite glede na bančni izpisek)
+bank_reconciliation	Uskladitev z banko
 book_add_product	Rezerviraj — dodajte izdelek/ceno
 book_opening_credit	Knjiga — začetni kredit
 account_kind	Vrsta računa (tapnite enega)
@@ -650,7 +646,7 @@ net_word	Neto
 offline_badge	BREZ POVEZAVE
 optional_login_help	Neobvezna prijava (id + geslo). Lastnik nastavi enkrat; geslo lahko pozneje spremeni samo uporabnik.
 or_unlock_login	Ali odklenite s prijavnim id + geslom
-permission_preset	Job (nastavi zaslone in pravice)
+permission_preset	Job
 preset_help_moklanjo	Blagajnik: prodaja. Vodja: prodaja + artikli + razveljavitev/popravek.
 product_locked_moklanjo	Moklanjo
 product_only_moklanjo	Ta aplikacija je samo za Moklanjo — knjige + prijavnica. Druge blagovne znamke bodo pozneje poslane kot ločeni izdelki.
@@ -698,10 +694,6 @@ pin_hint_paired	Dodatna blagajna povezana — odklenite za prodajo
 pin_hint_pair_first	Dodatna blagajna — najprej jo povežite z napravo lokala
 unlock_to_continue	Odklenite za nadaljevanje
 no_staff_yet	Osebja še ni — odklenite kot Lastnik, nato Ekipa
-status_server_set_pin	Način strežnika — nastavite PIN Lastnika
-status_server_tills	Način strežnika — dodatne blagajne se lahko pridružijo. Odklenite
-status_server_unlock	Način strežnika — odklenite kot Lastnik
-status_client_unlock	Način odjemalca — odklenite za prodajo
 icon_new_selected	Ikona: izbrana nova datoteka — tapnite Shrani znamko
 icon_custom	Ikona: lastna oznaka lokala
 icon_default	Ikona: znak Kumkaj (privzeto) — izberite svojega
@@ -834,3 +826,7 @@ role_help_supplier	Vloga: Dobavitelj — AP za nakupe.
 lane_declared_label	Rezervacija računa
 lane_owner_label	Rezervacija gotovine
 money_lane_bill	Račun: {lane}
+sel_copy	Kopiraj
+sel_select_all	Izberi vse
+sel_copied	Kopirano
+nav_loading	Nalaganje…

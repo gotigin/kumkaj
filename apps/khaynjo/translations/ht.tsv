@@ -41,7 +41,7 @@ remove	Retire
 removed_items	Atik ki retire
 removed_help	Remete mete atik la tounen nan meni a jan li te ye — pri, foto ak kategori. Etajè plat nou yo pa janm retire, kidonk yon plat ka toujou ajoute ankò.
 restore_item	Remete
-empty_catalog	Pa gen plat ankò. Louvri Meni, ajoute yon plat (non + pri), epi pran yon kòmand.
+empty_catalog	Pa gen plat ankò.
 total	Total
 cash	Kach
 upi	UPI
@@ -103,23 +103,14 @@ bill_item_qty	Kant.
 bill_item_price	Pri
 bill_item_amount	Montan
 bill_item_note	Nòt plat
-bill_item_col_gap	Espas kolòn
 bill_item_col_order	Lòd kolòn
 bill_item_col_sep	Liy kolòn
-bill_item_gap_tight	Sere
-bill_item_gap_comfort	Alèz
-bill_item_gap_wide	Laj
-bill_item_num_width	Kolòn chif
-bill_item_num_compact	Kontra
-bill_item_num_comfort	Alèz
-bill_item_num_wide	Laj
-bill_item_num_align	Aliyeman chif
-bill_item_gap_em	Espas (em)
-bill_item_qty_min	Kant. min (em)
-bill_item_price_min	Pri min (em)
-bill_item_amount_min	Montan min (em)
-kot_item_qty_width	Kolòn kantite
-kot_item_num_align	Aliyeman kantite
+slip_columns	Kolòn
+slip_col_width	Lajè (mm)
+slip_col_start	Espas kòmansman (px)
+slip_col_end	Espas fen (px)
+slip_col_align	Aliyman tèks
+slip_columns_help	Lajè chak kolòn gen ladan l espas kòmansman ak espas fen li. Tèks la vlope anndan kolòn li; sa ki depase lajè kontni an koupe, sou papye ak nan apèsi a.
 bill_total_qty_label	Etikèt kantite total
 bill_total_subtotal_label	Etikèt soutotal
 bill_total_grand_label	Etikèt gran total
@@ -221,7 +212,6 @@ sidebar_order_saved	Lòd bò kote a anrejistre
 sidebar_visibility_saved	Vizibilite bò kote a anrejistre
 amounts_hide	Kache
 amounts_show	Montre
-printers_none_hint	Anrejistre yon enprimant sou aparèy sa a anvan, epi ajoute l nan Kont oswa yon kwizin
 counter	Kontwa
 dine_in	Nan sal
 takeaway	Pou pote
@@ -328,8 +318,6 @@ selected_language	Chwazi
 continue	Kontinye
 this_device	APARÈY SA A
 device_use_q	Kijan aparèy sa a pral sèvi?
-last_server_mode	Te Sèvè — peze pou kontinye
-last_client_mode	Te Kliyan — peze pou kontinye
 choose_server	Chwazi yon sèvè
 choose_server_hint	Louvri yon sèvè ki egziste, oswa kreye youn pou yon lòt biznis.
 create_new_server	Kreye nouvo sèvè
@@ -391,7 +379,7 @@ attachments_last_expense	Atachman (dènye depans)
 bank	Labank
 bank_in	Antre nan labank
 bank_out	Soti nan labank
-bank_reconciliation	Rekonsilyasyon labank (make kont ekstrè ou)
+bank_reconciliation	Rekonsilyasyon labank
 bank_to_till	Labank → kes
 book_add_dish	Liv — ajoute plat / atik
 book_opening_credit	Liv — kredi ouvèti
@@ -744,7 +732,6 @@ station_print_pick_first	Chwazi yon estasyon kwizin anvan
 station_print_editing	Modifikasyon enprimant pou «{name}»
 station_vps_dd	Enprimant pou estasyon sa a
 station_vps_dd_n	{n} enprimant · peze pou chanje
-station_vps_empty	Pa gen enprimant ankò — Chèche yo anba Paramèt → Enprimant
 bill_printers_dd	Enprimant pou kont lan
 bill_printers_dd_n	{n} enprimant pou kont lan · peze pou chanje
 job_layout	Miz an paj
@@ -889,7 +876,7 @@ net_word	Nèt
 offline_badge	OFLAYN
 optional_login_help	Antre opsyonèl (id + modpas). Pwopriyetè a mete l yon fwa; se sèl itilizatè a ki ka chanje modpas pita.
 or_unlock_login	Oswa debloke ak id antre + modpas
-permission_preset	Travay (mete ekran ak aksyon lajan)
+permission_preset	Travay
 preset_help_khaynjo	Kesye: vann. Manadjè: vann + atik + anile/korije.
 product_locked_khaynjo	Khaynjo
 product_only_khaynjo	Aplikasyon sa a se Khaynjo sèlman — sistèm operasyon restoran. Lòt komès soti kòm pwodwi Kumkaj apa.
@@ -961,10 +948,6 @@ pin_hint_paired	Lòt kes makonnen — debloke pou vann
 pin_hint_pair_first	Lòt kes — makonnen ak aparèy boutik la anvan
 unlock_to_continue	Debloke pou kontinye
 no_staff_yet	Pa gen anplwaye ankò — debloke kòm Pwopriyetè, epi Ekip
-status_server_set_pin	Mòd sèvè — mete PIN pwopriyetè
-status_server_tills	Mòd sèvè — lòt kes ka rantre. Debloke
-status_server_unlock	Mòd sèvè — debloke kòm Pwopriyetè
-status_client_unlock	Mòd kliyan — debloke pou vann
 icon_new_selected	Ikòn: nouvo fichye chwazi — peze Anrejistre mak
 icon_custom	Ikòn: mak lokal pèsonalize
 icon_default	Ikòn: mak Kumkaj (default) — chwazi youn pèsonalize
@@ -1033,7 +1016,7 @@ book_kind_balance	Bilan
 order_help	Peze yon atik pou ajoute l.
 floor_help	Peze yon tab pou pran oswa chanje kòmand lan. Koulè yo montre lib → chita → kwizin → pare → ap manje → kont → peye. Lis datant, rezèvasyon, ak ajoute tab yo nan seksyon anba a.
 kitchen_help	Fich kwizin (KOT), pi nouvo a anba. Kòmanse → Pare → Fini fè fich la avanse. Fich yo pa janm montre pri.
-kitchen_empty	Pa gen fich ouvè. Yon KOT voye depi Kòmand oswa Sal parèt isit.
+kitchen_empty	Pa gen fich ouvè.
 add_a_table	Ajoute yon tab
 add_station_heading	Ajoute yon estasyon kwizin
 categories_help	Peze Sèvi pou klase atik anwo a anba kategori sa a. Foto bay kategori a yon imaj; san li, li montre inisyal li.
@@ -1131,7 +1114,6 @@ bill_format_help	Enprime anba non restoran ou sou chak kont. Separe liy ak | (pa
 bill_header_ph	Adrès | telefòn
 fssai_ph	Nimewo lisans FSSAI (End)
 bill_footer_ph	Pye (pa egzanp Mèsi, tounen ankò)
-save_bill_format	Anrejistre fòma kont
 reset_bill_format	Retounen default
 bill_format_reset	Fòma kont retounen default
 reset_kot_format	Retounen default
@@ -1201,13 +1183,11 @@ kot_copies_3	3
 kot_title_ph	Tit (vid = KOT - KITCHEN ORDER)
 kot_footer_ph	Nòt kwizin (opsyonèl, san pri)
 kot_preview	Aperçu
-save_kot_format	Anrejistre fòma KOT
 test_kot_format	KOT tès
 test_kot_sent	Aperçu fich kwizin voye
 test_bill_format	Kont tès
 test_bill_sent	Aperçu kont voye
 test_print_no_printer	Pa gen enprimant pou travay sa a — chwazi youn sou ekran sa a
-kot_format_saved	Fòma KOT anrejistre
 std_print	Gwosè enprime kont
 std_print_help	Gwosè lèt pou travay kont Pòtre ak Peyizaj estanda sou enprimant OS / dokiman (ekri pwen — pa Piti/Nòmal/Gwo). Menm gwosè sou tou de oryantasyon. Gwosè fich kwizin yo sou onglet KOT.
 std_size_s	Piti
@@ -1264,7 +1244,6 @@ new_items_head	Poko voye
 price_ph	Pri
 price_ph_gst_inside	Pri ({tax} ladan pri)
 cancel_needs_table	Louvri kòmand sa a depi Sal (yon tab) pou anile apre kwizin nan gen li — KOT kontwa rete sou fich la jiskaske ou pran peman
-tax_rates_missing_hint	Pa gen to {tax} sou plat sa yo — nan Meni mete to taks (pri yo deja gen {tax} anba {tax} ladan pri)
 taxable_value	Valè taksab
 gst_inside_price_note	({tax} ladan pri)
 start_with_template	Kòmanse ak modèl meni nou an
@@ -1318,9 +1297,7 @@ order_empty_pick	Kòmand vid — peze Ajoute plat anwo a pou chwazi plat.
 add_dishes	Ajoute plat
 order_so_far	Nan kòmand sa a: {n} · {total}
 no_dish_match	Okenn plat pa koresponn ak «{q}»
-pick_dishes_help	Peze yon plat pou ajoute l · chwazi yon kategori pou diminye lis la
 pick_done	Fini
-pick_done_dd	Fini · {label}
 printer_route_mode	Si gen plizyè enprimant sou kote sa a
 printer_mode_first	Premye ki mache
 printer_mode_all	Enprime sou tout
@@ -1368,3 +1345,22 @@ recent_changes	Chanjman resan
 lane_declared_label	Fakti taks
 lane_owner_label	Nòt kach
 money_lane_bill	Kont: {lane}
+sel_copy	Kopye
+sel_select_all	Chwazi tout
+sel_copied	Kopye fèt
+items_tmpl_khaynjo	Modèl atik Khaynjo
+items_tmpl_named	Modèl {name}
+app_tmpl_named	Modèl aplikasyon {name}
+private_code_ph	Kòd 12 chif
+stamp_on	Tenm: nan fichye
+pay_qr_on	QR peman: nan fichye
+pay_qr_off	QR peman: pa gen
+items_tmpl_heading	Modèl atik
+items_tmpl_help	Plat, kategori ak foto pou meni ou. Paramèt boutik la ak anplwaye yo rete jan yo ye a.
+public_tmpl_help	Meni pou kòmanse ke nenpòt moun ka telechaje. Bezwen entènèt yon fwa.
+private_tmpl_help	Meni kliyan ki fèmen ak yon kòd 12 chif ki soti nan kontak Khaynjo ou.
+printers_screen_tip	Chèche montre enprimant aparèy sa a ka itilize epi li sove yo pou boutik sa a. Enprimant fakti: Fòma fakti ak KOT → Fakti. Kizin: Kizin → Estasyon kizin.
+printers_found_none	Pa jwenn okenn enprimant.
+kot_copy_from	Kopye soti nan
+kot_copy_from_help	Li kopye gwosè, epesè ak aliyman chak liy soti nan kalite sa a nan sa a. Kalite sa a kenbe pwòp banyè li, prefiks atik li ak bawotaj li. Sove fòma KOT la pou kenbe l.
+nav_loading	Chajman…

@@ -194,6 +194,105 @@ print(f"Patched API-26 InputDevice.isEnabled guard into {path}")
 PY
 fi
 
+# OS Copy bar opened without Copy: a second showClipboardActions in a row
+# (text block + selection root after a finger hold) stored hasSelection,
+# then finish() on the old bar ran onDestroyActionMode, which reset it.
+if grep -qF 'KUMKAJ_CLIP_BAR_RACE' "$JAVA"; then
+  echo "Android clipboard bar show/finish order already patched."
+else
+  python3 - "$JAVA" <<'PY'
+from pathlib import Path
+import sys
+path = Path(sys.argv[1])
+text = path.read_text()
+old_show = """            public void run() {
+                mHasSelection = hasSelection;
+                mSelectionBounds[0] = left;
+                mSelectionBounds[1] = top;
+                mSelectionBounds[2] = right;
+                mSelectionBounds[3] = bottom;
+                mKeyboardShift = keyboardShift;
+
+                // If ActionMode is already showing, finish it first
+                if (mActionMode != null) {
+                    mActionMode.finish();
+                }
+"""
+new_show = """            public void run() {
+                // KUMKAJ_CLIP_BAR_RACE: finish the bar already up BEFORE
+                // storing the new state. finish() runs onDestroyActionMode;
+                // it used to clear mHasSelection, so a second show in a row
+                // (block + selection root after a finger hold) opened
+                // Paste / Select all without Copy (AGS2, 2026-11-14).
+                if (mActionMode != null) {
+                    ActionMode old = mActionMode;
+                    mActionMode = null;
+                    old.finish();
+                }
+                mHasSelection = hasSelection;
+                mSelectionBounds[0] = left;
+                mSelectionBounds[1] = top;
+                mSelectionBounds[2] = right;
+                mSelectionBounds[3] = bottom;
+                mKeyboardShift = keyboardShift;
+"""
+old_destroy = """    private void onDestroyActionModeInternal(ActionMode mode) {
+        mActionMode = null;
+        mHasSelection = false;
+    }"""
+new_destroy = """    private void onDestroyActionModeInternal(ActionMode mode) {
+        // Only the bar on screen resets the state: one replaced by a newer
+        // show must not clear the newer bar's selection.
+        if (mode == mActionMode) {
+            mActionMode = null;
+            mHasSelection = false;
+        }
+    }"""
+for old, label in ((old_show, "showClipboardActions"), (old_destroy, "onDestroyActionModeInternal")):
+    if old not in text:
+        raise SystemExit(f"{label} pattern not found in {path}")
+text = text.replace(old_show, new_show, 1).replace(old_destroy, new_destroy, 1)
+path.write_text(text)
+print(f"Patched clipboard bar show/finish order into {path}")
+PY
+fi
+
+# Read-only selections (labels, pages) get Copy / Select all only: Cut there
+# only copied and Paste did nothing. Rust passes the flag as a 7th argument
+# (android_jni.rs to_java_show_clipboard_actions, signature (ZIIIIIZ)V) —
+# a checkout without this block crashes on the first touch selection.
+if grep -qF 'KUMKAJ_CLIP_BAR_READ_ONLY' "$JAVA"; then
+  echo "Android clipboard bar read-only flag already patched."
+else
+  python3 - "$JAVA" <<'PY'
+from pathlib import Path
+import sys
+path = Path(sys.argv[1])
+text = path.read_text()
+swaps = [
+    ("    private boolean mHasSelection = false;\n",
+     "    private boolean mHasSelection = false;\n"
+     "    // KUMKAJ_CLIP_BAR_READ_ONLY: selection in copy that cannot be edited.\n"
+     "    private boolean mClipReadOnly = false;\n"),
+    ("    public void showClipboardActions(final boolean hasSelection, final int left, final int top, final int right, final int bottom, final int keyboardShift) {",
+     "    public void showClipboardActions(final boolean hasSelection, final int left, final int top, final int right, final int bottom, final int keyboardShift, final boolean readOnly) {"),
+    ("                mKeyboardShift = keyboardShift;\n",
+     "                mKeyboardShift = keyboardShift;\n"
+     "                mClipReadOnly = readOnly;\n"),
+    ("        if (cutItem != null) cutItem.setVisible(hasSelection);\n"
+     "        if (pasteItem != null) pasteItem.setVisible(hasClipboard);",
+     "        if (cutItem != null) cutItem.setVisible(hasSelection && !mClipReadOnly);\n"
+     "        if (pasteItem != null) pasteItem.setVisible(hasClipboard && !mClipReadOnly);"),
+]
+for old, new in swaps:
+    if text.count(old) != 1:
+        raise SystemExit(f"clipboard read-only pattern not found once in {path}: {old.strip()[:60]}")
+    text = text.replace(old, new, 1)
+path.write_text(text)
+print(f"Patched clipboard bar read-only flag into {path}")
+PY
+fi
+
 JAVA_DIR="$(dirname "$JAVA")"
 HELPER_DST="$JAVA_DIR/ImeInsetsAnimationHelper.java"
 HELPER_SRC="$ROOT/patches/makepad/ImeInsetsAnimationHelper.java"

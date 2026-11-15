@@ -41,7 +41,7 @@ remove	Esory
 removed_items	Entana nesorina
 removed_help	Ny famerenana dia mametraka ny entana indray eo amin'ny lisitra toy ny taloha — ny vidiny, ny sary ary ny sokajiny. Tsy esorina mihitsy ny entana eo amin'ny talantalana, ka azo averina foana ny sakafo iray.
 restore_item	Avereno
-empty_catalog	Tsy mbola misy sakafo. Sokafy ny Karazan-tsakafo, ampio sakafo (anarana + vidiny), avy eo raiso ny kaomandy.
+empty_catalog	Tsy mbola misy sakafo.
 total	Fitambarany
 cash	Vola
 upi	UPI
@@ -103,23 +103,14 @@ bill_item_qty	Isa
 bill_item_price	Vidiny
 bill_item_amount	Vola
 bill_item_note	Fanamarihana lovia
-bill_item_col_gap	Elanelana andàlana
 bill_item_col_order	Filaharana andàlana
 bill_item_col_sep	Fitsipika andàlana
-bill_item_gap_tight	Taitra
-bill_item_gap_comfort	Mahazo aina
-bill_item_gap_wide	Midadasika
-bill_item_num_width	Andalana isa
-bill_item_num_compact	Kapitôma
-bill_item_num_comfort	Mahazo aina
-bill_item_num_wide	Midadasika
-bill_item_num_align	Mifanaraka ny isa
-bill_item_gap_em	Banga (em)
-bill_item_qty_min	Habetsahana kely indrindra (em)
-bill_item_price_min	Vidiny farany ambany (em)
-bill_item_amount_min	Isan'ny kely indrindra (em)
-kot_item_qty_width	Sôlan'ny isa
-kot_item_num_align	Mampifanaraka ny qty
+slip_columns	Tsanganana
+slip_col_width	Sakany (mm)
+slip_col_start	Elanelana fanombohana (px)
+slip_col_end	Elanelana fiafarana (px)
+slip_col_align	Fandaharana soratra
+slip_columns_help	Ny sakan’ny tsanganana tsirairay dia ahitana ny elanelana fanombohana sy fiafarany. Mivalona ao anatin’ny tsanganany ny soratra; ny mihoatra ny sakan’ny votoaty dia tapahina, eo amin’ny taratasy sy amin’ny topi-maso.
 bill_total_qty_label	Marika isan-jato totalin'ny habetsahana
 bill_total_subtotal_label	Marika totalina
 bill_total_grand_label	Marika totaly lehibe
@@ -221,7 +212,6 @@ sidebar_order_saved	Voatahiry ny filaharan'ny sidebar
 sidebar_visibility_saved	Voatahiry ny fahitana sisiny
 amounts_hide	Afeno
 amounts_show	Asehoy
-printers_none_hint	Tehirizo aloha ny mpanonta amin'ity fitaovana ity, avy eo ampidiro amin'ny faktiora na lakozia izany
 counter	Kauntera
 dine_in	Mihinana eto
 takeaway	Entina
@@ -328,8 +318,6 @@ selected_language	Voafantina
 continue	Tohizo
 this_device	ITY FITAOVANA ITY
 device_use_q	Ahoana no hampiasana ity fitaovana ity?
-last_server_mode	Taloha Server — kitiho mba hanohy
-last_client_mode	Taloha Client — kitiho mba hanohy
 choose_server	Fidio ny mpizara
 choose_server_hint	Sokafy ny mpizara efa misy, na mamorona iray ho an'ny orinasa hafa.
 create_new_server	Mametraha mpizara vaovao
@@ -391,7 +379,7 @@ attachments_last_expense	Fampidirana (fandaniana farany)
 bank	Banka
 bank_in	Ao amin'ny banky
 bank_out	Banky nivoaka
-bank_reconciliation	Fifanarahana amin'ny banky (manamarina amin'ny fanambarana anao amin'ny banky)
+bank_reconciliation	Fifanarahana amin'ny banky
 bank_to_till	Banky → vola
 book_add_dish	Boky — manampy lovia / zavatra
 book_opening_credit	Boky — trosa fanombohana
@@ -744,7 +732,6 @@ station_print_pick_first	Misafidiana toeram-pahandro voalohany
 station_print_editing	Fanovàna ny mpanonta ho an’ny “{name}”
 station_vps_dd	Milina fanontam-pirinty ho an'ity toeram-pahandroana ity
 station_vps_dd_n	{n} mpanonta · kitiho hanovàna
-station_vps_empty	Tsy mbola misy mpanonta — Hitan’izy ireo eo ambanin’ny Fikirakirana → Mpanonta
 bill_printers_dd	Mpanonta ho an’ny faktiora
 bill_printers_dd_n	{n} mpanonta ho an’ny faktiora · kitiho hanovàna
 job_layout	Endrika
@@ -889,7 +876,7 @@ net_word	Neto
 offline_badge	TSY MIFANDRAISANA AMIN'NY INTERNET
 optional_login_help	Fidirana tsy voatery (id + teny miafina). Ny tompony no mametraka indray mandeha; ny mpampiasa ihany no afaka manova ny teny miafina avy eo.
 or_unlock_login	Na sokafy amin'ny id fidirana + teny miafina
-permission_preset	Asa (mametra ny efijery sy ny hetsika vola)
+permission_preset	Asa
 preset_help_khaynjo	Mpivarotra: mivarotra. Tale: mivarotra + entana + manafoana/manitsy.
 product_locked_khaynjo	Khaynjo
 product_only_khaynjo	Ity fampiharana ity dia Khaynjo ihany — rafitra fiasan'ny trano fisakafoanana. Ny varotra hafa dia hita toy ny Kumkaj vokatra misaraka.
@@ -961,10 +948,6 @@ pin_hint_paired	Kaonty fanampiny nifandray — sokafy mba hivarotra
 pin_hint_pair_first	Kaonty fanampiny — mifandraisa amin'ny fitaovan'ny fivarotana aloha
 unlock_to_continue	Sokafy mba hanohy
 no_staff_yet	Tsy mbola misy mpiasa — sokafy ho Tompony, avy eo Ekipa
-status_server_set_pin	Server Fomba — apetraho ho Tompony PIN
-status_server_tills	Server Fomba — afaka miditra ny kaonty fanampiny. Sokafy
-status_server_unlock	Server Fomba — sokafy ho Tompony
-status_client_unlock	Client Fomba — sokafy mba hivarotra
 icon_new_selected	Sary famantarana: rakitra vaovao voafantina — kitiho ny Tehirizo ny marika
 icon_custom	Sary famantarana: famantarana toerana manokana
 icon_default	Sary famantarana: marika Kumkaj (mahazatra) — mifidiana manokana
@@ -1033,7 +1016,7 @@ book_kind_balance	Taratasy fanamarinam-bola
 order_help	Tsindrio ny entana iray hanampiana azy.
 floor_help	Tsindrio latabatra iray haka na hanova ny filaharana. Ny loko dia mampiseho maimaim-poana → mipetraka → lakozia → vonona → mihinana → faktiora → voaloa. Lisitry ny miandry, famandrihana, ary fanampiana latabatra dia ao amin'ny fizarana etsy ambany.
 kitchen_help	Toro-lalana an-dakozia (KOT), farany vao farany. Manomboka → Vonona → Vita dia mitondra toro-lalana iray. Tsy mampiseho vidiny mihitsy ny toro-lalana.
-kitchen_empty	Tsy misy tapakila misokatra. Ny KOT nalefa avy amin'ny Baiko na Rihana dia hiseho eto.
+kitchen_empty	Tsy misy tapakila misokatra.
 add_a_table	Manampia latabatra
 add_station_heading	Manampia toby lakozia
 categories_help	Tsindrio ny Mampiasa mba hanasokajiana ny entana etsy ambony eo amin'io sokajy io. Ny Sary dia manome sary ny sokajy; raha tsy misy dia asehony ny fanafohezana.
@@ -1131,7 +1114,6 @@ bill_format_help	Printy eo ambanin'ny anaran'ny trano fisakafoananao amin'ny fak
 bill_header_ph	Adiresy | finday
 fssai_ph	FSSAI laharan'ny fahazoan-dalana (India)
 bill_footer_ph	Fanamarihana farany (oh: Misaotra, mitsidika indray)
-save_bill_format	Tehirizo ny endrika faktiora
 reset_bill_format	Avereno amin'ny voalohany
 bill_format_reset	Endrika faktiora averina amin'ny voalohany
 reset_kot_format	Avereno amin'ny voalohany
@@ -1201,13 +1183,11 @@ kot_copies_3	3
 kot_title_ph	Lohateny (banga = KOT - FAHANGANAN-DAFINA)
 kot_footer_ph	Fanamarihana an-dahandro (tsy voatery, tsy misy vidiny)
 kot_preview	Topi-maso
-save_kot_format	Tehirizo KOT endrika
 test_kot_format	Fitsapana KOT
 test_kot_sent	Fampisehoana tapakila an-dahandro nalefa
 test_bill_format	Fitsapana faktiora
 test_bill_sent	Fampisehoana faktiora nalefa
 test_print_no_printer	Tsy misy mpanonta ho an'io asa io — mifidiana iray amin'ity efijery ity
-kot_format_saved	KOT voatahiry ny endrika
 std_print	Haben'ny pirinty faktiora
 std_print_help	Haben'ny endritsoratra ho an'ny asa faktiora Standard Portrait sy Landscape amin'ny OS / mpanonta antontan-taratasy (ampidiro isa — tsy Small/Normal/Large). Mitovy habe amin'ny lafiny roa. Ny haben'ny taratasy ao amin'ny lakozianina dia ao amin'ny tabilao KOT.
 std_size_s	Kely
@@ -1264,7 +1244,6 @@ new_items_head	Tsy nalefa mbola
 price_ph	Vidiny
 price_ph_gst_inside	Vidiny ({tax} tafiditra)
 cancel_needs_table	Sokafy ity baiko ity avy amin'ny Salon (latabatra iray) mba hanesorana rehefa eo amin'ny lakozia izy — mijanona eo amin'ny tapakila ny KOT an'ny kase raha tsy mandray fandoavana ianao
-tax_rates_missing_hint	Tsy misy tahan'ny {tax} amin'ireto sakafo ireto — ao amin'ny Karazan-tsakafo apetraho ny tahan'ny hetra (efa tafiditra ny {tax} eo ambanin'ny {tax} tafiditra)
 taxable_value	Sandan'ny hetra azo alaina
 gst_inside_price_note	({tax} tafiditra)
 start_with_template	Manomboha amin'ny maodelim-menu anay
@@ -1318,9 +1297,7 @@ order_empty_pick	Baiko foana — tsindrio ny Ampio lovia etsy ambony mba hisafid
 add_dishes	Ampio lovia
 order_so_far	Amin'ity baiko ity: {n} · {total}
 no_dish_match	Tsy misy sakafo mifanaraka amin'ny “{q}”
-pick_dishes_help	Tsindrio sakafo iray mba hanampy azy · mifidiana sokajy mba hanesotra ny lisitra
 pick_done	Vita
-pick_done_dd	Vita · {label}
 printer_route_mode	Raha misy mpanonta maromaro eto amin'ity toerana ity
 printer_mode_first	Voalohany miasa
 printer_mode_all	Pirinty amin'ny rehetra
@@ -1368,3 +1345,22 @@ recent_changes	Fanovana farany
 lane_declared_label	Faktioran-ketra
 lane_owner_label	Faktiora amin'ny vola
 money_lane_bill	Paositra: {lane}
+sel_copy	Adikao
+sel_select_all	Fidio daholo
+sel_copied	Voadika
+items_tmpl_khaynjo	Modelin'ny entana Khaynjo
+items_tmpl_named	Modely {name}
+app_tmpl_named	Modelin'ny app {name}
+private_code_ph	Kaody 12 isa
+stamp_on	Tombo-kase: ao amin'ny rakitra
+pay_qr_on	Fandoavam-bola QR: ao amin'ny rakitra
+pay_qr_off	Fandoavam-bola QR: tsy misy
+items_tmpl_heading	Modely entana
+items_tmpl_help	Sakafo, sokajy ary sary ho an'ny menu-nao. Mijanona toy ny teo ny fikirakirana fivarotana sy ny mpiasa.
+public_tmpl_help	Menu fanombohana azon'ny rehetra alaina. Mila internet indray mandeha.
+private_tmpl_help	Menu mpanjifa voahidy amin'ny kaody 12 isa avy amin'ny mpifandray Khaynjo anao.
+printers_screen_tip	Ny Mitady dia mampiseho ireo mpanonta azon'ity fitaovana ity ampiasaina ary mitahiry azy ireo ho an'ity fivarotana ity. Mpanonta faktiora: Endrika faktiora sy KOT → Faktiora. Lakozia: Lakozia → Toeram-piasan'ny lakozia.
+printers_found_none	Tsy nahitana mpanonta.
+kot_copy_from	Adikao avy amin'ny
+kot_copy_from_help	Mandika ny haben'ny, ny hateviny ary ny filaharan'ny andalana tsirairay avy amin'io karazana io ho amin'ity. Mitazona ny sora-baventy, ny tovona entana ary ny tsipika fanafoanana azy ity karazana ity. Tehirizo ny endrika KOT mba hitazomana azy.
+nav_loading	Mampiditra…

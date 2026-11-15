@@ -4,7 +4,7 @@
 //! counter sell, medicines, batch/expiry bookkeeping, khata, and
 //! Tabiyat's own books. Copied from Kirano; diverges freely (vision §1).
 
-use crate::domain::{Money, VenueMode};
+use crate::domain::Money;
 
 #[derive(Clone, Copy, Debug)]
 pub struct SeedProduct {
@@ -26,7 +26,6 @@ pub struct EntityTemplate {
     pub blurb: &'static str,
     pub how_to: &'static str,
     pub label_overrides: &'static [(&'static str, &'static str)],
-    pub venue_mode: VenueMode,
     pub qty_unit_hint: &'static str,
     pub lane_declared_label: &'static str,
     pub lane_owner_label: &'static str,
@@ -43,7 +42,6 @@ pub const TABIYAT: EntityTemplate = EntityTemplate {
     // every language translates them; an overlay here would show its
     // English in every language (template_overrides_stay_empty).
     label_overrides: &[],
-    venue_mode: VenueMode::Counter,
     qty_unit_hint: "pc",
     lane_declared_label: "Tax invoice",
     lane_owner_label: "Cash memo",

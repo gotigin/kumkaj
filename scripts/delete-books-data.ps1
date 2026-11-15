@@ -1,7 +1,7 @@
 # Delete selected __APP_LABEL__ local data for __APP_ID__.
 # Installed into the app folder by the MSI; Start Menu shortcut runs this.
 # Placeholders are replaced by build-msi.sh. Prompts before deleting anything.
-# (MSI Settings uninstall uses msi-uninstall-data.js — not this script.)
+# (MSI Settings uninstall uses msi-uninstall-data.js - not this script.)
 $ErrorActionPreference = "Stop"
 $DataDir = Join-Path $env:APPDATA "__APP_ID__"
 $Exe = Join-Path $PSScriptRoot "__BIN_NAME__.exe"

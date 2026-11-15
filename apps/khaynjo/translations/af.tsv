@@ -41,7 +41,7 @@ remove	Verwyder
 removed_items	Verwyderde items
 removed_help	Herstel plaas die item terug op die menu presies soos dit was — prys, foto en kategorie. Ons skap van geregte word nooit verwyder nie, dus kan 'n gereg altyd weer bygevoeg word.
 restore_item	Herstel
-empty_catalog	Nog geregte nie. Open Menu, voeg 'n gereg by (naam + prys), neem dan 'n bestelling.
+empty_catalog	Nog geregte nie.
 total	Totaal
 cash	Kontant
 upi	UPI
@@ -103,23 +103,14 @@ bill_item_qty	Hoeveelheid
 bill_item_price	Prijs
 bill_item_amount	Bedrag
 bill_item_note	Maalty nota
-bill_item_col_gap	Kolom gaping
 bill_item_col_order	Kolom volgorde
 bill_item_col_sep	Kolom reëls
-bill_item_gap_tight	Vryf
-bill_item_gap_comfort	Gemaklik
-bill_item_gap_wide	Wye
-bill_item_num_width	Getal kolomme
-bill_item_num_compact	Kompak
-bill_item_num_comfort	Gemaklik
-bill_item_num_wide	Wye
-bill_item_num_align	Getalle uitlyn
-bill_item_gap_em	Gaping (em)
-bill_item_qty_min	Min hoeveelheid (em)
-bill_item_price_min	Min prys (em)
-bill_item_amount_min	Min bedrag (em)
-kot_item_qty_width	Hoeveelheid kolom
-kot_item_num_align	Qty uitlyn
+slip_columns	Kolomme
+slip_col_width	Breedte (mm)
+slip_col_start	Beginspasie (px)
+slip_col_end	Eindspasie (px)
+slip_col_align	Teksbelyning
+slip_columns_help	Elke kolom se breedte sluit sy begin- en eindspasie in. Teks vou binne sy kolom; wat verby die inhoudbreedte lê, word afgesny, op papier en in die voorskou.
 bill_total_qty_label	Totaal aantal etiket
 bill_total_subtotal_label	Subtotaal etiket
 bill_total_grand_label	Grand totaal etiket
@@ -221,7 +212,6 @@ sidebar_order_saved	Sybalk volgorde opgeslaan
 sidebar_visibility_saved	Sybalk sigbaarheid opgeslaan
 amounts_hide	Versteek
 amounts_show	Wys
-printers_none_hint	Stoor eers 'n drukker op hierdie toestel, voeg dit dan by Rekening of 'n kombuis
 counter	Toonbank
 dine_in	In die eetkamer
 takeaway	Afhaal
@@ -328,8 +318,6 @@ selected_language	Gekoos
 continue	Gaan voort
 this_device	HIERDIE TOESTEL
 device_use_q	Hoe sal hierdie toestel gebruik word?
-last_server_mode	Was Bediener – tik om voort te gaan
-last_client_mode	Was Kliënt – tik om voort te gaan
 choose_server	Kies 'n bediener
 choose_server_hint	Open 'n bestaande bediener of skep een vir 'n ander besigheid.
 create_new_server	Skep nuwe bediener
@@ -391,7 +379,7 @@ attachments_last_expense	Aanhangsels (laaste uitgawe)
 bank	Bank
 bank_in	Bank in
 bank_out	Bank uit
-bank_reconciliation	Bankversoenlikheid (aankruis teenoor jou bankafschrift)
+bank_reconciliation	Bankversoenlikheid
 bank_to_till	Boek → kasregister
 book_add_dish	Boeking — voeg gereg / item by
 book_opening_credit	Boeking — oopende krediet
@@ -744,7 +732,6 @@ station_print_pick_first	Kies eers 'n keukinstasie
 station_print_editing	Bewerk drukkers vir "{name}"
 station_vps_dd	Drukkers vir hierdie stasie
 station_vps_dd_n	{n} drukker(s) · tik om te verander
-station_vps_empty	Nog geen drukkers nie — vind hulle onder Instellings → Drukkers
 bill_printers_dd	Drukkers vir die rekening
 bill_printers_dd_n	{n} drukker(s) vir die rekening · tik om te verander
 job_layout	Opstelling
@@ -889,7 +876,7 @@ net_word	Netto
 offline_badge	AFKANTING
 optional_login_help	Opsionele aanmelding (ID + wagwoord). Eienaar stel een keer; slegs die gebruiker kan later wagwoord verander.
 or_unlock_login	Of ontgrendel met aanmeldings-ID en wagwoord
-permission_preset	Werk (stel skerm en geldaksies)
+permission_preset	Werk
 preset_help_khaynjo	Kasier: verkoop. Bestuurder: verkoop + items + leegmaak/bewerk.
 product_locked_khaynjo	Khaynjo
 product_only_khaynjo	Hierdie app is slegs Khaynjo — restaurante bedryfstelsel. Ander handelsgegewe word as aparte Kumkaj-produkte verskep.
@@ -961,10 +948,6 @@ pin_hint_paired	Ekstra kas gekoppel — ontsluit om te verkoop
 pin_hint_pair_first	Ekstra kas — paar eers met die winkeltoestel
 unlock_to_continue	Ontsluit om voort te gaan
 no_staff_yet	Nog personeel nie – ontsluit as Eienaar, dan span
-status_server_set_pin	Bedienermodus – stel Eienaarpin in
-status_server_tills	Bedienermodus – ekstra kasse kan aansluit. Ontsluit
-status_server_unlock	Bedienermodus – ontsluit as Eienaar
-status_client_unlock	Kliëntmodus – ontsluit om te verkoop
 icon_new_selected	Ikon: nuwe lêer gekies – tik Opslaan handelsmerk
 icon_custom	Ikon: aangepaste besigheidsmerk
 icon_default	Ikon: Kumkaj-merk (standaard) – kies 'n aangepaste een
@@ -1033,7 +1016,7 @@ book_kind_balance	Balansrekening
 order_help	Tik op 'n item om dit by te voeg.
 floor_help	Tik op 'n tafel om die bestelling te neem of te verander. Kleure wys vry → gesit → keuken → gereed → ete → rekening → betaal. Wagtelys, reserwes en toevoeg-tafels is in die afdelings hieronder.
 kitchen_help	Keukentikkies (KOT), nuutste laaste. Start → Gereed → Gereed beweeg 'n tikkie langs. Tikkies wys nooit pryse nie.
-kitchen_empty	Geen oop tikkies nie. 'n KOT gestuur vanuit Bestelling of Vloer verskyn hier.
+kitchen_empty	Geen oop tikkies nie.
 add_a_table	Voeg 'n tafel by
 add_station_heading	Voeg 'n keukinstasie by
 categories_help	Tik Gebruik om die item hierbo onder daardie kategorie te lê. Foto gee die kategorie 'n prentjie; sonder een wys dit sy inisiale.
@@ -1131,7 +1114,6 @@ bill_format_help	Gedruk onder jou restaurante se naam op elke rekening. Skei lyn
 bill_header_ph	Adres | telefoon
 fssai_ph	FSSAI lisensienommer (Indië)
 bill_footer_ph	Voetstuk (bv. Dankie, besoek weer)
-save_bill_format	Slaap rekening formaat
 reset_bill_format	Herstel na standaard
 bill_format_reset	Rekening formaat herstel na standaard
 reset_kot_format	Herstel na standaard
@@ -1201,13 +1183,11 @@ kot_copies_3	3
 kot_title_ph	Titel (leeg = KOT - KEUKENBESTELLING)
 kot_footer_ph	Keukennota (opsioneel, geen pryse nie)
 kot_preview	Voorbeeld
-save_kot_format	Stoor KOT-formaat
 test_kot_format	Toets KOT
 test_kot_sent	Keukentikvoorbeeld gestuur
 test_bill_format	Toets faktuur
 test_bill_sent	Faktuurvoorbeeld gestuur
 test_print_no_printer	Geen drukker vir daardie taak – kies een op hierdie skerm
-kot_format_saved	KOT-formaat gestoor
 std_print	Faktuurdrukgrootte
 std_print_help	Lettergrootte vir Standaard Portret en Landskap faktuurtake op OS-/dokumentdrukkers (voer punte in – nie Klein/Normaal/Groot nie). Selfde grootte op beide oriëntasies. Keukenbon-groottes is op die KOT-oor.
 std_size_s	Klein
@@ -1264,7 +1244,6 @@ new_items_head	Nog nie gestuur nie
 price_ph	Prijs
 price_ph_gst_inside	Prijs ({tax} insluitend)
 cancel_needs_table	Open hierdie bestelling vanaf Vloer (een tafel) om te kanselleer nadat die kombuis dit ontvang het — KOTs by die toonbank bly op die bon tot jy betaling neem
-tax_rates_missing_hint	Geen {tax} tarief vir hierdie geregte nie – stel Belastingtarief in Menu (pryse sluit reeds {tax} onder {tax} insluitend)
 taxable_value	Belastingbare waarde
 gst_inside_price_note	({tax} insluitend)
 start_with_template	Begin met ons menu-sjabloon
@@ -1318,9 +1297,7 @@ order_empty_pick	Bestelling leeg — tik Boonste voeg geregte by om geregte te k
 add_dishes	Voeg geregte by
 order_so_far	Op hierdie bestelling: {n} · {total}
 no_dish_match	Geen skotel pas by "{q}"
-pick_dishes_help	Tik 'n skotel om dit by te voeg · kies 'n kategorie om die lys te beperk
 pick_done	Gereed
-pick_done_dd	Gereed · {label}
 printer_route_mode	As daar verskeie drukkers op hierdie plek is
 printer_mode_first	Eers wat werk
 printer_mode_all	Druk op almal
@@ -1368,3 +1345,22 @@ recent_changes	Onlangse veranderinge
 lane_declared_label	Belastingfaktuur
 lane_owner_label	Kasnota
 money_lane_bill	Faktuur: {lane}
+sel_copy	Kopieer
+sel_select_all	Kies alles
+sel_copied	Gekopieer
+items_tmpl_khaynjo	Khaynjo-itemsjabloon
+items_tmpl_named	{name}-sjabloon
+app_tmpl_named	{name}-toepassingsjabloon
+private_code_ph	12-syferkode
+stamp_on	Stempel: op lêer
+pay_qr_on	Betalings-QR: op lêer
+pay_qr_off	Betalings-QR: geen
+items_tmpl_heading	Itemsjablone
+items_tmpl_help	Geregte, kategorieë en foto's vir jou spyskaart. Winkelinstellings en personeel bly soos hulle is.
+public_tmpl_help	Beginspyskaarte wat enigiemand kan aflaai. Benodig een keer internet.
+private_tmpl_help	Kliëntspyskaarte agter 'n 12-syferkode van jou Khaynjo-kontak.
+printers_screen_tip	Soek lys die drukkers wat hierdie toestel kan gebruik en stoor hulle vir hierdie winkel. Rekeningdrukkers: Rekening- en KOT-formaat → Rekening. Kombuis: Kombuis → Kombuisstasies.
+printers_found_none	Geen drukkers gevind nie.
+kot_copy_from	Kopieer van
+kot_copy_from_help	Kopieer die grootte, gewig en belyning van elke reël van daardie soort na hierdie een. Hierdie soort behou sy eie banier, itemvoorvoegsel en deurhaal. Stoor KOT-formaat om dit te hou.
+nav_loading	Laai tans…

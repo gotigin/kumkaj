@@ -46,6 +46,7 @@ want_xcomp=0
 want_store=0
 want_linux=0
 want_android=0
+want_wack=0
 
 case "$TIER" in
   fast) want_fast=1 ;;
@@ -55,13 +56,14 @@ case "$TIER" in
   full) want_fast=1; want_ui=1; want_visual=1; want_resilience=1; want_linux=1 ;;
   linux) want_linux=1 ;;
   android) want_android=1 ;;
+  wack|windows) want_wack=1 ;;
   store|package)
     want_fast=1; want_ui=1; want_visual=1; want_resilience=1; want_xcomp=1; want_store=1
-    want_linux=1; want_android=1
+    want_linux=1; want_android=1; want_wack=1
     export CERT_MULTI_SIZE="${CERT_MULTI_SIZE:-1}"
     ;;
   default) want_fast=1; want_ui=1; want_visual=1; want_resilience=1 ;;
-  *) echo "unknown tier: $TIER (fast|ui|visual|resilience|full|store|default|linux|android)" >&2; exit 2 ;;
+  *) echo "unknown tier: $TIER (fast|ui|visual|resilience|full|store|default|linux|android|wack)" >&2; exit 2 ;;
 esac
 
 bin_name_for() {
@@ -351,7 +353,17 @@ run_visual() {
       metric="$(magick compare -metric AE "$ref" "$dest" "$out/diff-$name" 2>&1 || true)"
     fi
     echo "$name AE=$metric" >>"$out/log.txt"
-    if [[ "$metric" =~ ^[0-9]+$ ]] && [[ "$metric" -gt 50000 ]]; then
+    # ImageMagick 7 prints "90206.7 (0.0783045)"; older builds a bare
+    # integer. Anything that is not a number (size mismatch, unreadable
+    # file) is a failure too — the old integer-only match let every one
+    # of these pass.
+    if [[ "$metric" =~ ^([0-9]+)(\.[0-9]+)?([[:space:]]|$) ]]; then
+      if (( BASH_REMATCH[1] > ${CERT_VISUAL_MAX_AE:-50000} )); then
+        echo "$name: AE ${BASH_REMATCH[1]} > ${CERT_VISUAL_MAX_AE:-50000} (diff-$name)" >>"$out/log.txt"
+        failed=1
+      fi
+    else
+      echo "$name: compare gave no number — $metric" >>"$out/log.txt"
       failed=1
     fi
   done < <(find "$base" -name '*.png' -print0)
@@ -437,6 +449,19 @@ run_xcomp() {
     [[ -f "$ROOT/scripts/package-apple-scaffold.sh" ]]
     echo "== linux package script =="
     [[ -f "$ROOT/apps/$app/scripts/package-linux.sh" ]]
+    echo "== PowerShell scripts parse in Windows PowerShell 5.1 =="
+    # 5.1 reads a BOM-less .ps1 as Windows-1252: the UTF-8 bytes of an em
+    # dash end in 0x94 (a curly quote), which closes the string - the script
+    # does not parse (run-wack.ps1 and the uninstall data dialog, 2026-11-15).
+    # Keep .ps1 files ASCII, or save them as UTF-8 with a BOM.
+    bad_ps1=0
+    while IFS= read -r ps1; do
+      if LC_ALL=C grep -q -P '[^\x00-\x7F]' "$ROOT/$ps1" && [[ "$(head -c3 "$ROOT/$ps1" | od -An -tx1 | tr -d ' ')" != "efbbbf" ]]; then
+        echo "non-ASCII without a UTF-8 BOM: $ps1" >&2
+        bad_ps1=1
+      fi
+    done < <(git -C "$ROOT" ls-files '*.ps1')
+    [[ "$bad_ps1" -eq 0 ]]
   ) >"$out/log.txt" 2>&1
   rc=$?
   set -e
@@ -445,6 +470,35 @@ run_xcomp() {
     return 1
   fi
   pass_tier "$app" xcomp
+}
+
+# ---------- Windows App Certification Kit pre-check ----------
+# Production-env x86_64 Windows build (mingw cross), then the static checks
+# WACK makes on the .exe (and the newest dist/<Label>-*.msix when present):
+# scripts/windows/wack-precheck.sh. The real WACK run is on Windows —
+# scripts/windows/run-wack.ps1, DEV.md § Windows App Certification Kit.
+run_wack() {
+  local app="$1" out rc crate exe msix label
+  out="$OUT/wack"
+  mkdir -p "$out"
+  crate="$(bin_name_for "$app")"
+  set +e
+  (
+    set -euo pipefail
+    cd "$ROOT"
+    KUMKAJ_ENV=production cargo build --release --target x86_64-pc-windows-gnu -p "$crate"
+    exe="${CARGO_TARGET_DIR:-$ROOT/target}/x86_64-pc-windows-gnu/release/$crate.exe"
+    label="$(grep -m1 '^KUMKAJ_APP_LABEL=' "apps/$app/env/production.env" | cut -d= -f2 | tr -d '"')"
+    msix="$(ls -t dist/"$label"-*.msix 2>/dev/null | head -1 || true)"
+    bash scripts/windows/wack-precheck.sh "$exe" ${msix:+"$msix"}
+  ) >"$out/log.txt" 2>&1
+  rc=$?
+  set -e
+  if [[ "$rc" -ne 0 ]]; then
+    fail_tier "$app" wack "see $out/log.txt"
+    return 1
+  fi
+  pass_tier "$app" wack
 }
 
 # ---------- Linux packaged binary short Xvfb launch ----------
@@ -524,12 +578,16 @@ run_linux_pkg() {
       # fresh Xvfb besides the server means a window mapped.
       win_ok=1
     fi
-  elif have_cmd xwininfo; then
+  fi
+  # xlsclients lists only clients that set WM_COMMAND, and Makepad does not:
+  # an empty list with a mapped "Kumkaj" window failed this tier (2026-11-15).
+  # Ask the window tree too.
+  if [[ "$win_ok" -ne 1 ]] && have_cmd xwininfo; then
     win_dump="$(DISPLAY="$disp" xwininfo -root -tree 2>/dev/null || true)"
     if printf '%s\n' "$win_dump" | grep -qiE "$bin_name|${app}|Makepad|0x[0-9a-f]+.*: \(.*\)  [1-9]"; then
       win_ok=1
     fi
-  else
+  elif ! have_cmd xlsclients && ! have_cmd xwininfo; then
     win_ok=1 # no probe tools — cannot prove a hang; pid check only
     echo "CERT NOTE [$app/linux]: install xlsclients/xwininfo to catch no-window hangs" | tee -a "$SUMMARY"
   fi
@@ -830,6 +888,9 @@ for app in "${APPS[@]}"; do
   fi
   if [[ "$ok" -eq 1 && "$want_android" -eq 1 ]]; then
     run_android_device "$app" || ok=0
+  fi
+  if [[ "$ok" -eq 1 && "$want_wack" -eq 1 ]]; then
+    run_wack "$app" || ok=0
   fi
   if [[ "$ok" -eq 1 && "$want_store" -eq 1 ]]; then
     run_store "$app" || ok=0

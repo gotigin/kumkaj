@@ -41,7 +41,7 @@ remove	Hapus
 removed_items	Item dihapus
 removed_help	Pulihkan mengembalikan item ke menu persis seperti semula — harga, foto, dan kategori. Rak hidangan kami tidak pernah dihapus, jadi hidangan selalu bisa ditambahkan lagi.
 restore_item	Pulihkan
-empty_catalog	Belum ada item. Buka Menu & item, tambah satu (nama + harga), lalu ambil pesanan.
+empty_catalog	Belum ada item.
 total	Total
 cash	Tunai
 upi	UPI
@@ -103,23 +103,14 @@ bill_item_qty	Jml
 bill_item_price	Harga
 bill_item_amount	Jumlah
 bill_item_note	Catatan
-bill_item_col_gap	Jarak kolom
 bill_item_col_order	Urutan kolom
 bill_item_col_sep	Garis kolom
-bill_item_gap_tight	Rapat
-bill_item_gap_comfort	Nyaman
-bill_item_gap_wide	Lebar
-bill_item_num_width	Kolom angka
-bill_item_num_compact	Ringkas
-bill_item_num_comfort	Nyaman
-bill_item_num_wide	Lebar
-bill_item_num_align	Rata angka
-bill_item_gap_em	Jarak (em)
-bill_item_qty_min	Jml minimum (em)
-bill_item_price_min	Harga minimum (em)
-bill_item_amount_min	Nilai minimum (em)
-kot_item_qty_width	Kolom jumlah
-kot_item_num_align	Rata jumlah
+slip_columns	Kolom
+slip_col_width	Lebar (mm)
+slip_col_start	Spasi awal (px)
+slip_col_end	Spasi akhir (px)
+slip_col_align	Perataan teks
+slip_columns_help	Lebar setiap kolom sudah termasuk spasi awal dan akhirnya. Teks dibungkus di dalam kolomnya; bagian yang melewati lebar konten terpotong, di kertas maupun di pratinjau.
 bill_total_qty_label	Label jumlah total
 bill_total_subtotal_label	Label subtotal
 bill_total_grand_label	Label total
@@ -221,7 +212,6 @@ sidebar_order_saved	Pesanan sidebar tersimpan
 sidebar_visibility_saved	Visibilitas sidebar tersimpan
 amounts_hide	Sembunyikan
 amounts_show	Tampilkan
-printers_none_hint	Simpan printer di perangkat ini terlebih dahulu, lalu tambahkan ke Bill atau dapur
 counter	Konter
 dine_in	Makan di tempat
 takeaway	Bawa pulang
@@ -328,8 +318,6 @@ selected_language	Terpilih
 continue	Lanjut
 this_device	PERANGKAT INI
 device_use_q	Bagaimana perangkat ini akan digunakan?
-last_server_mode	Sebelumnya server — ketuk untuk lanjut
-last_client_mode	Sebelumnya klien — ketuk untuk lanjut
 choose_server	Pilih server
 choose_server_hint	Perangkat ini sudah memiliki server. Buka satu, atau buat server baru untuk usaha lain.
 create_new_server	Buat server baru
@@ -391,7 +379,7 @@ attachments_last_expense	Lampiran (biaya terakhir)
 bank	Bank
 bank_in	Masuk bank
 bank_out	Keluar bank
-bank_reconciliation	Rekonsiliasi bank (centang sesuai mutasi)
+bank_reconciliation	Rekonsiliasi bank
 bank_to_till	Bank → til
 book_add_dish	Pesan — tambah hidangan / item
 book_opening_credit	Booking — kredit awal
@@ -744,7 +732,6 @@ station_print_pick_first	Pilih stasiun dapur dulu
 station_print_editing	Mengedit printer “{name}”
 station_vps_dd	Printer stasiun ini
 station_vps_dd_n	{n} printer · ketuk untuk mengubah
-station_vps_empty	Belum ada printer — cari di Pengaturan → Printer
 bill_printers_dd	Printer untuk tagihan
 bill_printers_dd_n	{n} printer untuk tagihan · ketuk untuk mengubah
 job_layout	Tata letak
@@ -889,7 +876,7 @@ net_word	Neto
 offline_badge	OFFLINE
 optional_login_help	Login opsional (ID + kata sandi). Pemilik mengaturnya sekali; setelah itu hanya pengguna yang bisa mengubah kata sandi.
 or_unlock_login	Atau buka kunci dengan ID login + kata sandi
-permission_preset	Preset izin (apa yang bisa diakses)
+permission_preset	Preset izin
 preset_help_khaynjo	Kasir: jual. Manajer: jual + item + batal/ubah.
 product_locked_khaynjo	Khaynjo
 product_only_khaynjo	Aplikasi ini hanya Khaynjo — sistem operasi restoran. Usaha lain punya produk Kumkaj tersendiri.
@@ -961,10 +948,6 @@ pin_hint_paired	Til tambahan terpasang — buka kunci untuk menjual
 pin_hint_pair_first	Til tambahan — pasangkan ke perangkat toko dulu
 unlock_to_continue	Buka kunci untuk lanjut
 no_staff_yet	Belum ada staf — buka kunci sebagai Pemilik, lalu Tim
-status_server_set_pin	Mode server — atur PIN pemilik
-status_server_tills	Mode server — til tambahan bisa bergabung. Buka kunci
-status_server_unlock	Mode server — buka kunci sebagai Pemilik
-status_client_unlock	Mode klien — buka kunci untuk menjual
 icon_new_selected	Ikon: file baru dipilih — ketuk Simpan merek
 icon_custom	Ikon: tanda toko Anda sendiri
 icon_default	Ikon: tanda Kumkaj (bawaan) — pilih milik Anda
@@ -1033,7 +1016,7 @@ book_kind_balance	Neraca
 order_help	Pilih pesanan terbuka, atau pilih meja dan mulai yang baru. Ketuk item siap, kirim KOT, tagih satu atau lebih item, bagi tagihan, dan selesaikan pembayaran.
 floor_help	Setiap meja menunjukkan apakah tamu duduk, berapa tagihan terbuka mereka, dan siapa yang butuh pelayanan berikutnya.
 kitchen_help	Lacak yang siap per varian atau per item — catat di KOT sesuai keinginan.
-kitchen_empty	Belum ada yang terbuka — pesanan baru muncul di sini.
+kitchen_empty	Belum ada yang terbuka.
 add_a_table	Tambah meja
 add_station_heading	Tambah stasiun · mis. Tandoor, India Selatan
 categories_help	Kategori menunjukkan bagian menu mana suatu hidangan berasal — mis. camilan, hidangan utama, atau biryani. Buat kategori dengan cara Anda: pilih nama saran kami, ganti namanya, atau tambahkan sendiri.
@@ -1131,7 +1114,6 @@ bill_format_help	Dicetak di bawah nama restoran pada setiap tagihan. Pisahkan ba
 bill_header_ph	Alamat | telepon
 fssai_ph	No. lisensi FSSAI (India)
 bill_footer_ph	Kaki (mis. Terima kasih, datang lagi)
-save_bill_format	Simpan format tagihan
 reset_bill_format	Reset bawaan
 bill_format_reset	Format tagihan direset
 reset_kot_format	Reset bawaan
@@ -1201,13 +1183,11 @@ kot_copies_3	3
 kot_title_ph	Judul (kosong = KOT - KITCHEN ORDER)
 kot_footer_ph	Catatan dapur (opsional, tanpa harga)
 kot_preview	Pratinjau
-save_kot_format	Simpan format KOT
 test_kot_format	Uji KOT
 test_kot_sent	Pratinjau tiket dapur dikirim
 test_bill_format	Uji tagihan
 test_bill_sent	Pratinjau tagihan dikirim
 test_print_no_printer	Tidak ada printer untuk pekerjaan tersebut — pilih satu di layar ini
-kot_format_saved	Format KOT disimpan
 std_print	Ukuran cetak tagihan
 std_print_help	Ukuran huruf untuk tagihan Standard Potret dan Lanskap (KOT termal terpisah). Ukuran sama di kedua orientasi.
 std_size_s	Kecil
@@ -1264,7 +1244,6 @@ new_items_head	Belum dikirim
 price_ph	Harga
 price_ph_gst_inside	Harga ({tax} termasuk)
 cancel_needs_table	Buka pesanan ini dari Lantai (meja) untuk membatalkan setelah dapur — KOT konter tetap di tiket sampai bayar
-tax_rates_missing_hint	Tidak ada tarif {tax} pada hidangan ini — di Menu atur tarif (pada {tax} inclusive harga sudah termasuk {tax})
 taxable_value	Nilai kena pajak
 gst_inside_price_note	({tax} termasuk)
 start_with_template	Mulai dengan templat menu kami
@@ -1318,9 +1297,7 @@ order_empty_pick	Pesanan kosong — ketuk “Tambah hidangan” di atas untuk me
 add_dishes	Tambah hidangan
 order_so_far	Di pesanan ini: {n} · {total}
 no_dish_match	Tidak ada hidangan yang cocok dengan “{q}”
-pick_dishes_help	Ketuk hidangan untuk menambah · pilih kategori untuk mempersempit
 pick_done	Selesai
-pick_done_dd	Selesai · {label}
 printer_route_mode	Jika ada beberapa printer di tempat ini
 printer_mode_first	Yang pertama yang berfungsi
 printer_mode_all	Cetak di semua
@@ -1368,3 +1345,22 @@ recent_changes	Perubahan terbaru
 lane_declared_label	Faktur pajak
 lane_owner_label	Memo tunai
 money_lane_bill	Tagihan: {lane}
+sel_copy	Salin
+sel_select_all	Pilih semua
+sel_copied	Disalin
+items_tmpl_khaynjo	Templat item Khaynjo
+items_tmpl_named	Templat {name}
+app_tmpl_named	Templat aplikasi {name}
+private_code_ph	Kode 12 digit
+stamp_on	Stempel: tersimpan
+pay_qr_on	QR bayar: tersimpan
+pay_qr_off	QR bayar: tidak ada
+items_tmpl_heading	Template item
+items_tmpl_help	Hidangan, kategori, dan foto untuk menu Anda. Pengaturan toko dan staf tetap seperti semula.
+public_tmpl_help	Menu awal yang bisa diunduh siapa saja. Perlu internet sekali.
+private_tmpl_help	Menu klien yang dikunci dengan kode 12 digit dari kontak Khaynjo Anda.
+printers_screen_tip	Cari menampilkan printer yang bisa dipakai perangkat ini dan menyimpannya untuk toko ini. Printer tagihan: Format Tagihan & KOT → Tagihan. Dapur: Dapur → Stasiun dapur.
+printers_found_none	Tidak ada printer yang ditemukan.
+kot_copy_from	Salin dari
+kot_copy_from_help	Menyalin ukuran, ketebalan, dan perataan setiap baris dari jenis itu ke jenis ini. Jenis ini tetap memakai banner, awalan item, dan coretannya sendiri. Simpan format KOT untuk mempertahankannya.
+nav_loading	Memuat…

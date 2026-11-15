@@ -384,12 +384,7 @@ fn device_printers_from_value(value: serde_json::Value) -> DevicePrinters {
         PrintFormat::ensure_builtins(&mut out.formats);
         return out;
     }
-    let receipt = value
-        .get("receipt")
-        .and_then(|v| v.as_str())
-        .unwrap_or("")
-        .to_string();
-    migrate_legacy(&receipt)
+    DevicePrinters::default()
 }
 
 fn scrub_fake_default_printers(cfg: &mut DevicePrinters) {
@@ -404,38 +399,6 @@ fn scrub_fake_default_printers(cfg: &mut DevicePrinters) {
         .collect();
     for id in fake {
         cfg.remove_printer(&id);
-    }
-}
-
-/// Turn the old single `receipt` string into a pool + routes.
-/// Blank receipt → empty route (no invented "Default" printer).
-pub fn migrate_legacy(receipt: &str) -> DevicePrinters {
-    let mut printers = Vec::new();
-    let receipt_ids = if receipt.trim().is_empty() {
-        Vec::new()
-    } else {
-        let id = uuid::Uuid::new_v4().to_string();
-        printers.push(NamedPrinter {
-            id: id.clone(),
-            label: "Receipt printer".into(),
-            target: receipt.trim().to_string(),
-            _legacy_mode: None,
-        });
-        vec![id]
-    };
-    DevicePrinters {
-        printers,
-        formats: vec![
-            PrintFormat::standard_portrait(),
-            PrintFormat::standard_landscape(),
-            PrintFormat::kot(),
-        ],
-        routes: PrintRoutes {
-            receipt: receipt_ids,
-            label: Vec::new(),
-            receipt_format: FORMAT_STANDARD_PORTRAIT.into(),
-            label_format: FORMAT_KOT.into(),
-        },
     }
 }
 
@@ -1446,6 +1409,22 @@ fn print_system_raw(name: Option<&str>, bytes: &[u8]) -> Result<(), String> {
     if let Some(addr) = name.and_then(cups_socket_address) {
         return print_network_bytes(&addr, bytes);
     }
+    // A CUPS queue that is a USB printer on this computer: write to its
+    // device node, paced and confirmed like a `usb:` printer. CUPS's usb
+    // backend holds the printer ~8 s per job (it waits 7 s for the printer's
+    // back channel, then 1 s more), so every slip came back "still printing"
+    // and the next slip queued behind it (2026-11-14). Node gone or busy
+    // (CUPS is printing), or jobs already queued: CUPS, in order.
+    #[cfg(target_os = "linux")]
+    if let Some(name) = name
+        && let Some(node) = cups_local_usb_node(name)
+        && let Ok(file) = crate::print_usb::open_usblp(&node)
+    {
+        let node = node.display().to_string();
+        eprintln!("[print] usb direct printer={name} node={node}");
+        crate::diag::info(crate::diag::Cat::Print, "usb_direct", format!("printer={name} node={node}"));
+        return crate::print_usb::write_usblp(file, bytes);
+    }
     let dir = std::env::temp_dir().join("kumkaj-thermal-raw");
     fs::create_dir_all(&dir).map_err(|e| e.to_string())?;
     let path = dir.join(format!("{}.bin", uuid::Uuid::new_v4()));
@@ -1552,6 +1531,50 @@ fn cups_job_pending(job: &str) -> bool {
     String::from_utf8_lossy(&out.stdout)
         .lines()
         .any(|l| l.split_whitespace().next() == Some(job))
+}
+
+/// The usblp node of a CUPS queue whose device is a USB printer on this
+/// computer (`lpstat -v NAME` → `usb://Maker/Model?serial=X`), while CUPS
+/// has no job queued for it.
+#[cfg(target_os = "linux")]
+fn cups_local_usb_node(name: &str) -> Option<std::path::PathBuf> {
+    let out = Command::new("lpstat").args(["-v", name]).output().ok()?;
+    let serial = parse_cups_usb_serial(&String::from_utf8_lossy(&out.stdout))?;
+    let queued = Command::new("lpstat").args(["-o", name]).output().ok()?;
+    if !queued.status.success() || !String::from_utf8_lossy(&queued.stdout).trim().is_empty() {
+        return None;
+    }
+    crate::print_usb::usblp_path_for_serial(&serial)
+}
+
+/// The `serial=` of an `lpstat -v` line for a `usb://` device, decoded.
+/// Another backend, or a USB device named without a serial: `None` (two
+/// identical printers could not be told apart).
+#[cfg(any(target_os = "linux", test))]
+fn parse_cups_usb_serial(lpstat: &str) -> Option<String> {
+    let uri = lpstat.split("usb://").nth(1)?.split_whitespace().next()?;
+    let raw = uri.split_once('?')?.1.split('&').find_map(|kv| kv.strip_prefix("serial="))?;
+    let bytes = raw.as_bytes();
+    let mut out = Vec::with_capacity(bytes.len());
+    let mut i = 0;
+    while i < bytes.len() {
+        let hex = (bytes[i] == b'%')
+            .then(|| raw.get(i + 1..i + 3))
+            .flatten()
+            .and_then(|h| u8::from_str_radix(h, 16).ok());
+        match hex {
+            Some(b) => {
+                out.push(b);
+                i += 3;
+            }
+            None => {
+                out.push(bytes[i]);
+                i += 1;
+            }
+        }
+    }
+    let serial = String::from_utf8_lossy(&out).trim().to_string();
+    (!serial.is_empty()).then_some(serial)
 }
 
 /// `host:port` of a CUPS queue whose device is a raw socket.
@@ -1982,6 +2005,25 @@ mod pacing_tests {
         assert_eq!(parse_cups_socket_uri("device for L: usb://Zebra/ZD220"), None);
     }
 
+    /// A CUPS queue on this computer's USB is told by its serial, which is
+    /// how its device node is found (an 80 mm printer, 2026-11-14).
+    #[test]
+    fn a_cups_usb_queue_names_its_printers_serial() {
+        assert_eq!(
+            parse_cups_usb_serial("device for 80Series2: usb:///80Series2?serial=GD107B9714B7F14B0\n").as_deref(),
+            Some("GD107B9714B7F14B0")
+        );
+        assert_eq!(
+            parse_cups_usb_serial("device for TM: usb://EPSON/TM-T20II?serial=X4ZF%20012&interface=1").as_deref(),
+            Some("X4ZF 012")
+        );
+        // No serial: two identical printers could not be told apart.
+        assert_eq!(parse_cups_usb_serial("device for P: usb://Printer/80Series"), None);
+        assert_eq!(parse_cups_usb_serial("device for P: usb://Printer/80Series?serial="), None);
+        assert_eq!(parse_cups_usb_serial("device for K: socket://192.168.1.50:9100"), None);
+        assert_eq!(parse_cups_usb_serial("device for B: lpd://BRW4845E6DDDB92/BINARY_P1"), None);
+    }
+
     #[test]
     fn printer_status_offline_is_a_failure() {
         assert_eq!(escpos_status_problem(0x12), None);
@@ -2160,18 +2202,9 @@ mod tests {
     }
 
     #[test]
-    fn legacy_receipt_migrates_and_empty_label_skips() {
+    fn synthetic_default_printer_is_scrubbed() {
         let _g = CFG_LOCK.lock().unwrap();
-        let migrated = migrate_legacy("Canon_G3010");
-        assert_eq!(
-            migrated.targets_for(RouteKey::Receipt),
-            vec![PrinterTarget::Named("Canon_G3010".into())]
-        );
-        assert!(migrated.route_for(RouteKey::Label).is_empty());
-        let blank = migrate_legacy("");
-        assert!(blank.printers.is_empty());
-        assert!(blank.route_for(RouteKey::Receipt).is_empty());
-        // Scrub old synthetic Default from a new-format file.
+        // A pool entry named Default with no address is never a real printer.
         let base = std::env::temp_dir().join(format!("courier-scrub-{}", uuid::Uuid::new_v4().simple()));
         fs::create_dir_all(&base).unwrap();
         fs::write(

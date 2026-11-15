@@ -143,6 +143,26 @@ struct Shared {
     last_find: Option<Instant>,
     /// Outbox frames for the live socket (worker → watcher).
     outbox_tx: Option<std::sync::mpsc::SyncSender<String>>,
+    /// When each write was asked for — a slow answer is logged with its time.
+    asked_at: HashMap<String, Instant>,
+}
+
+/// A write answered slower than this is logged (diag `lan_write_slow`): a
+/// device's write should reach the shop in well under a second, and "it
+/// got slow" needs a number, not a guess.
+const SLOW_WRITE: Duration = Duration::from_millis(1500);
+
+/// The write `id` has its answer: log it when it was slow.
+fn note_answered(sh: &mut Shared, id: &str, label: &str) {
+    let Some(asked) = sh.asked_at.remove(id) else {
+        return;
+    };
+    let took = asked.elapsed();
+    if took >= SLOW_WRITE {
+        let msg = format!("{label}: answered after {} ms", took.as_millis());
+        eprintln!("[lan] slow write — {msg}");
+        crate::diag::warn(crate::diag::Cat::Lan, "lan_write_slow", msg);
+    }
 }
 
 fn shared() -> &'static (Mutex<Shared>, Condvar) {
@@ -172,11 +192,6 @@ pub fn set_notify(hook: fn()) {
 
 /// Start the worker for this phone's books (once; later calls only wake it).
 pub fn start(db_path: PathBuf) {
-    if let Ok(store) = Store::open_path(&db_path) {
-        if store.ensure_staff_cache_replaced().unwrap_or(false) {
-            forget_revision();
-        }
-    }
     let (lock, cvar) = shared();
     let mut sh = lock.lock().unwrap();
     sh.db_path = Some(db_path);
@@ -210,6 +225,7 @@ pub fn send(store: &Store, job: Job) -> Result<(), String> {
     }
     let (lock, cvar) = shared();
     let mut sh = lock.lock().unwrap();
+    sh.asked_at.insert(job.id.clone(), Instant::now());
     if job.queued {
         // The count is the worker's to change: it tells the screen when it does.
         sh.follow.insert(job.id.clone(), (job.done.clone(), job.follow.clone()));
@@ -262,6 +278,7 @@ fn answer_from_socket(store: &Store, id: &str, ok: bool, body: &serde_json::Valu
     if let (Some(label), Some(reply)) = (label, answer) {
         let notify = {
             let mut sh = shared().0.lock().unwrap();
+            note_answered(&mut sh, id, &label);
             let (done, follow) = sh
                 .follow
                 .remove(id)
@@ -612,14 +629,14 @@ pub fn pass(store: &Store, transport: &dyn Transport) -> bool {
         state.needs_sign_in = false;
         state.needs_update = false;
         wrote = true;
-        let (done, follow) = shared()
-            .0
-            .lock()
-            .unwrap()
+        let mut sh = shared().0.lock().unwrap();
+        note_answered(&mut sh, &item.id, &item.label);
+        let (done, follow) = sh
             .follow
             .remove(&item.id)
             .unwrap_or_else(|| (format!("{} — reached the shop", item.label), Follow::Refresh));
-        shared().0.lock().unwrap().done.push(Done { label: item.label, done, follow, reply });
+        sh.done.push(Done { label: item.label, done, follow, reply });
+        drop(sh);
         changed = true;
     }
 
@@ -648,7 +665,10 @@ pub fn pass(store: &Store, transport: &dyn Transport) -> bool {
                 wrote = true;
             }
         }
-        shared().0.lock().unwrap().done.push(Done { label: job.label, done: job.done, follow: job.follow, reply });
+        let mut sh = shared().0.lock().unwrap();
+        note_answered(&mut sh, &job.id, &job.label);
+        sh.done.push(Done { label: job.label, done: job.done, follow: job.follow, reply });
+        drop(sh);
         changed = true;
     }
 

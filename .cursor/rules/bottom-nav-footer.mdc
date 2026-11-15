@@ -23,7 +23,7 @@ footer scroll_bar_x colours   dark on footer bg (not stock light handle)
 
 - Scrollbar is the **bottommost** chrome — nothing (no DSL pad, no FOOTER_BOTTOM constant) under it.
 - Strip bottom pad is the **bar’s lane** so chips / ‹ › stay clear of the overlay.
-- **No live nav drag** on footer or rail — reorder in Settings → Sidebar with ↑↓ only.
+- **No live nav drag** on footer or rail — reorder on Settings (its Sidebar group) with ↑↓ only.
 - Duplicate the same contract per app — no shared core.
 
 ## Forbidden

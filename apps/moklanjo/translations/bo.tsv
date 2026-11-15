@@ -39,7 +39,7 @@ adding_item	སྐྱེད་ཀའི་ཚད་གསར་པ་ཁ་ས�
 editing_item	རྩོམ་སྒྲིག།
 save	ཉར་ཚགས་བྱེད་པ།
 remove	བཏོན་པ།
-empty_catalog	ད་དུང་གོང་ཚད་མེད།སྒོ་ཕྱེ་བའི་རིན་གོང་དང་ཞབས་ཞུ། གཅིག་བསྣན་ན་(མིང་+ རིན་གོང་། རྩིས་གཞི་སྤྱི་རྒྱ་)། དེ་ནས་སྔོན་མངག་བྱེད་དགོས།
+empty_catalog	ད་དུང་གོང་ཚད་མེད།
 counter_sale	ཚོང་སྒྲོམ་སྔོན་མངག་བྱས་པ།
 total	བསྡོམས་པ།
 cash	དངུལ་དངུལ།
@@ -171,8 +171,6 @@ selected_language	བདམས་ཐོན་བྱུང་།
 continue	མུ་མཐུད།
 this_device	ཡོ་ཆས་འདི།
 device_use_q	ཡོ་ཆས་འདི་ཇི་ལྟར་བེད་སྤྱོད་གཏོང་གི་རེད་དམ།
-last_server_mode	ཞབས་ཞུ་བ་ཡིན་ནམ། མུ་མཐུད་དུ་མནན་དགོས།
-last_client_mode	མཁོ་སྤྲོད་པ་རེད་དམ། མུ་མཐུད་དུ་མནན་དགོས།
 choose_server	སར་བར་འདེམས།
 choose_server_hint	ད་ཡོད་ཀྱི་སར་བར་ཁ་ཕྱེ་བའམ་ཡང་ན་ཚོང་ལས་གཞན་ཞིག་གི་ཆེད་དུ་གསར་འཛུགས་བྱེད།
 create_new_server	གསབ་ལེན་གསར་བ་བཟོས།
@@ -501,8 +499,6 @@ job_layout	བཀོད་སྒྲིག།
 job_delivery	ལས་ཀ་ཇི་ལྟར་གཏོང་བ།
 job_size	ཡིག་གཟུགས་ཆེ་ཆུང་།
 job_size_ph	དཔེར་ན། ༡༨ ༢༠ ༢༦...
-save_receipt_format	Save receipt format
-save_label_format	Save label format
 test_receipt_format	Test receipt
 test_label_format	Test label
 test_receipt_sent	Sample receipt sent
@@ -610,7 +606,7 @@ units_heading	ཚད་གཞི།
 booking_measures	སྔོན་མངག་བྱེད་ཐབས།
 drawer_count	ཤུད་སྒམ་གྱི་གྲངས་འབོར། (འདམ་ཀ)
 spreadsheet_csv	གློག་རྡུལ་རེའུ་མིག (CSV)
-bank_reconciliation	དངུལ་ཁང་མཉམ་སྒྲིག (ཁྱེད་ཀྱི་དངུལ་ཁང་གི་སྙན་ཞུའི་ཐོག་ལ་རྟགས་བརྒྱབ་དགོས།)
+bank_reconciliation	དངུལ་ཁང་མཉམ་སྒྲིག
 book_add_product	དེབ་ — ཐོན་རྫས / གོང་ཚད་ཁ་སྣོན་བྱས་པ།
 book_opening_credit	རྩིས་ཁྲ། བུ་ལོན་ཁ་ཕྱེ་བ།
 account_kind	རྩིས་ཁྲའི་རིགས། (གཅིག་ལ་རྡེབ།)
@@ -650,7 +646,7 @@ net_word	དྲ་བ།
 offline_badge	དྲ་རྒྱའི་ཕྱི་རོལ་དུ།
 optional_login_help	འདམ་ཀའི་ནང་འཇུག་(ID +གསང་གྲངས།) བདག་པོས་ཐེངས་གཅིག་སྒྲིག་པ་དང་། སྤྱོད་མཁན་གྱིས་རྗེས་སུ་གསང་གྲངས་བརྗེ་ཐུབ།
 or_unlock_login	ཡང་ན་ནང་འཇུག་ཨང་རྟགས་+གསང་གྲངས་བཀོལ་ནས་ལྡེ་མིག་ཕྱེ།
-permission_preset	ལས་ཀ (བརྙན་ཤེལ་དང་དབང་ཆ་སྒྲིག་བ)
+permission_preset	ལས་ཀ
 preset_help_moklanjo	དངུལ་གཉེར་པ། བཙོང་། འགན་འཛིན། བཙོངས་ + དཀར་ཆག་རྣམ་གྲངས་ + སྟོང་ཆ་/བཅོས་སྒྲིག
 product_locked_moklanjo	Moklanjo
 product_only_moklanjo	This app is Moklanjo only — books + booking desk. Other trade faces ship as separate products later.
@@ -698,10 +694,6 @@ pin_hint_paired	ཆ་སྒྲིག་མ་བྱས་བར་ཁ་སྣ�
 pin_hint_pair_first	ཁ་སྣོན། ཚོང་ཁང་གི་སྒྲིག་ཆས་དང་པོ་ཆ་སྒྲིག་བྱེད་དགོས།
 unlock_to_continue	མུ་མཐུད་དུ་སྒོ་ཕྱེ།
 no_staff_yet	ད་དུང་ལས་བྱེད་པ་མེད། བདག་པོའི་སྒོ་ཕྱེ་ནས་དེ་ནས་རུ་ཁག
-status_server_set_pin	ཞབས་ཞུའི་ཐབས་ལམ། བདག་པོ་སྒྲིག་དགོས། PIN
-status_server_tills	ཞབས་ཞུའི་ཐབས་ལམ། - འཕར་མ་མཉམ་ཞུགས་བྱེད་ཐུབ། ལྡེ་མིག་ཕྱེ་བ།
-status_server_unlock	ཞབས་ཞུའི་ཐབས་ལམ། བདག་པོ་ལྟར་ལྡེ་མིག་ཕྱེ།
-status_client_unlock	མཁོ་སྤྲོད་བྱེད་སྟངས། བཙོངས་པའི་ལྡེ་མིག་ཕྱེ།
 icon_new_selected	འདྲ་པར་: ཡིག་ཆ་གསར་བ་འདེམས་པ་ — ཚོང་རྟགས་ཉར་ཚགས་བྱེད་པ།
 icon_custom	འདྲ་སྐུ་: རང་མོས་ས་གནས་ཀྱི་རྟགས།
 icon_default	འདྲ་པར་: Kumkaj རྟགས། (སྔོན་སྒྲིག) — སྲོལ་རྒྱུན་ཞིག་འདེམས།
@@ -834,3 +826,7 @@ role_help_supplier	Role: Supplier — AP for purchases.
 lane_declared_label	རྩིས་ཐོ་སྔོན་མངག་བྱས་པ།
 lane_owner_label	དངུལ་སྨར་སྔོན་མངག་བྱས་པ།
 money_lane_bill	བིལ་: {lane}
+sel_copy	འདྲ་བཤུས།
+sel_select_all	ཚང་མ་འདེམས།
+sel_copied	འདྲ་བཤུས་ཟིན།
+nav_loading	ནང་འཇུག་བྱེད་བཞིན་པ…

@@ -39,7 +39,7 @@ adding_item	Đang thêm cước mới
 editing_item	Đang sửa
 save	Lưu
 remove	Xóa
-empty_catalog	Chưa có cước. Mở Cước & dịch vụ, thêm một cái (tên + giá, đơn vị kg), rồi Gửi hàng.
+empty_catalog	Chưa có cước.
 counter_sale	Gửi tại quầy
 total	Tổng
 cash	Tiền mặt
@@ -171,8 +171,6 @@ selected_language	Đã chọn
 continue	Tiếp tục
 this_device	THIẾT BỊ NÀY
 device_use_q	Thiết bị này sẽ được dùng thế nào?
-last_server_mode	Trước là máy chủ — chạm để tiếp tục
-last_client_mode	Trước là máy khách — chạm để tiếp tục
 choose_server	Chọn máy chủ
 choose_server_hint	Thiết bị này đã có máy chủ. Mở một cái, hoặc tạo máy chủ mới cho doanh nghiệp khác.
 create_new_server	Tạo máy chủ mới
@@ -501,8 +499,6 @@ job_layout	Bố cục
 job_delivery	Cách công việc được gửi đi
 job_size	Cỡ chữ
 job_size_ph	vd. 18, 20, 26…
-save_receipt_format	Lưu định dạng biên nhận
-save_label_format	Lưu định dạng nhãn
 test_receipt_format	Biên nhận kiểm tra
 test_label_format	Nhãn kiểm tra
 test_receipt_sent	Đã gửi biên nhận mẫu
@@ -610,7 +606,7 @@ units_heading	Đơn vị
 booking_measures	Kích thước đơn
 drawer_count	Đếm ngăn tiền (tùy chọn)
 spreadsheet_csv	Bảng tính (CSV)
-bank_reconciliation	Đối chiếu ngân hàng (đánh dấu theo sao kê)
+bank_reconciliation	Đối chiếu ngân hàng
 book_add_product	Gửi — thêm sản phẩm / cước
 book_opening_credit	Gửi — nợ đầu kỳ
 account_kind	Loại tài khoản (chạm một)
@@ -650,7 +646,7 @@ net_word	Ròng
 offline_badge	NGOẠI TUYẾN
 optional_login_help	Đăng nhập tùy chọn (mã + mật khẩu). Chủ đặt một lần; sau đó chỉ người dùng mới đổi được mật khẩu.
 or_unlock_login	Hoặc mở khóa bằng mã đăng nhập + mật khẩu
-permission_preset	Công việc (đặt màn hình và quyền)
+permission_preset	Công việc
 preset_help_moklanjo	Thu ngân: bán. Quản lý: bán + mục + hủy/sửa.
 product_locked_moklanjo	Moklanjo
 product_only_moklanjo	Ứng dụng này chỉ là Moklanjo — sổ sách + quầy gửi hàng. Các ngành khác sẽ có sản phẩm riêng sau.
@@ -698,10 +694,6 @@ pin_hint_paired	Quầy phụ đã ghép — mở khóa để bán
 pin_hint_pair_first	Quầy phụ — ghép với thiết bị cửa hàng trước
 unlock_to_continue	Mở khóa để tiếp tục
 no_staff_yet	Chưa có nhân viên — mở khóa với tư cách Chủ, rồi Nhóm
-status_server_set_pin	Chế độ máy chủ — đặt PIN chủ
-status_server_tills	Chế độ máy chủ — quầy phụ có thể tham gia. Mở khóa
-status_server_unlock	Chế độ máy chủ — mở khóa với tư cách Chủ
-status_client_unlock	Chế độ máy khách — mở khóa để bán
 icon_new_selected	Biểu tượng: đã chọn tệp mới — chạm Lưu thương hiệu
 icon_custom	Biểu tượng: dấu hiệu cửa hàng của bạn
 icon_default	Biểu tượng: dấu Kumkaj (mặc định) — chọn của bạn
@@ -834,3 +826,7 @@ role_help_supplier	Vai trò: Nhà cung cấp - AP để mua hàng.
 lane_declared_label	Đặt tài khoản
 lane_owner_label	Đặt phòng bằng tiền mặt
 money_lane_bill	Bill: {lane}
+sel_copy	Sao chép
+sel_select_all	Chọn tất cả
+sel_copied	Đã sao chép
+nav_loading	Đang tải…

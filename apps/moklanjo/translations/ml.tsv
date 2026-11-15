@@ -39,7 +39,7 @@ adding_item	പുതിയ നിരക്ക് ചേർക്കുന്ന
 editing_item	എഡിറ്റ് ചെയ്യുന്നു
 save	സേവ് ചെയ്യുക
 remove	നീക്കം ചെയ്യുക
-empty_catalog	ഇതുവരെ നിരക്കുകളില്ല. നിരക്കുകളും സേവനങ്ങളും തുറന്ന് ഒന്ന് ചേർക്കുക (പേര് + വില, യൂണിറ്റ് kg), പിന്നെ ബുക്കിംഗ്.
+empty_catalog	ഇതുവരെ നിരക്കുകളില്ല.
 counter_sale	കൗണ്ടർ ബുക്കിംഗ്
 total	ആകെ
 cash	പണം
@@ -171,8 +171,6 @@ selected_language	തിരഞ്ഞെടുത്തത്
 continue	തുടരുക
 this_device	ഈ ഉപകരണം
 device_use_q	ഈ ഉപകരണം എങ്ങനെ ഉപയോഗിക്കും?
-last_server_mode	മുമ്പ് സെർവർ — തുടരാൻ ടാപ്പ് ചെയ്യുക
-last_client_mode	മുമ്പ് ക്ലയന്റ് — തുടരാൻ ടാപ്പ് ചെയ്യുക
 choose_server	സെർവർ തിരഞ്ഞെടുക്കുക
 choose_server_hint	ഈ ഉപകരണത്തിൽ ഇതിനകം സെർവറുകളുണ്ട്. ഒന്ന് തുറക്കുക, അല്ലെങ്കിൽ മറ്റൊരു ബിസിനസിന് പുതിയ സെർവർ ഉണ്ടാക്കുക.
 create_new_server	പുതിയ സെർവർ ഉണ്ടാക്കുക
@@ -501,8 +499,6 @@ job_layout	ലേഔട്ട്
 job_delivery	ജോലി എങ്ങനെ അയയ്ക്കുന്നു
 job_size	ഫോണ്ട് വലുപ്പം
 job_size_ph	ഉദാ. 18, 20, 26…
-save_receipt_format	രസീത് ഫോർമാറ്റ് സേവ് ചെയ്യുക
-save_label_format	ലേബൽ ഫോർമാറ്റ് സേവ് ചെയ്യുക
 test_receipt_format	ടെസ്റ്റ് രസീത്
 test_label_format	ടെസ്റ്റ് ലേബൽ
 test_receipt_sent	സാമ്പിൾ രസീത് അയച്ചു
@@ -610,7 +606,7 @@ units_heading	യൂണിറ്റുകൾ
 booking_measures	ബുക്കിംഗ് അളവുകൾ
 drawer_count	ഡ്രോയർ എണ്ണൽ (ഓപ്ഷണൽ)
 spreadsheet_csv	സ്പ്രെഡ്‌ഷീറ്റ് (CSV)
-bank_reconciliation	ബാങ്ക് അനുരഞ്ജനം (നിങ്ങളുടെ ബാങ്ക് സ്റ്റേറ്റ്‌മെന്റുമായി ടിക്ക് ചെയ്യുക)
+bank_reconciliation	ബാങ്ക് അനുരഞ്ജനം
 book_add_product	ബുക്ക് — ഉൽപ്പന്നം / നിരക്ക് ചേർക്കുക
 book_opening_credit	ബുക്ക് — ആരംഭ കടം
 account_kind	അക്കൗണ്ട് തരം (ഒന്ന് അമർത്തുക)
@@ -650,7 +646,7 @@ net_word	നെറ്റ്
 offline_badge	ഓഫ്‌ലൈൻ
 optional_login_help	ഓപ്ഷണൽ ലോഗിൻ (ഐഡി + പാസ്‌വേഡ്). ഉടമ ഒരിക്കൽ നിശ്ചയിക്കും; പിന്നീട് ഉപയോക്താവിന് മാത്രമേ പാസ്‌വേഡ് മാറ്റാൻ കഴിയൂ.
 or_unlock_login	അല്ലെങ്കിൽ ലോഗിൻ ഐഡി + പാസ്‌വേഡ് ഉപയോഗിച്ച് അൺലോക്ക് ചെയ്യുക
-permission_preset	ജോലി (സ്ക്രീനുകളും അവകാശങ്ങളും നിശ്ചയിക്കും)
+permission_preset	ജോലി
 preset_help_moklanjo	കാഷ്യർ: വിൽക്കുക. മാനേജർ: വിൽക്കുക + ഇനങ്ങൾ + റദ്ദാക്കൽ/ഭേദഗതി.
 product_locked_moklanjo	Moklanjo
 product_only_moklanjo	ഈ ആപ്പ് Moklanjo മാത്രം — കണക്കുകൾ + ബുക്കിംഗ് ഡെസ്ക്. മറ്റു വ്യാപാരങ്ങൾക്കുള്ളവ പിന്നീട് പ്രത്യേകം വരും.
@@ -698,10 +694,6 @@ pin_hint_paired	അധിക ടിൽ ജോടിയാക്കി — വി
 pin_hint_pair_first	അധിക ടിൽ — ആദ്യം കട ഉപകരണവുമായി ജോടിയാക്കുക
 unlock_to_continue	തുടരാൻ അൺലോക്ക് ചെയ്യുക
 no_staff_yet	ഇതുവരെ ജീവനക്കാരില്ല — ഉടമയായി അൺലോക്ക് ചെയ്യുക, പിന്നെ Team
-status_server_set_pin	സെർവർ മോഡ് — ഉടമ PIN നിശ്ചയിക്കുക
-status_server_tills	സെർവർ മോഡ് — അധിക ടില്ലുകൾ ചേരാം. അൺലോക്ക് ചെയ്യുക
-status_server_unlock	സെർവർ മോഡ് — ഉടമയായി അൺലോക്ക് ചെയ്യുക
-status_client_unlock	ക്ലയന്റ് മോഡ് — വിൽക്കാൻ അൺലോക്ക് ചെയ്യുക
 icon_new_selected	ഐക്കൺ: പുതിയ ഫയൽ തിരഞ്ഞെടുത്തു — ബ്രാൻഡ് സേവ് ചെയ്യുക അമർത്തുക
 icon_custom	ഐക്കൺ: നിങ്ങളുടെ കടയുടെ അടയാളം
 icon_default	ഐക്കൺ: Kumkaj അടയാളം (ഡിഫോൾട്ട്) — നിങ്ങളുടേത് തിരഞ്ഞെടുക്കുക
@@ -834,3 +826,7 @@ role_help_supplier	റോൾ: വിതരണക്കാരൻ — വാങ്
 lane_declared_label	അക്കൗണ്ട് ബുക്കിംഗ്
 lane_owner_label	പണം ബുക്കിംഗ്
 money_lane_bill	ബിൽ: {lane}
+sel_copy	പകർത്തുക
+sel_select_all	എല്ലാം തിരഞ്ഞെടുക്കുക
+sel_copied	പകർത്തി
+nav_loading	ലോഡ് ചെയ്യുന്നു…

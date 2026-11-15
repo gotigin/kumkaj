@@ -41,7 +41,7 @@ remove	निष्कासयतु
 removed_items	मेनू-वस्तूनि निष्कासितानि
 removed_help	पुनर्स्थापनं मेनू-वस्तुं पुनः मेनू-मध्ये यथा आसीत् तथा स्थापयति — मूल्यं, फोटो, श्रेणी च । अस्माकं व्यञ्जनानां अलम्बः कदापि न निष्कासितः अतः पुनः सर्वदा व्यञ्जनं योजयितुं शक्यते ।
 restore_item	पुनर्स्थापनम्
-empty_catalog	अद्यापि व्यञ्जनानि नास्ति। मेनू उद्घाट्य, एकं व्यञ्जनं (नाम + मूल्यं) योजयन्तु, ततः आदेशं गृह्यताम्।
+empty_catalog	अद्यापि व्यञ्जनानि नास्ति।
 total	कुल
 cash	नगदम्
 upi	UPI
@@ -103,23 +103,14 @@ bill_item_qty	संख्या
 bill_item_price	मूल्यम्
 bill_item_amount	राशि
 bill_item_note	डिश नोट
-bill_item_col_gap	स्तम्भान्तरम्
 bill_item_col_order	स्तम्भक्रमः
 bill_item_col_sep	स्तम्भनियमाः
-bill_item_gap_tight	तंग
-bill_item_gap_comfort	आरामदायकः
-bill_item_gap_wide	विस्तृतः
-bill_item_num_width	संख्या स्तम्भ
-bill_item_num_compact	संकुचित
-bill_item_num_comfort	आरामदायकः
-bill_item_num_wide	विस्तृतः
-bill_item_num_align	संख्याः संरेखन्ति
-bill_item_gap_em	गप (एम्) ९.
-bill_item_qty_min	मात्रा मि (एम्) .
-bill_item_price_min	मूल्यं न्यूनतम (एम्) .
-bill_item_amount_min	राशि मिन (एम्) .
-kot_item_qty_width	Qty स्तम्भ
-kot_item_num_align	संख्या-संरेखणम्
+slip_columns	स्तम्भाः
+slip_col_width	विस्तारः (mm)
+slip_col_start	आरम्भावकाशः (px)
+slip_col_end	अन्तावकाशः (px)
+slip_col_align	पाठसंरेखणम्
+slip_columns_help	प्रत्येकस्य स्तम्भस्य विस्तारे तस्य आरम्भावकाशः अन्तावकाशः च अन्तर्भवतः। पाठः स्वस्तम्भस्य अन्तः एव आवेष्ट्यते; विषयविस्तारात् बहिः यत् अस्ति तत् पत्रे पूर्वावलोकने च छिद्यते।
 bill_total_qty_label	कुल qty लेबल
 bill_total_subtotal_label	उप कुल लेबल
 bill_total_grand_label	भव्य कुल लेबल
@@ -221,7 +212,6 @@ sidebar_order_saved	पार्श्वपट्टिकाक्रमः �
 sidebar_visibility_saved	पार्श्वपट्टिकादृश्यता रक्षिता
 amounts_hide	गोपयतु
 amounts_show	दर्शयतु
-printers_none_hint	प्रथमं अस्मिन् उपकरणे मुद्रकं रक्षन्तु, ततः Bill अथवा पाकशालायां योजयन्तु
 counter	गणकम्
 dine_in	भोजन-इन्
 takeaway	टेकअवे
@@ -328,8 +318,6 @@ selected_language	चयनितम्
 continue	निरन्तरं कुर्वन्तु
 this_device	एतत् यन्त्रम्
 device_use_q	एतत् यन्त्रं कथं प्रयुक्तं भविष्यति ?
-last_server_mode	Was Server — निरन्तरं कर्तुं ट्याप् कुर्वन्तु
-last_client_mode	Was Client — निरन्तरं कर्तुं ट्याप् कुर्वन्तु
 choose_server	सर्वरं चिनोतु
 choose_server_hint	विद्यमानं सर्वरं उद्घाटयन्तु, अथवा अन्यव्यापारस्य कृते एकं रचयन्तु ।
 create_new_server	नूतनं सर्वरं रचयन्तु
@@ -391,7 +379,7 @@ attachments_last_expense	संलग्नकाः (अन्तिमव्�
 bank	बैंक
 bank_in	बैंक in
 bank_out	बैंकात् नगदं बहिः
-bank_reconciliation	बैंकमेलनम् (भवतः बैंकविवरणस्य विरुद्धं टिकं कृत्वा)
+bank_reconciliation	बैंकमेलनम्
 bank_to_till	बैंक → टिल्
 book_add_dish	लेजर — डिश / मेनू मदं योजयन्तु
 book_opening_credit	लेजर — उद्घाटन क्रेडिट
@@ -744,7 +732,6 @@ station_print_pick_first	प्रथमं पाकशालास्थान
 station_print_editing	“{name}” कृते मुद्रकसम्पादनम् ।
 station_vps_dd	अस्य स्टेशनस्य कृते मुद्रकाः
 station_vps_dd_n	{n} मुद्रकाः · परिवर्तनार्थं ट्याप् कुर्वन्तु
-station_vps_empty	अद्यापि मुद्रकाः नास्ति — सेटिंग्स् → मुद्रकाः इत्यस्य अधः तान् अन्वेष्टुम्
 bill_printers_dd	बिलस्य कृते मुद्रकाः
 bill_printers_dd_n	{n} बिलस्य कृते मुद्रकाः · परिवर्तनार्थं ट्याप् कुर्वन्तु
 job_layout	विन्यासः
@@ -889,7 +876,7 @@ net_word	नेट्
 offline_badge	OFFLINE इति
 optional_login_help	वैकल्पिकं प्रवेशः (id + password)। स्वामिना एकवारं सेट् भवति; केवलं उपयोक्ता एव पश्चात् गुप्तशब्दं परिवर्तयितुं शक्नोति।
 or_unlock_login	अथवा login id + password इत्यनेन अनलॉक् कुर्वन्तु
-permission_preset	कार्यम् (पर्देषु धनक्रियाः च सेट् करोति)
+permission_preset	कार्यम्
 preset_help_khaynjo	कैशियरः विक्रयति। प्रबन्धकः विक्रयणं + मेनू-वस्तूनाम् + शून्यं/संशोधनम् ।
 product_locked_khaynjo	Khaynjo
 product_only_khaynjo	इदं एप् केवलं Khaynjo अस्ति — रेस्टोरन्ट् ऑपरेटिंग् सिस्टम्। अन्ये व्यापारमुखाः पृथक् Kumkaj उत्पादरूपेण जहाजाः।
@@ -961,10 +948,6 @@ pin_hint_paired	अतिरिक्तं यावत् युग्मि�
 pin_hint_pair_first	अतिरिक्त टिल् — प्रथमं दुकानयन्त्रं प्रति युग्मम्
 unlock_to_continue	निरन्तरं कर्तुं अनलॉकं कुर्वन्तु
 no_staff_yet	अद्यापि कोऽपि कर्मचारी नास्ति — Owner इति रूपेण अनलॉक् कुर्वन्तु, ततः Team इति
-status_server_set_pin	सर्वर मोड — सेट् स्वामी PIN
-status_server_tills	Server Mode — अतिरिक्त tills सम्मिलितुं शक्नुवन्ति । अनलॉक
-status_server_unlock	Server Mode — Owner इति रूपेण अनलॉक् कुर्वन्तु
-status_client_unlock	Client Mode — विक्रयणार्थं अनलॉक् कुर्वन्तु
 icon_new_selected	चिह्नम्: नूतनसञ्चिका चयनिता — ब्राण्ड् रक्षतु इति ट्याप् कुर्वन्तु
 icon_custom	चिह्नम् : कस्टम स्थल चिह्न
 icon_default	चिह्नम्: Kumkaj चिह्नं (पूर्वनिर्धारितम्) — इष्टं चिनुत
@@ -1033,7 +1016,7 @@ book_kind_balance	तुलनपत्रम्
 order_help	तत् योजयितुं मेनू-वस्तुं ट्याप् कुर्वन्तु ।
 floor_help	आदेशं ग्रहीतुं वा परिवर्तयितुं वा भोजनमेजं ट्याप् कुर्वन्तु। रङ्गाः निःशुल्कं दर्शयन्ति → उपविष्टः → पाकशाला → सज्जः → भोजनं → बिलम् → भुक्तम्। प्रतीक्षासूची, आरक्षणं, अतिरिक्तभोजनसारणी च अधोलिखितेषु विभागेषु सन्ति ।
 kitchen_help	पाकशाला टिकट (KOT), नवीनतम अंतिम। आरम्भ → सज्ज → कृतं टिकटं सह चालयति। टिकटेषु कदापि मूल्यं न दृश्यते।
-kitchen_empty	मुक्तटिकटं नास्ति। Order अथवा Dining hall इत्यस्मात् प्रेषितः KOT अत्र दर्शयति।
+kitchen_empty	मुक्तटिकटं नास्ति।
 add_a_table	भोजनमेजं योजयन्तु
 add_station_heading	पाकशालास्थानकं योजयन्तु
 categories_help	तस्य वर्गस्य अधः उपरि मेनू-वस्तुं सञ्चिकां कर्तुं Use इति ट्याप् कुर्वन्तु । फोटो श्रेणीं चित्रं ददाति; एकं विना तस्य आद्याक्षराणि दर्शयति।
@@ -1131,7 +1114,6 @@ bill_format_help	प्रत्येकं बिलस्य उपरि भ
 bill_header_ph	पता | phone
 fssai_ph	FSSAI अनुज्ञापत्र सं. (भारत) ९.
 bill_footer_ph	पादलेखः (उदा. धन्यवादः, पुनः आगच्छन्तु)
-save_bill_format	बिल प्रारूपं रक्षन्तु
 reset_bill_format	पूर्वनिर्धारितरूपेण पुनः सेट् कुर्वन्तु
 bill_format_reset	बिल प्रारूपं पूर्वनिर्धारितरूपेण पुनः सेट् कुर्वन्तु
 reset_kot_format	पूर्वनिर्धारितरूपेण पुनः सेट् कुर्वन्तु
@@ -1201,13 +1183,11 @@ kot_copies_3	3
 kot_title_ph	शीर्षक (रिक्त = KOT - रसोईघर आदेश)
 kot_footer_ph	किचन नोट (वैकल्पिकं, मूल्यं नास्ति)
 kot_preview	पूर्वावलोकनम्
-save_kot_format	KOT प्रारूपं रक्षतु
 test_kot_format	एकं परीक्षणं प्रयतस्व KOT .
 test_kot_sent	पाकशाला टिकट पूर्वावलोकनं प्रेषितम्
 test_bill_format	परीक्षणविधेयकम्
 test_bill_sent	विधेयक पूर्वावलोकनं प्रेषितम्
 test_print_no_printer	तस्य कार्यस्य कृते मुद्रकः नास्ति — अस्मिन् पटले एकं चिनोतु
-kot_format_saved	KOT प्रारूपं रक्षितम्
 std_print	बिल मुद्रण आकार
 std_print_help	OS / दस्तावेजमुद्रकेषु Standard Portrait तथा Landscape बिलकार्यस्य कृते फन्ट् आकारः (बिन्दून् प्रविष्टं कुर्वन्तु — लघु/सामान्य/बृहत् न)। उभयभिमुखीकरणेषु समानः आकारः । पाकशालायाः स्लिप् आकाराः KOT ट्याब् मध्ये सन्ति ।
 std_size_s	लघु
@@ -1264,7 +1244,6 @@ new_items_head	अद्यापि न प्रेषितम्
 price_ph	मूल्यम्
 price_ph_gst_inside	मूल्य ({tax} सहित)
 cancel_needs_table	पाकशालायां भवति ततः परं रद्दं कर्तुं Dining hall screen (dining table) तः एतत् आदेशं उद्घाटयन्तु — counter KOTs टिकटं यावत् भवन्तः भुगतानं न गृह्णन्ति तावत् यावत् तिष्ठन्ति
-tax_rates_missing_hint	एतेषु व्यञ्जनेषु {tax} दरः नास्ति — मेनू निर्धारिते करदरेण (मूल्येषु पूर्वमेव {tax} समावेशितस्य अन्तर्गतं {tax} अन्तर्भवति)
 taxable_value	करयोग्य मूल्य
 gst_inside_price_note	({tax} समावेशी) २.
 start_with_template	अस्माकं मेनू टेम्पलेट् इत्यनेन आरभत
@@ -1318,9 +1297,7 @@ order_empty_pick	रिक्तं आदेशयन्तु — व्यञ
 add_dishes	व्यञ्जनानि योजयन्तु
 order_so_far	अस्मिन् क्रमे : {n} · {total} .
 no_dish_match	“{q}” इत्यस्य मेलनं न भवति ।
-pick_dishes_help	एकं डिशं योजयितुं ट्याप् कुर्वन्तु · सूचीं संकुचितं कर्तुं श्रेणीं चिनुत
 pick_done	कृतम्
-pick_done_dd	कृतम् · {label} .
 printer_route_mode	यदि अस्मिन् स्थाने अनेकाः मुद्रकाः
 printer_mode_first	प्रथमं तत् कार्यं करोति
 printer_mode_all	सर्वेषु मुद्रयन्तु
@@ -1368,3 +1345,22 @@ recent_changes	अद्यतनपरिवर्तनानि
 lane_declared_label	कर चालान
 lane_owner_label	नगद ज्ञापन
 money_lane_bill	विधेयकः {lane} .
+sel_copy	प्रतिलिख्यताम्
+sel_select_all	सर्वं चीयताम्
+sel_copied	प्रतिलिखितम्
+items_tmpl_khaynjo	Khaynjo वस्तुप्रारूपम्
+items_tmpl_named	{name} प्रारूपम्
+app_tmpl_named	{name} अनुप्रयोगप्रारूपम्
+private_code_ph	द्वादशाङ्कसङ्केतः
+stamp_on	मुद्रिका: सञ्चिकायां
+pay_qr_on	भुगतान QR: सञ्चिकायां
+pay_qr_off	भुगतान QR: कोऽपि नास्ति
+items_tmpl_heading	वस्तु-प्रतिरूपाणि
+items_tmpl_help	भवतः मेनूकृते व्यञ्जनानि, वर्गाः चित्राणि च। आपणस्य विन्यासाः कर्मचारिणः च यथावत् तिष्ठन्ति।
+public_tmpl_help	आरम्भ-मेनूनि यानि कोऽपि अवतारयितुं शक्नोति। एकवारं अन्तर्जालम् आवश्यकम्।
+private_tmpl_help	भवतः Khaynjo-सम्पर्कात् प्राप्तेन 12-अङ्क-कूटेन रक्षितानि ग्राहक-मेनूनि।
+printers_screen_tip	अन्विष्यतु इति अस्य यन्त्रस्य उपयोग्यानि मुद्रकाणि दर्शयति अस्मै आपणाय रक्षति च। देयक-मुद्रकाणि: देयक-KOT-प्रारूपम् → देयकम्। पाकशाला: पाकशाला → पाकशाला-स्थानानि।
+printers_found_none	किमपि मुद्रकं न प्राप्तम्।
+kot_copy_from	अस्मात् प्रतिलिखतु
+kot_copy_from_help	तस्य प्रकारस्य प्रत्येकपङ्क्तेः आकारं, स्थौल्यं, संरेखणं च अत्र प्रतिलिखति। अयं प्रकारः स्वस्य ध्वजं, वस्तु-उपसर्गं, छेदरेखां च रक्षति। रक्षणाय KOT प्रारूपं रक्षतु।
+nav_loading	आरोप्यते…

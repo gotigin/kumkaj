@@ -39,7 +39,7 @@ adding_item	Pagdaragdag ng bagong rate
 editing_item	Pag-edit
 save	I-save
 remove	Alisin
-empty_catalog	Wala pang rates. Buksan ang Mga Rate at serbisyo, magdagdag ng isa (pangalan + presyo, unit kg), pagkatapos ay Pag-book.
+empty_catalog	Wala pang rates.
 counter_sale	Counter booking
 total	Kabuuan
 cash	Cash
@@ -171,8 +171,6 @@ selected_language	Napili
 continue	Magpatuloy
 this_device	ANG DEVICE NA ITO
 device_use_q	Paano gagamitin ang device na ito?
-last_server_mode	Was Server — i-tap para magpatuloy
-last_client_mode	Was Client — i-tap para magpatuloy
 choose_server	Pumili ng server
 choose_server_hint	Magbukas ng kasalukuyang server, o lumikha ng isa para sa isa pang negosyo.
 create_new_server	Gumawa ng bagong server
@@ -501,8 +499,6 @@ job_layout	Ayos
 job_delivery	Paano ipinadala ang trabaho
 job_size	Laki ng font
 job_size_ph	hal. 18, 20, 26…
-save_receipt_format	I-save ang format ng resibo
-save_label_format	I-save ang format ng label
 test_receipt_format	Pagsubok na resibo
 test_label_format	Test label
 test_receipt_sent	Ipinadala ang sample na resibo
@@ -610,7 +606,7 @@ units_heading	Mga yunit
 booking_measures	Mga hakbang sa pag-book
 drawer_count	Bilang ng drawer (opsyonal)
 spreadsheet_csv	Talaan (CSV)
-bank_reconciliation	Bank reconciliation (lagyan ng check ang iyong bank statement)
+bank_reconciliation	Bank reconciliation
 book_add_product	Book — magdagdag ng produkto / rate
 book_opening_credit	Ledger — pagbubukas ng kredito
 account_kind	Uri ng account (i-tap ang isa)
@@ -650,7 +646,7 @@ net_word	Neto
 offline_badge	WALANG LINYA
 optional_login_help	Opsyonal na pag-login (id + password). Nagtatakda ang may-ari nang isang beses; ang user lang ang makakapagpalit ng password sa ibang pagkakataon.
 or_unlock_login	O i-unlock gamit ang login id + password
-permission_preset	Trabaho (nagtatakda ng mga screen at karapatan)
+permission_preset	Trabaho
 preset_help_moklanjo	Cashier: ibenta. Manager: ibenta + menu item + void/amend.
 product_locked_moklanjo	Moklanjo
 product_only_moklanjo	Ang app na ito ay Moklanjo lamang — mga aklat + booking desk. Ang ibang kalakalan ay nahaharap sa barko bilang hiwalay na mga produkto sa ibang pagkakataon.
@@ -698,10 +694,6 @@ pin_hint_paired	Extra hanggang paired — i-unlock para ibenta
 pin_hint_pair_first	Extra till — ipares muna sa shop device
 unlock_to_continue	I-unlock upang magpatuloy
 no_staff_yet	Wala pang staff — i-unlock bilang May-ari, pagkatapos ay Team
-status_server_set_pin	Server Mode — itakda ang May-ari PIN
-status_server_tills	Server Mode — maaaring sumali ang mga dagdag na till. I-unlock
-status_server_unlock	Server Mode — i-unlock bilang May-ari
-status_client_unlock	Client Mode — i-unlock para magbenta
 icon_new_selected	Icon: bagong file ang napili — i-tap ang I-save ang brand
 icon_custom	Icon: custom na marka ng lugar
 icon_default	Icon: Kumkaj mark (default) — pumili ng custom
@@ -834,3 +826,7 @@ role_help_supplier	Tungkulin: Supplier — AP para sa mga pagbili.
 lane_declared_label	Pagbu-book ng account
 lane_owner_label	Cash booking
 money_lane_bill	Resibo: {lane}
+sel_copy	Kopyahin
+sel_select_all	Piliin lahat
+sel_copied	Nakopya na
+nav_loading	Naglo-load…

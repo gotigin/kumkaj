@@ -39,7 +39,7 @@ adding_item	Додавання нової ставки
 editing_item	Редагування
 save	Зберегти
 remove	Прибрати
-empty_catalog	Тарифів ще немає. Відкрийте «Тарифи та послуги», додайте (назва + ціна, одиниця кг), а потім «Бронювання».
+empty_catalog	Тарифів ще немає.
 counter_sale	Зустрічне бронювання
 total	Разом
 cash	Готівка
@@ -171,8 +171,6 @@ selected_language	Вибрано
 continue	Далі
 this_device	ЦЕЙ ПРИСТРІЙ
 device_use_q	Як використовуватиметься цей пристрій?
-last_server_mode	Був Сервером — торкніться, щоб продовжити
-last_client_mode	Був Клієнтом — торкніться, щоб продовжити
 choose_server	Оберіть сервер
 choose_server_hint	Відкрийте наявний сервер або створіть новий для іншого бізнесу.
 create_new_server	Створити новий сервер
@@ -501,8 +499,6 @@ job_layout	Макет
 job_delivery	Як надсилається завдання
 job_size	Кегль
 job_size_ph	напр. 18, 20, 26…
-save_receipt_format	Зберегти формат квитанції
-save_label_format	Зберегти формат етикетки
 test_receipt_format	Тестова квитанція
 test_label_format	Тестова етикетка
 test_receipt_sent	Зразок квитанції надіслано
@@ -610,7 +606,7 @@ units_heading	Одиниці
 booking_measures	Заходи бронювання
 drawer_count	Підрахунок шухляди (необов'язково)
 spreadsheet_csv	Таблиця (CSV)
-bank_reconciliation	Звірка банку (позначте проти виписки)
+bank_reconciliation	Звірка банку
 book_add_product	Забронювати — додати товар / тариф
 book_opening_credit	Книга — початковий кредит
 account_kind	Вид рахунку (торкніться одного)
@@ -650,7 +646,7 @@ net_word	Нетто
 offline_badge	ОФЛАЙН
 optional_login_help	Необов'язковий вхід (ідентифікатор + пароль). Власник задає один раз; пароль пізніше може змінити лише користувач.
 or_unlock_login	Або розблокуйте ідентифікатором входу + паролем
-permission_preset	Робота (встановлює екрани та права)
+permission_preset	Робота
 preset_help_moklanjo	Касир: продає. Менеджер: продає + позиції + анулювання/виправлення.
 product_locked_moklanjo	Мокланьо
 product_only_moklanjo	Ця програма лише для Moklanjo — книги + стійка бронювання. Інші комерційні особи відправляються як окремі продукти пізніше.
@@ -698,10 +694,6 @@ pin_hint_paired	Додаткову касу з'єднано — розблоку
 pin_hint_pair_first	Додаткова каса — спочатку з'єднайте з пристроєм крамниці
 unlock_to_continue	Розблокуйте, щоб продовжити
 no_staff_yet	Персоналу ще немає — розблокуйте як Власник, потім Команда
-status_server_set_pin	Режим сервера — задайте PIN власника
-status_server_tills	Режим сервера — додаткові каси можуть приєднатися. Розблокувати
-status_server_unlock	Режим сервера — розблокуйте як Власник
-status_client_unlock	Режим клієнта — розблокуйте, щоб продавати
 icon_new_selected	Значок: вибрано новий файл — торкніться Зберегти бренд
 icon_custom	Значок: власний знак закладу
 icon_default	Значок: знак Kumkaj (типовий) — оберіть власний
@@ -834,3 +826,7 @@ role_help_supplier	Роль: Постачальник — AP для закупі
 lane_declared_label	Бронювання рахунку
 lane_owner_label	Бронювання готівки
 money_lane_bill	Рахунок: {lane}
+sel_copy	Копіювати
+sel_select_all	Виділити все
+sel_copied	Скопійовано
+nav_loading	Завантаження…

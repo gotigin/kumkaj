@@ -41,7 +41,7 @@ remove	Хасах
 removed_items	Хасагдсан бараа
 removed_help	Сэргээх нь барааг цэс рүү яг хэвээр нь буцаана — үнэ, зураг, ангилал. Манай хоолны тавиур хэзээ ч хасагдахгүй, тиймээс хоолыг дахин нэмж болно.
 restore_item	Сэргээх
-empty_catalog	Одоогоор хоол алга. Цэс нээгээд хоол нэмнэ (нэр + үнэ), дараа нь захиалга авна.
+empty_catalog	Одоогоор хоол алга.
 total	Нийт
 cash	Бэлэн
 upi	UPI
@@ -103,23 +103,14 @@ bill_item_qty	Тоо
 bill_item_price	Үнэ
 bill_item_amount	Дүн
 bill_item_note	Хоолны тэмдэглэл
-bill_item_col_gap	Баганын зай
 bill_item_col_order	Баганын дараалал
 bill_item_col_sep	Баганын шугам
-bill_item_gap_tight	Нягт
-bill_item_gap_comfort	Тав тухтай
-bill_item_gap_wide	Өргөн
-bill_item_num_width	Тоон багана
-bill_item_num_compact	Нягт
-bill_item_num_comfort	Тав тухтай
-bill_item_num_wide	Өргөн
-bill_item_num_align	Тоог зэрэгцүүлэх
-bill_item_gap_em	Зай (em)
-bill_item_qty_min	Хамгийн бага тоо (em)
-bill_item_price_min	Хамгийн бага үнэ (em)
-bill_item_amount_min	Хамгийн бага дүн (em)
-kot_item_qty_width	Тооны багана
-kot_item_num_align	Тоог зэрэгцүүлэх
+slip_columns	Баганууд
+slip_col_width	Өргөн (mm)
+slip_col_start	Эхлэлийн зай (px)
+slip_col_end	Төгсгөлийн зай (px)
+slip_col_align	Текстийн зэрэгцүүлэлт
+slip_columns_help	Багана бүрийн өргөнд түүний эхлэл ба төгсгөлийн зай багтана. Текст өөрийн баганын дотор мөр шилжинэ; агуулгын өргөнөөс хэтэрсэн хэсэг цаасан дээр болон урьдчилан харахад тасарна.
 bill_total_qty_label	Нийт тооны шошго
 bill_total_subtotal_label	Дэд дүнгийн шошго
 bill_total_grand_label	Эцсийн дүнгийн шошго
@@ -221,7 +212,6 @@ sidebar_order_saved	Хажуугийн самбарын дараалал хад�
 sidebar_visibility_saved	Хажуугийн самбарын харагдац хадгалагдлаа
 amounts_hide	Нуух
 amounts_show	Харуулах
-printers_none_hint	Эхлээд энэ төхөөрөмж дээр принтер хадгалаад Тооцоо эсвэл гал тогоонд нэмнэ
 counter	Касс
 dine_in	Газар дээр
 takeaway	Авч явах
@@ -328,8 +318,6 @@ selected_language	Сонгосон
 continue	Үргэлжлүүлэх
 this_device	ЭНЭ ТӨХӨӨРӨМЖ
 device_use_q	Энэ төхөөрөмжийг хэрхэн ашиглах вэ?
-last_server_mode	Сервер байсан — үргэлжлүүлэхийн тулд товшино
-last_client_mode	Клиент байсан — үргэлжлүүлэхийн тулд товшино
 choose_server	Сервер сонгоно
 choose_server_hint	Байгаа серверийг нээх эсвэл өөр бизнест шинийг үүсгэнэ.
 create_new_server	Шинэ сервер үүсгэх
@@ -391,7 +379,7 @@ attachments_last_expense	Хавсралт (сүүлийн зарлага)
 bank	Банк
 bank_in	Банк руу
 bank_out	Банкнаас
-bank_reconciliation	Банк тулгалт (банкны хуулгатай тулгаж тэмдэглэнэ)
+bank_reconciliation	Банк тулгалт
 bank_to_till	Банк → касс
 book_add_dish	Дэвтэр — хоол / бараа нэмэх
 book_opening_credit	Дэвтэр — эхний зээл
@@ -744,7 +732,6 @@ station_print_pick_first	Эхлээд гал тогооны станц сонг�
 station_print_editing	„{name}“ принтерүүдийг засварлаж байна
 station_vps_dd	Энэ станцын принтерүүд
 station_vps_dd_n	{n} принтер · өөрчлөхийн тулд товшино
-station_vps_empty	Принтер одоогоор алга — Тохиргоо → Принтерүүд дотроос олно
 bill_printers_dd	Тооцооны принтерүүд
 bill_printers_dd_n	тооцоонд {n} принтер · өөрчлөхийн тулд товшино
 job_layout	Байрлал
@@ -889,7 +876,7 @@ net_word	Цэвэр
 offline_badge	ОФЛАЙН
 optional_login_help	Заавал биш нэвтрэлт (id + нууц үг). Эзэмшигч нэг удаа тохируулна; нууц үгийг дараа нь зөвхөн хэрэглэгч өөрчилнө.
 or_unlock_login	Эсвэл нэвтрэх id + нууц үгээр түгжээ тайлна
-permission_preset	Ажил (дэлгэц ба мөнгөний үйлдлийг тохируулна)
+permission_preset	Ажил
 preset_help_khaynjo	Кассчин: зарна. Менежер: борлуулалт + бараа + хүчингүй/засвар.
 product_locked_khaynjo	Khaynjo
 product_only_khaynjo	Энэ апп зөвхөн Khaynjo — рестораны үйлдлийн систем. Бусад худалдааны нүүр нь тусдаа Kumkaj бүтээгдэхүүнээр гарна.
@@ -961,10 +948,6 @@ pin_hint_paired	Нэмэлт касс хослуулсан — зарахын т
 pin_hint_pair_first	Нэмэлт касс — эхлээд дэлгүүрийн төхөөрөмжтэй хослуулна
 unlock_to_continue	Үргэлжлүүлэхийн тулд түгжээ тайлна
 no_staff_yet	Ажилтан одоогоор алга — Эзэмшигчээр түгжээ тайлаад Баг
-status_server_set_pin	Сервер горим — Эзэмшигчийн PIN тохируулна
-status_server_tills	Сервер горим — нэмэлт касс нэгдэж болно. Түгжээ тайлах
-status_server_unlock	Сервер горим — Эзэмшигчээр түгжээ тайлна
-status_client_unlock	Клиент горим — зарахын тулд түгжээ тайлна
 icon_new_selected	Дүрс: шинэ файл сонгогдлоо — Брэнд хадгалах дээр товшино
 icon_custom	Дүрс: өөрийн газрын тэмдэг
 icon_default	Дүрс: Kumkaj тэмдэг (анхдагч) — өөрийнхийг сонгоно
@@ -1033,7 +1016,7 @@ book_kind_balance	Баланс
 order_help	Нэмэхийн тулд бараан дээр товшино.
 floor_help	Захиалга авах эсвэл өөрчлөхийн тулд ширээн дээр товшино. Өнгө сул → суусан → гал тогоо → бэлэн → идэж байна → тооцоо → төлсөнг харуулна. Хүлээлгийн жагсаалт, захиалга, ширээ нэмэх нь доорх хэсэгт.
 kitchen_help	Гал тогооны хуудас (KOT), шинэ нь хамгийн ард. Эхлэх → Бэлэн → Дууссан хуудсыг урагшлуулна. Хуудас хэзээ ч үнэ харуулахгүй.
-kitchen_empty	Нээлттэй хуудас алга. Захиалга эсвэл Танхимаас илгээсэн KOT энд гарна.
+kitchen_empty	Нээлттэй хуудас алга.
 add_a_table	Ширээ нэмэх
 add_station_heading	Гал тогооны станц нэмэх
 categories_help	Дээрх барааг тэр ангилалд оруулахын тулд Ашиглах дээр товшино. Зураг ангилалд зураг өгнө; байхгүй бол эхний үсэг гарна.
@@ -1131,7 +1114,6 @@ bill_format_help	Рестораны нэрийн доор тооцоо бүрд 
 bill_header_ph	Хаяг | утас
 fssai_ph	FSSAI лицензийн № (Энэтхэг)
 bill_footer_ph	Доод хэсэг (ж. Баярлалаа, дахин ирээрэй)
-save_bill_format	Тооцооны хэлбэрийг хадгалах
 reset_bill_format	Анхдагч руу буцаах
 bill_format_reset	Тооцооны хэлбэр анхдагч руу буцаагдлаа
 reset_kot_format	Анхдагч руу буцаах
@@ -1201,13 +1183,11 @@ kot_copies_3	3
 kot_title_ph	Гарчиг (хоосон = KOT - KITCHEN ORDER)
 kot_footer_ph	Гал тогооны тэмдэглэл (заавал биш, үнэгүй)
 kot_preview	Урьдчилан харах
-save_kot_format	KOT хэлбэрийг хадгалах
 test_kot_format	Туршилтын KOT
 test_kot_sent	Гал тогооны хуудасны урьдчилсан харагдац илгээгдлээ
 test_bill_format	Туршилтын тооцоо
 test_bill_sent	Тооцооны урьдчилсан харагдац илгээгдлээ
 test_print_no_printer	Тэр ажилд принтер алга — энэ дэлгэц дээр нэгийг сонгоно
-kot_format_saved	KOT хэлбэр хадгалагдлаа
 std_print	Тооцоо хэвлэх хэмжээ
 std_print_help	ОС / баримт принтер дээрх стандарт босоо ба хэвтээ тооцооны ажлын үсгийн хэмжээ (цэг оруулна — Жижиг/Хэвийн/Том биш). Хоёр чиглэлд ижил хэмжээ. Гал тогооны хуудасны хэмжээ KOT таб дээр.
 std_size_s	Жижиг
@@ -1264,7 +1244,6 @@ new_items_head	Хараахан илгээгээгүй
 price_ph	Үнэ
 price_ph_gst_inside	Үнэ ({tax} багтсан)
 cancel_needs_table	Гал тогоо авсны дараа цуцлахын тулд энэ захиалгыг Танхимаас (ширээ) нээнэ — кассын KOT төлбөр автлаа хуудсан дээр үлдэнэ
-tax_rates_missing_hint	Эдгээр хоолонд {tax} хувь алга — Цэсэд Татварын хувь тохируулна (үнэ {tax} багтсан хэсэгт {tax} аль хэдийн орсон)
 taxable_value	Татвар ногдох дүн
 gst_inside_price_note	({tax} багтсан)
 start_with_template	Манай цэсийн загвараар эхлэх
@@ -1318,9 +1297,7 @@ order_empty_pick	Захиалга хоосон — хоол сонгохын т�
 add_dishes	Хоол нэмэх
 order_so_far	Энэ захиалгад: {n} · {total}
 no_dish_match	„{q}“-д тохирох хоол алга
-pick_dishes_help	Нэмэхийн тулд хоол товшино · жагсаалтыг нарийсгахын тулд ангилал сонгоно
 pick_done	Дууссан
-pick_done_dd	Дууссан · {label}
 printer_route_mode	Энэ газар дээр хэд хэдэн принтер байвал
 printer_mode_first	Эхний ажилладаг нь
 printer_mode_all	Бүгдэд хэвлэх
@@ -1368,3 +1345,22 @@ recent_changes	Сүүлийн өөрчлөлт
 lane_declared_label	Татварын нэхэмжлэл
 lane_owner_label	Бэлэн тэмдэглэл
 money_lane_bill	Тооцоо: {lane}
+sel_copy	Хуулах
+sel_select_all	Бүгдийг сонгох
+sel_copied	Хуулагдлаа
+items_tmpl_khaynjo	Khaynjo барааны загвар
+items_tmpl_named	{name} загвар
+app_tmpl_named	{name} аппын загвар
+private_code_ph	12 оронтой код
+stamp_on	Тамга: файлд
+pay_qr_on	Төлбөрийн QR: файлд
+pay_qr_off	Төлбөрийн QR: алга
+items_tmpl_heading	Барааны загварууд
+items_tmpl_help	Таны цэсэнд зориулсан хоол, ангилал, зураг. Дэлгүүрийн тохиргоо болон ажилтнууд хэвээр үлдэнэ.
+public_tmpl_help	Хэн ч татаж авах боломжтой эхлэлийн цэсүүд. Интернет нэг удаа хэрэгтэй.
+private_tmpl_help	Таны Khaynjo холбоо барих хүнээс ирсэн 12 оронтой кодоор хамгаалагдсан харилцагчийн цэсүүд.
+printers_screen_tip	Хайх нь энэ төхөөрөмжийн ашиглаж болох принтерүүдийг харуулж, энэ дэлгүүрт хадгална. Тооцооны принтер: Тооцоо ба KOT формат → Тооцоо. Гал тогоо: Гал тогоо → Гал тогооны станцууд.
+printers_found_none	Принтер олдсонгүй.
+kot_copy_from	Хуулах эх
+kot_copy_from_help	Тэр төрлийн мөр бүрийн хэмжээ, зузаан, зэрэгцүүлэлтийг энэ төрөлд хуулна. Энэ төрөл өөрийн баннер, барааны угтвар, дарсан зураасаа хадгална. Хадгалахын тулд KOT форматыг хадгална уу.
+nav_loading	Ачаалж байна…

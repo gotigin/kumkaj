@@ -39,7 +39,7 @@ adding_item	Dodanie nowej stawki
 editing_item	Edytowanie
 save	Zapisz
 remove	Usuń
-empty_catalog	Nie ma jeszcze stawek. Otwórz Ceny i usługi, dodaj jedną (nazwa + cena, jednostka kg), a następnie Rezerwacja.
+empty_catalog	Nie ma jeszcze stawek.
 counter_sale	Rezerwacja licznika
 total	Razem
 cash	Gotówka
@@ -171,8 +171,6 @@ selected_language	Wybrane
 continue	Kontynuuj
 this_device	TO URZĄDZENIE
 device_use_q	Jak będzie używane to urządzenie?
-last_server_mode	Był serwer — kliknij, aby kontynuować
-last_client_mode	Był klientem — dotknij, aby kontynuować
 choose_server	Wybierz serwer
 choose_server_hint	Otwórz istniejący serwer lub utwórz go dla innej firmy.
 create_new_server	Utwórz nowy serwer
@@ -501,8 +499,6 @@ job_layout	Układ
 job_delivery	Jak praca jest wysyłana
 job_size	Rozmiar czcionki
 job_size_ph	np. 18, 20, 26…
-save_receipt_format	Zapisz format paragonu
-save_label_format	Zapisz format etykiety
 test_receipt_format	Odbiór testowy
 test_label_format	Etykieta testowa
 test_receipt_sent	Wysłano próbny paragon
@@ -610,7 +606,7 @@ units_heading	Jednostki
 booking_measures	Środki rezerwacyjne
 drawer_count	Liczba szuflad (opcjonalnie)
 spreadsheet_csv	Arkusz kalkulacyjny (CSV)
-bank_reconciliation	Uzgodnienie konta bankowego (zaznaczyć na wyciągu bankowym)
+bank_reconciliation	Uzgodnienie konta bankowego
 book_add_product	Zarezerwuj — dodaj produkt/cenę
 book_opening_credit	Księga — kredyt początkowy
 account_kind	Rodzaj konta (dotknij jednego)
@@ -650,7 +646,7 @@ net_word	Netto
 offline_badge	W trybie offline
 optional_login_help	Opcjonalny login (id + hasło). Właściciel ustawia raz; tylko użytkownik może później zmienić hasło.
 or_unlock_login	Lub odblokuj za pomocą identyfikatora logowania + hasła
-permission_preset	Zadanie (ustawia ekrany i uprawnienia)
+permission_preset	Zadanie
 preset_help_moklanjo	Kasjer: sprzedaj. Menedżer: sprzedaj + przedmioty + unieważnij/zmień.
 product_locked_moklanjo	Moklanjo
 product_only_moklanjo	Ta aplikacja jest przeznaczona wyłącznie dla Moklanjo — książki + punkt rezerwacji. Inne twarze handlowe są wysyłane później jako osobne produkty.
@@ -698,10 +694,6 @@ pin_hint_paired	Dodatkowe do sparowania — odblokuj, aby sprzedać
 pin_hint_pair_first	Dodatkowa kasa — najpierw sparuj z urządzeniem sklepowym
 unlock_to_continue	Odblokuj, aby kontynuować
 no_staff_yet	Nie ma jeszcze personelu — odblokuj jako właściciel, a następnie jako zespół
-status_server_set_pin	Tryb serwera — ustaw właściciela PIN
-status_server_tills	Tryb serwera — można dołączyć dodatkowe kasy. Odblokuj
-status_server_unlock	Tryb serwera — odblokuj jako właściciel
-status_client_unlock	Tryb Klienta — odblokuj, aby sprzedawać
 icon_new_selected	Ikona: wybrany nowy plik — kliknij Zapisz markę
 icon_custom	Ikona: niestandardowy znak miejsca
 icon_default	Ikona: znak Kumkaj (domyślny) — wybierz niestandardową
@@ -834,3 +826,7 @@ role_help_supplier	Rola: Dostawca — AP dla zakupów.
 lane_declared_label	Rezerwacja konta
 lane_owner_label	Rezerwacja gotówkowa
 money_lane_bill	Rachunek: {lane}
+sel_copy	Kopiuj
+sel_select_all	Zaznacz wszystko
+sel_copied	Skopiowano
+nav_loading	Wczytywanie…

@@ -39,7 +39,7 @@ adding_item	Yn ychwanegu cyfradd newydd
 editing_item	Golygu
 save	Cadw
 remove	Tynnu
-empty_catalog	Dim cyfraddau eto. Agorwch Cyfraddau a gwasanaethau, ychwanegwch un (enw + pris, uned kg), yna Archebu.
+empty_catalog	Dim cyfraddau eto.
 counter_sale	Archebu wrth y cownter
 total	Cyfanswm
 cash	Arian parod
@@ -171,8 +171,6 @@ selected_language	Wedi'i ddewis
 continue	Parhau
 this_device	Y DYFAIS HON
 device_use_q	Sut y defnyddir y ddyfais hon?
-last_server_mode	Gweinydd oedd — tapiwch i barhau
-last_client_mode	Cleient oedd — tapiwch i barhau
 choose_server	Dewiswch weinydd
 choose_server_hint	Agorwch weinydd sy'n bodoli, neu crëwch un ar gyfer busnes arall.
 create_new_server	Creu gweinydd newydd
@@ -501,8 +499,6 @@ job_layout	Cynllun
 job_delivery	Sut mae'r swydd yn cael ei hanfon
 job_size	Maint ffont
 job_size_ph	e.e. 18, 20, 26…
-save_receipt_format	Cadw fformat derbynneb
-save_label_format	Cadw fformat label
 test_receipt_format	Derbynneb brawf
 test_label_format	Label prawf
 test_receipt_sent	Derbynneb enghreifftiol wedi'i hanfon
@@ -610,7 +606,7 @@ units_heading	Unedau
 booking_measures	Mesurau archebu
 drawer_count	Cyfrif drôr (dewisol)
 spreadsheet_csv	Taenlen (CSV)
-bank_reconciliation	Cymodi banc (ticiwch yn erbyn eich cyfriflen banc)
+bank_reconciliation	Cymodi banc
 book_add_product	Llyfr — ychwanegu cynnyrch / cyfradd
 book_opening_credit	Llyfr — credyd agoriadol
 account_kind	Math o gyfrif (tapiwch un)
@@ -650,7 +646,7 @@ net_word	Net
 offline_badge	ALL-LEIN
 optional_login_help	Mewngofnodi dewisol (id + cyfrinair). Mae'r Perchennog yn gosod unwaith; dim ond y defnyddiwr all newid y cyfrinair yn ddiweddarach.
 or_unlock_login	Neu datgloi gydag id mewngofnodi + cyfrinair
-permission_preset	Swydd (yn gosod sgriniau a hawliau)
+permission_preset	Swydd
 preset_help_moklanjo	Ariannwr: gwerthu. Rheolwr: gwerthu + eitemau + diddymu/diwygio.
 product_locked_moklanjo	Moklanjo
 product_only_moklanjo	Ap Moklanjo yn unig yw hwn — llyfrau + desg archebu. Mae wynebau masnach eraill yn cyrraedd fel cynhyrchion ar wahân yn ddiweddarach.
@@ -698,10 +694,6 @@ pin_hint_paired	Til ychwanegol wedi'i baru — datgloi i werthu
 pin_hint_pair_first	Til ychwanegol — parwch â dyfais y siop yn gyntaf
 unlock_to_continue	Datgloi i barhau
 no_staff_yet	Dim staff eto — datgloi fel Perchennog, yna Tîm
-status_server_set_pin	Modd Gweinydd — gosod PIN Perchennog
-status_server_tills	Modd Gweinydd — gall tiliau ychwanegol ymuno. Datgloi
-status_server_unlock	Modd Gweinydd — datgloi fel Perchennog
-status_client_unlock	Modd Cleient — datgloi i werthu
 icon_new_selected	Eicon: ffeil newydd wedi'i dewis — tapiwch Cadw brand
 icon_custom	Eicon: marc lleoliad personol
 icon_default	Eicon: marc Kumkaj (rhagosodiad) — dewiswch un personol
@@ -834,3 +826,7 @@ role_help_supplier	Rôl: Cyflenwr — AP ar gyfer pryniannau.
 lane_declared_label	Archebu ar gyfrif
 lane_owner_label	Archebu ag arian parod
 money_lane_bill	Bil: {lane}
+sel_copy	Copïo
+sel_select_all	Dewis y cyfan
+sel_copied	Wedi copïo
+nav_loading	Yn llwytho…

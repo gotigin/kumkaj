@@ -187,17 +187,35 @@ fn load_thumb_at(cx: &mut Cx, image: &ImageRef, path: &std::path::Path) -> bool 
             return false;
         }
     }
+    if !path.is_file() {
+        thumb_load_cache().lock().unwrap().remove(&uid);
+        return false;
+    }
+    // While a list draws, decode on Makepad's image pool, never here: the
+    // first + Add dishes froze ~1 s decoding WebP thumbs one by one inside
+    // draw (2026-11-13). The tile keeps its initials until the decode lands;
+    // `App::handle_thumb_decodes` then redraws the window and this call finds
+    // the texture in the cache. (Async used to leave recycled PortalList
+    // thumbs blank because nothing redrew them when the decode finished.)
+    // Outside draw (a one-off preview painted from sync_chrome) nothing would
+    // come back to it, so that one still decodes here.
+    if cx.in_draw_event() {
+        match load_image_file_by_path_async(cx, path) {
+            Ok(AsyncLoadResult::Loaded) => {}
+            Ok(AsyncLoadResult::Loading(..)) => return false,
+            Err(_) => {
+                thumb_load_cache().lock().unwrap().remove(&uid);
+                return false;
+            }
+        }
+    }
+    // Record before the call so a redraw from the load does not re-queue.
     thumb_load_cache()
         .lock()
         .unwrap()
         .insert(uid, (path.to_path_buf(), fp));
-    // Synchronous decode (same as Khaynjo). Async never repainted recycled
-    // PortalList thumbs — photos only appeared after leaving the screen.
-    let loaded = if path.is_file() {
-        image.load_image_file_by_path(cx, path).is_ok()
-    } else {
-        false
-    };
+    // A cache hit after the async decode; a decode here outside draw.
+    let loaded = image.load_image_file_by_path(cx, path).is_ok();
     if !loaded {
         thumb_load_cache().lock().unwrap().remove(&uid);
     } else {
@@ -324,4 +342,4 @@ fn pad_view_over_base(cx: &mut Cx, view: &ViewRef, key: LiveId, extra: Inset) {
 /// keeps off the status / gesture bars. Anchored overlays (the nav drag
 /// ghost, column dropdowns) are left out: they place themselves.
 /// `nav_order_tests::every_modal_is_an_inset_sheet_or_anchored` checks this.
-const INSET_SHEETS: &[&str] = &[];
+const INSET_SHEETS: &[&str] = &["printers_modal"];

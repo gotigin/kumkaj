@@ -215,6 +215,22 @@ fn restore_busy() -> &'static std::sync::atomic::AtomicBool {
     &BUSY
 }
 
+/// A worker holds the books (import / restore / backup / printer search…):
+/// the UI runs no SQL then — busy_timeout waits look like a freeze.
+fn heavy_books_job() -> bool {
+    menu_import_busy().load(std::sync::atomic::Ordering::SeqCst)
+        || restore_busy().load(std::sync::atomic::Ordering::SeqCst)
+        || csv_import_busy().load(std::sync::atomic::Ordering::SeqCst)
+        || shelf_mat_busy().load(std::sync::atomic::Ordering::SeqCst)
+        || backup_busy().load(std::sync::atomic::Ordering::SeqCst)
+        || backup_copy_busy().load(std::sync::atomic::Ordering::SeqCst)
+        || aggregator_import_busy().load(std::sync::atomic::Ordering::SeqCst)
+        || diag_export_busy().load(std::sync::atomic::Ordering::SeqCst)
+        || printer_add_busy().load(std::sync::atomic::Ordering::SeqCst)
+        || print_share::is_finding_printers()
+        || role_open_busy().load(std::sync::atomic::Ordering::SeqCst)
+}
+
 fn restore_cancel() -> &'static std::sync::atomic::AtomicBool {
     static CANCEL: std::sync::atomic::AtomicBool = std::sync::atomic::AtomicBool::new(false);
     &CANCEL
@@ -496,7 +512,6 @@ enum MenuImportKind {
     Shelf,
     /// Import the photo shelf scanned from a downloaded `catalogue/public/items` tree.
     ShelfFromDir { root: PathBuf, title: String },
-    Client { id: String, title: String },
     /// Post-create DeviceSetup offer — import from a downloaded/cached pack dir.
     AppTemplate {
         title: String,
@@ -584,15 +599,6 @@ fn menu_import_job(db_path: PathBuf, kind: MenuImportKind) {
     let known_total = match &kind {
         MenuImportKind::Shelf => menu_images::shelf().len().max(1),
         MenuImportKind::ShelfFromDir { root, .. } => menu_images::load_shelf(root).len().max(1),
-        MenuImportKind::Client { id, .. } => menu_templates::find(id)
-            .map(|t| {
-                t.categories
-                    .iter()
-                    .map(|c| c.items.len().saturating_add(1))
-                    .sum::<usize>()
-                    .max(1)
-            })
-            .unwrap_or(1),
         MenuImportKind::AppTemplate { pack_dir, .. } => menu_templates::load_from_dir(pack_dir)
             .map(|t| {
                 t.categories
@@ -625,11 +631,6 @@ fn menu_import_job(db_path: PathBuf, kind: MenuImportKind) {
                             return Err("Downloaded shelf is empty".into());
                         }
                         store.import_catalogue(&dishes)
-                    }
-                    MenuImportKind::Client { id, .. } => {
-                        let tmpl = menu_templates::find(id)
-                            .ok_or_else(|| format!("Unknown menu template '{id}'"))?;
-                        store.import_menu_template(tmpl)
                     }
                     MenuImportKind::AppTemplate {
                         pack_dir,
@@ -700,16 +701,16 @@ fn format_download_progress(
         .replace("{t}", &total)
 }
 
-/// Localized download progress for the busy chrome (UI thread).
-pub(crate) fn catalogue_download_progress_text() -> Option<String> {
+/// Localized download progress for the busy chrome (UI thread). `tmpl` is
+/// `t("app_template_download_progress")` from the caller — this never locks
+/// `app_state`, so it is safe while the caller holds the guard (it used to
+/// call `app_t` and deadlocked the Menu template downloads).
+pub(crate) fn catalogue_download_progress_text(tmpl: &str) -> Option<String> {
     let p = (*catalogue_fetch_progress().lock().unwrap())?;
     if p.files_total == 0 {
         return None;
     }
-    Some(format_download_progress(
-        &app_t("app_template_download_progress"),
-        &p,
-    ))
+    Some(format_download_progress(tmpl, &p))
 }
 
 fn catalogue_fetch_job(kind: CatalogueFetchKind, data_base: PathBuf) {
@@ -948,14 +949,35 @@ fn set_role_open_interrupt(handle: Option<rusqlite::InterruptHandle>) {
     *role_open_interrupt().lock().unwrap() = handle;
 }
 
+/// Every role open, and every Cancel, starts a new generation. A worker's
+/// result lands only while its generation is still current, so Cancel hands
+/// the Server / Client choice back at once — the worker may still be inside a
+/// slow first open on a phone; what it returns later is closed and dropped.
+fn role_open_gen() -> &'static std::sync::atomic::AtomicU64 {
+    static GEN: std::sync::atomic::AtomicU64 = std::sync::atomic::AtomicU64::new(0);
+    &GEN
+}
+
+fn role_open_stale(open_gen: u64) -> bool {
+    role_open_gen().load(std::sync::atomic::Ordering::SeqCst) != open_gen
+}
+
 /// Cancel DeviceSetup role open: flip the flag, poke SQLite so migrate/seed
 /// aborts on Android instead of running to completion, and show Cancelling….
 fn request_role_open_cancel() {
     role_open_cancel().store(true, std::sync::atomic::Ordering::SeqCst);
-    set_books_work_status(&app_t("cancelling"));
     if let Some(handle) = role_open_interrupt().lock().unwrap().as_ref() {
         handle.interrupt();
     }
+    role_open_gen().fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+    // A result that landed but was not shown yet is the cancelled one too.
+    if let Some(Ok(ready)) = role_open_once().lock().unwrap().take() {
+        let _ = std::thread::Builder::new()
+            .name("role-open-drop".into())
+            .spawn(move || drop(ready));
+    }
+    role_open_busy().store(false, std::sync::atomic::Ordering::SeqCst);
+    clear_books_work_status();
     makepad_widgets::makepad_platform::thread::SignalToUI::set_ui_signal();
 }
 
@@ -971,19 +993,82 @@ fn role_open_once() -> &'static Mutex<Option<Result<RoleOpenReady, String>>> {
     SLOT.get_or_init(|| Mutex::new(None))
 }
 
+/// When each stage of the current Server / Client open happened — logged
+/// once the screen is up (`role_open` in diag, `Kumkaj open:` in the log).
+/// An AGS2 Client tap once took 12–20 s to show pairing and nothing said
+/// where (2026-11-14): the next slow open says which stage it was.
+#[derive(Default)]
+struct RoleOpenTimes {
+    what: String,
+    started: Option<std::time::Instant>,
+    worker_done: Option<std::time::Instant>,
+    ui_took: Option<std::time::Instant>,
+}
+
+fn role_open_times() -> &'static Mutex<RoleOpenTimes> {
+    static TIMES: OnceLock<Mutex<RoleOpenTimes>> = OnceLock::new();
+    TIMES.get_or_init(|| Mutex::new(RoleOpenTimes::default()))
+}
+
+/// The UI took the worker's result (stage 3 of 4).
+fn note_role_open_ui_took() {
+    role_open_times().lock().unwrap().ui_took = Some(std::time::Instant::now());
+}
+
+/// Log the open that just ended: worker, wait for the UI, screen, total.
+fn log_role_open_times() {
+    let t = std::mem::take(&mut *role_open_times().lock().unwrap());
+    let Some(started) = t.started else {
+        return;
+    };
+    let now = std::time::Instant::now();
+    let ms = |a: Option<std::time::Instant>, b: std::time::Instant| {
+        a.map(|a| b.saturating_duration_since(a).as_millis().to_string()).unwrap_or_else(|| "-".into())
+    };
+    let worker = t.worker_done.unwrap_or(now);
+    let ui = t.ui_took.unwrap_or(now);
+    let total = now.saturating_duration_since(started).as_millis();
+    let msg = format!(
+        "{}: worker {} ms · wait for the UI {} ms · screen {} ms · total {total} ms",
+        t.what,
+        ms(Some(started), worker),
+        ms(t.worker_done, ui),
+        ms(t.ui_took, now),
+    );
+    makepad_widgets::log!("Kumkaj open: {msg}");
+    if total >= 2000 {
+        diag::warn(diag::Cat::Ui, "role_open", &msg);
+    } else {
+        diag::info(diag::Cat::Ui, "role_open", &msg);
+    }
+}
+
 fn role_open_start(status: &str) -> bool {
     if role_open_busy().swap(true, std::sync::atomic::Ordering::SeqCst) {
         return false;
     }
+    *role_open_times().lock().unwrap() = RoleOpenTimes {
+        what: status.trim_end_matches('…').trim().to_string(),
+        started: Some(std::time::Instant::now()),
+        ..RoleOpenTimes::default()
+    };
     role_open_cancel().store(false, std::sync::atomic::Ordering::SeqCst);
+    role_open_gen().fetch_add(1, std::sync::atomic::Ordering::SeqCst);
     set_role_open_interrupt(None);
     set_books_work_status(status);
     makepad_widgets::makepad_platform::thread::SignalToUI::set_ui_signal();
     true
 }
 
-fn role_open_finish(result: Result<RoleOpenReady, String>) {
+fn role_open_finish(open_gen: u64, result: Result<RoleOpenReady, String>) {
+    if role_open_stale(open_gen) {
+        // Cancelled meanwhile: the Server / Client choice is already back.
+        // Close what this worker opened, here on the worker.
+        drop(result);
+        return;
+    }
     set_role_open_interrupt(None);
+    role_open_times().lock().unwrap().worker_done = Some(std::time::Instant::now());
     let ok = result.is_ok();
     *role_open_once().lock().unwrap() = Some(result);
     if ok {
@@ -993,6 +1078,7 @@ fn role_open_finish(result: Result<RoleOpenReady, String>) {
     } else {
         role_open_busy().store(false, std::sync::atomic::Ordering::SeqCst);
         clear_books_work_status();
+        log_role_open_times();
     }
     makepad_widgets::makepad_platform::thread::SignalToUI::set_ui_signal();
 }
@@ -1011,6 +1097,7 @@ fn drop_store_off_ui(old: Option<Store>) {
 fn end_role_open_busy() {
     role_open_busy().store(false, std::sync::atomic::Ordering::SeqCst);
     clear_books_work_status();
+    log_role_open_times();
 }
 
 fn role_cancelled() -> bool {
@@ -1022,36 +1109,37 @@ fn client_mode_job(base: PathBuf) {
     if !role_open_start(&app_t("opening_client")) {
         return;
     }
+    let open_gen = role_open_gen().load(std::sync::atomic::Ordering::SeqCst);
     let _ = std::thread::Builder::new()
         .name("khaynjo-client-mode".into())
         .spawn(move || {
             net::stop_server();
             let result = (|| -> Result<RoleOpenReady, String> {
-                if role_cancelled() {
+                if role_open_stale(open_gen) {
                     return Err("Cancelled".into());
                 }
                 let store = local_servers::open_client_store_cancellable(&base, |handle| {
                     set_role_open_interrupt(Some(handle))
                 })
                 .map_err(|e| {
-                    if role_cancelled() {
+                    if role_open_stale(open_gen) {
                         "Cancelled".into()
                     } else {
                         e
                     }
                 })?;
                 set_role_open_interrupt(None);
-                if role_cancelled() {
+                if role_open_stale(open_gen) {
                     return Err("Cancelled".into());
                 }
                 store.prepare_as_client_terminal()?;
                 store.set_device_role("client")?;
-                if role_cancelled() {
+                if role_open_stale(open_gen) {
                     return Err("Cancelled".into());
                 }
                 Ok(RoleOpenReady::Client(store))
             })();
-            role_open_finish(result);
+            role_open_finish(open_gen, result);
         });
 }
 
@@ -1060,6 +1148,7 @@ fn server_new_job(base: PathBuf, name: String) {
     if !role_open_start(&app_t("creating_server")) {
         return;
     }
+    let open_gen = role_open_gen().load(std::sync::atomic::Ordering::SeqCst);
     let _ = std::thread::Builder::new()
         .name("khaynjo-server-new".into())
         .spawn(move || {
@@ -1068,12 +1157,12 @@ fn server_new_job(base: PathBuf, name: String) {
                 // Unpack APK menu shelf/templates into filesDir before offer/import.
                 menu_images::ensure_android_menu_assets(&base);
                 let (_info, store) = local_servers::create_local_server(&base, &name)?;
-                if role_cancelled() {
+                if role_open_stale(open_gen) {
                     return Err("Cancelled".into());
                 }
                 Ok(RoleOpenReady::ServerNew(store))
             })();
-            role_open_finish(result);
+            role_open_finish(open_gen, result);
         });
 }
 
@@ -1082,6 +1171,7 @@ fn server_existing_job(base: PathBuf, server_id: String, switching_in: bool) {
     if !role_open_start(&app_t("opening_server")) {
         return;
     }
+    let open_gen = role_open_gen().load(std::sync::atomic::Ordering::SeqCst);
     let _ = std::thread::Builder::new()
         .name("khaynjo-server-open".into())
         .spawn(move || {
@@ -1089,7 +1179,7 @@ fn server_existing_job(base: PathBuf, server_id: String, switching_in: bool) {
             let result = (|| -> Result<RoleOpenReady, String> {
                 menu_images::ensure_android_menu_assets(&base);
                 let store = local_servers::open_server(&base, &server_id)?;
-                if role_cancelled() {
+                if role_open_stale(open_gen) {
                     return Err("Cancelled".into());
                 }
                 Ok(RoleOpenReady::ServerExisting {
@@ -1097,7 +1187,7 @@ fn server_existing_job(base: PathBuf, server_id: String, switching_in: bool) {
                     switching_in,
                 })
             })();
-            role_open_finish(result);
+            role_open_finish(open_gen, result);
         });
 }
 
@@ -1281,6 +1371,41 @@ fn menu_pick_last_scroll_x() -> &'static Mutex<Option<f64>> {
     X.get_or_init(|| Mutex::new(None))
 }
 
+/// Add dishes pager scroll x as last drawn or moved. `ProductList` pages
+/// draw only near it: drawing all 27 category pages made every dish tap
+/// redraw ~200 tiles (owner, 2026-11-15: "fast taps are slow").
+fn menu_pick_scroll_now() -> &'static Mutex<f64> {
+    static X: OnceLock<Mutex<f64>> = OnceLock::new();
+    X.get_or_init(|| Mutex::new(0.0))
+}
+
+/// Pages drawn: the one in the window and one each side, so a swipe or a
+/// tab step never shows an empty page.
+fn menu_pick_page_near(page: usize, scroll_x: f64, page_w: f64) -> bool {
+    if page_w < 8.0 {
+        return true;
+    }
+    let p = page as f64;
+    let at = scroll_x / page_w;
+    p > at - 2.0 && p < at + 2.0
+}
+
+/// A horizontal swipe on the dish pages holds the press now: the per-frame
+/// watch must not snap the strip under the finger.
+static MENU_PICK_SWIPE_HELD: std::sync::atomic::AtomicBool =
+    std::sync::atomic::AtomicBool::new(false);
+/// The last press became a page swipe: its release is not a dish tap.
+static MENU_PICK_SWIPE_TOOK_PRESS: std::sync::atomic::AtomicBool =
+    std::sync::atomic::AtomicBool::new(false);
+
+fn menu_pick_swipe_held() -> bool {
+    MENU_PICK_SWIPE_HELD.load(std::sync::atomic::Ordering::Relaxed)
+}
+
+fn menu_pick_swipe_took_press() -> bool {
+    MENU_PICK_SWIPE_TOOK_PRESS.load(std::sync::atomic::Ordering::Relaxed)
+}
+
 /// Horizontal pager stepped scroll (one “page” per category jump).
 struct MenuPickScrollAnim {
     step_x: Vec<f64>,
@@ -1362,6 +1487,13 @@ fn queue_menu_pick_tab_from_scroll(idx: usize) {
 fn sidebar_order_dirty() -> &'static Mutex<bool> {
     static FLAG: OnceLock<Mutex<bool>> = OnceLock::new();
     FLAG.get_or_init(|| Mutex::new(false))
+}
+
+/// The printer checklist whose Find printers row opened the Printers sheet;
+/// closing the sheet reopens it with the printers just found.
+fn printers_modal_return() -> &'static Mutex<Option<SuggestField>> {
+    static SLOT: OnceLock<Mutex<Option<SuggestField>>> = OnceLock::new();
+    SLOT.get_or_init(|| Mutex::new(None))
 }
 
 /// Font Awesome solid (`WorldFonts` icons member): chevron-right / chevron-down.
@@ -1550,6 +1682,8 @@ fn accordion_estimate_h(key: &str) -> f64 {
         "role" => 160.0,
         "public_templates" => 220.0,
         "private_template" => 200.0,
+        "menu_public_tmpl" => 120.0,
+        "menu_private_tmpl" => 160.0,
         _ => 100.0,
     }
 }
@@ -1622,6 +1756,10 @@ const QUEUED_LINE: &str = "queued:";
 const BILL_ON_TABLE_NO_PAPER: &str =
     "the table is on Bill now; printing it again counts as a reprint";
 
+/// The same for an order with no table (Counter / Takeaway / Delivery).
+const BILL_PRINTED_NO_PAPER: &str =
+    "the order is on Bill now; printing it again counts as a reprint";
+
 /// The shift slip goes to the bill printer; say when it did not (the
 /// drawer count is saved either way, and the slip stays on the ticket).
 fn shift_slip_paper_note(sent: Result<print_share::ReceiptShare, String>) -> Option<String> {
@@ -1653,10 +1791,28 @@ fn lan_key(member: &StaffMember) -> String {
 /// Progress + Cancel (DEV.md 7b). Long ones (≥ 1 s) are warnings.
 const UI_STALL_LOG_MS: f64 = 250.0;
 
+/// `KUMKAJ_STALL_LOG_MS=16` logs every event slower than one frame — for
+/// measuring tap-to-screen time (dish taps, search). Read once.
+fn stall_log_ms() -> f64 {
+    static MS: std::sync::OnceLock<f64> = std::sync::OnceLock::new();
+    *MS.get_or_init(|| {
+        std::env::var("KUMKAJ_STALL_LOG_MS")
+            .ok()
+            .and_then(|v| v.trim().parse::<f64>().ok())
+            .filter(|v| *v >= 1.0)
+            .unwrap_or(UI_STALL_LOG_MS)
+    })
+}
+
+/// Bill & KOT format autosave: written this long after the last edit (or at
+/// once on a tab switch / leaving the screen). Short enough that nothing is
+/// lost to an app switch, long enough that typing is not saved per letter.
+const FORMAT_AUTOSAVE_SECS: f64 = 0.8;
+
 fn note_ui_stall(event: &Event, took: Duration, tree: (u64, u64, u64, u64, u64)) {
     let ms = took.as_secs_f64() * 1000.0;
     let parts = take_stall_spans();
-    if ms < UI_STALL_LOG_MS {
+    if ms < stall_log_ms() {
         return;
     }
     // Never wait on app_state here: a stall is often a long holder of it.
@@ -1704,7 +1860,9 @@ struct StallSpan {
 impl Drop for StallSpan {
     fn drop(&mut self) {
         let ms = self.started.elapsed().as_secs_f64() * 1000.0;
-        if ms >= 20.0 {
+        // Measuring (`KUMKAJ_STALL_LOG_MS` below the default): count every
+        // span, so "dish_grid_draw 25×" shows how often a part ran.
+        if ms >= 20.0 || stall_log_ms() < UI_STALL_LOG_MS {
             STALL_SPANS.with(|s| s.borrow_mut().push((self.name, ms)));
         }
     }

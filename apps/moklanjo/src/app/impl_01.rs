@@ -157,6 +157,20 @@ fn set_status(&mut self, cx: &mut Cx, msg: impl Into<String>) {
             (ids!(snack_face_warn), ids!(snack_label_warn), SnackKind::Warn),
             (ids!(snack_face_err), ids!(snack_label_err), SnackKind::Error),
         ];
+        // "No printer" warning: Find printers right on the warning (the
+        // Printers sheet, which also gives the job its printer).
+        let find_printers = visible
+            && kind == SnackKind::Warn
+            && snack::wants_find_printers(&text)
+            && app_state().lock().unwrap().device_role != DeviceRole::Client;
+        let find_btn = self.ui.button(cx, ids!(snack_find_printers));
+        if find_printers {
+            let label = app_t("find_printers");
+            if find_btn.text() != label {
+                find_btn.set_text(cx, &label);
+            }
+        }
+        find_btn.set_visible(cx, find_printers);
         for (face, label, k) in faces {
             let on = visible && kind == k;
             self.ui.view(cx, face).set_visible(cx, on);

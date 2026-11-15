@@ -39,7 +39,7 @@ adding_item	ເພີ່ມອັດຕາໃຫມ່
 editing_item	ການແກ້ໄຂ
 save	ບັນທຶກ
 remove	ເອົາອອກ
-empty_catalog	ຍັງບໍ່ມີອັດຕາ. ເປີດອັດຕາ & ບໍລິການ, ເພີ່ມຫນຶ່ງ (ຊື່ + ລາຄາ, ຫນ່ວຍກິໂລ), ຫຼັງຈາກນັ້ນ Booking.
+empty_catalog	ຍັງບໍ່ມີອັດຕາ.
 counter_sale	ການຈອງໂຕະ
 total	ທັງໝົດ
 cash	ເງິນສົດ
@@ -171,8 +171,6 @@ selected_language	ເລືອກແລ້ວ
 continue	ສືບຕໍ່
 this_device	ອຸປະກອນນີ້
 device_use_q	ອຸປະກອນນີ້ຈະຖືກໃຊ້ແນວໃດ?
-last_server_mode	ແມ່ນເຊີບເວີ — ແຕະເພື່ອສືບຕໍ່
-last_client_mode	ເປັນລູກຄ້າ — ແຕະເພື່ອສືບຕໍ່
 choose_server	ເລືອກເຊີບເວີ
 choose_server_hint	ເປີດເຄື່ອງແມ່ຂ່າຍທີ່ມີຢູ່ແລ້ວ, ຫຼືສ້າງຫນຶ່ງສໍາລັບທຸລະກິດອື່ນ.
 create_new_server	ສ້າງເຄື່ອງແມ່ຂ່າຍໃຫມ່
@@ -501,8 +499,6 @@ job_layout	ແຜນຜັງ
 job_delivery	ວິທີການສົ່ງວຽກ
 job_size	ຂະຫນາດຕົວອັກສອນ
 job_size_ph	ຕົວຢ່າງ: 18, 20, 26…
-save_receipt_format	ບັນທຶກຮູບແບບໃບຮັບເງິນ
-save_label_format	ບັນທຶກຮູບແບບປ້າຍກຳກັບ
 test_receipt_format	ໃບຮັບການທົດສອບ
 test_label_format	ປ້າຍທົດສອບ
 test_receipt_sent	ສົ່ງໃບຮັບເງິນຕົວຢ່າງແລ້ວ
@@ -610,7 +606,7 @@ units_heading	ໜ່ວຍ
 booking_measures	ມາດຕະການຈອງ
 drawer_count	ຈຳນວນລິ້ນຊັກ (ເລືອກໄດ້)
 spreadsheet_csv	ສະເປຣດຊີດ (CSV)
-bank_reconciliation	ການຄືນເງິນຂອງທະນາຄານ (ໝາຍເອົາໃບແຈ້ງຍອດທະນາຄານຂອງເຈົ້າ)
+bank_reconciliation	ການຄືນເງິນຂອງທະນາຄານ
 book_add_product	ປື້ມບັນທຶກ — ເພີ່ມຜະລິດຕະພັນ / ອັດຕາ
 book_opening_credit	Book — ການ​ເປີດ​ສິນ​ເຊື່ອ​
 account_kind	ປະເພດບັນຊີ (ແຕະອັນນຶ່ງ)
@@ -650,7 +646,7 @@ net_word	ສຸດທິ
 offline_badge	ອອບລາຍ
 optional_login_help	ທາງເລືອກໃນການເຂົ້າສູ່ລະບົບ (id + ລະຫັດຜ່ານ). ເຈົ້າຂອງຊຸດຫນຶ່ງຄັ້ງ; ພຽງແຕ່ຜູ້ໃຊ້ສາມາດປ່ຽນລະຫັດຜ່ານໃນພາຍຫຼັງ.
 or_unlock_login	ຫຼືປົດລັອກດ້ວຍ ID ເຂົ້າສູ່ລະບົບ + ລະຫັດຜ່ານ
-permission_preset	ວຽກ (ຕັ້ງໜ້າຈໍ ແລະສິດທິ)
+permission_preset	ວຽກ
 preset_help_moklanjo	Cashier: ຂາຍ. ຜູ້ຈັດການ: ຂາຍ + ລາຍການ + void / ດັດແກ້.
 product_locked_moklanjo	Moklanjo
 product_only_moklanjo	ແອັບນີ້ແມ່ນ Moklanjo ເທົ່ານັ້ນ — ປຶ້ມ + ໂຕະຈອງ. ການຄ້າອື່ນໆປະເຊີນກັບການຂົນສົ່ງເປັນຜະລິດຕະພັນແຍກຕ່າງຫາກຕໍ່ມາ.
@@ -698,10 +694,6 @@ pin_hint_paired	ພິເສດຈົນກວ່າຈະຈັບຄູ່ —
 pin_hint_pair_first	ພິເສດຈົນຮອດ — ຈັບຄູ່ກັບອຸປະກອນຮ້ານຄ້າກ່ອນ
 unlock_to_continue	ປົດລັອກເພື່ອສືບຕໍ່
 no_staff_yet	ບໍ່ມີພະນັກງານເທື່ອ — ປົດລັອກເປັນເຈົ້າຂອງ, ຈາກນັ້ນທີມງານ
-status_server_set_pin	ໂໝດເຊີບເວີ - ຕັ້ງເຈົ້າຂອງ PIN
-status_server_tills	ໂຫມດເຊີບເວີ - tills ພິເສດສາມາດເຂົ້າຮ່ວມ. ປົດລັອກ
-status_server_unlock	ໂໝດເຊີບເວີ — ປົດລັອກເປັນເຈົ້າຂອງ
-status_client_unlock	ໂໝດລູກຄ້າ — ປົດລັອກເພື່ອຂາຍ
 icon_new_selected	ໄອຄອນ: ເລືອກໄຟລ໌ໃໝ່ — ແຕະ Save brand
 icon_custom	ໄອຄອນ: ເຄື່ອງໝາຍສະຖານທີ່ກຳນົດເອງ
 icon_default	ໄອຄອນ: Kumkaj ໝາຍ (ຄ່າເລີ່ມຕົ້ນ) — ເລືອກອັນທີ່ກຳນົດເອງ
@@ -834,3 +826,7 @@ role_help_supplier	ພາລະບົດບາດ: ຜູ້ສະຫນອງ �
 lane_declared_label	ການຈອງບັນຊີ
 lane_owner_label	ການຈອງເງິນສົດ
 money_lane_bill	ໃບບິນ: {lane}
+sel_copy	ສຳເນົາ
+sel_select_all	ເລືອກທັງໝົດ
+sel_copied	ສຳເນົາແລ້ວ
+nav_loading	ກຳລັງໂຫຼດ…

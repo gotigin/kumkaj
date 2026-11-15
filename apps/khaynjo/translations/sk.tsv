@@ -41,7 +41,7 @@ remove	Odstrániť
 removed_items	Odstránené položky
 removed_help	Obnoviť vráti položku späť do ponuky presne tak, ako bola – cena, fotografia a kategória. Naša polica riadu sa nikdy nevyberá, takže pokrm môžete kedykoľvek pridať znova.
 restore_item	Obnoviť
-empty_catalog	Zatiaľ bez riadu. Otvorte Menu, pridajte jedlo (názov + cena) a potom si objednajte.
+empty_catalog	Zatiaľ bez riadu.
 total	Celkom
 cash	Hotovosť
 upi	UPI
@@ -103,23 +103,14 @@ bill_item_qty	Množ
 bill_item_price	Cena
 bill_item_amount	Suma
 bill_item_note	Poznámka k jedlu
-bill_item_col_gap	Medzera v stĺpci
 bill_item_col_order	Poradie stĺpcov
 bill_item_col_sep	Pravidlá stĺpcov
-bill_item_gap_tight	Tesné
-bill_item_gap_comfort	Pohodlné
-bill_item_gap_wide	Široký
-bill_item_num_width	Počet stĺpcov
-bill_item_num_compact	Kompaktný
-bill_item_num_comfort	Pohodlné
-bill_item_num_wide	Široký
-bill_item_num_align	Čísla sa zarovnajú
-bill_item_gap_em	medzera (em)
-bill_item_qty_min	Množstvo min (em)
-bill_item_price_min	Cena min (em)
-bill_item_amount_min	Minimálna suma (em)
-kot_item_qty_width	Stĺpec Množstvo
-kot_item_num_align	Množstvo zarovnať
+slip_columns	Stĺpce
+slip_col_width	Šírka (mm)
+slip_col_start	Medzera na začiatku (px)
+slip_col_end	Medzera na konci (px)
+slip_col_align	Zarovnanie textu
+slip_columns_help	Šírka každého stĺpca zahŕňa jeho medzeru na začiatku a na konci. Text sa zalamuje vo svojom stĺpci; čo presahuje šírku obsahu, sa oreže – na papieri aj v náhľade.
 bill_total_qty_label	Štítok s celkovým množstvom
 bill_total_subtotal_label	Menovka medzi súčtom
 bill_total_grand_label	Označenie celkovej sumy
@@ -221,7 +212,6 @@ sidebar_order_saved	Poradie bočného panela bolo uložené
 sidebar_visibility_saved	Viditeľnosť bočného panela bola uložená
 amounts_hide	Skryť
 amounts_show	Zobraziť
-printers_none_hint	Najprv si na tomto zariadení uložte tlačiareň a potom ju pridajte do Billa alebo do kuchyne
 counter	Počítadlo
 dine_in	Die-in
 takeaway	Take away
@@ -328,8 +318,6 @@ selected_language	Vybrané
 continue	Pokračovať
 this_device	TOTO ZARIADENIE
 device_use_q	Ako sa bude toto zariadenie používať?
-last_server_mode	Bol server – klepnutím pokračujte
-last_client_mode	Bol klient – klepnutím pokračujte
 choose_server	Vyberte server
 choose_server_hint	Otvorte existujúci server alebo vytvorte jeden pre inú firmu.
 create_new_server	Vytvorte nový server
@@ -391,7 +379,7 @@ attachments_last_expense	Prílohy (posledný výdavok)
 bank	Banka
 bank_in	Banka v
 bank_out	Z banky
-bank_reconciliation	Bankové odsúhlasenie (zaškrtnite pri výpise z účtu)
+bank_reconciliation	Bankové odsúhlasenie
 bank_to_till	Banka → do
 book_add_dish	Kniha – pridať jedlo/položku
 book_opening_credit	Kniha — otvárací kredit
@@ -744,7 +732,6 @@ station_print_pick_first	Najprv si vyberte kuchynskú stanicu
 station_print_editing	Úprava tlačiarní pre „{name}“
 station_vps_dd	Tlačiarne pre túto stanicu
 station_vps_dd_n	{n} tlačiarní · klepnutím zmeníte
-station_vps_empty	Zatiaľ žiadne tlačiarne — Nájdite ich v časti Nastavenia → Tlačiarne
 bill_printers_dd	Tlačiarne na účet
 bill_printers_dd_n	{n} tlačiarní na účet · klepnutím zmeníte
 job_layout	Rozloženie
@@ -889,7 +876,7 @@ net_word	Čistý
 offline_badge	OFFLINE
 optional_login_help	Voliteľné prihlásenie (id + heslo). Vlastník nastaví raz; heslo môže neskôr zmeniť iba používateľ.
 or_unlock_login	Alebo odomknite pomocou prihlasovacieho mena + hesla
-permission_preset	Práca (nastavuje obrazovky a peňažné akcie)
+permission_preset	Práca
 preset_help_khaynjo	Pokladník: predám. Manažér: predaj + položky + neplatnosť/zmena.
 product_locked_khaynjo	Khaynjo
 product_only_khaynjo	Táto aplikácia je len Khaynjo — operačný systém reštaurácie. Ostatné obchodné tváre sa dodávajú ako samostatné Kumkaj produkty.
@@ -961,10 +948,6 @@ pin_hint_paired	Extra do spárovania – odomknite na predaj
 pin_hint_pair_first	Extra till — najskôr spárujte so zariadením obchodu
 unlock_to_continue	Ak chcete pokračovať, odomknite
 no_staff_yet	Zatiaľ žiadny personál – odomknite ako vlastník, potom tím
-status_server_set_pin	Režim servera — nastavte vlastníka PIN
-status_server_tills	Režim servera – môžu sa pripojiť ďalšie pokladne. Odomknúť
-status_server_unlock	Režim servera – odomknite ako vlastník
-status_client_unlock	Klientsky režim – odomknite a predajte
 icon_new_selected	Ikona: vybratý nový súbor – klepnite na Uložiť značku
 icon_custom	Ikona: vlastné označenie miesta konania
 icon_default	Ikona: Značka Kumkaj (predvolené) — vyberte si vlastnú
@@ -1033,7 +1016,7 @@ book_kind_balance	Súvaha
 order_help	Klepnutím na položku ju pridáte.
 floor_help	Klepnutím na jedálenský stôl prevezmete alebo zmeníte objednávku. Farby zobrazujú zadarmo → sediaci → kuchyňa → hotové → jedenie → účet → zaplatené. Zoznam čakateľov, rezervácie a doplnkové stoly sú v sekciách nižšie.
 kitchen_help	Lístky do kuchyne (KOT), najnovšie posledné. Štart → Pripravené → Hotovo posunie lístok ďalej. Vstupenky nikdy neukazujú ceny.
-kitchen_empty	Žiadne otvorené lístky. Tu sa zobrazí KOT odoslaná z objednávky alebo jedálne.
+kitchen_empty	Žiadne otvorené lístky.
 add_a_table	Pridajte jedálenský stôl
 add_station_heading	Pridajte kuchynskú stanicu
 categories_help	Klepnutím na Použiť zaradíte vyššie uvedenú položku do tejto kategórie. Fotografia dáva kategórii obrázok; bez jedného ukazuje svoje iniciály.
@@ -1131,7 +1114,6 @@ bill_format_help	Vytlačené pod názvom vašej reštaurácie na každom účte.
 bill_header_ph	Adresa | telefón
 fssai_ph	FSSAI licencia č. (India)
 bill_footer_ph	Päta (napr. Ďakujem, navštívte znova)
-save_bill_format	Uložiť formát faktúry
 reset_bill_format	Obnoviť predvolené nastavenie
 bill_format_reset	Formát faktúry bol obnovený na predvolený
 reset_kot_format	Obnoviť predvolené nastavenie
@@ -1201,13 +1183,11 @@ kot_copies_3	3
 kot_title_ph	Názov (prázdne = KOT - OBJEDNÁVKA KUCHYNE)
 kot_footer_ph	Poznámka do kuchyne (voliteľné, bez cien)
 kot_preview	Ukážka
-save_kot_format	Uložiť formát KOT
 test_kot_format	Skúsiť KOT
 test_kot_sent	Ukážka lístka do kuchyne bola odoslaná
 test_bill_format	Testovací účet
 test_bill_sent	Ukážka faktúry bola odoslaná
 test_print_no_printer	Žiadna tlačiareň pre túto úlohu – vyberte jednu na tejto obrazovke
-kot_format_saved	Formát KOT bol uložený
 std_print	Veľkosť tlače účtu
 std_print_help	Veľkosť písma pre štandardné účtovné úlohy na výšku a na šírku na tlačiarňach OS/dokumentov (zadajte body – nie Malé/Normálne/Veľké). Rovnaká veľkosť na oboch orientáciách. Veľkosti kuchynského lístka sú na karte KOT.
 std_size_s	Malý
@@ -1264,7 +1244,6 @@ new_items_head	Zatiaľ neodoslané
 price_ph	Cena
 price_ph_gst_inside	Cena ({tax} vrátane)
 cancel_needs_table	Otvorte túto objednávku z obrazovky Jedáleň (jedálenský stôl) a zrušte ju po tom, čo ju bude mať kuchyňa – počítadlo KOT zostáva na lístku, kým neprijmete platbu
-tax_rates_missing_hint	Žiadna sadzba {tax} na tieto jedlá — na nastavenom menu Sadzba dane (ceny už zahŕňajú {tax} pod {tax} vrátane)
 taxable_value	Zdaniteľná hodnota
 gst_inside_price_note	({tax} vrátane)
 start_with_template	Začnite s našou šablónou menu
@@ -1318,9 +1297,7 @@ order_empty_pick	Objednávka je prázdna – poklepaním na Pridať jedlá vyš�
 add_dishes	Pridajte riad
 order_so_far	Na túto objednávku: {n} · {total}
 no_dish_match	Žiadne jedlo nezodpovedá „{q}“
-pick_dishes_help	Klepnutím na jedlo ho pridáte · výberom kategórie zúžite zoznam
 pick_done	Hotovo
-pick_done_dd	Hotovo · {label}
 printer_route_mode	Ak je na tomto mieste niekoľko tlačiarní
 printer_mode_first	Najprv to funguje
 printer_mode_all	Tlač na všetky
@@ -1368,3 +1345,22 @@ recent_changes	Najnovšie zmeny
 lane_declared_label	Daňový doklad
 lane_owner_label	Pokladničný doklad
 money_lane_bill	Účet: {lane}
+sel_copy	Kopírovať
+sel_select_all	Vybrať všetko
+sel_copied	Skopírované
+items_tmpl_khaynjo	Šablóna položiek Khaynjo
+items_tmpl_named	Šablóna {name}
+app_tmpl_named	Šablóna aplikácie {name}
+private_code_ph	12-miestny kód
+stamp_on	Pečiatka: v evidencii
+pay_qr_on	Platba QR: v evidencii
+pay_qr_off	Platba QR: žiadna
+items_tmpl_heading	Šablóny položiek
+items_tmpl_help	Jedlá, kategórie a fotky pre vaše menu. Nastavenia obchodu a personál zostávajú bez zmeny.
+public_tmpl_help	Štartovacie menu, ktoré si môže stiahnuť ktokoľvek. Internet je potrebný raz.
+private_tmpl_help	Klientske menu chránené 12-miestnym kódom od vášho kontaktu Khaynjo.
+printers_screen_tip	Hľadať zobrazí tlačiarne, ktoré toto zariadenie môže použiť, a uloží ich pre tento obchod. Tlačiarne účtov: Formát účtu a KOT → Účet. Kuchyňa: Kuchyňa → Kuchynské stanovištia.
+printers_found_none	Nenašli sa žiadne tlačiarne.
+kot_copy_from	Kopírovať z
+kot_copy_from_help	Skopíruje veľkosť, hrúbku a zarovnanie každého riadka z daného druhu do tohto. Tento druh si ponechá vlastný banner, predponu položiek a prečiarknutie. Na zachovanie uložte formát KOT.
+nav_loading	Načítava sa…

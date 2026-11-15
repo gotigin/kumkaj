@@ -41,7 +41,7 @@ remove	কুথার খাইদি
 removed_items	কুমাজাক মানুইরক
 removed_help	রেসতরে উংমা জরাও আব সুকাংনি হাই খেন মেনু-ও কিফিলুই ফাইও — রাং, ফত তেই রাং. চিনি শেলফ নি দিশ রক ন জেফুরু ফান রুজাকয়া, আবনি বাগুই দিশ ন জেফুরু ফান তেইসা রুউই মান.
 restore_item	কিফিলুই তুবুদি
-empty_catalog	তাবুকব দিশ কুরুই. মেনু খুলকদি, কাইসা চামুং (মুং + রাং) রুদি, আবনি উল ওরদের রুদি.
+empty_catalog	তাবুকব দিশ কুরুই.
 total	জত
 cash	রাং
 upi	UPI
@@ -103,23 +103,14 @@ bill_item_qty	কুবাংমা
 bill_item_price	দাম
 bill_item_amount	রাং
 bill_item_note	দিশ নি ককতুমা
-bill_item_col_gap	খলম গাপ
 bill_item_col_order	খলম নি ওরদের
 bill_item_col_sep	কলম নি কেরং
-bill_item_gap_tight	কুরাক
-bill_item_gap_comfort	কুচাংমা
-bill_item_gap_wide	কুপলাইসা
-bill_item_num_width	নমবার কলম
-bill_item_num_compact	কুচাক
-bill_item_num_comfort	কুচাংমা
-bill_item_num_wide	কুপলাইসা
-bill_item_num_align	নমবার আলিগন খাইজাক
-bill_item_gap_em	গাপ (এম)
-bill_item_qty_min	কুবাংমা (এম)
-bill_item_price_min	কুচাক রাং (এম)
-bill_item_amount_min	কুবাংমা রাং (এম)
-kot_item_qty_width	কতয় খলম
-kot_item_num_align	কুবাংমা সুলাইউই
+slip_columns	খলমরগ
+slip_col_width	বাগা (mm)
+slip_col_start	সালকসা জায়গা (px)
+slip_col_end	তামাখালনি জায়গা (px)
+slip_col_align	সুংমানি তাবুক
+slip_columns_help	খলম কাইসানি বাগা বিনি সালকসা বো তামাখালনি জায়গা সুমানি। সুংমা বিনি খলম সিনিসে সাপুইমানি; কাতারনি বাগা কাসানো বুসুক অ তাতা আছিক বো ফৗরৗননি সিনি তিকতুইমানি।
 bill_total_qty_label	জত কুতয় মুং
 bill_total_subtotal_label	সুব জত লাবেল
 bill_total_grand_label	কুপলাইসা বেবাক লেবেল
@@ -221,7 +212,6 @@ sidebar_order_saved	সিদেবার নি দাগিমুং মুথ
 sidebar_visibility_saved	সিদেবার নুকজাকমা মুথাংজাক খা
 amounts_hide	হুকদি
 amounts_show	পুইলা
-printers_none_hint	পুইলা ও মানুই-ও পরিনতের সুনামদি, আবনি উল বিল এবা চামুং নক-ও চাপদি
 counter	লেখাজাক
 dine_in	চামুং-চামুং
 takeaway	তুই থাংমানি
@@ -328,8 +318,6 @@ selected_language	চংজাক
 continue	তুলাংদি
 this_device	ওহ দেভিচে
 device_use_q	ও দেভিচে ন বাহাই খে উসে খলাই নাই?
-last_server_mode	Server উংখা — সুকাং থাংনা বাগুই তাপ দি
-last_client_mode	Client উংখা — সুকাং থাংনা বাগুই তাপ দি
 choose_server	সেরভের চংদি
 choose_server_hint	কাইসা তংনাই সেরভের ন খলক দি, এবা তেই কাইসা সামুংনি বাগুই কাইসা সুনাম দি.
 create_new_server	সেরভের কুতাল সুনামদি
@@ -391,7 +379,7 @@ attachments_last_expense	কুথার মানুইরক (পাইথা�
 bank	বানক
 bank_in	বানক ও
 bank_out	বানক নি ফাতার
-bank_reconciliation	বানক নি কুথালাইমুং (নিনি বানক নি ককতুমা বাই তিচক খাই দি)
+bank_reconciliation	বানক নি কুথালাইমুং
 bank_to_till	বানক → জরা
 book_add_dish	বিজাপ — চামুং / মানুই তুবুদি
 book_opening_credit	বিজাপ — চরেদিত ফুআরমানি
@@ -744,7 +732,6 @@ station_print_pick_first	পুইলা চামুং সুংমানি �
 station_print_editing	“{name}” নি বাগুই সুইজাক মানুইরকন সুলাইউই
 station_vps_dd	ও সতাতিওন নি বাগুই পরিনতের
 station_vps_dd_n	{n} সুইজাক(রক) · সুলাইনা বাগুই চাপদি
-station_vps_empty	তাবুক জরাও পরিনতের কুরুই — সেতিংস → পরিনতারকনি বিসিঙ নাইদি .
 bill_printers_dd	বিল নি বাগুই পরিনতের
 bill_printers_dd_n	{n} বিল নি বাগুই পরিনতের(রক) · সুলাইনা বাগুই তাপদি
 job_layout	নকসা
@@ -889,7 +876,7 @@ net_word	নেত
 offline_badge	ওফলিনে
 optional_login_help	ওপতিওনাল লগিন (ইদ + পাসুওরদ). ওউনের কাইসা সেত খলাইও; ওনলয় থে উসের চান চাঙে পাসুওরদ লাতের.
 or_unlock_login	এবা লগিন ইদ + ককতুমা বাই লচক ফিয়গুই দি
-permission_preset	সামুং (সচরেএন তেই রাংনি সামুংরকন সুনামনাই)
+permission_preset	সামুং
 preset_help_khaynjo	চাশিএর: ফালদি. মানাগের: ফালদি + মানুইরক + সুকাকজাক/সুনামদি.
 product_locked_khaynjo	Khaynjo
 product_only_khaynjo	ও আপ Khaynjo সিমি সে — চামুং চামুংনি সয়সতেম. কুবুন তরাদে নি বুসকাঙ শিপ উংনাই Kumkaj মানুই উঙুই.
@@ -961,10 +948,6 @@ pin_hint_paired	জরা উংমা জরা তেইব — ফালন�
 pin_hint_pair_first	কুবাংমা জরা — সুকাং দুকানি মানুই বাই পাইর খলাই দি
 unlock_to_continue	তুলাংনা বাগুই লচক ফিয়ক দি
 no_staff_yet	তাবুক জরাও সামুং তাংনাইরক কুরুই — মালিক উঙুই ফুআরজাক, আবনি উল তেআম
-status_server_set_pin	Server মদে — নকফাংন সুনামদি PIN
-status_server_tills	Server মদে — কুবাংমা তিলস উঙুই মান. লচক খুলকদি
-status_server_unlock	Server মদে — মালিক উঙুই ফুআরুই রুদি
-status_client_unlock	Client মদে — ফালনা বাগুই লচক খুলকদি
 icon_new_selected	ইচন: কুতাল ফিলে চংজাক — বরানদ মুথাংদি
 icon_custom	ইচন: সুনামজাকমানি জাগানি মারি
 icon_default	ইচন: Kumkaj মারি (সুকাংনি) — কাইসা সুক চংদি
@@ -1033,7 +1016,7 @@ book_kind_balance	বালানচে সুইজাক
 order_help	আদ খাইনা বাগুই কাইসা মানুই ন তাপ খাই দি.
 floor_help	ওরদের নানা বাগুই এবা সুলাইনা বাগুই তাবলে ন তাপ খাই দি. রাংচাকরক ফুনুকজাক → আচুকথাই → চামুং → তিয়ার → চামুং → বিল → রাং রুজাক. নাইসিঙুই তংমানি লিসত, জাগা নারুকমানি, তেই আদ-তাবলেরক তলাও তংনাই.
 kitchen_help	খামজাকমা তিকেত (KOT), কুতাল কুতাল. সুকাংনি → তিয়ার → খলাইমানি তিচকেত ন তউইউই থাংনাই. তিচকেত নি রাং ন নুং ফুনুকয়া.
-kitchen_empty	তিচকেত খলকজাকয়া. ওরদের এবা ফলওর নি থানি রহরজাক KOT ন আর নুকজাকনাই.
+kitchen_empty	তিচকেত খলকজাকয়া.
 add_a_table	কাইসা তাবলে চাপদি
 add_station_heading	চামুং সুংমানি জাগা তুবুদি
 categories_help	উসে ন তাপ খাইউই আবনি থানি ফিলে খাইদি. ফত উংখা রাংচাকনি রাংচাক; কাইসা কুরুই খে আব বিনি সুকাংনি লেখারকন ফুনুকনাই.
@@ -1131,7 +1114,6 @@ bill_format_help	জত বিল নি সাকাও নিনি রেস�
 bill_header_ph	আদরেস নি কক | ফনে
 fssai_ph	FSSAI লাইসেনস নি রাং. (ভারাত)
 bill_footer_ph	য়াফাঙ (এ.গ. হামবাই য়াফার, তেইসা নাইদি)
-save_bill_format	বিল নি ফরম মুথাংদি
 reset_bill_format	সুকাংনি হাই খে রেসেত খাই দি
 bill_format_reset	বিল নি ফরমাত সুকাংনি হাই খে সুলাইজাক
 reset_kot_format	সুকাংনি হাই খে রেসেত খাই দি
@@ -1201,13 +1183,11 @@ kot_copies_3	3
 kot_title_ph	মুচুংতুই (কুরুই = KOT - চামুংনি খুমুলুং)
 kot_footer_ph	চামুং চামানি ককতুমা (চাজাক য়া, রাং কুরুই)
 kot_preview	সুকাংনি নাইমুং
-save_kot_format	KOT সুনামদি
 test_kot_format	তেসত খাইদি KOT
 test_kot_sent	রাংচাকনি তিচকেত সুকাংনি নুকমুং রহরজাক খা
 test_bill_format	তেসত বিল
 test_bill_sent	বিল সুকাংনি নুকমুং রহরজাক খা
 test_print_no_printer	আ সামুংনি বাগুই পরিনতের কুরুই — ও সচরেএন-ও কাইসা চংদি .
-kot_format_saved	KOT মুথাংজাক খা
 std_print	বিল সুইজাকমানি কতরমা
 std_print_help	ওস / সুইজাক সুইনাইরকনি সাকা-ও সুকাংনি মাংপিলি তেই হায়ুংনি বিল সামুংনি বাগুই ফনত কতরমা (পইনতস সুইদি — কুচাক/কুতাল/কুপলাইসা য়া). বহরকনি সিজে কাইসা. সলিপ নি সিজে রক KOT নি তাব ও তঙ.
 std_size_s	কুচাক
@@ -1264,7 +1244,6 @@ new_items_head	তাবুকব রহরজাকয়া
 price_ph	দাম
 price_ph_gst_inside	খরকসা খরকসানি রাং ({tax} বাই বাকসা)
 cancel_needs_table	ও ওরদের ন ফলওর নি সিমি (কাইসা মেজা) ফিয়গুই দি, নুং রাং রুজাক য়া সাক তিচকেত ও চউনতের KOTস তং দি
-tax_rates_missing_hint	এ চানারকো {tax} নি রাং কুরুই — মেনু ও {tax} নি রাং সেত খাইদি (রাং সুকাংনি {tax} সিমিতি)
 taxable_value	তাক্ষ উংনাই মানুই
 gst_inside_price_note	({tax} উঙুই)
 start_with_template	চিনি মেনু নি তেমপলাতে বাই চেংদি
@@ -1318,9 +1297,7 @@ order_empty_pick	ওরদের খাইউই — দিশ পিচক খ�
 add_dishes	থালারক তুবুদি
 order_so_far	ও ককতুমা বাই: {n} · {total}
 no_dish_match	খরকসা ফান চামুং “{q}” বাই কুরুংয়া
-pick_dishes_help	কাইসা দিশ ন চাপদি আবন তুবুনা বাগুই · লিসত ন নারউ খুলাইনা বাগুই কাইসা জাগা চংদি
 pick_done	কুথার
-pick_done_dd	কুথার · {label}
 printer_route_mode	ও জাগাও কুবাংমা পরিনতের তংখে
 printer_mode_first	পুইলা আব সামুং তাংনাই
 printer_mode_all	জতন পরিনত খাইদি
@@ -1368,3 +1345,22 @@ recent_changes	তাবুকনি সুলাইজাকমা
 lane_declared_label	তাক্ষ নি রাং
 lane_owner_label	রাং নি মেম
 money_lane_bill	বিল: {lane}
+sel_copy	চপয় খাইদি
+sel_select_all	জত বাছায় খাইদি
+sel_copied	চপয় খাইখা
+items_tmpl_khaynjo	Khaynjo জিনিস টেম্পলেট
+items_tmpl_named	{name} টেম্পলেট
+app_tmpl_named	{name} এপ টেম্পলেট
+private_code_ph	12 অংকনি কোড
+stamp_on	সতামপ: ফিলে-ও
+pay_qr_on	রাং রুমানি QR: ফিলে-ও
+pay_qr_off	রাং রুমানি QR: কুরুই
+items_tmpl_heading	Item template rog
+items_tmpl_help	Nini menu bai chakhwi, category tei photo rog. Dokan ni setting tei staff rog jesa tongo osa tongnai.
+public_tmpl_help	Sabo bo download khlainai pha phaiwi menu rog. Kaisa internet nangnai.
+private_tmpl_help	Nini Khaynjo contact ni bisingo mani 12 digit code bai rakha khlaiwi customer menu rog.
+printers_screen_tip	Nai ni bai hono device ni haikhlai mani printer rog na tongnai tei hono dokan ni bagwi tongnai. Bill printer rog: Bill tei KOT format → Bill. Ochaksa: Ochaksa → Ochaksa station rog.
+printers_found_none	Printer kaisa mani mano.
+kot_copy_from	Oro thani copy khlai
+kot_copy_from_help	Ade bwsa line bwsa size, thickness bai alignment oro copy khlaio. Ao bwsa bini banner, item prefix bai strike rwkhaio. Rwkhaini bagwi KOT format save khlai.
+nav_loading	Load khlaiwi tongo…

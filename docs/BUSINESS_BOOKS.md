@@ -73,9 +73,10 @@ equal peers in one mental model. The UX must make that model obvious.
 
 ### Experience principles
 
-1. **Books at a glance** — After unlock, the owner lands on **Books**: today’s
-   position (money in, money out, who owes / whom we owe, cash vs bank) —
-   not only a catalogue grid waiting for a tap.
+1. **Books at a glance** — **Day book** answers today’s position (money in,
+   money out, who owes / whom we owe, cash vs bank) — not only a catalogue
+   grid waiting for a tap. It is one tap away, never forced: unlock returns
+   each person to the screen they last had selected (owner, 2026-11-15).
 2. **Equal peers, not a funnel** — Sell and Buy are bottom-nav peers with
    Books. Parties, items, reports, inventory depth live under More (or one tap
    from Books) — not afterthoughts that redefine the product as a till.

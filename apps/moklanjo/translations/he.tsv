@@ -39,7 +39,7 @@ adding_item	הוספת תעריף חדש
 editing_item	בעריכה
 save	שמור
 remove	הסר
-empty_catalog	עדיין אין תעריפים. פתח את 'תעריפים ושירותים', הוסף אחד (שם + מחיר, יחידת ק"ג), ואז הזמנה.
+empty_catalog	עדיין אין תעריפים.
 counter_sale	הזמנה נגדית
 total	סה״כ
 cash	מזומן
@@ -171,8 +171,6 @@ selected_language	נבחר
 continue	המשך
 this_device	המכשיר הזה
 device_use_q	איך ישמש המכשיר הזה?
-last_server_mode	היה שרת — הקישו כדי להמשיך
-last_client_mode	היה מסוף — הקישו כדי להמשיך
 choose_server	בחרו שרת
 choose_server_hint	פתחו שרת קיים, או צרו אחד לעסק אחר.
 create_new_server	צור שרת חדש
@@ -501,8 +499,6 @@ job_layout	פריסה
 job_delivery	איך העבודה נשלחת
 job_size	גודל גופן
 job_size_ph	למשל 18, 20, 26…
-save_receipt_format	שמור פורמט קבלה
-save_label_format	שמור פורמט תווית
 test_receipt_format	קבלה לבדיקה
 test_label_format	תווית בדיקה
 test_receipt_sent	קבלה לדוגמה נשלחה
@@ -610,7 +606,7 @@ units_heading	יחידות
 booking_measures	אמצעי הזמנה
 drawer_count	ספירת מגירה (לא חובה)
 spreadsheet_csv	גיליון (CSV)
-bank_reconciliation	התאמת בנק (סמנו מול דף החשבון)
+bank_reconciliation	התאמת בנק
 book_add_product	ספר - הוסף מוצר / תעריף
 book_opening_credit	ספר — אשראי פתיחה
 account_kind	סוג חשבון (הקישו על אחד)
@@ -650,7 +646,7 @@ net_word	נטו
 offline_badge	לא מקוון
 optional_login_help	כניסה אופציונלית (מזהה + סיסמה). הבעלים קובע פעם אחת; רק המשתמש יכול לשנות סיסמה אחר כך.
 or_unlock_login	או פתחו עם מזהה כניסה + סיסמה
-permission_preset	עבודה (מגדיר מסכים וזכויות)
+permission_preset	עבודה
 preset_help_moklanjo	קופאי: מוכר. מנהל משמרת: מוכר + פריטים + ביטול/תיקון.
 product_locked_moklanjo	Moklanjo
 product_only_moklanjo	האפליקציה הזו היא מוקלאנג'ו בלבד - ספרים + שולחן הזמנות. פנים סחר אחרות נשלחות כמוצרים נפרדים מאוחר יותר.
@@ -698,10 +694,6 @@ pin_hint_paired	קופה נוספת מזווגת — פתחו כדי למכור
 pin_hint_pair_first	קופה נוספת — זווגו קודם למכשיר החנות
 unlock_to_continue	פתחו כדי להמשיך
 no_staff_yet	עדיין אין צוות — פתחו כבעלים, ואז צוות
-status_server_set_pin	מצב שרת — קבעו PIN בעלים
-status_server_tills	מצב שרת — קופות נוספות יכולות להצטרף. פתח
-status_server_unlock	מצב שרת — פתחו כבעלים
-status_client_unlock	מצב מסוף — פתחו כדי למכור
 icon_new_selected	סמל: נבחר קובץ חדש — הקישו שמור מותג
 icon_custom	סמל: סימן מקום מותאם
 icon_default	סמל: סימן Kumkaj (ברירת מחדל) — בחרו אחד מותאם
@@ -834,3 +826,7 @@ role_help_supplier	תפקיד: ספק - AP לרכישות.
 lane_declared_label	הזמנת חשבון
 lane_owner_label	הזמנה במזומן
 money_lane_bill	חשבון: {lane}
+sel_copy	העתק
+sel_select_all	בחר הכול
+sel_copied	הועתק
+nav_loading	טוען…

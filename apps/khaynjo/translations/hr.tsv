@@ -41,7 +41,7 @@ remove	Ukloni
 removed_items	Uklonjene stavke
 removed_help	Vraćanje stavlja stavku natrag na jelovnik točno kakva je bila — cijena, fotografija i kategorija. Naša polica jela nikad se ne uklanja, pa se jelo uvijek može ponovno dodati.
 restore_item	Vrati
-empty_catalog	Još nema jela. Otvorite Jelovnik, dodajte jelo (ime + cijena), pa primite narudžbu.
+empty_catalog	Još nema jela.
 total	Ukupno
 cash	Gotovina
 upi	UPI
@@ -103,23 +103,14 @@ bill_item_qty	Kol.
 bill_item_price	Cijena
 bill_item_amount	Iznos
 bill_item_note	Bilješka jela
-bill_item_col_gap	Razmak stupaca
 bill_item_col_order	Redoslijed stupaca
 bill_item_col_sep	Crte stupaca
-bill_item_gap_tight	Usko
-bill_item_gap_comfort	Udobno
-bill_item_gap_wide	Široko
-bill_item_num_width	Brojčani stupci
-bill_item_num_compact	Zbijeno
-bill_item_num_comfort	Udobno
-bill_item_num_wide	Široko
-bill_item_num_align	Poravnanje brojeva
-bill_item_gap_em	Razmak (em)
-bill_item_qty_min	Min. kol. (em)
-bill_item_price_min	Min. cijena (em)
-bill_item_amount_min	Min. iznos (em)
-kot_item_qty_width	Stupac kol.
-kot_item_num_align	Poravnanje kol.
+slip_columns	Stupci
+slip_col_width	Širina (mm)
+slip_col_start	Početni razmak (px)
+slip_col_end	Završni razmak (px)
+slip_col_align	Poravnanje teksta
+slip_columns_help	Širina svakog stupca uključuje njegov početni i završni razmak. Tekst se prelama unutar svog stupca; ono što prelazi širinu sadržaja odrezuje se, na papiru i u pregledu.
 bill_total_qty_label	Natpis ukupne kol.
 bill_total_subtotal_label	Natpis međuzbroja
 bill_total_grand_label	Natpis sveukupno
@@ -221,7 +212,6 @@ sidebar_order_saved	Redoslijed bočne trake spremljen
 sidebar_visibility_saved	Vidljivost bočne trake spremljena
 amounts_hide	Sakrij
 amounts_show	Prikaži
-printers_none_hint	Prvo spremite pisač na ovom uređaju, zatim ga dodajte računu ili kuhinji
 counter	Šank
 dine_in	U lokalu
 takeaway	Za ponijeti
@@ -328,8 +318,6 @@ selected_language	Odabrano
 continue	Nastavi
 this_device	OVAJ UREĐAJ
 device_use_q	Kako će se ovaj uređaj koristiti?
-last_server_mode	Bio je Server — dodirnite za nastavak
-last_client_mode	Bio je Klijent — dodirnite za nastavak
 choose_server	Odaberite Server
 choose_server_hint	Otvorite postojeći Server ili napravite jedan za drugi posao.
 create_new_server	Napravi novi Server
@@ -391,7 +379,7 @@ attachments_last_expense	Prilozi (zadnji trošak)
 bank	Banka
 bank_in	Uplati u banku
 bank_out	Isplati iz banke
-bank_reconciliation	Usklađenje banke (označite prema bankovnom izvodu)
+bank_reconciliation	Usklađenje banke
 bank_to_till	Banka → blagajna
 book_add_dish	Knjiga — dodaj jelo / stavku
 book_opening_credit	Knjiga — početni dug
@@ -744,7 +732,6 @@ station_print_pick_first	Prvo odaberite kuhinjsku stanicu
 station_print_editing	Uređivanje pisača za „{name}”
 station_vps_dd	Pisači za ovu stanicu
 station_vps_dd_n	{n} pisač/a · dodirnite za promjenu
-station_vps_empty	Još nema pisača — pronađite ih pod Postavke → Pisači
 bill_printers_dd	Pisači za račun
 bill_printers_dd_n	{n} pisač/a za račun · dodirnite za promjenu
 job_layout	Raspored
@@ -889,7 +876,7 @@ net_word	Neto
 offline_badge	BEZ MREŽE
 optional_login_help	Neobavezna prijava (id + lozinka). Vlasnik postavlja jednom; lozinku kasnije mijenja samo korisnik.
 or_unlock_login	Ili otključajte id-em prijave + lozinkom
-permission_preset	Posao (postavlja zaslone i novčane radnje)
+permission_preset	Posao
 preset_help_khaynjo	Blagajnik: prodaja. Voditelj: prodaja + stavke + storno/ispravak.
 product_locked_khaynjo	Khaynjo
 product_only_khaynjo	Ova aplikacija je samo Khaynjo — operacijski sustav restorana. Druga lica obrta dolaze kao zasebni proizvodi Kumkaj.
@@ -961,10 +948,6 @@ pin_hint_paired	Dodatna blagajna uparena — otključajte za prodaju
 pin_hint_pair_first	Dodatna blagajna — prvo je uparite s uređajem lokala
 unlock_to_continue	Otključajte za nastavak
 no_staff_yet	Još nema osoblja — otključajte kao Vlasnik, pa Tim
-status_server_set_pin	Način Server — postavite PIN Vlasnika
-status_server_tills	Način Server — dodatne blagajne se mogu pridružiti. Otključaj
-status_server_unlock	Način Server — otključajte kao Vlasnik
-status_client_unlock	Način Klijent — otključajte za prodaju
 icon_new_selected	Ikona: odabrana nova datoteka — dodirnite Spremi brend
 icon_custom	Ikona: vlastiti znak lokala
 icon_default	Ikona: znak Kumkaj (zadano) — odaberite vlastiti
@@ -1033,7 +1016,7 @@ book_kind_balance	Bilanca
 order_help	Dodirnite stavku da je dodate.
 floor_help	Dodirnite stol da primite ili promijenite narudžbu. Boje pokazuju slobodno → sjelo → kuhinja → spremno → jede → račun → plaćeno. Lista čekanja, rezervacije i dodavanje stolova su u odjeljcima ispod.
 kitchen_help	Kuhinjski listići (KOT), najnoviji zadnji. Kreni → Spremno → Gotovo pomiče listić. Listići nikad ne pokazuju cijene.
-kitchen_empty	Nema otvorenih listića. KOT poslan iz Narudžbe ili Sale pojavljuje se ovdje.
+kitchen_empty	Nema otvorenih listića.
 add_a_table	Dodaj stol
 add_station_heading	Dodaj kuhinjsku stanicu
 categories_help	Dodirnite Koristi da stavku iznad stavite u tu kategoriju. Fotografija daje kategoriji sliku; bez nje pokazuje inicijale.
@@ -1131,7 +1114,6 @@ bill_format_help	Ispisuje se ispod imena restorana na svakom računu. Retke odvo
 bill_header_ph	Adresa | telefon
 fssai_ph	Broj dozvole FSSAI (Indija)
 bill_footer_ph	Podnožje (npr. Hvala, dođite opet)
-save_bill_format	Spremi oblik računa
 reset_bill_format	Vrati na zadano
 bill_format_reset	Oblik računa vraćen na zadano
 reset_kot_format	Vrati na zadano
@@ -1201,13 +1183,11 @@ kot_copies_3	3
 kot_title_ph	Naslov (prazno = KOT - KITCHEN ORDER)
 kot_footer_ph	Bilješka kuhinji (nije obavezno, bez cijena)
 kot_preview	Pretpregled
-save_kot_format	Spremi oblik KOT-a
 test_kot_format	Probni KOT
 test_kot_sent	Pretpregled kuhinjskog listića poslan
 test_bill_format	Probni račun
 test_bill_sent	Pretpregled računa poslan
 test_print_no_printer	Nema pisača za taj posao — odaberite ga na ovom zaslonu
-kot_format_saved	Oblik KOT-a spremljen
 std_print	Veličina ispisa računa
 std_print_help	Veličina slova za poslove računa Uspravno i Položeno na pisačima OS-a / dokumenata (unesite točke — ne Malo/Normalno/Veliko). Ista veličina u obje orijentacije. Veličine kuhinjskog listića su na kartici KOT.
 std_size_s	Malo
@@ -1264,7 +1244,6 @@ new_items_head	Još nije poslano
 price_ph	Cijena
 price_ph_gst_inside	Cijena ({tax} u cijeni)
 cancel_needs_table	Otvorite ovu narudžbu sa Sale (stol) da otkažete nakon što je kuhinja ima — KOT sa šanka ostaje na listiću dok ne naplatite
-tax_rates_missing_hint	Nema stope {tax} na ovim jelima — na Jelovniku postavite Poreznu stopu (cijene već uključuju {tax} pod {tax} u cijeni)
 taxable_value	Oporeziva vrijednost
 gst_inside_price_note	({tax} u cijeni)
 start_with_template	Krenite s našim predloškom jelovnika
@@ -1318,9 +1297,7 @@ order_empty_pick	Narudžba je prazna — dodirnite Dodaj jela iznad da odaberete
 add_dishes	Dodaj jela
 order_so_far	Na ovoj narudžbi: {n} · {total}
 no_dish_match	Nijedno jelo ne odgovara „{q}”
-pick_dishes_help	Dodirnite jelo da ga dodate · odaberite kategoriju da suzite popis
 pick_done	Gotovo
-pick_done_dd	Gotovo · {label}
 printer_route_mode	Ako je više pisača na ovom mjestu
 printer_mode_first	Prvi koji radi
 printer_mode_all	Ispiši na sve
@@ -1368,3 +1345,22 @@ recent_changes	Nedavne promjene
 lane_declared_label	Porezni račun
 lane_owner_label	Gotovinski listić
 money_lane_bill	Račun: {lane}
+sel_copy	Kopiraj
+sel_select_all	Odaberi sve
+sel_copied	Kopirano
+items_tmpl_khaynjo	Khaynjo predložak artikala
+items_tmpl_named	Predložak {name}
+app_tmpl_named	Predložak aplikacije {name}
+private_code_ph	12-znamenkasti kod
+stamp_on	Pečat: u datoteci
+pay_qr_on	QR plaćanja: u datoteci
+pay_qr_off	QR plaćanja: nema
+items_tmpl_heading	Predlošci stavki
+items_tmpl_help	Jela, kategorije i fotografije za vaš jelovnik. Postavke trgovine i osoblje ostaju nepromijenjeni.
+public_tmpl_help	Početni jelovnici koje svatko može preuzeti. Internet je potreban jednom.
+private_tmpl_help	Klijentski jelovnici zaključani 12-znamenkastim kodom od vašeg Khaynjo kontakta.
+printers_screen_tip	Traži prikazuje pisače koje ovaj uređaj može koristiti i sprema ih za ovu trgovinu. Pisači za račune: Format računa i KOT → Račun. Kuhinja: Kuhinja → Kuhinjske stanice.
+printers_found_none	Nije pronađen nijedan pisač.
+kot_copy_from	Kopiraj iz
+kot_copy_from_help	Kopira veličinu, debljinu i poravnanje svakog retka iz te vrste u ovu. Ova vrsta zadržava svoj natpis, prefiks stavke i precrtavanje. Spremite KOT format da ga zadržite.
+nav_loading	Učitavanje…

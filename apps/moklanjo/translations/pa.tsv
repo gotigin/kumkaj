@@ -39,7 +39,7 @@ adding_item	ਨਵੀਂ ਦਰ ਜੋੜ ਰਿਹਾ ਹੈ
 editing_item	ਸੋਧ
 save	ਸੇਵ ਕਰੋ
 remove	ਹਟਾਓ
-empty_catalog	ਅਜੇ ਕੋਈ ਦਰ ਨਹੀਂ। ਦਰਾਂ ਤੇ ਸੇਵਾਵਾਂ ਖੋਲ੍ਹੋ, ਇੱਕ ਜੋੜੋ (ਨਾਂ + ਕੀਮਤ, ਇਕਾਈ kg), ਫਿਰ ਬੁਕਿੰਗ।
+empty_catalog	ਅਜੇ ਕੋਈ ਦਰ ਨਹੀਂ।
 counter_sale	ਕਾਊਂਟਰ ਬੁਕਿੰਗ
 total	ਕੁੱਲ
 cash	ਨਕਦ
@@ -171,8 +171,6 @@ selected_language	ਚੁਣੀ ਹੋਈ
 continue	ਅੱਗੇ ਵਧੋ
 this_device	ਇਹ ਡਿਵਾਈਸ
 device_use_q	ਇਹ ਡਿਵਾਈਸ ਕਿਵੇਂ ਵਰਤੀ ਜਾਵੇਗੀ?
-last_server_mode	ਪਹਿਲਾਂ ਸਰਵਰ ਸੀ — ਜਾਰੀ ਰੱਖਣ ਲਈ ਟੈਪ ਕਰੋ
-last_client_mode	ਪਹਿਲਾਂ ਕਲਾਇੰਟ ਸੀ — ਜਾਰੀ ਰੱਖਣ ਲਈ ਟੈਪ ਕਰੋ
 choose_server	ਸਰਵਰ ਚੁਣੋ
 choose_server_hint	ਇਸ ਡਿਵਾਈਸ 'ਤੇ ਪਹਿਲਾਂ ਹੀ ਸਰਵਰ ਹਨ। ਇੱਕ ਖੋਲ੍ਹੋ, ਜਾਂ ਦੂਜੇ ਕਾਰੋਬਾਰ ਲਈ ਨਵਾਂ ਸਰਵਰ ਬਣਾਓ।
 create_new_server	ਨਵਾਂ ਸਰਵਰ ਬਣਾਓ
@@ -501,8 +499,6 @@ job_layout	ਲੇਆਉਟ
 job_delivery	ਕੰਮ ਕਿਵੇਂ ਭੇਜਿਆ ਜਾਂਦਾ ਹੈ
 job_size	ਫੌਂਟ ਆਕਾਰ
 job_size_ph	ਜਿਵੇਂ 18, 20, 26…
-save_receipt_format	ਰਸੀਦ ਫ਼ਾਰਮੈਟ ਸਾਂਭੋ
-save_label_format	ਲੇਬਲ ਫ਼ਾਰਮੈਟ ਸਾਂਭੋ
 test_receipt_format	ਟੈਸਟ ਰਸੀਦ
 test_label_format	ਟੈਸਟ ਲੇਬਲ
 test_receipt_sent	ਨਮੂਨਾ ਰਸੀਦ ਭੇਜੀ
@@ -610,7 +606,7 @@ units_heading	ਇਕਾਈਆਂ
 booking_measures	ਬੁਕਿੰਗ ਮਾਪ
 drawer_count	ਦਰਾਜ਼ ਗਿਣਤੀ (ਵਿਕਲਪਿਕ)
 spreadsheet_csv	ਸਪ੍ਰੈਡਸ਼ੀਟ (CSV)
-bank_reconciliation	ਬੈਂਕ ਮਿਲਾਨ (ਆਪਣੇ ਬੈਂਕ ਸਟੇਟਮੈਂਟ ਨਾਲ ਟਿੱਕ ਕਰੋ)
+bank_reconciliation	ਬੈਂਕ ਮਿਲਾਨ
 book_add_product	ਬੁੱਕ — ਉਤਪਾਦ / ਦਰ ਜੋੜੋ
 book_opening_credit	ਬੁੱਕ — ਸ਼ੁਰੂਆਤੀ ਉਧਾਰ
 account_kind	ਖਾਤੇ ਦੀ ਕਿਸਮ (ਇੱਕ ਦਬਾਓ)
@@ -650,7 +646,7 @@ net_word	ਨੈੱਟ
 offline_badge	ਆਫ਼ਲਾਈਨ
 optional_login_help	ਵਿਕਲਪਿਕ ਲਾਗਇਨ (ਆਈਡੀ + ਪਾਸਵਰਡ)। ਮਾਲਕ ਇੱਕ ਵਾਰ ਲਗਾਉਂਦਾ ਹੈ; ਬਾਅਦ ਵਿੱਚ ਸਿਰਫ਼ ਵਰਤੋਂਕਾਰ ਹੀ ਪਾਸਵਰਡ ਬਦਲ ਸਕਦਾ ਹੈ।
 or_unlock_login	ਜਾਂ ਲਾਗਇਨ ਆਈਡੀ + ਪਾਸਵਰਡ ਨਾਲ ਅਨਲਾਕ ਕਰੋ
-permission_preset	ਕੰਮ (ਸਕ੍ਰੀਨਾਂ ਤੇ ਹੱਕ ਤੈਅ ਕਰਦਾ ਹੈ)
+permission_preset	ਕੰਮ
 preset_help_moklanjo	ਕੈਸ਼ੀਅਰ: ਵੇਚੋ। ਮੈਨੇਜਰ: ਵੇਚੋ + ਆਈਟਮਾਂ + ਰੱਦ/ਸੋਧ।
 product_locked_moklanjo	Moklanjo
 product_only_moklanjo	ਇਹ ਐਪ ਸਿਰਫ਼ Moklanjo ਹੈ — ਵਹੀ + ਬੁਕਿੰਗ ਡੈਸਕ। ਹੋਰ ਕਾਰੋਬਾਰਾਂ ਦੇ ਉਤਪਾਦ ਬਾਅਦ ਵਿੱਚ ਵੱਖਰੇ ਆਉਣਗੇ।
@@ -698,10 +694,6 @@ pin_hint_paired	ਵਾਧੂ ਟਿੱਲ ਜੁੜਿਆ — ਵੇਚਣ ਲ�
 pin_hint_pair_first	ਵਾਧੂ ਟਿੱਲ — ਪਹਿਲਾਂ ਦੁਕਾਨ ਡਿਵਾਈਸ ਨਾਲ ਜੋੜੋ
 unlock_to_continue	ਜਾਰੀ ਰੱਖਣ ਲਈ ਅਨਲਾਕ ਕਰੋ
 no_staff_yet	ਅਜੇ ਕੋਈ ਸਟਾਫ਼ ਨਹੀਂ — ਮਾਲਕ ਵਜੋਂ ਅਨਲਾਕ ਕਰੋ, ਫਿਰ Team
-status_server_set_pin	ਸਰਵਰ ਮੋਡ — ਮਾਲਕ PIN ਲਗਾਓ
-status_server_tills	ਸਰਵਰ ਮੋਡ — ਵਾਧੂ ਟਿੱਲ ਜੁੜ ਸਕਦੇ ਹਨ। ਅਨਲਾਕ ਕਰੋ
-status_server_unlock	ਸਰਵਰ ਮੋਡ — ਮਾਲਕ ਵਜੋਂ ਅਨਲਾਕ ਕਰੋ
-status_client_unlock	ਕਲਾਇੰਟ ਮੋਡ — ਵੇਚਣ ਲਈ ਅਨਲਾਕ ਕਰੋ
 icon_new_selected	ਆਈਕਨ: ਨਵੀਂ ਫਾਈਲ ਚੁਣੀ — ਬ੍ਰਾਂਡ ਸੰਭਾਲੋ ਦਬਾਓ
 icon_custom	ਆਈਕਨ: ਤੁਹਾਡੀ ਦੁਕਾਨ ਦਾ ਨਿਸ਼ਾਨ
 icon_default	ਆਈਕਨ: Kumkaj ਨਿਸ਼ਾਨ (ਡਿਫਾਲਟ) — ਆਪਣਾ ਚੁਣੋ
@@ -834,3 +826,7 @@ role_help_supplier	ਭੂਮਿਕਾ: ਸਪਲਾਇਰ — ਖਰੀਦ ਲ�
 lane_declared_label	ਖਾਤਾ ਬੁਕਿੰਗ
 lane_owner_label	ਨਕਦ ਬੁਕਿੰਗ
 money_lane_bill	ਬਿੱਲ: {lane}
+sel_copy	ਕਾਪੀ ਕਰੋ
+sel_select_all	ਸਭ ਚੁਣੋ
+sel_copied	ਕਾਪੀ ਹੋ ਗਿਆ
+nav_loading	ਲੋਡ ਹੋ ਰਿਹਾ ਹੈ…

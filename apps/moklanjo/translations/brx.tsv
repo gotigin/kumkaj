@@ -39,7 +39,7 @@ adding_item	गोदान रेट दाजाबदेरनाय
 editing_item	एडिट खालाम गासिनो
 save	थिना दोन
 remove	बोखार
-empty_catalog	दासिम जेबो रेट गैया। रेट आरो सिबिथाइफोरखौ खेव, मोनसे (मुं + बेसेन, इउनिट केजि) होदेर, बेनि उनाव बुकिं खालाम।
+empty_catalog	दासिम जेबो रेट गैया।
 counter_sale	Counter booking
 total	गासै
 cash	नगद
@@ -171,8 +171,6 @@ selected_language	सायखबाय
 continue	सालाय लां
 this_device	बे मेसिन
 device_use_q	बे मेसिनखौ माबोरै बाहायगोन?
-last_server_mode	सर्वर मोन — सालाय लांनो सुदुं
-last_client_mode	क्लाइन्ट मोन — सालाय लांनो सुदुं
 choose_server	सर्वर सायख
 choose_server_hint	गोजाम सर्वर खेव, एबा गुबुन बिजनेसनि थाखाय गोदान मोनसे बानाय।
 create_new_server	गोदान सर्वर बानाय
@@ -501,8 +499,6 @@ job_layout	साजाय
 job_delivery	खामानिखौ माबोरै दैथाय होयो
 job_size	फन्ट साइज
 job_size_ph	बिदिं 18, 20, 26…
-save_receipt_format	सेभ रिसिप्ट फरमेटखौ सेभ खालाम
-save_label_format	सेभ लेबेल फरमेटखौ सेभ खालाम
 test_receipt_format	आनजाद रिसिप्ट
 test_label_format	आनजाद लेबेल
 test_receipt_sent	सेमपोल रिसिप्ट हरनाय
@@ -610,7 +606,7 @@ units_heading	एकक
 booking_measures	बुकिं राहाफोर
 drawer_count	दराज साननाय (नाङाब्लाबो)
 spreadsheet_csv	स्प्रेडसिट (CSV)
-bank_reconciliation	बैंक मिलानाय (नोंनि बैंक स्टेटमेन्टजों टिक बोखार)
+bank_reconciliation	बैंक मिलानाय
 book_add_product	बिजाब — दिहुनथाइ / दर दाजाबदेर
 book_opening_credit	बही — जागायनाय उधारि
 account_kind	खातानि रोखोम (मोनसे सुदुं)
@@ -650,7 +646,7 @@ net_word	नेट
 offline_badge	OFFLINE
 optional_login_help	नांगौब्ला लगइन (id + पासवार्ड)। गिबिया मोनसे साजो; उन पासवार्ड खालि बाहायग्रा सोलायनो हायो।
 or_unlock_login	एबा लगइन id + पासवार्डजों खुलि हो
-permission_preset	साख्रि (स्क्रिन आरो मोनथाय सेट खालामो)
+permission_preset	साख्रि
 preset_help_moklanjo	केसियार: फान। मेनेजार: फान + आइटम + बातिल/सोलाय।
 product_locked_moklanjo	Moklanjo
 product_only_moklanjo	बे एपआ Moklanjo ल' - बिजाबफोर + बुकिं देस्क। गुबुन फालांगि मोखांफोरा उनाव आलादा दिहुनथाइ महरै दैथाय हरो।
@@ -698,10 +694,6 @@ pin_hint_paired	बांद्राय टिल जोरा जाबाय 
 pin_hint_pair_first	बांद्राय टिल — सिगां दोकान मेसिनजों जोरा
 unlock_to_continue	सालायनो खुलि हो
 no_staff_yet	दासिम मावुरि गैया — गिबि महरै खुलि हो, अब्ला टिम
-status_server_set_pin	सर्वर मोड — गिबि PIN साजाय
-status_server_tills	सर्वर मोड — बांद्राय टिल हाफानो हायो। खुलि हो
-status_server_unlock	सर्वर मोड — गिबि महरै खुलि हो
-status_client_unlock	क्लाइन्ट मोड — फाननो खुलि हो
 icon_new_selected	आइकन: गोदान फाइल सायखबाय — ब्रान्ड थिना दोन सुदुं
 icon_custom	आइकन: नोंनि जायगा सिन
 icon_default	आइकन: Kumkaj सिन (डिफल्ट) — नोंनिखौ सायख
@@ -834,3 +826,7 @@ role_help_supplier	बिफाव: जगायग्रा — बायना
 lane_declared_label	एकाउन्ट बुकिं
 lane_owner_label	नोगोद रां बुकिं
 money_lane_bill	बिल: {lane}
+sel_copy	कपि खालाम
+sel_select_all	गासैखौ सायख
+sel_copied	कपि जादों
+nav_loading	लड जागासिनो दं…

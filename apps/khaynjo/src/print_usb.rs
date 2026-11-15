@@ -188,9 +188,21 @@ fn usblp_bound(dev: &std::path::Path) -> bool {
 
 #[cfg(target_os = "linux")]
 fn sysfs_usb_id_for_usblp(lp_name: &str) -> Option<UsbId> {
-    let link = std::fs::read_link(format!("/sys/class/usb/{lp_name}/device")).ok()?;
+    usb_id_for_usblp_in(std::path::Path::new("/sys/class"), lp_name)
+}
+
+/// The USB device behind a usblp node (`lp0`) under `sys_class`. Kernels
+/// list usblp under `usbmisc` (old ones under `usb`), and the `device` link
+/// is relative (`../../../7-3:1.0`): it is resolved before walking up to the
+/// device that carries idVendor. Reading `usb` and walking the bare link
+/// matched nothing, so a `usb:VID:PID:serial` printer was always "the first
+/// /dev/usb/lp*" (found 2026-11-14).
+#[cfg(target_os = "linux")]
+fn usb_id_for_usblp_in(sys_class: &std::path::Path, lp_name: &str) -> Option<UsbId> {
+    let mut cur = ["usbmisc", "usb"]
+        .iter()
+        .find_map(|class| std::fs::canonicalize(sys_class.join(class).join(lp_name).join("device")).ok())?;
     // Walk up until idVendor appears.
-    let mut cur = link;
     for _ in 0..8 {
         if let (Some(vid), Some(pid)) = (
             read_hex_u16(&cur.join("idVendor")),
@@ -258,6 +270,37 @@ fn write_linux(id: &UsbId, bytes: &[u8]) -> Result<(), String> {
         "USB printer {:04x}:{:04x} not found — plug it in (OTG/host) or use host:9100",
         id.vid, id.pid
     ))
+}
+
+/// The usblp node (`/dev/usb/lpN`) of the USB printer with this serial.
+#[cfg(target_os = "linux")]
+pub fn usblp_path_for_serial(serial: &str) -> Option<std::path::PathBuf> {
+    let rd = std::fs::read_dir("/dev/usb").ok()?;
+    rd.flatten().find_map(|e| {
+        let name = e.file_name().to_string_lossy().to_string();
+        if !name.starts_with("lp") {
+            return None;
+        }
+        let id = sysfs_usb_id_for_usblp(&name)?;
+        (id.serial.as_deref() == Some(serial)).then(|| e.path())
+    })
+}
+
+/// Open a usblp node to write a job. An error means nothing was sent: the
+/// node is gone (CUPS holds the printer), busy (usblp has one writer at a
+/// time), or not this user's to write.
+#[cfg(target_os = "linux")]
+pub fn open_usblp(path: &std::path::Path) -> std::io::Result<std::fs::File> {
+    std::fs::OpenOptions::new().write(true).open(path)
+}
+
+/// Write an ESC/POS job to an open usblp node, paced like every USB job.
+#[cfg(target_os = "linux")]
+pub fn write_usblp(mut f: std::fs::File, bytes: &[u8]) -> Result<(), String> {
+    crate::receipt_raster::write_escpos_paced(bytes, |piece| {
+        f.write_all(piece).map_err(|e| e.to_string())?;
+        f.flush().map_err(|e| e.to_string())
+    })
 }
 
 #[cfg(target_os = "linux")]
@@ -545,4 +588,33 @@ fn write_macos(id: &UsbId, bytes: &[u8]) -> Result<(), String> {
     };
     let _ = std::fs::remove_file(&path);
     result
+}
+
+#[cfg(all(test, target_os = "linux"))]
+mod tests {
+    use super::*;
+
+    /// A sysfs tree laid out like this kernel's: `class/usbmisc/lp0/device`
+    /// is a relative link to the interface, whose parent is the device.
+    #[test]
+    fn a_usblp_node_is_traced_to_its_usb_device_through_usbmisc() {
+        let root = std::env::temp_dir().join(format!("khaynjo-sysfs-{}", uuid::Uuid::new_v4()));
+        let dev = root.join("devices/usb7/7-3");
+        let iface = dev.join("7-3:1.0");
+        std::fs::create_dir_all(&iface).unwrap();
+        std::fs::write(dev.join("idVendor"), "0fe6\n").unwrap();
+        std::fs::write(dev.join("idProduct"), "811e\n").unwrap();
+        std::fs::write(dev.join("serial"), "GD107B9714B7F14B0\n").unwrap();
+        let node = root.join("class/usbmisc/lp0");
+        std::fs::create_dir_all(&node).unwrap();
+        std::os::unix::fs::symlink("../../../devices/usb7/7-3/7-3:1.0", node.join("device")).unwrap();
+        let id = usb_id_for_usblp_in(&root.join("class"), "lp0").expect("traced");
+        assert_eq!(
+            id,
+            UsbId { vid: 0x0fe6, pid: 0x811e, serial: Some("GD107B9714B7F14B0".into()) }
+        );
+        assert_eq!(format_id(&id), "usb:0fe6:811e:GD107B9714B7F14B0");
+        assert!(usb_id_for_usblp_in(&root.join("class"), "lp1").is_none());
+        let _ = std::fs::remove_dir_all(root);
+    }
 }

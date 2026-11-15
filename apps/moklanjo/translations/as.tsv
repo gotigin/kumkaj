@@ -39,7 +39,7 @@ adding_item	নতুন হাৰ যোগ কৰিছে
 editing_item	সম্পাদনা
 save	সংৰক্ষণ কৰক
 remove	আঁতৰাওক
-empty_catalog	এতিয়াও কোনো হাৰ নাই। হাৰ আৰু সেৱা খোলক, এটা যোগ কৰক (নাম + দাম, একক kg), তাৰপিছত বুকিং।
+empty_catalog	এতিয়াও কোনো হাৰ নাই।
 counter_sale	কাউণ্টাৰ বুকিং
 total	মুঠ
 cash	নগদ
@@ -171,8 +171,6 @@ selected_language	বাছনি কৰা
 continue	আগবাঢ়ক
 this_device	এই ডিভাইচ
 device_use_q	এই ডিভাইচটো কেনেকৈ ব্যৱহাৰ হ’ব?
-last_server_mode	আগতে চাৰ্ভাৰ আছিল — আগবাঢ়িবলৈ টেপ কৰক
-last_client_mode	আগতে ক্লায়েণ্ট আছিল — আগবাঢ়িবলৈ টেপ কৰক
 choose_server	চাৰ্ভাৰ বাছক
 choose_server_hint	এই ডিভাইচত ইতিমধ্যে চাৰ্ভাৰ আছে। এটা খোলক, বা আন ব্যৱসায়ৰ বাবে নতুন চাৰ্ভাৰ বনাওক।
 create_new_server	নতুন চাৰ্ভাৰ বনাওক
@@ -501,8 +499,6 @@ job_layout	লেআউট
 job_delivery	কাম কেনেকৈ পঠিওৱা হয়
 job_size	ফণ্ট আকাৰ
 job_size_ph	যেনে 18, 20, 26…
-save_receipt_format	ৰচিদৰ ফৰ্মেট সাঁচক
-save_label_format	লেবেলৰ ফৰ্মেট সাঁচক
 test_receipt_format	পৰীক্ষা ৰচিদ
 test_label_format	পৰীক্ষা লেবেল
 test_receipt_sent	নমুনা ৰচিদ পঠিওৱা হ’ল
@@ -610,7 +606,7 @@ units_heading	এককসমূহ
 booking_measures	বুকিং জোখ
 drawer_count	ড্ৰয়াৰ গণনা (ঐচ্ছিক)
 spreadsheet_csv	স্প্ৰেডশ্বীট (CSV)
-bank_reconciliation	বেংক মিলন (আপোনাৰ বেংক ষ্টেটমেণ্টৰ সৈতে টিক কৰক)
+bank_reconciliation	বেংক মিলন
 book_add_product	বুক — পণ্য / হাৰ যোগ কৰক
 book_opening_credit	বুক — আৰম্ভণি ধাৰ
 account_kind	খাতাৰ ধৰণ (এটা টিপক)
@@ -650,7 +646,7 @@ net_word	নেট
 offline_badge	অফলাইন
 optional_login_help	ঐচ্ছিক লগইন (আইডি + পাছৱৰ্ড)। মালিকে এবাৰ নিৰ্ধাৰণ কৰে; পিছত কেৱল ব্যৱহাৰকাৰীয়েহে পাছৱৰ্ড সলনি কৰিব পাৰে।
 or_unlock_login	বা লগইন আইডি + পাছৱৰ্ডেৰে আনলক কৰক
-permission_preset	কাম (স্ক্ৰীণ আৰু অধিকাৰ ঠিক কৰে)
+permission_preset	কাম
 preset_help_moklanjo	কেশ্বিয়াৰ: বিক্ৰী। মেনেজাৰ: বিক্ৰী + বস্তু + বাতিল/সংশোধন।
 product_locked_moklanjo	Moklanjo
 product_only_moklanjo	এই এপ কেৱল Moklanjo — বহী + বুকিং ডেস্ক। আন ব্যৱসায়ৰ সামগ্ৰী পিছত বেলেগকৈ আহিব।
@@ -698,10 +694,6 @@ pin_hint_paired	অতিৰিক্ত টিল যোৰ হ’ল — ব�
 pin_hint_pair_first	অতিৰিক্ত টিল — প্ৰথমে দোকান ডিভাইচৰ সৈতে যোৰ কৰক
 unlock_to_continue	আগবঢ়াবলৈ আনলক কৰক
 no_staff_yet	এতিয়াও কোনো কৰ্মচাৰী নাই — মালিক হিচাপে আনলক কৰক, তাৰপিছত Team
-status_server_set_pin	চাৰ্ভাৰ মোড — মালিকৰ PIN নিৰ্ধাৰণ কৰক
-status_server_tills	চাৰ্ভাৰ মোড — অতিৰিক্ত টিল যোগ দিব পাৰে। আনলক কৰক
-status_server_unlock	চাৰ্ভাৰ মোড — মালিক হিচাপে আনলক কৰক
-status_client_unlock	ক্লায়েণ্ট মোড — বিক্ৰীৰ বাবে আনলক কৰক
 icon_new_selected	আইকন: নতুন ফাইল বাছনি কৰা হৈছে — ব্ৰেণ্ড সংৰক্ষণ কৰক টিপক
 icon_custom	আইকন: আপোনাৰ দোকানৰ চিহ্ন
 icon_default	আইকন: Kumkaj চিহ্ন (ডিফল্ট) — নিজৰটো বাছনি কৰক
@@ -834,3 +826,7 @@ role_help_supplier	ভূমিকা: যোগানকাৰী — ক্ৰ
 lane_declared_label	একাউণ্ট বুকিং
 lane_owner_label	নগদ বুকিং
 money_lane_bill	বিল: {lane}
+sel_copy	কপি কৰক
+sel_select_all	সকলো বাছনি কৰক
+sel_copied	কপি কৰা হ'ল
+nav_loading	ল'ড হৈ আছে…

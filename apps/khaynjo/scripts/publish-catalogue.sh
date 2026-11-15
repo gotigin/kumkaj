@@ -6,10 +6,13 @@
 #   ./apps/khaynjo/scripts/publish-catalogue.sh
 #       # sync public/items + stage Khaynjo Full Template (public, optional)
 #   ./apps/khaynjo/scripts/publish-catalogue.sh --private-rajdhani --code=123456789012
+#   ./apps/khaynjo/scripts/publish-catalogue.sh --private=<folder> --code=123456789012
+#       # any client pack under catalogue/private-src/<folder>/ — e.g. one the
+#       # client made with "Export template" (`kumkaj-khaynjo --export-template`)
 #
 # Two optional app-level templates:
 #   • Public  — Khaynjo Full Template (`khaynjo-items`, kind: shelf → all items)
-#   • Private — Rajdhani (menu + shop_defaults.json from catalogue/private-src/)
+#   • Private — a client's pack (menu + shop_defaults.json from catalogue/private-src/)
 #
 # Neither is forced: DeviceSetup Skip leaves an empty shop. Public starters
 # (cafe / khaynjo-starter) are not DeviceSetup chips.
@@ -28,10 +31,12 @@ PRIVATE_SRC="$APP/catalogue/private-src"
 
 PRIVATE_CODE=""
 DO_RAJDHANI=0
+PRIVATE_NAME="rajdhani"
 
 for arg in "$@"; do
   case "$arg" in
     --private-rajdhani) DO_RAJDHANI=1 ;;
+    --private=*) DO_RAJDHANI=1; PRIVATE_NAME="${arg#--private=}" ;;
     --code=*) PRIVATE_CODE="${arg#--code=}" ;;
     -h|--help)
       sed -n '2,20p' "$0"
@@ -53,6 +58,10 @@ if [[ ! -d "$SHELF" ]]; then
 fi
 if [[ "$DO_RAJDHANI" -eq 1 && ! "$PRIVATE_CODE" =~ ^[0-9]{12}$ ]]; then
   echo "--code= must be exactly 12 digits" >&2
+  exit 1
+fi
+if [[ ! "$PRIVATE_NAME" =~ ^[a-z0-9][a-z0-9-]*$ ]]; then
+  echo "--private= takes a folder name under catalogue/private-src/ (a-z, 0-9, -)" >&2
   exit 1
 fi
 
@@ -105,6 +114,24 @@ build_pack() {
     exit 1
   fi
   local id title blurb
+  # Exported packs (format 2) say whose they are; hand-written ones don't.
+  if ! jq -e '(.app // "khaynjo") == "khaynjo"' "$src_tmpl" >/dev/null; then
+    echo "error: $src_tmpl is not a Khaynjo template" >&2
+    exit 1
+  fi
+  if [[ -f "$src_dir/shop_defaults.json" ]]; then
+    if ! jq -e '(.app // "khaynjo") == "khaynjo"' "$src_dir/shop_defaults.json" >/dev/null; then
+      echo "error: $src_dir/shop_defaults.json is not a Khaynjo template" >&2
+      exit 1
+    fi
+    # A pack never carries PINs (owner, 2026-11-14): the Owner gives each
+    # person a first PIN in Team after setup.
+    if jq -e '[.staff[]? | select((.pin // "") != "")] | length > 0' \
+      "$src_dir/shop_defaults.json" >/dev/null; then
+      echo "error: $src_dir/shop_defaults.json has staff PINs — remove them" >&2
+      exit 1
+    fi
+  fi
   id="$(jq -r '.id' "$src_tmpl")"
   title="$(jq -r '.title' "$src_tmpl")"
   blurb="$(jq -r '.blurb // ""' "$src_tmpl")"
@@ -138,8 +165,8 @@ build_pack() {
         missing=$((missing + 1))
         ;;
     esac
-  done < <(jq -r '.categories[] | (.image, (.items[]?.image)) | select(. != null and . != "")' \
-    "$src_tmpl" | LC_ALL=C sort -u)
+  done < <(jq -r '(.categories[] | (.image, (.items[]?.image))), (.items[]?.image)
+    | select(. != null and . != "")' "$src_tmpl" | LC_ALL=C sort -u)
   if [[ "$missing" -gt 0 ]]; then
     echo "error: $id has $missing broken photo refs" >&2
     exit 1
@@ -148,6 +175,7 @@ build_pack() {
   jq --indent 2 '
     def pack_ref: if (. // "") | startswith("shelf:") then "images/" + .[6:] else (. // "") end;
     .categories |= map(.image |= pack_ref | .items |= map(.image |= pack_ref))
+    | if has("items") then .items |= map(.image |= pack_ref) else . end
   ' "$src_tmpl" > "$dest/template.json"
 
   local defaults_file=""
@@ -227,15 +255,15 @@ jq --indent 2 '{id, title, blurb, kind, bytes}' "$ITEMS_PACK/manifest.json" \
   | jq -s --indent 2 '{schema: 1, templates: .}' > "$CDN/public/index.json"
 echo "  index.json: $(jq '.templates | length' "$CDN/public/index.json") public template (Full only)"
 
-echo "4/4 Private Rajdhani (optional) …"
+echo "4/4 Private client pack (optional) …"
 if [[ "$DO_RAJDHANI" -eq 1 ]]; then
-  SRC="$PRIVATE_SRC/rajdhani"
+  SRC="$PRIVATE_SRC/$PRIVATE_NAME"
   if [[ ! -f "$SRC/template.json" ]]; then
     echo "Missing $SRC/template.json (authoring tree; not shipped in the app)" >&2
     exit 1
   fi
   if [[ ! -f "$SRC/shop_defaults.json" ]]; then
-    echo "Missing $SRC/shop_defaults.json — Rajdhani defaults must live in the pack" >&2
+    echo "Missing $SRC/shop_defaults.json — a client's defaults must live in the pack" >&2
     exit 1
   fi
   DEST="$CDN/private/$PRIVATE_CODE"
@@ -244,13 +272,14 @@ if [[ "$DO_RAJDHANI" -eq 1 ]]; then
     "$DEST/manifest.json" > "$DEST/manifest.json.tmp"
   mv "$DEST/manifest.json.tmp" "$DEST/manifest.json"
   # Recompute bytes after blurb-only edit (files unchanged).
-  if grep -qi rajdhani "$CDN/public/index.json"; then
+  if jq -e --arg id "$(jq -r '.id' "$DEST/manifest.json")" '.templates | any(.id == $id)' \
+      "$CDN/public/index.json" >/dev/null || grep -qF -- "$PRIVATE_CODE" "$CDN/public/index.json"; then
     echo "error: private pack leaked into public/index.json" >&2
     exit 1
   fi
-  echo "Private Rajdhani pack → $DEST (keep the code off public git / docs)"
+  echo "Private $PRIVATE_NAME pack → $DEST (keep the code off public git / docs)"
 else
-  echo "  skipped (pass --private-rajdhani --code=… to stage)"
+  echo "  skipped (pass --private-rajdhani or --private=<folder>, and --code=…, to stage)"
 fi
 
 echo "Done. Site static tree: $CDN"

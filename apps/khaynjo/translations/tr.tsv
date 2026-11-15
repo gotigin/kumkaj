@@ -41,7 +41,7 @@ remove	Kaldır
 removed_items	Kaldırılan öğeler
 removed_help	Geri yükle, öğeyi tam olduğu gibi menüye koyar — fiyat, fotoğraf ve kategori. Yemek rafımız asla kaldırılmaz, bu yüzden bir yemek her zaman yeniden eklenebilir.
 restore_item	Geri yükle
-empty_catalog	Henüz öğe yok. Menü ve öğeleri açın, bir tane ekleyin (isim + fiyat), sonra sipariş alın.
+empty_catalog	Henüz öğe yok.
 total	Toplam
 cash	Nakit
 upi	UPI
@@ -103,23 +103,14 @@ bill_item_qty	Adet
 bill_item_price	Fiyat
 bill_item_amount	Tutar
 bill_item_note	Not
-bill_item_col_gap	Sütun aralığı
 bill_item_col_order	Sütun sırası
 bill_item_col_sep	Sütun çizgileri
-bill_item_gap_tight	Sıkı
-bill_item_gap_comfort	Rahat
-bill_item_gap_wide	Geniş
-bill_item_num_width	Sayı sütunları
-bill_item_num_compact	Sıkı
-bill_item_num_comfort	Rahat
-bill_item_num_wide	Geniş
-bill_item_num_align	Sayı hizası
-bill_item_gap_em	Aralık (em)
-bill_item_qty_min	Adet en az (em)
-bill_item_price_min	Fiyat en az (em)
-bill_item_amount_min	Tutar en az (em)
-kot_item_qty_width	Adet sütunu
-kot_item_num_align	Adet hizası
+slip_columns	Sütunlar
+slip_col_width	Genişlik (mm)
+slip_col_start	Başlangıç boşluğu (px)
+slip_col_end	Bitiş boşluğu (px)
+slip_col_align	Metin hizalama
+slip_columns_help	Her sütunun genişliği başlangıç ve bitiş boşluğunu da içerir. Metin kendi sütunu içinde kaydırılır; içerik genişliğini aşan kısım kâğıtta ve önizlemede kesilir.
 bill_total_qty_label	Toplam adet etiketi
 bill_total_subtotal_label	Ara toplam etiketi
 bill_total_grand_label	Genel toplam etiketi
@@ -221,7 +212,6 @@ sidebar_order_saved	Yan panel siparişi kaydedildi
 sidebar_visibility_saved	Yan panel görünürlüğü kaydedildi
 amounts_hide	Gizle
 amounts_show	Göster
-printers_none_hint	Önce bu cihazda bir yazıcı kaydedin, ardından Fatura veya Mutfak'a ekleyin
 counter	Tezgah
 dine_in	Yerinde
 takeaway	Paket
@@ -328,8 +318,6 @@ selected_language	Seçili
 continue	Devam
 this_device	BU CİHAZ
 device_use_q	Bu cihaz nasıl kullanılacak?
-last_server_mode	Önceden sunucuydu — devam etmek için dokunun
-last_client_mode	Önceden istemciydi — devam etmek için dokunun
 choose_server	Sunucu seç
 choose_server_hint	Bu cihazda zaten sunucular var. Birini açın veya başka bir işletme için yeni sunucu oluşturun.
 create_new_server	Yeni sunucu oluştur
@@ -391,7 +379,7 @@ attachments_last_expense	Ekler (son gider)
 bank	Banka
 bank_in	Bankaya yatır
 bank_out	Bankadan çek
-bank_reconciliation	Banka mutabakatı (ekstrenizle işaretleyin)
+bank_reconciliation	Banka mutabakatı
 bank_to_till	Banka → kasa
 book_add_dish	Sipariş — yemek / öğe ekle
 book_opening_credit	Gönderi — açılış kredisi
@@ -744,7 +732,6 @@ station_print_pick_first	Önce bir mutfak istasyonu seçin
 station_print_editing	“{name}” yazıcıları düzenleniyor
 station_vps_dd	Bu istasyonun yazıcıları
 station_vps_dd_n	{n} yazıcı · değiştirmek için dokunun
-station_vps_empty	Henüz yazıcı yok — Ayarlar → Yazıcılar altında bulun
 bill_printers_dd	Fatura için yazıcılar
 bill_printers_dd_n	Fatura için {n} yazıcı(alar) · değiştirmek için dokunun
 job_layout	Yerleşim
@@ -889,7 +876,7 @@ net_word	Net
 offline_badge	ÇEVRİMDIŞI
 optional_login_help	İsteğe bağlı giriş (kimlik + parola). Sahibi bir kez ayarlar; sonrasında parolayı yalnızca kullanıcı değiştirebilir.
 or_unlock_login	Veya giriş kimliği + parola ile kilidi açın
-permission_preset	İzin ön ayarı (nelere erişim)
+permission_preset	İzin ön ayarı
 preset_help_khaynjo	Kasiyer: satış. Yönetici: satış + öğeler + iptal/düzeltme.
 product_locked_khaynjo	Khaynjo
 product_only_khaynjo	Bu uygulama yalnızca Khaynjo — restoran işletim sistemi. Diğer işler için ayrı Kumkaj ürünleri var.
@@ -961,10 +948,6 @@ pin_hint_paired	Ek kasa eşleştirildi — satış için kilidi açın
 pin_hint_pair_first	Ek kasa — önce dükkan cihazına eşleştirin
 unlock_to_continue	Devam etmek için kilidi açın
 no_staff_yet	Henüz personel yok — Sahip olarak kilidi açın, sonra Ekip
-status_server_set_pin	Sunucu modu — sahip PIN'ini belirleyin
-status_server_tills	Sunucu modu — ek kasalar katılabilir. Kilidi açın
-status_server_unlock	Sunucu modu — Sahip olarak kilidi açın
-status_client_unlock	İstemci modu — satış için kilidi açın
 icon_new_selected	Simge: yeni dosya seçildi — Markayı kaydet'e dokunun
 icon_custom	Simge: kendi mağaza işaretiniz
 icon_default	Simge: Kumkaj işareti (varsayılan) — kendinizinkini seçin
@@ -1033,7 +1016,7 @@ book_kind_balance	Bilanço
 order_help	Açık bir sipariş seçin veya bir masa seçip yeni başlatın. Hazır ürünlere dokunun, KOT gönderin, bir veya daha fazla ürünü faturalandırın, hesabı bölün ve ödemeyi tamamlayın.
 floor_help	Her masa, misafirlerin oturup oturmadığını, açık hesaplarının ne olduğunu ve sıradaki hizmetin kime gerektiğini gösterir.
 kitchen_help	Her varyant veya ürün için hazır olanı takip edin — KOT'a istediğiniz gibi kaydedin.
-kitchen_empty	Şu an açık bir şey yok — yeni siparişler burada görünür.
+kitchen_empty	Şu an açık bir şey yok.
 add_a_table	Masa ekle
 add_station_heading	İstasyon ekle · örn. Tandır, Güney Hint
 categories_help	Kategori, bir yemeğin menünün hangi bölümüne ait olduğunu gösterir — örn. atıştırmalıklar, ana yemek veya biryani. Kategorileri kendi tarzınızda oluşturun: önerdiğimiz isimleri seçin, yeniden adlandırın veya kendi isminizi ekleyin.
@@ -1131,7 +1114,6 @@ bill_format_help	Her hesapta restoran adının altına basılır. Satırları | 
 bill_header_ph	Adres | telefon
 fssai_ph	FSSAI lisans no. (Hindistan)
 bill_footer_ph	Alt bilgi (ör. Teşekkürler, yine bekleriz)
-save_bill_format	Hesap biçimini kaydet
 reset_bill_format	Varsayılana dön
 bill_format_reset	Hesap biçimi varsayılana döndü
 reset_kot_format	Varsayılana dön
@@ -1201,13 +1183,11 @@ kot_copies_3	3
 kot_title_ph	Başlık (boş = KOT - KITCHEN ORDER)
 kot_footer_ph	Mutfak notu (isteğe bağlı, fiyatsız)
 kot_preview	Önizleme
-save_kot_format	KOT biçimini kaydet
 test_kot_format	KOT testi
 test_kot_sent	Mutfak bilet önizlemesi gönderildi
 test_bill_format	Fatura testi
 test_bill_sent	Fatura önizlemesi gönderildi
 test_print_no_printer	O iş için yazıcı yok — bu ekrandan birini seçin
-kot_format_saved	KOT biçimi kaydedildi
 std_print	Fiş yazı boyutu
 std_print_help	Standard Dikey ve Yatay fiş yazı boyutu (termik KOT ayrı). Her iki yönde aynı boyut.
 std_size_s	Küçük
@@ -1264,7 +1244,6 @@ new_items_head	Henüz gönderilmedi
 price_ph	Fiyat
 price_ph_gst_inside	Fiyat ({tax} dahil)
 cancel_needs_table	Mutfaktan sonra iptal için bu siparişi Salondan (masa) açın — tezgâh KOT'ları ödeme kadar fişte kalır
-tax_rates_missing_hint	Bu yemeklerde {tax} oranı yok — Menüde oranı ayarlayın ({tax} inclusive'de fiyata {tax} zaten dahil)
 taxable_value	Vergiye tabi tutar
 gst_inside_price_note	({tax} dahil)
 start_with_template	Menü şablonumuzla başla
@@ -1318,9 +1297,7 @@ order_empty_pick	Sipariş boş — yemek seçmek için yukarıdaki “Yemek ekle
 add_dishes	Yemek ekle
 order_so_far	Bu siparişte: {n} · {total}
 no_dish_match	“{q}” ile eşleşen yemek yok
-pick_dishes_help	Eklemek için yemeğe dokunun · daraltmak için kategori seçin
 pick_done	Tamam
-pick_done_dd	Tamam · {label}
 printer_route_mode	Bu yerdeki birden fazla yazıcı varsa
 printer_mode_first	Çalışanı olan ilkini
 printer_mode_all	Hepsi üzerinde baskı al
@@ -1368,3 +1345,22 @@ recent_changes	Son değişiklikler
 lane_declared_label	Vergi faturası
 lane_owner_label	Nakit fiş
 money_lane_bill	Fatura: {lane}
+sel_copy	Kopyala
+sel_select_all	Tümünü seç
+sel_copied	Kopyalandı
+items_tmpl_khaynjo	Khaynjo ürün şablonu
+items_tmpl_named	{name} şablonu
+app_tmpl_named	{name} uygulama şablonu
+private_code_ph	12 haneli kod
+stamp_on	Damga: dosyada
+pay_qr_on	Ödeme QR: dosyada
+pay_qr_off	Ödeme QR: yok
+items_tmpl_heading	Ürün şablonları
+items_tmpl_help	Menünüz için yemekler, kategoriler ve fotoğraflar. Mağaza ayarları ve personel olduğu gibi kalır.
+public_tmpl_help	Herkesin indirebileceği başlangıç menüleri. Bir kez internet gerekir.
+private_tmpl_help	Khaynjo bağlantınızdan gelen 12 haneli kodla korunan müşteri menüleri.
+printers_screen_tip	Ara, bu cihazın kullanabileceği yazıcıları listeler ve bu mağaza için kaydeder. Hesap yazıcıları: Hesap ve KOT biçimi → Hesap. Mutfak: Mutfak → Mutfak istasyonları.
+printers_found_none	Yazıcı bulunamadı.
+kot_copy_from	Şuradan kopyala
+kot_copy_from_help	O türdeki her satırın boyutunu, kalınlığını ve hizalamasını bu türe kopyalar. Bu tür kendi başlığını, ürün önekini ve üstü çizgisini korur. Korumak için KOT biçimini kaydedin.
+nav_loading	Yükleniyor…

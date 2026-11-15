@@ -41,7 +41,7 @@ remove	हटाउनुहोस्
 removed_items	हटाइएका सामान
 removed_help	फिर्ता ल्याउँदा सामान ठ्याक्कै पहिलेजस्तै मेनुमा आउँछ — मूल्य, फोटो र वर्ग। हाम्रो परिकारको सूची कहिल्यै हट्दैन, त्यसैले परिकार जहिले पनि फेरि थप्न सकिन्छ।
 restore_item	फिर्ता ल्याउनुहोस्
-empty_catalog	अहिले कुनै परिकार छैन। मेनु खोल्नुहोस्, परिकार थप्नुहोस् (नाम + मूल्य), अनि अर्डर लिनुहोस्।
+empty_catalog	अहिले कुनै परिकार छैन।
 total	जम्मा
 cash	नगद
 upi	UPI
@@ -103,23 +103,14 @@ bill_item_qty	परिमाण
 bill_item_price	मूल्य
 bill_item_amount	रकम
 bill_item_note	परिकारको टिप्पणी
-bill_item_col_gap	स्तम्भ बीचको दूरी
 bill_item_col_order	स्तम्भको क्रम
 bill_item_col_sep	स्तम्भ रेखा
-bill_item_gap_tight	कसिलो
-bill_item_gap_comfort	सहज
-bill_item_gap_wide	फराकिलो
-bill_item_num_width	अंक स्तम्भ
-bill_item_num_compact	सानो
-bill_item_num_comfort	सहज
-bill_item_num_wide	फराकिलो
-bill_item_num_align	अंक मिलान
-bill_item_gap_em	दूरी (em)
-bill_item_qty_min	परिमाण न्यूनतम (em)
-bill_item_price_min	मूल्य न्यूनतम (em)
-bill_item_amount_min	रकम न्यूनतम (em)
-kot_item_qty_width	परिमाण स्तम्भ
-kot_item_num_align	परिमाण मिलान
+slip_columns	स्तम्भहरू
+slip_col_width	चौडाइ (mm)
+slip_col_start	सुरुको ठाउँ (px)
+slip_col_end	अन्त्यको ठाउँ (px)
+slip_col_align	पाठ पङ्क्तिबद्धता
+slip_columns_help	प्रत्येक स्तम्भको चौडाइमा यसको सुरु र अन्त्यको ठाउँ समावेश हुन्छ। पाठ आफ्नै स्तम्भभित्र बेरिन्छ; सामग्रीको चौडाइभन्दा बाहिर भएको भाग कागजमा र पूर्वावलोकनमा काटिन्छ।
 bill_total_qty_label	कुल परिमाण लेबल
 bill_total_subtotal_label	उप-जम्मा लेबल
 bill_total_grand_label	कुल जम्मा लेबल
@@ -221,7 +212,6 @@ sidebar_order_saved	साइडबारको क्रम सुरक्ष�
 sidebar_visibility_saved	साइडबारको देखाइ सुरक्षित भयो
 amounts_hide	लुकाउनुहोस्
 amounts_show	देखाउनुहोस्
-printers_none_hint	पहिले यो उपकरणमा प्रिन्टर सुरक्षित गर्नुहोस्, अनि बिल वा कुनै भान्सामा थप्नुहोस्
 counter	काउन्टर
 dine_in	भित्रै खाने
 takeaway	लैजाने
@@ -328,8 +318,6 @@ selected_language	छानिएको
 continue	जारी राख्नुहोस्
 this_device	यो उपकरण
 device_use_q	यो उपकरण कसरी प्रयोग हुन्छ?
-last_server_mode	सर्भर थियो — जारी राख्न थिच्नुहोस्
-last_client_mode	क्लाइन्ट थियो — जारी राख्न थिच्नुहोस्
 choose_server	सर्भर छान्नुहोस्
 choose_server_hint	भइरहेको सर्भर खोल्नुहोस्, वा अर्को व्यवसायका लागि नयाँ बनाउनुहोस्।
 create_new_server	नयाँ सर्भर बनाउनुहोस्
@@ -391,7 +379,7 @@ attachments_last_expense	संलग्न (पछिल्लो खर्च)
 bank	बैंक
 bank_in	बैंकमा आयो
 bank_out	बैंकबाट गयो
-bank_reconciliation	बैंक मिलान (बैंक विवरणसँग चिन्ह लगाउनुहोस्)
+bank_reconciliation	बैंक मिलान
 bank_to_till	बैंक → टिल
 book_add_dish	खाता — परिकार / सामान थप्नुहोस्
 book_opening_credit	खाता — सुरुको उधारो
@@ -744,7 +732,6 @@ station_print_pick_first	पहिले भान्सा स्टेसन �
 station_print_editing	“{name}” का प्रिन्टर सम्पादन गर्दै
 station_vps_dd	यो स्टेसनका प्रिन्टर
 station_vps_dd_n	{n} प्रिन्टर · बदल्न थिच्नुहोस्
-station_vps_empty	अहिलेसम्म प्रिन्टर छैन — सेटिङ → प्रिन्टरमा खोज्नुहोस्
 bill_printers_dd	बिलका प्रिन्टर
 bill_printers_dd_n	बिलका लागि {n} प्रिन्टर · बदल्न थिच्नुहोस्
 job_layout	लेआउट
@@ -889,7 +876,7 @@ net_word	खुद
 offline_badge	अफलाइन
 optional_login_help	ऐच्छिक लगइन (id + पासवर्ड)। मालिकले एकपटक राख्छन्; पछि पासवर्ड प्रयोगकर्ताले मात्र बदल्न सक्छन्।
 or_unlock_login	वा लगइन id + पासवर्डले अनलक गर्नुहोस्
-permission_preset	काम (स्क्रिन र पैसाका काम तय गर्छ)
+permission_preset	काम
 preset_help_khaynjo	क्यासियर: बेच्ने। प्रबन्धक: बेच्ने + सामान + रद्द/संशोधन।
 product_locked_khaynjo	Khaynjo
 product_only_khaynjo	यो एप Khaynjo मात्र हो — रेस्टुरेन्ट सञ्चालन प्रणाली। अन्य व्यापारका रूप छुट्टै Kumkaj उत्पादनका रूपमा आउँछन्।
@@ -961,10 +948,6 @@ pin_hint_paired	थप टिल जोडियो — बेच्न अन�
 pin_hint_pair_first	थप टिल — पहिले पसलको उपकरणसँग जोड्नुहोस्
 unlock_to_continue	जारी राख्न अनलक गर्नुहोस्
 no_staff_yet	अहिलेसम्म कर्मचारी छैन — मालिकका रूपमा अनलक गर्नुहोस्, अनि टोली
-status_server_set_pin	सर्भर मोड — मालिकको PIN राख्नुहोस्
-status_server_tills	सर्भर मोड — थप टिल जोडिन सक्छन्। अनलक गर्नुहोस्
-status_server_unlock	सर्भर मोड — मालिकका रूपमा अनलक गर्नुहोस्
-status_client_unlock	क्लाइन्ट मोड — बेच्न अनलक गर्नुहोस्
 icon_new_selected	आइकन: नयाँ फाइल छानियो — ब्रान्ड सुरक्षित गर्नुहोस् थिच्नुहोस्
 icon_custom	आइकन: आफ्नै पसलको चिन्ह
 icon_default	आइकन: Kumkaj चिन्ह (पूर्वनिर्धारित) — आफ्नै छान्नुहोस्
@@ -1033,7 +1016,7 @@ book_kind_balance	वासलात
 order_help	थप्न सामानमा थिच्नुहोस्।
 floor_help	अर्डर लिन वा बदल्न टेबलमा थिच्नुहोस्। रङले खाली → बसेको → भान्सा → तयार → खाँदै → बिल → तिरेको देखाउँछ। पर्खाइ सूची, आरक्षण र टेबल थप्ने तलका भागमा छन्।
 kitchen_help	भान्सा टिकट (KOT), नयाँ अन्तिममा। सुरु → तयार → सकियो ले टिकट अघि बढाउँछ। टिकटमा कहिल्यै मूल्य देखिँदैन।
-kitchen_empty	कुनै खुला टिकट छैन। अर्डर वा फ्लोरबाट पठाइएको KOT यहाँ देखिन्छ।
+kitchen_empty	कुनै खुला टिकट छैन।
 add_a_table	टेबल थप्नुहोस्
 add_station_heading	भान्सा स्टेसन थप्नुहोस्
 categories_help	माथिको सामानलाई त्यो वर्गमा राख्न प्रयोग गर्नुहोस् थिच्नुहोस्। फोटोले वर्गलाई चित्र दिन्छ; नभए पहिला अक्षर देखिन्छन्।
@@ -1131,7 +1114,6 @@ bill_format_help	हरेक बिलमा तपाईंको रेस्
 bill_header_ph	ठेगाना | फोन
 fssai_ph	FSSAI इजाजत नं. (भारत)
 bill_footer_ph	फुटर (जस्तै धन्यवाद, फेरि आउनुहोला)
-save_bill_format	बिल ढाँचा सुरक्षित गर्नुहोस्
 reset_bill_format	पूर्वनिर्धारितमा फर्काउनुहोस्
 bill_format_reset	बिल ढाँचा पूर्वनिर्धारितमा फर्कियो
 reset_kot_format	पूर्वनिर्धारितमा फर्काउनुहोस्
@@ -1201,13 +1183,11 @@ kot_copies_3	3
 kot_title_ph	शीर्षक (खाली = KOT - KITCHEN ORDER)
 kot_footer_ph	भान्साको टिप्पणी (ऐच्छिक, मूल्य बिना)
 kot_preview	पूर्वावलोकन
-save_kot_format	KOT ढाँचा सुरक्षित गर्नुहोस्
 test_kot_format	परीक्षण KOT
 test_kot_sent	भान्सा टिकटको नमुना पठाइयो
 test_bill_format	परीक्षण बिल
 test_bill_sent	बिलको नमुना पठाइयो
 test_print_no_printer	त्यो कामका लागि प्रिन्टर छैन — यही स्क्रिनमा एउटा छान्नुहोस्
-kot_format_saved	KOT ढाँचा सुरक्षित भयो
 std_print	बिल छापको आकार
 std_print_help	OS / कागजात प्रिन्टरमा सामान्य ठाडो र तेर्सो बिलका लागि अक्षर आकार (पोइन्ट लेख्नुहोस् — सानो/सामान्य/ठूलो होइन)। दुवै दिशामा उही आकार। भान्सा पर्चीका आकार KOT ट्याबमा छन्।
 std_size_s	सानो
@@ -1264,7 +1244,6 @@ new_items_head	अहिलेसम्म पठाइएको छैन
 price_ph	मूल्य
 price_ph_gst_inside	मूल्य ({tax} सहित)
 cancel_needs_table	भान्सामा पुगेपछि रद्द गर्न यो अर्डर फ्लोरबाट (टेबल) खोल्नुहोस् — काउन्टरका KOT भुक्तानी नलिएसम्म टिकटमै रहन्छन्
-tax_rates_missing_hint	यी परिकारमा {tax} दर छैन — मेनुमा कर दर राख्नुहोस् (मूल्यमा पहिल्यै {tax} समावेश, {tax} सहित अन्तर्गत)
 taxable_value	करयोग्य मूल्य
 gst_inside_price_note	({tax} सहित)
 start_with_template	हाम्रो मेनु टेम्प्लेटबाट सुरु गर्नुहोस्
@@ -1318,9 +1297,7 @@ order_empty_pick	अर्डर खाली — परिकार छान�
 add_dishes	परिकार थप्नुहोस्
 order_so_far	यो अर्डरमा: {n} · {total}
 no_dish_match	“{q}” सँग कुनै परिकार मिल्दैन
-pick_dishes_help	थप्न परिकार थिच्नुहोस् · सूची सानो पार्न वर्ग छान्नुहोस्
 pick_done	सकियो
-pick_done_dd	सकियो · {label}
 printer_route_mode	यो ठाउँमा धेरै प्रिन्टर भए
 printer_mode_first	पहिले चल्ने
 printer_mode_all	सबैमा छाप्नुहोस्
@@ -1368,3 +1345,22 @@ recent_changes	हालका परिवर्तन
 lane_declared_label	कर बिजक
 lane_owner_label	नगद मेमो
 money_lane_bill	बिल: {lane}
+sel_copy	कपी गर्नुहोस्
+sel_select_all	सबै छान्नुहोस्
+sel_copied	कपी भयो
+items_tmpl_khaynjo	Khaynjo वस्तु टेम्प्लेट
+items_tmpl_named	{name} टेम्प्लेट
+app_tmpl_named	{name} एप टेम्प्लेट
+private_code_ph	१२ अंकको कोड
+stamp_on	छाप: फाइलमा छ
+pay_qr_on	भुक्तानी QR: फाइलमा छ
+pay_qr_off	भुक्तानी QR: छैन
+items_tmpl_heading	वस्तु टेम्प्लेटहरू
+items_tmpl_help	तपाईंको मेनुका लागि परिकार, श्रेणी र फोटो। पसलका सेटिङ र कर्मचारी जस्ताको तस्तै रहन्छन्।
+public_tmpl_help	जो कोहीले डाउनलोड गर्न सक्ने सुरुआती मेनुहरू। एक पटक इन्टरनेट चाहिन्छ।
+private_tmpl_help	तपाईंको Khaynjo सम्पर्कबाट पाएको १२ अङ्कको कोडले सुरक्षित ग्राहक मेनुहरू।
+printers_screen_tip	खोज्नुहोस् ले यो उपकरणले प्रयोग गर्न सक्ने प्रिन्टरहरू देखाउँछ र यो पसलका लागि सुरक्षित गर्छ। बिल प्रिन्टर: बिल र KOT ढाँचा → बिल। भान्सा: भान्सा → भान्सा स्टेसनहरू।
+printers_found_none	कुनै प्रिन्टर फेला परेन।
+kot_copy_from	यसबाट प्रतिलिपि गर्नुहोस्
+kot_copy_from_help	त्यो प्रकारको प्रत्येक पङ्क्तिको आकार, मोटाइ र पङ्क्तिबद्धता यसमा प्रतिलिपि गर्छ। यो प्रकारले आफ्नै ब्यानर, वस्तु उपसर्ग र काटिएको रेखा राख्छ। राख्न KOT ढाँचा सुरक्षित गर्नुहोस्।
+nav_loading	लोड हुँदैछ…

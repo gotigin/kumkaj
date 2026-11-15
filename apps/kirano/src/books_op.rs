@@ -7,7 +7,6 @@ use crate::domain::{
     Product, ScheduleWindow, StaffFeatures, StaffMember, StaffRole,
 };
 use crate::fiscal::TaxPricing;
-use crate::print_share::KotSlipFormat;
 use crate::schemes::Scheme;
 use crate::store::{CrmSegment, StaffHire, Store};
 use serde::{Deserialize, Serialize};
@@ -136,21 +135,15 @@ pub enum BooksOp {
         category_name: String,
         category_photo_bytes: Vec<u8>,
         category_photo_filename: String,
-        station_name: String,
         modifier_groups: Vec<ModifierGroup>,
         variations: Vec<ModifierOption>,
-        area_prices: Vec<ModifierOption>,
         schedule: Vec<ScheduleWindow>,
         group_name: String,
-        recipe_text: String,
         image_bytes: Vec<u8>,
         image_filename: String,
         existing_image_key: Option<String>,
         barcode: String,
         composition: String,
-        schedule_h: bool,
-        rx_required: bool,
-        rx_note: String,
         mrp_paise: i64,
         hsn_code: String,
     },
@@ -176,7 +169,6 @@ pub enum BooksOp {
         filename: String,
         bytes: Vec<u8>,
     },
-    ImportAggregator,
     ImportCategoryImage {
         category_id: String,
         filename: String,
@@ -280,56 +272,8 @@ pub enum BooksOp {
     },
     ClearPrintStamp,
     ClearPaymentQr,
-    SetKotFormat {
-        format: KotSlipFormat,
-    },
-    SetKotStationPrefs {
-        priority_csv: String,
-        selected_csv: String,
-        default_id: String,
-    },
     UpsertScheme {
         scheme: Scheme,
-    },
-    EnsureFloorArea {
-        name: String,
-    },
-    AddTablesRange {
-        prefix: String,
-        from: u32,
-        to: u32,
-        area: String,
-    },
-    AddTable {
-        name: String,
-        area: String,
-    },
-    RemoveTables {
-        names: Vec<String>,
-    },
-    AddStation {
-        name: String,
-    },
-    RemoveStation {
-        id: String,
-    },
-    AddReservation {
-        name: String,
-        phone: String,
-        guests: i64,
-        at: String,
-        table_name: String,
-    },
-    SetReservationStatus {
-        id: String,
-        status: String,
-        guest_name: String,
-        table_name: String,
-    },
-    AddWaitlist {
-        name: String,
-        party_size: i64,
-        quoted_mins: i64,
     },
     AddAttachmentNote {
         entity: AttachmentEntity,
@@ -374,14 +318,6 @@ pub enum BooksOp {
         code: String,
         enabled: bool,
     },
-    SetAreaPicker {
-        name: String,
-        enabled: bool,
-    },
-    SetStationPicker {
-        id: String,
-        enabled: bool,
-    },
     SetTaxPicker {
         id: String,
         enabled: bool,
@@ -408,20 +344,22 @@ pub enum BooksOp {
         icon_bytes: Vec<u8>,
     },
     ClearVenueIcon,
-    SetKotAutoPrint {
-        on: bool,
+    /// Sidebar show/hide and order (CSV of nav keys). The shop's: every
+    /// device shows the same rail; role rights still hide what a person may
+    /// not open. A Client sends it here instead of writing its own copy.
+    SetNavLayout {
+        hidden: String,
+        order: String,
     },
     /// Bill print size (Standard Portrait/Landscape em) — shop printers.json on Server.
     SetStandardEm {
         em: f32,
     },
-    /// Content width in millimetres for the active slip (bill or KOT).
+    /// Content width of the bill in millimetres.
     SetContentWidth {
         mm: u32,
-        /// `true` = kitchen ticket; `false` = bill.
-        kot: bool,
     },
-    /// Print a test page on the Server's printers for `route_key` (`bill` / `kot:`…).
+    /// Print a test page on the Server's printers for `route_key` (`bill`).
     PrintTestPage {
         route_key: String,
     },
@@ -469,7 +407,6 @@ impl BooksOp {
             Self::ImportShelfTemplate => "Import photo shelf",
             Self::ImportClientTemplate { .. } => "Import a menu template",
             Self::ImportCsv { .. } => "Import from CSV",
-            Self::ImportAggregator => "Import aggregator orders",
             Self::ImportCategoryImage { .. } => "Change items",
             Self::BulkPrice { .. } => "Bulk price",
             Self::AdjustStock { .. } => "Adjust stock",
@@ -492,16 +429,7 @@ impl BooksOp {
             | Self::ImportPaymentQr { .. }
             | Self::ClearPrintStamp
             | Self::ClearPaymentQr => "Change the bill format",
-            Self::SetKotFormat { .. } | Self::SetKotStationPrefs { .. } => "Change the KOT format",
             Self::UpsertScheme { .. } => "Change schemes",
-            Self::EnsureFloorArea { .. } => "Add floor area",
-            Self::AddTablesRange { .. } | Self::AddTable { .. } => "Add tables",
-            Self::RemoveTables { .. } => "Remove tables",
-            Self::AddStation { .. } => "Add shop sections",
-            Self::RemoveStation { .. } => "Remove shop sections",
-            Self::AddReservation { .. } => "Book tables",
-            Self::SetReservationStatus { .. } => "Change bookings",
-            Self::AddWaitlist { .. } => "Waitlist",
             Self::AddAttachmentNote { .. } => "Add note",
             Self::AddAttachmentImage { .. } => "Attach photo",
             Self::AddAttachmentFile { .. } => "Attach file",
@@ -511,14 +439,14 @@ impl BooksOp {
             Self::ImportBranchSnapshot { .. } => "Import a branch day",
             Self::SwitchBranch { .. } => "Switch branch",
             Self::SetUnitPicker { .. } => "Change unit pickers",
-            Self::SetAreaPicker { .. } | Self::SetStationPicker { .. } | Self::SetTaxPicker { .. } => {
+            Self::SetTaxPicker { .. } => {
                 "Change pickers"
             }
             Self::AddUnit { .. } => "Add units",
             Self::AddUnitConversion { .. } => "Add unit conversion",
             Self::SetFrequent { .. } => "Frequent items settings",
             Self::SetVenueBrand { .. } | Self::ClearVenueIcon => "Change in-app brand",
-            Self::SetKotAutoPrint { .. } => "Change KOT auto-print",
+            Self::SetNavLayout { .. } => "Change sidebar",
             Self::SetStandardEm { .. } => "Change the bill print size",
             Self::SetContentWidth { .. } => "Change the content width",
             Self::PrintTestPage { .. } => "Print a test page",
@@ -570,7 +498,6 @@ impl BooksOp {
             }
             Self::ImportCsv { parties: true, .. } => "Parties imported".into(),
             Self::ImportCsv { .. } => "Items imported".into(),
-            Self::ImportAggregator => "Aggregator orders imported".into(),
             Self::ImportCategoryImage { .. } => "Category photo saved".into(),
             Self::BulkPrice { .. } => "Prices updated".into(),
             Self::AdjustStock { .. } => "Stock adjusted".into(),
@@ -594,17 +521,7 @@ impl BooksOp {
             Self::ImportPaymentQr { .. } => "Payment QR saved for bill faces".into(),
             Self::ClearPrintStamp => "Stamp cleared".into(),
             Self::ClearPaymentQr => "Payment QR cleared".into(),
-            Self::SetKotFormat { .. } => "KOT format saved".into(),
-            Self::SetKotStationPrefs { .. } => "Kitchen order saved".into(),
             Self::UpsertScheme { .. } => "Scheme saved".into(),
-            Self::EnsureFloorArea { name } => format!("Area {name} added"),
-            Self::AddTablesRange { .. } | Self::AddTable { .. } => "Tables added".into(),
-            Self::RemoveTables { .. } => "Tables removed".into(),
-            Self::AddStation { .. } => "Kitchen station added".into(),
-            Self::RemoveStation { .. } => "Kitchen station removed".into(),
-            Self::AddReservation { .. } => "Table booked".into(),
-            Self::SetReservationStatus { status, .. } => format!("Booking {status}"),
-            Self::AddWaitlist { name, .. } => format!("Waitlist: {}", name.trim()),
             Self::AddAttachmentNote { .. } => "Note added".into(),
             Self::AddAttachmentImage { .. } => "Photo attached (stored as WebP)".into(),
             Self::AddAttachmentFile { .. } => "File attached".into(),
@@ -615,7 +532,7 @@ impl BooksOp {
             Self::ImportBranchSnapshot { .. } => "Branch day imported".into(),
             Self::SwitchBranch { .. } => "Branch switched".into(),
             Self::SetUnitPicker { .. } => "Unit picker updated".into(),
-            Self::SetAreaPicker { .. } | Self::SetStationPicker { .. } | Self::SetTaxPicker { .. } => {
+            Self::SetTaxPicker { .. } => {
                 "Picker updated".into()
             }
             Self::AddUnit { code, .. } => format!("Unit {code} added"),
@@ -629,11 +546,9 @@ impl BooksOp {
                 }
             }
             Self::ClearVenueIcon => "Icon cleared".into(),
-            Self::SetKotAutoPrint { on: true } => "KOT auto-print on".into(),
-            Self::SetKotAutoPrint { on: false } => "KOT auto-print off".into(),
+            Self::SetNavLayout { .. } => "Sidebar saved".into(),
             Self::SetStandardEm { .. } => "Bill print size saved".into(),
-            Self::SetContentWidth { mm, kot: true } => format!("KOT content width {mm} mm"),
-            Self::SetContentWidth { mm, kot: false } => format!("Bill content width {mm} mm"),
+            Self::SetContentWidth { mm } => format!("Bill content width {mm} mm"),
             Self::PrintTestPage { .. } => "Test page sent".into(),
             Self::SetHistoryRetention { .. } => "History clearing saved".into(),
             Self::ClearTradingHistory => "Trading history cleared — setup kept".into(),
@@ -715,18 +630,6 @@ impl Store {
         Ok(self.add_category(name)?.id)
     }
 
-    fn resolve_station_id(&self, name: &str) -> Result<String, String> {
-        let name = name.trim();
-        if name.is_empty() {
-            return Ok(String::new());
-        }
-        let stations = self.list_stations()?;
-        if let Some(s) = stations.iter().find(|s| s.name.eq_ignore_ascii_case(name)) {
-            return Ok(s.id.clone());
-        }
-        Ok(self.add_station(name)?.id)
-    }
-
     /// Apply one person-level write. Callers keep [`Self::assert_server_writer`]
     /// on the store methods this dispatches to.
     pub fn apply_books_op(&self, op: BooksOp, actor: &StaffMember) -> Result<String, String> {
@@ -765,6 +668,15 @@ impl Store {
             BooksOp::SetUserLanguage { code } => {
                 self.set_user_language(&code)?;
                 Ok(format!("Language: {code}"))
+            }
+            BooksOp::SetNavLayout { hidden, order } => {
+                if !actor.is_owner() && !actor.can_access_settings() {
+                    return Err("Not allowed to change the sidebar".into());
+                }
+                self.set_nav_hidden_csv(&hidden)?;
+                self.set_nav_order_csv(&order)?;
+                // No words of its own: the device says its (translated) line.
+                Ok(String::new())
             }
             BooksOp::SetCurrency { code } => {
                 if !actor.is_owner() {
@@ -943,21 +855,15 @@ impl Store {
                 category_name,
                 category_photo_bytes,
                 category_photo_filename,
-                station_name,
                 modifier_groups,
                 variations,
-                area_prices,
                 schedule,
                 group_name,
-                recipe_text,
                 image_bytes,
                 image_filename,
                 existing_image_key,
                 barcode,
                 composition,
-                schedule_h,
-                rx_required,
-                rx_note,
                 mrp_paise,
                 hsn_code,
             } => self.save_menu_item(
@@ -974,21 +880,15 @@ impl Store {
                 &category_name,
                 &category_photo_bytes,
                 &category_photo_filename,
-                &station_name,
                 &modifier_groups,
                 &variations,
-                &area_prices,
                 &schedule,
                 &group_name,
-                &recipe_text,
                 &image_bytes,
                 &image_filename,
                 existing_image_key.as_deref(),
                 &barcode,
                 &composition,
-                schedule_h,
-                rx_required,
-                &rx_note,
                 mrp_paise,
                 &hsn_code,
             ),
@@ -1057,13 +957,6 @@ impl Store {
                     self.import_items_csv(&text)?
                 };
                 Ok(csv_summary(added, skipped, &problems))
-            }
-            BooksOp::ImportAggregator => {
-                if !actor.is_owner() && !actor.can_access_settings() {
-                    return Err("Not allowed to import aggregator orders".into());
-                }
-                let n = self.import_aggregator_orders_drop_file()?;
-                Ok(format!("Imported {n} aggregator order(s) into the inbox"))
             }
             BooksOp::ImportCategoryImage { category_id, filename, bytes } => {
                 if !actor.is_owner() && !actor.can_access_items() {
@@ -1277,19 +1170,6 @@ impl Store {
                 self.set_payment_qr_key(None)?;
                 Ok("Payment QR cleared".into())
             }
-            BooksOp::SetKotFormat { format } => {
-                if !actor.is_owner() && !actor.can_access_settings() {
-                    return Err("Not allowed to change KOT format".into());
-                }
-                let _ = self.set_kot_slip_format(&format)?;
-                Ok("KOT format saved".into())
-            }
-            BooksOp::SetKotStationPrefs { priority_csv, selected_csv, default_id } => {
-                self.set_kot_station_priority_csv(&priority_csv)?;
-                self.set_kot_stations_selected_csv(&selected_csv)?;
-                self.set_kot_station_default(&default_id)?;
-                Ok("Kitchen order saved".into())
-            }
             BooksOp::UpsertScheme { scheme } => {
                 if !actor.is_owner() && !actor.can_access_settings() && !actor.can_access_sales() {
                     return Err("Not allowed to manage schemes".into());
@@ -1297,82 +1177,6 @@ impl Store {
                 let name = scheme.name.clone();
                 self.upsert_scheme(&scheme)?;
                 Ok(format!("Added scheme: {name}"))
-            }
-            BooksOp::EnsureFloorArea { name } => {
-                if !actor.is_owner() && !actor.can_access_settings() {
-                    return Err("Not allowed to manage tables".into());
-                }
-                self.ensure_floor_area(&name)?;
-                Ok(format!("Area {name} added"))
-            }
-            BooksOp::AddTablesRange { prefix, from, to, area } => {
-                if !actor.is_owner() && !actor.can_access_settings() {
-                    return Err("Not allowed to manage tables".into());
-                }
-                let added = self.add_tables_range(&prefix, from, to, &area)?;
-                Ok(format!("{added} table(s) added ({prefix}{from}–{prefix}{to})"))
-            }
-            BooksOp::AddTable { name, area } => {
-                if !actor.is_owner() && !actor.can_access_settings() {
-                    return Err("Not allowed to manage tables".into());
-                }
-                let table = self.add_table_in_area(&name, &area)?;
-                Ok(format!("Table {} added", table.name))
-            }
-            BooksOp::RemoveTables { names } => {
-                if !actor.is_owner() && !actor.can_access_settings() {
-                    return Err("Not allowed to manage tables".into());
-                }
-                let (removed, busy) = self.remove_tables_named(&names)?;
-                let mut msg = format!("{removed} table(s) removed");
-                if !busy.is_empty() {
-                    msg.push_str(&format!(" · kept, open order: {}", busy.join(", ")));
-                }
-                Ok(msg)
-            }
-            BooksOp::AddStation { name } => {
-                if !actor.is_owner() && !actor.can_access_settings() {
-                    return Err("Not allowed to manage shop sections".into());
-                }
-                let station = self.add_station(&name)?;
-                Ok(format!(
-                    "Section {} added — attach its printers under Settings → Printers",
-                    station.name
-                ))
-            }
-            BooksOp::RemoveStation { id } => {
-                if !actor.is_owner() && !actor.can_access_settings() {
-                    return Err("Not allowed to manage shop sections".into());
-                }
-                let name = self.remove_station(&id)?;
-                Ok(format!("Station {name} removed"))
-            }
-            BooksOp::AddReservation { name, phone, guests, at, table_name } => {
-                let r = self.add_reservation(&name, &phone, guests, &at, &table_name, actor)?;
-                Ok(format!("Booked {} · {}", r.name, r.at))
-            }
-            BooksOp::SetReservationStatus { id, status, guest_name, table_name } => {
-                self.set_reservation_status(&id, &status, actor)?;
-                Ok(if status == "seated" {
-                    if table_name.is_empty() {
-                        format!("{guest_name} seated — pick their table")
-                    } else {
-                        format!("{guest_name} seated at {table_name} — tap {table_name} to order")
-                    }
-                } else {
-                    format!("Booking for {guest_name} cancelled")
-                })
-            }
-            BooksOp::AddWaitlist {
-                name,
-                party_size,
-                quoted_mins,
-            } => {
-                if !actor.is_owner() && !actor.can_access_floor() {
-                    return Err("Not allowed to manage the waitlist".into());
-                }
-                let entry = self.add_waitlist(&name, party_size, quoted_mins, actor)?;
-                Ok(format!("Waitlist: {}", entry.name))
             }
             BooksOp::AddAttachmentNote {
                 entity,
@@ -1455,14 +1259,6 @@ impl Store {
                     format!("{code} hidden from pickers")
                 })
             }
-            BooksOp::SetAreaPicker { name, enabled } => {
-                self.set_area_picker_enabled(&name, enabled, actor)?;
-                Ok(format!("Area {name} picker {}", if enabled { "on" } else { "off" }))
-            }
-            BooksOp::SetStationPicker { id, enabled } => {
-                self.set_station_picker_enabled(&id, enabled, actor)?;
-                Ok(format!("Station picker {}", if enabled { "on" } else { "off" }))
-            }
             BooksOp::SetTaxPicker { id, enabled } => {
                 self.set_tax_rate_picker_enabled(&id, enabled, actor)?;
                 Ok(format!("Tax picker {}", if enabled { "on" } else { "off" }))
@@ -1528,17 +1324,6 @@ impl Store {
                 self.set_venue_icon_key(None)?;
                 Ok("Icon cleared".into())
             }
-            BooksOp::SetKotAutoPrint { on } => {
-                if !actor.is_owner() && !actor.can_access_settings() {
-                    return Err("Not allowed to change KOT auto-print".into());
-                }
-                self.set_kot_auto_print(on)?;
-                Ok(if on {
-                    "KOT auto-print on".into()
-                } else {
-                    "KOT auto-print off".into()
-                })
-            }
             BooksOp::SetStandardEm { em } => {
                 if !actor.is_owner() && !actor.can_access_settings() {
                     return Err("Not allowed to change bill print size".into());
@@ -1546,17 +1331,12 @@ impl Store {
                 let _ = self.set_standard_print_em(em)?;
                 Ok("Bill print size saved".into())
             }
-            BooksOp::SetContentWidth { mm, kot } => {
+            BooksOp::SetContentWidth { mm } => {
                 if !actor.is_owner() && !actor.can_access_settings() {
                     return Err("Not allowed to change the content width".into());
                 }
-                if kot {
-                    let saved = self.set_kot_content_width_mm(mm)?;
-                    Ok(format!("KOT content width {saved} mm"))
-                } else {
-                    let saved = self.set_bill_content_width_mm(mm)?;
-                    Ok(format!("Bill content width {saved} mm"))
-                }
+                let saved = self.set_bill_content_width_mm(mm)?;
+                Ok(format!("Bill content width {saved} mm"))
             }
             BooksOp::PrintTestPage { route_key } => {
                 if !actor.is_owner() && !actor.can_access_settings() {
@@ -1617,21 +1397,15 @@ impl Store {
         category_name: &str,
         category_photo_bytes: &[u8],
         category_photo_filename: &str,
-        station_name: &str,
         modifier_groups: &[ModifierGroup],
         variations: &[ModifierOption],
-        area_prices: &[ModifierOption],
         schedule: &[ScheduleWindow],
         group_name: &str,
-        recipe_text: &str,
         image_bytes: &[u8],
         image_filename: &str,
         existing_image_key: Option<&str>,
         barcode: &str,
         composition: &str,
-        schedule_h: bool,
-        rx_required: bool,
-        rx_note: &str,
         mrp_paise: i64,
         hsn_code: &str,
     ) -> Result<String, String> {
@@ -1672,7 +1446,6 @@ impl Store {
             let photo = write_upload(category_photo_filename, category_photo_bytes)?;
             self.set_category_photo_if_missing(&category_id, photo.path())?;
         }
-        let station_id = self.resolve_station_id(station_name)?;
         let mut product = if updating {
             self.get_product(&product_id)?
                 .ok_or_else(|| "That item is no longer in Items".to_string())?
@@ -1701,20 +1474,13 @@ impl Store {
             product.tax_bps = 0;
         }
         product.category_id = category_id;
-        product.station_id = station_id;
         product.set_modifier_groups(modifier_groups);
-        product.set_area_prices(area_prices);
         product.set_schedule(schedule);
         product.group_name = group_name.trim().to_string();
         product.barcode = barcode.trim().to_string();
         product.composition = composition.trim().to_string();
-        product.schedule_h = schedule_h;
-        product.rx_required = rx_required;
         product.mrp_paise = mrp_paise.max(0);
         product.hsn_code = hsn_code.trim().to_string();
-        if !rx_note.trim().is_empty() {
-            product.allergens = rx_note.trim().to_string();
-        }
         if !sizes_only {
             self.upsert_product(&product)?;
             let verb = if updating { "menu.update" } else { "menu.add" };
@@ -1732,9 +1498,6 @@ impl Store {
                 _ => product.name.clone(),
             };
             self.audit(actor, verb, &detail)?;
-            if !recipe_text.trim().is_empty() || !self.recipe(&product.id)?.is_empty() {
-                self.set_recipe_from_text(&product.id, recipe_text, actor)?;
-            }
         }
         let photo_path = photo.as_ref().map(|f| f.path().to_path_buf()).or_else(|| {
             existing_image_key
@@ -1753,8 +1516,7 @@ impl Store {
             (true, false) => format!("Updated {} · added {size_names}", product.name),
             (false, false) => format!("Added {size_names}"),
         };
-        let above_mrp = mrp_paise > 0
-            && (price_paise > mrp_paise || area_prices.iter().any(|p| p.price_paise > mrp_paise));
+        let above_mrp = mrp_paise > 0 && price_paise > mrp_paise;
         if above_mrp {
             Ok(format!("{saved} · sell price is above the printed MRP"))
         } else {

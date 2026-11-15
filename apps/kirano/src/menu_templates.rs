@@ -149,12 +149,9 @@ mod tests {
     use super::*;
 
     #[test]
-    fn counter_shop_ships_without_starter_catalogue() {
-        assert!(
-            find("rajdhani").is_none(),
-            "restaurant starter catalogues must not ship on this counter product"
-        );
-        assert!(all().iter().all(|t| t.id != "rajdhani"));
+    fn only_the_grocery_starter_ships() {
+        let ids: Vec<&str> = all().iter().map(|t| t.id.as_str()).collect();
+        assert_eq!(ids, vec!["neighbourhood"]);
     }
 
 

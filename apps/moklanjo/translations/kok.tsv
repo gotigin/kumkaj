@@ -39,7 +39,7 @@ adding_item	नवो दर जोडटा
 editing_item	बदलटा
 save	सांबाळात
 remove	काडांत
-empty_catalog	अजून दर नात. दर आनी सेवा उगडात, एक जोडात (नांव + मोल, एकक kg), मागीर बुकिंग.
+empty_catalog	अजून दर नात.
 counter_sale	काउंटर बुकिंग
 total	एकूण
 cash	रोख
@@ -171,8 +171,6 @@ selected_language	वेंचून काडलां
 continue	फुडें व्हरप
 this_device	हें साधन
 device_use_q	हें साधन कशें वापरतले?
-last_server_mode	Was Server — चालू दवरपाक टॅप करात
-last_client_mode	Was Client — चालू दवरपाक टॅप करात
 choose_server	सर्वर निवडात
 choose_server_hint	सद्याचो सर्वर उगडात, वा दुसऱ्या वेवसायाक एक तयार करात.
 create_new_server	नवो सर्वर तयार करचो
@@ -501,8 +499,6 @@ job_layout	रचणाय
 job_delivery	नोकरी कशी धाडटात
 job_size	फॉन्टाचो आकार
 job_size_ph	उदा. १८, २०, २६ आनी...
-save_receipt_format	पावती स्वरूप सांबाळात
-save_label_format	लेबल स्वरूप सांबाळात
 test_receipt_format	पावती चाचणी
 test_label_format	लेबल चाचणी
 test_receipt_sent	नमुना पावती धाडली
@@ -610,7 +606,7 @@ units_heading	एकक
 booking_measures	बुकिंग माप
 drawer_count	ड्रॉअर काउंट (पर्यायी) 1.1.
 spreadsheet_csv	स्प्रेडशीट (सीएसव्ही) 1.1.
-bank_reconciliation	बँक समेट (तुमच्या बँक स्टेटमेंटाचेर टिक ऑफ करात)
+bank_reconciliation	बँक समेट
 book_add_product	बुक — उत्पादन / दर जोडात
 book_opening_credit	पुस्तक — उगडपाचें श्रेय
 account_kind	खातें प्रकार (एक टॅप करात)
@@ -650,7 +646,7 @@ net_word	जाळें
 offline_badge	OFFLINE हें नांव
 optional_login_help	पर्यायी लॉगीन (आयडी + पासवर्ड). मालक एकदां सेट करता; फकत वापरप्याकच फुडें पासवर्ड बदलूं येता.
 or_unlock_login	वा लॉगीन आयडी + पासवर्डान उगडात
-permission_preset	काम (स्क्रीन आनी अधिकार थारायता)
+permission_preset	काम
 preset_help_moklanjo	कॅशियर: विकप. वेवस्थापक: विकप + वस्तू + शून्य/दुरुस्ती करप.
 product_locked_moklanjo	Moklanjo
 product_only_moklanjo	हें अॅप फकत Moklanjo — बही + बुकिंग डेस्क. हेर वेवसायांचीं उत्पादनां मागीर वेगळीं येतील.
@@ -698,10 +694,6 @@ pin_hint_paired	जोडी मेरेन अतिरिक्त — वि
 pin_hint_pair_first	अतिरिक्त टिल्ल — पयलीं दुकानाच्या साधनाक जोडप
 unlock_to_continue	चालू दवरपाक उगडात
 no_staff_yet	अजून कर्मचारी ना — मालक म्हणून उगडात, मागीर पंगड
-status_server_set_pin	सर्वर मोड — मालक पिन सेट करचो
-status_server_tills	सर्वर मोड — अतिरिक्त टिल्स सामील जावंक शकतात. उगडात
-status_server_unlock	सर्वर मोड — मालक म्हणून उगडात
-status_client_unlock	क्लायंट मोड — विकपाक उगडात
 icon_new_selected	चिन्न: नवी फायल निवडल्या — ब्रँड जतनाय घेयात टॅप करात
 icon_custom	चिन्न: सानुकूल स्थळ चिन्न
 icon_default	चिन्न: कुमकाज चिन्न (मुळावी) — सानुकूल निवडात
@@ -834,3 +826,7 @@ role_help_supplier	भूमिका: पुरवठादार — खरे
 lane_declared_label	खातें बुकिंग
 lane_owner_label	रोख बुकिंग
 money_lane_bill	बिल: {lane}
+sel_copy	प्रत करात
+sel_select_all	सगळें वेंचात
+sel_copied	प्रत केली
+nav_loading	लोड जाता…

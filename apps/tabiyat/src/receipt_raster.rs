@@ -163,9 +163,60 @@ pub struct StyledLine {
     pub align: LineAlign,
     /// Strike through the name (left of `\t`); qty column stays clear.
     pub strike: bool,
-    /// When set, `\t` lines use these column metrics; else [`TabColumnLayout::LEGACY`].
-    pub tab: Option<TabColumnLayout>,
+    /// How a `\t` line is laid out: the owner's item columns, a pair line's
+    /// two halves, or (jobs from before columns) the old flexible layout.
+    /// `None` = [`TabColumnLayout::LEGACY`].
+    pub tab: Option<LineColumns>,
 }
+
+/// How a `\t` line is laid out.
+#[derive(Clone, Debug, PartialEq)]
+pub enum LineColumns {
+    /// Jobs queued before owner columns: flexible name + reserved slots.
+    Legacy(TabColumnLayout),
+    /// The owner's item columns (docs/PRINTER.md "Item columns").
+    Owner(std::sync::Arc<OwnerColumns>),
+    /// A pair line (Date | Table): the line's text and style are the first
+    /// half, this is the second. Halves are already in print order (start
+    /// half first on the left in LTR; the caller swaps them for RTL).
+    Pair(PairHalf),
+}
+
+/// Item columns as the owner set them, in dots.
+#[derive(Clone, Debug, PartialEq)]
+pub struct OwnerColumns {
+    /// The start edge is the right edge (Arabic, Urdu, Persian, Hebrew):
+    /// the first column sits at the right and start spaces are on the right.
+    pub rtl: bool,
+    pub cols: Vec<ColumnBox>,
+    /// A thin rule on each border between two columns.
+    pub sep: bool,
+}
+
+/// One column, like a CSS border box: `width` includes `start` and `end`.
+#[derive(Clone, Copy, Debug, PartialEq)]
+pub struct ColumnBox {
+    pub width: f32,
+    pub start: f32,
+    pub end: f32,
+    /// Start / Center / End of the text inside the column (follows `rtl`).
+    pub align: LineAlign,
+}
+
+/// The second half of a pair line, with its own field's size, weight and
+/// alignment (physical: start already turned for RTL by the caller).
+#[derive(Clone, Debug, PartialEq)]
+pub struct PairHalf {
+    pub text: String,
+    pub em: f32,
+    pub weight: RasterWeight,
+    pub align: LineAlign,
+}
+
+/// Smallest and largest size a slip line can have, in dots. A typo guard,
+/// not a design limit: sizes are literal (owner, 2026-11-15).
+pub const SIZE_MIN: f32 = 1.0;
+pub const SIZE_MAX: f32 = 200.0;
 
 /// How the slip is drawn: Standard (bills) vs KOT (kitchen tickets).
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
@@ -213,11 +264,6 @@ pub fn escpos_picture(text: &str) -> Vec<u8> {
 /// Standard (bill) raster ESC/POS job.
 pub fn escpos_picture_standard(text: &str) -> Vec<u8> {
     escpos_picture_style(text, SlipStyle::Standard)
-}
-
-/// KOT raster ESC/POS job (same as [`escpos_picture`]).
-pub fn escpos_picture_kot(text: &str) -> Vec<u8> {
-    escpos_picture_style(text, SlipStyle::Kot)
 }
 
 /// The ESC/POS bytes that print `text` as a picture: reset, the picture in
@@ -339,15 +385,12 @@ pub fn draw_style(text: &str, style: SlipStyle) -> (Vec<u8>, usize) {
     draw_metrics(text, &metrics(style))
 }
 
-/// 576 dots is an 80 mm head. A wider page grows the type with the page,
-/// so size 30 is not a few millimetres of type sitting in a field of rules.
-fn page_em_scale(width: usize) -> f32 {
-    if width <= 576 {
-        1.0
-    } else {
-        width as f32 / 576.0
-    }
-}
+// Sizes are literal (owner, 2026-11-15: "30px means 30px"): a size of N is
+// N dots in the picture on every content width, and so are the side margin
+// and the line pitch. The content width only moves the end edge. Until
+// 2026-11-15 a wider page multiplied every size by width / 576 (and for a
+// few hours every width by 1512 / 576) — virtual sizes, rejected
+// (docs/PRINTER.md "Sizes are literal", lessons 11).
 
 fn rule_thickness(em: f32, weight: RasterWeight) -> usize {
     let f = match weight {
@@ -385,13 +428,10 @@ fn paint_rule(dots: &mut [bool], width: usize, y: usize, side: f32, thick: usize
 pub fn draw_metrics(text: &str, src: &RasterMetrics) -> (Vec<u8>, usize) {
     let faces = faces();
     let width = src.page_dots();
-    let scale = page_em_scale(width);
     let m = RasterMetrics {
-        em: src.em * scale,
-        line: ((src.line as f32) * scale).round().max(1.0) as usize,
-        baseline: src.baseline * scale,
-        side: src.side * scale,
+        line: src.line.max(1),
         width_dots: width,
+        ..*src
     };
     let room = width as f32 - 2.0 * m.side;
     enum Built {
@@ -448,46 +488,29 @@ pub fn draw_metrics(text: &str, src: &RasterMetrics) -> (Vec<u8>, usize) {
 pub fn draw_lines(lines: &[StyledLine], page: &RasterMetrics) -> (Vec<u8>, usize) {
     let faces = faces();
     let width = page.page_dots();
-    let scale = page_em_scale(width);
-    let side = page.side.max(0.0) * scale;
+    let side = page.side.max(0.0);
     let room = width as f32 - 2.0 * side;
-    struct Row {
-        glyphs: Vec<Placed>,
-        em: f32,
-        weight: RasterWeight,
-        pitch: usize,
-        baseline: f32,
-        /// 0 for text. A separator is one solid line, not a row of hyphen glyphs.
-        rule_px: usize,
-        /// Strike through names only; `None` = no strike. Value is content-x
-        /// end (dots from left of page content) before the qty column.
-        strike_end: Option<f32>,
-        /// Vertical rules between columns (page-x, including side margin).
-        sep_xs: Vec<f32>,
-    }
     let mut rows: Vec<Row> = Vec::new();
     for line in lines {
         // A hidden field must not leave a blank band. Empty text is absence.
-        if line.text.trim().is_empty() {
+        if line.text.trim().is_empty() && !matches!(line.tab, Some(LineColumns::Pair(_))) {
             continue;
         }
-        let em = (line.em * scale).clamp(8.0, 160.0);
+        let em = line.em.clamp(SIZE_MIN, SIZE_MAX);
         if is_rule_line(&line.text) {
             let rule_px = rule_thickness(em, line.weight);
             let gap = ((em * 0.35).round() as usize).clamp(4, 18);
             rows.push(Row {
-                glyphs: Vec::new(),
-                em,
-                weight: line.weight,
+                runs: Vec::new(),
                 pitch: rule_px + gap,
-                baseline: rule_px as f32,
                 rule_px,
-                strike_end: None,
+                strike: None,
+                strike_em: em,
                 sep_xs: Vec::new(),
             });
             continue;
         }
-        let pitch = ((em * 1.45).round() as usize).clamp(16, 240);
+        let pitch = line_pitch(em);
         let baseline = em * 0.92;
         let m = RasterMetrics {
             em,
@@ -496,37 +519,53 @@ pub fn draw_lines(lines: &[StyledLine], page: &RasterMetrics) -> (Vec<u8>, usize
             side,
             width_dots: width,
         };
-        let tab = line.tab.unwrap_or(TabColumnLayout::LEGACY);
-        let strike_end = if line.strike {
-            Some(strike_name_end_x(
-                &faces,
-                &line.text,
-                room,
-                &m,
-                side,
-                tab,
-            ))
-        } else {
-            None
+        let page_clip = (0.0, width as f32);
+        match &line.tab {
+            Some(LineColumns::Owner(cols)) if line.text.contains('\t') => {
+                let mut cells: Vec<&str> = line.text.split('\t').collect();
+                // A lone column's line ends in a tab (it has no other cell
+                // to mark it as a column line): empty trailing cells go.
+                while cells.len() > cols.cols.len() && cells.last().is_some_and(|c| c.trim().is_empty()) {
+                    cells.pop();
+                }
+                if cells.len() <= cols.cols.len() {
+                    rows.extend(owner_column_rows(&faces, &cells, cols, room, side, &m, line));
+                    continue;
+                }
+                // More cells than columns (a line the columns were not made
+                // for): the flexible layout, so nothing is silently dropped.
+            }
+            Some(LineColumns::Pair(right)) => {
+                rows.push(pair_row(&faces, line, right, room, side, width));
+                continue;
+            }
+            _ => {}
+        }
+        let tab = match &line.tab {
+            Some(LineColumns::Legacy(tab)) => *tab,
+            _ => TabColumnLayout::LEGACY,
         };
+        let strike = line
+            .strike
+            .then(|| (side, strike_name_end_x(&faces, &line.text, room, &m, side, tab)));
         let (wrapped, sep_xs) = wrap_aligned(&faces, &line.text, room, &m, line.align, tab);
         let sep_xs: Vec<f32> = sep_xs.into_iter().map(|x| side + x).collect();
         for (i, glyphs) in wrapped.into_iter().enumerate() {
             rows.push(Row {
-                glyphs,
-                em,
-                weight: line.weight,
+                runs: vec![Run {
+                    glyphs,
+                    em,
+                    weight: line.weight,
+                    baseline,
+                    clip: page_clip,
+                }],
                 pitch,
-                baseline,
                 rule_px: 0,
                 // Strike every wrapped name row; qty lives only on row 0.
-                strike_end: if i == 0 { strike_end } else { strike_end },
+                strike,
+                strike_em: em,
                 // Column rules only on the first (header-aligned) wrap row.
-                sep_xs: if i == 0 {
-                    sep_xs.clone()
-                } else {
-                    Vec::new()
-                },
+                sep_xs: if i == 0 { sep_xs.clone() } else { Vec::new() },
             });
         }
     }
@@ -544,28 +583,31 @@ pub fn draw_lines(lines: &[StyledLine], page: &RasterMetrics) -> (Vec<u8>, usize
             y += row.pitch;
             continue;
         }
-        let baseline = y as f32 + row.baseline;
-        let m = RasterMetrics {
-            em: row.em,
-            line: row.pitch,
-            baseline: row.baseline,
-            side,
-            width_dots: width,
-        };
-        let ink = match row.weight {
-            RasterWeight::Light => 0.72,
-            RasterWeight::Regular => INK,
-            RasterWeight::Bold => 0.38,
-        };
-        for g in &row.glyphs {
-            stamp(&faces[g.face], g, baseline, &m, &mut dots, ink, 0.0);
-            if row.weight == RasterWeight::Bold {
-                stamp(&faces[g.face], g, baseline, &m, &mut dots, ink, 0.85);
+        for run in &row.runs {
+            let baseline = y as f32 + run.baseline;
+            let m = RasterMetrics {
+                em: run.em,
+                line: row.pitch,
+                baseline: run.baseline,
+                side,
+                width_dots: width,
+            };
+            let ink = match run.weight {
+                RasterWeight::Light => 0.72,
+                RasterWeight::Regular => INK,
+                RasterWeight::Bold => 0.38,
+            };
+            for g in &run.glyphs {
+                stamp_clipped(&faces[g.face], g, baseline, &m, &mut dots, ink, 0.0, run.clip);
+                if run.weight == RasterWeight::Bold {
+                    stamp_clipped(&faces[g.face], g, baseline, &m, &mut dots, ink, 0.85, run.clip);
+                }
             }
         }
-        if let Some(end_x) = row.strike_end {
-            let mid_y = (baseline - row.em * 0.28).round().max(0.0) as usize;
-            paint_strike_line(&mut dots, width, mid_y, side, end_x, row.em);
+        if let Some((x0, x1)) = row.strike {
+            let first = row.runs.first().map(|r| r.baseline).unwrap_or(row.strike_em * 0.92);
+            let mid_y = (y as f32 + first - row.strike_em * 0.28).round().max(0.0) as usize;
+            paint_strike_line(&mut dots, width, mid_y, x0, x1, row.strike_em);
         }
         for &sx in &row.sep_xs {
             paint_col_sep(&mut dots, width, y, row.pitch, sx);
@@ -577,6 +619,292 @@ pub fn draw_lines(lines: &[StyledLine], page: &RasterMetrics) -> (Vec<u8>, usize
         packed[i / 8] |= 0x80 >> (i % 8);
     }
     (packed, height)
+}
+
+/// Row pitch for a size: the line's own, nothing hidden (no floor of 16).
+fn line_pitch(em: f32) -> usize {
+    ((em * 1.45).round() as usize).max(1)
+}
+
+/// One drawn row of a slip: glyph runs (each with its own size, weight,
+/// baseline and clip), or a solid rule.
+struct Row {
+    runs: Vec<Run>,
+    pitch: usize,
+    /// 0 for text. A separator is one solid line, not a row of hyphen glyphs.
+    rule_px: usize,
+    /// Strike from page-x .0 to .1 (cancelled dish names).
+    strike: Option<(f32, f32)>,
+    strike_em: f32,
+    /// Vertical rules between columns (page-x, including side margin).
+    sep_xs: Vec<f32>,
+}
+
+struct Run {
+    glyphs: Vec<Placed>,
+    em: f32,
+    weight: RasterWeight,
+    /// Baseline from the row's top.
+    baseline: f32,
+    /// Page-x range the run may ink.
+    clip: (f32, f32),
+}
+
+/// The owner's columns for one `\t` line: each cell in its column's border
+/// box, wrapped inside the box less its start and end space, aligned there;
+/// a column past the content edge is cut at it. The row block is as tall as
+/// the tallest cell. RTL lays the columns from the right.
+fn owner_column_rows(
+    faces: &[Face],
+    cells: &[&str],
+    cols: &OwnerColumns,
+    room: f32,
+    side: f32,
+    m: &RasterMetrics,
+    line: &StyledLine,
+) -> Vec<Row> {
+    struct Cell {
+        lines: Vec<(Vec<Placed>, f32)>,
+        left: f32,
+        content: f32,
+        clip: (f32, f32),
+        align: LineAlign,
+    }
+    let mut placed: Vec<Cell> = Vec::new();
+    let mut sep_xs = Vec::new();
+    let mut at = 0.0f32;
+    for (i, text) in cells.iter().enumerate() {
+        let col = cols.cols[i];
+        let width = col.width.max(0.0);
+        // Border box in content-x (0 = start of the room after the margin).
+        let (box_l, box_r) = if cols.rtl {
+            (room - at - width, room - at)
+        } else {
+            (at, at + width)
+        };
+        at += width;
+        let (pad_l, pad_r) = if cols.rtl {
+            (col.end.max(0.0), col.start.max(0.0))
+        } else {
+            (col.start.max(0.0), col.end.max(0.0))
+        };
+        let content = (width - pad_l - pad_r).max(1.0);
+        let clip_l = box_l.max(0.0);
+        let clip_r = box_r.min(room);
+        if i + 1 < cells.len() && cols.sep {
+            let border = if cols.rtl { box_l } else { box_r };
+            if border > 0.0 && border < room {
+                sep_xs.push(side + border);
+            }
+        }
+        if clip_r <= clip_l {
+            continue; // wholly past the content edge: cut
+        }
+        let align = match (cols.rtl, col.align) {
+            (true, LineAlign::Start) => LineAlign::End,
+            (true, LineAlign::End) => LineAlign::Start,
+            (_, a) => a,
+        };
+        placed.push(Cell {
+            lines: wrap_box(faces, text.trim(), content, m),
+            left: box_l + pad_l,
+            content,
+            clip: (side + clip_l, side + clip_r),
+            align,
+        });
+    }
+    let tall = placed.iter().map(|c| c.lines.len()).max().unwrap_or(0).max(1);
+    let mut rows = Vec::with_capacity(tall);
+    for r in 0..tall {
+        let mut runs = Vec::new();
+        let mut strike = None;
+        for (ci, cell) in placed.iter().enumerate() {
+            let Some((glyphs, w)) = cell.lines.get(r) else {
+                continue;
+            };
+            let dx = cell.left
+                + match cell.align {
+                    LineAlign::Start => 0.0,
+                    LineAlign::Center => ((cell.content - w) * 0.5).max(0.0),
+                    LineAlign::End => (cell.content - w).max(0.0),
+                };
+            let glyphs: Vec<Placed> = glyphs
+                .iter()
+                .map(|g| Placed { x: g.x + dx, ..g.clone() })
+                .collect();
+            // Strike the dish name (the first cell); the qty stays clear.
+            if line.strike && ci == 0 && !glyphs.is_empty() {
+                let x0 = (side + dx).max(cell.clip.0);
+                let x1 = (side + dx + w).min(cell.clip.1);
+                if x1 > x0 {
+                    strike = Some((x0, x1));
+                }
+            }
+            runs.push(Run {
+                glyphs,
+                em: m.em,
+                weight: line.weight,
+                baseline: m.baseline,
+                clip: cell.clip,
+            });
+        }
+        rows.push(Row {
+            runs,
+            pitch: m.line,
+            rule_px: 0,
+            strike,
+            strike_em: m.em,
+            sep_xs: sep_xs.clone(),
+        });
+    }
+    rows
+}
+
+/// A pair line: the content split in two halves, the line's text in the
+/// first, `right` in the second — each at its own size, weight and
+/// alignment, wrapped inside its half. One block as tall as the taller half.
+fn pair_row(
+    faces: &[Face],
+    line: &StyledLine,
+    right: &PairHalf,
+    room: f32,
+    side: f32,
+    width: usize,
+) -> Row {
+    let half = room * 0.5;
+    let mut runs = Vec::new();
+    let mut height = 0usize;
+    for (text, em, weight, align, left) in [
+        (line.text.as_str(), line.em, line.weight, line.align, 0.0f32),
+        (right.text.as_str(), right.em, right.weight, right.align, half),
+    ] {
+        let em = em.clamp(SIZE_MIN, SIZE_MAX);
+        let pitch = line_pitch(em);
+        let m = RasterMetrics {
+            em,
+            line: pitch,
+            baseline: em * 0.92,
+            side,
+            width_dots: width,
+        };
+        let lines = if text.trim().is_empty() {
+            Vec::new()
+        } else {
+            wrap_box(faces, text.trim(), half.max(1.0), &m)
+        };
+        height = height.max(lines.len() * pitch);
+        let clip = (side + left, side + left + half);
+        for (j, (glyphs, w)) in lines.into_iter().enumerate() {
+            let dx = left
+                + match align {
+                    LineAlign::Start => 0.0,
+                    LineAlign::Center => ((half - w) * 0.5).max(0.0),
+                    LineAlign::End => (half - w).max(0.0),
+                };
+            runs.push(Run {
+                glyphs: glyphs.into_iter().map(|g| Placed { x: g.x + dx, ..g }).collect(),
+                em,
+                weight,
+                baseline: (j * pitch) as f32 + em * 0.92,
+                clip,
+            });
+        }
+    }
+    Row {
+        runs,
+        pitch: height.max(1),
+        rule_px: 0,
+        strike: None,
+        strike_em: line.em,
+        sep_xs: Vec::new(),
+    }
+}
+
+/// `text` in lines no wider than `room`: broken at spaces; a word wider than
+/// `room` on its own is broken inside, between letters (never inside a
+/// letter with its vowel signs). Each line with its width.
+fn wrap_box(faces: &[Face], text: &str, room: f32, m: &RasterMetrics) -> Vec<(Vec<Placed>, f32)> {
+    let mut out: Vec<(Vec<Placed>, f32)> = Vec::new();
+    let mut current = String::new();
+    let push = |out: &mut Vec<(Vec<Placed>, f32)>, s: &str| {
+        let (g, w) = layout(faces, s, m);
+        out.push((g, w));
+    };
+    for word in text.split(' ').filter(|w| !w.is_empty()) {
+        let candidate = if current.is_empty() {
+            word.to_string()
+        } else {
+            format!("{current} {word}")
+        };
+        if layout(faces, &candidate, m).1 <= room {
+            current = candidate;
+            continue;
+        }
+        if !current.is_empty() {
+            push(&mut out, &current);
+            current.clear();
+        }
+        if layout(faces, word, m).1 <= room {
+            current = word.to_string();
+            continue;
+        }
+        // One word wider than the room: break it between letters.
+        let mut piece = String::new();
+        for cluster in letter_clusters(word) {
+            let next = format!("{piece}{cluster}");
+            if !piece.is_empty() && layout(faces, &next, m).1 > room {
+                push(&mut out, &piece);
+                piece = cluster.to_string();
+            } else {
+                piece = next;
+            }
+        }
+        current = piece;
+    }
+    if !current.is_empty() {
+        push(&mut out, &current);
+    }
+    out
+}
+
+/// `word` cut where a break cannot split a letter from its vowel signs,
+/// nukta, virama or joiner (Indic, Thai, combining marks).
+fn letter_clusters(word: &str) -> Vec<&str> {
+    let mut out = Vec::new();
+    let mut start = 0usize;
+    let mut prev: Option<char> = None;
+    for (i, c) in word.char_indices() {
+        if i > 0 && !joins_previous(c) && !prev.is_some_and(holds_next) {
+            out.push(&word[start..i]);
+            start = i;
+        }
+        prev = Some(c);
+    }
+    out.push(&word[start..]);
+    out
+}
+
+/// A character drawn with the letter before it.
+fn joins_previous(c: char) -> bool {
+    let u = c as u32;
+    if matches!(u, 0x0300..=0x036F | 0x0483..=0x0489 | 0x0591..=0x05C7 | 0x0610..=0x061A
+        | 0x064B..=0x065F | 0x0670 | 0x06D6..=0x06ED | 0x200C | 0x200D | 0xFE00..=0xFE0F
+        | 0x0E31 | 0x0E34..=0x0E3A | 0x0E47..=0x0E4E)
+    {
+        return true;
+    }
+    // Indic blocks (Devanagari … Malayalam) share one layout per 0x80.
+    if (0x0900..=0x0D7F).contains(&u) {
+        let o = u & 0x7F;
+        return matches!(o, 0x00..=0x03 | 0x3A..=0x3C | 0x3E..=0x4F | 0x51..=0x57 | 0x62..=0x63);
+    }
+    false
+}
+
+/// A virama: the next consonant joins it into one conjunct.
+fn holds_next(c: char) -> bool {
+    let u = c as u32;
+    (0x0900..=0x0D7F).contains(&u) && (u & 0x7F) == 0x4D
 }
 
 /// Letters of `text` no bundled font has (they print as "?").
@@ -612,7 +940,7 @@ pub fn png_lines(lines: &[StyledLine], m: &RasterMetrics) -> Result<Vec<u8>, Str
 /// Body-type height in the PNG, in pixels. The on-screen preview uses this
 /// so a uniform scale can stay readable.
 pub fn drawn_type_px(em: f32, width_dots: usize) -> f64 {
-    let drawn = (em * page_em_scale(width_dots)).clamp(8.0, 160.0);
+    let drawn = em.clamp(SIZE_MIN, SIZE_MAX);
     drawn as f64 * png_pixel_scale(width_dots.max(1)) as f64
 }
 
@@ -624,6 +952,36 @@ fn png_pixel_scale(page: usize) -> u32 {
         scale -= 1;
     }
     scale.max(1)
+}
+
+/// The same pixels as [`png_lines`], one grey byte each (0 ink, 255 paper),
+/// for the on-screen preview. A PNG encode then decode of a 3× page cost the
+/// UI thread ~1 s per Bill & KOT open in dev builds (2026-11-13).
+pub fn gray_lines(lines: &[StyledLine], m: &RasterMetrics) -> (Vec<u8>, u32, u32) {
+    let (rows, height) = draw_lines(lines, m);
+    gray_from_dots(&rows, height, m.page_dots())
+}
+
+fn gray_from_dots(rows: &[u8], height: usize, page: usize) -> (Vec<u8>, u32, u32) {
+    let scale = png_pixel_scale(page);
+    let w = (page as u32).saturating_mul(scale);
+    let h = (height as u32).saturating_mul(scale).max(scale);
+    let (wu, s) = (w as usize, scale as usize);
+    let row_bytes = page / 8;
+    let mut px = vec![255u8; wu * h as usize];
+    for y in 0..height {
+        let top = y * s * wu;
+        for x in 0..page {
+            if rows[y * row_bytes + x / 8] & (0x80 >> (x % 8)) != 0 {
+                px[top + x * s..top + x * s + s].fill(0);
+            }
+        }
+        // The other rows of this dot row are copies of the first.
+        for dy in 1..s {
+            px.copy_within(top..top + wu, top + dy * wu);
+        }
+    }
+    (px, w, h)
 }
 
 fn png_from_dots(rows: &[u8], height: usize, page: usize) -> Result<Vec<u8>, String> {
@@ -1069,6 +1427,22 @@ fn stamp(
     ink: f32,
     x_shift: f32,
 ) {
+    stamp_clipped(face, g, baseline, m, dots, ink, x_shift, (f32::MIN, f32::MAX));
+}
+
+/// [`stamp`], keeping only dots whose page-x is inside `clip` — a column's
+/// border box, cut at the content edge.
+#[allow(clippy::too_many_arguments)]
+fn stamp_clipped(
+    face: &Face,
+    g: &Placed,
+    baseline: f32,
+    m: &RasterMetrics,
+    dots: &mut [bool],
+    ink: f32,
+    x_shift: f32,
+    clip: (f32, f32),
+) {
     let mut outline = Outline {
         scale: m.em / face.units_per_em() as f32,
         x: m.side + g.x + x_shift,
@@ -1107,7 +1481,8 @@ fn stamp(
     let height = dots.len() / width;
     raster.for_each_pixel_2d(|x, y, coverage| {
         let (px, py) = (left as i64 + x as i64, top as i64 + y as i64);
-        if coverage >= ink && (0..width as i64).contains(&px) && (0..height as i64).contains(&py) {
+        let inside = (px as f32) >= clip.0.floor() && (px as f32) < clip.1.ceil();
+        if coverage >= ink && inside && (0..width as i64).contains(&px) && (0..height as i64).contains(&py) {
             dots[py as usize * width + px as usize] = true;
         }
     });
@@ -1451,8 +1826,11 @@ mod tests {
             .count()
     }
 
+    /// Sizes are literal (owner, 2026-11-15): the same line draws the same
+    /// dots on every content width — size 30 is 30 dots tall type with its
+    /// own pitch, at 58, 80, 112 and 210 mm alike.
     #[test]
-    fn a_page_grows_the_type_with_the_page() {
+    fn a_size_is_the_same_dots_on_every_content_width() {
         let draw = |dots: usize| {
             let page = RasterMetrics {
                 em: 30.0,
@@ -1470,15 +1848,14 @@ mod tests {
                 tab: None,
             }];
             let (rows, height) = draw_lines(&lines, &page);
-            ink_rows(&rows, page.page_dots(), height)
+            (ink_rows(&rows, page.page_dots(), height), height)
         };
         let slip = draw(576);
-        let page = draw(1512);
-        assert!(slip > 8, "80 mm type left no ink ({slip})");
-        assert!(
-            page > slip * 2,
-            "210 mm type must grow with the page ({page} vs {slip})"
-        );
+        assert!(slip.0 > 8, "80 mm type left no ink ({slip:?})");
+        assert_eq!(slip.1, (30.0f32 * 1.45).round() as usize, "pitch of size 30 is its own");
+        for dots in [384, 808, 1512] {
+            assert_eq!(draw(dots), slip, "{dots} dots drew size 30 at another size");
+        }
     }
 
     #[test]

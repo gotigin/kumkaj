@@ -41,7 +41,7 @@ remove	ବାହାର କରନ୍ତୁ
 removed_items	ହଟାଯାଇଥିବା ଆଇଟମ୍
 removed_help	ପୁନରୁଦ୍ଧାର କଲେ ଆଇଟମ୍ ପୂର୍ବପରି ମେନୁକୁ ଫେରିଆସେ — ମୂଲ୍ୟ, ଫଟୋ ଓ ବର୍ଗ। ଆମ ଖାଦ୍ୟ ଶେଲ୍ଫ କେବେ ହଟାଯାଏ ନାହିଁ, ତେଣୁ ଯେକୌଣସି ଖାଦ୍ୟ ପୁଣି ଯୋଡ଼ାଯାଇପାରେ।
 restore_item	ପୁନରୁଦ୍ଧାର କରନ୍ତୁ
-empty_catalog	ଏପର୍ଯ୍ୟନ୍ତ କୌଣସି ଆଇଟମ୍ ନାହିଁ। ମେନୁ ଏବଂ ଆଇଟମ୍ ଖୋଲନ୍ତୁ, ଗୋଟିଏ ଯୋଡ଼ନ୍ତୁ (ନାମ + ମୂଲ୍ୟ), ତା'ପରେ ଅର୍ଡର ନିଅନ୍ତୁ।
+empty_catalog	ଏପର୍ଯ୍ୟନ୍ତ କୌଣସି ଆଇଟମ୍ ନାହିଁ।
 total	ମୋଟ
 cash	ନଗଦ
 upi	यूपीआई
@@ -103,23 +103,14 @@ bill_item_qty	ପରିମାଣ
 bill_item_price	ଦର
 bill_item_amount	ରାଶି
 bill_item_note	ନୋଟ୍
-bill_item_col_gap	ସ୍ତମ୍ଭ ଫାଙ୍କ
 bill_item_col_order	ସ୍ତମ୍ଭ କ୍ରମ
 bill_item_col_sep	ସ୍ତମ୍ଭ ରେଖା
-bill_item_gap_tight	ଟାଇଟ
-bill_item_gap_comfort	ଆରାମଦାୟକ
-bill_item_gap_wide	ଓସାରିଆ
-bill_item_num_width	ସଂଖ୍ୟା ସ୍ତମ୍ଭ
-bill_item_num_compact	ଛୋଟ
-bill_item_num_comfort	ଆରାମଦାୟକ
-bill_item_num_wide	ଓସାରିଆ
-bill_item_num_align	ସଂଖ୍ୟା ସଜାଣ
-bill_item_gap_em	ଫାଙ୍କ (em)
-bill_item_qty_min	ସଂଖ୍ୟା ସର୍ବନିମ୍ନ (em)
-bill_item_price_min	ଦର ସର୍ବନିମ୍ନ (em)
-bill_item_amount_min	ରାଶି ସର୍ବନିମ୍ନ (em)
-kot_item_qty_width	ସଂଖ୍ୟା ସ୍ତମ୍ଭ
-kot_item_num_align	ସଂଖ୍ୟା ସଜାଣ
+slip_columns	ସ୍ତମ୍ଭଗୁଡ଼ିକ
+slip_col_width	ପ୍ରସ୍ଥ (mm)
+slip_col_start	ଆରମ୍ଭ ସ୍ଥାନ (px)
+slip_col_end	ଶେଷ ସ୍ଥାନ (px)
+slip_col_align	ଲେଖା ସଜାଣି
+slip_columns_help	ପ୍ରତ୍ୟେକ ସ୍ତମ୍ଭର ପ୍ରସ୍ଥରେ ଏହାର ଆରମ୍ଭ ଓ ଶେଷ ସ୍ଥାନ ଅନ୍ତର୍ଭୁକ୍ତ। ଲେଖା ନିଜ ସ୍ତମ୍ଭ ଭିତରେ ଗୁଡ଼ାଇ ହୁଏ; ବିଷୟବସ୍ତୁର ପ୍ରସ୍ଥ ବାହାରେ ଥିବା ଅଂଶ କାଗଜରେ ଓ ପୂର୍ବାବଲୋକନରେ କଟିଯାଏ।
 bill_total_qty_label	ମୋଟ ସଂଖ୍ୟା ଲେବଲ
 bill_total_subtotal_label	ଉପଯୋଗ ଲେବଲ
 bill_total_grand_label	ମୋଟ ଲେବଲ
@@ -221,7 +212,6 @@ sidebar_order_saved	ସାଇଡବାର୍ କ୍ରମ ସଞ୍ଚୟ ହେ
 sidebar_visibility_saved	ସାଇଡବାର୍ ଦୃଶ୍ୟତା ସଞ୍ଚୟ ହେଲା
 amounts_hide	ଲୁଚାନ୍ତୁ
 amounts_show	ଦେଖାନ୍ତୁ
-printers_none_hint	ପ୍ରଥମେ ଏହି ଡିଭାଇସରେ ପ୍ରିଣ୍ଟର ସଞ୍ଚୟ କରନ୍ତୁ, ତା’ପରେ ତାକୁ ବିଲ କିମ୍ବା କୌଣସି ରୋଷେଇରେ ଯୋଡ଼ନ୍ତୁ
 counter	କାଉଣ୍ଟର
 dine_in	ବସି ଖାଇବା
 takeaway	ପାର୍ସେଲ
@@ -328,8 +318,6 @@ selected_language	ବଛା
 continue	ଆଗକୁ ବଢ଼ନ୍ତୁ
 this_device	ଏହି ଡିଭାଇସ
 device_use_q	ଏହି ଡିଭାଇସ କିପରି ବ୍ୟବହୃତ ହେବ?
-last_server_mode	ପୂର୍ବରୁ ସର୍ଭର ଥିଲା — ଜାରି ରଖିବାକୁ ଟ୍ୟାପ୍ କରନ୍ତୁ
-last_client_mode	ପୂର୍ବରୁ କ୍ଲାଏଣ୍ଟ ଥିଲା — ଜାରି ରଖିବାକୁ ଟ୍ୟାପ୍ କରନ୍ତୁ
 choose_server	ସର୍ଭର ବାଛନ୍ତୁ
 choose_server_hint	ଏହି ଡିଭାଇସରେ ପୂର୍ବରୁ ସର୍ଭର ଅଛି। ଗୋଟିଏ ଖୋଲନ୍ତୁ, କିମ୍ବା ଅନ୍ୟ ବ୍ୟବସାୟ ପାଇଁ ନୂଆ ସର୍ଭର ତିଆରି କରନ୍ତୁ।
 create_new_server	ନୂଆ ସର୍ଭର ତିଆରି କରନ୍ତୁ
@@ -391,7 +379,7 @@ attachments_last_expense	ସଂଲଗ୍ନ (ଶେଷ ଖର୍ଚ୍ଚ)
 bank	ବ୍ୟାଙ୍କ
 bank_in	ବ୍ୟାଙ୍କରେ ପକାନ୍ତୁ
 bank_out	ବ୍ୟାଙ୍କରୁ କାଢ଼ନ୍ତୁ
-bank_reconciliation	ବ୍ୟାଙ୍କ ମିଳାଣ (ଆପଣଙ୍କ ବ୍ୟାଙ୍କ ଷ୍ଟେଟମେଣ୍ଟ ସହ ଟିକ୍ କରନ୍ତୁ)
+bank_reconciliation	ବ୍ୟାଙ୍କ ମିଳାଣ
 bank_to_till	ବ୍ୟାଙ୍କ → ଟିଲ୍
 book_add_dish	ବୁକ୍ — ଖାଦ୍ୟ / ଆଇଟମ୍ ଯୋଡ଼ନ୍ତୁ
 book_opening_credit	ବୁକ୍ — ଆରମ୍ଭ ଧାର
@@ -744,7 +732,6 @@ station_print_pick_first	ପ୍ରଥମେ ରୋଷେଇ ଷ୍ଟେସନ�
 station_print_editing	“{name}” ର ପ୍ରିଣ୍ଟର ସମ୍ପାଦନ
 station_vps_dd	ଏହି ଷ୍ଟେସନ୍ ପ୍ରିଣ୍ଟର
 station_vps_dd_n	{n} ପ୍ରିଣ୍ଟର · ବଦଳାଇବାକୁ ଟ୍ୟାପ୍
-station_vps_empty	ଏପର୍ଯ୍ୟନ୍ତ ପ୍ରିଣ୍ଟର ନାହିଁ — ସେଟିଙ୍ଗ୍ସ → ପ୍ରିଣ୍ଟରରେ ଖୋଜନ୍ତୁ
 bill_printers_dd	ବିଲ ପାଇଁ ପ୍ରିଣ୍ଟର
 bill_printers_dd_n	ବିଲ ପାଇଁ {n}ଟି ପ୍ରିଣ୍ଟର · ବଦଳାଇବାକୁ ଦବାନ୍ତୁ
 job_layout	ଲେଆଉଟ୍
@@ -889,7 +876,7 @@ net_word	ନେଟ୍
 offline_badge	ଅଫଲାଇନ
 optional_login_help	ଇଚ୍ଛାଧୀନ ଲଗଇନ୍ (ଆଇଡି + ପାସୱାର୍ଡ)। ମାଲିକ ଥରେ ସେଟ୍ କରନ୍ତି; ପରେ କେବଳ ବ୍ୟବହାରକାରୀ ପାସୱାର୍ଡ ବଦଳାଇ ପାରିବେ।
 or_unlock_login	କିମ୍ବା ଲଗଇନ୍ ଆଇଡି + ପାସୱାର୍ଡରେ ଅନଲକ୍ କରନ୍ତୁ
-permission_preset	ଅନୁମତି ପ୍ରିସେଟ୍ (କାହାକୁ ପହଞ୍ଚ)
+permission_preset	ଅନୁମତି ପ୍ରିସେଟ୍
 preset_help_khaynjo	କ୍ୟାସିୟର: ବିକ୍ରୟ। ମ୍ୟାନେଜର: ବିକ୍ରୟ + ଆଇଟମ୍ + ବାତିଲ/ସଂଶୋଧନ।
 product_locked_khaynjo	Khaynjo
 product_only_khaynjo	ଏହି ଆପ୍ କେବଳ Khaynjo — ରେଷ୍ଟୁରାଣ୍ଟ ଅପରେଟିଂ ସିଷ୍ଟମ୍। ଅନ୍ୟ ବ୍ୟବସାୟ ପାଇଁ ଅଲଗା Kumkaj ଉତ୍ପାଦ ଅଛି।
@@ -961,10 +948,6 @@ pin_hint_paired	ଅତିରିକ୍ତ ଟିଲ୍ ଯୋଡ଼ା ହୋଇ�
 pin_hint_pair_first	ଅତିରିକ୍ତ ଟିଲ୍ — ପ୍ରଥମେ ଦୋକାନ ଡିଭାଇସ ସହ ଯୋଡ଼ନ୍ତୁ
 unlock_to_continue	ଜାରି ରଖିବାକୁ ଅନଲକ୍ କରନ୍ତୁ
 no_staff_yet	ଏପର୍ଯ୍ୟନ୍ତ କୌଣସି କର୍ମଚାରୀ ନାହାନ୍ତି — ମାଲିକ ଭାବେ ଅନଲକ୍ କରନ୍ତୁ, ତା'ପରେ Team
-status_server_set_pin	ସର୍ଭର ମୋଡ୍ — ମାଲିକ PIN ସେଟ୍ କରନ୍ତୁ
-status_server_tills	ସର୍ଭର ମୋଡ୍ — ଅତିରିକ୍ତ ଟିଲ୍ ଯୋଗ ଦେଇପାରିବେ। ଅନଲକ୍ କରନ୍ତୁ
-status_server_unlock	ସର୍ଭର ମୋଡ୍ — ମାଲିକ ଭାବେ ଅନଲକ୍ କରନ୍ତୁ
-status_client_unlock	କ୍ଲାଏଣ୍ଟ ମୋଡ୍ — ବିକ୍ରୟ ପାଇଁ ଅନଲକ୍ କରନ୍ତୁ
 icon_new_selected	ଆଇକନ୍: ନୂଆ ଫାଇଲ୍ ବଛାଗଲା — ବ୍ରାଣ୍ଡ ସଂରକ୍ଷଣ କରନ୍ତୁ ଦବାନ୍ତୁ
 icon_custom	ଆଇକନ୍: ଆପଣଙ୍କ ଦୋକାନ ଚିହ୍ନ
 icon_default	ଆଇକନ୍: Kumkaj ଚିହ୍ନ (ଡିଫଲ୍ଟ) — ନିଜର ବାଛନ୍ତୁ
@@ -1033,7 +1016,7 @@ book_kind_balance	ବାଲାନ୍ସ ସିଟ୍
 order_help	ଖୋଲା ଅର୍ଡର ବାଛନ୍ତୁ, କିମ୍ବା ଟେବୁଲ୍ ବାଛି ନୂଆ ଆରମ୍ଭ କରନ୍ତୁ। ପ୍ରସ୍ତୁତ ଆଇଟମ୍ ଉପରେ ଟାପ୍ କରନ୍ତୁ, KOT ପଠାନ୍ତୁ, ଗୋଟିଏ ବା ଅଧିକ ଆଇଟମ୍ ବିଲ୍ କରନ୍ତୁ, ବିଲ୍ ବାଣ୍ଟନ୍ତୁ ଏବଂ ଦେୟ ମେଟାନ୍ତୁ।
 floor_help	ପ୍ରତ୍ୟେକ ଟେବୁଲ୍ ଦେଖାଏ ଅତିଥିମାନେ ବସିଛନ୍ତି କି ନାହିଁ, ସେମାନଙ୍କ ଖୋଲା ବିଲ୍ କ’ଣ ଏବଂ ପରବର୍ତ୍ତୀ ସେବା କାହାକୁ ଦରକାର।
 kitchen_help	ପ୍ରତି ଭାରିଆଣ୍ଟ କିମ୍ବା ପ୍ରତି ଆଇଟମ୍ ଅନୁଯାୟୀ ପ୍ରସ୍ତୁତ ପରିମାଣ ଟ୍ରାକ୍ କରନ୍ତୁ — KOT ରେ ଇଚ୍ଛା ଅନୁଯାୟୀ ରେକର୍ଡ କରନ୍ତୁ।
-kitchen_empty	ବର୍ତ୍ତମାନ କିଛି ଖୋଲା ନାହିଁ — ନୂଆ ଅର୍ଡର ଏଠାରେ ଦେଖାଯିବ।
+kitchen_empty	ବର୍ତ୍ତମାନ କିଛି ଖୋଲା ନାହିଁ।
 add_a_table	ଟେବୁଲ୍ ଯୋଡନ୍ତୁ
 add_station_heading	ଷ୍ଟେସନ୍ ଯୋଡନ୍ତୁ · ଯେପରି ତନ୍ଦୁର, ସାଉଥ୍ ଇଣ୍ଡିଆନ୍
 categories_help	ଶ୍ରେଣୀ ଦେଖାଏ ଏକ ଖାଦ୍ୟ କେଉଁ ମେନୁ ଭାଗରେ ଆସେ — ଯେପରି ସ୍ନାକ୍ସ, ମେନ୍ କୋର୍ସ କିମ୍ବା ବିରିୟାନୀ। ଶ୍ରେଣୀ ନିଜ ମତେ ତିଆରି କରନ୍ତୁ: ଆମ ପ୍ରସ୍ତାବିତ ନାମ ବାଛନ୍ତୁ, ନାମ ବଦଳାନ୍ତୁ କିମ୍ବା ନିଜର ଯୋଡନ୍ତୁ।
@@ -1131,7 +1114,6 @@ bill_format_help	ପ୍ରତି ବିଲରେ ଆପଣଙ୍କ ରେଷ୍
 bill_header_ph	ଠିକଣା | ଫୋନ୍
 fssai_ph	FSSAI ଲାଇସେନ୍ସ ନଂ (ଭାରତ)
 bill_footer_ph	ଫୁଟର୍ (ଯେପରି ଧନ୍ୟବାଦ, ପୁଣି ଆସନ୍ତୁ)
-save_bill_format	ବିଲ୍ ଫର୍ମାଟ୍ ସଞ୍ଚୟ କରନ୍ତୁ
 reset_bill_format	ଡିଫଲ୍ଟକୁ ଫେରନ୍ତୁ
 bill_format_reset	ବିଲ୍ ଫର୍ମାଟ୍ ଡିଫଲ୍ଟକୁ
 reset_kot_format	ଡିଫଲ୍ଟକୁ ଫେରନ୍ତୁ
@@ -1201,13 +1183,11 @@ kot_copies_3	3
 kot_title_ph	ଶୀର୍ଷକ (ଖାଲି = KOT - KITCHEN ORDER)
 kot_footer_ph	ରୋଷେଇ ନୋଟ୍ (ବୈକଳ୍ପିକ, ମୂଲ୍ୟ ନାହିଁ)
 kot_preview	ପୂର୍ବାବଲୋକନ
-save_kot_format	KOT ଫର୍ମାଟ୍ ସେଭ୍ କରନ୍ତୁ
 test_kot_format	ପରୀକ୍ଷା KOT
 test_kot_sent	ରୋଷେଇ ଟିକେଟ ନମୁନା ପଠାଗଲା
 test_bill_format	ପରୀକ୍ଷା ବିଲ
 test_bill_sent	ବିଲ ନମୁନା ପଠାଗଲା
 test_print_no_printer	ସେହି କାମ ପାଇଁ ପ୍ରିଣ୍ଟର ନାହିଁ — ଏହି ସ୍କ୍ରିନରେ ହିଁ ଗୋଟିଏ ବାଛନ୍ତୁ
-kot_format_saved	KOT ଫର୍ମାଟ୍ ସେଭ୍
 std_print	ବିଲ୍ ପ୍ରିଣ୍ଟ ଆକାର
 std_print_help	ଷ୍ଟାଣ୍ଡାର୍ଡ ପୋର୍ଟ୍ରେଟ୍ ଓ ଲ୍ୟାଣ୍ଡସ୍କେପ୍ ବିଲ୍ କାମ ପାଇଁ ଅକ୍ଷର ଆକାର (ଥର୍ମାଲ୍ KOT ଅଲଗା)। ଦୁଇ ଦିଗରେ ସମାନ ଆକାର।
 std_size_s	ଛୋଟ
@@ -1264,7 +1244,6 @@ new_items_head	ଏଯାଏଁ ପଠାଯାଇନାହିଁ
 price_ph	ଦାମ
 price_ph_gst_inside	ମୂଲ୍ୟ ({tax} ସହିତ)
 cancel_needs_table	ରୋଷେଇ ପରେ ବାତିଲ୍ କରିବାକୁ ଏହି ଅର୍ଡର ଫ୍ଲୋର (ଟେବୁଲ) ରୁ ଖୋଲନ୍ତୁ — କାଉଣ୍ଟର KOT ଦେୟ ପର୍ଯ୍ୟନ୍ତ ଟିକେଟରେ ରହେ
-tax_rates_missing_hint	ଏହି ଖାଦ୍ୟରେ {tax} ହାର ନାହିଁ — ମେନୁରେ କର ହାର ସେଟ୍ କରନ୍ତୁ ({tax} inclusiveରେ ମୂଲ୍ୟରେ ପୂର୍ବରୁ {tax} ଅଛି)
 taxable_value	କରଯୋଗ୍ୟ ମୂଲ୍ୟ
 gst_inside_price_note	({tax} ସହିତ)
 start_with_template	ଆମ ମେନୁ ଟେମ୍ପଲେଟ୍ ସହ ଆରମ୍ଭ
@@ -1318,9 +1297,7 @@ order_empty_pick	ଅର୍ଡର ଖାଲି — ଖାଦ୍ୟ ବାଛି�
 add_dishes	ଖାଦ୍ୟ ଯୋଗ କରନ୍ତୁ
 order_so_far	ଏହି ଅର୍ଡରରେ: {n} · {total}
 no_dish_match	“{q}” ସହ ମେଳ ଖାଉଥିବା କୌଣସି ଖାଦ୍ୟ ନାହିଁ
-pick_dishes_help	ଖାଦ୍ୟ ଯୋଡ଼ିବାକୁ ଦବାନ୍ତୁ · ତାଲିକା ଛୋଟ କରିବାକୁ ବର୍ଗ ବାଛନ୍ତୁ
 pick_done	ହୋଇଗଲା
-pick_done_dd	ହୋଇଗଲା · {label}
 printer_route_mode	ଏହି ସ୍ଥାନରେ ଅନେକ ପ୍ରିଣ୍ଟର ଥିଲେ
 printer_mode_first	ଯାହା ପ୍ରଥମେ ଚାଲେ
 printer_mode_all	ସବୁଥିରେ ଛାପନ୍ତୁ
@@ -1368,3 +1345,22 @@ recent_changes	ସାମ୍ପ୍ରତିକ ପରିବର୍ତ୍ତନ
 lane_declared_label	ଟିକସ ଇନଭଏସ୍
 lane_owner_label	କ୍ୟାସ୍ ମେମୋ
 money_lane_bill	ବିଲ: {lane}
+sel_copy	କପି କରନ୍ତୁ
+sel_select_all	ସବୁ ବାଛନ୍ତୁ
+sel_copied	କପି ହେଲା
+items_tmpl_khaynjo	Khaynjo ସାମଗ୍ରୀ ଟେମ୍ପଲେଟ
+items_tmpl_named	{name} ଟେମ୍ପଲେଟ
+app_tmpl_named	{name} ଆପ୍ ଟେମ୍ପଲେଟ
+private_code_ph	12 ଅଙ୍କର କୋଡ୍
+stamp_on	ଷ୍ଟାମ୍ପ: ଫାଇଲରେ
+pay_qr_on	ପେମେଣ୍ଟ QR: ଫାଇଲରେ
+pay_qr_off	ପେମେଣ୍ଟ QR: ନାହିଁ
+items_tmpl_heading	ଆଇଟମ୍ ଟେମ୍ପଲେଟ୍
+items_tmpl_help	ଆପଣଙ୍କ ମେନୁ ପାଇଁ ବ୍ୟଞ୍ଜନ, ବର୍ଗ ଓ ଫଟୋ। ଦୋକାନ ସେଟିଂସ୍ ଓ କର୍ମଚାରୀ ଯେମିତି ଅଛନ୍ତି ସେମିତି ରହନ୍ତି।
+public_tmpl_help	ଯେକେହି ଡାଉନଲୋଡ୍ କରିପାରୁଥିବା ଆରମ୍ଭ ମେନୁ। ଥରେ ଇଣ୍ଟରନେଟ୍ ଦରକାର।
+private_tmpl_help	ଆପଣଙ୍କ Khaynjo ଯୋଗାଯୋଗଙ୍କଠାରୁ ମିଳିଥିବା 12-ଅଙ୍କ କୋଡ୍ ଦ୍ୱାରା ସୁରକ୍ଷିତ ଗ୍ରାହକ ମେନୁ।
+printers_screen_tip	ଖୋଜନ୍ତୁ ଏହି ଡିଭାଇସ୍ ବ୍ୟବହାର କରିପାରୁଥିବା ପ୍ରିଣ୍ଟରଗୁଡ଼ିକ ଦେଖାଏ ଏବଂ ଏହି ଦୋକାନ ପାଇଁ ସେଭ୍ କରେ। ବିଲ୍ ପ୍ରିଣ୍ଟର: ବିଲ୍ ଓ KOT ଫର୍ମାଟ୍ → ବିଲ୍। ରୋଷେଇ ଘର: ରୋଷେଇ ଘର → ରୋଷେଇ ଷ୍ଟେସନ୍।
+printers_found_none	କୌଣସି ପ୍ରିଣ୍ଟର ମିଳିଲା ନାହିଁ।
+kot_copy_from	ଏଥିରୁ କପି କରନ୍ତୁ
+kot_copy_from_help	ସେହି ପ୍ରକାରର ପ୍ରତ୍ୟେକ ଧାଡ଼ିର ଆକାର, ମୋଟେଇ ଓ ସଜ୍ଜା ଏଥିରେ କପି କରେ। ଏହି ପ୍ରକାର ନିଜର ବ୍ୟାନର, ଆଇଟମ ଉପସର୍ଗ ଓ କଟା ଗାର ରଖେ। ରଖିବା ପାଇଁ KOT ଫର୍ମାଟ ସେଭ କରନ୍ତୁ।
+nav_loading	ଲୋଡ୍ ହେଉଛି…

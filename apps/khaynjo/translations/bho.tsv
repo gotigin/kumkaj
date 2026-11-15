@@ -41,7 +41,7 @@ remove	हटाईं
 removed_items	हटावल सामान
 removed_help	वापस लवला पर सामान ठीक पहिले जइसन मेनू पर आ जाला — दाम, फोटो आ श्रेणी। हमनी के बेंजन के सूची कबो ना हटेला, एह से बेंजन हमेशा फेर जोड़ल जा सकेला।
 restore_item	वापस लाईं
-empty_catalog	अबहीं कवनो बेंजन नइखे। मेनू खोलीं, बेंजन जोड़ीं (नाम + दाम), फेर ऑर्डर लीं।
+empty_catalog	अबहीं कवनो बेंजन नइखे।
 total	कुल
 cash	नकद
 upi	UPI
@@ -103,23 +103,14 @@ bill_item_qty	मात्रा
 bill_item_price	दाम
 bill_item_amount	रकम
 bill_item_note	बेंजन के टिप्पणी
-bill_item_col_gap	खंभा के बीच के दूरी
 bill_item_col_order	खंभा के क्रम
 bill_item_col_sep	खंभा रेखा
-bill_item_gap_tight	सटल
-bill_item_gap_comfort	आराम से
-bill_item_gap_wide	चउड़ा
-bill_item_num_width	अंक खंभा
-bill_item_num_compact	छोट
-bill_item_num_comfort	आराम से
-bill_item_num_wide	चउड़ा
-bill_item_num_align	अंक मिलान
-bill_item_gap_em	दूरी (em)
-bill_item_qty_min	मात्रा कम से कम (em)
-bill_item_price_min	दाम कम से कम (em)
-bill_item_amount_min	रकम कम से कम (em)
-kot_item_qty_width	मात्रा खंभा
-kot_item_num_align	मात्रा मिलान
+slip_columns	खंभा
+slip_col_width	चौड़ाई (mm)
+slip_col_start	सुरुआत के जगह (px)
+slip_col_end	आखिर के जगह (px)
+slip_col_align	लिखावट के सीध
+slip_columns_help	हर खंभा के चौड़ाई में ओकर सुरुआत आ आखिर के जगह शामिल बा। लिखावट अपना खंभा के भीतर लपेटा जाला; सामग्री के चौड़ाई से बाहर जवन बा ऊ कागज आ पूर्वावलोकन दूनो में कट जाला।
 bill_total_qty_label	कुल मात्रा लेबल
 bill_total_subtotal_label	उप-जोड़ लेबल
 bill_total_grand_label	कुल जोड़ लेबल
@@ -221,7 +212,6 @@ sidebar_order_saved	साइडबार के क्रम सहेजल
 sidebar_visibility_saved	साइडबार के देखाई सहेजल
 amounts_hide	लुकाईं
 amounts_show	देखाईं
-printers_none_hint	पहिले एह डिवाइस पर प्रिंटर सहेजीं, फेर ओकरा के बिल भा कवनो रसोई में जोड़ीं
 counter	काउंटर
 dine_in	भीतर खाए के
 takeaway	ले जाए के
@@ -328,8 +318,6 @@ selected_language	चुनल
 continue	आगे बढ़ीं
 this_device	ई डिवाइस
 device_use_q	ई डिवाइस कइसे इस्तेमाल होई?
-last_server_mode	सर्वर रहे — आगे बढ़े के दबाईं
-last_client_mode	क्लाइंट रहे — आगे बढ़े के दबाईं
 choose_server	सर्वर चुनीं
 choose_server_hint	पुरान सर्वर खोलीं, भा दोसर कारोबार खातिर नया बनाईं।
 create_new_server	नया सर्वर बनाईं
@@ -391,7 +379,7 @@ attachments_last_expense	संलग्न (पिछला खरचा)
 bank	बैंक
 bank_in	बैंक में आइल
 bank_out	बैंक से गइल
-bank_reconciliation	बैंक मिलान (बैंक बिबरन से मिला के टिक करीं)
+bank_reconciliation	बैंक मिलान
 bank_to_till	बैंक → टिल
 book_add_dish	बही — बेंजन / सामान जोड़ीं
 book_opening_credit	बही — शुरू के उधार
@@ -744,7 +732,6 @@ station_print_pick_first	पहिले रसोई स्टेशन चु�
 station_print_editing	“{name}” के प्रिंटर बदलत बानी
 station_vps_dd	एह स्टेशन के प्रिंटर
 station_vps_dd_n	{n} प्रिंटर · बदले खातिर दबाईं
-station_vps_empty	अबहीं ले प्रिंटर नइखे — सेटिंग → प्रिंटर में खोजीं
 bill_printers_dd	बिल के प्रिंटर
 bill_printers_dd_n	बिल खातिर {n} प्रिंटर · बदले खातिर दबाईं
 job_layout	बनावट
@@ -889,7 +876,7 @@ net_word	शुद्ध
 offline_badge	ऑफलाइन
 optional_login_help	मरजी के लॉगिन (id + पासवर्ड)। मालिक एक बेर राखेलन; बाद में खाली उपयोगकर्ता पासवर्ड बदल सकेलन।
 or_unlock_login	भा लॉगिन id + पासवर्ड से अनलॉक करीं
-permission_preset	काम (स्क्रीन आ पइसा के काम तय करेला)
+permission_preset	काम
 preset_help_khaynjo	कैशियर: बेचल। मैनेजर: बेचल + सामान + रद्द/सुधार।
 product_locked_khaynjo	Khaynjo
 product_only_khaynjo	ई ऐप खाली Khaynjo बा — रेस्टोरेंट चलावे के प्रणाली। दोसर कारोबार के रूप अलग Kumkaj उत्पाद के रूप में आवेला।
@@ -961,10 +948,6 @@ pin_hint_paired	अतिरिक्त टिल जुड़ल — बेच
 pin_hint_pair_first	अतिरिक्त टिल — पहिले दोकान के डिवाइस से जोड़ीं
 unlock_to_continue	आगे बढ़े खातिर अनलॉक करीं
 no_staff_yet	अबहीं ले करमचारी नइखे — मालिक के रूप में अनलॉक करीं, फेर टीम
-status_server_set_pin	सर्वर मोड — मालिक के PIN राखीं
-status_server_tills	सर्वर मोड — अतिरिक्त टिल जुड़ सकेला। अनलॉक करीं
-status_server_unlock	सर्वर मोड — मालिक के रूप में अनलॉक करीं
-status_client_unlock	क्लाइंट मोड — बेचे खातिर अनलॉक करीं
 icon_new_selected	आइकन: नया फाइल चुनल — ब्रांड सहेजीं दबाईं
 icon_custom	आइकन: आपन दोकान के निशान
 icon_default	आइकन: Kumkaj निशान (डिफॉल्ट) — आपन चुनीं
@@ -1033,7 +1016,7 @@ book_kind_balance	तुलन पत्र
 order_help	जोड़े खातिर सामान दबाईं।
 floor_help	ऑर्डर लेवे भा बदले खातिर टेबल दबाईं। रंग देखावेला खाली → बइठल → रसोई → तइयार → खात बा → बिल → भुगतान। इंतजार सूची, आरक्षण आ टेबल जोड़ल नीचे के हिस्सा में बा।
 kitchen_help	रसोई टिकट (KOT), नया आखिर में। शुरू → तइयार → हो गइल टिकट के आगे बढ़ावेला। टिकट पर कबो दाम ना देखाला।
-kitchen_empty	कवनो खुला टिकट नइखे। ऑर्डर भा फर्श से भेजल KOT इहाँ देखाला।
+kitchen_empty	कवनो खुला टिकट नइखे।
 add_a_table	टेबल जोड़ीं
 add_station_heading	रसोई स्टेशन जोड़ीं
 categories_help	ऊपर के सामान के ओह श्रेणी में राखे खातिर इस्तेमाल करीं दबाईं। फोटो श्रेणी के तस्वीर देला; ना त पहिला अक्षर देखाला।
@@ -1131,7 +1114,6 @@ bill_format_help	हर बिल पर रउरा रेस्टोरे�
 bill_header_ph	पता | फोन
 fssai_ph	FSSAI लाइसेंस नं. (भारत)
 bill_footer_ph	फुटर (जइसे धन्यवाद, फेर आईं)
-save_bill_format	बिल के रूप सहेजीं
 reset_bill_format	डिफॉल्ट पर लौटाईं
 bill_format_reset	बिल के रूप डिफॉल्ट पर लौटल
 reset_kot_format	डिफॉल्ट पर लौटाईं
@@ -1201,13 +1183,11 @@ kot_copies_3	3
 kot_title_ph	शीर्षक (खाली = KOT - KITCHEN ORDER)
 kot_footer_ph	रसोई के टिप्पणी (मरजी के, बिना दाम)
 kot_preview	पूर्वावलोकन
-save_kot_format	KOT के रूप सहेजीं
 test_kot_format	टेस्ट KOT
 test_kot_sent	रसोई टिकट के नमूना भेजल
 test_bill_format	टेस्ट बिल
 test_bill_sent	बिल के नमूना भेजल
 test_print_no_printer	ओह काम खातिर प्रिंटर नइखे — एही स्क्रीन पर एगो चुनीं
-kot_format_saved	KOT के रूप सहेजल
 std_print	बिल छाप के आकार
 std_print_help	OS / दस्तावेज प्रिंटर पर सामान्य खड़ा आ पड़ल बिल खातिर अक्षर आकार (पॉइंट लिखीं — छोट/सामान्य/बड़ ना)। दुनो दिशा में एके आकार। रसोई पर्ची के आकार KOT टैब पर बा।
 std_size_s	छोट
@@ -1264,7 +1244,6 @@ new_items_head	अबहीं ना भेजल
 price_ph	दाम
 price_ph_gst_inside	दाम ({tax} सहित)
 cancel_needs_table	रसोई ले पहुँचला के बाद रद्द करे खातिर ई ऑर्डर फर्श से (टेबल) खोलीं — काउंटर के KOT भुगतान लेवे ले टिकट पर रहेला
-tax_rates_missing_hint	एह बेंजन पर {tax} दर नइखे — मेनू में कर दर राखीं (दाम में पहिले से {tax} शामिल, {tax} सहित के तहत)
 taxable_value	कर लागे वाला मूल्य
 gst_inside_price_note	({tax} सहित)
 start_with_template	हमनी के मेनू टेम्पलेट से शुरू करीं
@@ -1318,9 +1297,7 @@ order_empty_pick	ऑर्डर खाली — बेंजन चुने �
 add_dishes	बेंजन जोड़ीं
 order_so_far	एह ऑर्डर पर: {n} · {total}
 no_dish_match	“{q}” से कवनो बेंजन ना मिलेला
-pick_dishes_help	जोड़े खातिर बेंजन दबाईं · सूची छोट करे खातिर श्रेणी चुनीं
 pick_done	हो गइल
-pick_done_dd	हो गइल · {label}
 printer_route_mode	अगर एह जगह कई गो प्रिंटर होखे
 printer_mode_first	जवन पहिले चले
 printer_mode_all	सब पर छापीं
@@ -1368,3 +1345,22 @@ recent_changes	हाल के बदलाव
 lane_declared_label	कर चालान
 lane_owner_label	कैश मेमो
 money_lane_bill	बिल: {lane}
+sel_copy	कॉपी करीं
+sel_select_all	सभ चुनीं
+sel_copied	कॉपी हो गइल
+items_tmpl_khaynjo	Khaynjo आइटम टेम्पलेट
+items_tmpl_named	{name} टेम्पलेट
+app_tmpl_named	{name} ऐप टेम्पलेट
+private_code_ph	12 अंक के कोड
+stamp_on	मोहर: फाइल में बा
+pay_qr_on	भुगतान QR: फाइल में बा
+pay_qr_off	भुगतान QR: ना
+items_tmpl_heading	आइटम टेम्पलेट
+items_tmpl_help	रउआ मेनू खातिर पकवान, श्रेणी आ फोटो। दोकान के सेटिंग आ स्टाफ जइसन बा ओइसने रहेला।
+public_tmpl_help	सुरुआती मेनू जेकरा के केहू डाउनलोड कर सकेला। एक बेर इंटरनेट चाहीं।
+private_tmpl_help	रउआ Khaynjo संपर्क से मिलल 12 अंक के कोड से खुले वाला ग्राहक मेनू।
+printers_screen_tip	खोजीं एह डिवाइस के इस्तेमाल लायक प्रिंटर देखावेला आ एह दोकान खातिर सहेजेला। बिल प्रिंटर: बिल आ KOT फॉर्मेट → बिल। रसोई: रसोई → रसोई स्टेशन।
+printers_found_none	कवनो प्रिंटर ना मिलल।
+kot_copy_from	एहसे कॉपी करीं
+kot_copy_from_help	ओह किसिम के हर लाइन के आकार, मोटाई आ संरेखण एह में कॉपी करेला। ई किसिम आपन बैनर, आइटम उपसर्ग आ काट-रेखा राखेला। राखे खातिर KOT फॉर्मेट सहेजीं।
+nav_loading	लोड हो रहल बा…

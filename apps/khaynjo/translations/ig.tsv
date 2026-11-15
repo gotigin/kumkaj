@@ -41,7 +41,7 @@ remove	Wepụ
 removed_items	Ihe ewepụrụ
 removed_help	Iweghachi na-eweghachi ihe na ndepụta nri otu o si dị — ọnụahịa, foto na ụdị. Shelf nri anyị anaghị ewepụ, ya mere enwere ike itinye nri ọzọ.
 restore_item	Weghachi
-empty_catalog	Enweghị nri. Mepee Ndepụta nri, tinye nri (aha + ọnụahịa), wee were iwu.
+empty_catalog	Enweghị nri.
 total	Ngụkọta
 cash	Ego aka
 upi	UPI
@@ -103,23 +103,14 @@ bill_item_qty	Ọnụọgụ
 bill_item_price	Ọnụahịa
 bill_item_amount	Ego
 bill_item_note	Ndetu nri
-bill_item_col_gap	Oghere ogidi
 bill_item_col_order	Usoro ogidi
 bill_item_col_sep	Ahịrị ogidi
-bill_item_gap_tight	Kpuchie
-bill_item_gap_comfort	Kwesịrị ekwesị
-bill_item_gap_wide	Sara mbara
-bill_item_num_width	Ogidi ọnụọgụ
-bill_item_num_compact	Kpụkọta
-bill_item_num_comfort	Kwesịrị ekwesị
-bill_item_num_wide	Sara mbara
-bill_item_num_align	Nhazi ọnụọgụ
-bill_item_gap_em	Oghere (em)
-bill_item_qty_min	Ọnụọgụ kacha nta (em)
-bill_item_price_min	Ọnụahịa kacha nta (em)
-bill_item_amount_min	Ego kacha nta (em)
-kot_item_qty_width	Ogidi ọnụọgụ
-kot_item_num_align	Nhazi ọnụọgụ
+slip_columns	Kọlụm
+slip_col_width	Obosara (mm)
+slip_col_start	Ohere mmalite (px)
+slip_col_end	Ohere njedebe (px)
+slip_col_align	Nhazi ederede
+slip_columns_help	Obosara kọlụm ọ bụla gụnyere ohere mmalite na njedebe ya. Ederede na-ekechi n’ime kọlụm ya; ihe gafere obosara ọdịnaya ka a na-egbubi, n’akwụkwọ na n’ihe ngosi.
 bill_total_qty_label	Akara ngụkọta ọnụọgụ
 bill_total_subtotal_label	Akara ngụkọta nta
 bill_total_grand_label	Akara ngụkọta ukwu
@@ -221,7 +212,6 @@ sidebar_order_saved	Echekwara usoro ogwe akụkụ
 sidebar_visibility_saved	Echekwara ngosipụta ogwe akụkụ
 amounts_hide	Zoo
 amounts_show	Gosi
-printers_none_hint	Chekwaa igwe mbipụta na ngwaọrụ a mbụ, wee tinye ya na Ụgwọ ma ọ bụ kichin
 counter	Kaụnta
 dine_in	N'ime ụlọ
 takeaway	Were laa
@@ -328,8 +318,6 @@ selected_language	Ahọpụtara
 continue	Gaa n'ihu
 this_device	NGWAỌRỤ A
 device_use_q	Kedu ka a ga-eji ngwaọrụ a?
-last_server_mode	Bụ Sava — kpatụ ka ị gaa n'ihu
-last_client_mode	Bụ Ngwa njedebe — kpatụ ka ị gaa n'ihu
 choose_server	Họrọ sava
 choose_server_hint	Mepee sava dị adị, ma ọ bụ mepụta otu maka azụmahịa ọzọ.
 create_new_server	Mepụta sava ọhụrụ
@@ -391,7 +379,7 @@ attachments_last_expense	Ihe etinyere (mmefu ikpeazụ)
 bank	Ụlọ akụ
 bank_in	Banye ụlọ akụ
 bank_out	Pụọ ụlọ akụ
-bank_reconciliation	Nkwekọrịta ụlọ akụ (kanye megide akwụkwọ ụlọ akụ gị)
+bank_reconciliation	Nkwekọrịta ụlọ akụ
 bank_to_till	Ụlọ akụ → kaụnta
 book_add_dish	Akwụkwọ — tinye nri / ihe
 book_opening_credit	Akwụkwọ — kredit mmalite
@@ -744,7 +732,6 @@ station_print_pick_first	Họrọ ọdụ kichin mbụ
 station_print_editing	Na-edezi igwe mbipụta maka “{name}”
 station_vps_dd	Igwe mbipụta maka ọdụ a
 station_vps_dd_n	Igwe mbipụta {n} · kpatụ ka ị gbanwee
-station_vps_empty	Enweghị igwe mbipụta — Chọta ha n'okpuru Ntọala → Igwe mbipụta
 bill_printers_dd	Igwe mbipụta maka ụgwọ
 bill_printers_dd_n	Igwe mbipụta {n} maka ụgwọ · kpatụ ka ị gbanwee
 job_layout	Nhazi
@@ -889,7 +876,7 @@ net_word	Net
 offline_badge	ANỌGHỊ N'ỊNTANETỊ
 optional_login_help	Nbanye nhọrọ (njirimara + okwuntughe). Onye nwe na-etinye otu ugboro; naanị onye ọrụ nwere ike ịgbanwe okwuntughe ma emechaa.
 or_unlock_login	Ma ọ bụ mepee site na njirimara nbanye + okwuntughe
-permission_preset	Ọrụ (na-etinye ihuenyo na omume ego)
+permission_preset	Ọrụ
 preset_help_khaynjo	Onye na-anakọta ego: ree. Onye njikwa: ree + ihe + kagbuo kpamkpam/dozie.
 product_locked_khaynjo	Khaynjo
 product_only_khaynjo	Ngwa a bụ naanị Khaynjo — sistemụ ọrụ ụlọ oriri. Ihu azụmahịa ndị ọzọ na-abịa dị ka ngwaahịa Kumkaj dị iche.
@@ -961,10 +948,6 @@ pin_hint_paired	Ejikọrọ kaụnta ọzọ — mepee ka ị ree
 pin_hint_pair_first	Kaụnta ọzọ — jikọọ na ngwaọrụ ụlọ ahịa mbụ
 unlock_to_continue	Mepee ka ị gaa n'ihu
 no_staff_yet	Enweghị ndị ọrụ — mepee dị ka Onye nwe, wee Ndị ọrụ
-status_server_set_pin	Ụdị Sava — tinye PIN Onye nwe
-status_server_tills	Ụdị Sava — kaụnta ndị ọzọ nwere ike ijikọ. Mepee
-status_server_unlock	Ụdị Sava — mepee dị ka Onye nwe
-status_client_unlock	Ụdị Ngwa njedebe — mepee ka ị ree
 icon_new_selected	Akara: ahọpụtara faịlụ ọhụrụ — kpatụ Chekwaa akara
 icon_custom	Akara: akara ebe nke onwe
 icon_default	Akara: akara Kumkaj (ndabara) — họrọ nke onwe
@@ -1033,7 +1016,7 @@ book_kind_balance	Akwụkwọ nguzozi
 order_help	Kpatụ ihe ka ị tinye ya.
 floor_help	Kpatụ tebụl ka ị were ma ọ bụ gbanwee iwu. Agba na-egosi n'efu → nọ ọdụ → kichin → njikere → na-eri → ụgwọ → akwụrụ. Ndepụta nchere, ndebe, na itinye tebụl nọ na ngalaba dị n'okpuru.
 kitchen_help	Tiketi kichin (KOT), nke kacha ọhụrụ n'ikpeazụ. Malite → Njikere → Emeela na-ebugharị tiketi. Tiketi anaghị egosi ọnụahịa.
-kitchen_empty	Enweghị tiketi mepere. KOT e zigara site na Iwu ma ọ bụ Ụlọ oriri na-apụta ebe a.
+kitchen_empty	Enweghị tiketi mepere.
 add_a_table	Tinye tebụl
 add_station_heading	Tinye ọdụ kichin
 categories_help	Kpatụ Jiri ka ị tinye ihe dị n'elu n'okpuru ụdị ahụ. Foto na-enye ụdị onyonyo; enweghị ya, ọ na-egosi mkpụrụedemede mbụ ya.
@@ -1131,7 +1114,6 @@ bill_format_help	A na-ebipụta ya n'okpuru aha ụlọ oriri gị na ụgwọ �
 bill_header_ph	Adreesị | ekwentị
 fssai_ph	Nọmba ikike FSSAI (India)
 bill_footer_ph	Ala (dịka Daalụ, bịa ọzọ)
-save_bill_format	Chekwaa ụdị ụgwọ
 reset_bill_format	Weghachi na ndabara
 bill_format_reset	E weghachiri ụdị ụgwọ na ndabara
 reset_kot_format	Weghachi na ndabara
@@ -1201,13 +1183,11 @@ kot_copies_3	3
 kot_title_ph	Isiokwu (efu = KOT - KITCHEN ORDER)
 kot_footer_ph	Ndetu kichin (nhọrọ, enweghị ọnụahịa)
 kot_preview	Nlele
-save_kot_format	Chekwaa ụdị KOT
 test_kot_format	KOT nnwale
 test_kot_sent	E zigara nlele tiketi kichin
 test_bill_format	Ụgwọ nnwale
 test_bill_sent	E zigara nlele ụgwọ
 test_print_no_printer	Enweghị igwe mbipụta maka ọrụ ahụ — họrọ otu na ihuenyo a
-kot_format_saved	Echekwara ụdị KOT
 std_print	Nha mbipụta ụgwọ
 std_print_help	Nha mkpụrụedemede maka ọrụ ụgwọ Kwụ ọtọ na Kpụgharịa na igwe mbipụta sistemụ / akwụkwọ (tinye point — ọ bụghị Obere/Nkịtị/Nnukwu). Otu nha na ntụgharị abụọ. Nha slip kichin nọ na taabụ KOT.
 std_size_s	Obere
@@ -1264,7 +1244,6 @@ new_items_head	Ezigabeghị
 price_ph	Ọnụahịa
 price_ph_gst_inside	Ọnụahịa ({tax} nọ n'ime)
 cancel_needs_table	Mepee iwu a site na Ụlọ oriri (tebụl) ka ị kagbuo mgbe kichin nwere ya — KOT kaụnta na-anọ na tiketi ruo mgbe ị nakọtara ụgwọ
-tax_rates_missing_hint	Enweghị ọnụego {tax} na nri ndị a — na Ndepụta nri tinye ọnụego ụtụ (ọnụahịa agụnyelarị {tax} n'okpuru {tax} nọ n'ime ọnụahịa)
 taxable_value	Uru a na-atụ ụtụ
 gst_inside_price_note	({tax} nọ n'ime)
 start_with_template	Malite site na ndebere ndepụta nri anyị
@@ -1318,9 +1297,7 @@ order_empty_pick	Iwu efu — kpatụ Tinye nri n'elu ka ị họrọ nri.
 add_dishes	Tinye nri
 order_so_far	Na iwu a: {n} · {total}
 no_dish_match	Ọ dịghị nri dabara “{q}”
-pick_dishes_help	Kpatụ nri ka ị tinye ya · họrọ ụdị ka ị belata ndepụta
 pick_done	Emeela
-pick_done_dd	Emeela · {label}
 printer_route_mode	Ọ bụrụ na igwe mbipụta dị iche iche nọ n'ebe a
 printer_mode_first	Nke mbụ rụrụ ọrụ
 printer_mode_all	Bipụta na niile
@@ -1368,3 +1345,22 @@ recent_changes	Mgbanwe nso nso a
 lane_declared_label	Ụgwọ ụtụ
 lane_owner_label	Akwụkwọ ego aka
 money_lane_bill	Ụgwọ: {lane}
+sel_copy	Detuo
+sel_select_all	Họrọ ihe niile
+sel_copied	E detuola
+items_tmpl_khaynjo	Ụdị ihe Khaynjo
+items_tmpl_named	Ụdị {name}
+app_tmpl_named	Ụdị ngwa {name}
+private_code_ph	Koodu ọnụọgụ 12
+stamp_on	Stampụ: dị na faịlụ
+pay_qr_on	QR ịkwụ ụgwọ: dị na faịlụ
+pay_qr_off	QR ịkwụ ụgwọ: ọ dịghị
+items_tmpl_heading	Ndebiri ihe
+items_tmpl_help	Nri, ụdị na foto maka menu gị. Ntọala ụlọ ahịa na ndị ọrụ na-anọgide otú ha dị.
+public_tmpl_help	Menu mmalite onye ọ bụla nwere ike ibudata. Achọrọ ịntanetị otu ugboro.
+private_tmpl_help	Menu ndị ahịa ejiri koodu ọnụọgụ 12 sitere n'aka onye kọntaktị Khaynjo gị kpọchie.
+printers_screen_tip	Chọọ na-egosi ndị nbipụta ngwaọrụ a nwere ike iji ma chekwaa ha maka ụlọ ahịa a. Ndị nbipụta ụgwọ: Usoro ụgwọ na KOT → Ụgwọ. Kichin: Kichin → Ọdụ kichin.
+printers_found_none	Ahụghị nbipụta ọ bụla.
+kot_copy_from	Detuo site na
+kot_copy_from_help	Ọ na-edetuo nha, ọkpụrụkpụ na nhazi nke ahịrị ọ bụla site n'ụdị ahụ banye n'nke a. Ụdị a na-edebe banner ya, prefix ihe na ọkara ya. Chekwaa usoro KOT ka ọ dịrị.
+nav_loading	Na-ebugo…

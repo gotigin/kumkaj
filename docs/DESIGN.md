@@ -25,7 +25,7 @@ This file is the **canonical** in-repo summary. When Stitch packs disagree, **la
 
 | Tab | Purpose (Moklanjo) |
 |---|---|
-| **Day book** | Owner / Sales home after unlock — today’s money in/out, AR/AP, cash vs bank; hub shortcuts only for screens that person may open. Waiters and other limited roles unlock onto their first permitted peer (e.g. Floor / Order), not Day book |
+| **Day book** | Today’s money in/out, AR/AP, cash vs bank; hub shortcuts only for screens that person may open. Not a forced home: unlock returns each person to the screen they last had selected on this device (first time: the first item on the bar they may open) |
 | **Booking** | Money in — book parcels (rates × kg), three-total ledger, tender / party credit; Account vs Cash booking |
 | **Pay out** | Money out — carrier bills / purchases and expense vouchers |
 | **Rates · Ops · COD · Riders · Sales · Day close · Reports · Parties · Team · Settings · Lock** | Former More rows — same destinations, shown as scrollable bottom chips / rail peers |
@@ -33,6 +33,21 @@ This file is the **canonical** in-repo summary. When Stitch packs disagree, **la
 Progressive depth for Moklanjo: **books + booking desk → AWB/barcode → tracking/manifest/COD → extra tills/team**. See [`MOKLANJO.md`](../apps/moklanjo/docs/MOKLANJO.md).
 
 Booking is not the whole product; Day book and Pay out are peers.
+
+### Moving the window (desktop, every app)
+
+Window chrome with nothing to press moves the window: the empty header (around
+the shop name and mark) and the sidebar's empty top corner and the space under
+its last row — press and move, as on the caption bar. Owner, 2026-11-14: with
+the window's top bar above the screen there was nothing left to drag. Rows,
+the collapse `<`, the header's `>` / back / eye stay buttons; the gaps between
+rows and the sidebar's right edge (its scroll bar) stay the sidebar's own.
+Page content never moves the window — a press on its empty space starts a text
+selection. Alt + drag moves it from anywhere on Wayland (the app's own
+backend); elsewhere the desktop's own Super / Alt + drag does. Code:
+`window_drag_at` in each app's `main_impl.rs`; a new button in the header or
+outside a sidebar row goes in `HEADER_CONTROLS` / `RAIL_CONTROLS`
+(`header_buttons_are_not_window_drag`, `rail_controls_are_not_window_drag`).
 
 ### Launch / auth screens (outside tabs)
 
@@ -72,7 +87,7 @@ Pre-release: delete any older local data dirs (`com.kumkaj.app*`, root `kumkaj.s
 | **Form field rows** | Side-by-side inputs only → `FormFieldRow` (equal `Fill` fields). **Never** put a Fit/`NavBtn` CTA in that row — Makepad has no flex-shrink; wrap stacks letters vertically (`A d d r a t e`) and overlaps the field. CTAs go in `ActionStack` under the fields. |
 | **Bottom nav** | Phone chrome (< **720 css px**), horizontally scrollable. Active peer = only the `*Active` face visible (`paint_nav_tabs`); idle stays transparent on hover/focus. Peers include Day book · Booking · Pay out **plus** every former More destination (role-gated). |
 | **Side rail** | Tablet / desktop chrome (≥ **720 css px**), vertically scrollable. Same peer set as bottom nav (`nav_rail` / `apply_shell_layout`). Bottom tabs hide; rail shows. Drag the divider to resize; rail floor **148** css px, main column floor **360** css px. **‹** on the rail collapses it to zero width; **›** in the header restores it (`rail_collapsed`). Phone bottom tabs are unchanged. Short chrome labels + wrap (no ellipsis). **Navigation:** browser-style visit history for peers and drill-downs; header ‹ whenever Back can run (hidden only on the first unlocked screen). Platform Back/Forward match ‹ — see `docs/DEV.md` § Native input. |
-| **Booking / Order desk split** | Khaynjo sticky chrome = **only** Dine-in\|Takeaway\|Delivery\|Counter. Order title, total, table pick, Add dishes scroll inside Added-items. Parcel/Added-items \| Counter stay **side by side** in a Fit row inside horizontal `ScrollXView` (gap **16**). Pane widths Fixed in `apply_shell_layout` (mins ~600 \| ~520; grow when wider). H-pan when mins do not fit — never stack those two for tablet/desktop. Phone-narrow may stack (Khaynjo). Moklanjo: booking top strip + same side-by-side at **every** width, phones included (owner, 2026-11-02): on a phone each pane is one screen wide less a 28 px peek of the other, swipe sideways between them (`booking_desk_pane_widths`). Shell chrome flips rail/bottom at 720. |
+| **Booking / Order desk split** | Khaynjo sticky chrome = **only** Dine-in\|Takeaway\|Delivery\|Counter. Order title, total, table pick, Add dishes scroll inside Added-items. Parcel/Added-items \| Counter stay **side by side** in a Fit row inside horizontal `ScrollXView` (gap **16**). Pane widths Fixed in `apply_shell_layout`. Khaynjo: Mins stay **600 \| 520** — broad panes, the desk pans sideways (mouse press-drag from anywhere incl. text, or touch swipe). A 340 \| 380 trial (2026-11-13) cramped both panes and was reverted; **no jump buttons** either (tried and removed the same day). Moklanjo: booking top strip + same side-by-side at **every** width, phones included (owner, 2026-11-02): on a phone each pane is one screen wide less a 28 px peek of the other, swipe sideways between them (`booking_desk_pane_widths`). Shell chrome flips rail/bottom at 720. |
 | **CTA labels** | Full-width faces (`NavBtn`, `PayBtn`, `MoreRow`, `Stack*`, `Row*`) wrap — never `Ellipsis`. `ChipBtn` ellipsis only for short strip chips. |
 | **Min width** | Layout floor **375 css px**. Narrower viewports scroll horizontally (`app_hscroll` / `app_shell`) — no crop. Desktop window resize is floored at the same 375. Desktop restore ignores saved widths below 720 so a squeezed session cannot lock the app into a phone frame. |
 | **Button ink** | Shared faces use `padding` + `label_walk.margin` so labels never sit flush on the face edge. Long dual CTAs use `ActionStack`, not half-width `ActionRow`. |
@@ -84,7 +99,7 @@ Pre-release: delete any older local data dirs (`com.kumkaj.app*`, root `kumkaj.s
 | **Settings** | Country pack, venue, **Units** + conversions, backup |
 | **Pay out** | Bottom tab — carrier bill / purchase + expense voucher |
 
-Owner / Sales order after unlock: **Day book** → trade peers (Booking / Order, Pay out / Buy, Floor…). Limited roles skip Day book when they lack Books rights — first permitted chrome peer is home.
+After unlock each person is back on the screen they last had selected on this device (first time: the first item on the bar they may open). No screen is a forced home — not even Day book (owner, 2026-11-15).
 
 The shipping UI is Makepad using these DESIGN tokens. Full Stitch pack pixel parity is not required to ship.
 
@@ -124,51 +139,47 @@ controls past the right edge, no “designed for one width” grids.
   into the next block and makes the page look unscrolled. Measure
   (or match a Fixed DSL card height). Outer page `ScrollYView` owns
   wheel **and** mouse/touch press-drag (`mouse_capture_overload`); do
-  not nest a cart/list fling on those lists. See `docs/DEV.md` §13 /
+  not nest a cart/list fling on those lists. Sideways chip strips
+  (`ChipStrip`, `FormScrollX` — Order categories, filters) pan the same
+  way: a mouse press **on a chip** and drag pans the strip
+  (`scroll_bar_x.mouse_capture_overload: true`), a click still picks the
+  chip. Without it a mouse could drag only from the gaps between chips. See `docs/DEV.md` §13 /
   bug 8.
 
 ## Text selection & copy (every app **and** every Makepad website)
 
-**Default: on-screen text is selectable and copyable** wherever that is
-possible and useful — apps (`apps/*/`) and product sites (`sites/*/`).
-Prefer `WrapLabel` / `Markdown` with `selectable: true` (or selectable
-`ReportText` rows) for display copy: headings, body, totals, reports,
-session line, empty states, legal/help prose, site chapter text.
+**One model, everywhere (2026-11-13).** It replaced a stack of 14
+partial Makepad patches whose "document host" took the press away from
+the blocks and guessed blocks from their text, leaving some cards
+selectable and their neighbours dead (Khaynjo.com feature grid,
+KOT cards, right-column cards) — so the site had selection switched off
+and the app's Ctrl+A did nothing. Makepad side: one patch,
+`patches/makepad/text_selection.rs.patch`; app side: each app's own
+`src/selection_menu.rs` (Khaynjo 2026-11-13; Moklanjo, Kirano and Tabiyat 2026-11-14 — Moklanjo has no sheets, so its root is always `main_column`).
 
-**Exceptions only** (set `selectable: false` or keep plain `Label`):
+| What | Rule |
+|---|---|
+| **What is copy** | Display text a person reads: headings, body, totals, figures, report rows, empty states, help, session line, site copy. It is a selectable block: `WrapLabel` / `ReportText` rows (apps), `Markdown` typography (sites). Never a plain `Label` for display text. |
+| **What is not** | Text **inside a tap target** (floor tiles, cart lines, KOT cards, nav chips, site tiles with a hit button, rows of a tapped list — `ReportText{tappable: true}`: Settings → Areas · stations · tax rates, Units, printer pool), button faces, and chrome marks (shop name / role on the maroon header, badges, step-number discs, footer brand). `selectable: false` / plain `Label`, with a one-line comment saying which. Also text right beside a PIN / pairing field on Lock / DeviceSetup: a tap on copy takes key focus and would drop the soft keyboard. |
+| **Drag selects like a browser page** | **Apps** (owner, 2026-11-13): a mouse press-drag **pans** pages, the Order desk and chip strips exactly as before — even when it starts on text; mouse selection starts on a **0.5 s still hold** then drag (same as touch), double-click (word), triple-click (block), Ctrl/Cmd+A or the right-click menu (`text_flow::MOUSE_HOLD_TO_SELECT`, set at app start). **Sites:** mouse press-drag on text selects. From there, in both: the selection **keeps going across blocks** in reading order — the rest of the first block, every block between (cards, columns, sections), the part of the block under the pointer; back inside the first block it shrinks to that block. Double-click = word, triple-click = the block. On a web page a drag may also **start in a margin** (`select_from_gaps`); in an app a drag on whitespace scrolls the page instead. While dragging, the **wheel scrolls** and the selection follows; the pointer **past the top / bottom edge auto-scrolls**. Touch (**Chrome on Android, 2026-11-13**): a swipe always scrolls; a **0.5 s still hold selects the word** under the finger on every touch platform (the OS long-press on Android only reached a block that still owned the touch, so Android never selected — the OS event stays a second trigger); a finger just past a word's last letter takes that word; drag on to extend it (across blocks too). Moving on from the hold **keeps the held word** and grows the selection by whole words. On lift the selection shows **two blue knobs** under its ends (`draw_sel_handle` on the root) and the menu **above** it, centred — on Android / iOS the OS bar, which offers **Copy and Select all only** on copy that cannot be edited (no Cut / Paste); drag a knob to move that end — across blocks, the other end holds — and the menu comes back on lift. A **swipe keeps** the selection (it scrolls with the page, even when the swipe starts on a row that takes focus); a **tap** anywhere else clears it (a tap on a button still works); Copy clears it; Select all keeps the bar / menu up so Copy is one tap away. Every block keeps its own press, so none can be dead; blocks are found by `selection_leaf()`, never by text heuristics. |
+| **Select all** | **Ctrl/Cmd+A** with no text field focused selects **every selectable block the screen shows** (one `View { selection_root: true }` per window/page: Khaynjo `main_column`, the site's `page`; a sheet over the page — Add dishes, UPI QR — is its own root while open). A focused text field keeps Ctrl+A for itself. |
+| **Copy** | **Ctrl/Cmd+C** copies exactly what is highlighted: one block's part, a drag across blocks, or after Select all every block — in reading order, one block per line. Any press clears a page-wide or cross-block selection; every screen change clears it too. |
+| **Menu** | Right-click (mouse) **on text or on a live selection** opens **Copy / Select all** at the pointer; on a control, a tile or blank page it does nothing (no menu over buttons). After a touch selection (and after each knob drag) the menu is for the **whole** selection, above it: Android / iOS show the OS bar (its Select all is Ctrl+A); desktop touch shows the app's menu (`TextSelectionAction::Menu { rect }`); a browser shows the site's menu. Copy in every menu runs the same path as Ctrl/Cmd+C, so it copies exactly what the keys would. App menu strings are translated like every other string. |
+| **Band** | The selection band sits **under** the ink: light `#CFE3FF` under dark ink (app copy and fields alike — `draw_selection.color`, not `draw_block.selection_color`), a dark band (`#3D0507`) under light ink on red bands. Never a band that hides the text it marks. |
 
-- Text **inside a tap target** (whole-card rows, floor tiles, cart
-  lines, nav chips, site chapter nav tiles) — a selectable `TextFlow`
-  steals the press.
-- Button faces and chrome marks that are not meant to be copied.
+Ctrl/Cmd+C uses the system clipboard (`Cx::copy_to_clipboard`; Khaynjo
+also writes through `arboard` like its other Copy actions — see
+[`DEV.md`](DEV.md)). On the web canvas the right-click menu replaces the
+browser's own (which only offers "Save image as…").
 
-Do not ship new display paragraphs as non-selectable `Label` without
-a documented exception — including Makepad sites (use `Markdown` /
-site typography aliases with `body:` + `selectable: true`). Site DSL
-overrides for that copy use `body:` / `child.body:` — not Label’s
-`text:` (Markdown draws `body`). Ctrl/Cmd+C uses the system clipboard
-(`Cx::copy_to_clipboard` — see [`DEV.md`](DEV.md)). On the web canvas,
-mouse drag selects in any direction (including along a line). Right-click
-opens a small **Copy / Select all** menu (the native canvas menu is only
-“Save image as…” and is suppressed). Copy uses the same path as
-Ctrl/Cmd+C. Selection highlight uses `draw_selection.color` (not
-`draw_block.selection_color`); pin a **light** band under dark ink (e.g.
-Khaynjo `ServedFill` `#CFE3FF`), never Accent/maroon on maroon headlines.
-**Khaynjo.com (and sibling sites) — canvas text selection is OFF
-(2026-11-12).** Several approaches were tried (ScrollYView document-host
-leaf stitching / column lock / Select-all sticky refill; then per-Markdown
-`selection_gestures`). Each left some cards selectable and neighbors
-dead (feature grid, KOT lines, right-column cards). Uneven select is
-worse than none, so every site Markdown/TextFlow ships
-`selectable: false` until a single approach works on **every** visible
-card the same way — no per-widget exceptions. Makepad patches for
-document chrome may still exist under `patches/makepad/`; do not wire
-them back on sites without that uniform proof. Apps may still use
-selectable WrapLabel / PortalList where hit-testing is proven.
+**Do not** add a per-widget selection exception beyond the tap-target /
+chrome-mark rule above, take a block's own press away (the old
+`selection_gestures: false` host made blocks dead), or ship a
+display paragraph as a plain `Label`. A new screen gets selection for
+free from its `WrapLabel`s and the window's root.
 
-**Open (khaynjo.com):** (1) re-enable site text selection properly;
-(2) fill the 14 world-shelf “Photo coming” countries — see
-[`sites/khaynjo/README.md`](../sites/khaynjo/README.md) § Remaining.
+**Open (khaynjo.com):** fill the 14 world-shelf “Photo coming” countries —
+see [`sites/khaynjo/README.md`](../sites/khaynjo/README.md) § Remaining.
 
 ## Work-surface layout & interaction (lessons for every app)
 
@@ -215,13 +226,15 @@ coloured floor, Moklanjo's rates/cart split).
 - **Capability-aware chrome** (vision §30): peers for a capability
   show only when the business runs that capability; a business that
   never uses it never sees its screens.
-- **Role-aware home**: unlock lands on the **first chrome peer that
-  person may open** (`unlocked_home_from` / `nav_tab_permitted`). For
-  Owner / Sales that is usually Day book (the owner's four questions,
-  [`BUSINESS_BOOKS.md`](BUSINESS_BOOKS.md)); for a Waiter with Floor +
-  Order only, Floor (or Order) — never a Day book full of money hubs
-  they cannot use. Hub rows and money sections use the **same** rights
-  as nav (do not regress — [`DEV.md`](DEV.md) § Staff rights vs chrome).
+- **Each person's own home**: unlock returns each person to the nav item
+  they last had selected on this device — a Settings section too; the
+  first time, the first item on the bar they may open
+  (`unlocked_home_from`; owner, 2026-11-15: never a fixed screen such as
+  Day book — the owner chose the order, each person chooses their item).
+  An item they may no longer open falls back to that first item, so a
+  Waiter never lands on a Day book full of money hubs. Hub rows and money
+  sections use the **same** rights as nav (do not regress —
+  [`DEV.md`](DEV.md) § Staff rights vs chrome).
 
 Technical counterparts (state-guard deadlock, PortalList mechanics,
 agent verification): [`DEV.md`](DEV.md) § Makepad 2 UI faces
@@ -247,6 +260,97 @@ Never promote a hub navigate link to filled primary because it is “the main th
 **Selection:** Makepad 2 `Button` has **no selected bit** — only hover/down/focus/disabled animators. Shipping pattern is Overlay **idle + active** faces; Rust paints visibility from app state (`paint_nav_tabs` / `paint_choice_pair`) and **cuts those animators** so a previous face cannot stay lit. Idle nav chips stay **transparent** on hover/focus; only the active face uses the navy “selected” fill. Each destination has its own peer (no More hub).
 
 **Labels:** Never `max_lines: 1` + `Ellipsis` on full-width / multi-word / translated CTAs (`NavBtn`, `PayBtn`, `MoreRow`, `HubDestBtn`, `Stack*`, `Row*`, `DangerBtn`). Those faces stay **centered** (hub dest left-aligned) and **wrap** (`height: Fit`, `flow: Right{wrap: true}`). Label walk is **Fit** (Makepad patch `button_label_center` — a Fill label inside wrap freezes the UI; do not remove wrap/center to dodge that). `ChipBtn` ellipsis is allowed **only** for short strip chips (Fit max 160). Always set both `padding` and `label_walk.margin`.
+
+**Snackbar colour = what happened (owner, 2026-11-13).** Only an **error** is
+red. A warning is **amber** with dark ink, information **slate**, a success —
+including "Station Tandoor added — attach its printers: …" — **green**. A
+next-step note in brand maroon read as "you did something wrong". Messages
+already in the snackbar are not repeated as a line on the screen (the Order
+ticket's status line under + Add dishes is gone). Classification:
+`snack::classify` (words), faces in `ui_script.rs` `app_snackbar`.
+
+**Names people pick by are unique (owner, 2026-11-13).** Ids are the key
+everywhere and most names may repeat, but **kitchen stations and dining
+tables** are told apart by name (KOT papers, Floor, bills, pickers): a second
+"Tandoor" or "D1" (same branch) is refused at the store
+(`Store::name_taken`) — add and rename alike. The match is **case-sensitive**
+(owner, 2026-11-13): "tandoor" next to "Tandoor" is allowed; only surrounding
+spaces are ignored.
+
+**One screen for every device (owner, 2026-11-14).** What a screen shows is
+decided by the **shop's settings** and the **person's role** — never by
+whether the device is the Server or a Client. The only Server/Client
+differences are their core jobs: a Client shows how it connects to the shop
+(pairing, link state, waiting writes); the Server shows what it hosts
+(extra tills, pairing code, paired devices, printers attached to it, backups).
+Everything else — GST wording, Tax invoice, payment chips, sidebar items and
+order, Today strip, business day, currency… — is the shop's and looks the same
+on the Owner's tablet as on the Server. Mechanism: DEV.md § LAN "Shop settings
+on every device". **No GST features on by default** for any shop (owner,
+2026-11-14): tax wording on the till and the Tax invoice chip stay off until
+the Owner turns them on in Settings → Country & tax.
+
+**Settings holds the sidebar (owner, 2026-11-14), all four apps.** There is
+no Sidebar row and no Sidebar screen. Settings lists every settings section
+and then a **Sidebar** group (titled ℹ, Enable All / Disable All) with every
+sidebar item — all in the sidebar's row style: a white card, the item's icon
+beside its name. A tap on any row opens its section or screen (sidebar rows
+through `open_nav_tab`, rights checked like the rail); sidebar rows keep the
+show / hide switch and ↑ ↓. Every row has an icon in the rail's style —
+coloured rounded square, white line glyph (`resources/settings/*.webp`;
+Team uses the rail's). A row hides whole for a limited role (its `_row` /
+`_slot` wrapper, never the button alone, or the icon stays behind).
+
+**Formats save themselves (owner, 2026-11-14).** Bill & KOT format
+(Khaynjo), Bill format (Kirano, Tabiyat) and receipt / label format
+(Moklanjo) have no Save button: "the user might forget that click button and
+may lose all his configuration." Every edit is written a moment after the
+last one (`FORMAT_AUTOSAVE_SECS`, 0.8 s), and at once on a Bill | KOT tab
+switch or on leaving the screen (`flush_format_autosave` in `show_screen` /
+`open_settings_panel`) — the same writes the button made, through a light
+books op (no full reload per save). A Client sends them quietly
+(`Follow::Quiet`): only a refusal or "out of reach" is said. Reset and the
+width chips already applied at once. Any new setting on these screens must
+mark the draft (Khaynjo: `bill_changed` / `slip_changed`) so it saves too.
+
+**Explanations live in ℹ, not in paragraphs (owner, 2026-11-13).** The ℹ
+exists so screens stay clean: what a screen, section or field does goes in
+the InfoHelp tip **beside its heading** — never as a grey paragraph under it,
+and never as a line restating what the controls already show (the selected
+Start fresh button, the logo image, an Allow button, the field placeholder).
+Status lines carry state and results only, short ("Stamp: on file",
+"Added 121 dishes…"). A heading with only an explanation under it becomes
+heading + ℹ (Alerts, Trading history, Delete local data, Shop templates,
+How do you want to start?). Before adding text, ask: if it explains, it is
+a tip.
+
+**They came back (owner, 2026-11-14), so these forms are named and checked.**
+None of these may appear as a line on a screen — the heading's ℹ (or the
+toolbar ℹ) carries the words, or they go:
+- a status that restates a selection ("Last time: this shop (Server). Both
+  modes stay available." under the selected Server button);
+- a copy of an ℹ tip under its own heading ("Find the server, or type its
+  address and pairing code.");
+- an instruction bar after a state change ("Client Mode — unlock to sell"
+  still showing after the unlock; "Client Mode — find the Server, tap…");
+- an empty-state instruction ("Tap a dish to add it · pick a category…",
+  "(no attachments yet — select a sale)", "No items yet. Open Menu to add…")
+  — an empty state is at most a short fact ("No dishes yet.") next to the
+  button that acts;
+- advice on the till ("No GST rate on these dishes — on Menu set Tax rate…");
+- a heading with its explanation in brackets ("Bank reconciliation (tick off
+  against your bank statement)", "Job (sets screens and money actions)") or
+  a report line that explains the report ("Debit = they owe us (AR) · …",
+  "(Operating snapshot — … later filing view.)");
+- a grey paragraph under a heading ("Books keep year-first RFC3339 inside…").
+Any user-visible string must also be in every language pack: an English-only
+hint is two bugs. **Checks:** `layout_labels_carry_no_explanations` (every
+app) fails on a 60+ character literal in a layout label; and
+`./scripts/ui-text-inventory.sh <app> <copy of a neutral demo shop>` walks
+every sidebar screen and Settings panel of the running app and fails on a
+long visible text whose widget is not in `apps/<app>/cert/ui-text-allowlist.txt`
+(data widgets only — totals, report rows, values). Run it before calling a
+screen clean; never add an explanation to the allowlist.
 
 **InfoHelp (screen / section titles):** Titled rows are **`width: Fill`** with **`WrapLabel{width: Fit}` + tip + Fill `trail`** so ℹ sits **next to** the label on every screen (never at the far end — Day book / LANGUAGE, 2026-11). Gap is `tip_btn.margin.left` (6). **Tip-only** rows hide the trail and force **Fit**. Never `Label{width: Fill, wrap}` (turtle NaN, DEV bug 7). Empty title stays **hidden**. Guarded by `info_help_layout_tests` in each app — **fix the InfoHelp face, not one screen.**
 

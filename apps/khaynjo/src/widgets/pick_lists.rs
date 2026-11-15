@@ -105,8 +105,8 @@ impl Widget for SuggestList {
                     // the selected wash); hit Button hover sits on top.
                     let template = if selected { id!(ItemSel) } else { id!(Item) };
                     let item = list.item(cx, item_id, template);
-                    item.widget(cx, ids!(title)).set_text(cx, &plain_display_text(&row.value));
-                    item.widget(cx, ids!(subtitle)).set_text(cx, &plain_display_text(&row.subtitle));
+                    item.widget(cx, ids!(title)).set_text(cx, &row.value);
+                    item.widget(cx, ids!(subtitle)).set_text(cx, &row.subtitle);
                     item.widget(cx, ids!(subtitle)).set_visible(cx, !row.subtitle.is_empty());
                     if cols_menu {
                         item.label(cx, ids!(action)).set_visible(cx, selected);
@@ -247,9 +247,20 @@ impl Widget for StationCheckList {
                     let Some(row) = draw_rows.get(item_id) else {
                         continue;
                     };
+                    if row.subtitle == FIND_PRINTERS_ROW {
+                        // No printer saved: one Find printers button, no box.
+                        let item = list.item(cx, item_id, id!(FindItem));
+                        let btn = item.button(cx, ids!(find_printers_row));
+                        if btn.text() != row.value {
+                            btn.set_text(cx, &row.value);
+                        }
+                        item.draw_all_unscoped(cx);
+                        drew += 1;
+                        continue;
+                    }
                     let item = list.item(cx, item_id, id!(Item));
                     let is_unassigned = row.value.eq_ignore_ascii_case(&unassigned);
-                    item.widget(cx, ids!(title)).set_text(cx, &plain_display_text(&row.value));
+                    item.widget(cx, ids!(title)).set_text(cx, &row.value);
                     let printer_assign = self.field == "printer_assign";
                     let station_vps = self.field == "station_vps"
                         || self.field == "bill_printers"
@@ -260,7 +271,7 @@ impl Widget for StationCheckList {
                     let sub = if printer_assign || station_vps {
                         String::new()
                     } else {
-                        plain_display_text(&row.subtitle)
+                        row.subtitle.clone()
                     };
                     item.widget(cx, ids!(subtitle)).set_text(cx, &sub);
                     item.widget(cx, ids!(subtitle)).set_visible(
@@ -499,9 +510,9 @@ impl Widget for CategoryPickList {
                         let initials = tile.label(cx, ids!(thumb_initials)).text();
                         tile.view(cx, ids!(initials_plate))
                             .set_visible(cx, !initials.is_empty());
-                        tile.widget(cx, ids!(title)).set_text(cx, &plain_display_text(&title));
+                        tile.widget(cx, ids!(title)).set_text(cx, &title);
                         paint_first_alias(cx, &tile, alias.as_deref());
-                        tile.widget(cx, ids!(subtitle)).set_text(cx, &plain_display_text(&subtitle));
+                        tile.widget(cx, ids!(subtitle)).set_text(cx, &subtitle);
                         tile.label(cx, ids!(action)).set_text(cx, &use_text);
                     }
                     item.draw_all_unscoped(cx);
@@ -691,9 +702,9 @@ impl Widget for DishPickList {
                         let initials = tile.label(cx, ids!(thumb_initials)).text();
                         tile.view(cx, ids!(initials_plate))
                             .set_visible(cx, !initials.is_empty());
-                        tile.widget(cx, ids!(title)).set_text(cx, &plain_display_text(&title));
+                        tile.widget(cx, ids!(title)).set_text(cx, &title);
                         paint_first_alias(cx, &tile, alias.as_deref());
-                        tile.widget(cx, ids!(subtitle)).set_text(cx, &plain_display_text(&subtitle));
+                        tile.widget(cx, ids!(subtitle)).set_text(cx, &subtitle);
                         tile.label(cx, ids!(action)).set_text(cx, &action);
                     }
                     item.draw_all_unscoped(cx);
@@ -719,5 +730,79 @@ impl Widget for DishPickList {
         claim_list_nested_scroll(cx, &self.view, event);
         self.view.handle_event(cx, event, scope);
         claim_list_nested_scroll(cx, &self.view, event);
+    }
+}
+
+/// A control that opens a pick list under it — a "type or pick" field or a
+/// dropdown button — wrapped so it reads as a dropdown: after the control
+/// draws, a chevron is painted at its right edge, ˅ while the list is
+/// closed and ˄ while it is open. The open state is read from the list's
+/// own flag on every draw (and checked on every event), so the mark can
+/// never be left pointing the wrong way — the old "Done · …" button faces
+/// stayed after a list closed some other way (owner, 2026-11-14).
+/// An open list with no rows draws nothing, so it reads as closed.
+/// `field` is the list's `SuggestField` key; `"category"` is the item
+/// form's category picker. The mark is drawn, not a widget, so presses go
+/// straight to the control inside (which keeps its own id).
+#[derive(Script, ScriptHook, Widget)]
+struct ComboField {
+    #[deref]
+    view: View,
+    #[live]
+    field: String,
+    #[live]
+    draw_closed: DrawQuad,
+    #[live]
+    draw_open: DrawQuad,
+    /// Mark box width and its gap from the control's right edge.
+    #[live(28.0)]
+    mark_w: f64,
+    #[live(10.0)]
+    mark_right: f64,
+    #[rust]
+    drawn_open: Option<bool>,
+}
+
+impl ComboField {
+    fn is_open(&self) -> bool {
+        let st = app_state().lock().unwrap();
+        match self.field.as_str() {
+            "category" => st.category_picker_open && !st.category_picks.is_empty(),
+            field => st.suggest_open.map(|f| f.key()) == Some(field) && !st.suggest_rows.is_empty(),
+        }
+    }
+}
+
+impl Widget for ComboField {
+    fn draw_walk(&mut self, cx: &mut Cx2d, scope: &mut Scope, walk: Walk) -> DrawStep {
+        let open = self.is_open();
+        self.drawn_open = Some(open);
+        while self.view.draw_walk(cx, scope, walk).step().is_some() {}
+        let rect = self.view.area().rect(cx);
+        // Hidden or collapsed control (zero size): no mark either.
+        if rect.size.x > self.mark_w * 2.0 && rect.size.y > 12.0 {
+            let h = rect.size.y.min(36.0);
+            let mark = Rect {
+                pos: dvec2(
+                    rect.pos.x + rect.size.x - self.mark_w - self.mark_right,
+                    rect.pos.y + (rect.size.y - h) * 0.5,
+                ),
+                size: dvec2(self.mark_w, h),
+            };
+            if open {
+                self.draw_open.draw_abs(cx, mark);
+            } else {
+                self.draw_closed.draw_abs(cx, mark);
+            }
+        }
+        DrawStep::done()
+    }
+
+    fn handle_event(&mut self, cx: &mut Cx, event: &Event, scope: &mut Scope) {
+        self.view.handle_event(cx, event, scope);
+        if self.drawn_open.is_some_and(|was| was != self.is_open()) {
+            self.drawn_open = None;
+            self.view.redraw(cx);
+        }
     }
 }

@@ -39,7 +39,7 @@ adding_item	አዲስ ተመን በማከል ላይ
 editing_item	በማስተካከል ላይ
 save	አስቀምጥ
 remove	አስወግድ
-empty_catalog	እስካሁን ምንም ተመኖች የሉም። ክፍት ተመኖች እና አገልግሎቶች, አንድ ያክሉ (ስም + ዋጋ, አሃድ ኪግ), ከዚያም ቦታ ማስያዝ.
+empty_catalog	እስካሁን ምንም ተመኖች የሉም።
 counter_sale	አጸፋዊ ቦታ ማስያዝ
 total	ድምር
 cash	ጥሬ ገንዘብ
@@ -171,8 +171,6 @@ selected_language	ተመርጧል
 continue	ቀጥል
 this_device	ይህ መሣሪያ
 device_use_q	ይህ መሣሪያ እንዴት ይጠቀማል?
-last_server_mode	ሰርቨር ነበር — ለመቀጠል ይንኩ
-last_client_mode	ክላየንት ነበር — ለመቀጠል ይንኩ
 choose_server	ሰርቨር ይምረጡ
 choose_server_hint	ያለ ሰርቨር ይክፈቱ፣ ወይም ለሌላ ንግድ አዲስ ይፍጠሩ።
 create_new_server	አዲስ ሰርቨር ፍጠር
@@ -501,8 +499,6 @@ job_layout	አቀማመጥ
 job_delivery	ሥራው እንዴት እንደሚላክ
 job_size	የፊደል መጠን
 job_size_ph	ለምሳሌ 18፣ 20፣ 26…
-save_receipt_format	Save receipt format
-save_label_format	Save label format
 test_receipt_format	Test receipt
 test_label_format	Test label
 test_receipt_sent	Sample receipt sent
@@ -610,7 +606,7 @@ units_heading	መለኪያዎች
 booking_measures	የቦታ ማስያዣ እርምጃዎች
 drawer_count	የመሳቢያ ቆጠራ (አማራጭ)
 spreadsheet_csv	ተመን ሰንጠረዥ (CSV)
-bank_reconciliation	የባንክ ማስታረቅ (ከባንክ መግለጫዎ ጋር ምልክት ያድርጉ)
+bank_reconciliation	የባንክ ማስታረቅ
 book_add_product	መጽሐፍ - ምርት / መጠን ያክሉ
 book_opening_credit	መዝገብ — የመክፈቻ ብድር
 account_kind	የሂሳብ አይነት (አንዱን ይንኩ)
@@ -650,7 +646,7 @@ net_word	ተጣራ
 offline_badge	ከመስመር ውጭ
 optional_login_help	አማራጭ መግቢያ (መታወቂያ + የይለፍ ቃል)። ባለቤቱ አንድ ጊዜ ያዘጋጃል፤ የይለፍ ቃልን በኋላ የሚቀይረው ተጠቃሚው ብቻ ነው።
 or_unlock_login	ወይም በመግቢያ መታወቂያ + የይለፍ ቃል ይክፈቱ
-permission_preset	ሥራ (ማያ ገጾችን እና መብቶችን ያዘጋጃል)
+permission_preset	ሥራ
 preset_help_moklanjo	ገንዘብ ተቀባይ፦ ይሽጣል። ሥራ አስኪያጅ፦ ይሽጣል + እቃዎች + መሰረዝ/ማስተካከል።
 product_locked_moklanjo	Moklanjo
 product_only_moklanjo	This app is Moklanjo only — books + booking desk. Other trade faces ship as separate products later.
@@ -698,10 +694,6 @@ pin_hint_paired	ተጨማሪ ቆጣሪ ተጣምሯል — ለመሸጥ ይክ�
 pin_hint_pair_first	ተጨማሪ ቆጣሪ — መጀመሪያ ከሱቁ መሣሪያ ጋር ያጣምሩ
 unlock_to_continue	ለመቀጠል ይክፈቱ
 no_staff_yet	ገና ሰራተኛ የለም — እንደ ባለቤት ይክፈቱ፣ ከዚያ ቡድን
-status_server_set_pin	የሰርቨር ሁነታ — የባለቤት ፒን ያስቀምጡ
-status_server_tills	የሰርቨር ሁነታ — ተጨማሪ ቆጣሪዎች ሊቀላቀሉ ይችላሉ። ይክፈቱ
-status_server_unlock	የሰርቨር ሁነታ — እንደ ባለቤት ይክፈቱ
-status_client_unlock	የክላየንት ሁነታ — ለመሸጥ ይክፈቱ
 icon_new_selected	ምልክት፦ አዲስ ፋይል ተመርጧል — ምልክት አስቀምጥን ይንኩ
 icon_custom	ምልክት፦ ብጁ የቦታ ምልክት
 icon_default	ምልክት፦ የ Kumkaj ምልክት (ነባሪ) — ብጁ ይምረጡ
@@ -834,3 +826,7 @@ role_help_supplier	Role: Supplier — AP for purchases.
 lane_declared_label	የሂሳብ ቦታ ማስያዝ
 lane_owner_label	በጥሬ ገንዘብ ማስያዝ
 money_lane_bill	ሂሳብ፦ {lane}
+sel_copy	ቅዳ
+sel_select_all	ሁሉንም ምረጥ
+sel_copied	ተቀድቷል
+nav_loading	በመጫን ላይ…

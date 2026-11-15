@@ -41,7 +41,7 @@ remove	Aýyr
 removed_items	Menýu elementleri aýryldy
 removed_help	Dikeltmek menýu elementini edil öňki ýaly menýuda goýýar - bahasy, suraty we kategoriýasy. Nahar tekjämiz hiç haçan aýrylmaýar, şonuň üçin bir tabak hemişe täzeden goşulyp bilner.
 restore_item	Dikelt
-empty_catalog	Entek gap-gaç ýok. Menýu açyň, saçak goşuň (ady + bahasy), soňra sargyt ediň.
+empty_catalog	Entek gap-gaç ýok.
 total	Jemi
 cash	Nagt
 upi	UPI
@@ -103,23 +103,14 @@ bill_item_qty	Mukdar
 bill_item_price	Bahasy
 bill_item_amount	Mukdary
 bill_item_note	Nahar belligi
-bill_item_col_gap	Sütün boşlugy
 bill_item_col_order	Sütün tertibi
 bill_item_col_sep	Sütüniň düzgünleri
-bill_item_gap_tight	Gaty
-bill_item_gap_comfort	Amatly
-bill_item_gap_wide	Giň
-bill_item_num_width	San sütünleri
-bill_item_num_compact	Ykjam
-bill_item_num_comfort	Amatly
-bill_item_num_wide	Giň
-bill_item_num_align	Sanlar deňleşýär
-bill_item_gap_em	Aralyk (em)
-bill_item_qty_min	Mukdar min (em)
-bill_item_price_min	Bahasy min (em)
-bill_item_amount_min	Min min (em)
-kot_item_qty_width	Sütün
-kot_item_num_align	Qty deňleşdirmek
+slip_columns	Sütünler
+slip_col_width	Ini (mm)
+slip_col_start	Başlangyç aralyk (px)
+slip_col_end	Soňky aralyk (px)
+slip_col_align	Tekst deňlemesi
+slip_columns_help	Her sütüniň ini onuň başlangyç we soňky aralygyny öz içine alýar. Tekst öz sütüniniň içinde setirden-setire geçýär; mazmunyň ininden çykýan bölek kagyzda-da, deslapky görnüşde-de kesilýär.
 bill_total_qty_label	Jemi bellik
 bill_total_subtotal_label	Jemi bellik
 bill_total_grand_label	Jemi bellik
@@ -221,7 +212,6 @@ sidebar_order_saved	Gapdal paneli tertibi saklandy
 sidebar_visibility_saved	Gapdal paneli görünýär
 amounts_hide	Gizle
 amounts_show	Görkez
-printers_none_hint	Ilki bilen bu enjamda printeri ýatda saklaň, soňra ony Bill ýa-da aşhana goşuň
 counter	Kassir
 dine_in	Nahar
 takeaway	Alma
@@ -328,8 +318,6 @@ selected_language	Saýlandy
 continue	Dowam et
 this_device	BU GURLUŞ
 device_use_q	Bu enjam nähili ulanylar?
-last_server_mode	Serwerdi - dowam etmek üçin basyň
-last_client_mode	Müşderi boldy - dowam etmek üçin basyň
 choose_server	Serwer saýlaň
 choose_server_hint	Bar bolan serweri açyň ýa-da başga bir iş üçin birini dörediň.
 create_new_server	Täze serwer dörediň
@@ -391,7 +379,7 @@ attachments_last_expense	Goşundylar (soňky çykdajy)
 bank	Bank
 bank_in	Bank
 bank_out	Bankdan nagt
-bank_reconciliation	Bank ylalaşygy (bank hasabatyna garşy çykyň)
+bank_reconciliation	Bank ylalaşygy
 bank_to_till	Bank → çenli
 book_add_dish	Ledger - tagam / menýu elementini goşuň
 book_opening_credit	Karz - açyk karz
@@ -744,7 +732,6 @@ station_print_pick_first	Ilki bilen aşhana stansiýasyny saýlaň
 station_print_editing	“{name}” üçin printerleri redaktirlemek
 station_vps_dd	Bu stansiýa üçin printerler
 station_vps_dd_n	{n} printerler · üýtgetmek üçin basyň
-station_vps_empty	Entek printer ýok - Sazlamalar → Printerlerden tapyň
 bill_printers_dd	Hasap üçin printerler
 bill_printers_dd_n	Hasap üçin {n} printerler · üýtgetmek üçin basyň
 job_layout	Salgy
@@ -889,7 +876,7 @@ net_word	Arassa
 offline_badge	LINÝASYZ
 optional_login_help	Goşmaça giriş (id + parol) Eýesi bir gezek goýýar; diňe ulanyjy soň paroly üýtgedip biler.
 or_unlock_login	Ora-da giriş id + paroly bilen açyň
-permission_preset	Iş (ekranlary we pul hereketlerini düzýär)
+permission_preset	Iş
 preset_help_khaynjo	Kassir: sat. Dolandyryjy: satmak + menýu elementleri + boş / üýtgetmek.
 product_locked_khaynjo	Khaynjo
 product_only_khaynjo	Bu programma diňe Khaynjo - restoran operasiýa ulgamy. Beýleki söwda ýüzleri aýratyn Kumkaj önüm hökmünde iberilýär.
@@ -961,10 +948,6 @@ pin_hint_paired	Jübütlenýänçä goşmaça - satmak üçin açyň
 pin_hint_pair_first	Goşmaça - ilki dükan enjamyna jübütläň
 unlock_to_continue	Dowam etmek üçin açyň
 no_staff_yet	Entek işgär ýok - eýesi hökmünde açyň, soňra topar
-status_server_set_pin	Serwer tertibi - eýesini PIN düzüň
-status_server_tills	Serwer tertibi - goşmaça goşmaçalar goşulyp biler. Gulpy aç
-status_server_unlock	Serwer tertibi - eýesi hökmünde açyň
-status_client_unlock	Müşderi tertibi - satmak üçin açmak
 icon_new_selected	Nyşan: täze saýlanan faýl - Saklamak markasyna basyň
 icon_custom	Nyşan: ýörite ýer belligi
 icon_default	Nyşan: Kumkaj belligi (deslapky) - adaty birini saýlaň
@@ -1033,7 +1016,7 @@ book_kind_balance	Balans
 order_help	Goşmak üçin menýu elementine basyň.
 floor_help	Sargydy almak ýa-da üýtgetmek üçin nahar stoluna basyň. Reňkler mugt → oturgyç → aşhana → taýýar → iýmek → töleg → tölegli görkezilýär. Garaşmak sanawy, bellikler we goşmaça nahar tablisalary aşakdaky bölümlerde.
 kitchen_help	Aşhana biletleri (KOT), iň täze. Başlamak → Taýýar → oneerine ýetirildi bilet. Biletler hiç wagt bahany görkezmeýär.
-kitchen_empty	Açyk petek ýok. Sargytdan ýa-da naharhanadan iberilen KOT şu ýerde görkezilýär.
+kitchen_empty	Açyk petek ýok.
 add_a_table	Nahar saçagy goşuň
 add_station_heading	Aşhana bekedini goşuň
 categories_help	Şol kategoriýa boýunça ýokardaky menýu elementini faýl etmek üçin ulanyň. Surat kategoriýa surat berýär; birinjisinden baş harplaryny görkezýär.
@@ -1131,7 +1114,6 @@ bill_format_help	Restoranyňyzyň ady bilen her tölegde çap edilýär. | Bilen
 bill_header_ph	Salgy | telefon
 fssai_ph	FSSAI ygtyýarnamasy (Hindistan)
 bill_footer_ph	Aşakdaky ýazgy (meselem, sag boluň, gaýtadan baryp görüň)
-save_bill_format	Hasap görnüşini ýazdyryň
 reset_bill_format	Dymmaklyk
 bill_format_reset	Hasap formaty deslapky görnüşde
 reset_kot_format	Dymmaklyk
@@ -1201,13 +1183,11 @@ kot_copies_3	3
 kot_title_ph	Ady (boş = KOT - KITÇEN EDEBI)
 kot_footer_ph	Aşhana belligi (islege görä, bahalar ýok)
 kot_preview	Öňünden syn
-save_kot_format	KOT formatyny ýazdyryň
 test_kot_format	Synag KOT synap görüň
 test_kot_sent	Aşhana biletiniň deslapky syny iberildi
 test_bill_format	Synag tölegi
 test_bill_sent	Hasap deslapky syn iberildi
 test_print_no_printer	Bu iş üçin printer ýok - bu ekranda birini saýlaň
-kot_format_saved	KOT formaty ýatda saklandy
 std_print	Hasap çap ölçegi
 std_print_help	OS / resminama printerlerinde “Standard Portret” we “Landşaft” töleg işleriniň şrift ölçegi (nokatlary giriziň - kiçi / adaty / uly däl). Iki ugur boýunça birmeňzeş ululyk. Aşhananyň süýşmek ululyklary KOT goýmasynda.
 std_size_s	Kiçi
@@ -1264,7 +1244,6 @@ new_items_head	Entek iberilmedi
 price_ph	Bahasy
 price_ph_gst_inside	Bahasy ({tax} öz içine alýar)
 cancel_needs_table	Bu sargydy naharhana ekranyndan (nahar saçagy) açyň, aşhana bolansoň ýatyrmak üçin - töleg alýançaňyz biletde galyň
-tax_rates_missing_hint	Bu tagamlarda {tax} nyrhy ýok - menýu kesgitlenen salgyt stawkasy (bahalar {tax} bilen birlikde {tax} öz içine alýar)
 taxable_value	Salgyt salynýan baha
 gst_inside_price_note	({tax} öz içine alýar)
 start_with_template	Menýu şablonymyzdan başlaň
@@ -1318,9 +1297,7 @@ order_empty_pick	Boş zakaz ediň - gap-gaçlary saýlamak üçin ýokardaky gap
 add_dishes	Tagam goşuň
 order_so_far	Bu sargyt boýunça: {n} · {total}
 no_dish_match	Hiç hili saçak “{q}” gabat gelenok
-pick_dishes_help	Goşmak üçin tabaga basyň · sanawy daraltmak üçin bir kategoriýa saýlaň
 pick_done	Boldy
-pick_done_dd	·Erine ýetirildi · {label}
 printer_route_mode	Bu ýerde birnäçe printer bar bolsa
 printer_mode_first	Ilki bilen işleýär
 printer_mode_all	Hemmesini çap et
@@ -1368,3 +1345,22 @@ recent_changes	Soňky üýtgeşmeler
 lane_declared_label	Salgyt-faktura
 lane_owner_label	Nagt ýatlama
 money_lane_bill	Hasap: {lane}
+sel_copy	Göçür
+sel_select_all	Hemmesini saýla
+sel_copied	Göçürildi
+items_tmpl_khaynjo	Khaynjo haryt şablony
+items_tmpl_named	{name} şablony
+app_tmpl_named	{name} programma şablony
+private_code_ph	12 sanly kod
+stamp_on	Marka: faýlda
+pay_qr_on	Töleg QR: faýlda
+pay_qr_off	Töleg QR: ýok
+items_tmpl_heading	Haryt şablonlary
+items_tmpl_help	Menýuňyz üçin naharlar, kategoriýalar we suratlar. Dükan sazlamalary we işgärler bolşy ýaly galýar.
+public_tmpl_help	Islendik adamyň ýükläp bilýän başlangyç menýulary. Internet bir gezek gerek.
+private_tmpl_help	Khaynjo aragatnaşygyňyzdan gelen 12 sanly kod bilen goralýan müşderi menýulary.
+printers_screen_tip	Gözle bu enjamyň ulanyp biljek printerlerini görkezýär we olary bu dükan üçin ýatda saklaýar. Hasap printerleri: Hasap we KOT formaty → Hasap. Aşhana: Aşhana → Aşhana stansiýalary.
+printers_found_none	Printer tapylmady.
+kot_copy_from	Şundan göçür
+kot_copy_from_help	Şol görnüşiň her setiriniň ölçegini, galyňlygyny we deňleşdirilişini şu görnüşe göçürýär. Bu görnüş öz bannerini, haryt prefiksini we üstüni çyzmagyny saklaýar. Saklamak üçin KOT formatyny ýatda saklaň.
+nav_loading	Ýüklenýär…

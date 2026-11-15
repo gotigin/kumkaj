@@ -41,7 +41,7 @@ remove	Ta bort
 removed_items	Borttagna artiklar
 removed_help	Återställ lägger tillbaka artikeln på menyn precis som den var — pris, foto och kategori. Vår hylla med rätter tas aldrig bort, så en rätt kan alltid läggas till igen.
 restore_item	Återställ
-empty_catalog	Inga rätter ännu. Öppna Meny, lägg till en rätt (namn + pris) och ta sedan en beställning.
+empty_catalog	Inga rätter ännu.
 total	Totalt
 cash	Kontant
 upi	UPI
@@ -103,23 +103,14 @@ bill_item_qty	Antal
 bill_item_price	Pris
 bill_item_amount	Belopp
 bill_item_note	Rättanteckning
-bill_item_col_gap	Kolumnmellanrum
 bill_item_col_order	Kolumnordning
 bill_item_col_sep	Kolumnlinjer
-bill_item_gap_tight	Tätt
-bill_item_gap_comfort	Bekvämt
-bill_item_gap_wide	Brett
-bill_item_num_width	Sifferkolumner
-bill_item_num_compact	Kompakt
-bill_item_num_comfort	Bekvämt
-bill_item_num_wide	Brett
-bill_item_num_align	Siffror justeras
-bill_item_gap_em	Mellanrum (em)
-bill_item_qty_min	Antal min (em)
-bill_item_price_min	Pris min (em)
-bill_item_amount_min	Belopp min (em)
-kot_item_qty_width	Antalskolumn
-kot_item_num_align	Antal justeras
+slip_columns	Kolumner
+slip_col_width	Bredd (mm)
+slip_col_start	Startavstånd (px)
+slip_col_end	Slutavstånd (px)
+slip_col_align	Textjustering
+slip_columns_help	Varje kolumns bredd inkluderar dess start- och slutavstånd. Texten radbryts inom sin kolumn; det som går utanför innehållsbredden klipps bort – på papper och i förhandsvisningen.
 bill_total_qty_label	Etikett för totalt antal
 bill_total_subtotal_label	Etikett för delsumma
 bill_total_grand_label	Etikett för totalsumma
@@ -221,7 +212,6 @@ sidebar_order_saved	Beställningen i sidofältet har sparats
 sidebar_visibility_saved	Sidofältets synlighet har sparats
 amounts_hide	Göm
 amounts_show	Visa
-printers_none_hint	Spara en skrivare på den här enheten först och lägg sedan till den på notan eller i ett kök
 counter	Räknare
 dine_in	Ät middag
 takeaway	Avhämtning
@@ -328,8 +318,6 @@ selected_language	Vald
 continue	Fortsätt
 this_device	DENNA ENHET
 device_use_q	Hur kommer den här enheten att användas?
-last_server_mode	Var server — tryck för att fortsätta
-last_client_mode	Var klient — tryck för att fortsätta
 choose_server	Välj en server
 choose_server_hint	Öppna en befintlig server eller skapa en för ett annat företag.
 create_new_server	Skapa ny server
@@ -391,7 +379,7 @@ attachments_last_expense	Bilagor (senaste utgiften)
 bank	Bank
 bank_in	Banka in
 bank_out	Bank ut
-bank_reconciliation	Bankavstämning (kryssa av mot ditt kontoutdrag)
+bank_reconciliation	Bankavstämning
 bank_to_till	Bank → kassa
 book_add_dish	Boka — lägg till maträtt/objekt
 book_opening_credit	Bok — inledande kredit
@@ -744,7 +732,6 @@ station_print_pick_first	Välj en köksstation först
 station_print_editing	Redigera skrivare för "{name}"
 station_vps_dd	Skrivare för denna station
 station_vps_dd_n	{n} skrivare · tryck för att ändra
-station_vps_empty	Inga skrivare ännu — Hitta dem under Inställningar → Skrivare
 bill_printers_dd	Skrivare för räkningen
 bill_printers_dd_n	{n} skrivare för räkningen · tryck för att ändra
 job_layout	Upplägg
@@ -889,7 +876,7 @@ net_word	Netto
 offline_badge	OFFLINE
 optional_login_help	Valfri inloggning (id + lösenord). Ägaren sätter en gång; endast användaren kan ändra lösenordet senare.
 or_unlock_login	Eller lås upp med inloggnings-id + lösenord
-permission_preset	Jobb (ställer in skärmar och pengaåtgärder)
+permission_preset	Jobb
 preset_help_khaynjo	Kassör: sälja. Manager: sälja + varor + ogiltigförklara/ändra.
 product_locked_khaynjo	Khaynjo
 product_only_khaynjo	Denna app är endast Khaynjo - restaurangoperativsystem. Andra handelsansikter skickas som separata Kumkaj-produkter.
@@ -961,10 +948,6 @@ pin_hint_paired	Extra till parat – lås upp för att sälja
 pin_hint_pair_first	Extra till — koppla ihop till butiksenheten först
 unlock_to_continue	Lås upp för att fortsätta
 no_staff_yet	Ingen personal ännu – lås upp som ägare och sedan Team
-status_server_set_pin	Serverläge — ställ in ägarens PIN-kod
-status_server_tills	Serverläge — extra kassar kan gå med. Lås upp
-status_server_unlock	Serverläge — lås upp som ägare
-status_client_unlock	Klientläge — lås upp för att sälja
 icon_new_selected	Ikon: ny fil vald — tryck på Spara varumärke
 icon_custom	Ikon: anpassat platsmärke
 icon_default	Ikon: Kumkaj-märke (standard) — välj en anpassad
@@ -1033,7 +1016,7 @@ book_kind_balance	Balansräkning
 order_help	Tryck på ett objekt för att lägga till det.
 floor_help	Tryck på ett bord för att ta eller ändra ordningen. Färger visar gratis → sittande → kök → redo → ätande → räkning → betald. Väntelista, reservationer och tilläggstabeller finns i avsnitten nedan.
 kitchen_help	Köksbiljetter (KOT), senaste sist. Start → Klar → Klar flyttar en biljett. Biljetter visar aldrig priser.
-kitchen_empty	Inga öppna biljetter. En KOT skickad från Order eller Floor dyker upp här.
+kitchen_empty	Inga öppna biljetter.
 add_a_table	Lägg till en tabell
 add_station_heading	Lägg till en köksstation
 categories_help	Tryck på Använd för att spara objektet ovan under den kategorin. Foto ger kategorin en bild; utan en visar den sina initialer.
@@ -1131,7 +1114,6 @@ bill_format_help	Tryckt under din restaurangs namn på varje sedel. Separera rad
 bill_header_ph	Adress | telefon
 fssai_ph	FSSAI licensnr. (Indien)
 bill_footer_ph	Sidfot (t.ex. Tack, besök igen)
-save_bill_format	Spara fakturaformat
 reset_bill_format	Återställ till standard
 bill_format_reset	Fakturans format återställs till standard
 reset_kot_format	Återställ till standard
@@ -1201,13 +1183,11 @@ kot_copies_3	3
 kot_title_ph	Titel (tom = KOT - KÖKSORDNING)
 kot_footer_ph	Köksanteckning (valfritt, inga priser)
 kot_preview	Förhandsgranska
-save_kot_format	Spara KOT-format
 test_kot_format	Testa KOT
 test_kot_sent	Köksbiljettförhandsvisning har skickats
 test_bill_format	Testräkning
 test_bill_sent	Förhandsgranskning av faktura har skickats
 test_print_no_printer	Ingen skrivare för det jobbet – välj en på den här skärmen
-kot_format_saved	KOT-format sparat
 std_print	Notautskriftsstorlek
 std_print_help	Teckenstorlek för standard stående och liggande faktureringsjobb på OS/dokumentskrivare (inmatningspunkter — inte Liten/Normal/Stor). Samma storlek på båda riktningarna. Köksglasstorlekar finns på KOT-fliken.
 std_size_s	Liten
@@ -1264,7 +1244,6 @@ new_items_head	Inte skickat ännu
 price_ph	Pris
 price_ph_gst_inside	Pris ({tax} inklusive)
 cancel_needs_table	Öppna den här beställningen från Floor (ett bord) för att avbryta efter att köket har det — disk KOTs stannar på biljetten tills du tar betalt
-tax_rates_missing_hint	Ingen {tax}-pris på dessa rätter — på menyuppsättning Skattesats (priserna inkluderar redan {tax} under {tax} inklusive)
 taxable_value	Skattepliktigt värde
 gst_inside_price_note	({tax} inklusive)
 start_with_template	Börja med vår menymall
@@ -1318,9 +1297,7 @@ order_empty_pick	Beställ tom — tryck på Lägg till rätter ovan för att vä
 add_dishes	Lägg till rätter
 order_so_far	På denna beställning: {n} · {total}
 no_dish_match	Ingen maträtt matchar "{q}"
-pick_dishes_help	Tryck på en maträtt för att lägga till den · välj en kategori för att begränsa listan
 pick_done	Klart
-pick_done_dd	Klart · {label}
 printer_route_mode	Om flera skrivare på denna plats
 printer_mode_first	Först fungerar det
 printer_mode_all	Skriv ut på alla
@@ -1368,3 +1345,22 @@ recent_changes	Senaste ändringarna
 lane_declared_label	Skattefaktura
 lane_owner_label	Kontantmemo
 money_lane_bill	Nota: {lane}
+sel_copy	Kopiera
+sel_select_all	Markera allt
+sel_copied	Kopierat
+items_tmpl_khaynjo	Khaynjo-varumall
+items_tmpl_named	{name}-mall
+app_tmpl_named	{name}-appmall
+private_code_ph	12-siffrig kod
+stamp_on	Stämpel: på fil
+pay_qr_on	Betalnings-QR: på fil
+pay_qr_off	Betalnings-QR: ingen
+items_tmpl_heading	Artikelmallar
+items_tmpl_help	Rätter, kategorier och bilder till din meny. Butiksinställningar och personal förblir som de är.
+public_tmpl_help	Startmenyer som vem som helst kan ladda ner. Kräver internet en gång.
+private_tmpl_help	Kundmenyer låsta med en 12-siffrig kod från din Khaynjo-kontakt.
+printers_screen_tip	Sök visar skrivarna den här enheten kan använda och sparar dem för butiken. Notaskrivare: Nota- och KOT-format → Nota. Kök: Kök → Köksstationer.
+printers_found_none	Inga skrivare hittades.
+kot_copy_from	Kopiera från
+kot_copy_from_help	Kopierar storlek, tjocklek och justering för varje rad från den typen till denna. Denna typ behåller sin egen banderoll, artikelprefix och genomstrykning. Spara KOT-format för att behålla det.
+nav_loading	Läser in…

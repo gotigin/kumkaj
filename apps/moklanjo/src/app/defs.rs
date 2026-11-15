@@ -136,7 +136,7 @@ fn units_report_rows(store: &Store) -> Vec<ReportRow> {
 /// The printers added on this device, in the order they are tried.
 fn courier_printers_pool_rows(draft: &print_share::DevicePrinters) -> Vec<ReportRow> {
     if draft.printers.is_empty() {
-        return vec![ReportRow::Line("(none yet — add one below)".into())];
+        return vec![ReportRow::Line("(none yet — tap Find printers)".into())];
     }
     draft
         .printers
@@ -209,3 +209,13 @@ fn plain_display_text(s: &str) -> String {
     }
     out
 }
+
+/// The Printers sheet's saved-printer buttons (first six printers).
+const PM_PICKS: [&[LiveId]; 6] = [
+    ids!(pm_pick_0),
+    ids!(pm_pick_1),
+    ids!(pm_pick_2),
+    ids!(pm_pick_3),
+    ids!(pm_pick_4),
+    ids!(pm_pick_5),
+];

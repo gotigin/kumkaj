@@ -39,7 +39,7 @@ adding_item	Fifi titun oṣuwọn
 editing_item	Ṣatunkọ
 save	Fipamọ
 remove	Yọ kuro
-empty_catalog	Ko si awọn oṣuwọn sibẹsibẹ. Ṣii Awọn oṣuwọn & awọn iṣẹ, ṣafikun ọkan (orukọ + idiyele, ẹyọkan kg), lẹhinna Gbigbasilẹ.
+empty_catalog	Ko si awọn oṣuwọn sibẹsibẹ.
 counter_sale	Fowo si counter
 total	Lapapọ
 cash	Owo owo
@@ -171,8 +171,6 @@ selected_language	Ti yan
 continue	Tesiwaju
 this_device	ẸRỌ YI
 device_use_q	Bawo ni yoo ṣe lo ẹrọ yii?
-last_server_mode	Je Server — tẹ ni kia kia lati tẹsiwaju
-last_client_mode	Njẹ Onibara - tẹ ni kia kia lati tẹsiwaju
 choose_server	Yan olupin kan
 choose_server_hint	Ṣii olupin ti o wa tẹlẹ, tabi ṣẹda ọkan fun iṣowo miiran.
 create_new_server	Ṣẹda titun olupin
@@ -501,8 +499,6 @@ job_layout	Ìfilélẹ
 job_delivery	Bawo ni a ṣe firanṣẹ iṣẹ naa
 job_size	Iwọn fonti
 job_size_ph	f.eks. 18, 20, 26…
-save_receipt_format	Fi ọna kika gbigba pamọ
-save_label_format	Fi ọna kika aami pamọ
 test_receipt_format	Gbigba idanwo
 test_label_format	Aami idanwo
 test_receipt_sent	Apeere risiti rán
@@ -610,7 +606,7 @@ units_heading	Awọn ẹya
 booking_measures	fowo si igbese
 drawer_count	Iṣiro oluyaworan (aṣayan)
 spreadsheet_csv	Iwe kika (CSV)
-bank_reconciliation	Ilaja banki (fi ami si si alaye banki rẹ)
+bank_reconciliation	Ilaja banki
 book_add_product	Iwe - ṣafikun ọja / oṣuwọn
 book_opening_credit	Leja - ṣiṣi kirẹditi
 account_kind	Iru akọọlẹ (tẹ ọkan)
@@ -650,7 +646,7 @@ net_word	Apapọ
 offline_badge	Aisinipo
 optional_login_help	Iyan iwọle (id + ọrọ igbaniwọle). Eni tosaaju lẹẹkan; olumulo nikan le yi ọrọ igbaniwọle pada nigbamii.
 or_unlock_login	Tabi ṣii pẹlu wiwọle id + ọrọigbaniwọle
-permission_preset	Iṣẹ (ṣeto awọn iboju ati awọn ẹtọ)
+permission_preset	Iṣẹ
 preset_help_moklanjo	Owo owo: ta. Alakoso: ta + awọn ohun akojọ aṣayan + ofo / atunṣe.
 product_locked_moklanjo	Moklanjo
 product_only_moklanjo	Ohun elo yii jẹ Moklanjo nikan - awọn iwe + tabili gbigba silẹ. Iṣowo miiran dojukọ ọkọ bi awọn ọja lọtọ nigbamii.
@@ -698,10 +694,6 @@ pin_hint_paired	Afikun till so pọ - šii lati ta
 pin_hint_pair_first	Afikun till - bata si ẹrọ itaja ni akọkọ
 unlock_to_continue	Ṣii silẹ lati tẹsiwaju
 no_staff_yet	Ko si oṣiṣẹ sibẹsibẹ - ṣii bi Olohun, lẹhinna Ẹgbẹ
-status_server_set_pin	Ipo olupin - ṣeto Olohun PIN
-status_server_tills	Ipo olupin — afikun tills le darapo. Ṣii silẹ
-status_server_unlock	Ipo olupin – sii bi Olohun
-status_client_unlock	Ipo Onibara — ṣii silẹ lati ta
 icon_new_selected	Aami: faili titun ti a ti yan - tẹ Fipamọ ami iyasọtọ ni kia kia
 icon_custom	Aami: ami ibi isere aṣa
 icon_default	Aami: Kumkaj ami (aiyipada) - yan ọkan aṣa
@@ -834,3 +826,7 @@ role_help_supplier	Ipa: Olupese - AP fun awọn rira.
 lane_declared_label	fowo si iroyin
 lane_owner_label	Ifiweranṣẹ owo
 money_lane_bill	Iwe owo: {lane}
+sel_copy	Daakọ
+sel_select_all	Yan gbogbo rẹ̀
+sel_copied	A ti daakọ
+nav_loading	Ń gbé e wọlé…

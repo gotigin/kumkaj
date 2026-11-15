@@ -39,7 +39,7 @@ adding_item	নতুন রেট যোগ হচ্ছে
 editing_item	সম্পাদনা
 save	সেভ করুন
 remove	সরান
-empty_catalog	এখনও কোনো রেট নেই। রেট ও পরিষেবা খুলুন, একটি যোগ করুন (নাম + দাম, একক kg), তারপর বুকিং।
+empty_catalog	এখনও কোনো রেট নেই।
 counter_sale	কাউন্টার বুকিং
 total	মোট
 cash	নগদ
@@ -171,8 +171,6 @@ selected_language	বাছাই করা
 continue	এগিয়ে যান
 this_device	এই ডিভাইস
 device_use_q	এই ডিভাইসটি কীভাবে ব্যবহার হবে?
-last_server_mode	আগে সার্ভার ছিল — চালিয়ে যেতে ট্যাপ করুন
-last_client_mode	আগে ক্লায়েন্ট ছিল — চালিয়ে যেতে ট্যাপ করুন
 choose_server	সার্ভার বাছুন
 choose_server_hint	এই ডিভাইসে ইতিমধ্যে সার্ভার আছে। একটি খুলুন, অথবা অন্য ব্যবসার জন্য নতুন সার্ভার তৈরি করুন।
 create_new_server	নতুন সার্ভার তৈরি করুন
@@ -501,8 +499,6 @@ job_layout	লেআউট
 job_delivery	কাজ কীভাবে পাঠানো হয়
 job_size	ফন্ট আকার
 job_size_ph	যেমন 18, 20, 26…
-save_receipt_format	রসিদের ফরম্যাট রাখুন
-save_label_format	লেবেলের ফরম্যাট রাখুন
 test_receipt_format	টেস্ট রসিদ
 test_label_format	টেস্ট লেবেল
 test_receipt_sent	নমুনা রসিদ পাঠানো হলো
@@ -610,7 +606,7 @@ units_heading	এককসমূহ
 booking_measures	বুকিং মাপ
 drawer_count	ড্রয়ার গণনা (ঐচ্ছিক)
 spreadsheet_csv	স্প্রেডশিট (CSV)
-bank_reconciliation	ব্যাংক মিলান (আপনার ব্যাংক স্টেটমেন্টের সাথে টিক দিন)
+bank_reconciliation	ব্যাংক মিলান
 book_add_product	বুক — পণ্য / রেট যোগ করুন
 book_opening_credit	বুক — শুরুর বাকি
 account_kind	খাতার ধরন (একটি চাপুন)
@@ -650,7 +646,7 @@ net_word	নেট
 offline_badge	অফলাইন
 optional_login_help	ঐচ্ছিক লগইন (আইডি + পাসওয়ার্ড)। মালিক একবার সেট করেন; পরে শুধু ব্যবহারকারীই পাসওয়ার্ড বদলাতে পারেন।
 or_unlock_login	অথবা লগইন আইডি + পাসওয়ার্ড দিয়ে আনলক করুন
-permission_preset	কাজ (স্ক্রিন ও অধিকার ঠিক করে)
+permission_preset	কাজ
 preset_help_moklanjo	ক্যাশিয়ার: বিক্রি। ম্যানেজার: বিক্রি + আইটেম + বাতিল/সংশোধন।
 product_locked_moklanjo	Moklanjo
 product_only_moklanjo	এই অ্যাপ শুধু Moklanjo — খাতা + বুকিং ডেস্ক। অন্য ব্যবসার পণ্য পরে আলাদাভাবে আসবে।
@@ -698,10 +694,6 @@ pin_hint_paired	অতিরিক্ত টিল জোড়া লেগে�
 pin_hint_pair_first	অতিরিক্ত টিল — আগে দোকান ডিভাইসে জোড়া লাগান
 unlock_to_continue	চালিয়ে যেতে আনলক করুন
 no_staff_yet	এখনও কোনো কর্মী নেই — মালিক হিসেবে আনলক করুন, তারপর Team
-status_server_set_pin	সার্ভার মোড — মালিকের PIN সেট করুন
-status_server_tills	সার্ভার মোড — অতিরিক্ত টিল যোগ দিতে পারে। আনলক করুন
-status_server_unlock	সার্ভার মোড — মালিক হিসেবে আনলক করুন
-status_client_unlock	ক্লায়েন্ট মোড — বিক্রির জন্য আনলক করুন
 icon_new_selected	আইকন: নতুন ফাইল বেছে নেওয়া হয়েছে — ব্র্যান্ড সংরক্ষণ করুন চাপুন
 icon_custom	আইকন: আপনার দোকানের চিহ্ন
 icon_default	আইকন: Kumkaj চিহ্ন (ডিফল্ট) — নিজেরটি বেছে নিন
@@ -834,3 +826,7 @@ role_help_supplier	ভূমিকা: সরবরাহকারী — কে
 lane_declared_label	অ্যাকাউন্ট বুকিং
 lane_owner_label	নগদ বুকিং
 money_lane_bill	বিল: {lane}
+sel_copy	কপি করুন
+sel_select_all	সব নির্বাচন করুন
+sel_copied	কপি হয়েছে
+nav_loading	লোড হচ্ছে…

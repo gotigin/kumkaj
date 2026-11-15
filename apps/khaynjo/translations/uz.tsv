@@ -41,7 +41,7 @@ remove	Olib tashlash
 removed_items	Olib tashlangan mahsulotlar
 removed_help	Tiklash mahsulotni menyuga aynan avvalgidek qaytaradi — narx, rasm va toifa. Bizning taomlar javonimiz hech qachon olib tashlanmaydi, shuning uchun taomni har doim qayta qoʻshish mumkin.
 restore_item	Tiklash
-empty_catalog	Hali taom yoʻq. Menyuni oching, taom qoʻshing (nom + narx), soʻng buyurtma oling.
+empty_catalog	Hali taom yoʻq.
 total	Jami
 cash	Naqd
 upi	UPI
@@ -103,23 +103,14 @@ bill_item_qty	Miqdor
 bill_item_price	Narx
 bill_item_amount	Summa
 bill_item_note	Taom izohi
-bill_item_col_gap	Ustun oraligʻi
 bill_item_col_order	Ustun tartibi
 bill_item_col_sep	Ustun chiziqlari
-bill_item_gap_tight	Zich
-bill_item_gap_comfort	Qulay
-bill_item_gap_wide	Keng
-bill_item_num_width	Son ustunlari
-bill_item_num_compact	Ixcham
-bill_item_num_comfort	Qulay
-bill_item_num_wide	Keng
-bill_item_num_align	Sonlarni tekislash
-bill_item_gap_em	Oraligʻ (em)
-bill_item_qty_min	Min. miqdor (em)
-bill_item_price_min	Min. narx (em)
-bill_item_amount_min	Min. summa (em)
-kot_item_qty_width	Miqdor ustuni
-kot_item_num_align	Miqdorni tekislash
+slip_columns	Ustunlar
+slip_col_width	Kenglik (mm)
+slip_col_start	Boshlanish oralig‘i (px)
+slip_col_end	Oxirgi oraliq (px)
+slip_col_align	Matnni tekislash
+slip_columns_help	Har bir ustunning kengligi uning boshlanish va oxirgi oralig‘ini o‘z ichiga oladi. Matn o‘z ustuni ichida qatorga o‘tadi; kontent kengligidan oshgan qism qog‘ozda ham, oldindan ko‘rishda ham kesiladi.
 bill_total_qty_label	Jami miqdor yorligʻi
 bill_total_subtotal_label	Oraliq summa yorligʻi
 bill_total_grand_label	Yakuniy summa yorligʻi
@@ -221,7 +212,6 @@ sidebar_order_saved	Yon panel tartibi saqlandi
 sidebar_visibility_saved	Yon panel koʻrinishi saqlandi
 amounts_hide	Yashirish
 amounts_show	Koʻrsatish
-printers_none_hint	Avval shu qurilmada printerni saqlang, soʻng uni Hisobga yoki oshxonaga qoʻshing
 counter	Kassa
 dine_in	Joyida
 takeaway	Olib ketish
@@ -328,8 +318,6 @@ selected_language	Tanlangan
 continue	Davom etish
 this_device	SHU QURILMA
 device_use_q	Bu qurilma qanday ishlatiladi?
-last_server_mode	Server edi — davom etish uchun bosing
-last_client_mode	Mijoz edi — davom etish uchun bosing
 choose_server	Server tanlang
 choose_server_hint	Mavjud serverni oching yoki boshqa biznes uchun yangisini yarating.
 create_new_server	Yangi server yaratish
@@ -391,7 +379,7 @@ attachments_last_expense	Ilovalar (oxirgi xarajat)
 bank	Bank
 bank_in	Bankka kirim
 bank_out	Bankdan chiqim
-bank_reconciliation	Bank solishtiruvi (bank koʻchirmasiga qarshi belgilang)
+bank_reconciliation	Bank solishtiruvi
 bank_to_till	Bank → kassa
 book_add_dish	Daftar — taom / mahsulot qoʻshish
 book_opening_credit	Daftar — boshlangʻich nasiya
@@ -744,7 +732,6 @@ station_print_pick_first	Avval oshxona stansiyasini tanlang
 station_print_editing	„{name}“ printerlari tahrirlanmoqda
 station_vps_dd	Shu stansiya printerlari
 station_vps_dd_n	{n} printer · oʻzgartirish uchun bosing
-station_vps_empty	Hali printer yoʻq — Sozlamalar → Printerlar ichidan toping
 bill_printers_dd	Hisob printerlari
 bill_printers_dd_n	hisob uchun {n} printer · oʻzgartirish uchun bosing
 job_layout	Joylashuv
@@ -889,7 +876,7 @@ net_word	Sof
 offline_badge	OFLAYN
 optional_login_help	Ixtiyoriy kirish (id + parol). Egasi bir marta qoʻyadi; parolni keyin faqat foydalanuvchi oʻzgartira oladi.
 or_unlock_login	Yoki kirish id + parol bilan qulfni oching
-permission_preset	Ish (ekran va pul amallarini qoʻyadi)
+permission_preset	Ish
 preset_help_khaynjo	Kassir: sotadi. Menejer: savdo + mahsulot + bekor/tuzatish.
 product_locked_khaynjo	Khaynjo
 product_only_khaynjo	Bu ilova faqat Khaynjo — restoran operatsion tizimi. Boshqa savdo yuzlari alohida Kumkaj mahsulotlari sifatida chiqadi.
@@ -961,10 +948,6 @@ pin_hint_paired	Qoʻshimcha kassa juftlangan — sotish uchun qulfni oching
 pin_hint_pair_first	Qoʻshimcha kassa — avval doʻkon qurilmasi bilan juftlang
 unlock_to_continue	Davom etish uchun qulfni oching
 no_staff_yet	Hali xodim yoʻq — Egasi sifatida qulfni oching, soʻng Jamoa
-status_server_set_pin	Server rejimi — Egasi PIN ini qoʻying
-status_server_tills	Server rejimi — qoʻshimcha kassalar qoʻshila oladi. Qulfni oching
-status_server_unlock	Server rejimi — Egasi sifatida qulfni oching
-status_client_unlock	Mijoz rejimi — sotish uchun qulfni oching
 icon_new_selected	Belgi: yangi fayl tanlandi — Brendni saqlashni bosing
 icon_custom	Belgi: oʻz joy belgisi
 icon_default	Belgi: Kumkaj belgisi (andoza) — oʻzingiznikini tanlang
@@ -1033,7 +1016,7 @@ book_kind_balance	Balans
 order_help	Qoʻshish uchun mahsulotni bosing.
 floor_help	Buyurtma olish yoki oʻzgartirish uchun stolni bosing. Ranglar boʻsh → oʻtirgan → oshxona → tayyor → yeyapti → hisob → toʻlanganni koʻrsatadi. Kutish roʻyxati, bandlov va stol qoʻshish pastdagi boʻlimlarda.
 kitchen_help	Oshxona varaqlari (KOT), eng yangisi oxirida. Boshlash → Tayyor → Tugadi varaqni oldinga suradi. Varaqlar hech qachon narx koʻrsatmaydi.
-kitchen_empty	Ochiq varaq yoʻq. Buyurtma yoki Zaldan yuborilgan KOT shu yerda chiqadi.
+kitchen_empty	Ochiq varaq yoʻq.
 add_a_table	Stol qoʻshish
 add_station_heading	Oshxona stansiyasi qoʻshish
 categories_help	Yuqoridagi mahsulotni shu toifaga qoʻyish uchun Ishlatishni bosing. Surat toifaga rasm beradi; boʻlmasa bosh harflari chiqadi.
@@ -1131,7 +1114,6 @@ bill_format_help	Har hisobda restoran nomi ostida chop etiladi. Qatorlarni | bil
 bill_header_ph	Manzil | telefon
 fssai_ph	FSSAI litsenziya № (Hindiston)
 bill_footer_ph	Pastki yozuv (mas. Rahmat, yana keling)
-save_bill_format	Hisob formatini saqlash
 reset_bill_format	Andozaga qaytarish
 bill_format_reset	Hisob formati andozaga qaytarildi
 reset_kot_format	Andozaga qaytarish
@@ -1201,13 +1183,11 @@ kot_copies_3	3
 kot_title_ph	Sarlavha (boʻsh = KOT - KITCHEN ORDER)
 kot_footer_ph	Oshxona eslatmasi (ixtiyoriy, narxsiz)
 kot_preview	Koʻrib chiqish
-save_kot_format	KOT formatini saqlash
 test_kot_format	Sinov KOT
 test_kot_sent	Oshxona varaqining koʻrinishi yuborildi
 test_bill_format	Sinov hisobi
 test_bill_sent	Hisob koʻrinishi yuborildi
 test_print_no_printer	Oʻsha ish uchun printer yoʻq — shu ekranda birini tanlang
-kot_format_saved	KOT formati saqlandi
 std_print	Hisob chop etish oʻlchami
 std_print_help	OT / hujjat printerlaridagi standart tik va yotiq hisob ishlarining shrift oʻlchami (punkt kiriting — Kichik/Oddiy/Katta emas). Ikkala yoʻnalishda bir xil oʻlcham. Oshxona varaqi oʻlchamlari KOT yorligʻida.
 std_size_s	Kichik
@@ -1264,7 +1244,6 @@ new_items_head	Hali yuborilmagan
 price_ph	Narx
 price_ph_gst_inside	Narx ({tax} ichida)
 cancel_needs_table	Oshxona olgach bekor qilish uchun bu buyurtmani Zaldan (stol) oching — kassa KOT lari toʻlov qabul qilgunicha varaqda qoladi
-tax_rates_missing_hint	Bu taomlarda {tax} stavkasi yoʻq — Menyuda Soliq stavkasini qoʻying (narxlar {tax} ichida boʻlimida {tax} ni allaqachon oʻz ichiga oladi)
 taxable_value	Soliqqa tortiladigan qiymat
 gst_inside_price_note	({tax} ichida)
 start_with_template	Bizning menyu andozamiz bilan boshlash
@@ -1318,9 +1297,7 @@ order_empty_pick	Buyurtma boʻsh — taom tanlash uchun yuqoridagi Taom qoʻshis
 add_dishes	Taom qoʻshish
 order_so_far	Shu buyurtmada: {n} · {total}
 no_dish_match	„{q}“ ga mos taom yoʻq
-pick_dishes_help	Qoʻshish uchun taomni bosing · roʻyxatni toraytirish uchun toifa tanlang
 pick_done	Tayyor
-pick_done_dd	Tayyor · {label}
 printer_route_mode	Bu joyda bir nechta printer boʻlsa
 printer_mode_first	Birinchi ishlagani
 printer_mode_all	Hammasiga chop etish
@@ -1368,3 +1345,22 @@ recent_changes	Soʻnggi oʻzgarishlar
 lane_declared_label	Soliq hisob-fakturasi
 lane_owner_label	Naqd yozuv
 money_lane_bill	Hisob: {lane}
+sel_copy	Nusxalash
+sel_select_all	Hammasini tanlash
+sel_copied	Nusxalandi
+items_tmpl_khaynjo	Khaynjo mahsulot shabloni
+items_tmpl_named	{name} shabloni
+app_tmpl_named	{name} ilova shabloni
+private_code_ph	12 xonali kod
+stamp_on	Muhr: faylda
+pay_qr_on	Toʻlov QR: faylda
+pay_qr_off	Toʻlov QR: yoʻq
+items_tmpl_heading	Mahsulot shablonlari
+items_tmpl_help	Menyungiz uchun taomlar, toifalar va rasmlar. Do'kon sozlamalari va xodimlar o'z holicha qoladi.
+public_tmpl_help	Har kim yuklab olishi mumkin bo'lgan boshlang'ich menyular. Internet bir marta kerak.
+private_tmpl_help	Khaynjo kontaktingizdan kelgan 12 xonali kod bilan himoyalangan mijoz menyulari.
+printers_screen_tip	Qidirish ushbu qurilma foydalana oladigan printerlarni ko'rsatadi va ularni ushbu do'kon uchun saqlaydi. Hisob printerlari: Hisob va KOT formati → Hisob. Oshxona: Oshxona → Oshxona stansiyalari.
+printers_found_none	Printer topilmadi.
+kot_copy_from	Nusxa olish
+kot_copy_from_help	O turdagi har bir qatorning o'lchami, qalinligi va tekislanishini shu turga ko'chiradi. Bu tur o'z banneri, mahsulot prefiksi va ustidan chizilishini saqlaydi. Saqlab qolish uchun KOT formatini saqlang.
+nav_loading	Yuklanmoqda…

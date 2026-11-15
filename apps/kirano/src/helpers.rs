@@ -6,62 +6,6 @@ fn typed_aliases(text: &str) -> Vec<String> {
         .collect()
 }
 
-/// What the counter says after Send KOT on the shop device: in the staff's
-/// language, with the snack kind decided here rather than guessed from
-/// English words — a Gujarati "not printed" must still show red, because
-/// the kitchen has no paper.
-fn kot_sent_status(
-    tr: &dyn Fn(&str) -> String,
-    kitchens: &str,
-    auto_print: bool,
-    paper_problem: Option<&str>,
-) -> (SnackKind, String) {
-    match (auto_print, paper_problem) {
-        (true, Some(why)) => (
-            SnackKind::Error,
-            tr("kot_sent_not_printed")
-                .replace("{kitchens}", kitchens)
-                .replace("{why}", why),
-        ),
-        (true, None) => (
-            SnackKind::Success,
-            tr("kot_sent_printing").replace("{kitchens}", kitchens),
-        ),
-        (false, _) => (
-            SnackKind::Success,
-            tr("kot_sent_screen").replace("{kitchens}", kitchens),
-        ),
-    }
-}
-
-/// Order → Floor table pick: seat the desk's unsent punches only on **first**
-/// Choose a table (`from` is None). Change table (`from` is Some) must open
-/// the picked ticket alone — never drag the previous table's lines over.
-fn pick_seats_desk_cart(from_table_id: Option<&str>) -> bool {
-    from_table_id.is_none()
-}
-
-/// Parse `1`, `1.5`, `1,5` into qty milli (1000 = 1 whole).
-/// `D1-D20`, `P 1-20`, `AC1 – AC10` → ("D", 1, 20). The prefix is whatever
-/// comes before the first number; the second side may repeat it or not.
-fn parse_table_range(text: &str) -> Result<(String, u32, u32), String> {
-    let text = text.trim().replace('–', "-");
-    let (left, right) = text
-        .split_once('-')
-        .ok_or_else(|| "Type a range like D1-D20".to_string())?;
-    let split = |side: &str| -> (String, Option<u32>) {
-        let side = side.trim();
-        let digits_at = side.find(|c: char| c.is_ascii_digit()).unwrap_or(side.len());
-        (side[..digits_at].to_string(), side[digits_at..].trim().parse().ok())
-    };
-    let (prefix, from) = split(left);
-    let (_, to) = split(right);
-    match (from, to) {
-        (Some(from), Some(to)) if from >= 1 && to >= from => Ok((prefix, from, to)),
-        _ => Err("Type a range like D1-D20".into()),
-    }
-}
-
 fn parse_qty_to_milli(text: &str) -> Result<i64, String> {
     let t = text.trim().replace(',', ".");
     if t.is_empty() {
@@ -88,21 +32,6 @@ fn parse_qty_to_milli(text: &str) -> Result<i64, String> {
 
 fn modifiers_as_typed(groups: &[domain::ModifierGroup], currency: &str) -> String {
     domain::ModifierGroup::format_human_list(groups, currency)
-}
-
-/// Flat `Name=price` list (area prices, or a single Options group).
-fn options_as_typed(mods: &[domain::ModifierOption], currency: &str) -> String {
-    mods.iter()
-        .map(|modifier| {
-            let price = locale::format_major_input(modifier.price_paise, currency);
-            if price.is_empty() || price == "0" {
-                modifier.name.clone()
-            } else {
-                format!("{}={price}", modifier.name)
-            }
-        })
-        .collect::<Vec<_>>()
-        .join(", ")
 }
 
 fn schedule_as_typed(windows: &[domain::ScheduleWindow], currency: &str) -> String {
@@ -257,18 +186,35 @@ fn load_thumb_at(cx: &mut Cx, image: &ImageRef, path: &std::path::Path) -> bool 
             return false;
         }
     }
+    if !path.is_file() {
+        thumb_load_cache().lock().unwrap().remove(&uid);
+        return false;
+    }
+    // While a list draws, decode on Makepad's image pool, never here: the
+    // first + Add dishes froze ~1 s decoding WebP thumbs one by one inside
+    // draw (2026-11-13). The tile keeps its initials until the decode lands;
+    // `App::handle_thumb_decodes` then redraws the window and this call finds
+    // the texture in the cache. (Async used to leave recycled PortalList
+    // thumbs blank because nothing redrew them when the decode finished.)
+    // Outside draw (a one-off preview painted from sync_chrome) nothing would
+    // come back to it, so that one still decodes here.
+    if cx.in_draw_event() {
+        match load_image_file_by_path_async(cx, path) {
+            Ok(AsyncLoadResult::Loaded) => {}
+            Ok(AsyncLoadResult::Loading(..)) => return false,
+            Err(_) => {
+                thumb_load_cache().lock().unwrap().remove(&uid);
+                return false;
+            }
+        }
+    }
     // Record before the call so a redraw from the load does not re-queue.
     thumb_load_cache()
         .lock()
         .unwrap()
         .insert(uid, (path.to_path_buf(), fp));
-    // Synchronous decode. Async left pooled PortalList thumbs blank until an
-    // unrelated scroll; completion never repainted recycled list widgets.
-    let loaded = if path.is_file() {
-        image.load_image_file_by_path(cx, path).is_ok()
-    } else {
-        false
-    };
+    // A cache hit after the async decode; a decode here outside draw.
+    let loaded = image.load_image_file_by_path(cx, path).is_ok();
     if !loaded {
         thumb_load_cache().lock().unwrap().remove(&uid);
     } else {
@@ -377,9 +323,9 @@ fn customer_row_height() -> &'static Mutex<f64> {
 
 fn cart_row_height() -> &'static Mutex<f64> {
     static HEIGHT: OnceLock<Mutex<f64>> = OnceLock::new();
-    // Closed CartRow: thumb + name/meta wrap + Hold/Cancel chips. Must start
-    // *above* a short closed row — a 96 seed (2026-11-02) clipped "Not sent
-    // yet" into the Kitchen strip. Open-line details add extra in CartList.
+    // Closed CartRow: thumb + name/meta wrap. Must start *above* a short
+    // closed row — a 96 seed (2026-11-02) clipped the row under the next
+    // one. Open-line details add extra in CartList.
     HEIGHT.get_or_init(|| Mutex::new(140.0))
 }
 
@@ -416,12 +362,6 @@ fn category_row_height() -> &'static Mutex<f64> {
     static HEIGHT: OnceLock<Mutex<f64>> = OnceLock::new();
     // Seed: CategoryRow (thumb 48 / Use 48) + Item bottom pad 10.
     HEIGHT.get_or_init(|| Mutex::new(100.0))
-}
-
-fn resv_row_height() -> &'static Mutex<f64> {
-    static HEIGHT: OnceLock<Mutex<f64>> = OnceLock::new();
-    // Seed: ResvRow + Seat/Cancel. WrapLabel can grow; measure catches it.
-    HEIGHT.get_or_init(|| Mutex::new(96.0))
 }
 
 fn suggest_row_height() -> &'static Mutex<f64> {
@@ -713,7 +653,6 @@ fn paint_first_alias(cx: &mut Cx, root: &WidgetRef, alias: Option<&str>) {
     }
 }
 
-
 /// Order desk pane widths (Order, Counter) for a content width `view_w`
 /// (window less rail). Both mins fit: they share the room in the mins'
 /// ratio. Else each keeps its min and the desk pans sideways — but a pane is
@@ -782,4 +721,4 @@ fn pad_view_over_base(cx: &mut Cx, view: &ViewRef, key: LiveId, extra: Inset) {
 /// keeps off the status / gesture bars. Anchored overlays (the nav drag
 /// ghost, column dropdowns) are left out: they place themselves.
 /// `nav_order_tests::every_modal_is_an_inset_sheet_or_anchored` checks this.
-const INSET_SHEETS: &[&str] = &["menu_modal", "lock_staff_modal", "upi_qr_modal"];
+const INSET_SHEETS: &[&str] = &["menu_modal", "lock_staff_modal", "upi_qr_modal", "printers_modal"];

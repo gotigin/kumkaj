@@ -41,7 +41,7 @@ remove	తొలగించు
 removed_items	తీసివేసిన ఐటమ్‌లు
 removed_help	పునరుద్ధరిస్తే ఐటమ్ మునుపటిలాగే మెనూలోకి వస్తుంది — ధర, ఫోటో, వర్గం. మా వంటకాల షెల్ఫ్ ఎప్పుడూ తీసివేయబడదు, కాబట్టి ఏ వంటకాన్నైనా మళ్లీ జోడించవచ్చు.
 restore_item	పునరుద్ధరించు
-empty_catalog	ఇంకా ఐటమ్‌లు లేవు. మెను & ఐటమ్‌లు తెరిచి, ఒకటి జోడించండి (పేరు + ధర), తర్వాత ఆర్డర్ తీసుకోండి.
+empty_catalog	ఇంకా ఐటమ్‌లు లేవు.
 total	మొత్తం
 cash	నగదు
 upi	यूपीआई
@@ -103,23 +103,14 @@ bill_item_qty	పరిమాణం
 bill_item_price	ధర
 bill_item_amount	మొత్తం
 bill_item_note	నోట్
-bill_item_col_gap	నిలువు ఖాళీ
 bill_item_col_order	నిలువు క్రమం
 bill_item_col_sep	నిలువు గీత
-bill_item_gap_tight	గట్టి
-bill_item_gap_comfort	సౌకర్యం
-bill_item_gap_wide	వెడల్పు
-bill_item_num_width	సంఖ్య నిలువులు
-bill_item_num_compact	చిన్న
-bill_item_num_comfort	సౌకర్యం
-bill_item_num_wide	వెడల్పు
-bill_item_num_align	సంఖ్య అమరిక
-bill_item_gap_em	ఖాళీ (em)
-bill_item_qty_min	సంఖ్య కనిష్టం (em)
-bill_item_price_min	ధర కనిష్టం (em)
-bill_item_amount_min	మొత్తం కనిష్టం (em)
-kot_item_qty_width	సంఖ్య నిలువు
-kot_item_num_align	సంఖ్య అమరిక
+slip_columns	నిలువు వరుసలు
+slip_col_width	వెడల్పు (mm)
+slip_col_start	ప్రారంభ స్థలం (px)
+slip_col_end	ముగింపు స్థలం (px)
+slip_col_align	వచన అమరిక
+slip_columns_help	ప్రతి నిలువు వరుస వెడల్పులో దాని ప్రారంభ, ముగింపు స్థలం కలిసి ఉంటాయి. వచనం తన నిలువు వరుసలోనే చుట్టుకుంటుంది; కంటెంట్ వెడల్పు దాటినది కాగితంపైనా ప్రివ్యూలోనూ కత్తిరించబడుతుంది.
 bill_total_qty_label	మొత్తం సంఖ్య లేబుల్
 bill_total_subtotal_label	ఉప మొత్తం లేబుల్
 bill_total_grand_label	మొత్తం లేబుల్
@@ -221,7 +212,6 @@ sidebar_order_saved	సైడ్‌బార్ క్రమం సేవ్ అ
 sidebar_visibility_saved	సైడ్‌బార్ కనిపించే తీరు సేవ్ అయింది
 amounts_hide	దాచు
 amounts_show	చూపు
-printers_none_hint	ముందు ఈ పరికరంలో ఒక ప్రింటర్ సేవ్ చేయండి, తర్వాత దాన్ని బిల్లుకు లేదా ఒక వంటగదికి జోడించండి
 counter	కౌంటర్
 dine_in	అక్కడే తినడం
 takeaway	పార్సెల్
@@ -328,8 +318,6 @@ selected_language	ఎంచుకున్నది
 continue	కొనసాగించు
 this_device	ఈ పరికరం
 device_use_q	ఈ పరికరం ఎలా ఉపయోగించబడుతుంది?
-last_server_mode	ఇంతకు ముందు సర్వర్ — కొనసాగించడానికి నొక్కండి
-last_client_mode	ఇంతకు ముందు క్లయింట్ — కొనసాగించడానికి నొక్కండి
 choose_server	సర్వర్‌ను ఎంచుకోండి
 choose_server_hint	ఈ పరికరంలో ఇప్పటికే సర్వర్లు ఉన్నాయి. ఒకదాన్ని తెరవండి, లేదా మరో వ్యాపారం కోసం కొత్త సర్వర్ సృష్టించండి.
 create_new_server	కొత్త సర్వర్ సృష్టించు
@@ -391,7 +379,7 @@ attachments_last_expense	జోడింపులు (చివరి ఖర్�
 bank	బ్యాంక్
 bank_in	బ్యాంక్‌లో వేయి
 bank_out	బ్యాంక్ నుండి తీయి
-bank_reconciliation	బ్యాంక్ సరిపోలిక (మీ బ్యాంక్ స్టేట్‌మెంట్‌తో టిక్ చేయండి)
+bank_reconciliation	బ్యాంక్ సరిపోలిక
 bank_to_till	బ్యాంక్ → టిల్
 book_add_dish	బుక్ — వంటకం / ఐటమ్ జోడించు
 book_opening_credit	బుక్ — ప్రారంభ అరువు
@@ -744,7 +732,6 @@ station_print_pick_first	ముందుగా వంటగది స్టే�
 station_print_editing	“{name}” ప్రింటర్లను సవరిస్తున్నారు
 station_vps_dd	ఈ స్టేషన్ ప్రింటర్లు
 station_vps_dd_n	{n} ప్రింటర్లు · మార్చడానికి నొక్కండి
-station_vps_empty	ప్రింటర్లు లేవు — సెట్టింగ్స్ → ప్రింటర్లలో కనుగొనండి
 bill_printers_dd	బిల్లు ప్రింటర్లు
 bill_printers_dd_n	బిల్లు కోసం {n} ప్రింటర్లు · మార్చడానికి నొక్కండి
 job_layout	లేఅవుట్
@@ -889,7 +876,7 @@ net_word	నికరం
 offline_badge	ఆఫ్‌లైన్
 optional_login_help	ఐచ్ఛిక లాగిన్ (ఐడీ + పాస్‌వర్డ్). యజమాని ఒకసారి సెట్ చేస్తారు; తర్వాత వినియోగదారు మాత్రమే పాస్‌వర్డ్ మార్చగలరు.
 or_unlock_login	లేదా లాగిన్ ఐడీ + పాస్‌వర్డ్‌తో అన్‌లాక్ చేయండి
-permission_preset	అనుమతి ప్రీసెట్ (దేనికి యాక్సెస్)
+permission_preset	అనుమతి ప్రీసెట్
 preset_help_khaynjo	క్యాషియర్: అమ్మండి. మేనేజర్: అమ్మండి + ఐటమ్‌లు + రద్దు/సవరణ.
 product_locked_khaynjo	Khaynjo
 product_only_khaynjo	ఈ యాప్ Khaynjo మాత్రమే — రెస్టారెంట్ ఆపరేటింగ్ సిస్టమ్. ఇతర వ్యాపారాలకు వేరే Kumkaj ఉత్పత్తులు వస్తాయి.
@@ -961,10 +948,6 @@ pin_hint_paired	అదనపు టిల్ జత చేయబడింది 
 pin_hint_pair_first	అదనపు టిల్ — ముందు షాప్ పరికరానికి జత చేయండి
 unlock_to_continue	కొనసాగించడానికి అన్‌లాక్ చేయండి
 no_staff_yet	ఇంకా సిబ్బంది లేరు — యజమానిగా అన్‌లాక్ చేయండి, తర్వాత Team
-status_server_set_pin	సర్వర్ మోడ్ — యజమాని PIN సెట్ చేయండి
-status_server_tills	సర్వర్ మోడ్ — అదనపు టిల్‌లు చేరవచ్చు. అన్‌లాక్ చేయండి
-status_server_unlock	సర్వర్ మోడ్ — యజమానిగా అన్‌లాక్ చేయండి
-status_client_unlock	క్లయింట్ మోడ్ — అమ్మడానికి అన్‌లాక్ చేయండి
 icon_new_selected	ఐకాన్: కొత్త ఫైల్ ఎంచుకోబడింది — బ్రాండ్ సేవ్ చేయి నొక్కండి
 icon_custom	ఐకాన్: మీ షాపు గుర్తు
 icon_default	ఐకాన్: Kumkaj గుర్తు (డిఫాల్ట్) — మీది ఎంచుకోండి
@@ -1033,7 +1016,7 @@ book_kind_balance	బ్యాలెన్స్ షీట్
 order_help	ఓపెన్ ఆర్డర్‌ను ఎంచుకోండి, లేదా టేబుల్‌ను ఎంచుకుని కొత్తది ప్రారంభించండి. సిద్ధంగా ఉన్న వస్తువులను నొక్కండి, KOT పంపండి, ఒకటి లేదా అంతకంటే ఎక్కువ వస్తువులకు బిల్లు వేయండి, బిల్లును విభజించండి మరియు చెల్లింపు పరిష్కరించండి.
 floor_help	ప్రతి టేబుల్ అతిథులు కూర్చున్నారా, వారి ఓపెన్ బిల్లు ఏమిటి, తదుపరి సేవ ఎవరికి అవసరమో చూపిస్తుంది.
 kitchen_help	ప్రతి వేరియంట్ లేదా ప్రతి వస్తువు వారీగా సిద్ధమైన పరిమాణాన్ని ట్రాక్ చేయండి — KOTలో మీకు నచ్చినట్లు నమోదు చేయండి.
-kitchen_empty	ప్రస్తుతం ఏమీ ఓపెన్‌గా లేదు — కొత్త ఆర్డర్లు ఇక్కడ కనిపిస్తాయి.
+kitchen_empty	ప్రస్తుతం ఏమీ ఓపెన్‌గా లేదు.
 add_a_table	టేబుల్‌ను జోడించండి
 add_station_heading	స్టేషన్‌ను జోడించండి · ఉదా. తందూర్, సౌత్ ఇండియన్
 categories_help	వర్గం ఒక వంటకం ఏ మెను విభాగానికి చెందినదో చూపిస్తుంది — ఉదా. స్నాక్స్, మెయిన్ కోర్స్ లేదా బిర్యానీ. వర్గాలను మీ ఇష్టానుసారం తయారు చేయండి: మేము సూచించే పేర్లను ఎంచుకోండి, వాటి పేర్లు మార్చండి లేదా మీ స్వంతదాన్ని జోడించండి.
@@ -1131,7 +1114,6 @@ bill_format_help	ప్రతి బిల్‌లో మీ రెస్టా
 bill_header_ph	చిరునామా | ఫోన్
 fssai_ph	FSSAI లైసెన్స్ నం. (భారత్)
 bill_footer_ph	ఫుటర్ (ఉదా. ధన్యవాదాలు, మళ్లీ రండి)
-save_bill_format	బిల్ ఫార్మాట్ సేవ్ చేయి
 reset_bill_format	డిఫాల్ట్‌కు రీసెట్
 bill_format_reset	బిల్ ఫార్మాట్ డిఫాల్ట్‌కు
 reset_kot_format	డిఫాల్ట్‌కు రీసెట్
@@ -1201,13 +1183,11 @@ kot_copies_3	3
 kot_title_ph	శీర్షిక (ఖాళీ = KOT - KITCHEN ORDER)
 kot_footer_ph	వంటగది నోట్ (ఐచ్ఛికం, ధరలు లేవు)
 kot_preview	ప్రివ్యూ
-save_kot_format	KOT ఆకృతి సేవ్ చేయి
 test_kot_format	టెస్ట్ KOT
 test_kot_sent	వంటగది టికెట్ నమూనా పంపారు
 test_bill_format	టెస్ట్ బిల్లు
 test_bill_sent	బిల్లు నమూనా పంపారు
 test_print_no_printer	ఆ పనికి ప్రింటర్ లేదు — ఈ స్క్రీన్‌పైనే ఒకటి ఎంచుకోండి
-kot_format_saved	KOT ఆకృతి సేవ్ అయింది
 std_print	బిల్ ప్రింట్ పరిమాణం
 std_print_help	స్టాండర్డ్ పోర్ట్రెయిట్ మరియు ల్యాండ్‌స్కేప్ బిల్ జాబ్‌ల అక్షర పరిమాణం (థర్మల్ KOT వేరు). రెండు దిశల్లోనూ ఒకే పరిమాణం.
 std_size_s	చిన్న
@@ -1264,7 +1244,6 @@ new_items_head	ఇంకా పంపలేదు
 price_ph	ధర
 price_ph_gst_inside	ధర ({tax} లోపల)
 cancel_needs_table	వంట తర్వాత రద్దు చేయడానికి ఈ ఆర్డర్‌ను ఫ్లోర్ (టేబుల్) నుండి తెరవండి — కౌంటర్ KOTలు చెల్లింపు వరకు టికెట్‌పై ఉంటాయి
-tax_rates_missing_hint	ఈ వంటకాలపై {tax} రేటు లేదు — మెనూలో పన్ను రేటు సెట్ చేయండి ({tax} inclusiveలో ధరల్లో ఇప్పటికే {tax} ఉంది)
 taxable_value	పన్ను విలువ
 gst_inside_price_note	({tax} లోపల)
 start_with_template	మా మెనూ టెంప్లేట్‌తో ప్రారంభించండి
@@ -1318,9 +1297,7 @@ order_empty_pick	ఆర్డర్ ఖాళీగా ఉంది — వం�
 add_dishes	వంటకాలు జోడించు
 order_so_far	ఈ ఆర్డర్‌లో: {n} · {total}
 no_dish_match	“{q}” కి సరిపోయే వంటకం లేదు
-pick_dishes_help	వంటకం జోడించడానికి నొక్కండి · జాబితా తగ్గించడానికి వర్గం ఎంచుకోండి
 pick_done	అయింది
-pick_done_dd	అయింది · {label}
 printer_route_mode	ఈ చోట చాలా ప్రింటర్లు ఉంటే
 printer_mode_first	మొదట పనిచేసేది
 printer_mode_all	అన్నింటిపై ముద్రించు
@@ -1368,3 +1345,22 @@ recent_changes	ఇటీవలి మార్పులు
 lane_declared_label	పన్ను ఇన్‌వాయిస్
 lane_owner_label	క్యాష్ మెమో
 money_lane_bill	బిల్లు: {lane}
+sel_copy	కాపీ
+sel_select_all	అన్నీ ఎంచుకోండి
+sel_copied	కాపీ అయింది
+items_tmpl_khaynjo	Khaynjo ఐటమ్ టెంప్లేట్
+items_tmpl_named	{name} టెంప్లేట్
+app_tmpl_named	{name} యాప్ టెంప్లేట్
+private_code_ph	12 అంకెల కోడ్
+stamp_on	స్టాంప్: ఫైల్‌లో
+pay_qr_on	చెల్లింపు QR: ఫైల్‌లో
+pay_qr_off	చెల్లింపు QR: లేదు
+items_tmpl_heading	అంశం టెంప్లేట్‌లు
+items_tmpl_help	మీ మెనూ కోసం వంటకాలు, వర్గాలు మరియు ఫోటోలు. దుకాణ సెట్టింగ్‌లు మరియు సిబ్బంది అలాగే ఉంటారు.
+public_tmpl_help	ఎవరైనా డౌన్‌లోడ్ చేసుకోగల ప్రారంభ మెనూలు. ఒకసారి ఇంటర్నెట్ కావాలి.
+private_tmpl_help	మీ Khaynjo పరిచయం ఇచ్చే 12-అంకెల కోడ్‌తో రక్షించిన కస్టమర్ మెనూలు.
+printers_screen_tip	వెతుకు ఈ పరికరం ఉపయోగించగల ప్రింటర్‌లను చూపించి ఈ దుకాణం కోసం సేవ్ చేస్తుంది. బిల్ ప్రింటర్‌లు: బిల్ & KOT ఫార్మాట్ → బిల్. వంటగది: వంటగది → వంటగది స్టేషన్‌లు.
+printers_found_none	ప్రింటర్‌లు ఏవీ కనబడలేదు.
+kot_copy_from	దీని నుండి కాపీ చేయండి
+kot_copy_from_help	ఆ రకంలోని ప్రతి వరుస పరిమాణం, మందం, అమరికను దీనిలోకి కాపీ చేస్తుంది. ఈ రకం తన సొంత బ్యానర్, అంశ ఉపసర్గ, కొట్టివేతను ఉంచుకుంటుంది. ఉంచడానికి KOT ఫార్మాట్‌ను సేవ్ చేయండి.
+nav_loading	లోడ్ అవుతోంది…

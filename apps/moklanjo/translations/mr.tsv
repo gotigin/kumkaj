@@ -39,7 +39,7 @@ adding_item	नवा दर जोडत आहे
 editing_item	संपादन
 save	जतन करा
 remove	काढा
-empty_catalog	अद्याप दर नाहीत. दर व सेवा उघडा, एक जोडा (नाव + किंमत, एकक kg), मग बुकिंग.
+empty_catalog	अद्याप दर नाहीत.
 counter_sale	काउंटर बुकिंग
 total	एकूण
 cash	रोख
@@ -171,8 +171,6 @@ selected_language	निवडलेली
 continue	पुढे जा
 this_device	हे डिव्हाइस
 device_use_q	हे डिव्हाइस कसे वापरले जाईल?
-last_server_mode	आधी सर्व्हर होते — पुढे जाण्यासाठी टॅप करा
-last_client_mode	आधी क्लायंट होते — पुढे जाण्यासाठी टॅप करा
 choose_server	सर्व्हर निवडा
 choose_server_hint	या डिव्हाइसवर आधीच सर्व्हर आहेत. एक उघडा, किंवा दुसऱ्या व्यवसायासाठी नवीन सर्व्हर बनवा.
 create_new_server	नवीन सर्व्हर बनवा
@@ -501,8 +499,6 @@ job_layout	लेआउट
 job_delivery	काम कसे पाठवले जाते
 job_size	फॉन्ट आकार
 job_size_ph	उदा. 18, 20, 26…
-save_receipt_format	पावती फॉरमॅट जतन करा
-save_label_format	लेबल फॉरमॅट जतन करा
 test_receipt_format	चाचणी पावती
 test_label_format	चाचणी लेबल
 test_receipt_sent	नमुना पावती पाठवली
@@ -610,7 +606,7 @@ units_heading	एकके
 booking_measures	बुकिंग मापे
 drawer_count	ड्रॉवर मोजणी (ऐच्छिक)
 spreadsheet_csv	स्प्रेडशीट (CSV)
-bank_reconciliation	बँक ताळमेळ (तुमच्या बँक स्टेटमेंटशी टिक करा)
+bank_reconciliation	बँक ताळमेळ
 book_add_product	बुक — उत्पादन / दर जोडा
 book_opening_credit	बुक — सुरुवातीचे उधार
 account_kind	खात्याचा प्रकार (एक दाबा)
@@ -650,7 +646,7 @@ net_word	नेट
 offline_badge	ऑफलाइन
 optional_login_help	ऐच्छिक लॉगिन (आयडी + पासवर्ड). मालक एकदा लावतो; नंतर फक्त वापरकर्ताच पासवर्ड बदलू शकतो.
 or_unlock_login	किंवा लॉगिन आयडी + पासवर्डने अनलॉक करा
-permission_preset	काम (स्क्रीन आणि अधिकार ठरवते)
+permission_preset	काम
 preset_help_moklanjo	कॅशियर: विक्री. व्यवस्थापक: विक्री + आयटम + रद्द/दुरुस्ती.
 product_locked_moklanjo	Moklanjo
 product_only_moklanjo	हे ॲप फक्त Moklanjo आहे — वह्या + बुकिंग डेस्क. इतर व्यवसायांची उत्पादने नंतर वेगळी येतील.
@@ -698,10 +694,6 @@ pin_hint_paired	अतिरिक्त टिल जोडले — विक
 pin_hint_pair_first	अतिरिक्त टिल — आधी दुकान डिव्हाइसशी जोडा
 unlock_to_continue	पुढे जाण्यासाठी अनलॉक करा
 no_staff_yet	अद्याप कर्मचारी नाही — मालक म्हणून अनलॉक करा, मग Team
-status_server_set_pin	सर्व्हर मोड — मालक PIN लावा
-status_server_tills	सर्व्हर मोड — अतिरिक्त टिल जोडू शकतात. अनलॉक करा
-status_server_unlock	सर्व्हर मोड — मालक म्हणून अनलॉक करा
-status_client_unlock	क्लायंट मोड — विक्रीसाठी अनलॉक करा
 icon_new_selected	चिन्ह: नवीन फाइल निवडली — ब्रँड जतन करा दाबा
 icon_custom	चिन्ह: तुमच्या दुकानाची खूण
 icon_default	चिन्ह: Kumkaj खूण (डीफॉल्ट) — स्वतःची निवडा
@@ -834,3 +826,7 @@ role_help_supplier	भूमिका: पुरवठादार — खरे
 lane_declared_label	खाते बुकिंग
 lane_owner_label	रोख बुकिंग
 money_lane_bill	बिल: {lane}
+sel_copy	कॉपी करा
+sel_select_all	सर्व निवडा
+sel_copied	कॉपी झाले
+nav_loading	लोड होत आहे…

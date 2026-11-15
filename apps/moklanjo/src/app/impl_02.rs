@@ -19,12 +19,24 @@ impl App {
         self.ui
             .button(cx, ids!(header_back))
             .set_visible(cx, show_back);
-        self.ui
-            .button(cx, ids!(sidebar_settings_back))
-            .set_visible(cx, false);
     }
 
-fn sync_chrome(&mut self, cx: &mut Cx) {
+    /// Chrome for the current screen. After an unlock, the landing then
+    /// runs as a tap on its nav item would (`unlocked_home_from`): Day
+    /// close loads its figures, Books its overview, a Settings section opens.
+    fn sync_chrome(&mut self, cx: &mut Cx) {
+        self.sync_chrome_body(cx);
+        let tab = {
+            let mut st = app_state().lock().unwrap();
+            let tab = st.nav_tab_after_unlock.take();
+            tab.filter(|t| st.session.is_some() && st.screen == screen_for_nav_tab(*t))
+        };
+        if let Some(tab) = tab {
+            self.open_nav_tab(cx, tab);
+        }
+    }
+
+    fn sync_chrome_body(&mut self, cx: &mut Cx) {
         // While other devices depend on this one, its screen stays on:
         // Android dozes a dark device and drops them (desktops hold the
         // system awake in `net::KeepAwake`).
@@ -58,18 +70,7 @@ fn sync_chrome(&mut self, cx: &mut Cx) {
         // Worker owns the books — skip SQL so busy_timeout waits never freeze the UI.
         // Still paint status+cancel chrome and switch screens so the user can leave
         // the busy page (nav / header) while the job keeps running.
-        let printer_add = printer_add_busy().load(std::sync::atomic::Ordering::SeqCst);
-        let finding = print_share::is_finding_printers();
-        let heavy_job = restore_busy().load(std::sync::atomic::Ordering::SeqCst)
-            || csv_import_busy().load(std::sync::atomic::Ordering::SeqCst)
-            || backup_busy().load(std::sync::atomic::Ordering::SeqCst)
-            || backup_copy_busy().load(std::sync::atomic::Ordering::SeqCst)
-            || branch_busy().load(std::sync::atomic::Ordering::SeqCst)
-            || diag_export_busy().load(std::sync::atomic::Ordering::SeqCst)
-            || printer_add
-            || finding
-            || role_open_busy().load(std::sync::atomic::Ordering::SeqCst)
-            || client_pair_busy().load(std::sync::atomic::Ordering::SeqCst);
+        let heavy_job = heavy_books_job();
         self.paint_submit_busy_chrome(cx);
         self.paint_pair_busy_chrome(cx);
         if heavy_job {
@@ -884,9 +885,9 @@ fn sync_chrome(&mut self, cx: &mut Cx) {
         self.ui
             .widget(cx, ids!(product_list_menu))
             .set_visible(cx, product_count > 0);
-        self.ui
-            .widget(cx, ids!(cart_empty_hint))
-            .set_visible(cx, cart_count == 0);
+        // Empty desk: no instruction line (cluster text, 2026-11-14) — the
+        // Booking ℹ says how to start.
+        self.ui.widget(cx, ids!(cart_empty_hint)).set_visible(cx, false);
         self.ui
             .widget(cx, ids!(cart_list))
             .set_visible(cx, cart_count > 0);
@@ -1128,7 +1129,6 @@ fn sync_chrome(&mut self, cx: &mut Cx) {
                 ids!(sale_attach_hint),
                 ids!(sale_attach_list),
                 &attach_txt,
-                "(no attachments yet — select a sale)",
             );
         }
         {
@@ -1148,7 +1148,6 @@ fn sync_chrome(&mut self, cx: &mut Cx) {
                 ids!(party_attach_hint),
                 ids!(party_attach_list),
                 &attach_txt,
-                "(no attachments yet — select a party)",
             );
         }
         {
@@ -1271,7 +1270,6 @@ fn sync_chrome(&mut self, cx: &mut Cx) {
                 ids!(expense_attach_hint),
                 ids!(expense_attach_list),
                 &attach_txt,
-                "(no attachments yet — log an expense)",
             );
         }
         self.set_report_rows(cx, ids!(sale_history_label), sale_history);
@@ -1357,9 +1355,8 @@ fn sync_chrome(&mut self, cx: &mut Cx) {
             self.ui
                 .view(cx, ids!(team_selected_setup))
                 .set_visible(cx, manage_team && has_selected);
-            self.ui
-                .widget(cx, ids!(team_pick_hint))
-                .set_visible(cx, manage_team && !has_selected);
+            // The Team ℹ says how to pick; no instruction line (2026-11-14).
+            self.ui.widget(cx, ids!(team_pick_hint)).set_visible(cx, false);
             {
                 let help = self.ui.widget(cx, ids!(team_help)).as_info_help();
                 let title = locale::t(&lang, if manage_team { "team" } else { "my_pin_settings" });
@@ -1739,6 +1736,10 @@ fn sync_chrome(&mut self, cx: &mut Cx) {
             self.ui
                 .widget(cx, ids!(onboard_status))
                 .set_text(cx, &plain_display_text(&onboard_status));
+            // Only the result ("set up") shows; how to start is the screen's
+            // ℹ — the instruction line was cluster text (2026-11-14).
+            let onboard_done = app_state().lock().unwrap().onboarding_complete;
+            self.ui.widget(cx, ids!(onboard_status)).set_visible(cx, onboard_done);
             self.ui
                 .widget(cx, ids!(client_pair_status)).set_text(cx, &plain_display_text(&{
                     // The last pairing try speaks for itself (refused, waiting…).
@@ -1753,7 +1754,8 @@ fn sync_chrome(&mut self, cx: &mut Cx) {
                             format!("{} {}", st.t("paired_note"), st.t("last_update_at").replace("{time}", &updated))
                         }
                     } else {
-                        st.t("pair_intro")
+                        // The heading's ℹ says how (pair_intro) — no copy here.
+                        String::new()
                     }
                 }));
             // What this device still owes the office, and what the office
