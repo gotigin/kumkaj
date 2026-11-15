@@ -83,9 +83,7 @@ print_cancelled_kot_needed	पहिले रद्द बेंजन वा�
 print_cancelled_kot_none	एह ऑर्डर पर कवनो रद्द बेंजन नइखे
 print_cancelled_kot_client	{place} खातिर रद्द छापीं ({n}) भेजल — रसोई सर्वर पर छापी
 kot_banner	किसिम बैनर
-kot_banner_ph	बैनर (खाली = ना)
 kot_item_prefix	सामान उपसर्ग
-kot_item_prefix_ph	जइसे [CANCELLED]
 kot_strike	बेंजन के नाम काटीं
 kot_strike_note	बेंजन के टिप्पणी काटीं
 kot_strike_on	चालू
@@ -103,13 +101,11 @@ bill_item_qty	मात्रा
 bill_item_price	दाम
 bill_item_amount	रकम
 bill_item_note	बेंजन के टिप्पणी
-bill_item_col_order	खंभा के क्रम
 bill_item_col_sep	खंभा रेखा
 slip_columns	खंभा
 slip_col_width	चौड़ाई (mm)
 slip_col_start	सुरुआत के जगह (px)
 slip_col_end	आखिर के जगह (px)
-slip_col_align	लिखावट के सीध
 slip_columns_help	हर खंभा के चौड़ाई में ओकर सुरुआत आ आखिर के जगह शामिल बा। लिखावट अपना खंभा के भीतर लपेटा जाला; सामग्री के चौड़ाई से बाहर जवन बा ऊ कागज आ पूर्वावलोकन दूनो में कट जाला।
 bill_total_qty_label	कुल मात्रा लेबल
 bill_total_subtotal_label	उप-जोड़ लेबल
@@ -643,7 +639,6 @@ vp_type_size_heading	अक्षर आकार
 vp_wrap_heading	लपेट के चउड़ाई
 vp_margin_heading	हाशिया
 vp_delivery_spooler	OS दस्तावेज (सिस्टम स्पूलर)
-vp_delivery_raw	डिवाइस के कच्चा बाइट
 vp_delivery_escpos	ESC/POS थर्मल आदेश
 virtual_printer_new	नया वर्चुअल प्रिंटर
 virtual_printer_selected	“{name}” बदलत बानी — बदले खातिर सूची में दोसरा दबाईं
@@ -1110,7 +1105,6 @@ remove_these_tables	ई टेबल हटाईं
 table_remove_ph	हटाईं: T1-T24, भा एगो टेबल के नाम
 find_server	दोकान के सर्वर खोजीं
 bill_format	बिल के रूप
-bill_format_help	हर बिल पर रउरा रेस्टोरेंट के नाम के नीचे छपेला। पंक्ति | से अलग करीं (जइसे MG Road, Rajkot | Ph 98250 00000)।
 bill_header_ph	पता | फोन
 fssai_ph	FSSAI लाइसेंस नं. (भारत)
 bill_footer_ph	फुटर (जइसे धन्यवाद, फेर आईं)
@@ -1127,7 +1121,6 @@ kot_field_hide	लुकाईं
 kot_field_on	देखाईं
 kot_field_off	लुकाईं
 kot_field_size	अक्षर आकार
-kot_field_size_ph	जइसे 16, 20, 24, 28, 32…
 kot_weight_light	पातर
 bill_kot_panel_help	बिल आ रसोई पर्ची के बनावट, हर एक के आपन चउड़ाई। बिल के कैशियर ऊ हउवन जे बिल जारी भा निपटवलन; KOT वेटर ऊ हउवन जे ऊ रसोई टिकट भेजलन — पूरा ऑर्डर के कहानी बही में रहेला।
 std_size_ph	जइसे 18, 20, 26…
@@ -1157,7 +1150,6 @@ kot_style_item_qty	सामान · मात्रा
 kot_style_field_pick	फील्ड चुनीं
 kot_weight_regular	सामान्य
 kot_weight_bold	मोट
-kot_align	मिलान
 kot_align_start	शुरू
 kot_align_center	बीच में
 kot_align_end	आखिर में
@@ -1307,18 +1299,8 @@ kot_show_item_hdr	सामान · मात्रा
 kot_hide_item_hdr	खंभा लुकाईं
 kot_show_title	शीर्षक पंक्ति
 kot_hide_title	शीर्षक लुकाईं
-kot_field_order	छपाई के क्रम
-kot_field_up	ऊपर करीं
-kot_field_down	नीचे करीं
 kot_field_cycle	अगिला चुनीं
 kot_field_select	अगिला चुनीं
-kot_field_time	समय
-kot_field_kot_no	KOT नं.
-kot_field_area	इलाका
-kot_field_table	टेबल
-kot_field_shop	दोकान के नाम
-kot_field_waiter	करमचारी
-kot_field_station	स्टेशन
 dishes_n	{n} बेंजन
 recipe_ph	विधि (मरजी के) — एगो हिस्सा में लागेला: Rice=0.2, Paneer=0.15
 reorder_ph	एतना भइला पर अउर कीनीं

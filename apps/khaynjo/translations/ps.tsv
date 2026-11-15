@@ -83,9 +83,7 @@ print_cancelled_kot_needed	لومړی د لغوه شوي لوښو سره میز 
 print_cancelled_kot_none	په دې امر کې هیڅ لغوه شوي خواړه نشته
 print_cancelled_kot_client	د لیږل شوي {place} لپاره چاپ لغوه شوی ({n}) - په سرور کې د پخلنځي چاپونه
 kot_banner	مهربان بینر
-kot_banner_ph	بینر (خالی = هیڅ نه)
 kot_item_prefix	د توکي مخفف
-kot_item_prefix_ph	د مثال په توګه ]لست شوی[
 kot_strike	د ډش نوم
 kot_strike_note	د سټرایک ډش یادښت
 kot_strike_on	پر
@@ -103,13 +101,11 @@ bill_item_qty	مقدار
 bill_item_price	قیمت
 bill_item_amount	مقدار
 bill_item_note	د ډوډۍ یادښت
-bill_item_col_order	د کالم ترتیب
 bill_item_col_sep	د کالم قواعد
 slip_columns	ستنې
 slip_col_width	سور (mm)
 slip_col_start	د پیل واټن (px)
 slip_col_end	د پای واټن (px)
-slip_col_align	د متن سمون
 slip_columns_help	د هرې ستنې سور کې د هغې د پیل او پای واټن شامل دی. متن د خپلې ستنې دننه ماتیږي؛ هغه څه چې د منځپانګې له سور څخه وځي، په کاغذ او مخکتنه کې پرې کیږي.
 bill_total_qty_label	ټول مقدار لیبل
 bill_total_subtotal_label	فرعي ټول لیبل
@@ -643,7 +639,6 @@ vp_type_size_heading	ډول اندازه
 vp_wrap_heading	پلنوالی
 vp_margin_heading	حاشیې
 vp_delivery_spooler	د OS سند (سیسټم سپولر)
-vp_delivery_raw	آلې ته خام بایټ
 vp_delivery_escpos	د POS/ESC حرارتي حکمونه
 virtual_printer_new	نوی مجازی پرنټر
 virtual_printer_selected	د "{name}" ترمیم کول - د بدلولو لپاره په لیست کې بل ټایپ کړئ
@@ -1110,7 +1105,6 @@ remove_these_tables	دا میزونه لرې کړئ
 table_remove_ph	لرې کړئ: T24-T1، یا د یو میز نوم
 find_server	د هټۍ سرور ومومئ
 bill_format	د بل بڼه
-bill_format_help	لاندې چاپ شوی. سره جال کرښې | (د مثال په توګه MG روډ، راجکوټ | فون 98250 00000).
 bill_header_ph	پته | تلیفون
 fssai_ph	د FSSAI جواز نمبر (هند)
 bill_footer_ph	فوټر (د مثال په توګه مننه، بیا لیدنه وکړئ)
@@ -1127,7 +1121,6 @@ kot_field_hide	پټول
 kot_field_on	ښودل
 kot_field_off	پټول
 kot_field_size	د فونټ اندازه
-kot_field_size_ph	د مثال په توګه ۶۱، ۰۲، ۴۲، ۸۲، ۲۳...
 kot_weight_light	رڼا
 bill_kot_panel_help	ه څوک دی چې د پخلنځي ټکټ یې لیږلی - د بشپړ ترتیب کیسه په کتابونو کې پاتې کیږي.
 std_size_ph	د مثال په توګه ۸۱، ۰۲، ۶۲...
@@ -1157,7 +1150,6 @@ kot_style_item_qty	توکي · مقدار
 kot_style_field_pick	ساحه غوره کړئ
 kot_weight_regular	منظم
 kot_weight_bold	بولډ
-kot_align	سیده
 kot_align_start	پیل
 kot_align_center	مرکز
 kot_align_end	پای
@@ -1307,18 +1299,8 @@ kot_show_item_hdr	توکي · مقدار
 kot_hide_item_hdr	کالمونه پټ کړئ
 kot_show_title	د سرلیک کرښه
 kot_hide_title	سرلیک پټ کړئ
-kot_field_order	د چاپ امر
-kot_field_up	پورته الړ شه
-kot_field_down	لاندې حرکت وکړئ
 kot_field_cycle	بل وټاکئ
 kot_field_select	بل وټاکئ
-kot_field_time	وخت
-kot_field_kot_no	شمیره CAT
-kot_field_area	ساحه
-kot_field_table	میز
-kot_field_shop	د هټۍ نوم
-kot_field_waiter	کارکوونکي
-kot_field_station	سټیشن
 dishes_n	{n} لوښي
 recipe_ph	ترکیب (اختیاري) - یوه برخه کاروي: وريجې = 2.0، پنیر = 15.0
 reorder_ph	نور په کې واخلئ

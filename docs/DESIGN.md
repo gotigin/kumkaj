@@ -226,6 +226,22 @@ coloured floor, Moklanjo's rates/cart split).
 - **Capability-aware chrome** (vision §30): peers for a capability
   show only when the business runs that capability; a business that
   never uses it never sees its screens.
+- **Long forms edit in place, once (owner, 2026-11-15).** A form with many
+  similar items (a bill's lines, a KOT's lines, item columns, totals) is
+  one list in its real order. Tapping an item opens it **where it sits**
+  with all its settings in its own rows (wrapping on narrow screens) and
+  its extras right under it; nothing is set in a second list further down
+  (no separate "Print order" list, no picker that edits a block at the
+  bottom). A closed item reads as one summary line. A result preview sits
+  beside the form when the form keeps ≈ ≥ 640 css px and moves down beside
+  the open item; otherwise it follows the form. Khaynjo Bill & KOT format,
+  Kirano / Tabiyat Bill & Slip format (`layout_slip_editors`, `align_slip_previews`;
+  [`PRINTER.md`](PRINTER.md) § How the Bill and KOT tabs are laid out).
+  When asked to simplify a screen, audit **all** of it for repetition (a
+  label over a box that already names itself, the same setting twice,
+  hidden legacy blocks) — the owner should not have to point at each
+  element — and check it at ~420, ~1024 and ~1440 px before calling it
+  done. Every function stays.
 - **Each person's own home**: unlock returns each person to the nav item
   they last had selected on this device — a Settings section too; the
   first time, the first item on the bar they may open

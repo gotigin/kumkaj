@@ -69,12 +69,10 @@ bill_item_qty	تعداد
 bill_item_price	قۭمَت
 bill_item_amount	رقم
 bill_item_note	چیٖز نوٹ
-bill_item_col_order	کالم ترتیب
 bill_item_col_sep	کالم اصول
 slip_col_width	چوڑٲے (mm)
 slip_col_start	شروعاتُک جاے (px)
 slip_col_end	آخرُک جاے (px)
-slip_col_align	متنٕچ ترتیٖب
 slip_columns_help	پرٛتھ کالمُک چوڑٲے منٛز چھےٚ تمیٚک شروعات تہٕ آخرُک جاے شامل۔ متن چھُ پنٕنِس کالمس اندر لپیٹنہٕ یِوان؛ مواد کہِ چوڑٲے نیٚبر یُس چھُ سُہ چھُ کاغزس پؠٹھ تہٕ پیش نظارس منٛز کٹنہٕ یِوان۔
 bill_total_qty_label	کل qty لیبل
 bill_total_subtotal_label	ذیلی کُل لیبل
@@ -431,7 +429,6 @@ printer_profile_heading	خاکہ
 vp_delivery_heading	پہنچ
 vp_delivery_help	یہِ مجازی پرنٹر چھُ کٲم کِتھ پٲٹھۍ سوزان — OS دستاویز، خام بائٹ، یا ESC/POS۔ پَرچی ہُنٛد مواد (اکھَر سایِز، لَپیٹ، مارجِن) چھُ بِل / پَرچی فارمیٹ طے کَران، یہِ نہٕ۔
 vp_delivery_spooler	او ایس ڈاکیومینٹ (سسٹم سپولر)
-vp_delivery_raw	را بایِٹ ٹو ڈیوائس
 vp_delivery_escpos	ESC/POS تھرمل کمانڈ
 virtual_printer_new	نٔو ورچوئل پرنٹر
 virtual_printer_selected	اؠڈِٹ کَرنہٕ آمُت "{name}" — بَدلاونہٕ خٲطرٕ کٔرِو بیٚیِس فہرستَس مَنٛز دَبٲیِو
@@ -718,7 +715,6 @@ customer_paid_ph	گراہک ادا کٔرِتھ
 tip_ph	ٹِپ
 find_server	دُکانُک سرور ژھانٛڑِو
 bill_format	بِل فارمیٹ
-bill_format_help	پرٮ۪تھ بِلَس پٮ۪ٹھ چھُ تُہٕنٛزِ دُکانہِ کِس ناوَس بۄنہٕ چھاپان۔ لائنہٕ | سۭتۍ کٔرِو الگ (مثلَن MG Road, Rajkot | Ph 98250 00000)۔
 bill_header_ph	ایڈریس | فون
 fssai_ph	FSSAI / دُکان لائسنس نمبر (اختیاری)
 bill_footer_ph	فوٹر (مثلاً شُکریہ، دُبارٕ وزِٹ)
@@ -808,8 +804,6 @@ add_dishes	چیٖز کٔرِو شٲمِل
 order_so_far	اتھ ترتیبس پیٹھ: {n} · {total}
 no_dish_match	“{q}” سۭتۍ چھُنہٕ کانٛہہ چیٖز رَلان
 pick_done	مُکمل
-kot_field_up	ہیوٚر کٔرِو
-kot_field_down	بۄن کُن گٔژھِو
 dishes_n	{n} چیٖز
 reorder_ph	مٔزیٖد ہیٚیِو
 set_reorder	ری آرڈرُک لیول سیٹ کَرُن
@@ -841,3 +835,6 @@ sel_copy	کاپی کٔرِو
 sel_select_all	سۄری ژارِو
 sel_copied	کاپی گَو
 nav_loading	لوڈ گژھان…
+printer_mode_first	گۄڈٕ یُس کٲم کران چھُ
+printer_mode_all	سارنی پیٹھ چھاپ
+slip_columns	کالَم

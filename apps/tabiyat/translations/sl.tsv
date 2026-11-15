@@ -81,12 +81,10 @@ bill_item_qty	Kol.
 bill_item_price	Cena
 bill_item_amount	Znesek
 bill_item_note	Rx / obvestilo o prodaji
-bill_item_col_order	Vrstni red stolpcev
 bill_item_col_sep	Črte stolpcev
 slip_col_width	Širina (mm)
 slip_col_start	Začetni razmik (px)
 slip_col_end	Končni razmik (px)
-slip_col_align	Poravnava besedila
 slip_columns_help	Širina vsakega stolpca vključuje njegov začetni in končni razmik. Besedilo se prelomi znotraj svojega stolpca; kar sega čez širino vsebine, se odreže – na papirju in v predogledu.
 bill_total_qty_label	Oznaka skupne kol.
 bill_total_subtotal_label	Oznaka vmesne vsote
@@ -443,7 +441,6 @@ printer_profile_heading	Postavitev
 vp_delivery_heading	Dostava
 vp_delivery_help	Kako ta virtualni tiskalnik pošilja opravila – dokument OS, neobdelani bajti ali ESC/POS. Vsebino listeka (velikost tipa, ovoj, robovi) določa oblika računa / listeka, ne tukaj.
 vp_delivery_spooler	Dokument OS (sistemski čakalnik)
-vp_delivery_raw	Surovi bajti v napravo
 vp_delivery_escpos	Toplotni ukazi ESC/POS
 virtual_printer_new	Nov navidezni tiskalnik
 virtual_printer_selected	Urejanje „{name}“ — tapnite drugega na seznamu za preklop
@@ -730,7 +727,6 @@ customer_paid_ph	Stranka je plačala
 tip_ph	Napitnina
 find_server	Poišči strežnik lokala
 bill_format	Oblika računa
-bill_format_help	Natisnjeno pod imenom vaše trgovine na vsakem računu. Vrstice ločite z | (npr. MG Road, Rajkot | Ph 98250 00000).
 bill_header_ph	Naslov | telefon
 fssai_ph	Dovoljenje za zdravila št. (neobvezno - vaše besedilo)
 bill_footer_ph	Noga (npr. Hvala, pridite spet)
@@ -820,8 +816,6 @@ add_dishes	Dodajte zdravila
 order_so_far	V tem naročilu: {n} · {total}
 no_dish_match	Noben element se ne ujema z “{q}”
 pick_done	Končano
-kot_field_up	Premakni gor
-kot_field_down	Premakni dol
 dishes_n	predmetov {n}
 reorder_ph	Kupi več pri
 set_reorder	Nastavi raven ponovnega naročila
@@ -853,3 +847,6 @@ sel_copy	Kopiraj
 sel_select_all	Izberi vse
 sel_copied	Kopirano
 nav_loading	Nalaganje…
+printer_mode_first	Prvi, ki dela
+printer_mode_all	Natisni na vseh
+slip_columns	Stolpci

@@ -69,12 +69,10 @@ bill_item_qty	ප්‍රමාණය
 bill_item_price	මිල
 bill_item_amount	මුදල
 bill_item_note	අයිතම සටහන
-bill_item_col_order	තීරු අනුපිළිවෙල
 bill_item_col_sep	තීරු නීති
 slip_col_width	පළල (mm)
 slip_col_start	ආරම්භක ඉඩ (px)
 slip_col_end	අවසාන ඉඩ (px)
-slip_col_align	පෙළ පෙළගැස්ම
 slip_columns_help	සෑම තීරුවකම පළලට එහි ආරම්භක සහ අවසාන ඉඩ ඇතුළත් වේ. පෙළ තම තීරුව තුළම ඔතා යයි; අන්තර්ගත පළලෙන් ඔබ්බට ඇති දේ කඩදාසියේ සහ පෙරදසුනේ කැපී යයි.
 bill_total_qty_label	මුළු qty ලේබලය
 bill_total_subtotal_label	උප සම්පූර්ණ ලේබලය
@@ -431,7 +429,6 @@ printer_profile_heading	පිරිසැලසුම
 vp_delivery_heading	භාරදීම
 vp_delivery_help	මෙම අතථ්‍ය මුද්‍රණ යන්ත්‍රය රැකියා යවන ආකාරය — OS ලේඛනය, අමු බයිට්, හෝ ESC/POS. ස්ලිප් අන්තර්ගතය (වර්ගයේ ප්‍රමාණය, එතුම, මායිම්) තීරණය වන්නේ බිල්පත් / ස්ලිප් ආකෘතියෙන් මිස මෙහි නොවේ.
 vp_delivery_spooler	OS ලේඛනය (පද්ධති ස්පූලර්)
-vp_delivery_raw	උපාංගයට අමු බයිට්
 vp_delivery_escpos	ESC/POS තාප විධාන
 virtual_printer_new	නව අතථ්‍ය මුද්‍රණ යන්ත්‍රය
 virtual_printer_selected	"{name}" සංස්කරණය කිරීම - මාරු වීමට ලැයිස්තුවේ තවත් එකක් තට්ටු කරන්න
@@ -718,7 +715,6 @@ customer_paid_ph	පාරිභෝගිකයා ගෙවා ඇත
 tip_ph	ඉඟිය
 find_server	වෙළඳසැලේ සේවාදායකය සොයා ගන්න
 bill_format	ආගන්තුක ආගන්තුක බිල්පත් ආකෘතිය
-bill_format_help	සෑම බිල්පතකම ඔබේ සාප්පුවේ නම යටතේ මුද්රණය කර ඇත. සමඟින් වෙනම රේඛා | (උදා. MG පාර, රාජ්කොට් | Ph 98250 00000).
 bill_header_ph	ලිපිනය | දුරකථනය
 fssai_ph	FSSAI / සාප්පු බලපත්‍ර අංකය. (විකල්ප)
 bill_footer_ph	පාදකය (උදා. ස්තූතියි, නැවත පැමිණෙන්න)
@@ -808,8 +804,6 @@ add_dishes	අයිතම එකතු කරන්න
 order_so_far	මෙම ඇණවුම මත: {n} · {total}
 no_dish_match	"{q}" කිසිදු අයිතමයක් නොගැලපේ
 pick_done	කළා
-kot_field_up	ඉහළට ගමන් කරන්න
-kot_field_down	පහළට ගමන් කරන්න
 dishes_n	{n} අයිතම
 reorder_ph	වැඩි මිලට ගන්න
 set_reorder	නැවත ඇණවුම් මට්ටම සකසන්න
@@ -841,3 +835,6 @@ sel_copy	පිටපත් කරන්න
 sel_select_all	සියල්ල තෝරන්න
 sel_copied	පිටපත් කළා
 nav_loading	පූරණය වෙමින්…
+printer_mode_first	මුලින්ම එය ක්රියා කරයි
+printer_mode_all	සියල්ල මත මුද්‍රණය කරන්න
+slip_columns	තීරු

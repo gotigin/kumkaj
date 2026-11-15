@@ -83,9 +83,7 @@ print_cancelled_kot_needed	Նախ բացեք սեղան չեղարկված ու�
 print_cancelled_kot_none	Այս պատվերում չեղարկված ուտեստներ չկան
 print_cancelled_kot_client	Չեղարկվածների տպում ({n}) {place}-ի համար ուղարկվել է — խոհանոցը տպում է Սերվերում
 kot_banner	Տեսակի ժապավեն
-kot_banner_ph	Ժապավեն (դատարկ = ոչինչ)
 kot_item_prefix	Ապրանքի նախածանց
-kot_item_prefix_ph	օր. [ՉԵՂԱՐԿՎԱԾ]
 kot_strike	Գծել ուտեստի անունը
 kot_strike_note	Գծել ուտեստի նշումը
 kot_strike_on	Միաց.
@@ -103,13 +101,11 @@ bill_item_qty	Քանակ
 bill_item_price	Գին
 bill_item_amount	Գումար
 bill_item_note	Ուտեստի նշում
-bill_item_col_order	Սյունակների կարգ
 bill_item_col_sep	Սյունակների գծեր
 slip_columns	Սյունակներ
 slip_col_width	Լայնություն (mm)
 slip_col_start	Սկզբի տարածք (px)
 slip_col_end	Վերջի տարածք (px)
-slip_col_align	Տեքստի հավասարեցում
 slip_columns_help	Յուրաքանչյուր սյունակի լայնությունը ներառում է դրա սկզբի և վերջի տարածքը։ Տեքստը փաթաթվում է իր սյունակի ներսում. բովանդակության լայնությունից դուրս մնացածը կտրվում է՝ թղթի վրա և նախադիտման մեջ։
 bill_total_qty_label	Ընդհանուր քանակի պիտակ
 bill_total_subtotal_label	Ենթագումարի պիտակ
@@ -643,7 +639,6 @@ vp_type_size_heading	Տառաչափ
 vp_wrap_heading	Փաթաթման լայնություն
 vp_margin_heading	Լուսանցքներ
 vp_delivery_spooler	ՕՀ փաստաթուղթ (համակարգային սպուլեր)
-vp_delivery_raw	Հում բայթեր դեպի սարք
 vp_delivery_escpos	ESC/POS ջերմային հրամաններ
 virtual_printer_new	Նոր վիրտուալ տպիչ
 virtual_printer_selected	Խմբագրում է «{name}» — փոխելու համար հպեք ցանկի մեկ ուրիշին
@@ -1110,7 +1105,6 @@ remove_these_tables	Հեռացնել այս սեղանները
 table_remove_ph	Հեռացնել՝ T1-T24 կամ մեկ սեղանի անուն
 find_server	Գտնել խանութի սերվերը
 bill_format	Հաշվի ձևաչափ
-bill_format_help	Տպվում է ռեստորանի անվան տակ ամեն հաշվի վրա։ Տողերը բաժանեք | նշանով (օր. MG Road, Rajkot | Հեռ 98250 00000)։
 bill_header_ph	Հասցե | հեռախոս
 fssai_ph	FSSAI լիցենզիայի № (Հնդկաստան)
 bill_footer_ph	Ստորագիր (օր. Շնորհակալություն, նորից այցելեք)
@@ -1127,7 +1121,6 @@ kot_field_hide	Թաքցնել
 kot_field_on	ցույց
 kot_field_off	թաքցնել
 kot_field_size	Տառաչափ
-kot_field_size_ph	օր. 16, 20, 24, 28, 32…
 kot_weight_light	Բարակ
 bill_kot_panel_help	Հաշվի և խոհանոցի թերթիկի դասավորություն, յուրաքանչյուրն իր բովանդակության լայնությամբ։ Հաշվի գանձապահն է, ով հաշիվը տվել կամ փակել է. KOT մատուցողն է, ով այդ խոհանոցի թերթիկն է ուղարկել — պատվերի ամբողջ պատմությունը մնում է գրքերում։
 std_size_ph	օր. 18, 20, 26…
@@ -1157,7 +1150,6 @@ kot_style_item_qty	Ապրանք · Քանակ
 kot_style_field_pick	Ընտրել դաշտ
 kot_weight_regular	Սովորական
 kot_weight_bold	Թավ
-kot_align	Հավասարեցում
 kot_align_start	Սկիզբ
 kot_align_center	Կենտրոն
 kot_align_end	Վերջ
@@ -1307,18 +1299,8 @@ kot_show_item_hdr	Ապրանք · Քանակ
 kot_hide_item_hdr	Թաքցնել սյունակները
 kot_show_title	Վերնագրի տող
 kot_hide_title	Թաքցնել վերնագիրը
-kot_field_order	Տպման կարգ
-kot_field_up	Վեր տեղափոխել
-kot_field_down	Վար տեղափոխել
 kot_field_cycle	Ընտրել հաջորդը
 kot_field_select	Ընտրել հաջորդը
-kot_field_time	Ժամ
-kot_field_kot_no	KOT №
-kot_field_area	Գոտի
-kot_field_table	Սեղան
-kot_field_shop	Խանութի անուն
-kot_field_waiter	Անձնակազմ
-kot_field_station	Կայան
 dishes_n	{n} ուտեստ
 recipe_ph	Բաղադրատոմս (ըստ ցանկության) — մեկ բաժինը օգտագործում է՝ Բրինձ=0.2, Պանիր=0.15
 reorder_ph	Գնել ավելին՝

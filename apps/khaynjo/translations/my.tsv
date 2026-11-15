@@ -83,9 +83,7 @@ print_cancelled_kot_needed	ရပ်တန့်ထားသည့် ဟင်�
 print_cancelled_kot_none	ဤအမှာစာတွင် ဖျက်သိမ်းထားသောအစားအစာ မရှိပါ
 print_cancelled_kot_client	ဖျက်သိမ်းထားမှု ({n}) ကို {place} ပို့သွားသည် — မီးဖိုချောင်တွင် Server တွင် ပုံနှိပ်သည်
 kot_banner	အမျိုးအစားဘန်နား
-kot_banner_ph	ဘန်နား (သို့မဟုတ် အလွတ် = မရှိ)
 kot_item_prefix	ပစ္စည်း မြှောက်စာသား
-kot_item_prefix_ph	ဥပမာ [CANCELLED]
 kot_strike	အစားအစာအမည် တားဖျက်
 kot_strike_note	အစားအစာ မှတ်ချက် တားဖျက်
 kot_strike_on	ဖွင့်
@@ -103,13 +101,11 @@ bill_item_qty	အရေအတွက်
 bill_item_price	ဈေးနှုန်း
 bill_item_amount	ပမာဏ
 bill_item_note	မုန့်ဟင်းခါးမှတ်ချက်
-bill_item_col_order	ကော်လံအဆင့်
 bill_item_col_sep	ကော်လံစည်းမျဉ်းများ
 slip_columns	ကော်လံများ
 slip_col_width	အကျယ် (mm)
 slip_col_start	အစ နေရာလွတ် (px)
 slip_col_end	အဆုံး နေရာလွတ် (px)
-slip_col_align	စာသား ညှိခြင်း
 slip_columns_help	ကော်လံတစ်ခုစီ၏ အကျယ်တွင် ၎င်း၏ အစနှင့် အဆုံး နေရာလွတ် ပါဝင်သည်။ စာသားသည် မိမိကော်လံအတွင်း ကြောင်းဆင်းသည်; အကြောင်းအရာ အကျယ်ထက် ကျော်လွန်သည့်အပိုင်းကို စက္ကူပေါ်နှင့် အစမ်းကြည့်ရှုမှုတွင် ဖြတ်ထားမည်။
 bill_total_qty_label	စုစုပမာဏတပ်ဆင်ခြင်း label
 bill_total_subtotal_label	အပိုစုစုပမာဏ label
@@ -643,7 +639,6 @@ vp_type_size_heading	အရေးအသားအရွယ်အစား
 vp_wrap_heading	တောင်ပတ်အမြင့်
 vp_margin_heading	နားခံအကျယ်
 vp_delivery_spooler	OS စာရွက်စာတမ်း (စနစ် စပူးလာ)
-vp_delivery_raw	စက်တစ်လုံးသို့ မသန့်ရှင်းထားသော ဘိုင်များ
 vp_delivery_escpos	ESC/POS ထိုမိုင်းကာအမိန့်များ
 virtual_printer_new	အသစ်သော အမြင်အိုင်ဇာပရင့်တာ
 virtual_printer_selected	“{name}” ကို တည်းဖြတ်နေသည် — လက်စွပ်စာရင်းရှိ တစ်ခုခုကို ထပ်ကိုသွားနှိပ်ပြီး ပြောင်းနိုင်သည်
@@ -1110,7 +1105,6 @@ remove_these_tables	ဤစားပွဲများကိုဖယ်ရှာ
 table_remove_ph	ဖယ်ရှားရန်: T1-T24, သို့မဟုတ် တစ်စားပွဲအမည်
 find_server	ဆိုင်၏ဆာဗာကိုရှာပါ
 bill_format	ဘီလ်ပုံစံ
-bill_format_help	သင်၏စားသောက်ဆိုင်အမည်ဖြင့်တိုက်ရိုက်ပုံဖော်ထားသည်။ အကြောင်းအရာတန်းများကို | နဲ့ခွဲပါ (ဥပမာ- MG လမ်း, Rajkot | ဖုန်း 98250 00000)။
 bill_header_ph	လိပ်စာ | ဖုန်း
 fssai_ph	FSSAI လိုင်စင်နံပါတ် (အိန္ဒိယ)
 bill_footer_ph	ဖူးတာ (ဥပမာ: ကျေးဇူးတင်ပါတယ်၊ နောက်တစ်ဖန်လာပါ)
@@ -1127,7 +1121,6 @@ kot_field_hide	ဖျောက်မည်
 kot_field_on	ပြရန်
 kot_field_off	ပိတ်ရန်
 kot_field_size	ဖောင့်အရွယ်အစား
-kot_field_size_ph	ဥပမာ 16, 20, 24, 28, 32…
 kot_weight_light	တစ်သက်သာ
 bill_kot_panel_help	ဘီလ်နှင့်မီးဖိုချောင် စလစ်ဖော်မက်အပြင်အစီအရင်အဆင့်၊ တစ်ခုချင်းစီမှာ မူပိုင် အကြောင်းအရာအဝန်း ရှိသည်။ ဘီလ် ငွေတာဝန်ထမ်းသည် ဘီလ်ကို ထုတ်ပြန်သောသူ သို့မဟုတ် ပေးသည့်သူ ဖြစ်သည်။ KOT ဝေတားသည် မီးဖိုချောင်း စလစ်ကို ပို့ခဲ့သူဖြစ်သည် — အော်ဒါ အပြည့်အစုံ အကြောင်းအရာသည် စာအုပ်များထဲတွင် နေဆဲဖြစ်သည်။
 std_size_ph	ဥပမာ၊ 18, 20, 26…
@@ -1157,7 +1150,6 @@ kot_style_item_qty	ပစ္စည်း · အရေအတွက်
 kot_style_field_pick	ကွင်းရွေးချယ်ရန်
 kot_weight_regular	ပုံမှန်
 kot_weight_bold	ထူ
-kot_align	စီးတန်းညှိ
 kot_align_start	စတင်ရန်
 kot_align_center	အလယ်
 kot_align_end	အဆုံး
@@ -1307,18 +1299,8 @@ kot_show_item_hdr	ပစ္စည်း · အရေအတွက်
 kot_hide_item_hdr	အတန်းများကို ဖုံးထားပါ
 kot_show_title	ခေါင်းစီးလိုင်း
 kot_hide_title	ခေါင်းစီးကို ဖုံးထားပါ
-kot_field_order	ပုံနှိပ်အမိန့်
-kot_field_up	အပေါ်ကိုရွှေ့ပါ
-kot_field_down	အောက်ကိုရွှေ့ပါ
 kot_field_cycle	နောက်တစ်ခုကိုရွေးပါ
 kot_field_select	နောက်တစ်ခုကိုရွေးပါ
-kot_field_time	အချိန်
-kot_field_kot_no	KOT မဟုတ်ပါ
-kot_field_area	ဒေသ
-kot_field_table	စားပွဲ
-kot_field_shop	ဆိုင်နာမည်
-kot_field_waiter	ဝန်ထမ်း
-kot_field_station	စတေးရှင်း
 dishes_n	{n} အစားအစာများ
 recipe_ph	ချက်ပြုတ်နည်း (မလိုအပ်ပါ) — တစ်ပိုင်းမှာ သုံးသောအရာများ: ထမင်း=0.2, ပနီ=0.15
 reorder_ph	ပိုဝယ်ရန်

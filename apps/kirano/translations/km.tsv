@@ -69,12 +69,10 @@ bill_item_qty	បរិមាណ
 bill_item_price	តម្លៃ
 bill_item_amount	ទឹកប្រាក់
 bill_item_note	ចំណាំធាតុ
-bill_item_col_order	លំដាប់ជួរឈរ
 bill_item_col_sep	បន្ទាត់ជួរឈរ
 slip_col_width	ទទឹង (mm)
 slip_col_start	ចន្លោះដើម (px)
 slip_col_end	ចន្លោះចុង (px)
-slip_col_align	ការតម្រឹមអត្ថបទ
 slip_columns_help	ទទឹងនៃជួរឈរនីមួយៗរួមបញ្ចូលចន្លោះដើម និងចន្លោះចុងរបស់វា។ អត្ថបទរុំនៅក្នុងជួរឈររបស់វា; អ្វីដែលលើសពីទទឹងមាតិកានឹងត្រូវកាត់ចេញ ទាំងលើក្រដាស និងក្នុងការមើលជាមុន។
 bill_total_qty_label	ស្លាកសរុបបរិមាណ
 bill_total_subtotal_label	ស្លាកសរុបរង
@@ -431,7 +429,6 @@ printer_profile_heading	ប្លង់
 vp_delivery_heading	ដឹកជញ្ជូន
 vp_delivery_help	របៀបដែលម៉ាស៊ីនបោះពុម្ពនិម្មិតនេះផ្ញើការងារ — ឯកសារ OS, បៃឆៅ ឬ ESC/POS ។ មាតិការអិល (ទំហំប្រភេទ រុំ រឹម) ត្រូវបានសម្រេចដោយទម្រង់វិក្កយបត្រ/រអិល មិនមែននៅទីនេះទេ។
 vp_delivery_spooler	ឯកសារប្រព័ន្ធ (ជួរប្រព័ន្ធ)
-vp_delivery_raw	បៃឆៅទៅឧបករណ៍
 vp_delivery_escpos	ពាក្យបញ្ជាកម្ដៅ ESC/POS
 virtual_printer_new	ម៉ាស៊ីននិម្មិតថ្មី
 virtual_printer_selected	កំពុងកែ “{name}” — ប៉ះមួយទៀតក្នុងបញ្ជីដើម្បីប្ដូរ
@@ -718,7 +715,6 @@ customer_paid_ph	អតិថិជនបានបង់
 tip_ph	ធីប
 find_server	ស្វែងរក server ហាង
 bill_format	ទម្រង់វិក្កយបត្រ
-bill_format_help	បោះពុម្ពនៅក្រោមឈ្មោះហាងរបស់អ្នកនៅលើវិក័យប័ត្រនីមួយៗ។ ញែកបន្ទាត់ជាមួយ | (ឧ. ផ្លូវ MG, Rajkot | Ph 98250 00000)។
 bill_header_ph	អាសយដ្ឋាន | ទូរស័ព្ទ
 fssai_ph	FSSAI / អាជ្ញាប័ណ្ណហាងលេខ។ (ស្រេចចិត្ត)
 bill_footer_ph	បាត (ឧ. អរគុណ សូមមកម្ដងទៀត)
@@ -808,8 +804,6 @@ add_dishes	បន្ថែមធាតុ
 order_so_far	លើការកុម្ម៉ង់នេះ៖ {n} · {total}
 no_dish_match	គ្មានធាតុដែលត្រូវនឹង “{q}” ទេ
 pick_done	រួចរាល់
-kot_field_up	ផ្លាស់ឡើង
-kot_field_down	ផ្លាស់ចុះ
 dishes_n	ធាតុ {n}
 reorder_ph	ទិញបន្ថែមពេល
 set_reorder	កំណត់កម្រិតទិញវិញ
@@ -841,3 +835,6 @@ sel_copy	ចម្លង
 sel_select_all	ជ្រើសរើសទាំងអស់
 sel_copied	បានចម្លង
 nav_loading	កំពុងផ្ទុក…
+printer_mode_first	ដំបូងដែលដំណើរការ
+printer_mode_all	បោះពុម្ពទាំងអស់
+slip_columns	ជួរឈរ

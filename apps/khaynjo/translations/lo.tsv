@@ -83,9 +83,7 @@ print_cancelled_kot_needed	ເປີດໂຕະກິນເຂົ້າກັ�
 print_cancelled_kot_none	ບໍ່ມີຖ້ວຍທີ່ຖືກຍົກເລີກໃນຄໍາສັ່ງນີ້
 print_cancelled_kot_client	ຍົກເລີກການພິມ ({n}) ສໍາລັບ {place} ສົ່ງ — ພິມເຮືອນຄົວຢູ່ເຊີບເວີ
 kot_banner	ປ້າຍໂຄສະນາ
-kot_banner_ph	ປ້າຍໂຄສະນາ (ເປົ່າ = ບໍ່ມີ)
 kot_item_prefix	ຄຳນຳໜ້າລາຍການ
-kot_item_prefix_ph	ຕົວຢ່າງ: [ຍົກເລີກ]
 kot_strike	ຊື່ອາຫານຕີ
 kot_strike_note	ບັນທຶກການຕີອາຫານ
 kot_strike_on	ສຸດ
@@ -103,13 +101,11 @@ bill_item_qty	ຈຳນວນ
 bill_item_price	ລາຄາ
 bill_item_amount	ຈໍານວນ
 bill_item_note	ບັນທຶກອາຫານ
-bill_item_col_order	ລຳດັບຖັນ
 bill_item_col_sep	ກົດລະບຽບຖັນ
 slip_columns	ຖັນ
 slip_col_width	ຄວາມກວ້າງ (mm)
 slip_col_start	ຊ່ອງວ່າງຕົ້ນ (px)
 slip_col_end	ຊ່ອງວ່າງທ້າຍ (px)
-slip_col_align	ການຈັດຕຳແໜ່ງຂໍ້ຄວາມ
 slip_columns_help	ຄວາມກວ້າງຂອງແຕ່ລະຖັນລວມທັງຊ່ອງວ່າງຕົ້ນ ແລະ ທ້າຍຂອງມັນ. ຂໍ້ຄວາມຈະຕັດແຖວພາຍໃນຖັນຂອງມັນ; ສ່ວນທີ່ເກີນຄວາມກວ້າງເນື້ອຫາຈະຖືກຕັດອອກ ທັງໃນເຈ້ຍ ແລະ ໃນການເບິ່ງຕົວຢ່າງ.
 bill_total_qty_label	ປ້າຍຈຳນວນທັງໝົດ
 bill_total_subtotal_label	ປ້າຍທັງໝົດຍ່ອຍ
@@ -643,7 +639,6 @@ vp_type_size_heading	ພິມຂະຫນາດ
 vp_wrap_heading	ຄວາມກວ້າງຂອງຫໍ່
 vp_margin_heading	ຂອບ
 vp_delivery_spooler	ເອກະສານ OS (ຕົວຈັດວາງລະບົບ)
-vp_delivery_raw	ໄບຕ໌ດິບໄປຫາອຸປະກອນ
 vp_delivery_escpos	ESC/POS ຄໍາສັ່ງຄວາມຮ້ອນ
 virtual_printer_new	ເຄື່ອງພິມສະເໝືອນໃໝ່
 virtual_printer_selected	ການແກ້ໄຂ “{name}” — ແຕະອັນອື່ນໃນລາຍການເພື່ອສະຫຼັບ
@@ -1110,7 +1105,6 @@ remove_these_tables	ເອົາໂຕະອາຫານເຫຼົ່ານີ
 table_remove_ph	ເອົາອອກ: T1-T24, ຫຼືຫນຶ່ງຊື່ຂອງຕາຕະລາງ dining
 find_server	ຊອກຫາເຄື່ອງແມ່ຂ່າຍຂອງຮ້ານ
 bill_format	ຮູບແບບໃບບິນ
-bill_format_help	ພິມພາຍໃຕ້ຊື່ຮ້ານອາຫານຂອງທ່ານໃນທຸກໃບບິນ. ແຍກສາຍດ້ວຍ | (ເຊັ່ນ: MG Road, Rajkot | Ph 98250 00000).
 bill_header_ph	ທີ່ຢູ່ | ໂທລະສັບ
 fssai_ph	FSSAI ເລກທະບຽນ. (ອິນເດຍ)
 bill_footer_ph	ສ່ວນທ້າຍ (ເຊັ່ນ: ຂອບໃຈ, ເຂົ້າເບິ່ງອີກຄັ້ງ)
@@ -1127,7 +1121,6 @@ kot_field_hide	ເຊື່ອງ
 kot_field_on	ສະແດງໃຫ້ເຫັນ
 kot_field_off	ເຊື່ອງ
 kot_field_size	ຂະຫນາດຕົວອັກສອນ
-kot_field_size_ph	ຕົວຢ່າງ: 16, 20, 24, 28, 32…
 kot_weight_light	ແສງສະຫວ່າງ
 bill_kot_panel_help	ແຜນຜັງໃບບິນແລະເຮືອນຄົວ, ແຕ່ລະຄົນມີຄວາມກວ້າງຂອງເນື້ອຫາຂອງຕົນເອງ. Bill Cashier ເປັນຜູ້ອອກ ຫຼືຕົກລົງບັນຊີລາຍການ; KOT Waiter ແມ່ນຜູ້ທີ່ສົ່ງຕົ໋ວເຮືອນຄົວ - ເລື່ອງຄໍາສັ່ງເຕັມຢູ່ໃນປື້ມ.
 std_size_ph	ຕົວຢ່າງ: 18, 20, 26…
@@ -1157,7 +1150,6 @@ kot_style_item_qty	ລາຍການ · ຈຳນວນ
 kot_style_field_pick	ເລືອກຊ່ອງຂໍ້ມູນ
 kot_weight_regular	ປົກກະຕິ
 kot_weight_bold	ກ້າຫານ
-kot_align	ຈັດຮຽງ
 kot_align_start	ເລີ່ມ
 kot_align_center	ສູນ
 kot_align_end	ຈົບ
@@ -1307,18 +1299,8 @@ kot_show_item_hdr	ລາຍການ · ຈຳນວນ
 kot_hide_item_hdr	ເຊື່ອງຖັນ
 kot_show_title	ຫົວຂໍ້
 kot_hide_title	ເຊື່ອງຊື່
-kot_field_order	ພິມຄໍາສັ່ງ
-kot_field_up	ຍ້າຍຂຶ້ນ
-kot_field_down	ຍ້າຍລົງ
 kot_field_cycle	ເລືອກຕໍ່ໄປ
 kot_field_select	ເລືອກຕໍ່ໄປ
-kot_field_time	ເວລາ
-kot_field_kot_no	KOT ບໍ່
-kot_field_area	ພື້ນທີ່
-kot_field_table	ໂຕະກິນເຂົ້າ
-kot_field_shop	ຊື່ຮ້ານ
-kot_field_waiter	ພະນັກງານ
-kot_field_station	ສະຖານີ
 dishes_n	{n}ອາຫານ
 recipe_ph	ສູດ (ເລືອກໄດ້) — ຫນຶ່ງສ່ວນທີ່ໃຊ້: ເຂົ້າ = 0.2, Paneer = 0.15
 reorder_ph	ຊື້ເພີ່ມເຕີມໄດ້ທີ່

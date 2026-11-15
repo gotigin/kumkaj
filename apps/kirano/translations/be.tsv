@@ -69,12 +69,10 @@ bill_item_qty	Кольк.
 bill_item_price	Цана
 bill_item_amount	Сума
 bill_item_note	Заўвага да прадмета
-bill_item_col_order	Парадак слупкоў
 bill_item_col_sep	Лінейкі слупкоў
 slip_col_width	Шырыня (mm)
 slip_col_start	Прастора ў пачатку (px)
 slip_col_end	Прастора ў канцы (px)
-slip_col_align	Выраўноўванне тэксту
 slip_columns_help	Шырыня кожнага слупка ўключае прастору ў пачатку і ў канцы. Тэкст пераносіцца ўнутры свайго слупка; усё, што выходзіць за шырыню змесціва, абразаецца — на паперы і ў папярэднім праглядзе.
 bill_total_qty_label	Подпіс агульнай колькасці
 bill_total_subtotal_label	Подпіс прамежкавага выніку
@@ -431,7 +429,6 @@ printer_profile_heading	Макет
 vp_delivery_heading	Дастаўка
 vp_delivery_help	Як гэты віртуальны прынтэр адпраўляе заданні — дакумент АС, неапрацаваныя байты або ESC/POS. Змест бланка (памер тыпу, абгортка, палі) вызначаецца фарматам рахунка/бланка, а не тут.
 vp_delivery_spooler	Дакумент АС (сістэмны спулер)
-vp_delivery_raw	Неапрацаваныя байты на прыладу
 vp_delivery_escpos	ESC/POS цеплавыя каманды
 virtual_printer_new	Новы віртуальны прынтэр
 virtual_printer_selected	Рэдагаванне «{name}» — націсніце іншы ў спісе, каб пераключыцца
@@ -718,7 +715,6 @@ customer_paid_ph	Кліент аплаціў
 tip_ph	Савет
 find_server	Знайдзіце сервер крамы
 bill_format	Фармат рахунку
-bill_format_help	Друкуецца пад назвай вашай крамы на кожным рахунку. Аддзяляйце радкі знакам | (напрыклад, MG Road, Раджкот | тэл. 98250 00000).
 bill_header_ph	Адрас | тэлефон
 fssai_ph	Нумар FSSAI / ліцэнзія крамы (па жаданні)
 bill_footer_ph	Ніжні калонтытул (напрыклад, Дзякуй, наведайце яшчэ)
@@ -808,8 +804,6 @@ add_dishes	Дадаць тавары
 order_so_far	У гэтым парадку: {n} · {total}
 no_dish_match	Няма тавараў, якія адпавядаюць “{q}”
 pick_done	Гатова
-kot_field_up	Рухайцеся ўверх
-kot_field_down	Рухайцеся ўніз
 dishes_n	прадметы {n}
 reorder_ph	Купляйце больш на
 set_reorder	Задаць узровень змены парадку
@@ -841,3 +835,6 @@ sel_copy	Капіяваць
 sel_select_all	Вылучыць усё
 sel_copied	Скапіявана
 nav_loading	Загрузка…
+printer_mode_first	Першае, што працуе
+printer_mode_all	Друк на ўсіх
+slip_columns	Слупкі

@@ -83,9 +83,7 @@ print_cancelled_kot_needed	Da fari buɗe tebur mai abincin da aka soke
 print_cancelled_kot_none	Babu abincin da aka soke a wannan oda
 print_cancelled_kot_client	An aika buga abin da aka soke ({n}) na {place} — kicin yana buga a Server
 kot_banner	Alamar iri
-kot_banner_ph	Alama (fanko = babu)
 kot_item_prefix	Farkon kaya
-kot_item_prefix_ph	misali [AN SOKE]
 kot_strike	Janye sunan abinci
 kot_strike_note	Janye bayanin abinci
 kot_strike_on	Kunna
@@ -103,13 +101,11 @@ bill_item_qty	Adadi
 bill_item_price	Farashi
 bill_item_amount	Adadin kuɗi
 bill_item_note	Bayanin abinci
-bill_item_col_order	Tsarin ginshiƙai
 bill_item_col_sep	Layukan ginshiƙai
 slip_columns	Ginshiƙai
 slip_col_width	Faɗi (mm)
 slip_col_start	Sararin farko (px)
 slip_col_end	Sararin ƙarshe (px)
-slip_col_align	Jeri na rubutu
 slip_columns_help	Faɗin kowane ginshiƙi ya haɗa da sararin farkonsa da na ƙarshensa. Rubutu yana naɗewa a cikin ginshiƙinsa; abin da ya wuce faɗin abun ciki ana yanke shi, a takarda da kuma a samfoti.
 bill_total_qty_label	Alamar jimlar adadi
 bill_total_subtotal_label	Alamar jimla ta ƙasa
@@ -643,7 +639,6 @@ vp_type_size_heading	Girman rubutu
 vp_wrap_heading	Faɗin nadewa
 vp_margin_heading	Gefuna
 vp_delivery_spooler	Takardar tsarin (jerin bugu)
-vp_delivery_raw	Bytes ɗanyen zuwa na'ura
 vp_delivery_escpos	Umarnin zafi na ESC/POS
 virtual_printer_new	Sabon firinta na kama-da-kama
 virtual_printer_selected	Ana gyara “{name}” — taɓa wani a jeri don canzawa
@@ -1110,7 +1105,6 @@ remove_these_tables	Cire waɗannan teburori
 table_remove_ph	Cire: T1-T24, ko sunan tebur ɗaya
 find_server	Nemo server na shago
 bill_format	Tsarin lissafi
-bill_format_help	Ana buga a ƙarƙashin sunan gidan abincinku a kowane lissafi. Raba layuka da | (misali MG Road, Rajkot | Waya 98250 00000).
 bill_header_ph	Adireshi | waya
 fssai_ph	Lambar lasisin FSSAI (Indiya)
 bill_footer_ph	Ƙasa (misali Mun gode, sake zuwa)
@@ -1127,7 +1121,6 @@ kot_field_hide	Ɓoye
 kot_field_on	nuna
 kot_field_off	ɓoye
 kot_field_size	Girman rubutu
-kot_field_size_ph	misali 16, 20, 24, 28, 32…
 kot_weight_light	Mai sauƙi
 bill_kot_panel_help	Tsarin lissafi da takardar kicin, kowanne da faɗin abin cikinsa. Mai akwatin kuɗi na lissafi shi ne wanda ya bayar ko ya biya lissafi; Mai sabis na KOT shi ne wanda ya aika wannan takardar kicin — duk labarin oda yana cikin littattafai.
 std_size_ph	misali 18, 20, 26…
@@ -1157,7 +1150,6 @@ kot_style_item_qty	Kaya · Adadi
 kot_style_field_pick	Zaɓi fili
 kot_weight_regular	Na al'ada
 kot_weight_bold	Mai kauri
-kot_align	Daidaitawa
 kot_align_start	Fara
 kot_align_center	Tsakiya
 kot_align_end	Ƙare
@@ -1307,18 +1299,8 @@ kot_show_item_hdr	Kaya · Adadi
 kot_hide_item_hdr	Ɓoye ginshiƙai
 kot_show_title	Layin take
 kot_hide_title	Ɓoye take
-kot_field_order	Tsarin bugu
-kot_field_up	Matsar sama
-kot_field_down	Matsar ƙasa
 kot_field_cycle	Zaɓi na gaba
 kot_field_select	Zaɓi na gaba
-kot_field_time	Lokaci
-kot_field_kot_no	Lambar KOT
-kot_field_area	Wuri
-kot_field_table	Tebur
-kot_field_shop	Sunan shago
-kot_field_waiter	Ma'aikaci
-kot_field_station	Tasha
 dishes_n	abinci {n}
 recipe_ph	Girke-girke (ba dole ba) — rabo ɗaya yana amfani: Shinkafa=0.2, Paneer=0.15
 reorder_ph	Sake saya a

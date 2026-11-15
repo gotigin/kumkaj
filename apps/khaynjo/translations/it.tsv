@@ -83,9 +83,7 @@ print_cancelled_kot_needed	Apri un tavolo con piatti annullati
 print_cancelled_kot_none	Nessun piatto annullato su questo ordine
 print_cancelled_kot_client	Annullati ({n}) per {place} inviati — stampa sul server
 kot_banner	Banner
-kot_banner_ph	Banner (vuoto = nessuno)
 kot_item_prefix	Prefisso voce
-kot_item_prefix_ph	es. [CANCELLED]
 kot_strike	Barrare il nome
 kot_strike_note	Barrare la nota
 kot_strike_on	Sì
@@ -103,13 +101,11 @@ bill_item_qty	Qtà
 bill_item_price	Prezzo
 bill_item_amount	Importo
 bill_item_note	Nota
-bill_item_col_order	Ordine colonne
 bill_item_col_sep	Righe di colonna
 slip_columns	Colonne
 slip_col_width	Larghezza (mm)
 slip_col_start	Spazio iniziale (px)
 slip_col_end	Spazio finale (px)
-slip_col_align	Allineamento del testo
 slip_columns_help	La larghezza di ogni colonna comprende il suo spazio iniziale e finale. Il testo va a capo all’interno della sua colonna; ciò che supera la larghezza del contenuto viene tagliato, su carta e nell’anteprima.
 bill_total_qty_label	Etichetta qtà totale
 bill_total_subtotal_label	Etichetta subtotale
@@ -643,7 +639,6 @@ vp_type_size_heading	Corpo del testo
 vp_wrap_heading	Larghezza a capo
 vp_margin_heading	Margini
 vp_delivery_spooler	Documento OS (spooler di sistema)
-vp_delivery_raw	Byte grezzi al dispositivo
 vp_delivery_escpos	Comandi termici ESC/POS
 virtual_printer_new	Nuova stampante virtuale
 virtual_printer_selected	Modifica di “{name}”: tocca un'altra nell'elenco per cambiare
@@ -1110,7 +1105,6 @@ remove_these_tables	Rimuovi questi tavoli
 table_remove_ph	Rimuovi: T1-T24 o il nome di un tavolo
 find_server	Trova il server del locale
 bill_format	Formato del conto
-bill_format_help	Stampato sotto il nome del locale su ogni conto. Separa le righe con | (es. MG Road, Rajkot | Tel 98250 00000).
 bill_header_ph	Indirizzo | telefono
 fssai_ph	N. licenza FSSAI (India)
 bill_footer_ph	Piè di pagina (es. Grazie, a presto)
@@ -1127,7 +1121,6 @@ kot_field_hide	Nascondi
 kot_field_on	mostra
 kot_field_off	nascondi
 kot_field_size	Dimensione carattere
-kot_field_size_ph	es. 16, 20, 24, 28, 32…
 kot_weight_light	Leggero
 bill_kot_panel_help	Contenuto conto e tipografia scontrini cucina. La larghezza del contenuto sopra vale per il conto e per lo scontrino cucina.
 std_size_ph	es. 18, 20, 26…
@@ -1157,7 +1150,6 @@ kot_style_item_qty	Voce · Qtà
 kot_style_field_pick	Seleziona campo
 kot_weight_regular	Normale
 kot_weight_bold	Grassetto
-kot_align	Allinea
 kot_align_start	Avvia
 kot_align_center	Centra
 kot_align_end	Fine
@@ -1307,18 +1299,8 @@ kot_show_item_hdr	Voce · Qtà
 kot_hide_item_hdr	Nascondi colonne
 kot_show_title	Riga titolo
 kot_hide_title	Nascondi titolo
-kot_field_order	Stampa ordine
-kot_field_up	Sposta su
-kot_field_down	Sposta giù
 kot_field_cycle	Seleziona successivo
 kot_field_select	Seleziona successivo
-kot_field_time	Ora
-kot_field_kot_no	N. KOT
-kot_field_area	Area
-kot_field_table	Tavolo
-kot_field_shop	Nome negozio
-kot_field_waiter	Personale
-kot_field_station	Stazione
 dishes_n	{n} piatti
 recipe_ph	Ricetta (facoltativa) — una porzione usa: Rice=0.2, Paneer=0.15
 reorder_ph	Riordina a

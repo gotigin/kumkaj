@@ -81,12 +81,10 @@ bill_item_qty	Množ
 bill_item_price	Cena
 bill_item_amount	Suma
 bill_item_note	Rx / poznámka k predaju
-bill_item_col_order	Poradie stĺpcov
 bill_item_col_sep	Pravidlá stĺpcov
 slip_col_width	Šírka (mm)
 slip_col_start	Medzera na začiatku (px)
 slip_col_end	Medzera na konci (px)
-slip_col_align	Zarovnanie textu
 slip_columns_help	Šírka každého stĺpca zahŕňa jeho medzeru na začiatku a na konci. Text sa zalamuje vo svojom stĺpci; čo presahuje šírku obsahu, sa oreže – na papieri aj v náhľade.
 bill_total_qty_label	Štítok s celkovým množstvom
 bill_total_subtotal_label	Menovka medzi súčtom
@@ -443,7 +441,6 @@ printer_profile_heading	Rozloženie
 vp_delivery_heading	Doručenie
 vp_delivery_help	Ako táto virtuálna tlačiareň odosiela úlohy — dokument OS, nespracované bajty alebo ESC/POS. O obsahu tiketu (veľkosť písma, obálka, okraje) rozhoduje účet / formát tiketu, nie tu.
 vp_delivery_spooler	Dokument OS (systémový spooler)
-vp_delivery_raw	Nespracované bajty do zariadenia
 vp_delivery_escpos	ESC/POS tepelné príkazy
 virtual_printer_new	Nová virtuálna tlačiareň
 virtual_printer_selected	Úprava „{name}“ – klepnutím na inú položku v zozname prepnete
@@ -730,7 +727,6 @@ customer_paid_ph	Zákazník zaplatil
 tip_ph	Prepitné
 find_server	Nájdite server obchodu
 bill_format	Formát faktúry
-bill_format_help	Vytlačené pod názvom vášho obchodu na každom účte. Riadky oddeľte znakom | (napr. MG Road, Rajkot | Ph 98250 00000).
 bill_header_ph	Adresa | telefón
 fssai_ph	Licencia lieku č. (voliteľné – vaše znenie)
 bill_footer_ph	Päta (napr. Ďakujem, navštívte znova)
@@ -820,8 +816,6 @@ add_dishes	Pridajte lieky
 order_so_far	Na túto objednávku: {n} · {total}
 no_dish_match	Žiadna položka nezodpovedá „{q}“
 pick_done	Hotovo
-kot_field_up	Posunúť sa hore
-kot_field_down	Presuňte sa nadol
 dishes_n	{n} položiek
 reorder_ph	Kúpte viac na
 set_reorder	Nastaviť úroveň zmeny poradia
@@ -853,3 +847,6 @@ sel_copy	Kopírovať
 sel_select_all	Vybrať všetko
 sel_copied	Skopírované
 nav_loading	Načítava sa…
+printer_mode_first	Najprv to funguje
+printer_mode_all	Tlač na všetky
+slip_columns	Stĺpce

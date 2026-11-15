@@ -83,9 +83,7 @@ print_cancelled_kot_needed	ჯერ გახსენით მაგიდა
 print_cancelled_kot_none	ამ შეკვეთაში გაუქმებული კერძები არ არის
 print_cancelled_kot_client	გაუქმებულის ბეჭდვა ({n}) {place}-ისთვის გაიგზავნა — სამზარეულო ბეჭდავს სერვერზე
 kot_banner	ტიპის ზოლი
-kot_banner_ph	ზოლი (ცარიელი = არა)
 kot_item_prefix	პოზიციის პრეფიქსი
-kot_item_prefix_ph	მაგ. [გაუქმებული]
 kot_strike	კერძის სახელის გადახაზვა
 kot_strike_note	კერძის შენიშვნის გადახაზვა
 kot_strike_on	ჩართ.
@@ -103,13 +101,11 @@ bill_item_qty	რაოდ.
 bill_item_price	ფასი
 bill_item_amount	თანხა
 bill_item_note	კერძის შენიშვნა
-bill_item_col_order	სვეტების რიგი
 bill_item_col_sep	სვეტების ხაზები
 slip_columns	სვეტები
 slip_col_width	სიგანე (mm)
 slip_col_start	საწყისი სივრცე (px)
 slip_col_end	ბოლო სივრცე (px)
-slip_col_align	ტექსტის სწორება
 slip_columns_help	თითოეული სვეტის სიგანე მოიცავს მის საწყის და ბოლო სივრცეს. ტექსტი საკუთარ სვეტში გადადის ახალ ხაზზე; რაც შიგთავსის სიგანეს სცდება, იჭრება — ქაღალდზეც და გადახედვაშიც.
 bill_total_qty_label	სრული რაოდენობის წარწერა
 bill_total_subtotal_label	შუალედური ჯამის წარწერა
@@ -643,7 +639,6 @@ vp_type_size_heading	ტიპის ზომა
 vp_wrap_heading	შეფუთვა სიგანე
 vp_margin_heading	მინდვრები
 vp_delivery_spooler	OS დოკუმენტი (სისტემის სპულერი)
-vp_delivery_raw	ნედლი ბაიტები მოწყობილობაზე
 vp_delivery_escpos	ESC/POS თერმული ბრძანებები
 virtual_printer_new	ახალი ვირტუალური პრინტერი
 virtual_printer_selected	„{name}“-ის რედაქტირება — გადასართავად შეეხეთ სხვას სიაში
@@ -1110,7 +1105,6 @@ remove_these_tables	ამოიღეთ ეს სასადილო მა
 table_remove_ph	ამოღება: T1-T24, ან ერთი სასადილო მაგიდის სახელი
 find_server	იპოვნეთ მაღაზიის სერვერი
 bill_format	სტუმარი სტუმრის კანონპროექტის ფორმატი
-bill_format_help	იბეჭდება თქვენი რესტორნის სახელით ყველა სტუმრის ანგარიშზე. ცალკე ხაზები | (მაგ. MG Road, Rajkot | Ph 98250 00000).
 bill_header_ph	მისამართი | ტელეფონი
 fssai_ph	FSSAI ლიცენზიის No. (ინდოეთი)
 bill_footer_ph	ქვედა კოლონტიტული (მაგ. გმადლობთ, ხელახლა ეწვიეთ)
@@ -1127,7 +1121,6 @@ kot_field_hide	დამალვა
 kot_field_on	შოუ
 kot_field_off	დამალვა
 kot_field_size	შრიფტის ზომა
-kot_field_size_ph	მაგ. 16, 20, 24, 28, 32…
 kot_weight_light	სინათლე
 bill_kot_panel_help	სტუმარი სტუმრის კანონპროექტი და სამზარეულოს სლაიდების განლაგება, თითოეულს აქვს საკუთარი შინაარსის სიგანე. სტუმარი სტუმრის ბილეთი მოლარე არის ის, ვინც გასცა ან გადაიხადა სტუმრის ქვითარი; KOT მიმტანი არის ის, ვინც გამოაგზავნა სამზარეულოს ბილეთი - შეკვეთის სრული ამბავი რჩება წიგნებში.
 std_size_ph	მაგ. 18, 20, 26…
@@ -1157,7 +1150,6 @@ kot_style_item_qty	მენიუს პუნქტი · რაოდენ�
 kot_style_field_pick	აირჩიეთ ველი
 kot_weight_regular	რეგულარული
 kot_weight_bold	თამამი
-kot_align	გასწორება
 kot_align_start	დაწყება
 kot_align_center	ცენტრი
 kot_align_end	დასასრული
@@ -1307,18 +1299,8 @@ kot_show_item_hdr	მენიუს პუნქტი · რაოდენო
 kot_hide_item_hdr	სვეტების დამალვა
 kot_show_title	სათაურის ხაზი
 kot_hide_title	სათაურის დამალვა
-kot_field_order	დაბეჭდვის შეკვეთა
-kot_field_up	ზევით გადაადგილება
-kot_field_down	ქვევით გადაადგილება
 kot_field_cycle	აირჩიეთ შემდეგი
 kot_field_select	აირჩიეთ შემდეგი
-kot_field_time	დრო
-kot_field_kot_no	KOT №
-kot_field_area	ფართობი
-kot_field_table	სასადილო მაგიდა
-kot_field_shop	მაღაზიის სახელი
-kot_field_waiter	პერსონალი
-kot_field_station	სადგური
 dishes_n	{n} კერძები
 recipe_ph	რეცეპტი (სურვილისამებრ) - ერთი პორცია იყენებს: Rice=0.2, Paneer=0.15
 reorder_ph	შეიძინეთ მეტი აქ

@@ -81,12 +81,10 @@ bill_item_qty	ꯃꯁꯤꯡ
 bill_item_price	ꯃꯃꯜ
 bill_item_amount	ꯁꯦꯟ
 bill_item_note	Rx / ꯌꯣꯟꯕꯒꯤ ꯅꯣꯠ
-bill_item_col_order	ꯀꯣꯂꯝꯒꯤ ꯃꯇꯥꯡ
 bill_item_col_sep	ꯀꯣꯂꯝꯒꯤ ꯂꯥꯏꯟ
 slip_col_width	ꯄꯥꯛ (mm)
 slip_col_start	ꯍꯧꯔꯛꯐꯝꯒꯤ ꯃꯐꯝ (px)
 slip_col_end	ꯂꯣꯏꯔꯛꯐꯝꯒꯤ ꯃꯐꯝ (px)
-slip_col_align	ꯏꯕꯒꯤ ꯂꯩꯃꯤꯟ
 slip_columns_help	ꯀꯣꯂꯝ ꯈꯨꯗꯤꯡꯃꯛꯀꯤ ꯄꯥꯛꯇꯥ ꯃꯁꯤꯒꯤ ꯍꯧꯔꯛꯐꯝ ꯑꯃꯁꯨꯡ ꯂꯣꯏꯔꯛꯐꯝꯒꯤ ꯃꯐꯝ ꯌꯥꯎꯏ꯫ ꯏꯕ ꯑꯁꯤ ꯃꯁꯥꯒꯤ ꯀꯣꯂꯝꯒꯤ ꯃꯅꯨꯡꯗꯥ ꯀꯣꯌꯁꯤꯜꯂꯤ; ꯀꯟꯇꯦꯟꯇꯀꯤ ꯄꯥꯛ ꯍꯦꯟꯒꯠꯂꯕꯥ ꯑꯗꯨ ꯆꯦ ꯑꯃꯁꯨꯡ ꯄ꯭ꯔꯤꯚ꯭ꯌꯨꯗꯥ ꯀꯀꯊꯠꯂꯤ꯫
 bill_total_qty_label	ꯃꯁꯤꯡ ꯑꯄꯨꯟꯕꯒꯤ ꯃꯤꯡ
 bill_total_subtotal_label	ꯑꯄꯨꯟꯕ ꯑꯄꯤꯛꯄꯒꯤ ꯃꯤꯡ
@@ -443,7 +441,6 @@ printer_profile_heading	ꯁꯦꯝꯗꯣꯛ
 vp_delivery_heading	ꯌꯧꯍꯟꯕ
 vp_delivery_help	ꯚꯔꯆꯨꯑꯦꯜ ꯄ꯭ꯔꯤꯟꯇꯔ ꯑꯁꯤꯅ ꯊꯕꯛ ꯀꯔꯝꯅ ꯊꯥꯏ — OS ꯂꯥꯏꯔꯤꯛ, ꯔꯣ ꯕꯥꯏꯠ, ꯅꯠꯇ꯭ꯔꯒ ESC/POS. ꯁ꯭ꯂꯤꯞꯀꯤ ꯋꯥꯐꯝ (ꯃꯌꯦꯛ ꯆꯥꯎꯕꯥꯟ, ꯀꯣꯟꯕ, ꯃꯥꯔꯖꯤꯟ) ꯕꯤꯜ / ꯁ꯭ꯂꯤꯞ ꯃꯑꯣꯡꯅ ꯂꯦꯞꯏ, ꯃꯐꯝ ꯑꯁꯤꯗ ꯅꯠꯇꯦ.
 vp_delivery_spooler	ꯁꯤꯁ꯭ꯇꯦꯝ ꯂꯥꯏꯔꯤꯛ (ꯁꯤꯁ꯭ꯇꯦꯝ ꯂꯥꯏꯟ)
-vp_delivery_raw	ꯕꯥꯏꯠ ꯑꯔꯥꯟꯕ ꯃꯁꯤꯟꯗ
 vp_delivery_escpos	ESC/POS ꯑꯁꯥꯕ ꯄꯥꯎꯖꯦꯜ
 virtual_printer_new	ꯄ꯭ꯔꯤꯟꯇꯔ ꯃꯤꯇꯝ ꯑꯅꯧꯕ
 virtual_printer_selected	“{name}” ꯁꯦꯝꯂꯤ — ꯂꯤꯁ꯭ꯇꯇ ꯑꯇꯣꯞꯄ ꯅꯝꯃꯨ, ꯍꯣꯡꯗꯣꯛꯅꯕ
@@ -730,7 +727,6 @@ customer_paid_ph	ꯀꯦꯟꯅꯕꯅ ꯄꯤꯔꯦ
 tip_ph	ꯍꯦꯟꯕ ꯁꯦꯟ
 find_server	ꯀꯦꯟꯐꯝꯒꯤ Server ꯊꯤꯕꯤꯌꯨ
 bill_format	ꯕꯤꯜꯒꯤ ꯁꯦꯝꯗꯣꯛ
-bill_format_help	ꯕꯤꯜ ꯈꯨꯗꯤꯡꯃꯛꯇ ꯀꯦꯟꯐꯝꯒꯤ ꯃꯤꯡꯒꯤ ꯃꯈꯥꯗ ꯄ꯭ꯔꯤꯟꯇ ꯇꯧꯏ. ꯄꯥꯡ | ꯅ ꯈꯥꯏꯗꯣꯛꯎ (ꯈꯨꯗꯝ MG Road, Rajkot | Ph 98250 00000).
 bill_header_ph	ꯂꯩꯐꯝ | ꯐꯣꯟ
 fssai_ph	ꯍꯤꯗꯥꯛ ꯂꯥꯏꯁꯦꯟꯁ ꯅꯝꯕꯔ (ꯌꯥꯕ ꯑꯣꯏꯔꯕꯗꯤ — ꯅꯍꯥꯛꯀꯤ ꯋꯥꯍꯩ)
 bill_footer_ph	ꯃꯈꯥ ꯋꯥꯍꯩ (ꯈꯨꯗꯝ ꯊꯥꯒꯠꯆꯔꯤ, ꯍꯟꯅ ꯂꯥꯛꯎ)
@@ -820,8 +816,6 @@ add_dishes	ꯍꯤꯗꯥꯛ ꯍꯥꯞꯆꯤꯟꯕꯤꯌꯨ
 order_so_far	ꯌꯥꯕ ꯑꯁꯤꯗ: {n} · {total}
 no_dish_match	“{q}”ꯒ ꯆꯥꯅꯕ ꯄꯣꯠ ꯂꯩꯇꯦ
 pick_done	ꯂꯣꯏꯔꯦ
-kot_field_up	ꯃꯊꯛ ꯂꯣꯠꯎ
-kot_field_down	ꯃꯈꯥ ꯂꯣꯠꯎ
 dishes_n	ꯄꯣꯠ {n}
 reorder_ph	ꯍꯦꯟꯕ ꯂꯩꯕ ꯆꯥꯡ
 set_reorder	ꯍꯟꯅ ꯂꯩꯅꯕ ꯆꯥꯡ ꯊꯝꯕꯤꯌꯨ
@@ -853,3 +847,6 @@ sel_copy	ꯀꯣꯄꯤ ꯇꯧ
 sel_select_all	ꯄꯨꯝꯅꯃꯛ ꯈꯟꯕ
 sel_copied	ꯀꯣꯄꯤ ꯇꯧꯔꯦ
 nav_loading	লোড তৌরি…
+printer_mode_first	ꯊꯕꯛ ꯇꯧꯕ ꯑꯍꯥꯟꯕ
+printer_mode_all	ꯄꯨꯝꯅꯃꯛꯇ ꯄ꯭ꯔꯤꯟꯇ ꯇꯧꯕꯤꯌꯨ
+slip_columns	ꯀꯣꯂꯝꯁꯤꯡ

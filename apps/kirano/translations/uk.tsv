@@ -69,12 +69,10 @@ bill_item_qty	К-сть
 bill_item_price	Ціна
 bill_item_amount	Сума
 bill_item_note	Примітка до пункту
-bill_item_col_order	Порядок стовпців
 bill_item_col_sep	Лінії стовпців
 slip_col_width	Ширина (mm)
 slip_col_start	Відступ на початку (px)
 slip_col_end	Відступ у кінці (px)
-slip_col_align	Вирівнювання тексту
 slip_columns_help	Ширина кожного стовпця містить його відступи на початку й у кінці. Текст переноситься всередині свого стовпця; усе, що виходить за ширину вмісту, обрізається — на папері й у попередньому перегляді.
 bill_total_qty_label	Підпис загальної кількості
 bill_total_subtotal_label	Підпис проміжного підсумку
@@ -431,7 +429,6 @@ printer_profile_heading	Макет
 vp_delivery_heading	Доставка
 vp_delivery_help	Як цей віртуальний принтер надсилає завдання — документ ОС, необроблені байти або ESC/POS. Вміст бланка (розмір типу, обгортка, поля) визначається форматом рахунка/бланка, а не тут.
 vp_delivery_spooler	Документ ОС (системна черга)
-vp_delivery_raw	Сирі байти на пристрій
 vp_delivery_escpos	Термічні команди ESC/POS
 virtual_printer_new	Новий віртуальний принтер
 virtual_printer_selected	Редагування «{name}» — торкніться іншого в списку, щоб перемкнути
@@ -718,7 +715,6 @@ customer_paid_ph	Клієнт сплатив
 tip_ph	Чайові
 find_server	Знайти сервер крамниці
 bill_format	Формат рахунку
-bill_format_help	Друкується під назвою вашого магазину на кожному рахунку. Відокремте рядки символом | (наприклад, MG Road, Раджкот | телефон 98250 00000).
 bill_header_ph	Адреса | телефон
 fssai_ph	FSSAI / ліцензія магазину № (необов'язково)
 bill_footer_ph	Підвал (напр. Дякуємо, приходьте ще)
@@ -808,8 +804,6 @@ add_dishes	Додайте елементи
 order_so_far	У цьому замовленні: {n} · {total}
 no_dish_match	Жоден елемент не відповідає "{q}"
 pick_done	Готово
-kot_field_up	Вище
-kot_field_down	Нижче
 dishes_n	предметів {n}
 reorder_ph	Докупити при
 set_reorder	Задати рівень дозамовлення
@@ -841,3 +835,6 @@ sel_copy	Копіювати
 sel_select_all	Виділити все
 sel_copied	Скопійовано
 nav_loading	Завантаження…
+printer_mode_first	Перший, що спрацює
+printer_mode_all	Друкувати на всіх
+slip_columns	Стовпці

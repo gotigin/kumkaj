@@ -83,9 +83,7 @@ print_cancelled_kot_needed	Plie shwa ia ka miej bam bad ki jingbam ba la pynsang
 print_cancelled_kot_none	Ym don jingbam ba la pynsangeh ha kane ka jingbthah
 print_cancelled_kot_client	La pynsangeh ia ka jingpynmih ({n}) na ka bynta {place} ba la phah — ki jingpynmih ha ka kamra bam ha ka Server
 kot_banner	Ka lama kaba bha
-kot_banner_ph	Ka lama (thylli = ym don)
 kot_item_prefix	Ka jingsdang jong ka item
-kot_item_prefix_ph	kum [LA PYNBNA]
 kot_strike	Ka kyrteng jong ka jingbam
 kot_strike_note	Jingpynkynmaw
 kot_strike_on	Ha
@@ -103,13 +101,11 @@ bill_item_qty	Ka jingbun
 bill_item_price	Ka dor
 bill_item_amount	Ka jingbun
 bill_item_note	Jingthoh jingbam
-bill_item_col_order	Ka jingpynbeit ia ki column
 bill_item_col_sep	Ki kyndon jong ki kolom
 slip_columns	Ki kolom
 slip_col_width	Ka jingshah (mm)
 slip_col_start	Ka jaka ha kaba sdang (px)
 slip_col_end	Ka jaka ha kaba kut (px)
-slip_col_align	Ka jingpynbeit ia ka jingthoh
 slip_columns_help	Ka jingshah jong man la ka kolom ka kynthup ia ka jaka ha kaba sdang bad ha kaba kut. Ka jingthoh ka kynthup hapoh ka kolom jong ka; kaei kaba palat ia ka jingshah ka jingdon ka sait, ha ka shla bad ha ka jingpeit shuwa.
 bill_total_qty_label	Ka jingdon jingem baroh
 bill_total_subtotal_label	Ka jingthoh baroh
@@ -643,7 +639,6 @@ vp_type_size_heading	Type ka jingheh
 vp_wrap_heading	Ka jingheh
 vp_margin_heading	Ki marjin
 vp_delivery_spooler	Ka kot OS (ka jingpynkylla ia ka system)
-vp_delivery_raw	Ki byte ba thymmai sha ka tiar
 vp_delivery_escpos	ESC/POS ki hukum ba pynshit
 virtual_printer_new	Ka nongpynmih kot ba thymmai
 virtual_printer_selected	Ka jingpynkylla “{name}” — nion sa kawei pat ha ka thup ban pynkylla .
@@ -1110,7 +1105,6 @@ remove_these_tables	Pynduh noh ia kine ki miej bam .
 table_remove_ph	Pynduh noh: T1-T24, lane kawei ka kyrteng jong ka miej bam
 find_server	Pyni ia ka server jong ka dukan
 bill_format	Ka rukom bill
-bill_format_help	La shon hapoh ka kyrteng jong ka jaka bam jong phi ha man la ka bill. Ki lain ba kyrpang bad | (e.g. Surok MG, Rajkot | Ph 98250 00000).
 bill_header_ph	Ka jaka sah | phone
 fssai_ph	FSSAI ka laisen no. (India)
 bill_footer_ph	Hapoh (e.g. Khublei, leit jngoh biang)
@@ -1127,7 +1121,6 @@ kot_field_hide	Burieh
 kot_field_on	pyni
 kot_field_off	buhrieh
 kot_field_size	Ka jingheh jong ka font
-kot_field_size_ph	kum 16, 20, 24, 28, 32...
 kot_weight_light	Ka jingshai
 bill_kot_panel_help	Ka jingpynbeit ia ka bill bad ka slip shet jingshet, kawei pa kawei ka don la ka jong ka jingheh jong ka jingdon jingem. U Bill Cashier u dei uba la pynmih ne pynbeit ia ka bill; KOT U nongshakri u dei uba la phah ia kata ka tiket bam — ka jingiathuhkhana ba pura jong ka jingbthah ka sah ha ki kot.
 std_size_ph	kum 18, 20, 26...
@@ -1157,7 +1150,6 @@ kot_style_item_qty	Tiar · Ka Jingbun
 kot_style_field_pick	Jied ia ka jaka
 kot_weight_regular	Kaba man ka por
 kot_weight_bold	Bashlur
-kot_align	Pynbeit
 kot_align_start	Sdang
 kot_align_center	Pdeng
 kot_align_end	Kut
@@ -1307,18 +1299,8 @@ kot_show_item_hdr	Tiar · Ka Jingbun
 kot_hide_item_hdr	Pynrieh ia ki tduh
 kot_show_title	U lain kyrteng
 kot_hide_title	Burieh ia ka kyrteng
-kot_field_order	Ka jingbthah ban print
-kot_field_up	Pynkylla sha jrong
-kot_field_down	Pynhiar shapoh
 kot_field_cycle	Jied ia kaba bud
 kot_field_select	Jied ia kaba bud
-kot_field_time	Ka por
-kot_field_kot_no	KOT Em
-kot_field_area	Ka jaka
-kot_field_table	Miej bam
-kot_field_shop	Kyrteng dukan
-kot_field_waiter	Ki nongtrei
-kot_field_station	Steshon
 dishes_n	{n} ki jingbam
 recipe_ph	Ka rukom shet (da jied) — kawei ka bynta ka pyndonkam: U khaw=0.2, u phan=0.15
 reorder_ph	Thied shuh shuh ha

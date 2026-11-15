@@ -81,12 +81,10 @@ bill_item_qty	बिबां
 bill_item_price	बेसेन
 bill_item_amount	रां
 bill_item_note	Rx / सेल नट
-bill_item_col_order	खाम्फानि फारि
 bill_item_col_sep	खाम्फानि हांखो
 slip_col_width	गुवार (mm)
 slip_col_start	जागायनायनि जायगा (px)
 slip_col_end	जोबनायनि जायगा (px)
-slip_col_align	लिरनि सारि
 slip_columns_help	खाम्फा फोरनि गुवारआव बेनि जागायनाय आरो जोबनायनि जायगा दं। लिरा बेनि खाम्फानि सिङाव खोसायो; बिबुंथि गुवारनिफ्राय बायजोआव थानाय बाहागोआ कागजआव आरो सिगाङाव नुनायाव खावनाय जायो।
 bill_total_qty_label	गासै बिबांनि लेबेल
 bill_total_subtotal_label	खाव गासैनि लेबेल
@@ -443,7 +441,6 @@ printer_profile_heading	साजाय
 vp_delivery_heading	दैथाय होनाय
 vp_delivery_help	बे भार्सुयेल प्रिन्टारआ माबोरै साख्रि दैथायहरो - OS दकुमेन्ट, raw bytes, एबा ESC/POS। स्लिप कन्टेन्टआ (type size, wrap, margins) बिल / स्लिप फरमेटजों थि जायो, बेयाव नङा।
 vp_delivery_spooler	OS दस्तावेज (सिस्टम स्पुलार)
-vp_delivery_raw	मेसिनआव रा अक्ट'
 vp_delivery_escpos	ESC/POS थर्मल बिथोन
 virtual_printer_new	गोदान भर्चुअल प्रिन्टार
 virtual_printer_selected	“{name}” एडिट खालाम गासिनो — सोलायनो लिस्टआव गुबुनखौ सुदुं
@@ -730,7 +727,6 @@ customer_paid_ph	ग्राहका पैसा होबाय
 tip_ph	टिप
 find_server	दोकाननि सर्वर नागिर
 bill_format	बिल फर्मेट
-bill_format_help	मोनफ्रोमबो बिलआव नोंथांनि गलानि मुङाव सेबखांजानाय। लोगोसे आलादा हांखो | (जेरै- एम. जि. र'ड, राजकोट | Ph 98250 00000)।
 bill_header_ph	थं | फोन
 fssai_ph	मुलिनि लाइसेन्स नं. (सायख'नाय – नोंथांनि सोदोब)
 bill_footer_ph	फुटार (बिदिं साबायहर, फिन फै)
@@ -820,8 +816,6 @@ add_dishes	मुलि दाजाबदेर
 order_so_far	बे अर्डरआव: {n} · {total}
 no_dish_match	"{q}" जों गोरोबनाय जेबो आइटेम नङा
 pick_done	जोबबाय
-kot_field_up	गोजौ थां
-kot_field_down	गाहाय थां
 dishes_n	{n} आइटेमफोर
 reorder_ph	आरो बाय
 set_reorder	फिन बाय थाखो साजाय
@@ -853,3 +847,6 @@ sel_copy	कपि खालाम
 sel_select_all	गासैखौ सायख
 sel_copied	कपि जादों
 nav_loading	लड जागासिनो दं…
+printer_mode_first	गिबि जाखां
+printer_mode_all	गासैआव प्रिन्ट
+slip_columns	खाम्फाफोर

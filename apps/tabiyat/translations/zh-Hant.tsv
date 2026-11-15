@@ -81,12 +81,10 @@ bill_item_qty	數量
 bill_item_price	單價
 bill_item_amount	金額
 bill_item_note	處方/銷售單
-bill_item_col_order	列順序
 bill_item_col_sep	列線
 slip_col_width	寬度 (mm)
 slip_col_start	開頭間距 (px)
 slip_col_end	結尾間距 (px)
-slip_col_align	文字對齊
 slip_columns_help	每欄的寬度已包含其開頭與結尾間距。文字在所屬欄內換行；超出內容寬度的部分，在紙上和預覽中都會被裁掉。
 bill_total_qty_label	總數量標籤
 bill_total_subtotal_label	小計標籤
@@ -443,7 +441,6 @@ printer_profile_heading	平面圖
 vp_delivery_heading	外送
 vp_delivery_help	此虛擬印表機如何傳送作業 - 作業系統文件、原始位元組或 ESC/POS。單據內容（字號、換行、頁邊距）由帳單/單據格式決定，此處不作說明。
 vp_delivery_spooler	系統文檔（系統後臺打印）
-vp_delivery_raw	原始字節到設備
 vp_delivery_escpos	ESC/POS 熱敏命令
 virtual_printer_new	新建虛擬打印機
 virtual_printer_selected	正在編輯“{name}”——點列表中另一項以切換
@@ -730,7 +727,6 @@ customer_paid_ph	客人付款
 tip_ph	小費
 find_server	查找店內服務器
 bill_format	帳單格式
-bill_format_help	每張帳單上都印有您商店的名稱。以 | 分隔行（例如 MG Road, Rajkot | Ph 98250 00000）。
 bill_header_ph	地址 | 電話
 fssai_ph	藥品許可證號（可選－你的措詞）
 bill_footer_ph	頁腳（如：謝謝，歡迎再來）
@@ -820,8 +816,6 @@ add_dishes	添加藥物
 order_so_far	本單：{n} · {total}
 no_dish_match	沒有項目匹配“{q}”
 pick_done	完成
-kot_field_up	上移
-kot_field_down	下移
 dishes_n	{n} 項目
 reorder_ph	低於此數補貨
 set_reorder	設置補貨線
@@ -853,3 +847,6 @@ sel_copy	複製
 sel_select_all	全選
 sel_copied	已複製
 nav_loading	載入中…
+printer_mode_first	第一個可用的
+printer_mode_all	全部打印
+slip_columns	欄

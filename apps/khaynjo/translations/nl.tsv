@@ -83,9 +83,7 @@ print_cancelled_kot_needed	Open een tafel met geannuleerde gerechten
 print_cancelled_kot_none	Geen geannuleerde gerechten op deze bestelling
 print_cancelled_kot_client	Geannuleerd ({n}) voor {place} verzonden — print op de server
 kot_banner	Banner
-kot_banner_ph	Banner (leeg = geen)
 kot_item_prefix	Itemvoorvoegsel
-kot_item_prefix_ph	bijv. [CANCELLED]
 kot_strike	Naam doorhalen
 kot_strike_note	Notitie doorhalen
 kot_strike_on	Aan
@@ -103,13 +101,11 @@ bill_item_qty	Aantal
 bill_item_price	Prijs
 bill_item_amount	Bedrag
 bill_item_note	Notitie
-bill_item_col_order	Kolomvolgorde
 bill_item_col_sep	Kolomlijnen
 slip_columns	Kolommen
 slip_col_width	Breedte (mm)
 slip_col_start	Beginruimte (px)
 slip_col_end	Eindruimte (px)
-slip_col_align	Tekstuitlijning
 slip_columns_help	De breedte van elke kolom omvat de begin- en eindruimte. Tekst loopt door binnen zijn kolom; wat buiten de inhoudsbreedte valt, wordt afgesneden – op papier en in het voorbeeld.
 bill_total_qty_label	Label totaal aantal
 bill_total_subtotal_label	Label subtotaal
@@ -643,7 +639,6 @@ vp_type_size_heading	Lettergrootte
 vp_wrap_heading	Afbreukbreedte
 vp_margin_heading	Marges
 vp_delivery_spooler	OS-document (systeemspooler)
-vp_delivery_raw	Ruwe bytes naar apparaat
 vp_delivery_escpos	ESC/POS-thermische opdrachten
 virtual_printer_new	Nieuwe virtuele printer
 virtual_printer_selected	“{name}” bewerken — tik een andere in de lijst om te wisselen
@@ -1110,7 +1105,6 @@ remove_these_tables	Deze tafels verwijderen
 table_remove_ph	Verwijderen: T1-T24, of de naam van één tafel
 find_server	Server van de zaak zoeken
 bill_format	Rekeningopmaak
-bill_format_help	Staat onder de naam van het restaurant op elke rekening. Scheid regels met | (bijv. MG Road, Rajkot | Tel 98250 00000).
 bill_header_ph	Adres | telefoon
 fssai_ph	FSSAI-vergunningsnr. (India)
 bill_footer_ph	Voettekst (bijv. Bedankt, tot ziens)
@@ -1127,7 +1121,6 @@ kot_field_hide	Verbergen
 kot_field_on	tonen
 kot_field_off	verberg
 kot_field_size	Lettergrootte
-kot_field_size_ph	bijv. 16, 20, 24, 28, 32…
 kot_weight_light	Licht
 bill_kot_panel_help	Rekeninginhoud en keukenbon-typografie. De inhoudsbreedte hierboven geldt voor de rekening en de keukenbon.
 std_size_ph	bijv. 18, 20, 26…
@@ -1157,7 +1150,6 @@ kot_style_item_qty	Artikel · Aantal
 kot_style_field_pick	Veld kiezen
 kot_weight_regular	Normaal
 kot_weight_bold	Vet
-kot_align	Uitlijnen
 kot_align_start	Starten
 kot_align_center	Centreren
 kot_align_end	Eind
@@ -1307,18 +1299,8 @@ kot_show_item_hdr	Artikel · Aantal
 kot_hide_item_hdr	Kolommen verbergen
 kot_show_title	Titelregel
 kot_hide_title	Titel verbergen
-kot_field_order	Bestelling afdrukken
-kot_field_up	Omhoog verplaatsen
-kot_field_down	Omlaag verplaatsen
 kot_field_cycle	Volgende selecteren
 kot_field_select	Volgende selecteren
-kot_field_time	Tijd
-kot_field_kot_no	KOT-nr.
-kot_field_area	Gebied
-kot_field_table	Tafel
-kot_field_shop	Naam zaak
-kot_field_waiter	Personeel
-kot_field_station	Station
 dishes_n	{n} gerechten
 recipe_ph	Recept (optioneel) — één portie gebruikt: Rice=0.2, Paneer=0.15
 reorder_ph	Bijkopen bij

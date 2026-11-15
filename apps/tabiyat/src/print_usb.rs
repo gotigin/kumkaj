@@ -238,70 +238,20 @@ fn write_linux(id: &UsbId, bytes: &[u8]) -> Result<(), String> {
                     path.display()
                 )
             })?;
-        return crate::receipt_raster::write_escpos_paced(bytes, |piece| {
-            f.write_all(piece).map_err(|e| e.to_string())?;
-            f.flush().map_err(|e| e.to_string())
-        });
+        // The whole job in one write (no pieces, no pauses).
+        f.write_all(bytes).map_err(|e| e.to_string())?;
+        return f.flush().map_err(|e| e.to_string());
     }
-    // Fallback: any /dev/usb/lp*
-    if let Ok(rd) = std::fs::read_dir("/dev/usb") {
-        let mut lps: Vec<_> = rd
-            .flatten()
-            .map(|e| e.path())
-            .filter(|p| {
-                p.file_name()
-                    .map(|n| n.to_string_lossy().starts_with("lp"))
-                    .unwrap_or(false)
-            })
-            .collect();
-        lps.sort();
-        if let Some(path) = lps.into_iter().next() {
-            let mut f = std::fs::OpenOptions::new()
-                .write(true)
-                .open(&path)
-                .map_err(|e| format!("cannot open {}: {e}", path.display()))?;
-            return crate::receipt_raster::write_escpos_paced(bytes, |piece| {
-                f.write_all(piece).map_err(|e| e.to_string())?;
-                f.flush().map_err(|e| e.to_string())
-            });
-        }
-    }
+    // The printer that was picked is not here: say so. Never write the job
+    // to whichever /dev/usb/lp* comes first — that is another printer.
     Err(format!(
         "USB printer {:04x}:{:04x} not found — plug it in (OTG/host) or use host:9100",
         id.vid, id.pid
     ))
 }
 
-/// The usblp node (`/dev/usb/lpN`) of the USB printer with this serial.
-#[cfg(target_os = "linux")]
-pub fn usblp_path_for_serial(serial: &str) -> Option<std::path::PathBuf> {
-    let rd = std::fs::read_dir("/dev/usb").ok()?;
-    rd.flatten().find_map(|e| {
-        let name = e.file_name().to_string_lossy().to_string();
-        if !name.starts_with("lp") {
-            return None;
-        }
-        let id = sysfs_usb_id_for_usblp(&name)?;
-        (id.serial.as_deref() == Some(serial)).then(|| e.path())
-    })
-}
 
-/// Open a usblp node to write a job. An error means nothing was sent: the
-/// node is gone (CUPS holds the printer), busy (usblp has one writer at a
-/// time), or not this user's to write.
-#[cfg(target_os = "linux")]
-pub fn open_usblp(path: &std::path::Path) -> std::io::Result<std::fs::File> {
-    std::fs::OpenOptions::new().write(true).open(path)
-}
 
-/// Write an ESC/POS job to an open usblp node, paced like every USB job.
-#[cfg(target_os = "linux")]
-pub fn write_usblp(mut f: std::fs::File, bytes: &[u8]) -> Result<(), String> {
-    crate::receipt_raster::write_escpos_paced(bytes, |piece| {
-        f.write_all(piece).map_err(|e| e.to_string())?;
-        f.flush().map_err(|e| e.to_string())
-    })
-}
 
 #[cfg(target_os = "linux")]
 fn find_usblp_path(id: &UsbId) -> Option<std::path::PathBuf> {
@@ -436,7 +386,7 @@ try {{
     try {{
       $pinned = [Runtime.InteropServices.GCHandle]::Alloc($bytes, [Runtime.InteropServices.GCHandleType]::Pinned)
       try {{
-        # One picture at a time with a pause (a head drops a burst).
+        # The whole job (WritePrinter may take it in parts; no pauses).
         {write_loop}
       }} finally {{ $pinned.Free() }}
     }} finally {{ [void][KumkajUsbRaw]::EndPagePrinter($h) }}
@@ -446,10 +396,7 @@ try {{
         vid = vid,
         pid = pid,
         path_s = path_s,
-        write_loop = crate::print_share::powershell_paced_write_loop(
-            "KumkajUsbRaw",
-            &crate::receipt_raster::escpos_piece_lengths(bytes),
-        ),
+        write_loop = crate::print_share::powershell_write_loop("KumkajUsbRaw"),
     );
     let out = Command::new("powershell")
         .args([
@@ -602,18 +549,18 @@ mod tests {
         let dev = root.join("devices/usb7/7-3");
         let iface = dev.join("7-3:1.0");
         std::fs::create_dir_all(&iface).unwrap();
-        std::fs::write(dev.join("idVendor"), "0fe6\n").unwrap();
-        std::fs::write(dev.join("idProduct"), "811e\n").unwrap();
-        std::fs::write(dev.join("serial"), "GD107B9714B7F14B0\n").unwrap();
+        std::fs::write(dev.join("idVendor"), "1a2b\n").unwrap();
+        std::fs::write(dev.join("idProduct"), "3c4d\n").unwrap();
+        std::fs::write(dev.join("serial"), "SN0001TEST\n").unwrap();
         let node = root.join("class/usbmisc/lp0");
         std::fs::create_dir_all(&node).unwrap();
         std::os::unix::fs::symlink("../../../devices/usb7/7-3/7-3:1.0", node.join("device")).unwrap();
         let id = usb_id_for_usblp_in(&root.join("class"), "lp0").expect("traced");
         assert_eq!(
             id,
-            UsbId { vid: 0x0fe6, pid: 0x811e, serial: Some("GD107B9714B7F14B0".into()) }
+            UsbId { vid: 0x1a2b, pid: 0x3c4d, serial: Some("SN0001TEST".into()) }
         );
-        assert_eq!(format_id(&id), "usb:0fe6:811e:GD107B9714B7F14B0");
+        assert_eq!(format_id(&id), "usb:1a2b:3c4d:SN0001TEST");
         assert!(usb_id_for_usblp_in(&root.join("class"), "lp1").is_none());
         let _ = std::fs::remove_dir_all(root);
     }

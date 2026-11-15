@@ -133,7 +133,6 @@ fn virtual_printers_list_rows(
             t("config_layout_portrait")
         };
         let delivery = match vals.delivery.as_str() {
-            print_share::DELIVERY_RAW_DEVICE => t("vp_delivery_raw"),
             print_share::DELIVERY_ESCPOS => t("vp_delivery_escpos"),
             _ => t("vp_delivery_spooler"),
         };

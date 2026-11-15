@@ -83,9 +83,7 @@ print_cancelled_kot_needed	ರದ್ದು ಆಯಿನ ಭಕ್ಷ್ಯೊಲ
 print_cancelled_kot_none	ಈ ಆದೇಶೊಡು ರದ್ದು ಆಯಿನ ಭಕ್ಷ್ಯೊಲು ಇಜ್ಜಿ
 print_cancelled_kot_client	ಕಡಪುಡುನ {place} ಗ್ ಮುದ್ರಣ ರದ್ದು ಆತ್ಂಡ್ ({n}) — ಸರ್ವರ್ ಡ್ ಅಡುಗೆಮನೆ ಮುದ್ರಣೊಲು
 kot_banner	ಎಡ್ಡೆ ಬ್ಯಾನರ್
-kot_banner_ph	ಬ್ಯಾನರ್ (ಖಾಲಿ = ಇಜ್ಜಿ)
 kot_item_prefix	ಐಟಂ ಉಪಸರ್ಗ
-kot_item_prefix_ph	ಉದಾ. [ರದ್ದು ಆತ್ಂಡ್]
 kot_strike	ಸ್ಟ್ರೈಕ್ ಡಿಶ್ ಪುದರ್
 kot_strike_note	ಸ್ಟ್ರೈಕ್ ಡಿಶ್ ನೋಟ್
 kot_strike_on	ಆನ್
@@ -103,13 +101,11 @@ bill_item_qty	ಪ್ರಮಾಣ
 bill_item_price	ಬೆಲೆ
 bill_item_amount	ಮೊತ್ತ
 bill_item_note	ಡಿಶ್ ಟಿಪ್ಪಣಿ
-bill_item_col_order	ಕಾಲಮ್ ಕ್ರಮ
 bill_item_col_sep	ಕಾಲಮ್ ನಿಯಮೊಲು
 slip_columns	ಕಾಲಮ್‌ಲು
 slip_col_width	ಅಗಲ (mm)
 slip_col_start	ಸುರುತ ಜಾಗೆ (px)
 slip_col_end	ಅಕೇರಿದ ಜಾಗೆ (px)
-slip_col_align	ಬರವುದ ಜೋಡಣೆ
 slip_columns_help	ಪ್ರತಿ ಕಾಲಮ್‌ದ ಅಗಲೊಡು ಅಯಿತ ಸುರುತ ಬುಕ್ಕ ಅಕೇರಿದ ಜಾಗೆ ಸೇರ್ದುಂಡು. ಬರವು ಅಯಿತ ಕಾಲಮ್‌ದುಳಯಿನೇ ಸುತ್ತುಂಡು; ವಿಷಯದ ಅಗಲೊಡ್ದು ಪಿದಾಯಿ ಇತ್ತಿನವು ಕಾಗದೊಡು ಬುಕ್ಕ ಮುನ್ನೋಟೊಡು ಕತ್ತರಿಪುಂಡು.
 bill_total_qty_label	ಒಟ್ಟು ಪ್ರಮಾಣದ ಲೇಬಲ್
 bill_total_subtotal_label	ಉಪ ಒಟ್ಟು ಲೇಬಲ್
@@ -643,7 +639,6 @@ vp_type_size_heading	ಟೈಪ್ ಸೈಜ್
 vp_wrap_heading	ಸುತ್ತುನ ಅಗಲ
 vp_margin_heading	ಅಂಚುಲು
 vp_delivery_spooler	ಓಎಸ್ ಡಾಕ್ಯುಮೆಂಟ್ (ಸಿಸ್ಟಮ್ ಸ್ಪೂಲರ್)
-vp_delivery_raw	ಸಾಧನೊಗು ಕಚ್ಚಾ ಬೈಟ್ ಲು
 vp_delivery_escpos	ESC/POS ಉಷ್ಣ ಆಜ್ಞೆಲು
 virtual_printer_new	ಪೊಸ ವರ್ಚುವಲ್ ಪ್ರಿಂಟರ್
 virtual_printer_selected	“{name}” ನ್ ಸಂಪಾದನೆ ಮಲ್ಪುನವು — ಬದಲಾವಣೆ ಮಲ್ಪೆರೆ ಪಟ್ಟಿಡ್ ಬೇತೆ ಒಂಜಿ ಟ್ಯಾಪ್ ಮಲ್ಪುಲೆ
@@ -1110,7 +1105,6 @@ remove_these_tables	ಈ ಡೈನಿಂಗ್ ಟೇಬಲ್ ಲೆನ್ ದ�
 table_remove_ph	ತೆಗೆತ್ ಪಾಡ್ಲೆ: T1-T24, ಅತ್ತ್ಂಡ ಒಂಜಿ ಡೈನಿಂಗ್ ಟೇಬಲ್ ದ ಪುದರ್
 find_server	ಅಂಗಡಿದ ಸರ್ವರ್ ನ್ ತೂಲೆ
 bill_format	ಬಿಲ್ ಫಾರ್ಮ್ಯಾಟ್
-bill_format_help	ಪ್ರತಿಯೊಂಜಿ ಬಿಲ್ ಡ್ ನಿಕ್ಲೆನ ರೆಸ್ಟೋರೆಂಟ್ ದ ಪುದರ್ ಡ್ ಮುದ್ರಿತ ಆತ್ಂಡ್. ಬೇತೆ ಬೇತೆ ಸಾಲುಲು | (ಉದಾ. ಎಂಜಿ ರಸ್ತೆ, ರಾಜ್ಕೋಟ್ | ಪಿಎಚ್ 98250 00000).
 bill_header_ph	ವಿಳಾಸ | ಫೋನ್
 fssai_ph	FSSAI ಲೈಸೆನ್ಸ್ ನಂ. (ಭಾರತ)
 bill_footer_ph	ಅಡಿಟಿಪ್ಪಣಿ (ಉದಾ. ಧನ್ಯವಾದೊಲು, ಮತ್ತೆ ಭೇಟಿ ಕೊರ್ಲೆ)
@@ -1127,7 +1121,6 @@ kot_field_hide	ಮುಚ್ಚಿಲೆ
 kot_field_on	ತೋಜಾಲೆ
 kot_field_off	ಮುಚ್ಚಿದ್ ದೀಲೆ
 kot_field_size	ಫಾಂಟ್ ಗಾತ್ರ
-kot_field_size_ph	ಉದಾ. ೧೬, ೨೦, ೨೪, ೨೮, ೩೨…
 kot_weight_light	ಬೊಲ್ಪು
 bill_kot_panel_help	ಬಿಲ್ ಬೊಕ್ಕ ಕಿಚನ್ ಸ್ಲಿಪ್ ಲೇಔಟ್, ಪ್ರತಿಯೊಂಜಿಲಾ ಅಯಿತ ಸ್ವಂತ ವಿಷಯದ ಅಗಲೊಡು ಉಪ್ಪುಂಡು. ಬಿಲ್ ಕ್ಯಾಶಿಯರ್ ಪಂಡ ಯಾನ್ ಬಿಲ್ ನ್ ಬುಡುಗಡೆ ಮಲ್ತೆರ್ ಅತ್ತಂದೆ ಸರಿ ಮಲ್ತೆರ್; KOT ಆ ಅಡುಗೆಮನೆದ ಟಿಕೆಟ್ ನ್ ಕಡಪುಡುನಕುಲು ವೇಟರ್ — ಪೂರ್ತಿ ಆದೇಶದ ಕತೆ ಪುಸ್ತಕೊಲೆಡ್ ಉಪ್ಪುಂಡು.
 std_size_ph	ಉದಾ. ೧೮, ೨೦, ೨೬…
@@ -1157,7 +1150,6 @@ kot_style_item_qty	ಐಟಂ · ಪ್ರಮಾಣ
 kot_style_field_pick	ಕ್ಷೇತ್ರೊನು ಆಯ್ಕೆ ಮಲ್ಪುಲೆ
 kot_weight_regular	ನಿಯಮಿತ
 kot_weight_bold	ಬೋಲ್ಡ್
-kot_align	ಅಲೈನ್ ಮಲ್ಪುಲೆ
 kot_align_start	ಸುರು ಮಲ್ಪುಲೆ
 kot_align_center	ಕೇಂದ್ರ
 kot_align_end	ಮುಗಿಪು
@@ -1307,18 +1299,8 @@ kot_show_item_hdr	ಐಟಂ · ಪ್ರಮಾಣ
 kot_hide_item_hdr	ಕಾಲಮ್ ಲೆನ್ ಮರೆಮಾಚೊಡು
 kot_show_title	ಶೀರ್ಷಿಕೆ ಸಾಲು
 kot_hide_title	ಶೀರ್ಷಿಕೆನ್ ಮುಚ್ಚುಲೆ
-kot_field_order	ಮುದ್ರಣ ಆದೇಶ
-kot_field_up	ಮಿತ್ತ್ ಪೋಲೆ
-kot_field_down	ಕೆಳಗ್ ಪೋಲೆ
 kot_field_cycle	ದುಂಬುಗು ಆಯ್ಕೆ ಮಲ್ಪುಲೆ
 kot_field_select	ದುಂಬುಗು ಆಯ್ಕೆ ಮಲ್ಪುಲೆ
-kot_field_time	ಸಮಯ
-kot_field_kot_no	KOT ಇಜ್ಜಿ
-kot_field_area	ಪ್ರದೇಶ
-kot_field_table	ಊಟದ ಮೇಜಿ
-kot_field_shop	ಅಂಗಡಿದ ಪುದರ್
-kot_field_waiter	ಸಿಬ್ಬಂದಿ
-kot_field_station	ನಿಲ್ದಾಣ
 dishes_n	{n} ಭಕ್ಷ್ಯೊಲು
 recipe_ph	ಪಾಕವಿಧಾನ (ಐಚ್ಛಿಕ) — ಒಂಜಿ ಭಾಗೊಡು ಬಳಕೆ ಆಪುಂಡು: ಅರಿ=0.2, ಪನೀರ್=0.15
 reorder_ph	ಡ್ ಜಾಸ್ತಿ ಖರೀದಿ ಮಲ್ಪುಲೆ

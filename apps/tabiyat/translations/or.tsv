@@ -81,12 +81,10 @@ bill_item_qty	ପରିମାଣ
 bill_item_price	ଦର
 bill_item_amount	ରାଶି
 bill_item_note	Rx / ବିକ୍ରି ଟିପ୍ପଣୀ
-bill_item_col_order	ସ୍ତମ୍ଭ କ୍ରମ
 bill_item_col_sep	ସ୍ତମ୍ଭ ରେଖା
 slip_col_width	ପ୍ରସ୍ଥ (mm)
 slip_col_start	ଆରମ୍ଭ ସ୍ଥାନ (px)
 slip_col_end	ଶେଷ ସ୍ଥାନ (px)
-slip_col_align	ଲେଖା ସଜାଣି
 slip_columns_help	ପ୍ରତ୍ୟେକ ସ୍ତମ୍ଭର ପ୍ରସ୍ଥରେ ଏହାର ଆରମ୍ଭ ଓ ଶେଷ ସ୍ଥାନ ଅନ୍ତର୍ଭୁକ୍ତ। ଲେଖା ନିଜ ସ୍ତମ୍ଭ ଭିତରେ ଗୁଡ଼ାଇ ହୁଏ; ବିଷୟବସ୍ତୁର ପ୍ରସ୍ଥ ବାହାରେ ଥିବା ଅଂଶ କାଗଜରେ ଓ ପୂର୍ବାବଲୋକନରେ କଟିଯାଏ।
 bill_total_qty_label	ମୋଟ ସଂଖ୍ୟା ଲେବଲ
 bill_total_subtotal_label	ଉପଯୋଗ ଲେବଲ
@@ -443,7 +441,6 @@ printer_profile_heading	ଲେଆଉଟ୍
 vp_delivery_heading	ଡେଲିଭରି
 vp_delivery_help	ଏହି ଭର୍ଚୁଆଲ୍ ପ୍ରିଣ୍ଟର କାମ କିପରି ପଠାଏ — OS ଡକ୍ୟୁମେଣ୍ଟ, କଞ୍ଚା ବାଇଟ୍ କିମ୍ବା ESC/POS। ସ୍ଲିପ୍ ବିଷୟବସ୍ତୁ (ଅକ୍ଷର ଆକାର, ଗୁଡ଼ାଇବା, ମାର୍ଜିନ୍) ବିଲ / ସ୍ଲିପ୍ ଫର୍ମାଟ୍ ସ୍ଥିର କରେ, ଏଠାରେ ନୁହେଁ।
 vp_delivery_spooler	OS ଡକ୍ୟୁମେଣ୍ଟ (ସିଷ୍ଟମ୍ ସ୍ପୁଲର୍)
-vp_delivery_raw	ଡିଭାଇସକୁ କଞ୍ଚା ବାଇଟ୍
 vp_delivery_escpos	ESC/POS ଥର୍ମାଲ୍ କମାଣ୍ଡ
 virtual_printer_new	ନୂଆ ଭର୍ଚୁଆଲ୍ ପ୍ରିଣ୍ଟର
 virtual_printer_selected	“{name}” ସମ୍ପାଦନ — ତାଲିକାରେ ଅନ୍ୟଟିରେ ଟ୍ୟାପ୍ କରି ବଦଳାନ୍ତୁ
@@ -730,7 +727,6 @@ customer_paid_ph	ଗ୍ରାହକ ଦେଲେ
 tip_ph	ଟିପ୍
 find_server	ଦୋକାନର ସର୍ଭର ଖୋଜନ୍ତୁ
 bill_format	ବିଲ୍ ଫର୍ମାଟ୍
-bill_format_help	ପ୍ରତି ବିଲରେ ଆପଣଙ୍କ ଦୋକାନ ନାମ ତଳେ ଛପା ହୁଏ। ଧାଡ଼ି | ଦ୍ୱାରା ଅଲଗା କରନ୍ତୁ (ଯେପରି MG Road, Rajkot | Ph 98250 00000)।
 bill_header_ph	ଠିକଣା | ଫୋନ୍
 fssai_ph	ଔଷଧ ଲାଇସେନ୍ସ ନଂ (ଇଚ୍ଛାଧୀନ — ଆପଣଙ୍କ ଶବ୍ଦରେ)
 bill_footer_ph	ଫୁଟର୍ (ଯେପରି ଧନ୍ୟବାଦ, ପୁଣି ଆସନ୍ତୁ)
@@ -820,8 +816,6 @@ add_dishes	ଔଷଧ ଯୋଡ଼ନ୍ତୁ
 order_so_far	ଏହି ଅର୍ଡରରେ: {n} · {total}
 no_dish_match	“{q}” ସହ କୌଣସି ଆଇଟମ୍ ମେଳ ଖାଏ ନାହିଁ
 pick_done	ହୋଇଗଲା
-kot_field_up	ଉପରକୁ ନିଅନ୍ତୁ
-kot_field_down	ତଳକୁ ନିଅନ୍ତୁ
 dishes_n	{n}ଟି ଆଇଟମ୍
 reorder_ph	ଏତିକିରେ ଆହୁରି କିଣନ୍ତୁ
 set_reorder	ପୁନଃ ଅର୍ଡର ସ୍ତର ରଖନ୍ତୁ
@@ -853,3 +847,6 @@ sel_copy	କପି କରନ୍ତୁ
 sel_select_all	ସବୁ ବାଛନ୍ତୁ
 sel_copied	କପି ହେଲା
 nav_loading	ଲୋଡ୍ ହେଉଛି…
+printer_mode_first	ଯାହା ପ୍ରଥମେ ଚାଲେ
+printer_mode_all	ସବୁଥିରେ ଛାପନ୍ତୁ
+slip_columns	ସ୍ତମ୍ଭଗୁଡ଼ିକ

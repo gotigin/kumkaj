@@ -69,12 +69,10 @@ bill_item_qty	परिमाण
 bill_item_price	मूल्य
 bill_item_amount	रकम
 bill_item_note	सामानको टिप्पणी
-bill_item_col_order	स्तम्भको क्रम
 bill_item_col_sep	स्तम्भ रेखा
 slip_col_width	चौडाइ (mm)
 slip_col_start	सुरुको ठाउँ (px)
 slip_col_end	अन्त्यको ठाउँ (px)
-slip_col_align	पाठ पङ्क्तिबद्धता
 slip_columns_help	प्रत्येक स्तम्भको चौडाइमा यसको सुरु र अन्त्यको ठाउँ समावेश हुन्छ। पाठ आफ्नै स्तम्भभित्र बेरिन्छ; सामग्रीको चौडाइभन्दा बाहिर भएको भाग कागजमा र पूर्वावलोकनमा काटिन्छ।
 bill_total_qty_label	कुल परिमाण लेबल
 bill_total_subtotal_label	उप-जम्मा लेबल
@@ -431,7 +429,6 @@ printer_profile_heading	लेआउट
 vp_delivery_heading	डेलिभरी
 vp_delivery_help	यो भर्चुअल प्रिन्टरले काम कसरी पठाउँछ — OS कागजात, कच्चा बाइट, वा ESC/POS। पर्चीको सामग्री (अक्षर आकार, बेर्ने, मार्जिन) बिल / पर्ची ढाँचाले तय गर्छ, यहाँ होइन।
 vp_delivery_spooler	OS कागजात (सिस्टम स्पूलर)
-vp_delivery_raw	उपकरणमा कच्चा बाइट
 vp_delivery_escpos	ESC/POS थर्मल आदेश
 virtual_printer_new	नयाँ भर्चुअल प्रिन्टर
 virtual_printer_selected	“{name}” सम्पादन गर्दै — बदल्न सूचीमा अर्को थिच्नुहोस्
@@ -718,7 +715,6 @@ customer_paid_ph	ग्राहकले तिरेको
 tip_ph	टिप
 find_server	पसलको सर्भर खोज्नुहोस्
 bill_format	बिल ढाँचा
-bill_format_help	हरेक बिलमा तपाईंको पसलको नामतल छापिन्छ। पङ्क्तिलाई | ले छुट्याउनुहोस् (जस्तै MG Road, Rajkot | Ph 98250 00000)।
 bill_header_ph	ठेगाना | फोन
 fssai_ph	FSSAI / पसल इजाजत नं. (ऐच्छिक)
 bill_footer_ph	फुटर (जस्तै धन्यवाद, फेरि आउनुहोला)
@@ -808,8 +804,6 @@ add_dishes	सामान थप्नुहोस्
 order_so_far	यो अर्डरमा: {n} · {total}
 no_dish_match	“{q}” सँग कुनै सामान मिल्दैन
 pick_done	सकियो
-kot_field_up	माथि सार्नुहोस्
-kot_field_down	तल सार्नुहोस्
 dishes_n	{n} सामान
 reorder_ph	यति पुगेपछि थप किन्नुहोस्
 set_reorder	पुनः अर्डर स्तर राख्नुहोस्
@@ -841,3 +835,6 @@ sel_copy	कपी गर्नुहोस्
 sel_select_all	सबै छान्नुहोस्
 sel_copied	कपी भयो
 nav_loading	लोड हुँदैछ…
+printer_mode_first	पहिले चल्ने
+printer_mode_all	सबैमा छाप्नुहोस्
+slip_columns	स्तम्भहरू

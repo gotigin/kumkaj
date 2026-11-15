@@ -1287,8 +1287,6 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
                 ids!(h_job_delivery),
                 ids!(job_deliv_os),
                 ids!(job_deliv_os_on),
-                ids!(job_deliv_raw),
-                ids!(job_deliv_raw_on),
                 ids!(job_deliv_escpos),
                 ids!(job_deliv_escpos_on),
                 ids!(h_job_size),
@@ -1358,15 +1356,9 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
         );
         self.paint_choice_pair(
             cx,
-            ids!(job_deliv_raw),
-            ids!(job_deliv_raw_on),
-            del == print_share::DELIVERY_RAW_DEVICE,
-        );
-        self.paint_choice_pair(
-            cx,
             ids!(job_deliv_escpos),
             ids!(job_deliv_escpos_on),
-            del == print_share::DELIVERY_ESCPOS,
+            del == print_share::DELIVERY_ESCPOS || del == print_share::DELIVERY_RAW_DEVICE,
         );
     }
 

@@ -69,12 +69,10 @@ bill_item_qty	Menge
 bill_item_price	Preis
 bill_item_amount	Betrag
 bill_item_note	Artikelnotiz
-bill_item_col_order	Spaltenreihenfolge
 bill_item_col_sep	Spaltlinien
 slip_col_width	Breite (mm)
 slip_col_start	Abstand am Anfang (px)
 slip_col_end	Abstand am Ende (px)
-slip_col_align	Textausrichtung
 slip_columns_help	Die Breite jeder Spalte schließt ihren Abstand am Anfang und am Ende ein. Text wird innerhalb seiner Spalte umbrochen; was über die Inhaltsbreite hinausgeht, wird abgeschnitten – auf Papier und in der Vorschau.
 bill_total_qty_label	Beschriftung Gesamtmenge
 bill_total_subtotal_label	Beschriftung Zwischensumme
@@ -431,7 +429,6 @@ printer_profile_heading	Layout
 vp_delivery_heading	Zustellung
 vp_delivery_help	Wie dieser virtuelle Drucker Aufträge sendet — OS-Dokument, Rohbytes oder ESC/POS. Beleginhalt (Schriftgröße, Umbruch, Ränder) entscheidet das Rechnungs- / Belegformat, nicht hier.
 vp_delivery_spooler	OS-Dokument (System-Spooler)
-vp_delivery_raw	Rohbytes an Gerät
 vp_delivery_escpos	ESC/POS-Thermobefehle
 virtual_printer_new	Neuer virtueller Drucker
 virtual_printer_selected	Bearbeitung von „{name}“ — tippen Sie eine andere in der Liste zum Wechseln
@@ -718,7 +715,6 @@ customer_paid_ph	Kunde gab
 tip_ph	Trinkgeld
 find_server	Server des Lokals finden
 bill_format	Rechnungsformat
-bill_format_help	Steht unter dem Namen Ihres Ladens auf jeder Rechnung. Zeilen mit | trennen (z. B. MG Road, Rajkot | Ph 98250 00000).
 bill_header_ph	Adresse | Telefon
 fssai_ph	FSSAI- / Ladenlizenznr. (optional)
 bill_footer_ph	Fußzeile (z. B. Danke, bis bald)
@@ -808,8 +804,6 @@ add_dishes	Artikel hinzufügen
 order_so_far	Auf dieser Bestellung: {n} · {total}
 no_dish_match	Kein Artikel passt zu „{q}“
 pick_done	Fertig
-kot_field_up	Nach oben verschieben
-kot_field_down	Nach unten verschieben
 dishes_n	{n} Artikel
 reorder_ph	Nachkaufen bei
 set_reorder	Meldebestand festlegen
@@ -841,3 +835,6 @@ sel_copy	Kopieren
 sel_select_all	Alles auswählen
 sel_copied	Kopiert
 nav_loading	Wird geladen…
+printer_mode_first	Erster, der funktioniert
+printer_mode_all	Auf allen drucken
+slip_columns	Spalten

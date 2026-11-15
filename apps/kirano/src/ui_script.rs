@@ -7822,10 +7822,6 @@ h_units_heading := WrapLabel{body: "Units" font_color: #x031303 font_size: 20.}
                                             printer_mode_first_on := SegBtnOn{text: "OS document (system spooler)" visible: false}
                                         }
                                         View{width: Fill height: Fit flow: Overlay
-                                            printer_mode_all := SegBtn{text: "Raw bytes to device"}
-                                            printer_mode_all_on := SegBtnOn{text: "Raw bytes to device" visible: false}
-                                        }
-                                        View{width: Fill height: Fit flow: Overlay
                                             vp_deliv_escpos := SegBtn{text: "ESC/POS thermal commands"}
                                             vp_deliv_escpos_on := SegBtnOn{text: "ESC/POS thermal commands" visible: false}
                                         }
@@ -7941,21 +7937,25 @@ h_units_heading := WrapLabel{body: "Units" font_color: #x031303 font_size: 20.}
                                     content_width_choices := View{
                                         width: Fill height: Fit
                                         flow: Down spacing: 6
-                                        View{width: Fill height: Fit flow: Overlay
-                                            content_width_58 := SegBtn{text: "58 mm — narrow slip"}
-                                            content_width_58_on := SegBtnOn{text: "58 mm — narrow slip" visible: false}
+                                        cw_row_a := View{width: Fill height: Fit flow: Right spacing: 6
+                                            View{width: Fill height: Fit flow: Overlay
+                                                content_width_58 := SegBtn{text: "58 mm — narrow slip"}
+                                                content_width_58_on := SegBtnOn{text: "58 mm — narrow slip" visible: false}
+                                            }
+                                            View{width: Fill height: Fit flow: Overlay
+                                                content_width_80 := SegBtn{text: "80 mm — wide slip"}
+                                                content_width_80_on := SegBtnOn{text: "80 mm — wide slip" visible: false}
+                                            }
                                         }
-                                        View{width: Fill height: Fit flow: Overlay
-                                            content_width_80 := SegBtn{text: "80 mm — wide slip"}
-                                            content_width_80_on := SegBtnOn{text: "80 mm — wide slip" visible: false}
-                                        }
-                                        View{width: Fill height: Fit flow: Overlay
-                                            content_width_112 := SegBtn{text: "112 mm — 4 inch slip"}
-                                            content_width_112_on := SegBtnOn{text: "112 mm — 4 inch slip" visible: false}
-                                        }
-                                        View{width: Fill height: Fit flow: Overlay
-                                            content_width_210 := SegBtn{text: "210 mm — page"}
-                                            content_width_210_on := SegBtnOn{text: "210 mm — page" visible: false}
+                                        cw_row_b := View{width: Fill height: Fit flow: Right spacing: 6
+                                            View{width: Fill height: Fit flow: Overlay
+                                                content_width_112 := SegBtn{text: "112 mm — 4 inch slip"}
+                                                content_width_112_on := SegBtnOn{text: "112 mm — 4 inch slip" visible: false}
+                                            }
+                                            View{width: Fill height: Fit flow: Overlay
+                                                content_width_210 := SegBtn{text: "210 mm — page"}
+                                                content_width_210_on := SegBtnOn{text: "210 mm — page" visible: false}
+                                            }
                                         }
                                     }
                                     content_width_input := FieldInput{
@@ -7978,20 +7978,29 @@ h_units_heading := WrapLabel{body: "Units" font_color: #x031303 font_size: 20.}
                                 }
                                 View{width: Fill height: Fit flow: Right spacing: 0 align: Align{y: 0.5}
                                     h_bill_delivery := WrapLabel{width: Fit body: "How the job is sent" font_color: #x031303 font_size: 14.}
-                                    bill_delivery_help := InfoHelp{tip: "OS document, raw bytes, or ESC/POS for the bill. Route to any real printer."}
+                                    bill_delivery_help := InfoHelp{tip: "Fallback for printers that have no send method yet. Prefer Settings → Printers — each device has its own."}
                                 }
-                                View{width: Fill height: Fit flow: Down spacing: 6
+                                bill_deliv_row := View{width: Fill height: Fit flow: Down spacing: 6
                                     View{width: Fill height: Fit flow: Overlay
                                         bill_deliv_os := SegBtn{text: "OS document (system spooler)"}
                                         bill_deliv_os_on := SegBtnOn{text: "OS document (system spooler)" visible: false}
                                     }
                                     View{width: Fill height: Fit flow: Overlay
-                                        bill_deliv_raw := SegBtn{text: "Raw bytes to device"}
-                                        bill_deliv_raw_on := SegBtnOn{text: "Raw bytes to device" visible: false}
-                                    }
-                                    View{width: Fill height: Fit flow: Overlay
                                         bill_deliv_escpos := SegBtn{text: "ESC/POS thermal commands"}
                                         bill_deliv_escpos_on := SegBtnOn{text: "ESC/POS thermal commands" visible: false}
+                                    }
+                                }
+                                // Several bill printers: the first that works, or all of them.
+                                bill_print_mode_row := View{
+                                    width: Fill height: Fit
+                                    flow: Right spacing: 6
+                                    View{width: Fill height: Fit flow: Overlay
+                                        bill_print_first := SegBtn{text: "First that works"}
+                                        bill_print_first_on := SegBtnOn{text: "First that works" visible: false}
+                                    }
+                                    View{width: Fill height: Fit flow: Overlay
+                                        bill_print_all := SegBtn{text: "Print on all"}
+                                        bill_print_all_on := SegBtnOn{text: "Print on all" visible: false}
                                     }
                                 }
                                 mod.widgets.ComboField{field: "bill_printers"
@@ -8004,427 +8013,6 @@ h_units_heading := WrapLabel{body: "Units" font_color: #x031303 font_size: 20.}
                                     padding: Inset{left: 0. right: 0. top: 0. bottom: 0.}
                                 }
                                 bill_printers_suggest := mod.widgets.CheckList{field: "bill_printers"}
-                                }
-                                FormCard{
-View{width: Fill height: Fit flow: Right spacing: 8 align: Align{y: 0.5}
-                                    h_bill_format := WrapLabel{width: Fit body: "Bill format" font_color: #x031303 font_size: 20.}
-                                    bill_apply_all := QuietFitBtn{text: "Apply to all"}
-                                }
-                                h_bill_format_help := WrapLabel{
-                                    width: Fill
-                                    body: ""
-                                    font_color: #x1C460E
-                                    font_size: 12.
-                                }
-                                // One list. The selected row is the line you are editing.
-                                View{width: Fill height: Fit flow: Down spacing: 4
-                                    View{width: Fill height: Fit flow: Overlay
-                                        bill_pick_shop := FieldRowBtn{text: "Shop"}
-                                        bill_pick_shop_on := FieldRowBtnOn{text: "Shop" visible: false}
-                                    }
-                                    View{width: Fill height: Fit flow: Overlay
-                                        bill_pick_header := FieldRowBtn{text: "Address"}
-                                        bill_pick_header_on := FieldRowBtnOn{text: "Address" visible: false}
-                                    }
-                                    View{width: Fill height: Fit flow: Overlay
-                                        bill_pick_fssai := FieldRowBtn{text: "FSSAI"}
-                                        bill_pick_fssai_on := FieldRowBtnOn{text: "FSSAI" visible: false}
-                                    }
-                                    View{width: Fill height: Fit flow: Overlay
-                                        bill_pick_title := FieldRowBtn{text: "Title"}
-                                        bill_pick_title_on := FieldRowBtnOn{text: "Title" visible: false}
-                                    }
-                                    View{width: Fill height: Fit flow: Overlay
-                                        bill_pick_customer := FieldRowBtn{text: "Customer"}
-                                        bill_pick_customer_on := FieldRowBtnOn{text: "Customer" visible: false}
-                                    }
-                                    View{width: Fill height: Fit flow: Overlay
-                                        bill_pick_billno := FieldRowBtn{text: "Bill no"}
-                                        bill_pick_billno_on := FieldRowBtnOn{text: "Bill no" visible: false}
-                                    }
-                                    View{width: Fill height: Fit flow: Overlay
-                                        bill_pick_time := FieldRowBtn{text: "Time"}
-                                        bill_pick_time_on := FieldRowBtnOn{text: "Time" visible: false}
-                                    }
-                                    View{width: Fill height: Fit flow: Overlay
-                                        bill_pick_cashier := FieldRowBtn{text: "Cashier"}
-                                        bill_pick_cashier_on := FieldRowBtnOn{text: "Cashier" visible: false}
-                                    }
-                                    View{width: Fill height: Fit flow: Overlay
-                                        bill_pick_table := FieldRowBtn{text: "Table"}
-                                        bill_pick_table_on := FieldRowBtnOn{text: "Table" visible: false}
-                                    }
-                                    View{width: Fill height: Fit flow: Overlay
-                                        bill_pick_items := FieldRowBtn{text: "Items"}
-                                        bill_pick_items_on := FieldRowBtnOn{text: "Items" visible: false}
-                                    }
-                                    View{width: Fill height: Fit flow: Overlay
-                                        bill_pick_total := FieldRowBtn{text: "Total"}
-                                        bill_pick_total_on := FieldRowBtnOn{text: "Total" visible: false}
-                                    }
-                                    View{width: Fill height: Fit flow: Overlay
-                                        bill_pick_footer := FieldRowBtn{text: "Footer"}
-                                        bill_pick_footer_on := FieldRowBtnOn{text: "Footer" visible: false}
-                                    }
-                                    View{width: Fill height: Fit flow: Overlay
-                                        bill_pick_upi := FieldRowBtn{text: "UPI"}
-                                        bill_pick_upi_on := FieldRowBtnOn{text: "UPI" visible: false}
-                                    }
-                                }
-                                View{width: Fill height: Fit flow: Right spacing: 6
-                                    bill_field_up := StackSecondaryBtn{text: "Move up" flow: Down}
-                                    bill_field_down := StackSecondaryBtn{text: "Move down" flow: Down}
-                                }
-                                View{width: Fill height: Fit flow: Right spacing: 6
-                                    View{width: Fill height: Fit flow: Overlay
-                                        bill_field_show := SegBtn{text: "Show"}
-                                        bill_field_show_on := SegBtnOn{text: "Show" visible: false}
-                                    }
-                                    View{width: Fill height: Fit flow: Overlay
-                                        bill_field_hide := SegBtn{text: "Hide"}
-                                        bill_field_hide_on := SegBtnOn{text: "Hide" visible: false}
-                                    }
-                                }
-                                // Per-piece toggles for Items / Total — only
-                                // visible while that line is open.
-                                bill_item_pieces := View{
-                                    width: Fill height: Fit
-                                    flow: Down spacing: 8
-                                    visible: false
-                                    h_bill_item_layout := WrapLabel{body: "Item layout" font_color: #x031303 font_size: 14.}
-                                    View{width: Fill height: Fit flow: Right spacing: 6
-                                        View{width: Fill height: Fit flow: Overlay
-                                            bill_item_layout_columns := SegBtn{text: "Columns"}
-                                            bill_item_layout_columns_on := SegBtnOn{text: "Columns" visible: false}
-                                        }
-                                        View{width: Fill height: Fit flow: Overlay
-                                            bill_item_layout_stacked := SegBtn{text: "Stacked"}
-                                            bill_item_layout_stacked_on := SegBtnOn{text: "Stacked" visible: false}
-                                        }
-                                    }
-                                    h_bill_item_header := WrapLabel{body: "Column headers" font_color: #x031303 font_size: 14.}
-                                    View{width: Fill height: Fit flow: Right spacing: 6
-                                        View{width: Fill height: Fit flow: Overlay
-                                            bill_item_header_on := SegBtn{text: "On"}
-                                            bill_item_header_on_on := SegBtnOn{text: "On" visible: false}
-                                        }
-                                        View{width: Fill height: Fit flow: Overlay
-                                            bill_item_header_off := SegBtn{text: "Off"}
-                                            bill_item_header_off_on := SegBtnOn{text: "Off" visible: false}
-                                        }
-                                    }
-                                    bill_item_header_labels := View{
-                                        width: Fill height: Fit
-                                        flow: Down spacing: 8
-                                        h_bill_item_hdr_item := WrapLabel{body: "Item header" font_color: #x031303 font_size: 14.}
-                                        bill_item_hdr_item_input := FieldInput{empty_text: "Item"}
-                                        h_bill_item_hdr_qty := WrapLabel{body: "Qty header" font_color: #x031303 font_size: 14.}
-                                        bill_item_hdr_qty_input := FieldInput{empty_text: "Qty."}
-                                        h_bill_item_hdr_price := WrapLabel{body: "Price header" font_color: #x031303 font_size: 14.}
-                                        bill_item_hdr_price_input := FieldInput{empty_text: "Price"}
-                                        h_bill_item_hdr_amount := WrapLabel{body: "Amount header" font_color: #x031303 font_size: 14.}
-                                        bill_item_hdr_amount_input := FieldInput{empty_text: "Amount"}
-                                    }
-                                    h_bill_item_name := WrapLabel{body: "Dish name" font_color: #x031303 font_size: 14.}
-                                    View{width: Fill height: Fit flow: Right spacing: 6
-                                        View{width: Fill height: Fit flow: Overlay
-                                            bill_item_name_on := SegBtn{text: "On"}
-                                            bill_item_name_on_on := SegBtnOn{text: "On" visible: false}
-                                        }
-                                        View{width: Fill height: Fit flow: Overlay
-                                            bill_item_name_off := SegBtn{text: "Off"}
-                                            bill_item_name_off_on := SegBtnOn{text: "Off" visible: false}
-                                        }
-                                    }
-                                    h_bill_item_qty := WrapLabel{body: "Qty" font_color: #x031303 font_size: 14.}
-                                    View{width: Fill height: Fit flow: Right spacing: 6
-                                        View{width: Fill height: Fit flow: Overlay
-                                            bill_item_qty_on := SegBtn{text: "On"}
-                                            bill_item_qty_on_on := SegBtnOn{text: "On" visible: false}
-                                        }
-                                        View{width: Fill height: Fit flow: Overlay
-                                            bill_item_qty_off := SegBtn{text: "Off"}
-                                            bill_item_qty_off_on := SegBtnOn{text: "Off" visible: false}
-                                        }
-                                    }
-                                    h_bill_item_price := WrapLabel{body: "Price" font_color: #x031303 font_size: 14.}
-                                    View{width: Fill height: Fit flow: Right spacing: 6
-                                        View{width: Fill height: Fit flow: Overlay
-                                            bill_item_price_on := SegBtn{text: "On"}
-                                            bill_item_price_on_on := SegBtnOn{text: "On" visible: false}
-                                        }
-                                        View{width: Fill height: Fit flow: Overlay
-                                            bill_item_price_off := SegBtn{text: "Off"}
-                                            bill_item_price_off_on := SegBtnOn{text: "Off" visible: false}
-                                        }
-                                    }
-                                    h_bill_item_amount := WrapLabel{body: "Amount" font_color: #x031303 font_size: 14.}
-                                    View{width: Fill height: Fit flow: Right spacing: 6
-                                        View{width: Fill height: Fit flow: Overlay
-                                            bill_item_amount_on := SegBtn{text: "On"}
-                                            bill_item_amount_on_on := SegBtnOn{text: "On" visible: false}
-                                        }
-                                        View{width: Fill height: Fit flow: Overlay
-                                            bill_item_amount_off := SegBtn{text: "Off"}
-                                            bill_item_amount_off_on := SegBtnOn{text: "Off" visible: false}
-                                        }
-                                    }
-                                    h_bill_item_note := WrapLabel{body: "Dish note" font_color: #x031303 font_size: 14.}
-                                    View{width: Fill height: Fit flow: Right spacing: 6
-                                        View{width: Fill height: Fit flow: Overlay
-                                            bill_item_note_on := SegBtn{text: "On"}
-                                            bill_item_note_on_on := SegBtnOn{text: "On" visible: false}
-                                        }
-                                        View{width: Fill height: Fit flow: Overlay
-                                            bill_item_note_off := SegBtn{text: "Off"}
-                                            bill_item_note_off_on := SegBtnOn{text: "Off" visible: false}
-                                        }
-                                    }
-                                    // Column air / reserved widths — only meaningful for Columns layout.
-                                    bill_item_col_metrics := View{
-                                        width: Fill height: Fit
-                                        flow: Down spacing: 8
-                                        View{
-                                            width: Fill height: Fit
-                                            flow: Right spacing: 0
-                                            align: Align{x: 0.0 y: 0.5}
-                                            h_bill_item_col_order := WrapLabel{width: Fit body: "Column order" font_color: #x031303 font_size: 14.}
-                                            bill_columns_help := InfoHelp{tip: "Each column’s width includes its start and end space. Text wraps inside its column; what lies past the content width is cut, on paper and in the preview."}
-                                        }
-                                        View{width: Fill height: Fit flow: Down spacing: 4
-                                            View{width: Fill height: Fit flow: Overlay
-                                                bill_col_ord_0 := FieldRowBtn{text: "Dish name"}
-                                                bill_col_ord_0_on := FieldRowBtnOn{text: "Dish name" visible: false}
-                                            }
-                                            View{width: Fill height: Fit flow: Overlay
-                                                bill_col_ord_1 := FieldRowBtn{text: "Qty"}
-                                                bill_col_ord_1_on := FieldRowBtnOn{text: "Qty" visible: false}
-                                            }
-                                            View{width: Fill height: Fit flow: Overlay
-                                                bill_col_ord_2 := FieldRowBtn{text: "Price"}
-                                                bill_col_ord_2_on := FieldRowBtnOn{text: "Price" visible: false}
-                                            }
-                                            View{width: Fill height: Fit flow: Overlay
-                                                bill_col_ord_3 := FieldRowBtn{text: "Amount"}
-                                                bill_col_ord_3_on := FieldRowBtnOn{text: "Amount" visible: false}
-                                            }
-                                        }
-                                        View{width: Fill height: Fit flow: Right spacing: 6
-                                            bill_col_ord_up := StackSecondaryBtn{text: "Move up" flow: Down}
-                                            bill_col_ord_down := StackSecondaryBtn{text: "Move down" flow: Down}
-                                        }
-                                        h_bill_item_col_sep := WrapLabel{body: "Column rules" font_color: #x031303 font_size: 14.}
-                                        View{width: Fill height: Fit flow: Right spacing: 6
-                                            View{width: Fill height: Fit flow: Overlay
-                                                bill_item_sep_on := SegBtn{text: "On"}
-                                                bill_item_sep_on_on := SegBtnOn{text: "On" visible: false}
-                                            }
-                                            View{width: Fill height: Fit flow: Overlay
-                                                bill_item_sep_off := SegBtn{text: "Off"}
-                                                bill_item_sep_off_on := SegBtnOn{text: "Off" visible: false}
-                                            }
-                                        }
-                                        h_bill_col_width := WrapLabel{body: "Width (mm)" font_color: #x031303 font_size: 14.}
-                                        bill_col_width_input := FieldInput{empty_text: "e.g. 30"}
-                                        h_bill_col_start := WrapLabel{body: "Start space (px)" font_color: #x031303 font_size: 14.}
-                                        bill_col_start_input := FieldInput{empty_text: "e.g. 4"}
-                                        h_bill_col_end := WrapLabel{body: "End space (px)" font_color: #x031303 font_size: 14.}
-                                        bill_col_end_input := FieldInput{empty_text: "e.g. 4"}
-                                        h_bill_col_align := WrapLabel{body: "Text align" font_color: #x031303 font_size: 14.}
-                                        View{width: Fill height: Fit flow: Right spacing: 6
-                                            View{width: Fill height: Fit flow: Overlay
-                                                bill_col_align_start := SegBtn{text: "Start"}
-                                                bill_col_align_start_on := SegBtnOn{text: "Start" visible: false}
-                                            }
-                                            View{width: Fill height: Fit flow: Overlay
-                                                bill_col_align_center := SegBtn{text: "Center"}
-                                                bill_col_align_center_on := SegBtnOn{text: "Center" visible: false}
-                                            }
-                                            View{width: Fill height: Fit flow: Overlay
-                                                bill_col_align_end := SegBtn{text: "End"}
-                                                bill_col_align_end_on := SegBtnOn{text: "End" visible: false}
-                                            }
-                                        }
-                                    }
-                                }
-                                bill_total_pieces := View{
-                                    width: Fill height: Fit
-                                    flow: Down spacing: 8
-                                    visible: false
-                                    h_bill_total_qty := WrapLabel{body: "Total qty" font_color: #x031303 font_size: 14.}
-                                    View{width: Fill height: Fit flow: Right spacing: 6
-                                        View{width: Fill height: Fit flow: Overlay
-                                            bill_total_qty_on := SegBtn{text: "On"}
-                                            bill_total_qty_on_on := SegBtnOn{text: "On" visible: false}
-                                        }
-                                        View{width: Fill height: Fit flow: Overlay
-                                            bill_total_qty_off := SegBtn{text: "Off"}
-                                            bill_total_qty_off_on := SegBtnOn{text: "Off" visible: false}
-                                        }
-                                    }
-                                    h_bill_total_qty_label := WrapLabel{body: "Total qty label" font_color: #x031303 font_size: 14.}
-                                    bill_total_qty_label_input := FieldInput{empty_text: "Total Qty"}
-                                    h_bill_total_subtotal := WrapLabel{body: "Sub total" font_color: #x031303 font_size: 14.}
-                                    View{width: Fill height: Fit flow: Right spacing: 6
-                                        View{width: Fill height: Fit flow: Overlay
-                                            bill_total_subtotal_on := SegBtn{text: "On"}
-                                            bill_total_subtotal_on_on := SegBtnOn{text: "On" visible: false}
-                                        }
-                                        View{width: Fill height: Fit flow: Overlay
-                                            bill_total_subtotal_off := SegBtn{text: "Off"}
-                                            bill_total_subtotal_off_on := SegBtnOn{text: "Off" visible: false}
-                                        }
-                                    }
-                                    h_bill_total_subtotal_label := WrapLabel{body: "Sub total label" font_color: #x031303 font_size: 14.}
-                                    bill_total_subtotal_label_input := FieldInput{empty_text: "Sub Total"}
-                                    h_bill_total_grand := WrapLabel{body: "Grand total" font_color: #x031303 font_size: 14.}
-                                    View{width: Fill height: Fit flow: Right spacing: 6
-                                        View{width: Fill height: Fit flow: Overlay
-                                            bill_total_grand_on := SegBtn{text: "On"}
-                                            bill_total_grand_on_on := SegBtnOn{text: "On" visible: false}
-                                        }
-                                        View{width: Fill height: Fit flow: Overlay
-                                            bill_total_grand_off := SegBtn{text: "Off"}
-                                            bill_total_grand_off_on := SegBtnOn{text: "Off" visible: false}
-                                        }
-                                    }
-                                    h_bill_total_grand_label := WrapLabel{body: "Grand total label" font_color: #x031303 font_size: 14.}
-                                    bill_total_grand_label_input := FieldInput{empty_text: "Grand Total"}
-                                    h_bill_total_paid_label := WrapLabel{body: "Paid total label" font_color: #x031303 font_size: 14.}
-                                    bill_total_paid_label_input := FieldInput{empty_text: "Total"}
-                                }
-                                bill_meta_pair := View{
-                                    width: Fill height: Fit
-                                    flow: Down spacing: 8
-                                    visible: false
-                                    h_bill_meta_pair := WrapLabel{body: "Share line with" font_color: #x031303 font_size: 14.}
-                                    View{width: Fill height: Fit flow: Right spacing: 6
-                                        View{width: Fill height: Fit flow: Overlay
-                                            bill_pair_alone := SegBtn{text: "Alone"}
-                                            bill_pair_alone_on := SegBtnOn{text: "Alone" visible: false}
-                                        }
-                                        View{width: Fill height: Fit flow: Overlay
-                                            bill_pair_customer := SegBtn{text: "Customer"}
-                                            bill_pair_customer_on := SegBtnOn{text: "Customer" visible: false}
-                                        }
-                                        View{width: Fill height: Fit flow: Overlay
-                                            bill_pair_billno := SegBtn{text: "Bill no"}
-                                            bill_pair_billno_on := SegBtnOn{text: "Bill no" visible: false}
-                                        }
-                                    }
-                                    View{width: Fill height: Fit flow: Right spacing: 6
-                                        View{width: Fill height: Fit flow: Overlay
-                                            bill_pair_time := SegBtn{text: "Time"}
-                                            bill_pair_time_on := SegBtnOn{text: "Time" visible: false}
-                                        }
-                                        View{width: Fill height: Fit flow: Overlay
-                                            bill_pair_cashier := SegBtn{text: "Cashier"}
-                                            bill_pair_cashier_on := SegBtnOn{text: "Cashier" visible: false}
-                                        }
-                                        View{width: Fill height: Fit flow: Overlay
-                                            bill_pair_table := SegBtn{text: "Table"}
-                                            bill_pair_table_on := SegBtnOn{text: "Table" visible: false}
-                                        }
-                                    }
-                                }
-                                h_bill_field_size := WrapLabel{body: "Font size" font_color: #x031303 font_size: 14.}
-                                bill_field_size_input := FieldInput{empty_text: "e.g. 16, 20, 24, 28, 32…"}
-                                View{width: Fill height: Fit flow: Right spacing: 6
-                                    View{width: Fill height: Fit flow: Overlay
-                                        bill_w_light := SegBtn{text: "Light"}
-                                        bill_w_light_on := SegBtnOn{text: "Light" visible: false}
-                                    }
-                                    View{width: Fill height: Fit flow: Overlay
-                                        bill_w_reg := SegBtn{text: "Regular"}
-                                        bill_w_reg_on := SegBtnOn{text: "Regular" visible: false}
-                                    }
-                                    View{width: Fill height: Fit flow: Overlay
-                                        bill_w_bold := SegBtn{text: "Bold"}
-                                        bill_w_bold_on := SegBtnOn{text: "Bold" visible: false}
-                                    }
-                                }
-                                h_bill_field_align := WrapLabel{body: "Align" font_color: #x031303 font_size: 14.}
-                                View{width: Fill height: Fit flow: Right spacing: 6
-                                    View{width: Fill height: Fit flow: Overlay
-                                        bill_a_start := SegBtn{text: "Start"}
-                                        bill_a_start_on := SegBtnOn{text: "Start" visible: false}
-                                    }
-                                    View{width: Fill height: Fit flow: Overlay
-                                        bill_a_center := SegBtn{text: "Center"}
-                                        bill_a_center_on := SegBtnOn{text: "Center" visible: false}
-                                    }
-                                    View{width: Fill height: Fit flow: Overlay
-                                        bill_a_end := SegBtn{text: "End"}
-                                        bill_a_end_on := SegBtnOn{text: "End" visible: false}
-                                    }
-                                }
-                                // One box. Its hint is the selected line (address, FSSAI, title, footer, UPI).
-                                bill_field_value := FieldInput{empty_text: "Address | phone"}
-                                // Kept so older saves and hot reload still find the ids.
-                                View{width: Fill height: Fit visible: false
-                                    bill_header_input := FieldInput{empty_text: "Address | phone"}
-                                    fssai_input := FieldInput{empty_text: "FSSAI licence no. (India)"}
-                                    upi_vpa_input := FieldInput{empty_text: "UPI ID (VPA)"}
-                                    upi_payee_input := FieldInput{empty_text: "UPI payee name (optional)"}
-                                    bill_footer_input := FieldInput{empty_text: "Footer (e.g. Thank you, visit again)"}
-                                }
-                                View{width: Fill height: Fit visible: false
-                                h_bill_field_order := WrapLabel{body: "Print order" font_color: #x031303 font_size: 14.}
-                                View{width: Fill height: Fit flow: Down spacing: 4
-                                    View{width: Fill height: Fit flow: Overlay
-                                        bill_ord_0 := FieldRowBtn{text: ""}
-                                        bill_ord_0_on := FieldRowBtnOn{text: "" visible: false}
-                                    }
-                                    View{width: Fill height: Fit flow: Overlay
-                                        bill_ord_1 := FieldRowBtn{text: ""}
-                                        bill_ord_1_on := FieldRowBtnOn{text: "" visible: false}
-                                    }
-                                    View{width: Fill height: Fit flow: Overlay
-                                        bill_ord_2 := FieldRowBtn{text: ""}
-                                        bill_ord_2_on := FieldRowBtnOn{text: "" visible: false}
-                                    }
-                                    View{width: Fill height: Fit flow: Overlay
-                                        bill_ord_3 := FieldRowBtn{text: ""}
-                                        bill_ord_3_on := FieldRowBtnOn{text: "" visible: false}
-                                    }
-                                    View{width: Fill height: Fit flow: Overlay
-                                        bill_ord_4 := FieldRowBtn{text: ""}
-                                        bill_ord_4_on := FieldRowBtnOn{text: "" visible: false}
-                                    }
-                                    View{width: Fill height: Fit flow: Overlay
-                                        bill_ord_5 := FieldRowBtn{text: ""}
-                                        bill_ord_5_on := FieldRowBtnOn{text: "" visible: false}
-                                    }
-                                    View{width: Fill height: Fit flow: Overlay
-                                        bill_ord_6 := FieldRowBtn{text: ""}
-                                        bill_ord_6_on := FieldRowBtnOn{text: "" visible: false}
-                                    }
-                                    View{width: Fill height: Fit flow: Overlay
-                                        bill_ord_7 := FieldRowBtn{text: ""}
-                                        bill_ord_7_on := FieldRowBtnOn{text: "" visible: false}
-                                    }
-                                    View{width: Fill height: Fit flow: Overlay
-                                        bill_ord_8 := FieldRowBtn{text: ""}
-                                        bill_ord_8_on := FieldRowBtnOn{text: "" visible: false}
-                                    }
-                                    View{width: Fill height: Fit flow: Overlay
-                                        bill_ord_9 := FieldRowBtn{text: ""}
-                                        bill_ord_9_on := FieldRowBtnOn{text: "" visible: false}
-                                    }
-                                    View{width: Fill height: Fit flow: Overlay
-                                        bill_ord_10 := FieldRowBtn{text: ""}
-                                        bill_ord_10_on := FieldRowBtnOn{text: "" visible: false}
-                                    }
-                                    View{width: Fill height: Fit flow: Overlay
-                                        bill_ord_11 := FieldRowBtn{text: ""}
-                                        bill_ord_11_on := FieldRowBtnOn{text: "" visible: false}
-                                    }
-                                    View{width: Fill height: Fit flow: Overlay
-                                        bill_ord_12 := FieldRowBtn{text: ""}
-                                        bill_ord_12_on := FieldRowBtnOn{text: "" visible: false}
-                                    }
-                                }
-                                }
                                 h_bill_copies := WrapLabel{body: "Copies" font_color: #x031303 font_size: 14.}
                                 View{width: Fill height: Fit flow: Right spacing: 6
                                     View{width: Fill height: Fit flow: Overlay
@@ -8440,6 +8028,534 @@ View{width: Fill height: Fit flow: Right spacing: 8 align: Align{y: 0.5}
                                         bill_copies_3_on := SegBtnOn{text: "3" visible: false}
                                     }
                                 }
+                                }
+                                bill_split := View{width: Fill height: Fit flow: Down spacing: 12
+                                bill_form_col := View{width: Fill height: Fit flow: Down
+                                FormCard{
+                                View{width: Fill height: Fit flow: Right spacing: 8 align: Align{y: 0.5}
+                                    h_bill_format := WrapLabel{width: Fit body: "Bill format" font_color: #x031303 font_size: 20.}
+                                    View{width: Fill height: Fit}
+                                    bill_apply_all := QuietFitBtn{text: "Apply to all"}
+                                }
+                                // Lines before the open one (the list is the print order).
+                                View{width: Fill height: Fit flow: Down spacing: 4
+                                    bill_pick_row_0 := View{width: Fill height: Fit flow: Overlay
+                                        bill_pick_shop := FieldRowBtn{text: "Shop"}
+                                        bill_pick_shop_on := FieldRowBtnOn{text: "Shop" visible: false}
+                                    }
+                                    bill_pick_row_1 := View{width: Fill height: Fit flow: Overlay
+                                        bill_pick_header := FieldRowBtn{text: "Address"}
+                                        bill_pick_header_on := FieldRowBtnOn{text: "Address" visible: false}
+                                    }
+                                    bill_pick_row_2 := View{width: Fill height: Fit flow: Overlay
+                                        bill_pick_fssai := FieldRowBtn{text: "FSSAI"}
+                                        bill_pick_fssai_on := FieldRowBtnOn{text: "FSSAI" visible: false}
+                                    }
+                                    bill_pick_row_3 := View{width: Fill height: Fit flow: Overlay
+                                        bill_pick_title := FieldRowBtn{text: "Title"}
+                                        bill_pick_title_on := FieldRowBtnOn{text: "Title" visible: false}
+                                    }
+                                    bill_pick_row_4 := View{width: Fill height: Fit flow: Overlay
+                                        bill_pick_customer := FieldRowBtn{text: "Customer"}
+                                        bill_pick_customer_on := FieldRowBtnOn{text: "Customer" visible: false}
+                                    }
+                                    bill_pick_row_5 := View{width: Fill height: Fit flow: Overlay
+                                        bill_pick_billno := FieldRowBtn{text: "Bill no"}
+                                        bill_pick_billno_on := FieldRowBtnOn{text: "Bill no" visible: false}
+                                    }
+                                    bill_pick_row_6 := View{width: Fill height: Fit flow: Overlay
+                                        bill_pick_time := FieldRowBtn{text: "Time"}
+                                        bill_pick_time_on := FieldRowBtnOn{text: "Time" visible: false}
+                                    }
+                                    bill_pick_row_7 := View{width: Fill height: Fit flow: Overlay
+                                        bill_pick_cashier := FieldRowBtn{text: "Cashier"}
+                                        bill_pick_cashier_on := FieldRowBtnOn{text: "Cashier" visible: false}
+                                    }
+                                    bill_pick_row_8 := View{width: Fill height: Fit flow: Overlay
+                                        bill_pick_table := FieldRowBtn{text: "Table"}
+                                        bill_pick_table_on := FieldRowBtnOn{text: "Table" visible: false}
+                                    }
+                                    bill_pick_row_9 := View{width: Fill height: Fit flow: Overlay
+                                        bill_pick_items := FieldRowBtn{text: "Items"}
+                                        bill_pick_items_on := FieldRowBtnOn{text: "Items" visible: false}
+                                    }
+                                    bill_pick_row_10 := View{width: Fill height: Fit flow: Overlay
+                                        bill_pick_total := FieldRowBtn{text: "Total"}
+                                        bill_pick_total_on := FieldRowBtnOn{text: "Total" visible: false}
+                                    }
+                                    bill_pick_row_11 := View{width: Fill height: Fit flow: Overlay
+                                        bill_pick_footer := FieldRowBtn{text: "Footer"}
+                                        bill_pick_footer_on := FieldRowBtnOn{text: "Footer" visible: false}
+                                    }
+                                    bill_pick_row_12 := View{width: Fill height: Fit flow: Overlay
+                                        bill_pick_upi := FieldRowBtn{text: "UPI"}
+                                        bill_pick_upi_on := FieldRowBtnOn{text: "UPI" visible: false}
+                                    }
+                                }
+                                // The open line, edited where it sits: every control of the line in
+                                // its own row (wraps on narrow screens), its extras right under it.
+                                bill_line_editor := RoundedView{
+                                    width: Fill height: Fit flow: Down spacing: 8
+                                    margin: Inset{left: 0. right: 0. top: 0. bottom: 8.}
+                                    padding: Inset{left: 12. right: 12. top: 10. bottom: 12.}
+                                    draw_bg.color: #xFDF7EA
+                                    draw_bg.border_radius: 12.
+                                    draw_bg.border_size: 1.5
+                                    draw_bg.border_color: #xCD380E
+                                    bill_line_head := View{width: Fill height: Fit flow: Down spacing: 8
+                                        bill_line_main := View{width: Fill height: Fit flow: Right spacing: 8 align: Align{y: 0.5}
+                                            bill_line_id := View{width: Fill height: Fit flow: Right spacing: 6 align: Align{y: 0.5}
+                                                bill_field_up := ChipBtn{text: "↑"}
+                                                bill_field_down := ChipBtn{text: "↓"}
+                                                bill_line_name := WrapLabel{width: Fill body: "" font_color: #x031303 font_size: 15.}
+                                            }
+                                            bill_line_vis := View{width: Fit height: Fit flow: Right spacing: 6 align: Align{y: 0.5}
+                                                View{width: Fit height: Fit flow: Overlay
+                                                    bill_field_show := SegBtn{width: Fit text: "Show"}
+                                                    bill_field_show_on := SegBtnOn{width: Fit text: "Show" visible: false}
+                                                }
+                                                View{width: Fit height: Fit flow: Overlay
+                                                    bill_field_hide := SegBtn{width: Fit text: "Hide"}
+                                                    bill_field_hide_on := SegBtnOn{width: Fit text: "Hide" visible: false}
+                                                }
+                                                h_bill_field_size := WrapLabel{width: Fit body: "Font size" font_color: #x031303 font_size: 13.}
+                                                bill_field_size_input := FieldInput{width: 88 empty_text: "px"}
+                                            }
+                                        }
+                                        bill_line_style := View{width: Fill height: Fit flow: Right spacing: 8
+                                            bill_line_weight := View{width: Fill height: Fit flow: Right spacing: 6
+                                                View{width: Fill height: Fit flow: Overlay
+                                                    bill_w_light := SegBtn{text: "Light"}
+                                                    bill_w_light_on := SegBtnOn{text: "Light" visible: false}
+                                                }
+                                                View{width: Fill height: Fit flow: Overlay
+                                                    bill_w_reg := SegBtn{text: "Regular"}
+                                                    bill_w_reg_on := SegBtnOn{text: "Regular" visible: false}
+                                                }
+                                                View{width: Fill height: Fit flow: Overlay
+                                                    bill_w_bold := SegBtn{text: "Bold"}
+                                                    bill_w_bold_on := SegBtnOn{text: "Bold" visible: false}
+                                                }
+                                            }
+                                            bill_line_align := View{width: Fill height: Fit flow: Right spacing: 6
+                                                View{width: Fill height: Fit flow: Overlay
+                                                    bill_a_start := SegBtn{text: "Start"}
+                                                    bill_a_start_on := SegBtnOn{text: "Start" visible: false}
+                                                }
+                                                View{width: Fill height: Fit flow: Overlay
+                                                    bill_a_center := SegBtn{text: "Center"}
+                                                    bill_a_center_on := SegBtnOn{text: "Center" visible: false}
+                                                }
+                                                View{width: Fill height: Fit flow: Overlay
+                                                    bill_a_end := SegBtn{text: "End"}
+                                                    bill_a_end_on := SegBtnOn{text: "End" visible: false}
+                                                }
+                                            }
+                                        }
+                                    }
+                                    // One box. Its hint is the selected line (address, FSSAI, title, footer, UPI).
+                                    bill_value_row := View{width: Fill height: Fit
+                                        bill_field_value := FieldInput{empty_text: "Address | phone"}
+                                    }
+                                    // Kept so older saves and hot reload still find the ids.
+                                    View{width: Fill height: Fit visible: false
+                                        bill_header_input := FieldInput{empty_text: "Address | phone"}
+                                        fssai_input := FieldInput{empty_text: "FSSAI licence no. (India)"}
+                                        upi_vpa_input := FieldInput{empty_text: "UPI ID (VPA)"}
+                                        upi_payee_input := FieldInput{empty_text: "UPI payee name (optional)"}
+                                        bill_footer_input := FieldInput{empty_text: "Footer (e.g. Thank you, visit again)"}
+                                    }
+                                    bill_meta_pair := View{
+                                        width: Fill height: Fit
+                                        flow: Down spacing: 8
+                                        visible: false
+                                        h_bill_meta_pair := WrapLabel{body: "Share line with" font_color: #x031303 font_size: 14.}
+                                        View{width: Fill height: Fit flow: Right spacing: 6
+                                            View{width: Fill height: Fit flow: Overlay
+                                                bill_pair_alone := SegBtn{text: "Alone"}
+                                                bill_pair_alone_on := SegBtnOn{text: "Alone" visible: false}
+                                            }
+                                            View{width: Fill height: Fit flow: Overlay
+                                                bill_pair_customer := SegBtn{text: "Customer"}
+                                                bill_pair_customer_on := SegBtnOn{text: "Customer" visible: false}
+                                            }
+                                            View{width: Fill height: Fit flow: Overlay
+                                                bill_pair_billno := SegBtn{text: "Bill no"}
+                                                bill_pair_billno_on := SegBtnOn{text: "Bill no" visible: false}
+                                            }
+                                        }
+                                        View{width: Fill height: Fit flow: Right spacing: 6
+                                            View{width: Fill height: Fit flow: Overlay
+                                                bill_pair_time := SegBtn{text: "Time"}
+                                                bill_pair_time_on := SegBtnOn{text: "Time" visible: false}
+                                            }
+                                            View{width: Fill height: Fit flow: Overlay
+                                                bill_pair_cashier := SegBtn{text: "Cashier"}
+                                                bill_pair_cashier_on := SegBtnOn{text: "Cashier" visible: false}
+                                            }
+                                            View{width: Fill height: Fit flow: Overlay
+                                                bill_pair_table := SegBtn{text: "Table"}
+                                                bill_pair_table_on := SegBtnOn{text: "Table" visible: false}
+                                            }
+                                        }
+                                    }
+                                    // Per-piece toggles for Items / Total — only
+                                    // visible while that line is open.
+                                    // Items: switches, then one row per column (in print order).
+                                    bill_item_pieces := View{
+                                        width: Fill height: Fit
+                                        flow: Down spacing: 10
+                                        visible: false
+                                        bill_item_opts_a := View{width: Fill height: Fit flow: Right spacing: 12
+                                            View{width: Fill height: Fit flow: Down spacing: 4
+                                                h_bill_item_layout := WrapLabel{body: "Item layout" font_color: #x031303 font_size: 14.}
+                                                View{width: Fill height: Fit flow: Right spacing: 6
+                                                    View{width: Fill height: Fit flow: Overlay
+                                                        bill_item_layout_columns := SegBtn{text: "Columns"}
+                                                        bill_item_layout_columns_on := SegBtnOn{text: "Columns" visible: false}
+                                                    }
+                                                    View{width: Fill height: Fit flow: Overlay
+                                                        bill_item_layout_stacked := SegBtn{text: "Stacked"}
+                                                        bill_item_layout_stacked_on := SegBtnOn{text: "Stacked" visible: false}
+                                                    }
+                                                }
+                                            }
+                                            View{width: Fill height: Fit flow: Down spacing: 4
+                                                h_bill_item_header := WrapLabel{body: "Column headers" font_color: #x031303 font_size: 14.}
+                                                View{width: Fill height: Fit flow: Right spacing: 6
+                                                    View{width: Fill height: Fit flow: Overlay
+                                                        bill_item_header_on := SegBtn{text: "On"}
+                                                        bill_item_header_on_on := SegBtnOn{text: "On" visible: false}
+                                                    }
+                                                    View{width: Fill height: Fit flow: Overlay
+                                                        bill_item_header_off := SegBtn{text: "Off"}
+                                                        bill_item_header_off_on := SegBtnOn{text: "Off" visible: false}
+                                                    }
+                                                }
+                                            }
+                                        }
+                                        bill_item_opts_b := View{width: Fill height: Fit flow: Right spacing: 12
+                                            bill_item_sep_box := View{width: Fill height: Fit flow: Down spacing: 4
+                                                h_bill_item_col_sep := WrapLabel{body: "Column rules" font_color: #x031303 font_size: 14.}
+                                                View{width: Fill height: Fit flow: Right spacing: 6
+                                                    View{width: Fill height: Fit flow: Overlay
+                                                        bill_item_sep_on := SegBtn{text: "On"}
+                                                        bill_item_sep_on_on := SegBtnOn{text: "On" visible: false}
+                                                    }
+                                                    View{width: Fill height: Fit flow: Overlay
+                                                        bill_item_sep_off := SegBtn{text: "Off"}
+                                                        bill_item_sep_off_on := SegBtnOn{text: "Off" visible: false}
+                                                    }
+                                                }
+                                            }
+                                            View{width: Fill height: Fit flow: Down spacing: 4
+                                                h_bill_item_note := WrapLabel{body: "Dish note" font_color: #x031303 font_size: 14.}
+                                                View{width: Fill height: Fit flow: Right spacing: 6
+                                                    View{width: Fill height: Fit flow: Overlay
+                                                        bill_item_note_on := SegBtn{text: "On"}
+                                                        bill_item_note_on_on := SegBtnOn{text: "On" visible: false}
+                                                    }
+                                                    View{width: Fill height: Fit flow: Overlay
+                                                        bill_item_note_off := SegBtn{text: "Off"}
+                                                        bill_item_note_off_on := SegBtnOn{text: "Off" visible: false}
+                                                    }
+                                                }
+                                            }
+                                        }
+                                        View{width: Fill height: Fit flow: Right spacing: 0 align: Align{y: 0.5}
+                                            h_bill_item_col_order := WrapLabel{width: Fit body: "Columns" font_color: #x031303 font_size: 14.}
+                                            bill_columns_help := InfoHelp{tip: ""}
+                                        }
+                                        bill_col_row_0 := View{width: Fill height: Fit flow: Down spacing: 6
+                                            padding: Inset{left: 0. right: 0. top: 6. bottom: 6.}
+                                            col_main := View{width: Fill height: Fit flow: Right spacing: 6 align: Align{y: 0.5}
+                                                col_up := ChipBtn{text: "↑"}
+                                                col_down := ChipBtn{text: "↓"}
+                                                col_name := WrapLabel{width: Fill body: "" font_color: #x031303 font_size: 14.}
+                                                View{width: Fit height: Fit flow: Right spacing: 6
+                                                    View{width: Fit height: Fit flow: Overlay
+                                                        col_show_on := SegBtn{width: Fit text: "On"}
+                                                        col_show_on_on := SegBtnOn{width: Fit text: "On" visible: false}
+                                                    }
+                                                    View{width: Fit height: Fit flow: Overlay
+                                                        col_show_off := SegBtn{width: Fit text: "Off"}
+                                                        col_show_off_on := SegBtnOn{width: Fit text: "Off" visible: false}
+                                                    }
+                                                }
+                                            }
+                                            col_fields := View{width: Fill height: Fit flow: Right spacing: 6 align: Align{y: 0.5}
+                                                // A text box ignores being hidden; this box does not.
+                                                col_header_box := View{width: Fill height: Fit
+                                                    col_header := FieldInput{width: Fill empty_text: ""}
+                                                }
+                                                // The three numbers stay one row on every width.
+                                                col_nums := View{width: 348 height: Fit flow: Right spacing: 6
+                                                    col_width := FieldInput{width: Fill empty_text: ""}
+                                                    col_start := FieldInput{width: Fill empty_text: ""}
+                                                    col_end := FieldInput{width: Fill empty_text: ""}
+                                                }
+                                            }
+                                            col_align := View{width: Fill height: Fit flow: Right spacing: 6
+                                                View{width: Fill height: Fit flow: Overlay
+                                                    col_a_start := SegBtn{text: "Start"}
+                                                    col_a_start_on := SegBtnOn{text: "Start" visible: false}
+                                                }
+                                                View{width: Fill height: Fit flow: Overlay
+                                                    col_a_center := SegBtn{text: "Center"}
+                                                    col_a_center_on := SegBtnOn{text: "Center" visible: false}
+                                                }
+                                                View{width: Fill height: Fit flow: Overlay
+                                                    col_a_end := SegBtn{text: "End"}
+                                                    col_a_end_on := SegBtnOn{text: "End" visible: false}
+                                                }
+                                            }
+                                        }
+                                        bill_col_row_1 := View{width: Fill height: Fit flow: Down spacing: 6
+                                            padding: Inset{left: 0. right: 0. top: 6. bottom: 6.}
+                                            col_main := View{width: Fill height: Fit flow: Right spacing: 6 align: Align{y: 0.5}
+                                                col_up := ChipBtn{text: "↑"}
+                                                col_down := ChipBtn{text: "↓"}
+                                                col_name := WrapLabel{width: Fill body: "" font_color: #x031303 font_size: 14.}
+                                                View{width: Fit height: Fit flow: Right spacing: 6
+                                                    View{width: Fit height: Fit flow: Overlay
+                                                        col_show_on := SegBtn{width: Fit text: "On"}
+                                                        col_show_on_on := SegBtnOn{width: Fit text: "On" visible: false}
+                                                    }
+                                                    View{width: Fit height: Fit flow: Overlay
+                                                        col_show_off := SegBtn{width: Fit text: "Off"}
+                                                        col_show_off_on := SegBtnOn{width: Fit text: "Off" visible: false}
+                                                    }
+                                                }
+                                            }
+                                            col_fields := View{width: Fill height: Fit flow: Right spacing: 6 align: Align{y: 0.5}
+                                                // A text box ignores being hidden; this box does not.
+                                                col_header_box := View{width: Fill height: Fit
+                                                    col_header := FieldInput{width: Fill empty_text: ""}
+                                                }
+                                                // The three numbers stay one row on every width.
+                                                col_nums := View{width: 348 height: Fit flow: Right spacing: 6
+                                                    col_width := FieldInput{width: Fill empty_text: ""}
+                                                    col_start := FieldInput{width: Fill empty_text: ""}
+                                                    col_end := FieldInput{width: Fill empty_text: ""}
+                                                }
+                                            }
+                                            col_align := View{width: Fill height: Fit flow: Right spacing: 6
+                                                View{width: Fill height: Fit flow: Overlay
+                                                    col_a_start := SegBtn{text: "Start"}
+                                                    col_a_start_on := SegBtnOn{text: "Start" visible: false}
+                                                }
+                                                View{width: Fill height: Fit flow: Overlay
+                                                    col_a_center := SegBtn{text: "Center"}
+                                                    col_a_center_on := SegBtnOn{text: "Center" visible: false}
+                                                }
+                                                View{width: Fill height: Fit flow: Overlay
+                                                    col_a_end := SegBtn{text: "End"}
+                                                    col_a_end_on := SegBtnOn{text: "End" visible: false}
+                                                }
+                                            }
+                                        }
+                                        bill_col_row_2 := View{width: Fill height: Fit flow: Down spacing: 6
+                                            padding: Inset{left: 0. right: 0. top: 6. bottom: 6.}
+                                            col_main := View{width: Fill height: Fit flow: Right spacing: 6 align: Align{y: 0.5}
+                                                col_up := ChipBtn{text: "↑"}
+                                                col_down := ChipBtn{text: "↓"}
+                                                col_name := WrapLabel{width: Fill body: "" font_color: #x031303 font_size: 14.}
+                                                View{width: Fit height: Fit flow: Right spacing: 6
+                                                    View{width: Fit height: Fit flow: Overlay
+                                                        col_show_on := SegBtn{width: Fit text: "On"}
+                                                        col_show_on_on := SegBtnOn{width: Fit text: "On" visible: false}
+                                                    }
+                                                    View{width: Fit height: Fit flow: Overlay
+                                                        col_show_off := SegBtn{width: Fit text: "Off"}
+                                                        col_show_off_on := SegBtnOn{width: Fit text: "Off" visible: false}
+                                                    }
+                                                }
+                                            }
+                                            col_fields := View{width: Fill height: Fit flow: Right spacing: 6 align: Align{y: 0.5}
+                                                // A text box ignores being hidden; this box does not.
+                                                col_header_box := View{width: Fill height: Fit
+                                                    col_header := FieldInput{width: Fill empty_text: ""}
+                                                }
+                                                // The three numbers stay one row on every width.
+                                                col_nums := View{width: 348 height: Fit flow: Right spacing: 6
+                                                    col_width := FieldInput{width: Fill empty_text: ""}
+                                                    col_start := FieldInput{width: Fill empty_text: ""}
+                                                    col_end := FieldInput{width: Fill empty_text: ""}
+                                                }
+                                            }
+                                            col_align := View{width: Fill height: Fit flow: Right spacing: 6
+                                                View{width: Fill height: Fit flow: Overlay
+                                                    col_a_start := SegBtn{text: "Start"}
+                                                    col_a_start_on := SegBtnOn{text: "Start" visible: false}
+                                                }
+                                                View{width: Fill height: Fit flow: Overlay
+                                                    col_a_center := SegBtn{text: "Center"}
+                                                    col_a_center_on := SegBtnOn{text: "Center" visible: false}
+                                                }
+                                                View{width: Fill height: Fit flow: Overlay
+                                                    col_a_end := SegBtn{text: "End"}
+                                                    col_a_end_on := SegBtnOn{text: "End" visible: false}
+                                                }
+                                            }
+                                        }
+                                        bill_col_row_3 := View{width: Fill height: Fit flow: Down spacing: 6
+                                            padding: Inset{left: 0. right: 0. top: 6. bottom: 6.}
+                                            col_main := View{width: Fill height: Fit flow: Right spacing: 6 align: Align{y: 0.5}
+                                                col_up := ChipBtn{text: "↑"}
+                                                col_down := ChipBtn{text: "↓"}
+                                                col_name := WrapLabel{width: Fill body: "" font_color: #x031303 font_size: 14.}
+                                                View{width: Fit height: Fit flow: Right spacing: 6
+                                                    View{width: Fit height: Fit flow: Overlay
+                                                        col_show_on := SegBtn{width: Fit text: "On"}
+                                                        col_show_on_on := SegBtnOn{width: Fit text: "On" visible: false}
+                                                    }
+                                                    View{width: Fit height: Fit flow: Overlay
+                                                        col_show_off := SegBtn{width: Fit text: "Off"}
+                                                        col_show_off_on := SegBtnOn{width: Fit text: "Off" visible: false}
+                                                    }
+                                                }
+                                            }
+                                            col_fields := View{width: Fill height: Fit flow: Right spacing: 6 align: Align{y: 0.5}
+                                                // A text box ignores being hidden; this box does not.
+                                                col_header_box := View{width: Fill height: Fit
+                                                    col_header := FieldInput{width: Fill empty_text: ""}
+                                                }
+                                                // The three numbers stay one row on every width.
+                                                col_nums := View{width: 348 height: Fit flow: Right spacing: 6
+                                                    col_width := FieldInput{width: Fill empty_text: ""}
+                                                    col_start := FieldInput{width: Fill empty_text: ""}
+                                                    col_end := FieldInput{width: Fill empty_text: ""}
+                                                }
+                                            }
+                                            col_align := View{width: Fill height: Fit flow: Right spacing: 6
+                                                View{width: Fill height: Fit flow: Overlay
+                                                    col_a_start := SegBtn{text: "Start"}
+                                                    col_a_start_on := SegBtnOn{text: "Start" visible: false}
+                                                }
+                                                View{width: Fill height: Fit flow: Overlay
+                                                    col_a_center := SegBtn{text: "Center"}
+                                                    col_a_center_on := SegBtnOn{text: "Center" visible: false}
+                                                }
+                                                View{width: Fill height: Fit flow: Overlay
+                                                    col_a_end := SegBtn{text: "End"}
+                                                    col_a_end_on := SegBtnOn{text: "End" visible: false}
+                                                }
+                                            }
+                                        }
+                                    }
+                                    // Totals: one row each — show, and its caption (Grand total also
+                                    // holds its caption on a paid bill).
+                                    bill_total_pieces := View{
+                                        width: Fill height: Fit
+                                        flow: Down spacing: 8
+                                        visible: false
+                                        bill_total_row_qty := View{width: Fill height: Fit flow: Right spacing: 8 align: Align{y: 0.5}
+                                            h_bill_total_qty := WrapLabel{width: 140 body: "Total qty" font_color: #x031303 font_size: 14.}
+                                            View{width: Fit height: Fit flow: Right spacing: 6
+                                                View{width: Fit height: Fit flow: Overlay
+                                                    bill_total_qty_on := SegBtn{width: Fit text: "On"}
+                                                    bill_total_qty_on_on := SegBtnOn{width: Fit text: "On" visible: false}
+                                                }
+                                                View{width: Fit height: Fit flow: Overlay
+                                                    bill_total_qty_off := SegBtn{width: Fit text: "Off"}
+                                                    bill_total_qty_off_on := SegBtnOn{width: Fit text: "Off" visible: false}
+                                                }
+                                            }
+                                            bill_total_qty_label_input := FieldInput{width: Fill empty_text: "Total Qty"}
+                                        }
+                                        bill_total_row_sub := View{width: Fill height: Fit flow: Right spacing: 8 align: Align{y: 0.5}
+                                            h_bill_total_subtotal := WrapLabel{width: 140 body: "Sub total" font_color: #x031303 font_size: 14.}
+                                            View{width: Fit height: Fit flow: Right spacing: 6
+                                                View{width: Fit height: Fit flow: Overlay
+                                                    bill_total_subtotal_on := SegBtn{width: Fit text: "On"}
+                                                    bill_total_subtotal_on_on := SegBtnOn{width: Fit text: "On" visible: false}
+                                                }
+                                                View{width: Fit height: Fit flow: Overlay
+                                                    bill_total_subtotal_off := SegBtn{width: Fit text: "Off"}
+                                                    bill_total_subtotal_off_on := SegBtnOn{width: Fit text: "Off" visible: false}
+                                                }
+                                            }
+                                            bill_total_subtotal_label_input := FieldInput{width: Fill empty_text: "Sub Total"}
+                                        }
+                                        bill_total_row_grand := View{width: Fill height: Fit flow: Right spacing: 8 align: Align{y: 0.5}
+                                            h_bill_total_grand := WrapLabel{width: 140 body: "Grand total" font_color: #x031303 font_size: 14.}
+                                            View{width: Fit height: Fit flow: Right spacing: 6
+                                                View{width: Fit height: Fit flow: Overlay
+                                                    bill_total_grand_on := SegBtn{width: Fit text: "On"}
+                                                    bill_total_grand_on_on := SegBtnOn{width: Fit text: "On" visible: false}
+                                                }
+                                                View{width: Fit height: Fit flow: Overlay
+                                                    bill_total_grand_off := SegBtn{width: Fit text: "Off"}
+                                                    bill_total_grand_off_on := SegBtnOn{width: Fit text: "Off" visible: false}
+                                                }
+                                            }
+                                            bill_total_grand_label_input := FieldInput{width: Fill empty_text: "Grand Total"}
+                                            // The same line on a paid bill.
+                                            bill_total_paid_label_input := FieldInput{width: Fill empty_text: "Total"}
+                                        }
+                                    }
+                                }
+                                // Lines after the open one.
+                                View{width: Fill height: Fit flow: Down spacing: 4
+                                    bill_after_row_0 := View{width: Fill height: Fit flow: Overlay visible: false
+                                        bill_after_0 := FieldRowBtn{text: ""}
+                                        bill_after_0_on := FieldRowBtnOn{text: "" visible: false}
+                                    }
+                                    bill_after_row_1 := View{width: Fill height: Fit flow: Overlay visible: false
+                                        bill_after_1 := FieldRowBtn{text: ""}
+                                        bill_after_1_on := FieldRowBtnOn{text: "" visible: false}
+                                    }
+                                    bill_after_row_2 := View{width: Fill height: Fit flow: Overlay visible: false
+                                        bill_after_2 := FieldRowBtn{text: ""}
+                                        bill_after_2_on := FieldRowBtnOn{text: "" visible: false}
+                                    }
+                                    bill_after_row_3 := View{width: Fill height: Fit flow: Overlay visible: false
+                                        bill_after_3 := FieldRowBtn{text: ""}
+                                        bill_after_3_on := FieldRowBtnOn{text: "" visible: false}
+                                    }
+                                    bill_after_row_4 := View{width: Fill height: Fit flow: Overlay visible: false
+                                        bill_after_4 := FieldRowBtn{text: ""}
+                                        bill_after_4_on := FieldRowBtnOn{text: "" visible: false}
+                                    }
+                                    bill_after_row_5 := View{width: Fill height: Fit flow: Overlay visible: false
+                                        bill_after_5 := FieldRowBtn{text: ""}
+                                        bill_after_5_on := FieldRowBtnOn{text: "" visible: false}
+                                    }
+                                    bill_after_row_6 := View{width: Fill height: Fit flow: Overlay visible: false
+                                        bill_after_6 := FieldRowBtn{text: ""}
+                                        bill_after_6_on := FieldRowBtnOn{text: "" visible: false}
+                                    }
+                                    bill_after_row_7 := View{width: Fill height: Fit flow: Overlay visible: false
+                                        bill_after_7 := FieldRowBtn{text: ""}
+                                        bill_after_7_on := FieldRowBtnOn{text: "" visible: false}
+                                    }
+                                    bill_after_row_8 := View{width: Fill height: Fit flow: Overlay visible: false
+                                        bill_after_8 := FieldRowBtn{text: ""}
+                                        bill_after_8_on := FieldRowBtnOn{text: "" visible: false}
+                                    }
+                                    bill_after_row_9 := View{width: Fill height: Fit flow: Overlay visible: false
+                                        bill_after_9 := FieldRowBtn{text: ""}
+                                        bill_after_9_on := FieldRowBtnOn{text: "" visible: false}
+                                    }
+                                    bill_after_row_10 := View{width: Fill height: Fit flow: Overlay visible: false
+                                        bill_after_10 := FieldRowBtn{text: ""}
+                                        bill_after_10_on := FieldRowBtnOn{text: "" visible: false}
+                                    }
+                                    bill_after_row_11 := View{width: Fill height: Fit flow: Overlay visible: false
+                                        bill_after_11 := FieldRowBtn{text: ""}
+                                        bill_after_11_on := FieldRowBtnOn{text: "" visible: false}
+                                    }
+                                    bill_after_row_12 := View{width: Fill height: Fit flow: Overlay visible: false
+                                        bill_after_12 := FieldRowBtn{text: ""}
+                                        bill_after_12_on := FieldRowBtnOn{text: "" visible: false}
+                                    }
+                                }
+                                }
+                                } // bill_form_col
+                                bill_preview_col := View{width: Fill height: Fit flow: Down
+                                // Wide screens: grows so the preview sits beside the open line.
+                                bill_preview_lead := View{width: Fill height: 0}
+                                FormCard{
                                 h_bill_preview := WrapLabel{body: "Preview" font_color: #x031303 font_size: 14.}
                                 bill_format_preview_card := View{
                                     width: Fill height: Fit
@@ -8447,6 +8563,8 @@ View{width: Fill height: Fit flow: Right spacing: 8 align: Align{y: 0.5}
                                 }
                                 bill_format_test := StackSecondaryBtn{text: "Test bill"}
                                 }
+                                } // bill_preview_col
+                                } // bill_split
                                 FormCard{
                                 visible: false
                                 View{

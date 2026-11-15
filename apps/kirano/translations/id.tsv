@@ -69,12 +69,10 @@ bill_item_qty	Jml
 bill_item_price	Harga
 bill_item_amount	Jumlah
 bill_item_note	Catatan barang
-bill_item_col_order	Urutan kolom
 bill_item_col_sep	Garis kolom
 slip_col_width	Lebar (mm)
 slip_col_start	Spasi awal (px)
 slip_col_end	Spasi akhir (px)
-slip_col_align	Perataan teks
 slip_columns_help	Lebar setiap kolom sudah termasuk spasi awal dan akhirnya. Teks dibungkus di dalam kolomnya; bagian yang melewati lebar konten terpotong, di kertas maupun di pratinjau.
 bill_total_qty_label	Label jumlah total
 bill_total_subtotal_label	Label subtotal
@@ -431,7 +429,6 @@ printer_profile_heading	Tata letak
 vp_delivery_heading	Pengiriman
 vp_delivery_help	Bagaimana printer virtual ini mengirimkan pekerjaan — dokumen OS, byte mentah, atau ESC/POS. Isi slip (ukuran jenis, bungkus, margin) ditentukan oleh format tagihan / Slip, bukan di sini.
 vp_delivery_spooler	Dokumen OS (spooler sistem)
-vp_delivery_raw	Byte mentah ke perangkat
 vp_delivery_escpos	Perintah termal ESC/POS
 virtual_printer_new	Printer virtual baru
 virtual_printer_selected	Mengedit “{name}” — ketuk yang lain di daftar untuk beralih
@@ -718,7 +715,6 @@ customer_paid_ph	Dibayar pelanggan
 tip_ph	Tip
 find_server	Cari server toko
 bill_format	Format tagihan
-bill_format_help	Dicetak dengan nama toko Anda di setiap tagihan. Pisahkan baris dengan | (misalnya MG Road, Rajkot | Ph 98250 00000).
 bill_header_ph	Alamat | telepon
 fssai_ph	FSSAI / izin toko no. (opsional)
 bill_footer_ph	Kaki (mis. Terima kasih, datang lagi)
@@ -808,8 +804,6 @@ add_dishes	Tambahkan item
 order_so_far	Di pesanan ini: {n} · {total}
 no_dish_match	Tidak ada item yang cocok dengan “{q}”
 pick_done	Selesai
-kot_field_up	Pindah ke atas
-kot_field_down	Pindah ke bawah
 dishes_n	item {n}
 reorder_ph	Beli lagi saat
 set_reorder	Atur batas pemesanan ulang
@@ -841,3 +835,6 @@ sel_copy	Salin
 sel_select_all	Pilih semua
 sel_copied	Disalin
 nav_loading	Memuat…
+printer_mode_first	Yang pertama yang berfungsi
+printer_mode_all	Cetak di semua
+slip_columns	Kolom

@@ -83,9 +83,7 @@ print_cancelled_kot_needed	Iftaħ mejda bi platti kkanċellati l-ewwel
 print_cancelled_kot_none	Ebda platt ikkanċellat fuq din l-ordni
 print_cancelled_kot_client	Ipprintja kkanċellati ({n}) għal {place} mibgħut — il-kċina tipprintja fis-Server
 kot_banner	Bandiera tat-tip
-kot_banner_ph	Bandiera (vojta = xejn)
 kot_item_prefix	Prefiss tal-oġġett
-kot_item_prefix_ph	eż. [IKKANĊELLAT]
 kot_strike	Aqta' l-isem tal-platt
 kot_strike_note	Aqta' n-nota tal-platt
 kot_strike_on	Mixgħul
@@ -103,13 +101,11 @@ bill_item_qty	Kwantità
 bill_item_price	Prezz
 bill_item_amount	Ammont
 bill_item_note	Nota tal-platt
-bill_item_col_order	Ordni tal-kolonni
 bill_item_col_sep	Linji tal-kolonni
 slip_columns	Kolonni
 slip_col_width	Wisa’ (mm)
 slip_col_start	Spazju tal-bidu (px)
 slip_col_end	Spazju tat-tmiem (px)
-slip_col_align	Allinjament tat-test
 slip_columns_help	Il-wisa’ ta’ kull kolonna tinkludi l-ispazju tal-bidu u tat-tmiem tagħha. It-test jitgeżwer ġewwa l-kolonna tiegħu; dak li jaqbeż il-wisa’ tal-kontenut jinqata’, fuq il-karta u fil-preview.
 bill_total_qty_label	Tikketta tal-kwantità totali
 bill_total_subtotal_label	Tikketta tas-subtotal
@@ -643,7 +639,6 @@ vp_type_size_heading	Daqs tat-tip
 vp_wrap_heading	Kebbeb wisa'
 vp_margin_heading	Marġini
 vp_delivery_spooler	Dokument tal-OS (spooler tas-sistema)
-vp_delivery_raw	Bytes mhux ipproċessati għall-apparat
 vp_delivery_escpos	Kmandi termali ESC/POS
 virtual_printer_new	Stampatur virtwali ġdid
 virtual_printer_selected	Editjar “{name}” — tektek ieħor fil-lista biex taqleb
@@ -1110,7 +1105,6 @@ remove_these_tables	Neħħi dawn it-mwejjed
 table_remove_ph	Neħħi: T1-T24, jew isem ta' mejda waħda
 find_server	Sib is-server tal-ħanut
 bill_format	Format tal-kont
-bill_format_help	Stampat taħt l-isem tar-restorant tiegħek fuq kull kont. Linji separati bi | (eż. MG Road, Rajkot | Ph 98250 00000).
 bill_header_ph	Indirizz | telefon
 fssai_ph	Liċenzja FSSAI Nru. (Indja)
 bill_footer_ph	Footer (eż. Grazzi, erġa' żur)
@@ -1127,7 +1121,6 @@ kot_field_hide	Aħbi
 kot_field_on	juru
 kot_field_off	ħabi
 kot_field_size	Daqs tat-tipa
-kot_field_size_ph	eż. 16, 20, 24, 28, 32...
 kot_weight_light	Dawl
 bill_kot_panel_help	It-tqassim tal-kont u tal-kċina slip, kull wieħed bil-wisa 'tal-kontenut tiegħu stess. Kaxxier tal-kont huwa min ħareġ jew ħallas il-kont; KOT Waiter huwa li bagħat dak il-biljett tal-kċina — l-istorja sħiħa tal-ordni tibqa’ fil-kotba.
 std_size_ph	eż. 18, 20, 26...
@@ -1157,7 +1150,6 @@ kot_style_item_qty	Oġġett · Qty
 kot_style_field_pick	Agħżel il-qasam
 kot_weight_regular	Regolari
 kot_weight_bold	Qaħla
-kot_align	Allinja
 kot_align_start	Ibda
 kot_align_center	Ċentru
 kot_align_end	Tmiem
@@ -1307,18 +1299,8 @@ kot_show_item_hdr	Oġġett · Kwantità
 kot_hide_item_hdr	Aħbi kolonni
 kot_show_title	Linja tat-titlu
 kot_hide_title	Aħbi l-unur
-kot_field_order	Ordni tal-istampar
-kot_field_up	Ġib il-quċċata
-kot_field_down	Ħu ħdejn 'l isfel
 kot_field_cycle	Agħżel li jmiss
 kot_field_select	Agħżel li jmiss
-kot_field_time	Ħin
-kot_field_kot_no	KOT Nru
-kot_field_area	Żona
-kot_field_table	Mejda
-kot_field_shop	Isem tal-maħżen
-kot_field_waiter	Staff
-kot_field_station	Stazzjon
 dishes_n	{n} platti
 recipe_ph	Riċetta (għażla) — porzjon wieħed juża: Rizz=0.2, Paneer=0.15
 reorder_ph	Ixtri aktar f’

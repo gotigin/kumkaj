@@ -81,12 +81,10 @@ bill_item_qty	எண்ணிக்கை
 bill_item_price	விலை
 bill_item_amount	தொகை
 bill_item_note	Rx / விற்பனைக் குறிப்பு
-bill_item_col_order	நெடுவரிசை வரிசை
 bill_item_col_sep	நெடுவரிசை கோடு
 slip_col_width	அகலம் (mm)
 slip_col_start	தொடக்க இடம் (px)
 slip_col_end	முடிவு இடம் (px)
-slip_col_align	உரை சீரமைப்பு
 slip_columns_help	ஒவ்வொரு நெடுவரிசையின் அகலத்திலும் அதன் தொடக்க மற்றும் முடிவு இடம் அடங்கும். உரை தன் நெடுவரிசைக்குள்ளேயே மடிகிறது; உள்ளடக்க அகலத்தைத் தாண்டியது காகிதத்திலும் முன்னோட்டத்திலும் வெட்டப்படும்.
 bill_total_qty_label	மொத்த எண் லேபிள்
 bill_total_subtotal_label	துணை மொத்த லேபிள்
@@ -443,7 +441,6 @@ printer_profile_heading	லேஅவுட்
 vp_delivery_heading	டெலிவரி
 vp_delivery_help	இந்த மெய்நிகர் அச்சுப்பொறி வேலைகளை எப்படி அனுப்பும் — OS ஆவணம், மூல பைட்டுகள் அல்லது ESC/POS. சீட்டு உள்ளடக்கம் (எழுத்து அளவு, மடிப்பு, ஓரங்கள்) பில் / சீட்டு வடிவத்தால் முடிவாகும், இங்கே அல்ல.
 vp_delivery_spooler	OS ஆவணம் (கணினி ஸ்பூலர்)
-vp_delivery_raw	சாதனத்திற்கு மூல பைட்
 vp_delivery_escpos	ESC/POS வெப்ப கட்டளைகள்
 virtual_printer_new	புதிய மெய்நிகர் அச்சுப்பொறி
 virtual_printer_selected	“{name}” திருத்துதல் — பட்டியலில் வேறொன்றைத் தட்டி மாற்றுங்கள்
@@ -730,7 +727,6 @@ customer_paid_ph	வாடிக்கையாளர் கொடுத்த�
 tip_ph	டிப்
 find_server	கடையின் சர்வரைக் கண்டுபிடி
 bill_format	பில் வடிவம்
-bill_format_help	ஒவ்வொரு பில்லிலும் உங்கள் கடைப் பெயருக்குக் கீழே அச்சாகும். வரிகளை | கொண்டு பிரிக்கவும் (எ.கா. MG Road, Rajkot | Ph 98250 00000).
 bill_header_ph	முகவரி | தொலைபேசி
 fssai_ph	மருந்து உரிம எண் (விருப்பம் — உங்கள் சொற்களில்)
 bill_footer_ph	அடிக்குறிப்பு (எ.கா. நன்றி, மீண்டும் வருக)
@@ -820,8 +816,6 @@ add_dishes	மருந்துகளைச் சேர்
 order_so_far	இந்த ஆர்டரில்: {n} · {total}
 no_dish_match	“{q}”-க்குப் பொருந்தும் பொருள் இல்லை
 pick_done	முடிந்தது
-kot_field_up	மேலே நகர்த்து
-kot_field_down	கீழே நகர்த்து
 dishes_n	{n} பொருட்கள்
 reorder_ph	இந்த அளவில் மேலும் வாங்கு
 set_reorder	மறுஆர்டர் அளவை அமை
@@ -853,3 +847,6 @@ sel_copy	நகலெடு
 sel_select_all	அனைத்தையும் தேர்ந்தெடு
 sel_copied	நகலெடுக்கப்பட்டது
 nav_loading	ஏற்றுகிறது…
+printer_mode_first	முதலில் வேலை செய்வது
+printer_mode_all	அனைத்திலும் அச்சிடு
+slip_columns	நெடுவரிசைகள்

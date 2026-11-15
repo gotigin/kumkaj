@@ -2,6 +2,18 @@
 mod nav_order_tests {
     use super::*;
 
+    /// The app's tests never open this machine's books or printers and
+    /// never print: they once loaded the shop's printers.json through
+    /// `boot` and sent real tickets to its printer on every run (2026-11-15).
+    #[test]
+    fn app_tests_never_reach_this_machines_printers() {
+        let st = AppState::boot();
+        assert!(st.data_base.is_none(), "boot opened this machine's data folder");
+        assert!(st.store.is_none(), "boot opened this machine's books");
+        assert_eq!(print_share::sink(), print_share::PrintSink::Capture);
+        assert!(print_share::printers().printers.is_empty(), "this machine's printers loaded");
+    }
+
     /// Unlock lands where each person last was on this device; the first
     /// time on their first item; never a fixed screen, never Lock; an item
     /// they may no longer open → their first item (owner, 2026-11-15).
@@ -14,7 +26,7 @@ mod nav_order_tests {
             .add_staff("Cash", StaffRole::Cashier, "Cashier", "1111", &owner)
             .unwrap();
         let cashier = store.list_staff().unwrap().into_iter().find(|m| m.id == cash_id).unwrap();
-        // `boot` reads this machine's books: the shop's own layout here.
+        // The app's default layout, whatever `boot` started with.
         let fresh = |st: &mut AppState| {
             st.nav_order = default_nav_order("en");
             st.nav_hidden = parse_nav_layout(None, None, "en").1;

@@ -83,9 +83,7 @@ print_cancelled_kot_needed	পুইলা চানচেল উংজাক �
 print_cancelled_kot_none	ও ওরদের নি মুঙুই মুংসা চামুং চানচেল উংয়া
 print_cancelled_kot_client	{place} রহরজাকনা বাগুই পরিনত রুজাকয়া ({n}) — চামুংনি পরিনতরক Server ও
 kot_banner	খাপাং সরাঙুই
-kot_banner_ph	বানের (কুরুই = কুরুই)
 kot_item_prefix	মানুই সুকাংনি
-kot_item_prefix_ph	উ.গ. [খাNCকুথাং খলাইজাক]
 kot_strike	দিশ নি মুং
 kot_strike_note	দিশ সুইজাক
 kot_strike_on	ওন
@@ -103,13 +101,11 @@ bill_item_qty	কুবাংমা
 bill_item_price	দাম
 bill_item_amount	রাং
 bill_item_note	দিশ নি ককতুমা
-bill_item_col_order	খলম নি ওরদের
 bill_item_col_sep	কলম নি কেরং
 slip_columns	খলমরগ
 slip_col_width	বাগা (mm)
 slip_col_start	সালকসা জায়গা (px)
 slip_col_end	তামাখালনি জায়গা (px)
-slip_col_align	সুংমানি তাবুক
 slip_columns_help	খলম কাইসানি বাগা বিনি সালকসা বো তামাখালনি জায়গা সুমানি। সুংমা বিনি খলম সিনিসে সাপুইমানি; কাতারনি বাগা কাসানো বুসুক অ তাতা আছিক বো ফৗরৗননি সিনি তিকতুইমানি।
 bill_total_qty_label	জত কুতয় মুং
 bill_total_subtotal_label	সুব জত লাবেল
@@ -643,7 +639,6 @@ vp_type_size_heading	সিজে তয়পে
 vp_wrap_heading	উরাপ নি কতরমা
 vp_margin_heading	মারজিন
 vp_delivery_spooler	ওস নি সুইজাক (সিসতেম ন সুকাকনাই)
-vp_delivery_raw	সামান নি বাগুই কুতাল বয়তেস
 vp_delivery_escpos	ESC/POS কুচাংমা দাগিমুং
 virtual_printer_new	কুতাল সুনামজাক পরিনতের
 virtual_printer_selected	“{name}” ন সুলাইউই — সুলাইনা বাগুই লিসত নি তেই কাইসা ন চলিচক খাই দি
@@ -1110,7 +1105,6 @@ remove_these_tables	ও তাবলে ন সুকাক দি
 table_remove_ph	কুচাক দি: ত1-ত24, এবা কাইসা তাবলে নি মুং
 find_server	দুকান নি সেরভের ন নাইদি
 bill_format	বিল নি সুনামুং
-bill_format_help	জত বিল নি সাকাও নিনি রেসতাউরানত নি মুং বাই পরিনত খলাইজাক. কুতাল লিনে বাই | (উ.গ. মগ লামা, রাজকত | ফ 98250 00000).
 bill_header_ph	আদরেস নি কক | ফনে
 fssai_ph	FSSAI লাইসেনস নি রাং. (ভারাত)
 bill_footer_ph	য়াফাঙ (এ.গ. হামবাই য়াফার, তেইসা নাইদি)
@@ -1127,7 +1121,6 @@ kot_field_hide	হুকদি
 kot_field_on	ফুনুকদি
 kot_field_off	হুকদি
 kot_field_size	ফনত কতরমা
-kot_field_size_ph	উ.গ. 16, 20, 24, 28, 32...
 kot_weight_light	পহর
 bill_kot_panel_help	বিল তেই চামুং চামুংনি সলিপ সুনামুং, খরকসা খরকসানি সাকনি মানুইরকনি কতরমা তঙ. বিল চাশিএর উংখা বিল রুনাই এবা রাং রুনাই; KOT উআইতের উংখা আ থুংমুংনি তিচকেত রহরনাই — ওরদের নি ককতুমা বেবাক বিজাপরগ তঙুই তঙ.
 std_size_ph	উ.গ. 18, 20, 26...
@@ -1157,7 +1150,6 @@ kot_style_item_qty	মানুই · কুবাংমা
 kot_style_field_pick	খাকচাংমা জাগা চংদি
 kot_weight_regular	কুপলাইসা
 kot_weight_bold	বলদ
-kot_align	আলিগন
 kot_align_start	চেংদি
 kot_align_center	কুতাল
 kot_align_end	পাতিমুং
@@ -1307,18 +1299,8 @@ kot_show_item_hdr	মানুই · কুবাংমা
 kot_hide_item_hdr	কলম ন খুমদি
 kot_show_title	মুচুংতুই লিনে
 kot_hide_title	মুচুংতুই রুদি
-kot_field_order	পরিপ খাইনানি ওরদের
-kot_field_up	সাকাও হিমদি
-kot_field_down	তুইমাও হিমদি
 kot_field_cycle	তেই কাইসা চংদি
 kot_field_select	তেই কাইসা চংদি
-kot_field_time	জরা
-kot_field_kot_no	KOT য়া
-kot_field_area	আমচাই
-kot_field_table	মেজা
-kot_field_shop	দুকান নি মুং
-kot_field_waiter	কামবরক
-kot_field_station	সতাতিওন
 dishes_n	{n} থালা
 recipe_ph	চামুংনি মুং (চাজাকয়া) — কাইসা উঙুই সুনামনাই: চানা=0.2, পানেএর=0.15
 reorder_ph	তেইব পাই দি

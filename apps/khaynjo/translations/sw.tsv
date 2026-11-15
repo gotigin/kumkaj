@@ -83,9 +83,7 @@ print_cancelled_kot_needed	Fungua meza yenye vyakula vilivyofutwa
 print_cancelled_kot_none	Hakuna vilivyofutwa kwenye oda hii
 print_cancelled_kot_client	Zilizofutwa ({n}) za {place} zimetumwa — huchapishwa kwenye seva
 kot_banner	Bango
-kot_banner_ph	Bango (tupu = hakuna)
 kot_item_prefix	Kiambishi cha bidhaa
-kot_item_prefix_ph	k.m. [CANCELLED]
 kot_strike	Kata jina
 kot_strike_note	Kata kidokezo
 kot_strike_on	Washa
@@ -103,13 +101,11 @@ bill_item_qty	Idadi
 bill_item_price	Bei
 bill_item_amount	Kiasi
 bill_item_note	Kidokezo
-bill_item_col_order	Mpangilio wa safu
 bill_item_col_sep	Mistari ya safu
 slip_columns	Safu wima
 slip_col_width	Upana (mm)
 slip_col_start	Nafasi ya mwanzo (px)
 slip_col_end	Nafasi ya mwisho (px)
-slip_col_align	Mpangilio wa maandishi
 slip_columns_help	Upana wa kila safu wima unajumuisha nafasi yake ya mwanzo na ya mwisho. Maandishi hujikunja ndani ya safu yake; kinachozidi upana wa maudhui hukatwa, kwenye karatasi na kwenye onyesho la kukagua.
 bill_total_qty_label	Lebo ya idadi yote
 bill_total_subtotal_label	Lebo ya jumla ndogo
@@ -643,7 +639,6 @@ vp_type_size_heading	Ukubwa wa herufi
 vp_wrap_heading	Upana wa kukunja
 vp_margin_heading	Pembeni
 vp_delivery_spooler	Hati ya OS (spooler ya mfumo)
-vp_delivery_raw	Baiti ghafi kwenda kifaa
 vp_delivery_escpos	Amri za joto ESC/POS
 virtual_printer_new	Printa pepe mpya
 virtual_printer_selected	Inahariri “{name}” — gusa nyingine kwenye orodha kubadili
@@ -1110,7 +1105,6 @@ remove_these_tables	Ondoa meza hizi
 table_remove_ph	Ondoa: T1-T24, au jina la meza moja
 find_server	Tafuta seva ya duka
 bill_format	Muundo wa bili
-bill_format_help	Huchapishwa chini ya jina la mgahawa kwenye kila bili. Tenganisha mistari kwa | (mf. MG Road, Rajkot | Simu 98250 00000).
 bill_header_ph	Anwani | simu
 fssai_ph	Namba ya leseni FSSAI (India)
 bill_footer_ph	Chini (mf. Asante, karibu tena)
@@ -1127,7 +1121,6 @@ kot_field_hide	Ficha
 kot_field_on	onyesha
 kot_field_off	ficha
 kot_field_size	Ukubwa wa fonti
-kot_field_size_ph	k.m. 16, 20, 24, 28, 32…
 kot_weight_light	Nyembamba
 bill_kot_panel_help	Maudhui ya bili na tipografia ya slipu za jiko. Upana wa maudhui hapo juu ndio upana wa bili na slipu ya jiko.
 std_size_ph	k.m. 18, 20, 26…
@@ -1157,7 +1150,6 @@ kot_style_item_qty	Kipengele · Idadi
 kot_style_field_pick	Chagua sehemu
 kot_weight_regular	Kawaida
 kot_weight_bold	Nzito
-kot_align	Tengeneza upya
 kot_align_start	Anza
 kot_align_center	Katikati
 kot_align_end	Mwisho
@@ -1307,18 +1299,8 @@ kot_show_item_hdr	Kipengele · Idadi
 kot_hide_item_hdr	Fichua safu
 kot_show_title	Mstari wa kichwa
 kot_hide_title	Fichua kichwa
-kot_field_order	Piga amri
-kot_field_up	Sogeza juu
-kot_field_down	Sogeza chini
 kot_field_cycle	Chagua inayofuata
 kot_field_select	Chagua inayofuata
-kot_field_time	Wakati
-kot_field_kot_no	Nambari ya KOT
-kot_field_area	Eneo
-kot_field_table	Meza
-kot_field_shop	Jina la duka
-kot_field_waiter	Wafanyakazi
-kot_field_station	Kituo
 dishes_n	Vyakula {n}
 recipe_ph	Mapishi (hiari) — sahani moja hutumia: Rice=0.2, Paneer=0.15
 reorder_ph	Nunua zaidi ikifika

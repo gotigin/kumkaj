@@ -83,9 +83,7 @@ print_cancelled_kot_needed	Hapni fillimisht një tavolinë me pjata të anuluara
 print_cancelled_kot_none	Në këtë porosi nuk ka pjata të anuluara
 print_cancelled_kot_client	Shtypja e të anularave ({n}) për {place} u dërgua — kuzhina shtyp te serveri
 kot_banner	Shiriti i llojit
-kot_banner_ph	Shirit (bosh = asnjë)
 kot_item_prefix	Parashtesa e artikullit
-kot_item_prefix_ph	p.sh. [ANULUAR]
 kot_strike	Vijëzo emrin e pjatës
 kot_strike_note	Vijëzo shënimin e pjatës
 kot_strike_on	Ndezur
@@ -103,13 +101,11 @@ bill_item_qty	Sasia
 bill_item_price	Çmimi
 bill_item_amount	Shuma
 bill_item_note	Shënimi i pjatës
-bill_item_col_order	Renditja e kolonave
 bill_item_col_sep	Vijat e kolonave
 slip_columns	Kolonat
 slip_col_width	Gjerësia (mm)
 slip_col_start	Hapësira në fillim (px)
 slip_col_end	Hapësira në fund (px)
-slip_col_align	Rreshtimi i tekstit
 slip_columns_help	Gjerësia e çdo kolone përfshin hapësirën e saj në fillim dhe në fund. Teksti mbështillet brenda kolonës së tij; çfarë del përtej gjerësisë së përmbajtjes pritet, në letër dhe në pamjen paraprake.
 bill_total_qty_label	Etiketa e sasisë totale
 bill_total_subtotal_label	Etiketa e nëntotalit
@@ -643,7 +639,6 @@ vp_type_size_heading	Madhësia e shkrimit
 vp_wrap_heading	Gjerësia e mbështjelljes
 vp_margin_heading	Margjinat
 vp_delivery_spooler	Dokument OS (radha e sistemit)
-vp_delivery_raw	Bajte të papërpunuara te pajisja
 vp_delivery_escpos	Komanda termike ESC/POS
 virtual_printer_new	Printer virtual i ri
 virtual_printer_selected	Po ndryshohet “{name}” — prekni një tjetër në listë për të kaluar
@@ -1110,7 +1105,6 @@ remove_these_tables	Hiq këto tavolina
 table_remove_ph	Hiq: T1-T24, ose emrin e një tavoline
 find_server	Gjej serverin e dyqanit
 bill_format	Formati i faturës
-bill_format_help	Shtypet nën emrin e restorantit tuaj në çdo faturë. Ndani rreshtat me | (p.sh. MG Road, Rajkot | Tel 98250 00000).
 bill_header_ph	Adresa | telefoni
 fssai_ph	Nr. i licencës FSSAI (India)
 bill_footer_ph	Fundi (p.sh. Faleminderit, ejani përsëri)
@@ -1127,7 +1121,6 @@ kot_field_hide	Fshih
 kot_field_on	shfaq
 kot_field_off	fshih
 kot_field_size	Madhësia e gërmës
-kot_field_size_ph	p.sh. 16, 20, 24, 28, 32…
 kot_weight_light	I lehtë
 bill_kot_panel_help	Paraqitja e faturës dhe e fletës së kuzhinës, secila me gjerësinë e vet të përmbajtjes. Arkëtari i faturës është kush e lëshoi ose e mbylli faturën; Kamarieri i KOT-it është kush e dërgoi atë fletë kuzhine — historia e plotë e porosisë qëndron në libra.
 std_size_ph	p.sh. 18, 20, 26…
@@ -1157,7 +1150,6 @@ kot_style_item_qty	Artikulli · Sasia
 kot_style_field_pick	Zgjidh fushën
 kot_weight_regular	I rregullt
 kot_weight_bold	I trashë
-kot_align	Drejtimi
 kot_align_start	Fillimi
 kot_align_center	Qendra
 kot_align_end	Fundi
@@ -1307,18 +1299,8 @@ kot_show_item_hdr	Artikulli · Sasia
 kot_hide_item_hdr	Fshih kolonat
 kot_show_title	Rreshti i titullit
 kot_hide_title	Fshih titullin
-kot_field_order	Renditja e shtypjes
-kot_field_up	Lëviz lart
-kot_field_down	Lëviz poshtë
 kot_field_cycle	Zgjidh tjetrën
 kot_field_select	Zgjidh tjetrën
-kot_field_time	Ora
-kot_field_kot_no	Nr. i KOT-it
-kot_field_area	Zona
-kot_field_table	Tavolina
-kot_field_shop	Emri i dyqanit
-kot_field_waiter	Stafi
-kot_field_station	Stacioni
 dishes_n	{n} pjata
 recipe_ph	Receta (opsionale) — një porcion përdor: Oriz=0.2, Paneer=0.15
 reorder_ph	Bli më shumë te

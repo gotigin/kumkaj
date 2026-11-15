@@ -83,9 +83,7 @@ print_cancelled_kot_needed	請打開有取消菜品的桌臺
 print_cancelled_kot_none	此單沒有取消菜品
 print_cancelled_kot_client	已發送 {place} 的取消 ({n}) — 在服務器打印
 kot_banner	橫幅
-kot_banner_ph	橫幅（空=無）
 kot_item_prefix	菜名前綴
-kot_item_prefix_ph	例如 [CANCELLED]
 kot_strike	劃掉菜名
 kot_strike_note	劃掉備註
 kot_strike_on	開
@@ -103,13 +101,11 @@ bill_item_qty	數量
 bill_item_price	單價
 bill_item_amount	金額
 bill_item_note	備註
-bill_item_col_order	列順序
 bill_item_col_sep	列線
 slip_columns	欄
 slip_col_width	寬度 (mm)
 slip_col_start	開頭間距 (px)
 slip_col_end	結尾間距 (px)
-slip_col_align	文字對齊
 slip_columns_help	每欄的寬度已包含其開頭與結尾間距。文字在所屬欄內換行；超出內容寬度的部分，在紙上和預覽中都會被裁掉。
 bill_total_qty_label	總數量標籤
 bill_total_subtotal_label	小計標籤
@@ -643,7 +639,6 @@ vp_type_size_heading	字號
 vp_wrap_heading	換行寬度
 vp_margin_heading	邊距
 vp_delivery_spooler	系統文檔（系統後臺打印）
-vp_delivery_raw	原始字節到設備
 vp_delivery_escpos	ESC/POS 熱敏命令
 virtual_printer_new	新建虛擬打印機
 virtual_printer_selected	正在編輯“{name}”——點列表中另一項以切換
@@ -1110,7 +1105,6 @@ remove_these_tables	刪除這些桌臺
 table_remove_ph	刪除：T1-T24，或某張桌臺的名稱
 find_server	查找店內服務器
 bill_format	帳單格式
-bill_format_help	打印在每張帳單的餐廳名稱下方。用 | 分行（如 MG Road, Rajkot | 電話 98250 00000）。
 bill_header_ph	地址 | 電話
 fssai_ph	FSSAI 許可證號（印度）
 bill_footer_ph	頁腳（如：謝謝，歡迎再來）
@@ -1127,7 +1121,6 @@ kot_field_hide	隱藏
 kot_field_on	顯示
 kot_field_off	隱藏
 kot_field_size	字號
-kot_field_size_ph	例如 16, 20, 24, 28, 32…
 kot_weight_light	細
 bill_kot_panel_help	帳單內容與廚房小票字體。上方的內容寬度同時是帳單和廚房小票的寬度。
 std_size_ph	例如 18, 20, 26…
@@ -1157,7 +1150,6 @@ kot_style_item_qty	品項 · 數量
 kot_style_field_pick	選擇字段
 kot_weight_regular	常規
 kot_weight_bold	粗體
-kot_align	對齊
 kot_align_start	開始
 kot_align_center	居中
 kot_align_end	結束
@@ -1307,18 +1299,8 @@ kot_show_item_hdr	品項 · 數量
 kot_hide_item_hdr	隱藏列
 kot_show_title	標題行
 kot_hide_title	隱藏標題
-kot_field_order	打印訂單
-kot_field_up	上移
-kot_field_down	下移
 kot_field_cycle	選擇下一個
 kot_field_select	選擇下一個
-kot_field_time	時間
-kot_field_kot_no	KOT 號
-kot_field_area	區域
-kot_field_table	桌臺
-kot_field_shop	店名
-kot_field_waiter	員工
-kot_field_station	工位
 dishes_n	{n} 道菜
 recipe_ph	配方（可選）— 每份用料：Rice=0.2, Paneer=0.15
 reorder_ph	低於此數補貨

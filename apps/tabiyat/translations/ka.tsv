@@ -81,12 +81,10 @@ bill_item_qty	რაოდ.
 bill_item_price	ფასი
 bill_item_amount	თანხა
 bill_item_note	Rx / გასაყიდი შენიშვნა
-bill_item_col_order	სვეტების რიგი
 bill_item_col_sep	სვეტების ხაზები
 slip_col_width	სიგანე (mm)
 slip_col_start	საწყისი სივრცე (px)
 slip_col_end	ბოლო სივრცე (px)
-slip_col_align	ტექსტის სწორება
 slip_columns_help	თითოეული სვეტის სიგანე მოიცავს მის საწყის და ბოლო სივრცეს. ტექსტი საკუთარ სვეტში გადადის ახალ ხაზზე; რაც შიგთავსის სიგანეს სცდება, იჭრება — ქაღალდზეც და გადახედვაშიც.
 bill_total_qty_label	სრული რაოდენობის წარწერა
 bill_total_subtotal_label	შუალედური ჯამის წარწერა
@@ -443,7 +441,6 @@ printer_profile_heading	განლაგება
 vp_delivery_heading	მიწოდება
 vp_delivery_help	როგორ აგზავნის ეს ვირტუალური პრინტერი სამუშაოებს - OS დოკუმენტს, ნედლეულ ბაიტს ან ESC/POS-ს. ფურცლის შინაარსი (ტიპის ზომა, შეფუთვა, მინდვრები) წყვეტს კანონპროექტის/სლიპის ფორმატს და არა აქ.
 vp_delivery_spooler	OS დოკუმენტი (სისტემის სპულერი)
-vp_delivery_raw	ნედლი ბაიტები მოწყობილობაზე
 vp_delivery_escpos	ESC/POS თერმული ბრძანებები
 virtual_printer_new	ახალი ვირტუალური პრინტერი
 virtual_printer_selected	„{name}“-ის რედაქტირება — გადასართავად შეეხეთ სხვას სიაში
@@ -730,7 +727,6 @@ customer_paid_ph	მომხმარებელმა გადაიხა�
 tip_ph	რჩევა
 find_server	იპოვნეთ მაღაზიის სერვერი
 bill_format	სტუმარი სტუმრის კანონპროექტის ფორმატი
-bill_format_help	იბეჭდება თქვენი მაღაზიის სახელით ყველა ანგარიშზე. ცალკე ხაზები | (მაგ. MG Road, Rajkot | Ph 98250 00000).
 bill_header_ph	მისამართი | ტელეფონი
 fssai_ph	წამლის ლიცენზია No. (არასავალდებულო - თქვენი ფორმულირება)
 bill_footer_ph	ქვედა კოლონტიტული (მაგ. გმადლობთ, ხელახლა ეწვიეთ)
@@ -820,8 +816,6 @@ add_dishes	დაამატეთ მედიკამენტები
 order_so_far	ამ შეკვეთით: {n} · {total}
 no_dish_match	არცერთი ელემენტი არ შეესაბამება „{q}“-ს
 pick_done	მზადაა
-kot_field_up	ზევით გადაადგილება
-kot_field_down	ქვევით გადაადგილება
 dishes_n	{n} ნივთები
 reorder_ph	შეიძინეთ მეტი აქ
 set_reorder	დააყენეთ ხელახალი შეკვეთის დონე
@@ -853,3 +847,6 @@ sel_copy	კოპირება
 sel_select_all	ყველაფრის მონიშვნა
 sel_copied	დაკოპირდა
 nav_loading	იტვირთება…
+printer_mode_first	ჯერ ეს მუშაობს
+printer_mode_all	ბეჭდვა ყველაზე
+slip_columns	სვეტები

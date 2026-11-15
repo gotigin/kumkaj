@@ -83,9 +83,7 @@ print_cancelled_kot_needed	Прво отворите трпезаријски с
 print_cancelled_kot_none	Нема отказаних јела у овој поруџбини
 print_cancelled_kot_client	Штампање је отказано ({n}) за {place} послато — кухињски отисци на серверу
 kot_banner	Љубазан банер
-kot_banner_ph	Банер (празан = ниједан)
 kot_item_prefix	Префикс ставке менија
-kot_item_prefix_ph	нпр. [ОТКАЗАНО]
 kot_strike	Удари назив јела
 kot_strike_note	Удари белешку о јелу
 kot_strike_on	Он
@@ -103,13 +101,11 @@ bill_item_qty	Кти
 bill_item_price	Цена
 bill_item_amount	Износ
 bill_item_note	Белешка о јелу
-bill_item_col_order	Редослед колоне
 bill_item_col_sep	Правила колона
 slip_columns	Колоне
 slip_col_width	Ширина (mm)
 slip_col_start	Почетни размак (px)
 slip_col_end	Завршни размак (px)
-slip_col_align	Поравнање текста
 slip_columns_help	Ширина сваке колоне укључује њен почетни и завршни размак. Текст се прелама унутар своје колоне; оно што прелази ширину садржаја одсеца се, на папиру и у прегледу.
 bill_total_qty_label	Ознака укупне количине
 bill_total_subtotal_label	Ознака суб тотал
@@ -643,7 +639,6 @@ vp_type_size_heading	Величина типа
 vp_wrap_heading	Ширина омотача
 vp_margin_heading	Маргине
 vp_delivery_spooler	ОС документ (системски спулер)
-vp_delivery_raw	Необрађени бајтови на уређај
 vp_delivery_escpos	ESC/POS термичке команде
 virtual_printer_new	Нови виртуелни штампач
 virtual_printer_selected	Уређивање „{name}“ — додирните други на листи да бисте се пребацили
@@ -1110,7 +1105,6 @@ remove_these_tables	Уклоните ове трпезаријске столо�
 table_remove_ph	Уклоните: Т1-Т24, или назив једног трпезаријског стола
 find_server	Пронађите сервер продавнице
 bill_format	Формат рачуна
-bill_format_help	Одштампано под именом вашег ресторана на сваком рачуну. Одвојите редове са | (нпр. МГ Роад, Рајкот | Пх 98250 00000).
 bill_header_ph	Адреса | телефон
 fssai_ph	лиценца ФССАИ бр. (Индија)
 bill_footer_ph	Подножје (нпр. хвала, посетите поново)
@@ -1127,7 +1121,6 @@ kot_field_hide	Сакриј се
 kot_field_on	схов
 kot_field_off	сакрити
 kot_field_size	Величина фонта
-kot_field_size_ph	нпр. 16, 20, 24, 28, 32…
 kot_weight_light	Светлост
 bill_kot_panel_help	Распоред рачуна и кухињског листа, сваки са својом ширином садржаја. Благајник рачуна је онај који је издао или измирио рачун; KOT Конобар је послао карту за кухињу — цела прича о поруџбини остаје у књигама.
 std_size_ph	нпр. 18, 20, 26…
@@ -1157,7 +1150,6 @@ kot_style_item_qty	Ставка менија · Кол
 kot_style_field_pick	Изаберите поље
 kot_weight_regular	Редовно
 kot_weight_bold	Болд
-kot_align	Поравнајте
 kot_align_start	Почни
 kot_align_center	Центар
 kot_align_end	Крај
@@ -1307,18 +1299,8 @@ kot_show_item_hdr	Ставка менија · Кол
 kot_hide_item_hdr	Сакриј колоне
 kot_show_title	Насловна линија
 kot_hide_title	Сакриј наслов
-kot_field_order	Редослед штампања
-kot_field_up	Помери се горе
-kot_field_down	Помери се доле
 kot_field_cycle	Изаберите следеће
 kot_field_select	Изаберите следеће
-kot_field_time	Време
-kot_field_kot_no	KOT бр
-kot_field_area	Подручје
-kot_field_table	Трпезаријски сто
-kot_field_shop	Назив продавнице
-kot_field_waiter	Особље
-kot_field_station	Станица
 dishes_n	{n} јела
 recipe_ph	Рецепт (опционо) — једна порција користи: пиринач=0,2, панеер=0,15
 reorder_ph	Купите више на

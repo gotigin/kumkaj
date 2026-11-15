@@ -69,12 +69,10 @@ bill_item_qty	Idadi
 bill_item_price	Bei
 bill_item_amount	Kiasi
 bill_item_note	Ujumbe wa kipengee
-bill_item_col_order	Mpangilio wa safu
 bill_item_col_sep	Mistari ya safu
 slip_col_width	Upana (mm)
 slip_col_start	Nafasi ya mwanzo (px)
 slip_col_end	Nafasi ya mwisho (px)
-slip_col_align	Mpangilio wa maandishi
 slip_columns_help	Upana wa kila safu wima unajumuisha nafasi yake ya mwanzo na ya mwisho. Maandishi hujikunja ndani ya safu yake; kinachozidi upana wa maudhui hukatwa, kwenye karatasi na kwenye onyesho la kukagua.
 bill_total_qty_label	Lebo ya idadi yote
 bill_total_subtotal_label	Lebo ya jumla ndogo
@@ -431,7 +429,6 @@ printer_profile_heading	Mpangilio
 vp_delivery_heading	Uwasilishaji
 vp_delivery_help	Jinsi printa hii pepe hutuma kazi - hati ya Mfumo wa Uendeshaji, baiti ghafi, au ESC/POS. Yaliyomo kwenye mteremko (saizi ya aina, kanga, pambizo) huamuliwa na muundo wa muswada / Slip, sio hapa.
 vp_delivery_spooler	Hati ya OS (spooler ya mfumo)
-vp_delivery_raw	Baiti ghafi kwenda kifaa
 vp_delivery_escpos	Amri za joto ESC/POS
 virtual_printer_new	Printa pepe mpya
 virtual_printer_selected	Inahariri “{name}” — gusa nyingine kwenye orodha kubadili
@@ -718,7 +715,6 @@ customer_paid_ph	Mteja amelipa
 tip_ph	Bakshishi
 find_server	Tafuta seva ya duka
 bill_format	Muundo wa bili
-bill_format_help	Imechapishwa chini ya jina la duka lako kwenye kila bili. Tenganisha mistari na | (k.m. MG Road, Rajkot | Ph 98250 00000).
 bill_header_ph	Anwani | simu
 fssai_ph	FSSAI / leseni ya duka No. (si lazima)
 bill_footer_ph	Chini (mf. Asante, karibu tena)
@@ -808,8 +804,6 @@ add_dishes	Ongeza vitu
 order_so_far	Kwenye oda hii: {n} · {total}
 no_dish_match	Hakuna kipengee kinacholingana na "{q}"
 pick_done	Tayari
-kot_field_up	Sogeza juu
-kot_field_down	Sogeza chini
 dishes_n	{n} vitu
 reorder_ph	Nunua zaidi ikifika
 set_reorder	Weka kiwango cha kuagiza tena
@@ -841,3 +835,6 @@ sel_copy	Nakili
 sel_select_all	Chagua zote
 sel_copied	Imenakiliwa
 nav_loading	Inapakia…
+printer_mode_first	Yake ya kwanza inayofanya kazi
+printer_mode_all	Piga kwa wote
+slip_columns	Safu wima

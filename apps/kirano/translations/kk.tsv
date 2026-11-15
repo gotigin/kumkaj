@@ -69,12 +69,10 @@ bill_item_qty	Сан
 bill_item_price	Баға
 bill_item_amount	Сома
 bill_item_note	Элемент ескертпесі
-bill_item_col_order	Баған реті
 bill_item_col_sep	Баған сызықтары
 slip_col_width	Ені (mm)
 slip_col_start	Бастапқы аралық (px)
 slip_col_end	Соңғы аралық (px)
-slip_col_align	Мәтінді туралау
 slip_columns_help	Әр бағанның ені оның бастапқы және соңғы аралығын қамтиды. Мәтін өз бағанының ішінде тасымалданады; мазмұн енінен шығып кеткен бөлігі қағазда да, алдын ала қарауда да кесіледі.
 bill_total_qty_label	Жалпы сан белгісі
 bill_total_subtotal_label	Аралық сома белгісі
@@ -431,7 +429,6 @@ printer_profile_heading	Орналасу
 vp_delivery_heading	Жеткізу
 vp_delivery_help	Бұл виртуалды принтер тапсырмаларды қалай жібереді — ОЖ құжаты, өңделмеген байттар немесе ESC/POS. Слип мазмұны (түр өлшемі, орау, шеттер) мұнда емес, шот/Слип пішімі бойынша анықталады.
 vp_delivery_spooler	ОЖ құжаты (жүйелік спулер)
-vp_delivery_raw	Құрылғыға шикі байт
 vp_delivery_escpos	ESC/POS термокомандалары
 virtual_printer_new	Жаңа виртуалды принтер
 virtual_printer_selected	«{name}» өңделуде — ауыстыру үшін тізімдегі басқасын түртіңіз
@@ -718,7 +715,6 @@ customer_paid_ph	Клиент төледі
 tip_ph	Шайоқ
 find_server	Дүкен серверін табу
 bill_format	Шот пішімі
-bill_format_help	Әрбір шотта дүкеннің атымен басып шығарылады. Жолдарды | арқылы бөліңіз (мысалы, MG Road, Rajkot | Ph 98250 00000).
 bill_header_ph	Мекенжай | телефон
 fssai_ph	FSSAI / дүкен лицензиясы №. (міндетті емес)
 bill_footer_ph	Төменгі жазу (мыс. Рақмет, қайта келіңіз)
@@ -808,8 +804,6 @@ add_dishes	Элементтерді қосыңыз
 order_so_far	Осы тапсырыста: {n} · {total}
 no_dish_match	Ешбір элемент "{q}" сәйкес келмейді
 pick_done	Дайын
-kot_field_up	Жоғары жылжыту
-kot_field_down	Төмен жылжыту
 dishes_n	{n} элемент
 reorder_ph	Тағы сатып алу
 set_reorder	Қайта тапсырыс деңгейін қою
@@ -841,3 +835,6 @@ sel_copy	Көшіру
 sel_select_all	Барлығын таңдау
 sel_copied	Көшірілді
 nav_loading	Жүктелуде…
+printer_mode_first	Бірінші істегені
+printer_mode_all	Барлығына басу
+slip_columns	Бағандар

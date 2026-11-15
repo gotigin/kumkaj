@@ -69,12 +69,10 @@ bill_item_qty	Кол.
 bill_item_price	Цена
 bill_item_amount	Сума
 bill_item_note	Бележка за артикула
-bill_item_col_order	Ред на колони
 bill_item_col_sep	Линии на колони
 slip_col_width	Ширина (mm)
 slip_col_start	Начално отстояние (px)
 slip_col_end	Крайно отстояние (px)
-slip_col_align	Подравняване на текста
 slip_columns_help	Ширината на всяка колона включва началното и крайното ѝ отстояние. Текстът се пренася в рамките на колоната си; всичко извън ширината на съдържанието се отрязва — на хартия и в прегледа.
 bill_total_qty_label	Етикет Общо кол.
 bill_total_subtotal_label	Етикет Междинна сума
@@ -431,7 +429,6 @@ printer_profile_heading	Подредба
 vp_delivery_heading	Доставка
 vp_delivery_help	Как този виртуален принтер праща задачи — документ на ОС, сурови байтове или ESC/POS. Съдържанието на фиша (размер на шрифта, пренасяне, полета) се решава от формата на сметката / фиша, не тук.
 vp_delivery_spooler	Документ на ОС (системен спулер)
-vp_delivery_raw	Сурови байтове към устройството
 vp_delivery_escpos	Термични команди ESC/POS
 virtual_printer_new	Нов виртуален принтер
 virtual_printer_selected	Редактиране на „{name}“ — докоснете друг в списъка, за да смените
@@ -718,7 +715,6 @@ customer_paid_ph	Клиентът плати
 tip_ph	Бакшиш
 find_server	Намери сървъра на заведението
 bill_format	Формат на сметката
-bill_format_help	Печата се под името на магазина на всяка сметка. Разделяй редовете с | (напр. MG Road, Rajkot | Ph 98250 00000).
 bill_header_ph	Адрес | телефон
 fssai_ph	FSSAI / лиценза на магазина (по избор)
 bill_footer_ph	Долен колонтитул (напр. Благодарим, заповядайте отново)
@@ -808,8 +804,6 @@ add_dishes	Добавяне на артикули
 order_so_far	В тази поръчка: {n} · {total}
 no_dish_match	Няма артикули, съвпадащи с „{q}“
 pick_done	Готово
-kot_field_up	Премести нагоре
-kot_field_down	Премести надолу
 dishes_n	{n} артикула
 reorder_ph	Купи още при
 set_reorder	Задай ниво за повторна поръчка
@@ -841,3 +835,6 @@ sel_copy	Копирай
 sel_select_all	Избери всичко
 sel_copied	Копирано
 nav_loading	Зареждане…
+printer_mode_first	Първият, който работи
+printer_mode_all	Печат на всички
+slip_columns	Колони

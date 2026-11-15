@@ -351,13 +351,6 @@ fn print_or_share_receipt(&mut self, cx: &mut Cx, text: &str) {
             ids!(bill_field_value),
             ids!(bill_footer_input),
             ids!(bill_header_input),
-            ids!(bill_col_end_input),
-            ids!(bill_col_start_input),
-            ids!(bill_col_width_input),
-            ids!(bill_item_hdr_amount_input),
-            ids!(bill_item_hdr_item_input),
-            ids!(bill_item_hdr_price_input),
-            ids!(bill_item_hdr_qty_input),
             ids!(bill_printers_input),
             ids!(bill_total_grand_label_input),
             ids!(bill_total_paid_label_input),
@@ -416,11 +409,6 @@ fn print_or_share_receipt(&mut self, cx: &mut Cx, text: &str) {
             ids!(kot_banner_input),
             ids!(kot_field_size_input),
             ids!(kot_footer_input),
-            ids!(kot_col_end_input),
-            ids!(kot_col_start_input),
-            ids!(kot_col_width_input),
-            ids!(kot_item_hdr_item_input),
-            ids!(kot_item_hdr_qty_input),
             ids!(kot_item_prefix_input),
             ids!(kot_station_input),
             ids!(kot_test_printers_input),
@@ -547,6 +535,15 @@ fn print_or_share_receipt(&mut self, cx: &mut Cx, text: &str) {
             let area = field.area();
             if !area.is_empty() && cx.has_key_focus(area) {
                 return true;
+            }
+        }
+        // Bill / KOT format item columns: four boxes per column row.
+        for row in BILL_COL_ROWS.into_iter().chain(KOT_COL_ROWS) {
+            for input in [id!(col_header), id!(col_width), id!(col_start), id!(col_end)] {
+                let area = self.ui.text_input(cx, &[row, input]).area();
+                if !area.is_empty() && cx.has_key_focus(area) {
+                    return true;
+                }
             }
         }
         let (cart_n, amend_n) = {
@@ -1654,7 +1651,6 @@ fn print_or_share_receipt(&mut self, cx: &mut Cx, text: &str) {
             ids!(h_brand_shown_help),
             ids!(h_printers_help),
             ids!(h_printers_routes_help),
-            ids!(h_bill_format_help),
             ids!(h_restore_help),
             ids!(categories_help),
             ids!(split_help),

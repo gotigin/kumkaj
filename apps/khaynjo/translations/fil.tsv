@@ -83,9 +83,7 @@ print_cancelled_kot_needed	Magbukas muna ng hapag kainan na may mga nakanselang 
 print_cancelled_kot_none	Walang nakanselang pagkain sa order na ito
 print_cancelled_kot_client	Kinansela ang pag-print ({n}) para sa {place} ipinadala — mga print sa kusina sa Server
 kot_banner	Mabait na banner
-kot_banner_ph	Banner (blangko = wala)
 kot_item_prefix	Prefix ng item sa menu ng menu
-kot_item_prefix_ph	hal. [KINANSELA]
 kot_strike	Pangalan ng Strike dish
 kot_strike_note	Guhiin ang tala ng ulam
 kot_strike_on	Naka-on
@@ -103,13 +101,11 @@ bill_item_qty	Dami
 bill_item_price	Presyo
 bill_item_amount	Halaga
 bill_item_note	Tala ng ulam
-bill_item_col_order	Pagkakasunod-sunod ng hanay
 bill_item_col_sep	Mga panuntunan sa hanay
 slip_columns	Mga column
 slip_col_width	Lapad (mm)
 slip_col_start	Espasyo sa simula (px)
 slip_col_end	Espasyo sa dulo (px)
-slip_col_align	Pagkakahanay ng teksto
 slip_columns_help	Kasama sa lapad ng bawat column ang espasyo nito sa simula at dulo. Bumabalot ang teksto sa loob ng column nito; ang lumalampas sa lapad ng nilalaman ay napuputol, sa papel at sa preview.
 bill_total_qty_label	Kabuuang dami ng label
 bill_total_subtotal_label	Sub kabuuang label
@@ -643,7 +639,6 @@ vp_type_size_heading	Laki ng uri
 vp_wrap_heading	Lapad ng balutin
 vp_margin_heading	Mga margin
 vp_delivery_spooler	Dokumento ng OS (spooler ng system)
-vp_delivery_raw	Raw byte sa device
 vp_delivery_escpos	ESC/POS thermal command
 virtual_printer_new	Bagong virtual na printer
 virtual_printer_selected	Pag-edit ng “{name}” — tapikin ang isa pa sa listahan para lumipat
@@ -1110,7 +1105,6 @@ remove_these_tables	Alisin ang mga hapag kainan na ito
 table_remove_ph	Alisin: T1-T24, o pangalan ng isang hapag kainan
 find_server	Hanapin ang server ng shop
 bill_format	Format ng bill
-bill_format_help	Naka-print sa ilalim ng pangalan ng iyong restaurant sa bawat bill. Paghiwalayin ang mga linya na may | (hal. MG Road, Rajkot | Ph 98250 00000).
 bill_header_ph	Address | telepono
 fssai_ph	FSSAI license no. (India)
 bill_footer_ph	Footer (hal. Salamat, bumisita muli)
@@ -1127,7 +1121,6 @@ kot_field_hide	Magtago
 kot_field_on	palabas
 kot_field_off	itago
 kot_field_size	Laki ng font
-kot_field_size_ph	hal. 16, 20, 24, 28, 32…
 kot_weight_light	Liwanag
 bill_kot_panel_help	Bill at kitchen slip layout, bawat isa ay may sariling lapad ng nilalaman. Ang Bill Cashier ay ang nag-isyu o nag-settle ng bill; KOT Waiter ang nagpadala ng ticket sa kusina na iyon — ang buong kwento ng order ay mananatili sa ledger.
 std_size_ph	hal. 18, 20, 26…
@@ -1157,7 +1150,6 @@ kot_style_item_qty	Menu item sa menu · Dami
 kot_style_field_pick	Pumili ng field
 kot_weight_regular	Karaniwan
 kot_weight_bold	Matapang
-kot_align	I-align
 kot_align_start	Magsimula
 kot_align_center	Gitna
 kot_align_end	Tapusin
@@ -1307,18 +1299,8 @@ kot_show_item_hdr	Menu item sa menu · Dami
 kot_hide_item_hdr	Itago ang mga column
 kot_show_title	linya ng pamagat
 kot_hide_title	Itago ang pamagat
-kot_field_order	Ayos ng pag-imprenta
-kot_field_up	Umakyat
-kot_field_down	Ilipat pababa
 kot_field_cycle	Piliin ang susunod
 kot_field_select	Piliin ang susunod
-kot_field_time	Oras
-kot_field_kot_no	KOT Hindi
-kot_field_area	Lugar
-kot_field_table	Dining table
-kot_field_shop	Pangalan ng tindahan
-kot_field_waiter	Mga tauhan
-kot_field_station	Istasyon
 dishes_n	{n} pinggan
 recipe_ph	Recipe (opsyonal) — isang bahagi ay gumagamit ng: Rice=0.2, Paneer=0.15
 reorder_ph	Bumili ng higit pa sa

@@ -81,12 +81,10 @@ bill_item_qty	အရေအတွက်
 bill_item_price	ဈေးနှုန်း
 bill_item_amount	ပမာဏ
 bill_item_note	Rx / ရောင်းရန်မှတ်စု
-bill_item_col_order	ကော်လံအဆင့်
 bill_item_col_sep	ကော်လံစည်းမျဉ်းများ
 slip_col_width	အကျယ် (mm)
 slip_col_start	အစ နေရာလွတ် (px)
 slip_col_end	အဆုံး နေရာလွတ် (px)
-slip_col_align	စာသား ညှိခြင်း
 slip_columns_help	ကော်လံတစ်ခုစီ၏ အကျယ်တွင် ၎င်း၏ အစနှင့် အဆုံး နေရာလွတ် ပါဝင်သည်။ စာသားသည် မိမိကော်လံအတွင်း ကြောင်းဆင်းသည်; အကြောင်းအရာ အကျယ်ထက် ကျော်လွန်သည့်အပိုင်းကို စက္ကူပေါ်နှင့် အစမ်းကြည့်ရှုမှုတွင် ဖြတ်ထားမည်။
 bill_total_qty_label	စုစုပမာဏတပ်ဆင်ခြင်း label
 bill_total_subtotal_label	အပိုစုစုပမာဏ label
@@ -443,7 +441,6 @@ printer_profile_heading	ပုံစံ
 vp_delivery_heading	ပို့ဆောင်မှု
 vp_delivery_help	ဤ virtual printer သည် အလုပ်များ ပေးပို့ပုံ — OS document၊ raw bytes သို့မဟုတ် ESC/POS စလစ်အကြောင်းအရာ (အမျိုးအစား အရွယ်အစား၊ ထုပ်ပိုးခြင်း၊ အနားသတ်များ) ကို ဤနေရာတွင်မဟုတ်ဘဲ ဘေလ်/စလစ်ဖော်မတ်ဖြင့် ဆုံးဖြတ်ပါသည်။
 vp_delivery_spooler	OS စာရွက်စာတမ်း (စနစ် စပူးလာ)
-vp_delivery_raw	စက်တစ်လုံးသို့ မသန့်ရှင်းထားသော ဘိုင်များ
 vp_delivery_escpos	ESC/POS ထိုမိုင်းကာအမိန့်များ
 virtual_printer_new	အသစ်သော အမြင်အိုင်ဇာပရင့်တာ
 virtual_printer_selected	“{name}” ကို တည်းဖြတ်နေသည် — လက်စွပ်စာရင်းရှိ တစ်ခုခုကို ထပ်ကိုသွားနှိပ်ပြီး ပြောင်းနိုင်သည်
@@ -730,7 +727,6 @@ customer_paid_ph	ဖောက်သည်ငွေပေးချေပြီး
 tip_ph	အနှစ်သာရ
 find_server	ဆိုင်၏ဆာဗာကိုရှာပါ
 bill_format	ဘီလ်ပုံစံ
-bill_format_help	ငွေတောင်းခံလွှာတိုင်းတွင် သင့်ဆိုင်၏အမည်အောက်တွင် ရိုက်နှိပ်ထားသည်။ မျဉ်းကြောင်းများ | (ဥပမာ MG Road, Rajkot | Ph 98250 00000)။
 bill_header_ph	လိပ်စာ | ဖုန်း
 fssai_ph	ဆေးဝါးလိုင်စင်အမှတ်၊ (ချန်လှပ်ထားနိုင်သည် — မင်းရဲ့ အသုံးအနှုန်း)
 bill_footer_ph	ဖူးတာ (ဥပမာ: ကျေးဇူးတင်ပါတယ်၊ နောက်တစ်ဖန်လာပါ)
@@ -820,8 +816,6 @@ add_dishes	ဆေးထည့်ပါ။
 order_so_far	ဒီအမှာစာတွင်: {n} · {total}
 no_dish_match	“{q}” နှင့် ကိုက်ညီသည့် အရာမရှိပါ
 pick_done	ပြီးပြီ
-kot_field_up	အပေါ်ကိုရွှေ့ပါ
-kot_field_down	အောက်ကိုရွှေ့ပါ
 dishes_n	{n} ပစ္စည်းများ
 reorder_ph	ပိုဝယ်ရန်
 set_reorder	ပြန်အမှာအခြေအနေ သတ်မှတ်ရန်
@@ -853,3 +847,6 @@ sel_copy	ကူးယူရန်
 sel_select_all	အားလုံးရွေးရန်
 sel_copied	ကူးယူပြီး
 nav_loading	ဖွင့်နေသည်…
+printer_mode_first	အလုပ်ဖြစ်နေတဲ့ ပရင်တာကို ပထမဆုံး
+printer_mode_all	အားလုံးမှာပုံနှိပ်ပါ
+slip_columns	ကော်လံများ

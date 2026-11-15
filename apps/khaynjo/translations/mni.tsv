@@ -83,9 +83,7 @@ print_cancelled_kot_needed	ꯇꯣꯛꯈꯤꯕ ꯆꯥꯛ ꯂꯩꯕ ꯐꯝ ꯍꯧ�
 print_cancelled_kot_none	ꯌꯥꯕ ꯑꯁꯤꯗ ꯇꯣꯛꯈꯤꯕ ꯆꯥꯛ ꯂꯩꯇꯦ
 print_cancelled_kot_client	ꯇꯣꯛꯄ ꯄ꯭ꯔꯤꯟꯇ ({n}) {place}ꯒꯤꯗꯃꯛ ꯊꯥꯔꯦ — ꯆꯥꯛꯍꯣꯡ Serverꯗ ꯄ꯭ꯔꯤꯟꯇ ꯇꯧꯏ
 kot_banner	ꯃꯈꯜꯒꯤ ꯃꯤꯡ
-kot_banner_ph	ꯃꯤꯡ (ꯍꯥꯏꯗꯕ = ꯂꯩꯇꯦ)
 kot_item_prefix	ꯄꯣꯠꯀꯤ ꯃꯃꯥꯡ ꯋꯥꯍꯩ
-kot_item_prefix_ph	ꯈꯨꯗꯝ [ꯇꯣꯛꯈꯤ]
 kot_strike	ꯆꯥꯛꯀꯤ ꯃꯤꯡ ꯁꯟꯗꯣꯛꯄ
 kot_strike_note	ꯆꯥꯛꯀꯤ ꯋꯥꯍꯩ ꯁꯟꯗꯣꯛꯄ
 kot_strike_on	ꯍꯥꯡꯗꯣꯛꯄ
@@ -103,13 +101,11 @@ bill_item_qty	ꯃꯁꯤꯡ
 bill_item_price	ꯃꯃꯜ
 bill_item_amount	ꯁꯦꯟ
 bill_item_note	ꯆꯥꯛꯀꯤ ꯋꯥꯍꯩ
-bill_item_col_order	ꯀꯣꯂꯝꯒꯤ ꯃꯇꯥꯡ
 bill_item_col_sep	ꯀꯣꯂꯝꯒꯤ ꯂꯥꯏꯟ
 slip_columns	ꯀꯣꯂꯝꯁꯤꯡ
 slip_col_width	ꯄꯥꯛ (mm)
 slip_col_start	ꯍꯧꯔꯛꯐꯝꯒꯤ ꯃꯐꯝ (px)
 slip_col_end	ꯂꯣꯏꯔꯛꯐꯝꯒꯤ ꯃꯐꯝ (px)
-slip_col_align	ꯏꯕꯒꯤ ꯂꯩꯃꯤꯟ
 slip_columns_help	ꯀꯣꯂꯝ ꯈꯨꯗꯤꯡꯃꯛꯀꯤ ꯄꯥꯛꯇꯥ ꯃꯁꯤꯒꯤ ꯍꯧꯔꯛꯐꯝ ꯑꯃꯁꯨꯡ ꯂꯣꯏꯔꯛꯐꯝꯒꯤ ꯃꯐꯝ ꯌꯥꯎꯏ꯫ ꯏꯕ ꯑꯁꯤ ꯃꯁꯥꯒꯤ ꯀꯣꯂꯝꯒꯤ ꯃꯅꯨꯡꯗꯥ ꯀꯣꯌꯁꯤꯜꯂꯤ; ꯀꯟꯇꯦꯟꯇꯀꯤ ꯄꯥꯛ ꯍꯦꯟꯒꯠꯂꯕꯥ ꯑꯗꯨ ꯆꯦ ꯑꯃꯁꯨꯡ ꯄ꯭ꯔꯤꯚ꯭ꯌꯨꯗꯥ ꯀꯀꯊꯠꯂꯤ꯫
 bill_total_qty_label	ꯃꯁꯤꯡ ꯑꯄꯨꯟꯕꯒꯤ ꯃꯤꯡ
 bill_total_subtotal_label	ꯑꯄꯨꯟꯕ ꯑꯄꯤꯛꯄꯒꯤ ꯃꯤꯡ
@@ -643,7 +639,6 @@ vp_type_size_heading	ꯃꯌꯦꯛ ꯆꯥꯎꯕ
 vp_wrap_heading	ꯂꯣꯠꯄꯒꯤ ꯑꯋꯥꯡꯕ
 vp_margin_heading	ꯃꯔꯖꯤꯟ
 vp_delivery_spooler	ꯁꯤꯁ꯭ꯇꯦꯝ ꯂꯥꯏꯔꯤꯛ (ꯁꯤꯁ꯭ꯇꯦꯝ ꯂꯥꯏꯟ)
-vp_delivery_raw	ꯕꯥꯏꯠ ꯑꯔꯥꯟꯕ ꯃꯁꯤꯟꯗ
 vp_delivery_escpos	ESC/POS ꯑꯁꯥꯕ ꯄꯥꯎꯖꯦꯜ
 virtual_printer_new	ꯄ꯭ꯔꯤꯟꯇꯔ ꯃꯤꯇꯝ ꯑꯅꯧꯕ
 virtual_printer_selected	“{name}” ꯁꯦꯝꯂꯤ — ꯂꯤꯁ꯭ꯇꯇ ꯑꯇꯣꯞꯄ ꯅꯝꯃꯨ, ꯍꯣꯡꯗꯣꯛꯅꯕ
@@ -1110,7 +1105,6 @@ remove_these_tables	ꯐꯝ ꯑꯁꯤ ꯂꯣꯠꯎ
 table_remove_ph	ꯂꯣꯠꯎ: T1-T24, ꯅꯠꯇ꯭ꯔꯒ ꯐꯝ ꯑꯃꯒꯤ ꯃꯤꯡ
 find_server	ꯀꯦꯟꯐꯝꯒꯤ Server ꯊꯤꯕꯤꯌꯨ
 bill_format	ꯕꯤꯜꯒꯤ ꯁꯦꯝꯗꯣꯛ
-bill_format_help	ꯕꯤꯜ ꯈꯨꯗꯤꯡꯃꯛꯇ ꯅꯍꯥꯛꯀꯤ ꯔꯦꯁ꯭ꯇꯨꯔꯦꯟꯇꯀꯤ ꯃꯤꯡꯒꯤ ꯃꯈꯥꯗ ꯄ꯭ꯔꯤꯟꯇ ꯇꯧꯏ. ꯂꯥꯏꯟ | ꯅ ꯈꯥꯏꯗꯣꯛꯎ (ꯈꯨꯗꯝ MG Road, Rajkot | Ph 98250 00000).
 bill_header_ph	ꯂꯩꯐꯝ | ꯐꯣꯟ
 fssai_ph	FSSAI ꯂꯥꯏꯁꯦꯟꯁ ꯅꯝꯕꯔ (ꯏꯟꯗꯤꯌꯥ)
 bill_footer_ph	ꯃꯈꯥ ꯋꯥꯍꯩ (ꯈꯨꯗꯝ ꯊꯥꯒꯠꯆꯔꯤ, ꯍꯟꯅ ꯂꯥꯛꯎ)
@@ -1127,7 +1121,6 @@ kot_field_hide	ꯂꯥꯞꯄꯤꯌꯨ
 kot_field_on	ꯎꯠꯄ
 kot_field_off	ꯂꯥꯞꯄ
 kot_field_size	ꯃꯌꯦꯛ ꯆꯥꯎꯕ
-kot_field_size_ph	ꯈꯨꯗꯝ 16, 20, 24, 28, 32…
 kot_weight_light	ꯑꯉꯧꯕ
 bill_kot_panel_help	ꯕꯤꯜ ꯑꯃꯁꯨꯡ ꯆꯥꯛꯍꯣꯡꯒꯤ ꯂꯥꯏꯔꯤꯛ ꯁꯦꯝꯗꯣꯛ, ꯈꯨꯗꯤꯡꯃꯛꯅ ꯃꯁꯥꯒꯤ ꯑꯋꯥꯡꯕ ꯊꯝꯏ. ꯕꯤꯜ Cashier ꯑꯁꯤ ꯕꯤꯜ ꯄꯤꯔꯕ ꯅꯠꯇ꯭ꯔꯒ ꯂꯣꯏꯔꯛꯈꯤꯕ ꯃꯤ; KOT Waiter ꯑꯁꯤ ꯆꯥꯛꯍꯣꯡꯒꯤ ꯂꯥꯏꯔꯤꯛ ꯊꯥꯔꯕ ꯃꯤ — ꯌꯥꯕꯒꯤ ꯋꯥꯔꯤ ꯄꯨꯝꯅꯃꯛ ꯂꯥꯏꯔꯤꯛꯇ ꯂꯩ.
 std_size_ph	ꯈꯨꯗꯝ 18, 20, 26…
@@ -1157,7 +1150,6 @@ kot_style_item_qty	ꯄꯣꯠ · ꯃꯁꯤꯡ
 kot_style_field_pick	ꯃꯐꯝ ꯈꯟꯕꯤꯌꯨ
 kot_weight_regular	ꯃꯇꯧ
 kot_weight_bold	ꯆꯥꯎꯕ
-kot_align	ꯃꯔꯥꯡ
 kot_align_start	ꯍꯧꯕ
 kot_align_center	ꯃꯌꯥꯏ
 kot_align_end	ꯂꯣꯏꯕ
@@ -1307,18 +1299,8 @@ kot_show_item_hdr	ꯄꯣꯠ · ꯃꯁꯤꯡ
 kot_hide_item_hdr	ꯀꯣꯜꯝ ꯂꯥꯞꯄꯤꯌꯨ
 kot_show_title	ꯃꯤꯡꯃꯛ ꯂꯥꯏꯟ
 kot_hide_title	ꯃꯤꯡꯃꯛ ꯂꯥꯞꯄꯤꯌꯨ
-kot_field_order	ꯄ꯭ꯔꯤꯟꯇ ꯃꯇꯥꯡ
-kot_field_up	ꯃꯊꯛ ꯂꯣꯠꯎ
-kot_field_down	ꯃꯈꯥ ꯂꯣꯠꯎ
 kot_field_cycle	ꯃꯊꯪ ꯈꯟꯕꯤꯌꯨ
 kot_field_select	ꯃꯊꯪ ꯈꯟꯕꯤꯌꯨ
-kot_field_time	ꯃꯇꯝ
-kot_field_kot_no	KOT ꯅꯝꯕꯔ
-kot_field_area	ꯁꯔꯨꯛ
-kot_field_table	ꯐꯝ
-kot_field_shop	ꯀꯦꯟꯐꯝꯒꯤ ꯃꯤꯡ
-kot_field_waiter	ꯊꯕꯛꯇꯧꯕ
-kot_field_station	ꯐꯝꯂꯝ
 dishes_n	ꯆꯥꯛ {n}
 recipe_ph	ꯔꯦꯁꯤꯄꯤ (ꯌꯥꯕ ꯑꯣꯏꯔꯕꯗꯤ) — ꯁꯔꯨꯛ ꯑꯃꯅ ꯁꯤꯖꯤꯟꯅꯏ: Rice=0.2, Paneer=0.15
 reorder_ph	ꯍꯦꯟꯕ ꯂꯩꯕ ꯆꯥꯡ

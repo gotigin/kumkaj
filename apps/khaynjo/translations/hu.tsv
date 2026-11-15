@@ -83,9 +83,7 @@ print_cancelled_kot_needed	Először nyisson ki egy étkezőasztalt lemondott é
 print_cancelled_kot_none	Ennél a rendelésnél nincs lemondott étel
 print_cancelled_kot_client	Nyomtatás megszakítva ({n}) {place} elküldve – konyhai nyomatok a szerveren
 kot_banner	Kedves banner
-kot_banner_ph	Banner (üres = nincs)
 kot_item_prefix	Tétel előtag
-kot_item_prefix_ph	pl. [TÖRLÉS]
 kot_strike	Szúró étel neve
 kot_strike_note	Strike dish jegyzet
 kot_strike_on	Be
@@ -103,13 +101,11 @@ bill_item_qty	Menny
 bill_item_price	Ár
 bill_item_amount	Összeg
 bill_item_note	Dish jegyzet
-bill_item_col_order	Oszlopsorrend
 bill_item_col_sep	Oszlopszabályok
 slip_columns	Oszlopok
 slip_col_width	Szélesség (mm)
 slip_col_start	Kezdő térköz (px)
 slip_col_end	Záró térköz (px)
-slip_col_align	Szöveg igazítása
 slip_columns_help	Minden oszlop szélessége tartalmazza a kezdő és záró térközét. A szöveg az oszlopán belül tördelődik; ami túlnyúlik a tartalom szélességén, levágódik – papíron és az előnézetben is.
 bill_total_qty_label	Teljes mennyiség címke
 bill_total_subtotal_label	Részösszeg címke
@@ -643,7 +639,6 @@ vp_type_size_heading	Típusméret
 vp_wrap_heading	Burkolat szélessége
 vp_margin_heading	Margók
 vp_delivery_spooler	OS dokumentum (rendszer spooler)
-vp_delivery_raw	Nyers bájtok az eszközre
 vp_delivery_escpos	ESC/POS termikus parancsok
 virtual_printer_new	Új virtuális nyomtató
 virtual_printer_selected	„{name}” szerkesztése – a váltáshoz érintsen meg egy másikat a listában
@@ -1110,7 +1105,6 @@ remove_these_tables	Távolítsa el ezeket az étkezőasztalokat
 table_remove_ph	Távolítsa el: T1-T24 vagy egy étkezőasztal nevét
 find_server	Keresse meg az üzlet szerverét
 bill_format	Számlaformátum
-bill_format_help	Minden számlán az étterem neve alatt található. Külön sorokat | (pl. MG Road, Rajkot | Ph. 98250 00000).
 bill_header_ph	Cím | telefon
 fssai_ph	FSSAI engedély sz. (India)
 bill_footer_ph	Lábléc (pl. Köszönöm, látogassa meg újra)
@@ -1127,7 +1121,6 @@ kot_field_hide	Elrejtés
 kot_field_on	megmutat
 kot_field_off	elrejteni
 kot_field_size	Betűméret
-kot_field_size_ph	pl. 16, 20, 24, 28, 32…
 kot_weight_light	Fény
 bill_kot_panel_help	Számla- és konyhalap elrendezés, mindegyik saját tartalomszélességgel. Számlapénztáros az, aki kiállította vagy kiegyenlítette a számlát; KOT A pincér küldte a konyhajegyet – a rendelés teljes története a könyvekben marad.
 std_size_ph	például 18, 20, 26…
@@ -1157,7 +1150,6 @@ kot_style_item_qty	Tétel · Menny
 kot_style_field_pick	Válassza ki a mezőt
 kot_weight_regular	Rendszeres
 kot_weight_bold	Félkövér
-kot_align	Igazítás
 kot_align_start	Indítsa el
 kot_align_center	Központ
 kot_align_end	Vége
@@ -1307,18 +1299,8 @@ kot_show_item_hdr	Tétel · Menny
 kot_hide_item_hdr	Oszlopok elrejtése
 kot_show_title	Címsor
 kot_hide_title	Cím elrejtése
-kot_field_order	Nyomtatási rendelés
-kot_field_up	Lépj felfelé
-kot_field_down	Mozgás lefelé
 kot_field_cycle	Válassza a következőt
 kot_field_select	Válassza a következőt
-kot_field_time	Idő
-kot_field_kot_no	KOT Nem
-kot_field_area	Terület
-kot_field_table	Étkezőasztal
-kot_field_shop	Bolt neve
-kot_field_waiter	Személyzet
-kot_field_station	Állomás
 dishes_n	{n} ételek
 recipe_ph	Recept (opcionális) – egy adag felhasználása: rizs = 0,2, Paneer = 0,15
 reorder_ph	Vásároljon többet itt

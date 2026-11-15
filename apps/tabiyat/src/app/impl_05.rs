@@ -130,6 +130,15 @@ fn print_or_share_receipt(&mut self, cx: &mut Cx, text: &str) {
                 return true;
             }
         }
+        // Bill format item columns: four boxes per column row.
+        for row in BILL_COL_ROWS {
+            for input in [id!(col_header), id!(col_width), id!(col_start), id!(col_end)] {
+                let area = self.ui.text_input(cx, &[row, input]).area();
+                if !area.is_empty() && cx.has_key_focus(area) {
+                    return true;
+                }
+            }
+        }
         let (cart_n, amend_n) = {
             let st = app_state().lock().unwrap();
             (st.cart.lines.len(), st.amend_cart.lines.len())
@@ -941,7 +950,6 @@ fn print_or_share_receipt(&mut self, cx: &mut Cx, text: &str) {
             ids!(h_brand_shown_help),
             ids!(h_printers_help),
             ids!(h_printers_routes_help),
-            ids!(h_bill_format_help),
             ids!(h_restore_help),
             ids!(categories_help),
             ids!(order_help),

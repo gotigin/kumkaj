@@ -81,12 +81,10 @@ bill_item_qty	כמות
 bill_item_price	מחיר
 bill_item_amount	סכום
 bill_item_note	Rx / הערת מכירה
-bill_item_col_order	סדר עמודות
 bill_item_col_sep	קווי עמודות
 slip_col_width	רוחב (mm)
 slip_col_start	רווח התחלה (px)
 slip_col_end	רווח סיום (px)
-slip_col_align	יישור טקסט
 slip_columns_help	רוחב כל עמודה כולל את רווח ההתחלה והסיום שלה. הטקסט נשבר בתוך העמודה שלו; מה שחורג מרוחב התוכן נחתך – על הנייר ובתצוגה המקדימה.
 bill_total_qty_label	תווית כמות כוללת
 bill_total_subtotal_label	תווית ביניים
@@ -443,7 +441,6 @@ printer_profile_heading	פריסה
 vp_delivery_heading	משלוח
 vp_delivery_help	כיצד מדפסת וירטואלית זו שולחת עבודות - מסמך מערכת הפעלה, בייטים גולמיים או ESC/POS. תוכן ההחלקה (גודל סוג, גלישה, שוליים) נקבע לפי פורמט החשבון / הסליק, לא כאן.
 vp_delivery_spooler	מסמך OS (תור המערכת)
-vp_delivery_raw	בתים גולמיים למכשיר
 vp_delivery_escpos	פקודות תרמיות ESC/POS
 virtual_printer_new	מדפסת וירטואלית חדשה
 virtual_printer_selected	עורכים את “{name}” — הקישו על אחרת ברשימה כדי לעבור
@@ -730,7 +727,6 @@ customer_paid_ph	הלקוח שילם
 tip_ph	טיפ
 find_server	מצא את שרת החנות
 bill_format	פורמט חשבון
-bill_format_help	מודפס תחת שם החנות שלך על כל שטר. הפרד קווים עם | (למשל MG Road, Rajkot | Ph 98250 00000).
 bill_header_ph	כתובת | טלפון
 fssai_ph	רישיון סמים מס. (אופציונלי - הניסוח שלך)
 bill_footer_ph	כותרת תחתונה (למשל תודה, בואו שוב)
@@ -820,8 +816,6 @@ add_dishes	הוסף תרופות
 order_so_far	בהזמנה הזו: {n} · {total}
 no_dish_match	אין פריט תואם "{q}"
 pick_done	בוצע
-kot_field_up	הזז למעלה
-kot_field_down	הזז למטה
 dishes_n	פריטי {n}
 reorder_ph	קנו עוד ב־
 set_reorder	קבע רמת הזמנה מחדש
@@ -853,3 +847,6 @@ sel_copy	העתק
 sel_select_all	בחר הכול
 sel_copied	הועתק
 nav_loading	טוען…
+printer_mode_first	הראשונה שעובדת
+printer_mode_all	הדפס בכולן
+slip_columns	עמודות

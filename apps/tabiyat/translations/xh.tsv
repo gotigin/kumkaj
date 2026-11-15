@@ -81,12 +81,10 @@ bill_item_qty	Inani
 bill_item_price	Ixabiso
 bill_item_amount	Imali
 bill_item_note	Rx / inqaku lentengiso
-bill_item_col_order	Ulandelelwano lweekholamu
 bill_item_col_sep	Imigca yeekholamu
 slip_col_width	Ububanzi (mm)
 slip_col_start	Isithuba sokuqala (px)
 slip_col_end	Isithuba sokugqibela (px)
-slip_col_align	Ulungelelaniso lombhalo
 slip_columns_help	Ububanzi bekholamu nganye buquka isithuba sayo sokuqala nesokugqibela. Umbhalo usongeka ngaphakathi kwikholamu yawo; oko kudlula ububanzi bomxholo kuyanqunyulwa, ephepheni nakwimbonakalo yangaphambili.
 bill_total_qty_label	Ileyibhile yenani elipheleleyo
 bill_total_subtotal_label	Ileyibhile yesixa esincinci
@@ -443,7 +441,6 @@ printer_profile_heading	Uyilo
 vp_delivery_heading	Ukuhambisa
 vp_delivery_help	Lo mshicileli wenyani uyithumela njani imisebenzi — uxwebhu lwe-OS, iibyte ezingakrwada, okanye ESC/POS. Umxholo wesilayidi (ubungakanani bohlobo, ukusonga, imida) kugqitywe nge-bill / isiliphu ifomathi, hayi apha.
 vp_delivery_spooler	Uxwebhu lwenkqubo (ispula yenkqubo)
-vp_delivery_raw	Iibhayithi ezimsulwa kwisixhobo
 vp_delivery_escpos	Imiyalelo yobushushu ye-ESC/POS
 virtual_printer_new	Umshicileli omtsha wobuchwepheshe
 virtual_printer_selected	Uhlela “{name}” — cofa omnye kuluhlu ukuze utshintshe
@@ -730,7 +727,6 @@ customer_paid_ph	Umthengi uhlawule
 tip_ph	Ithiphu
 find_server	Fumana iseva yevenkile
 bill_format	Ufomathi wetyala
-bill_format_help	Ishicilelwe phantsi kwegama levenkile yakho kuwo onke amatyala. Yahlula imigca nge | (umz. MG Road, Rajkot | Ph 98250 00000).
 bill_header_ph	Idilesi | ifowuni
 fssai_ph	Inombolo yelayisensi yeziyobisi. (optional — your wording)
 bill_footer_ph	Ezantsi (umz. Enkosi, buyani kwakhona)
@@ -820,8 +816,6 @@ add_dishes	Yongeza amayeza
 order_so_far	Kule odolo: {n} · {total}
 no_dish_match	Akukho nto ihambelana ne-"{q}"
 pick_done	Igqityiwe
-kot_field_up	Nyusa
-kot_field_down	Yihlisa
 dishes_n	{n} items
 reorder_ph	Thenga ngakumbi ku
 set_reorder	Misa inqanaba lokuphinda uthenge
@@ -853,3 +847,6 @@ sel_copy	Kopisha
 sel_select_all	Khetha konke
 sel_copied	Ikopishiwe
 nav_loading	Iyalayisha…
+printer_mode_first	Eyokuqala esebenzayo
+printer_mode_all	Shicilela kuzo zonke
+slip_columns	Iikholamu

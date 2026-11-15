@@ -83,9 +83,7 @@ print_cancelled_kot_needed	प्रथमं रद्दीकृतव्य�
 print_cancelled_kot_none	अस्मिन् आदेशे रद्दीकृताः व्यञ्जनानि न सन्ति
 print_cancelled_kot_client	{place} प्रेषितस्य कृते मुद्रणं रद्दं ({n}) — सर्वरे पाकशालामुद्रणम्
 kot_banner	दयालु बैनर
-kot_banner_ph	बैनर (रिक्त = कोऽपि) २.
 kot_item_prefix	मेनू मेनू मद उपसर्गः
-kot_item_prefix_ph	यथा--- [CANCELLED] ९.
 kot_strike	प्रहार पक्वान्न नाम
 kot_strike_note	प्रहार डिश नोट
 kot_strike_on	पर
@@ -103,13 +101,11 @@ bill_item_qty	संख्या
 bill_item_price	मूल्यम्
 bill_item_amount	राशि
 bill_item_note	डिश नोट
-bill_item_col_order	स्तम्भक्रमः
 bill_item_col_sep	स्तम्भनियमाः
 slip_columns	स्तम्भाः
 slip_col_width	विस्तारः (mm)
 slip_col_start	आरम्भावकाशः (px)
 slip_col_end	अन्तावकाशः (px)
-slip_col_align	पाठसंरेखणम्
 slip_columns_help	प्रत्येकस्य स्तम्भस्य विस्तारे तस्य आरम्भावकाशः अन्तावकाशः च अन्तर्भवतः। पाठः स्वस्तम्भस्य अन्तः एव आवेष्ट्यते; विषयविस्तारात् बहिः यत् अस्ति तत् पत्रे पूर्वावलोकने च छिद्यते।
 bill_total_qty_label	कुल qty लेबल
 bill_total_subtotal_label	उप कुल लेबल
@@ -643,7 +639,6 @@ vp_type_size_heading	आकारः प्रकारः
 vp_wrap_heading	लपेट चौड़ाई
 vp_margin_heading	मार्जिन
 vp_delivery_spooler	ओएस दस्तावेजः (सिस्टम् स्पूलरः) २.
-vp_delivery_raw	यन्त्रं प्रति कच्चा बाइट्
 vp_delivery_escpos	ESC/POS तापीय आदेश
 virtual_printer_new	नवीनं वर्चुअल् मुद्रकं
 virtual_printer_selected	“{name}” सम्पादनं — स्विच् कर्तुं सूचीयां अन्यं ट्याप् कुर्वन्तु
@@ -1110,7 +1105,6 @@ remove_these_tables	एतानि भोजनमेजाः निष्क�
 table_remove_ph	निष्कासयन्तु: T1-T24, अथवा एकस्य भोजनमेजस्य नाम
 find_server	दुकानस्य सर्वरं अन्वेष्टुम्
 bill_format	विधेयक प्रारूप
-bill_format_help	प्रत्येकं बिलस्य उपरि भवतः भोजनालयस्य नाम्ना मुद्रितम्। सह पङ्क्तयः पृथक् | (जैसे एमजी रोड, राजकोट | Ph 98250 00000)।
 bill_header_ph	पता | phone
 fssai_ph	FSSAI अनुज्ञापत्र सं. (भारत) ९.
 bill_footer_ph	पादलेखः (उदा. धन्यवादः, पुनः आगच्छन्तु)
@@ -1127,7 +1121,6 @@ kot_field_hide	गोपयतु
 kot_field_on	दर्शयतु
 kot_field_off	गोपयतु
 kot_field_size	फन्ट् आकारः
-kot_field_size_ph	यथा--- १६, २०, २४, २८, ३२...
 kot_weight_light	प्रकाशः
 bill_kot_panel_help	बिलः पाकशाला च स्लिप् विन्यासः, प्रत्येकस्य स्वकीया सामग्रीविस्तारः अस्ति । Bill Cashier is who issued or settled the bill; KOT वेटरः एव तत् पाकशालायाः टिकटं प्रेषितवान् — पूर्णादेशकथा लेजर्-पत्रेषु तिष्ठति ।
 std_size_ph	यथा--- 18, 20, 26…
@@ -1157,7 +1150,6 @@ kot_style_item_qty	मेनू मेनू मद · मात्रा
 kot_style_field_pick	क्षेत्रं चिनोतु
 kot_weight_regular	नियमित
 kot_weight_bold	बोल्ड
-kot_align	संरेखणं कुर्वन्तु
 kot_align_start	आरभत
 kot_align_center	केन्द्र
 kot_align_end	अन्तम्
@@ -1307,18 +1299,8 @@ kot_show_item_hdr	मेनू मेनू मद · मात्रा
 kot_hide_item_hdr	स्तम्भान् गोपयन्तु
 kot_show_title	शीर्षक पङ्क्तिः
 kot_hide_title	शीर्षकं गोपयतु
-kot_field_order	मुद्रणक्रमः
-kot_field_up	उपरि गच्छतु
-kot_field_down	अधः गच्छतु
 kot_field_cycle	अग्रिमम् चिनोतु
 kot_field_select	अग्रिमम् चिनोतु
-kot_field_time	कालः
-kot_field_kot_no	KOT सं
-kot_field_area	क्षेत्रफलम्
-kot_field_table	भोजनमेजः
-kot_field_shop	दुकान नाम
-kot_field_waiter	कर्मचारी
-kot_field_station	स्टेशन
 dishes_n	{n} व्यञ्जन
 recipe_ph	नुस्खा (वैकल्पिकम्) — एकः भागः उपयुज्यते: तण्डुल=०.२, पनीर=०.१५
 reorder_ph	अधिकं क्रीणीत at

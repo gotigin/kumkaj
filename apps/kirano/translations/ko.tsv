@@ -69,12 +69,10 @@ bill_item_qty	수량
 bill_item_price	단가
 bill_item_amount	금액
 bill_item_note	품목 참고
-bill_item_col_order	열 순서
 bill_item_col_sep	열 구분선
 slip_col_width	너비 (mm)
 slip_col_start	시작 여백 (px)
 slip_col_end	끝 여백 (px)
-slip_col_align	텍스트 정렬
 slip_columns_help	각 열의 너비에는 시작 여백과 끝 여백이 포함됩니다. 텍스트는 자기 열 안에서 줄 바꿈되고, 내용 너비를 넘는 부분은 종이와 미리보기 모두에서 잘립니다.
 bill_total_qty_label	총수량 라벨
 bill_total_subtotal_label	소계 라벨
@@ -431,7 +429,6 @@ printer_profile_heading	레이아웃
 vp_delivery_heading	전송
 vp_delivery_help	이 가상 프린터가 작업을 보내는 방법 — OS 문서, 원시 바이트 또는 ESC/POS. 전표 내용(글꼴 크기, 포장, 여백)은 여기가 아닌 청구서/전표 형식에 따라 결정됩니다.
 vp_delivery_spooler	OS 문서(시스템 스풀러)
-vp_delivery_raw	장치에 원시 바이트
 vp_delivery_escpos	ESC/POS 열전사 명령
 virtual_printer_new	새 가상 프린터
 virtual_printer_selected	“{name}” 편집 중 — 목록의 다른 항목을 탭해 전환
@@ -718,7 +715,6 @@ customer_paid_ph	받은 금액
 tip_ph	팁
 find_server	매장 서버 찾기
 bill_format	계산서 형식
-bill_format_help	모든 청구서에는 매장 이름이 인쇄되어 있습니다. |로 구분된 줄 (예: MG Road, Rajkot | Ph 98250 00000).
 bill_header_ph	주소 | 전화
 fssai_ph	FSSAI / 상점 라이센스 번호 (선택 과목)
 bill_footer_ph	하단 문구 (예: 감사합니다, 또 오세요)
@@ -808,8 +804,6 @@ add_dishes	항목 추가
 order_so_far	이 주문: {n} · {total}
 no_dish_match	“{q}”와 일치하는 항목이 없습니다.
 pick_done	완료
-kot_field_up	위로 이동
-kot_field_down	아래로 이동
 dishes_n	{n} 항목
 reorder_ph	이 수량에서 추가 구매
 set_reorder	재주문 수준 설정
@@ -841,3 +835,6 @@ sel_copy	복사
 sel_select_all	모두 선택
 sel_copied	복사됨
 nav_loading	불러오는 중…
+printer_mode_first	작동하는 첫 번째 프린터
+printer_mode_all	모두 인쇄
+slip_columns	열

@@ -83,9 +83,7 @@ print_cancelled_kot_needed	Адегенде жокко чыгарылган та
 print_cancelled_kot_none	Бул буйрутмада жокко чыгарылган тамактар жок
 print_cancelled_kot_client	Жөнөтүлгөн {place} үчүн басып чыгаруу жокко чыгарылды ({n}) — серверде ашкана басып чыгарат
 kot_banner	Боорукер баннер
-kot_banner_ph	Баннер (бош = жок)
 kot_item_prefix	Менюнун префикси
-kot_item_prefix_ph	мис. [Жокко чыгарылды]
 kot_strike	Тамактын аталышы
 kot_strike_note	Strike тамактын нотасы
 kot_strike_on	Күйүк
@@ -103,13 +101,11 @@ bill_item_qty	Саны
 bill_item_price	Баасы
 bill_item_amount	Суммасы
 bill_item_note	Тамактын эскертүүсү
-bill_item_col_order	Мамыча тартиби
 bill_item_col_sep	Мамыча эрежелери
 slip_columns	Мамычалар
 slip_col_width	Туурасы (mm)
 slip_col_start	Башталыш аралыгы (px)
 slip_col_end	Аяк аралыгы (px)
-slip_col_align	Текстти тегиздөө
 slip_columns_help	Ар бир мамычанын туурасы анын башталыш жана аяк аралыгын камтыйт. Текст өз мамычасынын ичинде которулат; мазмундун туурасынан чыккан бөлүгү кагазда да, алдын ала көрүүдө да кесилет.
 bill_total_qty_label	Жалпы сан энбелгиси
 bill_total_subtotal_label	Кошумча жалпы энбелги
@@ -643,7 +639,6 @@ vp_type_size_heading	Түр өлчөмү
 vp_wrap_heading	Ороо туурасы
 vp_margin_heading	Маржалар
 vp_delivery_spooler	OS документи (системанын спулери)
-vp_delivery_raw	Түзмөккө чийки байттар
 vp_delivery_escpos	ESC/POS жылуулук буйруктары
 virtual_printer_new	Жаңы виртуалдык принтер
 virtual_printer_selected	“{name}” түзөтүү — которуу үчүн тизмеден башкасын таптаңыз
@@ -1110,7 +1105,6 @@ remove_these_tables	Бул ашкана үстөлдөрүн алып салың
 table_remove_ph	Алып салуу: T1-T24, же бир ашкананын аталышы
 find_server	Дүкөндүн серверин табыңыз
 bill_format	Коноктун эсеп форматы
-bill_format_help	Ар бир конок эсебинде рестораныңыздын аты менен басылган. | менен өзүнчө саптар (мисалы, MG Road, Rajkot | Ph 98250 00000).
 bill_header_ph	Дарек | телефон
 fssai_ph	FSSAI лицензия №. (Индия)
 bill_footer_ph	Колонтитул (мис. Рахмат, дагы бир жолу кириңиз)
@@ -1127,7 +1121,6 @@ kot_field_hide	Жашыруу
 kot_field_on	көрсөтүү
 kot_field_off	жашыруу
 kot_field_size	Арип өлчөмү
-kot_field_size_ph	мис. 16, 20, 24, 28, 32…
 kot_weight_light	Жарык
 bill_kot_panel_help	Конок конокторунун эсеби жана ашкана слипинин макети, ар бири өзүнүн мазмунуна ээ. Коноктун эсеби Кассир - конок эсебин чыгарган же эсептеген адам; KOT Официант ошол ашкана билетин ким жөнөттү — заказдын толук баяны китепте калат.
 std_size_ph	мис. 18, 20, 26…
@@ -1157,7 +1150,6 @@ kot_style_item_qty	Меню меню пункту · Саны
 kot_style_field_pick	Талаа тандоо
 kot_weight_regular	Регулярдуу
 kot_weight_bold	Калың
-kot_align	Тегиздөө
 kot_align_start	Баштоо
 kot_align_center	борбор
 kot_align_end	Аягы
@@ -1307,18 +1299,8 @@ kot_show_item_hdr	Меню меню пункту · Саны
 kot_hide_item_hdr	Мамычаларды жашыруу
 kot_show_title	Титул сызыгы
 kot_hide_title	Аталышын жашыруу
-kot_field_order	Басып чыгаруу тартиби
-kot_field_up	Өйдө жылдыруу
-kot_field_down	Төмөн жылдыруу
 kot_field_cycle	Кийинкиди тандаңыз
 kot_field_select	Кийинкиди тандаңыз
-kot_field_time	Убакыт
-kot_field_kot_no	KOT №
-kot_field_area	Район
-kot_field_table	Тамактануучу стол
-kot_field_shop	Дүкөндүн аты
-kot_field_waiter	Кызматкерлер
-kot_field_station	Станция
 dishes_n	{n} тамактар
 recipe_ph	Рецепт (милдеттүү эмес) — бир порция колдонот: Rice=0.2, Paneer=0.15
 reorder_ph	Көбүрөөк сатып алыңыз

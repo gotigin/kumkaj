@@ -81,12 +81,10 @@ bill_item_qty	मात्रा
 bill_item_price	दाम
 bill_item_amount	रकम
 bill_item_note	Rx / बिक्री टिप्पणी
-bill_item_col_order	खंभा के क्रम
 bill_item_col_sep	खंभा रेखा
 slip_col_width	चौड़ाई (mm)
 slip_col_start	सुरुआत के जगह (px)
 slip_col_end	आखिर के जगह (px)
-slip_col_align	लिखावट के सीध
 slip_columns_help	हर खंभा के चौड़ाई में ओकर सुरुआत आ आखिर के जगह शामिल बा। लिखावट अपना खंभा के भीतर लपेटा जाला; सामग्री के चौड़ाई से बाहर जवन बा ऊ कागज आ पूर्वावलोकन दूनो में कट जाला।
 bill_total_qty_label	कुल मात्रा लेबल
 bill_total_subtotal_label	उप-जोड़ लेबल
@@ -443,7 +441,6 @@ printer_profile_heading	बनावट
 vp_delivery_heading	डिलीवरी
 vp_delivery_help	ई वर्चुअल प्रिंटर काम कइसे भेजेला — OS दस्तावेज, कच्चा बाइट, भा ESC/POS। पर्ची के सामग्री (अक्षर आकार, लपेट, हाशिया) बिल / पर्ची के रूप तय करेला, इहाँ ना।
 vp_delivery_spooler	OS दस्तावेज (सिस्टम स्पूलर)
-vp_delivery_raw	डिवाइस के कच्चा बाइट
 vp_delivery_escpos	ESC/POS थर्मल आदेश
 virtual_printer_new	नया वर्चुअल प्रिंटर
 virtual_printer_selected	“{name}” बदलत बानी — बदले खातिर सूची में दोसरा दबाईं
@@ -730,7 +727,6 @@ customer_paid_ph	ग्राहक दिहलन
 tip_ph	टिप
 find_server	दोकान के सर्वर खोजीं
 bill_format	बिल के रूप
-bill_format_help	हर बिल पर रउरा दोकान के नाम के नीचे छपेला। पंक्ति | से अलग करीं (जइसे MG Road, Rajkot | Ph 98250 00000)।
 bill_header_ph	पता | फोन
 fssai_ph	दवाई लाइसेंस नं. (मरजी के — रउरा शब्द में)
 bill_footer_ph	फुटर (जइसे धन्यवाद, फेर आईं)
@@ -820,8 +816,6 @@ add_dishes	दवाई जोड़ीं
 order_so_far	एह ऑर्डर पर: {n} · {total}
 no_dish_match	“{q}” से कवनो सामान ना मिलेला
 pick_done	हो गइल
-kot_field_up	ऊपर करीं
-kot_field_down	नीचे करीं
 dishes_n	{n} सामान
 reorder_ph	एतना भइला पर अउर कीनीं
 set_reorder	फेर ऑर्डर के स्तर राखीं
@@ -853,3 +847,6 @@ sel_copy	कॉपी करीं
 sel_select_all	सभ चुनीं
 sel_copied	कॉपी हो गइल
 nav_loading	लोड हो रहल बा…
+printer_mode_first	जवन पहिले चले
+printer_mode_all	सब पर छापीं
+slip_columns	खंभा

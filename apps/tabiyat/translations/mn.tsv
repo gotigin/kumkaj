@@ -81,12 +81,10 @@ bill_item_qty	Тоо
 bill_item_price	Үнэ
 bill_item_amount	Дүн
 bill_item_note	Rx / борлуулалтын тэмдэглэл
-bill_item_col_order	Баганын дараалал
 bill_item_col_sep	Баганын шугам
 slip_col_width	Өргөн (mm)
 slip_col_start	Эхлэлийн зай (px)
 slip_col_end	Төгсгөлийн зай (px)
-slip_col_align	Текстийн зэрэгцүүлэлт
 slip_columns_help	Багана бүрийн өргөнд түүний эхлэл ба төгсгөлийн зай багтана. Текст өөрийн баганын дотор мөр шилжинэ; агуулгын өргөнөөс хэтэрсэн хэсэг цаасан дээр болон урьдчилан харахад тасарна.
 bill_total_qty_label	Нийт тооны шошго
 bill_total_subtotal_label	Дэд дүнгийн шошго
@@ -443,7 +441,6 @@ printer_profile_heading	Байрлал
 vp_delivery_heading	Хүргэлт
 vp_delivery_help	Энэ виртуал хэвлэгч нь үйлдлийн системийн баримт бичиг, түүхий байт эсвэл ESC/POS зэрэг ажлуудыг хэрхэн илгээдэг вэ. Слипийн агуулгыг (төрлийн хэмжээ, боодол, захын зай) энд биш, тооцоо / Slip форматаар шийддэг.
 vp_delivery_spooler	ОС баримт (системийн түр хадгалагч)
-vp_delivery_raw	Төхөөрөмж рүү түүхий байт
 vp_delivery_escpos	ESC/POS дулааны команд
 virtual_printer_new	Шинэ виртуал принтер
 virtual_printer_selected	„{name}“ засварлаж байна — солихын тулд жагсаалтын нөгөөг товшино
@@ -730,7 +727,6 @@ customer_paid_ph	Харилцагч төлсөн
 tip_ph	Цайны мөнгө
 find_server	Дэлгүүрийн серверийг олох
 bill_format	Тооцооны хэлбэр
-bill_format_help	Билл бүр дээр дэлгүүрийнхээ нэрээр хэвлэсэн. Мөрүүдийг |-ээр салга (жишээ нь, MG Road, Rajkot | Ph 98250 00000).
 bill_header_ph	Хаяг | утас
 fssai_ph	Эмийн лицензийн дугаар. (заавал биш - таны үг хэллэг)
 bill_footer_ph	Доод хэсэг (ж. Баярлалаа, дахин ирээрэй)
@@ -820,8 +816,6 @@ add_dishes	Эм нэмнэ
 order_so_far	Энэ захиалгад: {n} · {total}
 no_dish_match	"{q}"-д тохирох зүйл алга
 pick_done	Дууссан
-kot_field_up	Дээш зөөх
-kot_field_down	Доош зөөх
 dishes_n	{n} items
 reorder_ph	Дахин авах
 set_reorder	Дахин захиалах түвшин тохируулах
@@ -853,3 +847,6 @@ sel_copy	Хуулах
 sel_select_all	Бүгдийг сонгох
 sel_copied	Хуулагдлаа
 nav_loading	Ачаалж байна…
+printer_mode_first	Эхний ажилладаг нь
+printer_mode_all	Бүгдэд хэвлэх
+slip_columns	Баганууд

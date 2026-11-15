@@ -69,12 +69,10 @@ bill_item_qty	ಪ್ರಮಾಣ
 bill_item_price	ದರ
 bill_item_amount	ಮೊತ್ತ
 bill_item_note	ಐಟಂ ಟಿಪ್ಪಣಿ
-bill_item_col_order	ಕಂಭ ಕ್ರಮ
 bill_item_col_sep	ಕಂಭ ಗೆರೆ
 slip_col_width	ಅಗಲ (mm)
 slip_col_start	ಆರಂಭದ ಜಾಗ (px)
 slip_col_end	ಕೊನೆಯ ಜಾಗ (px)
-slip_col_align	ಪಠ್ಯ ಜೋಡಣೆ
 slip_columns_help	ಪ್ರತಿ ಕಾಲಮ್‌ನ ಅಗಲದಲ್ಲಿ ಅದರ ಆರಂಭ ಮತ್ತು ಕೊನೆಯ ಜಾಗ ಸೇರಿದೆ. ಪಠ್ಯ ತನ್ನ ಕಾಲಮ್ ಒಳಗೇ ಸುತ್ತುತ್ತದೆ; ವಿಷಯದ ಅಗಲವನ್ನು ಮೀರಿದ್ದು ಕಾಗದದಲ್ಲೂ ಪೂರ್ವವೀಕ್ಷಣೆಯಲ್ಲೂ ಕತ್ತರಿಸಲ್ಪಡುತ್ತದೆ.
 bill_total_qty_label	ಒಟ್ಟು ಸಂಖ್ಯೆ ಲೇಬಲ್
 bill_total_subtotal_label	ಉಪಮೊತ್ತ ಲೇಬಲ್
@@ -431,7 +429,6 @@ printer_profile_heading	ಲೇಔಟ್
 vp_delivery_heading	ಡೆಲಿವರಿ
 vp_delivery_help	ಈ ವರ್ಚುವಲ್ ಮುದ್ರಕ ಕೆಲಸಗಳನ್ನು ಹೇಗೆ ಕಳುಹಿಸುತ್ತದೆ — OS ದಾಖಲೆ, ಕಚ್ಚಾ ಬೈಟ್‌ಗಳು ಅಥವಾ ESC/POS. ಚೀಟಿಯ ವಿಷಯ (ಅಕ್ಷರ ಗಾತ್ರ, ಸುತ್ತುವಿಕೆ, ಅಂಚುಗಳು) ಬಿಲ್ / ಚೀಟಿ ಸ್ವರೂಪ ನಿರ್ಧರಿಸುತ್ತದೆ, ಇಲ್ಲಿ ಅಲ್ಲ.
 vp_delivery_spooler	OS ದಾಖಲೆ (ಸಿಸ್ಟಂ ಸ್ಪೂಲರ್)
-vp_delivery_raw	ಸಾಧನಕ್ಕೆ ಕಚ್ಚಾ ಬೈಟ್
 vp_delivery_escpos	ESC/POS ಥರ್ಮಲ್ ಆದೇಶಗಳು
 virtual_printer_new	ಹೊಸ ವರ್ಚುವಲ್ ಮುದ್ರಕ
 virtual_printer_selected	“{name}” ಸಂಪಾದನೆ — ಪಟ್ಟಿಯಲ್ಲಿ ಬೇರೊಂದನ್ನು ಟ್ಯಾಪ್ ಮಾಡಿ ಬದಲಾಯಿಸಿ
@@ -718,7 +715,6 @@ customer_paid_ph	ಗ್ರಾಹಕ ನೀಡಿದ್ದು
 tip_ph	ಟಿಪ್
 find_server	ಅಂಗಡಿಯ ಸರ್ವರ್ ಹುಡುಕಿ
 bill_format	ಬಿಲ್ ಸ್ವರೂಪ
-bill_format_help	ಪ್ರತಿ ಬಿಲ್‌ನಲ್ಲಿ ನಿಮ್ಮ ಅಂಗಡಿಯ ಹೆಸರಿನ ಕೆಳಗೆ ಮುದ್ರಣವಾಗುತ್ತದೆ. ಸಾಲುಗಳನ್ನು | ನಿಂದ ಬೇರ್ಪಡಿಸಿ (ಉದಾ. MG Road, Rajkot | Ph 98250 00000).
 bill_header_ph	ವಿಳಾಸ | ಫೋನ್
 fssai_ph	FSSAI / ಅಂಗಡಿ ಪರವಾನಗಿ ಸಂ. (ಐಚ್ಛಿಕ)
 bill_footer_ph	ಫೂಟರ್ (ಉದಾ. ಧನ್ಯವಾದ, ಮತ್ತೆ ಬನ್ನಿ)
@@ -808,8 +804,6 @@ add_dishes	ಐಟಂಗಳನ್ನು ಸೇರಿಸಿ
 order_so_far	ಈ ಆರ್ಡರ್‌ನಲ್ಲಿ: {n} · {total}
 no_dish_match	“{q}” ಗೆ ಯಾವ ಐಟಂ ಹೊಂದಿಕೆಯಾಗುವುದಿಲ್ಲ
 pick_done	ಆಯಿತು
-kot_field_up	ಮೇಲಕ್ಕೆ ಸರಿಸಿ
-kot_field_down	ಕೆಳಕ್ಕೆ ಸರಿಸಿ
 dishes_n	{n} ಐಟಂಗಳು
 reorder_ph	ಇಷ್ಟಾದಾಗ ಇನ್ನಷ್ಟು ಖರೀದಿಸಿ
 set_reorder	ಮರು ಆರ್ಡರ್ ಮಟ್ಟ ಹೊಂದಿಸಿ
@@ -841,3 +835,6 @@ sel_copy	ನಕಲಿಸಿ
 sel_select_all	ಎಲ್ಲವನ್ನೂ ಆಯ್ಕೆಮಾಡಿ
 sel_copied	ನಕಲಿಸಲಾಗಿದೆ
 nav_loading	ಲೋಡ್ ಆಗುತ್ತಿದೆ…
+printer_mode_first	ಮೊದಲು ಕೆಲಸ ಮಾಡುವುದು
+printer_mode_all	ಎಲ್ಲದರಲ್ಲೂ ಮುದ್ರಿಸಿ
+slip_columns	ಕಾಲಮ್‌ಗಳು

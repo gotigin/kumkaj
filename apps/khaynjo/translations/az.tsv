@@ -83,9 +83,7 @@ print_cancelled_kot_needed	Əvvəlcə ləğv olunmuş yeməkləri olan masanı a
 print_cancelled_kot_none	Bu sifarişdə ləğv olunmuş yemək yoxdur
 print_cancelled_kot_client	{place} üçün ləğv olunanlar ({n}) göndərildi — mətbəx Serverdə çap edir
 kot_banner	Növ banneri
-kot_banner_ph	Banner (boş = yoxdur)
 kot_item_prefix	Məhsul prefiksi
-kot_item_prefix_ph	məs. [LƏĞV]
 kot_strike	Yemək adının üstündən xətt
 kot_strike_note	Yemək qeydinin üstündən xətt
 kot_strike_on	Açıq
@@ -103,13 +101,11 @@ bill_item_qty	Say
 bill_item_price	Qiymət
 bill_item_amount	Məbləğ
 bill_item_note	Yemək qeydi
-bill_item_col_order	Sütun sırası
 bill_item_col_sep	Sütun xətləri
 slip_columns	Sütunlar
 slip_col_width	En (mm)
 slip_col_start	Başlanğıc boşluğu (px)
 slip_col_end	Son boşluq (px)
-slip_col_align	Mətn düzləndirmə
 slip_columns_help	Hər sütunun eni onun başlanğıc və son boşluğunu da əhatə edir. Mətn öz sütunu daxilində sətirlərə bölünür; məzmun enindən kənarda qalan hissə həm kağızda, həm də önizləmədə kəsilir.
 bill_total_qty_label	Ümumi say etiketi
 bill_total_subtotal_label	Ara cəm etiketi
@@ -643,7 +639,6 @@ vp_type_size_heading	Şrift ölçüsü
 vp_wrap_heading	Büküm eni
 vp_margin_heading	Kənarlar
 vp_delivery_spooler	ƏS sənədi (sistem növbəsi)
-vp_delivery_raw	Cihaza xam baytlar
 vp_delivery_escpos	ESC/POS termal əmrləri
 virtual_printer_new	Yeni virtual printer
 virtual_printer_selected	«{name}» redaktə olunur — keçmək üçün siyahıda başqasına toxunun
@@ -1110,7 +1105,6 @@ remove_these_tables	Bu masaları sil
 table_remove_ph	Sil: T1-T24 və ya bir masanın adı
 find_server	Mağazanın serverini tap
 bill_format	Hesab formatı
-bill_format_help	Hər hesabda restoranınızın adının altında çap olunur. Sətirləri | ilə ayırın (məs. MG Road, Rajkot | Tel 98250 00000).
 bill_header_ph	Ünvan | telefon
 fssai_ph	FSSAI lisenziya № (Hindistan)
 bill_footer_ph	Altlıq (məs. Təşəkkür edirik, yenə gəlin)
@@ -1127,7 +1121,6 @@ kot_field_hide	Gizlət
 kot_field_on	göstər
 kot_field_off	gizlət
 kot_field_size	Şrift ölçüsü
-kot_field_size_ph	məs. 16, 20, 24, 28, 32…
 kot_weight_light	Yüngül
 bill_kot_panel_help	Hesab və mətbəx slipinin düzümü, hər birinin öz məzmun eni var. Hesab Kassiri hesabı verən və ya bağlayandır; KOT Ofisiantı həmin mətbəx biletini göndərəndir — sifarişin tam hekayəsi kitablarda qalır.
 std_size_ph	məs. 18, 20, 26…
@@ -1157,7 +1150,6 @@ kot_style_item_qty	Məhsul · Say
 kot_style_field_pick	Sahə seçin
 kot_weight_regular	Adi
 kot_weight_bold	Qalın
-kot_align	Düzüm
 kot_align_start	Başlanğıc
 kot_align_center	Mərkəz
 kot_align_end	Son
@@ -1307,18 +1299,8 @@ kot_show_item_hdr	Məhsul · Say
 kot_hide_item_hdr	Sütunları gizlət
 kot_show_title	Başlıq sətri
 kot_hide_title	Başlığı gizlət
-kot_field_order	Çap sırası
-kot_field_up	Yuxarı köçür
-kot_field_down	Aşağı köçür
 kot_field_cycle	Növbətini seç
 kot_field_select	Növbətini seç
-kot_field_time	Vaxt
-kot_field_kot_no	KOT №
-kot_field_area	Zona
-kot_field_table	Masa
-kot_field_shop	Mağaza adı
-kot_field_waiter	Heyət
-kot_field_station	Post
 dishes_n	{n} yemək
 recipe_ph	Resept (istəyə bağlı) — bir porsiya işlədir: Rice=0.2, Paneer=0.15
 reorder_ph	Bu səviyyədə yenidən al

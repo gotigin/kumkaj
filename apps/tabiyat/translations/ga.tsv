@@ -81,12 +81,10 @@ bill_item_qty	Cainníocht
 bill_item_price	Praghas
 bill_item_amount	Suim
 bill_item_note	Rx / nóta díola
-bill_item_col_order	Ord na gcolún
 bill_item_col_sep	Rialacha colúin
 slip_col_width	Leithead (mm)
 slip_col_start	Spás tosaigh (px)
 slip_col_end	Spás deiridh (px)
-slip_col_align	Ailíniú téacs
 slip_columns_help	Áirítear spás tosaigh agus deiridh gach colúin ina leithead. Timfhillteann an téacs taobh istigh dá cholún; gearrtar aon rud thar leithead an ábhair, ar pháipéar agus sa réamhamharc.
 bill_total_qty_label	Lipéad qty iomlán
 bill_total_subtotal_label	Lipéad fo - iomlán
@@ -443,7 +441,6 @@ printer_profile_heading	Leagan amach
 vp_delivery_heading	Seachadadh
 vp_delivery_help	An chaoi a seolann an printéir fíorúil seo jabanna - doiciméad OS, bearta amh, nó ESC/POS. Is é an fhormáid bhille / duillín a chinneann ábhar duillín (méid cineál, fillte, corrlaigh), ní anseo.
 vp_delivery_spooler	Doiciméad OS (spúiler córas)
-vp_delivery_raw	Baits amh chuig an bhfeiste
 vp_delivery_escpos	Orduithe teirmeacha ESC/POS
 virtual_printer_new	Printéir fíorúil nua
 virtual_printer_selected	Ag eagarthóireacht ar “{name}” — sconna ar cheann eile sa liosta chun athrú
@@ -730,7 +727,6 @@ customer_paid_ph	Íoc an custaiméir
 tip_ph	Leid
 find_server	Faigh freastalaí an tsiopa
 bill_format	Formáid bhille
-bill_format_help	Arna phriontáil faoi ainm do shiopa ar gach bille. Línte ar leith le | (e.g. Bóthar MG, Rajkot | Ph 98250 00000).
 bill_header_ph	Seoladh | fón
 fssai_ph	Ceadúnas drugaí uimh. (roghnach - d'fhoclaíocht)
 bill_footer_ph	Bunleathanach (m.sh. Go raibh maith agat, tabhair cuairt arís)
@@ -820,8 +816,6 @@ add_dishes	Cuir cógais leis
 order_so_far	Ar an ordú seo: {n} · {total}
 no_dish_match	Ní mheaitseálann aon mhír “{q}”
 pick_done	Déanta
-kot_field_up	Bog suas
-kot_field_down	Bog síos
 dishes_n	Míreanna {n}
 reorder_ph	Ceannaigh tuilleadh ag
 set_reorder	Socraigh leibhéal athordaithe
@@ -853,3 +847,6 @@ sel_copy	Cóipeáil
 sel_select_all	Roghnaigh gach rud
 sel_copied	Cóipeáilte
 nav_loading	Á lódáil…
+printer_mode_first	Ar dtús sin a oibríonn
+printer_mode_all	Clóigh ar gach rud
+slip_columns	Colúin

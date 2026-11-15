@@ -583,6 +583,9 @@ impl App {
             .view(cx, ids!(main_column))
             .set_selection_root(!sheet_open);
         self.ui.handle_event(cx, event, &mut Scope::empty());
+        if let Event::Draw(_) = event {
+            self.align_slip_previews(cx);
+        }
         // A control in the 48 px edge strip (Done, pay, send, a sideways tab
         // strip) took this press: the control wins, the edge swipe disarms.
         self.disarm_edge_swipe_if_claimed(cx, event);

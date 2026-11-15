@@ -83,9 +83,7 @@ print_cancelled_kot_needed	റദ്ദ് വിഭവങ്ങളുള്ള 
 print_cancelled_kot_none	ഈ ഓർഡറിൽ റദ്ദ് ഇല്ല
 print_cancelled_kot_client	റദ്ദ് ({n}) {place} അയച്ചു — സെർവറിൽ അച്ചടി
 kot_banner	ബാനർ
-kot_banner_ph	ബാനർ (ശൂന്യം = ഇ
 kot_item_prefix	ഇനം പ്രിഫിക്സ്
-kot_item_prefix_ph	ഉദാ. [CANCELLED] 
 kot_strike	വിഭവത്തിന്റെ പേര് മറ
 kot_strike_note	കുറിപ്പ് മറ
 kot_strike_on	ഓൺ
@@ -103,13 +101,11 @@ bill_item_qty	എണ്ണം
 bill_item_price	വില
 bill_item_amount	തുക
 bill_item_note	കുറിപ്പ്
-bill_item_col_order	നിര ക്രമം
 bill_item_col_sep	നിര വര
 slip_columns	കോളങ്ങൾ
 slip_col_width	വീതി (mm)
 slip_col_start	തുടക്കത്തിലെ ഇടം (px)
 slip_col_end	അവസാനത്തെ ഇടം (px)
-slip_col_align	ടെക്സ്റ്റ് വിന്യാസം
 slip_columns_help	ഓരോ കോളത്തിന്റെയും വീതിയിൽ അതിന്റെ തുടക്കത്തിലെയും അവസാനത്തെയും ഇടം ഉൾപ്പെടുന്നു. ടെക്സ്റ്റ് സ്വന്തം കോളത്തിനുള്ളിൽ പൊതിയുന്നു; ഉള്ളടക്കത്തിന്റെ വീതിക്ക് പുറത്തുള്ളത് കടലാസിലും പ്രിവ്യൂവിലും മുറിഞ്ഞുപോകും.
 bill_total_qty_label	ആകെ എണ്ണം ലേബൽ
 bill_total_subtotal_label	ഉപമൊത്തം ലേബൽ
@@ -643,7 +639,6 @@ vp_type_size_heading	അക്ഷര വലുപ്പം
 vp_wrap_heading	റാപ്പ് വീതി
 vp_margin_heading	മാർജിനുകൾ
 vp_delivery_spooler	OS രേഖ (സിസ്റ്റം സ്പൂളർ)
-vp_delivery_raw	ഉപകരണത്തിലേക്ക് അസംസ്കൃത ബൈറ്റ്
 vp_delivery_escpos	ESC/POS തെർമൽ കമാൻഡുകൾ
 virtual_printer_new	പുതിയ വെർച്വൽ പ്രിന്റർ
 virtual_printer_selected	“{name}” എഡിറ്റ് — ലിസ്റ്റിൽ മറ്റൊന്ന് ടാപ്പ് ചെയ്ത് മാറ്റുക
@@ -1110,7 +1105,6 @@ remove_these_tables	ഈ മേശകൾ നീക്കം ചെയ്യുക
 table_remove_ph	നീക്കുക: T1-T24, അല്ലെങ്കിൽ ഒരു മേശയുടെ പേര്
 find_server	കടയുടെ സെർവർ കണ്ടെത്തുക
 bill_format	ബിൽ ഫോർമാറ്റ്
-bill_format_help	എല്ലാ ബില്ലിലും നിങ്ങളുടെ റെസ്റ്റോറന്റ് പേരിന് താഴെ പ്രിന്റ് ചെയ്യും. വരികൾ | ഉപയോഗിച്ച് വേർതിരിക്കുക (ഉദാ. MG Road, Rajkot | Ph 98250 00000).
 bill_header_ph	വിലാസം | ഫോൺ
 fssai_ph	FSSAI ലൈസൻസ് നം. (ഇന്ത്യ)
 bill_footer_ph	ഫൂട്ടർ (ഉദാ. നന്ദി, വീണ്ടും വരിക)
@@ -1127,7 +1121,6 @@ kot_field_hide	മറയ്ക്കുക
 kot_field_on	കാണിക്കുക
 kot_field_off	മറയ്ക്കുക
 kot_field_size	ഫോണ്ട് വലുപ്പം
-kot_field_size_ph	ഉദാ. 16, 20, 24, 28, 32…
 kot_weight_light	ലഘു
 bill_kot_panel_help	ബിൽ ഉള്ളടക്കവും അടുക്കള സ്ലിപ്പ് ടൈപ്പോഗ്രഫിയും. മുകളിലെ ഉള്ളടക്ക വീതിയാണ് ബില്ലിന്റെയും അടുക്കള സ്ലിപ്പിന്റെയും വീതി.
 std_size_ph	ഉദാ. 18, 20, 26…
@@ -1157,7 +1150,6 @@ kot_style_item_qty	ഇനം · എണ്ണം
 kot_style_field_pick	ഫീൽഡ് തിരഞ്ഞെടുക്കുക
 kot_weight_regular	സാധാരണ
 kot_weight_bold	കട്ടിയുള്ള
-kot_align	വിന്യാസം
 kot_align_start	തുടങ്ങുക
 kot_align_center	മധ്യം
 kot_align_end	അവസാനം
@@ -1307,18 +1299,8 @@ kot_show_item_hdr	ഇനം · എണ്ണം
 kot_hide_item_hdr	കോളങ്ങൾ മറയ്ക്കുക
 kot_show_title	തലക്കെട്ട് വരി
 kot_hide_title	തലക്കെട്ട് മറയ്ക്കുക
-kot_field_order	അച്ചടി ക്രമം
-kot_field_up	മുകളിലേക്ക് നീക്കുക
-kot_field_down	താഴേക്ക് നീക്കുക
 kot_field_cycle	അടുത്തത് തിരഞ്ഞെടുക്കുക
 kot_field_select	അടുത്തത് തിരഞ്ഞെടുക്കുക
-kot_field_time	സമയം
-kot_field_kot_no	KOT നമ്പർ
-kot_field_area	ഏരിയ
-kot_field_table	മേശ
-kot_field_shop	കടയുടെ പേര്
-kot_field_waiter	ജീവനക്കാർ
-kot_field_station	സ്റ്റേഷൻ
 dishes_n	{n} വിഭവങ്ങൾ
 recipe_ph	പാചകക്കുറിപ്പ് (ഐച്ഛികം) — ഒരു പ്ലേറ്റിന്: Rice=0.2, Paneer=0.15
 reorder_ph	ഇത്രയാകുമ്പോൾ കൂടുതൽ വാങ്ങുക

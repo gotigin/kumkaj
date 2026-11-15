@@ -81,12 +81,10 @@ bill_item_qty	Ka jingbun
 bill_item_price	Ka dor
 bill_item_amount	Ka jingbun
 bill_item_note	Rx / jingthoh jingdie
-bill_item_col_order	Ka jingpynbeit ia ki column
 bill_item_col_sep	Ki kyndon jong ki kolom
 slip_col_width	Ka jingshah (mm)
 slip_col_start	Ka jaka ha kaba sdang (px)
 slip_col_end	Ka jaka ha kaba kut (px)
-slip_col_align	Ka jingpynbeit ia ka jingthoh
 slip_columns_help	Ka jingshah jong man la ka kolom ka kynthup ia ka jaka ha kaba sdang bad ha kaba kut. Ka jingthoh ka kynthup hapoh ka kolom jong ka; kaei kaba palat ia ka jingshah ka jingdon ka sait, ha ka shla bad ha ka jingpeit shuwa.
 bill_total_qty_label	Ka jingdon jingem baroh
 bill_total_subtotal_label	Ka jingthoh baroh
@@ -443,7 +441,6 @@ printer_profile_heading	Ka jingpynbeit
 vp_delivery_heading	Jingpynpoi
 vp_delivery_help	Kumno kane ka nongpynmih kot ba shisha ka phah ia ki kam — ka kot OS, ki byte ba thymmai, lane ka ESC/POS. Ka jingdon jong ka slip (ka jingheh jong ka jait, ka jingtap, ki marjan) la rai da ka rukom bill / Slip, ym hangne.
 vp_delivery_spooler	Ka kot OS (ka jingpynkylla ia ka system)
-vp_delivery_raw	Ki byte ba thymmai sha ka tiar
 vp_delivery_escpos	ESC/POS ki hukum ba pynshit
 virtual_printer_new	Ka nongpynmih kot ba thymmai
 virtual_printer_selected	Ka jingpynkylla “{name}” — nion sa kawei pat ha ka thup ban pynkylla .
@@ -730,7 +727,6 @@ customer_paid_ph	U nongthied u la siew
 tip_ph	Kaba aisbun ia ka pisa
 find_server	Pyni ia ka server jong ka dukan
 bill_format	Ka rukom bill
-bill_format_help	La shon hapoh ka kyrteng jong ka dukan jong phi ha man la ka bill. Ki lain ba kyrpang bad | (e.g. Surok MG, Rajkot | Ph 98250 00000).
 bill_header_ph	Ka jaka sah | phone
 fssai_ph	Ka laisen drok no. (da jied — ka jingthoh jong phi)
 bill_footer_ph	Hapoh (e.g. Khublei, leit jngoh biang)
@@ -820,8 +816,6 @@ add_dishes	Pynrung dawai
 order_so_far	Ha kane ka jingpynbeit: {n} · {total}
 no_dish_match	Ym don ka jingthoh kaba iadei bad “{q}”
 pick_done	La dep
-kot_field_up	Pynkylla sha jrong
-kot_field_down	Pynhiar shapoh
 dishes_n	Ki tiar {n}
 reorder_ph	Thied shuh shuh ha
 set_reorder	Pynbeit biang ia ka kyrdan
@@ -853,3 +847,6 @@ sel_copy	Kopi
 sel_select_all	Jied baroh
 sel_copied	La kopi
 nav_loading	Dang load…
+printer_mode_first	Nyngkong kata ka treikam
+printer_mode_all	Pynmih ha baroh
+slip_columns	Ki kolom

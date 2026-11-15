@@ -83,9 +83,7 @@ print_cancelled_kot_needed	Buka meja dengan hidangan dibatalkan
 print_cancelled_kot_none	Tidak ada batal pada pesanan ini
 print_cancelled_kot_client	Batal ({n}) untuk {place} dikirim — cetak di server
 kot_banner	Spanduk
-kot_banner_ph	Spanduk (kosong = tidak)
 kot_item_prefix	Awalan item
-kot_item_prefix_ph	mis. [CANCELLED]
 kot_strike	Coret nama
 kot_strike_note	Coret catatan
 kot_strike_on	Aktif
@@ -103,13 +101,11 @@ bill_item_qty	Jml
 bill_item_price	Harga
 bill_item_amount	Jumlah
 bill_item_note	Catatan
-bill_item_col_order	Urutan kolom
 bill_item_col_sep	Garis kolom
 slip_columns	Kolom
 slip_col_width	Lebar (mm)
 slip_col_start	Spasi awal (px)
 slip_col_end	Spasi akhir (px)
-slip_col_align	Perataan teks
 slip_columns_help	Lebar setiap kolom sudah termasuk spasi awal dan akhirnya. Teks dibungkus di dalam kolomnya; bagian yang melewati lebar konten terpotong, di kertas maupun di pratinjau.
 bill_total_qty_label	Label jumlah total
 bill_total_subtotal_label	Label subtotal
@@ -643,7 +639,6 @@ vp_type_size_heading	Ukuran huruf
 vp_wrap_heading	Lebar bungkus
 vp_margin_heading	Margin
 vp_delivery_spooler	Dokumen OS (spooler sistem)
-vp_delivery_raw	Byte mentah ke perangkat
 vp_delivery_escpos	Perintah termal ESC/POS
 virtual_printer_new	Printer virtual baru
 virtual_printer_selected	Mengedit “{name}” — ketuk yang lain di daftar untuk beralih
@@ -1110,7 +1105,6 @@ remove_these_tables	Hapus meja ini
 table_remove_ph	Hapus: T1-T24, atau nama satu meja
 find_server	Cari server toko
 bill_format	Format tagihan
-bill_format_help	Dicetak di bawah nama restoran pada setiap tagihan. Pisahkan baris dengan | (mis. MG Road, Rajkot | Telp 98250 00000).
 bill_header_ph	Alamat | telepon
 fssai_ph	No. lisensi FSSAI (India)
 bill_footer_ph	Kaki (mis. Terima kasih, datang lagi)
@@ -1127,7 +1121,6 @@ kot_field_hide	Sembunyikan
 kot_field_on	tampil
 kot_field_off	sembunyi
 kot_field_size	Ukuran font
-kot_field_size_ph	mis. 16, 20, 24, 28, 32…
 kot_weight_light	Tipis
 bill_kot_panel_help	Isi tagihan dan tipografi slip dapur. Lebar konten di atas adalah lebar tagihan dan slip dapur.
 std_size_ph	mis. 18, 20, 26…
@@ -1157,7 +1150,6 @@ kot_style_item_qty	Item · Jml
 kot_style_field_pick	Pilih bidang
 kot_weight_regular	Biasa
 kot_weight_bold	Tebal
-kot_align	Rata kiri
 kot_align_start	Mulai
 kot_align_center	Tengah
 kot_align_end	Akhir
@@ -1307,18 +1299,8 @@ kot_show_item_hdr	Item · Jml
 kot_hide_item_hdr	Sembunyikan kolom
 kot_show_title	Baris judul
 kot_hide_title	Sembunyikan judul
-kot_field_order	Cetak pesanan
-kot_field_up	Pindah ke atas
-kot_field_down	Pindah ke bawah
 kot_field_cycle	Pilih berikutnya
 kot_field_select	Pilih berikutnya
-kot_field_time	Waktu
-kot_field_kot_no	No. KOT
-kot_field_area	Area
-kot_field_table	Meja
-kot_field_shop	Nama toko
-kot_field_waiter	Staf
-kot_field_station	Stasiun
 dishes_n	{n} hidangan
 recipe_ph	Resep (opsional) — satu porsi memakai: Rice=0.2, Paneer=0.15
 reorder_ph	Beli lagi saat

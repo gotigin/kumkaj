@@ -69,12 +69,10 @@ bill_item_qty	Кол-во
 bill_item_price	Цена
 bill_item_amount	Сумма
 bill_item_note	Примечание к товару
-bill_item_col_order	Порядок столбцов
 bill_item_col_sep	Линии столбцов
 slip_col_width	Ширина (mm)
 slip_col_start	Отступ в начале (px)
 slip_col_end	Отступ в конце (px)
-slip_col_align	Выравнивание текста
 slip_columns_help	Ширина каждого столбца включает его отступы в начале и в конце. Текст переносится внутри своего столбца; всё, что выходит за ширину содержимого, обрезается — на бумаге и в предпросмотре.
 bill_total_qty_label	Подпись итога кол-ва
 bill_total_subtotal_label	Подпись подытога
@@ -431,7 +429,6 @@ printer_profile_heading	Макет
 vp_delivery_heading	Доставка
 vp_delivery_help	Как этот виртуальный принтер отправляет задания — документ ОС, сырые байты или ESC/POS. Содержимое квитанции (размер шрифта, перенос, поля) задаёт формат счёта / квитанции, не здесь.
 vp_delivery_spooler	Документ ОС (системный спулер)
-vp_delivery_raw	Сырые байты на устройство
 vp_delivery_escpos	Термокоманды ESC/POS
 virtual_printer_new	Новый виртуальный принтер
 virtual_printer_selected	Правка «{name}» — нажмите другую в списке, чтобы переключить
@@ -718,7 +715,6 @@ customer_paid_ph	Клиент дал
 tip_ph	Чаевые
 find_server	Найти сервер заведения
 bill_format	Формат счёта
-bill_format_help	Печатается под названием магазина на каждом счёте. Строки разделяйте | (напр. MG Road, Rajkot | Ph 98250 00000).
 bill_header_ph	Адрес | телефон
 fssai_ph	№ лицензии FSSAI / магазина (необязательно)
 bill_footer_ph	Нижняя строка (напр. Спасибо, ждём снова)
@@ -808,8 +804,6 @@ add_dishes	Добавить товары
 order_so_far	В этом заказе: {n} · {total}
 no_dish_match	Нет товара по запросу «{q}»
 pick_done	Готово
-kot_field_up	Переместить вверх
-kot_field_down	Переместить вниз
 dishes_n	{n} товаров
 reorder_ph	Докупить при
 set_reorder	Задать уровень дозаказа
@@ -841,3 +835,6 @@ sel_copy	Копировать
 sel_select_all	Выделить всё
 sel_copied	Скопировано
 nav_loading	Загрузка…
+printer_mode_first	Первый рабочий
+printer_mode_all	Печать на всех
+slip_columns	Столбцы

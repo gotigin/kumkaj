@@ -83,9 +83,7 @@ print_cancelled_kot_needed	Fungura imeza ifite ibiryo byahagaritswe mbere
 print_cancelled_kot_none	Nta biryo byahagaritswe kuri iyi komande
 print_cancelled_kot_client	Capa byahagaritswe ({n}) bya {place} byoherejwe — igikoni kiracapa kuri Seriveri
 kot_banner	Ibendera ry'ubwoko
-kot_banner_ph	Ibendera (ubusa = nta na kimwe)
 kot_item_prefix	Intangiriro y'ikintu
-kot_item_prefix_ph	urugero [HAGARITSWE]
 kot_strike	Ca umurongo ku izina ry'ikiryo
 kot_strike_note	Ca umurongo ku cyitonderwa cy'ikiryo
 kot_strike_on	Kwatsa
@@ -103,13 +101,11 @@ bill_item_qty	Umubare
 bill_item_price	Igiciro
 bill_item_amount	Amafaranga
 bill_item_note	Icyitonderwa cy'ikiryo
-bill_item_col_order	Urutonde rw'inkingi
 bill_item_col_sep	Imirongo y'inkingi
 slip_columns	Inkingi
 slip_col_width	Ubugari (mm)
 slip_col_start	Umwanya w’intangiriro (px)
 slip_col_end	Umwanya w’iherezo (px)
-slip_col_align	Gutondeka umwandiko
 slip_columns_help	Ubugari bwa buri nkingi burimo umwanya wayo w’intangiriro n’uw’iherezo. Umwandiko ujya ku murongo mushya imbere mu nkingi yawo; ibirenga ubugari bw’ibirimo bicibwa, ku mpapuro no mu igaragaza.
 bill_total_qty_label	Umutwe w'umubare wose
 bill_total_subtotal_label	Umutwe w'igiteranyo gito
@@ -643,7 +639,6 @@ vp_type_size_heading	Ubunini bw'imyandikire
 vp_wrap_heading	Ubugari bwo gupfunyika
 vp_margin_heading	Intera
 vp_delivery_spooler	Inyandiko ya sisitemu (spooler ya sisitemu)
-vp_delivery_raw	Bytes zoroheje ku gikoresho
 vp_delivery_escpos	Amabwiriza y'ubushyuhe ESC/POS
 virtual_printer_new	Mucapyi mushya w'ubuhanga
 virtual_printer_selected	Urimo guhindura “{name}” — kanda undi ku rutonde uhindure
@@ -1110,7 +1105,6 @@ remove_these_tables	Kuraho aya meza
 table_remove_ph	Kuraho: T1-T24, cyangwa izina ry'imeza imwe
 find_server	Shaka seriveri y'iduka
 bill_format	Imiterere y'inyemezabuguzi
-bill_format_help	Icapwa munsi y'izina ry'iresitora ryawe kuri buri nyemezabuguzi. Tandukanya imirongo na | (urugero MG Road, Rajkot | Ph 98250 00000).
 bill_header_ph	Aderesi | telefone
 fssai_ph	Nomero y'uruhushya rwa FSSAI (India)
 bill_footer_ph	Hasi (urugero Murakoze, mugaruke)
@@ -1127,7 +1121,6 @@ kot_field_hide	Hisha
 kot_field_on	erekana
 kot_field_off	hisha
 kot_field_size	Ubunini bw'imyandikire
-kot_field_size_ph	urugero 16, 20, 24, 28, 32…
 kot_weight_light	Byoroheje
 bill_kot_panel_help	Imiterere y'urupapuro rw'inyemezabuguzi n'igikoni, buri kimwe gifite ubugari bwacyo. Ushinzwe amafaranga w'inyemezabuguzi ni uwayitanze cyangwa uyisoje; Umukozi w'ameza wa KOT ni uwohereje iyo tike y'igikoni — inkuru yose y'amakomande iguma mu bitabo.
 std_size_ph	urugero 18, 20, 26…
@@ -1157,7 +1150,6 @@ kot_style_item_qty	Ikintu · Umubare
 kot_style_field_pick	Hitamo umurima
 kot_weight_regular	Bisanzwe
 kot_weight_bold	By'ingufu
-kot_align	Huza
 kot_align_start	Itangiriro
 kot_align_center	Hagati
 kot_align_end	Iherezo
@@ -1307,18 +1299,8 @@ kot_show_item_hdr	Ikintu · Umubare
 kot_hide_item_hdr	Hisha inkingi
 kot_show_title	Umurongo w'umutwe
 kot_hide_title	Hisha umutwe
-kot_field_order	Urutonde rwo gucapa
-kot_field_up	Zamura
-kot_field_down	Manuka
 kot_field_cycle	Hitamo ikurikira
 kot_field_select	Hitamo ikurikira
-kot_field_time	Isaha
-kot_field_kot_no	Nomero ya KOT
-kot_field_area	Uturere
-kot_field_table	Imeza
-kot_field_shop	Izina ry'iduka
-kot_field_waiter	Abakozi
-kot_field_station	Sitasiyo
 dishes_n	ibiryo {n}
 recipe_ph	Inyandiko y'iteka (bitari ngombwa) — igice kimwe gikoresha: Rice=0.2, Paneer=0.15
 reorder_ph	Ongera ugure kuri

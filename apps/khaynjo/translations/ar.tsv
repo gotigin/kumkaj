@@ -83,9 +83,7 @@ print_cancelled_kot_needed	افتح طاولة فيها أطباق ملغاة
 print_cancelled_kot_none	لا أطباق ملغاة في هذا الطلب
 print_cancelled_kot_client	ملغى ({n}) لـ {place} أُرسل — يطبع على الخادم
 kot_banner	لافتة
-kot_banner_ph	لافتة (فارغ = لا)
 kot_item_prefix	بادئة الصنف
-kot_item_prefix_ph	مثال [CANCELLED]
 kot_strike	شطب الاسم
 kot_strike_note	شطب الملاحظة
 kot_strike_on	تشغيل
@@ -103,13 +101,11 @@ bill_item_qty	كمية
 bill_item_price	السعر
 bill_item_amount	المبلغ
 bill_item_note	ملاحظة
-bill_item_col_order	ترتيب الأعمدة
 bill_item_col_sep	خطوط الأعمدة
 slip_columns	الأعمدة
 slip_col_width	العرض (mm)
 slip_col_start	مسافة البداية (px)
 slip_col_end	مسافة النهاية (px)
-slip_col_align	محاذاة النص
 slip_columns_help	يشمل عرض كل عمود مسافتي البداية والنهاية. يلتف النص داخل عموده، وما يتجاوز عرض المحتوى يُقص على الورق وفي المعاينة.
 bill_total_qty_label	تسمية إجمالي الكمية
 bill_total_subtotal_label	تسمية المجموع الفرعي
@@ -643,7 +639,6 @@ vp_type_size_heading	حجم الخط
 vp_wrap_heading	عرض الالتفاف
 vp_margin_heading	الهوامش
 vp_delivery_spooler	مستند النظام (بكرة النظام)
-vp_delivery_raw	بايتات خام للجهاز
 vp_delivery_escpos	أوامر حرارية ESC/POS
 virtual_printer_new	طابعة افتراضية جديدة
 virtual_printer_selected	تعديل “{name}” — انقر أخرى في القائمة للتبديل
@@ -1110,7 +1105,6 @@ remove_these_tables	أزل هذه الطاولات
 table_remove_ph	إزالة: T1-T24 أو اسم طاولة واحدة
 find_server	ابحث عن خادم المطعم
 bill_format	تنسيق الفاتورة
-bill_format_help	يُطبع تحت اسم المطعم في كل فاتورة. افصل الأسطر بـ | (مثل MG Road, Rajkot | هاتف 98250 00000).
 bill_header_ph	العنوان | الهاتف
 fssai_ph	رقم ترخيص FSSAI (الهند)
 bill_footer_ph	التذييل (مثل شكرًا، عُد مجددًا)
@@ -1127,7 +1121,6 @@ kot_field_hide	إخفاء
 kot_field_on	إظهار
 kot_field_off	إخفاء
 kot_field_size	حجم الخط
-kot_field_size_ph	مثال 16, 20, 24, 28, 32…
 kot_weight_light	رفيع
 bill_kot_panel_help	محتوى الفاتورة وطباعة إيصالات المطبخ. عرض المحتوى أعلاه هو عرض الفاتورة وإيصال المطبخ معًا.
 std_size_ph	مثال 18, 20, 26…
@@ -1157,7 +1150,6 @@ kot_style_item_qty	صنف · كمية
 kot_style_field_pick	اختر الحقل
 kot_weight_regular	عادي
 kot_weight_bold	عريض
-kot_align	محاذاة
 kot_align_start	ابدأ
 kot_align_center	توسيط
 kot_align_end	النهاية
@@ -1307,18 +1299,8 @@ kot_show_item_hdr	صنف · كمية
 kot_hide_item_hdr	إخفاء الأعمدة
 kot_show_title	سطر العنوان
 kot_hide_title	إخفاء العنوان
-kot_field_order	طباعة الطلب
-kot_field_up	التحرك للأعلى
-kot_field_down	التحرك للأسفل
 kot_field_cycle	تحديد التالي
 kot_field_select	تحديد التالي
-kot_field_time	الوقت
-kot_field_kot_no	رقم KOT
-kot_field_area	منطقة
-kot_field_table	الطاولة
-kot_field_shop	اسم المحل
-kot_field_waiter	الموظفون
-kot_field_station	المحطة
 dishes_n	{n} أطباق
 recipe_ph	الوصفة (اختياري) — الحصة الواحدة تستخدم: Rice=0.2, Paneer=0.15
 reorder_ph	اشترِ المزيد عند

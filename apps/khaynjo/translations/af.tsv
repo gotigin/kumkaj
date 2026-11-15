@@ -83,9 +83,7 @@ print_cancelled_kot_needed	Open a table with cancelled dishes first
 print_cancelled_kot_none	Geen afgeskrapde maaltye op hierdie bestelling nie
 print_cancelled_kot_client	Druk afgeskrap ({n}) vir {place} gestuur – keukendruk by die bediener
 kot_banner	Vriendelike banier
-kot_banner_ph	Banier (leeg = geen)
 kot_item_prefix	Voorvoegsel van item
-kot_item_prefix_ph	bv. [AFGESKRAP]
 kot_strike	Streep maalty naam
 kot_strike_note	Streep maalty nota
 kot_strike_on	Aan
@@ -103,13 +101,11 @@ bill_item_qty	Hoeveelheid
 bill_item_price	Prijs
 bill_item_amount	Bedrag
 bill_item_note	Maalty nota
-bill_item_col_order	Kolom volgorde
 bill_item_col_sep	Kolom reëls
 slip_columns	Kolomme
 slip_col_width	Breedte (mm)
 slip_col_start	Beginspasie (px)
 slip_col_end	Eindspasie (px)
-slip_col_align	Teksbelyning
 slip_columns_help	Elke kolom se breedte sluit sy begin- en eindspasie in. Teks vou binne sy kolom; wat verby die inhoudbreedte lê, word afgesny, op papier en in die voorskou.
 bill_total_qty_label	Totaal aantal etiket
 bill_total_subtotal_label	Subtotaal etiket
@@ -643,7 +639,6 @@ vp_type_size_heading	Tipegrootte
 vp_wrap_heading	Omhulingswydte
 vp_margin_heading	Randmarges
 vp_delivery_spooler	OS-dokument (sistemspoeler)
-vp_delivery_raw	Ruwe bytes na toestel
 vp_delivery_escpos	ESC/POS-termostaatbevels
 virtual_printer_new	Nuwe virtuele drukers
 virtual_printer_selected	Bewerk {name} — tik op 'n ander in die lys om te wissel
@@ -1110,7 +1105,6 @@ remove_these_tables	Verwyder hierdie tabelle
 table_remove_ph	Verwyder: T1-T24, of een tafel se naam
 find_server	Soek die winkel se bediener
 bill_format	Rekening formaat
-bill_format_help	Gedruk onder jou restaurante se naam op elke rekening. Skei lyne met | (bv. MG Road, Rajkot | Ph 98250 00000).
 bill_header_ph	Adres | telefoon
 fssai_ph	FSSAI lisensienommer (Indië)
 bill_footer_ph	Voetstuk (bv. Dankie, besoek weer)
@@ -1127,7 +1121,6 @@ kot_field_hide	Versteek
 kot_field_on	wys
 kot_field_off	versteek
 kot_field_size	Lettergrootte
-kot_field_size_ph	bv. 16, 20, 24, 28, 32…
 kot_weight_light	Lig
 bill_kot_panel_help	Faktuur en keukenslip-lêerindeling, elk met sy eie inhoudsbreedte. Faktuur Kasier is die een wat die faktuur uitgereik of afgesluit het; KOT Waaiter is die een wat daardie keukentiket gestuur het — die volledige bestellingsverhaal bly in die boeke.
 std_size_ph	bv. 18, 20, 26…
@@ -1157,7 +1150,6 @@ kot_style_item_qty	Item · Aantal
 kot_style_field_pick	Kies veld
 kot_weight_regular	Normaal
 kot_weight_bold	Vet
-kot_align	Uitlyn
 kot_align_start	Begin
 kot_align_center	Sentrum
 kot_align_end	Einde
@@ -1307,18 +1299,8 @@ kot_show_item_hdr	Item · Aantal
 kot_hide_item_hdr	Verberg kolomme
 kot_show_title	Titellyn
 kot_hide_title	Verberg titel
-kot_field_order	Druk bestelling
-kot_field_up	Beweeg op
-kot_field_down	Beweeg af
 kot_field_cycle	Kies volgende
 kot_field_select	Kies volgende
-kot_field_time	Tyd
-kot_field_kot_no	KOT Nee
-kot_field_area	Gebied
-kot_field_table	Tafel
-kot_field_shop	Winkelnawe
-kot_field_waiter	Personeel
-kot_field_station	Stasie
 dishes_n	{n} geregte
 recipe_ph	Resep (opsioneel) — een portie gebruik: Ryssel=0,2, Paneer=0,15
 reorder_ph	Koop meer by

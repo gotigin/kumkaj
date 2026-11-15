@@ -83,9 +83,7 @@ print_cancelled_kot_needed	Tisch mit stornierten Gerichten öffnen
 print_cancelled_kot_none	Keine Stornos auf dieser Bestellung
 print_cancelled_kot_client	Stornos ({n}) für {place} gesendet — Druck auf dem Server
 kot_banner	Banner
-kot_banner_ph	Banner (leer = keins)
 kot_item_prefix	Artikelpräfix
-kot_item_prefix_ph	z. B. [CANCELLED]
 kot_strike	Namen streichen
 kot_strike_note	Notiz streichen
 kot_strike_on	An
@@ -103,13 +101,11 @@ bill_item_qty	Menge
 bill_item_price	Preis
 bill_item_amount	Betrag
 bill_item_note	Notiz
-bill_item_col_order	Spaltenreihenfolge
 bill_item_col_sep	Spaltlinien
 slip_columns	Spalten
 slip_col_width	Breite (mm)
 slip_col_start	Abstand am Anfang (px)
 slip_col_end	Abstand am Ende (px)
-slip_col_align	Textausrichtung
 slip_columns_help	Die Breite jeder Spalte schließt ihren Abstand am Anfang und am Ende ein. Text wird innerhalb seiner Spalte umbrochen; was über die Inhaltsbreite hinausgeht, wird abgeschnitten – auf Papier und in der Vorschau.
 bill_total_qty_label	Beschriftung Gesamtmenge
 bill_total_subtotal_label	Beschriftung Zwischensumme
@@ -643,7 +639,6 @@ vp_type_size_heading	Schriftgröße
 vp_wrap_heading	Umbruchbreite
 vp_margin_heading	Ränder
 vp_delivery_spooler	OS-Dokument (System-Spooler)
-vp_delivery_raw	Rohbytes an Gerät
 vp_delivery_escpos	ESC/POS-Thermobefehle
 virtual_printer_new	Neuer virtueller Drucker
 virtual_printer_selected	Bearbeitung von „{name}“ — tippen Sie eine andere in der Liste zum Wechseln
@@ -1110,7 +1105,6 @@ remove_these_tables	Diese Tische entfernen
 table_remove_ph	Entfernen: T1-T24 oder der Name eines Tisches
 find_server	Server des Lokals finden
 bill_format	Rechnungsformat
-bill_format_help	Steht auf jeder Rechnung unter dem Namen des Restaurants. Zeilen mit | trennen (z. B. MG Road, Rajkot | Tel 98250 00000).
 bill_header_ph	Adresse | Telefon
 fssai_ph	FSSAI-Lizenznr. (Indien)
 bill_footer_ph	Fußzeile (z. B. Danke, bis bald)
@@ -1127,7 +1121,6 @@ kot_field_hide	Ausblenden
 kot_field_on	anzeigen
 kot_field_off	ausblenden
 kot_field_size	Schriftgröße
-kot_field_size_ph	z. B. 16, 20, 24, 28, 32…
 kot_weight_light	Leicht
 bill_kot_panel_help	Rechnungsinhalt und Küchenbon-Typografie. Die Inhaltsbreite oben gilt für Rechnung und Küchenbon.
 std_size_ph	z. B. 18, 20, 26…
@@ -1157,7 +1150,6 @@ kot_style_item_qty	Artikel · Menge
 kot_style_field_pick	Feld wählen
 kot_weight_regular	Normal
 kot_weight_bold	Fett
-kot_align	Ausrichten
 kot_align_start	Starten
 kot_align_center	Zentrieren
 kot_align_end	Ende
@@ -1307,18 +1299,8 @@ kot_show_item_hdr	Artikel · Menge
 kot_hide_item_hdr	Spalten ausblenden
 kot_show_title	Titelleiste
 kot_hide_title	Titel ausblenden
-kot_field_order	Bestellung drucken
-kot_field_up	Nach oben verschieben
-kot_field_down	Nach unten verschieben
 kot_field_cycle	Nächsten auswählen
 kot_field_select	Nächsten auswählen
-kot_field_time	Zeit
-kot_field_kot_no	KOT-Nr.
-kot_field_area	Bereich
-kot_field_table	Tisch
-kot_field_shop	Geschäftsname
-kot_field_waiter	Personal
-kot_field_station	Station
 dishes_n	{n} Gerichte
 recipe_ph	Rezept (optional) — eine Portion braucht: Rice=0.2, Paneer=0.15
 reorder_ph	Nachkaufen bei

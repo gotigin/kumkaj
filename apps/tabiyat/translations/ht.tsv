@@ -81,12 +81,10 @@ bill_item_qty	Kant.
 bill_item_price	Pri
 bill_item_amount	Montan
 bill_item_note	Rx / nòt vann
-bill_item_col_order	Lòd kolòn
 bill_item_col_sep	Liy kolòn
 slip_col_width	Lajè (mm)
 slip_col_start	Espas kòmansman (px)
 slip_col_end	Espas fen (px)
-slip_col_align	Aliyman tèks
 slip_columns_help	Lajè chak kolòn gen ladan l espas kòmansman ak espas fen li. Tèks la vlope anndan kolòn li; sa ki depase lajè kontni an koupe, sou papye ak nan apèsi a.
 bill_total_qty_label	Etikèt kantite total
 bill_total_subtotal_label	Etikèt soutotal
@@ -443,7 +441,6 @@ printer_profile_heading	Dispozisyon
 vp_delivery_heading	Livrezon
 vp_delivery_help	Ki jan enprimant vityèl sa a voye travay - dokiman OS, byte anvan tout koreksyon, oswa ESC/POS. Kontni glise (gwosè kalite, vlope, maj) se deside pa bòdwo a / fòma glise, pa isit la.
 vp_delivery_spooler	Dokiman OS (fil sistèm)
-vp_delivery_raw	Byte kri sou aparèy
 vp_delivery_escpos	Kòmand tèmik ESC/POS
 virtual_printer_new	Nouvo enprimant vityèl
 virtual_printer_selected	Modifikasyon «{name}» — peze yon lòt nan lis la pou chanje
@@ -730,7 +727,6 @@ customer_paid_ph	Kliyan peye
 tip_ph	Poubwa
 find_server	Chèche sèvè boutik la
 bill_format	Fòma kont
-bill_format_help	Enprime anba non boutik ou sou chak bòdwo. Liy separe ak | (egzanp MG Road, Rajkot | Ph 98250 00000).
 bill_header_ph	Adrès | telefòn
 fssai_ph	Lisans dwòg No. (opsyonèl - mo ou)
 bill_footer_ph	Pye (pa egzanp Mèsi, tounen ankò)
@@ -820,8 +816,6 @@ add_dishes	Ajoute medikaman
 order_so_far	Nan kòmand sa a: {n} · {total}
 no_dish_match	Pa gen atik ki koresponn ak "{q}"
 pick_done	Fini
-kot_field_up	Monte
-kot_field_down	Desann
 dishes_n	Atik {n}
 reorder_ph	Achte plis nan
 set_reorder	Mete nivo rekòmand
@@ -853,3 +847,6 @@ sel_copy	Kopye
 sel_select_all	Chwazi tout
 sel_copied	Kopye fèt
 nav_loading	Chajman…
+printer_mode_first	Premye ki mache
+printer_mode_all	Enprime sou tout
+slip_columns	Kolòn

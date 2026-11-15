@@ -81,12 +81,10 @@ bill_item_qty	Yupay
 bill_item_price	Precio
 bill_item_amount	Cantidad nisqa
 bill_item_note	Rx / rantiymanta willakuy
-bill_item_col_order	Columna nisqapa ordennin
 bill_item_col_sep	Columna kamachiykuna
 slip_col_width	Kinray (mm)
 slip_col_start	Qallariy chusaq (px)
 slip_col_end	Tukukuy chusaq (px)
-slip_col_align	Qillqa allichay
 slip_columns_help	Sapa columnap kinraynin qallariy chusaqta tukukuy chusaqta ima hap’in. Qillqaqa columnan ukhupi muyun; contenidop kinraynin hawan kaqqa p’anqapi qhawarichiypi ima kuchusqa kanqa.
 bill_total_qty_label	Total qty etiqueta
 bill_total_subtotal_label	Sub total etiqueta
@@ -443,7 +441,6 @@ printer_profile_heading	Diseño
 vp_delivery_heading	Entrega
 vp_delivery_help	Imayna kay virtual impresora llamkanakunata kachan — OS qillqa, raw bytes utaq ESC/POS. Slip contenido (tipo sayay, wrap, margenkuna) factura / Slip formato kaqwan tanteasqa, mana kaypichu.
 vp_delivery_spooler	OS qillqa (sistema spooler) .
-vp_delivery_raw	Raw bytekuna dispositivoman
 vp_delivery_escpos	ESC/POS ruphay kamachiykuna
 virtual_printer_new	Musuq virtual impresora
 virtual_printer_selected	“{name}” allichay — hukta ñit’iy lista kaqpi tikranaykipaq
@@ -730,7 +727,6 @@ customer_paid_ph	Cliente pagasqa
 tip_ph	Yuyaychay
 find_server	Tiendapa servidorninta maskay
 bill_format	Invitado invitado factura formato
-bill_format_help	Sapa facturapi tiendaykipa sutinwan imprimisqa. Sapaq chirukunata | (e.g. MG ñan, Rajkot | Ph 98250 00000).
 bill_header_ph	Dirección | telefonowan
 fssai_ph	Droga licencia no. (munasqa — rimayniyki)
 bill_footer_ph	Chaki qillqa (e.g. Gracias, yapamanta watukuy)
@@ -820,8 +816,6 @@ add_dishes	Hampikunata yapay
 order_so_far	Kay kamachiypi: {n} · {total}
 no_dish_match	Mana ima imapas “{q}” nisqawan tupanchu.
 pick_done	Rurasqa
-kot_field_up	Wichayman kuyuy
-kot_field_down	Urayman kuyuy
 dishes_n	{n} nisqa imakuna
 reorder_ph	Astawan rantiy kaypi
 set_reorder	Reorder nisqa nivelta churay
@@ -853,3 +847,6 @@ sel_copy	Copiay
 sel_select_all	Llapanta akllay
 sel_copied	Copiasqañam
 nav_loading	Cargachkan…
+printer_mode_first	Ñawpaqtaqa chaymi llamkan
+printer_mode_all	Tukuypi imprimiy
+slip_columns	Columnakuna

@@ -83,9 +83,7 @@ print_cancelled_kot_needed	Opnaðu borðstofuborð með afbókuðum réttum fyrs
 print_cancelled_kot_none	Engir afpantaðir réttir í þessari pöntun
 print_cancelled_kot_client	Hætt við prentun ({n}) fyrir {place} send — eldhúsprentanir á þjóninum
 kot_banner	Vingjarnlegur borði
-kot_banner_ph	Borði (autt = enginn)
 kot_item_prefix	Forskeyti valmyndaratriðis
-kot_item_prefix_ph	t.d. [HÆTTAÐ við]
 kot_strike	Strike fat nafn
 kot_strike_note	Sláðu fat aths
 kot_strike_on	Á
@@ -103,13 +101,11 @@ bill_item_qty	Magn
 bill_item_price	Verð
 bill_item_amount	Upphæð
 bill_item_note	Rétt aths
-bill_item_col_order	Dálka röð
 bill_item_col_sep	Dálkareglur
 slip_columns	Dálkar
 slip_col_width	Breidd (mm)
 slip_col_start	Upphafsbil (px)
 slip_col_end	Lokabil (px)
-slip_col_align	Jöfnun texta
 slip_columns_help	Breidd hvers dálks inniheldur upphafs- og lokabil hans. Texti brotnar innan síns dálks; það sem nær út fyrir breidd efnisins er skorið af, á pappír og í forskoðun.
 bill_total_qty_label	Heildarmagn merki
 bill_total_subtotal_label	Undir heildarmerki
@@ -643,7 +639,6 @@ vp_type_size_heading	Tegundarstærð
 vp_wrap_heading	Vefjabreidd
 vp_margin_heading	Framlegð
 vp_delivery_spooler	OS skjal (kerfisspooler)
-vp_delivery_raw	Hrá bæti í tæki
 vp_delivery_escpos	ESC/POS hitaskipanir
 virtual_printer_new	Nýr sýndarprentari
 virtual_printer_selected	Breytir „{name}“ — pikkaðu á annað á listanum til að skipta
@@ -1110,7 +1105,6 @@ remove_these_tables	Fjarlægðu þessi borðstofuborð
 table_remove_ph	Fjarlægja: T1-T24, eða eitt borðstofuborð
 find_server	Finndu netþjón búðarinnar
 bill_format	Reikningssnið
-bill_format_help	Prentað undir nafni veitingastaðarins þíns á hverjum seðli. Aðskildu línur með | (t.d. MG Road, Rajkot | Ph 98250 00000).
 bill_header_ph	Heimilisfang | síma
 fssai_ph	FSSAI leyfi nr. (Indland)
 bill_footer_ph	Fótur (t.d. Þakka þér, komdu aftur)
@@ -1127,7 +1121,6 @@ kot_field_hide	Fela
 kot_field_on	sýna
 kot_field_off	fela sig
 kot_field_size	Leturstærð
-kot_field_size_ph	t.d. 16, 20, 24, 28, 32...
 kot_weight_light	Ljós
 bill_kot_panel_help	Seðla- og eldhússeðlaskipulag, hvert með sína innihaldsbreidd. Bill gjaldkeri er sá sem gaf út eða gerði upp reikninginn; KOT Þjónninn er sá sem sendi eldhúsmiðann - öll pöntunarsagan er í bókhaldinu.
 std_size_ph	t.d. 18, 20, 26...
@@ -1157,7 +1150,6 @@ kot_style_item_qty	Valmyndaratriði í valmynd · Magn
 kot_style_field_pick	Veldu reit
 kot_weight_regular	Venjulegur
 kot_weight_bold	Djarft
-kot_align	Jafna
 kot_align_start	Byrjaðu
 kot_align_center	Miðja
 kot_align_end	Enda
@@ -1307,18 +1299,8 @@ kot_show_item_hdr	Valmyndaratriði í valmynd · Magn
 kot_hide_item_hdr	Fela dálka
 kot_show_title	Titillína
 kot_hide_title	Fela titil
-kot_field_order	Prentpöntun
-kot_field_up	Færðu þig upp
-kot_field_down	Færðu þig niður
 kot_field_cycle	Veldu næst
 kot_field_select	Veldu næst
-kot_field_time	Tími
-kot_field_kot_no	KOT Nei
-kot_field_area	Svæði
-kot_field_table	Borðstofuborð
-kot_field_shop	Nafn verslunar
-kot_field_waiter	Starfsfólk
-kot_field_station	Stöð
 dishes_n	{n} réttir
 recipe_ph	Uppskrift (valfrjálst) — einn skammtur notar: Hrísgrjón=0,2, Paneer=0,15
 reorder_ph	Kaupa meira á

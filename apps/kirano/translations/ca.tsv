@@ -69,12 +69,10 @@ bill_item_qty	Qtat
 bill_item_price	Preu
 bill_item_amount	Import
 bill_item_note	Nota d'article
-bill_item_col_order	Ordre de columnes
 bill_item_col_sep	Línies de columna
 slip_col_width	Amplada (mm)
 slip_col_start	Espai inicial (px)
 slip_col_end	Espai final (px)
-slip_col_align	Alineació del text
 slip_columns_help	L’amplada de cada columna inclou el seu espai inicial i final. El text s’ajusta dins la seva columna; el que sobrepassa l’amplada del contingut es retalla, en paper i a la previsualització.
 bill_total_qty_label	Etiqueta de qtat total
 bill_total_subtotal_label	Etiqueta de subtotal
@@ -431,7 +429,6 @@ printer_profile_heading	Disposició
 vp_delivery_heading	Lliurament
 vp_delivery_help	Com aquesta impressora virtual envia els treballs: document del sistema operatiu, bytes en brut o ESC/POS. El contingut de la fitxa (mida del tipus, embolcall, marges) es decideix pel format de la factura/de la fitxa, no aquí.
 vp_delivery_spooler	Document del SO (cua del sistema)
-vp_delivery_raw	Bytes en brut al dispositiu
 vp_delivery_escpos	Ordres tèrmiques ESC/POS
 virtual_printer_new	Impressora virtual nova
 virtual_printer_selected	S'edita «{name}» — toqueu-ne una altra de la llista per canviar
@@ -718,7 +715,6 @@ customer_paid_ph	El client ha pagat
 tip_ph	Propina
 find_server	Troba el servidor de la botiga
 bill_format	Format del compte
-bill_format_help	Imprès amb el nom de la vostra botiga a cada factura. Separeu les línies amb | (p. ex., MG Road, Rajkot | Telèfon 98250 00000).
 bill_header_ph	Adreça | telèfon
 fssai_ph	FSSAI / llicència de botiga núm. (opcional)
 bill_footer_ph	Peu (p. ex. Gràcies, torneu)
@@ -808,8 +804,6 @@ add_dishes	Afegeix elements
 order_so_far	En aquesta comanda: {n} · {total}
 no_dish_match	Cap element coincideix amb "{q}"
 pick_done	Fet
-kot_field_up	Puja
-kot_field_down	Baixa
 dishes_n	Elements {n}
 reorder_ph	Torna a comprar a
 set_reorder	Posa el nivell de reposició
@@ -841,3 +835,6 @@ sel_copy	Copia
 sel_select_all	Selecciona-ho tot
 sel_copied	Copiat
 nav_loading	S'està carregant…
+printer_mode_first	La primera que funcioni
+printer_mode_all	Imprimeix a totes
+slip_columns	Columnes

@@ -81,12 +81,10 @@ bill_item_qty	Isa
 bill_item_price	Vidiny
 bill_item_amount	Vola
 bill_item_note	Rx / naoty varotra
-bill_item_col_order	Filaharana andàlana
 bill_item_col_sep	Fitsipika andàlana
 slip_col_width	Sakany (mm)
 slip_col_start	Elanelana fanombohana (px)
 slip_col_end	Elanelana fiafarana (px)
-slip_col_align	Fandaharana soratra
 slip_columns_help	Ny sakan’ny tsanganana tsirairay dia ahitana ny elanelana fanombohana sy fiafarany. Mivalona ao anatin’ny tsanganany ny soratra; ny mihoatra ny sakan’ny votoaty dia tapahina, eo amin’ny taratasy sy amin’ny topi-maso.
 bill_total_qty_label	Marika isan-jato totalin'ny habetsahana
 bill_total_subtotal_label	Marika totalina
@@ -443,7 +441,6 @@ printer_profile_heading	Endrika
 vp_delivery_heading	Fanaterana
 vp_delivery_help	Ny fomba fandefasana asa ity mpanonta virtoaly ity - antontan-taratasy OS, bytes manta, na ESC/POS. Ny votoatin'ny slip (karazana habe, fonosina, sisiny) dia tapa-kevitra amin'ny endrika volavolan-dalàna / Slip fa tsy eto.
 vp_delivery_spooler	Antontan-taratasy OS (spooler rafitra)
-vp_delivery_raw	Baity mivantana ho any amin'ny fitaovana
 vp_delivery_escpos	ESC/POS baiko mafana
 virtual_printer_new	Mpangonta virtoaly vaovao
 virtual_printer_selected	Manitsy “{name}” — tsindrio ny hafa ao amin'ny lisitra mba hanova
@@ -730,7 +727,6 @@ customer_paid_ph	Nandoa ny mpanjifa
 tip_ph	Torohevitra
 find_server	Mitadiava ny serveur an'ny fivarotana
 bill_format	Endrika faktiora
-bill_format_help	Atao pirinty amin'ny anaran'ny fivarotanao isaky ny faktiora. Andalana misaraka amin'ny | (oh: MG Road, Rajkot | Ph 98250 00000).
 bill_header_ph	Adiresy | finday
 fssai_ph	Fahazoan-dalana momba ny zava-mahadomelina no. (tsy voatery - ny teninao)
 bill_footer_ph	Fanamarihana farany (oh: Misaotra, mitsidika indray)
@@ -820,8 +816,6 @@ add_dishes	Ampio fanafody
 order_so_far	Amin'ity baiko ity: {n} · {total}
 no_dish_match	Tsy misy singa mifanaraka amin'ny "{q}"
 pick_done	Vita
-kot_field_up	Miakatra
-kot_field_down	Midina
 dishes_n	Ireo singa mifandraika amin'ny {n}
 reorder_ph	Mividiana bebe kokoa amin’ny
 set_reorder	Mametraha haavo famerenana baiko
@@ -853,3 +847,6 @@ sel_copy	Adikao
 sel_select_all	Fidio daholo
 sel_copied	Voadika
 nav_loading	Mampiditra…
+printer_mode_first	Voalohany miasa
+printer_mode_all	Pirinty amin'ny rehetra
+slip_columns	Tsanganana

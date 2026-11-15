@@ -69,12 +69,10 @@ bill_item_qty	Kogus
 bill_item_price	Hind
 bill_item_amount	Summa
 bill_item_note	Kauba märkus
-bill_item_col_order	Veergude järjekord
 bill_item_col_sep	Veeru reeglid
 slip_col_width	Laius (mm)
 slip_col_start	Algusvahe (px)
 slip_col_end	Lõpuvahe (px)
-slip_col_align	Teksti joondus
 slip_columns_help	Iga veeru laius sisaldab selle algus- ja lõpuvahet. Tekst murdub oma veeru sees; mis jääb sisu laiusest välja, lõigatakse ära – paberil ja eelvaates.
 bill_total_qty_label	Kogukoguse silt
 bill_total_subtotal_label	Alasumma silt
@@ -431,7 +429,6 @@ printer_profile_heading	Paigutus
 vp_delivery_heading	Kohaletoimetamine
 vp_delivery_help	Kuidas see virtuaalne printer töid saadab – OS-i dokument, töötlemata baidid või ESC/POS. Sertifikaadi sisu (kirja suurus, ümbris, veerised) otsustab arve / sedeli vorming, mitte siin.
 vp_delivery_spooler	OS-i dokument (süsteemi spuuler)
-vp_delivery_raw	Toorbaidid seadmesse
 vp_delivery_escpos	ESC/POS termilised käsud
 virtual_printer_new	Uus virtuaalne printer
 virtual_printer_selected	Redigeerimine „{name}” – vahetamiseks puudutage loendis teist
@@ -718,7 +715,6 @@ customer_paid_ph	Klient maksis
 tip_ph	Näpunäide
 find_server	Otsige üles poe server
 bill_format	Arve formaat
-bill_format_help	Igale arvele trükitakse teie poe nime all. Eraldage read märgiga | (nt MG Road, Rajkot | Tel 98250 00000).
 bill_header_ph	Aadress | telefon
 fssai_ph	FSSAI / kaupluse litsents nr. (valikuline)
 bill_footer_ph	Jalus (nt aitäh, külastage uuesti)
@@ -808,8 +804,6 @@ add_dishes	Lisa üksusi
 order_so_far	Sellel tellimusel: {n} · {total}
 no_dish_match	Ükski üksus ei vasta "{q}"
 pick_done	Valmis
-kot_field_up	Liigu üles
-kot_field_down	Liigu alla
 dishes_n	{n} üksused
 reorder_ph	Osta rohkem aadressilt
 set_reorder	Määrake ümbertellimuse tase
@@ -841,3 +835,6 @@ sel_copy	Kopeeri
 sel_select_all	Vali kõik
 sel_copied	Kopeeritud
 nav_loading	Laadimine…
+printer_mode_first	Esiteks see töötab
+printer_mode_all	Trüki kõigile
+slip_columns	Veerud

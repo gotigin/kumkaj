@@ -83,9 +83,7 @@ print_cancelled_kot_needed	केन्सेल जानाय जामु �
 print_cancelled_kot_none	बे अर्डरआव केन्सेल जानाय जामु गैया
 print_cancelled_kot_client	केन्सेल प्रिन्ट ({n}) {place} नि थाखाय दैथाय होबाय — नुथांआ सर्वरआव प्रिन्ट खालामो
 kot_banner	रोखोमनि ब्यानार
-kot_banner_ph	ब्यानार (खाली = गैया)
 kot_item_prefix	आइटमनि सिगांग
-kot_item_prefix_ph	बिदिं [केन्सेल]
 kot_strike	जामुनि मुंखौ सार
 kot_strike_note	जामुनि नोटखौ सार
 kot_strike_on	अन
@@ -103,13 +101,11 @@ bill_item_qty	बिबां
 bill_item_price	बेसेन
 bill_item_amount	रां
 bill_item_note	जामुनि नोट
-bill_item_col_order	खाम्फानि फारि
 bill_item_col_sep	खाम्फानि हांखो
 slip_columns	खाम्फाफोर
 slip_col_width	गुवार (mm)
 slip_col_start	जागायनायनि जायगा (px)
 slip_col_end	जोबनायनि जायगा (px)
-slip_col_align	लिरनि सारि
 slip_columns_help	खाम्फा फोरनि गुवारआव बेनि जागायनाय आरो जोबनायनि जायगा दं। लिरा बेनि खाम्फानि सिङाव खोसायो; बिबुंथि गुवारनिफ्राय बायजोआव थानाय बाहागोआ कागजआव आरो सिगाङाव नुनायाव खावनाय जायो।
 bill_total_qty_label	गासै बिबांनि लेबेल
 bill_total_subtotal_label	खाव गासैनि लेबेल
@@ -643,7 +639,6 @@ vp_type_size_heading	टाइपनि महर
 vp_wrap_heading	मेथाय गोबां
 vp_margin_heading	मार्जिन
 vp_delivery_spooler	OS दस्तावेज (सिस्टम स्पुलार)
-vp_delivery_raw	मेसिनआव रा अक्ट'
 vp_delivery_escpos	ESC/POS थर्मल बिथोन
 virtual_printer_new	गोदान भर्चुअल प्रिन्टार
 virtual_printer_selected	“{name}” एडिट खालाम गासिनो — सोलायनो लिस्टआव गुबुनखौ सुदुं
@@ -1110,7 +1105,6 @@ remove_these_tables	बे टेबुलफोर बोखार
 table_remove_ph	बोखार: T1-T24, एबा मोनसे टेबुलनि मुं
 find_server	दोकाननि सर्वर नागिर
 bill_format	बिल फर्मेट
-bill_format_help	मोनफ्रोम बिलआव नोंनि रेस्टुरेन्टनि मुंनि गाहाय प्रिन्ट जायो। लाइन | जों आलादा खालाम (बिदिं MG Road, Rajkot | Ph 98250 00000)।
 bill_header_ph	थं | फोन
 fssai_ph	FSSAI लाइसेन्स नं. (भारत)
 bill_footer_ph	फुटार (बिदिं साबायहर, फिन फै)
@@ -1127,7 +1121,6 @@ kot_field_hide	दोन
 kot_field_on	दिन्थि
 kot_field_off	दोन
 kot_field_size	फन्ट साइज
-kot_field_size_ph	बिदिं 16, 20, 24, 28, 32…
 kot_weight_light	गुसुं
 bill_kot_panel_help	बिल आरो नुथांनि स्लिपनि साजाय, मोनफ्रोमआ आनि कन्टेन्ट गोथै दोनो। बिल केसियार आ सा बिल होनाय एबा जोबनाय; KOT वेटर आ सा बे नुथांनि टिकेट दैथाय होनानै — गासै अर्डरनि कथा बहीआव थायो।
 std_size_ph	बिदिं 18, 20, 26…
@@ -1157,7 +1150,6 @@ kot_style_item_qty	आइटम · अनसान
 kot_style_field_pick	फिल्ड सायख
 kot_weight_regular	साधारन
 kot_weight_bold	गोबा
-kot_align	थानो
 kot_align_start	जागाय
 kot_align_center	गेजेर
 kot_align_end	जोब
@@ -1307,18 +1299,8 @@ kot_show_item_hdr	आइटम · अनसान
 kot_hide_item_hdr	कालम दोन
 kot_show_title	मुं लाइन
 kot_hide_title	मुं दोन
-kot_field_order	प्रिन्ट फारि
-kot_field_up	गोजौ थां
-kot_field_down	गाहाय थां
 kot_field_cycle	उनि सायख
 kot_field_select	उनि सायख
-kot_field_time	सम
-kot_field_kot_no	KOT नं
-kot_field_area	जायगा
-kot_field_table	टेबुल
-kot_field_shop	दोकाननि मुं
-kot_field_waiter	मावुरि
-kot_field_station	स्टेसन
 dishes_n	{n} जामु
 recipe_ph	रेसिपि (नांगौब्ला) — मोनसे पर्सन बाहायो: दान=0.2, पनीर=0.15
 reorder_ph	आरो बाय

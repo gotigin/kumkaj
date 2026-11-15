@@ -83,9 +83,7 @@ print_cancelled_kot_needed	Najprej odprite mizo s preklicanimi jedmi
 print_cancelled_kot_none	Na tem naročilu ni preklicanih jedi
 print_cancelled_kot_client	Tisk preklicanih ({n}) za {place} poslan — kuhinja tiska na Strežniku
 kot_banner	Pasica vrste
-kot_banner_ph	Pasica (prazno = brez)
 kot_item_prefix	Predpona artikla
-kot_item_prefix_ph	npr. [PREKLICANO]
 kot_strike	Prečrtaj ime jedi
 kot_strike_note	Prečrtaj opombo jedi
 kot_strike_on	Vklopljeno
@@ -103,13 +101,11 @@ bill_item_qty	Kol.
 bill_item_price	Cena
 bill_item_amount	Znesek
 bill_item_note	Opomba jedi
-bill_item_col_order	Vrstni red stolpcev
 bill_item_col_sep	Črte stolpcev
 slip_columns	Stolpci
 slip_col_width	Širina (mm)
 slip_col_start	Začetni razmik (px)
 slip_col_end	Končni razmik (px)
-slip_col_align	Poravnava besedila
 slip_columns_help	Širina vsakega stolpca vključuje njegov začetni in končni razmik. Besedilo se prelomi znotraj svojega stolpca; kar sega čez širino vsebine, se odreže – na papirju in v predogledu.
 bill_total_qty_label	Oznaka skupne kol.
 bill_total_subtotal_label	Oznaka vmesne vsote
@@ -643,7 +639,6 @@ vp_type_size_heading	Velikost črk
 vp_wrap_heading	Širina preloma
 vp_margin_heading	Robovi
 vp_delivery_spooler	Dokument OS (sistemski čakalnik)
-vp_delivery_raw	Surovi bajti v napravo
 vp_delivery_escpos	Toplotni ukazi ESC/POS
 virtual_printer_new	Nov navidezni tiskalnik
 virtual_printer_selected	Urejanje „{name}“ — tapnite drugega na seznamu za preklop
@@ -1110,7 +1105,6 @@ remove_these_tables	Odstrani te mize
 table_remove_ph	Odstrani: T1-T24 ali ime ene mize
 find_server	Poišči strežnik lokala
 bill_format	Oblika računa
-bill_format_help	Natisnjeno pod imenom restavracije na vsakem računu. Vrstice ločite z | (npr. MG Road, Rajkot | Tel 98250 00000).
 bill_header_ph	Naslov | telefon
 fssai_ph	Licenca FSSAI št. (Indija)
 bill_footer_ph	Noga (npr. Hvala, pridite spet)
@@ -1127,7 +1121,6 @@ kot_field_hide	Skrij
 kot_field_on	pokaži
 kot_field_off	skrij
 kot_field_size	Velikost pisave
-kot_field_size_ph	npr. 16, 20, 24, 28, 32…
 kot_weight_light	Lahka
 bill_kot_panel_help	Postavitev računa in kuhinjskega listka, vsak s svojo širino vsebine. Blagajnik računa je tisti, ki je izdal ali zaključil račun; Natakar KOT je tisti, ki je poslal ta kuhinjski listek — celotna zgodba naročila ostane v knjigah.
 std_size_ph	npr. 18, 20, 26…
@@ -1157,7 +1150,6 @@ kot_style_item_qty	Artikel · Kol.
 kot_style_field_pick	Izberi polje
 kot_weight_regular	Navadna
 kot_weight_bold	Krepka
-kot_align	Poravnava
 kot_align_start	Začetek
 kot_align_center	Sredina
 kot_align_end	Konec
@@ -1307,18 +1299,8 @@ kot_show_item_hdr	Artikel · Kol.
 kot_hide_item_hdr	Skrij stolpce
 kot_show_title	Naslovna vrstica
 kot_hide_title	Skrij naslov
-kot_field_order	Vrstni red tiska
-kot_field_up	Premakni gor
-kot_field_down	Premakni dol
 kot_field_cycle	Izberi naslednje
 kot_field_select	Izberi naslednje
-kot_field_time	Čas
-kot_field_kot_no	KOT št.
-kot_field_area	Območje
-kot_field_table	Miza
-kot_field_shop	Ime lokala
-kot_field_waiter	Osebje
-kot_field_station	Postaja
 dishes_n	{n} jedi
 recipe_ph	Recept (neobvezno) — ena porcija porabi: Riž=0.2, Paneer=0.15
 reorder_ph	Kupi več pri

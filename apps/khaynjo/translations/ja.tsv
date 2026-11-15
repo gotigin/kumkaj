@@ -83,9 +83,7 @@ print_cancelled_kot_needed	取消料理があるテーブルを開いてくだ�
 print_cancelled_kot_none	この注文に取消はありません
 print_cancelled_kot_client	{place} の取消（{n}）を送信 — サーバーで印刷
 kot_banner	バナー
-kot_banner_ph	バナー（空=なし）
 kot_item_prefix	品目前置き
-kot_item_prefix_ph	例: [CANCELLED]
 kot_strike	料理名に取消線
 kot_strike_note	メモに取消線
 kot_strike_on	オン
@@ -103,13 +101,11 @@ bill_item_qty	数量
 bill_item_price	単価
 bill_item_amount	金額
 bill_item_note	メモ
-bill_item_col_order	列の順
 bill_item_col_sep	列の罫線
 slip_columns	列
 slip_col_width	幅 (mm)
 slip_col_start	先頭の余白 (px)
 slip_col_end	末尾の余白 (px)
-slip_col_align	文字揃え
 slip_columns_help	各列の幅には先頭と末尾の余白が含まれます。文字は列の中で折り返し、内容の幅からはみ出した部分は用紙でもプレビューでも切り取られます。
 bill_total_qty_label	合計数量ラベル
 bill_total_subtotal_label	小計ラベル
@@ -643,7 +639,6 @@ vp_type_size_heading	文字サイズ
 vp_wrap_heading	折り返し幅
 vp_margin_heading	余白
 vp_delivery_spooler	OS文書（システムスプーラー）
-vp_delivery_raw	デバイスへ生バイト
 vp_delivery_escpos	ESC/POSサーマルコマンド
 virtual_printer_new	新しい仮想プリンター
 virtual_printer_selected	「{name}」を編集中 — 一覧の別項目をタップして切替
@@ -1110,7 +1105,6 @@ remove_these_tables	これらのテーブルを削除
 table_remove_ph	削除：T1-T24、またはテーブル名
 find_server	店のサーバーを探す
 bill_format	伝票の書式
-bill_format_help	毎回の伝票で店名の下に印刷されます。| で改行（例：MG Road, Rajkot | Tel 98250 00000）。
 bill_header_ph	住所 | 電話
 fssai_ph	FSSAI 許可番号（インド）
 bill_footer_ph	フッター（例：ありがとうございました）
@@ -1127,7 +1121,6 @@ kot_field_hide	非表示
 kot_field_on	表示
 kot_field_off	非表示
 kot_field_size	フォントサイズ
-kot_field_size_ph	例: 16, 20, 24, 28, 32…
 kot_weight_light	細
 bill_kot_panel_help	伝票内容と厨房伝票の体裁。上の内容幅が、伝票と厨房伝票の両方の幅です。
 std_size_ph	例: 18, 20, 26…
@@ -1157,7 +1150,6 @@ kot_style_item_qty	品目 · 数量
 kot_style_field_pick	項目を選択
 kot_weight_regular	標準
 kot_weight_bold	太字
-kot_align	揃える
 kot_align_start	開始
 kot_align_center	中央揃え
 kot_align_end	末尾
@@ -1307,18 +1299,8 @@ kot_show_item_hdr	品目 · 数量
 kot_hide_item_hdr	カラムを非表示
 kot_show_title	タイトル行
 kot_hide_title	タイトルを非表示
-kot_field_order	オーダーを印刷
-kot_field_up	上に移動
-kot_field_down	下に移動
 kot_field_cycle	次の項目を選択
 kot_field_select	次の項目を選択
-kot_field_time	時刻
-kot_field_kot_no	KOT番号
-kot_field_area	エリア
-kot_field_table	テーブル
-kot_field_shop	店名
-kot_field_waiter	スタッフ
-kot_field_station	ステーション
 dishes_n	{n} 品
 recipe_ph	レシピ（任意）— 1人前の使用量: Rice=0.2, Paneer=0.15
 reorder_ph	この数で補充

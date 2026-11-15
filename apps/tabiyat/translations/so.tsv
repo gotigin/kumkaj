@@ -81,12 +81,10 @@ bill_item_qty	Tirada
 bill_item_price	Qiimaha
 bill_item_amount	Qaddarka
 bill_item_note	Rx / note note
-bill_item_col_order	Habka tiirarka
 bill_item_col_sep	Khadadka tiirarka
 slip_col_width	Ballac (mm)
 slip_col_start	Meesha bilowga (px)
 slip_col_end	Meesha dhammaadka (px)
-slip_col_align	Toosinta qoraalka
 slip_columns_help	Ballaca tiir kastaa wuxuu ka kooban yahay meeshiisa bilowga iyo dhammaadka. Qoraalku wuxuu ku duubmaa tiirkiisa gudihiisa; wixii dhaafa ballaca waxa ku jira waa la jaraa, warqadda iyo horudhacaba.
 bill_total_qty_label	Calaamadda wadarta tirada
 bill_total_subtotal_label	Calaamadda wadarta hoose
@@ -443,7 +441,6 @@ printer_profile_heading	Qaab
 vp_delivery_heading	Gaarsiin
 vp_delivery_help	Sida daabacaha casriga ahi uu u diro shaqooyinka - dukumeentiga OS, bytes cayriin, ama ESC/POS. Nuxurka sibxataa (xajmiga nooca, duubka, margins) waxaa go'aamiya qaabka biilka/qaabka sibidhka, halkan maaha.
 vp_delivery_spooler	Dukumentiga nidaamka (safka nidaamka)
-vp_delivery_raw	Bayt cayriin oo loo diro qalabka
 vp_delivery_escpos	Amarada kulaylka ee ESC/POS
 virtual_printer_new	Daabacaha mala-awaal cusub
 virtual_printer_selected	Waa la tafatirayaa “{name}” — taabo mid kale liiska si aad u beddesho
@@ -730,7 +727,6 @@ customer_paid_ph	Macmiilku wuu bixiyay
 tip_ph	Gunno
 find_server	Raadi server-ka dukaanka
 bill_format	Qaabka biilka
-bill_format_help	Ku daabac magaca dukaankaaga biil kasta. Khadadka kala duwan oo leh | (tusaale. MG Road, Rajkot | Ph 98250 00000).
 bill_header_ph	Cinwaan | taleefan
 fssai_ph	Shatiga maandooriyaha. (ikhtiyaar - ereygaaga)
 bill_footer_ph	Hoos (tusaale Mahadsanid, mar kale soo booqo)
@@ -820,8 +816,6 @@ add_dishes	Daawooyinka ku dar
 order_so_far	Dalabkan: {n} · {total}
 no_dish_match	Ma jiro shay u dhigma "{q}"
 pick_done	La dhammeeyay
-kot_field_up	Kor u qaad
-kot_field_down	Hoos u deji
 dishes_n	Waxyaabaha {n}
 reorder_ph	Mar kale iibso marka
 set_reorder	Deji heerka dib-u-dalabka
@@ -853,3 +847,6 @@ sel_copy	Koobi
 sel_select_all	Dooro dhammaan
 sel_copied	Waa la koobiyeeyay
 nav_loading	Waa la soo shubayaa…
+printer_mode_first	Kan ugu horreeya ee shaqeeya
+printer_mode_all	Ku daabac dhammaan
+slip_columns	Tiirarrada

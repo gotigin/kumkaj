@@ -81,12 +81,10 @@ bill_item_qty	تعداد
 bill_item_price	قیمت
 bill_item_amount	مبلغ
 bill_item_note	Rx / یادداشت فروش
-bill_item_col_order	ترتیب ستون
 bill_item_col_sep	خط ستون
 slip_col_width	پهنا (mm)
 slip_col_start	فاصلهٔ آغاز (px)
 slip_col_end	فاصلهٔ پایان (px)
-slip_col_align	ترازبندی متن
 slip_columns_help	پهنای هر ستون شامل فاصلهٔ آغاز و پایان آن است. متن درون ستون خودش می‌شکند؛ هرچه از پهنای محتوا بیرون بزند، روی کاغذ و در پیش‌نمایش بریده می‌شود.
 bill_total_qty_label	برچسب جمع تعداد
 bill_total_subtotal_label	برچسب جمع جزء
@@ -443,7 +441,6 @@ printer_profile_heading	چیدمان
 vp_delivery_heading	پیک
 vp_delivery_help	این چاپگر مجازی چگونه کارها را ارسال می کند - سند سیستم عامل، بایت های خام یا ESC/POS. محتوای برگه (اندازه نوع، بسته بندی، حاشیه) با فرمت صورتحساب / برگه تعیین می شود، نه اینجا.
 vp_delivery_spooler	سند سیستم (صف چاپ)
-vp_delivery_raw	بایت خام به دستگاه
 vp_delivery_escpos	فرمان حرارتی ESC/POS
 virtual_printer_new	چاپگر مجازی تازه
 virtual_printer_selected	ویرایش «{name}» — برای عوض کردن روی دیگری در فهرست بزنید
@@ -730,7 +727,6 @@ customer_paid_ph	مشتری پرداخت کرد
 tip_ph	انعام
 find_server	پیدا کردن سرور فروشگاه
 bill_format	قالب صورتحساب
-bill_format_help	روی هر قبض تحت نام مغازه شما چاپ می شود. جدا کردن خطوط با | (به عنوان مثال، جاده MG، Rajkot | Ph 98250 00000).
 bill_header_ph	نشانی | تلفن
 fssai_ph	شماره پروانه دارو (اختیاری - عبارت شما)
 bill_footer_ph	پاورقی (مثلاً ممنون، دوباره بیایید)
@@ -820,8 +816,6 @@ add_dishes	داروها را اضافه کنید
 order_so_far	در این سفارش: {n} · {total}
 no_dish_match	هیچ موردی با «{q}» مطابقت ندارد
 pick_done	انجام شد
-kot_field_up	بالا بردن
-kot_field_down	پایین بردن
 dishes_n	موارد {n}
 reorder_ph	خرید بیشتر در
 set_reorder	گذاشتن سطح سفارش دوباره
@@ -853,3 +847,6 @@ sel_copy	رونوشت
 sel_select_all	انتخاب همه
 sel_copied	رونوشت شد
 nav_loading	در حال بارگیری…
+printer_mode_first	نخستین که کار کند
+printer_mode_all	چاپ روی همه
+slip_columns	ستون‌ها

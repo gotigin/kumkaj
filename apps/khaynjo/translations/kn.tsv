@@ -83,9 +83,7 @@ print_cancelled_kot_needed	ರದ್ದು ಖಾದ್ಯಗಳ ಮೇಜು �
 print_cancelled_kot_none	ಈ ಆರ್ಡರ್‌ನಲ್ಲಿ ರದ್ದು ಇಲ್ಲ
 print_cancelled_kot_client	ರದ್ದು ({n}) {place} ಕಳುಹಿಸಲಾಗಿದೆ — ಸರ್ವರ್‌ನಲ್ಲಿ ಮುದ್ರಣ
 kot_banner	ಬ್ಯಾನರ್
-kot_banner_ph	ಬ್ಯಾನರ್ (ಖಾಲಿ = ಇಲ್ಲ)
 kot_item_prefix	ಐಟಂ ಪೂರ್ವಪ್ರತ್ಯಯ
-kot_item_prefix_ph	ಉದಾ. [CANCELLED] 
 kot_strike	ಖಾದ್ಯ ಹೆಸರು ಗೀಚು
 kot_strike_note	ಟಿಪ್ಪಣಿ ಗೀಚು
 kot_strike_on	ಆನ್
@@ -103,13 +101,11 @@ bill_item_qty	ಪ್ರಮಾಣ
 bill_item_price	ದರ
 bill_item_amount	ಮೊತ್ತ
 bill_item_note	ಟಿಪ್ಪಣಿ
-bill_item_col_order	ಕಂಭ ಕ್ರಮ
 bill_item_col_sep	ಕಂಭ ಗೆರೆ
 slip_columns	ಕಾಲಮ್‌ಗಳು
 slip_col_width	ಅಗಲ (mm)
 slip_col_start	ಆರಂಭದ ಜಾಗ (px)
 slip_col_end	ಕೊನೆಯ ಜಾಗ (px)
-slip_col_align	ಪಠ್ಯ ಜೋಡಣೆ
 slip_columns_help	ಪ್ರತಿ ಕಾಲಮ್‌ನ ಅಗಲದಲ್ಲಿ ಅದರ ಆರಂಭ ಮತ್ತು ಕೊನೆಯ ಜಾಗ ಸೇರಿದೆ. ಪಠ್ಯ ತನ್ನ ಕಾಲಮ್ ಒಳಗೇ ಸುತ್ತುತ್ತದೆ; ವಿಷಯದ ಅಗಲವನ್ನು ಮೀರಿದ್ದು ಕಾಗದದಲ್ಲೂ ಪೂರ್ವವೀಕ್ಷಣೆಯಲ್ಲೂ ಕತ್ತರಿಸಲ್ಪಡುತ್ತದೆ.
 bill_total_qty_label	ಒಟ್ಟು ಸಂಖ್ಯೆ ಲೇಬಲ್
 bill_total_subtotal_label	ಉಪಮೊತ್ತ ಲೇಬಲ್
@@ -643,7 +639,6 @@ vp_type_size_heading	ಅಕ್ಷರ ಗಾತ್ರ
 vp_wrap_heading	ರ್ಯಾಪ್ ಅಗಲ
 vp_margin_heading	ಮಾರ್ಜಿನ್‌ಗಳು
 vp_delivery_spooler	OS ದಾಖಲೆ (ಸಿಸ್ಟಂ ಸ್ಪೂಲರ್)
-vp_delivery_raw	ಸಾಧನಕ್ಕೆ ಕಚ್ಚಾ ಬೈಟ್
 vp_delivery_escpos	ESC/POS ಥರ್ಮಲ್ ಆದೇಶಗಳು
 virtual_printer_new	ಹೊಸ ವರ್ಚುವಲ್ ಮುದ್ರಕ
 virtual_printer_selected	“{name}” ಸಂಪಾದನೆ — ಪಟ್ಟಿಯಲ್ಲಿ ಬೇರೊಂದನ್ನು ಟ್ಯಾಪ್ ಮಾಡಿ ಬದಲಾಯಿಸಿ
@@ -1110,7 +1105,6 @@ remove_these_tables	ಈ ಟೇಬಲ್‌ಗಳನ್ನು ತೆಗೆದು�
 table_remove_ph	ತೆಗೆದುಹಾಕಿ: T1-T24, ಅಥವಾ ಒಂದು ಟೇಬಲ್ ಹೆಸರು
 find_server	ಅಂಗಡಿಯ ಸರ್ವರ್ ಹುಡುಕಿ
 bill_format	ಬಿಲ್ ಸ್ವರೂಪ
-bill_format_help	ಪ್ರತಿ ಬಿಲ್‌ನಲ್ಲಿ ನಿಮ್ಮ ರೆಸ್ಟೋರೆಂಟ್ ಹೆಸರಿನ ಕೆಳಗೆ ಮುದ್ರಿತವಾಗುತ್ತದೆ. ಸಾಲುಗಳನ್ನು | ನಿಂದ ಬೇರ್ಪಡಿಸಿ (ಉದಾ. MG Road, Rajkot | Ph 98250 00000).
 bill_header_ph	ವಿಳಾಸ | ಫೋನ್
 fssai_ph	FSSAI ಪರವಾನಗಿ ಸಂ. (ಭಾರತ)
 bill_footer_ph	ಫೂಟರ್ (ಉದಾ. ಧನ್ಯವಾದ, ಮತ್ತೆ ಬನ್ನಿ)
@@ -1127,7 +1121,6 @@ kot_field_hide	ಮರೆಮಾಡಿ
 kot_field_on	ತೋರಿಸು
 kot_field_off	ಮರೆಮಾಡು
 kot_field_size	ಫಾಂಟ್ ಗಾತ್ರ
-kot_field_size_ph	ಉದಾ. 16, 20, 24, 28, 32…
 kot_weight_light	ತಿಳಿ
 bill_kot_panel_help	ಬಿಲ್ ವಿಷಯ ಮತ್ತು ಅಡುಗೆ ಸ್ಲಿಪ್ ಟೈಪೋಗ್ರಫಿ. ಮೇಲಿನ ವಿಷಯದ ಅಗಲವೇ ಬಿಲ್ ಮತ್ತು ಅಡುಗೆ ಸ್ಲಿಪ್ ಎರಡರ ಅಗಲ.
 std_size_ph	ಉದಾ. 18, 20, 26…
@@ -1157,7 +1150,6 @@ kot_style_item_qty	ಐಟಂ · ಸಂಖ್ಯೆ
 kot_style_field_pick	ಕ್ಷೇತ್ರವನ್ನು ಆಯ್ಕೆಮಾಡಿ
 kot_weight_regular	ಸಾಮಾನ್ಯ
 kot_weight_bold	ದಪ್ಪ
-kot_align	ಜೋಡಣೆ
 kot_align_start	ಪ್ರಾರಂಭಿಸಿ
 kot_align_center	ಮಧ್ಯ
 kot_align_end	ಕೊನೆ
@@ -1307,18 +1299,8 @@ kot_show_item_hdr	ಐಟಂ · ಸಂಖ್ಯೆ
 kot_hide_item_hdr	ಕಾಲಮ್‌ಗಳನ್ನು ಮರೆಮಾಡಿ
 kot_show_title	ಶೀರ್ಷಿಕೆ ಸಾಲು
 kot_hide_title	ಶೀರ್ಷಿಕೆ ಮರೆಮಾಡಿ
-kot_field_order	ಮುದ್ರಣ ಕ್ರಮ
-kot_field_up	ಮೇಲಕ್ಕೆ ಸರಿಸಿ
-kot_field_down	ಕೆಳಕ್ಕೆ ಸರಿಸಿ
 kot_field_cycle	ಮುಂದಿನದನ್ನು ಆಯ್ಕೆಮಾಡಿ
 kot_field_select	ಮುಂದಿನದನ್ನು ಆಯ್ಕೆಮಾಡಿ
-kot_field_time	ಸಮಯ
-kot_field_kot_no	KOT ಸಂಖ್ಯೆ
-kot_field_area	ಪ್ರದೇಶ
-kot_field_table	ಮೇಜು
-kot_field_shop	ಅಂಗಡಿ ಹೆಸರು
-kot_field_waiter	ಸಿಬ್ಬಂದಿ
-kot_field_station	ಸ್ಟೇಷನ್
 dishes_n	{n} ಖಾದ್ಯಗಳು
 recipe_ph	ಪಾಕವಿಧಾನ (ಐಚ್ಛಿಕ) — ಒಂದು ಪ್ಲೇಟ್‌ಗೆ: Rice=0.2, Paneer=0.15
 reorder_ph	ಇಷ್ಟಾದಾಗ ಇನ್ನಷ್ಟು ಖರೀದಿಸಿ

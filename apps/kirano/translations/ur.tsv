@@ -69,12 +69,10 @@ bill_item_qty	مقدار
 bill_item_price	نرخ
 bill_item_amount	رقم
 bill_item_note	آئٹم نوٹ
-bill_item_col_order	کالم ترتیب
 bill_item_col_sep	کالم لکیر
 slip_col_width	چوڑائی (mm)
 slip_col_start	آغاز کی جگہ (px)
 slip_col_end	اختتام کی جگہ (px)
-slip_col_align	متن کی سیدھ
 slip_columns_help	ہر کالم کی چوڑائی میں اس کی آغاز اور اختتام کی جگہ شامل ہے۔ متن اپنے کالم کے اندر ہی لپٹتا ہے؛ مواد کی چوڑائی سے باہر جو ہو وہ کاغذ اور پیش نظارہ دونوں میں کٹ جاتا ہے۔
 bill_total_qty_label	کل تعداد لیبل
 bill_total_subtotal_label	ذیلی کل لیبل
@@ -431,7 +429,6 @@ printer_profile_heading	لے آؤٹ
 vp_delivery_heading	ڈیلیوری
 vp_delivery_help	یہ ورچوئل پرنٹر کام کیسے بھیجتا ہے — OS دستاویز، خام بائٹس یا ESC/POS۔ پرچی کا مواد (حروف کا سائز، لپیٹ، حاشیے) بل / پرچی فارمیٹ طے کرتا ہے، یہ نہیں۔
 vp_delivery_spooler	OS دستاویز (سسٹم اسپولر)
-vp_delivery_raw	ڈیوائس کو خام بائٹس
 vp_delivery_escpos	ESC/POS تھرمل کمانڈز
 virtual_printer_new	نیا ورچوئل پرنٹر
 virtual_printer_selected	“{name}” ترمیم — فہرست میں دوسرے پر ٹیپ کر کے بدلیں
@@ -718,7 +715,6 @@ customer_paid_ph	گاہک نے دیے
 tip_ph	ٹپ
 find_server	دکان کا سرور تلاش کریں
 bill_format	بل کی ترتیب
-bill_format_help	ہر بل پر آپ کی دکان کے نام کے نیچے چھپتا ہے۔ قطاریں | سے الگ کریں (مثلاً MG Road, Rajkot | Ph 98250 00000)۔
 bill_header_ph	پتہ | فون
 fssai_ph	FSSAI / دکان لائسنس نمبر (اختیاری)
 bill_footer_ph	فوٹر (مثلاً شکریہ، پھر تشریف لائیں)
@@ -808,8 +804,6 @@ add_dishes	آئٹمز شامل کریں
 order_so_far	اس آرڈر میں: {n} · {total}
 no_dish_match	“{q}” سے کوئی آئٹم میل نہیں کھاتا
 pick_done	ہو گیا
-kot_field_up	اوپر کریں
-kot_field_down	نیچے کریں
 dishes_n	{n} آئٹمز
 reorder_ph	اتنے پر مزید خریدیں
 set_reorder	دوبارہ آرڈر کی حد رکھیں
@@ -841,3 +835,6 @@ sel_copy	کاپی کریں
 sel_select_all	سب منتخب کریں
 sel_copied	کاپی ہو گیا
 nav_loading	لوڈ ہو رہا ہے…
+printer_mode_first	جو پہلے چلے
+printer_mode_all	سب پر چھاپیں
+slip_columns	کالم

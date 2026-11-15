@@ -83,9 +83,7 @@ print_cancelled_kot_needed	Прво отворете трпезариска ма
 print_cancelled_kot_none	Нема откажани јадења за оваа нарачка
 print_cancelled_kot_client	Печатењето е откажано ({n}) за {place} испратено — кујнски отпечатоци на серверот
 kot_banner	Љубезен банер
-kot_banner_ph	Банер (празно = нема)
 kot_item_prefix	Префикс на ставката од менито
-kot_item_prefix_ph	на пр. [ОТКАЖАНО]
 kot_strike	Име на штрајк јадење
 kot_strike_note	Забелешка за штрајк јадење
 kot_strike_on	Вклучено
@@ -103,13 +101,11 @@ bill_item_qty	Количина
 bill_item_price	Цена
 bill_item_amount	Износ
 bill_item_note	Забелешка за јадење
-bill_item_col_order	Редослед на колони
 bill_item_col_sep	Правила за колони
 slip_columns	Колони
 slip_col_width	Ширина (mm)
 slip_col_start	Почетно растојание (px)
 slip_col_end	Крајно растојание (px)
-slip_col_align	Порамнување на текстот
 slip_columns_help	Ширината на секоја колона го вклучува нејзиното почетно и крајно растојание. Текстот се прекршува во својата колона; она што ја надминува ширината на содржината се отсекува, на хартија и во прегледот.
 bill_total_qty_label	Вкупна количина етикета
 bill_total_subtotal_label	Под вкупен ознака
@@ -643,7 +639,6 @@ vp_type_size_heading	Големина на типот
 vp_wrap_heading	Ширина на обвивка
 vp_margin_heading	Маргини
 vp_delivery_spooler	Документ за оперативниот систем (системски спулер)
-vp_delivery_raw	Необработени бајти на уредот
 vp_delivery_escpos	ESC/POS термички команди
 virtual_printer_new	Нов виртуелен печатач
 virtual_printer_selected	Уредување „{name}“ - допрете друг во списокот за да се префрлите
@@ -1110,7 +1105,6 @@ remove_these_tables	Отстранете ги овие трпезариски м
 table_remove_ph	Отстрани: T1-T24, или име на една трпезариска маса
 find_server	Најдете го серверот на продавницата
 bill_format	Формат на сметка за гости за гости
-bill_format_help	Испечатено под името на вашиот ресторан на секоја сметка за гости. Одделете ги линиите со | (на пр. MG Road, Rajkot | Ph 98250 00000).
 bill_header_ph	Адреса | телефон
 fssai_ph	FSSAI лиценца бр. (Индија)
 bill_footer_ph	Подножје (на пр. Ви благодариме, посетете повторно)
@@ -1127,7 +1121,6 @@ kot_field_hide	Скриј
 kot_field_on	покажуваат
 kot_field_off	скриј
 kot_field_size	Големина на фонтот
-kot_field_size_ph	на пр. 16, 20, 24, 28, 32…
 kot_weight_light	Светлина
 bill_kot_panel_help	Распоред на сметки за гости и кујнски ливчиња, секој со своја ширина на содржината. Гостинска сметка за гости Касиер е тој што ја издал или подмирил гостинската сметка; KOT Келнер е тој што го испратил билетот за кујна - целата приказна за нарачката останува во книгите.
 std_size_ph	на пр. 18, 20, 26…
@@ -1157,7 +1150,6 @@ kot_style_item_qty	Ставка од менито · Кол
 kot_style_field_pick	Изберете поле
 kot_weight_regular	Редовни
 kot_weight_bold	Задебелен
-kot_align	Порамни
 kot_align_start	Започнете
 kot_align_center	Центар
 kot_align_end	Крај
@@ -1307,18 +1299,8 @@ kot_show_item_hdr	Ставка од менито · Кол
 kot_hide_item_hdr	Скриј колони
 kot_show_title	Насловната линија
 kot_hide_title	Сокриј наслов
-kot_field_order	Нарачка за печатење
-kot_field_up	Движете се нагоре
-kot_field_down	Движете се надолу
 kot_field_cycle	Изберете следно
 kot_field_select	Изберете следно
-kot_field_time	Време
-kot_field_kot_no	KOT Бр
-kot_field_area	Површина
-kot_field_table	Трпезариска маса
-kot_field_shop	Име на продавницата
-kot_field_waiter	Персонал
-kot_field_station	Станица
 dishes_n	{n} јадења
 recipe_ph	Рецепт (по избор) - една порција користи: Rice=0.2, Paneer=0.15
 reorder_ph	Купете повеќе на

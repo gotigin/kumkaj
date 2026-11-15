@@ -83,9 +83,7 @@ print_cancelled_kot_needed	पैली रद्द कर दियोड़�
 print_cancelled_kot_none	इण आदेश माथै कोई रद्द व्यंजन कोनी
 print_cancelled_kot_client	भेज्या गया {place} रै वास्तै प्रिंट रद्द कर दियो गयो ({n}) — सर्वर माथै रसोई रा प्रिंट
 kot_banner	दयालु बैनर
-kot_banner_ph	बैनर (कोरा = कोई कोनी)
 kot_item_prefix	मद उपसर्ग
-kot_item_prefix_ph	जियां कै [रद्द कर दियो गयो]
 kot_strike	स्ट्राइक डिश रो नांव
 kot_strike_note	स्ट्राइक डिश नोट
 kot_strike_on	चालू
@@ -103,13 +101,11 @@ bill_item_qty	मात्रा
 bill_item_price	कीमत
 bill_item_amount	रकम
 bill_item_note	डिश नोट
-bill_item_col_order	स्तंभ क्रम
 bill_item_col_sep	स्तंभ रा नियम
 slip_columns	स्तंभ
 slip_col_width	चौड़ाई (mm)
 slip_col_start	सरुआत री जगां (px)
 slip_col_end	छेहली जगां (px)
-slip_col_align	लिखावट री सीध
 slip_columns_help	हर स्तंभ री चौड़ाई में उणरी सरुआत अर छेहली जगां सामल है। लिखावट आपरै स्तंभ रै मांय लिपटै; सामग्री री चौड़ाई सूं बारै जको है वो कागज अर पूर्वावलोकन दोनूं में कट जावै।
 bill_total_qty_label	कुल लेबल री मात्रा
 bill_total_subtotal_label	उप कुल लेबल
@@ -643,7 +639,6 @@ vp_type_size_heading	आकार आकार
 vp_wrap_heading	लपेटण री चौड़ाई
 vp_margin_heading	मार्जिन
 vp_delivery_spooler	ओएस दस्तावेज (सिस्टम स्पूलर)
-vp_delivery_raw	डिवाइस रै वास्तै कच्ची बाइट्स
 vp_delivery_escpos	ESC/POS थर्मल कमांड
 virtual_printer_new	नयो वर्चुअल प्रिंटर
 virtual_printer_selected	“{name}” नै संपादित करणो — स्विच करण रै वास्तै सूची मांय सूं दूजा माथै टैप करो
@@ -1110,7 +1105,6 @@ remove_these_tables	इण भोजन री मेजां नै हटा�
 table_remove_ph	हटाओ: T1-T24, या एक भोजन री मेज रो नाम
 find_server	दुकान रो सर्वर ढूंढो
 bill_format	बिल रो स्वरूप
-bill_format_help	हरेक बिल माथै थारै रेस्टोरेंट रै नाम रै तळै छप्योड़ो है। न्यारी-न्यारी ओळ्यां रै साथै | (जियां कै एमजी रोड, राजकोट | पीएच 98250 00000)।
 bill_header_ph	पतो | फोन
 fssai_ph	FSSAI लाइसेंस नम्बर (भारत)
 bill_footer_ph	फुटर (जियां कै धन्यवाद, फेरूं जावो)
@@ -1127,7 +1121,6 @@ kot_field_hide	छुपाओ
 kot_field_on	दिखाओ
 kot_field_off	लुकणो
 kot_field_size	फॉन्ट रो आकार
-kot_field_size_ph	जियां कै 16, 20, 24, 28, 32…
 kot_weight_light	उजास
 bill_kot_panel_help	बिल अर रसोई री पर्ची रो लेआउट, हरेक री आपरी सामग्री री चौड़ाई है। बिल कैशियर वो है जिणनै बिल जारी करियो या निपटाया; KOT वेटर वो है जिणनै रसोई री टिकट भेजी है- पूरी आदेश री कहाणी किताबां मांय ई रैवै है।
 std_size_ph	जियां कै 18, 20, 26…
@@ -1157,7 +1150,6 @@ kot_style_item_qty	मद · मात्रा
 kot_style_field_pick	फील्ड चुणो
 kot_weight_regular	नियमित
 kot_weight_bold	बोल्ड
-kot_align	संरेखित करो
 kot_align_start	सरू करो
 kot_align_center	केन्द्र
 kot_align_end	समाप्त करो
@@ -1307,18 +1299,8 @@ kot_show_item_hdr	मद · मात्रा
 kot_hide_item_hdr	स्तंभ छुपाओ
 kot_show_title	शीर्षक री पंक्ति
 kot_hide_title	शीर्षक छुपाओ
-kot_field_order	प्रिंट ऑर्डर
-kot_field_up	ऊपर जावो
-kot_field_down	नीचै जावो
 kot_field_cycle	आगलो चुणो
 kot_field_select	आगलो चुणो
-kot_field_time	बगत
-kot_field_kot_no	KOT कोनी
-kot_field_area	क्षेत्र
-kot_field_table	भोजन री मेज
-kot_field_shop	दुकान रो नांव
-kot_field_waiter	कर्मचारी
-kot_field_station	स्टेशन
 dishes_n	{n} व्यंजन
 recipe_ph	नुस्खा (वैकल्पिक) — एक भाग रो उपयोग: चावल=0.2, पनीर=0.15
 reorder_ph	और खरीदो

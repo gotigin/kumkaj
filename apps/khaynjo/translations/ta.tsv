@@ -83,9 +83,7 @@ print_cancelled_kot_needed	ரத்து உணவுள்ள மேசைய
 print_cancelled_kot_none	இந்த ஆர்டரில் ரத்து இல்லை
 print_cancelled_kot_client	ரத்து ({n}) {place} அனுப்பப்பட்டது — சர்வரில் அச்சிடும்
 kot_banner	பேனர்
-kot_banner_ph	பேனர் (வெற்று = இல்லை)
 kot_item_prefix	உருப்படி முன்னொட்டு
-kot_item_prefix_ph	எ.கா. [CANCELLED] 
 kot_strike	உணவுப் பெயர் அடி
 kot_strike_note	குறிப்பை அடி
 kot_strike_on	ஆன்
@@ -103,13 +101,11 @@ bill_item_qty	எண்ணிக்கை
 bill_item_price	விலை
 bill_item_amount	தொகை
 bill_item_note	குறிப்பு
-bill_item_col_order	நெடுவரிசை வரிசை
 bill_item_col_sep	நெடுவரிசை கோடு
 slip_columns	நெடுவரிசைகள்
 slip_col_width	அகலம் (mm)
 slip_col_start	தொடக்க இடம் (px)
 slip_col_end	முடிவு இடம் (px)
-slip_col_align	உரை சீரமைப்பு
 slip_columns_help	ஒவ்வொரு நெடுவரிசையின் அகலத்திலும் அதன் தொடக்க மற்றும் முடிவு இடம் அடங்கும். உரை தன் நெடுவரிசைக்குள்ளேயே மடிகிறது; உள்ளடக்க அகலத்தைத் தாண்டியது காகிதத்திலும் முன்னோட்டத்திலும் வெட்டப்படும்.
 bill_total_qty_label	மொத்த எண் லேபிள்
 bill_total_subtotal_label	துணை மொத்த லேபிள்
@@ -643,7 +639,6 @@ vp_type_size_heading	எழுத்து அளவு
 vp_wrap_heading	மடிப்பு அகலம்
 vp_margin_heading	விளிம்புகள்
 vp_delivery_spooler	OS ஆவணம் (கணினி ஸ்பூலர்)
-vp_delivery_raw	சாதனத்திற்கு மூல பைட்
 vp_delivery_escpos	ESC/POS வெப்ப கட்டளைகள்
 virtual_printer_new	புதிய மெய்நிகர் அச்சுப்பொறி
 virtual_printer_selected	“{name}” திருத்துதல் — பட்டியலில் வேறொன்றைத் தட்டி மாற்றுங்கள்
@@ -1110,7 +1105,6 @@ remove_these_tables	இந்த மேசைகளை நீக்கு
 table_remove_ph	நீக்கு: T1-T24, அல்லது ஒரு மேசையின் பெயர்
 find_server	கடையின் சர்வரைக் கண்டுபிடி
 bill_format	பில் வடிவம்
-bill_format_help	ஒவ்வொரு பில்லிலும் உங்கள் உணவகப் பெயரின் கீழ் அச்சிடப்படும். வரிகளை | மூலம் பிரியுங்கள் (எ.கா. MG Road, Rajkot | Ph 98250 00000).
 bill_header_ph	முகவரி | தொலைபேசி
 fssai_ph	FSSAI உரிம எண் (இந்தியா)
 bill_footer_ph	அடிக்குறிப்பு (எ.கா. நன்றி, மீண்டும் வருக)
@@ -1127,7 +1121,6 @@ kot_field_hide	மறை
 kot_field_on	காட்டு
 kot_field_off	மறை
 kot_field_size	எழுத்துரு அளவு
-kot_field_size_ph	எ.கா. 16, 20, 24, 28, 32…
 kot_weight_light	மெல்லிய
 bill_kot_panel_help	பில் உள்ளடக்கம் மற்றும் சமையலறை சீட்டு எழுத்துரு. மேலே உள்ள உள்ளடக்க அகலமே பில் மற்றும் சமையலறை சீட்டு இரண்டின் அகலம்.
 std_size_ph	எ.கா. 18, 20, 26…
@@ -1157,7 +1150,6 @@ kot_style_item_qty	உணவு · எண்ணிக்கை
 kot_style_field_pick	புலத்தைத் தேர்வு
 kot_weight_regular	சாதாரண
 kot_weight_bold	தடித்த
-kot_align	சீரமைப்பு
 kot_align_start	தொடங்கவும்
 kot_align_center	நடு
 kot_align_end	முடிவு
@@ -1307,18 +1299,8 @@ kot_show_item_hdr	உணவு · எண்ணிக்கை
 kot_hide_item_hdr	நெடுவரிசைகளை மறை
 kot_show_title	தலைப்பு வரி
 kot_hide_title	தலைப்பை மறை
-kot_field_order	அச்சு வரிசை
-kot_field_up	மேலே நகர்த்து
-kot_field_down	கீழே நகர்த்து
 kot_field_cycle	அடுத்ததைத் தேர்ந்தெடு
 kot_field_select	அடுத்ததைத் தேர்ந்தெடு
-kot_field_time	நேரம்
-kot_field_kot_no	KOT எண்
-kot_field_area	பகுதி
-kot_field_table	மேசை
-kot_field_shop	கடை பெயர்
-kot_field_waiter	ஊழியர்
-kot_field_station	நிலையம்
 dishes_n	{n} உணவுகள்
 recipe_ph	செய்முறை (விருப்பம்) — ஒரு பரிமாறலுக்கு: Rice=0.2, Paneer=0.15
 reorder_ph	இந்த அளவில் மேலும் வாங்கு

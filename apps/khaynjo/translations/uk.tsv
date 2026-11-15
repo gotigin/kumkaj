@@ -83,9 +83,7 @@ print_cancelled_kot_needed	Спочатку відкрийте стіл зі с�
 print_cancelled_kot_none	У цьому замовленні немає скасованих страв
 print_cancelled_kot_client	Скасовані ({n}) для {place} надіслано — кухня друкує на Сервері
 kot_banner	Стрічка типу
-kot_banner_ph	Стрічка (порожньо = немає)
 kot_item_prefix	Префікс позиції
-kot_item_prefix_ph	напр. [СКАСОВАНО]
 kot_strike	Закреслити назву страви
 kot_strike_note	Закреслити нотатку страви
 kot_strike_on	Увімк.
@@ -103,13 +101,11 @@ bill_item_qty	К-сть
 bill_item_price	Ціна
 bill_item_amount	Сума
 bill_item_note	Нотатка страви
-bill_item_col_order	Порядок стовпців
 bill_item_col_sep	Лінії стовпців
 slip_columns	Стовпці
 slip_col_width	Ширина (mm)
 slip_col_start	Відступ на початку (px)
 slip_col_end	Відступ у кінці (px)
-slip_col_align	Вирівнювання тексту
 slip_columns_help	Ширина кожного стовпця містить його відступи на початку й у кінці. Текст переноситься всередині свого стовпця; усе, що виходить за ширину вмісту, обрізається — на папері й у попередньому перегляді.
 bill_total_qty_label	Підпис загальної кількості
 bill_total_subtotal_label	Підпис проміжного підсумку
@@ -643,7 +639,6 @@ vp_type_size_heading	Кегль
 vp_wrap_heading	Ширина переносу
 vp_margin_heading	Поля
 vp_delivery_spooler	Документ ОС (системна черга)
-vp_delivery_raw	Сирі байти на пристрій
 vp_delivery_escpos	Термічні команди ESC/POS
 virtual_printer_new	Новий віртуальний принтер
 virtual_printer_selected	Редагування «{name}» — торкніться іншого в списку, щоб перемкнути
@@ -1110,7 +1105,6 @@ remove_these_tables	Прибрати ці столи
 table_remove_ph	Прибрати: T1-T24 або назву столу
 find_server	Знайти сервер крамниці
 bill_format	Формат рахунку
-bill_format_help	Друкується під назвою ресторану на кожному рахунку. Розділяйте рядки знаком | (напр. MG Road, Rajkot | Tel 98250 00000).
 bill_header_ph	Адреса | телефон
 fssai_ph	Номер ліцензії FSSAI (Індія)
 bill_footer_ph	Підвал (напр. Дякуємо, приходьте ще)
@@ -1127,7 +1121,6 @@ kot_field_hide	Сховати
 kot_field_on	показати
 kot_field_off	сховати
 kot_field_size	Кегль
-kot_field_size_ph	напр. 16, 20, 24, 28, 32…
 kot_weight_light	Тонкий
 bill_kot_panel_help	Макет рахунку й кухонного талона, кожен зі своєю шириною вмісту. Касир рахунку — хто його виставив або закрив; Офіціант KOT — хто надіслав цей талон — уся історія замовлення лишається в книгах.
 std_size_ph	напр. 18, 20, 26…
@@ -1157,7 +1150,6 @@ kot_style_item_qty	Позиція · К-сть
 kot_style_field_pick	Вибрати поле
 kot_weight_regular	Звичайний
 kot_weight_bold	Жирний
-kot_align	Вирівнювання
 kot_align_start	Початок
 kot_align_center	Центр
 kot_align_end	Кінець
@@ -1307,18 +1299,8 @@ kot_show_item_hdr	Позиція · К-сть
 kot_hide_item_hdr	Сховати стовпці
 kot_show_title	Рядок заголовка
 kot_hide_title	Сховати заголовок
-kot_field_order	Порядок друку
-kot_field_up	Вище
-kot_field_down	Нижче
 kot_field_cycle	Вибрати наступне
 kot_field_select	Вибрати наступне
-kot_field_time	Час
-kot_field_kot_no	№ KOT
-kot_field_area	Зона
-kot_field_table	Стіл
-kot_field_shop	Назва крамниці
-kot_field_waiter	Персонал
-kot_field_station	Станція
 dishes_n	{n} страв
 recipe_ph	Рецепт (необов'язково) — одна порція використовує: Rice=0.2, Paneer=0.15
 reorder_ph	Докупити при

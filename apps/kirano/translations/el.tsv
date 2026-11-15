@@ -69,12 +69,10 @@ bill_item_qty	Ποσ.
 bill_item_price	Τιμή
 bill_item_amount	Ποσό
 bill_item_note	Σημείωση αντικειμένου
-bill_item_col_order	Σειρά στηλών
 bill_item_col_sep	Γραμμές στηλών
 slip_col_width	Πλάτος (mm)
 slip_col_start	Κενό αρχής (px)
 slip_col_end	Κενό τέλους (px)
-slip_col_align	Στοίχιση κειμένου
 slip_columns_help	Το πλάτος κάθε στήλης περιλαμβάνει το κενό αρχής και τέλους της. Το κείμενο αναδιπλώνεται μέσα στη στήλη του· ό,τι ξεπερνά το πλάτος περιεχομένου κόβεται, στο χαρτί και στην προεπισκόπηση.
 bill_total_qty_label	Ετικέτα συνολ. ποσ.
 bill_total_subtotal_label	Ετικέτα υποσυνόλου
@@ -431,7 +429,6 @@ printer_profile_heading	Διάταξη
 vp_delivery_heading	Διανομή
 vp_delivery_help	Πώς αυτός ο εικονικός εκτυπωτής στέλνει εργασίες — έγγραφο λειτουργικού συστήματος, ακατέργαστα byte ή ESC/POS. Το περιεχόμενο του δελτίου (τύπος μέγεθος, περιτύλιγμα, περιθώρια) αποφασίζεται από τη μορφή λογαριασμού / δελτίου, όχι εδώ.
 vp_delivery_spooler	Έγγραφο OS (ουρά συστήματος)
-vp_delivery_raw	Ακατέργαστα byte στη συσκευή
 vp_delivery_escpos	Θερμικές εντολές ESC/POS
 virtual_printer_new	Νέος εικονικός εκτυπωτής
 virtual_printer_selected	Επεξεργασία «{name}» — αγγίξτε άλλο στη λίστα για αλλαγή
@@ -718,7 +715,6 @@ customer_paid_ph	Ο πελάτης πλήρωσε
 tip_ph	Φιλοδώρημα
 find_server	Εύρεση του server του μαγαζιού
 bill_format	Μορφή λογαριασμού
-bill_format_help	Τυπωμένο κάτω από το όνομα του καταστήματός σας σε κάθε λογαριασμό. Ξεχωρίστε τις γραμμές με | (π.χ. MG Road, Rajkot | Ph 98250 00000).
 bill_header_ph	Διεύθυνση | τηλέφωνο
 fssai_ph	FSSAI / άδεια καταστήματος αρ. (προαιρετικός)
 bill_footer_ph	Υποσέλιδο (π.χ. Ευχαριστούμε, ελάτε ξανά)
@@ -808,8 +804,6 @@ add_dishes	Προσθήκη στοιχείων
 order_so_far	Σε αυτή την παραγγελία: {n} · {total}
 no_dish_match	Κανένα αντικείμενο δεν ταιριάζει με το "{q}"
 pick_done	Ολοκλήρωση
-kot_field_up	Μετακίνηση πάνω
-kot_field_down	Μετακίνηση κάτω
 dishes_n	Στοιχεία {n}
 reorder_ph	Παράγγειλε κι άλλο στο
 set_reorder	Ορισμός επιπέδου επαναπαραγγελίας
@@ -841,3 +835,6 @@ sel_copy	Αντιγραφή
 sel_select_all	Επιλογή όλων
 sel_copied	Αντιγράφηκε
 nav_loading	Φόρτωση…
+printer_mode_first	Ο πρώτος που δουλεύει
+printer_mode_all	Εκτύπωση σε όλους
+slip_columns	Στήλες

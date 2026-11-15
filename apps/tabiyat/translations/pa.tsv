@@ -81,12 +81,10 @@ bill_item_qty	ਮਾਤਰਾ
 bill_item_price	ਦਰ
 bill_item_amount	ਰਕਮ
 bill_item_note	Rx / ਵਿਕਰੀ ਨੋਟ
-bill_item_col_order	ਕਾਲਮ ਕ੍ਰਮ
 bill_item_col_sep	ਕਾਲਮ ਰੇਖਾ
 slip_col_width	ਚੌੜਾਈ (mm)
 slip_col_start	ਸ਼ੁਰੂਆਤੀ ਥਾਂ (px)
 slip_col_end	ਅੰਤਲੀ ਥਾਂ (px)
-slip_col_align	ਲਿਖਤ ਦੀ ਇਕਸਾਰਤਾ
 slip_columns_help	ਹਰ ਕਾਲਮ ਦੀ ਚੌੜਾਈ ਵਿੱਚ ਉਸਦੀ ਸ਼ੁਰੂਆਤੀ ਅਤੇ ਅੰਤਲੀ ਥਾਂ ਸ਼ਾਮਲ ਹੈ। ਲਿਖਤ ਆਪਣੇ ਕਾਲਮ ਦੇ ਅੰਦਰ ਹੀ ਲਪੇਟੀ ਜਾਂਦੀ ਹੈ; ਸਮੱਗਰੀ ਦੀ ਚੌੜਾਈ ਤੋਂ ਬਾਹਰ ਵਾਲਾ ਹਿੱਸਾ ਕਾਗਜ਼ ਅਤੇ ਝਲਕ ਦੋਵਾਂ ਵਿੱਚ ਕੱਟਿਆ ਜਾਂਦਾ ਹੈ।
 bill_total_qty_label	ਕੁੱਲ ਗਿਣਤੀ ਲੇਬਲ
 bill_total_subtotal_label	ਉਪ-ਜੋੜ ਲੇਬਲ
@@ -443,7 +441,6 @@ printer_profile_heading	ਲੇਆਉਟ
 vp_delivery_heading	ਡਿਲੀਵਰੀ
 vp_delivery_help	ਇਹ ਵਰਚੁਅਲ ਪ੍ਰਿੰਟਰ ਕੰਮ ਕਿਵੇਂ ਭੇਜਦਾ ਹੈ — OS ਦਸਤਾਵੇਜ਼, ਕੱਚੇ ਬਾਈਟ ਜਾਂ ESC/POS। ਪਰਚੀ ਦੀ ਸਮੱਗਰੀ (ਅੱਖਰ ਆਕਾਰ, ਲਪੇਟ, ਹਾਸ਼ੀਏ) ਬਿੱਲ / ਪਰਚੀ ਫ਼ਾਰਮੈਟ ਤੈਅ ਕਰਦਾ ਹੈ, ਇਹ ਨਹੀਂ।
 vp_delivery_spooler	OS ਦਸਤਾਵੇਜ਼ (ਸਿਸਟਮ ਸਪੂਲਰ)
-vp_delivery_raw	ਡਿਵਾਈਸ ਨੂੰ ਕੱਚਾ ਬਾਈਟ
 vp_delivery_escpos	ESC/POS ਥਰਮਲ ਕਮਾਂਡ
 virtual_printer_new	ਨਵਾਂ ਵਰਚੁਅਲ ਪ੍ਰਿੰਟਰ
 virtual_printer_selected	“{name}” ਸੋਧ — ਸੂਚੀ ਵਿੱਚ ਦੂਜੇ ’ਤੇ ਟੈਪ ਕਰਕੇ ਬਦਲੋ
@@ -730,7 +727,6 @@ customer_paid_ph	ਗਾਹਕ ਨੇ ਦਿੱਤੇ
 tip_ph	ਟਿੱਪ
 find_server	ਦੁਕਾਨ ਦਾ ਸਰਵਰ ਲੱਭੋ
 bill_format	ਬਿੱਲ ਫਾਰਮੈਟ
-bill_format_help	ਹਰ ਬਿੱਲ 'ਤੇ ਤੁਹਾਡੀ ਦੁਕਾਨ ਦੇ ਨਾਮ ਹੇਠ ਛਪਦਾ ਹੈ। ਕਤਾਰਾਂ | ਨਾਲ ਵੱਖ ਕਰੋ (ਜਿਵੇਂ MG Road, Rajkot | Ph 98250 00000)।
 bill_header_ph	ਪਤਾ | ਫ਼ੋਨ
 fssai_ph	ਡਰੱਗ ਲਾਇਸੈਂਸ ਨੰ. (ਵਿਕਲਪਿਕ — ਤੁਹਾਡੇ ਸ਼ਬਦ)
 bill_footer_ph	ਫੁੱਟਰ (ਜਿਵੇਂ ਧੰਨਵਾਦ, ਫਿਰ ਆਇਓ)
@@ -820,8 +816,6 @@ add_dishes	ਦਵਾਈਆਂ ਜੋੜੋ
 order_so_far	ਇਸ ਆਰਡਰ ਵਿੱਚ: {n} · {total}
 no_dish_match	“{q}” ਨਾਲ ਕੋਈ ਆਈਟਮ ਮੇਲ ਨਹੀਂ ਖਾਂਦੀ
 pick_done	ਹੋ ਗਿਆ
-kot_field_up	ਉੱਪਰ ਕਰੋ
-kot_field_down	ਹੇਠਾਂ ਕਰੋ
 dishes_n	{n} ਆਈਟਮਾਂ
 reorder_ph	ਇੰਨੇ ਤੇ ਹੋਰ ਖਰੀਦੋ
 set_reorder	ਮੁੜ ਆਰਡਰ ਪੱਧਰ ਰੱਖੋ
@@ -853,3 +847,6 @@ sel_copy	ਕਾਪੀ ਕਰੋ
 sel_select_all	ਸਭ ਚੁਣੋ
 sel_copied	ਕਾਪੀ ਹੋ ਗਿਆ
 nav_loading	ਲੋਡ ਹੋ ਰਿਹਾ ਹੈ…
+printer_mode_first	ਜੋ ਪਹਿਲਾਂ ਚੱਲੇ
+printer_mode_all	ਸਭ 'ਤੇ ਛਾਪੋ
+slip_columns	ਕਾਲਮ

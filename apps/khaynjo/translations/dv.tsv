@@ -83,9 +83,7 @@ print_cancelled_kot_needed	ފުރަތަމަ ކެންސަލް ކޮށްފައިވ�
 print_cancelled_kot_none	މި އޯޑަރުގައި ކެންސަލް ޑިޝްއެއް ނެތެވެ
 print_cancelled_kot_client	{place} ފޮނުވާފައިވާ — ސަރވަރގައި ބަދިގެ ޕްރިންޓްތަކަށް ޕްރިންޓް ކެންސަލް ކުރެވިއްޖެ ({n}).
 kot_banner	އޯގާތެރި ބެނާއެކެވެ
-kot_banner_ph	ބެނާ (ހުސް = އެއްވެސް އެއްޗެއް ނެތް)
 kot_item_prefix	އައިޓަމް ޕްރިފިކްސް
-kot_item_prefix_ph	މ. ]ކެންސަލް ކޮށްފި[
 kot_strike	ސްޓްރައިކް ޑިޝް ނަން
 kot_strike_note	ސްޓްރައިކް ޑިޝް ނޯޓް
 kot_strike_on	މަތީގައި
@@ -103,13 +101,11 @@ bill_item_qty	ކިއުޓީ
 bill_item_price	އަގު
 bill_item_amount	ޢަދަދު
 bill_item_note	ޑިޝް ނޯޓް
-bill_item_col_order	ކޮލަމް ތަރުތީބު
 bill_item_col_sep	ކޮލަމް އުސޫލުތައް
 slip_columns	ކޮލަމްތައް
 slip_col_width	ފުޅާމިން (mm)
 slip_col_start	ފެށުމުގެ ޖާގަ (px)
 slip_col_end	ނިމުމުގެ ޖާގަ (px)
-slip_col_align	ލިޔުން ތަރުތީބުކުރުން
 slip_columns_help	ކޮންމެ ކޮލަމެއްގެ ފުޅާމިނުގައި އޭގެ ފެށުމާއި ނިމުމުގެ ޖާގަ ހިމެނެއެވެ. ލިޔުން އޭގެ ކޮލަމުގެ ތެރޭގައި ބަދަލުވެއެވެ. ކޮންޓެންޓްގެ ފުޅާމިނުން ބޭރުގައިވާ ބައި ކަރުދާހުގައްޔާއި ޕްރީވިއުގައި ކެނޑިގެންދެއެވެ.
 bill_total_qty_label	ޖުމްލަ ކިއުޓީ ލޭބަލް
 bill_total_subtotal_label	ސަބް ޓޯޓަލް ލޭބަލް
@@ -643,7 +639,6 @@ vp_type_size_heading	ޓައިޕް ސައިޒް
 vp_wrap_heading	ވަށާ ފުޅާމިން
 vp_margin_heading	މާޖިންސް އެވެ
 vp_delivery_spooler	އޮއެސް ޑޮކިއުމަންޓް (ސިސްޓަމް ސްޕޫލަރ)
-vp_delivery_raw	ޑިވައިސް އަށް ރޯ ބައިޓްސް
 vp_delivery_escpos	އީއެސްސީ/ޕީއޯއެސް ތަމަލް ކޮމާންޑްސް
 virtual_printer_new	އައު ވާޗުއަލް ޕްރިންޓަރެއް
 virtual_printer_selected	“{name}” އެޑިޓްކުރުން — ބަދަލުކުރުމަށް ލިސްޓުގައިވާ އެހެން އެއްޗަކަށް ފިތާލާށެވެ
@@ -1110,7 +1105,6 @@ remove_these_tables	މި މޭޒުތައް ނަގާށެވެ
 table_remove_ph	ނައްތާލާ: T1-T24، ނުވަތަ އެއް މޭޒުގެ ނަން
 find_server	ފިހާރައިގެ ސަރވަރ ހޯދާށެވެ
 bill_format	ބިލް ފޯމެޓެވެ
-bill_format_help	ކޮންމެ ބިލެއްގައި ތިމާގެ ރެސްޓޯރެންޓުގެ ނަމުގައި ޗާޕްކޮށްފައި ހުރެއެވެ. އާއި އެކު ވަކި ސަފުހާތަކެއް | (އެބަހީ އެމްޖީ ރޯޑް، ރާޖްކޮޓް | ފޯނު 98250 00000).
 bill_header_ph	އެޑްރެސް | ފޯނު
 fssai_ph	އެފްއެސްއެސްއޭއައިގެ ލައިސަންސް ނަންބަރު. (އިންޑިއާ)
 bill_footer_ph	ފޫޓަރ (އެބަހީ ޝުކުރިއްޔާ، އަނެއްކާވެސް ޒިޔާރަތް ކުރައްވާ)
@@ -1127,7 +1121,6 @@ kot_field_hide	ފޮރުވުން
 kot_field_on	ދެއްކާށެވެ
 kot_field_off	ފޮރުވުން
 kot_field_size	ފޮންޓް ސައިޒް
-kot_field_size_ph	މިސާލަކަށް 16، 20، 24، 28، 32...
 kot_weight_light	އަލި
 bill_kot_panel_help	ބިލް އަދި ބަދިގެ ސްލިޕް ލޭއައުޓް، ކޮންމެ އެއްޗެއްގެ ކޮންޓެންޓް ވިޑްތް ވެސް ހުރެއެވެ. ބިލް ކެޝަރަކީ ބިލް ނެރުނު ނުވަތަ ސެޓްލް ކުރި މީހާ؛ އެ ބަދިގެ ޓިކެޓް ފޮނުވީ ކޭއޯޓީ ވެއިޓަރ — ފުލް އޯޑަރ ވާހަކަ ފޮތްތަކުގައި ހުރެއެވެ.
 std_size_ph	މިސާލަކަށް 18، 20، 26...
@@ -1157,7 +1150,6 @@ kot_style_item_qty	އައިޓަމް · ކިއުޓީ
 kot_style_field_pick	ފީލްޑް ހޮވާށެވެ
 kot_weight_regular	ޢާންމު
 kot_weight_bold	ބޯލްޑް
-kot_align	އެލައިން ކުރުން
 kot_align_start	ފެށުން
 kot_align_center	މެދު
 kot_align_end	ނިމުން
@@ -1307,18 +1299,8 @@ kot_show_item_hdr	އައިޓަމް · ޢަދަދު
 kot_hide_item_hdr	ކޮލަމް ފޮރުވާ
 kot_show_title	ސުރުޚީ ލައިން
 kot_hide_title	ސުރުޚީ ފޮރުވާ
-kot_field_order	ޕްރިންޓް ތަރުތީބު
-kot_field_up	މަތަށް
-kot_field_down	ތިރަށް
 kot_field_cycle	ދެން އިޚްތިޔާރުކުރޭ
 kot_field_select	ދެން އިޚްތިޔާރުކުރޭ
-kot_field_time	ވަގުތު
-kot_field_kot_no	KOT ނަންބަރު
-kot_field_area	ހިސާބު
-kot_field_table	މޭޒު
-kot_field_shop	ފިހާރައިގެ ނަން
-kot_field_waiter	ސްޓާފް
-kot_field_station	ސްޓޭޝަން
 dishes_n	{n} ޑިޝް
 recipe_ph	ރެސިޕީ (އިޚްތިޔާރު) — އެއް ބަޔަކު ބޭނުންވާނީ: ބަތް=0.2، ޕަނީރު=0.15
 reorder_ph	އިތުރަށް ގަންނަ މިން

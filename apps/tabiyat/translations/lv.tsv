@@ -81,12 +81,10 @@ bill_item_qty	Daudzums
 bill_item_price	Cena
 bill_item_amount	Summa
 bill_item_note	Rx / pārdošanas piezīme
-bill_item_col_order	Kolonnu secība
 bill_item_col_sep	Kolonnu līnijas
 slip_col_width	Platums (mm)
 slip_col_start	Sākuma atstarpe (px)
 slip_col_end	Beigu atstarpe (px)
-slip_col_align	Teksta līdzinājums
 slip_columns_help	Katras kolonnas platumā ietilpst tās sākuma un beigu atstarpe. Teksts tiek pārnests savas kolonnas iekšpusē; tas, kas pārsniedz satura platumu, tiek nogriezts — uz papīra un priekšskatījumā.
 bill_total_qty_label	Kopējā daudzuma etiķete
 bill_total_subtotal_label	Starpsummas etiķete
@@ -443,7 +441,6 @@ printer_profile_heading	Izkārtojums
 vp_delivery_heading	Piegāde
 vp_delivery_help	Kā šis virtuālais printeris nosūta darbus — OS dokumentu, neapstrādātus baitus vai ESC/POS. Lapas saturu (tipa lielumu, iesaiņojumu, piemales) nosaka rēķina / lapiņas formāts, nevis šeit.
 vp_delivery_spooler	OS dokuments (sistēmas rinda)
-vp_delivery_raw	Neapstrādāti baiti uz ierīci
 vp_delivery_escpos	ESC/POS termālās komandas
 virtual_printer_new	Jauns virtuālais printeris
 virtual_printer_selected	Labo “{name}” — pieskarieties citam sarakstā, lai pārslēgtu
@@ -730,7 +727,6 @@ customer_paid_ph	Klients samaksāja
 tip_ph	Dzeramnauda
 find_server	Atrast veikala serveri
 bill_format	Rēķina formāts
-bill_format_help	Uz katra rēķina uzdrukāts zem jūsu veikala nosaukuma. Atdaliet rindas ar | (piem., MG Road, Rajkot | Ph 98250 00000).
 bill_header_ph	Adrese | tālrunis
 fssai_ph	Narkotiku licence Nr. (pēc izvēles — jūsu formulējums)
 bill_footer_ph	Kājene (piem. Paldies, nāciet vēl)
@@ -820,8 +816,6 @@ add_dishes	Pievienojiet zāles
 order_so_far	Šajā pasūtījumā: {n} · {total}
 no_dish_match	Neviens vienums neatbilst “{q}”
 pick_done	Gatavs
-kot_field_up	Pārvietot augšup
-kot_field_down	Pārvietot lejup
 dishes_n	{n} preces
 reorder_ph	Pirkt vairāk pie
 set_reorder	Iestatīt papildināšanas līmeni
@@ -853,3 +847,6 @@ sel_copy	Kopēt
 sel_select_all	Atlasīt visu
 sel_copied	Nokopēts
 nav_loading	Ielādē…
+printer_mode_first	Pirmais, kas darbojas
+printer_mode_all	Drukāt uz visiem
+slip_columns	Kolonnas

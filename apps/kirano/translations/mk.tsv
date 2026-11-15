@@ -69,12 +69,10 @@ bill_item_qty	Количина
 bill_item_price	Цена
 bill_item_amount	Износ
 bill_item_note	Забелешка за ставка
-bill_item_col_order	Редослед на колони
 bill_item_col_sep	Правила за колони
 slip_col_width	Ширина (mm)
 slip_col_start	Почетно растојание (px)
 slip_col_end	Крајно растојание (px)
-slip_col_align	Порамнување на текстот
 slip_columns_help	Ширината на секоја колона го вклучува нејзиното почетно и крајно растојание. Текстот се прекршува во својата колона; она што ја надминува ширината на содржината се отсекува, на хартија и во прегледот.
 bill_total_qty_label	Вкупна количина етикета
 bill_total_subtotal_label	Под вкупен ознака
@@ -431,7 +429,6 @@ printer_profile_heading	Распоред
 vp_delivery_heading	Испорака
 vp_delivery_help	Како овој виртуелен печатач испраќа задачи - документ за ОС, необработени бајти или ESC/POS. Содржината на ливчињата (големина на типот, обвивката, маргините) се одлучува според форматот на сметката / ливчето, а не овде.
 vp_delivery_spooler	Документ за оперативниот систем (системски спулер)
-vp_delivery_raw	Необработени бајти на уредот
 vp_delivery_escpos	ESC/POS термички команди
 virtual_printer_new	Нов виртуелен печатач
 virtual_printer_selected	Уредување „{name}“ - допрете друг во списокот за да се префрлите
@@ -718,7 +715,6 @@ customer_paid_ph	Клиентот платил
 tip_ph	Совет
 find_server	Најдете го серверот на продавницата
 bill_format	Формат на сметка за гости за гости
-bill_format_help	Испечатено под името на вашата продавница на секоја сметка. Одделете ги линиите со | (на пр. MG Road, Rajkot | Ph 98250 00000).
 bill_header_ph	Адреса | телефон
 fssai_ph	FSSAI / лиценца за продавница бр. (опционално)
 bill_footer_ph	Подножје (на пр. Ви благодариме, посетете повторно)
@@ -808,8 +804,6 @@ add_dishes	Додадете ставки
 order_so_far	По оваа нарачка: {n} · {total}
 no_dish_match	Ниту една ставка не се совпаѓа со „{q}“
 pick_done	Готово
-kot_field_up	Движете се нагоре
-kot_field_down	Движете се надолу
 dishes_n	{n} ставки
 reorder_ph	Купете повеќе на
 set_reorder	Поставете го нивото на пренарачување
@@ -841,3 +835,6 @@ sel_copy	Копирај
 sel_select_all	Избери сè
 sel_copied	Копирано
 nav_loading	Се вчитува…
+printer_mode_first	Прво тоа функционира
+printer_mode_all	Печатете на сите
+slip_columns	Колони

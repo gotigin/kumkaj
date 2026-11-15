@@ -83,9 +83,7 @@ print_cancelled_kot_needed	Abra uma mesa com pratos cancelados
 print_cancelled_kot_none	Sem pratos cancelados neste pedido
 print_cancelled_kot_client	Cancelados ({n}) para {place} enviados — imprime no servidor
 kot_banner	Banner
-kot_banner_ph	Banner (vazio = nenhum)
 kot_item_prefix	Prefixo do item
-kot_item_prefix_ph	ex. [CANCELLED]
 kot_strike	Riscar nome
 kot_strike_note	Riscar nota
 kot_strike_on	Sim
@@ -103,13 +101,11 @@ bill_item_qty	Qtd
 bill_item_price	Preço
 bill_item_amount	Valor
 bill_item_note	Nota
-bill_item_col_order	Ordem das colunas
 bill_item_col_sep	Riscos das colunas
 slip_columns	Colunas
 slip_col_width	Largura (mm)
 slip_col_start	Espaço inicial (px)
 slip_col_end	Espaço final (px)
-slip_col_align	Alinhamento do texto
 slip_columns_help	A largura de cada coluna inclui o seu espaço inicial e final. O texto quebra dentro da sua coluna; o que passa da largura do conteúdo é cortado, no papel e na pré-visualização.
 bill_total_qty_label	Rótulo qtd total
 bill_total_subtotal_label	Rótulo subtotal
@@ -643,7 +639,6 @@ vp_type_size_heading	Tamanho do tipo
 vp_wrap_heading	Largura de quebra
 vp_margin_heading	Margens
 vp_delivery_spooler	Documento do SO (spooler do sistema)
-vp_delivery_raw	Bytes brutos para o dispositivo
 vp_delivery_escpos	Comandos térmicos ESC/POS
 virtual_printer_new	Nova impressora virtual
 virtual_printer_selected	A editar “{name}” — toque outra na lista para mudar
@@ -1110,7 +1105,6 @@ remove_these_tables	Remover estas mesas
 table_remove_ph	Remover: T1-T24 ou o nome de uma mesa
 find_server	Encontrar o servidor da loja
 bill_format	Formato da conta
-bill_format_help	Impresso abaixo do nome do restaurante em toda conta. Separe linhas com | (ex. MG Road, Rajkot | Tel 98250 00000).
 bill_header_ph	Endereço | telefone
 fssai_ph	Nº licença FSSAI (Índia)
 bill_footer_ph	Rodapé (ex. Obrigado, volte sempre)
@@ -1127,7 +1121,6 @@ kot_field_hide	Ocultar
 kot_field_on	mostrar
 kot_field_off	ocultar
 kot_field_size	Tamanho da fonte
-kot_field_size_ph	ex. 16, 20, 24, 28, 32…
 kot_weight_light	Fina
 bill_kot_panel_help	Conteúdo da fatura e tipografia dos tickets de cozinha. A largura de conteúdo acima é a da fatura e a do ticket de cozinha.
 std_size_ph	ex. 18, 20, 26…
@@ -1157,7 +1150,6 @@ kot_style_item_qty	Artigo · Qtd
 kot_style_field_pick	Selecionar campo
 kot_weight_regular	Normal
 kot_weight_bold	Negrito
-kot_align	Alinhar
 kot_align_start	Iniciar
 kot_align_center	Centralizar
 kot_align_end	Final
@@ -1307,18 +1299,8 @@ kot_show_item_hdr	Artigo · Qtd
 kot_hide_item_hdr	Ocultar colunas
 kot_show_title	Linha de título
 kot_hide_title	Ocultar título
-kot_field_order	Imprimir pedido
-kot_field_up	Mover para cima
-kot_field_down	Mover para baixo
 kot_field_cycle	Selecionar próximo
 kot_field_select	Selecionar próximo
-kot_field_time	Hora
-kot_field_kot_no	N.º KOT
-kot_field_area	Área
-kot_field_table	Mesa
-kot_field_shop	Nome da loja
-kot_field_waiter	Equipa
-kot_field_station	Estação
 dishes_n	{n} pratos
 recipe_ph	Receita (opcional) — uma dose usa: Rice=0.2, Paneer=0.15
 reorder_ph	Comprar mais em

@@ -83,9 +83,7 @@ print_cancelled_kot_needed	रद्द पदार्थांची टेब
 print_cancelled_kot_none	या ऑर्डरवर रद्द नाही
 print_cancelled_kot_client	रद्द ({n}) {place} पाठवले — सर्व्हरवर छापेल
 kot_banner	बॅनर
-kot_banner_ph	बॅनर (रिकामे = नाही)
 kot_item_prefix	आयटम उपसर्ग
-kot_item_prefix_ph	उदा. [CANCELLED] 
 kot_strike	पदार्थ नाव कापा
 kot_strike_note	नोंद कापा
 kot_strike_on	चालू
@@ -103,13 +101,11 @@ bill_item_qty	संख्या
 bill_item_price	दर
 bill_item_amount	रक्कम
 bill_item_note	नोंद
-bill_item_col_order	स्तंभ क्रम
 bill_item_col_sep	स्तंभ रेषा
 slip_columns	स्तंभ
 slip_col_width	रुंदी (mm)
 slip_col_start	सुरुवातीची जागा (px)
 slip_col_end	शेवटची जागा (px)
-slip_col_align	मजकूर संरेखन
 slip_columns_help	प्रत्येक स्तंभाच्या रुंदीत त्याची सुरुवातीची आणि शेवटची जागा समाविष्ट आहे. मजकूर आपल्या स्तंभातच गुंडाळला जातो; मजकुराच्या रुंदीबाहेरचे कागदावर आणि पूर्वावलोकनात कापले जाते.
 bill_total_qty_label	एकूण संख्या लेबल
 bill_total_subtotal_label	उपबेरीज लेबल
@@ -643,7 +639,6 @@ vp_type_size_heading	अक्षर आकार
 vp_wrap_heading	रॅप रुंदी
 vp_margin_heading	मार्जिन
 vp_delivery_spooler	OS दस्तऐवज (सिस्टम स्पूलर)
-vp_delivery_raw	डिव्हाइसला कच्चा बाइट
 vp_delivery_escpos	ESC/POS थर्मल कमांड
 virtual_printer_new	नवीन व्हर्च्युअल प्रिंटर
 virtual_printer_selected	“{name}” संपादन — यादीत दुसऱ्यावर टॅप करून बदला
@@ -1110,7 +1105,6 @@ remove_these_tables	हे टेबल काढा
 table_remove_ph	काढा: T1-T24, किंवा एका टेबलचे नाव
 find_server	दुकानाचा सर्व्हर शोधा
 bill_format	बिलचे स्वरूप
-bill_format_help	प्रत्येक बिलावर तुमच्या रेस्टॉरंटच्या नावाखाली छापले जाते. ओळी | ने वेगळ्या करा (उदा. MG Road, Rajkot | Ph 98250 00000).
 bill_header_ph	पत्ता | फोन
 fssai_ph	FSSAI परवाना क्र. (भारत)
 bill_footer_ph	फूटर (उदा. धन्यवाद, पुन्हा या)
@@ -1127,7 +1121,6 @@ kot_field_hide	लपवा
 kot_field_on	दाखव
 kot_field_off	लपव
 kot_field_size	फॉन्ट आकार
-kot_field_size_ph	उदा. 16, 20, 24, 28, 32…
 kot_weight_light	हलके
 bill_kot_panel_help	बिल मजकूर आणि स्वयंपाकघर स्लिप टायपोग्राफी. वरची मजकूर रुंदी हीच बिल आणि स्वयंपाकघर स्लिप दोन्हींची रुंदी.
 std_size_ph	उदा. 18, 20, 26…
@@ -1157,7 +1150,6 @@ kot_style_item_qty	आयटम · संख्या
 kot_style_field_pick	फील्ड निवडा
 kot_weight_regular	सामान्य
 kot_weight_bold	जाड
-kot_align	संरेखन
 kot_align_start	सुरू करा
 kot_align_center	मध्यभागी
 kot_align_end	शेवटी
@@ -1307,18 +1299,8 @@ kot_show_item_hdr	आयटम · संख्या
 kot_hide_item_hdr	स्तंभ लपवा
 kot_show_title	शीर्षक ओळ
 kot_hide_title	शीर्षक लपवा
-kot_field_order	छपाईचा क्रम
-kot_field_up	वर हलवा
-kot_field_down	खाली हलवा
 kot_field_cycle	पुढचे निवडा
 kot_field_select	पुढचे निवडा
-kot_field_time	वेळ
-kot_field_kot_no	KOT क्र.
-kot_field_area	क्षेत्र
-kot_field_table	टेबल
-kot_field_shop	दुकानाचे नाव
-kot_field_waiter	कर्मचारी
-kot_field_station	स्टेशन
 dishes_n	{n} पदार्थ
 recipe_ph	रेसिपी (ऐच्छिक) — एका प्लेटला लागते: Rice=0.2, Paneer=0.15
 reorder_ph	इतके झाल्यावर आणखी घ्या

@@ -83,9 +83,7 @@ print_cancelled_kot_needed	पहिले रद्द परिकार भ�
 print_cancelled_kot_none	यस अर्डरमा कुनै रद्द परिकार छैन
 print_cancelled_kot_client	{place} का लागि रद्द छाप्नुहोस् ({n}) पठाइयो — भान्साले सर्भरमा छाप्छ
 kot_banner	प्रकार ब्यानर
-kot_banner_ph	ब्यानर (खाली = छैन)
 kot_item_prefix	सामान उपसर्ग
-kot_item_prefix_ph	जस्तै [CANCELLED]
 kot_strike	परिकारको नाम काट्नुहोस्
 kot_strike_note	परिकारको टिप्पणी काट्नुहोस्
 kot_strike_on	खुला
@@ -103,13 +101,11 @@ bill_item_qty	परिमाण
 bill_item_price	मूल्य
 bill_item_amount	रकम
 bill_item_note	परिकारको टिप्पणी
-bill_item_col_order	स्तम्भको क्रम
 bill_item_col_sep	स्तम्भ रेखा
 slip_columns	स्तम्भहरू
 slip_col_width	चौडाइ (mm)
 slip_col_start	सुरुको ठाउँ (px)
 slip_col_end	अन्त्यको ठाउँ (px)
-slip_col_align	पाठ पङ्क्तिबद्धता
 slip_columns_help	प्रत्येक स्तम्भको चौडाइमा यसको सुरु र अन्त्यको ठाउँ समावेश हुन्छ। पाठ आफ्नै स्तम्भभित्र बेरिन्छ; सामग्रीको चौडाइभन्दा बाहिर भएको भाग कागजमा र पूर्वावलोकनमा काटिन्छ।
 bill_total_qty_label	कुल परिमाण लेबल
 bill_total_subtotal_label	उप-जम्मा लेबल
@@ -643,7 +639,6 @@ vp_type_size_heading	अक्षर आकार
 vp_wrap_heading	बेर्ने चौडाइ
 vp_margin_heading	मार्जिन
 vp_delivery_spooler	OS कागजात (सिस्टम स्पूलर)
-vp_delivery_raw	उपकरणमा कच्चा बाइट
 vp_delivery_escpos	ESC/POS थर्मल आदेश
 virtual_printer_new	नयाँ भर्चुअल प्रिन्टर
 virtual_printer_selected	“{name}” सम्पादन गर्दै — बदल्न सूचीमा अर्को थिच्नुहोस्
@@ -1110,7 +1105,6 @@ remove_these_tables	यी टेबल हटाउनुहोस्
 table_remove_ph	हटाउनुहोस्: T1-T24, वा एउटा टेबलको नाम
 find_server	पसलको सर्भर खोज्नुहोस्
 bill_format	बिल ढाँचा
-bill_format_help	हरेक बिलमा तपाईंको रेस्टुरेन्टको नामतल छापिन्छ। पङ्क्तिलाई | ले छुट्याउनुहोस् (जस्तै MG Road, Rajkot | Ph 98250 00000)।
 bill_header_ph	ठेगाना | फोन
 fssai_ph	FSSAI इजाजत नं. (भारत)
 bill_footer_ph	फुटर (जस्तै धन्यवाद, फेरि आउनुहोला)
@@ -1127,7 +1121,6 @@ kot_field_hide	लुकाउनुहोस्
 kot_field_on	देखाउने
 kot_field_off	लुकाउने
 kot_field_size	अक्षर आकार
-kot_field_size_ph	जस्तै 16, 20, 24, 28, 32…
 kot_weight_light	पातलो
 bill_kot_panel_help	बिल र भान्सा पर्चीको लेआउट, हरेकको आफ्नै चौडाइ। बिलको क्यासियर बिल जारी वा मिलाउने व्यक्ति हो; KOT वेटर त्यो भान्सा टिकट पठाउने हो — पूरा अर्डरको कथा खातामा रहन्छ।
 std_size_ph	जस्तै 18, 20, 26…
@@ -1157,7 +1150,6 @@ kot_style_item_qty	सामान · परिमाण
 kot_style_field_pick	फिल्ड छान्नुहोस्
 kot_weight_regular	सामान्य
 kot_weight_bold	मोटो
-kot_align	मिलान
 kot_align_start	सुरु
 kot_align_center	बीचमा
 kot_align_end	अन्त्यमा
@@ -1307,18 +1299,8 @@ kot_show_item_hdr	सामान · परिमाण
 kot_hide_item_hdr	स्तम्भ लुकाउनुहोस्
 kot_show_title	शीर्षक पङ्क्ति
 kot_hide_title	शीर्षक लुकाउनुहोस्
-kot_field_order	छाप्ने क्रम
-kot_field_up	माथि सार्नुहोस्
-kot_field_down	तल सार्नुहोस्
 kot_field_cycle	अर्को छान्नुहोस्
 kot_field_select	अर्को छान्नुहोस्
-kot_field_time	समय
-kot_field_kot_no	KOT नं.
-kot_field_area	क्षेत्र
-kot_field_table	टेबल
-kot_field_shop	पसलको नाम
-kot_field_waiter	कर्मचारी
-kot_field_station	स्टेसन
 dishes_n	{n} परिकार
 recipe_ph	विधि (ऐच्छिक) — एक भागमा लाग्ने: Rice=0.2, Paneer=0.15
 reorder_ph	यति पुगेपछि थप किन्नुहोस्

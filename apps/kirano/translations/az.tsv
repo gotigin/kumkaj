@@ -69,12 +69,10 @@ bill_item_qty	Say
 bill_item_price	Qiymət
 bill_item_amount	Məbləğ
 bill_item_note	Maddə qeydi
-bill_item_col_order	Sütun sırası
 bill_item_col_sep	Sütun xətləri
 slip_col_width	En (mm)
 slip_col_start	Başlanğıc boşluğu (px)
 slip_col_end	Son boşluq (px)
-slip_col_align	Mətn düzləndirmə
 slip_columns_help	Hər sütunun eni onun başlanğıc və son boşluğunu da əhatə edir. Mətn öz sütunu daxilində sətirlərə bölünür; məzmun enindən kənarda qalan hissə həm kağızda, həm də önizləmədə kəsilir.
 bill_total_qty_label	Ümumi say etiketi
 bill_total_subtotal_label	Ara cəm etiketi
@@ -431,7 +429,6 @@ printer_profile_heading	Düzüm
 vp_delivery_heading	Çatdırılma
 vp_delivery_help	Bu virtual printer işləri necə göndərir — OS sənədi, xam baytlar və ya ESC/POS. Slip məzmunu (növ ölçüsü, sarğı, kənarlar) burada deyil, qanun layihəsi / Slip formatı ilə müəyyən edilir.
 vp_delivery_spooler	ƏS sənədi (sistem növbəsi)
-vp_delivery_raw	Cihaza xam baytlar
 vp_delivery_escpos	ESC/POS termal əmrləri
 virtual_printer_new	Yeni virtual printer
 virtual_printer_selected	«{name}» redaktə olunur — keçmək üçün siyahıda başqasına toxunun
@@ -718,7 +715,6 @@ customer_paid_ph	Müştəri ödədi
 tip_ph	Çaypulu
 find_server	Mağazanın serverini tap
 bill_format	Hesab formatı
-bill_format_help	Hər hesabda mağazanızın adı ilə çap olunur. Sətirləri | ilə ayırın (məsələn, MG Road, Rajkot | Ph 98250 00000).
 bill_header_ph	Ünvan | telefon
 fssai_ph	FSSAI / mağaza lisenziyası №. (isteğe bağlı)
 bill_footer_ph	Altlıq (məs. Təşəkkür edirik, yenə gəlin)
@@ -808,8 +804,6 @@ add_dishes	Elementlər əlavə edin
 order_so_far	Bu sifarişdə: {n} · {total}
 no_dish_match	"{q}" ilə uyğun gələn element yoxdur
 pick_done	Bitdi
-kot_field_up	Yuxarı köçür
-kot_field_down	Aşağı köçür
 dishes_n	{n} maddələr
 reorder_ph	Bu səviyyədə yenidən al
 set_reorder	Yenidən alma səviyyəsini qoy
@@ -841,3 +835,6 @@ sel_copy	Köçür
 sel_select_all	Hamısını seç
 sel_copied	Köçürüldü
 nav_loading	Yüklənir…
+printer_mode_first	Birinci işləyən
+printer_mode_all	Hamısına çap et
+slip_columns	Sütunlar

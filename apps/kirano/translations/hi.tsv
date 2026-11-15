@@ -69,12 +69,10 @@ bill_item_qty	मात्रा
 bill_item_price	दर
 bill_item_amount	राशि
 bill_item_note	आइटम नोट
-bill_item_col_order	स्तंभ क्रम
 bill_item_col_sep	स्तंभ रेखा
 slip_col_width	चौड़ाई (mm)
 slip_col_start	शुरुआत की जगह (px)
 slip_col_end	अंत की जगह (px)
-slip_col_align	टेक्स्ट संरेखण
 slip_columns_help	हर स्तंभ की चौड़ाई में उसकी शुरुआत और अंत की जगह शामिल है। टेक्स्ट अपने स्तंभ के भीतर ही लिपटता है; सामग्री की चौड़ाई से बाहर जो है वह कागज़ और पूर्वावलोकन दोनों में कट जाता है।
 bill_total_qty_label	कुल संख्या लेबल
 bill_total_subtotal_label	उप-योग लेबल
@@ -431,7 +429,6 @@ printer_profile_heading	लेआउट
 vp_delivery_heading	डिलीवरी
 vp_delivery_help	यह वर्चुअल प्रिंटर काम कैसे भेजता है — OS दस्तावेज़, कच्चे बाइट या ESC/POS। पर्ची की सामग्री (अक्षर आकार, लपेट, मार्जिन) बिल / पर्ची फ़ॉर्मेट तय करता है, यह नहीं।
 vp_delivery_spooler	OS दस्तावेज़ (सिस्टम स्पूलर)
-vp_delivery_raw	डिवाइस को कच्चा बाइट
 vp_delivery_escpos	ESC/POS थर्मल कमांड
 virtual_printer_new	नया वर्चुअल प्रिंटर
 virtual_printer_selected	“{name}” संपादित — सूची में दूसरी पर टैप कर बदलें
@@ -718,7 +715,6 @@ customer_paid_ph	ग्राहक ने दिया
 tip_ph	टिप
 find_server	दुकान का सर्वर खोजें
 bill_format	बिल का प्रारूप
-bill_format_help	हर बिल पर आपकी दुकान के नाम के नीचे छपता है। पंक्तियाँ | से अलग करें (जैसे MG Road, Rajkot | Ph 98250 00000)।
 bill_header_ph	पता | फ़ोन
 fssai_ph	FSSAI / दुकान लाइसेंस नं. (वैकल्पिक)
 bill_footer_ph	फ़ुटर (जैसे धन्यवाद, फिर आइए)
@@ -808,8 +804,6 @@ add_dishes	आइटम जोड़ें
 order_so_far	इस ऑर्डर में: {n} · {total}
 no_dish_match	“{q}” से कोई आइटम मेल नहीं खाता
 pick_done	हो गया
-kot_field_up	ऊपर करें
-kot_field_down	नीचे करें
 dishes_n	{n} आइटम
 reorder_ph	इतने पर और खरीदें
 set_reorder	पुनः ऑर्डर स्तर रखें
@@ -841,3 +835,6 @@ sel_copy	कॉपी करें
 sel_select_all	सब चुनें
 sel_copied	कॉपी हो गया
 nav_loading	लोड हो रहा है…
+printer_mode_first	जो पहले चले
+printer_mode_all	सब पर छापें
+slip_columns	स्तंभ

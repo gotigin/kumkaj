@@ -83,9 +83,7 @@ print_cancelled_kot_needed	Mepee tebụl nwere nri akagbuola mbụ
 print_cancelled_kot_none	Enweghị nri akagbuola n'iwu a
 print_cancelled_kot_client	Mbipụta nke akagbuola ({n}) maka {place} ezitere — kichin na-ebipụta na sava
 kot_banner	Ọkọlọtọ ụdị
-kot_banner_ph	Ọkọlọtọ (efu = ọ dịghị)
 kot_item_prefix	Mmalite ihe
-kot_item_prefix_ph	dịka [KAGBUO]
 kot_strike	See aha nri
 kot_strike_note	See ndetu nri
 kot_strike_on	Gbanye
@@ -103,13 +101,11 @@ bill_item_qty	Ọnụọgụ
 bill_item_price	Ọnụahịa
 bill_item_amount	Ego
 bill_item_note	Ndetu nri
-bill_item_col_order	Usoro ogidi
 bill_item_col_sep	Ahịrị ogidi
 slip_columns	Kọlụm
 slip_col_width	Obosara (mm)
 slip_col_start	Ohere mmalite (px)
 slip_col_end	Ohere njedebe (px)
-slip_col_align	Nhazi ederede
 slip_columns_help	Obosara kọlụm ọ bụla gụnyere ohere mmalite na njedebe ya. Ederede na-ekechi n’ime kọlụm ya; ihe gafere obosara ọdịnaya ka a na-egbubi, n’akwụkwọ na n’ihe ngosi.
 bill_total_qty_label	Akara ngụkọta ọnụọgụ
 bill_total_subtotal_label	Akara ngụkọta nta
@@ -643,7 +639,6 @@ vp_type_size_heading	Nha mkpụrụedemede
 vp_wrap_heading	Obosara mkpuchi
 vp_margin_heading	Oke
 vp_delivery_spooler	Akwụkwọ sistemụ (spooler sistemụ)
-vp_delivery_raw	Bayịt ozugbo na ngwaọrụ
 vp_delivery_escpos	Iwu okpomọkụ ESC/POS
 virtual_printer_new	Igwe mbipụta mebere ọhụrụ
 virtual_printer_selected	Na-edezi “{name}” — kpatụ nke ọzọ na ndepụta ka ị gbanwee
@@ -1110,7 +1105,6 @@ remove_these_tables	Wepụ tebụl ndị a
 table_remove_ph	Wepụ: T1-T24, ma ọ bụ aha otu tebụl
 find_server	Chọta sava ụlọ ahịa
 bill_format	Ụdị ụgwọ
-bill_format_help	A na-ebipụta ya n'okpuru aha ụlọ oriri gị na ụgwọ ọ bụla. Kewaa ahịrị site na | (dịka MG Road, Rajkot | Ph 98250 00000).
 bill_header_ph	Adreesị | ekwentị
 fssai_ph	Nọmba ikike FSSAI (India)
 bill_footer_ph	Ala (dịka Daalụ, bịa ọzọ)
@@ -1127,7 +1121,6 @@ kot_field_hide	Zoo
 kot_field_on	gosi
 kot_field_off	zoo
 kot_field_size	Nha mkpụrụedemede
-kot_field_size_ph	dịka 16, 20, 24, 28, 32…
 kot_weight_light	Ọ dị mfe
 bill_kot_panel_help	Nhazi slip ụgwọ na kichin, nke ọ bụla nwere obosara nke ya. Onye na-anakọta ego ụgwọ bụ onye nyere ma ọ bụ doziri ụgwọ; Onye na-eje ozi KOT bụ onye zigara tiketi kichin ahụ — akụkọ iwu zuru ezu na-anọ n'akwụkwọ.
 std_size_ph	dịka 18, 20, 26…
@@ -1157,7 +1150,6 @@ kot_style_item_qty	Ihe · Ọnụ
 kot_style_field_pick	Họrọ ubi
 kot_weight_regular	Nkịtị
 kot_weight_bold	Oke
-kot_align	Dozie
 kot_align_start	Mmalite
 kot_align_center	Etu
 kot_align_end	Ọgwụgwụ
@@ -1307,18 +1299,8 @@ kot_show_item_hdr	Ihe · Ọnụ
 kot_hide_item_hdr	Zoo ogidi
 kot_show_title	Ahịrị isiokwu
 kot_hide_title	Zoo isiokwu
-kot_field_order	Usoro mbipụta
-kot_field_up	Bugharịa elu
-kot_field_down	Bugharịa ala
 kot_field_cycle	Họrọ nke ọzọ
 kot_field_select	Họrọ nke ọzọ
-kot_field_time	Oge
-kot_field_kot_no	Nọmba KOT
-kot_field_area	Mpaghara
-kot_field_table	Tebụl
-kot_field_shop	Aha ụlọ ahịa
-kot_field_waiter	Ndị ọrụ
-kot_field_station	Ọdụ
 dishes_n	nri {n}
 recipe_ph	Usoro esi nri (nhọrọ) — otu nkeji na-eji: Rice=0.2, Paneer=0.15
 reorder_ph	Zụta ọzọ na

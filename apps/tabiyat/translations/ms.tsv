@@ -81,12 +81,10 @@ bill_item_qty	Kuantiti
 bill_item_price	harga
 bill_item_amount	Jumlah
 bill_item_note	Rx / nota jualan
-bill_item_col_order	Susunan lajur
 bill_item_col_sep	Peraturan lajur
 slip_col_width	Lebar (mm)
 slip_col_start	Ruang permulaan (px)
 slip_col_end	Ruang penghujung (px)
-slip_col_align	Penjajaran teks
 slip_columns_help	Lebar setiap lajur termasuk ruang permulaan dan penghujungnya. Teks dibalut di dalam lajurnya; apa-apa yang melepasi lebar kandungan dipotong, di atas kertas dan dalam pratonton.
 bill_total_qty_label	Jumlah label kuantiti
 bill_total_subtotal_label	Sub jumlah label
@@ -443,7 +441,6 @@ printer_profile_heading	Susun atur
 vp_delivery_heading	Penghantaran
 vp_delivery_help	Cara pencetak maya ini menghantar kerja — dokumen OS, bait mentah atau ESC/POS. Kandungan slip (saiz jenis, balut, jidar) ditentukan oleh format bil / Slip, bukan di sini.
 vp_delivery_spooler	Dokumen OS (spooler sistem)
-vp_delivery_raw	Bait mentah ke peranti
 vp_delivery_escpos	ESC/POS arahan terma
 virtual_printer_new	Pencetak maya baharu
 virtual_printer_selected	Mengedit “{name}” — ketik satu lagi dalam senarai untuk bertukar
@@ -730,7 +727,6 @@ customer_paid_ph	Pelanggan bayar
 tip_ph	Petua
 find_server	Cari pelayan kedai
 bill_format	Format bil
-bill_format_help	Dicetak di bawah nama kedai anda pada setiap bil. Pisahkan baris dengan | (cth. MG Road, Rajkot | Ph 98250 00000).
 bill_header_ph	Alamat | telefon
 fssai_ph	Lesen dadah no. (pilihan - perkataan anda)
 bill_footer_ph	Pengaki (cth. Terima kasih, lawati lagi)
@@ -820,8 +816,6 @@ add_dishes	Tambah ubat
 order_so_far	Atas pesanan ini: {n} · {total}
 no_dish_match	Tiada item yang sepadan dengan "{q}"
 pick_done	Selesai
-kot_field_up	Bergerak ke atas
-kot_field_down	Bergerak ke bawah
 dishes_n	item {n}
 reorder_ph	Beli lebih banyak di
 set_reorder	Tetapkan tahap susunan semula
@@ -853,3 +847,6 @@ sel_copy	Salin
 sel_select_all	Pilih semua
 sel_copied	Disalin
 nav_loading	Memuatkan…
+printer_mode_first	Pertama yang berfungsi
+printer_mode_all	Cetak pada semua
+slip_columns	Lajur

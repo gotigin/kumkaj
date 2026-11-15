@@ -83,9 +83,7 @@ print_cancelled_kot_needed	Abra primeiro unha mesa con pratos anulados
 print_cancelled_kot_none	Non hai pratos anulados neste pedido
 print_cancelled_kot_client	Anulados ({n}) para {place} enviados — a cociña imprime no Servidor
 kot_banner	Faixa de tipo
-kot_banner_ph	Faixa (baleiro = ningunha)
 kot_item_prefix	Prefixo do artigo
-kot_item_prefix_ph	p. ex. [ANULADO]
 kot_strike	Riscar o nome do prato
 kot_strike_note	Riscar a nota do prato
 kot_strike_on	Activado
@@ -103,13 +101,11 @@ bill_item_qty	Cant.
 bill_item_price	Prezo
 bill_item_amount	Importe
 bill_item_note	Nota do prato
-bill_item_col_order	Orde das columnas
 bill_item_col_sep	Liñas de columna
 slip_columns	Columnas
 slip_col_width	Ancho (mm)
 slip_col_start	Espazo inicial (px)
 slip_col_end	Espazo final (px)
-slip_col_align	Aliñamento do texto
 slip_columns_help	O ancho de cada columna inclúe o seu espazo inicial e final. O texto axústase dentro da súa columna; o que pasa do ancho do contido recórtase, no papel e na vista previa.
 bill_total_qty_label	Etiqueta de cant. total
 bill_total_subtotal_label	Etiqueta de subtotal
@@ -643,7 +639,6 @@ vp_type_size_heading	Tamaño de letra
 vp_wrap_heading	Largo de liña
 vp_margin_heading	Marxes
 vp_delivery_spooler	Documento do SO (cola do sistema)
-vp_delivery_raw	Bytes en bruto ao dispositivo
 vp_delivery_escpos	Ordes térmicas ESC/POS
 virtual_printer_new	Impresora virtual nova
 virtual_printer_selected	Editando «{name}» — prema outra da lista para cambiar
@@ -1110,7 +1105,6 @@ remove_these_tables	Quitar estas mesas
 table_remove_ph	Quitar: T1-T24, ou o nome dunha mesa
 find_server	Atopar o servidor da tenda
 bill_format	Formato da conta
-bill_format_help	Imprímese baixo o nome do restaurante en cada conta. Separe as liñas con | (p. ex. MG Road, Rajkot | Tel 98250 00000).
 bill_header_ph	Enderezo | teléfono
 fssai_ph	Núm. de licenza FSSAI (India)
 bill_footer_ph	Pé (p. ex. Grazas, volva)
@@ -1127,7 +1121,6 @@ kot_field_hide	Agochar
 kot_field_on	mostrar
 kot_field_off	agochar
 kot_field_size	Tamaño de letra
-kot_field_size_ph	p. ex. 16, 20, 24, 28, 32…
 kot_weight_light	Fina
 bill_kot_panel_help	Disposición da conta e do tícket de cociña, cada un co seu largo de contido. O Caixeiro da conta é quen a emitiu ou pechou; o Camareiro do KOT é quen enviou ese tícket — a historia enteira do pedido fica nos libros.
 std_size_ph	p. ex. 18, 20, 26…
@@ -1157,7 +1150,6 @@ kot_style_item_qty	Artigo · Cant.
 kot_style_field_pick	Seleccionar o campo
 kot_weight_regular	Normal
 kot_weight_bold	Negra
-kot_align	Aliñamento
 kot_align_start	Inicio
 kot_align_center	Centro
 kot_align_end	Final
@@ -1307,18 +1299,8 @@ kot_show_item_hdr	Artigo · Cant.
 kot_hide_item_hdr	Agochar as columnas
 kot_show_title	Liña de título
 kot_hide_title	Agochar o título
-kot_field_order	Orde de impresión
-kot_field_up	Subir
-kot_field_down	Baixar
 kot_field_cycle	Seleccionar o seguinte
 kot_field_select	Seleccionar o seguinte
-kot_field_time	Hora
-kot_field_kot_no	Núm. KOT
-kot_field_area	Zona
-kot_field_table	Mesa
-kot_field_shop	Nome da tenda
-kot_field_waiter	Persoal
-kot_field_station	Estación
 dishes_n	{n} pratos
 recipe_ph	Receita (opcional) — unha ración usa: Rice=0.2, Paneer=0.15
 reorder_ph	Volver mercar en

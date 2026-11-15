@@ -1501,7 +1501,7 @@ migrate on load; blank fields stay empty (no invented “Default” printer).
   `printers.json` and the running app. The OS name is the name. There is no
   virtual printer and no manual rename.
 - **Bill & KOT format** — content width (shared), plus portrait/landscape and
-  delivery (OS document, raw bytes, ESC/POS) separately for the bill and the
+  delivery (OS document, ESC/POS) separately for the bill and the
   kitchen ticket. Either job can be sent to any found printer.
 - **Content width** — above the Bill and KOT tabs. One millimetre width lays
   out both. It is **not** locked to only 58/80.
@@ -1509,6 +1509,13 @@ migrate on load; blank fields stay empty (no invented “Default” printer).
   font weight, size, and **Start / Center / End** (shop, time, staff, station,
   table, kot no, area, item/qty, title); **per KOT kind** original / duplicate /
   modified / cancelled (each kind has its own field styles + banners).
+  Layout: one list per tab in print order, the open line edited where it
+  sits (`bill_pick_*` / `bill_after_*`, `kot_pick_*` / `kot_after_*` slots
+  are positions in that list; `kot_lines` / `kot_move_line` keep Title first
+  and Item / Qty last). `layout_slip_editors` sets every row's flow from the
+  form card width; `align_slip_previews` (after each draw) moves the side
+  preview beside the open line — a redraw requested inside a draw is
+  dropped, so it queues the next draw with `cx.redraw_list_in_draw`.
 - **Start / Center / End** are drawn across the selected content width, on
   OS document and ESC/POS. Do not strip the style marks and then left-align
   the plain text — that made the chips do nothing on the printed copy.
@@ -1536,26 +1543,25 @@ after Wi‑Fi `:9100` / BT / USB — UI merges into the pool on each Signal
 the same kind of slip; the route's format picks delivery (`document`: page
 image; else ESC/POS) and the same encoder and width serve both. Rules the
 senders keep:
-- **Bands under 3 KB, one picture at a time.** `GS v 0` bands carry under
-  3 KB of picture (`band_rows`), and every writer — TCP, Linux/macOS USB and
-  Bluetooth files, Windows `WritePrinter` (named queue and USB), Windows
-  Bluetooth serial, Android SPP and USB host — sends one picture per write
-  with `PIECE_PAUSE_MS` between, and a pause before the cut. A whole ticket
-  in one burst printed about three lines (the first 128-dot band). Do not
-  "fix" a wide slip by clamping to 80 mm or switching it to a page image.
-- **The split keeps every byte.** Bytes between two pictures (a copy's feed
-  and cut, the next copy's reset) are their own piece. Dropping them ran
-  copies together uncut.
-- **Network: wait, then confirm.** Connect retries for ~15 s while the
-  printer refuses or resets (busy with the last ticket). After the job,
-  DLE EOT 1: the printer answers once it has read everything; an
-  "offline" answer (paper, cover, error) is a failure. A printer that never
-  answers is remembered and later jobs half-close and drain instead.
-- **CUPS.** A queue whose device is `socket://host:port` is sent directly
-  (paced and confirmed). Other `lp` jobs are watched for ~3 s: done → printed;
-  "waiting for printer" / not connected → cancelled and reported.
+- **Standard ways only** (owner, 2026-11-15; `docs/PRINTER.md` rules and
+  lesson 14). ESC/POS is the slip picture in standard raster (`ESC @`,
+  `GS v 0` bands under 3 KB each, feed, cut) and goes to the picked
+  destination **whole, in one write** — TCP, USB and Bluetooth files,
+  Windows `WritePrinter` (named queue and USB), Windows Bluetooth serial,
+  Android SPP and USB host. No pieces, no pauses, no status probing, no
+  retries, no refusals by size, no guessing plain text vs picture.
+- **Network:** connect to `host:port`, send the job, close.
+- **CUPS:** ESC/POS / Raw on a named queue is one `lp -o raw` job on that
+  queue (never a direct route around it); OS document is the slip picture on
+  the 210 mm page, fitted into the printer's printable area (`print-scaling=fit`,
+  `ppi`, portrait; no paper named). `lp` accepting the job means it is queued; the app
+  logs the job id and does not watch or cancel it.
+- **The picked printer or nothing.** A USB or Bluetooth printer that is not
+  found is an error — never the first `/dev/usb/lp*` or any other serial
+  port.
 - **Android Bluetooth** waits for the stack to send before `close()`, which
-  otherwise drops what is still queued. The bridge lives in
+  otherwise drops what is still queued (an Android stack rule, not a printer
+  setting). The bridge lives in
   `patches/makepad/MakepadActivity-print.java`;
   `scripts/apply-android-activity-bridge.sh` swaps an older copy for it.
 - **One job never rewrites the shared setup.** Test bill, Test KOT and
@@ -1867,6 +1873,23 @@ Makepad visual traps found this way (do not reintroduce):
     clipped edge (a card's right side in right-to-left languages) the
     last glyph is cut. Keep a right `margin` on such labels; `padding`
     would replace the theme's default label padding and shift the text.
+20. **A redraw asked for during the app's draw event is dropped too**
+    (`Cx::in_draw_event`; Khaynjo Bill & KOT format, 2026-11-15). A hook
+    that measures after `ui.handle_event` on `Event::Draw` and moves
+    something (the side preview beside the open line) must queue the next
+    draw with `cx.redraw_list_in_draw(area.draw_list_id())` — `redraw(cx)`
+    there does nothing and the change shows only after the next input.
+21. **An after-draw hook runs on every frame of every screen** — and each
+    `self.ui.view(cx, ids!(…))` walks the widget tree. Gate it on the state
+    that says its screen is shown (`align_slip_previews`: Settings, Bill
+    panel, the tab on screen) before the first lookup.
+22. **Size a row from the column it sits in, not from `content_width`.**
+    With form and preview side by side at 1440 px the Bill form column was
+    ~700 px, but its rows were sized for the whole 1140 px page: the open
+    line went onto one row and squeezed its chips into vertical letters
+    ("Ligh / t"). `layout_slip_editors` derives the form card width first
+    (page − preview − gap) and sizes every row from it; the paper card,
+    which spans the page, uses the page width.
 
 
 
@@ -1932,9 +1955,30 @@ runs. Paper is never the test oracle — captured text is, which checks
 more (station, no prices, KOT number) than looking at a slip. Guard:
 `apps/khaynjo/scripts/check-tests-never-print.sh` runs the suite with
 fake `lp`/`lpr`/`xdg-open` first on `PATH` and fails if any was called.
+The library's `cfg!(test)` capture does not reach the app's own tests
+(they link the library built normally): on 2026-11-15 they opened this
+machine's books and `printers.json` through `AppState::boot()` and printed
+real tickets on the owner's printers. `boot()` under `cfg!(test)` now never
+opens this machine's data and sets `PrintSink::Capture`
+(`app_tests_never_reach_this_machines_printers`, all four apps);
+integration tests set a sink themselves.
 `apps/moklanjo/scripts/check-tests-never-print.sh` is the same guard for
 Moklanjo, which got its print sink (2026-10-24) so store-level printing
 can never reach the OS printer from a test.
+
+**Open (2026-11-15): tests leave their books and images in `/tmp`.** Test
+helpers open books as `std::env::temp_dir()/<name>-<id>.sqlite3`
+(`store.rs` `temp_db`, `net.rs` `khaynjo-year-*`, the LAN / journey /
+service tests, all four apps) and never remove them. Item images go next to
+the books (`Store::item_images_dir` = the book's folder + `item_images`), so
+every run adds to one shared `/tmp/item_images`. By 2026-11-15 that folder
+held 51.75 GB (103,628 test images in two days) and the loose test books
+~50 GB; `/tmp` hit the user's quota (`EDQUOT`) and a whole test run
+failed. The images were cleared that day; the books and the
+`khaynjo-staged-*` folders were left. Fix still to do: each test opens its
+books in its own temporary folder and removes it at the end, so its images
+go with it. Until then, if a run fails with "Disk quota exceeded", look at
+`/tmp/item_images` and the `/tmp/*.sqlite3*` files first.
 
 ## Packaging
 

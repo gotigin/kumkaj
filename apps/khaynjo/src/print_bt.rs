@@ -177,10 +177,9 @@ fn write_linux_rfcomm(mac: &str, channel: u8, bytes: &[u8]) -> Result<(), String
         ));
     }
     let mut file = unsafe { std::fs::File::from_raw_fd(fd) };
-    crate::receipt_raster::write_escpos_paced(bytes, |piece| {
-        file.write_all(piece).map_err(|e| e.to_string())?;
-        file.flush().map_err(|e| e.to_string())
-    })
+    // The whole job in one write (no pieces, no pauses).
+    file.write_all(bytes).map_err(|e| e.to_string())?;
+    file.flush().map_err(|e| e.to_string())
 }
 
 #[cfg(target_os = "windows")]
@@ -235,17 +234,14 @@ fn write_windows(mac: &str, bytes: &[u8]) -> Result<(), String> {
     std::fs::write(&path, bytes).map_err(|e| e.to_string())?;
     let path_s = path.display().to_string().replace('\'', "''");
     let mac_s = mac.replace('\'', "''");
-    // Prefer an outgoing RFCOMM COM port whose name/device id mentions the MAC.
+    // The COM port of this printer (its device id names the MAC) — never
+    // another Bluetooth serial port when this one is missing.
     let script = format!(
         r#"
 $ErrorActionPreference = 'Stop'
 $mac = '{mac_s}'.Replace(':','').ToUpper()
 $ports = Get-CimInstance Win32_SerialPort -ErrorAction SilentlyContinue |
   Where-Object {{ $_.PNPDeviceID -and ($_.PNPDeviceID.ToUpper() -like "*$mac*") }}
-if (-not $ports) {{
-  $ports = Get-CimInstance Win32_SerialPort -ErrorAction SilentlyContinue |
-    Where-Object {{ $_.Description -match 'Bluetooth|RFCOMM|Standard Serial' }}
-}}
 if (-not $ports) {{ throw "no Bluetooth COM port for {mac_s} — pair the printer and enable a serial port" }}
 $portName = $ports | Select-Object -First 1 -ExpandProperty DeviceID
 $bytes = [IO.File]::ReadAllBytes('{path_s}')
@@ -253,17 +249,8 @@ $p = New-Object System.IO.Ports.SerialPort $portName, 9600, None, 8, One
 $p.WriteTimeout = 15000
 $p.Open()
 try {{
-  # One picture at a time with a pause: a head drops a burst.
-  $pieces = @({pieces})
-  $offset = 0
-  $first = $true
-  foreach ($len in $pieces) {{
-    if ($len -le 0) {{ continue }}
-    if (-not $first) {{ Start-Sleep -Milliseconds {pause} }}
-    $first = $false
-    $p.Write($bytes, $offset, $len)
-    $offset += $len
-  }}
+  # The whole job (no pieces, no pauses).
+  $p.Write($bytes, 0, $bytes.Length)
   # Close discards what the driver has not sent yet: wait for it to drain.
   $deadline = (Get-Date).AddSeconds(20)
   while ($p.BytesToWrite -gt 0 -and (Get-Date) -lt $deadline) {{ Start-Sleep -Milliseconds 50 }}
@@ -272,12 +259,6 @@ try {{
 "#,
         mac_s = mac_s,
         path_s = path_s,
-        pieces = crate::receipt_raster::escpos_piece_lengths(bytes)
-            .iter()
-            .map(|n| n.to_string())
-            .collect::<Vec<_>>()
-            .join(","),
-        pause = crate::receipt_raster::PIECE_PAUSE_MS,
     );
     let out = Command::new("powershell")
         .args([
@@ -379,9 +360,7 @@ fn write_macos(mac: &str, bytes: &[u8]) -> Result<(), String> {
         .write(true)
         .open(&path)
         .map_err(|e| format!("cannot open {}: {e}", path.display()))?;
-    // One picture at a time: a head drops the rest of a burst.
-    crate::receipt_raster::write_escpos_paced(bytes, |piece| {
-        f.write_all(piece).map_err(|e| e.to_string())?;
-        f.flush().map_err(|e| e.to_string())
-    })
+    // The whole job in one write (no pieces, no pauses).
+    f.write_all(bytes).map_err(|e| e.to_string())?;
+    f.flush().map_err(|e| e.to_string())
 }

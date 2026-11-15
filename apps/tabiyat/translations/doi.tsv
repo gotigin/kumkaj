@@ -81,12 +81,10 @@ bill_item_qty	मात्रा
 bill_item_price	कीमत
 bill_item_amount	रकम
 bill_item_note	आरएक्स / बिक्री नोट
-bill_item_col_order	स्तंभ क्रम
 bill_item_col_sep	स्तंभ नियम
 slip_col_width	चौड़ाई (mm)
 slip_col_start	शुरू दी थाह् (px)
 slip_col_end	अंत दी थाह् (px)
-slip_col_align	लिखत दी सीध
 slip_columns_help	हर स्तंभ दी चौड़ाई च उसदी शुरू ते अंत दी थाह् शामल ऐ। लिखत अपने स्तंभ दे अंदर लपेटोंदी ऐ; सामग्री दी चौड़ाई थमां बाह्र जो ऐ ओह् कागज ते पूर्वावलोकन दोनें च कट्टी जंदा ऐ।
 bill_total_qty_label	कुल मात्रा लेबल
 bill_total_subtotal_label	उप कुल लेबल
@@ -443,7 +441,6 @@ printer_profile_heading	लेआउट
 vp_delivery_heading	डिलीवरी
 vp_delivery_help	एह् आभासी प्रिंटर किस चाल्लीं कम्म भेजदा ऐ — ओएस दस्तावेज, कच्चे बाइटें, जां ईएससी/पीओएस। स्लिप सामग्री (टाइप साइज, रैप, मार्जिन) दा फैसला बिल / स्लिप फार्मेट कन्नै कीता जंदा ऐ, इत्थै नेईं।
 vp_delivery_spooler	ओएस दस्तावेज (सिस्टम स्पूलर) ऐ।
-vp_delivery_raw	डिवाइस गी कच्चे बाइट
 vp_delivery_escpos	ESC/POS थर्मल कमांड
 virtual_printer_new	नमां आभासी प्रिंटर
 virtual_printer_selected	“{name}” गी संपादत करना — स्विच करने लेई सूची च इक होर टैप करो
@@ -730,7 +727,6 @@ customer_paid_ph	ग्राहक ने भुगतान कीता
 tip_ph	टिप
 find_server	दुकान दा सर्वर ढूंढो
 bill_format	बिल दा प्रारूप
-bill_format_help	हर बिल पर तुंदी दुकान दे नां कन्नै छपे दा। साथ अलग लाइनें | (जैसे एमजी रोड, राजकोट | पीएच 98250 00000)।
 bill_header_ph	पता | फोन
 fssai_ph	नशा लाइसेंस न. (वैकल्पिक — तुंदी शब्दावली)
 bill_footer_ph	पाद लेख (जैसे धन्यवाद, दोबारा दौरा करो)
@@ -820,8 +816,6 @@ add_dishes	दवाइयां पाओ
 order_so_far	इस आर्डर पर: {n} · {total}
 no_dish_match	कोई बी आइटम “{q}” कन्नै मेल नेईं खंदा।
 pick_done	हो गया
-kot_field_up	ऊपर चली जाओ
-kot_field_down	नीचे चले जाओ
 dishes_n	{n} items
 reorder_ph	पर और खरीदें
 set_reorder	पुनर्क्रमण स्तर सेट करो
@@ -853,3 +847,6 @@ sel_copy	नकल करो
 sel_select_all	सब चुनो
 sel_copied	नकल होई गेई
 nav_loading	लोड होआ करदा ऐ…
+printer_mode_first	पैह्ले जेह्ड़ा कम्म करदा ऐ
+printer_mode_all	सब पर छापें
+slip_columns	स्तंभ

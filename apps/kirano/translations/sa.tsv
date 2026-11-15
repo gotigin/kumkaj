@@ -69,12 +69,10 @@ bill_item_qty	संख्या
 bill_item_price	मूल्यम्
 bill_item_amount	राशि
 bill_item_note	मद टिप्पणी
-bill_item_col_order	स्तम्भक्रमः
 bill_item_col_sep	स्तम्भनियमाः
 slip_col_width	विस्तारः (mm)
 slip_col_start	आरम्भावकाशः (px)
 slip_col_end	अन्तावकाशः (px)
-slip_col_align	पाठसंरेखणम्
 slip_columns_help	प्रत्येकस्य स्तम्भस्य विस्तारे तस्य आरम्भावकाशः अन्तावकाशः च अन्तर्भवतः। पाठः स्वस्तम्भस्य अन्तः एव आवेष्ट्यते; विषयविस्तारात् बहिः यत् अस्ति तत् पत्रे पूर्वावलोकने च छिद्यते।
 bill_total_qty_label	कुल qty लेबल
 bill_total_subtotal_label	उप कुल लेबल
@@ -431,7 +429,6 @@ printer_profile_heading	विन्यासः
 vp_delivery_heading	प्रसवः
 vp_delivery_help	एषः आभासीमुद्रकः कथं कार्याणि प्रेषयति — OS दस्तावेजः, कच्चा बाइट्, अथवा ESC/POS । स्लिप् सामग्री (प्रकारस्य आकारः, रैप्, मार्जिन्स्) बिल / स्लिप् प्रारूपेण निर्णयः भवति, अत्र न ।
 vp_delivery_spooler	ओएस दस्तावेजः (सिस्टम् स्पूलरः) २.
-vp_delivery_raw	यन्त्रं प्रति कच्चा बाइट्
 vp_delivery_escpos	ESC/POS तापीय आदेश
 virtual_printer_new	नवीनं वर्चुअल् मुद्रकं
 virtual_printer_selected	“{name}” सम्पादनं — स्विच् कर्तुं सूचीयां अन्यं ट्याप् कुर्वन्तु
@@ -718,7 +715,6 @@ customer_paid_ph	ग्राहकः भुक्तवान्
 tip_ph	टिप्
 find_server	दुकानस्य सर्वरं अन्वेष्टुम्
 bill_format	विधेयक प्रारूप
-bill_format_help	प्रत्येकं बिलस्य उपरि भवतः दुकानस्य नाम्ना मुद्रितम्। सह पङ्क्तयः पृथक् | (जैसे एमजी रोड, राजकोट | Ph 98250 00000)।
 bill_header_ph	पता | phone
 fssai_ph	FSSAI / दुकान अनुज्ञापत्र सं. (वैकल्पिक)
 bill_footer_ph	पादलेखः (उदा. धन्यवादः, पुनः आगच्छन्तु)
@@ -808,8 +804,6 @@ add_dishes	वस्तूनि योजयन्तु
 order_so_far	अस्मिन् क्रमे : {n} · {total} .
 no_dish_match	कोऽपि द्रव्यः “{q}” इत्यनेन सह न मेलति ।
 pick_done	कृतम्
-kot_field_up	उपरि गच्छतु
-kot_field_down	अधः गच्छतु
 dishes_n	{n} आइटम
 reorder_ph	अधिकं क्रीणीत at
 set_reorder	पुनः क्रमस्तरं सेट् कुर्वन्तु
@@ -841,3 +835,6 @@ sel_copy	प्रतिलिख्यताम्
 sel_select_all	सर्वं चीयताम्
 sel_copied	प्रतिलिखितम्
 nav_loading	आरोप्यते…
+printer_mode_first	प्रथमं तत् कार्यं करोति
+printer_mode_all	सर्वेषु मुद्रयन्तु
+slip_columns	स्तम्भाः

@@ -83,9 +83,7 @@ print_cancelled_kot_needed	Avval bekor qilingan taomli stolni oching
 print_cancelled_kot_none	Bu buyurtmada bekor qilingan taom yoʻq
 print_cancelled_kot_client	Bekorlarni chop etish ({n}) {place} uchun yuborildi — oshxona Serverda chop etadi
 kot_banner	Tur banneri
-kot_banner_ph	Banner (boʻsh = yoʻq)
 kot_item_prefix	Mahsulot prefiksi
-kot_item_prefix_ph	mas. [BEKOR]
 kot_strike	Taom nomini chizib tashlash
 kot_strike_note	Taom izohini chizib tashlash
 kot_strike_on	Yoniq
@@ -103,13 +101,11 @@ bill_item_qty	Miqdor
 bill_item_price	Narx
 bill_item_amount	Summa
 bill_item_note	Taom izohi
-bill_item_col_order	Ustun tartibi
 bill_item_col_sep	Ustun chiziqlari
 slip_columns	Ustunlar
 slip_col_width	Kenglik (mm)
 slip_col_start	Boshlanish oralig‘i (px)
 slip_col_end	Oxirgi oraliq (px)
-slip_col_align	Matnni tekislash
 slip_columns_help	Har bir ustunning kengligi uning boshlanish va oxirgi oralig‘ini o‘z ichiga oladi. Matn o‘z ustuni ichida qatorga o‘tadi; kontent kengligidan oshgan qism qog‘ozda ham, oldindan ko‘rishda ham kesiladi.
 bill_total_qty_label	Jami miqdor yorligʻi
 bill_total_subtotal_label	Oraliq summa yorligʻi
@@ -643,7 +639,6 @@ vp_type_size_heading	Harf oʻlchami
 vp_wrap_heading	Oʻrash kengligi
 vp_margin_heading	Chetlar
 vp_delivery_spooler	OT hujjati (tizim navbati)
-vp_delivery_raw	Qurilmaga xom bayt
 vp_delivery_escpos	ESC/POS termal buyruqlari
 virtual_printer_new	Yangi virtual printer
 virtual_printer_selected	„{name}“ tahrirlanmoqda — almashtirish uchun roʻyxatdagi boshqasini bosing
@@ -1110,7 +1105,6 @@ remove_these_tables	Bu stollarni olib tashlash
 table_remove_ph	Olib tashlash: T1-T24 yoki bitta stol nomi
 find_server	Doʻkon serverini topish
 bill_format	Hisob formati
-bill_format_help	Har hisobda restoran nomi ostida chop etiladi. Qatorlarni | bilan ajrating (mas. MG Road, Rajkot | Tel 98250 00000).
 bill_header_ph	Manzil | telefon
 fssai_ph	FSSAI litsenziya № (Hindiston)
 bill_footer_ph	Pastki yozuv (mas. Rahmat, yana keling)
@@ -1127,7 +1121,6 @@ kot_field_hide	Yashirish
 kot_field_on	koʻrsatish
 kot_field_off	yashirish
 kot_field_size	Shrift oʻlchami
-kot_field_size_ph	mas. 16, 20, 24, 28, 32…
 kot_weight_light	Ingichka
 bill_kot_panel_help	Hisob va oshxona varaqining joylashuvi, har biri oʻz mazmun kengligi bilan. Hisob kassiri hisobni chiqargan yoki yopgan odam; KOT ofitsiant esa oʻsha oshxona varaqini yuborgan odam — buyurtmaning toʻliq tarixi kitoblarda qoladi.
 std_size_ph	mas. 18, 20, 26…
@@ -1157,7 +1150,6 @@ kot_style_item_qty	Mahsulot · Miqdor
 kot_style_field_pick	Maydon tanlash
 kot_weight_regular	Oddiy
 kot_weight_bold	Qalin
-kot_align	Tekislash
 kot_align_start	Boshlanish
 kot_align_center	Markaz
 kot_align_end	Oxiri
@@ -1307,18 +1299,8 @@ kot_show_item_hdr	Mahsulot · Miqdor
 kot_hide_item_hdr	Ustunlarni yashirish
 kot_show_title	Sarlavha qatori
 kot_hide_title	Sarlavhani yashirish
-kot_field_order	Chop etish tartibi
-kot_field_up	Yuqoriga koʻchirish
-kot_field_down	Pastga koʻchirish
 kot_field_cycle	Keyingisini tanlash
 kot_field_select	Keyingisini tanlash
-kot_field_time	Vaqt
-kot_field_kot_no	KOT №
-kot_field_area	Hudud
-kot_field_table	Stol
-kot_field_shop	Doʻkon nomi
-kot_field_waiter	Xodim
-kot_field_station	Stansiya
 dishes_n	{n} taom
 recipe_ph	Retsept (ixtiyoriy) — bir porsiya ishlatadi: Guruch=0.2, Paneer=0.15
 reorder_ph	Yana sotib olish

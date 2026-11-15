@@ -83,9 +83,7 @@ print_cancelled_kot_needed	Najprv otvorte jedálenský stôl so zrušeným riado
 print_cancelled_kot_none	V tejto objednávke nie sú žiadne zrušené jedlá
 print_cancelled_kot_client	Tlač zrušená ({n}) za {place} odoslaná — výtlačky z kuchyne na serveri
 kot_banner	Milý banner
-kot_banner_ph	Banner (prázdny = žiadny)
 kot_item_prefix	Predpona položky
-kot_item_prefix_ph	napr. [ZRUŠENÉ]
 kot_strike	Označte názov jedla
 kot_strike_note	Poznámka k riadu
 kot_strike_on	Zapnuté
@@ -103,13 +101,11 @@ bill_item_qty	Množ
 bill_item_price	Cena
 bill_item_amount	Suma
 bill_item_note	Poznámka k jedlu
-bill_item_col_order	Poradie stĺpcov
 bill_item_col_sep	Pravidlá stĺpcov
 slip_columns	Stĺpce
 slip_col_width	Šírka (mm)
 slip_col_start	Medzera na začiatku (px)
 slip_col_end	Medzera na konci (px)
-slip_col_align	Zarovnanie textu
 slip_columns_help	Šírka každého stĺpca zahŕňa jeho medzeru na začiatku a na konci. Text sa zalamuje vo svojom stĺpci; čo presahuje šírku obsahu, sa oreže – na papieri aj v náhľade.
 bill_total_qty_label	Štítok s celkovým množstvom
 bill_total_subtotal_label	Menovka medzi súčtom
@@ -643,7 +639,6 @@ vp_type_size_heading	Veľkosť typu
 vp_wrap_heading	Šírka obalu
 vp_margin_heading	Okraje
 vp_delivery_spooler	Dokument OS (systémový spooler)
-vp_delivery_raw	Nespracované bajty do zariadenia
 vp_delivery_escpos	ESC/POS tepelné príkazy
 virtual_printer_new	Nová virtuálna tlačiareň
 virtual_printer_selected	Úprava „{name}“ – klepnutím na inú položku v zozname prepnete
@@ -1110,7 +1105,6 @@ remove_these_tables	Odstráňte tieto jedálenské stoly
 table_remove_ph	Odstráňte: T1-T24 alebo názov jedného jedálenského stola
 find_server	Nájdite server obchodu
 bill_format	Formát faktúry
-bill_format_help	Vytlačené pod názvom vašej reštaurácie na každom účte. Riadky oddeľte znakom | (napr. MG Road, Rajkot | Ph 98250 00000).
 bill_header_ph	Adresa | telefón
 fssai_ph	FSSAI licencia č. (India)
 bill_footer_ph	Päta (napr. Ďakujem, navštívte znova)
@@ -1127,7 +1121,6 @@ kot_field_hide	Skryť
 kot_field_on	ukázať
 kot_field_off	skryť
 kot_field_size	Veľkosť písma
-kot_field_size_ph	napr. 16, 20, 24, 28, 32…
 kot_weight_light	Svetlo
 bill_kot_panel_help	Rozloženie faktúry a kuchynského lístka, každý s vlastnou šírkou obsahu. Pokladník účtu je ten, kto vystavil alebo uhradil účet; KOT Čašník je ten, kto poslal lístok do kuchyne – celý príbeh o objednávke zostáva v knihách.
 std_size_ph	napr. 18, 20, 26…
@@ -1157,7 +1150,6 @@ kot_style_item_qty	Položka · Množ
 kot_style_field_pick	Vyberte pole
 kot_weight_regular	Pravidelné
 kot_weight_bold	Tučné
-kot_align	Zarovnať
 kot_align_start	Štart
 kot_align_center	centrum
 kot_align_end	Koniec
@@ -1307,18 +1299,8 @@ kot_show_item_hdr	Položka · Množ
 kot_hide_item_hdr	Skryť stĺpce
 kot_show_title	Titulný riadok
 kot_hide_title	Skryť názov
-kot_field_order	Tlačová objednávka
-kot_field_up	Posunúť sa hore
-kot_field_down	Presuňte sa nadol
 kot_field_cycle	Vyberte ďalšie
 kot_field_select	Vyberte ďalšie
-kot_field_time	Čas
-kot_field_kot_no	KOT Nie
-kot_field_area	Oblasť
-kot_field_table	Jedálenský stôl
-kot_field_shop	Názov obchodu
-kot_field_waiter	personál
-kot_field_station	Stanica
 dishes_n	{n} riadu
 recipe_ph	Recept (voliteľné) – jedna porcia používa: Ryža=0,2, Paneer=0,15
 reorder_ph	Kúpte viac na

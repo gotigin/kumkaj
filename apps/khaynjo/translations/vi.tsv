@@ -83,9 +83,7 @@ print_cancelled_kot_needed	Mở bàn có món đã hủy
 print_cancelled_kot_none	Không có món hủy trên đơn này
 print_cancelled_kot_client	Đã gửi hủy ({n}) cho {place} — in trên máy chủ
 kot_banner	Banner
-kot_banner_ph	Banner (trống = không)
 kot_item_prefix	Tiền tố món
-kot_item_prefix_ph	vd. [CANCELLED]
 kot_strike	Gạch tên món
 kot_strike_note	Gạch ghi chú
 kot_strike_on	Bật
@@ -103,13 +101,11 @@ bill_item_qty	SL
 bill_item_price	Đơn giá
 bill_item_amount	Thành tiền
 bill_item_note	Ghi chú
-bill_item_col_order	Thứ tự cột
 bill_item_col_sep	Kẻ cột
 slip_columns	Cột
 slip_col_width	Chiều rộng (mm)
 slip_col_start	Khoảng đầu (px)
 slip_col_end	Khoảng cuối (px)
-slip_col_align	Căn chỉnh chữ
 slip_columns_help	Chiều rộng mỗi cột đã gồm khoảng đầu và khoảng cuối của nó. Chữ xuống dòng trong cột của nó; phần vượt quá chiều rộng nội dung bị cắt, trên giấy và trong bản xem trước.
 bill_total_qty_label	Nhãn tổng SL
 bill_total_subtotal_label	Nhãn tạm tính
@@ -643,7 +639,6 @@ vp_type_size_heading	Cỡ chữ
 vp_wrap_heading	Độ rộng xuống dòng
 vp_margin_heading	Lề
 vp_delivery_spooler	Tài liệu hệ điều hành (bộ đệm hệ thống)
-vp_delivery_raw	Byte thô tới thiết bị
 vp_delivery_escpos	Lệnh nhiệt ESC/POS
 virtual_printer_new	Máy in ảo mới
 virtual_printer_selected	Đang sửa “{name}” — chạm mục khác trong danh sách để đổi
@@ -1110,7 +1105,6 @@ remove_these_tables	Xóa các bàn này
 table_remove_ph	Xóa: T1-T24, hoặc tên một bàn
 find_server	Tìm máy chủ của quán
 bill_format	Mẫu hóa đơn
-bill_format_help	In dưới tên nhà hàng trên mọi hóa đơn. Ngăn dòng bằng | (vd. MG Road, Rajkot | ĐT 98250 00000).
 bill_header_ph	Địa chỉ | điện thoại
 fssai_ph	Số giấy phép FSSAI (Ấn Độ)
 bill_footer_ph	Chân trang (vd. Cảm ơn, hẹn gặp lại)
@@ -1127,7 +1121,6 @@ kot_field_hide	Ẩn
 kot_field_on	hiện
 kot_field_off	ẩn
 kot_field_size	Cỡ chữ
-kot_field_size_ph	vd. 16, 20, 24, 28, 32…
 kot_weight_light	Mảnh
 bill_kot_panel_help	Nội dung hóa đơn và chữ phiếu bếp. Độ rộng nội dung ở trên là độ rộng của cả hóa đơn và phiếu bếp.
 std_size_ph	vd. 18, 20, 26…
@@ -1157,7 +1150,6 @@ kot_style_item_qty	Món · SL
 kot_style_field_pick	Chọn trường
 kot_weight_regular	Thường
 kot_weight_bold	Đậm
-kot_align	Căn chỉnh
 kot_align_start	Bắt đầu
 kot_align_center	Căn giữa
 kot_align_end	Cuối
@@ -1307,18 +1299,8 @@ kot_show_item_hdr	Món · SL
 kot_hide_item_hdr	Ẩn cột
 kot_show_title	Dòng tiêu đề
 kot_hide_title	Ẩn tiêu đề
-kot_field_order	Đặt lệnh in
-kot_field_up	Di chuyển lên
-kot_field_down	Di chuyển xuống
 kot_field_cycle	Chọn tiếp theo
 kot_field_select	Chọn tiếp theo
-kot_field_time	Giờ
-kot_field_kot_no	Số KOT
-kot_field_area	Khu vực
-kot_field_table	Bàn
-kot_field_shop	Tên cửa hàng
-kot_field_waiter	Nhân viên
-kot_field_station	Trạm
 dishes_n	{n} món
 recipe_ph	Công thức (tùy chọn) — một suất dùng: Rice=0.2, Paneer=0.15
 reorder_ph	Mua thêm khi còn

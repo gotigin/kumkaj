@@ -83,9 +83,7 @@ print_cancelled_kot_needed	منسوخ پکوان والی میز کھولیں
 print_cancelled_kot_none	اس آرڈر پر منسوخ نہیں
 print_cancelled_kot_client	منسوخ ({n}) {place} بھیجا — سرور پر چھپے گا
 kot_banner	بینر
-kot_banner_ph	بینر (خالی = نہیں)
 kot_item_prefix	آئٹم سابقہ
-kot_item_prefix_ph	جیسے [CANCELLED] 
 kot_strike	پکوان نام کاٹیں
 kot_strike_note	نوٹ کاٹیں
 kot_strike_on	آن
@@ -103,13 +101,11 @@ bill_item_qty	مقدار
 bill_item_price	نرخ
 bill_item_amount	رقم
 bill_item_note	نوٹ
-bill_item_col_order	کالم ترتیب
 bill_item_col_sep	کالم لکیر
 slip_columns	کالم
 slip_col_width	چوڑائی (mm)
 slip_col_start	آغاز کی جگہ (px)
 slip_col_end	اختتام کی جگہ (px)
-slip_col_align	متن کی سیدھ
 slip_columns_help	ہر کالم کی چوڑائی میں اس کی آغاز اور اختتام کی جگہ شامل ہے۔ متن اپنے کالم کے اندر ہی لپٹتا ہے؛ مواد کی چوڑائی سے باہر جو ہو وہ کاغذ اور پیش نظارہ دونوں میں کٹ جاتا ہے۔
 bill_total_qty_label	کل تعداد لیبل
 bill_total_subtotal_label	ذیلی کل لیبل
@@ -643,7 +639,6 @@ vp_type_size_heading	حرف کا سائز
 vp_wrap_heading	ریپ چوڑائی
 vp_margin_heading	مارجن
 vp_delivery_spooler	OS دستاویز (سسٹم اسپولر)
-vp_delivery_raw	ڈیوائس کو خام بائٹس
 vp_delivery_escpos	ESC/POS تھرمل کمانڈز
 virtual_printer_new	نیا ورچوئل پرنٹر
 virtual_printer_selected	“{name}” ترمیم — فہرست میں دوسرے پر ٹیپ کر کے بدلیں
@@ -1110,7 +1105,6 @@ remove_these_tables	یہ میزیں ہٹائیں
 table_remove_ph	ہٹائیں: T1-T24، یا ایک میز کا نام
 find_server	دکان کا سرور تلاش کریں
 bill_format	بل کی ترتیب
-bill_format_help	ہر بل پر آپ کے ریستوران کے نام کے نیچے چھپتا ہے۔ سطریں | سے الگ کریں (مثلاً MG Road, Rajkot | Ph 98250 00000)۔
 bill_header_ph	پتہ | فون
 fssai_ph	FSSAI لائسنس نمبر (بھارت)
 bill_footer_ph	فوٹر (مثلاً شکریہ، پھر تشریف لائیں)
@@ -1127,7 +1121,6 @@ kot_field_hide	چھپائیں
 kot_field_on	دکھائیں
 kot_field_off	چھپائیں
 kot_field_size	فونٹ سائز
-kot_field_size_ph	جیسے 16, 20, 24, 28, 32…
 kot_weight_light	ہلکا
 bill_kot_panel_help	بل مواد اور باورچی خانے کی سلپ ٹائپوگرافی۔ اوپر کی مواد کی چوڑائی ہی بل اور باورچی خانے کی سلپ دونوں کی چوڑائی ہے۔
 std_size_ph	جیسے 18, 20, 26…
@@ -1157,7 +1150,6 @@ kot_style_item_qty	آئٹم · تعداد
 kot_style_field_pick	فیلڈ منتخب کریں
 kot_weight_regular	عام
 kot_weight_bold	موٹا
-kot_align	سیدھ
 kot_align_start	شروع کریں
 kot_align_center	درمیان
 kot_align_end	آخر
@@ -1307,18 +1299,8 @@ kot_show_item_hdr	آئٹم · تعداد
 kot_hide_item_hdr	کالم چھپائیں
 kot_show_title	عنوان کی قطار
 kot_hide_title	عنوان چھپائیں
-kot_field_order	چھپائی کی ترتیب
-kot_field_up	اوپر کریں
-kot_field_down	نیچے کریں
 kot_field_cycle	اگلا چنیں
 kot_field_select	اگلا چنیں
-kot_field_time	وقت
-kot_field_kot_no	KOT نمبر
-kot_field_area	علاقہ
-kot_field_table	میز
-kot_field_shop	دکان کا نام
-kot_field_waiter	عملہ
-kot_field_station	اسٹیشن
 dishes_n	{n} ڈشیں
 recipe_ph	ترکیب (اختیاری) — ایک پلیٹ میں لگتا ہے: Rice=0.2, Paneer=0.15
 reorder_ph	اتنے پر مزید خریدیں

@@ -81,12 +81,10 @@ bill_item_qty	Kol.
 bill_item_price	Cijena
 bill_item_amount	Iznos
 bill_item_note	Rx / napomena prodaje
-bill_item_col_order	Redoslijed stupaca
 bill_item_col_sep	Crte stupaca
 slip_col_width	Širina (mm)
 slip_col_start	Početni razmak (px)
 slip_col_end	Završni razmak (px)
-slip_col_align	Poravnanje teksta
 slip_columns_help	Širina svakog stupca uključuje njegov početni i završni razmak. Tekst se prelama unutar svog stupca; ono što prelazi širinu sadržaja odrezuje se, na papiru i u pregledu.
 bill_total_qty_label	Natpis ukupne kol.
 bill_total_subtotal_label	Natpis međuzbroja
@@ -443,7 +441,6 @@ printer_profile_heading	Raspored
 vp_delivery_heading	Dostava
 vp_delivery_help	Kako ovaj virtualni pisač šalje poslove — OS dokument, sirovi bajtovi ili ESC/POS. Sadržaj listića (veličina slova, prelom, margine) određuje format računa / listića, ne ovdje.
 vp_delivery_spooler	Dokument OS-a (sustavni red)
-vp_delivery_raw	Sirovi bajtovi na uređaj
 vp_delivery_escpos	Toplinske naredbe ESC/POS
 virtual_printer_new	Novi virtualni pisač
 virtual_printer_selected	Uređivanje „{name}” — dodirnite drugi na popisu da prebacite
@@ -730,7 +727,6 @@ customer_paid_ph	Kupac je platio
 tip_ph	Napojnica
 find_server	Pronađi server lokala
 bill_format	Oblik računa
-bill_format_help	Ispisuje se ispod naziva vaše radnje na svakom računu. Redove odvojite sa | (npr. MG Road, Rajkot | Tel 98250 00000).
 bill_header_ph	Adresa | telefon
 fssai_ph	Broj dozvole za lijekove (opcionalno — vaša formulacija)
 bill_footer_ph	Podnožje (npr. Hvala, dođite opet)
@@ -820,8 +816,6 @@ add_dishes	Dodaj lijekove
 order_so_far	Na ovoj narudžbi: {n} · {total}
 no_dish_match	Nijedna stavka ne odgovara „{q}“
 pick_done	Gotovo
-kot_field_up	Pomakni gore
-kot_field_down	Pomakni dolje
 dishes_n	{n} stavki
 reorder_ph	Naruči još pri
 set_reorder	Postavi razinu narudžbe
@@ -853,3 +847,6 @@ sel_copy	Kopiraj
 sel_select_all	Odaberi sve
 sel_copied	Kopirano
 nav_loading	Učitavanje…
+printer_mode_first	Prvi koji radi
+printer_mode_all	Ispiši na sve
+slip_columns	Stupci

@@ -69,12 +69,10 @@ bill_item_qty	Kiekis
 bill_item_price	Kaina
 bill_item_amount	Suma
 bill_item_note	Prekės pastaba
-bill_item_col_order	Stulpelių tvarka
 bill_item_col_sep	Stulpelių linijos
 slip_col_width	Plotis (mm)
 slip_col_start	Pradžios tarpas (px)
 slip_col_end	Pabaigos tarpas (px)
-slip_col_align	Teksto lygiuotė
 slip_columns_help	Kiekvieno stulpelio plotis apima jo pradžios ir pabaigos tarpą. Tekstas laužomas savo stulpelio viduje; tai, kas išeina už turinio pločio, nukerpama – popieriuje ir peržiūroje.
 bill_total_qty_label	Bendro kiekio etiketė
 bill_total_subtotal_label	Tarpinės sumos etiketė
@@ -431,7 +429,6 @@ printer_profile_heading	Išdėstymas
 vp_delivery_heading	Pristatymas
 vp_delivery_help	Kaip šis virtualus spausdintuvas siunčia užduotis – OS dokumentą, neapdorotus baitus arba ESC / POS. Lapelio turinys (tipo dydis, apvyniojimas, paraštės) nustatomas pagal sąskaitos / lapelio formatą, o ne čia.
 vp_delivery_spooler	OS dokumentas (sistemos kaupiklis)
-vp_delivery_raw	Neapdoroti baitai į įrenginį
 vp_delivery_escpos	ESC/POS terminės komandos
 virtual_printer_new	Naujas virtualus spausdintuvas
 virtual_printer_selected	Redaguojama „{name}“ — bakstelėkite kitą sąraše, kad perjungtumėte
@@ -718,7 +715,6 @@ customer_paid_ph	Klientas sumokėjo
 tip_ph	Arbatpinigiai
 find_server	Rasti parduotuvės serverį
 bill_format	Sąskaitos formatas
-bill_format_help	Ant kiekvienos sąskaitos spausdinama po jūsų parduotuvės pavadinimu. Atskiros eilutės su | (pvz., MG Road, Rajkot | Tel. 98250 00000).
 bill_header_ph	Adresas | telefonas
 fssai_ph	FSSAI / parduotuvės licencija Nr. (neprivaloma)
 bill_footer_ph	Poraštė (pvz. Ačiū, apsilankykite dar)
@@ -808,8 +804,6 @@ add_dishes	Pridėti elementus
 order_so_far	Šiame užsakyme: {n} · {total}
 no_dish_match	Nė vienas elementas neatitinka „{q}“
 pick_done	Atlikta
-kot_field_up	Perkelti aukštyn
-kot_field_down	Perkelti žemyn
 dishes_n	{n} elementai
 reorder_ph	Pirkti daugiau nuo
 set_reorder	Nustatyti pakartotinio užsakymo lygį
@@ -841,3 +835,6 @@ sel_copy	Kopijuoti
 sel_select_all	Pažymėti viską
 sel_copied	Nukopijuota
 nav_loading	Įkeliama…
+printer_mode_first	Pirmas, kuris veikia
+printer_mode_all	Spausdinti visuose
+slip_columns	Stulpeliai

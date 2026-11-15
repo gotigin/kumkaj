@@ -83,9 +83,7 @@ print_cancelled_kot_needed	Ṣii tabili ounjẹ pẹlu awọn ounjẹ ti a fagil
 print_cancelled_kot_none	Ko si awọn ounjẹ ti a fagile lori aṣẹ yii
 print_cancelled_kot_client	Ti fagilee titẹ sita ({n}) fun {place} ti a fi ranṣẹ - Awọn atẹjade ibi idana ounjẹ ni olupin
 kot_banner	asia oninuure
-kot_banner_ph	Àsíá (òfo = kò sí)
 kot_item_prefix	Apejuwe ohun akojọ aṣayan
-kot_item_prefix_ph	f.eks. [A fagilee]
 kot_strike	Kọlu satelaiti orukọ
 kot_strike_note	Kọlu satelaiti akọsilẹ
 kot_strike_on	Lori
@@ -103,13 +101,11 @@ bill_item_qty	Iye
 bill_item_price	Iye owo
 bill_item_amount	Iye
 bill_item_note	Akọsilẹ satelaiti
-bill_item_col_order	Ilana ọwọn
 bill_item_col_sep	Awọn ofin ọwọn
 slip_columns	Àwọn ọ̀wọ̀n
 slip_col_width	Fífẹ̀ (mm)
 slip_col_start	Àyè ìbẹ̀rẹ̀ (px)
 slip_col_end	Àyè ìparí (px)
-slip_col_align	Ìtòlẹ́sẹẹsẹ ọ̀rọ̀
 slip_columns_help	Fífẹ̀ ọ̀wọ̀n kọ̀ọ̀kan ní àyè ìbẹ̀rẹ̀ àti ìparí rẹ̀ nínú. Ọ̀rọ̀ máa ń ká sínú ọ̀wọ̀n rẹ̀; ohun tó bá kọjá fífẹ̀ àkóónú ni a ó gé, lórí ìwé àti nínú àwòtẹ́lẹ̀.
 bill_total_qty_label	Lapapọ qty aami
 bill_total_subtotal_label	Iha lapapọ aami
@@ -643,7 +639,6 @@ vp_type_size_heading	Iru iwọn
 vp_wrap_heading	Ipari ipari
 vp_margin_heading	Ala
 vp_delivery_spooler	Iwe aṣẹ OS (spooler eto)
-vp_delivery_raw	Aise baiti to ẹrọ
 vp_delivery_escpos	ESC/POS awọn pipaṣẹ igbona
 virtual_printer_new	Titun foju itẹwe
 virtual_printer_selected	Ṣatunkọ “{name}” - tẹ omiiran ninu atokọ lati yipada
@@ -1110,7 +1105,6 @@ remove_these_tables	Yọ awọn tabili ounjẹ wọnyi kuro
 table_remove_ph	Yọ: T1-T24, tabi ọkan ile ijeun orukọ
 find_server	Wa olupin ile itaja naa
 bill_format	Bill kika
-bill_format_help	Ti tẹjade labẹ orukọ ile ounjẹ rẹ lori gbogbo owo. Lọtọ ila pẹlu | (fun apẹẹrẹ MG Road, Rajkot | Ph 98250 00000).
 bill_header_ph	Adirẹsi | foonu
 fssai_ph	FSSAI iwe-ašẹ No. (India)
 bill_footer_ph	Ẹlẹsẹ (fun apẹẹrẹ, o ṣeun, ṣabẹwo lẹẹkansi)
@@ -1127,7 +1121,6 @@ kot_field_hide	Tọju
 kot_field_on	ifihan
 kot_field_off	tọju
 kot_field_size	Iwọn fonti
-kot_field_size_ph	f.eks. 16, 20, 24, 28, 32…
 kot_weight_light	Imọlẹ
 bill_kot_panel_help	Ifilelẹ isokuso Bill ati ibi idana ounjẹ, ọkọọkan pẹlu iwọn akoonu tirẹ. Bill Cashier ni ẹniti o funni tabi yanju owo naa; KOT Oluduro ni ẹniti o firanṣẹ tikẹti ibi idana ounjẹ naa - itan aṣẹ ni kikun duro ni awọn iwe-ipamọ.
 std_size_ph	f.eks. 18, 20, 26…
@@ -1157,7 +1150,6 @@ kot_style_item_qty	Akojọ aṣyn ohun kan · Qty
 kot_style_field_pick	Yan aaye
 kot_weight_regular	Deede
 kot_weight_bold	Igboya
-kot_align	Sopọ
 kot_align_start	Bẹrẹ
 kot_align_center	Aarin
 kot_align_end	Ipari
@@ -1307,18 +1299,8 @@ kot_show_item_hdr	Akojọ aṣyn ohun kan · Qty
 kot_hide_item_hdr	Tọju awọn ọwọn
 kot_show_title	Laini akọle
 kot_hide_title	Tọju akọle
-kot_field_order	Tẹjade ibere
-kot_field_up	Gbe soke
-kot_field_down	Yi lọ si isalẹ
 kot_field_cycle	Yan atẹle
 kot_field_select	Yan atẹle
-kot_field_time	Akoko
-kot_field_kot_no	KOT Bẹẹkọ
-kot_field_area	Agbegbe
-kot_field_table	Ile ijeun tabili
-kot_field_shop	Orukọ itaja
-kot_field_waiter	Oṣiṣẹ
-kot_field_station	Ibusọ
 dishes_n	Ounjẹ {n}
 recipe_ph	Ohunelo (iyan) - apakan kan nlo: Rice=0.2, Paneer=0.15
 reorder_ph	Ra diẹ sii ni

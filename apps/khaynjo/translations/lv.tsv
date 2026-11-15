@@ -83,9 +83,7 @@ print_cancelled_kot_needed	Vispirms atveriet galdu ar atceltiem ēdieniem
 print_cancelled_kot_none	Šajā pasūtījumā nav atceltu ēdienu
 print_cancelled_kot_client	Atcelto druka ({n}) vietai {place} nosūtīta — virtuve drukā serverī
 kot_banner	Veida josla
-kot_banner_ph	Josla (tukšs = nav)
 kot_item_prefix	Pozīcijas prefikss
-kot_item_prefix_ph	piem. [ATCELTS]
 kot_strike	Pārsvītrot ēdiena nosaukumu
 kot_strike_note	Pārsvītrot ēdiena piezīmi
 kot_strike_on	Ieslēgts
@@ -103,13 +101,11 @@ bill_item_qty	Daudzums
 bill_item_price	Cena
 bill_item_amount	Summa
 bill_item_note	Ēdiena piezīme
-bill_item_col_order	Kolonnu secība
 bill_item_col_sep	Kolonnu līnijas
 slip_columns	Kolonnas
 slip_col_width	Platums (mm)
 slip_col_start	Sākuma atstarpe (px)
 slip_col_end	Beigu atstarpe (px)
-slip_col_align	Teksta līdzinājums
 slip_columns_help	Katras kolonnas platumā ietilpst tās sākuma un beigu atstarpe. Teksts tiek pārnests savas kolonnas iekšpusē; tas, kas pārsniedz satura platumu, tiek nogriezts — uz papīra un priekšskatījumā.
 bill_total_qty_label	Kopējā daudzuma etiķete
 bill_total_subtotal_label	Starpsummas etiķete
@@ -643,7 +639,6 @@ vp_type_size_heading	Burtu izmērs
 vp_wrap_heading	Aplaušanas platums
 vp_margin_heading	Malas
 vp_delivery_spooler	OS dokuments (sistēmas rinda)
-vp_delivery_raw	Neapstrādāti baiti uz ierīci
 vp_delivery_escpos	ESC/POS termālās komandas
 virtual_printer_new	Jauns virtuālais printeris
 virtual_printer_selected	Labo “{name}” — pieskarieties citam sarakstā, lai pārslēgtu
@@ -1110,7 +1105,6 @@ remove_these_tables	Noņemt šos galdus
 table_remove_ph	Noņemt: T1-T24 vai viena galda nosaukums
 find_server	Atrast veikala serveri
 bill_format	Rēķina formāts
-bill_format_help	Drukā zem restorāna nosaukuma katrā rēķinā. Atdaliet rindas ar | (piem. MG Road, Rajkot | Tālr. 98250 00000).
 bill_header_ph	Adrese | tālrunis
 fssai_ph	FSSAI licences nr. (Indija)
 bill_footer_ph	Kājene (piem. Paldies, nāciet vēl)
@@ -1127,7 +1121,6 @@ kot_field_hide	Slēpt
 kot_field_on	rādīt
 kot_field_off	slēpt
 kot_field_size	Burtu izmērs
-kot_field_size_ph	piem. 16, 20, 24, 28, 32…
 kot_weight_light	Plāns
 bill_kot_panel_help	Rēķina un virtuves lapas izkārtojums, katram savs satura platums. Rēķina kasieris ir tas, kurš izdeva vai norēķināja rēķinu; KOT viesmīlis ir tas, kurš nosūtīja virtuves zīmi — pilns pasūtījuma stāsts paliek grāmatās.
 std_size_ph	piem. 18, 20, 26…
@@ -1157,7 +1150,6 @@ kot_style_item_qty	Pozīcija · daudzums
 kot_style_field_pick	Atlasīt lauku
 kot_weight_regular	Parasts
 kot_weight_bold	Trekns
-kot_align	Līdzinājums
 kot_align_start	Sākums
 kot_align_center	Centrs
 kot_align_end	Beigas
@@ -1307,18 +1299,8 @@ kot_show_item_hdr	Pozīcija · daudzums
 kot_hide_item_hdr	Slēpt kolonnas
 kot_show_title	Virsraksta rinda
 kot_hide_title	Slēpt virsrakstu
-kot_field_order	Drukas secība
-kot_field_up	Pārvietot augšup
-kot_field_down	Pārvietot lejup
 kot_field_cycle	Atlasīt nākamo
 kot_field_select	Atlasīt nākamo
-kot_field_time	Laiks
-kot_field_kot_no	KOT nr.
-kot_field_area	Zona
-kot_field_table	Galds
-kot_field_shop	Veikala nosaukums
-kot_field_waiter	Personāls
-kot_field_station	Stacija
 dishes_n	{n} ēdieni
 recipe_ph	Recepte (nav obligāta) — viena porcija lieto: Rīsi=0.2, Paneer=0.15
 reorder_ph	Pirkt vairāk pie

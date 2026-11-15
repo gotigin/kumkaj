@@ -81,12 +81,10 @@ bill_item_qty	Nifer
 bill_item_price	Pris
 bill_item_amount	Swm
 bill_item_note	Nodyn Rx / gwerthiant
-bill_item_col_order	Trefn colofnau
 bill_item_col_sep	Llinellau colofn
 slip_col_width	Lled (mm)
 slip_col_start	Gofod dechrau (px)
 slip_col_end	Gofod diwedd (px)
-slip_col_align	Alinio testun
 slip_columns_help	Mae lled pob colofn yn cynnwys ei gofod dechrau a’i gofod diwedd. Mae testun yn lapio y tu mewn i’w golofn; caiff unrhyw beth y tu hwnt i led y cynnwys ei dorri, ar bapur ac yn y rhagolwg.
 bill_total_qty_label	Label cyfanswm nifer
 bill_total_subtotal_label	Label is-gyfanswm
@@ -443,7 +441,6 @@ printer_profile_heading	Cynllun
 vp_delivery_heading	Dosbarthu
 vp_delivery_help	Sut mae'r argraffydd rhithwir hwn yn anfon swyddi - dogfen OS, bytes amrwd, neu ESC / POS. Mae cynnwys slip (maint math, lapio, ymylon) yn cael ei benderfynu gan y fformat bil / Slip, nid yma.
 vp_delivery_spooler	Dogfen OS (sbwliwr system)
-vp_delivery_raw	Beitiau crai i'r ddyfais
 vp_delivery_escpos	Gorchmynion thermol ESC/POS
 virtual_printer_new	Argraffydd rhithwir newydd
 virtual_printer_selected	Yn golygu “{name}” — tapiwch un arall yn y rhestr i newid
@@ -730,7 +727,6 @@ customer_paid_ph	Talodd y cwsmer
 tip_ph	Cildwrn
 find_server	Dewch o hyd i weinydd y siop
 bill_format	Fformat bil
-bill_format_help	Argraffwyd o dan enw eich siop ar bob bil. Llinellau ar wahân gyda | (e.e. MG Road, Rajkot | Ph 98250 00000).
 bill_header_ph	Cyfeiriad | ffôn
 fssai_ph	Rhif trwydded cyffuriau (dewisol — eich geiriad)
 bill_footer_ph	Troedyn (e.e. Diolch, dewch eto)
@@ -820,8 +816,6 @@ add_dishes	Ychwanegu meddyginiaethau
 order_so_far	Ar yr archeb hon: {n} · {total}
 no_dish_match	Nid oes unrhyw eitem yn cyfateb i "{q}"
 pick_done	Wedi gorffen
-kot_field_up	Symud i fyny
-kot_field_down	Symud i lawr
 dishes_n	Eitemau {n}
 reorder_ph	Prynu mwy ar
 set_reorder	Gosod lefel ail-archebu
@@ -853,3 +847,6 @@ sel_copy	Copïo
 sel_select_all	Dewis y cyfan
 sel_copied	Wedi copïo
 nav_loading	Yn llwytho…
+printer_mode_first	Y cyntaf sy'n gweithio
+printer_mode_all	Argraffu ar bob un
+slip_columns	Colofnau

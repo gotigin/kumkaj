@@ -81,12 +81,10 @@ bill_item_qty	مقدار
 bill_item_price	قیمت
 bill_item_amount	مقدار
 bill_item_note	Rx / د پلور یادښت
-bill_item_col_order	د کالم ترتیب
 bill_item_col_sep	د کالم قواعد
 slip_col_width	سور (mm)
 slip_col_start	د پیل واټن (px)
 slip_col_end	د پای واټن (px)
-slip_col_align	د متن سمون
 slip_columns_help	د هرې ستنې سور کې د هغې د پیل او پای واټن شامل دی. متن د خپلې ستنې دننه ماتیږي؛ هغه څه چې د منځپانګې له سور څخه وځي، په کاغذ او مخکتنه کې پرې کیږي.
 bill_total_qty_label	ټول مقدار لیبل
 bill_total_subtotal_label	فرعي ټول لیبل
@@ -443,7 +441,6 @@ printer_profile_heading	ترتیب
 vp_delivery_heading	تحویلي
 vp_delivery_help	دا مجازی پرنټر څنګه دندې لیږي - د OS سند، خام بایټس، یا ESC/POS. د سلیپ مینځپانګه (ډول اندازه ، لپاسه ، حاشیه) د بل / سلیپ فارمیټ لخوا پریکړه کیږي ، دلته نه.
 vp_delivery_spooler	د OS سند (سیسټم سپولر)
-vp_delivery_raw	آلې ته خام بایټ
 vp_delivery_escpos	د POS/ESC حرارتي حکمونه
 virtual_printer_new	نوی مجازی پرنټر
 virtual_printer_selected	د "{name}" ترمیم کول - د بدلولو لپاره په لیست کې بل ټایپ کړئ
@@ -730,7 +727,6 @@ customer_paid_ph	پیرودونکي تادیه کوي
 tip_ph	ټیپ
 find_server	د هټۍ سرور ومومئ
 bill_format	د بل بڼه
-bill_format_help	په هر بل کې ستاسو د پلورنځي نوم لاندې چاپ شوی. سره جلا کرښې | (د مثال په توګه MG روډ، راجکوټ | فون 98250 00000).
 bill_header_ph	پته | تلیفون
 fssai_ph	د مخدره توکو د جواز شمیره (اختیاري - ستاسو کلمه)
 bill_footer_ph	فوټر (د مثال په توګه مننه، بیا لیدنه وکړئ)
@@ -820,8 +816,6 @@ add_dishes	درمل اضافه کړئ
 order_so_far	په دې ترتیب: {n} · {total}
 no_dish_match	هیڅ شی د "{q}" سره سمون نلري
 pick_done	ترسره شو
-kot_field_up	پورته الړ شه
-kot_field_down	لاندې حرکت وکړئ
 dishes_n	{n} توکي
 reorder_ph	نور په کې واخلئ
 set_reorder	د بیا تنظیم کچه تنظیم کړئ
@@ -853,3 +847,6 @@ sel_copy	کاپي
 sel_select_all	ټول وټاکئ
 sel_copied	کاپي شو
 nav_loading	بارېږي…
+printer_mode_first	لومړی دا کار کوي
+printer_mode_all	په ټولو کې چاپ کړئ
+slip_columns	ستنې

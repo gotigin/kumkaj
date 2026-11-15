@@ -83,9 +83,7 @@ print_cancelled_kot_needed	Oscail tábla le soithí a cuireadh ar ceal ar dtús
 print_cancelled_kot_none	Níl aon mhiasa curtha ar ceal ar an ordú seo
 print_cancelled_kot_client	Printáil curtha ar ceal ({n}) do {place} seolta — phrintálann an cistin ag an "Server"
 kot_banner	Meirge cineálta
-kot_banner_ph	Meirge (bán = ceann ar bith)
 kot_item_prefix	Réimír na míre
-kot_item_prefix_ph	m.sh. [CANCELLED]
 kot_strike	Ainm na mias stailce
 kot_strike_note	Nóta mias stailce
 kot_strike_on	Air
@@ -103,13 +101,11 @@ bill_item_qty	Cainníocht
 bill_item_price	Praghas
 bill_item_amount	Suim
 bill_item_note	Nóta mias
-bill_item_col_order	Ord na gcolún
 bill_item_col_sep	Rialacha colúin
 slip_columns	Colúin
 slip_col_width	Leithead (mm)
 slip_col_start	Spás tosaigh (px)
 slip_col_end	Spás deiridh (px)
-slip_col_align	Ailíniú téacs
 slip_columns_help	Áirítear spás tosaigh agus deiridh gach colúin ina leithead. Timfhillteann an téacs taobh istigh dá cholún; gearrtar aon rud thar leithead an ábhair, ar pháipéar agus sa réamhamharc.
 bill_total_qty_label	Lipéad qty iomlán
 bill_total_subtotal_label	Lipéad fo - iomlán
@@ -643,7 +639,6 @@ vp_type_size_heading	Méid cló
 vp_wrap_heading	Leithead fillte
 vp_margin_heading	Imeallacha
 vp_delivery_spooler	Doiciméad OS (spúiler córas)
-vp_delivery_raw	Baits amh chuig an bhfeiste
 vp_delivery_escpos	Orduithe teirmeacha ESC/POS
 virtual_printer_new	Printéir fíorúil nua
 virtual_printer_selected	Ag eagarthóireacht ar “{name}” — sconna ar cheann eile sa liosta chun athrú
@@ -1110,7 +1105,6 @@ remove_these_tables	Bain na táblaí seo
 table_remove_ph	Bain: T1-T24, nó ainm bhord amháin
 find_server	Faigh freastalaí an tsiopa
 bill_format	Formáid bhille
-bill_format_help	Clóite faoi ainm do bhialainne ar gach bille. Líneacha a scaradh le | (m.sh. MG Road, Rajkot | Fón 98250 00000).
 bill_header_ph	Seoladh | fón
 fssai_ph	Uimhir ceadúnais FSSAI (India)
 bill_footer_ph	Bunleathanach (m.sh. Go raibh maith agat, tabhair cuairt arís)
@@ -1127,7 +1121,6 @@ kot_field_hide	Folaigh
 kot_field_on	taispeáin
 kot_field_off	folú
 kot_field_size	Méid cló
-kot_field_size_ph	m.sh. 16, 20, 24, 28, 32...
 kot_weight_light	Solas
 bill_kot_panel_help	Leagan amach bhille agus cistine, le gach ceann acu lena leithead ábhair féin. Is é an Pócaire Bhille an té a eisigh nó a réitigh an bhille; is é an Freastalaí KOT an té a sheol an ticéad cistine sin — fanann scéal iomlán an ordaithe sna leabhair.
 std_size_ph	m.sh. 18, 20, 26…
@@ -1157,7 +1150,6 @@ kot_style_item_qty	Mír · Cainníocht
 kot_style_field_pick	Roghnaigh réimse
 kot_weight_regular	Rialta
 kot_weight_bold	Láidir
-kot_align	Dílíneáil
 kot_align_start	Tús
 kot_align_center	Lár
 kot_align_end	Deireadh
@@ -1307,18 +1299,8 @@ kot_show_item_hdr	Mír · Cainníocht
 kot_hide_item_hdr	Folmhaigh colúin
 kot_show_title	Líne teidil
 kot_hide_title	Folach an teideal
-kot_field_order	Ordú priontála
-kot_field_up	Bog suas
-kot_field_down	Bog síos
 kot_field_cycle	Roghnaigh an chéad cheann eile
 kot_field_select	Roghnaigh an chéad cheann eile
-kot_field_time	Am
-kot_field_kot_no	KOT Níl
-kot_field_area	Réimse
-kot_field_table	Bord
-kot_field_shop	Ainm an siopa
-kot_field_waiter	Foireann
-kot_field_station	Stáisiún
 dishes_n	{n} miasa
 recipe_ph	Oideas (roghnach) — úsáidtear ceann amháin: Rís=0.2, Paneer=0.15
 reorder_ph	Ceannaigh tuilleadh ag

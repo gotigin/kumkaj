@@ -81,12 +81,10 @@ bill_item_qty	Ọnụọgụ
 bill_item_price	Ọnụahịa
 bill_item_amount	Ego
 bill_item_note	Rx/ ndetu ire ere
-bill_item_col_order	Usoro ogidi
 bill_item_col_sep	Ahịrị ogidi
 slip_col_width	Obosara (mm)
 slip_col_start	Ohere mmalite (px)
 slip_col_end	Ohere njedebe (px)
-slip_col_align	Nhazi ederede
 slip_columns_help	Obosara kọlụm ọ bụla gụnyere ohere mmalite na njedebe ya. Ederede na-ekechi n’ime kọlụm ya; ihe gafere obosara ọdịnaya ka a na-egbubi, n’akwụkwọ na n’ihe ngosi.
 bill_total_qty_label	Akara ngụkọta ọnụọgụ
 bill_total_subtotal_label	Akara ngụkọta nta
@@ -443,7 +441,6 @@ printer_profile_heading	Nhazi
 vp_delivery_heading	Nnyefe
 vp_delivery_help	Otu ngwa nbipute a mebere na-eziga ọrụ - akwụkwọ os, raw bytes, ma ọ bụ ESC/POS. A na-ekpebi ọdịnaya mwepu (ụdị nha, mkpuchi, oke) site n'ụdị ụgwọ / mwepu, ọ bụghị ebe a.
 vp_delivery_spooler	Akwụkwọ sistemụ (spooler sistemụ)
-vp_delivery_raw	Bayịt ozugbo na ngwaọrụ
 vp_delivery_escpos	Iwu okpomọkụ ESC/POS
 virtual_printer_new	Igwe mbipụta mebere ọhụrụ
 virtual_printer_selected	Na-edezi “{name}” — kpatụ nke ọzọ na ndepụta ka ị gbanwee
@@ -730,7 +727,6 @@ customer_paid_ph	Onye ahịa kwụrụ
 tip_ph	Onyinye
 find_server	Chọta sava ụlọ ahịa
 bill_format	Ụdị ụgwọ
-bill_format_help	Ebipụtara n'okpuru aha ụlọ ahịa gị na ụgwọ ọ bụla. Ahịrị dị iche na | (dịka ọmụmaatụ MG Road, Rajkot | Ph 98250 00000).
 bill_header_ph	Adreesị | ekwentị
 fssai_ph	Akwụkwọ ikike ọgwụ. (nhọrọ - okwu gị)
 bill_footer_ph	Ala (dịka Daalụ, bịa ọzọ)
@@ -820,8 +816,6 @@ add_dishes	Tinye ọgwụ
 order_so_far	Na iwu a: {n} · {total}
 no_dish_match	Ọ nweghị ihe dabara na "{q}"
 pick_done	Emeela
-kot_field_up	Bugharịa elu
-kot_field_down	Bugharịa ala
 dishes_n	Ihe {n}
 reorder_ph	Zụta ọzọ na
 set_reorder	Tinye ọkwa ịzụta ọzọ
@@ -853,3 +847,6 @@ sel_copy	Detuo
 sel_select_all	Họrọ ihe niile
 sel_copied	E detuola
 nav_loading	Na-ebugo…
+printer_mode_first	Nke mbụ rụrụ ọrụ
+printer_mode_all	Bipụta na niile
+slip_columns	Kọlụm

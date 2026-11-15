@@ -81,12 +81,10 @@ bill_item_qty	જથ્થો
 bill_item_price	ભાવ
 bill_item_amount	રકમ
 bill_item_note	Rx / વેચાણ નોંધ
-bill_item_col_order	સ્તંભ ક્રમ
 bill_item_col_sep	સ્તંભ રેખા
 slip_col_width	પહોળાઈ (mm)
 slip_col_start	શરૂઆતની જગ્યા (px)
 slip_col_end	અંતની જગ્યા (px)
-slip_col_align	લખાણ ગોઠવણી
 slip_columns_help	દરેક સ્તંભની પહોળાઈમાં તેની શરૂઆત અને અંતની જગ્યા સામેલ છે. લખાણ પોતાના સ્તંભની અંદર જ વીંટાય છે; સામગ્રીની પહોળાઈ બહારનું કાગળ પર અને પૂર્વાવલોકનમાં કપાઈ જાય છે.
 bill_total_qty_label	કુલ સંખ્યા લેબલ
 bill_total_subtotal_label	પેટા સરવાળો લેબલ
@@ -443,7 +441,6 @@ printer_profile_heading	લેઆઉટ
 vp_delivery_heading	ડિલિવરી
 vp_delivery_help	આ વર્ચ્યુઅલ પ્રિન્ટર કામ કેવી રીતે મોકલે છે — OS દસ્તાવેજ, કાચા બાઇટ અથવા ESC/POS. સ્લિપની સામગ્રી (અક્ષરનું કદ, લપેટ, માર્જિન) બિલ / સ્લિપ ફોર્મેટ નક્કી કરે છે, અહીં નહીં.
 vp_delivery_spooler	OS દસ્તાવેજ (સિસ્ટમ સ્પૂલર)
-vp_delivery_raw	ડિવાઇસને કાચા બાઇટ
 vp_delivery_escpos	ESC/POS થર્મલ કમાન્ડ
 virtual_printer_new	નવું વર્ચ્યુઅલ પ્રિન્ટર
 virtual_printer_selected	“{name}” સંપાદન — યાદીમાં બીજા પર ટૅપ કરી બદલો
@@ -730,7 +727,6 @@ customer_paid_ph	ગ્રાહકે આપ્યા
 tip_ph	ટીપ
 find_server	દુકાનનું સર્વર શોધો
 bill_format	બિલ ફોર્મેટ
-bill_format_help	દરેક બિલ પર તમારી દુકાનના નામ નીચે છપાય છે. પંક્તિઓ | થી અલગ કરો (દા.ત. MG Road, Rajkot | Ph 98250 00000).
 bill_header_ph	સરનામું | ફોન
 fssai_ph	દવા લાઇસન્સ નં. (વૈકલ્પિક — તમારા શબ્દોમાં)
 bill_footer_ph	ફૂટર (દા.ત. આભાર, ફરી પધારજો)
@@ -820,8 +816,6 @@ add_dishes	દવાઓ ઉમેરો
 order_so_far	આ ઓર્ડરમાં: {n} · {total}
 no_dish_match	“{q}” સાથે કોઈ આઇટમ મેળ ખાતી નથી
 pick_done	થઈ ગયું
-kot_field_up	ઉપર ખસેડો
-kot_field_down	નીચે ખસેડો
 dishes_n	{n} આઇટમ
 reorder_ph	આટલે પહોંચે ત્યારે વધુ ખરીદો
 set_reorder	ફરી ઓર્ડર સ્તર મૂકો
@@ -853,3 +847,6 @@ sel_copy	કૉપી કરો
 sel_select_all	બધું પસંદ કરો
 sel_copied	કૉપી થયું
 nav_loading	લોડ થઈ રહ્યું છે…
+printer_mode_first	જે પહેલાં ચાલે
+printer_mode_all	બધા પર છાપો
+slip_columns	સ્તંભો

@@ -81,12 +81,10 @@ bill_item_qty	Iye
 bill_item_price	Iye owo
 bill_item_amount	Iye
 bill_item_note	Rx / akọsilẹ tita
-bill_item_col_order	Ilana ọwọn
 bill_item_col_sep	Awọn ofin ọwọn
 slip_col_width	Fífẹ̀ (mm)
 slip_col_start	Àyè ìbẹ̀rẹ̀ (px)
 slip_col_end	Àyè ìparí (px)
-slip_col_align	Ìtòlẹ́sẹẹsẹ ọ̀rọ̀
 slip_columns_help	Fífẹ̀ ọ̀wọ̀n kọ̀ọ̀kan ní àyè ìbẹ̀rẹ̀ àti ìparí rẹ̀ nínú. Ọ̀rọ̀ máa ń ká sínú ọ̀wọ̀n rẹ̀; ohun tó bá kọjá fífẹ̀ àkóónú ni a ó gé, lórí ìwé àti nínú àwòtẹ́lẹ̀.
 bill_total_qty_label	Lapapọ qty aami
 bill_total_subtotal_label	Iha lapapọ aami
@@ -443,7 +441,6 @@ printer_profile_heading	Ìfilélẹ
 vp_delivery_heading	Ifijiṣẹ
 vp_delivery_help	Bii itẹwe fojuhan yii ṣe nfi awọn iṣẹ ranṣẹ - iwe OS, awọn baiti aise, tabi ESC/POS. Akoonu isokuso (iwọn iru, ipari, awọn ala) jẹ ipinnu nipasẹ iwe-owo / ọna isokuso, kii ṣe nibi.
 vp_delivery_spooler	Iwe aṣẹ OS (spooler eto)
-vp_delivery_raw	Aise baiti to ẹrọ
 vp_delivery_escpos	ESC/POS awọn pipaṣẹ igbona
 virtual_printer_new	Titun foju itẹwe
 virtual_printer_selected	Ṣatunkọ “{name}” - tẹ omiiran ninu atokọ lati yipada
@@ -730,7 +727,6 @@ customer_paid_ph	Onibara san
 tip_ph	Imọran
 find_server	Wa olupin ile itaja naa
 bill_format	Bill kika
-bill_format_help	Ti a tẹjade labẹ orukọ ile itaja rẹ lori gbogbo owo. Lọtọ ila pẹlu | (fun apẹẹrẹ MG Road, Rajkot | Ph 98250 00000).
 bill_header_ph	Adirẹsi | foonu
 fssai_ph	Iwe-aṣẹ oogun No. (aṣayan - ọrọ rẹ)
 bill_footer_ph	Ẹlẹsẹ (fun apẹẹrẹ, o ṣeun, ṣabẹwo lẹẹkansi)
@@ -820,8 +816,6 @@ add_dishes	Fi awọn oogun kun
 order_so_far	Lori aṣẹ yii: {n} · {total}
 no_dish_match	Ko si ohun kan ti o baamu “{q}”
 pick_done	Ti ṣe
-kot_field_up	Gbe soke
-kot_field_down	Yi lọ si isalẹ
 dishes_n	Awọn nkan {n}
 reorder_ph	Ra diẹ sii ni
 set_reorder	Ṣeto ipele atunto
@@ -853,3 +847,6 @@ sel_copy	Daakọ
 sel_select_all	Yan gbogbo rẹ̀
 sel_copied	A ti daakọ
 nav_loading	Ń gbé e wọlé…
+printer_mode_first	Akọkọ ti o ṣiṣẹ
+printer_mode_all	Tẹjade lori gbogbo
+slip_columns	Àwọn ọ̀wọ̀n

@@ -81,12 +81,10 @@ bill_item_qty	ಪ್ರಮಾಣ
 bill_item_price	ಬೆಲೆ
 bill_item_amount	ಮೊತ್ತ
 bill_item_note	ಆರ್ಎಕ್ಸ್ / ಮಾರಾಟದ ಟಿಪ್ಪಣಿ
-bill_item_col_order	ಕಾಲಮ್ ಕ್ರಮ
 bill_item_col_sep	ಕಾಲಮ್ ನಿಯಮೊಲು
 slip_col_width	ಅಗಲ (mm)
 slip_col_start	ಸುರುತ ಜಾಗೆ (px)
 slip_col_end	ಅಕೇರಿದ ಜಾಗೆ (px)
-slip_col_align	ಬರವುದ ಜೋಡಣೆ
 slip_columns_help	ಪ್ರತಿ ಕಾಲಮ್‌ದ ಅಗಲೊಡು ಅಯಿತ ಸುರುತ ಬುಕ್ಕ ಅಕೇರಿದ ಜಾಗೆ ಸೇರ್ದುಂಡು. ಬರವು ಅಯಿತ ಕಾಲಮ್‌ದುಳಯಿನೇ ಸುತ್ತುಂಡು; ವಿಷಯದ ಅಗಲೊಡ್ದು ಪಿದಾಯಿ ಇತ್ತಿನವು ಕಾಗದೊಡು ಬುಕ್ಕ ಮುನ್ನೋಟೊಡು ಕತ್ತರಿಪುಂಡು.
 bill_total_qty_label	ಒಟ್ಟು ಪ್ರಮಾಣದ ಲೇಬಲ್
 bill_total_subtotal_label	ಉಪ ಒಟ್ಟು ಲೇಬಲ್
@@ -443,7 +441,6 @@ printer_profile_heading	ಲೇಔಟ್
 vp_delivery_heading	ವಿತರಣೆ
 vp_delivery_help	ಈ ವರ್ಚುವಲ್ ಪ್ರಿಂಟರ್ ಕೆಲಸೊಲೆನ್ ಎಂಚ ಕಡಪುಡುಂಡು — ಓಎಸ್ ಡಾಕ್ಯುಮೆಂಟ್, ರಾ ಬೈಟ್ಸ್, ಅತ್ತಂದೆ ಇಎಸ್ಸಿ/ಪಿಒಎಸ್. ಸ್ಲಿಪ್ ವಿಷಯ (ಪ್ರಕಾರದ ಗಾತ್ರ, ಸುತ್ತು, ಅಂಚುಲು) ಬಿಲ್ / ಸ್ಲಿಪ್ ಸ್ವರೂಪೊಡು ನಿರ್ಧರಿಸಲ್ಪಡುಂಡು, ಇಲ್ಲ್ ಅತ್ತ್.
 vp_delivery_spooler	ಓಎಸ್ ಡಾಕ್ಯುಮೆಂಟ್ (ಸಿಸ್ಟಮ್ ಸ್ಪೂಲರ್)
-vp_delivery_raw	ಸಾಧನೊಗು ಕಚ್ಚಾ ಬೈಟ್ ಲು
 vp_delivery_escpos	ESC/POS ಉಷ್ಣ ಆಜ್ಞೆಲು
 virtual_printer_new	ಪೊಸ ವರ್ಚುವಲ್ ಪ್ರಿಂಟರ್
 virtual_printer_selected	“{name}” ನ್ ಸಂಪಾದನೆ ಮಲ್ಪುನವು — ಬದಲಾವಣೆ ಮಲ್ಪೆರೆ ಪಟ್ಟಿಡ್ ಬೇತೆ ಒಂಜಿ ಟ್ಯಾಪ್ ಮಲ್ಪುಲೆ
@@ -730,7 +727,6 @@ customer_paid_ph	ಗ್ರಾಹಕೆರ್ ಪಾವತಿ ಮಲ್ತೆರ�
 tip_ph	ಸಲಹೆ
 find_server	ಅಂಗಡಿದ ಸರ್ವರ್ ನ್ ತೂಲೆ
 bill_format	ಬಿಲ್ ಫಾರ್ಮ್ಯಾಟ್
-bill_format_help	ಪ್ರತಿಯೊಂಜಿ ಬಿಲ್ ಡ್ ನಿಕ್ಲೆನ ಅಂಗಡಿದ ಪುದರ್ ಡ್ ಮುದ್ರಿತ ಆತ್ಂಡ್. ಬೇತೆ ಬೇತೆ ಸಾಲುಲು | (ಉದಾ. ಎಂಜಿ ರಸ್ತೆ, ರಾಜ್ಕೋಟ್ | ಪಿಎಚ್ 98250 00000).
 bill_header_ph	ವಿಳಾಸ | ಫೋನ್
 fssai_ph	ಡ್ರಗ್ ಲೈಸೆನ್ಸ್ ನಂ. (ಐಚ್ಛಿಕ — ನಿಕ್ಲೆನ ಪದ)
 bill_footer_ph	ಅಡಿಟಿಪ್ಪಣಿ (ಉದಾ. ಧನ್ಯವಾದೊಲು, ಮತ್ತೆ ಭೇಟಿ ಕೊರ್ಲೆ)
@@ -820,8 +816,6 @@ add_dishes	ಮರ್ದ್ ಪಾಡ್ಲೆ
 order_so_far	ಈ ಆದೇಶೊಡು: {n} · {total}
 no_dish_match	ಒವ್ವೆ ಐಟಂ “{q}” ಗ್ ಸರಿ ಆಪುಜಿ
 pick_done	ಮುಗಿಂಡ್
-kot_field_up	ಮಿತ್ತ್ ಪೋಲೆ
-kot_field_down	ಕೆಳಗ್ ಪೋಲೆ
 dishes_n	{n} ಐಟಂಲು
 reorder_ph	ಡ್ ಜಾಸ್ತಿ ಖರೀದಿ ಮಲ್ಪುಲೆ
 set_reorder	ಪುನರ್ಕ್ರಮದ ಮಟ್ಟೊನು ನಿಗದಿ ಮಲ್ಪುಲೆ
@@ -853,3 +847,6 @@ sel_copy	ನಕಲ್ ಮಲ್ಪುಲೆ
 sel_select_all	ಮಾತಾ ಆಯ್ಕೆ ಮಲ್ಪುಲೆ
 sel_copied	ನಕಲ್ ಆಂಡ್
 nav_loading	ಲೋಡ್ ಆವೊಂದುಂಡು…
+printer_mode_first	ಸುರುಕು ಅಯಿನ್ ಕೆಲಸ ಮಲ್ಪುಂಡು
+printer_mode_all	ಮಾತಾ ಮುದ್ರಣ ಮಲ್ಪುಲೆ
+slip_columns	ಕಾಲಮ್‌ಲು

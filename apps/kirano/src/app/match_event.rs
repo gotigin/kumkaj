@@ -4523,21 +4523,8 @@ impl MatchEvent for App {
                     break;
                 }
             }
-            for (i, idle, on) in [
-                (0, ids!(bill_ord_0), ids!(bill_ord_0_on)),
-                (1, ids!(bill_ord_1), ids!(bill_ord_1_on)),
-                (2, ids!(bill_ord_2), ids!(bill_ord_2_on)),
-                (3, ids!(bill_ord_3), ids!(bill_ord_3_on)),
-                (4, ids!(bill_ord_4), ids!(bill_ord_4_on)),
-                (5, ids!(bill_ord_5), ids!(bill_ord_5_on)),
-                (6, ids!(bill_ord_6), ids!(bill_ord_6_on)),
-                (7, ids!(bill_ord_7), ids!(bill_ord_7_on)),
-                (8, ids!(bill_ord_8), ids!(bill_ord_8_on)),
-                (9, ids!(bill_ord_9), ids!(bill_ord_9_on)),
-                (10, ids!(bill_ord_10), ids!(bill_ord_10_on)),
-                (11, ids!(bill_ord_11), ids!(bill_ord_11_on)),
-                (12, ids!(bill_ord_12), ids!(bill_ord_12_on)),
-            ] {
+            // Rows after the open line: slot i is the i-th line of the order.
+            for (i, (idle, on)) in BILL_AFTER_BTNS.into_iter().enumerate() {
                 if self.choice_chip_clicked(cx, actions, idle, on) {
                     self.commit_bill_field_value(cx);
                     let mut st = app_state().lock().unwrap();
@@ -4661,78 +4648,6 @@ impl MatchEvent for App {
             if self.choice_chip_clicked(
                 cx,
                 actions,
-                ids!(bill_item_name_on),
-                ids!(bill_item_name_on_on),
-            ) {
-                app_state().lock().unwrap().bill_slip_draft.item_show_name = true;
-                bill_changed = true;
-            }
-            if self.choice_chip_clicked(
-                cx,
-                actions,
-                ids!(bill_item_name_off),
-                ids!(bill_item_name_off_on),
-            ) {
-                app_state().lock().unwrap().bill_slip_draft.item_show_name = false;
-                bill_changed = true;
-            }
-            if self.choice_chip_clicked(
-                cx,
-                actions,
-                ids!(bill_item_qty_on),
-                ids!(bill_item_qty_on_on),
-            ) {
-                app_state().lock().unwrap().bill_slip_draft.item_show_qty = true;
-                bill_changed = true;
-            }
-            if self.choice_chip_clicked(
-                cx,
-                actions,
-                ids!(bill_item_qty_off),
-                ids!(bill_item_qty_off_on),
-            ) {
-                app_state().lock().unwrap().bill_slip_draft.item_show_qty = false;
-                bill_changed = true;
-            }
-            if self.choice_chip_clicked(
-                cx,
-                actions,
-                ids!(bill_item_price_on),
-                ids!(bill_item_price_on_on),
-            ) {
-                app_state().lock().unwrap().bill_slip_draft.item_show_price = true;
-                bill_changed = true;
-            }
-            if self.choice_chip_clicked(
-                cx,
-                actions,
-                ids!(bill_item_price_off),
-                ids!(bill_item_price_off_on),
-            ) {
-                app_state().lock().unwrap().bill_slip_draft.item_show_price = false;
-                bill_changed = true;
-            }
-            if self.choice_chip_clicked(
-                cx,
-                actions,
-                ids!(bill_item_amount_on),
-                ids!(bill_item_amount_on_on),
-            ) {
-                app_state().lock().unwrap().bill_slip_draft.item_show_amount = true;
-                bill_changed = true;
-            }
-            if self.choice_chip_clicked(
-                cx,
-                actions,
-                ids!(bill_item_amount_off),
-                ids!(bill_item_amount_off_on),
-            ) {
-                app_state().lock().unwrap().bill_slip_draft.item_show_amount = false;
-                bill_changed = true;
-            }
-            if self.choice_chip_clicked(
-                cx,
-                actions,
                 ids!(bill_item_note_on),
                 ids!(bill_item_note_on_on),
             ) {
@@ -4746,73 +4661,6 @@ impl MatchEvent for App {
                 ids!(bill_item_note_off_on),
             ) {
                 app_state().lock().unwrap().bill_slip_draft.item_show_note = false;
-                bill_changed = true;
-            }
-            // The selected item column's width, spaces and alignment.
-            let bill_col_edit = |f: &dyn Fn(&mut print_share::SlipColumn)| {
-                let mut st = app_state().lock().unwrap();
-                let order = st.bill_slip_draft.clone().clamped().item_col_order;
-                let idx = st.bill_item_col_edit_idx.min(order.len().saturating_sub(1));
-                let Some(pick) = order.get(idx).and_then(|id| print_share::BillItemCol::from_id(id)) else {
-                    return;
-                };
-                let mut cols = st.bill_slip_draft.item_columns();
-                f(cols.get_mut(pick));
-                *cols.get_mut(pick) = cols.get(pick).clamped();
-                st.bill_slip_draft.item_columns = Some(cols);
-            };
-            if let Some(v) = self.slip_column_input(cx, actions, ids!(bill_col_width_input)) {
-                bill_col_edit(&|c| c.width_mm = v);
-                bill_changed = true;
-            }
-            if let Some(v) = self.slip_column_input(cx, actions, ids!(bill_col_start_input)) {
-                bill_col_edit(&|c| c.start_px = v.round() as u32);
-                bill_changed = true;
-            }
-            if let Some(v) = self.slip_column_input(cx, actions, ids!(bill_col_end_input)) {
-                bill_col_edit(&|c| c.end_px = v.round() as u32);
-                bill_changed = true;
-            }
-            for (idle, on, align) in [
-                (ids!(bill_col_align_start), ids!(bill_col_align_start_on), print_share::KotAlign::Start),
-                (ids!(bill_col_align_center), ids!(bill_col_align_center_on), print_share::KotAlign::Center),
-                (ids!(bill_col_align_end), ids!(bill_col_align_end_on), print_share::KotAlign::End),
-            ] {
-                if self.choice_chip_clicked(cx, actions, idle, on) {
-                    bill_col_edit(&|c| c.align = align);
-                    bill_changed = true;
-                }
-            }
-            if let Some(raw) = self
-                .ui
-                .text_input(cx, ids!(bill_item_hdr_item_input))
-                .changed(actions)
-            {
-                app_state().lock().unwrap().bill_slip_draft.item_header_item = raw;
-                bill_changed = true;
-            }
-            if let Some(raw) = self
-                .ui
-                .text_input(cx, ids!(bill_item_hdr_qty_input))
-                .changed(actions)
-            {
-                app_state().lock().unwrap().bill_slip_draft.item_header_qty = raw;
-                bill_changed = true;
-            }
-            if let Some(raw) = self
-                .ui
-                .text_input(cx, ids!(bill_item_hdr_price_input))
-                .changed(actions)
-            {
-                app_state().lock().unwrap().bill_slip_draft.item_header_price = raw;
-                bill_changed = true;
-            }
-            if let Some(raw) = self
-                .ui
-                .text_input(cx, ids!(bill_item_hdr_amount_input))
-                .changed(actions)
-            {
-                app_state().lock().unwrap().bill_slip_draft.item_header_amount = raw;
                 bill_changed = true;
             }
             if self.choice_chip_clicked(
@@ -4833,48 +4681,80 @@ impl MatchEvent for App {
                 app_state().lock().unwrap().bill_slip_draft.item_col_sep = false;
                 bill_changed = true;
             }
-            for (i, idle, on) in [
-                (0, ids!(bill_col_ord_0), ids!(bill_col_ord_0_on)),
-                (1, ids!(bill_col_ord_1), ids!(bill_col_ord_1_on)),
-                (2, ids!(bill_col_ord_2), ids!(bill_col_ord_2_on)),
-                (3, ids!(bill_col_ord_3), ids!(bill_col_ord_3_on)),
-            ] {
-                if self.choice_chip_clicked(cx, actions, idle, on) {
-                    app_state().lock().unwrap().bill_item_col_edit_idx = i;
+            // Item column rows: each row edits its own column (show, header,
+            // width, start, end, alignment, place in the order).
+            let col_order = app_state().lock().unwrap().bill_slip_draft.clone().clamped().item_col_order;
+            for (i, row) in BILL_COL_ROWS.into_iter().enumerate() {
+                let Some(col) = col_order.get(i).and_then(|id| print_share::BillItemCol::from_id(id)) else {
+                    continue;
+                };
+                for (idle, on, show) in [
+                    (id!(col_show_on), id!(col_show_on_on), true),
+                    (id!(col_show_off), id!(col_show_off_on), false),
+                ] {
+                    if self.choice_chip_clicked(cx, actions, &[row, idle], &[row, on]) {
+                        let mut st = app_state().lock().unwrap();
+                        let d = &mut st.bill_slip_draft;
+                        match col {
+                            print_share::BillItemCol::Name => d.item_show_name = show,
+                            print_share::BillItemCol::Qty => d.item_show_qty = show,
+                            print_share::BillItemCol::Price => d.item_show_price = show,
+                            print_share::BillItemCol::Amount => d.item_show_amount = show,
+                        }
+                        bill_changed = true;
+                    }
+                }
+                if let Some(raw) = self.ui.text_input(cx, &[row, id!(col_header)]).changed(actions) {
+                    let mut st = app_state().lock().unwrap();
+                    let d = &mut st.bill_slip_draft;
+                    match col {
+                        print_share::BillItemCol::Name => d.item_header_item = raw,
+                        print_share::BillItemCol::Qty => d.item_header_qty = raw,
+                        print_share::BillItemCol::Price => d.item_header_price = raw,
+                        print_share::BillItemCol::Amount => d.item_header_amount = raw,
+                    }
                     bill_changed = true;
                 }
-            }
-            if self.ui.button(cx, ids!(bill_col_ord_up)).clicked(actions) {
-                let mut st = app_state().lock().unwrap();
-                if st.bill_slip_draft.item_col_order.is_empty() {
-                    st.bill_slip_draft.item_col_order = print_share::BillItemCol::ALL
-                        .iter()
-                        .map(|c| c.id().to_string())
-                        .collect();
-                }
-                let i = st
-                    .bill_item_col_edit_idx
-                    .min(st.bill_slip_draft.item_col_order.len().saturating_sub(1));
-                if i > 0 {
-                    st.bill_slip_draft.item_col_order.swap(i, i - 1);
-                    st.bill_item_col_edit_idx = i - 1;
+                let edit = |f: &dyn Fn(&mut print_share::SlipColumn)| {
+                    let mut st = app_state().lock().unwrap();
+                    let mut cols = st.bill_slip_draft.item_columns();
+                    f(cols.get_mut(col));
+                    *cols.get_mut(col) = cols.get(col).clamped();
+                    st.bill_slip_draft.item_columns = Some(cols);
+                };
+                if let Some(v) = self.slip_column_input(cx, actions, &[row, id!(col_width)]) {
+                    edit(&|c| c.width_mm = v);
                     bill_changed = true;
                 }
-            }
-            if self.ui.button(cx, ids!(bill_col_ord_down)).clicked(actions) {
-                let mut st = app_state().lock().unwrap();
-                if st.bill_slip_draft.item_col_order.is_empty() {
-                    st.bill_slip_draft.item_col_order = print_share::BillItemCol::ALL
-                        .iter()
-                        .map(|c| c.id().to_string())
-                        .collect();
-                }
-                let n = st.bill_slip_draft.item_col_order.len();
-                let i = st.bill_item_col_edit_idx.min(n.saturating_sub(1));
-                if i + 1 < n {
-                    st.bill_slip_draft.item_col_order.swap(i, i + 1);
-                    st.bill_item_col_edit_idx = i + 1;
+                if let Some(v) = self.slip_column_input(cx, actions, &[row, id!(col_start)]) {
+                    edit(&|c| c.start_px = v.round() as u32);
                     bill_changed = true;
+                }
+                if let Some(v) = self.slip_column_input(cx, actions, &[row, id!(col_end)]) {
+                    edit(&|c| c.end_px = v.round() as u32);
+                    bill_changed = true;
+                }
+                for (idle, on, align) in [
+                    (id!(col_a_start), id!(col_a_start_on), print_share::KotAlign::Start),
+                    (id!(col_a_center), id!(col_a_center_on), print_share::KotAlign::Center),
+                    (id!(col_a_end), id!(col_a_end_on), print_share::KotAlign::End),
+                ] {
+                    if self.choice_chip_clicked(cx, actions, &[row, idle], &[row, on]) {
+                        edit(&|c| c.align = align);
+                        bill_changed = true;
+                    }
+                }
+                let up = self.ui.button(cx, &[row, id!(col_up)]).clicked(actions);
+                let down = self.ui.button(cx, &[row, id!(col_down)]).clicked(actions);
+                if up || down {
+                    let mut st = app_state().lock().unwrap();
+                    let mut order = st.bill_slip_draft.clone().clamped().item_col_order;
+                    let j = if up { i.checked_sub(1) } else { Some(i + 1).filter(|j| *j < order.len()) };
+                    if let Some(j) = j {
+                        order.swap(i, j);
+                        st.bill_slip_draft.item_col_order = order;
+                        bill_changed = true;
+                    }
                 }
             }
             for (idle, on, partner) in [
@@ -5089,6 +4969,31 @@ impl MatchEvent for App {
                 }
             }
         }
+        for (idle, on, mode) in [
+            (ids!(bill_print_first), ids!(bill_print_first_on), print_share::RoutePrintMode::First),
+            (ids!(bill_print_all), ids!(bill_print_all_on), print_share::RoutePrintMode::All),
+        ] {
+            if self.choice_chip_clicked(cx, actions, idle, on) {
+                let result = (|| -> Result<String, String> {
+                    let mut st = app_state().lock().unwrap();
+                    if st.device_role == DeviceRole::Client {
+                        return Err(st.t("printers_host_only"));
+                    }
+                    st.printer_draft.set_print_mode(print_share::RouteKey::Bill, mode);
+                    st.save_printer_draft()?;
+                    Ok(st.t(match mode {
+                        print_share::RoutePrintMode::All => "printer_mode_all",
+                        print_share::RoutePrintMode::First => "printer_mode_first",
+                    }))
+                })();
+                match result {
+                    Ok(msg) => self.set_status(cx, msg),
+                    Err(e) => self.set_status(cx, e),
+                }
+                self.sync_job_drive_ui(cx);
+                break;
+            }
+        }
         if self.ui.button(cx, ids!(bill_printers_dd)).clicked(actions) {
             let is_client = app_state().lock().unwrap().device_role == DeviceRole::Client;
             if is_client {
@@ -5129,7 +5034,6 @@ impl MatchEvent for App {
             (ids!(bill_layout_portrait), ids!(bill_layout_portrait_on), Some(false), None),
             (ids!(bill_layout_landscape), ids!(bill_layout_landscape_on), Some(true), None),
             (ids!(bill_deliv_os), ids!(bill_deliv_os_on), None, Some(print_share::DELIVERY_SYSTEM_SPOOLER)),
-            (ids!(bill_deliv_raw), ids!(bill_deliv_raw_on), None, Some(print_share::DELIVERY_RAW_DEVICE)),
             (ids!(bill_deliv_escpos), ids!(bill_deliv_escpos_on), None, Some(print_share::DELIVERY_ESCPOS)),
         ] {
             if self.choice_chip_clicked(cx, actions, idle, on) {
@@ -6593,11 +6497,6 @@ impl MatchEvent for App {
                 ids!(printer_mode_first),
                 ids!(printer_mode_first_on),
                 print_share::DELIVERY_SYSTEM_SPOOLER,
-            ),
-            (
-                ids!(printer_mode_all),
-                ids!(printer_mode_all_on),
-                print_share::DELIVERY_RAW_DEVICE,
             ),
             (
                 ids!(vp_deliv_escpos),

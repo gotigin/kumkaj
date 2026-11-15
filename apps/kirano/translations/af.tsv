@@ -69,12 +69,10 @@ bill_item_qty	Hoeveelheid
 bill_item_price	Prijs
 bill_item_amount	Bedrag
 bill_item_note	Itemnota
-bill_item_col_order	Kolom volgorde
 bill_item_col_sep	Kolom reëls
 slip_col_width	Breedte (mm)
 slip_col_start	Beginspasie (px)
 slip_col_end	Eindspasie (px)
-slip_col_align	Teksbelyning
 slip_columns_help	Elke kolom se breedte sluit sy begin- en eindspasie in. Teks vou binne sy kolom; wat verby die inhoudbreedte lê, word afgesny, op papier en in die voorskou.
 bill_total_qty_label	Totaal aantal etiket
 bill_total_subtotal_label	Subtotaal etiket
@@ -431,7 +429,6 @@ printer_profile_heading	Opstelling
 vp_delivery_heading	Levering
 vp_delivery_help	How this virtual printer sends jobs — OS document, raw bytes, or ESC/POS. Slip content (type size, wrap, margins) is decided by the bill / Slip format, not here.
 vp_delivery_spooler	OS-dokument (sistemspoeler)
-vp_delivery_raw	Ruwe bytes na toestel
 vp_delivery_escpos	ESC/POS-termostaatbevels
 virtual_printer_new	Nuwe virtuele drukers
 virtual_printer_selected	Bewerk {name} — tik op 'n ander in die lys om te wissel
@@ -718,7 +715,6 @@ customer_paid_ph	Klant betaal
 tip_ph	Tips
 find_server	Soek die winkel se bediener
 bill_format	Rekening formaat
-bill_format_help	Printed under your shop's name on every bill. Separate lines with | (e.g. MG Road, Rajkot | Ph 98250 00000).
 bill_header_ph	Adres | telefoon
 fssai_ph	FSSAI / winkellisensie nr. (opsioneel)
 bill_footer_ph	Voetstuk (bv. Dankie, besoek weer)
@@ -808,8 +804,6 @@ add_dishes	Voeg items by
 order_so_far	Op hierdie bestelling: {n} · {total}
 no_dish_match	Geen item stem ooreen met “{q}” nie
 pick_done	Gereed
-kot_field_up	Beweeg op
-kot_field_down	Beweeg af
 dishes_n	{n} items
 reorder_ph	Koop meer by
 set_reorder	Stel herbestellvlak in
@@ -841,3 +835,6 @@ sel_copy	Kopieer
 sel_select_all	Kies alles
 sel_copied	Gekopieer
 nav_loading	Laai tans…
+printer_mode_first	Eers wat werk
+printer_mode_all	Druk op almal
+slip_columns	Kolomme
