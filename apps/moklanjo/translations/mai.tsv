@@ -39,7 +39,7 @@ adding_item	नव दर जोड़ि रहल छी
 editing_item	बदलि रहल छी
 save	सहेजू
 remove	हटाउ
-empty_catalog	एखन कोनो दर नहि। दर आ सेवा खोलू, एकटा जोड़ू (नाम + दाम, इकाई kg), तखन बुकिंग।
+empty_catalog	एखन कोनो दर नहि।
 counter_sale	काउंटर बुकिंग
 total	कुल
 cash	नकद
@@ -171,8 +171,6 @@ selected_language	चुनल
 continue	आगाँ बढ़ू
 this_device	ई डिवाइस
 device_use_q	ई डिवाइस कोना उपयोग होएत?
-last_server_mode	सर्वर छल — आगाँ बढ़बाक लेल दबाउ
-last_client_mode	क्लाइंट छल — आगाँ बढ़बाक लेल दबाउ
 choose_server	सर्वर चुनू
 choose_server_hint	पहिलुका सर्वर खोलू, वा आन व्यवसाय लेल नव बनाउ।
 create_new_server	नव सर्वर बनाउ
@@ -501,8 +499,6 @@ job_layout	बनावट
 job_delivery	काज कोना पठाओल जाइत अछि
 job_size	अक्षर आकार
 job_size_ph	जेना 18, 20, 26…
-save_receipt_format	रसीद प्रारूप सहेजू
-save_label_format	लेबल प्रारूप सहेजू
 test_receipt_format	टेस्ट रसीद
 test_label_format	टेस्ट लेबल
 test_receipt_sent	नमूना रसीद पठाओल
@@ -610,7 +606,7 @@ units_heading	इकाई
 booking_measures	बुकिंगक माप
 drawer_count	दराज गिनती (वैकल्पिक)
 spreadsheet_csv	स्प्रेडशीट (CSV)
-bank_reconciliation	बैंक मिलान (बैंक विवरणसँ मिला कऽ टिक करू)
+bank_reconciliation	बैंक मिलान
 book_add_product	बही — उत्पाद / दर जोड़ू
 book_opening_credit	बही — शुरुआती उधार
 account_kind	खाताक प्रकार (एकटा दबाउ)
@@ -650,7 +646,7 @@ net_word	शुद्ध
 offline_badge	ऑफलाइन
 optional_login_help	वैकल्पिक लॉगिन (id + पासवर्ड)। मालिक एक बेर राखैत छथि; बादमे केवल उपयोगकर्ता पासवर्ड बदलि सकैत छथि।
 or_unlock_login	वा लॉगिन id + पासवर्डसँ अनलॉक करू
-permission_preset	काज (स्क्रीन आ अधिकार तय करैत अछि)
+permission_preset	काज
 preset_help_moklanjo	कैशियर: बेचब। मैनेजर: बेचब + सामान + रद्द/संशोधन।
 product_locked_moklanjo	Moklanjo
 product_only_moklanjo	ई ऐप केवल Moklanjo अछि — बही + बुकिंग डेस्क। आन व्यापारक रूप बादमे अलग उत्पाद रूपमे आओत।
@@ -698,10 +694,6 @@ pin_hint_paired	अतिरिक्त टिल जुड़ल — बेच
 pin_hint_pair_first	अतिरिक्त टिल — पहिने दोकानक डिवाइससँ जोड़ू
 unlock_to_continue	आगाँ बढ़बाक लेल अनलॉक करू
 no_staff_yet	एखन धरि कर्मचारी नहि — मालिक रूपमे अनलॉक करू, तखन टीम
-status_server_set_pin	सर्वर मोड — मालिकक PIN राखू
-status_server_tills	सर्वर मोड — अतिरिक्त टिल जुड़ि सकैत अछि। अनलॉक करू
-status_server_unlock	सर्वर मोड — मालिक रूपमे अनलॉक करू
-status_client_unlock	क्लाइंट मोड — बेचबाक लेल अनलॉक करू
 icon_new_selected	आइकन: नव फाइल चुनल — ब्रांड सहेजू दबाउ
 icon_custom	आइकन: अपन दोकानक चिन्ह
 icon_default	आइकन: Kumkaj चिन्ह (डिफॉल्ट) — अपन चुनू

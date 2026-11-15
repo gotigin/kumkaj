@@ -41,7 +41,7 @@ remove	Tynnu
 removed_items	Eitemau a dynnwyd
 removed_help	Mae adfer yn rhoi'r eitem yn ôl ar y ddewislen yn union fel yr oedd — pris, llun a chategori. Nid yw ein silff o brydau byth yn cael ei thynnu, felly gellir ychwanegu pryd eto bob amser.
 restore_item	Adfer
-empty_catalog	Dim prydau eto. Agorwch y Ddewislen, ychwanegwch bryd (enw + pris), yna cymerwch archeb.
+empty_catalog	Dim prydau eto.
 total	Cyfanswm
 cash	Arian parod
 upi	UPI
@@ -103,23 +103,14 @@ bill_item_qty	Nifer
 bill_item_price	Pris
 bill_item_amount	Swm
 bill_item_note	Nodyn y pryd
-bill_item_col_gap	Bwlch colofn
 bill_item_col_order	Trefn colofnau
 bill_item_col_sep	Llinellau colofn
-bill_item_gap_tight	Tynn
-bill_item_gap_comfort	Cyfforddus
-bill_item_gap_wide	Llydan
-bill_item_num_width	Colofnau rhif
-bill_item_num_compact	Cryno
-bill_item_num_comfort	Cyfforddus
-bill_item_num_wide	Llydan
-bill_item_num_align	Aliniad rhifau
-bill_item_gap_em	Bwlch (em)
-bill_item_qty_min	Nifer min (em)
-bill_item_price_min	Pris min (em)
-bill_item_amount_min	Swm min (em)
-kot_item_qty_width	Colofn nifer
-kot_item_num_align	Aliniad nifer
+slip_columns	Colofnau
+slip_col_width	Lled (mm)
+slip_col_start	Gofod dechrau (px)
+slip_col_end	Gofod diwedd (px)
+slip_col_align	Alinio testun
+slip_columns_help	Mae lled pob colofn yn cynnwys ei gofod dechrau a’i gofod diwedd. Mae testun yn lapio y tu mewn i’w golofn; caiff unrhyw beth y tu hwnt i led y cynnwys ei dorri, ar bapur ac yn y rhagolwg.
 bill_total_qty_label	Label cyfanswm nifer
 bill_total_subtotal_label	Label is-gyfanswm
 bill_total_grand_label	Label cyfanswm mawr
@@ -221,7 +212,6 @@ sidebar_order_saved	Trefn y bar ochr wedi'i chadw
 sidebar_visibility_saved	Gwelededd y bar ochr wedi'i gadw
 amounts_hide	Cuddio
 amounts_show	Dangos
-printers_none_hint	Cadwch argraffydd ar y ddyfais hon yn gyntaf, yna ychwanegwch ef at Fil neu gegin
 counter	Cownter
 dine_in	Bwyta i mewn
 takeaway	Cludfwyd
@@ -328,8 +318,6 @@ selected_language	Wedi'i ddewis
 continue	Parhau
 this_device	Y DYFAIS HON
 device_use_q	Sut y defnyddir y ddyfais hon?
-last_server_mode	Gweinydd oedd — tapiwch i barhau
-last_client_mode	Cleient oedd — tapiwch i barhau
 choose_server	Dewiswch weinydd
 choose_server_hint	Agorwch weinydd sy'n bodoli, neu crëwch un ar gyfer busnes arall.
 create_new_server	Creu gweinydd newydd
@@ -391,7 +379,7 @@ attachments_last_expense	Atodiadau (gwariant olaf)
 bank	Banc
 bank_in	Banc i mewn
 bank_out	Banc allan
-bank_reconciliation	Cymodi banc (ticiwch yn erbyn eich cyfriflen banc)
+bank_reconciliation	Cymodi banc
 bank_to_till	Banc → til
 book_add_dish	Llyfr — ychwanegu pryd / eitem
 book_opening_credit	Llyfr — credyd agoriadol
@@ -744,7 +732,6 @@ station_print_pick_first	Dewiswch orsaf gegin yn gyntaf
 station_print_editing	Yn golygu argraffwyr ar gyfer “{name}”
 station_vps_dd	Argraffwyr ar gyfer y orsaf hon
 station_vps_dd_n	{n} argraffydd · tapiwch i newid
-station_vps_empty	Dim argraffwyr eto — dewch o hyd iddynt o dan Gosodiadau → Argraffwyr
 bill_printers_dd	Argraffwyr ar gyfer y bil
 bill_printers_dd_n	{n} argraffydd ar gyfer y bil · tapiwch i newid
 job_layout	Cynllun
@@ -889,7 +876,7 @@ net_word	Net
 offline_badge	ALL-LEIN
 optional_login_help	Mewngofnodi dewisol (id + cyfrinair). Mae'r Perchennog yn gosod unwaith; dim ond y defnyddiwr all newid y cyfrinair yn ddiweddarach.
 or_unlock_login	Neu datgloi gydag id mewngofnodi + cyfrinair
-permission_preset	Swydd (yn gosod sgriniau a gweithredoedd arian)
+permission_preset	Swydd
 preset_help_khaynjo	Ariannwr: gwerthu. Rheolwr: gwerthu + eitemau + diddymu/diwygio.
 product_locked_khaynjo	Khaynjo
 product_only_khaynjo	Ap Khaynjo yn unig yw hwn — system weithredu bwyty. Mae wynebau masnach eraill yn cyrraedd fel cynhyrchion Kumkaj ar wahân.
@@ -961,10 +948,6 @@ pin_hint_paired	Til ychwanegol wedi'i baru — datgloi i werthu
 pin_hint_pair_first	Til ychwanegol — parwch â dyfais y siop yn gyntaf
 unlock_to_continue	Datgloi i barhau
 no_staff_yet	Dim staff eto — datgloi fel Perchennog, yna Tîm
-status_server_set_pin	Modd Gweinydd — gosod PIN Perchennog
-status_server_tills	Modd Gweinydd — gall tiliau ychwanegol ymuno. Datgloi
-status_server_unlock	Modd Gweinydd — datgloi fel Perchennog
-status_client_unlock	Modd Cleient — datgloi i werthu
 icon_new_selected	Eicon: ffeil newydd wedi'i dewis — tapiwch Cadw brand
 icon_custom	Eicon: marc lleoliad personol
 icon_default	Eicon: marc Kumkaj (rhagosodiad) — dewiswch un personol
@@ -1033,7 +1016,7 @@ book_kind_balance	Mantolen
 order_help	Tapiwch eitem i'w ychwanegu.
 floor_help	Tapiwch fwrdd i gymryd neu newid yr archeb. Mae lliwiau'n dangos rhydd → eistedd → cegin → barod → bwyta → bil → talwyd. Mae rhestr aros, archebion, ac ychwanegu byrddau yn yr adrannau isod.
 kitchen_help	Tocynnau cegin (KOT), y mwyaf newydd olaf. Mae Dechrau → Barod → Wedi gorffen yn symud tocyn ymlaen. Nid yw tocynnau byth yn dangos prisiau.
-kitchen_empty	Dim tocynnau agored. Mae KOT a anfonir o Archeb neu Lawr yn ymddangos yma.
+kitchen_empty	Dim tocynnau agored.
 add_a_table	Ychwanegu bwrdd
 add_station_heading	Ychwanegu gorsaf gegin
 categories_help	Tapiwch Defnyddio i ffeilio'r eitem uchod o dan y categori honno. Mae llun yn rhoi llun i'r categori; heb un mae'n dangos ei lythrennau cyntaf.
@@ -1131,7 +1114,6 @@ bill_format_help	Wedi'i argraffu o dan enw'ch bwyty ar bob bil. Gwahanwch linell
 bill_header_ph	Cyfeiriad | ffôn
 fssai_ph	Rhif trwydded FSSAI (India)
 bill_footer_ph	Troedyn (e.e. Diolch, dewch eto)
-save_bill_format	Cadw fformat bil
 reset_bill_format	Ailosod i'r rhagosodiad
 bill_format_reset	Fformat bil wedi'i ailosod i'r rhagosodiad
 reset_kot_format	Ailosod i'r rhagosodiad
@@ -1201,13 +1183,11 @@ kot_copies_3	3
 kot_title_ph	Teitl (gwag = KOT - KITCHEN ORDER)
 kot_footer_ph	Nodyn cegin (dewisol, dim prisiau)
 kot_preview	Rhagolwg
-save_kot_format	Cadw fformat KOT
 test_kot_format	KOT prawf
 test_kot_sent	Rhagolwg tocyn cegin wedi'i anfon
 test_bill_format	Bil prawf
 test_bill_sent	Rhagolwg bil wedi'i anfon
 test_print_no_printer	Dim argraffydd ar gyfer y swydd honno — dewiswch un ar y sgrin hon
-kot_format_saved	Fformat KOT wedi'i gadw
 std_print	Maint argraffu bil
 std_print_help	Maint ffont ar gyfer swyddi bil Portread a Thirlun Safonol ar argraffwyr OS / dogfen (rhowch bwyntiau — nid Bach/Arferol/Mawr). Yr un maint ar y ddwy gyfeiriadaeth. Mae meintiau slip y gegin ar dab KOT.
 std_size_s	Bach
@@ -1264,7 +1244,6 @@ new_items_head	Heb ei anfon eto
 price_ph	Pris
 price_ph_gst_inside	Pris ({tax} wedi'i gynnwys)
 cancel_needs_table	Agorwch yr archeb hon o'r Llawr (bwrdd) i ganslo ar ôl i'r gegin ei chael — mae KOT y cownter yn aros ar y tocyn nes i chi gymryd taliad
-tax_rates_missing_hint	Dim cyfradd {tax} ar y prydau hyn — ar y Dewislen gosodwch Gyfradd dreth (mae prisiau eisoes yn cynnwys {tax} o dan {tax} wedi'i gynnwys)
 taxable_value	Gwerth trethadwy
 gst_inside_price_note	({tax} wedi'i gynnwys)
 start_with_template	Dechrau gyda'n templed dewislen
@@ -1318,9 +1297,7 @@ order_empty_pick	Archeb yn wag — tapiwch Ychwanegu prydau uchod i ddewis pryda
 add_dishes	Ychwanegu prydau
 order_so_far	Ar yr archeb hon: {n} · {total}
 no_dish_match	Dim pryd yn cyfateb i “{q}”
-pick_dishes_help	Tapiwch bryd i'w ychwanegu · dewiswch gategori i gulhau'r rhestr
 pick_done	Wedi gorffen
-pick_done_dd	Wedi gorffen · {label}
 printer_route_mode	Os oes sawl argraffydd ar y lle hwn
 printer_mode_first	Y cyntaf sy'n gweithio
 printer_mode_all	Argraffu ar bob un

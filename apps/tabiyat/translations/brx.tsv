@@ -1,5 +1,4 @@
 # Bodo — बर' (brx). One key<TAB>text per line, in en() order; keep {placeholders}.
-app_tagline	फार्मासि काउन्टर : मुलि, बैच, लेजर आरो बिजाबफोर। फ्रि अफलाइन।
 barcode_ph	बारक'ड / EAN
 composition_ph	संख्रि / सुजुनाय (नागिरनोहाथाव)
 schedule_h_off	फारिलाइ H — अफ (बिगोमानि फिरफिला)
@@ -13,7 +12,6 @@ expiry_alerts	एक्सपायरी एलार्ट (फैगौ 7 स
 expiry_none	फैगौ 7 साननि गेजेराव जेबो बैचफोरा जोबनाय नङा।
 rx_nudge	बिगोमाया Rx / Schedule H फ्लेग खालामदों — नांगौ जायोब्ला गांसे लिरथाय दाजाबदेर।
 unlock	खुलि हो
-pin_hint	गिबिनि PIN आ 0000 जों जागायो
 sell	फान
 buy	बायनाय
 books	साननि बही
@@ -32,17 +30,13 @@ reports_month	मुनाफा आरो खहा (दान)
 reports_aging	बाकी / Dr-Cr
 reports_balance_sheet	ब्यालेन्स सिट
 reports	बैंकनि बही आरो मुनाफा
-refresh	फिन नुजा
 undo	सिगांगनिखौ लाबफिन
-start_tracking	साननाय जागाय
 stock_minus	− स्टक
 stock_plus	+ स्टक
 settle_cash	नगद हो
 settle_card	कार्ड जों हो
 items	मुलि
 nav_items	मुलि
-more	बांसिन
-your_items	नोंथांनि मुलिफोर
 items_help	बेखौ एडिट खालामनो थाखाय मोनसे आइटेमखौ थु। मोनसे गोदान आइटेमआ फर्मखौ स्रां खालामो। मुं एबा short code जों नागिर, बेसेन थि खालाम (0 आ मोजां), बेनि उनाव दाजाबदेर। फाननाया सिगांनिफ्रायनो रेबगान्थि खालामखानाय मुंखौनो लाखि जायजों बिसोरनो रां लानाय जादोंमोन।
 add_item	आइटम दाजाब
 new_item	गोदान आइटम
@@ -53,28 +47,22 @@ remove	बोखार
 removed_items	बोखारजानाय आइटम
 removed_help	Restore आ बेसादखौ आइटेमफोराव थिग बिदिनो दोनफिनो- बेसेन, फट' आरो केटेगरी।
 restore_item	लाबोफिन
-empty_catalog	दासिम जेबो मुलि गैया। मुलिफोरखौ खेव, मुं, बारक'ड एबा संख्रि होदेर, बेनि उनाव फान।
+empty_catalog	दासिम जेबो मुलि गैया।
 total	गासै
 cash	नगद
 upi	युपिआइ
 card	कार्ड
 credit	पार्टी
 clear	खोमा
-ready_to_sell	बही लिरनो थाखि जाबाय
 today_prefix	दिनै
-today_mid	दिनै
 owed	बाकी
-round_word	राउन्ड
 back	उनफिन
 sold_out	मोननो हानाय नङा
 restock	फिन दोन
 not_tracked	साननाय नङा
 in_stock	स्टकाव
 marked_sold_out	मोननो हानाय नङा होनना दिहुनबाय
-add_upper	दाजाब
-na	लागू नङा
 qty	लिरथि/बिबां
-unit_at	बेसेन @
 actual	थार
 applied	बाहायबाय
 note_ph	नोट (नाङाब्लाबो)
@@ -93,21 +81,13 @@ bill_item_qty	बिबां
 bill_item_price	बेसेन
 bill_item_amount	रां
 bill_item_note	Rx / सेल नट
-bill_item_col_gap	खाम्फानि गेजेर
 bill_item_col_order	खाम्फानि फारि
 bill_item_col_sep	खाम्फानि हांखो
-bill_item_gap_tight	खिन्था
-bill_item_gap_comfort	सुखु
-bill_item_gap_wide	गोबां
-bill_item_num_width	अन्थोरनि खाम्फा
-bill_item_num_compact	खिन्था
-bill_item_num_comfort	सुखु
-bill_item_num_wide	गोबां
-bill_item_num_align	अन्थोर फारि
-bill_item_gap_em	गेजेर (em)
-bill_item_qty_min	बिबां खम (em)
-bill_item_price_min	बेसेन खम (em)
-bill_item_amount_min	रां खम (em)
+slip_col_width	गुवार (mm)
+slip_col_start	जागायनायनि जायगा (px)
+slip_col_end	जोबनायनि जायगा (px)
+slip_col_align	लिरनि सारि
+slip_columns_help	खाम्फा फोरनि गुवारआव बेनि जागायनाय आरो जोबनायनि जायगा दं। लिरा बेनि खाम्फानि सिङाव खोसायो; बिबुंथि गुवारनिफ्राय बायजोआव थानाय बाहागोआ कागजआव आरो सिगाङाव नुनायाव खावनाय जायो।
 bill_total_qty_label	गासै बिबांनि लेबेल
 bill_total_subtotal_label	खाव गासैनि लेबेल
 bill_total_grand_label	गासै रांनि लेबेल
@@ -120,11 +100,7 @@ bill_total_qty	गासै बिबां
 bill_total_subtotal	खाव गासै
 bill_total_grand	गासै रां
 kot_unassigned	थि खालामजायै
-pos_tab_items	दाजाबजानाय आइटम
-pos_tab_payment	होनाय
-settings_hub_title	सेटिं
 settings_hub_help	मोनसे समाव मोनसे ओनसोल खेव — खम स्क्रल, गोबां साफ सायख।
-settings_back	उनफिन
 settings_sec_language	राव आरो रांनि रोखोम
 settings_sec_country	हादोर आरो कर
 settings_sec_tills	गुबुन मेसिन
@@ -166,35 +142,17 @@ diag_cleared	डायग्नोस्टिक लग खोमाबाय
 sidebar_settings	साइडबार
 sidebar_settings_help	साइड रेलनि लोगोसे आइकन। फारि सोलायनो बोगो। दिन्थिफुं एबा दोनखोमानो सुइस सोलाय। सेटिं आरो लक आ जेब्लाबो बारआव थागोन।
 sidebar_always_on_short	जेब्लाबो अन
-sidebar_back_settings	उनफिन
-sidebar_shown	दिन्थिफुंबाय
-sidebar_hidden	दोनखोमाबाय
-sidebar_always_on	जेब्लाबो बारआव
-sidebar_shown_hint	साइड रेल / गाहायनि टेबआव दिन्थिफुंबाय
-sidebar_hidden_hint	बारनिफ्राय दोनखोमाबाय
 sidebar_menu_items	आइटम
 sidebar_enable_all	गासैखौ अन खालाम
 sidebar_disable_all	गासैखौ अफ खालाम
 sidebar_order_saved	साइडबारनि फारि थिना दोनबाय
 sidebar_visibility_saved	साइडबारनि नुजायनाय थिना दोनबाय
-amounts_hide	दोनखोमा
-amounts_show	दिन्थिफुं
-printers_none_hint	गिबियाव बे डिभाइसाव प्रिन्टार सेभ खालाम, बेनि उनाव बेखौ बिल एबा मोनसे बाहागोआव दाजाब
-counter	काउन्टार
-dine_in	काउन्टार
-takeaway	लानाय
-order	अर्डर
 sales	बायनाय
-sales_refunds	बायनाय आरो फिन होनाय
 day_close	सान बन्द'
 reports_expenses	बैंकनि बही आरो मुनाफा
 nav_reports	रिपर्ट
 nav_settings	सेटिं
 nav_lock	लक
-no_sale_yet	दासिम बायनाय गैया
-favorites	मोजां
-favorites_help	नोंनि गोबां बायनाय आइटम, नोंनि लगइननि थाखाय थिना दोनबाय। बिलआव मोनसे दाजाब, एबा गाहायनि गासै आइटमनिफ्राय नोंनि लिस्ट बानाय।
-your_favorites	नोंनि मोजां
 all_items	गासै आइटम
 frequent	गोबां बायजानाय
 added_items	दाजाबजानाय आइटम
@@ -211,8 +169,6 @@ zero_sales_on	₹0 गनायथि हो
 zero_sales_off	बेसेन नांगौ
 zero_sales_saved_on	₹0 बायनाय गनायथि जाबाय
 zero_sales_saved_off	बायनायाव ₹0 नि गोजौ बेसेन थानांगोन
-no_favorites	दासिम मोजां गैया — गाहायनि लिस्टनिफ्राय आइटम दाजाब।
-add_to_bill	बिलआव दाजाब
 added	दाजाबबाय
 owes_word	जोंखा
 selected_word	सायखबाय
@@ -221,19 +177,11 @@ chip_missing_customer	सायखजानाय ग्राहक नुज�
 chip_no_customer	दासिम ग्राहक गैया — मुं लिर, अब्ला उधारिखौ सुदुं
 credit_summary_fmt	{} ग्राहक · खेवजानाय उधारि {} · दोनजानाय एडभान्स {}
 recent_label	दाखालि:
-start_order	अर्डर जागाय
-open_bill	बिल खेव
-collect_payment	रां ला
-payment_pending	होनाय नेथ'
-collect_at_counter	काउन्टारआव ला
 inventory	स्टकनि हिसाब
-inventory_stock	स्टकनि हिसाब आरो स्टक
 branches	ब्रान्च
-branches_org	ब्रान्च आरो दफान
 credit_customers	पार्टी (खाता आरो सप्लायर)
 customer_name_ph	पार्टीनि मुं
 new_customer_ph	गोदान पार्टीनि मुं
-item_name_ph	आइटमनि मुं (बिदिं Masala Dosa)
 item_price_ph	बेसेन
 start_template	प्रडक्ट
 team	टिम
@@ -241,17 +189,11 @@ team_pins	टिम आरो PIN
 my_pin_settings	आंनि PIN
 settings_hub_help_my_pin	बे मेसिनआव साइन-इन जानाय मानसिनि खुलि PIN खौ सोलाय।
 team_self_help	मोनसे साइन-इन: गोदान PIN, गोदान पासवार्ड, एबा मोननैबो। थाखिथिंखौ लानो खाली दोन। गुबुन स्क्रिन एबा अधिकार नांगौब्ला गिबिखौ सोङो।
-backup_settings	ब्याकआप आरो सेटिं
-lock_app	एप लक खालाम
 pick	सायख
-select	सायख
 advance	एडभान्स
 owner	गिबि
 staff	मावुरि
 photo	सावमुथि
-auto	अटो
-prev	सिगांग
-next	उननि
 ok	OK
 this_shop	सर्वर
 extra_till	क्लाइन्ट
@@ -260,17 +202,13 @@ server	सर्वर
 client	क्लाइन्ट
 language_currency	राव आरो रांनि रोखोम
 language	राव
-choose_language	नोंनि राव सायख
 language_setup_hint	बे मेसिननि रावखौ फालो, एबा नों आंखौ सायख।
 lang_follow_platform	मेसिननि राव
 lang_pick_user	राव सायख
 lang_platform_now	दा मेसिननि राव
 selected_language	सायखबाय
-continue	सालाय लां
 this_device	बे मेसिन
 device_use_q	बे मेसिनखौ माबोरै बाहायगोन?
-last_server_mode	सर्वर मोन — सालाय लांनो सुदुं
-last_client_mode	क्लाइन्ट मोन — सालाय लांनो सुदुं
 choose_server	सर्वर सायख
 choose_server_hint	गोजाम सर्वर खेव, एबा गुबुन बिजनेसनि थाखाय गोदान मोनसे बानाय।
 create_new_server	गोदान सर्वर बानाय
@@ -280,12 +218,6 @@ server_remove_pin_ph	सर्वर बोखारनो गिबिनि PI
 only_owner_remove_server	खोथिया गिबिआ सर्वर बोखारनो हायो
 owner_pin_remove_server	बे सर्वर बोखारनो गिबिनि PIN नांगौ
 device_setup_help	सर्वरआ बहीखौ बेयाव दोनो। क्लाइन्ट आ सर्वरजों जोरा।
-app_template_heading	Starter catalog (वैकल्पिक)
-app_template_blurb	मोनसे सेमपोल केटेलॉग ल'ड खालामो; बिगोमा जहीर (जाहिर), एडमिन आसिफ (आसिफ, पिन 1111), केसियार नवाज (नवाज, पिन 0000); टेक्स/जिएसटि बन्द; मोखां साइडबार; जारिमिना 4 घन्टानि उनाव स्रां जायो (आरो दा Backup आव स्रां खालाम); दिनैनि स्ट्रिप अफ ; गुसेब ट्रेनि थाखाय कम्पैक्ट बिल + स्टेन्डर्ड मार्जिन। सेटिंसआव टेक्स आरो साइडबार अपसनफोरखौ अन खालामफिननो हायो।
-app_template_apply	स्टार्टर केटेलॉग बाहाय
-app_template_skip	दा बार
-app_template_status	Server थियारि — Starter catalogue बाहाय, एबा
-app_template_importing	{title} बाहाय गासिनो…
 currency	रांनि रोखोम
 backup	ब्याकआप
 use	बाहाय
@@ -319,7 +251,7 @@ attachments_last_expense	नांजाबनाय (जोबथा खर्�
 bank	बैंक
 bank_in	बैंक हाब
 bank_out	बैंक बारहो
-bank_reconciliation	बैंक मिलानाय (नोंनि बैंक स्टेटमेन्टजों टिक बोखार)
+bank_reconciliation	बैंक मिलानाय
 bank_to_till	बैंक → टिल
 book_add_dish	बिजाब — Wi-Fi आव आइटेम/आइटेम
 book_opening_credit	बही — जागायनाय उधारि
@@ -349,9 +281,6 @@ share_whatsapp	WhatsApp आव रान
 lan_pages_heading	कास्टमार पेजफोरखौ दाजाबदेर
 lan_pages_help	बे गलानि Wi-Fi आव कास्टमार पेजफोरा डिस्प्ले बर्ड आरो फिनजाथाइनि थाखाय हाबा मावो। मबाइल डाटानि सुबुंफोरा उनाव Cloud नि गोनांथि जायो। कार्ड टार्मिनेल एबा पेमेन्ट लिंकआ सायख'जाथाव आरो बेयो माब्लाबाबो काउन्टारखौ होबथाया।
 diag_send_heading	बे मेसिननिफ्राय रान
-optional_login_heading	नाङाब्लाबो लगइन
-rights_heading	अधिकार
-ops_panel	जानि खामानि
 crm_heading	बायग्राफोर आरो खौरांफोर
 crm_help	जन्म अक्ट', लयेल्टि, गैलाय आरो गोजौ मेहेन — SMS एबा WhatsApp खिन्था लाइन खालाम। खिन्थायाव {name} आरो {points} बाहाय। गिबिआ दैथाय होनो सुदुं; गावआं गाव गोसारनाय नङा।
 crm_queue_sms	SMS लाइन खालाम
@@ -376,21 +305,17 @@ till_wallet_topup_ph	भरा वालेट रां
 till_voucher_issue_amt_ph	होनाय भाउचार रां
 till_voucher_issue_code_ph	गोदान भाउचार कोड
 bulk_price_apply	गोबां बेसेन बाहाय
-card_terminal_optional	कार्ड टर्मिनल / होनाय लिंक (इन्टारनेट दंब्ला नाङाब्लाबो)
 copy_report	रिपर्ट कपि खालाम
 counted_cash_ph	दराजआव सानजानाय नगद
 country_tax	हादोर आरो कर
 create_backup	ब्याकआप बानाय
 credit_limit_heading	उधारिनि सिमा (सायखजानाय / मुं गोनां पार्टी)
-day_close_summary	सान बन्द'नि सारांश
 delete_party	सायखजानाय पार्टी बोखार
-delivery	दैथाय होनाय
 done_open_books	जोबबाय — बही खेव
 drawer_count	दराज साननाय (नाङाब्लाबो)
 expense_heading	खर्च
 export_day	सान बारहो
 extra_note_bill_ph	बे बिल / बायनायनि बांद्राय नोट
-extra_note_expense_ph	जोबथा खर्चनि बांद्राय नोट
 extra_tills_heading	बांसिन टिल
 other_devices_help_heading	गुबुन मेसिन साजाय
 other_devices_help	बे डिभाइस (Server) आव: गुबुन डिभाइसफोरा → उफ्रा tills गनायथि होयो। पेयरिंग कड आरो Wi-Fi थंखौ नोजोर हो। नुयोब्ला गुबुन दिभाइसफोरखौ फोनांजाबनो गनायथि हो (Allow ) आव थु। कम्पिउटाराव Start with बे कम्पिउटाराव थु। गुबुन मोनसे दिभाइसाव : एप इनस्टल खालाम, Client Mode खौ सायख, गलानि server नागिर (एबा थं type खालाम), पेरिं कड हो, दानो Pair खालाम। जुदि Wi-Fi आ गोग्लैयो अब्ला अर्डारफोरा दिभाइसआव नेयो आरो जेब्ला Server आ फिन्नाय होयो अब्ला थाङो। उफ्रा प्रिन्टारफोरखौ Server (Settings → Printers) आव सेट खालामनाय जायो - उफ्रा टिलफोरा बेयाव बिल दैथायहरो।
@@ -404,7 +329,6 @@ login_id_ph	युजार मुं
 mark_cleared	खोमाबाय होनना दिहुन
 new_party_clear	गोदान पार्टी (फर्म खोमा)
 new_party_kind_supplier_ph	गोदान पार्टीनि रोखोम (सप्लायर)
-next_country	उननि हादोर
 next_order	उननि अर्डर (डेस्क खोमा)
 note_gstin_ph	नोट / GSTIN / गोरोबथाइनि गोसोखां
 notes_attach_party	नोट आरो नांजाबनाय (सायखजानाय पार्टी)
@@ -422,8 +346,6 @@ pay_ap_cash	AP नगद हो
 pay_ap_heading	जांखौ जों जोंखा बेखौ हो (AP)
 pay_ap_upi	AP UPI हो
 pay_selected_heading	सायखजानायखौ हो (जोंखा फोजोब / एडभान्स ला)
-pick_from_items	जोंनि आइटमनिफ्राय सायख
-prev_country	सिगांगनि हादोर
 print_open	प्रिन्ट / खेव
 reason_amend_ph	सुधाय / भोइड / फिन होनायनि जाहोन
 reason_note_ph	जाहोन / नोट (खहा, साननाय, …)
@@ -447,14 +369,10 @@ history_after_hours	घन्टा उन
 history_hours_ph	घन्टा (1–168, गेजेर 4)
 history_hours_save	घन्टा थिना दोन
 history_clear_now	दा हिस्ट'री खोमा
-history_cleared	बायनायनि हिस्ट'री खोमाबाय — साजाय दोनबाय
-history_retention_saved	हिस्ट'री खोमानाय थिना दोनबाय
 history_hours_saved	हिस्ट'रीनि घन्टा थिना दोनबाय
-history_owner_only	खोथिया गिबि एबा एडमिनआ हिस्ट'री खोमानो हायो
 rollup	रोल-आप
 save_brand	ब्रान्ड थिना दोन
 save_business_id	बिजनेस id थिना दोन
-save_business_name	बिजनेसनि मुं थिना दोन
 save_features	थिना दोन
 save_features_named	{name} थिना दोन
 save_features_ok	{name} नि साजाय थिना दोनबाय
@@ -485,7 +403,6 @@ copy_pair_code	जोराना कोड कपि खालाम
 new_pair_code	गोदान जोराना कोड
 pair_finishing	जोरानाय जोबथार गासिनो… दोकाननि बही बाहाय गासिनो
 pair_opening	टिल खेव गासिनो…
-pair_copied	जोराना कोड कपि जाबाय
 lan_offline_waiting	दोकाननि सर्वर सिम सौहैया · {n} नेथ'
 lan_connecting	दोकानजों जोरा गासिनो…
 lan_live	लाइभ
@@ -499,7 +416,6 @@ firewall_waiting	एडमिननि प्रम्प्ट नेथ'…
 lan_join_help	गुबुन मेसिनआव: क्लाइन्ट मोड → दोकाननि सर्वर नागिर (एबा {addr} लिर) → जोराना कोड {code}।
 lan_pair_status	Wi‑Fi {addr}
 lan_join_help_no_addr	थं मोननो बे मेसिनखौ Wi‑Fi आव जोरा।
-lan_no_address	दासिम Wi‑Fi थं गैया — दोकाननि Wi‑Fi आव जोरा।
 lan_not_listening	मेसिन लाबनाय नङा (पोर्ट {port} व्यस्त)। एपखौ फिन जागाय।
 lan_tills_off	बांसिन टिल अफ। गुबुन मेसिन हाबफानो बेफोरखौ गनायथि हो।
 paired_with	जोरजाय · {url}
@@ -520,41 +436,21 @@ printers_help	प्रिन्टार नागिर, बेखौ सा�
 printers_host_only	प्रिन्टारफोरा शप डिभाइस (Server) आव सेट खालामनाय जायो। बेयो अब्लासिम बिल आरो गोजाम टिकेटफोरखौ बेयाव दैथायहरो — सर्भरआव स्टे नागिर / दाजाबदेर। आनजाद बिलाइ आरो बिल प्रिन्ट साइजखौ सर्भराव सेट खालामनाय जादों।
 printers_find_heading	प्रिन्टार नागिर
 printers_find_tip	नागिरा बे मेसिनखौ स्क्यान खालामो आरो लिस्टखौ गोदान दोनो।
-printers_pool_heading	प्रिन्टार
-printers_pool_tip	नागिरा बे मेसिनखौ स्क्यान खालामो आरो बे लिस्टखौ गोदान दोनो।
 printers_pool_empty	(दासिम गैया — नागिर सुदुं)
-printers_routes_help	अपारेटिं सिस्टेमआ सिगांनिफ्राय मोनथिनाय प्रिन्टारफोरखौ नागिर। बिसोरखौ बिल आरो बिल आरो स्लिप महरनि सिङाव मोनफ्रोमबो सेक्सनआव थि खालाम।
 printer_assign_dd	थार प्रिन्टार: {place}
 printer_assign_pick	थार प्रिन्टार सायख
 printer_profile_heading	साजाय
 vp_delivery_heading	दैथाय होनाय
 vp_delivery_help	बे भार्सुयेल प्रिन्टारआ माबोरै साख्रि दैथायहरो - OS दकुमेन्ट, raw bytes, एबा ESC/POS। स्लिप कन्टेन्टआ (type size, wrap, margins) बिल / स्लिप फरमेटजों थि जायो, बेयाव नङा।
-vp_type_size_heading	टाइपनि महर
-vp_wrap_heading	मेथाय गोबां
-vp_margin_heading	मार्जिन
 vp_delivery_spooler	OS दस्तावेज (सिस्टम स्पुलार)
 vp_delivery_raw	मेसिनआव रा अक्ट'
 vp_delivery_escpos	ESC/POS थर्मल बिथोन
 virtual_printer_new	गोदान भर्चुअल प्रिन्टार
 virtual_printer_selected	“{name}” एडिट खालाम गासिनो — सोलायनो लिस्टआव गुबुनखौ सुदुं
-virtual_printer_tap_list	एडिट खालामनो लिस्टआव भर्चुअल प्रिन्टारखौ सुदुं
 config_layout_portrait	खड़ा
 config_layout_landscape	गोथै
 config_send_os	सिस्टम स्पुलार
 config_send_escpos	ESC/POS
-profiles_heading	साजाय
-profiles_empty	(दासिम साजाय गैया)
-profile_builtin	सिगांनिफ्राय दं
-profile_custom	नोंनि
-profile_name_ph	साजायनि मुं
-profile_new	गोदान साजाय
-profile_delete	साजाय बोखार
-profile_created	साजाय बानायबाय
-profile_deleted	साजाय बोखारबाय
-profile_builtin_keep	सिगांनिफ्राय दं साजायखौ बोखारनो हाया
-config_saved	आपडेट जाबाय
-config_selected	“{name}” सायखबाय
-printer_output_heading	भर्चुअल प्रिन्टार
 virtual_printers_heading	भर्चुअल प्रिन्टार
 virtual_printers_empty	दासिम भर्चुअल प्रिन्टार गैया — गाहाय मान साजाय, अब्ला थिना दोन। मोनसे मोनब्ला, एडिट खालामनो लिस्टआव सुदुं।
 virtual_printer_name_ph	भर्चुअल प्रिन्टारनि मुं (नाङाब्लाबो)
@@ -566,71 +462,32 @@ virtual_printer_deleted	भर्चुअल प्रिन्टार “{na
 virtual_printer_updated	भर्चुअल प्रिन्टार आपडेट जाबाय
 virtual_printer_updated_named	भर्चुअल प्रिन्टार “{name}” आपडेट जाबाय
 virtual_draft_layout	उननि भर्चुअल प्रिन्टारनि थाखाय मान साजायबाय
-virtual_draft_send	उननि भर्चुअल प्रिन्टारनि थाखाय मान साजायबाय
 virtual_need_real	सिगां थार प्रिन्टार सायख
 virtual_need_select	बोखारनो भर्चुअल प्रिन्टार सायख
 real_printer_selected	सायखबाय: {name}
-printers_routes_heading	माव प्रिन्ट जायो
-route_pick_heading	जायगा
 route_editing	एडिट: {name}
-route_assigned	{printer} खौ {place} आव दाजाबबाय
-route_already_assigned	बे जायगायाव सिगांनिफ्राय दं: {printer}
 route_cleared	{name} खोमाबाय
-route_assigned_empty	बे जायगायाव गैया
-route_tap_select	सायखनो सुदुं
 route_tap_selected	सायखबाय
-route_pick_printer_first	सिगां प्रिन्टार सुदुं
-route_assigned_heading	प्रिन्टार
-route_add_heading	हो
-printer_label_ph	मुं (जेरै काउन्टर प्रिन्टार)
 printer_target_ph	सिस्टम प्रिन्टारनि मुं एबा हस्ट:9100
 printer_target_default	बे कम्प्युटारनि जेब्लाबो बाहाय प्रिन्टार (थं खाली)
-printer_wire_heading	प्रोफाइल
-printer_wire_escpos	ESC/POS
-printer_wire_os	खड़ा
-printer_wire_os_portrait	खड़ा
-printer_wire_os_landscape	गोथै
-printer_wire_escpos_short	ESC/POS
-printer_wire_os_short	खड़ा
-printer_wire_os_landscape_short	गोथै
-printer_format_custom	गोदान नोंनि प्रोफाइल
-printer_format_custom_label	नोंनि
-printer_format_custom_added	बे जायगानि थाखाय नोंनि प्रोफाइल दाजाबबाय
-add_printer	प्रिन्टार दाजाब
-route_pick_ph	बिल एबा डिस्पेन्सारि खोन्दो दाजाबदेर एबा बोखार
 route_bill	बिल
-route_dont_print	प्रिन्टार गैया
 station_print_pick_first	गिबियाव डिस्पेन्सेरि खोन्दो सायख'
-station_vps_empty	दासिम प्रिन्टार गैया — सेटिं → प्रिन्टारआव नागिर
 bill_printers_dd	बिलनि प्रिन्टार
 bill_printers_dd_n	बिलनि थाखाय {n} प्रिन्टार · सोलायनो सुदुं
 station_vp_attached	प्रिन्टार नांजाबबाय
 station_vp_detached	स्टेसननिफ्राय प्रिन्टार बोखारबाय
-route_up	गोजौ
-route_down	गाहाय
-route_clear	खोमा
-save_printers	प्रिन्टार थिना दोन
 print_test_page	टेस्ट पेग प्रिन्ट खालाम
 no_printer_assigned	प्रिन्टार गैया
-test_page_no_printer	{place} नि थाखाय प्रिन्टार गैया — प्रिन्टार नांजाब, अब्ला फिन नाजा
 test_page_pick_first	सिगां टेस्ट पेगनि प्रिन्टार सायख — अब्ला टेस्ट पेग प्रिन्ट खालाम
 test_printers_dd	टेस्ट पेगनि प्रिन्टार
 test_printers_dd_n	टेस्ट पेगनि {n} प्रिन्टार · सोलायनो सुदुं
 test_printer_picked	टेस्ट: {name}
 test_printer_cleared	टेस्ट नङा: {name}
 test_page_sent_n	टेस्ट पेग {n} प्रिन्टारआव दैथाय होबाय
-batch_cancel	मार्च जानाय केन्सेल
-batch_cancel_n	मार्च जानाय केन्सेल ({n})
-batch_cancel_none	सिगां मोनसे एबा बांसिन दैथायहरनाय मुवाफोरखौ सिन खालाम — बेनि उनाव Cancel सिन होनाय
-batch_cancel_title	सिन होनाय मुलिफोरखौ केन्सेल खालाम — मोनसे जाहोन, मोनफ्रोमबो सेक्सननि गेजेराव मोनसे केन्सेल स्लिप
-batch_cancel_ok	{n} आइटेमफोरखौ केनसेल खालामनाय · {slips} केन्सेल स्लिप(s) → {kitchens}
-batch_cancel_ok_noprint	{n} आइटेमफोरा केनसेल जाबाय — अट'-प्रिन्ट बन्द' जाबाय, बेनिखायनो केन्सेल स्लिप गैया
 printers_saved	थिना दोनबाय
-test_page_sent	टेस्ट पेग दैथाय होबाय — प्रिन्टार नाय
 test_page_sent_one	टेस्ट पेग {name} आव दैथाय होबाय — बे प्रिन्टार नाय
 printers_found	{n} मोन्बाय: {list}
 printers_find_synced	{n} मोन्बाय — {new} गोदान
-printer_on_device	थिना दोनबाय
 printer_already_added	सिगांनिफ्राय दाजाबबाय
 printer_already_saved	सिगांनिफ्राय थिना दोनबाय: {name}
 find_printers	प्रिन्टार नागिर
@@ -640,7 +497,6 @@ cancelled	केन्सेल जाबाय
 printers_tap_find	बे मेसिनआ बाहायनो हानाय प्रिन्टारनि लिस्टनि थाखाय नागिर सुदुं।
 printers_none_found	मोनो हायाखै — सिस्टम प्रिन्टारनि मुं एबा IP लिर (बिदिं 192.168.1.50)।
 printer_from_find	{name} दाजाबबाय
-bill_printer_ph	बिलनि प्रिन्टार
 queue_refused	दोकाना लाबाखै ({n}) — काउन्टारआव मोनफ्रोमखौ नाय:
 clear_not_accepted	नायबाय — बे लिस्ट खोमा
 device_name_ph	बे मेसिननि मुं
@@ -650,7 +506,6 @@ connected_now	दा जोराजाय
 backup_failed	जोबथा गाव ब्याकआप जाफुंआखै: {e}
 backup_overdue	{n} साननि ब्याकआप गैया — ब्याकआप जानो बे मेसिनआव एप खेव दोन।
 disk_low	बे मेसिनआव खालि {mb} MB आखु — ब्याकआप थारैनो जाफुंनो हागोन। जायगा खालि खालाम।
-last_seen_devices	जोबथा नायबाय: {time}
 connection_to_shop	दोकानजों जोरा
 supplier_name_ph	पुरवठादारनि मुं (एबा पार्टी)
 supplier_ph	पुरवठादार
@@ -708,7 +563,6 @@ currency_use_help	हेफा आरो जायखि जा हेफाज�
 day_close_help	सान जोब लिरनाया बे सारा (आरो सानब्ला दराजनि फाराग) अडिट लगआव थिना दोनो। बेयो बिक्री थाया।
 expenses_word	खर्चा
 feature_access_help	बिसोर मा खेवनो हायो — नांगौब्ला; गोजौनि खामानिया सिगांनिफ्राय डिफल्ट साजाय
-footer_local	लोकल SQLite · जेब्लाबो उदां · क्लाउड लाथिख
 fresh_book_tabiyat	Fresh = लांदां फारिलाइ(उनाव आयदाफोरखौ दाजाबदेर)। Book = type बेखेवग्रा स्टक आरो गाहायाव सोर नोंथांनो होनांगौ दं।
 fresh_selected	गोदान सायखबाय — केटालग खाली थायो। गनांथिब्ला जाबाय सुदुं।
 gross_word	ग्रस
@@ -721,12 +575,9 @@ net_word	नेट
 offline_badge	OFFLINE
 optional_login_help	नांगौब्ला लगइन (id + पासवार्ड)। गिबिया मोनसे साजो; उन पासवार्ड खालि बाहायग्रा सोलायनो हायो।
 or_unlock_login	एबा लगइन id + पासवार्डजों खुलि हो
-permission_preset	खामानि (स्क्रिन आरो रांनि खामानि साजो)
-preset_help_tabiyat	केसियार: फान। मेनेजार: फान + आइटम + बातिल/सोलाय।
-product_locked_tabiyat	Tabiyat
+permission_preset	खामानि
 product_only_tabiyat	ताबियातआ फार्मासि अपारेटिं सिस्टेम: मुलि फाननाय, बेच/एक्सपायरी बुककीपिं, क्रेदित आरो बिजाबफोर - नोंथांनि डिभाइसफोराव अफलाइन। फारिलाइ H / Rx फ्लेगफोरा बिगोमानि न'टफोर, मानिनायनि थाखाय नङा।
 purchases_cogs	बायनाय (COGS)
-qty_cap	QTY
 restore_help	लाबोफिन: ब्याकआप सायख। बही बेनि समआव महरै खेवो; दानि बही सिगां थिना दोनजायो, बेखाय बेखौ उनफिन खालामनो हायो।
 wipe_data_heading	लोकल डाटा खोमा
 wipe_data_help	बिगोमाल' — Windows खौ अनइनस्टल खालामनाय बादि रोखोमसे अपसन। फालांगियारि रिकर्डफोरा फालांगियारि जारिमिनखौ स्रां खालामो नाथाय मुवाफोर आरो सेटअपखौ लाखियो (जेरै इमारजेन्सि अनलक पिन)। Shop setup आ बिजाबनि डाटाबेसखौ बोखारो। Screen preferences (स्क्रिन प्रेफरेन्स) window / language settings खौ स्रां खालामो। बिगोमा पिनजों रोखा खालाम। हान्जायाव इमारजेन्सि अनलक पिनआ आलादा (अनलक आव गुबुंले वाइप)।
@@ -759,7 +610,6 @@ staff_renamed	मुं थिना दोनबाय
 staff_setup_copied_hire	{name} निफ्राय सेटअप कपि जाबाय — गोदान मुं आरो PIN हो, अब्ला मावुरि दाजाब
 staff_setup_copied_edit	{from} नि सेटअप {to} आव कपि जाबाय
 staff_copy_need_selected	सिगां साखौ एडिट खालामनो सायख
-staff_copy_need_source	साखौनि सेटअप कपि खालामनो सायख
 staff_copy_same	बेयो मोनसे मानसि — गुबुनखौ सायख
 staff_rename_need_selected	सिगां साखौनि मुं सोलायनो सायख
 team_pick_hint	सोरखौ एडिट खालामनांगौ बेखौ सायख' — स्क्रिन, रांनि मोनथाय आरो स्टेसनफोरा बै सुबुंनि थाखायल' नुजागोन।
@@ -774,15 +624,9 @@ unit_picker_off	अफ
 we_owe_them	जों बेफोरनि बाकी
 who_unlocking	सा खुलि हो गासिनो?
 locked_word	बन्द
-show_pin	PIN दिन्थि
-hide_pin	PIN दोन
 set_owner_pin	गिबि PIN साजाय
 enter_owner_passcode	गिबि पासकोड लिर
 enter_staff_passcode	मावुरि पासकोड लिर
-pin_count_zero	0 / 12 अंक · खमैबो 4, अब्ला गनांथि
-pin_count_need	{} / 12 अंक · आर {} नांगौ
-pin_count_full	12 / 12 अंक · गनांथि दबा
-pin_count_ready	{} / 12 अंक · गनांथिब्ला गनांथि दबा
 pin_hint_choose	4–12 अंक सायख · थिना दोननो Enter एबा खुलि हो
 pin_hint_new	गोदान 4–12 अंकनि गिबि PIN · Enter एबा खुलि हो
 pin_hint_shop_code	दोकान मेसिन · जोरा कोड {}
@@ -791,23 +635,15 @@ pin_hint_paired	बांद्राय टिल जोरा जाबाय 
 pin_hint_pair_first	बांद्राय टिल — सिगां दोकान मेसिनजों जोरा
 unlock_to_continue	सालायनो खुलि हो
 no_staff_yet	दासिम मावुरि गैया — गिबि महरै खुलि हो, अब्ला टिम
-status_server_set_pin	सर्वर मोड — गिबि PIN साजाय
-status_server_tills	सर्वर मोड — बांद्राय टिल हाफानो हायो। खुलि हो
-status_server_unlock	सर्वर मोड — गिबि महरै खुलि हो
-status_client_unlock	क्लाइन्ट मोड — फाननो खुलि हो
 icon_new_selected	आइकन: गोदान फाइल सायखबाय — ब्रान्ड थिना दोन सुदुं
 icon_custom	आइकन: नोंनि जायगा सिन
 icon_default	आइकन: Kumkaj सिन (डिफल्ट) — नोंनिखौ सायख
 logo_yours	लोगो: नोंनि दोकान लोगो — स्क्रिन आरो रसिदआव दिन्थिफायो
 logo_default	लोगो: Kumkaj सिन (डिफल्ट) — दंब्ला नोंनिखौ सायख
-tmpl_current	दानि: {} — {}
-tmpl_selected	सायखजानाय: {} — {}
 setup_complete	सेटअप जाबाय
 onboard_fresh_tmpl	गोदान · {} — केटालग खाली जागायो; आइटमआव आइटम दाजाब, अब्ला जाबाय।
 onboard_book_tmpl	बही · {} — आइटम आरो जागायनाय उधारि दाजाब, अब्ला जाबाय।
-onboard_template_tmpl	लुबैब्ला बे जायगानि मुं हो, अब्ला माबोरै जागायनो सायख।
 tmpl_blurb	फार्मासि काउन्टर : मुलिफोर, बेच/एक्सपायरी, खाटा, बिजाबफोर।
-tmpl_how	काउन्टाराव फान; स्टकनि थाखाय बाय; साननि बिजाबनि थाखाय बिजाबफोर।
 reports_facet_title	रिपर्ट
 reports_facet_help	साननि बही, पार्टी बयस, ब्यांक पोस्ट, आरो सम P&L।
 against_bill_ph	गोजौनि बिल # नि उफ्रा (नांगौब्ला)
@@ -818,14 +654,12 @@ amount_ph	रां
 amount_received_ph	मोना रां
 amount_we_pay_ph	जों होनाय रां
 business_name_ph	ब्यापारनि मुं
-category_new_ph	थाखो (नांगौब्ला, गोदानब्ला सृष्टि जायो)
 code_bag_ph	कोड (बेग)
 conv_factor_ph	फ्याक्टर (25 = 1 बेग → 25 kg)
 country_code_ph	हादर कोड बिदिं IN, GB, US, AE, BR
 credit_khata_amount_ph	उधारि / खाता रां
 credit_limit_ph	उधारि सिम (0 = गैया)
 from_code_ph	निफ्राय कोड (बेग)
-item_name_lang_ph	आइटमनि मुं — नोंनि रावआव लिर
 login_id_opt_ph	बाहाय मुं (नांगौ, आलादा)
 manager_pin_ph	गनायथिनो मेनेजार PIN (बातिल खालामनो हायाब्ला खालि)
 new_branch_name_ph	गोदान ब्रान्चनि मुं
@@ -833,15 +667,12 @@ new_password_ph	गोदान पासवार्ड (नांगौब्�
 new_pin_ph	गोदान PIN (4–12 अंक)
 note_bank_ph	नट (जमा, उनफिन, …)
 note_buy_expense_ph	नट (तेल, भाड़ा, …)
-note_expense_ph	नट (तेल, अफिस, …)
 options_tabiyat_ph	अप्सन — साइज*: सान=199, गेदेर=399 | टपिं+3: चिज=40, अलिभ=30 | बांद्राय चिज=40
-part_second_way_ph	गुबुन लामांजों बाय (नांगौब्ला)
 phone_ph	फोन
 place_name_ph	बे जायगानि मुं
 qty_example_ph	अनसान (बिदिं kg नि 1.5)
 quantity_ph	अनसान
 reason_required_ph	जाहोन (नांगौ)
-role_title_ph	खामानिनि मुं (बिदिं बारिस्टा)
 service_pct_ph	सार्विस % नांगौब्ला 0/10/12
 short_code_ph	गुसुं कोड (MG02)
 starting_password_ph	जागायनाय पासवार्ड (नांगौब्ला)
@@ -876,14 +707,11 @@ shift_handover	सिफ्ट सलाय
 shift_since	बे सिफ्ट निफ्राय
 expected_in_drawer	दराजाव मोननांगौ
 right_discount	कमाय हो
-pick_category	थाखो सायख
-close_category_list	थाखो लिस्ट जोब
 new_category_row	गोदान थाखो — आइटम थिना दोनब्ला सृष्टि जायो
 your_category	नोंनि थाखो
 suggested_category	बोसोन होनाय — जोंनि मुवाफोरनिफ्राय
 category_search_ph	थाखो — नोंनि नागिर एबा गोदान लिर
 cancel_item_short	केन्सेल
-cancel_item_title	बे आइटेमखौ केन्सेल खालाम — बेक अफिसआ केन्सेल स्लिप मोनो
 return_to_customer	ग्राहकाव फिन हो
 short_by	खम
 tip_not_sale	टिप (मावुरिनि, बिक्री नङा)
@@ -896,9 +724,7 @@ finding_server	बे Wi‑Fi आव दोकाननि सर्वर न�
 no_server_found	मोनो हायाखै। सर्वरआव: सेटिं → गुबुन मेसिन → बांद्राय टिल गनायथि (मोनसे Wi‑Fi)। एबा बेयाव दिन्थिजानाय IP लिर।
 servers_found_pick	जोरानो लुबैनाय दोकान सुदुं।
 server_host_selected	{host} बाहाय गासिनो — जोरा कोड लिर, अब्ला दा जोरा।
-print_bill	बिल प्रिन्ट खालाम
 approval_pin_ph	मेनेजार PIN (आंखौब्ला खालि)
-confirm	गनायथि
 menu_search_ph	आइटम एबा गुसुं कोड नागिर
 customer_paid_ph	ग्राहका पैसा होबाय
 tip_ph	टिप
@@ -908,7 +734,6 @@ bill_format_help	मोनफ्रोमबो बिलआव नोंथा�
 bill_header_ph	थं | फोन
 fssai_ph	मुलिनि लाइसेन्स नं. (सायख'नाय – नोंथांनि सोदोब)
 bill_footer_ph	फुटार (बिदिं साबायहर, फिन फै)
-save_bill_format	बिल फर्मेट थिना दोन
 kot_field_on	दिन्थि
 kot_field_off	दोन
 kot_weight_light	गुसुं
@@ -919,10 +744,8 @@ kot_weight_bold	गोबा
 kot_align_start	जागाय
 kot_align_center	गेजेर
 kot_align_end	जोब
-content_width	कन्टेन्ट गोथै (mm)
 content_width_bill	बिल कन्टेन्ट गोथै (mm)
 content_width_ph	एबा कन्टेन्ट गोथै लिर, 40–210 mm
-content_width_help	बे स्लिप प्रिन्टआ बेसेबां गुवार जायो। बिलआ गावनि गुवारथिखौ लाखियो।
 content_width_bill_help	बायग्रानि बिलआ बेसेबां गुवार प्रिन्ट जायो। दिफल्ट 210 mm (पेज)। 58 mm गुसेब स्लिप, 80 mm गुवार स्लिप, 112 mm 4-इन्च, 210 mm A4-गुवार। 40 निफ्राय 210 सिम जायखिजाया मानखौ हो। स्लिप टेबाव टिकेटनि गावबा गावनि गुवार थायो।
 vp_paper_width	कन्टेन्ट गोथै (mm)
 vp_paper_width_ph	एबा कन्टेन्ट गोथै लिर, 40–210 mm
@@ -937,9 +760,6 @@ test_bill_sent	बिल प्रिभ्यु दैथाय होबा�
 test_print_no_printer	बे खामानिनि प्रिन्टार गैया — बे स्क्रिनआव मोनसे सायख
 std_print	बिल प्रिन्ट साइज
 std_print_help	OS/दकुमेन्ट प्रिन्टारफोराव स्टेन्डर्ड पोर्ट्रेट आरो लैंडस्केप बिल हाबानि थाखाय फन्ट साइज(पइन्टफोरखौ सोनो — फिसा/नरमेल/गिदिर नङा)। मोननैबो मोखांआव एखे साइज।
-std_size_s	सान
-std_size_m	साधारन
-std_size_l	गेदेर
 save_std_print	बिल प्रिन्ट साइज थिना दोन
 std_print_saved	बिल प्रिन्ट साइज थिना दोनबाय
 print_brand_kit	प्रिन्ट ब्रान्ड किट
@@ -952,14 +772,9 @@ choose_payment_qr	पैसा QR सायख
 clear_payment_qr	पैसा QR खोमा
 payment_qr_set	रां होनाय QR: फाइलाव — कास्टमार डिस्प्लेआव दिन्थिनाय (बेयाव UPI QR नि बिबांखौ सोलायो)
 payment_qr_none	पैसा QR: गैया — पैसा होनाव UPI ID निफ्राय रां QR
-aggregator_import	एग्रिगेटर अर्डर (फाइल)
-aggregator_import_help	नांगौब्ला लोकल लाबो: ब्याकआप फल्डारआव import_aggregator_orders.json दोन (एरे एबा {"orders":[…]}), अब्ला लाबो सुदुं। काउन्टार जेब्लाबो थाया; लाइभ Zomato/Swiggy आ क्लाउड।
-import_aggregator_file	एग्रिगेटर फाइल लाबो
 team_pick_ph	एडिट खालामनो मावुरि — मुं, बाहाय मुं, एबा सायख
 select_staff	बे मावुरि सायख
 rights_help	बे सुबुंनि थाखाय रांनि खामानिफोर — साइखेल खालामनो थाखाय टेप खालाम: गनायथि होनाय → नांगौ बास पिन → गनायथि गैया। फिन सेबखांनाय बिलआ बिलफोरल'; खोन्दोफोरा गाहायाव होनाय चेकलिस्ट।
-dish_picker_help	जोंनि आइटेमफोरखौ नागिर एबा ब्राउज खालाम आरो बेनि मुं आरो सावगारिखौ आबुं खालामनो थाखाय मोनसेयाव थु — एबा गावनि मुंखौ दोन। नोंथांनि बेसेनखौ थि खालाम (0 आ मोजां), बेनि उनाव आयदाखौ दाजाबदेर।
-close_dish_list	बन्द मुवाफोरनि फारिलाय
 own_item_name	बेखौ नोंनि आइटम मुं बाहाय
 on_your_menu	मुलिनि फारिलायाव
 edit	एडिट
@@ -970,24 +785,16 @@ add_scheme	BOGO दाजाब
 schedule_ph	घन्टा — सोम-शुक्र 07:00-11:00 एबा मोनाबिलि 17:00-19:00=150
 upi_vpa_ph	UPI ID (VPA)
 upi_payee_ph	UPI पायी मुं (नांगौब्ला)
-upi_qr	UPI QR
 show_upi_qr	UPI QR दिन्थि
 close_upi_qr	जोब
 upi_qr_help	बायग्राया स्केन खालामो आरो रां होयो। बिसोर रां होखांनायनि उनाव रां दिहुनना ला। नैथि screen : LAN आव Server URL /display खौ खेव।
-recently_done	दाबाव जाबाय
 role_help_customer	रोखोम: ग्राहक — खाता (बिसोर जोंनि बाकी)। मोनसे पार्टी स्टकबो पुरवठा खालामनो हायो।
 role_help_both	रोखोम: ग्राहक + पुरवठादार — मोनसे पार्टी, खाता आरो देना लेजर, रिपोर्टआव नेट।
 role_help_supplier	रोखोम: पुरवठादार — बायनायनि थाखाय जों बेफोरनि बाकी।
-items_word	आइटम
-items_section	आइटम
-back_to_order	अर्डरआव उनफिन
-new_items_head	दासिम दैथाय होनाय नङा
 price_ph	बेसेन
 price_ph_gst_inside	बेसेन ({tax} सिं)
-tax_rates_missing_hint	बेफोर आइटेमफोरनि सायाव जेबो {tax} रेट गैया — आइटेमफोरनि थाखाय, खाजोनानि हार थि खालाम (बेसेनफोरा सिगांनिफ्रायनो {tax} नि सिङाव {tax} सोफादेरदों)
 taxable_value	कर लागानाय मान
 gst_inside_price_note	({tax} सिं)
-start_with_template	जोंनि आइटेमफोर टेम्पलेट
 template_heading	स्टार्टर आइटेमफोर
 template_info	{c} थाखोफोर आरो {d} आइटेमफोरखौ सावगारिजों लोगोसे दाजाबदेरनो थियारि । बेसेनफोरा ₹0 निफ्राय जागायजेनो — उनाव गावनि रांखौ थि खालाम।
 template_import	गासै टेम्पलेट लाबो
@@ -1009,21 +816,13 @@ opening_client	क्लाइन्ट खेव गासिनो…
 preparing_desk	डेस्क साजा गासिनो…
 opening_server	सर्वर खेव गासिनो…
 creating_server	सर्वर बानाय गासिनो…
-order_empty_pick	अर्डार लांदां — मुवाफोरखौ सायख'नो थाखाय गोजौनि आइटेमफोरखौ दाजाबदेर।
 add_dishes	मुलि दाजाबदेर
 order_so_far	बे अर्डरआव: {n} · {total}
 no_dish_match	"{q}" जों गोरोबनाय जेबो आइटेम नङा
-pick_dishes_help	बेखौ दाजाबदेरनो थाखाय मोनसे आइटेमखौ टेप खालाम · फारिलाइखौ गुसेब खालामनो थाखाय मोनसे केटेगरी सायख'
 pick_done	जोबबाय
-pick_done_dd	जाबाय · {label}
-printer_route_mode	बे जायगायाव गोबां प्रिन्टार थाब्ला
-printer_mode_first	गिबि जाखां
-printer_mode_all	गासैआव प्रिन्ट
 kot_field_up	गोजौ थां
 kot_field_down	गाहाय थां
-app_template_blurb_extra	लोगोसे : बिगोमा जहीर, एडमिन आसिफ, केशियार नवाज; मोखां साइडबार; 4 घन्टानि उनाव जारिमिन; दिनै बोखारबाय; कम्पैक्ट बिल।
 dishes_n	{n} आइटेमफोर
-recipe_ph	रेसिपि (सायखʼजानाय — काउन्टर दखानाव बाहायजाया)
 reorder_ph	आरो बाय
 set_reorder	फिन बाय थाखो साजाय
 low_stock_alert	खम जागासिनो — थारैनो बाय: {items}
@@ -1032,7 +831,6 @@ show_unpriced	बेसेन गैयालासे मुवाफोरख�
 show_all_dishes	गासैबो मुवाफोरखौ दिन्थि
 role_title_rest_ph	खामानिनि मुं (बिदिं क्याप्टेन, गोजौ रान्दा)
 preset_help_rest	केसियार: फान। मेनेजार: फान + आइटम + बातिल/सोलाय।
-kind_raw	कम्पाउन्ड स्टक
 kind_resale	बायनाय मुलि
 kind_dish	स्टकखौ सान्नो नाङा।
 buy_unit_ph	एकक (kg, लिटर, pcs)

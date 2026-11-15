@@ -41,7 +41,7 @@ remove	Fjarlægja
 removed_items	Fjarlægt valmyndaratriði
 removed_help	Restore setur valmyndaratriðið aftur á valmyndina nákvæmlega eins og það var - verð, mynd og flokkur. Hillan okkar af leirtau er aldrei tekin af og því er alltaf hægt að bæta við réttum aftur.
 restore_item	Endurheimta
-empty_catalog	Engir diskar ennþá. Opnaðu Valmynd, bættu við rétti (nafn + verð) og taktu svo pöntun.
+empty_catalog	Engir diskar ennþá.
 total	Samtals
 cash	Reiðufé
 upi	UPI
@@ -103,23 +103,14 @@ bill_item_qty	Magn
 bill_item_price	Verð
 bill_item_amount	Upphæð
 bill_item_note	Rétt aths
-bill_item_col_gap	Dálkabil
 bill_item_col_order	Dálka röð
 bill_item_col_sep	Dálkareglur
-bill_item_gap_tight	Þétt
-bill_item_gap_comfort	Þægilegt
-bill_item_gap_wide	Breiður
-bill_item_num_width	Talna dálkar
-bill_item_num_compact	Fyrirferðarlítill
-bill_item_num_comfort	Þægilegt
-bill_item_num_wide	Breiður
-bill_item_num_align	Tölur samræmast
-bill_item_gap_em	Bil (em)
-bill_item_qty_min	Magn mín (em)
-bill_item_price_min	Verð lágmark (em)
-bill_item_amount_min	Magn mín (em)
-kot_item_qty_width	Magn dálkur
-kot_item_num_align	Magn samræma
+slip_columns	Dálkar
+slip_col_width	Breidd (mm)
+slip_col_start	Upphafsbil (px)
+slip_col_end	Lokabil (px)
+slip_col_align	Jöfnun texta
+slip_columns_help	Breidd hvers dálks inniheldur upphafs- og lokabil hans. Texti brotnar innan síns dálks; það sem nær út fyrir breidd efnisins er skorið af, á pappír og í forskoðun.
 bill_total_qty_label	Heildarmagn merki
 bill_total_subtotal_label	Undir heildarmerki
 bill_total_grand_label	Stórt heildarmerki
@@ -221,7 +212,6 @@ sidebar_order_saved	Pöntun hliðarstikunnar vistuð
 sidebar_visibility_saved	Sýnileiki hliðarstikunnar vistað
 amounts_hide	Fela
 amounts_show	Sýna
-printers_none_hint	Vistaðu fyrst prentara á þessu tæki og bættu honum síðan við Bill eða eldhús
 counter	Teljari
 dine_in	Borða inn
 takeaway	Með út
@@ -328,8 +318,6 @@ selected_language	Valið
 continue	Halda áfram
 this_device	ÞETTA TÆKI
 device_use_q	Hvernig verður þetta tæki notað?
-last_server_mode	Var þjónn — pikkaðu á til að halda áfram
-last_client_mode	Var viðskiptavinur — bankaðu á til að halda áfram
 choose_server	Veldu netþjón
 choose_server_hint	Opnaðu núverandi netþjón eða búðu til einn fyrir annað fyrirtæki.
 create_new_server	Búðu til nýjan netþjón
@@ -391,7 +379,7 @@ attachments_last_expense	Viðhengi (síðasti kostnaður)
 bank	Banki
 bank_in	Banka inn
 bank_out	Reiðufé út úr bankanum
-bank_reconciliation	Bankaafstemming (merktu við við bankayfirlitið þitt)
+bank_reconciliation	Bankaafstemming
 bank_to_till	Banki → till
 book_add_dish	Fjárhagsbók — bættu við rétti / valmyndaratriði
 book_opening_credit	Fjárhagsbók — upphafsinneign
@@ -744,7 +732,6 @@ station_print_pick_first	Veldu eldhússtöð fyrst
 station_print_editing	Breytir prenturum fyrir „{name}“
 station_vps_dd	Prentarar fyrir þessa stöð
 station_vps_dd_n	{n} prentarar · pikkaðu á til að breyta
-station_vps_empty	Engir prentarar enn — Finndu þá undir Stillingar → Prentarar
 bill_printers_dd	Prentarar fyrir reikninginn
 bill_printers_dd_n	{n} prentarar fyrir reikninginn · pikkaðu á til að breyta
 job_layout	Skipulag
@@ -889,7 +876,7 @@ net_word	Nettó
 offline_badge	ÓTENGT
 optional_login_help	Valfrjáls innskráning (auðkenni + lykilorð). Eigandi setur einu sinni; aðeins notandinn getur breytt lykilorðinu síðar.
 or_unlock_login	Eða opnaðu með innskráningarauðkenni + lykilorði
-permission_preset	Starf (stillir skjái og peningaaðgerðir)
+permission_preset	Starf
 preset_help_khaynjo	Gjaldkeri: selja. Framkvæmdastjóri: selja + matseðill + ógilda / breyta.
 product_locked_khaynjo	Khaynjo
 product_only_khaynjo	Þetta app er aðeins Khaynjo — stýrikerfi veitingahúsa. Önnur viðskipti eru send sem aðskildar Kumkaj vörur.
@@ -961,10 +948,6 @@ pin_hint_paired	Auka þar til parað - opnaðu til að selja
 pin_hint_pair_first	Auka til — para fyrst við búðartækið
 unlock_to_continue	Opnaðu til að halda áfram
 no_staff_yet	Ekkert starfsfólk ennþá - opnaðu sem eigandi, síðan teymi
-status_server_set_pin	Server Mode - stilltu eiganda PIN
-status_server_tills	Server Mode - auka kassar geta tekið þátt. Opnaðu
-status_server_unlock	Server Mode - opnaðu sem eigandi
-status_client_unlock	Viðskiptavinastilling - opnaðu til að selja
 icon_new_selected	Tákn: ný skrá valin — pikkaðu á Vista vörumerki
 icon_custom	Tákn: sérsniðið vettvangsmerki
 icon_default	Tákn: Kumkaj merki (sjálfgefið) — veldu sérsniðið
@@ -1033,7 +1016,7 @@ book_kind_balance	Efnahagsreikningur
 order_help	Pikkaðu á valmyndaratriði til að bæta því við.
 floor_help	Bankaðu á borðstofuborð til að taka eða breyta pöntuninni. Litir sýna ókeypis → sitjandi → eldhús → tilbúið → borðað → reikningur → greiddur. Biðlisti, bókanir og borðstofuborð eru í köflunum hér að neðan.
 kitchen_help	Eldhúsmiðar (KOT), nýjustu sl. Byrja → Tilbúið → Búið færir miða með. Miðar sýna aldrei verð.
-kitchen_empty	Engir opnir miðar. KOT sent frá pöntun eða matsal birtist hér.
+kitchen_empty	Engir opnir miðar.
 add_a_table	Bættu við borðstofuborði
 add_station_heading	Bættu við eldhússtöð
 categories_help	Pikkaðu á Nota til að skrá valmyndaratriðið hér að ofan undir þeim flokki. Mynd gefur flokknum mynd; án þess sýnir það upphafsstafina.
@@ -1131,7 +1114,6 @@ bill_format_help	Prentað undir nafni veitingastaðarins þíns á hverjum seðl
 bill_header_ph	Heimilisfang | síma
 fssai_ph	FSSAI leyfi nr. (Indland)
 bill_footer_ph	Fótur (t.d. Þakka þér, komdu aftur)
-save_bill_format	Vista reikningssnið
 reset_bill_format	Endurstilla í sjálfgefið
 bill_format_reset	Reikningssnið endurstillt á sjálfgefið
 reset_kot_format	Endurstilla í sjálfgefið
@@ -1201,13 +1183,11 @@ kot_copies_3	3
 kot_title_ph	Titill (autt = KOT - ELDHÚNAÐUR)
 kot_footer_ph	Eldhússeðill (valfrjálst, ekkert verð)
 kot_preview	Forskoðun
-save_kot_format	Vista KOT snið
 test_kot_format	Prófaðu próf KOT
 test_kot_sent	Forskoðun á eldhúsmiða send
 test_bill_format	Prófreikningur
 test_bill_sent	Forskoðun reiknings send
 test_print_no_printer	Enginn prentari fyrir það verk — veldu einn á þessum skjá
-kot_format_saved	KOT snið vistað
 std_print	Prentstærð víxla
 std_print_help	Leturstærð fyrir staðlað andlitsmynd og landslagsreikningavinnu á stýrikerfi / skjalaprenturum (sláðu inn punkta - ekki lítil/venjuleg/stór). Sama stærð á báðum stefnum. Stærðir eldhúsinnréttinga eru á KOT flipanum.
 std_size_s	Lítil
@@ -1264,7 +1244,6 @@ new_items_head	Ekki sent enn
 price_ph	Verð
 price_ph_gst_inside	Verð ({tax} innifalið)
 cancel_needs_table	Opnaðu þessa pöntun frá borðstofuskjánum (borðstofuborð) til að hætta við eftir að eldhúsið hefur hana — borðið KOTs er á miðanum þar til þú tekur við greiðslu
-tax_rates_missing_hint	Enginn {tax} taxti fyrir þessa rétti — á matseðli settum skatthlutfalli (verð er nú þegar innifalið {tax} undir {tax} innifalið)
 taxable_value	Skattskyld verðmæti
 gst_inside_price_note	({tax} innifalið)
 start_with_template	Byrjaðu á valmyndarsniðmátinu okkar
@@ -1318,9 +1297,7 @@ order_empty_pick	Panta tóm — pikkaðu á Bæta við réttum hér að ofan til
 add_dishes	Bætið réttum við
 order_so_far	Í þessari pöntun: {n} · {total}
 no_dish_match	Enginn réttur passar við „{q}“
-pick_dishes_help	Pikkaðu á rétt til að bæta honum við · veldu flokk til að þrengja listann
 pick_done	Búið
-pick_done_dd	Búið · {label}
 printer_route_mode	Ef nokkrir prentarar á þessum stað
 printer_mode_first	Fyrst sem virkar
 printer_mode_all	Prenta á alla

@@ -39,7 +39,7 @@ adding_item	Tarifa berria gehitzea
 editing_item	Editatzen
 save	Gorde
 remove	Kendu
-empty_catalog	Oraindik ez dago tarifarik. Ireki Tarifak eta zerbitzuak, gehitu bat (izena + prezioa, kg unitatea), ondoren Erreserba.
+empty_catalog	Oraindik ez dago tarifarik.
 counter_sale	Kontrako erreserba
 total	Guztira
 cash	Eskudirua
@@ -171,8 +171,6 @@ selected_language	Hautatuta
 continue	Jarraitu
 this_device	GAILU HAU
 device_use_q	Nola erabiliko da gailu hau?
-last_server_mode	Zerbitzaria zen — sakatu jarraitzeko
-last_client_mode	Bezeroa zen — sakatu jarraitzeko
 choose_server	Aukeratu zerbitzari bat
 choose_server_hint	Ireki dagoen zerbitzari bat, edo sortu bat beste negozio baterako.
 create_new_server	Sortu zerbitzari berria
@@ -501,8 +499,6 @@ job_layout	Antolamendua
 job_delivery	Lana nola bidaltzen den
 job_size	Letra-neurria
 job_size_ph	adib. 18, 20, 26…
-save_receipt_format	Gorde ordainagiria formatua
-save_label_format	Gorde etiketa formatua
 test_receipt_format	Proba ordainagiria
 test_label_format	Proba-etiketa
 test_receipt_sent	Bidalitako ordainagiria lagina
@@ -610,7 +606,7 @@ units_heading	Unitateak
 booking_measures	Erreserba neurriak
 drawer_count	Kutxa-zenbaketa (aukerakoa)
 spreadsheet_csv	Kalkulu-orria (CSV)
-bank_reconciliation	Banku-adiskidetzea (markatu banku-laburpenaren aurka)
+bank_reconciliation	Banku-adiskidetzea
 book_add_product	Erreserbatu — gehitu produktua / tarifa
 book_opening_credit	Liburua — hasierako kreditua
 account_kind	Kontu mota (sakatu bat)
@@ -650,7 +646,7 @@ net_word	Garbia
 offline_badge	LINEAZ KANPO
 optional_login_help	Aukerako saio-hasiera (id + pasahitza). Jabeak behin ezartzen du; erabiltzaileak soilik alda dezake pasahitza gero.
 or_unlock_login	Edo desblokeatu saio-id + pasahitzarekin
-permission_preset	Lana (pantailak eta eskubideak ezartzen ditu)
+permission_preset	Lana
 preset_help_moklanjo	Kutxazaina: saldu. Kudeatzailea: saldu + artikuluak + baliogabetu/zuzendu.
 product_locked_moklanjo	Moklanjo
 product_only_moklanjo	Aplikazio hau Moklanjo bakarrik da: liburuak + erreserba mahaia. Beste merkataritza-aurpegi batzuk produktu bereizi gisa bidaltzen dira geroago.
@@ -698,10 +694,6 @@ pin_hint_paired	Kutxa gehigarria parekatuta — desblokeatu saltzeko
 pin_hint_pair_first	Kutxa gehigarria — lehenik parekatu dendako gailuarekin
 unlock_to_continue	Desblokeatu jarraitzeko
 no_staff_yet	Oraindik langilerik ez — desblokeatu Jabe gisa, gero Taldea
-status_server_set_pin	Zerbitzari modua — ezarri Jabearen PINa
-status_server_tills	Zerbitzari modua — kutxa gehigarriak elkartu daitezke. Desblokeatu
-status_server_unlock	Zerbitzari modua — desblokeatu Jabe gisa
-status_client_unlock	Bezero modua — desblokeatu saltzeko
 icon_new_selected	Ikonoa: fitxategi berria hautatuta — sakatu Gorde marka
 icon_custom	Ikonoa: lokalen marka pertsonalizatua
 icon_default	Ikonoa: Kumkaj marka (lehenetsia) — aukeratu pertsonalizatu bat

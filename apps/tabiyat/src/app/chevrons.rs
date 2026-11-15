@@ -58,6 +58,78 @@ impl App {
         }
     }
 
+    /// Add dishes: when the category changes — a tab, a swipe on the dishes,
+    /// a page step — scroll the tab strip so the active tab sits in the clear
+    /// band between ‹ and ›. An active tab in the strip's hidden part looked
+    /// like no tab was on (owner, 2026-11-15). Only on a change, so a strip
+    /// the user scrolled by hand is not pulled back; retried until the strip
+    /// has been drawn once.
+    fn reveal_active_category_chip(&mut self, cx: &mut Cx) {
+        static REVEALED: std::sync::Mutex<Option<Option<String>>> = std::sync::Mutex::new(None);
+        let (open, idx, key) = {
+            let st = app_state().lock().unwrap();
+            let keys = menu_pick_tab_keys(&st);
+            let idx = menu_pick_tab_index(&keys, &st.menu_category);
+            (st.menu_pick_open, idx, st.menu_category.clone())
+        };
+        if !open {
+            *REVEALED.lock().unwrap() = None;
+            return;
+        }
+        if REVEALED.lock().unwrap().as_ref() == Some(&key) {
+            return;
+        }
+        let chip: &[LiveId] = match idx {
+            0 => ids!(cat_all),
+            1 => ids!(cat_frequent),
+            2 => ids!(cat_added),
+            i => match CATEGORY_CHIPS.get(i - 3) {
+                Some((idle, _)) => idle,
+                None => return,
+            },
+        };
+        let on: &[LiveId] = match idx {
+            0 => ids!(cat_all_on),
+            1 => ids!(cat_frequent_on),
+            2 => ids!(cat_added_on),
+            i => match CATEGORY_CHIPS.get(i - 3) {
+                Some((_, on)) => on,
+                None => return,
+            },
+        };
+        let tabs = self.ui.view(cx, ids!(cat_strip.tabs));
+        let view = tabs.area().rect(cx);
+        // The idle and the active face share one place; whichever drew last.
+        let mut r = self.ui.button(cx, chip).area().rect(cx);
+        if r.size.x <= 1.0 {
+            r = self.ui.button(cx, on).area().rect(cx);
+        }
+        if view.size.x <= 1.0 || r.size.x <= 1.0 {
+            return; // not drawn yet: the next refresh tries again
+        }
+        let x = tabs.get_scroll_pos().x;
+        let seen = tabs.get_scroll_view_visible().x.max(view.size.x);
+        let total = tabs.get_scroll_view_total().x;
+        let max_x = (total - seen).max(0.0);
+        let clear = Self::TAB_CHEVRON_W + 4.0;
+        let left = r.pos.x - view.pos.x + x;
+        let right = left + r.size.x;
+        let want = if left < x + clear {
+            left - clear
+        } else if right > x + seen - clear {
+            right - seen + clear
+        } else {
+            x
+        }
+        .clamp(0.0, max_x);
+        if (want - x).abs() > 0.5 {
+            tabs.set_scroll_pos(cx, dvec2(want, 0.0));
+            tabs.redraw(cx);
+            self.sync_tab_chevrons(cx);
+        }
+        *REVEALED.lock().unwrap() = Some(key);
+    }
+
     /// Next bottom-nav tab into the clear band between chevrons (content x).
     fn nav_bar_chevron_snap_x(
         &mut self,

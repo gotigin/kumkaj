@@ -41,7 +41,7 @@ remove	Bain
 removed_items	Míreanna bainte
 removed_help	Cuireann Athchóirigh an mhír ar ais ar an roghchlár go díreach mar a bhí sé — praghas, grianghraf agus catagóir. Ní bhaintear ár seilf miasa amach riamh, agus mar sin is féidir mias a chur leis arís i gcónaí.
 restore_item	Scríos
-empty_catalog	Níl aon miasa fós. Oscail Menu, cuir mias (ainm + praghas), ansin ordú a ghlacadh.
+empty_catalog	Níl aon miasa fós.
 total	Iomlán
 cash	Airgead tirim
 upi	UPI
@@ -103,23 +103,14 @@ bill_item_qty	Cainníocht
 bill_item_price	Praghas
 bill_item_amount	Suim
 bill_item_note	Nóta mias
-bill_item_col_gap	Bearna an cholúin
 bill_item_col_order	Ord na gcolún
 bill_item_col_sep	Rialacha colúin
-bill_item_gap_tight	Teann
-bill_item_gap_comfort	Compordach
-bill_item_gap_wide	Leathan
-bill_item_num_width	Líon na gcolún
-bill_item_num_compact	Dlúth
-bill_item_num_comfort	Compordach
-bill_item_num_wide	Leathan
-bill_item_num_align	Ailínigh uimhreacha
-bill_item_gap_em	Bearna (em)
-bill_item_qty_min	Íos. cainn. (em)
-bill_item_price_min	Praghas íosta (eanna)
-bill_item_amount_min	Méid na n-íosmhéid (na n-íosmhéid)
-kot_item_qty_width	Colún QTY
-kot_item_num_align	Ailínigh le Qty
+slip_columns	Colúin
+slip_col_width	Leithead (mm)
+slip_col_start	Spás tosaigh (px)
+slip_col_end	Spás deiridh (px)
+slip_col_align	Ailíniú téacs
+slip_columns_help	Áirítear spás tosaigh agus deiridh gach colúin ina leithead. Timfhillteann an téacs taobh istigh dá cholún; gearrtar aon rud thar leithead an ábhair, ar pháipéar agus sa réamhamharc.
 bill_total_qty_label	Lipéad qty iomlán
 bill_total_subtotal_label	Lipéad fo - iomlán
 bill_total_grand_label	Mórlipéad iomlán
@@ -221,7 +212,6 @@ sidebar_order_saved	Ordú barra taobh sábháilte
 sidebar_visibility_saved	Infheictheacht na taobhbhair shábháilte
 amounts_hide	Folaigh
 amounts_show	Taispeáin
-printers_none_hint	Sábháil clódóir ar an bhfeiste seo ar dtús, ansin cuir leis do Bhille nó chuig cistin
 counter	Gcuntar
 dine_in	Ithe istigh
 takeaway	Beir leat
@@ -328,8 +318,6 @@ selected_language	Roghnaithe
 continue	Lean ar aghaidh
 this_device	AN GLÉAS SEO
 device_use_q	Conas a úsáidfear an gléas seo?
-last_server_mode	Bhí “Server” — sconna chun leanúint ar aghaidh
-last_client_mode	Bhí “Client” — sconna chun leanúint ar aghaidh
 choose_server	Roghnaigh freastalaí
 choose_server_hint	Oscail freastalaí atá ann cheana, nó cruthaigh ceann do ghnó eile.
 create_new_server	Cruthaigh freastalaí nua
@@ -391,7 +379,7 @@ attachments_last_expense	Ceangaltáin (an costais dheireanacha)
 bank	Bainc
 bank_in	Banc isteach
 bank_out	Bain as an bhanc
-bank_reconciliation	Aontú bainc (marcaigh i gcoinne do ráiteas bainc)
+bank_reconciliation	Aontú bainc
 bank_to_till	Banc → tille
 book_add_dish	Leabhar — cuir mias / earra
 book_opening_credit	Leabhar — creidmheasanna oscailte
@@ -744,7 +732,6 @@ station_print_pick_first	Roghnaigh stáisiún cistine ar dtús
 station_print_editing	Ag eagarthóireacht printera do “{name}”
 station_vps_dd	Printéirí don stáisiún seo
 station_vps_dd_n	{n} printéir(í) · sconna chun athrú
-station_vps_empty	Gan printéirí fós — Faigh iad faoi Socruithe → Printéirí
 bill_printers_dd	Printéirí don bhille
 bill_printers_dd_n	{n} printéir(í) don bhille · sconna chun athrú
 job_layout	Leagan amach
@@ -889,7 +876,7 @@ net_word	Líon
 offline_badge	AS LÍNE
 optional_login_help	Logáil isteach roghnach (aitheantas + pasfhocal). Socraíonn úinéir é uair amháin; is é an t-úsáideoir amháin is féidir pasfhocal a athrú níos déanaí.
 or_unlock_login	Nó díghlasáil le haitheantas logála + pasfhocal
-permission_preset	Post (socraíonn scáileáin agus gníomhaíochtaí airgid)
+permission_preset	Post
 preset_help_khaynjo	Cóiré: díol. Bainisteoir: díol + míreanna + neamhní/cor.
 product_locked_khaynjo	Khaynjo
 product_only_khaynjo	Tá an aip seo Khaynjo amháin — córas oibriúcháin bialainne. Téann aghaidh eile ar an tráchtáil amach mar tháirgí Kumkaj ar leith.
@@ -961,10 +948,6 @@ pin_hint_paired	Táille bhreise péireáilte — díthaispeáint chun a dhíol
 pin_hint_pair_first	Breise go dtí — péire le dtí an gléas siopa ar dtús
 unlock_to_continue	Díghlasáil chun leanúint ar aghaidh
 no_staff_yet	Níl aon fhoireann fós — díghlasáil mar Úinéir, ansin Foireann
-status_server_set_pin	Mód “Server” — socraigh PIN an Úinéara
-status_server_tills	Mód 'Server' — is féidir tilleanna breise a bheith páirteach. Díoscaigh
-status_server_unlock	Mód "Server" — díchumasaigh mar Úinéir
-status_client_unlock	Mód "Client" — bain na srianta chun díol
 icon_new_selected	Deilbhín: comhad nua roghnaithe — sconna Sábháil branda
 icon_custom	Deilbhín: marc áite saincheaptha
 icon_default	Deilbhín: Marc Kumkaj (réamhshocrú) — roghnaigh ceann saincheaptha
@@ -1033,7 +1016,7 @@ book_kind_balance	Clár comhardaithe
 order_help	Bain úsáid as mír chun í a chur leis.
 floor_help	Buaileann tú ar thábla chun ordú a ghlacadh nó a athrú. Taispeánann na dathanna saor → suíite → cistine → réidh → ithe → bille → íoctha. Tá liosta feithimh, áirithintí, agus táblaí breise sna rannáin thíos.
 kitchen_help	Ticéid cistine (KOT), ceann is déanaí ar deireadh. Bogann Start → Ready → Done ticéad ar aghaidh. Ní thaispeánann ticéid praghsanna riamh.
-kitchen_empty	Níl aon ticéid oscailte. Léiríonn KOT a sheoltar ó Ordú nó Urlár anseo.
+kitchen_empty	Níl aon ticéid oscailte.
 add_a_table	Cuir tábla leis
 add_station_heading	Cuir stáisiún cistine leis
 categories_help	Baineann Seiceáil úsáid as chun an mír thuas a chomhdú faoin gcatagóir sin. Tugann Grianghraf pictiúr don chatagóir; mura bhfuil pictiúr ann taispeánann sé a túslitrithe.
@@ -1131,7 +1114,6 @@ bill_format_help	Clóite faoi ainm do bhialainne ar gach bille. Líneacha a scar
 bill_header_ph	Seoladh | fón
 fssai_ph	Uimhir ceadúnais FSSAI (India)
 bill_footer_ph	Bunleathanach (m.sh. Go raibh maith agat, tabhair cuairt arís)
-save_bill_format	Sábháil formáid bhille
 reset_bill_format	Athshocraigh go dtí réamhshocraithe
 bill_format_reset	Formáid bhille athshocraithe go dtí réamhshocrú
 reset_kot_format	Athshocraigh go dtí réamhshocraithe
@@ -1201,13 +1183,11 @@ kot_copies_3	3
 kot_title_ph	Teideal (folamh = KOT - ORD ÚR AN CHISTE)
 kot_footer_ph	Nóta cistine (roghnach, gan praghsanna)
 kot_preview	Réamhamharc
-save_kot_format	Sábháil formáid KOT
 test_kot_format	Tástáil KOT
 test_kot_sent	Réamhamharc ticéad cistine seolta
 test_bill_format	Bille tástála
 test_bill_sent	Réamhamharc an bhille seolta
 test_print_no_printer	Níl printer ar fáil don jab sin — roghnaigh ceann ar an scáileán seo
-kot_format_saved	Formáid KOT sábháilte
 std_print	Méid cló bhille
 std_print_help	Méid cló do phoist bille Caighdeánach Portráid agus Tírdhreacht ar OS / printéir doiciméad (cuir isteach pointí — ní Beag/Gnáth/Mór). An méid céanna ar an dá threo. Tá méideanna lipéid chistin ar an táb KOT.
 std_size_s	Beag
@@ -1264,7 +1244,6 @@ new_items_head	Níor seoladh fós
 price_ph	Praghas
 price_ph_gst_inside	Praghas ({tax} san áireamh)
 cancel_needs_table	Oscail an t-ordú seo ó Urlár (bord) chun a chealú tar éis don chistin é a fháil — fanann na KOT cuntar ar an dticéad go dtí go nglactar le híocaíocht
-tax_rates_missing_hint	Níl aon ráta {tax} ar na miasa seo — ar Ráta Cáin shonraítear sa Bheith Menu (tá praghsanna san áireamh cheana féin {tax} faoi {tax} san áireamh)
 taxable_value	Luach inchomhdaithe
 gst_inside_price_note	({tax} san áireamh)
 start_with_template	Tosaigh lenár teimpléad roghchláir
@@ -1318,9 +1297,7 @@ order_empty_pick	Ordú folamh — sconna Cuir miasa leis thuas chun miasa a rogh
 add_dishes	Cuir miasa leis
 order_so_far	Ar an ordú seo: {n} · {total}
 no_dish_match	Níl aon mhias a oireann do “{q}”
-pick_dishes_help	Tapaigh mias chun é a chur leis · roghnaigh catagóir chun an liosta a ghalú
 pick_done	Déanta
-pick_done_dd	Déanta · {label}
 printer_route_mode	Má tá roinnt printéirí ar an áit seo
 printer_mode_first	Ar dtús sin a oibríonn
 printer_mode_all	Clóigh ar gach rud

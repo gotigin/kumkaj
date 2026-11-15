@@ -39,7 +39,7 @@ adding_item	กำลังเพิ่มอัตราใหม่
 editing_item	กำลังแก้ไข
 save	บันทึก
 remove	ลบออก
-empty_catalog	ยังไม่มีอัตรา เปิดอัตราและบริการ เพิ่มหนึ่งรายการ (ชื่อ + ราคา หน่วย kg) แล้วจอง
+empty_catalog	ยังไม่มีอัตรา
 counter_sale	จองที่เคาน์เตอร์
 total	รวม
 cash	เงินสด
@@ -171,8 +171,6 @@ selected_language	ที่เลือก
 continue	ดำเนินการต่อ
 this_device	อุปกรณ์นี้
 device_use_q	อุปกรณ์นี้จะใช้อย่างไร
-last_server_mode	เคยเป็นเซิร์ฟเวอร์ — แตะเพื่อดำเนินการต่อ
-last_client_mode	เคยเป็นไคลเอนต์ — แตะเพื่อดำเนินการต่อ
 choose_server	เลือกเซิร์ฟเวอร์
 choose_server_hint	อุปกรณ์นี้มีเซิร์ฟเวอร์อยู่แล้ว เปิดหนึ่งเครื่อง หรือสร้างเซิร์ฟเวอร์ใหม่สำหรับธุรกิจอื่น
 create_new_server	สร้างเซิร์ฟเวอร์ใหม่
@@ -501,8 +499,6 @@ job_layout	เลย์เอาต์
 job_delivery	วิธีการส่งงาน
 job_size	ขนาดฟอนต์
 job_size_ph	เช่น 18, 20, 26…
-save_receipt_format	บันทึกรูปแบบใบเสร็จ
-save_label_format	บันทึกรูปแบบฉลาก
 test_receipt_format	ทดสอบใบเสร็จ
 test_label_format	ทดสอบฉลาก
 test_receipt_sent	ส่งใบเสร็จตัวอย่างแล้ว
@@ -610,7 +606,7 @@ units_heading	หน่วย
 booking_measures	ขนาดการจอง
 drawer_count	นับลิ้นชัก (ไม่บังคับ)
 spreadsheet_csv	สเปรดชีต (CSV)
-bank_reconciliation	กระทบยอดธนาคาร (ติ๊กตามสเตทเมนต์)
+bank_reconciliation	กระทบยอดธนาคาร
 book_add_product	จอง — เพิ่มสินค้า / อัตรา
 book_opening_credit	จอง — เครดิตเริ่มต้น
 account_kind	ประเภทบัญชี (แตะหนึ่ง)
@@ -650,7 +646,7 @@ net_word	สุทธิ
 offline_badge	ออฟไลน์
 optional_login_help	เข้าสู่ระบบเสริม (รหัส + รหัสผ่าน) เจ้าของตั้งครั้งเดียว หลังจากนั้นเฉพาะผู้ใช้เท่านั้นที่เปลี่ยนรหัสผ่านได้
 or_unlock_login	หรือปลดล็อกด้วยรหัสเข้าสู่ระบบ + รหัสผ่าน
-permission_preset	ตำแหน่ง (กำหนดหน้าจอและสิทธิ์)
+permission_preset	ตำแหน่ง
 preset_help_moklanjo	แคชเชียร์: ขาย ผู้จัดการ: ขาย + รายการ + ยกเลิก/แก้ไข
 product_locked_moklanjo	Moklanjo
 product_only_moklanjo	แอปนี้เป็น Moklanjo เท่านั้น — บัญชีและเคาน์เตอร์รับฝาก ธุรกิจอื่นจะมีผลิตภัณฑ์แยกในภายหลัง
@@ -698,10 +694,6 @@ pin_hint_paired	เคาน์เตอร์เสริมจับคู่�
 pin_hint_pair_first	เคาน์เตอร์เสริม — จับคู่กับอุปกรณ์ร้านก่อน
 unlock_to_continue	ปลดล็อกเพื่อดำเนินการต่อ
 no_staff_yet	ยังไม่มีพนักงาน — ปลดล็อกในฐานะเจ้าของ แล้วทีม
-status_server_set_pin	โหมดเซิร์ฟเวอร์ — ตั้ง PIN เจ้าของ
-status_server_tills	โหมดเซิร์ฟเวอร์ — เคาน์เตอร์เสริมเข้าร่วมได้ ปลดล็อก
-status_server_unlock	โหมดเซิร์ฟเวอร์ — ปลดล็อกในฐานะเจ้าของ
-status_client_unlock	โหมดไคลเอนต์ — ปลดล็อกเพื่อขาย
 icon_new_selected	ไอคอน: เลือกไฟล์ใหม่แล้ว — แตะบันทึกแบรนด์
 icon_custom	ไอคอน: เครื่องหมายร้านของคุณเอง
 icon_default	ไอคอน: เครื่องหมาย Kumkaj (ค่าเริ่มต้น) — เลือกของคุณเอง

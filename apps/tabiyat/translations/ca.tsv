@@ -1,5 +1,4 @@
 # Catalan — Català (ca). One key<TAB>text per line, in en() order; keep {placeholders}.
-app_tagline	Taulell de farmàcia: medicaments, lots, khata i llibres. Gratis fora de línia.
 barcode_ph	Codi de barres / EAN
 composition_ph	Sal / composició (cercable)
 schedule_h_off	Programa H: desactivat (bandera del propietari)
@@ -13,7 +12,6 @@ expiry_alerts	Alertes de caducitat (proper 7 dies)
 expiry_none	Cap lot caduca en els pròxims 7 dies.
 rx_nudge	El propietari ha marcat Rx / Schedule H: afegiu una nota si cal.
 unlock	Desbloqueja
-pin_hint	El PIN del propietari comença per 0000
 sell	Vendre
 buy	Compres
 books	Llibre del dia
@@ -32,17 +30,13 @@ reports_month	Pèrdues i guanys (mes)
 reports_aging	Pendent / Deutor-Creditor
 reports_balance_sheet	Balanç
 reports	Llibre de banc i PiG
-refresh	Actualitza
 undo	Desfés
-start_tracking	Comença el seguiment
 stock_minus	− Estoc
 stock_plus	+ Estoc
 settle_cash	Tanca en efectiu
 settle_card	Tanca amb targeta
 items	Medicaments
 nav_items	Medicaments
-more	Més
-your_items	Els teus medicaments
 items_help	Toca un element per editar-lo. L'element nou esborra el formulari. Cerqueu per nom o codi curt, estableixi un preu (0 està bé) i després Afegeix. Les vendes ja registrades conserven el nom amb què se'ls va carregar.
 add_item	Afegeix article
 new_item	Article nou
@@ -53,28 +47,22 @@ remove	Treu
 removed_items	Articles trets
 removed_help	Restaurar torna a posar l'article a Elements exactament com era: preu, foto i categoria.
 restore_item	Restaura
-empty_catalog	Encara no hi ha medicaments. Obriu Medicaments, afegiu nom, codi de barres o principi actiu, després veneu.
+empty_catalog	Encara no hi ha medicaments.
 total	Total
 cash	Efectiu
 upi	UPI
 card	Targeta
 credit	Parts
 clear	Neteja
-ready_to_sell	A punt per anotar
 today_prefix	Avui
-today_mid	avui
 owed	pendent
-round_word	arrodoniment
 back	Enrere
 sold_out	No disponible
 restock	Reposa estoc
 not_tracked	Sense seguiment
 in_stock	en estoc
 marked_sold_out	Marcat com a no disponible
-add_upper	AFEGEIX
-na	N/D
 qty	Pes/Qtat
-unit_at	Tarifa @
 actual	Real
 applied	Aplicat
 note_ph	Nota (opcional)
@@ -93,21 +81,13 @@ bill_item_qty	Qtat
 bill_item_price	Preu
 bill_item_amount	Import
 bill_item_note	Rx / nota de venda
-bill_item_col_gap	Espai de columna
 bill_item_col_order	Ordre de columnes
 bill_item_col_sep	Línies de columna
-bill_item_gap_tight	Estret
-bill_item_gap_comfort	Còmode
-bill_item_gap_wide	Ample
-bill_item_num_width	Columnes numèriques
-bill_item_num_compact	Compacte
-bill_item_num_comfort	Còmode
-bill_item_num_wide	Ample
-bill_item_num_align	Alineació dels números
-bill_item_gap_em	Espai (em)
-bill_item_qty_min	Qtat mín (em)
-bill_item_price_min	Preu mín (em)
-bill_item_amount_min	Import mín (em)
+slip_col_width	Amplada (mm)
+slip_col_start	Espai inicial (px)
+slip_col_end	Espai final (px)
+slip_col_align	Alineació del text
+slip_columns_help	L’amplada de cada columna inclou el seu espai inicial i final. El text s’ajusta dins la seva columna; el que sobrepassa l’amplada del contingut es retalla, en paper i a la previsualització.
 bill_total_qty_label	Etiqueta de qtat total
 bill_total_subtotal_label	Etiqueta de subtotal
 bill_total_grand_label	Etiqueta de total general
@@ -120,11 +100,7 @@ bill_total_qty	Qtat total
 bill_total_subtotal	Subtotal
 bill_total_grand	Total general
 kot_unassigned	Sense assignar
-pos_tab_items	Articles afegits
-pos_tab_payment	Pagament
-settings_hub_title	Ajustos
 settings_hub_help	Obriu una àrea cada vegada — menys desplaçament, tries més clares.
-settings_back	Enrere
 settings_sec_language	Llengua i moneda
 settings_sec_country	País i impost
 settings_sec_tills	Altres dispositius
@@ -166,35 +142,17 @@ diag_cleared	Registres de diagnòstic netejats
 sidebar_settings	Barra lateral
 sidebar_settings_help	Les mateixes icones que el rail lateral. Arrossegueu una fila per reordenar. Gireu l'interruptor per mostrar o amagar. Ajustos i Bloqueig sempre queden a la barra.
 sidebar_always_on_short	Sempre actiu
-sidebar_back_settings	Enrere
-sidebar_shown	Visible
-sidebar_hidden	Amagat
-sidebar_always_on	Sempre a la barra
-sidebar_shown_hint	Visible al rail lateral / pestanyes inferiors
-sidebar_hidden_hint	Amagat de la barra
 sidebar_menu_items	Articles
 sidebar_enable_all	Activa-ho tot
 sidebar_disable_all	Desactiva-ho tot
 sidebar_order_saved	Ordre de la barra lateral desat
 sidebar_visibility_saved	Visibilitat de la barra lateral desada
-amounts_hide	Amaga
-amounts_show	Mostra
-printers_none_hint	Deseu primer una impressora en aquest dispositiu i després afegiu-la a la factura o a una secció
-counter	Mostrador
-dine_in	Mostrador
-takeaway	Per emportar
-order	Comanda
 sales	Vendes
-sales_refunds	Vendes i devolucions
 day_close	Tancament del dia
 reports_expenses	Llibre de banc i PiG
 nav_reports	Informes
 nav_settings	Ajustos
 nav_lock	Bloqueig
-no_sale_yet	Encara no hi ha venda
-favorites	Preferits
-favorites_help	Articles que veneu sovint, desats per al vostre inici de sessió. Afegiu-ne un al compte o feu la llista amb tots els articles de sota.
-your_favorites	Els vostres preferits
 all_items	Tots els articles
 frequent	Freqüents
 added_items	Article(s) afegit(s)
@@ -211,8 +169,6 @@ zero_sales_on	Permet ₹0
 zero_sales_off	Exigeix preu
 zero_sales_saved_on	Vendes de valor zero permeses
 zero_sales_saved_off	Les vendes han de tenir un preu superior a ₹0
-no_favorites	Encara no hi ha preferits — afegiu articles de la llista de sota.
-add_to_bill	Afegeix al compte
 added	Afegit
 owes_word	deu
 selected_word	Seleccionat
@@ -221,19 +177,11 @@ chip_missing_customer	Falta el client seleccionat — trieu-lo de nou
 chip_no_customer	Encara no hi ha client — escriviu un nom i toqueu Crèdit
 credit_summary_fmt	{} clients · crèdit obert {} · bestretes retingudes {}
 recent_label	Recents:
-start_order	Comença comanda
-open_bill	Obre el compte
-collect_payment	Cobra
-payment_pending	Pagament pendent
-collect_at_counter	cobra al mostrador
 inventory	Inventari
-inventory_stock	Inventari i estoc
 branches	Sucursals
-branches_org	Sucursals i organització
 credit_customers	Parts (khata i proveïdors)
 customer_name_ph	Nom de la part
 new_customer_ph	Nom de la part nova
-item_name_ph	Nom de l'article (p. ex. Masala Dosa)
 item_price_ph	Preu
 start_template	Producte
 team	Equip
@@ -241,17 +189,11 @@ team_pins	Equip i PIN
 my_pin_settings	El meu PIN
 settings_hub_help_my_pin	Canvia el PIN de desbloqueig de la persona que ha iniciat sessió en aquest dispositiu.
 team_self_help	Un sol inici de sessió: un PIN nou, una contrasenya nova o tots dos. Deixeu una casella buida per conservar el que teniu. Demaneu al Propietari si necessiteu altres pantalles o drets.
-backup_settings	Còpia i ajustos
-lock_app	Bloqueja l'app
 pick	Tria
-select	Selecciona
 advance	Bestreta
 owner	Propietari
 staff	Personal
 photo	Foto
-auto	Auto
-prev	Ant
-next	Següent
 ok	D'acord
 this_shop	Servidor
 extra_till	Client
@@ -260,17 +202,13 @@ server	Servidor
 client	Client
 language_currency	Llengua i moneda
 language	Llengua
-choose_language	Trieu la vostra llengua
 language_setup_hint	Seguiu la llengua d'aquest dispositiu o trieu-ne una vós.
 lang_follow_platform	Llengua del dispositiu
 lang_pick_user	Tria la llengua
 lang_platform_now	Llengua del dispositiu ara
 selected_language	Seleccionat
-continue	Continua
 this_device	AQUEST DISPOSITIU
 device_use_q	Com s'utilitzarà aquest dispositiu?
-last_server_mode	Era Servidor — toqueu per continuar
-last_client_mode	Era Client — toqueu per continuar
 choose_server	Trieu un servidor
 choose_server_hint	Obriu un servidor existent o creeu-ne un per a un altre negoci.
 create_new_server	Crea un servidor nou
@@ -280,12 +218,6 @@ server_remove_pin_ph	PIN del propietari per treure un servidor
 only_owner_remove_server	Només el Propietari pot treure un servidor
 owner_pin_remove_server	Cal el PIN del propietari per treure aquest servidor
 device_setup_help	El Servidor guarda els llibres aquí. El Client s'aparella amb un Servidor.
-app_template_heading	Catàleg inicial (opcional)
-app_template_blurb	Carrega el catàleg d'exemple; Propietari Zahir (zahir), administrador Asif (asif, PIN 1111), Caixer Nawaz (nawaz, PIN 0000); impostos/GST desactivat; barra lateral frontal; l'historial s'esborra després de 4 hores (i Esborrar ara en còpia de seguretat); Despullar avui; factura compacta + Marges estàndard per a safates estretes. Els parells fiscals i de la barra lateral es poden tornar a activar a la configuració.
-app_template_apply	Aplicar catàleg d'aperitius
-app_template_skip	Omet de moment
-app_template_status	Servidor preparat: apliqueu el catàleg d'inici o salteu-lo
-app_template_importing	S'aplica {title}…
 currency	Moneda
 backup	Còpia
 use	Fes servir
@@ -319,7 +251,7 @@ attachments_last_expense	Adjunts (darrera despesa)
 bank	Banc
 bank_in	Entrada a banc
 bank_out	Sortida de banc
-bank_reconciliation	Conciliació bancària (marqueu contra l'extracte)
+bank_reconciliation	Conciliació bancària
 bank_to_till	Banc → caixa
 book_add_dish	Llibre — afegir article / article
 book_opening_credit	Llibre — crèdit d'obertura
@@ -349,9 +281,6 @@ share_whatsapp	Comparteix per WhatsApp
 lan_pages_heading	Pàgines del client en Wi‐Fi
 lan_pages_help	A la Wi-Fi d'aquesta botiga, les pàgines dels clients funcionen per al tauler de visualització i comentaris. Les persones amb dades mòbils necessiten Cloud més tard. Un terminal de targeta o un enllaç de pagament és opcional i mai bloqueja el comptador.
 diag_send_heading	Comparteix fora d'aquest dispositiu
-optional_login_heading	Inici de sessió opcional
-rights_heading	Drets
-ops_panel	Operacions locals
 crm_heading	Clients i missatges
 crm_help	Aniversari, fidelització, inactius i millors convidats — poseu a la cua intencions d'SMS o WhatsApp. Feu servir {name} i {points} al missatge. El propietari toca enviar; res no s'envia sol.
 crm_queue_sms	Posa SMS a la cua
@@ -376,21 +305,17 @@ till_wallet_topup_ph	Import de recàrrega de la cartera
 till_voucher_issue_amt_ph	Import del val a emetre
 till_voucher_issue_code_ph	Codi del val nou
 bulk_price_apply	Aplica preu massiu
-card_terminal_optional	Terminal de targeta / enllaç de pagament (opcional quan hi ha internet)
 copy_report	Copia l'informe
 counted_cash_ph	Efectiu comptat al calaix
 country_tax	País i impost
 create_backup	Crea una còpia
 credit_limit_heading	Límit de crèdit (part seleccionada / amb nom)
-day_close_summary	Resum del tancament del dia
 delete_party	Elimina la part seleccionada
-delivery	Lliurament
 done_open_books	Fet — obre els llibres
 drawer_count	Recompte del calaix (opcional)
 expense_heading	Despesa
 export_day	Exporta el dia
 extra_note_bill_ph	Nota extra en aquest compte / venda
-extra_note_expense_ph	Nota extra a la darrera despesa
 extra_tills_heading	Caixes extra
 other_devices_help_heading	Configura altres dispositius
 other_devices_help	En aquest dispositiu (servidor): Altres dispositius → Permetre caixes addicionals. Tingueu en compte el codi de vinculació i l'adreça Wi-Fi. Toqueu Permetre que altres dispositius es connectin si apareix. En un ordinador, toqueu Comença amb aquest ordinador. Als altres dispositius: instal·leu l'aplicació, trieu Mode client, Trobeu el servidor de la botiga (o escriviu l'adreça), introduïu el codi de vinculació, Vincula ara. Les comandes esperen al dispositiu si la Wi-Fi baixa i es desactiven quan el servidor torni a respondre. Les impressores addicionals s'estableixen al servidor (Configuració → Impressores): els caixes addicionals hi envien factures.
@@ -404,7 +329,6 @@ login_id_ph	Nom d'usuari
 mark_cleared	Marca com a conciliat
 new_party_clear	Part nova (buida el formulari)
 new_party_kind_supplier_ph	Tipus de part nova (Proveïdor)
-next_country	País següent
 next_order	Comanda següent (buida el taulell)
 note_gstin_ph	Nota / GSTIN / recordatori d'acord
 notes_attach_party	Notes i adjunts (part seleccionada)
@@ -422,8 +346,6 @@ pay_ap_cash	Paga AP en efectiu
 pay_ap_heading	Paga el que els devem (AP)
 pay_ap_upi	Paga AP amb UPI
 pay_selected_heading	Paga la selecció (salda el deute / pren bestreta)
-pick_from_items	Tria dels nostres articles
-prev_country	País anterior
 print_open	Imprimeix / obre
 reason_amend_ph	Motiu d'esmena / anul·lació / devolució
 reason_note_ph	Motiu / nota (minva, recompte, …)
@@ -447,14 +369,10 @@ history_after_hours	Al cap d'hores
 history_hours_ph	Hores (1–168, per defecte 4)
 history_hours_save	Desa les hores
 history_clear_now	Neteja l'historial ara
-history_cleared	Historial comercial netejat — configuració conservada
-history_retention_saved	Neteja de l'historial desada
 history_hours_saved	Hores de l'historial desades
-history_owner_only	Només el Propietari o l'Admin poden netejar l'historial
 rollup	Acumulat
 save_brand	Desa la marca
 save_business_id	Desa l'id del negoci
-save_business_name	Desa el nom del negoci
 save_features	Desa
 save_features_named	Desa {name}
 save_features_ok	Configuració desada per a {name}
@@ -485,7 +403,6 @@ copy_pair_code	Copia el codi d'aparellament
 new_pair_code	Codi d'aparellament nou
 pair_finishing	S'acaba l'aparellament… s'apliquen els llibres de la botiga
 pair_opening	S'obre el caixa…
-pair_copied	Codi d'aparellament copiat
 lan_offline_waiting	No es pot arribar al servidor de la botiga · {n} en espera
 lan_connecting	Connectant amb la botiga…
 lan_live	En directe
@@ -499,7 +416,6 @@ firewall_waiting	S'espera l'avís de l'administrador…
 lan_join_help	A l'altre dispositiu: Mode client → Troba el servidor de la botiga (o escriviu {addr}) → codi d'aparellament {code}.
 lan_pair_status	Wi‑Fi {addr}
 lan_join_help_no_addr	Connecteu aquest dispositiu al Wi‑Fi per tenir una adreça.
-lan_no_address	Encara no hi ha adreça Wi‑Fi — connecteu-vos al Wi‑Fi de la botiga.
 lan_not_listening	No s'accepten dispositius (el port {port} està ocupat). Reinicieu l'app.
 lan_tills_off	Les caixes extra estan desactivades. Permeteu-les perquè un altre dispositiu s'hi uneixi.
 paired_with	Aparellat · {url}
@@ -520,41 +436,21 @@ printers_help	Troba impressores, toca-ne una per seleccionar-la, després Imprim
 printers_host_only	Les impressores es configuren al dispositiu de la botiga (servidor). Això fins que s'envia les factures i els bitllets antics allà — Troba / afegeix / assigna l'estada al servidor. La pàgina de prova i la mida d'impressió de la factura van al servidor.
 printers_find_heading	Troba impressores
 printers_find_tip	Troba escaneja aquest dispositiu i manté la llista al dia.
-printers_pool_heading	Impressores
-printers_pool_tip	Troba escaneja aquest dispositiu i manté aquesta llista al dia.
 printers_pool_empty	(encara cap — toqueu Troba)
-printers_routes_help	Troba impressores que el sistema operatiu ja reconeix. Assigna-les al rebut i a cada secció sota Format de Rebut i Slip.
 printer_assign_dd	Impressora real: {place}
 printer_assign_pick	Selecciona la impressora real
 printer_profile_heading	Disposició
 vp_delivery_heading	Lliurament
 vp_delivery_help	Com aquesta impressora virtual envia els treballs: document del sistema operatiu, bytes en brut o ESC/POS. El contingut de la fitxa (mida del tipus, embolcall, marges) es decideix pel format de la factura/de la fitxa, no aquí.
-vp_type_size_heading	Mida de lletra
-vp_wrap_heading	Amplada de línia
-vp_margin_heading	Marges
 vp_delivery_spooler	Document del SO (cua del sistema)
 vp_delivery_raw	Bytes en brut al dispositiu
 vp_delivery_escpos	Ordres tèrmiques ESC/POS
 virtual_printer_new	Impressora virtual nova
 virtual_printer_selected	S'edita «{name}» — toqueu-ne una altra de la llista per canviar
-virtual_printer_tap_list	Toqueu una impressora virtual de la llista per editar-la
 config_layout_portrait	Vertical
 config_layout_landscape	Horitzontal
 config_send_os	Cua del sistema
 config_send_escpos	ESC/POS
-profiles_heading	Dissenys
-profiles_empty	(encara no hi ha dissenys)
-profile_builtin	integrat
-profile_custom	personalitzat
-profile_name_ph	Nom del disseny
-profile_new	Disseny nou
-profile_delete	Elimina el disseny
-profile_created	Disseny creat
-profile_deleted	Disseny eliminat
-profile_builtin_keep	Els dissenys integrats no es poden eliminar
-config_saved	Actualitzat
-config_selected	Seleccionat «{name}»
-printer_output_heading	Impressores virtuals
 virtual_printers_heading	Impressores virtuals
 virtual_printers_empty	Encara no hi ha impressores virtuals — poseu els valors a sota i Desa. Quan n'hi hagi, toqueu-ne una de la llista per editar-la.
 virtual_printer_name_ph	Nom de la impressora virtual (opcional)
@@ -566,71 +462,32 @@ virtual_printer_deleted	Impressora virtual «{name}» eliminada
 virtual_printer_updated	Impressora virtual actualitzada
 virtual_printer_updated_named	Impressora virtual «{name}» actualitzada
 virtual_draft_layout	Valors posats per a la propera impressora virtual
-virtual_draft_send	Valor posat per a la propera impressora virtual
 virtual_need_real	Seleccioneu primer una impressora real
 virtual_need_select	Seleccioneu una impressora virtual per eliminar
 real_printer_selected	Seleccionada: {name}
-printers_routes_heading	On s'imprimeix
-route_pick_heading	Lloc
 route_editing	Edició: {name}
-route_assigned	Afegida {printer} a {place}
-route_already_assigned	Ja és en aquest lloc: {printer}
 route_cleared	Netjat {name}
-route_assigned_empty	Res en aquest lloc
-route_tap_select	toqueu per seleccionar
 route_tap_selected	seleccionat
-route_pick_printer_first	Toqueu primer una impressora
-route_assigned_heading	Impressores
-route_add_heading	Assigna
-printer_label_ph	Nom (per exemple, Impressora de taulell)
 printer_target_ph	Nom de la impressora del sistema o host:9100
 printer_target_default	la impressora habitual d'aquest ordinador (adreça buida)
-printer_wire_heading	Perfil
-printer_wire_escpos	ESC/POS
-printer_wire_os	Vertical
-printer_wire_os_portrait	Vertical
-printer_wire_os_landscape	Horitzontal
-printer_wire_escpos_short	ESC/POS
-printer_wire_os_short	Vertical
-printer_wire_os_landscape_short	Horitzontal
-printer_format_custom	Perfil personalitzat nou
-printer_format_custom_label	Personalitzat
-printer_format_custom_added	Perfil personalitzat afegit per a aquest lloc
-add_printer	Afegeix impressora
-route_pick_ph	Factura o secció de dispensari
 route_bill	Compte
-route_dont_print	Sense impressora
 station_print_pick_first	Trieu primer una secció del dispensari
-station_vps_empty	Encara no hi ha impressores — trobeu-les a Ajustos → Impressores
 bill_printers_dd	Impressores del compte
 bill_printers_dd_n	{n} impressora(es) per al compte · toqueu per canviar
 station_vp_attached	Impressora acoblada
 station_vp_detached	Impressora treta de l'estació
-route_up	Amunt
-route_down	Avall
-route_clear	Neteja
-save_printers	Desa les impressores
 print_test_page	Imprimeix una pàgina de prova
 no_printer_assigned	Sense impressora
-test_page_no_printer	No hi ha impressora per a {place} — acopleu-n'hi una i torneu-ho a provar
 test_page_pick_first	Trieu primer impressora(es) per a una pàgina de prova — després Imprimeix una pàgina de prova
 test_printers_dd	Impressores per a una pàgina de prova
 test_printers_dd_n	{n} impressora(es) per a una pàgina de prova · toqueu per canviar
 test_printer_picked	Prova a: {name}
 test_printer_cleared	Sense prova a: {name}
 test_page_sent_n	Pàgina de prova enviada a {n} impressora(es)
-batch_cancel	Anul·la els marcats
-batch_cancel_n	Anul·la els marcats ({n})
-batch_cancel_none	Marca primer un o més articles enviats — després Cancel·la els marcats
-batch_cancel_title	Cancel·lar els medicaments marcats — un motiu, un justificant de cancel·lació per secció
-batch_cancel_ok	Elements {n} cancel·lats · {slips} cancel·la els rebuts → {kitchens}
-batch_cancel_ok_noprint	Elements {n} cancel·lats: la impressió automàtica està desactivada, de manera que no hi ha resguard de cancel·lació
 printers_saved	Desat
-test_page_sent	Pàgina de prova enviada — comproveu la impressora
 test_page_sent_one	Pàgina de prova enviada a {name} — comproveu aquella impressora
 printers_found	Trobades {n}: {list}
 printers_find_synced	Trobades {n} — {new} noves
-printer_on_device	desada
 printer_already_added	ja afegida
 printer_already_saved	Ja desada: {name}
 find_printers	Troba impressores
@@ -640,7 +497,6 @@ cancelled	Anul·lat
 printers_tap_find	Toqueu Troba per llistar les impressores que aquest dispositiu pot fer servir.
 printers_none_found	No se n'ha trobat cap — escriviu un nom d'impressora del sistema o una IP (p. ex. 192.168.1.50).
 printer_from_find	Afegida {name}
-bill_printer_ph	Impressora per als comptes
 queue_refused	La botiga no ho ha acceptat ({n}) — comproveu-ho cadascun al mostrador:
 clear_not_accepted	Comprovat — neteja aquesta llista
 device_name_ph	Nom d'aquest dispositiu
@@ -650,7 +506,6 @@ connected_now	connectat ara
 backup_failed	La darrera còpia automàtica ha fallat: {e}
 backup_overdue	Fa {n} dies sense còpia — deixeu l'app oberta en aquest dispositiu perquè en pugui fer.
 disk_low	Només queden {mb} MB lliures en aquest dispositiu — les còpies fallaran aviat. Allibereu espai.
-last_seen_devices	Vist per darrer cop: {time}
 connection_to_shop	Connexió amb la botiga
 supplier_name_ph	Nom del proveïdor (o part)
 supplier_ph	Proveïdor
@@ -708,7 +563,6 @@ currency_use_help	Desplaceu i toqueu Fes servir per a qualsevol moneda admesa.
 day_close_help	Registrar un tancament del dia desa aquest resum (i la diferència del calaix si s'ha comptat) al registre d'auditoria. No atura les vendes.
 expenses_word	Despeses
 feature_access_help	Què poden obrir — opcional; la feina de dalt ja posa un valor per defecte
-footer_local	SQLite local · Gratuït per sempre · Zero Cloud
 fresh_book_tabiyat	Fresc = catàleg buit (afegir articles més tard). Reserva = escriure l'estoc inicial i qui et deu a continuació.
 fresh_selected	Nou seleccionat — el catàleg queda buit. Toqueu Fet quan estigueu a punt.
 gross_word	Brut
@@ -721,12 +575,9 @@ net_word	Net
 offline_badge	SENSE XARXA
 optional_login_help	Inici de sessió opcional (id + contrasenya). El propietari el posa un cop; només l'usuari pot canviar la contrasenya després.
 or_unlock_login	O desbloquegeu amb id d'inici de sessió + contrasenya
-permission_preset	Feina (posa pantalles i accions de diners)
-preset_help_tabiyat	Caixer: vendre. Encarregat: vendre + articles + anul·lar/esmenar.
-product_locked_tabiyat	Tabiyat
+permission_preset	Feina
 product_only_tabiyat	Tabiyat és el sistema operatiu de la farmàcia: venda de medicaments, comptabilitat per lots/caducitat, crèdit i llibres, fora de línia als vostres dispositius. Les marques d'horari H / Rx són notes del propietari, no de compliment.
 purchases_cogs	Compres (COGS)
-qty_cap	QTAT
 restore_help	Restaura: trieu una còpia. Els llibres s'obren com eren llavors; els llibres d'ara es desen primer, així que es pot desfer.
 wipe_data_heading	Elimina les dades locals
 wipe_data_help	Només el propietari: les mateixes opcions que la desinstal·lació de Windows. Els registres empresarials esborran l'historial de negociació, però conserven els elements i la configuració (com el PIN de desbloqueig d'emergència). La configuració de la botiga elimina la base de dades de llibres. Les preferències de la pantalla esborran la finestra/idioma. Confirmeu amb el PIN del propietari. El PIN de desbloqueig d'emergència a l'equip és independent (neteja encoberta al desbloquejar).
@@ -759,7 +610,6 @@ staff_renamed	Nom desat
 staff_setup_copied_hire	Configuració copiada de {name} — poseu un nom i un PIN nous i Afegeix personal
 staff_setup_copied_edit	Configuració de {from} copiada sobre {to}
 staff_copy_need_selected	Seleccioneu primer qui editar
-staff_copy_need_source	Trieu de qui copiar la configuració
 staff_copy_same	És la mateixa persona — trieu-ne una altra
 staff_rename_need_selected	Seleccioneu primer a qui canviar el nom
 team_pick_hint	Trieu qui voleu editar: les pantalles, els drets de diners i les estacions només apareixen per a aquesta persona.
@@ -774,15 +624,9 @@ unit_picker_off	Desactivat
 we_owe_them	Els devem
 who_unlocking	Qui desbloqueja?
 locked_word	Bloquejat
-show_pin	Mostra el PIN
-hide_pin	Amaga el PIN
 set_owner_pin	POSA EL PIN DEL PROPIETARI
 enter_owner_passcode	INTRODUEIX EL CODI DEL PROPIETARI
 enter_staff_passcode	INTRODUEIX EL CODI DEL PERSONAL
-pin_count_zero	0 / 12 dígits · com a mínim 4, després D'acord
-pin_count_need	{} / 12 dígits · en calen {} més
-pin_count_full	12 / 12 dígits · premeu D'acord
-pin_count_ready	{} / 12 dígits · premeu D'acord quan estigueu a punt
 pin_hint_choose	Trieu 4–12 dígits · Retorn o Desbloqueja per desar
 pin_hint_new	PIN de propietari nou de 4–12 dígits · Retorn o Desbloqueja
 pin_hint_shop_code	Dispositiu de la botiga · codi d'aparellament {}
@@ -791,23 +635,15 @@ pin_hint_paired	Caixa extra aparellada — desbloquegeu per vendre
 pin_hint_pair_first	Caixa extra — aparelleu primer amb el dispositiu de la botiga
 unlock_to_continue	Desbloquegeu per continuar
 no_staff_yet	Encara no hi ha personal — desbloquegeu com a Propietari i després Equip
-status_server_set_pin	Mode servidor — poseu el PIN del propietari
-status_server_tills	Mode servidor — les caixes extra s'hi poden unir. Desbloquegeu
-status_server_unlock	Mode servidor — desbloquegeu com a Propietari
-status_client_unlock	Mode client — desbloquegeu per vendre
 icon_new_selected	Icona: fitxer nou seleccionat — toqueu Desa la marca
 icon_custom	Icona: marca pròpia del local
 icon_default	Icona: marca Kumkaj (per defecte) — trieu-ne una de pròpia
 logo_yours	Logotip: el de la vostra botiga — es mostra a les pantalles i als rebuts
 logo_default	Logotip: marca Kumkaj (per defecte) — poseu el vostre si en teniu
-tmpl_current	Actual: {} — {}
-tmpl_selected	Seleccionat: {} — {}
 setup_complete	Configuració completa
 onboard_fresh_tmpl	Nou · {} — el catàleg comença buit; afegiu articles a Articles i després Fet.
 onboard_book_tmpl	Llibre · {} — afegiu articles i crèdit d'obertura, després Fet.
-onboard_template_tmpl	Poseu nom al local si voleu i trieu com començar.
 tmpl_blurb	Taulell de farmàcia: medicaments, lot/caducitat, khata, llibres.
-tmpl_how	Vendre al mostrador; Comprar per accions; Llibres per al dia.
 reports_facet_title	Informes
 reports_facet_help	Llibres del dia, antiguitat de parts, assentaments bancaris i PiG del període.
 against_bill_ph	Contra el compte núm. de dalt (opcional)
@@ -818,14 +654,12 @@ amount_ph	Import
 amount_received_ph	Import rebut
 amount_we_pay_ph	Import que paguem
 business_name_ph	Nom del negoci
-category_new_ph	Categoria (opcional, es crea si és nova)
 code_bag_ph	Codi (bag)
 conv_factor_ph	Factor (25 = 1 bag → 25 kg)
 country_code_ph	Codi de país, p. ex. IN, GB, US, AE, BR
 credit_khata_amount_ph	Import de crèdit / khata
 credit_limit_ph	Límit de crèdit (0 = cap)
 from_code_ph	Codi d'origen (bag)
-item_name_lang_ph	Nom de l'article — escriviu-lo en la vostra llengua
 login_id_opt_ph	Nom d'usuari (obligatori, únic)
 manager_pin_ph	PIN d'encarregat per aprovar (només si no podeu anul·lar)
 new_branch_name_ph	Nom de la sucursal nova
@@ -833,15 +667,12 @@ new_password_ph	Contrasenya nova (opcional)
 new_pin_ph	PIN nou (4–12 dígits)
 note_bank_ph	Nota (ingrés, retirada, …)
 note_buy_expense_ph	Nota (combustible, lloguer, …)
-note_expense_ph	Nota (combustible, oficina, …)
 options_tabiyat_ph	Opcions — Size*: Small=199, Large=399 | Toppings+3: Cheese=40, Olive=30 | Extra cheese=40
-part_second_way_ph	Part per una segona via (opcional)
 phone_ph	Telèfon
 place_name_ph	Nom d'aquest local
 qty_example_ph	Qtat (p. ex. 1,5 per a kg)
 quantity_ph	Quantitat
 reason_required_ph	Motiu (obligatori)
-role_title_ph	Títol del rol (p. ex. Barista)
 service_pct_ph	Servei % opcional 0/10/12
 short_code_ph	Codi curt (MG02)
 starting_password_ph	Contrasenya inicial (opcional)
@@ -876,14 +707,11 @@ shift_handover	Relleu de torn
 shift_since	Aquest torn des de
 expected_in_drawer	Esperat al calaix
 right_discount	Fer un descompte
-pick_category	Trieu una categoria
-close_category_list	Tanca la llista de categories
 new_category_row	Categoria nova — es crea en desar l'article
 your_category	La vostra categoria
 suggested_category	Suggerit: dels nostres articles
 category_search_ph	Categoria — cerqueu la vostra o escriviu-ne una de nova
 cancel_item_short	Anul·la
-cancel_item_title	Cancel·lar aquest article — l’oficina central rep un justificant de cancel·lació
 return_to_customer	Torna al client
 short_by	Falta
 tip_not_sale	Propina (del personal, no és una venda)
@@ -896,9 +724,7 @@ finding_server	S'està cercant el servidor de la botiga en aquest Wi‑Fi…
 no_server_found	No se n'ha trobat cap. Al Servidor: Ajustos → Altres dispositius → Permet caixes extra (el mateix Wi‑Fi). O escriviu la IP que s'hi mostra.
 servers_found_pick	Toqueu la botiga a la qual us voleu connectar.
 server_host_selected	S'usa {host} — introduïu el codi d'aparellament i Aparella ara.
-print_bill	Imprimeix el compte
 approval_pin_ph	PIN d'encarregat (només si es demana)
-confirm	Confirma
 menu_search_ph	Cerca article o codi curt
 customer_paid_ph	El client ha pagat
 tip_ph	Propina
@@ -908,7 +734,6 @@ bill_format_help	Imprès amb el nom de la vostra botiga a cada factura. Separeu 
 bill_header_ph	Adreça | telèfon
 fssai_ph	Número de llicència de drogues (opcional — com tu vulguis)
 bill_footer_ph	Peu (p. ex. Gràcies, torneu)
-save_bill_format	Desa el format del compte
 kot_field_on	mostra
 kot_field_off	amaga
 kot_weight_light	Prima
@@ -919,10 +744,8 @@ kot_weight_bold	Negreta
 kot_align_start	Comença
 kot_align_center	Centre
 kot_align_end	Final
-content_width	Amplada del contingut (mm)
 content_width_bill	Amplada del contingut del compte (mm)
 content_width_ph	O escriviu una amplada de contingut, 40–210 mm
-content_width_help	Quina amplada s'imprimeix aquesta butlleta. Bill manté la seva pròpia amplada.
 content_width_bill_help	Quina amplitud s'imprimeix la factura del client. Per defecte 210 mm (pàgina). Lliscament estret de 58 mm, lliscament de 80 mm d'ample, 112 mm de 4 polzades, 210 mm d'ample A4. Escriviu qualsevol valor entre 40 i 210. Els bitllets tenen la seva pròpia amplada a la pestanya de resguard.
 vp_paper_width	Amplada del contingut (mm)
 vp_paper_width_ph	O escriviu una amplada de contingut, 40–210 mm
@@ -937,9 +760,6 @@ test_bill_sent	Vista prèvia del compte enviada
 test_print_no_printer	No hi ha impressora per a aquest treball — trieu-ne una en aquesta pantalla
 std_print	Mida d'impressió del compte
 std_print_help	Mida de la font per a treballs de rebut Standard Vertical i Horitzontal en impressores del SO / impresora de documents (introduïu punts — no Petit/Normal/Gran). Mateixa mida en ambdues orientacions.
-std_size_s	Petita
-std_size_m	Normal
-std_size_l	Gran
 save_std_print	Desa la mida d'impressió del compte
 std_print_saved	Mida d'impressió del compte desada
 print_brand_kit	Imprimeix el kit de marca
@@ -952,14 +772,9 @@ choose_payment_qr	Tria el QR de pagament
 clear_payment_qr	Treu el QR de pagament
 payment_qr_set	QR de pagament: al fitxer: es mostra a la pantalla del client (substitueix l'import UPI QR)
 payment_qr_none	QR de pagament: cap — QR de l'import des de l'ID UPI en pagar
-aggregator_import	Comandes d'agregador (fitxer)
-aggregator_import_help	Importació local opcional: poseu import_aggregator_orders.json a la carpeta de còpies (matriu o {"orders":[…]}), i toqueu Importa. No bloqueja mai el mostrador; Zomato/Swiggy en directe és Cloud.
-import_aggregator_file	Importa el fitxer d'agregador
 team_pick_ph	Personal a editar — nom, nom d'usuari o trieu
 select_staff	Selecciona aquest personal
 rights_help	Accions de diners per a aquesta persona — toca per canviar: Permès → Necessita PIN del cap → No permès. Torna a imprimir el rebut només són rebuts; les seccions són la llista de verificació a continuació.
-dish_picker_help	Cerqueu o navegueu pels nostres articles i toqueu-ne un per omplir-ne el nom i la foto, o manteniu el vostre nom. Estableix el teu preu (0 està bé) i després Afegeix l'article.
-close_dish_list	Tanca llista d'articles
 own_item_name	Fes servir això com a nom propi de l'article
 on_your_menu	A la llista de medicaments
 edit	Edita
@@ -970,24 +785,16 @@ add_scheme	Afegeix BOGO
 schedule_ph	Horari: de dilluns a divendres de 07:00 a 11:00 o tarda de 17:00 a 19:00 = 150
 upi_vpa_ph	UPI ID (VPA)
 upi_payee_ph	Nom del beneficiari UPI (opcional)
-upi_qr	UPI QR
 show_upi_qr	Mostra el QR UPI
 close_upi_qr	Tanca
 upi_qr_help	El client escaneja i paga. Toca Cobra després que pagui. Segona pantalla: obrir URL del servidor /display a LAN.
-recently_done	Fets fa poc
 role_help_customer	Rol: Client — khata (ens deuen). La mateixa part també pot subministrar estoc.
 role_help_both	Rols: Client + Proveïdor — una part, llibres de khata i a pagar, net als Informes.
 role_help_supplier	Rol: Proveïdor — els devem les compres.
-items_word	articles
-items_section	Articles
-back_to_order	Torna a la comanda
-new_items_head	Encara no enviat
 price_ph	Preu
 price_ph_gst_inside	Preu ({tax} inclòs)
-tax_rates_missing_hint	No hi ha tarifa {tax} per aquests articles — a Articles estableix la tarifa d'impostos (els preus ja inclouen {tax} sota {tax} inclusiu)
 taxable_value	Base imposable
 gst_inside_price_note	({tax} inclòs)
-start_with_template	Comenceu amb la nostra plantilla d'articles
 template_heading	Elements d'inici
 template_info	Categories {c} i articles {d} amb fotos, a punt per afegir. Els preus comencen a partir de 0 ₹; després establiu el vostre.
 template_import	Importa la plantilla completa
@@ -1009,21 +816,13 @@ opening_client	S'obre el client…
 preparing_desk	Es prepara el taulell…
 opening_server	S'obre el servidor…
 creating_server	Es crea el servidor…
-order_empty_pick	Comanda buida: toqueu Afegeix elements a dalt per triar elements.
 add_dishes	Afegir medicaments
 order_so_far	En aquesta comanda: {n} · {total}
 no_dish_match	Cap article coincideix amb “{q}”
-pick_dishes_help	Toca un element per afegir-lo · tria una categoria per restringir la llista
 pick_done	Fet
-pick_done_dd	Fet · {label}
-printer_route_mode	Si hi ha diverses impressores en aquest lloc
-printer_mode_first	La primera que funcioni
-printer_mode_all	Imprimeix a totes
 kot_field_up	Puja
 kot_field_down	Baixa
-app_template_blurb_extra	També: Propietari Zahir, Administrador Asif, Caixer Nawaz; barra lateral frontal; historial després de 4 hores; Treure avui; factura compacta.
 dishes_n	Elements {n}
-recipe_ph	Recepta (opcional: no s'utilitza en una botiga)
 reorder_ph	Torna a comprar a
 set_reorder	Posa el nivell de reposició
 low_stock_alert	S'està acabant — compreu aviat: {items}
@@ -1032,7 +831,6 @@ show_unpriced	Mostra només articles sense preu
 show_all_dishes	Mostra tots els elements
 role_title_rest_ph	Títol del rol (p. ex. Capità, Cap de cuina)
 preset_help_rest	Caixer: vendre. Encarregat: vendre + articles + anul·lar/esmenar.
-kind_raw	Estoc compost
 kind_resale	Medicina comprada
 kind_dish	No comptar l’estoc
 buy_unit_ph	Unitat (kg, litre, pcs)

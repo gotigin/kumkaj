@@ -213,13 +213,9 @@ impl App {
         // First Server lock → Owner; else remembered chip.
         st.apply_lock_role_selection();
         st.screen = Screen::Lock;
-        st.status = if !st.owner_setup_complete {
-            locale::t(&st.locale.language, "status_server_set_pin")
-        } else if st.extra_tills_allowed {
-            locale::t(&st.locale.language, "status_server_tills")
-        } else {
-            locale::t(&st.locale.language, "status_server_unlock")
-        };
+        // No "Server Mode — set Owner PIN / unlock as Owner" line: the PIN
+        // prompt and its ℹ say it (cluster text, owner 2026-11-14).
+        st.status.clear();
     }
 
     /// Start Client Mode without blocking the UI (first open migrates the
@@ -284,12 +280,12 @@ impl App {
             // and trap the till on a previous pairing (multi-server Wi‑Fi).
             st.nav_back.push(Screen::DeviceSetup);
             st.screen = Screen::ClientPair;
-            let msg = if client_paired {
-                locale::t(&st.locale.language, "status_client_unlock")
-            } else {
-                "Client Mode — find the Server, tap the shop you want, then Pair".into()
-            };
-            st.status = msg.clone();
+            // No instruction bar (the English-only "Client Mode — find the
+            // Server…" / "unlock to sell" outlived their screens): the
+            // pairing screen's ℹ says how (2026-11-14).
+            let _ = client_paired;
+            let msg = String::new();
+            st.status.clear();
             (old, msg)
         };
         drop_store_off_ui(status_msg.0);

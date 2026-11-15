@@ -39,7 +39,7 @@ adding_item	နှုန်းထားအသစ်ကို ပေါင်း�
 editing_item	တည်းဖြတ်ခြင်း
 save	သိမ်းမည်
 remove	ဖယ်မည်
-empty_catalog	နှုန်းထားများမရှိသေးပါ။ နှုန်းထားများနှင့် ဝန်ဆောင်မှုများကို ဖွင့်ပါ၊ တစ်ခု (အမည် + စျေးနှုန်း၊ ယူနစ် ကီလိုဂရမ်) ကိုထည့်ပါ၊ ထို့နောက် Booking လုပ်ပါ။
+empty_catalog	နှုန်းထားများမရှိသေးပါ။
 counter_sale	ကောင်တာဘွတ်ကင်
 total	စုစုပေါင်း
 cash	ငွေသား
@@ -171,8 +171,6 @@ selected_language	ရွေးထားပြီး
 continue	ဆက်လုပ်
 this_device	ဒီစက်ပစ္စည်း
 device_use_q	ဒီစက်ပစ္စည်းကိုဘယ်လိုအသုံးပြုမလဲ?
-last_server_mode	Server ဖြစ်ခဲ့သည် — ဆက်ဖတ်ရန် တိုက်ပါ
-last_client_mode	Client ဖြစ်ခဲ့သည် — ဆက်ဖတ်ရန် တိုက်ပါ
 choose_server	ဆာဗာရွေးပါ
 choose_server_hint	ရှိပြီးသား စာဗာကို ဖွင့်ပါ၊ သို့မဟုတ် အခြားလုပ်ငန်းအတွက် အသစ်ဖန်တီးပါ။
 create_new_server	စာဗာအသစ် ဖန်တီးပါ
@@ -501,8 +499,6 @@ job_layout	ပုံစံ
 job_delivery	အလုပ်ကို ပို့ပုံ
 job_size	ဖောင့်အရွယ်အစား
 job_size_ph	ဥပမာ၊ 18, 20, 26…
-save_receipt_format	ပြေစာဖော်မတ်ကို သိမ်းဆည်းပါ။
-save_label_format	အညွှန်းဖော်မတ်ကို သိမ်းဆည်းပါ။
 test_receipt_format	စာမေးပွဲပြေစာ
 test_label_format	စမ်းသပ်တံဆိပ်
 test_receipt_sent	နမူနာပြေစာ ပို့လိုက်ပါပြီ။
@@ -610,7 +606,7 @@ units_heading	ယူနစ်များ
 booking_measures	ကြိုတင်စာရင်းသွင်းမှုတွေ
 drawer_count	Drawer အရေအတွက် (အလိုအလျောက် ရွေးချယ်နိုင်)
 spreadsheet_csv	စာရင်းဇယား (CSV)
-bank_reconciliation	ဘဏ်ကိုက်ညီမှု (သင့်ဘဏ်အရေးအသားနှင့် စစ်စစ်ပါ)
+bank_reconciliation	ဘဏ်ကိုက်ညီမှု
 book_add_product	စာအုပ် — ထုတ်ကုန်/နှုန်းကို ထည့်ပါ။
 book_opening_credit	စာအုပ် — အဖွင့်ခရက်ဒစ်
 account_kind	အကောင့်အမျိုးအစား (တစ်ခုနှိပ်ပါ)
@@ -650,7 +646,7 @@ net_word	တိုးတက်သောငွေ
 offline_badge	အော့ဖ်လိုင်း
 optional_login_help	စိတ်ကြိုက်လော့ဂ်အင် (အိုင်ဒီ + စကားဝှက်)။ ပိုင်ရှင်တစ်ခါတည်း သတ်မှတ်နိုင်ပြီး၊ နောက်ပိုင်းတွင် စကားဝှက်ကို အသုံးပြုသူပဲ ပြောင်းနိုင်သည်။
 or_unlock_login	သို့မဟုတ် လော့ဂ်အင် အိုင်ဒီ + စကားဝှက်ဖြင့် ဖွင့်ရန်
-permission_preset	အလုပ် (မျက်နှာပြင်များနှင့် လုပ်ပိုင်ခွင့်များကို သတ်မှတ်သည်)
+permission_preset	အလုပ်
 preset_help_moklanjo	ငွေထုတ်ယူသူ: ရောင်းသည်။ မန်နေဂျာ: ရောင်းခြင်း + ပစ္စည်းများ + ဖျက်/ပြင်ဆင်ခြင်း။
 product_locked_moklanjo	မိုကလန်ဂျို
 product_only_moklanjo	ဤအက်ပ်သည် Moklanjo သာဖြစ်သည် — စာအုပ်များ + ဘွတ်ကင်စားပွဲ။ အခြားသော ကုန်သွယ်မှုများသည် နောက်ပိုင်းတွင် သီးခြားထုတ်ကုန်များအဖြစ် သင်္ဘောဖြင့် ရင်ဆိုင်နေရသည်။
@@ -698,10 +694,6 @@ pin_hint_paired	အပို ငွေကောင်တာ ချိတ်ဆ�
 pin_hint_pair_first	အပို ငွေကောင်တာ — ဆိုင်စက်နှင့် အရင် ချိတ်ဆက်ပါ
 unlock_to_continue	ဆက်ရန် အော့ဖ်လော့ခ်ဖြေပါ
 no_staff_yet	ဝန်ထမ်း မရှိသေး — ပိုင်ရှင်အဖြစ် အော့ဖ်လော့ခ်ဖွင့်ပြီး နောက် TEAM
-status_server_set_pin	Server မုဒ် — ပိုင်ရှင် PIN ကို သတ်မှတ်ပါ
-status_server_tills	Server မုဒ် — အပို ငွေကောင်တာများ ဝင်နိုင်သည်။ ဖွင့်ပါ
-status_server_unlock	Server မုဒ် — မန်နေဂျာအဖြစ် ဖွင့်ပါ
-status_client_unlock	Client မုဒ် — ရောင်းရန် ဖွင့်ပါ
 icon_new_selected	အိုင်ကွန်: ဖိုင်အသစ် ရွေးထားသည် — brand ကို သိမ်းရန် နှိပ်ပါ
 icon_custom	အိုင်ကွန်: အကူးအပြောင်း ရှိသော နေရာမှတ်
 icon_default	အိုင်ကွန်: Kumkaj မှတ် (ပုံမှန်) — အထူးသီးသန့်မှတ် ရွေးပါ

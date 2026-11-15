@@ -41,7 +41,7 @@ remove	Paih
 removed_items	Thil paih tawh
 removed_help	Kir leh chuan thil chu menu-ah a nih dan ang khan a kir leh — man, thlalak leh pawl. Kan chaw bung a paih loh avangin chaw hi telh leh theih reng a ni.
 restore_item	Kir leh
-empty_catalog	Chaw a la awm lo. Menu hawng la, chaw telh (hming + man), chuan order la.
+empty_catalog	Chaw a la awm lo.
 total	A zawng
 cash	Sum
 upi	UPI
@@ -103,23 +103,14 @@ bill_item_qty	Zat
 bill_item_price	Man
 bill_item_amount	Sum zat
 bill_item_note	Chaw lehkha
-bill_item_col_gap	Column kar
 bill_item_col_order	Column indawr dan
 bill_item_col_sep	Column ri
-bill_item_gap_tight	Tep
-bill_item_gap_comfort	Nuam
-bill_item_gap_wide	Vang
-bill_item_num_width	Nambar column
-bill_item_num_compact	Tep
-bill_item_num_comfort	Nuam
-bill_item_num_wide	Vang
-bill_item_num_align	Nambar intlun
-bill_item_gap_em	Kar (em)
-bill_item_qty_min	Zat tlem ber (em)
-bill_item_price_min	Man tlem ber (em)
-bill_item_amount_min	Sum zat tlem ber (em)
-kot_item_qty_width	Zat column
-kot_item_num_align	Zat intlun
+slip_columns	Column-te
+slip_col_width	Zau (mm)
+slip_col_start	Tirhna awmna (px)
+slip_col_end	Tâwpna awmna (px)
+slip_col_align	Thuziak inremna
+slip_columns_help	Column tin zauah a tirhna leh a tâwpna awmna a tel. Thuziak chu a column chhungah a inthlawk; thil awm zau aia zau chu lehkha ah leh hmaa enna ah a tan ang.
 bill_total_qty_label	Zat zawng hming
 bill_total_subtotal_label	Zawng te hming
 bill_total_grand_label	Zawng lian hming
@@ -221,7 +212,6 @@ sidebar_order_saved	Sir indawr dan dah tha a ni
 sidebar_visibility_saved	Sir lantir dan dah tha a ni
 amounts_hide	Thup
 amounts_show	Lantir
-printers_none_hint	He device-ah print na dah tha hmasa, chuan Bill emaw buh chhumna ah telh
 counter	Zuar dawhkan
 dine_in	Hetah ei
 takeaway	La chhuak
@@ -328,8 +318,6 @@ selected_language	Thlan
 continue	Chhunzawm
 this_device	HE DEVICE
 device_use_q	He device hi engtin nge hman tur?
-last_server_mode	Server a ni tawh — khawih la, chhunzawm turin
-last_client_mode	Dawr dang a ni tawh — khawih la, chhunzawm turin
 choose_server	Server thlang
 choose_server_hint	Server awm sa hawng, emaw sumdawn dang atan siam.
 create_new_server	Server thar siam
@@ -391,7 +379,7 @@ attachments_last_expense	Thlun (sum sen tawp ber)
 bank	Bank
 bank_in	Bank lut
 bank_out	Bank chhuak
-bank_reconciliation	Bank inmil (i bank report nen en)
+bank_reconciliation	Bank inmil
 bank_to_till	Bank → dawhkan
 book_add_dish	Lehkha — chaw / thil telh
 book_opening_credit	Lehkha — tan lai ba
@@ -744,7 +732,6 @@ station_print_pick_first	Buh chhumna hmun thlang hmasa
 station_print_editing	“{name}” print na siam mek
 station_vps_dd	He hmun print na
 station_vps_dd_n	print na {n} · khawih la, thlak turin
-station_vps_empty	Print na a la awm lo — Remkhawh → Print na hnuaih zawng
 bill_printers_dd	Bill print na
 bill_printers_dd_n	bill print na {n} · khawih la, thlak turin
 job_layout	Rem dan
@@ -889,7 +876,7 @@ net_word	Chhiar zawng
 offline_badge	NET TEL LO
 optional_login_help	Lut duh chuan (hmingchhiar + password). Neitu vawi khat a dah; hmangtu chauhvin password a thlak thei nakinah.
 or_unlock_login	Emaw lut hmingchhiar + password in hawng
-permission_preset	Hna (screen leh sum tih dan a dah)
+permission_preset	Hna
 preset_help_khaynjo	Sum khawmtu: zuar. Hotu: zuar + thil + tihbo/siam.
 product_locked_khaynjo	Khaynjo
 product_only_khaynjo	He app hi Khaynjo chauh a ni — rawt thawk dan. Sumdawn dang hmai chu Kumkaj thil then angin a chhuak.
@@ -961,10 +948,6 @@ pin_hint_paired	Dawhkan dang pair a ni — hawng la, zuar turin
 pin_hint_pair_first	Dawhkan dang — dawr device pair hmasa
 unlock_to_continue	Hawng la, chhunzawm turin
 no_staff_yet	Hnathawk a la awm lo — Neitu angin hawng, chuan Pawl
-status_server_set_pin	Server mode — Neitu PIN dah
-status_server_tills	Server mode — dawhkan dang tel thei. Hawng
-status_server_unlock	Server mode — Neitu angin hawng
-status_client_unlock	Dawr dang mode — hawng la, zuar turin
 icon_new_selected	Chhinchhiah: file thar thlan — Hmingchhiar dah tha khawih
 icon_custom	Chhinchhiah: hmun hmingchhiar mahni
 icon_default	Chhinchhiah: Kumkaj hmingchhiar (dan) — mahni thlang
@@ -1033,7 +1016,7 @@ book_kind_balance	Balance sheet
 order_help	Thil khawih la, telh turin.
 floor_help	Dawhkan khawih la, order la emaw thlak turin. Rawng hian ruak → thu → buh chhumna → inpe → ei → bill → pe a lantir. Nghak list, book leh dawhkan telh chu a hnuai bung-ah a awm.
 kitchen_help	Buh chhumna lehkha (KOT), thar ber tawpah. Tan → Inpe → Zo chuan lehkha a kal. Lehkha hian man a lantir ngai lo.
-kitchen_empty	Lehkha hawng awm lo. Order emaw Dawr chhung atanga KOT thawn hetah a lang.
+kitchen_empty	Lehkha hawng awm lo.
 add_a_table	Dawhkan telh
 add_station_heading	Buh chhumna hmun telh
 categories_help	Hmang khawih la, a chunga thil pawl kha hnuaih dah turin. Thlalak chuan pawl thlalak a pe; awm loh chuan hawrawp a lantir.
@@ -1131,7 +1114,6 @@ bill_format_help	Bill tinah i rawt hming hnuaih print. Ri | in then (entir MG Ro
 bill_header_ph	Address | phone
 fssai_ph	FSSAI licence no. (India)
 bill_footer_ph	Hnuai (entir Lawm e, lo kal leh)
-save_bill_format	Bill rem dan dah tha
 reset_bill_format	Dan ah kir
 bill_format_reset	Bill rem dan dan ah kir a ni
 reset_kot_format	Dan ah kir
@@ -1201,13 +1183,11 @@ kot_copies_3	3
 kot_title_ph	Hming (ruak = KOT - KITCHEN ORDER)
 kot_footer_ph	Buh chhumna lehkha (duh chuan, man tel lo)
 kot_preview	En hma
-save_kot_format	KOT rem dan dah tha
 test_kot_format	Test KOT
 test_kot_sent	Buh chhumna lehkha en hma thawn a ni
 test_bill_format	Test bill
 test_bill_sent	Bill en hma thawn a ni
 test_print_no_printer	Hna kha atan print na awm lo — he screen-ah pakhat thlang
-kot_format_saved	KOT rem dan dah tha a ni
 std_print	Bill print len
 std_print_help	OS / lehkha print na-a Ding leh Phai bill hna dan atan type len (point ziak — Te/Dan/Lian ni lo). Hawi pahnihah len inang. Buh chhumna lehkha len chu KOT tab-ah a awm.
 std_size_s	Te
@@ -1264,7 +1244,6 @@ new_items_head	Thawn la lo
 price_ph	Man
 price_ph_gst_inside	Man ({tax} chhung)
 cancel_needs_table	He order Dawr chhung (dawhkan) atanga hawng la, buh chhumna a neih hnu tihbo turin — zuar dawhkan KOT chu pek i la hma chu lehkha-ah a awm
-tax_rates_missing_hint	He chaw te-ah {tax} zat awm lo — Menu-ah Chhiah zat dah (man hian {tax} chhung hnuaih {tax} an nei tawh)
 taxable_value	Chhiah man
 gst_inside_price_note	({tax} chhung)
 start_with_template	Kan menu template in tan
@@ -1318,9 +1297,7 @@ order_empty_pick	Order ruak — a chunga Chaw telh khawih la, chaw thlang turin.
 add_dishes	Chaw telh
 order_so_far	He order-ah: {n} · {total}
 no_dish_match	“{q}” inmil chaw awm lo
-pick_dishes_help	Chaw khawih la, telh turin · pawl thlang la, list tep turin
 pick_done	Zo
-pick_done_dd	Zo · {label}
 printer_route_mode	He hmunah print na tam a awm chuan
 printer_mode_first	Hmasa thawk
 printer_mode_all	Zawng zawng print

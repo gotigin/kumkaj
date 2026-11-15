@@ -39,7 +39,7 @@ adding_item	Ajoute yon nouvo pousantaj
 editing_item	Modifikasyon
 save	Anrejistre
 remove	Retire
-empty_catalog	Pa gen tarif ankò. Louvri Tarif ak sèvis, ajoute youn (non + pri, inite kg), apresa Anrjistreman.
+empty_catalog	Pa gen tarif ankò.
 counter_sale	Kontwa anrjistreman
 total	Total
 cash	Kach
@@ -171,8 +171,6 @@ selected_language	Chwazi
 continue	Kontinye
 this_device	APARÈY SA A
 device_use_q	Kijan aparèy sa a pral sèvi?
-last_server_mode	Te Sèvè — peze pou kontinye
-last_client_mode	Te Kliyan — peze pou kontinye
 choose_server	Chwazi yon sèvè
 choose_server_hint	Louvri yon sèvè ki egziste, oswa kreye youn pou yon lòt biznis.
 create_new_server	Kreye nouvo sèvè
@@ -501,8 +499,6 @@ job_layout	Dispozisyon
 job_delivery	Kijan travay la voye
 job_size	Gwosè lèt
 job_size_ph	pa egzanp 18, 20, 26…
-save_receipt_format	Sove fòma resi
-save_label_format	Sove fòma etikèt la
 test_receipt_format	resi tès la
 test_label_format	Etikèt tès la
 test_receipt_sent	Egzanp resi voye
@@ -610,7 +606,7 @@ units_heading	Inite
 booking_measures	Mezi anrjistreman
 drawer_count	Konte tiro (opsyonèl)
 spreadsheet_csv	Fèy kalkil (CSV)
-bank_reconciliation	Rekonsilyasyon labank (make kont ekstrè ou)
+bank_reconciliation	Rekonsilyasyon labank
 book_add_product	Liv - ajoute pwodwi / pousantaj
 book_opening_credit	Liv — kredi ouvèti
 account_kind	Kalite kont (peze youn)
@@ -650,7 +646,7 @@ net_word	Nèt
 offline_badge	OFLAYN
 optional_login_help	Antre opsyonèl (id + modpas). Pwopriyetè a mete l yon fwa; se sèl itilizatè a ki ka chanje modpas pita.
 or_unlock_login	Oswa debloke ak id antre + modpas
-permission_preset	Travay (mete ekran ak dwa)
+permission_preset	Travay
 preset_help_moklanjo	Kesye: vann. Manadjè: vann + atik + anile/korije.
 product_locked_moklanjo	Moklanjo
 product_only_moklanjo	Aplikasyon sa a se Moklanjo sèlman - liv + biwo anrjistreman. Lòt komès fè fas a bato kòm pwodwi separe pita.
@@ -698,10 +694,6 @@ pin_hint_paired	Lòt kes makonnen — debloke pou vann
 pin_hint_pair_first	Lòt kes — makonnen ak aparèy boutik la anvan
 unlock_to_continue	Debloke pou kontinye
 no_staff_yet	Pa gen anplwaye ankò — debloke kòm Pwopriyetè, epi Ekip
-status_server_set_pin	Mòd sèvè — mete PIN pwopriyetè
-status_server_tills	Mòd sèvè — lòt kes ka rantre. Debloke
-status_server_unlock	Mòd sèvè — debloke kòm Pwopriyetè
-status_client_unlock	Mòd kliyan — debloke pou vann
 icon_new_selected	Ikòn: nouvo fichye chwazi — peze Anrejistre mak
 icon_custom	Ikòn: mak lokal pèsonalize
 icon_default	Ikòn: mak Kumkaj (default) — chwazi youn pèsonalize

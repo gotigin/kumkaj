@@ -39,7 +39,7 @@ adding_item	ନୂଆ ଦର ଯୋଡ଼ୁଛି
 editing_item	ସମ୍ପାଦନା
 save	ସେଭ କରନ୍ତୁ
 remove	ବାହାର କରନ୍ତୁ
-empty_catalog	ଏପର୍ଯ୍ୟନ୍ତ କୌଣସି ଦର ନାହିଁ। ଦର ଏବଂ ସେବା ଖୋଲନ୍ତୁ, ଗୋଟିଏ ଯୋଡ଼ନ୍ତୁ (ନାମ + ମୂଲ୍ୟ, ୟୁନିଟ୍ kg), ତା'ପରେ ବୁକିଂ।
+empty_catalog	ଏପର୍ଯ୍ୟନ୍ତ କୌଣସି ଦର ନାହିଁ।
 counter_sale	କାଉଣ୍ଟର ବୁକିଂ
 total	ମୋଟ
 cash	ନଗଦ
@@ -171,8 +171,6 @@ selected_language	ବଛା
 continue	ଆଗକୁ ବଢ଼ନ୍ତୁ
 this_device	ଏହି ଡିଭାଇସ
 device_use_q	ଏହି ଡିଭାଇସ କିପରି ବ୍ୟବହୃତ ହେବ?
-last_server_mode	ପୂର୍ବରୁ ସର୍ଭର ଥିଲା — ଜାରି ରଖିବାକୁ ଟ୍ୟାପ୍ କରନ୍ତୁ
-last_client_mode	ପୂର୍ବରୁ କ୍ଲାଏଣ୍ଟ ଥିଲା — ଜାରି ରଖିବାକୁ ଟ୍ୟାପ୍ କରନ୍ତୁ
 choose_server	ସର୍ଭର ବାଛନ୍ତୁ
 choose_server_hint	ଏହି ଡିଭାଇସରେ ପୂର୍ବରୁ ସର୍ଭର ଅଛି। ଗୋଟିଏ ଖୋଲନ୍ତୁ, କିମ୍ବା ଅନ୍ୟ ବ୍ୟବସାୟ ପାଇଁ ନୂଆ ସର୍ଭର ତିଆରି କରନ୍ତୁ।
 create_new_server	ନୂଆ ସର୍ଭର ତିଆରି କରନ୍ତୁ
@@ -501,8 +499,6 @@ job_layout	ଲେଆଉଟ୍
 job_delivery	କାମ କିପରି ପଠାଯାଏ
 job_size	ଫଣ୍ଟ ଆକାର
 job_size_ph	ଯେପରି 18, 20, 26…
-save_receipt_format	ରସିଦ ଫର୍ମାଟ୍ ସଞ୍ଚୟ କରନ୍ତୁ
-save_label_format	ଲେବଲ୍ ଫର୍ମାଟ୍ ସଞ୍ଚୟ କରନ୍ତୁ
 test_receipt_format	ପରୀକ୍ଷା ରସିଦ
 test_label_format	ପରୀକ୍ଷା ଲେବଲ୍
 test_receipt_sent	ନମୁନା ରସିଦ ପଠାଗଲା
@@ -610,7 +606,7 @@ units_heading	ୟୁନିଟ୍‌ଗୁଡ଼ିକ
 booking_measures	ବୁକିଂ ମାପ
 drawer_count	ଡ୍ରୟର ଗଣନା (ଇଚ୍ଛାଧୀନ)
 spreadsheet_csv	ସ୍ପ୍ରେଡସିଟ୍ (CSV)
-bank_reconciliation	ବ୍ୟାଙ୍କ ମିଳାଣ (ଆପଣଙ୍କ ବ୍ୟାଙ୍କ ଷ୍ଟେଟମେଣ୍ଟ ସହ ଟିକ୍ କରନ୍ତୁ)
+bank_reconciliation	ବ୍ୟାଙ୍କ ମିଳାଣ
 book_add_product	ବୁକ୍ — ଉତ୍ପାଦ / ଦର ଯୋଡ଼ନ୍ତୁ
 book_opening_credit	ବୁକ୍ — ଆରମ୍ଭ ଧାର
 account_kind	ଖାତା ପ୍ରକାର (ଗୋଟିଏ ଦବାନ୍ତୁ)
@@ -650,7 +646,7 @@ net_word	ନେଟ୍
 offline_badge	ଅଫଲାଇନ
 optional_login_help	ଇଚ୍ଛାଧୀନ ଲଗଇନ୍ (ଆଇଡି + ପାସୱାର୍ଡ)। ମାଲିକ ଥରେ ସେଟ୍ କରନ୍ତି; ପରେ କେବଳ ବ୍ୟବହାରକାରୀ ପାସୱାର୍ଡ ବଦଳାଇ ପାରିବେ।
 or_unlock_login	କିମ୍ବା ଲଗଇନ୍ ଆଇଡି + ପାସୱାର୍ଡରେ ଅନଲକ୍ କରନ୍ତୁ
-permission_preset	କାମ (ସ୍କ୍ରିନ ଓ ଅଧିକାର ସ୍ଥିର କରେ)
+permission_preset	କାମ
 preset_help_moklanjo	କ୍ୟାସିୟର: ବିକ୍ରୟ। ମ୍ୟାନେଜର: ବିକ୍ରୟ + ଆଇଟମ୍ + ବାତିଲ/ସଂଶୋଧନ।
 product_locked_moklanjo	Moklanjo
 product_only_moklanjo	ଏହି ଆପ୍ କେବଳ Moklanjo — ଖାତା + ବୁକିଂ ଡେସ୍କ। ଅନ୍ୟ ବ୍ୟବସାୟର ଉତ୍ପାଦ ପରେ ଅଲଗା ଆସିବ।
@@ -698,10 +694,6 @@ pin_hint_paired	ଅତିରିକ୍ତ ଟିଲ୍ ଯୋଡ଼ା ହୋଇ�
 pin_hint_pair_first	ଅତିରିକ୍ତ ଟିଲ୍ — ପ୍ରଥମେ ଦୋକାନ ଡିଭାଇସ ସହ ଯୋଡ଼ନ୍ତୁ
 unlock_to_continue	ଜାରି ରଖିବାକୁ ଅନଲକ୍ କରନ୍ତୁ
 no_staff_yet	ଏପର୍ଯ୍ୟନ୍ତ କୌଣସି କର୍ମଚାରୀ ନାହାନ୍ତି — ମାଲିକ ଭାବେ ଅନଲକ୍ କରନ୍ତୁ, ତା'ପରେ Team
-status_server_set_pin	ସର୍ଭର ମୋଡ୍ — ମାଲିକ PIN ସେଟ୍ କରନ୍ତୁ
-status_server_tills	ସର୍ଭର ମୋଡ୍ — ଅତିରିକ୍ତ ଟିଲ୍ ଯୋଗ ଦେଇପାରିବେ। ଅନଲକ୍ କରନ୍ତୁ
-status_server_unlock	ସର୍ଭର ମୋଡ୍ — ମାଲିକ ଭାବେ ଅନଲକ୍ କରନ୍ତୁ
-status_client_unlock	କ୍ଲାଏଣ୍ଟ ମୋଡ୍ — ବିକ୍ରୟ ପାଇଁ ଅନଲକ୍ କରନ୍ତୁ
 icon_new_selected	ଆଇକନ୍: ନୂଆ ଫାଇଲ୍ ବଛାଗଲା — ବ୍ରାଣ୍ଡ ସଂରକ୍ଷଣ କରନ୍ତୁ ଦବାନ୍ତୁ
 icon_custom	ଆଇକନ୍: ଆପଣଙ୍କ ଦୋକାନ ଚିହ୍ନ
 icon_default	ଆଇକନ୍: Kumkaj ଚିହ୍ନ (ଡିଫଲ୍ଟ) — ନିଜର ବାଛନ୍ତୁ

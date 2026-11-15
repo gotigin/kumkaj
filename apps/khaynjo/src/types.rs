@@ -218,6 +218,10 @@ enum PayChoice {
     Split,
 }
 
+/// `SuggestRow::subtitle` of a printer checklist's only row when no printer
+/// is saved: drawn as a Find printers button (`FindItem`), never a checkbox.
+const FIND_PRINTERS_ROW: &str = "@find_printers";
+
 /// A field whose value is usually something the shop already has. Each
 /// has a [`SuggestList`] right under its input (see `suggest.rs`).
 #[derive(Clone, Copy, PartialEq, Eq, Debug)]
@@ -467,6 +471,20 @@ impl SuggestField {
 
     /// A list that its own chrome opens (a dropdown button, or always shown
     /// while its owner is selected) — never a tap or typing in a field.
+    /// A checklist of this device's saved printers (bill, kitchen station,
+    /// test page / KOT, assign). With none saved its one row is a Find
+    /// printers button that opens the Printers sheet (owner 2026-11-14).
+    fn is_printer_pick(self) -> bool {
+        matches!(
+            self,
+            SuggestField::PrinterAssign
+                | SuggestField::StationVps
+                | SuggestField::BillPrinters
+                | SuggestField::TestPrinters
+                | SuggestField::KotTestPrinters
+        )
+    }
+
     fn opens_by_chrome(self) -> bool {
         self.opener().is_some() || self == SuggestField::TeamKotStations
     }
@@ -913,8 +931,6 @@ enum Screen {
     Credit,
     Team,
     Settings,
-    /// Settings → Sidebar: order + show/hide chrome peers.
-    SidebarSettings,
     DayClose,
     Reports,
     Inventory,
@@ -939,6 +955,21 @@ enum NavTab {
     Team,
     Settings,
     Lock,
+    // Settings sections are nav items too (owner, 2026-11-15): one list on
+    // Settings, each can be shown on the rail / bottom bar and reordered.
+    SetLanguage,
+    SetCountry,
+    SetTills,
+    SetBrand,
+    SetUnits,
+    SetPickers,
+    SetPrinters,
+    SetBill,
+    SetSelling,
+    SetAlerts,
+    SetBackup,
+    SetDiag,
+    SetPrivacy,
 }
 
 /// Bank-books sub-selection on the Reports screen (highlight must match body text).
@@ -951,9 +982,25 @@ enum BooksReportKind {
     BalanceSheet,
 }
 
-/// Default sidebar / bottom-bar arrangement (matches the DSL slot order).
-/// Team is Settings → Team (not a chrome peer).
-const NAV_TABS: [NavTab; 14] = [
+/// Every nav item in its default order — the Settings list and the rail /
+/// bottom bar (slots are positions; which tab a slot shows comes from
+/// `AppState.nav_order`). Settings sections come first, as on the Settings
+/// list; they start hidden on the bars ([`nav_tab_default_hidden`]).
+const NAV_TABS: [NavTab; 28] = [
+    NavTab::SetLanguage,
+    NavTab::SetCountry,
+    NavTab::SetTills,
+    NavTab::SetBrand,
+    NavTab::SetUnits,
+    NavTab::SetPickers,
+    NavTab::SetPrinters,
+    NavTab::SetBill,
+    NavTab::SetSelling,
+    NavTab::Team,
+    NavTab::SetAlerts,
+    NavTab::SetBackup,
+    NavTab::SetDiag,
+    NavTab::SetPrivacy,
     NavTab::Books,
     NavTab::Sell,
     NavTab::Buy,
@@ -969,6 +1016,76 @@ const NAV_TABS: [NavTab; 14] = [
     NavTab::Settings,
     NavTab::Lock,
 ];
+
+/// The Settings section a nav item opens (`None` for screens).
+fn nav_tab_settings_panel(tab: NavTab) -> Option<&'static str> {
+    Some(match tab {
+        NavTab::SetLanguage => "language",
+        NavTab::SetCountry => "country",
+        NavTab::SetTills => "tills",
+        NavTab::SetBrand => "brand",
+        NavTab::SetUnits => "units",
+        NavTab::SetPickers => "pickers",
+        NavTab::SetPrinters => "printers",
+        NavTab::SetBill => "bill",
+        NavTab::SetSelling => "selling",
+        NavTab::SetAlerts => "alerts",
+        NavTab::SetBackup => "backup",
+        NavTab::SetDiag => "diag",
+        NavTab::SetPrivacy => "privacy",
+        _ => return None,
+    })
+}
+
+/// The nav item for a Settings section.
+fn nav_tab_for_settings_panel(panel: &str) -> Option<NavTab> {
+    NAV_TABS
+        .iter()
+        .copied()
+        .find(|t| nav_tab_settings_panel(*t) == Some(panel))
+}
+
+/// Settings sections (and Team) start hidden on the rail / bottom bar, so a
+/// shop's bars look as before until the owner switches one on.
+fn nav_tab_default_hidden(tab: NavTab) -> bool {
+    tab == NavTab::Team || nav_tab_settings_panel(tab).is_some()
+}
+
+/// Locale key of a nav item's label (rail, bottom bar, Settings list).
+/// `my_pin_only`: Team reads "My PIN" for staff who manage only their own.
+fn nav_tab_label_key(tab: NavTab, my_pin_only: bool) -> &'static str {
+    match tab {
+        NavTab::Books => "books",
+        NavTab::Sell => "sell",
+        NavTab::Buy => "buy",
+        NavTab::Menu => "sidebar_menu_items",
+        NavTab::Floor => "floor",
+        NavTab::Kitchen => "kitchen",
+        NavTab::Sales => "sales",
+        NavTab::DayClose => "day_close",
+        NavTab::Reports => "nav_reports",
+        NavTab::Inventory => "inventory",
+        NavTab::Branches => "branches",
+        NavTab::Credit => "credit",
+        NavTab::Team if my_pin_only => "my_pin_settings",
+        NavTab::Team => "team_pins",
+        NavTab::Settings => "nav_settings",
+        NavTab::Lock => "nav_lock",
+        NavTab::SetLanguage => "settings_sec_language",
+        NavTab::SetCountry => "settings_sec_country",
+        NavTab::SetTills => "settings_sec_tills",
+        NavTab::SetBrand => "settings_sec_brand",
+        NavTab::SetUnits => "settings_sec_units",
+        NavTab::SetPickers => "settings_sec_pickers",
+        NavTab::SetPrinters => "settings_sec_printers",
+        NavTab::SetBill => "settings_sec_bill",
+        NavTab::SetSelling => "settings_sec_selling",
+        NavTab::SetAlerts => "settings_sec_alerts",
+        NavTab::SetBackup => "settings_sec_backup",
+        NavTab::SetDiag => "settings_sec_diag",
+        NavTab::SetPrivacy => "settings_sec_privacy",
+    }
+}
 
 fn nav_tab_key(tab: NavTab) -> &'static str {
     match tab {
@@ -987,6 +1104,19 @@ fn nav_tab_key(tab: NavTab) -> &'static str {
         NavTab::Team => "team",
         NavTab::Settings => "settings",
         NavTab::Lock => "lock",
+        NavTab::SetLanguage => "set_language",
+        NavTab::SetCountry => "set_country",
+        NavTab::SetTills => "set_tills",
+        NavTab::SetBrand => "set_brand",
+        NavTab::SetUnits => "set_units",
+        NavTab::SetPickers => "set_pickers",
+        NavTab::SetPrinters => "set_printers",
+        NavTab::SetBill => "set_bill",
+        NavTab::SetSelling => "set_selling",
+        NavTab::SetAlerts => "set_alerts",
+        NavTab::SetBackup => "set_backup",
+        NavTab::SetDiag => "set_diag",
+        NavTab::SetPrivacy => "set_privacy",
     }
 }
 
@@ -1009,6 +1139,19 @@ fn nav_tab_icon_bytes(tab: NavTab) -> &'static [u8] {
         NavTab::Team => include_bytes!("../resources/nav/team.webp").as_slice(),
         NavTab::Settings => include_bytes!("../resources/nav/settings.webp").as_slice(),
         NavTab::Lock => include_bytes!("../resources/nav/lock.webp").as_slice(),
+        NavTab::SetLanguage => include_bytes!("../resources/settings/language.webp").as_slice(),
+        NavTab::SetCountry => include_bytes!("../resources/settings/country.webp").as_slice(),
+        NavTab::SetTills => include_bytes!("../resources/settings/tills.webp").as_slice(),
+        NavTab::SetBrand => include_bytes!("../resources/settings/brand.webp").as_slice(),
+        NavTab::SetUnits => include_bytes!("../resources/settings/units.webp").as_slice(),
+        NavTab::SetPickers => include_bytes!("../resources/settings/pickers.webp").as_slice(),
+        NavTab::SetPrinters => include_bytes!("../resources/settings/printers.webp").as_slice(),
+        NavTab::SetBill => include_bytes!("../resources/settings/bill.webp").as_slice(),
+        NavTab::SetSelling => include_bytes!("../resources/settings/selling.webp").as_slice(),
+        NavTab::SetAlerts => include_bytes!("../resources/settings/alerts.webp").as_slice(),
+        NavTab::SetBackup => include_bytes!("../resources/settings/backup.webp").as_slice(),
+        NavTab::SetDiag => include_bytes!("../resources/settings/diag.webp").as_slice(),
+        NavTab::SetPrivacy => include_bytes!("../resources/settings/privacy.webp").as_slice(),
     }
 }
 

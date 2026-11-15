@@ -41,7 +41,7 @@ remove	Прибрати
 removed_items	Прибрані позиції
 removed_help	Відновити повертає позицію в меню такою, як була — ціна, фото й категорія. Наша полиця страв ніколи не видаляється, тож страву завжди можна додати знову.
 restore_item	Відновити
-empty_catalog	Страв ще немає. Відкрийте Меню, додайте страву (назва + ціна), потім прийміть замовлення.
+empty_catalog	Страв ще немає.
 total	Разом
 cash	Готівка
 upi	UPI
@@ -103,23 +103,14 @@ bill_item_qty	К-сть
 bill_item_price	Ціна
 bill_item_amount	Сума
 bill_item_note	Нотатка страви
-bill_item_col_gap	Проміжок стовпців
 bill_item_col_order	Порядок стовпців
 bill_item_col_sep	Лінії стовпців
-bill_item_gap_tight	Щільно
-bill_item_gap_comfort	Зручно
-bill_item_gap_wide	Широко
-bill_item_num_width	Числові стовпці
-bill_item_num_compact	Компактно
-bill_item_num_comfort	Зручно
-bill_item_num_wide	Широко
-bill_item_num_align	Вирівнювання чисел
-bill_item_gap_em	Проміжок (em)
-bill_item_qty_min	К-сть мін (em)
-bill_item_price_min	Ціна мін (em)
-bill_item_amount_min	Сума мін (em)
-kot_item_qty_width	Стовпець кількості
-kot_item_num_align	Вирівнювання кількості
+slip_columns	Стовпці
+slip_col_width	Ширина (mm)
+slip_col_start	Відступ на початку (px)
+slip_col_end	Відступ у кінці (px)
+slip_col_align	Вирівнювання тексту
+slip_columns_help	Ширина кожного стовпця містить його відступи на початку й у кінці. Текст переноситься всередині свого стовпця; усе, що виходить за ширину вмісту, обрізається — на папері й у попередньому перегляді.
 bill_total_qty_label	Підпис загальної кількості
 bill_total_subtotal_label	Підпис проміжного підсумку
 bill_total_grand_label	Підпис загальної суми
@@ -221,7 +212,6 @@ sidebar_order_saved	Порядок бічної панелі збережено
 sidebar_visibility_saved	Видимість бічної панелі збережено
 amounts_hide	Сховати
 amounts_show	Показати
-printers_none_hint	Спочатку збережіть принтер на цьому пристрої, потім додайте його до Рахунку або кухні
 counter	Стійка
 dine_in	У залі
 takeaway	З собою
@@ -328,8 +318,6 @@ selected_language	Вибрано
 continue	Далі
 this_device	ЦЕЙ ПРИСТРІЙ
 device_use_q	Як використовуватиметься цей пристрій?
-last_server_mode	Був Сервером — торкніться, щоб продовжити
-last_client_mode	Був Клієнтом — торкніться, щоб продовжити
 choose_server	Оберіть сервер
 choose_server_hint	Відкрийте наявний сервер або створіть новий для іншого бізнесу.
 create_new_server	Створити новий сервер
@@ -391,7 +379,7 @@ attachments_last_expense	Вкладення (остання витрата)
 bank	Банк
 bank_in	Надходження в банк
 bank_out	Витрата з банку
-bank_reconciliation	Звірка банку (позначте проти виписки)
+bank_reconciliation	Звірка банку
 bank_to_till	Банк → каса
 book_add_dish	Книга — додати страву / позицію
 book_opening_credit	Книга — початковий кредит
@@ -744,7 +732,6 @@ station_print_pick_first	Спочатку оберіть станцію кухн
 station_print_editing	Редагування принтерів для «{name}»
 station_vps_dd	Принтери цієї станції
 station_vps_dd_n	{n} принтер(ів) · торкніться, щоб змінити
-station_vps_empty	Принтерів ще немає — Знайдіть їх у Налаштування → Принтери
 bill_printers_dd	Принтери для рахунку
 bill_printers_dd_n	{n} принтер(ів) для рахунку · торкніться, щоб змінити
 job_layout	Макет
@@ -889,7 +876,7 @@ net_word	Нетто
 offline_badge	ОФЛАЙН
 optional_login_help	Необов'язковий вхід (ідентифікатор + пароль). Власник задає один раз; пароль пізніше може змінити лише користувач.
 or_unlock_login	Або розблокуйте ідентифікатором входу + паролем
-permission_preset	Посада (задає екрани й грошові дії)
+permission_preset	Посада
 preset_help_khaynjo	Касир: продає. Менеджер: продає + позиції + анулювання/виправлення.
 product_locked_khaynjo	Khaynjo
 product_only_khaynjo	Цей застосунок лише Khaynjo — операційна система ресторану. Інші галузі виходять як окремі продукти Kumkaj.
@@ -961,10 +948,6 @@ pin_hint_paired	Додаткову касу з'єднано — розблоку
 pin_hint_pair_first	Додаткова каса — спочатку з'єднайте з пристроєм крамниці
 unlock_to_continue	Розблокуйте, щоб продовжити
 no_staff_yet	Персоналу ще немає — розблокуйте як Власник, потім Команда
-status_server_set_pin	Режим сервера — задайте PIN власника
-status_server_tills	Режим сервера — додаткові каси можуть приєднатися. Розблокувати
-status_server_unlock	Режим сервера — розблокуйте як Власник
-status_client_unlock	Режим клієнта — розблокуйте, щоб продавати
 icon_new_selected	Значок: вибрано новий файл — торкніться Зберегти бренд
 icon_custom	Значок: власний знак закладу
 icon_default	Значок: знак Kumkaj (типовий) — оберіть власний
@@ -1033,7 +1016,7 @@ book_kind_balance	Баланс
 order_help	Торкніться позиції, щоб додати її.
 floor_help	Торкніться столу, щоб прийняти або змінити замовлення. Кольори показують вільний → сидить → кухня → готово → їсть → рахунок → сплачено. Лист очікування, бронювання й додавання столів — у розділах нижче.
 kitchen_help	Кухонні талони (KOT), найновіший унизу. Почати → Готово → Зроблено просуває талон. Талони ніколи не показують ціни.
-kitchen_empty	Відкритих талонів немає. KOT, надісланий із Замовлення або Залу, з'являється тут.
+kitchen_empty	Відкритих талонів немає.
 add_a_table	Додати стіл
 add_station_heading	Додати станцію кухні
 categories_help	Торкніться Використати, щоб віднести позицію вище до цієї категорії. Фото дає категорії зображення; без нього показуються ініціали.
@@ -1131,7 +1114,6 @@ bill_format_help	Друкується під назвою ресторану н�
 bill_header_ph	Адреса | телефон
 fssai_ph	Номер ліцензії FSSAI (Індія)
 bill_footer_ph	Підвал (напр. Дякуємо, приходьте ще)
-save_bill_format	Зберегти формат рахунку
 reset_bill_format	Повернути типове
 bill_format_reset	Формат рахунку повернуто до типового
 reset_kot_format	Повернути типове
@@ -1201,13 +1183,11 @@ kot_copies_3	3
 kot_title_ph	Заголовок (порожньо = KOT - KITCHEN ORDER)
 kot_footer_ph	Нотатка кухні (необов'язково, без цін)
 kot_preview	Попередній перегляд
-save_kot_format	Зберегти формат KOT
 test_kot_format	Тестовий KOT
 test_kot_sent	Попередній перегляд кухонного талона надіслано
 test_bill_format	Тестовий рахунок
 test_bill_sent	Попередній перегляд рахунку надіслано
 test_print_no_printer	Немає принтера для цього завдання — оберіть один на цьому екрані
-kot_format_saved	Формат KOT збережено
 std_print	Розмір друку рахунку
 std_print_help	Кегль для стандартних завдань рахунку Книжкова й Альбомна на принтерах ОС / документа (впишіть пункти — не Малий/Звичайний/Великий). Той самий розмір в обох орієнтаціях. Розміри кухонного талона — на вкладці KOT.
 std_size_s	Малий
@@ -1264,7 +1244,6 @@ new_items_head	Ще не надіслано
 price_ph	Ціна
 price_ph_gst_inside	Ціна ({tax} у ціні)
 cancel_needs_table	Відкрийте це замовлення із Залу (стіл), щоб скасувати після того, як кухня його має — KOT стійки лишаються на талоні, доки ви не приймете оплату
-tax_rates_missing_hint	Немає ставки {tax} на цих стравах — у Меню задайте ставку податку (ціни вже включають {tax} під {tax} у ціні)
 taxable_value	База оподаткування
 gst_inside_price_note	({tax} у ціні)
 start_with_template	Почати з нашого шаблону меню
@@ -1318,9 +1297,7 @@ order_empty_pick	Замовлення порожнє — торкніться Д
 add_dishes	Додати страви
 order_so_far	У цьому замовленні: {n} · {total}
 no_dish_match	Жодна страва не збігається з «{q}»
-pick_dishes_help	Торкніться страви, щоб додати · оберіть категорію, щоб звузити список
 pick_done	Готово
-pick_done_dd	Готово · {label}
 printer_route_mode	Якщо на цьому місці кілька принтерів
 printer_mode_first	Перший, що спрацює
 printer_mode_all	Друкувати на всіх

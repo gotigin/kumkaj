@@ -1,5 +1,4 @@
 # Japanese — 日本語 (ja). One key<TAB>text per line, in en() order; keep {placeholders}.
-app_tagline	薬局カウンター: 薬、バッチ、カタ、書籍。オフラインでは無料。
 barcode_ph	バーコード/EAN
 composition_ph	塩・成分（検索可能）
 schedule_h_off	スケジュール H — オフ (所有者フラグ)
@@ -13,7 +12,6 @@ expiry_alerts	有効期限切れアラート (今後 7 日間)
 expiry_none	今後 7 日間に期限切れになるバッチはありません。
 rx_nudge	所有者フラグ付き Rx / スケジュール H — 必要に応じてメモを追加します。
 unlock	ロック解除
-pin_hint	オーナーPINは0000から始まります
 sell	販売
 buy	仕入
 books	日次帳簿
@@ -32,17 +30,13 @@ reports_month	損益（月）
 reports_aging	未収／Dr-Cr
 reports_balance_sheet	貸借対照表
 reports	レポート
-refresh	更新
 undo	元に戻す
-start_tracking	在庫管理開始
 stock_minus	− 在庫
 stock_plus	+ 在庫
 settle_cash	現金で精算
 settle_card	カードで精算
 items	薬品
 nav_items	薬品
-more	その他
-your_items	あなたの薬品
 items_help	項目をタップして編集します。新しいアイテムはフォームをクリアします。名前またはショートコードで検索し、価格を設定して (0 で問題ありません)、追加します。すでに記録されている売上には、請求された名前がそのまま残ります。
 add_item	品目を追加
 new_item	新しい品目
@@ -53,28 +47,22 @@ remove	削除
 removed_items	削除した品目
 removed_help	復元では、価格、写真、カテゴリなど、アイテムを元の状態に正確に戻します。
 restore_item	復元
-empty_catalog	まだ薬品がありません。薬品を開き、名前・バーコード・成分を入れて販売します。
+empty_catalog	まだ薬品がありません。
 total	合計
 cash	現金
 upi	UPI
 card	カード
 credit	取引先
 clear	クリア
-ready_to_sell	受付準備OK
 today_prefix	今日
-today_mid	今日
 owed	未収
-round_word	端数
 back	戻る
 sold_out	売切
 restock	再入荷
 not_tracked	未管理
 in_stock	在庫
 marked_sold_out	売切表示
-add_upper	追加
-na	なし
 qty	数量
-unit_at	単価
 actual	実際
 applied	適用
 note_ph	メモ（任意）
@@ -93,21 +81,13 @@ bill_item_qty	数量
 bill_item_price	単価
 bill_item_amount	金額
 bill_item_note	受信/販売メモ
-bill_item_col_gap	列の間隔
 bill_item_col_order	列の順
 bill_item_col_sep	列の罫線
-bill_item_gap_tight	狭い
-bill_item_gap_comfort	ゆったり
-bill_item_gap_wide	広い
-bill_item_num_width	数値列
-bill_item_num_compact	詰めて
-bill_item_num_comfort	ゆったり
-bill_item_num_wide	広い
-bill_item_num_align	数値の揃え
-bill_item_gap_em	間隔 (em)
-bill_item_qty_min	数量の最小 (em)
-bill_item_price_min	単価の最小 (em)
-bill_item_amount_min	金額の最小 (em)
+slip_col_width	幅 (mm)
+slip_col_start	先頭の余白 (px)
+slip_col_end	末尾の余白 (px)
+slip_col_align	文字揃え
+slip_columns_help	各列の幅には先頭と末尾の余白が含まれます。文字は列の中で折り返し、内容の幅からはみ出した部分は用紙でもプレビューでも切り取られます。
 bill_total_qty_label	合計数量ラベル
 bill_total_subtotal_label	小計ラベル
 bill_total_grand_label	合計ラベル
@@ -120,11 +100,7 @@ bill_total_qty	合計数量
 bill_total_subtotal	小計
 bill_total_grand	合計
 kot_unassigned	未割り当て
-pos_tab_items	追加済み
-pos_tab_payment	支払い
-settings_hub_title	設定
 settings_hub_help	一度に一つの項目を開きます — スクロールが減り、選びやすくなります。
-settings_back	戻る
 settings_sec_language	言語と通貨
 settings_sec_country	国と税
 settings_sec_tills	追加レジと支店
@@ -166,35 +142,17 @@ diag_cleared	デバッグログがクリアされました
 sidebar_settings	サイドバー
 sidebar_settings_help	サイドレールと同じアイコン。行をドラッグして順序を変更します。スイッチを切り替えて表示または非表示にします。設定とロックは常にバーに表示されます。
 sidebar_always_on_short	常時表示
-sidebar_back_settings	戻る
-sidebar_shown	表示中
-sidebar_hidden	非表示
-sidebar_always_on	バー常時表示
-sidebar_shown_hint	サイドレールまたは下部タブに表示
-sidebar_hidden_hint	バーから非表示
 sidebar_menu_items	品目
 sidebar_enable_all	すべて有効化
 sidebar_disable_all	すべて無効化
 sidebar_order_saved	サイドバーの注文が保存されました
 sidebar_visibility_saved	サイドバーの表示設定が保存されました
-amounts_hide	非表示
-amounts_show	表示
-printers_none_hint	まずプリンターをこのデバイスに保存してから、請求書またはセクションに追加します
-counter	カウンター
-dine_in	カウンター
-takeaway	テイクアウト
-order	注文
 sales	売上
-sales_refunds	売上と返金
 day_close	日次締め
 reports_expenses	レポートと経費
 nav_reports	レポート
 nav_settings	設定
 nav_lock	ロック
-no_sale_yet	まだ売上なし
-favorites	お気に入り
-favorites_help	よく売るアイテムを、あなたのログイン用に保存。一つを請求に追加するか、下の全アイテムからリストを作成してください。
-your_favorites	あなたのお気に入り
 all_items	すべてのアイテム
 frequent	よく出す
 added_items	追加済み
@@ -211,8 +169,6 @@ zero_sales_on	ゼロ売上: オン
 zero_sales_off	ゼロ売上: オフ
 zero_sales_saved_on	ゼロ売上許可を保存しました（オン）
 zero_sales_saved_off	ゼロ売上許可を保存しました（オフ）
-no_favorites	お気に入りはまだありません — 下のリストからアイテムを追加してください。
-add_to_bill	請求に追加
 added	追加済み
 owes_word	未払い
 selected_word	選択済み
@@ -221,19 +177,11 @@ chip_missing_customer	選択した顧客が見つかりません — 選び直�
 chip_no_customer	顧客はまだいません — 名前を入力して「掛け」をタップ
 credit_summary_fmt	{} 顧客 · 未精算 {} · 前払い {}
 recent_label	最近:
-start_order	注文を開始
-open_bill	請求を開く
-collect_payment	支払いを受け取る
-payment_pending	支払い待ち
-collect_at_counter	カウンターで受け取る
 inventory	在庫
-inventory_stock	在庫と棚卸
 branches	店舗
-branches_org	店舗と組織
 credit_customers	掛売客
 customer_name_ph	取引先名
 new_customer_ph	新規取引先名
-item_name_ph	品目名（例：Masala Dosa）
 item_price_ph	価格
 start_template	商品
 team	チーム
@@ -241,17 +189,11 @@ team_pins	チームとPIN
 my_pin_settings	自分のPIN
 settings_hub_help_my_pin	この端末にサインイン中の人の解除PINを変更します。
 team_self_help	解除PIN（と任意のログインパスワード）は本人だけが変更できます。別の画面や権限が必要ならオーナーに頼んでください。
-backup_settings	バックアップと設定
-lock_app	ロック
 pick	選ぶ
-select	選択
 advance	進める
 owner	オーナー
 staff	スタッフ
 photo	写真
-auto	自動
-prev	前へ
-next	次へ
 ok	OK
 this_shop	サーバーモード
 extra_till	クライアントモード
@@ -260,17 +202,13 @@ server	サーバー
 client	クライアント
 language_currency	言語と通貨
 language	言語
-choose_language	言語を選んでください
 language_setup_hint	この端末の言語に従うか、自分で選んでください。
 lang_follow_platform	端末の言語を使う
 lang_pick_user	選んだ言語を使う
 lang_platform_now	現在の端末の言語
 selected_language	選択中
-continue	続ける
 this_device	この端末
 device_use_q	この端末はどう使いますか？
-last_server_mode	前回はサーバー — タップして続行
-last_client_mode	前回はクライアント — タップして続行
 choose_server	サーバーを選ぶ
 choose_server_hint	この端末にはサーバーがあります。1つ開くか、別の事業用に新規作成してください。
 create_new_server	新規サーバー作成
@@ -280,12 +218,6 @@ server_remove_pin_ph	削除する Owner PIN
 only_owner_remove_server	サーバーを削除できるのは Owner のみ
 owner_pin_remove_server	このサーバーを削除するには Owner PIN が必要です
 device_setup_help	サーバーはここに帳簿を保存します。クライアントはサーバーとペアリングします。
-app_template_heading	スターターカタログ（オプション）
-app_template_blurb	サンプルカタログをロードします。所有者 Zahir (zahir)、管理者 Asif (asif、PIN 1111)、レジ担当者 Nawaz (nawaz、PIN 0000)。税金/GST オフ。フロントサイドバー;履歴は 4 時間後に消去されます (バックアップでは今すぐ消去されます)。今日は脱いでください。コンパクトな紙幣 + 狭いトレイ用の標準マージン。税金とサイドバーのピアは、[設定] で再度オンにできます。
-app_template_apply	スターターカタログを適用する
-app_template_skip	後ほどスキップします
-app_template_status	サーバー準備完了 — スターター カタログを適用するか、スキップします
-app_template_importing	{title} を適用中…
 currency	通貨
 backup	バックアップ
 use	使う
@@ -319,7 +251,7 @@ attachments_last_expense	添付（前回の経費）
 bank	銀行
 bank_in	銀行へ入金
 bank_out	銀行から出金
-bank_reconciliation	銀行照合（明細とチェック）
+bank_reconciliation	銀行照合
 bank_to_till	銀行→レジ
 book_add_dish	ブック — アイテム/アイテムを追加
 book_opening_credit	受付 — 期首の掛け
@@ -349,9 +281,6 @@ share_whatsapp	WhatsAppで共有
 lan_pages_heading	Wi‑Fi 上の顧客ページ
 lan_pages_help	このショップの Wi-Fi では、顧客ページが表示ボードとフィードバックとして機能します。モバイル データを使用している人は、後でクラウドが必要になります。カード端末または支払いリンクはオプションであり、カウンターをブロックすることはありません。
 diag_send_heading	この端末の外へ共有
-optional_login_heading	任意のログイン
-rights_heading	権限
-ops_panel	ローカル業務
 crm_heading	お客様とメッセージ
 crm_help	誕生日・ポイント。SMS/WhatsApp待ち。{name}・{points}。店主が送信。
 crm_queue_sms	SMSをキュー
@@ -376,21 +305,17 @@ till_wallet_topup_ph	ウォレット入金額
 till_voucher_issue_amt_ph	新規バウチャー金額
 till_voucher_issue_code_ph	新規バウチャーコード
 bulk_price_apply	一括価格を適用
-card_terminal_optional	カード端末／支払いリンク（ネットがあれば任意）
 copy_report	レポートをコピー
 counted_cash_ph	レジ内の実査現金
 country_tax	国と税
 create_backup	バックアップ作成
 credit_limit_heading	与信限度（選択／指定の取引先）
-day_close_summary	日次締め概要
 delete_party	選択した取引先を削除
-delivery	デリバリー
 done_open_books	完了 — 帳簿を開く
 drawer_count	レジ実査（任意）
 expense_heading	経費
 export_day	当日分をエクスポート
 extra_note_bill_ph	この請求／売上への追加メモ
-extra_note_expense_ph	前回の経費への追加メモ
 extra_tills_heading	追加レジ
 other_devices_help_heading	他のデバイスを設定
 other_devices_help	このデバイス (サーバー) 上: 他のデバイス → 追加のレジを許可します。ペアリング コードと Wi-Fi アドレスをメモします。表示された場合は、「他のデバイスの接続を許可」をタップします。コンピューターで、「このコンピューターで開始」をタップします。他の各デバイスで: アプリをインストールし、クライアント モードを選択し、ショップのサーバーを検索 (またはアドレスを入力) し、ペアリング コードを入力し、今すぐペアリングします。 Wi-Fi が切断された場合、注文はデバイス上で待機し、サーバーが再び応答すると注文は開始されます。追加のプリンターはサーバー上に設定されます ([設定] → [プリンター])。追加のレジはそこに請求書を送信します。
@@ -404,7 +329,6 @@ login_id_ph	ログインID
 mark_cleared	クリア済みにする
 new_party_clear	新規取引先（フォームをクリア）
 new_party_kind_supplier_ph	新規取引先の種類（仕入先）
-next_country	次の国
 next_order	次の注文（受付をクリア）
 note_gstin_ph	メモ／GSTIN／契約リマインダー
 notes_attach_party	メモと添付（選択した取引先）
@@ -422,8 +346,6 @@ pay_ap_cash	APを現金で払う
 pay_ap_heading	当社が支払う分（AP）
 pay_ap_upi	APをUPIで払う
 pay_selected_heading	選択分を支払い（債務精算／前受）
-pick_from_items	当店の品目から選ぶ
-prev_country	前の国
 print_open	印刷／開く
 reason_amend_ph	修正／取消／返金の理由
 reason_note_ph	理由／メモ（廃棄、棚卸…）
@@ -447,14 +369,10 @@ history_after_hours	営業時間後
 history_hours_ph	時間数（1–168、デフォルト 4）
 history_hours_save	時間を保存
 history_clear_now	今すぐ履歴をクリア
-history_cleared	取引履歴がクリアされました — セットアップは保持されています
-history_retention_saved	履歴のクリア設定が保存されました
 history_hours_saved	履歴時間の設定が保存されました
-history_owner_only	履歴をクリアするには所有者または管理者のみが許可されます
 rollup	集計
 save_brand	ブランドを保存
 save_business_id	事業者IDとサービス%を保存
-save_business_name	事業者名を保存
 save_features	選択したスタッフの機能を保存
 save_features_named	{name} を保存
 save_features_ok	{name} の設定を保存しました
@@ -485,7 +403,6 @@ copy_pair_code	ペアリングコードをコピー
 new_pair_code	新しいペアリングコード
 pair_finishing	ペアリング完了中… 店舗の帳簿を適用しています
 pair_opening	レジを開いています…
-pair_copied	ペアリングコードをコピーしました
 lan_offline_waiting	オフライン · {n} 件待機中
 lan_connecting	店に接続中…
 lan_live	ライブ
@@ -499,7 +416,6 @@ firewall_waiting	管理者の確認を待っています…
 lan_join_help	ほかのデバイスをこの端末につなげられます — ペアリングコード {code}。もう一方のデバイスでクライアントモードを選び、「店のサーバーを探す」を押すか、このアドレスを入力: {addr}
 lan_pair_status	Wi‑Fi {addr}
 lan_join_help_no_addr	アドレスを設定するには、このデバイスを Wi‑Fi に接続してください
-lan_no_address	このデバイスにはまだ Wi‑Fi アドレスがありません — 店の Wi‑Fi に接続してください。
 lan_not_listening	現在デバイスを受け付けていません — 別のプログラムがポート {port} を使っている可能性があります。アプリを再起動してください。
 lan_tills_off	追加レジはオフです。この店の帳簿はこのデバイスにあります。別のデバイスでも注文や会計をするなら、追加レジを許可してください。
 paired_with	{url} の店とペアリング済み
@@ -520,41 +436,21 @@ printers_help	プリンターを検索し、プリンターをタップして選
 printers_host_only	プリンターは店舗端末（サーバー）に設置されます。これにより、請求書と古いチケットがそこに送信されるまで、サーバー上で検索/追加/割り当てが行われます。テスト ページと請求書の印刷サイズはサーバーに送信されます。
 printers_find_heading	プリンター
 printers_find_tip	検索はこの端末をスキャンして一覧を更新します。システムプリンターが先；ネットワークスキャンはバックグラウンドで続くことがあります。
-printers_pool_heading	1. お使いのプリンター
-printers_pool_tip	検索はこの端末をスキャンして一覧を更新します。
 printers_pool_empty	(まだありません — 下で追加)
-printers_routes_help	オペレーティング システムがすでに認識しているプリンターを検索します。請求書と伝票形式で請求書と各セクションに割り当てます。
 printer_assign_dd	{place} のプリンターを選ぶ
 printer_assign_pick	実プリンターを選択
 printer_profile_heading	レイアウト
 vp_delivery_heading	配信
 vp_delivery_help	この仮想プリンターがジョブを送信する方法 (OS ドキュメント、生バイト、または ESC/POS)。伝票内容（活字サイズ、折り返し、余白）は、ここではなく請求書・伝票フォーマットにより決定されます。
-vp_type_size_heading	文字サイズ
-vp_wrap_heading	折り返し幅
-vp_margin_heading	余白
 vp_delivery_spooler	OS文書（システムスプーラー）
 vp_delivery_raw	デバイスへ生バイト
 vp_delivery_escpos	ESC/POSサーマルコマンド
 virtual_printer_new	新しい仮想プリンター
 virtual_printer_selected	「{name}」を編集中 — 一覧の別項目をタップして切替
-virtual_printer_tap_list	一覧の仮想プリンターをタップして編集
 config_layout_portrait	縦
 config_layout_landscape	横
 config_send_os	システムスプーラー
 config_send_escpos	ESC/POS
-profiles_heading	プリンター
-profiles_empty	プリンター
-profile_builtin	内蔵
-profile_custom	カスタム
-profile_name_ph	プリンター
-profile_new	プリンター
-profile_delete	プリンター
-profile_created	プリンター
-profile_deleted	プリンター
-profile_builtin_keep	プリンター
-config_saved	更新しました
-config_selected	「{name}」を選択
-printer_output_heading	仮想プリンター
 virtual_printers_heading	仮想プリンター
 virtual_printers_empty	仮想プリンターはまだありません — 下で値を設定して保存。いくつかできたら一覧をタップして編集。
 virtual_printer_name_ph	仮想プリンター名（任意）
@@ -566,71 +462,32 @@ virtual_printer_deleted	仮想プリンター「{name}」を削除しました
 virtual_printer_updated	仮想プリンターを更新しました
 virtual_printer_updated_named	仮想プリンター「{name}」を更新しました
 virtual_draft_layout	次の仮想プリンター用の値を設定しました
-virtual_draft_send	次の仮想プリンター用の値を設定しました
 virtual_need_real	先に実プリンターを選択してください
 virtual_need_select	削除する仮想プリンターを選択してください
 real_printer_selected	実プリンター: {name}
-printers_routes_heading	2. 印刷先
-route_pick_heading	場所
 route_editing	編集：{name}
-route_assigned	{printer} を {place} に追加しました
-route_already_assigned	この場所に既に: {printer}
 route_cleared	{name} をクリアしました
-route_assigned_empty	この場所にはありません
-route_tap_select	タップして選択
 route_tap_selected	選択済み
-route_pick_printer_first	先にプリンターをタップ
-route_assigned_heading	プリンター
-route_add_heading	割り当て
-printer_label_ph	名前 (例: カウンタープリンター)
 printer_target_ph	アドレスまたはシステム名
 printer_target_default	默认プリンター
-printer_wire_heading	形式
-printer_wire_escpos	KOT
-printer_wire_os	標準縦
-printer_wire_os_portrait	標準縦
-printer_wire_os_landscape	標準横
-printer_wire_escpos_short	KOT
-printer_wire_os_short	縦
-printer_wire_os_landscape_short	横
-printer_format_custom	新しいカスタム形式
-printer_format_custom_label	カスタム
-printer_format_custom_added	このルートにカスタム形式を追加しました
-add_printer	プリンターを追加
-route_pick_ph	請求書または調剤セクション
 route_bill	伝票
-route_dont_print	印刷しない
 station_print_pick_first	まず調剤セクションを選択してください
-station_vps_empty	まだプリンターがありません — 設定 → プリンターで探してください
 bill_printers_dd	請求書のプリンター
 bill_printers_dd_n	請求書用の {n} プリンター · タップして変更
 station_vp_attached	プリンターを付けました
 station_vp_detached	ステーションからプリンターを外しました
-route_up	上へ
-route_down	下へ
-route_clear	印刷しない
-save_printers	プリンターを保存
 print_test_page	テストページを印刷
 no_printer_assigned	プリンターなし
-test_page_no_printer	{place} にプリンターがありません — 上で割り当てて再試行してください
 test_page_pick_first	まずテスト用プリンターを選んでからテストページを印刷してください
 test_printers_dd	テストページ用プリンター
 test_printers_dd_n	テスト用プリンター {n} 台 · タップで変更
 test_printer_picked	テスト先: {name}
 test_printer_cleared	テストしない: {name}
 test_page_sent_n	テストページを {n} 台のプリンターに送信しました
-batch_cancel	マークをキャンセル
-batch_cancel_n	マークをキャンセル ({n})
-batch_cancel_none	最初に 1 つ以上の送信済みアイテムにマークを付けてから、「キャンセル」にマークを付けます
-batch_cancel_title	印を付けた薬品を取消 — 理由は一つ、区画ごとにスリップ1枚
-batch_cancel_ok	{n} 品目キャンセル · {slips} キャンセル伝票 → {kitchens}
-batch_cancel_ok_noprint	{n} アイテムがキャンセルされました - 自動印刷がオフになっているため、キャンセル伝票はありません
 printers_saved	この端末のプリンターを保存しました
-test_page_sent	テストページを送信しました — プリンターを確認してください
 test_page_sent_one	{name} にテストページを送信しました — そのプリンターを確認してください
 printers_found	見つかりました：{n}: {list}
 printers_find_synced	{n} 台見つかりました — 新規 {new}
-printer_on_device	保存済み
 printer_already_added	追加済み
 printer_already_saved	既に保存済み：{name}
 find_printers	プリンターを探す
@@ -640,7 +497,6 @@ cancelled	取消
 printers_tap_find	「プリンターを探す」をタップ — システムプリンターとこのWi‑Fiのネットワークレシートプリンターが一覧表示されます。
 printers_none_found	プリンターが見つかりません — システム名またはネットワークアドレスを入力（例: 192.168.1.50）。
 printer_from_find	{name} を追加しました
-bill_printer_ph	会計伝票のプリンター
 queue_refused	店で受け付けられなかったもの（{n}）— レジで一件ずつ確認してください:
 clear_not_accepted	確認済み — この一覧を消す
 device_name_ph	このデバイスの名前
@@ -650,7 +506,6 @@ connected_now	接続中
 backup_failed	前回の自動バックアップに失敗しました: {e}
 backup_overdue	{n} 日間バックアップがありません — バックアップのため、このデバイスでアプリを開いたままにしてください。
 disk_low	このデバイスの空き容量は {mb} MB だけです — まもなくバックアップできなくなります。空き容量を増やしてください。
-last_seen_devices	最終確認時刻：{time}
 connection_to_shop	店との接続
 supplier_name_ph	仕入先名（または取引先）
 supplier_ph	仕入先
@@ -708,7 +563,6 @@ currency_use_help	スクロールして、対応通貨の「使う」をタッ�
 day_close_help	日次締めを記録すると、この概要（実査した場合はレジ差異も）が監査ログに保存されます。販売は止まりません。
 expenses_word	経費
 feature_access_help	選択したスタッフの機能アクセス（追加後にタップ）
-footer_local	ローカルSQLite・永久無料・クラウドなし
 fresh_book_tabiyat	プリンター
 fresh_selected	Freshを選択中 — カタログは空のままです。準備ができたらDoneをタップ。
 gross_word	粗利益
@@ -721,12 +575,9 @@ net_word	純額
 offline_badge	オフライン
 optional_login_help	任意ログイン（ID＋パスワード）。オーナーが一度設定し、その後はユーザー本人だけがパスワードを変更できます。
 or_unlock_login	またはログインID＋パスワードで解除
-permission_preset	権限プリセット（アクセス範囲）
-preset_help_tabiyat	レジ係：販売。マネージャー：販売＋品目＋取消／修正。
-product_locked_tabiyat	Tabiyat
+permission_preset	権限プリセット
 product_only_tabiyat	このアプリは Tabiyat 専用（飲食店向けシステム）です。他の業種には別の Kumkaj 製品があります。
 purchases_cogs	仕入（COGS）
-qty_cap	数量
 restore_help	復元：バックアップを選びます。帳簿はその時点の状態で開きます。今の帳簿は先に保存されるので元に戻せます。
 wipe_data_heading	ローカルデータを削除
 wipe_data_help	所有者のみ - Windows のアンインストールと同じ選択肢。ビジネス記録は取引履歴を消去しますが、アイテムと設定 (緊急ロック解除 PIN など) は保持します。ショップのセットアップにより書籍データベースが削除されます。画面設定によりウィンドウ/言語がクリアされます。所有者の PIN で確認します。チームの緊急ロック解除 PIN は別のものです (ロック解除時に秘密裏にワイプ)。
@@ -759,7 +610,6 @@ staff_renamed	名前を保存しました
 staff_setup_copied_hire	{name} の設定をコピーしました — 新しい名前と PIN を設定し、その後「スタッフを追加」してください
 staff_setup_copied_edit	{from} の設定を {to} にコピーしました
 staff_copy_need_selected	まず編集する人を選択してください
-staff_copy_need_source	コピーする設定を持つ人物を選択してください
 staff_copy_same	同じ人物です — 他の人を選択してください
 staff_rename_need_selected	まず名前を変更する人物を選択してください
 team_pick_hint	編集する人を選択します - 画面、金銭権、およびステーションはその人にのみ表示されます。
@@ -774,15 +624,9 @@ unit_picker_off	オフ
 we_owe_them	当社の買掛け
 who_unlocking	誰がロック解除していますか？
 locked_word	ロック中
-show_pin	PINを表示
-hide_pin	PINを隠す
 set_owner_pin	オーナーPINを設定
 enter_owner_passcode	オーナーのパスコードを入力
 enter_staff_passcode	スタッフのパスコードを入力
-pin_count_zero	0/12桁・最低4桁、その後OK
-pin_count_need	{} / 12桁・あと{}桁必要
-pin_count_full	12/12桁・OKを押してください
-pin_count_ready	{} / 12桁・準備ができたらOKを押してください
 pin_hint_choose	4〜12桁を選んでください（キーボードまたはパッド）・Enter/OKで保存
 pin_hint_new	新しい4〜12桁のオーナーPIN（キーボードまたはパッド）・Enter/OK
 pin_hint_shop_code	店舗端末・ペアリングコード {}
@@ -791,23 +635,15 @@ pin_hint_paired	追加レジがペアリング済み — 販売するにはロ�
 pin_hint_pair_first	追加レジ — まず店舗端末とペアリング
 unlock_to_continue	続けるにはロック解除
 no_staff_yet	スタッフがまだいません — オーナーとして解除し、次にチームへ
-status_server_set_pin	サーバーモード — オーナーPINを設定
-status_server_tills	サーバーモード — 追加レジが参加できます。ロック解除
-status_server_unlock	サーバーモード — オーナーとしてロック解除
-status_client_unlock	クライアントモード — 販売するにはロック解除
 icon_new_selected	アイコン：新しいファイルを選択 — ブランドを保存をタップ
 icon_custom	アイコン：自店のマーク
 icon_default	アイコン：Kumkaj マーク（既定）— 独自のものを選択
 logo_yours	ロゴ：自店のロゴ — 画面とレシートに表示されます
 logo_default	ロゴ：Kumkaj マーク（既定）— 独自のものがあれば選択
-tmpl_current	現在：{} — {}
-tmpl_selected	選択中：{} — {}
 setup_complete	セットアップ完了
 onboard_fresh_tmpl	新規 · {} — カタログは空から開始；アイテムで追加し、完了をタップ。
 onboard_book_tmpl	帳簿 · {} — アイテムと開始残高を追加し、完了をタップ。
-onboard_template_tmpl	必要なら店名を付けて、始め方を選んでください。
 tmpl_blurb	薬局カウンター: 医薬品、バッチ/有効期限、カタ、書籍。
-tmpl_how	カウンターで販売します。ストック用に購入します。その日の本のための本。
 reports_facet_title	レポート
 reports_facet_help	日次帳簿、取引先エイジング、銀行記録、期間損益。
 against_bill_ph	上の請求書番号に対して（任意）
@@ -818,14 +654,12 @@ amount_ph	金額
 amount_received_ph	受領金額
 amount_we_pay_ph	当方が支払う金額
 business_name_ph	事業名
-category_new_ph	カテゴリ（任意、新規なら作成）
 code_bag_ph	コード（bag）
 conv_factor_ph	係数（25 = 1 bag → 25 kg）
 country_code_ph	国コード 例：IN, GB, US, AE, BR
 credit_khata_amount_ph	掛け / 口座金額
 credit_limit_ph	与信限度（0 = なし）
 from_code_ph	変換元コード（bag）
-item_name_lang_ph	アイテム名 — 自分の言語で入力
 login_id_opt_ph	ログインID（任意）
 manager_pin_ph	マネージャーPIN（取消できない場合のみ）
 new_branch_name_ph	新しい支店名
@@ -833,15 +667,12 @@ new_password_ph	新しいパスワード（任意）
 new_pin_ph	新しいPIN（4–12桁）
 note_bank_ph	メモ（入金、出金、…）
 note_buy_expense_ph	メモ（燃料、家賃、…）
-note_expense_ph	メモ（燃料、事務所、…）
 options_tabiyat_ph	オプション（任意）— Extra cheese=40, Large=80
-part_second_way_ph	2つ目の方法での分担（任意）
 phone_ph	電話
 place_name_ph	この場所の名前
 qty_example_ph	数量（例：kg は 1.5）
 quantity_ph	数量
 reason_required_ph	理由（必須）
-role_title_ph	役職名（例：Barista）
 service_pct_ph	サービス % 任意 0/10/12
 short_code_ph	短いコード（MG02）
 starting_password_ph	開始パスワード（任意）
@@ -876,14 +707,11 @@ shift_handover	シフト引き継ぎ
 shift_since	このシフト開始
 expected_in_drawer	レジ内の想定額
 right_discount	割引する
-pick_category	カテゴリを選ぶ
-close_category_list	カテゴリ一覧を閉じる
 new_category_row	新しいカテゴリ — 品目の保存時に作成
 your_category	あなたのカテゴリ
 suggested_category	提案 — 当社のアイテムから
 category_search_ph	カテゴリ — 検索、または新しく入力
 cancel_item_short	取消
-cancel_item_title	このアイテムをキャンセルします — バックオフィスがキャンセル伝票を受け取ります
 return_to_customer	お釣り
 short_by	不足
 tip_not_sale	チップ（スタッフ分・売上外）
@@ -896,9 +724,7 @@ finding_server	この Wi‑Fi で店のサーバーを探しています…
 no_server_found	サーバーが見つかりません。店の端末が同じ Wi‑Fi にあり追加レジが許可されているか確認するか、IP を入力してください。
 servers_found_pick	接続したい店をタップしてください。
 server_host_selected	{host} を使用中 — ペアリングコードを入力し、「今すぐペア」をタップ。
-print_bill	伝票を印刷
 approval_pin_ph	店長 PIN（求められた時のみ）
-confirm	確認
 menu_search_ph	品目・ショートコードで検索
 customer_paid_ph	お預かり
 tip_ph	チップ
@@ -908,7 +734,6 @@ bill_format_help	すべての請求書にお店の名前の下に印刷されま
 bill_header_ph	住所 | 電話
 fssai_ph	医薬品販売許可番号(オプション - あなたの言葉遣い)
 bill_footer_ph	フッター（例：ありがとうございました）
-save_bill_format	伝票の書式を保存
 kot_field_on	表示
 kot_field_off	非表示
 kot_weight_light	細
@@ -919,10 +744,8 @@ kot_weight_bold	太字
 kot_align_start	開始
 kot_align_center	中央揃え
 kot_align_end	末尾
-content_width	内容幅（mm）
 content_width_bill	請求書コンテンツの幅（mm）
 content_width_ph	または内容幅を入力、40–210 mm
-content_width_help	この伝票の印刷幅。ビルは独自の幅を維持します。
 content_width_bill_help	顧客の請求書を印刷する幅。デフォルトは 210 mm (ページ)。細幅伝票58mm、幅80mm伝票、4インチ112mm、A4幅210mm。 40 ～ 210 の任意の値を入力します。チケットの伝票タブには独自の幅があります。
 vp_paper_width	内容幅（mm）
 vp_paper_width_ph	または内容幅を入力、40–210 mm
@@ -937,9 +760,6 @@ test_bill_sent	請求書のプレビューが送信されました
 test_print_no_printer	そのジョブ用のプリンターがありません — この画面で一つ選択してください
 std_print	伝票の文字サイズ
 std_print_help	OS/ドキュメント プリンタでの標準の縦向きおよび横向きの請求書ジョブのフォント サイズ (小/標準/大ではなく、ポイントを入力します)。どちらの方向でも同じサイズです。
-std_size_s	小
-std_size_m	標準
-std_size_l	大
 save_std_print	伝票サイズを保存
 std_print_saved	伝票サイズを保存しました
 print_brand_kit	印刷ブランドキット
@@ -952,14 +772,9 @@ choose_payment_qr	支払いQRを選ぶ
 clear_payment_qr	支払いQRを消す
 payment_qr_set	支払い QR: ファイル上 - 顧客ディスプレイに表示 (金額 UPI QR が表示されます)
 payment_qr_none	支払いQR：なし — 支払い時にUPIから金額QR
-aggregator_import	アグリゲーター注文（ファイル）
-aggregator_import_help	任意Local：backupsにimport_aggregator_orders.jsonを置きImport。カウンターは止まらない。ライブZomato/SwiggyはCloud。
-import_aggregator_file	アグリゲーターファイルを取込
 team_pick_ph	編集するスタッフ名
 select_staff	このスタッフを選択
 rights_help	この人のマネーアクション — タップして循環: 許可 → 上司の PIN が必要 → 許可されません。再度請求書を印刷するのは請求書のみです。セクションは以下のチェックリストです。
-dish_picker_help	アイテムを検索または参照し、アイテムをタップして名前と写真を入力します。または、自分の名前を保持します。価格を設定し（0でも問題ありません）、商品を追加します。
-close_dish_list	アイテムリストを閉じる
 own_item_name	自分の品名として使う
 on_your_menu	薬品リスト内
 edit	編集
@@ -970,24 +785,16 @@ add_scheme	BOGOを追加
 schedule_ph	Hours — Mon-Fri 07:00-11:00 or Evening 17:00-19:00=150
 upi_vpa_ph	UPI ID (VPA)
 upi_payee_ph	UPI受取人名（任意）
-upi_qr	UPI QR
 show_upi_qr	UPI QRを表示
 close_upi_qr	閉じる
 upi_qr_help	顧客はスキャンして支払います。支払い後に「支払いを受ける」をタップします。 2 番目の画面: LAN 上のサーバー URL /表示を開きます。
-recently_done	最近完了
 role_help_customer	役割：顧客 — AR（当方への未払い）。同じ会社が仕入先にもなれます。
 role_help_both	役割：荷送人 + 運送業者 — 1つの取引先、AR と AP の帳簿、レポートでネット。
 role_help_supplier	役割：仕入先 — 仕入れの AP。
-items_word	品
-items_section	品目
-back_to_order	注文に戻る
-new_items_head	未送信
 price_ph	価格
 price_ph_gst_inside	価格（{tax}込み）
-tax_rates_missing_hint	これらの商品には {tax} 税率はありません - 税率が設定されている商品に適用されます (価格には {tax} の下に既に {tax} が含まれています)
 taxable_value	課税対象額
 gst_inside_price_note	（{tax}込み）
-start_with_template	アイテムテンプレートから始めましょう
 template_heading	スターターアイテム
 template_info	写真付きの {c} カテゴリと {d} アイテムをすぐに追加できます。価格は ₹0 から始まります。後で設定してください。
 template_import	テンプレートを全部取り込む
@@ -1009,21 +816,13 @@ opening_client	クライアントを開いています…
 preparing_desk	デスクを準備しています…
 opening_server	サーバーを開いています…
 creating_server	サーバーを作成しています…
-order_empty_pick	空の注文 — 上の「項目を追加」をタップして項目を選択します。
 add_dishes	薬を追加する
 order_so_far	この注文：{n} · {total}
 no_dish_match	「{q}」に一致する項目はありません
-pick_dishes_help	項目をタップして追加します。カテゴリを選択してリストを絞り込みます
 pick_done	完了
-pick_done_dd	完了 · {label}
-printer_route_mode	この場所に複数のプリンターがある場合
-printer_mode_first	最初に動作するもの
-printer_mode_all	すべてで印刷
 kot_field_up	上に移動
 kot_field_down	下に移動
-app_template_blurb_extra	また: オーナー Zahir、管理者 Asif、レジ係 Nawaz。フロントサイドバー; 4時間後の履歴。今日は脱いでください。コンパクトなお札。
 dishes_n	{n} アイテム
-recipe_ph	レシピ (オプション - カウンターショップでは未使用)
 reorder_ph	この数で補充
 set_reorder	発注点を設定
 low_stock_alert	残りわずか — 早めに補充: {items}
@@ -1032,7 +831,6 @@ show_unpriced	価格のない商品のみを表示
 show_all_dishes	すべてのアイテムを表示
 role_title_rest_ph	役職（例: キャプテン、料理長）
 preset_help_rest	レジ係：販売。マネージャー：販売＋品目＋取消／修正。
-kind_raw	複利株式
 kind_resale	薬を買った
 kind_dish	未管理
 buy_unit_ph	単位（kg・L・個）

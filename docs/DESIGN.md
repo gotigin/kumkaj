@@ -25,7 +25,7 @@ This file is the **canonical** in-repo summary. When Stitch packs disagree, **la
 
 | Tab | Purpose (Moklanjo) |
 |---|---|
-| **Day book** | Owner / Sales home after unlock — today’s money in/out, AR/AP, cash vs bank; hub shortcuts only for screens that person may open. Waiters and other limited roles unlock onto their first permitted peer (e.g. Floor / Order), not Day book |
+| **Day book** | Today’s money in/out, AR/AP, cash vs bank; hub shortcuts only for screens that person may open. Not a forced home: unlock returns each person to the screen they last had selected on this device (first time: the first item on the bar they may open) |
 | **Booking** | Money in — book parcels (rates × kg), three-total ledger, tender / party credit; Account vs Cash booking |
 | **Pay out** | Money out — carrier bills / purchases and expense vouchers |
 | **Rates · Ops · COD · Riders · Sales · Day close · Reports · Parties · Team · Settings · Lock** | Former More rows — same destinations, shown as scrollable bottom chips / rail peers |
@@ -33,6 +33,21 @@ This file is the **canonical** in-repo summary. When Stitch packs disagree, **la
 Progressive depth for Moklanjo: **books + booking desk → AWB/barcode → tracking/manifest/COD → extra tills/team**. See [`MOKLANJO.md`](../apps/moklanjo/docs/MOKLANJO.md).
 
 Booking is not the whole product; Day book and Pay out are peers.
+
+### Moving the window (desktop, every app)
+
+Window chrome with nothing to press moves the window: the empty header (around
+the shop name and mark) and the sidebar's empty top corner and the space under
+its last row — press and move, as on the caption bar. Owner, 2026-11-14: with
+the window's top bar above the screen there was nothing left to drag. Rows,
+the collapse `<`, the header's `>` / back / eye stay buttons; the gaps between
+rows and the sidebar's right edge (its scroll bar) stay the sidebar's own.
+Page content never moves the window — a press on its empty space starts a text
+selection. Alt + drag moves it from anywhere on Wayland (the app's own
+backend); elsewhere the desktop's own Super / Alt + drag does. Code:
+`window_drag_at` in each app's `main_impl.rs`; a new button in the header or
+outside a sidebar row goes in `HEADER_CONTROLS` / `RAIL_CONTROLS`
+(`header_buttons_are_not_window_drag`, `rail_controls_are_not_window_drag`).
 
 ### Launch / auth screens (outside tabs)
 
@@ -84,7 +99,7 @@ Pre-release: delete any older local data dirs (`com.kumkaj.app*`, root `kumkaj.s
 | **Settings** | Country pack, venue, **Units** + conversions, backup |
 | **Pay out** | Bottom tab — carrier bill / purchase + expense voucher |
 
-Owner / Sales order after unlock: **Day book** → trade peers (Booking / Order, Pay out / Buy, Floor…). Limited roles skip Day book when they lack Books rights — first permitted chrome peer is home.
+After unlock each person is back on the screen they last had selected on this device (first time: the first item on the bar they may open). No screen is a forced home — not even Day book (owner, 2026-11-15).
 
 The shipping UI is Makepad using these DESIGN tokens. Full Stitch pack pixel parity is not required to ship.
 
@@ -211,13 +226,15 @@ coloured floor, Moklanjo's rates/cart split).
 - **Capability-aware chrome** (vision §30): peers for a capability
   show only when the business runs that capability; a business that
   never uses it never sees its screens.
-- **Role-aware home**: unlock lands on the **first chrome peer that
-  person may open** (`unlocked_home_from` / `nav_tab_permitted`). For
-  Owner / Sales that is usually Day book (the owner's four questions,
-  [`BUSINESS_BOOKS.md`](BUSINESS_BOOKS.md)); for a Waiter with Floor +
-  Order only, Floor (or Order) — never a Day book full of money hubs
-  they cannot use. Hub rows and money sections use the **same** rights
-  as nav (do not regress — [`DEV.md`](DEV.md) § Staff rights vs chrome).
+- **Each person's own home**: unlock returns each person to the nav item
+  they last had selected on this device — a Settings section too; the
+  first time, the first item on the bar they may open
+  (`unlocked_home_from`; owner, 2026-11-15: never a fixed screen such as
+  Day book — the owner chose the order, each person chooses their item).
+  An item they may no longer open falls back to that first item, so a
+  Waiter never lands on a Day book full of money hubs. Hub rows and money
+  sections use the **same** rights as nav (do not regress —
+  [`DEV.md`](DEV.md) § Staff rights vs chrome).
 
 Technical counterparts (state-guard deadlock, PortalList mechanics,
 agent verification): [`DEV.md`](DEV.md) § Makepad 2 UI faces
@@ -260,6 +277,42 @@ tables** are told apart by name (KOT papers, Floor, bills, pickers): a second
 (owner, 2026-11-13): "tandoor" next to "Tandoor" is allowed; only surrounding
 spaces are ignored.
 
+**One screen for every device (owner, 2026-11-14).** What a screen shows is
+decided by the **shop's settings** and the **person's role** — never by
+whether the device is the Server or a Client. The only Server/Client
+differences are their core jobs: a Client shows how it connects to the shop
+(pairing, link state, waiting writes); the Server shows what it hosts
+(extra tills, pairing code, paired devices, printers attached to it, backups).
+Everything else — GST wording, Tax invoice, payment chips, sidebar items and
+order, Today strip, business day, currency… — is the shop's and looks the same
+on the Owner's tablet as on the Server. Mechanism: DEV.md § LAN "Shop settings
+on every device". **No GST features on by default** for any shop (owner,
+2026-11-14): tax wording on the till and the Tax invoice chip stay off until
+the Owner turns them on in Settings → Country & tax.
+
+**Settings holds the sidebar (owner, 2026-11-14), all four apps.** There is
+no Sidebar row and no Sidebar screen. Settings lists every settings section
+and then a **Sidebar** group (titled ℹ, Enable All / Disable All) with every
+sidebar item — all in the sidebar's row style: a white card, the item's icon
+beside its name. A tap on any row opens its section or screen (sidebar rows
+through `open_nav_tab`, rights checked like the rail); sidebar rows keep the
+show / hide switch and ↑ ↓. Every row has an icon in the rail's style —
+coloured rounded square, white line glyph (`resources/settings/*.webp`;
+Team uses the rail's). A row hides whole for a limited role (its `_row` /
+`_slot` wrapper, never the button alone, or the icon stays behind).
+
+**Formats save themselves (owner, 2026-11-14).** Bill & KOT format
+(Khaynjo), Bill format (Kirano, Tabiyat) and receipt / label format
+(Moklanjo) have no Save button: "the user might forget that click button and
+may lose all his configuration." Every edit is written a moment after the
+last one (`FORMAT_AUTOSAVE_SECS`, 0.8 s), and at once on a Bill | KOT tab
+switch or on leaving the screen (`flush_format_autosave` in `show_screen` /
+`open_settings_panel`) — the same writes the button made, through a light
+books op (no full reload per save). A Client sends them quietly
+(`Follow::Quiet`): only a refusal or "out of reach" is said. Reset and the
+width chips already applied at once. Any new setting on these screens must
+mark the draft (Khaynjo: `bill_changed` / `slip_changed`) so it saves too.
+
 **Explanations live in ℹ, not in paragraphs (owner, 2026-11-13).** The ℹ
 exists so screens stay clean: what a screen, section or field does goes in
 the InfoHelp tip **beside its heading** — never as a grey paragraph under it,
@@ -270,6 +323,34 @@ Status lines carry state and results only, short ("Stamp: on file",
 heading + ℹ (Alerts, Trading history, Delete local data, Shop templates,
 How do you want to start?). Before adding text, ask: if it explains, it is
 a tip.
+
+**They came back (owner, 2026-11-14), so these forms are named and checked.**
+None of these may appear as a line on a screen — the heading's ℹ (or the
+toolbar ℹ) carries the words, or they go:
+- a status that restates a selection ("Last time: this shop (Server). Both
+  modes stay available." under the selected Server button);
+- a copy of an ℹ tip under its own heading ("Find the server, or type its
+  address and pairing code.");
+- an instruction bar after a state change ("Client Mode — unlock to sell"
+  still showing after the unlock; "Client Mode — find the Server, tap…");
+- an empty-state instruction ("Tap a dish to add it · pick a category…",
+  "(no attachments yet — select a sale)", "No items yet. Open Menu to add…")
+  — an empty state is at most a short fact ("No dishes yet.") next to the
+  button that acts;
+- advice on the till ("No GST rate on these dishes — on Menu set Tax rate…");
+- a heading with its explanation in brackets ("Bank reconciliation (tick off
+  against your bank statement)", "Job (sets screens and money actions)") or
+  a report line that explains the report ("Debit = they owe us (AR) · …",
+  "(Operating snapshot — … later filing view.)");
+- a grey paragraph under a heading ("Books keep year-first RFC3339 inside…").
+Any user-visible string must also be in every language pack: an English-only
+hint is two bugs. **Checks:** `layout_labels_carry_no_explanations` (every
+app) fails on a 60+ character literal in a layout label; and
+`./scripts/ui-text-inventory.sh <app> <copy of a neutral demo shop>` walks
+every sidebar screen and Settings panel of the running app and fails on a
+long visible text whose widget is not in `apps/<app>/cert/ui-text-allowlist.txt`
+(data widgets only — totals, report rows, values). Run it before calling a
+screen clean; never add an explanation to the allowlist.
 
 **InfoHelp (screen / section titles):** Titled rows are **`width: Fill`** with **`WrapLabel{width: Fit}` + tip + Fill `trail`** so ℹ sits **next to** the label on every screen (never at the far end — Day book / LANGUAGE, 2026-11). Gap is `tip_btn.margin.left` (6). **Tip-only** rows hide the trail and force **Fit**. Never `Label{width: Fill, wrap}` (turtle NaN, DEV bug 7). Empty title stays **hidden**. Guarded by `info_help_layout_tests` in each app — **fix the InfoHelp face, not one screen.**
 

@@ -1,5 +1,4 @@
 # Italian — Italiano (it). One key<TAB>text per line, in en() order; keep {placeholders}.
-app_tagline	Banco farmacia: medicinali, lotto, khata e libri. Gratis offline.
 barcode_ph	Codice a barre / EAN
 composition_ph	Sale / composizione (ricercabile)
 schedule_h_off	Schedule H — no (segno del titolare)
@@ -13,7 +12,6 @@ expiry_alerts	Avvisi di scadenza (prossimi 7 giorni)
 expiry_none	Nessun lotto scade nei prossimi 7 giorni.
 rx_nudge	Il titolare ha segnato Rx / Schedule H — aggiungi una nota se serve.
 unlock	Sblocca
-pin_hint	Il PIN del titolare inizia con 0000
 sell	Vendi
 buy	Acquisti
 books	Libro del giorno
@@ -32,17 +30,13 @@ reports_month	Profitti e perdite (mese)
 reports_aging	Scadenze / Dr-Cr
 reports_balance_sheet	Bilancio
 reports	Report
-refresh	Aggiorna
 undo	Annulla
-start_tracking	Inizia conteggio
 stock_minus	− Scorte
 stock_plus	+ Scorte
 settle_cash	Incassa contanti
 settle_card	Incassa carta
 items	Farmaci
 nav_items	Farmaci
-more	Altro
-your_items	I vostri farmaci
 items_help	Tocca un articolo per modificarlo. Nuovo articolo svuota il modulo. Cerca per nome o codice breve, imposta un prezzo (0 va bene), poi Aggiungi. Le vendite già registrate tengono il nome con cui sono state addebitate.
 add_item	Aggiungi articolo
 new_item	Nuovo articolo
@@ -53,28 +47,22 @@ remove	Rimuovi
 removed_items	Articoli rimossi
 removed_help	Ripristina rimette l'articolo in Articoli com'era — prezzo, foto e categoria.
 restore_item	Ripristina
-empty_catalog	Nessun farmaco. Apri Farmaci, aggiungi nome, codice o sale, poi vendi.
+empty_catalog	Nessun farmaco.
 total	Totale
 cash	Contanti
 upi	UPI
 card	Carta
 credit	Parti
 clear	Svuota
-ready_to_sell	Pronto a spedire
 today_prefix	Oggi
-today_mid	oggi
 owed	dovuto
-round_word	arrotondamento
 back	Indietro
 sold_out	Esaurito
 restock	Rifornisci
 not_tracked	Non contato
 in_stock	in magazzino
 marked_sold_out	Segnato esaurito
-add_upper	Aggiungi
-na	N/D
 qty	Qtà
-unit_at	Prezzo
 actual	Effettivo
 applied	Applicato
 note_ph	Nota (facoltativo)
@@ -93,21 +81,13 @@ bill_item_qty	Qtà
 bill_item_price	Prezzo
 bill_item_amount	Importo
 bill_item_note	Nota Rx / di vendita
-bill_item_col_gap	Spazio colonne
 bill_item_col_order	Ordine colonne
 bill_item_col_sep	Righe di colonna
-bill_item_gap_tight	Stretto
-bill_item_gap_comfort	Comodo
-bill_item_gap_wide	Largo
-bill_item_num_width	Colonne numeriche
-bill_item_num_compact	Compatto
-bill_item_num_comfort	Comodo
-bill_item_num_wide	Largo
-bill_item_num_align	Allineamento numeri
-bill_item_gap_em	Spazio (em)
-bill_item_qty_min	Qtà min. (em)
-bill_item_price_min	Prezzo min. (em)
-bill_item_amount_min	Importo min. (em)
+slip_col_width	Larghezza (mm)
+slip_col_start	Spazio iniziale (px)
+slip_col_end	Spazio finale (px)
+slip_col_align	Allineamento del testo
+slip_columns_help	La larghezza di ogni colonna comprende il suo spazio iniziale e finale. Il testo va a capo all’interno della sua colonna; ciò che supera la larghezza del contenuto viene tagliato, su carta e nell’anteprima.
 bill_total_qty_label	Etichetta qtà totale
 bill_total_subtotal_label	Etichetta subtotale
 bill_total_grand_label	Etichetta totale
@@ -120,11 +100,7 @@ bill_total_qty	Qtà totale
 bill_total_subtotal	Subtotale
 bill_total_grand	Totale
 kot_unassigned	Non assegnato
-pos_tab_items	Aggiunti
-pos_tab_payment	Pagamento
-settings_hub_title	Impostazioni
 settings_hub_help	Apri un'area alla volta — meno scorrimento, scelte più chiare.
-settings_back	Indietro
 settings_sec_language	Lingua e valuta
 settings_sec_country	Paese e tasse
 settings_sec_tills	Casse extra e filiali
@@ -166,35 +142,17 @@ diag_cleared	Log diagnostici cancellati
 sidebar_settings	Barra laterale
 sidebar_settings_help	Stessi icone della barra laterale. Trascina una riga per riordinare. Inverti l'interruttore per mostrare o nascondere. Impostazioni e Blocco rimangono sempre sulla barra.
 sidebar_always_on_short	Sempre attivo
-sidebar_back_settings	Indietro
-sidebar_shown	Visualizzato
-sidebar_hidden	Nascosto
-sidebar_always_on	Sempre sulla barra
-sidebar_shown_hint	Visualizzato nella barra laterale o nelle schede inferiori
-sidebar_hidden_hint	Nascosto dalla barra
 sidebar_menu_items	Articoli
 sidebar_enable_all	Abilita tutto
 sidebar_disable_all	Disabilita tutto
 sidebar_order_saved	Ordine salvato nella barra laterale
 sidebar_visibility_saved	Visibilità della barra laterale salvata
-amounts_hide	Nascondi
-amounts_show	Mostra
-printers_none_hint	Salva prima una stampante su questo dispositivo, poi aggiungila al conto o a una sezione
-counter	Banco
-dine_in	Banco
-takeaway	Asporto
-order	Ordine
 sales	Vendite
-sales_refunds	Vendite e rimborsi
 day_close	Chiusura giorno
 reports_expenses	Report e spese
 nav_reports	Report
 nav_settings	Impostazioni
 nav_lock	Blocca
-no_sale_yet	Nessuna vendita ancora
-favorites	Preferiti
-favorites_help	Articoli che vendi spesso, salvati per il tuo accesso. Aggiungine uno al conto o crea la tua lista da tutti gli articoli qui sotto.
-your_favorites	I tuoi preferiti
 all_items	Tutti gli articoli
 frequent	Frequenti
 added_items	Aggiunti
@@ -211,8 +169,6 @@ zero_sales_on	Vendite zero: attive
 zero_sales_off	Vendite zero: disattivate
 zero_sales_saved_on	Permesso vendite zero salvato (attivo)
 zero_sales_saved_off	Permesso vendite zero salvato (disattivo)
-no_favorites	Nessun preferito ancora — aggiungi articoli dall'elenco qui sotto.
-add_to_bill	Aggiungi al conto
 added	Aggiunto
 owes_word	deve
 selected_word	Selezionato
@@ -221,19 +177,11 @@ chip_missing_customer	Cliente scelto mancante: scegli di nuovo
 chip_no_customer	Nessun cliente ancora: scrivi un nome e tocca Credito
 credit_summary_fmt	{} clienti · credito aperto {} · anticipi trattenuti {}
 recent_label	Recenti:
-start_order	Inizia ordine
-open_bill	Apri conto
-collect_payment	Incassa
-payment_pending	Pagamento in sospeso
-collect_at_counter	incassa al banco
 inventory	Scorte
-inventory_stock	Scorte e conteggio
 branches	Filiali
-branches_org	Filiali e organizzazione
 credit_customers	Clienti a credito
 customer_name_ph	Nome parte
 new_customer_ph	Nome nuova parte
-item_name_ph	Nome articolo (es. Masala Dosa)
 item_price_ph	Prezzo
 start_template	Prodotto
 team	Squadra
@@ -241,17 +189,11 @@ team_pins	Squadra e PIN
 my_pin_settings	Il mio PIN
 settings_hub_help_my_pin	Cambia il PIN di sblocco di chi ha effettuato l'accesso su questo dispositivo.
 team_self_help	Solo tu puoi cambiare il tuo PIN di sblocco (e la password di accesso facoltativa). Per altre schermate o diritti chiedi al titolare.
-backup_settings	Backup e impostazioni
-lock_app	Blocca
 pick	Scegli
-select	Seleziona
 advance	Avanza
 owner	Titolare
 staff	Personale
 photo	Foto
-auto	Auto
-prev	Precedente
-next	Successivo
 ok	OK
 this_shop	Modalità server
 extra_till	Modalità client
@@ -260,17 +202,13 @@ server	Server
 client	Client
 language_currency	Lingua e valuta
 language	Lingua
-choose_language	Scegli la lingua
 language_setup_hint	Segui la lingua di questo dispositivo o scegline una tu.
 lang_follow_platform	Usa la lingua del dispositivo
 lang_pick_user	Usa la lingua scelta
 lang_platform_now	Lingua attuale del dispositivo
 selected_language	Selezionata
-continue	Continua
 this_device	QUESTO DISPOSITIVO
 device_use_q	Come verrà usato questo dispositivo?
-last_server_mode	Era server — tocca per continuare
-last_client_mode	Era client — tocca per continuare
 choose_server	Scegli un server
 choose_server_hint	Questo dispositivo ha già dei server. Aprine uno o creane uno nuovo per un'altra attività.
 create_new_server	Crea nuovo server
@@ -280,12 +218,6 @@ server_remove_pin_ph	PIN Owner per rimuovere
 only_owner_remove_server	Solo l'Owner può rimuovere un server
 owner_pin_remove_server	Serve il PIN Owner per rimuovere questo server
 device_setup_help	Il server tiene qui i libri. Il client si abbina a un server.
-app_template_heading	Catalogo iniziale (facoltativo)
-app_template_blurb	Carica un catalogo di esempio; Titolare Zahir (zahir), Admin Asif (asif, PIN 1111), Cassiere Nawaz (nawaz, PIN 0000); imposte/GST spente; barra laterale frontale; la cronologia si cancella dopo 4 ore (e Pulisci ora in Backup); fascia Oggi spenta; conto compatto + margini Standard per vassoi stretti. Imposte e voci della barra si riaccendono in Impostazioni.
-app_template_apply	Applica catalogo iniziale
-app_template_skip	Salta per ora
-app_template_status	Server pronto — applica il catalogo iniziale, oppure salta
-app_template_importing	Applicazione di {title}…
 currency	Valuta
 backup	Backup
 use	Usa
@@ -319,7 +251,7 @@ attachments_last_expense	Allegati (ultima spesa)
 bank	Banca
 bank_in	Versamento banca
 bank_out	Prelievo banca
-bank_reconciliation	Riconciliazione bancaria (spunta con l'estratto)
+bank_reconciliation	Riconciliazione bancaria
 bank_to_till	Banca → cassa
 book_add_dish	Apertura — aggiungi articolo
 book_opening_credit	Spedizione — credito iniziale
@@ -349,9 +281,6 @@ share_whatsapp	Condividi WhatsApp
 lan_pages_heading	Pagine clienti sul Wi‑Fi
 lan_pages_help	Sul Wi‑Fi di questo negozio, le pagine clienti servono al tabellone e ai commenti. Chi usa i dati mobili avrà bisogno del cloud più avanti. Un terminale carte o un link di pagamento è facoltativo e non blocca mai il banco.
 diag_send_heading	Condividi fuori da questo dispositivo
-optional_login_heading	Accesso facoltativo
-rights_heading	Permessi
-ops_panel	Ops locali
 crm_heading	Clienti e messaggi
 crm_help	Compleanni e fedeltà: coda SMS/WhatsApp. {name}, {points}. Il titolare invia.
 crm_queue_sms	Coda SMS
@@ -376,21 +305,17 @@ till_wallet_topup_ph	Ricarica portafoglio
 till_voucher_issue_amt_ph	Importo nuovo buono
 till_voucher_issue_code_ph	Codice nuovo buono
 bulk_price_apply	Applica prezzo massivo
-card_terminal_optional	Terminale / link di pagamento (opzionale con internet)
 copy_report	Copia report
 counted_cash_ph	Contanti contati in cassa
 country_tax	Paese e tasse
 create_backup	Crea backup
 credit_limit_heading	Limite di credito (parte selezionata / nominata)
-day_close_summary	Riepilogo chiusura giorno
 delete_party	Elimina parte selezionata
-delivery	Consegna
 done_open_books	Fatto — apri i libri
 drawer_count	Conteggio cassa (facoltativo)
 expense_heading	Spesa
 export_day	Esporta giorno
 extra_note_bill_ph	Nota extra su questa fattura / vendita
-extra_note_expense_ph	Nota extra sull'ultima spesa
 extra_tills_heading	Casse extra
 other_devices_help_heading	Configura altri dispositivi
 other_devices_help	Su questo dispositivo (Modalità server): Casse extra e filiali → Consenti casse extra. Annota il codice di abbinamento e l'indirizzo Wi‑Fi. Tocca Consenti ad altri dispositivi di collegarsi se compare. Su un computer, tocca Avvia con questo computer. Su ogni altro dispositivo: installa l'app, scegli Modalità client, trova il server del negozio (o scrivi l'indirizzo), inserisci il codice, Abbina ora. Gli ordini aspettano sul dispositivo se cade il Wi‑Fi e partono quando il server risponde. Le stampanti extra si impostano sul server (Impostazioni → Stampanti) — le casse extra mandano lì i conti.
@@ -404,7 +329,6 @@ login_id_ph	Id di accesso
 mark_cleared	Segna compensato
 new_party_clear	Nuova parte (pulisci modulo)
 new_party_kind_supplier_ph	Tipo nuova parte (fornitore)
-next_country	Paese successivo
 next_order	Prossimo ordine (svuota banco)
 note_gstin_ph	Nota / GSTIN / promemoria accordo
 notes_attach_party	Note e allegati (parte selezionata)
@@ -422,8 +346,6 @@ pay_ap_cash	Paga AP in contanti
 pay_ap_heading	Paga ciò che dobbiamo loro (AP)
 pay_ap_upi	Paga AP con UPI
 pay_selected_heading	Paga selezionato (salda debito / anticipo)
-pick_from_items	Scegli dai nostri articoli
-prev_country	Paese precedente
 print_open	Stampa / apri
 reason_amend_ph	Motivo modifica / annullo / rimborso
 reason_note_ph	Motivo / nota (scarto, conteggio, …)
@@ -447,14 +369,10 @@ history_after_hours	Fuori orario
 history_hours_ph	Orari (1–168, predefinito 4)
 history_hours_save	Salva orari
 history_clear_now	Cancella cronologia ora
-history_cleared	Cronologia cancellata — configurazione mantenuta
-history_retention_saved	Eliminazione cronologia salvata
 history_hours_saved	Orari cronologia salvati
-history_owner_only	Solo il proprietario o l'amministratore può cancellare la cronologia
 rollup	Riepilogo
 save_brand	Salva marchio
 save_business_id	Salva id fiscale e % servizio
-save_business_name	Salva nome attività
 save_features	Salva funzioni personale selezionato
 save_features_named	Salva {name}
 save_features_ok	Impostazioni salvate per {name}
@@ -485,7 +403,6 @@ copy_pair_code	Copia codice di associazione
 new_pair_code	Nuovo codice di associazione
 pair_finishing	Associazione in corso… applicazione dei libri del locale
 pair_opening	Apertura della cassa…
-pair_copied	Codice di associazione copiato
 lan_offline_waiting	Offline · {n} in attesa
 lan_connecting	Connessione al negozio…
 lan_live	Dal vivo
@@ -499,7 +416,6 @@ firewall_waiting	In attesa dell'autorizzazione amministratore…
 lan_join_help	Altri dispositivi possono collegarsi a questo — codice di abbinamento {code}. Sull'altro dispositivo scegli Modalità client, poi Trova il server del locale, oppure scrivi questo indirizzo: {addr}
 lan_pair_status	Wi‑Fi {addr}
 lan_join_help_no_addr	Collega questo dispositivo a Wi‑Fi per un indirizzo.
-lan_no_address	Questo dispositivo non ha ancora un indirizzo Wi‑Fi: collegalo al Wi‑Fi del locale.
 lan_not_listening	Al momento non accetta dispositivi: un altro programma potrebbe usare la porta {port}. Riavvia l'app.
 lan_tills_off	Le casse extra sono spente. I libri di questo locale restano su questo dispositivo. Consenti le casse extra se anche un altro dispositivo deve prendere ordini o fare conti.
 paired_with	Abbinato al locale su {url}
@@ -520,41 +436,21 @@ printers_help	Trova stampanti, toccane una per selezionarla, poi stampa una pagi
 printers_host_only	Le stampanti si impostano sul dispositivo del negozio (Modalità server). Questa cassa manda lì conti e ticket vecchi — Trova / aggiungi / assegna restano sul server. Pagina di prova e dimensione di stampa del conto vanno al server.
 printers_find_heading	Stampanti
 printers_find_tip	Trova analizza questo dispositivo e tiene l'elenco aggiornato. Prima le stampanti di sistema; la scansione di rete può continuare in background.
-printers_pool_heading	1. Le tue stampanti
-printers_pool_tip	Trova analizza questo dispositivo e tiene l'elenco aggiornato.
 printers_pool_empty	(nessuna ancora — aggiungi sotto)
-printers_routes_help	Trova le stampanti che il sistema già conosce. Assegnale al conto e a ogni sezione in Formato conto e scontrino.
 printer_assign_dd	Scegli stampante per {place}
 printer_assign_pick	Seleziona stampante reale
 printer_profile_heading	Layout
 vp_delivery_heading	Invio
 vp_delivery_help	Come questa stampante virtuale invia i lavori — documento del sistema, byte grezzi o ESC/POS. Il contenuto dello scontrino (corpo, a capo, margini) lo decide il formato conto / scontrino, non qui.
-vp_type_size_heading	Corpo del testo
-vp_wrap_heading	Larghezza a capo
-vp_margin_heading	Margini
 vp_delivery_spooler	Documento OS (spooler di sistema)
 vp_delivery_raw	Byte grezzi al dispositivo
 vp_delivery_escpos	Comandi termici ESC/POS
 virtual_printer_new	Nuova stampante virtuale
 virtual_printer_selected	Modifica di “{name}”: tocca un'altra nell'elenco per cambiare
-virtual_printer_tap_list	Tocca una stampante virtuale nell'elenco per modificarla
 config_layout_portrait	Verticale
 config_layout_landscape	Orizzontale
 config_send_os	Spooler di sistema
 config_send_escpos	ESC/POS
-profiles_heading	Stampanti
-profiles_empty	Stampanti
-profile_builtin	integrato
-profile_custom	personalizzato
-profile_name_ph	Stampanti
-profile_new	Stampanti
-profile_delete	Stampanti
-profile_created	Stampanti
-profile_deleted	Stampanti
-profile_builtin_keep	Stampanti
-config_saved	Aggiornato
-config_selected	Selezionato “{name}”
-printer_output_heading	Stampanti virtuali
 virtual_printers_heading	Stampanti virtuali
 virtual_printers_empty	Ancora nessuna stampante virtuale: imposta i valori sotto, poi Salva. Poi tocca una voce nell'elenco per modificarla.
 virtual_printer_name_ph	Nome stampante virtuale (facoltativo)
@@ -566,71 +462,32 @@ virtual_printer_deleted	Stampante virtuale “{name}” eliminata
 virtual_printer_updated	Stampante virtuale aggiornata
 virtual_printer_updated_named	Stampante virtuale “{name}” aggiornata
 virtual_draft_layout	Valori impostati per la prossima stampante virtuale
-virtual_draft_send	Valore impostato per la prossima stampante virtuale
 virtual_need_real	Seleziona prima una stampante reale
 virtual_need_select	Seleziona una stampante virtuale da eliminare
 real_printer_selected	Stampante reale: {name}
-printers_routes_heading	2. Dove stampare
-route_pick_heading	Luogo
 route_editing	Modifica: {name}
-route_assigned	Aggiunto {printer} a {place}
-route_already_assigned	Già in questo luogo: {printer}
 route_cleared	Pulito {name}
-route_assigned_empty	Nessuna in questo luogo
-route_tap_select	tocca per selezionare
 route_tap_selected	selezionato
-route_pick_printer_first	Tocca prima una stampante
-route_assigned_heading	Stampanti
-route_add_heading	Assegna
-printer_label_ph	Nome (es. Stampante del banco)
 printer_target_ph	Indirizzo o nome di sistema
 printer_target_default	stampante predefinita
-printer_wire_heading	Formato
-printer_wire_escpos	KOT
-printer_wire_os	Standard verticale
-printer_wire_os_portrait	Standard verticale
-printer_wire_os_landscape	Standard orizzontale
-printer_wire_escpos_short	KOT
-printer_wire_os_short	Verticale
-printer_wire_os_landscape_short	Orizzontale
-printer_format_custom	Nuovo formato personalizzato
-printer_format_custom_label	Personalizzato
-printer_format_custom_added	Formato personalizzato aggiunto a questo percorso
-add_printer	Aggiungi stampante
-route_pick_ph	Conto o una sezione della farmacia
 route_bill	Conto
-route_dont_print	Non stampare
 station_print_pick_first	Scegli prima una sezione della farmacia
-station_vps_empty	Ancora nessuna stampante — trovale in Impostazioni → Stampanti
 bill_printers_dd	Stampanti per il conto
 bill_printers_dd_n	{n} stampante/i per il conto · tocca per cambiare
 station_vp_attached	Stampante collegata
 station_vp_detached	Stampante rimossa dalla stazione
-route_up	Su
-route_down	Giù
-route_clear	Non stampare
-save_printers	Salva stampanti
 print_test_page	Stampa pagina di prova
 no_printer_assigned	Nessuna stampante
-test_page_no_printer	Nessuna stampante per {place} — assegnane una sopra, poi riprova
 test_page_pick_first	Scegli prima le stampanti di prova — poi Stampa pagina di prova
 test_printers_dd	Stampanti per pagina di prova
 test_printers_dd_n	{n} stampante/i di prova · tocca per cambiare
 test_printer_picked	Prova su: {name}
 test_printer_cleared	Non testare su: {name}
 test_page_sent_n	Pagina di prova inviata a {n} stampante/i
-batch_cancel	Annulla segnati
-batch_cancel_n	Annulla segnati ({n})
-batch_cancel_none	Segna prima uno o più articoli inviati — poi Annulla segnati
-batch_cancel_title	Annulla i farmaci selezionati — un motivo, uno scontrino per reparto
-batch_cancel_ok	{n} articoli annullati · {slips} scontrino/i di annullo → {kitchens}
-batch_cancel_ok_noprint	{n} articoli annullati — la stampa automatica è spenta, quindi nessuno scontrino di annullo
 printers_saved	Stampanti salvate per questo dispositivo
-test_page_sent	Pagina di prova inviata — controlla la stampante
 test_page_sent_one	Pagina di prova inviata a {name} — controlla quella stampante
 printers_found	Trovati {n}: {list}
 printers_find_synced	Trovate {n} — {new} nuove
-printer_on_device	salvato
 printer_already_added	già aggiunto
 printer_already_saved	Già salvato: {name}
 find_printers	Trova stampanti
@@ -640,7 +497,6 @@ cancelled	Annullato
 printers_tap_find	Tocca Trova stampanti: elenca quelle di sistema e le stampanti di ricevute di rete su questo Wi‑Fi.
 printers_none_found	Nessuna stampante trovata — digita un nome di sistema o un indirizzo di rete (es. 192.168.1.50).
 printer_from_find	Aggiunto {name}
-bill_printer_ph	Stampante conti
 queue_refused	Non accettati dal locale ({n}): controlla ognuno alla cassa:
 clear_not_accepted	Controllato — svuota l'elenco
 device_name_ph	Nome di questo dispositivo
@@ -650,7 +506,6 @@ connected_now	connesso ora
 backup_failed	L'ultimo backup automatico non è riuscito: {e}
 backup_overdue	Nessun backup da {n} giorni: tieni l'app aperta su questo dispositivo perché possa farlo.
 disk_low	Restano solo {mb} MB liberi su questo dispositivo: i backup falliranno presto. Libera spazio.
-last_seen_devices	Ultima visualizzazione: {time}
 connection_to_shop	Connessione al locale
 supplier_name_ph	Nome fornitore (o parte)
 supplier_ph	Fornitore
@@ -708,7 +563,6 @@ currency_use_help	Scorri e tocca Usa per qualsiasi valuta supportata.
 day_close_help	Registrare una chiusura giorno salva questo riepilogo (e la differenza di cassa se contata) nel log di audit. Non ferma le vendite.
 expenses_word	Spese
 feature_access_help	Accesso funzioni del personale selezionato (tocca dopo l'aggiunta)
-footer_local	SQLite locale · Gratis per sempre · Zero cloud
 fresh_book_tabiyat	Stampanti
 fresh_selected	Fresh selezionato — il catalogo resta vuoto. Tocca Done quando sei pronto.
 gross_word	Lordo
@@ -721,12 +575,9 @@ net_word	Netto
 offline_badge	OFFLINE
 optional_login_help	Accesso facoltativo (id + password). Il titolare lo imposta una volta; poi solo l'utente può cambiare la password.
 or_unlock_login	Oppure sblocca con id di accesso + password
-permission_preset	Preset permessi (cosa può accedere)
-preset_help_tabiyat	Cassiere: vendi. Manager: vendi + articoli + annulla/modifica.
-product_locked_tabiyat	Tabiyat
+permission_preset	Preset permessi
 product_only_tabiyat	Questa app è solo Tabiyat, il sistema per ristoranti. Gli altri mestieri hanno prodotti Kumkaj a parte.
 purchases_cogs	Acquisti (COGS)
-qty_cap	QTÀ
 restore_help	Ripristina: scegli un backup. I libri si aprono com'erano allora; quelli attuali vengono salvati prima, quindi si può annullare.
 wipe_data_heading	Elimina dati locali
 wipe_data_help	Solo il titolare — le stesse scelte della disinstallazione Windows. Registri commerciali cancella la storia operativa ma tiene articoli e configurazione (come il PIN di sblocco di emergenza). Configurazione negozio elimina il database dei libri. Preferenze schermo cancella finestra e lingua. Conferma con il PIN del titolare. Il PIN di emergenza in Squadra è a parte (cancellazione discreta allo sblocco).
@@ -759,7 +610,6 @@ staff_renamed	Nome salvato
 staff_setup_copied_hire	Configurazione copiata da {name} — imposta un nuovo nome e PIN, poi Aggiungi personale
 staff_setup_copied_edit	Configurazione di {from} copiata su {to}
 staff_copy_need_selected	Seleziona chi modificare prima
-staff_copy_need_source	Scegli la cui configurazione copiare
 staff_copy_same	È la stessa persona — scegli qualcun altro
 staff_rename_need_selected	Seleziona chi rinominare prima
 team_pick_hint	Scegli chi modificare — schermate, diritti sul denaro e stazioni compaiono solo per quella persona.
@@ -774,15 +624,9 @@ unit_picker_off	No
 we_owe_them	Dobbiamo loro
 who_unlocking	Chi sta sbloccando?
 locked_word	Bloccato
-show_pin	Mostra PIN
-hide_pin	Nascondi PIN
 set_owner_pin	IMPOSTA PIN TITOLARE
 enter_owner_passcode	INSERISCI CODICE TITOLARE
 enter_staff_passcode	INSERISCI CODICE PERSONALE
-pin_count_zero	0 / 12 cifre · almeno 4, poi OK
-pin_count_need	{} / 12 cifre · ne servono altre {}
-pin_count_full	12 / 12 cifre · tocca OK
-pin_count_ready	{} / 12 cifre · tocca OK quando sei pronto
 pin_hint_choose	Scegli 4–12 cifre (tastiera o pad) · Invio/OK per salvare
 pin_hint_new	Nuovo PIN titolare di 4–12 cifre (tastiera o pad) · Invio/OK
 pin_hint_shop_code	Dispositivo negozio · codice di abbinamento {}
@@ -791,23 +635,15 @@ pin_hint_paired	Cassa extra abbinata — sblocca per vendere
 pin_hint_pair_first	Cassa extra — abbina prima al dispositivo negozio
 unlock_to_continue	Sblocca per continuare
 no_staff_yet	Ancora nessun personale — sblocca come Titolare, poi Squadra
-status_server_set_pin	Modalità server — imposta PIN titolare
-status_server_tills	Modalità server — le casse extra possono unirsi. Sblocca
-status_server_unlock	Modalità server — sblocca come Titolare
-status_client_unlock	Modalità client — sblocca per vendere
 icon_new_selected	Icona: nuovo file selezionato — tocca Salva marchio
 icon_custom	Icona: marchio proprio del negozio
 icon_default	Icona: marchio Kumkaj (predefinito) — scegline uno tuo
 logo_yours	Logo: quello del tuo negozio — mostrato su schermate e scontrini
 logo_default	Logo: marchio Kumkaj (predefinito) — scegline uno tuo se ce l'hai
-tmpl_current	Attuale: {} — {}
-tmpl_selected	Selezionato: {} — {}
 setup_complete	Configurazione completata
 onboard_fresh_tmpl	Nuovo · {} — il catalogo parte vuoto; aggiungi articoli in Articoli, poi tocca Fine.
 onboard_book_tmpl	Libro · {} — aggiungi articoli e credito iniziale, poi tocca Fine.
-onboard_template_tmpl	Dai un nome al locale se vuoi, poi scegli come iniziare.
 tmpl_blurb	Banco farmacia: medicinali, lotto/scadenza, khata, libri.
-tmpl_how	Vendi al banco; Acquisti per le scorte; Libri per il libro del giorno.
 reports_facet_title	Report
 reports_facet_help	Libri giornali, aging delle parti, movimenti bancari e Profitti e perdite del periodo.
 against_bill_ph	Contro la fattura n. sopra (facoltativo)
@@ -818,14 +654,12 @@ amount_ph	Importo
 amount_received_ph	Importo ricevuto
 amount_we_pay_ph	Importo che paghiamo
 business_name_ph	Nome dell'attività
-category_new_ph	Categoria (facoltativo, creata se nuova)
 code_bag_ph	Codice (bag)
 conv_factor_ph	Fattore (25 = 1 bag → 25 kg)
 country_code_ph	Codice paese es. IN, GB, US, AE, BR
 credit_khata_amount_ph	Importo a credito / conto
 credit_limit_ph	Limite di credito (0 = nessuno)
 from_code_ph	Codice da (bag)
-item_name_lang_ph	Nome articolo — scrivilo nella tua lingua
 login_id_opt_ph	Id di accesso (facoltativo)
 manager_pin_ph	PIN del responsabile (solo se non puoi annullare)
 new_branch_name_ph	Nome della nuova filiale
@@ -833,15 +667,12 @@ new_password_ph	Nuova password (facoltativo)
 new_pin_ph	Nuovo PIN (4–12 cifre)
 note_bank_ph	Nota (deposito, prelievo, …)
 note_buy_expense_ph	Nota (carburante, affitto, …)
-note_expense_ph	Nota (carburante, ufficio, …)
 options_tabiyat_ph	Opzioni (facoltativo) — Extra cheese=40, Large=80
-part_second_way_ph	Parte con un secondo metodo (facoltativo)
 phone_ph	Telefono
 place_name_ph	Nome di questo luogo
 qty_example_ph	Quantità (es. 1,5 per kg)
 quantity_ph	Quantità
 reason_required_ph	Motivo (obbligatorio)
-role_title_ph	Titolo del ruolo (es. Barista)
 service_pct_ph	Servizio % facoltativo 0/10/12
 short_code_ph	Codice breve (MG02)
 starting_password_ph	Password iniziale (facoltativo)
@@ -876,14 +707,11 @@ shift_handover	Cambio turno
 shift_since	Turno dalle
 expected_in_drawer	Atteso in cassa
 right_discount	Fare sconti
-pick_category	Scegli categoria
-close_category_list	Chiudi elenco categorie
 new_category_row	Nuova categoria — creata al salvataggio
 your_category	La tua categoria
 suggested_category	Suggeriti — dai nostri articoli
 category_search_ph	Categoria — cerca la tua o scrivine una nuova
 cancel_item_short	Annulla
-cancel_item_title	Annulla questo articolo — il retro riceve uno scontrino di annullo
 return_to_customer	Resto al cliente
 short_by	Mancano
 tip_not_sale	Mancia (del personale, non è vendita)
@@ -896,9 +724,7 @@ finding_server	Cerco il server del locale su questo Wi‑Fi…
 no_server_found	Nessun server trovato. Verifica che il dispositivo del locale sia sullo stesso Wi‑Fi con casse extra consentite, o digita il suo IP.
 servers_found_pick	Tocca il negozio a cui vuoi collegarti.
 server_host_selected	Usando {host}: inserisci il codice di associazione, poi Associa ora.
-print_bill	Stampa conto
 approval_pin_ph	PIN del responsabile (solo se richiesto)
-confirm	Conferma
 menu_search_ph	Cerca articolo o codice breve
 customer_paid_ph	Il cliente ha dato
 tip_ph	Mancia
@@ -908,7 +734,6 @@ bill_format_help	Stampato sotto il nome del tuo negozio su ogni conto. Separa le
 bill_header_ph	Indirizzo | telefono
 fssai_ph	N. licenza farmaceutica (facoltativo — il tuo testo)
 bill_footer_ph	Piè di pagina (es. Grazie, a presto)
-save_bill_format	Salva formato del conto
 kot_field_on	mostra
 kot_field_off	nascondi
 kot_weight_light	Leggero
@@ -919,10 +744,8 @@ kot_weight_bold	Grassetto
 kot_align_start	Avvia
 kot_align_center	Centra
 kot_align_end	Fine
-content_width	Larghezza contenuto (mm)
 content_width_bill	Larghezza contenuto fattura (mm)
 content_width_ph	O digita una larghezza contenuto, 40–210 mm
-content_width_help	Larghezza di questo scontrino. Il conto tiene la sua.
 content_width_bill_help	Larghezza del conto cliente. Predefinito 210 mm (pagina). Scontrino stretto 58 mm, scontrino largo 80 mm, 112 mm (4 pollici), 210 mm larghezza A4. Scrivi un valore da 40 a 210. I ticket hanno la propria larghezza nella scheda scontrino.
 vp_paper_width	Larghezza contenuto (mm)
 vp_paper_width_ph	O digita una larghezza contenuto, 40–210 mm
@@ -937,9 +760,6 @@ test_bill_sent	Anteprima fattura inviata
 test_print_no_printer	Nessun stampante per quel lavoro — scegline uno su questa schermata
 std_print	Dimensione stampa conto
 std_print_help	Corpo del carattere per conti Verticale standard e Orizzontale su stampanti di sistema / documento (inserisci punti — non Piccolo/Normale/Grande). Stessa misura nei due orientamenti.
-std_size_s	Piccolo
-std_size_m	Normale
-std_size_l	Grande
 save_std_print	Salva dimensione stampa
 std_print_saved	Dimensione stampa salvata
 print_brand_kit	Kit marchio stampa
@@ -952,14 +772,9 @@ choose_payment_qr	Scegli QR di pagamento
 clear_payment_qr	Rimuovi QR di pagamento
 payment_qr_set	QR di pagamento: in archivio — mostrato sul display cliente (lì sostituisce il QR UPI dell'importo)
 payment_qr_none	QR di pagamento: nessuno — QR importo da UPI al pagamento
-aggregator_import	Ordini aggregatore (file)
-aggregator_import_help	Local opzionale: metti import_aggregator_orders.json in backups poi Importa. Il banco non si blocca; Zomato/Swiggy live = Cloud.
-import_aggregator_file	Importa file aggregatore
 team_pick_ph	Nome del dipendente da modificare
 select_staff	Scegli questo dipendente
 rights_help	Azioni di denaro per questa persona — tocca per scorrere: Consentito → Serve il PIN del responsabile → Non consentito. Ristampa conto vale solo per i conti; le sezioni sono l'elenco sotto.
-dish_picker_help	Cerca o sfoglia i nostri articoli e toccane uno per compilare nome e foto — o tieni il tuo nome. Imposta il prezzo (0 va bene), poi Aggiungi articolo.
-close_dish_list	Chiudi elenco articoli
 own_item_name	Usa come nome del tuo articolo
 on_your_menu	Nell’elenco farmaci
 edit	Modifica
@@ -970,24 +785,16 @@ add_scheme	Aggiungi BOGO
 schedule_ph	Hours — Mon-Fri 07:00-11:00 or Evening 17:00-19:00=150
 upi_vpa_ph	UPI ID (VPA)
 upi_payee_ph	Beneficiario UPI (opzionale)
-upi_qr	UPI QR
 show_upi_qr	Mostra QR UPI
 close_upi_qr	Chiudi
 upi_qr_help	Il cliente scansiona e paga. Tocca Incassa dopo il pagamento. Secondo schermo: apri l'URL del server /display sulla LAN.
-recently_done	Appena fatti
 role_help_customer	Ruolo: Cliente — AR (ci devono). La stessa ditta può essere anche fornitore.
 role_help_both	Ruoli: Mittente + Vettore — una parte, libri AR e AP, netto nei Report.
 role_help_supplier	Ruolo: Fornitore — AP per gli acquisti.
-items_word	articoli
-items_section	Articoli
-back_to_order	Torna all'ordine
-new_items_head	Non ancora inviato
 price_ph	Prezzo
 price_ph_gst_inside	Prezzo ({tax} incluso)
-tax_rates_missing_hint	Nessuna aliquota {tax} su questi articoli — in Articoli imposta l'aliquota (i prezzi includono già {tax} sotto {tax} inclusa)
 taxable_value	Imponibile
 gst_inside_price_note	({tax} incluso)
-start_with_template	Inizia con il nostro modello di articoli
 template_heading	Articoli iniziali
 template_info	{c} categorie e {d} articoli con foto, pronti da aggiungere. I prezzi partono da ₹0 — imposta i tuoi dopo.
 template_import	Importa tutto il modello
@@ -1009,21 +816,13 @@ opening_client	Apertura cliente…
 preparing_desk	Preparazione bancone…
 opening_server	Apertura cameriere…
 creating_server	Creazione cameriere…
-order_empty_pick	Ordine vuoto — tocca Aggiungi articoli sopra per scegliere.
 add_dishes	Aggiungi medicinali
 order_so_far	In questo ordine: {n} · {total}
 no_dish_match	Nessun articolo corrisponde a «{q}»
-pick_dishes_help	Tocca un articolo per aggiungerlo · scegli una categoria per restringere l'elenco
 pick_done	Fatto
-pick_done_dd	Fatto · {label}
-printer_route_mode	Se ci sono più stampanti in questo locale
-printer_mode_first	Prima che funzioni
-printer_mode_all	Stampa su tutti
 kot_field_up	Sposta su
 kot_field_down	Sposta giù
-app_template_blurb_extra	Inoltre: Titolare Zahir, Admin Asif, Cassiere Nawaz; barra laterale frontale; cronologia dopo 4 ore; fascia Oggi spenta; conto compatto.
 dishes_n	{n} articoli
-recipe_ph	Ricetta (facoltativa — non si usa in un negozio al banco)
 reorder_ph	Riordina a
 set_reorder	Imposta livello di riordino
 low_stock_alert	Sta finendo — compra presto: {items}
@@ -1032,7 +831,6 @@ show_unpriced	Mostra solo articoli senza prezzo
 show_all_dishes	Mostra tutti gli articoli
 role_title_rest_ph	Ruolo (es. capo sala, capo cuoco)
 preset_help_rest	Cassiere: vendi. Manager: vendi + articoli + annulla/modifica.
-kind_raw	Scorte di preparazione
 kind_resale	Medicinale acquistato
 kind_dish	Non contato
 buy_unit_ph	Unità (kg, litro, pz)

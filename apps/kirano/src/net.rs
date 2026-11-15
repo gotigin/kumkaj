@@ -99,6 +99,11 @@ pub struct SyncSnapshot {
     pub upi_vpa: String,
     #[serde(default)]
     pub upi_payee: String,
+    /// The shop's settings a Client mirrors (`store::SHOP_PREF_KEYS`).
+    /// `None` from a Server older than 2026-11-14 (the Client then keeps
+    /// what it has).
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub shop_prefs: Option<std::collections::BTreeMap<String, Option<String>>>,
 }
 
 fn is_zero_u64(v: &u64) -> bool {
@@ -1001,6 +1006,7 @@ fn build_snapshot(store: &Store) -> Result<SyncSnapshot, String> {
         bill_footer: store.bill_footer()?,
         upi_vpa: store.upi_vpa()?,
         upi_payee: store.upi_payee()?,
+        shop_prefs: Some(store.shop_prefs_for_sync()?),
     })
 }
 
@@ -1279,7 +1285,7 @@ fn protocol_refusal(req: &Request) -> Option<Reply> {
 
 /// Where a bill finds its printer (docs/PRINTER.md → Bill tab).
 pub const NO_BILL_PRINTER: &str =
-    "Bill not printed — no bill printer. Settings → Bill & KOT format → Bill → Printers for the bill";
+    "Bill not printed — no bill printer. Settings → Bill & Slip format → Bill → Printers for the bill";
 
 /// How long a device's write waits, after the books committed, for the
 /// printer to confirm the paper. A working printer answers in well under a
@@ -1760,7 +1766,7 @@ fn public_lan_page(store: &Store, req: &Request) -> Result<Option<Reply>, String
         ("POST", "/feedback") => {
             let score = form_or_json_i64(&req.body, "score").unwrap_or(5);
             let note = form_or_json_str(&req.body, "note");
-            store.add_feedback(score, &note, "")?;
+            store.add_feedback(score, &note)?;
             Ok(Some(Reply::html(
                 "<!doctype html><html><body><h1>Thank you</h1></body></html>".into(),
             )))
@@ -2211,6 +2217,10 @@ pub fn apply_snapshot(store: &Store, snap: &SyncSnapshot) -> Result<(), String> 
             &snap.upi_vpa,
             &snap.upi_payee,
         )?;
+        // The shop's settings, never this device's defaults (owner, 2026-11-14).
+        if let Some(prefs) = &snap.shop_prefs {
+            store.apply_shop_prefs_from_sync(prefs)?;
+        }
         Ok(())
     })?;
     Ok(())
@@ -3140,6 +3150,121 @@ mod tests {
             assert!(head.starts_with("HTTP/1.1 200") && head.contains("Content-Encoding: gzip"), "{head}");
         });
         let _ = crate::print_share::take_captured();
+        let _ = std::fs::remove_file(path);
+    }
+
+    /// What a screen shows is the shop's settings and the person's role —
+    /// never which device it is (owner, 2026-11-14). A Client kept its own
+    /// copy: sidebar items the shop had hidden, another currency…
+    #[test]
+    fn a_client_shows_the_shops_settings_not_its_own_defaults() {
+        let (path, store, _) = lan_shop();
+        let owner = store.list_staff().unwrap().into_iter().find(|s| s.is_owner()).unwrap();
+        store.set_nav_hidden_csv("books,reports").unwrap();
+        store.set_nav_order_csv("pos,books").unwrap();
+        store
+            .apply_books_op(crate::books_op::BooksOp::SetCurrency { code: "USD".into() }, &owner)
+            .unwrap();
+        store.meta_set_for_test("frequent_days", Some("7"));
+        let device_path = std::env::temp_dir().join(format!("kirano-client-prefs-{}.sqlite3", new_id()));
+        let device = Store::open_path(&device_path).unwrap();
+        device.prepare_as_client_terminal().unwrap();
+        apply_snapshot(&device, &build_snapshot(&store).unwrap()).unwrap();
+        assert_eq!(device.nav_hidden_csv().unwrap().as_deref(), Some("books,reports"));
+        assert_eq!(device.nav_order_csv().unwrap().as_deref(), Some("pos,books"));
+        assert_eq!(device.locale_settings().unwrap().currency, "USD");
+        assert_eq!(device.frequent_config().unwrap().0, 7);
+        // The Owner shows every item again and drops the custom order.
+        store.set_nav_hidden_csv("").unwrap();
+        store.meta_set_for_test("ui_nav_order", None);
+        apply_snapshot(&device, &build_snapshot(&store).unwrap()).unwrap();
+        assert_eq!(device.nav_hidden_csv().unwrap().as_deref(), Some(""));
+        assert_eq!(device.nav_order_csv().unwrap(), None, "a setting the shop never made is not kept");
+
+        // A Client asks the shop to change the sidebar; a counter cashier may not.
+        let cashier = store.list_staff().unwrap().into_iter().find(|s| s.name == "Wasim").unwrap();
+        let op = |hidden: &str| crate::books_op::BooksOp::SetNavLayout { hidden: hidden.into(), order: String::new() };
+        assert!(store.apply_books_op(op("books"), &cashier).is_err());
+        store.apply_books_op(op("books"), &owner).unwrap();
+        assert_eq!(store.nav_hidden_csv().unwrap().as_deref(), Some("books"));
+        drop(device);
+        let _ = std::fs::remove_file(device_path);
+        let _ = std::fs::remove_file(path);
+    }
+
+    /// The live socket is live both ways while it sits idle. Each side used
+    /// to block in a read for up to half a minute and only then send what
+    /// was waiting: a device's write sat until the Server next spoke (24 s
+    /// measured in Khaynjo, 2026-11-14), and the Server's news sat until the
+    /// device spoke. Measured over real sockets, after the link has gone quiet.
+    #[test]
+    fn the_live_socket_carries_a_write_and_the_news_at_once() {
+        use std::sync::mpsc;
+        let (path, store, _) = lan_shop();
+        let listener = TcpListener::bind("127.0.0.1:0").unwrap();
+        let base = format!("http://{}", listener.local_addr().unwrap());
+        let running = AtomicBool::new(true);
+        let code = store.pairing_code().unwrap();
+        let who = staff_id(&store, "Mona");
+        let write = thali_sale(&store);
+        std::thread::scope(|s| {
+            let db = path.clone();
+            let running = &running;
+            s.spawn(move || serve(listener, db, &|| running.load(Ordering::SeqCst)).unwrap());
+            let _stop = StopOnDrop(running);
+            let mut link = client_pair(&base, &code, "Tablet", None).unwrap().0;
+            link.session = client_login(&link, Some(&who), "9999").unwrap().session;
+            let (out_tx, out_rx) = mpsc::sync_channel::<String>(8);
+            let (heard_tx, heard_rx) = mpsc::channel::<&'static str>();
+            let (answer_tx, answer_rx) = mpsc::channel::<(String, bool)>();
+            let watch = link.clone();
+            // Not scoped: the loop runs until its socket closes.
+            std::thread::spawn(move || {
+                let up = heard_tx.clone();
+                let _ = crate::lan_ws::client_watch_loop(
+                    &watch,
+                    0,
+                    "",
+                    |_| {
+                        let _ = heard_tx.send("delta");
+                        Ok(())
+                    },
+                    |_, _| {
+                        let _ = up.send("up");
+                    },
+                    |id, ok, _| {
+                        let _ = answer_tx.send((id.to_string(), ok));
+                    },
+                    &out_rx,
+                );
+            });
+            assert_eq!(heard_rx.recv_timeout(Duration::from_secs(5)).unwrap(), "up");
+            // Both loops are now waiting on a quiet socket.
+            std::thread::sleep(Duration::from_millis(1500));
+            while heard_rx.try_recv().is_ok() {}
+            let sent = Instant::now();
+            out_tx
+                .send(crate::lan_ws::outbox_frame("ws-write-1", "/sale", &write, "ws-write-1", &link.session))
+                .unwrap();
+            let (id, ok) = answer_rx.recv_timeout(Duration::from_secs(40)).unwrap();
+            let took = sent.elapsed();
+            assert_eq!((id.as_str(), ok), ("ws-write-1", true));
+            assert!(took < Duration::from_secs(1), "write answered after {took:?}");
+            assert_eq!(heard_rx.recv_timeout(Duration::from_secs(40)).unwrap(), "delta");
+            assert!(sent.elapsed() < Duration::from_secs(1), "news after {:?}", sent.elapsed());
+
+            // Quiet again, then another device's write: the news is pushed
+            // to this tablet without waiting for it to speak first.
+            std::thread::sleep(Duration::from_millis(1500));
+            while heard_rx.try_recv().is_ok() {}
+            let mut other = client_pair(&base, &code, "Phone", None).unwrap().0;
+            other.session = client_login(&other, Some(&who), "9999").unwrap().session;
+            let wrote = Instant::now();
+            client_send(&other, "/sale", &write, "ws-write-2").unwrap();
+            assert_eq!(heard_rx.recv_timeout(Duration::from_secs(40)).unwrap(), "delta");
+            assert!(wrote.elapsed() < Duration::from_secs(1), "news after {:?}", wrote.elapsed());
+            drop(out_tx);
+        });
         let _ = std::fs::remove_file(path);
     }
 

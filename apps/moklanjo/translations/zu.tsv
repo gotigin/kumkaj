@@ -39,7 +39,7 @@ adding_item	Ingeza inani elisha
 editing_item	Iyahlela
 save	Londoloza
 remove	Susa
-empty_catalog	Awekho amanani okwamanje. Vula Amanani namasevisi, engeza eyodwa (igama + inani, iyunithi kg), bese Ubhukha.
+empty_catalog	Awekho amanani okwamanje.
 counter_sale	Ukubhukha ikhawunta
 total	Ingqikithi
 cash	Imali
@@ -171,8 +171,6 @@ selected_language	Ikhethiwe
 continue	Qhubeka
 this_device	LE DIVAYISI
 device_use_q	Izosetshenziswa kanjani le divayisi?
-last_server_mode	Bekuyiseva — thepha ukuze uqhubeke
-last_client_mode	Bekuyiklayenti — thepha ukuze uqhubeke
 choose_server	Khetha iseva
 choose_server_hint	Vula iseva ekhona, noma udale enye ibhizinisi.
 create_new_server	Dala iseva entsha
@@ -501,8 +499,6 @@ job_layout	Isakhiwo
 job_delivery	Umsebenzi uthunyelwa kanjani
 job_size	Usayizi wefonti
 job_size_ph	isib. 18, 20, 26…
-save_receipt_format	Londoloza ifomethi yerisidi
-save_label_format	Londoloza ifomethi yelebula
 test_receipt_format	Irisidi yokuhlola
 test_label_format	Ilebula yokuhlola
 test_receipt_sent	Isiliphu esiyisampula sithunyelwe
@@ -610,7 +606,7 @@ units_heading	Amayunithi
 booking_measures	Izinyathelo zokubhuka
 drawer_count	Isibalo samadrowa (kuyakhetheka)
 spreadsheet_csv	Isipredishithi (CSV)
-bank_reconciliation	Ukubuyisana kwebhange (maka uqhathanise nesitatimende sakho sasebhange)
+bank_reconciliation	Ukubuyisana kwebhange
 book_add_product	Incwadi - engeza umkhiqizo / isilinganiso
 book_opening_credit	Incwadi - ikhredithi yokuvula
 account_kind	Uhlobo lwe-akhawunti (thepha okukodwa)
@@ -650,7 +646,7 @@ net_word	Okusele
 offline_badge	OKUNGAxhumekile ku-inthanethi
 optional_login_help	Ukungena ngemvume ngokuzithandela (id + iphasiwedi). Umnikazi usetha kanye; umsebenzisi kuphela ongashintsha iphasiwedi kamuva.
 or_unlock_login	Noma vula nge-id yokungena + nephasiwedi
-permission_preset	Umsebenzi (usetha izikrini namalungelo)
+permission_preset	Umsebenzi
 preset_help_moklanjo	Umthengisi: thengisa. Umphathi: thengisa + izinto zemenyu + ukuqeda/ukulungisa.
 product_locked_moklanjo	I-Moklanjo
 product_only_moklanjo	Lolu hlelo lokusebenza yi-Moklanjo kuphela - izincwadi + nedeski lokubhuka. Obunye ubuso bezohwebo buthunyelwa njengemikhiqizo ehlukene kamuva.
@@ -698,10 +694,6 @@ pin_hint_paired	Irejista yemali eyengeziwe ibhanqiwe — vula ukuze udayise
 pin_hint_pair_first	Irejista yemali eyengeziwe — bhanqa nedivaysi yesitolo kuqala
 unlock_to_continue	Vula ukuze uqhubeke
 no_staff_yet	Abekho abasebenzi okwamanje — vula njengoMnikazi, bese kuthi Ithimba
-status_server_set_pin	Imodi Yeseva — setha Umnikazi PIN
-status_server_tills	I-Server Mode — amarejista emali eyengeziwe angajoyina. Vula
-status_server_unlock	Imodi yeseva — vula njengoMnikazi
-status_client_unlock	Imodi Yeklayenti — vula ukuze udayise
 icon_new_selected	Isithonjana: ifayela elisha likhethiwe — thepha Londoloza uhlobo
 icon_custom	Isithonjana: uphawu lwendawo yangokwezifiso
 icon_default	Isithonjana: Kumkaj maka (okuzenzakalelayo) — khetha engokwezifiso

@@ -1,5 +1,4 @@
 # Turkish — Türkçe (tr). One key<TAB>text per line, in en() order; keep {placeholders}.
-app_tagline	Eczane tezgahı: ilaçlar, parti, veresiye ve defterler. Ücretsiz, çevrimdışı.
 barcode_ph	Barkod / EAN
 composition_ph	Etken madde / bileşim (aranabilir)
 schedule_h_off	Schedule H — kapalı (sahip işareti)
@@ -13,7 +12,6 @@ expiry_alerts	Son kullanma uyarıları (önümüzdeki 7 gün)
 expiry_none	Önümüzdeki 7 günde sonu gelen parti yok.
 rx_nudge	Sahip Rx / Schedule H işaretledi — gerekirse not ekleyin.
 unlock	Kilidi aç
-pin_hint	Sahip PIN'i 0000 ile başlar
 sell	Satış
 buy	Alım
 books	Gün defteri
@@ -32,17 +30,13 @@ reports_month	Kâr ve zarar (ay)
 reports_aging	Açık / Dr-Cr
 reports_balance_sheet	Bilanço
 reports	Raporlar
-refresh	Yenile
 undo	Geri al
-start_tracking	Sayımı başlat
 stock_minus	− Stok
 stock_plus	+ Stok
 settle_cash	Nakit kapat
 settle_card	Kartla kapat
 items	İlaçlar
 nav_items	İlaçlar
-more	Diğer
-your_items	İlaçlarınız
 items_help	Düzenlemek için bir ürüne dokunun. Yeni ürün formu temizler. Ad veya kısa kodla arayın, fiyat koyun (0 olur), sonra Ekle. Kayıtlı satışlar tahsil edilen adı korur.
 add_item	Öğe ekle
 new_item	Yeni öğe
@@ -53,28 +47,22 @@ remove	Kaldır
 removed_items	Kaldırılan öğeler
 removed_help	Geri yükle, ürünü Ürünler'e aynen koyar — fiyat, fotoğraf ve kategori.
 restore_item	Geri yükle
-empty_catalog	Henüz ilaç yok. İlaçlar’ı açın, ad, barkod veya tuz ekleyin, sonra satın.
+empty_catalog	Henüz ilaç yok.
 total	Toplam
 cash	Nakit
 upi	UPI
 card	Kart
 credit	Taraflar
 clear	Temizle
-ready_to_sell	Gönderiye hazır
 today_prefix	Bugün
-today_mid	bugün
 owed	borç
-round_word	yuvarlama
 back	Geri
 sold_out	Tükendi
 restock	Yeniden koy
 not_tracked	Sayılmıyor
 in_stock	stokta
 marked_sold_out	Tükendi işaretli
-add_upper	Ekle
-na	Yok
 qty	Adet
-unit_at	Fiyat
 actual	Gerçek
 applied	Uygulanan
 note_ph	Not (isteğe bağlı)
@@ -93,21 +81,13 @@ bill_item_qty	Adet
 bill_item_price	Fiyat
 bill_item_amount	Tutar
 bill_item_note	Rx / satış notu
-bill_item_col_gap	Sütun aralığı
 bill_item_col_order	Sütun sırası
 bill_item_col_sep	Sütun çizgileri
-bill_item_gap_tight	Sıkı
-bill_item_gap_comfort	Rahat
-bill_item_gap_wide	Geniş
-bill_item_num_width	Sayı sütunları
-bill_item_num_compact	Sıkı
-bill_item_num_comfort	Rahat
-bill_item_num_wide	Geniş
-bill_item_num_align	Sayı hizası
-bill_item_gap_em	Aralık (em)
-bill_item_qty_min	Adet en az (em)
-bill_item_price_min	Fiyat en az (em)
-bill_item_amount_min	Tutar en az (em)
+slip_col_width	Genişlik (mm)
+slip_col_start	Başlangıç boşluğu (px)
+slip_col_end	Bitiş boşluğu (px)
+slip_col_align	Metin hizalama
+slip_columns_help	Her sütunun genişliği başlangıç ve bitiş boşluğunu da içerir. Metin kendi sütunu içinde kaydırılır; içerik genişliğini aşan kısım kâğıtta ve önizlemede kesilir.
 bill_total_qty_label	Toplam adet etiketi
 bill_total_subtotal_label	Ara toplam etiketi
 bill_total_grand_label	Genel toplam etiketi
@@ -120,11 +100,7 @@ bill_total_qty	Toplam adet
 bill_total_subtotal	Ara toplam
 bill_total_grand	Genel toplam
 kot_unassigned	Atanmamış
-pos_tab_items	Eklenenler
-pos_tab_payment	Ödeme
-settings_hub_title	Ayarlar
 settings_hub_help	Her seferinde bir bölüm açın — daha az kaydırma, daha net seçenekler.
-settings_back	Geri
 settings_sec_language	Dil ve para
 settings_sec_country	Ülke ve vergi
 settings_sec_tills	Ek kasalar ve şubeler
@@ -166,35 +142,17 @@ diag_cleared	Tanılama günlükleri temizlendi
 sidebar_settings	Yan panel
 sidebar_settings_help	Yan raydaki aynı simgeler. Bir satırı sürükleyerek sıralamayı değiştirin. Anahtarı açıp kapayarak göstermeyi veya gizlemeyi sağlayın. Ayarlar ve Kilitleme her zaman çubukta kalır.
 sidebar_always_on_short	Her zaman açık
-sidebar_back_settings	Geri
-sidebar_shown	Gösteriliyor
-sidebar_hidden	Gizleniyor
-sidebar_always_on	Her zaman bar üzerinde
-sidebar_shown_hint	Yan rayda veya alt sekmelerde gösteriliyor
-sidebar_hidden_hint	Bar'dan gizli
 sidebar_menu_items	Ürünler
 sidebar_enable_all	Hepsi Etkinleştir
 sidebar_disable_all	Hepsi Devre Dışı Bırak
 sidebar_order_saved	Yan panel siparişi kaydedildi
 sidebar_visibility_saved	Yan panel görünürlüğü kaydedildi
-amounts_hide	Gizle
-amounts_show	Göster
-printers_none_hint	Önce bu cihaza bir yazıcı kaydedin, sonra onu hesaba veya bir bölüme ekleyin
-counter	Tezgah
-dine_in	Tezgah
-takeaway	Paket
-order	Sipariş
 sales	Satışlar
-sales_refunds	Satış ve iade
 day_close	Gün kapanışı
 reports_expenses	Rapor ve gider
 nav_reports	Raporlar
 nav_settings	Ayarlar
 nav_lock	Kilitle
-no_sale_yet	Henüz satış yok
-favorites	Favoriler
-favorites_help	Sık sattığınız ürünler, girişiniz için kaydedilir. Birini hesaba ekleyin veya aşağıdaki tüm ürünlerden listenizi oluşturun.
-your_favorites	Favorileriniz
 all_items	Tüm ürünler
 frequent	Sık satılan
 added_items	Eklenenler
@@ -211,8 +169,6 @@ zero_sales_on	Sıfır satış: açık
 zero_sales_off	Sıfır satış: kapalı
 zero_sales_saved_on	Sıfır satış izni kaydedildi (açık)
 zero_sales_saved_off	Sıfır satış izni kaydedildi (kapalı)
-no_favorites	Henüz favori yok — aşağıdaki listeden ürün ekleyin.
-add_to_bill	Hesaba ekle
 added	Eklendi
 owes_word	borçlu
 selected_word	Seçildi
@@ -221,19 +177,11 @@ chip_missing_customer	Seçilen müşteri bulunamadı — tekrar seçin
 chip_no_customer	Henüz müşteri yok — bir isim yazın, sonra Veresiye'ye dokunun
 credit_summary_fmt	{} müşteri · açık veresiye {} · avans tutuluyor {}
 recent_label	Son:
-start_order	Siparişi başlat
-open_bill	Hesabı aç
-collect_payment	Ödemeyi al
-payment_pending	Ödeme bekliyor
-collect_at_counter	kasada tahsil edin
 inventory	Stok
-inventory_stock	Stok ve sayım
 branches	Şubeler
-branches_org	Şubeler ve kuruluş
 credit_customers	Veresiye müşteri
 customer_name_ph	Taraf adı
 new_customer_ph	Yeni taraf adı
-item_name_ph	Öğe adı (ör. Masala Dosa)
 item_price_ph	Fiyat
 start_template	Ürün
 team	Ekip
@@ -241,17 +189,11 @@ team_pins	Ekip ve PIN
 my_pin_settings	PIN'im
 settings_hub_help_my_pin	Bu cihazda oturum açmış kişinin kilit açma PIN'ini değiştirin.
 team_self_help	Yalnızca siz kilit açma PIN'inizi (ve isteğe bağlı giriş şifrenizi) değiştirebilirsiniz. Başka ekran veya haklar için sahibe sorun.
-backup_settings	Yedek ve ayarlar
-lock_app	Kilitle
 pick	Seç
-select	Seç
 advance	İlerlet
 owner	Sahip
 staff	Personel
 photo	Fotoğraf
-auto	Otomatik
-prev	Önceki
-next	Sonraki
 ok	Tamam
 this_shop	Sunucu modu
 extra_till	İstemci modu
@@ -260,17 +202,13 @@ server	Sunucu
 client	İstemci
 language_currency	Dil ve para
 language	Dil
-choose_language	Dilinizi seçin
 language_setup_hint	Bu cihazın dilini izleyin ya da kendiniz birini seçin.
 lang_follow_platform	Cihaz dilini kullan
 lang_pick_user	Seçilen dili kullan
 lang_platform_now	Şu anki cihaz dili
 selected_language	Seçili
-continue	Devam
 this_device	BU CİHAZ
 device_use_q	Bu cihaz nasıl kullanılacak?
-last_server_mode	Önceden sunucuydu — devam etmek için dokunun
-last_client_mode	Önceden istemciydi — devam etmek için dokunun
 choose_server	Sunucu seç
 choose_server_hint	Bu cihazda zaten sunucular var. Birini açın veya başka bir işletme için yeni sunucu oluşturun.
 create_new_server	Yeni sunucu oluştur
@@ -280,12 +218,6 @@ server_remove_pin_ph	Kaldırmak için Owner PIN
 only_owner_remove_server	Sunucuyu yalnızca Owner silebilir
 owner_pin_remove_server	Bu sunucuyu kaldırmak için Owner PIN gerekli
 device_setup_help	Sunucu defterleri burada tutar. İstemci bir sunucuyla eşleşir.
-app_template_heading	Başlangıç kataloğu (isteğe bağlı)
-app_template_blurb	Örnek bir katalog yükler; Sahip Zahir (zahir), Admin Asif (asif, PIN 1111), Kasiyer Nawaz (nawaz, PIN 0000); vergi/GST kapalı; ön yan çubuk; geçmiş 4 saat sonra silinir (Yedek içinde Şimdi temizle de var); Bugün şeridi kapalı; dar tepsi için sıkışık hesap + Standart kenar boşlukları. Vergi ve yan çubuk öğeleri Ayarlar'dan yeniden açılabilir.
-app_template_apply	Başlangıç kataloğunu uygula
-app_template_skip	Şimdilik atla
-app_template_status	Sunucu hazır — Başlangıç kataloğunu uygulayın veya geçin
-app_template_importing	{title} uygulanıyor…
 currency	Para birimi
 backup	Yedek
 use	Kullan
@@ -319,7 +251,7 @@ attachments_last_expense	Ekler (son gider)
 bank	Banka
 bank_in	Bankaya yatır
 bank_out	Bankadan çek
-bank_reconciliation	Banka mutabakatı (ekstrenizle işaretleyin)
+bank_reconciliation	Banka mutabakatı
 bank_to_till	Banka → kasa
 book_add_dish	Açılış — ürün ekle
 book_opening_credit	Gönderi — açılış kredisi
@@ -349,9 +281,6 @@ share_whatsapp	WhatsApp ile paylaş
 lan_pages_heading	Wi‑Fi üzerinde müşteri sayfaları
 lan_pages_help	Bu dükkânın Wi‑Fi ağında müşteri sayfaları pano ve geri bildirim içindir. Mobil veri kullananlar daha sonra buluta ihtiyaç duyar. Kart terminali veya ödeme bağlantısı isteğe bağlıdır ve tezgahı hiç durdurmaz.
 diag_send_heading	Bu cihazdan dışarı paylaş
-optional_login_heading	İsteğe bağlı giriş
-rights_heading	Yetkiler
-ops_panel	Yerel işlemler
 crm_heading	Müşteriler ve mesajlar
 crm_help	Doğum günü ve sadakat — SMS/WhatsApp kuyruğu. {name}, {points}. Sahip gönderir.
 crm_queue_sms	SMS kuyruğu
@@ -376,21 +305,17 @@ till_wallet_topup_ph	Cüzdan yükleme tutarı
 till_voucher_issue_amt_ph	Yeni kupon tutarı
 till_voucher_issue_code_ph	Yeni kupon kodu
 bulk_price_apply	Toplu fiyat uygula
-card_terminal_optional	Kart terminali / ödeme bağlantısı (internet varken isteğe bağlı)
 copy_report	Raporu kopyala
 counted_cash_ph	Çekmecede sayılan nakit
 country_tax	Ülke ve vergi
 create_backup	Yedek oluştur
 credit_limit_heading	Kredi limiti (seçili / adı geçen taraf)
-day_close_summary	Gün kapanışı özeti
 delete_party	Seçili tarafı sil
-delivery	Teslimat
 done_open_books	Tamam — defterleri aç
 drawer_count	Çekmece sayımı (isteğe bağlı)
 expense_heading	Gider
 export_day	Günü dışa aktar
 extra_note_bill_ph	Bu fatura / satışa ek not
-extra_note_expense_ph	Son gidere ek not
 extra_tills_heading	Ek kasalar
 other_devices_help_heading	Diğer cihazları kur
 other_devices_help	Bu cihazda (Sunucu modu): Ek kasalar ve şubeler → Ek kasalara izin ver. Eşleştirme kodunu ve Wi‑Fi adresini not edin. Görünürse Diğer cihazların bağlanmasına izin ver'e dokunun. Bilgisayarda Bu bilgisayarla birlikte başlat'a dokunun. Diğer her cihazda: uygulamayı kurun, İstemci modu seçin, dükkânın sunucusunu bulun (veya adresi yazın), eşleştirme kodunu girin, Şimdi eşleştir. Wi‑Fi düşerse siparişler cihazda bekler, sunucu yanıtlayınca gider. Ek yazıcılar sunucuda ayarlanır (Ayarlar → Yazıcılar) — ek kasalar hesapları oraya gönderir.
@@ -404,7 +329,6 @@ login_id_ph	Giriş kimliği
 mark_cleared	Temizlendi işaretle
 new_party_clear	Yeni taraf (formu temizle)
 new_party_kind_supplier_ph	Yeni taraf türü (tedarikçi)
-next_country	Sonraki ülke
 next_order	Sonraki sipariş (masayı temizle)
 note_gstin_ph	Not / GSTIN / anlaşma hatırlatıcısı
 notes_attach_party	Notlar ve ekler (seçili taraf)
@@ -422,8 +346,6 @@ pay_ap_cash	AP nakit öde
 pay_ap_heading	Onlara borçlu olduğumuzu öde (AP)
 pay_ap_upi	AP UPI öde
 pay_selected_heading	Seçili olanı öde (borcu kapat / avans al)
-pick_from_items	Öğelerimizden seçin
-prev_country	Önceki ülke
 print_open	Yazdır / aç
 reason_amend_ph	Düzeltme / iptal / iade nedeni
 reason_note_ph	Neden / not (fire, sayım, …)
@@ -447,14 +369,10 @@ history_after_hours	Saatler dışında
 history_hours_ph	Saatler (1–168, varsayılan 4)
 history_hours_save	Saatleri kaydet
 history_clear_now	Geçmişi şimdi temizle
-history_cleared	Geçmiş temizlendi — kurulum korundu
-history_retention_saved	Geçmiş temizleme kaydedildi
 history_hours_saved	Geçmiş saatleri kaydet
-history_owner_only	Sadece Sahip veya Yönetici geçmiş temizleyebilir
 rollup	Özet
 save_brand	Markayı kaydet
 save_business_id	Vergi kimliği ve hizmet % kaydet
-save_business_name	İşletme adını kaydet
 save_features	Seçili personelin özelliklerini kaydet
 save_features_named	{name} kaydet
 save_features_ok	{name} için ayar kaydedildi
@@ -485,7 +403,6 @@ copy_pair_code	Eşleştirme kodunu kopyala
 new_pair_code	Yeni eşleştirme kodu
 pair_finishing	Eşleştirme bitiyor… dükkan defterleri uygulanıyor
 pair_opening	Kasa açılıyor…
-pair_copied	Eşleştirme kodu kopyalandı
 lan_offline_waiting	Çevrimdışı · {n} bekliyor
 lan_connecting	Dükkâna bağlanıyor…
 lan_live	Canlı
@@ -499,7 +416,6 @@ firewall_waiting	Yönetici onayı bekleniyor…
 lan_join_help	Diğer cihazlar bu cihaza bağlanabilir — eşleştirme kodu {code}. Diğer cihazda İstemci modunu seçip Dükkânın sunucusunu bul'a dokunun ya da şu adresi yazın: {addr}
 lan_pair_status	Wi‑Fi {addr}
 lan_join_help_no_addr	Bir adres için bu cihazı Wi‑Fi'ye bağlayın.
-lan_no_address	Bu cihazın henüz Wi‑Fi adresi yok — dükkânın Wi‑Fi ağına bağlayın.
 lan_not_listening	Şu an cihaz kabul edilmiyor — {port} numaralı bağlantı noktasını başka bir program kullanıyor olabilir. Uygulamayı yeniden başlatın.
 lan_tills_off	Ek kasalar kapalı. Bu dükkânın defterleri bu cihazda kalır. Başka bir cihaz da sipariş alacak veya hesap kesecekse ek kasalara izin verin.
 paired_with	{url} adresindeki dükkânla eşleşti
@@ -520,41 +436,21 @@ printers_help	Yazıcıları bulun, seçmek için birine dokunun, sonra yalnızca
 printers_host_only	Yazıcılar dükkân cihazında (Sunucu modu) ayarlanır. Bu kasa hesapları ve eski adisyonları oraya gönderir — Bul / ekle / ata sunucuda kalır. Deneme sayfası ve hesap baskı boyutu sunucuya gider.
 printers_find_heading	Yazıcılar
 printers_find_tip	Bul bu cihazı tarar ve listeyi güncel tutar. Önce sistem yazıcıları; ağ taraması arka planda sürebilir.
-printers_pool_heading	1. Yazıcılarınız
-printers_pool_tip	Bul bu cihazı tarar ve listeyi güncel tutar.
 printers_pool_empty	(henüz yok — aşağıya ekleyin)
-printers_routes_help	İşletim sisteminin bildiği yazıcıları bulun. Hesap ve fiş biçimi altında onları hesaba ve her bölüme atayın.
 printer_assign_dd	{place} için yazıcı seç
 printer_assign_pick	Gerçek yazıcı seç
 printer_profile_heading	Yerleşim
 vp_delivery_heading	Teslimat
 vp_delivery_help	Bu sanal yazıcı işleri nasıl gönderir — sistem belgesi, ham bayt veya ESC/POS. Fiş içeriği (punto, kaydırma, kenar boşluğu) hesap / fiş biçiminden gelir, buradan değil.
-vp_type_size_heading	Yazı boyutu
-vp_wrap_heading	Kaydırma genişliği
-vp_margin_heading	Kenar boşlukları
 vp_delivery_spooler	İşletim sistemi belgesi (sistem kuyruğu)
 vp_delivery_raw	Cihaza ham bayt
 vp_delivery_escpos	ESC/POS termal komutları
 virtual_printer_new	Yeni sanal yazıcı
 virtual_printer_selected	“{name}” düzenleniyor — listede başkasına dokunup geçin
-virtual_printer_tap_list	Düzenlemek için listede bir sanal yazıcıya dokunun
 config_layout_portrait	Dikey
 config_layout_landscape	Yatay
 config_send_os	Sistem kuyruğu
 config_send_escpos	ESC/POS
-profiles_heading	Yazıcılar
-profiles_empty	Yazıcılar
-profile_builtin	yerleşik
-profile_custom	özel
-profile_name_ph	Yazıcılar
-profile_new	Yazıcılar
-profile_delete	Yazıcılar
-profile_created	Yazıcılar
-profile_deleted	Yazıcılar
-profile_builtin_keep	Yazıcılar
-config_saved	Güncellendi
-config_selected	Seçildi “{name}”
-printer_output_heading	Sanal yazıcılar
 virtual_printers_heading	Sanal yazıcılar
 virtual_printers_empty	Henüz sanal yazıcı yok — aşağıda değerleri ayarlayıp kaydedin. Sonra listede birine dokunup düzenleyin.
 virtual_printer_name_ph	Sanal yazıcı adı (isteğe bağlı)
@@ -566,71 +462,32 @@ virtual_printer_deleted	Sanal yazıcı “{name}” silindi
 virtual_printer_updated	Sanal yazıcı güncellendi
 virtual_printer_updated_named	Sanal yazıcı “{name}” güncellendi
 virtual_draft_layout	Sonraki sanal yazıcı için değerler ayarlandı
-virtual_draft_send	Sonraki sanal yazıcı için değer ayarlandı
 virtual_need_real	Önce gerçek yazıcı seçin
 virtual_need_select	Silinecek sanal yazıcıyı seçin
 real_printer_selected	Gerçek yazıcı: {name}
-printers_routes_heading	2. Nereye yazdır
-route_pick_heading	Yer
 route_editing	Düzenleme: {name}
-route_assigned	{printer}, {place}'ye eklendi
-route_already_assigned	Zaten burada: {printer}
 route_cleared	{name} temizlendi
-route_assigned_empty	Bu yerde yok
-route_tap_select	seçmek için dokunun
 route_tap_selected	seçildi
-route_pick_printer_first	Önce bir yazıcıya dokunun
-route_assigned_heading	Yazıcılar
-route_add_heading	Ata
-printer_label_ph	Ad (ör. Tezgah yazıcısı)
 printer_target_ph	Adres veya sistem adı
 printer_target_default	varsayılan yazıcı
-printer_wire_heading	Biçim
-printer_wire_escpos	KOT
-printer_wire_os	Standart dikey
-printer_wire_os_portrait	Standart dikey
-printer_wire_os_landscape	Standart yatay
-printer_wire_escpos_short	KOT
-printer_wire_os_short	Dikey
-printer_wire_os_landscape_short	Yatay
-printer_format_custom	Yeni özel biçim
-printer_format_custom_label	Özel
-printer_format_custom_added	Bu rota için özel biçim eklendi
-add_printer	Yazıcı ekle
-route_pick_ph	Hesap veya bir eczane bölümü
 route_bill	Fiş
-route_dont_print	Yazdırma
 station_print_pick_first	Önce bir eczane bölümü seçin
-station_vps_empty	Henüz yazıcı yok — Ayarlar → Yazıcılar altında bulun
 bill_printers_dd	Fatura için yazıcılar
 bill_printers_dd_n	Fatura için {n} yazıcı(alar) · değiştirmek için dokunun
 station_vp_attached	Yazıcı eklendi
 station_vp_detached	Yazıcı istasyondan kaldırıldı
-route_up	Yukarı
-route_down	Aşağı
-route_clear	Yazdırma
-save_printers	Yazıcıları kaydet
 print_test_page	Test sayfası yazdır
 no_printer_assigned	Yazıcı yok
-test_page_no_printer	{place} için yazıcı yok — yukarıda atayıp yeniden deneyin
 test_page_pick_first	Önce test yazıcılarını seçin — sonra test sayfası yazdırın
 test_printers_dd	Test sayfası yazıcıları
 test_printers_dd_n	{n} test yazıcısı · değiştirmek için dokunun
 test_printer_picked	Test: {name}
 test_printer_cleared	Test değil: {name}
 test_page_sent_n	Test sayfası {n} yazıcıya gönderildi
-batch_cancel	İşaretlileri iptal et
-batch_cancel_n	İşaretlileri iptal et ({n})
-batch_cancel_none	Önce gönderilmiş bir veya daha fazla ürünü işaretleyin — sonra İşaretlileri iptal et
-batch_cancel_title	İşaretli ilaçları iptal et — bir gerekçe, bölüm başına bir fiş
-batch_cancel_ok	{n} ürün iptal edildi · {slips} iptal fişi → {kitchens}
-batch_cancel_ok_noprint	{n} ürün iptal edildi — otomatik basım kapalı, bu yüzden iptal fişi yok
 printers_saved	Bu cihazın yazıcıları kaydedildi
-test_page_sent	Test sayfası gönderildi — yazıcıyı kontrol edin
 test_page_sent_one	Test sayfası {name} yazıcısına gönderildi — o yazıcıyı kontrol edin
 printers_found	{n} bulundu: {list}
 printers_find_synced	{n} bulundu — {new} yeni
-printer_on_device	kaydedildi
 printer_already_added	zaten eklendi
 printer_already_saved	Zaten kaydedildi: {name}
 find_printers	Yazıcıları bul
@@ -640,7 +497,6 @@ cancelled	İptal
 printers_tap_find	Yazıcıları bul'a dokunun — sistem yazıcıları ve bu Wi‑Fi'deki ağ fiş yazıcıları listelenir.
 printers_none_found	Yazıcı bulunamadı — sistem adı veya ağ adresi yazın (örn. 192.168.1.50).
 printer_from_find	{name} eklendi
-bill_printer_ph	Hesap yazıcısı
 queue_refused	Dükkânın kabul etmedikleri ({n}) — her birini kasada kontrol edin:
 clear_not_accepted	Kontrol edildi — listeyi temizle
 device_name_ph	Bu cihazın adı
@@ -650,7 +506,6 @@ connected_now	şu an bağlı
 backup_failed	Son otomatik yedekleme başarısız oldu: {e}
 backup_overdue	{n} gündür yedek yok — yedek alabilmesi için uygulamayı bu cihazda açık tutun.
 disk_low	Bu cihazda yalnızca {mb} MB boş alan kaldı — yedeklemeler yakında başarısız olacak. Biraz yer açın.
-last_seen_devices	Son görülme: {time}
 connection_to_shop	Dükkânla bağlantı
 supplier_name_ph	Tedarikçi adı (veya taraf)
 supplier_ph	Tedarikçi
@@ -708,7 +563,6 @@ currency_use_help	Kaydırın ve desteklenen her para birimi için Kullan'a dokun
 day_close_help	Gün kapanışını kaydetmek bu özeti (sayıldıysa çekmece farkıyla) denetim günlüğüne kaydeder. Satışı durdurmaz.
 expenses_word	Giderler
 feature_access_help	Seçili personelin özellik erişimi (ekledikten sonra dokunun)
-footer_local	Yerel SQLite · Sonsuza dek ücretsiz · Bulut yok
 fresh_book_tabiyat	Yazıcılar
 fresh_selected	Fresh seçili — katalog boş kalacak. Hazır olduğunuzda Done'a dokunun.
 gross_word	Brüt
@@ -721,12 +575,9 @@ net_word	Net
 offline_badge	ÇEVRİMDIŞI
 optional_login_help	İsteğe bağlı giriş (kimlik + parola). Sahibi bir kez ayarlar; sonrasında parolayı yalnızca kullanıcı değiştirebilir.
 or_unlock_login	Veya giriş kimliği + parola ile kilidi açın
-permission_preset	İzin ön ayarı (nelere erişim)
-preset_help_tabiyat	Kasiyer: satış. Yönetici: satış + öğeler + iptal/düzeltme.
-product_locked_tabiyat	Tabiyat
+permission_preset	İzin ön ayarı
 product_only_tabiyat	Bu uygulama yalnızca Tabiyat — restoran işletim sistemi. Diğer işler için ayrı Kumkaj ürünleri var.
 purchases_cogs	Alımlar (COGS)
-qty_cap	ADET
 restore_help	Geri yükle: bir yedek seçin. Defterler o anki hâliyle açılır; şimdiki defterler önce kaydedilir, geri alınabilir.
 wipe_data_heading	Yerel verileri sil
 wipe_data_help	Yalnızca sahip — Windows kaldırma ile aynı seçenekler. İş kayıtları işlem geçmişini siler, ürünleri ve kurulumu tutar (acil kilit PIN'i gibi). Dükkân kurulumu defter veritabanını kaldırır. Ekran tercihleri pencere ve dili temizler. Sahip PIN'i ile onaylayın. Ekip'teki acil kilit PIN'i ayrıdır (kilit açılışında gizli silme).
@@ -759,7 +610,6 @@ staff_renamed	Ad kaydedildi
 staff_setup_copied_hire	Ayar {name}'dan kopyalandı — yeni bir ad ve PIN belirleyin, ardından Personel ekle
 staff_setup_copied_edit	{from}'nın ayarları {to}'ye kopyalandı
 staff_copy_need_selected	Önce kimin düzenleneceğini seç
-staff_copy_need_source	Ayarı kopyalanacak kişinin kim olduğunu seç
 staff_copy_same	Bu aynı kişi — başka biri seçin
 staff_rename_need_selected	Önce kimin yeniden adlandırılacağını seç
 team_pick_hint	Kimi düzenleyeceğinizi seçin — ekranlar, para hakları ve istasyonlar yalnız o kişi için görünür.
@@ -774,15 +624,9 @@ unit_picker_off	Kapalı
 we_owe_them	Onlara borçluyuz
 who_unlocking	Kilidi kim açıyor?
 locked_word	Kilitli
-show_pin	PIN'i göster
-hide_pin	PIN'i gizle
 set_owner_pin	SAHİP PIN'İ BELİRLE
 enter_owner_passcode	SAHİP KODUNU GİRİN
 enter_staff_passcode	PERSONEL KODUNU GİRİN
-pin_count_zero	0 / 12 rakam · en az 4, sonra Tamam
-pin_count_need	{} / 12 rakam · {} tane daha gerekli
-pin_count_full	12 / 12 rakam · Tamam'a dokunun
-pin_count_ready	{} / 12 rakam · hazır olduğunuzda Tamam'a dokunun
 pin_hint_choose	4–12 rakam seçin (klavye veya ped) · Kaydetmek için Enter/Tamam
 pin_hint_new	Yeni 4–12 rakamlı sahip PIN'i (klavye veya ped) · Enter/Tamam
 pin_hint_shop_code	Dükkan cihazı · eşleştirme kodu {}
@@ -791,23 +635,15 @@ pin_hint_paired	Ek kasa eşleştirildi — satış için kilidi açın
 pin_hint_pair_first	Ek kasa — önce dükkan cihazına eşleştirin
 unlock_to_continue	Devam etmek için kilidi açın
 no_staff_yet	Henüz personel yok — Sahip olarak kilidi açın, sonra Ekip
-status_server_set_pin	Sunucu modu — sahip PIN'ini belirleyin
-status_server_tills	Sunucu modu — ek kasalar katılabilir. Kilidi açın
-status_server_unlock	Sunucu modu — Sahip olarak kilidi açın
-status_client_unlock	İstemci modu — satış için kilidi açın
 icon_new_selected	Simge: yeni dosya seçildi — Markayı kaydet'e dokunun
 icon_custom	Simge: kendi mağaza işaretiniz
 icon_default	Simge: Kumkaj işareti (varsayılan) — kendinizinkini seçin
 logo_yours	Logo: mağazanızın logosu — ekranlarda ve fişlerde gösterilir
 logo_default	Logo: Kumkaj işareti (varsayılan) — varsa kendinizinkini seçin
-tmpl_current	Geçerli: {} — {}
-tmpl_selected	Seçilen: {} — {}
 setup_complete	Kurulum tamamlandı
 onboard_fresh_tmpl	Yeni · {} — katalog boş başlar; Ürünler'e ekleyin, sonra Bitti'ye dokunun.
 onboard_book_tmpl	Defter · {} — ürünleri ve açılış kredisini ekleyin, sonra Bitti'ye dokunun.
-onboard_template_tmpl	İsterseniz mekâna ad verin, sonra nasıl başlayacağınızı seçin.
 tmpl_blurb	Eczane tezgahı: ilaçlar, parti/son kullanma, veresiye, defterler.
-tmpl_how	Tezgahta sat; stok için Alım; gün defteri için Defterler.
 reports_facet_title	Raporlar
 reports_facet_help	Günlük defterler, taraf yaşlandırma, banka kayıtları ve dönem kâr zararı.
 against_bill_ph	Yukarıdaki fatura # karşılığı (isteğe bağlı)
@@ -818,14 +654,12 @@ amount_ph	Tutar
 amount_received_ph	Alınan tutar
 amount_we_pay_ph	Ödediğimiz tutar
 business_name_ph	İşletme adı
-category_new_ph	Kategori (isteğe bağlı, yeniyse oluşturulur)
 code_bag_ph	Kod (bag)
 conv_factor_ph	Katsayı (25 = 1 bag → 25 kg)
 country_code_ph	Ülke kodu örn. IN, GB, US, AE, BR
 credit_khata_amount_ph	Veresiye / hesap tutarı
 credit_limit_ph	Kredi limiti (0 = yok)
 from_code_ph	Kaynak kod (bag)
-item_name_lang_ph	Ürün adı — kendi dilinizde yazın
 login_id_opt_ph	Giriş kimliği (isteğe bağlı)
 manager_pin_ph	Yönetici PIN'i (yalnızca iptal edemiyorsanız)
 new_branch_name_ph	Yeni şube adı
@@ -833,15 +667,12 @@ new_password_ph	Yeni parola (isteğe bağlı)
 new_pin_ph	Yeni PIN (4–12 rakam)
 note_bank_ph	Not (para yatırma, çekme, …)
 note_buy_expense_ph	Not (yakıt, kira, …)
-note_expense_ph	Not (yakıt, ofis, …)
 options_tabiyat_ph	Seçenekler (isteğe bağlı) — Extra cheese=40, Large=80
-part_second_way_ph	İkinci yolla kısım (isteğe bağlı)
 phone_ph	Telefon
 place_name_ph	Bu yerin adı
 qty_example_ph	Miktar (örn. kg için 1,5)
 quantity_ph	Miktar
 reason_required_ph	Neden (gerekli)
-role_title_ph	Rol unvanı (örn. Barista)
 service_pct_ph	Hizmet % isteğe bağlı 0/10/12
 short_code_ph	Kısa kod (MG02)
 starting_password_ph	Başlangıç parolası (isteğe bağlı)
@@ -876,14 +707,11 @@ shift_handover	Vardiya devri
 shift_since	Bu vardiya başlangıcı
 expected_in_drawer	Kasada olması gereken
 right_discount	İndirim yapmak
-pick_category	Kategori seç
-close_category_list	Kategori listesini kapat
 new_category_row	Yeni kategori — ürün kaydedilince oluşur
 your_category	Kategoriniz
 suggested_category	Önerilen — bizim ürünlerden
 category_search_ph	Kategori — kendinizinkini arayın ya da yenisini yazın
 cancel_item_short	İptal
-cancel_item_title	Bu ürünü iptal et — arka ofis bir iptal fişi alır
 return_to_customer	Para üstü
 short_by	Eksik
 tip_not_sale	Bahşiş (personelin, satış değil)
@@ -896,9 +724,7 @@ finding_server	Bu Wi‑Fi'da dükkânın sunucusu aranıyor…
 no_server_found	Sunucu bulunamadı. Dükkân cihazının aynı Wi‑Fi'da ve ek kasalara izin verilmiş olduğunu kontrol edin ya da IP'sini yazın.
 servers_found_pick	Bağlanmak istediğiniz dükkâna dokunun.
 server_host_selected	{host} kullanılıyor — eşleştirme kodunu girin, sonra Şimdi eşleştir.
-print_bill	Hesabı yazdır
 approval_pin_ph	Müdür PIN'i (istenirse)
-confirm	Onayla
 menu_search_ph	Ürün veya kısa kod ara
 customer_paid_ph	Müşteri verdi
 tip_ph	Bahşiş
@@ -908,7 +734,6 @@ bill_format_help	Her hesabın üstünde dükkân adınızın altında basılır.
 bill_header_ph	Adres | telefon
 fssai_ph	İlaç ruhsat no. (isteğe bağlı — sizin ifadeniz)
 bill_footer_ph	Alt bilgi (ör. Teşekkürler, yine bekleriz)
-save_bill_format	Hesap biçimini kaydet
 kot_field_on	göster
 kot_field_off	gizle
 kot_weight_light	İnce
@@ -919,10 +744,8 @@ kot_weight_bold	Kalın
 kot_align_start	Başlat
 kot_align_center	Ortala
 kot_align_end	Sonuna al
-content_width	İçerik genişliği (mm)
 content_width_bill	Fatura içeriği genişliği (mm)
 content_width_ph	Veya içerik genişliği yazın, 40–210 mm
-content_width_help	Bu fişin genişliği. Hesap kendi genişliğini korur.
 content_width_bill_help	Müşteri hesabının basım genişliği. Varsayılan 210 mm (sayfa). Dar fiş 58 mm, geniş fiş 80 mm, 112 mm (4 inç), 210 mm A4 genişliği. 40 ile 210 arası bir değer yazın. Adisyonların genişliği fiş sekmesindedir.
 vp_paper_width	İçerik genişliği (mm)
 vp_paper_width_ph	Veya içerik genişliği yazın, 40–210 mm
@@ -937,9 +760,6 @@ test_bill_sent	Fatura önizlemesi gönderildi
 test_print_no_printer	O iş için yazıcı yok — bu ekrandan birini seçin
 std_print	Fiş yazı boyutu
 std_print_help	Sistem / belge yazıcılarında Standart dikey ve yatay hesap işlerinin punto boyutu (punto yazın — Küçük/Normal/Büyük değil). İki yönde de aynı boyut.
-std_size_s	Küçük
-std_size_m	Normal
-std_size_l	Büyük
 save_std_print	Yazdırma boyutunu kaydet
 std_print_saved	Yazdırma boyutu kaydedildi
 print_brand_kit	Yazdırma marka kiti
@@ -952,14 +772,9 @@ choose_payment_qr	Ödeme QR seç
 clear_payment_qr	Ödeme QR kaldır
 payment_qr_set	Ödeme QR: dosyada — müşteri ekranında gösterilir (oradaki tutar UPI QR'ının yerini alır)
 payment_qr_none	Ödeme QR: yok — öderken UPI’den tutar QR
-aggregator_import	Toplayıcı siparişleri (dosya)
-aggregator_import_help	İsteğe bağlı Local: backups’a import_aggregator_orders.json koyup İçe aktar. Tezgâh durmaz; canlı Zomato/Swiggy = Cloud.
-import_aggregator_file	Toplayıcı dosyasını içe aktar
 team_pick_ph	Düzenlenecek personel adı
 select_staff	Bu personeli seç
 rights_help	Bu kişinin para işlemleri — dokunarak dönün: İzinli → Amir PIN'i gerekir → İzin yok. Hesabı yeniden basmak yalnız hesaplar içindir; bölümler aşağıdaki listedir.
-dish_picker_help	Ürünlerimizde arayın veya gezinin, adına ve fotoğrafına doldurmak için birine dokunun — ya da kendi adınızı tutun. Fiyatınızı koyun (0 olur), sonra Öğe ekle.
-close_dish_list	Ürün listesini kapat
 own_item_name	Kendi ürün adınız olarak kullanın
 on_your_menu	İlaç listesinde
 edit	Düzenle
@@ -970,24 +785,16 @@ add_scheme	BOGO ekle
 schedule_ph	Hours — Mon-Fri 07:00-11:00 or Evening 17:00-19:00=150
 upi_vpa_ph	UPI ID (VPA)
 upi_payee_ph	UPI alıcı (isteğe bağlı)
-upi_qr	UPI QR
 show_upi_qr	UPI QR göster
 close_upi_qr	Kapat
 upi_qr_help	Müşteri okutur ve öder. Ödedikten sonra Ödeme al'a dokunun. İkinci ekran: LAN'da sunucu adresinin /display yolunu açın.
-recently_done	Az önce bitti
 role_help_customer	Rol: Müşteri — AR (bize borçlular). Aynı firma tedarikçi de olabilir.
 role_help_both	Roller: Gönderen + Taşıyıcı — tek taraf, AR ve AP defterleri, Raporlarda net.
 role_help_supplier	Rol: Tedarikçi — satın alımlar için AP.
-items_word	ürün
-items_section	Ürünler
-back_to_order	Siparişe dön
-new_items_head	Henüz gönderilmedi
 price_ph	Fiyat
 price_ph_gst_inside	Fiyat ({tax} dahil)
-tax_rates_missing_hint	Bu ürünlerde {tax} oranı yok — Ürünler'de vergi oranını ayarlayın (fiyatlar {tax} dahil altında zaten {tax} içerir)
 taxable_value	Vergiye tabi tutar
 gst_inside_price_note	({tax} dahil)
-start_with_template	Ürün şablonumuzla başla
 template_heading	Başlangıç ürünleri
 template_info	Fotoğraflı {c} kategori ve {d} ürün, eklenmeye hazır. Fiyatlar ₹0'dan başlar — sonra kendinizinkini koyun.
 template_import	Şablonun tamamını içe aktar
@@ -1009,21 +816,13 @@ opening_client	Müşteri açılıyor…
 preparing_desk	Masa hazırlanıyor…
 opening_server	Sunucu açılıyor…
 creating_server	Sunucu oluşturuluyor…
-order_empty_pick	Sipariş boş — ürün seçmek için yukarıdaki Ürün ekle'ye dokunun.
 add_dishes	İlaç ekle
 order_so_far	Bu siparişte: {n} · {total}
 no_dish_match	“{q}” ile eşleşen ürün yok
-pick_dishes_help	Eklemek için bir ürüne dokunun · listeyi daraltmak için kategori seçin
 pick_done	Tamam
-pick_done_dd	Tamam · {label}
-printer_route_mode	Bu yerdeki birden fazla yazıcı varsa
-printer_mode_first	Çalışanı olan ilkini
-printer_mode_all	Hepsi üzerinde baskı al
 kot_field_up	Yukarı taşı
 kot_field_down	Aşağı taşı
-app_template_blurb_extra	Ayrıca: Sahip Zahir, Admin Asif, Kasiyer Nawaz; ön yan çubuk; 4 saat sonra geçmiş; Bugün şeridi kapalı; sıkışık hesap.
 dishes_n	{n} ürün
-recipe_ph	Tarif (isteğe bağlı — tezgah dükkânında kullanılmaz)
 reorder_ph	Şu miktarda yeniden al
 set_reorder	Yeniden sipariş seviyesini ayarla
 low_stock_alert	Azalıyor — yakında alın: {items}
@@ -1032,7 +831,6 @@ show_unpriced	Yalnızca fiyatı olmayan ürünleri göster
 show_all_dishes	Tüm ürünleri göster
 role_title_rest_ph	Unvan (ör. kaptan, şef aşçı)
 preset_help_rest	Kasiyer: satış. Yönetici: satış + öğeler + iptal/düzeltme.
-kind_raw	Hazırlama stoğu
 kind_resale	Alınan ilaç
 kind_dish	Sayılmıyor
 buy_unit_ph	Birim (kg, litre, adet)

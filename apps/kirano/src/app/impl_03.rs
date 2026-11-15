@@ -258,7 +258,6 @@ fn fit_inside_system_bars(&mut self, cx: &mut Cx) {
             books_report_kind,
             device_role,
             picking_server,
-            awaiting_app_template,
         ) = {
             let st = app_state().lock().unwrap();
             (
@@ -270,7 +269,6 @@ fn fit_inside_system_bars(&mut self, cx: &mut Cx) {
                 st.books_report_kind,
                 st.device_role,
                 st.picking_server,
-                st.awaiting_app_template,
             )
         };
         self.paint_choice_pair(
@@ -297,7 +295,7 @@ fn fit_inside_system_bars(&mut self, cx: &mut Cx) {
             ids!(reports_balance_sheet_on),
             books_report_kind == BooksReportKind::BalanceSheet,
         );
-        if picking_server || awaiting_app_template {
+        if picking_server {
             for path in [
                 ids!(device_role_server),
                 ids!(device_role_server_on),
@@ -469,16 +467,91 @@ fn fit_inside_system_bars(&mut self, cx: &mut Cx) {
 
     /// Notes & attachments of the picked record: one row each in a card,
     /// or the hint while there are none.
-    fn show_attachments(&mut self, cx: &mut Cx, hint: &[LiveId], list: &[LiveId], summary: &str, empty: &str) {
+    /// Attachment rows, or nothing: an empty list needs no words (the
+    /// "(no attachments yet — select a sale)" line was English-only cluster
+    /// text, owner 2026-11-14).
+    fn show_attachments(&mut self, cx: &mut Cx, hint: &[LiveId], list: &[LiveId], summary: &str) {
         let rows: Vec<ReportRow> = summary
             .lines()
             .map(str::trim)
             .filter(|l| !l.is_empty() && *l != "Attachments:")
             .map(|l| ReportRow::Line(l.to_string()))
             .collect();
-        self.ui.widget(cx, hint).set_text(cx, &plain_display_text(empty));
-        self.ui.widget(cx, hint).set_visible(cx, rows.is_empty());
+        self.ui.widget(cx, hint).set_text(cx, "");
+        self.ui.widget(cx, hint).set_visible(cx, false);
         self.set_report_rows(cx, list, rows);
+    }
+
+    /// The Printers sheet (owner 2026-11-14): where a printer is needed and
+    /// none is saved, Find runs here instead of sending the owner to
+    /// Settings → Printers. Same Find, Cancel and saved list as that panel.
+    fn open_printers_modal(&mut self, cx: &mut Cx) {
+        if app_state().lock().unwrap().device_role == DeviceRole::Client {
+            self.set_status(cx, app_t("printers_host_only"));
+            return;
+        }
+        self.paint_printers_modal(cx);
+        self.ui.modal(cx, ids!(printers_modal)).open(cx);
+    }
+
+    /// Close the sheet and refresh what opened it: an open printer
+    /// checklist rebuilds its rows (the printers just found), every face
+    /// that names printers repaints.
+    fn close_printers_modal(&mut self, cx: &mut Cx) {
+        self.ui.modal(cx, ids!(printers_modal)).close(cx);
+        let back = printers_modal_return().lock().unwrap().take();
+        {
+            let mut st = app_state().lock().unwrap();
+            if let Some(field) = back.or(st.suggest_open.filter(|f| f.is_printer_pick())) {
+                st.open_suggest(field, "");
+            }
+        }
+        self.redraw_suggest_lists(cx);
+        self.sync_chrome(cx);
+    }
+
+    /// Find / Cancel faces, the found line and the saved list, as on the
+    /// Printers panel. Cheap; called whenever that panel repaints.
+    fn paint_printers_modal(&mut self, cx: &mut Cx) {
+        let (title, tip, find, cancel, done, line, rows, finding) = {
+            let st = app_state().lock().unwrap();
+            let finding = print_share::is_finding_printers()
+                && !print_share::find_printers_was_cancelled();
+            (
+                st.t("settings_sec_printers"),
+                st.t("printers_find_tip"),
+                st.t("find_printers"),
+                st.t("cancel"),
+                st.t("pick_done"),
+                printers_found_line(|k| st.t(k)),
+                printers_pool_rows(&st.printer_draft, None, |k| st.t(k)),
+                finding,
+            )
+        };
+        self.ui.widget(cx, ids!(pm_title)).set_text(cx, &plain_display_text(&title));
+        self.ui
+            .widget(cx, ids!(pm_title_help))
+            .as_info_help()
+            .set_tip(&plain_display_text(&tip));
+        // Find / Cancel swap by visibility only — never set_text on the
+        // Fill+wrap Find face while it is shown (DEV.md bug 7).
+        let find_btn = self.ui.button(cx, ids!(pm_find_btn));
+        if find_btn.text() != find {
+            find_btn.set_text(cx, &find);
+        }
+        find_btn.set_visible(cx, !finding);
+        self.ui.button(cx, ids!(pm_find_cancel)).set_text(cx, &cancel);
+        self.ui.button(cx, ids!(pm_find_cancel)).set_visible(cx, finding);
+        self.ui.button(cx, ids!(pm_close)).set_text(cx, &done);
+        self.ui
+            .widget(cx, ids!(pm_found_label))
+            .set_text(cx, &plain_display_text(&line));
+        self.ui
+            .widget(cx, ids!(pm_found_label))
+            .set_visible(cx, !line.trim().is_empty());
+        let has = !rows.is_empty();
+        self.set_report_rows(cx, ids!(pm_pool_label), rows);
+        self.ui.widget(cx, ids!(pm_pool_label)).set_visible(cx, has);
     }
 
     /// Settings → Printers: Find status line only. The pool list is the
@@ -559,23 +632,14 @@ fn fit_inside_system_bars(&mut self, cx: &mut Cx) {
         };
         self.show_found_printers(cx);
         self.set_report_rows(cx, ids!(printers_pool_label), pool_rows);
-        let (test_n, test_open) = {
-            let st = app_state().lock().unwrap();
-            (
-                st.test_printer_ids.len(),
-                st.suggest_open == Some(SuggestField::TestPrinters),
-            )
-        };
+        let test_n = app_state().lock().unwrap().test_printer_ids.len();
         let test_dd = if test_n == 0 {
             app_t("test_printers_dd")
         } else {
             app_t("test_printers_dd_n").replace("{n}", &test_n.to_string())
         };
-        let test_face = if test_open {
-            app_t("pick_done_dd").replace("{label}", &test_dd)
-        } else {
-            test_dd
-        };
+        // A dropdown face is its label only; ComboField draws ˅ / ˄.
+        let test_face = test_dd;
         self.ui
             .button(cx, ids!(printers_test_dd))
             .set_text(cx, &test_face);
@@ -583,15 +647,8 @@ fn fit_inside_system_bars(&mut self, cx: &mut Cx) {
         self.ui
             .widget(cx, ids!(route_assigned_empty))
             .set_text(cx, &plain_display_text(&app_t("virtual_printers_empty")));
-        let assign_open = {
-            let st = app_state().lock().unwrap();
-            st.suggest_open == Some(SuggestField::PrinterAssign)
-        };
-        let assign_face = if assign_open {
-            app_t("pick_done_dd").replace("{label}", &assign_label)
-        } else {
-            assign_label
-        };
+        // A dropdown face is its label only; ComboField draws ˅ / ˄.
+        let assign_face = assign_label;
         self.ui
             .button(cx, ids!(printer_assign_dd))
             .set_text(cx, &assign_face);
@@ -1019,7 +1076,6 @@ fn fit_inside_system_bars(&mut self, cx: &mut Cx) {
         self.align_label(cx, ids!(items_help_label), rtl);
         self.align_label(cx, ids!(credit_help), rtl);
         self.align_label(cx, ids!(settings_hub_help), rtl);
-        self.align_label(cx, ids!(sidebar_settings_help), rtl);
         self.align_label(cx, ids!(settings_title), rtl);
         self.align_label(cx, ids!(reports_bank_heading), rtl);
         self.align_label(cx, ids!(device_setup_banner), rtl);
@@ -1069,7 +1125,6 @@ fn fit_inside_system_bars(&mut self, cx: &mut Cx) {
             ids!(staff_name_input),
             ids!(menu_variations_input),
             ids!(menu_group_input),
-            ids!(menu_recipe_input),
             ids!(inv_reorder_input),
             ids!(discount_input),
             ids!(discount_reason_input),
@@ -1182,7 +1237,6 @@ fn fit_inside_system_bars(&mut self, cx: &mut Cx) {
         let s = |key: &str| locale::t(&lang, key);
         // Restaurant loop (running table, settle, floor, rights, LAN find).
         for (id, key) in [
-            (ids!(bill_format_save), "save_bill_format"),
             (ids!(bill_format_test), "test_bill_format"),
             (ids!(print_stamp_pick), "choose_stamp"),
             (ids!(print_stamp_clear), "clear_stamp"),
@@ -1205,17 +1259,6 @@ fn fit_inside_system_bars(&mut self, cx: &mut Cx) {
                 .set_visible(cx, true);
             self.ui.button(cx, ids!(client_find_btn)).set_text(cx, &s("find_server"));
         }
-        if !aggregator_import_busy().load(std::sync::atomic::Ordering::SeqCst) {
-            self.ui
-                .button(cx, ids!(aggregator_import_btn))
-                .set_visible(cx, true);
-            self.ui
-                .widget(cx, ids!(aggregator_import_progress))
-                .set_visible(cx, false);
-            self.ui
-                .button(cx, ids!(aggregator_import_btn))
-                .set_text(cx, &s("import_aggregator_file"));
-        }
         for (id, key) in [
             (ids!(menu_search_input), "menu_search_ph"),
             (ids!(printer_target_input), "printer_target_ph"),
@@ -1235,7 +1278,6 @@ fn fit_inside_system_bars(&mut self, cx: &mut Cx) {
             (ids!(staff_name_input), "staff_name_ph"),
             (ids!(menu_variations_input), "sizes_as_items_ph"),
             (ids!(menu_group_input), "dish_group_ph"),
-            (ids!(menu_recipe_input), "recipe_ph"),
             (ids!(inv_reorder_input), "reorder_ph"),
             (ids!(discount_input), "discount_ph"),
             (ids!(discount_reason_input), "discount_reason_ph"),
@@ -1254,7 +1296,6 @@ fn fit_inside_system_bars(&mut self, cx: &mut Cx) {
             (ids!(h_item_photo), "photo"),
             (ids!(h_stamp), "stamp_heading"),
             (ids!(h_payment_qr), "payment_qr_heading"),
-            (ids!(h_aggregator_import), "aggregator_import"),
             (ids!(h_zero_sales), "zero_sales"),
             (ids!(h_schemes), "schemes"),
             (ids!(upi_qr_help), "upi_qr_help"),
@@ -1333,7 +1374,7 @@ fn fit_inside_system_bars(&mut self, cx: &mut Cx) {
             .set_text(cx, &plain_display_text(&s("datetime_appearance")));
         self.ui
             .widget(cx, ids!(datetime_appearance_help))
-            .set_text(cx, &plain_display_text(&soft_paragraph_at_dash(&s("datetime_appearance_help"))));
+            .set_text(cx, &plain_display_text(&s("datetime_appearance_help")));
         self.ui
             .widget(cx, ids!(h_date_order))
             .set_text(cx, &plain_display_text(&s("date_order")));
@@ -1483,9 +1524,6 @@ fn fit_inside_system_bars(&mut self, cx: &mut Cx) {
         self.ui.button(cx, ids!(restore_cancel)).set_text(cx, &s("cancel"));
         self.ui
             .button(cx, ids!(backup_copy_cancel))
-            .set_text(cx, &s("cancel"));
-        self.ui
-            .button(cx, ids!(aggregator_import_cancel))
             .set_text(cx, &s("cancel"));
         self.ui
             .button(cx, ids!(client_find_cancel))
@@ -1756,10 +1794,6 @@ fn fit_inside_system_bars(&mut self, cx: &mut Cx) {
             help.set_title(cx, &s("lan_pages_heading"));
             help.set_tip(&plain_display_text(&s("lan_pages_help")));
         }
-        self.ui
-            .widget(cx, ids!(settings_aggregator_help))
-            .as_info_help()
-            .set_tip(&plain_display_text(&s("aggregator_import_help")));
         self.ui
             .widget(cx, ids!(settings_zero_sales_help))
             .as_info_help()

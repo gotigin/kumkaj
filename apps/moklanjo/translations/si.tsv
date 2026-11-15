@@ -39,7 +39,7 @@ adding_item	නව ගාස්තුවක් එකතු කිරීම
 editing_item	සංස්කරණය කරනවා
 save	සුරකින්න
 remove	ඉවත් කරන්න
-empty_catalog	තවමත් ගාස්තු නැත. ගාස්තු සහ සේවා විවෘත කරන්න, එකක් එකතු කරන්න (නම + මිල, ඒකක kg), පසුව වෙන්කරවා ගැනීම.
+empty_catalog	තවමත් ගාස්තු නැත.
 counter_sale	කවුන්ටර වෙන්කරවා ගැනීම
 total	මුළු
 cash	මුදල්
@@ -171,8 +171,6 @@ selected_language	තෝරා ගන්නා ලදී
 continue	දිගටම කරගෙන යන්න
 this_device	මෙම උපාංගය
 device_use_q	මෙම උපාංගය භාවිතා කරන්නේ කෙසේද?
-last_server_mode	සේවාදායකය විය — ඉදිරියට යාමට තට්ටු කරන්න
-last_client_mode	සේවාදායකයා විය - ඉදිරියට යාමට තට්ටු කරන්න
 choose_server	සේවාදායකයක් තෝරන්න
 choose_server_hint	පවතින සේවාදායකයක් විවෘත කරන්න, නැතහොත් වෙනත් ව්‍යාපාරයක් සඳහා එකක් සාදන්න.
 create_new_server	නව සේවාදායකයක් සාදන්න
@@ -501,8 +499,6 @@ job_layout	පිරිසැලසුම
 job_delivery	රැකියාව යවන ආකාරය
 job_size	අකුරු ප්රමාණය
 job_size_ph	උදා. 18, 20, 26…
-save_receipt_format	රිසිට්පත් ආකෘතිය සුරකින්න
-save_label_format	ලේබල් ආකෘතිය සුරකින්න
 test_receipt_format	පරීක්ෂණ ලදුපත
 test_label_format	පරීක්ෂණ ලේබලය
 test_receipt_sent	සාම්පල ලදුපත යවා ඇත
@@ -610,7 +606,7 @@ units_heading	ඒකක
 booking_measures	වෙන්කරවා ගැනීමේ පියවර
 drawer_count	ලාච්චු ගණන (විකල්ප)
 spreadsheet_csv	පැතුරුම්පත (CSV)
-bank_reconciliation	බැංකු ප්‍රතිසන්ධානය (ඔබේ බැංකු ප්‍රකාශයට එරෙහිව ලකුණු කරන්න)
+bank_reconciliation	බැංකු ප්‍රතිසන්ධානය
 book_add_product	පොත - නිෂ්පාදන / අනුපාතය එකතු කරන්න
 book_opening_credit	ලෙජරය - විවෘත ණය
 account_kind	ගිණුම් වර්ගය (එකක් තට්ටු කරන්න)
@@ -650,7 +646,7 @@ net_word	ශුද්ධ
 offline_badge	නොබැඳි
 optional_login_help	විකල්ප පුරනය වීම (id + මුරපදය). හිමිකරු එක් වරක් සකසයි; පසුව මුරපදය වෙනස් කළ හැක්කේ පරිශීලකයාට පමණි.
 or_unlock_login	නැතහොත් පිවිසුම් හැඳුනුම්පත + මුරපදය සමඟ අගුළු ඇරීම
-permission_preset	රැකියාව (තිර සහ අයිතිවාසිකම් සකසයි)
+permission_preset	රැකියාව
 preset_help_moklanjo	අයකැමි: විකුණන්න. කළමනාකරු: විකිණීම + මෙනු අයිතම + අවලංගු/සංශෝධනය.
 product_locked_moklanjo	මොක්ලන්ජෝ
 product_only_moklanjo	මෙම යෙදුම Moklanjo පමණි - පොත් + වෙන්කිරීමේ මේසය. වෙනත් වෙළඳ මුහුණු පසුව වෙනම නිෂ්පාදන ලෙස නැව්ගත කරනු ලැබේ.
@@ -698,10 +694,6 @@ pin_hint_paired	අමතර මුදල් ලේඛනය යුගල කර
 pin_hint_pair_first	අමතර මුදල් ලේඛනය - පළමුව සාප්පු උපාංගයට යුගල කරන්න
 unlock_to_continue	දිගටම කරගෙන යාමට අගුලු හරින්න
 no_staff_yet	තවම කාර්ය මණ්ඩලයක් නැත - හිමිකරු ලෙස අගුළු හරින්න, පසුව කණ්ඩායම
-status_server_set_pin	සේවාදායක මාදිලිය - හිමිකරු සකසන්න PIN
-status_server_tills	සේවාදායක මාදිලිය - අමතර මුදල් රෙජිස්ටර් වලට සම්බන්ධ විය හැක. අගුළු හරින්න
-status_server_unlock	සේවාදායක මාදිලිය - හිමිකරු ලෙස අගුළු ඇරීම
-status_client_unlock	සේවාලාභී ප්‍රකාරය - විකිණීමට අගුළු හරින්න
 icon_new_selected	නිරූපකය: නව ගොනුවක් තෝරා ඇත - වෙළඳ නාමය සුරකින්න තට්ටු කරන්න
 icon_custom	නිරූපකය: අභිරුචි ස්ථාන සලකුණ
 icon_default	නිරූපකය: Kumkaj ලකුණ (පෙරනිමිය) — අභිරුචි එකක් තෝරන්න

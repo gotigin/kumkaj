@@ -42,30 +42,6 @@ pub struct PendingBillRow {
 }
 
 impl Store {
-    pub(crate) fn migrate_local_extras_tables(&self) -> Result<(), String> {
-        self.conn
-            .execute_batch(
-                r#"
-                CREATE TABLE IF NOT EXISTS awb_pools (
-                    id TEXT PRIMARY KEY,
-                    carrier_party_id TEXT NOT NULL DEFAULT '',
-                    prefix TEXT NOT NULL DEFAULT '',
-                    start_n INTEGER NOT NULL,
-                    end_n INTEGER NOT NULL,
-                    next_n INTEGER NOT NULL,
-                    label TEXT NOT NULL DEFAULT ''
-                );
-                CREATE INDEX IF NOT EXISTS idx_awb_pools_carrier
-                    ON awb_pools(carrier_party_id);
-                "#,
-            )
-            .map_err(|e| e.to_string())?;
-        let _ = self.conn.execute(
-            "ALTER TABLE sales ADD COLUMN piece_count INTEGER NOT NULL DEFAULT 1",
-            [],
-        );
-        Ok(())
-    }
 
     // ----- Print brand kit (stamp + payment QR beside venue icon) -----
 

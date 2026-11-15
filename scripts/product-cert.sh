@@ -353,7 +353,17 @@ run_visual() {
       metric="$(magick compare -metric AE "$ref" "$dest" "$out/diff-$name" 2>&1 || true)"
     fi
     echo "$name AE=$metric" >>"$out/log.txt"
-    if [[ "$metric" =~ ^[0-9]+$ ]] && [[ "$metric" -gt 50000 ]]; then
+    # ImageMagick 7 prints "90206.7 (0.0783045)"; older builds a bare
+    # integer. Anything that is not a number (size mismatch, unreadable
+    # file) is a failure too — the old integer-only match let every one
+    # of these pass.
+    if [[ "$metric" =~ ^([0-9]+)(\.[0-9]+)?([[:space:]]|$) ]]; then
+      if (( BASH_REMATCH[1] > ${CERT_VISUAL_MAX_AE:-50000} )); then
+        echo "$name: AE ${BASH_REMATCH[1]} > ${CERT_VISUAL_MAX_AE:-50000} (diff-$name)" >>"$out/log.txt"
+        failed=1
+      fi
+    else
+      echo "$name: compare gave no number — $metric" >>"$out/log.txt"
       failed=1
     fi
   done < <(find "$base" -name '*.png' -print0)
@@ -439,6 +449,19 @@ run_xcomp() {
     [[ -f "$ROOT/scripts/package-apple-scaffold.sh" ]]
     echo "== linux package script =="
     [[ -f "$ROOT/apps/$app/scripts/package-linux.sh" ]]
+    echo "== PowerShell scripts parse in Windows PowerShell 5.1 =="
+    # 5.1 reads a BOM-less .ps1 as Windows-1252: the UTF-8 bytes of an em
+    # dash end in 0x94 (a curly quote), which closes the string - the script
+    # does not parse (run-wack.ps1 and the uninstall data dialog, 2026-11-15).
+    # Keep .ps1 files ASCII, or save them as UTF-8 with a BOM.
+    bad_ps1=0
+    while IFS= read -r ps1; do
+      if LC_ALL=C grep -q -P '[^\x00-\x7F]' "$ROOT/$ps1" && [[ "$(head -c3 "$ROOT/$ps1" | od -An -tx1 | tr -d ' ')" != "efbbbf" ]]; then
+        echo "non-ASCII without a UTF-8 BOM: $ps1" >&2
+        bad_ps1=1
+      fi
+    done < <(git -C "$ROOT" ls-files '*.ps1')
+    [[ "$bad_ps1" -eq 0 ]]
   ) >"$out/log.txt" 2>&1
   rc=$?
   set -e
@@ -555,12 +578,16 @@ run_linux_pkg() {
       # fresh Xvfb besides the server means a window mapped.
       win_ok=1
     fi
-  elif have_cmd xwininfo; then
+  fi
+  # xlsclients lists only clients that set WM_COMMAND, and Makepad does not:
+  # an empty list with a mapped "Kumkaj" window failed this tier (2026-11-15).
+  # Ask the window tree too.
+  if [[ "$win_ok" -ne 1 ]] && have_cmd xwininfo; then
     win_dump="$(DISPLAY="$disp" xwininfo -root -tree 2>/dev/null || true)"
     if printf '%s\n' "$win_dump" | grep -qiE "$bin_name|${app}|Makepad|0x[0-9a-f]+.*: \(.*\)  [1-9]"; then
       win_ok=1
     fi
-  else
+  elif ! have_cmd xlsclients && ! have_cmd xwininfo; then
     win_ok=1 # no probe tools — cannot prove a hang; pid check only
     echo "CERT NOTE [$app/linux]: install xlsclients/xwininfo to catch no-window hangs" | tee -a "$SUMMARY"
   fi

@@ -41,7 +41,7 @@ remove	Kendu
 removed_items	Kendutako artikuluak
 removed_help	Leheneratzeak artikulua menura itzultzen du zehatz-mehatz zegoen bezala — prezioa, argazkia eta kategoria. Gure plateren apala ez da inoiz kentzen, beraz plater bat beti gehi daiteke berriro.
 restore_item	Leheneratu
-empty_catalog	Oraindik ez dago platerik. Ireki Menua, gehitu plater bat (izena + prezioa), gero hartu eskaera.
+empty_catalog	Oraindik ez dago platerik.
 total	Guztira
 cash	Eskudirua
 upi	UPI
@@ -103,23 +103,14 @@ bill_item_qty	Kop.
 bill_item_price	Prezioa
 bill_item_amount	Zenbatekoa
 bill_item_note	Plateraren oharra
-bill_item_col_gap	Zutabe-tartea
 bill_item_col_order	Zutabe-ordena
 bill_item_col_sep	Zutabe-marra
-bill_item_gap_tight	Estua
-bill_item_gap_comfort	Erosoa
-bill_item_gap_wide	Zabala
-bill_item_num_width	Zenbaki-zutabeak
-bill_item_num_compact	Trinkoa
-bill_item_num_comfort	Erosoa
-bill_item_num_wide	Zabala
-bill_item_num_align	Zenbakiak lerrokatu
-bill_item_gap_em	Tartea (em)
-bill_item_qty_min	Kop. min (em)
-bill_item_price_min	Prezio min (em)
-bill_item_amount_min	Zenbateko min (em)
-kot_item_qty_width	Kopuru-zutabea
-kot_item_num_align	Kopurua lerrokatu
+slip_columns	Zutabeak
+slip_col_width	Zabalera (mm)
+slip_col_start	Hasierako tartea (px)
+slip_col_end	Amaierako tartea (px)
+slip_col_align	Testuaren lerrokatzea
+slip_columns_help	Zutabe bakoitzaren zabalerak hasierako eta amaierako tartea barne hartzen ditu. Testua bere zutabearen barruan egokitzen da; edukiaren zabaleratik kanpo geratzen dena moztu egiten da, paperean eta aurrebistan.
 bill_total_qty_label	Guztizko kopuru etiketa
 bill_total_subtotal_label	Azpitotal etiketa
 bill_total_grand_label	Guztizko handi etiketa
@@ -221,7 +212,6 @@ sidebar_order_saved	Alboko barraren ordena gordeta
 sidebar_visibility_saved	Alboko barraren ikusgaitasuna gordeta
 amounts_hide	Ezkutatu
 amounts_show	Erakutsi
-printers_none_hint	Gorde lehenik inprimagailu bat gailu honetan, gero gehitu Kontuari edo sukalde bati
 counter	Kutxatila
 dine_in	Bertan jatea
 takeaway	Eramateko
@@ -328,8 +318,6 @@ selected_language	Hautatuta
 continue	Jarraitu
 this_device	GAILU HAU
 device_use_q	Nola erabiliko da gailu hau?
-last_server_mode	Zerbitzaria zen — sakatu jarraitzeko
-last_client_mode	Bezeroa zen — sakatu jarraitzeko
 choose_server	Aukeratu zerbitzari bat
 choose_server_hint	Ireki dagoen zerbitzari bat, edo sortu bat beste negozio baterako.
 create_new_server	Sortu zerbitzari berria
@@ -391,7 +379,7 @@ attachments_last_expense	Eranskinak (azken gastua)
 bank	Bankua
 bank_in	Bankura sartu
 bank_out	Bankutik irten
-bank_reconciliation	Banku-adiskidetzea (markatu banku-laburpenaren aurka)
+bank_reconciliation	Banku-adiskidetzea
 bank_to_till	Bankua → kutxa
 book_add_dish	Liburua — gehitu platera / artikulua
 book_opening_credit	Liburua — hasierako kreditua
@@ -744,7 +732,6 @@ station_print_pick_first	Aukeratu sukaldeko geltoki bat lehenik
 station_print_editing	“{name}” inprimagailuak editatzen
 station_vps_dd	Inprimagailuak geltoki honetarako
 station_vps_dd_n	{n} inprimagailu · sakatu aldatzeko
-station_vps_empty	Oraindik inprimagailurik ez — aurkitu Ezarpenak → Inprimagailuak atalean
 bill_printers_dd	Inprimagailuak konturako
 bill_printers_dd_n	{n} inprimagailu konturako · sakatu aldatzeko
 job_layout	Antolamendua
@@ -889,7 +876,7 @@ net_word	Garbia
 offline_badge	LINEAZ KANPO
 optional_login_help	Aukerako saio-hasiera (id + pasahitza). Jabeak behin ezartzen du; erabiltzaileak soilik alda dezake pasahitza gero.
 or_unlock_login	Edo desblokeatu saio-id + pasahitzarekin
-permission_preset	Lana (pantailak eta diru-ekintzak ezartzen ditu)
+permission_preset	Lana
 preset_help_khaynjo	Kutxazaina: saldu. Kudeatzailea: saldu + artikuluak + baliogabetu/zuzendu.
 product_locked_khaynjo	Khaynjo
 product_only_khaynjo	Aplikazio hau Khaynjo soilik da — jatetxeetako sistema eragilea. Beste merkataritza-aurpegiak Kumkaj produktu bereizi gisa iristen dira.
@@ -961,10 +948,6 @@ pin_hint_paired	Kutxa gehigarria parekatuta — desblokeatu saltzeko
 pin_hint_pair_first	Kutxa gehigarria — lehenik parekatu dendako gailuarekin
 unlock_to_continue	Desblokeatu jarraitzeko
 no_staff_yet	Oraindik langilerik ez — desblokeatu Jabe gisa, gero Taldea
-status_server_set_pin	Zerbitzari modua — ezarri Jabearen PINa
-status_server_tills	Zerbitzari modua — kutxa gehigarriak elkartu daitezke. Desblokeatu
-status_server_unlock	Zerbitzari modua — desblokeatu Jabe gisa
-status_client_unlock	Bezero modua — desblokeatu saltzeko
 icon_new_selected	Ikonoa: fitxategi berria hautatuta — sakatu Gorde marka
 icon_custom	Ikonoa: lokalen marka pertsonalizatua
 icon_default	Ikonoa: Kumkaj marka (lehenetsia) — aukeratu pertsonalizatu bat
@@ -1033,7 +1016,7 @@ book_kind_balance	Balantzea
 order_help	Sakatu artikulu bat hura gehitzeko.
 floor_help	Sakatu mahai bat eskaera hartzeko edo aldatzeko. Koloreek erakusten dute libre → eseria → sukaldea → prest → jaten → kontua → ordainduta. Itxaron-zerrenda, erreserbak eta mahaiak gehitzea beheko ataletan daude.
 kitchen_help	Sukaldeko txartelak (KOT), berrienak azkenak. Hasi → Prest → Eginda txartela aurrera eramaten du. Txartelek ez dute inoiz preziork erakusten.
-kitchen_empty	Ez dago txartel irekirik. Eskaera edo Aretotik bidalitako KOT bat hemen agertzen da.
+kitchen_empty	Ez dago txartel irekirik.
 add_a_table	Gehitu mahai bat
 add_station_heading	Gehitu sukaldeko geltoki bat
 categories_help	Sakatu Erabili goiko artikulua kategoria horretan sartzeko. Argazkiak irudi bat ematen dio kategoriari; gabe inizialak erakusten ditu.
@@ -1131,7 +1114,6 @@ bill_format_help	Jatetxearen izenaren azpian inprimatzen da kontu bakoitzean. Le
 bill_header_ph	Helbidea | telefonoa
 fssai_ph	FSSAI lizentzia zk. (India)
 bill_footer_ph	Oina (adib. Eskerrik asko, etorri berriro)
-save_bill_format	Gorde kontu-formatua
 reset_bill_format	Berrezarri lehenetsira
 bill_format_reset	Kontu-formatua lehenetsira berrezarrita
 reset_kot_format	Berrezarri lehenetsira
@@ -1201,13 +1183,11 @@ kot_copies_3	3
 kot_title_ph	Izenburua (hutsa = KOT - KITCHEN ORDER)
 kot_footer_ph	Sukaldeko oharra (aukerakoa, preziorik gabe)
 kot_preview	Aurreikuspena
-save_kot_format	Gorde KOT formatua
 test_kot_format	KOT proba
 test_kot_sent	Sukaldeko txartelaren aurreikuspena bidalita
 test_bill_format	Kontu-proba
 test_bill_sent	Kontuaren aurreikuspena bidalita
 test_print_no_printer	Ez dago inprimagailurik lan horrentzat — aukeratu bat pantaila honetan
-kot_format_saved	KOT formatua gordeta
 std_print	Kontu-inprimatze neurria
 std_print_help	Letra-neurria Kontu lanetarako, bertikal eta horizontal estandarrean, OS / dokumentu inprimagailuetan (sartu puntuak — ez Txikia/Arrunta/Handia). Neurri bera bi orientazioetan. Sukaldeko txartelaren neurriak KOT fitxan daude.
 std_size_s	Txikia
@@ -1264,7 +1244,6 @@ new_items_head	Oraindik bidali gabe
 price_ph	Prezioa
 price_ph_gst_inside	Prezioa ({tax} barne)
 cancel_needs_table	Ireki eskaera hau Aretotik (mahai bat) sukaldeak duenean ezeztatzeko — kutxako KOTak txartelean geratzen dira ordainketa hartu arte
-tax_rates_missing_hint	Ez dago {tax} tasarik plater hauetan — Menuan ezarri Zerga-tasa (prezioek dagoeneko {tax} barne dute {tax} barne atalean)
 taxable_value	Zerga-oinarria
 gst_inside_price_note	({tax} barne)
 start_with_template	Hasi gure menu-txantiloiarekin
@@ -1318,9 +1297,7 @@ order_empty_pick	Eskaera hutsik — sakatu Gehitu platerak goian platerak hautat
 add_dishes	Gehitu platerak
 order_so_far	Eskaera honetan: {n} · {total}
 no_dish_match	Ez dago “{q}”rekin bat datorren platerik
-pick_dishes_help	Sakatu plater bat gehitzeko · aukeratu kategoria bat zerrenda estutzeko
 pick_done	Eginda
-pick_done_dd	Eginda · {label}
 printer_route_mode	Leku honetan hainbat inprimagailu badaude
 printer_mode_first	Lehena funtzionatzen duena
 printer_mode_all	Inprimatu guztietan

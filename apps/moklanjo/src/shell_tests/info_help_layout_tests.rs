@@ -2,6 +2,41 @@
 mod info_help_layout_tests {
     use super::*;
 
+    /// No explanations in the layout (owner, 2026-11-13 and again 2026-11-14:
+    /// "use the toolbar ℹ … avoid clustering texts"). A label's literal text
+    /// is a title, a value or a short state — never a paragraph or an
+    /// instruction; those go in the heading's InfoHelp `tip:`. 60+ characters
+    /// in a WrapLabel / Label body fails here; DESIGN.md "Explanations live
+    /// in ℹ" has the rule, `scripts/ui-text-inventory.sh` the visible check.
+    #[test]
+    fn layout_labels_carry_no_explanations() {
+        const LONGEST: usize = 60;
+        let ui = include_str!("../ui_script.rs");
+        let mut long = Vec::new();
+        let mut rest = ui;
+        while let Some(i) = rest.find(" := ") {
+            let after = &rest[i + 4..];
+            let is_label = after.starts_with("WrapLabel{") || after.starts_with("Label{");
+            let id_start = rest[..i].rfind(char::is_whitespace).map_or(0, |j| j + 1);
+            let id = &rest[id_start..i];
+            if is_label {
+                let block = &after[..after.find("\n}").or_else(|| after.find('}')).unwrap_or(after.len())];
+                for key in ["body: \"", "text: \""] {
+                    if let Some(k) = block.find(key) {
+                        let lit = &block[k + key.len()..];
+                        let end = lit.find('"').unwrap_or(lit.len());
+                        if lit[..end].chars().count() >= LONGEST {
+                            long.push(format!("{id}: {}", &lit[..end]));
+                        }
+                    }
+                }
+            }
+            rest = &rest[i + 4..];
+        }
+        assert!(long.is_empty(), "inline explanations (make them ℹ tips): {long:#?}");
+    }
+
+
     /// InfoHelp root stays Fill so the trail can absorb leftover row width.
     #[test]
     fn infohelp_default_is_fill_so_trail_absorbs() {

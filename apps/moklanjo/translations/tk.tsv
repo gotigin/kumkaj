@@ -39,7 +39,7 @@ adding_item	Täze nyrh goşmak
 editing_item	Redaktirlemek
 save	Saklaň
 remove	Aýyr
-empty_catalog	Entek nyrh ýok. Bahalary we hyzmatlary açyň, birini goşuň (ady + bahasy, birligi kg), soňra bolsa bron ediň.
+empty_catalog	Entek nyrh ýok.
 counter_sale	Hasap bron etmek
 total	Jemi
 cash	Nagt
@@ -171,8 +171,6 @@ selected_language	Saýlandy
 continue	Dowam et
 this_device	BU GURLUŞ
 device_use_q	Bu enjam nähili ulanylar?
-last_server_mode	Serwerdi - dowam etmek üçin basyň
-last_client_mode	Müşderi boldy - dowam etmek üçin basyň
 choose_server	Serwer saýlaň
 choose_server_hint	Bar bolan serweri açyň ýa-da başga bir iş üçin birini dörediň.
 create_new_server	Täze serwer dörediň
@@ -501,8 +499,6 @@ job_layout	Salgy
 job_delivery	Iş nädip iberilýär
 job_size	Şriftiň ululygy
 job_size_ph	meselem 18, 20, 26…
-save_receipt_format	Giriş formatyny ýazdyryň
-save_label_format	Bellik formatyny ýazdyryň
 test_receipt_format	Synag kwitansiýasy
 test_label_format	Synag belligi
 test_receipt_sent	Iberilen nusga
@@ -610,7 +606,7 @@ units_heading	Bölümler
 booking_measures	Zakaz bermek çäreleri
 drawer_count	Çyzgy sanamak (islege görä)
 spreadsheet_csv	Elektron tablisasy (CSV)
-bank_reconciliation	Bank ylalaşygy (bank hasabatyna garşy çykyň)
+bank_reconciliation	Bank ylalaşygy
 book_add_product	Kitap - önüm / nyrh goşuň
 book_opening_credit	Karz - açyk karz
 account_kind	Hasap görnüşi (birine basyň)
@@ -650,7 +646,7 @@ net_word	Arassa
 offline_badge	LINÝASYZ
 optional_login_help	Goşmaça giriş (id + parol) Eýesi bir gezek goýýar; diňe ulanyjy soň paroly üýtgedip biler.
 or_unlock_login	Ora-da giriş id + paroly bilen açyň
-permission_preset	Iş (ekranlary we hukuklary düzýär)
+permission_preset	Iş
 preset_help_moklanjo	Kassir: sat. Dolandyryjy: satmak + menýu elementleri + boş / üýtgetmek.
 product_locked_moklanjo	Moklanjo
 product_only_moklanjo	Bu programma diňe Moklanjo - kitaplar + bron stoly. Beýleki söwda ýüzleri soňra aýratyn önüm hökmünde iberilýär.
@@ -698,10 +694,6 @@ pin_hint_paired	Jübütlenýänçä goşmaça - satmak üçin açyň
 pin_hint_pair_first	Goşmaça - ilki dükan enjamyna jübütläň
 unlock_to_continue	Dowam etmek üçin açyň
 no_staff_yet	Entek işgär ýok - eýesi hökmünde açyň, soňra topar
-status_server_set_pin	Serwer tertibi - eýesini PIN düzüň
-status_server_tills	Serwer tertibi - goşmaça goşmaçalar goşulyp biler. Gulpy aç
-status_server_unlock	Serwer tertibi - eýesi hökmünde açyň
-status_client_unlock	Müşderi tertibi - satmak üçin açmak
 icon_new_selected	Nyşan: täze saýlanan faýl - Saklamak markasyna basyň
 icon_custom	Nyşan: ýörite ýer belligi
 icon_default	Nyşan: Kumkaj belligi (deslapky) - adaty birini saýlaň

@@ -39,7 +39,7 @@ adding_item	새 요금 추가 중
 editing_item	편집 중
 save	저장
 remove	제거
-empty_catalog	아직 요금이 없습니다. 요금 및 서비스를 열고 하나 추가(이름 + 가격, 단위 kg)한 뒤 접수하세요.
+empty_catalog	아직 요금이 없습니다.
 counter_sale	창구 접수
 total	합계
 cash	현금
@@ -171,8 +171,6 @@ selected_language	선택됨
 continue	계속
 this_device	이 기기
 device_use_q	이 기기를 어떻게 사용하시겠습니까?
-last_server_mode	이전에 서버 — 탭하여 계속
-last_client_mode	이전에 클라이언트 — 탭하여 계속
 choose_server	서버 선택
 choose_server_hint	이 기기에는 이미 서버가 있습니다. 하나를 열거나 다른 사업용 새 서버를 만드세요.
 create_new_server	새 서버 만들기
@@ -501,8 +499,6 @@ job_layout	레이아웃
 job_delivery	작업 전송 방식
 job_size	글꼴 크기
 job_size_ph	예: 18, 20, 26…
-save_receipt_format	영수증 형식 저장
-save_label_format	라벨 형식 저장
 test_receipt_format	테스트 영수증
 test_label_format	테스트 라벨
 test_receipt_sent	샘플 영수증이 전송되었습니다.
@@ -610,7 +606,7 @@ units_heading	단위
 booking_measures	접수 치수
 drawer_count	서랍 실사(선택)
 spreadsheet_csv	스프레드시트(CSV)
-bank_reconciliation	은행 대사(명세서와 체크)
+bank_reconciliation	은행 대사
 book_add_product	접수 — 상품/요금 추가
 book_opening_credit	접수 — 기초 외상
 account_kind	계정 종류(하나 누르기)
@@ -650,7 +646,7 @@ net_word	순액
 offline_badge	오프라인
 optional_login_help	선택 로그인(ID + 비밀번호). 점주가 한 번 설정하고, 이후에는 사용자 본인만 비밀번호를 변경할 수 있습니다.
 or_unlock_login	또는 로그인 ID + 비밀번호로 잠금 해제
-permission_preset	작업(화면 및 권한 설정)
+permission_preset	작업
 preset_help_moklanjo	캐셔: 판매. 매니저: 판매 + 항목 + 취소/수정.
 product_locked_moklanjo	Moklanjo
 product_only_moklanjo	이 앱은 Moklanjo 전용 — 장부 + 접수 창구입니다. 다른 업종 제품은 나중에 별도로 나옵니다.
@@ -698,10 +694,6 @@ pin_hint_paired	추가 계산대 페어링됨 — 판매하려면 잠금 해제
 pin_hint_pair_first	추가 계산대 — 먼저 매장 기기와 페어링
 unlock_to_continue	계속하려면 잠금 해제
 no_staff_yet	직원이 아직 없습니다 — 점주로 잠금 해제한 뒤 팀으로
-status_server_set_pin	서버 모드 — 점주 PIN 설정
-status_server_tills	서버 모드 — 추가 계산대가 참여할 수 있습니다. 잠금 해제
-status_server_unlock	서버 모드 — 점주로 잠금 해제
-status_client_unlock	클라이언트 모드 — 판매하려면 잠금 해제
 icon_new_selected	아이콘: 새 파일 선택됨 — 브랜드 저장을 누르세요
 icon_custom	아이콘: 내 가게 마크
 icon_default	아이콘: Kumkaj 마크(기본값) — 내 것을 선택하세요

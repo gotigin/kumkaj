@@ -890,6 +890,9 @@ fn collect_image_rels(tmpl: &MenuTemplate) -> Vec<String> {
             push(&item.image);
         }
     }
+    for item in &tmpl.items {
+        push(&item.image);
+    }
     out
 }
 
@@ -970,7 +973,10 @@ pub fn download_pack_from(
             id: manifest.id.clone(),
             title: manifest.title.clone(),
             blurb: manifest.blurb.clone(),
+            format: 0,
+            app: String::new(),
             categories: Vec::new(),
+            items: Vec::new(),
         };
         let stub_raw =
             serde_json::to_vec_pretty(&stub).map_err(|e| format!("stub template: {e}"))?;

@@ -41,7 +41,7 @@ remove	Odebrat
 removed_items	Odebrané položky
 removed_help	Obnovit vrátí položku do nabídky přesně tak, jak byla – cenu, fotografii a kategorii. Naše police na nádobí se nikdy nevyjímá, takže jídlo lze vždy znovu přidat.
 restore_item	Obnovit
-empty_catalog	Zatím žádné nádobí. Otevřete Menu, přidejte jídlo (název + cena) a poté si objednejte.
+empty_catalog	Zatím žádné nádobí.
 total	Celkem
 cash	Hotovost
 upi	UPI
@@ -103,23 +103,14 @@ bill_item_qty	množství
 bill_item_price	Cena
 bill_item_amount	Částka
 bill_item_note	Poznámka k jídlu
-bill_item_col_gap	Mezera sloupců
 bill_item_col_order	Pořadí sloupců
 bill_item_col_sep	Pravidla sloupců
-bill_item_gap_tight	Těsné
-bill_item_gap_comfort	Pohodlné
-bill_item_gap_wide	Široký
-bill_item_num_width	Číslo sloupce
-bill_item_num_compact	Kompaktní
-bill_item_num_comfort	Pohodlné
-bill_item_num_wide	Široký
-bill_item_num_align	Čísla se zarovnají
-bill_item_gap_em	mezera (em)
-bill_item_qty_min	min. množství (em)
-bill_item_price_min	Cena min (em)
-bill_item_amount_min	Minimální částka (em)
-kot_item_qty_width	Sloupec množství
-kot_item_num_align	Množství zarovnat
+slip_columns	Sloupce
+slip_col_width	Šířka (mm)
+slip_col_start	Mezera na začátku (px)
+slip_col_end	Mezera na konci (px)
+slip_col_align	Zarovnání textu
+slip_columns_help	Šířka každého sloupce zahrnuje jeho mezeru na začátku a na konci. Text se zalamuje uvnitř svého sloupce; co přesahuje šířku obsahu, se ořízne – na papíře i v náhledu.
 bill_total_qty_label	Štítek s celkovým množstvím
 bill_total_subtotal_label	Mezisoučet štítku
 bill_total_grand_label	Celkový štítek
@@ -221,7 +212,6 @@ sidebar_order_saved	Pořadí postranního panelu bylo uloženo
 sidebar_visibility_saved	Viditelnost postranního panelu uložena
 amounts_hide	Skrýt
 amounts_show	Zobrazit
-printers_none_hint	Nejprve si na tomto zařízení uložte tiskárnu a poté ji přidejte do Billa nebo do kuchyně
 counter	Počítadlo
 dine_in	Večeřet
 takeaway	Jídlo s sebou
@@ -328,8 +318,6 @@ selected_language	Vybráno
 continue	Pokračovat
 this_device	TOTO ZAŘÍZENÍ
 device_use_q	Jak bude toto zařízení používáno?
-last_server_mode	Byl server – pokračujte klepnutím
-last_client_mode	Byl klient – pokračujte klepnutím
 choose_server	Vyberte server
 choose_server_hint	Otevřete existující server nebo jej vytvořte pro jinou firmu.
 create_new_server	Vytvořit nový server
@@ -391,7 +379,7 @@ attachments_last_expense	Přílohy (poslední výdaj)
 bank	Banka
 bank_in	Do banky
 bank_out	Z banky
-bank_reconciliation	Bankovní odsouhlasení (zaškrtněte u výpisu z účtu)
+bank_reconciliation	Bankovní odsouhlasení
 bank_to_till	Banka → do
 book_add_dish	Kniha — přidat jídlo / položku
 book_opening_credit	Kniha — otevírací zápočet
@@ -744,7 +732,6 @@ station_print_pick_first	Nejprve si vyberte kuchyňskou stanici
 station_print_editing	Úprava tiskáren pro „{name}“
 station_vps_dd	Tiskárny pro tuto stanici
 station_vps_dd_n	{n} tiskáren · klepněte pro změnu
-station_vps_empty	Zatím žádné tiskárny — Najděte je v Nastavení → Tiskárny
 bill_printers_dd	Tiskárny na účet
 bill_printers_dd_n	{n} tiskáren na účet · klepnutím změňte
 job_layout	Rozložení
@@ -889,7 +876,7 @@ net_word	Síť
 offline_badge	OFFLINE
 optional_login_help	Volitelné přihlášení (id + heslo). Vlastník nastaví jednou; heslo může později změnit pouze uživatel.
 or_unlock_login	Nebo odemkněte pomocí přihlašovacího jména + hesla
-permission_preset	Job (nastavuje obrazovky a peněžní akce)
+permission_preset	Job
 preset_help_khaynjo	Pokladník: prodám. Manažer: prodat + položky + neplatné/upravit.
 product_locked_khaynjo	Khaynjo
 product_only_khaynjo	Tato aplikace je pouze Khaynjo — restaurační operační systém. Ostatní obchodní plochy jsou dodávány jako samostatné Kumkaj produkty.
@@ -961,10 +948,6 @@ pin_hint_paired	Extra do spárování – odemknutí před prodejem
 pin_hint_pair_first	Extra till — nejprve spárujte se zařízením obchodu
 unlock_to_continue	Chcete-li pokračovat, odemkněte
 no_staff_yet	Zatím žádní zaměstnanci – odemkněte jako vlastník, poté tým
-status_server_set_pin	Režim serveru — nastavte vlastníka PIN
-status_server_tills	Režim serveru – mohou se připojit další pokladny. Odemknout
-status_server_unlock	Režim serveru – odemkněte jako vlastník
-status_client_unlock	Klientský režim – odemkněte za účelem prodeje
 icon_new_selected	Ikona: vybrán nový soubor – klepněte na Uložit značku
 icon_custom	Ikona: vlastní značka místa konání
 icon_default	Ikona: Značka Kumkaj (výchozí) — vyberte si vlastní
@@ -1033,7 +1016,7 @@ book_kind_balance	Rozvaha
 order_help	Klepnutím na položku ji přidáte.
 floor_help	Klepnutím na jídelní stůl převezmete nebo změňte objednávku. Barvy ukazují zdarma → sedící → kuchyně → připravené → jíst → účet → zaplaceno. Seznam čekatelů, rezervace a další stoly jsou v sekcích níže.
 kitchen_help	Lístky do kuchyně (KOT), nejnovější poslední. Start → Připraveno → Hotovo posune lístek dál. Vstupenky nikdy neukazují ceny.
-kitchen_empty	Žádné otevřené vstupenky. Zde se zobrazí KOT odeslané z objednávky nebo jídelny.
+kitchen_empty	Žádné otevřené vstupenky.
 add_a_table	Přidejte jídelní stůl
 add_station_heading	Přidejte kuchyňskou stanici
 categories_help	Klepnutím na Použít zařadíte výše uvedenou položku do této kategorie. Fotografie dává kategorii obrázek; bez něj ukazuje své iniciály.
@@ -1131,7 +1114,6 @@ bill_format_help	Vytištěno pod názvem vaší restaurace na každém účtu. O
 bill_header_ph	Adresa | telefon
 fssai_ph	FSSAI číslo licence (Indie)
 bill_footer_ph	Zápatí (např. Děkuji, navštivte znovu)
-save_bill_format	Uložit formát faktury
 reset_bill_format	Obnovit výchozí
 bill_format_reset	Formát faktury byl resetován na výchozí
 reset_kot_format	Obnovit výchozí
@@ -1201,13 +1183,11 @@ kot_copies_3	3
 kot_title_ph	Název (prázdné = KOT - OBJEDNÁVKA KUCHYNĚ)
 kot_footer_ph	Poznámka do kuchyně (volitelné, bez ceny)
 kot_preview	Náhled
-save_kot_format	Uložit formát KOT
 test_kot_format	Zkusit KOT
 test_kot_sent	Náhled lístku do kuchyně odeslán
 test_bill_format	Testovací účet
 test_bill_sent	Náhled faktury odeslán
 test_print_no_printer	Pro tuto úlohu není žádná tiskárna – na této obrazovce jednu vyberte
-kot_format_saved	Formát KOT uložen
 std_print	Velikost tisku účtu
 std_print_help	Velikost písma pro standardní fakturační úlohy na výšku a na šířku na tiskárnách OS/dokumentů (zadejte body – ne Malé/Normální/Velké). Stejná velikost na obou orientacích. Velikosti kuchyňského lístku jsou na záložce KOT.
 std_size_s	Malý
@@ -1264,7 +1244,6 @@ new_items_head	Zatím neodesláno
 price_ph	Cena
 price_ph_gst_inside	Cena ({tax} včetně)
 cancel_needs_table	Otevřete tuto objednávku z obrazovky Jídelna (jídelní stůl) a zrušte ji poté, co ji bude mít kuchyň — pult KOT zůstane na lístku, dokud neprovedete platbu
-tax_rates_missing_hint	Žádná sazba {tax} na tato jídla — v nabídce nastavená sazba daně (ceny již zahrnují {tax} pod {tax} včetně)
 taxable_value	Zdanitelná hodnota
 gst_inside_price_note	({tax} včetně)
 start_with_template	Začněte s naší šablonou menu
@@ -1318,9 +1297,7 @@ order_empty_pick	Objednávka prázdná – poklepáním na Přidat pokrmy výše
 add_dishes	Přidejte nádobí
 order_so_far	V tomto pořadí: {n} · {total}
 no_dish_match	Žádné jídlo neodpovídá „{q}“
-pick_dishes_help	Klepnutím na jídlo jej přidáte · výběrem kategorie zúžíte seznam
 pick_done	Hotovo
-pick_done_dd	Hotovo · {label}
 printer_route_mode	Pokud je na tomto místě několik tiskáren
 printer_mode_first	Nejprve to funguje
 printer_mode_all	Tisk na všechny

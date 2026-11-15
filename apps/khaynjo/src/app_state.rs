@@ -75,6 +75,15 @@ struct AppState {
     printer_route_key: String,
     /// Settings hub: `None` = section list; `Some(id)` = that panel (printers, brand, …).
     settings_panel: Option<&'static str>,
+    /// A Settings section nav item was tapped: open this section once the
+    /// Settings screen is up (the switch may wait a frame for the loading veil).
+    settings_panel_after_go: Option<&'static str>,
+    /// Unlock lands as a tap on this nav item would (`unlocked_home_from`);
+    /// `sync_chrome` runs it once.
+    nav_tab_after_unlock: Option<NavTab>,
+    /// Whose last selected nav item is written to the books, and which (a
+    /// repaint does not write it again).
+    last_nav_saved: Option<(String, NavTab)>,
     /// Settings → Printers: real printer selected (for new / edit virtual).
     printer_selected_id: Option<String>,
     /// Pool printers checked for "Print a test page" / "Test KOT" (multi-select).
@@ -205,8 +214,11 @@ struct AppState {
     bill_style_field: print_share::BillStyleField,
     /// Which row of the bill print order is selected.
     bill_field_edit_idx: usize,
-    /// Which item column (name/qty/price/amount) is selected for reorder.
+    /// Which item column (name/qty/price/amount) is selected for reorder
+    /// and for its width / spaces / alignment.
     bill_item_col_edit_idx: usize,
+    /// Which KOT item column (Item / Qty) the column editor shows.
+    kot_item_col_edit: print_share::KotItemCol,
     /// DeviceSetup accordions (`language`, `role`, `public_templates`, `private_template`).
     device_setup_sections_open: Vec<String>,
     /// Pending custom icon path from picker (before Save brand).
@@ -262,6 +274,12 @@ struct AppState {
     /// Applied on `cart_qty_timer` so Progress paints before books work.
     pending_cart_bump: Option<(usize, i64)>,
     cart_qty_timer: Timer,
+    /// Bill & KOT format autosave: a short timer restarted by each edit;
+    /// when it fires (or the person leaves the screen) the marked drafts are
+    /// written. No Save buttons to forget (owner, 2026-11-14).
+    format_save_timer: Timer,
+    format_save_bill: bool,
+    format_save_kot: bool,
     /// Floor opened from Order to Choose / Change table. A tap returns to
     /// Order. Floor from nav does not set this — it only opens that ticket.
     picking_table: bool,
@@ -389,7 +407,7 @@ struct AppState {
     unlock_blocked_until: Option<std::time::Instant>,
     /// Owner must choose a new PIN before the till opens (post-migration reset).
     pin_reset_required: bool,
-    /// Drill-down history (Settings → SidebarSettings, …). Chrome peers use
+    /// Drill-down history (Settings → Team, …). Chrome peers use
     /// Visit history for Back / mouse / swipe / Android (`navigate_back`).
     /// Peer chrome and drill-downs push; Lock / first-run clear.
     nav_back: Vec<Screen>,

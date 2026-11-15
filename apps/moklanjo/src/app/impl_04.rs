@@ -444,7 +444,6 @@ fn paint_static_texts(&mut self, cx: &mut Cx) {
                 ids!(route_remove),
                 ids!(route_clear),
                 ids!(printers_save),
-                ids!(job_format_save),
                 ids!(job_width_input),
                 ids!(job_size_input),
             ] {

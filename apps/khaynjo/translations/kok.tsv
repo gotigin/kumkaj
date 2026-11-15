@@ -41,7 +41,7 @@ remove	काडांत
 removed_items	काडिल्ले पदार्थ
 removed_help	परत हाडल्यार पदार्थ मेनूंत तसोच येता — किंमत, फोटो आनी वर्ग. आमचो पदार्थांचो शेल्फ केन्नाच काडनात, म्हणून खंयचोय पदार्थ परत जोडूं येता.
 restore_item	परत हाडात
-empty_catalog	अजून पदार्थ नात. मेनू उगडात, पदार्थ जोडात (नांव + किंमत), मागीर ऑर्डर घेयात.
+empty_catalog	अजून पदार्थ नात.
 total	एकूण
 cash	रोख
 upi	यूपीआई
@@ -103,23 +103,14 @@ bill_item_qty	संख्या
 bill_item_price	किंमत
 bill_item_amount	रक्कम
 bill_item_note	पदार्थाची नोंद
-bill_item_col_gap	स्तंभांमदीं जागो
 bill_item_col_order	स्तंभांचो क्रम
 bill_item_col_sep	स्तंभाच्यो रेगो
-bill_item_gap_tight	दाट
-bill_item_gap_comfort	आरामाचें
-bill_item_gap_wide	रुंद
-bill_item_num_width	आंकड्यांचे स्तंभ
-bill_item_num_compact	दाट
-bill_item_num_comfort	आरामाचें
-bill_item_num_wide	रुंद
-bill_item_num_align	आंकडे एका रेशेंत
-bill_item_gap_em	जागो (em)
-bill_item_qty_min	संख्या सगळ्यांत उणी (em)
-bill_item_price_min	किंमत सगळ्यांत उणी (em)
-bill_item_amount_min	रक्कम सगळ्यांत उणी (em)
-kot_item_qty_width	संख्येचो स्तंभ
-kot_item_num_align	संख्येची रेग
+slip_columns	स्तंभ
+slip_col_width	रुंदाय (mm)
+slip_col_start	सुरवेची सुवात (px)
+slip_col_end	निमाणी सुवात (px)
+slip_col_align	मजकुराची मांडणी
+slip_columns_help	दर स्तंभाच्या रुंदायेंत ताची सुरवेची आनी निमाणी सुवात आसा. मजकूर आपल्या स्तंभाभितर गुठलायता; आशयाच्या रुंदाये भायर जें आसा तें कागदाचेर आनी पूर्वदर्शनांत कातरता.
 bill_total_qty_label	एकूण संख्येचें लेबल
 bill_total_subtotal_label	उपबेरीज लेबल
 bill_total_grand_label	मुखेल बेरीज लेबल
@@ -221,7 +212,6 @@ sidebar_order_saved	सायडबार ऑर्डर जतनाय घे
 sidebar_visibility_saved	बाजूची पट्टी दृश्यताय जतनाय घेतल्या
 amounts_hide	लिपोवचें
 amounts_show	दाखोवचें
-printers_none_hint	पयलीं ह्या डिव्हायसाचेर प्रिंटर जतनाय घेयात, मागीर तो बिलांत वा रांदचे कुडींत जोडात
 counter	गल्लो
 dine_in	डाइन-इन करप
 takeaway	टेकअवे
@@ -328,8 +318,6 @@ selected_language	वेंचून काडलां
 continue	फुडें व्हरप
 this_device	हें साधन
 device_use_q	हें साधन कशें वापरतले?
-last_server_mode	Was Server — चालू दवरपाक टॅप करात
-last_client_mode	Was Client — चालू दवरपाक टॅप करात
 choose_server	सर्वर निवडात
 choose_server_hint	सद्याचो सर्वर उगडात, वा दुसऱ्या वेवसायाक एक तयार करात.
 create_new_server	नवो सर्वर तयार करचो
@@ -391,7 +379,7 @@ attachments_last_expense	संलग्नक (निमाणो खर्च)
 bank	बँक
 bank_in	बँक इन
 bank_out	बँक आउट
-bank_reconciliation	बँक समेट (तुमच्या बँक स्टेटमेंटाचेर टिक ऑफ करात)
+bank_reconciliation	बँक समेट
 bank_to_till	बँक → ते
 book_add_dish	पुस्तक — डिश / आयटम जोडचें
 book_opening_credit	पुस्तक — उगडपाचें श्रेय
@@ -744,7 +732,6 @@ station_print_pick_first	पयलीं रांदचे कुडीचे�
 station_print_editing	“{name}” खातीर प्रिंटर संपादीत करप.
 station_vps_dd	ह्या स्टेशनाचे प्रिंटर
 station_vps_dd_n	{n} मुद्रक (मुद्रक) · बदलपाक टॅप करात
-station_vps_empty	अजून मुद्रक नात — मांडावळी → मुद्रक खाला तांकां सोदून काडात
 bill_printers_dd	बिला खातीर प्रिंटर
 bill_printers_dd_n	{n} बिला खातीर मुद्रक (मुद्रक) · बदलपाक टॅप करात
 job_layout	रचणाय
@@ -889,7 +876,7 @@ net_word	जाळें
 offline_badge	OFFLINE हें नांव
 optional_login_help	पर्यायी लॉगीन (आयडी + पासवर्ड). मालक एकदां सेट करता; फकत वापरप्याकच फुडें पासवर्ड बदलूं येता.
 or_unlock_login	वा लॉगीन आयडी + पासवर्डान उगडात
-permission_preset	नोकरी (स्क्रीन आनी पयशांचीं कृती सेट करता)
+permission_preset	नोकरी
 preset_help_khaynjo	कॅशियर: विकप. वेवस्थापक: विकप + वस्तू + शून्य/दुरुस्ती करप.
 product_locked_khaynjo	Khaynjo
 product_only_khaynjo	हो अॅप फकत Khaynjo — रेस्टॉरंट ऑपरेटिंग सिस्टम. हेर वेपाराक वेगवेगळीं कुमकज उत्पादनां म्हणून जहाजांक तोंड दिवचें पडटा.
@@ -961,10 +948,6 @@ pin_hint_paired	जोडी मेरेन अतिरिक्त — वि
 pin_hint_pair_first	अतिरिक्त टिल्ल — पयलीं दुकानाच्या साधनाक जोडप
 unlock_to_continue	चालू दवरपाक उगडात
 no_staff_yet	अजून कर्मचारी ना — मालक म्हणून उगडात, मागीर पंगड
-status_server_set_pin	सर्वर मोड — मालक पिन सेट करचो
-status_server_tills	सर्वर मोड — अतिरिक्त टिल्स सामील जावंक शकतात. उगडात
-status_server_unlock	सर्वर मोड — मालक म्हणून उगडात
-status_client_unlock	क्लायंट मोड — विकपाक उगडात
 icon_new_selected	चिन्न: नवी फायल निवडल्या — ब्रँड जतनाय घेयात टॅप करात
 icon_custom	चिन्न: सानुकूल स्थळ चिन्न
 icon_default	चिन्न: कुमकाज चिन्न (मुळावी) — सानुकूल निवडात
@@ -1033,7 +1016,7 @@ book_kind_balance	ताळेबंद पत्रक
 order_help	एक आयटम जोडपाक टॅप करात.
 floor_help	ऑर्डर घेवपाक वा बदलपाक टेबल टॅप करात. रंग फुकट दाखयतात → बसलेले → रांदचीकूड → तयार → जेवप → बिल → फारीक केल्लें. वेटलिस्ट, आरक्षण, आनी ऍड-टेबलां सकयल दिल्ल्या विभागांनी आसात.
 kitchen_help	किचन तिकीट (केओटी), सगळ्यांत नवी निमाणी. सुरू → तयार → पुराय एक तिकीट वांगडा व्हरता. तिकेटींनी केन्नाच दर दिसनात.
-kitchen_empty	उक्ती तिकीट ना. ऑर्डर वा फ्लोर कडल्यान धाडिल्लो केओटी हांगा दिसता.
+kitchen_empty	उक्ती तिकीट ना.
 add_a_table	एक टेबल जोडचें
 add_station_heading	रांदचीकूड स्टेशन जोडचें
 categories_help	त्या वर्गा खाला वयर दिल्लें आयटम फायल करपाक वापरात टॅप करात. फोटो वर्गाक चित्र दिता; एक नासतना तो आपलीं आद्याक्षरां दाखयता.
@@ -1131,7 +1114,6 @@ bill_format_help	दर एका बिलाचेर तुमच्या �
 bill_header_ph	पत्तो | फोन
 fssai_ph	एफएसएसएआय परवानो क्र. (भारत)
 bill_footer_ph	तळटीप (देखीक- धन्यवाद, परतून भेट दिवची)
-save_bill_format	बिल स्वरूप जतनाय घेयात
 reset_bill_format	पूर्वनिर्धारीत करपाक रीसेट करात
 bill_format_reset	बिल स्वरूप पूर्वनिर्धारीत करपाक रीसेट करचें
 reset_kot_format	पूर्वनिर्धारीत करपाक रीसेट करात
@@ -1201,13 +1183,11 @@ kot_copies_3	3
 kot_title_ph	शीर्षक (रिक्त = KOT - किचन ऑर्डर)
 kot_footer_ph	किचन नोट (पर्यायी, दर ना)
 kot_preview	पूर्वावलोकन
-save_kot_format	KOT फॉरमॅट सेव्ह करात
 test_kot_format	चांचणी KOT
 test_kot_sent	किचन तिकेटीचो पूर्वावलोकन धाडलो
 test_bill_format	चांचणेचें बिल
 test_bill_sent	बिलाचो पूर्वावलोकन धाडलो
 test_print_no_printer	त्या कामा खातीर प्रिंटर ना — ह्या स्क्रीनाचेर एक वेंचून काडचो
-kot_format_saved	KOT फॉरमॅट सेव्ह केलो
 std_print	बिल छापपाचो आकार
 std_print_help	OS/डॉक्युमेंट प्रिंटरांचेर स्टँडर्ड पोर्ट्रेट आनी लँडस्केप बिल नोकऱ्यां खातीर फॉन्ट आकार (बिंदू नोंद करात - ल्हान/सामान्य/व्हड न्हय). दोनूय दिकांचेर समान आकार. किचन स्लिपाचो आकार KOT टॅबाचेर आसता.
 std_size_s	ल्हान
@@ -1264,7 +1244,6 @@ new_items_head	अजून धाडूंक ना
 price_ph	मोल
 price_ph_gst_inside	किंमत ({tax} समावेशक)
 cancel_needs_table	रांदचे कुडींत आसले उपरांत रद्द करपाक फ्लोअर (एक टेबल) वयल्यान ही ऑर्डर उगडची — तुमी पयशे घेमेरेन काऊंटर कोट तिकेटीचेर रावतात
-tax_rates_missing_hint	ह्या पदार्थांचेर {tax} दर ना — मेनू सेट कर दर (दरांत पयलींच {tax} {tax} सकयल आसपावीत आसा)
 taxable_value	करपात्र मोल
 gst_inside_price_note	({tax} समावेशक)
 start_with_template	आमच्या मेनू साच्यान सुरवात करात
@@ -1318,9 +1297,7 @@ order_empty_pick	रिकामे ऑर्डर करात — आयद�
 add_dishes	आयदनां घाल
 order_so_far	ह्या ऑर्डराचेर: {n} · {total}
 no_dish_match	“{q}” सारकें पदार्थ मेळूंक ना
-pick_dishes_help	एक डिश जोडपाक टॅप करात · वळेरी संकुचीत करपाक एक श्रेणी निवडात
 pick_done	जालें
-pick_done_dd	जालें · {label}
 printer_route_mode	ह्या जाग्यार जर साबार प्रिंटर आसल्यार
 printer_mode_first	पयलें, तें काम करता
 printer_mode_all	सगळ्यांचेर छापप

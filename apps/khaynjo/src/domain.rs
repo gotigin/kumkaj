@@ -371,6 +371,11 @@ impl StaffRole {
     }
 }
 
+/// What a Client keeps in place of a PIN hash: "this person has a PIN, the
+/// Server checks it". Not a hash, so it never verifies a PIN
+/// (`store::verify_pin` only accepts `sha256:…`).
+pub const PIN_ON_SERVER: &str = "on-server";
+
 /// Per-staff feature flags (Owner always has all).
 #[derive(Clone, Debug, PartialEq, Eq, Serialize, Deserialize)]
 pub struct StaffFeatures {
@@ -969,6 +974,20 @@ pub struct StaffMember {
 impl StaffMember {
     pub fn is_owner(&self) -> bool {
         self.role.is_owner()
+    }
+
+    /// False for someone an app template brought in without a PIN: they
+    /// cannot sign in until the Owner gives them a first one in Team. True
+    /// on Clients too: they get [`PIN_ON_SERVER`] instead of the hash.
+    pub fn has_pin(&self) -> bool {
+        !self.pin_hash.trim().is_empty()
+    }
+
+    /// This person as other devices may see them: no PIN or password hash,
+    /// only whether a PIN exists ([`PIN_ON_SERVER`]). Never verifies.
+    pub fn for_devices(self) -> Self {
+        let pin_hash = if self.has_pin() { PIN_ON_SERVER.to_string() } else { String::new() };
+        Self { pin_hash, password_hash: String::new(), ..self }
     }
 
     pub fn display_role(&self) -> String {
@@ -2490,6 +2509,10 @@ pub struct Cart {
     pub delivery_by: String,
     /// Names of schemes applied at settle (shown on the ticket as "Scheme: …").
     pub scheme_notes: Vec<String>,
+    /// A counter / takeaway / delivery order (no table) had its bill
+    /// printed — the same "Bill printed" step a table has, so printing again
+    /// needs the Reprint right. New dishes sent after it clear it.
+    pub bill_printed: bool,
 }
 
 /// How much off the bill.
@@ -2538,8 +2561,32 @@ impl Cart {
         self.discount = None;
         self.delivery_by.clear();
         self.scheme_notes.clear();
+        self.bill_printed = false;
         self.order_type = OrderType::Counter;
         // Keep money_lane — owner choice persists across carts until they flip the chip.
+    }
+
+    /// The guest's bill lines of an order with no table, shaped like a
+    /// table's running order so it prints through the same bill (the table's
+    /// order lives in the books; this one only on the till).
+    pub fn to_bill_lines(&self) -> Vec<RunningLine> {
+        self.lines
+            .iter()
+            .filter(|l| l.qty_milli > 0)
+            .map(|l| RunningLine {
+                kot_id: l.kot_id.clone(),
+                product_id: l.product_id.clone(),
+                name: l.name.clone(),
+                unit_price_paise: l.unit_price.paise(),
+                line_total_paise: l.line_total_override.map(|m| m.paise()).unwrap_or(-1),
+                qty_milli: l.qty_milli,
+                unit_label: l.unit_label.clone(),
+                note: l.kitchen_note(),
+                complimentary: l.complimentary,
+                station_id: l.station_id.clone(),
+                ..RunningLine::default()
+            })
+            .collect()
     }
 
     pub fn set_order_type(&mut self, order_type: OrderType) {
@@ -3040,6 +3087,7 @@ impl Cart {
             // Kept on the sale's own delivery record; amending leaves it be.
             delivery_by: String::new(),
             scheme_notes: Vec::new(),
+            bill_printed: false,
         };
         if sale.rounding_paise != 0 {
             cart.charge_total = Some(Money(sale.total_paise));

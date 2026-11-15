@@ -41,7 +41,7 @@ remove	Elimină
 removed_items	Articole eliminate
 removed_help	Restaurarea pune articolul înapoi în meniu exact cum era — preț, poză și categorie. Raftul nostru de feluri nu se elimină niciodată, așa că un fel poate fi adăugat din nou oricând.
 restore_item	Restaurează
-empty_catalog	Încă nu sunt feluri. Deschide Meniul, adaugă un fel (nume + preț), apoi preia o comandă.
+empty_catalog	Încă nu sunt feluri.
 total	Total
 cash	Numerar
 upi	UPI
@@ -103,23 +103,14 @@ bill_item_qty	Cant.
 bill_item_price	Preț
 bill_item_amount	Sumă
 bill_item_note	Notă fel
-bill_item_col_gap	Spațiu coloane
 bill_item_col_order	Ordine coloane
 bill_item_col_sep	Linii coloane
-bill_item_gap_tight	Strâns
-bill_item_gap_comfort	Confortabil
-bill_item_gap_wide	Larg
-bill_item_num_width	Coloane numerice
-bill_item_num_compact	Compact
-bill_item_num_comfort	Confortabil
-bill_item_num_wide	Larg
-bill_item_num_align	Aliniere numere
-bill_item_gap_em	Spațiu (em)
-bill_item_qty_min	Cant. min (em)
-bill_item_price_min	Preț min (em)
-bill_item_amount_min	Sumă min (em)
-kot_item_qty_width	Coloană cant.
-kot_item_num_align	Aliniere cant.
+slip_columns	Coloane
+slip_col_width	Lățime (mm)
+slip_col_start	Spațiu la început (px)
+slip_col_end	Spațiu la sfârșit (px)
+slip_col_align	Alinierea textului
+slip_columns_help	Lățimea fiecărei coloane include spațiul de la început și de la sfârșit. Textul se încadrează în coloana sa; ce depășește lățimea conținutului este tăiat, pe hârtie și în previzualizare.
 bill_total_qty_label	Etichetă cant. totală
 bill_total_subtotal_label	Etichetă subtotal
 bill_total_grand_label	Etichetă total general
@@ -221,7 +212,6 @@ sidebar_order_saved	Ordinea barei laterale salvată
 sidebar_visibility_saved	Vizibilitatea barei laterale salvată
 amounts_hide	Ascunde
 amounts_show	Arată
-printers_none_hint	Salvează mai întâi o imprimantă pe acest dispozitiv, apoi adaug-o la Notă sau la o bucătărie
 counter	Tejghea
 dine_in	La masă
 takeaway	La pachet
@@ -328,8 +318,6 @@ selected_language	Selectat
 continue	Continuă
 this_device	ACEST DISPOZITIV
 device_use_q	Cum va fi folosit acest dispozitiv?
-last_server_mode	Era Server — atinge ca să continui
-last_client_mode	Era Client — atinge ca să continui
 choose_server	Alege un server
 choose_server_hint	Deschide un server existent sau creează unul pentru altă afacere.
 create_new_server	Creează server nou
@@ -391,7 +379,7 @@ attachments_last_expense	Atașamente (ultima cheltuială)
 bank	Bancă
 bank_in	Intrare bancă
 bank_out	Ieșire bancă
-bank_reconciliation	Reconciliere bancară (bifați față de extrasul bancar)
+bank_reconciliation	Reconciliere bancară
 bank_to_till	Bancă → casă
 book_add_dish	Registru — adaugă fel / articol
 book_opening_credit	Registru — credit de deschidere
@@ -744,7 +732,6 @@ station_print_pick_first	Alege mai întâi o stație de bucătărie
 station_print_editing	Se editează imprimantele pentru „{name}”
 station_vps_dd	Imprimante pentru această stație
 station_vps_dd_n	{n} imprimantă(e) · atinge pentru a schimba
-station_vps_empty	Încă nu sunt imprimante — găsește-le la Setări → Imprimante
 bill_printers_dd	Imprimante pentru notă
 bill_printers_dd_n	{n} imprimantă(e) pentru notă · atinge pentru a schimba
 job_layout	Așezare
@@ -889,7 +876,7 @@ net_word	Net
 offline_badge	DECONECTAT
 optional_login_help	Autentificare opțională (id + parolă). Proprietarul setează o dată; doar utilizatorul poate schimba parola mai târziu.
 or_unlock_login	Sau deblochează cu id de autentificare + parolă
-permission_preset	Post (setează ecrane și acțiuni cu bani)
+permission_preset	Post
 preset_help_khaynjo	Casier: vinde. Manager: vânzare + articole + anulare/modificare.
 product_locked_khaynjo	Khaynjo
 product_only_khaynjo	Această aplicație este doar Khaynjo — sistem de operare pentru restaurant. Celelalte meserii vin ca produse Kumkaj separate.
@@ -961,10 +948,6 @@ pin_hint_paired	Casă suplimentară împerecheată — deblochează ca să vinzi
 pin_hint_pair_first	Casă suplimentară — împerecheaz-o întâi cu dispozitivul localului
 unlock_to_continue	Deblochează ca să continui
 no_staff_yet	Încă nu e personal — deblochează ca Proprietar, apoi Echipă
-status_server_set_pin	Mod Server — setează PIN-ul Proprietarului
-status_server_tills	Mod Server — casele suplimentare se pot alătura. Deblochează
-status_server_unlock	Mod Server — deblochează ca Proprietar
-status_client_unlock	Mod Client — deblochează ca să vinzi
 icon_new_selected	Pictogramă: fișier nou selectat — atinge Salvează marca
 icon_custom	Pictogramă: marcă proprie a localului
 icon_default	Pictogramă: marca Kumkaj (implicit) — alege una proprie
@@ -1033,7 +1016,7 @@ book_kind_balance	Bilanț
 order_help	Atinge un articol ca să-l adaugi.
 floor_help	Atinge o masă ca să iei sau să schimbi comanda. Culorile arată liberă → așezată → bucătărie → gata → mănâncă → notă → plătită. Lista de așteptare, rezervările și adăugarea de mese sunt în secțiunile de mai jos.
 kitchen_help	Bonuri de bucătărie (KOT), cele mai noi la urmă. Start → Gata → Terminat mută bonul. Bonurile nu arată niciodată prețuri.
-kitchen_empty	Niciun bon deschis. Un KOT trimis din Comandă sau Sală apare aici.
+kitchen_empty	Niciun bon deschis.
 add_a_table	Adaugă o masă
 add_station_heading	Adaugă o stație de bucătărie
 categories_help	Atinge Folosește ca să pui articolul de mai sus în categoria aceea. Poza dă categoriei o imagine; fără ea se arată inițialele.
@@ -1131,7 +1114,6 @@ bill_format_help	Tipărit sub numele restaurantului pe fiecare notă. Separă r�
 bill_header_ph	Adresă | telefon
 fssai_ph	Nr. licență FSSAI (India)
 bill_footer_ph	Subsol (ex. Mulțumim, reveniți)
-save_bill_format	Salvează formatul notei
 reset_bill_format	Resetează la implicit
 bill_format_reset	Formatul notei a fost resetat la implicit
 reset_kot_format	Resetează la implicit
@@ -1201,13 +1183,11 @@ kot_copies_3	3
 kot_title_ph	Titlu (gol = KOT - KITCHEN ORDER)
 kot_footer_ph	Notă de bucătărie (opțional, fără prețuri)
 kot_preview	Previzualizare
-save_kot_format	Salvează formatul KOT
 test_kot_format	KOT de test
 test_kot_sent	Previzualizarea bonului de bucătărie a fost trimisă
 test_bill_format	Notă de test
 test_bill_sent	Previzualizarea notei a fost trimisă
 test_print_no_printer	Nicio imprimantă pentru lucrarea aceea — alege una pe acest ecran
-kot_format_saved	Format KOT salvat
 std_print	Mărime tipărire notă
 std_print_help	Mărime font pentru lucrări de notă Portret și Peisaj standard pe imprimante OS / document (introdu puncte — nu Mic/Obișnuit/Mare). Aceeași mărime în ambele orientări. Mărimile bonului de bucătărie sunt în fila KOT.
 std_size_s	Mic
@@ -1264,7 +1244,6 @@ new_items_head	Încă netrimis
 price_ph	Preț
 price_ph_gst_inside	Preț ({tax} inclus)
 cancel_needs_table	Deschide comanda asta din Sală (o masă) ca să anulezi după ce o are bucătăria — KOT-urile de la casă rămân pe bon până încasezi
-tax_rates_missing_hint	Nicio cotă {tax} pe aceste feluri — în Meniu setează Cota de taxă (prețurile includ deja {tax} la {tax} inclus)
 taxable_value	Valoare impozabilă
 gst_inside_price_note	({tax} inclus)
 start_with_template	Începe cu șablonul nostru de meniu
@@ -1318,9 +1297,7 @@ order_empty_pick	Comanda e goală — atinge Adaugă feluri mai sus ca să alegi
 add_dishes	Adaugă feluri
 order_so_far	În comanda asta: {n} · {total}
 no_dish_match	Niciun fel nu se potrivește cu „{q}”
-pick_dishes_help	Atinge un fel ca să-l adaugi · alege o categorie ca să îngustezi lista
 pick_done	Gata
-pick_done_dd	Gata · {label}
 printer_route_mode	Dacă sunt mai multe imprimante pe acest loc
 printer_mode_first	Prima care merge
 printer_mode_all	Tipărește pe toate

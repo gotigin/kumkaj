@@ -41,7 +41,7 @@ remove	നീക്കം ചെയ്യുക
 removed_items	നീക്കിയ ഇനങ്ങൾ
 removed_help	പുനഃസ്ഥാപിച്ചാൽ ഇനം മുമ്പുണ്ടായിരുന്നതുപോലെ മെനുവിൽ വരും — വില, ഫോട്ടോ, വിഭാഗം. ഞങ്ങളുടെ വിഭവങ്ങളുടെ ഷെൽഫ് ഒരിക്കലും നീക്കപ്പെടില്ല, അതിനാൽ ഏത് വിഭവവും വീണ്ടും ചേർക്കാം.
 restore_item	പുനഃസ്ഥാപിക്കുക
-empty_catalog	ഇതുവരെ ഇനങ്ങളില്ല. മെനുവും ഇനങ്ങളും തുറന്ന് ഒന്ന് ചേർക്കുക (പേര് + വില), പിന്നെ ഓർഡർ എടുക്കുക.
+empty_catalog	ഇതുവരെ ഇനങ്ങളില്ല.
 total	ആകെ
 cash	പണം
 upi	यूपीआई
@@ -103,23 +103,14 @@ bill_item_qty	എണ്ണം
 bill_item_price	വില
 bill_item_amount	തുക
 bill_item_note	കുറിപ്പ്
-bill_item_col_gap	നിര വിടവ്
 bill_item_col_order	നിര ക്രമം
 bill_item_col_sep	നിര വര
-bill_item_gap_tight	ഇറുക്കം
-bill_item_gap_comfort	സുഖകരം
-bill_item_gap_wide	വീതി
-bill_item_num_width	സംഖ്യ നിര
-bill_item_num_compact	ചെറുത്
-bill_item_num_comfort	സുഖകരം
-bill_item_num_wide	വീതി
-bill_item_num_align	സംഖ്യ വിന്യാസം
-bill_item_gap_em	വിടവ് (em)
-bill_item_qty_min	എണ്ണം കുറഞ്ഞത് (em)
-bill_item_price_min	വില കുറഞ്ഞത് (em)
-bill_item_amount_min	തുക കുറഞ്ഞത് (em)
-kot_item_qty_width	എണ്ണം നിര
-kot_item_num_align	എണ്ണം വിന്യാസം
+slip_columns	കോളങ്ങൾ
+slip_col_width	വീതി (mm)
+slip_col_start	തുടക്കത്തിലെ ഇടം (px)
+slip_col_end	അവസാനത്തെ ഇടം (px)
+slip_col_align	ടെക്സ്റ്റ് വിന്യാസം
+slip_columns_help	ഓരോ കോളത്തിന്റെയും വീതിയിൽ അതിന്റെ തുടക്കത്തിലെയും അവസാനത്തെയും ഇടം ഉൾപ്പെടുന്നു. ടെക്സ്റ്റ് സ്വന്തം കോളത്തിനുള്ളിൽ പൊതിയുന്നു; ഉള്ളടക്കത്തിന്റെ വീതിക്ക് പുറത്തുള്ളത് കടലാസിലും പ്രിവ്യൂവിലും മുറിഞ്ഞുപോകും.
 bill_total_qty_label	ആകെ എണ്ണം ലേബൽ
 bill_total_subtotal_label	ഉപമൊത്തം ലേബൽ
 bill_total_grand_label	ആകെ ലേബൽ
@@ -221,7 +212,6 @@ sidebar_order_saved	സൈഡ്‌ബാർ ക്രമം സേവ് ചെ
 sidebar_visibility_saved	സൈഡ്‌ബാർ ദൃശ്യത സേവ് ചെയ്തു
 amounts_hide	മറയ്ക്കുക
 amounts_show	കാണിക്കുക
-printers_none_hint	ആദ്യം ഈ ഉപകരണത്തിൽ ഒരു പ്രിന്റർ സേവ് ചെയ്യുക, പിന്നെ അത് ബില്ലിലോ ഒരു അടുക്കളയിലോ ചേർക്കുക
 counter	കൗണ്ടർ
 dine_in	അവിടെ കഴിക്കൽ
 takeaway	പാർസൽ
@@ -328,8 +318,6 @@ selected_language	തിരഞ്ഞെടുത്തത്
 continue	തുടരുക
 this_device	ഈ ഉപകരണം
 device_use_q	ഈ ഉപകരണം എങ്ങനെ ഉപയോഗിക്കും?
-last_server_mode	മുമ്പ് സെർവർ — തുടരാൻ ടാപ്പ് ചെയ്യുക
-last_client_mode	മുമ്പ് ക്ലയന്റ് — തുടരാൻ ടാപ്പ് ചെയ്യുക
 choose_server	സെർവർ തിരഞ്ഞെടുക്കുക
 choose_server_hint	ഈ ഉപകരണത്തിൽ ഇതിനകം സെർവറുകളുണ്ട്. ഒന്ന് തുറക്കുക, അല്ലെങ്കിൽ മറ്റൊരു ബിസിനസിന് പുതിയ സെർവർ ഉണ്ടാക്കുക.
 create_new_server	പുതിയ സെർവർ ഉണ്ടാക്കുക
@@ -391,7 +379,7 @@ attachments_last_expense	അറ്റാച്ച്‌മെന്റുകൾ 
 bank	ബാങ്ക്
 bank_in	ബാങ്കിൽ ഇടുക
 bank_out	ബാങ്കിൽ നിന്ന് എടുക്കുക
-bank_reconciliation	ബാങ്ക് അനുരഞ്ജനം (നിങ്ങളുടെ ബാങ്ക് സ്റ്റേറ്റ്‌മെന്റുമായി ടിക്ക് ചെയ്യുക)
+bank_reconciliation	ബാങ്ക് അനുരഞ്ജനം
 bank_to_till	ബാങ്ക് → ടിൽ
 book_add_dish	ബുക്ക് — വിഭവം / ഇനം ചേർക്കുക
 book_opening_credit	ബുക്ക് — ആരംഭ കടം
@@ -744,7 +732,6 @@ station_print_pick_first	ആദ്യം അടുക്കള സ്റ്റ�
 station_print_editing	“{name}” പ്രിന്ററുകൾ എഡിറ്റ് ചെയ്യുന്നു
 station_vps_dd	ഈ സ്റ്റേഷന്റെ പ്രിന്ററുകൾ
 station_vps_dd_n	{n} പ്രിന്ററുകൾ · മാറ്റാൻ ടാപ്പ്
-station_vps_empty	ഇതുവരെ പ്രിന്ററുകളില്ല — ക്രമീകരണങ്ങൾ → പ്രിന്ററുകളിൽ കണ്ടെത്തുക
 bill_printers_dd	ബില്ലിനുള്ള പ്രിന്ററുകൾ
 bill_printers_dd_n	ബില്ലിന് {n} പ്രിന്ററുകൾ · മാറ്റാൻ ടാപ്പ് ചെയ്യുക
 job_layout	ലേഔട്ട്
@@ -889,7 +876,7 @@ net_word	നെറ്റ്
 offline_badge	ഓഫ്‌ലൈൻ
 optional_login_help	ഓപ്ഷണൽ ലോഗിൻ (ഐഡി + പാസ്‌വേഡ്). ഉടമ ഒരിക്കൽ നിശ്ചയിക്കും; പിന്നീട് ഉപയോക്താവിന് മാത്രമേ പാസ്‌വേഡ് മാറ്റാൻ കഴിയൂ.
 or_unlock_login	അല്ലെങ്കിൽ ലോഗിൻ ഐഡി + പാസ്‌വേഡ് ഉപയോഗിച്ച് അൺലോക്ക് ചെയ്യുക
-permission_preset	അനുമതി പ്രീസെറ്റ് (എന്തിലേക്ക് ആക്‌സസ്)
+permission_preset	അനുമതി പ്രീസെറ്റ്
 preset_help_khaynjo	കാഷ്യർ: വിൽക്കുക. മാനേജർ: വിൽക്കുക + ഇനങ്ങൾ + റദ്ദാക്കൽ/ഭേദഗതി.
 product_locked_khaynjo	Khaynjo
 product_only_khaynjo	ഈ ആപ്പ് Khaynjo മാത്രം — റെസ്റ്റോറന്റ് ഓപ്പറേറ്റിംഗ് സിസ്റ്റം. മറ്റു വ്യാപാരങ്ങൾക്ക് പ്രത്യേക Kumkaj ഉൽപ്പന്നങ്ങൾ.
@@ -961,10 +948,6 @@ pin_hint_paired	അധിക ടിൽ ജോടിയാക്കി — വി
 pin_hint_pair_first	അധിക ടിൽ — ആദ്യം കട ഉപകരണവുമായി ജോടിയാക്കുക
 unlock_to_continue	തുടരാൻ അൺലോക്ക് ചെയ്യുക
 no_staff_yet	ഇതുവരെ ജീവനക്കാരില്ല — ഉടമയായി അൺലോക്ക് ചെയ്യുക, പിന്നെ Team
-status_server_set_pin	സെർവർ മോഡ് — ഉടമ PIN നിശ്ചയിക്കുക
-status_server_tills	സെർവർ മോഡ് — അധിക ടില്ലുകൾ ചേരാം. അൺലോക്ക് ചെയ്യുക
-status_server_unlock	സെർവർ മോഡ് — ഉടമയായി അൺലോക്ക് ചെയ്യുക
-status_client_unlock	ക്ലയന്റ് മോഡ് — വിൽക്കാൻ അൺലോക്ക് ചെയ്യുക
 icon_new_selected	ഐക്കൺ: പുതിയ ഫയൽ തിരഞ്ഞെടുത്തു — ബ്രാൻഡ് സേവ് ചെയ്യുക അമർത്തുക
 icon_custom	ഐക്കൺ: നിങ്ങളുടെ കടയുടെ അടയാളം
 icon_default	ഐക്കൺ: Kumkaj അടയാളം (ഡിഫോൾട്ട്) — നിങ്ങളുടേത് തിരഞ്ഞെടുക്കുക
@@ -1033,7 +1016,7 @@ book_kind_balance	ബാലൻസ് ഷീറ്റ്
 order_help	ഒരു തുറന്ന ഓർഡർ തിരഞ്ഞെടുക്കുക, അല്ലെങ്കിൽ ഒരു ടേബിൾ തിരഞ്ഞെടുത്ത് പുതിയത് തുടങ്ങുക. തയ്യാറായ ഇനങ്ങൾ ടാപ്പ് ചെയ്യുക, KOT അയയ്ക്കുക, ഒന്നോ അതിലധികമോ ഇനങ്ങൾക്ക് ബിൽ ചെയ്യുക, ബിൽ പങ്കിടുക, പേയ്‌മെന്റ് തീർക്കുക.
 floor_help	ഓരോ ടേബിളും അതിഥികൾ ഇരിക്കുന്നുണ്ടോ, അവരുടെ തുറന്ന ബിൽ എന്താണ്, അടുത്തത് ആർക്ക് സേവനം വേണം എന്ന് കാണിക്കുന്നു.
 kitchen_help	ഓരോ വകഭേദത്തിനും അല്ലെങ്കിൽ ഓരോ ഇനത്തിനും തയ്യാറായ അളവ് ട്രാക്ക് ചെയ്യുക — KOT-യിൽ ഇഷ്ടമുള്ളതുപോലെ രേഖപ്പെടുത്തുക.
-kitchen_empty	ഇപ്പോൾ ഒന്നും തുറന്നിട്ടില്ല — പുതിയ ഓർഡറുകൾ ഇവിടെ പ്രത്യക്ഷപ്പെടും.
+kitchen_empty	ഇപ്പോൾ ഒന്നും തുറന്നിട്ടില്ല.
 add_a_table	ടേബിൾ ചേർക്കുക
 add_station_heading	സ്റ്റേഷൻ ചേർക്കുക · ഉദാ. തന്തൂർ, സൗത്ത് ഇന്ത്യൻ
 categories_help	വിഭാഗം ഒരു വിഭവം ഏത് മെനു ഭാഗത്താണ് എന്ന് കാണിക്കുന്നു — ഉദാ. സ്നാക്ക്സ്, മെയിൻ കോഴ്സ് അല്ലെങ്കിൽ ബിരിയാണി. വിഭാഗങ്ങൾ നിങ്ങളുടെ രീതിയിൽ ഉണ്ടാക്കുക: ഞങ്ങൾ നിർദ്ദേശിക്കുന്ന പേരുകൾ തിരഞ്ഞെടുക്കുക, പുനർനാമകരണം ചെയ്യുക, അല്ലെങ്കിൽ സ്വന്തമായി ചേർക്കുക.
@@ -1131,7 +1114,6 @@ bill_format_help	എല്ലാ ബില്ലിലും നിങ്ങള�
 bill_header_ph	വിലാസം | ഫോൺ
 fssai_ph	FSSAI ലൈസൻസ് നം. (ഇന്ത്യ)
 bill_footer_ph	ഫൂട്ടർ (ഉദാ. നന്ദി, വീണ്ടും വരിക)
-save_bill_format	ബിൽ ഫോർമാറ്റ് സേവ് ചെയ്യുക
 reset_bill_format	ഡിഫോൾട്ടിലേക്ക് റീസെറ്റ്
 bill_format_reset	ബിൽ ഫോർമാറ്റ് ഡിഫോൾട്ടിലേക്ക്
 reset_kot_format	ഡിഫോൾട്ടിലേക്ക് റീസെറ്റ്
@@ -1201,13 +1183,11 @@ kot_copies_3	3
 kot_title_ph	തലക്കെട്ട് (ശൂന്യം = KOT - KITCHEN ORDER)
 kot_footer_ph	അടുക്കള കുറിപ്പ് (ഓപ്ഷണൽ, വിലയില്ല)
 kot_preview	പ്രിവ്യൂ
-save_kot_format	KOT ഫോർമാറ്റ് സംരക്ഷിക്കുക
 test_kot_format	ടെസ്റ്റ് KOT
 test_kot_sent	അടുക്കള ടിക്കറ്റ് സാമ്പിൾ അയച്ചു
 test_bill_format	ടെസ്റ്റ് ബിൽ
 test_bill_sent	ബിൽ സാമ്പിൾ അയച്ചു
 test_print_no_printer	ആ ജോലിക്ക് പ്രിന്ററില്ല — ഈ സ്ക്രീനിൽ തന്നെ ഒന്ന് തിരഞ്ഞെടുക്കുക
-kot_format_saved	KOT ഫോർമാറ്റ് സംരക്ഷിച്ചു
 std_print	ബിൽ പ്രിന്റ് വലുപ്പം
 std_print_help	സ്റ്റാൻഡേർഡ് പോർട്രെയ്റ്റ്, ലാൻഡ്‌സ്‌കേപ്പ് ബിൽ ജോലികളുടെ അക്ഷര വലുപ്പം (തെർമൽ KOT പ്രത്യേകം). രണ്ട് ദിശയിലും ഒരേ വലുപ്പം.
 std_size_s	ചെറുത്
@@ -1264,7 +1244,6 @@ new_items_head	ഇതുവരെ അയച്ചിട്ടില്ല
 price_ph	വില
 price_ph_gst_inside	വില ({tax} ഉൾപ്പെടെ)
 cancel_needs_table	അടുക്കളയ്ക്ക് ശേഷം റദ്ദാക്കാൻ ഈ ഓർഡർ ഫ്ലോറിൽ നിന്ന് (മേശ) തുറക്കുക — കൗണ്ടർ KOTകൾ പേയ്‌മെന്റ് വരെ ടിക്കറ്റിൽ നിൽക്കും
-tax_rates_missing_hint	ഈ വിഭവങ്ങളിൽ {tax} നിരക്കില്ല — മെനുവിൽ നികുതി നിരക്ക് സജ്ജമാക്കുക ({tax} inclusive-ൽ വിലയിൽ ഇതിനകം {tax} ഉണ്ട്)
 taxable_value	നികുതി മൂല്യം
 gst_inside_price_note	({tax} ഉൾപ്പെടെ)
 start_with_template	ഞങ്ങളുടെ മെനു ടെംപ്ലേറ്റോടെ തുടങ്ങുക
@@ -1318,9 +1297,7 @@ order_empty_pick	ഓർഡർ ശൂന്യം — വിഭവങ്ങൾ �
 add_dishes	വിഭവങ്ങൾ ചേർക്കുക
 order_so_far	ഈ ഓർഡറിൽ: {n} · {total}
 no_dish_match	“{q}” എന്നതിനോട് ചേരുന്ന വിഭവമില്ല
-pick_dishes_help	വിഭവം ചേർക്കാൻ തൊടുക · പട്ടിക ചുരുക്കാൻ വിഭാഗം തിരഞ്ഞെടുക്കുക
 pick_done	കഴിഞ്ഞു
-pick_done_dd	കഴിഞ്ഞു · {label}
 printer_route_mode	ഈ സ്ഥലത്ത് പല പ്രിന്ററുകൾ ഉണ്ടെങ്കിൽ
 printer_mode_first	ആദ്യം പ്രവർത്തിക്കുന്നത്
 printer_mode_all	എല്ലാറ്റിലും അച്ചടിക്കുക

@@ -41,7 +41,7 @@ remove	ہٹائیں
 removed_items	ہٹائی گئی آئٹمز
 removed_help	بحال کرنے پر آئٹم پہلے جیسا ہی مینو میں آ جاتا ہے — قیمت، تصویر اور زمرہ۔ ہماری ڈشز کی شیلف کبھی ہٹائی نہیں جاتی، اس لیے کوئی بھی ڈش دوبارہ شامل کی جا سکتی ہے۔
 restore_item	بحال کریں
-empty_catalog	ابھی کوئی آئٹم نہیں۔ مینو اور آئٹمز کھولیں، ایک شامل کریں (نام + قیمت)، پھر آرڈر لیں۔
+empty_catalog	ابھی کوئی آئٹم نہیں۔
 total	کل
 cash	نقد
 upi	यूपीआई
@@ -103,23 +103,14 @@ bill_item_qty	مقدار
 bill_item_price	نرخ
 bill_item_amount	رقم
 bill_item_note	نوٹ
-bill_item_col_gap	کالم فاصلہ
 bill_item_col_order	کالم ترتیب
 bill_item_col_sep	کالم لکیر
-bill_item_gap_tight	سخت
-bill_item_gap_comfort	آرام دہ
-bill_item_gap_wide	چوڑا
-bill_item_num_width	عدد کے کالم
-bill_item_num_compact	چھوٹا
-bill_item_num_comfort	آرام دہ
-bill_item_num_wide	چوڑا
-bill_item_num_align	اعداد کی سیدھ
-bill_item_gap_em	فاصلہ (em)
-bill_item_qty_min	تعداد کم از کم (em)
-bill_item_price_min	نرخ کم از کم (em)
-bill_item_amount_min	رقم کم از کم (em)
-kot_item_qty_width	تعداد کا کالم
-kot_item_num_align	تعداد کی سیدھ
+slip_columns	کالم
+slip_col_width	چوڑائی (mm)
+slip_col_start	آغاز کی جگہ (px)
+slip_col_end	اختتام کی جگہ (px)
+slip_col_align	متن کی سیدھ
+slip_columns_help	ہر کالم کی چوڑائی میں اس کی آغاز اور اختتام کی جگہ شامل ہے۔ متن اپنے کالم کے اندر ہی لپٹتا ہے؛ مواد کی چوڑائی سے باہر جو ہو وہ کاغذ اور پیش نظارہ دونوں میں کٹ جاتا ہے۔
 bill_total_qty_label	کل تعداد لیبل
 bill_total_subtotal_label	ذیلی کل لیبل
 bill_total_grand_label	کل لیبل
@@ -221,7 +212,6 @@ sidebar_order_saved	سائیڈ بار کی ترتیب محفوظ ہوئی
 sidebar_visibility_saved	سائیڈ بار کی نمائش محفوظ ہوئی
 amounts_hide	چھپائیں
 amounts_show	دکھائیں
-printers_none_hint	پہلے اس ڈیوائس پر پرنٹر محفوظ کریں، پھر اسے بل یا کسی باورچی خانے میں شامل کریں
 counter	کاؤنٹر
 dine_in	یہیں کھانا
 takeaway	پارسل
@@ -328,8 +318,6 @@ selected_language	منتخب
 continue	جاری رکھیں
 this_device	یہ ڈیوائس
 device_use_q	یہ ڈیوائس کیسے استعمال ہوگی؟
-last_server_mode	پہلے سرور تھا — جاری رکھنے کے لیے ٹیپ کریں
-last_client_mode	پہلے کلائنٹ تھا — جاری رکھنے کے لیے ٹیپ کریں
 choose_server	سرور چنیں
 choose_server_hint	اس ڈیوائس پر پہلے سے سرور موجود ہیں۔ ایک کھولیں، یا دوسرے کاروبار کے لیے نیا سرور بنائیں۔
 create_new_server	نیا سرور بنائیں
@@ -391,7 +379,7 @@ attachments_last_expense	منسلکات (آخری خرچ)
 bank	بینک
 bank_in	بینک میں ڈالیں
 bank_out	بینک سے نکالیں
-bank_reconciliation	بینک مفاہمت (اپنے بینک اسٹیٹمنٹ سے ٹک کریں)
+bank_reconciliation	بینک مفاہمت
 bank_to_till	بینک → ٹل
 book_add_dish	بک — ڈش / آئٹم شامل کریں
 book_opening_credit	بک — ابتدائی ادھار
@@ -744,7 +732,6 @@ station_print_pick_first	پہلے باورچی خانہ اسٹیشن منتخب 
 station_print_editing	“{name}” کے پرنٹر ترمیم
 station_vps_dd	اس اسٹیشن کے پرنٹر
 station_vps_dd_n	{n} پرنٹر · بدلنے کے لیے ٹیپ
-station_vps_empty	ابھی پرنٹر نہیں — سیٹنگز → پرنٹرز میں تلاش کریں
 bill_printers_dd	بل کے پرنٹر
 bill_printers_dd_n	بل کے لیے {n} پرنٹر · بدلنے کے لیے دبائیں
 job_layout	لے آؤٹ
@@ -889,7 +876,7 @@ net_word	نیٹ
 offline_badge	آف لائن
 optional_login_help	اختیاری لاگ ان (آئی ڈی + پاس ورڈ)۔ مالک ایک بار لگاتا ہے؛ بعد میں صرف صارف ہی پاس ورڈ بدل سکتا ہے۔
 or_unlock_login	یا لاگ ان آئی ڈی + پاس ورڈ سے ان لاک کریں
-permission_preset	اجازت پری سیٹ (کس تک رسائی)
+permission_preset	اجازت پری سیٹ
 preset_help_khaynjo	کیشیئر: فروخت۔ مینیجر: فروخت + آئٹمز + منسوخی/ترمیم۔
 product_locked_khaynjo	Khaynjo
 product_only_khaynjo	یہ ایپ صرف Khaynjo ہے — ریستوران آپریٹنگ سسٹم۔ دوسرے کاروباروں کے لیے الگ Kumkaj پروڈکٹس ہیں۔
@@ -961,10 +948,6 @@ pin_hint_paired	اضافی ٹل جڑا ہوا — بیچنے کے لیے ان ل
 pin_hint_pair_first	اضافی ٹل — پہلے دکان ڈیوائس سے جوڑیں
 unlock_to_continue	جاری رکھنے کے لیے ان لاک کریں
 no_staff_yet	ابھی کوئی عملہ نہیں — مالک کے طور پر ان لاک کریں، پھر Team
-status_server_set_pin	سرور موڈ — مالک PIN لگائیں
-status_server_tills	سرور موڈ — اضافی ٹل جڑ سکتے ہیں۔ ان لاک کریں
-status_server_unlock	سرور موڈ — مالک کے طور پر ان لاک کریں
-status_client_unlock	کلائنٹ موڈ — بیچنے کے لیے ان لاک کریں
 icon_new_selected	آئیکن: نئی فائل منتخب — برانڈ محفوظ کریں دبائیں
 icon_custom	آئیکن: آپ کی دکان کا نشان
 icon_default	آئیکن: Kumkaj نشان (پہلے سے طے شدہ) — اپنا منتخب کریں
@@ -1033,7 +1016,7 @@ book_kind_balance	بیلنس شیٹ
 order_help	کھلا آرڈر منتخب کریں، یا ٹیبل منتخب کر کے نیا شروع کریں۔ تیار آئٹمز پر ٹیپ کریں، KOT بھیجیں، ایک یا زیادہ آئٹمز کا بل بنائیں، بل تقسیم کریں اور ادائیگی طے کریں۔
 floor_help	ہر ٹیبل دکھاتی ہے کہ مہمان بیٹھے ہیں یا نہیں، ان کا کھلا بل کیا ہے اور اگلی خدمت کسے چاہیے۔
 kitchen_help	ہر ویرینٹ یا ہر آئٹم کے حساب سے تیار مقدار پر نظر رکھیں — KOT میں جیسے چاہیں درج کریں۔
-kitchen_empty	فی الحال کچھ کھلا نہیں — نئے آرڈر یہاں نظر آئیں گے۔
+kitchen_empty	فی الحال کچھ کھلا نہیں۔
 add_a_table	ٹیبل شامل کریں
 add_station_heading	اسٹیشن شامل کریں · مثلاً تندور، ساؤتھ انڈین
 categories_help	زمرہ دکھاتا ہے کہ ڈش کس مینو حصے میں آتی ہے — مثلاً اسنیکس، مین کورس یا بریانی۔ زمرے اپنی مرضی سے بنائیں: ہمارے تجویز کردہ نام منتخب کریں، ان کے نام بدلیں یا اپنا شامل کریں۔
@@ -1131,7 +1114,6 @@ bill_format_help	ہر بل پر آپ کے ریستوران کے نام کے نی
 bill_header_ph	پتہ | فون
 fssai_ph	FSSAI لائسنس نمبر (بھارت)
 bill_footer_ph	فوٹر (مثلاً شکریہ، پھر تشریف لائیں)
-save_bill_format	بل کی ترتیب محفوظ کریں
 reset_bill_format	ڈیفالٹ پر واپس
 bill_format_reset	بل کی ترتیب ڈیفالٹ پر
 reset_kot_format	ڈیفالٹ پر واپس
@@ -1201,13 +1183,11 @@ kot_copies_3	3
 kot_title_ph	عنوان (خالی = KOT - KITCHEN ORDER)
 kot_footer_ph	باورچی خانہ نوٹ (اختیاری، قیمت نہیں)
 kot_preview	پیش نظارہ
-save_kot_format	KOT فارمیٹ محفوظ کریں
 test_kot_format	ٹیسٹ KOT
 test_kot_sent	باورچی خانے کے ٹکٹ کا نمونہ بھیجا
 test_bill_format	ٹیسٹ بل
 test_bill_sent	بل کا نمونہ بھیجا
 test_print_no_printer	اس کام کے لیے پرنٹر نہیں — اسی اسکرین پر ایک چنیں
-kot_format_saved	KOT فارمیٹ محفوظ
 std_print	بل پرنٹ سائز
 std_print_help	اسٹینڈرڈ پورٹریٹ اور لینڈ اسکیپ بل جابز کے لیے حرف کا سائز (تھرمل KOT الگ)۔ دونوں رخ پر ایک ہی سائز۔
 std_size_s	چھوٹا
@@ -1264,7 +1244,6 @@ new_items_head	ابھی نہیں بھیجا
 price_ph	قیمت
 price_ph_gst_inside	قیمت ({tax} شامل)
 cancel_needs_table	باورچی خانے کے بعد منسوخ کرنے کے لیے یہ آرڈر فلور (میز) سے کھولیں — کاؤنٹر KOT ادائیگی تک ٹکٹ پر رہتے ہیں
-tax_rates_missing_hint	ان پکوانوں پر {tax} شرح نہیں — مینو میں ٹیکس شرح سیٹ کریں ({tax} inclusive میں قیمت میں پہلے سے {tax} ہے)
 taxable_value	قابلِ ٹیکس قیمت
 gst_inside_price_note	({tax} شامل)
 start_with_template	ہمارے مینو ٹیمپلیٹ سے شروع کریں
@@ -1318,9 +1297,7 @@ order_empty_pick	آرڈر خالی ہے — ڈشیں چننے کے لیے اوپ
 add_dishes	ڈشیں شامل کریں
 order_so_far	اس آرڈر میں: {n} · {total}
 no_dish_match	“{q}” سے ملتی کوئی ڈش نہیں
-pick_dishes_help	ڈش شامل کرنے کے لیے دبائیں · فہرست مختصر کرنے کے لیے زمرہ چنیں
 pick_done	ہو گیا
-pick_done_dd	ہو گیا · {label}
 printer_route_mode	اگر اس جگہ کئی پرنٹر ہوں
 printer_mode_first	جو پہلے چلے
 printer_mode_all	سب پر چھاپیں

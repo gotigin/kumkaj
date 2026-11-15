@@ -260,10 +260,16 @@ impl App {
                 st.data_base = Some(dir);
             }
         }
-        let base = st.data_base.clone();
         drop(st);
-        // Android: start unpacking APK shelf/templates into filesDir early so
-        // Create server often finds them ready (Server jobs also block on ensure).
+    }
+
+    /// Android: unpack the APK item shelf / templates into filesDir ahead of
+    /// time — only on a device that is (or becomes) the Server. A Client
+    /// never imports them (its items come from the Server); unpacking
+    /// thousands of photos on a first Client open starved the books open on
+    /// a slow phone and left the setup screen waiting. Server jobs still call
+    /// `ensure_android_menu_assets` themselves before they need the files.
+    fn prewarm_menu_assets(base: Option<PathBuf>) {
         if let Some(base) = base {
             let _ = std::thread::Builder::new()
                 .name("tabiyat-menu-assets".into())
@@ -294,6 +300,7 @@ impl App {
             return;
         }
         self.resolve_data_base(cx);
+        Self::prewarm_menu_assets(app_state().lock().unwrap().data_base.clone());
         let result = (|| -> Result<(), String> {
             let base = {
                 let mut st = app_state().lock().unwrap();
@@ -367,12 +374,7 @@ impl App {
             st.language_follow_platform = chosen.0;
             st.locale.language = chosen.1;
             Self::persist_setup_language(&mut st);
-            // New server always reaches Owner PIN via App Template offer when shipped.
-            if Self::should_offer_app_template(&st) {
-                self.enter_app_template_offer(&mut st, true);
-            } else {
-                self.finish_as_server(&mut st, true);
-            }
+            self.finish_as_server(&mut st, true);
             old
         };
         drop_store_off_ui(old);
@@ -395,12 +397,7 @@ impl App {
             st.language_follow_platform = chosen.0;
             st.locale.language = chosen.1;
             Self::persist_setup_language(&mut st);
-            // Unfinished new shop (killed before PIN) re-offers until applied/skipped.
-            if Self::should_offer_app_template(&st) {
-                self.enter_app_template_offer(&mut st, switching_in);
-            } else {
-                self.finish_as_server(&mut st, switching_in);
-            }
+            self.finish_as_server(&mut st, switching_in);
             old
         };
         drop_store_off_ui(old);
@@ -408,150 +405,6 @@ impl App {
         end_role_open_busy();
         self.paint_role_open_busy_chrome(cx);
         self.maybe_smoke_auto_unlock(cx);
-    }
-
-    /// Brand-new Server before Owner PIN, and the Rajdhani menu template ships.
-    fn should_offer_app_template(st: &AppState) -> bool {
-        !st.owner_setup_complete
-            && menu_templates::find("rajdhani").is_some()
-            && !st
-                .store
-                .as_ref()
-                .and_then(|s| s.rajdhani_app_template_done().ok())
-                .unwrap_or(false)
-    }
-
-    /// DeviceSetup card before Lock — same Server attach as `finish_as_server`, no PIN yet.
-    fn enter_app_template_offer(&mut self, st: &mut AppState, switching_in: bool) {
-        st.device_role = DeviceRole::Server;
-        st.must_confirm_device_role = false;
-        st.picking_server = false;
-        st.awaiting_app_template = true;
-        st.pin_buffer.clear();
-        st.nav_back.clear();
-        st.nav_forward.clear();
-        if let Some(store) = st.store.as_ref() {
-            let _ = store.set_device_role(DeviceRole::Server.as_str());
-            if switching_in {
-                if let Ok(Some(owner)) = store
-                    .list_staff()
-                    .map(|s| s.into_iter().find(|m| m.is_owner()))
-                {
-                    let _ = store.set_extra_tills_allowed(false, &owner);
-                }
-                st.extra_tills_allowed = false;
-                net::stop_server();
-            } else if st.extra_tills_allowed {
-                let path = store.db_path().to_path_buf();
-                if net::ensure_server(path).is_ok() {
-                    firewall_job(|| Ok(net::firewall_allows_phones()));
-                }
-            }
-        }
-        st.screen = Screen::DeviceSetup;
-        st.status = locale::t(&st.locale.language, "app_template_status");
-    }
-
-    /// Continue to Owner PIN. `mark_done` is true after Apply (so the offer
-    /// stays away). Skip leaves the flag clear so a shop that never finished
-    /// Owner PIN still re-offers on the next Server open.
-    fn finish_app_template_to_lock(&mut self, cx: &mut Cx, mark_done: bool) {
-        {
-            let mut st = app_state().lock().unwrap();
-            st.awaiting_app_template = false;
-            let (staff, fiscal) = if let Some(store) = st.store.as_ref() {
-                if mark_done {
-                    let _ = store.set_rajdhani_app_template_done();
-                }
-                // After Apply: Owner Zahir / Admin Asif / Waiter Nawaz, tax off.
-                (store.list_staff().ok(), store.fiscal_settings().ok())
-            } else {
-                (None, None)
-            };
-            if let Some(staff) = staff {
-                st.staff = staff;
-            }
-            if let Some(fiscal) = fiscal {
-                st.fiscal = fiscal;
-            }
-            self.finish_as_server(&mut st, false);
-        }
-        self.paint_role_open_busy_chrome(cx);
-        self.sync_chrome(cx);
-    }
-
-    /// Idle: Submit + Skip. Busy: Submit replaced by status + Cancel.
-    fn paint_app_template_chrome(&mut self, cx: &mut Cx, visible: bool) {
-        self.ui
-            .view(cx, ids!(app_template_section))
-            .set_visible(cx, visible);
-        if !visible {
-            return;
-        }
-        let app_busy = matches!(
-            menu_import_running().lock().unwrap().as_ref(),
-            Some(MenuImportKind::AppTemplate { .. })
-        );
-        let (heading, blurb, apply, skip, cancel, progress) = {
-            let st = app_state().lock().unwrap();
-            let title = menu_templates::find("rajdhani")
-                .map(|t| t.title.clone())
-                .unwrap_or_else(|| "Rajdhani Menu Template".into());
-            let progress = if app_busy {
-                let (done, total) = *menu_import_progress().lock().unwrap();
-                if total > 0 {
-                    st.t("template_import_progress")
-                        .replace("{d}", &done.to_string())
-                        .replace("{t}", &total.to_string())
-                } else {
-                    st.t("app_template_importing").replace("{title}", &title)
-                }
-            } else {
-                String::new()
-            };
-            let blurb = if app_busy {
-                st.t("app_template_importing").replace("{title}", &title)
-            } else {
-                st.t("app_template_blurb")
-            };
-            (
-                st.t("app_template_heading"),
-                blurb,
-                st.t("app_template_apply"),
-                st.t("app_template_skip"),
-                st.t("cancel"),
-                progress,
-            )
-        };
-        self.ui
-            .widget(cx, ids!(app_template_heading))
-            .set_text(cx, &plain_display_text(&heading));
-        self.ui
-            .widget(cx, ids!(app_template_blurb))
-            .set_text(cx, &plain_display_text(&blurb));
-        self.ui
-            .button(cx, ids!(app_template_apply))
-            .set_text(cx, &apply);
-        self.ui
-            .button(cx, ids!(app_template_apply))
-            .set_visible(cx, !app_busy);
-        self.ui
-            .view(cx, ids!(app_template_busy))
-            .set_visible(cx, app_busy);
-        if app_busy {
-            self.ui
-                .button(cx, ids!(app_template_status))
-                .set_text(cx, &progress);
-            self.ui
-                .button(cx, ids!(app_template_cancel))
-                .set_text(cx, &cancel);
-        }
-        self.ui
-            .button(cx, ids!(app_template_skip))
-            .set_text(cx, &skip);
-        self.ui
-            .button(cx, ids!(app_template_skip))
-            .set_visible(cx, !app_busy);
     }
 
     /// Wipe a local server from this device. Owner PIN of **that** shop
@@ -656,13 +509,9 @@ impl App {
         // First Server lock → Owner; else remembered chip.
         st.apply_lock_role_selection();
         st.screen = Screen::Lock;
-        st.status = if !st.owner_setup_complete {
-            locale::t(&st.locale.language, "status_server_set_pin")
-        } else if st.extra_tills_allowed {
-            locale::t(&st.locale.language, "status_server_tills")
-        } else {
-            locale::t(&st.locale.language, "status_server_unlock")
-        };
+        // No "Server Mode — set Owner PIN / unlock as Owner" line: the PIN
+        // prompt and its ℹ say it (cluster text, owner 2026-11-14).
+        st.status.clear();
     }
 
     /// Start Client Mode without blocking the UI (first open migrates the
@@ -726,12 +575,12 @@ impl App {
             // and trap the till on a previous pairing (multi-server Wi‑Fi).
             st.nav_back.push(Screen::DeviceSetup);
             st.screen = Screen::ClientPair;
-            let msg = if client_paired {
-                locale::t(&st.locale.language, "status_client_unlock")
-            } else {
-                "Client Mode — find the Server, tap the shop you want, then Pair".into()
-            };
-            st.status = msg.clone();
+            // No instruction bar (the English-only "Client Mode — find the
+            // Server…" / "unlock to sell" outlived their screens): the
+            // pairing screen's ℹ says how (2026-11-14).
+            let _ = client_paired;
+            let msg = String::new();
+            st.status.clear();
             (old, msg)
         };
         drop_store_off_ui(status_msg.0);
@@ -768,7 +617,7 @@ impl App {
         }
         let on_setup = {
             let st = app_state().lock().unwrap();
-            st.screen == Screen::DeviceSetup && st.session.is_none() && !st.awaiting_app_template
+            st.screen == Screen::DeviceSetup && st.session.is_none()
         };
         if !on_setup {
             return;
@@ -825,22 +674,15 @@ impl App {
             .unwrap()
             .clone()
             .unwrap_or_else(|| app_t("opening_client"));
-        let awaiting_tmpl = app_state()
-            .try_lock()
-            .map(|st| st.awaiting_app_template)
-            .unwrap_or(false);
         // Offline LAN: no multi-server pick UI (cloud-only later).
         let show_pick = false;
-        // Hide Server/Client while creating/opening or while App Template is offered.
+        // Hide Server/Client while creating or opening.
         self.ui
             .view(cx, ids!(device_role_actions))
-            .set_visible(cx, !busy && !show_pick && !awaiting_tmpl);
+            .set_visible(cx, !busy && !show_pick);
         self.ui
             .view(cx, ids!(server_pick_section))
             .set_visible(cx, show_pick);
-        self.ui
-            .view(cx, ids!(app_template_section))
-            .set_visible(cx, awaiting_tmpl && !busy);
         self.ui
             .widget(cx, ids!(device_role_busy_label))
             .set_text(cx, &plain_display_text(&status));
@@ -1315,6 +1157,7 @@ impl App {
                         said = Some(status);
                         match answer.follow {
                             phone::Follow::Refresh => {}
+                            phone::Follow::Quiet => said = None,
                             phone::Follow::Sale => {
                                 if let Ok(sale) = serde_json::from_value::<Sale>(reply) {
                                     said = Some(format!("Billed {} · {}", sale.invoice_no, answer.done));
@@ -1454,7 +1297,7 @@ impl App {
                 st.pin_visible = false;
                 st.lock_as_owner = true;
                 st.failed_unlocks = 0;
-                st.screen = unlocked_home_from(&st);
+                st.screen = unlocked_home_from(&mut st);
                 st.status = format!("New Owner PIN set — welcome back, {}", member.lock_label());
                 let _ = st.refresh_books_overview();
                 let _ = st.reload_all();
@@ -1667,7 +1510,7 @@ impl App {
                         // Main till is a visit root — no Back into setup.
                         st.nav_back.clear();
                         st.nav_forward.clear();
-                        st.screen = unlocked_home_from(&st);
+                        st.screen = unlocked_home_from(&mut st);
                         st.status = match &note {
                             Some(note) => format!("Welcome, {} · {note}", member.lock_label()),
                             None => format!("Welcome, {}", member.lock_label()),
@@ -1762,7 +1605,7 @@ impl App {
             st.screen = if st.device_role.is_host() && !st.onboarding_complete {
                 Screen::Onboard
             } else {
-                unlocked_home_from(&st)
+                unlocked_home_from(&mut st)
             };
             st.status = format!("Welcome, {}", member.lock_label());
             let _ = st.reload_all();
@@ -1868,13 +1711,17 @@ impl App {
                 .flatten()
         };
         let mut st = app_state().lock().unwrap();
-        if st.menu_category != cat {
+        let changed = st.menu_category != cat;
+        if changed {
             st.menu_category = cat;
             st.menu_pick_rev = st.menu_pick_rev.wrapping_add(1);
         }
         drop(st);
-        self.sync_chrome(cx);
-        let _ = cx;
+        // The dish tap that follows refreshes the screen itself: a second
+        // full refresh here doubled every tap's work.
+        if changed {
+            self.sync_chrome(cx);
+        }
     }
 
     fn apply_pending_menu_pick_tab(&mut self, cx: &mut Cx) {
@@ -2015,6 +1862,7 @@ impl App {
     fn window_sheet_open(&self, cx: &Cx) -> bool {
         app_state().lock().unwrap().menu_pick_open
             || self.ui.modal(cx, ids!(upi_qr_modal)).is_open()
+            || self.ui.modal(cx, ids!(printers_modal)).is_open()
     }
 
     /// The open sheet's visible rect and its close targets. The overlay's
@@ -2040,13 +1888,18 @@ impl App {
             };
             return Some((sheet, done));
         }
-        if self.ui.modal(cx, ids!(upi_qr_modal)).is_open() {
-            let sheet = self.ui.view(cx, ids!(upi_qr_sheet)).area().rect(cx);
-            // Not drawn yet: treat every press as inside rather than guess.
-            if sheet.size.x < 1.0 || sheet.size.y < 1.0 {
-                return None;
+        for (modal, sheet) in [
+            (ids!(upi_qr_modal), ids!(upi_qr_sheet)),
+            (ids!(printers_modal), ids!(printers_sheet)),
+        ] {
+            if self.ui.modal(cx, modal).is_open() {
+                let sheet = self.ui.view(cx, sheet).area().rect(cx);
+                // Not drawn yet: treat every press as inside rather than guess.
+                if sheet.size.x < 1.0 || sheet.size.y < 1.0 {
+                    return None;
+                }
+                return Some((sheet, Vec::new()));
             }
-            return Some((sheet, Vec::new()));
         }
         None
     }
@@ -2056,6 +1909,9 @@ impl App {
             self.close_menu_window(cx);
         }
         self.ui.modal(cx, ids!(upi_qr_modal)).close(cx);
+        if self.ui.modal(cx, ids!(printers_modal)).is_open() {
+            self.close_printers_modal(cx);
+        }
     }
 
     /// Done and the dimmed area around a window-covering sheet, for a mouse
@@ -2154,6 +2010,62 @@ impl App {
         self.repair_focused_carets(cx);
     }
 
+    /// Menu window grid (the window stays open for the next dish): a tap
+    /// anywhere on a card adds one, the same as its +; â takes one back. A
+    /// tap on â or + is that button's alone, never also the card's, and the
+    /// release of a page swipe is no tap. True when a card took the batch.
+    fn menu_pick_card_tap(&mut self, cx: &mut Cx, actions: &Actions) -> bool {
+        if menu_pick_swipe_took_press() {
+            return false;
+        }
+        let searching = !app_state().lock().unwrap().menu_filter.trim().is_empty();
+        let page_count = if searching {
+            1
+        } else {
+            let st = app_state().lock().unwrap();
+            menu_pick_tab_keys(&st).len().min(MENU_PICK_PAGE_MAX)
+        };
+        let cols = *product_grid_cols().lock().unwrap();
+        let slots: [&[LiveId]; 6] = [ids!(c0), ids!(c1), ids!(c2), ids!(c3), ids!(c4), ids!(c5)];
+        enum CardTap {
+            Add(usize),
+            Minus(usize),
+        }
+        let mut tapped: Option<(usize, CardTap)> = None;
+        'pages: for pi in 0..page_count {
+            let widget = self.ui.widget(cx, MENU_PICK_GRIDS[pi]);
+            let list = widget.portal_list(cx, ids!(list));
+            for (row_id, item) in list.items_with_actions(actions) {
+                for (col, path) in slots.iter().enumerate().take(cols) {
+                    let index = row_id * cols + col;
+                    let tile = item.widget(cx, *path).view(cx, ids!(tile));
+                    if tile.button(cx, ids!(minus)).clicked(actions) {
+                        tapped = Some((pi, CardTap::Minus(index)));
+                        break 'pages;
+                    } else if tile.button(cx, ids!(plus)).clicked(actions)
+                        || tile.finger_up(actions).is_some_and(finger_up_is_tap)
+                    {
+                        tapped = Some((pi, CardTap::Add(index)));
+                        break 'pages;
+                    }
+                }
+            }
+        }
+        match tapped {
+            Some((pi, CardTap::Add(index))) => {
+                self.align_menu_pick_cart_page(cx, pi);
+                self.add_product_to_cart(cx, index);
+                true
+            }
+            Some((pi, CardTap::Minus(index))) => {
+                self.align_menu_pick_cart_page(cx, pi);
+                self.remove_product_from_cart(cx, index);
+                true
+            }
+            None => false,
+        }
+    }
+
     /// A tile in the menu window: one more of that dish on the order.
     fn add_product_to_cart(&mut self, cx: &mut Cx, index: usize) {
         self.dismiss_soft_keyboard(cx);
@@ -2202,11 +2114,10 @@ impl App {
             if st.session.as_ref().map(|s| s.can_access_sell()) != Some(true) {
                 Some("Not allowed to sell".into())
             } else if let Some(product) = st.products.iter().find(|p| p.id == product_id).cloned() {
-                let area = String::new();
-                match st.cart.add_in_area_in_stock(&product, &area) {
+                match st.cart.add_or_bump_in_stock(&product) {
                     Err(e) => Some(e),
                     Ok(()) => {
-                        st.status = Self::sell_add_status(&st, &product, &area);
+                        st.status = Self::sell_add_status(&st, &product);
                         None
                     }
                 }
@@ -2221,8 +2132,8 @@ impl App {
     }
 
     /// Status after a Sell add: Rx owner flag + optional near-expiry buy hint.
-    fn sell_add_status(st: &AppState, product: &Product, area: &str) -> String {
-        let price = product.price_in_area(area);
+    fn sell_add_status(st: &AppState, product: &Product) -> String {
+        let price = product.price_now(chrono::Local::now());
         if price.0 == 0 {
             return format!(
                 "{} added · it has no price yet — set it on Medicines",

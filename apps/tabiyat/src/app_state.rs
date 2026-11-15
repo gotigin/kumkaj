@@ -40,8 +40,6 @@ struct AppState {
     language_follow_platform: bool,
     /// Legacy flag; offline LAN never shows multi-server pick (kept false).
     picking_server: bool,
-    /// True while a brand-new server offers Rajdhani App Template (before Owner PIN).
-    awaiting_app_template: bool,
     /// Registry rows (offline: at most one active shop server).
     local_servers: Vec<LocalServerInfo>,
     /// Settings → Backup wipe checkboxes (Owner; same categories as Windows uninstall).
@@ -58,6 +56,15 @@ struct AppState {
     printer_route_key: String,
     /// Settings hub: `None` = section list; `Some(id)` = that panel (printers, brand, …).
     settings_panel: Option<&'static str>,
+    /// A Settings section nav item was tapped: open this section once the
+    /// Settings screen is up (the switch may wait a frame for the loading veil).
+    settings_panel_after_go: Option<&'static str>,
+    /// Unlock lands as a tap on this nav item would (`unlocked_home_from`);
+    /// `sync_chrome` runs it once.
+    nav_tab_after_unlock: Option<NavTab>,
+    /// Whose last selected nav item is written to the books, and which (a
+    /// repaint does not write it again).
+    last_nav_saved: Option<(String, NavTab)>,
     /// Settings → Printers: real printer selected (for new / edit virtual).
     printer_selected_id: Option<String>,
     /// Pool printers checked for "Print a test page" / "Test KOT" (multi-select).
@@ -205,6 +212,11 @@ struct AppState {
     /// Applied on `cart_qty_timer` so Progress paints before books work.
     pending_cart_bump: Option<(usize, i64)>,
     cart_qty_timer: Timer,
+    /// Bill format autosave: a short timer restarted by each edit; when it
+    /// fires (or the person leaves the screen) the bill draft is written. No
+    /// Save button to forget (owner, 2026-11-14).
+    format_save_timer: Timer,
+    format_save_bill: bool,
     /// The field whose "type or pick" list is open, and its rows.
     suggest_open: Option<SuggestField>,
     suggest_rows: Vec<suggest::SuggestRow>,
@@ -219,7 +231,7 @@ struct AppState {
     pay_choice: PayChoice,
     /// Menu: "Import complete template" (full shelf) was tapped; asking to confirm.
     template_confirm: bool,
-    /// Menu: a named client template id pending confirm (`rajdhani`, …).
+    /// Items: a named starter catalogue id pending confirm (`neighbourhood`, …).
     client_template_confirm: Option<String>,
     /// Which named client template the Menu card is showing (first if empty).
     client_template_id: String,
@@ -232,8 +244,6 @@ struct AppState {
     form_resale: bool,
     form_schedule_h: bool,
     form_rx_required: bool,
-    /// Raw materials the kitchen buys and uses up (never on the menu).
-    raw_materials: Vec<Product>,
     /// Reorder levels the owner set (item id → whole units); others use
     /// [`store::DEFAULT_REORDER_AT`].
     reorder_levels: std::collections::HashMap<String, i64>,
@@ -288,7 +298,7 @@ struct AppState {
     unlock_blocked_until: Option<std::time::Instant>,
     /// Owner must choose a new PIN before the till opens (post-migration reset).
     pin_reset_required: bool,
-    /// Drill-down history (Settings → SidebarSettings, …). Chrome peers use
+    /// Drill-down history (Settings → Team, …). Chrome peers use
     /// Visit history for Back / mouse / swipe / Android (`navigate_back`).
     /// Peer chrome and drill-downs push; Lock / first-run clear.
     nav_back: Vec<Screen>,

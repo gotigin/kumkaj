@@ -39,7 +39,7 @@ adding_item	Ongeraho igipimo gishya
 editing_item	Urimo guhindura
 save	Bika
 remove	Kuraho
-empty_catalog	Nta gipimo kugeza ubu. Fungura ibiciro & serivisi, ongeramo imwe (izina + igiciro, unit kg), hanyuma Booking.
+empty_catalog	Nta gipimo kugeza ubu.
 counter_sale	Kwiyandikisha
 total	Igiteranyo
 cash	Amafaranga mu ntoki
@@ -171,8 +171,6 @@ selected_language	Byahiswemo
 continue	Komeza
 this_device	IKI GIKORESHO
 device_use_q	Iki gikoresho kizakoreshwa gute?
-last_server_mode	Cyari Seriveri — kanda ukomeze
-last_client_mode	Cyari Kiliya — kanda ukomeze
 choose_server	Hitamo seriveri
 choose_server_hint	Fungura seriveri ihari, cyangwa ukore indi y'ubucuruzi bundi.
 create_new_server	Kora seriveri nshya
@@ -501,8 +499,6 @@ job_layout	Imiterere
 job_delivery	Uko akazi koherezwa
 job_size	Ubunini bw'imyandikire
 job_size_ph	urugero 18, 20, 26…
-save_receipt_format	Bika imiterere y'inyemezabwishyu
-save_label_format	Bika imiterere ya label
 test_receipt_format	Inyemezabwishyu
 test_label_format	Ikimenyetso
 test_receipt_sent	Icyitegererezo cyoherejwe
@@ -610,7 +606,7 @@ units_heading	Ibipimo
 booking_measures	Ingamba zo kubika
 drawer_count	Kubara kabatira (bitari ngombwa)
 spreadsheet_csv	Urupapuro rw'imibare (CSV)
-bank_reconciliation	Guhuza banki (shyira akamenyetso ku nyandiko ya banki yawe)
+bank_reconciliation	Guhuza banki
 book_add_product	Igitabo - ongeraho ibicuruzwa / igipimo
 book_opening_credit	Igitabo — inguzanyo yo gutangira
 account_kind	Ubwoko bwa konti (kanda bumwe)
@@ -650,7 +646,7 @@ net_word	Neto
 offline_badge	NTA INTERINETI
 optional_login_help	Kwinjira bitari ngombwa (izina + ijambo ry'ibanga). Nyir'iduka ashyira rimwe; ukoresha wenyine ashobora guhindura ijambo ry'ibanga nyuma.
 or_unlock_login	Cyangwa fungura ukoresheje izina ryo kwinjira + ijambo ry'ibanga
-permission_preset	Akazi (shiraho ecran n'uburenganzira)
+permission_preset	Akazi
 preset_help_moklanjo	Ushinzwe amafaranga: gurisha. Umuyobozi w'igihe: gurisha + ibintu + siba burundu/kosora.
 product_locked_moklanjo	Moklanjo
 product_only_moklanjo	Iyi porogaramu ni Moklanjo gusa - ibitabo + kumeza. Ubundi bucuruzi buhura nubwato nkibicuruzwa bitandukanye nyuma.
@@ -698,10 +694,6 @@ pin_hint_paired	Kontwari yindi yahujwe — fungura kugira ngo ugurishe
 pin_hint_pair_first	Kontwari yindi — huza n'igikoresho cy'iduka mbere
 unlock_to_continue	Fungura ukomeze
 no_staff_yet	Nta bakozi — fungura uri Nyir'iduka, hanyuma Ikipe
-status_server_set_pin	Uburyo bwa Seriveri — shyira PIN ya Nyir'iduka
-status_server_tills	Uburyo bwa Seriveri — kontwari zindi zishobora guhuza. Fungura
-status_server_unlock	Uburyo bwa Seriveri — fungura uri Nyir'iduka
-status_client_unlock	Uburyo bwa Kiliya — fungura kugira ngo ugurishe
 icon_new_selected	Ikimenyetso: dosiye nshya yahiswemo — kanda Bika ikirango
 icon_custom	Ikimenyetso: ikimenyetso cy'ahantu cyihariye
 icon_default	Ikimenyetso: ikimenyetso cya Kumkaj (bisanzwe) — hitamo icyihariye

@@ -360,7 +360,7 @@ pub fn print_label(store: &Store, awb: &str) -> Result<String, String> {
         Ok(format!("Label printed · also saved: {}", path.display()))
     } else {
         Ok(format!(
-            "Label saved: {} — set an AWB label printer in Settings → Printers to print on paper",
+            "Label saved: {} — no AWB label printer on this device yet",
             path.display()
         ))
     }
@@ -378,7 +378,7 @@ pub fn print_manifest_named(store: &Store, m: &manifest::Manifest) -> Result<Str
         Ok(format!("Run sheet printed · {who} · {} parcels", m.line_count))
     } else {
         Ok(format!(
-            "Run sheet ready · {who} — set a receipt printer in Settings → Printers to print on paper"
+            "Run sheet ready · {who} — no receipt printer on this device yet"
         ))
     }
 }
@@ -403,7 +403,7 @@ pub fn print_latest_run_sheet(store: &Store) -> Result<String, String> {
         ))
     } else {
         Ok(format!(
-            "Run sheet ready · {} · {} AWBs → {} — set a receipt printer in Settings → Printers",
+            "Run sheet ready · {} · {} AWBs → {} — no receipt printer on this device yet",
             m.kind, m.line_count, who
         ))
     }

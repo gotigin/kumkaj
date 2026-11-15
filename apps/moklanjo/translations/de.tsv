@@ -39,7 +39,7 @@ adding_item	Neuer Tarif wird hinzugefügt
 editing_item	Bearbeiten
 save	Speichern
 remove	Entfernen
-empty_catalog	Noch keine Tarife. Öffnen Sie Tarife & Leistungen, fügen Sie einen hinzu (Name + Preis, Einheit kg), dann Buchung.
+empty_catalog	Noch keine Tarife.
 counter_sale	Schalterbuchung
 total	Gesamt
 cash	Bar
@@ -171,8 +171,6 @@ selected_language	Ausgewählt
 continue	Weiter
 this_device	DIESES GERÄT
 device_use_q	Wie wird dieses Gerät verwendet?
-last_server_mode	War Server — tippen zum Fortfahren
-last_client_mode	War Client — tippen zum Fortfahren
 choose_server	Server wählen
 choose_server_hint	Dieses Gerät hat bereits Server. Öffnen Sie einen oder erstellen Sie einen neuen Server für ein anderes Geschäft.
 create_new_server	Neuen Server erstellen
@@ -501,8 +499,6 @@ job_layout	Layout
 job_delivery	Wie der Auftrag gesendet wird
 job_size	Schriftgröße
 job_size_ph	z. B. 18, 20, 26…
-save_receipt_format	Quittungsformat speichern
-save_label_format	Etikettenformat speichern
 test_receipt_format	Testquittung
 test_label_format	Testetikett
 test_receipt_sent	Beispielquittung gesendet
@@ -610,7 +606,7 @@ units_heading	Einheiten
 booking_measures	Buchungsmaße
 drawer_count	Ladenzählung (optional)
 spreadsheet_csv	Tabelle (CSV)
-bank_reconciliation	Bankabstimmung (gegen Kontoauszug abhaken)
+bank_reconciliation	Bankabstimmung
 book_add_product	Buchung — Produkt / Tarif hinzufügen
 book_opening_credit	Buchung — Anfangskredit
 account_kind	Kontoart (eines tippen)
@@ -650,7 +646,7 @@ net_word	Netto
 offline_badge	OFFLINE
 optional_login_help	Optionaler Login (ID + Passwort). Der Inhaber setzt ihn einmal; später kann nur der Benutzer das Passwort ändern.
 or_unlock_login	Oder mit Login-ID + Passwort entsperren
-permission_preset	Stelle (legt Bildschirme und Rechte fest)
+permission_preset	Stelle
 preset_help_moklanjo	Kassierer: verkaufen. Manager: verkaufen + Artikel + Storno/Korrektur.
 product_locked_moklanjo	Moklanjo
 product_only_moklanjo	Diese App ist nur Moklanjo – Bücher und Annahmeschalter. Andere Branchen bekommen später eigene Produkte.
@@ -698,10 +694,6 @@ pin_hint_paired	Extra-Kasse gekoppelt – zum Verkaufen entsperren
 pin_hint_pair_first	Extra-Kasse – zuerst mit dem Shop-Gerät koppeln
 unlock_to_continue	Zum Fortfahren entsperren
 no_staff_yet	Noch kein Personal – als Inhaber entsperren, dann Team
-status_server_set_pin	Servermodus — Inhaber-PIN setzen
-status_server_tills	Servermodus — Extra-Kassen können beitreten. Entsperren
-status_server_unlock	Servermodus — als Inhaber entsperren
-status_client_unlock	Clientmodus – zum Verkaufen entsperren
 icon_new_selected	Symbol: neue Datei ausgewählt — Marke speichern tippen
 icon_custom	Symbol: eigenes Geschäftszeichen
 icon_default	Symbol: Kumkaj-Zeichen (Standard) — eigenes wählen

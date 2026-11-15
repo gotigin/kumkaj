@@ -149,6 +149,20 @@ fn set_status(&mut self, cx: &mut Cx, msg: impl Into<String>) {
             (ids!(snack_face_warn), ids!(snack_label_warn), SnackKind::Warn),
             (ids!(snack_face_err), ids!(snack_label_err), SnackKind::Error),
         ];
+        // "No printer" warning on a device with none saved: Find printers
+        // right on the warning (the Printers sheet) — not "go to Settings".
+        let find_printers = visible && kind == SnackKind::Warn && snack::wants_find_printers(&text) && {
+            let st = app_state().lock().unwrap();
+            st.device_role != DeviceRole::Client && st.printer_draft.printers.is_empty()
+        };
+        let find_btn = self.ui.button(cx, ids!(snack_find_printers));
+        if find_printers {
+            let label = app_t("find_printers");
+            if find_btn.text() != label {
+                find_btn.set_text(cx, &label);
+            }
+        }
+        find_btn.set_visible(cx, find_printers);
         for (face, label, k) in faces {
             let on = visible && kind == k;
             self.ui.view(cx, face).set_visible(cx, on);
@@ -196,6 +210,8 @@ fn set_status(&mut self, cx: &mut Cx, msg: impl Into<String>) {
         let _ = st.refresh_local_servers();
         match opened {
             Ok(store) => {
+                // This device keeps a shop's books: have its item shelf ready.
+                Self::prewarm_menu_assets(st.data_base.clone());
                 st.status = String::new();
                 st.store = Some(store);
                 let _ = st.reload_all();

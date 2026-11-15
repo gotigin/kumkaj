@@ -28,7 +28,6 @@ impl AppState {
             must_confirm_device_role: true,
             language_follow_platform: true,
             picking_server: false,
-            awaiting_app_template: false,
             local_servers: Vec::new(),
             wipe_sel_trading: false,
             wipe_sel_schema: false,
@@ -38,6 +37,9 @@ impl AppState {
             printer_draft: print_share::DevicePrinters::default(),
             printer_route_key: "bill".into(),
             settings_panel: None,
+            settings_panel_after_go: None,
+            nav_tab_after_unlock: None,
+            last_nav_saved: None,
             printer_selected_id: None,
             test_printer_ids: Vec::new(),
             printer_vp_landscape: false,
@@ -67,6 +69,8 @@ impl AppState {
             undo_sale_id: None,
             undo_snack_text: String::new(),
             undo_timer: Timer::empty(),
+            format_save_timer: Timer::empty(),
+            format_save_bill: false,
             snack_text: String::new(),
             snack_kind: SnackKind::Info,
             snack_timer: Timer::empty(),
@@ -82,8 +86,8 @@ impl AppState {
             country_browse: String::new(),
             venue_title: String::new(),
             venue_icon_key: None,
-            nav_order: NAV_TABS.to_vec(),
-            nav_hidden: Vec::new(),
+            nav_order: default_nav_order("en"),
+            nav_hidden: parse_nav_layout(None, None, "en").1,
             amounts_screen_hidden: false,
             amount_keys_hidden: Vec::new(),
             amount_keys_peek: Vec::new(),
@@ -130,7 +134,6 @@ impl AppState {
             form_resale: true,
             form_schedule_h: false,
             form_rx_required: false,
-            raw_materials: Vec::new(),
             reorder_levels: std::collections::HashMap::new(),
             low_stock_line: String::new(),
             today_cache: std::cell::RefCell::new(None),
@@ -206,7 +209,7 @@ impl AppState {
         self.data_base = Some(base.clone());
         // Prefer the open shop's printers; install-root only before any books.
         if let Some(store) = self.store.as_ref() {
-            print_share::use_books_printers(store.db_path(), Some(&base));
+            print_share::use_books_printers(store.db_path());
         } else {
             print_share::use_device_dir(&base);
         }
@@ -239,12 +242,7 @@ impl AppState {
         if self.device_role.is_host() {
             self.lan_devices = store.list_lan_devices().unwrap_or_default();
         }
-        // The menu (what is sold) and the raw materials (what the kitchen
-        // buys and uses up) are separate lists: nothing raw ever reaches the
-        // order desk or the menu screen.
-        let (raw, menu): (Vec<Product>, Vec<Product>) =
-            store.list_products(false)?.into_iter().partition(|p| p.is_raw());
-        self.products = menu;
+        self.products = store.list_products(false)?;
         self.reorder_levels = store.reorder_levels().unwrap_or_default();
         self.low_stock_line = store
             .low_stock()
@@ -255,7 +253,6 @@ impl AppState {
             })
             .collect::<Vec<_>>()
             .join(", ");
-        self.raw_materials = raw;
         self.removed_products = store.list_removed_products()?;
         self.recent_sales = store.recent_sales(30)?;
         self.staff = store.list_staff()?;
@@ -268,8 +265,13 @@ impl AppState {
         self.extra_tills_allowed = store.extra_tills_allowed().unwrap_or(false);
         self.venue_title = store.venue_title()?;
         self.venue_icon_key = store.venue_icon_key()?;
-        self.nav_order = parse_nav_order(store.nav_order_csv()?.as_deref());
-        self.nav_hidden = parse_nav_hidden(store.nav_hidden_csv()?.as_deref());
+        let (order, hidden) = parse_nav_layout(
+            store.nav_order_csv()?.as_deref(),
+            store.nav_hidden_csv()?.as_deref(),
+            &self.locale.language,
+        );
+        self.nav_order = order;
+        self.nav_hidden = hidden;
         if let Some(user) = self.session.as_ref().map(lan_key) {
             self.amounts_screen_hidden = store.amounts_screen_hidden(&user).unwrap_or(false);
             self.amount_keys_hidden = parse_amount_keys_hidden(
@@ -366,10 +368,11 @@ impl AppState {
         let _ = self.refresh_local_servers();
         self.apply_platform_language_preview();
         self.screen = Screen::DeviceSetup;
+        // A known role shows as the selected Server / Client button — no
+        // status line restating it (cluster text, owner 2026-11-14).
         self.status = match self.device_role {
-            DeviceRole::Server => self.t("last_server_mode"),
-            DeviceRole::Client => self.t("last_client_mode"),
             DeviceRole::Unset => self.t("device_use_q"),
+            _ => String::new(),
         };
         // Warm LAN only after they confirm Server + extra tills on Lock path.
         // Do not start the server while the chooser is open.
@@ -467,6 +470,21 @@ impl AppState {
         Ok(())
     }
 
+    /// [`Self::books_op`] without reloading every list afterwards — for print
+    /// format writes, which no loaded list shows (autosave runs after each
+    /// pause in editing). A Client sends it quietly: only a failure is said.
+    fn books_op_light(&mut self, op: BooksOp) -> Result<String, String> {
+        if self.device_role == DeviceRole::Client {
+            let label = op.label();
+            let done = op.done_message();
+            self.lan_job("/books", &op, label, done, phone::Follow::Quiet, false)?;
+            return Ok(String::new());
+        }
+        let actor = self.actor()?;
+        let store = self.store.as_ref().ok_or_else(|| "No store".to_string())?;
+        store.apply_books_op(op, &actor)
+    }
+
     /// Person-level book write. A Client asks the shop over `POST /books`;
     /// the shop applies it and this device reloads after a local apply.
     fn books_op(&mut self, op: BooksOp) -> Result<String, String> {
@@ -481,6 +499,25 @@ impl AppState {
         let msg = store.apply_books_op(op, &actor)?;
         let _ = self.reload_all();
         Ok(msg)
+    }
+
+    /// Sidebar show/hide and order are the shop's: every device shows the
+    /// same rail (role rights still hide what a person may not open). The
+    /// shop device writes its books; an extra till asks the shop and gets the
+    /// shop's layout back with the next sync — it used to write only its own
+    /// copy (2026-11-14). `done` is the line the person reads once saved.
+    fn save_nav_layout(&mut self, done: String) -> Result<(), String> {
+        let hidden = nav_hidden_csv(&self.nav_hidden);
+        let order = nav_order_csv(&self.nav_order);
+        if self.device_role == DeviceRole::Client {
+            let op = BooksOp::SetNavLayout { hidden, order };
+            let label = op.label();
+            self.lan_job("/books", &op, label, done, phone::Follow::Refresh, false)?;
+            return Ok(());
+        }
+        let store = self.store.as_ref().ok_or("No store")?;
+        store.set_nav_hidden_csv(&hidden)?;
+        store.set_nav_order_csv(&order)
     }
 
     /// LAN details a Client needs to ask the Server to do the writing.
@@ -556,7 +593,7 @@ impl AppState {
         let Some(store) = self.store.as_ref() else {
             return;
         };
-        print_share::use_books_printers(store.db_path(), self.data_base.as_deref());
+        print_share::use_books_printers(store.db_path());
         let update_drafts = self.screen != Screen::Settings;
         if update_drafts {
             self.printer_draft = print_share::printers();
@@ -620,6 +657,9 @@ impl AppState {
 
     /// What a "type or pick" field can offer, before narrowing.
     fn suggest_candidates(&self, field: SuggestField) -> Vec<suggest::SuggestRow> {
+        if field.is_printer_pick() && self.printer_draft.printers.is_empty() {
+            return vec![suggest::SuggestRow::new(self.t("find_printers"), FIND_PRINTERS_ROW)];
+        }
         use suggest::SuggestRow;
         let lang = self.locale.language.clone();
         let parties = |suppliers_first: bool| {
@@ -695,13 +735,12 @@ impl AppState {
                 .filter(|p| !p.group_name.trim().is_empty())
                 .map(|p| SuggestRow::new(p.group_name.trim(), ""))
                 .collect(),
-            // A restaurant buys raw material (and a few goods it resells) —
-            // never its own dishes.
+            // What the shop buys and counts.
             SuggestField::BuyItem | SuggestField::InvItem => self
                 .stock_items()
                 .into_iter()
                 .map(|p| {
-                    let kind = locale::t(&lang, if p.is_raw() { "kind_raw" } else { "kind_resale" });
+                    let kind = locale::t(&lang, "kind_resale");
                     let sub = format!(
                         "{kind} · {} {}",
                         p.format_on_hand(),
@@ -818,24 +857,7 @@ impl AppState {
             return candidates.map(|(i, _)| i).collect();
         }
         let mut ranked: Vec<(u8, usize)> = candidates
-            .filter_map(|(i, p)| {
-                let aliases = p.aliases();
-                if p.name.trim().eq_ignore_ascii_case(q)
-                    || aliases.iter().any(|a| a.trim().eq_ignore_ascii_case(q))
-                {
-                    return Some((0, i));
-                }
-                let best = std::iter::once(menu_images::match_rank(&p.name, q))
-                    .chain(std::iter::once(
-                        (!p.group_name.is_empty())
-                            .then(|| menu_images::match_rank(&p.group_name, q))
-                            .flatten(),
-                    ))
-                    .chain(aliases.iter().map(|a| menu_images::match_rank(a, q)))
-                    .flatten()
-                    .min()?;
-                Some((best + 1, i))
-            })
+            .filter_map(|(i, p)| Some((menu_images::name_then_alias_rank(p, q)?, i)))
             .collect();
         ranked.sort_by_key(|(rank, _)| *rank);
         ranked.into_iter().map(|(_, i)| i).collect()
@@ -972,22 +994,7 @@ impl AppState {
             return base.cloned().collect();
         }
         let mut ranked: Vec<(u8, &Product)> = base
-            .filter_map(|p| {
-                let aliases = p.aliases();
-                if aliases.iter().any(|a| a.trim().eq_ignore_ascii_case(q)) {
-                    return Some((0, p));
-                }
-                let best = std::iter::once(menu_images::match_rank(&p.name, q))
-                    .chain(std::iter::once(
-                        (!p.group_name.is_empty())
-                            .then(|| menu_images::match_rank(&p.group_name, q))
-                            .flatten(),
-                    ))
-                    .chain(aliases.iter().map(|a| menu_images::match_rank(a, q)))
-                    .flatten()
-                    .min()?;
-                Some((best + 1, p))
-            })
+            .filter_map(|p| Some((menu_images::name_then_alias_rank(p, q)?, p)))
             .collect();
         ranked.sort_by_key(|(rank, _)| *rank);
         ranked.into_iter().map(|(_, p)| p.clone()).collect()
@@ -995,12 +1002,10 @@ impl AppState {
 
     /// Item lookup for the ops screens: exact name first, then unique-ish
     /// "contains" so sellers can type "chai" for "Masala Chai".
-    /// What the restaurant buys and counts: raw materials first, then the
-    /// menu items it resells (or already counts). Never its own dishes.
+    /// What the shop buys and counts: items bought to sell, or whose stock
+    /// it already counts.
     fn stock_items(&self) -> Vec<Product> {
-        let mut items = self.raw_materials.clone();
-        items.extend(self.products.iter().filter(|p| p.is_bought()).cloned());
-        items
+        self.products.iter().filter(|p| p.is_bought()).cloned().collect()
     }
 
     /// The stock item this name means: an exact name / alias first, else a
@@ -1279,6 +1284,35 @@ impl AppState {
             .unwrap_or(SnackKind::DEFAULT_SECS);
     }
 
+    /// Unlock brings each person back to the nav item they last had
+    /// selected on this device (owner, 2026-11-15). Written only when it
+    /// changes, and never while a worker holds the books (the write would
+    /// wait on it — a freeze); the next paint writes it then.
+    fn remember_nav_tab(&mut self, tab: Option<NavTab>) {
+        let Some(tab) = tab.filter(|t| *t != NavTab::Lock) else {
+            return;
+        };
+        let Some(user) = self.session.as_ref().map(lan_key) else {
+            return;
+        };
+        if self
+            .last_nav_saved
+            .as_ref()
+            .is_some_and(|(u, t)| *u == user && *t == tab)
+        {
+            return;
+        }
+        if heavy_books_job() || client_pair_busy().load(std::sync::atomic::Ordering::SeqCst) {
+            return;
+        }
+        let Some(store) = self.store.as_ref() else {
+            return;
+        };
+        if store.set_last_nav_key(&user, nav_tab_key(tab)).is_ok() {
+            self.last_nav_saved = Some((user, tab));
+        }
+    }
+
     fn money(&self, m: Money) -> String {
         m.format_localized(&self.locale.currency, &self.fiscal)
     }
@@ -1326,23 +1360,14 @@ impl AppState {
     }
 
     /// One line under the totals strip: tax added at till changes pay; tax
-    /// inside price shows the GST already inside the total (and warns when
-    /// dishes have no tax rate so "inclusive GST" looks missing).
+    /// inside price shows the GST already inside the total. Numbers only —
+    /// no advice on the till (owner, 2026-11-14: "No GST rate on these items
+    /// — on Items set Tax rate…" was clustered text on every sale of an
+    /// unrated item). Empty when no item carries a rate.
     fn cart_tax_estimate_line(&self) -> String {
         let tax = self.cart_tax_estimate_paise();
         let service = self.fiscal.service_on(self.cart.line_sum().paise());
         let inside = self.fiscal.tax_pricing.is_inside_price();
-        let any_rated = self.cart.lines.iter().any(|line| {
-            self.products
-                .iter()
-                .find(|p| p.id == line.product_id)
-                .is_some_and(|p| p.tax_bps > 0)
-        });
-        if inside && !self.cart.lines.is_empty() && !any_rated {
-            return self
-                .t("tax_rates_missing_hint")
-                .replace("{tax}", self.fiscal.tax_label());
-        }
         if tax <= 0 && service <= 0 {
             return " ".to_string();
         }

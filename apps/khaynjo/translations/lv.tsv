@@ -41,7 +41,7 @@ remove	Noņemt
 removed_items	Noņemtās pozīcijas
 removed_help	Atjaunošana atgriež pozīciju ēdienkartē tieši tādu, kāda tā bija — cena, foto un kategorija. Mūsu ēdienu plaukts nekad netiek noņemts, tāpēc ēdienu vienmēr var pievienot vēlreiz.
 restore_item	Atjaunot
-empty_catalog	Vēl nav ēdienu. Atveriet ēdienkarti, pievienojiet ēdienu (nosaukums + cena) un pieņemiet pasūtījumu.
+empty_catalog	Vēl nav ēdienu.
 total	Kopā
 cash	Skaidra nauda
 upi	UPI
@@ -103,23 +103,14 @@ bill_item_qty	Daudzums
 bill_item_price	Cena
 bill_item_amount	Summa
 bill_item_note	Ēdiena piezīme
-bill_item_col_gap	Kolonnu atstarpe
 bill_item_col_order	Kolonnu secība
 bill_item_col_sep	Kolonnu līnijas
-bill_item_gap_tight	Šaurs
-bill_item_gap_comfort	Ērts
-bill_item_gap_wide	Plats
-bill_item_num_width	Skaitļu kolonnas
-bill_item_num_compact	Kompakts
-bill_item_num_comfort	Ērts
-bill_item_num_wide	Plats
-bill_item_num_align	Skaitļi līdzinās
-bill_item_gap_em	Atstarpe (em)
-bill_item_qty_min	Daudzuma min. (em)
-bill_item_price_min	Cenas min. (em)
-bill_item_amount_min	Summas min. (em)
-kot_item_qty_width	Daudzuma kolonna
-kot_item_num_align	Daudzuma līdzinājums
+slip_columns	Kolonnas
+slip_col_width	Platums (mm)
+slip_col_start	Sākuma atstarpe (px)
+slip_col_end	Beigu atstarpe (px)
+slip_col_align	Teksta līdzinājums
+slip_columns_help	Katras kolonnas platumā ietilpst tās sākuma un beigu atstarpe. Teksts tiek pārnests savas kolonnas iekšpusē; tas, kas pārsniedz satura platumu, tiek nogriezts — uz papīra un priekšskatījumā.
 bill_total_qty_label	Kopējā daudzuma etiķete
 bill_total_subtotal_label	Starpsummas etiķete
 bill_total_grand_label	Kopsummas etiķete
@@ -221,7 +212,6 @@ sidebar_order_saved	Sānu joslas secība saglabāta
 sidebar_visibility_saved	Sānu joslas redzamība saglabāta
 amounts_hide	Slēpt
 amounts_show	Rādīt
-printers_none_hint	Vispirms saglabājiet printeri šajā ierīcē, tad pievienojiet to rēķinam vai virtuvei
 counter	Lete
 dine_in	Uz vietas
 takeaway	Līdzi
@@ -328,8 +318,6 @@ selected_language	Atlasīts
 continue	Turpināt
 this_device	ŠĪ IERĪCE
 device_use_q	Kā šī ierīce tiks lietota?
-last_server_mode	Bija serveris — pieskarieties, lai turpinātu
-last_client_mode	Bija terminālis — pieskarieties, lai turpinātu
 choose_server	Izvēlieties serveri
 choose_server_hint	Atveriet esošu serveri vai izveidojiet jaunu citam uzņēmumam.
 create_new_server	Izveidot jaunu serveri
@@ -391,7 +379,7 @@ attachments_last_expense	Pielikumi (pēdējais izdevums)
 bank	Banka
 bank_in	Uz banku
 bank_out	No bankas
-bank_reconciliation	Bankas salīdzināšana (atzīmējiet pret bankas izrakstu)
+bank_reconciliation	Bankas salīdzināšana
 bank_to_till	Banka → kase
 book_add_dish	Grāmata — pievienot ēdienu / pozīciju
 book_opening_credit	Grāmata — sākuma kredīts
@@ -744,7 +732,6 @@ station_print_pick_first	Vispirms izvēlieties virtuves staciju
 station_print_editing	Labo printerus “{name}”
 station_vps_dd	Printeri šai stacijai
 station_vps_dd_n	{n} printeri · pieskarieties, lai mainītu
-station_vps_empty	Vēl nav printeru — atrodiet tos sadaļā Iestatījumi → Printeri
 bill_printers_dd	Printeri rēķinam
 bill_printers_dd_n	{n} printeri rēķinam · pieskarieties, lai mainītu
 job_layout	Izkārtojums
@@ -889,7 +876,7 @@ net_word	Neto
 offline_badge	BEZSAISTĒ
 optional_login_help	Pieteikšanās pēc izvēles (id + parole). Īpašnieks iestata vienreiz; paroli vēlāk var mainīt tikai lietotājs.
 or_unlock_login	Vai atbloķējiet ar pieteikšanās id un paroli
-permission_preset	Amats (iestata ekrānus un naudas darbības)
+permission_preset	Amats
 preset_help_khaynjo	Kasieris: pārdod. Vadītājs: pārdod + pozīcijas + anulē/labo.
 product_locked_khaynjo	Khaynjo
 product_only_khaynjo	Šī lietotne ir tikai Khaynjo — restorāna operētājsistēma. Citas nozares tiek piegādātas kā atsevišķi Kumkaj produkti.
@@ -961,10 +948,6 @@ pin_hint_paired	Papildu kase savienota pārī — atbloķējiet, lai pārdotu
 pin_hint_pair_first	Papildu kase — vispirms savienojiet pārī ar veikala ierīci
 unlock_to_continue	Atbloķējiet, lai turpinātu
 no_staff_yet	Vēl nav personāla — atbloķējiet kā īpašnieks, tad Komanda
-status_server_set_pin	Servera režīms — iestatiet īpašnieka PIN
-status_server_tills	Servera režīms — papildu kases var pievienoties. Atbloķēt
-status_server_unlock	Servera režīms — atbloķējiet kā īpašnieks
-status_client_unlock	Termināļa režīms — atbloķējiet, lai pārdotu
 icon_new_selected	Ikona: atlasīts jauns fails — pieskarieties Saglabāt zīmolu
 icon_custom	Ikona: pielāgota vietas zīme
 icon_default	Ikona: Kumkaj zīme (noklusējums) — izvēlieties savu
@@ -1033,7 +1016,7 @@ book_kind_balance	Bilance
 order_help	Pieskarieties pozīcijai, lai to pievienotu.
 floor_help	Pieskarieties galdam, lai pieņemtu vai mainītu pasūtījumu. Krāsas rāda brīvs → sēž → virtuve → gatavs → ēd → rēķins → samaksāts. Gaidīšanas saraksts, rezervācijas un galdu pievienošana ir sadaļās zemāk.
 kitchen_help	Virtuves zīmes (KOT), jaunākā pēdējā. Sākt → Gatavs → Padarīts virza zīmi uz priekšu. Zīmes nekad nerāda cenas.
-kitchen_empty	Nav atvērtu zīmju. KOT, kas nosūtīts no Pasūtījuma vai Zāles, parādās šeit.
+kitchen_empty	Nav atvērtu zīmju.
 add_a_table	Pievienot galdu
 add_station_heading	Pievienot virtuves staciju
 categories_help	Pieskarieties Lietot, lai ievietotu augšējo pozīciju tajā kategorijā. Foto dod kategorijai attēlu; bez tā rāda iniciāļus.
@@ -1131,7 +1114,6 @@ bill_format_help	Drukā zem restorāna nosaukuma katrā rēķinā. Atdaliet rind
 bill_header_ph	Adrese | tālrunis
 fssai_ph	FSSAI licences nr. (Indija)
 bill_footer_ph	Kājene (piem. Paldies, nāciet vēl)
-save_bill_format	Saglabāt rēķina formātu
 reset_bill_format	Atjaunot noklusējumu
 bill_format_reset	Rēķina formāts atjaunots uz noklusējumu
 reset_kot_format	Atjaunot noklusējumu
@@ -1201,13 +1183,11 @@ kot_copies_3	3
 kot_title_ph	Virsraksts (tukšs = KOT - VIRTUVES PASŪTĪJUMS)
 kot_footer_ph	Virtuves piezīme (nav obligāta, bez cenām)
 kot_preview	Priekšskatījums
-save_kot_format	Saglabāt KOT formātu
 test_kot_format	Testa KOT
 test_kot_sent	Virtuves zīmes priekšskatījums nosūtīts
 test_bill_format	Testa rēķins
 test_bill_sent	Rēķina priekšskatījums nosūtīts
 test_print_no_printer	Nav printera tam darbam — izvēlieties vienu šajā ekrānā
-kot_format_saved	KOT formāts saglabāts
 std_print	Rēķina drukas izmērs
 std_print_help	Burtu izmērs standarta portreta un ainavas rēķina darbiem OS / dokumentu printeros (ievadiet punktos — ne Mazs/Normāls/Liels). Tas pats izmērs abos virzienos. Virtuves lapas izmēri ir KOT cilnē.
 std_size_s	Mazs
@@ -1264,7 +1244,6 @@ new_items_head	Vēl nav nosūtīts
 price_ph	Cena
 price_ph_gst_inside	Cena ({tax} iekļauts)
 cancel_needs_table	Atveriet šo pasūtījumu no Zāles (galds), lai atceltu pēc tam, kad virtuve to saņēmusi — letes KOT paliek zīmē, līdz ņemat maksājumu
-tax_rates_missing_hint	Šiem ēdieniem nav {tax} likmes — ēdienkartē iestatiet nodokļa likmi (cenas jau ietver {tax} pie {tax} iekļauts)
 taxable_value	Ar nodokli apliekamā vērtība
 gst_inside_price_note	({tax} iekļauts)
 start_with_template	Sākt ar mūsu ēdienkartes veidni
@@ -1318,9 +1297,7 @@ order_empty_pick	Pasūtījums tukšs — pieskarieties Pievienot ēdienus augš�
 add_dishes	Pievienot ēdienus
 order_so_far	Šajā pasūtījumā: {n} · {total}
 no_dish_match	Neviens ēdiens neatbilst “{q}”
-pick_dishes_help	Pieskarieties ēdienam, lai to pievienotu · izvēlieties kategoriju, lai sašaurinātu sarakstu
 pick_done	Gatavs
-pick_done_dd	Gatavs · {label}
 printer_route_mode	Ja šajā vietā ir vairāki printeri
 printer_mode_first	Pirmais, kas darbojas
 printer_mode_all	Drukāt uz visiem

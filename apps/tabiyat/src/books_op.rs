@@ -139,7 +139,6 @@ pub enum BooksOp {
         variations: Vec<ModifierOption>,
         schedule: Vec<ScheduleWindow>,
         group_name: String,
-        recipe_text: String,
         image_bytes: Vec<u8>,
         image_filename: String,
         existing_image_key: Option<String>,
@@ -172,7 +171,6 @@ pub enum BooksOp {
         filename: String,
         bytes: Vec<u8>,
     },
-    ImportAggregator,
     ImportCategoryImage {
         category_id: String,
         filename: String,
@@ -348,6 +346,13 @@ pub enum BooksOp {
         icon_bytes: Vec<u8>,
     },
     ClearVenueIcon,
+    /// Sidebar show/hide and order (CSV of nav keys). The shop's: every
+    /// device shows the same rail; role rights still hide what a person may
+    /// not open. A Client sends it here instead of writing its own copy.
+    SetNavLayout {
+        hidden: String,
+        order: String,
+    },
     /// Bill print size (Standard Portrait/Landscape em) — shop printers.json on Server.
     SetStandardEm {
         em: f32,
@@ -404,7 +409,6 @@ impl BooksOp {
             Self::ImportShelfTemplate => "Import photo shelf",
             Self::ImportClientTemplate { .. } => "Import a menu template",
             Self::ImportCsv { .. } => "Import from CSV",
-            Self::ImportAggregator => "Import aggregator orders",
             Self::ImportCategoryImage { .. } => "Change items",
             Self::BulkPrice { .. } => "Bulk price",
             Self::AdjustStock { .. } => "Adjust stock",
@@ -444,6 +448,7 @@ impl BooksOp {
             Self::AddUnitConversion { .. } => "Add unit conversion",
             Self::SetFrequent { .. } => "Frequent items settings",
             Self::SetVenueBrand { .. } | Self::ClearVenueIcon => "Change in-app brand",
+            Self::SetNavLayout { .. } => "Change sidebar",
             Self::SetStandardEm { .. } => "Change the bill print size",
             Self::SetContentWidth { .. } => "Change the content width",
             Self::PrintTestPage { .. } => "Print a test page",
@@ -495,7 +500,6 @@ impl BooksOp {
             }
             Self::ImportCsv { parties: true, .. } => "Parties imported".into(),
             Self::ImportCsv { .. } => "Items imported".into(),
-            Self::ImportAggregator => "Aggregator orders imported".into(),
             Self::ImportCategoryImage { .. } => "Category photo saved".into(),
             Self::BulkPrice { .. } => "Prices updated".into(),
             Self::AdjustStock { .. } => "Stock adjusted".into(),
@@ -544,6 +548,7 @@ impl BooksOp {
                 }
             }
             Self::ClearVenueIcon => "Icon cleared".into(),
+            Self::SetNavLayout { .. } => "Sidebar saved".into(),
             Self::SetStandardEm { .. } => "Bill print size saved".into(),
             Self::SetContentWidth { mm } => format!("Bill content width {mm} mm"),
             Self::PrintTestPage { .. } => "Test page sent".into(),
@@ -665,6 +670,15 @@ impl Store {
             BooksOp::SetUserLanguage { code } => {
                 self.set_user_language(&code)?;
                 Ok(format!("Language: {code}"))
+            }
+            BooksOp::SetNavLayout { hidden, order } => {
+                if !actor.is_owner() && !actor.can_access_settings() {
+                    return Err("Not allowed to change the sidebar".into());
+                }
+                self.set_nav_hidden_csv(&hidden)?;
+                self.set_nav_order_csv(&order)?;
+                // No words of its own: the device says its (translated) line.
+                Ok(String::new())
             }
             BooksOp::SetCurrency { code } => {
                 if !actor.is_owner() {
@@ -847,7 +861,6 @@ impl Store {
                 variations,
                 schedule,
                 group_name,
-                recipe_text,
                 image_bytes,
                 image_filename,
                 existing_image_key,
@@ -875,7 +888,6 @@ impl Store {
                 &variations,
                 &schedule,
                 &group_name,
-                &recipe_text,
                 &image_bytes,
                 &image_filename,
                 existing_image_key.as_deref(),
@@ -951,13 +963,6 @@ impl Store {
                     self.import_items_csv(&text)?
                 };
                 Ok(csv_summary(added, skipped, &problems))
-            }
-            BooksOp::ImportAggregator => {
-                if !actor.is_owner() && !actor.can_access_settings() {
-                    return Err("Not allowed to import aggregator orders".into());
-                }
-                let n = self.import_aggregator_orders_drop_file()?;
-                Ok(format!("Imported {n} aggregator order(s) into the inbox"))
             }
             BooksOp::ImportCategoryImage { category_id, filename, bytes } => {
                 if !actor.is_owner() && !actor.can_access_items() {
@@ -1402,7 +1407,6 @@ impl Store {
         variations: &[ModifierOption],
         schedule: &[ScheduleWindow],
         group_name: &str,
-        recipe_text: &str,
         image_bytes: &[u8],
         image_filename: &str,
         existing_image_key: Option<&str>,
@@ -1485,11 +1489,8 @@ impl Store {
         product.composition = composition.trim().to_string();
         product.schedule_h = schedule_h;
         product.rx_required = rx_required;
-        // Owner prescription note lives on the item as free text in allergens
-        // when provided (bookkeeping only — not compliance).
-        if !rx_note.trim().is_empty() {
-            product.allergens = rx_note.trim().to_string();
-        }
+        // The owner's prescription note (bookkeeping only — not compliance).
+        product.rx_note = rx_note.trim().to_string();
         product.hsn_code = hsn_code.trim().to_string();
         if !sizes_only {
             self.upsert_product(&product)?;
@@ -1508,9 +1509,6 @@ impl Store {
                 _ => product.name.clone(),
             };
             self.audit(actor, verb, &detail)?;
-            if !recipe_text.trim().is_empty() || !self.recipe(&product.id)?.is_empty() {
-                self.set_recipe_from_text(&product.id, recipe_text, actor)?;
-            }
         }
         let photo_path = photo.as_ref().map(|f| f.path().to_path_buf()).or_else(|| {
             existing_image_key

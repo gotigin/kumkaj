@@ -41,7 +41,7 @@ remove	Hiq
 removed_items	Artikujt e hequr
 removed_help	Rikthimi e kthen artikullin në menu pikërisht si ishte — çmim, foto dhe kategori. Rafti ynë i pjatave nuk hiqet kurrë, prandaj një pjatë mund të shtohet përsëri.
 restore_item	Rikthe
-empty_catalog	Ende pa pjata. Hapni Menunë, shtoni një pjatë (emër + çmim), pastaj merrni një porosi.
+empty_catalog	Ende pa pjata.
 total	Totali
 cash	Para në dorë
 upi	UPI
@@ -103,23 +103,14 @@ bill_item_qty	Sasia
 bill_item_price	Çmimi
 bill_item_amount	Shuma
 bill_item_note	Shënimi i pjatës
-bill_item_col_gap	Hapësira e kolonave
 bill_item_col_order	Renditja e kolonave
 bill_item_col_sep	Vijat e kolonave
-bill_item_gap_tight	Ngushtë
-bill_item_gap_comfort	Rehat
-bill_item_gap_wide	Gjerë
-bill_item_num_width	Kolonat e numrave
-bill_item_num_compact	Kompakt
-bill_item_num_comfort	Rehat
-bill_item_num_wide	Gjerë
-bill_item_num_align	Radhitja e numrave
-bill_item_gap_em	Hapësira (em)
-bill_item_qty_min	Sasia min (em)
-bill_item_price_min	Çmimi min (em)
-bill_item_amount_min	Shuma min (em)
-kot_item_qty_width	Kolona e sasisë
-kot_item_num_align	Radhitja e sasisë
+slip_columns	Kolonat
+slip_col_width	Gjerësia (mm)
+slip_col_start	Hapësira në fillim (px)
+slip_col_end	Hapësira në fund (px)
+slip_col_align	Rreshtimi i tekstit
+slip_columns_help	Gjerësia e çdo kolone përfshin hapësirën e saj në fillim dhe në fund. Teksti mbështillet brenda kolonës së tij; çfarë del përtej gjerësisë së përmbajtjes pritet, në letër dhe në pamjen paraprake.
 bill_total_qty_label	Etiketa e sasisë totale
 bill_total_subtotal_label	Etiketa e nëntotalit
 bill_total_grand_label	Etiketa e totalit të përgjithshëm
@@ -221,7 +212,6 @@ sidebar_order_saved	Renditja e shiritit anësor u ruajt
 sidebar_visibility_saved	Dukshmëria e shiritit anësor u ruajt
 amounts_hide	Fshih
 amounts_show	Shfaq
-printers_none_hint	Ruani fillimisht një printer në këtë pajisje, pastaj shtojeni te Fatura ose te një kuzhinë
 counter	Banaku
 dine_in	Në sallë
 takeaway	Për marrje
@@ -328,8 +318,6 @@ selected_language	E zgjedhur
 continue	Vazhdo
 this_device	KJO PAJISJE
 device_use_q	Si do të përdoret kjo pajisje?
-last_server_mode	Ishte Server — prekni për të vazhduar
-last_client_mode	Ishte Terminal — prekni për të vazhduar
 choose_server	Zgjidhni një server
 choose_server_hint	Hapni një server ekzistues, ose krijoni një për një biznes tjetër.
 create_new_server	Krijo server të ri
@@ -391,7 +379,7 @@ attachments_last_expense	Bashkëngjitjet (shpenzimi i fundit)
 bank	Banka
 bank_in	Hyrje në bankë
 bank_out	Dalje nga banka
-bank_reconciliation	Barazimi i bankës (shënoni kundrejt pasqyrës suaj bankare)
+bank_reconciliation	Barazimi i bankës
 bank_to_till	Banka → kasa
 book_add_dish	Libri — shto pjatë / artikull
 book_opening_credit	Libri — kredi fillestare
@@ -744,7 +732,6 @@ station_print_pick_first	Zgjidhni fillimisht një stacion kuzhine
 station_print_editing	Po ndryshohen printerët për “{name}”
 station_vps_dd	Printerët për këtë stacion
 station_vps_dd_n	{n} printerë · prekni për të ndryshuar
-station_vps_empty	Ende pa printerë — Gjejini te Cilësimet → Printerët
 bill_printers_dd	Printerët për faturën
 bill_printers_dd_n	{n} printerë për faturën · prekni për të ndryshuar
 job_layout	Paraqitja
@@ -889,7 +876,7 @@ net_word	Neto
 offline_badge	JASHTË LINJE
 optional_login_help	Hyrje opsionale (id + fjalëkalim). Pronari e vendos një herë; vetëm përdoruesi mund ta ndryshojë fjalëkalimin më vonë.
 or_unlock_login	Ose zhblloko me id hyrjeje + fjalëkalim
-permission_preset	Puna (vendos ekranet dhe veprimet e parasë)
+permission_preset	Puna
 preset_help_khaynjo	Arkëtar: shet. Menaxher: shet + artikuj + anulim/ndryshim.
 product_locked_khaynjo	Khaynjo
 product_only_khaynjo	Ky aplikacion është vetëm Khaynjo — sistemi operativ i restorantit. Faqet e tjera të tregtisë dalin si produkte të veçanta Kumkaj.
@@ -961,10 +948,6 @@ pin_hint_paired	Kasa shtesë e çiftuar — zhbllokoni për të shitur
 pin_hint_pair_first	Kasa shtesë — çiftojeni fillimisht me pajisjen e dyqanit
 unlock_to_continue	Zhbllokoni për të vazhduar
 no_staff_yet	Ende pa staf — zhbllokoni si Pronar, pastaj Ekipi
-status_server_set_pin	Mënyra Server — vendosni PIN-in e Pronarit
-status_server_tills	Mënyra Server — kasat shtesë mund të bashkohen. Zhblloko
-status_server_unlock	Mënyra Server — zhbllokoni si Pronar
-status_client_unlock	Mënyra Terminal — zhbllokoni për të shitur
 icon_new_selected	Ikona: skedar i ri i zgjedhur — prekni Ruaj markën
 icon_custom	Ikona: shenja e personalizuar e lokalit
 icon_default	Ikona: shenja Kumkaj (parazgjedhje) — zgjidhni një të personalizuar
@@ -1033,7 +1016,7 @@ book_kind_balance	Bilanci
 order_help	Prekni një artikull për ta shtuar.
 floor_help	Prekni një tavolinë për të marrë ose ndryshuar porosinë. Ngjyrat tregojnë e lirë → e zënë → kuzhinë → gati → duke ngrënë → faturë → e paguar. Lista e pritjes, rezervimet dhe shtimi i tavolinave janë në seksionet më poshtë.
 kitchen_help	Fletët e kuzhinës (KOT), më e reja e fundit. Fillo → Gati → U krye e çon fletën përpara. Fletët nuk tregojnë kurrë çmime.
-kitchen_empty	Pa fleta të hapura. Një KOT i dërguar nga Porosia ose Salla shfaqet këtu.
+kitchen_empty	Pa fleta të hapura.
 add_a_table	Shto një tavolinë
 add_station_heading	Shto një stacion kuzhine
 categories_help	Prekni Përdor për ta vendosur artikullin sipër nën atë kategori. Fotoja i jep kategorisë një pamje; pa të shfaq inicialet.
@@ -1131,7 +1114,6 @@ bill_format_help	Shtypet nën emrin e restorantit tuaj në çdo faturë. Ndani r
 bill_header_ph	Adresa | telefoni
 fssai_ph	Nr. i licencës FSSAI (India)
 bill_footer_ph	Fundi (p.sh. Faleminderit, ejani përsëri)
-save_bill_format	Ruaj formatin e faturës
 reset_bill_format	Rivendos te parazgjedhja
 bill_format_reset	Formati i faturës u rivendos te parazgjedhja
 reset_kot_format	Rivendos te parazgjedhja
@@ -1201,13 +1183,11 @@ kot_copies_3	3
 kot_title_ph	Titulli (bosh = KOT - KITCHEN ORDER)
 kot_footer_ph	Shënim kuzhine (opsional, pa çmime)
 kot_preview	Shembull
-save_kot_format	Ruaj formatin e KOT-it
 test_kot_format	KOT prove
 test_kot_sent	Shembulli i fletës së kuzhinës u dërgua
 test_bill_format	Faturë prove
 test_bill_sent	Shembulli i faturës u dërgua
 test_print_no_printer	Pa printer për atë punë — zgjidhni një në këtë ekran
-kot_format_saved	Formati i KOT-it u ruajt
 std_print	Madhësia e shtypjes së faturës
 std_print_help	Madhësia e gërmës për punët e faturës Portret dhe Peizazh Standard në printerët OS / dokument (shkruani pikë — jo E vogël/Normale/E madhe). E njëjta madhësi në të dy drejtimet. Madhësitë e fletës së kuzhinës janë te skeda KOT.
 std_size_s	E vogël
@@ -1264,7 +1244,6 @@ new_items_head	Ende të padërguara
 price_ph	Çmimi
 price_ph_gst_inside	Çmimi ({tax} i përfshirë)
 cancel_needs_table	Hapeni këtë porosi nga Salla (një tavolinë) për ta anuluar pasi kuzhina e ka — KOT-et e banakut qëndrojnë në fletë derisa të merrni pagesën
-tax_rates_missing_hint	Këto pjata nuk kanë normë {tax} — te Menuja vendosni normën e tatimit (çmimet e përfshijnë tashmë {tax} te {tax} i përfshirë)
 taxable_value	Vlera e tatueshme
 gst_inside_price_note	({tax} i përfshirë)
 start_with_template	Fillo me shabllonin tonë të menusë
@@ -1318,9 +1297,7 @@ order_empty_pick	Porosia bosh — prekni Shto pjata sipër për të zgjedhur pja
 add_dishes	Shto pjata
 order_so_far	Në këtë porosi: {n} · {total}
 no_dish_match	Asnjë pjatë nuk përputhet me “{q}”
-pick_dishes_help	Prekni një pjatë për ta shtuar · zgjidhni një kategori për të ngushtuar listën
 pick_done	U krye
-pick_done_dd	U krye · {label}
 printer_route_mode	Nëse ka disa printerë në këtë vend
 printer_mode_first	I pari që punon
 printer_mode_all	Shtyp te të gjithë

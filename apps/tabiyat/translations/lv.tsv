@@ -1,5 +1,4 @@
 # Latvian — Latviešu (lv). One key<TAB>text per line, in en() order; keep {placeholders}.
-app_tagline	Aptieku skaitītājs: zāles, partijas, khata un grāmatas. Bezmaksas bezsaistē.
 barcode_ph	Svītrkods / EAN
 composition_ph	Sāls / sastāvs (meklējams)
 schedule_h_off	H grafiks — izslēgts (īpašnieka karogs)
@@ -13,7 +12,6 @@ expiry_alerts	Brīdinājumi par derīguma termiņu (nākamās 7 dienas)
 expiry_none	Nākamo 7 dienu laikā nav beigusies neviena partija.
 rx_nudge	Īpašnieks atzīmēja Rx / H grafiku — pievienojiet piezīmi, ja nepieciešams.
 unlock	Atbloķēt
-pin_hint	Īpašnieka PIN sākumā ir 0000
 sell	Pārdod
 buy	Pirkums
 books	Dienas grāmata
@@ -32,17 +30,13 @@ reports_month	Peļņa un zaudējumi (mēnesis)
 reports_aging	Neapmaksāts / debets-kredīts
 reports_balance_sheet	Bilance
 reports	Bankas grāmata un peļņa
-refresh	Atsvaidzināt
 undo	Atsaukt
-start_tracking	Sākt uzskaiti
 stock_minus	− Krājums
 stock_plus	+ Krājums
 settle_cash	Norēķināties skaidrā
 settle_card	Norēķināties ar karti
 items	Zāles
 nav_items	Zāles
-more	Vairāk
-your_items	Jūsu zāles
 items_help	Pieskarieties vienumam, lai to rediģētu. Jauns vienums notīra veidlapu. Meklējiet pēc nosaukuma vai īsa koda, iestatiet cenu (0 ir labi), pēc tam pievienojiet. Jau reģistrētajos pārdošanas apjomos tiek saglabāts vārds, par kuru tie tika apsūdzēti.
 add_item	Pievienot pozīciju
 new_item	Jauna pozīcija
@@ -53,28 +47,22 @@ remove	Noņemt
 removed_items	Noņemtās pozīcijas
 removed_help	Atjaunot, vienums tiek atgriezts sadaļā Vienumi tieši tāds, kāds tas bija — cena, fotoattēls un kategorija.
 restore_item	Atjaunot
-empty_catalog	Zāļu vēl nav. Atveriet zāles, pievienojiet nosaukumu, svītrkodu vai sāli, pēc tam pārdodiet.
+empty_catalog	Zāļu vēl nav.
 total	Kopā
 cash	Skaidra nauda
 upi	UPI
 card	Karte
 credit	Puses
 clear	Notīrīt
-ready_to_sell	Gatavs ierakstīt
 today_prefix	Šodien
-today_mid	šodien
 owed	neapmaksāts
-round_word	noapaļot
 back	Atpakaļ
 sold_out	Nav pieejams
 restock	Papildināt
 not_tracked	Netiek uzskaitīts
 in_stock	krājumā
 marked_sold_out	Atzīmēts kā nepieejams
-add_upper	PIEVIENOT
-na	Nav
 qty	Svars/daudzums
-unit_at	Likme @
 actual	Faktiskais
 applied	Piemērotais
 note_ph	Piezīme (nav obligāta)
@@ -93,21 +81,13 @@ bill_item_qty	Daudzums
 bill_item_price	Cena
 bill_item_amount	Summa
 bill_item_note	Rx / pārdošanas piezīme
-bill_item_col_gap	Kolonnu atstarpe
 bill_item_col_order	Kolonnu secība
 bill_item_col_sep	Kolonnu līnijas
-bill_item_gap_tight	Šaurs
-bill_item_gap_comfort	Ērts
-bill_item_gap_wide	Plats
-bill_item_num_width	Skaitļu kolonnas
-bill_item_num_compact	Kompakts
-bill_item_num_comfort	Ērts
-bill_item_num_wide	Plats
-bill_item_num_align	Skaitļi līdzinās
-bill_item_gap_em	Atstarpe (em)
-bill_item_qty_min	Daudzuma min. (em)
-bill_item_price_min	Cenas min. (em)
-bill_item_amount_min	Summas min. (em)
+slip_col_width	Platums (mm)
+slip_col_start	Sākuma atstarpe (px)
+slip_col_end	Beigu atstarpe (px)
+slip_col_align	Teksta līdzinājums
+slip_columns_help	Katras kolonnas platumā ietilpst tās sākuma un beigu atstarpe. Teksts tiek pārnests savas kolonnas iekšpusē; tas, kas pārsniedz satura platumu, tiek nogriezts — uz papīra un priekšskatījumā.
 bill_total_qty_label	Kopējā daudzuma etiķete
 bill_total_subtotal_label	Starpsummas etiķete
 bill_total_grand_label	Kopsummas etiķete
@@ -120,11 +100,7 @@ bill_total_qty	Kopējais daudzums
 bill_total_subtotal	Starpsumma
 bill_total_grand	Kopsumma
 kot_unassigned	Nav piešķirts
-pos_tab_items	Pievienotās pozīcijas
-pos_tab_payment	Maksājums
-settings_hub_title	Iestatījumi
 settings_hub_help	Atveriet vienu zonu vienlaikus — mazāk ritināšanas, skaidrākas izvēles.
-settings_back	Atpakaļ
 settings_sec_language	Valoda un valūta
 settings_sec_country	Valsts un nodoklis
 settings_sec_tills	Citas ierīces
@@ -166,35 +142,17 @@ diag_cleared	Diagnostikas žurnāli notīrīti
 sidebar_settings	Sānu josla
 sidebar_settings_help	Tās pašas ikonas kā sānu sliedē. Velciet rindu, lai pārkārtotu. Pārslēdziet, lai rādītu vai slēptu. Iestatījumi un Bloķēšana vienmēr paliek joslā.
 sidebar_always_on_short	Vienmēr ieslēgts
-sidebar_back_settings	Atpakaļ
-sidebar_shown	Redzams
-sidebar_hidden	Paslēpts
-sidebar_always_on	Vienmēr joslā
-sidebar_shown_hint	Redzams sānu sliedē / apakšējās cilnēs
-sidebar_hidden_hint	Paslēpts no joslas
 sidebar_menu_items	Pozīcijas
 sidebar_enable_all	Ieslēgt visu
 sidebar_disable_all	Izslēgt visu
 sidebar_order_saved	Sānu joslas secība saglabāta
 sidebar_visibility_saved	Sānu joslas redzamība saglabāta
-amounts_hide	Slēpt
-amounts_show	Rādīt
-printers_none_hint	Vispirms saglabājiet printeri šajā ierīcē un pēc tam pievienojiet to rēķinam vai sadaļai
-counter	Lete
-dine_in	Lete
-takeaway	Līdzi
-order	Pasūtījums
 sales	Pārdošana
-sales_refunds	Pārdošana un atmaksas
 day_close	Dienas slēgšana
 reports_expenses	Bankas grāmata un peļņa
 nav_reports	Pārskati
 nav_settings	Iestatījumi
 nav_lock	Bloķēšana
-no_sale_yet	Vēl nav pārdošanas
-favorites	Izlase
-favorites_help	Pozīcijas, ko pārdodat bieži, saglabātas šai pieteikšanās reizei. Pievienojiet vienu rēķinam vai veidojiet sarakstu no visām pozīcijām zemāk.
-your_favorites	Jūsu izlase
 all_items	Visas pozīcijas
 frequent	Biežākās
 added_items	Pievienotās pozīcijas
@@ -211,8 +169,6 @@ zero_sales_on	Atļaut ₹0
 zero_sales_off	Prasīt cenu
 zero_sales_saved_on	Nulles vērtības pārdošana atļauta
 zero_sales_saved_off	Pārdošanai jābūt cenai virs ₹0
-no_favorites	Vēl nav izlases — pievienojiet pozīcijas no saraksta zemāk.
-add_to_bill	Pievienot rēķinam
 added	Pievienots
 owes_word	parādā
 selected_word	Atlasīts
@@ -221,19 +177,11 @@ chip_missing_customer	Atlasītais klients pazudis — izvēlieties vēlreiz
 chip_no_customer	Vēl nav klienta — ierakstiet vārdu un pieskarieties Kredīts
 credit_summary_fmt	{} klienti · atvērts kredīts {} · turētie avansi {}
 recent_label	Nesenie:
-start_order	Sākt pasūtījumu
-open_bill	Atvērt rēķinu
-collect_payment	Iekasēt maksājumu
-payment_pending	Maksājums gaida
-collect_at_counter	iekasēt pie letes
 inventory	Krājums
-inventory_stock	Krājums un atlikumi
 branches	Filiāles
-branches_org	Filiāles un organizācija
 credit_customers	Puses (khata un piegādātāji)
 customer_name_ph	Puses nosaukums
 new_customer_ph	Jaunas puses nosaukums
-item_name_ph	Pozīcijas nosaukums (piem. masala dosa)
 item_price_ph	Cena
 start_template	Produkts
 team	Komanda
@@ -241,17 +189,11 @@ team_pins	Komanda un PIN
 my_pin_settings	Mans PIN
 settings_hub_help_my_pin	Mainiet atbloķēšanas PIN personai, kas pieteikusies šajā ierīcē.
 team_self_help	Viena pieteikšanās: jauns PIN, jauna parole vai abi. Atstājiet lauku tukšu, lai paturētu esošo. Jautājiet īpašniekam, ja vajag citus ekrānus vai tiesības.
-backup_settings	Dublējums un iestatījumi
-lock_app	Bloķēt lietotni
 pick	Izvēlēties
-select	Atlasīt
 advance	Avanss
 owner	Īpašnieks
 staff	Personāls
 photo	Foto
-auto	Automātiski
-prev	Iepriekšējais
-next	Nākamais
 ok	Labi
 this_shop	Serveris
 extra_till	Terminālis
@@ -260,17 +202,13 @@ server	Serveris
 client	Terminālis
 language_currency	Valoda un valūta
 language	Valoda
-choose_language	Izvēlieties valodu
 language_setup_hint	Sekojiet šīs ierīces valodai vai izvēlieties paši.
 lang_follow_platform	Ierīces valoda
 lang_pick_user	Izvēlēties valodu
 lang_platform_now	Ierīces valoda tagad
 selected_language	Atlasīts
-continue	Turpināt
 this_device	ŠĪ IERĪCE
 device_use_q	Kā šī ierīce tiks lietota?
-last_server_mode	Bija serveris — pieskarieties, lai turpinātu
-last_client_mode	Bija terminālis — pieskarieties, lai turpinātu
 choose_server	Izvēlieties serveri
 choose_server_hint	Atveriet esošu serveri vai izveidojiet jaunu citam uzņēmumam.
 create_new_server	Izveidot jaunu serveri
@@ -280,12 +218,6 @@ server_remove_pin_ph	Īpašnieka PIN, lai noņemtu serveri
 only_owner_remove_server	Tikai īpašnieks var noņemt serveri
 owner_pin_remove_server	Lai noņemtu šo serveri, vajag īpašnieka PIN
 device_setup_help	Serveris glabā grāmatas šeit. Terminālis savienojas pārī ar serveri.
-app_template_heading	Iesācēju katalogs (pēc izvēles)
-app_template_blurb	Ielādē kataloga paraugu; Īpašnieks Zahir (zahir), administrators Asif (asif, PIN 1111), kasieris Navazs (nawaz, PIN 0000); nodokļu/GST atlaide; priekšējā sānjosla; vēsture tiek notīrīta pēc 4 stundām (un notīrīt tūlīt dublējumkopijā); Šodien noģērbt; kompakts rēķins + Standarta piemales šaurām paplātēm. Nodokļu un sānjoslas līdzīgus pakalpojumus var atkal ieslēgt iestatījumos.
-app_template_apply	Lietot sākuma katalogu
-app_template_skip	Pagaidām izlaist
-app_template_status	Serveris gatavs — lietojiet Starter katalogu vai izlaidiet
-app_template_importing	Lieto {title}…
 currency	Valūta
 backup	Dublējums
 use	Lietot
@@ -319,7 +251,7 @@ attachments_last_expense	Pielikumi (pēdējais izdevums)
 bank	Banka
 bank_in	Uz banku
 bank_out	No bankas
-bank_reconciliation	Bankas salīdzināšana (atzīmējiet pret bankas izrakstu)
+bank_reconciliation	Bankas salīdzināšana
 bank_to_till	Banka → kase
 book_add_dish	Grāmata — pievienot vienumu/preci
 book_opening_credit	Grāmata — sākuma kredīts
@@ -349,9 +281,6 @@ share_whatsapp	Dalīties WhatsApp
 lan_pages_heading	Klientu lapas Wi-Fi tīklā
 lan_pages_help	Šī veikala Wi-Fi tīklā klientu lapas ir paredzētas displeja panelim un atsauksmēm. Cilvēkiem, kuri izmanto mobilos datus, vēlāk būs nepieciešams mākonis. Karšu terminālis vai maksājumu saite nav obligāta un nekad nebloķē skaitītāju.
 diag_send_heading	Dalīties ārpus šīs ierīces
-optional_login_heading	Pieteikšanās pēc izvēles
-rights_heading	Tiesības
-ops_panel	Vietējā darbība
 crm_heading	Klienti un ziņas
 crm_help	Dzimšanas diena, lojalitāte, neaktīvie un labākie viesi — rindo SMS vai WhatsApp nodomus. Ziņā lietojiet {name} un {points}. Īpašnieks pieskaras sūtīt; nekas neizsūta pats.
 crm_queue_sms	Rindot SMS
@@ -376,21 +305,17 @@ till_wallet_topup_ph	Maka papildināšanas summa
 till_voucher_issue_amt_ph	Izsniegtā kupona summa
 till_voucher_issue_code_ph	Jaunā kupona kods
 bulk_price_apply	Lietot masveida cenu
-card_terminal_optional	Karšu terminālis / maksājuma saite (pēc izvēles, kad ir internets)
 copy_report	Kopēt pārskatu
 counted_cash_ph	Saskaitītā skaidrā nauda atvilktnē
 country_tax	Valsts un nodoklis
 create_backup	Izveidot dublējumu
 credit_limit_heading	Kredīta limits (atlasītā / nosauktā puse)
-day_close_summary	Dienas slēgšanas kopsavilkums
 delete_party	Dzēst atlasīto pusi
-delivery	Piegāde
 done_open_books	Gatavs — atvērt grāmatas
 drawer_count	Atvilktnes skaits (nav obligāts)
 expense_heading	Izdevums
 export_day	Eksportēt dienu
 extra_note_bill_ph	Papildu piezīme šim rēķinam / pārdošanai
-extra_note_expense_ph	Papildu piezīme pēdējam izdevumam
 extra_tills_heading	Papildu kases
 other_devices_help_heading	Iestatīt citas ierīces
 other_devices_help	Šajā ierīcē (serveris): Citas ierīces → Atļaut papildu kases. Ņemiet vērā savienojuma pārī kodu un Wi-Fi adresi. Pieskarieties Atļaut citām ierīcēm izveidot savienojumu, ja tas tiek parādīts. Datorā pieskarieties Sākt ar šo datoru. Katrā citā ierīcē: instalējiet lietotni, izvēlieties Klienta režīms, Atrodiet veikala serveri (vai ierakstiet adresi), ievadiet savienojuma kodu, Savienot pārī tūlīt. Pasūtījumi gaida ierīcē, ja Wi-Fi pazūd, un paiet, kad serveris atkal atbild. Serverī ir iestatīti papildu printeri (Iestatījumi → Printeri) — papildu kases nosūta rēķinus uz turieni.
@@ -404,7 +329,6 @@ login_id_ph	Lietotājvārds
 mark_cleared	Atzīmēt saskaņotu
 new_party_clear	Jauna puse (notīrīt veidlapu)
 new_party_kind_supplier_ph	Jaunas puses veids (piegādātājs)
-next_country	Nākamā valsts
 next_order	Nākamais pasūtījums (notīrīt galdu)
 note_gstin_ph	Piezīme / GSTIN / līguma atgādinājums
 notes_attach_party	Piezīmes un pielikumi (atlasītā puse)
@@ -422,8 +346,6 @@ pay_ap_cash	Maksāt AP skaidrā
 pay_ap_heading	Maksāt to, ko esam viņiem parādā (AP)
 pay_ap_upi	Maksāt AP ar UPI
 pay_selected_heading	Maksāt atlasīto (noslēgt parādu / ņemt avansu)
-pick_from_items	Izvēlēties no mūsu pozīcijām
-prev_country	Iepriekšējā valsts
 print_open	Drukāt / atvērt
 reason_amend_ph	Iemesls labojumam / anulēšanai / atmaksai
 reason_note_ph	Iemesls / piezīme (zudumi, skaits, …)
@@ -447,14 +369,10 @@ history_after_hours	Pēc stundām
 history_hours_ph	Stundas (1–168, noklusējums 4)
 history_hours_save	Saglabāt stundas
 history_clear_now	Notīrīt vēsturi tagad
-history_cleared	Tirdzniecības vēsture notīrīta — iestatīšana paturēta
-history_retention_saved	Vēstures tīrīšana saglabāta
 history_hours_saved	Vēstures stundas saglabātas
-history_owner_only	Tikai īpašnieks vai administrators var notīrīt vēsturi
 rollup	Kopsavilkums
 save_brand	Saglabāt zīmolu
 save_business_id	Saglabāt uzņēmuma id
-save_business_name	Saglabāt uzņēmuma nosaukumu
 save_features	Saglabāt
 save_features_named	Saglabāt {name}
 save_features_ok	Iestatīšana saglabāta: {name}
@@ -485,7 +403,6 @@ copy_pair_code	Kopēt pāra kodu
 new_pair_code	Jauns pāra kods
 pair_finishing	Pabeidz savienošanu pārī… piemēro veikala grāmatas
 pair_opening	Atver kasi…
-pair_copied	Pāra kods nokopēts
 lan_offline_waiting	Veikala serveris nav sasniedzams · {n} gaida
 lan_connecting	Savienojas ar veikalu…
 lan_live	Tiešraide
@@ -499,7 +416,6 @@ firewall_waiting	Gaida administratora uzvedni…
 lan_join_help	Otrā ierīcē: Termināļa režīms → Atrodiet veikala serveri (vai ierakstiet {addr}) → pāra kods {code}.
 lan_pair_status	Wi‑Fi {addr}
 lan_join_help_no_addr	Pievienojiet šo ierīci Wi‑Fi, lai iegūtu adresi.
-lan_no_address	Vēl nav Wi‑Fi adreses — pievienojieties veikala Wi‑Fi.
 lan_not_listening	Neņem pretī ierīces (ports {port} aizņemts). Restartējiet lietotni.
 lan_tills_off	Papildu kases ir izslēgtas. Atļaujiet tās, lai cita ierīce var pievienoties.
 paired_with	Savienots pārī · {url}
@@ -520,41 +436,21 @@ printers_help	Atrodiet printerus, pieskarieties vienam, lai to atlasītu, un pē
 printers_host_only	Printeri ir iestatīti veikala ierīcē (Serverī). Šī kase nosūta uz turieni rēķinus un vecās biļetes — atrodiet / pievienojiet / piešķiriet palikšanu serverī. Testa lapa un rēķina drukas izmērs nonāk serverī.
 printers_find_heading	Atrast printerus
 printers_find_tip	Atrast skenē šo ierīci un uztur sarakstu aktuālu.
-printers_pool_heading	Printeri
-printers_pool_tip	Atrast skenē šo ierīci un uztur šo sarakstu aktuālu.
 printers_pool_empty	(vēl nav — pieskarieties Atrast)
-printers_routes_help	Atrodiet printerus, kurus operētājsistēma jau zina. Piešķiriet tos rēķinam un katrai sadaļai zem Bill & Slip formāta.
 printer_assign_dd	Īsts printeris: {place}
 printer_assign_pick	Atlasīt īstu printeri
 printer_profile_heading	Izkārtojums
 vp_delivery_heading	Piegāde
 vp_delivery_help	Kā šis virtuālais printeris nosūta darbus — OS dokumentu, neapstrādātus baitus vai ESC/POS. Lapas saturu (tipa lielumu, iesaiņojumu, piemales) nosaka rēķina / lapiņas formāts, nevis šeit.
-vp_type_size_heading	Burtu izmērs
-vp_wrap_heading	Aplaušanas platums
-vp_margin_heading	Malas
 vp_delivery_spooler	OS dokuments (sistēmas rinda)
 vp_delivery_raw	Neapstrādāti baiti uz ierīci
 vp_delivery_escpos	ESC/POS termālās komandas
 virtual_printer_new	Jauns virtuālais printeris
 virtual_printer_selected	Labo “{name}” — pieskarieties citam sarakstā, lai pārslēgtu
-virtual_printer_tap_list	Pieskarieties virtuālajam printerim sarakstā, lai to labotu
 config_layout_portrait	Portrets
 config_layout_landscape	Ainava
 config_send_os	Sistēmas rinda
 config_send_escpos	ESC/POS
-profiles_heading	Izkārtojumi
-profiles_empty	(vēl nav izkārtojumu)
-profile_builtin	iebūvēts
-profile_custom	pielāgots
-profile_name_ph	Izkārtojuma nosaukums
-profile_new	Jauns izkārtojums
-profile_delete	Dzēst izkārtojumu
-profile_created	Izkārtojums izveidots
-profile_deleted	Izkārtojums dzēsts
-profile_builtin_keep	Iebūvētus izkārtojumus nevar dzēst
-config_saved	Atjaunināts
-config_selected	Atlasīts “{name}”
-printer_output_heading	Virtuālie printeri
 virtual_printers_heading	Virtuālie printeri
 virtual_printers_empty	Vēl nav virtuālo printeru — iestatiet vērtības zemāk un saglabājiet. Kad tādi ir, pieskarieties vienam sarakstā, lai labotu.
 virtual_printer_name_ph	Virtuālā printera nosaukums (nav obligāts)
@@ -566,71 +462,32 @@ virtual_printer_deleted	Virtuālais printeris “{name}” dzēsts
 virtual_printer_updated	Virtuālais printeris atjaunināts
 virtual_printer_updated_named	Virtuālais printeris “{name}” atjaunināts
 virtual_draft_layout	Vērtības iestatītas nākamajam virtuālajam printerim
-virtual_draft_send	Vērtība iestatīta nākamajam virtuālajam printerim
 virtual_need_real	Vispirms atlasiet īstu printeri
 virtual_need_select	Atlasiet virtuālo printeri, ko dzēst
 real_printer_selected	Atlasīts: {name}
-printers_routes_heading	Kur kas tiek drukāts
-route_pick_heading	Vieta
 route_editing	Labo: {name}
-route_assigned	Pievienots {printer} vietai {place}
-route_already_assigned	Jau šajā vietā: {printer}
 route_cleared	Notīrīts {name}
-route_assigned_empty	Šajā vietā nekā nav
-route_tap_select	pieskarieties, lai atlasītu
 route_tap_selected	atlasīts
-route_pick_printer_first	Vispirms pieskarieties printerim
-route_assigned_heading	Printeri
-route_add_heading	Piešķirt
-printer_label_ph	Nosaukums (piem., letes printeris)
 printer_target_ph	Sistēmas printera nosaukums vai host:9100
 printer_target_default	šī datora parastais printeris (tukša adrese)
-printer_wire_heading	Profils
-printer_wire_escpos	ESC/POS
-printer_wire_os	Portrets
-printer_wire_os_portrait	Portrets
-printer_wire_os_landscape	Ainava
-printer_wire_escpos_short	ESC/POS
-printer_wire_os_short	Portrets
-printer_wire_os_landscape_short	Ainava
-printer_format_custom	Jauns pielāgots profils
-printer_format_custom_label	Pielāgots
-printer_format_custom_added	Pielāgots profils pievienots šai vietai
-add_printer	Pievienot printeri
-route_pick_ph	Rēķins vai ambulances nodaļa
 route_bill	Rēķins
-route_dont_print	Nav printera
 station_print_pick_first	Vispirms izvēlieties aptiekas sadaļu
-station_vps_empty	Vēl nav printeru — atrodiet tos sadaļā Iestatījumi → Printeri
 bill_printers_dd	Printeri rēķinam
 bill_printers_dd_n	{n} printeri rēķinam · pieskarieties, lai mainītu
 station_vp_attached	Printeris pievienots
 station_vp_detached	Printeris noņemts no stacijas
-route_up	Augšup
-route_down	Lejup
-route_clear	Notīrīt
-save_printers	Saglabāt printerus
 print_test_page	Drukāt testa lapu
 no_printer_assigned	Nav printera
-test_page_no_printer	Nav printera vietai {place} — pievienojiet tai printeri un mēģiniet vēlreiz
 test_page_pick_first	Vispirms izvēlieties printerus testa lapai — tad Drukāt testa lapu
 test_printers_dd	Printeri testa lapai
 test_printers_dd_n	{n} printeri testa lapai · pieskarieties, lai mainītu
 test_printer_picked	Testēt uz: {name}
 test_printer_cleared	Netestēt uz: {name}
 test_page_sent_n	Testa lapa nosūtīta uz {n} printeriem
-batch_cancel	Atcelt atzīmētos
-batch_cancel_n	Atcelt atzīmētos ({n})
-batch_cancel_none	Vispirms atzīmējiet vienu vai vairākus nosūtītos vienumus — pēc tam atzīmējiet opciju Atcelt
-batch_cancel_title	Atsaukt marķētās zāles — viens iemesls, viena atcelšanas lapa katrā sadaļā
-batch_cancel_ok	{n} vienumi atcelti · {slips} atcelšanas kvīts(-es) → {kitchens}
-batch_cancel_ok_noprint	{n} vienumi atcelti — automātiskā drukāšana ir izslēgta, tāpēc nav neviena atcelšanas kvīts
 printers_saved	Saglabāts
-test_page_sent	Testa lapa nosūtīta — pārbaudiet printeri
 test_page_sent_one	Testa lapa nosūtīta uz {name} — pārbaudiet to printeri
 printers_found	Atrasti {n}: {list}
 printers_find_synced	Atrasti {n} — {new} jauni
-printer_on_device	saglabāts
 printer_already_added	jau pievienots
 printer_already_saved	Jau saglabāts: {name}
 find_printers	Atrast printerus
@@ -640,7 +497,6 @@ cancelled	Atcelts
 printers_tap_find	Pieskarieties Atrast, lai uzskaitītu printerus, ko šī ierīce var lietot.
 printers_none_found	Nekas nav atrasts — ierakstiet sistēmas printera nosaukumu vai IP (piem. 192.168.1.50).
 printer_from_find	Pievienots {name}
-bill_printer_ph	Printeris rēķiniem
 queue_refused	Veikals nepieņēma ({n}) — pārbaudiet katru pie letes:
 clear_not_accepted	Pārbaudīts — notīrīt šo sarakstu
 device_name_ph	Šīs ierīces nosaukums
@@ -650,7 +506,6 @@ connected_now	savienots tagad
 backup_failed	Pēdējais automātiskais dublējums neizdevās: {e}
 backup_overdue	Nav dublējuma {n} dienas — turiet lietotni atvērtu šajā ierīcē, lai tā var dublēt.
 disk_low	Šajā ierīcē brīvi tikai {mb} MB — dublējumi drīz neizdosies. Atbrīvojiet vietu.
-last_seen_devices	Pēdējo reizi redzēts: {time}
 connection_to_shop	Savienojums ar veikalu
 supplier_name_ph	Piegādātāja nosaukums (vai puse)
 supplier_ph	Piegādātājs
@@ -708,7 +563,6 @@ currency_use_help	Ritiniet un pieskarieties Lietot jebkurai atbalstītai valūta
 day_close_help	Dienas slēgšanas ieraksts saglabā šo kopsavilkumu (un atvilktnes starpību, ja saskaitīta) audita žurnālā. Tas neaptur pārdošanu.
 expenses_word	Izdevumi
 feature_access_help	Ko viņi var atvērt — pēc izvēles; amats augšā jau iestata noklusējumu
-footer_local	Vietējā SQLite · Bez maksas uz visiem laikiem · Bez mākoņa
 fresh_book_tabiyat	Svaigs = tukšs katalogs (pievienojiet preces vēlāk). Grāmata = ierakstiet sākuma akciju un kas jums ir parādā zemāk.
 fresh_selected	Tukšs atlasīts — katalogs paliek tukšs. Pieskarieties Gatavs, kad esat gatavs.
 gross_word	Bruto
@@ -721,12 +575,9 @@ net_word	Neto
 offline_badge	BEZSAISTĒ
 optional_login_help	Pieteikšanās pēc izvēles (id + parole). Īpašnieks iestata vienreiz; paroli vēlāk var mainīt tikai lietotājs.
 or_unlock_login	Vai atbloķējiet ar pieteikšanās id un paroli
-permission_preset	Amats (iestata ekrānus un naudas darbības)
-preset_help_tabiyat	Kasieris: pārdod. Vadītājs: pārdod + pozīcijas + anulē/labo.
-product_locked_tabiyat	Tabiyat
+permission_preset	Amats
 product_only_tabiyat	Tabiyat ir aptieku operētājsistēma: zāļu pārdošana, partiju/derīguma uzskaite, kredīts un grāmatas — bezsaistē jūsu ierīcēs. Grafika H/Rx karodziņi ir īpašnieka piezīmes, nevis atbilstība.
 purchases_cogs	Pirkumi (COGS)
-qty_cap	DAUDZUMS
 restore_help	Atjaunošana: izvēlieties dublējumu. Grāmatas atveras tādas, kādas tās bija tad; pašreizējās grāmatas vispirms tiek saglabātas, tāpēc to var atsaukt.
 wipe_data_heading	Dzēst vietējos datus
 wipe_data_help	Tikai īpašnieks — tādas pašas izvēles kā Windows atinstalēšana. Uzņēmējdarbības ieraksti notīra tirdzniecības vēsturi, bet saglabā vienumus un iestatījumus (piemēram, avārijas atbloķēšanas PIN). Veikala iestatīšana noņem grāmatu datubāzi. Ekrāna preferences notīra logu/valodu. Apstipriniet ar īpašnieka PIN. Komandas avārijas atbloķēšanas PIN kods ir atsevišķs (atbloķēšanas laikā noslaukiet to).
@@ -759,7 +610,6 @@ staff_renamed	Vārds saglabāts
 staff_setup_copied_hire	Iestatīšana nokopēta no {name} — iestatiet jaunu vārdu un PIN, tad Pievienot darbinieku
 staff_setup_copied_edit	Nokopēta {from} iestatīšana uz {to}
 staff_copy_need_selected	Vispirms atlasiet, ko labot
-staff_copy_need_source	Izvēlieties, kura iestatīšanu kopēt
 staff_copy_same	Tā ir tā pati persona — izvēlieties citu
 staff_rename_need_selected	Vispirms atlasiet, ko pārdēvēt
 team_pick_hint	Izvēlieties, kuru rediģēt — ekrāni, naudas tiesības un stacijas tiek rādītas tikai šai personai.
@@ -774,15 +624,9 @@ unit_picker_off	Izslēgts
 we_owe_them	Mēs esam viņiem parādā
 who_unlocking	Kas atbloķē?
 locked_word	Bloķēts
-show_pin	Rādīt PIN
-hide_pin	Slēpt PIN
 set_owner_pin	IESTATĪT ĪPAŠNIEKA PIN
 enter_owner_passcode	IEVADIET ĪPAŠNIEKA KODU
 enter_staff_passcode	IEVADIET PERSONĀLA KODU
-pin_count_zero	0 / 12 cipari · vismaz 4, tad Labi
-pin_count_need	{} / 12 cipari · vajag vēl {}
-pin_count_full	12 / 12 cipari · spiediet Labi
-pin_count_ready	{} / 12 cipari · spiediet Labi, kad gatavs
 pin_hint_choose	Izvēlieties 4–12 ciparus · Enter vai Atbloķēt, lai saglabātu
 pin_hint_new	Jauns 4–12 ciparu īpašnieka PIN · Enter vai Atbloķēt
 pin_hint_shop_code	Veikala ierīce · pāra kods {}
@@ -791,23 +635,15 @@ pin_hint_paired	Papildu kase savienota pārī — atbloķējiet, lai pārdotu
 pin_hint_pair_first	Papildu kase — vispirms savienojiet pārī ar veikala ierīci
 unlock_to_continue	Atbloķējiet, lai turpinātu
 no_staff_yet	Vēl nav personāla — atbloķējiet kā īpašnieks, tad Komanda
-status_server_set_pin	Servera režīms — iestatiet īpašnieka PIN
-status_server_tills	Servera režīms — papildu kases var pievienoties. Atbloķēt
-status_server_unlock	Servera režīms — atbloķējiet kā īpašnieks
-status_client_unlock	Termināļa režīms — atbloķējiet, lai pārdotu
 icon_new_selected	Ikona: atlasīts jauns fails — pieskarieties Saglabāt zīmolu
 icon_custom	Ikona: pielāgota vietas zīme
 icon_default	Ikona: Kumkaj zīme (noklusējums) — izvēlieties savu
 logo_yours	Logotips: jūsu veikala logotips — redzams ekrānos un kvītīs
 logo_default	Logotips: Kumkaj zīme (noklusējums) — izvēlieties savu, ja tāds ir
-tmpl_current	Pašreizējais: {} — {}
-tmpl_selected	Atlasīts: {} — {}
 setup_complete	Iestatīšana pabeigta
 onboard_fresh_tmpl	Tukšs · {} — katalogs sākas tukšs; pievienojiet pozīcijas sadaļā Pozīcijas, tad Gatavs.
 onboard_book_tmpl	Grāmata · {} — pievienojiet pozīcijas un sākuma kredītu, tad Gatavs.
-onboard_template_tmpl	Nosauciet vietu, ja vēlaties, tad izvēlieties, kā sākt.
 tmpl_blurb	Aptieku skaitītājs: zāles, partijas/derīguma termiņš, khata, grāmatas.
-tmpl_how	Pārdod pie letes; Pirkt par akciju; Grāmatas dienai grāmata.
 reports_facet_title	Pārskati
 reports_facet_help	Dienas grāmatas, pušu novecošana, bankas ieraksti un perioda peļņa.
 against_bill_ph	Pret rēķina nr. augšā (nav obligāti)
@@ -818,14 +654,12 @@ amount_ph	Summa
 amount_received_ph	Saņemtā summa
 amount_we_pay_ph	Summa, ko maksājam
 business_name_ph	Uzņēmuma nosaukums
-category_new_ph	Kategorija (nav obligāta, izveido, ja jauna)
 code_bag_ph	Kods (maiss)
 conv_factor_ph	Koeficients (25 = 1 maiss → 25 kg)
 country_code_ph	Valsts kods, piem. IN, GB, US, AE, BR
 credit_khata_amount_ph	Kredīta / khata summa
 credit_limit_ph	Kredīta limits (0 = nav)
 from_code_ph	No koda (maiss)
-item_name_lang_ph	Pozīcijas nosaukums — ierakstiet savā valodā
 login_id_opt_ph	Lietotājvārds (obligāts, unikāls)
 manager_pin_ph	Vadītāja PIN apstiprinājumam (tikai ja nevarat anulēt)
 new_branch_name_ph	Jaunās filiāles nosaukums
@@ -833,15 +667,12 @@ new_password_ph	Jauna parole (nav obligāta)
 new_pin_ph	Jauns PIN (4–12 cipari)
 note_bank_ph	Piezīme (iemaksa, izmaksa, …)
 note_buy_expense_ph	Piezīme (degviela, noma, …)
-note_expense_ph	Piezīme (degviela, birojs, …)
 options_tabiyat_ph	Iespējas — Izmērs*: Mazs=199, Liels=399 | Piedevas+3: Siers=40, Olīva=30 | Papildu siers=40
-part_second_way_ph	Daļa otrā veidā (nav obligāti)
 phone_ph	Tālrunis
 place_name_ph	Šīs vietas nosaukums
 qty_example_ph	Daudzums (piem. 1,5 kg)
 quantity_ph	Daudzums
 reason_required_ph	Iemesls (obligāts)
-role_title_ph	Lomas nosaukums (piem. baristas)
 service_pct_ph	Apkalpošanas % pēc izvēles 0/10/12
 short_code_ph	Īsais kods (MG02)
 starting_password_ph	Sākuma parole (nav obligāta)
@@ -876,14 +707,11 @@ shift_handover	Maiņas nodošana
 shift_since	Šī maiņa kopš
 expected_in_drawer	Gaidāmais atvilktnē
 right_discount	Dot atlaidi
-pick_category	Izvēlieties kategoriju
-close_category_list	Aizvērt kategoriju sarakstu
 new_category_row	Jauna kategorija — izveido, kad saglabājat pozīciju
 your_category	Jūsu kategorija
 suggested_category	Ieteikts — no mūsu precēm
 category_search_ph	Kategorija — meklējiet savas vai ierakstiet jaunu
 cancel_item_short	Atcelt
-cancel_item_title	Atceliet šo vienumu — back office saņem atcelšanas kvīti
 return_to_customer	Atgriezt klientam
 short_by	Trūkst
 tip_not_sale	Dzeramnauda (personāla, nav pārdošana)
@@ -896,9 +724,7 @@ finding_server	Meklē veikala serveri šajā Wi‑Fi…
 no_server_found	Nekas nav atrasts. Serverī: Iestatījumi → Citas ierīces → Atļaut papildu kases (tas pats Wi‑Fi). Vai ierakstiet tur redzamo IP.
 servers_found_pick	Pieskarieties veikalam, ar kuru vēlaties savienoties.
 server_host_selected	Lieto {host} — ievadiet pāra kodu, tad Savienot pārī tagad.
-print_bill	Drukāt rēķinu
 approval_pin_ph	Vadītāja PIN (tikai ja prasa)
-confirm	Apstiprināt
 menu_search_ph	Meklēt pozīciju vai īso kodu
 customer_paid_ph	Klients samaksāja
 tip_ph	Dzeramnauda
@@ -908,7 +734,6 @@ bill_format_help	Uz katra rēķina uzdrukāts zem jūsu veikala nosaukuma. Atdal
 bill_header_ph	Adrese | tālrunis
 fssai_ph	Narkotiku licence Nr. (pēc izvēles — jūsu formulējums)
 bill_footer_ph	Kājene (piem. Paldies, nāciet vēl)
-save_bill_format	Saglabāt rēķina formātu
 kot_field_on	rādīt
 kot_field_off	slēpt
 kot_weight_light	Plāns
@@ -919,10 +744,8 @@ kot_weight_bold	Trekns
 kot_align_start	Sākt
 kot_align_center	Centrs
 kot_align_end	Beigas
-content_width	Satura platums (mm)
 content_width_bill	Rēķina satura platums (mm)
 content_width_ph	Vai ierakstiet satura platumu, 40–210 mm
-content_width_help	Cik plati drukā šī lapiņa. Bils saglabā savu platumu.
 content_width_bill_help	Cik plaši tiek izdrukāts klienta rēķins. Noklusējums 210 mm (lappuse). 58 mm šaurs slīdnis, 80 mm plats slīdnis, 112 mm 4 collu, 210 mm A4 platums. Ievadiet jebkuru vērtību no 40 līdz 210. Biļešu cilnē ir savs platums.
 vp_paper_width	Satura platums (mm)
 vp_paper_width_ph	Vai ierakstiet satura platumu, 40–210 mm
@@ -937,9 +760,6 @@ test_bill_sent	Rēķina priekšskatījums nosūtīts
 test_print_no_printer	Nav printera tam darbam — izvēlieties vienu šajā ekrānā
 std_print	Rēķina drukas izmērs
 std_print_help	Fonta lielums standarta portreta un ainavas rēķinu darbiem OS/dokumentu printeros (ievadiet punktus — nevis Small/Normal/Large). Abās orientācijās vienāds izmērs.
-std_size_s	Mazs
-std_size_m	Normāls
-std_size_l	Liels
 save_std_print	Saglabāt rēķina drukas izmēru
 std_print_saved	Rēķina drukas izmērs saglabāts
 print_brand_kit	Drukas zīmola komplekts
@@ -952,14 +772,9 @@ choose_payment_qr	Izvēlēties maksājuma QR
 clear_payment_qr	Notīrīt maksājuma QR
 payment_qr_set	Maksājuma QR: failā — tiek rādīts klienta displejā (aizstāj UPI Qr summu tur)
 payment_qr_none	Maksājuma QR: nav — summas QR no UPI id maksājot
-aggregator_import	Agregatora pasūtījumi (fails)
-aggregator_import_help	Vietējais imports pēc izvēles: ielieciet import_aggregator_orders.json dublējumu mapē (masīvs vai {"orders":[…]}), tad pieskarieties Importēt. Nekad neaptur leti; tiešais Zomato/Swiggy ir mākonis.
-import_aggregator_file	Importēt agregatora failu
 team_pick_ph	Darbinieks, ko labot — vārds, lietotājvārds vai izvēle
 select_staff	Atlasīt šo darbinieku
 rights_help	Naudas darbības šai personai — pieskarieties, lai ciklos: Atļauts → Nepieciešams priekšnieka PIN → Nav atļauts. Izdrukāt rēķinu atkal ir tikai rēķini; sadaļas ir zemāk esošais kontrolsaraksts.
-dish_picker_help	Meklējiet vai pārlūkojiet mūsu vienumus un pieskarieties kādam, lai aizpildītu tā nosaukumu un fotoattēlu, vai arī saglabājiet savu vārdu. Iestatiet savu cenu (0 ir labi), pēc tam pievienojiet vienumu.
-close_dish_list	Aizvērt vienumu sarakstu
 own_item_name	Lietot šo kā savu pozīcijas nosaukumu
 on_your_menu	Zāļu sarakstā
 edit	Labot
@@ -970,24 +785,16 @@ add_scheme	Pievienot BOGO
 schedule_ph	Darba laiks - P-P 07:00-11:00 vai vakarā 17:00-19:00 = 150
 upi_vpa_ph	UPI id (VPA)
 upi_payee_ph	UPI saņēmēja vārds (nav obligāts)
-upi_qr	UPI QR
 show_upi_qr	Rādīt UPI QR
 close_upi_qr	Aizvērt
 upi_qr_help	Klients skenē un maksā. Pieskarieties vienumam Saņemt maksājumu pēc maksājuma veikšanas. Otrais ekrāns: atveriet servera URL / displeju LAN.
-recently_done	Nesen pabeigtie
 role_help_customer	Loma: klients — khata (viņi ir mums parādā). Tā pati puse var arī piegādāt krājumu.
 role_help_both	Lomas: klients + piegādātājs — viena puse, khata un kreditoru virsgrāmatas, neto pārskatos.
 role_help_supplier	Loma: piegādātājs — mēs esam viņiem parādā par pirkumiem.
-items_word	pozīcijas
-items_section	Pozīcijas
-back_to_order	Atpakaļ uz pasūtījumu
-new_items_head	Vēl nav nosūtīts
 price_ph	Cena
 price_ph_gst_inside	Cena ({tax} iekļauts)
-tax_rates_missing_hint	Šīm precēm nav {tax} likmes — precēm, kas iestatītas Nodokļa likme (cenās jau ir iekļauta {tax} ar {tax} ieskaitot)
 taxable_value	Ar nodokli apliekamā vērtība
 gst_inside_price_note	({tax} iekļauts)
-start_with_template	Sāciet ar mūsu preču veidni
 template_heading	Sākuma preces
 template_info	{c} kategorijas un {d} vienumi ar fotoattēliem, gatavi pievienošanai. Cenas sākas no 0 Indijas rūpiju — nosakiet savu pēc tam.
 template_import	Importēt pilnu veidni
@@ -1009,21 +816,13 @@ opening_client	Atver termināli…
 preparing_desk	Sagatavo galdu…
 opening_server	Atver serveri…
 creating_server	Izveido serveri…
-order_empty_pick	Pasūtiet tukšu — pieskarieties augšpusē Pievienot vienumus, lai izvēlētos vienumus.
 add_dishes	Pievienojiet zāles
 order_so_far	Šajā pasūtījumā: {n} · {total}
 no_dish_match	Neviens vienums neatbilst “{q}”
-pick_dishes_help	Pieskarieties vienumam, lai to pievienotu · izvēlieties kategoriju, lai sašaurinātu sarakstu
 pick_done	Gatavs
-pick_done_dd	Gatavs · {label}
-printer_route_mode	Ja šajā vietā ir vairāki printeri
-printer_mode_first	Pirmais, kas darbojas
-printer_mode_all	Drukāt uz visiem
 kot_field_up	Pārvietot augšup
 kot_field_down	Pārvietot lejup
-app_template_blurb_extra	Arī: īpašnieks Zahirs, administrators Asifs, kasieris Navazs; priekšējā sānjosla; vēsture pēc 4 stundām; Šodien noģērbt; kompakts rēķins.
 dishes_n	{n} preces
-recipe_ph	Recepte (pēc izvēles — nav lietota letes veikalā)
 reorder_ph	Pirkt vairāk pie
 set_reorder	Iestatīt papildināšanas līmeni
 low_stock_alert	Iet uz beigām — pērciet drīz: {items}
@@ -1032,7 +831,6 @@ show_unpriced	Rādīt tikai preces bez cenas
 show_all_dishes	Rādīt visus vienumus
 role_title_rest_ph	Lomas nosaukums (piem. kapteinis, galvenais pavārs)
 preset_help_rest	Kasieris: pārdod. Vadītājs: pārdod + pozīcijas + anulē/labo.
-kind_raw	Sastāvdaļas
 kind_resale	Nopirka zāles
 kind_dish	Neskaitiet krājumus
 buy_unit_ph	Vienība (kg, litrs, gab)

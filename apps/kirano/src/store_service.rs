@@ -1,4 +1,4 @@
-//! The restaurant's service day: opening float, shift handover, and the
+//! The shop's trading day: opening float, shift handover, and the
 //! owner's day report (who sold what, when, how, and what was given away).
 //!
 //! Mechanics: `BUSINESS_BOOKS.md` § Shift and day-end cash — float is the
@@ -262,11 +262,6 @@ impl Store {
               WHERE created_at >= ?1 AND created_at < ?1 || 'Z' AND status = 'completed'
               GROUP BY created_by_name ORDER BY 3 DESC",
         )?;
-        let by_type = grouped(
-            "SELECT order_type, COUNT(*), COALESCE(SUM(total_paise), 0) FROM sales
-              WHERE created_at >= ?1 AND created_at < ?1 || 'Z' AND status = 'completed'
-              GROUP BY order_type ORDER BY 3 DESC",
-        )?;
         let by_hour = grouped(
             "SELECT substr(created_at, 12, 2), COUNT(*), COALESCE(SUM(total_paise), 0) FROM sales
               WHERE created_at >= ?1 AND created_at < ?1 || 'Z' AND status = 'completed'
@@ -291,12 +286,6 @@ impl Store {
                 AND p.group_name != ''
               GROUP BY p.group_name ORDER BY 3 DESC",
         )?;
-        let by_delivery = grouped(
-            "SELECT d.delivery_by, COUNT(*), COALESCE(SUM(s.total_paise), 0)
-               FROM sales s JOIN sale_delivery d ON d.sale_id = s.id
-              WHERE s.created_at >= ?1 AND s.created_at < ?1 || 'Z' AND s.status = 'completed'
-              GROUP BY d.delivery_by ORDER BY 3 DESC",
-        )?;
         let discounts = grouped(
             "SELECT discount_reason, COUNT(*), COALESCE(SUM(discount_paise), 0) FROM sales
               WHERE created_at >= ?1 AND created_at < ?1 || 'Z' AND status = 'completed' AND discount_paise > 0
@@ -314,15 +303,7 @@ impl Store {
         };
         let bills = |n: i64| format!("{n} bill{}", if n == 1 { "" } else { "s" });
         section(&mut out, "By staff", &by_staff, &|k| if k.is_empty() { "—".into() } else { k.to_string() }, &bills);
-        section(
-            &mut out,
-            "By order type",
-            &by_type,
-            &|k| crate::domain::OrderType::parse(k).label().to_string(),
-            &bills,
-        );
         section(&mut out, "By hour", &by_hour, &|k| format!("{k}:00"), &bills);
-        section(&mut out, "Deliveries by", &by_delivery, &|k| k.to_string(), &bills);
         section(
             &mut out,
             "Top items",

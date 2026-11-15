@@ -41,7 +41,7 @@ remove	Fjern
 removed_items	Fjernede varer
 removed_help	Gendan sætter varen tilbage på menuen præcis som den var — pris, foto og kategori. Vores hylde af retter fjernes aldrig, så en ret kan altid tilføjes igen.
 restore_item	Gendan
-empty_catalog	Ingen retter endnu. Åbn Menu, tilføj en ret (navn + pris), og tag så en ordre.
+empty_catalog	Ingen retter endnu.
 total	I alt
 cash	Kontant
 upi	UPI
@@ -103,23 +103,14 @@ bill_item_qty	Antal
 bill_item_price	Pris
 bill_item_amount	Beløb
 bill_item_note	Retnote
-bill_item_col_gap	Kolonnemellemrum
 bill_item_col_order	Kolonnerækkefølge
 bill_item_col_sep	Kolonnelinjer
-bill_item_gap_tight	Tæt
-bill_item_gap_comfort	Behageligt
-bill_item_gap_wide	Bredt
-bill_item_num_width	Talkolonner
-bill_item_num_compact	Kompakt
-bill_item_num_comfort	Behageligt
-bill_item_num_wide	Bredt
-bill_item_num_align	Tal justeres
-bill_item_gap_em	Mellemrum (em)
-bill_item_qty_min	Antal min (em)
-bill_item_price_min	Pris min (em)
-bill_item_amount_min	Beløb min (em)
-kot_item_qty_width	Antalkolonne
-kot_item_num_align	Antal justeres
+slip_columns	Kolonner
+slip_col_width	Bredde (mm)
+slip_col_start	Startafstand (px)
+slip_col_end	Slutafstand (px)
+slip_col_align	Tekstjustering
+slip_columns_help	Hver kolonnes bredde omfatter dens start- og slutafstand. Teksten ombrydes inden for sin kolonne; det, der ligger ud over indholdsbredden, skæres af – på papiret og i forhåndsvisningen.
 bill_total_qty_label	Etiket for antal i alt
 bill_total_subtotal_label	Etiket for subtotal
 bill_total_grand_label	Etiket for samlet total
@@ -221,7 +212,6 @@ sidebar_order_saved	Sidepanelrækkefølge gemt
 sidebar_visibility_saved	Sidepanelsynlighed gemt
 amounts_hide	Skjul
 amounts_show	Vis
-printers_none_hint	Gem en printer på denne enhed først, og tilføj den så til Regning eller et køkken
 counter	Disk
 dine_in	Spis her
 takeaway	Til at tage med
@@ -328,8 +318,6 @@ selected_language	Valgt
 continue	Fortsæt
 this_device	DENNE ENHED
 device_use_q	Hvordan skal denne enhed bruges?
-last_server_mode	Var Server — tryk for at fortsætte
-last_client_mode	Var Klient — tryk for at fortsætte
 choose_server	Vælg en server
 choose_server_hint	Åbn en eksisterende server, eller opret en til en anden forretning.
 create_new_server	Opret ny server
@@ -391,7 +379,7 @@ attachments_last_expense	Vedhæftninger (seneste udgift)
 bank	Bank
 bank_in	Bank ind
 bank_out	Bank ud
-bank_reconciliation	Bankafstemning (afkryds mod dit kontoudtog)
+bank_reconciliation	Bankafstemning
 bank_to_till	Bank → kasse
 book_add_dish	Bog — tilføj ret / vare
 book_opening_credit	Bog — primo-kredit
@@ -744,7 +732,6 @@ station_print_pick_first	Vælg en køkkenstation først
 station_print_editing	Retter printere for “{name}”
 station_vps_dd	Printere til denne station
 station_vps_dd_n	{n} printer(e) · tryk for at ændre
-station_vps_empty	Ingen printere endnu — find dem under Indstillinger → Printere
 bill_printers_dd	Printere til regningen
 bill_printers_dd_n	{n} printer(e) til regningen · tryk for at ændre
 job_layout	Layout
@@ -889,7 +876,7 @@ net_word	Netto
 offline_badge	UDEN NET
 optional_login_help	Valgfrit login (id + adgangskode). Ejeren sætter det én gang; kun brugeren kan senere skifte adgangskode.
 or_unlock_login	Eller lås op med login-id + adgangskode
-permission_preset	Job (sætter skærme og pengehandlinger)
+permission_preset	Job
 preset_help_khaynjo	Kasserer: sælg. Leder: sælg + varer + annuller/ret.
 product_locked_khaynjo	Khaynjo
 product_only_khaynjo	Denne app er kun Khaynjo — et driftssystem til restauranter. Andre fagflader leveres som separate Kumkaj-produkter.
@@ -961,10 +948,6 @@ pin_hint_paired	Ekstra kasse parret — lås op for at sælge
 pin_hint_pair_first	Ekstra kasse — par med butiksenheden først
 unlock_to_continue	Lås op for at fortsætte
 no_staff_yet	Intet personale endnu — lås op som Ejer, så Team
-status_server_set_pin	Servertilstand — sæt Ejer-PIN
-status_server_tills	Servertilstand — ekstra kasser kan deltage. Lås op
-status_server_unlock	Servertilstand — lås op som Ejer
-status_client_unlock	Klienttilstand — lås op for at sælge
 icon_new_selected	Ikon: ny fil valgt — tryk Gem brand
 icon_custom	Ikon: eget stedsmærke
 icon_default	Ikon: Kumkaj-mærke (standard) — vælg et eget
@@ -1033,7 +1016,7 @@ book_kind_balance	Balance
 order_help	Tryk på en vare for at tilføje den.
 floor_help	Tryk på et bord for at tage eller ændre ordren. Farver viser ledig → sat → køkken → klar → spiser → regning → betalt. Venteliste, reservationer og tilføj-borde ligger i afsnittene nedenfor.
 kitchen_help	Køkkenboner (KOT), nyeste sidst. Start → Klar → Færdig flytter en bon videre. Boner viser aldrig priser.
-kitchen_empty	Ingen åbne boner. En KOT sendt fra Ordre eller Sal vises her.
+kitchen_empty	Ingen åbne boner.
 add_a_table	Tilføj et bord
 add_station_heading	Tilføj en køkkenstation
 categories_help	Tryk Brug for at lægge varen ovenfor under den kategori. Foto giver kategorien et billede; uden et vises dens initialer.
@@ -1131,7 +1114,6 @@ bill_format_help	Trykkes under restaurantens navn på hver regning. Adskil linje
 bill_header_ph	Adresse | telefon
 fssai_ph	FSSAI-licensnr. (Indien)
 bill_footer_ph	Sidefod (f.eks. Tak, kom igen)
-save_bill_format	Gem regningsformat
 reset_bill_format	Nulstil til standard
 bill_format_reset	Regningsformat nulstillet til standard
 reset_kot_format	Nulstil til standard
@@ -1201,13 +1183,11 @@ kot_copies_3	3
 kot_title_ph	Titel (tom = KOT - KITCHEN ORDER)
 kot_footer_ph	Køkkennote (valgfri, ingen priser)
 kot_preview	Forhåndsvisning
-save_kot_format	Gem KOT-format
 test_kot_format	Test-KOT
 test_kot_sent	Forhåndsvisning af køkkenbon sendt
 test_bill_format	Testregning
 test_bill_sent	Forhåndsvisning af regning sendt
 test_print_no_printer	Ingen printer til det job — vælg en på denne skærm
-kot_format_saved	KOT-format gemt
 std_print	Regningens skriftstørrelse
 std_print_help	Skriftstørrelse for regningsjob i Stående og Liggende standard på OS- / dokumentprintere (indtast punkter — ikke Lille/Normal/Stor). Samme størrelse i begge retninger. Køkkensedlens størrelser er under fanen KOT.
 std_size_s	Lille
@@ -1264,7 +1244,6 @@ new_items_head	Ikke sendt endnu
 price_ph	Pris
 price_ph_gst_inside	Pris ({tax} inkl.)
 cancel_needs_table	Åbn denne ordre fra Salen (et bord) for at annullere efter køkkenet har den — disk-KOT bliver på bonen til du tager betaling
-tax_rates_missing_hint	Ingen {tax}-sats på disse retter — under Menu sæt Skattesats (priser indeholder allerede {tax} under {tax} inkl.)
 taxable_value	Skattepligtigt beløb
 gst_inside_price_note	({tax} inkl.)
 start_with_template	Start med vores menuskabelon
@@ -1318,9 +1297,7 @@ order_empty_pick	Ordren er tom — tryk Tilføj retter ovenfor for at vælge ret
 add_dishes	Tilføj retter
 order_so_far	På denne ordre: {n} · {total}
 no_dish_match	Ingen ret matcher “{q}”
-pick_dishes_help	Tryk på en ret for at tilføje den · vælg en kategori for at indsnævre listen
 pick_done	Færdig
-pick_done_dd	Færdig · {label}
 printer_route_mode	Hvis flere printere på dette sted
 printer_mode_first	Første der virker
 printer_mode_all	Udskriv på alle

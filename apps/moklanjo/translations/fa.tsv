@@ -39,7 +39,7 @@ adding_item	اضافه کردن نرخ جدید
 editing_item	ویرایش
 save	ذخیره
 remove	برداشتن
-empty_catalog	هنوز نرخی وجود ندارد. نرخ‌ها و خدمات را باز کنید، یکی (نام + قیمت، واحد کیلوگرم) اضافه کنید، سپس رزرو کنید.
+empty_catalog	هنوز نرخی وجود ندارد.
 counter_sale	رزرو پیشخوان
 total	جمع
 cash	نقد
@@ -171,8 +171,6 @@ selected_language	انتخاب‌شده
 continue	ادامه
 this_device	این دستگاه
 device_use_q	این دستگاه چگونه استفاده شود؟
-last_server_mode	سرور بود — برای ادامه بزنید
-last_client_mode	کلاینت بود — برای ادامه بزنید
 choose_server	یک سرور انتخاب کنید
 choose_server_hint	یک سرور موجود را باز کنید، یا برای کسب‌وکار دیگری یکی بسازید.
 create_new_server	ساخت سرور تازه
@@ -501,8 +499,6 @@ job_layout	چیدمان
 job_delivery	کار چگونه فرستاده می‌شود
 job_size	اندازه حروف
 job_size_ph	مثلاً ۱۸، ۲۰، ۲۶…
-save_receipt_format	ذخیره فرمت رسید
-save_label_format	ذخیره قالب برچسب
 test_receipt_format	رسید آزمون
 test_label_format	برچسب تست
 test_receipt_sent	نمونه رسید ارسال شد
@@ -610,7 +606,7 @@ units_heading	واحدها
 booking_measures	اقدامات رزرو
 drawer_count	شمارش کشو (اختیاری)
 spreadsheet_csv	صفحه گسترده (CSV)
-bank_reconciliation	تطبیق بانک (با صورتحساب بانک تیک بزنید)
+bank_reconciliation	تطبیق بانک
 book_add_product	کتاب - اضافه کردن محصول / نرخ
 book_opening_credit	دفتر — نسیه آغازین
 account_kind	نوع حساب (یکی را بزنید)
@@ -650,7 +646,7 @@ net_word	خالص
 offline_badge	آفلاین
 optional_login_help	ورود اختیاری (شناسه + گذرواژه). مالک یک بار می‌گذارد؛ بعد فقط خود کاربر گذرواژه را عوض می‌کند.
 or_unlock_login	یا با شناسه ورود + گذرواژه قفل را باز کنید
-permission_preset	شغل (تنظیم صفحه نمایش و حقوق)
+permission_preset	شغل
 preset_help_moklanjo	صندوقدار: فروش. مدیر: فروش + کالا + ابطال/اصلاح.
 product_locked_moklanjo	موکلانجو
 product_only_moklanjo	این برنامه فقط Moklanjo است - کتاب + میز رزرو. دیگر چهره های تجاری به عنوان محصولات جداگانه بعدا ارسال می شوند.
@@ -698,10 +694,6 @@ pin_hint_paired	صندوق اضافه جفت شد — برای فروش قفل �
 pin_hint_pair_first	صندوق اضافه — اول با دستگاه فروشگاه جفت شود
 unlock_to_continue	برای ادامه قفل را باز کنید
 no_staff_yet	هنوز کارمندی نیست — به‌عنوان مالک قفل را باز کنید، سپس تیم
-status_server_set_pin	حالت سرور — PIN مالک را بگذارید
-status_server_tills	حالت سرور — صندوق اضافه می‌تواند بپیوندد. قفل را باز کنید
-status_server_unlock	حالت سرور — به‌عنوان مالک قفل را باز کنید
-status_client_unlock	حالت کلاینت — برای فروش قفل را باز کنید
 icon_new_selected	نماد: فایل تازه انتخاب شد — ذخیره نشان را بزنید
 icon_custom	نماد: نشان سفارشی محل
 icon_default	نماد: نشان Kumkaj (پیش‌فرض) — یکی سفارشی انتخاب کنید

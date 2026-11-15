@@ -41,7 +41,7 @@ remove	Susa
 removed_items	Izinto zemenyu ezisusiwe
 removed_help	Ukubuyisela kubuyisela into yemenyu kumenyu njengoba yayinjalo - inani, isithombe kanye nesigaba. Ishalofu lethu lezitsha alilokothi lisuswe, ngakho-ke isidlo singahlala sengezwa futhi.
 restore_item	Buyisela
-empty_catalog	Azikho izitsha okwamanje. Vula Imenyu, engeza isidlo (igama + inani), bese uthatha i-oda.
+empty_catalog	Azikho izitsha okwamanje.
 total	Ingqikithi
 cash	Imali
 upi	UPI
@@ -103,23 +103,14 @@ bill_item_qty	Inani
 bill_item_price	Inani
 bill_item_amount	Inani
 bill_item_note	Inothi lesidlo
-bill_item_col_gap	Igebe lekholomu
 bill_item_col_order	Ukuhleleka kwekholomu
 bill_item_col_sep	Imithetho yekholomu
-bill_item_gap_tight	Qina
-bill_item_gap_comfort	Ukhululekile
-bill_item_gap_wide	Okubanzi
-bill_item_num_width	Amakholomu ezinombolo
-bill_item_num_compact	Ihlangene
-bill_item_num_comfort	Ukhululekile
-bill_item_num_wide	Okubanzi
-bill_item_num_align	Izinombolo ziqondaniswe
-bill_item_gap_em	Igebe (em)
-bill_item_qty_min	Imizuzu engamashumi amabili (em)
-bill_item_price_min	Inani elincane (em)
-bill_item_amount_min	Inani elincane (em)
-kot_item_qty_width	Ikholomu engu-Qty
-kot_item_num_align	Qondanisa inani
+slip_columns	Amakholomu
+slip_col_width	Ububanzi (mm)
+slip_col_start	Isikhala sokuqala (px)
+slip_col_end	Isikhala sokugcina (px)
+slip_col_align	Ukuqondanisa umbhalo
+slip_columns_help	Ububanzi bekholomu ngayinye bufaka isikhala sayo sokuqala nesokugcina. Umbhalo usongeka ngaphakathi kwekholomu yawo; okudlula ububanzi bokuqukethwe kuyanqunywa, ephepheni nasekubukeni kuqala.
 bill_total_qty_label	Isamba selebula ye-qty
 bill_total_subtotal_label	Isamba selebula engaphansi
 bill_total_grand_label	Ilebula ephelele ephelele
@@ -221,7 +212,6 @@ sidebar_order_saved	I-oda lebha eseceleni lilondoloziwe
 sidebar_visibility_saved	Ukubonakala kwebha eseceleni kulondoloziwe
 amounts_hide	Fihla
 amounts_show	Bonisa
-printers_none_hint	Londoloza iphrinta kule divayisi kuqala, bese uyengeza enkokhelweni yesivakashi sesivakashi noma ekhishini
 counter	Ikhawunta
 dine_in	Dlela lapha
 takeaway	I-Takeaway
@@ -328,8 +318,6 @@ selected_language	Ikhethiwe
 continue	Qhubeka
 this_device	LE DIVAYISI
 device_use_q	Izosetshenziswa kanjani le divayisi?
-last_server_mode	Bekuyiseva — thepha ukuze uqhubeke
-last_client_mode	Bekuyiklayenti — thepha ukuze uqhubeke
 choose_server	Khetha iseva
 choose_server_hint	Vula iseva ekhona, noma udale enye ibhizinisi.
 create_new_server	Dala iseva entsha
@@ -391,7 +379,7 @@ attachments_last_expense	Okunamathiselwe kwi-imeyili (izindleko zokugcina)
 bank	Ibhange
 bank_in	Ibhange lingene
 bank_out	Imali ephuma ebhange
-bank_reconciliation	Ukubuyisana kwebhange (maka uqhathanise nesitatimende sakho sasebhange)
+bank_reconciliation	Ukubuyisana kwebhange
 bank_to_till	Ibhange → irejista yemali
 book_add_dish	Ileja — engeza isidlo / into yemenyu
 book_opening_credit	Incwadi - ikhredithi yokuvula
@@ -744,7 +732,6 @@ station_print_pick_first	Khetha isiteshi sasekhishini kuqala
 station_print_editing	Ukuhlela amaphrinta okuthi “{name}”
 station_vps_dd	Amaphrinta alesi siteshi
 station_vps_dd_n	{n} amaphrinta · thepha ukuze ushintshe
-station_vps_empty	Awekho amaphrinta okwamanje — Wathole ngaphansi kokuthi Izilungiselelo → Amaphrinta
 bill_printers_dd	Amaphrinta webhili yesivakashi
 bill_printers_dd_n	{n} amaphrinta webhili yesivakashi · thepha ukuze ushintshe
 job_layout	Isakhiwo
@@ -889,7 +876,7 @@ net_word	Okusele
 offline_badge	OKUNGAxhumekile ku-inthanethi
 optional_login_help	Ukungena ngemvume ngokuzithandela (id + iphasiwedi). Umnikazi usetha kanye; umsebenzisi kuphela ongashintsha iphasiwedi kamuva.
 or_unlock_login	Noma vula nge-id yokungena + nephasiwedi
-permission_preset	Umsebenzi (usetha izikrini nezenzo zemali)
+permission_preset	Umsebenzi
 preset_help_khaynjo	Umthengisi: thengisa. Umphathi: thengisa + izinto zemenyu + ukuqeda/ukulungisa.
 product_locked_khaynjo	Khaynjo
 product_only_khaynjo	Lolu hlelo lokusebenza Khaynjo kuphela - uhlelo lokusebenza lwendawo yokudlela. Obunye ubuso bohwebo buthunyelwa njengemikhiqizo ehlukene Kumkaj.
@@ -961,10 +948,6 @@ pin_hint_paired	Irejista yemali eyengeziwe ibhanqiwe — vula ukuze udayise
 pin_hint_pair_first	Irejista yemali eyengeziwe — bhanqa nedivaysi yesitolo kuqala
 unlock_to_continue	Vula ukuze uqhubeke
 no_staff_yet	Abekho abasebenzi okwamanje — vula njengoMnikazi, bese kuthi Ithimba
-status_server_set_pin	Imodi Yeseva — setha Umnikazi PIN
-status_server_tills	I-Server Mode — amarejista emali eyengeziwe angajoyina. Vula
-status_server_unlock	Imodi yeseva — vula njengoMnikazi
-status_client_unlock	Imodi Yeklayenti — vula ukuze udayise
 icon_new_selected	Isithonjana: ifayela elisha likhethiwe — thepha Londoloza uhlobo
 icon_custom	Isithonjana: uphawu lwendawo yangokwezifiso
 icon_default	Isithonjana: Kumkaj maka (okuzenzakalelayo) — khetha engokwezifiso
@@ -1033,7 +1016,7 @@ book_kind_balance	Ibhalansi
 order_help	Thepha into yemenyu ukuze uyengeze.
 floor_help	Thepha itafula lokudlela ukuze uthathe noma uguqule i-oda. Imibala ibonakala mahhala → ihlezi → ikhishi → ilungile → ukudla → inkokhiso yesivakashi → ikhokhiwe. Uhlu lokulinda, ukubhukha, namathebula okudlela okungezayo asezigabeni ezingezansi.
 kitchen_help	Amathikithi ekhishi (KOT), akamuva kakhulu. Qala → Ilungile → Kwenziwe uhambisa ithikithi. Amathikithi awabonisi izintengo.
-kitchen_empty	Awekho amathikithi avuliwe. I-KOT ethunyelwe isuka ehholo loku-oda noma lokudlela ibonakala lapha.
+kitchen_empty	Awekho amathikithi avuliwe.
 add_a_table	Engeza itafula lokudlela
 add_station_heading	Engeza isiteshi sasekhishini
 categories_help	Thepha okuthi Sebenzisa ukuze ufake into yemenyu ngenhla ngaphansi kwaleso sigaba. Isithombe sinikeza isigaba isithombe; ngaphandle kweyodwa ikhombisa ama-initials ayo.
@@ -1131,7 +1114,6 @@ bill_format_help	Iphrintwe ngaphansi kwegama lendawo yokudlela yakho kuwo wonke 
 bill_header_ph	Ikheli | ifoni
 fssai_ph	FSSAI Inombolo yelayisense. (India)
 bill_footer_ph	Unyaweni (isb. Ngiyabonga, vakashela futhi)
-save_bill_format	Londoloza ifomethi yebhili yesivakashi
 reset_bill_format	Setha kabusha kube okumisiwe
 bill_format_reset	Ifomethi yebhili yesivakashi isethwe kabusha ukuze ibe okumisiwe
 reset_kot_format	Setha kabusha kube okumisiwe
@@ -1201,13 +1183,11 @@ kot_copies_3	3
 kot_title_ph	Isihloko (akunalutho = KOT - KITCHEN ORDER)
 kot_footer_ph	Inothi lekhishi (uyazikhethela, awekho amanani)
 kot_preview	Buka kuqala
-save_kot_format	Londoloza ifomethi KOT
 test_kot_format	Zama ukuhlola KOT
 test_kot_sent	Ukuhlola kuqala ithikithi lasekhishini kuthunyelwe
 test_bill_format	Hlola ibhili yesivakashi
 test_bill_sent	Ukuhlola kuqala kwebhili yesivakashi sesivakashi kuthunyelwe
 test_print_no_printer	Ayikho iphrinta yalowo msebenzi — khetha eyodwa kulesi sikrini
-kot_format_saved	KOT ifomethi ilondoloziwe
 std_print	Usayizi wokuphrinta webhili yesivakashi sesivakashi
 std_print_help	Usayizi wefonti we-Standard Portrait kanye nemisebenzi yebhili yesivakashi se-Landscape ku-OS/amaphrinta amadokhumenti (faka amaphuzu — hhayi Okuncane/Okuvamile/Kukhulu). Usayizi ofanayo kuzo zombili izimo. Osayizi beziliphu basekhishini bakuthebhu ethi KOT.
 std_size_s	Encane
@@ -1264,7 +1244,6 @@ new_items_head	Ayikathunyelwa
 price_ph	Inani
 price_ph_gst_inside	Intengo ({tax} ihlanganisiwe)
 cancel_needs_table	Vula leli oda esikrinini sehholo lokudlela (itafula lokudlela) ukuze ukhansele ngemva kokuba ikhishi linalo — ikhawunta KOTs hlala ethikithi uze uthathe inkokhelo
-tax_rates_missing_hint	Cha {tax} isilinganiso salezi zidlo — ku-Menu set Tax rate (izintengo sezivele zihlanganisa {tax} ngaphansi kokuthi {tax} zihlangene)
 taxable_value	Inani elikhokhiswa intela
 gst_inside_price_note	({tax} kuhlanganisiwe)
 start_with_template	Qala ngesifanekiso sethu semenyu
@@ -1318,9 +1297,7 @@ order_empty_pick	Oda akunalutho — thepha Engeza izitsha ngenhla ukuze ukhethe 
 add_dishes	Engeza izitsha
 order_so_far	Kuleli oda: {n} · {total}
 no_dish_match	Akukho okufana nesidlo “{q}”
-pick_dishes_help	Thepha isidlo ukuze usengeze · khetha isigaba ukuze unciphise uhlu
 pick_done	Kwenziwe
-pick_done_dd	Kwenziwe · {label}
 printer_route_mode	Uma amaphrinta amaningana kule ndawo
 printer_mode_first	Okokuqala kuyasebenza
 printer_mode_all	Phrinta kukho konke

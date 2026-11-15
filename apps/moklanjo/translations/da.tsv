@@ -39,7 +39,7 @@ adding_item	Tilføjer en ny takst
 editing_item	Retter
 save	Gem
 remove	Fjern
-empty_catalog	Ingen takster endnu. Åbn Takster og tjenester, tilføj en (navn + pris, enhed kg), og gå så til Booking.
+empty_catalog	Ingen takster endnu.
 counter_sale	Diskbooking
 total	I alt
 cash	Kontant
@@ -171,8 +171,6 @@ selected_language	Valgt
 continue	Fortsæt
 this_device	DENNE ENHED
 device_use_q	Hvordan skal denne enhed bruges?
-last_server_mode	Var Server — tryk for at fortsætte
-last_client_mode	Var Klient — tryk for at fortsætte
 choose_server	Vælg en server
 choose_server_hint	Åbn en eksisterende server, eller opret en til en anden forretning.
 create_new_server	Opret ny server
@@ -501,8 +499,6 @@ job_layout	Layout
 job_delivery	Hvordan jobbet sendes
 job_size	Skriftstørrelse
 job_size_ph	f.eks. 18, 20, 26…
-save_receipt_format	Gem kvitteringsformat
-save_label_format	Gem etiketformat
 test_receipt_format	Test kvittering
 test_label_format	Test etiket
 test_receipt_sent	Prøvekvittering sendt
@@ -610,7 +606,7 @@ units_heading	Enheder
 booking_measures	Bookingmål
 drawer_count	Skuffeoptælling (valgfri)
 spreadsheet_csv	Regneark (CSV)
-bank_reconciliation	Bankafstemning (afkryds mod dit kontoudtog)
+bank_reconciliation	Bankafstemning
 book_add_product	Bog — tilføj vare / takst
 book_opening_credit	Bog — primo-kredit
 account_kind	Kontotype (tryk på én)
@@ -650,7 +646,7 @@ net_word	Netto
 offline_badge	UDEN NET
 optional_login_help	Valgfrit login (id + adgangskode). Ejeren sætter det én gang; kun brugeren kan senere skifte adgangskode.
 or_unlock_login	Eller lås op med login-id + adgangskode
-permission_preset	Job (sætter skærme og rettigheder)
+permission_preset	Job
 preset_help_moklanjo	Kasserer: sælg. Leder: sælg + varer + annuller/ret.
 product_locked_moklanjo	Moklanjo
 product_only_moklanjo	Denne app er kun Moklanjo — bøger + bookingdisk. Andre fagflader kommer senere som særskilte produkter.
@@ -698,10 +694,6 @@ pin_hint_paired	Ekstra kasse parret — lås op for at sælge
 pin_hint_pair_first	Ekstra kasse — par med butiksenheden først
 unlock_to_continue	Lås op for at fortsætte
 no_staff_yet	Intet personale endnu — lås op som Ejer, så Team
-status_server_set_pin	Servertilstand — sæt Ejer-PIN
-status_server_tills	Servertilstand — ekstra kasser kan deltage. Lås op
-status_server_unlock	Servertilstand — lås op som Ejer
-status_client_unlock	Klienttilstand — lås op for at sælge
 icon_new_selected	Ikon: ny fil valgt — tryk Gem brand
 icon_custom	Ikon: eget stedsmærke
 icon_default	Ikon: Kumkaj-mærke (standard) — vælg et eget

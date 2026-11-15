@@ -39,7 +39,7 @@ adding_item	د نوي نرخ اضافه کول
 editing_item	ترمیم کول
 save	خوندي کړئ
 remove	لرې کړئ
-empty_catalog	تر اوسه نرخونه نشته. نرخونه او خدمات خلاص کړئ ، یو اضافه کړئ (نوم + قیمت ، واحد کیلوګرام) ، بیا بک کول.
+empty_catalog	تر اوسه نرخونه نشته.
 counter_sale	کاونټر بکینګ
 total	ټول
 cash	نغدې
@@ -171,8 +171,6 @@ selected_language	ټاکل شوی
 continue	ادامه ورکړئ
 this_device	دا وسیله
 device_use_q	دا وسیله به څنګه وکارول شي؟
-last_server_mode	سرور و - د دوام لپاره ټایپ کړئ
-last_client_mode	کلاینټ و — د دوام لپاره ټک ووهئ
 choose_server	یو سرور غوره کړئ
 choose_server_hint	یو موجود سرور خلاص کړئ، یا د بل سوداګرۍ لپاره یو جوړ کړئ.
 create_new_server	نوی سرور جوړ کړئ
@@ -501,8 +499,6 @@ job_layout	ترتیب
 job_delivery	څنګه دنده لیږل کیږي
 job_size	د فونټ اندازه
 job_size_ph	د مثال په توګه ۸۱، ۰۲، ۶۲...
-save_receipt_format	د رسید بڼه خوندي کړئ
-save_label_format	د لیبل بڼه خوندي کړئ
 test_receipt_format	د ازموینې رسید
 test_label_format	د ازموینې لیبل
 test_receipt_sent	د نمونې رسید لیږل شوی
@@ -610,7 +606,7 @@ units_heading	واحدونه
 booking_measures	د بک کولو اقدامات
 drawer_count	د دستګاه شمیره (اختیاري)
 spreadsheet_csv	سپریډ شیټ (CSV)
-bank_reconciliation	د بانک پخالینه (ستاسو د بانک بیان په مقابل کې ټیک بند کړئ)
+bank_reconciliation	د بانک پخالینه
 book_add_product	کتاب - محصول / نرخ اضافه کړئ
 book_opening_credit	کتاب - د پرانیستلو کریډیټ
 account_kind	د حساب ډول (یو ټایپ)
@@ -650,7 +646,7 @@ net_word	جال
 offline_badge	آفالین
 optional_login_help	ل (id + پاسورډ). مالک یو ځل ټاکي؛ یوازې کارونکي کولی شي وروسته پاسورډ بدل کړي.
 or_unlock_login	یا د ننوتلو ID + پاسورډ سره خلاص کړئ
-permission_preset	دنده (د سکرینونو او حقونو تنظیم کول)
+permission_preset	دنده
 preset_help_moklanjo	کیشیر: خرڅول. مدیر: پلورل + توکي + باطل / ترمیم.
 product_locked_moklanjo	موکلانجو
 product_only_moklanjo	دا ایپ یوازې موکلانجو دی - کتابونه + د بکینګ میز. نورې سوداګرۍ وروسته د جلا محصولاتو په توګه لیږدول کیږي.
@@ -698,10 +694,6 @@ pin_hint_paired	تر جوړه پورې اضافي - د پلور لپاره خل�
 pin_hint_pair_first	اضافي پورې - لومړی د هټۍ وسیله سره جوړه کړئ
 unlock_to_continue	د دوام لپاره خلاص کړئ
 no_staff_yet	تراوسه هیڅ کارمند نشته - د مالک په توګه خلاص کړئ، بیا ټیم
-status_server_set_pin	د سرور حالت - د مالک PIN تنظیم کړئ
-status_server_tills	د سرور حالت - اضافي ټیلونه یوځای کیدی شي. خلاصول
-status_server_unlock	د سرور حالت - د مالک په توګه خلاص کړئ
-status_client_unlock	د کلاینټ حالت — د پلور لپاره خلاص کړئ
 icon_new_selected	آیکون: نوې فایل غوره شوی - د برانډ خوندي کولو کلیک وکړئ
 icon_custom	نښه: د دودیز ځای نښه
 icon_default	نښه: د کمکج نښه (ډیفالټ) - یو دودیز غوره کړئ

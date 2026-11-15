@@ -39,7 +39,7 @@ adding_item	Shtimi i një tarife të re
 editing_item	Po ndryshohet
 save	Ruaj
 remove	Hiq
-empty_catalog	Ende nuk ka tarifa. Hap Çmimet dhe shërbimet, shtoni një (emri + çmimi, njësia kg), më pas Rezervimi.
+empty_catalog	Ende nuk ka tarifa.
 counter_sale	Prenotim sportel
 total	Totali
 cash	Para në dorë
@@ -171,8 +171,6 @@ selected_language	E zgjedhur
 continue	Vazhdo
 this_device	KJO PAJISJE
 device_use_q	Si do të përdoret kjo pajisje?
-last_server_mode	Ishte Server — prekni për të vazhduar
-last_client_mode	Ishte Terminal — prekni për të vazhduar
 choose_server	Zgjidhni një server
 choose_server_hint	Hapni një server ekzistues, ose krijoni një për një biznes tjetër.
 create_new_server	Krijo server të ri
@@ -501,8 +499,6 @@ job_layout	Paraqitja
 job_delivery	Si dërgohet puna
 job_size	Madhësia e gërmës
 job_size_ph	p.sh. 18, 20, 26…
-save_receipt_format	Ruaj formatin e faturës
-save_label_format	Ruaj formatin e etiketës
 test_receipt_format	Fatura e testimit
 test_label_format	Etiketa e provës
 test_receipt_sent	Shembull i faturës u dërgua
@@ -610,7 +606,7 @@ units_heading	Njësitë
 booking_measures	Masat e rezervimit
 drawer_count	Numërimi i sirtarit (opsional)
 spreadsheet_csv	Fletëllogaritëse (CSV)
-bank_reconciliation	Barazimi i bankës (shënoni kundrejt pasqyrës suaj bankare)
+bank_reconciliation	Barazimi i bankës
 book_add_product	Rezervoni - shtoni produktin / tarifën
 book_opening_credit	Libri — kredi fillestare
 account_kind	Lloji i llogarisë (prekni një)
@@ -650,7 +646,7 @@ net_word	Neto
 offline_badge	JASHTË LINJE
 optional_login_help	Hyrje opsionale (id + fjalëkalim). Pronari e vendos një herë; vetëm përdoruesi mund ta ndryshojë fjalëkalimin më vonë.
 or_unlock_login	Ose zhblloko me id hyrjeje + fjalëkalim
-permission_preset	Puna (vendos ekranet dhe të drejtat)
+permission_preset	Puna
 preset_help_moklanjo	Arkëtar: shet. Menaxher: shet + artikuj + anulim/ndryshim.
 product_locked_moklanjo	Moklanjo
 product_only_moklanjo	Ky aplikacion është vetëm Moklanjo - libra + tavolinë rezervimi. Tregti të tjera përballet me anije si produkte të veçanta më vonë.
@@ -698,10 +694,6 @@ pin_hint_paired	Kasa shtesë e çiftuar — zhbllokoni për të shitur
 pin_hint_pair_first	Kasa shtesë — çiftojeni fillimisht me pajisjen e dyqanit
 unlock_to_continue	Zhbllokoni për të vazhduar
 no_staff_yet	Ende pa staf — zhbllokoni si Pronar, pastaj Ekipi
-status_server_set_pin	Mënyra Server — vendosni PIN-in e Pronarit
-status_server_tills	Mënyra Server — kasat shtesë mund të bashkohen. Zhblloko
-status_server_unlock	Mënyra Server — zhbllokoni si Pronar
-status_client_unlock	Mënyra Terminal — zhbllokoni për të shitur
 icon_new_selected	Ikona: skedar i ri i zgjedhur — prekni Ruaj markën
 icon_custom	Ikona: shenja e personalizuar e lokalit
 icon_default	Ikona: shenja Kumkaj (parazgjedhje) — zgjidhni një të personalizuar

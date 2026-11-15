@@ -41,7 +41,7 @@ remove	Poista
 removed_items	Poistetut tuotteet
 removed_help	Palautus tuo tuotteen ruokalistalle täsmälleen entisellään — hinta, kuva ja luokka. Omaa annoshyllyämme ei poisteta, joten annoksen voi aina lisätä uudelleen.
 restore_item	Palauta
-empty_catalog	Ei vielä annoksia. Avaa ruokalista, lisää annos (nimi + hinta) ja ota tilaus.
+empty_catalog	Ei vielä annoksia.
 total	Yhteensä
 cash	Käteinen
 upi	UPI
@@ -103,23 +103,14 @@ bill_item_qty	Määrä
 bill_item_price	Hinta
 bill_item_amount	Summa
 bill_item_note	Annoksen huomautus
-bill_item_col_gap	Sarakkeiden väli
 bill_item_col_order	Sarakkeiden järjestys
 bill_item_col_sep	Sarakkeiden viivat
-bill_item_gap_tight	Tiivis
-bill_item_gap_comfort	Mukava
-bill_item_gap_wide	Leveä
-bill_item_num_width	Lukusarakeet
-bill_item_num_compact	Tiivis
-bill_item_num_comfort	Mukava
-bill_item_num_wide	Leveä
-bill_item_num_align	Luvut tasataan
-bill_item_gap_em	Väli (em)
-bill_item_qty_min	Määrän minimi (em)
-bill_item_price_min	Hinnan minimi (em)
-bill_item_amount_min	Summan minimi (em)
-kot_item_qty_width	Määräsarake
-kot_item_num_align	Määrän tasaus
+slip_columns	Sarakkeet
+slip_col_width	Leveys (mm)
+slip_col_start	Alkuväli (px)
+slip_col_end	Loppuväli (px)
+slip_col_align	Tekstin tasaus
+slip_columns_help	Kunkin sarakkeen leveys sisältää sen alku- ja loppuvälin. Teksti rivittyy oman sarakkeensa sisällä; sisällön leveyden yli menevä osa leikkautuu pois – paperilla ja esikatselussa.
 bill_total_qty_label	Kokonaismäärän otsikko
 bill_total_subtotal_label	Välisumman otsikko
 bill_total_grand_label	Loppusumman otsikko
@@ -221,7 +212,6 @@ sidebar_order_saved	Sivupalkin järjestys tallennettu
 sidebar_visibility_saved	Sivupalkin näkyvyys tallennettu
 amounts_hide	Piilota
 amounts_show	Näytä
-printers_none_hint	Tallenna ensin tulostin tälle laitteelle ja lisää se sitten laskuun tai keittiöön
 counter	Tiski
 dine_in	Pöytään
 takeaway	Mukaan
@@ -328,8 +318,6 @@ selected_language	Valittu
 continue	Jatka
 this_device	TÄMÄ LAITE
 device_use_q	Miten tätä laitetta käytetään?
-last_server_mode	Oli palvelin — napauta jatkaaksesi
-last_client_mode	Oli pääte — napauta jatkaaksesi
 choose_server	Valitse palvelin
 choose_server_hint	Avaa olemassa oleva palvelin tai luo uusi toiselle yritykselle.
 create_new_server	Luo uusi palvelin
@@ -391,7 +379,7 @@ attachments_last_expense	Liitteet (viimeisin kulu)
 bank	Pankki
 bank_in	Pankkiin
 bank_out	Pankista
-bank_reconciliation	Pankin täsmäytys (ruksi tiliotetta vasten)
+bank_reconciliation	Pankin täsmäytys
 bank_to_till	Pankki → kassa
 book_add_dish	Kirja — lisää annos / tuote
 book_opening_credit	Kirja — alkuluotto
@@ -744,7 +732,6 @@ station_print_pick_first	Valitse ensin keittiöasema
 station_print_editing	Muokataan tulostimia kohteelle “{name}”
 station_vps_dd	Tulostimet tälle asemalle
 station_vps_dd_n	{n} tulostinta · napauta vaihtaaksesi
-station_vps_empty	Ei vielä tulostimia — etsi ne kohdasta Asetukset → Tulostimet
 bill_printers_dd	Tulostimet laskulle
 bill_printers_dd_n	{n} tulostinta laskulle · napauta vaihtaaksesi
 job_layout	Asettelu
@@ -889,7 +876,7 @@ net_word	Netto
 offline_badge	EI VERKOSSA
 optional_login_help	Valinnainen kirjautuminen (tunnus + salasana). Omistaja asettaa kerran; vain käyttäjä voi vaihtaa salasanan myöhemmin.
 or_unlock_login	Tai avaa lukitus kirjautumistunnuksella ja salasanalla
-permission_preset	Tehtävä (asettaa näytöt ja rahatoimet)
+permission_preset	Tehtävä
 preset_help_khaynjo	Kassahenkilö: myy. Päällikkö: myy + tuotteet + mitätöi/oikaise.
 product_locked_khaynjo	Khaynjo
 product_only_khaynjo	Tämä sovellus on vain Khaynjo — ravintolan käyttöjärjestelmä. Muut toimialat toimitetaan erillisinä Kumkaj-tuotteina.
@@ -961,10 +948,6 @@ pin_hint_paired	Lisäkassa paritettu — avaa lukitus myydäksesi
 pin_hint_pair_first	Lisäkassa — parita ensin liikkeen laitteeseen
 unlock_to_continue	Avaa lukitus jatkaaksesi
 no_staff_yet	Ei vielä henkilöstöä — avaa lukitus omistajana, sitten Tiimi
-status_server_set_pin	Palvelintila — aseta omistajan PIN
-status_server_tills	Palvelintila — lisäkassat voivat liittyä. Avaa lukitus
-status_server_unlock	Palvelintila — avaa lukitus omistajana
-status_client_unlock	Päätetila — avaa lukitus myydäksesi
 icon_new_selected	Kuvake: uusi tiedosto valittu — napauta Tallenna merkki
 icon_custom	Kuvake: oma paikan merkki
 icon_default	Kuvake: Kumkaj-merkki (oletus) — valitse oma
@@ -1033,7 +1016,7 @@ book_kind_balance	Tase
 order_help	Napauta tuotetta lisätäksesi sen.
 floor_help	Napauta pöytää ottaaksesi tai muuttaaksesi tilausta. Värit näyttävät vapaa → istuu → keittiö → valmis → syö → lasku → maksettu. Odotuslista, varaukset ja pöytien lisäys ovat alla olevissa osioissa.
 kitchen_help	Keittiölipukkeet (KOT), uusin viimeisenä. Aloita → Valmis → Tehty vie lipuketta eteenpäin. Lipukkeet eivät näytä hintoja.
-kitchen_empty	Ei avoimia lipukkeita. Tilauksesta tai salista lähetetty KOT näkyy tässä.
+kitchen_empty	Ei avoimia lipukkeita.
 add_a_table	Lisää pöytä
 add_station_heading	Lisää keittiöasema
 categories_help	Napauta Käytä arkistoidaksesi yllä olevan tuotteen tuohon luokkaan. Kuva antaa luokalle kuvan; ilman sitä näytetään nimikirjaimet.
@@ -1131,7 +1114,6 @@ bill_format_help	Tulostetaan ravintolasi nimen alle jokaiselle laskulle. Erota r
 bill_header_ph	Osoite | puhelin
 fssai_ph	FSSAI-luvan nro (Intia)
 bill_footer_ph	Alatunniste (esim. Kiitos, tervetuloa uudelleen)
-save_bill_format	Tallenna laskun muoto
 reset_bill_format	Palauta oletus
 bill_format_reset	Laskun muoto palautettu oletukseksi
 reset_kot_format	Palauta oletus
@@ -1201,13 +1183,11 @@ kot_copies_3	3
 kot_title_ph	Otsikko (tyhjä = KOT - KEITTIÖTILAUS)
 kot_footer_ph	Keittiön huomautus (valinnainen, ei hintoja)
 kot_preview	Esikatselu
-save_kot_format	Tallenna KOT:n muoto
 test_kot_format	Testi-KOT
 test_kot_sent	Keittiölipukkeen esikatselu lähetetty
 test_bill_format	Testilasku
 test_bill_sent	Laskun esikatselu lähetetty
 test_print_no_printer	Ei tulostinta tuolle työlle — valitse yksi tällä näytöllä
-kot_format_saved	KOT:n muoto tallennettu
 std_print	Laskun tulostuskoko
 std_print_help	Kirjasinkoko vakio-pysty- ja vaakasuuntaisille laskutöille käyttöjärjestelmän / asiakirjatulostimilla (syötä pisteinä — ei Pieni/Normaali/Suuri). Sama koko molemmissa suunnissa. Keittiölipukkeen koot ovat KOT-välilehdellä.
 std_size_s	Pieni
@@ -1264,7 +1244,6 @@ new_items_head	Ei vielä lähetetty
 price_ph	Hinta
 price_ph_gst_inside	Hinta ({tax} sisältyy)
 cancel_needs_table	Avaa tämä tilaus salista (pöytä) peruaksesi sen jälkeen kun keittiöllä se on — tiskin KOT:t pysyvät lipukkeella kunnes otat maksun
-tax_rates_missing_hint	Näillä annoksilla ei ole {tax}-kantaa — aseta verokanta ruokalistassa (hinnat sisältävät jo {tax} kohdassa {tax} sisältyy)
 taxable_value	Verotettava arvo
 gst_inside_price_note	({tax} sisältyy)
 start_with_template	Aloita ruokalistamallillamme
@@ -1318,9 +1297,7 @@ order_empty_pick	Tilaus on tyhjä — napauta Lisää annoksia yltä valitaksesi
 add_dishes	Lisää annoksia
 order_so_far	Tässä tilauksessa: {n} · {total}
 no_dish_match	Mikään annos ei vastaa hakua “{q}”
-pick_dishes_help	Napauta annosta lisätäksesi sen · valitse luokka rajataaksesi listaa
 pick_done	Valmis
-pick_done_dd	Valmis · {label}
 printer_route_mode	Jos tässä paikassa on useita tulostimia
 printer_mode_first	Ensimmäinen joka toimii
 printer_mode_all	Tulosta kaikille

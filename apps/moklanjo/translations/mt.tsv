@@ -39,7 +39,7 @@ adding_item	Żieda ta' rata ġdida
 editing_item	Editjar
 save	Salva
 remove	Neħħi
-empty_catalog	Għadu l-ebda rati. Miftuħa Rati u servizzi, żid waħda (isem + prezz, unità kg), imbagħad Booking.
+empty_catalog	Għadu l-ebda rati.
 counter_sale	Counter booking
 total	Totali
 cash	Kontanti
@@ -171,8 +171,6 @@ selected_language	Magħżula
 continue	Kompli
 this_device	DAN IL-MEZZ
 device_use_q	Kif se jintuża dan l-apparat?
-last_server_mode	Was Server — tektek biex tkompli
-last_client_mode	Was Client — tektek biex tkompli
 choose_server	Agħżel server
 choose_server_hint	Iftaħ server eżistenti, jew oħloq wieħed għal negozju ieħor.
 create_new_server	Oħloq server ġdid
@@ -501,8 +499,6 @@ job_layout	Tqassim
 job_delivery	Kif jintbagħat ix-xogħol
 job_size	Daqs tat-tipa
 job_size_ph	eż. 18, 20, 26...
-save_receipt_format	Issejvja l-format tal-irċevuta
-save_label_format	Issejvja l-format tat-tikketta
 test_receipt_format	Irċevuta tat-test
 test_label_format	Tikketta tat-test
 test_receipt_sent	Irċevuta tal-kampjun mibgħuta
@@ -610,7 +606,7 @@ units_heading	Unitajiet
 booking_measures	Miżuri tal-booking
 drawer_count	Għadd tal-kxaxen (mhux obbligatorju)
 spreadsheet_csv	Folja tad-Dejta (CSV)
-bank_reconciliation	Rikonċiljazzjoni bankarja (immarka mar-rendikont bankarju tiegħek)
+bank_reconciliation	Rikonċiljazzjoni bankarja
 book_add_product	Ktieb — żid prodott / rata
 book_opening_credit	Ktieb — kreditu tal-ftuħ
 account_kind	Tip ta' kont (tektek wieħed)
@@ -650,7 +646,7 @@ net_word	Nett
 offline_badge	OFFLINE
 optional_login_help	Login fakultattiv (id + password). Sid issettja darba; l-utent biss jista' jibdel il-password aktar tard.
 or_unlock_login	Jew iftaħ bl-id tal-login + password
-permission_preset	Xogħol (jissettja l-iskrins u d-drittijiet)
+permission_preset	Xogħol
 preset_help_moklanjo	Kaxxier: ibiegħ. Maniġer: bejgħ + oġġetti + null/emenda.
 product_locked_moklanjo	Moklanjo
 product_only_moklanjo	Din l-app hija Moklanjo biss — kotba + booking desk. Kummerċ ieħor jiffaċċja vapur bħala prodotti separati aktar tard.
@@ -698,10 +694,6 @@ pin_hint_paired	Till żejjed imqabbad — iftaħ biex tbigħ
 pin_hint_pair_first	Extra till — l-ewwel koppja mal-apparat tal-ħanut
 unlock_to_continue	Iftaħ biex tkompli
 no_staff_yet	Għadu l-ebda persunal — nisfrutta bħala Sid, imbagħad Tim
-status_server_set_pin	Modalità Server — issettja l-PIN tas-Sid
-status_server_tills	Mod Server — tills żejda jistgħu jingħaqdu. Iftaħ
-status_server_unlock	Modalità Server — nisfrutta bħala Sid
-status_client_unlock	Mod Klijent — iftaħ biex tbigħ
 icon_new_selected	Ikona: fajl ġdid magħżul — tektek Issejvja l-marka
 icon_custom	Ikona: marka tal-post tad-dwana
 icon_default	Ikona: Kumkaj mark (default) — agħżel waħda apposta

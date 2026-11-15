@@ -41,7 +41,7 @@ remove	ເອົາອອກ
 removed_items	ລຶບລາຍການອອກແລ້ວ
 removed_help	Restore ເຮັດໃຫ້ລາຍການກັບຄືນຢູ່ໃນເມນູຕາມທີ່ເຄີຍເປັນ - ລາຄາ, ຮູບແລະປະເພດ. ຊັ້ນວາງຂອງຖ້ວຍຂອງພວກເຮົາແມ່ນບໍ່ເຄີຍເອົາອອກ, ສະນັ້ນຈານສາມາດຖືກເພີ່ມອີກເທື່ອຫນຶ່ງ.
 restore_item	ຟື້ນຟູ
-empty_catalog	ບໍ່ມີຖ້ວຍເທື່ອ. ເປີດເມນູ, ເພີ່ມອາຫານ (ຊື່ + ລາຄາ), ຫຼັງຈາກນັ້ນເອົາຄໍາສັ່ງ.
+empty_catalog	ບໍ່ມີຖ້ວຍເທື່ອ.
 total	ທັງໝົດ
 cash	ເງິນສົດ
 upi	UPI
@@ -103,23 +103,14 @@ bill_item_qty	ຈຳນວນ
 bill_item_price	ລາຄາ
 bill_item_amount	ຈໍານວນ
 bill_item_note	ບັນທຶກອາຫານ
-bill_item_col_gap	ຊ່ອງຫວ່າງຖັນ
 bill_item_col_order	ລຳດັບຖັນ
 bill_item_col_sep	ກົດລະບຽບຖັນ
-bill_item_gap_tight	ແຫນ້ນ
-bill_item_gap_comfort	ສະດວກສະບາຍ
-bill_item_gap_wide	ກວ້າງ
-bill_item_num_width	ຖັນຕົວເລກ
-bill_item_num_compact	ກະທັດຮັດ
-bill_item_num_comfort	ສະດວກສະບາຍ
-bill_item_num_wide	ກວ້າງ
-bill_item_num_align	ຕົວເລກສອດຄ່ອງ
-bill_item_gap_em	ຊ່ອງຫວ່າງ (em)
-bill_item_qty_min	ສິບນາທີ (em)
-bill_item_price_min	ລາຄາຕໍ່າສຸດ (em)
-bill_item_amount_min	ຈຳນວນຕໍ່າສຸດ (em)
-kot_item_qty_width	ຖັນຈຳນວນ
-kot_item_num_align	ການຈັດລຽງຈຳນວນ
+slip_columns	ຖັນ
+slip_col_width	ຄວາມກວ້າງ (mm)
+slip_col_start	ຊ່ອງວ່າງຕົ້ນ (px)
+slip_col_end	ຊ່ອງວ່າງທ້າຍ (px)
+slip_col_align	ການຈັດຕຳແໜ່ງຂໍ້ຄວາມ
+slip_columns_help	ຄວາມກວ້າງຂອງແຕ່ລະຖັນລວມທັງຊ່ອງວ່າງຕົ້ນ ແລະ ທ້າຍຂອງມັນ. ຂໍ້ຄວາມຈະຕັດແຖວພາຍໃນຖັນຂອງມັນ; ສ່ວນທີ່ເກີນຄວາມກວ້າງເນື້ອຫາຈະຖືກຕັດອອກ ທັງໃນເຈ້ຍ ແລະ ໃນການເບິ່ງຕົວຢ່າງ.
 bill_total_qty_label	ປ້າຍຈຳນວນທັງໝົດ
 bill_total_subtotal_label	ປ້າຍທັງໝົດຍ່ອຍ
 bill_total_grand_label	ປ້າຍທັງໝົດໃຫຍ່
@@ -221,7 +212,6 @@ sidebar_order_saved	ບັນທຶກຄຳສັ່ງແຖບດ້ານຂ
 sidebar_visibility_saved	ບັນທຶກການເບິ່ງເຫັນແຖບດ້ານຂ້າງແລ້ວ
 amounts_hide	ເຊື່ອງ
 amounts_show	ສະແດງ
-printers_none_hint	ບັນທຶກເຄື່ອງພິມໃນອຸປະກອນນີ້ກ່ອນ, ຈາກນັ້ນເພີ່ມມັນໃສ່ Bill ຫຼືເຮືອນຄົວ
 counter	ເຄົາເຕີ
 dine_in	ຮັບປະທານອາຫານ
 takeaway	ກັບບ້ານ
@@ -328,8 +318,6 @@ selected_language	ເລືອກແລ້ວ
 continue	ສືບຕໍ່
 this_device	ອຸປະກອນນີ້
 device_use_q	ອຸປະກອນນີ້ຈະຖືກໃຊ້ແນວໃດ?
-last_server_mode	ແມ່ນເຊີບເວີ — ແຕະເພື່ອສືບຕໍ່
-last_client_mode	ເປັນລູກຄ້າ — ແຕະເພື່ອສືບຕໍ່
 choose_server	ເລືອກເຊີບເວີ
 choose_server_hint	ເປີດເຄື່ອງແມ່ຂ່າຍທີ່ມີຢູ່ແລ້ວ, ຫຼືສ້າງຫນຶ່ງສໍາລັບທຸລະກິດອື່ນ.
 create_new_server	ສ້າງເຄື່ອງແມ່ຂ່າຍໃຫມ່
@@ -391,7 +379,7 @@ attachments_last_expense	ໄຟລ໌ແນບ (ຄ່າໃຊ້ຈ່າຍ�
 bank	ທະນາຄານ
 bank_in	ທະນາຄານໃນ
 bank_out	ທະນາຄານອອກ
-bank_reconciliation	ການຄືນເງິນຂອງທະນາຄານ (ໝາຍເອົາໃບແຈ້ງຍອດທະນາຄານຂອງເຈົ້າ)
+bank_reconciliation	ການຄືນເງິນຂອງທະນາຄານ
 bank_to_till	ທະ​ນາ​ຄານ → till
 book_add_dish	ຈອງ — ເພີ່ມ​ອາ​ຫານ / ລາຍ​ການ​
 book_opening_credit	Book — ການ​ເປີດ​ສິນ​ເຊື່ອ​
@@ -744,7 +732,6 @@ station_print_pick_first	ເລືອກສະຖານີເຮືອນຄົ�
 station_print_editing	ການແກ້ໄຂເຄື່ອງພິມສໍາລັບ “{name}”
 station_vps_dd	ເຄື່ອງພິມສໍາລັບສະຖານີນີ້
 station_vps_dd_n	{n}ເຄື່ອງພິມ · ແຕະເພື່ອປ່ຽນ
-station_vps_empty	ບໍ່ມີເຄື່ອງພິມເທື່ອ — ຊອກຫາພວກມັນຢູ່ໃນການຕັ້ງຄ່າ → ເຄື່ອງພິມ
 bill_printers_dd	ເຄື່ອງພິມສໍາລັບໃບບິນຄ່າ
 bill_printers_dd_n	{n}ເຄື່ອງພິມສຳລັບໃບບິນ · ແຕະເພື່ອປ່ຽນ
 job_layout	ແຜນຜັງ
@@ -889,7 +876,7 @@ net_word	ສຸດທິ
 offline_badge	ອອບລາຍ
 optional_login_help	ທາງເລືອກໃນການເຂົ້າສູ່ລະບົບ (id + ລະຫັດຜ່ານ). ເຈົ້າຂອງຊຸດຫນຶ່ງຄັ້ງ; ພຽງແຕ່ຜູ້ໃຊ້ສາມາດປ່ຽນລະຫັດຜ່ານໃນພາຍຫຼັງ.
 or_unlock_login	ຫຼືປົດລັອກດ້ວຍ ID ເຂົ້າສູ່ລະບົບ + ລະຫັດຜ່ານ
-permission_preset	ວຽກ (ຕັ້ງຫນ້າຈໍແລະເງິນ)
+permission_preset	ວຽກ
 preset_help_khaynjo	Cashier: ຂາຍ. ຜູ້ຈັດການ: ຂາຍ + ລາຍການ + void / ດັດແກ້.
 product_locked_khaynjo	Khaynjo
 product_only_khaynjo	ແອັບນີ້ແມ່ນ Khaynjo ເທົ່ານັ້ນ — ລະບົບປະຕິບັດການຮ້ານອາຫານ. ການຄ້າອື່ນໆປະເຊີນກັບການຂົນສົ່ງເປັນສິນຄ້າ Kumkaj ແຍກຕ່າງຫາກ.
@@ -961,10 +948,6 @@ pin_hint_paired	ພິເສດຈົນກວ່າຈະຈັບຄູ່ —
 pin_hint_pair_first	ພິເສດຈົນຮອດ — ຈັບຄູ່ກັບອຸປະກອນຮ້ານຄ້າກ່ອນ
 unlock_to_continue	ປົດລັອກເພື່ອສືບຕໍ່
 no_staff_yet	ບໍ່ມີພະນັກງານເທື່ອ — ປົດລັອກເປັນເຈົ້າຂອງ, ຈາກນັ້ນທີມງານ
-status_server_set_pin	ໂໝດເຊີບເວີ - ຕັ້ງເຈົ້າຂອງ PIN
-status_server_tills	ໂຫມດເຊີບເວີ - tills ພິເສດສາມາດເຂົ້າຮ່ວມ. ປົດລັອກ
-status_server_unlock	ໂໝດເຊີບເວີ — ປົດລັອກເປັນເຈົ້າຂອງ
-status_client_unlock	ໂໝດລູກຄ້າ — ປົດລັອກເພື່ອຂາຍ
 icon_new_selected	ໄອຄອນ: ເລືອກໄຟລ໌ໃໝ່ — ແຕະ Save brand
 icon_custom	ໄອຄອນ: ເຄື່ອງໝາຍສະຖານທີ່ກຳນົດເອງ
 icon_default	ໄອຄອນ: Kumkaj ໝາຍ (ຄ່າເລີ່ມຕົ້ນ) — ເລືອກອັນທີ່ກຳນົດເອງ
@@ -1033,7 +1016,7 @@ book_kind_balance	ໃບດຸ່ນດ່ຽງ
 order_help	ແຕະໃສ່ລາຍການເພື່ອເພີ່ມມັນ.
 floor_help	ແຕະຕາຕະລາງຮັບປະທານອາຫານເພື່ອຮັບຫຼືປ່ຽນຄໍາສັ່ງ. ສີສະແດງໃຫ້ເຫັນຟຣີ → ນັ່ງ → ເຮືອນຄົວ → ພ້ອມ → ກິນອາຫານ → ໃບບິນ → ຈ່າຍ. ລາຍຊື່ລໍຖ້າ, ການຈອງ, ແລະຕາຕະລາງການເພີ່ມອາຫານແມ່ນຢູ່ໃນພາກສ່ວນຂ້າງລຸ່ມນີ້.
 kitchen_help	ປີ້ເຮືອນຄົວ (KOT), ໃໝ່ລ່າສຸດ. ເລີ່ມ → ພ້ອມ → ແລ້ວໆ ຍ້າຍປີ້ໄປພ້ອມ. ປີ້ບໍ່ເຄີຍສະແດງລາຄາ.
-kitchen_empty	ບໍ່ມີປີ້ເປີດ. KOTທີ່ສົ່ງມາຈາກ Order or Dining Hall ປະກົດຂຶ້ນທີ່ນີ້.
+kitchen_empty	ບໍ່ມີປີ້ເປີດ.
 add_a_table	ເພີ່ມໂຕະກິນເຂົ້າ
 add_station_heading	ເພີ່ມສະຖານີເຮືອນຄົວ
 categories_help	ແຕະໃຊ້ເພື່ອຍື່ນລາຍການຂ້າງເທິງພາຍໃຕ້ໝວດໝູ່ນັ້ນ. ຮູບພາບເຮັດໃຫ້ປະເພດຮູບພາບ; ໂດຍບໍ່ມີການຫນຶ່ງມັນສະແດງໃຫ້ເຫັນເບື້ອງຕົ້ນຂອງມັນ.
@@ -1131,7 +1114,6 @@ bill_format_help	ພິມພາຍໃຕ້ຊື່ຮ້ານອາຫານ
 bill_header_ph	ທີ່ຢູ່ | ໂທລະສັບ
 fssai_ph	FSSAI ເລກທະບຽນ. (ອິນເດຍ)
 bill_footer_ph	ສ່ວນທ້າຍ (ເຊັ່ນ: ຂອບໃຈ, ເຂົ້າເບິ່ງອີກຄັ້ງ)
-save_bill_format	ບັນທຶກຮູບແບບໃບບິນ
 reset_bill_format	ຣີເຊັດເປັນຄ່າເລີ່ມຕົ້ນ
 bill_format_reset	ຣີເຊັດຮູບແບບໃບບິນເປັນຄ່າເລີ່ມຕົ້ນ
 reset_kot_format	ຣີເຊັດເປັນຄ່າເລີ່ມຕົ້ນ
@@ -1201,13 +1183,11 @@ kot_copies_3	3
 kot_title_ph	ຫົວຂໍ້ (ເປົ່າ = KOT - ການສັ່ງເຮືອນຄົວ)
 kot_footer_ph	ຫມາຍເຫດເຮືອນຄົວ (ທາງເລືອກ, ບໍ່ມີລາຄາ)
 kot_preview	ເບິ່ງຕົວຢ່າງ
-save_kot_format	ບັນທຶກຮູບແບບ KOT
 test_kot_format	ທົດສອບ KOT
 test_kot_sent	ສົ່ງຕົວຢ່າງປີ້ເຮືອນຄົວແລ້ວ
 test_bill_format	ໃບບິນທົດສອບ
 test_bill_sent	ສົ່ງຕົວຢ່າງໃບບິນແລ້ວ
 test_print_no_printer	ບໍ່ມີເຄື່ອງພິມສຳລັບວຽກນັ້ນ — ເລືອກອັນໜຶ່ງໃນໜ້າຈໍນີ້
-kot_format_saved	ບັນທຶກຮູບແບບ KOT
 std_print	ຂະໜາດພິມໃບບິນ
 std_print_help	ຂະໜາດຕົວອັກສອນສຳລັບວຽກໃບເກັບເງິນມາດຕະຖານຮູບຄົນ ແລະພູມສັນຖານໃນເຄື່ອງພິມ OS / ເອກະສານ (ໃສ່ຈຸດ — ບໍ່ແມ່ນຂະໜາດນ້ອຍ/ທຳມະດາ/ໃຫຍ່). ຂະຫນາດດຽວກັນໃນທັງສອງທິດທາງ. ຂະໜາດເຄື່ອງໃຊ້ໃນເຮືອນຄົວຢູ່ໃນແຖບ KOT.
 std_size_s	ຂະຫນາດນ້ອຍ
@@ -1264,7 +1244,6 @@ new_items_head	ຍັງບໍ່ໄດ້ສົ່ງເທື່ອ
 price_ph	ລາຄາ
 price_ph_gst_inside	ລາຄາ ({tax} ລວມ)
 cancel_needs_table	ເປີດການສັ່ງນີ້ຈາກຫນ້າຈໍຫ້ອງຮັບປະທານອາຫານ (ໂຕະອາຫານ) ເພື່ອຍົກເລີກຫຼັງຈາກເຮືອນຄົວມີມັນ - ເຄົາເຕີ KOTs ຢູ່ໃນປີ້ຈົນກວ່າທ່ານຈະຈ່າຍເງິນ
-tax_rates_missing_hint	ບໍ່ມີອັດຕາ {tax} ໃນອາຫານເຫຼົ່ານີ້ — ໃນເມນູກຳນົດອັດຕາພາສີ (ລາຄາລວມ {tax} ພາຍໃຕ້ {tax} ແລ້ວ)
 taxable_value	ມູນຄ່າພາສີ
 gst_inside_price_note	({tax}ລວມ)
 start_with_template	ເລີ່ມຕົ້ນດ້ວຍແມ່ແບບເມນູຂອງພວກເຮົາ
@@ -1318,9 +1297,7 @@ order_empty_pick	ສັ່ງຫວ່າງເປົ່າ — ແຕະເພ�
 add_dishes	ເພີ່ມຖ້ວຍ
 order_so_far	ໃນຄໍາສັ່ງນີ້: {n} · {total}
 no_dish_match	ບໍ່ມີອາຫານທີ່ກົງກັບ “{q}”
-pick_dishes_help	ແຕະໃສ່ຈານເພື່ອເພີ່ມມັນ · ເລືອກໝວດໝູ່ເພື່ອຈຳກັດລາຍຊື່
 pick_done	ສຳເລັດແລ້ວ
-pick_done_dd	ສຳເລັດແລ້ວ · {label}
 printer_route_mode	ຖ້າມີເຄື່ອງພິມຫຼາຍບ່ອນຢູ່ບ່ອນນີ້
 printer_mode_first	ທໍາອິດທີ່ເຮັດວຽກ
 printer_mode_all	ພິມທັງໝົດ

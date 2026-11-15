@@ -40,13 +40,17 @@ impl MatchEvent for App {
             self.ui.widget(cx, ids!(paired_list)).redraw(cx);
             return;
         }
-        let (undo_hit, snack_hit) = {
+        let (undo_hit, snack_hit, format_hit) = {
             let st = app_state().lock().unwrap();
             (
                 !st.undo_timer.is_empty() && st.undo_timer.is_timer(e).is_some(),
                 !st.snack_timer.is_empty() && st.snack_timer.is_timer(e).is_some(),
+                !st.format_save_timer.is_empty() && st.format_save_timer.is_timer(e).is_some(),
             )
         };
+        if format_hit {
+            self.flush_format_autosave(cx);
+        }
         if undo_hit {
             self.clear_undo_snackbar(cx);
             self.sync_chrome(cx);

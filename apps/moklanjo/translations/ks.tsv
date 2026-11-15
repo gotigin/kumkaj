@@ -39,7 +39,7 @@ adding_item	نٔو ریٹ چھُ شٲمِل گژھان
 editing_item	ایڈیٹنگ
 save	محفوظ کٔرِو
 remove	ہٹاوُن
-empty_catalog	وٕنیُک تام چھُنہٕ کانٛہہ ریٹ۔ ریٹ تہٕ خٕدمَت کھولِو، اَکھ شٲمِل کٔرِو (ناو + قۭمَت، یونِٹ kg)، پتہٕ بُکنگ۔
+empty_catalog	وٕنیُک تام چھُنہٕ کانٛہہ ریٹ۔
 counter_sale	کاؤنٹر بُکنگ
 total	کُل
 cash	نَقَد
@@ -171,8 +171,6 @@ selected_language	ژارنہٕ آمُت
 continue	جاری
 this_device	یہِ ڈیوائس
 device_use_q	یہِ آلہٕ کِتھ کٔنۍ ییہِ استعمال کرنہٕ؟
-last_server_mode	اوس Server — جٲری تھاونہٕ خٲطرٕ ٹیپ
-last_client_mode	اوس Client — جٲری تھاونہٕ خٲطرٕ ٹیپ
 choose_server	سرور ژٲرِو
 choose_server_hint	اکھ موجودٕ سرور کھولو، یا بیٚیِس کارٕبارٕ خٲطرٕ بنٲیِو یہِ۔
 create_new_server	نْو سْرور بنٲیِو
@@ -501,8 +499,6 @@ job_layout	خاکہ
 job_delivery	نوکری کِتھٕ کٔنۍ چھِ سوزنہٕ یِوان
 job_size	فانٹ سایِز
 job_size_ph	مثلاً 18، 20، 26...
-save_receipt_format	رَسیٖد فارمیٹ محفوظ کٔرِو
-save_label_format	لیبل فارمیٹ محفوظ کٔرِو
 test_receipt_format	رَسیٖد ٹیسٹ
 test_label_format	لیبل ٹیسٹ
 test_receipt_sent	نموٗنہٕ رَسیٖد سوٗز
@@ -610,7 +606,7 @@ units_heading	یونٹ
 booking_measures	بُکنگ ناپ
 drawer_count	دراز گنتی (اختیاری)
 spreadsheet_csv	سپریڈ شیٹ (CSV)
-bank_reconciliation	بینک مصالحت (تُہنٛدِس بینک سٹیٹمنٹَس خٕلاف کٔرِو ٹِک)
+bank_reconciliation	بینک مصالحت
 book_add_product	بُک — پروڈکٹ / ریٹ شٲمِل کٔرِو
 book_opening_credit	کتاب — اوپننگ کریڈٹ
 account_kind	اکاؤنٹُک قٕسم (ٹیپ کَرُن)
@@ -650,7 +646,7 @@ net_word	نیٹ
 offline_badge	آف لائن
 optional_login_help	اختیاری لاگ اِن (ID + پاس وٲرڈ)۔ مٲلک چُھ یہٕ اکہ لٹہٕ سیٹ کران۔ صرف اِستِمال کَرن وول ہیکہِ پَتہٕ پاس وٲرڈ بَدلٲوِتھ۔
 or_unlock_login	یا لاگ اِن آی ڈی + پاس وأرڈ سۭتۍ ان لاک
-permission_preset	کام (سکرین تہٕ حق طے چھُ کران)
+permission_preset	کام
 preset_help_moklanjo	کیشیئر: کٕنُن۔ منیجر: کٕنُن + چیٖز + کالعدم / ترمیم۔
 product_locked_moklanjo	Moklanjo
 product_only_moklanjo	یِہ ایپ چھُ صرف Moklanjo — بُک + بُکنگ ڈیسک۔ بیٛاکھ تجارتُک پروڈکٹ پتہٕ الگ یِن۔
@@ -698,10 +694,6 @@ pin_hint_paired	اضٲفی کَش کاؤنٹر جوڑِتھ — کٕننہٕ خ�
 pin_hint_pair_first	اضٲفی کَش کاؤنٹر — گۄڈٕ کٔرِو دُکانٕک ڈیوایسَس سۭتۍ جوڑ
 unlock_to_continue	جٲری تھاونہٕ خٲطرٕ کٔرِو ان لاک
 no_staff_yet	وٕنیُک تام کانٛہہ سٹاف نہٕ — بطور مٲلک، پتہٕ ٹیم انلاک
-status_server_set_pin	Server موڈ — سیٹ مالک PIN
-status_server_tills	Server موڈ — اضٲفی کَش کاؤنٹر ہیکن شٲمِل گٔژھِتھ۔ انلاک کٔرِو
-status_server_unlock	Server موڈ — انلاک کْریو بطور مالک
-status_client_unlock	Client موڈ — کٕننہٕ خٲطرٕ انلاک کٔرِو
 icon_new_selected	آئیکن: نٔو فایل منتخب — ٹیپ کٔرِو برانڈ محفوظ
 icon_custom	آئیکن: کسٹم وینیو مارک
 icon_default	آئیکن: Kumkaj مارک (ڈیفالٹ) — کسٹم اکھ منتخب

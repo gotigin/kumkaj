@@ -171,8 +171,6 @@ selected_language	Ընտրված
 continue	Շարունակել
 this_device	ԱՅՍ ՍԱՐՔԸ
 device_use_q	Ինչպե՞ս կօգտագործվի այս սարքը։
-last_server_mode	Սերվեր էր — հպեք շարունակելու համար
-last_client_mode	Կլիենտ էր — հպեք շարունակելու համար
 choose_server	Ընտրեք սերվեր
 choose_server_hint	Բացեք առկա սերվեր կամ ստեղծեք մեկը այլ բիզնեսի համար։
 create_new_server	Ստեղծել նոր սերվեր
@@ -501,8 +499,6 @@ job_layout	Դասավորություն
 job_delivery	Ինչպես է ուղարկվում աշխատանքը
 job_size	Տառաչափ
 job_size_ph	օր. 18, 20, 26…
-save_receipt_format	Պահպանել անդորրագրի ձևաչափը
-save_label_format	Պահպանել պիտակի ձևաչափը
 test_receipt_format	Փորձարկման անդորրագիր
 test_label_format	Փորձարկման պիտակ
 test_receipt_sent	Ուղարկվել է նմուշի անդորրագիր
@@ -610,7 +606,7 @@ units_heading	Միավորներ
 booking_measures	Ամրագրման միջոցառումներ
 drawer_count	Դարակի հաշվարկ (ըստ ցանկության)
 spreadsheet_csv	Աղյուսակ (CSV)
-bank_reconciliation	Բանկային համաձայնեցում (նշեք բանկային քաղվածքի դիմաց)
+bank_reconciliation	Բանկային համաձայնեցում
 book_add_product	Գիրք — ավելացրեք ապրանք / տոկոսադրույք
 book_opening_credit	Մատյան — սկզբնական վարկ
 account_kind	Հաշվի տեսակ (հպեք մեկին)
@@ -650,7 +646,7 @@ net_word	Զուտ
 offline_badge	ԱՆՑԱՆՑ
 optional_login_help	Ըստ ցանկության մուտք (id + գաղտնաբառ)։ Սեփականատերը դնում է մեկ անգամ; հետո գաղտնաբառը կարող է փոխել միայն օգտատերը։
 or_unlock_login	Կամ ապակողպեք մուտքի id + գաղտնաբառով
-permission_preset	Աշխատանք (սահմանում է էկրաններ և իրավունքներ)
+permission_preset	Աշխատանք
 preset_help_moklanjo	Գանձապահ՝ վաճառում է։ Կառավարիչ՝ վաճառք + ապրանքներ + չեղյալ/ուղղում։
 product_locked_moklanjo	Մոկլանջո
 product_only_moklanjo	Այս հավելվածը միայն Moklanjo-ն է՝ գրքեր + ամրագրման գրասեղան: Այլ առևտրային դեմքեր առաքվում են որպես առանձին ապրանքներ ավելի ուշ:
@@ -698,10 +694,6 @@ pin_hint_paired	Լրացուցիչ դրամարկղը զուգակցված է �
 pin_hint_pair_first	Լրացուցիչ դրամարկղ — նախ զուգակցեք խանութի սարքի հետ
 unlock_to_continue	Ապակողպեք շարունակելու համար
 no_staff_yet	Դեռ անձնակազմ չկա — ապակողպեք որպես Սեփականատեր, ապա Թիմ
-status_server_set_pin	Սերվեր ռեժիմ — դրեք Սեփականատիրոջ PIN
-status_server_tills	Սերվեր ռեժիմ — լրացուցիչ դրամարկղները կարող են միանալ։ Ապակողպեք
-status_server_unlock	Սերվեր ռեժիմ — ապակողպեք որպես Սեփականատեր
-status_client_unlock	Կլիենտ ռեժիմ — ապակողպեք վաճառելու համար
 icon_new_selected	Պատկերակ՝ ընտրված է նոր ֆայլ — հպեք Պահել ապրանքանիշը
 icon_custom	Պատկերակ՝ սեփական նշան
 icon_default	Պատկերակ՝ Kumkaj նշան (լռելյայն) — ընտրեք հատուկ

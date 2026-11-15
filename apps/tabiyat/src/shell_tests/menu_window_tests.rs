@@ -79,4 +79,16 @@ mod menu_window_tests {
         assert_eq!(product_columns(1000.0), 3);
         assert_eq!(product_columns(4000.0), PRODUCT_MAX_COLUMNS);
     }
+
+    /// Search results draw in the pager's first grid, which lives inside
+    /// `pick_scroll`. Hiding that scroll while searching hid every result —
+    /// typing any name or alias showed nothing (found 2026-11-14).
+    #[test]
+    fn searching_never_hides_the_results_page() {
+        let src = include_str!("../widgets/product_menu.rs");
+        assert!(
+            !src.contains("scroll.set_visible(cx, false)"),
+            "the item picker must not hide pick_scroll (the results live in it)"
+        );
+    }
 }

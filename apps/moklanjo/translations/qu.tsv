@@ -39,7 +39,7 @@ adding_item	Musuq tarifa yapay
 editing_item	Llamk'apuy
 save	Waqaychay
 remove	Qulluy
-empty_catalog	Manaraqmi tarifakuna kanchu. Tarifas & servicios kichay, hukta yapay (suti + chanin, unidad kg), chaymanta Reserva.
+empty_catalog	Manaraqmi tarifakuna kanchu.
 counter_sale	Contador nisqapi reservacion
 total	Llapan
 cash	Qullqi
@@ -171,8 +171,6 @@ selected_language	Akllasqa
 continue	Hinallayá ruway
 this_device	KAY DISPOSITIVO
 device_use_q	¿Imaynatataq kay aparatota apaykachakunqa?
-last_server_mode	Servidor karqan — ñit'iy hinalla ruwanaykipaq
-last_client_mode	Cliente karqan — ñit'iy hinalla ruwanaykipaq
 choose_server	Huk sirwiqta akllay
 choose_server_hint	Huk kachkaq servidorta kichay, utaq huk negociopaq hukta ruway.
 create_new_server	Musuq sirwiqta paqarichiy
@@ -501,8 +499,6 @@ job_layout	Diseño
 job_delivery	Imaynatataq chay llamkay apachisqa
 job_size	Fuente nisqapa sayaynin
 job_size_ph	p.h. 18, 20, 26...
-save_receipt_format	Recibo formato nisqa waqaychay
-save_label_format	Etiqueta formato nisqa waqaychay
 test_receipt_format	Prueba chaskiy
 test_label_format	Prueba etiqueta
 test_receipt_sent	Muestra recibo apachisqa
@@ -610,7 +606,7 @@ units_heading	Unidades nisqakuna
 booking_measures	Reserva ruwanapaq medidakuna
 drawer_count	Cajón yupay (munasqa) .
 spreadsheet_csv	Raphi de cálculo (CSV) .
-bank_reconciliation	Bancopi allipunachiy (bancomanta willakuyniykipi marcay) .
+bank_reconciliation	Bancopi allipunachiy
 book_add_product	Libro — yapay ruru / tarifa
 book_opening_credit	Libro mayor — kichay qullqi
 account_kind	Cuenta clase (hukninta ñit’iy) .
@@ -650,7 +646,7 @@ net_word	Llika
 offline_badge	OFFLINE nisqa
 optional_login_help	Munasqa yaykuy (id + contraseña). Dueñoqa huk kutillatam churan; ruwaqllam qhipaman yaykuna rimata tikrayta atin.
 or_unlock_login	Utaq yaykuy id + contraseñawan kichay
-permission_preset	Llamkana (pantallakunata hinaspa derechokunata churan) .
+permission_preset	Llamkana
 preset_help_moklanjo	Cajero: rantikuy. Kamachiq: rantiy + menú nisqapi kaqkuna + ch'usaq/allinchay.
 product_locked_moklanjo	Moklanjo
 product_only_moklanjo	Kay app Moklanjolla — librokuna + reservakuna ruwana wasi. Huk qhatuy uyakuna sapaq rurukuna hina qhipaman apachinku.
@@ -698,10 +694,6 @@ pin_hint_paired	Yapa caja registradora parisqa — kichay ranqhanapaq
 pin_hint_pair_first	Yapa qullqi waqaychaq — ñawpaqta tienda dispositivoman parischay
 unlock_to_continue	Kichayta hinalla ruwanaykipaq
 no_staff_yet	Manaraq llamk'aq — Dueño hina kichay, chaymanta Equipo
-status_server_set_pin	Modo Servidor — churay Dueño PIN .
-status_server_tills	Modo Servidor — yapasqa qullqi waqaychanakuna hukllanakunkuman. Desbloquear
-status_server_unlock	Modo Servidor — Dueño hina kichay
-status_client_unlock	Modo Cliente — kichay ranqhanapaq
 icon_new_selected	Icono: musuq willañiqi akllasqa — Marka waqaychay ñit'iy
 icon_custom	Icono: marca de lugar personalizado
 icon_default	Icon: Kumkaj marka (ñawpaqmanta) — huk sapanchasqa akllay

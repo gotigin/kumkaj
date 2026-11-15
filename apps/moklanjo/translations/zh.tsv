@@ -39,7 +39,7 @@ adding_item	正在添加新费率
 editing_item	编辑中
 save	保存
 remove	删除
-empty_catalog	尚无费率。打开费率与服务，添加一个（名称+价格，单位kg），然后寄件。
+empty_catalog	尚无费率。
 counter_sale	柜台寄件
 total	总计
 cash	现金
@@ -171,8 +171,6 @@ selected_language	已选
 continue	继续
 this_device	此设备
 device_use_q	此设备将如何使用？
-last_server_mode	之前是服务器——点按继续
-last_client_mode	之前是客户端——点按继续
 choose_server	选择服务器
 choose_server_hint	此设备已有服务器。打开一个，或为另一家企业创建新服务器。
 create_new_server	创建新服务器
@@ -501,8 +499,6 @@ job_layout	版式
 job_delivery	任务发送方式
 job_size	字号
 job_size_ph	例如 18, 20, 26…
-save_receipt_format	保存收据格式
-save_label_format	保存标签格式
 test_receipt_format	测试收据
 test_label_format	测试标签
 test_receipt_sent	示例收据已送出
@@ -610,7 +606,7 @@ units_heading	单位
 booking_measures	寄件尺寸
 drawer_count	抽屉盘点（可选）
 spreadsheet_csv	电子表格(CSV)
-bank_reconciliation	银行对账（按银行对账单勾选）
+bank_reconciliation	银行对账
 book_add_product	寄件 — 添加产品/费率
 book_opening_credit	寄件 — 期初赊账
 account_kind	账户类型（点选其一）
@@ -650,7 +646,7 @@ net_word	净额
 offline_badge	离线
 optional_login_help	可选登录（编号+密码）。店主设置一次；之后只有用户本人可改密码。
 or_unlock_login	或用登录编号+密码解锁
-permission_preset	岗位（设定屏幕和权限）
+permission_preset	岗位
 preset_help_moklanjo	收银员：销售。经理：销售+项目+作废/修改。
 product_locked_moklanjo	Moklanjo
 product_only_moklanjo	此应用仅为 Moklanjo——账簿与寄件台。其他行业的产品以后会单独推出。
@@ -698,10 +694,6 @@ pin_hint_paired	额外柜台已配对 — 解锁以销售
 pin_hint_pair_first	额外柜台 — 先与店铺设备配对
 unlock_to_continue	解锁以继续
 no_staff_yet	尚无员工 — 以店主解锁，然后团队
-status_server_set_pin	服务器模式 — 设置店主PIN
-status_server_tills	服务器模式 — 额外柜台可加入。解锁
-status_server_unlock	服务器模式 — 以店主解锁
-status_client_unlock	客户端模式 — 解锁以销售
 icon_new_selected	图标：已选新文件 — 点保存品牌
 icon_custom	图标：您店铺的标志
 icon_default	图标：Kumkaj 标志（默认）— 选择您自己的

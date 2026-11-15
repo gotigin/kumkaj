@@ -45,6 +45,46 @@ pub fn write_image_as_webp_fit(src: &Path, dest_webp: &Path, max_edge: u32) -> R
     write_webp(&img, dest_webp)
 }
 
+/// Like [`write_image_as_webp_fit`], from image bytes already in memory.
+pub fn encode_bytes_as_webp_fit(bytes: &[u8], dest_webp: &Path, max_edge: u32) -> Result<u64, String> {
+    let img = image::load_from_memory(bytes).map_err(|e| format!("Decode image: {e}"))?;
+    let img = if img.width() > max_edge || img.height() > max_edge {
+        img.resize(max_edge, max_edge, image::imageops::FilterType::Triangle)
+    } else {
+        img
+    };
+    write_webp(&img, dest_webp)
+}
+
+/// Standard base64 (RFC 4648, `+/`, `=` padding; whitespace and line
+/// breaks ignored) — for a picture carried inside a JSON file, such as an
+/// app template's shop logo in `shop_defaults.json`.
+pub fn decode_base64(text: &str) -> Result<Vec<u8>, String> {
+    let mut out = Vec::with_capacity(text.len() / 4 * 3);
+    let mut acc: u32 = 0;
+    let mut bits = 0u32;
+    for c in text.bytes() {
+        let v = match c {
+            b'A'..=b'Z' => c - b'A',
+            b'a'..=b'z' => c - b'a' + 26,
+            b'0'..=b'9' => c - b'0' + 52,
+            b'+' => 62,
+            b'/' => 63,
+            b'=' => break,
+            b' ' | b'\n' | b'\r' | b'\t' => continue,
+            _ => return Err("Not base64".into()),
+        } as u32;
+        acc = (acc << 6) | v;
+        bits += 6;
+        if bits >= 8 {
+            bits -= 8;
+            out.push((acc >> bits) as u8);
+            acc &= (1 << bits) - 1;
+        }
+    }
+    Ok(out)
+}
+
 /// Decode image bytes and write WebP to `dest_webp`. Returns file size.
 pub fn encode_bytes_as_webp(bytes: &[u8], dest_webp: &Path) -> Result<u64, String> {
     let img = image::load_from_memory(bytes).map_err(|e| format!("Decode image: {e}"))?;
@@ -90,6 +130,21 @@ mod tests {
             0x9c, 0x63, 0x60, 0x60, 0x60, 0x00, 0x00, 0x00, 0x04, 0x00, 0x01, 0xf6, 0x17, 0x38,
             0x55, 0x00, 0x00, 0x00, 0x00, 0x49, 0x45, 0x4e, 0x44, 0xae, 0x42, 0x60, 0x82,
         ]
+    }
+
+    #[test]
+    fn base64_round_trips_a_picture() {
+        assert_eq!(decode_base64("TWFu").unwrap(), b"Man");
+        assert_eq!(decode_base64("TWE=").unwrap(), b"Ma");
+        assert_eq!(decode_base64("TQ==\n").unwrap(), b"M");
+        assert_eq!(decode_base64("aGVs\nbG8=").unwrap(), b"hello");
+        assert!(decode_base64("ab$c").is_err());
+        // The 1×1 PNG, as a template would carry it.
+        let png = decode_base64(
+            "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAADElEQVR4nGNgYGAAAAAEAAH2FzhVAAAAAElFTkSuQmCC",
+        )
+        .unwrap();
+        assert_eq!(png, tiny_png());
     }
 
     #[test]

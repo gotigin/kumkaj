@@ -11,16 +11,16 @@
   Sideload path: an .msi from apps/<app>/scripts/msi.sh, run through WACK's
   desktop-app tests with msiexec /qn. Unsigned binaries fail the
   "digitally signed files" test there until the .exe and .msi carry a real
-  code-signing certificate — expected for an internal build.
+  code-signing certificate - expected for an internal build.
 
   Needs: Windows 10/11, an elevated PowerShell, the Windows SDK's
   "Windows App Certification Kit" and "Signing Tools for Desktop Apps"
   (https://developer.microsoft.com/windows/downloads/windows-sdk/).
-  Docs: docs/DEV.md § Windows App Certification Kit.
+  Docs: docs/DEV.md Windows App Certification Kit.
 
 .EXAMPLE
-  .\run-wack.ps1 -Package Z:\dist\Khaynjo-1.0.9.msix
-  .\run-wack.ps1 -Package Z:\dist\Khaynjo-1.0.9.msi
+  .\run-wack.ps1 -Package Z:\dist\Khaynjo-1.0.10.msix
+  .\run-wack.ps1 -Package Z:\dist\Khaynjo-1.0.10.msi
   .\run-wack.ps1 -Cleanup       # remove the test certificate again
 #>
 [CmdletBinding()]
@@ -42,7 +42,7 @@ function Find-SdkTool([string]$name) {
   }
   $cmd = Get-Command $name -ErrorAction SilentlyContinue
   if ($cmd) { return $cmd.Source }
-  throw "$name not found — install the Windows SDK component that provides it."
+  throw "$name not found - install the Windows SDK component that provides it."
 }
 
 function Remove-TestCert {
@@ -99,8 +99,18 @@ switch ([IO.Path]::GetExtension($Package).ToLowerInvariant()) {
     # Sign a copy; the original stays the unsigned Store upload.
     $signed = Join-Path $ReportDir "$name-wack-signed.msix"
     Copy-Item $Package $signed -Force
-    & $signtool sign /fd SHA256 /f $pfx /p 'kumkaj-wack' $signed
-    if ($LASTEXITCODE -ne 0) { throw 'signtool failed' }
+    # The 10.0.26100 signtool says "This file format cannot be signed" for an
+    # .msix on Windows 10 19045, where 10.0.17763's signs it (2026-11-15):
+    # try every installed x64 signtool, newest first.
+    $signers = @($signtool) + @(Get-ChildItem "${env:ProgramFiles(x86)}\Windows Kits\10\bin" -Recurse -Filter signtool.exe -ErrorAction SilentlyContinue |
+      Where-Object { $_.FullName -match '\\x64\\' } | Sort-Object FullName -Descending | ForEach-Object { $_.FullName })
+    $signedOk = $false
+    foreach ($s in ($signers | Select-Object -Unique)) {
+      Copy-Item $Package $signed -Force
+      & $s sign /fd SHA256 /f $pfx /p 'kumkaj-wack' $signed
+      if ($LASTEXITCODE -eq 0) { Write-Host "signed with $s"; $signedOk = $true; break }
+    }
+    if (-not $signedOk) { throw 'signtool failed' }
     # A left-over install of the same identity makes WACK's install step fail.
     Get-AppxPackage -Name $identity -ErrorAction SilentlyContinue | Remove-AppxPackage
 
@@ -125,9 +135,15 @@ $overall = $xml.REPORT.OVERALL_RESULT
 Write-Host ''
 Write-Host "Report: $report"
 Write-Host "Overall: $overall"
-# Every test that did not pass, with its message.
-$xml.SelectNodes('//TEST') | Where-Object { $_.RESULT -and $_.RESULT -ne 'PASS' } | ForEach-Object {
-  $msg = ($_.SelectNodes('.//MESSAGE') | ForEach-Object { $_.TEXT }) -join ' | '
-  Write-Host ("{0,-8} {1}  {2}" -f $_.RESULT, $_.NAME, $msg)
+# Every test that did not pass, with its message. RESULT is a child element
+# holding CDATA (not an attribute) - read its text. OPTIONAL tests do not
+# decide OVERALL_RESULT.
+$xml.SelectNodes('//TEST') | ForEach-Object {
+  $result = $_.SelectSingleNode('RESULT').InnerText
+  if ($result -and $result -ne 'PASS') {
+    $msg = ($_.SelectNodes('.//MESSAGE') | ForEach-Object { $_.TEXT }) -join ' | '
+    $opt = if ($_.OPTIONAL -eq 'TRUE') { ' (optional)' } else { '' }
+    Write-Host ("{0,-8} {1}{2}  {3}" -f $result, $_.NAME, $opt, $msg)
+  }
 }
 if ($overall -ne 'PASS') { exit 1 }

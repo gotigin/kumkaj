@@ -39,7 +39,7 @@ adding_item	Jaunas likmes pievienošana
 editing_item	Labošana
 save	Saglabāt
 remove	Noņemt
-empty_catalog	Pagaidām nav tarifu. Atveriet Tarifi un pakalpojumi, pievienojiet vienu (nosaukums + cena, vienība kg), pēc tam Rezervēšana.
+empty_catalog	Pagaidām nav tarifu.
 counter_sale	Preču rezervācija
 total	Kopā
 cash	Skaidra nauda
@@ -171,8 +171,6 @@ selected_language	Atlasīts
 continue	Turpināt
 this_device	ŠĪ IERĪCE
 device_use_q	Kā šī ierīce tiks lietota?
-last_server_mode	Bija serveris — pieskarieties, lai turpinātu
-last_client_mode	Bija terminālis — pieskarieties, lai turpinātu
 choose_server	Izvēlieties serveri
 choose_server_hint	Atveriet esošu serveri vai izveidojiet jaunu citam uzņēmumam.
 create_new_server	Izveidot jaunu serveri
@@ -501,8 +499,6 @@ job_layout	Izkārtojums
 job_delivery	Kā darbs tiek sūtīts
 job_size	Burtu izmērs
 job_size_ph	piem. 18, 20, 26…
-save_receipt_format	Saglabājiet kvīts formātu
-save_label_format	Saglabājiet etiķetes formātu
 test_receipt_format	Pārbaudes kvīts
 test_label_format	Testa etiķete
 test_receipt_sent	Kvīts paraugs nosūtīts
@@ -610,7 +606,7 @@ units_heading	Vienības
 booking_measures	Rezervācijas pasākumi
 drawer_count	Atvilktnes skaits (nav obligāts)
 spreadsheet_csv	Izklājlapa (CSV)
-bank_reconciliation	Bankas salīdzināšana (atzīmējiet pret bankas izrakstu)
+bank_reconciliation	Bankas salīdzināšana
 book_add_product	Rezervēt — pievienot produktu/novērtēt
 book_opening_credit	Grāmata — sākuma kredīts
 account_kind	Konta veids (pieskarieties vienam)
@@ -650,7 +646,7 @@ net_word	Neto
 offline_badge	BEZSAISTĒ
 optional_login_help	Pieteikšanās pēc izvēles (id + parole). Īpašnieks iestata vienreiz; paroli vēlāk var mainīt tikai lietotājs.
 or_unlock_login	Vai atbloķējiet ar pieteikšanās id un paroli
-permission_preset	Darbs (iestata ekrānus un tiesības)
+permission_preset	Darbs
 preset_help_moklanjo	Kasieris: pārdod. Vadītājs: pārdod + pozīcijas + anulē/labo.
 product_locked_moklanjo	Moklanjo
 product_only_moklanjo	Šī lietotne ir paredzēta tikai Moklanjo — grāmatas + rezervācijas galds. Citas tirdzniecības sejas tiks nosūtītas kā atsevišķi produkti vēlāk.
@@ -698,10 +694,6 @@ pin_hint_paired	Papildu kase savienota pārī — atbloķējiet, lai pārdotu
 pin_hint_pair_first	Papildu kase — vispirms savienojiet pārī ar veikala ierīci
 unlock_to_continue	Atbloķējiet, lai turpinātu
 no_staff_yet	Vēl nav personāla — atbloķējiet kā īpašnieks, tad Komanda
-status_server_set_pin	Servera režīms — iestatiet īpašnieka PIN
-status_server_tills	Servera režīms — papildu kases var pievienoties. Atbloķēt
-status_server_unlock	Servera režīms — atbloķējiet kā īpašnieks
-status_client_unlock	Termināļa režīms — atbloķējiet, lai pārdotu
 icon_new_selected	Ikona: atlasīts jauns fails — pieskarieties Saglabāt zīmolu
 icon_custom	Ikona: pielāgota vietas zīme
 icon_default	Ikona: Kumkaj zīme (noklusējums) — izvēlieties savu

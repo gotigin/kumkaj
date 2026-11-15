@@ -39,7 +39,7 @@ adding_item	Ƙara sabon ƙima
 editing_item	Ana gyarawa
 save	Ajiye
 remove	Cire
-empty_catalog	Babu farashin tukuna. Buɗe Rates & ayyuka, ƙara ɗaya (suna + farashin, raka'a kg), sannan Yi ajiya.
+empty_catalog	Babu farashin tukuna.
 counter_sale	Counter booking
 total	Jimla
 cash	Tsabar kuɗi
@@ -171,8 +171,6 @@ selected_language	An zaɓa
 continue	Ci gaba
 this_device	WANNAN NA'URA
 device_use_q	Ta yaya za a yi amfani da wannan na'ura?
-last_server_mode	Server ne — taɓa don ci gaba
-last_client_mode	Abokin haɗi ne — taɓa don ci gaba
 choose_server	Zaɓi server
 choose_server_hint	Buɗe server da ke akwai, ko ƙirƙiri ɗaya ga wani kasuwanci.
 create_new_server	Ƙirƙiri sabon server
@@ -501,8 +499,6 @@ job_layout	Tsari
 job_delivery	Yadda ake aika aikin
 job_size	Girman rubutu
 job_size_ph	misali 18, 20, 26…
-save_receipt_format	Ajiye tsarin karɓa
-save_label_format	Ajiye tsarin lakabi
 test_receipt_format	Gwajin takardar shaidar
 test_label_format	Alamar gwaji
 test_receipt_sent	An aika Samfurin rasidin
@@ -610,7 +606,7 @@ units_heading	Raka'o'i
 booking_measures	Matakan yin rajista
 drawer_count	Ƙidaya akwati (ba dole ba)
 spreadsheet_csv	Jadawali (CSV)
-bank_reconciliation	Daidaita banki (yi alama da bayanin bankinka)
+bank_reconciliation	Daidaita banki
 book_add_product	Littafi - ƙara samfur / ƙima
 book_opening_credit	Littafi — bashi na farawa
 account_kind	Nau'in asusu (taɓa ɗaya)
@@ -650,7 +646,7 @@ net_word	Tsantsa
 offline_badge	BA INTANET
 optional_login_help	Shiga na zaɓi (lamba + kalmar sirri). Mamallaki yana saita sau ɗaya; mai amfani kaɗai ne zai iya canza kalmar sirri daga baya.
 or_unlock_login	Ko buɗe da lambar shiga + kalmar sirri
-permission_preset	Aiki (saitin allo da haƙƙoƙi)
+permission_preset	Aiki
 preset_help_moklanjo	Mai akwatin kuɗi: sayar. Manaja: sayar + kayayyaki + soke/gyara.
 product_locked_moklanjo	Moklanjo
 product_only_moklanjo	Wannan app ɗin Moklanjo ne kawai - littattafai + tebur ɗin ajiya. Sauran kasuwancin suna fuskantar jigilar kaya azaman samfuran daban daga baya.
@@ -698,10 +694,6 @@ pin_hint_paired	An haɗa ƙarin akwatin kuɗi — buɗe don sayarwa
 pin_hint_pair_first	Ƙarin akwatin kuɗi — da fari haɗa da na'urar shago
 unlock_to_continue	Buɗe don ci gaba
 no_staff_yet	Babu ma'aikaci tukuna — buɗe a matsayin Mamallaki, sai Tawaga
-status_server_set_pin	Yanayin Server — sa PIN na Mamallaki
-status_server_tills	Yanayin Server — ƙarin akwatunan kuɗi na iya shiga. Buɗe
-status_server_unlock	Yanayin Server — buɗe a matsayin Mamallaki
-status_client_unlock	Yanayin Abokin haɗi — buɗe don sayarwa
 icon_new_selected	Alama: an zaɓi sabon fayil — taɓa Ajiye alama
 icon_custom	Alama: tambarin wurin al'ada
 icon_default	Alama: tambarin Kumkaj (tsoho) — zaɓi na al'ada

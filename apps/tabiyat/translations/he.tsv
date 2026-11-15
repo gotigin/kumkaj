@@ -1,5 +1,4 @@
 # Hebrew — עברית (he). One key<TAB>text per line, in en() order; keep {placeholders}.
-app_tagline	דלפק בית מרקחת: תרופות, אצווה, חאטה וספרים. חינם במצב לא מקוון.
 barcode_ph	ברקוד / EAN
 composition_ph	מלח / הרכב (ניתן לחיפוש)
 schedule_h_off	לוח זמנים H - כבוי (דגל הבעלים)
@@ -13,7 +12,6 @@ expiry_alerts	התראות תפוגה (ב-7 הימים הבאים)
 expiry_none	אין אצוות שיפוגו ב-7 הימים הבאים.
 rx_nudge	בעלים מסומן Rx / לוח זמנים H - הוסף הערה במידת הצורך.
 unlock	פתח
-pin_hint	קוד הבעלים מתחיל ב־0000
 sell	מְכִירָה
 buy	קנייה
 books	ספר היום
@@ -32,17 +30,13 @@ reports_month	רווח והפסד (חודש)
 reports_aging	פתוח / חובה-זכות
 reports_balance_sheet	מאזן
 reports	ספר הבנק ורווח והפסד
-refresh	רענן
 undo	בטל
-start_tracking	התחל מעקב
 stock_minus	− מלאי
 stock_plus	+ מלאי
 settle_cash	סגור במזומן
 settle_card	סגור בכרטיס
 items	תרופות
 nav_items	תרופות
-more	עוד
-your_items	התרופות שלך
 items_help	הקש על פריט כדי לערוך אותו. פריט חדש מנקה את הטופס. חפש לפי שם או קוד קצר, הגדר מחיר (0 זה בסדר), ואז הוסף. מכירות שכבר נרשמו שומרות על השם שבו הואשמו.
 add_item	הוסף פריט
 new_item	פריט חדש
@@ -53,28 +47,22 @@ remove	הסר
 removed_items	פריטים שהוסרו
 removed_help	שחזור מחזיר את הפריט לפריטים בדיוק כפי שהיה - מחיר, תמונה וקטגוריה.
 restore_item	שחזר
-empty_catalog	עדיין אין תרופות. פתח תרופות, הוסף שם, ברקוד או מלח ואז תמכור.
+empty_catalog	עדיין אין תרופות.
 total	סה״כ
 cash	מזומן
 upi	UPI
 card	כרטיס
 credit	צדדים
 clear	נקה
-ready_to_sell	מוכן לרישום
 today_prefix	היום
-today_mid	היום
 owed	פתוח
-round_word	עיגול
 back	חזרה
 sold_out	לא זמין
 restock	מלא מחדש
 not_tracked	בלי מעקב
 in_stock	במלאי
 marked_sold_out	סומן כלא זמין
-add_upper	הוסף
-na	לא רלוונטי
 qty	משקל/כמות
-unit_at	מחיר @
 actual	בפועל
 applied	הוחל
 note_ph	הערה (לא חובה)
@@ -93,21 +81,13 @@ bill_item_qty	כמות
 bill_item_price	מחיר
 bill_item_amount	סכום
 bill_item_note	Rx / הערת מכירה
-bill_item_col_gap	רווח עמודות
 bill_item_col_order	סדר עמודות
 bill_item_col_sep	קווי עמודות
-bill_item_gap_tight	צפוף
-bill_item_gap_comfort	נוח
-bill_item_gap_wide	רחב
-bill_item_num_width	עמודות מספרים
-bill_item_num_compact	קומפקטי
-bill_item_num_comfort	נוח
-bill_item_num_wide	רחב
-bill_item_num_align	יישור מספרים
-bill_item_gap_em	רווח (em)
-bill_item_qty_min	כמות מינ׳ (em)
-bill_item_price_min	מחיר מינ׳ (em)
-bill_item_amount_min	סכום מינ׳ (em)
+slip_col_width	רוחב (mm)
+slip_col_start	רווח התחלה (px)
+slip_col_end	רווח סיום (px)
+slip_col_align	יישור טקסט
+slip_columns_help	רוחב כל עמודה כולל את רווח ההתחלה והסיום שלה. הטקסט נשבר בתוך העמודה שלו; מה שחורג מרוחב התוכן נחתך – על הנייר ובתצוגה המקדימה.
 bill_total_qty_label	תווית כמות כוללת
 bill_total_subtotal_label	תווית ביניים
 bill_total_grand_label	תווית סה״כ
@@ -120,11 +100,7 @@ bill_total_qty	כמות כוללת
 bill_total_subtotal	ביניים
 bill_total_grand	סה״כ
 kot_unassigned	לא הוקצה
-pos_tab_items	פריטים שנוספו
-pos_tab_payment	תשלום
-settings_hub_title	הגדרות
 settings_hub_help	פתחו אזור אחד בכל פעם — פחות גלילה, בחירות ברורות יותר.
-settings_back	חזרה
 settings_sec_language	שפה ומטבע
 settings_sec_country	מדינה ומס
 settings_sec_tills	מכשירים אחרים
@@ -166,35 +142,17 @@ diag_cleared	יומני האבחון נוקו
 sidebar_settings	סרגל צד
 sidebar_settings_help	אותם סמלים כמו במסילה הצדדית. גררו שורה כדי לשנות סדר. הפכו את המתג כדי להציג או להסתיר. הגדרות ונעילה נשארים תמיד בסרגל.
 sidebar_always_on_short	תמיד פועל
-sidebar_back_settings	חזרה
-sidebar_shown	מוצג
-sidebar_hidden	מוסתר
-sidebar_always_on	תמיד בסרגל
-sidebar_shown_hint	מוצג במסילה הצדדית / בלשוניות התחתונות
-sidebar_hidden_hint	מוסתר מהסרגל
 sidebar_menu_items	פריטים
 sidebar_enable_all	הפעל הכול
 sidebar_disable_all	כבה הכול
 sidebar_order_saved	סדר סרגל הצד נשמר
 sidebar_visibility_saved	נראות סרגל הצד נשמרה
-amounts_hide	הסתר
-amounts_show	הצג
-printers_none_hint	שמור תחילה מדפסת במכשיר זה, ולאחר מכן הוסף אותה לחשבון או לסעיף
-counter	דלפק
-dine_in	דלפק
-takeaway	לקחת
-order	הזמנה
 sales	מכירות
-sales_refunds	מכירות והחזרים
 day_close	סגירת יום
 reports_expenses	ספר הבנק ורווח והפסד
 nav_reports	דוחות
 nav_settings	הגדרות
 nav_lock	נעל
-no_sale_yet	עדיין אין מכירה
-favorites	מועדפים
-favorites_help	פריטים שאתם מוכרים לעיתים קרובות, שמורים לכניסה שלכם. הוסיפו אחד לחשבון, או בנו את הרשימה מכל הפריטים למטה.
-your_favorites	המועדפים שלכם
 all_items	כל הפריטים
 frequent	נפוצים
 added_items	פריט/ים שנוספו
@@ -211,8 +169,6 @@ zero_sales_on	אפשר ₹0
 zero_sales_off	דרוש מחיר
 zero_sales_saved_on	מכירות בערך אפס מותרות
 zero_sales_saved_off	למכירות חייב להיות מחיר מעל ₹0
-no_favorites	עדיין אין מועדפים — הוסיפו פריטים מהרשימה למטה.
-add_to_bill	הוסף לחשבון
 added	נוסף
 owes_word	חייב
 selected_word	נבחר
@@ -221,19 +177,11 @@ chip_missing_customer	הלקוח שנבחר חסר — בחרו שוב
 chip_no_customer	עדיין אין לקוח — הקלידו שם, ואז הקישו אשראי
 credit_summary_fmt	{} לקוחות · אשראי פתוח {} · מקדמות שנשמרו {}
 recent_label	אחרונים:
-start_order	התחל הזמנה
-open_bill	פתח חשבון
-collect_payment	גבה תשלום
-payment_pending	תשלום ממתין
-collect_at_counter	גבו בדלפק
 inventory	מלאי
-inventory_stock	מלאי וסחורה
 branches	סניפים
-branches_org	סניפים וארגון
 credit_customers	צדדים (khata וספקים)
 customer_name_ph	שם הצד
 new_customer_ph	שם צד חדש
-item_name_ph	שם הפריט (למשל מסאלה דוסה)
 item_price_ph	מחיר
 start_template	מוצר
 team	צוות
@@ -241,17 +189,11 @@ team_pins	צוות וקודי PIN
 my_pin_settings	ה־PIN שלי
 settings_hub_help_my_pin	שנו את קוד הפתיחה של האדם שמחובר במכשיר הזה.
 team_self_help	כניסה אחת: PIN חדש, סיסמה חדשה, או שניהם. השאירו תיבה ריקה כדי לשמור מה שיש. בקשו מהבעלים אם צריך מסכים או הרשאות אחרות.
-backup_settings	גיבוי והגדרות
-lock_app	נעל את היישום
 pick	בחר
-select	סמן
 advance	מקדמה
 owner	בעלים
 staff	צוות
 photo	תמונה
-auto	Auto
-prev	הקודם
-next	הבא
 ok	OK
 this_shop	שרת
 extra_till	מסוף
@@ -260,17 +202,13 @@ server	שרת
 client	מסוף
 language_currency	שפה ומטבע
 language	שפה
-choose_language	בחרו את השפה
 language_setup_hint	עקבו אחרי שפת המכשיר, או בחרו אחת בעצמכם.
 lang_follow_platform	שפת המכשיר
 lang_pick_user	בחר שפה
 lang_platform_now	שפת המכשיר עכשיו
 selected_language	נבחר
-continue	המשך
 this_device	המכשיר הזה
 device_use_q	איך ישמש המכשיר הזה?
-last_server_mode	היה שרת — הקישו כדי להמשיך
-last_client_mode	היה מסוף — הקישו כדי להמשיך
 choose_server	בחרו שרת
 choose_server_hint	פתחו שרת קיים, או צרו אחד לעסק אחר.
 create_new_server	צור שרת חדש
@@ -280,12 +218,6 @@ server_remove_pin_ph	PIN הבעלים להסרת שרת
 only_owner_remove_server	רק הבעלים יכול להסיר שרת
 owner_pin_remove_server	נדרש PIN הבעלים כדי להסיר את השרת הזה
 device_setup_help	השרת שומר את הספרים כאן. המסוף מזווג לשרת.
-app_template_heading	קטלוג מתחילים (אופציונלי)
-app_template_blurb	טוען את הקטלוג לדוגמה; בעלים זהיר (זהיר), אדמין אסיף (אסיף, PIN 1111), קופאי נוואז (nawaz, PIN 0000); הנחה במס/מע"מ; סרגל צד קדמי; ההיסטוריה מתנקה לאחר 4 שעות (ונקה עכשיו בגיבוי); היום להתפשט; שטר קומפקטי + שוליים סטנדרטיים למגשים צרים. ניתן להפעיל מחדש עמיתים למס ולסרגל הצד בהגדרות.
-app_template_apply	החל קטלוג מתחילים
-app_template_skip	דלג לעכשיו
-app_template_status	שרת מוכן - החל את קטלוג Starter, או דלג
-app_template_importing	מחילים את {title}…
 currency	מטבע
 backup	גיבוי
 use	השתמש
@@ -319,7 +251,7 @@ attachments_last_expense	קבצים מצורפים (ההוצאה האחרונה)
 bank	בנק
 bank_in	כניסה לבנק
 bank_out	יציאה מהבנק
-bank_reconciliation	התאמת בנק (סמנו מול דף החשבון)
+bank_reconciliation	התאמת בנק
 bank_to_till	בנק → קופה
 book_add_dish	ספר - הוסף פריט / פריט
 book_opening_credit	ספר — אשראי פתיחה
@@ -349,9 +281,6 @@ share_whatsapp	שתף ב־WhatsApp
 lan_pages_heading	דפי לקוחות ב-Wi-Fi
 lan_pages_help	ב-Wi-Fi של החנות הזו, דפי לקוחות עובדים עבור לוח התצוגה והמשוב. אנשים בנתונים ניידים זקוקים לענן מאוחר יותר. מסוף כרטיס או קישור תשלום הם אופציונליים ולעולם אינם חוסמים את הדלפק.
 diag_send_heading	שתף מחוץ למכשיר הזה
-optional_login_heading	כניסה אופציונלית
-rights_heading	הרשאות
-ops_panel	פעולות מקומיות
 crm_heading	לקוחות והודעות
 crm_help	יום הולדת, נאמנות, אורחים לא פעילים ומובילים — תור SMS או כוונות WhatsApp. השתמשו ב־{name} וב־{points} בהודעה. הבעלים מקיש שלח; שום דבר לא נשלח לבד.
 crm_queue_sms	תור SMS
@@ -376,21 +305,17 @@ till_wallet_topup_ph	סכום טעינת הארנק
 till_voucher_issue_amt_ph	סכום שובר להנפקה
 till_voucher_issue_code_ph	קוד שובר חדש
 bulk_price_apply	החל מחיר מרוכז
-card_terminal_optional	מסוף כרטיס / קישור תשלום (אופציונלי כשיש אינטרנט)
 copy_report	העתק דוח
 counted_cash_ph	מזומן שנספר במגירה
 country_tax	מדינה ומס
 create_backup	צור גיבוי
 credit_limit_heading	תקרת אשראי (הצד שנבחר / שנקרא בשם)
-day_close_summary	סיכום סגירת יום
 delete_party	מחק את הצד שנבחר
-delivery	משלוח
 done_open_books	בוצע — פתח ספרים
 drawer_count	ספירת מגירה (לא חובה)
 expense_heading	הוצאה
 export_day	ייצא יום
 extra_note_bill_ph	הערה נוספת בחשבון / במכירה הזו
-extra_note_expense_ph	הערה נוספת בהוצאה האחרונה
 extra_tills_heading	קופות נוספות
 other_devices_help_heading	הגדר מכשירים אחרים
 other_devices_help	במכשיר זה (שרת): מכשירים אחרים ← אפשר קופות נוספות. שימו לב לקוד ההתאמה וכתובת ה-Wi-Fi. הקש על אפשר למכשירים אחרים להתחבר אם זה מופיע. במחשב, הקש על התחל עם מחשב זה. בכל מכשיר אחר: התקן את האפליקציה, בחר מצב לקוח, מצא את שרת החנות (או הקלד את הכתובת), הזן את קוד ההתאמה, בצע התאמה כעת. הזמנות ממתינות במכשיר אם ה-Wi-Fi נופל ויוצאות כשהשרת עונה שוב. מדפסות נוספות מוגדרות בשרת (הגדרות → מדפסות) - קופות נוספות שולחות לשם חשבונות.
@@ -404,7 +329,6 @@ login_id_ph	שם משתמש
 mark_cleared	סמן כמותאם
 new_party_clear	צד חדש (נקה טופס)
 new_party_kind_supplier_ph	סוג צד חדש (ספק)
-next_country	המדינה הבאה
 next_order	ההזמנה הבאה (נקה שולחן)
 note_gstin_ph	הערה / GSTIN / תזכורת הסכם
 notes_attach_party	הערות וקבצים (הצד שנבחר)
@@ -422,8 +346,6 @@ pay_ap_cash	שלם AP במזומן
 pay_ap_heading	שלם מה שאנחנו חייבים להם (AP)
 pay_ap_upi	שלם AP ב־UPI
 pay_selected_heading	שלם את הנבחר (סגור חוב / קח מקדמה)
-pick_from_items	בחר מהפריטים שלנו
-prev_country	המדינה הקודמת
 print_open	הדפס / פתח
 reason_amend_ph	סיבה לתיקון / ביטול / החזר
 reason_note_ph	סיבה / הערה (פחת, ספירה, …)
@@ -447,14 +369,10 @@ history_after_hours	אחרי שעות
 history_hours_ph	שעות (1–168, ברירת מחדל 4)
 history_hours_save	שמור שעות
 history_clear_now	נקה היסטוריה עכשיו
-history_cleared	היסטוריית המסחר נוקתה — ההגדרה נשמרה
-history_retention_saved	ניקוי ההיסטוריה נשמר
 history_hours_saved	שעות ההיסטוריה נשמרו
-history_owner_only	רק בעלים או מנהל יכולים לנקות היסטוריה
 rollup	סיכום
 save_brand	שמור מותג
 save_business_id	שמור מזהה עסק
-save_business_name	שמור שם עסק
 save_features	שמור
 save_features_named	שמור {name}
 save_features_ok	ההגדרה נשמרה עבור {name}
@@ -485,7 +403,6 @@ copy_pair_code	העתק קוד זיווג
 new_pair_code	קוד זיווג חדש
 pair_finishing	מסיים זיווג… מחיל את ספרי החנות
 pair_opening	פותח את הקופה…
-pair_copied	קוד הזיווג הועתק
 lan_offline_waiting	שרת החנות לא נגיש · {n} ממתינים
 lan_connecting	מתחבר לחנות…
 lan_live	חי
@@ -499,7 +416,6 @@ firewall_waiting	ממתין להנחיית המנהל…
 lan_join_help	במכשיר האחר: מצב מסוף → מצאו את שרת החנות (או הקלידו {addr}) → קוד זיווג {code}.
 lan_pair_status	Wi‑Fi {addr}
 lan_join_help_no_addr	חברו את המכשיר הזה ל־Wi‑Fi כדי לקבל כתובת.
-lan_no_address	עדיין אין כתובת Wi‑Fi — התחברו ל־Wi‑Fi של החנות.
 lan_not_listening	לא מקבל מכשירים (יציאה {port} תפוסה). הפעילו מחדש את היישום.
 lan_tills_off	קופות נוספות כבויות. אפשרו אותן כדי שמכשיר אחר יצטרף.
 paired_with	מזווג · {url}
@@ -520,41 +436,21 @@ printers_help	מצא מדפסות, הקש על אחת כדי לבחור בה, ו
 printers_host_only	מדפסות מוגדרות במכשיר החנות (שרת). עד זה שולח חשבונות וכרטיסים ישנים לשם - מצא / הוסף / הקצה שהייה בשרת. דף בדיקה וגודל הדפסת חשבונות עוברים לשרת.
 printers_find_heading	מצא מדפסות
 printers_find_tip	מצא סורק את המכשיר הזה ושומר את הרשימה מעודכנת.
-printers_pool_heading	מדפסות
-printers_pool_tip	מצא סורק את המכשיר הזה ושומר את הרשימה הזו מעודכנת.
 printers_pool_empty	(עדיין אין — הקישו מצא)
-printers_routes_help	מצא מדפסות שמערכת ההפעלה כבר מכירה. הקצה אותם לחשבון ולכל סעיף בפורמט Bill & Slip.
 printer_assign_dd	מדפסת אמיתית: {place}
 printer_assign_pick	בחר מדפסת אמיתית
 printer_profile_heading	פריסה
 vp_delivery_heading	משלוח
 vp_delivery_help	כיצד מדפסת וירטואלית זו שולחת עבודות - מסמך מערכת הפעלה, בייטים גולמיים או ESC/POS. תוכן ההחלקה (גודל סוג, גלישה, שוליים) נקבע לפי פורמט החשבון / הסליק, לא כאן.
-vp_type_size_heading	גודל אות
-vp_wrap_heading	רוחב גלישה
-vp_margin_heading	שוליים
 vp_delivery_spooler	מסמך OS (תור המערכת)
 vp_delivery_raw	בתים גולמיים למכשיר
 vp_delivery_escpos	פקודות תרמיות ESC/POS
 virtual_printer_new	מדפסת וירטואלית חדשה
 virtual_printer_selected	עורכים את “{name}” — הקישו על אחרת ברשימה כדי לעבור
-virtual_printer_tap_list	הקישו על מדפסת וירטואלית ברשימה כדי לערוך אותה
 config_layout_portrait	לאורך
 config_layout_landscape	לרוחב
 config_send_os	תור המערכת
 config_send_escpos	ESC/POS
-profiles_heading	פריסות
-profiles_empty	(עדיין אין פריסות)
-profile_builtin	מובנית
-profile_custom	מותאמת
-profile_name_ph	שם הפריסה
-profile_new	פריסה חדשה
-profile_delete	מחק פריסה
-profile_created	הפריסה נוצרה
-profile_deleted	הפריסה נמחקה
-profile_builtin_keep	אי אפשר למחוק פריסות מובנות
-config_saved	עודכן
-config_selected	נבחר “{name}”
-printer_output_heading	מדפסות וירטואליות
 virtual_printers_heading	מדפסות וירטואליות
 virtual_printers_empty	עדיין אין מדפסות וירטואליות — קבעו ערכים למטה, ואז שמור. אחרי שיש כמה, הקישו על אחת ברשימה כדי לערוך.
 virtual_printer_name_ph	שם מדפסת וירטואלית (לא חובה)
@@ -566,71 +462,32 @@ virtual_printer_deleted	נמחקה המדפסת הווירטואלית “{name}
 virtual_printer_updated	המדפסת הווירטואלית עודכנה
 virtual_printer_updated_named	המדפסת הווירטואלית “{name}” עודכנה
 virtual_draft_layout	הערכים נקבעו למדפסת הווירטואלית הבאה
-virtual_draft_send	הערך נקבע למדפסת הווירטואלית הבאה
 virtual_need_real	בחרו קודם מדפסת אמיתית
 virtual_need_select	בחרו מדפסת וירטואלית למחיקה
 real_printer_selected	נבחר: {name}
-printers_routes_heading	איפה דברים מודפסים
-route_pick_heading	מקום
 route_editing	עורכים: {name}
-route_assigned	נוסף {printer} אל {place}
-route_already_assigned	כבר במקום הזה: {printer}
 route_cleared	נוקה {name}
-route_assigned_empty	אין במקום הזה
-route_tap_select	הקישו לבחירה
 route_tap_selected	נבחר
-route_pick_printer_first	הקישו קודם על מדפסת
-route_assigned_heading	מדפסות
-route_add_heading	שייך
-printer_label_ph	שם (למשל מדפסת מונה)
 printer_target_ph	שם מדפסת המערכת או host:9100
 printer_target_default	המדפסת הרגילה של המחשב הזה (כתובת ריקה)
-printer_wire_heading	פרופיל
-printer_wire_escpos	ESC/POS
-printer_wire_os	לאורך
-printer_wire_os_portrait	לאורך
-printer_wire_os_landscape	לרוחב
-printer_wire_escpos_short	ESC/POS
-printer_wire_os_short	לאורך
-printer_wire_os_landscape_short	לרוחב
-printer_format_custom	פרופיל מותאם חדש
-printer_format_custom_label	מותאם
-printer_format_custom_added	פרופיל מותאם נוסף למקום הזה
-add_printer	הוסף מדפסת
-route_pick_ph	שטר או מדור מרפא
 route_bill	חשבון
-route_dont_print	בלי מדפסת
 station_print_pick_first	תחילה בחר מדור מרפא
-station_vps_empty	עדיין אין מדפסות — מצאו אותן תחת הגדרות → מדפסות
 bill_printers_dd	מדפסות לחשבון
 bill_printers_dd_n	{n} מדפסות לחשבון · הקישו לשינוי
 station_vp_attached	המדפסת צורפה
 station_vp_detached	המדפסת הוסרה מהעמדה
-route_up	למעלה
-route_down	למטה
-route_clear	נקה
-save_printers	שמור מדפסות
 print_test_page	הדפס דף בדיקה
 no_printer_assigned	בלי מדפסת
-test_page_no_printer	אין מדפסת עבור {place} — צרפו אליו מדפסת, ואז נסו שוב
 test_page_pick_first	בחרו קודם מדפסת/ות לדף בדיקה — ואז הדפס דף בדיקה
 test_printers_dd	מדפסות לדף בדיקה
 test_printers_dd_n	{n} מדפסות לדף בדיקה · הקישו לשינוי
 test_printer_picked	בדיקה ב: {name}
 test_printer_cleared	לא בודקים ב: {name}
 test_page_sent_n	דף הבדיקה נשלח אל {n} מדפסות
-batch_cancel	בטל את המסומנים
-batch_cancel_n	בטל את המסומנים ({n})
-batch_cancel_none	סמן תחילה פריט אחד או יותר שנשלח - ולאחר מכן ביטול מסומן
-batch_cancel_title	ביטול תרופות מסומנות - סיבה אחת, תלוש ביטול אחד לכל סעיף
-batch_cancel_ok	פריטים {n} בוטלו · {slips} ביטול תלוש(ים) → {kitchens}
-batch_cancel_ok_noprint	פריטי {n} בוטלו - ההדפסה האוטומטית כבויה, כך שאין תלוש ביטול
 printers_saved	נשמר
-test_page_sent	דף הבדיקה נשלח — בדקו את המדפסת
 test_page_sent_one	דף הבדיקה נשלח אל {name} — בדקו את המדפסת הזו
 printers_found	נמצאו {n}: {list}
 printers_find_synced	נמצאו {n} — {new} חדשות
-printer_on_device	נשמרה
 printer_already_added	כבר נוספה
 printer_already_saved	כבר נשמר: {name}
 find_printers	מצא מדפסות
@@ -640,7 +497,6 @@ cancelled	בוטל
 printers_tap_find	הקישו מצא כדי לרשום מדפסות שהמכשיר הזה יכול להשתמש בהן.
 printers_none_found	לא נמצא כלום — הקלידו שם מדפסת מערכת או IP (למשל 192.168.1.50).
 printer_from_find	נוסף {name}
-bill_printer_ph	מדפסת לחשבונות
 queue_refused	לא התקבל על ידי החנות ({n}) — בדקו כל אחד בדלפק:
 clear_not_accepted	נבדק — נקה את הרשימה הזו
 device_name_ph	שם המכשיר הזה
@@ -650,7 +506,6 @@ connected_now	מחובר עכשיו
 backup_failed	הגיבוי האוטומטי האחרון נכשל: {e}
 backup_overdue	אין גיבוי כבר {n} ימים — השאירו את היישום פתוח במכשיר הזה כדי שיוכל לגבות.
 disk_low	רק {mb} MB פנויים במכשיר הזה — הגיבויים ייכשלו בקרוב. פנו קצת מקום.
-last_seen_devices	נראה לאחרונה: {time}
 connection_to_shop	חיבור לחנות
 supplier_name_ph	שם הספק (או הצד)
 supplier_ph	ספק
@@ -708,7 +563,6 @@ currency_use_help	גללו והקישו השתמש לכל מטבע נתמך.
 day_close_help	רישום סגירת יום שומר את הסיכום הזה (ואת הפרש המגירה אם נספר) ביומן הביקורת. זה לא עוצר מכירה.
 expenses_word	הוצאות
 feature_access_help	מה הם יכולים לפתוח — לא חובה; התפקיד למעלה כבר קובע ברירת מחדל
-footer_local	SQLite מקומי · חינם לתמיד · אפס ענן
 fresh_book_tabiyat	טרי = קטלוג ריק (הוסף פריטים מאוחר יותר). ספר = סוג מלאי פתיחה ומי חייב לך למטה.
 fresh_selected	חדש נבחר — הקטלוג נשאר ריק. הקישו בוצע כשמוכנים.
 gross_word	ברוטו
@@ -721,12 +575,9 @@ net_word	נטו
 offline_badge	לא מקוון
 optional_login_help	כניסה אופציונלית (מזהה + סיסמה). הבעלים קובע פעם אחת; רק המשתמש יכול לשנות סיסמה אחר כך.
 or_unlock_login	או פתחו עם מזהה כניסה + סיסמה
-permission_preset	תפקיד (קובע מסכים ופעולות כסף)
-preset_help_tabiyat	קופאי: מוכר. מנהל משמרת: מוכר + פריטים + ביטול/תיקון.
-product_locked_tabiyat	טביאת
+permission_preset	תפקיד
 product_only_tabiyat	טביאט היא מערכת ההפעלה של בית המרקחת: מכירת תרופות, הנהלת חשבונות אצווה/תפוגה, אשראי וספרים - במצב לא מקוון במכשירים שלך. דגלי לוח זמנים H / Rx הם הערות בעלים, לא תאימות.
 purchases_cogs	רכישות (COGS)
-qty_cap	כמות
 restore_help	שחזור: בחרו גיבוי. הספרים נפתחים כפי שהיו אז; הספרים כפי שהם עכשיו נשמרים קודם, כך שאפשר לבטל את זה.
 wipe_data_heading	מחק נתונים מקומיים
 wipe_data_help	בעלים בלבד - אותן אפשרויות כמו הסרת ההתקנה של Windows. רישומים עסקיים מנקים את היסטוריית המסחר אך שומרים פריטים והגדרות (כמו קוד זיהוי חירום לביטול הנעילה). הגדרת החנות מסירה את מסד הנתונים של הספרים. העדפות מסך מנקות חלון/שפה. אשר באמצעות ה-PIN של הבעלים. ה-PIN לשחרור חירום בצוות הוא נפרד (מחיקה סמויה בעת ביטול הנעילה).
@@ -759,7 +610,6 @@ staff_renamed	השם נשמר
 staff_setup_copied_hire	ההגדרה הועתקה מ־{name} — קבעו שם ו־PIN חדשים, ואז הוסף איש צוות
 staff_setup_copied_edit	הועתקה ההגדרה של {from} אל {to}
 staff_copy_need_selected	בחרו קודם את מי לערוך
-staff_copy_need_source	בחרו של מי ההגדרה להעתקה
 staff_copy_same	זה אותו אדם — בחרו מישהו אחר
 staff_rename_need_selected	בחרו קודם את מי לשנות לו שם
 team_pick_hint	בחר את מי לערוך - מסכים, זכויות כסף ותחנות יופיעו עבור אותו אדם בלבד.
@@ -774,15 +624,9 @@ unit_picker_off	כבוי
 we_owe_them	אנחנו חייבים להם
 who_unlocking	מי פותח?
 locked_word	נעול
-show_pin	הצג PIN
-hide_pin	הסתר PIN
 set_owner_pin	קבעו PIN בעלים
 enter_owner_passcode	הזינו קוד בעלים
 enter_staff_passcode	הזינו קוד צוות
-pin_count_zero	0 / 12 ספרות · לפחות 4, ואז OK
-pin_count_need	{} / 12 ספרות · צריך עוד {}
-pin_count_full	12 / 12 ספרות · לחצו OK
-pin_count_ready	{} / 12 ספרות · לחצו OK כשמוכנים
 pin_hint_choose	בחרו 4–12 ספרות · Enter או פתח כדי לשמור
 pin_hint_new	PIN בעלים חדש בן 4–12 ספרות · Enter או פתח
 pin_hint_shop_code	מכשיר החנות · קוד זיווג {}
@@ -791,23 +635,15 @@ pin_hint_paired	קופה נוספת מזווגת — פתחו כדי למכור
 pin_hint_pair_first	קופה נוספת — זווגו קודם למכשיר החנות
 unlock_to_continue	פתחו כדי להמשיך
 no_staff_yet	עדיין אין צוות — פתחו כבעלים, ואז צוות
-status_server_set_pin	מצב שרת — קבעו PIN בעלים
-status_server_tills	מצב שרת — קופות נוספות יכולות להצטרף. פתח
-status_server_unlock	מצב שרת — פתחו כבעלים
-status_client_unlock	מצב מסוף — פתחו כדי למכור
 icon_new_selected	סמל: נבחר קובץ חדש — הקישו שמור מותג
 icon_custom	סמל: סימן מקום מותאם
 icon_default	סמל: סימן Kumkaj (ברירת מחדל) — בחרו אחד מותאם
 logo_yours	לוגו: לוגו החנות שלכם — מוצג במסכים ובקבלות
 logo_default	לוגו: סימן Kumkaj (ברירת מחדל) — בחרו שלכם אם יש
-tmpl_current	נוכחי: {} — {}
-tmpl_selected	נבחר: {} — {}
 setup_complete	ההגדרה הושלמה
 onboard_fresh_tmpl	חדש · {} — הקטלוג מתחיל ריק; הוסיפו פריטים בפריטים, ואז בוצע.
 onboard_book_tmpl	ספר · {} — הוסיפו פריטים ואשראי פתיחה, ואז בוצע.
-onboard_template_tmpl	תנו שם למקום אם אתם רוצים, ואז בחרו איך להתחיל.
 tmpl_blurb	דלפק בית מרקחת: תרופות, אצווה/תפוגה, חאטה, ספרים.
-tmpl_how	למכור בדלפק; קנה עבור מלאי; ספר ספרים ליום.
 reports_facet_title	דוחות
 reports_facet_help	ספרי יום, גיול צדדים, תנועות בנק, ורווח והפסד לתקופה.
 against_bill_ph	מול חשבון # למעלה (לא חובה)
@@ -818,14 +654,12 @@ amount_ph	סכום
 amount_received_ph	סכום שהתקבל
 amount_we_pay_ph	סכום שאנחנו משלמים
 business_name_ph	שם העסק
-category_new_ph	קטגוריה (לא חובה, נוצרת אם חדשה)
 code_bag_ph	קוד (שק)
 conv_factor_ph	מקדם (25 = 1 שק → 25 ק״ג)
 country_code_ph	קוד מדינה למשל IN, GB, US, AE, BR
 credit_khata_amount_ph	סכום אשראי / khata
 credit_limit_ph	תקרת אשראי (0 = אין)
 from_code_ph	מקוד (שק)
-item_name_lang_ph	שם הפריט — הקלידו בשפה שלכם
 login_id_opt_ph	שם משתמש (חובה, ייחודי)
 manager_pin_ph	PIN מנהל משמרת לאישור (רק אם אינכם יכולים לבטל)
 new_branch_name_ph	שם סניף חדש
@@ -833,15 +667,12 @@ new_password_ph	סיסמה חדשה (לא חובה)
 new_pin_ph	PIN חדש (4–12 ספרות)
 note_bank_ph	הערה (הפקדה, משיכה, …)
 note_buy_expense_ph	הערה (דלק, שכירות, …)
-note_expense_ph	הערה (דלק, משרד, …)
 options_tabiyat_ph	אפשרויות — גודל*: קטן=199, גדול=399 | תוספות+3: גבינה=40, זית=30 | גבינה נוספת=40
-part_second_way_ph	חלק בדרך שנייה (לא חובה)
 phone_ph	טלפון
 place_name_ph	שם המקום הזה
 qty_example_ph	כמות (למשל 1.5 לק״ג)
 quantity_ph	כמות
 reason_required_ph	סיבה (חובה)
-role_title_ph	כותרת תפקיד (למשל בריסטה)
 service_pct_ph	שירות % לא חובה 0/10/12
 short_code_ph	קוד קצר (MG02)
 starting_password_ph	סיסמת התחלה (לא חובה)
@@ -876,14 +707,11 @@ shift_handover	מסירת משמרת
 shift_since	המשמרת הזו מאז
 expected_in_drawer	צפוי במגירה
 right_discount	תנו הנחה
-pick_category	בחרו קטגוריה
-close_category_list	סגור רשימת קטגוריות
 new_category_row	קטגוריה חדשה — נוצרת כששומרים את הפריט
 your_category	הקטגוריה שלכם
 suggested_category	מוצע - מהפריטים שלנו
 category_search_ph	קטגוריה — חפשו את שלכם או הקלידו חדשה
 cancel_item_short	בטל
-cancel_item_title	בטל פריט זה - Back Office מקבל תלוש ביטול
 return_to_customer	החזירו ללקוח
 short_by	חסר
 tip_not_sale	טיפ (של הצוות, לא מכירה)
@@ -896,9 +724,7 @@ finding_server	מחפש את שרת החנות ב־Wi‑Fi הזה…
 no_server_found	לא נמצא. בשרת: הגדרות → מכשירים אחרים → אפשר קופות נוספות (אותו Wi‑Fi). או הקלידו את ה־IP שמוצג שם.
 servers_found_pick	הקישו על החנות שאליה אתם רוצים להתחבר.
 server_host_selected	משתמשים ב־{host} — הזינו את קוד הזיווג, ואז זווג עכשיו.
-print_bill	הדפס חשבון
 approval_pin_ph	PIN מנהל משמרת (רק אם מבקשים)
-confirm	אשר
 menu_search_ph	חפש פריט או קוד קצר
 customer_paid_ph	הלקוח שילם
 tip_ph	טיפ
@@ -908,7 +734,6 @@ bill_format_help	מודפס תחת שם החנות שלך על כל שטר. הפ
 bill_header_ph	כתובת | טלפון
 fssai_ph	רישיון סמים מס. (אופציונלי - הניסוח שלך)
 bill_footer_ph	כותרת תחתונה (למשל תודה, בואו שוב)
-save_bill_format	שמור פורמט חשבון
 kot_field_on	הצג
 kot_field_off	הסתר
 kot_weight_light	דק
@@ -919,10 +744,8 @@ kot_weight_bold	מודגש
 kot_align_start	התחל
 kot_align_center	מרכז
 kot_align_end	סוף
-content_width	רוחב תוכן (מ״מ)
 content_width_bill	רוחב תוכן החשבון (מ״מ)
 content_width_ph	או הקלידו רוחב תוכן, 40–210 מ״מ
-content_width_help	כמה רחב מודפס החלק הזה. ביל שומר על הרוחב שלו.
 content_width_bill_help	כמה רחב מודפס חשבון הלקוח. ברירת מחדל 210 מ"מ (עמוד). החלקה צרה 58 מ"מ, החלקה ברוחב 80 מ"מ, 112 מ"מ 4 אינץ', רוחב A4 210 מ"מ. הקלד כל ערך מ-40 עד 210. לכרטיסים יש רוחב משלהם בלשונית ההחלקה.
 vp_paper_width	רוחב תוכן (מ״מ)
 vp_paper_width_ph	או הקלידו רוחב תוכן, 40–210 מ״מ
@@ -937,9 +760,6 @@ test_bill_sent	תצוגה מקדימה של החשבון נשלחה
 test_print_no_printer	אין מדפסת לעבודה הזו — בחרו אחת במסך הזה
 std_print	גודל הדפסת חשבון
 std_print_help	גודל גופן עבור עבודות חשבונות סטנדרטיות לאורך ולרוחב במדפסות מערכת הפעלה / מסמכים (הזן נקודות - לא קטן/רגיל/גדול). אותו גודל בשני הכיוונים.
-std_size_s	קטן
-std_size_m	רגיל
-std_size_l	גדול
 save_std_print	שמור גודל הדפסת חשבון
 std_print_saved	גודל הדפסת החשבון נשמר
 print_brand_kit	ערכת מותג להדפסה
@@ -952,14 +772,9 @@ choose_payment_qr	בחר QR תשלום
 clear_payment_qr	נקה QR תשלום
 payment_qr_set	QR תשלום: בקובץ - מוצג בתצוגת הלקוח (מחליף שם את כמות UPI QR)
 payment_qr_none	QR תשלום: אין — QR של הסכום ממזהה UPI בעת תשלום
-aggregator_import	הזמנות אגרגטור (קובץ)
-aggregator_import_help	ייבוא מקומי אופציונלי: שימו import_aggregator_orders.json בתיקיית הגיבויים (מערך או {"orders":[…]}), ואז הקישו ייבא. אף פעם לא חוסם את הדלפק; Zomato/Swiggy חי הוא ענן.
-import_aggregator_file	ייבא קובץ אגרגטור
 team_pick_ph	איש צוות לעריכה — שם, שם משתמש, או בחירה
 select_staff	בחר את איש הצוות הזה
 rights_help	פעולות כספיות עבור אדם זה - הקש כדי לעבור במחזוריות: מותר ← צריך PIN של הבוס ← אסור. הדפס שוב שטר הוא שטרות בלבד; הסעיפים הם רשימת הבדיקה שלהלן.
-dish_picker_help	חפש או עיין בפריטים שלנו והקש על אחד כדי למלא את השם והתמונה שלו - או שמור על השם שלך. הגדר את המחיר שלך (0 זה בסדר), ואז הוסף פריט.
-close_dish_list	סגור את רשימת הפריטים
 own_item_name	השתמשו בזה כשם הפריט שלכם
 on_your_menu	ברשימת התרופות
 edit	ערוך
@@ -970,24 +785,16 @@ add_scheme	הוסף BOGO
 schedule_ph	שעות - שני-שישי 07:00-11:00 או ערב 17:00-19:00=150
 upi_vpa_ph	מזהה UPI (VPA)
 upi_payee_ph	שם מוטב UPI (לא חובה)
-upi_qr	UPI QR
 show_upi_qr	הצג UPI QR
 close_upi_qr	סגור
 upi_qr_help	הלקוח סורק ומשלם. הקש על קח תשלום לאחר שהם משלמים. מסך שני: פתח את כתובת השרת/הצג ב-LAN.
-recently_done	הושלמו לאחרונה
 role_help_customer	תפקיד: לקוח — khata (הם חייבים לנו). אותו צד יכול גם לספק מלאי.
 role_help_both	תפקידים: לקוח + ספק — צד אחד, ספרי khata ותשלומים, נטו בדוחות.
 role_help_supplier	תפקיד: ספק — אנחנו חייבים להם על רכישות.
-items_word	פריטים
-items_section	פריטים
-back_to_order	חזרה להזמנה
-new_items_head	עדיין לא נשלח
 price_ph	מחיר
 price_ph_gst_inside	מחיר ({tax} כלול)
-tax_rates_missing_hint	אין שיעור {tax} על פריטים אלה - על פריטים שנקבע שיעור מס (המחירים כבר כוללים {tax} תחת {tax} כולל)
 taxable_value	ערך חייב במס
 gst_inside_price_note	({tax} כלול)
-start_with_template	התחל עם תבנית הפריטים שלנו
 template_heading	פריטי התחלה
 template_info	קטגוריות {c} ופריטי {d} עם תמונות, מוכנים להוספה. המחירים מתחילים ב-$0 - הגדר את שלך לאחר.
 template_import	ייבא תבנית מלאה
@@ -1009,21 +816,13 @@ opening_client	פותח מסוף…
 preparing_desk	מכין שולחן…
 opening_server	פותח שרת…
 creating_server	יוצר שרת…
-order_empty_pick	ההזמנה ריקה - הקש על הוסף פריטים למעלה כדי לבחור פריטים.
 add_dishes	הוסף תרופות
 order_so_far	בהזמנה הזו: {n} · {total}
 no_dish_match	אין פריט תואם "{q}"
-pick_dishes_help	הקש על פריט כדי להוסיף אותו · בחר קטגוריה כדי לצמצם את הרשימה
 pick_done	בוצע
-pick_done_dd	בוצע · {label}
-printer_route_mode	אם יש כמה מדפסות במקום הזה
-printer_mode_first	הראשונה שעובדת
-printer_mode_all	הדפס בכולן
 kot_field_up	הזז למעלה
 kot_field_down	הזז למטה
-app_template_blurb_extra	כמו כן: הבעלים זהיר, אדמין אסיף, הקופאי נוואז; סרגל צד קדמי; היסטוריה לאחר 4 שעות; היום להתפשט; שטר קומפקטי.
 dishes_n	פריטי {n}
-recipe_ph	מתכון (אופציונלי - לא בשימוש בחנות דלפק)
 reorder_ph	קנו עוד ב־
 set_reorder	קבע רמת הזמנה מחדש
 low_stock_alert	המלאי יורד — קנו בקרוב: {items}
@@ -1032,7 +831,6 @@ show_unpriced	הצג רק פריטים ללא מחיר
 show_all_dishes	הצג את כל הפריטים
 role_title_rest_ph	כותרת תפקיד (למשל קפטן, טבח ראשי)
 preset_help_rest	קופאי: מוכר. מנהל משמרת: מוכר + פריטים + ביטול/תיקון.
-kind_raw	מלאי תרכובות
 kind_resale	קנה תרופה
 kind_dish	אל תספור מלאי
 buy_unit_ph	יחידה (ק״ג, ליטר, יח׳)

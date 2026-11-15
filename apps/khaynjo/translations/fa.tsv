@@ -41,7 +41,7 @@ remove	برداشتن
 removed_items	کالاهای برداشته‌شده
 removed_help	بازگردانی کالا را دقیقاً مانند قبل به منو برمی‌گرداند — قیمت، عکس و دسته. قفسه غذاهای ما هرگز برداشته نمی‌شود، پس یک غذا همیشه دوباره افزوده می‌شود.
 restore_item	بازگردانی
-empty_catalog	هنوز غذایی نیست. منو را باز کنید، یک غذا بیفزایید (نام + قیمت)، سپس سفارش بگیرید.
+empty_catalog	هنوز غذایی نیست.
 total	جمع
 cash	نقد
 upi	UPI
@@ -103,23 +103,14 @@ bill_item_qty	تعداد
 bill_item_price	قیمت
 bill_item_amount	مبلغ
 bill_item_note	یادداشت غذا
-bill_item_col_gap	فاصله ستون
 bill_item_col_order	ترتیب ستون
 bill_item_col_sep	خط ستون
-bill_item_gap_tight	فشرده
-bill_item_gap_comfort	راحت
-bill_item_gap_wide	گشاد
-bill_item_num_width	ستون‌های عدد
-bill_item_num_compact	فشرده
-bill_item_num_comfort	راحت
-bill_item_num_wide	گشاد
-bill_item_num_align	تراز اعداد
-bill_item_gap_em	فاصله (em)
-bill_item_qty_min	حداقل تعداد (em)
-bill_item_price_min	حداقل قیمت (em)
-bill_item_amount_min	حداقل مبلغ (em)
-kot_item_qty_width	ستون تعداد
-kot_item_num_align	تراز تعداد
+slip_columns	ستون‌ها
+slip_col_width	پهنا (mm)
+slip_col_start	فاصلهٔ آغاز (px)
+slip_col_end	فاصلهٔ پایان (px)
+slip_col_align	ترازبندی متن
+slip_columns_help	پهنای هر ستون شامل فاصلهٔ آغاز و پایان آن است. متن درون ستون خودش می‌شکند؛ هرچه از پهنای محتوا بیرون بزند، روی کاغذ و در پیش‌نمایش بریده می‌شود.
 bill_total_qty_label	برچسب جمع تعداد
 bill_total_subtotal_label	برچسب جمع جزء
 bill_total_grand_label	برچسب جمع کل
@@ -221,7 +212,6 @@ sidebar_order_saved	ترتیب نوار کناری ذخیره شد
 sidebar_visibility_saved	نمای نوار کناری ذخیره شد
 amounts_hide	پنهان
 amounts_show	نمایان
-printers_none_hint	اول یک چاپگر روی این دستگاه ذخیره کنید، سپس آن را به صورتحساب یا یک آشپزخانه بیفزایید
 counter	پیشخوان
 dine_in	سرو در سالن
 takeaway	بیرون‌بر
@@ -328,8 +318,6 @@ selected_language	انتخاب‌شده
 continue	ادامه
 this_device	این دستگاه
 device_use_q	این دستگاه چگونه استفاده شود؟
-last_server_mode	سرور بود — برای ادامه بزنید
-last_client_mode	کلاینت بود — برای ادامه بزنید
 choose_server	یک سرور انتخاب کنید
 choose_server_hint	یک سرور موجود را باز کنید، یا برای کسب‌وکار دیگری یکی بسازید.
 create_new_server	ساخت سرور تازه
@@ -391,7 +379,7 @@ attachments_last_expense	پیوست‌ها (آخرین هزینه)
 bank	بانک
 bank_in	واریز بانک
 bank_out	برداشت بانک
-bank_reconciliation	تطبیق بانک (با صورتحساب بانک تیک بزنید)
+bank_reconciliation	تطبیق بانک
 bank_to_till	بانک → صندوق
 book_add_dish	دفتر — افزودن غذا / کالا
 book_opening_credit	دفتر — نسیه آغازین
@@ -744,7 +732,6 @@ station_print_pick_first	اول یک ایستگاه آشپزخانه انتخا�
 station_print_editing	ویرایش چاپگرهای «{name}»
 station_vps_dd	چاپگرهای این ایستگاه
 station_vps_dd_n	{n} چاپگر · برای تغییر بزنید
-station_vps_empty	هنوز چاپگری نیست — زیر تنظیمات → چاپگرها پیدا کنید
 bill_printers_dd	چاپگرهای صورتحساب
 bill_printers_dd_n	{n} چاپگر برای صورتحساب · برای تغییر بزنید
 job_layout	چیدمان
@@ -889,7 +876,7 @@ net_word	خالص
 offline_badge	آفلاین
 optional_login_help	ورود اختیاری (شناسه + گذرواژه). مالک یک بار می‌گذارد؛ بعد فقط خود کاربر گذرواژه را عوض می‌کند.
 or_unlock_login	یا با شناسه ورود + گذرواژه قفل را باز کنید
-permission_preset	شغل (صفحه و کار پول را می‌گذارد)
+permission_preset	شغل
 preset_help_khaynjo	صندوقدار: فروش. مدیر: فروش + کالا + ابطال/اصلاح.
 product_locked_khaynjo	Khaynjo
 product_only_khaynjo	این برنامه فقط Khaynjo است — سامانه کار رستوران. چهره صنف‌های دیگر محصول جداگانه Kumkaj هستند.
@@ -961,10 +948,6 @@ pin_hint_paired	صندوق اضافه جفت شد — برای فروش قفل �
 pin_hint_pair_first	صندوق اضافه — اول با دستگاه فروشگاه جفت شود
 unlock_to_continue	برای ادامه قفل را باز کنید
 no_staff_yet	هنوز کارمندی نیست — به‌عنوان مالک قفل را باز کنید، سپس تیم
-status_server_set_pin	حالت سرور — PIN مالک را بگذارید
-status_server_tills	حالت سرور — صندوق اضافه می‌تواند بپیوندد. قفل را باز کنید
-status_server_unlock	حالت سرور — به‌عنوان مالک قفل را باز کنید
-status_client_unlock	حالت کلاینت — برای فروش قفل را باز کنید
 icon_new_selected	نماد: فایل تازه انتخاب شد — ذخیره نشان را بزنید
 icon_custom	نماد: نشان سفارشی محل
 icon_default	نماد: نشان Kumkaj (پیش‌فرض) — یکی سفارشی انتخاب کنید
@@ -1033,7 +1016,7 @@ book_kind_balance	ترازنامه
 order_help	برای افزودن روی کالا بزنید.
 floor_help	برای گرفتن یا عوض کردن سفارش روی میز بزنید. رنگ‌ها نشان می‌دهند آزاد → نشسته → آشپزخانه → آماده → در حال خوردن → صورتحساب → پرداخت‌شده. فهرست انتظار، رزرو و افزودن میز در بخش‌های پایین است.
 kitchen_help	برگه آشپزخانه (KOT)، تازه‌ترین در آخر. شروع → آماده → انجام شد برگه را جلو می‌برد. برگه‌ها هرگز قیمت نشان نمی‌دهند.
-kitchen_empty	برگه بازی نیست. KOT فرستاده‌شده از سفارش یا سالن اینجا دیده می‌شود.
+kitchen_empty	برگه بازی نیست.
 add_a_table	افزودن یک میز
 add_station_heading	افزودن ایستگاه آشپزخانه
 categories_help	استفاده را بزنید تا کالای بالا زیر آن دسته برود. عکس به دسته تصویر می‌دهد؛ بدون آن حرف‌های اول دیده می‌شود.
@@ -1131,7 +1114,6 @@ bill_format_help	زیر نام رستوران روی هر صورتحساب چا�
 bill_header_ph	نشانی | تلفن
 fssai_ph	شماره پروانه FSSAI (هند)
 bill_footer_ph	پاورقی (مثلاً ممنون، دوباره بیایید)
-save_bill_format	ذخیره قالب صورتحساب
 reset_bill_format	بازگشت به پیش‌فرض
 bill_format_reset	قالب صورتحساب به پیش‌فرض برگشت
 reset_kot_format	بازگشت به پیش‌فرض
@@ -1201,13 +1183,11 @@ kot_copies_3	۳
 kot_title_ph	عنوان (خالی = KOT - KITCHEN ORDER)
 kot_footer_ph	یادداشت آشپزخانه (اختیاری، بدون قیمت)
 kot_preview	پیش‌نمایش
-save_kot_format	ذخیره قالب KOT
 test_kot_format	KOT آزمایش
 test_kot_sent	پیش‌نمایش برگه آشپزخانه فرستاده شد
 test_bill_format	صورتحساب آزمایش
 test_bill_sent	پیش‌نمایش صورتحساب فرستاده شد
 test_print_no_printer	چاپگری برای آن کار نیست — روی این صفحه یکی انتخاب کنید
-kot_format_saved	قالب KOT ذخیره شد
 std_print	اندازه چاپ صورتحساب
 std_print_help	اندازه حروف کار صورتحساب عمودی و افقی استاندارد روی چاپگر سند سیستم (امتیاز وارد کنید — نه کوچک/معمولی/بزرگ). همان اندازه در هر دو جهت. اندازه برگه آشپزخانه در زبانه KOT است.
 std_size_s	کوچک
@@ -1264,7 +1244,6 @@ new_items_head	هنوز فرستاده نشده
 price_ph	قیمت
 price_ph_gst_inside	قیمت ({tax} داخل)
 cancel_needs_table	برای لغو پس از رسیدن به آشپزخانه این سفارش را از سالن (یک میز) باز کنید — KOT پیشخوان تا گرفتن پرداخت روی برگه می‌ماند
-tax_rates_missing_hint	نرخ {tax} روی این غذاها نیست — در منو نرخ مالیات را بگذارید (قیمت‌ها از پیش {tax} را زیر {tax} داخل دارند)
 taxable_value	مبلغ مشمول مالیات
 gst_inside_price_note	({tax} داخل)
 start_with_template	شروع با قالب منوی ما
@@ -1318,9 +1297,7 @@ order_empty_pick	سفارش خالی است — برای انتخاب غذا ا�
 add_dishes	افزودن غذا
 order_so_far	در این سفارش: {n} · {total}
 no_dish_match	هیچ غذایی با «{q}» جور نیست
-pick_dishes_help	برای افزودن روی غذا بزنید · برای تنگ کردن فهرست یک دسته انتخاب کنید
 pick_done	انجام شد
-pick_done_dd	انجام شد · {label}
 printer_route_mode	اگر چند چاپگر روی این جا باشد
 printer_mode_first	نخستین که کار کند
 printer_mode_all	چاپ روی همه

@@ -139,9 +139,6 @@ impl App {
             let Some(line) = st.cart.lines.get(index) else {
                 return;
             };
-            if line.is_sent() {
-                return;
-            }
             let removing = if delta < 0 {
                 let step = line.bump_step_milli().saturating_mul(delta.abs());
                 line.qty_milli <= step
@@ -199,7 +196,6 @@ impl App {
             let mut st = app_state().lock().unwrap();
             match st.cart.lines.get(index).cloned() {
                 None => None,
-                Some(line) if line.is_sent() => None,
                 Some(line) => {
                     let blocked = if delta > 0 {
                         st.products
@@ -565,7 +561,6 @@ impl App {
             ids!(menu_variations_input),
             ids!(menu_group_input),
             ids!(menu_schedule_input),
-            ids!(menu_recipe_input),
         ] {
             self.ui.text_input(cx, path).set_text(cx, "");
         }
@@ -620,17 +615,12 @@ impl App {
                 let modifiers = modifiers_as_typed(&product.modifier_groups(), &currency);
                 let price = locale::format_major_input(product.price.paise(), &currency);
                 let schedule = schedule_as_typed(&product.schedule(), &currency);
-                let recipe = store
-                    .and_then(|s| s.recipe(&product.id).ok())
-                    .map(|r| store::recipe_as_typed(&r))
-                    .unwrap_or_default();
-                Some((product, tax, category, aliases, modifiers, price, schedule, recipe))
+                Some((product, tax, category, aliases, modifiers, price, schedule))
             }
         };
-        let Some((product, tax, category, aliases, modifiers, price, schedule, recipe)) = loaded else {
+        let Some((product, tax, category, aliases, modifiers, price, schedule)) = loaded else {
             return;
         };
-        self.ui.text_input(cx, ids!(menu_recipe_input)).set_text(cx, &recipe);
         self.ui.text_input(cx, ids!(menu_schedule_input)).set_text(cx, &schedule);
         // Sizes are items of their own: the quick-entry field starts empty
         // (filling it adds more sizes as new items).
@@ -655,7 +645,7 @@ impl App {
             .set_text(cx, &product.composition);
         self.ui
             .text_input(cx, ids!(menu_rx_note_input))
-            .set_text(cx, &product.allergens);
+            .set_text(cx, &product.rx_note);
         {
             let mut st = app_state().lock().unwrap();
             st.form_schedule_h = product.schedule_h;

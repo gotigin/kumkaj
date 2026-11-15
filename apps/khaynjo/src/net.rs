@@ -110,6 +110,11 @@ pub struct SyncSnapshot {
     pub upi_vpa: String,
     #[serde(default)]
     pub upi_payee: String,
+    /// The shop's settings a Client mirrors (`store::SHOP_PREF_KEYS`): till
+    /// flags, payment methods, sidebar, business day, currency… `None` from
+    /// a Server older than 2026-11-14 (the Client then keeps what it has).
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub shop_prefs: Option<std::collections::BTreeMap<String, Option<String>>>,
 }
 
 fn is_zero_u64(v: &u64) -> bool {
@@ -161,6 +166,13 @@ pub enum RunningAction {
     },
     PrintBill {
         table_id: String,
+    },
+    /// Print the bill of an order with no table (Counter / Takeaway /
+    /// Delivery): its lines come from the till, the paper from the counter.
+    PrintCounterBill {
+        lines: Vec<crate::domain::RunningLine>,
+        place: String,
+        reprint: bool,
     },
     /// Paid / empty table cleared — free for the next guests.
     TableReady {
@@ -234,6 +246,7 @@ pub fn running_action_skips_full_reload(action: &RunningAction) -> bool {
             | RunningAction::HoldLine { .. }
             // Print bill only bumps table state + running lines — not the whole menu.
             | RunningAction::PrintBill { .. }
+            | RunningAction::PrintCounterBill { .. }
     )
 }
 
@@ -1215,7 +1228,7 @@ fn build_snapshot(store: &Store) -> Result<SyncSnapshot, String> {
     let staff = store
         .list_staff()?
         .into_iter()
-        .map(|s| StaffMember { pin_hash: String::new(), password_hash: String::new(), ..s })
+        .map(StaffMember::for_devices)
         .collect();
     Ok(SyncSnapshot {
         venue_title: store.venue_title().unwrap_or_default(),
@@ -1248,6 +1261,7 @@ fn build_snapshot(store: &Store) -> Result<SyncSnapshot, String> {
         bill_footer: store.bill_footer()?,
         upi_vpa: store.upi_vpa()?,
         upi_payee: store.upi_payee()?,
+        shop_prefs: Some(store.shop_prefs_for_sync()?),
     })
 }
 
@@ -1732,6 +1746,10 @@ pub fn apply_running_action(
                 kots: Vec::new(),
             })
         }
+        RunningAction::PrintCounterBill { lines, place, reprint } => Ok(RunningDone {
+            text: Some(store.print_counter_bill(lines, place, *reprint, actor, approval_pin)?),
+            kots: Vec::new(),
+        }),
         RunningAction::TableReady { table_id } => {
             store.free_table(table_id)?;
             store.audit(actor, "table.ready", table_id)?;
@@ -2331,7 +2349,7 @@ fn login(store: &Store, req: &Request, device_id: &str, guard: &Guard) -> Result
     store.audit(&staff, "lan.sign_in", device_id)?;
     Reply::of(&LoginOk {
         session,
-        staff: StaffMember { pin_hash: String::new(), password_hash: String::new(), ..staff },
+        staff: staff.for_devices(),
     })
 }
 
@@ -2511,7 +2529,10 @@ fn write(store: &Store, route: &str, body: &str, actor: &StaffMember, after: &mu
             // Guest bill paper only for PrintBill. CancelBatch puts
             // `batch_ok:` / `batch_noprint:` in `done.text` for the UI status
             // line — that must never hit the bill (standard) printer.
-            if matches!(req.request, RunningAction::PrintBill { .. }) {
+            if matches!(
+                req.request,
+                RunningAction::PrintBill { .. } | RunningAction::PrintCounterBill { .. }
+            ) {
                 after.bill = done.text.clone();
             }
             after.kots = done.kots;
@@ -3265,6 +3286,11 @@ pub fn apply_snapshot(store: &Store, snap: &SyncSnapshot) -> Result<(), String> 
             &snap.upi_vpa,
             &snap.upi_payee,
         )?;
+        // The shop's settings, never this device's defaults (GST wording,
+        // Tax invoice, pay chips, sidebar… — owner, 2026-11-14).
+        if let Some(prefs) = &snap.shop_prefs {
+            store.apply_shop_prefs_from_sync(prefs)?;
+        }
         Ok(())
     })?;
     Ok(())
@@ -3567,7 +3593,14 @@ mod tests {
         let snap = answer(&path, &http("GET", "/sync", &[(HEADER_DEVICE, &device)], ""), "10.0.0.5", &guard);
         let snap: SyncSnapshot = serde_json::from_str(&snap.body).unwrap();
         assert!(!snap.staff.is_empty());
-        assert!(snap.staff.iter().all(|s| s.pin_hash.is_empty() && s.password_hash.is_empty()));
+        // Only whether a PIN exists travels — never a hash that could be
+        // tried offline.
+        assert!(snap
+            .staff
+            .iter()
+            .all(|s| (s.pin_hash.is_empty() || s.pin_hash == crate::domain::PIN_ON_SERVER)
+                && s.password_hash.is_empty()));
+        assert!(snap.staff.iter().any(|s| s.name == "Wasim" && s.has_pin()));
         assert!(!snap_has_code(&snap, &store.pairing_code().unwrap()));
         // A wrong PIN is refused by the Server, and five of them wait.
         let wasim = staff_id(&store, "Wasim");
@@ -4793,6 +4826,153 @@ mod tests {
             raw.read_to_end(&mut reply).unwrap();
             let head = String::from_utf8_lossy(&reply[..reply.windows(4).position(|w| w == b"\r\n\r\n").unwrap()]).to_string();
             assert!(head.starts_with("HTTP/1.1 200") && head.contains("Content-Encoding: gzip"), "{head}");
+        });
+        let _ = crate::print_share::take_captured();
+        let _ = std::fs::remove_file(path);
+    }
+
+    /// What a screen shows is the shop's settings and the person's role —
+    /// never which device it is (owner, 2026-11-14). A Client kept its own
+    /// defaults: GST wording, Tax invoice, UPI/Card/Credit/Split and every
+    /// sidebar item the shop had hidden showed on the Owner's tablet.
+    #[test]
+    fn a_client_shows_the_shops_settings_not_its_own_defaults() {
+        let (path, store, _) = lan_shop();
+        let owner = store.list_staff().unwrap().into_iter().find(|s| s.is_owner()).unwrap();
+        // Any new shop: no GST wording and no Tax invoice until the Owner asks.
+        assert!(!store.show_tax_chrome().unwrap());
+        assert!(!store.show_tax_invoice().unwrap());
+        store.set_pay_methods_csv("cash").unwrap();
+        store.set_nav_hidden_csv("books,buy,menu,reports").unwrap();
+        store.set_nav_order_csv("floor,pos").unwrap();
+        store.apply_books_op(crate::books_op::BooksOp::SetCurrency { code: "USD".into() }, &owner).unwrap();
+
+        let device_path = std::env::temp_dir().join(format!("khaynjo-client-prefs-{}.sqlite3", new_id()));
+        let device = Store::open_path(&device_path).unwrap();
+        device.prepare_as_client_terminal().unwrap();
+        // The tablet's own copy: every pay chip, nothing hidden, its own zoom.
+        assert_eq!(device.pay_methods_csv().unwrap(), "cash,upi,card,credit,split");
+        device.set_floor_zoom(1.4).unwrap();
+        apply_snapshot(&device, &build_snapshot(&store).unwrap()).unwrap();
+        assert!(!device.show_tax_chrome().unwrap());
+        assert!(!device.show_tax_invoice().unwrap());
+        assert_eq!(device.pay_methods_csv().unwrap(), "cash");
+        assert_eq!(device.nav_hidden_csv().unwrap().as_deref(), Some("books,buy,menu,reports"));
+        assert_eq!(device.nav_order_csv().unwrap().as_deref(), Some("floor,pos"));
+        assert_eq!(device.locale_settings().unwrap().currency, "USD");
+
+        // The Owner turns GST wording and Tax invoice on, shows every sidebar
+        // item and goes back to the default order: the tablet follows.
+        store.set_show_tax_chrome(true).unwrap();
+        store.set_show_tax_invoice(true).unwrap();
+        store.set_pay_methods_csv("cash,upi").unwrap();
+        store.set_nav_hidden_csv("").unwrap();
+        store.meta_set_for_test("ui_nav_order", None);
+        apply_snapshot(&device, &build_snapshot(&store).unwrap()).unwrap();
+        assert!(device.show_tax_chrome().unwrap());
+        assert!(device.show_tax_invoice().unwrap());
+        assert_eq!(device.pay_methods_csv().unwrap(), "cash,upi");
+        assert_eq!(device.nav_hidden_csv().unwrap().as_deref(), Some(""));
+        assert_eq!(device.nav_order_csv().unwrap(), None, "a setting the shop never made is not kept");
+        // This device's own view stays its own.
+        assert!((device.floor_zoom() - 1.4).abs() < 1e-9);
+
+        // A Client asks the shop to change the sidebar; a waiter may not.
+        let wasim = store.list_staff().unwrap().into_iter().find(|s| s.name == "Wasim").unwrap();
+        let op = |hidden: &str| crate::books_op::BooksOp::SetNavLayout { hidden: hidden.into(), order: "pos,floor".into() };
+        assert!(store.apply_books_op(op("kitchen"), &wasim).is_err());
+        store.apply_books_op(op("kitchen"), &owner).unwrap();
+        assert_eq!(store.nav_hidden_csv().unwrap().as_deref(), Some("kitchen"));
+        assert_eq!(store.nav_order_csv().unwrap().as_deref(), Some("pos,floor"));
+        drop(device);
+        let _ = std::fs::remove_file(device_path);
+        let _ = std::fs::remove_file(path);
+    }
+
+    /// The live socket is live both ways while it sits idle. Each side used
+    /// to block in a read for up to half a minute and only then send what
+    /// was waiting: a tablet's KOT sat until the Server next spoke (up to
+    /// ~25 s — owner, 2026-11-14: "the print was instantaneous, now it takes
+    /// more than 5 seconds"), and the Server's news sat until the tablet
+    /// spoke. Measured over real sockets, after the link has gone quiet.
+    #[test]
+    fn the_live_socket_carries_a_kot_and_the_news_at_once() {
+        use std::sync::mpsc;
+        let (path, store, _) = lan_shop();
+        let listener = TcpListener::bind("127.0.0.1:0").unwrap();
+        let base = format!("http://{}", listener.local_addr().unwrap());
+        let running = AtomicBool::new(true);
+        let code = store.pairing_code().unwrap();
+        let mona = staff_id(&store, "Mona");
+        std::thread::scope(|s| {
+            let db = path.clone();
+            let running = &running;
+            s.spawn(move || serve(listener, db, &|| running.load(Ordering::SeqCst)).unwrap());
+            let _stop = StopOnDrop(running);
+            let (mut link, snap) = client_pair(&base, &code, "Tablet", "tablet-ws", None).unwrap();
+            link.session = client_login(&link, Some(&mona), "9999").unwrap().session;
+            let thali = snap.products.iter().find(|p| p.name == "Thali").unwrap().clone();
+            let mut cart = Cart::default();
+            cart.add_or_bump(&thali);
+            let kot = serde_json::to_string(&RemoteKotRequest {
+                draft: cart.to_kot_draft().unwrap(),
+                table_name: Some("D1".into()),
+                table_id: None,
+            })
+            .unwrap();
+            let (out_tx, out_rx) = mpsc::sync_channel::<String>(8);
+            let (heard_tx, heard_rx) = mpsc::channel::<&'static str>();
+            let (answer_tx, answer_rx) = mpsc::channel::<(String, bool)>();
+            let watch = link.clone();
+            // Not scoped: the loop runs until its socket closes.
+            std::thread::spawn(move || {
+                let up = heard_tx.clone();
+                let _ = crate::lan_ws::client_watch_loop(
+                    &watch,
+                    0,
+                    "",
+                    |_| {
+                        let _ = heard_tx.send("delta");
+                        Ok(())
+                    },
+                    |_, _| {
+                        let _ = up.send("up");
+                    },
+                    |id, ok, _| {
+                        let _ = answer_tx.send((id.to_string(), ok));
+                    },
+                    &out_rx,
+                );
+            });
+            assert_eq!(heard_rx.recv_timeout(Duration::from_secs(5)).unwrap(), "up");
+            // Both loops are now waiting on a quiet socket — a waiter
+            // tapping Send KOT on an idle tablet.
+            std::thread::sleep(Duration::from_millis(1500));
+            while heard_rx.try_recv().is_ok() {}
+            let sent = Instant::now();
+            out_tx
+                .send(crate::lan_ws::outbox_frame("ws-kot-1", "/kot", &kot, "ws-kot-1", &link.session))
+                .unwrap();
+            let (id, ok) = answer_rx.recv_timeout(Duration::from_secs(40)).unwrap();
+            let took = sent.elapsed();
+            assert_eq!((id.as_str(), ok), ("ws-kot-1", true));
+            assert!(took < Duration::from_secs(1), "KOT answered after {took:?}");
+            // The KOT changed the books: the Server's news follows at once.
+            assert_eq!(heard_rx.recv_timeout(Duration::from_secs(40)).unwrap(), "delta");
+            assert!(sent.elapsed() < Duration::from_secs(1), "news after {:?}", sent.elapsed());
+
+            // Quiet again, then another device's write: the news is pushed
+            // to this tablet without waiting for it to speak first.
+            std::thread::sleep(Duration::from_millis(1500));
+            while heard_rx.try_recv().is_ok() {}
+            let other = client_pair(&base, &code, "Phone", "phone-ws", None).unwrap().0;
+            let mut other = other;
+            other.session = client_login(&other, Some(&mona), "9999").unwrap().session;
+            let wrote = Instant::now();
+            client_send(&other, "/kot", &kot, "ws-kot-2").unwrap();
+            assert_eq!(heard_rx.recv_timeout(Duration::from_secs(40)).unwrap(), "delta");
+            assert!(wrote.elapsed() < Duration::from_secs(1), "news after {:?}", wrote.elapsed());
+            drop(out_tx);
         });
         let _ = crate::print_share::take_captured();
         let _ = std::fs::remove_file(path);

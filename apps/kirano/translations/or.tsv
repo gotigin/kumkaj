@@ -1,7 +1,5 @@
 # Odia — ଓଡ଼ିଆ (or). One key<TAB>text per line, in en() order; keep {placeholders}.
-app_tagline	କିରାଣା କାଉଣ୍ଟର: ବିକ୍ରି, ଷ୍ଟକ୍, ଖାତା ଓ ବହି। ଅଫଲାଇନରେ ମାଗଣା।
 unlock	ଅନଲକ୍
-pin_hint	ମାଲିକ PIN 0000 ରୁ ଆରମ୍ଭ
 sell	ବିକ୍ରୟ
 buy	କିଣା
 books	ଦିନ ବୁକ୍
@@ -20,17 +18,13 @@ reports_month	ଲାଭ ଏବଂ କ୍ଷତି (ମାସ)
 reports_aging	ବାକି / Dr-Cr
 reports_balance_sheet	ବାଲାନ୍ସ ସିଟ୍
 reports	ରିପୋର୍ଟ
-refresh	ରିଫ୍ରେଶ
 undo	ପୂର୍ବବତ
-start_tracking	ଗଣନା ଆରମ୍ଭ
 stock_minus	− ଷ୍ଟକ
 stock_plus	+ ଷ୍ଟକ
 settle_cash	ନଗଦ ଦିଅନ୍ତୁ
 settle_card	କାର୍ଡରେ ଦିଅନ୍ତୁ
 items	ଜିନିଷ
 nav_items	ଜିନିଷ
-more	ଅଧିକ
-your_items	ଆପଣଙ୍କ ଜିନିଷ
 items_help	ସମ୍ପାଦନା ପାଇଁ ଆଇଟମ୍ ଦବାନ୍ତୁ। ନୂଆ ଆଇଟମ୍ ଫର୍ମ ଖାଲି କରେ। ନାମ କିମ୍ବା ଛୋଟ କୋଡରେ ଖୋଜନ୍ତୁ, ଦାମ ଦିଅନ୍ତୁ (0 ଚଳିବ), ତା’ପରେ ଯୋଡ଼ନ୍ତୁ। ପୂର୍ବରୁ ଲେଖାଯାଇଥିବା ବିକ୍ରି ସେହି ନାମରେ ରହେ ଯାହାରେ ବିଲ ହୋଇଥିଲା।
 add_item	ଆଇଟମ୍ ଯୋଡ଼ନ୍ତୁ
 new_item	ନୂଆ ଆଇଟମ୍
@@ -41,28 +35,22 @@ remove	ବାହାର କରନ୍ତୁ
 removed_items	ହଟାଯାଇଥିବା ଆଇଟମ୍
 removed_help	ପୁନଃସ୍ଥାପନ ଆଇଟମ୍‌କୁ ଆଇଟମ୍‌ରେ ଠିକ୍ ପୂର୍ବ ପରି ଫେରାଇ ଆଣେ — ଦାମ, ଫଟୋ ଓ ବର୍ଗ।
 restore_item	ପୁନରୁଦ୍ଧାର କରନ୍ତୁ
-empty_catalog	ଏଯାଏ ଜିନିଷ ନାହିଁ। ଜିନିଷ ଖୋଲି ନାମ ଓ ଦାମ ଯୋଡ଼ି କାଉଣ୍ଟରରୁ ବିକ୍ରି କରନ୍ତୁ।
+empty_catalog	ଏଯାଏ ଜିନିଷ ନାହିଁ।
 total	ମୋଟ
 cash	ନଗଦ
 upi	यूपीआई
 card	କାର୍ଡ
 credit	ପାର୍ଟି
 clear	ସଫା
-ready_to_sell	ବୁକିଂ ପାଇଁ ପ୍ରସ୍ତୁତ
 today_prefix	ଆଜି
-today_mid	ଆଜି
 owed	ବାକି
-round_word	ରାଉଣ୍ଡ
 back	ପଛକୁ
 sold_out	ବିକ୍ରି ହୋଇଗଲା
 restock	ପୁଣି ରଖନ୍ତୁ
 not_tracked	ଗଣନା ନାହିଁ
 in_stock	ଷ୍ଟକରେ
 marked_sold_out	ବିକ୍ରି ହୋଇଛି ଚିହ୍ନ
-add_upper	ଯୋଡ଼ନ୍ତୁ
-na	ନାହିଁ
 qty	ସଂଖ୍ୟା
-unit_at	ଦର
 actual	ପ୍ରକୃତ
 applied	ଲାଗୁ
 note_ph	ନୋଟ୍ (ଇଚ୍ଛାଧୀନ)
@@ -81,21 +69,13 @@ bill_item_qty	ପରିମାଣ
 bill_item_price	ଦର
 bill_item_amount	ରାଶି
 bill_item_note	ଆଇଟମ୍ ଟିପ୍ପଣୀ
-bill_item_col_gap	ସ୍ତମ୍ଭ ଫାଙ୍କ
 bill_item_col_order	ସ୍ତମ୍ଭ କ୍ରମ
 bill_item_col_sep	ସ୍ତମ୍ଭ ରେଖା
-bill_item_gap_tight	ଟାଇଟ
-bill_item_gap_comfort	ଆରାମଦାୟକ
-bill_item_gap_wide	ଓସାରିଆ
-bill_item_num_width	ସଂଖ୍ୟା ସ୍ତମ୍ଭ
-bill_item_num_compact	ଛୋଟ
-bill_item_num_comfort	ଆରାମଦାୟକ
-bill_item_num_wide	ଓସାରିଆ
-bill_item_num_align	ସଂଖ୍ୟା ସଜାଣ
-bill_item_gap_em	ଫାଙ୍କ (em)
-bill_item_qty_min	ସଂଖ୍ୟା ସର୍ବନିମ୍ନ (em)
-bill_item_price_min	ଦର ସର୍ବନିମ୍ନ (em)
-bill_item_amount_min	ରାଶି ସର୍ବନିମ୍ନ (em)
+slip_col_width	ପ୍ରସ୍ଥ (mm)
+slip_col_start	ଆରମ୍ଭ ସ୍ଥାନ (px)
+slip_col_end	ଶେଷ ସ୍ଥାନ (px)
+slip_col_align	ଲେଖା ସଜାଣି
+slip_columns_help	ପ୍ରତ୍ୟେକ ସ୍ତମ୍ଭର ପ୍ରସ୍ଥରେ ଏହାର ଆରମ୍ଭ ଓ ଶେଷ ସ୍ଥାନ ଅନ୍ତର୍ଭୁକ୍ତ। ଲେଖା ନିଜ ସ୍ତମ୍ଭ ଭିତରେ ଗୁଡ଼ାଇ ହୁଏ; ବିଷୟବସ୍ତୁର ପ୍ରସ୍ଥ ବାହାରେ ଥିବା ଅଂଶ କାଗଜରେ ଓ ପୂର୍ବାବଲୋକନରେ କଟିଯାଏ।
 bill_total_qty_label	ମୋଟ ସଂଖ୍ୟା ଲେବଲ
 bill_total_subtotal_label	ଉପଯୋଗ ଲେବଲ
 bill_total_grand_label	ମୋଟ ଲେବଲ
@@ -108,11 +88,7 @@ bill_total_qty	ମୋଟ ପରିମାଣ
 bill_total_subtotal	ଉପ ମୋଟ
 bill_total_grand	ମୋଟ
 kot_unassigned	ଅନିର୍ଦ୍ଧାରିତ
-pos_tab_items	ଯୋଡ଼ାଯାଇଥିବା
-pos_tab_payment	ପେମେଣ୍ଟ
-settings_hub_title	ସେଟିଂ
 settings_hub_help	ଥରକେ ଗୋଟିଏ ଭାଗ ଖୋଲନ୍ତୁ — କମ୍ ସ୍କ୍ରୋଲ୍, ସ୍ପଷ୍ଟ ପସନ୍ଦ।
-settings_back	ପଛକୁ
 settings_sec_language	ଭାଷା ଓ ମୁଦ୍ରା
 settings_sec_country	ଦେଶ ଏବଂ ଟିକସ
 settings_sec_tills	ଅତିରିକ୍ତ ଟିଲ୍ ଓ ଶାଖା
@@ -154,35 +130,17 @@ diag_cleared	ଡାଇଗ୍ନୋଷ୍ଟିକ୍ ଲଗ୍ ସଫା ହେ�
 sidebar_settings	ସାଇଡବାର୍
 sidebar_settings_help	ପାର୍ଶ୍ୱ ପଟିର ସମାନ ଆଇକନ୍। କ୍ରମ ବଦଳାଇବାକୁ ଧାଡ଼ି ଟାଣନ୍ତୁ। ଦେଖାଇବା କିମ୍ବା ଲୁଚାଇବାକୁ ସୁଇଚ୍ ବଦଳାନ୍ତୁ। ସେଟିଂ ଓ ଲକ୍ ସବୁବେଳେ ପଟିରେ ରହେ।
 sidebar_always_on_short	ସବୁବେଳେ ଚାଲୁ
-sidebar_back_settings	ପଛକୁ
-sidebar_shown	ଦେଖାଯାଉଛି
-sidebar_hidden	ଲୁଚା
-sidebar_always_on	ସବୁବେଳେ ପଟିରେ
-sidebar_shown_hint	ପାର୍ଶ୍ୱ ପଟି / ତଳ ଟ୍ୟାବରେ ଦେଖାଯାଏ
-sidebar_hidden_hint	ପଟିରୁ ଲୁଚା
 sidebar_menu_items	ଜିନିଷ
 sidebar_enable_all	ସବୁ ଚାଲୁ କରନ୍ତୁ
 sidebar_disable_all	ସବୁ ବନ୍ଦ କରନ୍ତୁ
 sidebar_order_saved	ସାଇଡବାର୍ କ୍ରମ ସଞ୍ଚୟ ହେଲା
 sidebar_visibility_saved	ସାଇଡବାର୍ ଦୃଶ୍ୟତା ସଞ୍ଚୟ ହେଲା
-amounts_hide	ଲୁଚାନ୍ତୁ
-amounts_show	ଦେଖାନ୍ତୁ
-printers_none_hint	ପ୍ରଥମେ ଏହି ଡିଭାଇସରେ ପ୍ରିଣ୍ଟର ସଞ୍ଚୟ କରନ୍ତୁ, ତା’ପରେ ତାକୁ ବିଲ କିମ୍ବା କୌଣସି ବିଭାଗରେ ଯୋଡ଼ନ୍ତୁ
-counter	କାଉଣ୍ଟର
-dine_in	କାଉଣ୍ଟର
-takeaway	ପାର୍ସେଲ
-order	ଅର୍ଡର
 sales	ବିକ୍ରୟ
-sales_refunds	ବିକ୍ରୟ ଓ ଫେରସ୍ତ
 day_close	ଦିନ ବନ୍ଦ
 reports_expenses	ରିପୋର୍ଟ ଓ ଖର୍ଚ୍ଚ
 nav_reports	ରିପୋର୍ଟ
 nav_settings	ସେଟିଂ
 nav_lock	ଲକ୍
-no_sale_yet	ଏପର୍ଯ୍ୟନ୍ତ କୌଣସି ବିକ୍ରି ନାହିଁ
-favorites	ପସନ୍ଦର
-favorites_help	ଆପଣ ବାରମ୍ବାର ବିକ୍ରି କରୁଥିବା ଜିନିଷ, ଆପଣଙ୍କ ଲଗଇନ୍ ପାଇଁ ସଂରକ୍ଷିତ। ଗୋଟିଏକୁ ବିଲରେ ଯୋଡନ୍ତୁ, କିମ୍ବା ତଳର ସମସ୍ତ ଜିନିଷରୁ ନିଜ ତାଲିକା ତିଆରି କରନ୍ତୁ।
-your_favorites	ଆପଣଙ୍କ ପସନ୍ଦର
 all_items	ସମସ୍ତ ଜିନିଷ
 frequent	ବାରମ୍ବାର
 added_items	ଯୋଡ଼ାଯାଇଥିବା
@@ -199,8 +157,6 @@ zero_sales_on	ଶୂନ୍ୟ ବିକ୍ରୟ: ଚାଲୁ
 zero_sales_off	ଶୂନ୍ୟ ବିକ୍ରୟ: ବନ୍ଦ
 zero_sales_saved_on	ଶୂନ୍ୟ ବିକ୍ରୟ ଅନୁମତି ସଞ୍ଚିତ (ଚାଲୁ)
 zero_sales_saved_off	ଶୂନ୍ୟ ବିକ୍ରୟ ଅନୁମତି ସଞ୍ଚିତ (ବନ୍ଦ)
-no_favorites	ଏପର୍ଯ୍ୟନ୍ତ କୌଣସି ପସନ୍ଦ ନାହିଁ — ତଳ ତାଲିକାରୁ ଜିନିଷ ଯୋଡନ୍ତୁ।
-add_to_bill	ବିଲରେ ଯୋଡନ୍ତୁ
 added	ଯୋଡ଼ାଗଲା
 owes_word	ଦେଣାଦାର
 selected_word	ବଛାଗଲା
@@ -209,19 +165,11 @@ chip_missing_customer	ବଛାଯାଇଥିବା ଗ୍ରାହକ ମି�
 chip_no_customer	ଏପର୍ଯ୍ୟନ୍ତ କୌଣସି ଗ୍ରାହକ ନାହାଁନ୍ତି — ନାମ ଲେଖନ୍ତୁ, ତା’ପରେ Credit ଦବାନ୍ତୁ
 credit_summary_fmt	{} ଗ୍ରାହକ · ଖୋଲା ବାକି {} · ଅଗ୍ରିମ ରଖା {}
 recent_label	ସାମ୍ପ୍ରତିକ:
-start_order	ଅର୍ଡର ଆରମ୍ଭ କରନ୍ତୁ
-open_bill	ବିଲ୍ ଖୋଲନ୍ତୁ
-collect_payment	ଦେୟ ନିଅନ୍ତୁ
-payment_pending	ଦେୟ ବାକି
-collect_at_counter	କାଉଣ୍ଟରରେ ନିଅନ୍ତୁ
 inventory	ଷ୍ଟକ
-inventory_stock	ଷ୍ଟକ ଓ ଗଣନା
 branches	ଶାଖା
-branches_org	ଶାଖା ଓ ସଂସ୍ଥା
 credit_customers	ଉଧାର ଗ୍ରାହକ
 customer_name_ph	ପାର୍ଟି ନାମ
 new_customer_ph	ନୂଆ ପାର୍ଟି ନାମ
-item_name_ph	ଆଇଟମ୍ ନାମ (ଯେପରି Masala Dosa)
 item_price_ph	ମୂଲ୍ୟ
 start_template	ଉତ୍ପାଦ
 team	ଦଳ
@@ -229,17 +177,11 @@ team_pins	ଦଳ ଓ ପିନ
 my_pin_settings	ମୋ PIN
 settings_hub_help_my_pin	ଏହି ଡିଭାଇସରେ ସାଇନ୍-ଇନ୍ ବ୍ୟକ୍ତିଙ୍କ ଅନଲକ୍ PIN ବଦଳାନ୍ତୁ।
 team_self_help	କେବଳ ଆପଣ ଆପଣଙ୍କ ଅନଲକ୍ PIN (ଏବଂ ବୈକଳ୍ପିକ ଲଗଇନ୍ ପାସୱାର୍ଡ) ବଦଳାଇ ପାରିବେ। ଅନ୍ୟ ସ୍କ୍ରିନ୍ କିମ୍ବା ଅଧିକାର ଦରକାର ହେଲେ ମାଲିକଙ୍କୁ କୁହନ୍ତୁ।
-backup_settings	ବ୍ୟାକଅପ ଓ ସେଟିଂ
-lock_app	ତାଳା
 pick	ବାଛନ୍ତୁ
-select	ବାଛନ୍ତୁ
 advance	ଆଗକୁ
 owner	ମାଲିକ
 staff	କର୍ମଚାରୀ
 photo	ଫଟୋ
-auto	ସ୍ୱୟଂ
-prev	ପୂର୍ବ
-next	ପରବର୍ତ୍ତୀ
 ok	ଠିକ
 this_shop	ସର୍ଭର ମୋଡ୍
 extra_till	କ୍ଲାଏଣ୍ଟ ମୋଡ୍
@@ -248,17 +190,13 @@ server	ସର୍ଭର
 client	କ୍ଲାଏଣ୍ଟ
 language_currency	ଭାଷା ଓ ମୁଦ୍ରା
 language	ଭାଷା
-choose_language	ଆପଣଙ୍କ ଭାଷା ବାଛନ୍ତୁ
 language_setup_hint	ଏହି ଡିଭାଇସର ଭାଷା ଅନୁସରଣ କରନ୍ତୁ, କିମ୍ବା ନିଜେ ଗୋଟିଏ ବାଛନ୍ତୁ।
 lang_follow_platform	ଡିଭାଇସ ଭାଷା ବ୍ୟବହାର କରନ୍ତୁ
 lang_pick_user	ବଛା ଭାଷା ବ୍ୟବହାର କରନ୍ତୁ
 lang_platform_now	ବର୍ତ୍ତମାନ ଡିଭାଇସ ଭାଷା
 selected_language	ବଛା
-continue	ଆଗକୁ ବଢ଼ନ୍ତୁ
 this_device	ଏହି ଡିଭାଇସ
 device_use_q	ଏହି ଡିଭାଇସ କିପରି ବ୍ୟବହୃତ ହେବ?
-last_server_mode	ପୂର୍ବରୁ ସର୍ଭର ଥିଲା — ଜାରି ରଖିବାକୁ ଟ୍ୟାପ୍ କରନ୍ତୁ
-last_client_mode	ପୂର୍ବରୁ କ୍ଲାଏଣ୍ଟ ଥିଲା — ଜାରି ରଖିବାକୁ ଟ୍ୟାପ୍ କରନ୍ତୁ
 choose_server	ସର୍ଭର ବାଛନ୍ତୁ
 choose_server_hint	ଏହି ଡିଭାଇସରେ ପୂର୍ବରୁ ସର୍ଭର ଅଛି। ଗୋଟିଏ ଖୋଲନ୍ତୁ, କିମ୍ବା ଅନ୍ୟ ବ୍ୟବସାୟ ପାଇଁ ନୂଆ ସର୍ଭର ତିଆରି କରନ୍ତୁ।
 create_new_server	ନୂଆ ସର୍ଭର ତିଆରି କରନ୍ତୁ
@@ -268,12 +206,6 @@ server_remove_pin_ph	ସର୍ଭର ହଟାଇବାକୁ Owner PIN
 only_owner_remove_server	କେବଳ Owner ସର୍ଭର ହଟାଇପାରିବେ
 owner_pin_remove_server	ସର୍ଭର ହଟାଇବାକୁ Owner PIN ଦରକାର
 device_setup_help	ସର୍ଭର ଖାତା ଏଠାରେ ରଖେ। କ୍ଲାଏଣ୍ଟ ଏକ ସର୍ଭର ସହ ଯୋଡ଼ି ହୁଏ।
-app_template_heading	ଆରମ୍ଭ ତାଲିକା (ଇଚ୍ଛାଧୀନ)
-app_template_blurb	ଏକ ନମୁନା ତାଲିକା ଲୋଡ୍ କରେ; ମାଲିକ ଜହିର (zahir), ଆଡମିନ୍ ଆସିଫ୍ (asif, PIN 1111), କ୍ୟାସିୟର ନୱାଜ୍ (nawaz, PIN 0000); ଟିକସ/GST ବନ୍ଦ; ଆଗ ସାଇଡବାର୍; ଇତିହାସ 4 ଘଣ୍ଟା ପରେ ସଫା ହୁଏ (ଓ ବ୍ୟାକଅପ୍‌ରେ ଏବେ ସଫା କରନ୍ତୁ); ଆଜିର ପଟି ବନ୍ଦ; ସଂକୀର୍ଣ୍ଣ ଟ୍ରେ ପାଇଁ ଛୋଟ ବିଲ + ସାଧାରଣ ମାର୍ଜିନ୍। ଟିକସ ଓ ସାଇଡବାରର ବାକିଗୁଡ଼ିକ ସେଟିଂରେ ପୁଣି ଚାଲୁ କରିହେବ।
-app_template_apply	ଆରମ୍ଭ ତାଲିକା ଲଗାନ୍ତୁ
-app_template_skip	ଏବେ ଛାଡ଼ନ୍ତୁ
-app_template_status	ସର୍ଭର ପ୍ରସ୍ତୁତ — ଆରମ୍ଭ ତାଲିକା ଲଗାନ୍ତୁ, କିମ୍ବା ଛାଡ଼ନ୍ତୁ
-app_template_importing	{title} ଲଗାଯାଉଛି…
 currency	ମୁଦ୍ରା
 backup	ବ୍ୟାକଅପ
 use	ବ୍ୟବହାର କରନ୍ତୁ
@@ -307,7 +239,7 @@ attachments_last_expense	ସଂଲଗ୍ନ (ଶେଷ ଖର୍ଚ୍ଚ)
 bank	ବ୍ୟାଙ୍କ
 bank_in	ବ୍ୟାଙ୍କରେ ପକାନ୍ତୁ
 bank_out	ବ୍ୟାଙ୍କରୁ କାଢ଼ନ୍ତୁ
-bank_reconciliation	ବ୍ୟାଙ୍କ ମିଳାଣ (ଆପଣଙ୍କ ବ୍ୟାଙ୍କ ଷ୍ଟେଟମେଣ୍ଟ ସହ ଟିକ୍ କରନ୍ତୁ)
+bank_reconciliation	ବ୍ୟାଙ୍କ ମିଳାଣ
 bank_to_till	ବ୍ୟାଙ୍କ → ଟିଲ୍
 book_add_dish	ବହି — ଆଇଟମ୍ ଯୋଡ଼ନ୍ତୁ
 book_opening_credit	ବୁକ୍ — ଆରମ୍ଭ ଧାର
@@ -337,9 +269,6 @@ share_whatsapp	ୱାଟ୍ସଆପ୍ ସେୟାର
 lan_pages_heading	Wi‑Fi ରେ ଗ୍ରାହକ ପୃଷ୍ଠା
 lan_pages_help	ଏହି ଦୋକାନର Wi‑Fi ରେ ଗ୍ରାହକ ପୃଷ୍ଠା ଡିସପ୍ଲେ ବୋର୍ଡ ଓ ମତାମତ ପାଇଁ ଚାଲେ। ମୋବାଇଲ ଡାଟାରେ ଥିବା ଲୋକଙ୍କୁ ପରେ Cloud ଦରକାର। କାର୍ଡ ମେସିନ୍ କିମ୍ବା ପେମେଣ୍ଟ ଲିଙ୍କ ଇଚ୍ଛାଧୀନ ଏବଂ କାଉଣ୍ଟରକୁ କେବେ ଅଟକାଏ ନାହିଁ।
 diag_send_heading	ଏହି ଡିଭାଇସରୁ ବାହାରକୁ ସେୟାର କରନ୍ତୁ
-optional_login_heading	ଇଚ୍ଛାଧୀନ ଲଗଇନ୍
-rights_heading	ଅଧିକାର
-ops_panel	ସ୍ଥାନୀୟ କାମ
 crm_heading	ଗ୍ରାହକ ଓ ବାର୍ତ୍ତା
 crm_help	ଜନ୍ମଦିନ, ଲଏଲ୍ଟି — SMS/WhatsApp ଧାଡ଼ି। {name}, {points}। ମାଲିକ ପଠାନ୍ତି।
 crm_queue_sms	SMS ଧାଡ଼ି
@@ -364,21 +293,17 @@ till_wallet_topup_ph	ୱାଲେଟ୍ ଟପ୍-ଅପ୍ ରାଶି
 till_voucher_issue_amt_ph	ନୂଆ ଭାଉଚର୍ ରାଶି
 till_voucher_issue_code_ph	ନୂଆ ଭାଉଚର୍ କୋଡ୍
 bulk_price_apply	ବଲ୍କ ମୂଲ୍ୟ ପ୍ରୟୋଗ
-card_terminal_optional	କାର୍ଡ ଟର୍ମିନାଲ / ପେମେଣ୍ଟ ଲିଙ୍କ (ଇଣ୍ଟରନେଟ ଥିଲେ ବୈକଳ୍ପିକ)
 copy_report	ରିପୋର୍ଟ କପି କରନ୍ତୁ
 counted_cash_ph	ଡ୍ରୟରରେ ଗଣା ନଗଦ
 country_tax	ଦେଶ ଏବଂ ଟିକସ
 create_backup	ବ୍ୟାକଅପ୍ ତିଆରି କରନ୍ତୁ
 credit_limit_heading	କ୍ରେଡିଟ୍ ସୀମା (ବଛା / ନାମ ଥିବା ପାର୍ଟି)
-day_close_summary	ଦିନ ବନ୍ଦ ସାରାଂଶ
 delete_party	ବଛା ପାର୍ଟି ଡିଲିଟ୍ କରନ୍ତୁ
-delivery	ଡେଲିଭରୀ
 done_open_books	ହୋଇଗଲା — ବୁକ୍ ଖୋଲନ୍ତୁ
 drawer_count	ଡ୍ରୟର ଗଣନା (ଇଚ୍ଛାଧୀନ)
 expense_heading	ଖର୍ଚ୍ଚ
 export_day	ଦିନ ଏକ୍ସପୋର୍ଟ କରନ୍ତୁ
 extra_note_bill_ph	ଏହି ବିଲ୍ / ବିକ୍ରୟରେ ଅତିରିକ୍ତ ନୋଟ୍
-extra_note_expense_ph	ଶେଷ ଖର୍ଚ୍ଚରେ ଅତିରିକ୍ତ ନୋଟ୍
 extra_tills_heading	ଅତିରିକ୍ତ ଟିଲ୍
 other_devices_help_heading	ଅନ୍ୟ ଡିଭାଇସ ସେଟ୍ କରନ୍ତୁ
 other_devices_help	ଏହି ଡିଭାଇସରେ (ସର୍ଭର): ଅନ୍ୟ ଡିଭାଇସ → ଅତିରିକ୍ତ ଟିଲ୍ ଅନୁମତି ଦିଅନ୍ତୁ। ପେୟାରିଂ କୋଡ ଓ Wi‑Fi ଠିକଣା ଲେଖି ରଖନ୍ତୁ। ଦେଖାଗଲେ ଅନ୍ୟ ଡିଭାଇସକୁ ଯୋଡ଼ିବାକୁ ଦିଅନ୍ତୁ ଦବାନ୍ତୁ। କମ୍ପ୍ୟୁଟରରେ, ଏହି କମ୍ପ୍ୟୁଟରରେ ଆରମ୍ଭ କରନ୍ତୁ ଦବାନ୍ତୁ। ପ୍ରତି ଅନ୍ୟ ଡିଭାଇସରେ: ଆପ୍ ଇନଷ୍ଟଲ୍ କରନ୍ତୁ, କ୍ଲାଏଣ୍ଟ ମୋଡ୍ ବାଛନ୍ତୁ, ଦୋକାନର ସର୍ଭର ଖୋଜନ୍ତୁ (କିମ୍ବା ଠିକଣା ଲେଖନ୍ତୁ), ପେୟାରିଂ କୋଡ ଦିଅନ୍ତୁ, ଏବେ ଯୋଡ଼ନ୍ତୁ। Wi‑Fi ଗଲେ ଅର୍ଡର ଡିଭାଇସରେ ଅପେକ୍ଷା କରେ ଏବଂ ସର୍ଭର ପୁଣି ଉତ୍ତର ଦେଲେ ଚାଲିଯାଏ। ଅତିରିକ୍ତ ପ୍ରିଣ୍ଟର ସର୍ଭରରେ ଲଗାଯାଏ (ସେଟିଂ → ପ୍ରିଣ୍ଟର) — ଅତିରିକ୍ତ ଟିଲ୍ ବିଲ ସେଠାକୁ ପଠାଏ।
@@ -392,7 +317,6 @@ login_id_ph	ଲଗଇନ୍ ଆଇଡି
 mark_cleared	କ୍ଲିୟର ଚିହ୍ନିତ କରନ୍ତୁ
 new_party_clear	ନୂଆ ପାର୍ଟି (ଫର୍ମ ସଫା କରନ୍ତୁ)
 new_party_kind_supplier_ph	ନୂଆ ପାର୍ଟି ପ୍ରକାର (ଯୋଗାଣକାରୀ)
-next_country	ପରବର୍ତ୍ତୀ ଦେଶ
 next_order	ପରବର୍ତ୍ତୀ ଅର୍ଡର (ଡେସ୍କ ସଫା)
 note_gstin_ph	ନୋଟ୍ / GSTIN / ଚୁକ୍ତି ମନେପକା
 notes_attach_party	ନୋଟ୍ ଏବଂ ସଂଲଗ୍ନ (ବଛା ପାର୍ଟି)
@@ -410,8 +334,6 @@ pay_ap_cash	AP ନଗଦ ଦିଅନ୍ତୁ
 pay_ap_heading	ଆମକୁ ସେମାନଙ୍କୁ ଦେବାକୁ (AP)
 pay_ap_upi	AP UPI ଦିଅନ୍ତୁ
 pay_selected_heading	ବଛା ଦିଅନ୍ତୁ (ଋଣ ଶୁଝନ୍ତୁ / ଆଗୁଆ)
-pick_from_items	ଆମ ଆଇଟମ୍‌ରୁ ବାଛନ୍ତୁ
-prev_country	ପୂର୍ବ ଦେଶ
 print_open	ଛାପନ୍ତୁ / ଖୋଲନ୍ତୁ
 reason_amend_ph	ସଂଶୋଧନ / ବାତିଲ / ଫେରସ୍ତର କାରଣ
 reason_note_ph	କାରଣ / ନୋଟ୍ (ନଷ୍ଟ, ଗଣନା, …)
@@ -435,14 +357,10 @@ history_after_hours	ଘଣ୍ଟା ପରେ
 history_hours_ph	ଘଣ୍ଟା (1–168, ପୂର୍ବନିର୍ଦ୍ଧାରିତ 4)
 history_hours_save	ଘଣ୍ଟା ସଞ୍ଚୟ କରନ୍ତୁ
 history_clear_now	ଇତିହାସ ଏବେ ସଫା କରନ୍ତୁ
-history_cleared	ବ୍ୟବସାୟ ଇତିହାସ ସଫା — ସେଟଅପ୍ ରହିଲା
-history_retention_saved	ଇତିହାସ ସଫା ସେଟିଂ ସଞ୍ଚୟ ହେଲା
 history_hours_saved	ଇତିହାସ ଘଣ୍ଟା ସଞ୍ଚୟ ହେଲା
-history_owner_only	କେବଳ ମାଲିକ କିମ୍ବା ଆଡମିନ୍ ଇତିହାସ ସଫା କରିପାରିବେ
 rollup	ରୋଲ୍-ଅପ୍
 save_brand	ବ୍ରାଣ୍ଡ ସେଭ କରନ୍ତୁ
 save_business_id	ବ୍ୟବସାୟ ଆଇଡି ଏବଂ ସେବା % ସେଭ କରନ୍ତୁ
-save_business_name	ବ୍ୟବସାୟ ନାମ ସେଭ କରନ୍ତୁ
 save_features	ବଛା କର୍ମଚାରୀଙ୍କ ଫିଚର ସେଭ କରନ୍ତୁ
 save_features_named	{name} ସଞ୍ଚୟ କରନ୍ତୁ
 save_features_ok	{name} ର ସେଟଅପ୍ ସଞ୍ଚୟ ହେଲା
@@ -473,7 +391,6 @@ copy_pair_code	ଯୋଡ଼ିବା କୋଡ୍ କପି କରନ୍ତୁ
 new_pair_code	ନୂଆ ଯୋଡ଼ିବା କୋଡ୍
 pair_finishing	ଯୋଡ଼ିବା ସମାପ୍ତ ହେଉଛି… ଦୋକାନର ଖାତା ଲାଗୁ ହେଉଛି
 pair_opening	ଟିଲ ଖୋଲୁଛି…
-pair_copied	ଯୋଡ଼ିବା କୋଡ୍ କପି ହେଲା
 lan_offline_waiting	ଅଫଲାଇନ୍ · {n} ଅପେକ୍ଷାରେ
 lan_connecting	ଦୋକାନ ସହ ସଂଯୋଗ ହେଉଛି…
 lan_live	ଲାଇଭ୍
@@ -487,7 +404,6 @@ firewall_waiting	ଆଡମିନ ଅନୁମତି ପାଇଁ ଅପେକ୍
 lan_join_help	ଅନ୍ୟ ଡିଭାଇସ ଏହା ସହ ଯୋଡ଼ି ହୋଇପାରିବ — ଯୋଡ଼ିବା କୋଡ୍ {code}। ଅନ୍ୟ ଡିଭାଇସରେ କ୍ଲାଏଣ୍ଟ ମୋଡ୍ ବାଛନ୍ତୁ, ତାପରେ ଦୋକାନର ସର୍ଭର ଖୋଜନ୍ତୁ, କିମ୍ବା ଏହି ଠିକଣା ଲେଖନ୍ତୁ: {addr}
 lan_pair_status	ୱାଇ‑ଫାଇ {addr}
 lan_join_help_no_addr	ଠିକଣା ପାଇଁ ଏହି ଡିଭାଇସକୁ Wi‑Fi ସହ ଯୋଡ଼ନ୍ତୁ।
-lan_no_address	ଏହି ଡିଭାଇସର ଏଯାଏଁ କୌଣସି Wi‑Fi ଠିକଣା ନାହିଁ — ଏହାକୁ ଦୋକାନର Wi‑Fi ସହ ଯୋଡ଼ନ୍ତୁ।
 lan_not_listening	ବର୍ତ୍ତମାନ ଡିଭାଇସ ଯୋଡ଼ି ହେଉନାହିଁ — ହୁଏତ ଅନ୍ୟ ଏକ ପ୍ରୋଗ୍ରାମ ପୋର୍ଟ {port} ବ୍ୟବହାର କରୁଛି। ଆପ୍ ପୁଣି ଆରମ୍ଭ କରନ୍ତୁ।
 lan_tills_off	ଅତିରିକ୍ତ ଟିଲ୍ ବନ୍ଦ ଅଛି। ଏହି ଦୋକାନର ହିସାବ ଏହି ଡିଭାଇସରେ ହିଁ ରହେ। ଅନ୍ୟ ଡିଭାଇସ ମଧ୍ୟ ଅର୍ଡର ନେବା କିମ୍ବା ବିଲ୍ କରିବା ଦରକାର ହେଲେ ଅତିରିକ୍ତ ଟିଲ୍ ଅନୁମତି ଦିଅନ୍ତୁ।
 paired_with	{url} ରେ ଥିବା ଦୋକାନ ସହ ଯୋଡ଼ାଯାଇଛି
@@ -508,41 +424,21 @@ printers_help	ପ୍ରିଣ୍ଟର ଖୋଜନ୍ତୁ, ବାଛିବା
 printers_host_only	ପ୍ରିଣ୍ଟର ଦୋକାନ ଡିଭାଇସରେ (ସର୍ଭର) ଲଗାଯାଏ। ଏହି ଟିଲ୍ ବିଲ ଓ ପୁରୁଣା ଟିକେଟ ସେଠାକୁ ପଠାଏ — ଖୋଜନ୍ତୁ / ଯୋଡ଼ନ୍ତୁ / ଦିଅନ୍ତୁ ସର୍ଭରରେ ହିଁ ରହେ। ପରୀକ୍ଷା ପୃଷ୍ଠା ଓ ବିଲ ଛପା ଆକାର ସର୍ଭରକୁ ଯାଏ।
 printers_find_heading	ପ୍ରିଣ୍ଟର
 printers_find_tip	ଖୋଜ ଏହି ଡିଭାଇସ୍ ସ୍କାନ୍ କରି ତାଲିକା ଅପଡେଟ୍ ରଖେ। ସିଷ୍ଟମ୍ ପ୍ରିଣ୍ଟର ପ୍ରଥମେ; ନେଟୱାର୍କ ସ୍କାନ୍ ପୃଷ୍ଠଭୂମିରେ ଚାଲିପାରେ।
-printers_pool_heading	1. ଆପଣଙ୍କ ପ୍ରିଣ୍ଟର
-printers_pool_tip	ଖୋଜ ଏହି ଡିଭାଇସ୍ ସ୍କାନ୍ କରି ତାଲିକା ଅପଡେଟ୍ ରଖେ।
 printers_pool_empty	(ଏପର୍ଯ୍ୟନ୍ତ ନାହିଁ — ତଳେ ଯୋଡ଼ନ୍ତୁ)
-printers_routes_help	ଅପରେଟିଂ ସିଷ୍ଟମ୍ ପୂର୍ବରୁ ଜାଣିଥିବା ପ୍ରିଣ୍ଟର ଖୋଜନ୍ତୁ। ବିଲ ଓ ସ୍ଲିପ୍ ଫର୍ମାଟ୍‌ରେ ସେଗୁଡ଼ିକୁ ବିଲ ଓ ପ୍ରତି ବିଭାଗକୁ ଦିଅନ୍ତୁ।
 printer_assign_dd	{place} ପାଇଁ ପ୍ରିଣ୍ଟର ବାଛନ୍ତୁ
 printer_assign_pick	ପ୍ରକୃତ ପ୍ରିଣ୍ଟର ବାଛନ୍ତୁ
 printer_profile_heading	ଲେଆଉଟ୍
 vp_delivery_heading	ଡେଲିଭରି
 vp_delivery_help	ଏହି ଭର୍ଚୁଆଲ୍ ପ୍ରିଣ୍ଟର କାମ କିପରି ପଠାଏ — OS ଡକ୍ୟୁମେଣ୍ଟ, କଞ୍ଚା ବାଇଟ୍ କିମ୍ବା ESC/POS। ସ୍ଲିପ୍ ବିଷୟବସ୍ତୁ (ଅକ୍ଷର ଆକାର, ଗୁଡ଼ାଇବା, ମାର୍ଜିନ୍) ବିଲ / ସ୍ଲିପ୍ ଫର୍ମାଟ୍ ସ୍ଥିର କରେ, ଏଠାରେ ନୁହେଁ।
-vp_type_size_heading	ଅକ୍ଷର ଆକାର
-vp_wrap_heading	ର୍ୟାପ୍ ଚଉଡ଼ା
-vp_margin_heading	ମାର୍ଜିନ୍
 vp_delivery_spooler	OS ଡକ୍ୟୁମେଣ୍ଟ (ସିଷ୍ଟମ୍ ସ୍ପୁଲର୍)
 vp_delivery_raw	ଡିଭାଇସକୁ କଞ୍ଚା ବାଇଟ୍
 vp_delivery_escpos	ESC/POS ଥର୍ମାଲ୍ କମାଣ୍ଡ
 virtual_printer_new	ନୂଆ ଭର୍ଚୁଆଲ୍ ପ୍ରିଣ୍ଟର
 virtual_printer_selected	“{name}” ସମ୍ପାଦନ — ତାଲିକାରେ ଅନ୍ୟଟିରେ ଟ୍ୟାପ୍ କରି ବଦଳାନ୍ତୁ
-virtual_printer_tap_list	ତାଲିକାରେ ଭର୍ଚୁଆଲ୍ ପ୍ରିଣ୍ଟରରେ ଟ୍ୟାପ୍ କରି ସମ୍ପାଦନ କରନ୍ତୁ
 config_layout_portrait	ପୋର୍ଟ୍ରେଟ୍
 config_layout_landscape	ଲ୍ୟାଣ୍ଡସ୍କେପ୍
 config_send_os	ସିଷ୍ଟମ୍ ସ୍ପୁଲର୍
 config_send_escpos	ESC/POS
-profiles_heading	ପ୍ରିଣ୍ଟର
-profiles_empty	ପ୍ରିଣ୍ଟର
-profile_builtin	ବିଲ୍ଟ୍-ଇନ୍
-profile_custom	କଷ୍ଟମ୍
-profile_name_ph	ପ୍ରିଣ୍ଟର
-profile_new	ପ୍ରିଣ୍ଟର
-profile_delete	ପ୍ରିଣ୍ଟର
-profile_created	ପ୍ରିଣ୍ଟର
-profile_deleted	ପ୍ରିଣ୍ଟର
-profile_builtin_keep	ପ୍ରିଣ୍ଟର
-config_saved	ଅପଡେଟ୍ ହେଲା
-config_selected	“{name}” ବଛାଗଲା
-printer_output_heading	ଭର୍ଚୁଆଲ୍ ପ୍ରିଣ୍ଟର
 virtual_printers_heading	ଭର୍ଚୁଆଲ୍ ପ୍ରିଣ୍ଟର
 virtual_printers_empty	ଏପର୍ଯ୍ୟନ୍ତ ଭର୍ଚୁଆଲ୍ ପ୍ରିଣ୍ଟର ନାହିଁ — ତଳେ ମୂଲ୍ୟ ସେଟ୍ କରି ସେଭ୍ କରନ୍ତୁ। କିଛି ଥିଲେ ତାଲିକାରେ ଟ୍ୟାପ୍ କରି ସମ୍ପାଦନ କରନ୍ତୁ।
 virtual_printer_name_ph	ଭର୍ଚୁଆଲ୍ ପ୍ରିଣ୍ଟର ନାମ (ବୈକଳ୍ପିକ)
@@ -554,71 +450,32 @@ virtual_printer_deleted	ଭର୍ଚୁଆଲ୍ ପ୍ରିଣ୍ଟର “{na
 virtual_printer_updated	ଭର୍ଚୁଆଲ୍ ପ୍ରିଣ୍ଟର ଅପଡେଟ୍ ହେଲା
 virtual_printer_updated_named	ଭର୍ଚୁଆଲ୍ ପ୍ରିଣ୍ଟର “{name}” ଅପଡେଟ୍ ହେଲା
 virtual_draft_layout	ପରବର୍ତ୍ତୀ ଭର୍ଚୁଆଲ୍ ପ୍ରିଣ୍ଟର ପାଇଁ ମୂଲ୍ୟ ସେଟ୍
-virtual_draft_send	ପରବର୍ତ୍ତୀ ଭର୍ଚୁଆଲ୍ ପ୍ରିଣ୍ଟର ପାଇଁ ମୂଲ୍ୟ ସେଟ୍
 virtual_need_real	ପ୍ରଥମେ ପ୍ରକୃତ ପ୍ରିଣ୍ଟର ବାଛନ୍ତୁ
 virtual_need_select	କାଢ଼ିବାକୁ ଭର୍ଚୁଆଲ୍ ପ୍ରିଣ୍ଟର ବାଛନ୍ତୁ
 real_printer_selected	ପ୍ରକୃତ ପ୍ରିଣ୍ଟର: {name}
-printers_routes_heading	2. କେଉଁଠି ପ୍ରିଣ୍ଟ
-route_pick_heading	ସ୍ଥାନ
 route_editing	ସମ୍ପାଦନା: {name}
-route_assigned	{printer} କୁ {place} ରେ ଯୋଡ଼ାଗଲା
-route_already_assigned	ଏହି ସ୍ଥାନରେ ପୂର୍ବରୁ: {printer}
 route_cleared	{name} ସଫା ହେଲା
-route_assigned_empty	ଏହି ସ୍ଥାନରେ କିଛି ନାହିଁ
-route_tap_select	ବାଛିବାକୁ ଟ୍ୟାପ୍
 route_tap_selected	ବଛା
-route_pick_printer_first	ପ୍ରଥମେ ଗୋଟିଏ ପ୍ରିଣ୍ଟର ଟ୍ୟାପ୍ କରନ୍ତୁ
-route_assigned_heading	ପ୍ରିଣ୍ଟର
-route_add_heading	ନିଯୁକ୍ତ
-printer_label_ph	ନାମ (ଯେପରି କାଉଣ୍ଟର ପ୍ରିଣ୍ଟର)
 printer_target_ph	ଠିକଣା କିମ୍ବା ସିଷ୍ଟମ ନାମ
 printer_target_default	ଡିଫଲ୍ଟ ପ୍ରିଣ୍ଟର
-printer_wire_heading	ଫର୍ମାଟ୍
-printer_wire_escpos	KOT
-printer_wire_os	ମାନକ ପୋର୍ଟ୍ରେଟ୍
-printer_wire_os_portrait	ମାନକ ପୋର୍ଟ୍ରେଟ୍
-printer_wire_os_landscape	ମାନକ ଲ୍ୟାଣ୍ଡସ୍କେପ୍
-printer_wire_escpos_short	KOT
-printer_wire_os_short	ପୋର୍ଟ୍ରେଟ୍
-printer_wire_os_landscape_short	ଲ୍ୟାଣ୍ଡସ୍କେପ୍
-printer_format_custom	ନୂଆ ନିଜସ୍ୱ ଫର୍ମାଟ୍
-printer_format_custom_label	ନିଜସ୍ୱ
-printer_format_custom_added	ଏହି ରୁଟ୍ ପାଇଁ ନିଜସ୍ୱ ଫର୍ମାଟ୍ ଯୋଡ଼ାଗଲା
-add_printer	ପ୍ରିଣ୍ଟର ଯୋଡ଼ନ୍ତୁ
-route_pick_ph	ବିଲ କିମ୍ବା ଦୋକାନର ଏକ ବିଭାଗ
 route_bill	ବିଲ୍
-route_dont_print	ପ୍ରିଣ୍ଟ କରନ୍ତୁ ନାହିଁ
 station_print_pick_first	ପ୍ରଥମେ ଦୋକାନର ଏକ ବିଭାଗ ବାଛନ୍ତୁ
-station_vps_empty	ଏପର୍ଯ୍ୟନ୍ତ ପ୍ରିଣ୍ଟର ନାହିଁ — ସେଟିଙ୍ଗ୍ସ → ପ୍ରିଣ୍ଟରରେ ଖୋଜନ୍ତୁ
 bill_printers_dd	ବିଲ ପାଇଁ ପ୍ରିଣ୍ଟର
 bill_printers_dd_n	ବିଲ ପାଇଁ {n}ଟି ପ୍ରିଣ୍ଟର · ବଦଳାଇବାକୁ ଦବାନ୍ତୁ
 station_vp_attached	ପ୍ରିଣ୍ଟର ଯୋଡ଼ାଗଲା
 station_vp_detached	ଷ୍ଟେସନରୁ ପ୍ରିଣ୍ଟର କାଢ଼ାଗଲା
-route_up	ଉପରକୁ
-route_down	ତଳକୁ
-route_clear	ପ୍ରିଣ୍ଟ କରନ୍ତୁ ନାହିଁ
-save_printers	ପ୍ରିଣ୍ଟର ସଞ୍ଚୟ କରନ୍ତୁ
 print_test_page	ପରୀକ୍ଷା ପୃଷ୍ଠା ଛାପନ୍ତୁ
 no_printer_assigned	ପ୍ରିଣ୍ଟର ନାହିଁ
-test_page_no_printer	{place} ପାଇଁ ପ୍ରିଣ୍ଟର ନାହିଁ — ଉପରେ ନ୍ୟସ୍ତ କରି ପୁଣି ଚେଷ୍ଟା କରନ୍ତୁ
 test_page_pick_first	ପ୍ରଥମେ ପରୀକ୍ଷା ପ୍ରିଣ୍ଟର ବାଛନ୍ତୁ — ତାପରେ ପରୀକ୍ଷା ପୃଷ୍ଠା ଛାପନ୍ତୁ
 test_printers_dd	ପରୀକ୍ଷା ପୃଷ୍ଠା ପ୍ରିଣ୍ଟର
 test_printers_dd_n	{n} ପରୀକ୍ଷା ପ୍ରିଣ୍ଟର · ବଦଳାଇବାକୁ ଟ୍ୟାପ୍
 test_printer_picked	ପରୀକ୍ଷା: {name}
 test_printer_cleared	ପରୀକ୍ଷା ନୁହେଁ: {name}
 test_page_sent_n	ପରୀକ୍ଷା ପୃଷ୍ଠା {n} ପ୍ରିଣ୍ଟରକୁ ପଠାଗଲା
-batch_cancel	ଚିହ୍ନିତ ବାତିଲ୍
-batch_cancel_n	ଚିହ୍ନିତ ବାତିଲ୍ ({n})
-batch_cancel_none	ପ୍ରଥମେ ପଠାଯାଇଥିବା ଏକ କିମ୍ବା ଅଧିକ ଆଇଟମ୍ ଚିହ୍ନିତ କରନ୍ତୁ — ତା’ପରେ ଚିହ୍ନିତ ବାତିଲ କରନ୍ତୁ
-batch_cancel_title	ଚିହ୍ନିତ ଜିନିଷ ବାତିଲ — ଏକ କାରଣ, ପ୍ରତି ବିଭାଗକୁ ଏକ ସ୍ଲିପ୍
-batch_cancel_ok	{n}ଟି ଆଇଟମ୍ ବାତିଲ · {slips}ଟି ବାତିଲ ସ୍ଲିପ୍ → {kitchens}
-batch_cancel_ok_noprint	{n}ଟି ଆଇଟମ୍ ବାତିଲ — ଆପେ ଛପା ବନ୍ଦ, ତେଣୁ ବାତିଲ ସ୍ଲିପ୍ ନାହିଁ
 printers_saved	ଏହି ଡିଭାଇସର ପ୍ରିଣ୍ଟର ସଞ୍ଚିତ ହେଲା
-test_page_sent	ପରୀକ୍ଷା ପୃଷ୍ଠା ପଠାଗଲା — ପ୍ରିଣ୍ଟର ଦେଖନ୍ତୁ
 test_page_sent_one	ପରୀକ୍ଷା ପୃଷ୍ଠା {name}କୁ ପଠାଗଲା — ସେହି ପ୍ରିଣ୍ଟର ଦେଖନ୍ତୁ
 printers_found	{n}ଟି ମିଳିଲା: {list}
 printers_find_synced	{n} ମିଳିଲା — {new} ନୂଆ
-printer_on_device	ସେଭ୍
 printer_already_added	ପୂର୍ବରୁ ଯୋଡ଼ା
 printer_already_saved	ପୂର୍ବରୁ ସଞ୍ଚିତ: {name}
 find_printers	ପ୍ରିଣ୍ଟର ଖୋଜନ୍ତୁ
@@ -628,7 +485,6 @@ cancelled	ବାତିଲ୍
 printers_tap_find	ପ୍ରିଣ୍ଟର ଖୋଜନ୍ତୁ ଦବାନ୍ତୁ — ସିଷ୍ଟମ ପ୍ରିଣ୍ଟର ଓ ଏହି Wi‑Fiର ନେଟୱାର୍କ ରସିଦ ପ୍ରିଣ୍ଟର ତାଲିକା ହେବ।
 printers_none_found	କୌଣସି ପ୍ରିଣ୍ଟର ମିଳିଲା ନାହିଁ — ସିଷ୍ଟମ ପ୍ରିଣ୍ଟର ନାମ କିମ୍ବା ନେଟୱାର୍କ ଠିକଣା ଲେଖନ୍ତୁ (ଯଥା 192.168.1.50)।
 printer_from_find	{name} ଯୋଡ଼ାଗଲା
-bill_printer_ph	ବିଲ ପ୍ରିଣ୍ଟର
 queue_refused	ଦୋକାନ ଗ୍ରହଣ କଲାନାହିଁ ({n}) — ପ୍ରତ୍ୟେକକୁ କାଉଣ୍ଟରରେ ଯାଞ୍ଚ କରନ୍ତୁ:
 clear_not_accepted	ଯାଞ୍ଚ କଲି — ଏହି ତାଲିକା ସଫା କରନ୍ତୁ
 device_name_ph	ଏହି ଡିଭାଇସର ନାମ
@@ -638,7 +494,6 @@ connected_now	ବର୍ତ୍ତମାନ ଯୋଡ଼ା ଅଛି
 backup_failed	ଶେଷ ସ୍ୱୟଂଚାଳିତ ବ୍ୟାକଅପ୍ ବିଫଳ ହେଲା: {e}
 backup_overdue	{n} ଦିନ ହେଲା ବ୍ୟାକଅପ୍ ନାହିଁ — ବ୍ୟାକଅପ୍ ପାଇଁ ଏହି ଡିଭାଇସରେ ଆପ୍ ଖୋଲା ରଖନ୍ତୁ।
 disk_low	ଏହି ଡିଭାଇସରେ କେବଳ {mb} MB ଖାଲି ଅଛି — ଶୀଘ୍ର ବ୍ୟାକଅପ୍ ବିଫଳ ହେବ। କିଛି ସ୍ଥାନ ଖାଲି କରନ୍ତୁ।
-last_seen_devices	ଶେଷ ଦେଖାଗଲା: {time}
 connection_to_shop	ଦୋକାନ ସହ ସଂଯୋଗ
 supplier_name_ph	ଯୋଗାଣକାରୀ ନାମ (କିମ୍ବା ପାର୍ଟି)
 supplier_ph	ଯୋଗାଣକାରୀ
@@ -696,7 +551,6 @@ currency_use_help	ସ୍କ୍ରୋଲ୍ କରନ୍ତୁ ଏବଂ କୌ�
 day_close_help	ଦିନ ବନ୍ଦ ରେକର୍ଡ କଲେ ଏହି ସାରାଂଶ (ଗଣନା ଥିଲେ ଡ୍ରୟର ପାର୍ଥକ୍ୟ ସହ) ଅଡିଟ୍ ଲଗରେ ସେଭ୍ ହୁଏ। ଏହା ବିକ୍ରୟ ବନ୍ଦ କରେ ନାହିଁ।
 expenses_word	ଖର୍ଚ୍ଚ
 feature_access_help	ବଛା କର୍ମଚାରୀଙ୍କ ଫିଚର ପହଞ୍ଚ (ଯୋଡ଼ିବା ପରେ ଦବାନ୍ତୁ)
-footer_local	ସ୍ଥାନୀୟ SQLite · ସଦା ମାଗଣା · କୌଣସି କ୍ଲାଉଡ୍ ନାହିଁ
 fresh_book_kirano	ପ୍ରିଣ୍ଟର
 fresh_selected	Fresh ବଛା — କାଟାଲଗ୍ ଖାଲି ରହିବ। ପ୍ରସ୍ତୁତ ହେଲେ Done ଦବାନ୍ତୁ।
 gross_word	ମୋଟ
@@ -709,12 +563,9 @@ net_word	ନେଟ୍
 offline_badge	ଅଫଲାଇନ
 optional_login_help	ଇଚ୍ଛାଧୀନ ଲଗଇନ୍ (ଆଇଡି + ପାସୱାର୍ଡ)। ମାଲିକ ଥରେ ସେଟ୍ କରନ୍ତି; ପରେ କେବଳ ବ୍ୟବହାରକାରୀ ପାସୱାର୍ଡ ବଦଳାଇ ପାରିବେ।
 or_unlock_login	କିମ୍ବା ଲଗଇନ୍ ଆଇଡି + ପାସୱାର୍ଡରେ ଅନଲକ୍ କରନ୍ତୁ
-permission_preset	ଅନୁମତି ପ୍ରିସେଟ୍ (କାହାକୁ ପହଞ୍ଚ)
-preset_help_kirano	କ୍ୟାସିୟର: ବିକ୍ରୟ। ମ୍ୟାନେଜର: ବିକ୍ରୟ + ଆଇଟମ୍ + ବାତିଲ/ସଂଶୋଧନ।
-product_locked_kirano	Kirano
+permission_preset	ଅନୁମତି ପ୍ରିସେଟ୍
 product_only_kirano	ଏହି ଆପ୍ କେବଳ Kirano — ରେଷ୍ଟୁରାଣ୍ଟ ଅପରେଟିଂ ସିଷ୍ଟମ୍। ଅନ୍ୟ ବ୍ୟବସାୟ ପାଇଁ ଅଲଗା Kumkaj ଉତ୍ପାଦ ଅଛି।
 purchases_cogs	କିଣା (COGS)
-qty_cap	ପରିମାଣ
 restore_help	Restore: ଗୋଟିଏ ବ୍ୟାକଅପ୍ ବାଛନ୍ତୁ। ହିସାବ ସେତେବେଳେ ଯେପରି ଥିଲା ସେପରି ଖୋଲିବ; ଏବେର ହିସାବ ପ୍ରଥମେ ସଞ୍ଚିତ ହୁଏ, ତେଣୁ ଏହାକୁ ଫେରାଇହେବ।
 wipe_data_heading	ସ୍ଥାନୀୟ ଡାଟା ବିଲୋପ
 wipe_data_help	କେବଳ ମାଲିକ — Windows ଅନଇନଷ୍ଟଲ୍ ପରି ସମାନ ବିକଳ୍ପ। ବ୍ୟବସାୟ ରେକର୍ଡ ବ୍ୟବସାୟ ଇତିହାସ ସଫା କରେ କିନ୍ତୁ ଆଇଟମ୍ ଓ ସେଟଅପ୍ ରଖେ (ଜରୁରୀ ଅନଲକ୍ PIN ପରି)। ଦୋକାନ ସେଟଅପ୍ ବହି ଡାଟାବେସ୍ ହଟାଏ। ସ୍କ୍ରିନ ପସନ୍ଦ ୱିଣ୍ଡୋ/ଭାଷା ସଫା କରେ। ମାଲିକ PIN ରେ ନିଶ୍ଚିତ କରନ୍ତୁ। ଦଳରେ ଥିବା ଜରୁରୀ ଅନଲକ୍ PIN ଅଲଗା (ଅନଲକ୍‌ରେ ଗୁପ୍ତରେ ମିଟାଇବା)।
@@ -747,7 +598,6 @@ staff_renamed	ନାମ ସଞ୍ଚୟ ହେଲା
 staff_setup_copied_hire	{name} ଙ୍କଠାରୁ ସେଟଅପ୍ କପି ହେଲା — ନୂଆ ନାମ ଓ PIN ଦିଅନ୍ତୁ, ତା’ପରେ କର୍ମଚାରୀ ଯୋଡ଼ନ୍ତୁ
 staff_setup_copied_edit	{from} ଙ୍କ ସେଟଅପ୍ {to} ଉପରେ କପି ହେଲା
 staff_copy_need_selected	ପ୍ରଥମେ ବାଛନ୍ତୁ କାହାକୁ ସମ୍ପାଦନା କରିବେ
-staff_copy_need_source	ବାଛନ୍ତୁ କାହାର ସେଟଅପ୍ କପି କରିବେ
 staff_copy_same	ସେ ସେହି ବ୍ୟକ୍ତି — ଅନ୍ୟ କାହାକୁ ବାଛନ୍ତୁ
 staff_rename_need_selected	ପ୍ରଥମେ ବାଛନ୍ତୁ କାହାର ନାମ ବଦଳାଇବେ
 team_pick_hint	ବାଛନ୍ତୁ କାହାକୁ ସମ୍ପାଦନା କରିବେ — ସ୍କ୍ରିନ, ଟଙ୍କା ଅଧିକାର ଓ ଷ୍ଟେସନ୍ କେବଳ ସେହି ବ୍ୟକ୍ତିଙ୍କ ପାଇଁ ଦେଖାଯାଏ।
@@ -762,15 +612,9 @@ unit_picker_off	ବନ୍ଦ
 we_owe_them	ଆମେ ସେମାନଙ୍କ ଦେଣଦାର
 who_unlocking	କିଏ ଅନଲକ୍ କରୁଛନ୍ତି?
 locked_word	ଲକ୍
-show_pin	PIN ଦେଖାନ୍ତୁ
-hide_pin	PIN ଲୁଚାନ୍ତୁ
 set_owner_pin	ମାଲିକ PIN ସେଟ୍ କରନ୍ତୁ
 enter_owner_passcode	ମାଲିକ ପାସକୋଡ୍ ଦିଅନ୍ତୁ
 enter_staff_passcode	କର୍ମଚାରୀ ପାସକୋଡ୍ ଦିଅନ୍ତୁ
-pin_count_zero	0 / 12 ଅଙ୍କ · ଅତିକମରେ 4, ତା'ପରେ OK
-pin_count_need	{} / 12 ଅଙ୍କ · {} ଅଧିକ ଦରକାର
-pin_count_full	12 / 12 ଅଙ୍କ · OK ଦବାନ୍ତୁ
-pin_count_ready	{} / 12 ଅଙ୍କ · ପ୍ରସ୍ତୁତ ହେଲେ OK ଦବାନ୍ତୁ
 pin_hint_choose	4–12 ଅଙ୍କ ବାଛନ୍ତୁ (କିବୋର୍ଡ କିମ୍ବା ପ୍ୟାଡ୍) · ସେଭ୍ ପାଇଁ Enter/OK
 pin_hint_new	ନୂଆ 4–12 ଅଙ୍କର ମାଲିକ PIN (କିବୋର୍ଡ କିମ୍ବା ପ୍ୟାଡ୍) · Enter/OK
 pin_hint_shop_code	ଦୋକାନ ଡିଭାଇସ · ପେୟାରିଂ କୋଡ୍ {}
@@ -779,23 +623,15 @@ pin_hint_paired	ଅତିରିକ୍ତ ଟିଲ୍ ଯୋଡ଼ା ହୋଇ�
 pin_hint_pair_first	ଅତିରିକ୍ତ ଟିଲ୍ — ପ୍ରଥମେ ଦୋକାନ ଡିଭାଇସ ସହ ଯୋଡ଼ନ୍ତୁ
 unlock_to_continue	ଜାରି ରଖିବାକୁ ଅନଲକ୍ କରନ୍ତୁ
 no_staff_yet	ଏପର୍ଯ୍ୟନ୍ତ କୌଣସି କର୍ମଚାରୀ ନାହାନ୍ତି — ମାଲିକ ଭାବେ ଅନଲକ୍ କରନ୍ତୁ, ତା'ପରେ Team
-status_server_set_pin	ସର୍ଭର ମୋଡ୍ — ମାଲିକ PIN ସେଟ୍ କରନ୍ତୁ
-status_server_tills	ସର୍ଭର ମୋଡ୍ — ଅତିରିକ୍ତ ଟିଲ୍ ଯୋଗ ଦେଇପାରିବେ। ଅନଲକ୍ କରନ୍ତୁ
-status_server_unlock	ସର୍ଭର ମୋଡ୍ — ମାଲିକ ଭାବେ ଅନଲକ୍ କରନ୍ତୁ
-status_client_unlock	କ୍ଲାଏଣ୍ଟ ମୋଡ୍ — ବିକ୍ରୟ ପାଇଁ ଅନଲକ୍ କରନ୍ତୁ
 icon_new_selected	ଆଇକନ୍: ନୂଆ ଫାଇଲ୍ ବଛାଗଲା — ବ୍ରାଣ୍ଡ ସଂରକ୍ଷଣ କରନ୍ତୁ ଦବାନ୍ତୁ
 icon_custom	ଆଇକନ୍: ଆପଣଙ୍କ ଦୋକାନ ଚିହ୍ନ
 icon_default	ଆଇକନ୍: Kumkaj ଚିହ୍ନ (ଡିଫଲ୍ଟ) — ନିଜର ବାଛନ୍ତୁ
 logo_yours	ଲୋଗୋ: ଆପଣଙ୍କ ଦୋକାନ ଲୋଗୋ — ସ୍କ୍ରିନ୍ ଏବଂ ରସିଦରେ ଦେଖାଯିବ
 logo_default	ଲୋଗୋ: Kumkaj ଚିହ୍ନ (ଡିଫଲ୍ଟ) — ନିଜର ଥିଲେ ବାଛନ୍ତୁ
-tmpl_current	ବର୍ତ୍ତମାନ: {} — {}
-tmpl_selected	ବଛାଯାଇଛି: {} — {}
 setup_complete	ସେଟଅପ୍ ସମ୍ପୂର୍ଣ୍ଣ
 onboard_fresh_tmpl	ନୂଆ · {} — କାଟାଲଗ୍ ଖାଲିରୁ ଆରମ୍ଭ; ଜିନିଷରେ ଯୋଡନ୍ତୁ, ତା’ପରେ Done ଦବାନ୍ତୁ।
 onboard_book_tmpl	ବହି · {} — ଜିନିଷ ଏବଂ ଆରମ୍ଭ ବାକି ଯୋଡନ୍ତୁ, ତା’ପରେ Done ଦବାନ୍ତୁ।
-onboard_template_tmpl	ଚାହିଁଲେ ସ୍ଥାନର ନାମ ଦିଅନ୍ତୁ, ତାପରେ କିପରି ଆରମ୍ଭ କରିବେ ବାଛନ୍ତୁ।
 tmpl_blurb	କିରାଣା କାଉଣ୍ଟର: ବିକ୍ରି, ଷ୍ଟକ୍, ଖାତା, ଯୋଗାଣକାରୀ କିଣା, ବହି।
-tmpl_how	କାଉଣ୍ଟରରେ ବିକ୍ରି କରନ୍ତୁ; ଷ୍ଟକ୍ ପାଇଁ କିଣନ୍ତୁ; ଦିନ ବୁକ୍ ପାଇଁ ବହି।
 reports_facet_title	ରିପୋର୍ଟ
 reports_facet_help	ଦିନ ବହି, ପାର୍ଟି ଏଜିଂ, ବ୍ୟାଙ୍କ ପୋଷ୍ଟ ଏବଂ ଅବଧି ଲାଭ-କ୍ଷତି।
 against_bill_ph	ଉପର ବିଲ୍ # ବିପକ୍ଷରେ (ଇଚ୍ଛାଧୀନ)
@@ -806,14 +642,12 @@ amount_ph	ରାଶି
 amount_received_ph	ମିଳିଥିବା ରାଶି
 amount_we_pay_ph	ଆମେ ଦେଉଥିବା ରାଶି
 business_name_ph	ବ୍ୟବସାୟ ନାମ
-category_new_ph	ବର୍ଗ (ଇଚ୍ଛାଧୀନ, ନୂଆ ହେଲେ ତିଆରି ହେବ)
 code_bag_ph	କୋଡ୍ (bag)
 conv_factor_ph	ଗୁଣକ (25 = 1 bag → 25 kg)
 country_code_ph	ଦେଶ କୋଡ୍ ଯେପରି IN, GB, US, AE, BR
 credit_khata_amount_ph	ବାକି / ଖାତା ରାଶି
 credit_limit_ph	ବାକି ସୀମା (0 = ନାହିଁ)
 from_code_ph	ରୁ କୋଡ୍ (bag)
-item_name_lang_ph	ଜିନିଷ ନାମ — ନିଜ ଭାଷାରେ ଲେଖନ୍ତୁ
 login_id_opt_ph	ଲଗଇନ୍ ଆଇଡି (ଇଚ୍ଛାଧୀନ)
 manager_pin_ph	ମ୍ୟାନେଜର PIN (କେବଳ ଯଦି ଆପଣ ବାତିଲ କରିପାରିବେ ନାହିଁ)
 new_branch_name_ph	ନୂଆ ଶାଖା ନାମ
@@ -821,15 +655,12 @@ new_password_ph	ନୂଆ ପାସୱାର୍ଡ (ଇଚ୍ଛାଧୀନ)
 new_pin_ph	ନୂଆ PIN (4–12 ଅଙ୍କ)
 note_bank_ph	ଟିପ୍ପଣୀ (ଜମା, ଉଠାଣ, …)
 note_buy_expense_ph	ଟିପ୍ପଣୀ (ଇନ୍ଧନ, ଭଡ଼ା, …)
-note_expense_ph	ଟିପ୍ପଣୀ (ଇନ୍ଧନ, କାର୍ଯ୍ୟାଳୟ, …)
 options_kirano_ph	ବିକଳ୍ପ (ଇଚ୍ଛାଧୀନ) — Extra cheese=40, Large=80
-part_second_way_ph	ଦ୍ୱିତୀୟ ଉପାୟରେ ଅଂଶ (ଇଚ୍ଛାଧୀନ)
 phone_ph	ଫୋନ୍
 place_name_ph	ଏହି ସ୍ଥାନର ନାମ
 qty_example_ph	ପରିମାଣ (ଯେପରି kg ପାଇଁ 1.5)
 quantity_ph	ପରିମାଣ
 reason_required_ph	କାରଣ (ଆବଶ୍ୟକ)
-role_title_ph	ଭୂମିକା ଶୀର୍ଷକ (ଯେପରି Barista)
 service_pct_ph	ସେବା % ଇଚ୍ଛାଧୀନ 0/10/12
 short_code_ph	ଛୋଟ କୋଡ୍ (MG02)
 starting_password_ph	ଆରମ୍ଭ ପାସୱାର୍ଡ (ଇଚ୍ଛାଧୀନ)
@@ -864,14 +695,11 @@ shift_handover	ସିଫ୍ଟ ହସ୍ତାନ୍ତର
 shift_since	ଏହି ସିଫ୍ଟ ଆରମ୍ଭ
 expected_in_drawer	ଡ୍ରୟରରେ ଥିବା ଉଚିତ
 right_discount	ରିହାତି ଦେବା
-pick_category	ବର୍ଗ ବାଛନ୍ତୁ
-close_category_list	ବର୍ଗ ତାଲିକା ବନ୍ଦ କରନ୍ତୁ
 new_category_row	ନୂଆ ବର୍ଗ — ଆଇଟମ ସଞ୍ଚୟ କଲେ ତିଆରି ହେବ
 your_category	ଆପଣଙ୍କ ବର୍ଗ
 suggested_category	ପରାମର୍ଶ — ଆମ ଆଇଟମ୍‌ରୁ
 category_search_ph	ବର୍ଗ — ନିଜର ଖୋଜନ୍ତୁ ବା ନୂଆ ଲେଖନ୍ତୁ
 cancel_item_short	ବାତିଲ
-cancel_item_title	ଏହି ଆଇଟମ୍ ବାତିଲ କରନ୍ତୁ — ବ୍ୟାକ୍ ଅଫିସ୍ ବାତିଲ ସ୍ଲିପ୍ ପାଏ
 return_to_customer	ଗ୍ରାହକଙ୍କୁ ଫେରାନ୍ତୁ
 short_by	କମ୍ ଅଛି
 tip_not_sale	ଟିପ୍ (କର୍ମଚାରୀଙ୍କ, ବିକ୍ରି ନୁହେଁ)
@@ -884,9 +712,7 @@ finding_server	ଏହି Wi‑Fiରେ ଦୋକାନର ସର୍ଭର ଖୋ
 no_server_found	କୌଣସି ସର୍ଭର ମିଳିଲା ନାହିଁ। ଦୋକାନ ଡିଭାଇସ ସେହି Wi‑Fiରେ ଅତିରିକ୍ତ ଟିଲ ଅନୁମତି ସହ ଅଛି କି ଦେଖନ୍ତୁ, ବା ଏହାର IP ଲେଖନ୍ତୁ।
 servers_found_pick	ଆପଣ ସଂଯୋଗ କରିବାକୁ ଚାହୁଁଥିବା ଦୋକାନକୁ ଟ୍ୟାପ୍ କରନ୍ତୁ।
 server_host_selected	{host} ବ୍ୟବହାର — ପେୟାରିଙ୍ଗ୍ କୋଡ୍ ଦିଅନ୍ତୁ, ତାପରେ ବର୍ତ୍ତମାନ ପେୟାର୍ କରନ୍ତୁ।
-print_bill	ବିଲ୍ ଛାପନ୍ତୁ
 approval_pin_ph	ମ୍ୟାନେଜର PIN (ପଚାରିଲେ ହିଁ)
-confirm	ନିଶ୍ଚିତ କରନ୍ତୁ
 menu_search_ph	ଆଇଟମ ବା ସର୍ଟ କୋଡ୍ ଖୋଜନ୍ତୁ
 customer_paid_ph	ଗ୍ରାହକ ଦେଲେ
 tip_ph	ଟିପ୍
@@ -896,7 +722,6 @@ bill_format_help	ପ୍ରତି ବିଲରେ ଆପଣଙ୍କ ଦୋକା
 bill_header_ph	ଠିକଣା | ଫୋନ୍
 fssai_ph	FSSAI / ଦୋକାନ ଲାଇସେନ୍ସ ନଂ (ଇଚ୍ଛାଧୀନ)
 bill_footer_ph	ଫୁଟର୍ (ଯେପରି ଧନ୍ୟବାଦ, ପୁଣି ଆସନ୍ତୁ)
-save_bill_format	ବିଲ୍ ଫର୍ମାଟ୍ ସଞ୍ଚୟ କରନ୍ତୁ
 kot_field_on	ଦେଖାଅ
 kot_field_off	ଲୁଚାଅ
 kot_weight_light	ହାଲୁକା
@@ -907,10 +732,8 @@ kot_weight_bold	ମୋଟା
 kot_align_start	ଆରମ୍ଭ କରନ୍ତୁ
 kot_align_center	ମଝିରେ
 kot_align_end	ଶେଷରେ
-content_width	ବିଷୟବସ୍ତୁ ଚଉଡ଼ା (ମିମି)
 content_width_bill	ବିଲ ବିଷୟବସ୍ତୁ ଓସାର (mm)
 content_width_ph	କିମ୍ବା ବିଷୟବସ୍ତୁ ଚଉଡ଼ା ଲେଖନ୍ତୁ, 40–210 ମିମି
-content_width_help	ଏହି ସ୍ଲିପ୍ କେତେ ଓସାରରେ ଛପା ହେବ। ବିଲ ନିଜ ଓସାର ରଖେ।
 content_width_bill_help	ଗ୍ରାହକ ବିଲ କେତେ ଓସାରରେ ଛପା ହେବ। ପୂର୍ବନିର୍ଦ୍ଧାରିତ 210 mm (ପୃଷ୍ଠା)। 58 mm ସଂକୀର୍ଣ୍ଣ ସ୍ଲିପ୍, 80 mm ଓସାର ସ୍ଲିପ୍, 112 mm 4-ଇଞ୍ଚ, 210 mm A4-ଓସାର। 40 ରୁ 210 ମଧ୍ୟରେ ଯେକୌଣସି ମୂଲ୍ୟ ଲେଖନ୍ତୁ। ଟିକେଟର ନିଜ ଓସାର ସ୍ଲିପ୍ ଟ୍ୟାବରେ ଅଛି।
 vp_paper_width	ବିଷୟବସ୍ତୁ ଚଉଡ଼ା (ମିମି)
 vp_paper_width_ph	କିମ୍ବା ବିଷୟବସ୍ତୁ ଚଉଡ଼ା ଲେଖନ୍ତୁ, 40–210 ମିମି
@@ -925,9 +748,6 @@ test_bill_sent	ବିଲ ନମୁନା ପଠାଗଲା
 test_print_no_printer	ସେହି କାମ ପାଇଁ ପ୍ରିଣ୍ଟର ନାହିଁ — ଏହି ସ୍କ୍ରିନରେ ହିଁ ଗୋଟିଏ ବାଛନ୍ତୁ
 std_print	ବିଲ୍ ପ୍ରିଣ୍ଟ ଆକାର
 std_print_help	OS / ଡକ୍ୟୁମେଣ୍ଟ ପ୍ରିଣ୍ଟରରେ ସାଧାରଣ ଠିଆ ଓ ଶୋଇଥିବା ବିଲ କାମ ପାଇଁ ଅକ୍ଷର ଆକାର (ପଏଣ୍ଟ ଦିଅନ୍ତୁ — ଛୋଟ/ସାଧାରଣ/ବଡ଼ ନୁହେଁ)। ଦୁଇ ଦିଗରେ ସମାନ ଆକାର।
-std_size_s	ଛୋଟ
-std_size_m	ସାଧାରଣ
-std_size_l	ବଡ଼
 save_std_print	ବିଲ୍ ପ୍ରିଣ୍ଟ ଆକାର ସେଭ୍ କରନ୍ତୁ
 std_print_saved	ବିଲ୍ ପ୍ରିଣ୍ଟ ଆକାର ସେଭ୍
 print_brand_kit	ପ୍ରିଣ୍ଟ ବ୍ରାଣ୍ଡ କିଟ୍
@@ -940,14 +760,9 @@ choose_payment_qr	ପେମେଣ୍ଟ QR ବାଛନ୍ତୁ
 clear_payment_qr	ପେମେଣ୍ଟ QR ହଟାନ୍ତୁ
 payment_qr_set	ପେମେଣ୍ଟ QR: ଫାଇଲରେ ଅଛି — ଗ୍ରାହକ ଡିସପ୍ଲେରେ ଦେଖାଯାଏ (ସେଠାରେ ରାଶି UPI QR ବଦଳରେ)
 payment_qr_none	ପେମେଣ୍ଟ QR: ନାହିଁ — ପେମେଣ୍ଟରେ UPI ID ରୁ ରାଶି QR
-aggregator_import	ଏଗ୍ରିଗେଟର ଅର୍ଡର (ଫାଇଲ୍)
-aggregator_import_help	ବୈକଳ୍ପିକ Local: backupsରେ import_aggregator_orders.json ରଖି Import। କାଉଣ୍ଟର ରୋକିବ ନାହିଁ; ଲାଇଭ୍ Zomato/Swiggy = Cloud।
-import_aggregator_file	ଏଗ୍ରିଗେଟର ଫାଇଲ୍ ଆମଦାନି
 team_pick_ph	ସମ୍ପାଦନ ପାଇଁ କର୍ମଚାରୀ ନାମ
 select_staff	ଏହି କର୍ମଚାରୀ ବାଛନ୍ତୁ
 rights_help	ଏହି ବ୍ୟକ୍ତିଙ୍କ ଟଙ୍କା କାମ — ବଦଳାଇବାକୁ ଦବାନ୍ତୁ: ଅନୁମତି → ବସ୍ PIN ଦରକାର → ଅନୁମତି ନାହିଁ। ବିଲ ପୁଣି ଛାପନ୍ତୁ କେବଳ ବିଲ ପାଇଁ; ବିଭାଗଗୁଡ଼ିକ ତଳ ତାଲିକାରେ ଅଛି।
-dish_picker_help	ଆମ ଆଇଟମ୍ ଖୋଜନ୍ତୁ କିମ୍ବା ଦେଖନ୍ତୁ ଏବଂ ନାମ ଓ ଫଟୋ ଭରିବାକୁ ଗୋଟିଏ ଦବାନ୍ତୁ — କିମ୍ବା ନିଜ ନାମ ରଖନ୍ତୁ। ଆପଣଙ୍କ ଦାମ ଦିଅନ୍ତୁ (0 ଚଳିବ), ତା’ପରେ ଆଇଟମ୍ ଯୋଡ଼ନ୍ତୁ।
-close_dish_list	ଆଇଟମ୍ ତାଲିକା ବନ୍ଦ କରନ୍ତୁ
 own_item_name	ଏହାକୁ ଆପଣଙ୍କ ନିଜ ଆଇଟମ ନାମ ଭାବେ ବ୍ୟବହାର କରନ୍ତୁ
 on_your_menu	ତାଲିକାରେ
 edit	ସମ୍ପାଦନା
@@ -958,24 +773,16 @@ add_scheme	BOGO ଯୋଡ଼ନ୍ତୁ
 schedule_ph	Hours — Mon-Fri 07:00-11:00 or Evening 17:00-19:00=150
 upi_vpa_ph	UPI ID (VPA)
 upi_payee_ph	UPI ଗ୍ରହୀତା (ବୈକଳ୍ପିକ)
-upi_qr	UPI QR
 show_upi_qr	UPI QR ଦେଖାନ୍ତୁ
 close_upi_qr	ବନ୍ଦ
 upi_qr_help	ଗ୍ରାହକ ସ୍କାନ୍ କରି ପେମେଣ୍ଟ କରନ୍ତି। ପେମେଣ୍ଟ ପରେ ପେମେଣ୍ଟ ନିଅନ୍ତୁ ଦବାନ୍ତୁ। ଦ୍ୱିତୀୟ ସ୍କ୍ରିନ: LAN ରେ ସର୍ଭର URL /display ଖୋଲନ୍ତୁ।
-recently_done	ଏବେ ସରିଥିବା
 role_help_customer	ଭୂମିକା: ଗ୍ରାହକ — AR (ସେମାନେ ଆମ ଦେଣାଦାର)। ସେହି ଫାର୍ମ ଯୋଗାଣକାରୀ ମଧ୍ୟ ହୋଇପାରେ।
 role_help_both	ଭୂମିକା: ପଠାଉଥିବା ଲୋକ + କ୍ୟାରିଅର — ଗୋଟିଏ ପାର୍ଟି, AR ଏବଂ AP ବହି, ରିପୋର୍ଟରେ ନେଟ୍।
 role_help_supplier	ଭୂମିକା: ଯୋଗାଣକାରୀ — କିଣା ପାଇଁ AP।
-items_word	ଜିନିଷ
-items_section	ଜିନିଷ
-back_to_order	ଅର୍ଡରକୁ ଫେରନ୍ତୁ
-new_items_head	ଏଯାଏଁ ପଠାଯାଇନାହିଁ
 price_ph	ଦାମ
 price_ph_gst_inside	ମୂଲ୍ୟ ({tax} ସହିତ)
-tax_rates_missing_hint	ଏହି ଆଇଟମ୍‌ରେ {tax} ହାର ନାହିଁ — ଆଇଟମ୍‌ରେ ଟିକସ ହାର ଦିଅନ୍ତୁ (ଦାମ ପୂର୍ବରୁ {tax} ସହ, {tax} ଅନ୍ତର୍ଭୁକ୍ତ ଅଧୀନରେ)
 taxable_value	କରଯୋଗ୍ୟ ମୂଲ୍ୟ
 gst_inside_price_note	({tax} ସହିତ)
-start_with_template	ଆମ ଆଇଟମ୍ ଟେମ୍ପଲେଟ୍‌ରେ ଆରମ୍ଭ କରନ୍ତୁ
 template_heading	ଆରମ୍ଭ ଆଇଟମ୍
 template_info	{c}ଟି ବର୍ଗ ଓ ଫଟୋ ସହ {d}ଟି ଆଇଟମ୍, ଯୋଡ଼ିବାକୁ ପ୍ରସ୍ତୁତ। ଦାମ ₹0 ରୁ ଆରମ୍ଭ — ପରେ ନିଜର ଦିଅନ୍ତୁ।
 template_import	ସମ୍ପୂର୍ଣ୍ଣ ଟେମ୍ପଲେଟ୍ ଆଣନ୍ତୁ
@@ -997,21 +804,13 @@ opening_client	କ୍ଲାଏଣ୍ଟ ଖୋଲୁଛି…
 preparing_desk	ଡେସ୍କ ପ୍ରସ୍ତୁତ ହେଉଛି…
 opening_server	ସର୍ଭର ଖୋଲୁଛି…
 creating_server	ସର୍ଭର ତିଆରି ହେଉଛି…
-order_empty_pick	ଅର୍ଡର ଖାଲି — ଆଇଟମ୍ ବାଛିବାକୁ ଉପରେ ଆଇଟମ୍ ଯୋଡ଼ନ୍ତୁ ଦବାନ୍ତୁ।
 add_dishes	ଆଇଟମ୍ ଯୋଡ଼ନ୍ତୁ
 order_so_far	ଏହି ଅର୍ଡରରେ: {n} · {total}
 no_dish_match	“{q}” ସହ କୌଣସି ଆଇଟମ୍ ମେଳ ଖାଏ ନାହିଁ
-pick_dishes_help	ଯୋଡ଼ିବାକୁ ଆଇଟମ୍ ଦବାନ୍ତୁ · ତାଲିକା ଛୋଟ କରିବାକୁ ବର୍ଗ ବାଛନ୍ତୁ
 pick_done	ହୋଇଗଲା
-pick_done_dd	ହୋଇଗଲା · {label}
-printer_route_mode	ଏହି ସ୍ଥାନରେ ଅନେକ ପ୍ରିଣ୍ଟର ଥିଲେ
-printer_mode_first	ଯାହା ପ୍ରଥମେ ଚାଲେ
-printer_mode_all	ସବୁଥିରେ ଛାପନ୍ତୁ
 kot_field_up	ଉପରକୁ ନିଅନ୍ତୁ
 kot_field_down	ତଳକୁ ନିଅନ୍ତୁ
-app_template_blurb_extra	ସହିତ: ମାଲିକ ଜହିର, ଆଡମିନ୍ ଆସିଫ୍, କ୍ୟାସିୟର ନୱାଜ୍; ଆଗ ସାଇଡବାର୍; 4 ଘଣ୍ଟା ପରେ ଇତିହାସ; ଆଜିର ପଟି ବନ୍ଦ; ଛୋଟ ବିଲ।
 dishes_n	{n}ଟି ଆଇଟମ୍
-recipe_ph	ରେସିପି (ଇଚ୍ଛାଧୀନ — କାଉଣ୍ଟର ଦୋକାନରେ ବ୍ୟବହୃତ ନୁହେଁ)
 reorder_ph	ଏତିକିରେ ଆହୁରି କିଣନ୍ତୁ
 set_reorder	ପୁନଃ ଅର୍ଡର ସ୍ତର ରଖନ୍ତୁ
 low_stock_alert	କମୁଛି — ଶୀଘ୍ର କିଣନ୍ତୁ: {items}
@@ -1020,7 +819,6 @@ show_unpriced	କେବଳ ଦାମ ବିନା ଆଇଟମ୍ ଦେଖା�
 show_all_dishes	ସବୁ ଆଇଟମ୍ ଦେଖାନ୍ତୁ
 role_title_rest_ph	ପଦ (ଯେପରି କ୍ୟାପଟେନ, ମୁଖ୍ୟ ରୋଷେୟା)
 preset_help_rest	କ୍ୟାସିୟର: ବିକ୍ରୟ। ମ୍ୟାନେଜର: ବିକ୍ରୟ + ଆଇଟମ୍ + ବାତିଲ/ସଂଶୋଧନ।
-kind_raw	ଦୋକାନ ବ୍ୟବହାର ପାଇଁ କିଣାଯାଇଥିବା
 kind_resale	ବିକ୍ରି ପାଇଁ କିଣାଯାଇଥିବା
 kind_dish	ଗଣନା ନାହିଁ
 buy_unit_ph	ଏକକ (କିଲୋ, ଲିଟର, ସଂଖ୍ୟା)

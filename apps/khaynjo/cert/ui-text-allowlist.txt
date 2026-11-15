@@ -1,0 +1,31 @@
+# Widgets whose long text is DATA (scripts/ui-text-inventory.sh). Never add an
+# explanation here — explanations go in the heading's ℹ (DESIGN.md).
+# Report / summary rows
+head
+k
+line
+label
+reports_label
+day_close_label
+shift_so_far_label
+bank_recon_label
+inventory_label
+kitchen_counts
+units_label
+sibling_pickers_label
+fiscal_label
+locale_label
+audit_label
+# State lines with values
+books_low_stock
+buy_low_stock
+floor_summary
+credit_summary_label
+settings_lang_selected
+backup_auto_label
+diag_status_label
+# Headings that are titles
+station_manage_heading
+h_duress_heading
+# The privacy policy page itself
+privacy_body

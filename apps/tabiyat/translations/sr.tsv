@@ -1,5 +1,4 @@
 # Serbian — Српски (sr). One key<TAB>text per line, in en() order; keep {placeholders}.
-app_tagline	Апотекарски пулт: лекови, серије, кхата и књиге. Бесплатно ван мреже.
 barcode_ph	Бар код / ​​ЕАН
 composition_ph	Сол / композиција (претражива)
 schedule_h_off	Распоред Х — искључено (власничка застава)
@@ -13,7 +12,6 @@ expiry_alerts	Обавештења о истеку (наредних 7 дана)
 expiry_none	Ниједна серија не истиче у наредних 7 дана.
 rx_nudge	Власник је означио Рк / Распоред Х — додајте напомену ако је потребно.
 unlock	Откључај
-pin_hint	Власник PIN почиње са 0000
 sell	Селл
 buy	Купи
 books	Дневник
@@ -32,17 +30,13 @@ reports_month	Добит и губитак (месец)
 reports_aging	Неизмирени/дебитно-кредитни
 reports_balance_sheet	Биланс стања
 reports	Банковна књига & П&Л
-refresh	Освежи
 undo	Поништи
-start_tracking	Почните да пратите
 stock_minus	− Залиха
 stock_plus	+ Стоцк
 settle_cash	Измирите готовину
 settle_card	Плати картицом
 items	Лекови
 nav_items	Лекови
-more	Више
-your_items	Ваши лекови
 items_help	Додирните ставку да бисте је изменили. Нова ставка брише образац. Претражите по имену или кратком коду, поставите цену (0 је у реду), а затим Додајте. Већ евидентиране продаје задржавају име за које су оптужени.
 add_item	Додајте ставку менија
 new_item	Нова ставка менија
@@ -53,28 +47,22 @@ remove	Уклони
 removed_items	Уклоњене ставке менија
 removed_help	Ресторе враћа ставку у ставке тачно онако како је била — цена, фотографија и категорија.
 restore_item	Врати
-empty_catalog	Још нема лекова. Отворите лекове, додајте име, бар код или со, а затим продај.
+empty_catalog	Још нема лекова.
 total	Укупно
 cash	Цасх
 upi	UPI
 card	Цард
 credit	Купци и добављачи
 clear	Јасно
-ready_to_sell	Спреман за књигу
 today_prefix	данас
-today_mid	данас
 owed	изванредан
-round_word	округли
 back	Назад
 sold_out	Недоступно
 restock	Допуни
 not_tracked	Није праћено
 in_stock	на лагеру
 marked_sold_out	Означено као недоступно
-add_upper	АДД
-na	Н/А
 qty	Вт/Кти
-unit_at	Оцени @
 actual	Стварно
 applied	Примењено
 note_ph	Напомена (опционо)
@@ -93,21 +81,13 @@ bill_item_qty	Кти
 bill_item_price	Цена
 bill_item_amount	Износ
 bill_item_note	Рк / напомена о продаји
-bill_item_col_gap	Размак у колони
 bill_item_col_order	Редослед колоне
 bill_item_col_sep	Правила колона
-bill_item_gap_tight	Чврсто
-bill_item_gap_comfort	Удобан
-bill_item_gap_wide	Широко
-bill_item_num_width	Број колоне
-bill_item_num_compact	Збијено
-bill_item_num_comfort	Удобан
-bill_item_num_wide	Широко
-bill_item_num_align	Бројеви се поравнавају
-bill_item_gap_em	јаз (ем)
-bill_item_qty_min	Количина мин (ем)
-bill_item_price_min	Цена мин (ем)
-bill_item_amount_min	Мин. износ (ем)
+slip_col_width	Ширина (mm)
+slip_col_start	Почетни размак (px)
+slip_col_end	Завршни размак (px)
+slip_col_align	Поравнање текста
+slip_columns_help	Ширина сваке колоне укључује њен почетни и завршни размак. Текст се прелама унутар своје колоне; оно што прелази ширину садржаја одсеца се, на папиру и у прегледу.
 bill_total_qty_label	Ознака укупне количине
 bill_total_subtotal_label	Ознака суб тотал
 bill_total_grand_label	Укупна ознака
@@ -120,11 +100,7 @@ bill_total_qty	Тотал кти
 bill_total_subtotal	Међузбир
 bill_total_grand	Укупно укупно
 kot_unassigned	Унассигнед
-pos_tab_items	Додате ставке менија
-pos_tab_payment	Плаћање
-settings_hub_title	Подешавања
 settings_hub_help	Отварајте једну по једну област — мање померања, јаснији избори.
-settings_back	Назад
 settings_sec_language	Језик и валута
 settings_sec_country	Држава и порез
 settings_sec_tills	Остали уређаји
@@ -166,35 +142,17 @@ diag_cleared	Дијагностички дневники су обрисани
 sidebar_settings	Бочна трака
 sidebar_settings_help	Исте иконе као бочна шина. Превуците ред да бисте променили редослед. Окрените прекидач да бисте приказали или сакрили. Подешавања и закључавање увек остају на траци.
 sidebar_always_on_short	Увек укључен
-sidebar_back_settings	Назад
-sidebar_shown	Показано
-sidebar_hidden	Скривено
-sidebar_always_on	Увек на шанку
-sidebar_shown_hint	Приказано на бочној шини / доњим језичцима
-sidebar_hidden_hint	Сакривен од бара
 sidebar_menu_items	Ставке менија
 sidebar_enable_all	Омогући све
 sidebar_disable_all	Онемогући све
 sidebar_order_saved	Редослед бочне траке је сачуван
 sidebar_visibility_saved	Видљивост бочне траке је сачувана
-amounts_hide	Сакриј се
-amounts_show	Схов
-printers_none_hint	Прво сачувајте штампач на овом уређају, а затим га додајте на рачун или одељак
-counter	Шанк
-dine_in	Шанк
-takeaway	Такеаваи
-order	Ред у ресторану
 sales	Продаја
-sales_refunds	Продаја и повраћај новца
 day_close	Дан близу
 reports_expenses	Банковна књига & П&Л
 nav_reports	Извештаји
 nav_settings	Подешавања
 nav_lock	Закључај
-no_sale_yet	Још нема продаје
-favorites	Омиљено
-favorites_help	Ставке менија које често продајете, сачуване за вашу пријаву. Додајте једну на рачун или направите своју листу од свих ставки менија испод.
-your_favorites	Ваши фаворити
 all_items	Све ставке менија
 frequent	Често
 added_items	Додате ставке менија
@@ -211,8 +169,6 @@ zero_sales_on	Дозволи 0 ИНР
 zero_sales_off	Захтевај цену
 zero_sales_saved_on	Дозвољена продаја нулте вредности
 zero_sales_saved_off	Распродаја мора да има цену изнад 0 ИНР
-no_favorites	Још нема фаворита — додајте ставке менија са листе испод.
-add_to_bill	Додај на рачун
 added	Додато
 owes_word	дугује
 selected_word	Изабрано
@@ -221,19 +177,11 @@ chip_missing_customer	Недостаје изабрани купац — иза�
 chip_no_customer	Још увек нема клијента — унесите име, а затим додирните Кредит
 credit_summary_fmt	{} клијената · отворени кредит {} · задржани аванси {}
 recent_label	недавно:
-start_order	Започните редослед
-open_bill	Отворени рачун
-collect_payment	Прикупите уплату
-payment_pending	Плаћање је на чекању
-collect_at_counter	прикупити на шалтеру
 inventory	Инвентар
-inventory_stock	Инвентар и залихе
 branches	Огранци
-branches_org	Огранци & орг
 credit_customers	Купци и добављачи (кредитни рачуни)
 customer_name_ph	Име купца или добављача
 new_customer_ph	Име новог купца или добављача
-item_name_ph	Назив ставке менија (нпр. Масала Доса)
 item_price_ph	Цена
 start_template	Производ
 team	Тим
@@ -241,17 +189,11 @@ team_pins	Тим & PINс
 my_pin_settings	мој PIN
 settings_hub_help_my_pin	Промените откључавање PIN за особу која је пријављена на овом уређају.
 team_self_help	Једно пријављивање: нова PIN, нова лозинка или обоје. Оставите поље празно да задржите оно што имате. Питајте власника да ли су вам потребни различити екрани или права.
-backup_settings	Резервна копија и подешавања
-lock_app	Закључај апликацију
 pick	Пицк
-select	Изаберите
 advance	Напред
 owner	Власник
 staff	Особље
 photo	Пхото
-auto	Ауто
-prev	Прев
-next	Следеће
 ok	ОК
 this_shop	Режим сервера
 extra_till	Режим клијента
@@ -260,17 +202,13 @@ server	Режим сервера
 client	Режим клијента
 language_currency	Језик и валута
 language	Језик
-choose_language	Изаберите свој језик
 language_setup_hint	Пратите језик овог уређаја или га сами изаберите.
 lang_follow_platform	Језик уређаја
 lang_pick_user	Изаберите језик
 lang_platform_now	Језик уређаја сада
 selected_language	Изабрано
-continue	Настави
 this_device	ОВАЈ УРЕЂАЈ
 device_use_q	Како ће се овај уређај користити?
-last_server_mode	Вас Сервер — додирните за наставак
-last_client_mode	Био је клијент — додирните да бисте наставили
 choose_server	Изаберите сервер
 choose_server_hint	Отворите постојећи сервер или га креирајте за неко друго предузеће.
 create_new_server	Креирајте нови сервер
@@ -280,12 +218,6 @@ server_remove_pin_ph	Власник PIN да уклони сервер
 only_owner_remove_server	Само власник може уклонити сервер
 owner_pin_remove_server	Власник PIN је обавезан да уклони овај сервер
 device_setup_help	Сервер чува књиге овде. Клијент се упарује са сервером.
-app_template_heading	Почетни каталог (опционо)
-app_template_blurb	Учитава узорак каталога; Власник Захир (захир), Админ Асиф (асиф, ПИН 1111), благајник Наваз (наваз, ПИН 0000); порез/ГСТ офф; фронт сидебар; историја се брише након 4 сата (и Обриши сада у резервној копији); Данас скини се; компактни рачун + Стандардне маргине за уске тацне. Порез и бочне траке могу се поново укључити у подешавањима.
-app_template_apply	Примените почетни каталог
-app_template_skip	Прескочи за сада
-app_template_status	Сервер спреман — примените почетни каталог или прескочите
-app_template_importing	Примењује се {title}…
 currency	Валута
 backup	Бацкуп
 use	Користите
@@ -319,7 +251,7 @@ attachments_last_expense	Прилози (последњи трошак)
 bank	Банка
 bank_in	Банка у
 bank_out	Новац из банке
-bank_reconciliation	Банковно помирење (означите на изводу из банке)
+bank_reconciliation	Банковно помирење
 bank_to_till	Банка → до
 book_add_dish	Књига — додајте ставку / ставку
 book_opening_credit	Главна књига — почетни кредит
@@ -349,9 +281,6 @@ share_whatsapp	Подели WhatsApp
 lan_pages_heading	Странице клијената на Ви‑Фи
 lan_pages_help	На Ви‑Фи-ју ове продавнице, странице купаца раде за таблу за приказ и повратне информације. Људима на мобилним подацима Цлоуд је потребан касније. Картични терминал или веза за плаћање су опциони и никада не блокирају шалтер.
 diag_send_heading	Делите овај уређај
-optional_login_heading	Опционо пријављивање
-rights_heading	Права
-ops_panel	Локалне операције
 crm_heading	Купци и поруке
 crm_help	Рођендан, лојалност, неактивни и врхунски гости — ред SMS или WhatsApp намере. Use {name} and {points} in the message. Owner taps send; nothing blasts by itself.
 crm_queue_sms	Ред SMS
@@ -376,21 +305,17 @@ till_wallet_topup_ph	Износ новчаника допуне
 till_voucher_issue_amt_ph	Издајте износ ваучера
 till_voucher_issue_code_ph	Нови код ваучера
 bulk_price_apply	Примени скупну цену
-card_terminal_optional	Картични терминал/линк за плаћање (опционо када је интернет доступан)
 copy_report	Копирај извештај
 counted_cash_ph	Пребројана готовина у фиоци
 country_tax	Држава и порез
 create_backup	Направите резервну копију
 credit_limit_heading	Credit limit (selected customer or supplier)
-day_close_summary	Закључак дана
 delete_party	Delete selected customer or supplier
-delivery	Испорука
 done_open_books	Done — open ledgers
 drawer_count	Број фиока (опционо)
 expense_heading	Трошкови
 export_day	Дан извоза
 extra_note_bill_ph	Додатна напомена о овом рачуну / продаји
-extra_note_expense_ph	Додатна напомена о последњем трошку
 extra_tills_heading	Ектра доллс
 other_devices_help_heading	Подесите друге уређаје
 other_devices_help	На овом уређају (серверу): Остали уређаји → Дозволи екстра касе. Забележите код за упаривање и Ви‑Фи адресу. Додирните Дозволи другим уређајима да се повежу ако се појави. На рачунару додирните Почни са овим рачунаром. На сваком другом уређају: инсталирајте апликацију, изаберите Режим клијента, пронађите сервер продавнице (или унесите адресу), унесите код за упаривање, упарите сада. Поруџбине чекају на уређају ако Ви‑Фи престане и одлазе када сервер поново одговори. Додатни штампачи су подешени на серверу (Подешавања → Штампачи) — екстра док тамо шаљу рачуне.
@@ -404,7 +329,6 @@ login_id_ph	Корисничко име
 mark_cleared	Ознака је избрисана
 new_party_clear	Нови купац или добављач (јасан образац)
 new_party_kind_supplier_ph	Нови купац или врста добављача (Добављач)
-next_country	Следећа земља
 next_order	Следећа поруџбина (очистите сто)
 note_gstin_ph	Напомена / GSTИН / подсетник за споразум
 notes_attach_party	Напомене и прилози (изабрани купац или добављач)
@@ -422,8 +346,6 @@ pay_ap_cash	Платите АП готовином
 pay_ap_heading	Плати оно што им дугујемо (АП)
 pay_ap_upi	Плати АП UPI
 pay_selected_heading	Плати изабрано (измири дуг / узми аванс)
-pick_from_items	Pick from our menu items
-prev_country	Претходна земља
 print_open	Штампај / отвори
 reason_amend_ph	Разлог за измену / поништење / повраћај
 reason_note_ph	Разлог / напомена (расипање, бројање, …)
@@ -447,14 +369,10 @@ history_after_hours	После сати
 history_hours_ph	Сати (1–168, подразумевано 4)
 history_hours_save	Уштедите сате
 history_clear_now	Очистите историју сада
-history_cleared	Историја трговања је очишћена — подешавање се чува
-history_retention_saved	Брисање историје је сачувано
 history_hours_saved	Сати историје су сачувани
-history_owner_only	Само власник или администратор може да обрише историју
 rollup	Summary rollup
 save_brand	Сачувај бренд
 save_business_id	Сачувајте пословни ИД
-save_business_name	Сачувајте назив предузећа
 save_features	Сачувај
 save_features_named	Сачувај {name}
 save_features_ok	Сачувано подешавање за {name}
@@ -485,7 +403,6 @@ copy_pair_code	Копирајте код за упаривање
 new_pair_code	Нови код за упаривање
 pair_finishing	Завршни пар… применом пословних књига
 pair_opening	Отварање до…
-pair_copied	Код за упаривање је копиран
 lan_offline_waiting	Сервер за куповину недоступан · {n} чека
 lan_connecting	Повезивање са продавницом…
 lan_live	Уживо
@@ -499,7 +416,6 @@ firewall_waiting	Чека се упит администратора…
 lan_join_help	На другом уређају: Режим клијента → Пронађите сервер продавнице (или унесите {addr}) → код за упаривање {code}.
 lan_pair_status	Wi‑Fi {addr}
 lan_join_help_no_addr	Повежите овај уређај са Wi‑Fi за адресу.
-lan_no_address	Још нема адресе Wi‑Fi — повежите се са продавницом Wi‑Fi.
 lan_not_listening	Не прихвата уређаје (порт {port} заузет). Поново покрените апликацију.
 lan_tills_off	Екстра касе су искључене. Дозволите им да пусте други уређај да се придружи.
 paired_with	Упарено · {url}
@@ -520,41 +436,21 @@ printers_help	Пронађите штампаче, додирните један
 printers_host_only	Штампачи су подешени на уређају продавнице (Сервер). Ово до тамо шаље рачуне и старе карте — Пронађите / додајте / доделите боравак на серверу. Пробна страница и величина штампаног рачуна иду на сервер.
 printers_find_heading	Пронађите штампаче
 printers_find_tip	Финд скенира овај уређај и ажурира листу.
-printers_pool_heading	Штампачи
-printers_pool_tip	Финд скенира овај уређај и одржава ову листу ажурном.
 printers_pool_empty	(још нема — додирните Пронађи)
-printers_routes_help	Пронађите штампаче које оперативни систем већ познаје. Доделите их рачуну и сваком одељку у формату Билл & Слип.
 printer_assign_dd	Прави штампач: {place}
 printer_assign_pick	Изаберите прави штампач
 printer_profile_heading	Лаиоут
 vp_delivery_heading	Испорука
 vp_delivery_help	Како овај виртуелни штампач шаље задатке — ОС документ, необрађене бајтове или ЕСЦ/ПОС. Садржај слип-а (величина типа, омот, маргине) се одређује на основу рачуна / формата листића, а не овде.
-vp_type_size_heading	Величина типа
-vp_wrap_heading	Ширина омотача
-vp_margin_heading	Маргине
 vp_delivery_spooler	ОС документ (системски спулер)
 vp_delivery_raw	Необрађени бајтови на уређај
 vp_delivery_escpos	ESC/POS термичке команде
 virtual_printer_new	Нови виртуелни штампач
 virtual_printer_selected	Уређивање „{name}“ — додирните други на листи да бисте се пребацили
-virtual_printer_tap_list	Додирните виртуелни штампач на листи да бисте га уредили
 config_layout_portrait	Портрет
 config_layout_landscape	Пејзаж
 config_send_os	Систем споолер
 config_send_escpos	ESC/POS
-profiles_heading	Распореди
-profiles_empty	(још нема изгледа)
-profile_builtin	уграђени
-profile_custom	обичај
-profile_name_ph	Назив распореда
-profile_new	Нови изглед
-profile_delete	Избриши изглед
-profile_created	Изглед је направљен
-profile_deleted	Изглед је избрисан
-profile_builtin_keep	Уграђени распореди се не могу избрисати
-config_saved	Ажурирано
-config_selected	Изабрано „{name}“
-printer_output_heading	Виртуелни штампачи
 virtual_printers_heading	Виртуелни штампачи
 virtual_printers_empty	Још увек нема виртуелних штампача — подесите вредности испод, а затим Сачувај. Након што их имате, додирните један на листи да бисте изменили.
 virtual_printer_name_ph	Виртуелни назив штампача (опционо)
@@ -566,71 +462,32 @@ virtual_printer_deleted	Избрисан виртуелни штампач „{n
 virtual_printer_updated	Виртуелни штампач је ажуриран
 virtual_printer_updated_named	Виртуелни штампач „{name}“ је ажуриран
 virtual_draft_layout	Постављене вредности за следећи виртуелни штампач
-virtual_draft_send	Подешена вредност за следећи виртуелни штампач
 virtual_need_real	Прво изаберите прави штампач
 virtual_need_select	Изаберите виртуелни штампач за брисање
 real_printer_selected	Изабрано: {name}
-printers_routes_heading	Где се ствари штампају
-route_pick_heading	Место
 route_editing	Уређивање: {name}
-route_assigned	Додато {printer} до {place}
-route_already_assigned	Већ на овом месту: {printer}
 route_cleared	Очишћено {name}
-route_assigned_empty	Нема на овом месту
-route_tap_select	додирните да бисте изабрали
 route_tap_selected	изабрани
-route_pick_printer_first	Прво додирните штампач
-route_assigned_heading	Штампачи
-route_add_heading	Додели
-printer_label_ph	Име (нпр. штампач бројача)
 printer_target_ph	Назив системског штампача или хост: 9100
 printer_target_default	уобичајени штампач овог рачунара (празна адреса)
-printer_wire_heading	Профил
-printer_wire_escpos	ESC/POS
-printer_wire_os	Портрет
-printer_wire_os_portrait	Портрет
-printer_wire_os_landscape	Пејзаж
-printer_wire_escpos_short	ESC/POS
-printer_wire_os_short	Портрет
-printer_wire_os_landscape_short	Пејзаж
-printer_format_custom	Нови прилагођени профил
-printer_format_custom_label	Цустом
-printer_format_custom_added	Прилагођени профил је додат за ово место
-add_printer	Додајте штампач
-route_pick_ph	Рачун или амбуланта
 route_bill	Рачун за госте
-route_dont_print	Нема штампача
 station_print_pick_first	Прво изаберите диспанзер
-station_vps_empty	Још нема штампача — Пронађите их под Подешавања → Штампачи
 bill_printers_dd	Штампачи за рачун
 bill_printers_dd_n	{n} штампачи за рачун · додирните да бисте променили
 station_vp_attached	Штампач у прилогу
 station_vp_detached	Штампач је уклоњен са станице
-route_up	Горе
-route_down	Доле
-route_clear	Јасно
-save_printers	Сачувајте штампаче
 print_test_page	Одштампајте пробну страницу
 no_printer_assigned	Нема штампача
-test_page_no_printer	Нема штампача за {place} — прикључите штампач на њега, а затим покушајте поново
 test_page_pick_first	Прво изаберите штампаче за пробну страницу — затим одштампајте пробну страницу
 test_printers_dd	Штампачи за пробну страницу
 test_printers_dd_n	{n} штампачи за пробну страницу · додирните да бисте променили
 test_printer_picked	Тест на: {name}
 test_printer_cleared	Не тестира се на: {name}
 test_page_sent_n	Пробна страница је послата на {n} штампаче
-batch_cancel	Поништи означено
-batch_cancel_n	Откажи означено ({n})
-batch_cancel_none	Прво означите једну или више послатих ставки — затим означите Откажи
-batch_cancel_title	Откажите означене лекове — један разлог, један отказни листић по делу
-batch_cancel_ok	{n} items cancelled · {slips} cancel slip(s) → {kitchens}
-batch_cancel_ok_noprint	{n} items cancelled — auto-print is off, so no cancel slip
 printers_saved	Сачувано
-test_page_sent	Пробна страница је послата — проверите штампач
 test_page_sent_one	Пробна страница је послата на {name} — проверите тај штампач
 printers_found	Пронађено {n}: {list}
 printers_find_synced	Пронађено {n} — {new} ново
-printer_on_device	сачувана
 printer_already_added	већ додато
 printer_already_saved	Већ сачувано: {name}
 find_printers	Пронађите штампаче
@@ -640,7 +497,6 @@ cancelled	Отказано
 printers_tap_find	Додирните Пронађи да бисте навели штампаче које овај уређај може да користи.
 printers_none_found	Није пронађено — унесите назив системског штампача или ИП (нпр. 192.168.1.50).
 printer_from_find	Додато {name}
-bill_printer_ph	Штампач за рачуне
 queue_refused	Продавница не прихвата ({n}) — проверите сваки на шалтеру:
 clear_not_accepted	Означено — обришите ову листу
 device_name_ph	Назив овог уређаја
@@ -650,7 +506,6 @@ connected_now	повезан сада
 backup_failed	Последња аутоматска резервна копија није успела: {e}
 backup_overdue	Нема прављења резервних копија {n} дана — држите апликацију отвореном на овом уређају да би могла да направи резервну копију.
 disk_low	Само {mb} МБ слободно на овом уређају — резервне копије ускоро неће успети. Ослободите мало простора.
-last_seen_devices	Последњи пут виђен: {time}
 connection_to_shop	Веза са радњом
 supplier_name_ph	Име добављача (или купца)
 supplier_ph	Добављач
@@ -708,7 +563,6 @@ currency_use_help	Померите се и додирните Користи з�
 day_close_help	Евидентирање затварања дана чува овај резиме (и варијанту фиоке ако се рачуна) у евиденцију ревизије. Не престаје да се продаје.
 expenses_word	Трошкови
 feature_access_help	Шта могу да отворе — опционо; горенаведени посао већ поставља подразумевану вредност
-footer_local	Локални СКЛите · Заувек бесплатно · Зеро Цлоуд
 fresh_book_tabiyat	Свеже = празан каталог (додајте ставке касније). Књига = упишите почетне залихе и ко вам дугује испод.
 fresh_selected	Свеже изабрано — каталог остаје празан. Додирните Готово када будете спремни.
 gross_word	Гросс
@@ -721,12 +575,9 @@ net_word	Нет
 offline_badge	ВАН МРЕЖЕ
 optional_login_help	Опционо пријављивање (ид + лозинка). Власник поставља једном; само корисник може касније да промени лозинку.
 or_unlock_login	Или откључајте помоћу ИД-а за пријаву + лозинке
-permission_preset	Посао (подешава екране и новчане акције)
-preset_help_tabiyat	Благајник: продам. Менаџер: продати + ставке менија + поништити/изменити.
-product_locked_tabiyat	Табииат
+permission_preset	Посао
 product_only_tabiyat	Табииат је оперативни систем апотеке: продаја лекова, књижење серија/истека, кредит и књиге — ван мреже на вашим уређајима. Заставице распореда Х/Рк су белешке власника, а не усклађеност.
 purchases_cogs	Куповине (COGS)
-qty_cap	КОЛ
 restore_help	Враћање: изаберите резервну копију. Главне књиге се отварају као и тада; књиге какве су сада се прво чувају, тако да се ово може поништити.
 wipe_data_heading	Избришите локалне податке
 wipe_data_help	Само за власника — исти избори као за деинсталирање оперативног система Виндовс. Пословни записи бришу историју трговања, али чувају ставке и подешавања (као што је ПИН за откључавање у хитним случајевима). Подешавање продавнице уклања базу података књига. Подешавања екрана бришу прозор/језик. Потврдите ПИН-ом власника. ПИН за хитно откључавање на Тиму је одвојен (тајно брисање при откључавању).
@@ -759,7 +610,6 @@ staff_renamed	Име је сачувано
 staff_setup_copied_hire	Подешавање копирано са {name} — поставите ново име и PIN, а затим Додајте особље
 staff_setup_copied_edit	Копирано подешавање {from} на {to}
 staff_copy_need_selected	Изаберите кога ћете прво уредити
-staff_copy_need_source	Изаберите чије подешавање желите да копирате
 staff_copy_same	То је иста особа - изаберите неког другог
 staff_rename_need_selected	Изаберите коме ћете прво преименовати
 team_pick_hint	Изаберите кога желите да измените — екрани, новчана права и станице се појављују само за ту особу.
@@ -774,15 +624,9 @@ unit_picker_off	Офф
 we_owe_them	Дужни смо им
 who_unlocking	Ко откључава?
 locked_word	Закључано
-show_pin	Прикажи PIN
-hide_pin	Сакриј PIN
 set_owner_pin	ПОДЕШАВАЊЕ ВЛАСНИКА PIN
 enter_owner_passcode	УНЕСИТЕ КОД ВЛАСНИКА
 enter_staff_passcode	УНЕСИТЕ ШИФРУ ЗА ОСОБЉЕ
-pin_count_zero	0 / 12 цифара · најмање 4, затим ОК
-pin_count_need	{} / 12 цифара · потребно је још {}
-pin_count_full	12 / 12 цифара · притисните ОК
-pin_count_ready	{} / 12 цифара · притисните ОК када сте спремни
 pin_hint_choose	Изаберите 4–12 цифара · Унесите или Откључај да бисте сачували
 pin_hint_new	Нови власник од 4–12 цифара PIN · Унесите или откључајте
 pin_hint_shop_code	Купите уређај · код за упаривање {}
@@ -791,23 +635,15 @@ pin_hint_paired	Екстра до упаривања — откључајте з
 pin_hint_pair_first	Екстра до — прво упарите са уређајем продавнице
 unlock_to_continue	Откључајте да бисте наставили
 no_staff_yet	Још нема особља — откључајте као Власник, а затим Тим
-status_server_set_pin	Режим сервера — поставите власника PIN
-status_server_tills	Режим сервера — могу се придружити додатне касе. Откључај
-status_server_unlock	Режим сервера — откључајте као власник
-status_client_unlock	Режим клијента — откључајте за продају
 icon_new_selected	Икона: изабрана нова датотека — додирните Сачувај бренд
 icon_custom	Икона: прилагођена ознака места
 icon_default	Икона: Kumkaj ознака (подразумевано) — изаберите прилагођену
 logo_yours	Лого: логотип ваше продавнице — приказан на екранима и рачунима
 logo_default	Лого: Kumkaj ознака (подразумевано) — изаберите свој ако га имате
-tmpl_current	Тренутно: {} — {}
-tmpl_selected	Изабрано: {} — {}
 setup_complete	Подешавање је завршено
 onboard_fresh_tmpl	Свеже · {} — каталог почиње празан; додајте ставке менија у ставке менија, а затим Готово.
 onboard_book_tmpl	Књига · {} — додајте ставке менија и почетни кредит, а затим Готово.
-onboard_template_tmpl	Именујте место ако желите, а затим изаберите како да почнете.
 tmpl_blurb	Апотекарски шалтер: лекови, серија/рок трајања, кхата, књиге.
-tmpl_how	Продај на шалтеру; Купите за залихе; Књиге за дневну књигу.
 reports_facet_title	Извештаји
 reports_facet_help	Дневне књиге, старење купаца или добављача, банковни постови и П&Л периода.
 against_bill_ph	Против рачуна # изнад (опционо)
@@ -818,14 +654,12 @@ amount_ph	Износ
 amount_received_ph	Примљени износ
 amount_we_pay_ph	Износ који плаћамо
 business_name_ph	Назив предузећа
-category_new_ph	Категорија (опционално, креирана ако је нова)
 code_bag_ph	код (торба)
 conv_factor_ph	Фактор (25 = 1 врећа → 25 кг)
 country_code_ph	Код државе нпр. У, ГБ, САД, АЕ, БР
 credit_khata_amount_ph	Износ кредитне/кредитне књиге
 credit_limit_ph	Кредитно ограничење (0 = нема)
 from_code_ph	Од кода (торбе)
-item_name_lang_ph	Назив ставке менија — откуцајте га на свом језику
 login_id_opt_ph	Корисничко име (обавезно, јединствено)
 manager_pin_ph	Менаџер PIN да одобри (само ако не можете поништити)
 new_branch_name_ph	Ново име филијале
@@ -833,15 +667,12 @@ new_password_ph	Нова лозинка (опционо)
 new_pin_ph	Ново PIN (4–12 цифара)
 note_bank_ph	Напомена (депозит, повлачење,…)
 note_buy_expense_ph	Напомена (гориво, кирија,…)
-note_expense_ph	Напомена (гориво, канцеларија,…)
 options_tabiyat_ph	Опције — Величина*: Мала=199, Велика=399 | Преливи+3: сир=40, маслина=30 | Екстра сир=40
-part_second_way_ph	Део на други начин (опционо)
 phone_ph	Телефон
 place_name_ph	Име овог места
 qty_example_ph	Количина (нпр. 1,5 за кг)
 quantity_ph	Количина
 reason_required_ph	Разлог (обавезно)
-role_title_ph	Назив улоге (нпр. Бариста)
 service_pct_ph	Услуга % опционо 0/10/12
 short_code_ph	Кратак код (МГ02)
 starting_password_ph	Почетна лозинка (опционо)
@@ -876,14 +707,11 @@ shift_handover	Примопредаја смене
 shift_since	Ова смена од
 expected_in_drawer	Очекује се у фиоци
 right_discount	Дајте попуст
-pick_category	Изаберите категорију
-close_category_list	Затворите листу категорија
 new_category_row	Нова категорија — креира се када сачувате ставку менија
 your_category	Ваша категорија
 suggested_category	Предложено — из наших артикала
 category_search_ph	Категорија — потражите своју или унесите нову
 cancel_item_short	Откажи
-cancel_item_title	Откажите ову ставку — позадинска канцеларија добија потврду о отказивању
 return_to_customer	Вратите се купцу
 short_by	Схорт би
 tip_not_sale	Напојница (особље, не продаја)
@@ -896,9 +724,7 @@ finding_server	Тражим сервер продавнице на овом Wi�
 no_server_found	Није пронађен ниједан. На серверу: Подешавања → Остали уређаји → Дозволи екстра касе (исто Wi‑Fi). Или унесите ИП приказану тамо.
 servers_found_pick	Додирните продавницу са којом желите да се повежете.
 server_host_selected	Коришћењем {host} — унесите код за упаривање, а затим Упарите сада.
-print_bill	Штампај рачун
 approval_pin_ph	Менаџер PIN (само ако се пита)
-confirm	Потврди
 menu_search_ph	Ставка менија за претрагу или кратки код
 customer_paid_ph	Купац је платио
 tip_ph	Савет
@@ -908,7 +734,6 @@ bill_format_help	Одштампано под именом ваше продав�
 bill_header_ph	Адреса | телефон
 fssai_ph	Дозвола за лек бр. (опционо - ваша формулација)
 bill_footer_ph	Подножје (нпр. хвала, посетите поново)
-save_bill_format	Сачувајте формат рачуна
 kot_field_on	схов
 kot_field_off	сакрити
 kot_weight_light	Светлост
@@ -919,10 +744,8 @@ kot_weight_bold	Болд
 kot_align_start	Почни
 kot_align_center	Центар
 kot_align_end	Крај
-content_width	Ширина садржаја (мм)
 content_width_bill	Ширина садржаја рачуна (мм)
 content_width_ph	Или унесите ширину садржаја, 40–210 мм
-content_width_help	Колико је широк овај листић. Билл задржава сопствену ширину.
 content_width_bill_help	Колико широко штампа рачун купца. Подразумевано 210 мм (страница). 58 мм уски клип, 80 мм широк клизач, 112 мм 4 инча, 210 мм А4 широк. Унесите било коју вредност од 40 до 210. Карте имају сопствену ширину на картици листића.
 vp_paper_width	Ширина садржаја (мм)
 vp_paper_width_ph	Или унесите ширину садржаја, 40–210 мм
@@ -937,9 +760,6 @@ test_bill_sent	Преглед рачуна је послат
 test_print_no_printer	Нема штампача за тај посао — изаберите један на овом екрану
 std_print	Величина штампања рачуна
 std_print_help	Величина фонта за стандардне послове рачуна за портрет и пејзаж на ОС / штампачима докумената (унесите тачке — не Смалл/Нормал/Ларге). Иста величина на обе оријентације.
-std_size_s	Мала
-std_size_m	Нормално
-std_size_l	Велики
 save_std_print	Сачувајте величину штампања рачуна
 std_print_saved	Величина штампања рачуна је сачувана
 print_brand_kit	Штампани бренд комплет
@@ -952,14 +772,9 @@ choose_payment_qr	Изаберите КР плаћање
 clear_payment_qr	Обриши КР плаћање
 payment_qr_set	КР за плаћање: у евиденцији — приказано на екрану купца (тамо замењује износ УПИ КР)
 payment_qr_none	Плаћање КР: нема — износ КР од UPI ИД приликом плаћања
-aggregator_import	Агрегатор поруџбина (датотека)
-aggregator_import_help	Опциони локални увоз: ставите импорт_аггрегатор_ордерс.јсон у фасциклу резервних копија (низ или {"ордерс":[…]}), а затим додирните Увези. Никада не блокира бројач; уживо Зомато/Свигги је Цлоуд.
-import_aggregator_file	Увезите датотеку агрегатора
 team_pick_ph	Особље за уређивање — име, корисничко име или избор
 select_staff	Изаберите ово особље
 rights_help	Новчане акције за ову особу — додирните за циклус: Дозвољено → Потребан је шефов ПИН → Није дозвољено. Штампај рачун поново је само рачун; одељци су контролна листа у наставку.
-dish_picker_help	Претражите или прегледајте наше артикле и додирните једну да попуните њено име и фотографију — или задржите своје име. Подесите своју цену (0 је у реду), а затим додајте ставку.
-close_dish_list	Затворите листу ставки
 own_item_name	Користите ово као име своје ставке менија
 on_your_menu	На листи лекова
 edit	Уреди
@@ -970,24 +785,16 @@ add_scheme	Додај BOGO
 schedule_ph	Радно време — пон-пет 07:00-11:00 или вече 17:00-19:00=150
 upi_vpa_ph	UPI ID (VPA)
 upi_payee_ph	UPI име примаоца уплате (опционо)
-upi_qr	UPI QR
 show_upi_qr	Прикажи UPI КР
 close_upi_qr	Затвори
 upi_qr_help	Клијент скенира и плаћа. Додирните Узми уплату након што плате. Други екран: отворите УРЛ сервера /прикажите на ЛАН-у.
-recently_done	Недавно урађено
 role_help_customer	Улога: Клијент — кредитна књига (они нам дугују). Исти купац или добављач такође може испоручити залихе.
 role_help_both	Улоге: Купац + добављач — један купац или добављач, кредитна књига и књиге плаћања, нето у извештајима.
 role_help_supplier	Улога: Добављач — дугујемо им за куповину.
-items_word	ставке менија
-items_section	Ставке менија
-back_to_order	Назад на ред
-new_items_head	Још није послато
 price_ph	Цена
 price_ph_gst_inside	Цена ({tax} укључујући)
-tax_rates_missing_hint	No {tax} rate on these items — on Items set Tax rate (prices already include {tax} under {tax} inclusive)
 taxable_value	Опорезива вредност
 gst_inside_price_note	({tax} укључујући)
-start_with_template	Почните са нашим шаблоном ставки
 template_heading	Почетни артикли
 template_info	{c} categories and {d} items with photos, ready to add. Prices start at ₹0 — set yours after.
 template_import	Увезите комплетан шаблон
@@ -1009,21 +816,13 @@ opening_client	Отварање клијента…
 preparing_desk	Припрема стола…
 opening_server	Отварање сервера…
 creating_server	Прављење сервера…
-order_empty_pick	Поруџбина је празна — додирните Додај ставке изнад да одаберете ставке.
 add_dishes	Додајте лекове
 order_so_far	Овим редоследом: {n} · {total}
 no_dish_match	No item matches “{q}”
-pick_dishes_help	Додирните ставку да бисте је додали · изаберите категорију да бисте сузили листу
 pick_done	Готово
-pick_done_dd	Готово · {label}
-printer_route_mode	Ако више штампача на овом месту
-printer_mode_first	Прво то ради
-printer_mode_all	Штампајте на свим
 kot_field_up	Помери се горе
 kot_field_down	Помери се доле
-app_template_blurb_extra	Такође: власник Захир, админ Асиф, благајник Наваз; фронт сидебар; историја након 4 сата; Данас скини се; компактни рачун.
 dishes_n	{n} items
-recipe_ph	Рецепт (опционо - не користи се на шалтеру)
 reorder_ph	Купите више на
 set_reorder	Подесите ниво промене редоследа
 low_stock_alert	Понестаје — купите ускоро: {items}
@@ -1032,7 +831,6 @@ show_unpriced	Прикажи само ставке без цене
 show_all_dishes	Прикажи све ставке
 role_title_rest_ph	Назив улоге (нпр. капетан, главни кувар)
 preset_help_rest	Благајник: продам. Менаџер: продати + ставке менија + поништити/изменити.
-kind_raw	Залихе за мешање
 kind_resale	Купио лек
 kind_dish	Не рачунајте залихе
 buy_unit_ph	Јединица (кг, литар, ком)

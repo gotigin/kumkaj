@@ -1,5 +1,4 @@
 # Azerbaijani — Azərbaycan (az). One key<TAB>text per line, in en() order; keep {placeholders}.
-app_tagline	Aptek kassası: dərmanlar, partiya, khata və kitablar. Pulsuz, oflayn.
 barcode_ph	Barkod / EAN
 composition_ph	Duz / tərkib (axtarılan)
 schedule_h_off	Schedule H — bağlı (sahib işarəsi)
@@ -13,7 +12,6 @@ expiry_alerts	Son istifadə xəbərdarlıqları (növbəti 7 gün)
 expiry_none	Növbəti 7 gün ərzində heç bir partiya başa çatmır.
 rx_nudge	Sahib Rx / Schedule H işarələyib — lazımdırsa qeyd əlavə edin.
 unlock	Kilidi aç
-pin_hint	Sahibin PIN-i 0000-dan başlayır
 sell	Satış
 buy	Alış
 books	Günün kitabı
@@ -32,17 +30,13 @@ reports_month	Mənfəət və zərər (ay)
 reports_aging	Ödənilməmiş / Dt-Kt
 reports_balance_sheet	Balans hesabatı
 reports	Bank kitabı və M/Z
-refresh	Yenilə
 undo	Geri al
-start_tracking	İzləməyə başla
 stock_minus	− Stok
 stock_plus	+ Stok
 settle_cash	Nağdı bağla
 settle_card	Kartı bağla
 items	Dərmanlar
 nav_items	Dərmanlar
-more	Daha çox
-your_items	Sizin dərmanlar
 items_help	Redaktə üçün məhsula toxunun. Yeni məhsul formanı təmizləyir. Ad və ya qısa kodla axtarın, qiymət qoyun (0 olar), sonra Əlavə et. Artıq yazılmış satışlar hesablandığı adı saxlayır.
 add_item	Məhsul əlavə et
 new_item	Yeni məhsul
@@ -53,28 +47,22 @@ remove	Sil
 removed_items	Silinmiş məhsullar
 removed_help	Bərpa məhsulu Məhsullara olduğu kimi qaytarır — qiymət, şəkil və kateqoriya.
 restore_item	Bərpa et
-empty_catalog	Hələ dərman yoxdur. Dərmanları açın, ad, barkod və ya tərkib əlavə edin, sonra satış edin.
+empty_catalog	Hələ dərman yoxdur.
 total	Cəmi
 cash	Nağd
 upi	UPI
 card	Kart
 credit	Tərəflər
 clear	Təmizlə
-ready_to_sell	Sifarişə hazır
 today_prefix	Bu gün
-today_mid	bu gün
 owed	ödənilməmiş
-round_word	yuvarlaqlaşdırma
 back	Geri
 sold_out	Mövcud deyil
 restock	Stoku doldur
 not_tracked	İzlənmir
 in_stock	stokda
 marked_sold_out	Mövcud deyil işarələndi
-add_upper	ƏLAVƏ ET
-na	Yoxdur
 qty	Çəki/Say
-unit_at	Tarif @
 actual	Faktiki
 applied	Tətbiq olunub
 note_ph	Qeyd (istəyə bağlı)
@@ -93,21 +81,13 @@ bill_item_qty	Say
 bill_item_price	Qiymət
 bill_item_amount	Məbləğ
 bill_item_note	Rx / satış qeydi
-bill_item_col_gap	Sütun aralığı
 bill_item_col_order	Sütun sırası
 bill_item_col_sep	Sütun xətləri
-bill_item_gap_tight	Sıx
-bill_item_gap_comfort	Rahat
-bill_item_gap_wide	Geniş
-bill_item_num_width	Rəqəm sütunları
-bill_item_num_compact	Yığcam
-bill_item_num_comfort	Rahat
-bill_item_num_wide	Geniş
-bill_item_num_align	Rəqəmlərin düzümü
-bill_item_gap_em	Aralıq (em)
-bill_item_qty_min	Say min (em)
-bill_item_price_min	Qiymət min (em)
-bill_item_amount_min	Məbləğ min (em)
+slip_col_width	En (mm)
+slip_col_start	Başlanğıc boşluğu (px)
+slip_col_end	Son boşluq (px)
+slip_col_align	Mətn düzləndirmə
+slip_columns_help	Hər sütunun eni onun başlanğıc və son boşluğunu da əhatə edir. Mətn öz sütunu daxilində sətirlərə bölünür; məzmun enindən kənarda qalan hissə həm kağızda, həm də önizləmədə kəsilir.
 bill_total_qty_label	Ümumi say etiketi
 bill_total_subtotal_label	Ara cəm etiketi
 bill_total_grand_label	Yekun etiketi
@@ -120,11 +100,7 @@ bill_total_qty	Ümumi say
 bill_total_subtotal	Ara cəm
 bill_total_grand	Yekun
 kot_unassigned	Təyin olunmayıb
-pos_tab_items	Əlavə olunmuş məhsullar
-pos_tab_payment	Ödəniş
-settings_hub_title	Ayarlar
 settings_hub_help	Bir sahəni bir dəfəyə açın — daha az sürüşdürmə, daha aydın seçimlər.
-settings_back	Geri
 settings_sec_language	Dil və valyuta
 settings_sec_country	Ölkə və vergi
 settings_sec_tills	Digər cihazlar
@@ -166,35 +142,17 @@ diag_cleared	Diaqnostika jurnalları təmizləndi
 sidebar_settings	Yan panel
 sidebar_settings_help	Yan relslə eyni nişanlar. Sıranı dəyişmək üçün sətri sürükləyin. Göstərmək və ya gizlətmək üçün açarı çevirin. Ayarlar və Kilid həmişə paneldə qalır.
 sidebar_always_on_short	Həmişə açıq
-sidebar_back_settings	Geri
-sidebar_shown	Göstərilir
-sidebar_hidden	Gizli
-sidebar_always_on	Həmişə paneldə
-sidebar_shown_hint	Yan relsdə / alt tablarda göstərilir
-sidebar_hidden_hint	Paneldən gizli
 sidebar_menu_items	Məhsullar
 sidebar_enable_all	Hamısını aç
 sidebar_disable_all	Hamısını bağla
 sidebar_order_saved	Yan panel sırası saxlandı
 sidebar_visibility_saved	Yan panel görünüşü saxlandı
-amounts_hide	Gizlət
-amounts_show	Göstər
-printers_none_hint	Əvvəlcə bu cihazda printer saxlayın, sonra onu hesaba və ya bölməyə əlavə edin
-counter	Kassa
-dine_in	Kassa
-takeaway	Paket
-order	Sifariş
 sales	Satışlar
-sales_refunds	Satışlar və qaytarmalar
 day_close	Günün bağlanışı
 reports_expenses	Bank kitabı və M/Z
 nav_reports	Hesabatlar
 nav_settings	Ayarlar
 nav_lock	Kilid
-no_sale_yet	Hələ satış yoxdur
-favorites	Sevimlilər
-favorites_help	Tez-tez satdığınız məhsullar, sizin girişiniz üçün saxlanılıb. Birini hesaba əlavə edin və ya siyahınızı aşağıdakı bütün məhsullardan qurun.
-your_favorites	Sizin sevimlilər
 all_items	Bütün məhsullar
 frequent	Tez-tez
 added_items	Əlavə olunmuş məhsul(lar)
@@ -211,8 +169,6 @@ zero_sales_on	₹0-a icazə
 zero_sales_off	Qiymət tələb et
 zero_sales_saved_on	Sıfır məbləğli satışlara icazə verildi
 zero_sales_saved_off	Satışların qiyməti ₹0-dan yuxarı olmalıdır
-no_favorites	Hələ sevimli yoxdur — aşağıdakı siyahıdan məhsul əlavə edin.
-add_to_bill	Hesaba əlavə et
 added	Əlavə olundu
 owes_word	borcludur
 selected_word	Seçilib
@@ -221,19 +177,11 @@ chip_missing_customer	Seçilmiş müştəri yoxdur — yenidən seçin
 chip_no_customer	Hələ müştəri yoxdur — ad yazın, sonra Kreditə toxunun
 credit_summary_fmt	{} müştəri · açıq kredit {} · saxlanılan avanslar {}
 recent_label	Son:
-start_order	Sifarişə başla
-open_bill	Hesabı aç
-collect_payment	Ödənişi al
-payment_pending	Ödəniş gözləyir
-collect_at_counter	kassada al
 inventory	Anbar
-inventory_stock	Anbar və stok
 branches	Filiallar
-branches_org	Filiallar və təşkilat
 credit_customers	Tərəflər (khata və təchizatçılar)
 customer_name_ph	Tərəfin adı
 new_customer_ph	Yeni tərəfin adı
-item_name_ph	Məhsul adı (məs. Masala Dosa)
 item_price_ph	Qiymət
 start_template	Məhsul
 team	Heyət
@@ -241,17 +189,11 @@ team_pins	Heyət və PIN-lər
 my_pin_settings	Mənim PIN-im
 settings_hub_help_my_pin	Bu cihazda daxil olmuş şəxsin kilid PIN-ini dəyişin.
 team_self_help	Bir giriş: yeni PIN, yeni parol və ya hər ikisi. Saxlamaq istədiyinizi boş buraxın. Başqa ekranlar və ya hüquqlar lazımdırsa, Sahibdən soruşun.
-backup_settings	Ehtiyat nüsxə və ayarlar
-lock_app	Tətbiqi kilidlə
 pick	Seç
-select	İşarələ
 advance	Avans
 owner	Sahib
 staff	Heyət
 photo	Şəkil
-auto	Avto
-prev	Əvvəl
-next	Növbəti
 ok	OK
 this_shop	Server
 extra_till	Klient
@@ -260,17 +202,13 @@ server	Server
 client	Klient
 language_currency	Dil və valyuta
 language	Dil
-choose_language	Dilinizi seçin
 language_setup_hint	Bu cihazın dilinə uyun və ya özünüz seçin.
 lang_follow_platform	Cihazın dili
 lang_pick_user	Dil seçin
 lang_platform_now	İndi cihazın dili
 selected_language	Seçilib
-continue	Davam et
 this_device	BU CİHAZ
 device_use_q	Bu cihaz necə istifadə olunacaq?
-last_server_mode	Server idi — davam etmək üçün toxunun
-last_client_mode	Klient idi — davam etmək üçün toxunun
 choose_server	Server seçin
 choose_server_hint	Mövcud serveri açın və ya başqa biznes üçün yenisini yaradın.
 create_new_server	Yeni server yarat
@@ -280,12 +218,6 @@ server_remove_pin_ph	Serveri silmək üçün Sahib PIN-i
 only_owner_remove_server	Serveri yalnız Sahib silə bilər
 owner_pin_remove_server	Bu serveri silmək üçün Sahib PIN-i lazımdır
 device_setup_help	Server kitabları burada saxlayır. Klient Serverə qoşulur.
-app_template_heading	Başlanğıc kataloq (istəyə bağlı)
-app_template_blurb	Nümunə kataloqu yükləyir; Sahibi Zahir (zahir), Admin Asif (asif, PIN 1111), Kassir Nawaz (nawaz, PIN 0000); vergi/GST söndürüldü; qarşı panel; tarixçə 4 saat sonra təmizlənir (və İndi Təmizlə Backup-da); Bu gün zolağı söndürüldü; dar tepsilər üçün kompakt hesab + Standart kənar boşluqlar. Vergi və panel iştirakçıları parametrlərdə yenidən aktiv edilə bilər.
-app_template_apply	Başlanğıc kataloqunu tətbiq et
-app_template_skip	Hələlik keç
-app_template_status	Server hazırdır — Başlanğıc kataloqu tətbiq edin və ya keçin
-app_template_importing	{title} tətbiq olunur…
 currency	Valyuta
 backup	Ehtiyat nüsxə
 use	İstifadə et
@@ -319,7 +251,7 @@ attachments_last_expense	Əlavələr (son xərc)
 bank	Bank
 bank_in	Banka giriş
 bank_out	Bankdan çıxış
-bank_reconciliation	Bank üzləşdirməsi (bank çıxarışınızla işarələyin)
+bank_reconciliation	Bank üzləşdirməsi
 bank_to_till	Bank → kassa
 book_add_dish	Sifariş et — maddə / məhsul əlavə et
 book_opening_credit	Kitab — açılış krediti
@@ -349,9 +281,6 @@ share_whatsapp	WhatsApp ilə paylaş
 lan_pages_heading	Müştəri Wi‐Fi-də səhifələri
 lan_pages_help	Bu mağazanın Wi‑Fi-sində müştəri səhifələri lövhə və rəy üçün işləyir. Mobil internetdə olanlara sonra Bulud lazımdır. Kart terminalı və ya ödəniş keçidi istəyə bağlıdır və kassanı heç vaxt dayandırmır.
 diag_send_heading	Bu cihazdan kənara paylaş
-optional_login_heading	İstəyə bağlı giriş
-rights_heading	Hüquqlar
-ops_panel	Yerli əməliyyatlar
 crm_heading	Müştərilər və mesajlar
 crm_help	Ad günü, loyallıq, fəaliyyətsiz və ən yaxşı qonaqlar — SMS və ya WhatsApp niyyətlərini növbəyə qoyun. Mesajda {name} və {points} istifadə edin. Sahib göndərir; heç nə özü yayılmır.
 crm_queue_sms	SMS növbəyə qoy
@@ -376,21 +305,17 @@ till_wallet_topup_ph	Pulqabına əlavə məbləğ
 till_voucher_issue_amt_ph	Veriləcək vauçer məbləği
 till_voucher_issue_code_ph	Yeni vauçer kodu
 bulk_price_apply	Toplu qiyməti tətbiq et
-card_terminal_optional	Kart terminalı / ödəniş keçidi (internet olanda istəyə bağlı)
 copy_report	Hesabatı köçür
 counted_cash_ph	Siyirmədə sayılan nağd
 country_tax	Ölkə və vergi
 create_backup	Ehtiyat nüsxə yarat
 credit_limit_heading	Kredit limiti (seçilmiş / adlı tərəf)
-day_close_summary	Günün bağlanışı xülasəsi
 delete_party	Seçilmiş tərəfi sil
-delivery	Çatdırılma
 done_open_books	Bitdi — kitabları aç
 drawer_count	Siyirmə sayımı (istəyə bağlı)
 expense_heading	Xərc
 export_day	Günü ixrac et
 extra_note_bill_ph	Bu hesab / satış üçün əlavə qeyd
-extra_note_expense_ph	Son xərc üçün əlavə qeyd
 extra_tills_heading	Əlavə kassalar
 other_devices_help_heading	Digər cihazları quraşdır
 other_devices_help	Bu cihazda (Server): Digər cihazlar → Əlavə kassalara icazə. Qoşulma kodunu və Wi‑Fi ünvanını qeyd edin. Görünürsə, Digər cihazların qoşulmasına icazə ver düyməsinə toxunun. Kompüterdə Bu kompüterlə başla düyməsinə toxunun. Hər digər cihazda: tətbiqi quraşdırın, Klient rejimini seçin, Mağazanın serverini tapın (və ya ünvanı yazın), qoşulma kodunu daxil edin, İndi qoşul. Wi‑Fi kəsilərsə sifarişlər cihazda gözləyir və Server cavab verəndə gedir. Əlavə printerlər Serverdə qurulur (Ayarlar → Printerlər) — əlavə kassalar hesabları ora göndərir.
@@ -404,7 +329,6 @@ login_id_ph	İstifadəçi adı
 mark_cleared	Üzləşdi işarələ
 new_party_clear	Yeni tərəf (formanı təmizlə)
 new_party_kind_supplier_ph	Yeni tərəfin növü (Təchizatçı)
-next_country	Növbəti ölkə
 next_order	Növbəti sifariş (masanı təmizlə)
 note_gstin_ph	Qeyd / GSTIN / müqavilə xatırlatması
 notes_attach_party	Qeydlər və əlavələr (seçilmiş tərəf)
@@ -422,8 +346,6 @@ pay_ap_cash	AP-ni nağd ödə
 pay_ap_heading	Onlara borcumuzu ödə (AP)
 pay_ap_upi	AP-ni UPI ilə ödə
 pay_selected_heading	Seçilmişi ödə (borcu bağla / avans al)
-pick_from_items	Bizim məhsullardan seç
-prev_country	Əvvəlki ölkə
 print_open	Çap et / aç
 reason_amend_ph	Düzəliş / ləğv / qaytarma səbəbi
 reason_note_ph	Səbəb / qeyd (itki, sayım, …)
@@ -447,14 +369,10 @@ history_after_hours	Saatlardan sonra
 history_hours_ph	Saat (1–168, susmaya görə 4)
 history_hours_save	Saatları saxla
 history_clear_now	Tarixçəni indi təmizlə
-history_cleared	Ticarət tarixçəsi təmizləndi — quraşdırma saxlandı
-history_retention_saved	Tarixçənin təmizlənməsi saxlandı
 history_hours_saved	Tarixçə saatları saxlandı
-history_owner_only	Tarixçəni yalnız Sahib və ya Admin təmizləyə bilər
 rollup	Cəmləmə
 save_brand	Brendi saxla
 save_business_id	Biznes id-ni saxla
-save_business_name	Biznes adını saxla
 save_features	Saxla
 save_features_named	{name} üçün saxla
 save_features_ok	{name} üçün quraşdırma saxlandı
@@ -485,7 +403,6 @@ copy_pair_code	Qoşulma kodunu köçür
 new_pair_code	Yeni qoşulma kodu
 pair_finishing	Qoşulma bitir… mağazanın kitabları tətbiq olunur
 pair_opening	Kassa açılır…
-pair_copied	Qoşulma kodu köçürüldü
 lan_offline_waiting	Mağaza serverinə çatılmır · {n} gözləyir
 lan_connecting	Mağazaya qoşulur…
 lan_live	Canlı
@@ -499,7 +416,6 @@ firewall_waiting	Admin sorğusu gözlənilir…
 lan_join_help	Digər cihazda: Klient rejimi → Mağazanın serverini tapın (və ya {addr} yazın) → qoşulma kodu {code}.
 lan_pair_status	Wi‑Fi {addr}
 lan_join_help_no_addr	Ünvan almaq üçün bu cihazı Wi‑Fi-yə qoşun.
-lan_no_address	Hələ Wi‑Fi ünvanı yoxdur — mağaza Wi‑Fi-sinə qoşulun.
 lan_not_listening	Cihazlar qəbul olunmur (port {port} məşğuldur). Tətbiqi yenidən başladın.
 lan_tills_off	Əlavə kassalar bağlıdır. Başqa cihazın qoşulması üçün onlara icazə verin.
 paired_with	Qoşulub · {url}
@@ -520,41 +436,21 @@ printers_help	Printerləri tapın, birini seçmək üçün vurun, sonra yalnız 
 printers_host_only	Printerlər mağaza cihazında (Server) qurulur. Bu kassa hesabları və köhnə biletləri ora göndərir — Tap / əlavə et / təyin et Serverdə qalır. Sınaq səhifəsi və hesab çap ölçüsü Serverə gedir.
 printers_find_heading	Printerləri tap
 printers_find_tip	Tap bu cihazı skan edir və siyahını yeniləyir.
-printers_pool_heading	Printerlər
-printers_pool_tip	Tap bu cihazı skan edir və bu siyahını yeniləyir.
 printers_pool_empty	(hələ yoxdur — Tap düyməsinə toxunun)
-printers_routes_help	Əməliyyat sisteminin artıq bildiyi printerləri tapın. Onları qəbz və Bill & Slip formatında hər bölməyə təyin edin.
 printer_assign_dd	Həqiqi printer: {place}
 printer_assign_pick	Həqiqi printer seçin
 printer_profile_heading	Düzüm
 vp_delivery_heading	Çatdırılma
 vp_delivery_help	Bu virtual printer işləri necə göndərir — ƏS sənədi, xam baytlar və ya ESC/POS. Slip məzmunu (şrift ölçüsü, büküm, kənarlar) burada yox, hesab / slip formatı ilə müəyyən olunur.
-vp_type_size_heading	Şrift ölçüsü
-vp_wrap_heading	Büküm eni
-vp_margin_heading	Kənarlar
 vp_delivery_spooler	ƏS sənədi (sistem növbəsi)
 vp_delivery_raw	Cihaza xam baytlar
 vp_delivery_escpos	ESC/POS termal əmrləri
 virtual_printer_new	Yeni virtual printer
 virtual_printer_selected	«{name}» redaktə olunur — keçmək üçün siyahıda başqasına toxunun
-virtual_printer_tap_list	Redaktə etmək üçün siyahıdakı virtual printerə toxunun
 config_layout_portrait	Şaquli
 config_layout_landscape	Üfüqi
 config_send_os	Sistem növbəsi
 config_send_escpos	ESC/POS
-profiles_heading	Maketlər
-profiles_empty	(hələ maket yoxdur)
-profile_builtin	daxili
-profile_custom	xüsusi
-profile_name_ph	Maket adı
-profile_new	Yeni maket
-profile_delete	Maketi sil
-profile_created	Maket yaradıldı
-profile_deleted	Maket silindi
-profile_builtin_keep	Daxili maketləri silmək olmaz
-config_saved	Yeniləndi
-config_selected	«{name}» seçildi
-printer_output_heading	Virtual printerlər
 virtual_printers_heading	Virtual printerlər
 virtual_printers_empty	Hələ virtual printer yoxdur — aşağıda dəyərləri qoyun, sonra Saxla. Bir neçəsi olandan sonra redaktə üçün siyahıda birinə toxunun.
 virtual_printer_name_ph	Virtual printer adı (istəyə bağlı)
@@ -566,71 +462,32 @@ virtual_printer_deleted	Virtual printer «{name}» silindi
 virtual_printer_updated	Virtual printer yeniləndi
 virtual_printer_updated_named	Virtual printer «{name}» yeniləndi
 virtual_draft_layout	Növbəti virtual printer üçün dəyərlər qoyuldu
-virtual_draft_send	Növbəti virtual printer üçün dəyər qoyuldu
 virtual_need_real	Əvvəlcə həqiqi printer seçin
 virtual_need_select	Silmək üçün virtual printer seçin
 real_printer_selected	Seçildi: {name}
-printers_routes_heading	Nələr harada çap olunur
-route_pick_heading	Yer
 route_editing	Redaktə: {name}
-route_assigned	{printer} {place} yerinə əlavə olundu
-route_already_assigned	Artıq bu yerdədir: {printer}
 route_cleared	{name} təmizləndi
-route_assigned_empty	Bu yerdə heç nə yoxdur
-route_tap_select	seçmək üçün toxunun
 route_tap_selected	seçilib
-route_pick_printer_first	Əvvəlcə printerə toxunun
-route_assigned_heading	Printerlər
-route_add_heading	Təyin et
-printer_label_ph	Ad (məsələn, Kounter printeri)
 printer_target_ph	Sistem printerinin adı və ya host:9100
 printer_target_default	bu kompüterin adi printeri (ünvan boş)
-printer_wire_heading	Profil
-printer_wire_escpos	ESC/POS
-printer_wire_os	Şaquli
-printer_wire_os_portrait	Şaquli
-printer_wire_os_landscape	Üfüqi
-printer_wire_escpos_short	ESC/POS
-printer_wire_os_short	Şaquli
-printer_wire_os_landscape_short	Üfüqi
-printer_format_custom	Yeni xüsusi profil
-printer_format_custom_label	Xüsusi
-printer_format_custom_added	Bu yer üçün xüsusi profil əlavə olundu
-add_printer	Printer əlavə et
-route_pick_ph	Faktura və ya aptek bölməsi
 route_bill	Hesab
-route_dont_print	Printer yoxdur
 station_print_pick_first	Əvvəlcə aptek bölməsini seçin
-station_vps_empty	Hələ printer yoxdur — Ayarlar → Printerlər altında tapın
 bill_printers_dd	Hesabın printerləri
 bill_printers_dd_n	Hesab üçün {n} printer · dəyişmək üçün toxunun
 station_vp_attached	Printer qoşuldu
 station_vp_detached	Printer postdan silindi
-route_up	Yuxarı
-route_down	Aşağı
-route_clear	Təmizlə
-save_printers	Printerləri saxla
 print_test_page	Sınaq səhifəsi çap et
 no_printer_assigned	Printer yoxdur
-test_page_no_printer	{place} üçün printer yoxdur — ona printer qoşun, sonra yenidən cəhd edin
 test_page_pick_first	Əvvəlcə sınaq səhifəsi üçün printer(lər) seçin — sonra Sınaq səhifəsi çap et
 test_printers_dd	Sınaq səhifəsi üçün printerlər
 test_printers_dd_n	Sınaq səhifəsi üçün {n} printer · dəyişmək üçün toxunun
 test_printer_picked	Sınaq: {name}
 test_printer_cleared	Sınaq deyil: {name}
 test_page_sent_n	Sınaq səhifəsi {n} printerə göndərildi
-batch_cancel	İşarələnənləri ləğv et
-batch_cancel_n	İşarələnənləri ləğv et ({n})
-batch_cancel_none	Əvvəlcə bir və ya bir neçə göndərilmiş maddəni işarələyin — sonra İşarələnmişi ləğv et
-batch_cancel_title	Seçilmiş dərmanları ləğv et — bir səbəb, hər bölmə üçün bir ləğv qəbz
-batch_cancel_ok	{n} məhsul ləğv olundu · {slips} ləğv slipi → {kitchens}
-batch_cancel_ok_noprint	{n} məhsul ləğv olundu — avtoçap bağlıdır, ona görə ləğv slipi yoxdur
 printers_saved	Saxlandı
-test_page_sent	Sınaq səhifəsi göndərildi — printeri yoxlayın
 test_page_sent_one	Sınaq səhifəsi {name} ünvanına göndərildi — həmin printeri yoxlayın
 printers_found	{n} tapıldı: {list}
 printers_find_synced	{n} tapıldı — {new} yeni
-printer_on_device	saxlandı
 printer_already_added	artıq əlavə olunub
 printer_already_saved	Artıq saxlanılıb: {name}
 find_printers	Printerləri tap
@@ -640,7 +497,6 @@ cancelled	Ləğv olundu
 printers_tap_find	Bu cihazın istifadə edə biləcəyi printerləri göstərmək üçün Tap düyməsinə toxunun.
 printers_none_found	Heç nə tapılmadı — sistem printerinin adını və ya IP yazın (məs. 192.168.1.50).
 printer_from_find	{name} əlavə olundu
-bill_printer_ph	Hesablar üçün printer
 queue_refused	Mağaza qəbul etmədi ({n}) — hər birini kassada yoxlayın:
 clear_not_accepted	Yoxlandı — bu siyahını təmizlə
 device_name_ph	Bu cihazın adı
@@ -650,7 +506,6 @@ connected_now	indi qoşulub
 backup_failed	Son avtomatik ehtiyat nüsxə alınmadı: {e}
 backup_overdue	{n} gündür ehtiyat nüsxə yoxdur — ehtiyat nüsxə ala bilsin deyə tətbiqi bu cihazda açıq saxlayın.
 disk_low	Bu cihazda yalnız {mb} MB boşdur — ehtiyat nüsxələr tezliklə alınmayacaq. Bir az yer boşaldın.
-last_seen_devices	Son görülmə: {time}
 connection_to_shop	Mağaza ilə əlaqə
 supplier_name_ph	Təchizatçı adı (və ya tərəf)
 supplier_ph	Təchizatçı
@@ -708,7 +563,6 @@ currency_use_help	Dəstəklənən istənilən valyuta üçün sürüşdürün v�
 day_close_help	Günün bağlanışını yazmaq bu xülasəni (və sayılsa siyirmə fərqini) audit jurnalına saxlayır. Satışı dayandırmır.
 expenses_word	Xərclər
 feature_access_help	Nə aça bilərlər — istəyə bağlı; yuxarıdakı vəzifə artıq susma qoyur
-footer_local	Yerli SQLite · Həmişə pulsuz · Sıfır Cloud
 fresh_book_tabiyat	Təzə = boş kataloq (sonradan maddələr əlavə edin). Kitab = açılış stokunu və kimə borclu olduğunuzu aşağıda yazın.
 fresh_selected	Təzə seçildi — kataloq boş qalır. Hazır olanda Bitdi düyməsinə toxunun.
 gross_word	Brutto
@@ -721,12 +575,9 @@ net_word	Xalis
 offline_badge	OFLAYN
 optional_login_help	İstəyə bağlı giriş (id + parol). Sahib bir dəfə qoyur; parolu sonra yalnız istifadəçi dəyişə bilər.
 or_unlock_login	Və ya giriş id-si + parol ilə kilidi açın
-permission_preset	Vəzifə (ekranları və pul əməllərini qoyur)
-preset_help_tabiyat	Kassir: satış. Menecer: satış + məhsullar + etibarsız etmə/düzəliş.
-product_locked_tabiyat	Tabiyat
+permission_preset	Vəzifə
 product_only_tabiyat	Tabiyat aptek əməliyyat sistemidir: dərman satışı, partiya/son istifadə kitabları, kredit və kitablar — cihazlarınızda oflayn. Schedule H / Rx işarələri sahib qeydləridir, uyğunluq deyil.
 purchases_cogs	Alışlar (COGS)
-qty_cap	SAY
 restore_help	Bərpa: ehtiyat nüsxə seçin. Kitablar o vaxtkı kimi açılır; indiki kitablar əvvəlcə saxlanır, ona görə bunu geri almaq olar.
 wipe_data_heading	Yerli məlumatı sil
 wipe_data_help	Yalnız Sahib — Windows silmə ilə eyni seçimlər. Biznes qeydləri ticarət tarixçəsini təmizləyir, məhsulları və quraşdırmanı saxlayır (fövqəladə kilid PIN-i kimi). Mağaza quraşdırması kitablar bazasını silir. Ekran seçimləri pəncərə/dili təmizləyir. Sahib PIN-i ilə təsdiqləyin. Komandada fövqəladə kilid PIN-i ayrıdır (kilid açılışında gizli silmə).
@@ -759,7 +610,6 @@ staff_renamed	Ad saxlandı
 staff_setup_copied_hire	Quraşdırma {name} şəxsindən köçürüldü — yeni ad və PIN qoyun, sonra Heyət əlavə et
 staff_setup_copied_edit	{from} quraşdırması {to} üzərinə köçürüldü
 staff_copy_need_selected	Əvvəlcə kimi redaktə edəcəyinizi seçin
-staff_copy_need_source	Kimin quraşdırmasının köçürüləcəyini seçin
 staff_copy_same	Bu eyni şəxsdir — başqasını seçin
 staff_rename_need_selected	Əvvəlcə adını dəyişəcəyinizi seçin
 team_pick_hint	Kimi redaktə edəcəyinizi seçin — ekranlar, pul hüquqları və postlar yalnız həmin şəxs üçün görünür.
@@ -774,15 +624,9 @@ unit_picker_off	Bağlı
 we_owe_them	Biz onlara borcluyuq
 who_unlocking	Kim kilidi açır?
 locked_word	Kilidlidir
-show_pin	PIN-i göstər
-hide_pin	PIN-i gizlət
 set_owner_pin	SAHİB PIN-İNİ QOY
 enter_owner_passcode	SAHİB KODUNU DAXİL EDİN
 enter_staff_passcode	HEYƏT KODUNU DAXİL EDİN
-pin_count_zero	0 / 12 rəqəm · ən azı 4, sonra OK
-pin_count_need	{} / 12 rəqəm · daha {} lazımdır
-pin_count_full	12 / 12 rəqəm · OK basın
-pin_count_ready	{} / 12 rəqəm · hazır olanda OK basın
 pin_hint_choose	4–12 rəqəm seçin · saxlamaq üçün Enter və ya Kilidi aç
 pin_hint_new	Yeni 4–12 rəqəmli Sahib PIN-i · Enter və ya Kilidi aç
 pin_hint_shop_code	Mağaza cihazı · qoşulma kodu {}
@@ -791,23 +635,15 @@ pin_hint_paired	Əlavə kassa qoşulub — satış üçün kilidi açın
 pin_hint_pair_first	Əlavə kassa — əvvəlcə mağaza cihazına qoşulun
 unlock_to_continue	Davam etmək üçün kilidi açın
 no_staff_yet	Hələ heyət yoxdur — Sahib kimi kilidi açın, sonra Heyət
-status_server_set_pin	Server rejimi — Sahib PIN-ini qoyun
-status_server_tills	Server rejimi — əlavə kassalar qoşula bilər. Kilidi açın
-status_server_unlock	Server rejimi — Sahib kimi kilidi açın
-status_client_unlock	Klient rejimi — satış üçün kilidi açın
 icon_new_selected	Nişan: yeni fayl seçildi — Brendi saxla düyməsinə toxunun
 icon_custom	Nişan: xüsusi məkan işarəsi
 icon_default	Nişan: Kumkaj işarəsi (susma) — xüsusi birini seçin
 logo_yours	Loqo: sizin mağaza loqonuz — ekranlarda və qəbzlərdə göstərilir
 logo_default	Loqo: Kumkaj işarəsi (susma) — varsa, özünüzünkünü seçin
-tmpl_current	Cari: {} — {}
-tmpl_selected	Seçilib: {} — {}
 setup_complete	Quraşdırma bitdi
 onboard_fresh_tmpl	Təzə · {} — kataloq boş başlayır; məhsulları Məhsullarda əlavə edin, sonra Bitdi.
 onboard_book_tmpl	Kitab · {} — məhsullar və açılış krediti əlavə edin, sonra Bitdi.
-onboard_template_tmpl	İstəsəniz yerin adını yazın, sonra necə başlayacağınızı seçin.
 tmpl_blurb	Aptek kassası: dərmanlar, partiya/son istifadə, khata, kitablar.
-tmpl_how	Kassada satın; ehtiyat üçün Alış; günün kitabı üçün Kitablar.
 reports_facet_title	Hesabatlar
 reports_facet_help	Gün kitabları, tərəf yaşlanması, bank yazıları və dövr M/Z.
 against_bill_ph	Yuxarıdakı hesab № qarşısında (istəyə bağlı)
@@ -818,14 +654,12 @@ amount_ph	Məbləğ
 amount_received_ph	Alınan məbləğ
 amount_we_pay_ph	Ödədiyimiz məbləğ
 business_name_ph	Biznes adı
-category_new_ph	Kateqoriya (istəyə bağlı, yenidirsə yaradılır)
 code_bag_ph	Kod (bag)
 conv_factor_ph	Əmsal (25 = 1 bag → 25 kg)
 country_code_ph	Ölkə kodu, məs. IN, GB, US, AE, BR
 credit_khata_amount_ph	Kredit / khata məbləği
 credit_limit_ph	Kredit limiti (0 = yoxdur)
 from_code_ph	Haradan kodu (bag)
-item_name_lang_ph	Məhsul adı — öz dilinizdə yazın
 login_id_opt_ph	İstifadəçi adı (mütləq, unikal)
 manager_pin_ph	Təsdiq üçün Menecer PIN-i (yalnız etibarsız edə bilmirsinizsə)
 new_branch_name_ph	Yeni filial adı
@@ -833,15 +667,12 @@ new_password_ph	Yeni parol (istəyə bağlı)
 new_pin_ph	Yeni PIN (4–12 rəqəm)
 note_bank_ph	Qeyd (mədaxil, məxaric, …)
 note_buy_expense_ph	Qeyd (yanacaq, icarə, …)
-note_expense_ph	Qeyd (yanacaq, ofis, …)
 options_tabiyat_ph	Seçimlər — Size*: Small=199, Large=399 | Toppings+3: Cheese=40, Olive=30 | Extra cheese=40
-part_second_way_ph	İkinci üsulla hissə (istəyə bağlı)
 phone_ph	Telefon
 place_name_ph	Bu yerin adı
 qty_example_ph	Say (məs. kg üçün 1.5)
 quantity_ph	Say
 reason_required_ph	Səbəb (mütləq)
-role_title_ph	Vəzifə adı (məs. Barista)
 service_pct_ph	Xidmət % istəyə bağlı 0/10/12
 short_code_ph	Qısa kod (MG02)
 starting_password_ph	Başlanğıc parol (istəyə bağlı)
@@ -876,14 +707,11 @@ shift_handover	Növbə təhvili
 shift_since	Bu növbə buradan
 expected_in_drawer	Siyirmədə gözlənilən
 right_discount	Endirim ver
-pick_category	Kateqoriya seçin
-close_category_list	Kateqoriya siyahısını bağla
 new_category_row	Yeni kateqoriya — məhsulu saxlayanda yaranır
 your_category	Sizin kateqoriya
 suggested_category	Təklif — bizim məhsullardan
 category_search_ph	Kateqoriya — özünüzünkünü axtarın və ya yenisini yazın
 cancel_item_short	Ləğv
-cancel_item_title	Bu maddəni ləğv et — arxa ofis ləğv qəbzi alır
 return_to_customer	Müştəriyə qaytar
 short_by	Çatışmayan
 tip_not_sale	Çaypulu (heyətindir, satış deyil)
@@ -896,9 +724,7 @@ finding_server	Bu Wi‑Fi-də mağazanın serveri axtarılır…
 no_server_found	Heç nə tapılmadı. Serverdə: Ayarlar → Digər cihazlar → Əlavə kassalara icazə ver (eyni Wi‑Fi). Və ya orada göstərilən IP-ni yazın.
 servers_found_pick	Qoşulmaq istədiyiniz mağazaya toxunun.
 server_host_selected	{host} istifadə olunur — qoşulma kodunu daxil edin, sonra İndi qoşul.
-print_bill	Hesabı çap et
 approval_pin_ph	Menecer PIN-i (yalnız soruşulsa)
-confirm	Təsdiq et
 menu_search_ph	Məhsul və ya qısa kod axtar
 customer_paid_ph	Müştəri ödədi
 tip_ph	Çaypulu
@@ -908,7 +734,6 @@ bill_format_help	Hər hesabda mağazanızın adının altında çap olunur. Sət
 bill_header_ph	Ünvan | telefon
 fssai_ph	Dərman lisenziyası nömrəsi (istəyə bağlı — sizin ifadəniz)
 bill_footer_ph	Altlıq (məs. Təşəkkür edirik, yenə gəlin)
-save_bill_format	Hesab formatını saxla
 kot_field_on	göstər
 kot_field_off	gizlət
 kot_weight_light	Yüngül
@@ -919,10 +744,8 @@ kot_weight_bold	Qalın
 kot_align_start	Başla
 kot_align_center	Mərkəz
 kot_align_end	Son
-content_width	Məzmun eni (mm)
 content_width_bill	Hesabın məzmun eni (mm)
 content_width_ph	Və ya məzmun eni yazın, 40–210 mm
-content_width_help	Bu slipin çap eni. Hesab öz enini saxlayır.
 content_width_bill_help	Müştəri hesabının çap eni. Susmaya görə 210 mm (səhifə). 58 mm dar slip, 80 mm enli slip, 112 mm 4 düym, 210 mm A4 eni. 40-dan 210-a qədər istənilən dəyəri yazın. Biletlərin eni slip vərəqindədir.
 vp_paper_width	Məzmun eni (mm)
 vp_paper_width_ph	Və ya məzmun eni yazın, 40–210 mm
@@ -937,9 +760,6 @@ test_bill_sent	Hesab önizləməsi göndərildi
 test_print_no_printer	Bu iş üçün printer yoxdur — bu ekranda birini seçin
 std_print	Hesab çap ölçüsü
 std_print_help	OS / sənəd printerlərində Standard Portret və Mənzərəli qəbz işləri üçün şrift ölçüsü (nöqtələri daxil edin — Kiçik/Normal/Böyük deyil). Hər iki istiqamətdə eyni ölçü.
-std_size_s	Kiçik
-std_size_m	Normal
-std_size_l	Böyük
 save_std_print	Hesab çap ölçüsünü saxla
 std_print_saved	Hesab çap ölçüsü saxlandı
 print_brand_kit	Brend dəstini çap et
@@ -952,14 +772,9 @@ choose_payment_qr	Ödəniş QR seç
 clear_payment_qr	Ödəniş QR-i sil
 payment_qr_set	Ödəniş QR: faylda — müştəri ekranında göstərilir (oradakı məbləğ UPI QR-ini əvəz edir)
 payment_qr_none	Ödəniş QR: yoxdur — ödəyəndə UPI ID-dən məbləğ QR-i
-aggregator_import	Aqreqator sifarişləri (fayl)
-aggregator_import_help	İstəyə bağlı yerli idxal: ehtiyat nüsxə qovluğuna import_aggregator_orders.json qoyun (massiv və ya {"orders":[…]}), sonra İdxal düyməsinə toxunun. Kassanı heç vaxt dayandırmır; canlı Zomato/Swiggy Cloud-dadır.
-import_aggregator_file	Aqreqator faylını idxal et
 team_pick_ph	Redaktə ediləcək heyət — ad, istifadəçi adı və ya seçin
 select_staff	Bu heyət üzvünü seç
 rights_help	Bu şəxs üçün pul əməliyyatları — keçmək üçün toxunun: İcazə verilir → Rəhbərin PIN kodu tələb olunur → İcazə verilmir. Fakturanı yenidən çap etmək yalnız fakturalardır; bölmələr aşağıdakı yoxlama siyahısıdır.
-dish_picker_help	Məhsullarımızı axtarın və ya göz gəzdirin və adını və şəklini doldurmaq üçün birinə toxunun — və ya öz adınızı saxlayın. Qiymətinizi qoyun (0 olar), sonra Məhsul əlavə et.
-close_dish_list	Məhsul siyahısını bağlayın
 own_item_name	Bunu öz məhsul adınız kimi istifadə edin
 on_your_menu	Dərman siyahısında
 edit	Redaktə et
@@ -970,24 +785,16 @@ add_scheme	BOGO əlavə et
 schedule_ph	Saatlar — B.e.–Cümə 07:00-11:00 və ya Axşam 17:00-19:00=150
 upi_vpa_ph	UPI ID (VPA)
 upi_payee_ph	UPI alanın adı (istəyə bağlı)
-upi_qr	UPI QR
 show_upi_qr	UPI QR göstər
 close_upi_qr	Bağla
 upi_qr_help	Müştəri skan edir və ödəyir. Onlar ödəniş etdikdən sonra Ödəniş Qəbul et-ə toxunun. İkinci ekran: Server URL-i açın / LAN-da göstər.
-recently_done	Bu yaxın bitənlər
 role_help_customer	Rol: Müştəri — khata (onlar bizə borcludur). Eyni tərəf stok da verə bilər.
 role_help_both	Rollar: Müştəri + Təchizatçı — bir tərəf, khata və ödəniləcək dəftərlər, Hesabatlarda xalis.
 role_help_supplier	Rol: Təchizatçı — alışlara görə biz onlara borcluyuq.
-items_word	məhsul
-items_section	Məhsullar
-back_to_order	Sifarişə qayıt
-new_items_head	Hələ göndərilməyib
 price_ph	Qiymət
 price_ph_gst_inside	Qiymət ({tax} daxil)
-tax_rates_missing_hint	Bu əşyalarda {tax} dərəcəsi yoxdur — Əşyalar bölməsində Vergi dərəcəsini təyin edin (qiymətlərin içində artı {tax} və {tax} daxildir)
 taxable_value	Vergiyə cəlbedilən dəyər
 gst_inside_price_note	({tax} daxil)
-start_with_template	Bizim məhsul şablonumuzla başla
 template_heading	Başlanğıc məhsullar
 template_info	Şəkilli {c} kateqoriya və {d} məhsul, əlavə etməyə hazır. Qiymətlər ₹0-dan başlayır — sonra özünüzünkünü qoyun.
 template_import	Tam şablonu idxal et
@@ -1009,21 +816,13 @@ opening_client	Klient açılır…
 preparing_desk	Masa hazırlanır…
 opening_server	Server açılır…
 creating_server	Server yaradılır…
-order_empty_pick	Sifariş boşdur — məhsul seçmək üçün yuxarıda Məhsul əlavə et düyməsinə toxunun.
 add_dishes	Dərman əlavə et
 order_so_far	Bu sifarişdə: {n} · {total}
 no_dish_match	“{q}” ilə uyğun gələn məhsul yoxdur
-pick_dishes_help	Əlavə etmək üçün məhsula toxunun · siyahını daraltmaq üçün kateqoriya seçin
 pick_done	Bitdi
-pick_done_dd	Bitdi · {label}
-printer_route_mode	Bu yerdə bir neçə printer olsa
-printer_mode_first	Birinci işləyən
-printer_mode_all	Hamısına çap et
 kot_field_up	Yuxarı köçür
 kot_field_down	Aşağı köçür
-app_template_blurb_extra	Həmçinin: Sahib Zahir, Admin Asif, Kassir Nawaz; ön yan panel; 4 saatdan sonra tarixçə; Bu gün lenti sil; kompakt hesab.
 dishes_n	{n} məhsul
-recipe_ph	Resept (istəyə bağlı — kassa mağazasında istifadə olunmur)
 reorder_ph	Bu səviyyədə yenidən al
 set_reorder	Yenidən alma səviyyəsini qoy
 low_stock_alert	Azalır — tezliklə alın: {items}
@@ -1032,7 +831,6 @@ show_unpriced	Yalnız qiyməti olmayan məhsulları göstər
 show_all_dishes	Bütün məhsulları göstər
 role_title_rest_ph	Vəzifə adı (məs. Kapitan, Baş aşpaz)
 preset_help_rest	Kassir: satış. Menecer: satış + məhsullar + etibarsız etmə/düzəliş.
-kind_raw	Miqyaslı ehtiyat
 kind_resale	Dərman alınıb
 kind_dish	Stoku saymayın
 buy_unit_ph	Vahid (kg, litre, pcs)

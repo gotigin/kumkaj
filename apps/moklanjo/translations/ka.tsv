@@ -39,7 +39,7 @@ adding_item	ახალი ტარიფის დამატება
 editing_item	რედაქტირება
 save	შენახვა
 remove	ამოღება
-empty_catalog	ჯერ არ არის ტარიფები. გახსენით ფასები და სერვისები, დაამატეთ ერთი (სახელი + ფასი, ერთეული კგ), შემდეგ დაჯავშნა.
+empty_catalog	ჯერ არ არის ტარიფები.
 counter_sale	სალარო დაჯავშნა
 total	ჯამი
 cash	ნაღდი
@@ -171,8 +171,6 @@ selected_language	არჩეული
 continue	განაგრძეთ
 this_device	ეს მოწყობილობა
 device_use_q	როგორ იქნება გამოყენებული ეს მოწყობილობა?
-last_server_mode	იყო სერვერი — შეეხეთ გასაგრძელებლად
-last_client_mode	იყო კლიენტი — შეეხეთ გასაგრძელებლად
 choose_server	აირჩიეთ სერვერი
 choose_server_hint	გახსენით არსებული სერვერი, ან შექმენით ის სხვა ბიზნესისთვის.
 create_new_server	შექმენით ახალი სერვერი
@@ -501,8 +499,6 @@ job_layout	განლაგება
 job_delivery	როგორ იგზავნება სამუშაო
 job_size	შრიფტის ზომა
 job_size_ph	მაგ. 18, 20, 26…
-save_receipt_format	შეინახეთ ქვითრის ფორმატი
-save_label_format	ეტიკეტის ფორმატის შენახვა
 test_receipt_format	ტესტის ქვითარი
 test_label_format	ტესტის ეტიკეტი
 test_receipt_sent	ქვითრის ნიმუში გაიგზავნა
@@ -610,7 +606,7 @@ units_heading	ერთეულები
 booking_measures	დაჯავშნის ზომები
 drawer_count	უჯრის რაოდენობა (სურვილისამებრ)
 spreadsheet_csv	ელცხრილი (CSV)
-bank_reconciliation	საბანკო შერიგება (მონიშნეთ თქვენი საბანკო ამონაწერის წინააღმდეგ)
+bank_reconciliation	საბანკო შერიგება
 book_add_product	წიგნი — დაამატეთ პროდუქტი/განაკვეთი
 book_opening_credit	ლეჯერი - გახსნის კრედიტი
 account_kind	ანგარიშის ტიპი (შეეხეთ ერთს)
@@ -650,7 +646,7 @@ net_word	წმინდა
 offline_badge	ოფლაინ
 optional_login_help	არასავალდებულო შესვლა (id + პაროლი). მფლობელი კომპლექტი ერთხელ; მხოლოდ მომხმარებელს შეუძლია შეცვალოს პაროლი მოგვიანებით.
 or_unlock_login	ან განბლოკეთ შესვლის ID + პაროლით
-permission_preset	სამუშაო (აყენებს ეკრანებს და უფლებებს)
+permission_preset	სამუშაო
 preset_help_moklanjo	მოლარე: გაყიდე. მენეჯერი: გაყიდვა + მენიუს ელემენტები + ბათილად/შესწორება.
 product_locked_moklanjo	მოკლანჯო
 product_only_moklanjo	ეს აპლიკაცია არის მხოლოდ Moklanjo - წიგნები + დაჯავშნის მაგიდა. სხვა სავაჭრო სახეები მოგვიანებით გაიგზავნება როგორც ცალკეული პროდუქტები.
@@ -698,10 +694,6 @@ pin_hint_paired	დამატებითი სალარო აპარ�
 pin_hint_pair_first	დამატებითი სალარო აპარატი — ჯერ დააწყვილეთ მაღაზიის მოწყობილობასთან
 unlock_to_continue	განბლოკეთ გასაგრძელებლად
 no_staff_yet	ჯერ არ არის პერსონალი — განბლოკეთ როგორც მფლობელი, შემდეგ კი გუნდი
-status_server_set_pin	სერვერის რეჟიმი — დააყენეთ მფლობელი PIN
-status_server_tills	სერვერის რეჟიმი - დამატებით სალარო აპარატებს შეუძლიათ შეუერთდნენ. განბლოკვა
-status_server_unlock	სერვერის რეჟიმი - განბლოკვა როგორც მფლობელი
-status_client_unlock	კლიენტის რეჟიმი - განბლოკეთ გასაყიდად
 icon_new_selected	ხატულა: არჩეულია ახალი ფაილი — შეეხეთ ბრენდის შენახვას
 icon_custom	ხატულა: მორგებული ადგილის ნიშანი
 icon_default	ხატულა: Kumkaj ნიშანი (ნაგულისხმევი) — აირჩიეთ მორგებული

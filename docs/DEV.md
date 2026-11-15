@@ -204,6 +204,27 @@ on every OS — never gate one on the device.
    chargeable kg, draft thumb). Full `sync_chrome` on every keystroke reloads
    Settings SQL and can hide the Android IME / freeze the shell. Reserve it
    for open, pick, Escape, Back, and focus-elsewhere close.
+9. **A dropdown looks like one** (owner 2026-11-14). Every control that
+   opens a pick list — a type-or-pick field or a dropdown button — sits in
+   `mod.widgets.ComboField{field: "<SuggestField key>" …}` (`"category"` =
+   the item form's category picker). After the control draws, ComboField
+   paints ˅ at its right edge, ˄ while the list is open; the state is read
+   from app state at draw time and re-checked on every event, and an open
+   list with no rows reads as closed. A dropdown button's face is its label
+   only. The old `Done · {label}` open face (`pick_done_dd`) stayed on the
+   button whenever the list closed another way (outside press, Back, a
+   screen change) — removed in all four apps. New pick list → wrap its
+   control in ComboField; never a face that changes with open state.
+10. **No printer saved → Find printers right there** (owner 2026-11-14).
+   Never tell the owner to go to Settings → Printers. A printer checklist
+   (bill, kitchen station, test page / KOT, assign) with no printer saved
+   shows one row, a **Find printers** button (`FIND_PRINTERS_ROW` →
+   `FindItem`); a "no printer" warning snack (`snack::wants_find_printers`)
+   carries the same button. Both open the **Printers sheet**
+   (`printers_modal`): the Printers panel's own Find / Cancel / saved list;
+   Done reopens the checklist that opened it with the printers just found.
+   Moklanjo's sheet also saves what Find found and gives the tapped printer
+   the job that was missing (receipt / AWB label).
 
 Manual check (mouse *and* finger): open each kind — Floor Columns, a type-or-
 pick field (Buy item), a dropdown button (Order Kitchen, Settings printers) —
@@ -274,6 +295,13 @@ every OS — never gate one on the device.
    change, run the smoke and grep the app log for `Kumkaj stall`; anything
    ≥ 1 s in a release build moves to a worker with Progress + Cancel (bug
    **7b**). On Android the same lines are in `adb logcat` under `Makepad`.
+   The stall meter only sees App event handling: a Makepad shader compile
+   or a worker that is slow is invisible to it. **Opening the books** (Server
+   / Client) therefore logs its own stages once the screen is up —
+   `Kumkaj open: Opening Client: worker N ms · wait for the UI N ms · screen
+   N ms · total N ms` and `role_open` in diagnostics (≥ 2 s as a warning),
+   every app (`runtime.rs`: `role_open_times`, added 2026-11-14 after an
+   AGS2 Client tap took 12–20 s with nothing saying where).
 8. **Progress text never outlives its job.** A worker's progress line goes
    on the status line through `show_work_status` (no snack — a toast per
    tick only flickered); when the job ends without a result line of its own,
@@ -628,6 +656,7 @@ So “this tab is active” **cannot** be expressed by leaving a Button focused 
 7h. **Row and card taps use `finger_up_is_tap`, not `was_tap()`** — `was_tap` gives up after 0.5 s or 5 px (mouse), while the page waits 8 px before scrolling: a slow press or a 6 px drift was neither a tap nor a scroll. A tap read from raw pointer events (printer rows) needs press and release on the same row within tap travel — a release alone is the end of a scroll.
 7i. **Never pre-mark a scroll handled before dispatch** — Makepad hands a wheel / trackpad delta to the innermost scroll view that can move and marks the axis handled only when it moved. Setting `handled_x` before `ui.handle_event` (`claim_hstrip_nested_scroll`, removed from Moklanjo 2026-11-02 and Khaynjo 2026-11-07) made each sideways strip move one step and then stop.
 7j. **Dropdown that would not close, reopened itself, and drifted (Khaynjo Floor Columns, 2026-11-08)** — Picking a number or tapping outside closed the list and the same frame reopened it (`Modal::close` → `revert_key_focus` → the field's `KeyFocus` → "focus opens the list"); the panel was placed once from the field's rect, so scrolling the Floor left a gap the size of the scroll; leaving Floor with it open left an invisible modal swallowing every press on every screen. Moklanjo had no outside-press close at all (a finger could only pick). Fixed by the rules in § Dropdowns, pick lists and tips — not by patching that one control.
+7k. **Add dishes: fast taps and the category swipe (Khaynjo, Kirano, Tabiyat — owner 2026-11-15)** — Measured on a 1,376-dish shop (debug build): every dish tap drew **all 27 category pages** (`dish_grid_draw 27×`, ~200 tiles) and ran `sync_chrome` twice, ~45 ms per tap; opening the window took a 244 ms draw. Now (1) a `ProductList` page away from the window keeps its room and draws nothing (`menu_pick_page_near`: the page in view and one each side, from `menu_pick_scroll_now`); (2) `menu_pick_card_tap` answers a dish tap at the top of `handle_actions`, before the ~7,400 lookups the rest of it makes, and `align_menu_pick_cart_page` refreshes only when the page changed — ~10 ms + 3 ms per tap, no stall on open. (3) A sideways finger swipe or mouse press-drag on the dishes turns the category page and its tab (the tabs already moved the pages): the dish list takes the press for its own up/down scroll (`capture_overload`), so `MenuPickPager::pager_swipe` reads the raw pointer (`popup_pointer`), moves the strip with it once the travel is sideways past 12 px, and on release lands one page on (a fifth of a page or a flick) or springs back; the release is never also a dish tap (`menu_pick_swipe_took_press`), and the per-frame snap waits while the swipe is held. Measure with `KUMKAJ_STALL_LOG_MS=2` (logs every event and every `stall_span`). (4) Whenever the category changes (tab, swipe, page step) the tab strip scrolls the active tab into the clear band between ‹ and › (`reveal_active_category_chip`; only on a change, so a strip scrolled by hand is not pulled back) — an active tab in the strip's hidden part looked like none was on (owner, 2026-11-15). Tests: `a_swipe_turns_one_page_or_springs_back`, `only_pages_near_the_window_draw`.
 8. **Page-scroll list rows cropped / page won’t scroll** — A `PortalList` inside a page `ScrollYView` must claim **full content height** (`list_content_height` + `page_owns_scroll`) so the page owns the wheel. Guessing a short Fixed row pitch (Khaynjo Inventory `StockList` at 62 while `StockRowView` is Fit, 2026-10) clips the last rows into the next sibling (tip-pool `ReportText`) and leaves the page with almost nothing to scroll — the “missing” rows are clipped *inside* the under-tall list, not below it. **Over-tall (empty cream band):** Fit-row lists must also **shrink** when `drawn_range_extent` is clearly shorter than the reserved walk (Order cart above Kitchen station; Moklanjo cart). Grow-only `.max(row)` left the gap forever. Kitchen `page_window` virtualization must not run on short lists (≤8) — a bad `first` became a huge `top_gap` under “To cook now”. Kitchen Live / Recall / Stations are **tabs**, not one buried scroll. **Rule for every app:** Fit-row expand-to-content lists use a **generous seed + `remember_content_row`** (same pattern as `CustomerList` / Moklanjo `SaleList`). Fixed-pitch cards (`MenuCard` 140, `DishRow` 104) keep a constant that matches the DSL. Never “fix” one screen’s crop without sweeping the same hardcoded underestimates elsewhere. Do not reintroduce nested list scroll for these lists — that eats the page wheel at the bottom edge.
 
 8b. **Kitchen Live card body is one dish per line** — Store KOT `summary` stays compact (`·` / `, ` joined) for print/sync, but the Live card must not paint that run-on (it truncated mid-name and was unreadable for cooks, cancel slips especially, 2026-11-08). `kitchen_card_body` reformats for the card (table / station on their own lines, `×qty  name` per dish); KotCard height + `max_lines` leave room; paper still has the full ticket.
@@ -701,7 +730,9 @@ ActionStack{ New item StackSecondaryBtn; Add rate StackPrimaryBtn }
 
 ### Nav order (no live drag — 2026-11-10)
 
-Live rail/footer **drag-to-swap was removed**: it mixed with scroll and felt broken. Order chrome peers only in **Settings → Sidebar** with **↑ ↓** on each row (show/hide stays the pill switch). `pointer_nav_drag` / `pointer_sidebar_settings_drag` are no-ops; do not reintroduce press-drag on the live bars.
+Live rail/footer **drag-to-swap was removed**: it mixed with scroll and felt broken. Order chrome peers only on **Settings** with **↑ ↓** on each row (show/hide stays the pill switch; a tap on the row opens that screen). `pointer_nav_drag` / `pointer_sidebar_settings_drag` are no-ops; do not reintroduce press-drag on the live bars.
+
+**Settings is one list of nav items** (owner, 2026-11-15; all four apps). Every Settings section (Language & currency … Privacy, Team & PINs) is a nav item like Day book or Floor: one continuous list in the sidebar-row design (icon, ↑↓, switch), **Enable All / Disable All at the top**, no "Sidebar" heading (its tip now sits in the Settings ℹ). A switched-on section takes a rail / bottom-bar slot and opens that section; its slot lights up while the section is open (`nav_tab_for_settings_panel`). Sections start **hidden on the bars**: a tab missing from the saved `ui_nav_order` was never shown to that shop, so `parse_nav_layout` hides it (`nav_tab_default_hidden`) and an upgrade adds no slots; a missing tab takes its place in the default order, after its nearest default neighbour the saved list has. Staff without shop Settings see only the My PIN row (`settings_hub_team_row`); sections never take their slots (`NavCaps.shop_settings`), and a first unlock skips sections (`first_allowed_work_tab`). Slots: one per nav item on each bar — Khaynjo 28, Kirano / Tabiyat 25, Moklanjo 27 (`rail_xN` / `nav_xN` after each app's original slots). Moklanjo's Team was already a rail item and stays as it was; only its sections start hidden. **Default order = the names in dictionary order, ignoring case**, in the app language (owner, 2026-11-15, `default_nav_order`); the owner's own arrangement always wins. A saved order equal to one the app shipped (`SHIPPED_NAV_ORDERS`) was never arranged, so it takes the default too. **Unlock lands where that person last was** (owner, 2026-11-15: "first time the first item is fine then the next time the last selected one for that user"; never a fixed screen such as Day book). `paint_nav_tabs` remembers the selected item per person on this device (`remember_nav_tab` → meta `ui_last_nav:<owner|staff id>`; a Settings section or Team counts even when it is not on the bar; written only when it changes and never while a worker holds the books). `unlocked_home_from` takes it while that person may still open it (on their bar, or a Settings item they have the rights for), else the first item on the bar (Lock and sections skipped) — so with the default order a first unlock is the first screen by name. The landing then runs as a tap on that item (`nav_tab_after_unlock` → `open_nav_tab` after `sync_chrome`): Day close loads its figures, Books its overview, a section opens; the first chrome paint after an unlock is a full one even on Settings (header line, that person's rail). Rights taken away while on a screen still bounce to the first item (`first_allowed_work_screen`). Tests: `unlock_returns_each_person_to_their_last_item`, `default_order_is_the_names_in_dictionary_order`, `settings_sections_join_older_layouts_hidden_on_the_bars`.
 
 1. **Slots are positions.** `paint_nav_tabs` paints slot N with `nav_order[N]`; the order lives in books meta `ui_nav_order` (`Store::nav_order_csv` / `set_nav_order_csv`). ↑↓ swaps two slots and re-saves. Never hard-code tab→slot.
 2. **Footer vertical air.** Bottom bar: outer `bottom_nav` top pad ~4 (bottom 0 — bug **7d**), strip top/bottom ~4/8 (≥ `bar_size`), chip face vertical pad ~8 so icons+labels look **vertically centered** — not a tall empty band above the chips left over from the old drag lane.
@@ -720,7 +751,7 @@ Live rail/footer **drag-to-swap was removed**: it mixed with scroll and felt bro
 | `ChipBtn` / `ChipBtnActive` | Short strip filter chips only — never one-shot actions |
 | `nav_tab_for` | `Screen` → which bottom peer is active |
 | `paint_nav_tabs` | Exactly one footer peer visible-as-selected |
-| `pointer_nav_drag` / `pointer_sidebar_settings_drag` | No-ops — chrome reorder is Settings → Sidebar ↑↓ only |
+| `pointer_nav_drag` / `pointer_sidebar_settings_drag` | No-ops — chrome reorder is the Settings nav list ↑↓ only |
 | `paint_choice_pair` / `clear_button_animators` | Dual-choice visibility + animator clear |
 | `paint_choice_state` | All dual choices after chrome sync |
 | `locale::en` + `english_chrome_never_returns_raw_keys` | Human labels, never snake_case keys |
@@ -834,6 +865,19 @@ Equivalent: `./apps/moklanjo/scripts/android-dev.sh`
 Requires `ANDROID_HOME` (or `~/Android/Sdk`), a connected device/emulator, and Makepad’s Android toolchain (auto-installed on first run). Builds, installs, and launches **`com.moklanjo.debug`** (from `apps/moklanjo/env/development.env`).
 
 **Launcher / logo:** Master art is `apps/moklanjo/assets/moklanjo-app-icon.png`. Run `./apps/moklanjo/scripts/generate-icons.sh` (Khaynjo: `./apps/khaynjo/scripts/generate-icons.sh`) to rebuild Android mipmaps, desktop `icon_*.png` / `icon.ico`, and in-app **`kumkaj-mark.webp`** (WebP only — no PNG/AVIF brand marks). Nav icons are WebP under `resources/nav/`. Android launcher mipmaps stay PNG (platform requirement). Desktop `icon_*.png` / `.ico` stay on disk for MSI/window chrome but are **not** packed into APK assets (`prune_android_runtime_assets` in cargo-makepad via `apply-android-activity-bridge.sh`). Reinstall Android after regenerating.
+
+**First run after an install: a ~33 s freeze on the AGS2 (measured 2026-11-14).**
+Android draws all text with Makepad's Slug path (`draw/src/text/fonts.rs`
+`default_slug_min_dpxs_per_em` is 0 off desktop), and each text-style variant
+compiles a ~400 KB shader (`draw/src/shader/draw_glyph.rs`, band / curve
+loops) — about 33 s on the Mali-T830, with the UI frozen and no `Kumkaj
+stall` line (compiles are outside App events). The program binary is cached
+(`cache/shader_<hash>…bin`), so it hits the first launch of every build that
+changes a text variant, and every Play update. Candidate fixes, each needs an
+AGS2 A/B before it ships: MSDF for normal sizes on Android (a Slug threshold
+above body text), Slug loops the driver need not unroll, or a prewarm behind
+the splash. Measure with `adb logcat` (`Makepad GL:` once per process, then the
+gap before the first frame).
 
 Android has **no** Splash `--hot` like desktop — each invocation rebuilds and relaunches. Day-to-day UI iteration stays on `cargo moklanjo-dev`; use `cargo moklanjo-android-dev` to verify on device.
 
@@ -962,7 +1006,7 @@ Makepad loads fonts from **`<crate>/resources/`** next to the `.exe` (crate name
 
 ### WorldFonts / packaged icon fonts (all desktop packages)
 
-Floor tile actions, header eye, chevrons, and other glyph buttons use **Font Awesome** via `WorldFonts` → `icons` (`fa-solid-900.ttf`). Sidebar nav pictures are **WebP** under `resources/nav/` — those can look fine while FA buttons show empty rectangles.
+Floor tile actions, header eye, chevrons, and other glyph buttons use **Font Awesome** via `WorldFonts` → `icons` (`fa-solid-900.ttf`). Sidebar nav pictures are **WebP** under `resources/nav/` (Settings rows: `resources/settings/`, same 64 px rounded-square style) — those can look fine while FA buttons show empty rectangles. **A slot icon has no layout `src:`** (rail / bottom bar): a layout picture loads on the Image's first draw and replaces the one `load_nav_icon_once` set before it, and the loader then believes its icon is up — with hidden or reordered tabs every slot showed its layout picture (Order wore Day book's, 2026-11-14). Guard: `slot_icons_have_no_layout_picture` (every app). Fixed rows (Settings, Day book shortcuts) may keep a `src:`.
 
 | Rule | Detail |
 |---|---|
@@ -1022,8 +1066,8 @@ the Windows machine (or share the workspace folder with it), open
 an **elevated** PowerShell and run:
 
 ```powershell
-.\scripts\windows\run-wack.ps1 -Package Z:\dist\Khaynjo-1.0.9.msix   # Store path
-.\scripts\windows\run-wack.ps1 -Package Z:\dist\Khaynjo-1.0.9.msi    # sideload path
+.\scripts\windows\run-wack.ps1 -Package Z:\dist\Khaynjo-1.0.10.msix   # Store path
+.\scripts\windows\run-wack.ps1 -Package Z:\dist\Khaynjo-1.0.10.msi    # sideload path
 .\scripts\windows\run-wack.ps1 -Cleanup                               # remove the test cert
 ```
 
@@ -1036,6 +1080,24 @@ runs `appcert.exe test -appxpackagepath …`. For an `.msi` it runs WACK's
 desktop-app tests with `msiexec /i … /qn` and `/x … /qn`. It prints the
 report path, the overall result and every test that did not pass; exit 1 on
 FAIL.
+
+Install the kit with the **current** SDK, unattended (elevated):
+`winget install --id Microsoft.WindowsSDK.10.0.26100 -e --silent --override "/features OptionId.WindowsSoftwareLogoToolkit OptionId.SigningTools /quiet /norestart"`
+(`OptionId.WindowsSoftwareLogoToolkit` is WACK). The 2018 kit (10.0.17763)
+reports *App resources* as "blocked from execution" on every MSIX — with or
+without a `resources.pri` — so do not judge a package with it.
+
+First real run, 2026-11-15 (Windows 10 19045 VM, WACK 10.0.26100):
+`Khaynjo-1.0.10.msix` **Overall PASS**, 24 tests. Only the *optional*
+*Blocked executables* test flags `CreateProcessW` and the strings `cmd` /
+`PowerShell` / `REG` in the exe (printing and the data dialog) — allowed for
+a `runFullTrust` desktop app, and optional tests do not decide the result.
+
+`.ps1` files must parse in **Windows PowerShell 5.1**, which reads a file
+without a BOM as Windows-1252: an em dash's last UTF-8 byte becomes a curly
+quote and closes the string (`run-wack.ps1` and the uninstall data dialog did
+not parse until 2026-11-15). Keep them ASCII or UTF-8 with a BOM —
+`product-cert.sh` (xcomp tier) refuses others.
 
 Known, expected results: an unsigned `.msi` / `.exe` fails *Digitally signed
 files* (needs a real code-signing certificate — the Store path does not, the
@@ -1116,8 +1178,9 @@ Lock screen: **Owner** | **Staff** (pick staff, then PIN), or optional **login i
 Chrome peers are a long strip (phone bottom nav / desktop rail), not a More
 bucket — Day book, Booking/Order, Floor/Kitchen (Khaynjo), Sales, Settings,
 Lock, and the rest. Feature flags and person rights hide peers the signed-in
-person cannot use. Unlock lands on the **first permitted peer**
-(`unlocked_home_from`), not a hard-coded Day book.
+person cannot use. Unlock returns each person to the item they last had
+selected on this device, first time the **first permitted peer**
+(`unlocked_home_from`) — never a hard-coded Day book.
 
 ## Data location
 
@@ -1196,9 +1259,24 @@ pages, and fallback when WS cannot upgrade.
 | `welcome` | S→C | `{seq, rev}` — Server tip after subscribe |
 | `delta` | S→C | `{seq, prev_seq, rev, full, …domains}` — apply in order |
 | `need_sync` | S→C | gap or unknown Client tip — Client must `GET /sync` then resume |
-| `ping` / `pong` | either | heartbeat (~15s); missed pong → reconnect |
+| `ping` / `pong` | either | heartbeat (~15s); nothing heard for 45 s → close, `/wait`, reconnect |
 | `outbox` | C→S | `{id, path, body, request_id}` — durable queue item over WS |
 | `outbox_reply` | S→C | `{id, ok, body\|error, code?}` — same semantics as HTTP write |
+
+**Both loops poll; neither parks in a read.** Each side reads with a short
+timeout (`lan_ws::POLL`, 100 ms) and, between reads, sends what is waiting:
+the phone its queued `outbox` frames and ping, the Server its queued deltas
+and ping. Until 2026-11-14 both read for 25–35 s at a time, so a tablet's
+KOT handed to the socket sat until the Server next spoke (**24 s** measured
+on an idle link; owner: "the print was instantaneous, now > 5 s"), and the
+Server's news sat until the phone spoke. Now ≈70 ms for the KOT's answer and
+≈100 ms for news. Guard: `the_live_socket_carries_a_kot_and_the_news_at_once`
+(Khaynjo) / `the_live_socket_carries_a_write_and_the_news_at_once` (the other
+apps), real sockets, < 1 s each. Also: nothing heard for `SILENT_MAX` (45 s;
+both sides ping every 15 s) closes the socket; bytes read together with the
+`101` head are the Server's first frames and go to tungstenite
+(`from_partially_read`), never dropped; a phone write answered ≥ 1.5 s after
+it was asked logs `lan_write_slow` (diag) with its time — measure, don't guess.
 
 **An answer on the socket is said on the screen**, exactly like an HTTP
 write's: `phone::answer_from_socket` (each app's own copy) files the row
@@ -1206,6 +1284,28 @@ write's: `phone::answer_from_socket` (each app's own copy) files the row
 Khaynjo's `print_problem`. Until 2026-11-07 it only filed the row, so a
 device on a live link never heard "not accepted", "not printed", or got a
 payment's Undo. A resend's second reply finds no row and says nothing.
+
+**Shop settings on every device (2026-11-14).** Each app's
+`store::SHOP_PREF_KEYS` lists the books settings that are the *shop's*
+(Khaynjo: GST wording `show_tax_chrome`, `show_tax_invoice`, `pay_methods`,
+`show_today_bar`, sidebar `ui_nav_hidden` / `ui_nav_order`,
+`business_day_mode`, history retention, `allow_zero_sales`, `kot_auto_print`,
+frequent-items window, `currency`; Kirano / Tabiyat the subset they have;
+Moklanjo sidebar, currency, booking measures, NDR attempts). The Server sends
+them in every snapshot (`SyncSnapshot::shop_prefs`) and in a delta when any
+moved; the Client writes exactly those keys (absent on the Server → removed on
+the Client; on/off flags go resolved so app versions cannot disagree on a
+default). Until then a Client kept its **own** defaults: the Owner on a
+tablet saw GST lines, Tax invoice, UPI/Card/Credit/Split and every sidebar
+item the shop had hidden. A Client never writes these keys itself: the
+sidebar goes `BooksOp::SetNavLayout` over `/books` like every other setting
+(`AppState::save_nav_layout`). Device-only meta stays out of the list (floor
+zoom/columns/view, Kitchen station filter, language, lock choices, sync
+interval, Day book accordions). **Adding a setting that changes what a screen
+shows:** put its key in `SHOP_PREF_KEYS` and give Clients a `BooksOp` — or the
+tablet shows its own default. Guards:
+`a_client_shows_the_shops_settings_not_its_own_defaults` (every app),
+`a_settings_change_rides_the_next_delta` (Khaynjo).
 
 **Rev + seq.** `rev` remains the snapshot content hash (304 / If-None-Match).
 `seq` is a monotonic per-Server counter bumped on every published change.
@@ -1661,8 +1761,7 @@ Makepad visual traps found this way (do not reintroduce):
     - **Same action everywhere:** ‹, mouse Back, Alt+←, left-edge swipe, and
       Android Back all call `navigate_back` (overlays first, then pop).
       Mouse Forward / Alt+→ / right-edge swipe call `navigate_forward`.
-    - Empty-stack fallbacks: SidebarSettings → Settings; Lock / ClientPair /
-      Onboard → DeviceSetup. Paint via `paint_header_back_chrome` (also after
+    - Empty-stack fallbacks: Lock / ClientPair / Onboard → DeviceSetup. Paint via `paint_header_back_chrome` (also after
       Settings panel open and DeviceSetup Language accordion).
     - **Setup fence:** once Back opens **Server/Client** (`DeviceSetup`), drop
       Forward and never restore **Onboard** via Forward/‹ history. Leaving
@@ -1701,8 +1800,8 @@ Makepad visual traps found this way (do not reintroduce):
     (`portal_list_mouse_drag_promote`) — without that, Settings printer
     assign and similar capped checklists only moved the page. Both apps’
     page `ScrollYView` / `ScrollXView` (and Moklanjo `booking_desk_hscroll`)
-    set `axis_lock: true`. Open dropdown faces use
-    `Done · {label}` (`pick_done_dd`) — no second Done under the list. Horizontal tab strips (`ScrollXView`) mouse
+    set `axis_lock: true`. Dropdown faces are their label only; ComboField
+    draws ˅ / ˄ (§ Dropdowns rule 9). Horizontal tab strips (`ScrollXView`) mouse
     press-drag on whitespace around chips (nav drag-to-swap on a chip is
     not stolen); desk panes set `scroll_bar_x.mouse_capture_overload: true`
     (Makepad patch `drag_scroll_touch_only`).
@@ -1909,7 +2008,7 @@ chrome peer — never “nav only.”
 | Surface | Rule | Code (per app) |
 |---|---|---|
 | Bottom nav / side rail | Only peers `nav_tab_permitted` allows | `paint_nav_tabs` ← `current_nav_chrome_order` |
-| Unlock home | First permitted peer (**not** hard-coded Day book) | `unlocked_home_from` |
+| Unlock home | That person's last selected item on this device, else their first permitted peer (**never** a hard-coded Day book) | `unlocked_home_from` ← `remembered_nav_tab` / `first_allowed_work_tab` |
 | Day book hub rows (Sell/Buy/Day close/Reports/Parties) | Same rights as those peers — hide the **slot** | `books_*_slot` visibility in paint/chrome sync |
 | TODAY / BILLS / bank accordions + header today bar | Owner or Sales only | `session_may_see_today` → `sync_books_sections` / `today_bar` |
 | Settings chrome | Any signed-in person (`can_open_settings_shell`) — shop rows need `can_access_settings`; Waiter sees **My PIN** only | Settings hub + Team |

@@ -1,7 +1,5 @@
 # Tamil — தமிழ் (ta). One key<TAB>text per line, in en() order; keep {placeholders}.
-app_tagline	கிரானா கவுண்டர்: விற்பனை, இருப்பு, கணக்கு & புத்தகங்கள். ஆஃப்லைனில் இலவசம்.
 unlock	திற
-pin_hint	உரிமையாளர் PIN 0000 இல் தொடங்கும்
 sell	விற்பனை
 buy	வாங்கு
 books	நாள் புத்தகம்
@@ -20,17 +18,13 @@ reports_month	லாபம் & நஷ்டம் (மாதம்)
 reports_aging	நிலுவை / Dr-Cr
 reports_balance_sheet	இருப்புநிலை
 reports	அறிக்கை
-refresh	புதுப்பி
 undo	செயல்தவிர்
-start_tracking	எண்ணத் தொடங்கு
 stock_minus	− கையிருப்பு
 stock_plus	+ கையிருப்பு
 settle_cash	ரொக்கம் செலுத்து
 settle_card	அட்டையால் செலுத்து
 items	பொருட்கள்
 nav_items	பொருட்கள்
-more	மேலும்
-your_items	உங்கள் பொருட்கள்
 items_help	திருத்த ஒரு பொருளைத் தட்டவும். புதிய பொருள் படிவத்தை அழிக்கும். பெயர் அல்லது குறுங்குறியீட்டால் தேடி, விலை அமைத்து (0 சரி), பிறகு சேர். ஏற்கனவே பதிவான விற்பனைகள் பில் செய்த பெயரையே வைத்திருக்கும்.
 add_item	பொருள் சேர்
 new_item	புதிய பொருள்
@@ -41,28 +35,22 @@ remove	அகற்று
 removed_items	நீக்கிய பொருட்கள்
 removed_help	மீட்டமை பொருளை பொருட்களில் அப்படியே திரும்பக் கொண்டுவரும் — விலை, புகைப்படம், வகை.
 restore_item	மீட்டமை
-empty_catalog	இன்னும் பொருள் இல்லை. பொருட்கள் திறந்து பெயரும் விலையும் சேர்த்து கவுண்டரில் விற்கவும்.
+empty_catalog	இன்னும் பொருள் இல்லை.
 total	மொத்தம்
 cash	ரொக்கம்
 upi	यूपीआई
 card	அட்டை
 credit	தரப்புகள்
 clear	அழி
-ready_to_sell	முன்பதிவுக்குத் தயார்
 today_prefix	இன்று
-today_mid	இன்று
 owed	பாக்கி
-round_word	வட்டம்
 back	பின்செல்
 sold_out	விற்றுவிட்டது
 restock	மீண்டும் வை
 not_tracked	எண்ணப்படவில்லை
 in_stock	கையிருப்பில்
 marked_sold_out	விற்றுவிட்டது என குறி
-add_upper	சேர்
-na	இல்லை
 qty	எண்ணிக்கை
-unit_at	விலை
 actual	உண்மை
 applied	பயன்படுத்திய
 note_ph	குறிப்பு (விருப்பம்)
@@ -81,21 +69,13 @@ bill_item_qty	எண்ணிக்கை
 bill_item_price	விலை
 bill_item_amount	தொகை
 bill_item_note	பொருள் குறிப்பு
-bill_item_col_gap	நெடுவரிசை இடைவெளி
 bill_item_col_order	நெடுவரிசை வரிசை
 bill_item_col_sep	நெடுவரிசை கோடு
-bill_item_gap_tight	இறுக்கமான
-bill_item_gap_comfort	வசதியான
-bill_item_gap_wide	அகலமான
-bill_item_num_width	எண் நெடுவரிசை
-bill_item_num_compact	சிறிய
-bill_item_num_comfort	வசதியான
-bill_item_num_wide	அகலமான
-bill_item_num_align	எண் சீரமைப்பு
-bill_item_gap_em	இடைவெளி (em)
-bill_item_qty_min	எண்ணிக்கை குறைந்தபட்சம் (em)
-bill_item_price_min	விலை குறைந்தபட்சம் (em)
-bill_item_amount_min	தொகை குறைந்தபட்சம் (em)
+slip_col_width	அகலம் (mm)
+slip_col_start	தொடக்க இடம் (px)
+slip_col_end	முடிவு இடம் (px)
+slip_col_align	உரை சீரமைப்பு
+slip_columns_help	ஒவ்வொரு நெடுவரிசையின் அகலத்திலும் அதன் தொடக்க மற்றும் முடிவு இடம் அடங்கும். உரை தன் நெடுவரிசைக்குள்ளேயே மடிகிறது; உள்ளடக்க அகலத்தைத் தாண்டியது காகிதத்திலும் முன்னோட்டத்திலும் வெட்டப்படும்.
 bill_total_qty_label	மொத்த எண் லேபிள்
 bill_total_subtotal_label	துணை மொத்த லேபிள்
 bill_total_grand_label	மொத்த லேபிள்
@@ -108,11 +88,7 @@ bill_total_qty	மொத்த எண்ணிக்கை
 bill_total_subtotal	துணை மொத்தம்
 bill_total_grand	மொத்தம்
 kot_unassigned	ஒதுக்கப்படாதவை
-pos_tab_items	சேர்க்கப்பட்டவை
-pos_tab_payment	கட்டணம்
-settings_hub_title	அமைப்புகள்
 settings_hub_help	ஒரு நேரத்தில் ஒரு பகுதியைத் திறக்கவும் — குறைந்த உருட்டல், தெளிவான தேர்வுகள்.
-settings_back	பின்செல்
 settings_sec_language	மொழி மற்றும் நாணயம்
 settings_sec_country	நாடு & வரி
 settings_sec_tills	கூடுதல் கவுண்டர்கள் & கிளைகள்
@@ -154,35 +130,17 @@ diag_cleared	கண்டறிதல் பதிவுகள் அழிக�
 sidebar_settings	பக்கப்பட்டி
 sidebar_settings_help	பக்கப் பட்டையில் உள்ள அதே ஐகான்கள். வரிசையை மாற்ற ஒரு வரியை இழுக்கவும். காட்ட அல்லது மறைக்க சுவிட்சை மாற்றவும். அமைப்புகளும் பூட்டும் எப்போதும் பட்டையில் இருக்கும்.
 sidebar_always_on_short	எப்போதும் இயக்கத்தில்
-sidebar_back_settings	பின்செல்
-sidebar_shown	காட்டப்படுகிறது
-sidebar_hidden	மறைக்கப்பட்டது
-sidebar_always_on	எப்போதும் பட்டையில்
-sidebar_shown_hint	பக்கப் பட்டை / கீழ் தாவல்களில் காட்டப்படும்
-sidebar_hidden_hint	பட்டையிலிருந்து மறைக்கப்பட்டது
 sidebar_menu_items	பொருட்கள்
 sidebar_enable_all	அனைத்தையும் இயக்கு
 sidebar_disable_all	அனைத்தையும் முடக்கு
 sidebar_order_saved	பக்கப்பட்டி வரிசை சேமிக்கப்பட்டது
 sidebar_visibility_saved	பக்கப்பட்டி தெரிவுநிலை சேமிக்கப்பட்டது
-amounts_hide	மறை
-amounts_show	காட்டு
-printers_none_hint	முதலில் இந்த சாதனத்தில் ஒரு அச்சுப்பொறியைச் சேமிக்கவும், பிறகு அதை பில் அல்லது ஒரு பிரிவில் சேர்க்கவும்
-counter	கவுண்டர்
-dine_in	கவுண்டர்
-takeaway	பார்சல்
-order	ஆர்டர்
 sales	விற்பனை
-sales_refunds	விற்பனை மற்றும் திரும்ப
 day_close	நாள் முடிவு
 reports_expenses	அறிக்கை மற்றும் செலவு
 nav_reports	அறிக்கைகள்
 nav_settings	அமைப்புகள்
 nav_lock	பூட்டு
-no_sale_yet	இன்னும் விற்பனை இல்லை
-favorites	பிடித்தவை
-favorites_help	நீங்கள் அடிக்கடி விற்கும் பொருட்கள், உங்கள் உள்நுழைவுக்காக சேமிக்கப்பட்டவை. ஒன்றை பில்லில் சேர்க்கவும் அல்லது கீழே உள்ள அனைத்து பொருட்களிலிருந்தும் உங்கள் பட்டியலை உருவாக்கவும்.
-your_favorites	உங்கள் பிடித்தவை
 all_items	அனைத்து பொருட்களும்
 frequent	அடிக்கடி
 added_items	சேர்த்தவை
@@ -199,8 +157,6 @@ zero_sales_on	சுழிய விற்பனை: ஆன்
 zero_sales_off	சுழிய விற்பனை: ஆஃப்
 zero_sales_saved_on	சுழிய விற்பனை அனுமதி சேமிக்கப்பட்டது (ஆன்)
 zero_sales_saved_off	சுழிய விற்பனை அனுமதி சேமிக்கப்பட்டது (ஆஃப்)
-no_favorites	இன்னும் பிடித்தவை இல்லை — கீழே உள்ள பட்டியலிலிருந்து பொருட்களைச் சேர்க்கவும்.
-add_to_bill	பில்லில் சேர்
 added	சேர்க்கப்பட்டது
 owes_word	கடன்பட்டுள்ளார்
 selected_word	தேர்ந்தெடுக்கப்பட்டது
@@ -209,19 +165,11 @@ chip_missing_customer	தேர்ந்த வாடிக்கையாளர
 chip_no_customer	இன்னும் வாடிக்கையாளர் இல்லை — பெயரை எழுதி, பின் Credit ஐத் தட்டவும்
 credit_summary_fmt	{} வாடிக்கையாளர்கள் · திறந்த கடன் {} · முன்பணம் {}
 recent_label	சமீபத்தியவை:
-start_order	ஆர்டரைத் தொடங்கவும்
-open_bill	பில்லைத் திறக்கவும்
-collect_payment	பணம் வசூலிக்கவும்
-payment_pending	பணம் நிலுவையில்
-collect_at_counter	கவுண்டரில் வசூலிக்கவும்
 inventory	கையிருப்பு
-inventory_stock	கையிருப்பு மற்றும் எண்ணிக்கை
 branches	கிளைகள்
-branches_org	கிளை மற்றும் அமைப்பு
 credit_customers	கடன் வாடிக்கையாளர்
 customer_name_ph	தரப்பின் பெயர்
 new_customer_ph	புதிய தரப்பின் பெயர்
-item_name_ph	பொருளின் பெயர் (எ.கா. Masala Dosa)
 item_price_ph	விலை
 start_template	பொருள்
 team	குழு
@@ -229,17 +177,11 @@ team_pins	குழு மற்றும் பின்
 my_pin_settings	என் PIN
 settings_hub_help_my_pin	இந்த சாதனத்தில் உள்நுழைந்தவரின் திறப்பு PIN ஐ மாற்றுக.
 team_self_help	திறப்பு PIN (மற்றும் விருப்ப உள்நுழைவு கடவுச்சொல்) உங்களுடையதை மட்டுமே மாற்றலாம். வேறு திரைகள் அல்லது உரிமைகள் வேண்டும் என்றால் உரிமையாளரிடம் கேளுங்கள்.
-backup_settings	காப்பு மற்றும் அமைப்பு
-lock_app	பூட்டு
 pick	தேர்வு
-select	தேர்ந்தெடு
 advance	அடுத்து
 owner	உரிமையாளர்
 staff	ஊழியர்
 photo	புகைப்படம்
-auto	தானாக
-prev	முந்தைய
-next	அடுத்து
 ok	சரி
 this_shop	சேவையக முறை
 extra_till	கிளையன்ட் முறை
@@ -248,17 +190,13 @@ server	சேவையகம்
 client	கிளையன்ட்
 language_currency	மொழி மற்றும் நாணயம்
 language	மொழி
-choose_language	உங்கள் மொழியைத் தேர்ந்தெடுக்கவும்
 language_setup_hint	இந்த சாதனத்தின் மொழியைப் பின்பற்றவும், அல்லது நீங்களே ஒன்றைத் தேர்ந்தெடுக்கவும்.
 lang_follow_platform	சாதன மொழியைப் பயன்படுத்து
 lang_pick_user	தேர்ந்த மொழியைப் பயன்படுத்து
 lang_platform_now	தற்போதைய சாதன மொழி
 selected_language	தேர்ந்தது
-continue	தொடரவும்
 this_device	இந்த சாதனம்
 device_use_q	இந்த சாதனம் எப்படி பயன்படுத்தப்படும்?
-last_server_mode	முன்பு சர்வர் — தொடர தட்டவும்
-last_client_mode	முன்பு கிளையன்ட் — தொடர தட்டவும்
 choose_server	சேவையகத்தைத் தேர்வு
 choose_server_hint	இந்த சாதனத்தில் ஏற்கனவே சேவையகங்கள் உள்ளன. ஒன்றைத் திறக்கவும், அல்லது மற்றொரு வணிகத்திற்கு புதிய சேவையகத்தை உருவாக்கவும்.
 create_new_server	புதிய சேவையகம் உருவாக்கு
@@ -268,12 +206,6 @@ server_remove_pin_ph	சேவையகத்தை நீக்க Owner PIN
 only_owner_remove_server	சேவையகத்தை Owner மட்டுமே நீக்கலாம்
 owner_pin_remove_server	சேவையகத்தை நீக்க Owner PIN வேண்டும்
 device_setup_help	சர்வர் கணக்குகளை இங்கே வைத்திருக்கும். கிளையன்ட் ஒரு சர்வருடன் இணையும்.
-app_template_heading	தொடக்கப் பட்டியல் (விருப்பம்)
-app_template_blurb	ஒரு மாதிரிப் பட்டியலை ஏற்றும்; உரிமையாளர் ஜாஹிர் (zahir), நிர்வாகி ஆசிப் (asif, PIN 1111), காசாளர் நவாஸ் (nawaz, PIN 0000); வரி/GST முடக்கம்; முன் பக்கப்பட்டி; வரலாறு 4 மணி நேரத்துக்குப் பின் அழியும் (காப்புப்பிரதியில் இப்போது அழி கூட); இன்றைய பட்டை முடக்கம்; குறுகிய தட்டுகளுக்குச் சிறிய பில் + நிலையான ஓரங்கள். வரி மற்றும் பக்கப்பட்டியின் மற்றவற்றை அமைப்புகளில் மீண்டும் இயக்கலாம்.
-app_template_apply	தொடக்கப் பட்டியலைப் பயன்படுத்து
-app_template_skip	இப்போதைக்குத் தவிர்
-app_template_status	சேவையகம் தயார் — தொடக்கப் பட்டியலைப் பயன்படுத்தவும், அல்லது தவிர்க்கவும்
-app_template_importing	{title} பயன்படுத்தப்படுகிறது…
 currency	நாணயம்
 backup	காப்புப்பிரதி
 use	பயன்படுத்து
@@ -307,7 +239,7 @@ attachments_last_expense	இணைப்புகள் (கடைசி செ�
 bank	வங்கி
 bank_in	வங்கியில் போடு
 bank_out	வங்கியிலிருந்து எடு
-bank_reconciliation	வங்கி சரிபார்ப்பு (உங்கள் வங்கி அறிக்கையுடன் டிக் செய்யவும்)
+bank_reconciliation	வங்கி சரிபார்ப்பு
 bank_to_till	வங்கி → கவுண்டர்
 book_add_dish	புத்தகம் — பொருள் சேர்
 book_opening_credit	முன்பதிவு — தொடக்க கடன்
@@ -337,9 +269,6 @@ share_whatsapp	வாட்ஸ்அப் பகிர்
 lan_pages_heading	Wi‑Fi-இல் வாடிக்கையாளர் பக்கங்கள்
 lan_pages_help	இந்தக் கடையின் Wi‑Fi-இல் வாடிக்கையாளர் பக்கங்கள் காட்சிப் பலகை மற்றும் கருத்துக்காக வேலை செய்யும். மொபைல் தரவில் உள்ளவர்களுக்குப் பின்னர் Cloud தேவை. அட்டை முனையம் அல்லது கட்டண இணைப்பு விருப்பம், கவுண்டரை ஒருபோதும் தடுக்காது.
 diag_send_heading	இந்தச் சாதனத்திலிருந்து பகிர்
-optional_login_heading	விருப்ப உள்நுழைவு
-rights_heading	உரிமைகள்
-ops_panel	உள்ளூர் பணி
 crm_heading	வாடிக்கையாளர்கள் & செய்திகள்
 crm_help	பிறந்தநாள், விசுவாசம் — SMS/WhatsApp வரிசை. {name}, {points}. உரிமையாளர் அனுப்புகிறார்.
 crm_queue_sms	SMS வரிசை
@@ -364,21 +293,17 @@ till_wallet_topup_ph	வாலட் டாப்-அப் தொகை
 till_voucher_issue_amt_ph	புதிய வவுச்சர் தொகை
 till_voucher_issue_code_ph	புதிய வவுச்சர் குறியீடு
 bulk_price_apply	மொத்த விலையைப் பயன்படுத்து
-card_terminal_optional	கார்டு முனையம் / பேமெண்ட் இணைப்பு (இணையம் இருந்தால் விருப்பத்தேர்வு)
 copy_report	அறிக்கையை நகல்
 counted_cash_ph	டிராயரில் எண்ணிய ரொக்கம்
 country_tax	நாடு & வரி
 create_backup	காப்புப்பிரதி உருவாக்கு
 credit_limit_heading	கடன் வரம்பு (தேர்ந்த / பெயரிட்ட தரப்பு)
-day_close_summary	நாள் முடிவு சுருக்கம்
 delete_party	தேர்ந்த தரப்பை நீக்கு
-delivery	டெலிவரி
 done_open_books	முடிந்தது — புத்தகங்களைத் திற
 drawer_count	டிராயர் எண்ணிக்கை (விருப்பம்)
 expense_heading	செலவு
 export_day	நாளை ஏற்றுமதி செய்
 extra_note_bill_ph	இந்த பில் / விற்பனையில் கூடுதல் குறிப்பு
-extra_note_expense_ph	கடைசி செலவில் கூடுதல் குறிப்பு
 extra_tills_heading	கூடுதல் கவுண்டர்கள்
 other_devices_help_heading	பிற சாதனங்களை அமை
 other_devices_help	இந்த சாதனத்தில் (சேவையகம்): மற்ற சாதனங்கள் → கூடுதல் கவுண்டர்களை அனுமதி. இணைப்புக் குறியீடு மற்றும் Wi‑Fi முகவரியைக் குறித்துக்கொள்ளவும். தோன்றினால் மற்ற சாதனங்களை இணைய அனுமதி என்பதைத் தட்டவும். கணினியில், இந்தக் கணினியுடன் தொடங்கு என்பதைத் தட்டவும். ஒவ்வொரு மற்ற சாதனத்திலும்: ஆப்பை நிறுவி, கிளையன்ட் முறையைத் தேர்வுசெய்து, கடையின் சேவையகத்தைத் தேடி (அல்லது முகவரியைத் தட்டச்சு செய்து), இணைப்புக் குறியீட்டை உள்ளிட்டு, இப்போது இணை. Wi‑Fi துண்டிக்கப்பட்டால் ஆர்டர்கள் சாதனத்தில் காத்திருந்து சேவையகம் மீண்டும் பதிலளிக்கும்போது செல்லும். கூடுதல் அச்சுப்பொறிகள் சேவையகத்தில் அமைக்கப்படும் (அமைப்புகள் → அச்சுப்பொறிகள்) — கூடுதல் கவுண்டர்கள் பில்களை அங்கே அனுப்பும்.
@@ -392,7 +317,6 @@ login_id_ph	உள்நுழைவு ஐடி
 mark_cleared	தீர்ந்ததாகக் குறி
 new_party_clear	புதிய தரப்பு (படிவத்தை அழி)
 new_party_kind_supplier_ph	புதிய தரப்பின் வகை (சப்ளையர்)
-next_country	அடுத்த நாடு
 next_order	அடுத்த ஆர்டர் (மேசையை அழி)
 note_gstin_ph	குறிப்பு / GSTIN / ஒப்பந்த நினைவூட்டல்
 notes_attach_party	குறிப்புகள் & இணைப்புகள் (தேர்ந்த தரப்பு)
@@ -410,8 +334,6 @@ pay_ap_cash	AP ரொக்கம் செலுத்து
 pay_ap_heading	நாம் அவர்களுக்குத் தர வேண்டியது (AP)
 pay_ap_upi	AP UPI செலுத்து
 pay_selected_heading	தேர்ந்ததைச் செலுத்து (கடனைத் தீர் / முன்பணம்)
-pick_from_items	எங்கள் பொருட்களிலிருந்து தேர்வு
-prev_country	முந்தைய நாடு
 print_open	அச்சிடு / திற
 reason_amend_ph	திருத்தம் / ரத்து / திரும்ப காரணம்
 reason_note_ph	காரணம் / குறிப்பு (சேதம், எண்ணிக்கை, …)
@@ -435,14 +357,10 @@ history_after_hours	மணி நேரத்துக்குப் பின�
 history_hours_ph	மணி நேரம் (1–168, இயல்பு 4)
 history_hours_save	மணி நேரத்தைச் சேமி
 history_clear_now	வரலாற்றை இப்போது அழி
-history_cleared	வணிக வரலாறு அழிக்கப்பட்டது — அமைப்பு வைக்கப்பட்டது
-history_retention_saved	வரலாறு அழிப்பு சேமிக்கப்பட்டது
 history_hours_saved	வரலாற்று மணி நேரம் சேமிக்கப்பட்டது
-history_owner_only	உரிமையாளர் அல்லது நிர்வாகி மட்டுமே வரலாற்றை அழிக்க முடியும்
 rollup	ரோல்-அப்
 save_brand	பிராண்டைச் சேமி
 save_business_id	வணிக ஐடி & சேவை % சேமி
-save_business_name	வணிகப் பெயரைச் சேமி
 save_features	தேர்ந்த ஊழியரின் அம்சங்களைச் சேமி
 save_features_named	{name} சேமி
 save_features_ok	{name}-க்கான அமைப்பு சேமிக்கப்பட்டது
@@ -473,7 +391,6 @@ copy_pair_code	இணைப்புக் குறியீட்டை நக
 new_pair_code	புதிய இணைப்புக் குறியீடு
 pair_finishing	இணைப்பு முடிகிறது… கடையின் புத்தகங்கள் பயன்படுத்தப்படுகின்றன
 pair_opening	டில் திறக்கப்படுகிறது…
-pair_copied	இணைப்புக் குறியீடு நகலெடுக்கப்பட்டது
 lan_offline_waiting	ஆஃப்லைன் · {n} காத்திருக்கின்றன
 lan_connecting	கடையுடன் இணைக்கிறது…
 lan_live	நேரலை
@@ -487,7 +404,6 @@ firewall_waiting	நிர்வாகி அனுமதிக்குக் �
 lan_join_help	பிற சாதனங்கள் இதனுடன் இணையலாம் — இணைப்புக் குறியீடு {code}. மற்ற சாதனத்தில் கிளையன்ட் முறையைத் தேர்ந்தெடுத்து, கடையின் சர்வரைக் கண்டுபிடி அழுத்தவும், அல்லது இந்த முகவரியை உள்ளிடவும்: {addr}
 lan_pair_status	வைஃபை {addr}
 lan_join_help_no_addr	முகவரி பெற இந்த சாதனத்தை Wi‑Fi-உடன் இணைக்கவும்.
-lan_no_address	இந்தச் சாதனத்துக்கு இன்னும் Wi‑Fi முகவரி இல்லை — கடையின் Wi‑Fi உடன் இணைக்கவும்.
 lan_not_listening	இப்போது சாதனங்களை ஏற்கவில்லை — வேறொரு நிரல் போர்ட் {port}-ஐப் பயன்படுத்தக்கூடும். செயலியை மீண்டும் தொடங்கவும்.
 lan_tills_off	கூடுதல் கவுண்டர்கள் முடக்கத்தில் உள்ளன. இந்தக் கடையின் கணக்குகள் இந்தச் சாதனத்திலேயே இருக்கும். வேறொரு சாதனமும் ஆர்டர் எடுக்க அல்லது பில் போட வேண்டுமெனில் கூடுதல் கவுண்டர்களை அனுமதிக்கவும்.
 paired_with	{url} இல் உள்ள கடையுடன் இணைக்கப்பட்டது
@@ -508,41 +424,21 @@ printers_help	அச்சுப்பொறிகளைத் தேடி, த
 printers_host_only	அச்சுப்பொறிகள் கடைச் சாதனத்தில் (சேவையகம்) அமைக்கப்படும். இந்தக் கவுண்டர் பில்களையும் பழைய சீட்டுகளையும் அங்கே அனுப்பும் — தேடு / சேர் / ஒதுக்கு சேவையகத்திலேயே இருக்கும். சோதனைப் பக்கமும் பில் அச்சு அளவும் சேவையகத்துக்குச் செல்லும்.
 printers_find_heading	அச்சுப்பொறிகள்
 printers_find_tip	தேடல் இந்த சாதனத்தை ஸ்கேன் செய்து பட்டியலைப் புதுப்பிக்கும். கணினி அச்சுப்பொறிகள் முதலில்; பிணைய ஸ்கேன் பின்னணியில் தொடரலாம்.
-printers_pool_heading	1. உங்கள் அச்சுப்பொறிகள்
-printers_pool_tip	தேடல் இந்த சாதனத்தை ஸ்கேன் செய்து பட்டியலைப் புதுப்பிக்கும்.
 printers_pool_empty	(இன்னும் இல்லை — கீழே சேர்)
-printers_routes_help	இயக்க முறைமைக்கு ஏற்கனவே தெரிந்த அச்சுப்பொறிகளைத் தேடவும். பில் & சீட்டு வடிவத்தில் அவற்றை பில்லுக்கும் ஒவ்வொரு பிரிவுக்கும் ஒதுக்கவும்.
 printer_assign_dd	{place} அச்சுப்பொறி தேர்வு
 printer_assign_pick	உண்மை அச்சுப்பொறி தேர்வு
 printer_profile_heading	லேஅவுட்
 vp_delivery_heading	டெலிவரி
 vp_delivery_help	இந்த மெய்நிகர் அச்சுப்பொறி வேலைகளை எப்படி அனுப்பும் — OS ஆவணம், மூல பைட்டுகள் அல்லது ESC/POS. சீட்டு உள்ளடக்கம் (எழுத்து அளவு, மடிப்பு, ஓரங்கள்) பில் / சீட்டு வடிவத்தால் முடிவாகும், இங்கே அல்ல.
-vp_type_size_heading	எழுத்து அளவு
-vp_wrap_heading	மடிப்பு அகலம்
-vp_margin_heading	விளிம்புகள்
 vp_delivery_spooler	OS ஆவணம் (கணினி ஸ்பூலர்)
 vp_delivery_raw	சாதனத்திற்கு மூல பைட்
 vp_delivery_escpos	ESC/POS வெப்ப கட்டளைகள்
 virtual_printer_new	புதிய மெய்நிகர் அச்சுப்பொறி
 virtual_printer_selected	“{name}” திருத்துதல் — பட்டியலில் வேறொன்றைத் தட்டி மாற்றுங்கள்
-virtual_printer_tap_list	பட்டியலில் மெய்நிகர் அச்சுப்பொறியைத் தட்டித் திருத்தவும்
 config_layout_portrait	செங்குத்து
 config_layout_landscape	கிடைமட்டம்
 config_send_os	கணினி ஸ்பூலர்
 config_send_escpos	ESC/POS
-profiles_heading	அச்சுப்பொறிகள்
-profiles_empty	அச்சுப்பொறிகள்
-profile_builtin	உள்ளமைந்த
-profile_custom	தனிப்பயன்
-profile_name_ph	அச்சுப்பொறிகள்
-profile_new	அச்சுப்பொறிகள்
-profile_delete	அச்சுப்பொறிகள்
-profile_created	அச்சுப்பொறிகள்
-profile_deleted	அச்சுப்பொறிகள்
-profile_builtin_keep	அச்சுப்பொறிகள்
-config_saved	புதுப்பிக்கப்பட்டது
-config_selected	“{name}” தேர்ந்தெடுக்கப்பட்டது
-printer_output_heading	மெய்நிகர் அச்சுப்பொறிகள்
 virtual_printers_heading	மெய்நிகர் அச்சுப்பொறிகள்
 virtual_printers_empty	இன்னும் மெய்நிகர் அச்சுப்பொறி இல்லை — கீழே மதிப்புகளை அமைத்து சேமிக்கவும். சில இருந்தால் பட்டியலில் தட்டித் திருத்தவும்.
 virtual_printer_name_ph	மெய்நிகர் அச்சுப்பொறி பெயர் (விருப்பம்)
@@ -554,71 +450,32 @@ virtual_printer_deleted	மெய்நிகர் அச்சுப்பொ�
 virtual_printer_updated	மெய்நிகர் அச்சுப்பொறி புதுப்பிக்கப்பட்டது
 virtual_printer_updated_named	மெய்நிகர் அச்சுப்பொறி “{name}” புதுப்பிக்கப்பட்டது
 virtual_draft_layout	அடுத்த மெய்நிகர் அச்சுப்பொறிக்கான மதிப்புகள் அமைக்கப்பட்டன
-virtual_draft_send	அடுத்த மெய்நிகர் அச்சுப்பொறிக்கான மதிப்பு அமைக்கப்பட்டது
 virtual_need_real	முதலில் உண்மை அச்சுப்பொறியைத் தேர்வு செய்யுங்கள்
 virtual_need_select	நீக்க மெய்நிகர் அச்சுப்பொறியைத் தேர்வு செய்யுங்கள்
 real_printer_selected	உண்மை அச்சுப்பொறி: {name}
-printers_routes_heading	2. எங்கே அச்சிட
-route_pick_heading	இடம்
 route_editing	திருத்துகிறது: {name}
-route_assigned	{printer} {place}-இல் சேர்க்கப்பட்டது
-route_already_assigned	இந்த இடத்தில் ஏற்கனவே: {printer}
 route_cleared	{name} அழிக்கப்பட்டது
-route_assigned_empty	இந்த இடத்தில் ஏதுமில்லை
-route_tap_select	தேர்வு செய்யத் தட்டவும்
 route_tap_selected	தேர்ந்தெடுக்கப்பட்டது
-route_pick_printer_first	முதலில் ஒரு அச்சுப்பொறியைத் தட்டவும்
-route_assigned_heading	அச்சுப்பொறிகள்
-route_add_heading	ஒதுக்கு
-printer_label_ph	பெயர் (எ.கா. கவுண்டர் அச்சுப்பொறி)
 printer_target_ph	முகவரி அல்லது கணினி பெயர்
 printer_target_default	இயல்பு அச்சுப்பொறி
-printer_wire_heading	வடிவம்
-printer_wire_escpos	KOT
-printer_wire_os	நிலையான செங்குத்து
-printer_wire_os_portrait	நிலையான செங்குத்து
-printer_wire_os_landscape	நிலையான கிடைமட்டம்
-printer_wire_escpos_short	KOT
-printer_wire_os_short	செங்குத்து
-printer_wire_os_landscape_short	கிடைமட்டம்
-printer_format_custom	புதிய தனிப்பயன் வடிவம்
-printer_format_custom_label	தனிப்பயன்
-printer_format_custom_added	இந்த வழிக்குத் தனிப்பயன் வடிவம் சேர்க்கப்பட்டது
-add_printer	அச்சுப்பொறி சேர்
-route_pick_ph	பில் அல்லது கடைப் பிரிவு
 route_bill	பில்
-route_dont_print	அச்சிட வேண்டாம்
 station_print_pick_first	முதலில் கடைப் பிரிவைத் தேர்வுசெய்யவும்
-station_vps_empty	அச்சுப்பொறி இல்லை — அமைப்புகள் → அச்சுப்பொறிகளில் கண்டுபிடியுங்கள்
 bill_printers_dd	பில் அச்சுப்பொறிகள்
 bill_printers_dd_n	பில்லுக்கு {n} அச்சுப்பொறிகள் · மாற்றத் தட்டவும்
 station_vp_attached	அச்சுப்பொறி இணைக்கப்பட்டது
 station_vp_detached	நிலையத்திலிருந்து அச்சுப்பொறி நீக்கப்பட்டது
-route_up	மேலே
-route_down	கீழே
-route_clear	அச்சிட வேண்டாம்
-save_printers	அச்சுப்பொறிகளைச் சேமி
 print_test_page	சோதனைப் பக்கம் அச்சிடு
 no_printer_assigned	அச்சுப்பொறி இல்லை
-test_page_no_printer	{place}க்கு அச்சுப்பொறி இல்லை — மேலே ஒதுக்கி மீண்டும் முயலுங்கள்
 test_page_pick_first	முதலில் சோதனை அச்சுப்பொறிகளைத் தேர்வு செய்யுங்கள் — பிறகு சோதனைப் பக்கம் அச்சிடுங்கள்
 test_printers_dd	சோதனைப் பக்க அச்சுப்பொறிகள்
 test_printers_dd_n	{n} சோதனை அச்சுப்பொறி · மாற்றத் தட்டவும்
 test_printer_picked	சோதனை: {name}
 test_printer_cleared	சோதனை இல்லை: {name}
 test_page_sent_n	சோதனைப் பக்கம் {n} அச்சுப்பொறிக்கு அனுப்பப்பட்டது
-batch_cancel	குறித்ததை ரத்து செய்
-batch_cancel_n	குறித்ததை ரத்து ({n})
-batch_cancel_none	முதலில் அனுப்பிய ஒன்று அல்லது பல பொருட்களைக் குறிக்கவும் — பிறகு குறித்தவற்றை ரத்துசெய்
-batch_cancel_title	குறியிட்ட பொருட்கள் ரத்து — ஒரு காரணம், ஒவ்வொரு பிரிவுக்கும் ஒரு சீட்டு
-batch_cancel_ok	{n} பொருட்கள் ரத்து · {slips} ரத்துச் சீட்டுகள் → {kitchens}
-batch_cancel_ok_noprint	{n} பொருட்கள் ரத்து — தானியங்கு அச்சு முடக்கத்தில், எனவே ரத்துச் சீட்டு இல்லை
 printers_saved	இந்தச் சாதனத்தின் அச்சுப்பொறிகள் சேமிக்கப்பட்டன
-test_page_sent	சோதனைப் பக்கம் அனுப்பப்பட்டது — அச்சுப்பொறியைப் பாருங்கள்
 test_page_sent_one	சோதனைப் பக்கம் {name}-க்கு அனுப்பப்பட்டது — அந்த அச்சுப்பொறியைப் பாருங்கள்
 printers_found	{n} கிடைத்தன: {list}
 printers_find_synced	{n} கிடைத்தன — {new} புதியவை
-printer_on_device	சேமிக்கப்பட்டது
 printer_already_added	ஏற்கனவே சேர்க்கப்பட்டது
 printer_already_saved	ஏற்கனவே சேமிக்கப்பட்டது: {name}
 find_printers	அச்சுப்பொறிகளைக் கண்டுபிடி
@@ -628,7 +485,6 @@ cancelled	ரத்து
 printers_tap_find	அச்சுப்பொறிகளைக் கண்டுபிடி அழுத்தவும் — கணினி அச்சுப்பொறிகளும் இந்த Wi‑Fi-இன் பிணைய ரசீது அச்சுப்பொறிகளும் பட்டியலாகும்.
 printers_none_found	அச்சுப்பொறிகள் இல்லை — கணினி அச்சுப்பொறி பெயர் அல்லது பிணைய முகவரி எழுதுங்கள் (எ.கா. 192.168.1.50).
 printer_from_find	{name} சேர்க்கப்பட்டது
-bill_printer_ph	பில் அச்சுப்பொறி
 queue_refused	கடை ஏற்கவில்லை ({n}) — ஒவ்வொன்றையும் கவுண்டரில் சரிபார்க்கவும்:
 clear_not_accepted	சரிபார்த்தேன் — இந்தப் பட்டியலை அழி
 device_name_ph	இந்தச் சாதனத்தின் பெயர்
@@ -638,7 +494,6 @@ connected_now	இப்போது இணைப்பில்
 backup_failed	கடைசி தானியங்கு காப்புப்பிரதி தோல்வியடைந்தது: {e}
 backup_overdue	{n} நாட்களாகக் காப்புப்பிரதி இல்லை — காப்புப்பிரதி எடுக்க இந்தச் சாதனத்தில் செயலியைத் திறந்து வைக்கவும்.
 disk_low	இந்தச் சாதனத்தில் {mb} MB மட்டுமே காலியாக உள்ளது — விரைவில் காப்புப்பிரதிகள் தோல்வியடையும். கொஞ்சம் இடத்தைக் காலி செய்யவும்.
-last_seen_devices	கடைசியாகக் காணப்பட்டது: {time}
 connection_to_shop	கடையுடன் இணைப்பு
 supplier_name_ph	சப்ளையர் பெயர் (அல்லது தரப்பு)
 supplier_ph	சப்ளையர்
@@ -696,7 +551,6 @@ currency_use_help	ஸ்க்ரோல் செய்து ஆதரிக்
 day_close_help	நாள் முடிவைப் பதிவு செய்வது இந்த சுருக்கத்தை (எண்ணியிருந்தால் டிராயர் வித்தியாசத்துடன்) தணிக்கை பதிவில் சேமிக்கும். இது விற்பனையை நிறுத்தாது.
 expenses_word	செலவுகள்
 feature_access_help	தேர்ந்த ஊழியரின் அம்ச அணுகல் (சேர்த்த பிறகு தட்டவும்)
-footer_local	உள்ளூர் SQLite · எப்போதும் இலவசம் · கிளவுட் இல்லை
 fresh_book_kirano	அச்சுப்பொறிகள்
 fresh_selected	Fresh தேர்ந்தது — பட்டியல் காலியாக இருக்கும். தயாரானதும் Done ஐத் தட்டவும்.
 gross_word	மொத்த விற்பனை
@@ -709,12 +563,9 @@ net_word	நிகரம்
 offline_badge	ஆஃப்லைன்
 optional_login_help	விருப்ப உள்நுழைவு (ஐடி + கடவுச்சொல்). உரிமையாளர் ஒருமுறை அமைப்பார்; பின்னர் பயனர் மட்டுமே கடவுச்சொல்லை மாற்ற முடியும்.
 or_unlock_login	அல்லது உள்நுழைவு ஐடி + கடவுச்சொல்லால் திறக்கவும்
-permission_preset	அனுமதி முன்னமைவு (எதை அணுகலாம்)
-preset_help_kirano	காசாளர்: விற்கவும். மேலாளர்: விற்க + பொருட்கள் + ரத்து/திருத்தம்.
-product_locked_kirano	Kirano
+permission_preset	அனுமதி முன்னமைவு
 product_only_kirano	இந்த செயலி Kirano மட்டும் — உணவக இயக்க அமைப்பு. பிற தொழில்களுக்கு தனி Kumkaj தயாரிப்புகள் வருகின்றன.
 purchases_cogs	கொள்முதல் (COGS)
-qty_cap	அளவு
 restore_help	Restore: ஒரு காப்புப்பிரதியைத் தேர்ந்தெடுக்கவும். கணக்குகள் அப்போது இருந்தபடி திறக்கும்; இப்போதைய கணக்குகள் முதலில் சேமிக்கப்படும், எனவே இதைத் திரும்பப் பெறலாம்.
 wipe_data_heading	உள்ளூர் தரவை நீக்கு
 wipe_data_help	உரிமையாளர் மட்டும் — Windows நிறுவல் நீக்கம் போன்ற அதே தேர்வுகள். வணிகப் பதிவுகள் வணிக வரலாற்றை அழிக்கும் ஆனால் பொருட்களையும் அமைப்பையும் வைத்திருக்கும் (அவசரத் திறப்பு PIN போல). கடை அமைப்பு புத்தகத் தரவுத்தளத்தை நீக்கும். திரை விருப்பங்கள் சாளரம்/மொழியை அழிக்கும். உரிமையாளர் PIN-ஆல் உறுதிசெய்யவும். குழுவில் உள்ள அவசரத் திறப்பு PIN தனியானது (திறக்கும்போது ரகசியமாக அழித்தல்).
@@ -747,7 +598,6 @@ staff_renamed	பெயர் சேமிக்கப்பட்டது
 staff_setup_copied_hire	{name}-இடமிருந்து அமைப்பு நகலெடுக்கப்பட்டது — புதிய பெயர், PIN அமைத்து, பிறகு ஊழியரைச் சேர்க்கவும்
 staff_setup_copied_edit	{from}-இன் அமைப்பு {to} மீது நகலெடுக்கப்பட்டது
 staff_copy_need_selected	முதலில் யாரைத் திருத்துவது எனத் தேர்வுசெய்யவும்
-staff_copy_need_source	யாருடைய அமைப்பை நகலெடுப்பது எனத் தேர்வுசெய்யவும்
 staff_copy_same	அது அதே நபர் — வேறொருவரைத் தேர்வுசெய்யவும்
 staff_rename_need_selected	முதலில் யாருடைய பெயரை மாற்றுவது எனத் தேர்வுசெய்யவும்
 team_pick_hint	யாரைத் திருத்துவது எனத் தேர்வுசெய்யவும் — திரைகள், பண உரிமைகள், நிலையங்கள் அந்த நபருக்கு மட்டுமே தோன்றும்.
@@ -762,15 +612,9 @@ unit_picker_off	ஆஃப்
 we_owe_them	நாங்கள் அவர்களுக்குத் தர வேண்டியது
 who_unlocking	யார் திறக்கிறார்கள்?
 locked_word	பூட்டப்பட்டது
-show_pin	PIN ஐக் காட்டு
-hide_pin	PIN ஐ மறை
 set_owner_pin	உரிமையாளர் PIN ஐ அமைக்கவும்
 enter_owner_passcode	உரிமையாளர் கடவுக்குறியை உள்ளிடவும்
 enter_staff_passcode	ஊழியர் கடவுக்குறியை உள்ளிடவும்
-pin_count_zero	0 / 12 இலக்கங்கள் · குறைந்தது 4, பின் OK
-pin_count_need	{} / 12 இலக்கங்கள் · இன்னும் {} தேவை
-pin_count_full	12 / 12 இலக்கங்கள் · OK ஐத் தட்டவும்
-pin_count_ready	{} / 12 இலக்கங்கள் · தயாரானதும் OK ஐத் தட்டவும்
 pin_hint_choose	4–12 இலக்கங்களைத் தேர்ந்தெடுக்கவும் (விசைப்பலகை அல்லது பேட்) · சேமிக்க Enter/OK
 pin_hint_new	புதிய 4–12 இலக்க உரிமையாளர் PIN (விசைப்பலகை அல்லது பேட்) · Enter/OK
 pin_hint_shop_code	கடை சாதனம் · இணைப்பு குறியீடு {}
@@ -779,23 +623,15 @@ pin_hint_paired	கூடுதல் கவுண்டர் இணைக்�
 pin_hint_pair_first	கூடுதல் கவுண்டர் — முதலில் கடை சாதனத்துடன் இணைக்கவும்
 unlock_to_continue	தொடர திறக்கவும்
 no_staff_yet	இன்னும் ஊழியர் இல்லை — உரிமையாளராகத் திறந்து, பின் Team
-status_server_set_pin	சேவையக முறை — உரிமையாளர் PIN ஐ அமைக்கவும்
-status_server_tills	சேவையக முறை — கூடுதல் கவுண்டர்கள் சேரலாம். திறக்கவும்
-status_server_unlock	சேவையக முறை — உரிமையாளராகத் திறக்கவும்
-status_client_unlock	கிளையன்ட் முறை — விற்க திறக்கவும்
 icon_new_selected	சின்னம்: புதிய கோப்பு தேர்ந்தெடுக்கப்பட்டது — பிராண்டைச் சேமி என்பதைத் தட்டவும்
 icon_custom	சின்னம்: உங்கள் கடையின் சின்னம்
 icon_default	சின்னம்: Kumkaj சின்னம் (இயல்புநிலை) — உங்களுடையதைத் தேர்ந்தெடுக்கவும்
 logo_yours	லோகோ: உங்கள் கடை லோகோ — திரைகளிலும் ரசீதுகளிலும் காட்டப்படும்
 logo_default	லோகோ: Kumkaj சின்னம் (இயல்புநிலை) — உங்களுடையது இருந்தால் தேர்ந்தெடுக்கவும்
-tmpl_current	தற்போதைய: {} — {}
-tmpl_selected	தேர்ந்தெடுக்கப்பட்டது: {} — {}
 setup_complete	அமைப்பு முடிந்தது
 onboard_fresh_tmpl	புதியது · {} — பட்டியல் காலியாகத் தொடங்கும்; பொருட்களில் சேர்த்து, பிறகு Done அழுத்தவும்.
 onboard_book_tmpl	புத்தகம் · {} — பொருட்களையும் தொடக்க கடனையும் சேர்த்து, பிறகு Done அழுத்தவும்.
-onboard_template_tmpl	விரும்பினால் இடத்திற்குப் பெயரிடுங்கள், பின் எப்படித் தொடங்குவது எனத் தேர்வு செய்யுங்கள்.
 tmpl_blurb	கிரானா கவுண்டர்: விற்பனை, இருப்பு, கணக்கு, சப்ளையர் கொள்முதல், புத்தகங்கள்.
-tmpl_how	கவுண்டரில் விற்கவும்; இருப்புக்கு வாங்கவும்; நாள் புத்தகத்துக்குப் புத்தகங்கள்.
 reports_facet_title	அறிக்கைகள்
 reports_facet_help	நாள் புத்தகங்கள், தரப்பு ஏஜிங், வங்கி பதிவுகள் மற்றும் கால லாப-நட்டம்.
 against_bill_ph	மேலே உள்ள பில் # க்கு எதிராக (விருப்பம்)
@@ -806,14 +642,12 @@ amount_ph	தொகை
 amount_received_ph	பெறப்பட்ட தொகை
 amount_we_pay_ph	நாங்கள் செலுத்தும் தொகை
 business_name_ph	வணிகப் பெயர்
-category_new_ph	வகை (விருப்பம், புதியதெனில் உருவாக்கப்படும்)
 code_bag_ph	குறியீடு (bag)
 conv_factor_ph	காரணி (25 = 1 bag → 25 kg)
 country_code_ph	நாட்டுக் குறியீடு எ.கா. IN, GB, US, AE, BR
 credit_khata_amount_ph	கடன் / காதா தொகை
 credit_limit_ph	கடன் வரம்பு (0 = இல்லை)
 from_code_ph	இருந்து குறியீடு (bag)
-item_name_lang_ph	பொருளின் பெயர் — உங்கள் மொழியில் தட்டச்சு செய்யவும்
 login_id_opt_ph	உள்நுழைவு ஐடி (விருப்பம்)
 manager_pin_ph	மேலாளர் PIN (ரத்து செய்ய முடியாவிட்டால் மட்டும்)
 new_branch_name_ph	புதிய கிளையின் பெயர்
@@ -821,15 +655,12 @@ new_password_ph	புதிய கடவுச்சொல் (விருப�
 new_pin_ph	புதிய PIN (4–12 இலக்கங்கள்)
 note_bank_ph	குறிப்பு (வைப்பு, எடுப்பு, …)
 note_buy_expense_ph	குறிப்பு (எரிபொருள், வாடகை, …)
-note_expense_ph	குறிப்பு (எரிபொருள், அலுவலகம், …)
 options_kirano_ph	விருப்பங்கள் (விருப்பம்) — Extra cheese=40, Large=80
-part_second_way_ph	இரண்டாவது வழியில் பகுதி (விருப்பம்)
 phone_ph	தொலைபேசி
 place_name_ph	இந்த இடத்தின் பெயர்
 qty_example_ph	அளவு (எ.கா. கிலோவுக்கு 1.5)
 quantity_ph	அளவு
 reason_required_ph	காரணம் (தேவை)
-role_title_ph	பணித் தலைப்பு (எ.கா. Barista)
 service_pct_ph	சேவை % விருப்பம் 0/10/12
 short_code_ph	குறுகிய குறியீடு (MG02)
 starting_password_ph	தொடக்க கடவுச்சொல் (விருப்பம்)
@@ -864,14 +695,11 @@ shift_handover	ஷிஃப்ட் ஒப்படைப்பு
 shift_since	இந்த ஷிஃப்ட் தொடக்கம்
 expected_in_drawer	டிராயரில் இருக்க வேண்டியது
 right_discount	தள்ளுபடி வழங்குதல்
-pick_category	வகையைத் தேர்ந்தெடு
-close_category_list	வகைப் பட்டியலை மூடு
 new_category_row	புதிய வகை — பொருளைச் சேமிக்கும்போது உருவாகும்
 your_category	உங்கள் வகை
 suggested_category	பரிந்துரை — எங்கள் பொருட்களிலிருந்து
 category_search_ph	வகை — உங்களுடையதைத் தேடுங்கள் அல்லது புதியதை எழுதுங்கள்
 cancel_item_short	ரத்து
-cancel_item_title	இந்தப் பொருளை ரத்துசெய் — பின் அலுவலகத்துக்கு ரத்துச் சீட்டு கிடைக்கும்
 return_to_customer	வாடிக்கையாளருக்குத் திருப்பிக் கொடு
 short_by	குறைவு
 tip_not_sale	டிப் (ஊழியருக்கு, விற்பனை அல்ல)
@@ -884,9 +712,7 @@ finding_server	இந்த Wi‑Fi-இல் கடையின் சர்வ
 no_server_found	சர்வர் கிடைக்கவில்லை. கடைச் சாதனம் அதே Wi‑Fi-இல் கூடுதல் டில் அனுமதியுடன் உள்ளதா எனப் பாருங்கள், அல்லது அதன் IP-ஐ எழுதுங்கள்.
 servers_found_pick	நீங்கள் இணைக்க விரும்பும் கடையைத் தட்டவும்.
 server_host_selected	{host} பயன்படுகிறது — இணைப்புக் குறியீட்டை உள்ளிட்டு, இப்போது இணை என்பதைத் தட்டவும்.
-print_bill	பில் அச்சிடு
 approval_pin_ph	மேலாளர் PIN (கேட்டால் மட்டும்)
-confirm	உறுதிசெய்
 menu_search_ph	பொருள் அல்லது குறுக்குக் குறியீடு தேடு
 customer_paid_ph	வாடிக்கையாளர் கொடுத்தது
 tip_ph	டிப்
@@ -896,7 +722,6 @@ bill_format_help	ஒவ்வொரு பில்லிலும் உங்�
 bill_header_ph	முகவரி | தொலைபேசி
 fssai_ph	FSSAI / கடை உரிம எண் (விருப்பம்)
 bill_footer_ph	அடிக்குறிப்பு (எ.கா. நன்றி, மீண்டும் வருக)
-save_bill_format	பில் வடிவத்தைச் சேமி
 kot_field_on	காட்டு
 kot_field_off	மறை
 kot_weight_light	மெல்லிய
@@ -907,10 +732,8 @@ kot_weight_bold	தடித்த
 kot_align_start	தொடங்கவும்
 kot_align_center	நடு
 kot_align_end	முடிவு
-content_width	உள்ளடக்க அகலம் (மிமீ)
 content_width_bill	பில் உள்ளடக்க அகலம் (mm)
 content_width_ph	அல்லது உள்ளடக்க அகலம் எழுதுங்கள், 40–210 மிமீ
-content_width_help	இந்தச் சீட்டு எவ்வளவு அகலத்தில் அச்சாகும். பில் தன் அகலத்தை வைத்திருக்கும்.
 content_width_bill_help	வாடிக்கையாளர் பில் எவ்வளவு அகலத்தில் அச்சாகும். இயல்பு 210 mm (பக்கம்). 58 mm குறுகிய சீட்டு, 80 mm அகலச் சீட்டு, 112 mm 4-அங்குலம், 210 mm A4-அகலம். 40 முதல் 210 வரை எந்த மதிப்பையும் தட்டச்சு செய்யவும். சீட்டுகளுக்குத் தனி அகலம் சீட்டு தாவலில் உள்ளது.
 vp_paper_width	உள்ளடக்க அகலம் (மிமீ)
 vp_paper_width_ph	அல்லது உள்ளடக்க அகலம் எழுதுங்கள், 40–210 மிமீ
@@ -925,9 +748,6 @@ test_bill_sent	பில் மாதிரி அனுப்பப்பட்
 test_print_no_printer	அந்த வேலைக்கு அச்சுப்பொறி இல்லை — இந்தத் திரையிலேயே ஒன்றைத் தேர்வுசெய்யவும்
 std_print	பில் அச்சு அளவு
 std_print_help	OS / ஆவண அச்சுப்பொறிகளில் நிலையான நீள்வாட்டு மற்றும் அகலவாட்டு பில் வேலைகளுக்கான எழுத்து அளவு (புள்ளிகளை உள்ளிடவும் — சிறிய/இயல்பு/பெரிய அல்ல). இரு திசைகளிலும் அதே அளவு.
-std_size_s	சிறிய
-std_size_m	இயல்பு
-std_size_l	பெரிய
 save_std_print	பில் அச்சு அளவைச் சேமி
 std_print_saved	பில் அச்சு அளவு சேமிக்கப்பட்டது
 print_brand_kit	அச்சு பிராண்ட் கிட்
@@ -940,14 +760,9 @@ choose_payment_qr	கட்டண QR தேர்வு
 clear_payment_qr	கட்டண QR அகற்று
 payment_qr_set	கட்டண QR: கோப்பில் உள்ளது — வாடிக்கையாளர் காட்சியில் காட்டப்படும் (அங்கே தொகை UPI QR-க்குப் பதில்)
 payment_qr_none	கட்டண QR: இல்லை — செலுத்தும்போது UPI ID தொகை QR
-aggregator_import	அக்ரிகேட்டர் ஆர்டர் (கோப்பு)
-aggregator_import_help	விருப்ப Local: backups-இல் import_aggregator_orders.json வைத்து Import. கவுண்டர் தடைப்படாது; நேரடி Zomato/Swiggy = Cloud.
-import_aggregator_file	அக்ரிகேட்டர் கோப்பு இறக்கு
 team_pick_ph	திருத்த வேண்டிய ஊழியர் பெயர்
 select_staff	இந்த ஊழியரைத் தேர்ந்தெடு
 rights_help	இந்த நபரின் பணச் செயல்கள் — மாற்றத் தட்டவும்: அனுமதி → முதலாளி PIN தேவை → அனுமதி இல்லை. பில் மீண்டும் அச்சிடு பில்களுக்கு மட்டுமே; பிரிவுகள் கீழே உள்ள பட்டியலில் உள்ளன.
-dish_picker_help	எங்கள் பொருட்களைத் தேடி அல்லது பார்த்து, பெயரையும் புகைப்படத்தையும் நிரப்ப ஒன்றைத் தட்டவும் — அல்லது உங்கள் பெயரையே வைக்கவும். உங்கள் விலையை அமைத்து (0 சரி), பிறகு பொருளைச் சேர்.
-close_dish_list	பொருள் பட்டியலை மூடு
 own_item_name	இதை உங்கள் சொந்த பொருள் பெயராக பயன்படுத்து
 on_your_menu	பட்டியலில்
 edit	திருத்து
@@ -958,24 +773,16 @@ add_scheme	BOGO சேர்
 schedule_ph	Hours — Mon-Fri 07:00-11:00 or Evening 17:00-19:00=150
 upi_vpa_ph	UPI ID (VPA)
 upi_payee_ph	UPI பெறுநர் (விருப்ப)
-upi_qr	UPI QR
 show_upi_qr	UPI QR காட்டு
 close_upi_qr	மூடு
 upi_qr_help	வாடிக்கையாளர் ஸ்கேன் செய்து செலுத்துவார். செலுத்திய பின் கட்டணம் பெறு தட்டவும். இரண்டாவது திரை: LAN-இல் சேவையக URL /display திறக்கவும்.
-recently_done	சமீபத்தில் முடிந்தவை
 role_help_customer	பாத்திரம்: வாடிக்கையாளர் — AR (அவர்கள் நமக்குக் கடன்). அதே நிறுவனம் வழங்குநராகவும் இருக்கலாம்.
 role_help_both	பாத்திரங்கள்: அனுப்புநர் + கேரியர் — ஒரு தரப்பு, AR மற்றும் AP புத்தகங்கள், அறிக்கைகளில் நிகரம்.
 role_help_supplier	பாத்திரம்: வழங்குநர் — கொள்வனவுக்கான AP.
-items_word	பொருட்கள்
-items_section	பொருட்கள்
-back_to_order	ஆர்டருக்குத் திரும்பு
-new_items_head	இன்னும் அனுப்பவில்லை
 price_ph	விலை
 price_ph_gst_inside	விலை ({tax} உட்பட)
-tax_rates_missing_hint	இந்தப் பொருட்களுக்கு {tax} விகிதம் இல்லை — பொருட்களில் வரி விகிதத்தை அமைக்கவும் (விலைகள் ஏற்கனவே {tax} சேர்த்தவை, {tax} உள்ளடக்கம் கீழ்)
 taxable_value	வரி விதிப்பு மதிப்பு
 gst_inside_price_note	({tax} உட்பட)
-start_with_template	எங்கள் பொருள் டெம்ப்ளேட்டுடன் தொடங்கு
 template_heading	தொடக்கப் பொருட்கள்
 template_info	{c} வகைகள், புகைப்படங்களுடன் {d} பொருட்கள், சேர்க்கத் தயார். விலைகள் ₹0-இல் தொடங்கும் — பிறகு உங்களுடையதை அமைக்கவும்.
 template_import	முழு வார்ப்புருவை இறக்கு
@@ -997,21 +804,13 @@ opening_client	கிளையன்ட் திறக்கப்படுக�
 preparing_desk	மேசை தயாராகிறது…
 opening_server	சேவையகம் திறக்கப்படுகிறது…
 creating_server	சேவையகம் உருவாக்கப்படுகிறது…
-order_empty_pick	ஆர்டர் காலி — பொருட்களைத் தேர்வுசெய்ய மேலே பொருட்களைச் சேர் தட்டவும்.
 add_dishes	பொருட்களைச் சேர்
 order_so_far	இந்த ஆர்டரில்: {n} · {total}
 no_dish_match	“{q}”-க்குப் பொருந்தும் பொருள் இல்லை
-pick_dishes_help	சேர்க்க ஒரு பொருளைத் தட்டவும் · பட்டியலைச் சுருக்க ஒரு வகையைத் தேர்வுசெய்யவும்
 pick_done	முடிந்தது
-pick_done_dd	முடிந்தது · {label}
-printer_route_mode	இந்த இடத்தில் பல அச்சுப்பொறிகள் இருந்தால்
-printer_mode_first	முதலில் வேலை செய்வது
-printer_mode_all	அனைத்திலும் அச்சிடு
 kot_field_up	மேலே நகர்த்து
 kot_field_down	கீழே நகர்த்து
-app_template_blurb_extra	மேலும்: உரிமையாளர் ஜாஹிர், நிர்வாகி ஆசிப், காசாளர் நவாஸ்; முன் பக்கப்பட்டி; 4 மணி நேரத்துக்குப் பின் வரலாறு; இன்றைய பட்டை முடக்கம்; சிறிய பில்.
 dishes_n	{n} பொருட்கள்
-recipe_ph	செய்முறை (விருப்பம் — கவுண்டர் கடையில் பயன்படுத்தப்படாது)
 reorder_ph	இந்த அளவில் மேலும் வாங்கு
 set_reorder	மறுஆர்டர் அளவை அமை
 low_stock_alert	குறைகிறது — விரைவில் வாங்கவும்: {items}
@@ -1020,7 +819,6 @@ show_unpriced	விலையில்லாத பொருட்களை ம�
 show_all_dishes	அனைத்துப் பொருட்களையும் காட்டு
 role_title_rest_ph	பதவி (எ.கா. கேப்டன், தலைமை சமையல்காரர்)
 preset_help_rest	காசாளர்: விற்கவும். மேலாளர்: விற்க + பொருட்கள் + ரத்து/திருத்தம்.
-kind_raw	கடைப் பயன்பாட்டுக்கு வாங்கியது
 kind_resale	விற்க வாங்கியது
 kind_dish	எண்ணப்படவில்லை
 buy_unit_ph	அலகு (கிலோ, லிட்டர், எண்ணிக்கை)

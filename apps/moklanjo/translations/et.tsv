@@ -39,7 +39,7 @@ adding_item	Uue määra lisamine
 editing_item	Redigeerimine
 save	Salvesta
 remove	Eemalda
-empty_catalog	Hinda veel pole. Avage Hinnad ja teenused, lisage üks (nimi + hind, ühik kg), seejärel Broneerimine.
+empty_catalog	Hinda veel pole.
 counter_sale	Leti broneerimine
 total	Kokku
 cash	Sularaha
@@ -171,8 +171,6 @@ selected_language	Valitud
 continue	Jätka
 this_device	SEE SEADE
 device_use_q	Kuidas seda seadet kasutatakse?
-last_server_mode	Oli server – puudutage jätkamiseks
-last_client_mode	Oli klient – puudutage jätkamiseks
 choose_server	Valige server
 choose_server_hint	Avage olemasolev server või looge see teise ettevõtte jaoks.
 create_new_server	Loo uus server
@@ -501,8 +499,6 @@ job_layout	Paigutus
 job_delivery	Kuidas töö saadetakse
 job_size	Fondi suurus
 job_size_ph	nt. 18, 20, 26…
-save_receipt_format	Salvesta kviitungivorming
-save_label_format	Salvesta sildi vorming
 test_receipt_format	Testi kviitung
 test_label_format	Katsemärgis
 test_receipt_sent	Kviitungi näidis saadetud
@@ -610,7 +606,7 @@ units_heading	Ühikud
 booking_measures	Broneerimismeetmed
 drawer_count	Sahtlite arv (valikuline)
 spreadsheet_csv	Arvutustabel (CSV)
-bank_reconciliation	Panga vastavusse viimine (märkige oma pangaväljavõttel linnuke)
+bank_reconciliation	Panga vastavusse viimine
 book_add_product	Broneeri – lisa toode/hind
 book_opening_credit	Raamat — algustiitrid
 account_kind	Konto tüüp (puudutage ühte)
@@ -650,7 +646,7 @@ net_word	Neto
 offline_badge	OFFLINE
 optional_login_help	Valikuline sisselogimine (id + parool). Omanik komplekteerib üks kord; ainult kasutaja saab hiljem parooli muuta.
 or_unlock_login	Või avage sisselogimise ID + parool
-permission_preset	Töö (määrab ekraanid ja õigused)
+permission_preset	Töö
 preset_help_moklanjo	Kassapidaja: müüa. Haldaja: müüa + esemed + tühine/muuda.
 product_locked_moklanjo	Moklanjo
 product_only_moklanjo	See rakendus on ainult Moklanjo – raamatud + broneerimislaud. Muud kaubanduspinnad tarnitakse hiljem eraldi toodetena.
@@ -698,10 +694,6 @@ pin_hint_paired	Lisa kuni sidumiseni – müümiseks avage lukustus
 pin_hint_pair_first	Lisakass – esmalt siduge poeseadmega
 unlock_to_continue	Jätkamiseks avage lukustus
 no_staff_yet	Töötajaid pole veel – avage omanikuna ja seejärel meeskonnana
-status_server_set_pin	Serverirežiim – määrake omanik PIN
-status_server_tills	Serverirežiim – liituda saavad lisakassad. Avage lukustus
-status_server_unlock	Serverirežiim – avage omanikuna lukustus
-status_client_unlock	Kliendirežiim – avage müümiseks
 icon_new_selected	Ikoon: uus fail on valitud – puudutage Salvesta bränd
 icon_custom	Ikoon: kohandatud koha märk
 icon_default	Ikoon: Kumkaj märk (vaikimisi) – valige kohandatud

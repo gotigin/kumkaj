@@ -79,6 +79,10 @@ fn main() {
     if uninstall_wipe::try_run() {
         return;
     }
+    // `--export-template` / `--check-template` (docs/CATALOGUE_URLS.md).
+    if let Some(code) = kumkaj_khaynjo::template_cli::try_run() {
+        std::process::exit(code);
+    }
     desktop_entry::app_main();
 }
 

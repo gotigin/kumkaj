@@ -39,7 +39,7 @@ adding_item	Inaongeza kiwango kipya
 editing_item	Inahariri
 save	Hifadhi
 remove	Ondoa
-empty_catalog	Hakuna viwango bado. Fungua Viwango na huduma, ongeza kimoja (jina + bei, kitengo kg), kisha Uhifadhi.
+empty_catalog	Hakuna viwango bado.
 counter_sale	Uhifadhi wa kaunta
 total	Jumla
 cash	Taslimu
@@ -171,8 +171,6 @@ selected_language	Iliyochaguliwa
 continue	Endelea
 this_device	KIFAA HIKI
 device_use_q	Kifaa hiki kitatumikaje?
-last_server_mode	Ilikuwa seva — gusa kuendelea
-last_client_mode	Ilikuwa mteja — gusa kuendelea
 choose_server	Chagua seva
 choose_server_hint	Kifaa hiki tayari kina seva. Fungua moja, au tengeneza seva mpya kwa biashara nyingine.
 create_new_server	Tengeneza seva mpya
@@ -501,8 +499,6 @@ job_layout	Mpangilio
 job_delivery	Jinsi kazi inavyoandikwa
 job_size	Ukubwa wa fonti
 job_size_ph	k.m. 18, 20, 26…
-save_receipt_format	Hifadhi umbizo la risiti
-save_label_format	Hifadhi muundo wa lebo
 test_receipt_format	Risiti ya majaribio
 test_label_format	Lebo ya majaribio
 test_receipt_sent	Sampuli ya risiti imetumwa
@@ -610,7 +606,7 @@ units_heading	Vitengo
 booking_measures	Vipimo vya uhifadhi
 drawer_count	Kuhesabu droo (si lazima)
 spreadsheet_csv	Karatasi ya hesabu (CSV)
-bank_reconciliation	Upatanisho wa benki (weka tiki kulingana na taarifa yako)
+bank_reconciliation	Upatanisho wa benki
 book_add_product	Hifadhi — ongeza bidhaa / kiwango
 book_opening_credit	Hifadhi — mkopo wa kuanzia
 account_kind	Aina ya akaunti (gusa moja)
@@ -650,7 +646,7 @@ net_word	Halisi
 offline_badge	NJE YA MTANDAO
 optional_login_help	Kuingia kwa hiari (kitambulisho + nenosiri). Mmiliki huweka mara moja; baadaye mtumiaji pekee ndiye anayeweza kubadilisha nenosiri.
 or_unlock_login	Au fungua kwa kitambulisho cha kuingia + nenosiri
-permission_preset	Kazi (huweka skrini na haki)
+permission_preset	Kazi
 preset_help_moklanjo	Keshia: kuuza. Meneja: kuuza + bidhaa + kufuta/kurekebisha.
 product_locked_moklanjo	Moklanjo
 product_only_moklanjo	Programu hii ni Moklanjo pekee — vitabu + dawati la usafirishaji. Biashara nyingine zitapata bidhaa zao baadaye.
@@ -698,10 +694,6 @@ pin_hint_paired	Kaunta ya ziada imeoanishwa — fungua ili kuuza
 pin_hint_pair_first	Kaunta ya ziada — oanisha na kifaa cha duka kwanza
 unlock_to_continue	Fungua ili kuendelea
 no_staff_yet	Hakuna wafanyakazi bado — fungua kama Mmiliki, kisha Timu
-status_server_set_pin	Hali ya seva — weka PIN ya mmiliki
-status_server_tills	Hali ya seva — kaunta za ziada zinaweza kujiunga. Fungua
-status_server_unlock	Hali ya seva — fungua kama Mmiliki
-status_client_unlock	Hali ya mteja — fungua ili kuuza
 icon_new_selected	Ikoni: faili jipya limechaguliwa — gusa Hifadhi chapa
 icon_custom	Ikoni: alama ya duka lako mwenyewe
 icon_default	Ikoni: alama ya Kumkaj (chaguo-msingi) — chagua yako

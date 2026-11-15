@@ -39,7 +39,7 @@ adding_item	نیا ریٹ شامل کر رہا ہے
 editing_item	ترمیم
 save	محفوظ کریں
 remove	ہٹائیں
-empty_catalog	ابھی کوئی ریٹ نہیں۔ ریٹس اور سروسز کھولیں، ایک شامل کریں (نام + قیمت، یونٹ kg)، پھر بکنگ۔
+empty_catalog	ابھی کوئی ریٹ نہیں۔
 counter_sale	کاؤنٹر بکنگ
 total	کل
 cash	نقد
@@ -171,8 +171,6 @@ selected_language	منتخب
 continue	جاری رکھیں
 this_device	یہ ڈیوائس
 device_use_q	یہ ڈیوائس کیسے استعمال ہوگی؟
-last_server_mode	پہلے سرور تھا — جاری رکھنے کے لیے ٹیپ کریں
-last_client_mode	پہلے کلائنٹ تھا — جاری رکھنے کے لیے ٹیپ کریں
 choose_server	سرور چنیں
 choose_server_hint	اس ڈیوائس پر پہلے سے سرور موجود ہیں۔ ایک کھولیں، یا دوسرے کاروبار کے لیے نیا سرور بنائیں۔
 create_new_server	نیا سرور بنائیں
@@ -501,8 +499,6 @@ job_layout	لے آؤٹ
 job_delivery	کام کیسے بھیجا جاتا ہے
 job_size	فونٹ سائز
 job_size_ph	جیسے 18, 20, 26…
-save_receipt_format	رسید فارمیٹ محفوظ کریں
-save_label_format	لیبل فارمیٹ محفوظ کریں
 test_receipt_format	ٹیسٹ رسید
 test_label_format	ٹیسٹ لیبل
 test_receipt_sent	نمونہ رسید بھیجی
@@ -610,7 +606,7 @@ units_heading	یونٹس
 booking_measures	بکنگ پیمائش
 drawer_count	دراز گنتی (اختیاری)
 spreadsheet_csv	اسپریڈشیٹ (CSV)
-bank_reconciliation	بینک مفاہمت (اپنے بینک اسٹیٹمنٹ سے ٹک کریں)
+bank_reconciliation	بینک مفاہمت
 book_add_product	بک — پروڈکٹ / ریٹ شامل کریں
 book_opening_credit	بک — ابتدائی ادھار
 account_kind	کھاتے کی قسم (ایک دبائیں)
@@ -650,7 +646,7 @@ net_word	نیٹ
 offline_badge	آف لائن
 optional_login_help	اختیاری لاگ ان (آئی ڈی + پاس ورڈ)۔ مالک ایک بار لگاتا ہے؛ بعد میں صرف صارف ہی پاس ورڈ بدل سکتا ہے۔
 or_unlock_login	یا لاگ ان آئی ڈی + پاس ورڈ سے ان لاک کریں
-permission_preset	کام (اسکرینیں اور حقوق طے کرتا ہے)
+permission_preset	کام
 preset_help_moklanjo	کیشیئر: فروخت۔ مینیجر: فروخت + آئٹمز + منسوخی/ترمیم۔
 product_locked_moklanjo	Moklanjo
 product_only_moklanjo	یہ ایپ صرف Moklanjo ہے — کھاتے + بکنگ ڈیسک۔ دوسرے کاروباروں کی پروڈکٹس بعد میں الگ آئیں گی۔
@@ -698,10 +694,6 @@ pin_hint_paired	اضافی ٹل جڑا ہوا — بیچنے کے لیے ان ل
 pin_hint_pair_first	اضافی ٹل — پہلے دکان ڈیوائس سے جوڑیں
 unlock_to_continue	جاری رکھنے کے لیے ان لاک کریں
 no_staff_yet	ابھی کوئی عملہ نہیں — مالک کے طور پر ان لاک کریں، پھر Team
-status_server_set_pin	سرور موڈ — مالک PIN لگائیں
-status_server_tills	سرور موڈ — اضافی ٹل جڑ سکتے ہیں۔ ان لاک کریں
-status_server_unlock	سرور موڈ — مالک کے طور پر ان لاک کریں
-status_client_unlock	کلائنٹ موڈ — بیچنے کے لیے ان لاک کریں
 icon_new_selected	آئیکن: نئی فائل منتخب — برانڈ محفوظ کریں دبائیں
 icon_custom	آئیکن: آپ کی دکان کا نشان
 icon_default	آئیکن: Kumkaj نشان (پہلے سے طے شدہ) — اپنا منتخب کریں

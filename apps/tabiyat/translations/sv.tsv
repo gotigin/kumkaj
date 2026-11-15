@@ -1,5 +1,4 @@
 # Swedish — Svenska (sv). One key<TAB>text per line, in en() order; keep {placeholders}.
-app_tagline	Apoteksdisk: mediciner, batch, khata & böcker. Gratis offline.
 barcode_ph	Streckkod / EAN
 composition_ph	Salt / sammansättning (sökbar)
 schedule_h_off	Schema H – av (ägarflagga)
@@ -13,7 +12,6 @@ expiry_alerts	Varningar om upphörande (kommande 7 dagar)
 expiry_none	Inga batcher går ut under de kommande 7 dagarna.
 rx_nudge	Ägare flaggad Rx / Schema H — lägg till en anteckning om det behövs.
 unlock	Lås upp
-pin_hint	Ägarens PIN börjar som 0000
 sell	Sälja
 buy	Köp
 books	Dagbok
@@ -32,17 +30,13 @@ reports_month	Resultat (månad)
 reports_aging	Utestående / Dr-Kr
 reports_balance_sheet	Balansräkning
 reports	Bankbok och resultat
-refresh	Uppdatera
 undo	Ångra
-start_tracking	Börja följa
 stock_minus	− Lager
 stock_plus	+ Lager
 settle_cash	Ta emot kontant
 settle_card	Ta emot kort
 items	Mediciner
 nav_items	Mediciner
-more	Mer
-your_items	Dina mediciner
 items_help	Tryck på ett objekt för att redigera det. Nytt objekt rensar formuläret. Sök på namn eller kortkod, ange ett pris (0 är bra), och sedan Lägg till. Redan registrerade försäljningar behåller det namn de åtalades för.
 add_item	Lägg till artikel
 new_item	Ny artikel
@@ -53,28 +47,22 @@ remove	Ta bort
 removed_items	Borttagna artiklar
 removed_help	Restore sätter tillbaka objektet i artiklar precis som det var — pris, foto och kategori.
 restore_item	Återställ
-empty_catalog	Inga mediciner än. Öppna Mediciner, lägg till namn, streckkod eller salt och sälj sedan.
+empty_catalog	Inga mediciner än.
 total	Totalt
 cash	Kontant
 upi	UPI
 card	Kort
 credit	Parter
 clear	Rensa
-ready_to_sell	Redo att boka
 today_prefix	Idag
-today_mid	idag
 owed	utestående
-round_word	avrunda
 back	Tillbaka
 sold_out	Ej tillgänglig
 restock	Fyll på
 not_tracked	Följs inte
 in_stock	i lager
 marked_sold_out	Markerad som ej tillgänglig
-add_upper	LÄGG TILL
-na	E/T
 qty	Vikt/Antal
-unit_at	À-pris @
 actual	Faktiskt
 applied	Tillämpat
 note_ph	Anteckning (valfritt)
@@ -93,21 +81,13 @@ bill_item_qty	Antal
 bill_item_price	Pris
 bill_item_amount	Belopp
 bill_item_note	Rx / rea not
-bill_item_col_gap	Kolumnmellanrum
 bill_item_col_order	Kolumnordning
 bill_item_col_sep	Kolumnlinjer
-bill_item_gap_tight	Tätt
-bill_item_gap_comfort	Bekvämt
-bill_item_gap_wide	Brett
-bill_item_num_width	Sifferkolumner
-bill_item_num_compact	Kompakt
-bill_item_num_comfort	Bekvämt
-bill_item_num_wide	Brett
-bill_item_num_align	Siffror justeras
-bill_item_gap_em	Mellanrum (em)
-bill_item_qty_min	Antal min (em)
-bill_item_price_min	Pris min (em)
-bill_item_amount_min	Belopp min (em)
+slip_col_width	Bredd (mm)
+slip_col_start	Startavstånd (px)
+slip_col_end	Slutavstånd (px)
+slip_col_align	Textjustering
+slip_columns_help	Varje kolumns bredd inkluderar dess start- och slutavstånd. Texten radbryts inom sin kolumn; det som går utanför innehållsbredden klipps bort – på papper och i förhandsvisningen.
 bill_total_qty_label	Etikett för totalt antal
 bill_total_subtotal_label	Etikett för delsumma
 bill_total_grand_label	Etikett för totalsumma
@@ -120,11 +100,7 @@ bill_total_qty	Totalt antal
 bill_total_subtotal	Delsumma
 bill_total_grand	Totalsumma
 kot_unassigned	Otilldelad
-pos_tab_items	Tillagda artiklar
-pos_tab_payment	Betalning
-settings_hub_title	Inställningar
 settings_hub_help	Öppna ett område i taget — mindre scrollning, tydligare val.
-settings_back	Tillbaka
 settings_sec_language	Språk och valuta
 settings_sec_country	Land och skatt
 settings_sec_tills	Andra enheter
@@ -166,35 +142,17 @@ diag_cleared	Diagnostikloggarna rensades
 sidebar_settings	Sidofält
 sidebar_settings_help	Samma ikoner som sidoräcket. Dra en rad för att ändra ordning. Vrid reglaget för att visa eller dölja. Inställningar och lås förblir alltid på baren.
 sidebar_always_on_short	Alltid på
-sidebar_back_settings	Tillbaka
-sidebar_shown	Visas
-sidebar_hidden	Dold
-sidebar_always_on	Alltid på baren
-sidebar_shown_hint	Visas på sidostången / nedre flikarna
-sidebar_hidden_hint	Gömd från baren
 sidebar_menu_items	Föremål
 sidebar_enable_all	Aktivera alla
 sidebar_disable_all	Inaktivera alla
 sidebar_order_saved	Beställningen i sidofältet har sparats
 sidebar_visibility_saved	Sidofältets synlighet har sparats
-amounts_hide	Göm
-amounts_show	Visa
-printers_none_hint	Spara en skrivare på den här enheten först och lägg sedan till den på räkningen eller en sektion
-counter	Räknare
-dine_in	Räknare
-takeaway	Avhämtning
-order	Beställning
 sales	Försäljning
-sales_refunds	Försäljning & återbetalningar
 day_close	Dagsavslut
 reports_expenses	Bankbok och resultat
 nav_reports	Rapporter
 nav_settings	Inställningar
 nav_lock	Lås
-no_sale_yet	Ingen försäljning ännu
-favorites	Favoriter
-favorites_help	Artiklar du säljer ofta, sparade för din inloggning. Lägg till en till räkningen, eller bygg din lista från alla objekt nedan.
-your_favorites	Dina favoriter
 all_items	Alla föremål
 frequent	Frekvent
 added_items	Tillagda föremål
@@ -211,8 +169,6 @@ zero_sales_on	Tillåt 0 INR
 zero_sales_off	Kräv pris
 zero_sales_saved_on	Nollförsäljning tillåten
 zero_sales_saved_off	Försäljningen måste ha ett pris över 0 INR
-no_favorites	Inga favoriter än – lägg till objekt från listan nedan.
-add_to_bill	Lägg till på räkningen
 added	Tillagd
 owes_word	är skyldig
 selected_word	Vald
@@ -221,19 +177,11 @@ chip_missing_customer	Vald kund saknas — välj igen
 chip_no_customer	Ingen kund ännu – skriv ett namn och tryck sedan på Kredit
 credit_summary_fmt	{} kunder · öppen kredit {} · hållna förskott {}
 recent_label	Senaste:
-start_order	Startorder
-open_bill	Öppen räkning
-collect_payment	Samla in betalning
-payment_pending	Betalning väntar
-collect_at_counter	hämta vid disk
 inventory	Inventering
-inventory_stock	Inventering & lager
 branches	Grenar
-branches_org	Filialer & org
 credit_customers	Fester (khata och leverantörer)
 customer_name_ph	Partiets namn
 new_customer_ph	Nytt partinamn
-item_name_ph	Artikelnamn (t.ex. Masala Dosa)
 item_price_ph	Pris
 start_template	Produkt
 team	Team
@@ -241,17 +189,11 @@ team_pins	Team & PIN-koder
 my_pin_settings	Min PIN-kod
 settings_hub_help_my_pin	Ändra upplåsnings-PIN för personen som är inloggad på den här enheten.
 team_self_help	En inloggning: en ny PIN-kod, ett nytt lösenord eller båda. Lämna en ruta tom för att behålla det du har. Fråga ägaren om du behöver andra skärmar eller rättigheter.
-backup_settings	Säkerhetskopiering och inställningar
-lock_app	Lås appen
 pick	Välj
-select	Välj
 advance	Avancera
 owner	Ägare
 staff	Personal
 photo	Foto
-auto	Auto
-prev	Föreg
-next	Nästa
 ok	OK
 this_shop	Server
 extra_till	Klient
@@ -260,17 +202,13 @@ server	Server
 client	Klient
 language_currency	Språk och valuta
 language	Språk
-choose_language	Välj ditt språk
 language_setup_hint	Följ enhetens språk eller välj ett själv.
 lang_follow_platform	Enhetens språk
 lang_pick_user	Välj språk
 lang_platform_now	Enhetens språk nu
 selected_language	Vald
-continue	Fortsätt
 this_device	DENNA ENHET
 device_use_q	Hur kommer den här enheten att användas?
-last_server_mode	Var server — tryck för att fortsätta
-last_client_mode	Var klient — tryck för att fortsätta
 choose_server	Välj en server
 choose_server_hint	Öppna en befintlig server eller skapa en för ett annat företag.
 create_new_server	Skapa ny server
@@ -280,12 +218,6 @@ server_remove_pin_ph	Ägarens PIN-kod för att ta bort en server
 only_owner_remove_server	Endast ägaren kan ta bort en server
 owner_pin_remove_server	Ägarens PIN-kod krävs för att ta bort den här servern
 device_setup_help	Servern håller böckerna här. Klientpar till en server.
-app_template_heading	Startkatalog (valfritt)
-app_template_blurb	Laddar en provkatalog; Ägare Zahir (zahir), Admin Asif (asif, PIN 1111), Kassör Nawaz (nawaz, PIN 0000); skatt/GST rabatt; främre sidofältet; historiken rensas efter 4 timmar (och Rensa nu i säkerhetskopiering); Klä av idag; kompakt sedel + Standardmarginaler för smala brickor. Skatt och sidofältsjämförelser kan aktiveras igen i Inställningar.
-app_template_apply	Använd startkatalog
-app_template_skip	Hoppa över nu
-app_template_status	Serverklar – använd startkatalogen eller hoppa över
-app_template_importing	Ansöker {title}...
 currency	Valuta
 backup	Säkerhetskopiering
 use	Använd
@@ -319,7 +251,7 @@ attachments_last_expense	Bilagor (senaste utgiften)
 bank	Bank
 bank_in	Banka in
 bank_out	Bank ut
-bank_reconciliation	Bankavstämning (kryssa av mot ditt kontoutdrag)
+bank_reconciliation	Bankavstämning
 bank_to_till	Bank → kassa
 book_add_dish	Bok — lägg till objekt/objekt
 book_opening_credit	Bok — inledande kredit
@@ -349,9 +281,6 @@ share_whatsapp	Dela WhatsApp
 lan_pages_heading	Kundsidor på Wi-Fi
 lan_pages_help	På den här butikens Wi-Fi fungerar kundsidor för visningstavlan och feedback. Personer på mobildata behöver Cloud senare. En kortterminal eller betalningslänk är valfri och blockerar aldrig disken.
 diag_send_heading	Dela av den här enheten
-optional_login_heading	Valfri inloggning
-rights_heading	Rättigheter
-ops_panel	Lokal ops
 crm_heading	Kunder & meddelanden
 crm_help	Födelsedag, lojalitet, inaktiva och bästa gäster – kö SMS eller WhatsApp-avsikter. Använd {name} och {points} i meddelandet. Ägarkranar skicka; inget smäller av sig själv.
 crm_queue_sms	Kö SMS
@@ -376,21 +305,17 @@ till_wallet_topup_ph	Påfyllning av plånboksbelopp
 till_voucher_issue_amt_ph	Utfärda kupongbelopp
 till_voucher_issue_code_ph	Ny kupongkod
 bulk_price_apply	Tillämpa bulkpris
-card_terminal_optional	Kortterminal/betalningslänk (valfritt när internet är tillgängligt)
 copy_report	Kopiera rapporten
 counted_cash_ph	Räknade kontanter i lådan
 country_tax	Land och skatt
 create_backup	Skapa backup
 credit_limit_heading	Kreditgräns (vald / namngiven part)
-day_close_summary	Dagens stängning sammanfattning
 delete_party	Ta bort vald part
-delivery	Leverans
 done_open_books	Klart - öppna böcker
 drawer_count	Antal lådor (valfritt)
 expense_heading	Kostnad
 export_day	Exportdag
 extra_note_bill_ph	Extra notering på denna faktura/försäljning
-extra_note_expense_ph	Extra anmärkning om sista utgiften
 extra_tills_heading	Extra kassar
 other_devices_help_heading	Konfigurera andra enheter
 other_devices_help	På den här enheten (Server): Andra enheter → Tillåt extra kassar. Notera ihopkopplingskoden och Wi-Fi-adressen. Tryck på Tillåt andra enheter att ansluta om det visas. På en dator trycker du på Starta med den här datorn. På varje annan enhet: installera appen, välj Klientläge, Hitta butikens server (eller skriv adressen), ange kopplingskoden, Koppla nu. Beställningar väntar på enheten om Wi-Fi sjunker och går när servern svarar igen. Extra skrivare ställs in på servern (Inställningar → Skrivare) — extra kassar skickar räkningar dit.
@@ -404,7 +329,6 @@ login_id_ph	Användarnamn
 mark_cleared	Mark rensat
 new_party_clear	Nytt parti (tydlig form)
 new_party_kind_supplier_ph	Ny festtyp (leverantör)
-next_country	Nästa land
 next_order	Nästa beställning (clear desk)
 note_gstin_ph	Anmärkning / GSTIN / avtalspåminnelse
 notes_attach_party	Anteckningar och bilagor (vald part)
@@ -422,8 +346,6 @@ pay_ap_cash	Betala AP kontant
 pay_ap_heading	Betala vad vi är skyldiga dem (AP)
 pay_ap_upi	Betala AP UPI
 pay_selected_heading	Vald lön (reglera skuld / ta förskott)
-pick_from_items	Välj bland våra varor
-prev_country	Föregående land
 print_open	Skriv ut / öppna
 reason_amend_ph	Orsak till ändring / annullering / återbetalning
 reason_note_ph	Orsak/anmärkning (slöseri, räkning, …)
@@ -447,14 +369,10 @@ history_after_hours	Efter timmar
 history_hours_ph	Timmar (1–168, standard 4)
 history_hours_save	Spara timmar
 history_clear_now	Rensa historik nu
-history_cleared	Handelshistorik rensad - inställningarna bevaras
-history_retention_saved	Rensningen av historiken har sparats
 history_hours_saved	Historik timmar sparade
-history_owner_only	Endast ägare eller administratör kan rensa historik
 rollup	Sammanställning
 save_brand	Spara varumärke
 save_business_id	Spara företags-id
-save_business_name	Spara företagsnamn
 save_features	Spara
 save_features_named	Spara {name}
 save_features_ok	Sparade inställningar för {name}
@@ -485,7 +403,6 @@ copy_pair_code	Kopiera ihopkopplingskoden
 new_pair_code	Ny parningskod
 pair_finishing	Avslutar par... applicerar butikens böcker
 pair_opening	Öppnar kassan...
-pair_copied	Parningskod kopierad
 lan_offline_waiting	Butiksservern går inte att nå · {n} väntar
 lan_connecting	Ansluter till butik...
 lan_live	Live
@@ -499,7 +416,6 @@ firewall_waiting	Väntar på adminprompten...
 lan_join_help	På den andra enheten: Klientläge → Hitta butikens server (eller skriv {addr}) → parningskod {code}.
 lan_pair_status	Wi‑Fi {addr}
 lan_join_help_no_addr	Anslut den här enheten till Wi-Fi för en adress.
-lan_no_address	Ingen Wi‑Fi-adress än – anslut till butikens Wi‑Fi.
 lan_not_listening	Accepterar inte enheter (port {port} upptagen). Starta om appen.
 lan_tills_off	Extra kassar är avstängda. Tillåt dem att låta en annan enhet gå med.
 paired_with	Parat · {url}
@@ -520,41 +436,21 @@ printers_help	Hitta skrivare, tryck på en för att välja den och skriv sedan u
 printers_host_only	Skrivare ställs in på butiksenheten (server). Denna kassa skickar räkningar och gamla biljetter dit — Hitta/lägg till/tilldela vistelse på servern. Testsida och fakturautskriftsstorlek går till servern.
 printers_find_heading	Hitta skrivare
 printers_find_tip	Find skannar den här enheten och håller listan uppdaterad.
-printers_pool_heading	Skrivare
-printers_pool_tip	Find skannar den här enheten och håller den här listan uppdaterad.
 printers_pool_empty	(ingen ännu - tryck på Hitta)
-printers_routes_help	Hitta skrivare som operativsystemet redan känner till. Tilldela dem till räkningen och till varje sektion under Bill & Slip-format.
 printer_assign_dd	Riktig skrivare: {place}
 printer_assign_pick	Välj riktig skrivare
 printer_profile_heading	Plan
 vp_delivery_heading	Leverans
 vp_delivery_help	Hur den här virtuella skrivaren skickar jobb – OS-dokument, råbyte eller ESC/POS. Slipinnehåll (typstorlek, omslag, marginaler) bestäms av räkningen / Slip-formatet, inte här.
-vp_type_size_heading	Typstorlek
-vp_wrap_heading	Wrap bredd
-vp_margin_heading	Marginaler
 vp_delivery_spooler	OS-dokument (systemspooler)
 vp_delivery_raw	Raw byte till enhet
 vp_delivery_escpos	ESC/POS termiska kommandon
 virtual_printer_new	Ny virtuell skrivare
 virtual_printer_selected	Redigera "{name}" – tryck på en annan i listan för att byta
-virtual_printer_tap_list	Tryck på en virtuell skrivare i listan för att redigera den
 config_layout_portrait	Porträtt
 config_layout_landscape	Landskap
 config_send_os	Systemspooler
 config_send_escpos	ESC/POS
-profiles_heading	Layouter
-profiles_empty	(inga layouter ännu)
-profile_builtin	inbyggd
-profile_custom	anpassad
-profile_name_ph	Layoutnamn
-profile_new	Ny layout
-profile_delete	Ta bort layout
-profile_created	Layout skapad
-profile_deleted	Layouten raderad
-profile_builtin_keep	Inbyggda layouter kan inte tas bort
-config_saved	Uppdaterad
-config_selected	Valt "{name}"
-printer_output_heading	Virtuella skrivare
 virtual_printers_heading	Virtuella skrivare
 virtual_printers_empty	Inga virtuella skrivare än – ange värden nedan och sedan Spara. När du har några, tryck på en i listan för att redigera.
 virtual_printer_name_ph	Virtuell skrivarnamn (valfritt)
@@ -566,71 +462,32 @@ virtual_printer_deleted	Raderad virtuell skrivare "{name}"
 virtual_printer_updated	Virtuell skrivare uppdaterad
 virtual_printer_updated_named	Virtuell skrivare "{name}" uppdaterad
 virtual_draft_layout	Värden inställda för nästa virtuella skrivare
-virtual_draft_send	Värde inställt för nästa virtuella skrivare
 virtual_need_real	Välj en riktig skrivare först
 virtual_need_select	Välj en virtuell skrivare att ta bort
 real_printer_selected	Valt: {name}
-printers_routes_heading	Där saker trycks
-route_pick_heading	Plats
 route_editing	Redigering: {name}
-route_assigned	Lade till {printer} till {place}
-route_already_assigned	Redan på denna plats: {printer}
 route_cleared	Rensat {name}
-route_assigned_empty	Ingen på denna plats
-route_tap_select	tryck för att välja
 route_tap_selected	valt
-route_pick_printer_first	Tryck först på en skrivare
-route_assigned_heading	Skrivare
-route_add_heading	Tilldela
-printer_label_ph	Namn (t.ex. Räknarskrivare)
 printer_target_ph	Systemskrivarens namn eller värd:9100
 printer_target_default	den här datorns vanliga skrivare (tom adress)
-printer_wire_heading	Profil
-printer_wire_escpos	ESC/POS
-printer_wire_os	Porträtt
-printer_wire_os_portrait	Porträtt
-printer_wire_os_landscape	Landskap
-printer_wire_escpos_short	ESC/POS
-printer_wire_os_short	Porträtt
-printer_wire_os_landscape_short	Landskap
-printer_format_custom	Ny anpassad profil
-printer_format_custom_label	Anpassad
-printer_format_custom_added	Anpassad profil har lagts till för denna plats
-add_printer	Lägg till skrivare
-route_pick_ph	Bill eller en dispensavdelning
 route_bill	Nota
-route_dont_print	Ingen skrivare
 station_print_pick_first	Välj en apoteksavdelning först
-station_vps_empty	Inga skrivare ännu — Hitta dem under Inställningar → Skrivare
 bill_printers_dd	Skrivare för räkningen
 bill_printers_dd_n	{n} skrivare för räkningen · tryck för att ändra
 station_vp_attached	Skrivare ansluten
 station_vp_detached	Skrivaren har tagits bort från stationen
-route_up	Upp
-route_down	Ner
-route_clear	Rensa
-save_printers	Spara skrivare
 print_test_page	Skriv ut en testsida
 no_printer_assigned	Ingen skrivare
-test_page_no_printer	Ingen skrivare för {place} — anslut en skrivare till den och försök sedan igen
 test_page_pick_first	Välj skrivare för en testsida först — sedan Skriv ut en testsida
 test_printers_dd	Skrivare för en testsida
 test_printers_dd_n	{n} skrivare för en testsida · tryck för att ändra
 test_printer_picked	Testa på: {name}
 test_printer_cleared	Testar inte på: {name}
 test_page_sent_n	Testsida skickad till {n} skrivare(r)
-batch_cancel	Avbryt markerad
-batch_cancel_n	Avbryt markerad ({n})
-batch_cancel_none	Markera en eller flera skickade objekt först — sedan Avbryt markerade
-batch_cancel_title	Avboka märkta läkemedel — en anledning, en avbokningslapp per avsnitt
-batch_cancel_ok	{n}-föremål avbrutna · {slips}-avbokning(er) → {kitchens}
-batch_cancel_ok_noprint	{n}-objekt har avbrutits — automatisk utskrift är avstängd, så ingen avbokning
 printers_saved	Sparad
-test_page_sent	Testsida skickad — kontrollera skrivaren
 test_page_sent_one	Testsida skickad till {name} — kontrollera den skrivaren
 printers_found	Hittade {n}: {list}
 printers_find_synced	Hittade {n} — {new} ny
-printer_on_device	sparat
 printer_already_added	redan lagt till
 printer_already_saved	Redan sparad: {name}
 find_printers	Hitta skrivare
@@ -640,7 +497,6 @@ cancelled	Avbruten
 printers_tap_find	Tryck på Hitta för att lista skrivare som den här enheten kan använda.
 printers_none_found	Ingen hittades – skriv ett systemskrivarnamn eller en IP (t.ex. 192.168.1.50).
 printer_from_find	Lade till {name}
-bill_printer_ph	Skrivare för räkningar
 queue_refused	Godkänns inte av butiken ({n}) — kontrollera var och en vid disken:
 clear_not_accepted	Markerad – rensa den här listan
 device_name_ph	Den här enhetens namn
@@ -650,7 +506,6 @@ connected_now	ansluten nu
 backup_failed	Den senaste automatiska säkerhetskopieringen misslyckades: {e}
 backup_overdue	Ingen säkerhetskopiering på {n} dagar – håll appen öppen på den här enheten så att den kan säkerhetskopiera.
 disk_low	Endast {mb} MB ledigt på den här enheten — säkerhetskopieringar kommer snart att misslyckas. Frigör lite utrymme.
-last_seen_devices	Senast sett: {time}
 connection_to_shop	Anslutning till butiken
 supplier_name_ph	Leverantörens namn (eller part)
 supplier_ph	Leverantör
@@ -708,7 +563,6 @@ currency_use_help	Bläddra och tryck på Använd för valfri valuta som stöds.
 day_close_help	Om du registrerar en stängd dag sparas denna sammanfattning (och lådavvikelse om den räknas) i granskningsloggen. Det slutar inte sälja.
 expenses_word	Utgifter
 feature_access_help	Vad de kan öppna — valfritt; jobbet ovan anger redan en standard
-footer_local	Lokal SQLite · Gratis för alltid · Zero Cloud
 fresh_book_tabiyat	Färsk = tom katalog (lägg till objekt senare). Bok = typ ingående lager och vem som är skyldig dig nedan.
 fresh_selected	Ny markerad — katalogen förblir tom. Tryck på Klar när du är klar.
 gross_word	Grovt
@@ -721,12 +575,9 @@ net_word	Netto
 offline_badge	OFFLINE
 optional_login_help	Valfri inloggning (id + lösenord). Ägaren sätter en gång; endast användaren kan ändra lösenordet senare.
 or_unlock_login	Eller lås upp med inloggnings-id + lösenord
-permission_preset	Jobb (ställer in skärmar och pengaåtgärder)
-preset_help_tabiyat	Kassör: sälja. Manager: sälja + varor + ogiltigförklara/ändra.
-product_locked_tabiyat	Tabiyat
+permission_preset	Jobb
 product_only_tabiyat	Tabiyat är apotekets operativsystem: medicinförsäljning, batch-/förfallobokföring, krediter och böcker – offline på dina enheter. Schema H / Rx-flaggor är ägaranteckningar, inte överensstämmelse.
 purchases_cogs	Köp (COGS)
-qty_cap	ANTAL
 restore_help	Återställ: välj en säkerhetskopia. Böckerna öppnas som de var då; böckerna som de är nu sparas först, så detta kan ångras.
 wipe_data_heading	Ta bort lokal data
 wipe_data_help	Endast ägare – samma val som avinstallation av Windows. Affärsregister rensar handelshistorik men behåller föremål och inställningar (som PIN-koden för nödlåsning). Butiksinställningar tar bort bokdatabasen. Skärminställningar rensar fönster/språk. Bekräfta med ägarens PIN-kod. PIN-koden för nödupplåsning på Team är separat (doldtorkning vid upplåsning).
@@ -759,7 +610,6 @@ staff_renamed	Namnet har sparats
 staff_setup_copied_hire	Inställningen kopierad från {name} — ställ in ett nytt namn och PIN-kod, sedan Lägg till personal
 staff_setup_copied_edit	Kopierade {from}s inställning till {to}
 staff_copy_need_selected	Välj vem som ska redigeras först
-staff_copy_need_source	Välj vems inställningar du vill kopiera
 staff_copy_same	Det är samma person - välj någon annan
 staff_rename_need_selected	Välj vem du ska byta namn på först
 team_pick_hint	Välj vem du vill redigera – skärmar, pengarrättigheter och stationer visas endast för den personen.
@@ -774,15 +624,9 @@ unit_picker_off	Av
 we_owe_them	Vi är skyldiga dem
 who_unlocking	Vem låser upp?
 locked_word	Låst
-show_pin	Visa PIN-kod
-hide_pin	Dölj PIN-kod
 set_owner_pin	STÄLL IN ÄGARE PIN
 enter_owner_passcode	SKRIV IN ÄGARE LÖSENKOD
 enter_staff_passcode	SKRIV IN PERSONALENS LÖSENKOD
-pin_count_zero	0 / 12 siffror · minst 4, sedan OK
-pin_count_need	{} / 12 siffror · behöver {} mer
-pin_count_full	12/12 siffror · tryck på OK
-pin_count_ready	{} / 12 siffror · tryck på OK när du är klar
 pin_hint_choose	Välj 4–12 siffror · Enter eller Lås upp för att spara
 pin_hint_new	Ny 4–12-siffrig ägar-PIN · Ange eller lås upp
 pin_hint_shop_code	Handla enhet · kopplingskod {}
@@ -791,23 +635,15 @@ pin_hint_paired	Extra till parat – lås upp för att sälja
 pin_hint_pair_first	Extra till — koppla ihop till butiksenheten först
 unlock_to_continue	Lås upp för att fortsätta
 no_staff_yet	Ingen personal ännu – lås upp som ägare och sedan Team
-status_server_set_pin	Serverläge — ställ in ägarens PIN-kod
-status_server_tills	Serverläge — extra kassar kan gå med. Lås upp
-status_server_unlock	Serverläge — lås upp som ägare
-status_client_unlock	Klientläge — lås upp för att sälja
 icon_new_selected	Ikon: ny fil vald — tryck på Spara varumärke
 icon_custom	Ikon: anpassat platsmärke
 icon_default	Ikon: Kumkaj-märke (standard) — välj en anpassad
 logo_yours	Logotyp: din butikslogotyp — visas på skärmar och kvitton
 logo_default	Logotyp: Kumkaj-märke (standard) — välj din egen om du har en
-tmpl_current	Aktuell: {} — {}
-tmpl_selected	Valda: {} — {}
 setup_complete	Installationen är klar
 onboard_fresh_tmpl	Färsk · {} — katalogen börjar tom; lägg till objekt i Objekt och sedan Klar.
 onboard_book_tmpl	Boka · {} — lägg till föremål och öppningskredit och sedan Klar.
-onboard_template_tmpl	Namnge platsen om du vill och välj sedan hur du ska börja.
 tmpl_blurb	Apoteksräknare: mediciner, batch/utgångsdatum, khata, böcker.
-tmpl_how	Sälj vid disken; Köp för lager; Böcker för dagen bok.
 reports_facet_title	Rapporter
 reports_facet_help	Dagböcker, feståldring, bankinlägg och periodisk P&L.
 against_bill_ph	Mot räkning # ovan (valfritt)
@@ -818,14 +654,12 @@ amount_ph	Belopp
 amount_received_ph	Mottaget belopp
 amount_we_pay_ph	Belopp vi betalar
 business_name_ph	Företagsnamn
-category_new_ph	Kategori (valfritt, skapad om ny)
 code_bag_ph	Kod (väska)
 conv_factor_ph	Faktor (25 = 1 påse → 25 kg)
 country_code_ph	Landskod t.ex. IN, GB, US, AE, BR
 credit_khata_amount_ph	Kredit / khata belopp
 credit_limit_ph	Kreditgräns (0 = ingen)
 from_code_ph	Från kod (påse)
-item_name_lang_ph	Objektets namn – skriv det på ditt språk
 login_id_opt_ph	Användarnamn (obligatoriskt, unikt)
 manager_pin_ph	Chefs-PIN att godkänna (endast om du inte kan annullera)
 new_branch_name_ph	Nytt filialnamn
@@ -833,15 +667,12 @@ new_password_ph	Nytt lösenord (valfritt)
 new_pin_ph	Ny PIN-kod (4–12 siffror)
 note_bank_ph	Notera (insättning, uttag, ...)
 note_buy_expense_ph	Obs (bränsle, hyra, …)
-note_expense_ph	Notera (bränsle, kontor, …)
 options_tabiyat_ph	Alternativ — Storlek*: Liten=199, Stor=399 | Toppings+3: Ost=40, Olive=30 | Extra ost=40
-part_second_way_ph	Dela på ett annat sätt (valfritt)
 phone_ph	Telefon
 place_name_ph	Namnet på denna plats
 qty_example_ph	Antal (t.ex. 1,5 för kg)
 quantity_ph	Kvantitet
 reason_required_ph	Orsak (obligatoriskt)
-role_title_ph	Rolltitel (t.ex. Barista)
 service_pct_ph	Service % valfritt 0/10/12
 short_code_ph	Kortkod (MG02)
 starting_password_ph	Startlösenord (valfritt)
@@ -876,14 +707,11 @@ shift_handover	Skiftöverlämning
 shift_since	Denna förändring sedan
 expected_in_drawer	Förväntas i låda
 right_discount	Ge rabatt
-pick_category	Välj en kategori
-close_category_list	Stäng kategorilistan
 new_category_row	Ny kategori – skapas när du sparar objektet
 your_category	Din kategori
 suggested_category	Föreslagna — från våra varor
 category_search_ph	Kategori – sök efter din eller skriv en ny
 cancel_item_short	Avbryt
-cancel_item_title	Avbryt den här artikeln – backoffice får en avbokningssedel
 return_to_customer	Återgå till kund
 short_by	Kort av
 tip_not_sale	Tips (personalens, inte en rea)
@@ -896,9 +724,7 @@ finding_server	Letar efter butikens server på detta Wi-Fi...
 no_server_found	Ingen hittades. På servern: Inställningar → Andra enheter → Tillåt extra kassar (samma Wi-Fi). Eller skriv in IP-adressen som visas där.
 servers_found_pick	Tryck på butiken du vill ansluta till.
 server_host_selected	Använd {host} — ange kopplingskoden och sedan Koppla nu.
-print_bill	Skriv ut räkningen
 approval_pin_ph	Chefs-PIN (endast om tillfrågad)
-confirm	Bekräfta
 menu_search_ph	Sök objekt eller kortkod
 customer_paid_ph	Kunden betalade
 tip_ph	Tips
@@ -908,7 +734,6 @@ bill_format_help	Tryckt under din butiks namn på varje sedel. Separera rader me
 bill_header_ph	Adress | telefon
 fssai_ph	Narkotikatillstånd nr. (valfritt – din formulering)
 bill_footer_ph	Sidfot (t.ex. Tack, besök igen)
-save_bill_format	Spara fakturaformat
 kot_field_on	visa
 kot_field_off	gömma sig
 kot_weight_light	Ljus
@@ -919,10 +744,8 @@ kot_weight_bold	Fet
 kot_align_start	Starta
 kot_align_center	Centrerad
 kot_align_end	Slut
-content_width	Innehållsbredd (mm)
 content_width_bill	Fakturans innehållsbredd (mm)
 content_width_ph	Eller skriv en innehållsbredd, 40–210 mm
-content_width_help	Hur brett den här slipen trycker. Bill håller sin egen bredd.
 content_width_bill_help	Hur bred kundräkningen skrivs ut. Standard 210 mm (sida). 58 mm smal slip, 80 mm bred slip, 112 mm 4 tum, 210 mm A4 bred. Ange valfritt värde från 40 till 210. Biljetterna har sin egen bredd på lappfliken.
 vp_paper_width	Innehållsbredd (mm)
 vp_paper_width_ph	Eller skriv en innehållsbredd, 40–210 mm
@@ -937,9 +760,6 @@ test_bill_sent	Förhandsgranskning av faktura har skickats
 test_print_no_printer	Ingen skrivare för det jobbet – välj en på den här skärmen
 std_print	Notautskriftsstorlek
 std_print_help	Teckenstorlek för standard stående och liggande faktureringsjobb på OS/dokumentskrivare (inmatningspunkter — inte Liten/Normal/Stor). Samma storlek på båda riktningarna.
-std_size_s	Liten
-std_size_m	Normal
-std_size_l	Stora
 save_std_print	Spara räkningens utskriftsstorlek
 std_print_saved	Notautskriftsstorleken har sparats
 print_brand_kit	Tryckmärkessats
@@ -952,14 +772,9 @@ choose_payment_qr	Välj betalning QR
 clear_payment_qr	Rensa betalning QR
 payment_qr_set	Betalnings-QR: på fil — visas på kunddisplayen (ersätter beloppet UPI QR där)
 payment_qr_none	Betalnings-QR: ingen — belopp QR från UPI-ID vid betalning
-aggregator_import	Aggregatorordrar (fil)
-aggregator_import_help	Valfri lokal import: lägg import_aggregator_orders.json i backup-mappen (array eller {"orders":[...]}) och tryck sedan på Importera. Blockerar aldrig disken; live Zomato/Swiggy is Cloud.
-import_aggregator_file	Importera aggregatorfil
 team_pick_ph	Personal att redigera - namn, användarnamn eller val
 select_staff	Välj denna personal
 rights_help	Pengaåtgärder för den här personen — tryck för att cykla: Tillåtet → Behöver chefs-PIN → Ej tillåtet. Skriv ut räkningen igen är bara räkningar; avsnitten är checklistan nedan.
-dish_picker_help	Sök eller bläddra bland våra föremål och tryck på en för att fylla i dess namn och foto - eller behåll ditt eget namn. Ställ in ditt pris (0 är bra) och sedan Lägg till objekt.
-close_dish_list	Stäng objektlistan
 own_item_name	Använd detta som ditt eget objektnamn
 on_your_menu	I medicinlistan
 edit	Redigera
@@ -970,24 +785,16 @@ add_scheme	Lägg till BOGO
 schedule_ph	Öppettider — mån-fre 07:00-11:00 eller kväll 17:00-19:00=150
 upi_vpa_ph	UPI ID (VPA)
 upi_payee_ph	UPI-betalningsmottagarens namn (valfritt)
-upi_qr	UPI QR
 show_upi_qr	Visa UPI QR
 close_upi_qr	Stäng
 upi_qr_help	Kunden skannar och betalar. Tryck på Ta betalning efter att de har betalat. Andra skärmen: öppna Server URL / visa på LAN.
-recently_done	Nyligen gjort
 role_help_customer	Roll: Kund – khata (de är skyldiga oss). Samma part kan också leverera lager.
 role_help_both	Roller: Kund + Leverantör — en part, khata och betalningsböcker, netto i Rapporter.
 role_help_supplier	Roll: Leverantör – vi är skyldiga dem för inköp.
-items_word	föremål
-items_section	Föremål
-back_to_order	Tillbaka till beställning
-new_items_head	Inte skickat ännu
 price_ph	Pris
 price_ph_gst_inside	Pris ({tax} inklusive)
-tax_rates_missing_hint	Ingen {tax}-sats på dessa artiklar — på artiklar inställd momssats (priserna inkluderar redan {tax} under {tax} inklusive)
 taxable_value	Skattepliktigt värde
 gst_inside_price_note	({tax} inklusive)
-start_with_template	Börja med vår artikelmall
 template_heading	Förrättsartiklar
 template_info	{c}-kategorier och {d}-objekt med foton, redo att läggas till. Priserna börjar på 0 INR – ställ in ditt efter.
 template_import	Importera komplett mall
@@ -1009,21 +816,13 @@ opening_client	Öppnar klient...
 preparing_desk	Förbereder skrivbordet...
 opening_server	Öppnar server...
 creating_server	Skapar server...
-order_empty_pick	Beställningen är tom — tryck på Lägg till artiklar ovan för att välja artiklar.
 add_dishes	Lägg till mediciner
 order_so_far	På denna beställning: {n} · {total}
 no_dish_match	Inget objekt matchar "{q}"
-pick_dishes_help	Tryck på ett objekt för att lägga till det · välj en kategori för att begränsa listan
 pick_done	Klart
-pick_done_dd	Klart · {label}
-printer_route_mode	Om flera skrivare på denna plats
-printer_mode_first	Först fungerar det
-printer_mode_all	Skriv ut på alla
 kot_field_up	Flytta uppåt
 kot_field_down	Flytta ner
-app_template_blurb_extra	Även: Ägare Zahir, Admin Asif, Kassör Nawaz; främre sidofältet; historia efter 4 timmar; Klä av idag; kompakt räkning.
 dishes_n	{n} objekt
-recipe_ph	Recept (valfritt - oanvänt på en diskbutik)
 reorder_ph	Köp fler på
 set_reorder	Ställ in omordningsnivå
 low_stock_alert	Snart slut – köp snart: {items}
@@ -1032,7 +831,6 @@ show_unpriced	Visa endast varor utan pris
 show_all_dishes	Visa alla objekt
 role_title_rest_ph	Rolltitel (t.ex. kapten, chefskock)
 preset_help_rest	Kassör: sälja. Manager: sälja + varor + ogiltigförklara/ändra.
-kind_raw	Sammansatt lager
 kind_resale	Köpte medicin
 kind_dish	Räkna inte lager
 buy_unit_ph	Enhet (kg, liter, st)

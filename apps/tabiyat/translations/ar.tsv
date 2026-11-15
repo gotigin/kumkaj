@@ -1,5 +1,4 @@
 # Arabic — العربية (ar). One key<TAB>text per line, in en() order; keep {placeholders}.
-app_tagline	كاونتر الصيدلية: الأدوية، الدفعة، الخطا والكتب. مجاني حاليا.
 barcode_ph	الباركود / EAN
 composition_ph	الملح / التركيبة (قابلة للبحث)
 schedule_h_off	الجدول H — إيقاف (علامة المالك)
@@ -13,7 +12,6 @@ expiry_alerts	تنبيهات انتهاء الصلاحية (الأيام الس�
 expiry_none	لا توجد دفعات تنتهي صلاحيتها خلال 7 أيام القادمة.
 rx_nudge	وضع المالك علامة Rx / الجدول H - أضف ملاحظة إذا لزم الأمر.
 unlock	فتح القفل
-pin_hint	رمز المالك يبدأ بـ 0000
 sell	بيع
 buy	الشراء
 books	دفتر اليوم
@@ -32,17 +30,13 @@ reports_month	الربح والخسارة (شهر)
 reports_aging	مستحقات / Dr-Cr
 reports_balance_sheet	الميزانية
 reports	تقارير
-refresh	تحديث
 undo	تراجع
-start_tracking	ابدأ العد
 stock_minus	− مخزون
 stock_plus	+ مخزون
 settle_cash	سدد نقداً
 settle_card	سدد بالبطاقة
 items	أدوية
 nav_items	أدوية
-more	المزيد
-your_items	أدويتكم
 items_help	اضغط على أحد العناصر لتحريره. عنصر جديد يمسح النموذج. ابحث بالاسم أو الرمز القصير، وحدد السعر (0 جيد)، ثم أضف. المبيعات المسجلة بالفعل تحتفظ بالاسم الذي تم تحميلها به.
 add_item	أضف صنفاً
 new_item	صنف جديد
@@ -53,28 +47,22 @@ remove	إزالة
 removed_items	أصناف محذوفة
 removed_help	تعمل عملية الاستعادة على إعادة العنصر إلى العناصر كما كان تمامًا - السعر والصورة والفئة.
 restore_item	استعادة
-empty_catalog	لا أدوية بعد. افتح الأدوية، أضف الاسم أو الرمز أو الملح، ثم بِع.
+empty_catalog	لا أدوية بعد.
 total	المجموع
 cash	نقداً
 upi	UPI
 card	بطاقة
 credit	الأطراف
 clear	مسح
-ready_to_sell	جاهز للحجز
 today_prefix	اليوم
-today_mid	اليوم
 owed	مستحق
-round_word	تقريب
 back	رجوع
 sold_out	نفد
 restock	إعادة
 not_tracked	غير محسوب
 in_stock	في المخزون
 marked_sold_out	مُعلَّم نافد
-add_upper	أضف
-na	غير متاح
 qty	كمية
-unit_at	السعر
 actual	الفعلي
 applied	المطبّق
 note_ph	ملاحظة (اختياري)
@@ -93,21 +81,13 @@ bill_item_qty	كمية
 bill_item_price	السعر
 bill_item_amount	المبلغ
 bill_item_note	آر إكس / مذكرة بيع
-bill_item_col_gap	فراغ الأعمدة
 bill_item_col_order	ترتيب الأعمدة
 bill_item_col_sep	خطوط الأعمدة
-bill_item_gap_tight	ضيق
-bill_item_gap_comfort	مريح
-bill_item_gap_wide	واسع
-bill_item_num_width	أعمدة الأرقام
-bill_item_num_compact	مضغوط
-bill_item_num_comfort	مريح
-bill_item_num_wide	واسع
-bill_item_num_align	محاذاة الأرقام
-bill_item_gap_em	فراغ (em)
-bill_item_qty_min	حد أدنى للكمية (em)
-bill_item_price_min	حد أدنى للسعر (em)
-bill_item_amount_min	حد أدنى للمبلغ (em)
+slip_col_width	العرض (mm)
+slip_col_start	مسافة البداية (px)
+slip_col_end	مسافة النهاية (px)
+slip_col_align	محاذاة النص
+slip_columns_help	يشمل عرض كل عمود مسافتي البداية والنهاية. يلتف النص داخل عموده، وما يتجاوز عرض المحتوى يُقص على الورق وفي المعاينة.
 bill_total_qty_label	تسمية إجمالي الكمية
 bill_total_subtotal_label	تسمية المجموع الفرعي
 bill_total_grand_label	تسمية الإجمالي
@@ -120,11 +100,7 @@ bill_total_qty	الكمية الكلية
 bill_total_subtotal	المجموع الفرعي
 bill_total_grand	الإجمالي
 kot_unassigned	غير معين
-pos_tab_items	المضاف
-pos_tab_payment	الدفع
-settings_hub_title	الإعدادات
 settings_hub_help	افتح قسمًا واحدًا في كل مرة — تمرير أقل وخيارات أوضح.
-settings_back	رجوع
 settings_sec_language	اللغة والعملة
 settings_sec_country	البلد والضريبة
 settings_sec_tills	كاونترات إضافية وفروع
@@ -166,35 +142,17 @@ diag_cleared	تم مسح سجلات التشخيص
 sidebar_settings	الشريط الجانبي
 sidebar_settings_help	نفس الأيقونات الموجودة في الشريط الجانبي. اسحب الصف لإعادة ترتيبه. قلب المفتاح لإظهار أو إخفاءه. الإعدادات والقفل يظلان دائمًا على الشريط.
 sidebar_always_on_short	دائمًا مفعّل
-sidebar_back_settings	رجوع
-sidebar_shown	معروض
-sidebar_hidden	مخفي
-sidebar_always_on	دائماً على البار
-sidebar_shown_hint	معروض على الشريط الجانبي / التبويبات السفلية
-sidebar_hidden_hint	مخفي عن البار
 sidebar_menu_items	العناصر
 sidebar_enable_all	تمكين الكل
 sidebar_disable_all	تعطيل الكل
 sidebar_order_saved	تم حفظ ترتيب الشريط الجانبي
 sidebar_visibility_saved	تم حفظ رؤية الشريط الجانبي
-amounts_hide	إخفاء
-amounts_show	إظهار
-printers_none_hint	احفظ الطابعة على هذا الجهاز أولاً، ثم أضفها إلى الفاتورة أو القسم
-counter	كاونتر
-dine_in	كاونتر
-takeaway	سفري
-order	طلب
 sales	مبيعات
-sales_refunds	مبيعات ومرتجعات
 day_close	إقفال اليوم
 reports_expenses	تقارير ومصروفات
 nav_reports	التقارير
 nav_settings	الإعدادات
 nav_lock	القفل
-no_sale_yet	لا مبيعات بعد
-favorites	المفضلة
-favorites_help	العناصر التي تبيعها كثيرًا، محفوظة لحسابك. أضف واحدًا إلى الفاتورة، أو أنشئ قائمتك من جميع العناصر أدناه.
-your_favorites	مفضلاتك
 all_items	كل العناصر
 frequent	الأكثر مبيعاً
 added_items	المضافة
@@ -211,8 +169,6 @@ zero_sales_on	مبيعات صفر: تشغيل
 zero_sales_off	مبيعات صفر: إيقاف
 zero_sales_saved_on	تم حفظ إذن مبيعات الصفر (تشغيل)
 zero_sales_saved_off	تم حفظ إذن مبيعات الصفر (إيقاف)
-no_favorites	لا مفضلة بعد — أضف عناصر من القائمة أدناه.
-add_to_bill	أضف إلى الفاتورة
 added	تمت الإضافة
 owes_word	يدين بـ
 selected_word	تم التحديد
@@ -221,19 +177,11 @@ chip_missing_customer	العميل المحدد مفقود — اختر مرة �
 chip_no_customer	لا عميل بعد — اكتب اسمًا ثم انقر الائتمان
 credit_summary_fmt	{} عميل · ائتمان مفتوح {} · دفعات محفوظة {}
 recent_label	الأخيرة:
-start_order	بدء الطلب
-open_bill	فتح الفاتورة
-collect_payment	تحصيل الدفع
-payment_pending	الدفع معلق
-collect_at_counter	التحصيل عند الكاونتر
 inventory	المخزون
-inventory_stock	المخزون والعد
 branches	فروع
-branches_org	فروع ومؤسسة
 credit_customers	عملاء الآجل
 customer_name_ph	اسم الطرف
 new_customer_ph	اسم الطرف الجديد
-item_name_ph	اسم الصنف (مثال Masala Dosa)
 item_price_ph	السعر
 start_template	المنتج
 team	الفريق
@@ -241,17 +189,11 @@ team_pins	الفريق والرموز
 my_pin_settings	رمزي
 settings_hub_help_my_pin	غيّر رمز فتح من سجّل الدخول على هذا الجهاز.
 team_self_help	أنت وحدك تستطيع تغيير رمز الفتح (وكلمة مرور الدخول الاختيارية). لشاشات أو صلاحيات أخرى اطلب من المالك.
-backup_settings	نسخ واحتياطي وإعدادات
-lock_app	قفل
 pick	اختر
-select	تحديد
 advance	تقدّم
 owner	المالك
 staff	الموظفون
 photo	صورة
-auto	تلقائي
-prev	السابق
-next	التالي
 ok	حسناً
 this_shop	وضع الخادم
 extra_till	وضع العميل
@@ -260,17 +202,13 @@ server	خادم
 client	عميل
 language_currency	اللغة والعملة
 language	اللغة
-choose_language	اختر لغتك
 language_setup_hint	اتبع لغة هذا الجهاز، أو اختر واحدة بنفسك.
 lang_follow_platform	استخدم لغة الجهاز
 lang_pick_user	استخدم اللغة المختارة
 lang_platform_now	لغة الجهاز الآن
 selected_language	المختارة
-continue	متابعة
 this_device	هذا الجهاز
 device_use_q	كيف سيُستخدم هذا الجهاز؟
-last_server_mode	كان خادمًا — اضغط للمتابعة
-last_client_mode	كان عميلًا — اضغط للمتابعة
 choose_server	اختر خادماً
 choose_server_hint	هذا الجهاز لديه خوادم بالفعل. افتح واحداً أو أنشئ خادماً جديداً لنشاط آخر.
 create_new_server	إنشاء خادم جديد
@@ -280,12 +218,6 @@ server_remove_pin_ph	رمز المالك للإزالة
 only_owner_remove_server	المالك وحده يمكنه إزالة خادم
 owner_pin_remove_server	يلزم رمز المالك لإزالة هذا الخادم
 device_setup_help	الخادم يحفظ الدفاتر هنا. العميل يقترن بخادم.
-app_template_heading	كتالوج المبتدئين (اختياري)
-app_template_blurb	يقوم بتحميل كتالوج العينة؛ المالك زاهر (زاهر)، المشرف آصف (آصف، رقم التعريف الشخصي 1111)، أمين الصندوق نواز (نواز، رقم التعريف الشخصي 0000)؛ إيقاف الضريبة/ضريبة السلع والخدمات؛ الشريط الجانبي الأمامي؛ يتم مسح السجل بعد 4 ساعات (ويتم مسحه الآن في النسخة الاحتياطية)؛ اليوم تجرد. فاتورة مدمجة + هوامش قياسية للصواني الضيقة. يمكن إعادة تشغيل نظيرات الضرائب والشريط الجانبي في الإعدادات.
-app_template_apply	تطبيق كتالوج البداية
-app_template_skip	انتظر قليلاً
-app_template_status	الخادم جاهز — قم بتطبيق كتالوج Starter، أو قم بالتخطي
-app_template_importing	يتم تطبيق {title}…
 currency	العملة
 backup	نسخة احتياطية
 use	استخدم
@@ -319,7 +251,7 @@ attachments_last_expense	المرفقات (آخر مصروف)
 bank	البنك
 bank_in	إيداع بنكي
 bank_out	سحب بنكي
-bank_reconciliation	التسوية البنكية (علّم مقابل كشف حسابك)
+bank_reconciliation	التسوية البنكية
 bank_to_till	البنك ← الكاونتر
 book_add_dish	كتاب - إضافة عنصر / عنصر
 book_opening_credit	احجز — رصيد افتتاحي
@@ -349,9 +281,6 @@ share_whatsapp	مشاركة واتساب
 lan_pages_heading	صفحات العملاء على شبكة Wi‑Fi
 lan_pages_help	على شبكة Wi-Fi الخاصة بهذا المتجر، تعمل صفحات العملاء على لوحة العرض والتعليقات. يحتاج الأشخاص الذين يستخدمون بيانات الهاتف المحمول إلى السحابة لاحقًا. تعتبر محطة البطاقة أو رابط الدفع اختيارية ولا تحجب العداد أبدًا.
 diag_send_heading	المشاركة خارج هذا الجهاز
-optional_login_heading	تسجيل دخول اختياري
-rights_heading	الصلاحيات
-ops_panel	العمليات المحلية
 crm_heading	العملاء والرسائل
 crm_help	أعياد الميلاد والولاء — طابور SMS/WhatsApp. {name} و{points}. المالك يرسل.
 crm_queue_sms	طابور SMS
@@ -376,21 +305,17 @@ till_wallet_topup_ph	شحن المحفظة
 till_voucher_issue_amt_ph	مبلغ القسيمة الجديدة
 till_voucher_issue_code_ph	رمز القسيمة الجديدة
 bulk_price_apply	تطبيق سعر جماعي
-card_terminal_optional	جهاز بطاقة / رابط دفع (اختياري مع الإنترنت)
 copy_report	انسخ التقرير
 counted_cash_ph	النقد المعدود في الدرج
 country_tax	البلد والضريبة
 create_backup	أنشئ نسخة احتياطية
 credit_limit_heading	حد الائتمان (الطرف المحدد / المسمى)
-day_close_summary	ملخص إقفال اليوم
 delete_party	احذف الطرف المحدد
-delivery	التوصيل
 done_open_books	تم — افتح الدفاتر
 drawer_count	عد الدرج (اختياري)
 expense_heading	المصروف
 export_day	صدّر اليوم
 extra_note_bill_ph	ملاحظة إضافية على هذه الفاتورة / البيع
-extra_note_expense_ph	ملاحظة إضافية على آخر مصروف
 extra_tills_heading	الكاونترات الإضافية
 other_devices_help_heading	إعداد أجهزة أخرى
 other_devices_help	على هذا الجهاز (الخادم): الأجهزة الأخرى → السماح بفترات إضافية. لاحظ رمز الاقتران وعنوان Wi‑Fi. انقر فوق السماح للأجهزة الأخرى بالاتصال إذا ظهرت. على جهاز الكمبيوتر، انقر فوق البدء بهذا الكمبيوتر. على كل جهاز آخر: قم بتثبيت التطبيق، واختر وضع العميل، وابحث عن خادم المتجر (أو اكتب العنوان)، وأدخل رمز الاقتران، ثم قم بالإقران الآن. تنتظر الطلبات على الجهاز في حالة انقطاع شبكة Wi-Fi وتذهب عندما يرد الخادم مرة أخرى. يتم تعيين الطابعات الإضافية على الخادم (الإعدادات → الطابعات) — حيث يتم إرسال الفواتير الإضافية هناك.
@@ -404,7 +329,6 @@ login_id_ph	معرف الدخول
 mark_cleared	علّم كمُسوّى
 new_party_clear	طرف جديد (امسح النموذج)
 new_party_kind_supplier_ph	نوع الطرف الجديد (مورّد)
-next_country	البلد التالي
 next_order	الطلب التالي (امسح المكتب)
 note_gstin_ph	ملاحظة / GSTIN / تذكير بالاتفاق
 notes_attach_party	الملاحظات والمرفقات (الطرف المحدد)
@@ -422,8 +346,6 @@ pay_ap_cash	ادفع AP نقداً
 pay_ap_heading	ادفع ما علينا لهم (AP)
 pay_ap_upi	ادفع AP عبر UPI
 pay_selected_heading	ادفع المحدد (سوِّ الدين / خذ دفعة)
-pick_from_items	اختر من أصنافنا
-prev_country	البلد السابق
 print_open	اطبع / افتح
 reason_amend_ph	سبب التعديل / الإلغاء / الاسترداد
 reason_note_ph	السبب / ملاحظة (هدر، عد، …)
@@ -447,14 +369,10 @@ history_after_hours	بعد الساعات
 history_hours_ph	ساعات (1-168، الافتراضي 4)
 history_hours_save	حفظ الساعات
 history_clear_now	مسح السجل الآن
-history_cleared	تم مسح سجل التداول - الإعدادات محفوظة
-history_retention_saved	تم حفظ مسح السجل
 history_hours_saved	تم حفظ ساعات السجل
-history_owner_only	فقط المالك أو المسؤول يمكنه مسح السجل
 rollup	تجميع
 save_brand	احفظ العلامة
 save_business_id	احفظ الرقم الضريبي ونسبة الخدمة
-save_business_name	احفظ اسم النشاط
 save_features	احفظ ميزات الموظف المحدد
 save_features_named	حفظ {name}
 save_features_ok	حفظ إعدادات {name}
@@ -485,7 +403,6 @@ copy_pair_code	انسخ رمز الاقتران
 new_pair_code	رمز اقتران جديد
 pair_finishing	جارٍ إنهاء الاقتران… تطبيق دفاتر المتجر
 pair_opening	فتح الصندوق…
-pair_copied	تم نسخ رمز الاقتران
 lan_offline_waiting	غير متصل · {n} قيد الانتظار
 lan_connecting	جارٍ الاتصال بالمحل…
 lan_live	مباشر
@@ -499,7 +416,6 @@ firewall_waiting	بانتظار موافقة المسؤول…
 lan_join_help	يمكن للأجهزة الأخرى الانضمام إلى هذا الجهاز — رمز الاقتران {code}. على الجهاز الآخر اختر وضع العميل ثم ابحث عن خادم المطعم، أو اكتب هذا العنوان: {addr}
 lan_pair_status	واي فاي {addr}
 lan_join_help_no_addr	قم بتوصيل هذا الجهاز بشبكة Wi‑Fi للحصول على عنوان.
-lan_no_address	لا يملك هذا الجهاز عنوان Wi‑Fi بعد — صِله بشبكة Wi‑Fi الخاصة بالمطعم.
 lan_not_listening	لا يقبل أجهزة الآن — ربما يستخدم برنامج آخر المنفذ {port}. أعد تشغيل التطبيق.
 lan_tills_off	الكاونترات الإضافية متوقفة. تبقى دفاتر هذا المطعم على هذا الجهاز. اسمح بالكاونترات الإضافية إذا كان على جهاز آخر أن يأخذ الطلبات أو يصدر الفواتير أيضًا.
 paired_with	مقترن بالمطعم على {url}
@@ -520,41 +436,21 @@ printers_help	ابحث عن الطابعات، وانقر فوق إحداها ل
 printers_host_only	يتم ضبط الطابعات على جهاز المتجر (الخادم). يؤدي ذلك إلى إرسال الفواتير والتذاكر القديمة إلى هناك — البحث عن / إضافة / تعيين الإقامة على الخادم. تنتقل صفحة الاختبار وحجم طباعة الفاتورة إلى الخادم.
 printers_find_heading	الطابعات
 printers_find_tip	البحث يفحص هذا الجهاز ويبقي القائمة محدّثة. طابعات النظام أولاً؛ وقد يستمر مسح الشبكة في الخلفية.
-printers_pool_heading	1. طابعاتك
-printers_pool_tip	البحث يفحص هذا الجهاز ويبقي القائمة محدّثة.
 printers_pool_empty	(لا شيء بعد — أضف أدناه)
-printers_routes_help	ابحث عن الطابعات التي يعرفها نظام التشغيل بالفعل. قم بتعيينهم في الفاتورة ولكل قسم ضمن تنسيق Bill & Slip.
 printer_assign_dd	اختر طابعة لـ {place}
 printer_assign_pick	اختر الطابعة الحقيقية
 printer_profile_heading	التخطيط
 vp_delivery_heading	التسليم
 vp_delivery_help	كيف ترسل هذه الطابعة الافتراضية المهام - مستند نظام التشغيل، أو وحدات البايت الأولية، أو ESC/POS. يتم تحديد محتوى القسيمة (حجم النوع، الغلاف، الهوامش) من خلال تنسيق الفاتورة/القسيمة، وليس هنا.
-vp_type_size_heading	حجم الخط
-vp_wrap_heading	عرض الالتفاف
-vp_margin_heading	الهوامش
 vp_delivery_spooler	مستند النظام (بكرة النظام)
 vp_delivery_raw	بايتات خام للجهاز
 vp_delivery_escpos	أوامر حرارية ESC/POS
 virtual_printer_new	طابعة افتراضية جديدة
 virtual_printer_selected	تعديل “{name}” — انقر أخرى في القائمة للتبديل
-virtual_printer_tap_list	انقر طابعة افتراضية في القائمة لتعديلها
 config_layout_portrait	عمودي
 config_layout_landscape	أفقي
 config_send_os	بكرة النظام
 config_send_escpos	ESC/POS
-profiles_heading	الطابعات
-profiles_empty	الطابعات
-profile_builtin	مدمج
-profile_custom	مخصص
-profile_name_ph	الطابعات
-profile_new	الطابعات
-profile_delete	الطابعات
-profile_created	الطابعات
-profile_deleted	الطابعات
-profile_builtin_keep	الطابعات
-config_saved	تم التحديث
-config_selected	تم اختيار “{name}”
-printer_output_heading	طابعات افتراضية
 virtual_printers_heading	طابعات افتراضية
 virtual_printers_empty	لا طابعات افتراضية بعد — عيّن القيم أدناه ثم احفظ. بعد وجود بعضها، انقر واحدة في القائمة لتعديلها.
 virtual_printer_name_ph	اسم الطابعة الافتراضية (اختياري)
@@ -566,71 +462,32 @@ virtual_printer_deleted	حُذفت الطابعة الافتراضية “{name}
 virtual_printer_updated	تم تحديث الطابعة الافتراضية
 virtual_printer_updated_named	تم تحديث الطابعة الافتراضية “{name}”
 virtual_draft_layout	قيم جاهزة للطابعة الافتراضية التالية
-virtual_draft_send	قيمة جاهزة للطابعة الافتراضية التالية
 virtual_need_real	اختر طابعة حقيقية أولاً
 virtual_need_select	اختر طابعة افتراضية للحذف
 real_printer_selected	الطابعة الحقيقية: {name}
-printers_routes_heading	2. أين يُطبع
-route_pick_heading	المكان
 route_editing	التعديل: {name}
-route_assigned	تمت إضافة {printer} إلى {place}
-route_already_assigned	موجود هنا مسبقاً: {printer}
 route_cleared	مسح {name}
-route_assigned_empty	لا شيء في هذا المكان
-route_tap_select	انقر للاختيار
 route_tap_selected	محدد
-route_pick_printer_first	انقر أولاً على طابعة
-route_assigned_heading	الطابعات
-route_add_heading	تعيين
-printer_label_ph	الاسم (على سبيل المثال، طابعة العداد)
 printer_target_ph	عنوان أو اسم النظام
 printer_target_default	الطابعة الافتراضية
-printer_wire_heading	التنسيق
-printer_wire_escpos	KOT
-printer_wire_os	قياسي عمودي
-printer_wire_os_portrait	قياسي عمودي
-printer_wire_os_landscape	قياسي أفقي
-printer_wire_escpos_short	KOT
-printer_wire_os_short	عمودي
-printer_wire_os_landscape_short	أفقي
-printer_format_custom	تنسيق مخصص جديد
-printer_format_custom_label	مخصص
-printer_format_custom_added	أُضيف تنسيق مخصص لهذا المسار
-add_printer	أضف طابعة
-route_pick_ph	فاتورة أو قسم المستوصف
 route_bill	الفاتورة
-route_dont_print	لا تطبع
 station_print_pick_first	اختر قسم المستوصف أولاً
-station_vps_empty	لا طابعات بعد — ابحث عنها في الإعدادات ← الطابعات
 bill_printers_dd	طابعات للفاتورة
 bill_printers_dd_n	{n} طابعة(ات) للفاتورة · اضغط للتغيير
 station_vp_attached	أُرفقت الطابعة
 station_vp_detached	أُزيلت الطابعة من المحطة
-route_up	أعلى
-route_down	أسفل
-route_clear	لا تطبع
-save_printers	حفظ الطابعات
 print_test_page	طباعة صفحة اختبار
 no_printer_assigned	لا طابعة
-test_page_no_printer	لا طابعة لـ {place} — عيّن واحدة أعلاه ثم أعد المحاولة
 test_page_pick_first	اختر أولاً طابعة/طابعات الاختبار — ثم اطبع صفحة اختبار
 test_printers_dd	طابعات صفحة الاختبار
 test_printers_dd_n	{n} طابعة اختبار · انقر للتغيير
 test_printer_picked	اختبار على: {name}
 test_printer_cleared	بدون اختبار على: {name}
 test_page_sent_n	أُرسلت صفحة الاختبار إلى {n} طابعة
-batch_cancel	إلغاء المحدد
-batch_cancel_n	إلغاء المحدد ({n})
-batch_cancel_none	قم بوضع علامة على عنصر واحد أو أكثر من العناصر المرسلة أولاً — ثم تم وضع علامة إلغاء
-batch_cancel_title	إلغاء الأدوية المحددة — سبب واحد، قسيمة لكل قسم
-batch_cancel_ok	تم إلغاء عناصر {n} · قسيمة (قسائم) الإلغاء {slips} → {kitchens}
-batch_cancel_ok_noprint	تم إلغاء عناصر {n} — تم إيقاف الطباعة التلقائية، لذا لا توجد قسيمة إلغاء
 printers_saved	تم حفظ طابعات هذا الجهاز
-test_page_sent	أُرسلت صفحة الاختبار — تحقق من الطابعة
 test_page_sent_one	أُرسلت صفحة الاختبار إلى {name} — تحقق من تلك الطابعة
 printers_found	تم العثور على {n}: {list}
 printers_find_synced	عُثر على {n} — {new} جديد
-printer_on_device	محفوظ
 printer_already_added	مضاف مسبقاً
 printer_already_saved	محفوظ بالفعل: {name}
 find_printers	ابحث عن الطابعات
@@ -640,7 +497,6 @@ cancelled	ملغى
 printers_tap_find	اضغط ابحث عن الطابعات — تُدرج طابعات النظام وطابعات الإيصالات الشبكية على هذا Wi‑Fi.
 printers_none_found	لم يُعثر على طابعات — اكتب اسم طابعة النظام أو عنوان شبكة (مثل 192.168.1.50)。
 printer_from_find	تمت إضافة {name}
-bill_printer_ph	طابعة الفواتير
 queue_refused	لم يقبلها المطعم ({n}) — راجع كل واحد منها عند الكاونتر:
 clear_not_accepted	تمت المراجعة — امسح هذه القائمة
 device_name_ph	اسم هذا الجهاز
@@ -650,7 +506,6 @@ connected_now	متصل الآن
 backup_failed	فشل آخر نسخ احتياطي تلقائي: {e}
 backup_overdue	لا نسخة احتياطية منذ {n} أيام — اترك التطبيق مفتوحًا على هذا الجهاز ليتمكن من النسخ.
 disk_low	تبقّى {mb} ميغابايت فقط على هذا الجهاز — سيفشل النسخ الاحتياطي قريبًا. أفرغ بعض المساحة.
-last_seen_devices	آخر ظهور: {time}
 connection_to_shop	الاتصال بالمطعم
 supplier_name_ph	اسم المورّد (أو الطرف)
 supplier_ph	المورّد
@@ -708,7 +563,6 @@ currency_use_help	مرّر واضغط استخدم لأي عملة مدعومة.
 day_close_help	تسجيل إقفال اليوم يحفظ هذا الملخص (وفرق الدرج إن عُدّ) في سجل التدقيق. لا يوقف البيع.
 expenses_word	المصروفات
 feature_access_help	وصول ميزات الموظف المحدد (اضغط بعد الإضافة)
-footer_local	SQLite محلي · مجاني للأبد · بلا سحابة
 fresh_book_tabiyat	الطابعات
 fresh_selected	تم اختيار Fresh — يبقى الكتالوج فارغاً. اضغط Done عندما تكون جاهزاً.
 gross_word	الإجمالي
@@ -721,12 +575,9 @@ net_word	الصافي
 offline_badge	دون اتصال
 optional_login_help	دخول اختياري (معرف + كلمة مرور). يضبطه المالك مرة واحدة؛ وبعدها يمكن للمستخدم فقط تغيير كلمة المرور.
 or_unlock_login	أو افتح القفل بمعرف الدخول + كلمة المرور
-permission_preset	إعداد الأذونات (ما يمكن الوصول إليه)
-preset_help_tabiyat	أمين الصندوق: البيع. المدير: البيع + الأصناف + الإلغاء/التعديل.
-product_locked_tabiyat	Tabiyat
+permission_preset	إعداد الأذونات
 product_only_tabiyat	هذا التطبيق Tabiyat فقط — نظام تشغيل المطاعم. للمهن الأخرى منتجات Kumkaj منفصلة.
 purchases_cogs	المشتريات (COGS)
-qty_cap	الكمية
 restore_help	الاستعادة: اختر نسخة احتياطية. تفتح الدفاتر كما كانت حينها؛ وتُحفظ الدفاتر الحالية أولًا، لذا يمكن التراجع.
 wipe_data_heading	حذف البيانات المحلية
 wipe_data_help	المالك فقط - نفس الاختيارات مثل إلغاء تثبيت Windows. تقوم سجلات الأعمال بمسح سجل التداول ولكنها تحتفظ بالعناصر والإعدادات (مثل رقم التعريف الشخصي لإلغاء القفل في حالات الطوارئ). يقوم إعداد المتجر بإزالة قاعدة بيانات الكتب. تفضيلات الشاشة تمسح النافذة/اللغة. قم بالتأكيد باستخدام رقم التعريف الشخصي للمالك. يعد رقم التعريف الشخصي لإلغاء القفل في حالات الطوارئ الموجود على الفريق منفصلاً (المسح السري عند إلغاء القفل).
@@ -759,7 +610,6 @@ staff_renamed	تم حفظ الاسم
 staff_setup_copied_hire	تم نسخ الإعدادات من {name} — حدد اسماً جديداً وكود PIN، ثم أضف موظفاً
 staff_setup_copied_edit	تم نسخ إعدادات {from} على {to}
 staff_copy_need_selected	حدد الشخص الذي سيتم تعديله أولاً
-staff_copy_need_source	اختر إعدادات أي شخص لنسخها
 staff_copy_same	هذه نفس الشخصية — اختر شخصاً آخر
 staff_rename_need_selected	حدد الشخص الذي سيتم إعادة تسميته أولاً
 team_pick_hint	اختر من تريد تحريره - تظهر الشاشات وحقوق الأموال والمحطات لهذا الشخص فقط.
@@ -774,15 +624,9 @@ unit_picker_off	إيقاف
 we_owe_them	ندين لهم
 who_unlocking	من يفتح القفل؟
 locked_word	مقفل
-show_pin	اعرض الرمز
-hide_pin	أخفِ الرمز
 set_owner_pin	عيّن رمز المالك
 enter_owner_passcode	أدخل رمز المالك
 enter_staff_passcode	أدخل رمز الموظف
-pin_count_zero	0 / 12 أرقام · 4 على الأقل، ثم حسناً
-pin_count_need	{} / 12 أرقام · يلزم {} أكثر
-pin_count_full	12 / 12 أرقام · اضغط حسناً
-pin_count_ready	{} / 12 أرقام · اضغط حسناً عندما تكون جاهزاً
 pin_hint_choose	اختر 4–12 رقماً (لوحة مفاتيح أو لوحة لمس) · Enter/حسناً للحفظ
 pin_hint_new	رمز مالك جديد من 4–12 رقماً (لوحة مفاتيح أو لوحة لمس) · Enter/حسناً
 pin_hint_shop_code	جهاز المتجر · رمز الاقتران {}
@@ -791,23 +635,15 @@ pin_hint_paired	الكاونتر الإضافي مقترن — افتح القف
 pin_hint_pair_first	الكاونتر الإضافي — اقترن بجهاز المتجر أولاً
 unlock_to_continue	افتح القفل للمتابعة
 no_staff_yet	لا موظفون بعد — افتح القفل كمالك، ثم الفريق
-status_server_set_pin	وضع الخادم — عيّن رمز المالك
-status_server_tills	وضع الخادم — يمكن للكاونترات الإضافية الانضمام. افتح القفل
-status_server_unlock	وضع الخادم — افتح القفل كمالك
-status_client_unlock	وضع العميل — افتح القفل للبيع
 icon_new_selected	الأيقونة: تم اختيار ملف جديد — اضغط حفظ العلامة
 icon_custom	الأيقونة: شعار متجرك الخاص
 icon_default	الأيقونة: شعار Kumkaj (الافتراضي) — اختر شعارك
 logo_yours	الشعار: شعار متجرك — يظهر على الشاشات والإيصالات
 logo_default	الشعار: شعار Kumkaj (الافتراضي) — اختر شعارك إن كان لديك واحد
-tmpl_current	الحالي: {} — {}
-tmpl_selected	المحدد: {} — {}
 setup_complete	اكتمل الإعداد
 onboard_fresh_tmpl	جديد · {} — يبدأ الكتالوج فارغًا؛ أضف الأصناف في الأصناف ثم اضغط تم.
 onboard_book_tmpl	دفتر · {} — أضف الأصناف والرصيد الافتتاحي ثم اضغط تم.
-onboard_template_tmpl	سمِّ المكان إن شئت، ثم اختر طريقة البدء.
 tmpl_blurb	عداد الصيدلية: الأدوية، الدفعة/انتهاء الصلاحية، الخطا، الكتب.
-tmpl_how	بيع على العداد. شراء للأسهم. كتب لكتاب اليوم.
 reports_facet_title	التقارير
 reports_facet_help	دفاتر اليوم، أعمار أرصدة الأطراف، قيود البنك وأرباح وخسائر الفترة.
 against_bill_ph	مقابل الفاتورة رقم أعلاه (اختياري)
@@ -818,14 +654,12 @@ amount_ph	المبلغ
 amount_received_ph	المبلغ المستلم
 amount_we_pay_ph	المبلغ الذي ندفعه
 business_name_ph	اسم النشاط التجاري
-category_new_ph	الفئة (اختياري، تُنشأ إن كانت جديدة)
 code_bag_ph	الرمز (bag)
 conv_factor_ph	العامل (25 = 1 bag → 25 kg)
 country_code_ph	رمز الدولة مثال IN, GB, US, AE, BR
 credit_khata_amount_ph	مبلغ الائتمان / الحساب
 credit_limit_ph	حد الائتمان (0 = لا شيء)
 from_code_ph	الرمز من (bag)
-item_name_lang_ph	اسم الصنف — اكتبه بلغتك
 login_id_opt_ph	معرف الدخول (اختياري)
 manager_pin_ph	رمز المدير (فقط إذا لم تتمكن من الإلغاء)
 new_branch_name_ph	اسم الفرع الجديد
@@ -833,15 +667,12 @@ new_password_ph	كلمة مرور جديدة (اختياري)
 new_pin_ph	رمز جديد (4–12 رقمًا)
 note_bank_ph	ملاحظة (إيداع، سحب، …)
 note_buy_expense_ph	ملاحظة (وقود، إيجار، …)
-note_expense_ph	ملاحظة (وقود، مكتب، …)
 options_tabiyat_ph	خيارات (اختياري) — Extra cheese=40, Large=80
-part_second_way_ph	جزء بطريقة ثانية (اختياري)
 phone_ph	الهاتف
 place_name_ph	اسم هذا المكان
 qty_example_ph	الكمية (مثال 1.5 للكيلوغرام)
 quantity_ph	الكمية
 reason_required_ph	السبب (مطلوب)
-role_title_ph	المسمى الوظيفي (مثال Barista)
 service_pct_ph	الخدمة % اختياري 0/10/12
 short_code_ph	الرمز القصير (MG02)
 starting_password_ph	كلمة مرور البدء (اختياري)
@@ -876,14 +707,11 @@ shift_handover	تسليم الوردية
 shift_since	هذه الوردية منذ
 expected_in_drawer	المتوقع في الدرج
 right_discount	منح خصم
-pick_category	اختر فئة
-close_category_list	إغلاق قائمة الفئات
 new_category_row	فئة جديدة — تُنشأ عند حفظ الصنف
 your_category	فئتك
 suggested_category	مقترح - من العناصر لدينا
 category_search_ph	الفئة — ابحث في فئاتك أو اكتب جديدة
 cancel_item_short	إلغاء
-cancel_item_title	قم بإلغاء هذا العنصر - يحصل المكتب الخلفي على قسيمة إلغاء
 return_to_customer	أعد للزبون
 short_by	ينقص
 tip_not_sale	بقشيش (للعاملين، ليس مبيعًا)
@@ -896,9 +724,7 @@ finding_server	جارٍ البحث عن خادم المطعم على هذه ال
 no_server_found	لم يُعثر على خادم. تأكد أن جهاز المطعم على نفس الشبكة مع السماح بنقاط بيع إضافية، أو اكتب عنوان IP.
 servers_found_pick	انقر على المحل الذي تريد الاتصال به.
 server_host_selected	باستخدام {host} — أدخل رمز الاقتران ثم اضغط اقتران الآن.
-print_bill	طباعة الفاتورة
 approval_pin_ph	رمز المدير (عند الطلب فقط)
-confirm	تأكيد
 menu_search_ph	ابحث عن صنف أو رمز قصير
 customer_paid_ph	دفع الزبون
 tip_ph	بقشيش
@@ -908,7 +734,6 @@ bill_format_help	مطبوعة تحت اسم متجرك على كل فاتورة.
 bill_header_ph	العنوان | الهاتف
 fssai_ph	ترخيص المخدرات رقم. (اختياري - الصياغة الخاصة بك)
 bill_footer_ph	التذييل (مثل شكرًا، عُد مجددًا)
-save_bill_format	احفظ تنسيق الفاتورة
 kot_field_on	إظهار
 kot_field_off	إخفاء
 kot_weight_light	رفيع
@@ -919,10 +744,8 @@ kot_weight_bold	عريض
 kot_align_start	ابدأ
 kot_align_center	توسيط
 kot_align_end	النهاية
-content_width	عرض المحتوى (مم)
 content_width_bill	عرض محتوى الفاتورة (مم)
 content_width_ph	أو اكتب عرض المحتوى، 40–210 مم
-content_width_help	ما مدى اتساع طباعة هذه القسيمة. يحتفظ بيل بعرضه الخاص.
 content_width_bill_help	مدى اتساع فاتورة العميل. الافتراضي 210 ملم (صفحة). انزلاق ضيق 58 مم، انزلاق واسع 80 مم، 112 مم 4 بوصة، 210 مم عرض A4. اكتب أي قيمة من 40 إلى 210. التذاكر لها عرضها الخاص على علامة تبويب القسيمة.
 vp_paper_width	عرض المحتوى (مم)
 vp_paper_width_ph	أو اكتب عرض المحتوى، 40–210 مم
@@ -937,9 +760,6 @@ test_bill_sent	تم إرسال معاينة الفاتورة
 test_print_no_printer	لا يوجد طابعة لهذا الطلب — اختر واحدة من هذه الشاشة
 std_print	حجم طباعة الفاتورة
 std_print_help	حجم الخط لمهام الفاتورة القياسية العمودية والأفقية على طابعات OS / المستندات (أدخل النقاط — ليست صغيرة/عادية/كبيرة). نفس الحجم في كلا الاتجاهين.
-std_size_s	صغير
-std_size_m	عادي
-std_size_l	كبير
 save_std_print	حفظ حجم الطباعة
 std_print_saved	تم حفظ حجم الطباعة
 print_brand_kit	طقم علامة الطباعة
@@ -952,14 +772,9 @@ choose_payment_qr	اختر QR الدفع
 clear_payment_qr	أزل QR الدفع
 payment_qr_set	QR للدفع: في الملف - يظهر على شاشة العميل (يحل محل مبلغ UPI QR هناك)
 payment_qr_none	QR الدفع: لا يوجد — QR المبلغ من UPI عند الدفع
-aggregator_import	طلبات المجمّع (ملف)
-aggregator_import_help	محلي اختياري: ضع import_aggregator_orders.json في backups ثم استورد. الكاونتر لا يتوقف؛ Zomato/Swiggy مباشر = Cloud.
-import_aggregator_file	استيراد ملف المجمّع
 team_pick_ph	اسم الموظف للتعديل
 select_staff	اختر هذا الموظف
 rights_help	الإجراءات المالية لهذا الشخص — انقر للتنقل: مسموح → يحتاج إلى رقم التعريف الشخصي للرئيس → غير مسموح به. طباعة الفاتورة مرة أخرى هي فواتير فقط؛ الأقسام هي القائمة المرجعية أدناه.
-dish_picker_help	ابحث عن العناصر لدينا أو تصفحها وانقر على أحد العناصر لملء اسمه وصورته - أو احتفظ باسمك. حدد السعر (0 جيد)، ثم قم بإضافة عنصر.
-close_dish_list	إغلاق قائمة العناصر
 own_item_name	استخدمه كاسم خاص لصنفك
 on_your_menu	في قائمة الأدوية
 edit	تعديل
@@ -970,24 +785,16 @@ add_scheme	أضف BOGO
 schedule_ph	Hours — Mon-Fri 07:00-11:00 or Evening 17:00-19:00=150
 upi_vpa_ph	UPI ID (VPA)
 upi_payee_ph	مستلم UPI (اختياري)
-upi_qr	UPI QR
 show_upi_qr	عرض QR لـ UPI
 close_upi_qr	إغلاق
 upi_qr_help	يقوم العميل بمسح ويدفع. اضغط على أخذ الدفع بعد أن يدفعوا. الشاشة الثانية: افتح عنوان URL للخادم/العرض على الشبكة المحلية.
-recently_done	مكتمل للتو
 role_help_customer	الدور: العميل — AR (يدينون لنا). يمكن أن تكون الشركة نفسها موردًا أيضًا.
 role_help_both	الأدوار: المرسل + الناقل — طرف واحد، دفترا AR وAP، الصافي في التقارير.
 role_help_supplier	الدور: المورد — AP للمشتريات.
-items_word	عناصر
-items_section	العناصر
-back_to_order	العودة إلى الطلب
-new_items_head	لم يُرسل بعد
 price_ph	السعر
 price_ph_gst_inside	السعر ({tax} شامل)
-tax_rates_missing_hint	لا يوجد معدل {tax} على هذه العناصر - على العناصر المحددة معدل الضريبة (تشمل الأسعار بالفعل {tax} ضمن {tax} شاملة)
 taxable_value	القيمة الخاضعة
 gst_inside_price_note	({tax} شامل)
-start_with_template	ابدأ بقالب العناصر الخاص بنا
 template_heading	العناصر المبتدئة
 template_info	فئات {c} وعناصر {d} مع الصور، جاهزة للإضافة. تبدأ الأسعار من 0 روبية هندية - حدد سعرك بعد ذلك.
 template_import	استيراد القالب كاملًا
@@ -1009,21 +816,13 @@ opening_client	فتح العميل…
 preparing_desk	تجهيز الطاولة…
 opening_server	فتح الخادم…
 creating_server	إنشاء خادم…
-order_empty_pick	الطلب فارغ — اضغط على إضافة عناصر بالأعلى لاختيار العناصر.
 add_dishes	أضف الأدوية
 order_so_far	في هذا الطلب: {n} · {total}
 no_dish_match	لا يوجد عنصر يطابق "{q}"
-pick_dishes_help	اضغط على عنصر لإضافته · اختر فئة لتضييق القائمة
 pick_done	تم
-pick_done_dd	تم · {label}
-printer_route_mode	إذا كان هناك عدة طابعات في هذا المكان
-printer_mode_first	الأولى التي تعمل
-printer_mode_all	الطباعة على الكل
 kot_field_up	التحرك للأعلى
 kot_field_down	التحرك للأسفل
-app_template_blurb_extra	وأيضاً: المالك زاهر، المشرف آصف، أمين الصندوق نواز؛ الشريط الجانبي الأمامي؛ التاريخ بعد 4 ساعات. اليوم تجرد. فاتورة مدمجة.
 dishes_n	عناصر {n}
-recipe_ph	الوصفة (اختيارية - غير مستخدمة في متجر العداد)
 reorder_ph	اشترِ المزيد عند
 set_reorder	تعيين حد إعادة الطلب
 low_stock_alert	ينفد قريبًا — اشترِ قريبًا: {items}
@@ -1032,7 +831,6 @@ show_unpriced	عرض فقط العناصر التي ليس لها سعر
 show_all_dishes	إظهار كافة العناصر
 role_title_rest_ph	المسمى (مثل كابتن، رئيس الطهاة)
 preset_help_rest	أمين الصندوق: البيع. المدير: البيع + الأصناف + الإلغاء/التعديل.
-kind_raw	مخزون مركب
 kind_resale	اشترى الدواء
 kind_dish	غير محسوب
 buy_unit_ph	الوحدة (كغ، لتر، قطعة)

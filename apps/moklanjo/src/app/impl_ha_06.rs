@@ -470,6 +470,7 @@ impl App {
                 self.set_status(cx, app_t("printers_host_only"));
             } else {
                 print_share::find_printers_in_background();
+                find_printers_armed().store(true, std::sync::atomic::Ordering::SeqCst);
                 self.paint_submit_busy_chrome(cx);
                 self.show_found_printers(cx);
                 self.set_status(cx, app_t("printers_looking"));
@@ -742,30 +743,11 @@ impl App {
                 self.sync_chrome(cx);
             }
         }
-        if self.ui.button(cx, ids!(job_format_save)).clicked(actions) {
-            let width_text = self.ui.text_input(cx, ids!(job_width_input)).text();
-            let size_text = self.ui.text_input(cx, ids!(job_size_input)).text();
-            let mm = width_text
-                .trim()
-                .parse::<u32>()
-                .ok()
-                .filter(|n| (40..=210).contains(n));
-            let em = size_text.trim().parse::<f32>().ok();
-            match self.apply_focused_job(None, None, mm, em) {
-                Ok(()) => {
-                    let label = app_state().lock().unwrap().printer_route_key == "label";
-                    self.set_status(
-                        cx,
-                        app_t(if label {
-                            "save_label_format"
-                        } else {
-                            "save_receipt_format"
-                        }),
-                    );
-                }
-                Err(e) => self.set_status(cx, e),
-            }
-            self.sync_chrome(cx);
+        // Width and size save themselves a moment after typing stops.
+        if self.ui.text_input(cx, ids!(job_width_input)).changed(actions).is_some()
+            || self.ui.text_input(cx, ids!(job_size_input)).changed(actions).is_some()
+        {
+            self.schedule_format_autosave(cx);
         }
         if self.ui.button(cx, ids!(job_format_test)).clicked(actions) {
             self.print_focused_job_sample(cx);

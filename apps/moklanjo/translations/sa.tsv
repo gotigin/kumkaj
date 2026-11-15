@@ -39,7 +39,7 @@ adding_item	नवं शुल्कं योज्यते
 editing_item	सम्पादनम्
 save	रक्षतु
 remove	निष्कासयतु
-empty_catalog	अद्यापि शुल्कं नास्ति। शुल्कानि च सेवाः उद्घाटयतु, एकं योजयतु (नाम + मूल्यम्, एककं kg), ततः प्रेषणम्।
+empty_catalog	अद्यापि शुल्कं नास्ति।
 counter_sale	काउण्टर-प्रेषणम्
 total	कुल
 cash	नगदम्
@@ -171,8 +171,6 @@ selected_language	चयनितम्
 continue	निरन्तरं कुर्वन्तु
 this_device	एतत् यन्त्रम्
 device_use_q	एतत् यन्त्रं कथं प्रयुक्तं भविष्यति ?
-last_server_mode	Was Server — निरन्तरं कर्तुं ट्याप् कुर्वन्तु
-last_client_mode	Was Client — निरन्तरं कर्तुं ट्याप् कुर्वन्तु
 choose_server	सर्वरं चिनोतु
 choose_server_hint	विद्यमानं सर्वरं उद्घाटयन्तु, अथवा अन्यव्यापारस्य कृते एकं रचयन्तु ।
 create_new_server	नूतनं सर्वरं रचयन्तु
@@ -501,8 +499,6 @@ job_layout	विन्यासः
 job_delivery	कथं कार्यं प्रेष्यते
 job_size	फन्ट् आकारः
 job_size_ph	यथा--- 18, 20, 26…
-save_receipt_format	रसीद्रूपं रक्षतु
-save_label_format	नामपत्ररूपं रक्षतु
 test_receipt_format	रसीदपरीक्षा
 test_label_format	नामपत्रपरीक्षा
 test_receipt_sent	नमुनारसीद् प्रेषिता
@@ -610,7 +606,7 @@ units_heading	इकाइयाँ
 booking_measures	प्रेषणमापानि
 drawer_count	दराज गणना (वैकल्पिक) 1.1.
 spreadsheet_csv	स्प्रेडशीट (CSV) ९.
-bank_reconciliation	बैंकमेलनम् (भवतः बैंकविवरणस्य विरुद्धं टिकं कृत्वा)
+bank_reconciliation	बैंकमेलनम्
 book_add_product	पुस्तकम् — उत्पादं / शुल्कं योजयतु
 book_opening_credit	लेजर — उद्घाटन क्रेडिट
 account_kind	खाता प्रकार (एकं ट्याप् कुर्वन्तु) .
@@ -650,7 +646,7 @@ net_word	नेट्
 offline_badge	OFFLINE इति
 optional_login_help	वैकल्पिकं प्रवेशः (id + password)। स्वामिना एकवारं सेट् भवति; केवलं उपयोक्ता एव पश्चात् गुप्तशब्दं परिवर्तयितुं शक्नोति।
 or_unlock_login	अथवा login id + password इत्यनेन अनलॉक् कुर्वन्तु
-permission_preset	कार्यम् (पटलान् अधिकारान् च निर्धारयति)
+permission_preset	कार्यम्
 preset_help_moklanjo	कैशियरः विक्रयति। प्रबन्धकः विक्रयणं + मेनू-वस्तूनाम् + शून्यं/संशोधनम् ।
 product_locked_moklanjo	Moklanjo
 product_only_moklanjo	अयम् अनुप्रयोगः केवलं Moklanjo — लेखाः + प्रेषणकार्यपटः। अन्यव्यापाराणां उत्पादानि पश्चात् पृथक् आगमिष्यन्ति।
@@ -698,10 +694,6 @@ pin_hint_paired	अतिरिक्तं यावत् युग्मि�
 pin_hint_pair_first	अतिरिक्त टिल् — प्रथमं दुकानयन्त्रं प्रति युग्मम्
 unlock_to_continue	निरन्तरं कर्तुं अनलॉकं कुर्वन्तु
 no_staff_yet	अद्यापि कोऽपि कर्मचारी नास्ति — Owner इति रूपेण अनलॉक् कुर्वन्तु, ततः Team इति
-status_server_set_pin	सर्वर मोड — सेट् स्वामी PIN
-status_server_tills	Server Mode — अतिरिक्त tills सम्मिलितुं शक्नुवन्ति । अनलॉक
-status_server_unlock	Server Mode — Owner इति रूपेण अनलॉक् कुर्वन्तु
-status_client_unlock	Client Mode — विक्रयणार्थं अनलॉक् कुर्वन्तु
 icon_new_selected	चिह्नम्: नूतनसञ्चिका चयनिता — ब्राण्ड् रक्षतु इति ट्याप् कुर्वन्तु
 icon_custom	चिह्नम् : कस्टम स्थल चिह्न
 icon_default	चिह्नम्: Kumkaj चिह्नं (पूर्वनिर्धारितम्) — इष्टं चिनुत

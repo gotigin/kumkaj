@@ -39,7 +39,7 @@ adding_item	ការបន្ថែមអត្រាថ្មី។
 editing_item	កំពុងកែ
 save	រក្សាទុក
 remove	ដកចេញ
-empty_catalog	មិនមានអត្រានៅឡើយទេ។ បើកអត្រា និងសេវាកម្ម បន្ថែមមួយ (ឈ្មោះ + តម្លៃ ឯកតាគីឡូក្រាម) បន្ទាប់មកកក់។
+empty_catalog	មិនមានអត្រានៅឡើយទេ។
 counter_sale	ការកក់តាមបញ្ជរ
 total	សរុប
 cash	សាច់ប្រាក់
@@ -171,8 +171,6 @@ selected_language	បានជ្រើស
 continue	បន្ត
 this_device	ឧបករណ៍នេះ
 device_use_q	ឧបករណ៍នេះនឹងប្រើយ៉ាងដូចម្ដេច?
-last_server_mode	ធ្លាប់ជា Server — ប៉ះដើម្បីបន្ត
-last_client_mode	ធ្លាប់ជាម៉ាស៊ីនភ្ញៀវ — ប៉ះដើម្បីបន្ត
 choose_server	ជ្រើស server
 choose_server_hint	បើក server ដែលមាន ឬបង្កើតសម្រាប់អាជីវកម្មផ្សេង។
 create_new_server	បង្កើត server ថ្មី
@@ -501,8 +499,6 @@ job_layout	ប្លង់
 job_delivery	របៀបផ្ញើការងារ
 job_size	ទំហំអក្សរ
 job_size_ph	ឧ. 18, 20, 26…
-save_receipt_format	រក្សាទុកទម្រង់បង្កាន់ដៃ
-save_label_format	រក្សាទុកទម្រង់ស្លាក
 test_receipt_format	បង្កាន់ដៃសាកល្បង
 test_label_format	ផ្លាកសញ្ញាសាកល្បង
 test_receipt_sent	គំរូបង្កាន់ដៃត្រូវបានផ្ញើ
@@ -610,7 +606,7 @@ units_heading	ឯកតា
 booking_measures	វិធានការកក់
 drawer_count	ការរាប់ថត (ស្រេចចិត្ត)
 spreadsheet_csv	សៀវភៅបញ្ជី (CSV)
-bank_reconciliation	ផ្គូផ្គងធនាគារ (ធីកជាមួយរបាយការណ៍ធនាគាររបស់អ្នក)
+bank_reconciliation	ផ្គូផ្គងធនាគារ
 book_add_product	សៀវភៅ - បន្ថែមផលិតផល / អត្រា
 book_opening_credit	សៀវភៅ — ជំពាក់ដើម
 account_kind	ប្រភេទគណនី (ប៉ះមួយ)
@@ -650,7 +646,7 @@ net_word	សុទ្ធ
 offline_badge	ក្រៅបណ្ដាញ
 optional_login_help	ការចូលស្រេចចិត្ត (អត្តសញ្ញាណ + ពាក្យសម្ងាត់)។ ម្ចាស់កំណត់ម្ដង; មានតែអ្នកប្រើប្ដូរពាក្យសម្ងាត់ពេលក្រោយបាន។
 or_unlock_login	ឬដោះសោដោយអត្តសញ្ញាណចូល + ពាក្យសម្ងាត់
-permission_preset	ការងារ (កំណត់អេក្រង់ និងសិទ្ធិ)
+permission_preset	ការងារ
 preset_help_moklanjo	អ្នកគិតលុយ៖ លក់។ អ្នកចាត់ការ៖ លក់ + ទំនិញ + លុបចោល/កែ។
 product_locked_moklanjo	ម៉ុកឡានចូ
 product_only_moklanjo	កម្មវិធីនេះគឺមានតែ Moklanjo - សៀវភៅ + តុកក់។ ពាណិជ្ជកម្មផ្សេងទៀតប្រឈមនឹងការដឹកជញ្ជូនជាផលិតផលដាច់ដោយឡែកនៅពេលក្រោយ។
@@ -698,10 +694,6 @@ pin_hint_paired	បញ្ជរបន្ថែមបានផ្គូផ្គ�
 pin_hint_pair_first	បញ្ជរបន្ថែម — ផ្គូផ្គងទៅឧបករណ៍ហាងជាមុនសិន
 unlock_to_continue	ដោះសោដើម្បីបន្ត
 no_staff_yet	មិនទាន់មានបុគ្គលិក — ដោះសោជាម្ចាស់ រួចក្រុម
-status_server_set_pin	របៀប Server — កំណត់ PIN ម្ចាស់
-status_server_tills	របៀប Server — បញ្ជរបន្ថែមអាចចូលរួម។ ដោះសោ
-status_server_unlock	របៀប Server — ដោះសោជាម្ចាស់
-status_client_unlock	របៀបម៉ាស៊ីនភ្ញៀវ — ដោះសោដើម្បីលក់
 icon_new_selected	រូបតំណាង៖ ឯកសារថ្មីបានជ្រើស — ប៉ះរក្សាទុកម៉ាក
 icon_custom	រូបតំណាង៖ ស្លាកទីតាំងផ្ទាល់ខ្លួន
 icon_default	រូបតំណាង៖ ស្លាក Kumkaj (លំនាំដើម) — ជ្រើសមួយផ្ទាល់ខ្លួន

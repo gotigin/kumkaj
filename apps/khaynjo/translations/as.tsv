@@ -41,7 +41,7 @@ remove	আঁতৰাওক
 removed_items	আঁতৰোৱা বস্তু
 removed_help	পুনৰুদ্ধাৰ কৰিলে বস্তু পূৰ্বৰ দৰেই মেনুত ঘূৰি আহে — দাম, ফটো আৰু শ্ৰেণী। আমাৰ খাদ্যৰ শেলফ কেতিয়াও আঁতৰোৱা নহয়, সেয়ে যিকোনো খাদ্য পুনৰ যোগ কৰিব পাৰি।
 restore_item	পুনৰুদ্ধাৰ কৰক
-empty_catalog	এতিয়াও কোনো বস্তু নাই। মেনু আৰু বস্তু খোলক, এটা যোগ কৰক (নাম + দাম), তাৰপিছত অৰ্ডাৰ লওক।
+empty_catalog	এতিয়াও কোনো বস্তু নাই।
 total	মুঠ
 cash	নগদ
 upi	यूपीआई
@@ -103,23 +103,14 @@ bill_item_qty	পৰিমাণ
 bill_item_price	দাম
 bill_item_amount	পৰিমাণ
 bill_item_note	নোট
-bill_item_col_gap	স্তম্ভৰ ফাঁক
 bill_item_col_order	স্তম্ভৰ ক্ৰম
 bill_item_col_sep	স্তম্ভৰ ৰেখা
-bill_item_gap_tight	টান
-bill_item_gap_comfort	আৰামদায়ক
-bill_item_gap_wide	বহল
-bill_item_num_width	সংখ্যাৰ স্তম্ভ
-bill_item_num_compact	সৰু
-bill_item_num_comfort	আৰামদায়ক
-bill_item_num_wide	বহল
-bill_item_num_align	সংখ্যা শাৰী
-bill_item_gap_em	ফাঁক (em)
-bill_item_qty_min	সংখ্যা ন্যূনতম (em)
-bill_item_price_min	দাম ন্যূনতম (em)
-bill_item_amount_min	ধন ন্যূনতম (em)
-kot_item_qty_width	সংখ্যাৰ স্তম্ভ
-kot_item_num_align	সংখ্যা শাৰী
+slip_columns	স্তম্ভসমূহ
+slip_col_width	প্ৰস্থ (mm)
+slip_col_start	আৰম্ভণিৰ ঠাই (px)
+slip_col_end	শেষৰ ঠাই (px)
+slip_col_align	লিখনিৰ সংৰেখন
+slip_columns_help	প্ৰতিটো স্তম্ভৰ প্ৰস্থত ইয়াৰ আৰম্ভণি আৰু শেষৰ ঠাই অন্তৰ্ভুক্ত। লিখনি নিজৰ স্তম্ভৰ ভিতৰতে মেৰিয়াই যায়; সমলৰ প্ৰস্থৰ বাহিৰৰ অংশ কাগজত আৰু পূৰ্বদৰ্শনত কটা যায়।
 bill_total_qty_label	মুঠ সংখ্যা লেবেল
 bill_total_subtotal_label	উপযোগ লেবেল
 bill_total_grand_label	মুঠ লেবেল
@@ -221,7 +212,6 @@ sidebar_order_saved	ছাইডবাৰৰ ক্ৰম সাঁচা হ’
 sidebar_visibility_saved	ছাইডবাৰৰ দৃশ্যমানতা সাঁচা হ’ল
 amounts_hide	লুকুৱাওক
 amounts_show	দেখুৱাওক
-printers_none_hint	প্ৰথমে এই ডিভাইচত প্ৰিণ্টাৰ সাঁচক, তাৰ পিছত ইয়াক বিল বা কোনো পাকঘৰত যোগ কৰক
 counter	কাউণ্টাৰ
 dine_in	বহি খোৱা
 takeaway	পাৰ্চেল
@@ -328,8 +318,6 @@ selected_language	বাছনি কৰা
 continue	আগবাঢ়ক
 this_device	এই ডিভাইচ
 device_use_q	এই ডিভাইচটো কেনেকৈ ব্যৱহাৰ হ’ব?
-last_server_mode	আগতে চাৰ্ভাৰ আছিল — আগবাঢ়িবলৈ টেপ কৰক
-last_client_mode	আগতে ক্লায়েণ্ট আছিল — আগবাঢ়িবলৈ টেপ কৰক
 choose_server	চাৰ্ভাৰ বাছক
 choose_server_hint	এই ডিভাইচত ইতিমধ্যে চাৰ্ভাৰ আছে। এটা খোলক, বা আন ব্যৱসায়ৰ বাবে নতুন চাৰ্ভাৰ বনাওক।
 create_new_server	নতুন চাৰ্ভাৰ বনাওক
@@ -391,7 +379,7 @@ attachments_last_expense	সংলগ্ন (শেষ খৰচ)
 bank	বেংক
 bank_in	বেংকত জমা
 bank_out	বেংকৰ পৰা উলিয়াওক
-bank_reconciliation	বেংক মিলন (আপোনাৰ বেংক ষ্টেটমেণ্টৰ সৈতে টিক কৰক)
+bank_reconciliation	বেংক মিলন
 bank_to_till	বেংক → টিল
 book_add_dish	বুক — খাদ্য / বস্তু যোগ কৰক
 book_opening_credit	বুক — আৰম্ভণি ধাৰ
@@ -744,7 +732,6 @@ station_print_pick_first	প্ৰথমে ৰন্ধনশালা ষ্�
 station_print_editing	“{name}”ৰ প্ৰিণ্টাৰ সম্পাদনা
 station_vps_dd	এই ষ্টেচনৰ প্ৰিণ্টাৰ
 station_vps_dd_n	{n} প্ৰিণ্টাৰ · সলনি কৰিবলৈ টেপ
-station_vps_empty	এতিয়ালৈকে প্ৰিণ্টাৰ নাই — ছেটিংছ → প্ৰিণ্টাৰত বিচাৰক
 bill_printers_dd	বিলৰ প্ৰিণ্টাৰ
 bill_printers_dd_n	বিলৰ বাবে {n}টা প্ৰিণ্টাৰ · সলনি কৰিবলৈ টিপক
 job_layout	লেআউট
@@ -889,7 +876,7 @@ net_word	নেট
 offline_badge	অফলাইন
 optional_login_help	ঐচ্ছিক লগইন (আইডি + পাছৱৰ্ড)। মালিকে এবাৰ নিৰ্ধাৰণ কৰে; পিছত কেৱল ব্যৱহাৰকাৰীয়েহে পাছৱৰ্ড সলনি কৰিব পাৰে।
 or_unlock_login	বা লগইন আইডি + পাছৱৰ্ডেৰে আনলক কৰক
-permission_preset	অনুমতি প্ৰিছেট (কিহলৈ প্ৰৱেশ)
+permission_preset	অনুমতি প্ৰিছেট
 preset_help_khaynjo	কেশ্বিয়াৰ: বিক্ৰী। মেনেজাৰ: বিক্ৰী + বস্তু + বাতিল/সংশোধন।
 product_locked_khaynjo	Khaynjo
 product_only_khaynjo	এই এপ কেৱল Khaynjo — ৰেষ্টুৰেণ্ট অপাৰেটিং চিষ্টেম। আন ব্যৱসায়ৰ বাবে বেলেগ Kumkaj সামগ্ৰী আছে।
@@ -961,10 +948,6 @@ pin_hint_paired	অতিৰিক্ত টিল যোৰ হ’ল — ব�
 pin_hint_pair_first	অতিৰিক্ত টিল — প্ৰথমে দোকান ডিভাইচৰ সৈতে যোৰ কৰক
 unlock_to_continue	আগবঢ়াবলৈ আনলক কৰক
 no_staff_yet	এতিয়াও কোনো কৰ্মচাৰী নাই — মালিক হিচাপে আনলক কৰক, তাৰপিছত Team
-status_server_set_pin	চাৰ্ভাৰ মোড — মালিকৰ PIN নিৰ্ধাৰণ কৰক
-status_server_tills	চাৰ্ভাৰ মোড — অতিৰিক্ত টিল যোগ দিব পাৰে। আনলক কৰক
-status_server_unlock	চাৰ্ভাৰ মোড — মালিক হিচাপে আনলক কৰক
-status_client_unlock	ক্লায়েণ্ট মোড — বিক্ৰীৰ বাবে আনলক কৰক
 icon_new_selected	আইকন: নতুন ফাইল বাছনি কৰা হৈছে — ব্ৰেণ্ড সংৰক্ষণ কৰক টিপক
 icon_custom	আইকন: আপোনাৰ দোকানৰ চিহ্ন
 icon_default	আইকন: Kumkaj চিহ্ন (ডিফল্ট) — নিজৰটো বাছনি কৰক
@@ -1033,7 +1016,7 @@ book_kind_balance	বেলেন্স শ্বীট
 order_help	খোলা অৰ্ডাৰ বাছক, বা টেবুল বাছি নতুন আৰম্ভ কৰক। সাজু বস্তুত টেপ কৰক, KOT পঠাওক, এটা বা অধিক বস্তুৰ বিল কৰক, বিল ভাগ কৰক আৰু পৰিশোধ নিষ্পত্তি কৰক।
 floor_help	প্ৰতিখন টেবুলে দেখুৱায় অতিথিসকল বহি আছে নে নাই, তেওঁলোকৰ খোলা বিল কি আৰু পৰৱৰ্তী সেৱা কাক লাগে।
 kitchen_help	প্ৰতি ভেৰিয়েণ্ট বা প্ৰতি বস্তু অনুসৰি সাজু পৰিমাণ ট্ৰেক কৰক — KOT ত যেনেকৈ বিচাৰে ৰেকৰ্ড কৰক।
-kitchen_empty	এতিয়া একো খোলা নাই — নতুন অৰ্ডাৰ ইয়াত দেখা যাব।
+kitchen_empty	এতিয়া একো খোলা নাই।
 add_a_table	টেবুল যোগ কৰক
 add_station_heading	ষ্টেচন যোগ কৰক · যেনে তন্দুৰ, চাউথ ইণ্ডিয়ান
 categories_help	শ্ৰেণীয়ে দেখুৱায় এটা খাদ্য কোন মেনু অংশত পৰে — যেনে স্নেকছ, মেইন কোৰ্ছ বা বিৰিয়ানী। শ্ৰেণী নিজৰ মতে বনাওক: আমাৰ পৰামৰ্শ দিয়া নাম বাছক, নাম সলাওক বা নিজৰ যোগ কৰক।
@@ -1131,7 +1114,6 @@ bill_format_help	প্ৰতিখন বিলত আপোনাৰ ৰেষ
 bill_header_ph	ঠিকনা | ফোন
 fssai_ph	FSSAI অনুজ্ঞাপত্ৰ নং (ভাৰত)
 bill_footer_ph	ফুটাৰ (যেনে ধন্যবাদ, আকৌ আহিব)
-save_bill_format	বিলৰ ফৰ্মেট সাঁচি ৰাখক
 reset_bill_format	ডিফল্টলৈ ঘূৰক
 bill_format_reset	বিলৰ ফৰ্মেট ডিফল্টলৈ
 reset_kot_format	ডিফল্টলৈ ঘূৰক
@@ -1201,13 +1183,11 @@ kot_copies_3	3
 kot_title_ph	শিৰোনাম (খালী = KOT - KITCHEN ORDER)
 kot_footer_ph	ৰন্ধনশালা টোকা (ঐচ্ছিক, দাম নাই)
 kot_preview	পূৰ্বলোকন
-save_kot_format	KOT বিন্যাস সংৰক্ষণ কৰক
 test_kot_format	পৰীক্ষা KOT
 test_kot_sent	পাকঘৰৰ টিকটৰ নমুনা পঠিওৱা হ’ল
 test_bill_format	পৰীক্ষা বিল
 test_bill_sent	বিলৰ নমুনা পঠিওৱা হ’ল
 test_print_no_printer	সেই কামৰ বাবে প্ৰিণ্টাৰ নাই — এই স্ক্ৰীণতে এটা বাছক
-kot_format_saved	KOT বিন্যাস সংৰক্ষিত
 std_print	বিল প্ৰিণ্ট আকাৰ
 std_print_help	ষ্টেণ্ডাৰ্ড পোৰ্ট্ৰেইট আৰু লেণ্ডস্কেপ বিল কামৰ আখৰৰ আকাৰ (থাৰ্মেল KOT পৃথক)। দুয়ো দিশতে একে আকাৰ।
 std_size_s	সৰু
@@ -1264,7 +1244,6 @@ new_items_head	এতিয়াও পঠোৱা হোৱা নাই
 price_ph	দাম
 price_ph_gst_inside	দাম ({tax} সৈতে)
 cancel_needs_table	ৰন্ধনশালাৰ পাছত বাতিল কৰিবলৈ এই অৰ্ডাৰ ফ্লোৰ (মেজ)ৰ পৰা খোলক — কাউণ্টাৰ KOT পৰিশোধলৈ টিকটত থাকে
-tax_rates_missing_hint	এই খাদ্যত {tax} হাৰ নাই — মেনুত কৰ হাৰ ছেট কৰক ({tax} inclusiveত দামত আগতেই {tax} আছে)
 taxable_value	কৰযোগ্য মূল্য
 gst_inside_price_note	({tax} সৈতে)
 start_with_template	আমাৰ মেনু টেমপ্লেটেৰে আৰম্ভ
@@ -1318,9 +1297,7 @@ order_empty_pick	অৰ্ডাৰ খালী — ব্যঞ্জন ব�
 add_dishes	ব্যঞ্জন যোগ কৰক
 order_so_far	এই অৰ্ডাৰত: {n} · {total}
 no_dish_match	“{q}”ৰ সৈতে মিলা কোনো ব্যঞ্জন নাই
-pick_dishes_help	ব্যঞ্জন যোগ কৰিবলৈ টিপক · তালিকা চুটি কৰিবলৈ শ্ৰেণী বাছক
 pick_done	হ'ল
-pick_done_dd	হ'ল · {label}
 printer_route_mode	এই ঠাইত কেইবাটাও প্ৰিণ্টাৰ থাকিলে
 printer_mode_first	যিটো প্ৰথমে চলে
 printer_mode_all	সকলোতে ছপাওক

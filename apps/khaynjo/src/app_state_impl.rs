@@ -47,6 +47,9 @@ impl AppState {
             printer_draft: print_share::DevicePrinters::default(),
             printer_route_key: "bill".into(),
             settings_panel: None,
+            settings_panel_after_go: None,
+            nav_tab_after_unlock: None,
+            last_nav_saved: None,
             printer_selected_id: None,
             test_printer_ids: Vec::new(),
             printer_vp_landscape: false,
@@ -101,8 +104,8 @@ impl AppState {
             country_browse: String::new(),
             venue_title: String::new(),
             venue_icon_key: None,
-            nav_order: NAV_TABS.to_vec(),
-            nav_hidden: Vec::new(),
+            nav_order: default_nav_order("en"),
+            nav_hidden: parse_nav_layout(None, None, "en").1,
             amounts_screen_hidden: false,
             amount_keys_hidden: Vec::new(),
             amount_keys_peek: Vec::new(),
@@ -119,6 +122,7 @@ impl AppState {
             bill_style_field: print_share::BillStyleField::Shop,
             bill_field_edit_idx: 0,
             bill_item_col_edit_idx: 0,
+            kot_item_col_edit: print_share::KotItemCol::Item,
             device_setup_sections_open: vec!["role".into()],
             draft_venue_icon_path: None,
             pending_backup_copy: None,
@@ -144,6 +148,9 @@ impl AppState {
             cart_qty_busy: None,
             pending_cart_bump: None,
             cart_qty_timer: Timer::empty(),
+            format_save_timer: Timer::empty(),
+            format_save_bill: false,
+            format_save_kot: false,
             picking_table: false,
             picking_from_table_id: None,
             sel_menu: None,
@@ -235,14 +242,14 @@ impl AppState {
                     .data_base
                     .as_ref()
                     .and_then(|b| local_servers::load_last_session_mode(b));
+                // The selected Server / Client button already says which was
+                // last; "Both modes stay available" is the ℹ's (cluster text,
+                // owner 2026-11-14).
+                let _ = last;
                 state.status = if !e.contains("No local server") {
                     format!("Storage: {e}")
                 } else {
-                    match last.as_deref() {
-                        Some("server") => state.t("last_server_mode"),
-                        Some("client") => state.t("last_client_mode"),
-                        _ => String::new(),
-                    }
+                    String::new()
                 };
             }
         }
@@ -334,8 +341,13 @@ impl AppState {
         self.extra_tills_allowed = store.extra_tills_allowed().unwrap_or(false);
         self.venue_title = store.venue_title()?;
         self.venue_icon_key = store.venue_icon_key()?;
-        self.nav_order = parse_nav_order(store.nav_order_csv()?.as_deref());
-        self.nav_hidden = parse_nav_hidden(store.nav_hidden_csv()?.as_deref());
+        let (order, hidden) = parse_nav_layout(
+            store.nav_order_csv()?.as_deref(),
+            store.nav_hidden_csv()?.as_deref(),
+            &self.locale.language,
+        );
+        self.nav_order = order;
+        self.nav_hidden = hidden;
         self.floor_area_order = parse_floor_area_order(store.floor_area_order_csv()?.as_deref());
         self.kot_station_priority = store
             .kot_station_priority_csv()?
@@ -471,14 +483,11 @@ impl AppState {
             .data_base
             .as_ref()
             .and_then(|b| local_servers::load_last_session_mode(b));
-        self.status = match last.as_deref() {
-            Some("server") => self.t("last_server_mode"),
-            Some("client") => self.t("last_client_mode"),
-            _ => match self.device_role {
-                DeviceRole::Server => self.t("last_server_mode"),
-                DeviceRole::Client => self.t("last_client_mode"),
-                DeviceRole::Unset => self.t("device_use_q"),
-            },
+        // A known last mode shows as the selected button (no status line —
+        // owner 2026-11-14); only a device never set up asks the question.
+        self.status = match (last.as_deref(), self.device_role) {
+            (None, DeviceRole::Unset) => self.t("device_use_q"),
+            _ => String::new(),
         };
         // Warm LAN only after they confirm Server + extra tills on Lock path.
         // Do not start the server while the chooser is open.
@@ -576,6 +585,22 @@ impl AppState {
         Ok(())
     }
 
+    /// [`Self::books_op`] without reloading every list afterwards — for print
+    /// format writes, which no loaded list shows (autosave runs after each
+    /// pause in editing; a full reload each time stalled the debug build).
+    fn books_op_light(&mut self, op: BooksOp) -> Result<String, String> {
+        if self.device_role == DeviceRole::Client {
+            // The shop writes it; this device says nothing unless it fails.
+            let label = op.label();
+            let done = op.done_message();
+            self.lan_job("/books", &op, label, done, phone::Follow::Quiet, false)?;
+            return Ok(String::new());
+        }
+        let actor = self.actor()?;
+        let store = self.store.as_ref().ok_or_else(|| "No store".to_string())?;
+        store.apply_books_op(op, &actor)
+    }
+
     /// Person-level book write. A Client asks the shop over `POST /books`;
     /// the shop applies it and this device reloads after a local apply.
     fn books_op(&mut self, op: BooksOp) -> Result<String, String> {
@@ -590,6 +615,26 @@ impl AppState {
         let msg = store.apply_books_op(op, &actor)?;
         let _ = self.reload_all();
         Ok(msg)
+    }
+
+    /// Sidebar show/hide and order are the shop's: every device shows the
+    /// same rail (role rights still hide what a person may not open). The
+    /// shop device writes its books; an extra till asks the shop and gets the
+    /// shop's layout back with the next sync — it used to write only its own
+    /// copy, so a Client kept every item the shop had hidden (2026-11-14).
+    /// `done` is the line the person reads once the shop has it.
+    fn save_nav_layout(&mut self, done: String) -> Result<(), String> {
+        let hidden = nav_hidden_csv(&self.nav_hidden);
+        let order = nav_order_csv(&self.nav_order);
+        if self.device_role == DeviceRole::Client {
+            let op = BooksOp::SetNavLayout { hidden, order };
+            let label = op.label();
+            self.lan_job("/books", &op, label.into(), done, phone::Follow::Refresh, false)?;
+            return Ok(());
+        }
+        let store = self.store.as_ref().ok_or("No store")?;
+        store.set_nav_hidden_csv(&hidden)?;
+        store.set_nav_order_csv(&order)
     }
 
     /// LAN details a Client needs to ask the Server to do the writing.
@@ -1124,6 +1169,9 @@ impl AppState {
 
     /// What a "type or pick" field can offer, before narrowing.
     fn suggest_candidates(&self, field: SuggestField) -> Vec<suggest::SuggestRow> {
+        if field.is_printer_pick() && self.printer_draft.printers.is_empty() {
+            return vec![suggest::SuggestRow::new(self.t("find_printers"), FIND_PRINTERS_ROW)];
+        }
         use suggest::SuggestRow;
         let lang = self.locale.language.clone();
         let parties = |suppliers_first: bool| {
@@ -1682,7 +1730,8 @@ impl AppState {
     /// Menu screen rows: indices into `products` matching the list search
     /// (all of them while it is empty). Search looks at the name, aliases /
     /// short codes, and dish group — same handles as the Order Add dishes
-    /// window. Exact alias or name first; then prefix / word / substring.
+    /// window. Dishes whose *name* matches come first (exact, prefix, word,
+    /// substring), then those matched only by an alias or group.
     fn menu_list_indices(&self) -> Vec<usize> {
         let q = self.menu_list_filter.trim();
         let unpriced_only = self.menu_unpriced_only;
@@ -1695,24 +1744,7 @@ impl AppState {
             return candidates.map(|(i, _)| i).collect();
         }
         let mut ranked: Vec<(u8, usize)> = candidates
-            .filter_map(|(i, p)| {
-                let aliases = p.aliases();
-                if p.name.trim().eq_ignore_ascii_case(q)
-                    || aliases.iter().any(|a| a.trim().eq_ignore_ascii_case(q))
-                {
-                    return Some((0, i));
-                }
-                let best = std::iter::once(menu_images::match_rank(&p.name, q))
-                    .chain(std::iter::once(
-                        (!p.group_name.is_empty())
-                            .then(|| menu_images::match_rank(&p.group_name, q))
-                            .flatten(),
-                    ))
-                    .chain(aliases.iter().map(|a| menu_images::match_rank(a, q)))
-                    .flatten()
-                    .min()?;
-                Some((best + 1, i))
-            })
+            .filter_map(|(i, p)| Some((menu_images::name_then_alias_rank(p, q)?, i)))
             .collect();
         ranked.sort_by_key(|(rank, _)| *rank);
         ranked.into_iter().map(|(_, i)| i).collect()
@@ -1849,22 +1881,7 @@ impl AppState {
             return base.cloned().collect();
         }
         let mut ranked: Vec<(u8, &Product)> = base
-            .filter_map(|p| {
-                let aliases = p.aliases();
-                if aliases.iter().any(|a| a.trim().eq_ignore_ascii_case(q)) {
-                    return Some((0, p));
-                }
-                let best = std::iter::once(menu_images::match_rank(&p.name, q))
-                    .chain(std::iter::once(
-                        (!p.group_name.is_empty())
-                            .then(|| menu_images::match_rank(&p.group_name, q))
-                            .flatten(),
-                    ))
-                    .chain(aliases.iter().map(|a| menu_images::match_rank(a, q)))
-                    .flatten()
-                    .min()?;
-                Some((best + 1, p))
-            })
+            .filter_map(|p| Some((menu_images::name_then_alias_rank(p, q)?, p)))
             .collect();
         ranked.sort_by_key(|(rank, _)| *rank);
         ranked.into_iter().map(|(_, p)| p.clone()).collect()
@@ -2155,6 +2172,35 @@ impl AppState {
             .unwrap_or(SnackKind::DEFAULT_SECS);
     }
 
+    /// Unlock brings each person back to the nav item they last had
+    /// selected on this device (owner, 2026-11-15). Written only when it
+    /// changes, and never while a worker holds the books (the write would
+    /// wait on it — a freeze); the next paint writes it then.
+    fn remember_nav_tab(&mut self, tab: Option<NavTab>) {
+        let Some(tab) = tab.filter(|t| *t != NavTab::Lock) else {
+            return;
+        };
+        let Some(user) = self.session.as_ref().map(lan_key) else {
+            return;
+        };
+        if self
+            .last_nav_saved
+            .as_ref()
+            .is_some_and(|(u, t)| *u == user && *t == tab)
+        {
+            return;
+        }
+        if heavy_books_job() || client_pair_busy().load(std::sync::atomic::Ordering::SeqCst) {
+            return;
+        }
+        let Some(store) = self.store.as_ref() else {
+            return;
+        };
+        if store.set_last_nav_key(&user, nav_tab_key(tab)).is_ok() {
+            self.last_nav_saved = Some((user, tab));
+        }
+    }
+
     fn money(&self, m: Money) -> String {
         m.format_localized(&self.locale.currency, &self.fiscal)
     }
@@ -2202,32 +2248,24 @@ impl AppState {
     }
 
     /// One line under the totals strip: tax added at till changes pay; tax
-    /// inside price shows the GST already inside the total (and warns when
-    /// dishes have no tax rate so "inclusive GST" looks missing). Quiet when
-    /// Empty when [`Store::show_tax_chrome`] is off (Rajdhani default).
+    /// inside price shows the GST already inside the total. Numbers only —
+    /// no advice on the till (owner, 2026-11-14: the "No GST rate on these
+    /// dishes — on Menu set Tax rate…" line was clustered text; how tax
+    /// rates work is in the ℹ of Settings → Country & tax). Empty when
+    /// [`Store::show_tax_chrome`] is off (every shop's default) or when no
+    /// dish carries a rate.
     fn cart_tax_estimate_line(&self) -> String {
         let show_tax = self
             .store
             .as_ref()
             .and_then(|s| s.show_tax_chrome().ok())
-            .unwrap_or(true);
+            .unwrap_or(false);
         if !show_tax {
             return " ".to_string();
         }
         let tax = self.cart_tax_estimate_paise();
         let service = self.fiscal.service_on(self.cart.line_sum().paise());
         let inside = self.fiscal.tax_pricing.is_inside_price();
-        let any_rated = self.cart.lines.iter().any(|line| {
-            self.products
-                .iter()
-                .find(|p| p.id == line.product_id)
-                .is_some_and(|p| p.tax_bps > 0)
-        });
-        if inside && !self.cart.lines.is_empty() && !any_rated {
-            return self
-                .t("tax_rates_missing_hint")
-                .replace("{tax}", self.fiscal.tax_label());
-        }
         if tax <= 0 && service <= 0 {
             return " ".to_string();
         }

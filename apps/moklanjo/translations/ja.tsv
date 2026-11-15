@@ -39,7 +39,7 @@ adding_item	新しい料金を追加中
 editing_item	編集中
 save	保存
 remove	削除
-empty_catalog	料金がまだありません。料金とサービスを開き、1つ追加（名前＋価格、単位kg）してから受付へ。
+empty_catalog	料金がまだありません。
 counter_sale	店頭受付
 total	合計
 cash	現金
@@ -171,8 +171,6 @@ selected_language	選択中
 continue	続ける
 this_device	この端末
 device_use_q	この端末はどう使いますか？
-last_server_mode	前回はサーバー — タップして続行
-last_client_mode	前回はクライアント — タップして続行
 choose_server	サーバーを選ぶ
 choose_server_hint	この端末にはサーバーがあります。1つ開くか、別の事業用に新規作成してください。
 create_new_server	新規サーバー作成
@@ -501,8 +499,6 @@ job_layout	レイアウト
 job_delivery	作業の送信方法
 job_size	フォントサイズ
 job_size_ph	例: 18, 20, 26…
-save_receipt_format	レシートのフォーマットを保存する
-save_label_format	ラベル形式の保存
 test_receipt_format	テスト受信
 test_label_format	テストラベル
 test_receipt_sent	領収書のサンプルを送信しました
@@ -610,7 +606,7 @@ units_heading	単位
 booking_measures	受付の寸法
 drawer_count	レジ実査（任意）
 spreadsheet_csv	スプレッドシート（CSV）
-bank_reconciliation	銀行照合（明細とチェック）
+bank_reconciliation	銀行照合
 book_add_product	受付 — 商品／料金を追加
 book_opening_credit	受付 — 期首の掛け
 account_kind	口座の種類（1つタップ）
@@ -650,7 +646,7 @@ net_word	純額
 offline_badge	オフライン
 optional_login_help	任意ログイン（ID＋パスワード）。オーナーが一度設定し、その後はユーザー本人だけがパスワードを変更できます。
 or_unlock_login	またはログインID＋パスワードで解除
-permission_preset	ジョブ（画面と権限の設定）
+permission_preset	ジョブ
 preset_help_moklanjo	レジ係：販売。マネージャー：販売＋品目＋取消／修正。
 product_locked_moklanjo	Moklanjo
 product_only_moklanjo	このアプリは Moklanjo 専用（帳簿＋受付カウンター）です。他の業種向けは後日、別製品として提供します。
@@ -698,10 +694,6 @@ pin_hint_paired	追加レジがペアリング済み — 販売するにはロ�
 pin_hint_pair_first	追加レジ — まず店舗端末とペアリング
 unlock_to_continue	続けるにはロック解除
 no_staff_yet	スタッフがまだいません — オーナーとして解除し、次にチームへ
-status_server_set_pin	サーバーモード — オーナーPINを設定
-status_server_tills	サーバーモード — 追加レジが参加できます。ロック解除
-status_server_unlock	サーバーモード — オーナーとしてロック解除
-status_client_unlock	クライアントモード — 販売するにはロック解除
 icon_new_selected	アイコン：新しいファイルを選択 — ブランドを保存をタップ
 icon_custom	アイコン：自店のマーク
 icon_default	アイコン：Kumkaj マーク（既定）— 独自のものを選択

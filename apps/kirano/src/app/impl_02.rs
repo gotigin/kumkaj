@@ -52,32 +52,6 @@ fn paint_import_progress_chrome(&mut self, cx: &mut Cx) {
                         .replace("{title}", &title),
                 );
             }
-            Some(MenuImportKind::AppTemplate { title, .. }) => {
-                // Submit replaced by status + Cancel on DeviceSetup.
-                self.ui
-                    .button(cx, ids!(app_template_apply))
-                    .set_visible(cx, false);
-                self.ui
-                    .view(cx, ids!(app_template_busy))
-                    .set_visible(cx, true);
-                self.ui
-                    .button(cx, ids!(app_template_status))
-                    .set_text(cx, &progress);
-                self.ui
-                    .button(cx, ids!(app_template_cancel))
-                    .set_text(cx, &cancel_label);
-                self.ui.widget(cx, ids!(app_template_blurb)).set_text(
-                    cx,
-                    &app_state()
-                        .lock()
-                        .unwrap()
-                        .t("app_template_importing")
-                        .replace("{title}", &title),
-                );
-                self.ui
-                    .button(cx, ids!(app_template_skip))
-                    .set_visible(cx, false);
-            }
             None => {
                 // Restore / CSV / backup / shelf-mat — status + cancel chrome below.
             }
@@ -177,25 +151,6 @@ fn paint_submit_busy_chrome(&mut self, cx: &mut Cx) {
             .button(cx, ids!(backup_copy_cancel))
             .set_visible(cx, copy);
 
-        let agg = aggregator_import_busy().load(std::sync::atomic::Ordering::SeqCst);
-        self.ui
-            .button(cx, ids!(aggregator_import_btn))
-            .set_visible(cx, !agg);
-        self.ui
-            .widget(cx, ids!(aggregator_import_progress))
-            .set_visible(cx, agg);
-        if agg {
-            let text = work
-                .clone()
-                .unwrap_or_else(|| "Importing aggregator file…".into());
-            self.ui
-                .widget(cx, ids!(aggregator_import_progress))
-                .set_text(cx, &plain_display_text(&text));
-        }
-        self.ui
-            .button(cx, ids!(aggregator_import_cancel))
-            .set_visible(cx, agg);
-
         let diag = diag_export_busy().load(std::sync::atomic::Ordering::SeqCst);
         let diag_send = diag && diag_export_for_send().load(std::sync::atomic::Ordering::SeqCst);
         let diag_local = diag && !diag_send;
@@ -279,7 +234,6 @@ fn paint_submit_busy_chrome(&mut self, cx: &mut Cx) {
             .button(cx, ids!(header_back))
             .set_visible(cx, show_back);
         for id in [
-            ids!(sidebar_settings_back),
             ids!(settings_detail_back),
         ] {
             self.ui.button(cx, id).set_visible(cx, false);
@@ -443,7 +397,22 @@ fn paint_submit_busy_chrome(&mut self, cx: &mut Cx) {
         self.set_report_rows(cx, ids!(audit_label), audit);
     }
 
+    /// Chrome for the current screen. After an unlock, the landing then
+    /// runs as a tap on its nav item would (`unlocked_home_from`): Day
+    /// close loads its figures, Books its overview, a Settings section opens.
     fn sync_chrome(&mut self, cx: &mut Cx) {
+        self.sync_chrome_body(cx);
+        let tab = {
+            let mut st = app_state().lock().unwrap();
+            let tab = st.nav_tab_after_unlock.take();
+            tab.filter(|t| st.session.is_some() && st.screen == screen_for_nav_tab(*t))
+        };
+        if let Some(tab) = tab {
+            self.open_nav_tab(cx, tab);
+        }
+    }
+
+    fn sync_chrome_body(&mut self, cx: &mut Cx) {
         let _span = stall_span("sync_chrome");
         // While other devices depend on this one, its screen stays on:
         // Android dozes a dark device and drops them (desktops hold the
@@ -477,14 +446,12 @@ fn paint_submit_busy_chrome(&mut self, cx: &mut Cx) {
                 // Hot-reload must not stick on Lock while a session is live.
                 // A new server still has to set the Owner PIN and finish
                 // setup — do not dump that shop straight into the till.
-                if st.awaiting_app_template {
-                    st.screen = Screen::DeviceSetup;
-                } else if st.device_role.is_host() && !st.owner_setup_complete {
+                if st.device_role.is_host() && !st.owner_setup_complete {
                     // Stay on Lock.
                 } else if st.device_role.is_host() && !st.onboarding_complete {
                     st.screen = Screen::Onboard;
                 } else {
-                    st.screen = unlocked_home_from(&st);
+                    st.screen = unlocked_home_from(&mut st);
                 }
             }
             // Follow-OS mode: keep UI language in sync with the device.
@@ -495,17 +462,7 @@ fn paint_submit_busy_chrome(&mut self, cx: &mut Cx) {
         // While a worker holds the books (import / restore / CSV / VACUUM),
         // never run SQL from the UI — busy_timeout waits look like a freeze.
         // Still switch screens + shell so the user can leave the busy page.
-        let heavy_job = menu_import_busy().load(std::sync::atomic::Ordering::SeqCst)
-            || restore_busy().load(std::sync::atomic::Ordering::SeqCst)
-            || csv_import_busy().load(std::sync::atomic::Ordering::SeqCst)
-            || shelf_mat_busy().load(std::sync::atomic::Ordering::SeqCst)
-            || backup_busy().load(std::sync::atomic::Ordering::SeqCst)
-            || backup_copy_busy().load(std::sync::atomic::Ordering::SeqCst)
-            || aggregator_import_busy().load(std::sync::atomic::Ordering::SeqCst)
-            || diag_export_busy().load(std::sync::atomic::Ordering::SeqCst)
-            || printer_add_busy().load(std::sync::atomic::Ordering::SeqCst)
-            || print_share::is_finding_printers()
-            || role_open_busy().load(std::sync::atomic::Ordering::SeqCst);
+        let heavy_job = heavy_books_job();
         let pair_busy = client_pair_busy().load(std::sync::atomic::Ordering::SeqCst);
         if heavy_job || pair_busy {
             if heavy_job {
@@ -536,7 +493,12 @@ fn paint_submit_busy_chrome(&mut self, cx: &mut Cx) {
         // hundreds of labels — and the page sat blank until that finished.
         // Section bodies are filled by `open_settings_panel`, not here.
         {
-            let on_settings = app_state().lock().unwrap().screen == Screen::Settings;
+            // Right after an unlock the whole chrome paints once (header line,
+            // this person's rail), Settings or not.
+            let on_settings = {
+                let st = app_state().lock().unwrap();
+                st.screen == Screen::Settings && st.nav_tab_after_unlock.is_none()
+            };
             if on_settings {
                 let rtl = locale::is_rtl(&app_state().lock().unwrap().locale.language);
                 self.show_screen(cx, Screen::Settings);
@@ -723,11 +685,8 @@ fn paint_submit_busy_chrome(&mut self, cx: &mut Cx) {
                 st.t("currency"),
                 cur
             );
-            let empty_msg = if st.products.is_empty() {
-                "No items yet. Open Menu to add your dishes and items.".to_string()
-            } else {
-                st.t("empty_catalog")
-            };
+            // Short state only; the button beside it opens the menu (2026-11-14).
+            let empty_msg = st.t("empty_catalog");
             let natural_label = st.money(st.cart.actual_total());
             let applied_label = st.money(st.cart.applied_total());
             let total_input =
@@ -833,7 +792,6 @@ fn paint_submit_busy_chrome(&mut self, cx: &mut Cx) {
                         | Screen::Credit
                         | Screen::Team
                         | Screen::Settings
-                        | Screen::SidebarSettings
                         | Screen::Inventory
                         | Screen::Branches
                 );
@@ -1108,7 +1066,7 @@ fn paint_submit_busy_chrome(&mut self, cx: &mut Cx) {
                 // Keep Cancel visible while importing so the owner can abort.
                 self.ui.button(cx, ids!(template_no)).set_visible(cx, true);
             }
-            // Named client templates (Rajdhani today; more folders later).
+            // Named starter catalogues (assets/templates/<id>/).
             {
                 let named = menu_templates::all();
                 let have: std::collections::HashSet<String> =
@@ -1342,8 +1300,9 @@ fn paint_submit_busy_chrome(&mut self, cx: &mut Cx) {
             // closes it to check; a word when the search finds nothing.
             self.ui.view(cx, ids!(cat_strip)).set_visible(cx, !cats.is_empty());
             self.ui.label(cx, ids!(menu_modal_title)).set_text(cx, &st.t("add_dishes"));
+            // Empty order: nothing under the title (how to add is the screen's ℹ).
             let summary = if st.cart.is_empty() {
-                st.t("pick_dishes_help")
+                String::new()
             } else {
                 let qty: i64 = cart_qty_by_product(&st.cart.lines).values().sum();
                 st.t("order_so_far")
@@ -1351,6 +1310,7 @@ fn paint_submit_busy_chrome(&mut self, cx: &mut Cx) {
                     .replace("{total}", &st.money(st.cart.rounded_total()))
             };
             self.ui.label(cx, ids!(menu_modal_summary)).set_text(cx, &summary);
+            self.ui.widget(cx, ids!(menu_modal_summary)).set_visible(cx, !summary.is_empty());
             self.ui.button(cx, ids!(menu_pick_done)).set_text(cx, &st.t("pick_done"));
             let products_empty = st.visible_products().is_empty();
             let frequent_empty = st.menu_pick_open
@@ -1439,15 +1399,7 @@ fn paint_submit_busy_chrome(&mut self, cx: &mut Cx) {
                 }
             }
             drop(st);
-        }
-
-        // Restaurant menu templates are not part of this counter product.
-        for path in [
-            ids!(template_import),
-            ids!(client_template_import),
-            ids!(app_template_apply),
-        ] {
-            self.ui.button(cx, path).set_visible(cx, false);
+            self.reveal_active_category_chip(cx);
         }
 
         self.set_report_rows(cx, ids!(staff_label), staff_rows);
@@ -1947,7 +1899,6 @@ fn paint_submit_busy_chrome(&mut self, cx: &mut Cx) {
                 ids!(sale_attach_hint),
                 ids!(sale_attach_list),
                 &attach_txt,
-                "(no attachments yet — select a sale)",
             );
         }
         {
@@ -1967,7 +1918,6 @@ fn paint_submit_busy_chrome(&mut self, cx: &mut Cx) {
                 ids!(party_attach_hint),
                 ids!(party_attach_list),
                 &attach_txt,
-                "(no attachments yet — select a party)",
             );
         }
         {
@@ -2068,7 +2018,6 @@ fn paint_submit_busy_chrome(&mut self, cx: &mut Cx) {
                 ids!(expense_attach_hint),
                 ids!(expense_attach_list),
                 &attach_txt,
-                "(no attachments yet — log an expense)",
             );
         }
         self.set_report_rows(cx, ids!(sale_history_label), sale_history);
@@ -2234,9 +2183,8 @@ fn paint_submit_busy_chrome(&mut self, cx: &mut Cx) {
             self.ui
                 .view(cx, ids!(team_selected_setup))
                 .set_visible(cx, manage_team && has_selected);
-            self.ui
-                .widget(cx, ids!(team_pick_hint))
-                .set_visible(cx, manage_team && !has_selected);
+            // The Team ℹ says how to pick; no instruction line (2026-11-14).
+            self.ui.widget(cx, ids!(team_pick_hint)).set_visible(cx, false);
             {
                 let help = self.ui.widget(cx, ids!(team_help)).as_info_help();
                 let title = locale::t(&lang, if self_tip { "my_pin_settings" } else { "team" });
@@ -2657,6 +2605,10 @@ fn paint_submit_busy_chrome(&mut self, cx: &mut Cx) {
             }
             self.ui
                 .widget(cx, ids!(onboard_status)).set_text(cx, &plain_display_text(&onboard_status));
+            // Only the result ("set up") shows; how to start is the screen's
+            // ℹ — the instruction line was cluster text (2026-11-14).
+            let onboard_done = app_state().lock().unwrap().onboarding_complete;
+            self.ui.widget(cx, ids!(onboard_status)).set_visible(cx, onboard_done);
             self.ui
                 .widget(cx, ids!(client_pair_status)).set_text(cx, &plain_display_text(&{
                     // The last pairing try speaks for itself (refused, waiting…).
@@ -2671,7 +2623,8 @@ fn paint_submit_busy_chrome(&mut self, cx: &mut Cx) {
                             format!("{} {}", st.t("paired_note"), st.t("last_update_at").replace("{time}", &updated))
                         }
                     } else {
-                        st.t("pair_intro")
+                        // The heading's ℹ says how (pair_intro) — no copy here.
+                        String::new()
                     }
                 }));
             // What this device still owes the shop, and what the shop would

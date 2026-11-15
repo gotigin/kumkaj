@@ -41,7 +41,7 @@ remove	هٽايو
 removed_items	هٽايل شيون
 removed_help	ري اسٽور شيءِ کي صحيح طرح مينيو ۾ واپس وجھي ٿو — قيمت، تصوير ۽ ڪيٽيگري سميت. اسان جي ڊشز جي الماري ڪڏهن به ختم ناهي ٿيندي، تنهنڪري هڪ ڊش هميشه ٻيھر شامل ڪري سگھجي ٿي.
 restore_item	ري اسٽور
-empty_catalog	اڃا تائين ڪا ڊش ناهي. مينيو کوليو، هڪ ڊش شامل ڪريو (نالو + قيمت)، پوءِ آرڊر وٺو.
+empty_catalog	اڃا تائين ڪا ڊش ناهي.
 total	ڪل
 cash	نقد
 upi	UPI
@@ -103,23 +103,14 @@ bill_item_qty	تعداد
 bill_item_price	اگهه
 bill_item_amount	رقم
 bill_item_note	پاڻيءَ جو نوٽ
-bill_item_col_gap	ڪالم جو فرق
 bill_item_col_order	ڪالم جو ترتيب
 bill_item_col_sep	ڪالمن جون ضابطيون
-bill_item_gap_tight	تنگ
-bill_item_gap_comfort	آرامده
-bill_item_gap_wide	وڏي
-bill_item_num_width	نمبر ڪالمن
-bill_item_num_compact	مختصر
-bill_item_num_comfort	آرامده
-bill_item_num_wide	وڏي
-bill_item_num_align	نمبر ترتيب ۾
-bill_item_gap_em	خلاءُ (em)
-bill_item_qty_min	گهٽ ۾ گهٽ مقدار (ايم)
-bill_item_price_min	گهٽ ۾ گهٽ قيمت (ايم)
-bill_item_amount_min	گهٽ ۾ گهٽ رقم (ايم)
-kot_item_qty_width	مقدار ڪالمن
-kot_item_num_align	مقدار جو ترتيب
+slip_columns	ڪالم
+slip_col_width	ويڪر (mm)
+slip_col_start	شروعاتي جاءِ (px)
+slip_col_end	آخري جاءِ (px)
+slip_col_align	متن جي ترتيب
+slip_columns_help	هر ڪالم جي ويڪر ۾ ان جي شروعاتي ۽ آخري جاءِ شامل آهي. متن پنهنجي ڪالم اندر ويڙهجي ٿو؛ مواد جي ويڪر کان ٻاهر جيڪو آهي اهو ڪاغذ ۽ اڳ ڏيک ٻنهي ۾ ڪٽجي ٿو.
 bill_total_qty_label	ڪل مقدار جو ليبل
 bill_total_subtotal_label	ذيل جي ڪل جو ليبل
 bill_total_grand_label	مڪمل ڪل جو ليبل
@@ -221,7 +212,6 @@ sidebar_order_saved	سائيڊبار جو ترتيب محفوظ ٿي وئي
 sidebar_visibility_saved	سايڊبار جي نظر اچڻ محفوظ ڪئي وئي
 amounts_hide	لڪايو
 amounts_show	ڏيکاريو
-printers_none_hint	پهريان هن ڊوائيس تي پرنٽر محفوظ ڪريو، پوءِ ان کي بل يا ڪچن ۾ شامل ڪريو
 counter	ڪائونٽر
 dine_in	اندر کائڻ
 takeaway	کڻي وڃو
@@ -328,8 +318,6 @@ selected_language	منتخب ٿيل
 continue	جاري رکو
 this_device	هن ڊوائيس
 device_use_q	هن ڊوائيس کي ڪهڙي طرح استعمال ڪيو ويندو؟
-last_server_mode	هو Server — جاري رکڻ لاءِ ٽيپ ڪريو
-last_client_mode	هو Client — جاري رکڻ لاءِ ٽيپ ڪريو
 choose_server	هڪ سرور چونڊيو
 choose_server_hint	هڪ موجوده سرور کوليو، يا ٻين ڪاروبار لاءِ هڪ ٺاهيو.
 create_new_server	نئون سرور ٺاهيو
@@ -391,7 +379,7 @@ attachments_last_expense	منسلڪات (آخري خرچ)
 bank	بئنڪ
 bank_in	اندر بئنڪ
 bank_out	بينڪ ٻاهر
-bank_reconciliation	بينڪ ميل جول (پنهنجي بينڪ اسٽيٽمينٽ جي مقابلي ۾ نشان لڳايو)
+bank_reconciliation	بينڪ ميل جول
 bank_to_till	بينڪ → ڪيش ڪائونٽر
 book_add_dish	ڪتاب — ڊش / شيءَ شامل ڪريو
 book_opening_credit	ڪتاب — کولڻ جي ڪريڊٽ
@@ -744,7 +732,6 @@ station_print_pick_first	پهريان هڪ رڌڻي اسٽيشن چونڊيو
 station_print_editing	“{name}” جي لاءِ پرنٽر ايڊٽ ڪري رهيا آهيو
 station_vps_dd	هن اسٽيشن جا پرِنٽر
 station_vps_dd_n	{n} پرنٽر(س) · تبديل ڪرڻ لاءِ ٽيپ ڪريو
-station_vps_empty	هاڻي تائين ڪا پرنٽر ناهي — سيٽنگز → پرنٽرز هيٺ ڳوليو
 bill_printers_dd	بل لاءِ پرنٽر
 bill_printers_dd_n	{n} پرنٽر(ز) بل لاءِ · تبديل ڪرڻ لاءِ ٽيپ ڪريو
 job_layout	خاڪو
@@ -889,7 +876,7 @@ net_word	نيٽ
 offline_badge	آف لائن
 optional_login_help	رضا مطابق لاگ ان (آءِ ڊي + پاسورڊ). مالڪ هڪ ڀيرو مقرر ڪري ٿو؛ رڳو استعمال ڪندڙ ئي بعد ۾ پاسورڊ تبديل ڪري سگهي ٿو.
 or_unlock_login	يا لاگ ان آءِ ڊي + پاسورڊ سان ان لاڪ ڪريو
-permission_preset	نوڪري (اسڪرين ۽ پئسي جا عمل سيٽ ڪري ٿو)
+permission_preset	نوڪري
 preset_help_khaynjo	ڪيشئر: وڪرو. مينيجر: وڪرو + شيون + منسوخ/ترميم.
 product_locked_khaynjo	Khaynjo
 product_only_khaynjo	هي ايپ صرف Khaynjo لاءِ آهي — ريسٽورنٽ آپريٽنگ سسٽم. ٻي واپار جون شيون الڳ Kumkaj پراڊڪٽس طور موجود آهن.
@@ -961,10 +948,6 @@ pin_hint_paired	اضافي ڪيش ڪائونٽر جوڙيو ويو — وڪڻڻ 
 pin_hint_pair_first	اضافي ڪيش ڪائونٽر — پهريان دوڪان جي ڊوائيس سان جوڙيو
 unlock_to_continue	جا جاري رکڻ لاءِ لاڪ کوليو
 no_staff_yet	اڃا ڪا اسٽاف ناهي — مالڪ طور کوليو، پوءِ ٽيم
-status_server_set_pin	Server موڊ — مالڪ مقرر ڪريو PIN
-status_server_tills	Server طريقو — اضافي ڪيش ڪائونٽر شامل ٿي سگهن ٿا. کوليو
-status_server_unlock	Server طريقو — مالڪ جي طور تي کوليو
-status_client_unlock	Client موڊ — وڪڻڻ لاءِ ان لاڪ ڪريو
 icon_new_selected	آئڪن: نئون فائل چونڊيل — برانڊ محفوظ ڪريو تي ٽيپ ڪريو
 icon_custom	آئڪن: ڪسٽم جڳهه جو نشان
 icon_default	آئڪن: Kumkaj نشان (ڊيفالٽ) — هڪ ڪسٽم چونڊيو
@@ -1033,7 +1016,7 @@ book_kind_balance	بیلنس شيٽ
 order_help	هڪ شيءَ تي ٽيپ ڪريو ان کي شامل ڪرڻ لاءِ.
 floor_help	هڪ ٽيبل تي ٽيپ ڪريو آرڊر وٺڻ يا تبديل ڪرڻ لاءِ. رنگ ڏيکارين ٿا خالي → ويٺل → باورچی خانه → تيار → کائڻ → بل → ادا ٿيل. انتظار واري فهرست، رزرويشن، ۽ ٽيبل شامل ڪرڻ هيٺين سيڪشنن ۾ آهن.
 kitchen_help	باورچی خانه جا ٽڪيٽ (KOT)، سڀ کان نوان آخري ۾. شروع → تيار → مڪمل هڪ ٽڪيٽ کي اڳتي وڌائيندو آهي. ٽڪيٽ ڪڏهن به قيمت ڏيکاريندا نه آهن.
-kitchen_empty	ڪوبه کليل ٽڪيٽ ناهي. آرڊر يا هال مان موڪليل KOT هتي ظاهر ٿيندو آهي.
+kitchen_empty	ڪوبه کليل ٽڪيٽ ناهي.
 add_a_table	هڪ ٽيبل شامل ڪريو
 add_station_heading	هڪ باورچی خانه اسٽيشن شامل ڪريو
 categories_help	مٿين شئي کي ان درجي هيٺ داخل ڪرڻ لاءِ استعمال تي ٽيپ ڪريو. فوٽو درجي کي تصوير ڏئي ٿو؛ جيڪڏهن تصوير نه هجي ته اها ان جا ابتدا ڏيکاري ٿي.
@@ -1131,7 +1114,6 @@ bill_format_help	توهان جي ريسٽورنٽ جي نالي هيٺ هر بل
 bill_header_ph	پتو | فون
 fssai_ph	FSSAI لائسنس نمبر (ڀارت)
 bill_footer_ph	فوٽر (مثال طور مهرباني، ٻيهر اچو)
-save_bill_format	بل جو فارميٽ محفوظ ڪريو
 reset_bill_format	ڊيفالٽ تي ري سيٽ ڪريو
 bill_format_reset	بل جو فارميٽ ڊيفالٽ تي ري سيٽ ٿيو
 reset_kot_format	ڊيفالٽ تي ري سيٽ ڪريو
@@ -1201,13 +1183,11 @@ kot_copies_3	3
 kot_title_ph	عنوان (خالي = KOT - ڪچن آرڊر)
 kot_footer_ph	ڪچن نوٽ (اختياري، ڪو به قيمت نه)
 kot_preview	جھلڪ
-save_kot_format	KOT فارميٽ محفوظ ڪريو
 test_kot_format	KOT ٽيسٽ
 test_kot_sent	ڪچن ٽڪيٽ جو پيش منظر موڪليو ويو
 test_bill_format	ٽيسٽ بل
 test_bill_sent	بل جو پيش منظر موڪليو
 test_print_no_printer	ان ڪم لاءِ ڪو پرنٽر ناهي — هن اسڪرين تي هڪ چونڊيو
-kot_format_saved	KOT فارميٽ محفوظ ٿي ويو
 std_print	بِل پرنٽ سائيز
 std_print_help	او ايس / دستاويزي پرنٽرن تي معياري پورٽريٽ ۽ لينڊ اسڪيپ بِل ڪم لاءِ فونٽ سائيز (پوائنٽس داخل ڪريو — ننڍو / عام / وڏو نه). ٻئي رخن تي ساڳيو سائيز. ڪچن سلپ جون سائيزون KOT ٽيب تي آهن.
 std_size_s	ننڍو
@@ -1264,7 +1244,6 @@ new_items_head	اڃا نه موڪليو
 price_ph	اگهه
 price_ph_gst_inside	قيمت ({tax} شامل)
 cancel_needs_table	هن آرڊر کي هال (هڪ ميز) تان کوليو ته جيئن باورچي خانه وٽ هجڻ کان پوءِ رد ڪري سگهجي — ڪائونٽر جا KOT ٽڪيٽ تي رهندا جيستائين توهان ادائيگي نه وٺو
-tax_rates_missing_hint	انهن ڊشز تي ڪو {tax} شرح نه آهي — مينيو تي ٽيڪس جي شرح مقرر ڪريو (قيمتون اڳ ۾ ئي {tax} شامل هيٺ {tax} ۾ شامل آهن)
 taxable_value	ٽيڪس لائق قيمت
 gst_inside_price_note	({tax} سميت)
 start_with_template	اسان جي مينيو ٽيمپليٽ سان شروع ڪريو
@@ -1318,9 +1297,7 @@ order_empty_pick	آرڊر خالي — مٿي 'ڊشز شامل ڪريو' تي ٽ
 add_dishes	ڊشز شامل ڪريو
 order_so_far	هن آرڊر تي: {n} · {total}
 no_dish_match	ڪوبه ڊش “{q}” سان ميچ نه ٿو ڪري
-pick_dishes_help	ڊش شامل ڪرڻ لاءِ ٽيپ ڪريو · فهرست کي محدود ڪرڻ لاءِ ڪيٽيگري چونڊيو
 pick_done	ٿي ويو
-pick_done_dd	مڪمل ٿيو · {label}
 printer_route_mode	جيڪڏهن هن جڳھ ۾ ڪيترائي پرنٽر آهن
 printer_mode_first	پهريون جيڪو ڪم ڪري ٿو
 printer_mode_all	سڀ تي ڇپيو

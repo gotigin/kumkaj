@@ -1,5 +1,4 @@
 # Croatian — Hrvatski (hr). One key<TAB>text per line, in en() order; keep {placeholders}.
-app_tagline	Apotekarski šalter: lijekovi, serija, khata i knjige. Besplatno van mreže.
 barcode_ph	Barkod / EAN
 composition_ph	Sastav / sol (pretraživo)
 schedule_h_off	Schedule H — isključeno (oznaka vlasnika)
@@ -13,7 +12,6 @@ expiry_alerts	Upozorenja o roku (narednih 7 dana)
 expiry_none	Nema serija kojima rok ističe u narednih 7 dana.
 rx_nudge	Vlasnik je označio Rx / Schedule H — dodajte napomenu ako treba.
 unlock	Otključaj
-pin_hint	PIN vlasnika na početku je 0000
 sell	Prodaja
 buy	Nabava
 books	Dnevnik
@@ -32,17 +30,13 @@ reports_month	Dobit i gubitak (mjesec)
 reports_aging	Otvoreno / dug-potr
 reports_balance_sheet	Bilanca
 reports	Bankovna knjiga i D/G
-refresh	Osvježi
 undo	Poništi
-start_tracking	Počni pratiti
 stock_minus	− Zaliha
 stock_plus	+ Zaliha
 settle_cash	Naplati gotovinom
 settle_card	Naplati karticom
 items	Lijekovi
 nav_items	Lijekovi
-more	Više
-your_items	Vaši lijekovi
 items_help	Dodirnite stavku da je uredite. Nova stavka briše obrazac. Tražite po nazivu ili kratkoj šifri, postavite cijenu (0 je u redu), zatim Dodaj. Već zabilježene prodaje čuvaju naziv po kojem su naplaćene.
 add_item	Dodaj stavku
 new_item	Nova stavka
@@ -53,28 +47,22 @@ remove	Ukloni
 removed_items	Uklonjene stavke
 removed_help	Vraćanje vraća stavku u Stavke točno kakva je bila — cijena, fotografija i kategorija.
 restore_item	Vrati
-empty_catalog	Još nema lijekova. Otvorite Lijekove, dodajte naziv, barkod ili so, zatim prodajte.
+empty_catalog	Još nema lijekova.
 total	Ukupno
 cash	Gotovina
 upi	UPI
 card	Kartica
 credit	Stranke
 clear	Očisti
-ready_to_sell	Spremno za narudžbu
 today_prefix	Danas
-today_mid	danas
 owed	otvoreno
-round_word	zaokruži
 back	Natrag
 sold_out	Nedostupno
 restock	Dopuni
 not_tracked	Ne prati se
 in_stock	na zalihi
 marked_sold_out	Označeno nedostupnim
-add_upper	DODAJ
-na	N/D
 qty	Tež/Kol
-unit_at	Cijena @
 actual	Stvarno
 applied	Primijenjeno
 note_ph	Bilješka (nije obavezna)
@@ -93,21 +81,13 @@ bill_item_qty	Kol.
 bill_item_price	Cijena
 bill_item_amount	Iznos
 bill_item_note	Rx / napomena prodaje
-bill_item_col_gap	Razmak stupaca
 bill_item_col_order	Redoslijed stupaca
 bill_item_col_sep	Crte stupaca
-bill_item_gap_tight	Usko
-bill_item_gap_comfort	Udobno
-bill_item_gap_wide	Široko
-bill_item_num_width	Brojčani stupci
-bill_item_num_compact	Zbijeno
-bill_item_num_comfort	Udobno
-bill_item_num_wide	Široko
-bill_item_num_align	Poravnanje brojeva
-bill_item_gap_em	Razmak (em)
-bill_item_qty_min	Min. kol. (em)
-bill_item_price_min	Min. cijena (em)
-bill_item_amount_min	Min. iznos (em)
+slip_col_width	Širina (mm)
+slip_col_start	Početni razmak (px)
+slip_col_end	Završni razmak (px)
+slip_col_align	Poravnanje teksta
+slip_columns_help	Širina svakog stupca uključuje njegov početni i završni razmak. Tekst se prelama unutar svog stupca; ono što prelazi širinu sadržaja odrezuje se, na papiru i u pregledu.
 bill_total_qty_label	Natpis ukupne kol.
 bill_total_subtotal_label	Natpis međuzbroja
 bill_total_grand_label	Natpis sveukupno
@@ -120,11 +100,7 @@ bill_total_qty	Ukupna kol.
 bill_total_subtotal	Međuzbroj
 bill_total_grand	Sveukupno
 kot_unassigned	Nedodijeljeno
-pos_tab_items	Dodane stavke
-pos_tab_payment	Plaćanje
-settings_hub_title	Postavke
 settings_hub_help	Otvorite jedno područje odjednom — manje pomicanja, jasniji izbor.
-settings_back	Natrag
 settings_sec_language	Jezik i valuta
 settings_sec_country	Država i porez
 settings_sec_tills	Drugi uređaji
@@ -166,35 +142,17 @@ diag_cleared	Dijagnostički zapisnici očišćeni
 sidebar_settings	Bočna traka
 sidebar_settings_help	Iste ikone kao bočna letvica. Povucite redak da promijenite redoslijed. Prekidačem pokažite ili sakrijte. Postavke i Zaključavanje uvijek ostaju na traci.
 sidebar_always_on_short	Uvijek uključeno
-sidebar_back_settings	Natrag
-sidebar_shown	Prikazano
-sidebar_hidden	Skriveno
-sidebar_always_on	Uvijek na traci
-sidebar_shown_hint	Prikazano na bočnoj letvici / donjim karticama
-sidebar_hidden_hint	Skriveno s trake
 sidebar_menu_items	Stavke
 sidebar_enable_all	Uključi sve
 sidebar_disable_all	Isključi sve
 sidebar_order_saved	Redoslijed bočne trake spremljen
 sidebar_visibility_saved	Vidljivost bočne trake spremljena
-amounts_hide	Sakrij
-amounts_show	Prikaži
-printers_none_hint	Prvo spremite pisač na ovom uređaju, zatim ga dodajte na račun ili odjel
-counter	Šank
-dine_in	Šank
-takeaway	Za ponijeti
-order	Narudžba
 sales	Prodaja
-sales_refunds	Prodaja i povrati
 day_close	Zaključenje dana
 reports_expenses	Bankovna knjiga i D/G
 nav_reports	Izvješća
 nav_settings	Postavke
 nav_lock	Zaključaj
-no_sale_yet	Još nema prodaje
-favorites	Omiljeno
-favorites_help	Stavke koje često prodajete, spremljene za vašu prijavu. Dodajte jednu na račun ili složite popis iz svih stavki ispod.
-your_favorites	Vaše omiljeno
 all_items	Sve stavke
 frequent	Često
 added_items	Dodana stavka/e
@@ -211,8 +169,6 @@ zero_sales_on	Dopusti ₹0
 zero_sales_off	Traži cijenu
 zero_sales_saved_on	Prodaja vrijednosti nula dopuštena
 zero_sales_saved_off	Prodaja mora imati cijenu iznad ₹0
-no_favorites	Još nema omiljenih — dodajte stavke s popisa ispod.
-add_to_bill	Dodaj na račun
 added	Dodano
 owes_word	duguje
 selected_word	Odabrano
@@ -221,19 +177,11 @@ chip_missing_customer	Odabrani kupac nedostaje — odaberite ponovno
 chip_no_customer	Još nema kupca — upišite ime, pa dodirnite Stranke
 credit_summary_fmt	{} kupaca · otvoreni dug {} · zadržani predujmovi {}
 recent_label	Nedavno:
-start_order	Započni narudžbu
-open_bill	Otvori račun
-collect_payment	Naplati
-payment_pending	Plaćanje čeka
-collect_at_counter	naplata na šanku
 inventory	Zalihe
-inventory_stock	Zalihe i stanje
 branches	Poslovnice
-branches_org	Poslovnice i organizacija
 credit_customers	Stranke (khata i dobavljači)
 customer_name_ph	Ime stranke
 new_customer_ph	Ime nove stranke
-item_name_ph	Ime stavke (npr. Masala Dosa)
 item_price_ph	Cijena
 start_template	Proizvod
 team	Tim
@@ -241,17 +189,11 @@ team_pins	Tim i PIN-ovi
 my_pin_settings	Moj PIN
 settings_hub_help_my_pin	Promijenite PIN za otključavanje osobe prijavljene na ovom uređaju.
 team_self_help	Jedna prijava: novi PIN, nova lozinka ili oboje. Ostavite okvir prazan da zadržite što imate. Pitajte Vlasnika ako trebate druge zaslone ili prava.
-backup_settings	Sigurnosna kopija i postavke
-lock_app	Zaključaj aplikaciju
 pick	Odaberi
-select	Odaberi
 advance	Predujam
 owner	Vlasnik
 staff	Osoblje
 photo	Fotografija
-auto	Auto
-prev	Pret
-next	Dalje
 ok	U redu
 this_shop	Server
 extra_till	Klijent
@@ -260,17 +202,13 @@ server	Server
 client	Klijent
 language_currency	Jezik i valuta
 language	Jezik
-choose_language	Odaberite jezik
 language_setup_hint	Slijedite jezik ovog uređaja ili sami odaberite.
 lang_follow_platform	Jezik uređaja
 lang_pick_user	Odaberi jezik
 lang_platform_now	Jezik uređaja sada
 selected_language	Odabrano
-continue	Nastavi
 this_device	OVAJ UREĐAJ
 device_use_q	Kako će se ovaj uređaj koristiti?
-last_server_mode	Bio je Server — dodirnite za nastavak
-last_client_mode	Bio je Klijent — dodirnite za nastavak
 choose_server	Odaberite Server
 choose_server_hint	Otvorite postojeći Server ili napravite jedan za drugi posao.
 create_new_server	Napravi novi Server
@@ -280,12 +218,6 @@ server_remove_pin_ph	PIN vlasnika za uklanjanje Servera
 only_owner_remove_server	Samo Vlasnik može ukloniti Server
 owner_pin_remove_server	Za uklanjanje ovog Servera potreban je PIN vlasnika
 device_setup_help	Server drži knjige ovdje. Klijent se uparuje sa Serverom.
-app_template_heading	Početni katalog (nije obavezno)
-app_template_blurb	Učitava uzorak kataloga; vlasnik Zahir (zahir), admin Asif (asif, PIN 1111), blagajnik Nawaz (nawaz, PIN 0000); porez/GST isključen; prednja bočna traka; povijest se briše nakon 4 sata (i Izbriši sada u Sigurnosnoj kopiji); traka Danas isključena; kompaktan račun + Standard margine za uske ladice. Porez i stavke bočne trake mogu se ponovo uključiti u Postavkama.
-app_template_apply	Primijeni početni katalog
-app_template_skip	Preskoči zasada
-app_template_status	Server je spreman — primijenite Početni katalog, ili preskočite
-app_template_importing	Primjena {title}…
 currency	Valuta
 backup	Sigurnosna kopija
 use	Koristi
@@ -319,7 +251,7 @@ attachments_last_expense	Prilozi (zadnji trošak)
 bank	Banka
 bank_in	Uplati u banku
 bank_out	Isplati iz banke
-bank_reconciliation	Usklađenje banke (označite prema bankovnom izvodu)
+bank_reconciliation	Usklađenje banke
 bank_to_till	Banka → blagajna
 book_add_dish	Knjiga — dodaj stavku / stavka
 book_opening_credit	Knjiga — početni dug
@@ -349,9 +281,6 @@ share_whatsapp	Podijeli WhatsApp
 lan_pages_heading	Stranice kupaca na Wi‑Fi
 lan_pages_help	Na Wi‑Fi ove radnje stranice kupaca rade za ploču i povratne informacije. Ljudi na mobilnom internetu trebaju Cloud kasnije. Kartica terminal ili poveznica za plaćanje nisu obavezni i nikad ne blokiraju šank.
 diag_send_heading	Dijeljenje izvan ovog uređaja
-optional_login_heading	Neobavezna prijava
-rights_heading	Prava
-ops_panel	Lokalni rad
 crm_heading	Kupci i poruke
 crm_help	Rođendan, vjernost, neaktivni i najbolji gosti — red za SMS ili WhatsApp namjere. U poruci koristite {name} i {points}. Vlasnik dodirne slanje; ništa se samo ne šalje.
 crm_queue_sms	Stavi SMS u red
@@ -376,21 +305,17 @@ till_wallet_topup_ph	Iznos nadopune novčanika
 till_voucher_issue_amt_ph	Iznos bona za izdavanje
 till_voucher_issue_code_ph	Kod novog bona
 bulk_price_apply	Primijeni skupnu cijenu
-card_terminal_optional	Terminal za kartice / poveznica za plaćanje (nije obavezno kad ima interneta)
 copy_report	Kopiraj izvješće
 counted_cash_ph	Prebrojana gotovina u ladici
 country_tax	Država i porez
 create_backup	Napravi sigurnosnu kopiju
 credit_limit_heading	Limit duga (odabrana / imenovana stranka)
-day_close_summary	Sažetak zaključenja dana
 delete_party	Izbriši odabranu stranku
-delivery	Dostava
 done_open_books	Gotovo — otvori knjige
 drawer_count	Brojanje ladice (nije obavezno)
 expense_heading	Trošak
 export_day	Izvezi dan
 extra_note_bill_ph	Dodatna bilješka na ovom računu / prodaji
-extra_note_expense_ph	Dodatna bilješka na zadnjem trošku
 extra_tills_heading	Dodatne blagajne
 other_devices_help_heading	Postavite druge uređaje
 other_devices_help	Na ovom uređaju (Server): Drugi uređaji → Dopusti dodatne blagajne. Zabilježite kod uparivanja i Wi‑Fi adresu. Dodirnite Dopusti drugim uređajima da se povežu ako se pojavi. Na računalu dodirnite Pokreni s ovim računalom. Na svakom drugom uređaju: instalirajte aplikaciju, odaberite Način Klijent, pronađite server radnje (ili upišite adresu), unesite kod uparivanja, Upari sada. Narudžbe čekaju na uređaju ako Wi‑Fi padne i odlaze kad Server opet odgovori. Dodatni pisači se postavljaju na Serveru (Postavke → Pisači) — dodatne blagajne šalju račune tamo.
@@ -404,7 +329,6 @@ login_id_ph	Korisničko ime
 mark_cleared	Označi usklađenim
 new_party_clear	Nova stranka (očisti obrazac)
 new_party_kind_supplier_ph	Vrsta nove stranke (dobavljač)
-next_country	Sljedeća država
 next_order	Sljedeća narudžba (očisti pult)
 note_gstin_ph	Bilješka / GSTIN / podsjetnik na dogovor
 notes_attach_party	Bilješke i prilozi (odabrana stranka)
@@ -422,8 +346,6 @@ pay_ap_cash	Plati AP gotovinom
 pay_ap_heading	Plati što im dugujemo (AP)
 pay_ap_upi	Plati AP preko UPI
 pay_selected_heading	Plati odabrano (zatvori dug / uzmi predujam)
-pick_from_items	Odaberi iz naših stavki
-prev_country	Prethodna država
 print_open	Ispiši / otvori
 reason_amend_ph	Razlog ispravka / storna / povrata
 reason_note_ph	Razlog / bilješka (kalo, brojanje, …)
@@ -447,14 +369,10 @@ history_after_hours	Nakon sati
 history_hours_ph	Sati (1–168, zadano 4)
 history_hours_save	Spremi sate
 history_clear_now	Očisti povijest sada
-history_cleared	Povijest prometa očišćena — postava zadržana
-history_retention_saved	Brisanje povijesti spremljeno
 history_hours_saved	Sati povijesti spremljeni
-history_owner_only	Samo Vlasnik ili Admin može očistiti povijest
 rollup	Sažetak
 save_brand	Spremi brend
 save_business_id	Spremi id poslovanja
-save_business_name	Spremi ime poslovanja
 save_features	Spremi
 save_features_named	Spremi {name}
 save_features_ok	Postava spremljena za {name}
@@ -485,7 +403,6 @@ copy_pair_code	Kopiraj kod uparivanja
 new_pair_code	Novi kod uparivanja
 pair_finishing	Završavam uparivanje… primjenjujem knjige lokala
 pair_opening	Otvaram blagajnu…
-pair_copied	Kod uparivanja kopiran
 lan_offline_waiting	Server lokala nedostupan · {n} čeka
 lan_connecting	Spajanje na lokal…
 lan_live	Uživo
@@ -499,7 +416,6 @@ firewall_waiting	Čeka se upit administratora…
 lan_join_help	Na drugom uređaju: način Klijent → pronađite server lokala (ili upišite {addr}) → kod uparivanja {code}.
 lan_pair_status	Wi‑Fi {addr}
 lan_join_help_no_addr	Spojite ovaj uređaj na Wi‑Fi da dobije adresu.
-lan_no_address	Još nema Wi‑Fi adrese — spojite se na Wi‑Fi lokala.
 lan_not_listening	Ne prima uređaje (priključak {port} zauzet). Ponovno pokrenite aplikaciju.
 lan_tills_off	Dodatne blagajne su isključene. Dopustite ih da se drugi uređaj može pridružiti.
 paired_with	Upareno · {url}
@@ -520,41 +436,21 @@ printers_help	Pronađite pisače, dodirnite jedan da ga odaberete, zatim Ispiši
 printers_host_only	Pisači se postavljaju na uređaju radnje (Server). Ova blagajna šalje račune i stare tikete tamo — Pronađi / dodaj / dodijeli ostaju na Serveru. Probna stranica i veličina ispisa računa idu na Server.
 printers_find_heading	Pronađi pisače
 printers_find_tip	Pronađi pretražuje ovaj uređaj i drži popis svježim.
-printers_pool_heading	Pisači
-printers_pool_tip	Pronađi pretražuje ovaj uređaj i drži ovaj popis svježim.
 printers_pool_empty	(još nema — dodirnite Pronađi)
-printers_routes_help	Pronađite pisače koje operativni sustav već zna. Dodijelite ih računu i svakom odjelu pod Format računa i listića.
 printer_assign_dd	Stvarni pisač: {place}
 printer_assign_pick	Odaberi stvarni pisač
 printer_profile_heading	Raspored
 vp_delivery_heading	Dostava
 vp_delivery_help	Kako ovaj virtualni pisač šalje poslove — OS dokument, sirovi bajtovi ili ESC/POS. Sadržaj listića (veličina slova, prelom, margine) određuje format računa / listića, ne ovdje.
-vp_type_size_heading	Veličina slova
-vp_wrap_heading	Širina prijeloma
-vp_margin_heading	Margine
 vp_delivery_spooler	Dokument OS-a (sustavni red)
 vp_delivery_raw	Sirovi bajtovi na uređaj
 vp_delivery_escpos	Toplinske naredbe ESC/POS
 virtual_printer_new	Novi virtualni pisač
 virtual_printer_selected	Uređivanje „{name}” — dodirnite drugi na popisu da prebacite
-virtual_printer_tap_list	Dodirnite virtualni pisač na popisu da ga uredite
 config_layout_portrait	Uspravno
 config_layout_landscape	Položeno
 config_send_os	Sustavni red
 config_send_escpos	ESC/POS
-profiles_heading	Rasporedi
-profiles_empty	(još nema rasporeda)
-profile_builtin	ugrađeno
-profile_custom	prilagođeno
-profile_name_ph	Ime rasporeda
-profile_new	Novi raspored
-profile_delete	Izbriši raspored
-profile_created	Raspored stvoren
-profile_deleted	Raspored izbrisan
-profile_builtin_keep	Ugrađene rasporede nije moguće izbrisati
-config_saved	Ažurirano
-config_selected	Odabrano „{name}”
-printer_output_heading	Virtualni pisači
 virtual_printers_heading	Virtualni pisači
 virtual_printers_empty	Još nema virtualnih pisača — postavite vrijednosti ispod, pa Spremi. Kad ih imate, dodirnite jedan na popisu za uređivanje.
 virtual_printer_name_ph	Ime virtualnog pisača (nije obavezno)
@@ -566,71 +462,32 @@ virtual_printer_deleted	Izbrisan virtualni pisač „{name}”
 virtual_printer_updated	Virtualni pisač ažuriran
 virtual_printer_updated_named	Virtualni pisač „{name}” ažuriran
 virtual_draft_layout	Vrijednosti za sljedeći virtualni pisač
-virtual_draft_send	Vrijednost za sljedeći virtualni pisač
 virtual_need_real	Prvo odaberite stvarni pisač
 virtual_need_select	Odaberite virtualni pisač za brisanje
 real_printer_selected	Odabrano: {name}
-printers_routes_heading	Gdje se što ispisuje
-route_pick_heading	Mjesto
 route_editing	Uređivanje: {name}
-route_assigned	Dodan {printer} na {place}
-route_already_assigned	Već na ovom mjestu: {printer}
 route_cleared	Očišćeno {name}
-route_assigned_empty	Ništa na ovom mjestu
-route_tap_select	dodirnite za odabir
 route_tap_selected	odabrano
-route_pick_printer_first	Prvo dodirnite pisač
-route_assigned_heading	Pisači
-route_add_heading	Dodijeli
-printer_label_ph	Naziv (npr. Pisač šanka)
 printer_target_ph	Ime sustavnog pisača ili host:9100
 printer_target_default	uobičajeni pisač ovog računala (prazna adresa)
-printer_wire_heading	Profil
-printer_wire_escpos	ESC/POS
-printer_wire_os	Uspravno
-printer_wire_os_portrait	Uspravno
-printer_wire_os_landscape	Položeno
-printer_wire_escpos_short	ESC/POS
-printer_wire_os_short	Uspravno
-printer_wire_os_landscape_short	Položeno
-printer_format_custom	Novi prilagođeni profil
-printer_format_custom_label	Prilagođeno
-printer_format_custom_added	Prilagođeni profil dodan za ovo mjesto
-add_printer	Dodaj pisač
-route_pick_ph	Račun ili odjel apoteke
 route_bill	Račun
-route_dont_print	Bez pisača
 station_print_pick_first	Prvo odaberite odjel apoteke
-station_vps_empty	Još nema pisača — pronađite ih pod Postavke → Pisači
 bill_printers_dd	Pisači za račun
 bill_printers_dd_n	{n} pisač/a za račun · dodirnite za promjenu
 station_vp_attached	Pisač priključen
 station_vp_detached	Pisač uklonjen sa stanice
-route_up	Gore
-route_down	Dolje
-route_clear	Očisti
-save_printers	Spremi pisače
 print_test_page	Ispiši probnu stranicu
 no_printer_assigned	Bez pisača
-test_page_no_printer	Nema pisača za {place} — priključite pisač, pa pokušajte opet
 test_page_pick_first	Prvo odaberite pisač(e) za probnu stranicu — zatim Ispiši probnu stranicu
 test_printers_dd	Pisači za probnu stranicu
 test_printers_dd_n	{n} pisač/a za probnu stranicu · dodirnite za promjenu
 test_printer_picked	Proba na: {name}
 test_printer_cleared	Nema probe na: {name}
 test_page_sent_n	Probna stranica poslana na {n} pisač/a
-batch_cancel	Otkaži označeno
-batch_cancel_n	Otkaži označeno ({n})
-batch_cancel_none	Prvo označite jednu ili više poslanih stavki — zatim Otkaži označeno
-batch_cancel_title	Otkaži označene lijekove — jedan razlog, jedan listić otkazivanja po odjelu
-batch_cancel_ok	{n} stavki otkazano · {slips} listić(a) otkazivanja → {kitchens}
-batch_cancel_ok_noprint	{n} stavki otkazano — automatski ispis je isključen, pa nema listića otkazivanja
 printers_saved	Spremljeno
-test_page_sent	Probna stranica poslana — provjerite pisač
 test_page_sent_one	Probna stranica poslana na {name} — provjerite taj pisač
 printers_found	Pronađeno {n}: {list}
 printers_find_synced	Pronađeno {n} — {new} novo
-printer_on_device	spremljeno
 printer_already_added	već dodano
 printer_already_saved	Već spremljeno: {name}
 find_printers	Pronađi pisače
@@ -640,7 +497,6 @@ cancelled	Otkazano
 printers_tap_find	Dodirnite Pronađi da vidite pisače koje ovaj uređaj može koristiti.
 printers_none_found	Ništa nije pronađeno — upišite ime sustavnog pisača ili IP (npr. 192.168.1.50).
 printer_from_find	Dodano {name}
-bill_printer_ph	Pisač za račune
 queue_refused	Lokal nije prihvatio ({n}) — provjerite svaki na šanku:
 clear_not_accepted	Provjereno — očisti ovaj popis
 device_name_ph	Ime ovog uređaja
@@ -650,7 +506,6 @@ connected_now	spojeno sada
 backup_failed	Zadnja automatska sigurnosna kopija nije uspjela: {e}
 backup_overdue	Nema sigurnosne kopije {n} dana — držite aplikaciju otvorenu na ovom uređaju da može kopirati.
 disk_low	Samo {mb} MB slobodno na ovom uređaju — sigurnosne kopije će uskoro pasti. Oslobodite prostor.
-last_seen_devices	Zadnje viđeno: {time}
 connection_to_shop	Veza s lokalom
 supplier_name_ph	Ime dobavljača (ili stranka)
 supplier_ph	Dobavljač
@@ -708,7 +563,6 @@ currency_use_help	Listajte i dodirnite Koristi za bilo koju podržanu valutu.
 day_close_help	Upis zaključenja dana sprema ovaj sažetak (i razliku ladice ako je prebrojana) u revizijski zapis. Ne zaustavlja prodaju.
 expenses_word	Troškovi
 feature_access_help	Što mogu otvoriti — nije obavezno; posao iznad već postavlja zadano
-footer_local	Lokalni SQLite · Zauvijek besplatno · Bez oblaka
 fresh_book_tabiyat	Svježe = prazan katalog (stavke dodajete kasnije). Knjiga = unesite početnu zalihu i tko vam duguje ispod.
 fresh_selected	Odabrano ispočetka — katalog ostaje prazan. Dodirnite Gotovo kad ste spremni.
 gross_word	Bruto
@@ -721,12 +575,9 @@ net_word	Neto
 offline_badge	BEZ MREŽE
 optional_login_help	Neobavezna prijava (id + lozinka). Vlasnik postavlja jednom; lozinku kasnije mijenja samo korisnik.
 or_unlock_login	Ili otključajte id-em prijave + lozinkom
-permission_preset	Posao (postavlja zaslone i novčane radnje)
-preset_help_tabiyat	Blagajnik: prodaja. Voditelj: prodaja + stavke + storno/ispravak.
-product_locked_tabiyat	Tabiyat
+permission_preset	Posao
 product_only_tabiyat	Tabiyat je operativni sustav za apoteku: prodaja lijekova, knjige serije i roka, kredit i knjige — van mreže na vašim uređajima. Oznake Schedule H / Rx su bilješke vlasnika, nisu usklađenost.
 purchases_cogs	Nabave (COGS)
-qty_cap	KOL
 restore_help	Povrat: odaberite sigurnosnu kopiju. Knjige se otvaraju kakve su tada bile; knjige kakve su sada prvo se spreme, pa se ovo može poništiti.
 wipe_data_heading	Izbriši lokalne podatke
 wipe_data_help	Samo Vlasnik — isti izbori kao pri uklanjanju na Windowsu. Poslovni zapisi brišu povijest prometa, a stavke i postavku čuvaju (kao PIN za hitno otključavanje). Postava lokala uklanja bazu knjiga. Postavke zaslona brišu prozor/jezik. Potvrdite PIN-om Vlasnika. PIN za hitno otključavanje na Timu je zaseban (skriveno brisanje pri otključavanju).
@@ -759,7 +610,6 @@ staff_renamed	Ime spremljeno
 staff_setup_copied_hire	Postava kopirana od {name} — postavite novo ime i PIN, pa Dodaj osoblje
 staff_setup_copied_edit	Kopirana postava od {from} na {to}
 staff_copy_need_selected	Prvo odaberite koga uređujete
-staff_copy_need_source	Odaberite čiju postavu kopirati
 staff_copy_same	To je ista osoba — odaberite nekog drugog
 staff_rename_need_selected	Prvo odaberite kome mijenjate ime
 team_pick_hint	Odaberite koga uređujete — zasloni, novčana prava i stanice pojavljuju se samo za tu osobu.
@@ -774,15 +624,9 @@ unit_picker_off	Isključeno
 we_owe_them	Mi dugujemo njima
 who_unlocking	Tko otključava?
 locked_word	Zaključano
-show_pin	Prikaži PIN
-hide_pin	Sakrij PIN
 set_owner_pin	POSTAVI PIN VLASNIKA
 enter_owner_passcode	UNESITE ŠIFRU VLASNIKA
 enter_staff_passcode	UNESITE ŠIFRU OSOBLJA
-pin_count_zero	0 / 12 znamenki · najmanje 4, pa U redu
-pin_count_need	{} / 12 znamenki · treba još {}
-pin_count_full	12 / 12 znamenki · pritisnite U redu
-pin_count_ready	{} / 12 znamenki · pritisnite U redu kad ste spremni
 pin_hint_choose	Odaberite 4–12 znamenki · Enter ili Otključaj za spremanje
 pin_hint_new	Novi PIN vlasnika od 4–12 znamenki · Enter ili Otključaj
 pin_hint_shop_code	Uređaj lokala · kod uparivanja {}
@@ -791,23 +635,15 @@ pin_hint_paired	Dodatna blagajna uparena — otključajte za prodaju
 pin_hint_pair_first	Dodatna blagajna — prvo je uparite s uređajem lokala
 unlock_to_continue	Otključajte za nastavak
 no_staff_yet	Još nema osoblja — otključajte kao Vlasnik, pa Tim
-status_server_set_pin	Način Server — postavite PIN Vlasnika
-status_server_tills	Način Server — dodatne blagajne se mogu pridružiti. Otključaj
-status_server_unlock	Način Server — otključajte kao Vlasnik
-status_client_unlock	Način Klijent — otključajte za prodaju
 icon_new_selected	Ikona: odabrana nova datoteka — dodirnite Spremi brend
 icon_custom	Ikona: vlastiti znak lokala
 icon_default	Ikona: znak Kumkaj (zadano) — odaberite vlastiti
 logo_yours	Logotip: vaš logotip lokala — vidi se na zaslonima i potvrdama
 logo_default	Logotip: znak Kumkaj (zadano) — odaberite svoj ako ga imate
-tmpl_current	Trenutačno: {} — {}
-tmpl_selected	Odabrano: {} — {}
 setup_complete	Postava gotova
 onboard_fresh_tmpl	Ispočetka · {} — katalog počinje prazan; dodajte stavke u Stavkama, pa Gotovo.
 onboard_book_tmpl	Knjiga · {} — dodajte stavke i početni dug, pa Gotovo.
-onboard_template_tmpl	Imenujte mjesto ako želite, pa odaberite kako početi.
 tmpl_blurb	Apotekarski šalter: lijekovi, serija/rok, khata, knjige.
-tmpl_how	Prodaj na šanku; Nabava za zalihu; Knjige za dnevnik.
 reports_facet_title	Izvješća
 reports_facet_help	Dnevnici, starost dugova stranaka, knjiženja banke i D/G razdoblja.
 against_bill_ph	Na račun # iznad (nije obavezno)
@@ -818,14 +654,12 @@ amount_ph	Iznos
 amount_received_ph	Primljeni iznos
 amount_we_pay_ph	Iznos koji plaćamo
 business_name_ph	Ime poslovanja
-category_new_ph	Kategorija (nije obavezno, stvara se ako je nova)
 code_bag_ph	Kod (vreća)
 conv_factor_ph	Faktor (25 = 1 vreća → 25 kg)
 country_code_ph	Kod države npr. IN, GB, US, AE, BR
 credit_khata_amount_ph	Iznos duga / khata
 credit_limit_ph	Limit duga (0 = nema)
 from_code_ph	Iz koda (vreća)
-item_name_lang_ph	Ime stavke — upišite na svom jeziku
 login_id_opt_ph	Korisničko ime (obavezno, jedinstveno)
 manager_pin_ph	PIN voditelja za odobrenje (samo ako ne možete stornirati)
 new_branch_name_ph	Ime nove poslovnice
@@ -833,15 +667,12 @@ new_password_ph	Nova lozinka (nije obavezno)
 new_pin_ph	Novi PIN (4–12 znamenki)
 note_bank_ph	Bilješka (uplata, isplata, …)
 note_buy_expense_ph	Bilješka (gorivo, najam, …)
-note_expense_ph	Bilješka (gorivo, ured, …)
 options_tabiyat_ph	Opcije — Veličina*: Mala=199, Velika=399 | Dodaci+3: Sir=40, Maslina=30 | Dodatni sir=40
-part_second_way_ph	Dio drugim načinom (nije obavezno)
 phone_ph	Telefon
 place_name_ph	Ime ovog mjesta
 qty_example_ph	Kol. (npr. 1.5 za kg)
 quantity_ph	Količina
 reason_required_ph	Razlog (obavezno)
-role_title_ph	Naziv uloge (npr. Barista)
 service_pct_ph	Usluga % nije obavezno 0/10/12
 short_code_ph	Kratki kod (MG02)
 starting_password_ph	Početna lozinka (nije obavezno)
@@ -876,14 +707,11 @@ shift_handover	Primopredaja smjene
 shift_since	Ova smjena od
 expected_in_drawer	Očekivano u ladici
 right_discount	Dati popust
-pick_category	Odaberi kategoriju
-close_category_list	Zatvori popis kategorija
 new_category_row	Nova kategorija — stvara se kad spremite stavku
 your_category	Vaša kategorija
 suggested_category	Predloženo — iz naših stavki
 category_search_ph	Kategorija — tražite svoje ili upišite novu
 cancel_item_short	Otkaži
-cancel_item_title	Otkaži ovu stavku — pozadina dobija listić otkazivanja
 return_to_customer	Vrati kupcu
 short_by	Manjak
 tip_not_sale	Napojnica (osoblju, nije prodaja)
@@ -896,9 +724,7 @@ finding_server	Tražim server lokala na ovom Wi‑Fi…
 no_server_found	Ništa nije pronađeno. Na Serveru: Postavke → Drugi uređaji → Dopusti dodatne blagajne (isti Wi‑Fi). Ili upišite IP koji je tamo prikazan.
 servers_found_pick	Dodirnite lokal na koji se želite spojiti.
 server_host_selected	Koristi se {host} — unesite kod uparivanja, pa Upari sada.
-print_bill	Ispiši račun
 approval_pin_ph	PIN voditelja (samo ako se traži)
-confirm	Potvrdi
 menu_search_ph	Traži stavku ili kratki kod
 customer_paid_ph	Kupac je platio
 tip_ph	Napojnica
@@ -908,7 +734,6 @@ bill_format_help	Ispisuje se ispod naziva vaše radnje na svakom računu. Redove
 bill_header_ph	Adresa | telefon
 fssai_ph	Broj dozvole za lijekove (opcionalno — vaša formulacija)
 bill_footer_ph	Podnožje (npr. Hvala, dođite opet)
-save_bill_format	Spremi oblik računa
 kot_field_on	prikaži
 kot_field_off	sakrij
 kot_weight_light	Tanko
@@ -919,10 +744,8 @@ kot_weight_bold	Podebljano
 kot_align_start	Kreni
 kot_align_center	Sredina
 kot_align_end	Kraj
-content_width	Širina sadržaja (mm)
 content_width_bill	Širina sadržaja računa (mm)
 content_width_ph	Ili upišite širinu sadržaja, 40–210 mm
-content_width_help	Koliko široko se ispisuje ovaj listić. Račun čuva svoju širinu.
 content_width_bill_help	Koliko široko se ispisuje račun kupca. Zadano 210 mm (stranica). 58 mm uski listić, 80 mm široki listić, 112 mm 4 inča, 210 mm širina A4. Unesite bilo koju vrijednost od 40 do 210. Tiketi imaju svoju širinu na kartici listića.
 vp_paper_width	Širina sadržaja (mm)
 vp_paper_width_ph	Ili upišite širinu sadržaja, 40–210 mm
@@ -937,9 +760,6 @@ test_bill_sent	Pretpregled računa poslan
 test_print_no_printer	Nema pisača za taj posao — odaberite ga na ovom zaslonu
 std_print	Veličina ispisa računa
 std_print_help	Veličina fonta za poslove računa Standard uspravno i položeno na OS / dokument pisačima (unesite poene — ne Malo/Normalno/Veliko). Ista veličina u obje orijentacije.
-std_size_s	Malo
-std_size_m	Normalno
-std_size_l	Veliko
 save_std_print	Spremi veličinu ispisa računa
 std_print_saved	Veličina ispisa računa spremljena
 print_brand_kit	Komplet znaka za ispis
@@ -952,14 +772,9 @@ choose_payment_qr	Odaberi QR plaćanja
 clear_payment_qr	Ukloni QR plaćanja
 payment_qr_set	QR za plaćanje: u datoteci — vidi se na zaslonu kupca (tamo zamjenjuje UPI QR iznosa)
 payment_qr_none	QR plaćanja: nema — QR iznosa iz UPI ID-a pri plaćanju
-aggregator_import	Narudžbe agregatora (datoteka)
-aggregator_import_help	Nije obavezan lokalni uvoz: stavite import_aggregator_orders.json u mapu sigurnosnih kopija (niz ili {"orders":[…]}), pa dodirnite Uvezi. Nikad ne zaustavlja šank; živi Zomato/Swiggy je Cloud.
-import_aggregator_file	Uvezi datoteku agregatora
 team_pick_ph	Osoblje za uređivanje — ime, korisničko ime ili odabir
 select_staff	Odaberi ovo osoblje
 rights_help	Novčane radnje za ovu osobu — dodirnite da kruži: Dopušteno → Treba PIN šefa → Nije dopušteno. Ispiši račun opet je samo za račune; odjeli su popis ispod.
-dish_picker_help	Tražite ili pregledajte naše stavke i dodirnite jednu da popuni naziv i fotografiju — ili zadržite svoj naziv. Postavite cijenu (0 je u redu), zatim Dodaj stavku.
-close_dish_list	Zatvori popis stavki
 own_item_name	Koristi ovo kao svoje ime stavke
 on_your_menu	Na popisu lijekova
 edit	Uredi
@@ -970,24 +785,16 @@ add_scheme	Dodaj BOGO
 schedule_ph	Sati — Pon-Pet 07:00-11:00 ili Veče 17:00-19:00=150
 upi_vpa_ph	UPI ID (VPA)
 upi_payee_ph	Ime primatelja UPI (nije obavezno)
-upi_qr	UPI QR
 show_upi_qr	Prikaži UPI QR
 close_upi_qr	Zatvori
 upi_qr_help	Kupac skenira i plaća. Dodirnite Naplati nakon što plate. Drugi zaslon: otvorite Server URL /display na LAN-u.
-recently_done	Nedavno gotovo
 role_help_customer	Uloga: kupac — khata (duguju nam). Ista stranka može i dobavljati zalihu.
 role_help_both	Uloge: kupac + dobavljač — jedna stranka, knjige khate i obveza, neto u Izvješćima.
 role_help_supplier	Uloga: dobavljač — dugujemo im za nabave.
-items_word	stavke
-items_section	Stavke
-back_to_order	Natrag na narudžbu
-new_items_head	Još nije poslano
 price_ph	Cijena
 price_ph_gst_inside	Cijena ({tax} u cijeni)
-tax_rates_missing_hint	Nema stope {tax} na ovim stavkama — u Stavkama postavite Stopu poreza (cijene već uključuju {tax} pod {tax} uključeno)
 taxable_value	Oporeziva vrijednost
 gst_inside_price_note	({tax} u cijeni)
-start_with_template	Počni s našim šablonom stavki
 template_heading	Početne stavke
 template_info	{c} kategorija i {d} stavki s fotografijama, spremno za dodavanje. Cijene počinju od ₹0 — svoje postavite poslije.
 template_import	Uvezi cijeli predložak
@@ -1009,21 +816,13 @@ opening_client	Otvaram klijenta…
 preparing_desk	Pripremam pult…
 opening_server	Otvaram server…
 creating_server	Stvaram server…
-order_empty_pick	Narudžba je prazna — dodirnite Dodajte stavke iznad da odaberete stavke.
 add_dishes	Dodaj lijekove
 order_so_far	Na ovoj narudžbi: {n} · {total}
 no_dish_match	Nijedna stavka ne odgovara „{q}“
-pick_dishes_help	Dodirnite stavku da je dodate · odaberite kategoriju da suzite popis
 pick_done	Gotovo
-pick_done_dd	Gotovo · {label}
-printer_route_mode	Ako je više pisača na ovom mjestu
-printer_mode_first	Prvi koji radi
-printer_mode_all	Ispiši na sve
 kot_field_up	Pomakni gore
 kot_field_down	Pomakni dolje
-app_template_blurb_extra	Također: vlasnik Zahir, admin Asif, blagajnik Nawaz; prednja bočna traka; povijest nakon 4 sata; traka Danas isključena; kompaktan račun.
 dishes_n	{n} stavki
-recipe_ph	Recept (opcionalno — ne koristi se u radnji sa šankom)
 reorder_ph	Naruči još pri
 set_reorder	Postavi razinu narudžbe
 low_stock_alert	Ponestaje — uskoro nabavite: {items}
@@ -1032,7 +831,6 @@ show_unpriced	Prikaži samo stavke bez cijene
 show_all_dishes	Prikaži sve stavke
 role_title_rest_ph	Naziv uloge (npr. Kapetan, Glavni kuhar)
 preset_help_rest	Blagajnik: prodaja. Voditelj: prodaja + stavke + storno/ispravak.
-kind_raw	Zaliha za pripremu
 kind_resale	Kupljen lijek
 kind_dish	Ne broj zalihu
 buy_unit_ph	Jedinica (kg, litra, kom)

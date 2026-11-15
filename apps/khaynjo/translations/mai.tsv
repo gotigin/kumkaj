@@ -41,7 +41,7 @@ remove	हटाउ
 removed_items	हटाओल सामान
 removed_help	वापस अनलासँ सामान ठीक पहिने जकाँ मेनूपर आबि जाइत अछि — दाम, फोटो आ श्रेणी। हमर व्यंजनक सूची कहियो नहि हटैत अछि, तेँ व्यंजन सदिखन फेर जोड़ल जा सकैत अछि।
 restore_item	वापस आनू
-empty_catalog	एखन कोनो व्यंजन नहि। मेनू खोलू, व्यंजन जोड़ू (नाम + दाम), तखन ऑर्डर लिअ।
+empty_catalog	एखन कोनो व्यंजन नहि।
 total	कुल
 cash	नकद
 upi	UPI
@@ -103,23 +103,14 @@ bill_item_qty	मात्रा
 bill_item_price	दाम
 bill_item_amount	राशि
 bill_item_note	व्यंजनक टिप्पणी
-bill_item_col_gap	स्तंभक बीचक दूरी
 bill_item_col_order	स्तंभक क्रम
 bill_item_col_sep	स्तंभ रेखा
-bill_item_gap_tight	सघन
-bill_item_gap_comfort	आरामदायक
-bill_item_gap_wide	चौड़ा
-bill_item_num_width	अंक स्तंभ
-bill_item_num_compact	छोट
-bill_item_num_comfort	आरामदायक
-bill_item_num_wide	चौड़ा
-bill_item_num_align	अंक संरेखण
-bill_item_gap_em	दूरी (em)
-bill_item_qty_min	मात्रा न्यूनतम (em)
-bill_item_price_min	दाम न्यूनतम (em)
-bill_item_amount_min	राशि न्यूनतम (em)
-kot_item_qty_width	मात्रा स्तंभ
-kot_item_num_align	मात्रा संरेखण
+slip_columns	स्तंभ
+slip_col_width	चौड़ाइ (mm)
+slip_col_start	शुरुआतक जगह (px)
+slip_col_end	अंतक जगह (px)
+slip_col_align	लिखावटक सीध
+slip_columns_help	प्रत्येक स्तंभक चौड़ाइमे ओकर शुरुआत आ अंतक जगह सम्मिलित अछि। लिखावट अपन स्तंभक भीतर लपेटाइत अछि; सामग्रीक चौड़ाइसँ बाहर जे अछि से कागज आ पूर्वावलोकन दुनूमे कटि जाइत अछि।
 bill_total_qty_label	कुल मात्रा लेबल
 bill_total_subtotal_label	उप-जोड़ लेबल
 bill_total_grand_label	कुल जोड़ लेबल
@@ -221,7 +212,6 @@ sidebar_order_saved	साइडबारक क्रम सहेजल
 sidebar_visibility_saved	साइडबारक दृश्यता सहेजल
 amounts_hide	नुकाउ
 amounts_show	देखाउ
-printers_none_hint	पहिने एहि डिवाइसपर प्रिंटर सहेजू, तखन ओकरा बिल वा कोनो भनसामे जोड़ू
 counter	काउंटर
 dine_in	भीतर खाएब
 takeaway	लऽ जाएब
@@ -328,8 +318,6 @@ selected_language	चुनल
 continue	आगाँ बढ़ू
 this_device	ई डिवाइस
 device_use_q	ई डिवाइस कोना उपयोग होएत?
-last_server_mode	सर्वर छल — आगाँ बढ़बाक लेल दबाउ
-last_client_mode	क्लाइंट छल — आगाँ बढ़बाक लेल दबाउ
 choose_server	सर्वर चुनू
 choose_server_hint	पहिलुका सर्वर खोलू, वा आन व्यवसाय लेल नव बनाउ।
 create_new_server	नव सर्वर बनाउ
@@ -391,7 +379,7 @@ attachments_last_expense	संलग्न (पछिला खर्च)
 bank	बैंक
 bank_in	बैंकमे आयल
 bank_out	बैंकसँ गेल
-bank_reconciliation	बैंक मिलान (बैंक विवरणसँ मिला कऽ टिक करू)
+bank_reconciliation	बैंक मिलान
 bank_to_till	बैंक → टिल
 book_add_dish	बही — व्यंजन / सामान जोड़ू
 book_opening_credit	बही — शुरुआती उधार
@@ -744,7 +732,6 @@ station_print_pick_first	पहिने भनसा स्टेशन चु�
 station_print_editing	“{name}” क प्रिंटर बदलि रहल छी
 station_vps_dd	एहि स्टेशनक प्रिंटर
 station_vps_dd_n	{n} प्रिंटर · बदलबाक लेल दबाउ
-station_vps_empty	एखन धरि प्रिंटर नहि — सेटिंग → प्रिंटरमे खोजू
 bill_printers_dd	बिलक प्रिंटर
 bill_printers_dd_n	बिल लेल {n} प्रिंटर · बदलबाक लेल दबाउ
 job_layout	बनावट
@@ -889,7 +876,7 @@ net_word	शुद्ध
 offline_badge	ऑफलाइन
 optional_login_help	वैकल्पिक लॉगिन (id + पासवर्ड)। मालिक एक बेर राखैत छथि; बादमे केवल उपयोगकर्ता पासवर्ड बदलि सकैत छथि।
 or_unlock_login	वा लॉगिन id + पासवर्डसँ अनलॉक करू
-permission_preset	काज (स्क्रीन आ पाइक काज तय करैत अछि)
+permission_preset	काज
 preset_help_khaynjo	कैशियर: बेचब। मैनेजर: बेचब + सामान + रद्द/संशोधन।
 product_locked_khaynjo	Khaynjo
 product_only_khaynjo	ई ऐप केवल Khaynjo अछि — रेस्टोरेंट संचालन प्रणाली। आन व्यापारक रूप अलग Kumkaj उत्पाद रूपमे अबैत अछि।
@@ -961,10 +948,6 @@ pin_hint_paired	अतिरिक्त टिल जुड़ल — बेच
 pin_hint_pair_first	अतिरिक्त टिल — पहिने दोकानक डिवाइससँ जोड़ू
 unlock_to_continue	आगाँ बढ़बाक लेल अनलॉक करू
 no_staff_yet	एखन धरि कर्मचारी नहि — मालिक रूपमे अनलॉक करू, तखन टीम
-status_server_set_pin	सर्वर मोड — मालिकक PIN राखू
-status_server_tills	सर्वर मोड — अतिरिक्त टिल जुड़ि सकैत अछि। अनलॉक करू
-status_server_unlock	सर्वर मोड — मालिक रूपमे अनलॉक करू
-status_client_unlock	क्लाइंट मोड — बेचबाक लेल अनलॉक करू
 icon_new_selected	आइकन: नव फाइल चुनल — ब्रांड सहेजू दबाउ
 icon_custom	आइकन: अपन दोकानक चिन्ह
 icon_default	आइकन: Kumkaj चिन्ह (डिफॉल्ट) — अपन चुनू
@@ -1033,7 +1016,7 @@ book_kind_balance	तुलन पत्र
 order_help	जोड़बाक लेल सामान दबाउ।
 floor_help	ऑर्डर लेबाक वा बदलबाक लेल टेबल दबाउ। रंग देखबैत अछि खाली → बैसल → भनसा → तैयार → खा रहल → बिल → भुगतान। प्रतीक्षा सूची, आरक्षण आ टेबल जोड़ब नीचाँक भागमे अछि।
 kitchen_help	भनसा टिकट (KOT), नव अंतमे। शुरू → तैयार → भऽ गेल टिकटकेँ आगाँ बढ़बैत अछि। टिकटपर कहियो दाम नहि देखाइत अछि।
-kitchen_empty	कोनो खुजल टिकट नहि। ऑर्डर वा फ्लोरसँ पठाओल KOT एतए देखाइत अछि।
+kitchen_empty	कोनो खुजल टिकट नहि।
 add_a_table	टेबल जोड़ू
 add_station_heading	भनसा स्टेशन जोड़ू
 categories_help	ऊपरक सामानकेँ ओहि श्रेणीमे राखबाक लेल उपयोग करू दबाउ। फोटो श्रेणीकेँ चित्र दैत अछि; नहि तँ पहिल अक्षर देखाइत अछि।
@@ -1131,7 +1114,6 @@ bill_format_help	प्रत्येक बिलपर अहाँक रे
 bill_header_ph	पता | फोन
 fssai_ph	FSSAI लाइसेंस नं. (भारत)
 bill_footer_ph	फुटर (जेना धन्यवाद, फेर आउ)
-save_bill_format	बिल प्रारूप सहेजू
 reset_bill_format	डिफॉल्टपर घुराउ
 bill_format_reset	बिल प्रारूप डिफॉल्टपर घुरल
 reset_kot_format	डिफॉल्टपर घुराउ
@@ -1201,13 +1183,11 @@ kot_copies_3	3
 kot_title_ph	शीर्षक (खाली = KOT - KITCHEN ORDER)
 kot_footer_ph	भनसाक टिप्पणी (वैकल्पिक, बिना दाम)
 kot_preview	पूर्वावलोकन
-save_kot_format	KOT प्रारूप सहेजू
 test_kot_format	टेस्ट KOT
 test_kot_sent	भनसा टिकटक नमूना पठाओल
 test_bill_format	टेस्ट बिल
 test_bill_sent	बिलक नमूना पठाओल
 test_print_no_printer	ओहि काज लेल प्रिंटर नहि — एही स्क्रीनपर एकटा चुनू
-kot_format_saved	KOT प्रारूप सहेजल
 std_print	बिल छापक आकार
 std_print_help	OS / दस्तावेज प्रिंटरपर सामान्य खड़ा आ पड़ल बिल लेल अक्षर आकार (पॉइंट लिखू — छोट/सामान्य/पैघ नहि)। दुनू दिशामे एके आकार। भनसा पर्चीक आकार KOT टैबपर अछि।
 std_size_s	छोट
@@ -1264,7 +1244,6 @@ new_items_head	एखन धरि नहि पठाओल
 price_ph	दाम
 price_ph_gst_inside	दाम ({tax} सहित)
 cancel_needs_table	भनसा धरि पहुँचलाक बाद रद्द करबाक लेल ई ऑर्डर फ्लोरसँ (टेबल) खोलू — काउंटरक KOT भुगतान लेबा धरि टिकटपर रहैत अछि
-tax_rates_missing_hint	एहि व्यंजनपर {tax} दर नहि — मेनूमे कर दर राखू (दाममे पहिनेसँ {tax} शामिल, {tax} सहितक अंतर्गत)
 taxable_value	करयोग्य मूल्य
 gst_inside_price_note	({tax} सहित)
 start_with_template	हमर मेनू टेम्पलेटसँ शुरू करू
@@ -1318,9 +1297,7 @@ order_empty_pick	ऑर्डर खाली — व्यंजन चुन�
 add_dishes	व्यंजन जोड़ू
 order_so_far	एहि ऑर्डरपर: {n} · {total}
 no_dish_match	“{q}” सँ कोनो व्यंजन नहि मिलैत अछि
-pick_dishes_help	जोड़बाक लेल व्यंजन दबाउ · सूची छोट करबाक लेल श्रेणी चुनू
 pick_done	भऽ गेल
-pick_done_dd	भऽ गेल · {label}
 printer_route_mode	जँ एहि जगह कतेको प्रिंटर होअए
 printer_mode_first	जे पहिने चलए
 printer_mode_all	सभपर छापू

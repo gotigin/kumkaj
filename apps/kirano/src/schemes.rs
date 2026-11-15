@@ -1,7 +1,7 @@
 //! Combos / BOGO / percent-off schemes (Local).
 //!
 //! Applied on the cart at settle / bill draft. Fixed combo: parent charged at
-//! combo price; components complimentary. Kitchen expand happens on Send KOT.
+//! combo price; components complimentary.
 
 use crate::domain::{Cart, CartLine, Money};
 use serde::{Deserialize, Serialize};

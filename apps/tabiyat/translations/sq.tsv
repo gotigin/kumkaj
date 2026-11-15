@@ -1,5 +1,4 @@
 # Albanian — Shqip (sq). One key<TAB>text per line, in en() order; keep {placeholders}.
-app_tagline	Sporteli i farmacisë: barna, batch, khata & libra. Falas offline.
 barcode_ph	Barkodi / EAN
 composition_ph	Kripë / përbërje (e kërkueshme)
 schedule_h_off	Orari H — joaktiv (flamuri i pronarit)
@@ -13,7 +12,6 @@ expiry_alerts	Sinjalizimet e skadimit (7 ditët e ardhshme)
 expiry_none	Asnjë grup që skadon në 7 ditët e ardhshme.
 rx_nudge	Pronari i shënuar Rx / Orari H — shtoni një shënim nëse është e nevojshme.
 unlock	Zhblloko
-pin_hint	PIN-i i pronarit fillon si 0000
 sell	Shitet
 buy	Blerje
 books	Libri i ditës
@@ -32,17 +30,13 @@ reports_month	Fitim dhe humbje (muaj)
 reports_aging	Të papaguara / debit-kredit
 reports_balance_sheet	Bilanci
 reports	Libri i bankës dhe fitimi
-refresh	Rifresko
 undo	Zhbëj
-start_tracking	Fillo gjurmimin
 stock_minus	− Stoku
 stock_plus	+ Stoku
 settle_cash	Mbyll me para në dorë
 settle_card	Mbyll me kartë
 items	Barna
 nav_items	Barna
-more	Më shumë
-your_items	Ilaçet tuaja
 items_help	Prekni një artikull për ta modifikuar. Artikulli i ri pastron formularin. Kërkoni sipas emrit ose kodit të shkurtër, vendosni një çmim (0 është mirë), më pas Shto. Shitjet e regjistruara tashmë mbajnë emrin me të cilin janë ngarkuar.
 add_item	Shto artikull
 new_item	Artikull i ri
@@ -53,28 +47,22 @@ remove	Hiq
 removed_items	Artikujt e hequr
 removed_help	Rivendosja e kthen artikullin në Artikuj saktësisht siç ishte - çmimi, fotografia dhe kategoria.
 restore_item	Rikthe
-empty_catalog	Nuk ka ende ilaçe. Hapni Medicines, shtoni emrin, barkodin ose kripën, më pas shisni.
+empty_catalog	Nuk ka ende ilaçe.
 total	Totali
 cash	Para në dorë
 upi	UPI
 card	Kartë
 credit	Palët
 clear	Pastro
-ready_to_sell	Gati për regjistrim
 today_prefix	Sot
-today_mid	sot
 owed	e papaguar
-round_word	rrumbullako
 back	Prapa
 sold_out	Nuk ka
 restock	Rimbush
 not_tracked	Pa gjurmim
 in_stock	në stok
 marked_sold_out	Shënuar si i padisponueshëm
-add_upper	SHTO
-na	Nuk ka
 qty	Pesha/sasia
-unit_at	Çmimi @
 actual	Faktike
 applied	E zbatuar
 note_ph	Shënim (opsional)
@@ -93,21 +81,13 @@ bill_item_qty	Sasia
 bill_item_price	Çmimi
 bill_item_amount	Shuma
 bill_item_note	Rx / shënim shitje
-bill_item_col_gap	Hapësira e kolonave
 bill_item_col_order	Renditja e kolonave
 bill_item_col_sep	Vijat e kolonave
-bill_item_gap_tight	Ngushtë
-bill_item_gap_comfort	Rehat
-bill_item_gap_wide	Gjerë
-bill_item_num_width	Kolonat e numrave
-bill_item_num_compact	Kompakt
-bill_item_num_comfort	Rehat
-bill_item_num_wide	Gjerë
-bill_item_num_align	Radhitja e numrave
-bill_item_gap_em	Hapësira (em)
-bill_item_qty_min	Sasia min (em)
-bill_item_price_min	Çmimi min (em)
-bill_item_amount_min	Shuma min (em)
+slip_col_width	Gjerësia (mm)
+slip_col_start	Hapësira në fillim (px)
+slip_col_end	Hapësira në fund (px)
+slip_col_align	Rreshtimi i tekstit
+slip_columns_help	Gjerësia e çdo kolone përfshin hapësirën e saj në fillim dhe në fund. Teksti mbështillet brenda kolonës së tij; çfarë del përtej gjerësisë së përmbajtjes pritet, në letër dhe në pamjen paraprake.
 bill_total_qty_label	Etiketa e sasisë totale
 bill_total_subtotal_label	Etiketa e nëntotalit
 bill_total_grand_label	Etiketa e totalit të përgjithshëm
@@ -120,11 +100,7 @@ bill_total_qty	Sasia totale
 bill_total_subtotal	Nëntotali
 bill_total_grand	Totali i përgjithshëm
 kot_unassigned	E pacaktuar
-pos_tab_items	Artikujt e shtuar
-pos_tab_payment	Pagesa
-settings_hub_title	Cilësimet
 settings_hub_help	Hapni një zonë në herë — më pak rrëshqitje, zgjedhje më të qarta.
-settings_back	Prapa
 settings_sec_language	Gjuha dhe monedha
 settings_sec_country	Vendi dhe tatimi
 settings_sec_tills	Pajisje të tjera
@@ -166,35 +142,17 @@ diag_cleared	Regjistrat e diagnostikës u pastruan
 sidebar_settings	Shiriti anësor
 sidebar_settings_help	Të njëjtat ikona si shina anësore. Tërhiqni një rresht për ta rirenditur. Ktheni çelësin për ta shfaqur ose fshehur. Cilësimet dhe Kyçja qëndrojnë gjithmonë në shirit.
 sidebar_always_on_short	Gjithmonë ndezur
-sidebar_back_settings	Prapa
-sidebar_shown	E shfaqur
-sidebar_hidden	E fshehur
-sidebar_always_on	Gjithmonë në shirit
-sidebar_shown_hint	E shfaqur në shinën anësore / skedat e poshtme
-sidebar_hidden_hint	E fshehur nga shiriti
 sidebar_menu_items	Artikujt
 sidebar_enable_all	Aktivizo të gjitha
 sidebar_disable_all	Çaktivizo të gjitha
 sidebar_order_saved	Renditja e shiritit anësor u ruajt
 sidebar_visibility_saved	Dukshmëria e shiritit anësor u ruajt
-amounts_hide	Fshih
-amounts_show	Shfaq
-printers_none_hint	Ruani fillimisht një printer në këtë pajisje, më pas shtojeni atë në faturë ose në një seksion
-counter	Banaku
-dine_in	Banaku
-takeaway	Për marrje
-order	Porosi
 sales	Shitjet
-sales_refunds	Shitjet dhe rimbursimet
 day_close	Mbyllja e ditës
 reports_expenses	Libri i bankës dhe fitimi
 nav_reports	Raportet
 nav_settings	Cilësimet
 nav_lock	Kyç
-no_sale_yet	Ende pa shitje
-favorites	Të preferuarat
-favorites_help	Artikujt që shisni shpesh, të ruajtur për hyrjen tuaj. Shtoni një te fatura, ose ndërtoni listën nga të gjithë artikujt më poshtë.
-your_favorites	Të preferuarat tuaja
 all_items	Të gjithë artikujt
 frequent	Të shpeshtat
 added_items	Artikulli(t) e shtuar
@@ -211,8 +169,6 @@ zero_sales_on	Lejo ₹0
 zero_sales_off	Kërko çmim
 zero_sales_saved_on	Shitjet me vlerë zero lejohen
 zero_sales_saved_off	Shitjet duhet të kenë çmim mbi ₹0
-no_favorites	Ende pa të preferuara — shtoni artikuj nga lista më poshtë.
-add_to_bill	Shto te fatura
 added	U shtua
 owes_word	ka borxh
 selected_word	E zgjedhur
@@ -221,19 +177,11 @@ chip_missing_customer	Klienti i zgjedhur mungon — zgjidheni përsëri
 chip_no_customer	Ende pa klient — shkruani një emër, pastaj prekni Kredi
 credit_summary_fmt	{} klientë · kredi e hapur {} · paradhënie të mbajtura {}
 recent_label	Të fundit:
-start_order	Fillo porosinë
-open_bill	Hap faturën
-collect_payment	Merr pagesën
-payment_pending	Pagesa në pritje
-collect_at_counter	merr te banaku
 inventory	Inventari
-inventory_stock	Inventari dhe stoku
 branches	Degët
-branches_org	Degët dhe organizata
 credit_customers	Palët (khata dhe furnitorët)
 customer_name_ph	Emri i palës
 new_customer_ph	Emri i palës së re
-item_name_ph	Emri i artikullit (p.sh. Masala Dosa)
 item_price_ph	Çmimi
 start_template	Produkti
 team	Ekipi
@@ -241,17 +189,11 @@ team_pins	Ekipi dhe PIN-et
 my_pin_settings	PIN-i im
 settings_hub_help_my_pin	Ndryshoni PIN-in e zhbllokimit për personin e futur në këtë pajisje.
 team_self_help	Një hyrje: PIN i ri, fjalëkalim i ri, ose të dyja. Lini një kuti bosh për të mbajtur atë që keni. Pyesni Pronarin nëse ju duhen ekrane ose të drejta të ndryshme.
-backup_settings	Kopje rezervë dhe cilësime
-lock_app	Kyç aplikacionin
 pick	Zgjidh
-select	Përzgjidh
 advance	Paradhënie
 owner	Pronari
 staff	Stafi
 photo	Foto
-auto	Auto
-prev	Para
-next	Tjetra
 ok	OK
 this_shop	Serveri
 extra_till	Terminali
@@ -260,17 +202,13 @@ server	Serveri
 client	Terminali
 language_currency	Gjuha dhe monedha
 language	Gjuha
-choose_language	Zgjidhni gjuhën tuaj
 language_setup_hint	Ndiqni gjuhën e kësaj pajisjeje, ose zgjidhni një vetë.
 lang_follow_platform	Gjuha e pajisjes
 lang_pick_user	Zgjidh gjuhën
 lang_platform_now	Gjuha e pajisjes tani
 selected_language	E zgjedhur
-continue	Vazhdo
 this_device	KJO PAJISJE
 device_use_q	Si do të përdoret kjo pajisje?
-last_server_mode	Ishte Server — prekni për të vazhduar
-last_client_mode	Ishte Terminal — prekni për të vazhduar
 choose_server	Zgjidhni një server
 choose_server_hint	Hapni një server ekzistues, ose krijoni një për një biznes tjetër.
 create_new_server	Krijo server të ri
@@ -280,12 +218,6 @@ server_remove_pin_ph	PIN-i i pronarit për të hequr një server
 only_owner_remove_server	Vetëm Pronari mund të heqë një server
 owner_pin_remove_server	PIN-i i pronarit kërkohet për të hequr këtë server
 device_setup_help	Serveri i mban librat këtu. Terminali çiftohet me një Server.
-app_template_heading	Katalogu fillestar (opsionale)
-app_template_blurb	Ngarkon katalogun e mostrës; Pronari Zahir (zahir), Admin Asif (asif, PIN 1111), Cashier Nawaz (nawaz, PIN 0000); taksa/GST zbritje; shiriti anësor i përparmë; historiku fshihet pas 4 orësh (dhe Pastro tani në Rezervim); Sot zhvishu; faturë kompakte + Marzhe standarde për tabaka të ngushta. Taksat dhe kolegët e shiritit anësor mund të aktivizohen përsëri te "Cilësimet".
-app_template_apply	Aplikoni katalogun fillestar
-app_template_skip	Anashkalo për tani
-app_template_status	Serveri gati — aplikoni katalogun fillestar ose kalojeni
-app_template_importing	Po zbatohet {title}…
 currency	Monedha
 backup	Kopje rezervë
 use	Përdor
@@ -319,7 +251,7 @@ attachments_last_expense	Bashkëngjitjet (shpenzimi i fundit)
 bank	Banka
 bank_in	Hyrje në bankë
 bank_out	Dalje nga banka
-bank_reconciliation	Barazimi i bankës (shënoni kundrejt pasqyrës suaj bankare)
+bank_reconciliation	Barazimi i bankës
 bank_to_till	Banka → kasa
 book_add_dish	Libër - shtoni artikull / artikull
 book_opening_credit	Libri — kredi fillestare
@@ -349,9 +281,6 @@ share_whatsapp	Ndaj në WhatsApp
 lan_pages_heading	Faqet e klientëve në Wi‑Fi
 lan_pages_help	Në Wi‑Fi të këtij dyqani, faqet e klientëve punojnë për tabelën e ekranit dhe komentet. Personat me të dhëna celulare kanë nevojë për Cloud më vonë. Një terminal karte ose një lidhje pagese është opsionale dhe nuk e bllokon kurrë sportelin.
 diag_send_heading	Ndaj jashtë kësaj pajisjeje
-optional_login_heading	Hyrje opsionale
-rights_heading	Të drejtat
-ops_panel	Veprime lokale
 crm_heading	Klientë dhe mesazhe
 crm_help	Ditëlindja, besnikëria, mysafirët joaktivë dhe kryesorët — radhit SMS ose qëllime WhatsApp. Përdorni {name} dhe {points} në mesazh. Pronari prek dërgo; asgjë nuk dërgohet vetë.
 crm_queue_sms	Radhit SMS
@@ -376,21 +305,17 @@ till_wallet_topup_ph	Shuma e mbushjes së portofolit
 till_voucher_issue_amt_ph	Shuma e kuponit për lëshim
 till_voucher_issue_code_ph	Kodi i kuponit të ri
 bulk_price_apply	Zbato çmimin në masë
-card_terminal_optional	Terminali i kartës / lidhja e pagesës (opsionale kur ka internet)
 copy_report	Kopjo raportin
 counted_cash_ph	Para të numëruara në sirtar
 country_tax	Vendi dhe tatimi
 create_backup	Krijo kopje rezervë
 credit_limit_heading	Kufiri i kredisë (pala e zgjedhur / e emërtuar)
-day_close_summary	Përmbledhja e mbylljes së ditës
 delete_party	Fshi palën e zgjedhur
-delivery	Dërgesë
 done_open_books	U krye — hap librat
 drawer_count	Numërimi i sirtarit (opsional)
 expense_heading	Shpenzim
 export_day	Eksporto ditën
 extra_note_bill_ph	Shënim shtesë në këtë faturë / shitje
-extra_note_expense_ph	Shënim shtesë te shpenzimi i fundit
 extra_tills_heading	Kasa shtesë
 other_devices_help_heading	Vendos pajisje të tjera
 other_devices_help	Në këtë pajisje (Server): Pajisje të tjera → Lejo pagesa shtesë. Vini re kodin e çiftimit dhe adresën Wi‑Fi. Prekni Lejo pajisje të tjera të lidhen nëse shfaqet. Në një kompjuter, trokitni lehtë mbi Filloni me këtë kompjuter. Në njëra pajisje tjetër: instaloni aplikacionin, zgjidhni "Modaliteti i klientit", Gjeni serverin e dyqanit (ose shkruani adresën), futni kodin e çiftimit, Çiftoni tani. Porositë presin në pajisje nëse Wi‑Fi bie dhe shkojnë kur Serveri të përgjigjet përsëri. Printerët shtesë vendosen në Server (Cilësimet → Printerat) - ekstra që dërgojnë faturat atje.
@@ -404,7 +329,6 @@ login_id_ph	Emri i përdoruesit
 mark_cleared	Shëno të barazuar
 new_party_clear	Palë e re (pastro formularin)
 new_party_kind_supplier_ph	Lloji i palës së re (Furnitor)
-next_country	Vendi tjetër
 next_order	Porosia tjetër (pastro tavolinën)
 note_gstin_ph	Shënim / GSTIN / kujtesë marrëveshjeje
 notes_attach_party	Shënime dhe bashkëngjitje (pala e zgjedhur)
@@ -422,8 +346,6 @@ pay_ap_cash	Paguaj AP me para
 pay_ap_heading	Paguaj atë që u kemi borxh (AP)
 pay_ap_upi	Paguaj AP me UPI
 pay_selected_heading	Paguaj të zgjedhurën (mbyll borxhin / merr paradhënie)
-pick_from_items	Zgjidh nga artikujt tanë
-prev_country	Vendi i mëparshëm
 print_open	Shtyp / hap
 reason_amend_ph	Arsyeja e ndryshimit / anulimit / rimbursimit
 reason_note_ph	Arsye / shënim (humbje, numërim, …)
@@ -447,14 +369,10 @@ history_after_hours	Pas orëve
 history_hours_ph	Orë (1–168, parazgjedhja 4)
 history_hours_save	Ruaj orët
 history_clear_now	Pastro historinë tani
-history_cleared	Historia e tregtimit u pastrua — konfigurimi u mbajt
-history_retention_saved	Pastrimi i historisë u ruajt
 history_hours_saved	Orët e historisë u ruajtën
-history_owner_only	Vetëm Pronari ose Administratori mund të pastrojë historinë
 rollup	Përmbledhje
 save_brand	Ruaj markën
 save_business_id	Ruaj id e biznesit
-save_business_name	Ruaj emrin e biznesit
 save_features	Ruaj
 save_features_named	Ruaj {name}
 save_features_ok	Konfigurimi u ruajt për {name}
@@ -485,7 +403,6 @@ copy_pair_code	Kopjo kodin e çiftimit
 new_pair_code	Kod i ri çiftimi
 pair_finishing	Po përfundon çiftimi… po zbatohen librat e dyqanit
 pair_opening	Po hapet kasa…
-pair_copied	Kodi i çiftimit u kopjua
 lan_offline_waiting	Serveri i dyqanit i paarritshëm · {n} në pritje
 lan_connecting	Po lidhet me dyqanin…
 lan_live	Drejtpërdrejt
@@ -499,7 +416,6 @@ firewall_waiting	Në pritje të kërkesës së administratorit…
 lan_join_help	Në pajisjen tjetër: Mënyra Terminal → Gjeni serverin e dyqanit (ose shkruani {addr}) → kodi i çiftimit {code}.
 lan_pair_status	Wi‑Fi {addr}
 lan_join_help_no_addr	Lidheni këtë pajisje me Wi‑Fi për një adresë.
-lan_no_address	Ende pa adresë Wi‑Fi — lidhuni me Wi‑Fi të dyqanit.
 lan_not_listening	Nuk po pranon pajisje (porta {port} e zënë). Rinisni aplikacionin.
 lan_tills_off	Kasat shtesë janë fikur. Lejojini që një pajisje tjetër të bashkohet.
 paired_with	I çiftuar · {url}
@@ -520,41 +436,21 @@ printers_help	Gjeni printera, prekni një për ta zgjedhur dhe më pas Printoni 
 printers_host_only	Printerët vendosen në pajisjen e dyqanit (Server). Kjo deri sa të dërgojë faturat dhe biletat e vjetra atje - Gjeni / shtoni / caktoni qëndrimin në server. Faqja e testimit dhe madhësia e printimit të faturës shkojnë te serveri.
 printers_find_heading	Gjej printerët
 printers_find_tip	Gjej skanon këtë pajisje dhe e mban listën të përditësuar.
-printers_pool_heading	Printerët
-printers_pool_tip	Gjej skanon këtë pajisje dhe e mban këtë listë të përditësuar.
 printers_pool_empty	(ende asnjë — prekni Gjej)
-printers_routes_help	Gjeni printera që sistemi operativ i njeh tashmë. Caktojini ato në faturë dhe në secilin seksion nën formatin Bill & Slip.
 printer_assign_dd	Printer real: {place}
 printer_assign_pick	Zgjidh printerin real
 printer_profile_heading	Paraqitja
 vp_delivery_heading	Dërgesë
 vp_delivery_help	Si dërgon punë ky printer virtual - dokument OS, bajt të papërpunuar ose ESC/POS. Përmbajtja e fletëve (madhësia e llojit, mbështjellja, kufijtë) vendoset nga formati i faturës / Slip, jo këtu.
-vp_type_size_heading	Madhësia e shkrimit
-vp_wrap_heading	Gjerësia e mbështjelljes
-vp_margin_heading	Margjinat
 vp_delivery_spooler	Dokument OS (radha e sistemit)
 vp_delivery_raw	Bajte të papërpunuara te pajisja
 vp_delivery_escpos	Komanda termike ESC/POS
 virtual_printer_new	Printer virtual i ri
 virtual_printer_selected	Po ndryshohet “{name}” — prekni një tjetër në listë për të kaluar
-virtual_printer_tap_list	Prekni një printer virtual në listë për ta ndryshuar
 config_layout_portrait	Portret
 config_layout_landscape	Peizazh
 config_send_os	Radha e sistemit
 config_send_escpos	ESC/POS
-profiles_heading	Paraqitjet
-profiles_empty	(ende pa paraqitje)
-profile_builtin	e brendshme
-profile_custom	e personalizuar
-profile_name_ph	Emri i paraqitjes
-profile_new	Paraqitje e re
-profile_delete	Fshi paraqitjen
-profile_created	Paraqitja u krijua
-profile_deleted	Paraqitja u fshi
-profile_builtin_keep	Paraqitjet e brendshme nuk mund të fshihen
-config_saved	U përditësua
-config_selected	U zgjodh “{name}”
-printer_output_heading	Printerë virtualë
 virtual_printers_heading	Printerë virtualë
 virtual_printers_empty	Ende pa printerë virtualë — vendosni vlerat më poshtë, pastaj Ruaj. Pasi të keni disa, prekni një në listë për ta ndryshuar.
 virtual_printer_name_ph	Emri i printerit virtual (opsional)
@@ -566,71 +462,32 @@ virtual_printer_deleted	U fshi printeri virtual “{name}”
 virtual_printer_updated	Printeri virtual u përditësua
 virtual_printer_updated_named	Printeri virtual “{name}” u përditësua
 virtual_draft_layout	Vlerat u vendosën për printerin virtual tjetër
-virtual_draft_send	Vlera u vendos për printerin virtual tjetër
 virtual_need_real	Zgjidhni fillimisht një printer real
 virtual_need_select	Zgjidhni një printer virtual për ta fshirë
 real_printer_selected	U zgjodh: {name}
-printers_routes_heading	Ku shtypen gjërat
-route_pick_heading	Vendi
 route_editing	Po ndryshohet: {name}
-route_assigned	U shtua {printer} te {place}
-route_already_assigned	Tashmë në këtë vend: {printer}
 route_cleared	U pastrua {name}
-route_assigned_empty	Asnjë në këtë vend
-route_tap_select	prekni për të zgjedhur
 route_tap_selected	e zgjedhur
-route_pick_printer_first	Prekni fillimisht një printer
-route_assigned_heading	Printerët
-route_add_heading	Cakto
-printer_label_ph	Emri (p.sh. printer numërues)
 printer_target_ph	Emri i printerit të sistemit ose host:9100
 printer_target_default	printeri i zakonshëm i këtij kompjuteri (adresë bosh)
-printer_wire_heading	Profili
-printer_wire_escpos	ESC/POS
-printer_wire_os	Portret
-printer_wire_os_portrait	Portret
-printer_wire_os_landscape	Peizazh
-printer_wire_escpos_short	ESC/POS
-printer_wire_os_short	Portret
-printer_wire_os_landscape_short	Peizazh
-printer_format_custom	Profil i ri i personalizuar
-printer_format_custom_label	I personalizuar
-printer_format_custom_added	Profili i personalizuar u shtua për këtë vend
-add_printer	Shto printer
-route_pick_ph	Fatura ose një seksion shpërndarës
 route_bill	Fatura
-route_dont_print	Pa printer
 station_print_pick_first	Zgjidhni fillimisht një seksion dispancerie
-station_vps_empty	Ende pa printerë — Gjejini te Cilësimet → Printerët
 bill_printers_dd	Printerët për faturën
 bill_printers_dd_n	{n} printerë për faturën · prekni për të ndryshuar
 station_vp_attached	Printeri u bashkëngjit
 station_vp_detached	Printeri u hoq nga stacioni
-route_up	Lart
-route_down	Poshtë
-route_clear	Pastro
-save_printers	Ruaj printerët
 print_test_page	Shtyp një faqe prove
 no_printer_assigned	Pa printer
-test_page_no_printer	Pa printer për {place} — bashkëngjitni një printer, pastaj provoni përsëri
 test_page_pick_first	Zgjidhni printer(ë) për një faqe prove fillimisht — pastaj Shtyp një faqe prove
 test_printers_dd	Printerët për një faqe prove
 test_printers_dd_n	{n} printerë për një faqe prove · prekni për të ndryshuar
 test_printer_picked	Provë te: {name}
 test_printer_cleared	Nuk po provohet te: {name}
 test_page_sent_n	Faqja e provës u dërgua te {n} printerë
-batch_cancel	Anulo të shënuarat
-batch_cancel_n	Anulo të shënuarat ({n})
-batch_cancel_none	Shënoni fillimisht një ose më shumë artikuj të dërguar - më pas të shënuar Anulo
-batch_cancel_title	Anuloni barnat e shënuara - një arsye, një fletë anulimi për seksion
-batch_cancel_ok	Artikujt {n} u anuluan · {slips} anuloni fletët(at) → {kitchens}
-batch_cancel_ok_noprint	Artikujt {n} u anuluan — printimi automatik është joaktiv, kështu që nuk ka asnjë fletë anulimi
 printers_saved	U ruajt
-test_page_sent	Faqja e provës u dërgua — kontrolloni printerin
 test_page_sent_one	Faqja e provës u dërgua te {name} — kontrolloni atë printer
 printers_found	U gjetën {n}: {list}
 printers_find_synced	U gjetën {n} — {new} të reja
-printer_on_device	e ruajtur
 printer_already_added	tashmë e shtuar
 printer_already_saved	Tashmë e ruajtur: {name}
 find_printers	Gjej printerët
@@ -640,7 +497,6 @@ cancelled	E anuluar
 printers_tap_find	Prekni Gjej për të listuar printerët që kjo pajisje mund të përdorë.
 printers_none_found	Nuk u gjet asnjë — shkruani emrin e printerit të sistemit ose një IP (p.sh. 192.168.1.50).
 printer_from_find	U shtua {name}
-bill_printer_ph	Printeri për faturat
 queue_refused	Nuk u pranua nga dyqani ({n}) — kontrolloni secilën te banaku:
 clear_not_accepted	E kontrolluar — pastro këtë listë
 device_name_ph	Emri i kësaj pajisjeje
@@ -650,7 +506,6 @@ connected_now	e lidhur tani
 backup_failed	Kopja rezervë automatike e fundit dështoi: {e}
 backup_overdue	Pa kopje rezervë për {n} ditë — mbajeni aplikacionin hapur në këtë pajisje që të mund të bëjë kopje.
 disk_low	Vetëm {mb} MB të lira në këtë pajisje — kopjet rezervë së shpejti do të dështojnë. Lironi pak hapësirë.
-last_seen_devices	Parë së fundi: {time}
 connection_to_shop	Lidhja me dyqanin
 supplier_name_ph	Emri i furnitorit (ose pala)
 supplier_ph	Furnitori
@@ -708,7 +563,6 @@ currency_use_help	Rrëshqitni dhe prekni Përdor për çdo monedhë të mbështe
 day_close_help	Regjistrimi i një mbylljeje dite e ruan këtë përmbledhje (dhe diferencën e sirtarit nëse është numëruar) në regjistrin e auditimit. Nuk e ndalon shitjen.
 expenses_word	Shpenzimet
 feature_access_help	Çfarë mund të hapin — opsionale; puna sipër vendos tashmë një parazgjedhje
-footer_local	SQLite lokal · Falas përgjithmonë · Zero re
 fresh_book_tabiyat	Fresh = katalog bosh (shtoni artikuj më vonë). Libri = shkruani aksionet hapëse dhe kush ju ka borxh më poshtë.
 fresh_selected	E re e zgjedhur — katalogu qëndron bosh. Prekni U krye kur të jeni gati.
 gross_word	Bruto
@@ -721,12 +575,9 @@ net_word	Neto
 offline_badge	JASHTË LINJE
 optional_login_help	Hyrje opsionale (id + fjalëkalim). Pronari e vendos një herë; vetëm përdoruesi mund ta ndryshojë fjalëkalimin më vonë.
 or_unlock_login	Ose zhblloko me id hyrjeje + fjalëkalim
-permission_preset	Puna (vendos ekranet dhe veprimet e parasë)
-preset_help_tabiyat	Arkëtar: shet. Menaxher: shet + artikuj + anulim/ndryshim.
-product_locked_tabiyat	Tabiyat
+permission_preset	Puna
 product_only_tabiyat	Tabiyat është sistemi operativ i farmacisë: shitja e barnave, kontabiliteti i grupit/skadimit, krediti dhe librat — jashtë linje në pajisjet tuaja. Flamujt e programit H / Rx janë shënime të pronarit, jo pajtueshmëri.
 purchases_cogs	Blerjet (COGS)
-qty_cap	SASIA
 restore_help	Rikthim: zgjidhni një kopje rezervë. Librat hapen siç ishin atëherë; librat siç janë tani ruhen fillimisht, kështu që kjo mund të zhbëhet.
 wipe_data_heading	Fshi të dhënat lokale
 wipe_data_help	Vetëm pronari - të njëjtat zgjedhje si çinstalimi i Windows. Regjistrimet e biznesit pastrojnë historinë e tregtimit, por ruan artikujt dhe konfigurimin (si PIN-i i shkyçjes së urgjencës). Konfigurimi i dyqanit heq bazën e të dhënave të librave. Preferencat e ekranit pastrojnë dritaren/gjuhën. Konfirmo me PIN-in e pronarit. PIN-i i shkyçjes së urgjencës në ekip është i veçantë (fshij i fshehtë kur shkyç).
@@ -759,7 +610,6 @@ staff_renamed	Emri u ruajt
 staff_setup_copied_hire	Konfigurimi u kopjua nga {name} — vendosni një emër dhe PIN të ri, pastaj Shto staf
 staff_setup_copied_edit	U kopjua konfigurimi i {from} te {to}
 staff_copy_need_selected	Zgjidhni fillimisht kë të ndryshoni
-staff_copy_need_source	Zgjidhni konfigurimin e kujt të kopjohet
 staff_copy_same	Ky është i njëjti person — zgjidhni dikë tjetër
 staff_rename_need_selected	Zgjidhni fillimisht kë të riemërtoni
 team_pick_hint	Zgjidh kë të modifikosh - ekranet, të drejtat e parave dhe stacionet shfaqen vetëm për atë person.
@@ -774,15 +624,9 @@ unit_picker_off	Fikur
 we_owe_them	Ne u kemi borxh
 who_unlocking	Kush po zhbllokon?
 locked_word	I kyçur
-show_pin	Shfaq PIN-in
-hide_pin	Fshih PIN-in
 set_owner_pin	VENDOS PIN-IN E PRONARIT
 enter_owner_passcode	VENDOS KODIN E PRONARIT
 enter_staff_passcode	VENDOS KODIN E STAFIT
-pin_count_zero	0 / 12 shifra · të paktën 4, pastaj OK
-pin_count_need	{} / 12 shifra · duhen {} të tjera
-pin_count_full	12 / 12 shifra · shtypni OK
-pin_count_ready	{} / 12 shifra · shtypni OK kur të jeni gati
 pin_hint_choose	Zgjidhni 4–12 shifra · Enter ose Zhblloko për të ruajtur
 pin_hint_new	PIN i ri i Pronarit me 4–12 shifra · Enter ose Zhblloko
 pin_hint_shop_code	Pajisja e dyqanit · kodi i çiftimit {}
@@ -791,23 +635,15 @@ pin_hint_paired	Kasa shtesë e çiftuar — zhbllokoni për të shitur
 pin_hint_pair_first	Kasa shtesë — çiftojeni fillimisht me pajisjen e dyqanit
 unlock_to_continue	Zhbllokoni për të vazhduar
 no_staff_yet	Ende pa staf — zhbllokoni si Pronar, pastaj Ekipi
-status_server_set_pin	Mënyra Server — vendosni PIN-in e Pronarit
-status_server_tills	Mënyra Server — kasat shtesë mund të bashkohen. Zhblloko
-status_server_unlock	Mënyra Server — zhbllokoni si Pronar
-status_client_unlock	Mënyra Terminal — zhbllokoni për të shitur
 icon_new_selected	Ikona: skedar i ri i zgjedhur — prekni Ruaj markën
 icon_custom	Ikona: shenja e personalizuar e lokalit
 icon_default	Ikona: shenja Kumkaj (parazgjedhje) — zgjidhni një të personalizuar
 logo_yours	Logoja: logoja e dyqanit tuaj — shfaqet në ekrane dhe dëftesa
 logo_default	Logoja: shenja Kumkaj (parazgjedhje) — zgjidhni tuajën nëse keni
-tmpl_current	Aktuale: {} — {}
-tmpl_selected	E zgjedhur: {} — {}
 setup_complete	Konfigurimi u krye
 onboard_fresh_tmpl	E re · {} — katalogu fillon bosh; shtoni artikuj te Artikujt, pastaj U krye.
 onboard_book_tmpl	Libër · {} — shtoni artikuj dhe kredinë fillestare, pastaj U krye.
-onboard_template_tmpl	Emërtoni vendin nëse doni, pastaj zgjidhni si të filloni.
 tmpl_blurb	Sporteli i farmacisë: barna, grup/skadencë, khata, libra.
-tmpl_how	Shitet në banak; Blej për aksione; Libra për ditën.
 reports_facet_title	Raportet
 reports_facet_help	Librat e ditës, plakja e palëve, postimet e bankës dhe fitim-humbja e periudhës.
 against_bill_ph	Kundrejt faturës # sipër (opsionale)
@@ -818,14 +654,12 @@ amount_ph	Shuma
 amount_received_ph	Shuma e marrë
 amount_we_pay_ph	Shuma që paguajmë
 business_name_ph	Emri i biznesit
-category_new_ph	Kategoria (opsionale, krijohet nëse është e re)
 code_bag_ph	Kodi (thes)
 conv_factor_ph	Faktori (25 = 1 thes → 25 kg)
 country_code_ph	Kodi i vendit p.sh. IN, GB, US, AE, BR
 credit_khata_amount_ph	Shuma e kredisë / khata
 credit_limit_ph	Kufiri i kredisë (0 = asnjë)
 from_code_ph	Nga kodi (thes)
-item_name_lang_ph	Emri i artikullit — shkruajeni në gjuhën tuaj
 login_id_opt_ph	Emri i përdoruesit (i detyrueshëm, unik)
 manager_pin_ph	PIN-i i menaxherit për miratim (vetëm nëse nuk mund të anuloni)
 new_branch_name_ph	Emri i degës së re
@@ -833,15 +667,12 @@ new_password_ph	Fjalëkalim i ri (opsional)
 new_pin_ph	PIN i ri (4–12 shifra)
 note_bank_ph	Shënim (depozitë, tërheqje, …)
 note_buy_expense_ph	Shënim (karburant, qira, …)
-note_expense_ph	Shënim (karburant, zyrë, …)
 options_tabiyat_ph	Opsione — Madhësia*: Vogël=199, Madhe=399 | Shtesa+3: Djathë=40, Ullinj=30 | Djathë shtesë=40
-part_second_way_ph	Pjesë me një mënyrë të dytë (opsionale)
 phone_ph	Telefoni
 place_name_ph	Emri i këtij vendi
 qty_example_ph	Sasia (p.sh. 1.5 për kg)
 quantity_ph	Sasia
 reason_required_ph	Arsyeja (e detyrueshme)
-role_title_ph	Titulli i rolit (p.sh. Barista)
 service_pct_ph	Shërbimi % opsional 0/10/12
 short_code_ph	Kodi i shkurtër (MG02)
 starting_password_ph	Fjalëkalimi fillestar (opsional)
@@ -876,14 +707,11 @@ shift_handover	Dorëzimi i turnit
 shift_since	Ky turn që nga
 expected_in_drawer	Pritet në sirtar
 right_discount	Jep një zbritje
-pick_category	Zgjidh një kategori
-close_category_list	Mbyll listën e kategorive
 new_category_row	Kategori e re — krijohet kur ruani artikullin
 your_category	Kategoria juaj
 suggested_category	Sugjeruar - nga artikujt tanë
 category_search_ph	Kategoria — kërkoni tuajat ose shkruani një të re
 cancel_item_short	Anulo
-cancel_item_title	Anulo këtë artikull - back office merr një fletë anulimi
 return_to_customer	Ktheje te klienti
 short_by	Mungon
 tip_not_sale	Bakshish (i stafit, jo shitje)
@@ -896,9 +724,7 @@ finding_server	Po kërkohet serveri i dyqanit në këtë Wi‑Fi…
 no_server_found	Nuk u gjet asnjë. Te Serveri: Cilësimet → Pajisje të tjera → Lejo kasa shtesë (i njëjti Wi‑Fi). Ose shkruani IP-në e shfaqur atje.
 servers_found_pick	Prekni dyqanin me të cilin doni të lidheni.
 server_host_selected	Po përdoret {host} — vendosni kodin e çiftimit, pastaj Çifto tani.
-print_bill	Shtyp faturën
 approval_pin_ph	PIN-i i menaxherit (vetëm nëse kërkohet)
-confirm	Konfirmo
 menu_search_ph	Kërko artikull ose kod të shkurtër
 customer_paid_ph	Klienti pagoi
 tip_ph	Bakshish
@@ -908,7 +734,6 @@ bill_format_help	Shtypur nën emrin e dyqanit tuaj në çdo faturë. Linjat e nd
 bill_header_ph	Adresa | telefoni
 fssai_ph	Licenca e barnave nr. (opsionale - formulimi juaj)
 bill_footer_ph	Fundi (p.sh. Faleminderit, ejani përsëri)
-save_bill_format	Ruaj formatin e faturës
 kot_field_on	shfaq
 kot_field_off	fshih
 kot_weight_light	I lehtë
@@ -919,10 +744,8 @@ kot_weight_bold	I trashë
 kot_align_start	Fillo
 kot_align_center	Qendra
 kot_align_end	Fundi
-content_width	Gjerësia e përmbajtjes (mm)
 content_width_bill	Gjerësia e përmbajtjes së faturës (mm)
 content_width_ph	Ose shkruani një gjerësi përmbajtjeje, 40–210 mm
-content_width_help	Sa e gjerë printon kjo rrëshqitje. Bill ruan gjerësinë e vet.
 content_width_bill_help	Sa gjerë printohet fatura e klientit. 210 mm e paracaktuar (faqe). Rrëshqitje e ngushtë 58 mm, rrëshqitje e gjerë 80 mm, 4 inç 112 mm, gjerësi A4 210 mm. Shkruani çdo vlerë nga 40 në 210. Biletat kanë gjerësinë e tyre në skedën e fletëve.
 vp_paper_width	Gjerësia e përmbajtjes (mm)
 vp_paper_width_ph	Ose shkruani një gjerësi përmbajtjeje, 40–210 mm
@@ -937,9 +760,6 @@ test_bill_sent	Shembulli i faturës u dërgua
 test_print_no_printer	Pa printer për atë punë — zgjidhni një në këtë ekran
 std_print	Madhësia e shtypjes së faturës
 std_print_help	Madhësia e shkronjave për punët e faturave standarde të portretit dhe peizazhit në printerët OS / dokumentesh (futni pikat — jo të vogla/normale/të mëdha). E njëjta madhësi në të dy orientimet.
-std_size_s	E vogël
-std_size_m	Normale
-std_size_l	E madhe
 save_std_print	Ruaj madhësinë e shtypjes së faturës
 std_print_saved	Madhësia e shtypjes së faturës u ruajt
 print_brand_kit	Kompleti i markës së shtypjes
@@ -952,14 +772,9 @@ choose_payment_qr	Zgjidh QR e pagesës
 clear_payment_qr	Pastro QR e pagesës
 payment_qr_set	QR e pagesës: në skedar - shfaqet në ekranin e klientit (zëvendëson shumën UPI QR atje)
 payment_qr_none	QR e pagesës: asnjë — QR e shumës nga id UPI kur paguhet
-aggregator_import	Porositë e agregatorit (skedar)
-aggregator_import_help	Import lokal opsional: vendosni import_aggregator_orders.json në dosjen e kopjeve rezervë (vektor ose {"orders":[…]}), pastaj prekni Importo. Nuk e bllokon kurrë banakun; Zomato/Swiggy i drejtpërdrejtë është Re.
-import_aggregator_file	Importo skedarin e agregatorit
 team_pick_ph	Stafi për t’u ndryshuar — emër, emër përdoruesi, ose zgjidhje
 select_staff	Zgjidh këtë staf
 rights_help	Veprimet e parave për këtë person — trokitni lehtë për të cikluar: Lejohet → Nevojë për PIN-in e shefit → Nuk lejohet. Shtypni sërish faturën vetëm për faturat; seksionet janë lista e kontrollit më poshtë.
-dish_picker_help	Kërkoni ose shfletoni artikujt tanë dhe trokitni lehtë mbi një për të plotësuar emrin dhe foton e tij — ose mbani emrin tuaj. Vendosni çmimin tuaj (0 është mirë), më pas Shto artikull.
-close_dish_list	Mbyll listën e artikujve
 own_item_name	Përdore këtë si emrin tuaj të artikullit
 on_your_menu	Në listën e ilaçeve
 edit	Ndrysho
@@ -970,24 +785,16 @@ add_scheme	Shto BOGO
 schedule_ph	Orari — Hënë-Premte 07:00-11:00 ose Mbrëmje 17:00-19:00=150
 upi_vpa_ph	Id UPI (VPA)
 upi_payee_ph	Emri i përfituesit UPI (opsional)
-upi_qr	UPI QR
 show_upi_qr	Shfaq UPI QR
 close_upi_qr	Mbyll
 upi_qr_help	Klienti skanon dhe paguan. Prekni Merr pagesën pasi të paguajnë. Ekrani i dytë: hapni URL-në e serverit / shfaqni në LAN.
-recently_done	Të kryera së fundi
 role_help_customer	Roli: Klient — khata (ata na kanë borxh). E njëjta palë mund të furnizojë edhe stok.
 role_help_both	Rolet: Klient + Furnitor — një palë, libra khata dhe të pagueshëm, neto te Raportet.
 role_help_supplier	Roli: Furnitor — ne u kemi borxh për blerjet.
-items_word	artikuj
-items_section	Artikujt
-back_to_order	Prapa te porosia
-new_items_head	Ende të padërguara
 price_ph	Çmimi
 price_ph_gst_inside	Çmimi ({tax} i përfshirë)
-tax_rates_missing_hint	Nuk ka tarifë {tax} për këta artikuj — për artikujt e vendosur Norma tatimore (çmimet tashmë përfshijnë {tax} nën {tax} përfshirëse)
 taxable_value	Vlera e tatueshme
 gst_inside_price_note	({tax} i përfshirë)
-start_with_template	Filloni me shabllonin tonë të artikujve
 template_heading	Artikujt fillestarë
 template_info	Kategoritë {c} dhe artikujt {d} me foto, gati për t'u shtuar. Çmimet fillojnë nga 0 ₹ — caktoni tuajat më pas.
 template_import	Importo shabllonin e plotë
@@ -1009,21 +816,13 @@ opening_client	Po hapet terminali…
 preparing_desk	Po përgatitet tavolina…
 opening_server	Po hapet serveri…
 creating_server	Po krijohet serveri…
-order_empty_pick	Porosit bosh - trokitni lehtë mbi Shto artikujt për të zgjedhur artikujt.
 add_dishes	Shtoni ilaçe
 order_so_far	Në këtë porosi: {n} · {total}
 no_dish_match	Asnjë artikull nuk përputhet me "{q}"
-pick_dishes_help	Prekni një artikull për ta shtuar · zgjidhni një kategori për të ngushtuar listën
 pick_done	U krye
-pick_done_dd	U krye · {label}
-printer_route_mode	Nëse ka disa printerë në këtë vend
-printer_mode_first	I pari që punon
-printer_mode_all	Shtyp te të gjithë
 kot_field_up	Lëviz lart
 kot_field_down	Lëviz poshtë
-app_template_blurb_extra	Gjithashtu: Pronari Zahir, Admin Asif, Cashier Nawaz; shiriti anësor i përparmë; historia pas 4 orësh; Sot zhvishu; faturë kompakte.
 dishes_n	artikuj {n}
-recipe_ph	Receta (opsionale - e papërdorur në një shitore)
 reorder_ph	Bli më shumë te
 set_reorder	Vendos nivelin e riblerjes
 low_stock_alert	Po mbaron — blini së shpejti: {items}
@@ -1032,7 +831,6 @@ show_unpriced	Shfaq vetëm artikujt pa çmim
 show_all_dishes	Shfaq të gjithë artikujt
 role_title_rest_ph	Titulli i rolit (p.sh. kapiten, kuzhinier kryesor)
 preset_help_rest	Arkëtar: shet. Menaxher: shet + artikuj + anulim/ndryshim.
-kind_raw	Stoku i përbërë
 kind_resale	Blerë ilaçe
 kind_dish	Mos numëroni aksionet
 buy_unit_ph	Njësia (kg, litër, copë)

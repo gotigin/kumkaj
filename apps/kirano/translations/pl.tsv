@@ -1,7 +1,5 @@
 # Polish — Polski (pl). One key<TAB>text per line, in en() order; keep {placeholders}.
-app_tagline	Licznik Kirana: sprzedaż, zapasy, khata i książki. Bezpłatnie w trybie offline.
 unlock	Odblokuj
-pin_hint	PIN właściciela na starcie to 0000
 sell	Sprzedać
 buy	Zakup
 books	Dziennik dnia
@@ -20,17 +18,13 @@ reports_month	Zysk i strata (miesiąc)
 reports_aging	Należności / Wn-Ma
 reports_balance_sheet	Bilans
 reports	Księga bankowa i RZiS
-refresh	Odśwież
 undo	Cofnij
-start_tracking	Rozpocznij śledzenie
 stock_minus	− Zapas
 stock_plus	+ Magazyn
 settle_cash	Rozlicz gotówkę
 settle_card	Rozlicz kartę
 items	Przedmioty
 nav_items	Przedmioty
-more	Więcej
-your_items	Twoje przedmioty
 items_help	Kliknij element, aby go edytować. Nowa pozycja czyści formularz. Wyszukaj według nazwy lub krótkiego kodu, ustaw cenę (0 jest w porządku), a następnie Dodaj. Sprzedaż już zarejestrowana zachowuje nazwisko, za które została obciążona.
 add_item	Dodaj pozycję
 new_item	Nowy przedmiot
@@ -41,28 +35,22 @@ remove	Usuń
 removed_items	Usunięte pozycje
 removed_help	Przywróć umieszcza przedmiot z powrotem w Pozycjach dokładnie tak, jak był — cena, zdjęcie i kategoria.
 restore_item	Przywróć
-empty_catalog	Nie ma jeszcze żadnych elementów. Otwórz przedmioty, dodaj nazwę i cenę, a następnie sprzedawaj przy ladzie.
+empty_catalog	Nie ma jeszcze żadnych elementów.
 total	Razem
 cash	Gotówka
 upi	UPI
 card	Karta
 credit	Kontrahenci
 clear	Jasne
-ready_to_sell	Gotowy do rezerwacji
 today_prefix	Dzisiaj
-today_mid	dzisiaj
 owed	wybitny
-round_word	okrągły
 back	Powrót
 sold_out	Niedostępne
 restock	Uzupełnij zapasy
 not_tracked	Nie śledzone
 in_stock	w magazynie
 marked_sold_out	Oznaczono jako niedostępny
-add_upper	DODAJ
-na	Nie dotyczy
 qty	Masa/ilość
-unit_at	Oceń @
 actual	Rzeczywisty
 applied	Zastosowano
 note_ph	Uwaga (opcjonalnie)
@@ -81,21 +69,13 @@ bill_item_qty	Ilość
 bill_item_price	Cena
 bill_item_amount	Kwota
 bill_item_note	Uwaga dotycząca przedmiotu
-bill_item_col_gap	Szczelina kolumny
 bill_item_col_order	Kolejność kolumn
 bill_item_col_sep	Reguły kolumnowe
-bill_item_gap_tight	Ciasno
-bill_item_gap_comfort	Wygodne
-bill_item_gap_wide	Szeroki
-bill_item_num_width	Kolumny liczbowe
-bill_item_num_compact	Kompaktowy
-bill_item_num_comfort	Wygodne
-bill_item_num_wide	Szeroki
-bill_item_num_align	Liczby się zgadzają
-bill_item_gap_em	Luka (em)
-bill_item_qty_min	Ilość min (em)
-bill_item_price_min	Cena min. (em)
-bill_item_amount_min	Kwota min (em)
+slip_col_width	Szerokość (mm)
+slip_col_start	Odstęp na początku (px)
+slip_col_end	Odstęp na końcu (px)
+slip_col_align	Wyrównanie tekstu
+slip_columns_help	Szerokość każdej kolumny obejmuje jej odstęp na początku i na końcu. Tekst zawija się w obrębie swojej kolumny; to, co wykracza poza szerokość treści, jest obcinane – na papierze i w podglądzie.
 bill_total_qty_label	Etykieta z całkowitą ilością
 bill_total_subtotal_label	Etykieta sumy częściowej
 bill_total_grand_label	Wielka suma etykieta
@@ -108,11 +88,7 @@ bill_total_qty	Całkowita ilość
 bill_total_subtotal	Suma podrzędna
 bill_total_grand	Wielka suma
 kot_unassigned	Nieprzypisany
-pos_tab_items	Dodane pozycje
-pos_tab_payment	Płatność
-settings_hub_title	Ustawienia
 settings_hub_help	Otwieraj jeden obszar na raz — mniej przewijania, wyraźniejsze wybory.
-settings_back	Powrót
 settings_sec_language	Język i waluta
 settings_sec_country	Kraj i podatek
 settings_sec_tills	Inne urządzenia
@@ -154,35 +130,17 @@ diag_cleared	Dzienniki diagnostyczne zostały usunięte
 sidebar_settings	Pasek boczny
 sidebar_settings_help	Ikony takie same jak na poręczy bocznej. Przeciągnij wiersz, aby zmienić jego kolejność. Przesuń przełącznik, aby pokazać lub ukryć. Ustawienia i Blokada zawsze pozostają na pasku.
 sidebar_always_on_short	Zawsze włączone
-sidebar_back_settings	Powrót
-sidebar_shown	Pokazano
-sidebar_hidden	Ukryty
-sidebar_always_on	Zawsze na pasku
-sidebar_shown_hint	Pokazane na szynie bocznej / dolnych zakładkach
-sidebar_hidden_hint	Ukryty przed barem
 sidebar_menu_items	Przedmioty
 sidebar_enable_all	Włącz wszystko
 sidebar_disable_all	Wyłącz wszystko
 sidebar_order_saved	Zapisano zamówienie na pasku bocznym
 sidebar_visibility_saved	Zapisano widoczność paska bocznego
-amounts_hide	Ukryj
-amounts_show	Pokaż
-printers_none_hint	Najpierw zapisz drukarkę na tym urządzeniu, a następnie dodaj ją do rachunku lub sekcji
-counter	Licznik
-dine_in	Licznik
-takeaway	Na wynos
-order	Zamówienie
 sales	Sprzedaż
-sales_refunds	Sprzedaż i zwroty pieniędzy
 day_close	Dzień blisko
 reports_expenses	Księga bankowa i RZiS
 nav_reports	Raporty
 nav_settings	Ustawienia
 nav_lock	Blokada
-no_sale_yet	Nie ma jeszcze sprzedaży
-favorites	Ulubione
-favorites_help	Przedmioty, które często sprzedajesz, zapisane dla Twojego loginu. Dodaj jeden do rachunku lub utwórz listę ze wszystkich pozycji poniżej.
-your_favorites	Twoje ulubione
 all_items	Wszystkie przedmioty
 frequent	Częste
 added_items	Dodane pozycje
@@ -199,8 +157,6 @@ zero_sales_on	Zezwól na 0 INR
 zero_sales_off	Wymagaj ceny
 zero_sales_saved_on	Dozwolona sprzedaż o wartości zerowej
 zero_sales_saved_off	Sprzedaż musi mieć cenę wyższą niż 0 INR
-no_favorites	Nie ma jeszcze ulubionych — dodaj pozycje z poniższej listy.
-add_to_bill	Dodaj do rachunku
 added	Dodano
 owes_word	jest winien
 selected_word	Wybrane
@@ -209,19 +165,11 @@ chip_missing_customer	Brak wybranego klienta — wybierz ponownie
 chip_no_customer	Nie masz jeszcze klienta — wpisz nazwę, a następnie stuknij opcję Kredyt
 credit_summary_fmt	{} klienci · otwarty kredyt {} · posiadane zaliczki {}
 recent_label	Najnowsze:
-start_order	Rozpocznij zamówienie
-open_bill	Otwórz rachunek
-collect_payment	Zbierz płatność
-payment_pending	Płatność oczekująca
-collect_at_counter	zbieraj przy ladzie
 inventory	Zapasy
-inventory_stock	Zapasy i zapasy
 branches	Gałęzie
-branches_org	Oddziały i organizacje
 credit_customers	Klienci i dostawcy (rachunki kredytowe)
 customer_name_ph	Nazwa klienta lub dostawcy
 new_customer_ph	Nowa nazwa klienta lub dostawcy
-item_name_ph	Nazwa przedmiotu (np. Masala Dosa)
 item_price_ph	Cena
 start_template	Produkt
 team	Zespół
@@ -229,17 +177,11 @@ team_pins	Zespół & PINs
 my_pin_settings	Mój PIN
 settings_hub_help_my_pin	Zmień odblokowanie PIN dla osoby zalogowanej na tym urządzeniu.
 team_self_help	Jedno logowanie: nowe PIN, nowe hasło lub jedno i drugie. Pozostaw puste pole, aby zachować to, co masz. Zapytaj właściciela, czy potrzebujesz innych ekranów lub uprawnień.
-backup_settings	Kopia zapasowa i ustawienia
-lock_app	Zablokuj aplikację
 pick	Wybierz
-select	Wybierz
 advance	Postęp
 owner	Właściciel
 staff	Personel
 photo	Zdjęcie
-auto	Automat
-prev	Poprzednia
-next	Następny
 ok	OK
 this_shop	Tryb serwera
 extra_till	Tryb klienta
@@ -248,17 +190,13 @@ server	Tryb serwera
 client	Tryb klienta
 language_currency	Język i waluta
 language	Język
-choose_language	Wybierz swój język
 language_setup_hint	Postępuj zgodnie z językiem tego urządzenia lub wybierz sam.
 lang_follow_platform	Język urządzenia
 lang_pick_user	Wybierz język
 lang_platform_now	Język urządzenia teraz
 selected_language	Wybrane
-continue	Kontynuuj
 this_device	TO URZĄDZENIE
 device_use_q	Jak będzie używane to urządzenie?
-last_server_mode	Był serwer — kliknij, aby kontynuować
-last_client_mode	Był klientem — dotknij, aby kontynuować
 choose_server	Wybierz serwer
 choose_server_hint	Otwórz istniejący serwer lub utwórz go dla innej firmy.
 create_new_server	Utwórz nowy serwer
@@ -268,12 +206,6 @@ server_remove_pin_ph	Właściciel PIN, aby usunąć serwer
 only_owner_remove_server	Tylko właściciel może usunąć serwer
 owner_pin_remove_server	Właściciel PIN wymagany do usunięcia tego serwera
 device_setup_help	Serwer prowadzi tutaj księgi. Klient łączy się z serwerem.
-app_template_heading	Katalog startowy (opcjonalnie)
-app_template_blurb	Ładuje przykładowy katalog; Właściciel Zahir (zahir), Admin Asif (asif, PIN 1111), Kasjer Nawaz (nawaz, PIN 0000); podatek/GST wyłączony; przedni pasek boczny; historia zostanie wyczyszczona po 4 godzinach (i wyczyszczona teraz w kopii zapasowej); Dzisiaj się rozbierz; rachunek kompaktowy + Marginesy standardowe dla wąskich tac. Elementy równorzędne podatków i paska bocznego można ponownie włączyć w Ustawieniach.
-app_template_apply	Zastosuj katalog startowy
-app_template_skip	Pomiń na razie
-app_template_status	Serwer gotowy — zastosuj katalog startowy lub pomiń
-app_template_importing	Stosowanie {title}…
 currency	Waluta
 backup	Kopia zapasowa
 use	Użyj
@@ -307,7 +239,7 @@ attachments_last_expense	Załączniki (ostatni wydatek)
 bank	Banku
 bank_in	Bank w
 bank_out	Z banku
-bank_reconciliation	Uzgodnienie konta bankowego (zaznaczyć na wyciągu bankowym)
+bank_reconciliation	Uzgodnienie konta bankowego
 bank_to_till	Bank → kasa
 book_add_dish	Książka — dodaj przedmiot/przedmiot
 book_opening_credit	Księga — kredyt początkowy
@@ -337,9 +269,6 @@ share_whatsapp	Udostępnij WhatsApp
 lan_pages_heading	Strony klientów w sieci Wi-Fi
 lan_pages_help	W sieci Wi-Fi tego sklepu strony klientów służą do wyświetlania informacji zwrotnych. Osoby korzystające z mobilnej transmisji danych będą potrzebować chmury później. Terminal kartowy lub łącze płatnicze są opcjonalne i nigdy nie blokują kasy.
 diag_send_heading	Udostępnij to urządzenie
-optional_login_heading	Opcjonalne logowanie
-rights_heading	Prawa
-ops_panel	Lokalne operacje
 crm_heading	Klienci i wiadomości
 crm_help	Goście urodzinowi, lojalnościowi, nieaktywni i najlepsi — kolejka SMS lub WhatsApp intencje. Użyj {name} i {points} w wiadomości. Właściciel klika wysyłanie; nic nie wybucha samo.
 crm_queue_sms	Kolejka SMS
@@ -364,21 +293,17 @@ till_wallet_topup_ph	Doładuj kwotę portfela
 till_voucher_issue_amt_ph	Wydaj kwotę kuponu
 till_voucher_issue_code_ph	Nowy kod kuponu
 bulk_price_apply	Zastosuj cenę zbiorczą
-card_terminal_optional	Terminal do kart / łącze płatnicze (opcjonalnie, jeśli dostępny jest internet)
 copy_report	Skopiuj raport
 counted_cash_ph	Przeliczona gotówka w szufladzie
 country_tax	Kraj i podatek
 create_backup	Utwórz kopię zapasową
 credit_limit_heading	Limit kredytowy (wybrany klient lub dostawca)
-day_close_summary	Podsumowanie dnia
 delete_party	Usuń wybranego klienta lub dostawcę
-delivery	Dostawa
 done_open_books	Gotowe — otwórz księgi
 drawer_count	Liczba szuflad (opcjonalnie)
 expense_heading	Wydatek
 export_day	Dzień eksportu
 extra_note_bill_ph	Dodatkowa uwaga do tego rachunku/sprzedaży
-extra_note_expense_ph	Dodatkowa notatka na temat ostatniego wydatku
 extra_tills_heading	Dodatkowe kasy
 other_devices_help_heading	Skonfiguruj inne urządzenia
 other_devices_help	Na tym urządzeniu (serwerze): Inne urządzenia → Zezwól na dodatkowe kasy. Zanotuj kod parowania i adres Wi-Fi. Stuknij Zezwalaj innym urządzeniom na łączenie się, jeśli się pojawi. Na komputerze kliknij opcję Uruchom na tym komputerze. Na każdym urządzeniu: zainstaluj aplikację, wybierz Tryb Klienta, Znajdź serwer sklepu (lub wpisz adres), wprowadź kod parowania, Połącz teraz. Zamówienia oczekują na urządzeniu, jeśli połączenie Wi-Fi zostanie przerwane, i znikają, gdy serwer ponownie odpowie. Dodatkowe drukarki są ustawione na Serwerze (Ustawienia → Drukarki) — dodatkowe kasy wysyłają tam rachunki.
@@ -392,7 +317,6 @@ login_id_ph	Nazwa użytkownika
 mark_cleared	Marek oczyścił
 new_party_clear	Nowy klient lub dostawca (czytelny formularz)
 new_party_kind_supplier_ph	Nowy rodzaj klienta lub dostawcy (Dostawca)
-next_country	Następny kraj
 next_order	Następne zamówienie (posprzątane biurko)
 note_gstin_ph	Uwaga / GSTIN / przypomnienie o umowie
 notes_attach_party	Notatki i załączniki (wybrany klient lub dostawca)
@@ -410,8 +334,6 @@ pay_ap_cash	Zapłać gotówką AP
 pay_ap_heading	Zapłać to, co jesteśmy im winni (AP)
 pay_ap_upi	Zapłać AP UPI
 pay_selected_heading	Wybrano płatność (uregulowaj dług / pobierz zaliczkę)
-pick_from_items	Wybierz spośród naszych produktów
-prev_country	Poprzedni kraj
 print_open	Wydrukuj / otwórz
 reason_amend_ph	Powód zmiany / unieważnienia / zwrotu pieniędzy
 reason_note_ph	Powód/uwaga (marnotrawstwo, liczba,…)
@@ -435,14 +357,10 @@ history_after_hours	Po godzinach
 history_hours_ph	Godziny (1–168, domyślnie 4)
 history_hours_save	Oszczędzaj godziny
 history_clear_now	Wyczyść historię teraz
-history_cleared	Historia transakcji wyczyszczona – konfiguracja zachowana
-history_retention_saved	Czyszczenie historii zostało zapisane
 history_hours_saved	Zapisano godziny historii
-history_owner_only	Tylko właściciel lub administrator może wyczyścić historię
 rollup	Zestawienie
 save_brand	Zapisz markę
 save_business_id	Zapisz identyfikator firmy
-save_business_name	Zapisz nazwę firmy
 save_features	Zapisz
 save_features_named	Zapisz {name}
 save_features_ok	Zapisano konfigurację dla {name}
@@ -473,7 +391,6 @@ copy_pair_code	Skopiuj kod parowania
 new_pair_code	Nowy kod parowania
 pair_finishing	Kończąca para… stosowanie ksiąg sklepowych
 pair_opening	Otwieranie kasy…
-pair_copied	Kod parowania został skopiowany
 lan_offline_waiting	Serwer sklepu nieosiągalny · {n} czeka
 lan_connecting	Łączę ze sklepem…
 lan_live	Na żywo
@@ -487,7 +404,6 @@ firewall_waiting	Oczekiwanie na monit administratora…
 lan_join_help	Na drugim urządzeniu: Tryb Klienta → Znajdź serwer sklepu (lub wpisz {addr}) → kod parowania {code}.
 lan_pair_status	Wi‑Fi {addr}
 lan_join_help_no_addr	Podłącz to urządzenie do Wi‑Fi, aby uzyskać adres.
-lan_no_address	Nie ma jeszcze adresu Wi‑Fi — połącz się ze sklepem Wi‑Fi.
 lan_not_listening	Nie akceptuje urządzeń (port {port} zajęty). Uruchom ponownie aplikację.
 lan_tills_off	Dodatkowe kasy są wyłączone. Zezwól im na dołączenie innego urządzenia.
 paired_with	Sparowany · {url}
@@ -508,41 +424,21 @@ printers_help	Znajdź drukarki, dotknij jednej, aby ją wybrać, a następnie Wy
 printers_host_only	Drukarki są ustawione na urządzeniu sklepowym (Serwerze). Ta kasa wysyła tam rachunki i stare bilety — Znajdź/dodaj/przypisz pobyt na serwerze. Strona testowa i rozmiar wydruku rachunku trafiają na Serwer.
 printers_find_heading	Znajdź drukarki
 printers_find_tip	Znajdź skanuje to urządzenie i aktualizuje listę.
-printers_pool_heading	Drukarki
-printers_pool_tip	Funkcja Znajdź skanuje to urządzenie i aktualizuje tę listę.
 printers_pool_empty	(jeszcze żaden — kliknij Znajdź)
-printers_routes_help	Znajdź drukarki, które system operacyjny już zna. Przypisz je do rachunku i do każdej sekcji w formacie Bill & Slip.
 printer_assign_dd	Prawdziwa drukarka: {place}
 printer_assign_pick	Wybierz prawdziwą drukarkę
 printer_profile_heading	Układ
 vp_delivery_heading	Dostawa
 vp_delivery_help	Jak ta wirtualna drukarka wysyła zadania — dokument systemu operacyjnego, surowe bajty lub ESC/POS. Treść kuponu (rozmiar typu, opakowanie, marginesy) jest ustalana na podstawie formatu rachunku/listu, a nie tutaj.
-vp_type_size_heading	Wpisz rozmiar
-vp_wrap_heading	Szerokość owinięcia
-vp_margin_heading	Marginesy
 vp_delivery_spooler	Dokument systemu operacyjnego (bufor systemowy)
 vp_delivery_raw	Surowe bajty do urządzenia
 vp_delivery_escpos	ESC/POS polecenia termiczne
 virtual_printer_new	Nowa wirtualna drukarka
 virtual_printer_selected	Edycja „{name}” — dotknij innego na liście, aby przełączyć
-virtual_printer_tap_list	Kliknij drukarkę wirtualną na liście, aby ją edytować
 config_layout_portrait	Portret
 config_layout_landscape	Krajobraz
 config_send_os	Bufor systemowy
 config_send_escpos	ESC/POS
-profiles_heading	Układy
-profiles_empty	(jeszcze brak układów)
-profile_builtin	wbudowany
-profile_custom	niestandardowe
-profile_name_ph	Nazwa układu
-profile_new	Nowy układ
-profile_delete	Usuń układ
-profile_created	Układ został utworzony
-profile_deleted	Układ usunięty
-profile_builtin_keep	Wbudowanych układów nie można usunąć
-config_saved	Zaktualizowano
-config_selected	Wybrano „{name}”
-printer_output_heading	Drukarki wirtualne
 virtual_printers_heading	Drukarki wirtualne
 virtual_printers_empty	Nie ma jeszcze drukarek wirtualnych — ustaw wartości poniżej, a następnie Zapisz. Gdy już będziesz mieć kilka, dotknij jednego z listy, aby je edytować.
 virtual_printer_name_ph	Nazwa drukarki wirtualnej (opcjonalnie)
@@ -554,71 +450,32 @@ virtual_printer_deleted	Usunięto drukarkę wirtualną „{name}”
 virtual_printer_updated	Zaktualizowano drukarkę wirtualną
 virtual_printer_updated_named	Zaktualizowano drukarkę wirtualną „{name}”.
 virtual_draft_layout	Wartości ustawione dla następnej drukarki wirtualnej
-virtual_draft_send	Wartość ustawiona dla następnej drukarki wirtualnej
 virtual_need_real	Najpierw wybierz prawdziwą drukarkę
 virtual_need_select	Wybierz drukarkę wirtualną do usunięcia
 real_printer_selected	Wybrane: {name}
-printers_routes_heading	Gdzie wszystko się drukuje
-route_pick_heading	Miejsce
 route_editing	Edycja: {name}
-route_assigned	Dodano {printer} do {place}
-route_already_assigned	Już w tym miejscu: {printer}
 route_cleared	Wyczyszczono {name}
-route_assigned_empty	Żadnego w tym miejscu
-route_tap_select	dotknij, aby wybrać
 route_tap_selected	wybrane
-route_pick_printer_first	Najpierw dotknij drukarki
-route_assigned_heading	Drukarki
-route_add_heading	Przypisz
-printer_label_ph	Nazwa (np. drukarka licznikowa)
 printer_target_ph	Nazwa drukarki systemowej lub host: 9100
 printer_target_default	zwykła drukarka tego komputera (pusty adres)
-printer_wire_heading	Profil
-printer_wire_escpos	ESC/POS
-printer_wire_os	Portret
-printer_wire_os_portrait	Portret
-printer_wire_os_landscape	Krajobraz
-printer_wire_escpos_short	ESC/POS
-printer_wire_os_short	Portret
-printer_wire_os_landscape_short	Krajobraz
-printer_format_custom	Nowy profil niestandardowy
-printer_format_custom_label	Niestandardowe
-printer_format_custom_added	Dodano niestandardowy profil dla tego miejsca
-add_printer	Dodaj drukarkę
-route_pick_ph	Rachunek lub sekcja sklepu
 route_bill	Rachunek
-route_dont_print	Brak drukarki
 station_print_pick_first	Najpierw wybierz sekcję sklepu
-station_vps_empty	Nie ma jeszcze drukarek — znajdź je w Ustawieniach → Drukarki
 bill_printers_dd	Drukarki za rachunek
 bill_printers_dd_n	{n} drukarki do rachunku · dotknij, aby zmienić
 station_vp_attached	Drukarka podłączona
 station_vp_detached	Drukarka usunięta ze stacji
-route_up	W górę
-route_down	W dół
-route_clear	Jasne
-save_printers	Oszczędzaj drukarki
 print_test_page	Wydrukuj stronę testową
 no_printer_assigned	Brak drukarki
-test_page_no_printer	Brak drukarki przez {place} — podłącz do niej drukarkę i spróbuj ponownie
 test_page_pick_first	Najpierw wybierz drukarki do strony testowej, a następnie Wydrukuj stronę testową
 test_printers_dd	Drukarki do strony testowej
 test_printers_dd_n	{n} drukarek dla strony testowej · dotknij, aby zmienić
 test_printer_picked	Testuj na: {name}
 test_printer_cleared	Nie testuję na: {name}
 test_page_sent_n	Strona testowa wysłana do {n} drukarek
-batch_cancel	Anuluj zaznaczone
-batch_cancel_n	Anuluj zaznaczone ({n})
-batch_cancel_none	Najpierw zaznacz jedną lub więcej wysłanych przesyłek, a następnie zaznacz opcję Anuluj
-batch_cancel_title	Anuluj zaznaczone elementy — jeden powód, jeden odcinek anulowania na sekcję
-batch_cancel_ok	Anulowano pozycje {n} · {slips} anulował odcinek(-y) → {kitchens}
-batch_cancel_ok_noprint	Anulowano pozycje {n} — automatyczne drukowanie jest wyłączone, więc nie ma potwierdzenia anulowania
 printers_saved	Zapisano
-test_page_sent	Wysłano stronę testową — sprawdź drukarkę
 test_page_sent_one	Strona testowa wysłana do {name} — sprawdź tę drukarkę
 printers_found	Znaleziono {n}: {list}
 printers_find_synced	Znaleziono {n} — {new} nowy
-printer_on_device	zapisane
 printer_already_added	już dodane
 printer_already_saved	Już zapisane: {name}
 find_printers	Znajdź drukarki
@@ -628,7 +485,6 @@ cancelled	Anulowano
 printers_tap_find	Kliknij Znajdź, aby wyświetlić listę drukarek, z których może korzystać to urządzenie.
 printers_none_found	Nie znaleziono żadnej — wpisz nazwę drukarki systemowej lub adres IP (np. 192.168.1.50).
 printer_from_find	Dodano {name}
-bill_printer_ph	Drukarka do rachunków
 queue_refused	Sklep nie przyjął ({n}) — każdą sprawdź przy kasie:
 clear_not_accepted	Zaznaczone — wyczyść tę listę
 device_name_ph	Nazwa tego urządzenia
@@ -638,7 +494,6 @@ connected_now	podłączony teraz
 backup_failed	Ostatnia automatyczna kopia zapasowa nie powiodła się: {e}
 backup_overdue	Brak kopii zapasowej przez {n} dni — pozostaw aplikację otwartą na tym urządzeniu, aby móc wykonać kopię zapasową.
 disk_low	Tylko {mb} MB wolnego miejsca na tym urządzeniu — tworzenie kopii zapasowych wkrótce nie powiedzie się. Zwolnij trochę miejsca.
-last_seen_devices	Ostatnio widziany: {time}
 connection_to_shop	Połączenie ze sklepem
 supplier_name_ph	Nazwa dostawcy (lub klienta)
 supplier_ph	Dostawca
@@ -696,7 +551,6 @@ currency_use_help	Przewiń i dotknij opcji Użyj dla dowolnej obsługiwanej walu
 day_close_help	Rejestracja zamknięcia dnia zapisuje to podsumowanie (i wariancję szuflady, jeśli została zliczona) w dzienniku audytu. Nie przestaje sprzedawać.
 expenses_word	Wydatki
 feature_access_help	Co mogą otworzyć — opcjonalne; powyższe zadanie już ustawia wartość domyślną
-footer_local	Lokalny SQLite · Bezpłatnie na zawsze · Zero Cloud
 fresh_book_kirano	Świeży = pusty katalog (dodaj pozycje później). Książka = wpisz stan początkowy i poniżej kto jest Ci winien.
 fresh_selected	Świeżo wybrane — katalog pozostaje pusty. Kliknij Gotowe, gdy będziesz gotowy.
 gross_word	Brutto
@@ -709,12 +563,9 @@ net_word	Netto
 offline_badge	W trybie offline
 optional_login_help	Opcjonalny login (id + hasło). Właściciel ustawia raz; tylko użytkownik może później zmienić hasło.
 or_unlock_login	Lub odblokuj za pomocą identyfikatora logowania + hasła
-permission_preset	Praca (ustawia ekrany i akcje pieniężne)
-preset_help_kirano	Kasjer: sprzedaj. Menedżer: sprzedaj + przedmioty + unieważnij/zmień.
-product_locked_kirano	Kirano
+permission_preset	Praca
 product_only_kirano	Kirano to system operacyjny dla sklepów spożywczych/kirana: sprzedaż hurtowa, zapasy, kredyty i książki — w trybie offline na Twoich urządzeniach.
 purchases_cogs	Zakupy (COGS)
-qty_cap	ILOŚĆ
 restore_help	Przywróć: wybierz kopię zapasową. Księgi otwierają się tak, jak wtedy; księgi w obecnym stanie są zapisywane jako pierwsze, więc można to cofnąć.
 wipe_data_heading	Usuń dane lokalne
 wipe_data_help	Tylko właściciel — te same opcje, co w przypadku odinstalowywania systemu Windows. Rejestry biznesowe usuwają historię transakcji, ale zachowują pozycje i konfigurację (np. PIN odblokowania awaryjnego). Konfiguracja sklepu usuwa bazę danych książek. Preferencje ekranu czyści okno/język. Potwierdź za pomocą kodu PIN właściciela. Kod PIN do awaryjnego odblokowania w Teamie jest oddzielny (ukryte czyszczenie przy odblokowaniu).
@@ -747,7 +598,6 @@ staff_renamed	Nazwa została zapisana
 staff_setup_copied_hire	Konfiguracja skopiowana z {name} — ustaw nową nazwę i PIN, a następnie Dodaj laskę
 staff_setup_copied_edit	Skopiowano konfigurację {from} na {to}
 staff_copy_need_selected	Wybierz, kogo chcesz edytować jako pierwszego
-staff_copy_need_source	Wybierz, czyją konfigurację chcesz skopiować
 staff_copy_same	To ta sama osoba — wybierz kogoś innego
 staff_rename_need_selected	Wybierz, kogo najpierw zmienić nazwę
 team_pick_hint	Wybierz, kogo chcesz edytować — ekrany, prawa do pieniędzy i stacje będą wyświetlane tylko dla tej osoby.
@@ -762,15 +612,9 @@ unit_picker_off	Wyłączone
 we_owe_them	Jesteśmy im to winni
 who_unlocking	Kto odblokowuje?
 locked_word	Zablokowane
-show_pin	Pokaż PIN
-hide_pin	Ukryj PIN
 set_owner_pin	WŁAŚCICIEL ZESTAWU PIN
 enter_owner_passcode	WPROWADŹ HASŁO WŁAŚCICIELA
 enter_staff_passcode	WPROWADŹ KOD PRACOWNIKA
-pin_count_zero	0/12 cyfr · co najmniej 4, następnie OK
-pin_count_need	{} / 12 cyfr · potrzeba jeszcze {}
-pin_count_full	12 / 12 cyfr · naciśnij OK
-pin_count_ready	{} / 12 cyfr · naciśnij OK, gdy będziesz gotowy
 pin_hint_choose	Wybierz 4–12 cyfr · Wprowadź lub Odblokuj, aby zapisać
 pin_hint_new	Nowy 4–12-cyfrowy właściciel PIN · Wprowadź lub odblokuj
 pin_hint_shop_code	Kup urządzenie · kod parowania {}
@@ -779,23 +623,15 @@ pin_hint_paired	Dodatkowe do sparowania — odblokuj, aby sprzedać
 pin_hint_pair_first	Dodatkowa kasa — najpierw sparuj z urządzeniem sklepowym
 unlock_to_continue	Odblokuj, aby kontynuować
 no_staff_yet	Nie ma jeszcze personelu — odblokuj jako właściciel, a następnie jako zespół
-status_server_set_pin	Tryb serwera — ustaw właściciela PIN
-status_server_tills	Tryb serwera — można dołączyć dodatkowe kasy. Odblokuj
-status_server_unlock	Tryb serwera — odblokuj jako właściciel
-status_client_unlock	Tryb Klienta — odblokuj, aby sprzedawać
 icon_new_selected	Ikona: wybrany nowy plik — kliknij Zapisz markę
 icon_custom	Ikona: niestandardowy znak miejsca
 icon_default	Ikona: znak Kumkaj (domyślny) — wybierz niestandardową
 logo_yours	Logo: logo Twojego sklepu — wyświetlane na ekranach i paragonach
 logo_default	Logo: znak Kumkaj (domyślnie) — wybierz własne, jeśli je posiadasz
-tmpl_current	Aktualne: {} — {}
-tmpl_selected	Wybrane: {} — {}
 setup_complete	Konfiguracja ukończona
 onboard_fresh_tmpl	Świeże · {} – katalog zaczyna się pusty; dodaj pozycje w obszarze Pozycje, a następnie Gotowe.
 onboard_book_tmpl	Zarezerwuj · {} — dodaj pozycje i napisy początkowe, a następnie Gotowe.
-onboard_template_tmpl	Jeśli chcesz, nazwij miejsce i wybierz, od czego zacząć.
 tmpl_blurb	Licznik Kirana: sprzedaż, zapasy, khata, zakupy dostawców, książki.
-tmpl_how	Sprzedawaj w kasie; Kup na magazynie; Książki na co dzień.
 reports_facet_title	Raporty
 reports_facet_help	Księgi dzienne, wiek klientów lub dostawców, wpisy bankowe i okresowe zyski i straty.
 against_bill_ph	Na podstawie rachunku nr powyżej (opcjonalnie)
@@ -806,14 +642,12 @@ amount_ph	Kwota
 amount_received_ph	Otrzymana kwota
 amount_we_pay_ph	Kwota, którą płacimy
 business_name_ph	Nazwa firmy
-category_new_ph	Kategoria (opcjonalna, utworzona, jeśli jest nowa)
 code_bag_ph	Kod (torba)
 conv_factor_ph	Współczynnik (25 = 1 worek → 25 kg)
 country_code_ph	Kod kraju, np. W, GB, USA, AE, BR
 credit_khata_amount_ph	Kwota kredytu/księgi kredytowej
 credit_limit_ph	Limit kredytowy (0 = brak)
 from_code_ph	Z kodu (torba)
-item_name_lang_ph	Nazwa pozycji — wpisz ją w swoim języku
 login_id_opt_ph	Nazwa użytkownika (wymagana, unikalna)
 manager_pin_ph	Menedżer PIN do zatwierdzenia (tylko jeśli nie możesz unieważnić)
 new_branch_name_ph	Nowa nazwa oddziału
@@ -821,15 +655,12 @@ new_password_ph	Nowe hasło (opcjonalnie)
 new_pin_ph	Nowy PIN (4–12 cyfr)
 note_bank_ph	Uwaga (wpłata, wypłata,…)
 note_buy_expense_ph	Uwaga (paliwo, czynsz,…)
-note_expense_ph	Uwaga (paliwo, biuro,…)
 options_kirano_ph	Opcje — Rozmiar*: Mały=199, Duży=399 | Dodatki+3: Ser=40, Oliwka=30 | Dodatkowy ser = 40
-part_second_way_ph	Część drugim sposobem (opcjonalnie)
 phone_ph	Telefon
 place_name_ph	Nazwa tego miejsca
 qty_example_ph	Ilość (np. 1,5 na kg)
 quantity_ph	Ilość
 reason_required_ph	Powód (wymagany)
-role_title_ph	Stanowisko (np. Barista)
 service_pct_ph	Usługa % opcjonalna 0/10/12
 short_code_ph	Krótki kod (MG02)
 starting_password_ph	Hasło startowe (opcjonalnie)
@@ -864,14 +695,11 @@ shift_handover	Przekazanie zmiany
 shift_since	Ta zmiana od
 expected_in_drawer	Oczekiwane w szufladzie
 right_discount	Daj zniżkę
-pick_category	Wybierz kategorię
-close_category_list	Zamknij listę kategorii
 new_category_row	Nowa kategoria — utworzona po zapisaniu pozycji
 your_category	Twoja kategoria
 suggested_category	Sugerowane — z naszych produktów
 category_search_ph	Kategoria — wyszukaj swoją lub wpisz nową
 cancel_item_short	Anuluj
-cancel_item_title	Anuluj ten przedmiot — dział obsługi klienta otrzymuje potwierdzenie anulowania
 return_to_customer	Wróć do klienta
 short_by	Krótko
 tip_not_sale	Napiwek (dla personelu, nie na sprzedaż)
@@ -884,9 +712,7 @@ finding_server	Szukam serwera sklepu na tym Wi‑Fi…
 no_server_found	Nie znaleziono żadnych. Na serwerze: Ustawienia → Inne urządzenia → Zezwól na dodatkowe kasy (to samo Wi‑Fi). Lub wpisz pokazany tam adres IP.
 servers_found_pick	Kliknij sklep, z którym chcesz się połączyć.
 server_host_selected	Używając {host} — wprowadź kod parowania, a następnie Połącz teraz.
-print_bill	Wydrukuj rachunek
 approval_pin_ph	Menedżer PIN (tylko jeśli zostaniesz o to poproszony)
-confirm	Potwierdź
 menu_search_ph	Wyszukaj przedmiot lub krótki kod
 customer_paid_ph	Klient zapłacił
 tip_ph	Wskazówka
@@ -896,7 +722,6 @@ bill_format_help	Drukowane pod nazwą Twojego sklepu na każdym rachunku. Oddzie
 bill_header_ph	Adres | telefon
 fssai_ph	FSSAI / licencja sklepu nr. (fakultatywny)
 bill_footer_ph	Stopka (np. Dziękuję, odwiedź ponownie)
-save_bill_format	Zapisz format rachunku
 kot_field_on	pokaż
 kot_field_off	ukryć
 kot_weight_light	Światło
@@ -907,10 +732,8 @@ kot_weight_bold	Odważne
 kot_align_start	Zacznij
 kot_align_center	Centrum
 kot_align_end	Koniec
-content_width	Szerokość zawartości (mm)
 content_width_bill	Szerokość zawartości banknotów (mm)
 content_width_ph	Możesz też wpisać szerokość treści 40–210 mm
-content_width_help	Jak szeroki jest wydruk tego poślizgu. Bill zachowuje swoją szerokość.
 content_width_bill_help	Szerokość wydruku rachunku klienta. Domyślnie 210 mm (strona). Wąska kartka 58 mm, szerokość 80 mm, 112 mm 4 cale, szerokość A4 210 mm. Wpisz dowolną wartość od 40 do 210. Bilety mają własną szerokość na zakładce kuponu.
 vp_paper_width	Szerokość zawartości (mm)
 vp_paper_width_ph	Możesz też wpisać szerokość treści 40–210 mm
@@ -925,9 +748,6 @@ test_bill_sent	Wysłano podgląd rachunku
 test_print_no_printer	Brak drukarki dla tego zadania — wybierz ją na tym ekranie
 std_print	Rozmiar wydruku rachunku
 std_print_help	Rozmiar czcionki dla standardowych zadań rachunków w orientacji pionowej i poziomej na drukarkach z systemem operacyjnym/dokumentów (wprowadź punkty — nie Mały/Normalny/Duży). Ten sam rozmiar w obu orientacjach.
-std_size_s	Mały
-std_size_m	Normalne
-std_size_l	Duży
 save_std_print	Zapisz rozmiar wydruku rachunku
 std_print_saved	Rozmiar wydruku rachunku został zapisany
 print_brand_kit	Wydrukuj zestaw marki
@@ -940,14 +760,9 @@ choose_payment_qr	Wybierz płatność QR
 clear_payment_qr	Wyczyść płatność QR
 payment_qr_set	QR płatności: w pliku — wyświetlany na wyświetlaczu klienta (zastępuje tam kwotę UPI QR)
 payment_qr_none	QR płatności: brak — kwota QR z UPI ID przy płatności
-aggregator_import	Zamówienia agregatora (plik)
-aggregator_import_help	Opcjonalny import lokalny: umieść plik import_aggregator_orders.json w folderze kopii zapasowych (tablica lub {"orders":[…]}), a następnie kliknij Importuj. Nigdy nie blokuje licznika; na żywo Zomato/Swiggy is Cloud.
-import_aggregator_file	Importuj plik agregatora
 team_pick_ph	Personel do edycji — imię i nazwisko, nazwa użytkownika lub wybór
 select_staff	Wybierz tę laskę
 rights_help	Akcje pieniężne dla tej osoby — dotknij, aby cyklicznie: Dozwolone → Wymaga PIN-u szefa → Niedozwolone. Drukuj rachunek ponownie to tylko rachunki; sekcje znajdują się na poniższej liście kontrolnej.
-dish_picker_help	Wyszukaj lub przeglądaj nasze produkty i dotknij jednego, aby wpisać jego nazwę i zdjęcie — lub zachowaj własne imię i nazwisko. Ustaw cenę (0 jest w porządku), a następnie Dodaj przedmiot.
-close_dish_list	Zamknij listę przedmiotów
 own_item_name	Użyj tego jako własnej nazwy przedmiotu
 on_your_menu	W katalogu
 edit	Edytuj
@@ -958,24 +773,16 @@ add_scheme	Dodaj BOGO
 schedule_ph	Godziny otwarcia — pon.-pt. 07:00-11:00 lub wieczór 17:00-19:00=150
 upi_vpa_ph	UPI ID (VPA)
 upi_payee_ph	UPI nazwa odbiorcy płatności (opcjonalnie)
-upi_qr	UPI QR
 show_upi_qr	Pokaż UPI QR
 close_upi_qr	Zamknij
 upi_qr_help	Klient skanuje i płaci. Kliknij Przyjmij płatność po zapłaceniu. Drugi ekran: otwórz adres URL serwera/wyświetl w sieci LAN.
-recently_done	Niedawno zrobione
 role_help_customer	Rola: Klient — księga kredytowa (jest nam winien). Ten sam klient lub dostawca może również dostarczać zapasy.
 role_help_both	Role: Klient + Dostawca — jeden klient lub dostawca, księga kredytowa i księga zobowiązań, netto w Raportach.
 role_help_supplier	Rola: Dostawca — jesteśmy im winni zakupy.
-items_word	przedmioty
-items_section	Przedmioty
-back_to_order	Powrót do porządku
-new_items_head	Jeszcze nie wysłane
 price_ph	Cena
 price_ph_gst_inside	Cena ({tax} włącznie)
-tax_rates_missing_hint	Brak stawki {tax} dla tych pozycji — dla ustawionych pozycji Stawka podatku (ceny obejmują już {tax} poniżej {tax} włącznie)
 taxable_value	Wartość podlegająca opodatkowaniu
 gst_inside_price_note	({tax} włącznie)
-start_with_template	Zacznij od naszego szablonu przedmiotów
 template_heading	Elementy startowe
 template_info	Kategorie {c} i elementy {d} ze zdjęciami są gotowe do dodania. Ceny zaczynają się od 0 INR — ustaw swoje później.
 template_import	Importuj cały szablon
@@ -997,21 +804,13 @@ opening_client	Otwieram klienta…
 preparing_desk	Przygotowanie biurka…
 opening_server	Otwieram serwer…
 creating_server	Tworzę serwer…
-order_empty_pick	Zamów puste — dotknij Dodaj elementy powyżej, aby wybrać pozycje.
 add_dishes	Dodaj elementy
 order_so_far	W tej kolejności: {n} · {total}
 no_dish_match	Żaden element nie pasuje do „{q}”
-pick_dishes_help	Stuknij element, aby go dodać · wybierz kategorię, aby zawęzić listę
 pick_done	Gotowe
-pick_done_dd	Gotowe · {label}
-printer_route_mode	Jeśli w tym miejscu jest kilka drukarek
-printer_mode_first	Po pierwsze, to działa
-printer_mode_all	Drukuj na wszystkim
 kot_field_up	Przesuń się w górę
 kot_field_down	Przesuń w dół
-app_template_blurb_extra	Także: Właściciel Zahir, Admin Asif, Kasjer Nawaz; przedni pasek boczny; historia po 4 godzinach; Dzisiaj się rozbierz; kompaktowy rachunek.
 dishes_n	Elementy {n}
-recipe_ph	Przepis (opcjonalnie – nieużywany w sklepie)
 reorder_ph	Kup więcej na
 set_reorder	Ustaw poziom ponownego zamówienia
 low_stock_alert	Kończy się — kup wkrótce: {items}
@@ -1020,7 +819,6 @@ show_unpriced	Pokaż tylko przedmioty bez ceny
 show_all_dishes	Pokaż wszystkie elementy
 role_title_rest_ph	Stanowisko (np. kapitan, główny kucharz)
 preset_help_rest	Kasjer: sprzedaj. Menedżer: sprzedaj + przedmioty + unieważnij/zmień.
-kind_raw	Kupiony do użytku w sklepie
 kind_resale	Kupiłem, żeby sprzedać
 kind_dish	Nie licz zapasów
 buy_unit_ph	Jednostka (kg, litr, szt.)

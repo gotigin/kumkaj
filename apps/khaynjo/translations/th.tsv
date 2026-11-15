@@ -41,7 +41,7 @@ remove	ลบออก
 removed_items	รายการที่นำออก
 removed_help	กู้คืนจะนำรายการกลับสู่เมนูเหมือนเดิมทุกอย่าง — ราคา รูป และหมวดหมู่ ชั้นอาหารของเราไม่ถูกลบ จึงเพิ่มจานได้เสมอ
 restore_item	กู้คืน
-empty_catalog	ยังไม่มีรายการ เปิดเมนูและรายการ เพิ่มหนึ่งรายการ (ชื่อ + ราคา) แล้วรับออเดอร์
+empty_catalog	ยังไม่มีรายการ
 total	รวม
 cash	เงินสด
 upi	UPI
@@ -103,23 +103,14 @@ bill_item_qty	จำนวน
 bill_item_price	ราคา
 bill_item_amount	จำนวนเงิน
 bill_item_note	โน้ต
-bill_item_col_gap	ช่องคอลัมน์
 bill_item_col_order	ลำดับคอลัมน์
 bill_item_col_sep	เส้นคอลัมน์
-bill_item_gap_tight	ชิด
-bill_item_gap_comfort	สบาย
-bill_item_gap_wide	กว้าง
-bill_item_num_width	คอลัมน์ตัวเลข
-bill_item_num_compact	กะทัดรัด
-bill_item_num_comfort	สบาย
-bill_item_num_wide	กว้าง
-bill_item_num_align	จัดตัวเลข
-bill_item_gap_em	ช่อง (em)
-bill_item_qty_min	จำนวนต่ำสุด (em)
-bill_item_price_min	ราคาต่ำสุด (em)
-bill_item_amount_min	ยอดต่ำสุด (em)
-kot_item_qty_width	คอลัมน์จำนวน
-kot_item_num_align	จัดจำนวน
+slip_columns	คอลัมน์
+slip_col_width	ความกว้าง (mm)
+slip_col_start	ระยะว่างต้น (px)
+slip_col_end	ระยะว่างท้าย (px)
+slip_col_align	การจัดแนวข้อความ
+slip_columns_help	ความกว้างของแต่ละคอลัมน์รวมระยะว่างต้นและท้ายของคอลัมน์นั้น ข้อความจะตัดบรรทัดภายในคอลัมน์ของตัวเอง ส่วนที่เกินความกว้างเนื้อหาจะถูกตัดออกทั้งบนกระดาษและในตัวอย่าง
 bill_total_qty_label	ป้ายจำนวนรวม
 bill_total_subtotal_label	ป้ายยอดย่อย
 bill_total_grand_label	ป้ายยอดรวม
@@ -221,7 +212,6 @@ sidebar_order_saved	คำสั่งซื้อในแถบด้านข
 sidebar_visibility_saved	ความโปร่งใสของแถบด้านข้างบันทึกแล้ว
 amounts_hide	ซ่อน
 amounts_show	แสดง
-printers_none_hint	บันทึกเครื่องพิมพ์บนอุปกรณ์นี้ก่อน แล้วจึงเพิ่มลงในบิลหรือครัว
 counter	เคาน์เตอร์
 dine_in	ทานที่ร้าน
 takeaway	นำกลับ
@@ -328,8 +318,6 @@ selected_language	ที่เลือก
 continue	ดำเนินการต่อ
 this_device	อุปกรณ์นี้
 device_use_q	อุปกรณ์นี้จะใช้อย่างไร
-last_server_mode	เคยเป็นเซิร์ฟเวอร์ — แตะเพื่อดำเนินการต่อ
-last_client_mode	เคยเป็นไคลเอนต์ — แตะเพื่อดำเนินการต่อ
 choose_server	เลือกเซิร์ฟเวอร์
 choose_server_hint	อุปกรณ์นี้มีเซิร์ฟเวอร์อยู่แล้ว เปิดหนึ่งเครื่อง หรือสร้างเซิร์ฟเวอร์ใหม่สำหรับธุรกิจอื่น
 create_new_server	สร้างเซิร์ฟเวอร์ใหม่
@@ -391,7 +379,7 @@ attachments_last_expense	ไฟล์แนบ (ค่าใช้จ่าย�
 bank	ธนาคาร
 bank_in	เข้าธนาคาร
 bank_out	ออกจากธนาคาร
-bank_reconciliation	กระทบยอดธนาคาร (ติ๊กตามสเตทเมนต์)
+bank_reconciliation	กระทบยอดธนาคาร
 bank_to_till	ธนาคาร → เคาน์เตอร์
 book_add_dish	จอง — เพิ่มจาน / รายการ
 book_opening_credit	จอง — เครดิตเริ่มต้น
@@ -744,7 +732,6 @@ station_print_pick_first	เลือกสถานีครัวก่อน
 station_print_editing	กำลังแก้ไขเครื่องพิมพ์ของ “{name}”
 station_vps_dd	เครื่องพิมพ์ของสถานีนี้
 station_vps_dd_n	{n} เครื่องพิมพ์ · แตะเพื่อเปลี่ยน
-station_vps_empty	ยังไม่มีเครื่องพิมพ์ — ค้นหาใน การตั้งค่า → เครื่องพิมพ์
 bill_printers_dd	เครื่องพิมพ์สำหรับบิล
 bill_printers_dd_n	{n} เครื่องพิมพ์สำหรับบิล · แตะเพื่อเปลี่ยน
 job_layout	เลย์เอาต์
@@ -889,7 +876,7 @@ net_word	สุทธิ
 offline_badge	ออฟไลน์
 optional_login_help	เข้าสู่ระบบเสริม (รหัส + รหัสผ่าน) เจ้าของตั้งครั้งเดียว หลังจากนั้นเฉพาะผู้ใช้เท่านั้นที่เปลี่ยนรหัสผ่านได้
 or_unlock_login	หรือปลดล็อกด้วยรหัสเข้าสู่ระบบ + รหัสผ่าน
-permission_preset	ชุดสิทธิ์ (เข้าถึงอะไรได้)
+permission_preset	ชุดสิทธิ์
 preset_help_khaynjo	แคชเชียร์: ขาย ผู้จัดการ: ขาย + รายการ + ยกเลิก/แก้ไข
 product_locked_khaynjo	Khaynjo
 product_only_khaynjo	แอปนี้เป็น Khaynjo เท่านั้น — ระบบสำหรับร้านอาหาร ธุรกิจอื่นมีผลิตภัณฑ์ Kumkaj แยกต่างหาก
@@ -961,10 +948,6 @@ pin_hint_paired	เคาน์เตอร์เสริมจับคู่�
 pin_hint_pair_first	เคาน์เตอร์เสริม — จับคู่กับอุปกรณ์ร้านก่อน
 unlock_to_continue	ปลดล็อกเพื่อดำเนินการต่อ
 no_staff_yet	ยังไม่มีพนักงาน — ปลดล็อกในฐานะเจ้าของ แล้วทีม
-status_server_set_pin	โหมดเซิร์ฟเวอร์ — ตั้ง PIN เจ้าของ
-status_server_tills	โหมดเซิร์ฟเวอร์ — เคาน์เตอร์เสริมเข้าร่วมได้ ปลดล็อก
-status_server_unlock	โหมดเซิร์ฟเวอร์ — ปลดล็อกในฐานะเจ้าของ
-status_client_unlock	โหมดไคลเอนต์ — ปลดล็อกเพื่อขาย
 icon_new_selected	ไอคอน: เลือกไฟล์ใหม่แล้ว — แตะบันทึกแบรนด์
 icon_custom	ไอคอน: เครื่องหมายร้านของคุณเอง
 icon_default	ไอคอน: เครื่องหมาย Kumkaj (ค่าเริ่มต้น) — เลือกของคุณเอง
@@ -1033,7 +1016,7 @@ book_kind_balance	งบดุล
 order_help	เลือกออเดอร์ที่เปิดอยู่ หรือเลือกโต๊ะเพื่อเริ่มใหม่ แตะรายการที่พร้อม ส่ง KOT ออกบิลหนึ่งรายการหรือมากกว่า แยกบิล และชำระเงิน
 floor_help	แต่ละโต๊ะแสดงว่าแขกนั่งอยู่หรือไม่ บิลที่เปิดอยู่คืออะไร และใครต้องการบริการต่อไป
 kitchen_help	ติดตามจำนวนที่พร้อมตามตัวแปรหรือตามรายการ — บันทึกใน KOT ตามต้องการ
-kitchen_empty	ตอนนี้ไม่มีรายการเปิดอยู่ — ออเดอร์ใหม่จะปรากฏที่นี่
+kitchen_empty	ตอนนี้ไม่มีรายการเปิดอยู่
 add_a_table	เพิ่มโต๊ะ
 add_station_heading	เพิ่มสถานี · เช่น ทันดูร์ อินเดียใต้
 categories_help	หมวดหมู่แสดงว่าอาหารจานหนึ่งอยู่ในส่วนใดของเมนู — เช่น ขนมทานเล่น จานหลัก หรือบิรยานี สร้างหมวดหมู่ในแบบของคุณ: เลือกชื่อที่เราแนะนำ เปลี่ยนชื่อ หรือเพิ่มของคุณเอง
@@ -1131,7 +1114,6 @@ bill_format_help	พิมพ์ใต้ชื่อร้านในทุก
 bill_header_ph	ที่อยู่ | โทรศัพท์
 fssai_ph	เลขใบอนุญาต FSSAI (อินเดีย)
 bill_footer_ph	ท้ายบิล (เช่น ขอบคุณ แล้วพบกันใหม่)
-save_bill_format	บันทึกรูปแบบบิล
 reset_bill_format	กลับค่าเริ่มต้น
 bill_format_reset	รีเซ็ตรูปแบบบิลแล้ว
 reset_kot_format	กลับค่าเริ่มต้น
@@ -1201,13 +1183,11 @@ kot_copies_3	3
 kot_title_ph	ชื่อเรื่อง (ว่าง = KOT - KITCHEN ORDER)
 kot_footer_ph	โน้ตครัว (ไม่บังคับ ไม่มีราคา)
 kot_preview	ตัวอย่าง
-save_kot_format	บันทึกรูปแบบ KOT
 test_kot_format	ทดสอบ KOT
 test_kot_sent	ส่งตัวอย่างใบสั่งครัวแล้ว
 test_bill_format	ทดสอบใบแจ้งหนี้
 test_bill_sent	ส่งตัวอย่างใบแจ้งหนี้แล้ว
 test_print_no_printer	ไม่มีเครื่องพิมพ์สำหรับงานนี้ — เลือกหนึ่งรายการบนหน้าจอนี้
-kot_format_saved	บันทึกรูปแบบ KOT แล้ว
 std_print	ขนาดพิมพ์บิล
 std_print_help	ขนาดตัวอักษรสำหรับบิล Standard แนวตั้งและแนวนอน (KOT ความร้อนแยก). ขนาดเดียวกันทั้งสองทิศทาง
 std_size_s	เล็ก
@@ -1264,7 +1244,6 @@ new_items_head	ยังไม่ได้ส่ง
 price_ph	ราคา
 price_ph_gst_inside	ราคา (รวม{tax})
 cancel_needs_table	เปิดออเดอร์นี้จากพื้นร้าน (โต๊ะ) เพื่อยกเลิกหลังครัว — KOT เคาน์เตอร์อยู่บนใบจนชำระเงิน
-tax_rates_missing_hint	จานเหล่านี้ไม่มีอัตรา {tax} — ตั้งอัตราภาษีในเมนู (แบบ {tax} inclusive ราคารวม {tax} อยู่แล้ว)
 taxable_value	มูลค่าที่ต้องเสียภาษี
 gst_inside_price_note	(รวม{tax})
 start_with_template	เริ่มด้วยเทมเพลตเมนูของเรา
@@ -1318,9 +1297,7 @@ order_empty_pick	ออร์เดอร์ว่าง — แตะ “เพ
 add_dishes	เพิ่มรายการอาหาร
 order_so_far	ในออร์เดอร์นี้: {n} · {total}
 no_dish_match	ไม่มีรายการที่ตรงกับ “{q}”
-pick_dishes_help	แตะรายการเพื่อเพิ่ม · เลือกหมวดเพื่อกรอง
 pick_done	เสร็จ
-pick_done_dd	เสร็จ · {label}
 printer_route_mode	หากมีเครื่องพิมพ์หลายตัวในสถานที่นี้
 printer_mode_first	ตัวแรกที่ใช้ได้
 printer_mode_all	พิมพ์ทั้งหมด

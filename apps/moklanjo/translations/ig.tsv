@@ -39,7 +39,7 @@ adding_item	Na-agbakwụnye ọnụego ọhụrụ
 editing_item	Na-edezi
 save	Chekwaa
 remove	Wepụ
-empty_catalog	Enweghị ọnụego ma. Mepee ọnụego & ọrụ, tinye otu (aha + ọnụahịa, unit kg), wee ntinye akwụkwọ.
+empty_catalog	Enweghị ọnụego ma.
 counter_sale	Ndokwa akwụkwọ
 total	Ngụkọta
 cash	Ego aka
@@ -171,8 +171,6 @@ selected_language	Ahọpụtara
 continue	Gaa n'ihu
 this_device	NGWAỌRỤ A
 device_use_q	Kedu ka a ga-eji ngwaọrụ a?
-last_server_mode	Bụ Sava — kpatụ ka ị gaa n'ihu
-last_client_mode	Bụ Ngwa njedebe — kpatụ ka ị gaa n'ihu
 choose_server	Họrọ sava
 choose_server_hint	Mepee sava dị adị, ma ọ bụ mepụta otu maka azụmahịa ọzọ.
 create_new_server	Mepụta sava ọhụrụ
@@ -501,8 +499,6 @@ job_layout	Nhazi
 job_delivery	Otu a na-ezipu ọrụ
 job_size	Nha mkpụrụedemede
 job_size_ph	dịka 18, 20, 26…
-save_receipt_format	Chekwa usoro nnata
-save_label_format	Chekwa usoro akara
 test_receipt_format	Nyochaa nnata
 test_label_format	Nnwale akara
 test_receipt_sent	Ezitere nnata nlele
@@ -610,7 +606,7 @@ units_heading	Nkeji
 booking_measures	Usoro ntinye akwụkwọ
 drawer_count	Ọnụọgụ drawer (ọ bụghị iwu)
 spreadsheet_csv	Mpempe akwụkwọ (CSV)
-bank_reconciliation	Nkwekọrịta ụlọ akụ (kanye megide akwụkwọ ụlọ akụ gị)
+bank_reconciliation	Nkwekọrịta ụlọ akụ
 book_add_product	Akwụkwọ - tinye ngwaahịa / ọnụego
 book_opening_credit	Akwụkwọ — kredit mmalite
 account_kind	Ụdị akaụntụ (kpatụ otu)
@@ -650,7 +646,7 @@ net_word	Net
 offline_badge	ANỌGHỊ N'ỊNTANETỊ
 optional_login_help	Nbanye nhọrọ (njirimara + okwuntughe). Onye nwe na-etinye otu ugboro; naanị onye ọrụ nwere ike ịgbanwe okwuntughe ma emechaa.
 or_unlock_login	Ma ọ bụ mepee site na njirimara nbanye + okwuntughe
-permission_preset	Ọrụ (na-edozi ihuenyo na ikike)
+permission_preset	Ọrụ
 preset_help_moklanjo	Onye na-anakọta ego: ree. Onye njikwa: ree + ihe + kagbuo kpamkpam/dozie.
 product_locked_moklanjo	Moklanjo
 product_only_moklanjo	Ngwa a bụ naanị Moklanjo - akwụkwọ + desktọ akwụkwọ. Azụmahịa ndị ọzọ na-eche ihu ụgbọ mmiri dị ka ngwaahịa dị iche iche ma emechaa.
@@ -698,10 +694,6 @@ pin_hint_paired	Ejikọrọ kaụnta ọzọ — mepee ka ị ree
 pin_hint_pair_first	Kaụnta ọzọ — jikọọ na ngwaọrụ ụlọ ahịa mbụ
 unlock_to_continue	Mepee ka ị gaa n'ihu
 no_staff_yet	Enweghị ndị ọrụ — mepee dị ka Onye nwe, wee Ndị ọrụ
-status_server_set_pin	Ụdị Sava — tinye PIN Onye nwe
-status_server_tills	Ụdị Sava — kaụnta ndị ọzọ nwere ike ijikọ. Mepee
-status_server_unlock	Ụdị Sava — mepee dị ka Onye nwe
-status_client_unlock	Ụdị Ngwa njedebe — mepee ka ị ree
 icon_new_selected	Akara: ahọpụtara faịlụ ọhụrụ — kpatụ Chekwaa akara
 icon_custom	Akara: akara ebe nke onwe
 icon_default	Akara: akara Kumkaj (ndabara) — họrọ nke onwe

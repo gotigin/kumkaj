@@ -1,13 +1,5 @@
-//! A table's running order: KOT now, more KOTs, print the bill, settle.
-//!
-//! Petpooja's core loop (and every restaurant's): the waiter punches items
-//! and sends a KOT; more KOTs follow; the counter prints the bill and then
-//! settles it. Until 2026-10-23 Tabiyat kept only a KOT *summary* and cleared
-//! the cart on send, so the counter had nothing to bill. The open order now
-//! lives here, on the Server, line by line (`BUSINESS_BOOKS.md` § Open orders
-//! are not books yet): cancelled and complimentary lines are kept with reason
-//! and approver (vision §18), moves keep the same order id, and finalize
-//! closes the order with its sale.
+//! Rights checks and the bill's shop settings: header, footer, FSSAI and
+//! UPI lines, bill / slip format, and recorded settlements.
 //!
 //! Child module of `store` so it shares the connection and private helpers
 //! without growing `store.rs` further.

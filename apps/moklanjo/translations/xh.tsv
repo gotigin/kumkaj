@@ -39,7 +39,7 @@ adding_item	Ukongeza ireyithi entsha
 editing_item	Uyahlengahlengisa
 save	Gcina
 remove	Susa
-empty_catalog	Akukho maxabiso okwangoku. Vula Amaxabiso & neenkonzo, yongeza enye (igama + ixabiso, iyunithi kg), emva koko Ubhukishe.
+empty_catalog	Akukho maxabiso okwangoku.
 counter_sale	Ukubhukisha kwikhawuntara
 total	Isixa
 cash	Imali ephathekayo
@@ -171,8 +171,6 @@ selected_language	Kukhethiwe
 continue	Qhubeka
 this_device	ESI SIXHOBO
 device_use_q	Esi sixhobo siya kusetyenziswa njani?
-last_server_mode	YayiyiSeva — cofa ukuze uqhubeke
-last_client_mode	YayiyiKlayenti — cofa ukuze uqhubeke
 choose_server	Khetha iseva
 choose_server_hint	Vula iseva ekhoyo, okanye wenze entsha yeshishini elinye.
 create_new_server	Yenza iseva entsha
@@ -501,8 +499,6 @@ job_layout	Uyilo
 job_delivery	Indlela umsebenzi othunyelwa ngayo
 job_size	Ubukhulu befonti
 job_size_ph	umz. 18, 20, 26…
-save_receipt_format	Gcina ifomathi yerisithi
-save_label_format	Gcina ifomati yeleyibhile
 test_receipt_format	Irisithi yovavanyo
 test_label_format	Ileyibhile yovavanyo
 test_receipt_sent	Isampulu yerisithi ithunyelwe
@@ -610,7 +606,7 @@ units_heading	Iiyunithi
 booking_measures	Amanyathelo okubhukisha
 drawer_count	Ubali lwedrowa (akuyomfuneko)
 spreadsheet_csv	Iphepha leamanani (i-CSV)
-bank_reconciliation	Ukudibanisa ibhanki (phawula ngokuchasene nengxelo yebhanki yakho)
+bank_reconciliation	Ukudibanisa ibhanki
 book_add_product	Incwadi — yongeza imveliso / ireyithi
 book_opening_credit	Incwadi — ikhredithi yokuqala
 account_kind	Uhlobo lwe-akhawunti (cofa olunye)
@@ -650,7 +646,7 @@ net_word	Neto
 offline_badge	AKUKHO INTANETHI
 optional_login_help	Ungeno olukhethwayo (igama + igama lokugqitha). Umnini umisa kanye; umsebenzisi kuphela onokutshintsha igama lokugqitha kamva.
 or_unlock_login	Okanye vula ngegama lokungena + igama lokugqitha
-permission_preset	Umsebenzi (useta izikrini kunye namalungelo)
+permission_preset	Umsebenzi
 preset_help_moklanjo	Umcangci: thengisa. Umphathi: thengisa + izinto + rhoxisa ngokupheleleyo/lungisa.
 product_locked_moklanjo	Moklanjo
 product_only_moklanjo	Le app yiMoklanjo kuphela - iincwadi + nedesika yokubhukisha. Obunye ubuso borhwebo buthunyelwa njengeemveliso ezahlukeneyo kamva.
@@ -698,10 +694,6 @@ pin_hint_paired	Enye ikhawuntara idityanisiwe — vula ukuze uthengise
 pin_hint_pair_first	Enye ikhawuntara — yidibanise nesixhobo sevenkile kuqala
 unlock_to_continue	Vula ukuze uqhubeke
 no_staff_yet	Akukho basebenzi — vula njengoMnini, emva koko iQela
-status_server_set_pin	Imo yeSeva — misa i-PIN yoMnini
-status_server_tills	Imo yeSeva — ezinye iikhawuntara zinokudibanisa. Vula
-status_server_unlock	Imo yeSeva — vula njengoMnini
-status_client_unlock	Imo yeKlayenti — vula ukuze uthengise
 icon_new_selected	Isiqondiso: ifayile entsha ikhethiwe — cofa Gcina uphawu
 icon_custom	Isiqondiso: uphawu lwendawo olwakho
 icon_default	Isiqondiso: uphawu lukaKumkaj (esisiseko) — khetha olwakho

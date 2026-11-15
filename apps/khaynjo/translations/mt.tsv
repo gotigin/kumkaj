@@ -41,7 +41,7 @@ remove	Neħħi
 removed_items	Oġġetti mneħħija
 removed_help	Irrestawra jerġa' jpoġġi l-oġġett fil-menu kif kien — prezz, ritratt u kategorija. L-ixkaffa tal-platti tagħna qatt ma titneħħa, għalhekk platt jista' dejjem jerġa' jiżdied.
 restore_item	Irrestawra
-empty_catalog	Għad m'hemmx platti. Iftaħ il-Menu, żid platt (isem + prezz), imbagħad ħu ordni.
+empty_catalog	Għad m'hemmx platti.
 total	Totali
 cash	Kontanti
 upi	UPI
@@ -103,23 +103,14 @@ bill_item_qty	Kwantità
 bill_item_price	Prezz
 bill_item_amount	Ammont
 bill_item_note	Nota tal-platt
-bill_item_col_gap	Spazju bejn kolonni
 bill_item_col_order	Ordni tal-kolonni
 bill_item_col_sep	Linji tal-kolonni
-bill_item_gap_tight	Strett
-bill_item_gap_comfort	Komdu
-bill_item_gap_wide	Wiesa'
-bill_item_num_width	Kolonni tan-numri
-bill_item_num_compact	Kompatt
-bill_item_num_comfort	Komdu
-bill_item_num_wide	Wiesa'
-bill_item_num_align	In-numri jallinjaw
-bill_item_gap_em	Spazju (em)
-bill_item_qty_min	Kwantità min (em)
-bill_item_price_min	Prezz min (em)
-bill_item_amount_min	Ammont min (em)
-kot_item_qty_width	Kolonna tal-kwantità
-kot_item_num_align	Allinjament tal-kwantità
+slip_columns	Kolonni
+slip_col_width	Wisa’ (mm)
+slip_col_start	Spazju tal-bidu (px)
+slip_col_end	Spazju tat-tmiem (px)
+slip_col_align	Allinjament tat-test
+slip_columns_help	Il-wisa’ ta’ kull kolonna tinkludi l-ispazju tal-bidu u tat-tmiem tagħha. It-test jitgeżwer ġewwa l-kolonna tiegħu; dak li jaqbeż il-wisa’ tal-kontenut jinqata’, fuq il-karta u fil-preview.
 bill_total_qty_label	Tikketta tal-kwantità totali
 bill_total_subtotal_label	Tikketta tas-subtotal
 bill_total_grand_label	Tikketta tat-total
@@ -221,7 +212,6 @@ sidebar_order_saved	Ordni tal-Istrixxa tal-ġenb salvata
 sidebar_visibility_saved	Viżibilità tal-istrixxa tal-ġenb salvata
 amounts_hide	Aħbi
 amounts_show	Uri
-printers_none_hint	L-ewwel issejvja stampatur fuq dan l-apparat, imbagħad żidha mal-kont jew kċina
 counter	Kontatur
 dine_in	Ikla ġewwa
 takeaway	Ħu ma' Ħdejk
@@ -328,8 +318,6 @@ selected_language	Magħżula
 continue	Kompli
 this_device	DAN IL-MEZZ
 device_use_q	Kif se jintuża dan l-apparat?
-last_server_mode	Was Server — tektek biex tkompli
-last_client_mode	Was Client — tektek biex tkompli
 choose_server	Agħżel server
 choose_server_hint	Iftaħ server eżistenti, jew oħloq wieħed għal negozju ieħor.
 create_new_server	Oħloq server ġdid
@@ -391,7 +379,7 @@ attachments_last_expense	Attachments (l-aħħar spiża)
 bank	Bank
 bank_in	Bank ġewwa
 bank_out	Bank barra
-bank_reconciliation	Rikonċiljazzjoni bankarja (immarka mar-rendikont bankarju tiegħek)
+bank_reconciliation	Rikonċiljazzjoni bankarja
 bank_to_till	Bank → biex
 book_add_dish	Ktieb — żid dixx / oġġett
 book_opening_credit	Ktieb — kreditu tal-ftuħ
@@ -744,7 +732,6 @@ station_print_pick_first	Agħżel stazzjon tal-kċina l-ewwel
 station_print_editing	Editjar tal-stampaturi għal “{name}”
 station_vps_dd	Stampaturi għal dan l-istazzjon
 station_vps_dd_n	{n} stampatur(i) · taptap biex tbiddel
-station_vps_empty	Għadu l-ebda stampaturi — Sibhom taħt Għażliet → Stampaturi
 bill_printers_dd	Stampaturi għall-kont
 bill_printers_dd_n	{n} stampatur(i) għall-kont · taptap biex tbiddel
 job_layout	Tqassim
@@ -889,7 +876,7 @@ net_word	Nett
 offline_badge	OFFLINE
 optional_login_help	Login fakultattiv (id + password). Sid issettja darba; l-utent biss jista' jibdel il-password aktar tard.
 or_unlock_login	Jew iftaħ bl-id tal-login + password
-permission_preset	Xogħol (jissettja l-iskrins u l-azzjonijiet tal-flus)
+permission_preset	Xogħol
 preset_help_khaynjo	Kaxxier: ibiegħ. Maniġer: bejgħ + oġġetti + null/emenda.
 product_locked_khaynjo	Khaynjo
 product_only_khaynjo	Din l-app hija Khaynjo biss — sistema operattiva tar-ristoranti. Kummerċ ieħor jiffaċċja vapur bħala prodotti Kumkaj separati.
@@ -961,10 +948,6 @@ pin_hint_paired	Till żejjed imqabbad — iftaħ biex tbigħ
 pin_hint_pair_first	Extra till — l-ewwel koppja mal-apparat tal-ħanut
 unlock_to_continue	Iftaħ biex tkompli
 no_staff_yet	Għadu l-ebda persunal — nisfrutta bħala Sid, imbagħad Tim
-status_server_set_pin	Modalità Server — issettja l-PIN tas-Sid
-status_server_tills	Mod Server — tills żejda jistgħu jingħaqdu. Iftaħ
-status_server_unlock	Modalità Server — nisfrutta bħala Sid
-status_client_unlock	Mod Klijent — iftaħ biex tbigħ
 icon_new_selected	Ikona: fajl ġdid magħżul — tektek Issejvja l-marka
 icon_custom	Ikona: marka tal-post tad-dwana
 icon_default	Ikona: Kumkaj mark (default) — agħżel waħda apposta
@@ -1033,7 +1016,7 @@ book_kind_balance	Karta tal-bilanċ
 order_help	Tektek oġġett biex iżżidha.
 floor_help	Tektek mejda biex tieħu jew tibdel l-ordni. Kuluri juru b'xejn → bilqiegħda → kċina → lest → tiekol → kont → imħallas. Waitlist, riżervi, u żid-mwejjed jinsabu fit-taqsimiet hawn taħt.
 kitchen_help	Biljetti tal-kċina (KOT), l-aktar ġodda l-aħħar. Bidu → Lest → Magħmul imexxi biljett flimkien. Il-biljetti qatt ma juru l-prezzijiet.
-kitchen_empty	Ebda biljetti miftuħa. KOT mibgħut minn Ordni jew Floor jidher hawn.
+kitchen_empty	Ebda biljetti miftuħa.
 add_a_table	Żid mejda
 add_station_heading	Żid stazzjon tal-kċina
 categories_help	Tektek Uża biex tiffajlja l-oġġett hawn fuq taħt dik il-kategorija. Ritratt jagħti stampa lill-kategorija; mingħajr waħda turi l-inizjali tagħha.
@@ -1131,7 +1114,6 @@ bill_format_help	Stampat taħt l-isem tar-restorant tiegħek fuq kull kont. Linj
 bill_header_ph	Indirizz | telefon
 fssai_ph	Liċenzja FSSAI Nru. (Indja)
 bill_footer_ph	Footer (eż. Grazzi, erġa' żur)
-save_bill_format	Issejvja l-format tal-kont
 reset_bill_format	Irrisettja għal default
 bill_format_reset	Il-format tal-kont reset għal default
 reset_kot_format	Irrisettja għal default
@@ -1201,13 +1183,11 @@ kot_copies_3	3
 kot_title_ph	Titolu (vojta = KOT - ORDNI TAL-KITCHEN)
 kot_footer_ph	Nota tal-kċina (mhux obbligatorja, bla prezzijiet)
 kot_preview	Previżjoni
-save_kot_format	Issalva formatt KOT
 test_kot_format	Ittestja l-KOT
 test_kot_sent	Preview tat-ticket tal-kċina mibgħut
 test_bill_format	Prova tal-kont
 test_bill_sent	Preview tal-kont bagħt
 test_print_no_printer	M'hemmx stampatur għal dak ix-xogħol — agħżel wieħed minn din l-iskrin
-kot_format_saved	Il-format KOT ġie salvatt
 std_print	Daqs tal-istampar tal-bill
 std_print_help	Daqs tal-font għal xogħol tal-fattura Standard Portrait u Landscape fuq OS / stampaturi tad-dokumenti (daħħal il-punti — mhux Small/Normal/Large). L-istess daqs fuq iż-żewġ orientazzjonijiet. Id-daqsijiet tal-slip tal-kċina huma fuq it-tab KOT.
 std_size_s	Żgħir
@@ -1264,7 +1244,6 @@ new_items_head	Mhux mibgħut għadu
 price_ph	Prezz
 price_ph_gst_inside	Prezz ({tax} inkluż)
 cancel_needs_table	Iftaħ dan l-ordni mill-Art (mejda) biex tikkkanċella wara li l-kċina jkollha — il-KOTs tal-bank jibqgħu fuq it-tikketta sakemm tieħu l-ħlas
-tax_rates_missing_hint	L-ebda rata {tax} fuq dawn l-platti — fuq il-Menu issettja r-Rate tat-Taxxa (prezzijiet diġà jinkludu {tax} taħt {tax} inkluż)
 taxable_value	Valur tat-taxxa
 gst_inside_price_note	({tax} inklużiv)
 start_with_template	Ibda bl- mudell tal-menu tagħna
@@ -1318,9 +1297,7 @@ order_empty_pick	Ordni vojta — agħfas 'Żid platti' hawn fuq biex tagħżel p
 add_dishes	Żid platti
 order_so_far	F'dan l-ordni: {n} · {total}
 no_dish_match	L-ebda platt ma jaqbel ma’ “{q}”
-pick_dishes_help	Agħfas fuq platt biex iżżidh · agħżel kategorija biex tiddgħajjef il-lista
 pick_done	Lest
-pick_done_dd	Ġiet magħmula · {label}
 printer_route_mode	Jekk hemm diversi stampaturi f'dan il-post
 printer_mode_first	L-ewwel li taħdem
 printer_mode_all	Ippprintja fuq kollox

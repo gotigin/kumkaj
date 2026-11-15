@@ -39,7 +39,7 @@ adding_item	Добавяне на нова тарифа
 editing_item	Редактиране
 save	Запази
 remove	Премахни
-empty_catalog	Все още няма тарифи. Отворете Тарифи и услуги, добавете една (име + цена, единица кг), след това Резервация.
+empty_catalog	Все още няма тарифи.
 counter_sale	Резервация на гише
 total	Общо
 cash	В брой
@@ -171,8 +171,6 @@ selected_language	Избрано
 continue	Продължи
 this_device	ТОВА УСТРОЙСТВО
 device_use_q	Как ще се ползва това устройство?
-last_server_mode	Беше Сървър — докоснете, за да продължите
-last_client_mode	Беше Клиент — докоснете, за да продължите
 choose_server	Изберете сървър
 choose_server_hint	Отворете съществуващ сървър или създайте нов за друг бизнес.
 create_new_server	Създай нов сървър
@@ -501,8 +499,6 @@ job_layout	Подредба
 job_delivery	Как се изпраща задачата
 job_size	Размер на шрифта
 job_size_ph	напр. 18, 20, 26…
-save_receipt_format	Запази формата на разписка
-save_label_format	Запази формата на етикет
 test_receipt_format	Пробна разписка
 test_label_format	Пробен етикет
 test_receipt_sent	Пробната разписка е изпратена
@@ -610,7 +606,7 @@ units_heading	Мерни единици
 booking_measures	Мерки за резервация
 drawer_count	Броене на чекмеджето (по избор)
 spreadsheet_csv	Таблица (CSV)
-bank_reconciliation	Съгласуване с банка (отметнете срещу банковото извлечение)
+bank_reconciliation	Съгласуване с банка
 book_add_product	Резервирай — добави продукт / тарифа
 book_opening_credit	Книга — начален кредит
 account_kind	Вид сметка (докоснете един)
@@ -650,7 +646,7 @@ net_word	Нето
 offline_badge	ОФЛАЙН
 optional_login_help	По избор вход (ид + парола). Собственикът задава веднъж; само потребителят може после да смени паролата.
 or_unlock_login	Или отключете с ид за вход + парола
-permission_preset	Работа (настройва екрани и права)
+permission_preset	Работа
 preset_help_moklanjo	Касиер: продава. Управител: продава + артикули + анулиране/корекция.
 product_locked_moklanjo	Moklanjo
 product_only_moklanjo	Това приложение е само Moklanjo — книги + гише за записване. Други търговски лица идват по-късно като отделни продукти.
@@ -698,10 +694,6 @@ pin_hint_paired	Допълнителна каса е свързана — отк
 pin_hint_pair_first	Допълнителна каса — първо я свържете с устройството на заведението
 unlock_to_continue	Отключете, за да продължите
 no_staff_yet	Още няма персонал — отключете като Собственик, после Екип
-status_server_set_pin	Режим Сървър — задайте PIN на Собственика
-status_server_tills	Режим Сървър — допълнителни каси могат да се присъединят. Отключете
-status_server_unlock	Режим Сървър — отключете като Собственик
-status_client_unlock	Режим Клиент — отключете, за да продавате
 icon_new_selected	Икона: избран е нов файл — докоснете Запази марката
 icon_custom	Икона: собствен знак на заведението
 icon_default	Икона: знак Kumkaj (по подразбиране) — изберете собствен

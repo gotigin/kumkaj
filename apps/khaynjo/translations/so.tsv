@@ -41,7 +41,7 @@ remove	Ka saar
 removed_items	Alaabta la saaray
 removed_help	Soo celintu waxay alaabta ku celisaa menu-ga sidii ay ahayd — qiime, sawir iyo qayb. Khaanadda cuntadeena lama saaro, sidaas darteed cuntada mar walba dib loo dari karaa.
 restore_item	Soo celi
-empty_catalog	Weli cunto ma jirto. Fur Menu, ku dar cunto (magac + qiime), ka dibna qaado dalab.
+empty_catalog	Weli cunto ma jirto.
 total	Wadarta
 cash	Lacag caddaan
 upi	UPI
@@ -103,23 +103,14 @@ bill_item_qty	Tirada
 bill_item_price	Qiimaha
 bill_item_amount	Qaddarka
 bill_item_note	Qoraalka cuntada
-bill_item_col_gap	Kala fogaanta tiirarka
 bill_item_col_order	Habka tiirarka
 bill_item_col_sep	Khadadka tiirarka
-bill_item_gap_tight	Cidhiidhi
-bill_item_gap_comfort	Raaxo
-bill_item_gap_wide	Ballaaran
-bill_item_num_width	Tiirarka lambarada
-bill_item_num_compact	Cidhiidhi
-bill_item_num_comfort	Raaxo
-bill_item_num_wide	Ballaaran
-bill_item_num_align	Isku toosi lambarada
-bill_item_gap_em	Kala fogaan (em)
-bill_item_qty_min	Tirada ugu yar (em)
-bill_item_price_min	Qiimaha ugu yar (em)
-bill_item_amount_min	Qaddarka ugu yar (em)
-kot_item_qty_width	Tiirka tirada
-kot_item_num_align	Isku toosi tirada
+slip_columns	Tiirarrada
+slip_col_width	Ballac (mm)
+slip_col_start	Meesha bilowga (px)
+slip_col_end	Meesha dhammaadka (px)
+slip_col_align	Toosinta qoraalka
+slip_columns_help	Ballaca tiir kastaa wuxuu ka kooban yahay meeshiisa bilowga iyo dhammaadka. Qoraalku wuxuu ku duubmaa tiirkiisa gudihiisa; wixii dhaafa ballaca waxa ku jira waa la jaraa, warqadda iyo horudhacaba.
 bill_total_qty_label	Calaamadda wadarta tirada
 bill_total_subtotal_label	Calaamadda wadarta hoose
 bill_total_grand_label	Calaamadda wadarta weyn
@@ -221,7 +212,6 @@ sidebar_order_saved	Habka dhinaca waa la kaydiyay
 sidebar_visibility_saved	Muuqaalka dhinaca waa la kaydiyay
 amounts_hide	Qari
 amounts_show	Muuji
-printers_none_hint	Marka hore ku kaydi daabacaha qalabkan, ka dibna ku dar Biilka ama jiko
 counter	Miiska iibka
 dine_in	Halkan cun
 takeaway	Qaado
@@ -328,8 +318,6 @@ selected_language	La doortay
 continue	Sii wad
 this_device	QALABKAN
 device_use_q	Sidee qalabkan loo isticmaali doonaa?
-last_server_mode	Wuxuu ahaa Server — taabo si aad u sii wadato
-last_client_mode	Wuxuu ahaa Macaamiil — taabo si aad u sii wadato
 choose_server	Dooro server
 choose_server_hint	Fur server jira, ama u samee ganacsi kale.
 create_new_server	Samee server cusub
@@ -391,7 +379,7 @@ attachments_last_expense	Ku-darisyada (kharashkii u dambeeyay)
 bank	Bangiga
 bank_in	Bangiga soo gal
 bank_out	Bangiga ka bax
-bank_reconciliation	Isku-habaynta bangiga (kala calaamadee bayaanka bangigaaga)
+bank_reconciliation	Isku-habaynta bangiga
 bank_to_till	Bangiga → sanduuqa
 book_add_dish	Buug — ku dar cunto / alaab
 book_opening_credit	Buug — deynta bilowga
@@ -744,7 +732,6 @@ station_print_pick_first	Marka hore dooro saldhig jiko
 station_print_editing	Daabacayaasha “{name}” ayaa la tafatirayaa
 station_vps_dd	Daabacayaasha saldhigan
 station_vps_dd_n	daabacaha {n} · taabo si aad u beddesho
-station_vps_empty	Weli daabacayaal ma jiraan — ka raadi Dejinta → Daabacayaasha
 bill_printers_dd	Daabacayaasha biilka
 bill_printers_dd_n	daabacaha {n} oo biilka ah · taabo si aad u beddesho
 job_layout	Qaab
@@ -889,7 +876,7 @@ net_word	Saafiga
 offline_badge	LA'AAN NET
 optional_login_help	Gelitaan ikhtiyaari ah (aqoonsi + furaha sirta). Milkiiluhu hal mar ayuu dejiyaa; isticmaaluhu kaliya ayaa hadhow beddeli kara furaha sirta.
 or_unlock_login	Ama ku fur aqoonsiga gelitaanka + furaha sirta
-permission_preset	Shaqo (waxay dejinaysaa shaashadaha iyo falalka lacagta)
+permission_preset	Shaqo
 preset_help_khaynjo	Khasnaji: iibi. Maamule: iibi + alaab + burin/sax.
 product_locked_khaynjo	Khaynjo
 product_only_khaynjo	App-kani waa Khaynjo oo keliya — nidaamka hawlgalka makhaayadda. Wajiyada ganacsiyada kale waxay u baxaan alaabooyin Kumkaj oo gooni ah.
@@ -961,10 +948,6 @@ pin_hint_paired	Sanduuq dheeraad ah ayaa la isku xiray — fur si aad u iibiso
 pin_hint_pair_first	Sanduuq dheeraad ah — marka hore ku xir qalabka dukaanka
 unlock_to_continue	Fur si aad u sii wadato
 no_staff_yet	Weli shaqaale ma jiro — u fur Milkiile, ka dibna Kooxda
-status_server_set_pin	Habka Server-ka — deji PIN-ka Milkiilaha
-status_server_tills	Habka Server-ka — sanduuqyo dheeraad ah way soo biiri karaan. Fur
-status_server_unlock	Habka Server-ka — u fur Milkiile
-status_client_unlock	Habka Macaamiilka — fur si aad u iibiso
 icon_new_selected	Calaamad: fayl cusub ayaa la doortay — taabo Kaydi calaamadda
 icon_custom	Calaamad: astaanta goobta ee gaarka ah
 icon_default	Calaamad: astaanta Kumkaj (caadiga) — dooro mid gaar ah
@@ -1033,7 +1016,7 @@ book_kind_balance	Xaashida dheelitirka
 order_help	Taabo alaab si aad ugu darto.
 floor_help	Taabo miis si aad u qaadato ama u beddesho dalabka. Midabuhu waxay muujinayaan bannaan → fadhi → jiko → diyaar → la cunayo → biil → la bixiyay. Liiska sugitaanka, ballamaha, iyo ku-darista miisaska waxay ku jiraan qaybaha hoose.
 kitchen_help	Warqadaha jikada (KOT), kan ugu dambeeya waa kan ugu dambeeya. Bilow → Diyaar → La dhammeeyay ayaa warqadda hor mariya. Warqaduhu waligood qiimo ma muujiyaan.
-kitchen_empty	Warqad furan ma jirto. KOT laga soo diray Dalab ama Sagxadda halkan ayuu ka muuqdaa.
+kitchen_empty	Warqad furan ma jirto.
 add_a_table	Ku dar miis
 add_station_heading	Ku dar saldhig jiko
 categories_help	Taabo Isticmaal si aad alaabta kor ugu kaydiso qaybtaas. Sawirku qaybta wuxuu siiyaa sawir; la'aantiis waxay muujisaa xarfaha hore.
@@ -1131,7 +1114,6 @@ bill_format_help	Waxaa lagu daabacaa magaca makhaayaddaada hoostiisa biil kasta.
 bill_header_ph	Cinwaan | taleefan
 fssai_ph	Lambarka shatiga FSSAI (Hindiya)
 bill_footer_ph	Hoos (tusaale Mahadsanid, mar kale soo booqo)
-save_bill_format	Kaydi qaabka biilka
 reset_bill_format	Ku celi caadiga
 bill_format_reset	Qaabka biilka waxaa loo celiyay caadiga
 reset_kot_format	Ku celi caadiga
@@ -1201,13 +1183,11 @@ kot_copies_3	3
 kot_title_ph	Cinwaan (madhan = KOT - KITCHEN ORDER)
 kot_footer_ph	Qoraal jiko (ikhtiyaari, qiimo la'aan)
 kot_preview	Horudhac
-save_kot_format	Kaydi qaabka KOT
 test_kot_format	KOT tijaabo
 test_kot_sent	Horudhaca warqadda jikada waa la diray
 test_bill_format	Biil tijaabo
 test_bill_sent	Horudhaca biilka waa la diray
 test_print_no_printer	Daabacaha ma jiro shaqadaas — mid ka dooro shaashaddan
-kot_format_saved	Qaabka KOT waa la kaydiyay
 std_print	Cabbirka daabacaadda biilka
 std_print_help	Cabbirka farta shaqooyinka biilka Toosan iyo Jiif ee daabacayaasha nidaamka / dukumentiga (geli dhibco — ma aha Yar/Caadi/Weyn). Isla cabbirka labada jiho. Cabbirada warqadda jikadu waxay ku jiraan tabka KOT.
 std_size_s	Yar
@@ -1264,7 +1244,6 @@ new_items_head	Weli lama dirin
 price_ph	Qiime
 price_ph_gst_inside	Qiime ({tax} waa ku jira)
 cancel_needs_table	Dalabkan ka fur Sagxadda (miis) si aad u joojiso kadib marka jikadu hesho — KOT-yada miiska iibku waxay ku sii jiraan warqadda ilaa aad qaadato bixinta
-tax_rates_missing_hint	Heer {tax} kuma jiro cuntooyinkan — Menu deji Heerka canshuurta (qiimayaashu horey u wataan {tax} hoosta {tax} ku jira)
 taxable_value	Qiimaha canshuurta lagu xisaabinayo
 gst_inside_price_note	({tax} waa ku jira)
 start_with_template	Ku bilow qaabka menu-geenna
@@ -1318,9 +1297,7 @@ order_empty_pick	Dalabku waa madhan — taabo Ku dar cuntooyin kor si aad u door
 add_dishes	Ku dar cuntooyin
 order_so_far	Dalabkan: {n} · {total}
 no_dish_match	Cunto kuma habboona “{q}”
-pick_dishes_help	Taabo cunto si aad ugu darto · dooro qayb si aad u yareyso liiska
 pick_done	Dhamaaday
-pick_done_dd	Dhamaaday · {label}
 printer_route_mode	Haddii daabacayaal badan ay goobtan ku jiraan
 printer_mode_first	Kan ugu horreeya ee shaqeeya
 printer_mode_all	Ku daabac dhammaan

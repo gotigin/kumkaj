@@ -7,6 +7,16 @@
 /// against the DSL.
 const HEADER_CONTROLS: &[&str] = &["rail_expand_btn", "header_back", "amounts_eye"];
 
+/// Every control in `nav_rail` that is not a nav row (rows are never a drag).
+/// The sidebar's empty top corner and the space under its last row move the
+/// window like the empty header (owner, 2026-11-14: with the window's top
+/// bar above the screen there was nothing left to drag). The gaps between
+/// rows stay the sidebar's own, so a finger can still scroll a long one.
+/// `nav_order_tests::rail_controls_are_not_window_drag` checks this list.
+const RAIL_CONTROLS: &[&str] = &["rail_collapse_btn"];
+/// The sidebar's right edge stays its scroll bar's.
+const RAIL_SCROLLBAR_PX: f64 = 12.0;
+
 impl AppMain for App {
     fn script_mod(vm: &mut ScriptVm) -> ScriptValue {
         crate::makepad_widgets::script_mod(vm);
@@ -69,7 +79,10 @@ impl App {
             if role_open_busy().load(std::sync::atomic::Ordering::SeqCst) {
                 if let Event::Actions(actions) = event {
                     if self.ui.button(cx, ids!(device_role_cancel)).clicked(actions) {
+                        // Back to the Server / Client choice now — the worker's
+                        // late result is dropped (`role_open_gen`).
                         request_role_open_cancel();
+                        self.set_status(cx, app_t("cancelled"));
                     }
                 }
                 self.ui.handle_event(cx, event, &mut Scope::empty());
@@ -287,16 +300,38 @@ impl App {
             // state moved. Rebuilding it with the pool and route cards on
             // every wake (photo thumbs, the device worker, LAN) redrew
             // Settings for nothing — Khaynjo learned the same, 2026-11.
-            if app_state().lock().unwrap().screen == Screen::Settings {
-                let now = (print_share::is_finding_printers(), print_share::found_printers());
-                let before = found_printers_painted().lock().unwrap().clone();
-                if before.as_ref() != Some(&now) {
-                    let stopped = before.is_some_and(|(looking, _)| looking) && !now.0;
-                    self.show_found_printers(cx);
-                    if stopped && print_share::find_printers_was_cancelled() {
+            let printers_sheet = self.ui.modal(cx, ids!(printers_modal)).is_open();
+            if printers_sheet || app_state().lock().unwrap().screen == Screen::Settings {
+                let finding = print_share::is_finding_printers();
+                // Armed by the Find tap; the scan wakes the UI only when it is
+                // done (any repaint in between may already show the result,
+                // so the painted list is no edge to trust).
+                let finished = !finding
+                    && find_printers_armed().swap(false, std::sync::atomic::Ordering::SeqCst);
+                if finished {
+                    if print_share::find_printers_was_cancelled() {
                         let msg = app_state().lock().unwrap().t("cancelled");
                         self.set_status(cx, msg);
+                    } else {
+                        // Find saves what it found (sheet and panel), ready to
+                        // pick and to give a job — there is no manual add.
+                        match self.save_found_printers_to_pool() {
+                            Ok(0) => {}
+                            Ok(_) => {
+                                self.sync_printer_fields(cx);
+                                self.set_status(cx, app_t("printers_saved"));
+                            }
+                            Err(e) => self.set_status(cx, e),
+                        }
                     }
+                }
+                if printers_sheet && (finding || finished) {
+                    self.paint_printers_modal(cx);
+                }
+                let now = (finding, print_share::found_printers());
+                let before = found_printers_painted().lock().unwrap().clone();
+                if before.as_ref() != Some(&now) {
+                    self.show_found_printers(cx);
                     self.paint_submit_busy_chrome(cx);
                 }
             }
@@ -305,6 +340,7 @@ impl App {
                 self.show_found_servers(cx, found);
             }
             if let Some(result) = role_open_once().lock().unwrap().take() {
+                note_role_open_ui_took();
                 match result {
                     Ok(RoleOpenReady::Client(store)) => {
                         if role_cancelled() {
@@ -403,18 +439,11 @@ impl App {
         // itself — a trackpad moved the booking desk one step, then nothing.
         // Empty header (not a HEADER_CONTROLS button) is a window drag, the same
         // as the caption bar: press and move, and the desktop moves the window.
-        if let Event::WindowDragQuery(dq) = event {
-            let header = self.ui.view(cx, ids!(header)).area().rect(cx);
-            if header.size.x > 1.0 && header.contains(dq.abs) {
-                let on_control = HEADER_CONTROLS.iter().any(|name| {
-                    let r = self.ui.button(cx, &[LiveId::from_str(name)]).area().rect(cx);
-                    r.size.x > 1.0 && r.contains(dq.abs)
-                });
-                if !on_control {
-                    dq.response
-                        .set(makepad_widgets::WindowDragQueryResponse::Caption);
-                }
-            }
+        if let Event::WindowDragQuery(dq) = event
+            && self.window_drag_at(cx, dq.abs)
+        {
+            dq.response
+                .set(makepad_widgets::WindowDragQueryResponse::Caption);
         }
         self.ui.handle_event(cx, event, &mut Scope::empty());
         // A control in the 48 px edge strip (a button, a card, the booking
@@ -428,5 +457,51 @@ impl App {
         ) {
             self.sync_chrome(cx);
         }
+    }
+}
+
+impl App {
+    /// Window chrome with nothing to press: the empty header, and the
+    /// sidebar's top corner and the space under its last row. A press there
+    /// moves the window on desktop (`WindowDragQuery` → `Caption`). Page
+    /// content never is — a press on its empty space starts a selection.
+    fn window_drag_at(&self, cx: &mut Cx, abs: DVec2) -> bool {
+        let over = |rect: Rect| rect.size.x > 1.0 && rect.contains(abs);
+        let header = self.ui.view(cx, ids!(header)).area().rect(cx);
+        if over(header) {
+            return !HEADER_CONTROLS.iter().any(|name| {
+                let r = self.ui.button(cx, &[LiveId::from_str(name)]).area().rect(cx);
+                over(r)
+            });
+        }
+        let rail = self.ui.view(cx, ids!(nav_rail));
+        if !rail.visible() {
+            return false;
+        }
+        let r = rail.area().rect(cx);
+        if !over(r) || abs.x >= r.pos.x + r.size.x - RAIL_SCROLLBAR_PX {
+            return false;
+        }
+        if RAIL_CONTROLS.iter().any(|name| {
+            let b = self.ui.button(cx, &[LiveId::from_str(name)]).area().rect(cx);
+            over(b)
+        }) {
+            return false;
+        }
+        let rows: Vec<Rect> = self
+            .nav_slot_wrappers(true)
+            .iter()
+            .map(|path| self.ui.view(cx, path))
+            .filter(|v| v.visible())
+            .map(|v| v.area().rect(cx))
+            .filter(|r| r.size.y > 1.0)
+            .collect();
+        let (Some(top), Some(bottom)) = (
+            rows.iter().map(|r| r.pos.y).reduce(f64::min),
+            rows.iter().map(|r| r.pos.y + r.size.y).reduce(f64::max),
+        ) else {
+            return true;
+        };
+        abs.y < top || abs.y > bottom
     }
 }

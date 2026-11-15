@@ -1,7 +1,5 @@
 # Galician — Galego (gl). One key<TAB>text per line, in en() order; keep {placeholders}.
-app_tagline	Contador Kirana: venda, stock, khata e libros. Gratis fóra de liña.
 unlock	Desbloquear
-pin_hint	O PIN do dono comeza en 0000
 sell	Vender
 buy	Compras
 books	Libro do día
@@ -20,17 +18,13 @@ reports_month	Perdas e ganancias (mes)
 reports_aging	Pendente / Debe-Haber
 reports_balance_sheet	Balance
 reports	Libro do banco e PyG
-refresh	Actualizar
 undo	Desfacer
-start_tracking	Comezar o seguimento
 stock_minus	− Stock
 stock_plus	+ Stock
 settle_cash	Pechar en efectivo
 settle_card	Pechar con tarxeta
 items	Artigos
 nav_items	Artigos
-more	Máis
-your_items	Os teus artigos
 items_help	Toca un elemento para editalo. O novo elemento borra o formulario. Busca por nome ou código curto, establece un prezo (0 está ben) e despois Engadir. As vendas xa rexistradas manteñen o nome do que se lles imputou.
 add_item	Engadir artigo
 new_item	Artigo novo
@@ -41,28 +35,22 @@ remove	Quitar
 removed_items	Artigos quitados
 removed_help	Restaurar devolve o elemento en Elementos exactamente como estaba: prezo, foto e categoría.
 restore_item	Restaurar
-empty_catalog	Aínda non hai elementos. Abre Elementos, engade un nome e un prezo e véndeo desde o mostrador.
+empty_catalog	Aínda non hai elementos.
 total	Total
 cash	Efectivo
 upi	UPI
 card	Tarxeta
 credit	Partes
 clear	Limpar
-ready_to_sell	Listo para anotar
 today_prefix	Hoxe
-today_mid	hoxe
 owed	pendente
-round_word	arredondamento
 back	Atrás
 sold_out	Non dispoñible
 restock	Repor stock
 not_tracked	Sen seguimento
 in_stock	en stock
 marked_sold_out	Marcado como non dispoñible
-add_upper	ENGADIR
-na	N/D
 qty	Peso/Cant.
-unit_at	Tarifa @
 actual	Real
 applied	Aplicado
 note_ph	Nota (opcional)
@@ -81,21 +69,13 @@ bill_item_qty	Cant.
 bill_item_price	Prezo
 bill_item_amount	Importe
 bill_item_note	Nota do elemento
-bill_item_col_gap	Espazo de columna
 bill_item_col_order	Orde das columnas
 bill_item_col_sep	Liñas de columna
-bill_item_gap_tight	Apertado
-bill_item_gap_comfort	Cómodo
-bill_item_gap_wide	Largo
-bill_item_num_width	Columnas numéricas
-bill_item_num_compact	Compacto
-bill_item_num_comfort	Cómodo
-bill_item_num_wide	Largo
-bill_item_num_align	Aliñamento dos números
-bill_item_gap_em	Espazo (em)
-bill_item_qty_min	Cant. mín (em)
-bill_item_price_min	Prezo mín (em)
-bill_item_amount_min	Importe mín (em)
+slip_col_width	Ancho (mm)
+slip_col_start	Espazo inicial (px)
+slip_col_end	Espazo final (px)
+slip_col_align	Aliñamento do texto
+slip_columns_help	O ancho de cada columna inclúe o seu espazo inicial e final. O texto axústase dentro da súa columna; o que pasa do ancho do contido recórtase, no papel e na vista previa.
 bill_total_qty_label	Etiqueta de cant. total
 bill_total_subtotal_label	Etiqueta de subtotal
 bill_total_grand_label	Etiqueta de total xeral
@@ -108,11 +88,7 @@ bill_total_qty	Cant. total
 bill_total_subtotal	Subtotal
 bill_total_grand	Total xeral
 kot_unassigned	Sen asignar
-pos_tab_items	Artigos engadidos
-pos_tab_payment	Pagamento
-settings_hub_title	Axustes
 settings_hub_help	Abra unha área de cada vez — menos desprazamento, escollas máis claras.
-settings_back	Atrás
 settings_sec_language	Lingua e moeda
 settings_sec_country	País e imposto
 settings_sec_tills	Outros dispositivos
@@ -154,35 +130,17 @@ diag_cleared	Rexistros de diagnóstico limpados
 sidebar_settings	Barra lateral
 sidebar_settings_help	As mesmas iconas que o raíl lateral. Arrastre unha fila para reordenar. Xire o interruptor para mostrar ou agochar. Axustes e Bloqueo fican sempre na barra.
 sidebar_always_on_short	Sempre activo
-sidebar_back_settings	Atrás
-sidebar_shown	Visible
-sidebar_hidden	Agochado
-sidebar_always_on	Sempre na barra
-sidebar_shown_hint	Visible no raíl lateral / pestanas de abaixo
-sidebar_hidden_hint	Agochado da barra
 sidebar_menu_items	Artigos
 sidebar_enable_all	Activar todo
 sidebar_disable_all	Desactivar todo
 sidebar_order_saved	Orde da barra lateral gardada
 sidebar_visibility_saved	Visibilidade da barra lateral gardada
-amounts_hide	Agochar
-amounts_show	Mostrar
-printers_none_hint	Garda primeiro unha impresora neste dispositivo e despois engádea á factura ou a unha sección
-counter	Mostrador
-dine_in	Mostrador
-takeaway	Para levar
-order	Pedido
 sales	Vendas
-sales_refunds	Vendas e devolucións
 day_close	Peche do día
 reports_expenses	Libro do banco e PyG
 nav_reports	Informes
 nav_settings	Axustes
 nav_lock	Bloqueo
-no_sale_yet	Aínda non hai venda
-favorites	Favoritos
-favorites_help	Artigos que vende a miúdo, gardados para o seu inicio de sesión. Engada un á conta ou faga a lista con todos os artigos de abaixo.
-your_favorites	Os seus favoritos
 all_items	Todos os artigos
 frequent	Frecuentes
 added_items	Artigo(s) engadido(s)
@@ -199,8 +157,6 @@ zero_sales_on	Permitir ₹0
 zero_sales_off	Exixir prezo
 zero_sales_saved_on	Vendas de valor cero permitidas
 zero_sales_saved_off	As vendas deben ter un prezo superior a ₹0
-no_favorites	Aínda non hai favoritos — engada artigos da lista de abaixo.
-add_to_bill	Engadir á conta
 added	Engadido
 owes_word	debe
 selected_word	Seleccionado
@@ -209,19 +165,11 @@ chip_missing_customer	Falta o cliente seleccionado — escóllao de novo
 chip_no_customer	Aínda non hai cliente — escriba un nome e prema Crédito
 credit_summary_fmt	{} clientes · crédito aberto {} · adiantos retidos {}
 recent_label	Recentes:
-start_order	Comezar pedido
-open_bill	Abrir a conta
-collect_payment	Cobrar
-payment_pending	Pagamento pendente
-collect_at_counter	cobrar no mostrador
 inventory	Inventario
-inventory_stock	Inventario e stock
 branches	Sucursais
-branches_org	Sucursais e organización
 credit_customers	Partes (khata e provedores)
 customer_name_ph	Nome da parte
 new_customer_ph	Nome da parte nova
-item_name_ph	Nome do artigo (p. ex. Masala Dosa)
 item_price_ph	Prezo
 start_template	Produto
 team	Equipo
@@ -229,17 +177,11 @@ team_pins	Equipo e PIN
 my_pin_settings	O meu PIN
 settings_hub_help_my_pin	Cambie o PIN de desbloqueo da persoa que iniciou sesión neste dispositivo.
 team_self_help	Un só inicio de sesión: un PIN novo, un contrasinal novo ou os dous. Deixe unha caixiña baleira para conservar o que ten. Pídalle ao Dono se precisa outras pantallas ou dereitos.
-backup_settings	Copia e axustes
-lock_app	Bloquear a app
 pick	Escoller
-select	Seleccionar
 advance	Adianto
 owner	Dono
 staff	Persoal
 photo	Foto
-auto	Auto
-prev	Ant
-next	Seguinte
 ok	De acordo
 this_shop	Servidor
 extra_till	Cliente
@@ -248,17 +190,13 @@ server	Servidor
 client	Cliente
 language_currency	Lingua e moeda
 language	Lingua
-choose_language	Escolla a súa lingua
 language_setup_hint	Siga a lingua deste dispositivo ou escolla unha vostede.
 lang_follow_platform	Lingua do dispositivo
 lang_pick_user	Escoller lingua
 lang_platform_now	Lingua do dispositivo agora
 selected_language	Seleccionado
-continue	Continuar
 this_device	ESTE DISPOSITIVO
 device_use_q	Como se usará este dispositivo?
-last_server_mode	Era Servidor — prema para continuar
-last_client_mode	Era Cliente — prema para continuar
 choose_server	Escolla un servidor
 choose_server_hint	Abra un servidor existente ou cree un para outro negocio.
 create_new_server	Crear un servidor novo
@@ -268,12 +206,6 @@ server_remove_pin_ph	PIN do dono para quitar un servidor
 only_owner_remove_server	Só o Dono pode quitar un servidor
 owner_pin_remove_server	Cómpre o PIN do dono para quitar este servidor
 device_setup_help	O Servidor garda os libros aquí. O Cliente emparéllase cun Servidor.
-app_template_heading	Catálogo de inicio (opcional)
-app_template_blurb	Carga un catálogo de mostra; propietario Zahir (zahir), administrador Asif (asif, PIN 1111), caixeiro Nawaz (nawaz, PIN 0000); impostos/IVE descontado; barra lateral frontal; o historial borrarase despois de 4 horas (e Borrar agora na copia de seguranza); Hoxe despídese; factura compacta + Marxes estándar para bandexas estreitas. Pódense activar de novo os impostos e os pares da barra lateral en Configuración.
-app_template_apply	Aplicar o catálogo de iniciación
-app_template_skip	Omitir de momento
-app_template_status	Servidor listo: aplique o catálogo de inicio ou omita
-app_template_importing	Aplicando {title}…
 currency	Moeda
 backup	Copia
 use	Usar
@@ -307,7 +239,7 @@ attachments_last_expense	Anexos (último gasto)
 bank	Banco
 bank_in	Entrada no banco
 bank_out	Saída do banco
-bank_reconciliation	Conciliación bancaria (marque contra o extracto)
+bank_reconciliation	Conciliación bancaria
 bank_to_till	Banco → caixa
 book_add_dish	Libro — engadir elemento/elemento
 book_opening_credit	Libro — crédito de apertura
@@ -337,9 +269,6 @@ share_whatsapp	Compartir por WhatsApp
 lan_pages_heading	Páxinas de clientes en wifi
 lan_pages_help	Na wifi desta tenda, as páxinas dos clientes traballan para o taboleiro de visualización e os comentarios. Os usuarios de datos móbiles necesitan Cloud máis tarde. Un terminal de tarxeta ou unha ligazón de pago é opcional e nunca bloquea o mostrador.
 diag_send_heading	Compartir fóra deste dispositivo
-optional_login_heading	Inicio de sesión opcional
-rights_heading	Dereitos
-ops_panel	Operacións locais
 crm_heading	Clientes e mensaxes
 crm_help	Aniversario, fidelización, inactivos e mellores convidados — poña na cola intencións de SMS ou WhatsApp. Use {name} e {points} na mensaxe. O dono preme enviar; nada se envía só.
 crm_queue_sms	Poñer SMS na cola
@@ -364,21 +293,17 @@ till_wallet_topup_ph	Importe de recarga da carteira
 till_voucher_issue_amt_ph	Importe do vale a emitir
 till_voucher_issue_code_ph	Código do vale novo
 bulk_price_apply	Aplicar prezo masivo
-card_terminal_optional	Terminal de tarxeta / ligazón de pagamento (opcional cando hai internet)
 copy_report	Copiar o informe
 counted_cash_ph	Efectivo contado no caixón
 country_tax	País e imposto
 create_backup	Crear unha copia
 credit_limit_heading	Límite de crédito (parte seleccionada / con nome)
-day_close_summary	Resumo do peche do día
 delete_party	Eliminar a parte seleccionada
-delivery	Entrega
 done_open_books	Feito — abrir os libros
 drawer_count	Reconto do caixón (opcional)
 expense_heading	Gasto
 export_day	Exportar o día
 extra_note_bill_ph	Nota extra nesta conta / venda
-extra_note_expense_ph	Nota extra no último gasto
 extra_tills_heading	Caixas extra
 other_devices_help_heading	Configurar outros dispositivos
 other_devices_help	Neste dispositivo (servidor): Outros dispositivos → Permitir caixas adicionais. Teña en conta o código de sincronización e o enderezo wifi. Toca Permitir que outros dispositivos se conecten se aparece. Nun ordenador, toque Iniciar con este ordenador. No outro dispositivo: instala a aplicación, selecciona Modo cliente, Busca o servidor da tenda (ou escribe o enderezo), introduce o código de vinculación, Vincula agora. Os pedidos agardan no dispositivo se cae a wifi e vanse cando o servidor volve responder. As impresoras adicionais están configuradas no Servidor (Configuración → Impresoras): as caixas adicionais envían facturas alí.
@@ -392,7 +317,6 @@ login_id_ph	Nome de usuario
 mark_cleared	Marcar como conciliado
 new_party_clear	Parte nova (baleirar o formulario)
 new_party_kind_supplier_ph	Tipo de parte nova (Provedor)
-next_country	País seguinte
 next_order	Pedido seguinte (baleirar o mostrador)
 note_gstin_ph	Nota / GSTIN / lembrete de acordo
 notes_attach_party	Notas e anexos (parte seleccionada)
@@ -410,8 +334,6 @@ pay_ap_cash	Pagar AP en efectivo
 pay_ap_heading	Pagar o que lles debemos (AP)
 pay_ap_upi	Pagar AP con UPI
 pay_selected_heading	Pagar a selección (saldar a débeda / tomar adianto)
-pick_from_items	Escoller dos nosos artigos
-prev_country	País anterior
 print_open	Imprimir / abrir
 reason_amend_ph	Motivo de emenda / anulación / devolución
 reason_note_ph	Motivo / nota (merma, reconto, …)
@@ -435,14 +357,10 @@ history_after_hours	Ao cabo de horas
 history_hours_ph	Horas (1–168, por defecto 4)
 history_hours_save	Gardar as horas
 history_clear_now	Limpar o historial agora
-history_cleared	Historial comercial limpado — configuración conservada
-history_retention_saved	Limpeza do historial gardada
 history_hours_saved	Horas do historial gardadas
-history_owner_only	Só o Dono ou o Admin poden limpar o historial
 rollup	Acumulado
 save_brand	Gardar a marca
 save_business_id	Gardar o id do negocio
-save_business_name	Gardar o nome do negocio
 save_features	Gardar
 save_features_named	Gardar {name}
 save_features_ok	Configuración gardada para {name}
@@ -473,7 +391,6 @@ copy_pair_code	Copiar o código de emparellamento
 new_pair_code	Código de emparellamento novo
 pair_finishing	Rematando o emparellamento… aplícanse os libros da tenda
 pair_opening	Abrindo a caixa…
-pair_copied	Código de emparellamento copiado
 lan_offline_waiting	Non se pode chegar ao servidor da tenda · {n} en espera
 lan_connecting	Conectando coa tenda…
 lan_live	En directo
@@ -487,7 +404,6 @@ firewall_waiting	Agardando o aviso do administrador…
 lan_join_help	No outro dispositivo: Modo cliente → Atope o servidor da tenda (ou escriba {addr}) → código de emparellamento {code}.
 lan_pair_status	Wi‑Fi {addr}
 lan_join_help_no_addr	Conecte este dispositivo ao Wi‑Fi para ter un enderezo.
-lan_no_address	Aínda non hai enderezo Wi‑Fi — conéctese ao Wi‑Fi da tenda.
 lan_not_listening	Non se aceptan dispositivos (o porto {port} está ocupado). Reinicie a app.
 lan_tills_off	As caixas extra están desactivadas. Permítaas para que outro dispositivo se una.
 paired_with	Emparellado · {url}
@@ -508,41 +424,21 @@ printers_help	Busca impresoras, toca unha para seleccionala e, a continuación, 
 printers_host_only	As impresoras están configuradas no dispositivo da tenda (Servidor). Este ata que envía facturas e billetes antigos alí — Buscar/engadir/asignar estancia no servidor. A páxina de proba e o tamaño de impresión da factura van ao servidor.
 printers_find_heading	Atopar impresoras
 printers_find_tip	Atopar analiza este dispositivo e mantén a lista ao día.
-printers_pool_heading	Impresoras
-printers_pool_tip	Atopar analiza este dispositivo e mantén esta lista ao día.
 printers_pool_empty	(aínda ningunha — prema Atopar)
-printers_routes_help	Busca impresoras que o sistema operativo xa coñece. Asígnaos á factura e a cada sección no formato Bill & Slip.
 printer_assign_dd	Impresora real: {place}
 printer_assign_pick	Seleccionar a impresora real
 printer_profile_heading	Disposición
 vp_delivery_heading	Entrega
 vp_delivery_help	Como esta impresora virtual envía traballos: documento do SO, bytes en bruto ou ESC/POS. O contido do documento (tamaño do tipo, envoltura, marxes) decídese polo formato de factura/slip, non aquí.
-vp_type_size_heading	Tamaño de letra
-vp_wrap_heading	Largo de liña
-vp_margin_heading	Marxes
 vp_delivery_spooler	Documento do SO (cola do sistema)
 vp_delivery_raw	Bytes en bruto ao dispositivo
 vp_delivery_escpos	Ordes térmicas ESC/POS
 virtual_printer_new	Impresora virtual nova
 virtual_printer_selected	Editando «{name}» — prema outra da lista para cambiar
-virtual_printer_tap_list	Prema unha impresora virtual da lista para editala
 config_layout_portrait	Vertical
 config_layout_landscape	Horizontal
 config_send_os	Cola do sistema
 config_send_escpos	ESC/POS
-profiles_heading	Deseños
-profiles_empty	(aínda non hai deseños)
-profile_builtin	integrado
-profile_custom	personalizado
-profile_name_ph	Nome do deseño
-profile_new	Deseño novo
-profile_delete	Eliminar o deseño
-profile_created	Deseño creado
-profile_deleted	Deseño eliminado
-profile_builtin_keep	Os deseños integrados non se poden eliminar
-config_saved	Actualizado
-config_selected	Seleccionado «{name}»
-printer_output_heading	Impresoras virtuais
 virtual_printers_heading	Impresoras virtuais
 virtual_printers_empty	Aínda non hai impresoras virtuais — poña os valores abaixo e Gardar. Cando haxa algunha, prema unha da lista para editala.
 virtual_printer_name_ph	Nome da impresora virtual (opcional)
@@ -554,71 +450,32 @@ virtual_printer_deleted	Impresora virtual «{name}» eliminada
 virtual_printer_updated	Impresora virtual actualizada
 virtual_printer_updated_named	Impresora virtual «{name}» actualizada
 virtual_draft_layout	Valores postos para a próxima impresora virtual
-virtual_draft_send	Valor posto para a próxima impresora virtual
 virtual_need_real	Seleccione primeiro unha impresora real
 virtual_need_select	Seleccione unha impresora virtual para eliminar
 real_printer_selected	Seleccionada: {name}
-printers_routes_heading	Onde se imprime
-route_pick_heading	Lugar
 route_editing	Edición: {name}
-route_assigned	Engadida {printer} a {place}
-route_already_assigned	Xa está neste lugar: {printer}
 route_cleared	Limpado {name}
-route_assigned_empty	Nada neste lugar
-route_tap_select	prema para seleccionar
 route_tap_selected	seleccionado
-route_pick_printer_first	Prema primeiro unha impresora
-route_assigned_heading	Impresoras
-route_add_heading	Asignar
-printer_label_ph	Nome (por exemplo, contador da impresora)
 printer_target_ph	Nome da impresora do sistema ou host:9100
 printer_target_default	a impresora habitual deste ordenador (enderezo baleiro)
-printer_wire_heading	Perfil
-printer_wire_escpos	ESC/POS
-printer_wire_os	Vertical
-printer_wire_os_portrait	Vertical
-printer_wire_os_landscape	Horizontal
-printer_wire_escpos_short	ESC/POS
-printer_wire_os_short	Vertical
-printer_wire_os_landscape_short	Horizontal
-printer_format_custom	Perfil personalizado novo
-printer_format_custom_label	Personalizado
-printer_format_custom_added	Perfil personalizado engadido para este lugar
-add_printer	Engadir impresora
-route_pick_ph	Factura ou sección da tenda
 route_bill	Conta
-route_dont_print	Sen impresora
 station_print_pick_first	Escolle primeiro unha sección da tenda
-station_vps_empty	Aínda non hai impresoras — atópeas en Axustes → Impresoras
 bill_printers_dd	Impresoras da conta
 bill_printers_dd_n	{n} impresora(s) para a conta · prema para cambiar
 station_vp_attached	Impresora acoplada
 station_vp_detached	Impresora quitada da estación
-route_up	Arriba
-route_down	Abaixo
-route_clear	Limpar
-save_printers	Gardar as impresoras
 print_test_page	Imprimir unha páxina de proba
 no_printer_assigned	Sen impresora
-test_page_no_printer	Non hai impresora para {place} — acople unha e próbeo de novo
 test_page_pick_first	Escolla primeiro impresora(s) para unha páxina de proba — logo Imprimir unha páxina de proba
 test_printers_dd	Impresoras para unha páxina de proba
 test_printers_dd_n	{n} impresora(s) para unha páxina de proba · prema para cambiar
 test_printer_picked	Proba en: {name}
 test_printer_cleared	Sen proba en: {name}
 test_page_sent_n	Páxina de proba enviada a {n} impresora(s)
-batch_cancel	Anular os marcados
-batch_cancel_n	Anular os marcados ({n})
-batch_cancel_none	Marque primeiro un ou máis elementos enviados e despois Cancelar marcados
-batch_cancel_title	Cancelar elementos marcados: un motivo, un boletín de cancelación por sección
-batch_cancel_ok	Elementos {n} cancelados · {slips} cancelar comprobantes → {kitchens}
-batch_cancel_ok_noprint	Elementos {n} cancelados; a impresión automática está desactivada, polo que non hai ningún aviso de cancelación
 printers_saved	Gardado
-test_page_sent	Páxina de proba enviada — comprobe a impresora
 test_page_sent_one	Páxina de proba enviada a {name} — comprobe esa impresora
 printers_found	Atopadas {n}: {list}
 printers_find_synced	Atopadas {n} — {new} novas
-printer_on_device	gardada
 printer_already_added	xa engadida
 printer_already_saved	Xa gardada: {name}
 find_printers	Atopar impresoras
@@ -628,7 +485,6 @@ cancelled	Anulado
 printers_tap_find	Prema Atopar para listar as impresoras que este dispositivo pode usar.
 printers_none_found	Non se atopou ningunha — escriba un nome de impresora do sistema ou unha IP (p. ex. 192.168.1.50).
 printer_from_find	Engadida {name}
-bill_printer_ph	Impresora para as contas
 queue_refused	A tenda non o aceptou ({n}) — compróbeo cada un no mostrador:
 clear_not_accepted	Comprobado — limpar esta lista
 device_name_ph	Nome deste dispositivo
@@ -638,7 +494,6 @@ connected_now	conectado agora
 backup_failed	A última copia automática fallou: {e}
 backup_overdue	Hai {n} días sen copia — deixe a app aberta neste dispositivo para que poida facela.
 disk_low	Só quedan {mb} MB libres neste dispositivo — as copias fallarán axiña. Libere espazo.
-last_seen_devices	Visto por última vez: {time}
 connection_to_shop	Conexión coa tenda
 supplier_name_ph	Nome do provedor (ou parte)
 supplier_ph	Provedor
@@ -696,7 +551,6 @@ currency_use_help	Desprace e prema Usar para calquera moeda admitida.
 day_close_help	Rexistrar un peche do día garda este resumo (e a diferenza do caixón se se contou) no rexistro de auditoría. Non detén as vendas.
 expenses_word	Gastos
 feature_access_help	Que poden abrir — opcional; o posto de arriba xa pon un valor por defecto
-footer_local	SQLite local · Gratis para sempre · Cero Cloud
 fresh_book_kirano	Fresco = catálogo baleiro (engadir elementos máis tarde). Libro = tipo de accións iniciales e quen che debe a continuación.
 fresh_selected	Novo seleccionado — o catálogo fica baleiro. Prema Feito cando estea listo.
 gross_word	Bruto
@@ -709,12 +563,9 @@ net_word	Neto
 offline_badge	SEN REDE
 optional_login_help	Inicio de sesión opcional (id + contrasinal). O dono pono unha vez; só o usuario pode cambiar o contrasinal despois.
 or_unlock_login	Ou desbloquee con id de inicio de sesión + contrasinal
-permission_preset	Posto (pon pantallas e accións de diñeiro)
-preset_help_kirano	Caixeiro: vender. Encargado: vender + artigos + anular/emendar.
-product_locked_kirano	Kirano
+permission_preset	Posto
 product_only_kirano	Kirano é o sistema operativo de supermercado/kirana: contador, stock, crédito e libros sen conexión nos teus dispositivos.
 purchases_cogs	Compras (COGS)
-qty_cap	CANT.
 restore_help	Restaurar: escolla unha copia. Os libros ábrense como eran entón; os libros de agora gárdanse primeiro, así que se pode desfacer.
 wipe_data_heading	Eliminar os datos locais
 wipe_data_help	Só propietario: mesmas opcións que a desinstalación de Windows. Os rexistros comerciais borran o historial de negociación pero mantén os elementos e a configuración (como o PIN de desbloqueo de emerxencia). A configuración da tenda elimina a base de datos de libros. As preferencias da pantalla borran a xanela/idioma. Confirma co PIN do propietario. O PIN de desbloqueo de emerxencia en Team é separado (borrar encuberto ao desbloquear).
@@ -747,7 +598,6 @@ staff_renamed	Nome gardado
 staff_setup_copied_hire	Configuración copiada de {name} — poña un nome e un PIN novos e Engadir persoal
 staff_setup_copied_edit	Configuración de {from} copiada sobre {to}
 staff_copy_need_selected	Seleccione primeiro a quen editar
-staff_copy_need_source	Escolla de quen copiar a configuración
 staff_copy_same	É a mesma persoa — escolla outra
 staff_rename_need_selected	Seleccione primeiro a quen cambiar o nome
 team_pick_hint	Escolle quen queres editar: as pantallas, os dereitos de diñeiro e as emisoras só aparecen para esa persoa.
@@ -762,15 +612,9 @@ unit_picker_off	Desactivado
 we_owe_them	Debémoslles
 who_unlocking	Quen desbloquea?
 locked_word	Bloqueado
-show_pin	Mostrar o PIN
-hide_pin	Agochar o PIN
 set_owner_pin	POÑER O PIN DO DONO
 enter_owner_passcode	INTRODUCIR O CÓDIGO DO DONO
 enter_staff_passcode	INTRODUCIR O CÓDIGO DO PERSOAL
-pin_count_zero	0 / 12 díxitos · polo menos 4, logo De acordo
-pin_count_need	{} / 12 díxitos · faltan {} máis
-pin_count_full	12 / 12 díxitos · prema De acordo
-pin_count_ready	{} / 12 díxitos · prema De acordo cando estea listo
 pin_hint_choose	Escolla 4–12 díxitos · Intro ou Desbloquear para gardar
 pin_hint_new	PIN de dono novo de 4–12 díxitos · Intro ou Desbloquear
 pin_hint_shop_code	Dispositivo da tenda · código de emparellamento {}
@@ -779,23 +623,15 @@ pin_hint_paired	Caixa extra emparellada — desbloquee para vender
 pin_hint_pair_first	Caixa extra — emparelle primeiro co dispositivo da tenda
 unlock_to_continue	Desbloquee para continuar
 no_staff_yet	Aínda non hai persoal — desbloquee como Dono e logo Equipo
-status_server_set_pin	Modo servidor — poña o PIN do dono
-status_server_tills	Modo servidor — as caixas extra poden unirse. Desbloquear
-status_server_unlock	Modo servidor — desbloquee como Dono
-status_client_unlock	Modo cliente — desbloquee para vender
 icon_new_selected	Icona: ficheiro novo seleccionado — prema Gardar a marca
 icon_custom	Icona: marca propia do local
 icon_default	Icona: marca Kumkaj (por defecto) — escolla unha propia
 logo_yours	Logotipo: o da súa tenda — móstrase nas pantallas e nos recibos
 logo_default	Logotipo: marca Kumkaj (por defecto) — poña o seu se o ten
-tmpl_current	Actual: {} — {}
-tmpl_selected	Seleccionado: {} — {}
 setup_complete	Configuración completa
 onboard_fresh_tmpl	Novo · {} — o catálogo comeza baleiro; engada artigos en Artigos e logo Feito.
 onboard_book_tmpl	Libro · {} — engada artigos e crédito de apertura, logo Feito.
-onboard_template_tmpl	Poña nome ao local se quere e escolla como comezar.
 tmpl_blurb	Contador Kirana: venda, accións, khata, compras de provedores, libros.
-tmpl_how	Venda no mostrador; Comprar por accións; Libros para o dia.
 reports_facet_title	Informes
 reports_facet_help	Libros do día, antigüidade de partes, asentos bancarios e PyG do período.
 against_bill_ph	Contra a conta núm. de arriba (opcional)
@@ -806,14 +642,12 @@ amount_ph	Importe
 amount_received_ph	Importe recibido
 amount_we_pay_ph	Importe que pagamos
 business_name_ph	Nome do negocio
-category_new_ph	Categoría (opcional, créase se é nova)
 code_bag_ph	Código (bag)
 conv_factor_ph	Factor (25 = 1 bag → 25 kg)
 country_code_ph	Código de país, p. ex. IN, GB, US, AE, BR
 credit_khata_amount_ph	Importe de crédito / khata
 credit_limit_ph	Límite de crédito (0 = ningún)
 from_code_ph	Código de orixe (bag)
-item_name_lang_ph	Nome do artigo — escríbao na súa lingua
 login_id_opt_ph	Nome de usuario (obrigatorio, único)
 manager_pin_ph	PIN de encargado para aprobar (só se non pode anular)
 new_branch_name_ph	Nome da sucursal nova
@@ -821,15 +655,12 @@ new_password_ph	Contrasinal novo (opcional)
 new_pin_ph	PIN novo (4–12 díxitos)
 note_bank_ph	Nota (ingreso, retirada, …)
 note_buy_expense_ph	Nota (combustible, alugueiro, …)
-note_expense_ph	Nota (combustible, oficina, …)
 options_kirano_ph	Opcións — Size*: Small=199, Large=399 | Toppings+3: Cheese=40, Olive=30 | Extra cheese=40
-part_second_way_ph	Parte por unha segunda vía (opcional)
 phone_ph	Teléfono
 place_name_ph	Nome deste local
 qty_example_ph	Cant. (p. ex. 1,5 para kg)
 quantity_ph	Cantidade
 reason_required_ph	Motivo (obrigatorio)
-role_title_ph	Título do papel (p. ex. Barista)
 service_pct_ph	Servizo % opcional 0/10/12
 short_code_ph	Código curto (MG02)
 starting_password_ph	Contrasinal inicial (opcional)
@@ -864,14 +695,11 @@ shift_handover	Relevo de turno
 shift_since	Este turno desde
 expected_in_drawer	Agardado no caixón
 right_discount	Facer un desconto
-pick_category	Escolla unha categoría
-close_category_list	Pechar a lista de categorías
 new_category_row	Categoría nova — créase ao gardar o artigo
 your_category	A súa categoría
 suggested_category	Suxerido: dos nosos artigos
 category_search_ph	Categoría — busque a súa ou escriba unha nova
 cancel_item_short	Anular
-cancel_item_title	Cancela este elemento: a oficina administrativa recibe un comprobante de cancelación
 return_to_customer	Devolver ao cliente
 short_by	Falta
 tip_not_sale	Propina (do persoal, non é unha venda)
@@ -884,9 +712,7 @@ finding_server	Buscando o servidor da tenda neste Wi‑Fi…
 no_server_found	Non se atopou ningún. No Servidor: Axustes → Outros dispositivos → Permitir caixas extra (o mesmo Wi‑Fi). Ou escriba a IP que se mostra alí.
 servers_found_pick	Prema a tenda á que se quere conectar.
 server_host_selected	Úsase {host} — introduza o código de emparellamento e Emparellar agora.
-print_bill	Imprimir a conta
 approval_pin_ph	PIN de encargado (só se se pide)
-confirm	Confirmar
 menu_search_ph	Buscar artigo ou código curto
 customer_paid_ph	O cliente pagou
 tip_ph	Propina
@@ -896,7 +722,6 @@ bill_format_help	Impreso baixo o nome da túa tenda en cada factura. Separa liñ
 bill_header_ph	Enderezo | teléfono
 fssai_ph	FSSAI / licenza de tenda núm. (opcional)
 bill_footer_ph	Pé (p. ex. Grazas, volva)
-save_bill_format	Gardar o formato da conta
 kot_field_on	mostrar
 kot_field_off	agochar
 kot_weight_light	Fina
@@ -907,10 +732,8 @@ kot_weight_bold	Negra
 kot_align_start	Comezar
 kot_align_center	Centro
 kot_align_end	Final
-content_width	Largo do contido (mm)
 content_width_bill	Largo do contido da conta (mm)
 content_width_ph	Ou escriba un largo de contido, 40–210 mm
-content_width_help	Que ancho imprime este slip. Bill mantén o seu propio ancho.
 content_width_bill_help	Que ancho imprime a factura do cliente. Predeterminado 210 mm (páxina). Deslizamento estreito de 58 mm, deslizante de 80 mm de ancho, ancho A4 de 112 mm, 4 polgadas de 210 mm. Escribe calquera valor de 40 a 210. Os billetes teñen o seu propio ancho na pestana de deslizamento.
 vp_paper_width	Largo do contido (mm)
 vp_paper_width_ph	Ou escriba un largo de contido, 40–210 mm
@@ -925,9 +748,6 @@ test_bill_sent	Vista previa da conta enviada
 test_print_no_printer	Non hai impresora para este traballo — escolla unha nesta pantalla
 std_print	Tamaño de impresión da conta
 std_print_help	Tamaño de letra para traballos de facturación estándar de retrato e paisaxe en impresoras de SO/documentos (introduza puntos, non pequeno/normal/grande). Mesmo tamaño nas dúas orientacións.
-std_size_s	Pequena
-std_size_m	Normal
-std_size_l	Grande
 save_std_print	Gardar o tamaño de impresión da conta
 std_print_saved	Tamaño de impresión da conta gardado
 print_brand_kit	Imprimir o kit de marca
@@ -940,14 +760,9 @@ choose_payment_qr	Escoller o QR de pagamento
 clear_payment_qr	Quitar o QR de pagamento
 payment_qr_set	QR de pago: no ficheiro: móstrase na pantalla do cliente (substitúe a cantidade UPI QR alí)
 payment_qr_none	QR de pagamento: ningún — QR do importe desde o ID UPI ao pagar
-aggregator_import	Pedidos de agregador (ficheiro)
-aggregator_import_help	Importación local opcional: poña import_aggregator_orders.json no cartafol de copias (matriz ou {"orders":[…]}), e prema Importar. Nunca bloquea o mostrador; Zomato/Swiggy en directo é Cloud.
-import_aggregator_file	Importar o ficheiro de agregador
 team_pick_ph	Persoal a editar — nome, nome de usuario ou escolla
 select_staff	Seleccionar este persoal
 rights_help	Accións de diñeiro para esta persoa — toca para realizar un ciclo: Permitido → Necesita PIN do xefe → Non permitido. Imprimir factura de novo é só facturas; seccións son a lista de verificación a continuación.
-dish_picker_help	Busca ou explora os nosos artigos e toca un para cubrir o seu nome e a foto, ou mantén o teu propio nome. Establece o teu prezo (0 está ben) e despois Engade elemento.
-close_dish_list	Pechar a lista de elementos
 own_item_name	Usar isto como nome propio do artigo
 on_your_menu	No catálogo
 edit	Editar
@@ -958,24 +773,16 @@ add_scheme	Engadir BOGO
 schedule_ph	Horario - Lun-Ven 07:00-11:00 ou noite 17:00-19:00=150
 upi_vpa_ph	UPI ID (VPA)
 upi_payee_ph	Nome do beneficiario UPI (opcional)
-upi_qr	UPI QR
 show_upi_qr	Mostrar o QR UPI
 close_upi_qr	Pechar
 upi_qr_help	O cliente escanea e paga. Toca Aceptar o pago despois de que paguen. Segunda pantalla: abra o URL do servidor/display na LAN.
-recently_done	Feitos hai pouco
 role_help_customer	Papel: Cliente — khata (débenos). A mesma parte tamén pode fornecer stock.
 role_help_both	Papeis: Cliente + Provedor — unha parte, libros de khata e a pagar, neto nos Informes.
 role_help_supplier	Papel: Provedor — debémoslles as compras.
-items_word	artigos
-items_section	Artigos
-back_to_order	Volver ao pedido
-new_items_head	Aínda non enviado
 price_ph	Prezo
 price_ph_gst_inside	Prezo ({tax} incluído)
-tax_rates_missing_hint	Non hai taxa de {tax} nestes artigos: en artigos establecidos Taxa fiscal (os prezos xa inclúen {tax} baixo {tax} incluído)
 taxable_value	Base impoñible
 gst_inside_price_note	({tax} incluído)
-start_with_template	Comeza co noso modelo de artigos
 template_heading	Elementos de inicio
 template_info	Categorías {c} e elementos {d} con fotos, listos para engadir. Os prezos comezan en 0 ₹. Establece o teu despois.
 template_import	Importar a modelo completa
@@ -997,21 +804,13 @@ opening_client	Abrindo o cliente…
 preparing_desk	Preparando o mostrador…
 opening_server	Abrindo o servidor…
 creating_server	Creando o servidor…
-order_empty_pick	Pedido baleiro: toca Engadir elementos arriba para escoller elementos.
 add_dishes	Engadir elementos
 order_so_far	Neste pedido: {n} · {total}
 no_dish_match	Ningún elemento coincide con "{q}"
-pick_dishes_help	Toca un elemento para engadilo · escolla unha categoría para restrinxir a lista
 pick_done	Feito
-pick_done_dd	Feito · {label}
-printer_route_mode	Se hai varias impresoras neste lugar
-printer_mode_first	A primeira que funcione
-printer_mode_all	Imprimir en todas
 kot_field_up	Subir
 kot_field_down	Baixar
-app_template_blurb_extra	Tamén: o propietario Zahir, o administrador Asif, o caixeiro Nawaz; barra lateral frontal; historia despois de 4 horas; Hoxe despídese; factura compacta.
 dishes_n	Elementos {n}
-recipe_ph	Receita (opcional, sen usar nunha tenda)
 reorder_ph	Volver mercar en
 set_reorder	Poñer o nivel de reposición
 low_stock_alert	Estase a acabar — merque axiña: {items}
@@ -1020,7 +819,6 @@ show_unpriced	Mostra só artigos sen prezo
 show_all_dishes	Mostrar todos os elementos
 role_title_rest_ph	Título do papel (p. ex. Capitán, Xefe de cociña)
 preset_help_rest	Caixeiro: vender. Encargado: vender + artigos + anular/emendar.
-kind_raw	Comprado para uso na tenda
 kind_resale	Comprado para vender
 kind_dish	Non contar stock
 buy_unit_ph	Unidade (kg, litre, pcs)

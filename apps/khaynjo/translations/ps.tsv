@@ -41,7 +41,7 @@ remove	لرې کړئ
 removed_items	لرې شوي توکي
 removed_help	کټګورۍ. زموږ د خواړو شیلف هیڅکله نه لرې کیږي ، نو یو ډش تل بیا اضافه کیدی شي.
 restore_item	بیا رغول
-empty_catalog	کوم لوښي نشته. مینو پرانیزئ، یو ډش اضافه کړئ (نوم + قیمت)، بیا یو آرډر واخلئ.
+empty_catalog	کوم لوښي نشته.
 total	ټول
 cash	نغدې
 upi	UPI
@@ -103,23 +103,14 @@ bill_item_qty	مقدار
 bill_item_price	قیمت
 bill_item_amount	مقدار
 bill_item_note	د ډوډۍ یادښت
-bill_item_col_gap	د کالم تشه
 bill_item_col_order	د کالم ترتیب
 bill_item_col_sep	د کالم قواعد
-bill_item_gap_tight	تنګ
-bill_item_gap_comfort	آرامي
-bill_item_gap_wide	پراخه
-bill_item_num_width	د کالمونو شمیر
-bill_item_num_compact	تړون
-bill_item_num_comfort	آرامي
-bill_item_num_wide	پراخه
-bill_item_num_align	شمېرې سره سمون لري
-bill_item_gap_em	تشه (تاسو)
-bill_item_qty_min	دقیقه اندازه (ایم)
-bill_item_price_min	قیمت دقیقه (په کې)
-bill_item_amount_min	اندازه دقیقه (ایم)
-kot_item_qty_width	د کالم مقدار
-kot_item_num_align	اندازه سمون
+slip_columns	ستنې
+slip_col_width	سور (mm)
+slip_col_start	د پیل واټن (px)
+slip_col_end	د پای واټن (px)
+slip_col_align	د متن سمون
+slip_columns_help	د هرې ستنې سور کې د هغې د پیل او پای واټن شامل دی. متن د خپلې ستنې دننه ماتیږي؛ هغه څه چې د منځپانګې له سور څخه وځي، په کاغذ او مخکتنه کې پرې کیږي.
 bill_total_qty_label	ټول مقدار لیبل
 bill_total_subtotal_label	فرعي ټول لیبل
 bill_total_grand_label	لوی ټول لیبل
@@ -221,7 +212,6 @@ sidebar_order_saved	د غاړې امر خوندي شو
 sidebar_visibility_saved	د غاړې د لید لید خوندي شو
 amounts_hide	پټول
 amounts_show	ښودل
-printers_none_hint	لومړی په دې وسیله یو پرنټر خوندي کړئ، بیا یې په بل یا پخلنځي کې اضافه کړئ
 counter	کاونټر
 dine_in	ډوډۍ خوړل
 takeaway	اخستل
@@ -328,8 +318,6 @@ selected_language	ټاکل شوی
 continue	ادامه ورکړئ
 this_device	دا وسیله
 device_use_q	دا وسیله به څنګه وکارول شي؟
-last_server_mode	سرور و - د دوام لپاره ټایپ کړئ
-last_client_mode	کلاینټ و — د دوام لپاره ټک ووهئ
 choose_server	یو سرور غوره کړئ
 choose_server_hint	یو موجود سرور خلاص کړئ، یا د بل سوداګرۍ لپاره یو جوړ کړئ.
 create_new_server	نوی سرور جوړ کړئ
@@ -391,7 +379,7 @@ attachments_last_expense	ضمیمې (وروستی لګښت)
 bank	بانک
 bank_in	په بانک کې
 bank_out	بانک بهر
-bank_reconciliation	د بانک پخالینه (ستاسو د بانک بیان په مقابل کې ټیک بند کړئ)
+bank_reconciliation	د بانک پخالینه
 bank_to_till	بانک → ته
 book_add_dish	کتاب - ډش / توکي اضافه کړئ
 book_opening_credit	کتاب - د پرانیستلو کریډیټ
@@ -744,7 +732,6 @@ station_print_pick_first	لومړی د پخلنځي سټیشن غوره کړئ
 station_print_editing	د "{name}" لپاره چاپګرونه ترمیم کول
 station_vps_dd	د دې سټیشن لپاره چاپګر
 station_vps_dd_n	{n} چاپګر · د بدلولو لپاره ټایپ کړئ
-station_vps_empty	تر اوسه چاپګر نشته — د ترتیباتو → چاپګر لاندې ومومئ
 bill_printers_dd	د بل لپاره چاپګر
 bill_printers_dd_n	د بیل لپاره {n} پرنټر · د بدلون لپاره ټایپ کړئ
 job_layout	ترتیب
@@ -889,7 +876,7 @@ net_word	جال
 offline_badge	آفالین
 optional_login_help	ل (id + پاسورډ). مالک یو ځل ټاکي؛ یوازې کارونکي کولی شي وروسته پاسورډ بدل کړي.
 or_unlock_login	یا د ننوتلو ID + پاسورډ سره خلاص کړئ
-permission_preset	دنده (د سکرینونو او پیسو کړنې تنظیموي)
+permission_preset	دنده
 preset_help_khaynjo	کیشیر: خرڅول. مدیر: پلورل + توکي + باطل / ترمیم.
 product_locked_khaynjo	Khaynjo
 product_only_khaynjo	د رستورانت عملیاتي سیسټم. نورې سوداګرۍ د جال کمکج محصوالتو په توګه لیږدول کیږي.
@@ -961,10 +948,6 @@ pin_hint_paired	تر جوړه پورې اضافي - د پلور لپاره خل�
 pin_hint_pair_first	اضافي پورې - لومړی د هټۍ وسیله سره جوړه کړئ
 unlock_to_continue	د دوام لپاره خلاص کړئ
 no_staff_yet	تراوسه هیڅ کارمند نشته - د مالک په توګه خلاص کړئ، بیا ټیم
-status_server_set_pin	د سرور حالت - د مالک PIN تنظیم کړئ
-status_server_tills	د سرور حالت - اضافي ټیلونه یوځای کیدی شي. خلاصول
-status_server_unlock	د سرور حالت - د مالک په توګه خلاص کړئ
-status_client_unlock	د کلاینټ حالت — د پلور لپاره خلاص کړئ
 icon_new_selected	آیکون: نوې فایل غوره شوی - د برانډ خوندي کولو کلیک وکړئ
 icon_custom	نښه: د دودیز ځای نښه
 icon_default	نښه: د کمکج نښه (ډیفالټ) - یو دودیز غوره کړئ
@@ -1033,7 +1016,7 @@ book_kind_balance	بیالنس پاڼه
 order_help	د اضافه کولو لپاره یو توکي ټایپ کړئ.
 floor_help	ل → تادیه شوی. د انتظار لیست، ریزرویشنونه، او اضافه میزونه په لاندې برخو کې دي.
 kitchen_help	ي وروستي. پیل ← چمتو → بشپړ شوی ټکټ سره حرکت کوي. ټکټونه هیڅکله نرخونه نه ښیې.
-kitchen_empty	خلاص ټکټونه نشته. د آرډر یا پوړ څخه لیږل شوی KOT دلته ښودل کیږي.
+kitchen_empty	خلاص ټکټونه نشته.
 add_a_table	یو میز اضافه کړئ
 add_station_heading	د پخلنځي سټیشن اضافه کړئ
 categories_help	ولو لپاره وکاروئ. عکس کټګورۍ ته انځور ورکوي؛ پرته له دې چې دا خپل ابتدايي ښیي.
@@ -1131,7 +1114,6 @@ bill_format_help	لاندې چاپ شوی. سره جال کرښې | (د مثال
 bill_header_ph	پته | تلیفون
 fssai_ph	د FSSAI جواز نمبر (هند)
 bill_footer_ph	فوټر (د مثال په توګه مننه، بیا لیدنه وکړئ)
-save_bill_format	د بیل فارمیټ خوندي کړئ
 reset_bill_format	ډیفالټ ته بیا تنظیم کړئ
 bill_format_reset	د بیل فارمیټ ډیفالټ ته ری سیٹ کړئ
 reset_kot_format	ډیفالټ ته بیا تنظیم کړئ
@@ -1201,13 +1183,11 @@ kot_copies_3	3
 kot_title_ph	سرلیک (خالي = کوټ - د پخلنځي ترتیب)
 kot_footer_ph	د پخلنځي یادښت (اختیاري، هیڅ قیمت)
 kot_preview	مخکتنه
-save_kot_format	د KOT بڼه خوندي کړئ
 test_kot_format	د CAT ازموینه
 test_kot_sent	د پخلنځي ټکټ مخکتنه لیږل شوې
 test_bill_format	د ازموینې بل
 test_bill_sent	د بل مخکتنه لیږل شوې
 test_print_no_printer	د دې کار لپاره چاپګر نشته - په دې سکرین کې یو غوره کړئ
-kot_format_saved	د KOT بڼه خوندي شوه
 std_print	د بیل چاپ اندازه
 std_print_help	ل/لوی نه). په دواړو لورو کې ورته اندازه. د پخلنځي سلیپ اندازې په KOT ټب کې دي.
 std_size_s	کوچنی
@@ -1264,7 +1244,6 @@ new_items_head	تراوسه نه دی لیږل شوی
 price_ph	قیمت
 price_ph_gst_inside	قیمت ({tax} په شمول)
 cancel_needs_table	ه وروسته لغوه شي — کاونټر KOTs په ټکټ کې پاتې کیږي تر هغه چې تاسو تادیه نه کوئ
-tax_rates_missing_hint	په دې لوښو کې د {tax} نرخ نشته — په مینو کې د مالیې نرخ کېږدئ (بیې له مخکې {tax} لري، د {tax} په شاملولو کې)
 taxable_value	د مالیې وړ ارزښت
 gst_inside_price_note	({tax} ټول شموله)
 start_with_template	زموږ د مینو ټیمپلیټ سره پیل کړئ
@@ -1318,9 +1297,7 @@ order_empty_pick	خالي امر وکړئ - د لوښو غوره کولو لپا
 add_dishes	لوښي اضافه کړئ
 order_so_far	په دې ترتیب: {n} · {total}
 no_dish_match	هیڅ ډوډۍ د "{q}" سره سمون نلري
-pick_dishes_help	د اضافه کولو لپاره یو ډش ټایپ کړئ · د لیست محدودولو لپاره کټګورۍ غوره کړئ
 pick_done	ترسره شو
-pick_done_dd	بشپړ شو · {label}
 printer_route_mode	که په دې ځای کې څو چاپګر
 printer_mode_first	لومړی دا کار کوي
 printer_mode_all	په ټولو کې چاپ کړئ

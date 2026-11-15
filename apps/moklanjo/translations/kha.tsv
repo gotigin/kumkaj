@@ -39,7 +39,7 @@ adding_item	Ka jingpynrung ia ka dor kaba thymmai
 editing_item	Ka jingpynbeit
 save	Pynsah
 remove	Pynduh noh
-empty_catalog	Ym pat don dor haduh mynta. Plie ia ki dor & jingshakri, pyndap ia kawei (kyrteng + dor, unit kg), nangta ka jingpynrung kyrteng.
+empty_catalog	Ym pat don dor haduh mynta.
 counter_sale	Ka jingbuh jaka
 total	Baroh
 cash	Ka pisa
@@ -171,8 +171,6 @@ selected_language	La jied
 continue	Bteng
 this_device	KANE KA TIAR
 device_use_q	Kumno yn pyndonkam ia kane ka tiar?
-last_server_mode	Ka Server — nion ban bteng .
-last_client_mode	Ka klient — tap ban bteng .
 choose_server	Jied ia u nongshakri
 choose_server_hint	Plie ia ka server kaba la don lypa, lane shna ia kawei na ka bynta kawei pat ka kam.
 create_new_server	Pynlong ia ka server ba thymmai
@@ -501,8 +499,6 @@ job_layout	Ka jingpynbeit
 job_delivery	Kumno la phah ia ka kam .
 job_size	Ka jingheh jong ka font
 job_size_ph	kum 18, 20, 26...
-save_receipt_format	Save ia ka rukom pdiang
-save_label_format	Save ia ka dur jong ka label
 test_receipt_format	Ka jingpdiang test
 test_label_format	Ka jingpynbna test
 test_receipt_sent	La phah ia ka nuksa resit
@@ -610,7 +606,7 @@ units_heading	Ki unit
 booking_measures	Ki lad ban buh jaka
 drawer_count	Ka jingkhein ia ki drawer (da jied)
 spreadsheet_csv	Ka kot jingkhein (CSV)
-bank_reconciliation	Ka jingpyniasuk ia ka bank (buh dak pyrshah ia ka jingthoh jong ka bank)
+bank_reconciliation	Ka jingpyniasuk ia ka bank
 book_add_product	Ka kot — pynrung ia ka mar / dor .
 book_opening_credit	Ka kot — ka jingplie ia ka credit .
 account_kind	Ka jait jingkhein (tap ia kawei)
@@ -650,7 +646,7 @@ net_word	Jar
 offline_badge	KHLEM LAIN
 optional_login_help	Ka jingrung kaba lah ban jied (id + ka ktien rieh). U trai set shisien; tang u nongpyndonkam uba lah ban pynkylla ia ka password hadien.
 or_unlock_login	Lane plie da ka id login + ka ktien rieh
-permission_preset	Ka kam (ka buh ia ki skrin bad ki hok)
+permission_preset	Ka kam
 preset_help_moklanjo	U nongthied: die. U nongpyniaid: die + tiar + pynkylla/pynkylla.
 product_locked_moklanjo	Moklanjo
 product_only_moklanjo	Kane ka app ka dei tang ka Moklanjo — ki kot + booking desk. Kiwei pat ki jingkhaii ki iakynduh kum ki mar ba kyrpang hadien.
@@ -698,10 +694,6 @@ pin_hint_paired	Ka jingpynkhreh haduh ka jingpyniasoh — plie ban die .
 pin_hint_pair_first	Ka jingpynkylla — pyniasoh bad ka tiar dukan nyngkong .
 unlock_to_continue	Plie ia ka jingkhang ban bteng
 no_staff_yet	Ym pat don nongtrei — plie kum u Trai, nangta ka Team .
-status_server_set_pin	Ka rukom shakri — buh ia u trai PIN .
-status_server_tills	Ka rukom shakri — ki till ba kham heh ki lah ban iasoh. Plie ia ka jingkhang
-status_server_unlock	Ka rukom shakri — plie kum u trai .
-status_client_unlock	Ka rukom klien — plie ban die .
 icon_new_selected	Icon: la jied ia ka file thymmai — tap Save ia ka kyrteng .
 icon_custom	Icon: dak jaka ba la shna kyrpang
 icon_default	Icon: Kumkaj dak (ba la buh) — jied ia kawei kaba la buh kyrpang

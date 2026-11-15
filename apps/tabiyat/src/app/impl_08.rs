@@ -18,7 +18,6 @@ fn add_menu_item(&mut self, cx: &mut Cx) {
         let variations_text = self.ui.text_input(cx, ids!(menu_variations_input)).text();
         let group_text = self.ui.text_input(cx, ids!(menu_group_input)).text();
         let schedule_text = self.ui.text_input(cx, ids!(menu_schedule_input)).text();
-        let recipe_text = self.ui.text_input(cx, ids!(menu_recipe_input)).text();
         let result = (|| -> Result<(), String> {
             let mut st = app_state().lock().unwrap();
             let updating = st.editing_product_id.is_some();
@@ -99,7 +98,6 @@ fn add_menu_item(&mut self, cx: &mut Cx) {
                 variations,
                 schedule,
                 group_name: group_text.trim().to_string(),
-                recipe_text,
                 image_bytes,
                 image_filename,
                 existing_image_key,

@@ -39,7 +39,7 @@ adding_item	Pridedamas naujas kursas
 editing_item	Redagavimas
 save	Išsaugoti
 remove	Pašalinti
-empty_catalog	Įkainių dar nėra. Atidarykite Kainos ir paslaugos, pridėkite vieną (pavadinimas + kaina, vnt. kg), tada Užsakymas.
+empty_catalog	Įkainių dar nėra.
 counter_sale	Prekių užsakymas
 total	Iš viso
 cash	Grynais
@@ -171,8 +171,6 @@ selected_language	Pasirinkta
 continue	Tęsti
 this_device	ŠIS ĮRENGINYS
 device_use_q	Kaip bus naudojamas šis įrenginys?
-last_server_mode	Buvo Serveris — bakstelėkite, kad tęstumėte
-last_client_mode	Buvo Klientas — bakstelėkite, kad tęstumėte
 choose_server	Pasirinkite serverį
 choose_server_hint	Atidarykite esamą serverį arba sukurkite kitam verslui.
 create_new_server	Sukurti naują serverį
@@ -501,8 +499,6 @@ job_layout	Išdėstymas
 job_delivery	Kaip siunčiamas darbas
 job_size	Šrifto dydis
 job_size_ph	pvz. 18, 20, 26…
-save_receipt_format	Išsaugoti kvito formatą
-save_label_format	Išsaugoti etiketės formatą
 test_receipt_format	Bandymo kvitas
 test_label_format	Bandymo etiketė
 test_receipt_sent	Kvito pavyzdys išsiųstas
@@ -610,7 +606,7 @@ units_heading	Vienetai
 booking_measures	Užsakymo priemonės
 drawer_count	Stalčiaus skaičiavimas (nebūtina)
 spreadsheet_csv	Skaičiuoklė (CSV)
-bank_reconciliation	Banko suderinimas (pažymėkite pagal banko išrašą)
+bank_reconciliation	Banko suderinimas
 book_add_product	Užsakyti – pridėkite produktą / įvertinkite
 book_opening_credit	Knyga — pradinis kreditas
 account_kind	Sąskaitos rūšis (bakstelėkite vieną)
@@ -650,7 +646,7 @@ net_word	Grynasis
 offline_badge	NEPRISIJUNGĘS
 optional_login_help	Nebūtinas prisijungimas (id + slaptažodis). Savininkas nustato vieną kartą; vėliau slaptažodį gali keisti tik naudotojas.
 or_unlock_login	Arba atrakinkite prisijungimo id + slaptažodžiu
-permission_preset	Darbas (nustato ekranus ir teises)
+permission_preset	Darbas
 preset_help_moklanjo	Kasininkas: parduoda. Vadovas: pardavimas + prekės + anuliavimas/taisymas.
 product_locked_moklanjo	Moklanjo
 product_only_moklanjo	Ši programa skirta tik „Moklanjo“ – knygos ir užsakymo stalas. Kiti prekybos veidai vėliau pristatomi kaip atskiri produktai.
@@ -698,10 +694,6 @@ pin_hint_paired	Papildoma kasa susieta — atrakinkite, kad parduotumėte
 pin_hint_pair_first	Papildoma kasa — pirmiausia susiekite su parduotuvės įrenginiu
 unlock_to_continue	Atrakinkite, kad tęstumėte
 no_staff_yet	Darbuotojų dar nėra — atrakinkite kaip Savininkas, tada Komanda
-status_server_set_pin	Serverio režimas — nustatykite Savininko PIN
-status_server_tills	Serverio režimas — papildomos kasos gali prisijungti. Atrakinkite
-status_server_unlock	Serverio režimas — atrakinkite kaip Savininkas
-status_client_unlock	Kliento režimas — atrakinkite, kad parduotumėte
 icon_new_selected	Piktograma: pasirinktas naujas failas — bakstelėkite Išsaugoti prekės ženklą
 icon_custom	Piktograma: pasirinktinis vietos ženklas
 icon_default	Piktograma: Kumkaj ženklas (numatytasis) — pasirinkite savo

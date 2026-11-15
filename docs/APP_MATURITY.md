@@ -116,13 +116,107 @@ Removed — library:
   and the floor / kitchen / KOT-station staff features.
 - 292 unused restaurant strings from `locale.rs` and all 110 packs.
 
-Kept on purpose (data and printing compatibility): the SQLite tables and
-columns (an older shop's books still open), cart-line / sale fields such as
-`kot_id` and `table_id`, the `kot` print format id (a bill printer may use
-that narrow slip) and saved kitchen routes in `printers.json`, the shared
-slip style types still named `Kot*`.
+Kept on purpose (printing compatibility): the `kot` print format id (a bill
+printer may use that narrow slip) and saved kitchen routes in
+`printers.json`, the shared slip style types still named `Kot*`. The
+restaurant SQLite tables / columns and the cart-line / sale KOT and table
+fields were kept here at first, then removed with the migrations (next
+section).
 
 Tests: restaurant tests removed (Kirano lib 344 → 246, shell 58 → 47,
 journeys 11 → 10); the LAN retry / concurrency and phone-queue tests now
 send counter sales instead of KOTs. `--tier=visual` re-run after each layer.
 
+## Onboarding Client, one-app features, no migrations, dropdowns, printers (2026-11-14)
+
+Owner: "Only when for the first time onboarding, client option is selected
+then it takes too long and the ui is like locked and cancel button doesn't
+works … features which are concrete and specific to one app … aren't
+duplicated … We haven't published other 3 apps so we can still clear the
+migration and old books support." Then: dropdowns keep "Done" after they
+close and do not look like dropdowns; and wherever the owner is sent to
+Settings → Printers to add a printer, give them Find printers right there.
+
+**Client tap on first onboarding (all four):**
+- Cancel used to wait for the open worker, which on a first Android install
+  also competed with the menu-photo unpack (Khaynjo 1,459 files / 143 MB).
+  Every role open and every Cancel now starts a new generation
+  (`role_open_gen`): Cancel returns to Server / Client at once, and a worker
+  that finishes later sees it is stale and drops its result off the UI
+  thread. Verified on Xvfb with the Client open slowed to 8 s: back on the
+  role picker 0.6 s after Cancel, still there 9 s later.
+- The bundled item photos are unpacked only for a Server (books open or
+  Server chosen) — a Client never waits for them.
+
+**One-app features removed from the apps that do not need them:**
+- Kirano / Tabiyat: Khaynjo's Rajdhani App Template offer (it could never
+  appear), the Zomato / Swiggy aggregator file import, recipes and raw
+  materials (`store_recipes.rs` → `store_reorder.rs`, reorder levels only),
+  allergens, order types (dine-in / takeaway / delivery) and delivery-by,
+  the cart-line KOT / station / running-order fields and every remaining
+  table / KOT SQL; Kirano also Tabiyat's Schedule H / Rx flags.
+  `store_running.rs` (bill settings by then) is `store_bill.rs`.
+- Kirano / Tabiyat ship their own starter catalogues (neighbourhood grocery,
+  chemist counter); a Khaynjo counter-only rule had hidden their Import
+  buttons. Shown again — Kirano imported all 504 items with photos on a
+  copy of older test books.
+- Tabiyat: the chemist strings (barcode, composition, Rx note, Schedule H /
+  Rx toggles, batch, expiry) were in every pack but never applied — wired.
+  Moklanjo's "AWB" barcode stub left Tabiyat.
+- Rajdhani names out of Kirano / Tabiyat tests (`Asha Stores`), the
+  Rajdhani image script out of both apps; 172 (Kirano) / 182 (Tabiyat)
+  strings nothing used out of `locale.rs` and all 110 packs.
+
+**No migrations (Moklanjo, Kirano, Tabiyat — Khaynjo keeps its ladder):**
+- One schema per app (`src/store_schema.rs`, `CREATE … IF NOT EXISTS`),
+  generated from a fresh file of the previous build and checked column by
+  column (same order, same types / defaults). Gone: every `ALTER TABLE …
+  ADD COLUMN` list, `migrate_ops` / `migrate_courier_ops_tables` /
+  `migrate_local_extras_tables`, the one-shot KOT close, the branch
+  back-fill, the staff-cache one-shot, the pre-per-user amount fallback,
+  and the install-level `printers.json` copy / old `{kot, bill}` /
+  `{receipt}` formats.
+- Kirano / Tabiyat also dropped 13 restaurant tables (tables, KOTs, running
+  orders, kitchen stations, floor areas, reservations, waitlist, waiter
+  calls, split tables, recipes, stock carry, delivery) and their columns
+  (sale table / order type, item station / area prices / allergens, feedback
+  table, LAN outbox table). Every dropped column had a default, so books
+  from an earlier test build still open (checked on a copy). Tabiyat keeps
+  the column name `allergens` for the Rx note for the same reason.
+
+**Dropdowns (all four):** every control that opens a pick list sits in
+`ComboField`, which draws ˅ / ˄ from app state at draw time; dropdown faces
+are their label only (`Done · …` removed — it stayed after the list closed
+another way). DEV.md § Dropdowns rule 9.
+
+**Find printers where a printer is missing (all four):** printer checklists
+with nothing saved show a Find printers row; "no printer" warnings carry a
+Find printers button; both open the Printers sheet (Find / Cancel / saved
+list; Done reopens the checklist). Moklanjo's sheet saves what Find found
+and gives the tapped printer the missing job. DEV.md § Dropdowns rule 10,
+PRINTER.md. Khaynjo checked on Xvfb end to end (Kitchen → station → Find
+printers → sheet → Find → Done → the station list shows the printers).
+
+
+## Owner queue, afternoon (2026-11-14) — the same in all four
+
+| Change | Where it is written down |
+|---|---|
+| Live LAN socket: both loops poll (100 ms) instead of parking in a 25–35 s read — a tablet's KOT took up to 24 s, now ≈70 ms; silent socket closes after 45 s; frames read with the `101` head kept; slow phone writes logged (`lan_write_slow`) | DEV.md § LAN "Both loops poll" |
+| A CUPS queue that is a local USB printer prints raw jobs straight to its usblp node (CUPS held the printer ~8 s per job); the usblp lookup reads `usbmisc` and resolves the relative sysfs link | PRINTER.md "What went wrong" 9–10 |
+| Shop settings mirrored on every Client (`SHOP_PREF_KEYS`, snapshot + deltas); sidebar layout is a `BooksOp`; Khaynjo: GST wording and Tax invoice off by default | DEV.md § LAN "Shop settings on every device", DESIGN.md "One screen for every device" |
+| Cluster texts removed (state restated, copies of tips, instruction bars, empty-state instructions, bracketed explanations); layout guard `layout_labels_carry_no_explanations`; `scripts/ui-text-inventory.sh` | DESIGN.md "Explanations live in ℹ" |
+| Bill / KOT / receipt-label formats save themselves (no Save buttons) | DESIGN.md "Formats save themselves" |
+| Settings holds the sidebar: one list, icons on every row, rows tap through; Sidebar screen removed; slot icons drawn by code only (`slot_icons_have_no_layout_picture`) | DESIGN.md "Settings holds the sidebar", DEV.md § WorldFonts |
+| Dish search: names first, then aliases / groups; an exact short code leads (Khaynjo, Kirano, Tabiyat) | KHAYNJO.md menu window row |
+| Opening the books logs its stages (`Kumkaj open:`, `role_open`) | DEV.md rule 7 |
+| Khaynjo: the Rajdhani pack names the shop and brings its logo (`shop_name`, `logo_base64`) | CATALOGUE_URLS.md |
+| Khaynjo: Export template — a configured shop as a format-2 pack, applied whole on a new device; packs carry no PINs (first PIN from the Owner in Team). **Not yet in Moklanjo / Kirano / Tabiyat** (owner: Khaynjo first, then the other three) | apps/khaynjo/docs/CATALOGUE_URLS.md "Export template" |
+
+Visual baselines refreshed for the Settings redesign and the corrected
+sidebar icons (2026-11-14), each old/new pair checked by eye first. The
+visual gate in `product-cert.sh` had never failed: ImageMagick 7 prints
+`90206.7 (0.0783045)` and the gate only matched bare integers, so a
+Settings screen 90 000 pixels off passed. It now reads the leading number,
+fails above `CERT_VISUAL_MAX_AE` (default 50000) and fails when compare
+gives no number.

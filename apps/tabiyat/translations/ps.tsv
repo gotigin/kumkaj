@@ -1,5 +1,4 @@
 # Pashto — پښتو (ps). One key<TAB>text per line, in en() order; keep {placeholders}.
-app_tagline	د درملتون کاونټر: درمل، بسته، قطعه او کتابونه. وړیا آف لائن.
 barcode_ph	بارکوډ / EAN
 composition_ph	مالګه / ترکیب (د لټون وړ)
 schedule_h_off	مهالویش H - بند (د مالک بیرغ)
@@ -13,7 +12,6 @@ expiry_alerts	د ختمیدو خبرتیاوې (راتلونکې 7 ورځې)
 expiry_none	هیڅ بسته په راتلونکو 7 ورځو کې پای ته نه رسیږي.
 rx_nudge	د مالک بیرغ شوی Rx / مهالویش H — که اړتیا وي نو یادداشت اضافه کړئ.
 unlock	خلاصول
-pin_hint	د مالک PIN د 0000 په توګه پیل کیږي
 sell	پلورل
 buy	پېرود
 books	د ورځې کتاب
@@ -32,17 +30,13 @@ reports_month	ګټه او تاوان (میاشت)
 reports_aging	بقایا / ډاکټر-Cr
 reports_balance_sheet	بیالنس پاڼه
 reports	د بانک کتاب او L&P
-refresh	تازه کړئ
 undo	بیرته راګرځول
-start_tracking	تعقیب پیل کړئ
 stock_minus	- ذخیره
 stock_plus	+ ذخیره
 settle_cash	نغدي تصفیه کړئ
 settle_card	تصفیه کارت
 items	داروګانې
 nav_items	داروګانې
-more	نور
-your_items	ستاسو درمل
 items_help	د ترمیم کولو لپاره یو توکي ټایپ کړئ. نوی توکي فورمه پاکوي. د نوم یا لنډ کوډ په واسطه لټون وکړئ، قیمت وټاکئ (0 ښه دی)، بیا اضافه کړئ. خرڅلاو دمخه ثبت شوي هغه نوم وساتئ چې دوی یې تور لګول شوي.
 add_item	توکي اضافه کړئ
 new_item	نوی توکي
@@ -53,28 +47,22 @@ remove	لرې کړئ
 removed_items	لرې شوي توکي
 removed_help	بیا رغونه توکي بیرته په توکو کې ځای په ځای کوي لکه څنګه چې وه - قیمت، عکس او کټګورۍ.
 restore_item	بیا رغول
-empty_catalog	تراوسه هیڅ درمل نشته. درمل خلاص کړئ، نوم، بارکوډ یا مالګه اضافه کړئ، بیا وپلورئ.
+empty_catalog	تراوسه هیڅ درمل نشته.
 total	ټول
 cash	نغدې
 upi	UPI
 card	کارت
 credit	ګوندونه
 clear	روښانه
-ready_to_sell	کتاب ته چمتو دی
 today_prefix	نن
-today_mid	نن
 owed	بقایا
-round_word	ګرد
 back	شاته
 sold_out	نه شته
 restock	بیا ذخیره کول
 not_tracked	نه تعقیب شوی
 in_stock	په ذخیره کې
 marked_sold_out	په نښه شوی چې شتون نلري
-add_upper	ADD
-na	N/A
 qty	Wt/Qty
-unit_at	نرخ @
 actual	حقیقي
 applied	تطبیق شوی
 note_ph	یادونه (اختیاري)
@@ -93,21 +81,13 @@ bill_item_qty	مقدار
 bill_item_price	قیمت
 bill_item_amount	مقدار
 bill_item_note	Rx / د پلور یادښت
-bill_item_col_gap	د کالم تشه
 bill_item_col_order	د کالم ترتیب
 bill_item_col_sep	د کالم قواعد
-bill_item_gap_tight	تنګ
-bill_item_gap_comfort	آرامي
-bill_item_gap_wide	پراخه
-bill_item_num_width	د کالمونو شمیر
-bill_item_num_compact	تړون
-bill_item_num_comfort	آرامي
-bill_item_num_wide	پراخه
-bill_item_num_align	شمېرې سره سمون لري
-bill_item_gap_em	تشه (تاسو)
-bill_item_qty_min	دقیقه اندازه (ایم)
-bill_item_price_min	قیمت دقیقه (په کې)
-bill_item_amount_min	اندازه دقیقه (ایم)
+slip_col_width	سور (mm)
+slip_col_start	د پیل واټن (px)
+slip_col_end	د پای واټن (px)
+slip_col_align	د متن سمون
+slip_columns_help	د هرې ستنې سور کې د هغې د پیل او پای واټن شامل دی. متن د خپلې ستنې دننه ماتیږي؛ هغه څه چې د منځپانګې له سور څخه وځي، په کاغذ او مخکتنه کې پرې کیږي.
 bill_total_qty_label	ټول مقدار لیبل
 bill_total_subtotal_label	فرعي ټول لیبل
 bill_total_grand_label	لوی ټول لیبل
@@ -120,11 +100,7 @@ bill_total_qty	ټول مقدار
 bill_total_subtotal	فرعي مجموعه
 bill_total_grand	ستره مجموعه
 kot_unassigned	بې تفاوته
-pos_tab_items	اضافه شوي توکي
-pos_tab_payment	تادیه
-settings_hub_title	ترتیبات
 settings_hub_help	په یو وخت کې یوه سیمه پرانیزئ - لږ سکرول کول، روښانه انتخابونه.
-settings_back	شاته
 settings_sec_language	ژبه او اسعارو
 settings_sec_country	هیواد او مالیه
 settings_sec_tills	نور وسایل
@@ -166,35 +142,17 @@ diag_cleared	تشخیصی الګ پاک شوی
 sidebar_settings	اړخ بار
 sidebar_settings_help	ړئ. د ښودلو یا پټولو لپاره سویچ فلپ کړئ. ترتیبات او الک تل په بار کې پاتې کیږي.
 sidebar_always_on_short	تل روان وي
-sidebar_back_settings	شاته
-sidebar_shown	ښودل شوي
-sidebar_hidden	پټ
-sidebar_always_on	تل په بار کې
-sidebar_shown_hint	د غاړې ریل / لاندې ټبونو کې ښودل شوي
-sidebar_hidden_hint	د بار څخه پټ شوی
 sidebar_menu_items	توکي
 sidebar_enable_all	ټول فعال کړئ
 sidebar_disable_all	ټول غیر فعال کړئ
 sidebar_order_saved	د غاړې امر خوندي شو
 sidebar_visibility_saved	د غاړې د لید لید خوندي شو
-amounts_hide	پټول
-amounts_show	ښودل
-printers_none_hint	لومړی په دې وسیله یو پرنټر خوندي کړئ، بیا یې په بل یا یوې برخې کې اضافه کړئ
-counter	کاونټر
-dine_in	کاونټر
-takeaway	اخستل
-order	امر
 sales	خرڅالو
-sales_refunds	خرڅالو او بیرته ستنیدنه
 day_close	د ورځې بند
 reports_expenses	د بانک کتاب او L&P
 nav_reports	راپورونه
 nav_settings	ترتیبات
 nav_lock	تاالشي
-no_sale_yet	تراوسه هیڅ پلور نشته
-favorites	د خوښې وړ
-favorites_help	لپاره خوندي شوي. یو بل ته اضافه کړئ، یا د لاندې ټولو توکو څخه خپل لیست جوړ کړئ.
-your_favorites	ستاسو د خوښې
 all_items	ټول توکي
 frequent	مکرر
 added_items	اضافه شوي توکي
@@ -211,8 +169,6 @@ zero_sales_on	₹ 0 ته اجازه ورکړئ
 zero_sales_off	قیمت ته اړتیا لري
 zero_sales_saved_on	د صفر ارزښت پلور اجازه لري
 zero_sales_saved_off	پلور باید د ₹ 0 څخه پورته قیمت ولري
-no_favorites	تر اوسه هیڅ خوښ نه دي - د لاندې لیست څخه توکي اضافه کړئ.
-add_to_bill	په بل کې اضافه کړئ
 added	زیاته کړه
 owes_word	پورونه
 selected_word	ټاکل شوی
@@ -221,19 +177,11 @@ chip_missing_customer	ټاکل شوی پیرودونکي ورک شوي - بیا 
 chip_no_customer	تراوسه هیڅ پیرودونکی نشته - نوم ولیکئ، بیا کریډیټ ټایپ کړئ
 credit_summary_fmt	{} پیرودونکي · خلاص کریډیټ {} · پرمختګونه ترسره شوي {}
 recent_label	وروستي:
-start_order	امر پیل کړئ
-open_bill	بل خلاص کړئ
-collect_payment	پیسې راټول کړئ
-payment_pending	تادیه پاتې ده
-collect_at_counter	په کاونټر کې راټول کړئ
 inventory	انوینٹری
-inventory_stock	زیرمه او ذخیره
 branches	څانګې
-branches_org	څانګې او ارګانونه
 credit_customers	ګوندونه (خاته او عرضه کوونکي)
 customer_name_ph	د ګوند نوم
 new_customer_ph	د ګوند نوی نوم
-item_name_ph	د توکي نوم (د مثال په توګه مساله ډوسا)
 item_price_ph	قیمت
 start_template	محصول
 team	ټیم
@@ -241,17 +189,11 @@ team_pins	ټیم او PINs
 my_pin_settings	زما پن
 settings_hub_help_my_pin	د هغه چا لپاره چې په دې وسیله السلیک شوی وي د غیر الک PIN بدل کړئ.
 team_self_help	و یې لرئ. د مالک څخه پوښتنه وکړئ که تاسو مختلف سکرینونو یا حقونو ته اړتیا لرئ.
-backup_settings	بیک اپ او تنظیمات
-lock_app	اپلیکیشن بند کړئ
 pick	غوره کړه
-select	وټاکئ
 advance	پرمختگ
 owner	خاوند
 staff	کارکوونکي
 photo	انځور
-auto	اتومات
-prev	مخکینی
-next	بل
 ok	OK
 this_shop	سرور
 extra_till	کلاینټ
@@ -260,17 +202,13 @@ server	سرور
 client	کلاینټ
 language_currency	ژبه او اسعارو
 language	ژبه
-choose_language	خپله ژبه غوره کړئ
 language_setup_hint	د دې وسیلې ژبه تعقیب کړئ، یا پخپله یوه غوره کړئ.
 lang_follow_platform	د وسیلې ژبه
 lang_pick_user	ژبه غوره کړئ
 lang_platform_now	اوس د وسیلې ژبه
 selected_language	ټاکل شوی
-continue	ادامه ورکړئ
 this_device	دا وسیله
 device_use_q	دا وسیله به څنګه وکارول شي؟
-last_server_mode	سرور و - د دوام لپاره ټایپ کړئ
-last_client_mode	کلاینټ و — د دوام لپاره ټک ووهئ
 choose_server	یو سرور غوره کړئ
 choose_server_hint	یو موجود سرور خلاص کړئ، یا د بل سوداګرۍ لپاره یو جوړ کړئ.
 create_new_server	نوی سرور جوړ کړئ
@@ -280,12 +218,6 @@ server_remove_pin_ph	د سرور لرې کولو لپاره د مالک PIN
 only_owner_remove_server	یوازې مالک کولی شي سرور لرې کړي
 owner_pin_remove_server	د دې سرور لرې کولو لپاره د مالک PIN اړین دی
 device_setup_help	سرور کتابونه دلته ساتي. کلاینټ له سرور سره جوړه کېږي.
-app_template_heading	د سټارټر کتلاګ (اختیاري)
-app_template_blurb	د نمونې کتلاګ پورته کوي؛ مالک ظاهر (ظاهر)، اډمین آصف (اصف، پن 1111)، کیشیر نواز (نواز، پن 0000)؛ مالیه/GST بند؛ مخکینۍ غاړې تاریخ د 4 ساعتونو وروسته پاکیږي (او اوس په بیک اپ کې پاک کړئ)؛ نن وتړئ؛ کمپیکٹ بل + د تنګ ټریونو لپاره معیاري حاشیه. مالیه او د سائډبار ملګري په ترتیباتو کې بیرته فعال کیدی شي.
-app_template_apply	د سټارټر کتلاګ پلي کړئ
-app_template_skip	د اوس لپاره پریږدئ
-app_template_status	سرور چمتو دی - د سټارټر کتلاګ پلي کړئ ، یا پریږدئ
-app_template_importing	درخواست کول {title}...
 currency	اسعارو
 backup	بیک اپ
 use	کارول
@@ -319,7 +251,7 @@ attachments_last_expense	ضمیمې (وروستی لګښت)
 bank	بانک
 bank_in	په بانک کې
 bank_out	بانک بهر
-bank_reconciliation	د بانک پخالینه (ستاسو د بانک بیان په مقابل کې ټیک بند کړئ)
+bank_reconciliation	د بانک پخالینه
 bank_to_till	بانک → ته
 book_add_dish	کتاب - توکي / توکي اضافه کړئ
 book_opening_credit	کتاب - د پرانیستلو کریډیټ
@@ -349,9 +281,6 @@ share_whatsapp	شریک کړئ WhatsApp
 lan_pages_heading	په Wi‑Fi کې د پیرودونکي پاڼې
 lan_pages_help	د دې پلورنځي Wi‑Fi کې، د پیرودونکي پاڼې د ښودلو بورډ او فیډبیک لپاره کار کوي. په ګرځنده ډیټا کې خلک وروسته کلاوډ ته اړتیا لري. د کارت ټرمینل یا د تادیې لینک اختیاري دی او هیڅکله د کاونټر بلاک نه کوي.
 diag_send_heading	دا وسیله شریک کړئ
-optional_login_heading	اختیاري ننوتل
-rights_heading	حقوق
-ops_panel	محلي عملیات
 crm_heading	پیرودونکي او پیغامونه
 crm_help	رادې. په پیغام کې {name} او {points} وکاروئ. د مالک نلونه لیږل؛ هیڅ شی پخپله نه چاودی.
 crm_queue_sms	په قطار کې SMS
@@ -376,21 +305,17 @@ till_wallet_topup_ph	د پورتنۍ بټوې مقدار
 till_voucher_issue_amt_ph	د واؤچر مقدار جاري کړئ
 till_voucher_issue_code_ph	نوی واؤچر کوډ
 bulk_price_apply	د لوی نرخ پلي کول
-card_terminal_optional	د کارت ټرمینل / د تادیې لینک (اختیاري کله چې انټرنیټ شتون ولري)
 copy_report	راپور کاپي
 counted_cash_ph	په دراز کې نغدې شمیرل شوي
 country_tax	هیواد او مالیه
 create_backup	بیک اپ جوړ کړئ
 credit_limit_heading	د کریډیټ حد (ټاکل شوی / نومول شوی ګوند)
-day_close_summary	د ورځې پای لنډیز
 delete_party	ټاکل شوی ګوند ړنګ کړئ
-delivery	تحویلي
 done_open_books	بشپړ شوی - کتابونه خلاص کړئ
 drawer_count	د دستګاه شمیره (اختیاري)
 expense_heading	لګښت
 export_day	د صادراتو ورځ
 extra_note_bill_ph	په دې بل / پلور کې اضافي یادښت
-extra_note_expense_ph	په وروستي لګښت کې اضافي یادښت
 extra_tills_heading	تر هغه پورې اضافي
 other_devices_help_heading	نور وسایل تنظیم کړئ
 other_devices_help	په دې وسیله (سرور): نور وسایل ← اضافي ټیلو ته اجازه ورکړئ. د جوړه کولو کوډ او وای فای پته یاد کړئ. ټایپ کړئ نورو وسیلو ته اجازه ورکړئ چې وصل شي که چیرې څرګند شي. په کمپیوټر کې، د دې کمپیوټر سره پیل کړئ ټایپ کړئ. په یو بل وسیله: اپلیکیشن نصب کړئ، د پیرودونکي حالت غوره کړئ، د پلورنځي سرور ومومئ (یا پته ولیکئ)، د جوړه کولو کوډ دننه کړئ، اوس جوړه کړئ. امرونه په وسیله انتظار کوي که چیرې Wi‑Fi ښکته شي او لاړ شي کله چې سرور بیا ځواب ورکړي. اضافي پرنټرونه په سرور کې تنظیم شوي (ترتیبات → چاپګر) — اضافي ټیلس هلته بیلونه استوي.
@@ -404,7 +329,6 @@ login_id_ph	کارن نوم
 mark_cleared	مارک پاک شو
 new_party_clear	نوی ګوند (روښانه بڼه)
 new_party_kind_supplier_ph	د نوي ګوند ډول (سپارونکی)
-next_country	راتلونکی هیواد
 next_order	بل امر (واضح میز)
 note_gstin_ph	یادښت / GSTIN / د تړون یادونه
 notes_attach_party	یادښتونه او ضمیمې (ټاکل شوې ګوند)
@@ -422,8 +346,6 @@ pay_ap_cash	د AP نغدي پیسې ورکړئ
 pay_ap_heading	هغه څه ورکړئ چې موږ یې پور ورکوو (AP)
 pay_ap_upi	تادیه کړئ UPI AP
 pay_selected_heading	ټاکل شوی تادیه (پور تصفیه کول / مخکې اخیستل)
-pick_from_items	زموږ د توکو څخه غوره کړئ
-prev_country	پخوانی هیواد
 print_open	چاپ / خلاص کړئ
 reason_amend_ph	د تعدیل / باطل / بیرته ستنیدو دلیل
 reason_note_ph	دلیل / یادښت (ضایع، شمیرل، ...)
@@ -447,14 +369,10 @@ history_after_hours	ساعت وروسته
 history_hours_ph	ساعتونه (1-168، ډیفالټ 4)
 history_hours_save	ساعتونه خوندي کړئ
 history_clear_now	اوس تاریخ پاک کړئ
-history_cleared	د سوداګرۍ تاریخ پاک شوی - تنظیم ساتل شوی
-history_retention_saved	د تاریخ پاکول خوندي شوي
 history_hours_saved	د تاریخ ساعتونه خوندي شوي
-history_owner_only	یوازې مالک یا اډمین کولی شي تاریخ پاک کړي
 rollup	رول پورته کول
 save_brand	نښه خوندي کړئ
 save_business_id	د سوداګرۍ ID خوندي کړئ
-save_business_name	د سوداګرۍ نوم خوندي کړئ
 save_features	خوندي کړئ
 save_features_named	{name} خوندي کړئ
 save_features_ok	د {name} لپاره خوندي شوی ترتیب
@@ -485,7 +403,6 @@ copy_pair_code	د جوړه کولو کوډ کاپي کړئ
 new_pair_code	نوی جوړه کوډ
 pair_finishing	جوړه جوړه ... د هټۍ د کتابونو پلي کول
 pair_opening	د الرې پرانیستل...
-pair_copied	د جوړه کولو کوډ کاپي شوی
 lan_offline_waiting	د پلورنځي سرور د السرسي وړ نه دی · {n} انتظار
 lan_connecting	هټۍ سره نښلول...
 lan_live	ژوندی
@@ -499,7 +416,6 @@ firewall_waiting	د اډمین پرامپټ ته انتظار...
 lan_join_help	په بله وسیله: د کلاینټ حالت → د پلورنځي سرور ومومئ (یا {addr} ولیکئ) → د جوړې کوډ {code}.
 lan_pair_status	وای فای {addr}
 lan_join_help_no_addr	دا وسیله د یو پته لپاره Fi‐Wi سره وصل کړئ.
-lan_no_address	تر اوسه د Fi‐Wi ادرس نشته — د پلورنځي Fi‐Wi سره وصل دی.
 lan_not_listening	د نه منلو وسیلې (پورټ {port} بوخت). اپلیکیشن بیا پیل کړئ.
 lan_tills_off	اضافي کښتونه بند دي. دوی ته اجازه ورکړئ چې بل وسیله یوځای شي.
 paired_with	جوړه · {url}
@@ -520,41 +436,21 @@ printers_help	چاپګر ومومئ، د دې غوره کولو لپاره یو 
 printers_host_only	چاپګر د هټۍ په وسیله (سرور) کې تنظیم شوي. دا تر هغه وخته پورې چې هلته بیلونه او زاړه ټیکټونه واستول شي - په سرور کې پاتې کیدل ومومئ / اضافه کړئ / وټاکئ. د ازموینې پاڼې او د بل چاپ اندازه سرور ته ځي.
 printers_find_heading	چاپګر ومومئ
 printers_find_tip	دا وسیله سکین کړئ او لیست تازه وساتئ.
-printers_pool_heading	چاپګر
-printers_pool_tip	دا وسیله سکین کړئ او دا لیست تازه وساتئ.
 printers_pool_empty	(تر اوسه هیڅ نه - په موندلو ټایپ کړئ)
-printers_routes_help	هغه چاپګر ومومئ چې عملیاتي سیسټم دمخه پوهیږي. د بیل او سلیپ فارمیټ لاندې هرې برخې ته یې وټاکئ.
 printer_assign_dd	اصلی چاپګر: {place}
 printer_assign_pick	اصلي پرنټر غوره کړئ
 printer_profile_heading	ترتیب
 vp_delivery_heading	تحویلي
 vp_delivery_help	دا مجازی پرنټر څنګه دندې لیږي - د OS سند، خام بایټس، یا ESC/POS. د سلیپ مینځپانګه (ډول اندازه ، لپاسه ، حاشیه) د بل / سلیپ فارمیټ لخوا پریکړه کیږي ، دلته نه.
-vp_type_size_heading	ډول اندازه
-vp_wrap_heading	پلنوالی
-vp_margin_heading	حاشیې
 vp_delivery_spooler	د OS سند (سیسټم سپولر)
 vp_delivery_raw	آلې ته خام بایټ
 vp_delivery_escpos	د POS/ESC حرارتي حکمونه
 virtual_printer_new	نوی مجازی پرنټر
 virtual_printer_selected	د "{name}" ترمیم کول - د بدلولو لپاره په لیست کې بل ټایپ کړئ
-virtual_printer_tap_list	په لیست کې یو مجازی پرنټر ټایپ کړئ ترڅو ترمیم یې کړئ
 config_layout_portrait	پورټریټ
 config_layout_landscape	منظره
 config_send_os	د سیسټم سپولر
 config_send_escpos	ESC/POS
-profiles_heading	ترتیب
-profiles_empty	(تر اوسه هیڅ ترتیب نشته)
-profile_builtin	جوړ شوی
-profile_custom	دود
-profile_name_ph	د ترتیب نوم
-profile_new	نوی ترتیب
-profile_delete	ترتیب ړنګ کړئ
-profile_created	ترتیب جوړ شو
-profile_deleted	ترتیب ړنګ شوی
-profile_builtin_keep	جوړ شوي ترتیبونه نشي حذف کیدی
-config_saved	تازه شوی
-config_selected	غوره شوی "{name}"
-printer_output_heading	مجازی چاپګر
 virtual_printers_heading	مجازی چاپګر
 virtual_printers_empty	ړئ. وروسته له دې چې تاسو یو څه لرئ، د ترمیم کولو لپاره په لیست کې یو ټایپ کړئ.
 virtual_printer_name_ph	د مجازی چاپګر نوم (اختیاری)
@@ -566,71 +462,32 @@ virtual_printer_deleted	ړنګ شوی مجازی پرنټر "{name}"
 virtual_printer_updated	مجازی پرنټر تازه شوی
 virtual_printer_updated_named	مجازی پرنټر "{name}" تازه شوی
 virtual_draft_layout	ارزښتونه د راتلونکي مجازی پرنټر لپاره ټاکل شوي
-virtual_draft_send	ارزښت د راتلونکي مجازی پرنټر لپاره ټاکل شوی
 virtual_need_real	لومړی یو ریښتینی پرنټر غوره کړئ
 virtual_need_select	د حذف کولو لپاره یو مجازی پرنټر غوره کړئ
 real_printer_selected	ټاکل شوی: {name}
-printers_routes_heading	چیرته چې شیان چاپ شي
-route_pick_heading	ځای
 route_editing	تدوین: {name}
-route_assigned	{printer} ته {place} اضافه کړل
-route_already_assigned	دمخه په دې ځای کې: {printer}
 route_cleared	پاک شوی {name}
-route_assigned_empty	په دې ځای کې هیڅ نه
-route_tap_select	د غوره کولو لپاره ټایپ کړئ
 route_tap_selected	ټاکل شوی
-route_pick_printer_first	لومړی پرنټر ټایپ کړئ
-route_assigned_heading	چاپګر
-route_add_heading	ګمارل
-printer_label_ph	نوم (د مثال په توګه کاونټر پرنټر)
 printer_target_ph	د سیسټم چاپګر نوم یا کوربه: 9100
 printer_target_default	د دې کمپیوټر معمول پرنټر (خالي پته)
-printer_wire_heading	پروفایل
-printer_wire_escpos	ESC/POS
-printer_wire_os	پورټریټ
-printer_wire_os_portrait	پورټریټ
-printer_wire_os_landscape	منظره
-printer_wire_escpos_short	ESC/POS
-printer_wire_os_short	پورټریټ
-printer_wire_os_landscape_short	منظره
-printer_format_custom	نوی دودیز پروفایل
-printer_format_custom_label	ګمرک
-printer_format_custom_added	د دې ځای لپاره دودیز پروفایل اضافه شوی
-add_printer	پرنټر اضافه کړئ
-route_pick_ph	بل یا د ډسپنسري برخه
 route_bill	بل
-route_dont_print	نه پرنټر
 station_print_pick_first	لومړی د ډسپنسري برخه غوره کړئ
-station_vps_empty	تر اوسه چاپګر نشته — د ترتیباتو → چاپګر لاندې ومومئ
 bill_printers_dd	د بل لپاره چاپګر
 bill_printers_dd_n	د بیل لپاره {n} پرنټر · د بدلون لپاره ټایپ کړئ
 station_vp_attached	پرنټر وصل دی
 station_vp_detached	چاپګر د سټیشن څخه لیرې شو
-route_up	پورته
-route_down	ښکته
-route_clear	روښانه
-save_printers	چاپګر خوندي کړئ
 print_test_page	د ازموینې پاڼه چاپ کړئ
 no_printer_assigned	نه پرنټر
-test_page_no_printer	د {place} لپاره چاپګر نشته — یو پرنټر دې سره ضمیمه کړئ، بیا هڅه وکړئ
 test_page_pick_first	لومړی د ازموینې پاڼې لپاره چاپګر غوره کړئ - بیا د ازموینې پاڼه چاپ کړئ
 test_printers_dd	د ازموینې پاڼې لپاره چاپګر
 test_printers_dd_n	د ازموینې پاڼې لپاره {n} چاپګر · د بدلون لپاره ټایپ کړئ
 test_printer_picked	په ازموینه کې: {name}
 test_printer_cleared	ازموینه نه کیږي: {name}
 test_page_sent_n	د ازموینې پاڼه {n} چاپګر ته لیږل شوې
-batch_cancel	لغوه په نښه شوی
-batch_cancel_n	لغوه په نښه شوی ({n})
-batch_cancel_none	لومړی یو یا څو لیږل شوي توکي په نښه کړئ - بیا لغوه په نښه شوي
-batch_cancel_title	نښه شوي درمل لغوه کړئ - یو دلیل، په هره برخه کې یو سلیپ رد کړئ
-batch_cancel_ok	{n} توکي لغوه شوي · {slips} د فسخه کولو سلیپ → {kitchens}
-batch_cancel_ok_noprint	{n} توکي لغوه شوي - اوتومات چاپ بند دی، نو د لغوه کولو سلیپ نشته
 printers_saved	خوندي شوی
-test_page_sent	د ازموینې پاڼې لیږل شوي - پرنټر وګورئ
 test_page_sent_one	د ازموینې پاڼه {name} ته لیږل شوې - دا چاپګر وګورئ
 printers_found	موندل شوی {n}: {list}
 printers_find_synced	{n} — {new} نوی موندل شوی
-printer_on_device	خوندي شوی
 printer_already_added	دمخه اضافه شوی
 printer_already_saved	دمخه خوندي شوی: {name}
 find_printers	چاپګر ومومئ
@@ -640,7 +497,6 @@ cancelled	لغوه شو
 printers_tap_find	د پرنټرونو لیست کولو لپاره ومومئ ټایپ کړئ چې دا وسیله یې کارولی شي.
 printers_none_found	ونه موندل شو - د سیسټم پرنټر نوم یا IP ټایپ کړئ (د مثال په توګه 50.1.168.192).
 printer_from_find	اضافه شوی {name}
-bill_printer_ph	د بیلونو لپاره چاپګر
 queue_refused	د هټۍ لخوا نه منل کیږي ({n}) - هر یو په کاونټر کې وګورئ:
 clear_not_accepted	چک شوی - دا لیست پاک کړئ
 device_name_ph	د دې وسیله نوم
@@ -650,7 +506,6 @@ connected_now	اوس وصل شوی
 backup_failed	وروستی اتوماتیک بیک اپ ناکام شو: {e}
 backup_overdue	{n} ورځو لپاره بیک اپ نشته - اپلیکیشن په دې وسیله خلاص وساتئ ترڅو دا بیک اپ شي.
 disk_low	په دې وسیله یوازې {mb} MB وړیا - بیک اپ به ډیر ژر ناکام شي. یو څه ځای خالي کړئ.
-last_seen_devices	وروستی لیدل شوی: {time}
 connection_to_shop	د هټۍ سره اړیکه
 supplier_name_ph	د عرضه کوونکي نوم (یا ګوند)
 supplier_ph	عرضه کوونکی
@@ -708,7 +563,6 @@ currency_use_help	سکرول او ټایپ کړئ د هر مالتړ شوي اس
 day_close_help	او د دراز توپیر که شمیرل کیږي) د پلټنې الګ ته خوندي کوي. دا د پلور مخه نه نیسي.
 expenses_word	لګښتونه
 feature_access_help	هغه څه چې دوی کولی شي خلاص کړي - اختیاري؛ پورته کار ال دمخه یو ډیفالټ ټاکي
-footer_local	ځایی SQLite · د تل لپاره وړیا · صفر کالوډ
 fresh_book_tabiyat	تازه = خالي کتلاګ (وروسته توکي اضافه کړئ). کتاب = د پرانیستې ذخیره ډول او څوک چې تاسو ته پور ورکوی لاندې.
 fresh_selected	تازه انتخاب شوی - کتالګ خالي پاتې کیږي. کله چې چمتو وي ټیک کړئ.
 gross_word	ناخالص
@@ -721,12 +575,9 @@ net_word	جال
 offline_badge	آفالین
 optional_login_help	ل (id + پاسورډ). مالک یو ځل ټاکي؛ یوازې کارونکي کولی شي وروسته پاسورډ بدل کړي.
 or_unlock_login	یا د ننوتلو ID + پاسورډ سره خلاص کړئ
-permission_preset	دنده (د سکرینونو او پیسو کړنې تنظیموي)
-preset_help_tabiyat	کیشیر: خرڅول. مدیر: پلورل + توکي + باطل / ترمیم.
-product_locked_tabiyat	تبیت
+permission_preset	دنده
 product_only_tabiyat	تبیت د درملتون عملیاتي سیسټم دی: د درملو پلور ، بیچ / پای ته رسیدو حساب کتاب ، کریډیټ او کتابونه - ستاسو په وسیلو کې آفلاین. د مهالویش H / Rx بیرغونه د مالک یادښتونه دي، نه اطاعت.
 purchases_cogs	پیرودونه (COGS)
-qty_cap	QTY
 restore_help	ص شول؛ کتابونه لکه څنګه چې اوس دي لومړی خوندي شوي، نو دا بیرته اخیستل کیدی شي.
 wipe_data_heading	محلي معلومات ړنګ کړئ
 wipe_data_help	یوازې مالک - د وینډوز غیر نصبولو په څیر ورته انتخابونه. د سوداګرۍ ریکارډونه د سوداګرۍ تاریخ پاکوي مګر توکي او تنظیم ساتي (لکه د بیړني انلاک PIN). د پلورنځي ترتیب د کتابونو ډیټابیس لرې کوي. د سکرین غوره توبونه کړکۍ/ژبه پاکوي. د مالک PIN سره تایید کړئ. په ټیم کې د بیړني انلاک PIN جلا دی (په خلاصولو کې پټ پاکول).
@@ -759,7 +610,6 @@ staff_renamed	نوم خوندي شو
 staff_setup_copied_hire	یټ اپ د {name} څخه کاپي شوی - یو نوی نوم او PIN ترتیب کړئ، بیا کارمندان اضافه کړئ
 staff_setup_copied_edit	د {from} ترتیب په {to} کې کاپي شوی
 staff_copy_need_selected	غوره کړئ چې لومړی څوک ترمیم کړئ
-staff_copy_need_source	د کاپي کولو لپاره د چا تنظیم غوره کړئ
 staff_copy_same	دا هماغه سړی دی - بل څوک غوره کړئ
 staff_rename_need_selected	غوره کړئ چې لومړی څوک نوم بدل کړئ
 team_pick_hint	غوره کړئ چې څوک ترمیم کړي - سکرینونه، د پیسو حقونه، او سټیشنونه یوازې د هغه کس لپاره ښکاري.
@@ -774,15 +624,9 @@ unit_picker_off	بند
 we_owe_them	موږ د دوی پوروړي یو
 who_unlocking	څوک خلاصوي؟
 locked_word	تړل شوی
-show_pin	وښایاست PIN
-hide_pin	پټ کړئ PIN
 set_owner_pin	د مالک پن تنظیم کړئ
 enter_owner_passcode	د مالک پاسکوډ داخل کړئ
 enter_staff_passcode	د کارمندانو پاسکوډ دننه کړئ
-pin_count_zero	0 / 12 عددونه · لږترلږه 4، بیا سم
-pin_count_need	{} / 12 عدد · {} نورو ته اړتیا لري
-pin_count_full	12 / 12 عددونه · OK فشار ورکړئ
-pin_count_ready	{} / 12 عددونه · کله چې چمتو وي OK فشار ورکړئ
 pin_hint_choose	12-4 عددونه غوره کړئ · د خوندي کولو لپاره دننه کړئ یا خلاص کړئ
 pin_hint_new	نوی 4-12 عددي مالک PIN داخل کړئ یا خلاص کړئ
 pin_hint_shop_code	د پلورنځي وسیله · جوړه کوډ {}
@@ -791,23 +635,15 @@ pin_hint_paired	تر جوړه پورې اضافي - د پلور لپاره خل�
 pin_hint_pair_first	اضافي پورې - لومړی د هټۍ وسیله سره جوړه کړئ
 unlock_to_continue	د دوام لپاره خلاص کړئ
 no_staff_yet	تراوسه هیڅ کارمند نشته - د مالک په توګه خلاص کړئ، بیا ټیم
-status_server_set_pin	د سرور حالت - د مالک PIN تنظیم کړئ
-status_server_tills	د سرور حالت - اضافي ټیلونه یوځای کیدی شي. خلاصول
-status_server_unlock	د سرور حالت - د مالک په توګه خلاص کړئ
-status_client_unlock	د کلاینټ حالت — د پلور لپاره خلاص کړئ
 icon_new_selected	آیکون: نوې فایل غوره شوی - د برانډ خوندي کولو کلیک وکړئ
 icon_custom	نښه: د دودیز ځای نښه
 icon_default	نښه: د کمکج نښه (ډیفالټ) - یو دودیز غوره کړئ
 logo_yours	لوګو: ستاسو د پلورنځي لوگو - په سکرینونو او رسیدونو کې ښودل شوي
 logo_default	لوګو: د کمکج نښه (ډیفالټ) - خپل ځان غوره کړئ که تاسو لرئ
-tmpl_current	اوسنی: {} - {}
-tmpl_selected	ټاکل شوی: {} — {}
 setup_complete	تنظیم بشپړ شو
 onboard_fresh_tmpl	تازه · {} — کتالګ خالي پیل کیږي په توکو کې توکي اضافه کړئ، بیا بشپړ شوی.
 onboard_book_tmpl	کتاب · {} — توکي اضافه کړئ او کریډیټ خلاص کړئ، بیا بشپړ شوی.
-onboard_template_tmpl	د هغه ځای نوم ولیکئ که تاسو غواړئ، بیا غوره کړئ چې څنګه پیل کړئ.
 tmpl_blurb	د درملتون کاونټر: درمل، بسته / ختمیدنه، قطعه، کتابونه.
-tmpl_how	په کاونټر کې پلورل؛ د ذخیره کولو لپاره پیرود؛ د ورځې لپاره کتابونه.
 reports_facet_title	راپورونه
 reports_facet_help	د ورځې کتابونه، د ګوند عمر، د بانک پوسټونه، او دوره L&P.
 against_bill_ph	د بل پر خالف # پورته (اختیاري)
@@ -818,14 +654,12 @@ amount_ph	مقدار
 amount_received_ph	ترالسه شوي مقدار
 amount_we_pay_ph	هغه مقدار چې موږ یې تادیه کوو
 business_name_ph	د سوداګرۍ نوم
-category_new_ph	کټګورۍ (اختیاري، جوړ شوی که نوی)
 code_bag_ph	کوډ (کیګ)
 conv_factor_ph	فکتور (25 = 1 کڅوړه → 25 کیلوګرامه)
 country_code_ph	د هیواد کوډ د مثال په توګه BR ,AE ,US ,GB ,IN
 credit_khata_amount_ph	کریډیټ / د پیسو مقدار
 credit_limit_ph	د اعتبار حد (0 = هیڅ نه)
 from_code_ph	د کوډ څخه (کیګ)
-item_name_lang_ph	د توکي نوم - دا په خپله ژبه کې ولیکئ
 login_id_opt_ph	کارن نوم (اړین، ځانګړی)
 manager_pin_ph	د تصویب لپاره مدیر PIN (یوازې که تاسو باطل نه شئ کولی)
 new_branch_name_ph	د نوې څانګې نوم
@@ -833,15 +667,12 @@ new_password_ph	نوی پټنوم (اختیاری)
 new_pin_ph	نوی پن (4-12 عدد)
 note_bank_ph	یادونه (جمع کول، ایستل، ...)
 note_buy_expense_ph	یادونه (د تیلو، کرایه، ...)
-note_expense_ph	یادښت (تیل، دفتر، ...)
 options_tabiyat_ph	دازه*: کوچنی=199، لوی=399 | ټاپنګز +3: پنیر = 40، زیتون = 30 | اضافي پنیر = 40
-part_second_way_ph	د دویمې الرې برخه (اختیاري)
 phone_ph	تلیفون
 place_name_ph	د دې ځای نوم
 qty_example_ph	مقدار (د مثال په توګه 5.1 د کیلو لپاره)
 quantity_ph	مقدار
 reason_required_ph	دلیل (اړین)
-role_title_ph	د رول سرلیک (د بیلګې په توګه باریستا)
 service_pct_ph	خدمت٪ اختیاري 12/10/0
 short_code_ph	لنډ کوډ (MG02)
 starting_password_ph	د پیل پټنوم (اختیاري)
@@ -876,14 +707,11 @@ shift_handover	د لیږد لیږد
 shift_since	دا بدلون له هغه راهیسې
 expected_in_drawer	په دراز کې تمه کیږي
 right_discount	تخفیف ورکړئ
-pick_category	یوه کټګورۍ غوره کړئ
-close_category_list	د کټګورۍ لیست بند کړئ
 new_category_row	نوې کټګورۍ - رامینځته کیږي کله چې تاسو توکي خوندي کړئ
 your_category	ستاسو کټګوري
 suggested_category	وړاندیز شوی - زموږ د توکو څخه
 category_search_ph	کټګورۍ - خپل لټون وکړئ یا یو نوی ولیکئ
 cancel_item_short	لغوه کړئ
-cancel_item_title	دا توکي لغوه کړئ - بیرته دفتر د لغوه کولو سلیپ ترلاسه کوي
 return_to_customer	پیرودونکي ته بیرته راشئ
 short_by	په لنډه توګه
 tip_not_sale	الرښوونه (د کارمندانو، نه پلور)
@@ -896,9 +724,7 @@ finding_server	په دې Fi‐Wi کې د پلورنځي سرور په لټه ک�
 no_server_found	← د اضافي ټیلونو ته اجازه ورکړئ (ورته وای فای). یا هلته ښودل شوی IP ټایپ کړئ.
 servers_found_pick	هغه هټۍ ټایپ کړئ چې تاسو غواړئ ورسره وصل شئ.
 server_host_selected	د {host} په کارولو سره - د جوړه کولو کوډ دننه کړئ، بیا اوس جوړه کړئ.
-print_bill	بل چاپ کړئ
 approval_pin_ph	د مدیر PIN (یوازې که وپوښتل شي)
-confirm	تایید کړه
 menu_search_ph	لټون توکي یا لنډ کوډ
 customer_paid_ph	پیرودونکي تادیه کوي
 tip_ph	ټیپ
@@ -908,7 +734,6 @@ bill_format_help	په هر بل کې ستاسو د پلورنځي نوم لان�
 bill_header_ph	پته | تلیفون
 fssai_ph	د مخدره توکو د جواز شمیره (اختیاري - ستاسو کلمه)
 bill_footer_ph	فوټر (د مثال په توګه مننه، بیا لیدنه وکړئ)
-save_bill_format	د بیل فارمیټ خوندي کړئ
 kot_field_on	ښودل
 kot_field_off	پټول
 kot_weight_light	رڼا
@@ -919,10 +744,8 @@ kot_weight_bold	بولډ
 kot_align_start	پیل
 kot_align_center	مرکز
 kot_align_end	پای
-content_width	د منځپانګې عرض (mm)
 content_width_bill	د بل منځپانګې عرض (mm)
 content_width_ph	یا د منځپانګې پلنوالی ټایپ کړئ، 40-210 mm
-content_width_help	دا پرچی څومره پراخه ده. بل خپل عرض ساتي.
 content_width_bill_help	د پیرودونکي بل څومره پراخه چاپ کوي. ډیفالټ 210 mm (صفحه). 58 mm تنګ سلیپ، 80 mm پراخه سلیپ، 112 mm 4 انچه، 210 mm A4 پراخ. د 40 څخه تر 210 پورې هر ډول ارزښت ولیکئ. ټکټونه په سلیپ ټب کې خپل عرض لري.
 vp_paper_width	د منځپانګې عرض (mm)
 vp_paper_width_ph	یا د منځپانګې پلنوالی ټایپ کړئ، 40-210 mm
@@ -937,9 +760,6 @@ test_bill_sent	د بل مخکتنه لیږل شوې
 test_print_no_printer	د دې کار لپاره چاپګر نشته - په دې سکرین کې یو غوره کړئ
 std_print	د بیل چاپ اندازه
 std_print_help	د OS / سند پرنټرونو کې د معیاري پورټریټ او لینډ سکیپ بل دندو لپاره د فونټ اندازه (پوائنټونه داخل کړئ - کوچني/نورمال/لوی نه). په دواړو لورو کې ورته اندازه.
-std_size_s	کوچنی
-std_size_m	نورمال
-std_size_l	لوی
 save_std_print	د بل چاپ اندازه خوندي کړئ
 std_print_saved	د بیل چاپ اندازه خوندي شوه
 print_brand_kit	د برانډ کټ چاپ کړئ
@@ -952,14 +772,9 @@ choose_payment_qr	د تادیې QR غوره کړئ
 clear_payment_qr	پاک تادیه QR
 payment_qr_set	د تادیې QR: په فایل کې - د پیرودونکي نندارې کې ښودل شوي (هلته د UPI QR مقدار بدلوي)
 payment_qr_none	د تادیې QR: هیڅ نه - د پیسو ورکولو پرمهال د ID UPI څخه QR مقدار
-aggregator_import	د راټولولو امرونه (دوتنه)
-aggregator_import_help	ز":]...[{)، بیا وارد کړئ. هیڅکله هم کاونټر مه بندوئ؛ ژوندی زوماتو/سویګي کالوډ دی.
-import_aggregator_file	د جمع کونکي فایل وارد کړئ
 team_pick_ph	د ترمیم لپاره کارمندان - نوم، کارن نوم، یا غوره کول
 select_staff	دا کارمندان وټاکئ
 rights_help	د دې کس لپاره د پیسو کړنې — سایکل ته ټایپ کړئ: اجازه ورکړل شوې ← د باس PIN ته اړتیا ده ← اجازه نشته. د چاپ بل بیا یوازې بیلونه دي؛ برخې لاندې چک لیست دي.
-dish_picker_help	زموږ توکي وپلټئ یا براوز کړئ او یو یې د نوم او عکس ډکولو لپاره ټایپ کړئ - یا خپل نوم وساتئ. خپل قیمت وټاکئ (0 ښه دی)، بیا توکي اضافه کړئ.
-close_dish_list	د توکو لیست بند کړئ
 own_item_name	دا د خپل توکي نوم په توګه وکاروئ
 on_your_menu	د درملو په لیست کې
 edit	سمون
@@ -970,24 +785,16 @@ add_scheme	اضافه کړئ BOGO
 schedule_ph	ساعتونه - دوشنبه - جمعه 07:00-11:00 یا ماښام 17:00-19:00 = 150
 upi_vpa_ph	UPI ID (VPA)
 upi_payee_ph	د UPI تادیه کونکي نوم (اختیاري)
-upi_qr	UPI QR
 show_upi_qr	وښایاست QR UPI
 close_upi_qr	تړل
 upi_qr_help	پیرودونکي سکین کوي ​​او پیسې ورکوي. د تادیې کولو وروسته تادیه واخلئ ټایپ کړئ. دوهم سکرین: په LAN کې د سرور URL / ښودنه خلاص کړئ.
-recently_done	په دې وروستیو کې ترسره شوي
 role_help_customer	: پیرودونکي - خاطره (دوی زموږ پوروړي دي). ورته ګوند هم کولی شي ذخیره چمتو کړي.
 role_help_both	ودونکی + عرضه کونکی - یو اړخ، قطعه او د تادیې وړ لیجرونه، په راپورونو کې خالص.
 role_help_supplier	رول: عرضه کونکی - موږ دوی د پیرودلو لپاره پور ورکوو.
-items_word	توکي
-items_section	توکي
-back_to_order	بیرته امر ته
-new_items_head	تراوسه نه دی لیږل شوی
 price_ph	قیمت
 price_ph_gst_inside	قیمت ({tax} په شمول)
-tax_rates_missing_hint	په دې توکو کې د {tax} نرخ نشته - په توکو باندې د مالیې نرخ ټاکل شوی (قیمتونه دمخه د {tax} لاندې {tax} شامل دي)
 taxable_value	د مالیې وړ ارزښت
 gst_inside_price_note	({tax} ټول شموله)
-start_with_template	زموږ د توکو ټیمپلیټ سره پیل کړئ
 template_heading	د پیل توکي
 template_info	د عکسونو سره د {c} کټګورۍ او {d} توکي، اضافه کولو ته چمتو دي. نرخونه له ₹0 پیل کیږي - وروسته خپل ترتیب کړئ.
 template_import	بشپړ ټیمپلیټ وارد کړئ
@@ -1009,21 +816,13 @@ opening_client	کلاینټ پرانیستل کېږي…
 preparing_desk	د میز چمتو کول...
 opening_server	د سرور پرانیستل...
 creating_server	سرور جوړول...
-order_empty_pick	خالي امر وکړئ - د توکو غوره کولو لپاره پورته توکي اضافه کړئ ټایپ کړئ.
 add_dishes	درمل اضافه کړئ
 order_so_far	په دې ترتیب: {n} · {total}
 no_dish_match	هیڅ شی د "{q}" سره سمون نلري
-pick_dishes_help	د اضافه کولو لپاره یو توکي ټایپ کړئ · د لیست محدودولو لپاره کټګورۍ غوره کړئ
 pick_done	ترسره شو
-pick_done_dd	بشپړ شو · {label}
-printer_route_mode	که په دې ځای کې څو چاپګر
-printer_mode_first	لومړی دا کار کوي
-printer_mode_all	په ټولو کې چاپ کړئ
 kot_field_up	پورته الړ شه
 kot_field_down	لاندې حرکت وکړئ
-app_template_blurb_extra	همدارنګه: مالک ظاهر، اډمین آصف، کیشیر نواز؛ مخکینۍ غاړې د 4 ساعتونو وروسته تاریخ؛ نن وتړئ؛ کمپیکٹ بیل.
 dishes_n	{n} توکي
-recipe_ph	ترکیب (اختیاري - په کاونټر پلورنځي کې نه کارول کیږي)
 reorder_ph	نور په کې واخلئ
 set_reorder	د بیا تنظیم کچه تنظیم کړئ
 low_stock_alert	ټيټ روان - ژر وپېرئ: {items}
@@ -1032,7 +831,6 @@ show_unpriced	پرته له نرخ څخه یوازې توکي وښایاست
 show_all_dishes	ټول توکي ښکاره کړئ
 role_title_rest_ph	د رول سرلیک (د مثال په توګه کپتان، مشر پخلی)
 preset_help_rest	کیشیر: خرڅول. مدیر: پلورل + توکي + باطل / ترمیم.
-kind_raw	مرکب ذخیره
 kind_resale	درمل یې واخیستل
 kind_dish	ذخیره مه حسابوئ
 buy_unit_ph	واحد (کیلو، لیتر، پی سیز)

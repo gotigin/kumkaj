@@ -1,5 +1,4 @@
 # Sanskrit — संस्कृतम् (sa). One key<TAB>text per line, in en() order; keep {placeholders}.
-app_tagline	फार्मेसी काउण्टर : औषधि, बैच, खाटा & पुस्तकानि। निःशुल्क अफलाइन।
 barcode_ph	बारकोड / ईएएन
 composition_ph	लवण / रचना (अन्वेषणीय) २.
 schedule_h_off	अनुसूची H — off (स्वामिध्वजः) २.
@@ -13,7 +12,6 @@ expiry_alerts	समाप्ति अलर्ट्स् (आगामिष
 expiry_none	आगामिषु ७ दिवसेषु कोऽपि बैचः समाप्तः न भवति।
 rx_nudge	स्वामिना Rx / Schedule H इति ध्वजः कृतः — आवश्यकतानुसारं टिप्पणीं योजयन्तु ।
 unlock	अनलॉक
-pin_hint	स्वामिः PIN 0000 इति आरभ्यते
 sell	विक्रयिन्
 buy	क्रीणातु
 books	दिवस लेजर
@@ -32,17 +30,13 @@ reports_month	लाभः हानिः (मासः) २.
 reports_aging	बकाया / डेबिट-क्रेडिट
 reports_balance_sheet	तुलनपत्रम्
 reports	बैंक लेजर एवं पी एंड एल
-refresh	ताजगी
 undo	पूर्ववत
-start_tracking	अनुसरणं आरभत
 stock_minus	− स्टॉक
 stock_plus	+ स्टॉक्
 settle_cash	नगदं निवेशयन्तु
 settle_card	सेटल कार्ड
 items	औषधानि
 nav_items	औषधानि
-more	अधिकम्
-your_items	भवतः औषधानि
 items_help	सम्पादयितुं कस्यापि द्रव्यस्य ट्याप् कुर्वन्तु । नूतनं वस्तु प्रपत्रं स्वच्छं करोति। नामेन वा लघुसङ्केतेन वा अन्वेषणं कुर्वन्तु, मूल्यं सेट् कुर्वन्तु (0 सम्यक् अस्ति), ततः योजयन्तु । पूर्वमेव अभिलेखितं विक्रयं तेषां आरोपितं नाम रक्षति।
 add_item	मेनू मदं योजयन्तु
 new_item	नवीनं मेनू-वस्तु
@@ -53,28 +47,22 @@ remove	निष्कासयतु
 removed_items	मेनू-वस्तूनि निष्कासितानि
 removed_help	Restore इत्येतत् वस्तु पुनः Items इत्यत्र यथा आसीत् तथा स्थापयति — मूल्यं, फोटो, श्रेणी च ।
 restore_item	पुनर्स्थापनम्
-empty_catalog	अद्यापि औषधानि नास्ति। औषधानि उद्घाटयन्तु, नाम, बारकोड् वा लवणं वा योजयन्तु, ततः विक्रयन्तु।
+empty_catalog	अद्यापि औषधानि नास्ति।
 total	कुल
 cash	नगदम्
 upi	UPI
 card	कार्ड
 credit	ग्राहकाः आपूर्तिकर्ताश्च
 clear	स्पष्टम्
-ready_to_sell	लेजरं कर्तुं सज्जः
 today_prefix	अद्य
-today_mid	अद्य
 owed	उत्कृष्टः
-round_word	गोलम्
 back	पृष्ठतः
 sold_out	अनुपलब्धम्
 restock	पुनः संग्रहण
 not_tracked	न अनुसृतम्
 in_stock	स्टॉक् मध्ये अस्ति
 marked_sold_out	अनुपलब्ध इति चिह्नितम्
-add_upper	अड्ड्
-na	न/अ
 qty	भारः/संख्या
-unit_at	दरम् @ .
 actual	वास्तविक
 applied	प्रयुक्तम्
 note_ph	टिप्पणी (वैकल्पिकम्) ९.
@@ -93,21 +81,13 @@ bill_item_qty	संख्या
 bill_item_price	मूल्यम्
 bill_item_amount	राशि
 bill_item_note	Rx / विक्रय नोट
-bill_item_col_gap	स्तम्भान्तरम्
 bill_item_col_order	स्तम्भक्रमः
 bill_item_col_sep	स्तम्भनियमाः
-bill_item_gap_tight	तंग
-bill_item_gap_comfort	आरामदायकः
-bill_item_gap_wide	विस्तृतः
-bill_item_num_width	संख्या स्तम्भ
-bill_item_num_compact	संकुचित
-bill_item_num_comfort	आरामदायकः
-bill_item_num_wide	विस्तृतः
-bill_item_num_align	संख्याः संरेखन्ति
-bill_item_gap_em	गप (एम्) ९.
-bill_item_qty_min	मात्रा मि (एम्) .
-bill_item_price_min	मूल्यं न्यूनतम (एम्) .
-bill_item_amount_min	राशि मिन (एम्) .
+slip_col_width	विस्तारः (mm)
+slip_col_start	आरम्भावकाशः (px)
+slip_col_end	अन्तावकाशः (px)
+slip_col_align	पाठसंरेखणम्
+slip_columns_help	प्रत्येकस्य स्तम्भस्य विस्तारे तस्य आरम्भावकाशः अन्तावकाशः च अन्तर्भवतः। पाठः स्वस्तम्भस्य अन्तः एव आवेष्ट्यते; विषयविस्तारात् बहिः यत् अस्ति तत् पत्रे पूर्वावलोकने च छिद्यते।
 bill_total_qty_label	कुल qty लेबल
 bill_total_subtotal_label	उप कुल लेबल
 bill_total_grand_label	भव्य कुल लेबल
@@ -120,11 +100,7 @@ bill_total_qty	कुल qty
 bill_total_subtotal	उप कुल
 bill_total_grand	भव्य कुल
 kot_unassigned	अनिर्दिष्टः
-pos_tab_items	मेनू-वस्तूनि योजिताः
-pos_tab_payment	भुक्ति
-settings_hub_title	सेटिंग्स्
 settings_hub_help	एकैकं क्षेत्रं उद्घाटयन्तु — न्यूनं स्क्रॉलं, स्पष्टतरविकल्पाः ।
-settings_back	पृष्ठतः
 settings_sec_language	भाषा एवं मुद्रा
 settings_sec_country	देश & कर
 settings_sec_tills	अन्ये यन्त्राणि
@@ -166,35 +142,17 @@ diag_cleared	निदानस्य लॉग्स् स्वच्छा�
 sidebar_settings	पार्श्वपट्टिका
 sidebar_settings_help	पार्श्वरेलस्य समानानि चिह्नानि। पुनर्क्रमणार्थं पङ्क्तिं कर्षन्तु । दर्शयितुं गोपयितुं वा स्विचं प्लवन्तु। सेटिंग्स् तथा Lock सर्वदा बारस्य उपरि एव तिष्ठन्ति।
 sidebar_always_on_short	सदा चालू
-sidebar_back_settings	पृष्ठतः
-sidebar_shown	दर्शितम्
-sidebar_hidden	गुप्तम्
-sidebar_always_on	सदा बारस्य उपरि
-sidebar_shown_hint	पार्श्वरेल / अधः ट्याब्स् इत्यत्र दर्शितम्
-sidebar_hidden_hint	बारात् निगूढम्
 sidebar_menu_items	मेनू मेनू वस्तूनि
 sidebar_enable_all	सर्वं सक्षमं कुर्वन्तु
 sidebar_disable_all	सर्वं अक्षमं कुर्वन्तु
 sidebar_order_saved	पार्श्वपट्टिकाक्रमः रक्षितः
 sidebar_visibility_saved	पार्श्वपट्टिकादृश्यता रक्षिता
-amounts_hide	गोपयतु
-amounts_show	दर्शयतु
-printers_none_hint	प्रथमं अस्मिन् यन्त्रे मुद्रकं रक्षन्तु, ततः बिलस्य अथवा विभागे योजयन्तु
-counter	गणकम्
-dine_in	गणकम्
-takeaway	टेकअवे
-order	भोजनालयस्य आदेशः
 sales	विक्रयः
-sales_refunds	विक्रय एवं धनवापसी
 day_close	दिवसः समाप्तः
 reports_expenses	बैंक लेजर एवं पी एंड एल
 nav_reports	प्रतिवेदनानि
 nav_settings	सेटिंग्स्
 nav_lock	ताला
-no_sale_yet	अद्यापि विक्रयः नास्ति
-favorites	प्रियाः
-favorites_help	मेनू मेनू-वस्तूनि भवन्तः बहुधा विक्रयन्ति, भवतः प्रवेशार्थं रक्षिताः । बिलमध्ये एकं योजयन्तु, अथवा अधोलिखितानां सर्वेभ्यः मेनू-वस्तूनाम् स्वसूचीं निर्मायन्तु ।
-your_favorites	भवतः प्रियाः
 all_items	सर्वाणि मेनू-वस्तूनि
 frequent	नित्यम्
 added_items	मेनू मेन्यू आइटम् योजितम्
@@ -211,8 +169,6 @@ zero_sales_on	₹0 अनुमन्यताम्
 zero_sales_off	मूल्यं आवश्यकम्
 zero_sales_saved_on	शून्यमूल्यविक्रयणस्य अनुमतिः अस्ति
 zero_sales_saved_off	विक्रयस्य मूल्यं ₹0 इत्यस्मात् अधिकं भवितुमर्हति
-no_favorites	अद्यापि प्रियाः नास्ति — अधोलिखितायाः सूचीतः मेनू-वस्तूनि योजयन्तु ।
-add_to_bill	बिलम् योजयतु
 added	योजितम्
 owes_word	ऋणी भवति
 selected_word	चयनितम्
@@ -221,19 +177,11 @@ chip_missing_customer	चयनितः ग्राहकः अनुपल�
 chip_no_customer	अद्यापि कोऽपि ग्राहकः नास्ति — नाम टङ्कयन्तु, ततः Credit इति ट्याप् कुर्वन्तु
 credit_summary_fmt	{} ग्राहकाः · मुक्तं ऋणं {} · अग्रिमाणि धारितानि {}
 recent_label	अद्यतनम् : १.
-start_order	आदेशं आरभत
-open_bill	विधेयकं उद्घाटयतु
-collect_payment	भुगतान संग्रह करें
-payment_pending	भुगतान लंबित
-collect_at_counter	काउण्टरे संग्रहयन्तु
 inventory	इन्वेण्ट्री
-inventory_stock	इन्वेंट्री एवं स्टॉक
 branches	शाखाः
-branches_org	शाखा एवं org
 credit_customers	ग्राहकाः आपूर्तिकर्ताश्च (ऋणलेखाः) २.
 customer_name_ph	ग्राहकस्य वा आपूर्तिकर्तायाः नाम
 new_customer_ph	नवीन ग्राहक अथवा आपूर्तिकर्ता नाम
-item_name_ph	मेनू मेनू मदस्य नाम (उदा. मसाला डोसा)
 item_price_ph	मूल्यम्
 start_template	उत्पाद
 team	दल
@@ -241,17 +189,11 @@ team_pins	दल एवं PINs
 my_pin_settings	मम PIN .
 settings_hub_help_my_pin	अस्मिन् उपकरणे प्रवेशं कृतस्य व्यक्तिस्य कृते अनलॉक् PIN परिवर्तयन्तु ।
 team_self_help	एकं प्रवेशः : नूतनं PIN, नूतनं गुप्तशब्दं, उभयम् वा। यत् अस्ति तत् स्थापयितुं एकं पेटी रिक्तं त्यजन्तु। स्वामिनं पृच्छन्तु यत् भवतः भिन्नाः पटलाः अधिकाराः वा आवश्यकाः सन्ति वा।
-backup_settings	बैकअप & सेटिंग्स
-lock_app	एप्लिकेशन तालाबन्दी
 pick	पिक्
-select	चयनं कुर्वन्तु
 advance	अग्रिमम्
 owner	स्वामिनी
 staff	कर्मचारी
 photo	फोटो
-auto	ऑटो
-prev	पूर्व
-next	तदनन्तरम्
 ok	ठीकम्
 this_shop	सर्वर मोड
 extra_till	क्लायन्ट् मोड्
@@ -260,17 +202,13 @@ server	सर्वर मोड
 client	क्लायन्ट् मोड्
 language_currency	भाषा एवं मुद्रा
 language	भाषा
-choose_language	स्वभाषां चिनुत
 language_setup_hint	अस्य यन्त्रस्य भाषां अनुसृत्य, अथवा स्वयमेव एकं चिनुत ।
 lang_follow_platform	यन्त्रभाषा
 lang_pick_user	भाषां चिनोतु
 lang_platform_now	इदानीं यन्त्रभाषा
 selected_language	चयनितम्
-continue	निरन्तरं कुर्वन्तु
 this_device	एतत् यन्त्रम्
 device_use_q	एतत् यन्त्रं कथं प्रयुक्तं भविष्यति ?
-last_server_mode	Was Server — निरन्तरं कर्तुं ट्याप् कुर्वन्तु
-last_client_mode	Was Client — निरन्तरं कर्तुं ट्याप् कुर्वन्तु
 choose_server	सर्वरं चिनोतु
 choose_server_hint	विद्यमानं सर्वरं उद्घाटयन्तु, अथवा अन्यव्यापारस्य कृते एकं रचयन्तु ।
 create_new_server	नूतनं सर्वरं रचयन्तु
@@ -280,12 +218,6 @@ server_remove_pin_ph	स्वामिः PIN सर्वरं निष्�
 only_owner_remove_server	केवलं स्वामिः एव सर्वरं हर्तुं शक्नोति
 owner_pin_remove_server	अस्य सर्वरस्य निष्कासनार्थं स्वामिना PIN आवश्यकः
 device_setup_help	सर्वरः अत्र लेजर् रक्षति । क्लायन्ट् एकं सर्वरं प्रति युग्मं करोति ।
-app_template_heading	प्रारम्भिकसूची (वैकल्पिकम्) २.
-app_template_blurb	एकं नमूनासूचीं लोडयति; मालिक जाहिर (जाहिर), एडमिन आसिफ (असिफ, पिन 1111), कैशियर नवाज (नवाज, पिन 0000); कर/जीएसटी बंद; अग्रे पार्श्वपट्टिका; इतिहासः ४ घण्टानां अनन्तरं स्वच्छः भवति (अधुना च Backup मध्ये Clear); अद्य पट्टिकां कृत्वा; compact bill + संकीर्ण ट्रे कृते मानकमार्जिनम्। करः, पार्श्वपट्टिकासमवयस्काः च सेटिंग्स् मध्ये पुनः चालू कर्तुं शक्यन्ते ।
-app_template_apply	स्टार्टर कैटलॉगं प्रयोजयन्तु
-app_template_skip	इदानीं कृते त्यजन्तु
-app_template_status	सर्वर सज्जः — Starter catalogue इत्येतत् प्रयोजयन्तु, अथवा skip कुर्वन्तु
-app_template_importing	आवेदन करते हुए {title}...
 currency	मुद्रा
 backup	बैकअप
 use	प्रयोगः
@@ -319,7 +251,7 @@ attachments_last_expense	संलग्नकाः (अन्तिमव्�
 bank	बैंक
 bank_in	बैंक in
 bank_out	बैंकात् नगदं बहिः
-bank_reconciliation	बैंकमेलनम् (भवतः बैंकविवरणस्य विरुद्धं टिकं कृत्वा)
+bank_reconciliation	बैंकमेलनम्
 bank_to_till	बैंक → टिल्
 book_add_dish	पुस्तकम् — द्रव्यं / द्रव्यं योजयतु
 book_opening_credit	लेजर — उद्घाटन क्रेडिट
@@ -349,9 +281,6 @@ share_whatsapp	शेयर WhatsApp
 lan_pages_heading	Wi‐Fi इत्यत्र ग्राहकपृष्ठानि
 lan_pages_help	अस्य दुकानस्य Wi‐Fi इत्यत्र ग्राहकपृष्ठानि प्रदर्शनफलकस्य प्रतिक्रियायाः च कृते कार्यं कुर्वन्ति । मोबाईल डाटा इत्यत्र जनानां पश्चात् Cloud इत्यस्य आवश्यकता भवति। कार्ड् टर्मिनल् अथवा पेमेण्ट् लिङ्क् वैकल्पिकं भवति तथा च कदापि काउण्टरं अवरुद्धं न करोति ।
 diag_send_heading	एतत् यन्त्रं साझां कुर्वन्तु
-optional_login_heading	वैकल्पिकं प्रवेशः
-rights_heading	अधिकारः
-ops_panel	स्थानीय ops
 crm_heading	ग्राहकाः & सन्देशाः
 crm_help	जन्मदिन, निष्ठा, निष्क्रिय तथा शीर्ष अतिथि — कतार SMS अथवा WhatsApp अभिप्राय। सन्देशे {name} तथा {points} इत्येतयोः प्रयोगं कुर्वन्तु। स्वामिना नलिकां प्रेषयति; न किमपि स्वयमेव विस्फोटयति।
 crm_queue_sms	कतार SMS ९.
@@ -376,21 +305,17 @@ till_wallet_topup_ph	टॉप-अप बटुए राशि
 till_voucher_issue_amt_ph	वाउचर राशि जारी करें
 till_voucher_issue_code_ph	नवीन वाउचर कोड
 bulk_price_apply	बल्क मूल्यं प्रयोजयन्तु
-card_terminal_optional	कार्ड टर्मिनल् / भुगतानलिङ्क् (अन्तर्जाल उपलब्धे वैकल्पिकम्)
 copy_report	प्रतिवेदनं प्रतिलिख्यताम्
 counted_cash_ph	दराजमध्ये नगदं गणितम्
 country_tax	देश & कर
 create_backup	बैकअप रचयन्तु
 credit_limit_heading	ऋणसीमा (चयनितः ग्राहकः अथवा आपूर्तिकर्ता) २.
-day_close_summary	दिवस निकट सारांश
 delete_party	चयनितं ग्राहकं वा आपूर्तिकर्तारं वा विलोपयन्तु
-delivery	प्रसवः
 done_open_books	कृत — उद्घाटितलेजर्स
 drawer_count	दराज गणना (वैकल्पिक) 1.1.
 expense_heading	व्ययः
 export_day	निर्यातदिवसः
 extra_note_bill_ph	अस्मिन् बिल / विक्रये अतिरिक्तं टिप्पणम्
-extra_note_expense_ph	अन्तिमव्ययस्य अतिरिक्तटिप्पणी
 extra_tills_heading	अतिरिक्त टिल्स
 other_devices_help_heading	अन्ययन्त्राणि स्थापयन्तु
 other_devices_help	अस्मिन् यन्त्रे (Server): अन्ये यन्त्राणि → अतिरिक्त-टिल्-इत्यस्य अनुमतिं ददातु । युग्मनसङ्केतं Wi‐Fi पतनं च अवलोकयन्तु । यदि एतत् दृश्यते तर्हि अन्येषां उपकरणानां संयोजनं कर्तुं अनुमन्यताम् इति ट्याप् कुर्वन्तु । सङ्गणके अस्मिन् सङ्गणके आरभत इति ट्याप् कुर्वन्तु । परस्परं उपकरणे: एप् संस्थापयन्तु, Client Mode इति चिनोतु, दुकानस्य सर्वरं अन्वेष्टुम् (अथवा पतां टङ्कयन्तु), युग्मीकरणसङ्केतं प्रविष्टं कुर्वन्तु, Pair now इति। यदि Wi‐Fi पतति तर्हि आदेशाः यन्त्रे प्रतीक्षन्ते यदा सर्वरः पुनः उत्तरं ददाति तदा गच्छन्ति । अतिरिक्तमुद्रकाः सर्वरे (सेटिंग्स् → मुद्रकाः) सेट् भवन्ति — अतिरिक्तटिल् तत्र बिलानि प्रेषयन्ति ।
@@ -404,7 +329,6 @@ login_id_ph	उपयोक्तृनाम
 mark_cleared	मार्कः स्वच्छः अभवत्
 new_party_clear	नवीन ग्राहकः अथवा आपूर्तिकर्ता (स्पष्टं प्रपत्रम्) २.
 new_party_kind_supplier_ph	नवीन ग्राहक या आपूर्तिकर्ता प्रकार (आपूर्तिकर्ता)
-next_country	अग्रिमः देशः
 next_order	अग्रिमः आदेशः (स्पष्टमेजः) २.
 note_gstin_ph	नोट / GSTIN / सम्झौता स्मरण
 notes_attach_party	टिप्पण्यानि संलग्नकानि च (चयनितः ग्राहकः अथवा आपूर्तिकर्ता)
@@ -422,8 +346,6 @@ pay_ap_cash	ए पी नगद भुगतान करें
 pay_ap_heading	वयं तेभ्यः यत् ऋणीः स्मः तत् दातव्यम् (AP)
 pay_ap_upi	पे ए पी UPI .
 pay_selected_heading	चयनितं भुक्तिं कुर्वन्तु (ऋणं निस्तारयन्तु / अग्रिमं गृह्णन्तु)
-pick_from_items	अस्माकं मेनू-वस्तूनि चिनुत
-prev_country	पूर्वदेशः
 print_open	मुद्रयतु / उद्घाटयतु
 reason_amend_ph	संशोधनस्य कारणम् / शून्यीकरणस्य / धनवापसी
 reason_note_ph	कारण / टिप्पणी (अपव्यय, गणना, ...) .
@@ -447,14 +369,10 @@ history_after_hours	घण्टानां अनन्तरं
 history_hours_ph	घण्टाः (१–१६८, पूर्वनिर्धारित ४) २.
 history_hours_save	घण्टानां रक्षणं कुर्वन्तु
 history_clear_now	अधुना इतिहासं स्पष्टं कुरुत
-history_cleared	व्यापार-इतिहासः स्वच्छः — सेटअपः स्थापितः
-history_retention_saved	इतिहासस्य सफाई रक्षितम्
 history_hours_saved	इतिहासस्य घण्टाः रक्षिताः
-history_owner_only	केवलं Owner अथवा Admin एव इतिहासं स्वच्छं कर्तुं शक्नोति
 rollup	सारांश रोलअप
 save_brand	ब्राण्ड् रक्षतु
 save_business_id	व्यावसायिक आईडी रक्षतु
-save_business_name	व्यापारनाम रक्षतु
 save_features	रक्षतु
 save_features_named	रक्षतु {name} .
 save_features_ok	{name} कृते सेटअप रक्षितम्।
@@ -485,7 +403,6 @@ copy_pair_code	युग्मीकरणसङ्केतं प्रति�
 new_pair_code	नवीनः युग्मसंहिता
 pair_finishing	युग्मं समाप्तं... दुकानस्य लेजरं प्रयोजयन्
 pair_opening	टिल् उद्घाट्य...
-pair_copied	युग्मीकरणसङ्केतः प्रतिलिपिकृतः
 lan_offline_waiting	दुकान सर्वर अप्राप्य · {n} प्रतीक्षा
 lan_connecting	दुकानं प्रति सम्बद्धं भवति...
 lan_live	लाइव
@@ -499,7 +416,6 @@ firewall_waiting	व्यवस्थापकस्य प्रॉम्प�
 lan_join_help	अन्यस्मिन् उपकरणे: Client Mode → दुकानस्य सर्वरं अन्वेष्टुम् (अथवा {addr} इति टङ्कयन्तु) → युग्मीकरणसङ्केतः {code}।
 lan_pair_status	Wi‑Fi {addr} २.
 lan_join_help_no_addr	एतत् यन्त्रं पतनस्य कृते Wi‑Fi इत्यनेन सह संयोजयन्तु ।
-lan_no_address	अद्यापि Wi‑Fi पता नास्ति — दुकानेन सह Wi‑Fi सह सम्बद्धं कुर्वन्तु।
 lan_not_listening	उपकरणानि न स्वीकुर्वन् (पोर्ट् {port} व्यस्तः)। एप् पुनः आरभत।
 lan_tills_off	अतिरिक्त टिल्स निष्क्रियः अस्ति। अन्यं यन्त्रं सम्मिलितुं तेषां अनुमतिं ददातु।
 paired_with	युग्मितम् · {url}
@@ -520,41 +436,21 @@ printers_help	मुद्रकान् अन्विष्य, एकं �
 printers_host_only	मुद्रकाः दुकानयन्त्रे (Server) सेट् भवन्ति । एतत् टिल् तत्र बिलानि पुरातनटिकटानि च प्रेषयति — Server इत्यत्र स्थातुं अन्वेष्टुम् / योजयतु / नियुक्तं कुर्वन्तु । परीक्षणपृष्ठं बिलमुद्रणस्य आकारः च Server प्रति गच्छति ।
 printers_find_heading	मुद्रकान् अन्वेष्टुम्
 printers_find_tip	Find इत्येतत् यन्त्रं स्कैन करोति, सूचीं च अद्यतनं करोति ।
-printers_pool_heading	मुद्रकाः
-printers_pool_tip	Find इत्येतत् यन्त्रं स्कैन करोति, एतां सूचीं च अद्यतनं करोति ।
 printers_pool_empty	(अद्यापि कोऽपि नास्ति — अन्वेष्टुम् ट्याप् कुर्वन्तु)
-printers_routes_help	प्रचालनतन्त्रं पूर्वमेव जानाति इति मुद्रकान् अन्वेष्टुम् । तान् बिल-मध्ये तथा च प्रत्येकं खण्डे Bill & Slip प्रारूपेण नियुक्तं कुर्वन्तु ।
 printer_assign_dd	वास्तविक मुद्रक: {place}
 printer_assign_pick	वास्तविकं मुद्रकं चिनोतु
 printer_profile_heading	विन्यासः
 vp_delivery_heading	प्रसवः
 vp_delivery_help	एषः आभासीमुद्रकः कथं कार्याणि प्रेषयति — OS दस्तावेजः, कच्चा बाइट्, अथवा ESC/POS । स्लिप् सामग्री (प्रकारस्य आकारः, रैप्, मार्जिन्स्) बिल / स्लिप् प्रारूपेण निर्णयः भवति, अत्र न ।
-vp_type_size_heading	आकारः प्रकारः
-vp_wrap_heading	लपेट चौड़ाई
-vp_margin_heading	मार्जिन
 vp_delivery_spooler	ओएस दस्तावेजः (सिस्टम् स्पूलरः) २.
 vp_delivery_raw	यन्त्रं प्रति कच्चा बाइट्
 vp_delivery_escpos	ESC/POS तापीय आदेश
 virtual_printer_new	नवीनं वर्चुअल् मुद्रकं
 virtual_printer_selected	“{name}” सम्पादनं — स्विच् कर्तुं सूचीयां अन्यं ट्याप् कुर्वन्तु
-virtual_printer_tap_list	सूचीयां वर्चुअल् मुद्रकं सम्पादयितुं ट्याप् कुर्वन्तु
 config_layout_portrait	चित्रम्
 config_layout_landscape	परिदृश्यम्
 config_send_os	सिस्टम स्पूलर
 config_send_escpos	ESC/POS
-profiles_heading	विन्यासाः
-profiles_empty	(अद्यापि कोऽपि विन्यासः नास्ति)
-profile_builtin	अन्तः निर्मितः
-profile_custom	प्रथा
-profile_name_ph	विन्यास नाम
-profile_new	नवीनं विन्यासः
-profile_delete	विन्यासं विलोपयन्तु
-profile_created	विन्यासः निर्मितः
-profile_deleted	विन्यासः विलोपितः
-profile_builtin_keep	अन्तःनिर्मितविन्यासाः लोपयितुं न शक्यन्ते
-config_saved	अद्यतनम्
-config_selected	चयनितम् “{name}” २.
-printer_output_heading	आभासी मुद्रकाः
 virtual_printers_heading	आभासी मुद्रकाः
 virtual_printers_empty	अद्यापि वर्चुअल् मुद्रकाः नास्ति — अधः मूल्यानि सेट् कुर्वन्तु, ततः Save कुर्वन्तु । भवतः किञ्चित् प्राप्तस्य अनन्तरं सम्पादनार्थं सूचीयां एकं ट्याप् कुर्वन्तु ।
 virtual_printer_name_ph	आभासी मुद्रकस्य नाम (वैकल्पिकम्) २.
@@ -566,71 +462,32 @@ virtual_printer_deleted	विलोपिता आभासी मुद्र
 virtual_printer_updated	आभासी मुद्रकः अद्यतनः
 virtual_printer_updated_named	आभासी मुद्रकः “{name}” अद्यतनः
 virtual_draft_layout	अग्रिम-वर्चुअल् मुद्रकस्य कृते मूल्यानि सेट् कृताः
-virtual_draft_send	अग्रिम-वर्चुअल् मुद्रकस्य कृते मूल्यं सेट् कृतम्
 virtual_need_real	प्रथमं वास्तविकं मुद्रकं चिनोतु
 virtual_need_select	विलोपयितुं वर्चुअल् मुद्रकं चिनोतु
 real_printer_selected	चयनितम् : {name} .
-printers_routes_heading	यत्र वस्तूनि मुद्रयन्ति
-route_pick_heading	स्थानम्
 route_editing	सम्पादनम् : {name} .
-route_assigned	योजितः {printer} to {place}
-route_already_assigned	पूर्वमेव अस्मिन् स्थाने : {printer}
 route_cleared	स्वच्छ {name} .
-route_assigned_empty	अस्मिन् स्थाने कोऽपि नास्ति
-route_tap_select	चयनं कर्तुं ट्याप् कुर्वन्तु
 route_tap_selected	चयनितम्
-route_pick_printer_first	प्रथमं मुद्रकं ट्याप् कुर्वन्तु
-route_assigned_heading	मुद्रकाः
-route_add_heading	नियुक्ति
-printer_label_ph	नाम (उदा. काउण्टर प्रिंटर) २.
 printer_target_ph	सिस्टम् मुद्रकस्य नाम अथवा होस्ट्:9100
 printer_target_default	अस्य सङ्गणकस्य सामान्यः मुद्रकः (रिक्तः पता)
-printer_wire_heading	प्रोफाइल
-printer_wire_escpos	ESC/POS
-printer_wire_os	चित्रम्
-printer_wire_os_portrait	चित्रम्
-printer_wire_os_landscape	परिदृश्यम्
-printer_wire_escpos_short	ESC/POS
-printer_wire_os_short	चित्रम्
-printer_wire_os_landscape_short	परिदृश्यम्
-printer_format_custom	नवीनं कस्टम् प्रोफाइल
-printer_format_custom_label	प्रथा
-printer_format_custom_added	अस्य स्थानस्य कृते कस्टम् प्रोफाइल योजितम्
-add_printer	मुद्रकं योजयतु
-route_pick_ph	विधेयकं वा औषधालयस्य खण्डः
 route_bill	अतिथि बिल
-route_dont_print	न मुद्रकः
 station_print_pick_first	प्रथमं औषधालयस्य विभागं चिनुत
-station_vps_empty	अद्यापि मुद्रकाः नास्ति — सेटिंग्स् → मुद्रकाः इत्यस्य अधः तान् अन्वेष्टुम्
 bill_printers_dd	बिलस्य कृते मुद्रकाः
 bill_printers_dd_n	{n} बिलस्य कृते मुद्रकाः · परिवर्तनार्थं ट्याप् कुर्वन्तु
 station_vp_attached	मुद्रकः संलग्नः
 station_vp_detached	स्टेशनतः मुद्रकः निष्कासितः
-route_up	उप
-route_down	अधः
-route_clear	स्पष्टम्
-save_printers	मुद्रकाः रक्षन्तु
 print_test_page	परीक्षणपृष्ठं मुद्रयन्तु
 no_printer_assigned	न मुद्रकः
-test_page_no_printer	{place} कृते मुद्रकः नास्ति — तस्मिन् मुद्रकं संलग्नं कुर्वन्तु, ततः पुनः प्रयासं कुर्वन्तु
 test_page_pick_first	प्रथमं परीक्षणपृष्ठस्य कृते मुद्रकाः चिनुत — ततः परीक्षणपृष्ठं मुद्रयन्तु
 test_printers_dd	परीक्षणपृष्ठस्य कृते मुद्रकाः
 test_printers_dd_n	{n} परीक्षणपृष्ठस्य कृते मुद्रकाः · परिवर्तनार्थं ट्याप् कुर्वन्तु
 test_printer_picked	परीक्षणम् : {name} .
 test_printer_cleared	न परीक्षणं भवति: {name}
 test_page_sent_n	परीक्षणपृष्ठं {n} मुद्रकेभ्यः प्रेषितम्
-batch_cancel	रद्दं चिह्नितम्
-batch_cancel_n	रद्दीकरणं चिह्नितम् ({n})
-batch_cancel_none	प्रथमं एकं वा अधिकं वा प्रेषितं वस्तु चिह्नितव्यम् — ततः Cancel इति चिह्नितम्
-batch_cancel_title	चिह्नितौषधं रद्दं कुर्वन्तु — एकं कारणं, प्रतिखण्डं एकं रद्दीकरणस्लिप्
-batch_cancel_ok	{n} द्रव्यं रद्दं · {slips} रद्दं स्लिप(s) → {kitchens}
-batch_cancel_ok_noprint	{n} वस्तूनि रद्दीकृतानि — स्वयमेव मुद्रणं निष्क्रियम् अस्ति, अतः रद्दीकरणस्लिप् नास्ति
 printers_saved	रक्षितम्
-test_page_sent	परीक्षणपृष्ठं प्रेषितम् — मुद्रकं परीक्ष्यताम्
 test_page_sent_one	{name} प्रति प्रेषितं परीक्षणपृष्ठं — तत् मुद्रकं पश्यन्तु
 printers_found	प्राप्त {n}: {list} .
 printers_find_synced	प्राप्त {n} — {new} नवीन
-printer_on_device	रक्षितः
 printer_already_added	पूर्वमेव योजितम्
 printer_already_saved	पूर्वमेव रक्षितम् : {name}
 find_printers	मुद्रकान् अन्वेष्टुम्
@@ -640,7 +497,6 @@ cancelled	रद्दं कृतम्
 printers_tap_find	एतत् यन्त्रं उपयोक्तुं शक्नोति इति मुद्रकान् सूचीतुं अन्वेष्टुं ट्याप् कुर्वन्तु ।
 printers_none_found	कोऽपि न लब्धः — प्रणालीमुद्रकस्य नाम अथवा IP (उदा. 192.168.1.50) टङ्कयन्तु ।
 printer_from_find	योजितम् {name} .
-bill_printer_ph	बिलानां कृते मुद्रकः
 queue_refused	दुकानेन न स्वीकृतम् ({n}) — प्रत्येकं काउण्टरे पश्यन्तु :
 clear_not_accepted	परीक्षितम् — एतां सूचीं स्वच्छं कुर्वन्तु
 device_name_ph	अस्य यन्त्रस्य नाम
@@ -650,7 +506,6 @@ connected_now	इदानीं सम्बद्धः
 backup_failed	अन्तिमः स्वचालितः बैकअपः विफलः अभवत्: {e}
 backup_overdue	{n} दिवसान् यावत् बैकअपः नास्ति — एप् अस्मिन् उपकरणे उद्घाटितं स्थापयन्तु येन सः बैकअपं कर्तुं शक्नोति।
 disk_low	अस्मिन् उपकरणे केवलं {mb} MB निःशुल्कं — बैकअपं शीघ्रमेव विफलं भविष्यति । किञ्चित् स्थानं मुक्तं कुरुत।
-last_seen_devices	अन्तिमवारं दृष्टः : {time}
 connection_to_shop	दुकानेन सह सम्पर्कः
 supplier_name_ph	आपूर्तिकर्तानाम (अथवा ग्राहकः) .
 supplier_ph	आपूर्तिकर्ता
@@ -708,7 +563,6 @@ currency_use_help	स्क्रॉल कृत्वा कस्यापि
 day_close_help	एकं दिवसं बन्दं अभिलेखयित्वा एतत् सारांशं (तथा च दराजविचरणं यदि गण्यते) लेखापरीक्षावृत्ते रक्षति । न विक्रयणं विरमति।
 expenses_word	व्ययः
 feature_access_help	ते किं उद्घाटयितुं शक्नुवन्ति — वैकल्पिकम्; उपरिष्टात् कार्यं पूर्वमेव पूर्वनिर्धारितं सेट् करोति
-footer_local	स्थानीय SQLite · निःशुल्क सदा · शून्य मेघ
 fresh_book_tabiyat	ताजा = रिक्त सूची (पश्चात् वस्तूनि योजयन्तु)। पुस्तकम् = प्रकारः उद्घाटन स्टॉकः भवतः अधः कः ऋणी अस्ति।
 fresh_selected	ताजा चयनितम् — सूचीपत्रं रिक्तं तिष्ठति । सज्जे सति Done इति ट्याप् कुर्वन्तु।
 gross_word	स्थूल
@@ -721,12 +575,9 @@ net_word	नेट्
 offline_badge	OFFLINE इति
 optional_login_help	वैकल्पिकं प्रवेशः (id + password)। स्वामिना एकवारं सेट् भवति; केवलं उपयोक्ता एव पश्चात् गुप्तशब्दं परिवर्तयितुं शक्नोति।
 or_unlock_login	अथवा login id + password इत्यनेन अनलॉक् कुर्वन्तु
-permission_preset	कार्यम् (पर्देषु धनक्रियाः च सेट् करोति)
-preset_help_tabiyat	कैशियरः विक्रयति। प्रबन्धकः विक्रयणं + मेनू-वस्तूनाम् + शून्यं/संशोधनम् ।
-product_locked_tabiyat	तबियात्
+permission_preset	कार्यम्
 product_only_tabiyat	तबियात् औषधालयस्य संचालनप्रणाली अस्ति: औषधविक्रयणं, बैच/समाप्तिपुस्तकपालनं, क्रेडिटं पुस्तकानि च — भवतः उपकरणेषु अफलाइनम्। अनुसूची H / Rx ध्वजाः स्वामिनोटाः सन्ति, अनुपालनं न।
 purchases_cogs	क्रयम् (COGS) २.
-qty_cap	संख्या
 restore_help	पुनर्स्थापनम्: एकं बैकअपं चिनुत। तदा यथा आसीत् तथा लेजर् उद्घाट्यन्ते; इदानीं यथा सन्ति तथा लेजर् प्रथमं रक्षिताः भवन्ति, अतः एतत् अकृतं कर्तुं शक्यते ।
 wipe_data_heading	स्थानीयदत्तांशं विलोपयन्तु
 wipe_data_help	केवलं स्वामिना — Windows uninstall इत्यस्य समानाः विकल्पाः । व्यावसायिक अभिलेखाः व्यापारस्य इतिहासं स्वच्छं कुर्वन्ति परन्तु वस्तूनि सेटअपं च (आपातकालीन-अनलॉक-पिन् इव) रक्षन्ति । Shop setup इत्यनेन पुस्तकानां दत्तांशकोशं निष्कासितम्। स्क्रीन प्राधान्यानि विण्डो/भाषां स्वच्छं करोति । Owner PIN इत्यनेन पुष्टिं कुर्वन्तु। Team इत्यत्र आपत्कालीन-अनलॉक-पिन् पृथक् भवति (अनलॉक्-समये गुप्त-पोंछः) ।
@@ -759,7 +610,6 @@ staff_renamed	नाम रक्षितम्
 staff_setup_copied_hire	{name} तः प्रतिलिपिकृतं सेटअप — नूतनं नाम सेट् कुर्वन्तु तथा च PIN, ततः Add staff
 staff_setup_copied_edit	{from} इत्यस्य सेटअपं {to} इत्यत्र प्रतिलिपिकृतम्।
 staff_copy_need_selected	प्रथमं कस्य सम्पादनं कर्तव्यमिति चिनोतु
-staff_copy_need_source	प्रतिलिपिं कर्तुं कस्य सेटअपं चिनुत
 staff_copy_same	स एव व्यक्तिः — अन्यं कञ्चित् चिनुत
 staff_rename_need_selected	प्रथमं कस्य नामकरणं कर्तव्यमिति चिनोतु
 team_pick_hint	कस्य सम्पादनं कर्तव्यमिति चिनुत — तस्य व्यक्तिस्य कृते एव पटलाः, धनाधिकाराः, स्टेशनाः च दृश्यन्ते ।
@@ -774,15 +624,9 @@ unit_picker_off	अफ
 we_owe_them	वयं तान् ऋणीमः
 who_unlocking	कः अनलॉक् करोति ?
 locked_word	तालाबद्धः
-show_pin	दर्शयतु PIN
-hide_pin	गोपन PIN .
 set_owner_pin	सेट् स्वामी PIN .
 enter_owner_passcode	OWNER PASSCODE प्रविष्टं कुर्वन्तु
 enter_staff_passcode	STAFF PASSCODE प्रविष्टं कुर्वन्तु
-pin_count_zero	० / १२ अङ्काः · न्यूनातिन्यूनं ४, ततः ठीकम्
-pin_count_need	{} / १२ अङ्काः · अधिकं {} आवश्यकम्
-pin_count_full	१२ / १२ अङ्काः · ठीकम् नुदन्तु
-pin_count_ready	{} / 12 अङ्काः · सज्जाः सति OK नुदन्तु
 pin_hint_choose	4–12 अङ्काः चिनोतु · रक्षितुम् अथवा अनलॉक् कुर्वन्तु
 pin_hint_new	नवीन ४–१२ अङ्कीयः स्वामिः PIN · प्रविष्टं कुर्वन्तु अथवा अनलॉकं कुर्वन्तु
 pin_hint_shop_code	दुकानयन्त्रम् · युग्मसंहिता {}
@@ -791,23 +635,15 @@ pin_hint_paired	अतिरिक्तं यावत् युग्मि�
 pin_hint_pair_first	अतिरिक्त टिल् — प्रथमं दुकानयन्त्रं प्रति युग्मम्
 unlock_to_continue	निरन्तरं कर्तुं अनलॉकं कुर्वन्तु
 no_staff_yet	अद्यापि कोऽपि कर्मचारी नास्ति — Owner इति रूपेण अनलॉक् कुर्वन्तु, ततः Team इति
-status_server_set_pin	सर्वर मोड — सेट् स्वामी PIN
-status_server_tills	Server Mode — अतिरिक्त tills सम्मिलितुं शक्नुवन्ति । अनलॉक
-status_server_unlock	Server Mode — Owner इति रूपेण अनलॉक् कुर्वन्तु
-status_client_unlock	Client Mode — विक्रयणार्थं अनलॉक् कुर्वन्तु
 icon_new_selected	चिह्नम्: नूतनसञ्चिका चयनिता — ब्राण्ड् रक्षतु इति ट्याप् कुर्वन्तु
 icon_custom	चिह्नम् : कस्टम स्थल चिह्न
 icon_default	चिह्नम्: Kumkaj चिह्नं (पूर्वनिर्धारितम्) — इष्टं चिनुत
 logo_yours	लोगो: भवतः दुकानस्य लोगो — पटलेषु रसीदेषु च दर्शितम्
 logo_default	लोगो: Kumkaj चिह्नं (पूर्वनिर्धारितम्) — यदि भवतः समीपे अस्ति तर्हि स्वकीयं चिनुत
-tmpl_current	वर्तमानः {} — {}
-tmpl_selected	चयनितम् : {} — {} .
 setup_complete	सेटअप सम्पन्न
 onboard_fresh_tmpl	ताजा · {} — सूची रिक्तं आरभ्यते; Menu menu items इत्यत्र menu items योजयन्तु, ततः Done इति ।
 onboard_book_tmpl	Ledger · {} — मेनू-वस्तूनि योजयन्तु तथा च क्रेडिट् उद्घाटयन्तु, ततः Done ।
-onboard_template_tmpl	यदि इच्छति तर्हि स्थानस्य नामकरणं कुरुत, ततः कथं आरभ्यत इति चिनुत ।
 tmpl_blurb	औषधालय काउण्टर : औषधियाँ, बैच/समाप्ति, खटा, पुस्तकें।
-tmpl_how	काउण्टरे विक्रयणं कुर्वन्तु; स्टॉकस्य कृते क्रीणीत; दिवसपुस्तकस्य पुस्तकानि।
 reports_facet_title	प्रतिवेदनानि
 reports_facet_help	दिवसलेखाः, ग्राहकः वा आपूर्तिकर्ता वा वृद्धावस्था, बैंकपदानि, अवधिः च पी एण्ड एल।
 against_bill_ph	उपरि # विधेयकस्य विरुद्धम् (वैकल्पिकम्)
@@ -818,14 +654,12 @@ amount_ph	राशि
 amount_received_ph	प्राप्त राशि
 amount_we_pay_ph	वयं यत् राशिं दास्यामः
 business_name_ph	व्यापार नाम
-category_new_ph	श्रेणी (वैकल्पिकं, नूतनं चेत् निर्मितम्)
 code_bag_ph	संहिता (पुटम्) ९.
 conv_factor_ph	कारक (२५ = १ पुट → २५ किलो) २.
 country_code_ph	देशसङ्केतः उदा. IN, GB, US, AE, BR
 credit_khata_amount_ph	ऋण / ऋण लेजर राशि
 credit_limit_ph	ऋणसीमा (० = कोऽपि नास्ति) २.
 from_code_ph	कोडात् (पुटम्) .
-item_name_lang_ph	मेनू मेन्यू आइटम् नाम — स्वभाषायां टङ्कयन्तु
 login_id_opt_ph	उपयोक्तृनाम (आवश्यकम्, अद्वितीयम्) २.
 manager_pin_ph	प्रबन्धकः PIN अनुमोदनं कर्तुं (केवलं यदि भवान् शून्यं कर्तुं न शक्नोति)
 new_branch_name_ph	नवीन शाखा नाम
@@ -833,15 +667,12 @@ new_password_ph	नूतनः गुप्तशब्दः (वैकल्�
 new_pin_ph	नवीन PIN (४–१२ अङ्क) २.
 note_bank_ph	नोट (निक्षेप, निष्कासन, ...) २.
 note_buy_expense_ph	टिप्पणी (इन्धन, किराया, ...) .
-note_expense_ph	टिप्पणी (इन्धनम्, कार्यालयम्, ...) २.
 options_tabiyat_ph	विकल्पाः — आकारः*: लघु=199, बृहत्=399 | टॉपिंग+3: पनीर=40, जैतून=30 | अतिरिक्त पनीर=40
-part_second_way_ph	द्वितीयमार्गेण भागः (वैकल्पिकः) २.
 phone_ph	दूरभाषः
 place_name_ph	अस्य स्थानस्य नाम
 qty_example_ph	मात्रा (उदा. किलोग्रामस्य कृते १.५) २.
 quantity_ph	परिमाणम्
 reason_required_ph	कारणम् (आवश्यकम्) २.
-role_title_ph	भूमिका शीर्षक (उदा. बरिस्ता) २.
 service_pct_ph	सेवा % वैकल्पिक 0/10/12
 short_code_ph	लघु कोड (MG02) .
 starting_password_ph	गुप्तशब्दस्य आरम्भः (वैकल्पिकः) २.
@@ -876,14 +707,11 @@ shift_handover	हस्तान्तरणं शिफ्टं कुर्
 shift_since	ततः परं एतत् परिवर्तनम्
 expected_in_drawer	दराजमध्ये अपेक्षितम्
 right_discount	छूटं ददातु
-pick_category	एकं वर्गं चिनुत
-close_category_list	श्रेणीसूचीं बन्दं कुर्वन्तु
 new_category_row	नूतनः वर्गः — यदा भवान् मेनू-वस्तु रक्षति तदा निर्मितः
 your_category	भवतः वर्गः
 suggested_category	सुझावः — अस्माकं वस्तूनि
 category_search_ph	श्रेणी — भवतः अन्वेषणं कुर्वन्तु अथवा नूतनं टङ्कयन्तु
 cancel_item_short	रद्दं कुर्वन्तु
-cancel_item_title	एतत् द्रव्यं रद्दं कुरुत — पृष्ठकार्यालयेन रद्दीकरणस्लिप् प्राप्यते
 return_to_customer	ग्राहकं प्रति प्रत्यागच्छन्तु
 short_by	संक्षेपेण
 tip_not_sale	टिप् (कर्मचारिणां, न तु विक्रयः) २.
@@ -896,9 +724,7 @@ finding_server	अस्मिन् Wi‑Fi...
 no_server_found	न कश्चित् लब्धः। सर्वरे: सेटिंग्स् → अन्ये उपकरणानि → अतिरिक्तं टिल् (समानं Wi‑Fi) अनुमन्यताम् । अथवा तत्र दर्शितं IP टङ्कयन्तु ।
 servers_found_pick	यस्मिन् दुकाने भवन्तः सम्बद्धं कर्तुम् इच्छन्ति तत् ट्याप् कुर्वन्तु।
 server_host_selected	{host} इत्यस्य उपयोगेन — युग्मीकरणसङ्केतं प्रविष्टं कुर्वन्तु, ततः अधुना Pair कुर्वन्तु ।
-print_bill	बिल मुद्रयन्तु
 approval_pin_ph	प्रबन्धकः PIN (पृष्टे एव) २.
-confirm	पुष्टिं कुर्वन्तु
 menu_search_ph	मेनू मदं वा लघुसङ्केतं वा अन्वेष्टुम्
 customer_paid_ph	ग्राहकः भुक्तवान्
 tip_ph	टिप्
@@ -908,7 +734,6 @@ bill_format_help	प्रत्येकं बिलस्य उपरि भ
 bill_header_ph	पता | phone
 fssai_ph	औषधि अनुज्ञापत्र नं. (वैकल्पिकम् — भवतः शब्दावली)
 bill_footer_ph	पादलेखः (उदा. धन्यवादः, पुनः आगच्छन्तु)
-save_bill_format	बिल प्रारूपं रक्षन्तु
 kot_field_on	दर्शयतु
 kot_field_off	गोपयतु
 kot_weight_light	प्रकाशः
@@ -919,10 +744,8 @@ kot_weight_bold	बोल्ड
 kot_align_start	आरभत
 kot_align_center	केन्द्र
 kot_align_end	अन्तम्
-content_width	सामग्री चौड़ाई (मि.मी.) २.
 content_width_bill	पत्रविस्तारः (mm)
 content_width_ph	अथवा सामग्रीविस्तारः, ४०–२१० मि.मी
-content_width_help	कियत् विस्तृतं एषा स्लिप् मुद्रयति। बिलः स्वस्य विस्तारं रक्षति।
 content_width_bill_help	ग्राहकस्य बिलम् कियत् विस्तृतं मुद्रयति। पूर्वनिर्धारित 210 मिमी (पृष्ठ)। ५८ मि.मी.संकीर्णः स्लिप्, ८० मि.मी.विस्तृतः स्लिप्, ११२ मि.मी.४-इञ्च्, २१० मि.मी. 40 तः 210 पर्यन्तं किमपि मूल्यं टङ्कयन्तु।टिकटस्य स्वकीया विस्तारः स्लिप् ट्याब् इत्यत्र भवति।
 vp_paper_width	सामग्री चौड़ाई (मि.मी.) २.
 vp_paper_width_ph	अथवा सामग्रीविस्तारः, ४०–२१० मि.मी
@@ -937,9 +760,6 @@ test_bill_sent	विधेयक पूर्वावलोकनं प्र
 test_print_no_printer	तस्य कार्यस्य कृते मुद्रकः नास्ति — अस्मिन् पटले एकं चिनोतु
 std_print	बिल मुद्रण आकार
 std_print_help	OS / दस्तावेजमुद्रकेषु Standard Portrait तथा ​​Landscape बिलकार्यस्य कृते फन्ट् आकारः (बिन्दून् प्रविष्टं कुर्वन्तु — लघु/सामान्य/बृहत् न)। उभयभिमुखीकरणेषु समानः आकारः ।
-std_size_s	लघु
-std_size_m	सामान्यम्
-std_size_l	बृहत्
 save_std_print	बिल मुद्रणस्य आकारं रक्षन्तु
 std_print_saved	बिल मुद्रण आकारः रक्षितः
 print_brand_kit	प्रिंट ब्राण्ड किट
@@ -952,14 +772,9 @@ choose_payment_qr	भुगतान QR चयन करें
 clear_payment_qr	स्पष्ट भुगतान QR
 payment_qr_set	भुगतान QR: सञ्चिकायां — ग्राहकप्रदर्शने दर्शितम् (तत्र राशिः UPI QR प्रतिस्थापयति)
 payment_qr_none	भुगतान QR: कोऽपि नास्ति — भुगतानं कुर्वन् UPI ID तः QR राशिः
-aggregator_import	समुच्चयक्रमाः (सञ्चिका) २.
-aggregator_import_help	वैकल्पिकं स्थानीय आयातम्: import_aggregator_orders.json इत्येतत् backups फोल्डर् (array अथवा {"orders":[...]}) स्थापयन्तु, ततः Import ट्याप् कुर्वन्तु । कदापि गणकं न अवरुद्धं करोति; live Zomato/Swiggy इति मेघः।
-import_aggregator_file	समुच्चयसञ्चिकां आयातयन्तु
 team_pick_ph	सम्पादयितुं कर्मचारी — नाम, उपयोक्तृनाम, अथवा चिन्वन्तु
 select_staff	एतत् दण्डं चिनोतु
 rights_help	अस्य व्यक्तिस्य कृते धनक्रियाः — चक्रं कर्तुं ट्याप् कुर्वन्तु: अनुमतम् → मालिकस्य पिनस्य आवश्यकता अस्ति → अनुमतं नास्ति। पुनः मुद्रणं बिलम् केवलं बिलम् एव; विभागाः अधोलिखिता जाँचसूची सन्ति।
-dish_picker_help	अस्माकं वस्तूनि अन्वेष्टुम् अथवा ब्राउज् कृत्वा एकं ट्याप् कृत्वा तस्य नाम, फोटो च पूरयन्तु — अथवा स्वनाम स्थापयन्तु । स्वस्य मूल्यं सेट् कुर्वन्तु (0 सम्यक् अस्ति), ततः मदं योजयन्तु ।
-close_dish_list	मदसूचीं बन्दं कुर्वन्तु
 own_item_name	एतत् स्वस्य मेनू-वस्तुनामरूपेण उपयुज्यताम्
 on_your_menu	औषधसूचौ
 edit	सम्पादयतु
@@ -970,24 +785,16 @@ add_scheme	योजयतु BOGO .
 schedule_ph	घण्टाः — सोम-शुक्र ०७:००-११:०० अथवा सायं १७:००-१९:००=१५०
 upi_vpa_ph	UPI ID (VPA)
 upi_payee_ph	UPI भुगतानकर्ता नाम (वैकल्पिक)
-upi_qr	UPI QR
 show_upi_qr	UPI QR दिखाएँ
 close_upi_qr	निमील्यताम्
 upi_qr_help	ग्राहकः स्कैन् कृत्वा भुक्तिं करोति। तेषां भुक्तिं कृत्वा भुगतानं गृह्यताम् इति ट्याप् कुर्वन्तु। द्वितीयः पटलः : LAN इत्यत्र Server URL /display इत्येतत् उद्घाटयन्तु ।
-recently_done	अद्यतनं कृतम्
 role_help_customer	भूमिका : ग्राहकः — क्रेडिट् लेजर (ते अस्माकं ऋणी सन्ति)। स एव ग्राहकः आपूर्तिकर्ता वा स्टॉकस्य आपूर्तिं अपि कर्तुं शक्नोति।
 role_help_both	भूमिकाः : ग्राहकः + आपूर्तिकर्ता — एकः ग्राहकः अथवा आपूर्तिकर्ता, क्रेडिट् लेजरः तथा देयलेजरः, रिपोर्ट्स् मध्ये शुद्धः।
 role_help_supplier	भूमिका : आपूर्तिकर्ता — वयं तेषां क्रयणार्थं ऋणी स्मः।
-items_word	मेनू-वस्तूनाम्
-items_section	मेनू मेनू वस्तूनि
-back_to_order	क्रमं प्रति पुनः
-new_items_head	अद्यापि न प्रेषितम्
 price_ph	मूल्यम्
 price_ph_gst_inside	मूल्य ({tax} सहित)
-tax_rates_missing_hint	एतेषु वस्तूनि {tax} दरः नास्ति — on Items set Tax rate (मूल्येषु पूर्वमेव {tax} समाविष्टस्य अन्तर्गतं {tax} अन्तर्भवति)
 taxable_value	करयोग्य मूल्य
 gst_inside_price_note	({tax} समावेशी) २.
-start_with_template	अस्माकं आइटम टेम्पलेट् इत्यनेन आरभत
 template_heading	प्रारम्भिकवस्तूनि
 template_info	{c} श्रेणयः तथा च {d} वस्तूनि फोटोभिः सह, योजयितुं सज्जाः। मूल्यानि ₹0 तः आरभ्यन्ते — पश्चात् स्वस्य सेट् कुर्वन्तु।
 template_import	सम्पूर्ण टेम्पलेट आयात करें
@@ -1009,21 +816,13 @@ opening_client	क्लायन्ट् उद्घाटयन्...
 preparing_desk	मेजस्य सज्जीकरणम्...
 opening_server	सर्वरं उद्घाटयन्...
 creating_server	सर्वरं निर्माय...
-order_empty_pick	रिक्तं आदेशयन्तु — वस्तूनि चिन्वितुं उपरि वस्तूनि योजयन्तु इति ट्याप् कुर्वन्तु ।
 add_dishes	औषधानि योजयन्तु
 order_so_far	अस्मिन् क्रमे : {n} · {total} .
 no_dish_match	कोऽपि द्रव्यः “{q}” इत्यनेन सह न मेलति ।
-pick_dishes_help	एकं द्रव्यं योजयितुं ट्याप् कुर्वन्तु · सूचीं संकुचितं कर्तुं श्रेणीं चिनुत
 pick_done	कृतम्
-pick_done_dd	कृतम् · {label} .
-printer_route_mode	यदि अस्मिन् स्थाने अनेकाः मुद्रकाः
-printer_mode_first	प्रथमं तत् कार्यं करोति
-printer_mode_all	सर्वेषु मुद्रयन्तु
 kot_field_up	उपरि गच्छतु
 kot_field_down	अधः गच्छतु
-app_template_blurb_extra	अपि च : स्वामी जाहिर, एड्मिन् आसिफ, कैशियर नवाज; अग्रे पार्श्वपट्टिका; ४ घण्टानां अनन्तरं इतिहासः; अद्य पट्टिकां कृत्वा; संकुचित विधेयक।
 dishes_n	{n} आइटम
-recipe_ph	नुस्खा (वैकल्पिकम् — काउण्टर-दुकाने अप्रयुक्तम्)
 reorder_ph	अधिकं क्रीणीत at
 set_reorder	पुनः क्रमस्तरं सेट् कुर्वन्तु
 low_stock_alert	क्षीणः — शीघ्रं क्रीणीत: {items}
@@ -1032,7 +831,6 @@ show_unpriced	केवलं मूल्यं विना वस्तून
 show_all_dishes	सर्वाणि वस्तूनि दर्शयतु
 role_title_rest_ph	भूमिका उपाधि (उदा. कप्तान, मुख्य पाककर्त्ता) २.
 preset_help_rest	कैशियरः विक्रयति। प्रबन्धकः विक्रयणं + मेनू-वस्तूनाम् + शून्यं/संशोधनम् ।
-kind_raw	चक्रवृद्धि स्टॉक
 kind_resale	औषधं क्रीतवन्
 kind_dish	स्टॉकं न गणयन्तु
 buy_unit_ph	इकाई (किलो, लीटर, पीसी) 1 .

@@ -41,7 +41,7 @@ remove	Entfernen
 removed_items	Entfernte Artikel
 removed_help	Wiederherstellen setzt den Artikel genau wie zuvor auf die Karte – Preis, Foto und Kategorie. Unser Regal mit Gerichten wird nie entfernt, ein Gericht lässt sich also immer wieder hinzufügen.
 restore_item	Wiederherstellen
-empty_catalog	Noch keine Artikel. Öffnen Sie Menü & Artikel, fügen Sie einen hinzu (Name + Preis), dann Bestellung aufnehmen.
+empty_catalog	Noch keine Artikel.
 total	Gesamt
 cash	Bar
 upi	UPI
@@ -103,23 +103,14 @@ bill_item_qty	Menge
 bill_item_price	Preis
 bill_item_amount	Betrag
 bill_item_note	Notiz
-bill_item_col_gap	Spaltenabstand
 bill_item_col_order	Spaltenreihenfolge
 bill_item_col_sep	Spaltlinien
-bill_item_gap_tight	Eng
-bill_item_gap_comfort	Bequem
-bill_item_gap_wide	Weit
-bill_item_num_width	Zahlenspalten
-bill_item_num_compact	Kompakt
-bill_item_num_comfort	Bequem
-bill_item_num_wide	Weit
-bill_item_num_align	Zahlenausrichtung
-bill_item_gap_em	Abstand (em)
-bill_item_qty_min	Menge min. (em)
-bill_item_price_min	Preis min. (em)
-bill_item_amount_min	Betrag min. (em)
-kot_item_qty_width	Mengenspalte
-kot_item_num_align	Mengenausrichtung
+slip_columns	Spalten
+slip_col_width	Breite (mm)
+slip_col_start	Abstand am Anfang (px)
+slip_col_end	Abstand am Ende (px)
+slip_col_align	Textausrichtung
+slip_columns_help	Die Breite jeder Spalte schließt ihren Abstand am Anfang und am Ende ein. Text wird innerhalb seiner Spalte umbrochen; was über die Inhaltsbreite hinausgeht, wird abgeschnitten – auf Papier und in der Vorschau.
 bill_total_qty_label	Beschriftung Gesamtmenge
 bill_total_subtotal_label	Beschriftung Zwischensumme
 bill_total_grand_label	Beschriftung Gesamtsumme
@@ -221,7 +212,6 @@ sidebar_order_saved	Seitenleistenbestellung gespeichert
 sidebar_visibility_saved	Sichtbarkeit der Seitenleiste gespeichert
 amounts_hide	Ausblenden
 amounts_show	Anzeigen
-printers_none_hint	Fügen Sie zuerst einen Drucker auf diesem Gerät hinzu, bevor Sie ihn zur Rechnung oder an die Küche senden
 counter	Theke
 dine_in	Vor Ort
 takeaway	Mitnehmen
@@ -328,8 +318,6 @@ selected_language	Ausgewählt
 continue	Weiter
 this_device	DIESES GERÄT
 device_use_q	Wie wird dieses Gerät verwendet?
-last_server_mode	War Server — tippen zum Fortfahren
-last_client_mode	War Client — tippen zum Fortfahren
 choose_server	Server wählen
 choose_server_hint	Dieses Gerät hat bereits Server. Öffnen Sie einen oder erstellen Sie einen neuen Server für ein anderes Geschäft.
 create_new_server	Neuen Server erstellen
@@ -391,7 +379,7 @@ attachments_last_expense	Anhänge (letzte Ausgabe)
 bank	Bank
 bank_in	Bankeinzahlung
 bank_out	Bankabhebung
-bank_reconciliation	Bankabstimmung (gegen Kontoauszug abhaken)
+bank_reconciliation	Bankabstimmung
 bank_to_till	Bank → Kasse
 book_add_dish	Bestellung — Gericht / Artikel hinzufügen
 book_opening_credit	Buchung — Anfangskredit
@@ -744,7 +732,6 @@ station_print_pick_first	Zuerst eine Küchenstation wählen
 station_print_editing	Drucker für „{name}“ bearbeiten
 station_vps_dd	Drucker für diese Station
 station_vps_dd_n	{n} Drucker · tippen zum Ändern
-station_vps_empty	Noch keine Drucker — unter Einstellungen → Drucker suchen
 bill_printers_dd	Druckgeräte für die Rechnung
 bill_printers_dd_n	{n} Druckgerät(e) für die Rechnung · tippen zum Ändern
 job_layout	Layout
@@ -889,7 +876,7 @@ net_word	Netto
 offline_badge	OFFLINE
 optional_login_help	Optionaler Login (ID + Passwort). Der Inhaber setzt ihn einmal; später kann nur der Benutzer das Passwort ändern.
 or_unlock_login	Oder mit Login-ID + Passwort entsperren
-permission_preset	Berechtigungsprofil (worauf Zugriff)
+permission_preset	Berechtigungsprofil
 preset_help_khaynjo	Kassierer: verkaufen. Manager: verkaufen + Artikel + Storno/Korrektur.
 product_locked_khaynjo	Khaynjo
 product_only_khaynjo	Diese App ist nur Khaynjo – das System für Restaurants. Andere Branchen haben eigene Kumkaj-Produkte.
@@ -961,10 +948,6 @@ pin_hint_paired	Extra-Kasse gekoppelt – zum Verkaufen entsperren
 pin_hint_pair_first	Extra-Kasse – zuerst mit dem Shop-Gerät koppeln
 unlock_to_continue	Zum Fortfahren entsperren
 no_staff_yet	Noch kein Personal – als Inhaber entsperren, dann Team
-status_server_set_pin	Servermodus — Inhaber-PIN setzen
-status_server_tills	Servermodus — Extra-Kassen können beitreten. Entsperren
-status_server_unlock	Servermodus — als Inhaber entsperren
-status_client_unlock	Clientmodus – zum Verkaufen entsperren
 icon_new_selected	Symbol: neue Datei ausgewählt — Marke speichern tippen
 icon_custom	Symbol: eigenes Geschäftszeichen
 icon_default	Symbol: Kumkaj-Zeichen (Standard) — eigenes wählen
@@ -1033,7 +1016,7 @@ book_kind_balance	Bilanz
 order_help	Offene Bestellung wählen oder Tisch wählen und neu starten. Fertige Artikel antippen, KOT senden, einen oder mehr Artikel abrechnen, Rechnung teilen und Zahlung abschließen.
 floor_help	Jeder Tisch zeigt, ob Gäste sitzen, ihre offene Rechnung und wer als Nächstes bedient werden muss.
 kitchen_help	Verfolge Bereit pro Variante oder pro Artikel – im KOT erfassen, wie du willst.
-kitchen_empty	Gerade nichts offen – neue Bestellungen erscheinen hier.
+kitchen_empty	Gerade nichts offen.
 add_a_table	Tisch hinzufügen
 add_station_heading	Station hinzufügen · z. B. Tandoor, Südindisch
 categories_help	Eine Kategorie zeigt, zu welchem Menüteil ein Gericht gehört – z. B. Snacks, Hauptgang oder Biryani. Erstelle Kategorien auf deine Art: unsere Namen wählen, umbenennen oder eigene hinzufügen.
@@ -1131,7 +1114,6 @@ bill_format_help	Steht auf jeder Rechnung unter dem Namen des Restaurants. Zeile
 bill_header_ph	Adresse | Telefon
 fssai_ph	FSSAI-Lizenznr. (Indien)
 bill_footer_ph	Fußzeile (z. B. Danke, bis bald)
-save_bill_format	Rechnungsformat speichern
 reset_bill_format	Auf Standard
 bill_format_reset	Rechnungsformat zurückgesetzt
 reset_kot_format	Auf Standard
@@ -1201,13 +1183,11 @@ kot_copies_3	3
 kot_title_ph	Titel (leer = KOT - KITCHEN ORDER)
 kot_footer_ph	Küchennotiz (optional, ohne Preise)
 kot_preview	Vorschau
-save_kot_format	KOT-Format speichern
 test_kot_format	KOT testen
 test_kot_sent	Vorschau des Küchenscheins gesendet
 test_bill_format	Rechnung testen
 test_bill_sent	Rechnungsvorschau gesendet
 test_print_no_printer	Kein Drucker für diesen Auftrag — wählen Sie einen auf diesem Bildschirm aus
-kot_format_saved	KOT-Format gespeichert
 std_print	Rechnungs-Schriftgröße
 std_print_help	Schriftgröße für Standard-Hoch- und Querformat-Rechnungen (thermisches KOT getrennt). Gleiche Größe in beiden Ausrichtungen.
 std_size_s	Klein
@@ -1264,7 +1244,6 @@ new_items_head	Noch nicht gesendet
 price_ph	Preis
 price_ph_gst_inside	Preis ({tax} inklusive)
 cancel_needs_table	Öffnen Sie diese Bestellung über den Saal (einen Tisch), um nach der Küche zu stornieren — Theken-KOTs bleiben bis zur Zahlung auf dem Bon
-tax_rates_missing_hint	Kein {tax}-Satz auf diesen Gerichten — im Menü den Satz setzen (bei {tax} inklusive ist {tax} schon im Preis)
 taxable_value	Steuerbemessungsgrundlage
 gst_inside_price_note	({tax} inklusive)
 start_with_template	Mit unserer Menüvorlage starten
@@ -1318,9 +1297,7 @@ order_empty_pick	Bestellung leer — oben auf „Gerichte hinzufügen“ tippen,
 add_dishes	Gerichte hinzufügen
 order_so_far	Auf dieser Bestellung: {n} · {total}
 no_dish_match	Kein Gericht passt zu „{q}“
-pick_dishes_help	Gericht antippen zum Hinzufügen · Kategorie wählen zum Eingrenzen
 pick_done	Fertig
-pick_done_dd	Fertig · {label}
 printer_route_mode	Wenn mehrere Drucker an diesem Ort vorhanden sind
 printer_mode_first	Erster, der funktioniert
 printer_mode_all	Auf allen drucken

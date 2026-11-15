@@ -1,7 +1,5 @@
 # Somali — Soomaali (so). One key<TAB>text per line, in en() order; keep {placeholders}.
-app_tagline	Kirana counter: iibin, kayd, khata & buugaagta. Khadka tooska ah ee bilaashka ah
 unlock	Fur
-pin_hint	PIN-ka milkiilaha wuxuu ka bilaabmaa 0000
 sell	Iibi
 buy	Iibso
 books	Buugga maalinta
@@ -20,17 +18,13 @@ reports_month	Faa'iido iyo khasaare (bil)
 reports_aging	Haraaga / Deyn-Deyn
 reports_balance_sheet	Xaashida dheelitirka
 reports	Buugga bangiga iyo F&K
-refresh	Cusbooneysii
 undo	Ka noqo
-start_tracking	Bilow tirinta
 stock_minus	− Kayd
 stock_plus	+ Kayd
 settle_cash	Ku bixi lacag caddaan
 settle_card	Ku bixi kaar
 items	Alaabta
 nav_items	Alaabta
-more	In dheeraad ah
-your_items	Alaabtaada
 items_help	Taabo shay si aad u saxdo Shayga cusub ayaa nadiifiya foomka Ku raadi magac ama kood gaaban, qiimee (0 waa fiican yahay), ka dibna ku dar. Iibka mar hore la duubay ha hayo magaca lagu soo oogay.
 add_item	Ku dar alaab
 new_item	Alaab cusub
@@ -48,21 +42,15 @@ upi	UPI
 card	Kaar
 credit	Dhinacyada
 clear	Nadiifi
-ready_to_sell	Diyaar u ah in la qoro
 today_prefix	Maanta
-today_mid	maanta
 owed	haraaga
-round_word	goobo
 back	Dib
 sold_out	Lama heli karo
 restock	Dib u buuxi
 not_tracked	Lama tiriyo
 in_stock	kaydka ku jira
 marked_sold_out	Loo calaamadeeyay inaan la helin
-add_upper	KU DAR
-na	—
 qty	Miisaan/Tirada
-unit_at	Qiimaha @
 actual	Dhabta ah
 applied	La dabaqay
 note_ph	Qoraal (ikhtiyaari)
@@ -81,21 +69,13 @@ bill_item_qty	Tirada
 bill_item_price	Qiimaha
 bill_item_amount	Qaddarka
 bill_item_note	Shayga note
-bill_item_col_gap	Kala fogaanta tiirarka
 bill_item_col_order	Habka tiirarka
 bill_item_col_sep	Khadadka tiirarka
-bill_item_gap_tight	Cidhiidhi
-bill_item_gap_comfort	Raaxo
-bill_item_gap_wide	Ballaaran
-bill_item_num_width	Tiirarka lambarada
-bill_item_num_compact	Cidhiidhi
-bill_item_num_comfort	Raaxo
-bill_item_num_wide	Ballaaran
-bill_item_num_align	Isku toosi lambarada
-bill_item_gap_em	Kala fogaan (em)
-bill_item_qty_min	Tirada ugu yar (em)
-bill_item_price_min	Qiimaha ugu yar (em)
-bill_item_amount_min	Qaddarka ugu yar (em)
+slip_col_width	Ballac (mm)
+slip_col_start	Meesha bilowga (px)
+slip_col_end	Meesha dhammaadka (px)
+slip_col_align	Toosinta qoraalka
+slip_columns_help	Ballaca tiir kastaa wuxuu ka kooban yahay meeshiisa bilowga iyo dhammaadka. Qoraalku wuxuu ku duubmaa tiirkiisa gudihiisa; wixii dhaafa ballaca waxa ku jira waa la jaraa, warqadda iyo horudhacaba.
 bill_total_qty_label	Calaamadda wadarta tirada
 bill_total_subtotal_label	Calaamadda wadarta hoose
 bill_total_grand_label	Calaamadda wadarta weyn
@@ -108,11 +88,7 @@ bill_total_qty	Wadarta tirada
 bill_total_subtotal	Wadarta hoose
 bill_total_grand	Wadarta weyn
 kot_unassigned	Aan la magacaabin
-pos_tab_items	Alaabta lagu daray
-pos_tab_payment	Bixin
-settings_hub_title	Dejinta
 settings_hub_help	Fur hal goob markiiba — rogid yar, doorasho cad.
-settings_back	Dib
 settings_sec_language	Luqadda iyo lacagta
 settings_sec_country	Dalka iyo canshuurta
 settings_sec_tills	Qalabyada kale
@@ -154,35 +130,17 @@ diag_cleared	Diiwaannada baaritaanka waa la nadiifiyay
 sidebar_settings	Dhinaca shaashadda
 sidebar_settings_help	Calaamado la mid ah birta dhinaca. Jiid saf si aad u beddesho habka. Rog furaha si aad u muujiso ama u qariso. Dejinta iyo Xir mar walba birta ayay saaran yihiin.
 sidebar_always_on_short	Had iyo jeer shid
-sidebar_back_settings	Dib
-sidebar_shown	Waa la muujiyay
-sidebar_hidden	Waa la qariyay
-sidebar_always_on	Had iyo jeer birta saaran
-sidebar_shown_hint	Waxaa lagu muujiyaa birta dhinaca / tabaha hoose
-sidebar_hidden_hint	Birta waa laga qariyay
 sidebar_menu_items	Alaabta
 sidebar_enable_all	Daar dhammaan
 sidebar_disable_all	Dami dhammaan
 sidebar_order_saved	Habka dhinaca waa la kaydiyay
 sidebar_visibility_saved	Muuqaalka dhinaca waa la kaydiyay
-amounts_hide	Qari
-amounts_show	Muuji
-printers_none_hint	Ku kaydi daabacaha qalabkan marka hore, ka dibna ku dar biilka ama qayb
-counter	Miiska iibka
-dine_in	Miiska iibka
-takeaway	Qaado
-order	Dalab
 sales	Iib
-sales_refunds	Iib iyo lacag celin
 day_close	Xiritaanka maalinta
 reports_expenses	Buugga bangiga iyo F&K
 nav_reports	Warbixinno
 nav_settings	Dejinta
 nav_lock	Xir
-no_sale_yet	Weli iib ma jiro
-favorites	Kuwa la jecel yahay
-favorites_help	Alaabta aad badanaa iibiso, oo loo kaydiyay gelitaankaaga. Ku dar mid biilka, ama ka dhis liiskaaga dhammaan alaabta hoose.
-your_favorites	Kuwa aad jeceshahay
 all_items	Dhammaan alaabta
 frequent	Inta badan la iibiyo
 added_items	Alaabta lagu daray
@@ -199,8 +157,6 @@ zero_sales_on	Oggolow ₹0
 zero_sales_off	Qiime ayaa loo baahan yahay
 zero_sales_saved_on	Iibka qiimo eber ah waa la oggolaaday
 zero_sales_saved_off	Iibku waa inuu lahaadaa qiime ka sarreeya ₹0
-no_favorites	Weli kuwa la jecel yahay ma jiraan — ku dar alaab liiska hoose.
-add_to_bill	Ku dar biilka
 added	Waa lagu daray
 owes_word	wuu leeyahay
 selected_word	La doortay
@@ -209,19 +165,11 @@ chip_missing_customer	Macmiilkii la doortay waa maqan — mar kale dooro
 chip_no_customer	Weli macmiil ma jiro — qor magac, ka dibna taabo Deyn
 credit_summary_fmt	macaamiil {} · deyn furan {} · hormaris la haystay {}
 recent_label	Dhawaan:
-start_order	Bilow dalab
-open_bill	Fur biil
-collect_payment	Qaado bixinta
-payment_pending	Bixintu waa sugaysaa
-collect_at_counter	ka qaado miiska iibka
 inventory	Kaydka
-inventory_stock	Kaydka iyo alaabta
 branches	Laamaha
-branches_org	Laamaha iyo ururka
 credit_customers	Dhinacyada (khata iyo alaab-qeybiyeyaasha)
 customer_name_ph	Magaca dhinaca
 new_customer_ph	Magaca dhinac cusub
-item_name_ph	Magaca alaabta (tusaale Masala Dosa)
 item_price_ph	Qiimaha
 start_template	Alaabta
 team	Kooxda
@@ -229,17 +177,11 @@ team_pins	Kooxda iyo PIN
 my_pin_settings	PIN-kayga
 settings_hub_help_my_pin	Beddel PIN-ka furitaanka qofka ku soo galay qalabkan.
 team_self_help	Hal gelitaan: PIN cusub, furaha sirta cusub, ama labadaba. Ka tag sanduuq madhan si aad u haysato waxa aad haysato. Weydii Milkiilaha haddii aad u baahan tahay shaashado ama xuquuq kale.
-backup_settings	Kaydka iyo dejinta
-lock_app	Xir app-ka
 pick	Qaado
-select	Dooro
 advance	Hormaris
 owner	Milkiile
 staff	Shaqaale
 photo	Sawir
-auto	Toos
-prev	Hore
-next	Xiga
 ok	OK
 this_shop	Server
 extra_till	Macaamiil
@@ -248,17 +190,13 @@ server	Server
 client	Macaamiil
 language_currency	Luqadda iyo lacagta
 language	Luqad
-choose_language	Dooro luqaddaada
 language_setup_hint	Raac luqadda qalabkan, ama adigu dooro mid.
 lang_follow_platform	Luqadda qalabka
 lang_pick_user	Dooro luqad
 lang_platform_now	Luqadda qalabka hadda
 selected_language	La doortay
-continue	Sii wad
 this_device	QALABKAN
 device_use_q	Sidee qalabkan loo isticmaali doonaa?
-last_server_mode	Wuxuu ahaa Server — taabo si aad u sii wadato
-last_client_mode	Wuxuu ahaa Macaamiil — taabo si aad u sii wadato
 choose_server	Dooro server
 choose_server_hint	Fur server jira, ama u samee ganacsi kale.
 create_new_server	Samee server cusub
@@ -268,12 +206,6 @@ server_remove_pin_ph	PIN-ka milkiilaha si loo saaro server
 only_owner_remove_server	Milkiilaha kaliya ayaa server ka saari kara
 owner_pin_remove_server	PIN-ka milkiilaha ayaa loo baahan yahay si loo saaro serverkan
 device_setup_help	Server-ku buugaagta halkan ayuu ku hayaa. Macaamiilku wuxuu la midaysmaa Server.
-app_template_heading	Buugta bilawga ah (ikhtiyaar)
-app_template_blurb	Waxay ku shubtaa buugga muunada; Mulkiilaha Zahir (zahir), Admin Asif (asif, PIN 1111), Cashier Nawaz (nawaz, PIN 0000); canshuurta/GST off; dhinaca hore; Taariikhdu way baaba'aysaa 4 saacadood ka dib (oo Nadiifi hadda kaabta); Maanta iska siib; biilka is haysta + Margins caadiga ah ee saxaarad cidhiidhi ah. Canshuurta iyo facooda barbaraha ayaa dib loogu daari karaa Settings.
-app_template_apply	Codso liiska bilowga
-app_template_skip	Hadda ka bood
-app_template_status	Server-ku waa diyaar — codso buug-yaraha, ama ka bood
-app_template_importing	Waxaa la dabaqayaa {title}…
 currency	Lacag
 backup	Kayd
 use	Isticmaal
@@ -307,7 +239,7 @@ attachments_last_expense	Ku-darisyada (kharashkii u dambeeyay)
 bank	Bangiga
 bank_in	Bangiga soo gal
 bank_out	Bangiga ka bax
-bank_reconciliation	Isku-habaynta bangiga (kala calaamadee bayaanka bangigaaga)
+bank_reconciliation	Isku-habaynta bangiga
 bank_to_till	Bangiga → sanduuqa
 book_add_dish	Buug - ku dar shay / shay
 book_opening_credit	Buug — deynta bilowga
@@ -337,9 +269,6 @@ share_whatsapp	La wadaag WhatsApp
 lan_pages_heading	Bogagga macaamiisha ee Wi-Fi
 lan_pages_help	Wi-Fi-ga dukaankan, boggaga macaamiisha ayaa u shaqeeya sabuuradda bandhigga iyo jawaab celinta. Dadka ku jira xogta moobilka waxay u baahan yihiin Cloud hadhow. Terminalka kaadhka ama isku xirka lacag bixinta waa ikhtiyaar oo waligiis ma xannibo miiska miiska.
 diag_send_heading	Ka saar qalabkan
-optional_login_heading	Gelitaan ikhtiyaari ah
-rights_heading	Xuquuqda
-ops_panel	Hawl gudaha ah
 crm_heading	Macaamiisha & fariimaha
 crm_help	Maalinta dhalashada, daacadnimada, kuwa aan firfircoonayn iyo martida sare — SMS ama WhatsApp saf geli. Fariinta ku isticmaal {name} iyo {points}. Milkiilaha ayaa taaba dira; wax iskiis ma baxo.
 crm_queue_sms	Saf geli SMS
@@ -364,21 +293,17 @@ till_wallet_topup_ph	Qaddarka lagu darayo boorsada
 till_voucher_issue_amt_ph	Qaddarka baucharka la bixinayo
 till_voucher_issue_code_ph	Koodh bauchar cusub
 bulk_price_apply	Dabaq qiimaha badan
-card_terminal_optional	Qalabka kaarka / xiriirka bixinta (ikhtiyaari marka internet la helo)
 copy_report	Nuqul ka qaad warbixinta
 counted_cash_ph	Lacagta caddaanka ee la tiriyay sanduuqa
 country_tax	Dalka iyo canshuurta
 create_backup	Samee kayd
 credit_limit_heading	Xadka deynta (dhinaca la doortay / la magacaabay)
-day_close_summary	Kooban xiritaanka maalinta
 delete_party	Tirtir dhinaca la doortay
-delivery	Gaarsiin
 done_open_books	Dhamaaday — fur buugaagta
 drawer_count	Tirada khaanadda (ikhtiyaari)
 expense_heading	Kharash
 export_day	Soo saar maalinta
 extra_note_bill_ph	Qoraal dheeraad ah biilkan / iibkan
-extra_note_expense_ph	Qoraal dheeraad ah kharashkii u dambeeyay
 extra_tills_heading	Sanduuqyo dheeraad ah
 other_devices_help_heading	Deji qalabyada kale
 other_devices_help	Qalabkan (Server): Aalado kale → Oggolow tills dheeraad ah. U fiirso summada lammaanaynta iyo ciwaanka Wi-Fi Taabo Oggolow aaladaha kale inay ku xidhmaan haddi ay muuqato. Kumbiyuutarka, ku dhufo Kumbuyuutarkan ku bilow. Midba midka kale: ku rakib app-ka, dooro Qaabka Macmiilka, Soo hel server-ka dukaanka (ama ku qor ciwaanka), geli koodka lammaane, Labba hadda. Dalbadu waxay sugaan aaladda haddii Wi-Fi soo dhacdo oo tag marka Server-ku ka jawaabo markale. Madbacadaha dheeraadka ah ayaa lagu rakibay Server-ka (Settings → Printer) - tills dheeraad ah ayaa halkaas u soo dira biilasha.
@@ -392,7 +317,6 @@ login_id_ph	Magaca isticmaalaha
 mark_cleared	U calaamadee la nadiifiyay
 new_party_clear	Dhinac cusub (nadiifi foomka)
 new_party_kind_supplier_ph	Nooca dhinaca cusub (Alaab-qeybiye)
-next_country	Dalka xiga
 next_order	Dalabka xiga (nadiifi miiska)
 note_gstin_ph	Qoraal / GSTIN / xusuusin heshiis
 notes_attach_party	Qoraallo iyo ku-darisyo (dhinaca la doortay)
@@ -410,8 +334,6 @@ pay_ap_cash	Bixi AP lacag caddaan
 pay_ap_heading	Bixi waxa aan u leenahay (AP)
 pay_ap_upi	Bixi AP UPI
 pay_selected_heading	Bixi kan la doortay (deji deynta / qaado hormaris)
-pick_from_items	Ka qaado alaabtayada
-prev_country	Dalkii hore
 print_open	Daabac / fur
 reason_amend_ph	Sababta saxitaanka / burinta / celinta
 reason_note_ph	Sabab / qoraal (khasaare, tirin, …)
@@ -435,14 +357,10 @@ history_after_hours	Saacado ka dib
 history_hours_ph	Saacado (1–168, caadiga 4)
 history_hours_save	Kaydi saacadaha
 history_clear_now	Hadda nadiifi taariikhda
-history_cleared	Taariikhda ganacsiga waa la nadiifiyay — dejinta waa la haystay
-history_retention_saved	Nadiifinta taariikhda waa la kaydiyay
 history_hours_saved	Saacadaha taariikhda waa la kaydiyay
-history_owner_only	Milkiilaha ama Maamulka kaliya ayaa taariikhda nadiifin kara
 rollup	Isku soo ururi
 save_brand	Kaydi calaamadda
 save_business_id	Kaydi aqoonsiga ganacsiga
-save_business_name	Kaydi magaca ganacsiga
 save_features	Kaydi
 save_features_named	Kaydi {name}
 save_features_ok	Dejinta {name} waa la kaydiyay
@@ -473,7 +391,6 @@ copy_pair_code	Nuqul ka qaad koodhka isku-xirka
 new_pair_code	Koodh isku-xir cusub
 pair_finishing	Isku-xirka waa dhammaanayaa… buugaagta dukaanka ayaa la dabaqayaa
 pair_opening	Sanduuqa ayaa la furayaa…
-pair_copied	Koodhka isku-xirka waa la nuqulay
 lan_offline_waiting	Server-ka dukaanka lama gaari karo · {n} ayaa sugaya
 lan_connecting	Waxaa lagu xirayaa dukaanka…
 lan_live	Toos
@@ -487,7 +404,6 @@ firewall_waiting	Wuxuu sugayaa weydiinta maamulka…
 lan_join_help	Qalabka kale: Habka Macaamiilka → Raadi server-ka dukaanka (ama qor {addr}) → koodhka isku-xirka {code}.
 lan_pair_status	Wi‑Fi {addr}
 lan_join_help_no_addr	Ku xir qalabkan Wi‑Fi si aad u hesho cinwaan.
-lan_no_address	Weli cinwaan Wi‑Fi ma jiro — ku xir Wi‑Fi-ga dukaanka.
 lan_not_listening	Ma aqbalayo qalabyo (dekedda {port} waa mashquul). Dib u bilow app-ka.
 lan_tills_off	Sanduuqyada dheeraadka ah waa dansan yihiin. Oggolow si qalab kale u soo biiro.
 paired_with	Waa la isku xiray · {url}
@@ -508,41 +424,21 @@ printers_help	Soo hel daabacayaasha, taabo mid si aad u doorato, dabadeed ku daa
 printers_host_only	Daabacadaha ayaa lagu rakibay aaladda dukaanka (Server). Tani ilaa ay u soo dirto biilasha iyo tigidhada duugga ah - Hel / ku dar / ku meelee joogitaanka Server-ka. Bogga tijaabada iyo cabbirka daabacaadda biilka waxay aadayaan Server-ka.
 printers_find_heading	Raadi daabacayaasha
 printers_find_tip	Raadi wuxuu baaraa qalabkan, liiskana wuu cusbooneysiiyaa.
-printers_pool_heading	Daabacayaasha
-printers_pool_tip	Raadi wuxuu baaraa qalabkan, liiskana wuu cusbooneysiiyaa.
 printers_pool_empty	(weli midna — taabo Raadi)
-printers_routes_help	Soo hel daabacadaha nidaamka qalliinka uu hore u yaqaan U qoondee biilka iyo qayb kasta oo hoos timaada qaabka Bill & Slip.
 printer_assign_dd	Daabacaha dhabta ah: {place}
 printer_assign_pick	Dooro daabacaha dhabta ah
 printer_profile_heading	Qaab
 vp_delivery_heading	Gaarsiin
 vp_delivery_help	Sida daabacaha casriga ahi uu u diro shaqooyinka - dukumeentiga OS, bytes cayriin, ama ESC/POS. Nuxurka sibxataa (xajmiga nooca, duubka, margins) waxaa go'aamiya qaabka biilka/qaabka sibidhka, halkan maaha.
-vp_type_size_heading	Cabbirka qoraalka
-vp_wrap_heading	Ballaarinta duubista
-vp_margin_heading	Hareeraha
 vp_delivery_spooler	Dukumentiga nidaamka (safka nidaamka)
 vp_delivery_raw	Bayt cayriin oo loo diro qalabka
 vp_delivery_escpos	Amarada kulaylka ee ESC/POS
 virtual_printer_new	Daabacaha mala-awaal cusub
 virtual_printer_selected	Waa la tafatirayaa “{name}” — taabo mid kale liiska si aad u beddesho
-virtual_printer_tap_list	Taabo daabacaha mala-awaal ah liiska si aad u tafatirto
 config_layout_portrait	Toosan
 config_layout_landscape	Jiif
 config_send_os	Safka nidaamka
 config_send_escpos	ESC/POS
-profiles_heading	Qaabab
-profiles_empty	(weli qaab ma jiro)
-profile_builtin	dhex-dhis
-profile_custom	gaar ah
-profile_name_ph	Magaca qaabka
-profile_new	Qaab cusub
-profile_delete	Tirtir qaabka
-profile_created	Qaabka waa la sameeyay
-profile_deleted	Qaabka waa la tirtiray
-profile_builtin_keep	Qaababka dhex-dhiska lama tirtiri karo
-config_saved	Waa la cusbooneysiiyay
-config_selected	Waa la doortay “{name}”
-printer_output_heading	Daabacayaasha mala-awaalka ah
 virtual_printers_heading	Daabacayaasha mala-awaalka ah
 virtual_printers_empty	Weli daabacayaal mala-awaal ah ma jiraan — hoos deji qiimayaasha, ka dibna Kaydi. Markaad hesho, taabo mid liiska si aad u tafatirto.
 virtual_printer_name_ph	Magaca daabacaha mala-awaalka ah (ikhtiyaari)
@@ -554,71 +450,32 @@ virtual_printer_deleted	Daabacaha mala-awaal ah “{name}” waa la tirtiray
 virtual_printer_updated	Daabacaha mala-awaal ah waa la cusbooneysiiyay
 virtual_printer_updated_named	Daabacaha mala-awaal ah “{name}” waa la cusbooneysiiyay
 virtual_draft_layout	Qiimayaasha loo dejiyay daabacaha mala-awaal ah ee xiga
-virtual_draft_send	Qiimaha loo dejiyay daabacaha mala-awaal ah ee xiga
 virtual_need_real	Marka hore dooro daabacaha dhabta ah
 virtual_need_select	Dooro daabacaha mala-awaal ah ee la tirtirayo
 real_printer_selected	La doortay: {name}
-printers_routes_heading	Meesha wax lagu daabaco
-route_pick_heading	Goob
 route_editing	Waa la tafatirayaa: {name}
-route_assigned	{printer} waxaa lagu daray {place}
-route_already_assigned	Horey ayuu ugu jiray goobtan: {printer}
 route_cleared	{name} waa la nadiifiyay
-route_assigned_empty	Goobtan midna kuma jiro
-route_tap_select	taabo si aad u doorato
 route_tap_selected	la doortay
-route_pick_printer_first	Marka hore taabo daabacaha
-route_assigned_heading	Daabacayaasha
-route_add_heading	U xir
-printer_label_ph	Magaca (tusaale, daabacaha Counter)
 printer_target_ph	Magaca daabacaha nidaamka ama host:9100
 printer_target_default	daabacaha caadiga ah ee kombiyuutarkan (cinwaan madhan)
-printer_wire_heading	Nooca
-printer_wire_escpos	ESC/POS
-printer_wire_os	Toosan
-printer_wire_os_portrait	Toosan
-printer_wire_os_landscape	Jiif
-printer_wire_escpos_short	ESC/POS
-printer_wire_os_short	Toosan
-printer_wire_os_landscape_short	Jiif
-printer_format_custom	Nooc gaar ah oo cusub
-printer_format_custom_label	Gaar ah
-printer_format_custom_added	Nooc gaar ah ayaa loogu daray goobtan
-add_printer	Ku dar daabacaha
-route_pick_ph	Biilasha ama qaybta dukaanka
 route_bill	Biil
-route_dont_print	Daabacaha ma jiro
 station_print_pick_first	Marka hore dooro qaybta dukaanka
-station_vps_empty	Weli daabacayaal ma jiraan — ka raadi Dejinta → Daabacayaasha
 bill_printers_dd	Daabacayaasha biilka
 bill_printers_dd_n	daabacaha {n} oo biilka ah · taabo si aad u beddesho
 station_vp_attached	Daabacaha waa la xiray
 station_vp_detached	Daabacaha waa laga saaray saldhigga
-route_up	Kor
-route_down	Hoos
-route_clear	Nadiifi
-save_printers	Kaydi daabacayaasha
 print_test_page	Daabac bog tijaabo ah
 no_printer_assigned	Daabacaha ma jiro
-test_page_no_printer	Daabacaha ma jiro {place} — ku xir daabacaha, ka dibna mar kale isku day
 test_page_pick_first	Marka hore dooro daabacaha(yaasha) bogga tijaabada — ka dibna Daabac bog tijaabo ah
 test_printers_dd	Daabacayaasha bogga tijaabada
 test_printers_dd_n	daabacaha {n} oo bog tijaabo ah · taabo si aad u beddesho
 test_printer_picked	Tijaabo: {name}
 test_printer_cleared	Lama tijaabinayo: {name}
 test_page_sent_n	Bog tijaabo ah ayaa loo diray daabacaha {n}
-batch_cancel	Jooji kuwa la calaamadeeyay
-batch_cancel_n	Jooji kuwa la calaamadeeyay ({n})
-batch_cancel_none	Marka hore calaamadee hal ama in ka badan oo shay la soo diray -kadibna tirtir oo calaamadeysan
-batch_cancel_title	Burburinta alaabta la calaamadeeyay - hal sabab, hal baajinta warqadda qayb kasta
-batch_cancel_ok	Shayada {n} waa la tirtiray · {slips} tirtirida xaashiyaha → {kitchens}
-batch_cancel_ok_noprint	Shayada {n} waa la joojiyay - si toos ah daabacaaddu waa dansan tahay, markaa ma tirtiri karo warqadda
 printers_saved	Waa la kaydiyay
-test_page_sent	Bog tijaabo ah ayaa la diray — hubi daabacaha
 test_page_sent_one	Bog tijaabo ah ayaa loo diray {name} — hubi daabacahaas
 printers_found	Waxaa la helay {n}: {list}
 printers_find_synced	Waxaa la helay {n} — {new} cusub
-printer_on_device	waa la kaydiyay
 printer_already_added	horey ayaa loogu daray
 printer_already_saved	Horey ayaa loo kaydiyay: {name}
 find_printers	Raadi daabacayaasha
@@ -628,7 +485,6 @@ cancelled	Waa la joojiyay
 printers_tap_find	Taabo Raadi si aad u aragto daabacayaasha qalabkani isticmaali karo.
 printers_none_found	Midna lama helin — qor magaca daabacaha nidaamka ama IP (tusaale 192.168.1.50).
 printer_from_find	{name} ayaa lagu daray
-bill_printer_ph	Daabacaha biilasha
 queue_refused	Dukaanku ma aqbalin ({n}) — mid kasta ka hubi miiska iibka:
 clear_not_accepted	Waa la hubiyay — nadiifi liiskan
 device_name_ph	Magaca qalabkan
@@ -638,7 +494,6 @@ connected_now	hadda waa ku xiran yahay
 backup_failed	Kaydka tooska ah ee u dambeeyay wuu fashilmay: {e}
 backup_overdue	Kayd ma jirin {n} maalmood — app-ka ka fur qalabkan si uu u kaydiyo.
 disk_low	Qalabkan waxaa ka haray {mb} MB oo keliya — kaydyadu dhawaan way fashilmaan. Meel bannaan ka samee.
-last_seen_devices	Markii ugu dambeysay ee la arkay: {time}
 connection_to_shop	Xiriirka dukaanka
 supplier_name_ph	Magaca alaab-qeybiyaha (ama dhinaca)
 supplier_ph	Alaab-qeybiye
@@ -696,7 +551,6 @@ currency_use_help	Rog oo taabo Isticmaal lacag kasta oo la taageero.
 day_close_help	Diiwaangelinta xiritaanka maalinta waxay kaydisaa koobankan (iyo kala duwanaanshaha khaanadda haddii la tiriyay) diiwaanka baaritaanka. Iibka ma joojiso.
 expenses_word	Kharashyada
 feature_access_help	Waxa ay furi karaan — ikhtiyaari; shaqada kor horey u dejisay caadi
-footer_local	SQLite gudaha ah · Had iyo jeer bilaash · Daruur la'aan
 fresh_book_kirano	Fresh = buug madhan (ku dar walxaha hadhow). Buug = nooca kaydka furitaanka iyo cidda kugu leh hoos.
 fresh_selected	Nadiif ayaa la doortay — liisku wuu madhan yahay. Taabo Dhamaaday markaad diyaar tahay.
 gross_word	Wadarta guud
@@ -709,12 +563,9 @@ net_word	Saafiga
 offline_badge	LA'AAN NET
 optional_login_help	Gelitaan ikhtiyaari ah (aqoonsi + furaha sirta). Milkiiluhu hal mar ayuu dejiyaa; isticmaaluhu kaliya ayaa hadhow beddeli kara furaha sirta.
 or_unlock_login	Ama ku fur aqoonsiga gelitaanka + furaha sirta
-permission_preset	Shaqo (waxay dejinaysaa shaashadaha iyo falalka lacagta)
-preset_help_kirano	Khasnaji: iibi. Maamule: iibi + alaab + burin/sax.
-product_locked_kirano	Kirano
+permission_preset	Shaqo
 product_only_kirano	Kirano waa nidaamka cuntada / kirana: iibka miiska, kaydka, creditka iyo buugaagta - offline-ka ah qalabkaaga.
 purchases_cogs	Iibsiga (COGS)
-qty_cap	TIRADA
 restore_help	Soo celi: dooro kayd. Buugaagtu waxay u furmaan sidii ay markaas ahaayeen; buugaagta hadda jira marka hore ayaa la kaydiyaa, sidaas darteed tan waa laga noqon karaa.
 wipe_data_heading	Tirtir xogta gudaha
 wipe_data_help	Mulkiilaha kaliya - doorashooyin la mid ah sida Windows uninstall. Diiwaanada ganacsigu waxay nadiifiyaan taariikhda ganacsiga laakiin waxay xafidaan alaabta iyo habaynta (sida furaha degdega ah ee PIN). Habaynta dukaanku waxay meesha ka saaraysaa xogta buugaagta. Dookhyada shaashadu waxay nadiifisaa daaqada/luqada. Ku xaqiiji PIN-ka Mulkiilaha Lambarka furaha degdega ah ee PIN ee kooxda waa gooni (tix sir ah oo furan).
@@ -747,7 +598,6 @@ staff_renamed	Magaca waa la kaydiyay
 staff_setup_copied_hire	Dejinta waxaa laga nuqulay {name} — deji magac iyo PIN cusub, ka dibna Ku dar shaqaale
 staff_setup_copied_edit	Dejinta {from} waxaa lagu koobiyay {to}
 staff_copy_need_selected	Marka hore dooro cidda la tafatirayo
-staff_copy_need_source	Dooro cidda dejinteeda la nuqulaynayo
 staff_copy_same	Waa isla qofka — dooro mid kale
 staff_rename_need_selected	Marka hore dooro cidda magaceeda la beddelayo
 team_pick_hint	Dooro cidda wax laga beddelayo - shaashadaha, xuquuqda lacagta, iyo saldhigyada u muuqda qofkaas oo keliya.
@@ -762,15 +612,9 @@ unit_picker_off	Dami
 we_owe_them	Annagu ayaan u leenahay
 who_unlocking	Yaa furaya?
 locked_word	Xiran
-show_pin	Muuji PIN
-hide_pin	Qari PIN
 set_owner_pin	DEJI PIN-KA MILKIILAHA
 enter_owner_passcode	GELI FURAHASIRKA MILKIILAHA
 enter_staff_passcode	GELI FURAHASIRKA SHAQAALAHA
-pin_count_zero	0 / 12 lambar · ugu yaraan 4, ka dibna OK
-pin_count_need	{} / 12 lambar · waxaa u baahan {} kale
-pin_count_full	12 / 12 lambar · taabo OK
-pin_count_ready	{} / 12 lambar · taabo OK markaad diyaar tahay
 pin_hint_choose	Dooro 4–12 lambar · Geli ama Fur si aad u kaydiso
 pin_hint_new	PIN cusub oo Milkiile 4–12 lambar ah · Geli ama Fur
 pin_hint_shop_code	Qalabka dukaanka · koodhka isku-xirka {}
@@ -779,23 +623,15 @@ pin_hint_paired	Sanduuq dheeraad ah ayaa la isku xiray — fur si aad u iibiso
 pin_hint_pair_first	Sanduuq dheeraad ah — marka hore ku xir qalabka dukaanka
 unlock_to_continue	Fur si aad u sii wadato
 no_staff_yet	Weli shaqaale ma jiro — u fur Milkiile, ka dibna Kooxda
-status_server_set_pin	Habka Server-ka — deji PIN-ka Milkiilaha
-status_server_tills	Habka Server-ka — sanduuqyo dheeraad ah way soo biiri karaan. Fur
-status_server_unlock	Habka Server-ka — u fur Milkiile
-status_client_unlock	Habka Macaamiilka — fur si aad u iibiso
 icon_new_selected	Calaamad: fayl cusub ayaa la doortay — taabo Kaydi calaamadda
 icon_custom	Calaamad: astaanta goobta ee gaarka ah
 icon_default	Calaamad: astaanta Kumkaj (caadiga) — dooro mid gaar ah
 logo_yours	Astaanta: astaanta dukaankaaga — waxaa lagu muujiyaa shaashadaha iyo rasiidhada
 logo_default	Astaanta: astaanta Kumkaj (caadiga) — dooro taada haddii aad haysato
-tmpl_current	Hadda: {} — {}
-tmpl_selected	La doortay: {} — {}
 setup_complete	Dejintu waa dhammaatay
 onboard_fresh_tmpl	Nadiif · {} — liisku wuxuu ka bilaabmaa madhan; ku dar alaab Alaabta, ka dibna Dhamaaday.
 onboard_book_tmpl	Buug · {} — ku dar alaab iyo deynta bilowga, ka dibna Dhamaaday.
-onboard_template_tmpl	Magac goobta haddii aad rabto, ka dibna dooro sida loo bilaabo.
 tmpl_blurb	Kirana miiska: iibin, kayd, khata, alaab-qeybiyaha iibsada, buugaagta.
-tmpl_how	Ku iibi miiska miiska; Iibso bakhaar; Buugaag maalinle ah.
 reports_facet_title	Warbixinno
 reports_facet_help	Buugaagta maalinta, da'da dhinacyada, gelinta bangiga, iyo F&K muddada.
 against_bill_ph	Ka soo horjeed biil # kor (ikhtiyaari)
@@ -806,14 +642,12 @@ amount_ph	Qaddarka
 amount_received_ph	Qaddarka la helay
 amount_we_pay_ph	Qaddarka aan bixinno
 business_name_ph	Magaca ganacsiga
-category_new_ph	Qayb (ikhtiyaari, waa la abuuraa haddii cusub)
 code_bag_ph	Koodh (bac)
 conv_factor_ph	Isku-dhufasho (25 = 1 bac → 25 kg)
 country_code_ph	Koodhka dalka tusaale IN, GB, US, AE, BR
 credit_khata_amount_ph	Qaddarka deynta / khata
 credit_limit_ph	Xadka deynta (0 = midna)
 from_code_ph	Koodhka laga bilaabo (bac)
-item_name_lang_ph	Magaca alaabta — ku qor luqaddaada
 login_id_opt_ph	Magaca isticmaalaha (waa loo baahan yahay, waa gaar)
 manager_pin_ph	PIN-ka Maamulaha si loo oggolaado (oo keliya haddii aadan burin karin)
 new_branch_name_ph	Magaca laanta cusub
@@ -821,15 +655,12 @@ new_password_ph	Furaha sirta cusub (ikhtiyaari)
 new_pin_ph	PIN cusub (4–12 lambar)
 note_bank_ph	Qoraal (dhigasho, ka bixid, …)
 note_buy_expense_ph	Qoraal (shidaal, kirada, …)
-note_expense_ph	Qoraal (shidaal, xafiis, …)
 options_kirano_ph	Doorashooyin — Cabbir*: Yar=199, Weyn=399 | Ku-daris+3: Jiis=40, Saytuun=30 | Jiis dheeraad ah=40
-part_second_way_ph	Qayb hab labaad (ikhtiyaari)
 phone_ph	Taleefan
 place_name_ph	Magaca goobtan
 qty_example_ph	Tirada (tusaale 1.5 kg)
 quantity_ph	Tirada
 reason_required_ph	Sabab (waa loo baahan yahay)
-role_title_ph	Magaca doorarka (tusaale Barista)
 service_pct_ph	Adeeg % ikhtiyaari 0/10/12
 short_code_ph	Koodh gaaban (MG02)
 starting_password_ph	Furaha sirta bilowga (ikhtiyaari)
@@ -864,14 +695,11 @@ shift_handover	Wareejinta wareegga
 shift_since	Wareeggan ilaa
 expected_in_drawer	Waxa la filayo khaanadda
 right_discount	Sii dhimis
-pick_category	Dooro qayb
-close_category_list	Xir liiska qaybaha
 new_category_row	Qayb cusub — waa la abuuraa markaad kaydiso alaabta
 your_category	Qaybtaada
 suggested_category	Soo jeedinta - alaabtayada
 category_search_ph	Qayb — raadi kuwaaga ama qor mid cusub
 cancel_item_short	Jooji
-cancel_item_title	Tirtir shaygan - xafiiska dambe wuxuu helay warqad burin
 return_to_customer	U celi macmiilka
 short_by	Waxaa ka yar
 tip_not_sale	Gunno (shaqaalaha, iib ma aha)
@@ -884,9 +712,7 @@ finding_server	Server-ka dukaanka ayaa laga raadinayaa Wi‑Fi-gan…
 no_server_found	Midna lama helin. Server-ka: Dejinta → Qalabyada kale → Oggolow sanduuqyo dheeraad ah (isla Wi‑Fi). Ama qor IP-ga halkaas lagu muujiyay.
 servers_found_pick	Taabo dukaanka aad rabto inaad ku xirto.
 server_host_selected	Waxaa la isticmaalayaa {host} — geli koodhka isku-xirka, ka dibna Hadda isku xir.
-print_bill	Daabac biilka
 approval_pin_ph	PIN-ka Maamulaha (oo keliya haddii la weydiiyo)
-confirm	Xaqiiji
 menu_search_ph	Raadi alaab ama koodh gaaban
 customer_paid_ph	Macmiilku wuu bixiyay
 tip_ph	Gunno
@@ -896,7 +722,6 @@ bill_format_help	Ku daabac magaca dukaankaaga biil kasta. Khadadka kala duwan oo
 bill_header_ph	Cinwaan | taleefan
 fssai_ph	FSSAI / shatiga dukaanka lamr. (ikhtiyaar)
 bill_footer_ph	Hoos (tusaale Mahadsanid, mar kale soo booqo)
-save_bill_format	Kaydi qaabka biilka
 kot_field_on	muuji
 kot_field_off	qari
 kot_weight_light	Fudud
@@ -907,10 +732,8 @@ kot_weight_bold	Dhumuc
 kot_align_start	Bilow
 kot_align_center	Dhexe
 kot_align_end	Dhamaad
-content_width	Ballaarinta khadka (mm)
 content_width_bill	Ballaarinta khadka biilka (mm)
 content_width_ph	Ama qor ballaarin khad, 40–210 mm
-content_width_help	Intee in le'eg ayay daabacan tahay silbashadan Bill wuxuu hayaa ballaciisa.
 content_width_bill_help	Intee bay le'eg tahay daabacaada biilka macmiilku. 210 mm (bogga). 58 mm silbadh cidhiidhi ah, 80 mm silbadh ballaaran, 112 mm 4-inch, 210 mm A4-ballaaran. Ku qor qiime kasta laga bilaabo 40 ilaa 210. Tigidhadu waxay leeyihiin ballac iyaga u gaar ah oo ku yaal tabka silbashada.
 vp_paper_width	Ballaarinta khadka (mm)
 vp_paper_width_ph	Ama qor ballaarin khad, 40–210 mm
@@ -925,9 +748,6 @@ test_bill_sent	Horudhaca biilka waa la diray
 test_print_no_printer	Daabacaha ma jiro shaqadaas — mid ka dooro shaashaddan
 std_print	Cabbirka daabacaadda biilka
 std_print_help	Cabbirka xarfaha ee Shaqooyinka biilka caadiga ah ee Sawirka iyo muuqaalka muuqaalka ee daabacadaha OS / dukumeentiga (dhibcaha geli - maaha mid yar/caadi/weyn). Cabbir isku mid ah labada jihooyin.
-std_size_s	Yar
-std_size_m	Caadi
-std_size_l	Weyn
 save_std_print	Kaydi cabbirka daabacaadda biilka
 std_print_saved	Cabbirka daabacaadda biilka waa la kaydiyay
 print_brand_kit	Xirmada calaamadda daabacaadda
@@ -940,14 +760,9 @@ choose_payment_qr	Dooro QR-ka bixinta
 clear_payment_qr	Nadiifi QR-ka bixinta
 payment_qr_set	Lacag bixinta QR: faylka ku jira - oo lagu muujiyay bandhiga macaamiisha (waxay ku bedeshaa qaddarka UPI QR halkaas)
 payment_qr_none	QR bixin: midna — QR qaddar ka yimaada aqoonsiga UPI marka la bixinayo
-aggregator_import	Dalabyada isku-darka (fayl)
-aggregator_import_help	Soo dejin gudaha ikhtiyaari ah: geli import_aggregator_orders.json galka kaydyada (saf ama {"orders":[…]}), ka dibna taabo Soo deji. Waligiis ma joojiyo miiska iibka; Zomato/Swiggy toos ah waa Daruur.
-import_aggregator_file	Soo deji faylka isku-darka
 team_pick_ph	Shaqaalaha la tafatirayo — magac, magaca isticmaalaha, ama dooro
 select_staff	Dooro shaqaalahan
 rights_help	Ficilada lacagta ee qofkan - taabo si aad u wareegto: La Ogol yahay → Wuxuu u baahan yahay maamulaha PIN → Lama ogola. Daabacaadda biilka mar labaad waa biilal oo keliya; qaybaha waa liiska hubinta ee hoose.
-dish_picker_help	Baadh ama baadh alaabtayada oo taabo mid si aad u buuxiso magaciisa iyo sawirkiisa - ama magacaaga ilaali. Deji qiimahaaga (0 waa fiican yahay), ka dibna ku dar shayga.
-close_dish_list	Xidh liiska alaabta
 own_item_name	U isticmaal magaca alaabtaada
 on_your_menu	Buugga ku jira
 edit	Tafatir
@@ -958,24 +773,16 @@ add_scheme	Ku dar BOGO
 schedule_ph	Saacadaha - Isniin-Jimcaha 07:00-11:00 ama Fiidkii 17:00-19:00=150
 upi_vpa_ph	Aqoonsiga UPI (VPA)
 upi_payee_ph	Magaca lahaanshaha UPI (ikhtiyaari)
-upi_qr	QR-ka UPI
 show_upi_qr	Muuji QR-ka UPI
 close_upi_qr	Xir
 upi_qr_help	Macmiil baa baadh oo lacag bixiya. Taabo Qaado lacag bixinta ka dib markay bixiyaan. Shaashadda labaad: ka fur URL Server/muujin LAN.
-recently_done	Dhawaan la dhammeeyay
 role_help_customer	Door: Macmiil — khata (way na leeyihiin). Isla dhinaca wuxuu sidoo kale keeni karaa kayd.
 role_help_both	Dooraro: Macmiil + Alaab-qeybiye — hal dhinac, buugaag khata iyo la bixinayo, saafiga Warbixinnada.
 role_help_supplier	Door: Alaab-qeybiye — annagu ayaan u leenahay iibsiga.
-items_word	alaab
-items_section	Alaabta
-back_to_order	Ku noqo dalabka
-new_items_head	Weli lama dirin
 price_ph	Qiimaha
 price_ph_gst_inside	Qiime ({tax} waa ku jira)
-tax_rates_missing_hint	Ma jiro qiime {tax} ah oo alaabtan ah - alaabta la dejiyay heerka cashuurta (qiimuhu waxa ku jira {tax} ee hoos yimaada {tax} oo loo dhan yahay)
 taxable_value	Qiimaha canshuurta lagu xisaabinayo
 gst_inside_price_note	({tax} waa ku jira)
-start_with_template	Ka bilow qaabka alaabtayada
 template_heading	Alaabta bilowga ah
 template_info	Qaybaha {c} iyo {d} walxaha leh sawiro, diyaar u ah in lagu daro. Qiimayaashu waxay ka bilowdaan 0₹0 - ka dhig kaaga dabadeed.
 template_import	Soo deji qaabka oo dhan
@@ -997,21 +804,13 @@ opening_client	Macaamiilka ayaa la furayaa…
 preparing_desk	Miiska ayaa la diyaarinayaa…
 opening_server	Server-ka ayaa la furayaa…
 creating_server	Server ayaa la samaynayaa…
-order_empty_pick	Dalbo maran - taabo ku dar walxaha kore si aad u soo qaadato alaabta.
 add_dishes	Ku dar walxaha
 order_so_far	Dalabkan: {n} · {total}
 no_dish_match	Ma jiro shay u dhigma "{q}"
-pick_dishes_help	Taabo shay si aad ugu darto · dooro qayb si aad u soo koobto liiska
 pick_done	La dhammeeyay
-pick_done_dd	Dhamaaday · {label}
-printer_route_mode	Haddii daabacayaal badan ay goobtan ku jiraan
-printer_mode_first	Kan ugu horreeya ee shaqeeya
-printer_mode_all	Ku daabac dhammaan
 kot_field_up	Kor u qaad
 kot_field_down	Hoos u deji
-app_template_blurb_extra	Sidoo kale: Mulkiilaha Zahir, Admin Asif, Cashier Nawaz; dhinaca hore; taariikhda 4 saacadood ka dib; Maanta iska siib; biilka is haysta.
 dishes_n	Waxyaabaha {n}
-recipe_ph	Recipe (ikhtiyaar ah - aan la isticmaalin dukaanka miiska)
 reorder_ph	Mar kale iibso marka
 set_reorder	Deji heerka dib-u-dalabka
 low_stock_alert	Wuu yaraanayaa — dhawaan iibso: {items}
@@ -1020,7 +819,6 @@ show_unpriced	Muuji kaliya alaabta bilaa qiimo
 show_all_dishes	Tus dhammaan walxaha
 role_title_rest_ph	Magaca doorarka (tusaale Kabtan, Madaxa kariska)
 preset_help_rest	Khasnaji: iibi. Maamule: iibi + alaab + burin/sax.
-kind_raw	Iibsaday isticmaalka dukaanka
 kind_resale	Iibsaday in la iibiyo
 kind_dish	Ha xisaabin kaydka
 buy_unit_ph	Cutub (kg, litir, xabo)

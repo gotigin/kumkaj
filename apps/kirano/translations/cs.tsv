@@ -1,7 +1,5 @@
 # Czech — Čeština (cs). One key<TAB>text per line, in en() order; keep {placeholders}.
-app_tagline	Kirana pult: prodej, sklad, khata a knihy. Zdarma offline.
 unlock	Odemknout
-pin_hint	Vlastník PIN začíná na 0000
 sell	Prodat
 buy	Koupit
 books	Denní kniha
@@ -20,17 +18,13 @@ reports_month	Zisk a ztráta (měsíc)
 reports_aging	Nesplacený / debetní kredit
 reports_balance_sheet	Rozvaha
 reports	Bankovní knížka a výsledovky
-refresh	Obnovit
 undo	Vrátit zpět
-start_tracking	Začněte sledovat
 stock_minus	− Zásoba
 stock_plus	+ Sklad
 settle_cash	Vyrovnat hotovost
 settle_card	Vyrovnat kartu
 items	Položky
 nav_items	Položky
-more	více
-your_items	Vaše položky
 items_help	Klepnutím na položku ji upravíte. Nová položka vymaže formulář. Hledejte podle názvu nebo krátkého kódu, nastavte cenu (0 je v pořádku) a poté Přidat. Již zaznamenané tržby si ponechají jméno, které jim bylo účtováno.
 add_item	Přidat položku
 new_item	Nová položka
@@ -41,28 +35,22 @@ remove	Odebrat
 removed_items	Odebrané položky
 removed_help	Obnovit vrátí položku zpět do položek přesně tak, jak byla – cenu, fotografii a kategorii.
 restore_item	Obnovit
-empty_catalog	Zatím žádné položky. Otevřete položky, přidejte název a cenu a poté prodávejte z pultu.
+empty_catalog	Zatím žádné položky.
 total	Celkem
 cash	Hotovost
 upi	UPI
 card	Karta
 credit	Zákazníci a dodavatelé
 clear	Jasný
-ready_to_sell	Připraveno k rezervaci
 today_prefix	dnes
-today_mid	dnes
 owed	vynikající
-round_word	kolo
 back	Zpět
 sold_out	Není k dispozici
 restock	Doplnění zásob
 not_tracked	Nesledováno
 in_stock	na skladě
 marked_sold_out	Označeno jako nedostupné
-add_upper	PŘIDAT
-na	N/A
 qty	Hmot./mno
-unit_at	Hodnotit @
 actual	Skutečné
 applied	Aplikováno
 note_ph	Poznámka (volitelné)
@@ -81,21 +69,13 @@ bill_item_qty	množství
 bill_item_price	Cena
 bill_item_amount	Částka
 bill_item_note	Poznámka k položce
-bill_item_col_gap	Mezera sloupců
 bill_item_col_order	Pořadí sloupců
 bill_item_col_sep	Pravidla sloupců
-bill_item_gap_tight	Těsné
-bill_item_gap_comfort	Pohodlné
-bill_item_gap_wide	Široký
-bill_item_num_width	Číslo sloupce
-bill_item_num_compact	Kompaktní
-bill_item_num_comfort	Pohodlné
-bill_item_num_wide	Široký
-bill_item_num_align	Čísla se zarovnají
-bill_item_gap_em	mezera (em)
-bill_item_qty_min	min. množství (em)
-bill_item_price_min	Cena min (em)
-bill_item_amount_min	Minimální částka (em)
+slip_col_width	Šířka (mm)
+slip_col_start	Mezera na začátku (px)
+slip_col_end	Mezera na konci (px)
+slip_col_align	Zarovnání textu
+slip_columns_help	Šířka každého sloupce zahrnuje jeho mezeru na začátku a na konci. Text se zalamuje uvnitř svého sloupce; co přesahuje šířku obsahu, se ořízne – na papíře i v náhledu.
 bill_total_qty_label	Štítek s celkovým množstvím
 bill_total_subtotal_label	Mezisoučet štítku
 bill_total_grand_label	Celkový štítek
@@ -108,11 +88,7 @@ bill_total_qty	Celkové množství
 bill_total_subtotal	Mezisoučet
 bill_total_grand	Celkový součet
 kot_unassigned	Nepřiřazeno
-pos_tab_items	Přidané položky
-pos_tab_payment	Platba
-settings_hub_title	Nastavení
 settings_hub_help	Otevřete jednu oblast po druhé – méně posouvání, jasnější volby.
-settings_back	Zpět
 settings_sec_language	Jazyk a měna
 settings_sec_country	Země a daně
 settings_sec_tills	Jiná zařízení
@@ -154,35 +130,17 @@ diag_cleared	Diagnostické protokoly byly vymazány
 sidebar_settings	Postranní panel
 sidebar_settings_help	Stejné ikony jako postranní zábradlí. Přetažením řádku změníte pořadí. Přepnutím přepínače zobrazíte nebo skryjete. Nastavení a zámek vždy zůstanou na liště.
 sidebar_always_on_short	Vždy zapnuto
-sidebar_back_settings	Zpět
-sidebar_shown	Zobrazeno
-sidebar_hidden	Skrytá
-sidebar_always_on	Vždy na baru
-sidebar_shown_hint	Zobrazeno na boční liště / spodních záložkách
-sidebar_hidden_hint	Skrytá před barem
 sidebar_menu_items	Položky
 sidebar_enable_all	Povolit vše
 sidebar_disable_all	Zakázat vše
 sidebar_order_saved	Pořadí postranního panelu bylo uloženo
 sidebar_visibility_saved	Viditelnost postranního panelu uložena
-amounts_hide	Skrýt
-amounts_show	Zobrazit
-printers_none_hint	Nejprve uložte tiskárnu do tohoto zařízení a poté ji přidejte do účtu nebo sekce
-counter	Počítadlo
-dine_in	Počítadlo
-takeaway	Jídlo s sebou
-order	Objednávka
 sales	Prodej
-sales_refunds	Prodej a vrácení peněz
 day_close	Den blízko
 reports_expenses	Bankovní knížka a výsledovky
 nav_reports	Zprávy
 nav_settings	Nastavení
 nav_lock	Zámek
-no_sale_yet	Zatím bez prodeje
-favorites	Oblíbené
-favorites_help	Položky, které často prodáváte, uložené pro vaše přihlášení. Přidejte jednu na účet nebo si sestavte seznam ze všech položek níže.
-your_favorites	Vaše oblíbené
 all_items	Všechny položky
 frequent	Časté
 added_items	Přidané položky
@@ -199,8 +157,6 @@ zero_sales_on	Povolit 0 ₹
 zero_sales_off	Vyžadovat cenu
 zero_sales_saved_on	Prodej s nulovou hodnotou povolen
 zero_sales_saved_off	Prodej musí mít cenu vyšší než 0 ₹
-no_favorites	Zatím žádné oblíbené — přidejte položky ze seznamu níže.
-add_to_bill	Přidat na účet
 added	Přidáno
 owes_word	dluží
 selected_word	Vybráno
@@ -209,19 +165,11 @@ chip_missing_customer	Chybí vybraný zákazník – vyberte jej znovu
 chip_no_customer	Zatím žádný zákazník – zadejte jméno a klepněte na Kredit
 credit_summary_fmt	{} zákazníků · otevřený úvěr {} · držené zálohy {}
 recent_label	Nedávné:
-start_order	Zahájit objednávku
-open_bill	Otevřený účet
-collect_payment	Sbírejte platbu
-payment_pending	Čeká se na platbu
-collect_at_counter	vyzvednout na přepážce
 inventory	Inventář
-inventory_stock	Zásoby a zásoby
 branches	Větve
-branches_org	Pobočky a org
 credit_customers	Zákazníci a dodavatelé (úvěrové účty)
 customer_name_ph	Jméno zákazníka nebo dodavatele
 new_customer_ph	Jméno nového zákazníka nebo dodavatele
-item_name_ph	Název položky (např. Masala Dosa)
 item_price_ph	Cena
 start_template	Produkt
 team	Tým
@@ -229,17 +177,11 @@ team_pins	Tým & PINs
 my_pin_settings	Moje PIN
 settings_hub_help_my_pin	Změňte odemknutí PIN pro osobu přihlášenou na tomto zařízení.
 team_self_help	Jedno přihlášení: nové PIN, nové heslo nebo obojí. Nechte pole prázdné, abyste zachovali to, co máte. Zeptejte se vlastníka, zda potřebujete jiné obrazovky nebo práva.
-backup_settings	Zálohování a nastavení
-lock_app	Zamknout aplikaci
 pick	Vybrat
-select	Vyberte
 advance	předem
 owner	vlastník
 staff	Zaměstnanci
 photo	Foto
-auto	Auto
-prev	Předchozí
-next	Další
 ok	OK
 this_shop	Režim serveru
 extra_till	Klientský režim
@@ -248,17 +190,13 @@ server	Režim serveru
 client	Klientský režim
 language_currency	Jazyk a měna
 language	Jazyk
-choose_language	Vyberte si jazyk
 language_setup_hint	Postupujte podle jazyka tohoto zařízení nebo si jej vyberte sami.
 lang_follow_platform	Jazyk zařízení
 lang_pick_user	Vyberte jazyk
 lang_platform_now	Jazyk zařízení nyní
 selected_language	Vybráno
-continue	Pokračovat
 this_device	TOTO ZAŘÍZENÍ
 device_use_q	Jak bude toto zařízení používáno?
-last_server_mode	Byl server – pokračujte klepnutím
-last_client_mode	Byl klient – pokračujte klepnutím
 choose_server	Vyberte server
 choose_server_hint	Otevřete existující server nebo jej vytvořte pro jinou firmu.
 create_new_server	Vytvořit nový server
@@ -268,12 +206,6 @@ server_remove_pin_ph	Vlastník PIN pro odebrání serveru
 only_owner_remove_server	Odebrat server může pouze vlastník
 owner_pin_remove_server	K odstranění tohoto serveru je vyžadován vlastník PIN
 device_setup_help	Server uchovává knihy zde. Klient se spáruje se serverem.
-app_template_heading	Katalog pro začátečníky (volitelné)
-app_template_blurb	Načte vzorový katalog; Majitel Zahir (zahir), správce Asif (asif, PIN 1111), pokladník Nawaz (nawaz, PIN 0000); sleva na dani/GST; přední boční lišta; historie se vymaže po 4 hodinách (a Vymazat nyní v Zálohování); Dnes se svlékněte; kompaktní bankovka + standardní okraje pro úzké zásobníky. Daňové a postranní panely lze znovu zapnout v Nastavení.
-app_template_apply	Použít startovací katalog
-app_template_skip	Zatím přeskočte
-app_template_status	Server je připraven – použijte katalog Starter nebo přeskočte
-app_template_importing	Použití {title}…
 currency	Měna
 backup	Zálohování
 use	Použijte
@@ -307,7 +239,7 @@ attachments_last_expense	Přílohy (poslední výdaj)
 bank	Banka
 bank_in	Do banky
 bank_out	Z banky
-bank_reconciliation	Bankovní odsouhlasení (zaškrtněte u výpisu z účtu)
+bank_reconciliation	Bankovní odsouhlasení
 bank_to_till	Banka → do
 book_add_dish	Kniha — přidat položku / položku
 book_opening_credit	Kniha — otevírací zápočet
@@ -337,9 +269,6 @@ share_whatsapp	Sdílet WhatsApp
 lan_pages_heading	Zákaznické stránky na Wi-Fi
 lan_pages_help	Na Wi-Fi tohoto obchodu fungují zákaznické stránky pro zobrazovací panel a zpětnou vazbu. Lidé s mobilními daty potřebují cloud později. Kartový terminál nebo platební odkaz jsou volitelné a nikdy neblokují přepážku.
 diag_send_heading	Sdílejte mimo toto zařízení
-optional_login_heading	Volitelné přihlášení
-rights_heading	Práva
-ops_panel	Místní ops
 crm_heading	Zákazníci a zprávy
 crm_help	Narozeniny, věrnost, neaktivní a nejlepší hosté — fronta SMS nebo WhatsApp záměry. Ve zprávě použijte {name} a {points}. Vlastník kohoutky odeslat; nic nevybuchne samo od sebe.
 crm_queue_sms	Fronta SMS
@@ -364,21 +293,17 @@ till_wallet_topup_ph	Dobitá částka v peněžence
 till_voucher_issue_amt_ph	Vystavit částku voucheru
 till_voucher_issue_code_ph	Nový kód voucheru
 bulk_price_apply	Použít hromadnou cenu
-card_terminal_optional	Kartový terminál / platební odkaz (volitelné, pokud je k dispozici internet)
 copy_report	Zkopírujte zprávu
 counted_cash_ph	Spočítaná hotovost v zásuvce
 country_tax	Země a daně
 create_backup	Vytvořte zálohu
 credit_limit_heading	Kreditní limit (vybraný zákazník nebo dodavatel)
-day_close_summary	Závěr dne
 delete_party	Smazat vybraného zákazníka nebo dodavatele
-delivery	Doručení
 done_open_books	Hotovo — otevřené knihy
 drawer_count	Počet zásuvek (volitelné)
 expense_heading	Výdaj
 export_day	Exportní den
 extra_note_bill_ph	Zvláštní poznámka k tomuto účtu / prodeji
-extra_note_expense_ph	Dodatečná poznámka k poslednímu výdaji
 extra_tills_heading	Extra pokladny
 other_devices_help_heading	Nastavte další zařízení
 other_devices_help	Na tomto zařízení (serveru): Ostatní zařízení → Povolit extra pokladny. Poznamenejte si párovací kód a adresu Wi-Fi. Klepněte na možnost Povolit připojení dalších zařízení, pokud se zobrazí. Na počítači klepněte na Začít s tímto počítačem. Na každém druhém zařízení: nainstalujte aplikaci, vyberte režim klienta, najděte server obchodu (nebo zadejte adresu), zadejte párovací kód, spárujte nyní. Objednávky čekají na zařízení, pokud Wi-Fi klesne, a odejdou, když server znovu odpoví. Extra tiskárny se nastavují na Serveru (Nastavení → Tiskárny) — extra pokladny tam posílají účty.
@@ -392,7 +317,6 @@ login_id_ph	Uživatelské jméno
 mark_cleared	Mark vymazán
 new_party_clear	Nový zákazník nebo dodavatel (jasný formulář)
 new_party_kind_supplier_ph	Nový druh zákazníka nebo dodavatele (dodavatel)
-next_country	Další země
 next_order	Další objednávka (čistý stůl)
 note_gstin_ph	Poznámka / GSTIN / připomenutí dohody
 notes_attach_party	Poznámky a přílohy (vybraný zákazník nebo dodavatel)
@@ -410,8 +334,6 @@ pay_ap_cash	Zaplaťte AP v hotovosti
 pay_ap_heading	Zaplaťte, co jim dlužíme (AP)
 pay_ap_upi	Zaplaťte AP UPI
 pay_selected_heading	Vybraná platba (vyrovnat dluh / vzít zálohu)
-pick_from_items	Vyberte si z našeho zboží
-prev_country	Předchozí země
 print_open	Vytisknout / otevřít
 reason_amend_ph	Důvod změny / neplatné / vrácení peněz
 reason_note_ph	Důvod / poznámka (plýtvání, počet, …)
@@ -435,14 +357,10 @@ history_after_hours	Po hodinách
 history_hours_ph	Hodiny (1–168, výchozí 4)
 history_hours_save	Ušetřete hodiny
 history_clear_now	Vymazat historii nyní
-history_cleared	Historie obchodování vymazána – nastavení zachováno
-history_retention_saved	Vymazání historie uloženo
 history_hours_saved	Hodiny historie uloženy
-history_owner_only	Historii může vymazat pouze vlastník nebo správce
 rollup	Souhrn
 save_brand	Uložit značku
 save_business_id	Uložit ID firmy
-save_business_name	Uložit název firmy
 save_features	Uložit
 save_features_named	Ušetřete {name}
 save_features_ok	Uloženo nastavení pro {name}
@@ -473,7 +391,6 @@ copy_pair_code	Zkopírujte párovací kód
 new_pair_code	Nový párovací kód
 pair_finishing	Dokončení páru... použití knih obchodu
 pair_opening	Otevírání pokladny…
-pair_copied	Párovací kód zkopírován
 lan_offline_waiting	Server obchodu nedostupný · {n} čeká
 lan_connecting	Připojování k obchodu…
 lan_live	Živě
@@ -487,7 +404,6 @@ firewall_waiting	Čekání na výzvu správce…
 lan_join_help	Na druhém zařízení: Režim klienta → Najděte server obchodu (nebo zadejte {addr}) → párovací kód {code}.
 lan_pair_status	Wi‑Fi {addr}
 lan_join_help_no_addr	Připojte toto zařízení k Wi‑Fi pro adresu.
-lan_no_address	Zatím žádná adresa Wi‑Fi — připojte se k obchodu Wi‑Fi.
 lan_not_listening	Nepřijímá zařízení (port {port} obsazený). Restartujte aplikaci.
 lan_tills_off	Extra pokladny jsou vypnuté. Umožněte jim, aby se připojilo jiné zařízení.
 paired_with	Spárováno · {url}
@@ -508,41 +424,21 @@ printers_help	Najděte tiskárny, klepnutím na jednu ji vyberte a poté vytiskn
 printers_host_only	Tiskárny jsou nastaveny na zařízení prodejny (Server). Tato pokladna tam posílá účty a staré vstupenky — Najít / přidat / přiřadit pobyt na serveru. Zkušební stránka a velikost tisku faktury přejdou na server.
 printers_find_heading	Najděte tiskárny
 printers_find_tip	Najít prohledá toto zařízení a udržuje seznam aktuální.
-printers_pool_heading	Tiskárny
-printers_pool_tip	Find prohledá toto zařízení a udržuje tento seznam aktuální.
 printers_pool_empty	(zatím žádné – klepněte na Najít)
-printers_routes_help	Najděte tiskárny, které operační systém již zná. Přiřaďte je k účtu a ke každé sekci ve formátu Bill & Slip.
 printer_assign_dd	Skutečná tiskárna: {place}
 printer_assign_pick	Vyberte skutečnou tiskárnu
 printer_profile_heading	Rozložení
 vp_delivery_heading	Doručení
 vp_delivery_help	Jak tato virtuální tiskárna odesílá úlohy — dokument OS, nezpracované bajty nebo ESC/POS. O obsahu složenky (velikost písma, obtékání, okraje) rozhoduje faktura / formát složenky, nikoliv zde.
-vp_type_size_heading	Velikost typu
-vp_wrap_heading	Šířka obalu
-vp_margin_heading	Okraje
 vp_delivery_spooler	Dokument OS (systémový spooler)
 vp_delivery_raw	Nezpracované bajty do zařízení
 vp_delivery_escpos	ESC/POS tepelné příkazy
 virtual_printer_new	Nová virtuální tiskárna
 virtual_printer_selected	Úprava „{name}“ – klepnutím na jinou položku v seznamu přepnete
-virtual_printer_tap_list	Klepnutím na virtuální tiskárnu v seznamu ji upravíte
 config_layout_portrait	Portrét
 config_layout_landscape	Krajina
 config_send_os	Zařazování systému
 config_send_escpos	ESC/POS
-profiles_heading	Rozvržení
-profiles_empty	(zatím žádné rozvržení)
-profile_builtin	vestavěný
-profile_custom	vlastní
-profile_name_ph	Název rozvržení
-profile_new	Nové rozložení
-profile_delete	Smazat rozvržení
-profile_created	Rozložení vytvořeno
-profile_deleted	Rozvržení bylo smazáno
-profile_builtin_keep	Vestavěné rozvržení nelze smazat
-config_saved	Aktualizováno
-config_selected	Vybráno „{name}“
-printer_output_heading	Virtuální tiskárny
 virtual_printers_heading	Virtuální tiskárny
 virtual_printers_empty	Zatím žádné virtuální tiskárny – níže nastavte hodnoty a poté Uložit. Až nějaké budete mít, klepněte na některou v seznamu a upravte ji.
 virtual_printer_name_ph	Název virtuální tiskárny (volitelné)
@@ -554,71 +450,32 @@ virtual_printer_deleted	Smazána virtuální tiskárna „{name}“
 virtual_printer_updated	Virtuální tiskárna aktualizována
 virtual_printer_updated_named	Virtuální tiskárna „{name}“ aktualizována
 virtual_draft_layout	Hodnoty nastavené pro další virtuální tiskárnu
-virtual_draft_send	Hodnota nastavená pro další virtuální tiskárnu
 virtual_need_real	Nejprve vyberte skutečnou tiskárnu
 virtual_need_select	Vyberte virtuální tiskárnu, kterou chcete odstranit
 real_printer_selected	Vybráno: {name}
-printers_routes_heading	Kde se věci tisknou
-route_pick_heading	místo
 route_editing	Editace: {name}
-route_assigned	Přidáno {printer} k {place}
-route_already_assigned	Již na tomto místě: {printer}
 route_cleared	Vymazáno {name}
-route_assigned_empty	Žádné na tomto místě
-route_tap_select	klepnutím vyberte
 route_tap_selected	vybrané
-route_pick_printer_first	Nejprve klepněte na tiskárnu
-route_assigned_heading	Tiskárny
-route_add_heading	Přiřadit
-printer_label_ph	Název (např. přepážková tiskárna)
 printer_target_ph	Název systémové tiskárny nebo hostitel:9100
 printer_target_default	obvyklá tiskárna tohoto počítače (prázdná adresa)
-printer_wire_heading	Profil
-printer_wire_escpos	ESC/POS
-printer_wire_os	Portrét
-printer_wire_os_portrait	Portrét
-printer_wire_os_landscape	Krajina
-printer_wire_escpos_short	ESC/POS
-printer_wire_os_short	Portrét
-printer_wire_os_landscape_short	Krajina
-printer_format_custom	Nový vlastní profil
-printer_format_custom_label	Vlastní
-printer_format_custom_added	Pro toto místo byl přidán vlastní profil
-add_printer	Přidat tiskárnu
-route_pick_ph	Účet nebo část obchodu
 route_bill	Bille
-route_dont_print	Žádná tiskárna
 station_print_pick_first	Nejprve vyberte sekci obchodu
-station_vps_empty	Zatím žádné tiskárny — Najděte je v Nastavení → Tiskárny
 bill_printers_dd	Tiskárny na účet
 bill_printers_dd_n	{n} tiskáren na účet · klepnutím změňte
 station_vp_attached	Připojena tiskárna
 station_vp_detached	Tiskárna odstraněna ze stanice
-route_up	Nahoru
-route_down	Dolů
-route_clear	Jasný
-save_printers	Uložit tiskárny
 print_test_page	Vytiskněte zkušební stránku
 no_printer_assigned	Žádná tiskárna
-test_page_no_printer	Žádná tiskárna pro {place} – připojte k ní tiskárnu a zkuste to znovu
 test_page_pick_first	Nejprve vyberte tiskárny pro zkušební stránku – poté vytiskněte zkušební stránku
 test_printers_dd	Tiskárny pro zkušební stránku
 test_printers_dd_n	{n} tiskáren pro zkušební stránku · klepněte pro změnu
 test_printer_picked	Test na: {name}
 test_printer_cleared	Netestuje se na: {name}
 test_page_sent_n	Zkušební stránka odeslána na {n} tiskáren
-batch_cancel	Zrušení označeno
-batch_cancel_n	Zrušit označeno ({n})
-batch_cancel_none	Nejprve označte jednu nebo více odeslaných položek — poté označte Zrušit
-batch_cancel_title	Zrušení označených položek — jeden důvod, jeden storno lístek na sekci
-batch_cancel_ok	Položky {n} zrušeny · {slips} zrušit složenku(y) → {kitchens}
-batch_cancel_ok_noprint	Položky {n} zrušeny – automatický tisk je vypnutý, takže žádný storno lístek
 printers_saved	Uloženo
-test_page_sent	Zkušební stránka odeslána – zkontrolujte tiskárnu
 test_page_sent_one	Zkušební stránka odeslána na {name} – zkontrolujte tuto tiskárnu
 printers_found	Nalezeno {n}: {list}
 printers_find_synced	Nalezeno {n} — {new} nových
-printer_on_device	uloženo
 printer_already_added	již přidáno
 printer_already_saved	Již uloženo: {name}
 find_printers	Najděte tiskárny
@@ -628,7 +485,6 @@ cancelled	Zrušeno
 printers_tap_find	Klepnutím na Najít zobrazíte seznam tiskáren, které toto zařízení může používat.
 printers_none_found	Nebylo nalezeno – zadejte název systémové tiskárny nebo IP (např. 192.168.1.50).
 printer_from_find	Přidáno {name}
-bill_printer_ph	Tiskárna na účty
 queue_refused	Neakceptováno obchodem ({n}) – zkontrolujte každý u přepážky:
 clear_not_accepted	Zaškrtnuto – vymažte tento seznam
 device_name_ph	Název tohoto zařízení
@@ -638,7 +494,6 @@ connected_now	nyní připojeno
 backup_failed	Poslední automatické zálohování se nezdařilo: {e}
 backup_overdue	Žádná záloha po dobu {n} dní – nechte aplikaci otevřenou na tomto zařízení, aby mohla zálohovat.
 disk_low	Pouze {mb} MB volného místa na tomto zařízení — zálohování brzy selže. Uvolněte místo.
-last_seen_devices	Naposledy viděn: {time}
 connection_to_shop	Spojení s obchodem
 supplier_name_ph	Jméno dodavatele (nebo zákazníka)
 supplier_ph	Dodavatel
@@ -696,7 +551,6 @@ currency_use_help	Přejděte a klepněte na Použít pro jakoukoli podporovanou 
 day_close_help	Záznam uzavření dne uloží tento souhrn (a odchylku v zásuvce, pokud se počítá) do protokolu auditu. Nepřestává se prodávat.
 expenses_word	Výdaje
 feature_access_help	Co mohou otevřít – volitelné; výše uvedená úloha již nastavuje výchozí hodnotu
-footer_local	Místní SQLite · Navždy zdarma · Zero Cloud
 fresh_book_kirano	Čerstvé = prázdný katalog (položky přidejte později). Kniha = níže zadejte otevírací sklad a kdo vám dluží.
 fresh_selected	Čerstvě vybráno — katalog zůstane prázdný. Až budete připraveni, klepněte na Hotovo.
 gross_word	Hrubý
@@ -709,12 +563,9 @@ net_word	Síť
 offline_badge	OFFLINE
 optional_login_help	Volitelné přihlášení (id + heslo). Vlastník nastaví jednou; heslo může později změnit pouze uživatel.
 or_unlock_login	Nebo odemkněte pomocí přihlašovacího jména + hesla
-permission_preset	Job (nastavuje obrazovky a peněžní akce)
-preset_help_kirano	Pokladník: prodám. Manažer: prodat + položky + neplatné/upravit.
-product_locked_kirano	Kirano
+permission_preset	Job
 product_only_kirano	Kirano je operační systém pro obchod s potravinami / kirana: pultový prodej, akcie, úvěry a knihy – offline na vašich zařízeních.
 purchases_cogs	Nákupy (COGS)
-qty_cap	MNOŽSTVÍ
 restore_help	Obnovit: vyberte zálohu. Knihy se otevírají tak, jak byly tehdy; knihy tak, jak jsou nyní, jsou uloženy jako první, takže to lze vrátit zpět.
 wipe_data_heading	Smazat místní data
 wipe_data_help	Pouze vlastník – stejné možnosti jako odinstalace systému Windows. Obchodní záznamy vymažou historii obchodování, ale zachovají položky a nastavení (jako je PIN pro nouzové odemknutí). Nastavení obchodu odstraní databázi knih. Předvolby obrazovky vymaže okno/jazyk. Potvrďte pomocí PIN vlastníka. Kód PIN pro nouzové odemknutí na Teamu je samostatný (skryté vymazání při odemknutí).
@@ -747,7 +598,6 @@ staff_renamed	Jméno bylo uloženo
 staff_setup_copied_hire	Nastavení zkopírováno z {name} — nastavte nový název a PIN, poté Přidat zaměstnance
 staff_setup_copied_edit	Nastavení {from} zkopírováno do {to}
 staff_copy_need_selected	Vyberte, koho chcete upravit jako první
-staff_copy_need_source	Vyberte, jehož nastavení chcete zkopírovat
 staff_copy_same	To je stejná osoba – vyberte si někoho jiného
 staff_rename_need_selected	Vyberte, koho chcete přejmenovat jako prvního
 team_pick_hint	Vyberte, koho chcete upravit – obrazovky, práva na peníze a stanice se zobrazí pouze této osobě.
@@ -762,15 +612,9 @@ unit_picker_off	Vypnuto
 we_owe_them	Dlužíme jim
 who_unlocking	Kdo odemyká?
 locked_word	Zamčeno
-show_pin	Zobrazit PIN
-hide_pin	Skrýt PIN
 set_owner_pin	NASTAVIT VLASTNÍKA PIN
 enter_owner_passcode	ZADEJTE HESLO VLASTNÍKA
 enter_staff_passcode	ZADEJTE PERSONÁLNÍ HESLO
-pin_count_zero	0 / 12 číslic · alespoň 4, poté OK
-pin_count_need	{} / 12 číslic · potřebujete {} více
-pin_count_full	12 / 12 číslic · stiskněte OK
-pin_count_ready	{} / 12 číslic · stiskněte OK, až budete připraveni
 pin_hint_choose	Vyberte 4–12 číslic · Enter nebo Unlock pro uložení
 pin_hint_new	Nový 4–12místný vlastník PIN · Enter nebo Unlock
 pin_hint_shop_code	Zařízení obchodu · párovací kód {}
@@ -779,23 +623,15 @@ pin_hint_paired	Extra do spárování – odemknutí před prodejem
 pin_hint_pair_first	Extra till — nejprve spárujte se zařízením obchodu
 unlock_to_continue	Chcete-li pokračovat, odemkněte
 no_staff_yet	Zatím žádní zaměstnanci – odemkněte jako vlastník, poté tým
-status_server_set_pin	Režim serveru — nastavte vlastníka PIN
-status_server_tills	Režim serveru – mohou se připojit další pokladny. Odemknout
-status_server_unlock	Režim serveru – odemkněte jako vlastník
-status_client_unlock	Klientský režim – odemkněte za účelem prodeje
 icon_new_selected	Ikona: vybrán nový soubor – klepněte na Uložit značku
 icon_custom	Ikona: vlastní značka místa konání
 icon_default	Ikona: Značka Kumkaj (výchozí) — vyberte si vlastní
 logo_yours	Logo: logo vašeho obchodu – zobrazené na obrazovkách a účtenkách
 logo_default	Logo: značka Kumkaj (výchozí) — vyberte si vlastní, pokud nějaké máte
-tmpl_current	Aktuální: {} — {}
-tmpl_selected	Vybráno: {} — {}
 setup_complete	Nastavení dokončeno
 onboard_fresh_tmpl	Fresh · {} — katalog začíná prázdný; přidat položky do položky Položky a poté Hotovo.
 onboard_book_tmpl	Rezervovat · {} — přidejte položky a úvodní kredit a poté Hotovo.
-onboard_template_tmpl	Pokud chcete, pojmenujte místo a poté vyberte, jak začít.
 tmpl_blurb	Počítadlo Kirana: prodej, sklad, khata, dodavatel nakupuje, knihy.
-tmpl_how	Prodáváme na přepážce; Koupit do zásoby; Knihy pro den knihy.
 reports_facet_title	Zprávy
 reports_facet_help	Denní knihy, stárnutí zákazníků nebo dodavatelů, bankovní pošty a dobové zisky a ztráty.
 against_bill_ph	Proti účtu č. výše (volitelné)
@@ -806,14 +642,12 @@ amount_ph	Částka
 amount_received_ph	Přijatá částka
 amount_we_pay_ph	Částka, kterou platíme
 business_name_ph	Obchodní název
-category_new_ph	Kategorie (volitelné, vytvořeno, pokud je nové)
 code_bag_ph	Kód (pytel)
 conv_factor_ph	Faktor (25 = 1 pytel → 25 kg)
 country_code_ph	Kód země např. IN, GB, US, AE, BR
 credit_khata_amount_ph	Částka kreditu / kreditní knihy
 credit_limit_ph	Kreditní limit (0 = žádný)
 from_code_ph	Z kódu (sáčku)
-item_name_lang_ph	Název položky – zadejte jej ve svém jazyce
 login_id_opt_ph	Uživatelské jméno (povinné, jedinečné)
 manager_pin_ph	Manažer PIN ke schválení (pouze pokud nemůžete zrušit)
 new_branch_name_ph	Nový název pobočky
@@ -821,15 +655,12 @@ new_password_ph	Nové heslo (volitelné)
 new_pin_ph	Nové PIN (4–12 číslic)
 note_bank_ph	Poznámka (vklad, výběr, …)
 note_buy_expense_ph	Poznámka (palivo, nájem, …)
-note_expense_ph	Poznámka (palivo, kancelář, …)
 options_kirano_ph	Možnosti — Velikost*: Malá=199, Velká=399 | Polevy+3: sýr=40, oliva=30 | Sýr navíc = 40
-part_second_way_ph	Část druhým způsobem (volitelné)
 phone_ph	Telefon
 place_name_ph	Název tohoto místa
 qty_example_ph	Množství (např. 1,5 za kg)
 quantity_ph	množství
 reason_required_ph	Důvod (vyžadováno)
-role_title_ph	Název role (např. Barista)
 service_pct_ph	Služba % volitelné 0/10/12
 short_code_ph	Krátký kód (MG02)
 starting_password_ph	Počáteční heslo (volitelné)
@@ -864,14 +695,11 @@ shift_handover	Předání směny
 shift_since	Tento posun od r
 expected_in_drawer	Očekává se v zásuvce
 right_discount	Dejte slevu
-pick_category	Vyberte kategorii
-close_category_list	Zavřít seznam kategorií
 new_category_row	Nová kategorie – vytvořena při uložení položky
 your_category	Vaše kategorie
 suggested_category	Doporučeno – z našich položek
 category_search_ph	Kategorie — vyhledejte svou nebo zadejte novou
 cancel_item_short	Zrušit
-cancel_item_title	Zrušte tuto položku – back office obdrží storno lístek
 return_to_customer	Návrat k zákazníkovi
 short_by	Zkrátka
 tip_not_sale	Spropitné (pro zaměstnance, nikoli prodej)
@@ -884,9 +712,7 @@ finding_server	Hledáte server obchodu na tomto Wi‑Fi…
 no_server_found	Nebyl nalezen žádný. Na serveru: Nastavení → Ostatní zařízení → Povolit extra pokladny (stejné Wi‑Fi). Nebo zadejte IP uvedenou tam.
 servers_found_pick	Klepněte na obchod, ke kterému se chcete připojit.
 server_host_selected	Pomocí {host} — zadejte párovací kód a poté Spárovat nyní.
-print_bill	Vytisknout účet
 approval_pin_ph	Manažer PIN (pouze na požádání)
-confirm	Potvrďte
 menu_search_ph	Vyhledejte položku nebo krátký kód
 customer_paid_ph	Zákazník zaplatil
 tip_ph	Spropitné
@@ -896,7 +722,6 @@ bill_format_help	Vytištěno pod názvem vašeho obchodu na každé účtence. O
 bill_header_ph	Adresa | telefon
 fssai_ph	FSSAI / obchodní licence č. (volitelný)
 bill_footer_ph	Zápatí (např. Děkuji, navštivte znovu)
-save_bill_format	Uložit formát faktury
 kot_field_on	zobrazit
 kot_field_off	schovat se
 kot_weight_light	Světlo
@@ -907,10 +732,8 @@ kot_weight_bold	Tučné
 kot_align_start	Začněte
 kot_align_center	Střed
 kot_align_end	Konec
-content_width	Šířka obsahu (mm)
 content_width_bill	Šířka obsahu faktury (mm)
 content_width_ph	Nebo zadejte šířku obsahu 40–210 mm
-content_width_help	Jak široký se tento lístek tiskne. Bill si zachovává svou vlastní šířku.
 content_width_bill_help	Jak široký se tiskne zákaznický účet. Výchozí 210 mm (strana). 58 mm úzká lišta, 80 mm široká lišta, 112 mm 4 palce, 210 mm šířka A4. Zadejte libovolnou hodnotu od 40 do 210. Vstupenky mají svou vlastní šířku na záložce skluzu.
 vp_paper_width	Šířka obsahu (mm)
 vp_paper_width_ph	Nebo zadejte šířku obsahu 40–210 mm
@@ -925,9 +748,6 @@ test_bill_sent	Náhled faktury odeslán
 test_print_no_printer	Pro tuto úlohu není žádná tiskárna – na této obrazovce jednu vyberte
 std_print	Velikost tisku účtu
 std_print_help	Velikost písma pro standardní fakturační úlohy na výšku a na šířku na tiskárnách OS/dokumentů (zadejte body – ne Malé/Normální/Velké). Stejná velikost na obou orientacích.
-std_size_s	Malý
-std_size_m	Normální
-std_size_l	Velký
 save_std_print	Uložte velikost tisku účtu
 std_print_saved	Velikost tisku účtu byla uložena
 print_brand_kit	Sada tiskových značek
@@ -940,14 +760,9 @@ choose_payment_qr	Vyberte platební QR
 clear_payment_qr	Jasné platební QR
 payment_qr_set	Platba QR: v evidenci – zobrazeno na zákaznickém displeji (nahrazuje tam částku UPI QR)
 payment_qr_none	Platba QR: žádná — částka QR z UPI ID při platbě
-aggregator_import	Objednávky agregátoru (soubor)
-aggregator_import_help	Volitelný Místní import: vložte import_aggregator_orders.json do složky záloh (pole nebo {"orders":[…]}) a potom klepněte na Importovat. Nikdy neblokujte počítadlo; live Zomato/Swiggy je Cloud.
-import_aggregator_file	Import souboru agregátoru
 team_pick_ph	Personál, který chcete upravit – jméno, uživatelské jméno nebo výběr
 select_staff	Vyberte tento personál
 rights_help	Peněžní akce pro tuto osobu – klepnutím cyklujte: Povoleno → Vyžaduje PIN šéfa → Nepovoleno. Tisknout účet je opět pouze účty; sekce jsou kontrolní seznam níže.
-dish_picker_help	Hledejte nebo procházejte naše položky a klepnutím na některou vyplňte její název a fotografii – nebo si ponechte své vlastní jméno. Nastavte svou cenu (0 je v pořádku) a poté Přidat položku.
-close_dish_list	Zavřít seznam položek
 own_item_name	Použijte toto jako svůj vlastní název položky
 on_your_menu	V katalogu
 edit	Upravit
@@ -958,24 +773,16 @@ add_scheme	Přidat BOGO
 schedule_ph	Otevírací doba — Po-Pá 07:00-11:00 nebo Večer 17:00-19:00=150
 upi_vpa_ph	UPI ID (VPA)
 upi_payee_ph	UPI jméno příjemce platby (volitelné)
-upi_qr	UPI QR
 show_upi_qr	Zobrazit UPI QR
 close_upi_qr	Zavřít
 upi_qr_help	Zákazník naskenuje a zaplatí. Po zaplacení klepněte na Převzít platbu. Druhá obrazovka: otevřete URL serveru /zobrazte v síti LAN.
-recently_done	Nedávno hotovo
 role_help_customer	Role: Zákazník – účetní kniha (dluží nám). Stejný zákazník nebo dodavatel může také dodávat zásoby.
 role_help_both	Role: Zákazník + Dodavatel — jeden zákazník nebo dodavatel, kniha kreditů a závazků, netto v sestavách.
 role_help_supplier	Role: Dodavatel – dlužíme jim za nákupy.
-items_word	položky
-items_section	Položky
-back_to_order	Zpět k objednávce
-new_items_head	Zatím neodesláno
 price_ph	Cena
 price_ph_gst_inside	Cena ({tax} včetně)
-tax_rates_missing_hint	U těchto položek není žádná sazba {tax} — u položek nastavena sazba daně (ceny již zahrnují {tax} pod {tax} včetně)
 taxable_value	Zdanitelná hodnota
 gst_inside_price_note	({tax} včetně)
-start_with_template	Začněte s naší šablonou položek
 template_heading	Startovací položky
 template_info	Kategorie {c} a položky {d} s fotografiemi, připravené k přidání. Ceny začínají na 0 ₹ – nastavte si své poté.
 template_import	Importujte kompletní šablonu
@@ -997,21 +804,13 @@ opening_client	Otevírání klienta…
 preparing_desk	Příprava stolu…
 opening_server	Otevírání serveru…
 creating_server	Vytváření serveru…
-order_empty_pick	Objednávka prázdná – klepnutím na Přidat položky výše vyberte položky.
 add_dishes	Přidat položky
 order_so_far	V tomto pořadí: {n} · {total}
 no_dish_match	Žádná položka neodpovídá „{q}“
-pick_dishes_help	Klepnutím na položku ji přidáte · výběrem kategorie zúžíte seznam
 pick_done	Hotovo
-pick_done_dd	Hotovo · {label}
-printer_route_mode	Pokud je na tomto místě několik tiskáren
-printer_mode_first	Nejprve to funguje
-printer_mode_all	Tisk na všechny
 kot_field_up	Posuňte se nahoru
 kot_field_down	Posuňte se dolů
-app_template_blurb_extra	Dále: majitel Zahir, správce Asif, pokladník Nawaz; přední boční lišta; historie po 4 hodinách; Dnes se svlékněte; kompaktní účet.
 dishes_n	Položky {n}
-recipe_ph	Recept (volitelný – nepoužitý v pultovém obchodě)
 reorder_ph	Koupit více na
 set_reorder	Nastavte úroveň změny pořadí
 low_stock_alert	Dochází – kupte brzy: {items}
@@ -1020,7 +819,6 @@ show_unpriced	Zobrazit pouze položky bez ceny
 show_all_dishes	Zobrazit všechny položky
 role_title_rest_ph	Název role (např. kapitán, hlavní kuchař)
 preset_help_rest	Pokladník: prodám. Manažer: prodat + položky + neplatné/upravit.
-kind_raw	Koupeno pro použití v obchodě
 kind_resale	Koupeno k prodeji
 kind_dish	Zásoby nepočítejte
 buy_unit_ph	Jednotka (kg, litr, ks)

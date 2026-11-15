@@ -2,6 +2,40 @@
 mod ux_rules_tests {
     use super::*;
 
+    /// No explanations in the layout (owner, 2026-11-13 and again 2026-11-14:
+    /// "use the toolbar ℹ … avoid clustering texts"). A label's literal text
+    /// is a title, a value or a short state — never a paragraph or an
+    /// instruction; those go in the heading's InfoHelp `tip:`. 60+ characters
+    /// in a WrapLabel / Label body fails here; DESIGN.md "Explanations live
+    /// in ℹ" has the rule, `scripts/ui-text-inventory.sh` the visible check.
+    #[test]
+    fn layout_labels_carry_no_explanations() {
+        const LONGEST: usize = 60;
+        let ui = include_str!("../ui_script.rs");
+        let mut long = Vec::new();
+        let mut rest = ui;
+        while let Some(i) = rest.find(" := ") {
+            let after = &rest[i + 4..];
+            let is_label = after.starts_with("WrapLabel{") || after.starts_with("Label{");
+            let id_start = rest[..i].rfind(char::is_whitespace).map_or(0, |j| j + 1);
+            let id = &rest[id_start..i];
+            if is_label {
+                let block = &after[..after.find("\n}").or_else(|| after.find('}')).unwrap_or(after.len())];
+                for key in ["body: \"", "text: \""] {
+                    if let Some(k) = block.find(key) {
+                        let lit = &block[k + key.len()..];
+                        let end = lit.find('"').unwrap_or(lit.len());
+                        if lit[..end].chars().count() >= LONGEST {
+                            long.push(format!("{id}: {}", &lit[..end]));
+                        }
+                    }
+                }
+            }
+            rest = &rest[i + 4..];
+        }
+        assert!(long.is_empty(), "inline explanations (make them ℹ tips): {long:#?}");
+    }
+
     fn part(method: PayMethod, amount: &str) -> PayPart {
         PayPart { method, amount: amount.into() }
     }
@@ -270,14 +304,20 @@ mod ux_rules_tests {
         );
     }
 
-    /// Empty states name screens the way the rail does (Order, Menu) — no
-    /// "Ordering screen" or "Menu & items" a waiter cannot find.
+    /// Empty states are a short fact (owner, 2026-11-14): no instructions —
+    /// the ℹ explains and the button beside it acts — and never a screen
+    /// name a waiter cannot find on the rail ("Ordering screen", "Menu &
+    /// items").
     #[test]
     fn empty_states_name_the_rail_screens() {
-        let kitchen = locale::t("en", "kitchen_empty");
-        assert!(kitchen.contains("Order") && !kitchen.contains("Ordering"), "{kitchen}");
-        let menu = locale::t("en", "empty_catalog");
-        assert!(menu.contains("Open Menu,") && !menu.contains("Menu & items"), "{menu}");
+        for key in ["kitchen_empty", "empty_catalog"] {
+            let text = locale::t("en", key);
+            assert!(!text.contains("Ordering") && !text.contains("Menu & items"), "{text}");
+            assert!(
+                !text.contains("Open ") && !text.contains("Tap ") && !text.contains(" then ") && text.chars().count() <= 40,
+                "instructions in an empty state: {text}"
+            );
+        }
         assert_eq!(locale::t("en", "nav_items"), "Menu");
         assert_eq!(locale::t("en", "sell"), "Order");
     }

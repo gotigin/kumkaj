@@ -41,7 +41,7 @@ remove	Verwijderen
 removed_items	Verwijderde artikelen
 removed_help	Herstellen zet het artikel precies zoals het was terug op het menu — prijs, foto en categorie. Onze plank met gerechten wordt nooit verwijderd, dus een gerecht kun je altijd opnieuw toevoegen.
 restore_item	Herstellen
-empty_catalog	Nog geen artikelen. Open Menu & artikelen, voeg er een toe (naam + prijs), neem dan een bestelling.
+empty_catalog	Nog geen artikelen.
 total	Totaal
 cash	Contant
 upi	UPI
@@ -103,23 +103,14 @@ bill_item_qty	Aantal
 bill_item_price	Prijs
 bill_item_amount	Bedrag
 bill_item_note	Notitie
-bill_item_col_gap	Kolomafstand
 bill_item_col_order	Kolomvolgorde
 bill_item_col_sep	Kolomlijnen
-bill_item_gap_tight	Krap
-bill_item_gap_comfort	Comfortabel
-bill_item_gap_wide	Wijd
-bill_item_num_width	Getalkolommen
-bill_item_num_compact	Compact
-bill_item_num_comfort	Comfortabel
-bill_item_num_wide	Wijd
-bill_item_num_align	Getaluitlijning
-bill_item_gap_em	Afstand (em)
-bill_item_qty_min	Aantal min. (em)
-bill_item_price_min	Prijs min. (em)
-bill_item_amount_min	Bedrag min. (em)
-kot_item_qty_width	Aantalkolom
-kot_item_num_align	Aantaluitlijning
+slip_columns	Kolommen
+slip_col_width	Breedte (mm)
+slip_col_start	Beginruimte (px)
+slip_col_end	Eindruimte (px)
+slip_col_align	Tekstuitlijning
+slip_columns_help	De breedte van elke kolom omvat de begin- en eindruimte. Tekst loopt door binnen zijn kolom; wat buiten de inhoudsbreedte valt, wordt afgesneden – op papier en in het voorbeeld.
 bill_total_qty_label	Label totaal aantal
 bill_total_subtotal_label	Label subtotaal
 bill_total_grand_label	Label eindtotaal
@@ -221,7 +212,6 @@ sidebar_order_saved	Zijbalk bestelling opgeslagen
 sidebar_visibility_saved	Zichtbaarheid zijbalk opgeslagen
 amounts_hide	Verbergen
 amounts_show	Tonen
-printers_none_hint	Sla eerst een printer op dit apparaat op, voeg deze vervolgens toe aan Rekening of keuken
 counter	Balie
 dine_in	Ter plaatse
 takeaway	Afhalen
@@ -328,8 +318,6 @@ selected_language	Geselecteerd
 continue	Doorgaan
 this_device	DIT APPARAAT
 device_use_q	Hoe wordt dit apparaat gebruikt?
-last_server_mode	Was server — tik om verder te gaan
-last_client_mode	Was client — tik om verder te gaan
 choose_server	Kies een server
 choose_server_hint	Dit apparaat heeft al servers. Open er een of maak een nieuwe server voor een ander bedrijf.
 create_new_server	Nieuwe server maken
@@ -391,7 +379,7 @@ attachments_last_expense	Bijlagen (laatste kosten)
 bank	Bank
 bank_in	Bankstorting
 bank_out	Bankopname
-bank_reconciliation	Bankafstemming (afvinken tegen afschrift)
+bank_reconciliation	Bankafstemming
 bank_to_till	Bank → kassa
 book_add_dish	Bestelling — gerecht / artikel toevoegen
 book_opening_credit	Boeking — openingskrediet
@@ -744,7 +732,6 @@ station_print_pick_first	Kies eerst een keukenstation
 station_print_editing	Printers voor “{name}” bewerken
 station_vps_dd	Printers voor dit station
 station_vps_dd_n	{n} printer(s) · tik om te wijzigen
-station_vps_empty	Nog geen printers — zoek ze onder Instellingen → Printers
 bill_printers_dd	Printers voor de rekening
 bill_printers_dd_n	{n} printer(s) voor de rekening · tik om te wijzigen
 job_layout	Indeling
@@ -889,7 +876,7 @@ net_word	Netto
 offline_badge	OFFLINE
 optional_login_help	Optionele login (id + wachtwoord). De eigenaar stelt het een keer in; daarna kan alleen de gebruiker het wachtwoord wijzigen.
 or_unlock_login	Of ontgrendelen met login-id + wachtwoord
-permission_preset	Machtigingsprofiel (waar toegang toe)
+permission_preset	Machtigingsprofiel
 preset_help_khaynjo	Kassier: verkopen. Manager: verkopen + artikelen + annuleren/wijzigen.
 product_locked_khaynjo	Khaynjo
 product_only_khaynjo	Deze app is alleen Khaynjo — het systeem voor restaurants. Andere vakken hebben eigen Kumkaj-producten.
@@ -961,10 +948,6 @@ pin_hint_paired	Extra kassa gekoppeld – ontgrendelen om te verkopen
 pin_hint_pair_first	Extra kassa – eerst koppelen met winkelapparaat
 unlock_to_continue	Ontgrendelen om door te gaan
 no_staff_yet	Nog geen personeel – ontgrendelen als Eigenaar, dan Team
-status_server_set_pin	Servermodus — eigenaar-PIN instellen
-status_server_tills	Servermodus — extra kassa's kunnen meedoen. Ontgrendelen
-status_server_unlock	Servermodus — ontgrendelen als Eigenaar
-status_client_unlock	Clientmodus – ontgrendelen om te verkopen
 icon_new_selected	Pictogram: nieuw bestand gekozen — tik op Merk opslaan
 icon_custom	Pictogram: eigen winkelmerk
 icon_default	Pictogram: Kumkaj-merk (standaard) — kies je eigen
@@ -1033,7 +1016,7 @@ book_kind_balance	Balans
 order_help	Kies een open bestelling of een tafel om nieuw te starten. Tik op gereed items, stuur KOT, factureer één of meer items, splits de rekening en reken af.
 floor_help	Elke tafel toont of er gasten zitten, wat hun open rekening is en wie als volgende bediening nodig heeft.
 kitchen_help	Volg gereed per variant of per item — noteer in de KOT zoals je wilt.
-kitchen_empty	Nu niets open — nieuwe bestellingen verschijnen hier.
+kitchen_empty	Nu niets open.
 add_a_table	Tafel toevoegen
 add_station_heading	Station toevoegen · bv. Tandoor, Zuid-Indiaas
 categories_help	Een categorie toont tot welk deel van het menu een gerecht behoort — bv. snacks, hoofdgerecht of biryani. Maak categorieën op jouw manier: kies onze namen, hernoem ze of voeg je eigen toe.
@@ -1131,7 +1114,6 @@ bill_format_help	Staat onder de naam van het restaurant op elke rekening. Scheid
 bill_header_ph	Adres | telefoon
 fssai_ph	FSSAI-vergunningsnr. (India)
 bill_footer_ph	Voettekst (bijv. Bedankt, tot ziens)
-save_bill_format	Rekeningopmaak opslaan
 reset_bill_format	Standaard herstellen
 bill_format_reset	Rekeningopmaak hersteld
 reset_kot_format	Standaard herstellen
@@ -1201,13 +1183,11 @@ kot_copies_3	3
 kot_title_ph	Titel (leeg = KOT - KITCHEN ORDER)
 kot_footer_ph	Keukennotitie (optioneel, zonder prijzen)
 kot_preview	Voorbeeld
-save_kot_format	KOT-indeling opslaan
 test_kot_format	Test KOT
 test_kot_sent	Keukenticketvoorschijning verzonden
 test_bill_format	Test factuur
 test_bill_sent	Factuurvoorschijning verzonden
 test_print_no_printer	Geen printer voor die taak — kies er een op dit scherm
-kot_format_saved	KOT-indeling opgeslagen
 std_print	Lettergrootte rekening
 std_print_help	Lettergrootte voor Standard staande en liggende rekeningen (thermisch KOT apart). Zelfde grootte in beide standen.
 std_size_s	Klein
@@ -1264,7 +1244,6 @@ new_items_head	Nog niet verzonden
 price_ph	Prijs
 price_ph_gst_inside	Prijs ({tax} inbegrepen)
 cancel_needs_table	Open deze bestelling via de Zaal (een tafel) om na de keuken te annuleren — balie-KOT blijven tot betaling op het ticket
-tax_rates_missing_hint	Geen {tax}-tarief op deze gerechten — stel in Menu het tarief in (bij {tax} inclusive zit {tax} al in de prijs)
 taxable_value	Belastbare waarde
 gst_inside_price_note	({tax} inbegrepen)
 start_with_template	Begin met ons menusjabloon
@@ -1318,9 +1297,7 @@ order_empty_pick	Bestelling leeg — tik hierboven op ‘Gerechten toevoegen’ 
 add_dishes	Gerechten toevoegen
 order_so_far	Op deze bestelling: {n} · {total}
 no_dish_match	Geen gerecht past bij ‘{q}’
-pick_dishes_help	Tik op een gerecht om toe te voegen · kies een categorie om te filteren
 pick_done	Klaar
-pick_done_dd	Klaar · {label}
 printer_route_mode	Als er meerdere printers zijn op deze locatie
 printer_mode_first	Eerste die werkt
 printer_mode_all	Afdrukken op alle

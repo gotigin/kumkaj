@@ -39,7 +39,7 @@ adding_item	Προσθήκη νέου συντελεστή
 editing_item	Επεξεργασία
 save	Αποθήκευση
 remove	Αφαίρεση
-empty_catalog	Δεν υπάρχουν ακόμη τιμές. Ανοίξτε Τιμές & υπηρεσίες, προσθέστε ένα (όνομα + τιμή, μονάδα κιλά) και μετά Κράτηση.
+empty_catalog	Δεν υπάρχουν ακόμη τιμές.
 counter_sale	κράτηση πάγκου
 total	Σύνολο
 cash	Μετρητά
@@ -171,8 +171,6 @@ selected_language	Επιλεγμένο
 continue	Συνέχεια
 this_device	ΑΥΤΗ Η ΣΥΣΚΕΥΗ
 device_use_q	Πώς θα χρησιμοποιείται αυτή η συσκευή;
-last_server_mode	Ήταν Server — αγγίξτε για συνέχεια
-last_client_mode	Ήταν Client — αγγίξτε για συνέχεια
 choose_server	Διαλέξτε Server
 choose_server_hint	Ανοίξτε υπάρχοντα Server ή δημιουργήστε έναν για άλλη επιχείρηση.
 create_new_server	Δημιουργία νέου Server
@@ -501,8 +499,6 @@ job_layout	Διάταξη
 job_delivery	Πώς στέλνεται η εργασία
 job_size	Μέγεθος γραμμάτων
 job_size_ph	π.χ. 18, 20, 26…
-save_receipt_format	Αποθήκευση μορφής απόδειξης
-save_label_format	Αποθήκευση μορφής ετικέτας
 test_receipt_format	Δοκιμαστική απόδειξη
 test_label_format	Ετικέτα δοκιμής
 test_receipt_sent	Στάλθηκε δείγμα απόδειξης
@@ -610,7 +606,7 @@ units_heading	Μονάδες
 booking_measures	Μέτρα κράτησης
 drawer_count	Μέτρημα συρταριού (προαιρετικό)
 spreadsheet_csv	Υπολογιστικό φύλλο (CSV)
-bank_reconciliation	Συμφωνία τράπεζας (τσεκάρετε με το αντίγραφο κίνησης)
+bank_reconciliation	Συμφωνία τράπεζας
 book_add_product	Κάντε κράτηση — προσθέστε προϊόν / τιμή
 book_opening_credit	Βιβλίο — αρχική πίστωση
 account_kind	Είδος λογαριασμού (αγγίξτε ένα)
@@ -650,7 +646,7 @@ net_word	Καθαρό
 offline_badge	ΧΩΡΙΣ ΔΙΚΤΥΟ
 optional_login_help	Προαιρετική σύνδεση (id + κωδικός). Ο Ιδιοκτήτης την ορίζει μία φορά· τον κωδικό μετά τον αλλάζει μόνο ο χρήστης.
 or_unlock_login	Ή ξεκλείδωμα με id σύνδεσης + κωδικό
-permission_preset	Εργασία (ορίζει οθόνες και δικαιώματα)
+permission_preset	Εργασία
 preset_help_moklanjo	Ταμίας: πώληση. Διευθυντής: πώληση + είδη + ακύρωση/διόρθωση.
 product_locked_moklanjo	Moklanjo
 product_only_moklanjo	Αυτή η εφαρμογή είναι μόνο Moklanjo — βιβλία + γραφείο κρατήσεων. Άλλα εμπορικά πρόσωπα αποστέλλονται ως ξεχωριστά προϊόντα αργότερα.
@@ -698,10 +694,6 @@ pin_hint_paired	Επιπλέον ταμείο ζευγαρώθηκε — ξεκ�
 pin_hint_pair_first	Επιπλέον ταμείο — ζευγαρώστε το πρώτα με τη συσκευή του μαγαζιού
 unlock_to_continue	Ξεκλειδώστε για συνέχεια
 no_staff_yet	Δεν υπάρχει ακόμη προσωπικό — ξεκλειδώστε ως Ιδιοκτήτης, μετά Ομάδα
-status_server_set_pin	Λειτουργία Server — ορίστε PIN Ιδιοκτήτη
-status_server_tills	Λειτουργία Server — επιπλέον ταμεία μπορούν να μπουν. Ξεκλείδωμα
-status_server_unlock	Λειτουργία Server — ξεκλειδώστε ως Ιδιοκτήτης
-status_client_unlock	Λειτουργία Client — ξεκλειδώστε για πώληση
 icon_new_selected	Εικονίδιο: επιλέχθηκε νέο αρχείο — πατήστε Αποθήκευση επωνυμίας
 icon_custom	Εικονίδιο: δικό σας σήμα χώρου
 icon_default	Εικονίδιο: σήμα Kumkaj (προεπιλογή) — διαλέξτε δικό σας

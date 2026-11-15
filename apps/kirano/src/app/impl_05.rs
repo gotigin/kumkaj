@@ -179,6 +179,10 @@ fn print_or_share_receipt(&mut self, cx: &mut Cx, text: &str) {
             self.ui.modal(cx, ids!(upi_qr_modal)).close(cx);
             return true;
         }
+        if self.ui.modal(cx, ids!(printers_modal)).is_open() {
+            self.close_printers_modal(cx);
+            return true;
+        }
         if self.ui.modal(cx, ids!(lock_staff_modal)).is_open() {
             self.ui.modal(cx, ids!(lock_staff_modal)).close(cx);
             return true;
@@ -260,7 +264,7 @@ fn print_or_share_receipt(&mut self, cx: &mut Cx, text: &str) {
                 }
                 Some(prev)
             } else {
-                // Empty stack: setup / SidebarSettings have a fixed parent.
+                // Empty stack: setup screens have a fixed parent.
                 // Peers with no history stay put (platform Back is a no-op).
                 match st.screen {
                     Screen::Lock | Screen::ClientPair | Screen::Onboard => {
@@ -277,10 +281,6 @@ fn print_or_share_receipt(&mut self, cx: &mut Cx, text: &str) {
                             _ => "Pick Server Mode or Client Mode — Back left unlock".into(),
                         };
                         Some(Screen::DeviceSetup)
-                    }
-                    Screen::SidebarSettings => {
-                        st.nav_forward.clear();
-                        Some(Screen::Settings)
                     }
                     _ => None,
                 }
@@ -971,8 +971,12 @@ fn print_or_share_receipt(&mut self, cx: &mut Cx, text: &str) {
 
     /// Settings → Sidebar: pill toggles + Enable/Disable All.
     fn handle_sidebar_nav_list_actions(&mut self, cx: &mut Cx, actions: &Actions) {
-        if app_state().lock().unwrap().screen != Screen::SidebarSettings {
-            return;
+        // The list lives on the Settings hub (was its own Sidebar screen).
+        {
+            let st = app_state().lock().unwrap();
+            if st.screen != Screen::Settings || st.settings_panel.is_some() {
+                return;
+            }
         }
         if self.ui.button(cx, ids!(sidebar_enable_all)).clicked(actions) {
             self.set_all_sidebar_visibility(cx, true);
@@ -1016,12 +1020,18 @@ fn print_or_share_receipt(&mut self, cx: &mut Cx, text: &str) {
                 };
                 if let Some(target) = target {
                     st.nav_order.swap(item_id, target);
-                    if let Some(store) = st.store.as_ref() {
-                        let _ = store.set_nav_order_csv(&nav_order_csv(&st.nav_order));
-                    }
+                    let done = st.t("sidebar_order_saved");
+                    let _ = st.save_nav_layout(done);
                     changed_order = true;
                 }
                 break;
+            }
+            if item.button(cx, ids!(face)).clicked(actions) {
+                // A row opens its screen, rights checked like the rail (owner,
+                // 2026-11-14); the switch and ↑↓ keep their own hits on top.
+                let tab = app_state().lock().unwrap().nav_order[item_id];
+                self.open_nav_tab(cx, tab);
+                return;
             }
             if !item.button(cx, ids!(toggle_hit)).clicked(actions) {
                 continue;
@@ -1036,9 +1046,8 @@ fn print_or_share_receipt(&mut self, cx: &mut Cx, text: &str) {
             } else {
                 st.nav_hidden.push(tab);
             }
-            if let Some(store) = st.store.as_ref() {
-                let _ = store.set_nav_hidden_csv(&nav_hidden_csv(&st.nav_hidden));
-            }
+            let done = st.t("sidebar_visibility_saved");
+            let _ = st.save_nav_layout(done);
             changed_vis = true;
             break;
         }
@@ -1067,9 +1076,8 @@ fn print_or_share_receipt(&mut self, cx: &mut Cx, text: &str) {
                     .filter(|t| !nav_tab_always_visible(*t))
                     .collect()
             };
-            if let Some(store) = st.store.as_ref() {
-                let _ = store.set_nav_hidden_csv(&nav_hidden_csv(&st.nav_hidden));
-            }
+            let done = st.t("sidebar_visibility_saved");
+            let _ = st.save_nav_layout(done);
         }
         let msg = app_state().lock().unwrap().t("sidebar_visibility_saved");
         self.set_status(cx, msg);

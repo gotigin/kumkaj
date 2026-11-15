@@ -38,12 +38,18 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
                 NavTab::Team => &team,
                 NavTab::Settings => &settings,
                 NavTab::Lock => &lock,
+                _ => "",
             }
         };
         for pairs in [self.bottom_nav_pairs(), self.rail_nav_pairs()] {
             for (slot, (idle, on)) in pairs.iter().enumerate() {
                 if let Some(tab) = order.get(slot).copied() {
-                    let caption = nav_tab_caption(tab, label_for(tab));
+                    // A Settings section reads its Settings-list name.
+                    let name = match label_for(tab) {
+                        "" => nav_tab_label(tab, &lang),
+                        l => l.to_string(),
+                    };
+                    let caption = nav_tab_caption(tab, &name);
                     self.ui.button(cx, idle).set_text(cx, &caption);
                     self.ui.button(cx, on).set_text(cx, &caption);
                 }
@@ -321,17 +327,13 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
             let help = self.ui.widget(cx, ids!(settings_help)).as_info_help();
             help.set_title(cx, &s("nav_settings"));
             help.set_nav_icon(cx, NavTab::Settings);
-            help.set_tip(&plain_display_text(&s("settings_hub_help")));
+            // One list of nav items now: how to open, order and show them.
+            help.set_tip(&plain_display_text(&format!(
+                "{}\n\n{}",
+                s("settings_hub_help"),
+                s("sidebar_settings_help")
+            )));
         }
-        {
-            let help = self.ui.widget(cx, ids!(sidebar_settings_help)).as_info_help();
-            help.set_title(cx, &s("sidebar_settings"));
-            help.set_nav_icon(cx, NavTab::Settings);
-            help.set_tip(&plain_display_text(&s("sidebar_settings_help")));
-        }
-        self.ui
-            .button(cx, ids!(sidebar_settings_back))
-            .set_text(cx, &s("back"));
         self.ui
             .button(cx, ids!(sidebar_enable_all))
             .set_text(cx, &s("sidebar_enable_all"));
@@ -510,7 +512,6 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
             Screen::Credit => ids!(credit_screen),
             Screen::Team => ids!(team_screen),
             Screen::Settings => ids!(settings_screen),
-            Screen::SidebarSettings => ids!(sidebar_settings_screen),
             Screen::DayClose => ids!(day_close_screen),
             Screen::Reports => ids!(reports_screen),
             Screen::Inventory => ids!(inventory_screen),
@@ -571,6 +572,8 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
 
     fn show_screen(&mut self, cx: &mut Cx, screen: Screen) {
         let _span = stall_span("show_screen");
+        // Leaving mid-edit: a typed width / size is applied now.
+        self.flush_format_autosave(cx);
         if sel_screen_changed(screen) {
             self.clear_page_selection(cx);
             // A field on the screen we left keeps key focus while hidden:
@@ -592,10 +595,6 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
             (ids!(credit_screen), screen == Screen::Credit),
             (ids!(team_screen), screen == Screen::Team),
             (ids!(settings_screen), screen == Screen::Settings),
-            (
-                ids!(sidebar_settings_screen),
-                screen == Screen::SidebarSettings,
-            ),
             (ids!(day_close_screen), screen == Screen::DayClose),
             (ids!(reports_screen), screen == Screen::Reports),
             (ids!(inventory_screen), screen == Screen::Inventory),
@@ -786,6 +785,17 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
             (ids!(nav_team), ids!(nav_team_on)),
             (ids!(nav_settings), ids!(nav_settings_on)),
             (ids!(nav_lock), ids!(nav_lock_on)),
+            (ids!(nav_x16), ids!(nav_x16_on)),
+            (ids!(nav_x17), ids!(nav_x17_on)),
+            (ids!(nav_x18), ids!(nav_x18_on)),
+            (ids!(nav_x19), ids!(nav_x19_on)),
+            (ids!(nav_x20), ids!(nav_x20_on)),
+            (ids!(nav_x21), ids!(nav_x21_on)),
+            (ids!(nav_x22), ids!(nav_x22_on)),
+            (ids!(nav_x23), ids!(nav_x23_on)),
+            (ids!(nav_x24), ids!(nav_x24_on)),
+            (ids!(nav_x25), ids!(nav_x25_on)),
+            (ids!(nav_x26), ids!(nav_x26_on)),
         ]
     }
 
@@ -807,6 +817,17 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
             (ids!(rail_team), ids!(rail_team_on)),
             (ids!(rail_settings), ids!(rail_settings_on)),
             (ids!(rail_lock), ids!(rail_lock_on)),
+            (ids!(rail_x16), ids!(rail_x16_on)),
+            (ids!(rail_x17), ids!(rail_x17_on)),
+            (ids!(rail_x18), ids!(rail_x18_on)),
+            (ids!(rail_x19), ids!(rail_x19_on)),
+            (ids!(rail_x20), ids!(rail_x20_on)),
+            (ids!(rail_x21), ids!(rail_x21_on)),
+            (ids!(rail_x22), ids!(rail_x22_on)),
+            (ids!(rail_x23), ids!(rail_x23_on)),
+            (ids!(rail_x24), ids!(rail_x24_on)),
+            (ids!(rail_x25), ids!(rail_x25_on)),
+            (ids!(rail_x26), ids!(rail_x26_on)),
         ]
     }
 
@@ -828,6 +849,17 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
             ids!(nav_team_icon),
             ids!(nav_settings_icon),
             ids!(nav_lock_icon),
+            ids!(nav_x16_icon),
+            ids!(nav_x17_icon),
+            ids!(nav_x18_icon),
+            ids!(nav_x19_icon),
+            ids!(nav_x20_icon),
+            ids!(nav_x21_icon),
+            ids!(nav_x22_icon),
+            ids!(nav_x23_icon),
+            ids!(nav_x24_icon),
+            ids!(nav_x25_icon),
+            ids!(nav_x26_icon),
         ]
     }
 
@@ -849,6 +881,17 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
             ids!(rail_team_icon),
             ids!(rail_settings_icon),
             ids!(rail_lock_icon),
+            ids!(rail_x16_icon),
+            ids!(rail_x17_icon),
+            ids!(rail_x18_icon),
+            ids!(rail_x19_icon),
+            ids!(rail_x20_icon),
+            ids!(rail_x21_icon),
+            ids!(rail_x22_icon),
+            ids!(rail_x23_icon),
+            ids!(rail_x24_icon),
+            ids!(rail_x25_icon),
+            ids!(rail_x26_icon),
         ]
     }
 
@@ -867,8 +910,12 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
     /// from chrome sync (outside PortalList draw) so WebP textures are
     /// ready before the next paint.
     fn paint_sidebar_settings_icons(&mut self, cx: &mut Cx) {
-        if app_state().lock().unwrap().screen != Screen::SidebarSettings {
-            return;
+        // The list lives on the Settings hub (was its own Sidebar screen).
+        {
+            let st = app_state().lock().unwrap();
+            if st.screen != Screen::Settings || st.settings_panel.is_some() {
+                return;
+            }
         }
         let order = app_state().lock().unwrap().nav_order.clone();
         let list = self
@@ -900,6 +947,17 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
                 ids!(rail_team_slot),
                 ids!(rail_settings_slot),
                 ids!(rail_lock_slot),
+                ids!(rail_x16_slot),
+                ids!(rail_x17_slot),
+                ids!(rail_x18_slot),
+                ids!(rail_x19_slot),
+                ids!(rail_x20_slot),
+                ids!(rail_x21_slot),
+                ids!(rail_x22_slot),
+                ids!(rail_x23_slot),
+                ids!(rail_x24_slot),
+                ids!(rail_x25_slot),
+                ids!(rail_x26_slot),
             ]
         } else {
             [
@@ -919,6 +977,17 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
                 ids!(nav_team_slot),
                 ids!(nav_settings_slot),
                 ids!(nav_lock_slot),
+                ids!(nav_x16_slot),
+                ids!(nav_x17_slot),
+                ids!(nav_x18_slot),
+                ids!(nav_x19_slot),
+                ids!(nav_x20_slot),
+                ids!(nav_x21_slot),
+                ids!(nav_x22_slot),
+                ids!(nav_x23_slot),
+                ids!(nav_x24_slot),
+                ids!(nav_x25_slot),
+                ids!(nav_x26_slot),
             ]
         }
     }
@@ -932,7 +1001,22 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
             let reports_nav = app_state().lock().unwrap().reports_nav;
             (reports_nav, current_nav_chrome_order())
         };
-        let active = nav_tab_for(screen, reports_nav);
+        // A Settings section on the bar lights up itself; otherwise Settings.
+        let own = {
+            let mut st = app_state().lock().unwrap();
+            let own = (screen == Screen::Settings)
+                .then(|| st.settings_panel.and_then(nav_tab_for_settings_panel))
+                .flatten();
+            // Unlock brings this person back to the item now selected — a
+            // Settings section too, whether or not it is on the bar.
+            if st.screen == screen {
+                st.remember_nav_tab(own.or_else(|| nav_tab_for(screen, reports_nav)));
+            }
+            own
+        };
+        let active = own
+            .filter(|t| order.contains(t))
+            .or_else(|| nav_tab_for(screen, reports_nav));
         for (rail, pairs) in [
             (false, self.bottom_nav_pairs()),
             (true, self.rail_nav_pairs()),
@@ -1209,7 +1293,6 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
                 ids!(job_deliv_escpos_on),
                 ids!(h_job_size),
                 ids!(job_size_input),
-                ids!(job_format_save),
             ] {
                 self.ui.widget(cx, id).set_visible(cx, false);
             }
@@ -1218,17 +1301,12 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
 
     /// Receipt and label each keep their own width, layout, delivery, and type size.
     fn sync_job_format_ui(&mut self, cx: &mut Cx) {
-        let (fmt, save, test) = {
+        let (fmt, test) = {
             let st = app_state().lock().unwrap();
             let label_job = st.printer_route_key == "label";
             let key = parse_courier_route_key(&st.printer_route_key);
             (
                 st.printer_draft.format_for(key),
-                st.t(if label_job {
-                    "save_label_format"
-                } else {
-                    "save_receipt_format"
-                }),
                 st.t(if label_job {
                     "test_label_format"
                 } else {
@@ -1236,7 +1314,6 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
                 }),
             )
         };
-        self.ui.button(cx, ids!(job_format_save)).set_text(cx, &save);
         self.ui.button(cx, ids!(job_format_test)).set_text(cx, &test);
         let mm = fmt.shown_content_width_mm();
         let width = self.ui.text_input(cx, ids!(job_width_input));
@@ -1291,6 +1368,44 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
             ids!(job_deliv_escpos_on),
             del == print_share::DELIVERY_ESCPOS,
         );
+    }
+
+    /// Receipt / label format saves itself (owner, 2026-11-14: "every
+    /// change is automatically saved"): the chips apply at once; a typed
+    /// width or size restarts a short timer, and the timer — or leaving the
+    /// screen — applies it, as the old Save button did.
+    fn schedule_format_autosave(&mut self, cx: &mut Cx) {
+        let mut st = app_state().lock().unwrap();
+        st.format_save_job = true;
+        if !st.format_save_timer.is_empty() {
+            cx.stop_timer(st.format_save_timer);
+        }
+        st.format_save_timer = cx.start_timeout(FORMAT_AUTOSAVE_SECS);
+    }
+
+    /// Apply a typed width / size still waiting.
+    fn flush_format_autosave(&mut self, cx: &mut Cx) {
+        let job = {
+            let mut st = app_state().lock().unwrap();
+            if !st.format_save_timer.is_empty() {
+                cx.stop_timer(st.format_save_timer);
+                st.format_save_timer = Timer::empty();
+            }
+            std::mem::take(&mut st.format_save_job)
+        };
+        if !job {
+            return;
+        }
+        let width_text = self.ui.text_input(cx, ids!(job_width_input)).text();
+        let size_text = self.ui.text_input(cx, ids!(job_size_input)).text();
+        let mm = width_text.trim().parse::<u32>().ok().filter(|n| (40..=210).contains(n));
+        let em = size_text.trim().parse::<f32>().ok();
+        if mm.is_none() && em.is_none() {
+            return;
+        }
+        if let Err(e) = self.apply_focused_job(None, None, mm, em) {
+            self.set_status(cx, e);
+        }
     }
 
     fn apply_focused_job(
@@ -1653,22 +1768,175 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
         let landed = app_state().lock().unwrap().screen;
         *nav_measure().lock().unwrap() = Some((landed, Instant::now()));
         self.sync_chrome(cx);
+        // A Settings section nav item: its section, now that Settings is up.
+        let panel = {
+            let mut st = app_state().lock().unwrap();
+            let p = st.settings_panel_after_go.take();
+            p.filter(|_| st.screen == Screen::Settings)
+        };
+        if panel.is_some() {
+            self.open_settings_panel(cx, panel);
+        }
     }
 
-    fn go_if_allowed(
-        &mut self,
-        cx: &mut Cx,
-        screen: Screen,
-        allowed: impl Fn(&StaffMember) -> bool,
-    ) {
-        let ok = {
-            let st = app_state().lock().unwrap();
-            st.session.as_ref().map(allowed).unwrap_or(false)
-        };
-        if ok {
-            self.go(cx, screen);
-        } else {
-            self.set_status(cx, "Not allowed for your role");
+    /// Open a chrome peer the way its sidebar / bottom-bar item does — rights
+    /// checked, its data refreshed. Settings' sidebar rows call it too
+    /// (owner, 2026-11-14: a row taps through to its screen).
+    fn open_nav_tab(&mut self, cx: &mut Cx, tab: NavTab) {
+        if let Some(panel) = nav_tab_settings_panel(tab) {
+            // A Settings section: the Settings screen, then that section.
+            cx.set_key_focus(Area::Empty);
+            let allowed = app_state()
+                .lock()
+                .unwrap()
+                .session
+                .as_ref()
+                .is_some_and(|s| s.can_access_settings());
+            if allowed {
+                app_state().lock().unwrap().settings_panel_after_go = Some(panel);
+                self.go_peer(cx, Screen::Settings);
+            } else {
+                self.set_status(cx, "Not allowed");
+            }
+            return;
+        }
+        match Some(tab) {
+            Some(NavTab::Books) => {
+                let result = (|| -> Result<(), String> {
+                    let mut st = app_state().lock().unwrap();
+                    st.refresh_books_overview()?;
+                    Ok(())
+                })();
+                if let Err(e) = result {
+                    self.set_status(cx, e);
+                } else {
+                    // Drop leftover focus so the old Sell face cannot look selected.
+                    cx.set_key_focus(Area::Empty);
+                    self.go_peer(cx, Screen::Books);
+                }
+            }
+            Some(NavTab::Sell) => {
+                cx.set_key_focus(Area::Empty);
+                self.go_peer_if_allowed(cx, Screen::Pos, |s| s.can_access_sell());
+            }
+            Some(NavTab::Buy) => {
+                cx.set_key_focus(Area::Empty);
+                self.go_peer_if_allowed(cx, Screen::Buy, |s| {
+                    s.can_access_inventory() || s.can_access_sales() || s.is_owner()
+                });
+            }
+            Some(NavTab::Rates) => {
+                cx.set_key_focus(Area::Empty);
+                self.go_peer_if_allowed(cx, Screen::Menu, |s| s.can_access_items());
+            }
+            Some(NavTab::Sales) => {
+                cx.set_key_focus(Area::Empty);
+                self.go_peer_if_allowed(cx, Screen::Sales, |s| s.can_access_sales());
+            }
+            Some(NavTab::Credit) => {
+                cx.set_key_focus(Area::Empty);
+                self.go_peer_if_allowed(cx, Screen::Credit, |s| s.can_access_credit());
+            }
+            Some(NavTab::Team) => {
+                cx.set_key_focus(Area::Empty);
+                self.go_peer_if_allowed(cx, Screen::Team, |s| {
+                    s.can_manage_team() || s.can_change_own_credentials()
+                });
+            }
+            Some(NavTab::Settings) => {
+                cx.set_key_focus(Area::Empty);
+                self.go_peer_if_allowed(cx, Screen::Settings, |s| s.can_open_settings_shell());
+            }
+            Some(NavTab::DayClose) => {
+                let result = (|| -> Result<(), String> {
+                    let mut st = app_state().lock().unwrap();
+                    st.refresh_day_close_text()?;
+                    Ok(())
+                })();
+                if let Err(e) = result {
+                    self.set_status(cx, e);
+                } else {
+                    self.go_peer(cx, Screen::DayClose);
+                }
+            }
+            Some(NavTab::Ops)
+            | Some(NavTab::Cod)
+            | Some(NavTab::Riders)
+            | Some(NavTab::Reports) => {
+                let focus = match Some(tab) {
+                    Some(NavTab::Ops) => ReportsNav::Ops,
+                    Some(NavTab::Cod) => ReportsNav::Cod,
+                    Some(NavTab::Riders) => ReportsNav::Riders,
+                    _ => ReportsNav::Bank,
+                };
+                let result = (|| -> Result<(), String> {
+                    let mut st = app_state().lock().unwrap();
+                    let actor = st.actor()?;
+                    if !actor.is_owner() && !actor.can_access_sales() {
+                        return Err("Not allowed".into());
+                    }
+                    st.reports_nav = focus;
+                    st.refresh_reports_facet()?;
+                    Ok(())
+                })();
+                if let Err(e) = result {
+                    self.set_status(cx, e);
+                } else {
+                    self.go_peer(cx, Screen::Reports);
+                }
+            }
+            Some(NavTab::Inventory) => {
+                let result = (|| -> Result<(), String> {
+                    let mut st = app_state().lock().unwrap();
+                    let actor = st.actor()?;
+                    if !actor.can_access_inventory() && !actor.is_owner() {
+                        return Err("Not allowed for your role".into());
+                    }
+                    st.refresh_inventory_text()?;
+                    Ok(())
+                })();
+                if let Err(e) = result {
+                    self.set_status(cx, e);
+                } else {
+                    self.go_peer(cx, Screen::Inventory);
+                }
+            }
+            Some(NavTab::Branches) => {
+                let result = (|| -> Result<(), String> {
+                    let mut st = app_state().lock().unwrap();
+                    let actor = st.actor()?;
+                    if !actor.can_access_branches() && !actor.is_owner() {
+                        return Err("Not allowed for your role".into());
+                    }
+                    st.refresh_branches_text()?;
+                    Ok(())
+                })();
+                if let Err(e) = result {
+                    self.set_status(cx, e);
+                } else {
+                    self.go_peer(cx, Screen::Branches);
+                }
+            }
+            Some(NavTab::Lock) => {
+                self.clear_undo_snackbar(cx);
+                let dest = {
+                    let mut st = app_state().lock().unwrap();
+                    if let Some(store) = st.store.as_ref() {
+                        let _ = store.set_active_session_staff_id(None);
+                    }
+                    st.session = None;
+                    st.clear_team_edit_selection();
+                    st.pin_buffer.clear();
+                    st.status = "Locked".into();
+                    if st.must_confirm_device_role {
+                        Screen::DeviceSetup
+                    } else {
+                        Screen::Lock
+                    }
+                };
+                self.go_peer(cx, dest);
+            }
+            Some(_) | None => {}
         }
     }
 

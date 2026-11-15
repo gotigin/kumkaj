@@ -39,7 +39,7 @@ adding_item	Dodavanje nove tarife
 editing_item	Uređivanje
 save	Sačuvaj
 remove	Ukloni
-empty_catalog	Još nema tarifa. Otvorite Tarife i usluge, dodajte jednu (ime + cijena, jedinica kg), zatim Rezervacija.
+empty_catalog	Još nema tarifa.
 counter_sale	Rezervacija na šalteru
 total	Ukupno
 cash	Gotovina
@@ -171,8 +171,6 @@ selected_language	Odabrano
 continue	Nastavi
 this_device	OVAJ UREĐAJ
 device_use_q	Kako će se ovaj uređaj koristiti?
-last_server_mode	Bio je Server — dodirnite za nastavak
-last_client_mode	Bio je Klijent — dodirnite za nastavak
 choose_server	Odaberite Server
 choose_server_hint	Otvorite postojeći Server ili napravite jedan za drugi posao.
 create_new_server	Napravi novi Server
@@ -501,8 +499,6 @@ job_layout	Raspored
 job_delivery	Kako se posao šalje
 job_size	Veličina slova
 job_size_ph	npr. 18, 20, 26…
-save_receipt_format	Sačuvaj format priznanice
-save_label_format	Sačuvaj format naljepnice
 test_receipt_format	Probna priznanica
 test_label_format	Probna naljepnica
 test_receipt_sent	Uzorak priznanice poslan
@@ -610,7 +606,7 @@ units_heading	Jedinice
 booking_measures	Mjere rezervacije
 drawer_count	Brojanje ladice (nije obavezno)
 spreadsheet_csv	Tabela (CSV)
-bank_reconciliation	Usklađenje banke (označite prema bankovnom izvodu)
+bank_reconciliation	Usklađenje banke
 book_add_product	Rezervacija — dodaj proizvod / cijenu
 book_opening_credit	Knjiga — početni dug
 account_kind	Vrsta računa (dodirnite jednu)
@@ -650,7 +646,7 @@ net_word	Neto
 offline_badge	BEZ MREŽE
 optional_login_help	Neobavezna prijava (id + lozinka). Vlasnik postavlja jednom; lozinku kasnije mijenja samo korisnik.
 or_unlock_login	Ili otključajte id-em prijave + lozinkom
-permission_preset	Posao (postavlja ekrane i prava)
+permission_preset	Posao
 preset_help_moklanjo	Blagajnik: prodaja. Menadžer: prodaja + stavke + storno/ispravak.
 product_locked_moklanjo	Moklanjo
 product_only_moklanjo	Ova aplikacija je samo Moklanjo — knjige + šalter za bukiranje. Ostali izgledi za druge djelatnosti dolaze kao zasebni proizvodi.
@@ -698,10 +694,6 @@ pin_hint_paired	Dodatna kasa uparena — otključajte za prodaju
 pin_hint_pair_first	Dodatna kasa — prvo je uparite s uređajem lokala
 unlock_to_continue	Otključajte za nastavak
 no_staff_yet	Još nema osoblja — otključajte kao Vlasnik, pa Tim
-status_server_set_pin	Način Server — postavite PIN Vlasnika
-status_server_tills	Način Server — dodatne kase se mogu pridružiti. Otključaj
-status_server_unlock	Način Server — otključajte kao Vlasnik
-status_client_unlock	Način Klijent — otključajte za prodaju
 icon_new_selected	Ikona: odabran novi fajl — dodirnite Sačuvaj brend
 icon_custom	Ikona: vlastiti znak lokala
 icon_default	Ikona: znak Kumkaj (zadato) — odaberite vlastiti

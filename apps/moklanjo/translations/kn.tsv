@@ -39,7 +39,7 @@ adding_item	ಹೊಸ ದರ ಸೇರಿಸಲಾಗುತ್ತಿದೆ
 editing_item	ಸಂಪಾದಿಸಲಾಗುತ್ತಿದೆ
 save	ಉಳಿಸಿ
 remove	ತೆಗೆದುಹಾಕಿ
-empty_catalog	ಇನ್ನೂ ದರಗಳಿಲ್ಲ. ದರಗಳು ಮತ್ತು ಸೇವೆಗಳನ್ನು ತೆರೆಯಿರಿ, ಒಂದನ್ನು ಸೇರಿಸಿ (ಹೆಸರು + ಬೆಲೆ, ಘಟಕ kg), ನಂತರ ಬುಕಿಂಗ್.
+empty_catalog	ಇನ್ನೂ ದರಗಳಿಲ್ಲ.
 counter_sale	ಕೌಂಟರ್ ಬುಕಿಂಗ್
 total	ಒಟ್ಟು
 cash	ನಗದು
@@ -171,8 +171,6 @@ selected_language	ಆಯ್ಕೆಮಾಡಿದ
 continue	ಮುಂದುವರಿಸಿ
 this_device	ಈ ಸಾಧನ
 device_use_q	ಈ ಸಾಧನವನ್ನು ಹೇಗೆ ಬಳಸಲಾಗುತ್ತದೆ?
-last_server_mode	ಹಿಂದೆ ಸರ್ವರ್ — ಮುಂದುವರಿಸಲು ಟ್ಯಾಪ್ ಮಾಡಿ
-last_client_mode	ಹಿಂದೆ ಕ್ಲೈಂಟ್ — ಮುಂದುವರಿಸಲು ಟ್ಯಾಪ್ ಮಾಡಿ
 choose_server	ಸರ್ವರ್ ಆಯ್ಕೆಮಾಡಿ
 choose_server_hint	ಈ ಸಾಧನದಲ್ಲಿ ಈಗಾಗಲೇ ಸರ್ವರ್‌ಗಳಿವೆ. ಒಂದನ್ನು ತೆರೆಯಿರಿ, ಅಥವಾ ಮತ್ತೊಂದು ವ್ಯವಹಾರಕ್ಕಾಗಿ ಹೊಸ ಸರ್ವರ್ ರಚಿಸಿ.
 create_new_server	ಹೊಸ ಸರ್ವರ್ ರಚಿಸಿ
@@ -501,8 +499,6 @@ job_layout	ಲೇಔಟ್
 job_delivery	ಕೆಲಸ ಹೇಗೆ ಕಳುಹಿಸಲಾಗುತ್ತದೆ
 job_size	ಫಾಂಟ್ ಗಾತ್ರ
 job_size_ph	ಉದಾ. 18, 20, 26…
-save_receipt_format	ರಸೀದಿ ಸ್ವರೂಪ ಉಳಿಸಿ
-save_label_format	ಲೇಬಲ್ ಸ್ವರೂಪ ಉಳಿಸಿ
 test_receipt_format	ಪರೀಕ್ಷಾ ರಸೀದಿ
 test_label_format	ಪರೀಕ್ಷಾ ಲೇಬಲ್
 test_receipt_sent	ಮಾದರಿ ರಸೀದಿ ಕಳುಹಿಸಲಾಗಿದೆ
@@ -610,7 +606,7 @@ units_heading	ಘಟಕಗಳು
 booking_measures	ಬುಕಿಂಗ್ ಅಳತೆಗಳು
 drawer_count	ಡ್ರಾಯರ್ ಎಣಿಕೆ (ಐಚ್ಛಿಕ)
 spreadsheet_csv	ಸ್ಪ್ರೆಡ್‌ಶೀಟ್ (CSV)
-bank_reconciliation	ಬ್ಯಾಂಕ್ ಹೊಂದಾಣಿಕೆ (ನಿಮ್ಮ ಬ್ಯಾಂಕ್ ಸ್ಟೇಟ್‌ಮೆಂಟ್‌ನೊಂದಿಗೆ ಟಿಕ್ ಮಾಡಿ)
+bank_reconciliation	ಬ್ಯಾಂಕ್ ಹೊಂದಾಣಿಕೆ
 book_add_product	ಬುಕ್ — ಉತ್ಪನ್ನ / ದರ ಸೇರಿಸಿ
 book_opening_credit	ಬುಕ್ — ಆರಂಭಿಕ ಸಾಲ
 account_kind	ಖಾತೆಯ ವಿಧ (ಒಂದನ್ನು ಒತ್ತಿರಿ)
@@ -650,7 +646,7 @@ net_word	ನಿವ್ವಳ
 offline_badge	ಆಫ್‌ಲೈನ್
 optional_login_help	ಐಚ್ಛಿಕ ಲಾಗಿನ್ (ಐಡಿ + ಪಾಸ್‌ವರ್ಡ್). ಮಾಲೀಕರು ಒಮ್ಮೆ ಹೊಂದಿಸುತ್ತಾರೆ; ನಂತರ ಬಳಕೆದಾರರು ಮಾತ್ರ ಪಾಸ್‌ವರ್ಡ್ ಬದಲಾಯಿಸಬಹುದು.
 or_unlock_login	ಅಥವಾ ಲಾಗಿನ್ ಐಡಿ + ಪಾಸ್‌ವರ್ಡ್‌ನೊಂದಿಗೆ ಅನ್‌ಲಾಕ್ ಮಾಡಿ
-permission_preset	ಕೆಲಸ (ಪರದೆಗಳು ಮತ್ತು ಹಕ್ಕುಗಳನ್ನು ಹೊಂದಿಸುತ್ತದೆ)
+permission_preset	ಕೆಲಸ
 preset_help_moklanjo	ಕ್ಯಾಷಿಯರ್: ಮಾರಾಟ. ಮ್ಯಾನೇಜರ್: ಮಾರಾಟ + ಐಟಂ + ರದ್ದು/ತಿದ್ದುಪಡಿ.
 product_locked_moklanjo	Moklanjo
 product_only_moklanjo	ಈ ಆ್ಯಪ್ Moklanjo ಮಾತ್ರ — ಲೆಕ್ಕಪುಸ್ತಕ + ಬುಕಿಂಗ್ ಡೆಸ್ಕ್. ಇತರ ವ್ಯಾಪಾರಗಳ ಉತ್ಪನ್ನಗಳು ನಂತರ ಬೇರೆಯಾಗಿ ಬರುತ್ತವೆ.
@@ -698,10 +694,6 @@ pin_hint_paired	ಹೆಚ್ಚುವರಿ ಟಿಲ್ ಜೋಡಿಸಲಾ�
 pin_hint_pair_first	ಹೆಚ್ಚುವರಿ ಟಿಲ್ — ಮೊದಲು ಅಂಗಡಿ ಸಾಧನಕ್ಕೆ ಜೋಡಿಸಿ
 unlock_to_continue	ಮುಂದುವರಿಸಲು ಅನ್‌ಲಾಕ್ ಮಾಡಿ
 no_staff_yet	ಇನ್ನೂ ಸಿಬ್ಬಂದಿ ಇಲ್ಲ — ಮಾಲೀಕರಾಗಿ ಅನ್‌ಲಾಕ್ ಮಾಡಿ, ನಂತರ Team
-status_server_set_pin	ಸರ್ವರ್ ಮೋಡ್ — ಮಾಲೀಕ PIN ಹೊಂದಿಸಿ
-status_server_tills	ಸರ್ವರ್ ಮೋಡ್ — ಹೆಚ್ಚುವರಿ ಟಿಲ್‌ಗಳು ಸೇರಬಹುದು. ಅನ್‌ಲಾಕ್ ಮಾಡಿ
-status_server_unlock	ಸರ್ವರ್ ಮೋಡ್ — ಮಾಲೀಕರಾಗಿ ಅನ್‌ಲಾಕ್ ಮಾಡಿ
-status_client_unlock	ಕ್ಲೈಂಟ್ ಮೋಡ್ — ಮಾರಾಟಕ್ಕೆ ಅನ್‌ಲಾಕ್ ಮಾಡಿ
 icon_new_selected	ಐಕಾನ್: ಹೊಸ ಫೈಲ್ ಆಯ್ಕೆಯಾಗಿದೆ — ಬ್ರಾಂಡ್ ಉಳಿಸಿ ಒತ್ತಿರಿ
 icon_custom	ಐಕಾನ್: ನಿಮ್ಮ ಅಂಗಡಿಯ ಗುರುತು
 icon_default	ಐಕಾನ್: Kumkaj ಗುರುತು (ಡೀಫಾಲ್ಟ್) — ನಿಮ್ಮದನ್ನು ಆಯ್ಕೆಮಾಡಿ

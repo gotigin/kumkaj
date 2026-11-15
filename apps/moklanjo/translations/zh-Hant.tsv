@@ -39,7 +39,7 @@ adding_item	新增費率
 editing_item	編輯中
 save	保存
 remove	刪除
-empty_catalog	還沒有利率。打開價格和服務，添加一項（名稱+價格，單位公斤），然後預訂。
+empty_catalog	還沒有利率。
 counter_sale	櫃檯預訂
 total	總計
 cash	現金
@@ -171,8 +171,6 @@ selected_language	已選擇
 continue	繼續
 this_device	此設備
 device_use_q	此設備將如何使用？
-last_server_mode	之前是服務器——點按繼續
-last_client_mode	之前是客戶端——點按繼續
 choose_server	選擇服務器
 choose_server_hint	此設備已有服務器。打開一個，或為另一家企業創建新服務器。
 create_new_server	創建新服務器
@@ -501,8 +499,6 @@ job_layout	平面圖
 job_delivery	任務發送方式
 job_size	字號
 job_size_ph	例如 18, 20, 26…
-save_receipt_format	儲存收據格式
-save_label_format	儲存標籤格式
 test_receipt_format	測試收據
 test_label_format	測試標籤
 test_receipt_sent	已發送收據樣本
@@ -610,7 +606,7 @@ units_heading	單位
 booking_measures	預訂措施
 drawer_count	抽屜盤點（可選）
 spreadsheet_csv	電子表格(CSV)
-bank_reconciliation	銀行對帳（按銀行對帳單勾選）
+bank_reconciliation	銀行對帳
 book_add_product	預訂 — 新增產品/價格
 book_opening_credit	寄件 — 期初賒帳
 account_kind	帳戶類型（點選其一）
@@ -650,7 +646,7 @@ net_word	淨額
 offline_badge	離線
 optional_login_help	可選登錄（編號+密碼）。店主設置一次；之後只有用戶本人可改密碼。
 or_unlock_login	或用登錄編號+密碼解鎖
-permission_preset	作業（設定螢幕和權限）
+permission_preset	作業
 preset_help_moklanjo	收銀員：銷售。經理：銷售+項目+作廢/修改。
 product_locked_moklanjo	莫克蘭喬
 product_only_moklanjo	此應用程式僅限 Moklanjo — 書籍 + 預訂台。其他貿易面孔稍後作為單獨的產品發貨。
@@ -698,10 +694,6 @@ pin_hint_paired	額外櫃檯已配對 — 解鎖以銷售
 pin_hint_pair_first	額外櫃檯 — 先與店鋪設備配對
 unlock_to_continue	解鎖以繼續
 no_staff_yet	尚無員工 — 以店主解鎖，然後團隊
-status_server_set_pin	服務器模式 — 設置店主PIN
-status_server_tills	服務器模式 — 額外櫃檯可加入。解鎖
-status_server_unlock	服務器模式 — 以店主解鎖
-status_client_unlock	客戶端模式 — 解鎖以銷售
 icon_new_selected	圖標：已選新文件 — 點保存品牌
 icon_custom	圖標：您店鋪的標誌
 icon_default	圖標：Kumkaj 標誌（默認）— 選擇您自己的

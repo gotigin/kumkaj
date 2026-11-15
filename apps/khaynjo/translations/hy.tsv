@@ -41,7 +41,7 @@ remove	Հեռացնել
 removed_items	Հեռացված ապրանքներ
 removed_help	Վերականգնելը ապրանքը վերադարձնում է մենյու ճիշտ այնպես, ինչպես էր — գին, լուսանկար և կատեգորիա։ Մեր ուտեստների դարակը երբեք չի հեռացվում, ուստի ուտեստը միշտ կարելի է նորից ավելացնել։
 restore_item	Վերականգնել
-empty_catalog	Դեռ ուտեստներ չկան։ Բացեք Մենյուն, ավելացրեք ուտեստ (անուն + գին), ապա ընդունեք պատվեր։
+empty_catalog	Դեռ ուտեստներ չկան։
 total	Ընդամենը
 cash	Կանխիկ
 upi	UPI
@@ -103,23 +103,14 @@ bill_item_qty	Քանակ
 bill_item_price	Գին
 bill_item_amount	Գումար
 bill_item_note	Ուտեստի նշում
-bill_item_col_gap	Սյունակների բացատ
 bill_item_col_order	Սյունակների կարգ
 bill_item_col_sep	Սյունակների գծեր
-bill_item_gap_tight	Խիտ
-bill_item_gap_comfort	Հարմար
-bill_item_gap_wide	Լայն
-bill_item_num_width	Թվային սյունակներ
-bill_item_num_compact	Կոմպակտ
-bill_item_num_comfort	Հարմար
-bill_item_num_wide	Լայն
-bill_item_num_align	Թվերի հավասարեցում
-bill_item_gap_em	Բացատ (em)
-bill_item_qty_min	Նվազ. քանակ (em)
-bill_item_price_min	Նվազ. գին (em)
-bill_item_amount_min	Նվազ. գումար (em)
-kot_item_qty_width	Քանակի սյունակ
-kot_item_num_align	Քանակի հավասարեցում
+slip_columns	Սյունակներ
+slip_col_width	Լայնություն (mm)
+slip_col_start	Սկզբի տարածք (px)
+slip_col_end	Վերջի տարածք (px)
+slip_col_align	Տեքստի հավասարեցում
+slip_columns_help	Յուրաքանչյուր սյունակի լայնությունը ներառում է դրա սկզբի և վերջի տարածքը։ Տեքստը փաթաթվում է իր սյունակի ներսում. բովանդակության լայնությունից դուրս մնացածը կտրվում է՝ թղթի վրա և նախադիտման մեջ։
 bill_total_qty_label	Ընդհանուր քանակի պիտակ
 bill_total_subtotal_label	Ենթագումարի պիտակ
 bill_total_grand_label	Վերջնական գումարի պիտակ
@@ -221,7 +212,6 @@ sidebar_order_saved	Կողային վահանակի կարգը պահվել է
 sidebar_visibility_saved	Կողային վահանակի տեսանելիությունը պահվել է
 amounts_hide	Թաքցնել
 amounts_show	Ցույց տալ
-printers_none_hint	Նախ պահեք տպիչ այս սարքում, ապա ավելացրեք այն Հաշվին կամ խոհանոցին
 counter	Վաճառասեղան
 dine_in	Տեղում
 takeaway	Տանելու
@@ -328,8 +318,6 @@ selected_language	Ընտրված
 continue	Շարունակել
 this_device	ԱՅՍ ՍԱՐՔԸ
 device_use_q	Ինչպե՞ս կօգտագործվի այս սարքը։
-last_server_mode	Սերվեր էր — հպեք շարունակելու համար
-last_client_mode	Կլիենտ էր — հպեք շարունակելու համար
 choose_server	Ընտրեք սերվեր
 choose_server_hint	Բացեք առկա սերվեր կամ ստեղծեք մեկը այլ բիզնեսի համար։
 create_new_server	Ստեղծել նոր սերվեր
@@ -391,7 +379,7 @@ attachments_last_expense	Կցորդներ (վերջին ծախս)
 bank	Բանկ
 bank_in	Բանկ մուտք
 bank_out	Բանկից ելք
-bank_reconciliation	Բանկային համաձայնեցում (նշեք բանկային քաղվածքի դիմաց)
+bank_reconciliation	Բանկային համաձայնեցում
 bank_to_till	Բանկ → դրամարկղ
 book_add_dish	Մատյան — ավելացնել ուտեստ / ապրանք
 book_opening_credit	Մատյան — սկզբնական վարկ
@@ -744,7 +732,6 @@ station_print_pick_first	Նախ ընտրեք խոհանոցի կայան
 station_print_editing	«{name}»-ի տպիչների խմբագրում
 station_vps_dd	Տպիչներ այս կայանի համար
 station_vps_dd_n	{n} տպիչ · հպեք փոխելու համար
-station_vps_empty	Դեռ տպիչներ չկան — գտեք Կարգավորումներ → Տպիչներ
 bill_printers_dd	Տպիչներ հաշվի համար
 bill_printers_dd_n	{n} տպիչ հաշվի համար · հպեք փոխելու համար
 job_layout	Դասավորություն
@@ -889,7 +876,7 @@ net_word	Զուտ
 offline_badge	ԱՆՑԱՆՑ
 optional_login_help	Ըստ ցանկության մուտք (id + գաղտնաբառ)։ Սեփականատերը դնում է մեկ անգամ; հետո գաղտնաբառը կարող է փոխել միայն օգտատերը։
 or_unlock_login	Կամ ապակողպեք մուտքի id + գաղտնաբառով
-permission_preset	Աշխատանք (էկրաններ և գումարի գործողություններ)
+permission_preset	Աշխատանք
 preset_help_khaynjo	Գանձապահ՝ վաճառում է։ Կառավարիչ՝ վաճառք + ապրանքներ + չեղյալ/ուղղում։
 product_locked_khaynjo	Khaynjo
 product_only_khaynjo	Այս հավելվածը միայն Khaynjo է — ռեստորանի օպերացիոն համակարգ։ Այլ առևտրի դեմքերը գալիս են որպես առանձին Kumkaj արտադրանք։
@@ -961,10 +948,6 @@ pin_hint_paired	Լրացուցիչ դրամարկղը զուգակցված է �
 pin_hint_pair_first	Լրացուցիչ դրամարկղ — նախ զուգակցեք խանութի սարքի հետ
 unlock_to_continue	Ապակողպեք շարունակելու համար
 no_staff_yet	Դեռ անձնակազմ չկա — ապակողպեք որպես Սեփականատեր, ապա Թիմ
-status_server_set_pin	Սերվեր ռեժիմ — դրեք Սեփականատիրոջ PIN
-status_server_tills	Սերվեր ռեժիմ — լրացուցիչ դրամարկղները կարող են միանալ։ Ապակողպեք
-status_server_unlock	Սերվեր ռեժիմ — ապակողպեք որպես Սեփականատեր
-status_client_unlock	Կլիենտ ռեժիմ — ապակողպեք վաճառելու համար
 icon_new_selected	Պատկերակ՝ ընտրված է նոր ֆայլ — հպեք Պահել ապրանքանիշը
 icon_custom	Պատկերակ՝ սեփական նշան
 icon_default	Պատկերակ՝ Kumkaj նշան (լռելյայն) — ընտրեք հատուկ
@@ -1033,7 +1016,7 @@ book_kind_balance	Հաշվեկշիռ
 order_help	Հպեք ապրանքին՝ ավելացնելու համար։
 floor_help	Հպեք սեղանին՝ պատվերը վերցնելու կամ փոխելու համար։ Գույները ցույց են տալիս ազատ → նստած → խոհանոց → պատրաստ → ուտում է → հաշիվ → վճարված։ Սպասացանկը, ամրագրումները և սեղան ավելացնելը ներքևի բաժիններում են։
 kitchen_help	Խոհանոցի թերթիկներ (KOT), նորերը վերջում։ Սկսել → Պատրաստ → Ավարտը թերթիկը առաջ է տանում։ Թերթիկները երբեք գներ չեն ցույց տալիս։
-kitchen_empty	Բաց թերթիկներ չկան։ Պատվերից կամ Սրահից ուղարկված KOT-ը երևում է այստեղ։
+kitchen_empty	Բաց թերթիկներ չկան։
 add_a_table	Ավելացնել սեղան
 add_station_heading	Ավելացնել խոհանոցի կայան
 categories_help	Հպեք Օգտագործել՝ վերևի ապրանքը այդ կատեգորիայի տակ դնելու համար։ Լուսանկարը կատեգորիային նկար է տալիս. առանց դրա սկզբնատառերն են։
@@ -1131,7 +1114,6 @@ bill_format_help	Տպվում է ռեստորանի անվան տակ ամեն �
 bill_header_ph	Հասցե | հեռախոս
 fssai_ph	FSSAI լիցենզիայի № (Հնդկաստան)
 bill_footer_ph	Ստորագիր (օր. Շնորհակալություն, նորից այցելեք)
-save_bill_format	Պահել հաշվի ձևաչափը
 reset_bill_format	Վերականգնել լռելյայնը
 bill_format_reset	Հաշվի ձևաչափը վերականգնվել է լռելյայն
 reset_kot_format	Վերականգնել լռելյայնը
@@ -1201,13 +1183,11 @@ kot_copies_3	3
 kot_title_ph	Վերնագիր (դատարկ = KOT - KITCHEN ORDER)
 kot_footer_ph	Խոհանոցի նշում (ըստ ցանկության, առանց գների)
 kot_preview	Նախադիտում
-save_kot_format	Պահել KOT ձևաչափը
 test_kot_format	Փորձնական KOT
 test_kot_sent	Խոհանոցի թերթիկի նախադիտումն ուղարկվել է
 test_bill_format	Փորձնական հաշիվ
 test_bill_sent	Հաշվի նախադիտումն ուղարկվել է
 test_print_no_printer	Այդ աշխատանքի համար տպիչ չկա — այս էկրանում ընտրեք մեկը
-kot_format_saved	KOT ձևաչափը պահվել է
 std_print	Հաշվի տպման չափ
 std_print_help	Տառաչափ ստանդարտ դիմանկար և լանդշաֆտ հաշվի աշխատանքների համար ՕՀ / փաստաթղթային տպիչներում (մուտքագրեք կետեր — ոչ Փոքր/Նորմալ/Մեծ)։ Նույն չափը երկու կողմնորոշումներում։ Խոհանոցի թերթիկի չափերը KOT ներդիրում են։
 std_size_s	Փոքր
@@ -1264,7 +1244,6 @@ new_items_head	Դեռ չի ուղարկվել
 price_ph	Գին
 price_ph_gst_inside	Գին ({tax} ներառված)
 cancel_needs_table	Խոհանոցն ունենալուց հետո չեղարկելու համար բացեք այս պատվերը Սրահից (սեղան) — դրամարկղի KOT-երը մնում են թերթիկի վրա, մինչև վճարում ընդունեք
-tax_rates_missing_hint	Այս ուտեստներում {tax} դրույք չկա — Մենյուում դրեք Հարկի դրույք (գներն արդեն ներառում են {tax}՝ {tax} ներառված բաժնում)
 taxable_value	Հարկվող արժեք
 gst_inside_price_note	({tax} ներառված)
 start_with_template	Սկսել մեր մենյուի կաղապարով
@@ -1318,9 +1297,7 @@ order_empty_pick	Պատվերը դատարկ է — ուտեստ ընտրելո�
 add_dishes	Ավելացնել ուտեստներ
 order_so_far	Այս պատվերում՝ {n} · {total}
 no_dish_match	«{q}»-ին համընկնող ուտեստ չկա
-pick_dishes_help	Հպեք ուտեստին՝ ավելացնելու · կատեգորիա ընտրեք ցանկը նեղացնելու համար
 pick_done	Պատրաստ է
-pick_done_dd	Պատրաստ է · {label}
 printer_route_mode	Եթե այս տեղում մի քանի տպիչ կա
 printer_mode_first	Առաջինը, որ աշխատում է
 printer_mode_all	Տպել բոլորում

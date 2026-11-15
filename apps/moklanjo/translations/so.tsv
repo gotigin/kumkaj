@@ -171,8 +171,6 @@ selected_language	La doortay
 continue	Sii wad
 this_device	QALABKAN
 device_use_q	Sidee qalabkan loo isticmaali doonaa?
-last_server_mode	Wuxuu ahaa Server — taabo si aad u sii wadato
-last_client_mode	Wuxuu ahaa Macaamiil — taabo si aad u sii wadato
 choose_server	Dooro server
 choose_server_hint	Fur server jira, ama u samee ganacsi kale.
 create_new_server	Samee server cusub
@@ -501,8 +499,6 @@ job_layout	Qaab
 job_delivery	Sida shaqada loo diro
 job_size	Cabbirka farta
 job_size_ph	tusaale 18, 20, 26…
-save_receipt_format	Kaydi qaabka rasiidka
-save_label_format	Kaydi qaabka summada
 test_receipt_format	Tijaabi rasiidka
 test_label_format	Summada tijaabada
 test_receipt_sent	Tusaalaha rasiidka la diray
@@ -610,7 +606,7 @@ units_heading	Cutubyada
 booking_measures	Tallaabooyinka ballan-qaadista
 drawer_count	Tirada khaanadda (ikhtiyaari)
 spreadsheet_csv	Xaashida xisaabta (CSV)
-bank_reconciliation	Isku-habaynta bangiga (kala calaamadee bayaanka bangigaaga)
+bank_reconciliation	Isku-habaynta bangiga
 book_add_product	Buug-ku dar badeecad/qiimaha
 book_opening_credit	Buug — deynta bilowga
 account_kind	Nooca xisaabta (taabo mid)
@@ -650,7 +646,7 @@ net_word	Saafiga
 offline_badge	LA'AAN NET
 optional_login_help	Gelitaan ikhtiyaari ah (aqoonsi + furaha sirta). Milkiiluhu hal mar ayuu dejiyaa; isticmaaluhu kaliya ayaa hadhow beddeli kara furaha sirta.
 or_unlock_login	Ama ku fur aqoonsiga gelitaanka + furaha sirta
-permission_preset	Shaqada (waxay dejisaa shaashadaha iyo xuquuqda)
+permission_preset	Shaqada
 preset_help_moklanjo	Khasnaji: iibi. Maamule: iibi + alaab + burin/sax.
 product_locked_moklanjo	Moklanjo
 product_only_moklanjo	Appkan waa Moklanjo kaliya - buugaag + miiska ballansashada. Ganacsiga kale ayaa wajihi doona markab sida badeecado kala duwan hadhow.
@@ -698,10 +694,6 @@ pin_hint_paired	Sanduuq dheeraad ah ayaa la isku xiray — fur si aad u iibiso
 pin_hint_pair_first	Sanduuq dheeraad ah — marka hore ku xir qalabka dukaanka
 unlock_to_continue	Fur si aad u sii wadato
 no_staff_yet	Weli shaqaale ma jiro — u fur Milkiile, ka dibna Kooxda
-status_server_set_pin	Habka Server-ka — deji PIN-ka Milkiilaha
-status_server_tills	Habka Server-ka — sanduuqyo dheeraad ah way soo biiri karaan. Fur
-status_server_unlock	Habka Server-ka — u fur Milkiile
-status_client_unlock	Habka Macaamiilka — fur si aad u iibiso
 icon_new_selected	Calaamad: fayl cusub ayaa la doortay — taabo Kaydi calaamadda
 icon_custom	Calaamad: astaanta goobta ee gaarka ah
 icon_default	Calaamad: astaanta Kumkaj (caadiga) — dooro mid gaar ah

@@ -382,7 +382,7 @@ fn default_side() -> f32 { STD_SIDE }
 
 /// Bill / Standard document type-size presets (Settings chips).
 /// Product built-ins are **generic** (any OS queue). Narrow-tray shops
-/// (e.g. some inkjets) tune side/em on a Profile or via App Template —
+/// (e.g. some inkjets) tune side/em on a Profile —
 /// never assume one owner's Canon in product defaults. OS jobs still
 /// fit-to-page so PNGs are not printed ~16″ wide at 72 DPI.
 pub const STD_EM_SMALL: f32 = 18.0;
@@ -390,8 +390,6 @@ pub const STD_EM_NORMAL: f32 = 20.0;
 pub const STD_EM_LARGE: f32 = 26.0;
 /// Generic side inset (dots on the 384-wide raster) for Standard formats.
 pub const STD_SIDE: f32 = 16.0;
-/// Wider inset used only by optional templates (e.g. Rajdhani) for tight trays.
-pub const STD_SIDE_NARROW_TRAY: f32 = 40.0;
 
 impl PrintFormat {
     /// Alias for [`standard_portrait`] (legacy API name).
@@ -568,6 +566,8 @@ pub enum KotAlign {
 }
 
 impl KotAlign {
+    pub const ALL: [KotAlign; 3] = [KotAlign::Start, KotAlign::Center, KotAlign::End];
+
     pub fn locale_key(self) -> &'static str {
         match self {
             KotAlign::Start => "kot_align_start",
@@ -595,7 +595,139 @@ impl KotAlign {
             _ => KotAlign::Start,
         }
     }
+
+    fn line_align(self) -> crate::receipt_raster::LineAlign {
+        match self {
+            KotAlign::Start => crate::receipt_raster::LineAlign::Start,
+            KotAlign::Center => crate::receipt_raster::LineAlign::Center,
+            KotAlign::End => crate::receipt_raster::LineAlign::End,
+        }
+    }
 }
+
+/// One item column (docs/PRINTER.md "Item columns"): a border box
+/// `width_mm` wide with `start_px` / `end_px` of space inside it, its text
+/// aligned start / center / end — all following the writing direction.
+/// Columns sit side by side from the start edge; past the content width
+/// they are cut.
+#[derive(Clone, Copy, Debug, PartialEq, Serialize, Deserialize)]
+pub struct SlipColumn {
+    pub width_mm: f32,
+    #[serde(default = "default_slip_col_space")]
+    pub start_px: u32,
+    #[serde(default = "default_slip_col_space")]
+    pub end_px: u32,
+    #[serde(default)]
+    pub align: KotAlign,
+}
+
+pub const SLIP_COL_WIDTH_MIN_MM: f32 = 1.0;
+pub const SLIP_COL_WIDTH_MAX_MM: f32 = 210.0;
+pub const SLIP_COL_SPACE_MAX_PX: u32 = 200;
+
+fn default_slip_col_space() -> u32 {
+    4
+}
+
+impl SlipColumn {
+    pub fn new(width_mm: f32, align: KotAlign) -> Self {
+        Self {
+            width_mm,
+            start_px: default_slip_col_space(),
+            end_px: default_slip_col_space(),
+            align,
+        }
+        .clamped()
+    }
+
+    pub fn clamped(mut self) -> Self {
+        let w = if self.width_mm.is_finite() { self.width_mm } else { SLIP_COL_WIDTH_MIN_MM };
+        self.width_mm = ((w * 10.0).round() / 10.0).clamp(SLIP_COL_WIDTH_MIN_MM, SLIP_COL_WIDTH_MAX_MM);
+        self.start_px = self.start_px.min(SLIP_COL_SPACE_MAX_PX);
+        self.end_px = self.end_px.min(SLIP_COL_SPACE_MAX_PX);
+        self
+    }
+
+    /// This column in dots on a slip `content_mm` wide (the print's own dots
+    /// per mm — the same picture the preview shows).
+    fn column_box(&self, content_mm: u32) -> crate::receipt_raster::ColumnBox {
+        crate::receipt_raster::ColumnBox {
+            width: self.width_mm * content_dots_per_mm(content_mm),
+            start: self.start_px as f32,
+            end: self.end_px as f32,
+            align: self.align.line_align(),
+        }
+    }
+}
+
+/// Dots per millimetre of the picture drawn for a `content_mm` slip
+/// (`wrap_cols(mm)` → `paper_dots_for_wrap_cols`, as print and preview).
+pub fn content_dots_per_mm(content_mm: u32) -> f32 {
+    let mm = content_mm.clamp(40, 210);
+    paper_dots_for_wrap_cols(wrap_cols_for_paper_mm(mm)) as f32 / mm as f32
+}
+
+/// Millimetres inside the side margins of a `content_mm` slip, for columns
+/// that start out filling it.
+fn fill_room_mm(content_mm: u32, side_px: f32) -> f32 {
+    let mm = content_mm.clamp(40, 210) as f32;
+    (mm - 2.0 * side_px.max(0.0) / content_dots_per_mm(content_mm)).max(4.0)
+}
+
+/// Shares of the room, rounded down to half millimetres.
+fn fill_shares(room_mm: f32, shares: &[f32]) -> Vec<f32> {
+    shares.iter().map(|s| ((room_mm * s) * 2.0).floor() / 2.0).collect()
+}
+
+/// The bill's item columns (Item, Qty, Price, Amount), each the owner's.
+#[derive(Clone, Copy, Debug, PartialEq, Serialize, Deserialize)]
+pub struct BillItemColumns {
+    pub name: SlipColumn,
+    pub qty: SlipColumn,
+    pub price: SlipColumn,
+    pub amount: SlipColumn,
+}
+
+impl BillItemColumns {
+    /// Columns that fill a `content_mm` bill inside its margins — where a new
+    /// format, or one saved before columns existed, starts.
+    pub fn filling(content_mm: u32) -> Self {
+        let w = fill_shares(fill_room_mm(content_mm, STD_SIDE), &[0.46, 0.14, 0.19, 0.21]);
+        Self {
+            name: SlipColumn::new(w[0], KotAlign::Start),
+            qty: SlipColumn::new(w[1], KotAlign::End),
+            price: SlipColumn::new(w[2], KotAlign::End),
+            amount: SlipColumn::new(w[3], KotAlign::End),
+        }
+    }
+
+    pub fn get(&self, col: BillItemCol) -> &SlipColumn {
+        match col {
+            BillItemCol::Name => &self.name,
+            BillItemCol::Qty => &self.qty,
+            BillItemCol::Price => &self.price,
+            BillItemCol::Amount => &self.amount,
+        }
+    }
+
+    pub fn get_mut(&mut self, col: BillItemCol) -> &mut SlipColumn {
+        match col {
+            BillItemCol::Name => &mut self.name,
+            BillItemCol::Qty => &mut self.qty,
+            BillItemCol::Price => &mut self.price,
+            BillItemCol::Amount => &mut self.amount,
+        }
+    }
+
+    fn clamped(mut self) -> Self {
+        for col in BillItemCol::ALL {
+            let c = self.get_mut(col);
+            *c = c.clamped();
+        }
+        self
+    }
+}
+
 
 /// Type size, weight, and alignment for one field on one KOT kind.
 #[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
@@ -661,8 +793,10 @@ impl KotFieldStyle {
 pub const KOT_CHARS_MIN: u32 = 16;
 /// Wide enough for a 210 mm page (~0.55 cols/mm). 58 mm is 32, 80 mm is 44.
 pub const KOT_CHARS_MAX: u32 = 128;
-pub const KOT_EM_MIN: u32 = 12;
-pub const KOT_EM_MAX: u32 = 48;
+/// Sizes are literal px (dots), free from 1 to 200 — a typo guard, not a
+/// design limit (Khaynjo owner, 2026-11-15). It was 12–48, a limit nobody chose.
+pub const KOT_EM_MIN: u32 = 1;
+pub const KOT_EM_MAX: u32 = 200;
 pub const KOT_EM_SMALL: u32 = 20;
 pub const KOT_EM_NORMAL: u32 = 24;
 pub const KOT_EM_LARGE: u32 = 28;
@@ -976,25 +1110,8 @@ pub struct BillSlipFormat {
     /// Header text for the amount column. Empty → `Amount`.
     #[serde(default = "default_bill_header_amount")]
     pub item_header_amount: String,
-    /// Space between item columns, in em of the Items type size.
-    /// Product default ~1.15 (comfortable); legacy tight pack was ~0.35.
-    #[serde(default = "default_bill_item_col_gap_em")]
-    pub item_col_gap_em: f32,
-    /// Minimum Qty column width (em). Keeps short digits from crowding Price.
-    #[serde(default = "default_bill_item_qty_min_em")]
-    pub item_qty_min_em: f32,
-    /// Minimum Price column width (em).
-    #[serde(default = "default_bill_item_price_min_em")]
-    pub item_price_min_em: f32,
-    /// Minimum Amount column width (em).
-    #[serde(default = "default_bill_item_amount_min_em")]
-    pub item_amount_min_em: f32,
-    /// Align numbers inside each Qty/Price/Amount slot (End = flush-right).
-    #[serde(default = "default_bill_item_num_align")]
-    pub item_num_align: KotAlign,
-    /// Print order of piece columns (`name`, `qty`, `price`, `amount`).
-    /// Empty → product default. First shown column flexes on the left; the
-    /// rest pack from the right.
+    /// Print order of piece columns (`name`, `qty`, `price`, `amount`),
+    /// from the start edge. Empty → product default.
     #[serde(default)]
     pub item_col_order: Vec<String>,
     /// Draw thin vertical rules in the gaps between columns.
@@ -1036,6 +1153,10 @@ pub struct BillSlipFormat {
     /// Default 210 mm (page-width guest bill).
     #[serde(default = "default_bill_content_width_mm")]
     pub content_width_mm: u32,
+    /// The owner's item columns. `None` only in saves from before columns;
+    /// [`Self::clamped`] fills them to the content width.
+    #[serde(default)]
+    pub item_columns: Option<BillItemColumns>,
 }
 
 fn default_bill_meta_pairs() -> Vec<[String; 2]> {
@@ -1078,9 +1199,6 @@ fn scrub_bill_header_label(raw: &str, fallback: &str) -> String {
     }
 }
 
-fn default_bill_item_col_gap_em() -> f32 {
-    1.15
-}
 fn default_bill_total_qty_label() -> String {
     "Total Qty".into()
 }
@@ -1099,39 +1217,17 @@ fn default_bill_item_col_order() -> Vec<String> {
         .map(|c| c.id().to_string())
         .collect()
 }
-fn default_bill_item_qty_min_em() -> f32 {
-    3.5
-}
-fn default_bill_item_price_min_em() -> f32 {
-    7.5
-}
-fn default_bill_item_amount_min_em() -> f32 {
-    8.5
-}
-fn default_bill_item_num_align() -> KotAlign {
-    KotAlign::End
-}
-
-/// Preset gap chips for Settings (Tight / Comfortable / Wide).
-pub const BILL_COL_GAP_TIGHT: f32 = 0.5;
-pub const BILL_COL_GAP_COMFORT: f32 = 1.15;
-pub const BILL_COL_GAP_WIDE: f32 = 1.75;
-
-/// Preset number-column min widths (qty, price, amount) in em.
-pub const BILL_NUM_MIN_COMPACT: [f32; 3] = [2.8, 6.0, 7.0];
-pub const BILL_NUM_MIN_COMFORT: [f32; 3] = [3.5, 7.5, 8.5];
-pub const BILL_NUM_MIN_WIDE: [f32; 3] = [4.5, 9.0, 10.5];
-
-/// Clamp a column gap em into a sane printable range.
-pub fn clamp_bill_col_gap_em(v: f32) -> f32 {
+/// Clamp a column gap em (the old `T` directive of jobs queued before
+/// owner columns).
+fn clamp_bill_col_gap_em(v: f32) -> f32 {
     if !v.is_finite() {
-        return BILL_COL_GAP_COMFORT;
+        return 1.15;
     }
     v.clamp(0.2, 3.0)
 }
 
-/// Clamp a numeric column min-width em.
-pub fn clamp_bill_col_min_em(v: f32) -> f32 {
+/// Clamp a numeric column min-width em (old `T` directive).
+fn clamp_bill_col_min_em(v: f32) -> f32 {
     if !v.is_finite() {
         return 0.0;
     }
@@ -1179,11 +1275,6 @@ impl Default for BillSlipFormat {
             item_header_qty: default_bill_header_qty(),
             item_header_price: default_bill_header_price(),
             item_header_amount: default_bill_header_amount(),
-            item_col_gap_em: default_bill_item_col_gap_em(),
-            item_qty_min_em: default_bill_item_qty_min_em(),
-            item_price_min_em: default_bill_item_price_min_em(),
-            item_amount_min_em: default_bill_item_amount_min_em(),
-            item_num_align: default_bill_item_num_align(),
             item_col_order: default_bill_item_col_order(),
             item_col_sep: false,
             total_show_qty: true,
@@ -1197,6 +1288,7 @@ impl Default for BillSlipFormat {
             field_order: Vec::new(),
             copies: 1,
             content_width_mm: 210,
+            item_columns: None,
         }
     }
 }
@@ -1264,7 +1356,7 @@ fn format_bill_item_columns(fmt: &BillSlipFormat, pieces: BillItemPieces<'_>) ->
     let mut out = if cells.iter().all(|c| c.is_empty()) {
         String::new()
     } else {
-        cells.join("\t")
+        column_line(&cells)
     };
     if fmt.item_show_note {
         let note = pieces.note.trim();
@@ -1314,7 +1406,18 @@ pub fn format_bill_item_header(fmt: &BillSlipFormat) -> String {
             BillItemCol::Amount => scrub_bill_header_label(&fmt.item_header_amount, "Amount"),
         });
     }
-    cells.join("\t")
+    column_line(&cells)
+}
+
+/// Cells of an item-column line, tab-separated. A lone column still ends in
+/// a tab, so it lays out in its column (width, spaces, alignment) like any
+/// other column line instead of as a plain line.
+fn column_line<S: AsRef<str>>(cells: &[S]) -> String {
+    let mut out = cells.iter().map(|c| c.as_ref()).collect::<Vec<_>>().join("\t");
+    if cells.len() == 1 {
+        out.push('\t');
+    }
+    out
 }
 
 impl BillSlipFormat {
@@ -1354,10 +1457,6 @@ impl BillSlipFormat {
         }
         self.copies = self.copies.clamp(1, 3);
         self.content_width_mm = self.shown_content_width_mm();
-        self.item_col_gap_em = clamp_bill_col_gap_em(self.item_col_gap_em);
-        self.item_qty_min_em = clamp_bill_col_min_em(self.item_qty_min_em);
-        self.item_price_min_em = clamp_bill_col_min_em(self.item_price_min_em);
-        self.item_amount_min_em = clamp_bill_col_min_em(self.item_amount_min_em);
         self.item_header_item =
             scrub_bill_header_label(&self.item_header_item, "Item");
         self.item_header_qty =
@@ -1428,7 +1527,23 @@ impl BillSlipFormat {
                 pairs
             };
         }
+        // The owner's columns; saves from before columns start filling the
+        // content width (then keep their mm whatever the width).
+        self.item_columns = Some(self.item_columns().clamped());
         self
+    }
+
+    /// The item columns (filled to the content width when unset).
+    pub fn item_columns(&self) -> BillItemColumns {
+        self.item_columns
+            .unwrap_or_else(|| BillItemColumns::filling(self.shown_content_width_mm()))
+    }
+
+    /// Shown columns' settings in print order (matches the cells of every
+    /// item line and the header).
+    fn ordered_slip_columns(&self) -> Vec<SlipColumn> {
+        let cols = self.item_columns();
+        self.ordered_item_cols().into_iter().map(|c| *cols.get(c)).collect()
     }
 
     /// Shown piece columns in print order. First flexes left; rest pack right.
@@ -1469,35 +1584,6 @@ impl BillSlipFormat {
         }
     }
 
-    /// Raster / ESC/POS column metrics for Items (and other `\t` lines on the bill).
-    /// Mins follow the trailing (right-packed) columns in print order.
-    pub fn item_tab_layout(&self) -> crate::receipt_raster::TabColumnLayout {
-        let cols = self.ordered_item_cols();
-        let mut min_em = [0.0f32; 4];
-        // Skip the flex (left) column; mins apply to right-packed slots.
-        for (i, col) in cols.iter().skip(1).enumerate() {
-            if i >= min_em.len() {
-                break;
-            }
-            min_em[i] = match col {
-                BillItemCol::Name => 0.0,
-                BillItemCol::Qty => clamp_bill_col_min_em(self.item_qty_min_em),
-                BillItemCol::Price => clamp_bill_col_min_em(self.item_price_min_em),
-                BillItemCol::Amount => clamp_bill_col_min_em(self.item_amount_min_em),
-            };
-        }
-        crate::receipt_raster::TabColumnLayout {
-            gap_em: clamp_bill_col_gap_em(self.item_col_gap_em),
-            min_em,
-            cell_align: match self.item_num_align {
-                KotAlign::Center => crate::receipt_raster::LineAlign::Center,
-                KotAlign::End => crate::receipt_raster::LineAlign::End,
-                KotAlign::Start => crate::receipt_raster::LineAlign::Start,
-            },
-            sep: self.item_col_sep,
-        }
-    }
-
     pub fn caption_total_qty(&self) -> String {
         scrub_bill_header_label(&self.total_qty_label, "Total Qty")
     }
@@ -1529,59 +1615,6 @@ impl BillSlipFormat {
                     .push([field.id().to_string(), other.id().to_string()]);
             }
         }
-    }
-
-    /// Apply a gap preset chip (Tight / Comfortable / Wide).
-    pub fn set_item_col_gap_preset(&mut self, gap_em: f32) {
-        self.item_col_gap_em = clamp_bill_col_gap_em(gap_em);
-    }
-
-    /// Apply a number-column width preset (Compact / Comfortable / Wide).
-    pub fn set_item_num_min_preset(&mut self, mins: [f32; 3]) {
-        self.item_qty_min_em = clamp_bill_col_min_em(mins[0]);
-        self.item_price_min_em = clamp_bill_col_min_em(mins[1]);
-        self.item_amount_min_em = clamp_bill_col_min_em(mins[2]);
-    }
-
-    /// Which gap preset chip is selected (nearest).
-    pub fn item_col_gap_preset(&self) -> f32 {
-        let g = clamp_bill_col_gap_em(self.item_col_gap_em);
-        let opts = [BILL_COL_GAP_TIGHT, BILL_COL_GAP_COMFORT, BILL_COL_GAP_WIDE];
-        *opts
-            .iter()
-            .min_by(|a, b| {
-                (*a - g)
-                    .abs()
-                    .partial_cmp(&(*b - g).abs())
-                    .unwrap_or(std::cmp::Ordering::Equal)
-            })
-            .unwrap_or(&BILL_COL_GAP_COMFORT)
-    }
-
-    /// Which number-min preset chip is selected (nearest by L1).
-    pub fn item_num_min_preset(&self) -> [f32; 3] {
-        let have = [
-            clamp_bill_col_min_em(self.item_qty_min_em),
-            clamp_bill_col_min_em(self.item_price_min_em),
-            clamp_bill_col_min_em(self.item_amount_min_em),
-        ];
-        let opts = [
-            BILL_NUM_MIN_COMPACT,
-            BILL_NUM_MIN_COMFORT,
-            BILL_NUM_MIN_WIDE,
-        ];
-        *opts
-            .iter()
-            .min_by(|a, b| {
-                let da = (a[0] - have[0]).abs()
-                    + (a[1] - have[1]).abs()
-                    + (a[2] - have[2]).abs();
-                let db = (b[0] - have[0]).abs()
-                    + (b[1] - have[1]).abs()
-                    + (b[2] - have[2]).abs();
-                da.partial_cmp(&db).unwrap_or(std::cmp::Ordering::Equal)
-            })
-            .unwrap_or(&BILL_NUM_MIN_COMFORT)
     }
 
     /// Partner field when `field` is configured to share a meta line.
@@ -1805,6 +1838,25 @@ fn bill_mark(style: &BillFieldStyle, rtl: bool) -> String {
     kot_style_prefix(&face, rtl)
 }
 
+/// A pair line: two halves, each its own field's mark and text
+/// (`{mark}first\t{mark}second`). The first field takes the start half, so
+/// in RTL it is written second (the right half).
+fn append_pair(
+    out: &mut String,
+    first: (&BillFieldStyle, &str),
+    second: (&BillFieldStyle, &str),
+    rtl: bool,
+) {
+    let (left, right) = if rtl { (second, first) } else { (first, second) };
+    let flat = |t: &str| t.replace(['\n', '\t'], " ").trim().to_string();
+    out.push_str(&bill_mark(left.0, rtl));
+    out.push_str(&flat(left.1));
+    out.push('\t');
+    out.push_str(&bill_mark(right.0, rtl));
+    out.push_str(&flat(right.1));
+    out.push('\n');
+}
+
 fn append_marked(out: &mut String, style: &BillFieldStyle, text: &str, rtl: bool) {
     let mark = bill_mark(style, rtl);
     for part in text.split(['\n', '|']) {
@@ -1842,7 +1894,12 @@ pub fn bill_stage_finish(fmt: &BillSlipFormat, rtl: bool) -> String {
     let rows = BILL_STAGE.with(|slot| slot.borrow_mut().take()).unwrap_or_default();
     let mut out = String::new();
     if fmt.item_layout == BillItemLayout::Columns {
-        out.push_str(&encode_slip_tab_layout(&fmt.item_tab_layout()));
+        out.push_str(&encode_slip_columns(
+            &fmt.ordered_slip_columns(),
+            fmt.shown_content_width_mm(),
+            rtl,
+            fmt.item_col_sep,
+        ));
     }
     let mut consumed: std::collections::HashSet<BillStyleField> =
         std::collections::HashSet::new();
@@ -1882,15 +1939,15 @@ pub fn bill_stage_finish(fmt: &BillSlipFormat, rtl: bool) -> String {
                         // Emit once, in field-order: whichever comes first is left.
                         let field_i = order.iter().position(|f| *f == *field).unwrap_or(0);
                         let other_i = order.iter().position(|f| *f == other).unwrap_or(0);
-                        let (left_f, left_t, right_t) = if field_i <= other_i {
-                            (*field, left_texts[0], right_texts[0])
+                        let (first_f, first_t, second_f, second_t) = if field_i <= other_i {
+                            (*field, left_texts[0], other, right_texts[0])
                         } else {
-                            (other, right_texts[0], left_texts[0])
+                            (other, right_texts[0], *field, left_texts[0])
                         };
-                        append_marked(
+                        append_pair(
                             &mut out,
-                            fmt.style(left_f),
-                            &format!("{left_t}\t{right_t}"),
+                            (fmt.style(first_f), first_t),
+                            (fmt.style(second_f), second_t),
                             rtl,
                         );
                         consumed.insert(*field);
@@ -2000,18 +2057,21 @@ fn take_kot_line_style(line: &str) -> (Option<KotLineStyle>, &str) {
     }
     let rest = chars.as_str();
     let b = rest.as_bytes();
-    // Current: two digits + weight (`24B`). Older jobs: S/N/L + weight.
+    // Current: two or three digits + weight (`24B`, `120R`). Older jobs:
+    // S/N/L + weight.
     if b.len() >= 3 && b[0].is_ascii_digit() && b[1].is_ascii_digit() {
-        let size = (b[0] - b'0') as u32 * 10 + (b[1] - b'0') as u32;
-        let weight = match b[2] as char {
+        let digits = if b.len() >= 4 && b[2].is_ascii_digit() { 3 } else { 2 };
+        let size = b[..digits].iter().fold(0u32, |n, d| n * 10 + (d - b'0') as u32);
+        let weight = match b[digits] as char {
             'B' => KotFontWeight::Bold,
             'T' => KotFontWeight::Light,
             _ => KotFontWeight::Regular,
         };
-        let (align, mut skip) = if b.len() >= 4 && matches!(b[3] as char, 'S' | 'C' | 'E') {
-            (KotAlign::from_mark(b[3] as char), 4)
+        let at = digits + 1;
+        let (align, mut skip) = if b.len() > at && matches!(b[at] as char, 'S' | 'C' | 'E') {
+            (KotAlign::from_mark(b[at] as char), at + 1)
         } else {
-            (KotAlign::Start, 3)
+            (KotAlign::Start, at)
         };
         // Trailing `0`/`1` = strike flag (current). Bare marks without a digit
         // keep strike off and leave the body intact (`KOT - 12`).
@@ -2056,7 +2116,9 @@ fn take_kot_line_style(line: &str) -> (Option<KotLineStyle>, &str) {
     (None, line)
 }
 
-/// Encode column metrics as a leading slip directive (not drawn).
+/// Encode column metrics as a leading slip directive (not drawn) — the
+/// old `T` form, kept to test that jobs queued before columns still print.
+#[cfg(test)]
 fn encode_slip_tab_layout(tab: &crate::receipt_raster::TabColumnLayout) -> String {
     let align = match tab.cell_align {
         crate::receipt_raster::LineAlign::Center => 'C',
@@ -2070,8 +2132,75 @@ fn encode_slip_tab_layout(tab: &crate::receipt_raster::TabColumnLayout) -> Strin
     )
 }
 
-/// Pull a leading `\u{E001}T…` directive off `text`. Returns layout + body.
-fn take_slip_tab_layout(
+/// The owner's item columns as the slip's leading directive (not drawn):
+/// `\u{E001}C{rtl}{sep}|{width dots},{start px},{end px},{S|C|E}|…`, in the
+/// order of the cells on every item line. Widths are the print's dots for
+/// `content_mm`; alignments are logical (start / end follow `rtl`).
+fn encode_slip_columns(cols: &[SlipColumn], content_mm: u32, rtl: bool, sep: bool) -> String {
+    use std::fmt::Write as _;
+    let mut out = format!("{SLIP_TAB_MARK}C{}{}", u8::from(rtl), u8::from(sep));
+    for c in cols {
+        let b = c.column_box(content_mm);
+        let a = match c.align {
+            KotAlign::Start => 'S',
+            KotAlign::Center => 'C',
+            KotAlign::End => 'E',
+        };
+        let _ = write!(out, "|{:.1},{},{},{a}", b.width, c.start_px, c.end_px);
+    }
+    out.push('\n');
+    out
+}
+
+fn parse_slip_columns(payload: &str) -> Option<crate::receipt_raster::OwnerColumns> {
+    let mut parts = payload.split('|');
+    let flags = parts.next()?.as_bytes();
+    let rtl = flags.first() == Some(&b'1');
+    let sep = flags.get(1) == Some(&b'1');
+    let mut cols = Vec::new();
+    for part in parts {
+        let f: Vec<&str> = part.split(',').collect();
+        if f.len() < 4 {
+            return None;
+        }
+        let width = f[0].parse::<f32>().ok().filter(|v| v.is_finite() && *v >= 0.0)?;
+        let start = f[1].parse::<u32>().ok()?.min(SLIP_COL_SPACE_MAX_PX) as f32;
+        let end = f[2].parse::<u32>().ok()?.min(SLIP_COL_SPACE_MAX_PX) as f32;
+        let align = KotAlign::from_mark(f[3].chars().next().unwrap_or('S')).line_align();
+        cols.push(crate::receipt_raster::ColumnBox { width, start, end, align });
+    }
+    (!cols.is_empty()).then_some(crate::receipt_raster::OwnerColumns { rtl, cols, sep })
+}
+
+/// Pull a leading `\u{E001}…` directive off `text`: the owner's columns
+/// (`C`) or, from jobs queued before columns, the old layout (`T`).
+/// Returns the layout + body.
+fn take_slip_tab_layout(text: &str) -> (Option<crate::receipt_raster::LineColumns>, &str) {
+    let mut lines = text.split_inclusive('\n');
+    let Some(first) = lines.next() else {
+        return (None, text);
+    };
+    let chunk = first.strip_suffix('\n').unwrap_or(first);
+    let mut chars = chunk.chars();
+    if chars.next() != Some(SLIP_TAB_MARK) {
+        return (None, text);
+    }
+    let rest = chars.as_str();
+    let body = text.get(first.len()..).unwrap_or("");
+    if let Some(payload) = rest.strip_prefix('C') {
+        return match parse_slip_columns(payload) {
+            Some(cols) => (Some(crate::receipt_raster::LineColumns::Owner(std::sync::Arc::new(cols))), body),
+            None => (None, body),
+        };
+    }
+    match take_legacy_slip_tab_layout(text) {
+        (Some(tab), body) => (Some(crate::receipt_raster::LineColumns::Legacy(tab)), body),
+        (None, body) => (None, body),
+    }
+}
+
+/// The old `\u{E001}T…` directive (jobs queued before owner columns).
+fn take_legacy_slip_tab_layout(
     text: &str,
 ) -> (
     Option<crate::receipt_raster::TabColumnLayout>,
@@ -2148,6 +2277,15 @@ pub fn strip_kot_style_marks(text: &str) -> String {
             continue;
         }
         let (style, bare) = take_kot_line_style(chunk);
+        // A pair line's second half carries its own mark after the tab.
+        let paired;
+        let bare = match bare.split_once('\t') {
+            Some((first, rest)) if rest.starts_with(KOT_STYLE_MARK) => {
+                paired = format!("{first}\t{}", take_kot_line_style(rest).1);
+                paired.as_str()
+            }
+            _ => bare,
+        };
         if style.map(|s| s.strike).unwrap_or(false) {
             out.push_str(&strike_approx_text(bare));
         } else {
@@ -2223,7 +2361,10 @@ pub const KOT_QTY_COLS: usize = 4;
 pub fn expand_kot_column_tabs(text: &str, cols: usize) -> String {
     let cols = cols.max(8);
     let (tab, body) = take_slip_tab_layout(text);
-    let tab = tab.unwrap_or(crate::receipt_raster::TabColumnLayout::LEGACY);
+    let tab = match tab {
+        Some(crate::receipt_raster::LineColumns::Legacy(tab)) => tab,
+        _ => crate::receipt_raster::TabColumnLayout::LEGACY,
+    };
     let mut out = String::with_capacity(body.len().saturating_add(16));
     let mut first = true;
     for line in body.lines() {
@@ -2566,18 +2707,7 @@ fn device_printers_from_value(value: serde_json::Value) -> DevicePrinters {
         }
         return out;
     }
-    // Legacy `{ "kot": "…", "bill": "…" }`.
-    let kot = value
-        .get("kot")
-        .and_then(|v| v.as_str())
-        .unwrap_or("")
-        .to_string();
-    let bill = value
-        .get("bill")
-        .and_then(|v| v.as_str())
-        .unwrap_or("")
-        .to_string();
-    migrate_legacy(&kot, &bill)
+    DevicePrinters::default()
 }
 
 /// Drop the old synthetic pool entry labeled "Default" with a blank target —
@@ -2594,58 +2724,6 @@ fn scrub_fake_default_printers(cfg: &mut DevicePrinters) {
         .collect();
     for id in fake {
         cfg.remove_printer(&id);
-    }
-}
-
-/// Turn old single-string fields into a pool + routes.
-/// Blank fields stay empty routes (don't invent a printer named "Default").
-pub fn migrate_legacy(kot: &str, bill: &str) -> DevicePrinters {
-    let mut printers = Vec::new();
-    let mut push = |target: &str, label: &str| -> Option<String> {
-        let t = target.trim();
-        if t.is_empty() {
-            return None;
-        }
-        if let Some(existing) = printers.iter().find(|p: &&NamedPrinter| p.target == t) {
-            return Some(existing.id.clone());
-        }
-        let id = uuid::Uuid::new_v4().to_string();
-        printers.push(NamedPrinter {
-            id: id.clone(),
-            label: label.into(),
-            target: t.to_string(),
-            _legacy_mode: None,
-        });
-        Some(id)
-    };
-    let bill_ids = push(bill, "Bill printer").into_iter().collect();
-    let kot_ids = if kot.trim().is_empty() {
-        Vec::new()
-    } else {
-        let label = if bill.trim() == kot.trim() {
-            "Bill printer"
-        } else {
-            "Kitchen printer"
-        };
-        push(kot, label).into_iter().collect()
-    };
-    DevicePrinters {
-        printers,
-        formats: vec![
-            PrintFormat::standard_portrait(),
-            PrintFormat::standard_landscape(),
-            PrintFormat::kot(),
-        ],
-        routes: PrintRoutes {
-            bill: bill_ids,
-            kot: BTreeMap::from([("".into(), kot_ids)]),
-            bill_format: FORMAT_STANDARD_PORTRAIT.into(),
-            kot_format: BTreeMap::new(),
-            bill_print_mode: RoutePrintMode::First,
-            kot_print_mode: BTreeMap::new(),
-        },
-        virtual_printers: Vec::new(),
-        station_groups: Vec::new(),
     }
 }
 
@@ -3642,34 +3720,6 @@ pub fn printers_dir_for_books(db_path: &Path) -> PathBuf {
         .to_path_buf()
 }
 
-/// If this shop has no usable printers yet but the install still has the old
-/// shared file, copy it so an upgrade does not wipe routes. An empty
-/// `printers.json` created by an earlier load/save still counts as "missing"
-/// when the legacy file actually has a pool — otherwise every shop looked
-/// printer-less after the per-books split. Later shops that already have
-/// their own pool are left alone (no cross-server bleed).
-pub fn migrate_legacy_printers(install_base: &Path, books_dir: &Path) {
-    let dest = printers_path(books_dir);
-    let legacy = printers_path(install_base);
-    if !legacy.is_file() || legacy == dest {
-        return;
-    }
-    let legacy_cfg = load_device_printers(install_base);
-    if legacy_cfg.printers.is_empty() {
-        return;
-    }
-    let shop_cfg = if dest.is_file() {
-        load_device_printers(books_dir)
-    } else {
-        DevicePrinters::default()
-    };
-    if !shop_cfg.printers.is_empty() {
-        return;
-    }
-    let _ = fs::create_dir_all(books_dir);
-    let _ = fs::copy(&legacy, &dest);
-}
-
 /// Printers saved beside these books (none saved = the defaults).
 pub fn load_device_printers(base: &Path) -> DevicePrinters {
     let mut printers: DevicePrinters = fs::read_to_string(printers_path(base))
@@ -3708,14 +3758,9 @@ pub fn use_device_dir(base: &Path) {
     configure(load_device_printers(base));
 }
 
-/// Open the printers that belong to `db_path`'s shop. Migrates the legacy
-/// install-level file into this shop once when missing.
-pub fn use_books_printers(db_path: &Path, install_base: Option<&Path>) {
-    let books_dir = printers_dir_for_books(db_path);
-    if let Some(install) = install_base {
-        migrate_legacy_printers(install, &books_dir);
-    }
-    use_device_dir(&books_dir);
+/// Open the printers that belong to `db_path`'s shop.
+pub fn use_books_printers(db_path: &Path) {
+    use_device_dir(&printers_dir_for_books(db_path));
 }
 
 static SINK: std::sync::Mutex<Option<PrintSink>> = std::sync::Mutex::new(None);
@@ -4652,7 +4697,7 @@ pub fn metrics_at_content_mm(
 
 /// Row pitch (dots) for a type size: the preview's and the printer's.
 pub fn raster_pitch_for_em(em: f32) -> usize {
-    ((em * 1.45).round() as usize).clamp(16, 96)
+    ((em * 1.45).round() as usize).max(1)
 }
 
 /// One slip line's size, weight, and alignment. Start/Center/End are shifts
@@ -4674,38 +4719,69 @@ pub fn styled_slip_lines(
         })
         .map(|line| {
             let (style, body) = take_kot_line_style(line);
-            let (em, weight, align, strike) = match style {
-                Some(style) => (
-                    style.size_em as f32,
-                    match style.weight {
-                        KotFontWeight::Light => crate::receipt_raster::RasterWeight::Light,
-                        KotFontWeight::Bold => crate::receipt_raster::RasterWeight::Bold,
-                        KotFontWeight::Regular => crate::receipt_raster::RasterWeight::Regular,
-                    },
-                    match style.align {
-                        KotAlign::Center => crate::receipt_raster::LineAlign::Center,
-                        KotAlign::End => crate::receipt_raster::LineAlign::End,
-                        KotAlign::Start => crate::receipt_raster::LineAlign::Start,
-                    },
-                    style.strike,
-                ),
-                None => (
-                    default.em,
-                    crate::receipt_raster::RasterWeight::Regular,
-                    crate::receipt_raster::LineAlign::Start,
-                    false,
-                ),
-            };
+            let (em, weight, align, strike) = raster_line_style(style.as_ref(), default.em);
+            // A pair line carries its second field's own mark after the tab.
+            if let Some((first, rest)) = body.split_once('\t')
+                && rest.starts_with(KOT_STYLE_MARK)
+            {
+                let (second, text) = take_kot_line_style(rest);
+                let (em2, weight2, align2, _) = raster_line_style(second.as_ref(), default.em);
+                return crate::receipt_raster::StyledLine {
+                    text: first.to_string(),
+                    em,
+                    weight,
+                    align,
+                    strike,
+                    tab: Some(crate::receipt_raster::LineColumns::Pair(
+                        crate::receipt_raster::PairHalf {
+                            text: text.to_string(),
+                            em: em2,
+                            weight: weight2,
+                            align: align2,
+                        },
+                    )),
+                };
+            }
             crate::receipt_raster::StyledLine {
                 text: body.to_string(),
                 em,
                 weight,
                 align,
                 strike,
-                tab: if body.contains('\t') { tab } else { None },
+                tab: if body.contains('\t') { tab.clone() } else { None },
             }
         })
         .collect()
+}
+
+/// A line mark as the raster's size, weight, alignment and strike.
+fn raster_line_style(
+    style: Option<&KotLineStyle>,
+    default_em: f32,
+) -> (
+    f32,
+    crate::receipt_raster::RasterWeight,
+    crate::receipt_raster::LineAlign,
+    bool,
+) {
+    match style {
+        Some(style) => (
+            style.size_em as f32,
+            match style.weight {
+                KotFontWeight::Light => crate::receipt_raster::RasterWeight::Light,
+                KotFontWeight::Bold => crate::receipt_raster::RasterWeight::Bold,
+                KotFontWeight::Regular => crate::receipt_raster::RasterWeight::Regular,
+            },
+            style.align.line_align(),
+            style.strike,
+        ),
+        None => (
+            default_em,
+            crate::receipt_raster::RasterWeight::Regular,
+            crate::receipt_raster::LineAlign::Start,
+            false,
+        ),
+    }
 }
 
 /// Raster job that keeps each line's point size, weight, and alignment.
@@ -5068,6 +5144,22 @@ fn print_system_raw(name: Option<&str>, bytes: &[u8]) -> Result<(), String> {
     if let Some(addr) = name.and_then(cups_socket_address) {
         return print_network_bytes(&addr, bytes);
     }
+    // A CUPS queue that is a USB printer on this computer: write to its
+    // device node, paced and confirmed like a `usb:` printer. CUPS's usb
+    // backend holds the printer ~8 s per job (it waits 7 s for the printer's
+    // back channel, then 1 s more), so every slip came back "still printing"
+    // and the next slip queued behind it (2026-11-14). Node gone or busy
+    // (CUPS is printing), or jobs already queued: CUPS, in order.
+    #[cfg(target_os = "linux")]
+    if let Some(name) = name
+        && let Some(node) = cups_local_usb_node(name)
+        && let Ok(file) = crate::print_usb::open_usblp(&node)
+    {
+        let node = node.display().to_string();
+        eprintln!("[print] usb direct printer={name} node={node}");
+        crate::diag::info(crate::diag::Cat::Print, "usb_direct", format!("printer={name} node={node}"));
+        return crate::print_usb::write_usblp(file, bytes);
+    }
     let dir = std::env::temp_dir().join("kumkaj-kot-raw");
     fs::create_dir_all(&dir).map_err(|e| e.to_string())?;
     let path = dir.join(format!("{}.bin", uuid::Uuid::new_v4()));
@@ -5235,6 +5327,50 @@ try {{
         let _ = (name, path, pieces);
         Err("printing is not supported on this system".into())
     }
+}
+
+/// The usblp node of a CUPS queue whose device is a USB printer on this
+/// computer (`lpstat -v NAME` → `usb://Maker/Model?serial=X`), while CUPS
+/// has no job queued for it.
+#[cfg(target_os = "linux")]
+fn cups_local_usb_node(name: &str) -> Option<std::path::PathBuf> {
+    let out = Command::new("lpstat").args(["-v", name]).output().ok()?;
+    let serial = parse_cups_usb_serial(&String::from_utf8_lossy(&out.stdout))?;
+    let queued = Command::new("lpstat").args(["-o", name]).output().ok()?;
+    if !queued.status.success() || !String::from_utf8_lossy(&queued.stdout).trim().is_empty() {
+        return None;
+    }
+    crate::print_usb::usblp_path_for_serial(&serial)
+}
+
+/// The `serial=` of an `lpstat -v` line for a `usb://` device, decoded.
+/// Another backend, or a USB device named without a serial: `None` (two
+/// identical printers could not be told apart).
+#[cfg(any(target_os = "linux", test))]
+fn parse_cups_usb_serial(lpstat: &str) -> Option<String> {
+    let uri = lpstat.split("usb://").nth(1)?.split_whitespace().next()?;
+    let raw = uri.split_once('?')?.1.split('&').find_map(|kv| kv.strip_prefix("serial="))?;
+    let bytes = raw.as_bytes();
+    let mut out = Vec::with_capacity(bytes.len());
+    let mut i = 0;
+    while i < bytes.len() {
+        let hex = (bytes[i] == b'%')
+            .then(|| raw.get(i + 1..i + 3))
+            .flatten()
+            .and_then(|h| u8::from_str_radix(h, 16).ok());
+        match hex {
+            Some(b) => {
+                out.push(b);
+                i += 3;
+            }
+            None => {
+                out.push(bytes[i]);
+                i += 1;
+            }
+        }
+    }
+    let serial = String::from_utf8_lossy(&out).trim().to_string();
+    (!serial.is_empty()).then_some(serial)
 }
 
 /// `host:port` of a CUPS queue whose device is a raw socket
@@ -5964,6 +6100,25 @@ mod tests {
         assert_eq!(parse_cups_socket_uri("device for Brother: ipp://10.0.0.3/ipp/print"), None);
     }
 
+    /// A CUPS queue on this computer's USB is told by its serial, which is
+    /// how its device node is found (an 80 mm printer, 2026-11-14).
+    #[test]
+    fn a_cups_usb_queue_names_its_printers_serial() {
+        assert_eq!(
+            parse_cups_usb_serial("device for 80Series2: usb:///80Series2?serial=GD107B9714B7F14B0\n").as_deref(),
+            Some("GD107B9714B7F14B0")
+        );
+        assert_eq!(
+            parse_cups_usb_serial("device for TM: usb://EPSON/TM-T20II?serial=X4ZF%20012&interface=1").as_deref(),
+            Some("X4ZF 012")
+        );
+        // No serial: two identical printers could not be told apart.
+        assert_eq!(parse_cups_usb_serial("device for P: usb://Printer/80Series"), None);
+        assert_eq!(parse_cups_usb_serial("device for P: usb://Printer/80Series?serial="), None);
+        assert_eq!(parse_cups_usb_serial("device for K: socket://192.168.1.50:9100"), None);
+        assert_eq!(parse_cups_usb_serial("device for B: lpd://BRW4845E6DDDB92/BINARY_P1"), None);
+    }
+
     /// DLE EOT 1: only a reply with the fixed bits is read, and only the
     /// offline bit is a failure.
     #[test]
@@ -6011,43 +6166,6 @@ mod tests {
             );
         });
         let _ = fs::remove_dir_all(base);
-    }
-
-    #[test]
-    fn legacy_install_printers_copy_once_into_empty_shop() {
-        let install = std::env::temp_dir().join(format!(
-            "kirano-pr-legacy-{}",
-            uuid::Uuid::new_v4().simple()
-        ));
-        let shop_a = install.join("servers/a");
-        let shop_b = install.join("servers/b");
-        fs::create_dir_all(&shop_a).unwrap();
-        fs::create_dir_all(&shop_b).unwrap();
-        let mut shared = DevicePrinters::default();
-        let p = shared.add_printer("Shared", "192.168.1.9");
-        shared.routes.bill = vec![p];
-        save_device_printers(&install, &shared).unwrap();
-        // Empty shop file (created by a premature save) still gets the legacy pool.
-        save_device_printers(&shop_a, &DevicePrinters::default()).unwrap();
-        migrate_legacy_printers(&install, &shop_a);
-        migrate_legacy_printers(&install, &shop_b);
-        assert_eq!(load_device_printers(&shop_a).routes.bill.len(), 1);
-        assert_eq!(load_device_printers(&shop_b).routes.bill.len(), 1);
-        // Later edits stay per-shop.
-        let mut only_a = DevicePrinters::default();
-        let q = only_a.add_printer("A-only", "10.0.0.1");
-        only_a.routes.bill = vec![q];
-        save_device_printers(&shop_a, &only_a).unwrap();
-        assert_eq!(load_device_printers(&shop_a).printers.len(), 1);
-        assert_eq!(
-            load_device_printers(&shop_a).printers[0].label,
-            "A-only"
-        );
-        assert_ne!(
-            load_device_printers(&shop_b).printers[0].label,
-            "A-only"
-        );
-        let _ = fs::remove_dir_all(install);
     }
 
     #[test]
@@ -6101,5 +6219,255 @@ mod tests {
             DevicePrinters::route_name_format_key("Brother_DCP_L2640DW", FORMAT_STANDARD),
             DevicePrinters::route_name_format_key("Brother_DCP_L2640DW", FORMAT_KOT)
         );
+    }
+}
+
+#[cfg(test)]
+mod column_tests {
+    use super::*;
+
+    /// The owner's item columns ride the slip text to the raster: a new
+    /// format fills its content width; the directive carries each shown
+    /// column in print order, in the print's dots (docs/PRINTER.md "Item
+    /// columns").
+    #[test]
+    fn bill_item_columns_ride_the_slip_to_the_raster() {
+        use crate::receipt_raster::LineColumns;
+        let fmt = BillSlipFormat::default().clamped();
+        let cols = fmt.item_columns();
+        let sum: f32 = BillItemCol::ALL.iter().map(|c| cols.get(*c).width_mm).sum();
+        let room = fill_room_mm(210, STD_SIDE);
+        assert!(sum <= room + 0.01 && sum > room - 2.5, "new columns fill 210 mm ({sum} of {room})");
+        assert_eq!(cols.name.align, KotAlign::Start);
+        assert_eq!(cols.amount.align, KotAlign::End);
+        let raw = fmt.render_sample("Shop", "01/01/26 12:00");
+        assert!(raw.starts_with(SLIP_TAB_MARK), "bill sample carries its columns:\n{raw}");
+        let (parsed, body) = take_slip_tab_layout(&raw);
+        let Some(LineColumns::Owner(owner)) = parsed else {
+            panic!("owner columns directive, got {parsed:?}");
+        };
+        assert_eq!(owner.cols.len(), 4);
+        assert!(!owner.rtl);
+        let dpm = content_dots_per_mm(210);
+        assert!((owner.cols[0].width - cols.name.width_mm * dpm).abs() < 0.11);
+        assert_eq!(owner.cols[3].start, cols.amount.start_px as f32);
+        assert!(!body.starts_with(SLIP_TAB_MARK));
+        let lines = styled_slip_lines(&raw, &PrintFormat::standard().raster_metrics());
+        assert!(
+            lines
+                .iter()
+                .filter(|l| l.text.contains('\t'))
+                .all(|l| matches!(l.tab, Some(LineColumns::Owner(_)))),
+            "item lines keep the columns through styled_slip_lines"
+        );
+        let mut hidden_price = fmt.clone();
+        hidden_price.item_show_price = false;
+        let (parsed, _) = take_slip_tab_layout(&hidden_price.render_sample("Shop", "x"));
+        let Some(LineColumns::Owner(owner)) = parsed else { panic!() };
+        assert_eq!(owner.cols.len(), 3, "a hidden column takes no room");
+        assert!((owner.cols[2].width - cols.amount.width_mm * dpm).abs() < 0.11);
+        let plain = strip_kot_style_marks(&raw);
+        assert!(!plain.contains(SLIP_TAB_MARK) && !plain.contains(KOT_STYLE_MARK));
+    }
+
+
+    /// Saves from before columns start with columns filling their own
+    /// content width; after that a column keeps its mm whatever the width.
+    #[test]
+    fn old_saves_get_columns_that_fill_their_width_then_keep_them() {
+        let old = BillSlipFormat::parse(r#"{"content_width_mm": 80}"#);
+        let cols = old.item_columns.expect("filled on load");
+        let sum: f32 = BillItemCol::ALL.iter().map(|c| cols.get(*c).width_mm).sum();
+        let room = fill_room_mm(80, STD_SIDE);
+        assert!(sum <= room + 0.01 && sum > room - 2.5, "{sum} of {room}");
+        let mut wider = old.clone();
+        wider.content_width_mm = 150;
+        assert_eq!(wider.clamped().item_columns, Some(cols), "width never moves a column");
+    }
+
+
+    /// Sizes are literal from 1 to 200 px, and three-digit sizes survive the
+    /// line mark (owner, 2026-11-15).
+    #[test]
+    fn sizes_from_1_to_200_survive_the_line_mark() {
+        for size in [1u32, 6, 12, 99, 100, 150, 200] {
+            let mark = kot_style_prefix(&KotFieldStyle::bold(size), false);
+            let line = format!("{mark}KOT - 12");
+            let (style, body) = take_kot_line_style(&line);
+            let style = style.expect("mark");
+            assert_eq!(style.size_em, size);
+            assert_eq!(style.weight, KotFontWeight::Bold);
+            assert_eq!(body, "KOT - 12");
+        }
+        let mut fmt = BillSlipFormat::default();
+        fmt.items.size_em = 500;
+        assert_eq!(fmt.clamped().items.size_em, KOT_EM_MAX);
+        assert_eq!((KOT_EM_MIN, KOT_EM_MAX), (1, 200));
+    }
+
+
+    /// Columns of a drawn slip that carry ink (page-x of every inked dot).
+    fn inked_xs(text: &str, mm: u32) -> (Vec<usize>, usize, f32) {
+        let mut m = PrintFormat::standard().raster_metrics();
+        m.width_dots = paper_dots_for_wrap_cols(wrap_cols_for_paper_mm(mm));
+        let (rows, height) = crate::receipt_raster::draw_lines(&styled_slip_lines(text, &m), &m);
+        let w = m.width_dots;
+        let mut xs = Vec::new();
+        for y in 0..height {
+            for x in 0..w {
+                if rows[y * (w / 8) + x / 8] & (0x80 >> (x % 8)) != 0 {
+                    xs.push(x);
+                }
+            }
+        }
+        (xs, height, m.side)
+    }
+
+    fn col(width_mm: f32, align: KotAlign) -> SlipColumn {
+        SlipColumn { width_mm, start_px: 0, end_px: 0, align }
+    }
+
+    /// The owner's example (2026-11-15): Item 30 + Qty 30 + Price 20 mm on a
+    /// 56 mm content width — Item whole, Qty cut at the content edge, no
+    /// Price. Nothing is squeezed or moved to make it fit.
+    #[test]
+    fn columns_past_the_content_width_are_cut_there() {
+        let mm = 56;
+        let cols = [col(30.0, KotAlign::Start), col(30.0, KotAlign::Start), col(20.0, KotAlign::Start)];
+        let text = format!(
+            "{}{}MMMMMMMMMMMM\tMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM\tMMMMMMMM\n",
+            encode_slip_columns(&cols, mm, false, false),
+            kot_style_prefix(&KotFieldStyle::regular(24), false),
+        );
+        let (xs, _, side) = inked_xs(&text, mm);
+        let w = paper_dots_for_wrap_cols(wrap_cols_for_paper_mm(mm));
+        let end = w as f32 - side;
+        assert!(xs.iter().all(|&x| (x as f32) < end.ceil()), "nothing past the content edge");
+        let b_start = side + 30.0 * content_dots_per_mm(mm);
+        assert!(xs.iter().any(|&x| (x as f32) > b_start + 4.0), "Qty is printed");
+        assert!(xs.iter().any(|&x| (x as f32) >= end - 6.0), "Qty runs to the edge and is cut there");
+    }
+
+    /// A cell longer than its column wraps inside it; no ink leaves the box.
+    #[test]
+    fn a_long_cell_wraps_inside_its_column() {
+        let mm = 80;
+        let cols = [col(20.0, KotAlign::Start), col(20.0, KotAlign::End)];
+        let mark = kot_style_prefix(&KotFieldStyle::regular(24), false);
+        let one = format!("{}{mark}Tea\t\n", encode_slip_columns(&cols, mm, false, false));
+        let long = format!(
+            "{}{mark}Paneer Butter Masala Special\t\n",
+            encode_slip_columns(&cols, mm, false, false)
+        );
+        let (_, h1, _) = inked_xs(&one, mm);
+        let (xs, h, side) = inked_xs(&long, mm);
+        assert!(h >= 3 * h1, "wrapped onto several rows ({h} vs {h1})");
+        let box_end = side + 20.0 * content_dots_per_mm(mm);
+        assert!(xs.iter().all(|&x| (x as f32) < box_end.ceil()), "ink stays in its column");
+    }
+
+    /// Only one item column shown: it still lays out in its column — its
+    /// width, spaces and alignment — not as a plain line.
+    /// A job queued before item columns (the old `T` directive) still
+    /// parses to its column metrics, and its body prints as it was.
+    #[test]
+    fn jobs_queued_before_columns_still_parse() {
+        let tab = crate::receipt_raster::TabColumnLayout {
+            gap_em: 1.5,
+            min_em: [3.0, 5.0, 6.0, 0.0],
+            cell_align: crate::receipt_raster::LineAlign::End,
+            sep: true,
+        };
+        let text = format!("{}Naan\t2\t40\t80\n", encode_slip_tab_layout(&tab));
+        let (cols, body) = take_slip_tab_layout(&text);
+        assert_eq!(cols, Some(crate::receipt_raster::LineColumns::Legacy(tab)));
+        assert_eq!(body, "Naan\t2\t40\t80\n");
+    }
+
+    #[test]
+    fn a_lone_item_column_keeps_its_width() {
+        let mut fmt = BillSlipFormat::parse(r#"{"content_width_mm": 80}"#);
+        fmt.item_show_qty = false;
+        fmt.item_show_price = false;
+        fmt.item_show_amount = false;
+        let mut cols = fmt.item_columns();
+        cols.name = SlipColumn { width_mm: 20.0, start_px: 0, end_px: 0, align: KotAlign::Start };
+        fmt.item_columns = Some(cols);
+        let row = format_bill_item_block(
+            &fmt,
+            BillItemPieces { name: "Paneer Butter Masala Special", qty: "1", price: "1", amount: "1", note: "" },
+        );
+        assert_eq!(row, "Paneer Butter Masala Special\t");
+        let text = format!(
+            "{}{}{row}\n",
+            encode_slip_columns(&fmt.ordered_slip_columns(), 80, false, false),
+            kot_style_prefix(&KotFieldStyle::regular(24), false),
+        );
+        let (xs, _, side) = inked_xs(&text, 80);
+        let box_end = side + 20.0 * content_dots_per_mm(80);
+        assert!(!xs.is_empty() && xs.iter().all(|&x| (x as f32) < box_end.ceil()), "wrapped inside its 20 mm");
+    }
+
+    /// Right to left: the first column sits at the right edge.
+    #[test]
+    fn rtl_columns_start_at_the_right() {
+        let mm = 80;
+        let cols = [col(20.0, KotAlign::Start), col(10.0, KotAlign::Start)];
+        let text = format!(
+            "{}{}MMMM\t\n",
+            encode_slip_columns(&cols, mm, true, false),
+            kot_style_prefix(&KotFieldStyle::regular(24), true),
+        );
+        let (xs, _, side) = inked_xs(&text, mm);
+        let w = paper_dots_for_wrap_cols(wrap_cols_for_paper_mm(mm)) as f32;
+        let box_start = w - side - 20.0 * content_dots_per_mm(mm);
+        assert!(!xs.is_empty());
+        assert!(xs.iter().all(|&x| (x as f32) >= box_start.floor()), "first column at the right");
+        // Start alignment in RTL hugs the right edge of the column.
+        assert!(xs.iter().any(|&x| (x as f32) > w - side - 12.0));
+    }
+
+    /// Pair halves: each in its half, each at its own size.
+    #[test]
+    fn pair_halves_sit_in_their_halves_at_their_sizes() {
+        let mut fmt = BillSlipFormat::default();
+        fmt.time.size_em = 20;
+        fmt.table.size_em = 40;
+        let mut text = String::new();
+        append_pair(&mut text, (&fmt.time, "MMM"), (&fmt.table, "MMM"), false);
+        let (xs, h, side) = inked_xs(&text, 80);
+        assert_eq!(h, (40.0f32 * 1.45).round() as usize, "as tall as the larger half");
+        let w = paper_dots_for_wrap_cols(wrap_cols_for_paper_mm(80)) as f32;
+        let mid = side + (w - 2.0 * side) * 0.5;
+        assert!(xs.iter().any(|&x| (x as f32) < mid) && xs.iter().any(|&x| (x as f32) >= mid));
+    }
+
+
+    /// A pair line keeps each field's own size and alignment, and the first
+    /// field takes the start half (the right half in RTL).
+    #[test]
+    fn pair_lines_carry_both_fields_styles() {
+        use crate::receipt_raster::LineColumns;
+        let mut fmt = BillSlipFormat::default();
+        fmt.time.size_em = 20;
+        fmt.table.size_em = 30;
+        fmt.table.align = KotAlign::End;
+        let pair = |rtl: bool| {
+            let mut out = String::new();
+            append_pair(&mut out, (&fmt.time, "Date: 1"), (&fmt.table, "Table: T2"), rtl);
+            let lines = styled_slip_lines(&out, &PrintFormat::standard().raster_metrics());
+            assert_eq!(lines.len(), 1);
+            let l = &lines[0];
+            let Some(LineColumns::Pair(half)) = &l.tab else { panic!("pair") };
+            (l.text.clone(), l.em, half.text.clone(), half.em, half.align)
+        };
+        let (a, a_em, b, b_em, b_align) = pair(false);
+        assert_eq!((a.as_str(), a_em, b.as_str(), b_em), ("Date: 1", 20.0, "Table: T2", 30.0));
+        assert_eq!(b_align, crate::receipt_raster::LineAlign::End);
+        let (a, _, b, _, _) = pair(true);
+        assert_eq!((a.as_str(), b.as_str()), ("Table: T2", "Date: 1"), "RTL: first field on the right");
+        let mut plain = String::new();
+        append_pair(&mut plain, (&fmt.time, "Date: 1"), (&fmt.table, "Table: T2"), false);
+        assert_eq!(strip_kot_style_marks(&plain).trim_end(), "Date: 1\tTable: T2");
     }
 }

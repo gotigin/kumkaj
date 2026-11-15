@@ -44,14 +44,18 @@ impl MatchEvent for App {
             self.ui.widget(cx, ids!(paired_list)).redraw(cx);
             return;
         }
-        let (undo_hit, snack_hit, cart_qty_hit) = {
+        let (undo_hit, snack_hit, cart_qty_hit, format_hit) = {
             let st = app_state().lock().unwrap();
             (
                 !st.undo_timer.is_empty() && st.undo_timer.is_timer(e).is_some(),
                 !st.snack_timer.is_empty() && st.snack_timer.is_timer(e).is_some(),
                 !st.cart_qty_timer.is_empty() && st.cart_qty_timer.is_timer(e).is_some(),
+                !st.format_save_timer.is_empty() && st.format_save_timer.is_timer(e).is_some(),
             )
         };
+        if format_hit {
+            self.flush_format_autosave(cx);
+        }
         if undo_hit {
             self.clear_undo_snackbar(cx);
             self.sync_chrome(cx);
@@ -128,6 +132,13 @@ impl MatchEvent for App {
         let form_returned_advanced = self.handle_form_field_returned(cx, actions);
         self.tab_chevron_clicks(cx, actions);
         self.handle_selection_actions(cx, actions);
+        // A dish tap in the menu window is the busiest action in the app:
+        // answer it here and skip the ~7,400 widget lookups below, which
+        // every action batch otherwise pays (owner, 2026-11-15: fast taps
+        // felt slow on the tablet).
+        if app_state().lock().unwrap().menu_pick_open && self.menu_pick_card_tap(cx, actions) {
+            return;
+        }
         for action in actions.iter() {
             if let Some(fd) = action.downcast_ref::<FileDialogAction>() {
                 match fd {
@@ -409,165 +420,8 @@ impl MatchEvent for App {
         }
         // Nav clicks honour the user's slot arrangement.
         let nav_click = self.nav_tab_clicked(cx, actions);
-        match nav_click {
-            Some(NavTab::Books) => {
-                let allowed = {
-                    let st = app_state().lock().unwrap();
-                    match st.session.as_ref() {
-                        Some(s) => s.is_owner() || s.can_access_sales() || s.can_access_items(),
-                        None => false,
-                    }
-                };
-                if !allowed {
-                    self.set_status(cx, "Not allowed");
-                } else {
-                    let result = (|| -> Result<(), String> {
-                        let mut st = app_state().lock().unwrap();
-                        st.refresh_books_overview()?;
-                        Ok(())
-                    })();
-                    if let Err(e) = result {
-                        self.set_status(cx, e);
-                    } else {
-                        // Drop leftover focus so the old Sell face cannot look selected.
-                        cx.set_key_focus(Area::Empty);
-                        self.go_peer(cx, Screen::Books);
-                    }
-                }
-            }
-            Some(NavTab::Sell) => {
-                cx.set_key_focus(Area::Empty);
-                self.go_peer_if_allowed(cx, Screen::Pos, |s| s.can_access_sell());
-            }
-            Some(NavTab::Buy) => {
-                cx.set_key_focus(Area::Empty);
-                self.go_peer_if_allowed(cx, Screen::Buy, |s| {
-                    s.can_access_inventory() || s.can_access_sales() || s.is_owner()
-                });
-            }
-            Some(NavTab::Menu) => {
-                cx.set_key_focus(Area::Empty);
-                self.go_peer_if_allowed(cx, Screen::Menu, |s| s.can_access_items());
-            }
-            Some(NavTab::Floor) => {
-                cx.set_key_focus(Area::Empty);
-                self.go_peer_if_allowed(cx, Screen::Floor, |s| {
-                    s.can_access_floor() || s.is_owner()
-                });
-            }
-            Some(NavTab::Kitchen) => {
-                cx.set_key_focus(Area::Empty);
-                self.go_peer_if_allowed(cx, Screen::Kitchen, |s| {
-                    s.can_access_kitchen() || s.is_owner()
-                });
-            }
-            Some(NavTab::Sales) => {
-                cx.set_key_focus(Area::Empty);
-                self.go_peer_if_allowed(cx, Screen::Sales, |s| s.can_access_sales());
-            }
-            Some(NavTab::Credit) => {
-                cx.set_key_focus(Area::Empty);
-                self.go_peer_if_allowed(cx, Screen::Credit, |s| s.can_access_credit());
-            }
-            Some(NavTab::Team) => {
-                // Team is no longer a chrome peer — open via Settings → Team.
-                cx.set_key_focus(Area::Empty);
-                self.go_peer_if_allowed(cx, Screen::Settings, |s| s.can_open_settings_shell());
-            }
-            Some(NavTab::Settings) => {
-                cx.set_key_focus(Area::Empty);
-                self.go_peer_if_allowed(cx, Screen::Settings, |s| s.can_open_settings_shell());
-            }
-            Some(NavTab::DayClose) => {
-                let result = (|| -> Result<(), String> {
-                    let mut st = app_state().lock().unwrap();
-                    let actor = st.actor()?;
-                    if !actor.is_owner() && !actor.can_access_sales() {
-                        return Err("Not allowed".into());
-                    }
-                    st.refresh_day_close_text()?;
-                    Ok(())
-                })();
-                if let Err(e) = result {
-                    self.set_status(cx, e);
-                } else {
-                    self.go_peer(cx, Screen::DayClose);
-                }
-            }
-            Some(NavTab::Reports) => {
-                let result = (|| -> Result<(), String> {
-                    let mut st = app_state().lock().unwrap();
-                    let actor = st.actor()?;
-                    if !actor.is_owner() && !actor.can_access_sales() {
-                        return Err("Not allowed".into());
-                    }
-                    st.refresh_reports_facet()?;
-                    Ok(())
-                })();
-                if let Err(e) = result {
-                    self.set_status(cx, e);
-                } else {
-                    self.go_peer(cx, Screen::Reports);
-                }
-            }
-            Some(NavTab::Inventory) => {
-                let result = (|| -> Result<(), String> {
-                    let mut st = app_state().lock().unwrap();
-                    let actor = st.actor()?;
-                    if !actor.can_access_inventory() && !actor.is_owner() {
-                        return Err("Not allowed for your role".into());
-                    }
-                    st.refresh_inventory_text()?;
-                    Ok(())
-                })();
-                if let Err(e) = result {
-                    self.set_status(cx, e);
-                } else {
-                    self.go_peer(cx, Screen::Inventory);
-                }
-            }
-            Some(NavTab::Branches) => {
-                let result = (|| -> Result<(), String> {
-                    let mut st = app_state().lock().unwrap();
-                    let actor = st.actor()?;
-                    if !actor.can_access_branches() && !actor.is_owner() {
-                        return Err("Not allowed for your role".into());
-                    }
-                    st.refresh_branches_text()?;
-                    Ok(())
-                })();
-                if let Err(e) = result {
-                    self.set_status(cx, e);
-                } else {
-                    self.go_peer(cx, Screen::Branches);
-                }
-            }
-            Some(NavTab::Lock) => {
-                self.clear_undo_snackbar(cx);
-                let dest = {
-                    let mut st = app_state().lock().unwrap();
-                    if let Some(store) = st.store.as_ref() {
-                        let _ = store.set_active_session_staff_id(None);
-                    }
-                    st.session = None;
-                    st.clear_team_edit_selection();
-                    if st.suggest_open == Some(SuggestField::TeamKotStations) {
-                        st.suggest_open = None;
-                    }
-                    st.pin_buffer.clear();
-                    st.status = "Locked".into();
-                    if st.must_confirm_device_role {
-                        Screen::DeviceSetup
-                    } else {
-                        Screen::Lock
-                    }
-                };
-                self.go_peer(cx, dest);
-            }
-            None => {}
-        }
-        if self.ui.button(cx, ids!(settings_hub_sidebar)).clicked(actions) {
-            self.go_if_allowed(cx, Screen::SidebarSettings, |s| s.can_access_settings());
+        if let Some(tab) = nav_click {
+            self.open_nav_tab(cx, tab);
         }
         if self.ui.button(cx, ids!(settings_hub_team)).clicked(actions) {
             // Nested under Settings (history Back returns to the hub).
@@ -603,9 +457,7 @@ impl MatchEvent for App {
             }
             self.sync_chrome(cx);
         }
-        if self.ui.button(cx, ids!(sidebar_settings_back)).clicked(actions)
-            || self.ui.button(cx, ids!(header_back)).clicked(actions)
-        {
+        if self.ui.button(cx, ids!(header_back)).clicked(actions) {
             self.navigate_back(cx);
         }
         self.handle_sidebar_nav_list_actions(cx, actions);
@@ -1069,9 +921,10 @@ impl MatchEvent for App {
             self.begin_client_mode(cx);
         }
         if self.ui.button(cx, ids!(device_role_cancel)).clicked(actions) {
-            // Interrupt SQLite migrate/seed on the worker (Android) — do not
-            // only set a flag that is checked after open_path returns.
+            // Back to the Server / Client choice now; SQLite on the worker is
+            // interrupted too, and its late result is dropped (`role_open_gen`).
             request_role_open_cancel();
+            self.set_status(cx, app_t("cancelled"));
             self.paint_role_open_busy_chrome(cx);
         }
         if self.ui.button(cx, ids!(server_create_new)).clicked(actions) {
@@ -3324,7 +3177,7 @@ impl MatchEvent for App {
                 self.set_status(cx, msg);
             }
             // Always repaint the face here — sync_chrome may early-return
-            // while a field holds focus and leave "Done · …" stuck.
+            // while a field holds focus.
             self.paint_kot_station_dd(cx);
             self.sync_chrome(cx);
         }
@@ -3347,20 +3200,12 @@ impl MatchEvent for App {
             {
                 let mut st = app_state().lock().unwrap();
                 let _ = normalize_focused_route(&mut st);
+                // None saved: the list opens on its Find printers row.
                 if st.suggest_open == Some(SuggestField::PrinterAssign) {
-                    st.suggest_open = None;
-                } else if st.printer_draft.printers.is_empty() {
                     st.suggest_open = None;
                 } else {
                     st.open_suggest(SuggestField::PrinterAssign, "");
                 }
-            }
-            let empty = {
-                let st = app_state().lock().unwrap();
-                st.printer_draft.printers.is_empty()
-            };
-            if empty {
-                self.set_status(cx, app_t("printers_none_hint"));
             }
             self.ui
                 .widget(cx, ids!(printer_assign_suggest))
@@ -3529,6 +3374,7 @@ impl MatchEvent for App {
                         // Queued until the shop device answers. `is_sent` is
                         // true so Send moves on; reprint waits for a real id.
                         st.cart.mark_new_lines_sent(QUEUED_KOT);
+                        st.cart.bill_printed = false;
                     }
                     // Queued until the shop device answers — a pending state, so
                     // amber, as before (it used to be read off "shop device").
@@ -3552,6 +3398,8 @@ impl MatchEvent for App {
                         None => {
                             let marker = kot_ids.first().map(String::as_str).unwrap_or("counter");
                             st.cart.mark_new_lines_sent(marker);
+                            // New dishes after the bill: a new bill, as on a table.
+                            st.cart.bill_printed = false;
                             st.refresh_after_running_order(None)?;
                         }
                     }
@@ -4153,31 +4001,8 @@ impl MatchEvent for App {
         }
         // Settings hub: one section at a time.
         {
-            let hub_clicks: &[(&[LiveId], &str)] = &[
-                (ids!(settings_hub_language), "language"),
-                (ids!(settings_hub_country), "country"),
-                (ids!(settings_hub_tills), "tills"),
-                (ids!(settings_hub_brand), "brand"),
-                (ids!(settings_hub_units), "units"),
-                (ids!(settings_hub_pickers), "pickers"),
-                (ids!(settings_hub_printers), "printers"),
-                (ids!(settings_hub_bill), "bill"),
-                (ids!(settings_hub_selling), "selling"),
-                (ids!(settings_hub_alerts), "alerts"),
-                (ids!(settings_hub_backup), "backup"),
-                (ids!(settings_hub_diag), "diag"),
-                (ids!(settings_hub_privacy), "privacy"),
-            ];
-            let mut opened: Option<&'static str> = None;
-            for (id, key) in hub_clicks {
-                if self.ui.button(cx, id).clicked(actions) {
-                    opened = Some(*key);
-                    break;
-                }
-            }
-            if let Some(key) = opened {
-                self.open_settings_panel(cx, Some(key));
-            } else if self.ui.button(cx, ids!(settings_detail_back)).clicked(actions) {
+            // Sections open from the nav list (handle_sidebar_nav_list_actions).
+            if self.ui.button(cx, ids!(settings_detail_back)).clicked(actions) {
                 self.open_settings_panel(cx, None);
             }
         }
@@ -4195,6 +4020,7 @@ impl MatchEvent for App {
             let mut typed = false;
             let mut needs_chrome = false;
             let mut picked: Option<(SuggestField, String)> = None;
+            let mut find_printers: Option<SuggestField> = None;
             for field in SuggestField::ALL {
                 // Kitchen / place / printer-assign / team stations open via
                 // chrome (dd or always-open), not type-in.
@@ -4214,6 +4040,13 @@ impl MatchEvent for App {
                         .portal_list(cx, ids!(list))
                         .items_with_actions(actions);
                     for (item_id, item) in item_actions {
+                        // No printer saved: the row is a Find printers button.
+                        if field.is_printer_pick()
+                            && item.button(cx, ids!(find_printers_row)).clicked(actions)
+                        {
+                            find_printers = Some(field);
+                            continue;
+                        }
                         if field == SuggestField::KotStation {
                             // ↑↓ swap with neighbouring *station* (skip Unassigned).
                             // Only the glyph buttons reorder — never the row body.
@@ -4348,6 +4181,11 @@ impl MatchEvent for App {
                         }
                     }
                 }
+            }
+            if let Some(field) = find_printers {
+                // Done reopens this checklist with the printers just found.
+                *printers_modal_return().lock().unwrap() = Some(field);
+                self.open_printers_modal(cx);
             }
             // Another (ordinary) field took focus: the open list is done.
             if let Some(field) = open
@@ -4747,55 +4585,8 @@ impl MatchEvent for App {
         if self.ui.button(cx, ids!(image_pick)).clicked(actions) {
             self.image_pick_file(cx);
         }
-        // Menu window grid (the window stays open for the next dish): a tap
-        // anywhere on a card adds one, the same as its +; − takes one back.
-        // A tap on − or + is that button's alone, never also the card's.
-        {
-            let searching = !app_state().lock().unwrap().menu_filter.trim().is_empty();
-            let page_count = if searching {
-                1
-            } else {
-                let st = app_state().lock().unwrap();
-                menu_pick_tab_keys(&st).len().min(MENU_PICK_PAGE_MAX)
-            };
-            let cols = *product_grid_cols().lock().unwrap();
-            let slots: [&[LiveId]; 6] = [ids!(c0), ids!(c1), ids!(c2), ids!(c3), ids!(c4), ids!(c5)];
-            enum CardTap {
-                Add(usize),
-                Minus(usize),
-            }
-            let mut tapped: Option<(usize, CardTap)> = None;
-            'pages: for pi in 0..page_count {
-                let widget = self.ui.widget(cx, MENU_PICK_GRIDS[pi]);
-                let list = widget.portal_list(cx, ids!(list));
-                for (row_id, item) in list.items_with_actions(actions) {
-                    for (col, path) in slots.iter().enumerate().take(cols) {
-                        let index = row_id * cols + col;
-                        let tile = item.widget(cx, *path).view(cx, ids!(tile));
-                        if tile.button(cx, ids!(minus)).clicked(actions) {
-                            tapped = Some((pi, CardTap::Minus(index)));
-                            break 'pages;
-                        } else if tile.button(cx, ids!(plus)).clicked(actions)
-                            || tile.finger_up(actions).is_some_and(finger_up_is_tap)
-                        {
-                            tapped = Some((pi, CardTap::Add(index)));
-                            break 'pages;
-                        }
-                    }
-                }
-            }
-            match tapped {
-                Some((pi, CardTap::Add(index))) => {
-                    self.align_menu_pick_cart_page(cx, pi);
-                    self.add_product_to_cart(cx, index);
-                }
-                Some((pi, CardTap::Minus(index))) => {
-                    self.align_menu_pick_cart_page(cx, pi);
-                    self.remove_product_from_cart(cx, index);
-                }
-                None => {}
-            }
-        }
+        // Menu window dish taps: answered first, in `menu_pick_card_tap`
+        // (top of this function), before the lookups below.
         if let Some(text) = self.ui.text_input(cx, ids!(menu_list_search)).changed(actions) {
             app_state().lock().unwrap().menu_list_filter = text;
             self.ui.widget(cx, ids!(product_list_menu)).redraw(cx);
@@ -5845,6 +5636,8 @@ impl MatchEvent for App {
             }
         }
         if self.ui.button(cx, ids!(feat_save)).clicked(actions) {
+            let first_pin = self.ui.text_input(cx, ids!(staff_edit_pin_input)).text();
+            let first_pin_set = !first_pin.trim().is_empty();
             let new_name = self.ui.text_input(cx, ids!(staff_edit_name_input)).text();
             let login = self.ui.text_input(cx, ids!(staff_edit_login_input)).text();
             let password = self
@@ -5877,6 +5670,12 @@ impl MatchEvent for App {
                         password,
                     })?;
                 }
+                if first_pin_set {
+                    st.books_op(BooksOp::SetFirstStaffPin {
+                        staff_id: staff_id.clone(),
+                        pin: first_pin.trim().to_string(),
+                    })?;
+                }
                 let name = st
                     .staff
                     .iter()
@@ -5890,10 +5689,17 @@ impl MatchEvent for App {
             })();
             if let Err(e) = result {
                 self.set_status(cx, e);
-            } else if password_set {
-                self.ui
-                    .text_input(cx, ids!(staff_edit_password_input))
-                    .set_text(cx, "");
+            } else {
+                if password_set {
+                    self.ui
+                        .text_input(cx, ids!(staff_edit_password_input))
+                        .set_text(cx, "");
+                }
+                if first_pin_set {
+                    self.ui
+                        .text_input(cx, ids!(staff_edit_pin_input))
+                        .set_text(cx, "");
+                }
             }
             self.sync_chrome(cx);
         }
@@ -6282,7 +6088,7 @@ impl MatchEvent for App {
                 // Main screen is a root — drop DeviceSetup/Onboard from Back.
                 st.nav_back.clear();
                 st.nav_forward.clear();
-                st.screen = unlocked_home_from(&st);
+                st.screen = unlocked_home_from(&mut st);
                 st.status = "Shop ready — your books are open".into();
                 let _ = st.reload_all();
                 let _ = st.refresh_books_overview();
@@ -6323,54 +6129,6 @@ impl MatchEvent for App {
                         makepad_widgets::makepad_platform::thread::SignalToUI::set_ui_signal();
                     });
             }
-        }
-        if self.ui.button(cx, ids!(bill_format_save)).clicked(actions) {
-            // Read the open line now. Save is handled before the field
-            // editors, so a size or address typed in this same press would
-            // otherwise be saved as the previous value.
-            self.read_bill_editor_into_draft(cx);
-            let result = (|| -> Result<(), String> {
-                let mut st = app_state().lock().unwrap();
-                let fmt = st.bill_slip_draft.clone().clamped();
-                let (cur_vpa, cur_payee) = match st.store.as_ref() {
-                    Some(store) => (
-                        store.upi_vpa().unwrap_or_default(),
-                        store.upi_payee().unwrap_or_default(),
-                    ),
-                    None => (String::new(), String::new()),
-                };
-                let upi_vpa = if fmt.upi_vpa.trim() == cur_vpa.trim() {
-                    None
-                } else {
-                    Some(fmt.upi_vpa.clone())
-                };
-                let upi_payee = if fmt.upi_payee.trim() == cur_payee.trim() {
-                    None
-                } else {
-                    Some(fmt.upi_payee.clone())
-                };
-                let em = fmt.style(print_share::BillStyleField::Items).size_em as f32;
-                st.printer_draft.set_standard_em(em);
-                st.books_op(BooksOp::SetBillFormat {
-                    header: fmt.header_lines(),
-                    fssai: fmt.fssai.clone(),
-                    footer: fmt.footer.clone(),
-                    upi_vpa,
-                    upi_payee,
-                    styles: fmt.to_json(),
-                })?;
-                st.books_op(BooksOp::SetStandardEm { em })?;
-                Ok(())
-            })();
-            match result {
-                Ok(()) => {
-                    self.publish_print_formats();
-                    self.fill_bill_format_fields(cx);
-                    self.set_status(cx, "Bill format saved");
-                }
-                Err(e) => self.set_status(cx, e),
-            }
-            self.sync_chrome(cx);
         }
         if self.ui.button(cx, ids!(bill_format_reset)).clicked(actions) {
             // Layout/typography back to product default; keep shop address + UPI text.
@@ -6433,6 +6191,8 @@ impl MatchEvent for App {
                 tab_changed = true;
             }
             if tab_changed {
+                // What was typed on the tab left is written now, not later.
+                self.flush_format_autosave(cx);
                 self.sync_bill_kot_tabs(cx);
                 self.ui.redraw(cx);
             }
@@ -6659,113 +6419,46 @@ impl MatchEvent for App {
                     break;
                 }
             }
-            if self.choice_chip_clicked(
-                cx,
-                actions,
-                ids!(kot_item_gap_tight),
-                ids!(kot_item_gap_tight_on),
-            ) {
-                app_state()
-                    .lock()
-                    .unwrap()
-                    .kot_slip_draft
-                    .set_item_col_gap_preset(print_share::KOT_COL_GAP_TIGHT);
+            // Item columns of the kind being edited (each kind its own).
+            for (idle, on, col) in [
+                (ids!(kot_col_item), ids!(kot_col_item_on), print_share::KotItemCol::Item),
+                (ids!(kot_col_qty), ids!(kot_col_qty_on), print_share::KotItemCol::Qty),
+            ] {
+                if self.choice_chip_clicked(cx, actions, idle, on) {
+                    app_state().lock().unwrap().kot_item_col_edit = col;
+                    slip_changed = true;
+                }
+            }
+            let kot_col_edit = |f: &dyn Fn(&mut print_share::SlipColumn)| {
+                let mut st = app_state().lock().unwrap();
+                let kind = st.kot_edit_kind;
+                let pick = st.kot_item_col_edit;
+                let mut cols = st.kot_slip_draft.item_columns(kind);
+                f(cols.get_mut(pick));
+                *cols.get_mut(pick) = cols.get(pick).clamped();
+                st.kot_slip_draft.kind_styles.get_mut(kind).item_columns = Some(cols);
+            };
+            if let Some(v) = self.slip_column_input(cx, actions, ids!(kot_col_width_input)) {
+                kot_col_edit(&|c| c.width_mm = v);
                 slip_changed = true;
             }
-            if self.choice_chip_clicked(
-                cx,
-                actions,
-                ids!(kot_item_gap_comfort),
-                ids!(kot_item_gap_comfort_on),
-            ) {
-                app_state()
-                    .lock()
-                    .unwrap()
-                    .kot_slip_draft
-                    .set_item_col_gap_preset(print_share::KOT_COL_GAP_COMFORT);
+            if let Some(v) = self.slip_column_input(cx, actions, ids!(kot_col_start_input)) {
+                kot_col_edit(&|c| c.start_px = v.round() as u32);
                 slip_changed = true;
             }
-            if self.choice_chip_clicked(
-                cx,
-                actions,
-                ids!(kot_item_gap_wide),
-                ids!(kot_item_gap_wide_on),
-            ) {
-                app_state()
-                    .lock()
-                    .unwrap()
-                    .kot_slip_draft
-                    .set_item_col_gap_preset(print_share::KOT_COL_GAP_WIDE);
+            if let Some(v) = self.slip_column_input(cx, actions, ids!(kot_col_end_input)) {
+                kot_col_edit(&|c| c.end_px = v.round() as u32);
                 slip_changed = true;
             }
-            if self.choice_chip_clicked(
-                cx,
-                actions,
-                ids!(kot_item_num_compact),
-                ids!(kot_item_num_compact_on),
-            ) {
-                app_state()
-                    .lock()
-                    .unwrap()
-                    .kot_slip_draft
-                    .set_item_qty_min_preset(print_share::KOT_QTY_MIN_COMPACT);
-                slip_changed = true;
-            }
-            if self.choice_chip_clicked(
-                cx,
-                actions,
-                ids!(kot_item_num_comfort),
-                ids!(kot_item_num_comfort_on),
-            ) {
-                app_state()
-                    .lock()
-                    .unwrap()
-                    .kot_slip_draft
-                    .set_item_qty_min_preset(print_share::KOT_QTY_MIN_COMFORT);
-                slip_changed = true;
-            }
-            if self.choice_chip_clicked(
-                cx,
-                actions,
-                ids!(kot_item_num_wide),
-                ids!(kot_item_num_wide_on),
-            ) {
-                app_state()
-                    .lock()
-                    .unwrap()
-                    .kot_slip_draft
-                    .set_item_qty_min_preset(print_share::KOT_QTY_MIN_WIDE);
-                slip_changed = true;
-            }
-            if self.choice_chip_clicked(
-                cx,
-                actions,
-                ids!(kot_item_num_start),
-                ids!(kot_item_num_start_on),
-            ) {
-                app_state().lock().unwrap().kot_slip_draft.item_num_align =
-                    print_share::KotAlign::Start;
-                slip_changed = true;
-            }
-            if self.choice_chip_clicked(
-                cx,
-                actions,
-                ids!(kot_item_num_center),
-                ids!(kot_item_num_center_on),
-            ) {
-                app_state().lock().unwrap().kot_slip_draft.item_num_align =
-                    print_share::KotAlign::Center;
-                slip_changed = true;
-            }
-            if self.choice_chip_clicked(
-                cx,
-                actions,
-                ids!(kot_item_num_end),
-                ids!(kot_item_num_end_on),
-            ) {
-                app_state().lock().unwrap().kot_slip_draft.item_num_align =
-                    print_share::KotAlign::End;
-                slip_changed = true;
+            for (idle, on, align) in [
+                (ids!(kot_col_align_start), ids!(kot_col_align_start_on), print_share::KotAlign::Start),
+                (ids!(kot_col_align_center), ids!(kot_col_align_center_on), print_share::KotAlign::Center),
+                (ids!(kot_col_align_end), ids!(kot_col_align_end_on), print_share::KotAlign::End),
+            ] {
+                if self.choice_chip_clicked(cx, actions, idle, on) {
+                    kot_col_edit(&|c| c.align = align);
+                    slip_changed = true;
+                }
             }
             if let Some(raw) = self
                 .ui
@@ -6782,28 +6475,6 @@ impl MatchEvent for App {
             {
                 app_state().lock().unwrap().kot_slip_draft.item_header_qty = raw;
                 slip_changed = true;
-            }
-            if let Some(raw) = self
-                .ui
-                .text_input(cx, ids!(kot_item_gap_em_input))
-                .changed(actions)
-            {
-                if let Ok(v) = raw.trim().parse::<f32>() {
-                    app_state().lock().unwrap().kot_slip_draft.item_col_gap_em =
-                        print_share::clamp_bill_col_gap_em(v);
-                    slip_changed = true;
-                }
-            }
-            if let Some(raw) = self
-                .ui
-                .text_input(cx, ids!(kot_item_qty_min_input))
-                .changed(actions)
-            {
-                if let Ok(v) = raw.trim().parse::<f32>() {
-                    app_state().lock().unwrap().kot_slip_draft.item_qty_min_em =
-                        print_share::clamp_bill_col_min_em(v);
-                    slip_changed = true;
-                }
             }
             // Move up/down reorder the print-order row that is selected.
             if self.ui.button(cx, ids!(kot_field_up)).clicked(actions) {
@@ -6954,56 +6625,8 @@ impl MatchEvent for App {
             if slip_changed || style_changed {
                 // Size, weight, align, and show change the printed picture.
                 self.sync_kot_format_ui(cx);
+                self.schedule_format_autosave(cx, false, true);
             }
-        }
-        if self.ui.button(cx, ids!(kot_format_save)).clicked(actions) {
-            let title = self.ui.text_input(cx, ids!(kot_title_input)).text();
-            let footer = self.ui.text_input(cx, ids!(kot_footer_input)).text();
-            let banner = self.ui.text_input(cx, ids!(kot_banner_input)).text();
-            let item_prefix = self.ui.text_input(cx, ids!(kot_item_prefix_input)).text();
-            let size_now = self.ui.text_input(cx, ids!(kot_field_size_input)).text();
-            let result = (|| -> Result<String, String> {
-                let mut st = app_state().lock().unwrap();
-                st.kot_slip_draft.title = title;
-                st.kot_slip_draft.footer = footer;
-                {
-                    let kind = st.kot_edit_kind;
-                    let styles = st.kot_slip_draft.kind_styles.get_mut(kind);
-                    styles.banner = banner;
-                    styles.item_prefix = item_prefix;
-                }
-                if let Ok(raw) = size_now.trim().parse::<u32>() {
-                    let em = raw.clamp(print_share::KOT_EM_MIN, print_share::KOT_EM_MAX);
-                    let kind = st.kot_edit_kind;
-                    let field = st.kot_style_field;
-                    st.kot_slip_draft
-                        .kind_styles
-                        .get_mut(kind)
-                        .get_mut(field)
-                        .size_em = em;
-                    if field == print_share::KotStyleField::ItemQty {
-                        st.kot_slip_draft.em = em;
-                    }
-                }
-                let format = st.kot_slip_draft.clone();
-                st.books_op(BooksOp::SetKotFormat { format })?;
-                if st.device_role != DeviceRole::Client
-                    && let Some(store) = st.store.as_ref()
-                    && let Ok(saved) = store.kot_slip_format()
-                {
-                    st.kot_slip_draft = saved;
-                }
-                Ok(st.t("kot_format_saved"))
-            })();
-            match result {
-                Ok(msg) => {
-                    self.publish_print_formats();
-                    self.sync_kot_format_ui(cx);
-                    self.set_status(cx, msg);
-                }
-                Err(e) => self.set_status(cx, e),
-            }
-            self.sync_chrome(cx);
         }
         if self.ui.button(cx, ids!(kot_format_reset)).clicked(actions) {
             let result = (|| -> Result<String, String> {
@@ -7323,155 +6946,38 @@ impl MatchEvent for App {
                 app_state().lock().unwrap().bill_slip_draft.item_show_note = false;
                 bill_changed = true;
             }
-            if self.choice_chip_clicked(
-                cx,
-                actions,
-                ids!(bill_item_gap_tight),
-                ids!(bill_item_gap_tight_on),
-            ) {
-                app_state()
-                    .lock()
-                    .unwrap()
-                    .bill_slip_draft
-                    .set_item_col_gap_preset(print_share::BILL_COL_GAP_TIGHT);
+            // The selected item column's width, spaces and alignment.
+            let bill_col_edit = |f: &dyn Fn(&mut print_share::SlipColumn)| {
+                let mut st = app_state().lock().unwrap();
+                let order = st.bill_slip_draft.clone().clamped().item_col_order;
+                let idx = st.bill_item_col_edit_idx.min(order.len().saturating_sub(1));
+                let Some(pick) = order.get(idx).and_then(|id| print_share::BillItemCol::from_id(id)) else {
+                    return;
+                };
+                let mut cols = st.bill_slip_draft.item_columns();
+                f(cols.get_mut(pick));
+                *cols.get_mut(pick) = cols.get(pick).clamped();
+                st.bill_slip_draft.item_columns = Some(cols);
+            };
+            if let Some(v) = self.slip_column_input(cx, actions, ids!(bill_col_width_input)) {
+                bill_col_edit(&|c| c.width_mm = v);
                 bill_changed = true;
             }
-            if self.choice_chip_clicked(
-                cx,
-                actions,
-                ids!(bill_item_gap_comfort),
-                ids!(bill_item_gap_comfort_on),
-            ) {
-                app_state()
-                    .lock()
-                    .unwrap()
-                    .bill_slip_draft
-                    .set_item_col_gap_preset(print_share::BILL_COL_GAP_COMFORT);
+            if let Some(v) = self.slip_column_input(cx, actions, ids!(bill_col_start_input)) {
+                bill_col_edit(&|c| c.start_px = v.round() as u32);
                 bill_changed = true;
             }
-            if self.choice_chip_clicked(
-                cx,
-                actions,
-                ids!(bill_item_gap_wide),
-                ids!(bill_item_gap_wide_on),
-            ) {
-                app_state()
-                    .lock()
-                    .unwrap()
-                    .bill_slip_draft
-                    .set_item_col_gap_preset(print_share::BILL_COL_GAP_WIDE);
+            if let Some(v) = self.slip_column_input(cx, actions, ids!(bill_col_end_input)) {
+                bill_col_edit(&|c| c.end_px = v.round() as u32);
                 bill_changed = true;
             }
-            if self.choice_chip_clicked(
-                cx,
-                actions,
-                ids!(bill_item_num_compact),
-                ids!(bill_item_num_compact_on),
-            ) {
-                app_state()
-                    .lock()
-                    .unwrap()
-                    .bill_slip_draft
-                    .set_item_num_min_preset(print_share::BILL_NUM_MIN_COMPACT);
-                bill_changed = true;
-            }
-            if self.choice_chip_clicked(
-                cx,
-                actions,
-                ids!(bill_item_num_comfort),
-                ids!(bill_item_num_comfort_on),
-            ) {
-                app_state()
-                    .lock()
-                    .unwrap()
-                    .bill_slip_draft
-                    .set_item_num_min_preset(print_share::BILL_NUM_MIN_COMFORT);
-                bill_changed = true;
-            }
-            if self.choice_chip_clicked(
-                cx,
-                actions,
-                ids!(bill_item_num_wide),
-                ids!(bill_item_num_wide_on),
-            ) {
-                app_state()
-                    .lock()
-                    .unwrap()
-                    .bill_slip_draft
-                    .set_item_num_min_preset(print_share::BILL_NUM_MIN_WIDE);
-                bill_changed = true;
-            }
-            if self.choice_chip_clicked(
-                cx,
-                actions,
-                ids!(bill_item_num_start),
-                ids!(bill_item_num_start_on),
-            ) {
-                app_state().lock().unwrap().bill_slip_draft.item_num_align =
-                    print_share::KotAlign::Start;
-                bill_changed = true;
-            }
-            if self.choice_chip_clicked(
-                cx,
-                actions,
-                ids!(bill_item_num_center),
-                ids!(bill_item_num_center_on),
-            ) {
-                app_state().lock().unwrap().bill_slip_draft.item_num_align =
-                    print_share::KotAlign::Center;
-                bill_changed = true;
-            }
-            if self.choice_chip_clicked(
-                cx,
-                actions,
-                ids!(bill_item_num_end),
-                ids!(bill_item_num_end_on),
-            ) {
-                app_state().lock().unwrap().bill_slip_draft.item_num_align =
-                    print_share::KotAlign::End;
-                bill_changed = true;
-            }
-            if let Some(raw) = self
-                .ui
-                .text_input(cx, ids!(bill_item_gap_em_input))
-                .changed(actions)
-            {
-                if let Ok(v) = raw.trim().parse::<f32>() {
-                    app_state().lock().unwrap().bill_slip_draft.item_col_gap_em =
-                        print_share::clamp_bill_col_gap_em(v);
-                    bill_changed = true;
-                }
-            }
-            if let Some(raw) = self
-                .ui
-                .text_input(cx, ids!(bill_item_qty_min_input))
-                .changed(actions)
-            {
-                if let Ok(v) = raw.trim().parse::<f32>() {
-                    app_state().lock().unwrap().bill_slip_draft.item_qty_min_em =
-                        print_share::clamp_bill_col_min_em(v);
-                    bill_changed = true;
-                }
-            }
-            if let Some(raw) = self
-                .ui
-                .text_input(cx, ids!(bill_item_price_min_input))
-                .changed(actions)
-            {
-                if let Ok(v) = raw.trim().parse::<f32>() {
-                    app_state().lock().unwrap().bill_slip_draft.item_price_min_em =
-                        print_share::clamp_bill_col_min_em(v);
-                    bill_changed = true;
-                }
-            }
-            if let Some(raw) = self
-                .ui
-                .text_input(cx, ids!(bill_item_amount_min_input))
-                .changed(actions)
-            {
-                if let Ok(v) = raw.trim().parse::<f32>() {
-                    app_state().lock().unwrap().bill_slip_draft.item_amount_min_em =
-                        print_share::clamp_bill_col_min_em(v);
+            for (idle, on, align) in [
+                (ids!(bill_col_align_start), ids!(bill_col_align_start_on), print_share::KotAlign::Start),
+                (ids!(bill_col_align_center), ids!(bill_col_align_center_on), print_share::KotAlign::Center),
+                (ids!(bill_col_align_end), ids!(bill_col_align_end_on), print_share::KotAlign::End),
+            ] {
+                if self.choice_chip_clicked(cx, actions, idle, on) {
+                    bill_col_edit(&|c| c.align = align);
                     bill_changed = true;
                 }
             }
@@ -7714,12 +7220,13 @@ impl MatchEvent for App {
             }
             if bill_changed {
                 self.sync_bill_format_ui(cx);
+                self.schedule_format_autosave(cx, true, false);
             }
         }
         {
             let size_now = self.ui.text_input(cx, ids!(std_size_input)).text();
             if let Ok(raw) = size_now.trim().parse::<f32>() {
-                let em = raw.clamp(12.0, 48.0);
+                let em = raw.clamp(print_share::KOT_EM_MIN as f32, print_share::KOT_EM_MAX as f32);
                 // Release the guard before repainting: sync_std_print_ui locks
                 // app_state itself (DEV.md bug 7a — typing a size hung Settings).
                 let changed = {
@@ -7806,19 +7313,14 @@ impl MatchEvent for App {
             if is_client {
                 self.set_status(cx, app_t("printers_host_only"));
             } else {
-                let empty = {
+                {
+                    // None saved: the list opens on its Find printers row.
                     let mut st = app_state().lock().unwrap();
                     if st.suggest_open == Some(SuggestField::TestPrinters) {
-                        st.suggest_open = None;
-                    } else if st.printer_draft.printers.is_empty() {
                         st.suggest_open = None;
                     } else {
                         st.open_suggest(SuggestField::TestPrinters, "");
                     }
-                    st.printer_draft.printers.is_empty()
-                };
-                if empty {
-                    self.set_status(cx, app_t("printers_none_hint"));
                 }
                 self.paint_printers_panel(cx);
                 self.ui.widget(cx, ids!(printers_test_suggest)).redraw(cx);
@@ -7829,19 +7331,14 @@ impl MatchEvent for App {
             if is_client {
                 self.set_status(cx, app_t("printers_host_only"));
             } else {
-                let empty = {
+                {
+                    // None saved: the list opens on its Find printers row.
                     let mut st = app_state().lock().unwrap();
                     if st.suggest_open == Some(SuggestField::KotTestPrinters) {
-                        st.suggest_open = None;
-                    } else if st.printer_draft.printers.is_empty() {
                         st.suggest_open = None;
                     } else {
                         st.open_suggest(SuggestField::KotTestPrinters, "");
                     }
-                    st.printer_draft.printers.is_empty()
-                };
-                if empty {
-                    self.set_status(cx, app_t("printers_none_hint"));
                 }
                 self.sync_kot_format_ui(cx);
                 self.ui
@@ -7872,7 +7369,7 @@ impl MatchEvent for App {
             let result = (|| -> Result<String, String> {
                 let mut st = app_state().lock().unwrap();
                 if let Ok(raw) = size_now.trim().parse::<f32>() {
-                    st.printer_draft.set_standard_em(raw.clamp(12.0, 48.0));
+                    st.printer_draft.set_standard_em(raw.clamp(print_share::KOT_EM_MIN as f32, print_share::KOT_EM_MAX as f32));
                 }
                 let em = st.printer_draft.standard_em();
                 st.books_op(BooksOp::SetStandardEm { em })?;
@@ -9379,6 +8876,30 @@ impl MatchEvent for App {
             print_share::cancel_find_printers();
             self.show_found_printers(cx);
             self.paint_submit_busy_chrome(cx);
+        }
+        // The Printers sheet: the same Find / Cancel as the panel, then Done.
+        if self.ui.button(cx, ids!(pm_find_cancel)).clicked(actions) {
+            print_share::cancel_find_printers();
+            self.show_found_printers(cx);
+            self.paint_submit_busy_chrome(cx);
+            self.paint_printers_modal(cx);
+        }
+        if self.ui.button(cx, ids!(pm_find_btn)).clicked(actions)
+            && !print_share::is_finding_printers()
+        {
+            print_share::find_printers_in_background();
+            self.show_found_printers(cx);
+            self.paint_submit_busy_chrome(cx);
+            self.paint_printers_modal(cx);
+        }
+        if self.ui.button(cx, ids!(pm_close)).clicked(actions)
+            || self.ui.modal(cx, ids!(printers_modal)).dismissed(actions)
+        {
+            self.close_printers_modal(cx);
+        }
+        if self.ui.button(cx, ids!(snack_find_printers)).clicked(actions) {
+            self.clear_snack(cx);
+            self.open_printers_modal(cx);
         }
         if self.ui.button(cx, ids!(find_printers_btn)).clicked(actions) {
             let is_client = app_state().lock().unwrap().device_role == DeviceRole::Client;

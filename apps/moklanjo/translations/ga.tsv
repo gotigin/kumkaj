@@ -39,7 +39,7 @@ adding_item	Ráta nua á chur leis
 editing_item	Eagarthóireacht
 save	Sábháil
 remove	Bain
-empty_catalog	Níl aon rátaí fós. Oscail Rátaí & seirbhísí, cuir ceann amháin (ainm + praghas, aonad kg), ansin Áirithint.
+empty_catalog	Níl aon rátaí fós.
 counter_sale	Áirithint cuntair
 total	Iomlán
 cash	Airgead tirim
@@ -171,8 +171,6 @@ selected_language	Roghnaithe
 continue	Lean ar aghaidh
 this_device	AN GLÉAS SEO
 device_use_q	Conas a úsáidfear an gléas seo?
-last_server_mode	Bhí “Server” — sconna chun leanúint ar aghaidh
-last_client_mode	Bhí “Client” — sconna chun leanúint ar aghaidh
 choose_server	Roghnaigh freastalaí
 choose_server_hint	Oscail freastalaí atá ann cheana, nó cruthaigh ceann do ghnó eile.
 create_new_server	Cruthaigh freastalaí nua
@@ -501,8 +499,6 @@ job_layout	Leagan amach
 job_delivery	Conas a seoltar an post
 job_size	Méid cló
 job_size_ph	m.sh. 18, 20, 26…
-save_receipt_format	Sábháil formáid admháil
-save_label_format	Sábháil formáid lipéad
 test_receipt_format	Admháil tástála
 test_label_format	Lipéad tástála
 test_receipt_sent	Admháil samplach seolta
@@ -610,7 +606,7 @@ units_heading	Aonaid
 booking_measures	Bearta áirithinte
 drawer_count	Comhaireamh tarraiceán (roghnach)
 spreadsheet_csv	Scarbhileog (CSV)
-bank_reconciliation	Aontú bainc (marcaigh i gcoinne do ráiteas bainc)
+bank_reconciliation	Aontú bainc
 book_add_product	Leabhar — cuir táirge / ráta leis
 book_opening_credit	Leabhar — creidmheasanna oscailte
 account_kind	Cineál cuntais (beartaigh ceann amháin)
@@ -650,7 +646,7 @@ net_word	Líon
 offline_badge	AS LÍNE
 optional_login_help	Logáil isteach roghnach (aitheantas + pasfhocal). Socraíonn úinéir é uair amháin; is é an t-úsáideoir amháin is féidir pasfhocal a athrú níos déanaí.
 or_unlock_login	Nó díghlasáil le haitheantas logála + pasfhocal
-permission_preset	Jab (socraítear scáileáin agus cearta)
+permission_preset	Jab
 preset_help_moklanjo	Cóiré: díol. Bainisteoir: díol + míreanna + neamhní/cor.
 product_locked_moklanjo	Moklanjo
 product_only_moklanjo	Moklanjo amháin atá san aip seo - leabhair + deasc áirithinte. Tá trádáil eile os comhair na loinge mar tháirgí ar leithligh níos déanaí.
@@ -698,10 +694,6 @@ pin_hint_paired	Táille bhreise péireáilte — díthaispeáint chun a dhíol
 pin_hint_pair_first	Breise go dtí — péire le dtí an gléas siopa ar dtús
 unlock_to_continue	Díghlasáil chun leanúint ar aghaidh
 no_staff_yet	Níl aon fhoireann fós — díghlasáil mar Úinéir, ansin Foireann
-status_server_set_pin	Mód “Server” — socraigh PIN an Úinéara
-status_server_tills	Mód 'Server' — is féidir tilleanna breise a bheith páirteach. Díoscaigh
-status_server_unlock	Mód "Server" — díchumasaigh mar Úinéir
-status_client_unlock	Mód "Client" — bain na srianta chun díol
 icon_new_selected	Deilbhín: comhad nua roghnaithe — sconna Sábháil branda
 icon_custom	Deilbhín: marc áite saincheaptha
 icon_default	Deilbhín: Marc Kumkaj (réamhshocrú) — roghnaigh ceann saincheaptha

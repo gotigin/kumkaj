@@ -1,5 +1,4 @@
 # Romanian — Română (ro). One key<TAB>text per line, in en() order; keep {placeholders}.
-app_tagline	Tejghea de farmacie: medicamente, lot, registru de credit și registre. Gratuit offline.
 barcode_ph	Cod de bare / EAN
 composition_ph	Substanță / compoziție (căutabilă)
 schedule_h_off	Schedule H — oprit (marcaj proprietar)
@@ -13,7 +12,6 @@ expiry_alerts	Alerte de expirare (următoarele 7 zile)
 expiry_none	Niciun lot nu expiră în următoarele 7 zile.
 rx_nudge	Proprietarul a marcat Rx / Schedule H — adaugă o notă dacă e nevoie.
 unlock	Deblochează
-pin_hint	PIN-ul proprietarului începe cu 0000
 sell	Vinde
 buy	Cumpărare
 books	Jurnalul zilei
@@ -32,17 +30,13 @@ reports_month	Profit și pierdere (lună)
 reports_aging	Restant / Debit-Credit
 reports_balance_sheet	Bilanț
 reports	Registru bancar și P&P
-refresh	Reîmprospătează
 undo	Anulează
-start_tracking	Începe urmărirea
 stock_minus	− Stoc
 stock_plus	+ Stoc
 settle_cash	Închide cu numerar
 settle_card	Închide cu cardul
 items	Medicamente
 nav_items	Medicamente
-more	Mai mult
-your_items	Medicamentele tale
 items_help	Atinge un articol ca să-l editezi. Articol nou golește formularul. Caută după nume sau cod scurt, pune un preț (0 e în regulă), apoi Adaugă. Vânzările deja înregistrate păstrează numele cu care au fost taxate.
 add_item	Adaugă articol
 new_item	Articol nou
@@ -53,28 +47,22 @@ remove	Elimină
 removed_items	Articole eliminate
 removed_help	Restaurarea pune articolul înapoi la Articole exact cum era — preț, poză și categorie.
 restore_item	Restaurează
-empty_catalog	Niciun medicament încă. Deschide Medicamente, adaugă nume, cod de bare sau substanță, apoi vinde.
+empty_catalog	Niciun medicament încă.
 total	Total
 cash	Numerar
 upi	UPI
 card	Card
 credit	Parteneri
 clear	Golește
-ready_to_sell	Gata de înregistrat
 today_prefix	Azi
-today_mid	azi
 owed	restant
-round_word	rotunjire
 back	Înapoi
 sold_out	Indisponibil
 restock	Reaprovizionează
 not_tracked	Neurmat
 in_stock	în stoc
 marked_sold_out	Marcat indisponibil
-add_upper	ADAUGĂ
-na	N/A
 qty	Greut./Cant.
-unit_at	Tarif @
 actual	Efectiv
 applied	Aplicat
 note_ph	Notă (opțional)
@@ -93,21 +81,13 @@ bill_item_qty	Cant.
 bill_item_price	Preț
 bill_item_amount	Sumă
 bill_item_note	Rx / notă de vânzare
-bill_item_col_gap	Spațiu coloane
 bill_item_col_order	Ordine coloane
 bill_item_col_sep	Linii coloane
-bill_item_gap_tight	Strâns
-bill_item_gap_comfort	Confortabil
-bill_item_gap_wide	Larg
-bill_item_num_width	Coloane numerice
-bill_item_num_compact	Compact
-bill_item_num_comfort	Confortabil
-bill_item_num_wide	Larg
-bill_item_num_align	Aliniere numere
-bill_item_gap_em	Spațiu (em)
-bill_item_qty_min	Cant. min (em)
-bill_item_price_min	Preț min (em)
-bill_item_amount_min	Sumă min (em)
+slip_col_width	Lățime (mm)
+slip_col_start	Spațiu la început (px)
+slip_col_end	Spațiu la sfârșit (px)
+slip_col_align	Alinierea textului
+slip_columns_help	Lățimea fiecărei coloane include spațiul de la început și de la sfârșit. Textul se încadrează în coloana sa; ce depășește lățimea conținutului este tăiat, pe hârtie și în previzualizare.
 bill_total_qty_label	Etichetă cant. totală
 bill_total_subtotal_label	Etichetă subtotal
 bill_total_grand_label	Etichetă total general
@@ -120,11 +100,7 @@ bill_total_qty	Cant. totală
 bill_total_subtotal	Subtotal
 bill_total_grand	Total general
 kot_unassigned	Nealocat
-pos_tab_items	Articole adăugate
-pos_tab_payment	Plată
-settings_hub_title	Setări
 settings_hub_help	Deschide câte o zonă — mai puțină derulare, alegeri mai clare.
-settings_back	Înapoi
 settings_sec_language	Limbă și monedă
 settings_sec_country	Țară și taxă
 settings_sec_tills	Alte dispozitive
@@ -166,35 +142,17 @@ diag_cleared	Jurnalele de diagnostic au fost golite
 sidebar_settings	Bară laterală
 sidebar_settings_help	Aceleași pictograme ca șina laterală. Trage un rând ca să reordonezi. Comută ca să arăți sau să ascunzi. Setări și Blocare rămân mereu pe bară.
 sidebar_always_on_short	Mereu pornit
-sidebar_back_settings	Înapoi
-sidebar_shown	Afișat
-sidebar_hidden	Ascuns
-sidebar_always_on	Mereu pe bară
-sidebar_shown_hint	Afișat pe șina laterală / filele de jos
-sidebar_hidden_hint	Ascuns de pe bară
 sidebar_menu_items	Articole
 sidebar_enable_all	Activează tot
 sidebar_disable_all	Dezactivează tot
 sidebar_order_saved	Ordinea barei laterale salvată
 sidebar_visibility_saved	Vizibilitatea barei laterale salvată
-amounts_hide	Ascunde
-amounts_show	Arată
-printers_none_hint	Salvează mai întâi o imprimantă pe acest dispozitiv, apoi adaug-o la notă sau la o secțiune
-counter	Tejghea
-dine_in	Tejghea
-takeaway	La pachet
-order	Comandă
 sales	Vânzări
-sales_refunds	Vânzări și rambursări
 day_close	Închidere de zi
 reports_expenses	Registru bancar și P&P
 nav_reports	Rapoarte
 nav_settings	Setări
 nav_lock	Blochează
-no_sale_yet	Încă nicio vânzare
-favorites	Favorite
-favorites_help	Articole pe care le vinzi des, salvate pentru autentificarea ta. Adaugă unul la notă sau fă lista din toate articolele de mai jos.
-your_favorites	Favoritele tale
 all_items	Toate articolele
 frequent	Frecvente
 added_items	Articol(e) adăugat(e)
@@ -211,8 +169,6 @@ zero_sales_on	Permite ₹0
 zero_sales_off	Cere preț
 zero_sales_saved_on	Vânzările cu valoare zero sunt permise
 zero_sales_saved_off	Vânzările trebuie să aibă un preț peste ₹0
-no_favorites	Încă nu sunt favorite — adaugă articole din lista de mai jos.
-add_to_bill	Adaugă la notă
 added	Adăugat
 owes_word	datorează
 selected_word	Selectat
@@ -221,19 +177,11 @@ chip_missing_customer	Clientul selectat lipsește — alege din nou
 chip_no_customer	Încă niciun client — tastează un nume, apoi atinge Credit
 credit_summary_fmt	{} clienți · credit deschis {} · avansuri reținute {}
 recent_label	Recente:
-start_order	Începe comanda
-open_bill	Deschide nota
-collect_payment	Încasează plata
-payment_pending	Plată în așteptare
-collect_at_counter	încasează la tejghea
 inventory	Inventar
-inventory_stock	Inventar și stoc
 branches	Filiale
-branches_org	Filiale și organizație
 credit_customers	Parteneri (credit și furnizori)
 customer_name_ph	Nume partener
 new_customer_ph	Nume nou de partener
-item_name_ph	Nume articol (ex. Masala Dosa)
 item_price_ph	Preț
 start_template	Produs
 team	Echipă
@@ -241,17 +189,11 @@ team_pins	Echipă și PIN
 my_pin_settings	PIN-ul meu
 settings_hub_help_my_pin	Schimbă PIN-ul de deblocare al persoanei conectate pe acest dispozitiv.
 team_self_help	O autentificare: un PIN nou, o parolă nouă sau ambele. Lasă o căsuță goală ca să păstrezi ce ai. Întreabă Proprietarul dacă ai nevoie de alte ecrane sau drepturi.
-backup_settings	Copie de rezervă și setări
-lock_app	Blochează aplicația
 pick	Alege
-select	Selectează
 advance	Avans
 owner	Proprietar
 staff	Personal
 photo	Poză
-auto	Automat
-prev	Înapoi
-next	Înainte
 ok	OK
 this_shop	Server
 extra_till	Client
@@ -260,17 +202,13 @@ server	Server
 client	Client
 language_currency	Limbă și monedă
 language	Limbă
-choose_language	Alege limba
 language_setup_hint	Urmează limba acestui dispozitiv sau alege tu una.
 lang_follow_platform	Limba dispozitivului
 lang_pick_user	Alege limba
 lang_platform_now	Limba dispozitivului acum
 selected_language	Selectat
-continue	Continuă
 this_device	ACEST DISPOZITIV
 device_use_q	Cum va fi folosit acest dispozitiv?
-last_server_mode	Era Server — atinge ca să continui
-last_client_mode	Era Client — atinge ca să continui
 choose_server	Alege un server
 choose_server_hint	Deschide un server existent sau creează unul pentru altă afacere.
 create_new_server	Creează server nou
@@ -280,12 +218,6 @@ server_remove_pin_ph	PIN proprietar pentru a elimina un server
 only_owner_remove_server	Doar Proprietarul poate elimina un server
 owner_pin_remove_server	PIN-ul proprietarului e necesar ca să elimini acest server
 device_setup_help	Serverul ține registrele aici. Clientul se împerechează cu un Server.
-app_template_heading	Catalog de start (opțional)
-app_template_blurb	Încarcă un catalog mostră; proprietarul Zahir (zahir), adminul Asif (asif, PIN 1111), casierul Nawaz (nawaz, PIN 0000); taxă/GST oprite; bară laterală în față; istoricul se șterge după 4 ore (și Șterge acum la Copie de rezervă); banda Azi oprită; notă compactă + margini standard pentru tăvi înguste. Taxa și elementele din bara laterală se pot reporni în Setări.
-app_template_apply	Aplică catalogul de start
-app_template_skip	Sari deocamdată
-app_template_status	Server gata — aplică catalogul de start sau sari peste
-app_template_importing	Se aplică {title}…
 currency	Monedă
 backup	Copie de rezervă
 use	Folosește
@@ -319,7 +251,7 @@ attachments_last_expense	Atașamente (ultima cheltuială)
 bank	Bancă
 bank_in	Intrare bancă
 bank_out	Ieșire bancă
-bank_reconciliation	Reconciliere bancară (bifați față de extrasul bancar)
+bank_reconciliation	Reconciliere bancară
 bank_to_till	Bancă → casă
 book_add_dish	Registru — adaugă articol / articol
 book_opening_credit	Registru — credit de deschidere
@@ -349,9 +281,6 @@ share_whatsapp	Partajează WhatsApp
 lan_pages_heading	Pagini pentru clienți pe Wi‑Fi
 lan_pages_help	Pe Wi‑Fi-ul acestui magazin, paginile pentru clienți merg pentru panoul de afișaj și pentru feedback. Cei pe date mobile au nevoie de Cloud mai târziu. Un terminal de card sau un link de plată este opțional și nu blochează niciodată tejgheaua.
 diag_send_heading	Partajează în afara dispozitivului
-optional_login_heading	Autentificare opțională
-rights_heading	Drepturi
-ops_panel	Operații locale
 crm_heading	Clienți și mesaje
 crm_help	Zi de naștere, loialitate, oaspeți inactivi și de top — coadă SMS sau WhatsApp. Folosește {name} și {points} în mesaj. Proprietarul apasă trimite; nimic nu pleacă singur.
 crm_queue_sms	Pune în coada SMS
@@ -376,21 +305,17 @@ till_wallet_topup_ph	Sumă de încărcare a portofelului
 till_voucher_issue_amt_ph	Sumă voucher de emis
 till_voucher_issue_code_ph	Cod voucher nou
 bulk_price_apply	Aplică prețul în masă
-card_terminal_optional	Terminal de card / link de plată (opțional când există internet)
 copy_report	Copiază raportul
 counted_cash_ph	Numerar numărat în sertar
 country_tax	Țară și taxă
 create_backup	Creează copie de rezervă
 credit_limit_heading	Limită de credit (partener selectat / numit)
-day_close_summary	Rezumatul închiderii de zi
 delete_party	Șterge partenerul selectat
-delivery	Livrare
 done_open_books	Gata — deschide registrele
 drawer_count	Numărătoare sertar (opțional)
 expense_heading	Cheltuială
 export_day	Exportă ziua
 extra_note_bill_ph	Notă suplimentară pe această notă / vânzare
-extra_note_expense_ph	Notă suplimentară pe ultima cheltuială
 extra_tills_heading	Case suplimentare
 other_devices_help_heading	Configurează alte dispozitive
 other_devices_help	Pe acest dispozitiv (Server): Alte dispozitive → Permite tejghele suplimentare. Notează codul de asociere și adresa Wi‑Fi. Atinge Permite altor dispozitive să se conecteze dacă apare. Pe un calculator, atinge Pornește cu acest calculator. Pe fiecare alt dispozitiv: instalează aplicația, alege Modul client, Găsește serverul magazinului (sau scrie adresa), introdu codul de asociere, Asociază acum. Comenzile așteaptă pe dispozitiv dacă pică Wi‑Fi și pleacă când serverul răspunde din nou. Imprimantele suplimentare se setează pe server (Setări → Imprimante) — tejghelele suplimentare trimit notele acolo.
@@ -404,7 +329,6 @@ login_id_ph	Nume de utilizator
 mark_cleared	Marchează decontat
 new_party_clear	Partener nou (golește formularul)
 new_party_kind_supplier_ph	Tip partener nou (Furnizor)
-next_country	Țara următoare
 next_order	Comanda următoare (golește tejgheaua)
 note_gstin_ph	Notă / GSTIN / memento de acord
 notes_attach_party	Note și atașamente (partener selectat)
@@ -422,8 +346,6 @@ pay_ap_cash	Plătește AP numerar
 pay_ap_heading	Plătește ce le datorăm (AP)
 pay_ap_upi	Plătește AP cu UPI
 pay_selected_heading	Plătește selecția (stinge datoria / ia avans)
-pick_from_items	Alege din articolele noastre
-prev_country	Țara anterioară
 print_open	Tipărește / deschide
 reason_amend_ph	Motiv pentru modificare / anulare / rambursare
 reason_note_ph	Motiv / notă (pierdere, numărare, …)
@@ -447,14 +369,10 @@ history_after_hours	După ore
 history_hours_ph	Ore (1–168, implicit 4)
 history_hours_save	Salvează orele
 history_clear_now	Golește istoricul acum
-history_cleared	Istoricul de tranzacții golit — configurarea păstrată
-history_retention_saved	Ștergerea istoricului salvată
 history_hours_saved	Orele istoricului salvate
-history_owner_only	Doar Proprietarul sau Administratorul poate goli istoricul
 rollup	Centralizare
 save_brand	Salvează marca
 save_business_id	Salvează id-ul afacerii
-save_business_name	Salvează numele afacerii
 save_features	Salvează
 save_features_named	Salvează {name}
 save_features_ok	Configurarea pentru {name} salvată
@@ -485,7 +403,6 @@ copy_pair_code	Copiază codul de împerechere
 new_pair_code	Cod nou de împerechere
 pair_finishing	Se termină împerecherea… se aplică registrele localului
 pair_opening	Se deschide casa…
-pair_copied	Cod de împerechere copiat
 lan_offline_waiting	Serverul e inaccesibil · {n} așteaptă
 lan_connecting	Se conectează la local…
 lan_live	În direct
@@ -499,7 +416,6 @@ firewall_waiting	Se așteaptă solicitarea administratorului…
 lan_join_help	Pe celălalt dispozitiv: Modul Client → Găsește serverul localului (sau tastează {addr}) → cod de împerechere {code}.
 lan_pair_status	Wi‑Fi {addr}
 lan_join_help_no_addr	Conectează acest dispozitiv la Wi‑Fi ca să aibă o adresă.
-lan_no_address	Încă nu e adresă Wi‑Fi — conectează-te la Wi‑Fi-ul localului.
 lan_not_listening	Nu acceptă dispozitive (portul {port} e ocupat). Repornește aplicația.
 lan_tills_off	Casele suplimentare sunt oprite. Permite-le ca să se alăture alt dispozitiv.
 paired_with	Împerecheat · {url}
@@ -520,41 +436,21 @@ printers_help	Găsește imprimante, atinge una ca s-o alegi, apoi Tipărește o 
 printers_host_only	Imprimantele se setează pe dispozitivul magazinului (Server). Această casă trimite notele și tichetele vechi acolo — Găsește / adaugă / alocă rămân pe server. Pagina de test și mărimea de tipărire a notei merg la server.
 printers_find_heading	Găsește imprimante
 printers_find_tip	Căutarea scanează acest dispozitiv și ține lista la zi.
-printers_pool_heading	Imprimante
-printers_pool_tip	Căutarea scanează acest dispozitiv și ține această listă la zi.
 printers_pool_empty	(încă niciuna — atinge Căutare)
-printers_routes_help	Găsește imprimantele pe care sistemul de operare le știe deja. Alocă-le notei și fiecărei secțiuni la Format notă și fișă.
 printer_assign_dd	Imprimantă reală: {place}
 printer_assign_pick	Alege imprimanta reală
 printer_profile_heading	Așezare
 vp_delivery_heading	Livrare
 vp_delivery_help	Cum trimite joburile această imprimantă virtuală — document OS, octeți bruți sau ESC/POS. Conținutul fișei (mărimea caracterelor, împachetarea, marginile) îl decide formatul notei / fișei, nu aici.
-vp_type_size_heading	Mărime literă
-vp_wrap_heading	Lățime de înfășurare
-vp_margin_heading	Margini
 vp_delivery_spooler	Document OS (spooler de sistem)
 vp_delivery_raw	Octeți bruți către dispozitiv
 vp_delivery_escpos	Comenzi termice ESC/POS
 virtual_printer_new	Imprimantă virtuală nouă
 virtual_printer_selected	Se editează „{name}” — atinge altul din listă ca să schimbi
-virtual_printer_tap_list	Atinge o imprimantă virtuală din listă ca s-o editezi
 config_layout_portrait	Portret
 config_layout_landscape	Peisaj
 config_send_os	Spooler de sistem
 config_send_escpos	ESC/POS
-profiles_heading	Așezări
-profiles_empty	(încă nicio așezare)
-profile_builtin	încorporată
-profile_custom	personalizată
-profile_name_ph	Nume așezare
-profile_new	Așezare nouă
-profile_delete	Șterge așezarea
-profile_created	Așezare creată
-profile_deleted	Așezare ștearsă
-profile_builtin_keep	Așezările încorporate nu se pot șterge
-config_saved	Actualizat
-config_selected	Selectat „{name}”
-printer_output_heading	Imprimante virtuale
 virtual_printers_heading	Imprimante virtuale
 virtual_printers_empty	Încă nu sunt imprimante virtuale — setează valorile mai jos, apoi Salvează. După ce ai, atinge una din listă ca s-o editezi.
 virtual_printer_name_ph	Nume imprimantă virtuală (opțional)
@@ -566,71 +462,32 @@ virtual_printer_deleted	Șters imprimanta virtuală „{name}”
 virtual_printer_updated	Imprimantă virtuală actualizată
 virtual_printer_updated_named	Imprimantă virtuală „{name}” actualizată
 virtual_draft_layout	Valori setate pentru următoarea imprimantă virtuală
-virtual_draft_send	Valoare setată pentru următoarea imprimantă virtuală
 virtual_need_real	Alege mai întâi o imprimantă reală
 virtual_need_select	Alege o imprimantă virtuală de șters
 real_printer_selected	Selectat: {name}
-printers_routes_heading	Unde se tipărește
-route_pick_heading	Loc
 route_editing	Se editează: {name}
-route_assigned	Adăugat {printer} la {place}
-route_already_assigned	Deja pe acest loc: {printer}
 route_cleared	Golit {name}
-route_assigned_empty	Nimic pe acest loc
-route_tap_select	atinge pentru a selecta
 route_tap_selected	selectat
-route_pick_printer_first	Atinge mai întâi o imprimantă
-route_assigned_heading	Imprimante
-route_add_heading	Atribuie
-printer_label_ph	Nume (de ex. Imprimantă tejghea)
 printer_target_ph	Nume imprimantă de sistem sau host:9100
 printer_target_default	imprimanta obișnuită a acestui calculator (adresă goală)
-printer_wire_heading	Profil
-printer_wire_escpos	ESC/POS
-printer_wire_os	Portret
-printer_wire_os_portrait	Portret
-printer_wire_os_landscape	Peisaj
-printer_wire_escpos_short	ESC/POS
-printer_wire_os_short	Portret
-printer_wire_os_landscape_short	Peisaj
-printer_format_custom	Profil personalizat nou
-printer_format_custom_label	Personalizat
-printer_format_custom_added	Profil personalizat adăugat pentru acest loc
-add_printer	Adaugă imprimantă
-route_pick_ph	Notă sau o secțiune de farmacie
 route_bill	Notă
-route_dont_print	Nicio imprimantă
 station_print_pick_first	Alege mai întâi o secțiune de farmacie
-station_vps_empty	Încă nu sunt imprimante — găsește-le la Setări → Imprimante
 bill_printers_dd	Imprimante pentru notă
 bill_printers_dd_n	{n} imprimantă(e) pentru notă · atinge pentru a schimba
 station_vp_attached	Imprimantă atașată
 station_vp_detached	Imprimantă eliminată de pe stație
-route_up	Sus
-route_down	Jos
-route_clear	Golește
-save_printers	Salvează imprimantele
 print_test_page	Tipărește o pagină de test
 no_printer_assigned	Nicio imprimantă
-test_page_no_printer	Nicio imprimantă pentru {place} — atașează o imprimantă, apoi încearcă din nou
 test_page_pick_first	Alege mai întâi imprimanta(ele) pentru o pagină de test — apoi Tipărește o pagină de test
 test_printers_dd	Imprimante pentru o pagină de test
 test_printers_dd_n	{n} imprimantă(e) pentru o pagină de test · atinge pentru a schimba
 test_printer_picked	Test pe: {name}
 test_printer_cleared	Nu se testează pe: {name}
 test_page_sent_n	Pagină de test trimisă la {n} imprimantă(e)
-batch_cancel	Anulează marcatele
-batch_cancel_n	Anulează marcatele ({n})
-batch_cancel_none	Marchează mai întâi unul sau mai multe articole trimise — apoi Anulează marcatele
-batch_cancel_title	Anulează medicamentele marcate — un motiv, o fișă de anulare pe secțiune
-batch_cancel_ok	{n} articole anulate · {slips} fișă(e) de anulare → {kitchens}
-batch_cancel_ok_noprint	{n} articole anulate — tipărirea automată e oprită, deci nicio fișă de anulare
 printers_saved	Salvat
-test_page_sent	Pagină de test trimisă — verifică imprimanta
 test_page_sent_one	Pagină de test trimisă la {name} — verifică imprimanta aceea
 printers_found	Găsite {n}: {list}
 printers_find_synced	Găsite {n} — {new} noi
-printer_on_device	salvat
 printer_already_added	deja adăugat
 printer_already_saved	Deja salvat: {name}
 find_printers	Găsește imprimante
@@ -640,7 +497,6 @@ cancelled	Anulat
 printers_tap_find	Atinge Căutare ca să listezi imprimantele pe care le poate folosi acest dispozitiv.
 printers_none_found	Nimic găsit — tastează un nume de imprimantă de sistem sau un IP (ex. 192.168.1.50).
 printer_from_find	Adăugat {name}
-bill_printer_ph	Imprimantă pentru note
 queue_refused	Neacceptat de local ({n}) — verifică fiecare la casă:
 clear_not_accepted	Verificat — golește lista asta
 device_name_ph	Numele acestui dispozitiv
@@ -650,7 +506,6 @@ connected_now	conectat acum
 backup_failed	Ultima copie de rezervă automată a eșuat: {e}
 backup_overdue	Nicio copie de rezervă de {n} zile — ține aplicația deschisă pe acest dispozitiv ca să poată face backup.
 disk_low	Doar {mb} MB liberi pe acest dispozitiv — copiile de rezervă vor eșua curând. Eliberează spațiu.
-last_seen_devices	Văzut ultima dată: {time}
 connection_to_shop	Conexiune la local
 supplier_name_ph	Nume furnizor (sau partener)
 supplier_ph	Furnizor
@@ -708,7 +563,6 @@ currency_use_help	Derulează și atinge Folosește pentru orice monedă acceptat
 day_close_help	Înregistrarea închiderii zilei salvează acest rezumat (și diferența sertarului, dacă a fost numărată) în jurnalul de audit. Nu oprește vânzarea.
 expenses_word	Cheltuieli
 feature_access_help	Ce pot deschide — opțional; postul de mai sus setează deja o valoare implicită
-footer_local	SQLite local · Gratuit pentru totdeauna · Fără cloud
 fresh_book_tabiyat	Nou = catalog gol (adaugi articole mai târziu). Registru = scrie stocul inițial și cine îți datorează, mai jos.
 fresh_selected	Fresh selectat — catalogul rămâne gol. Atinge Gata când ești pregătit.
 gross_word	Brut
@@ -721,12 +575,9 @@ net_word	Net
 offline_badge	DECONECTAT
 optional_login_help	Autentificare opțională (id + parolă). Proprietarul setează o dată; doar utilizatorul poate schimba parola mai târziu.
 or_unlock_login	Sau deblochează cu id de autentificare + parolă
-permission_preset	Post (setează ecrane și acțiuni cu bani)
-preset_help_tabiyat	Casier: vinde. Manager: vânzare + articole + anulare/modificare.
-product_locked_tabiyat	Tabiyat
+permission_preset	Post
 product_only_tabiyat	Tabiyat este sistemul de operare pentru farmacie: vânzare de medicamente, evidență lot/expirare, credit și registre — offline pe dispozitivele tale. Marcajele Schedule H / Rx sunt notițe ale proprietarului, nu conformitate.
 purchases_cogs	Cumpărări (costul mărfurilor)
-qty_cap	CANT
 restore_help	Restaurare: alege o copie de rezervă. Cărțile se deschid cum erau atunci; cărțile de acum se salvează întâi, deci asta se poate anula.
 wipe_data_heading	Șterge datele locale
 wipe_data_help	Doar proprietarul — aceleași alegeri ca la dezinstalarea Windows. Înregistrările de afaceri șterg istoricul de tranzacții dar păstrează articolele și configurarea (ca PIN-ul de deblocare de urgență). Configurarea magazinului elimină baza de date a registrelor. Preferințele de ecran șterg fereastra/limba. Confirmă cu PIN-ul proprietarului. PIN-ul de deblocare de urgență de la Echipă este separat (ștergere discretă la deblocare).
@@ -759,7 +610,6 @@ staff_renamed	Nume salvat
 staff_setup_copied_hire	Configurare copiată de la {name} — setează un nume și un PIN noi, apoi Adaugă angajat
 staff_setup_copied_edit	Configurarea lui {from} copiată peste {to}
 staff_copy_need_selected	Alege mai întâi pe cine editezi
-staff_copy_need_source	Alege a cui configurare se copiază
 staff_copy_same	E aceeași persoană — alege pe altcineva
 staff_rename_need_selected	Alege mai întâi pe cine redenumești
 team_pick_hint	Alege pe cine editezi — ecranele, drepturile de bani și stațiile apar doar pentru persoana aceea.
@@ -774,15 +624,9 @@ unit_picker_off	Oprit
 we_owe_them	Noi le datorăm
 who_unlocking	Cine deblochează?
 locked_word	Blocat
-show_pin	Arată PIN
-hide_pin	Ascunde PIN
 set_owner_pin	SETEAZĂ PIN PROPRIETAR
 enter_owner_passcode	INTRODU CODUL PROPRIETARULUI
 enter_staff_passcode	INTRODU CODUL PERSONALULUI
-pin_count_zero	0 / 12 cifre · cel puțin 4, apoi OK
-pin_count_need	{} / 12 cifre · mai trebuie {}
-pin_count_full	12 / 12 cifre · apasă OK
-pin_count_ready	{} / 12 cifre · apasă OK când ești gata
 pin_hint_choose	Alege 4–12 cifre · Enter sau Deblochează pentru salvare
 pin_hint_new	PIN Proprietar nou de 4–12 cifre · Enter sau Deblochează
 pin_hint_shop_code	Dispozitivul localului · cod de împerechere {}
@@ -791,23 +635,15 @@ pin_hint_paired	Casă suplimentară împerecheată — deblochează ca să vinzi
 pin_hint_pair_first	Casă suplimentară — împerecheaz-o întâi cu dispozitivul localului
 unlock_to_continue	Deblochează ca să continui
 no_staff_yet	Încă nu e personal — deblochează ca Proprietar, apoi Echipă
-status_server_set_pin	Mod Server — setează PIN-ul Proprietarului
-status_server_tills	Mod Server — casele suplimentare se pot alătura. Deblochează
-status_server_unlock	Mod Server — deblochează ca Proprietar
-status_client_unlock	Mod Client — deblochează ca să vinzi
 icon_new_selected	Pictogramă: fișier nou selectat — atinge Salvează marca
 icon_custom	Pictogramă: marcă proprie a localului
 icon_default	Pictogramă: marca Kumkaj (implicit) — alege una proprie
 logo_yours	Logo: logo-ul localului tău — se arată pe ecrane și chitanțe
 logo_default	Logo: marca Kumkaj (implicit) — alege-l pe al tău dacă ai
-tmpl_current	Curent: {} — {}
-tmpl_selected	Selectat: {} — {}
 setup_complete	Configurare completă
 onboard_fresh_tmpl	Fresh · {} — catalogul începe gol; adaugă articole în Articole, apoi Gata.
 onboard_book_tmpl	Book · {} — adaugă articole și credit de început, apoi Gata.
-onboard_template_tmpl	Pune numele locului dacă vrei, apoi alege cum să începi.
 tmpl_blurb	Tejghea de farmacie: medicamente, lot/expirare, registru de credit, registre.
-tmpl_how	Vinde la tejghea; Cumpără pentru stoc; Registre pentru jurnalul zilei.
 reports_facet_title	Rapoarte
 reports_facet_help	Jurnalele zilei, vechimea partenerilor, înregistrări bancare și profit și pierdere pe perioadă.
 against_bill_ph	La nota nr. de mai sus (opțional)
@@ -818,14 +654,12 @@ amount_ph	Sumă
 amount_received_ph	Sumă primită
 amount_we_pay_ph	Suma pe care o plătim
 business_name_ph	Numele firmei
-category_new_ph	Categorie (opțional, se creează dacă e nouă)
 code_bag_ph	Cod (sac)
 conv_factor_ph	Factor (25 = 1 sac → 25 kg)
 country_code_ph	Cod de țară ex. IN, GB, US, AE, BR
 credit_khata_amount_ph	Credit / sumă pe cont
 credit_limit_ph	Limită de credit (0 = niciuna)
 from_code_ph	Din cod (sac)
-item_name_lang_ph	Nume articol — scrie-l în limba ta
 login_id_opt_ph	Nume de utilizator (obligatoriu, unic)
 manager_pin_ph	PIN de manager pentru aprobare (doar dacă nu poți anula)
 new_branch_name_ph	Nume sucursală nouă
@@ -833,15 +667,12 @@ new_password_ph	Parolă nouă (opțională)
 new_pin_ph	PIN nou (4–12 cifre)
 note_bank_ph	Notă (depunere, retragere, …)
 note_buy_expense_ph	Notă (combustibil, chirie, …)
-note_expense_ph	Notă (combustibil, birou, …)
 options_tabiyat_ph	Opțiuni — Mărime*: Mic=199, Mare=399 | Toppinguri+3: Brânză=40, Măslină=30 | Brânză extra=40
-part_second_way_ph	Parte pe o a doua cale (opțional)
 phone_ph	Telefon
 place_name_ph	Numele acestui loc
 qty_example_ph	Cant. (ex. 1.5 pentru kg)
 quantity_ph	Cantitate
 reason_required_ph	Motiv (obligatoriu)
-role_title_ph	Titlu rol (ex. Barista)
 service_pct_ph	Serviciu % opțional 0/10/12
 short_code_ph	Cod scurt (MG02)
 starting_password_ph	Parolă de început (opțională)
@@ -876,14 +707,11 @@ shift_handover	Predare de tură
 shift_since	Tura aceasta de la
 expected_in_drawer	Așteptat în sertar
 right_discount	Dă o reducere
-pick_category	Alege o categorie
-close_category_list	Închide lista de categorii
 new_category_row	Categorie nouă — se creează când salvezi articolul
 your_category	Categoria ta
 suggested_category	Sugerat — din articolele noastre
 category_search_ph	Categorie — caută ale tale sau scrie una nouă
 cancel_item_short	Anulează
-cancel_item_title	Anulează acest articol — biroul primește o fișă de anulare
 return_to_customer	Înapoiază clientului
 short_by	Lipsește
 tip_not_sale	Bacșiș (al personalului, nu e vânzare)
@@ -896,9 +724,7 @@ finding_server	Se caută serverul localului pe acest Wi‑Fi…
 no_server_found	Nimic găsit. Pe Server: Setări → Alte dispozitive → Permite case suplimentare (același Wi‑Fi). Sau tastează IP-ul afișat acolo.
 servers_found_pick	Atinge localul la care vrei să te conectezi.
 server_host_selected	Se folosește {host} — introdu codul de împerechere, apoi Împerechează acum.
-print_bill	Tipărește nota
 approval_pin_ph	PIN de manager (doar dacă se cere)
-confirm	Confirmă
 menu_search_ph	Caută articol sau cod scurt
 customer_paid_ph	Clientul a plătit
 tip_ph	Bacșiș
@@ -908,7 +734,6 @@ bill_format_help	Tipărit sub numele magazinului pe fiecare notă. Separă linii
 bill_header_ph	Adresă | telefon
 fssai_ph	Nr. licență medicamente (opțional — formularea ta)
 bill_footer_ph	Subsol (ex. Mulțumim, reveniți)
-save_bill_format	Salvează formatul notei
 kot_field_on	afișează
 kot_field_off	ascunde
 kot_weight_light	Subțire
@@ -919,10 +744,8 @@ kot_weight_bold	Aldin
 kot_align_start	Începe
 kot_align_center	Centru
 kot_align_end	Sfârșit
-content_width	Lățime conținut (mm)
 content_width_bill	Lățime conținut notă (mm)
 content_width_ph	Sau tastează o lățime de conținut, 40–210 mm
-content_width_help	Cât de lată se tipărește această fișă. Nota își păstrează lățimea.
 content_width_bill_help	Cât de lată se tipărește nota clientului. Implicit 210 mm (pagină). 58 mm fișă îngustă, 80 mm fișă lată, 112 mm 4 inci, 210 mm lățime A4. Scrie orice valoare de la 40 la 210. Tichetele au lățimea lor pe fila fișă.
 vp_paper_width	Lățime conținut (mm)
 vp_paper_width_ph	Sau tastează o lățime de conținut, 40–210 mm
@@ -937,9 +760,6 @@ test_bill_sent	Previzualizarea notei a fost trimisă
 test_print_no_printer	Nicio imprimantă pentru lucrarea aceea — alege una pe acest ecran
 std_print	Mărime tipărire notă
 std_print_help	Mărimea fontului pentru joburile de notă Portret standard și Peisaj pe imprimante OS / document (introdu puncte — nu Mic/Normal/Mare). Aceeași mărime pe ambele orientări.
-std_size_s	Mic
-std_size_m	Obișnuit
-std_size_l	Mare
 save_std_print	Salvează mărimea de tipărire a notei
 std_print_saved	Mărimea de tipărire a notei a fost salvată
 print_brand_kit	Set de marcă pentru tipărire
@@ -952,14 +772,9 @@ choose_payment_qr	Alege QR de plată
 clear_payment_qr	Golește QR de plată
 payment_qr_set	QR de plată: pe fișier — apare pe afișajul clientului (înlocuiește acolo QR-ul UPI al sumei)
 payment_qr_none	QR de plată: niciunul — QR de sumă din ID UPI la plată
-aggregator_import	Comenzi agregator (fișier)
-aggregator_import_help	Import local opțional: pune import_aggregator_orders.json în folderul de copii de rezervă (tablou sau {"orders":[…]}), apoi atinge Import. Nu blochează niciodată casa; Zomato/Swiggy live este Cloud.
-import_aggregator_file	Importă fișier agregator
 team_pick_ph	Personal de editat — nume, nume de utilizator sau alege
 select_staff	Selectează acest angajat
 rights_help	Acțiuni de bani pentru această persoană — atinge ca să treci: Permis → Cere PIN-ul șefului → Nepermis. Tipărește nota din nou e doar pentru note; secțiunile sunt lista de mai jos.
-dish_picker_help	Caută sau răsfoiește articolele noastre și atinge unul ca să-i completezi numele și poza — sau păstrează-ți numele. Pune prețul tău (0 e în regulă), apoi Adaugă articol.
-close_dish_list	Închide lista de articole
 own_item_name	Folosește asta ca nume propriu de articol
 on_your_menu	În lista de medicamente
 edit	Editează
@@ -970,24 +785,16 @@ add_scheme	Adaugă BOGO
 schedule_ph	Ore — lun-vin 07:00-11:00 sau Seara 17:00-19:00=150
 upi_vpa_ph	ID UPI (VPA)
 upi_payee_ph	Nume beneficiar UPI (opțional)
-upi_qr	UPI QR
 show_upi_qr	Arată UPI QR
 close_upi_qr	Închide
 upi_qr_help	Clientul scanează și plătește. Atinge Încasează după ce plătește. Al doilea ecran: deschide URL-ul serverului /display pe LAN.
-recently_done	Gata de curând
 role_help_customer	Rol: Client — cont (ei ne datorează). Același partener poate și furniza stoc.
 role_help_both	Roluri: Client + Furnizor — un partener, cont și registre de plată, net în Rapoarte.
 role_help_supplier	Rol: Furnizor — le datorăm pentru cumpărături.
-items_word	articole
-items_section	Articole
-back_to_order	Înapoi la comandă
-new_items_head	Încă netrimis
 price_ph	Preț
 price_ph_gst_inside	Preț ({tax} inclus)
-tax_rates_missing_hint	Nicio cotă de {tax} pe aceste articole — la Articole pune Cota de taxă (prețurile includ deja {tax} la {tax} inclus)
 taxable_value	Valoare impozabilă
 gst_inside_price_note	({tax} inclus)
-start_with_template	Începe cu șablonul nostru de articole
 template_heading	Articole de start
 template_info	{c} categorii și {d} articole cu poze, gata de adăugat. Prețurile pornesc de la ₹0 — pune-le pe ale tale după.
 template_import	Importă șablonul complet
@@ -1009,21 +816,13 @@ opening_client	Se deschide clientul…
 preparing_desk	Se pregătește tejgheaua…
 opening_server	Se deschide serverul…
 creating_server	Se creează serverul…
-order_empty_pick	Comanda e goală — atinge Adaugă articole mai sus ca să alegi articole.
 add_dishes	Adaugă medicamente
 order_so_far	În comanda asta: {n} · {total}
 no_dish_match	Niciun articol nu corespunde „{q}”
-pick_dishes_help	Atinge un articol ca să-l adaugi · alege o categorie ca să îngustezi lista
 pick_done	Gata
-pick_done_dd	Gata · {label}
-printer_route_mode	Dacă sunt mai multe imprimante pe acest loc
-printer_mode_first	Prima care merge
-printer_mode_all	Tipărește pe toate
 kot_field_up	Mută în sus
 kot_field_down	Mută în jos
-app_template_blurb_extra	De asemenea: proprietarul Zahir, adminul Asif, casierul Nawaz; bară laterală în față; istoric după 4 ore; banda Azi oprită; notă compactă.
 dishes_n	{n} articole
-recipe_ph	Rețetă (opțional — nefolosită într-un magazin cu tejghea)
 reorder_ph	Cumpără mai mult de la
 set_reorder	Setează nivelul de recomandă
 low_stock_alert	Se termină — cumpără curând: {items}
@@ -1032,7 +831,6 @@ show_unpriced	Arată doar articolele fără preț
 show_all_dishes	Arată toate articolele
 role_title_rest_ph	Titlu rol (ex. Căpitan, Bucătar-șef)
 preset_help_rest	Casier: vinde. Manager: vânzare + articole + anulare/modificare.
-kind_raw	Stoc de preparare
 kind_resale	Medicament cumpărat
 kind_dish	Nu număra stocul
 buy_unit_ph	Unitate (kg, litru, buc)

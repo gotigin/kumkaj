@@ -1,7 +1,5 @@
 # Maltese — Malti (mt). One key<TAB>text per line, in en() order; keep {placeholders}.
-app_tagline	Kirana counter: bejgħ, stokk, khata u kotba. B'xejn offline.
 unlock	Iftaħ
-pin_hint	Il-PIN tas-sid jibda b'0000
 sell	Biegħ
 buy	Ixtri
 books	Ktieb tal-ġurnata
@@ -20,17 +18,13 @@ reports_month	Qligħ u telf (xahar)
 reports_aging	Pendenti / Dr-Cr
 reports_balance_sheet	Karta tal-bilanċ
 reports	Ktieb tal-bank u qligħ/telf
-refresh	Aġġorna
 undo	Erġa' lura
-start_tracking	Ibda ssegwi
 stock_minus	− Stokk
 stock_plus	+ Stokk
 settle_cash	Ħallas kontanti
 settle_card	Ħallas bil-kard
 items	Oġġetti
 nav_items	Oġġetti
-more	Aktar
-your_items	L-oġġetti tiegħek
 items_help	Tektek oġġett biex teditjah. Oġġett ġdid ineħħi l-formola. Fittex bl-isem jew kodiċi qasir, iffissat prezz (0 huwa tajjeb), imbagħad Żid. Bejgħ diġà rreġistrat iżomm l-isem li ġew akkużati bih.
 add_item	Żid oġġett
 new_item	Oġġett ġdid
@@ -41,28 +35,22 @@ remove	Neħħi
 removed_items	Oġġetti mneħħija
 removed_help	Ir-restawr ipoġġi l-oġġett lura f'Oġġetti eżattament kif kien — prezz, ritratt u kategorija.
 restore_item	Irrestawra
-empty_catalog	Għadu l-ebda oġġetti. Iftaħ Oġġetti, żid isem u prezz, imbagħad ibigħ mill-bank.
+empty_catalog	Għadu l-ebda oġġetti.
 total	Totali
 cash	Kontanti
 upi	UPI
 card	Kard
 credit	Partijiet
 clear	Naddaf
-ready_to_sell	Lest biex tibbukkja
 today_prefix	Illum
-today_mid	illum
 owed	pendenti
-round_word	arrotonda
 back	Lura
 sold_out	Mhux disponibbli
 restock	Erġa' imla
 not_tracked	Mhux segwit
 in_stock	fl-istokk
 marked_sold_out	Immarkat mhux disponibbli
-add_upper	ŻID
-na	M/A
 qty	Piż/Kwantità
-unit_at	Rata @
 actual	Attwali
 applied	Applikat
 note_ph	Nota (mhux obbligatorja)
@@ -81,21 +69,13 @@ bill_item_qty	Kwantità
 bill_item_price	Prezz
 bill_item_amount	Ammont
 bill_item_note	Nota tal-oġġett
-bill_item_col_gap	Spazju bejn kolonni
 bill_item_col_order	Ordni tal-kolonni
 bill_item_col_sep	Linji tal-kolonni
-bill_item_gap_tight	Strett
-bill_item_gap_comfort	Komdu
-bill_item_gap_wide	Wiesa'
-bill_item_num_width	Kolonni tan-numri
-bill_item_num_compact	Kompatt
-bill_item_num_comfort	Komdu
-bill_item_num_wide	Wiesa'
-bill_item_num_align	In-numri jallinjaw
-bill_item_gap_em	Spazju (em)
-bill_item_qty_min	Kwantità min (em)
-bill_item_price_min	Prezz min (em)
-bill_item_amount_min	Ammont min (em)
+slip_col_width	Wisa’ (mm)
+slip_col_start	Spazju tal-bidu (px)
+slip_col_end	Spazju tat-tmiem (px)
+slip_col_align	Allinjament tat-test
+slip_columns_help	Il-wisa’ ta’ kull kolonna tinkludi l-ispazju tal-bidu u tat-tmiem tagħha. It-test jitgeżwer ġewwa l-kolonna tiegħu; dak li jaqbeż il-wisa’ tal-kontenut jinqata’, fuq il-karta u fil-preview.
 bill_total_qty_label	Tikketta tal-kwantità totali
 bill_total_subtotal_label	Tikketta tas-subtotal
 bill_total_grand_label	Tikketta tat-total
@@ -108,11 +88,7 @@ bill_total_qty	Kwantità totali
 bill_total_subtotal	Subtotal
 bill_total_grand	Total sħiħ
 kot_unassigned	Mhux assenjat
-pos_tab_items	Oġġetti miżjuda
-pos_tab_payment	Ħlas
-settings_hub_title	Għażliet
 settings_hub_help	Iftaħ qasam wieħed kull darba — inqas scrolling, għażliet aktar ċari.
-settings_back	Lura
 settings_sec_language	Lingwa u munita
 settings_sec_country	Pajjiż u taxxa
 settings_sec_tills	Apparati oħra
@@ -154,35 +130,17 @@ diag_cleared	Zkuk dijanjostiċi mneħħija
 sidebar_settings	Istrixxa tal-ġenb
 sidebar_settings_help	L-istess ikoni bħall-poġġaman tal-ġenb. Iddreggja ringiela biex terġa' tordna. Aqleb is-swiċċ biex turi jew taħbi. Għażliet u Lock dejjem jibqgħu fuq il-bar.
 sidebar_always_on_short	Dejjem mixgħula
-sidebar_back_settings	Lura
-sidebar_shown	murija
-sidebar_hidden	Moħbija
-sidebar_always_on	Dejjem fuq il-bar
-sidebar_shown_hint	Muri fuq il-binarji tal-ġenb/tal-qiegħ
-sidebar_hidden_hint	Moħbi mill-bar
 sidebar_menu_items	Oġġetti
 sidebar_enable_all	Ippermetti Kollha
 sidebar_disable_all	Itfi Kollha
 sidebar_order_saved	Ordni tal-Istrixxa tal-ġenb salvata
 sidebar_visibility_saved	Viżibilità tal-istrixxa tal-ġenb salvata
-amounts_hide	Aħbi
-amounts_show	Uri
-printers_none_hint	Issejvja printer fuq dan l-apparat l-ewwel, imbagħad żidha mal-kont jew sezzjoni
-counter	Kontatur
-dine_in	Kontatur
-takeaway	Ħu ma' Ħdejk
-order	Ordni
 sales	Bejgħ
-sales_refunds	Bejgħ u rifużjonijiet
 day_close	Għeluq tal-ġurnata
 reports_expenses	Ktieb tal-bank u qligħ/telf
 nav_reports	Rapporti
 nav_settings	Għażliet
 nav_lock	Ħażna
-no_sale_yet	Għadu l-ebda bejgħ
-favorites	Favoriti
-favorites_help	Oġġetti li tbigħ spiss, salvati għall-login tiegħek. Żid waħda mal-kont, jew ibni l-lista tiegħek mill-oġġetti kollha hawn taħt.
-your_favorites	Il-favoriti tiegħek
 all_items	L-oġġetti kollha
 frequent	Frekwenti
 added_items	Oġġett(i) Miżjud
@@ -199,8 +157,6 @@ zero_sales_on	Ħalli ₹0
 zero_sales_off	Jeħtieġu prezz
 zero_sales_saved_on	Bejgħ b'valur żero permess
 zero_sales_saved_off	Il-bejgħ għandu jkollu prezz ogħla minn ₹0
-no_favorites	Għadu l-ebda favoriti — żid oġġetti mil-lista hawn taħt.
-add_to_bill	Żid mal-kont
 added	Miżjud
 owes_word	jaf
 selected_word	Magħżula
@@ -209,19 +165,11 @@ chip_missing_customer	Klijent magħżul nieqes — agħżel mill-ġdid
 chip_no_customer	Għadu l-ebda klijent — ikteb isem, imbagħad tektek Kreditu
 credit_summary_fmt	{} klijenti · kreditu miftuħ {} · avvanzi miżmuma {}
 recent_label	Riċenti:
-start_order	Ibda l-ordni
-open_bill	Kont miftuħa
-collect_payment	Iġbor il-ħlas
-payment_pending	Ħlas pendenti
-collect_at_counter	iġbor fil-bank
 inventory	Inventarju
-inventory_stock	Inventarju u stokk
 branches	Fergħat
-branches_org	Fergħat & org
 credit_customers	Partijiet (khata u fornituri)
 customer_name_ph	Isem il-partit
 new_customer_ph	Isem ġdid tal-partit
-item_name_ph	Isem tal-oġġett (eż. Masala Dosa)
 item_price_ph	Prezz
 start_template	Prodott
 team	Tim
@@ -229,17 +177,11 @@ team_pins	Tim u PINs
 my_pin_settings	PIN tiegħi
 settings_hub_help_my_pin	Ibdel il-PIN tal-unlock għall-persuna li tkun iffirmat fuq dan it-tagħmir.
 team_self_help	Id-dħul wieħed: PIN ġdid, password ġdida, jew it-tnejn. Ħalli kaxxa vojta biex iżżomm dak li għandek. Staqsi lis-Sid jekk għandekx bżonn skrins jew drittijiet differenti.
-backup_settings	Backup u għażliet
-lock_app	App Lock
 pick	Agħżel
-select	Agħżel
 advance	Bil-quddiem
 owner	Sid
 staff	Persunal
 photo	Ritratt
-auto	Karozza
-prev	Preċedenti
-next	Li jmiss
 ok	OK
 this_shop	Server
 extra_till	Klijent
@@ -248,17 +190,13 @@ server	Server
 client	Klijent
 language_currency	Lingwa u munita
 language	Lingwa
-choose_language	Agħżel il-lingwa tiegħek
 language_setup_hint	Segwi l-lingwa ta’ dan l-apparat, jew agħżel waħda lilek innifsek.
 lang_follow_platform	Lingwa tal-apparat
 lang_pick_user	Agħżel il-lingwa
 lang_platform_now	Lingwa tal-apparat issa
 selected_language	Magħżula
-continue	Kompli
 this_device	DAN IL-MEZZ
 device_use_q	Kif se jintuża dan l-apparat?
-last_server_mode	Was Server — tektek biex tkompli
-last_client_mode	Was Client — tektek biex tkompli
 choose_server	Agħżel server
 choose_server_hint	Iftaħ server eżistenti, jew oħloq wieħed għal negozju ieħor.
 create_new_server	Oħloq server ġdid
@@ -268,12 +206,6 @@ server_remove_pin_ph	PIN tas-sid biex tneħħi server
 only_owner_remove_server	Is-Sid biss jista' jneħħi server
 owner_pin_remove_server	PIN tas-sid meħtieġ biex jitneħħa dan is-server
 device_setup_help	Server iżomm il-kotba hawn. Klijent pairs għal Server.
-app_template_heading	Katalgu tal-bidu (mhux obbligatorju)
-app_template_blurb	Tagħbijiet il-katalgu tal-kampjun; Sid Zahir (zahir), Admin Asif (asif, PIN 1111), Kaxxier Nawaz (nawaz, PIN 0000); taxxa/GST off; sidebar ta 'quddiem; l-istorja tikklerja wara 4 sigħat (u Ċara issa fil-Backup); Illum strip off; kont kompatt + Marġini standard għal trejs dojoq. Taxxa u peers sidebar jistgħu jerġgħu jinxtegħlu fis-Settings.
-app_template_apply	Applika katalgu tal-bidu
-app_template_skip	Aqbeż għalissa
-app_template_status	Server lest — applika l-Katalgu tal-Istarter, jew aqbeż
-app_template_importing	Qed tapplika {title}...
 currency	Munita
 backup	Backup
 use	Użu
@@ -307,7 +239,7 @@ attachments_last_expense	Attachments (l-aħħar spiża)
 bank	Bank
 bank_in	Bank ġewwa
 bank_out	Bank barra
-bank_reconciliation	Rikonċiljazzjoni bankarja (immarka mar-rendikont bankarju tiegħek)
+bank_reconciliation	Rikonċiljazzjoni bankarja
 bank_to_till	Bank → biex
 book_add_dish	Ktieb — żid oġġett / oġġett
 book_opening_credit	Ktieb — kreditu tal-ftuħ
@@ -337,9 +269,6 @@ share_whatsapp	Aqsam WhatsApp
 lan_pages_heading	Paġni tal-klijenti fuq Wi‑Fi
 lan_pages_help	Fuq il-Wi-Fi ta’ dan il-ħanut, il-paġni tal-klijenti jaħdmu għall-bord tal-wiri u l-feedback. Nies fuq data mobbli jeħtieġu Cloud aktar tard. Terminal tal-kard jew link tal-ħlas huwa fakultattiv u qatt ma jimblokka l-bank.
 diag_send_heading	Aqsam minn dan l-apparat
-optional_login_heading	Login fakultattiv
-rights_heading	Drittijiet
-ops_panel	Operazzjonijiet lokali
 crm_heading	Klijenti u messaġġi
 crm_help	Birthday, lealtà, mistednin inattivi u l-aqwa — kju SMS jew intenzjonijiet WhatsApp. Uża {name} u {points} fil-messaġġ. Viti tas-sid jibagħtu; xejn blasts waħdu.
 crm_queue_sms	Kju SMS
@@ -364,21 +293,17 @@ till_wallet_topup_ph	Ammont tal-kartiera top-up
 till_voucher_issue_amt_ph	Ħruġ l-ammont ta' vawċer
 till_voucher_issue_code_ph	Kodiċi tal-vawċer ġdid
 bulk_price_apply	Applika prezz bl-ingrossa
-card_terminal_optional	Terminal tal-kard/link tal-ħlas (mhux obbligatorju meta l-internet ikun disponibbli)
 copy_report	Ikkopja rapport
 counted_cash_ph	Flus magħduda fil-kexxun
 country_tax	Pajjiż u taxxa
 create_backup	Oħloq backup
 credit_limit_heading	Limitu ta' kreditu (parti magħżula/imsemmija)
-day_close_summary	Sommarju tal-għeluq tal-ġurnata
 delete_party	Ħassar il-parti magħżula
-delivery	Kunsinna
 done_open_books	Magħmul — kotba miftuħa
 drawer_count	Għadd tal-kxaxen (mhux obbligatorju)
 expense_heading	Spejjeż
 export_day	Jum l-esportazzjoni
 extra_note_bill_ph	Nota żejda fuq dan il-kont/bejgħ
-extra_note_expense_ph	Nota żejda dwar l-aħħar spiża
 extra_tills_heading	Extra sakemm
 other_devices_help_heading	Waħħal apparati oħra
 other_devices_help	Fuq dan l-apparat (Server): Apparat ieħor → Ħalli tills żejda. Innota l-kodiċi tat-tqabbil u l-indirizz tal-Wi-Fi. Tektek Ħalli tagħmir ieħor jikkonnettja jekk jidher. Fuq kompjuter, tektek Ibda b'dan il-kompjuter. Fuq kull mezz ieħor: installa l-app, agħżel Modalità Klijent, Sib is-server tal-ħanut (jew ittajpja l-indirizz), daħħal il-kodiċi ta 'tqabbil, Pair issa. L-ordnijiet jistennew fuq it-tagħmir jekk il-Wi-Fi tinżel u jmorru meta s-Server jerġa' jwieġeb. Printers żejda huma ssettjati fuq is-Server (Settings → Printers) — tills żejda jibagħtu kontijiet hemmhekk.
@@ -392,7 +317,6 @@ login_id_ph	Isem tal-utent
 mark_cleared	Mark ikklerja
 new_party_clear	Partit ġdid (forma ċara)
 new_party_kind_supplier_ph	Tip ġdid ta' parti (Fornitur)
-next_country	Pajjiż li jmiss
 next_order	Ordni li jmiss (desk ċara)
 note_gstin_ph	Nota / GSTIN / tfakkira tal-ftehim
 notes_attach_party	Noti u annessi (parti magħżula)
@@ -410,8 +334,6 @@ pay_ap_cash	Ħlas AP flus kontanti
 pay_ap_heading	Ħlas dak li nirrispettawhom (AP)
 pay_ap_upi	Ħlas AP UPI
 pay_selected_heading	Ħlas magħżula (issolvi d-dejn / tieħu bil-quddiem)
-pick_from_items	Agħżel mill-oġġetti tagħna
-prev_country	Pajjiż preċedenti
 print_open	Stampa / tiftaħ
 reason_amend_ph	Raġuni għall-emenda / null / rifużjoni
 reason_note_ph	Raġuni / nota (ħela, għadd, ...)
@@ -435,14 +357,10 @@ history_after_hours	Wara sigħat
 history_hours_ph	Sigħat (1–168, default 4)
 history_hours_save	Iffranka sigħat
 history_clear_now	Storja ċara issa
-history_cleared	L-istorja tal-kummerċ imneħħija — tinżamm is-setup
-history_retention_saved	L-ikklerjar tal-istorja salvat
 history_hours_saved	Sigħat tal-istorja salvati
-history_owner_only	Is-Sid jew l-Amministratur biss jistgħu jneħħu l-istorja
 rollup	Arja mtellgħa
 save_brand	Salva marka
 save_business_id	Issejvja l-id tan-negozju
-save_business_name	Salva isem tan-negozju
 save_features	Salva
 save_features_named	Salv {name}
 save_features_ok	Setup salvat għal {name}
@@ -473,7 +391,6 @@ copy_pair_code	Ikkopja l-kodiċi tal-parir
 new_pair_code	Kodiċi ta 'tqabbil ġdid
 pair_finishing	Jirfinaw par... japplikaw il-kotba tal-ħanut
 pair_opening	Niftaħ it-till...
-pair_copied	Kodiċi ta' tqabbil kkupjat
 lan_offline_waiting	Server tal-ħanut ma jistax jintlaħaq · {n} qed jistenna
 lan_connecting	Konnessjoni mal-ħanut...
 lan_live	Ħaj
@@ -487,7 +404,6 @@ firewall_waiting	Nistennew il-pront tal-amministratur...
 lan_join_help	Fuq l-apparat l-ieħor: Modalità tal-Klijent → Sib is-server tal-ħanut (jew ittajpja {addr}) → kodiċi ta’ pairing {code}.
 lan_pair_status	Wi-Fi {addr}
 lan_join_help_no_addr	Qabbad dan it-tagħmir ma' Wi-Fi għal indirizz.
-lan_no_address	Għadu l-ebda indirizz Wi‑Fi — ikkonnettja mal-ħanut Wi‑Fi.
 lan_not_listening	Ma jaċċettax apparat (port {port} okkupat). Ibda mill-ġdid l-app.
 lan_tills_off	Tills żejda huma mitfija. Ħallihom iħallu apparat ieħor jingħaqad.
 paired_with	Imqabbad · {url}
@@ -508,41 +424,21 @@ printers_help	Sib printers, tektek wieħed biex tagħżelha, imbagħad Stampa pa
 printers_host_only	Printers huma ssettjati fuq l-apparat tal-ħanut (Server). Dan till jibgħat kontijiet u biljetti qodma hemmhekk — Sib / żid / jassenja waqfa fuq is-Server. Il-paġna tat-test u d-daqs tal-istampar tal-kont imorru fis-Server.
 printers_find_heading	Sib stampaturi
 printers_find_tip	Sib tiskenja dan l-apparat u żżomm il-lista aġġornata.
-printers_pool_heading	Stampaturi
-printers_pool_tip	Sib tiskenja dan l-apparat u żżomm din il-lista aġġornata.
 printers_pool_empty	(għadu xejn — tektek Sib)
-printers_routes_help	Sib printers li s-sistema operattiva diġà taf. Assenjahom għall-kont u għal kull taqsima taħt il-format Bill & Slip.
 printer_assign_dd	Stampatur reali: {place}
 printer_assign_pick	Agħżel stampatur reali
 printer_profile_heading	Tqassim
 vp_delivery_heading	Kunsinna
 vp_delivery_help	Kif dan l-istampatur virtwali jibgħat l-impjiegi — dokument OS, bytes mhux ipproċessati, jew ESC/POS. Il-kontenut ta 'slip (daqs tat-tip, wrap, marġini) huwa deċiż mill-format tal-kont / Slip, mhux hawn.
-vp_type_size_heading	Daqs tat-tip
-vp_wrap_heading	Kebbeb wisa'
-vp_margin_heading	Marġini
 vp_delivery_spooler	Dokument tal-OS (spooler tas-sistema)
 vp_delivery_raw	Bytes mhux ipproċessati għall-apparat
 vp_delivery_escpos	Kmandi termali ESC/POS
 virtual_printer_new	Stampatur virtwali ġdid
 virtual_printer_selected	Editjar “{name}” — tektek ieħor fil-lista biex taqleb
-virtual_printer_tap_list	Tektek stampatur virtwali fil-lista biex teditjah
 config_layout_portrait	Ritratt
 config_layout_landscape	Pajsaġġ
 config_send_os	Spooler tas-sistema
 config_send_escpos	ESC/POS
-profiles_heading	Format
-profiles_empty	(għadu l-ebda layouts)
-profile_builtin	mplimentat ġewwa
-profile_custom	drawwa
-profile_name_ph	Isem tat-tqassim
-profile_new	Tqassim ġdid
-profile_delete	Ħassar it-tqassim
-profile_created	Layout maħluqa
-profile_deleted	Layout mħassar
-profile_builtin_keep	Taqsimiet inkorporati ma jistgħux jitħassru
-config_saved	Aġġornat
-config_selected	Magħżula “{name}”
-printer_output_heading	Stampaturi virtwali
 virtual_printers_heading	Stampaturi virtwali
 virtual_printers_empty	Għadu l-ebda stampaturi virtwali — issettja l-valuri hawn taħt, imbagħad Issejvja. Wara li jkollok xi, tektek wieħed fil-lista biex teditja.
 virtual_printer_name_ph	Isem tal-istampatur virtwali (mhux obbligatorju)
@@ -554,71 +450,32 @@ virtual_printer_deleted	Stampatur virtwali mħassar “{name}”
 virtual_printer_updated	Stampatur virtwali aġġornat
 virtual_printer_updated_named	Stampatur virtwali “{name}” aġġornat
 virtual_draft_layout	Valuri stabbiliti għall-istampatur virtwali li jmiss
-virtual_draft_send	Valur stabbilit għall-istampatur virtwali li jmiss
 virtual_need_real	Agħżel stampatur reali l-ewwel
 virtual_need_select	Agħżel stampatur virtwali biex tħassar
 real_printer_selected	Magħżula: {name}
-printers_routes_heading	Fejn l-affarijiet jistampaw
-route_pick_heading	Post
 route_editing	Editjar: {name}
-route_assigned	Miżjud {printer} ma' {place}
-route_already_assigned	Diġà f'dan il-post: {printer}
 route_cleared	Imneħħija {name}
-route_assigned_empty	Xejn fuq dan il-post
-route_tap_select	taptap biex tagħżel
 route_tap_selected	magħżula
-route_pick_printer_first	Tektek stampatur l-ewwel
-route_assigned_heading	Stampaturi
-route_add_heading	Assenja
-printer_label_ph	Isem (eż. Counter printer)
 printer_target_ph	Isem jew host tal-stampatur tas-sistema: 9100
 printer_target_default	l-istampatur tas-soltu ta' dan il-kompjuter (indirizz vojt)
-printer_wire_heading	Profil
-printer_wire_escpos	ESC/POS
-printer_wire_os	Ritratt
-printer_wire_os_portrait	Ritratt
-printer_wire_os_landscape	Pajsaġġ
-printer_wire_escpos_short	ESC/POS
-printer_wire_os_short	Ritratt
-printer_wire_os_landscape_short	Pajsaġġ
-printer_format_custom	Profil personalizzat ġdid
-printer_format_custom_label	Adattat
-printer_format_custom_added	Profil personalizzat miżjud għal dan il-post
-add_printer	Żid stampatur
-route_pick_ph	Bill jew sezzjoni tal-ħanut
 route_bill	Kont
-route_dont_print	L-ebda stampatur
 station_print_pick_first	Agħżel sezzjoni tal-ħanut l-ewwel
-station_vps_empty	Għadu l-ebda stampaturi — Sibhom taħt Għażliet → Stampaturi
 bill_printers_dd	Stampaturi għall-kont
 bill_printers_dd_n	{n} stampatur(i) għall-kont · taptap biex tbiddel
 station_vp_attached	Stampatur imwaħħal
 station_vp_detached	Stampatur imneħħi mill-istazzjon
-route_up	Il fuq
-route_down	Isfel
-route_clear	Naddaf
-save_printers	Salva stampaturi
 print_test_page	Stampa paġna tat-test
 no_printer_assigned	L-ebda stampatur
-test_page_no_printer	L-ebda stampatur għal {place} — waħħal stampatur miegħu, imbagħad erġa' pprova
 test_page_pick_first	Agħżel stampatur(i) għal paġna tat-test l-ewwel — imbagħad Stampa paġna tat-test
 test_printers_dd	Stampaturi għal paġna tat-test
 test_printers_dd_n	{n} stampatur(i) għal paġna tat-test · taptap biex tibdel
 test_printer_picked	Test fuq: {name}
 test_printer_cleared	Mhux qed jittestja fuq: {name}
 test_page_sent_n	Paġna tat-test mibgħuta lil {n} stampatur(i)
-batch_cancel	Ikkanċella mmarkata
-batch_cancel_n	Ikkanċella mmarkata ({n})
-batch_cancel_none	Immarka oġġett wieħed jew aktar mibgħuta l-ewwel — imbagħad Ikkanċella mmarkata
-batch_cancel_title	Ikkanċella oġġetti mmarkati - raġuni waħda, tikkanċella slip waħda għal kull sezzjoni
-batch_cancel_ok	Oġġetti {n} ikkanċellati · {slips} tikkanċella slip(s) → {kitchens}
-batch_cancel_ok_noprint	Oġġetti {n} ikkanċellati — l-istampar awtomatiku huwa mitfi, għalhekk l-ebda slip tal-kanċellament
 printers_saved	Salvat
-test_page_sent	Paġna tat-test mibgħuta — iċċekkja l-istampatur
 test_page_sent_one	Paġna tat-test mibgħuta lil {name} — iċċekkja dak l-istampatur
 printers_found	Misjuba {n}: {list}
 printers_find_synced	Misjuba {n} — {new} ġdid
-printer_on_device	salvati
 printer_already_added	diġà miżjuda
 printer_already_saved	Diġà ssejvjat: {name}
 find_printers	Sib stampaturi
@@ -628,7 +485,6 @@ cancelled	Ikkanċellat
 printers_tap_find	Tektek Sib biex telenka l-stampaturi li dan it-tagħmir jista' juża.
 printers_none_found	Xejn misjub — ittajpja isem tal-stampatur tas-sistema jew IP (eż. 192.168.1.50).
 printer_from_find	Miżjud {name}
-bill_printer_ph	Stampatur għall-kontijiet
 queue_refused	Mhux aċċettat mill-ħanut ({n}) — iċċekkja kull wieħed fil-bank:
 clear_not_accepted	Iċċekkjat — ċar din il-lista
 device_name_ph	Isem dan l-apparat
@@ -638,7 +494,6 @@ connected_now	konnessi issa
 backup_failed	L-aħħar backup awtomatiku falla: {e}
 backup_overdue	Ebda backup għal {n} ijiem — żomm l-app miftuħa fuq dan l-apparat sabiex tkun tista’ tagħmel backup.
 disk_low	{mb} MB biss b'xejn fuq dan l-apparat — il-backups dalwaqt ifallu. Eħles ftit spazju.
-last_seen_devices	Dehru l-aħħar: {time}
 connection_to_shop	Konnessjoni mal-ħanut
 supplier_name_ph	Isem tal-fornitur (jew parti)
 supplier_ph	Fornitur
@@ -696,7 +551,6 @@ currency_use_help	Skrollja u tektek Uża għal kwalunkwe munita appoġġjata.
 day_close_help	Ir-reġistrazzjoni ta' għeluq ta' ġurnata tiffranka dan is-sommarju (u l-varjanza tal-kexxun jekk tingħadd) fir-reġistru tal-verifika. Ma tieqafx tbigħ.
 expenses_word	Spejjeż
 feature_access_help	Dak li jistgħu jiftħu — fakultattiv; ix-xogħol hawn fuq diġà jistabbilixxi default
-footer_local	SQLite Lokali · Ħieles Għal Dejjem · Żero Cloud
 fresh_book_kirano	Frisk = katalogu vojt (żid l-oġġetti aktar tard). Ktieb = tip opening stock u min jagħtik hawn taħt.
 fresh_selected	Frisk magħżula — il-katalgu jibqa’ vojt. Tektek Magħmul meta tkun lesta.
 gross_word	Gross
@@ -709,12 +563,9 @@ net_word	Nett
 offline_badge	OFFLINE
 optional_login_help	Login fakultattiv (id + password). Sid issettja darba; l-utent biss jista' jibdel il-password aktar tard.
 or_unlock_login	Jew iftaħ bl-id tal-login + password
-permission_preset	Xogħol (jissettja l-iskrins u l-azzjonijiet tal-flus)
-preset_help_kirano	Kaxxier: ibiegħ. Maniġer: bejgħ + oġġetti + null/emenda.
-product_locked_kirano	Kirano
+permission_preset	Xogħol
 product_only_kirano	Kirano hija s-sistema operattiva tal-grocer/kirana: counter sell, stokk, kreditu u kotba — offline fuq it-tagħmir tiegħek.
 purchases_cogs	Xiri (COGS)
-qty_cap	QTY
 restore_help	Restore: agħżel backup. Il-kotba jiftħu kif kienu dakinhar; il-kotba kif inhuma issa jiġu salvati l-ewwel, u għalhekk dan jista 'jitneħħa.
 wipe_data_heading	Ħassar id-dejta lokali
 wipe_data_help	Sid biss — istess għażliet bħal Windows uninstall. Ir-rekords tan-negozju jikklerjaw l-istorja tal-kummerċ iżda jżommu l-oġġetti u s-setup (bħall-PIN tal-isblokk ta’ emerġenza). Is-setup tal-ħanut tneħħi d-database tal-kotba. Il-preferenzi tal-iskrin jikklerjaw it-tieqa/lingwa. Ikkonferma bil-PIN tas-Sid. Il-PIN tal-ftuħ ta' emerġenza fuq it-Tim huwa separat (imsaħ moħbi waqt il-ftuħ).
@@ -747,7 +598,6 @@ staff_renamed	Isem salvat
 staff_setup_copied_hire	Setup ikkupjat minn {name} — issettja isem u PIN ġodda, imbagħad Żid persunal
 staff_setup_copied_edit	Ikkupjat is-setup ta' {from} fuq {to}
 staff_copy_need_selected	Agħżel min teditja l-ewwel
-staff_copy_need_source	Agħżel is-setup ta' min tikkopja
 staff_copy_same	Din hija l-istess persuna - agħżel xi ħadd ieħor
 staff_rename_need_selected	Agħżel lil min se tibdel l-isem l-ewwel
 team_pick_hint	Agħżel lil min teditja — l-iskrins, id-drittijiet tal-flus, u l-istazzjonijiet jidhru għal dik il-persuna biss.
@@ -762,15 +612,9 @@ unit_picker_off	Mitfi
 we_owe_them	Aħna nirrispettawhom
 who_unlocking	Min qed jinfetaħ?
 locked_word	Imsakkar
-show_pin	Uri PIN
-hide_pin	Aħbi PIN
 set_owner_pin	ISSETT IL-PIN SID
 enter_owner_passcode	Daħħal PASSCODE TAS-SID
 enter_staff_passcode	Daħħal PASSCODE TA' L-ISTAFF
-pin_count_zero	0 / 12-il ċifra · mill-inqas 4, imbagħad OK
-pin_count_need	{} / 12-il ċifra · jeħtieġ {} aktar
-pin_count_full	12 / 12-il ċifra · agħfas OK
-pin_count_ready	{} / 12-il ċifra · agħfas OK meta tkun lesta
 pin_hint_choose	Agħżel 4–12-il ċifra · Daħħal jew Nisfrutta biex issalva
 pin_hint_new	PIN ġdid tas-Sid b'4–12-il ċifra · Daħħal jew Nisfrutta
 pin_hint_shop_code	Apparat tal-ħanut · kodiċi ta' pairing {}
@@ -779,23 +623,15 @@ pin_hint_paired	Till żejjed imqabbad — iftaħ biex tbigħ
 pin_hint_pair_first	Extra till — l-ewwel koppja mal-apparat tal-ħanut
 unlock_to_continue	Iftaħ biex tkompli
 no_staff_yet	Għadu l-ebda persunal — nisfrutta bħala Sid, imbagħad Tim
-status_server_set_pin	Modalità Server — issettja l-PIN tas-Sid
-status_server_tills	Mod Server — tills żejda jistgħu jingħaqdu. Iftaħ
-status_server_unlock	Modalità Server — nisfrutta bħala Sid
-status_client_unlock	Mod Klijent — iftaħ biex tbigħ
 icon_new_selected	Ikona: fajl ġdid magħżul — tektek Issejvja l-marka
 icon_custom	Ikona: marka tal-post tad-dwana
 icon_default	Ikona: Kumkaj mark (default) — agħżel waħda apposta
 logo_yours	Logo: il-logo tal-ħanut tiegħek — muri fuq l-iskrins u l-irċevuti
 logo_default	Logo: Kumkaj mark (default) — agħżel tiegħek jekk għandek waħda
-tmpl_current	Kurrent: {} — {}
-tmpl_selected	Magħżula: {} — {}
 setup_complete	Setup komplut
 onboard_fresh_tmpl	Frisk · {} — il-katalgu jibda vojt; żid oġġetti fl-Oġġetti, imbagħad Magħmul.
 onboard_book_tmpl	Ktieb · {} — żid oġġetti u kreditu tal-ftuħ, imbagħad Magħmul.
-onboard_template_tmpl	Semmi l-post jekk trid, imbagħad agħżel kif tibda.
 tmpl_blurb	Kirana counter: bejgħ, stokk, khata, fornitur jixtri, kotba.
-tmpl_how	Ibigħ fil-bank; Ixtri għall-istokk; Kotba għall-ktieb tal-ġurnata.
 reports_facet_title	Rapporti
 reports_facet_help	Kotba ta' jum, anzjanità tal-partiti, karigi bankarji, u P&L tal-perjodu.
 against_bill_ph	Kontra l-kont # ta' fuq (mhux obbligatorju)
@@ -806,14 +642,12 @@ amount_ph	Ammont
 amount_received_ph	Ammont riċevut
 amount_we_pay_ph	Ammont li nħallsu
 business_name_ph	Isem tan-negozju
-category_new_ph	Kategorija (mhux obbligatorja, maħluqa jekk ġdida)
 code_bag_ph	Kodiċi (borża)
 conv_factor_ph	Fattur (25 = borża 1 → 25 kg)
 country_code_ph	Kodiċi tal-pajjiż eż. FI, GB, US, AE, BR
 credit_khata_amount_ph	Ammont ta' kreditu / khata
 credit_limit_ph	Limitu tal-kreditu (0 = xejn)
 from_code_ph	Mill-kodiċi (borża)
-item_name_lang_ph	Isem tal-oġġett — ittajpjah bil-lingwa tiegħek
 login_id_opt_ph	Username (meħtieġa, uniku)
 manager_pin_ph	PIN tal-maniġer li għandu japprova (biss jekk ma tistax tħassar)
 new_branch_name_ph	Isem il-fergħa ġdida
@@ -821,15 +655,12 @@ new_password_ph	Password ġdida (mhux obbligatorja)
 new_pin_ph	PIN ġdid (4–12-il ċifra)
 note_bank_ph	Nota (depożitu, irtirar, …)
 note_buy_expense_ph	Nota (karburant, kera, …)
-note_expense_ph	Nota (karburant, uffiċċju, …)
 options_kirano_ph	Għażliet — Daqs*: Żgħir=199, Kbir=399 | Uċuħ+3: Ġobon=40, Żebbuġ=30 | Ġobon żejjed=40
-part_second_way_ph	Parti bit-tieni mod (mhux obbligatorju)
 phone_ph	Telefon
 place_name_ph	Isem dan il-post
 qty_example_ph	Qty (eż. 1.5 għal kg)
 quantity_ph	Kwantità
 reason_required_ph	Raġuni (meħtieġa)
-role_title_ph	Titolu tar-rwol (eż. Barista)
 service_pct_ph	Servizz % mhux obbligatorju 0/10/12
 short_code_ph	Kodiċi qasir (MG02)
 starting_password_ph	Password tal-bidu (mhux obbligatorju)
@@ -864,14 +695,11 @@ shift_handover	Trasferiment tax-shift
 shift_since	Din il-bidla peress
 expected_in_drawer	Mistennija fil-kexxun
 right_discount	Agħti skont
-pick_category	Agħżel kategorija
-close_category_list	Agħlaq il-lista tal-kategoriji
 new_category_row	Kategorija ġdida — maħluqa meta tissejvja l-oġġett
 your_category	Il-kategorija tiegħek
 suggested_category	Issuġġerit — mill-oġġetti tagħna
 category_search_ph	Kategorija — fittex tiegħek jew ittajpja waħda ġdida
 cancel_item_short	Ikkanċella
-cancel_item_title	Ikkanċella dan l-oġġett — il-back office jieħu slip tal-kanċellament
 return_to_customer	Ritorn lill-klijent
 short_by	Qasir minn
 tip_not_sale	Tip (tal-persunal, mhux bejgħ)
@@ -884,9 +712,7 @@ finding_server	Qed tfittex is-server tal-ħanut fuq dan il-Wi-Fi...
 no_server_found	Xejn misjub. Fuq is-Server: Għażliet → Apparat ieħor → Ħalli tills żejda (l-istess Wi‑Fi). Jew ittajpja l-IP muri hemmhekk.
 servers_found_pick	Tektek il-ħanut li trid tikkonnettja miegħu.
 server_host_selected	Bl-użu ta' {host} — daħħal il-kodiċi tat-tqabbil, imbagħad Pair issa.
-print_bill	Stampa polza
 approval_pin_ph	PIN tal-manager (jekk mitlub biss)
-confirm	Ikkonferma
 menu_search_ph	Fittex oġġett jew kodiċi qasir
 customer_paid_ph	Klijent imħallas
 tip_ph	Suggeriment
@@ -896,7 +722,6 @@ bill_format_help	Stampat taħt isem il-ħanut tiegħek fuq kull kont. Linji sepa
 bill_header_ph	Indirizz | telefon
 fssai_ph	FSSAI / liċenzja tal-ħanut Nru. (mhux obbligatorju)
 bill_footer_ph	Footer (eż. Grazzi, erġa' żur)
-save_bill_format	Issejvja l-format tal-kont
 kot_field_on	juru
 kot_field_off	ħabi
 kot_weight_light	Dawl
@@ -907,10 +732,8 @@ kot_weight_bold	Qaħla
 kot_align_start	Ibda
 kot_align_center	Ċentru
 kot_align_end	Tmiem
-content_width	Wisa' tal-kontenut (mm)
 content_width_bill	Wisa' tal-kontenut tal-kont (mm)
 content_width_ph	Jew ittajpja wisa' ta' kontenut, 40–210 mm
-content_width_help	Kemm tistampa din is-slip wiesgħa. Bill iżomm il-wisa' tiegħu.
 content_width_bill_help	Kemm jistampa l-kont tal-klijent. Default 210 mm (paġna). Żlieq dejjaq ta '58 mm, żlieq ta' 80 mm wiesa ', 112 mm 4 pulzieri, 210 mm A4-wisa'. Ittajpja kwalunkwe valur minn 40 sa 210. Il-biljetti għandhom il-wisa' tagħhom fuq it-tab tal-islip.
 vp_paper_width	Wisa' tal-kontenut (mm)
 vp_paper_width_ph	Jew ittajpja wisa' ta' kontenut, 40–210 mm
@@ -925,9 +748,6 @@ test_bill_sent	Preview tal-kont bagħt
 test_print_no_printer	M'hemmx stampatur għal dak ix-xogħol — agħżel wieħed minn din l-iskrin
 std_print	Daqs tal-istampar tal-bill
 std_print_help	Daqs tat-tipa għal xogħlijiet ta' kontijiet Standard tar-Ritratti u tal-Pajsaġġ fuq OS/printers tad-dokumenti (daħħal il-punti — mhux Żgħar/Normali/Kbir). L-istess daqs fuq iż-żewġ orjentazzjonijiet.
-std_size_s	Żgħir
-std_size_m	Normali
-std_size_l	Kbir
 save_std_print	Ipprepara d-daqs tal-bill biex tipprintja
 std_print_saved	Daqs tal-inkjesta tal-kont maħżun
 print_brand_kit	Ippubblika kit tal-marka
@@ -940,14 +760,9 @@ choose_payment_qr	Agħżel QR ta' ħlas
 clear_payment_qr	QR ta' ħlas ċar
 payment_qr_set	QR tal-ħlas: fil-fajl — muri fuq il-wiri tal-klijent (jissostitwixxi l-ammont UPI QR hemmhekk)
 payment_qr_none	QR tal-Ħlas: xejn — ammont QR mill-ID UPI meta tħallas
-aggregator_import	Ordnijiet Aggregator (file)
-aggregator_import_help	Import Lokali Opcjonali: poġġi import_aggregator_orders.json fil-folder tal-backups (array jew {"orders":[…]}), imbagħad iġġefħ Import. Qatt ma jħalli l-kontatur; Zomato/Swiggy live huwa Cloud.
-import_aggregator_file	Importa fajl tal-aġġregatur
 team_pick_ph	Staff biex jeditja — isim, username, jew agħżel
 select_staff	Agħżel dan il-persunal
 rights_help	Azzjonijiet tal-flus għal din il-persuna — tektek biex iċċekkja: Permessi → Jeħtieġ PIN tal-kap → Mhux permess. Print bill għal darb'oħra huwa kontijiet biss; is-sezzjonijiet huma l-lista ta’ kontroll hawn taħt.
-dish_picker_help	Fittex jew ibbrawżja l-oġġetti tagħna u tektek wieħed biex timla isimha u r-ritratt — jew żomm ismek stess. Issettja l-prezz tiegħek (0 huwa tajjeb), imbagħad Żid l-oġġett.
-close_dish_list	Agħlaq il-lista tal-oġġetti
 own_item_name	Uża dan bħala l-isem tal-oġġett tiegħek stess
 on_your_menu	Fil-katalgu
 edit	Ipproċessa
@@ -958,24 +773,16 @@ add_scheme	Żid BOGO
 schedule_ph	Ħinijiet — Mon-Gim 07:00-11:00 jew Filgħaxija 17:00-19:00=150
 upi_vpa_ph	UPI ID (VPA)
 upi_payee_ph	Isem tal-benefiċjarju UPI (għażli)
-upi_qr	UPI QR
 show_upi_qr	Uri QR tal-UPI
 close_upi_qr	Agħlaq
 upi_qr_help	Il-klijent jiskenja u jħallas. Tektek Ħu l-ħlas wara li jħallsu. It-tieni skrin: tiftaħ Server URL /display fuq LAN.
-recently_done	Għamlet reċentement
 role_help_customer	Irwol: Klijent — khata (huma jħallsulna). L-istess parti tista' wkoll tipprovdi stok.
 role_help_both	Rwoli: Klijent + Fornitur — parti waħda, ledgeri ta’ khata u li jridu jitħallsu, nett fir-Rapporti.
 role_help_supplier	Rwoli: Fornitur — ninsabu obbligati lejhom għall-xiri.
-items_word	oġġetti
-items_section	Oġġetti
-back_to_order	Lura għall-ordni
-new_items_head	Mhux mibgħut għadu
 price_ph	Prezz
 price_ph_gst_inside	Prezz ({tax} inkluż)
-tax_rates_missing_hint	Ebda rata {tax} fuq dawn l-oġġetti — fuq Oġġetti ssettjata Rata tat-taxxa (il-prezzijiet diġà jinkludu {tax} taħt {tax} inklużi)
 taxable_value	Valur tat-taxxa
 gst_inside_price_note	({tax} inklużiv)
-start_with_template	Ibda bil-mudell tal-oġġetti tagħna
 template_heading	Oġġetti tal-bidu
 template_info	Kategoriji {c} u oġġetti {d} b'ritratti, lesti biex jiżdiedu. Il-prezzijiet jibdew minn ₹0 — issettja tiegħek wara.
 template_import	Importa mudell sħiħ
@@ -997,21 +804,13 @@ opening_client	Qed niftħu l-klijent…
 preparing_desk	Qed nipprepara d-desk…
 opening_server	Qed infetaħ is-server…
 creating_server	Qed noħolqu server…
-order_empty_pick	Ordna vojta — tektek Żid oġġetti hawn fuq biex tagħżel oġġetti.
 add_dishes	Żid oġġetti
 order_so_far	F'dan l-ordni: {n} · {total}
 no_dish_match	L-ebda oġġett ma jaqbel ma' “{q}”
-pick_dishes_help	Tektek oġġett biex iżżidha · agħżel kategorija biex tnaqqas il-lista
 pick_done	Magħmul
-pick_done_dd	Ġiet magħmula · {label}
-printer_route_mode	Jekk hemm diversi stampaturi f'dan il-post
-printer_mode_first	L-ewwel li taħdem
-printer_mode_all	Ippprintja fuq kollox
 kot_field_up	Ġib il-quċċata
 kot_field_down	Ħu ħdejn 'l isfel
-app_template_blurb_extra	Ukoll: Sid Zahir, Admin Asif, Kaxxier Nawaz; sidebar ta 'quddiem; storja wara 4 sigħat; Illum strip off; kont kompatt.
 dishes_n	oġġetti {n}
-recipe_ph	Riċetta (mhux obbligatorja — mhux użata f'ħanut tal-bank)
 reorder_ph	Ixtri aktar f’
 set_reorder	Stabbilixxi livelli ta' riordnar
 low_stock_alert	Qed naqsu — xtri dalwaqt: {items}
@@ -1020,7 +819,6 @@ show_unpriced	Uri biss oġġetti mingħajr prezz
 show_all_dishes	Uri l-oġġetti kollha
 role_title_rest_ph	Titolu tar-rwol (eż. Kapitan, Kap tal-kċina)
 preset_help_rest	Kaxxier: ibiegħ. Maniġer: bejgħ + oġġetti + null/emenda.
-kind_raw	Mixtrija għall-użu tal-ħanut
 kind_resale	Mixtrija biex tbiegħ
 kind_dish	Tgħoddx l-istokk
 buy_unit_ph	Unità (kg, litru, biċċiet)

@@ -39,17 +39,11 @@ impl App {
             .as_ref()
             .map(|m| m.can_access_settings())
             .unwrap_or(false);
-        for (_, hub, _, label) in SETTINGS_SECTIONS {
-            self.ui.button(cx, hub).set_text(cx, &s(label));
-            // Limited roles use Team peer for My PIN; hide shop-admin hub rows.
-            self.ui.button(cx, hub).set_visible(cx, shop);
-        }
-        self.ui
-            .button(cx, ids!(sidebar_settings_open))
-            .set_text(cx, &s("sidebar_settings"));
-        self.ui
-            .button(cx, ids!(sidebar_settings_open))
-            .set_visible(cx, shop);
+        // One list of nav items (sections and screens, Khaynjo owner
+        // 2026-11-15) for shop admins; limited roles use the Team peer for
+        // My PIN.
+        self.ui.view(cx, ids!(settings_nav_bulk)).set_visible(cx, shop);
+        self.ui.widget(cx, ids!(sidebar_nav_list)).set_visible(cx, shop);
         self.ui
             .widget(cx, ids!(h_settings_language))
             .set_text(cx, &plain_display_text(&s("language_currency")));
@@ -80,18 +74,14 @@ impl App {
 
     /// Show one section (or the hub with `None`) from its top.
     fn open_settings_panel(&mut self, cx: &mut Cx, panel: Option<&'static str>) {
+        // Leaving the format editor: a typed width / size is applied now.
+        self.flush_format_autosave(cx);
         {
             let mut st = app_state().lock().unwrap();
             st.settings_panel = panel;
             st.suggest_open = None;
         }
         self.redraw_suggest_lists(cx);
-        // A row hidden under the pointer never hears the mouse leave, so it
-        // came back grey (hovered) with the hub — clear every row's face.
-        for (_, hub, _, _) in SETTINGS_SECTIONS {
-            self.clear_button_animators(cx, hub);
-        }
-        self.clear_button_animators(cx, ids!(sidebar_settings_open));
         self.ui
             .view(cx, ids!(settings_screen))
             .set_scroll_pos(cx, dvec2(0.0, 0.0));
@@ -99,17 +89,13 @@ impl App {
         // Prefer panel sync + ‹ paint over full sync_chrome (avoids Settings freezes
         // on phones). Callers that need the whole shell still call sync_chrome.
         self.sync_settings_panels(cx);
+        // A section on the rail / bottom bar lights up itself (else Settings).
+        self.paint_nav_tabs(cx, Screen::Settings);
         self.ui.redraw(cx);
     }
 
     fn handle_settings_hub_actions(&mut self, cx: &mut Cx, actions: &Actions) {
-        let opened = SETTINGS_SECTIONS
-            .iter()
-            .find(|(_, hub, _, _)| self.ui.button(cx, hub).clicked(actions))
-            .map(|(key, _, _, _)| *key);
-        if let Some(key) = opened {
-            self.open_settings_panel(cx, Some(key));
-        }
+        // Sections open from the nav list (handle_sidebar_nav_list_actions).
         if self.ui.button(cx, ids!(snack_secs_save)).clicked(actions) {
             let typed = self.ui.text_input(cx, ids!(snack_secs_input)).text();
             let result = (|| -> Result<String, String> {

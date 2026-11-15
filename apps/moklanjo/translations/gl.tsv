@@ -39,7 +39,7 @@ adding_item	Engadindo unha nova tarifa
 editing_item	Editando
 save	Gardar
 remove	Quitar
-empty_catalog	Aínda non hai tarifas. Abre Tarifas e servizos, engade un (nome + prezo, unidade kg) e despois Reserva.
+empty_catalog	Aínda non hai tarifas.
 counter_sale	Reserva de mostrador
 total	Total
 cash	Efectivo
@@ -171,8 +171,6 @@ selected_language	Seleccionado
 continue	Continuar
 this_device	ESTE DISPOSITIVO
 device_use_q	Como se usará este dispositivo?
-last_server_mode	Era Servidor — prema para continuar
-last_client_mode	Era Cliente — prema para continuar
 choose_server	Escolla un servidor
 choose_server_hint	Abra un servidor existente ou cree un para outro negocio.
 create_new_server	Crear un servidor novo
@@ -501,8 +499,6 @@ job_layout	Disposición
 job_delivery	Como se envía o traballo
 job_size	Tamaño de letra
 job_size_ph	p. ex. 18, 20, 26…
-save_receipt_format	Gardar formato de recibo
-save_label_format	Gardar formato de etiqueta
 test_receipt_format	Recibo de proba
 test_label_format	Etiqueta de proba
 test_receipt_sent	Recibo de mostra enviado
@@ -610,7 +606,7 @@ units_heading	Unidades
 booking_measures	Medidas de reserva
 drawer_count	Reconto do caixón (opcional)
 spreadsheet_csv	Folla de cálculo (CSV)
-bank_reconciliation	Conciliación bancaria (marque contra o extracto)
+bank_reconciliation	Conciliación bancaria
 book_add_product	Reservar: engade produto/tarifa
 book_opening_credit	Libro — crédito de apertura
 account_kind	Tipo de conta (prema un)
@@ -650,7 +646,7 @@ net_word	Neto
 offline_badge	SEN REDE
 optional_login_help	Inicio de sesión opcional (id + contrasinal). O dono pono unha vez; só o usuario pode cambiar o contrasinal despois.
 or_unlock_login	Ou desbloquee con id de inicio de sesión + contrasinal
-permission_preset	Traballo (define pantallas e dereitos)
+permission_preset	Traballo
 preset_help_moklanjo	Caixeiro: vender. Encargado: vender + artigos + anular/emendar.
 product_locked_moklanjo	Moklanjo
 product_only_moklanjo	Esta aplicación é só Moklanjo: libros + mesa de reservas. Outras caras comerciais envíanse como produtos separados máis tarde.
@@ -698,10 +694,6 @@ pin_hint_paired	Caixa extra emparellada — desbloquee para vender
 pin_hint_pair_first	Caixa extra — emparelle primeiro co dispositivo da tenda
 unlock_to_continue	Desbloquee para continuar
 no_staff_yet	Aínda non hai persoal — desbloquee como Dono e logo Equipo
-status_server_set_pin	Modo servidor — poña o PIN do dono
-status_server_tills	Modo servidor — as caixas extra poden unirse. Desbloquear
-status_server_unlock	Modo servidor — desbloquee como Dono
-status_client_unlock	Modo cliente — desbloquee para vender
 icon_new_selected	Icona: ficheiro novo seleccionado — prema Gardar a marca
 icon_custom	Icona: marca propia do local
 icon_default	Icona: marca Kumkaj (por defecto) — escolla unha propia

@@ -79,6 +79,7 @@ fn fit_inside_system_bars(&mut self, cx: &mut Cx) {
             ids!(staff_name_input),
             ids!(staff_title_input),
             ids!(staff_pin_input),
+            ids!(staff_edit_pin_input),
             ids!(my_pin_input),
             ids!(lock_pin_input),
             ids!(lock_login_id),
@@ -472,16 +473,91 @@ fn fit_inside_system_bars(&mut self, cx: &mut Cx) {
 
     /// Notes & attachments of the picked record: one row each in a card,
     /// or the hint while there are none.
-    fn show_attachments(&mut self, cx: &mut Cx, hint: &[LiveId], list: &[LiveId], summary: &str, empty: &str) {
+    /// Attachment rows, or nothing: an empty list needs no words (the
+    /// "(no attachments yet — select a sale)" line was English-only cluster
+    /// text, owner 2026-11-14).
+    fn show_attachments(&mut self, cx: &mut Cx, hint: &[LiveId], list: &[LiveId], summary: &str) {
         let rows: Vec<ReportRow> = summary
             .lines()
             .map(str::trim)
             .filter(|l| !l.is_empty() && *l != "Attachments:")
             .map(|l| ReportRow::Line(l.to_string()))
             .collect();
-        self.ui.widget(cx, hint).set_text(cx, &plain_display_text(empty));
-        self.ui.widget(cx, hint).set_visible(cx, rows.is_empty());
+        self.ui.widget(cx, hint).set_text(cx, "");
+        self.ui.widget(cx, hint).set_visible(cx, false);
         self.set_report_rows(cx, list, rows);
+    }
+
+    /// The Printers sheet (owner 2026-11-14): where a printer is needed and
+    /// none is saved, Find runs here instead of sending the owner to
+    /// Settings → Printers. Same Find, Cancel and saved list as that panel.
+    fn open_printers_modal(&mut self, cx: &mut Cx) {
+        if app_state().lock().unwrap().device_role == DeviceRole::Client {
+            self.set_status(cx, app_t("printers_host_only"));
+            return;
+        }
+        self.paint_printers_modal(cx);
+        self.ui.modal(cx, ids!(printers_modal)).open(cx);
+    }
+
+    /// Close the sheet and refresh what opened it: an open printer
+    /// checklist rebuilds its rows (the printers just found), every face
+    /// that names printers repaints.
+    fn close_printers_modal(&mut self, cx: &mut Cx) {
+        self.ui.modal(cx, ids!(printers_modal)).close(cx);
+        let back = printers_modal_return().lock().unwrap().take();
+        {
+            let mut st = app_state().lock().unwrap();
+            if let Some(field) = back.or(st.suggest_open.filter(|f| f.is_printer_pick())) {
+                st.open_suggest(field, "");
+            }
+        }
+        self.redraw_suggest_lists(cx);
+        self.sync_chrome(cx);
+    }
+
+    /// Find / Cancel faces, the found line and the saved list, as on the
+    /// Printers panel. Cheap; called whenever that panel repaints.
+    fn paint_printers_modal(&mut self, cx: &mut Cx) {
+        let (title, tip, find, cancel, done, line, rows, finding) = {
+            let st = app_state().lock().unwrap();
+            let finding = print_share::is_finding_printers()
+                && !print_share::find_printers_was_cancelled();
+            (
+                st.t("settings_sec_printers"),
+                st.t("printers_screen_tip"),
+                st.t("find_printers"),
+                st.t("cancel"),
+                st.t("pick_done"),
+                printers_found_line(|k| st.t(k)),
+                printers_pool_rows(&st.printer_draft, None, |k| st.t(k)),
+                finding,
+            )
+        };
+        self.ui.widget(cx, ids!(pm_title)).set_text(cx, &plain_display_text(&title));
+        self.ui
+            .widget(cx, ids!(pm_title_help))
+            .as_info_help()
+            .set_tip(&plain_display_text(&tip));
+        // Find / Cancel swap by visibility only — never set_text on the
+        // Fill+wrap Find face while it is shown (DEV.md bug 7).
+        let find_btn = self.ui.button(cx, ids!(pm_find_btn));
+        if find_btn.text() != find {
+            find_btn.set_text(cx, &find);
+        }
+        find_btn.set_visible(cx, !finding);
+        self.ui.button(cx, ids!(pm_find_cancel)).set_text(cx, &cancel);
+        self.ui.button(cx, ids!(pm_find_cancel)).set_visible(cx, finding);
+        self.ui.button(cx, ids!(pm_close)).set_text(cx, &done);
+        self.ui
+            .widget(cx, ids!(pm_found_label))
+            .set_text(cx, &plain_display_text(&line));
+        self.ui
+            .widget(cx, ids!(pm_found_label))
+            .set_visible(cx, !line.trim().is_empty());
+        let has = !rows.is_empty();
+        self.set_report_rows(cx, ids!(pm_pool_label), rows);
+        self.ui.widget(cx, ids!(pm_pool_label)).set_visible(cx, has);
     }
 
     /// Settings → Printers: Find status line only. The pool list is the
@@ -575,15 +651,8 @@ fn fit_inside_system_bars(&mut self, cx: &mut Cx) {
         } else {
             app_t("station_vps_dd_n").replace("{n}", &n.to_string())
         };
-        let open = {
-            let st = app_state().lock().unwrap();
-            st.suggest_open == Some(SuggestField::StationVps)
-        };
-        let face = if open {
-            app_t("pick_done_dd").replace("{label}", &dd)
-        } else {
-            dd
-        };
+        // A dropdown face is its label only; ComboField draws ˅ / ˄.
+        let face = dd;
         self.ui.button(cx, ids!(station_vps_dd)).set_text(cx, &face);
         self.ui
             .widget(cx, ids!(station_print_summary))
@@ -658,23 +727,14 @@ fn fit_inside_system_bars(&mut self, cx: &mut Cx) {
         self.show_found_printers(cx);
         self.set_report_rows(cx, ids!(printers_pool_label), pool_rows);
         self.ui.widget(cx, ids!(printers_delivery_list)).redraw(cx);
-        let (test_n, test_open) = {
-            let st = app_state().lock().unwrap();
-            (
-                st.test_printer_ids.len(),
-                st.suggest_open == Some(SuggestField::TestPrinters),
-            )
-        };
+        let test_n = app_state().lock().unwrap().test_printer_ids.len();
         let test_dd = if test_n == 0 {
             app_t("test_printers_dd")
         } else {
             app_t("test_printers_dd_n").replace("{n}", &test_n.to_string())
         };
-        let test_face = if test_open {
-            app_t("pick_done_dd").replace("{label}", &test_dd)
-        } else {
-            test_dd
-        };
+        // A dropdown face is its label only; ComboField draws ˅ / ˄.
+        let test_face = test_dd;
         self.ui
             .button(cx, ids!(printers_test_dd))
             .set_text(cx, &test_face);
@@ -682,15 +742,8 @@ fn fit_inside_system_bars(&mut self, cx: &mut Cx) {
         self.ui
             .widget(cx, ids!(route_assigned_empty))
             .set_text(cx, &plain_display_text(&app_t("virtual_printers_empty")));
-        let assign_open = {
-            let st = app_state().lock().unwrap();
-            st.suggest_open == Some(SuggestField::PrinterAssign)
-        };
-        let assign_face = if assign_open {
-            app_t("pick_done_dd").replace("{label}", &assign_label)
-        } else {
-            assign_label
-        };
+        // A dropdown face is its label only; ComboField draws ˅ / ˄.
+        let assign_face = assign_label;
         self.ui
             .button(cx, ids!(printer_assign_dd))
             .set_text(cx, &assign_face);
@@ -1128,7 +1181,6 @@ fn fit_inside_system_bars(&mut self, cx: &mut Cx) {
         self.align_label(cx, ids!(items_help_label), rtl);
         self.align_label(cx, ids!(credit_help), rtl);
         self.align_label(cx, ids!(settings_hub_help), rtl);
-        self.align_label(cx, ids!(sidebar_settings_help), rtl);
         self.align_label(cx, ids!(settings_title), rtl);
         self.align_label(cx, ids!(reports_bank_heading), rtl);
         self.align_label(cx, ids!(device_setup_banner), rtl);
@@ -1279,6 +1331,7 @@ fn fit_inside_system_bars(&mut self, cx: &mut Cx) {
         self.align_input(cx, ids!(staff_name_input), rtl);
         self.align_input(cx, ids!(staff_title_input), rtl);
         self.align_input(cx, ids!(staff_pin_input), rtl);
+        self.align_input(cx, ids!(staff_edit_pin_input), rtl);
         self.align_input(cx, ids!(staff_login_input), rtl);
         self.align_input(cx, ids!(staff_password_input), rtl);
         self.align_input(cx, ids!(staff_edit_login_input), rtl);
@@ -1328,7 +1381,6 @@ fn fit_inside_system_bars(&mut self, cx: &mut Cx) {
             (ids!(line_action_go), "confirm"),
             (ids!(table_range_add), "add_these_tables"),
             (ids!(table_remove_btn), "remove_these_tables"),
-            (ids!(bill_format_save), "save_bill_format"),
             (ids!(bill_format_reset), "reset_bill_format"),
             (ids!(bill_format_test), "test_bill_format"),
             (ids!(print_stamp_pick), "choose_stamp"),
@@ -1512,9 +1564,12 @@ fn fit_inside_system_bars(&mut self, cx: &mut Cx) {
         self.ui
             .widget(cx, ids!(h_datetime_appearance))
             .set_text(cx, &plain_display_text(&s("datetime_appearance")));
-        self.ui
-            .widget(cx, ids!(datetime_appearance_help))
-            .set_text(cx, &plain_display_text(&soft_paragraph_at_dash(&s("datetime_appearance_help"))));
+        {
+            let help = self.ui.widget(cx, ids!(datetime_appearance_help)).as_info_help();
+            // Title is the sibling WrapLabel on the same Right row.
+            help.set_title(cx, "");
+            help.set_tip(&plain_display_text(&s("datetime_appearance_help")));
+        }
         self.ui
             .widget(cx, ids!(h_date_order))
             .set_text(cx, &plain_display_text(&s("date_order")));
@@ -2161,8 +2216,8 @@ fn fit_inside_system_bars(&mut self, cx: &mut Cx) {
         self.ui.text_input(cx, ids!(menu_category_input)).set_empty_text(cx, s("category_search_ph"));
         self.ui.text_input(cx, ids!(menu_station_input)).set_empty_text(cx, s("station_new_ph"));
         self.ui.text_input(cx, ids!(kot_station_input)).set_empty_text(cx, s("kot_station_ph"));
-        // kot_station_dd face (Kitchen / Done · …) is painted in Pos chrome —
-        // do not reset it here or open-dropdown Done · is wiped every sync.
+        // kot_station_dd face (Kitchen · stations) is painted in Pos chrome —
+        // do not reset it here.
         self.ui.button(cx, ids!(kot_set_station)).set_text(cx, &s("kot_set_station"));
         self.ui.text_input(cx, ids!(menu_modifiers_input)).set_empty_text(cx, s("options_khaynjo_ph"));
         self.ui.text_input(cx, ids!(buy_qty_input)).set_empty_text(cx, s("qty_example_ph"));
@@ -2184,6 +2239,7 @@ fn fit_inside_system_bars(&mut self, cx: &mut Cx) {
         self.ui.text_input(cx, ids!(staff_name_input)).set_empty_text(cx, s("staff_name_ph"));
         self.ui.text_input(cx, ids!(staff_title_input)).set_empty_text(cx, s("role_title_rest_ph"));
         self.ui.text_input(cx, ids!(staff_pin_input)).set_empty_text(cx, s("starting_pin_ph"));
+        self.ui.text_input(cx, ids!(staff_edit_pin_input)).set_empty_text(cx, s("starting_pin_ph"));
         self.ui.text_input(cx, ids!(staff_login_input)).set_empty_text(cx, s("login_id_opt_ph"));
         self.ui.text_input(cx, ids!(staff_password_input)).set_empty_text(cx, s("starting_password_ph"));
         self.ui.text_input(cx, ids!(staff_edit_login_input)).set_empty_text(cx, s("login_id_opt_ph"));

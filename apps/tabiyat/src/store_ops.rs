@@ -1,7 +1,7 @@
-//! Local / LAN ops beyond the day book: waitlist, loyalty, vouchers, clock,
+//! Local / LAN ops beyond the day book: loyalty, vouchers, clock,
 //! stock count, POs, transfers, feedback, CRM segments, and optional Net stubs.
 //!
-//! Child of `store` — shares the connection. Counter and kitchen never wait
+//! Child of `store` — shares the connection. The counter never waits
 //! on these; outbox / Net stubs stay optional.
 
 use super::Store;
@@ -12,8 +12,6 @@ use crate::notify;
 use chrono::{Datelike, Duration, Local, NaiveDate};
 use rusqlite::{params, OptionalExtension};
 use serde::{Deserialize, Serialize};
-use std::fs;
-use std::path::Path;
 
 /// Local guest-book slice for CRM messages (Parties → Guests & messages).
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
@@ -44,99 +42,6 @@ impl CrmSegment {
         }
     }
 }
-
-pub const OPS_SCHEMA: &str = r#"
-CREATE TABLE IF NOT EXISTS waitlist (
-    id TEXT PRIMARY KEY,
-    name TEXT NOT NULL,
-    party_size INTEGER NOT NULL DEFAULT 1,
-    quoted_mins INTEGER NOT NULL DEFAULT 0,
-    status TEXT NOT NULL DEFAULT 'waiting',
-    table_id TEXT NOT NULL DEFAULT '',
-    created_at TEXT NOT NULL,
-    seated_at TEXT NOT NULL DEFAULT '',
-    cancelled_at TEXT NOT NULL DEFAULT '',
-    created_by TEXT NOT NULL DEFAULT ''
-);
-CREATE TABLE IF NOT EXISTS waiter_calls (
-    id TEXT PRIMARY KEY,
-    table_id TEXT NOT NULL,
-    created_at TEXT NOT NULL,
-    cleared_at TEXT NOT NULL DEFAULT '',
-    note TEXT NOT NULL DEFAULT ''
-);
-CREATE TABLE IF NOT EXISTS stock_counts (
-    id TEXT PRIMARY KEY,
-    started_at TEXT NOT NULL,
-    closed_at TEXT NOT NULL DEFAULT '',
-    closed_by TEXT NOT NULL DEFAULT '',
-    note TEXT NOT NULL DEFAULT ''
-);
-CREATE TABLE IF NOT EXISTS stock_count_lines (
-    id TEXT PRIMARY KEY,
-    count_id TEXT NOT NULL,
-    product_id TEXT NOT NULL,
-    name TEXT NOT NULL,
-    expected_qty INTEGER NOT NULL DEFAULT 0,
-    counted_qty INTEGER NOT NULL,
-    reason TEXT NOT NULL DEFAULT ''
-);
-CREATE TABLE IF NOT EXISTS gift_vouchers (
-    id TEXT PRIMARY KEY,
-    code TEXT NOT NULL UNIQUE,
-    amount_paise INTEGER NOT NULL,
-    balance_paise INTEGER NOT NULL,
-    issued_at TEXT NOT NULL,
-    redeemed_at TEXT NOT NULL DEFAULT '',
-    note TEXT NOT NULL DEFAULT '',
-    active INTEGER NOT NULL DEFAULT 1
-);
-CREATE TABLE IF NOT EXISTS time_clock (
-    id TEXT PRIMARY KEY,
-    staff_id TEXT NOT NULL,
-    staff_name TEXT NOT NULL DEFAULT '',
-    clock_in TEXT NOT NULL,
-    clock_out TEXT NOT NULL DEFAULT ''
-);
-CREATE TABLE IF NOT EXISTS purchase_orders (
-    id TEXT PRIMARY KEY,
-    supplier_id TEXT NOT NULL DEFAULT '',
-    supplier_name TEXT NOT NULL DEFAULT '',
-    status TEXT NOT NULL DEFAULT 'open',
-    created_at TEXT NOT NULL,
-    received_at TEXT NOT NULL DEFAULT '',
-    note TEXT NOT NULL DEFAULT '',
-    created_by TEXT NOT NULL DEFAULT ''
-);
-CREATE TABLE IF NOT EXISTS purchase_order_lines (
-    id TEXT PRIMARY KEY,
-    po_id TEXT NOT NULL,
-    product_id TEXT NOT NULL,
-    name TEXT NOT NULL,
-    qty INTEGER NOT NULL,
-    unit_cost_paise INTEGER NOT NULL DEFAULT 0
-);
-CREATE TABLE IF NOT EXISTS feedback (
-    id TEXT PRIMARY KEY,
-    created_at TEXT NOT NULL,
-    score INTEGER NOT NULL,
-    note TEXT NOT NULL DEFAULT '',
-    table_name TEXT NOT NULL DEFAULT ''
-);
-CREATE TABLE IF NOT EXISTS floor_areas (
-    id TEXT PRIMARY KEY,
-    name TEXT NOT NULL UNIQUE,
-    picker_enabled INTEGER NOT NULL DEFAULT 1
-);
-CREATE TABLE IF NOT EXISTS connector_outbox (
-    id TEXT PRIMARY KEY,
-    created_at TEXT NOT NULL,
-    kind TEXT NOT NULL,
-    payload_json TEXT NOT NULL DEFAULT '{}',
-    status TEXT NOT NULL DEFAULT 'queued',
-    note TEXT NOT NULL DEFAULT ''
-);
-"#;
 
 #[derive(Clone, Debug, PartialEq, Eq, Serialize, Deserialize)]
 pub struct GiftVoucher {
@@ -183,33 +88,6 @@ pub struct StockTransferLine {
 }
 
 impl Store {
-    pub(crate) fn migrate_ops(&self) -> Result<(), String> {
-        self.conn
-            .execute_batch(OPS_SCHEMA)
-            .map_err(|e| e.to_string())?;
-        for stmt in [
-            "ALTER TABLE running_lines ADD COLUMN seat_no INTEGER NOT NULL DEFAULT 0",
-            "ALTER TABLE running_lines ADD COLUMN held INTEGER NOT NULL DEFAULT 0",
-            "ALTER TABLE running_lines ADD COLUMN course_no INTEGER NOT NULL DEFAULT 0",
-            "ALTER TABLE running_lines ADD COLUMN line_total_paise INTEGER NOT NULL DEFAULT -1",
-            "ALTER TABLE products ADD COLUMN allergens TEXT NOT NULL DEFAULT ''",
-            "ALTER TABLE customers ADD COLUMN loyalty_points INTEGER NOT NULL DEFAULT 0",
-            "ALTER TABLE customers ADD COLUMN wallet_paise INTEGER NOT NULL DEFAULT 0",
-            "ALTER TABLE customers ADD COLUMN birthday TEXT NOT NULL DEFAULT ''",
-            "ALTER TABLE tables_dining ADD COLUMN waiter_staff_id TEXT NOT NULL DEFAULT ''",
-            "ALTER TABLE tables_dining ADD COLUMN layout_x REAL NOT NULL DEFAULT 0",
-            "ALTER TABLE tables_dining ADD COLUMN layout_y REAL NOT NULL DEFAULT 0",
-            "ALTER TABLE tables_dining ADD COLUMN layout_w REAL NOT NULL DEFAULT 0",
-            "ALTER TABLE tables_dining ADD COLUMN layout_h REAL NOT NULL DEFAULT 0",
-            "ALTER TABLE kitchen_stations ADD COLUMN picker_enabled INTEGER NOT NULL DEFAULT 1",
-            "ALTER TABLE tax_rates ADD COLUMN picker_enabled INTEGER NOT NULL DEFAULT 1",
-            "ALTER TABLE purchases ADD COLUMN batch_code TEXT NOT NULL DEFAULT ''",
-            "ALTER TABLE purchases ADD COLUMN expires_on TEXT NOT NULL DEFAULT ''",
-        ] {
-            let _ = self.conn.execute(stmt, []);
-        }
-        Ok(())
-    }
 
     // —— Waitlist ——
 
@@ -717,43 +595,6 @@ impl Store {
         Ok(out)
     }
 
-    // —— Product allergens ——
-
-    pub fn set_product_allergens(
-        &self,
-        product_id: &str,
-        allergens: &str,
-        actor: &StaffMember,
-    ) -> Result<(), String> {
-        self.assert_server_writer("Allergens")?;
-        let tags = allergens
-            .split(|c: char| c == ',' || c == ';' || c == '/')
-            .map(|s| s.trim())
-            .filter(|s| !s.is_empty())
-            .collect::<Vec<_>>()
-            .join(", ");
-        self.conn
-            .execute(
-                "UPDATE products SET allergens = ?2 WHERE id = ?1",
-                params![product_id, tags],
-            )
-            .map_err(|e| e.to_string())?;
-        self.audit(actor, "menu.allergens", product_id)?;
-        Ok(())
-    }
-
-    pub fn product_allergens(&self, product_id: &str) -> Result<String, String> {
-        self.conn
-            .query_row(
-                "SELECT COALESCE(allergens, '') FROM products WHERE id = ?1",
-                params![product_id],
-                |r| r.get(0),
-            )
-            .optional()
-            .map_err(|e| e.to_string())
-            .map(|o| o.unwrap_or_default())
-    }
-
     // —— Expiry / batch ——
 
     pub fn set_purchase_batch_expiry(
@@ -1048,24 +889,12 @@ impl Store {
 
     // —— Feedback ——
 
-    pub fn add_feedback(
-        &self,
-        score: i64,
-        note: &str,
-        table_name: &str,
-    ) -> Result<(), String> {
+    pub fn add_feedback(&self, score: i64, note: &str) -> Result<(), String> {
         let score = score.clamp(1, 5);
         self.conn
             .execute(
-                "INSERT INTO feedback(id, created_at, score, note, table_name)
-                 VALUES(?1, ?2, ?3, ?4, ?5)",
-                params![
-                    new_id(),
-                    Local::now().to_rfc3339(),
-                    score,
-                    note.trim(),
-                    table_name.trim()
-                ],
+                "INSERT INTO feedback(id, created_at, score, note) VALUES(?1, ?2, ?3, ?4)",
+                params![new_id(), Local::now().to_rfc3339(), score, note.trim()],
             )
             .map_err(|e| e.to_string())?;
         Ok(())
@@ -1075,25 +904,20 @@ impl Store {
         let mut stmt = self
             .conn
             .prepare(
-                "SELECT score, note, table_name, created_at FROM feedback
+                "SELECT score, note, created_at FROM feedback
                   ORDER BY created_at DESC LIMIT 30",
             )
             .map_err(|e| e.to_string())?;
         let rows = stmt
             .query_map([], |r| {
-                Ok((
-                    r.get::<_, i64>(0)?,
-                    r.get::<_, String>(1)?,
-                    r.get::<_, String>(2)?,
-                    r.get::<_, String>(3)?,
-                ))
+                Ok((r.get::<_, i64>(0)?, r.get::<_, String>(1)?, r.get::<_, String>(2)?))
             })
             .map_err(|e| e.to_string())?;
         let mut out = String::from("Guest feedback\n");
         for row in rows {
-            let (score, note, table, at) = row.map_err(|e| e.to_string())?;
+            let (score, note, at) = row.map_err(|e| e.to_string())?;
             out.push_str(&format!(
-                "- {score}/5 · {table} · {} · {note}\n",
+                "- {score}/5 · {} · {note}\n",
                 &at[..at.len().min(16)].replace('T', " ")
             ));
         }
@@ -1149,53 +973,6 @@ impl Store {
         )
     }
 
-    /// Offline aggregator file drop (Zomato/Swiggy-style JSON). Never blocks counter.
-    pub fn import_aggregator_orders_file(&self, json: &str) -> Result<usize, String> {
-        self.assert_server_writer("Import aggregator orders")?;
-        let val: serde_json::Value =
-            serde_json::from_str(json).map_err(|e| format!("Bad aggregator file: {e}"))?;
-        let orders = val
-            .as_array()
-            .cloned()
-            .or_else(|| val.get("orders").and_then(|o| o.as_array()).cloned())
-            .unwrap_or_else(|| vec![val]);
-        let mut n = 0;
-        for o in orders {
-            self.enqueue_connector("aggregator_inbox", o, "file drop")?;
-            n += 1;
-        }
-        Ok(n)
-    }
-
-    /// Read `backups/import_aggregator_orders.json` and enqueue each order.
-    /// Same drop-file pattern as branch day import — Local only; never Net.
-    pub fn import_aggregator_orders_drop_file(&self) -> Result<usize, String> {
-        let path = self
-            .path
-            .parent()
-            .unwrap_or(Path::new("."))
-            .join("backups")
-            .join("import_aggregator_orders.json");
-        if !path.exists() {
-            return Err("Missing backups/import_aggregator_orders.json".into());
-        }
-        let json = fs::read_to_string(&path).map_err(|e| e.to_string())?;
-        self.import_aggregator_orders_file(&json)
-    }
-
-    /// Net poll stub — disabled by default; only enqueues a wake note.
-    pub fn aggregator_net_poll_stub(&self, enabled: bool) -> Result<(), String> {
-        if !enabled {
-            return Ok(());
-        }
-        let _ = self.enqueue_connector(
-            "aggregator_poll",
-            serde_json::json!({ "enabled": true, "note": "optional when internet available" }),
-            "stub",
-        )?;
-        Ok(())
-    }
-
     // —— LAN display helpers ——
 
     pub fn display_order_html(&self) -> Result<String, String> {
@@ -1218,7 +995,7 @@ h1{{font-size:1.6rem}}img{{background:#fff;padding:12px;border-radius:8px;max-wi
         ))
     }
 
-    /// Floor “Local ops” body — owner-facing only. No LAN paths, aggregator
+    /// “Local ops” body — owner-facing only. No LAN paths
     /// file paths, or connector jargon (those live in docs / ℹ tips).
     pub fn ops_panel_text(&self) -> Result<String, String> {
         let mut parts: Vec<String> = Vec::new();
@@ -1568,7 +1345,7 @@ mod tests {
     #[test]
     fn po_receive_and_time_clock_hours() {
         let shop = shop();
-        let rice = Product::new_raw_material("Rice", "kg");
+        let rice = Product::new_resale_stock("Rice", "kg");
         shop.store.upsert_product(&rice).unwrap();
         let po = shop
             .store

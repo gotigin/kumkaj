@@ -41,7 +41,7 @@ remove	刪除
 removed_items	已移除的項目
 removed_help	恢復會把項目原樣放回菜單 — 價格、照片和分類都不變。我們的菜品貨架永遠不會被移除，所以隨時都能再次添加菜品。
 restore_item	恢復
-empty_catalog	尚無項目。打開菜單與項目，添加一個（名稱+價格），然後下單。
+empty_catalog	尚無項目。
 total	總計
 cash	現金
 upi	UPI
@@ -103,23 +103,14 @@ bill_item_qty	數量
 bill_item_price	單價
 bill_item_amount	金額
 bill_item_note	備註
-bill_item_col_gap	列間距
 bill_item_col_order	列順序
 bill_item_col_sep	列線
-bill_item_gap_tight	緊
-bill_item_gap_comfort	舒適
-bill_item_gap_wide	寬
-bill_item_num_width	數字列
-bill_item_num_compact	緊湊
-bill_item_num_comfort	舒適
-bill_item_num_wide	寬
-bill_item_num_align	數字對齊
-bill_item_gap_em	間距 (em)
-bill_item_qty_min	數量最小 (em)
-bill_item_price_min	單價最小 (em)
-bill_item_amount_min	金額最小 (em)
-kot_item_qty_width	數量列
-kot_item_num_align	數量對齊
+slip_columns	欄
+slip_col_width	寬度 (mm)
+slip_col_start	開頭間距 (px)
+slip_col_end	結尾間距 (px)
+slip_col_align	文字對齊
+slip_columns_help	每欄的寬度已包含其開頭與結尾間距。文字在所屬欄內換行；超出內容寬度的部分，在紙上和預覽中都會被裁掉。
 bill_total_qty_label	總數量標籤
 bill_total_subtotal_label	小計標籤
 bill_total_grand_label	總計標籤
@@ -221,7 +212,6 @@ sidebar_order_saved	側邊欄訂單已保存
 sidebar_visibility_saved	側邊欄可見性已保存
 amounts_hide	隱藏
 amounts_show	顯示
-printers_none_hint	請先在此設備上保存打印機，然後將其添加到帳單或廚房
 counter	櫃檯
 dine_in	堂食
 takeaway	外帶
@@ -328,8 +318,6 @@ selected_language	已選
 continue	繼續
 this_device	此設備
 device_use_q	此設備將如何使用？
-last_server_mode	之前是服務器——點按繼續
-last_client_mode	之前是客戶端——點按繼續
 choose_server	選擇服務器
 choose_server_hint	此設備已有服務器。打開一個，或為另一家企業創建新服務器。
 create_new_server	創建新服務器
@@ -391,7 +379,7 @@ attachments_last_expense	附件（上一筆費用）
 bank	銀行
 bank_in	存入銀行
 bank_out	從銀行取出
-bank_reconciliation	銀行對帳（按銀行對帳單勾選）
+bank_reconciliation	銀行對帳
 bank_to_till	銀行 → 櫃檯
 book_add_dish	下單 — 添加菜品/項目
 book_opening_credit	寄件 — 期初賒帳
@@ -744,7 +732,6 @@ station_print_pick_first	請先選擇廚房工位
 station_print_editing	正在編輯“{name}”的打印機
 station_vps_dd	此工位的打印機
 station_vps_dd_n	{n} 臺打印機 · 點按更改
-station_vps_empty	尚無打印機 — 請在「設置 → 打印機」中查找
 bill_printers_dd	帳單打印機
 bill_printers_dd_n	{n} 臺帳單打印機 · 點擊以更改
 job_layout	版式
@@ -889,7 +876,7 @@ net_word	淨額
 offline_badge	離線
 optional_login_help	可選登錄（編號+密碼）。店主設置一次；之後只有用戶本人可改密碼。
 or_unlock_login	或用登錄編號+密碼解鎖
-permission_preset	權限預設（可訪問什麼）
+permission_preset	權限預設
 preset_help_khaynjo	收銀員：銷售。經理：銷售+項目+作廢/修改。
 product_locked_khaynjo	Khaynjo
 product_only_khaynjo	此應用僅為 Khaynjo——餐廳經營系統。其他行業另有獨立的 Kumkaj 產品。
@@ -961,10 +948,6 @@ pin_hint_paired	額外櫃檯已配對 — 解鎖以銷售
 pin_hint_pair_first	額外櫃檯 — 先與店鋪設備配對
 unlock_to_continue	解鎖以繼續
 no_staff_yet	尚無員工 — 以店主解鎖，然後團隊
-status_server_set_pin	服務器模式 — 設置店主PIN
-status_server_tills	服務器模式 — 額外櫃檯可加入。解鎖
-status_server_unlock	服務器模式 — 以店主解鎖
-status_client_unlock	客戶端模式 — 解鎖以銷售
 icon_new_selected	圖標：已選新文件 — 點保存品牌
 icon_custom	圖標：您店鋪的標誌
 icon_default	圖標：Kumkaj 標誌（默認）— 選擇您自己的
@@ -1033,7 +1016,7 @@ book_kind_balance	資產負債表
 order_help	選擇一個未結訂單，或選擇桌臺開始新訂單。點選就緒菜品，發送 KOT，為一個或多個菜品結帳，拆分帳單並完成付款。
 floor_help	每張桌子都顯示客人是否就座、他們的未結帳單以及接下來誰需要服務。
 kitchen_help	按變體或按菜品跟蹤出餐量 — 在 KOT 中按您想要的方式記錄。
-kitchen_empty	現在沒有打開的訂單 — 新訂單會顯示在這裡。
+kitchen_empty	現在沒有打開的訂單。
 add_a_table	添加桌子
 add_station_heading	添加工位 · 如坦都裡、南印度
 categories_help	分類顯示一道菜屬於菜單的哪一部分 — 如小吃、主菜或印度香飯。按您的方式創建分類：選擇我們建議的名稱、重命名或添加您自己的。
@@ -1131,7 +1114,6 @@ bill_format_help	打印在每張帳單的餐廳名稱下方。用 | 分行（如
 bill_header_ph	地址 | 電話
 fssai_ph	FSSAI 許可證號（印度）
 bill_footer_ph	頁腳（如：謝謝，歡迎再來）
-save_bill_format	保存帳單格式
 reset_bill_format	恢復默認
 bill_format_reset	帳單格式已恢復默認
 reset_kot_format	恢復默認
@@ -1201,13 +1183,11 @@ kot_copies_3	3
 kot_title_ph	標題（空白 = KOT - KITCHEN ORDER）
 kot_footer_ph	廚房備註（可選，無價格）
 kot_preview	預覽
-save_kot_format	保存 KOT 格式
 test_kot_format	測試 KOT
 test_kot_sent	廚房票據預覽已發送
 test_bill_format	測試帳單
 test_bill_sent	帳單預覽已發送
 test_print_no_printer	該任務沒有打印機 — 在此屏幕選擇一個
-kot_format_saved	已保存 KOT 格式
 std_print	帳單字號
 std_print_help	標準縱向與橫向帳單字號（熱敏 KOT 單獨設置）。兩種方向相同字號。
 std_size_s	小
@@ -1264,7 +1244,6 @@ new_items_head	尚未發送
 price_ph	價格
 price_ph_gst_inside	價格（含{tax}）
 cancel_needs_table	從樓面（桌臺）打開此單以便廚後取消 — 櫃檯 KOT 會留在票據上直至收款
-tax_rates_missing_hint	這些菜沒有{tax}稅率 — 在菜單設置稅率（{tax} inclusive 時價格已含{tax}）
 taxable_value	應稅金額
 gst_inside_price_note	（含{tax}）
 start_with_template	從我們的菜單模板開始
@@ -1318,9 +1297,7 @@ order_empty_pick	訂單為空——點上方“添加菜品”選菜。
 add_dishes	添加菜品
 order_so_far	本單：{n} · {total}
 no_dish_match	沒有與“{q}”匹配的菜品
-pick_dishes_help	點菜品即可加入 · 選分類縮小列表
 pick_done	完成
-pick_done_dd	完成 · {label}
 printer_route_mode	如果此地點有多個打印機
 printer_mode_first	第一個可用的
 printer_mode_all	全部打印

@@ -41,7 +41,7 @@ remove	ᱚᱪᱚᱜᱽ ᱢᱮ
 removed_items	ᱚᱪᱚᱜ ᱟᱠᱟᱱ ᱡᱤᱱᱤᱥ ᱠᱚ
 removed_help	ᱨᱤᱥᱴᱚᱨ ᱡᱤᱱᱤᱥ ᱫᱚ ᱢᱮᱱᱩ ᱨᱮ ᱫᱚᱦᱚᱭᱟᱭ ᱡᱮᱞᱠᱟ ᱛᱟᱦᱮᱸ ᱠᱟᱱᱟ — ᱜᱚᱱᱚᱝ, ᱪᱤᱛᱟᱹᱨ ᱟᱨ ᱛᱷᱚᱠ ᱾ ᱟᱵᱚᱣᱟᱜ ᱰᱤᱥ ᱨᱮᱭᱟᱜ ᱥᱮᱞᱯᱷ ᱫᱚ ᱛᱤᱥ ᱦᱚᱸ ᱵᱟᱝ ᱚᱪᱚᱜᱼᱟ, ᱚᱱᱟᱛᱮ ᱰᱤᱥ ᱫᱚ ᱥᱟᱨᱟ ᱜᱷᱟᱹᱲᱤᱡ ᱫᱚᱦᱲᱟ ᱥᱮᱞᱮᱫ ᱫᱟᱲᱮᱭᱟᱜᱼᱟ᱾
 restore_item	ᱨᱩᱣᱟᱹᱲ
-empty_catalog	ᱱᱤᱛ ᱦᱚᱸ ᱰᱤᱥ ᱵᱟᱹᱱᱩᱜᱼᱟ ᱾ ᱢᱮᱱᱭᱩ ᱡᱷᱤᱡᱽ ᱢᱮ, ᱢᱤᱫ ᱰᱤᱥ ᱥᱮᱞᱮᱫ ᱢᱮ (ᱧᱩᱛᱩᱢ + ᱜᱚᱱᱚᱝ), ᱚᱱᱟ ᱛᱟᱭᱚᱢ ᱚᱰᱟᱨ ᱦᱟᱛᱟᱣ ᱢᱮ ᱾
+empty_catalog	ᱱᱤᱛ ᱦᱚᱸ ᱰᱤᱥ ᱵᱟᱹᱱᱩᱜᱼᱟ ᱾
 total	ᱢᱩᱴ
 cash	ᱴᱟᱠᱟ
 upi	UPI
@@ -103,23 +103,14 @@ bill_item_qty	ᱠᱩᱭᱴᱤ
 bill_item_price	ᱜᱚᱱᱚᱝ
 bill_item_amount	ᱴᱟᱠᱟ
 bill_item_note	ᱰᱤᱥ ᱱᱚᱴ
-bill_item_col_gap	ᱠᱚᱞᱟᱢ ᱜᱮᱯ
 bill_item_col_order	ᱠᱚᱞᱟᱢ ᱚᱰᱟᱨ
 bill_item_col_sep	ᱠᱷᱟᱢᱵᱟ ᱟᱹᱨᱤ
-bill_item_gap_tight	ᱴᱟᱭᱤᱴ
-bill_item_gap_comfort	ᱟᱨᱟᱢ ᱛᱮ
-bill_item_gap_wide	ᱚᱥᱟᱨ
-bill_item_num_width	ᱮᱞᱮᱞ ᱠᱷᱟᱢᱵᱟ
-bill_item_num_compact	ᱠᱚᱢᱯᱮᱠᱴ
-bill_item_num_comfort	ᱟᱨᱟᱢ ᱛᱮ
-bill_item_num_wide	ᱚᱥᱟᱨ
-bill_item_num_align	ᱮᱞᱠᱷᱟ ᱠᱚ ᱞᱟᱹᱭᱤᱱ ᱢᱮ
-bill_item_gap_em	ᱜᱮᱯ (ᱮᱢ)
-bill_item_qty_min	ᱢᱩᱴᱷᱟᱹᱱ ᱢᱤᱱᱴ (ᱮᱢ)
-bill_item_price_min	ᱜᱚᱱᱚᱝ ᱠᱚᱢ (ᱮᱢ)
-bill_item_amount_min	ᱴᱟᱠᱟ ᱠᱚᱢ (ᱮᱢ)
-kot_item_qty_width	ᱠᱩᱭᱴᱤ ᱠᱚᱞᱟᱢ
-kot_item_num_align	ᱠᱩᱭᱴᱤ ᱟᱞᱟᱭᱤᱱ
+slip_columns	ᱠᱚᱞᱟᱢ ᱠᱚ
+slip_col_width	ᱚᱥᱟᱨ (mm)
+slip_col_start	ᱮᱛᱦᱚᱵ ᱡᱟᱭᱜᱟ (px)
+slip_col_end	ᱢᱩᱪᱟᱹᱫ ᱡᱟᱭᱜᱟ (px)
+slip_col_align	ᱚᱞ ᱥᱟᱡᱟᱣ
+slip_columns_help	ᱡᱚᱛᱚ ᱠᱚᱞᱟᱢ ᱨᱮᱭᱟᱜ ᱚᱥᱟᱨ ᱨᱮ ᱚᱱᱟ ᱨᱮᱭᱟᱜ ᱮᱛᱦᱚᱵ ᱟᱨ ᱢᱩᱪᱟᱹᱫ ᱡᱟᱭᱜᱟ ᱥᱮᱞᱮᱫ ᱢᱮᱱᱟᱜᱼᱟ᱾ ᱚᱞ ᱫᱚ ᱟᱡᱟᱜ ᱠᱚᱞᱟᱢ ᱵᱷᱤᱛᱨᱤ ᱨᱮ ᱜᱩᱴᱤᱭᱟᱹᱜᱼᱟ; ᱡᱤᱱᱤᱥ ᱚᱥᱟᱨ ᱠᱷᱚᱱ ᱵᱟᱦᱨᱮ ᱡᱟᱦᱟᱸ ᱢᱮᱱᱟᱜᱼᱟ ᱚᱱᱟ ᱠᱟᱜᱚᱡ ᱟᱨ ᱢᱟᱲᱟᱝ ᱧᱮᱞ ᱨᱮ ᱜᱮᱫ ᱜᱤᱰᱤᱭᱚᱜᱼᱟ᱾
 bill_total_qty_label	ᱢᱩᱴ qty ᱞᱮᱵᱮᱞ
 bill_total_subtotal_label	ᱥᱟᱵᱽ ᱢᱩᱴᱟᱞ ᱞᱮᱵᱮᱞ
 bill_total_grand_label	ᱜᱽᱨᱟᱱᱰ ᱢᱩᱴᱟᱞ ᱞᱮᱵᱮᱞ
@@ -221,7 +212,6 @@ sidebar_order_saved	ᱥᱟᱭᱤᱰᱵᱟᱨ ᱚᱰᱟᱨ ᱥᱟᱧᱪᱟᱣ ᱮ
 sidebar_visibility_saved	ᱥᱟᱭᱤᱰᱵᱟᱨ ᱧᱮᱞᱚᱜ ᱥᱟᱧᱪᱟᱣ ᱮᱱᱟ
 amounts_hide	ᱩᱠᱩᱭ ᱢᱮ
 amounts_show	ᱩᱫᱩᱜ ᱢᱮ
-printers_none_hint	ᱯᱩᱭᱞᱩ ᱱᱚᱣᱟ ᱥᱟᱫᱷᱚᱱ ᱨᱮ ᱢᱤᱫ ᱯᱨᱤᱱᱴᱟᱨ ᱥᱟᱧᱪᱟᱣ ᱢᱮ, ᱚᱱᱟ ᱛᱟᱭᱚᱢ ᱱᱚᱣᱟ ᱵᱤᱞ ᱥᱮ ᱫᱟᱠᱟ ᱚᱲᱟᱜ ᱨᱮ ᱥᱮᱞᱮᱫ ᱢᱮ
 counter	ᱠᱟᱣᱩᱱᱴᱟᱨ
 dine_in	ᱰᱟᱭᱤᱱ-ᱤᱱ
 takeaway	ᱤᱫᱤ ᱚᱣᱮ
@@ -328,8 +318,6 @@ selected_language	ᱵᱟᱪᱷᱟᱣ ᱟᱠᱟᱱᱟ
 continue	ᱞᱟᱦᱟᱜ ᱢᱮ
 this_device	ᱱᱚᱶᱟ ᱥᱟᱫᱷᱚᱱ
 device_use_q	ᱱᱚᱣᱟ ᱥᱟᱫᱷᱚᱱ ᱪᱮᱫ ᱞᱮᱠᱟ ᱵᱮᱵᱷᱟᱨᱚᱜᱼᱟ?
-last_server_mode	ᱥᱮᱨᱵᱷᱟᱨ ᱛᱟᱦᱮᱸ ᱠᱟᱱᱟ — ᱞᱟᱦᱟᱜ ᱞᱟᱹᱜᱤᱫ ᱴᱮᱯ ᱢᱮ
-last_client_mode	ᱪᱮᱫ ᱠᱞᱟᱭᱮᱱᱴ ᱛᱟᱦᱮᱸ ᱠᱟᱱᱟᱭ — ᱞᱟᱦᱟᱜ ᱞᱟᱹᱜᱤᱫ ᱴᱮᱯ ᱢᱮ
 choose_server	ᱢᱤᱫ ᱥᱮᱨᱵᱷᱟᱨ ᱵᱟᱪᱷᱟᱣ ᱢᱮ
 choose_server_hint	ᱢᱮᱱᱟᱜ ᱥᱮᱨᱵᱷᱟᱨ ᱡᱷᱤᱡᱽ ᱢᱮ, ᱟᱨᱵᱟᱝ ᱮᱴᱟᱜ ᱵᱮᱯᱟᱨ ᱞᱟᱹᱜᱤᱫ ᱢᱤᱫ ᱵᱮᱱᱟᱣ ᱢᱮ ᱾
 create_new_server	ᱱᱟᱶᱟ ᱥᱮᱨᱵᱷᱟᱨ ᱵᱮᱱᱟᱣ ᱢᱮ
@@ -391,7 +379,7 @@ attachments_last_expense	ᱞᱟᱴᱷᱟ (ᱢᱩᱪᱟᱹᱫ ᱠᱷᱚᱨᱪᱟ)
 bank	ᱵᱮᱝᱠ
 bank_in	ᱵᱮᱝᱠ ᱨᱮ
 bank_out	ᱵᱮᱝᱠ ᱟᱩᱴ
-bank_reconciliation	ᱵᱮᱝᱠ ᱥᱩᱯᱩᱨ (ᱟᱢᱟᱜ ᱵᱮᱝᱠ ᱥᱴᱮᱴᱢᱮᱱᱴ ᱨᱮ ᱴᱤᱠ ᱚᱯᱷ)
+bank_reconciliation	ᱵᱮᱝᱠ ᱥᱩᱯᱩᱨ
 bank_to_till	ᱵᱮᱝᱠ → ᱦᱟᱹᱵᱤᱡ
 book_add_dish	ᱯᱚᱛᱚᱵ — ᱰᱤᱥ/ᱡᱤᱱᱤᱥ ᱥᱮᱞᱮᱫ ᱢᱮ
 book_opening_credit	ᱯᱚᱛᱚᱵ — ᱠᱨᱮᱰᱤᱴ ᱡᱷᱤᱡᱽ
@@ -744,7 +732,6 @@ station_print_pick_first	ᱯᱩᱭᱞᱩ ᱫᱟᱠᱟ ᱚᱲᱟᱜ ᱨᱮᱭᱟ�
 station_print_editing	“{name}” ᱞᱟᱹᱜᱤᱫ ᱯᱨᱤᱱᱴᱟᱨ ᱥᱟᱥᱟᱯᱲᱟᱣ
 station_vps_dd	ᱱᱚᱶᱟ ᱥᱴᱮᱥᱚᱱ ᱞᱟᱹᱜᱤᱫ ᱯᱨᱤᱱᱴᱟᱨ
 station_vps_dd_n	{n} ᱯᱨᱤᱱᱴᱟᱨ(ᱠᱚ) · ᱵᱚᱫᱚᱞ ᱞᱟᱹᱜᱤᱫ ᱴᱮᱯ ᱢᱮ
-station_vps_empty	ᱱᱤᱛ ᱦᱚᱸ ᱯᱨᱤᱱᱴᱟᱨ ᱵᱟᱹᱱᱩᱜᱼᱟ — ᱥᱮᱴᱤᱝ ᱞᱟᱛᱟᱨ ᱨᱮ ᱯᱟᱱᱛᱮ ᱢᱮ → ᱯᱨᱤᱱᱴᱟᱨ
 bill_printers_dd	ᱵᱤᱞ ᱞᱟᱹᱜᱤᱫ ᱯᱨᱤᱱᱴᱟᱨ
 bill_printers_dd_n	ᱵᱤᱞ ᱞᱟᱹᱜᱤᱫ {n} ᱯᱨᱤᱱᱴᱟᱨ(ᱠᱚ) · ᱵᱚᱫᱚᱞ ᱞᱟᱹᱜᱤᱫ ᱴᱮᱯ ᱢᱮ
 job_layout	ᱞᱮᱭᱟᱣᱩᱴ
@@ -889,7 +876,7 @@ net_word	ᱱᱮᱴ
 offline_badge	ᱚᱯᱷᱞᱟᱭᱤᱱ
 optional_login_help	ᱚᱯᱥᱚᱱᱟᱞ ᱞᱚᱜᱤᱱ (ᱟᱭᱤ ᱰᱤ + ᱯᱟᱥᱣᱟᱨᱰ)᱾ ᱢᱟᱞᱤᱠ ᱢᱤᱫ ᱫᱷᱟᱣ ᱥᱮᱴ ᱮᱫᱟᱭ; ᱥᱩᱢᱩᱝ ᱵᱮᱵᱷᱟᱨᱤᱭᱟᱹ ᱜᱮ ᱛᱟᱭᱚᱢ ᱛᱮ ᱯᱟᱥᱣᱟᱨᱰ ᱵᱚᱫᱚᱞ ᱫᱟᱲᱮᱭᱟᱜᱼᱟᱭ᱾
 or_unlock_login	ᱟᱨ ᱵᱟᱝ ᱞᱚᱜᱤᱱ ᱟᱭᱤ ᱰᱤ + ᱯᱟᱥᱣᱟᱨᱰ ᱥᱟᱶ ᱚᱱᱞᱚᱠ
-permission_preset	ᱱᱩᱠᱨᱤ (ᱥᱠᱨᱤᱱ ᱥᱮᱴ ᱟᱨ ᱴᱟᱠᱟ ᱠᱟᱹᱢᱤ)
+permission_preset	ᱱᱩᱠᱨᱤ
 preset_help_khaynjo	ᱠᱮᱥᱤᱭᱟᱨ: ᱟᱠᱨᱤᱧ ᱢᱮ᱾ ᱢᱮᱱᱮᱡᱟᱨ: ᱟᱠᱨᱤᱧ + ᱡᱤᱱᱤᱥ + ᱵᱟᱝ/ᱥᱚᱫᱚᱨ᱾
 product_locked_khaynjo	Khaynjo
 product_only_khaynjo	ᱱᱚᱣᱟ ᱮᱯ ᱫᱚ ᱠᱷᱟᱹᱭᱱᱡᱚ ᱠᱟᱱᱟ — ᱨᱮᱥᱴᱩᱨᱮᱱᱴ ᱚᱯᱨᱮᱴᱤᱝ ᱥᱤᱥᱴᱚᱢ ᱾ ᱮᱴᱟᱜ ᱵᱮᱯᱟᱨ ᱠᱚ ᱫᱚ ᱡᱩᱫᱟᱹ ᱡᱩᱫᱟᱹ ᱠᱩᱢᱠᱟᱡᱽ ᱡᱤᱱᱤᱥ ᱞᱮᱠᱟ ᱡᱟᱦᱟᱡᱽ ᱨᱮᱭᱟᱜ ᱥᱟᱢᱟᱝ ᱫᱟᱯᱨᱟᱢ ᱦᱩᱭᱩᱜ ᱠᱟᱱᱟ ᱾
@@ -961,10 +948,6 @@ pin_hint_paired	ᱵᱟᱹᱲᱛᱤ ᱡᱚᱲᱟᱣ ᱦᱟᱹᱵᱤᱡ — ᱟᱠ
 pin_hint_pair_first	ᱵᱟᱹᱲᱛᱤ ᱴᱤᱞ — ᱯᱩᱭᱞᱩ ᱫᱚᱠᱟᱱ ᱥᱟᱫᱷᱚᱱ ᱥᱟᱶ ᱡᱚᱲᱟᱣ ᱢᱮ
 unlock_to_continue	ᱞᱟᱦᱟᱜ ᱞᱟᱹᱜᱤᱫ ᱠᱩᱞᱩᱯ ᱡᱷᱤᱡᱽ ᱢᱮ
 no_staff_yet	ᱱᱤᱛ ᱦᱚᱸ ᱪᱮᱫ ᱠᱟᱹᱢᱤᱭᱟᱹ ᱵᱟᱹᱱᱩᱜ ᱠᱚᱣᱟ — ᱢᱟᱞᱤᱠ ᱞᱮᱠᱟᱛᱮ ᱚᱱᱞᱚᱠ ᱢᱮ, ᱛᱚᱵᱮ ᱫᱚᱞ
-status_server_set_pin	ᱥᱮᱨᱵᱷᱟᱨ ᱢᱳᱰ — ᱢᱟᱞᱤᱠ ᱯᱤᱱ ᱥᱮᱴ ᱢᱮ
-status_server_tills	ᱥᱮᱨᱵᱷᱟᱨ ᱢᱳᱰ — ᱵᱟᱹᱲᱛᱤ ᱴᱤᱞ ᱠᱚ ᱡᱚᱲᱟᱣ ᱫᱟᱲᱮᱭᱟᱜᱼᱟ ᱾ ᱠᱩᱞᱩᱯ ᱡᱷᱤᱡᱽ ᱢᱮ
-status_server_unlock	ᱥᱮᱨᱵᱷᱟᱨ ᱢᱳᱰ — ᱢᱟᱞᱤᱠ ᱞᱮᱠᱟᱛᱮ ᱡᱷᱤᱡᱽ ᱢᱮ
-status_client_unlock	ᱠᱞᱟᱭᱮᱱᱴ ᱢᱳᱰ — ᱟᱠᱨᱤᱧ ᱞᱟᱹᱜᱤᱫ ᱚᱱᱞᱚᱠ ᱩᱱᱩᱫᱩᱜ
 icon_new_selected	ᱪᱤᱱᱦᱟᱹ: ᱱᱟᱶᱟ ᱨᱮᱫ ᱵᱟᱪᱷᱟᱣ ᱮᱱᱟ — ᱵᱨᱟᱱᱰ ᱥᱟᱧᱪᱟᱣ ᱨᱮ ᱴᱮᱯ ᱢᱮ
 icon_custom	ᱪᱤᱱᱦᱟᱹ: ᱟᱢᱟᱜ ᱡᱟᱭᱜᱟ ᱪᱤᱱᱦᱟᱹ
 icon_default	ᱟᱭᱠᱚᱱ: ᱠᱩᱢᱠᱟᱡᱽ ᱪᱤᱱᱦᱟᱹ (ᱰᱤᱯᱷᱚᱞᱴ) — ᱢᱤᱫ ᱠᱟᱥᱴᱚᱢ ᱵᱟᱪᱷᱟᱣ ᱢᱮ
@@ -1033,7 +1016,7 @@ book_kind_balance	ᱵᱮᱞᱮᱱᱥ ᱥᱤᱴ
 order_help	ᱱᱚᱣᱟ ᱥᱮᱞᱮᱫ ᱞᱟᱹᱜᱤᱫ ᱢᱤᱫ ᱡᱤᱱᱤᱥ ᱨᱮ ᱞᱤᱱ ᱢᱮ ᱾
 floor_help	ᱚᱰᱟᱨ ᱦᱟᱛᱟᱣ ᱟᱨ ᱵᱚᱫᱚᱞ ᱞᱟᱹᱜᱤᱫ ᱢᱤᱫ ᱴᱮᱵᱩᱞ ᱨᱮ ᱞᱤᱱ ᱢᱮ ᱾ ᱨᱚᱝ ᱫᱚ ᱯᱷᱨᱤ ᱩᱫᱩᱜᱚᱜ ᱠᱟᱱᱟ → ᱫᱩᱲᱩᱵ → ᱫᱟᱠᱟ ᱚᱲᱟᱜ → ᱥᱟᱯᱲᱟᱣ → ᱡᱚᱢ → ᱵᱤᱞ → ᱯᱮᱭᱰ ᱾ ᱛᱟᱺᱜᱤ ᱛᱟᱞᱠᱟ, ᱨᱟᱠᱷᱟ ᱫᱚᱦᱚ, ᱟᱨ ᱥᱮᱞᱮᱫ ᱴᱮᱵᱩᱞ ᱠᱚ ᱞᱟᱛᱟᱨ ᱨᱮ ᱮᱢ ᱟᱠᱟᱱ ᱛᱷᱚᱠ ᱠᱚ ᱨᱮ ᱢᱮᱱᱟᱜᱼᱟ ᱾
 kitchen_help	ᱫᱟᱠᱟ ᱚᱲᱟᱜ ᱨᱮᱭᱟᱜ ᱴᱤᱠᱤᱴ (KOT), ᱱᱟᱶᱟ ᱢᱩᱪᱟᱹᱫ ᱾ ᱮᱦᱚᱵ → ᱥᱟᱯᱲᱟᱣ → ᱥᱟᱹᱛ ᱢᱤᱫ ᱴᱤᱠᱤᱴ ᱥᱟᱶ ᱥᱟᱶᱛᱮ ᱞᱟᱦᱟ ᱪᱟᱞᱟᱜᱼᱟ ᱾ ᱴᱤᱠᱤᱴ ᱫᱚ ᱛᱤᱥ ᱦᱚᱸ ᱫᱟᱢ ᱵᱟᱝ ᱩᱫᱩᱜ ᱟ᱾
-kitchen_empty	ᱵᱟᱝ ᱡᱷᱤᱡ ᱴᱤᱠᱤᱴ ᱢᱮᱱᱟᱜᱼᱟ ᱾ ᱚᱰᱟᱨ ᱥᱮ ᱯᱷᱞᱳᱨ ᱠᱷᱚᱱ ᱠᱩᱞ ᱟᱠᱟᱱ ᱢᱤᱫ KOT ᱱᱚᱸᱰᱮ ᱧᱮᱞᱚᱜ ᱠᱟᱱᱟ ᱾
+kitchen_empty	ᱵᱟᱝ ᱡᱷᱤᱡ ᱴᱤᱠᱤᱴ ᱢᱮᱱᱟᱜᱼᱟ ᱾
 add_a_table	ᱢᱤᱫ ᱴᱮᱵᱩᱞ ᱥᱮᱞᱮᱫ ᱢᱮ
 add_station_heading	ᱢᱤᱫ ᱫᱟᱠᱟ ᱚᱲᱟᱜ ᱨᱮᱭᱟᱜ ᱥᱴᱮᱥᱚᱱ ᱥᱮᱞᱮᱫ ᱢᱮ
 categories_help	ᱚᱱᱟ ᱛᱷᱚᱠ ᱞᱟᱛᱟᱨ ᱨᱮ ᱪᱮᱛᱟᱱ ᱨᱮ ᱢᱮᱱᱟᱜ ᱡᱤᱱᱤᱥ ᱨᱮᱫ ᱞᱟᱹᱜᱤᱫ ᱵᱮᱵᱷᱟᱨ ᱨᱮ ᱴᱮᱯ ᱢᱮ ᱾ ᱯᱷᱳᱴᱳ ᱫᱚ ᱛᱷᱚᱠ ᱢᱤᱫ ᱪᱤᱛᱟᱹᱨ ᱮᱢᱚᱜ ᱠᱟᱱᱟ; ᱢᱤᱫ ᱵᱮᱜᱚᱨ ᱱᱚᱣᱟ ᱟᱡᱟᱜ ᱮᱛᱚᱦᱚᱵ ᱟᱹᱲᱟᱹ ᱩᱫᱩᱜ ᱟ᱾
@@ -1131,7 +1114,6 @@ bill_format_help	ᱥᱟᱱᱟᱢ ᱵᱤᱞ ᱨᱮ ᱟᱢᱟᱜ ᱨᱮᱥᱴᱚ�
 bill_header_ph	ᱴᱷᱤᱠᱟᱹᱱᱟ | ᱯᱷᱚᱱ
 fssai_ph	FSSAI ᱞᱟᱭᱥᱮᱱᱥ ᱮᱞ᱾ (ᱵᱷᱟᱨᱚᱛ)
 bill_footer_ph	ᱯᱷᱩᱴᱟᱨ (ᱡᱮᱞᱠᱟ ᱟᱭᱢᱟ ᱥᱟᱨᱦᱟᱣ, ᱫᱚᱦᱲᱟ ᱧᱮᱞ ᱢᱮ)
-save_bill_format	ᱵᱤᱞ ᱨᱩᱯ ᱥᱟᱧᱪᱟᱣ ᱢᱮ
 reset_bill_format	ᱰᱤᱯᱷᱚᱞᱴ ᱨᱮ ᱨᱤᱥᱮᱴ ᱢᱮ
 bill_format_reset	ᱵᱤᱞ ᱯᱷᱚᱨᱢᱟᱴ ᱰᱤᱯᱷᱚᱞᱴ ᱨᱮ ᱨᱤᱥᱮᱴ ᱢᱮ
 reset_kot_format	ᱰᱤᱯᱷᱚᱞᱴ ᱨᱮ ᱨᱤᱥᱮᱴ ᱢᱮ
@@ -1201,13 +1183,11 @@ kot_copies_3	3
 kot_title_ph	ᱥᱟᱛᱟᱢ (ᱠᱷᱟᱹᱞᱤ = ᱠᱚᱴ - ᱫᱟᱠᱟ ᱚᱲᱟᱜ ᱚᱰᱟᱨ)
 kot_footer_ph	ᱫᱟᱠᱟ ᱚᱲᱟᱜ ᱨᱮᱭᱟᱜ ᱱᱚᱴ (ᱚᱯᱥᱚᱱᱟᱞ, ᱜᱚᱱᱚᱝ ᱵᱟᱹᱱᱩᱜᱼᱟ)
 kot_preview	ᱢᱟᱲᱟᱝ ᱧᱮᱞ
-save_kot_format	KOT ᱨᱩᱯ ᱥᱟᱧᱪᱟᱣ ᱢᱮ
 test_kot_format	ᱴᱮᱥᱴ KOT
 test_kot_sent	ᱫᱟᱠᱟ ᱚᱲᱟᱜ ᱨᱮᱭᱟᱜ ᱴᱤᱠᱤᱴ ᱯᱨᱤᱵᱷᱤᱭᱩ ᱠᱩᱞ ᱦᱩᱭ ᱮᱱᱟ
 test_bill_format	ᱵᱤᱱᱤᱰ ᱵᱤᱞ
 test_bill_sent	ᱵᱤᱞ ᱯᱨᱤᱵᱷᱤᱭᱩ ᱵᱷᱮᱡᱟ ᱮᱱᱟ
 test_print_no_printer	ᱚᱱᱟ ᱠᱟᱹᱢᱤ ᱞᱟᱹᱜᱤᱫ ᱯᱨᱤᱱᱴᱟᱨ ᱵᱟᱹᱱᱩᱜᱼᱟ — ᱱᱚᱶᱟ ᱥᱠᱨᱤᱱ ᱨᱮ ᱢᱤᱫᱴᱟᱹᱝ ᱵᱟᱪᱷᱟᱣ ᱢᱮ
-kot_format_saved	KOT ᱨᱩᱯ ᱥᱟᱧᱪᱟᱣ ᱟᱠᱟᱱᱟ
 std_print	ᱵᱤᱞ ᱪᱷᱟᱯᱟ ᱜᱚᱲᱦᱚᱱ
 std_print_help	ᱚᱮᱥ/ᱰᱚᱠᱭᱩᱢᱮᱱᱴ ᱯᱨᱤᱱᱴᱟᱨ ᱨᱮ ᱥᱴᱮᱱᱰᱟᱨ ᱯᱚᱨᱴᱨᱮᱭᱴ ᱟᱨ ᱞᱮᱱᱰᱥᱠᱮᱯ ᱵᱤᱞ ᱠᱟᱹᱢᱤ ᱠᱚ ᱞᱟᱹᱜᱤᱫ ᱯᱷᱚᱱᱴ ᱜᱚᱲᱦᱚᱱ (ᱯᱚᱭᱮᱱᱴ ᱮᱢ ᱢᱮ — ᱠᱟᱹᱴᱤᱡ/ᱥᱟᱫᱷᱟᱨᱚᱱ/ᱢᱟᱨᱟᱝ ᱵᱟᱝ)᱾ ᱵᱟᱱᱟᱨ ᱚᱨᱤᱭᱮᱱᱴᱮᱥᱚᱱ ᱨᱮ ᱢᱤᱫ ᱞᱮᱠᱟᱱ ᱜᱚᱲᱦᱚᱱ ᱾ ᱫᱟᱠᱟ ᱚᱲᱟᱜ ᱨᱮᱭᱟᱜ ᱥᱞᱤᱯ ᱥᱟᱭᱤᱡᱽ ᱠᱚᱴ ᱴᱮᱵᱽ ᱨᱮ ᱢᱮᱱᱟᱜᱼᱟ ᱾
 std_size_s	ᱦᱩᱰᱤᱧ
@@ -1264,7 +1244,6 @@ new_items_head	ᱱᱤᱛ ᱦᱚᱸ ᱵᱟᱝ ᱠᱩᱞ ᱟᱠᱟᱱᱟ
 price_ph	ᱜᱚᱱᱚᱝ
 price_ph_gst_inside	ᱜᱚᱱᱚᱝ ({tax} ᱥᱟᱶᱛᱮ)
 cancel_needs_table	ᱫᱟᱠᱟ ᱚᱲᱟᱜ ᱛᱟᱭᱚᱢ ᱵᱟᱹᱛᱤᱞ ᱞᱟᱹᱜᱤᱫ ᱯᱷᱞᱚᱨ ᱠᱷᱚᱱ ᱱᱚᱣᱟ ᱚᱰᱚᱨ ᱡᱷᱤᱡᱽ ᱢᱮ (ᱢᱤᱫ ᱴᱮᱵᱩᱞ) — ᱠᱟᱣᱩᱱᱴᱟᱨ ᱠᱮᱴᱥ ᱴᱤᱠᱤᱴ ᱨᱮ ᱛᱟᱦᱮᱱᱟ ᱛᱤᱱ ᱦᱟᱹᱵᱤᱡ ᱟᱢ ᱯᱮᱭᱢᱮᱱᱴ ᱵᱟᱝ ᱦᱟᱛᱟᱣ ᱢᱮ
-tax_rates_missing_hint	ᱱᱚᱶᱟ ᱡᱚᱢᱟᱜ ᱨᱮ {tax} ᱫᱚᱨ ᱵᱟᱹᱱᱩᱜᱼᱟ — ᱢᱮᱱᱩ ᱨᱮ ᱴᱮᱠᱥ ᱫᱚᱨ ᱥᱮᱴ ᱢᱮ (ᱫᱟᱢ ᱨᱮ ᱞᱟᱦᱟ ᱠᱷᱚᱱ {tax} ᱥᱮᱞᱮᱫ, {tax} ᱥᱮᱞᱮᱫ ᱞᱮᱠᱟ)
 taxable_value	ᱴᱮᱠᱥ ᱞᱮᱠᱟᱱ ᱜᱚᱱᱚᱝ
 gst_inside_price_note	({tax} ᱥᱟᱶᱛᱮ)
 start_with_template	ᱟᱞᱮᱭᱟᱜ ᱢᱮᱱᱭᱩ ᱴᱮᱢᱯᱞᱮᱴ ᱛᱮ ᱮᱦᱚᱵᱽ ᱢᱮ
@@ -1318,9 +1297,7 @@ order_empty_pick	ᱠᱷᱟᱹᱞᱤ ᱚᱰᱟᱨ ᱢᱮ — ᱰᱤᱥ ᱵᱟᱪ�
 add_dishes	ᱰᱤᱥ ᱠᱚ ᱥᱮᱞᱮᱫ ᱢᱮ
 order_so_far	ᱱᱚᱣᱟ ᱚᱰᱟᱨ ᱨᱮ: {n} · {total}
 no_dish_match	ᱪᱮᱫ ᱰᱤᱥ ᱦᱚᱸ ᱵᱟᱝ ᱢᱤᱞᱟᱹᱣ ᱟᱠᱟᱱᱟ “{q}”
-pick_dishes_help	ᱥᱮᱞᱮᱫ ᱞᱟᱹᱜᱤᱫ ᱢᱤᱫ ᱰᱤᱥ ᱴᱮᱯ ᱢᱮ · ᱛᱟᱞᱠᱟ ᱥᱟᱠᱲᱟ ᱞᱟᱹᱜᱤᱫ ᱢᱤᱫ ᱛᱷᱚᱠ ᱵᱟᱪᱷᱟᱣ ᱢᱮ
 pick_done	ᱥᱟᱹᱛ ᱮᱱᱟ
-pick_done_dd	ᱥᱟᱹᱛ ᱮᱱᱟ · {label}
 printer_route_mode	ᱡᱩᱫᱤ ᱱᱚᱶᱟ ᱡᱟᱭᱜᱟ ᱨᱮ ᱟᱭᱢᱟ ᱯᱨᱤᱱᱴᱟᱨ ᱠᱚ ᱢᱮᱱᱟᱜᱼᱟ
 printer_mode_first	ᱯᱩᱭᱞᱩ ᱚᱱᱟ ᱠᱟᱹᱢᱤᱭᱟ
 printer_mode_all	ᱥᱟᱱᱟᱢ ᱨᱮ ᱪᱷᱟᱯᱟ ᱢᱮ

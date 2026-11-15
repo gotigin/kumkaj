@@ -7,7 +7,7 @@ use crate::domain::{
     AttachmentEntity, AttachmentKind, AuditEvent, BooksOverview, Branch, BranchSnapshot, Category,
     CreditLedgerEntry, Customer, DayTotals, EntryAttachment, EventTimes,
     Money, MoneyLane, MoneyMoveKind, MoneyMovement, OpenBill,
-    OpsReport, OrderType, OrgConsolidatedReport, Cart, PartyAgingRow, PartyPositionRow, PayMethod,
+    OpsReport, OrgConsolidatedReport, Cart, PartyAgingRow, PartyPositionRow, PayMethod,
     PeriodBooks, Product, Purchase, PurchaseLine, Sale, SaleDraft, SaleLine, SaleRevision,
     StaffFeatures, StaffMember, StaffRights, StaffRole, StockMovement, TaxRate, UnitConversion,
     UnitDef, STOCK_UNTRACKED,
@@ -19,6 +19,7 @@ use crate::locale::{self, LanguageSource, LocaleSettings};
 use chrono::{Local, NaiveDate};
 use rusqlite::{params, Connection, OptionalExtension};
 use sha2::{Digest, Sha256};
+use std::collections::BTreeMap;
 use std::fs;
 use std::path::{Path, PathBuf};
 
@@ -89,15 +90,17 @@ fn migrated_paths() -> &'static std::sync::Mutex<std::collections::HashSet<PathB
 /// again at the same path reads 0 and is migrated again.
 const SCHEMA_STAMP: i64 = 1;
 
-#[path = "store_running.rs"]
-mod running;
+#[path = "store_schema.rs"]
+mod schema;
+#[path = "store_bill.rs"]
+mod bill;
 #[path = "store_service.rs"]
 mod service;
-#[path = "store_recipes.rs"]
-mod recipes;
+#[path = "store_reorder.rs"]
+mod reorder;
 #[path = "store_ops.rs"]
 mod ops;
-pub use recipes::{milli_as_typed, recipe_as_typed, LowStock, RecipeLine, DEFAULT_REORDER_AT};
+pub use reorder::{LowStock, DEFAULT_REORDER_AT};
 pub use service::ShiftClose;
 pub use ops::{
     whatsapp_bill_url, CrmSegment, GiftVoucher, PurchaseOrder, PurchaseOrderLine,
@@ -131,6 +134,25 @@ pub struct StaffHire<'a> {
     pub password: &'a str,
     pub features: StaffFeatures,
 }
+
+/// Books settings that are the **shop's**, not the device's. A Client
+/// mirrors the Server's value for each on every sync
+/// (`net::SyncSnapshot::shop_prefs`, live deltas too). Owner rule
+/// (2026-11-14): Server and Client differ only in how they connect; what a
+/// screen shows comes from the shop's settings and the person's role.
+/// Device-only meta stays out: language, lock choices, sync interval, Day book accordions.
+pub const SHOP_PREF_KEYS: &[&str] = &[
+    "show_today_bar",
+    "ui_nav_hidden",
+    "ui_nav_order",
+    "business_day_mode",
+    "history_retention",
+    "history_retention_hours",
+    "allow_zero_sales",
+    "frequent_days",
+    "frequent_limit",
+    "currency",
+];
 
 impl Store {
     /// Open the active local server DB.
@@ -199,601 +221,16 @@ impl Store {
         Ok(out)
     }
 
-    /// Create the current books schema (version **1**).
-    ///
-    /// Pre-release: there is no upgrade ladder from older numbered schemas.
-    /// Delete local DBs from earlier builds if open fails after a schema change.
+    /// Make the books schema ([`schema::SCHEMA`]) and its first-run rows.
     fn migrate(&mut self) -> Result<(), String> {
         self.conn
-            .execute_batch(
-                r#"
-                CREATE TABLE IF NOT EXISTS meta (
-                    key TEXT PRIMARY KEY,
-                    value TEXT NOT NULL
-                );
-                CREATE TABLE IF NOT EXISTS products (
-                    id TEXT PRIMARY KEY,
-                    name TEXT NOT NULL,
-                    price_paise INTEGER NOT NULL CHECK(price_paise >= 0),
-                    available INTEGER NOT NULL DEFAULT 1,
-                    archived INTEGER NOT NULL DEFAULT 0,
-                    image_key TEXT,
-                    stock_qty INTEGER NOT NULL DEFAULT -1,
-                    category_id TEXT NOT NULL DEFAULT '',
-                    station_id TEXT NOT NULL DEFAULT '',
-                    tax_bps INTEGER NOT NULL DEFAULT 0,
-                    modifiers_json TEXT NOT NULL DEFAULT '[]',
-                    aliases_json TEXT NOT NULL DEFAULT '[]',
-                    branch_id TEXT NOT NULL DEFAULT '',
-                    tax_rate_id TEXT NOT NULL DEFAULT '',
-                    unit_label TEXT NOT NULL DEFAULT ''
-                );
-                CREATE TABLE IF NOT EXISTS sales (
-                    id TEXT PRIMARY KEY,
-                    created_at TEXT NOT NULL,
-                    total_paise INTEGER NOT NULL,
-                    pay_method TEXT NOT NULL,
-                    status TEXT NOT NULL,
-                    table_id TEXT,
-                    lines_total_paise INTEGER,
-                    rounding_paise INTEGER NOT NULL DEFAULT 0,
-                    customer_id TEXT,
-                    created_by_id TEXT NOT NULL DEFAULT '',
-                    created_by_name TEXT NOT NULL DEFAULT '',
-                    branch_id TEXT NOT NULL DEFAULT '',
-                    order_type TEXT NOT NULL DEFAULT 'counter',
-                    tax_paise INTEGER NOT NULL DEFAULT 0,
-                    tax_pricing TEXT NOT NULL DEFAULT 'inclusive',
-                    tax_label TEXT NOT NULL DEFAULT 'Tax',
-                    net_paise INTEGER NOT NULL DEFAULT 0,
-                    service_paise INTEGER NOT NULL DEFAULT 0,
-                    invoice_no TEXT NOT NULL DEFAULT '',
-                    money_lane TEXT NOT NULL DEFAULT 'declared',
-                    user_at TEXT NOT NULL DEFAULT '',
-                    device_at TEXT NOT NULL DEFAULT '',
-                    server_at TEXT NOT NULL DEFAULT ''
-                );
-                CREATE TABLE IF NOT EXISTS sale_lines (
-                    id INTEGER PRIMARY KEY AUTOINCREMENT,
-                    sale_id TEXT NOT NULL,
-                    product_id TEXT NOT NULL,
-                    name TEXT NOT NULL,
-                    unit_price_paise INTEGER NOT NULL,
-                    qty INTEGER NOT NULL,
-                    line_total_paise INTEGER NOT NULL,
-                    note TEXT NOT NULL DEFAULT '',
-                    qty_milli INTEGER NOT NULL DEFAULT 0,
-                    unit_label TEXT NOT NULL DEFAULT '',
-                    modifiers_json TEXT NOT NULL DEFAULT '[]'
-                );
-                CREATE TABLE IF NOT EXISTS sale_payments (
-                    id TEXT PRIMARY KEY,
-                    sale_id TEXT NOT NULL,
-                    pay_method TEXT NOT NULL,
-                    amount_paise INTEGER NOT NULL
-                );
-                CREATE TABLE IF NOT EXISTS expense_payments (
-                    id TEXT PRIMARY KEY,
-                    expense_id TEXT NOT NULL,
-                    pay_method TEXT NOT NULL,
-                    amount_paise INTEGER NOT NULL
-                );
-                CREATE TABLE IF NOT EXISTS sale_revisions (
-                    id TEXT PRIMARY KEY,
-                    sale_id TEXT NOT NULL,
-                    revised_at TEXT NOT NULL,
-                    actor_id TEXT NOT NULL,
-                    actor_name TEXT NOT NULL,
-                    reason TEXT NOT NULL,
-                    previous_json TEXT NOT NULL
-                );
-                CREATE TABLE IF NOT EXISTS staff (
-                    id TEXT PRIMARY KEY,
-                    name TEXT NOT NULL,
-                    role TEXT NOT NULL,
-                    pin_hash TEXT NOT NULL,
-                    active INTEGER NOT NULL DEFAULT 1,
-                    role_title TEXT NOT NULL DEFAULT '',
-                    features_json TEXT NOT NULL DEFAULT '',
-                    login_id TEXT NOT NULL DEFAULT '',
-                    password_hash TEXT NOT NULL DEFAULT ''
-                );
-                CREATE TABLE IF NOT EXISTS tables_dining (
-                    id TEXT PRIMARY KEY,
-                    name TEXT NOT NULL,
-                    status TEXT NOT NULL,
-                    active_sale_id TEXT,
-                    branch_id TEXT NOT NULL DEFAULT '',
-                    occupied_at TEXT NOT NULL DEFAULT ''
-                );
-                CREATE TABLE IF NOT EXISTS kot_tickets (
-                    id TEXT PRIMARY KEY,
-                    sale_id TEXT NOT NULL,
-                    created_at TEXT NOT NULL,
-                    status TEXT NOT NULL,
-                    summary TEXT NOT NULL,
-                    branch_id TEXT NOT NULL DEFAULT '',
-                    station_id TEXT NOT NULL DEFAULT '',
-                    table_id TEXT NOT NULL DEFAULT '',
-                    total_paise INTEGER NOT NULL DEFAULT 0
-                );
-                CREATE TABLE IF NOT EXISTS audit_events (
-                    id TEXT PRIMARY KEY,
-                    created_at TEXT NOT NULL,
-                    actor_id TEXT NOT NULL,
-                    actor_name TEXT NOT NULL,
-                    action TEXT NOT NULL,
-                    detail TEXT NOT NULL
-                );
-                CREATE TABLE IF NOT EXISTS customers (
-                    id TEXT PRIMARY KEY,
-                    name TEXT NOT NULL,
-                    phone TEXT NOT NULL DEFAULT '',
-                    note TEXT NOT NULL DEFAULT '',
-                    active INTEGER NOT NULL DEFAULT 1,
-                    created_at TEXT NOT NULL,
-                    branch_id TEXT NOT NULL DEFAULT '',
-                    kind_label TEXT NOT NULL DEFAULT ''
-                );
-                CREATE TABLE IF NOT EXISTS credit_ledger (
-                    id TEXT PRIMARY KEY,
-                    customer_id TEXT NOT NULL,
-                    created_at TEXT NOT NULL,
-                    kind TEXT NOT NULL,
-                    amount_paise INTEGER NOT NULL,
-                    sale_id TEXT,
-                    pay_method TEXT,
-                    actor_id TEXT NOT NULL,
-                    actor_name TEXT NOT NULL,
-                    detail TEXT NOT NULL DEFAULT '',
-                    user_at TEXT NOT NULL DEFAULT '',
-                    device_at TEXT NOT NULL DEFAULT '',
-                    server_at TEXT NOT NULL DEFAULT ''
-                );
-                CREATE TABLE IF NOT EXISTS expenses (
-                    id TEXT PRIMARY KEY,
-                    created_at TEXT NOT NULL,
-                    amount_paise INTEGER NOT NULL,
-                    category TEXT NOT NULL DEFAULT 'misc',
-                    note TEXT NOT NULL DEFAULT '',
-                    actor_id TEXT NOT NULL,
-                    actor_name TEXT NOT NULL,
-                    branch_id TEXT NOT NULL DEFAULT '',
-                    user_at TEXT NOT NULL DEFAULT '',
-                    device_at TEXT NOT NULL DEFAULT '',
-                    server_at TEXT NOT NULL DEFAULT ''
-                );
-                CREATE TABLE IF NOT EXISTS branches (
-                    id TEXT PRIMARY KEY,
-                    org_id TEXT NOT NULL,
-                    name TEXT NOT NULL,
-                    code TEXT NOT NULL DEFAULT '',
-                    active INTEGER NOT NULL DEFAULT 1,
-                    is_this_device INTEGER NOT NULL DEFAULT 0,
-                    last_snapshot_json TEXT NOT NULL DEFAULT '',
-                    last_sync_at TEXT NOT NULL DEFAULT ''
-                );
-                CREATE TABLE IF NOT EXISTS categories (
-                    id TEXT PRIMARY KEY,
-                    branch_id TEXT NOT NULL DEFAULT '',
-                    name TEXT NOT NULL,
-                    sort_order INTEGER NOT NULL DEFAULT 0,
-                    image_key TEXT NOT NULL DEFAULT '',
-                    aliases_json TEXT NOT NULL DEFAULT '[]'
-                );
-                CREATE TABLE IF NOT EXISTS kitchen_stations (
-                    id TEXT PRIMARY KEY,
-                    branch_id TEXT NOT NULL DEFAULT '',
-                    name TEXT NOT NULL,
-                    sort_order INTEGER NOT NULL DEFAULT 0
-                );
-                CREATE TABLE IF NOT EXISTS stock_movements (
-                    id TEXT PRIMARY KEY,
-                    branch_id TEXT NOT NULL DEFAULT '',
-                    product_id TEXT NOT NULL,
-                    created_at TEXT NOT NULL,
-                    delta_qty INTEGER NOT NULL,
-                    reason TEXT NOT NULL DEFAULT 'adjust',
-                    note TEXT NOT NULL DEFAULT '',
-                    actor_id TEXT NOT NULL DEFAULT '',
-                    actor_name TEXT NOT NULL DEFAULT '',
-                    ref_id TEXT NOT NULL DEFAULT '',
-                    user_at TEXT NOT NULL DEFAULT '',
-                    device_at TEXT NOT NULL DEFAULT '',
-                    server_at TEXT NOT NULL DEFAULT ''
-                );
-                CREATE TABLE IF NOT EXISTS purchases (
-                    id TEXT PRIMARY KEY,
-                    branch_id TEXT NOT NULL DEFAULT '',
-                    created_at TEXT NOT NULL,
-                    supplier TEXT NOT NULL DEFAULT '',
-                    total_paise INTEGER NOT NULL DEFAULT 0,
-                    note TEXT NOT NULL DEFAULT '',
-                    actor_id TEXT NOT NULL DEFAULT '',
-                    actor_name TEXT NOT NULL DEFAULT '',
-                    party_id TEXT NOT NULL DEFAULT '',
-                    on_account INTEGER NOT NULL DEFAULT 0,
-                    user_at TEXT NOT NULL DEFAULT '',
-                    device_at TEXT NOT NULL DEFAULT '',
-                    server_at TEXT NOT NULL DEFAULT ''
-                );
-                CREATE TABLE IF NOT EXISTS purchase_lines (
-                    id TEXT PRIMARY KEY,
-                    purchase_id TEXT NOT NULL,
-                    product_id TEXT NOT NULL,
-                    name TEXT NOT NULL,
-                    qty INTEGER NOT NULL,
-                    unit_cost_paise INTEGER NOT NULL DEFAULT 0,
-                    qty_milli INTEGER NOT NULL DEFAULT 0,
-                    unit_label TEXT NOT NULL DEFAULT ''
-                );
-                CREATE TABLE IF NOT EXISTS sync_outbox (
-                    id TEXT PRIMARY KEY,
-                    branch_id TEXT NOT NULL DEFAULT '',
-                    created_at TEXT NOT NULL,
-                    event_type TEXT NOT NULL,
-                    payload_json TEXT NOT NULL DEFAULT '',
-                    synced_at TEXT NOT NULL DEFAULT ''
-                );
-                CREATE TABLE IF NOT EXISTS tax_rates (
-                    id TEXT PRIMARY KEY,
-                    branch_id TEXT NOT NULL DEFAULT '',
-                    name TEXT NOT NULL,
-                    code TEXT NOT NULL DEFAULT '',
-                    bps INTEGER NOT NULL DEFAULT 0,
-                    active INTEGER NOT NULL DEFAULT 1
-                );
-                CREATE TABLE IF NOT EXISTS money_movements (
-                    id TEXT PRIMARY KEY,
-                    created_at TEXT NOT NULL,
-                    kind TEXT NOT NULL,
-                    amount_paise INTEGER NOT NULL,
-                    note TEXT NOT NULL DEFAULT '',
-                    actor_id TEXT NOT NULL,
-                    actor_name TEXT NOT NULL,
-                    branch_id TEXT NOT NULL DEFAULT '',
-                    user_at TEXT NOT NULL DEFAULT '',
-                    device_at TEXT NOT NULL DEFAULT '',
-                    server_at TEXT NOT NULL DEFAULT ''
-                );
-                CREATE TABLE IF NOT EXISTS payable_ledger (
-                    id TEXT PRIMARY KEY,
-                    party_id TEXT NOT NULL,
-                    created_at TEXT NOT NULL,
-                    kind TEXT NOT NULL,
-                    amount_paise INTEGER NOT NULL,
-                    purchase_id TEXT,
-                    pay_method TEXT,
-                    actor_id TEXT NOT NULL,
-                    actor_name TEXT NOT NULL,
-                    detail TEXT NOT NULL DEFAULT '',
-                    user_at TEXT NOT NULL DEFAULT '',
-                    device_at TEXT NOT NULL DEFAULT '',
-                    server_at TEXT NOT NULL DEFAULT ''
-                );
-                CREATE TABLE IF NOT EXISTS units (
-                    id TEXT PRIMARY KEY,
-                    code TEXT NOT NULL UNIQUE,
-                    name TEXT NOT NULL,
-                    builtin INTEGER NOT NULL DEFAULT 0,
-                    picker_enabled INTEGER NOT NULL DEFAULT 1
-                );
-                CREATE TABLE IF NOT EXISTS unit_conversions (
-                    id TEXT PRIMARY KEY,
-                    from_code TEXT NOT NULL,
-                    to_code TEXT NOT NULL,
-                    factor_milli INTEGER NOT NULL,
-                    UNIQUE(from_code, to_code)
-                );
-                CREATE INDEX IF NOT EXISTS idx_stock_movements_created
-                    ON stock_movements(created_at);
-                CREATE INDEX IF NOT EXISTS idx_sync_outbox_pending
-                    ON sync_outbox(synced_at);
-                CREATE INDEX IF NOT EXISTS idx_tax_rates_branch ON tax_rates(branch_id);
-                CREATE INDEX IF NOT EXISTS idx_money_movements_day
-                    ON money_movements(created_at);
-                CREATE INDEX IF NOT EXISTS idx_payable_party ON payable_ledger(party_id);
-                "#,
-            )
+            .execute_batch(schema::SCHEMA)
             .map_err(|e| e.to_string())?;
-
-        // LAN: phones paired to this Server (one token each, revocable), the
-        // staff signed in on them, and the answer to every write a phone
-        // sent (so a retry after a lost reply is answered, not done twice).
-        // `lan_outbox` is the phone's side: writes waiting for the Server.
-        self.conn
-            .execute_batch(
-                r#"
-                CREATE TABLE IF NOT EXISTS lan_devices (
-                    id TEXT PRIMARY KEY,
-                    name TEXT NOT NULL DEFAULT '',
-                    token_hash TEXT NOT NULL UNIQUE,
-                    paired_at TEXT NOT NULL,
-                    last_seen_at TEXT NOT NULL DEFAULT '',
-                    revoked_at TEXT NOT NULL DEFAULT ''
-                );
-                CREATE TABLE IF NOT EXISTS lan_sessions (
-                    token_hash TEXT PRIMARY KEY,
-                    device_id TEXT NOT NULL,
-                    staff_id TEXT NOT NULL,
-                    created_at TEXT NOT NULL,
-                    expires_at TEXT NOT NULL
-                );
-                CREATE TABLE IF NOT EXISTS lan_replies (
-                    request_id TEXT PRIMARY KEY,
-                    device_id TEXT NOT NULL,
-                    status INTEGER NOT NULL,
-                    body TEXT NOT NULL,
-                    created_at TEXT NOT NULL
-                );
-                CREATE TABLE IF NOT EXISTS lan_outbox (
-                    id TEXT PRIMARY KEY,
-                    seq INTEGER NOT NULL,
-                    path TEXT NOT NULL,
-                    body TEXT NOT NULL,
-                    label TEXT NOT NULL DEFAULT '',
-                    table_id TEXT NOT NULL DEFAULT '',
-                    staff_id TEXT NOT NULL DEFAULT '',
-                    created_at TEXT NOT NULL,
-                    attempts INTEGER NOT NULL DEFAULT 0,
-                    last_error TEXT NOT NULL DEFAULT ''
-                );
-                -- A waiting write the Server turned down when it finally
-                -- arrived (the table was settled at the counter meanwhile,
-                -- the dish ran out …). Kept, with the Server's words, until
-                -- someone has seen it: money taken offline is never dropped
-                -- silently.
-                CREATE TABLE IF NOT EXISTS lan_refused (
-                    id TEXT PRIMARY KEY,
-                    path TEXT NOT NULL,
-                    body TEXT NOT NULL,
-                    label TEXT NOT NULL DEFAULT '',
-                    error TEXT NOT NULL DEFAULT '',
-                    created_at TEXT NOT NULL,
-                    refused_at TEXT NOT NULL
-                );
-                "#,
-            )
-            .map_err(|e| e.to_string())?;
-        self.conn
-            .execute(
-                "INSERT OR IGNORE INTO meta(key, value) VALUES('schema_version', '1')",
-                [],
-            )
-            .map_err(|e| e.to_string())?;
-        // Always pin to current pre-release schema (drop any leftover 2–17 markers).
         // Written only when it differs: the LAN server opens the books for
         // every request, and an unconditional write was a disk sync each time.
         if self.meta_get("schema_version")?.as_deref() != Some("1") {
             self.meta_set("schema_version", "1")?;
         }
-        // Pre-release column adds (no-op when CREATE already has them).
-        for stmt in [
-            "ALTER TABLE sales ADD COLUMN extras_json TEXT NOT NULL DEFAULT '[]'",
-            "ALTER TABLE customers ADD COLUMN credit_limit_paise INTEGER NOT NULL DEFAULT 0",
-            "ALTER TABLE money_movements ADD COLUMN cleared_at TEXT NOT NULL DEFAULT ''",
-            "ALTER TABLE categories ADD COLUMN image_key TEXT NOT NULL DEFAULT ''",
-            "ALTER TABLE categories ADD COLUMN aliases_json TEXT NOT NULL DEFAULT '[]'",
-            "ALTER TABLE tables_dining ADD COLUMN occupied_at TEXT NOT NULL DEFAULT ''",
-            "ALTER TABLE kot_tickets ADD COLUMN table_id TEXT NOT NULL DEFAULT ''",
-            "ALTER TABLE kot_tickets ADD COLUMN total_paise INTEGER NOT NULL DEFAULT 0",
-            // Floor areas (Dine In, Parcel, AC …) and the running order a KOT fed.
-            "ALTER TABLE tables_dining ADD COLUMN area TEXT NOT NULL DEFAULT ''",
-            "ALTER TABLE tables_dining ADD COLUMN paid_at TEXT NOT NULL DEFAULT ''",
-            // Dish group label (Half and Full are items of their own) and
-            // per-area prices on an item.
-            "ALTER TABLE products ADD COLUMN group_name TEXT NOT NULL DEFAULT ''",
-            "ALTER TABLE products ADD COLUMN area_prices_json TEXT NOT NULL DEFAULT '[]'",
-            // Dish / resold good / raw material (existing items are dishes).
-            "ALTER TABLE products ADD COLUMN kind TEXT NOT NULL DEFAULT 'dish'",
-            "ALTER TABLE kot_tickets ADD COLUMN order_id TEXT NOT NULL DEFAULT ''",
-            // Kitchen calls tickets by number; a cancel slip is its own kind;
-            // the KOT carries who sent it.
-            "ALTER TABLE kot_tickets ADD COLUMN kot_no INTEGER NOT NULL DEFAULT 0",
-            "ALTER TABLE kot_tickets ADD COLUMN kind TEXT NOT NULL DEFAULT 'kot'",
-            "ALTER TABLE kot_tickets ADD COLUMN created_by TEXT NOT NULL DEFAULT ''",
-            // Settle & Save: what the guest handed over, change returned, tip.
-            "ALTER TABLE sales ADD COLUMN tendered_paise INTEGER NOT NULL DEFAULT 0",
-            "ALTER TABLE sales ADD COLUMN change_paise INTEGER NOT NULL DEFAULT 0",
-            "ALTER TABLE sales ADD COLUMN tip_paise INTEGER NOT NULL DEFAULT 0",
-            "ALTER TABLE sales ADD COLUMN tip_method TEXT NOT NULL DEFAULT ''",
-            // Bill discount taken off the lines, and why (reports, audit).
-            "ALTER TABLE sales ADD COLUMN discount_paise INTEGER NOT NULL DEFAULT 0",
-            "ALTER TABLE sales ADD COLUMN discount_reason TEXT NOT NULL DEFAULT ''",
-            // Shop-narrowed unit pick-lists (disabled units still convert).
-            "ALTER TABLE units ADD COLUMN picker_enabled INTEGER NOT NULL DEFAULT 1",
-            // Menu timings / happy-hour (Mon=1…Sun=7 windows).
-            "ALTER TABLE products ADD COLUMN schedule_json TEXT NOT NULL DEFAULT '[]'",
-            "ALTER TABLE products ADD COLUMN barcode TEXT NOT NULL DEFAULT ''",
-            "ALTER TABLE products ADD COLUMN composition TEXT NOT NULL DEFAULT ''",
-            "ALTER TABLE products ADD COLUMN schedule_h INTEGER NOT NULL DEFAULT 0",
-            "ALTER TABLE products ADD COLUMN rx_required INTEGER NOT NULL DEFAULT 0",
-            "ALTER TABLE products ADD COLUMN mrp_paise INTEGER NOT NULL DEFAULT 0",
-            "ALTER TABLE products ADD COLUMN hsn_code TEXT NOT NULL DEFAULT ''",
-            // Remainder of a unit still on the shelf (0–999). Whole units stay in stock_qty.
-            "ALTER TABLE products ADD COLUMN stock_frac_milli INTEGER NOT NULL DEFAULT 0",
-            "ALTER TABLE stock_movements ADD COLUMN delta_milli INTEGER NOT NULL DEFAULT 0",
-            "ALTER TABLE products ADD COLUMN allergens TEXT NOT NULL DEFAULT ''",
-            // KDS target prep minutes (ageing colours).
-            "ALTER TABLE kitchen_stations ADD COLUMN target_prep_mins INTEGER NOT NULL DEFAULT 15",
-            // Size / topping choices frozen on the sale line (reports).
-            "ALTER TABLE sale_lines ADD COLUMN modifiers_json TEXT NOT NULL DEFAULT '[]'",
-        ] {
-            let _ = self.conn.execute(stmt, []);
-        }
-        // One-shot: open KOTs left on free tables (paid without kitchen Done)
-        // stuck the next seating on "In kitchen". Close them.
-        let _ = self.conn.execute(
-            "UPDATE kot_tickets SET status = 'completed'
-              WHERE status NOT IN ('completed', 'cancelled')
-                AND table_id != ''
-                AND table_id IN (
-                    SELECT id FROM tables_dining WHERE status = 'available'
-                )",
-            [],
-        );
-        // Combos / BOGO / percent schemes (Local).
-        let _ = self.conn.execute_batch(
-            r#"
-            CREATE TABLE IF NOT EXISTS schemes (
-                id TEXT PRIMARY KEY,
-                name TEXT NOT NULL,
-                kind TEXT NOT NULL,
-                trigger_json TEXT NOT NULL DEFAULT '{}',
-                reward_json TEXT NOT NULL DEFAULT '{}',
-                active INTEGER NOT NULL DEFAULT 1
-            );
-            "#,
-        );
-
-        self.conn
-            .execute_batch(
-                r#"
-                -- A table's open order between KOTs and payment
-                -- (BUSINESS_BOOKS.md § Open orders are not books yet).
-                -- Drawer handovers (BUSINESS_BOOKS.md § Shift and day-end cash).
-                CREATE TABLE IF NOT EXISTS shift_closes (
-                    id TEXT PRIMARY KEY,
-                    started_at TEXT NOT NULL,
-                    ended_at TEXT NOT NULL,
-                    closed_by TEXT NOT NULL,
-                    bills INTEGER NOT NULL,
-                    cash_paise INTEGER NOT NULL,
-                    upi_paise INTEGER NOT NULL,
-                    card_paise INTEGER NOT NULL,
-                    cash_tips_paise INTEGER NOT NULL,
-                    cash_out_paise INTEGER NOT NULL,
-                    float_paise INTEGER NOT NULL,
-                    expected_paise INTEGER NOT NULL,
-                    counted_paise INTEGER NOT NULL
-                );
-                CREATE TABLE IF NOT EXISTS running_orders (
-                    id TEXT PRIMARY KEY,
-                    table_id TEXT NOT NULL,
-                    status TEXT NOT NULL,
-                    opened_at TEXT NOT NULL,
-                    opened_by TEXT NOT NULL DEFAULT '',
-                    printed_at TEXT NOT NULL DEFAULT '',
-                    closed_at TEXT NOT NULL DEFAULT '',
-                    sale_id TEXT NOT NULL DEFAULT '',
-                    merged_into TEXT NOT NULL DEFAULT ''
-                );
-                CREATE INDEX IF NOT EXISTS idx_running_orders_table
-                    ON running_orders(table_id, status);
-                CREATE TABLE IF NOT EXISTS running_lines (
-                    id TEXT PRIMARY KEY,
-                    order_id TEXT NOT NULL,
-                    kot_id TEXT NOT NULL DEFAULT '',
-                    product_id TEXT NOT NULL,
-                    name TEXT NOT NULL,
-                    unit_price_paise INTEGER NOT NULL,
-                    line_total_paise INTEGER NOT NULL DEFAULT -1,
-                    qty_milli INTEGER NOT NULL,
-                    unit_label TEXT NOT NULL DEFAULT '',
-                    note TEXT NOT NULL DEFAULT '',
-                    cancelled INTEGER NOT NULL DEFAULT 0,
-                    complimentary INTEGER NOT NULL DEFAULT 0,
-                    reason TEXT NOT NULL DEFAULT '',
-                    prepared INTEGER NOT NULL DEFAULT 0,
-                    changed_by TEXT NOT NULL DEFAULT '',
-                    approved_by TEXT NOT NULL DEFAULT '',
-                    created_at TEXT NOT NULL,
-                    created_by TEXT NOT NULL DEFAULT '',
-                    seq INTEGER NOT NULL DEFAULT 0,
-                    seat_no INTEGER NOT NULL DEFAULT 0,
-                    held INTEGER NOT NULL DEFAULT 0,
-                    course_no INTEGER NOT NULL DEFAULT 0
-                );
-                CREATE INDEX IF NOT EXISTS idx_running_lines_order
-                    ON running_lines(order_id);
-                -- Table bookings: who, how many, when; booked → seated / cancelled.
-                CREATE TABLE IF NOT EXISTS reservations (
-                    id TEXT PRIMARY KEY,
-                    name TEXT NOT NULL,
-                    phone TEXT NOT NULL DEFAULT '',
-                    guests INTEGER NOT NULL DEFAULT 0,
-                    at TEXT NOT NULL,
-                    table_name TEXT NOT NULL DEFAULT '',
-                    status TEXT NOT NULL DEFAULT 'booked',
-                    created_at TEXT NOT NULL,
-                    created_by TEXT NOT NULL DEFAULT ''
-                );
-                -- Who took a delivery order out.
-                CREATE TABLE IF NOT EXISTS sale_delivery (
-                    sale_id TEXT PRIMARY KEY,
-                    delivery_by TEXT NOT NULL
-                );
-                -- Companion tables made by splitting a bill (removed once paid).
-                CREATE TABLE IF NOT EXISTS split_tables (
-                    table_id TEXT PRIMARY KEY,
-                    parent_id TEXT NOT NULL
-                );
-                CREATE TABLE IF NOT EXISTS notify_outbox (
-                    id TEXT PRIMARY KEY,
-                    created_at TEXT NOT NULL,
-                    channel TEXT NOT NULL DEFAULT '',
-                    to_addr TEXT NOT NULL DEFAULT '',
-                    template_key TEXT NOT NULL DEFAULT '',
-                    payload_json TEXT NOT NULL DEFAULT '{}',
-                    status TEXT NOT NULL DEFAULT 'queued',
-                    last_error TEXT NOT NULL DEFAULT ''
-                );
-                CREATE TABLE IF NOT EXISTS entry_attachments (
-                    id TEXT PRIMARY KEY,
-                    entity_kind TEXT NOT NULL,
-                    entity_id TEXT NOT NULL,
-                    created_at TEXT NOT NULL,
-                    user_at TEXT NOT NULL DEFAULT '',
-                    device_at TEXT NOT NULL DEFAULT '',
-                    kind TEXT NOT NULL,
-                    label TEXT NOT NULL DEFAULT '',
-                    body TEXT NOT NULL DEFAULT '',
-                    stored_name TEXT NOT NULL DEFAULT '',
-                    mime TEXT NOT NULL DEFAULT '',
-                    bytes INTEGER NOT NULL DEFAULT 0,
-                    actor_id TEXT NOT NULL DEFAULT '',
-                    actor_name TEXT NOT NULL DEFAULT ''
-                );
-                CREATE INDEX IF NOT EXISTS idx_attach_entity
-                    ON entry_attachments(entity_kind, entity_id);
-                "#,
-            )
-            .map_err(|e| e.to_string())?;
-        self.conn.execute_batch(recipes::SCHEMA).map_err(|e| e.to_string())?;
-        // Local/LAN ops tables + column adds on existing books (after CREATE).
-        self.migrate_ops()?;
-        // Lookups every sync and every screen makes. Without them a year of
-        // bills made each device's sync scan every bill line and ledger row
-        // (seconds per sync); `a_busy_years_books_still_sync_quickly` guards
-        // this. Built once on existing books, then free.
-        self.conn
-            .execute_batch(
-                r#"
-                CREATE INDEX IF NOT EXISTS idx_sale_lines_sale ON sale_lines(sale_id);
-                CREATE INDEX IF NOT EXISTS idx_sale_payments_sale ON sale_payments(sale_id);
-                CREATE INDEX IF NOT EXISTS idx_sales_created ON sales(created_at);
-                CREATE INDEX IF NOT EXISTS idx_sale_revisions_sale ON sale_revisions(sale_id);
-                CREATE INDEX IF NOT EXISTS idx_credit_ledger_customer ON credit_ledger(customer_id);
-                CREATE INDEX IF NOT EXISTS idx_credit_ledger_created ON credit_ledger(created_at);
-                CREATE INDEX IF NOT EXISTS idx_credit_ledger_sale ON credit_ledger(sale_id);
-                CREATE INDEX IF NOT EXISTS idx_kot_tickets_table ON kot_tickets(table_id, created_at);
-                CREATE INDEX IF NOT EXISTS idx_kot_tickets_open ON kot_tickets(created_at)
-                    WHERE status NOT IN ('completed', 'cancelled');
-                CREATE INDEX IF NOT EXISTS idx_kot_tickets_sale ON kot_tickets(sale_id);
-                CREATE INDEX IF NOT EXISTS idx_audit_created ON audit_events(created_at);
-                CREATE INDEX IF NOT EXISTS idx_expense_payments_expense ON expense_payments(expense_id);
-                CREATE INDEX IF NOT EXISTS idx_purchase_lines_purchase ON purchase_lines(purchase_id);
-                CREATE INDEX IF NOT EXISTS idx_running_lines_created ON running_lines(created_at);
-                -- `created_at LIKE '2026-10-25%'` (a day, a month) can only
-                -- use a NOCASE index while LIKE is case-insensitive.
-                CREATE INDEX IF NOT EXISTS idx_sales_day ON sales(created_at COLLATE NOCASE);
-                CREATE INDEX IF NOT EXISTS idx_expenses_day ON expenses(created_at COLLATE NOCASE);
-                CREATE INDEX IF NOT EXISTS idx_money_movements_like ON money_movements(created_at COLLATE NOCASE);
-                CREATE INDEX IF NOT EXISTS idx_credit_ledger_day ON credit_ledger(created_at COLLATE NOCASE);
-                CREATE INDEX IF NOT EXISTS idx_payable_ledger_day ON payable_ledger(created_at COLLATE NOCASE);
-                "#,
-            )
-            .map_err(|e| e.to_string())?;
 
         for (key, value) in [
             ("onboarding_complete", "0"),
@@ -862,27 +299,6 @@ impl Store {
             }
         }
         let branch_id = self.meta_get("active_branch_id")?.unwrap_or_default();
-
-        for table in [
-            "products",
-            "sales",
-            "tables_dining",
-            "kot_tickets",
-            "expenses",
-            "customers",
-        ] {
-            self.conn
-                .execute(
-                    &format!(
-                        "UPDATE {table} SET branch_id = ?1
-                         WHERE branch_id IS NULL OR branch_id = ''"
-                    ),
-                    params![branch_id],
-                )
-                .map_err(|e| e.to_string())?;
-        }
-
-        // Kitchen stations stay empty until the owner adds them — no Hot/Cold seed.
 
         let country = match self.meta_get("country_code")?.filter(|c| !c.trim().is_empty()) {
             Some(c) => c,
@@ -1116,24 +532,6 @@ impl Store {
             .meta_get("owner_setup_complete")?
             .map(|v| v.trim() == "1")
             .unwrap_or(true))
-    }
-
-    /// One-shot post-create offer (Rajdhani App Template) before Owner PIN.
-    pub fn rajdhani_app_template_done(&self) -> Result<bool, String> {
-        Ok(self
-            .meta_get("rajdhani_app_template_done")?
-            .map(|v| v.trim() == "1")
-            .unwrap_or(false))
-    }
-
-    pub fn set_rajdhani_app_template_done(&self) -> Result<(), String> {
-        self.meta_set("rajdhani_app_template_done", "1")
-    }
-
-    /// Full Rajdhani App Template: menu import + shop defaults.
-    pub fn apply_rajdhani_app_template(&self) -> Result<CatalogueImport, String> {
-        // Counter shops do not ship restaurant starter catalogues.
-        Err("Starter restaurant catalogues are not used on this counter shop".into())
     }
 
     /// First-run on Server: Owner chooses their PIN. Marks setup complete and
@@ -1720,37 +1118,6 @@ impl Store {
             &format!("Bill type: {lane_label}"),
             rtl,
         );
-        {
-            let order_kind = crate::domain::OrderType::parse(&sale.order_type);
-            crate::print_share::append_bill_like(
-                &mut out,
-                &fmt,
-                crate::print_share::BillStyleField::Table,
-                &format!("Order: {}", order_kind.label()),
-                rtl,
-            );
-            if let Some(tid) = sale.table_id.as_deref().filter(|s| !s.is_empty()) {
-                let table_name: Option<String> = self
-                    .conn
-                    .query_row(
-                        "SELECT name FROM tables_dining WHERE id = ?1",
-                        params![tid],
-                        |r| r.get(0),
-                    )
-                    .optional()
-                    .ok()
-                    .flatten();
-                if let Some(name) = table_name.filter(|s| !s.trim().is_empty()) {
-                    crate::print_share::append_bill_field(
-                        &mut out,
-                        &fmt,
-                        crate::print_share::BillStyleField::Table,
-                        &format!("Table: {}", name.trim()),
-                        rtl,
-                    );
-                }
-            }
-        }
         crate::print_share::append_bill_like(
             &mut out,
             &fmt,
@@ -1987,15 +1354,6 @@ impl Store {
                 &fmt,
                 crate::print_share::BillStyleField::Total,
                 &format!("({tax_label} inclusive)"),
-                rtl,
-            );
-        }
-        if sale.order_type() != OrderType::Counter {
-            crate::print_share::append_bill_like(
-                &mut out,
-                &fmt,
-                crate::print_share::BillStyleField::Table,
-                sale.order_type().label(),
                 rtl,
             );
         }
@@ -2335,7 +1693,7 @@ impl Store {
         )
     }
 
-    /// Global chrome "Today: …" strip. Default off (Rajdhani / quiet counter).
+    /// Global chrome "Today: …" strip. Default off (a quiet counter).
     pub fn show_today_bar(&self) -> Result<bool, String> {
         Ok(self
             .meta_get("show_today_bar")?
@@ -2371,7 +1729,6 @@ impl Store {
             "DELETE FROM sale_payments",
             "DELETE FROM sale_lines",
             "DELETE FROM sale_revisions",
-            "DELETE FROM sale_delivery",
             "DELETE FROM sales",
             "DELETE FROM expense_payments",
             "DELETE FROM expenses",
@@ -2381,13 +1738,6 @@ impl Store {
             "DELETE FROM stock_movements",
             "DELETE FROM purchase_lines",
             "DELETE FROM purchases",
-            "DELETE FROM running_lines",
-            "DELETE FROM running_orders",
-            "DELETE FROM kot_tickets",
-            "DELETE FROM split_tables",
-            "DELETE FROM reservations",
-            "DELETE FROM waitlist",
-            "DELETE FROM waiter_calls",
             "DELETE FROM shift_closes",
             "DELETE FROM gift_vouchers",
             "DELETE FROM feedback",
@@ -2398,7 +1748,6 @@ impl Store {
             "DELETE FROM sync_outbox",
             "DELETE FROM lan_outbox",
             "DELETE FROM lan_refused",
-            "UPDATE tables_dining SET status = 'available', active_sale_id = NULL, occupied_at = '', paid_at = ''",
             "DELETE FROM meta WHERE key LIKE 'table_draft_%'",
             "DELETE FROM meta WHERE key IN (
                 'opening_float_paise', 'shift_opened_at',
@@ -2436,7 +1785,6 @@ impl Store {
                 true,
             ),
             ("DELETE FROM sales WHERE created_at < ?1", true),
-            ("DELETE FROM kot_tickets WHERE created_at < ?1", true),
             ("DELETE FROM expenses WHERE created_at < ?1", true),
             ("DELETE FROM money_movements WHERE created_at < ?1", true),
             ("DELETE FROM credit_ledger WHERE created_at < ?1", true),
@@ -2588,33 +1936,6 @@ impl Store {
         Ok(())
     }
 
-    /// One-shot for Clients that already paired under upsert-only staff sync:
-    /// drop leftover shop people and force a full `/sync` so Lock only shows
-    /// this Server's roster. Returns true when the revision must be forgotten.
-    pub fn ensure_staff_cache_replaced(&self) -> Result<bool, String> {
-        if !self.client_paired()? {
-            return Ok(false);
-        }
-        if self
-            .meta_get("staff_cache_replace_v1")?
-            .filter(|v| v.trim() == "1")
-            .is_some()
-        {
-            return Ok(false);
-        }
-        self.conn
-            .execute("DELETE FROM staff WHERE role != 'owner'", [])
-            .map_err(|e| e.to_string())?;
-        self.conn
-            .execute(
-                "DELETE FROM meta WHERE key LIKE 'lan_pin:%' OR key LIKE 'lan_session:%'",
-                [],
-            )
-            .map_err(|e| e.to_string())?;
-        self.meta_set("staff_cache_replace_v1", "1")?;
-        Ok(true)
-    }
-
     /// Replace the Client's cached shop people with this Server's roster.
     /// Keeps this device's Owner row. Upsert-only left staff from a previous
     /// shop on Lock (same names, wrong ids → "Wrong PIN" for the right code).
@@ -2759,10 +2080,10 @@ impl Store {
                 .execute(
                     "INSERT INTO sales(
                         id, created_at, total_paise, lines_total_paise, rounding_paise,
-                        pay_method, status, table_id, customer_id, created_by_id, created_by_name,
-                        branch_id, order_type, tax_paise, tax_pricing, tax_label, net_paise,
+                        pay_method, status, customer_id, created_by_id, created_by_name,
+                        branch_id, tax_paise, tax_pricing, tax_label, net_paise,
                         service_paise, invoice_no, money_lane
-                     ) VALUES(?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9, ?10, ?11, ?12, ?13, ?14, ?15, ?16, ?17, ?18, ?19, ?20)",
+                     ) VALUES(?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9, ?10, ?11, ?12, ?13, ?14, ?15, ?16, ?17, ?18)",
                     params![
                         s.id,
                         s.created_at,
@@ -2771,12 +2092,10 @@ impl Store {
                         s.rounding_paise,
                         s.pay_method,
                         s.status,
-                        s.table_id,
                         s.customer_id,
                         s.created_by_id,
                         s.created_by_name,
                         self.active_branch_id()?,
-                        s.order_type().as_str(),
                         s.tax_paise,
                         s.tax_pricing().as_str(),
                         s.tax_label(),
@@ -2852,8 +2171,8 @@ impl Store {
     }
 
     /// Saved Standard bill type size (portrait + landscape).
-    /// Books meta is the shop source of truth; when empty (Rajdhani / old
-    /// saves), fall back to `printers.json` Standard format em, then Normal.
+    /// Books meta is the shop source of truth; when it has none, the
+    /// `printers.json` Standard format em, then Normal.
     pub fn standard_print_em(&self) -> Result<f32, String> {
         if let Some(em) = self
             .meta_get("standard_print_em")?
@@ -3939,7 +3258,7 @@ impl Store {
         let fiscal = self.fiscal_settings()?;
         let rows = self.party_position_report()?;
         let mut out = String::from(
-            "Party net position (one firm · AR and AP separate · net = who owes whom)\n",
+            "Party net position\n",
         );
         if rows.is_empty() {
             out.push_str("No AR/AP balances.\n");
@@ -3999,7 +3318,6 @@ impl Store {
         let fiscal = self.fiscal_settings()?;
         let rows = self.party_position_report()?;
         let mut out = String::from("Debit / credit (party books)\n");
-        out.push_str("Debit = they owe us (AR) · Credit = we owe them (AP)\n");
         if rows.is_empty() {
             out.push_str("No open balances.\n");
             return Ok(out);
@@ -4072,8 +3390,7 @@ impl Store {
              Liabilities\n\
                Creditors (we owe them) {}\n\
                Total liabilities {}\n\
-             Net position (assets − liabilities) {}\n\
-             (Operating snapshot — statutory balance-sheet formats are a separate, later filing view.)\n",
+             Net position (assets − liabilities) {}\n",
             Money(bank).format_localized(&currency, &fiscal),
             Money(till).format_localized(&currency, &fiscal),
             Money(ar).format_localized(&currency, &fiscal),
@@ -4226,7 +3543,7 @@ impl Store {
              {} {}\n\
              {} {}\n\
              Cash {} · {} {} · Card {}\n\
-             {} (credit / debit to party) {}\n\
+             {} {}\n\
              Expenses {} ({})\n\
              Net (gross − expenses) {}\n\
              Bank in {} · Bank out {}\n\
@@ -5039,6 +4356,53 @@ impl Store {
     }
 
     /// Nav peers the shop hid from the side rail / bottom bar (CSV of keys).
+    /// The shop's settings for a Client to mirror ([`SHOP_PREF_KEYS`]): each
+    /// key's stored value, `None` when the shop never set it (same default
+    /// on both sides). On/off flags go resolved, so a Client on another app
+    /// version can never fall back to a different default.
+    pub fn shop_prefs_for_sync(&self) -> Result<BTreeMap<String, Option<String>>, String> {
+        let mut out = BTreeMap::new();
+        for key in SHOP_PREF_KEYS {
+            out.insert((*key).to_string(), self.meta_get(key)?);
+        }
+        let flag = |on: bool| Some(if on { "1" } else { "0" }.to_string());
+        out.insert("show_today_bar".into(), flag(self.show_today_bar()?));
+        out.insert("allow_zero_sales".into(), flag(self.allow_zero_sales()?));
+        Ok(out)
+    }
+
+    /// Tests: write or clear one raw meta key.
+    #[cfg(test)]
+    pub fn meta_set_for_test(&self, key: &str, value: Option<&str>) {
+        match value {
+            Some(v) => self.meta_set(key, v).unwrap(),
+            None => {
+                self.conn.execute("DELETE FROM meta WHERE key = ?1", params![key]).unwrap();
+            }
+        }
+    }
+
+    /// Mirror the shop's settings on this Client. Only [`SHOP_PREF_KEYS`]
+    /// are taken; a key the shop has not set is removed here too; a key an
+    /// older Server does not send is left alone.
+    pub fn apply_shop_prefs_from_sync(
+        &self,
+        prefs: &BTreeMap<String, Option<String>>,
+    ) -> Result<(), String> {
+        for key in SHOP_PREF_KEYS {
+            match prefs.get(*key) {
+                Some(Some(v)) => self.meta_set(key, v)?,
+                Some(None) => {
+                    self.conn
+                        .execute("DELETE FROM meta WHERE key = ?1", params![key])
+                        .map_err(|e| e.to_string())?;
+                }
+                None => {}
+            }
+        }
+        Ok(())
+    }
+
     pub fn nav_hidden_csv(&self) -> Result<Option<String>, String> {
         self.meta_get("ui_nav_hidden")
     }
@@ -5061,15 +4425,23 @@ impl Store {
         self.meta_set(&format!("ui_snack_secs:{user_key}"), &format!("{secs}"))
     }
 
+    /// The nav item (its key) this person last had selected on this
+    /// device — Unlock brings them back to it. `user_key` = `"owner"` or a
+    /// staff id; nothing saved = their first unlock here.
+    pub fn last_nav_key(&self, user_key: &str) -> Result<Option<String>, String> {
+        Ok(self
+            .meta_get(&format!("ui_last_nav:{user_key}"))?
+            .filter(|k| !k.trim().is_empty()))
+    }
+
+    pub fn set_last_nav_key(&self, user_key: &str, key: &str) -> Result<(), String> {
+        self.meta_set(&format!("ui_last_nav:{user_key}"), key)
+    }
+
     /// Per-user amount visibility (`user_key` = `"owner"` or a staff id).
     /// Global across screens for that user; not shared with other users.
     fn amount_vis_meta(&self, kind: &str, user_key: &str) -> Result<Option<String>, String> {
-        let keyed = self.meta_get(&format!("{kind}:{user_key}"))?;
-        if keyed.is_some() {
-            return Ok(keyed);
-        }
-        // One-time legacy fallback (pre–per-user keys).
-        self.meta_get(kind)
+        self.meta_get(&format!("{kind}:{user_key}"))
     }
 
     /// Figures this user hid while the screen eye is **showing**.
@@ -6501,12 +5873,12 @@ impl Store {
             .execute(
                 "INSERT INTO products(
                     id, name, price_paise, available, archived, image_key,
-                    category_id, station_id, tax_bps, stock_qty, modifiers_json, branch_id,
-                    tax_rate_id, aliases_json, unit_label, group_name, area_prices_json, kind,
-                    schedule_json, allergens, barcode, composition, schedule_h, rx_required, mrp_paise, hsn_code,
+                    category_id, tax_bps, stock_qty, modifiers_json, branch_id,
+                    tax_rate_id, aliases_json, unit_label, group_name, kind,
+                    schedule_json, barcode, composition, mrp_paise, hsn_code,
                     stock_frac_milli
                  )
-                 VALUES(?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9, ?10, ?11, ?12, ?13, ?14, ?15, ?16, ?17, ?18, ?19, ?20, ?21, ?22, ?23, ?24, ?25, ?26, ?27)
+                 VALUES(?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9, ?10, ?11, ?12, ?13, ?14, ?15, ?16, ?17, ?18, ?19, ?20, ?21, ?22)
                  ON CONFLICT(id) DO UPDATE SET
                    name=excluded.name,
                    price_paise=excluded.price_paise,
@@ -6514,7 +5886,6 @@ impl Store {
                    archived=excluded.archived,
                    image_key=excluded.image_key,
                    category_id=excluded.category_id,
-                   station_id=excluded.station_id,
                    tax_bps=excluded.tax_bps,
                    stock_qty=excluded.stock_qty,
                    modifiers_json=excluded.modifiers_json,
@@ -6523,14 +5894,10 @@ impl Store {
                    aliases_json=excluded.aliases_json,
                    unit_label=excluded.unit_label,
                    group_name=excluded.group_name,
-                   area_prices_json=excluded.area_prices_json,
                    kind=excluded.kind,
                    schedule_json=excluded.schedule_json,
-                   allergens=excluded.allergens,
                    barcode=excluded.barcode,
                    composition=excluded.composition,
-                   schedule_h=excluded.schedule_h,
-                   rx_required=excluded.rx_required,
                    mrp_paise=excluded.mrp_paise,
                    hsn_code=excluded.hsn_code,
                    stock_frac_milli=excluded.stock_frac_milli",
@@ -6542,7 +5909,6 @@ impl Store {
                     product.archived as i64,
                     product.image_key,
                     product.category_id,
-                    product.station_id,
                     product.tax_bps,
                     product.stock_qty,
                     modifiers_json,
@@ -6555,14 +5921,10 @@ impl Store {
                     },
                     product.unit_label,
                     product.group_name.trim(),
-                    if product.area_prices_json.trim().is_empty() { "[]" } else { product.area_prices_json.as_str() },
                     if product.kind.trim().is_empty() { crate::domain::ITEM_KIND_DISH } else { product.kind.as_str() },
                     if product.schedule_json.trim().is_empty() { "[]" } else { product.schedule_json.as_str() },
-                    product.allergens.trim(),
                     product.barcode.trim(),
                     product.composition.trim(),
-                    product.schedule_h as i64,
-                    product.rx_required as i64,
                     product.mrp_paise,
                     product.hsn_code.trim(),
                     product.stock_frac_milli.clamp(0, 999),
@@ -7220,12 +6582,12 @@ impl Store {
         tx.execute(
             "INSERT INTO sales(
                 id, created_at, total_paise, lines_total_paise, rounding_paise,
-                pay_method, status, table_id, customer_id, created_by_id, created_by_name,
-                branch_id, order_type, tax_paise, tax_pricing, tax_label, net_paise,
+                pay_method, status, customer_id, created_by_id, created_by_name,
+                branch_id, tax_paise, tax_pricing, tax_label, net_paise,
                 service_paise, invoice_no, money_lane, user_at, device_at, server_at,
                 extras_json
              )
-             VALUES(?1, ?2, ?3, ?4, ?5, ?6, 'completed', ?7, ?8, ?9, ?10, ?11, ?12, ?13, ?14, ?15, ?16, ?17, ?18, ?19, ?20, ?21, ?22, ?23)",
+             VALUES(?1, ?2, ?3, ?4, ?5, ?6, 'completed', ?7, ?8, ?9, ?10, ?11, ?12, ?13, ?14, ?15, ?16, ?17, ?18, ?19, ?20, ?21)",
             params![
                 sale_id,
                 created_at,
@@ -7233,12 +6595,10 @@ impl Store {
                 draft.lines_total_paise,
                 draft.rounding_paise,
                 pay.as_str(),
-                Option::<String>::None,
                 customer_id,
                 actor.id,
                 created_by_name,
                 branch_id,
-                draft.order_type.as_str(),
                 tax_paise,
                 pricing.as_str(),
                 tax_label,
@@ -7367,17 +6727,6 @@ impl Store {
             .map_err(|e| e.to_string())?;
         }
 
-        if !draft.delivery_by.trim().is_empty() {
-            tx.execute(
-                "INSERT INTO sale_delivery(sale_id, delivery_by) VALUES(?1, ?2)",
-                params![sale_id, draft.delivery_by.trim()],
-            )
-            .map_err(|e| e.to_string())?;
-        }
-        // What each dish used from the shelf (its recipe).
-        let portions: Vec<(String, i64)> =
-            draft.lines.iter().map(|l| (l.product_id.clone(), l.qty)).collect();
-        recipes::apply_recipe_usage(&tx, &portions, "recipe", &sale_id, &branch_id, actor, &created_at)?;
 
         // Full Credit bill, or Credit portion of a mixed bill.
         let credit_amount = credit_part.unwrap_or_else(|| {
@@ -7488,12 +6837,10 @@ impl Store {
             total_paise,
             pay_method: pay.as_str().into(),
             status: "completed".into(),
-            table_id: None,
             customer_id: customer_id.map(|s| s.to_string()),
             created_by_id: actor.id.clone(),
             created_by_name,
             branch_id: branch_id.clone(),
-            order_type: draft.order_type.as_str().into(),
             tax_paise,
             tax_pricing: pricing.as_str().into(),
             tax_label,
@@ -7718,13 +7065,11 @@ impl Store {
             total_paise,
             pay_method: pay.as_str().into(),
             status: "completed".into(),
-            table_id: previous.table_id,
             customer_id: previous.customer_id,
             // Authorship is immutable — amend never rewrites who created the sale.
             created_by_id: previous.created_by_id,
             created_by_name: previous.created_by_name,
             branch_id: previous.branch_id,
-            order_type: previous.order_type,
             tax_paise,
             tax_pricing: pricing.as_str().into(),
             tax_label,
@@ -7844,13 +7189,6 @@ impl Store {
                 .map_err(|e| e.to_string())?;
             }
         }
-        // Same as quick undo: open kitchen tickets for this sale leave the list.
-        tx.execute(
-            "UPDATE kot_tickets SET status = 'cancelled'
-             WHERE sale_id = ?1 AND status IN ('new', 'preparing', 'ready')",
-            params![sale_id],
-        )
-        .map_err(|e| e.to_string())?;
         restore_stock_for_sale(&tx, sale_id, "void", actor, &now)?;
         tx.execute(
             "INSERT INTO audit_events(id, created_at, actor_id, actor_name, action, detail)
@@ -7959,13 +7297,6 @@ impl Store {
                 .map_err(|e| e.to_string())?;
             }
         }
-        // Drop open kitchen tickets for this mistaken charge.
-        tx.execute(
-            "UPDATE kot_tickets SET status = 'cancelled'
-             WHERE sale_id = ?1 AND status IN ('new', 'preparing', 'ready')",
-            params![sale_id],
-        )
-        .map_err(|e| e.to_string())?;
         restore_stock_for_sale(&tx, sale_id, "undo", actor, &now)?;
         tx.execute(
             "INSERT INTO audit_events(id, created_at, actor_id, actor_name, action, detail)
@@ -8308,9 +7639,7 @@ impl Store {
                     note: row.get(5)?,
                     qty_milli,
                     unit_label: row.get(7)?,
-                    kot_sent: false,
                     modifiers_json: row.get(8)?,
-                    station_id: String::new(),
                 })
             })
             .map_err(|e| e.to_string())?;
@@ -8823,7 +8152,6 @@ impl Store {
             "DELETE FROM sale_payments",
             "DELETE FROM sale_lines",
             "DELETE FROM sale_revisions",
-            "DELETE FROM sale_delivery",
             "DELETE FROM sales",
             "DELETE FROM expense_payments",
             "DELETE FROM expenses",
@@ -8838,14 +8166,6 @@ impl Store {
             "DELETE FROM stock_count_lines",
             "DELETE FROM stock_counts",
             "DELETE FROM stock_levels",
-            "DELETE FROM stock_carry",
-            "DELETE FROM running_lines",
-            "DELETE FROM running_orders",
-            "DELETE FROM kot_tickets",
-            "DELETE FROM split_tables",
-            "DELETE FROM reservations",
-            "DELETE FROM waitlist",
-            "DELETE FROM waiter_calls",
             "DELETE FROM shift_closes",
             "DELETE FROM time_clock",
             "DELETE FROM gift_vouchers",
@@ -8860,7 +8180,6 @@ impl Store {
             "DELETE FROM lan_refused",
             "DELETE FROM lan_replies",
             "DELETE FROM lan_sessions",
-            "UPDATE tables_dining SET status = 'available', active_sale_id = NULL, occupied_at = '', paid_at = ''",
             "UPDATE products SET stock_qty = 0, stock_frac_milli = 0 WHERE stock_qty >= 0",
             "DELETE FROM meta WHERE key LIKE 'table_draft_%'",
             "DELETE FROM meta WHERE key IN (
@@ -8889,7 +8208,6 @@ impl Store {
             "DELETE FROM sale_payments",
             "DELETE FROM sale_lines",
             "DELETE FROM sale_revisions",
-            "DELETE FROM sale_delivery",
             "DELETE FROM sales",
             "DELETE FROM expense_payments",
             "DELETE FROM expenses",
@@ -8904,14 +8222,6 @@ impl Store {
             "DELETE FROM stock_count_lines",
             "DELETE FROM stock_counts",
             "DELETE FROM stock_levels",
-            "DELETE FROM stock_carry",
-            "DELETE FROM running_lines",
-            "DELETE FROM running_orders",
-            "DELETE FROM kot_tickets",
-            "DELETE FROM split_tables",
-            "DELETE FROM reservations",
-            "DELETE FROM waitlist",
-            "DELETE FROM waiter_calls",
             "DELETE FROM shift_closes",
             "DELETE FROM time_clock",
             "DELETE FROM gift_vouchers",
@@ -8926,7 +8236,6 @@ impl Store {
             "DELETE FROM lan_refused",
             "DELETE FROM lan_replies",
             "DELETE FROM lan_sessions",
-            "UPDATE tables_dining SET status = 'available', active_sale_id = NULL, occupied_at = '', paid_at = ''",
             "UPDATE products SET stock_qty = 0, stock_frac_milli = 0 WHERE stock_qty >= 0",
             "DELETE FROM meta WHERE key LIKE 'table_draft_%'",
             "DELETE FROM meta WHERE key IN (
@@ -10966,8 +10275,7 @@ impl Store {
         self.conn.execute_batch("PRAGMA synchronous = OFF").unwrap();
     }
 
-    /// Tests that seed months of trading: move a bill (and its kitchen
-    /// tickets) to an earlier day.
+    /// Tests that seed months of trading: move a bill to an earlier day.
     #[cfg(test)]
     pub(crate) fn backdate_sale_for_test(&self, sale_id: &str, at: &str) {
         self.conn
@@ -10975,9 +10283,6 @@ impl Store {
                 "UPDATE sales SET created_at = ?1, user_at = ?1, device_at = ?1 WHERE id = ?2",
                 params![at, sale_id],
             )
-            .unwrap();
-        self.conn
-            .execute("UPDATE kot_tickets SET created_at = ?1 WHERE sale_id = ?2", params![at, sale_id])
             .unwrap();
     }
 
@@ -11149,7 +10454,7 @@ impl Store {
                 _ => return Err("Could not restore — the books were busy; try again".into()),
             }
         }
-        // What the backup holds may be an older build's schema.
+        // A restored file is brought up like a new one (schema, first-run rows).
         migrated_paths().lock().unwrap().remove(dest);
         Self::open_path(dest)
     }
@@ -11295,29 +10600,24 @@ fn report_import_progress(done: usize, total: usize) -> Result<(), String> {
     Ok(())
 }
 
-/// Every column [`row_to_product`] expects, in order.
 /// Longest edge a menu item / category photo is stored at (it is only ever
 /// shown as a small thumb; the original stays wherever the owner picked it).
 pub const ITEM_PHOTO_EDGE: u32 = 768;
 
+/// Every column [`row_to_product`] expects, in order.
 const PRODUCT_COLUMNS: &str = "id, name, price_paise, available, archived, image_key,
-     COALESCE(category_id, ''), COALESCE(station_id, ''), COALESCE(tax_bps, 0),
-     COALESCE(stock_qty, -1), COALESCE(modifiers_json, '[]'), COALESCE(branch_id, ''),
-     COALESCE(tax_rate_id, ''), COALESCE(aliases_json, '[]'), COALESCE(unit_label, ''),
-     COALESCE(group_name, ''), COALESCE(area_prices_json, '[]'), COALESCE(kind, 'dish'),
-     COALESCE(schedule_json, '[]'), COALESCE(allergens, ''),
-     COALESCE(barcode, ''), COALESCE(composition, ''),
-     COALESCE(schedule_h, 0), COALESCE(rx_required, 0),
-     COALESCE(mrp_paise, 0), COALESCE(hsn_code, ''),
-     COALESCE(stock_frac_milli, 0)";
+     category_id, tax_bps, stock_qty, modifiers_json, branch_id,
+     tax_rate_id, aliases_json, unit_label, group_name, kind,
+     schedule_json, barcode, composition, mrp_paise, hsn_code,
+     stock_frac_milli";
 
 /// Every column [`row_to_sale`] expects, in order.
 const SALE_COLUMNS: &str = "id, created_at, total_paise,
      COALESCE(lines_total_paise, total_paise),
      COALESCE(rounding_paise, 0),
-     pay_method, status, table_id, customer_id,
+     pay_method, status, customer_id,
      COALESCE(created_by_id, ''), COALESCE(created_by_name, ''),
-     COALESCE(branch_id, ''), COALESCE(order_type, 'counter'), COALESCE(tax_paise, 0),
+     COALESCE(branch_id, ''), COALESCE(tax_paise, 0),
      COALESCE(tax_pricing, 'inclusive'), COALESCE(tax_label, 'Tax'), COALESCE(net_paise, 0),
      COALESCE(service_paise, 0), COALESCE(invoice_no, ''),
      COALESCE(money_lane, 'declared'),
@@ -11381,9 +10681,6 @@ fn restore_stock_for_sale(
         rows.collect::<Result<Vec<_>, _>>()
             .map_err(|e| e.to_string())?
     };
-    // Recipes still follow whole portions (the ceiled `qty` the sale consumed).
-    let returned: Vec<(String, i64)> = sold.iter().map(|(id, q, _)| (id.clone(), -q)).collect();
-    recipes::apply_recipe_usage(tx, &returned, "recipe_return", sale_id, &branch_id, actor, at)?;
     for (product_id, _qty, milli) in sold {
         if milli <= 0 {
             continue;
@@ -11430,7 +10727,6 @@ fn apply_amend_stock(
     actor: &StaffMember,
     at: &str,
 ) -> Result<(), String> {
-    let mut portions: Vec<(String, i64)> = Vec::new();
     let mut millis: Vec<(String, i64)> = Vec::new();
     let bump = |bucket: &mut Vec<(String, i64)>, product_id: &str, qty: i64| {
         match bucket.iter_mut().find(|(id, _)| id == product_id) {
@@ -11438,20 +10734,16 @@ fn apply_amend_stock(
             None => bucket.push((product_id.to_string(), qty)),
         }
     };
-    // Positive = goes back on the shelf, negative = leaves the shelf.
-    // Recipes follow whole portions; the shelf follows milli-units.
+    // Positive = goes back on the shelf, negative = leaves the shelf, in
+    // milli-units.
     for line in &previous.lines {
-        bump(&mut portions, &line.product_id, line.qty);
         bump(&mut millis, &line.product_id, line.effective_qty_milli());
     }
     for line in &draft.lines {
-        bump(&mut portions, &line.product_id, -line.qty);
         bump(&mut millis, &line.product_id, -line.effective_qty_milli());
     }
 
     let branch_id = previous.branch_id.clone();
-    let recipe_portions: Vec<(String, i64)> = portions.iter().map(|(id, d)| (id.clone(), -d)).collect();
-    recipes::apply_recipe_usage(tx, &recipe_portions, "recipe_amend", sale_id, &branch_id, actor, at)?;
     for (product_id, delta_milli) in millis {
         if delta_milli == 0 {
             continue;
@@ -11595,23 +10887,21 @@ fn row_to_sale(row: &rusqlite::Row<'_>) -> rusqlite::Result<Sale> {
         rounding_paise: row.get(4)?,
         pay_method: row.get(5)?,
         status: row.get(6)?,
-        table_id: row.get(7)?,
-        customer_id: row.get(8)?,
-        created_by_id: row.get(9)?,
-        created_by_name: row.get(10)?,
-        branch_id: row.get(11)?,
-        order_type: row.get(12)?,
-        tax_paise: row.get(13)?,
-        tax_pricing: row.get(14)?,
-        tax_label: row.get(15)?,
-        net_paise: row.get(16)?,
-        service_paise: row.get(17)?,
-        invoice_no: row.get(18)?,
-        money_lane: row.get(19)?,
-        user_at: row.get(20)?,
-        device_at: row.get(21)?,
-        server_at: row.get(22)?,
-        extras_json: row.get(23)?,
+        customer_id: row.get(7)?,
+        created_by_id: row.get(8)?,
+        created_by_name: row.get(9)?,
+        branch_id: row.get(10)?,
+        tax_paise: row.get(11)?,
+        tax_pricing: row.get(12)?,
+        tax_label: row.get(13)?,
+        net_paise: row.get(14)?,
+        service_paise: row.get(15)?,
+        invoice_no: row.get(16)?,
+        money_lane: row.get(17)?,
+        user_at: row.get(18)?,
+        device_at: row.get(19)?,
+        server_at: row.get(20)?,
+        extras_json: row.get(21)?,
         lines: Vec::new(),
     })
 }
@@ -11644,26 +10934,21 @@ fn row_to_product(row: &rusqlite::Row<'_>) -> rusqlite::Result<Product> {
         archived: row.get::<_, i64>(4)? != 0,
         image_key: row.get(5)?,
         category_id: row.get(6)?,
-        station_id: row.get(7)?,
-        tax_bps: row.get(8)?,
-        stock_qty: row.get(9)?,
-        modifiers_json: row.get(10)?,
-        branch_id: row.get(11)?,
-        tax_rate_id: row.get(12)?,
-        aliases_json: row.get(13)?,
-        unit_label: row.get(14)?,
-        group_name: row.get(15)?,
-        area_prices_json: row.get(16)?,
-        kind: row.get(17)?,
-        schedule_json: row.get(18)?,
-        allergens: row.get(19).unwrap_or_default(),
-        barcode: row.get(20).unwrap_or_default(),
-        composition: row.get(21).unwrap_or_default(),
-        schedule_h: row.get::<_, i64>(22).unwrap_or(0) != 0,
-        rx_required: row.get::<_, i64>(23).unwrap_or(0) != 0,
-        mrp_paise: row.get::<_, i64>(24).unwrap_or(0),
-        hsn_code: row.get(25).unwrap_or_default(),
-        stock_frac_milli: row.get::<_, i64>(26).unwrap_or(0),
+        tax_bps: row.get(7)?,
+        stock_qty: row.get(8)?,
+        modifiers_json: row.get(9)?,
+        branch_id: row.get(10)?,
+        tax_rate_id: row.get(11)?,
+        aliases_json: row.get(12)?,
+        unit_label: row.get(13)?,
+        group_name: row.get(14)?,
+        kind: row.get(15)?,
+        schedule_json: row.get(16)?,
+        barcode: row.get(17).unwrap_or_default(),
+        composition: row.get(18).unwrap_or_default(),
+        mrp_paise: row.get::<_, i64>(19).unwrap_or(0),
+        hsn_code: row.get(20).unwrap_or_default(),
+        stock_frac_milli: row.get::<_, i64>(21).unwrap_or(0),
     })
 }
 
@@ -11990,14 +11275,6 @@ impl Store {
             for (id, name, price) in &products {
                 product.execute(params![id, name, price]).unwrap();
             }
-            let tables: Vec<String> = (0..30).map(|_| new_id()).collect();
-            for (i, id) in tables.iter().enumerate() {
-                tx.execute(
-                    "INSERT INTO tables_dining(id, name, status, branch_id, area) VALUES(?1, ?2, 'available', ?3, 'Dine In')",
-                    params![id, format!("S{i}"), branch],
-                )
-                .unwrap();
-            }
             let parties: Vec<String> = (0..customers).map(|_| new_id()).collect();
             for (i, id) in parties.iter().enumerate() {
                 tx.execute(
@@ -12009,10 +11286,10 @@ impl Store {
             }
             let mut sale = tx
                 .prepare(
-                    "INSERT INTO sales(id, created_at, total_paise, pay_method, status, table_id,
+                    "INSERT INTO sales(id, created_at, total_paise, pay_method, status,
                                        lines_total_paise, customer_id, created_by_name, branch_id,
-                                       order_type, invoice_no, user_at, device_at)
-                     VALUES(?1, ?2, ?3, ?4, 'completed', ?5, ?3, ?6, 'Owner', ?7, 'dine_in', ?8, ?2, ?2)",
+                                       invoice_no, user_at, device_at)
+                     VALUES(?1, ?2, ?3, ?4, 'completed', ?3, ?5, 'Owner', ?6, ?7, ?2, ?2)",
                 )
                 .unwrap();
             let mut line = tx
@@ -12023,12 +11300,6 @@ impl Store {
                 .unwrap();
             let mut pay = tx
                 .prepare("INSERT INTO sale_payments(id, sale_id, pay_method, amount_paise) VALUES(?1, ?2, ?3, ?4)")
-                .unwrap();
-            let mut kot = tx
-                .prepare(
-                    "INSERT INTO kot_tickets(id, sale_id, created_at, status, summary, branch_id, table_id, total_paise)
-                     VALUES(?1, ?2, ?3, 'completed', '3 dishes', ?4, ?5, ?6)",
-                )
                 .unwrap();
             let mut audit = tx
                 .prepare(
@@ -12054,7 +11325,6 @@ impl Store {
                     let sale_id = new_id();
                     let picks = [(n * 7) % 300, (n * 13) % 300, (n * 31) % 300];
                     let total: i64 = picks.iter().map(|&i| products[i as usize].2).sum();
-                    let table = &tables[(n % 30) as usize];
                     let (method, customer) = if n % 20 == 0 {
                         ("credit", Some(parties[(n as usize / 20) % parties.len()].clone()))
                     } else if n % 10 == 0 {
@@ -12062,7 +11332,7 @@ impl Store {
                     } else {
                         (["cash", "upi", "card"][(n % 3) as usize], None)
                     };
-                    sale.execute(params![sale_id, at, total, method, table, customer, branch, format!("INV-MAIN-{n:06}")])
+                    sale.execute(params![sale_id, at, total, method, customer, branch, format!("INV-MAIN-{n:06}")])
                         .unwrap();
                     for &i in &picks {
                         let (pid, name, price) = &products[i as usize];
@@ -12080,7 +11350,6 @@ impl Store {
                             .execute(params![new_id(), party, at, "settle", -total, Option::<String>::None, "cash"])
                             .unwrap();
                     }
-                    kot.execute(params![new_id(), sale_id, at, branch, table, total]).unwrap();
                     audit.execute(params![new_id(), at, sale_id]).unwrap();
                 }
             }
@@ -12100,7 +11369,7 @@ impl Store {
 mod tests {
     use super::*;
     use crate::domain::{
-        AttachmentEntity, Cart, MoneyLane, MoneyMoveKind, OrderType, PayMethod, Product, StaffRole,
+        AttachmentEntity, Cart, MoneyLane, MoneyMoveKind, PayMethod, Product, StaffRole,
     };
     use crate::fiscal::TaxPricing;
     use std::time::{SystemTime, UNIX_EPOCH};
@@ -12269,19 +11538,7 @@ mod tests {
             ("today's money moves", "SELECT kind FROM money_movements WHERE created_at LIKE '2026-10-25%'".into()),
             ("today's expenses", "SELECT amount_paise FROM expenses WHERE created_at LIKE '2026-10-25%'".into()),
             ("today's settlements", "SELECT amount_paise FROM credit_ledger WHERE kind = 'settle' AND created_at LIKE '2026-10-25%'".into()),
-            (
-                "a table's running total",
-                "SELECT SUM(total_paise) FROM kot_tickets WHERE table_id = 'x' AND status != 'cancelled' AND created_at >= '2026'".into(),
-            ),
-            (
-                "open kitchen tickets",
-                "SELECT k.id FROM kot_tickets k WHERE k.status NOT IN ('completed', 'cancelled') ORDER BY k.created_at ASC".into(),
-            ),
             ("latest audit", "SELECT id FROM audit_events ORDER BY created_at DESC LIMIT 5".into()),
-            (
-                "today's cancellations",
-                format!("SELECT id FROM running_lines WHERE cancelled = 1 AND created_at >= {day} AND created_at < {day} || 'Z'"),
-            ),
         ] {
             let plan = store.query_plan_for_test(&sql);
             let scans_all = plan.lines().any(|l| l.starts_with("SCAN") && !l.contains("USING"));
@@ -12549,25 +11806,7 @@ mod tests {
     }
 
     #[test]
-    fn counter_shop_refuses_restaurant_app_template() {
-        let path = temp_db();
-        let store = Store::open_path(&path).unwrap();
-        let err = store
-            .apply_rajdhani_app_template()
-            .expect_err("counter shops must not apply restaurant starters");
-        assert!(
-            err.to_lowercase().contains("restaurant") || err.to_lowercase().contains("counter"),
-            "{err}"
-        );
-        let _ = std::fs::remove_file(path);
-    }
-
-    #[test]
-    fn counter_shop_has_no_named_restaurant_client_template() {
-        assert!(
-            crate::menu_templates::find("rajdhani").is_none(),
-            "restaurant client templates must not ship"
-        );
+    fn neighbourhood_starter_ships_with_its_shelf() {
         let tmpl = crate::menu_templates::find("neighbourhood")
             .expect("neighbourhood grocery template");
         assert!(tmpl.item_count() >= 500, "{}", tmpl.item_count());
@@ -12581,25 +11820,6 @@ mod tests {
             .expect("priced photo");
         let path = tmpl.resolve_image(&sample.image).expect("webp path");
         assert_eq!(path.extension().and_then(|e| e.to_str()), Some("webp"));
-    }
-
-    #[test]
-    fn raw_material_stays_raw_and_off_the_menu_kind() {
-        let path = temp_db();
-        let store = Store::open_path(&path).unwrap();
-        let rice = Product::new_raw_material("Rice", "kg");
-        store.upsert_product(&rice).unwrap();
-        let dosa = Product::new_basic(new_id(), "Masala Dosa", Money(12000));
-        store.upsert_product(&dosa).unwrap();
-        let all = store.list_products(false).unwrap();
-        let rice_back = all.iter().find(|p| p.id == rice.id).unwrap();
-        assert!(rice_back.is_raw());
-        assert_eq!(rice_back.unit_label, "kg");
-        assert_eq!(rice_back.stock_qty, 0, "raw material is counted from zero");
-        let dosa_back = all.iter().find(|p| p.id == dosa.id).unwrap();
-        assert_eq!(dosa_back.kind, crate::domain::ITEM_KIND_DISH);
-        assert!(!dosa_back.is_bought(), "a kitchen never buys its own dish");
-        let _ = std::fs::remove_file(path);
     }
 
     #[test]
@@ -13921,8 +13141,8 @@ mod tests {
         assert_eq!(store.saved_org_name().unwrap(), "");
         store.meta_set("org_name", DEFAULT_ORG_NAME).unwrap();
         assert_eq!(store.saved_org_name().unwrap(), "");
-        store.set_venue_title("Rajdhani Thali").unwrap();
-        assert_eq!(store.org_name().unwrap(), "Rajdhani Thali", "reports fall back to the shop's name");
+        store.set_venue_title("Asha Stores").unwrap();
+        assert_eq!(store.org_name().unwrap(), "Asha Stores", "reports fall back to the shop's name");
         store.meta_set("venue_title", "Server af76697b").unwrap();
         assert_eq!(store.venue_title().unwrap(), "");
         let _ = std::fs::remove_file(path);
@@ -14136,7 +13356,6 @@ mod tests {
         let mut cart = Cart::default();
         cart.add_or_bump(&thali);
         cart.add_or_bump(&chutney);
-        cart.set_order_type(OrderType::Takeaway);
         let draft = cart.to_sale_draft().unwrap();
         let sale = store
             .finalize_sale(&draft, PayMethod::Upi, None, &owner)
@@ -14144,12 +13363,10 @@ mod tests {
         assert_eq!(sale.total_paise, 12_500, "tax never inflates the bill");
         assert_eq!(sale.lines_total_paise, 12_500);
         assert_eq!(sale.tax_paise, 500);
-        assert_eq!(sale.order_type(), OrderType::Takeaway);
         assert_eq!(sale.branch_id, store.active_branch_id().unwrap());
 
         let loaded = store.get_sale(&sale.id).unwrap().unwrap();
         assert_eq!(loaded.tax_paise, 500);
-        assert_eq!(loaded.order_type, "takeaway");
         let totals = store.today_totals().unwrap();
         assert_eq!(totals.revenue_paise, 12_500);
         assert_eq!(totals.tax_paise, 500);

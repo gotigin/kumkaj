@@ -41,7 +41,7 @@ remove	Ondoa
 removed_items	Bidhaa zilizoondolewa
 removed_help	Rejesha hurudisha bidhaa kwenye menyu kama ilivyokuwa — bei, picha na kategoria. Rafu yetu ya vyakula haiondolewi kamwe, kwa hivyo chakula kinaweza kuongezwa tena kila wakati.
 restore_item	Rejesha
-empty_catalog	Hakuna bidhaa bado. Fungua Menyu na bidhaa, ongeza moja (jina + bei), kisha chukua agizo.
+empty_catalog	Hakuna bidhaa bado.
 total	Jumla
 cash	Taslimu
 upi	UPI
@@ -103,23 +103,14 @@ bill_item_qty	Idadi
 bill_item_price	Bei
 bill_item_amount	Kiasi
 bill_item_note	Kidokezo
-bill_item_col_gap	Nafasi ya safu
 bill_item_col_order	Mpangilio wa safu
 bill_item_col_sep	Mistari ya safu
-bill_item_gap_tight	Imefungwa
-bill_item_gap_comfort	Starehe
-bill_item_gap_wide	Pana
-bill_item_num_width	Safu za nambari
-bill_item_num_compact	Fupi
-bill_item_num_comfort	Starehe
-bill_item_num_wide	Pana
-bill_item_num_align	Mpangilio wa nambari
-bill_item_gap_em	Nafasi (em)
-bill_item_qty_min	Idadi ndogo (em)
-bill_item_price_min	Bei ndogo (em)
-bill_item_amount_min	Kiasi kidogo (em)
-kot_item_qty_width	Safu ya idadi
-kot_item_num_align	Mpangilio wa idadi
+slip_columns	Safu wima
+slip_col_width	Upana (mm)
+slip_col_start	Nafasi ya mwanzo (px)
+slip_col_end	Nafasi ya mwisho (px)
+slip_col_align	Mpangilio wa maandishi
+slip_columns_help	Upana wa kila safu wima unajumuisha nafasi yake ya mwanzo na ya mwisho. Maandishi hujikunja ndani ya safu yake; kinachozidi upana wa maudhui hukatwa, kwenye karatasi na kwenye onyesho la kukagua.
 bill_total_qty_label	Lebo ya idadi yote
 bill_total_subtotal_label	Lebo ya jumla ndogo
 bill_total_grand_label	Lebo ya jumla
@@ -221,7 +212,6 @@ sidebar_order_saved	Utaratibu wa upande ulipatikana
 sidebar_visibility_saved	Uonekano wa upande ulipatikana
 amounts_hide	Ficha
 amounts_show	Onyesha
-printers_none_hint	Hifadhi chombo cha kichwa kabla ya kuiongeza kwenye Bill au kituo cha kusimama
 counter	Kaunta
 dine_in	Kula hapa
 takeaway	Chukua
@@ -328,8 +318,6 @@ selected_language	Iliyochaguliwa
 continue	Endelea
 this_device	KIFAA HIKI
 device_use_q	Kifaa hiki kitatumikaje?
-last_server_mode	Ilikuwa seva — gusa kuendelea
-last_client_mode	Ilikuwa mteja — gusa kuendelea
 choose_server	Chagua seva
 choose_server_hint	Kifaa hiki tayari kina seva. Fungua moja, au tengeneza seva mpya kwa biashara nyingine.
 create_new_server	Tengeneza seva mpya
@@ -391,7 +379,7 @@ attachments_last_expense	Viambatisho (gharama ya mwisho)
 bank	Benki
 bank_in	Kuweka benki
 bank_out	Kutoa benki
-bank_reconciliation	Upatanisho wa benki (weka tiki kulingana na taarifa yako)
+bank_reconciliation	Upatanisho wa benki
 bank_to_till	Benki → kaunta
 book_add_dish	Hifadhi — ongeza sahani / bidhaa
 book_opening_credit	Hifadhi — mkopo wa kuanzia
@@ -744,7 +732,6 @@ station_print_pick_first	Chagua kituo cha jiko kwanza
 station_print_editing	Inahariri printa za “{name}”
 station_vps_dd	Printa za kituo hiki
 station_vps_dd_n	{n} printa · gusa kubadili
-station_vps_empty	Bado hakuna printa — zitafute chini ya Vipimo → Printa
 bill_printers_dd	Vifaa vya kuvunja kwa fursa
 bill_printers_dd_n	{n} vifaa vya kuvunja kwa fursa · bonyeza ili kubadilisha
 job_layout	Mpangilio
@@ -889,7 +876,7 @@ net_word	Halisi
 offline_badge	NJE YA MTANDAO
 optional_login_help	Kuingia kwa hiari (kitambulisho + nenosiri). Mmiliki huweka mara moja; baadaye mtumiaji pekee ndiye anayeweza kubadilisha nenosiri.
 or_unlock_login	Au fungua kwa kitambulisho cha kuingia + nenosiri
-permission_preset	Kipimo cha ruhusa (anachoweza kufikia)
+permission_preset	Kipimo cha ruhusa
 preset_help_khaynjo	Keshia: kuuza. Meneja: kuuza + bidhaa + kufuta/kurekebisha.
 product_locked_khaynjo	Khaynjo
 product_only_khaynjo	Programu hii ni Khaynjo pekee — mfumo wa migahawa. Biashara nyingine zina bidhaa zao za Kumkaj.
@@ -961,10 +948,6 @@ pin_hint_paired	Kaunta ya ziada imeoanishwa — fungua ili kuuza
 pin_hint_pair_first	Kaunta ya ziada — oanisha na kifaa cha duka kwanza
 unlock_to_continue	Fungua ili kuendelea
 no_staff_yet	Hakuna wafanyakazi bado — fungua kama Mmiliki, kisha Timu
-status_server_set_pin	Hali ya seva — weka PIN ya mmiliki
-status_server_tills	Hali ya seva — kaunta za ziada zinaweza kujiunga. Fungua
-status_server_unlock	Hali ya seva — fungua kama Mmiliki
-status_client_unlock	Hali ya mteja — fungua ili kuuza
 icon_new_selected	Ikoni: faili jipya limechaguliwa — gusa Hifadhi chapa
 icon_custom	Ikoni: alama ya duka lako mwenyewe
 icon_default	Ikoni: alama ya Kumkaj (chaguo-msingi) — chagua yako
@@ -1033,7 +1016,7 @@ book_kind_balance	Karatasi ya mizania
 order_help	Chagua oda iliyo wazi, au chagua meza na uanze mpya. Gusa bidhaa zilizo tayari, tuma KOT, toa bili kwa bidhaa moja au zaidi, gawa bili, na ukamilishe malipo.
 floor_help	Kila meza huonyesha kama wageni wameketi, bili yao iliyo wazi ni ipi, na nani anahitaji huduma inayofuata.
 kitchen_help	Fuatilia kilicho tayari kwa kila aina au bidhaa — rekodi katika KOT unavyopenda.
-kitchen_empty	Hakuna kilichowazi sasa — oda mpya huonekana hapa.
+kitchen_empty	Hakuna kilichowazi sasa.
 add_a_table	Ongeza meza
 add_station_heading	Ongeza kituo · mf. Tandoor, Uhindi Kusini
 categories_help	Kategoria huonyesha chakula ni cha sehemu gani ya menyu — mf. vitafunwa, chakula kikuu au biryani. Unda kategoria kwa njia yako: chagua majina tunayopendekeza, yabadilishe jina au ongeza yako.
@@ -1131,7 +1114,6 @@ bill_format_help	Huchapishwa chini ya jina la mgahawa kwenye kila bili. Tenganis
 bill_header_ph	Anwani | simu
 fssai_ph	Namba ya leseni FSSAI (India)
 bill_footer_ph	Chini (mf. Asante, karibu tena)
-save_bill_format	Hifadhi muundo wa bili
 reset_bill_format	Rejesha chaguo-msingi
 bill_format_reset	Muundo wa bili umerejeshwa
 reset_kot_format	Rejesha chaguo-msingi
@@ -1201,13 +1183,11 @@ kot_copies_3	3
 kot_title_ph	Kichwa (tupu = KOT - KITCHEN ORDER)
 kot_footer_ph	Kumbuka la jiko (hiari, bila bei)
 kot_preview	Hakiki
-save_kot_format	Hifadhi muundo wa KOT
 test_kot_format	Jaribu KOT
 test_kot_sent	Mchoro wa tiki ya matambaa umepigwa
 test_bill_format	Jaribu bilio
 test_bill_sent	Mchoro wa bilio umepigwa
 test_print_no_printer	Hakuna chapa kwa kazi hiyo — chague moja kwenye skrini hii
-kot_format_saved	Muundo wa KOT umehifadhiwa
 std_print	Ukubwa wa kuchapisha bili
 std_print_help	Ukubwa wa herufi kwa bili za Standard Wima na Mlalo (KOT ya joto tofauti). Ukubwa mmoja katika mielekeo yote miwili.
 std_size_s	Ndogo
@@ -1264,7 +1244,6 @@ new_items_head	Bado haijatumwa
 price_ph	Bei
 price_ph_gst_inside	Bei ({tax} imejumuishwa)
 cancel_needs_table	Fungua oda hii kutoka Sakafu (meza) ili kughairi baada ya jiko — KOT za kaunta zinabaki kwenye tiketi hadi malipo
-tax_rates_missing_hint	Hakuna kiwango cha {tax} kwenye vyakula hivi — kwenye Menyu weka kiwango (kwa {tax} inclusive bei tayari inajumuisha {tax})
 taxable_value	Thamani inayotozwa kodi
 gst_inside_price_note	({tax} imejumuishwa)
 start_with_template	Anza na kiolezo chetu cha menyu
@@ -1318,9 +1297,7 @@ order_empty_pick	Oda haina kitu — gusa “Ongeza vyakula” juu kuchagua vyaku
 add_dishes	Ongeza vyakula
 order_so_far	Kwenye oda hii: {n} · {total}
 no_dish_match	Hakuna chakula kinacholingana na “{q}”
-pick_dishes_help	Gusa chakula kukiongeza · chagua kundi kupunguza orodha
 pick_done	Tayari
-pick_done_dd	Tayari · {label}
 printer_route_mode	Ikiwa kuna chapa nyingi kwenye eneo hili
 printer_mode_first	Yake ya kwanza inayofanya kazi
 printer_mode_all	Piga kwa wote

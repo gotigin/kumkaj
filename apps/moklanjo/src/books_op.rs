@@ -275,6 +275,13 @@ pub enum BooksOp {
         icon_bytes: Vec<u8>,
     },
     ClearVenueIcon,
+    /// Sidebar show/hide and order (CSV of nav keys). The shop's: every
+    /// device shows the same rail; role rights still hide what a person may
+    /// not open. A Client sends it here instead of writing its own copy.
+    SetNavLayout {
+        hidden: String,
+        order: String,
+    },
     AddAttachmentNote {
         entity: AttachmentEntity,
         entity_id: String,
@@ -382,6 +389,7 @@ impl BooksOp {
             Self::SetMovementCleared { .. } => "Reconcile bank movements",
             Self::RenameBusiness { .. } => "Rename the business",
             Self::SetVenueBrand { .. } | Self::ClearVenueIcon => "Change in-app brand",
+            Self::SetNavLayout { .. } => "Change sidebar",
             Self::AddAttachmentNote { .. } => "Add note",
             Self::AddAttachmentImage { .. } => "Attach photo",
             Self::AddAttachmentFile { .. } => "Attach file",
@@ -468,6 +476,7 @@ impl BooksOp {
             Self::RenameBusiness { .. } => "Business name saved".into(),
             Self::SetVenueBrand { .. } => "Brand saved".into(),
             Self::ClearVenueIcon => "Icon cleared".into(),
+            Self::SetNavLayout { .. } => "Sidebar saved".into(),
             Self::AddAttachmentNote { .. } => "Note added".into(),
             Self::AddAttachmentImage { .. } => "Photo attached (stored as WebP)".into(),
             Self::AddAttachmentFile { .. } => "File attached".into(),
@@ -696,6 +705,15 @@ impl Store {
             BooksOp::SetUserLanguage { code } => {
                 self.set_user_language(&code)?;
                 Ok(format!("Language: {code}"))
+            }
+            BooksOp::SetNavLayout { hidden, order } => {
+                if !actor.is_owner() && !actor.can_access_settings() {
+                    return Err("Not allowed to change the sidebar".into());
+                }
+                self.set_nav_hidden_csv(&hidden)?;
+                self.set_nav_order_csv(&order)?;
+                // No words of its own: the device says its (translated) line.
+                Ok(String::new())
             }
             BooksOp::SetCurrency { code } => {
                 if !actor.is_owner() {

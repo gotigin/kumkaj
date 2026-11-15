@@ -15,8 +15,6 @@ enum Screen {
     Credit,
     Team,
     Settings,
-    /// Settings → Sidebar: order + show/hide chrome peers.
-    SidebarSettings,
     DayClose,
     Reports,
     Inventory,
@@ -42,6 +40,19 @@ enum NavTab {
     Team,
     Settings,
     Lock,
+    // Settings sections are nav items too (Khaynjo owner, 2026-11-15): one
+    // list on Settings, each can be shown on the rail / bottom bar.
+    SetLanguage,
+    SetCountry,
+    SetBrand,
+    SetPrinters,
+    SetAwb,
+    SetMeasures,
+    SetUnits,
+    SetDevices,
+    SetAlerts,
+    SetBackup,
+    SetDiag,
 }
 
 /// Which Reports-screen facet is open (ops/COD/riders share `Screen::Reports`).
@@ -252,8 +263,22 @@ impl SuggestField {
     }
 }
 
-/// Default sidebar / bottom-bar arrangement (matches the DSL slot order).
-const NAV_TABS: [NavTab; 16] = [
+/// Every nav item — the Settings list and the rail / bottom bar (slots are
+/// positions; which tab a slot shows comes from `AppState.nav_order`). The
+/// app's own default order is the names in dictionary order
+/// ([`default_nav_order`]); sections start hidden on the bars.
+const NAV_TABS: [NavTab; 27] = [
+    NavTab::SetLanguage,
+    NavTab::SetCountry,
+    NavTab::SetBrand,
+    NavTab::SetPrinters,
+    NavTab::SetAwb,
+    NavTab::SetMeasures,
+    NavTab::SetUnits,
+    NavTab::SetDevices,
+    NavTab::SetAlerts,
+    NavTab::SetBackup,
+    NavTab::SetDiag,
     NavTab::Books,
     NavTab::Sell,
     NavTab::Buy,
@@ -271,6 +296,72 @@ const NAV_TABS: [NavTab; 16] = [
     NavTab::Settings,
     NavTab::Lock,
 ];
+
+/// The Settings section a nav item opens (`None` for screens).
+fn nav_tab_settings_panel(tab: NavTab) -> Option<&'static str> {
+    Some(match tab {
+        NavTab::SetLanguage => "language",
+        NavTab::SetCountry => "country",
+        NavTab::SetBrand => "brand",
+        NavTab::SetPrinters => "printers",
+        NavTab::SetAwb => "awb",
+        NavTab::SetMeasures => "measures",
+        NavTab::SetUnits => "units",
+        NavTab::SetDevices => "devices",
+        NavTab::SetAlerts => "alerts",
+        NavTab::SetBackup => "backup",
+        NavTab::SetDiag => "diag",
+        _ => return None,
+    })
+}
+
+/// The nav item for a Settings section.
+fn nav_tab_for_settings_panel(panel: &str) -> Option<NavTab> {
+    NAV_TABS
+        .iter()
+        .copied()
+        .find(|t| nav_tab_settings_panel(*t) == Some(panel))
+}
+
+/// Settings sections start hidden on the rail / bottom bar, so a shop's bars
+/// look as before until the owner switches one on.
+fn nav_tab_default_hidden(tab: NavTab) -> bool {
+    nav_tab_settings_panel(tab).is_some()
+}
+
+/// A nav item's name on the Settings list (and the order's key).
+fn nav_tab_label(tab: NavTab, lang: &str) -> String {
+    let key = match tab {
+        NavTab::Ops => return "Ops".into(),
+        NavTab::Cod => return "COD".into(),
+        NavTab::Books => "books",
+        NavTab::Sell => "sell",
+        NavTab::Buy => "buy",
+        NavTab::Rates => "sidebar_menu_items",
+        NavTab::Riders => "riders",
+        NavTab::Sales => "sales",
+        NavTab::DayClose => "day_close",
+        NavTab::Reports => "nav_reports",
+        NavTab::Inventory => "inventory",
+        NavTab::Branches => "branches",
+        NavTab::Credit => "credit",
+        NavTab::Team => "team",
+        NavTab::Settings => "nav_settings",
+        NavTab::Lock => "nav_lock",
+        NavTab::SetLanguage => "language_currency",
+        NavTab::SetCountry => "country_tax",
+        NavTab::SetBrand => "your_brand",
+        NavTab::SetPrinters => "printers_heading",
+        NavTab::SetAwb => "awb_pools_heading",
+        NavTab::SetMeasures => "booking_measures",
+        NavTab::SetUnits => "units_heading",
+        NavTab::SetDevices => "settings_sec_devices",
+        NavTab::SetAlerts => "settings_sec_alerts",
+        NavTab::SetBackup => "backup",
+        NavTab::SetDiag => "settings_sec_diag",
+    };
+    locale::t(lang, key)
+}
 
 fn nav_tab_key(tab: NavTab) -> &'static str {
     match tab {
@@ -290,6 +381,17 @@ fn nav_tab_key(tab: NavTab) -> &'static str {
         NavTab::Team => "team",
         NavTab::Settings => "settings",
         NavTab::Lock => "lock",
+        NavTab::SetLanguage => "set_language",
+        NavTab::SetCountry => "set_country",
+        NavTab::SetBrand => "set_brand",
+        NavTab::SetPrinters => "set_printers",
+        NavTab::SetAwb => "set_awb",
+        NavTab::SetMeasures => "set_measures",
+        NavTab::SetUnits => "set_units",
+        NavTab::SetDevices => "set_devices",
+        NavTab::SetAlerts => "set_alerts",
+        NavTab::SetBackup => "set_backup",
+        NavTab::SetDiag => "set_diag",
     }
 }
 
@@ -313,6 +415,17 @@ fn nav_tab_icon_bytes(tab: NavTab) -> &'static [u8] {
         NavTab::Team => include_bytes!("../resources/nav/team.webp").as_slice(),
         NavTab::Settings => include_bytes!("../resources/nav/settings.webp").as_slice(),
         NavTab::Lock => include_bytes!("../resources/nav/lock.webp").as_slice(),
+        NavTab::SetLanguage => include_bytes!("../resources/settings/language.webp").as_slice(),
+        NavTab::SetCountry => include_bytes!("../resources/settings/country.webp").as_slice(),
+        NavTab::SetBrand => include_bytes!("../resources/settings/brand.webp").as_slice(),
+        NavTab::SetPrinters => include_bytes!("../resources/settings/printers.webp").as_slice(),
+        NavTab::SetAwb => include_bytes!("../resources/settings/awb.webp").as_slice(),
+        NavTab::SetMeasures => include_bytes!("../resources/settings/measures.webp").as_slice(),
+        NavTab::SetUnits => include_bytes!("../resources/settings/units.webp").as_slice(),
+        NavTab::SetDevices => include_bytes!("../resources/settings/tills.webp").as_slice(),
+        NavTab::SetAlerts => include_bytes!("../resources/settings/alerts.webp").as_slice(),
+        NavTab::SetBackup => include_bytes!("../resources/settings/backup.webp").as_slice(),
+        NavTab::SetDiag => include_bytes!("../resources/settings/diag.webp").as_slice(),
     }
 }
 
@@ -322,27 +435,77 @@ fn nav_tab_caption(_tab: NavTab, label: &str) -> String {
     label.to_string()
 }
 
-/// Saved order wins; unknown keys are dropped and any tab missing from the
-/// saved list is appended in default order, so an older saved order can
-/// never hide a newer tab.
-fn parse_nav_order(csv: Option<&str>) -> Vec<NavTab> {
+/// The app's default order: every nav item by its name in the app language,
+/// dictionary order ignoring case (Khaynjo owner, 2026-11-15). The owner
+/// can still reorder; this is only where a list starts.
+fn default_nav_order(lang: &str) -> Vec<NavTab> {
+    let mut order = NAV_TABS.to_vec();
+    order.sort_by_cached_key(|t| nav_tab_label(*t, lang).to_lowercase());
+    order
+}
+
+/// The default the app shipped before the name order: a saved order equal
+/// to it was never arranged by the owner, so it takes today's default.
+const SHIPPED_NAV_ORDERS: [&str; 1] = [
+    "books,sell,buy,rates,ops,cod,riders,sales,day_close,reports,inventory,branches,credit,team,settings,lock",
+];
+
+/// The owner's saved order wins; unknown keys are dropped and a tab missing
+/// from the saved list takes its place in the default order: right after the
+/// nearest tab before it there that the saved list has, or first when none
+/// is. No saved order, or one the app shipped and the owner never changed:
+/// the default order.
+fn parse_nav_order(csv: Option<&str>, lang: &str) -> Vec<NavTab> {
+    let default = default_nav_order(lang);
+    let csv = csv.map(str::trim).filter(|c| !c.is_empty());
+    let untouched = csv.is_none_or(|c| {
+        let keys: String = c.split(',').map(str::trim).collect::<Vec<_>>().join(",");
+        SHIPPED_NAV_ORDERS.contains(&keys.as_str())
+    });
+    if untouched {
+        return default;
+    }
     let mut order: Vec<NavTab> = Vec::with_capacity(NAV_TABS.len());
-    if let Some(csv) = csv {
-        for key in csv.split(',') {
-            let key = key.trim();
-            if let Some(tab) = NAV_TABS.iter().find(|t| nav_tab_key(**t) == key)
-                && !order.contains(tab)
-            {
-                order.push(*tab);
-            }
+    for key in csv.unwrap_or("").split(',') {
+        let key = key.trim();
+        if let Some(tab) = NAV_TABS.iter().find(|t| nav_tab_key(**t) == key)
+            && !order.contains(tab)
+        {
+            order.push(*tab);
         }
     }
-    for tab in NAV_TABS {
-        if !order.contains(&tab) {
-            order.push(tab);
+    for (i, tab) in default.iter().enumerate() {
+        if order.contains(tab) {
+            continue;
         }
+        let after = default[..i]
+            .iter()
+            .rev()
+            .find_map(|prev| order.iter().position(|t| t == prev));
+        order.insert(after.map_or(0, |p| p + 1), *tab);
     }
     order
+}
+
+/// Order and hidden tabs from the saved CSVs. A section not in the saved
+/// order was never shown to this shop's owner — it is hidden, so an upgrade
+/// adds no slots to the rail / bottom bar.
+fn parse_nav_layout(
+    order_csv: Option<&str>,
+    hidden_csv: Option<&str>,
+    lang: &str,
+) -> (Vec<NavTab>, Vec<NavTab>) {
+    let order = parse_nav_order(order_csv, lang);
+    let mut hidden = parse_nav_hidden(hidden_csv);
+    let saved: Vec<&str> = order_csv
+        .map(|c| c.split(',').map(str::trim).collect())
+        .unwrap_or_default();
+    for tab in NAV_TABS {
+        if nav_tab_default_hidden(tab) && !saved.contains(&nav_tab_key(tab)) && !hidden.contains(&tab) {
+            hidden.push(tab);
+        }
+    }
+    (order, hidden)
 }
 
 fn nav_order_csv(order: &[NavTab]) -> String {
@@ -408,6 +571,8 @@ struct NavCaps {
     inventory: bool,
     branches: bool,
     is_owner: bool,
+    /// Shop Settings sections (Printers, AWB pools, Backup, …).
+    shop_settings: bool,
     /// Unlocked session — Settings / Team shell for My PIN even without shop admin.
     signed_in: bool,
     branch_count: usize,
@@ -426,6 +591,7 @@ impl NavCaps {
                 inventory: s.can_access_inventory() || s.is_owner(),
                 branches: s.can_access_branches() || s.is_owner(),
                 is_owner: s.is_owner(),
+                shop_settings: s.can_access_settings(),
                 signed_in: true,
                 branch_count,
             },
@@ -475,6 +641,17 @@ fn nav_tab_permitted(tab: NavTab, caps: NavCaps) -> bool {
         NavTab::Branches => caps.branches && caps.branch_count > 1,
         NavTab::Credit => caps.credit,
         NavTab::Team => caps.team,
+        NavTab::SetLanguage
+        | NavTab::SetCountry
+        | NavTab::SetBrand
+        | NavTab::SetPrinters
+        | NavTab::SetAwb
+        | NavTab::SetMeasures
+        | NavTab::SetUnits
+        | NavTab::SetDevices
+        | NavTab::SetAlerts
+        | NavTab::SetBackup
+        | NavTab::SetDiag => caps.shop_settings,
     }
 }
 
@@ -521,36 +698,66 @@ fn screen_for_nav_tab(tab: NavTab) -> Screen {
         NavTab::Inventory => Screen::Inventory,
         NavTab::Branches => Screen::Branches,
         NavTab::Credit => Screen::Credit,
-        NavTab::Team | NavTab::Settings => Screen::Settings,
+        NavTab::Team => Screen::Team,
+        NavTab::Settings => Screen::Settings,
         NavTab::Lock => Screen::Lock,
+        // Settings sections open on the Settings screen.
+        _ => Screen::Settings,
     }
 }
 
-/// Post-unlock home: first chrome peer this person may open (never Lock).
+/// The nav item this person last had selected on this device, while they
+/// may still open it: on the bar, or a Settings item they have the rights
+/// for. Lock is never kept.
+fn remembered_nav_tab(st: &AppState) -> Option<NavTab> {
+    let user = st.session.as_ref().map(lan_key)?;
+    let key = st.store.as_ref()?.last_nav_key(&user).ok().flatten()?;
+    let tab = NAV_TABS
+        .iter()
+        .copied()
+        .find(|t| nav_tab_key(*t) == key.trim())?;
+    let open = nav_chrome_order_from(st).contains(&tab)
+        || (nav_tab_default_hidden(tab) && nav_tab_permitted(tab, nav_caps_from(st)));
+    (tab != NavTab::Lock && open).then_some(tab)
+}
+
+/// The first item this person may open: never Lock, never a Settings
+/// section even when the owner put one first on the bar (staff
+/// without Books rights must not land on Day book with every hub row) —
+/// unless that is all they may open.
+fn first_allowed_work_tab(st: &AppState) -> Option<NavTab> {
+    let order = nav_chrome_order_from(st);
+    let work = order
+        .iter()
+        .copied()
+        .find(|t| *t != NavTab::Lock && !nav_tab_default_hidden(*t));
+    work.or_else(|| order.iter().copied().find(|t| *t != NavTab::Lock))
+}
+
+/// The screen a nav item opens, with the Reports focus it shows.
+fn land_on_nav_tab(st: &mut AppState, tab: NavTab) -> Screen {
+    st.reports_nav = match tab {
+        NavTab::Ops => ReportsNav::Ops,
+        NavTab::Cod => ReportsNav::Cod,
+        NavTab::Riders => ReportsNav::Riders,
+        NavTab::Reports => ReportsNav::Bank,
+        _ => return screen_for_nav_tab(tab),
+    };
+    Screen::Reports
+}
+
+/// Where Unlock lands: the nav item this person last had selected on this
+/// device; the first time, the first item they may open. Never a fixed
+/// screen — the owner sets the order, each person picks their item
+/// (owner, 2026-11-15). `sync_chrome` then runs the landing as a tap on
+/// that item would.
 fn unlocked_home_from(st: &mut AppState) -> Screen {
-    for tab in nav_chrome_order_from(st) {
-        match tab {
-            NavTab::Lock => continue,
-            NavTab::Ops => {
-                st.reports_nav = ReportsNav::Ops;
-                return Screen::Reports;
-            }
-            NavTab::Cod => {
-                st.reports_nav = ReportsNav::Cod;
-                return Screen::Reports;
-            }
-            NavTab::Riders => {
-                st.reports_nav = ReportsNav::Riders;
-                return Screen::Reports;
-            }
-            NavTab::Reports => {
-                st.reports_nav = ReportsNav::Bank;
-                return Screen::Reports;
-            }
-            other => return screen_for_nav_tab(other),
-        }
+    let tab = remembered_nav_tab(st).or_else(|| first_allowed_work_tab(st));
+    st.nav_tab_after_unlock = tab;
+    match tab {
+        Some(tab) => land_on_nav_tab(st, tab),
+        None => Screen::Lock,
     }
-    Screen::Lock
 }
 
 /// After roster sync updates session features: may they remain on `screen`?
@@ -578,13 +785,15 @@ fn session_may_stay_on(screen: Screen, st: &AppState) -> bool {
         Screen::Credit => caps.credit,
         Screen::Team => session.can_manage_team() || session.can_change_own_credentials(),
         Screen::Settings => session.can_open_settings_shell(),
-        Screen::SidebarSettings => session.can_access_settings(),
         Screen::Lock | Screen::DeviceSetup | Screen::Onboard | Screen::ClientPair => true,
     }
 }
 
 /// First main work peer this session may open (Sell/Rates/…), or Lock if none.
 fn first_allowed_work_screen(st: &mut AppState) -> Screen {
-    unlocked_home_from(st)
+    match first_allowed_work_tab(st) {
+        Some(tab) => land_on_nav_tab(st, tab),
+        None => Screen::Lock,
+    }
 }
 const OPS_BOARD_LIMIT: usize = 300;

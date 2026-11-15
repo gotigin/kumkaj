@@ -41,7 +41,7 @@ remove	बोखार
 removed_items	बोखारजानाय आइटम
 removed_help	लाबोफिनब्ला आइटम आ सिगांगनि बाइदि मेनुआव फैफिनो — बेसेन, सावमुथि आरो थाखो। जोंनि जामुनि सेल्फखौ जेब्लाबो बोखारनाया नङा, बेखाय जायखि जामुखौ फिन दाजाबनो हायो।
 restore_item	लाबोफिन
-empty_catalog	दासिम जामु गैया। मेनु खेव, जामु दाजाब (मुं + बेसेन), अब्ला अर्डर ला।
+empty_catalog	दासिम जामु गैया।
 total	गासै
 cash	नगद
 upi	युपिआइ
@@ -103,23 +103,14 @@ bill_item_qty	बिबां
 bill_item_price	बेसेन
 bill_item_amount	रां
 bill_item_note	जामुनि नोट
-bill_item_col_gap	खाम्फानि गेजेर
 bill_item_col_order	खाम्फानि फारि
 bill_item_col_sep	खाम्फानि हांखो
-bill_item_gap_tight	खिन्था
-bill_item_gap_comfort	सुखु
-bill_item_gap_wide	गोबां
-bill_item_num_width	अन्थोरनि खाम्फा
-bill_item_num_compact	खिन्था
-bill_item_num_comfort	सुखु
-bill_item_num_wide	गोबां
-bill_item_num_align	अन्थोर फारि
-bill_item_gap_em	गेजेर (em)
-bill_item_qty_min	बिबां खम (em)
-bill_item_price_min	बेसेन खम (em)
-bill_item_amount_min	रां खम (em)
-kot_item_qty_width	बिबांनि खाम्फा
-kot_item_num_align	बिबांनि फारि
+slip_columns	खाम्फाफोर
+slip_col_width	गुवार (mm)
+slip_col_start	जागायनायनि जायगा (px)
+slip_col_end	जोबनायनि जायगा (px)
+slip_col_align	लिरनि सारि
+slip_columns_help	खाम्फा फोरनि गुवारआव बेनि जागायनाय आरो जोबनायनि जायगा दं। लिरा बेनि खाम्फानि सिङाव खोसायो; बिबुंथि गुवारनिफ्राय बायजोआव थानाय बाहागोआ कागजआव आरो सिगाङाव नुनायाव खावनाय जायो।
 bill_total_qty_label	गासै बिबांनि लेबेल
 bill_total_subtotal_label	खाव गासैनि लेबेल
 bill_total_grand_label	गासै रांनि लेबेल
@@ -221,7 +212,6 @@ sidebar_order_saved	साइडबारनि फारि थिना दो
 sidebar_visibility_saved	साइडबारनि नुजायनाय थिना दोनबाय
 amounts_hide	दोनखोमा
 amounts_show	दिन्थिफुं
-printers_none_hint	सिगां बे मेसिनआव प्रिन्टार थिना दोन, अब्ला बिल एबा नुथांआव दाजाब
 counter	काउन्टार
 dine_in	गायसन जा
 takeaway	लानाय
@@ -328,8 +318,6 @@ selected_language	सायखबाय
 continue	सालाय लां
 this_device	बे मेसिन
 device_use_q	बे मेसिनखौ माबोरै बाहायगोन?
-last_server_mode	सर्वर मोन — सालाय लांनो सुदुं
-last_client_mode	क्लाइन्ट मोन — सालाय लांनो सुदुं
 choose_server	सर्वर सायख
 choose_server_hint	गोजाम सर्वर खेव, एबा गुबुन बिजनेसनि थाखाय गोदान मोनसे बानाय।
 create_new_server	गोदान सर्वर बानाय
@@ -391,7 +379,7 @@ attachments_last_expense	नांजाबनाय (जोबथा खर्�
 bank	बैंक
 bank_in	बैंक हाब
 bank_out	बैंक बारहो
-bank_reconciliation	बैंक मिलानाय (नोंनि बैंक स्टेटमेन्टजों टिक बोखार)
+bank_reconciliation	बैंक मिलानाय
 bank_to_till	बैंक → टिल
 book_add_dish	बही — जामु / आइटम दाजाब
 book_opening_credit	बही — जागायनाय उधारि
@@ -744,7 +732,6 @@ station_print_pick_first	सिगां नुथांनि स्टेस�
 station_print_editing	“{name}” नि प्रिन्टार एडिट खालाम गासिनो
 station_vps_dd	बे स्टेसननि प्रिन्टार
 station_vps_dd_n	{n} प्रिन्टार · सोलायनो सुदुं
-station_vps_empty	दासिम प्रिन्टार गैया — सेटिं → प्रिन्टारआव नागिर
 bill_printers_dd	बिलनि प्रिन्टार
 bill_printers_dd_n	बिलनि थाखाय {n} प्रिन्टार · सोलायनो सुदुं
 job_layout	साजाय
@@ -889,7 +876,7 @@ net_word	नेट
 offline_badge	OFFLINE
 optional_login_help	नांगौब्ला लगइन (id + पासवार्ड)। गिबिया मोनसे साजो; उन पासवार्ड खालि बाहायग्रा सोलायनो हायो।
 or_unlock_login	एबा लगइन id + पासवार्डजों खुलि हो
-permission_preset	खामानि (स्क्रिन आरो रांनि खामानि साजो)
+permission_preset	खामानि
 preset_help_khaynjo	केसियार: फान। मेनेजार: फान + आइटम + बातिल/सोलाय।
 product_locked_khaynjo	Khaynjo
 product_only_khaynjo	बे एप खालि Khaynjo — रेस्टुरेन्ट चलानायनि सिस्टम। गुबुन ब्यापारनि मुख आलादा Kumkaj सामान महरै थाङो।
@@ -961,10 +948,6 @@ pin_hint_paired	बांद्राय टिल जोरा जाबाय 
 pin_hint_pair_first	बांद्राय टिल — सिगां दोकान मेसिनजों जोरा
 unlock_to_continue	सालायनो खुलि हो
 no_staff_yet	दासिम मावुरि गैया — गिबि महरै खुलि हो, अब्ला टिम
-status_server_set_pin	सर्वर मोड — गिबि PIN साजाय
-status_server_tills	सर्वर मोड — बांद्राय टिल हाफानो हायो। खुलि हो
-status_server_unlock	सर्वर मोड — गिबि महरै खुलि हो
-status_client_unlock	क्लाइन्ट मोड — फाननो खुलि हो
 icon_new_selected	आइकन: गोदान फाइल सायखबाय — ब्रान्ड थिना दोन सुदुं
 icon_custom	आइकन: नोंनि जायगा सिन
 icon_default	आइकन: Kumkaj सिन (डिफल्ट) — नोंनिखौ सायख
@@ -1033,7 +1016,7 @@ book_kind_balance	बैलेन्स सिट
 order_help	दाजाबनो आइटम सुदुं।
 floor_help	अर्डर लानो एबा सोलायनो टेबुल सुदुं। गाब आ उदां → बाय → नुथां → गनांथि → जागासिनो → बिल → पैसा दिन्थियो। वेटलिस्ट, रिजार्भ, आरो टेबुल दाजाब गाहायनि सेक्सनआव।
 kitchen_help	नुथांनि टिकेट (KOT), गोदान जोबथा। जागाय → गनांथि → जाबाय आ टिकेट दाङो। टिकेटआव बेसेन जेब्लाबो दिन्थिया।
-kitchen_empty	खेवजानाय टिकेट गैया। अर्डर एबा फ्लोरनिफ्राय दैथाय होजानाय KOT बेयाव दिन्थिफायो।
+kitchen_empty	खेवजानाय टिकेट गैया।
 add_a_table	टेबुल दाजाब
 add_station_heading	नुथांनि स्टेसन दाजाब
 categories_help	गोजौनि आइटम बे थाखोआव दोननो बाहाय सुदुं। सावगारि आ थाखोखौ सावगारि होयो; गैयाब्ला गिबि आखु दिन्थियो।
@@ -1131,7 +1114,6 @@ bill_format_help	मोनफ्रोम बिलआव नोंनि रे
 bill_header_ph	थं | फोन
 fssai_ph	FSSAI लाइसेन्स नं. (भारत)
 bill_footer_ph	फुटार (बिदिं साबायहर, फिन फै)
-save_bill_format	बिल फर्मेट थिना दोन
 reset_bill_format	डिफल्टआव लाबोफिन
 bill_format_reset	बिल फर्मेट डिफल्टआव लाबोफिनबाय
 reset_kot_format	डिफल्टआव लाबोफिन
@@ -1201,13 +1183,11 @@ kot_copies_3	3
 kot_title_ph	मुं (खाली = KOT - KITCHEN ORDER)
 kot_footer_ph	नुथांनि नट (नांगौब्ला, बेसेन गैया)
 kot_preview	प्रिभ्यु
-save_kot_format	KOT फर्मेट थिना दोन
 test_kot_format	टेस्ट KOT
 test_kot_sent	नुथांनि टिकेट प्रिभ्यु दैथाय होबाय
 test_bill_format	टेस्ट बिल
 test_bill_sent	बिल प्रिभ्यु दैथाय होबाय
 test_print_no_printer	बे खामानिनि प्रिन्टार गैया — बे स्क्रिनआव मोनसे सायख
-kot_format_saved	KOT फर्मेट थिना दोनबाय
 std_print	बिल प्रिन्ट साइज
 std_print_help	OS / दस्तावेज प्रिन्टारआव स्टेन्डार्ड खड़ा आरो गोथै बिल खामानिनि फन्ट साइज (पइन्ट लिर — सान/साधारन/गेदेर नङा)। मोननै थानोआव मोनसे साइज। नुथांनि स्लिप साइज KOT ट्याबआव।
 std_size_s	सान
@@ -1264,7 +1244,6 @@ new_items_head	दासिम दैथाय होनाय नङा
 price_ph	बेसेन
 price_ph_gst_inside	बेसेन ({tax} सिं)
 cancel_needs_table	नुथांआव थाङनाय उन केन्सेल खालामनो बे अर्डर फ्लोरनिफ्राय (टेबुल) खेव — काउन्टार KOT पैसा लानाय सिम टिकेटआव थायो
-tax_rates_missing_hint	बे जामुफोराव {tax} हार गैया — मेनुआव कर हार साजाय (बेसेनआव सिगांनिफ्राय {tax} दं, {tax} सिंनि गाहाय)
 taxable_value	कर लागानाय मान
 gst_inside_price_note	({tax} सिं)
 start_with_template	जोंनि मेनु टेम्पलेटजों जागाय
@@ -1318,9 +1297,7 @@ order_empty_pick	अर्डर खाली — जामु सायखन�
 add_dishes	जामु दाजाब
 order_so_far	बे अर्डरआव: {n} · {total}
 no_dish_match	“{q}” जों जामु गोरोबा
-pick_dishes_help	दाजाबनो जामु सुदुं · लिस्ट गुसुं खालामनो थाखो सायख
 pick_done	जाबाय
-pick_done_dd	जाबाय · {label}
 printer_route_mode	बे जायगायाव गोबां प्रिन्टार थाब्ला
 printer_mode_first	गिबि जाखां
 printer_mode_all	गासैआव प्रिन्ट

@@ -39,7 +39,7 @@ adding_item	Yangi tarif qo'shilmoqda
 editing_item	Tahrirlash
 save	Saqlash
 remove	Olib tashlash
-empty_catalog	No rates yet. Narxlar va xizmatlarni oching, bittasini qo‘shing (nom + narx, kg birlik), so‘ng “Bronlash”.
+empty_catalog	No rates yet.
 counter_sale	Hisoblagich bron qilish
 total	Jami
 cash	Naqd
@@ -171,8 +171,6 @@ selected_language	Tanlangan
 continue	Davom etish
 this_device	SHU QURILMA
 device_use_q	Bu qurilma qanday ishlatiladi?
-last_server_mode	Server edi — davom etish uchun bosing
-last_client_mode	Mijoz edi — davom etish uchun bosing
 choose_server	Server tanlang
 choose_server_hint	Mavjud serverni oching yoki boshqa biznes uchun yangisini yarating.
 create_new_server	Yangi server yaratish
@@ -501,8 +499,6 @@ job_layout	Joylashuv
 job_delivery	Ish qanday yuboriladi
 job_size	Shrift oʻlchami
 job_size_ph	mas. 18, 20, 26…
-save_receipt_format	Kvitansiya formatini saqlang
-save_label_format	Yorliq formatini saqlang
 test_receipt_format	Sinov kvitansiyasi
 test_label_format	Sinov belgisi
 test_receipt_sent	Kvitansiya namunasi yuborildi
@@ -610,7 +606,7 @@ units_heading	Oʻlchov birliklari
 booking_measures	Rezervasyon choralari
 drawer_count	Tortma sanovi (ixtiyoriy)
 spreadsheet_csv	Jadval (CSV)
-bank_reconciliation	Bank solishtiruvi (bank koʻchirmasiga qarshi belgilang)
+bank_reconciliation	Bank solishtiruvi
 book_add_product	Kitob - mahsulot / tarif qo'shing
 book_opening_credit	Daftar — boshlangʻich nasiya
 account_kind	Hisob turi (bittasini bosing)
@@ -650,7 +646,7 @@ net_word	Sof
 offline_badge	OFLAYN
 optional_login_help	Ixtiyoriy kirish (id + parol). Egasi bir marta qoʻyadi; parolni keyin faqat foydalanuvchi oʻzgartira oladi.
 or_unlock_login	Yoki kirish id + parol bilan qulfni oching
-permission_preset	Vazifa (ekranlar va huquqlarni o'rnatadi)
+permission_preset	Vazifa
 preset_help_moklanjo	Kassir: sotadi. Menejer: savdo + mahsulot + bekor/tuzatish.
 product_locked_moklanjo	Moklanjo
 product_only_moklanjo	Bu ilova faqat Moklanjo — kitoblar + bron qilish stoli. Boshqa savdo yuzlari keyinroq alohida mahsulotlar sifatida jo'natiladi.
@@ -698,10 +694,6 @@ pin_hint_paired	Qoʻshimcha kassa juftlangan — sotish uchun qulfni oching
 pin_hint_pair_first	Qoʻshimcha kassa — avval doʻkon qurilmasi bilan juftlang
 unlock_to_continue	Davom etish uchun qulfni oching
 no_staff_yet	Hali xodim yoʻq — Egasi sifatida qulfni oching, soʻng Jamoa
-status_server_set_pin	Server rejimi — Egasi PIN ini qoʻying
-status_server_tills	Server rejimi — qoʻshimcha kassalar qoʻshila oladi. Qulfni oching
-status_server_unlock	Server rejimi — Egasi sifatida qulfni oching
-status_client_unlock	Mijoz rejimi — sotish uchun qulfni oching
 icon_new_selected	Belgi: yangi fayl tanlandi — Brendni saqlashni bosing
 icon_custom	Belgi: oʻz joy belgisi
 icon_default	Belgi: Kumkaj belgisi (andoza) — oʻzingiznikini tanlang

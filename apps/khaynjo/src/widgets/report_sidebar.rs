@@ -502,23 +502,8 @@ impl Widget for SidebarNavList {
                     let item = list.item(cx, item_id, id!(Item));
                     let label = {
                         let lang = app_state().lock().unwrap().locale.language.clone();
-                        match tab {
-                            NavTab::Books => locale::t(&lang, "books"),
-                            NavTab::Sell => locale::t(&lang, "sell"),
-                            NavTab::Buy => locale::t(&lang, "buy"),
-                            NavTab::Menu => locale::t(&lang, "sidebar_menu_items"),
-                            NavTab::Floor => locale::t(&lang, "floor"),
-                            NavTab::Kitchen => locale::t(&lang, "kitchen"),
-                            NavTab::Sales => locale::t(&lang, "sales"),
-                            NavTab::DayClose => locale::t(&lang, "day_close"),
-                            NavTab::Reports => locale::t(&lang, "nav_reports"),
-                            NavTab::Inventory => locale::t(&lang, "inventory"),
-                            NavTab::Branches => locale::t(&lang, "branches"),
-                            NavTab::Credit => locale::t(&lang, "credit"),
-                            NavTab::Team => locale::t(&lang, "team"),
-                            NavTab::Settings => locale::t(&lang, "nav_settings"),
-                            NavTab::Lock => locale::t(&lang, "nav_lock"),
-                        }
+                        // Shown to shop admins only, so Team reads "Team & PINs".
+                        locale::t(&lang, nav_tab_label_key(tab, false))
                     };
                     let visible = nav_tab_is_visible(&hidden, tab);
                     let always = nav_tab_always_visible(tab);

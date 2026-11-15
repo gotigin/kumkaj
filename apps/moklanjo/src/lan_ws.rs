@@ -20,7 +20,20 @@ use tungstenite::protocol::{Role, WebSocket};
 use tungstenite::{Error as WsError, Message};
 
 const PING_EVERY: Duration = Duration::from_secs(15);
-const SUB_QUEUE: usize = 8;
+/// Longest one read on the live socket waits before the loop looks at what
+/// it has to send. A loop parked in a read sends nothing, so this is the
+/// most a device's write, or the Server's news, waits to go out. Both loops
+/// used to read for 25–35 s: an idle tablet's write sat until the Server
+/// next spoke (24 s measured in Khaynjo, 2026-11-14;
+/// `the_live_socket_carries_a_write_and_the_news_at_once`).
+const POLL: Duration = Duration::from_millis(100);
+/// Both sides ping every [`PING_EVERY`]: nothing heard for this long and the
+/// other side is gone (Wi‑Fi dropped without a goodbye) — close, so the
+/// phone falls back to `/wait` and reconnects instead of trusting a dead link.
+const SILENT_MAX: Duration = Duration::from_secs(45);
+/// Deltas waiting for one socket. Full → that socket is dropped and its
+/// phone reconnects; a write's paper wait holds a socket's loop for seconds.
+const SUB_QUEUE: usize = 64;
 
 /// One domain-aware books patch. Absent fields are unchanged on the Client.
 #[derive(Clone, Debug, Default, Serialize, Deserialize)]
@@ -61,6 +74,10 @@ pub struct SyncPatch {
     pub tax_rates: Option<Vec<crate::domain::TaxRate>>,
     #[serde(default, skip_serializing_if = "Option::is_none")]
     pub server_id: Option<String>,
+    /// The shop's settings (`store::SHOP_PREF_KEYS`) when any moved — an
+    /// Owner's change reaches every live device at once.
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub shop_prefs: Option<std::collections::BTreeMap<String, Option<String>>>,
 }
 
 impl SyncPatch {
@@ -85,6 +102,7 @@ impl SyncPatch {
             fiscal: Some(snap.fiscal.clone()),
             tax_rates: Some(snap.tax_rates.clone()),
             server_id: Some(snap.server_id.clone()),
+            shop_prefs: snap.shop_prefs.clone(),
         }
     }
 
@@ -144,6 +162,9 @@ impl SyncPatch {
         if moved(&before.server_id, &after.server_id) {
             p.server_id = Some(after.server_id.clone());
         }
+        if moved(&before.shop_prefs, &after.shop_prefs) {
+            p.shop_prefs = after.shop_prefs.clone();
+        }
         p
     }
 
@@ -169,6 +190,7 @@ impl SyncPatch {
             server_id: self.server_id.unwrap_or_default(),
             rev: self.rev,
             seq: self.seq,
+            shop_prefs: self.shop_prefs,
         })
     }
 }
@@ -220,6 +242,9 @@ pub fn apply_patch(store: &Store, patch: &SyncPatch) -> Result<(), String> {
         if let Some(today) = &patch.today {
             let out = patch.outstanding_credit_paise.unwrap_or(0);
             store.cache_server_day_totals(today, out)?;
+        }
+        if let Some(prefs) = &patch.shop_prefs {
+            store.apply_shop_prefs_from_sync(prefs)?;
         }
         Ok(())
     })
@@ -361,7 +386,7 @@ pub fn handle_upgrade(
     )
     .map_err(|e| e.to_string())?;
     stream.flush().map_err(|e| e.to_string())?;
-    let _ = stream.set_read_timeout(Some(PING_EVERY + Duration::from_secs(10)));
+    let _ = stream.set_read_timeout(Some(POLL));
     let _ = stream.set_write_timeout(Some(Duration::from_secs(15)));
     let mut ws = WebSocket::from_raw_socket(stream, Role::Server, None);
     let rx = subscribe();
@@ -395,6 +420,7 @@ pub fn handle_upgrade(
     }
 
     let mut last_ping = Instant::now();
+    let mut last_heard = Instant::now();
     loop {
         // Push queued broadcasts.
         loop {
@@ -414,7 +440,14 @@ pub fn handle_upgrade(
             }
             last_ping = Instant::now();
         }
-        match ws.read() {
+        if last_heard.elapsed() >= SILENT_MAX {
+            return Ok(());
+        }
+        let read = ws.read();
+        if read.is_ok() {
+            last_heard = Instant::now();
+        }
+        match read {
             Ok(Message::Text(text)) => {
                 if let Err(e) = handle_client_frame(
                     db_path,
@@ -540,6 +573,7 @@ pub fn client_watch_loop(
     http_req.push_str("\r\n");
 
     let mut stream = TcpStream::connect(host).map_err(|e| e.to_string())?;
+    // The handshake gets a real wait; the loop below reads in short polls.
     let _ = stream.set_read_timeout(Some(PING_EVERY + Duration::from_secs(20)));
     let _ = stream.set_write_timeout(Some(Duration::from_secs(15)));
     stream.write_all(http_req.as_bytes()).map_err(|e| e.to_string())?;
@@ -563,8 +597,13 @@ pub fn client_watch_loop(
     if !head.starts_with("HTTP/1.1 101") {
         return Err(format!("ws upgrade refused: {}", head.lines().next().unwrap_or("")));
     }
-    let mut ws = WebSocket::from_raw_socket(stream, Role::Client, None);
+    let _ = stream.set_read_timeout(Some(POLL));
+    // Bytes read past the head are the Server's first frames (welcome,
+    // need_sync) when they came in the same packet — hand them on.
+    let early = buf[head_end + 4..].to_vec();
+    let mut ws = WebSocket::from_partially_read(stream, early, Role::Client, None);
     let mut last_ping = Instant::now();
+    let mut last_heard = Instant::now();
     loop {
         while let Ok(frame) = outbox_rx.try_recv() {
             if ws.send(Message::Text(frame.into())).is_err() {
@@ -575,7 +614,14 @@ pub fn client_watch_loop(
             let _ = ws.send(Message::Text(r#"{"t":"ping"}"#.into()));
             last_ping = Instant::now();
         }
-        match ws.read() {
+        if last_heard.elapsed() >= SILENT_MAX {
+            return Err("ws silent".into());
+        }
+        let read = ws.read();
+        if read.is_ok() {
+            last_heard = Instant::now();
+        }
+        match read {
             Ok(Message::Text(text)) => {
                 let v: serde_json::Value = match serde_json::from_str(text.as_ref()) {
                     Ok(v) => v,

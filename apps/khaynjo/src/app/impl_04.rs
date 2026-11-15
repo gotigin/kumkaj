@@ -4,46 +4,23 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
         let s = |key: &str| locale::t(&lang, key);
         // Short chrome labels for bottom chips + rail (wrap, no ellipsis).
         // Page titles stay long (`items` = "Menu & items"); chrome uses `nav_items`.
-        let floor = s("floor");
-        let kitchen = s("kitchen");
-        let books = s("books");
-        let sell = s("sell");
-        let buy = s("buy");
-        let rates = s("nav_items");
-        let sales = s("sales");
-        let day_close = s("day_close");
-        let reports = s("nav_reports");
-        let inventory = s("inventory");
-        let branches = s("branches");
-        let credit = s("credit");
-        let team = s("team");
-        let settings = s("nav_settings");
-        let lock = s("nav_lock");
         // Slots pack preference + rights (must match paint_nav_tabs).
         let order = current_nav_chrome_order();
-        let label_for = |tab: NavTab| -> &str {
+        let my_pin_only = {
+            let st = app_state().lock().unwrap();
+            st.session.as_ref().is_some_and(|m| !m.can_access_settings())
+        };
+        let label_for = |tab: NavTab| -> String {
             match tab {
-                NavTab::Books => &books,
-                NavTab::Sell => &sell,
-                NavTab::Buy => &buy,
-                NavTab::Menu => &rates,
-                NavTab::Floor => &floor,
-                NavTab::Kitchen => &kitchen,
-                NavTab::Sales => &sales,
-                NavTab::DayClose => &day_close,
-                NavTab::Reports => &reports,
-                NavTab::Inventory => &inventory,
-                NavTab::Branches => &branches,
-                NavTab::Credit => &credit,
-                NavTab::Team => &team,
-                NavTab::Settings => &settings,
-                NavTab::Lock => &lock,
+                // Chrome keeps its short Menu label (`nav_items`).
+                NavTab::Menu => s("nav_items"),
+                _ => s(nav_tab_label_key(tab, my_pin_only)),
             }
         };
         for pairs in [self.bottom_nav_pairs(), self.rail_nav_pairs()] {
             for (slot, (idle, on)) in pairs.iter().enumerate() {
                 if let Some(tab) = order.get(slot).copied() {
-                    let caption = nav_tab_caption(tab, label_for(tab));
+                    let caption = nav_tab_caption(tab, &label_for(tab));
                     self.ui.button(cx, idle).set_text(cx, &caption);
                     self.ui.button(cx, on).set_text(cx, &caption);
                 }
@@ -261,15 +238,6 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
             help.set_nav_icon(cx, NavTab::Branches);
             help.set_tip(&plain_display_text(&s("branch_export_help")));
         }
-        {
-            let help = self.ui.widget(cx, ids!(sidebar_settings_help)).as_info_help();
-            help.set_title(cx, &s("sidebar_settings"));
-            help.set_nav_icon(cx, NavTab::Settings);
-            help.set_tip(&plain_display_text(&s("sidebar_settings_help")));
-        }
-        self.ui
-            .button(cx, ids!(sidebar_settings_back))
-            .set_text(cx, &s("back"));
         self.ui
             .button(cx, ids!(sidebar_enable_all))
             .set_text(cx, &s("sidebar_enable_all"));
@@ -409,7 +377,6 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
             Screen::Credit => ids!(credit_screen),
             Screen::Team => ids!(team_screen),
             Screen::Settings => ids!(settings_screen),
-            Screen::SidebarSettings => ids!(sidebar_settings_screen),
             Screen::DayClose => ids!(day_close_screen),
             Screen::Reports => ids!(reports_screen),
             Screen::Inventory => ids!(inventory_screen),
@@ -512,9 +479,37 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
         true
     }
 
+    /// Set up Khaynjo opens with the shop's saved names in its fields, so an
+    /// app template's name ("Rajdhani") shows there to keep or replace —
+    /// never an empty field under a header that already says it (owner,
+    /// 2026-11-14). Only on arrival: typing is never overwritten.
+    fn prefill_onboard_names(&mut self, cx: &mut Cx) {
+        let (title, org) = {
+            let st = app_state().lock().unwrap();
+            let org = st
+                .store
+                .as_ref()
+                .and_then(|s| s.saved_org_name().ok())
+                .unwrap_or_default();
+            (st.venue_title.clone(), org)
+        };
+        for (id, value) in [(ids!(onboard_venue_input), title), (ids!(onboard_org_input), org)] {
+            let field = self.ui.text_input(cx, id);
+            if !cx.has_key_focus(field.area()) {
+                field.set_text(cx, &value);
+            }
+        }
+    }
+
     fn show_screen(&mut self, cx: &mut Cx, screen: Screen) {
         let _span = stall_span("show_screen");
-        if sel_screen_changed(screen) {
+        // Leaving Settings mid-edit: Bill & KOT format edits are written now.
+        self.flush_format_autosave(cx);
+        let screen_changed = sel_screen_changed(screen);
+        if screen_changed && screen == Screen::Onboard {
+            self.prefill_onboard_names(cx);
+        }
+        if screen_changed {
             self.clear_page_selection(cx);
             // A field on the screen we left keeps key focus while hidden:
             // `text_field_has_focus` then holds sync_chrome in its typing
@@ -537,10 +532,6 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
             (ids!(credit_screen), screen == Screen::Credit),
             (ids!(team_screen), screen == Screen::Team),
             (ids!(settings_screen), screen == Screen::Settings),
-            (
-                ids!(sidebar_settings_screen),
-                screen == Screen::SidebarSettings,
-            ),
             (ids!(day_close_screen), screen == Screen::DayClose),
             (ids!(reports_screen), screen == Screen::Reports),
             (ids!(inventory_screen), screen == Screen::Inventory),
@@ -777,6 +768,20 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
             (ids!(nav_credit), ids!(nav_credit_on)),
             (ids!(nav_settings), ids!(nav_settings_on)),
             (ids!(nav_lock), ids!(nav_lock_on)),
+            (ids!(nav_x14), ids!(nav_x14_on)),
+            (ids!(nav_x15), ids!(nav_x15_on)),
+            (ids!(nav_x16), ids!(nav_x16_on)),
+            (ids!(nav_x17), ids!(nav_x17_on)),
+            (ids!(nav_x18), ids!(nav_x18_on)),
+            (ids!(nav_x19), ids!(nav_x19_on)),
+            (ids!(nav_x20), ids!(nav_x20_on)),
+            (ids!(nav_x21), ids!(nav_x21_on)),
+            (ids!(nav_x22), ids!(nav_x22_on)),
+            (ids!(nav_x23), ids!(nav_x23_on)),
+            (ids!(nav_x24), ids!(nav_x24_on)),
+            (ids!(nav_x25), ids!(nav_x25_on)),
+            (ids!(nav_x26), ids!(nav_x26_on)),
+            (ids!(nav_x27), ids!(nav_x27_on)),
         ]
     }
 
@@ -796,6 +801,20 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
             (ids!(rail_credit), ids!(rail_credit_on)),
             (ids!(rail_settings), ids!(rail_settings_on)),
             (ids!(rail_lock), ids!(rail_lock_on)),
+            (ids!(rail_x14), ids!(rail_x14_on)),
+            (ids!(rail_x15), ids!(rail_x15_on)),
+            (ids!(rail_x16), ids!(rail_x16_on)),
+            (ids!(rail_x17), ids!(rail_x17_on)),
+            (ids!(rail_x18), ids!(rail_x18_on)),
+            (ids!(rail_x19), ids!(rail_x19_on)),
+            (ids!(rail_x20), ids!(rail_x20_on)),
+            (ids!(rail_x21), ids!(rail_x21_on)),
+            (ids!(rail_x22), ids!(rail_x22_on)),
+            (ids!(rail_x23), ids!(rail_x23_on)),
+            (ids!(rail_x24), ids!(rail_x24_on)),
+            (ids!(rail_x25), ids!(rail_x25_on)),
+            (ids!(rail_x26), ids!(rail_x26_on)),
+            (ids!(rail_x27), ids!(rail_x27_on)),
         ]
     }
 
@@ -815,6 +834,20 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
             ids!(nav_credit_icon),
             ids!(nav_settings_icon),
             ids!(nav_lock_icon),
+            ids!(nav_x14_icon),
+            ids!(nav_x15_icon),
+            ids!(nav_x16_icon),
+            ids!(nav_x17_icon),
+            ids!(nav_x18_icon),
+            ids!(nav_x19_icon),
+            ids!(nav_x20_icon),
+            ids!(nav_x21_icon),
+            ids!(nav_x22_icon),
+            ids!(nav_x23_icon),
+            ids!(nav_x24_icon),
+            ids!(nav_x25_icon),
+            ids!(nav_x26_icon),
+            ids!(nav_x27_icon),
         ]
     }
 
@@ -834,6 +867,20 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
             ids!(rail_credit_icon),
             ids!(rail_settings_icon),
             ids!(rail_lock_icon),
+            ids!(rail_x14_icon),
+            ids!(rail_x15_icon),
+            ids!(rail_x16_icon),
+            ids!(rail_x17_icon),
+            ids!(rail_x18_icon),
+            ids!(rail_x19_icon),
+            ids!(rail_x20_icon),
+            ids!(rail_x21_icon),
+            ids!(rail_x22_icon),
+            ids!(rail_x23_icon),
+            ids!(rail_x24_icon),
+            ids!(rail_x25_icon),
+            ids!(rail_x26_icon),
+            ids!(rail_x27_icon),
         ]
     }
 
@@ -847,12 +894,16 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
         }
     }
 
-    /// Settings → Sidebar list icons: same load path as the rail, run
+    /// Settings' sidebar list icons: same load path as the rail, run
     /// from chrome sync (outside PortalList draw) so WebP textures are
     /// ready before the next paint.
     fn paint_sidebar_settings_icons(&mut self, cx: &mut Cx) {
-        if app_state().lock().unwrap().screen != Screen::SidebarSettings {
-            return;
+        // The list lives on the Settings hub (was its own Sidebar screen).
+        {
+            let st = app_state().lock().unwrap();
+            if st.screen != Screen::Settings || st.settings_panel.is_some() {
+                return;
+            }
         }
         let order = app_state().lock().unwrap().nav_order.clone();
         let list = self
@@ -882,6 +933,20 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
                 ids!(rail_credit_slot),
                 ids!(rail_settings_slot),
                 ids!(rail_lock_slot),
+                ids!(rail_x14_slot),
+                ids!(rail_x15_slot),
+                ids!(rail_x16_slot),
+                ids!(rail_x17_slot),
+                ids!(rail_x18_slot),
+                ids!(rail_x19_slot),
+                ids!(rail_x20_slot),
+                ids!(rail_x21_slot),
+                ids!(rail_x22_slot),
+                ids!(rail_x23_slot),
+                ids!(rail_x24_slot),
+                ids!(rail_x25_slot),
+                ids!(rail_x26_slot),
+                ids!(rail_x27_slot),
             ]
         } else {
             [
@@ -899,6 +964,20 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
                 ids!(nav_credit_slot),
                 ids!(nav_settings_slot),
                 ids!(nav_lock_slot),
+                ids!(nav_x14_slot),
+                ids!(nav_x15_slot),
+                ids!(nav_x16_slot),
+                ids!(nav_x17_slot),
+                ids!(nav_x18_slot),
+                ids!(nav_x19_slot),
+                ids!(nav_x20_slot),
+                ids!(nav_x21_slot),
+                ids!(nav_x22_slot),
+                ids!(nav_x23_slot),
+                ids!(nav_x24_slot),
+                ids!(nav_x25_slot),
+                ids!(nav_x26_slot),
+                ids!(nav_x27_slot),
             ]
         }
     }
@@ -909,7 +988,23 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
     /// them — that left forbidden tabs visible on Client / staff unlocks).
     fn paint_nav_tabs(&mut self, cx: &mut Cx, screen: Screen) {
         let order = current_nav_chrome_order();
-        let active = nav_tab_for(screen);
+        // A Settings section or Team on the bar lights up itself; otherwise
+        // its screen's peer (Settings).
+        let own = {
+            let mut st = app_state().lock().unwrap();
+            let own = match screen {
+                Screen::Settings => st.settings_panel.and_then(nav_tab_for_settings_panel),
+                Screen::Team => Some(NavTab::Team),
+                _ => None,
+            };
+            // Unlock brings this person back to the item now selected — a
+            // Settings section or Team too, whether or not it is on the bar.
+            if st.screen == screen {
+                st.remember_nav_tab(own.or_else(|| nav_tab_for(screen)));
+            }
+            own
+        };
+        let active = own.filter(|t| order.contains(t)).or_else(|| nav_tab_for(screen));
         for (rail, pairs) in [(false, self.bottom_nav_pairs()), (true, self.rail_nav_pairs())] {
             let wraps = self.nav_slot_wrappers(rail);
             for (slot, (idle, on)) in pairs.iter().enumerate() {
@@ -947,17 +1042,26 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
                         st.display_venue_title()
                     }
                 });
-            // Short server id beside the restaurant name (smaller sibling label).
-            // Client: the paired shop. Server: the open local books id.
+            // Short shop id beside the restaurant name (smaller sibling label):
+            // the shop's LAN id on every device — a Client shows the id it
+            // paired with, the Server its own (it showed its books folder
+            // id, so one shop read "(4f71d56e)" on the Server and
+            // "(81e13dca)" on its tablets — owner rule 2026-11-14: devices
+            // differ only in connecting). Books folder id only before books.
             let server_id_short = match st.device_role {
                 DeviceRole::Client => st
                     .store
                     .as_ref()
                     .and_then(|s| s.paired_server_id().ok().flatten()),
                 _ => st
-                    .data_base
+                    .store
                     .as_ref()
-                    .and_then(|base| local_servers::active_server_id(base).ok().flatten()),
+                    .and_then(|s| s.lan_server_id().ok())
+                    .or_else(|| {
+                        st.data_base
+                            .as_ref()
+                            .and_then(|base| local_servers::active_server_id(base).ok().flatten())
+                    }),
             }
             .map(|id| id.chars().take(8).collect::<String>())
             .filter(|id| !id.is_empty());
@@ -1424,6 +1528,15 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
         let landed = app_state().lock().unwrap().screen;
         *nav_measure().lock().unwrap() = Some((landed, Instant::now()));
         self.sync_chrome(cx);
+        // A Settings section nav item: its section, now that Settings is up.
+        let panel = {
+            let mut st = app_state().lock().unwrap();
+            let p = st.settings_panel_after_go.take();
+            p.filter(|_| st.screen == Screen::Settings)
+        };
+        if panel.is_some() {
+            self.open_settings_panel(cx, panel);
+        }
     }
 
     /// Settings hub vs one open panel (avoids one endless dump of every control).
@@ -1477,35 +1590,21 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
                 let help = self.ui.widget(cx, ids!(settings_hub_help)).as_info_help();
                 help.set_title(cx, &s("nav_settings"));
                 help.set_nav_icon(cx, NavTab::Settings);
-                help.set_tip(&plain_display_text(&s(if my_pin_only {
-                    "settings_hub_help_my_pin"
+                // One list of nav items now: how to open, order and show them.
+                let tip = if my_pin_only {
+                    s("settings_hub_help_my_pin")
                 } else {
-                    "settings_hub_help"
-                })));
+                    format!("{}\n\n{}", s("settings_hub_help"), s("sidebar_settings_help"))
+                };
+                help.set_tip(&plain_display_text(&tip));
             }
             self.ui
                 .button(cx, ids!(settings_detail_back))
                 .set_text(cx, &s("back"));
-            // Shop-admin hub rows — hide for Waiter/Kitchen/Cashier (My PIN only).
-            for (id, key) in [
-                (ids!(settings_hub_language), "settings_sec_language"),
-                (ids!(settings_hub_country), "settings_sec_country"),
-                (ids!(settings_hub_tills), "settings_sec_tills"),
-                (ids!(settings_hub_brand), "settings_sec_brand"),
-                (ids!(settings_hub_units), "settings_sec_units"),
-                (ids!(settings_hub_pickers), "settings_sec_pickers"),
-                (ids!(settings_hub_printers), "settings_sec_printers"),
-                (ids!(settings_hub_bill), "settings_sec_bill"),
-                (ids!(settings_hub_selling), "settings_sec_selling"),
-                (ids!(settings_hub_alerts), "settings_sec_alerts"),
-                (ids!(settings_hub_backup), "settings_sec_backup"),
-                (ids!(settings_hub_diag), "settings_sec_diag"),
-                (ids!(settings_hub_privacy), "settings_sec_privacy"),
-                (ids!(settings_hub_sidebar), "sidebar_settings"),
-            ] {
-                self.ui.button(cx, id).set_text(cx, &s(key));
-                self.ui.button(cx, id).set_visible(cx, shop);
-            }
+            // One list of nav items (sections and screens, owner 2026-11-15)
+            // for shop admins; staff who manage only their own PIN get that row.
+            self.ui.view(cx, ids!(settings_nav_bulk)).set_visible(cx, shop);
+            self.ui.widget(cx, ids!(sidebar_nav_list)).set_visible(cx, shop);
             self.ui.button(cx, ids!(settings_hub_team)).set_text(
                 cx,
                 &s(if my_pin_only {
@@ -1515,8 +1614,8 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
                 }),
             );
             self.ui
-                .button(cx, ids!(settings_hub_team))
-                .set_visible(cx, st.session.is_some());
+                .view(cx, ids!(settings_hub_team_row))
+                .set_visible(cx, my_pin_only);
             self.ui
                 .button(cx, ids!(station_remove))
                 .set_text(cx, &s("station_remove"));
@@ -1579,6 +1678,8 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
     /// Show one Settings section (or the hub with `None`). Lightweight — no
     /// full `sync_chrome` (that can freeze phones on Settings taps).
     fn open_settings_panel(&mut self, cx: &mut Cx, panel: Option<&'static str>) {
+        // Leaving Bill & KOT format: what was edited is written now.
+        self.flush_format_autosave(cx);
         {
             let mut st = app_state().lock().unwrap();
             st.settings_panel = panel;
@@ -1593,6 +1694,8 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
             .set_scroll_pos(cx, dvec2(0.0, 0.0));
         diag::breadcrumb("settings_panel", panel.unwrap_or("hub"));
         self.sync_settings_panels(cx);
+        // A section on the rail / bottom bar lights up itself (else Settings).
+        self.paint_nav_tabs(cx, Screen::Settings);
         // Heavy section paints only when that section is opened — not on every
         // Settings hub visit or every sync_chrome while Settings is open.
         if panel == Some("bill") {
@@ -2057,7 +2160,7 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
 
     /// Portrait / landscape and delivery for the bill and for the kitchen ticket.
     fn sync_job_drive_ui(&mut self, cx: &mut Cx) {
-        let (bill_land, bill_del, kot_land, kot_del, bill_n, open_bill) = {
+        let (bill_land, bill_del, kot_land, kot_del, bill_n) = {
             let st = app_state().lock().unwrap();
             let drive = |id: &str| {
                 st.printer_draft
@@ -2079,7 +2182,6 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
                 kot_land,
                 kot_del,
                 bill_n,
-                st.suggest_open == Some(SuggestField::BillPrinters),
             )
         };
         self.paint_choice_pair(
@@ -2141,11 +2243,8 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
         } else {
             app_t("bill_printers_dd_n").replace("{n}", &bill_n.to_string())
         };
-        let face = if open_bill {
-            app_t("pick_done_dd").replace("{label}", &label)
-        } else {
-            label
-        };
+        // A dropdown face is its label only; ComboField draws ˅ / ˄.
+        let face = label;
         self.ui.button(cx, ids!(bill_printers_dd)).set_text(cx, &face);
     }
 
@@ -2238,6 +2337,98 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
             self.ui.button(cx, on).set_text(cx, label);
             self.paint_choice_pair(cx, idle, on, mm == choice);
         }
+    }
+
+    /// Bill & KOT format save themselves (owner, 2026-11-14: "every change
+    /// is automatically saved … the user doesn't need to remember a button").
+    /// An edit marks its draft and restarts a short timer; the timer, a Bill
+    /// | KOT tab switch, or leaving the screen writes it — the same writes
+    /// the old Save buttons made. Errors (a Client out of reach) still show.
+    fn schedule_format_autosave(&mut self, cx: &mut Cx, bill: bool, kot: bool) {
+        let mut st = app_state().lock().unwrap();
+        st.format_save_bill |= bill;
+        st.format_save_kot |= kot;
+        if !st.format_save_timer.is_empty() {
+            cx.stop_timer(st.format_save_timer);
+        }
+        st.format_save_timer = cx.start_timeout(FORMAT_AUTOSAVE_SECS);
+    }
+
+    /// Write whatever Bill & KOT format edits are still waiting.
+    fn flush_format_autosave(&mut self, cx: &mut Cx) {
+        let (bill, kot) = {
+            let mut st = app_state().lock().unwrap();
+            if !st.format_save_timer.is_empty() {
+                cx.stop_timer(st.format_save_timer);
+                st.format_save_timer = Timer::empty();
+            }
+            (
+                std::mem::take(&mut st.format_save_bill),
+                std::mem::take(&mut st.format_save_kot),
+            )
+        };
+        let mut failed = None;
+        if bill && let Err(e) = self.save_bill_format(cx) {
+            failed = Some(e);
+        }
+        if kot && let Err(e) = self.save_kot_format(cx) {
+            failed = Some(e);
+        }
+        if bill || kot {
+            self.publish_print_formats();
+        }
+        if let Some(e) = failed {
+            self.set_status(cx, e);
+        }
+    }
+
+    /// The bill draft as the shop's bill format (header, FSSAI, footer, UPI,
+    /// line styles, print size).
+    fn save_bill_format(&mut self, cx: &mut Cx) -> Result<(), String> {
+        // The open line's typed value lands first.
+        self.read_bill_editor_into_draft(cx);
+        let mut st = app_state().lock().unwrap();
+        let fmt = st.bill_slip_draft.clone().clamped();
+        let (cur_vpa, cur_payee) = match st.store.as_ref() {
+            Some(store) => (
+                store.upi_vpa().unwrap_or_default(),
+                store.upi_payee().unwrap_or_default(),
+            ),
+            None => (String::new(), String::new()),
+        };
+        let upi_vpa = (fmt.upi_vpa.trim() != cur_vpa.trim()).then(|| fmt.upi_vpa.clone());
+        let upi_payee = (fmt.upi_payee.trim() != cur_payee.trim()).then(|| fmt.upi_payee.clone());
+        let em = fmt.style(print_share::BillStyleField::Items).size_em as f32;
+        st.printer_draft.set_standard_em(em);
+        st.books_op_light(BooksOp::SetBillFormat {
+            header: fmt.header_lines(),
+            fssai: fmt.fssai.clone(),
+            footer: fmt.footer.clone(),
+            upi_vpa,
+            upi_payee,
+            styles: fmt.to_json(),
+        })?;
+        st.books_op_light(BooksOp::SetStandardEm { em })?;
+        Ok(())
+    }
+
+    /// The KOT draft as the shop's kitchen-ticket format.
+    fn save_kot_format(&mut self, cx: &mut Cx) -> Result<(), String> {
+        let size_now = self.ui.text_input(cx, ids!(kot_field_size_input)).text();
+        let mut st = app_state().lock().unwrap();
+        // A size still being typed lands on the field it belongs to.
+        if let Ok(raw) = size_now.trim().parse::<u32>() {
+            let em = raw.clamp(print_share::KOT_EM_MIN, print_share::KOT_EM_MAX);
+            let kind = st.kot_edit_kind;
+            let field = st.kot_style_field;
+            st.kot_slip_draft.kind_styles.get_mut(kind).get_mut(field).size_em = em;
+            if field == print_share::KotStyleField::ItemQty {
+                st.kot_slip_draft.em = em;
+            }
+        }
+        let format = st.kot_slip_draft.clone();
+        st.books_op_light(BooksOp::SetKotFormat { format })?;
+        Ok(())
     }
 
     fn apply_content_width(&mut self, cx: &mut Cx, mm: u32) {
@@ -2611,114 +2802,26 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
                 self.paint_choice_pair(cx, ids!(bill_item_sep_on), ids!(bill_item_sep_on_on), draft.item_col_sep);
                 self.paint_choice_pair(cx, ids!(bill_item_sep_off), ids!(bill_item_sep_off_on), !draft.item_col_sep);
                 self.ui
-                    .widget(cx, ids!(h_bill_item_col_gap))
-                    .set_text(cx, &plain_display_text(&s("bill_item_col_gap")));
-                self.ui
-                    .widget(cx, ids!(h_bill_item_num_width))
-                    .set_text(cx, &plain_display_text(&s("bill_item_num_width")));
-                self.ui
-                    .widget(cx, ids!(h_bill_item_num_align))
-                    .set_text(cx, &plain_display_text(&s("bill_item_num_align")));
-                self.ui
-                    .widget(cx, ids!(h_bill_item_gap_em))
-                    .set_text(cx, &plain_display_text(&s("bill_item_gap_em")));
-                self.ui
-                    .widget(cx, ids!(h_bill_item_qty_min))
-                    .set_text(cx, &plain_display_text(&s("bill_item_qty_min")));
-                self.ui
-                    .widget(cx, ids!(h_bill_item_price_min))
-                    .set_text(cx, &plain_display_text(&s("bill_item_price_min")));
-                self.ui
-                    .widget(cx, ids!(h_bill_item_amount_min))
-                    .set_text(cx, &plain_display_text(&s("bill_item_amount_min")));
-                for (idle, on, key) in [
-                    (ids!(bill_item_gap_tight), ids!(bill_item_gap_tight_on), "bill_item_gap_tight"),
-                    (ids!(bill_item_gap_comfort), ids!(bill_item_gap_comfort_on), "bill_item_gap_comfort"),
-                    (ids!(bill_item_gap_wide), ids!(bill_item_gap_wide_on), "bill_item_gap_wide"),
-                    (ids!(bill_item_num_compact), ids!(bill_item_num_compact_on), "bill_item_num_compact"),
-                    (ids!(bill_item_num_comfort), ids!(bill_item_num_comfort_on), "bill_item_num_comfort"),
-                    (ids!(bill_item_num_wide), ids!(bill_item_num_wide_on), "bill_item_num_wide"),
-                    (ids!(bill_item_num_start), ids!(bill_item_num_start_on), "kot_align_start"),
-                    (ids!(bill_item_num_center), ids!(bill_item_num_center_on), "kot_align_center"),
-                    (ids!(bill_item_num_end), ids!(bill_item_num_end_on), "kot_align_end"),
-                ] {
-                    let t = s(key);
-                    self.ui.button(cx, idle).set_text(cx, &t);
-                    self.ui.button(cx, on).set_text(cx, &t);
-                }
-                let gap_preset = draft.item_col_gap_preset();
-                self.paint_choice_pair(
-                    cx,
-                    ids!(bill_item_gap_tight),
-                    ids!(bill_item_gap_tight_on),
-                    (gap_preset - print_share::BILL_COL_GAP_TIGHT).abs() < 0.01,
-                );
-                self.paint_choice_pair(
-                    cx,
-                    ids!(bill_item_gap_comfort),
-                    ids!(bill_item_gap_comfort_on),
-                    (gap_preset - print_share::BILL_COL_GAP_COMFORT).abs() < 0.01,
-                );
-                self.paint_choice_pair(
-                    cx,
-                    ids!(bill_item_gap_wide),
-                    ids!(bill_item_gap_wide_on),
-                    (gap_preset - print_share::BILL_COL_GAP_WIDE).abs() < 0.01,
-                );
-                let num_preset = draft.item_num_min_preset();
-                self.paint_choice_pair(
-                    cx,
-                    ids!(bill_item_num_compact),
-                    ids!(bill_item_num_compact_on),
-                    num_preset == print_share::BILL_NUM_MIN_COMPACT,
-                );
-                self.paint_choice_pair(
-                    cx,
-                    ids!(bill_item_num_comfort),
-                    ids!(bill_item_num_comfort_on),
-                    num_preset == print_share::BILL_NUM_MIN_COMFORT,
-                );
-                self.paint_choice_pair(
-                    cx,
-                    ids!(bill_item_num_wide),
-                    ids!(bill_item_num_wide_on),
-                    num_preset == print_share::BILL_NUM_MIN_WIDE,
-                );
-                self.paint_choice_pair(
-                    cx,
-                    ids!(bill_item_num_start),
-                    ids!(bill_item_num_start_on),
-                    draft.item_num_align == print_share::KotAlign::Start,
-                );
-                self.paint_choice_pair(
-                    cx,
-                    ids!(bill_item_num_center),
-                    ids!(bill_item_num_center_on),
-                    draft.item_num_align == print_share::KotAlign::Center,
-                );
-                self.paint_choice_pair(
-                    cx,
-                    ids!(bill_item_num_end),
-                    ids!(bill_item_num_end_on),
-                    draft.item_num_align == print_share::KotAlign::End,
-                );
-                let fmt_em = |val: f32| -> String {
-                    if (val - val.round()).abs() < 0.05 {
-                        format!("{}", val.round() as i32)
-                    } else {
-                        format!("{val:.2}")
-                    }
-                };
-                for (id, val) in [
-                    (ids!(bill_item_gap_em_input), draft.item_col_gap_em),
-                    (ids!(bill_item_qty_min_input), draft.item_qty_min_em),
-                    (ids!(bill_item_price_min_input), draft.item_price_min_em),
-                    (ids!(bill_item_amount_min_input), draft.item_amount_min_em),
-                ] {
-                    let input = self.ui.text_input(cx, id);
-                    if !cx.has_key_focus(input.area()) {
-                        input.set_text(cx, &fmt_em(val));
-                    }
+                    .widget(cx, ids!(bill_columns_help))
+                    .as_info_help()
+                    .set_tip(&plain_display_text(&s("slip_columns_help")));
+                if let Some(pick) = col_order
+                    .get(col_idx)
+                    .and_then(|id| print_share::BillItemCol::from_id(id))
+                {
+                    let col = *draft.item_columns().get(pick);
+                    self.paint_slip_column_editor(
+                        cx,
+                        [ids!(h_bill_col_width), ids!(h_bill_col_start), ids!(h_bill_col_end), ids!(h_bill_col_align)],
+                        [ids!(bill_col_width_input), ids!(bill_col_start_input), ids!(bill_col_end_input)],
+                        [
+                            (ids!(bill_col_align_start), ids!(bill_col_align_start_on)),
+                            (ids!(bill_col_align_center), ids!(bill_col_align_center_on)),
+                            (ids!(bill_col_align_end), ids!(bill_col_align_end_on)),
+                        ],
+                        col,
+                        &s,
+                    );
                 }
             }
         }
@@ -3101,28 +3204,16 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
             .widget(cx, ids!(h_kot_preview))
             .set_text(cx, &plain_display_text(&s("kot_preview")));
         self.ui
-            .button(cx, ids!(kot_format_save))
-            .set_text(cx, &s("save_kot_format"));
-        self.ui
             .button(cx, ids!(kot_format_reset))
             .set_text(cx, &s("reset_kot_format"));
-        let (test_n, test_open) = {
-            let st = app_state().lock().unwrap();
-            (
-                st.test_printer_ids.len(),
-                st.suggest_open == Some(SuggestField::KotTestPrinters),
-            )
-        };
+        let test_n = app_state().lock().unwrap().test_printer_ids.len();
         let test_dd = if test_n == 0 {
             s("kot_test_printers_dd")
         } else {
             s("kot_test_printers_dd_n").replace("{n}", &test_n.to_string())
         };
-        let test_face = if test_open {
-            s("pick_done_dd").replace("{label}", &test_dd)
-        } else {
-            test_dd
-        };
+        // A dropdown face is its label only; ComboField draws ˅ / ˄.
+        let test_face = test_dd;
         self.ui
             .button(cx, ids!(kot_test_printers_dd))
             .set_text(cx, &test_face);
@@ -3310,104 +3401,41 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
             .set_visible(cx, qty_open);
         if qty_open {
             self.ui
-                .widget(cx, ids!(h_kot_item_col_gap))
-                .set_text(cx, &plain_display_text(&s("bill_item_col_gap")));
+                .widget(cx, ids!(h_kot_item_cols))
+                .set_text(cx, &plain_display_text(&s("slip_columns")));
             self.ui
-                .widget(cx, ids!(h_kot_item_qty_width))
-                .set_text(cx, &plain_display_text(&s("kot_item_qty_width")));
-            self.ui
-                .widget(cx, ids!(h_kot_item_num_align))
-                .set_text(cx, &plain_display_text(&s("kot_item_num_align")));
+                .widget(cx, ids!(kot_columns_help))
+                .as_info_help()
+                .set_tip(&plain_display_text(&s("slip_columns_help")));
             self.ui
                 .widget(cx, ids!(h_kot_item_hdr_item))
                 .set_text(cx, &plain_display_text(&s("bill_item_hdr_item")));
             self.ui
                 .widget(cx, ids!(h_kot_item_hdr_qty))
                 .set_text(cx, &plain_display_text(&s("bill_item_hdr_qty")));
-            self.ui
-                .widget(cx, ids!(h_kot_item_gap_em))
-                .set_text(cx, &plain_display_text(&s("bill_item_gap_em")));
-            self.ui
-                .widget(cx, ids!(h_kot_item_qty_min))
-                .set_text(cx, &plain_display_text(&s("bill_item_qty_min")));
-            for (idle, on, key) in [
-                (ids!(kot_item_gap_tight), ids!(kot_item_gap_tight_on), "bill_item_gap_tight"),
-                (ids!(kot_item_gap_comfort), ids!(kot_item_gap_comfort_on), "bill_item_gap_comfort"),
-                (ids!(kot_item_gap_wide), ids!(kot_item_gap_wide_on), "bill_item_gap_wide"),
-                (ids!(kot_item_num_compact), ids!(kot_item_num_compact_on), "bill_item_num_compact"),
-                (ids!(kot_item_num_comfort), ids!(kot_item_num_comfort_on), "bill_item_num_comfort"),
-                (ids!(kot_item_num_wide), ids!(kot_item_num_wide_on), "bill_item_num_wide"),
-                (ids!(kot_item_num_start), ids!(kot_item_num_start_on), "kot_align_start"),
-                (ids!(kot_item_num_center), ids!(kot_item_num_center_on), "kot_align_center"),
-                (ids!(kot_item_num_end), ids!(kot_item_num_end_on), "kot_align_end"),
+            let pick = app_state().lock().unwrap().kot_item_col_edit;
+            for (idle, on, key, col) in [
+                (ids!(kot_col_item), ids!(kot_col_item_on), "bill_item_name", print_share::KotItemCol::Item),
+                (ids!(kot_col_qty), ids!(kot_col_qty_on), "bill_item_qty", print_share::KotItemCol::Qty),
             ] {
                 let t = s(key);
                 self.ui.button(cx, idle).set_text(cx, &t);
                 self.ui.button(cx, on).set_text(cx, &t);
+                self.paint_choice_pair(cx, idle, on, pick == col);
             }
-            let gap_preset = draft.item_col_gap_preset();
-            self.paint_choice_pair(
+            let col = *draft.item_columns(edit_kind).get(pick);
+            self.paint_slip_column_editor(
                 cx,
-                ids!(kot_item_gap_tight),
-                ids!(kot_item_gap_tight_on),
-                (gap_preset - print_share::KOT_COL_GAP_TIGHT).abs() < 0.01,
+                [ids!(h_kot_col_width), ids!(h_kot_col_start), ids!(h_kot_col_end), ids!(h_kot_col_align)],
+                [ids!(kot_col_width_input), ids!(kot_col_start_input), ids!(kot_col_end_input)],
+                [
+                    (ids!(kot_col_align_start), ids!(kot_col_align_start_on)),
+                    (ids!(kot_col_align_center), ids!(kot_col_align_center_on)),
+                    (ids!(kot_col_align_end), ids!(kot_col_align_end_on)),
+                ],
+                col,
+                &s,
             );
-            self.paint_choice_pair(
-                cx,
-                ids!(kot_item_gap_comfort),
-                ids!(kot_item_gap_comfort_on),
-                (gap_preset - print_share::KOT_COL_GAP_COMFORT).abs() < 0.01,
-            );
-            self.paint_choice_pair(
-                cx,
-                ids!(kot_item_gap_wide),
-                ids!(kot_item_gap_wide_on),
-                (gap_preset - print_share::KOT_COL_GAP_WIDE).abs() < 0.01,
-            );
-            let qty_preset = draft.item_qty_min_preset();
-            self.paint_choice_pair(
-                cx,
-                ids!(kot_item_num_compact),
-                ids!(kot_item_num_compact_on),
-                (qty_preset - print_share::KOT_QTY_MIN_COMPACT).abs() < 0.01,
-            );
-            self.paint_choice_pair(
-                cx,
-                ids!(kot_item_num_comfort),
-                ids!(kot_item_num_comfort_on),
-                (qty_preset - print_share::KOT_QTY_MIN_COMFORT).abs() < 0.01,
-            );
-            self.paint_choice_pair(
-                cx,
-                ids!(kot_item_num_wide),
-                ids!(kot_item_num_wide_on),
-                (qty_preset - print_share::KOT_QTY_MIN_WIDE).abs() < 0.01,
-            );
-            self.paint_choice_pair(
-                cx,
-                ids!(kot_item_num_start),
-                ids!(kot_item_num_start_on),
-                draft.item_num_align == print_share::KotAlign::Start,
-            );
-            self.paint_choice_pair(
-                cx,
-                ids!(kot_item_num_center),
-                ids!(kot_item_num_center_on),
-                draft.item_num_align == print_share::KotAlign::Center,
-            );
-            self.paint_choice_pair(
-                cx,
-                ids!(kot_item_num_end),
-                ids!(kot_item_num_end_on),
-                draft.item_num_align == print_share::KotAlign::End,
-            );
-            let fmt_em = |val: f32| -> String {
-                if (val - val.round()).abs() < 0.05 {
-                    format!("{}", val.round() as i32)
-                } else {
-                    format!("{val:.2}")
-                }
-            };
             for (id, val) in [
                 (ids!(kot_item_hdr_item_input), draft.item_header_item.as_str()),
                 (ids!(kot_item_hdr_qty_input), draft.item_header_qty.as_str()),
@@ -3415,15 +3443,6 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
                 let input = self.ui.text_input(cx, id);
                 if !cx.has_key_focus(input.area()) {
                     input.set_text(cx, val);
-                }
-            }
-            for (id, val) in [
-                (ids!(kot_item_gap_em_input), draft.item_col_gap_em),
-                (ids!(kot_item_qty_min_input), draft.item_qty_min_em),
-            ] {
-                let input = self.ui.text_input(cx, id);
-                if !cx.has_key_focus(input.area()) {
-                    input.set_text(cx, &fmt_em(val));
                 }
             }
         }
@@ -3506,6 +3525,53 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
         }
     }
 
+    /// A column editor field that changed to a number (mm or px). Blank or
+    /// half-typed text is left alone until it reads as a number.
+    fn slip_column_input(&mut self, cx: &mut Cx, actions: &Actions, id: &[LiveId]) -> Option<f32> {
+        let raw = self.ui.text_input(cx, id).changed(actions)?;
+        raw.trim().replace(',', ".").parse::<f32>().ok().filter(|v| v.is_finite() && *v >= 0.0)
+    }
+
+    /// One item column's editor (Bill tab and each KOT kind): width in mm,
+    /// start and end space in px (inside the width), text alignment.
+    #[allow(clippy::too_many_arguments)]
+    fn paint_slip_column_editor(
+        &mut self,
+        cx: &mut Cx,
+        heads: [&[LiveId]; 4],
+        inputs: [&[LiveId]; 3],
+        aligns: [(&[LiveId], &[LiveId]); 3],
+        col: print_share::SlipColumn,
+        s: &dyn Fn(&str) -> String,
+    ) {
+        for (id, key) in heads
+            .iter()
+            .zip(["slip_col_width", "slip_col_start", "slip_col_end", "slip_col_align"])
+        {
+            self.ui.widget(cx, id).set_text(cx, &plain_display_text(&s(key)));
+        }
+        let width = if (col.width_mm - col.width_mm.round()).abs() < 0.05 {
+            format!("{}", col.width_mm.round() as i32)
+        } else {
+            format!("{:.1}", col.width_mm)
+        };
+        for (id, val) in inputs
+            .iter()
+            .zip([width, col.start_px.to_string(), col.end_px.to_string()])
+        {
+            let input = self.ui.text_input(cx, id);
+            if !cx.has_key_focus(input.area()) {
+                input.set_text(cx, &val);
+            }
+        }
+        for ((idle, on), align) in aligns.iter().zip(print_share::KotAlign::ALL) {
+            let t = s(align.locale_key());
+            self.ui.button(cx, idle).set_text(cx, &t);
+            self.ui.button(cx, on).set_text(cx, &t);
+            self.paint_choice_pair(cx, idle, on, col.align == align);
+        }
+    }
+
     fn paint_kot_align(
         &mut self,
         cx: &mut Cx,
@@ -3570,6 +3636,185 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
             self.go(cx, screen);
         } else {
             self.set_status(cx, "Not allowed for your role");
+        }
+    }
+
+    /// Open a chrome peer the way its sidebar / bottom-bar item does — rights
+    /// checked, its data refreshed. Settings' sidebar rows call it too
+    /// (owner, 2026-11-14: a row taps through to its screen).
+    fn open_nav_tab(&mut self, cx: &mut Cx, tab: NavTab) {
+        match Some(tab) {
+            Some(NavTab::Books) => {
+                let allowed = {
+                    let st = app_state().lock().unwrap();
+                    match st.session.as_ref() {
+                        Some(s) => s.is_owner() || s.can_access_sales() || s.can_access_items(),
+                        None => false,
+                    }
+                };
+                if !allowed {
+                    self.set_status(cx, "Not allowed");
+                } else {
+                    let result = (|| -> Result<(), String> {
+                        let mut st = app_state().lock().unwrap();
+                        st.refresh_books_overview()?;
+                        Ok(())
+                    })();
+                    if let Err(e) = result {
+                        self.set_status(cx, e);
+                    } else {
+                        // Drop leftover focus so the old Sell face cannot look selected.
+                        cx.set_key_focus(Area::Empty);
+                        self.go_peer(cx, Screen::Books);
+                    }
+                }
+            }
+            Some(NavTab::Sell) => {
+                cx.set_key_focus(Area::Empty);
+                self.go_peer_if_allowed(cx, Screen::Pos, |s| s.can_access_sell());
+            }
+            Some(NavTab::Buy) => {
+                cx.set_key_focus(Area::Empty);
+                self.go_peer_if_allowed(cx, Screen::Buy, |s| {
+                    s.can_access_inventory() || s.can_access_sales() || s.is_owner()
+                });
+            }
+            Some(NavTab::Menu) => {
+                cx.set_key_focus(Area::Empty);
+                self.go_peer_if_allowed(cx, Screen::Menu, |s| s.can_access_items());
+            }
+            Some(NavTab::Floor) => {
+                cx.set_key_focus(Area::Empty);
+                self.go_peer_if_allowed(cx, Screen::Floor, |s| {
+                    s.can_access_floor() || s.is_owner()
+                });
+            }
+            Some(NavTab::Kitchen) => {
+                cx.set_key_focus(Area::Empty);
+                self.go_peer_if_allowed(cx, Screen::Kitchen, |s| {
+                    s.can_access_kitchen() || s.is_owner()
+                });
+            }
+            Some(NavTab::Sales) => {
+                cx.set_key_focus(Area::Empty);
+                self.go_peer_if_allowed(cx, Screen::Sales, |s| s.can_access_sales());
+            }
+            Some(NavTab::Credit) => {
+                cx.set_key_focus(Area::Empty);
+                self.go_peer_if_allowed(cx, Screen::Credit, |s| s.can_access_credit());
+            }
+            Some(NavTab::Team) => {
+                // Team & PINs: manage staff, or only one's own PIN.
+                cx.set_key_focus(Area::Empty);
+                self.go_peer_if_allowed(cx, Screen::Team, |s| {
+                    s.can_manage_team() || s.can_change_own_credentials()
+                });
+            }
+            Some(t) if nav_tab_settings_panel(t).is_some() => {
+                // A Settings section: the Settings screen, then that section.
+                cx.set_key_focus(Area::Empty);
+                let allowed = app_state()
+                    .lock()
+                    .unwrap()
+                    .session
+                    .as_ref()
+                    .is_some_and(|s| s.can_access_settings());
+                if allowed {
+                    app_state().lock().unwrap().settings_panel_after_go = nav_tab_settings_panel(t);
+                }
+                self.go_peer_if_allowed(cx, Screen::Settings, |s| s.can_access_settings());
+            }
+            Some(NavTab::Settings) => {
+                cx.set_key_focus(Area::Empty);
+                self.go_peer_if_allowed(cx, Screen::Settings, |s| s.can_open_settings_shell());
+            }
+            Some(NavTab::DayClose) => {
+                let result = (|| -> Result<(), String> {
+                    let mut st = app_state().lock().unwrap();
+                    let actor = st.actor()?;
+                    if !actor.is_owner() && !actor.can_access_sales() {
+                        return Err("Not allowed".into());
+                    }
+                    st.refresh_day_close_text()?;
+                    Ok(())
+                })();
+                if let Err(e) = result {
+                    self.set_status(cx, e);
+                } else {
+                    self.go_peer(cx, Screen::DayClose);
+                }
+            }
+            Some(NavTab::Reports) => {
+                let result = (|| -> Result<(), String> {
+                    let mut st = app_state().lock().unwrap();
+                    let actor = st.actor()?;
+                    if !actor.is_owner() && !actor.can_access_sales() {
+                        return Err("Not allowed".into());
+                    }
+                    st.refresh_reports_facet()?;
+                    Ok(())
+                })();
+                if let Err(e) = result {
+                    self.set_status(cx, e);
+                } else {
+                    self.go_peer(cx, Screen::Reports);
+                }
+            }
+            Some(NavTab::Inventory) => {
+                let result = (|| -> Result<(), String> {
+                    let mut st = app_state().lock().unwrap();
+                    let actor = st.actor()?;
+                    if !actor.can_access_inventory() && !actor.is_owner() {
+                        return Err("Not allowed for your role".into());
+                    }
+                    st.refresh_inventory_text()?;
+                    Ok(())
+                })();
+                if let Err(e) = result {
+                    self.set_status(cx, e);
+                } else {
+                    self.go_peer(cx, Screen::Inventory);
+                }
+            }
+            Some(NavTab::Branches) => {
+                let result = (|| -> Result<(), String> {
+                    let mut st = app_state().lock().unwrap();
+                    let actor = st.actor()?;
+                    if !actor.can_access_branches() && !actor.is_owner() {
+                        return Err("Not allowed for your role".into());
+                    }
+                    st.refresh_branches_text()?;
+                    Ok(())
+                })();
+                if let Err(e) = result {
+                    self.set_status(cx, e);
+                } else {
+                    self.go_peer(cx, Screen::Branches);
+                }
+            }
+            Some(NavTab::Lock) => {
+                self.clear_undo_snackbar(cx);
+                let dest = {
+                    let mut st = app_state().lock().unwrap();
+                    if let Some(store) = st.store.as_ref() {
+                        let _ = store.set_active_session_staff_id(None);
+                    }
+                    st.session = None;
+                    st.clear_team_edit_selection();
+                    if st.suggest_open == Some(SuggestField::TeamKotStations) {
+                        st.suggest_open = None;
+                    }
+                    st.pin_buffer.clear();
+                    st.status = "Locked".into();
+                    if st.must_confirm_device_role {
+                        Screen::DeviceSetup
+                    } else {
+                        Screen::Lock
+                    }
+                };
+                self.go_peer(cx, dest);
+            }
+            Some(_) | None => {}
         }
     }
 

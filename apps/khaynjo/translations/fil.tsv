@@ -41,7 +41,7 @@ remove	Alisin
 removed_items	Inalis ang mga item sa menu
 removed_help	Ibinabalik ng Restore ang menu item sa menu nang eksakto tulad ng dati — presyo, larawan at kategorya. Ang aming istante ng mga pinggan ay hindi kailanman naaalis, kaya ang isang ulam ay palaging maaaring idagdag muli.
 restore_item	Ibalik
-empty_catalog	Wala pang ulam. Buksan ang Menu, magdagdag ng ulam (pangalan + presyo), pagkatapos ay kumuha ng order.
+empty_catalog	Wala pang ulam.
 total	Kabuuan
 cash	Cash
 upi	UPI
@@ -103,23 +103,14 @@ bill_item_qty	Dami
 bill_item_price	Presyo
 bill_item_amount	Halaga
 bill_item_note	Tala ng ulam
-bill_item_col_gap	Gap ng column
 bill_item_col_order	Pagkakasunod-sunod ng hanay
 bill_item_col_sep	Mga panuntunan sa hanay
-bill_item_gap_tight	masikip
-bill_item_gap_comfort	Komportable
-bill_item_gap_wide	Malapad
-bill_item_num_width	Mga hanay ng numero
-bill_item_num_compact	Siksik
-bill_item_num_comfort	Komportable
-bill_item_num_wide	Malapad
-bill_item_num_align	Naka-align ang mga numero
-bill_item_gap_em	Agwat (em)
-bill_item_qty_min	Min ng dami (em)
-bill_item_price_min	Presyo min (em)
-bill_item_amount_min	Halaga ng min (em)
-kot_item_qty_width	Dami ng column
-kot_item_num_align	Ayos ng dami
+slip_columns	Mga column
+slip_col_width	Lapad (mm)
+slip_col_start	Espasyo sa simula (px)
+slip_col_end	Espasyo sa dulo (px)
+slip_col_align	Pagkakahanay ng teksto
+slip_columns_help	Kasama sa lapad ng bawat column ang espasyo nito sa simula at dulo. Bumabalot ang teksto sa loob ng column nito; ang lumalampas sa lapad ng nilalaman ay napuputol, sa papel at sa preview.
 bill_total_qty_label	Kabuuang dami ng label
 bill_total_subtotal_label	Sub kabuuang label
 bill_total_grand_label	Malaking kabuuang label
@@ -221,7 +212,6 @@ sidebar_order_saved	Na-save ang order sa sidebar
 sidebar_visibility_saved	Na-save ang visibility ng sidebar
 amounts_hide	Magtago
 amounts_show	Ipakita
-printers_none_hint	Mag-save muna ng printer sa device na ito, pagkatapos ay idagdag ito sa Bill o sa kusina
 counter	Kontra
 dine_in	Kain sa loob
 takeaway	Dala-uwi
@@ -328,8 +318,6 @@ selected_language	Napili
 continue	Magpatuloy
 this_device	ANG DEVICE NA ITO
 device_use_q	Paano gagamitin ang device na ito?
-last_server_mode	Was Server — i-tap para magpatuloy
-last_client_mode	Was Client — i-tap para magpatuloy
 choose_server	Pumili ng server
 choose_server_hint	Magbukas ng kasalukuyang server, o lumikha ng isa para sa isa pang negosyo.
 create_new_server	Gumawa ng bagong server
@@ -391,7 +379,7 @@ attachments_last_expense	Mga Attachment (huling gastos)
 bank	Bangko
 bank_in	Pasok sa bangko
 bank_out	Cash out sa bangko
-bank_reconciliation	Bank reconciliation (lagyan ng check ang iyong bank statement)
+bank_reconciliation	Bank reconciliation
 bank_to_till	Bangko → hanggang
 book_add_dish	Ledger — magdagdag ng ulam / item sa menu
 book_opening_credit	Ledger — pagbubukas ng kredito
@@ -744,7 +732,6 @@ station_print_pick_first	Pumili muna ng istasyon ng kusina
 station_print_editing	Pag-edit ng mga printer para sa “{name}”
 station_vps_dd	Mga printer para sa istasyong ito
 station_vps_dd_n	{n} printer · i-tap para baguhin
-station_vps_empty	Wala pang mga printer — Hanapin ang mga ito sa ilalim ng Mga Setting → Mga Printer
 bill_printers_dd	Mga printer para sa bill
 bill_printers_dd_n	{n} printer para sa bill · i-tap para baguhin
 job_layout	Ayos
@@ -889,7 +876,7 @@ net_word	Neto
 offline_badge	WALANG LINYA
 optional_login_help	Opsyonal na pag-login (id + password). Nagtatakda ang may-ari nang isang beses; ang user lang ang makakapagpalit ng password sa ibang pagkakataon.
 or_unlock_login	O i-unlock gamit ang login id + password
-permission_preset	Trabaho (nagtatakda ng mga screen at pagkilos ng pera)
+permission_preset	Trabaho
 preset_help_khaynjo	Cashier: ibenta. Manager: ibenta + menu item + void/amend.
 product_locked_khaynjo	Khaynjo
 product_only_khaynjo	Ang app na ito ay Khaynjo lamang — operating system ng restaurant. Ang ibang kalakalan ay nahaharap sa barko bilang hiwalay na Kumkaj na mga produkto.
@@ -961,10 +948,6 @@ pin_hint_paired	Extra hanggang paired — i-unlock para ibenta
 pin_hint_pair_first	Extra till — ipares muna sa shop device
 unlock_to_continue	I-unlock upang magpatuloy
 no_staff_yet	Wala pang staff — i-unlock bilang May-ari, pagkatapos ay Team
-status_server_set_pin	Server Mode — itakda ang May-ari PIN
-status_server_tills	Server Mode — maaaring sumali ang mga dagdag na till. I-unlock
-status_server_unlock	Server Mode — i-unlock bilang May-ari
-status_client_unlock	Client Mode — i-unlock para magbenta
 icon_new_selected	Icon: bagong file ang napili — i-tap ang I-save ang brand
 icon_custom	Icon: custom na marka ng lugar
 icon_default	Icon: Kumkaj mark (default) — pumili ng custom
@@ -1033,7 +1016,7 @@ book_kind_balance	Balanse sheet
 order_help	Mag-tap ng menu item para idagdag ito.
 floor_help	Mag-tap ng dining table para kunin o baguhin ang order. Ang mga kulay ay nagpapakita ng libre → nakaupo → kusina → handa → kumain → bill → bayad. Ang waitlist, reservation, at add-dining table ay nasa mga seksyon sa ibaba.
 kitchen_help	Mga tiket sa kusina (KOT), pinakabago ang huli. Magsimula → Handa → Tapos na, inilipat ang isang tiket. Ang mga tiket ay hindi kailanman nagpapakita ng mga presyo.
-kitchen_empty	Walang bukas na tiket. Isang KOT na ipinadala mula sa Order o Dining hall ang makikita rito.
+kitchen_empty	Walang bukas na tiket.
 add_a_table	Magdagdag ng hapag kainan
 add_station_heading	Magdagdag ng istasyon ng kusina
 categories_help	I-tap ang Gamitin upang i-file ang menu item sa itaas sa ilalim ng kategoryang iyon. Ang larawan ay nagbibigay sa kategorya ng isang larawan; kung walang isa ay ipinapakita nito ang mga inisyal nito.
@@ -1131,7 +1114,6 @@ bill_format_help	Naka-print sa ilalim ng pangalan ng iyong restaurant sa bawat b
 bill_header_ph	Address | telepono
 fssai_ph	FSSAI license no. (India)
 bill_footer_ph	Footer (hal. Salamat, bumisita muli)
-save_bill_format	I-save ang format ng bill
 reset_bill_format	I-reset sa default
 bill_format_reset	I-reset sa default ang format ng bill
 reset_kot_format	I-reset sa default
@@ -1201,13 +1183,11 @@ kot_copies_3	3
 kot_title_ph	Pamagat (blangko = KOT - ORDER SA KUSINA)
 kot_footer_ph	Tala sa kusina (opsyonal, walang presyo)
 kot_preview	Silipin
-save_kot_format	I-save ang KOT na format
 test_kot_format	Subukan ang pagsubok KOT
 test_kot_sent	Ipinadala ang preview ng ticket sa kusina
 test_bill_format	Subukin ang resibo
 test_bill_sent	Ipinadala ang preview ng bill
 test_print_no_printer	Walang printer para sa trabahong iyon — pumili ng isa sa screen na ito
-kot_format_saved	Na-save ang KOT format
 std_print	Laki ng pag-print ng bill
 std_print_help	Laki ng font para sa Standard Portrait at Landscape bill na mga trabaho sa mga OS / document printer (magpasok ng mga punto — hindi Maliit/Normal/Malaki). Parehong laki sa parehong oryentasyon. Ang mga sukat ng kitchen slip ay nasa tab na KOT.
 std_size_s	Maliit
@@ -1264,7 +1244,6 @@ new_items_head	Hindi pa naipadala
 price_ph	Presyo
 price_ph_gst_inside	Presyo ({tax} kasama)
 cancel_needs_table	Buksan ang order na ito mula sa screen ng Dining hall (isang hapag-kainan) upang kanselahin pagkatapos na magkaroon nito ang kusina — mananatili ang counter KOT sa ticket hanggang sa makatanggap ka ng bayad
-tax_rates_missing_hint	Walang {tax} rate sa mga pagkaing ito — sa Menu set Tax rate (kasama na sa mga presyo ang {tax} sa ilalim ng {tax} inclusive)
 taxable_value	Nabubuwisan na halaga
 gst_inside_price_note	({tax} kasama)
 start_with_template	Magsimula sa aming template ng menu
@@ -1318,9 +1297,7 @@ order_empty_pick	Walang laman ang order — i-tap ang Magdagdag ng mga pagkain s
 add_dishes	Magdagdag ng mga pinggan
 order_so_far	Sa order na ito: {n} · {total}
 no_dish_match	Walang ulam na tumutugma sa “{q}”
-pick_dishes_help	Mag-tap ng ulam para idagdag ito · pumili ng kategorya para paliitin ang listahan
 pick_done	Tapos na
-pick_done_dd	Tapos na · {label}
 printer_route_mode	Kung maraming printer sa lugar na ito
 printer_mode_first	Una na gumagana
 printer_mode_all	I-print sa lahat

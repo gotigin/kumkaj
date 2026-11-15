@@ -41,7 +41,7 @@ remove	Pašalinti
 removed_items	Pašalintos prekės
 removed_help	Atkūrimas grąžina prekę į meniu lygiai tokią, kokia buvo — kaina, nuotrauka ir kategorija. Mūsų patiekalų lentyna niekada nepašalinama, todėl patiekalą visada galima pridėti vėl.
 restore_item	Atkurti
-empty_catalog	Patiekalų dar nėra. Atidarykite Meniu, pridėkite patiekalą (pavadinimas + kaina), tada priimkite užsakymą.
+empty_catalog	Patiekalų dar nėra.
 total	Iš viso
 cash	Grynais
 upi	UPI
@@ -103,23 +103,14 @@ bill_item_qty	Kiekis
 bill_item_price	Kaina
 bill_item_amount	Suma
 bill_item_note	Patiekalo pastaba
-bill_item_col_gap	Stulpelių tarpas
 bill_item_col_order	Stulpelių tvarka
 bill_item_col_sep	Stulpelių linijos
-bill_item_gap_tight	Tanku
-bill_item_gap_comfort	Patogu
-bill_item_gap_wide	Plačiai
-bill_item_num_width	Skaičių stulpeliai
-bill_item_num_compact	Kompaktiška
-bill_item_num_comfort	Patogu
-bill_item_num_wide	Plačiai
-bill_item_num_align	Skaičių lygiavimas
-bill_item_gap_em	Tarpas (em)
-bill_item_qty_min	Min. kiekis (em)
-bill_item_price_min	Min. kaina (em)
-bill_item_amount_min	Min. suma (em)
-kot_item_qty_width	Kiekio stulpelis
-kot_item_num_align	Kiekio lygiavimas
+slip_columns	Stulpeliai
+slip_col_width	Plotis (mm)
+slip_col_start	Pradžios tarpas (px)
+slip_col_end	Pabaigos tarpas (px)
+slip_col_align	Teksto lygiuotė
+slip_columns_help	Kiekvieno stulpelio plotis apima jo pradžios ir pabaigos tarpą. Tekstas laužomas savo stulpelio viduje; tai, kas išeina už turinio pločio, nukerpama – popieriuje ir peržiūroje.
 bill_total_qty_label	Bendro kiekio etiketė
 bill_total_subtotal_label	Tarpinės sumos etiketė
 bill_total_grand_label	Galutinės sumos etiketė
@@ -221,7 +212,6 @@ sidebar_order_saved	Šoninės juostos tvarka išsaugota
 sidebar_visibility_saved	Šoninės juostos matomumas išsaugotas
 amounts_hide	Slėpti
 amounts_show	Rodyti
-printers_none_hint	Pirmiausia išsaugokite spausdintuvą šiame įrenginyje, tada pridėkite jį prie Sąskaitos arba virtuvės
 counter	Kasa
 dine_in	Vietoje
 takeaway	Išsinešti
@@ -328,8 +318,6 @@ selected_language	Pasirinkta
 continue	Tęsti
 this_device	ŠIS ĮRENGINYS
 device_use_q	Kaip bus naudojamas šis įrenginys?
-last_server_mode	Buvo Serveris — bakstelėkite, kad tęstumėte
-last_client_mode	Buvo Klientas — bakstelėkite, kad tęstumėte
 choose_server	Pasirinkite serverį
 choose_server_hint	Atidarykite esamą serverį arba sukurkite kitam verslui.
 create_new_server	Sukurti naują serverį
@@ -391,7 +379,7 @@ attachments_last_expense	Priedai (paskutinė išlaida)
 bank	Bankas
 bank_in	Į banką
 bank_out	Iš banko
-bank_reconciliation	Banko suderinimas (pažymėkite pagal banko išrašą)
+bank_reconciliation	Banko suderinimas
 bank_to_till	Bankas → kasa
 book_add_dish	Knyga — pridėti patiekalą / prekę
 book_opening_credit	Knyga — pradinis kreditas
@@ -744,7 +732,6 @@ station_print_pick_first	Pirmiausia pasirinkite virtuvės stotį
 station_print_editing	Redaguojami „{name}“ spausdintuvai
 station_vps_dd	Šios stoties spausdintuvai
 station_vps_dd_n	{n} spausdintuvas(-ai) · bakstelėkite, kad pakeistumėte
-station_vps_empty	Spausdintuvų dar nėra — raskite juos Nustatymai → Spausdintuvai
 bill_printers_dd	Sąskaitos spausdintuvai
 bill_printers_dd_n	{n} spausdintuvas(-ai) sąskaitai · bakstelėkite, kad pakeistumėte
 job_layout	Išdėstymas
@@ -889,7 +876,7 @@ net_word	Grynasis
 offline_badge	NEPRISIJUNGĘS
 optional_login_help	Nebūtinas prisijungimas (id + slaptažodis). Savininkas nustato vieną kartą; vėliau slaptažodį gali keisti tik naudotojas.
 or_unlock_login	Arba atrakinkite prisijungimo id + slaptažodžiu
-permission_preset	Darbas (nustato ekranus ir pinigų veiksmus)
+permission_preset	Darbas
 preset_help_khaynjo	Kasininkas: parduoda. Vadovas: pardavimas + prekės + anuliavimas/taisymas.
 product_locked_khaynjo	Khaynjo
 product_only_khaynjo	Ši programa yra tik Khaynjo — restorano operacinė sistema. Kitos prekybos sąsajos pateikiamos kaip atskiri Kumkaj produktai.
@@ -961,10 +948,6 @@ pin_hint_paired	Papildoma kasa susieta — atrakinkite, kad parduotumėte
 pin_hint_pair_first	Papildoma kasa — pirmiausia susiekite su parduotuvės įrenginiu
 unlock_to_continue	Atrakinkite, kad tęstumėte
 no_staff_yet	Darbuotojų dar nėra — atrakinkite kaip Savininkas, tada Komanda
-status_server_set_pin	Serverio režimas — nustatykite Savininko PIN
-status_server_tills	Serverio režimas — papildomos kasos gali prisijungti. Atrakinkite
-status_server_unlock	Serverio režimas — atrakinkite kaip Savininkas
-status_client_unlock	Kliento režimas — atrakinkite, kad parduotumėte
 icon_new_selected	Piktograma: pasirinktas naujas failas — bakstelėkite Išsaugoti prekės ženklą
 icon_custom	Piktograma: pasirinktinis vietos ženklas
 icon_default	Piktograma: Kumkaj ženklas (numatytasis) — pasirinkite savo
@@ -1033,7 +1016,7 @@ book_kind_balance	Balansas
 order_help	Bakstelėkite prekę, kad pridėtumėte.
 floor_help	Bakstelėkite stalą, kad paimtumėte arba pakeistumėte užsakymą. Spalvos rodo laisvas → sėdi → virtuvė → paruošta → valgo → sąskaita → apmokėta. Laukiančiųjų sąrašas, rezervacijos ir stalų pridėjimas yra skyriuose žemiau.
 kitchen_help	Virtuvės lapeliai (KOT), naujausi pabaigoje. Pradėti → Paruošta → Atlikta pastumia lapelį. Lapeliai niekada nerodo kainų.
-kitchen_empty	Nėra atvirų lapelių. Iš Užsakymo arba Salės išsiųstas KOT pasirodo čia.
+kitchen_empty	Nėra atvirų lapelių.
 add_a_table	Pridėti stalą
 add_station_heading	Pridėti virtuvės stotį
 categories_help	Bakstelėkite Naudoti, kad prekę viršuje įrašytumėte į tą kategoriją. Nuotrauka duoda kategorijai paveikslą; be jos rodomi inicialai.
@@ -1131,7 +1114,6 @@ bill_format_help	Spausdinama po restorano pavadinimu kiekvienoje sąskaitoje. Ei
 bill_header_ph	Adresas | telefonas
 fssai_ph	FSSAI licencijos nr. (Indija)
 bill_footer_ph	Poraštė (pvz. Ačiū, apsilankykite dar)
-save_bill_format	Išsaugoti sąskaitos formatą
 reset_bill_format	Atstatyti numatytąjį
 bill_format_reset	Sąskaitos formatas atstatytas į numatytąjį
 reset_kot_format	Atstatyti numatytąjį
@@ -1201,13 +1183,11 @@ kot_copies_3	3
 kot_title_ph	Antraštė (tuščia = KOT - KITCHEN ORDER)
 kot_footer_ph	Virtuvės pastaba (nebūtina, be kainų)
 kot_preview	Peržiūra
-save_kot_format	Išsaugoti KOT formatą
 test_kot_format	Bandomasis KOT
 test_kot_sent	Virtuvės lapelio peržiūra išsiųsta
 test_bill_format	Bandomoji sąskaita
 test_bill_sent	Sąskaitos peržiūra išsiųsta
 test_print_no_printer	Tai užduočiai nėra spausdintuvo — pasirinkite vieną šiame ekrane
-kot_format_saved	KOT formatas išsaugotas
 std_print	Sąskaitos spausdinimo dydis
 std_print_help	Šrifto dydis standartinėms stačioms ir gulsčioms sąskaitos užduotims OS / dokumentų spausdintuvuose (įveskite punktus — ne Mažas/Įprastas/Didelis). Tas pats dydis abiejose padėtyse. Virtuvės lapelio dydžiai yra KOT kortelėje.
 std_size_s	Mažas
@@ -1264,7 +1244,6 @@ new_items_head	Dar neišsiųsta
 price_ph	Kaina
 price_ph_gst_inside	Kaina ({tax} įskaičiuota)
 cancel_needs_table	Atšaukimui po to, kai virtuvė turi, atidarykite šį užsakymą iš Salės (stalo) — kasos KOT lieka lapelyje, kol priimate mokėjimą
-tax_rates_missing_hint	Šiems patiekalams nėra {tax} tarifo — Meniu nustatykite Mokesčio tarifą (kainos jau įtraukia {tax} skiltyje {tax} įskaičiuota)
 taxable_value	Apmokestinamoji vertė
 gst_inside_price_note	({tax} įskaičiuota)
 start_with_template	Pradėti nuo mūsų meniu šablono
@@ -1318,9 +1297,7 @@ order_empty_pick	Užsakymas tuščias — bakstelėkite Pridėti patiekalus vir�
 add_dishes	Pridėti patiekalus
 order_so_far	Šiame užsakyme: {n} · {total}
 no_dish_match	Nėra patiekalo, atitinkančio „{q}“
-pick_dishes_help	Bakstelėkite patiekalą, kad pridėtumėte · rinkitės kategoriją, kad susiaurintumėte sąrašą
 pick_done	Atlikta
-pick_done_dd	Atlikta · {label}
 printer_route_mode	Jei šioje vietoje yra keli spausdintuvai
 printer_mode_first	Pirmas, kuris veikia
 printer_mode_all	Spausdinti visuose

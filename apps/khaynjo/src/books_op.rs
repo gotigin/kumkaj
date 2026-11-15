@@ -205,6 +205,11 @@ pub enum BooksOp {
         login_id: String,
         password: String,
     },
+    /// The first PIN for someone who has none (app template team).
+    SetFirstStaffPin {
+        staff_id: String,
+        pin: String,
+    },
     DeactivateStaff {
         staff_id: String,
         name: String,
@@ -414,6 +419,13 @@ pub enum BooksOp {
     SetKotAutoPrint {
         on: bool,
     },
+    /// Sidebar show/hide and order (CSV of nav keys). The shop's: every
+    /// device shows the same rail; role rights still hide what a person may
+    /// not open. A Client sends it here instead of writing its own copy.
+    SetNavLayout {
+        hidden: String,
+        order: String,
+    },
     /// Bill print size (Standard Portrait/Landscape em) — shop printers.json on Server.
     SetStandardEm {
         em: f32,
@@ -479,6 +491,7 @@ impl BooksOp {
             Self::SetReorder { .. } => "Change reorder levels",
             Self::HireStaff { .. } => "Add staff",
             Self::SetStaffLogin { .. } => "Change staff logins",
+            Self::SetFirstStaffPin { .. } => "Set a first PIN",
             Self::DeactivateStaff { .. } => "Remove staff",
             Self::RenameStaff { .. } => "Rename staff",
             Self::ApplyStaffConfig { .. } => "Copy staff setup",
@@ -525,6 +538,7 @@ impl BooksOp {
             Self::SetFrequent { .. } => "Frequent items settings",
             Self::SetVenueBrand { .. } | Self::ClearVenueIcon => "Change in-app brand",
             Self::SetKotAutoPrint { .. } => "Change KOT auto-print",
+            Self::SetNavLayout { .. } => "Change sidebar",
             Self::SetStandardEm { .. } => "Change the bill print size",
             Self::SetContentWidth { .. } => "Change the content width",
             Self::PrintTestPage { .. } => "Print a test page",
@@ -583,6 +597,7 @@ impl BooksOp {
             Self::SetReorder { .. } => "Reorder level saved".into(),
             Self::HireStaff { name, .. } => format!("Added {}", name.trim()),
             Self::SetStaffLogin { .. } => "Login saved".into(),
+            Self::SetFirstStaffPin { .. } => "PIN saved".into(),
             Self::DeactivateStaff { name, .. } => format!("Removed {name}"),
             Self::RenameStaff { .. } => "Staff renamed".into(),
             Self::ApplyStaffConfig { .. } => "Staff setup copied".into(),
@@ -642,6 +657,7 @@ impl BooksOp {
             Self::ClearVenueIcon => "Icon cleared".into(),
             Self::SetKotAutoPrint { on: true } => "KOT auto-print on".into(),
             Self::SetKotAutoPrint { on: false } => "KOT auto-print off".into(),
+            Self::SetNavLayout { .. } => "Sidebar saved".into(),
             Self::SetStandardEm { .. } => "Bill print size saved".into(),
             Self::SetContentWidth { mm, kot: true } => format!("KOT content width {mm} mm"),
             Self::SetContentWidth { mm, kot: false } => format!("Bill content width {mm} mm"),
@@ -1117,6 +1133,10 @@ impl Store {
                 self.set_staff_login(&staff_id, &login_id, &password, actor)?;
                 Ok("Login saved".into())
             }
+            BooksOp::SetFirstStaffPin { staff_id, pin } => {
+                self.set_first_staff_pin(&staff_id, &pin, actor)?;
+                Ok("PIN saved".into())
+            }
             BooksOp::DeactivateStaff { staff_id, name } => {
                 self.deactivate_staff(&staff_id, actor)?;
                 Ok(format!("Removed {name}"))
@@ -1555,6 +1575,15 @@ impl Store {
                 } else {
                     "KOT auto-print off".into()
                 })
+            }
+            BooksOp::SetNavLayout { hidden, order } => {
+                if !actor.is_owner() && !actor.can_access_settings() {
+                    return Err("Not allowed to change the sidebar".into());
+                }
+                self.set_nav_hidden_csv(&hidden)?;
+                self.set_nav_order_csv(&order)?;
+                // No words of its own: the device says its (translated) line.
+                Ok(String::new())
             }
             BooksOp::SetStandardEm { em } => {
                 if !actor.is_owner() && !actor.can_access_settings() {

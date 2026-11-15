@@ -41,7 +41,7 @@ remove	Távolítsa el
 removed_items	Eltávolított elemek
 removed_help	A visszaállítás pontosan úgy helyezi vissza az elemet a menübe, ahogy volt – ár, fotó és kategória. Az edényes polcunkat soha nem távolítjuk el, így egy edényt mindig újra lehet rakni.
 restore_item	Visszaállítás
-empty_catalog	Még nincsenek edények. Nyissa meg a menüt, adjon hozzá egy ételt (név + ár), majd vegye fel a rendelést.
+empty_catalog	Még nincsenek edények.
 total	Összesen
 cash	Készpénz
 upi	UPI
@@ -103,23 +103,14 @@ bill_item_qty	Menny
 bill_item_price	Ár
 bill_item_amount	Összeg
 bill_item_note	Dish jegyzet
-bill_item_col_gap	Oszlop rés
 bill_item_col_order	Oszlopsorrend
 bill_item_col_sep	Oszlopszabályok
-bill_item_gap_tight	Feszes
-bill_item_gap_comfort	Kényelmes
-bill_item_gap_wide	Széles
-bill_item_num_width	Számoszlopok
-bill_item_num_compact	Kompakt
-bill_item_num_comfort	Kényelmes
-bill_item_num_wide	Széles
-bill_item_num_align	A számok igazodnak
-bill_item_gap_em	rés (em)
-bill_item_qty_min	Min. mennyiség (em)
-bill_item_price_min	Minimális ár (em)
-bill_item_amount_min	Minimum összeg (em)
-kot_item_qty_width	Mennyiség oszlop
-kot_item_num_align	Mennyiség igazítás
+slip_columns	Oszlopok
+slip_col_width	Szélesség (mm)
+slip_col_start	Kezdő térköz (px)
+slip_col_end	Záró térköz (px)
+slip_col_align	Szöveg igazítása
+slip_columns_help	Minden oszlop szélessége tartalmazza a kezdő és záró térközét. A szöveg az oszlopán belül tördelődik; ami túlnyúlik a tartalom szélességén, levágódik – papíron és az előnézetben is.
 bill_total_qty_label	Teljes mennyiség címke
 bill_total_subtotal_label	Részösszeg címke
 bill_total_grand_label	Grand total címke
@@ -221,7 +212,6 @@ sidebar_order_saved	Az oldalsáv sorrendje mentve
 sidebar_visibility_saved	Az oldalsáv láthatósága mentve
 amounts_hide	Elrejtés
 amounts_show	Megjelenítés
-printers_none_hint	Először mentsen el egy nyomtatót erre az eszközre, majd adja hozzá Billhez vagy egy konyhához
 counter	Számláló
 dine_in	Étkezzen be
 takeaway	Elvihető
@@ -328,8 +318,6 @@ selected_language	Kiválasztva
 continue	Folytatás
 this_device	EZ A KÉSZÜLÉK
 device_use_q	Hogyan fogják használni ezt a készüléket?
-last_server_mode	Volt szerver – érintse meg a folytatáshoz
-last_client_mode	Ügyfél volt – érintse meg a folytatáshoz
 choose_server	Válasszon egy szervert
 choose_server_hint	Nyisson meg egy meglévő szervert, vagy hozzon létre egyet egy másik vállalkozás számára.
 create_new_server	Új szerver létrehozása
@@ -391,7 +379,7 @@ attachments_last_expense	Mellékletek (utolsó költség)
 bank	Bank
 bank_in	Bank be
 bank_out	Bank ki
-bank_reconciliation	Banki egyeztetés (pipálja ki a bankszámlakivonaton)
+bank_reconciliation	Banki egyeztetés
 bank_to_till	Bank → pénztár
 book_add_dish	Könyv – étel/tétel hozzáadása
 book_opening_credit	Könyv — nyitó kredit
@@ -744,7 +732,6 @@ station_print_pick_first	Először válasszon egy konyhai állomást
 station_print_editing	Nyomtatók szerkesztése a következőhöz: „{name}”
 station_vps_dd	Nyomtatók ehhez az állomáshoz
 station_vps_dd_n	{n} nyomtatók · érintse meg a módosításhoz
-station_vps_empty	Még nincsenek nyomtatók — Keresse meg őket a Beállítások → Nyomtatók alatt
 bill_printers_dd	Nyomtatók a számlához
 bill_printers_dd_n	{n} nyomtatók a számlához · érintse meg a módosításhoz
 job_layout	Elrendezés
@@ -889,7 +876,7 @@ net_word	Nettó
 offline_badge	OFFLINE
 optional_login_help	Opcionális bejelentkezés (azonosító + jelszó). A tulajdonos egyszer állítja be; csak a felhasználó módosíthatja később a jelszavát.
 or_unlock_login	Vagy oldja fel a bejelentkezési azonosítóval + jelszóval
-permission_preset	Munka (képernyők beállítása és pénzműveletek)
+permission_preset	Munka
 preset_help_khaynjo	Pénztáros: eladó. Menedzser: eladás + tételek + érvénytelenség/módosítás.
 product_locked_khaynjo	Khaynjo
 product_only_khaynjo	Ez az alkalmazás csak Khaynjo – éttermi operációs rendszer. A többi kereskedelmi arc külön Kumkaj termékként kerül szállításra.
@@ -961,10 +948,6 @@ pin_hint_paired	Extra ig párosítva – oldja fel az eladáshoz
 pin_hint_pair_first	Extra till — először párosítsa a bolti eszközt
 unlock_to_continue	A folytatáshoz oldja fel a zárolást
 no_staff_yet	Még nincs személyzet – oldja fel tulajdonosként, majd csapatként
-status_server_set_pin	Szerver mód — a tulajdonos beállítása PIN
-status_server_tills	Szerver mód – extra kasszák csatlakozhatnak. Oldja fel
-status_server_unlock	Szerver mód – feloldása tulajdonosként
-status_client_unlock	Kliens mód – a zárolás feloldása az eladáshoz
 icon_new_selected	Ikon: új fájl kiválasztva – érintse meg a Márka mentése lehetőséget
 icon_custom	Ikon: egyedi helyszín jelölés
 icon_default	Ikon: Kumkaj jel (alapértelmezett) – válasszon egy egyénit
@@ -1033,7 +1016,7 @@ book_kind_balance	Mérleg
 order_help	Koppintson egy elemre a hozzáadáshoz.
 floor_help	Érintse meg az étkezőasztalt a sorrend elfogadásához vagy módosításához. A színek ingyenes → ülő → konyha → kész → evés → számla → fizetett. A várólistát, a foglalásokat és az étkezőasztalokat az alábbi szakaszokban találja.
 kitchen_help	Konyhajegyek (KOT), a legújabb utolsó. A Start → Kész → Kész a jegyet továbbítja. A jegyek soha nem mutatják az árakat.
-kitchen_empty	Nincs nyitott jegy. Itt jelenik meg a Rendelésből vagy az étkezőből küldött KOT.
+kitchen_empty	Nincs nyitott jegy.
 add_a_table	Adjon hozzá egy étkezőasztalt
 add_station_heading	Adjon hozzá egy konyhai állomást
 categories_help	Koppintson a Használat elemre, hogy a fenti elemet az adott kategóriába sorolja. A Photo képet ad a kategóriának; egy nélkül a kezdőbetűit mutatja.
@@ -1131,7 +1114,6 @@ bill_format_help	Minden számlán az étterem neve alatt található. Külön so
 bill_header_ph	Cím | telefon
 fssai_ph	FSSAI engedély sz. (India)
 bill_footer_ph	Lábléc (pl. Köszönöm, látogassa meg újra)
-save_bill_format	Számlaformátum mentése
 reset_bill_format	Visszaállítás alapértelmezettre
 bill_format_reset	A számlaformátum visszaállt az alapértelmezettre
 reset_kot_format	Visszaállítás alapértelmezettre
@@ -1201,13 +1183,11 @@ kot_copies_3	3
 kot_title_ph	Cím (üres = KOT – KONYHAI REND)
 kot_footer_ph	Konyhai megjegyzés (opcionális, nincs ár)
 kot_preview	Előnézet
-save_kot_format	Mentse el a KOT formátumot
 test_kot_format	Teszt KOT
 test_kot_sent	Konyhajegy előnézete elküldve
 test_bill_format	Tesztszámla
 test_bill_sent	Számla előnézete elküldve
 test_print_no_printer	Nincs nyomtató ehhez a munkához – válasszon egyet ezen a képernyőn
-kot_format_saved	KOT formátum mentve
 std_print	Számla nyomtatási mérete
 std_print_help	Betűméret szabványos álló és fekvő számlázási munkákhoz OS/dokumentumnyomtatókon (pontok megadása – nem Kicsi/Normál/Nagy). Mindkét irányban azonos méret. A konyhai lapok méretei a KOT fülön találhatók.
 std_size_s	Kicsi
@@ -1264,7 +1244,6 @@ new_items_head	Még nem küldték el
 price_ph	Ár
 price_ph_gst_inside	Ár ({tax})
 cancel_needs_table	Ezt a rendelést a teremről (egy asztalról) nyissa meg, ha a konyha már megkapta és törölni akarja — a pultos KOT a jegyen marad, amíg ki nem fizetik.
-tax_rates_missing_hint	Nincs {tax} kulcs ezekre az ételekre – az étlapon Adókulcs (az árak már tartalmazzák az {tax} a {tax} alatt)
 taxable_value	Adóköteles érték
 gst_inside_price_note	({tax} beleértve)
 start_with_template	Kezdje menüsablonunkkal
@@ -1318,9 +1297,7 @@ order_empty_pick	Üres rendelés – az ételek kiválasztásához koppintson a 
 add_dishes	Adjon hozzá ételeket
 order_so_far	Ennél a rendelésnél: {n} · {total}
 no_dish_match	Egy étel sem felel meg a következőnek: „{q}”
-pick_dishes_help	Érintse meg az ételt a hozzáadáshoz · válasszon egy kategóriát a lista szűkítéséhez
 pick_done	Kész
-pick_done_dd	Kész · {label}
 printer_route_mode	Ha több nyomtató van ezen a helyen
 printer_mode_first	Először is ez működik
 printer_mode_all	Nyomtatás az összesre

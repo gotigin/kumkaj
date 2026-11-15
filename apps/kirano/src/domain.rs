@@ -215,46 +215,6 @@ impl PayMethod {
     }
 }
 
-/// How the bill was served. Counter keeps the chai-stall flow unchanged;
-/// DineIn/Takeaway matter for restaurants and KOT routing.
-#[derive(Clone, Copy, Debug, Default, PartialEq, Eq, Serialize, Deserialize)]
-pub enum OrderType {
-    #[default]
-    Counter,
-    DineIn,
-    Takeaway,
-    Delivery,
-}
-
-impl OrderType {
-    pub fn as_str(self) -> &'static str {
-        match self {
-            Self::Counter => "counter",
-            Self::DineIn => "dine_in",
-            Self::Takeaway => "takeaway",
-            Self::Delivery => "delivery",
-        }
-    }
-
-    pub fn parse(s: &str) -> Self {
-        match s.trim() {
-            "dine_in" | "dinein" | "dine-in" => Self::DineIn,
-            "takeaway" | "take_away" | "parcel" => Self::Takeaway,
-            "delivery" | "home_delivery" => Self::Delivery,
-            _ => Self::Counter,
-        }
-    }
-
-    pub fn label(self) -> &'static str {
-        match self {
-            Self::Counter => "Counter",
-            Self::DineIn => "Dine-in",
-            Self::Takeaway => "Takeaway",
-            Self::Delivery => "Delivery",
-        }
-    }
-}
-
 #[derive(Clone, Copy, Debug, PartialEq, Eq, Serialize, Deserialize)]
 pub enum StaffRole {
     /// Host of this local business (server). Only one semantic owner account.
@@ -1597,9 +1557,6 @@ pub struct Product {
     /// Catalogue grouping id; empty = uncategorised.
     #[serde(default)]
     pub category_id: String,
-    /// Optional prep-station id — where this dish is made (Tandoor, Fryer…).
-    #[serde(default)]
-    pub station_id: String,
     /// Tax rate in basis points (500 = 5%). Whether this sits *inside* the
     /// price or is added at the till is the shop's [`crate::fiscal::TaxPricing`].
     #[serde(default)]
@@ -1635,14 +1592,9 @@ pub struct Product {
     /// identity (IDENTITY_AND_NAMES.md).
     #[serde(default)]
     pub group_name: String,
-    /// Price by floor area (AC ₹220 when the menu says ₹200): JSON array of
-    /// [`ModifierOption`] with the area as the name. Areas not listed use the
-    /// item price.
-    #[serde(default = "empty_json_array")]
-    pub area_prices_json: String,
     /// What this item is to the restaurant: a dish it cooks and sells, a
     /// good it buys and resells as is, or a raw material it buys and uses
-    /// up ([`ITEM_KIND_DISH`] / [`ITEM_KIND_RESALE`] / [`ITEM_KIND_RAW`]).
+    /// up ([`ITEM_KIND_DISH`] / [`ITEM_KIND_RESALE`]).
     /// A kitchen never buys its own dishes, and raw material is never on
     /// the menu.
     #[serde(default = "dish_kind")]
@@ -1652,17 +1604,10 @@ pub struct Product {
     /// Sun=7.
     #[serde(default = "empty_json_array")]
     pub schedule_json: String,
-    /// Short allergen tags / free notes.
-    #[serde(default)]
-    pub allergens: String,
     #[serde(default)]
     pub barcode: String,
     #[serde(default)]
     pub composition: String,
-    #[serde(default)]
-    pub schedule_h: bool,
-    #[serde(default)]
-    pub rx_required: bool,
     /// Printed MRP in minor units (0 = unset). Sell price may be lower.
     #[serde(default)]
     pub mrp_paise: i64,
@@ -1691,9 +1636,6 @@ pub const ITEM_KIND_DISH: &str = "dish";
 /// Bought and sold as is — bottled drinks, packaged water (on the menu and
 /// bought; stock counted).
 pub const ITEM_KIND_RESALE: &str = "resale";
-/// Bought and used up in the kitchen — rice, paneer, oil, gas (never on the
-/// menu; stock counted).
-pub const ITEM_KIND_RAW: &str = "raw";
 
 fn dish_kind() -> String {
     ITEM_KIND_DISH.into()
@@ -1726,7 +1668,6 @@ impl Product {
             archived: false,
             image_key: None,
             category_id: String::new(),
-            station_id: String::new(),
             tax_bps: 0,
             tax_rate_id: String::new(),
             stock_qty: STOCK_UNTRACKED,
@@ -1737,13 +1678,9 @@ impl Product {
             unit_label: String::new(),
             kind: ITEM_KIND_DISH.into(),
             group_name: String::new(),
-            area_prices_json: "[]".into(),
             schedule_json: "[]".into(),
-            allergens: String::new(),
             barcode: String::new(),
             composition: String::new(),
-            schedule_h: false,
-            rx_required: false,
             mrp_paise: 0,
             hsn_code: String::new(),
         }
@@ -1760,22 +1697,10 @@ impl Product {
         p
     }
 
-    pub fn new_raw_material(name: &str, unit_label: &str) -> Self {
-        let mut p = Self::new_basic(new_id(), name.trim(), Money(0));
-        p.kind = ITEM_KIND_RAW.into();
-        p.unit_label = unit_label.trim().to_string();
-        p.stock_qty = 0;
-        p
-    }
-
-    pub fn is_raw(&self) -> bool {
-        self.kind == ITEM_KIND_RAW
-    }
-
     /// Something the restaurant buys: raw material, a resold good, or an
     /// item whose stock it already counts.
     pub fn is_bought(&self) -> bool {
-        self.kind == ITEM_KIND_RAW || self.kind == ITEM_KIND_RESALE || self.tracks_stock()
+        self.kind == ITEM_KIND_RESALE || self.tracks_stock()
     }
 
     /// Variant items for `base` ("Paneer Tikka" + Half=120, Full=200 →
@@ -1799,29 +1724,10 @@ impl Product {
                 price: Money(v.price_paise),
                 group_name: group.clone(),
                 image_key: None,
-                area_prices_json: "[]".into(),
                 aliases_json: "[]".into(),
                 ..base.clone()
             })
             .collect()
-    }
-
-    pub fn area_prices(&self) -> Vec<ModifierOption> {
-        serde_json::from_str(&self.area_prices_json).unwrap_or_default()
-    }
-
-    /// The price at a table in `area` (case-insensitive); the item price
-    /// where the area has no price of its own.
-    pub fn price_in_area(&self, area: &str) -> Money {
-        let area = area.trim();
-        if area.is_empty() {
-            return self.price;
-        }
-        self.area_prices()
-            .into_iter()
-            .find(|p| p.name.trim().eq_ignore_ascii_case(area))
-            .map(|p| Money(p.price_paise))
-            .unwrap_or(self.price)
     }
 
     pub fn is_weight_unit(&self) -> bool {
@@ -1949,10 +1855,10 @@ impl Product {
         self.schedule_json = ScheduleWindow::serialize_list(windows);
     }
 
-    /// Area price, then a timed/happy-hour override when `now` falls in a
-    /// priced schedule window.
-    pub fn price_now(&self, area: &str, now: chrono::DateTime<chrono::Local>) -> Money {
-        let base = self.price_in_area(area);
+    /// The item price, or a timed / happy-hour override when `now` falls in
+    /// a priced schedule window.
+    pub fn price_now(&self, now: chrono::DateTime<chrono::Local>) -> Money {
+        let base = self.price;
         let Some(override_paise) = self.schedule().into_iter().find_map(|w| {
             if w.price_paise.is_some() && w.contains(now) {
                 w.price_paise
@@ -2186,33 +2092,8 @@ pub struct CartLine {
     /// Applied line total when it differs from Actual (`unit_price × qty`).
     /// Unit price is never rewritten when this is set.
     pub line_total_override: Option<Money>,
-    /// Set when this line already went to the kitchen on the table's running
-    /// order ([`RunningLine::id`]). Empty = new, not sent yet. A sent line is
-    /// never bumped or dropped like a new one — it is cancelled with a
-    /// reason ([`crate::store::Store::cancel_running_line`]).
-    pub running_line_id: String,
     /// Complimentary (NC): kept at its real item and qty, billed ₹0.
     pub complimentary: bool,
-    /// The KOT this sent line went out on ([`RunningLine::kot_id`]); empty
-    /// for a line not sent yet. The ticket groups lines by it.
-    pub kot_id: String,
-    /// Held back from the next Send KOT (Order desk). Still on the ticket;
-    /// tap Hold again to include it. Not the same as a sent-line kitchen hold.
-    #[serde(default)]
-    pub hold_send: bool,
-    /// Kitchen for this ticket line. Empty = use the menu item's station.
-    /// Set when the waiter picks a kitchen on the Order desk (works on an
-    /// extra till without rewriting the shop catalogue).
-    #[serde(default)]
-    pub station_id: String,
-    /// Sent line: skip this dish when printing a recovery KOT (include/exclude).
-    /// Default false = included. Cart-local; not a new Send.
-    #[serde(default)]
-    pub reprint_skip: bool,
-    /// Sent line: marked for the next batch cancel (one reason, one slip per kitchen).
-    /// Cart-local; cleared after cancel or when the ticket refreshes.
-    #[serde(default)]
-    pub cancel_pick: bool,
 }
 
 /// How many modifier chips fit on one cart row.
@@ -2269,12 +2150,6 @@ impl CartLine {
             .unwrap_or_else(|| self.actual_total())
     }
 
-    /// Already carried on a KOT to the kitchen (`kot_id` set). Pending lines
-    /// on the table's running order have a `running_line_id` but empty `kot_id`.
-    pub fn is_sent(&self) -> bool {
-        !self.kot_id.is_empty()
-    }
-
     /// Alias for [`CartLine::applied_total`] (charged amount for this line).
     pub fn line_total(&self) -> Money {
         self.applied_total()
@@ -2324,15 +2199,11 @@ pub struct Cart {
     /// Cleared whenever lines/qty/unit prices change so rounding never sticks
     /// to a stale basket. Applied only at finalize via [`Cart::to_sale_lines`].
     pub charge_total: Option<Money>,
-    /// How this bill is served. Counter by default so the stall flow is unchanged.
-    pub order_type: OrderType,
     /// Bill-type tag (Account booking / Cash booking). Set from the shell.
     pub money_lane: MoneyLane,
     /// Bill discount (10 % or ₹50) with its reason; spread over the lines
     /// at finalize so tax is on what is actually charged.
     pub discount: Option<BillDiscount>,
-    /// Delivery orders: who takes it out (staff or rider name).
-    pub delivery_by: String,
     /// Names of schemes applied at settle (shown on the ticket as "Scheme: …").
     pub scheme_notes: Vec<String>,
 }
@@ -2381,14 +2252,8 @@ impl Cart {
         self.lines.clear();
         self.charge_total = None;
         self.discount = None;
-        self.delivery_by.clear();
         self.scheme_notes.clear();
-        self.order_type = OrderType::Counter;
         // Keep money_lane — owner choice persists across carts until they flip the chip.
-    }
-
-    pub fn set_order_type(&mut self, order_type: OrderType) {
-        self.order_type = order_type;
     }
 
     pub fn add_or_bump(&mut self, product: &Product) {
@@ -2404,7 +2269,7 @@ impl Cart {
         // A line already sent to the kitchen is history: another tap starts
         // (or bumps) a new line that goes on the next KOT.
         if let Some(line) = self.lines.iter_mut().find(|l| {
-            l.product_id == product.id && !l.is_sent() && !l.complimentary
+            l.product_id == product.id && !l.complimentary
         }) {
             line.line_total_override = None;
             let step = line.bump_step_milli();
@@ -2424,13 +2289,7 @@ impl Cart {
                 applied_modifiers: Vec::new(),
                 modifier_page: 0,
                 line_total_override: None,
-                running_line_id: String::new(),
                 complimentary: false,
-                kot_id: String::new(),
-                hold_send: false,
-                station_id: String::new(),
-                reprint_skip: false,
-                cancel_pick: false,
             };
             line.sync_qty_from_milli();
             self.lines.push(line);
@@ -2449,18 +2308,13 @@ impl Cart {
     /// Add one, refusing to book more of a tracked item than the shop has. The
     /// silent [`Cart::add_or_bump`] let a seller build a cart that could only
     /// fail at the till.
+    /// Charged at the price right now (a timed price when one applies).
     pub fn add_or_bump_in_stock(&mut self, product: &Product) -> Result<(), String> {
-        self.add_in_area_in_stock(product, "")
-    }
-
-    /// Add one at the table's area price, refusing what the shop cannot
-    /// serve.
-    pub fn add_in_area_in_stock(&mut self, product: &Product, area: &str) -> Result<(), String> {
         let now = chrono::Local::now();
         if !product.available_now(now) {
             return Err(format!("{} is not on the menu right now", product.name));
         }
-        let unit_price = product.price_now(area, now);
+        let unit_price = product.price_now(now);
         self.check_can_add(product, unit_price)?;
         self.add_priced(product, unit_price);
         Ok(())
@@ -2513,32 +2367,23 @@ impl Cart {
             .sum()
     }
 
-    /// One fewer of `product_id` (the menu window's −): the line still to
-    /// go to the kitchen gives one back, and leaves at nought. What the
-    /// kitchen already has changes only through a reasoned cancel on the
-    /// ticket, so that is an error here.
+    /// One fewer of `product_id` (the item window's −); the line leaves at
+    /// nought. Nothing to take back is not an error.
     pub fn remove_one_of(&mut self, product_id: &str) -> Result<(), String> {
-        let open = |l: &CartLine| l.product_id == product_id && !l.is_sent();
+        let open = |l: &CartLine| l.product_id == product_id;
         let index = self
             .lines
             .iter()
             .rposition(|l| open(l) && !l.complimentary)
             .or_else(|| self.lines.iter().rposition(open));
-        match index {
-            Some(index) => {
-                self.bump_qty(index, -1);
-                Ok(())
-            }
-            None if self.lines.iter().any(|l| l.product_id == product_id) => {
-                Err("Already sent — cancel it from the bill".into())
-            }
-            None => Ok(()),
+        if let Some(index) = index {
+            self.bump_qty(index, -1);
         }
+        Ok(())
     }
 
     pub fn bump_qty(&mut self, index: usize, delta: i64) {
-        // A sent line changes only through a reasoned cancel (store).
-        if let Some(line) = self.lines.get_mut(index).filter(|l| !l.is_sent()) {
+        if let Some(line) = self.lines.get_mut(index) {
             self.charge_total = None;
             line.line_total_override = None;
             let step = line.bump_step_milli().saturating_mul(delta);
@@ -2552,7 +2397,7 @@ impl Cart {
 
     /// Set absolute milli-qty for a line (e.g. typed weight).
     pub fn set_qty_milli(&mut self, index: usize, qty_milli: i64) {
-        if let Some(line) = self.lines.get_mut(index).filter(|l| !l.is_sent()) {
+        if let Some(line) = self.lines.get_mut(index) {
             self.charge_total = None;
             line.line_total_override = None;
             line.qty_milli = qty_milli.max(0);
@@ -2832,7 +2677,6 @@ impl Cart {
     /// Load a recorded sale into an editable cart for owner/manager amend.
     pub fn from_sale(sale: &Sale) -> Self {
         let mut cart = Self {
-            order_type: OrderType::parse(&sale.order_type),
             lines: sale
                 .lines
                 .iter()
@@ -2889,13 +2733,7 @@ impl Cart {
                         applied_modifiers: mods,
                         modifier_page: 0,
                         line_total_override: override_total,
-                        running_line_id: String::new(),
                         complimentary: false,
-                        kot_id: String::new(),
-                        hold_send: false,
-                        station_id: l.station_id.clone(),
-                        reprint_skip: false,
-                cancel_pick: false,
                     };
                     line.sync_qty_from_milli();
                     line
@@ -2905,30 +2743,12 @@ impl Cart {
             money_lane: MoneyLane::parse(&sale.money_lane),
             discount: None,
             // Kept on the sale's own delivery record; amending leaves it be.
-            delivery_by: String::new(),
             scheme_notes: Vec::new(),
         };
         if sale.rounding_paise != 0 {
             cart.charge_total = Some(Money(sale.total_paise));
         }
         cart
-    }
-
-    /// Mark the cart's new lines as sent with no running order behind them
-    /// (a counter KOT before payment). `is_sent` is `kot_id`, so the marker
-    /// has to land there — otherwise Send stays on the first step and the
-    /// print action stays hidden after the kitchen ticket already exists.
-    /// Held lines are still waiting and are left alone.
-    pub fn mark_new_lines_sent(&mut self, marker: &str) {
-        let marker = if marker.is_empty() { "counter" } else { marker };
-        for line in self
-            .lines
-            .iter_mut()
-            .filter(|l| !l.is_sent() && !l.hold_send)
-        {
-            line.running_line_id = marker.to_string();
-            line.kot_id = marker.to_string();
-        }
     }
 
     pub fn to_sale_draft(&self) -> Result<SaleDraft, String> {
@@ -2944,7 +2764,7 @@ impl Cart {
             return Err("Sale total cannot be negative".into());
         }
         let rounding = total.saturating_sub(lines_total);
-        let lines: Vec<SaleLine> = self.lines.iter().map(|l| sale_line_from_cart(l, l.is_sent())).collect();
+        let lines: Vec<SaleLine> = self.lines.iter().map(sale_line_from_cart).collect();
         // The bill discount comes off each line in proportion, so tax (by
         // line) is on what is really charged; the last charged line takes
         // the rounding remainder so the lines still add up exactly.
@@ -2993,11 +2813,9 @@ impl Cart {
             // extracts tax under Tax inside price, or adds Tax added at till on this
             // total. Doing it here would let a stale pack price a bill.
             tax_paise: 0,
-            order_type: self.order_type,
             money_lane: self.money_lane,
             user_at: None,
             extras_json,
-            delivery_by: self.delivery_by.trim().to_string(),
             notify_phone: String::new(),
             discount_paise: discount,
             discount_reason: self.discount.as_ref().map(|d| d.reason.clone()).unwrap_or_default(),
@@ -3026,17 +2844,9 @@ pub struct SaleLine {
     /// Unit label frozen at sale time (`kg`, empty = piece).
     #[serde(default)]
     pub unit_label: String,
-    /// Already sent to the kitchen (on the table's running order) — finalize
-    /// must not fire a second KOT for it.
-    #[serde(default)]
-    pub kot_sent: bool,
     /// Chosen Size / toppings at sale time (JSON array of [`ModifierOption`]).
     #[serde(default = "empty_json_array")]
     pub modifiers_json: String,
-    /// Kitchen for this line on the KOT. Empty = use the menu item's station
-    /// on the shop device. Extra tills send this so routing survives LAN.
-    #[serde(default)]
-    pub station_id: String,
 }
 
 impl SaleLine {
@@ -3065,7 +2875,7 @@ impl SaleLine {
     }
 }
 
-fn sale_line_from_cart(l: &CartLine, kot_sent: bool) -> SaleLine {
+fn sale_line_from_cart(l: &CartLine) -> SaleLine {
     let milli = if l.qty_milli > 0 {
         l.qty_milli
     } else {
@@ -3080,9 +2890,7 @@ fn sale_line_from_cart(l: &CartLine, kot_sent: bool) -> SaleLine {
         note: l.kitchen_note(),
         qty_milli: milli,
         unit_label: l.unit_label.clone(),
-        kot_sent,
         modifiers_json: "[]".into(),
-        station_id: l.station_id.clone(),
     };
     line.set_modifiers_from(&l.applied_modifiers);
     line
@@ -3108,8 +2916,6 @@ pub struct SaleDraft {
     /// [`SaleDraft::assert_balanced`] only ever checks the untaxed equation.
     #[serde(default)]
     pub tax_paise: i64,
-    #[serde(default)]
-    pub order_type: OrderType,
     /// Which money lane this bill posts to.
     #[serde(default)]
     pub money_lane: MoneyLane,
@@ -3131,9 +2937,6 @@ pub struct SaleDraft {
     /// at finalize, never stored.
     #[serde(default)]
     pub discount_approval_pin: String,
-    /// Delivery orders: who takes it out.
-    #[serde(default)]
-    pub delivery_by: String,
 }
 
 impl SaleDraft {
@@ -3180,7 +2983,6 @@ pub struct Sale {
     pub total_paise: i64,
     pub pay_method: String,
     pub status: String,
-    pub table_id: Option<String>,
     #[serde(default)]
     pub customer_id: Option<String>,
     /// Staff who finalized the sale — never rewritten on amend.
@@ -3191,9 +2993,6 @@ pub struct Sale {
     /// Branch that recorded this sale (empty = legacy row on the active branch).
     #[serde(default)]
     pub branch_id: String,
-    /// [`OrderType::as_str`] value; empty/unknown reads as Counter.
-    #[serde(default)]
-    pub order_type: String,
     /// Tax on this bill. Inside `total_paise` under Tax inside price;
     /// added on top of the line total under Tax added at till.
     #[serde(default)]
@@ -3244,10 +3043,6 @@ impl Sale {
             },
             server_at: self.server_at.clone(),
         }
-    }
-
-    pub fn order_type(&self) -> OrderType {
-        OrderType::parse(&self.order_type)
     }
 
     pub fn tax(&self) -> Money {
@@ -3893,7 +3688,7 @@ mod tests {
         assert_eq!(format_signed_stock_milli(-2_000), "-2");
     }
     #[test]
-    fn minus_takes_back_only_what_the_kitchen_has_not_got() {
+    fn minus_takes_back_one_and_the_line_leaves_at_nought() {
         let mut cart = Cart::default();
         cart.add_or_bump_in_stock(&tea()).unwrap();
         cart.add_or_bump_in_stock(&tea()).unwrap();
@@ -3902,30 +3697,6 @@ mod tests {
         cart.remove_one_of("tea").unwrap();
         assert!(cart.lines.is_empty(), "the line leaves at nought");
         assert!(cart.remove_one_of("tea").is_ok(), "nothing to take back is not an error");
-        // Two already in the kitchen, one more punched since.
-        cart.add_or_bump_in_stock(&tea()).unwrap();
-        cart.add_or_bump_in_stock(&tea()).unwrap();
-        cart.lines[0].kot_id = "sent".into();
-        cart.add_or_bump_in_stock(&tea()).unwrap();
-        assert_eq!(cart.qty_of("tea"), 3);
-        cart.remove_one_of("tea").unwrap();
-        assert_eq!(cart.qty_of("tea"), 2);
-        let refused = cart.remove_one_of("tea").unwrap_err();
-        assert!(refused.contains("Already sent"), "{refused}");
-        assert_eq!(cart.qty_of("tea"), 2);
-    }
-
-    #[test]
-    fn counter_send_marks_the_line_sent_so_the_next_step_can_show() {
-        let mut cart = Cart::default();
-        cart.add_or_bump_in_stock(&tea()).unwrap();
-        cart.lines[0].hold_send = true;
-        let coffee = Product::new_basic("coffee", "Coffee", Money::from_rupees(20));
-        cart.add_or_bump_in_stock(&coffee).unwrap();
-        cart.mark_new_lines_sent("kot-1");
-        assert!(cart.lines[0].hold_send && !cart.lines[0].is_sent());
-        assert!(cart.lines[1].is_sent());
-        assert_eq!(cart.lines[1].kot_id, "kot-1");
     }
 
     /// ₹0 is a real menu price (complimentary items, price-at-counter dishes);
@@ -4073,10 +3844,7 @@ mod tests {
     }
 
     #[test]
-    fn order_type_and_modifiers_roundtrip() {
-        assert_eq!(OrderType::parse("dine_in"), OrderType::DineIn);
-        assert_eq!(OrderType::parse("garbage"), OrderType::Counter);
-        assert_eq!(OrderType::DineIn.as_str(), "dine_in");
+    fn modifiers_roundtrip() {
         let mods = vec![
             ModifierOption {
                 name: "Extra cheese".into(),
@@ -4219,11 +3987,9 @@ mod tests {
         let mut p = tea();
         p.tax_bps = 500;
         cart.add_or_bump(&p);
-        cart.set_order_type(OrderType::Takeaway);
         let draft = cart.to_sale_draft().unwrap();
         draft.assert_balanced().unwrap();
         assert_eq!(draft.tax_paise, 0, "store fills tax at finalize");
-        assert_eq!(draft.order_type, OrderType::Takeaway);
         assert_eq!(draft.total_paise, 1300);
         assert_eq!(p.tax_for(1300, TaxPricing::InsidePrice), 61);
     }
@@ -4374,11 +4140,11 @@ mod tests {
             .with_ymd_and_hms(2026, 10, 27, 18, 0, 0)
             .unwrap();
         assert!(happy.available_now(evening));
-        assert_eq!(happy.price_now("", evening).paise(), 15_000);
+        assert_eq!(happy.price_now(evening).paise(), 15_000);
         let noon = chrono::Local
             .with_ymd_and_hms(2026, 10, 27, 12, 0, 0)
             .unwrap();
-        assert_eq!(happy.price_now("", noon).paise(), 20_000);
+        assert_eq!(happy.price_now(noon).paise(), 20_000);
         // Human parse
         let windows =
             ScheduleWindow::parse_human_list("Mon-Fri 07:00-11:00, HappyHour 17:00-19:00=150", "INR")

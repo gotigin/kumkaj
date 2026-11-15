@@ -39,7 +39,7 @@ adding_item	Menambah tarif baru
 editing_item	Mengedit
 save	Simpan
 remove	Hapus
-empty_catalog	Belum ada tarif. Buka Tarif & layanan, tambah satu (nama + harga, satuan kg), lalu Booking.
+empty_catalog	Belum ada tarif.
 counter_sale	Booking konter
 total	Total
 cash	Tunai
@@ -171,8 +171,6 @@ selected_language	Terpilih
 continue	Lanjut
 this_device	PERANGKAT INI
 device_use_q	Bagaimana perangkat ini akan digunakan?
-last_server_mode	Sebelumnya server — ketuk untuk lanjut
-last_client_mode	Sebelumnya klien — ketuk untuk lanjut
 choose_server	Pilih server
 choose_server_hint	Perangkat ini sudah memiliki server. Buka satu, atau buat server baru untuk usaha lain.
 create_new_server	Buat server baru
@@ -501,8 +499,6 @@ job_layout	Tata letak
 job_delivery	Cara pengiriman pekerjaan
 job_size	Ukuran font
 job_size_ph	mis. 18, 20, 26…
-save_receipt_format	Simpan format tanda terima
-save_label_format	Simpan format label
 test_receipt_format	Tanda terima tes
 test_label_format	Label uji
 test_receipt_sent	Contoh resi terkirim
@@ -610,7 +606,7 @@ units_heading	Satuan
 booking_measures	Ukuran booking
 drawer_count	Hitung laci (opsional)
 spreadsheet_csv	Spreadsheet (CSV)
-bank_reconciliation	Rekonsiliasi bank (centang sesuai mutasi)
+bank_reconciliation	Rekonsiliasi bank
 book_add_product	Booking — tambah produk / tarif
 book_opening_credit	Booking — kredit awal
 account_kind	Jenis akun (ketuk satu)
@@ -650,7 +646,7 @@ net_word	Neto
 offline_badge	OFFLINE
 optional_login_help	Login opsional (ID + kata sandi). Pemilik mengaturnya sekali; setelah itu hanya pengguna yang bisa mengubah kata sandi.
 or_unlock_login	Atau buka kunci dengan ID login + kata sandi
-permission_preset	Pekerjaan (mengatur layar dan hak)
+permission_preset	Pekerjaan
 preset_help_moklanjo	Kasir: jual. Manajer: jual + item + batal/ubah.
 product_locked_moklanjo	Moklanjo
 product_only_moklanjo	Aplikasi ini hanya Moklanjo — pembukuan + meja pengiriman. Usaha lain akan punya produk sendiri nanti.
@@ -698,10 +694,6 @@ pin_hint_paired	Til tambahan terpasang — buka kunci untuk menjual
 pin_hint_pair_first	Til tambahan — pasangkan ke perangkat toko dulu
 unlock_to_continue	Buka kunci untuk lanjut
 no_staff_yet	Belum ada staf — buka kunci sebagai Pemilik, lalu Tim
-status_server_set_pin	Mode server — atur PIN pemilik
-status_server_tills	Mode server — til tambahan bisa bergabung. Buka kunci
-status_server_unlock	Mode server — buka kunci sebagai Pemilik
-status_client_unlock	Mode klien — buka kunci untuk menjual
 icon_new_selected	Ikon: file baru dipilih — ketuk Simpan merek
 icon_custom	Ikon: tanda toko Anda sendiri
 icon_default	Ikon: tanda Kumkaj (bawaan) — pilih milik Anda

@@ -7,6 +7,16 @@
 /// against the DSL.
 const HEADER_CONTROLS: &[&str] = &["rail_expand_btn", "header_back", "amounts_eye"];
 
+/// Every control in `nav_rail` that is not a nav row (rows are never a drag).
+/// The sidebar's empty top corner and the space under its last row move the
+/// window like the empty header (owner, 2026-11-14: with the window's top
+/// bar above the screen there was nothing left to drag). The gaps between
+/// rows stay the sidebar's own, so a finger can still scroll a long one.
+/// `nav_order_tests::rail_controls_are_not_window_drag` checks this list.
+const RAIL_CONTROLS: &[&str] = &["rail_collapse_btn"];
+/// The sidebar's right edge stays its scroll bar's.
+const RAIL_SCROLLBAR_PX: f64 = 12.0;
+
 impl AppMain for App {
     fn script_mod(vm: &mut ScriptVm) -> ScriptValue {
         crate::makepad_widgets::script_mod(vm);
@@ -69,7 +79,10 @@ impl App {
             if role_open_busy().load(std::sync::atomic::Ordering::SeqCst) {
                 if let Event::Actions(actions) = event {
                     if self.ui.button(cx, ids!(device_role_cancel)).clicked(actions) {
+                        // Back to the Server / Client choice now — the worker's
+                        // late result is dropped (`role_open_gen`).
                         request_role_open_cancel();
+                        self.set_status(cx, app_t("cancelled"));
                     }
                 }
                 self.ui.handle_event(cx, event, &mut Scope::empty());
@@ -532,6 +545,17 @@ impl App {
                         if was_app_template {
                             // Cash memo by default — tax invoice is opt-in with tax off.
                             app_state().lock().unwrap().money_lane = MoneyLane::Owner;
+                            // The pack may carry the shop's logo: the mark on
+                            // the next screens is that file, not the cached one.
+                            let brand = app_state()
+                                .lock()
+                                .unwrap()
+                                .store
+                                .as_ref()
+                                .and_then(|s| s.brand_images_dir().ok());
+                            if let Some(dir) = brand {
+                                invalidate_image_loads_for_path(&dir.join("venue_icon.webp"));
+                            }
                             self.finish_app_template_to_lock(cx, true);
                         } else {
                             self.sync_chrome(cx);
@@ -578,9 +602,11 @@ impl App {
                 let start = problems.len().saturating_sub(3);
                 self.show_warn(cx, problems[start..].join("; "));
             }
-            if app_state().lock().unwrap().screen == Screen::Settings {
+            let printers_sheet = self.ui.modal(cx, ids!(printers_modal)).is_open();
+            if printers_sheet || app_state().lock().unwrap().screen == Screen::Settings {
                 // Only rebuild the found list when Find is running or just
                 // finished — thumbs / LAN Signals used to rebuild it every wake.
+                // The Printers sheet runs the same Find on any screen.
                 let finding = print_share::is_finding_printers();
                 static WAS_FINDING: std::sync::atomic::AtomicBool =
                     std::sync::atomic::AtomicBool::new(false);
@@ -621,6 +647,9 @@ impl App {
                     } else {
                         self.show_found_printers(cx);
                     }
+                    if printers_sheet {
+                        self.paint_printers_modal(cx);
+                    }
                 }
                 if cancel_edge {
                     self.set_status(cx, app_t("cancelled"));
@@ -643,6 +672,7 @@ impl App {
                 self.paint_submit_busy_chrome(cx);
             }
             if let Some(result) = role_open_once().lock().unwrap().take() {
+                note_role_open_ui_took();
                 match result {
                     Ok(RoleOpenReady::Client(store)) => {
                         if role_cancelled() {
@@ -802,18 +832,10 @@ impl App {
         // press on it closes the sheet instead of moving the window.
         if let Event::WindowDragQuery(dq) = event
             && !sheet_open
+            && self.window_drag_at(cx, dq.abs)
         {
-            let header = self.ui.view(cx, ids!(header)).area().rect(cx);
-            if header.size.x > 1.0 && header.contains(dq.abs) {
-                let on_control = HEADER_CONTROLS.iter().any(|name| {
-                    let r = self.ui.button(cx, &[LiveId::from_str(name)]).area().rect(cx);
-                    r.size.x > 1.0 && r.contains(dq.abs)
-                });
-                if !on_control {
-                    dq.response
-                        .set(makepad_widgets::WindowDragQueryResponse::Caption);
-                }
-            }
+            dq.response
+                .set(makepad_widgets::WindowDragQueryResponse::Caption);
         }
         // One selection root at a time (selection_menu.rs): a sheet over the
         // page owns Ctrl/Cmd+A and Copy while it is open.
@@ -828,5 +850,51 @@ impl App {
         if matches!(event, Event::LiveEdit | Event::ScriptReapply | Event::Startup) {
             self.sync_chrome(cx);
         }
+    }
+}
+
+impl App {
+    /// Window chrome with nothing to press: the empty header, and the
+    /// sidebar's top corner and the space under its last row. A press there
+    /// moves the window on desktop (`WindowDragQuery` → `Caption`). Page
+    /// content never is — a press on its empty space starts a selection.
+    fn window_drag_at(&self, cx: &mut Cx, abs: DVec2) -> bool {
+        let over = |rect: Rect| rect.size.x > 1.0 && rect.contains(abs);
+        let header = self.ui.view(cx, ids!(header)).area().rect(cx);
+        if over(header) {
+            return !HEADER_CONTROLS.iter().any(|name| {
+                let r = self.ui.button(cx, &[LiveId::from_str(name)]).area().rect(cx);
+                over(r)
+            });
+        }
+        let rail = self.ui.view(cx, ids!(nav_rail));
+        if !rail.visible() {
+            return false;
+        }
+        let r = rail.area().rect(cx);
+        if !over(r) || abs.x >= r.pos.x + r.size.x - RAIL_SCROLLBAR_PX {
+            return false;
+        }
+        if RAIL_CONTROLS.iter().any(|name| {
+            let b = self.ui.button(cx, &[LiveId::from_str(name)]).area().rect(cx);
+            over(b)
+        }) {
+            return false;
+        }
+        let rows: Vec<Rect> = self
+            .nav_slot_wrappers(true)
+            .iter()
+            .map(|path| self.ui.view(cx, path))
+            .filter(|v| v.visible())
+            .map(|v| v.area().rect(cx))
+            .filter(|r| r.size.y > 1.0)
+            .collect();
+        let (Some(top), Some(bottom)) = (
+            rows.iter().map(|r| r.pos.y).reduce(f64::min),
+            rows.iter().map(|r| r.pos.y + r.size.y).reduce(f64::max),
+        ) else {
+            return true;
+        };
+        abs.y < top || abs.y > bottom
     }
 }

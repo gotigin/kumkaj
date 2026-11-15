@@ -41,7 +41,7 @@ remove	हटावऽ
 removed_items	हटाए गेल सामान
 removed_help	वापस लाने पर सामान पहिले जैसा ही मेनू पर आ जातऽ हई — कीमत, फ़ोटो आउर श्रेणी। हमर व्यंजन-शेल्फ़ कभी नइखे हटता, इसलिए कोई ओ व्यंजन फिर से जोड़ा जा सकऽ है।
 restore_item	वापस लाऽ
-empty_catalog	अबहीं कोई आइटम नहीं। मेनू आउर आइटम खोलऽ, एक जोड़ऽ (नाम + कीमत), फिर ऑर्डर लें।
+empty_catalog	अबहीं कोई आइटम नहीं।
 total	कुल
 cash	नकद
 upi	यूपीआई
@@ -103,23 +103,14 @@ bill_item_qty	मात्रा
 bill_item_price	दर
 bill_item_amount	राशि
 bill_item_note	नोट
-bill_item_col_gap	स्तंभ अंतर
 bill_item_col_order	स्तंभ क्रम
 bill_item_col_sep	स्तंभ रेखा
-bill_item_gap_tight	सटा
-bill_item_gap_comfort	आरामदायक
-bill_item_gap_wide	चौड़ा
-bill_item_num_width	अंक स्तंभ
-bill_item_num_compact	छोटा
-bill_item_num_comfort	आरामदायक
-bill_item_num_wide	चौड़ा
-bill_item_num_align	अंक संरेखण
-bill_item_gap_em	अंतर (em)
-bill_item_qty_min	संख्या न्यूनतम (em)
-bill_item_price_min	दर न्यूनतम (em)
-bill_item_amount_min	राशि न्यूनतम (em)
-kot_item_qty_width	संख्या स्तंभ
-kot_item_num_align	संख्या संरेखण
+slip_columns	स्तंभ
+slip_col_width	चौड़ाई (mm)
+slip_col_start	सुरुआत के जगह (px)
+slip_col_end	अंत के जगह (px)
+slip_col_align	लिखावट के सीध
+slip_columns_help	हर स्तंभ के चौड़ाई में ओकर सुरुआत आउ अंत के जगह शामिल हे। लिखावट अपन स्तंभ के भीतर लपेटा हे; सामग्री के चौड़ाई से बाहर जे हे ऊ कागज आउ पूर्वावलोकन दुनहुँ में कट जा हे।
 bill_total_qty_label	कुल संख्या लेबल
 bill_total_subtotal_label	उप-योग लेबल
 bill_total_grand_label	कुल योग लेबल
@@ -221,7 +212,6 @@ sidebar_order_saved	साइडबार के क्रम सहेजा
 sidebar_visibility_saved	साइडबार के दृश्यता सहेजी
 amounts_hide	छिपावऽ
 amounts_show	देखावऽ
-printers_none_hint	पहिले ई डिवाइस पर प्रिंटर सहेजऽ, फिर ओकरा के बिल भा किसी रसोई में जोड़ऽ
 counter	काउंटर
 dine_in	बैठकर
 takeaway	पैक
@@ -328,8 +318,6 @@ selected_language	चुनी हुई
 continue	आगे बढ़ेऽ
 this_device	ई डिवाइस
 device_use_q	ई डिवाइस के उपयोग कइसे होतई?
-last_server_mode	पहिले सर्वर हल — जारी रखने खातिर टैप करऽ
-last_client_mode	पहिले क्लाइंट हल — जारी रखने खातिर टैप करऽ
 choose_server	सर्वर चुनऽ
 choose_server_hint	ई डिवाइस पर पहिले से सर्वर हैं। एक खोलऽ, भा दूसरे व्यापार खातिर नया सर्वर बनाऽ।
 create_new_server	नया सर्वर बनावऽ
@@ -391,7 +379,7 @@ attachments_last_expense	अटैचमेंट (पिछला खर्च)
 bank	बैंक
 bank_in	बैंक में डालेऽ
 bank_out	बैंक से निकालेऽ
-bank_reconciliation	बैंक मिलान (अपने बैंक स्टेटमेंट से टिक करऽ)
+bank_reconciliation	बैंक मिलान
 bank_to_till	बैंक → टिल
 book_add_dish	बुक — व्यंजन / आइटम जोड़ऽ
 book_opening_credit	बुक — शुरुआती उधार
@@ -744,7 +732,6 @@ station_print_pick_first	पहिले रसोई स्टेशन चु�
 station_print_editing	“{name}” के प्रिंटर संपादित
 station_vps_dd	ई स्टेशन के प्रिंटर
 station_vps_dd_n	{n} प्रिंटर · बदलने खातिर टैप
-station_vps_empty	अबहीं प्रिंटर नइखे — सेटिंग → प्रिंटर में खोजऽ
 bill_printers_dd	बिल के प्रिंटर
 bill_printers_dd_n	बिल खातिर {n} प्रिंटर · बदलने खातिर दबावऽ
 job_layout	लेआउट
@@ -889,7 +876,7 @@ net_word	नेट
 offline_badge	ऑफ़लाइन
 optional_login_help	वैकल्पिक लॉगिन (आईडी + पासवर्ड)। मालिक एक बार लगातऽ हई; बाद में केवल उपयोगकर्ता ही पासवर्ड बदल सकऽ है।
 or_unlock_login	भा लॉगिन आईडी + पासवर्ड से अनलॉक करऽ
-permission_preset	अनुमति प्रीसेट (किस तक पहुँच)
+permission_preset	अनुमति प्रीसेट
 preset_help_khaynjo	कैशियर: बेचें। मैनेजर: बेचेऽ + आइटम + रद्द/संशोधन।
 product_locked_khaynjo	Khaynjo
 product_only_khaynjo	ई ऐप केवल Khaynjo हई — रेस्टोरेंट ऑपरेटिंग सिस्टम। दूसरे व्यापारों खातिर अलग Kumkaj उत्पाद आतऽ हथ।
@@ -961,10 +948,6 @@ pin_hint_paired	अतिरिक्त टिल जुड़ा — बेच
 pin_hint_pair_first	अतिरिक्त टिल — पहिले दुकान डिवाइस से जोड़ऽ
 unlock_to_continue	जारी रखने खातिर अनलॉक करऽ
 no_staff_yet	अबहीं कोई कर्मचारी नइखे — मालिक के रूप में अनलॉक करऽ, फिर Team
-status_server_set_pin	सर्वर मोड — मालिक PIN लगाऽ
-status_server_tills	सर्वर मोड — अतिरिक्त टिल जुड़ सकऽ हैं। अनलॉक करऽ
-status_server_unlock	सर्वर मोड — मालिक के रूप में अनलॉक करऽ
-status_client_unlock	क्लाइंट मोड — बेचने खातिर अनलॉक करऽ
 icon_new_selected	आइकन: नई फ़ाइल चुनी — ब्रांड सहेजऽ दबावऽ
 icon_custom	आइकन: अपनी दुकान के निशान
 icon_default	आइकन: Kumkaj निशान (डिफ़ॉल्ट) — अपना चुनऽ
@@ -1033,7 +1016,7 @@ book_kind_balance	बैलेंस शीट
 order_help	खुला ऑर्डर चुनऽ, भा टेबल चुनऽ आउर नया शुरू करें। तैयार वस्तुओं पर टैप करऽ, KOT भेजऽ, एक भा अधिक वस्तुओं के बिल बनावऽ, बिल बाँटेऽ, आउर भुगतान निपटाऽ।
 floor_help	प्रत्येक मेज़ दिखाती हई कि मेहमान बैठे हथ भा नइखे, उनका खुला बिल का हई, आउर अगली सेवा किसे चाहिए।
 kitchen_help	प्रति वैरिऽट भा प्रति आइटम तैयार मात्रा ट्रैक करऽ — जैसा चाहेऽ KOT में दर्ज करें।
-kitchen_empty	अबहीं खुला कुछ नइखे — नए ऑर्डर हियाँ दिखेंगे।
+kitchen_empty	अबहीं खुला कुछ नइखे।
 add_a_table	मेज़ जोड़ऽ
 add_station_heading	स्टेशन जोड़ऽ · जैसे तंदूर, साउथ इंडियन
 categories_help	वर्ग ऊ मेनू भाग के दिखातऽ हई जिसमेऽ व्यंजन आतऽ हई — जैसे स्नैक्स, मेन कोर्स भा बिरयानी। वर्ग अपने अनुसार बनावऽ: हमर बताए नाम चुनऽ, उनके नाम बदलेऽ, भा अपना जोड़ें।
@@ -1131,7 +1114,6 @@ bill_format_help	हर बिल पर अपन रेस्टोरें�
 bill_header_ph	पता | फ़ोन
 fssai_ph	FSSAI लाइसेंस नं. (भारत)
 bill_footer_ph	फ़ुटर (जैसे धन्यवाद, फिर आइए)
-save_bill_format	बिल प्रारूप सहेजऽ
 reset_bill_format	डिफ़ॉल्ट पर वापस
 bill_format_reset	बिल प्रारूप डिफ़ॉल्ट पर
 reset_kot_format	डिफ़ॉल्ट पर वापस
@@ -1201,13 +1183,11 @@ kot_copies_3	3
 kot_title_ph	शीर्षक (खाली = KOT - KITCHEN ORDER)
 kot_footer_ph	रसोई नोट (वैकल्पिक, दाम नइखे)
 kot_preview	पूर्वावलोकन
-save_kot_format	KOT प्रारूप सहेजऽ
 test_kot_format	टेस्ट KOT
 test_kot_sent	रसोई टिकट के नमूना भेजा
 test_bill_format	टेस्ट बिल
 test_bill_sent	बिल के नमूना भेजा
 test_print_no_printer	ऊ काम खातिर प्रिंटर नइखे — इसी स्क्रीन पर एक चुनऽ
-kot_format_saved	KOT प्रारूप सहेजा
 std_print	बिल प्रिंट आकार
 std_print_help	स्टैंडर्ड पोर्ट्रेट आउर लैंडस्केप बिल जॉब खातिर अक्षर आकार (थर्मल KOT अलग)। दोनों ओरिऽटेशन पर एक ही आकार।
 std_size_s	छोटा
@@ -1264,7 +1244,6 @@ new_items_head	अबहीं नइखे भेजा
 price_ph	कीमत
 price_ph_gst_inside	कीमत ({tax} शामिल)
 cancel_needs_table	रसोई के बाद रद्द करने खातिर ई ऑर्डर फ़्लोर (मेज़) से खोलऽ — काउंटर KOT भुगतान तक टिकट पर रहते हथ
-tax_rates_missing_hint	इन व्यंजनों पर {tax} दर नइखे — मेनू में कर दर सेट करऽ ({tax} inclusive में कीमतेऽ पहिले से {tax} शामिल)
 taxable_value	करयोग्य मूल्य
 gst_inside_price_note	({tax} शामिल)
 start_with_template	हमर मेनू टेम्पलेट से शुरू करऽ
@@ -1318,9 +1297,7 @@ order_empty_pick	ऑर्डर खाली हई — व्यंजन च�
 add_dishes	व्यंजन जोड़ऽ
 order_so_far	ई ऑर्डर में: {n} · {total}
 no_dish_match	“{q}” से कोई व्यंजन नइखे मिला
-pick_dishes_help	व्यंजन जोड़ने खातिर दबावऽ · सूची छोटी करने खातिर श्रेणी चुनऽ
 pick_done	हो गेल
-pick_done_dd	हो गेल · {label}
 printer_route_mode	अगर ई जगह कई प्रिंटर हों
 printer_mode_first	जो पहिले चले
 printer_mode_all	सब पर छापेऽ

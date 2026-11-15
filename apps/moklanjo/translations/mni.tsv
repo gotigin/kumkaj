@@ -171,8 +171,6 @@ selected_language	ꯈꯟꯈꯤ
 continue	ꯃꯈꯥ ꯆꯠꯂꯨ
 this_device	ꯃꯁꯤꯟ ꯑꯁꯤ
 device_use_q	ꯃꯁꯤꯟ ꯑꯁꯤ ꯀꯔꯝꯅ ꯁꯤꯖꯤꯟꯅꯒꯅꯤ?
-last_server_mode	Server ꯑꯣꯏꯔꯝꯃꯤ — ꯅꯝꯃꯨ, ꯃꯈꯥ ꯆꯠꯅꯕ
-last_client_mode	ꯈꯣꯡꯖꯦꯜ ꯑꯣꯏꯔꯝꯃꯤ — ꯅꯝꯃꯨ, ꯃꯈꯥ ꯆꯠꯅꯕ
 choose_server	server ꯈꯟꯕꯤꯌꯨ
 choose_server_hint	ꯂꯩꯔꯤꯕ server ꯍꯥꯡꯗꯣꯛꯎ, ꯅꯠꯇ꯭ꯔꯒ ꯂꯨꯆꯤꯡ ꯑꯇꯣꯞꯄꯒꯤꯗꯃꯛ ꯁꯥꯕꯤꯌꯨ.
 create_new_server	server ꯑꯅꯧꯕ ꯁꯥꯕꯤꯌꯨ
@@ -501,8 +499,6 @@ job_layout	ꯁꯦꯝꯗꯣꯛ
 job_delivery	ꯊꯕꯛ ꯀꯔꯝꯅ ꯊꯥꯏ
 job_size	ꯃꯌꯦꯛ ꯆꯥꯎꯕ
 job_size_ph	ꯈꯨꯗꯝ 18, 20, 26…
-save_receipt_format	ꯔꯤꯁꯤꯞꯇ ꯐꯣꯔꯃꯦꯠ ꯁꯦꯚ ꯇꯧꯕꯥ꯫
-save_label_format	ꯂꯦꯕꯦꯜ ꯐꯣꯔꯃꯦꯠ ꯁꯦꯚ ꯇꯧꯕꯥ꯫
 test_receipt_format	ꯇꯦꯁ꯭ꯠ ꯇꯧꯕꯒꯤ ꯔꯤꯁꯤꯞꯇ꯫
 test_label_format	ꯇꯦꯁ꯭ꯠ ꯇꯧꯕꯥ ꯂꯦꯕꯦꯜ꯫
 test_receipt_sent	ꯁꯦꯝꯄꯜ ꯔꯤꯁꯤꯞꯇ ꯊꯥꯔꯀꯄꯥ꯫
@@ -610,7 +606,7 @@ units_heading	ꯌꯨꯅꯤꯠ
 booking_measures	ꯕꯨꯀꯤꯡꯒꯤ ꯊꯧꯔꯥꯡꯁꯤꯡ꯫
 drawer_count	ꯕꯣꯛꯁ ꯂꯤꯁꯤꯡ (ꯌꯥꯕ ꯑꯣꯏꯔꯕꯗꯤ)
 spreadsheet_csv	ꯁ꯭ꯞꯔꯦꯗꯁꯤꯠ (CSV)
-bank_reconciliation	ꯕꯦꯡꯛ ꯆꯨꯝꯅꯕ (ꯅꯍꯥꯛꯀꯤ ꯕꯦꯡꯛ ꯔꯤꯄꯣꯔꯇꯒ ꯌꯦꯡꯕꯤꯌꯨ)
+bank_reconciliation	ꯕꯦꯡꯛ ꯆꯨꯝꯅꯕ
 book_add_product	ꯂꯥꯏꯔꯤꯛ — ꯄꯣꯠꯊꯣꯛ / ꯔꯦꯠ ꯍꯥꯄꯆꯤꯅꯕꯥ꯫
 book_opening_credit	ꯂꯥꯏꯔꯤꯛ — ꯍꯧꯔꯤꯕ ꯂꯦꯟꯕ
 account_kind	ꯑꯦꯀꯥꯎꯟꯇꯀꯤ ꯃꯈꯜ (ꯑꯃ ꯅꯝꯃꯨ)
@@ -650,7 +646,7 @@ net_word	ꯁꯦꯟꯊꯣꯛ
 offline_badge	ꯑꯣꯟꯂꯥꯏꯟ ꯌꯥꯎꯗꯕ
 optional_login_help	ꯆꯪꯕ ꯌꯥꯕ ꯑꯣꯏꯔꯕꯗꯤ (ꯃꯁꯛ + ꯄꯥꯁꯋꯥꯔꯗ). ꯃꯄꯨꯅ ꯃꯇꯝ ꯑꯃ ꯊꯝꯏ; ꯁꯤꯖꯤꯟꯅꯔꯤꯕꯅꯈꯛꯇ ꯃꯇꯨꯡꯗ ꯄꯥꯁꯋꯥꯔꯗ ꯍꯣꯡꯗꯣꯛꯄ ꯌꯥꯏ.
 or_unlock_login	ꯅꯠꯇ꯭ꯔꯒ ꯆꯪꯕꯒꯤ ꯃꯁꯛ + ꯄꯥꯁꯋꯥꯔꯗꯅ ꯍꯥꯡꯗꯣꯛꯎ
-permission_preset	ꯊꯕꯛ (ꯁ꯭ꯛꯔꯤꯟ ꯑꯃꯁꯨꯡ ꯍꯀꯁꯤꯡ ꯁꯦꯠ ꯇꯧꯏ)
+permission_preset	ꯊꯕꯛ
 preset_help_moklanjo	ꯁꯦꯟ ꯌꯦꯡꯕ: ꯌꯣꯟꯕ. ꯃꯄꯨꯔꯣꯏ: ꯌꯣꯟꯕ + ꯄꯣꯠ + ꯇꯣꯛꯄ/ꯁꯦꯝꯕ.
 product_locked_moklanjo	ꯃꯣꯛꯂꯥꯟꯖꯣ꯫
 product_only_moklanjo	ꯑꯦꯞ ꯑꯁꯤ ꯃꯣꯛꯂꯥꯟꯖꯣ ꯈꯛꯇꯅꯤ — ꯂꯥꯏꯔꯤꯛ + ꯕꯨꯀꯤꯡ ꯗꯦꯁ꯭ꯛ꯫ ꯑꯇꯣꯞꯄꯥ ꯇ꯭ꯔꯦꯗ ꯐꯦꯁꯁꯤꯡ ꯑꯁꯤ ꯃꯇꯨꯡꯗꯥ ꯇꯣꯉꯥꯅꯕꯥ ꯄꯣꯠꯊꯣꯛ ꯑꯣꯏꯅꯥ ꯁꯤꯞ ꯇꯧꯏ꯫
@@ -698,10 +694,6 @@ pin_hint_paired	ꯐꯝ ꯍꯦꯟꯕ ꯄꯦꯌꯔ ꯇꯧꯔꯦ — ꯍꯥꯡꯗ�
 pin_hint_pair_first	ꯐꯝ ꯍꯦꯟꯕ — ꯀꯦꯟꯐꯝꯒꯤ ꯃꯁꯤꯟ ꯍꯧꯖꯤꯛ ꯄꯦꯌꯔ
 unlock_to_continue	ꯍꯥꯡꯗꯣꯛꯎ, ꯃꯈꯥ ꯆꯠꯅꯕ
 no_staff_yet	ꯊꯕꯛꯇꯧꯕ ꯍꯧꯖꯤꯛ ꯂꯩꯇꯦ — ꯃꯄꯨ ꯑꯣꯏꯅ ꯍꯥꯡꯗꯣꯛꯎ, ꯃꯗꯨꯒꯤ ꯃꯇꯨꯡꯗ ꯂꯨꯞ
-status_server_set_pin	Server ꯃꯣꯗ — ꯃꯄꯨꯒꯤ PIN ꯊꯝꯕꯤꯌꯨ
-status_server_tills	Server ꯃꯣꯗ — ꯐꯝ ꯍꯦꯟꯕ ꯌꯥꯎꯕ ꯌꯥꯏ. ꯍꯥꯡꯗꯣꯛꯎ
-status_server_unlock	Server ꯃꯣꯗ — ꯃꯄꯨ ꯑꯣꯏꯅ ꯍꯥꯡꯗꯣꯛꯎ
-status_client_unlock	ꯈꯣꯡꯖꯦꯜ ꯃꯣꯗ — ꯍꯥꯡꯗꯣꯛꯎ, ꯌꯣꯟꯅꯕ
 icon_new_selected	ꯃꯁꯛ: ꯐꯥꯏꯜ ꯑꯅꯧꯕ ꯈꯟꯈꯤ — ꯃꯤꯡ ꯊꯝꯕꯤꯌꯨ ꯅꯝꯃꯨ
 icon_custom	ꯃꯁꯛ: ꯐꯝꯒꯤ ꯃꯁꯥꯒꯤ ꯃꯤꯡ
 icon_default	ꯃꯁꯛ: Kumkaj ꯃꯤꯡ (ꯃꯔꯨ) — ꯃꯁꯥꯒꯤ ꯑꯃ ꯈꯟꯕꯤꯌꯨ

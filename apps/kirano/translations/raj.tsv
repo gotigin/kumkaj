@@ -1,7 +1,5 @@
 # Rajasthani — राजस्थानी (raj). One key<TAB>text per line, in en() order; keep {placeholders}.
-app_tagline	किराना काउंटर: बेचो, स्टॉक करो, खाता अर किताबां। मुफ्त ऑफलाइन।
 unlock	ताळो खोलो
-pin_hint	मालिक PIN 0000 सूं शुरू होवै है
 sell	बेचणो
 buy	खरीदो
 books	दिन री किताब
@@ -20,17 +18,13 @@ reports_month	नफा अर हानि (महीनो)
 reports_aging	बकाया / डेबिट-क्रेडिट
 reports_balance_sheet	तुलन पत्र
 reports	बैंक बुक अर पी एंड एल
-refresh	ताजा करो
 undo	पूर्ववत करो
-start_tracking	ट्रैकिंग शुरू करो
 stock_minus	− स्टॉक
 stock_plus	+ स्टॉक
 settle_cash	नकद निपटान करो
 settle_card	कार्ड निपटान
 items	वस्तुवां
 nav_items	वस्तुवां
-more	और
-your_items	थारी चीजां
 items_help	संपादित करण रै वास्तै कोई वस्तु माथै टैप करो। नयो आइटम फार्म नै साफ़ कर देवै है। नाम या छोटा कोड सूं खोजो, कीमत तय करो (0 ठीक है), फेर जोड़ो। पैली सूं दर्ज बिक्री उण नाम नै राखै है जिणरै साथै बां माथै आरोप लगायो गयो हो।
 add_item	वस्तु जोड़ो
 new_item	नयो सामान
@@ -41,28 +35,22 @@ remove	हटाओ
 removed_items	हटाया गया सामान
 removed_help	पुनर्स्थापना वस्तु नै वस्तुवां रै मांय बिल्कुल उणी तरै राखै है जियां पैली ही — कीमत, फोटू अर श्रेणी।
 restore_item	बहाल करो
-empty_catalog	अबार तांई कोई सामान कोनी। सामान खोलो, एक नाम अर कीमत जोड़ो, फेर काउंटर सूं बेचो।
+empty_catalog	अबार तांई कोई सामान कोनी।
 total	कुल
 cash	नकद
 upi	UPI
 card	कार्ड
 credit	ग्राहक अर आपूर्तिकर्ता
 clear	साफ करो
-ready_to_sell	बुकिंग करण नै त्यार
 today_prefix	आज
-today_mid	आज
 owed	बकाया
-round_word	गोल
 back	पाछो
 sold_out	अनुपलब्ध छै
 restock	फेरूं स्टॉक करो
 not_tracked	ट्रैक कोनी करियो गयो
 in_stock	स्टॉक मांय
 marked_sold_out	चिन्हित अनुपलब्ध
-add_upper	जोड़ो
-na	N/A
 qty	वजन/मात्रा
-unit_at	रेट करो @
 actual	वास्तविक
 applied	लागू करियो
 note_ph	नोट (वैकल्पिक)
@@ -81,21 +69,13 @@ bill_item_qty	मात्रा
 bill_item_price	कीमत
 bill_item_amount	रकम
 bill_item_note	मद नोट
-bill_item_col_gap	स्तंभ री खाई
 bill_item_col_order	स्तंभ क्रम
 bill_item_col_sep	स्तंभ रा नियम
-bill_item_gap_tight	तंग
-bill_item_gap_comfort	आरामदायक
-bill_item_gap_wide	चौड़ो
-bill_item_num_width	संख्या स्तंभ
-bill_item_num_compact	कॉम्पैक्ट
-bill_item_num_comfort	आरामदायक
-bill_item_num_wide	चौड़ो
-bill_item_num_align	संख्यावां संरेखित होवै है
-bill_item_gap_em	गैप (एम)
-bill_item_qty_min	न्यूनतम (एम) री मात्रा
-bill_item_price_min	कीमत न्यूनतम (em)
-bill_item_amount_min	न्यूनतम रकम (em)
+slip_col_width	चौड़ाई (mm)
+slip_col_start	सरुआत री जगां (px)
+slip_col_end	छेहली जगां (px)
+slip_col_align	लिखावट री सीध
+slip_columns_help	हर स्तंभ री चौड़ाई में उणरी सरुआत अर छेहली जगां सामल है। लिखावट आपरै स्तंभ रै मांय लिपटै; सामग्री री चौड़ाई सूं बारै जको है वो कागज अर पूर्वावलोकन दोनूं में कट जावै।
 bill_total_qty_label	कुल लेबल री मात्रा
 bill_total_subtotal_label	उप कुल लेबल
 bill_total_grand_label	भव्य टोटल लेबल
@@ -108,11 +88,7 @@ bill_total_qty	कुल मात्रा
 bill_total_subtotal	उप कुल
 bill_total_grand	कुल कुल
 kot_unassigned	अनिर्धारित
-pos_tab_items	जोड़ी गई चीजां
-pos_tab_payment	भुगतान
-settings_hub_title	सेटिंग्स
 settings_hub_help	एक बार मांय एक क्षेत्र नै खोलो — कम स्क्रॉलिंग, साफ विकल्प।
-settings_back	पाछो
 settings_sec_language	भाषा अर मुद्रा
 settings_sec_country	देश अर कर
 settings_sec_tills	दूजा उपकरण
@@ -154,35 +130,17 @@ diag_cleared	नैदानिक लॉग साफ़ कर दिया �
 sidebar_settings	साइडबार
 sidebar_settings_help	साइड रेल रै समान ही आइकन। फेर सूं क्रमबद्ध करण रै वास्तै एक पंक्ति नै खींचो। दिखाबा या छुपाबा रै वास्तै स्विच नै पलट दो। सेटिंग्स अर लॉक हमेशा बार माथै रैवै है।
 sidebar_always_on_short	हमेशा चालू रैवेला
-sidebar_back_settings	पाछो
-sidebar_shown	दिखायो गयो
-sidebar_hidden	छुपायोड़ो
-sidebar_always_on	हमेशा बार माथै
-sidebar_shown_hint	साइड रेल / नीचै रै टैब माथै दिखायो गयो है
-sidebar_hidden_hint	बार सूं छुप्योड़ो
 sidebar_menu_items	वस्तुवां
 sidebar_enable_all	सगळा नै सक्षम करो
 sidebar_disable_all	सगळा नै अक्षम करो
 sidebar_order_saved	साइडबार रो आदेश बचायो गयो
 sidebar_visibility_saved	साइडबार री दृश्यता बचाई गई
-amounts_hide	छुपाओ
-amounts_show	दिखाओ
-printers_none_hint	पैली इण डिवाइस माथै एक प्रिंटर नै सेव करो, फेर इणनै बिल या किणी सेक्शन मांय जोड़ो
-counter	काउंटर
-dine_in	काउंटर
-takeaway	ले जाबा तांई
-order	ऑर्डर
 sales	बिक्री
-sales_refunds	बिक्री अर रिफंड
 day_close	दिन बंद
 reports_expenses	बैंक बुक अर पी एंड एल
 nav_reports	रिपोर्ट
 nav_settings	सेटिंग्स
 nav_lock	ताळो
-no_sale_yet	अबार तांई कोई बिक्री कोनी
-favorites	मनपसंद
-favorites_help	वां चीजां नै थै घणी बार बेचो हो, जिणनै थै आपरै लॉगिन रै वास्तै बचा राखी है। बिल मांय एक जोड़ो, या नीचै दीरीजी सगळी चीजां सूं आपरी सूची बणाओ।
-your_favorites	थारा पसंदीदा
 all_items	सगळी चीजां
 frequent	बार-बार
 added_items	जोड़ी गई चीजां
@@ -199,8 +157,6 @@ zero_sales_on	₹0 री अनुमति देवो
 zero_sales_off	कीमत री जरूरत
 zero_sales_saved_on	शून्य-मूल्य री बिक्री री अनुमति है
 zero_sales_saved_off	बिक्री री कीमत ₹0 सूं ऊपर होणी जरूरी है
-no_favorites	अबार तांई कोई पसंदीदा कोनी है — नीचै दीरीजी सूची मांय सूं चीजां जोड़ो।
-add_to_bill	बिल मांय जोड़ो
 added	जोड़ दियो गयो
 owes_word	ऋण
 selected_word	चुण्यो गयो
@@ -209,19 +165,11 @@ chip_missing_customer	चुणियोड़ो ग्राहक गाय�
 chip_no_customer	अबार तांई कोई ग्राहक कोनी — एक नाम टाइप करो, फेर क्रेडिट माथै टैप करो
 credit_summary_fmt	{} ग्राहक · खुला क्रेडिट {} · अग्रिम राख्या {}
 recent_label	हाल ही रो:
-start_order	आदेश शुरू करो
-open_bill	खोलो बिल
-collect_payment	भुगतान एकठ्ठा करो
-payment_pending	भुगतान लंबित छै
-collect_at_counter	काउंटर माथै एकठ करो
 inventory	इन्वेंट्री
-inventory_stock	इन्वेंट्री अर स्टॉक
 branches	शाखावां
-branches_org	शाखावां अर संगठन
 credit_customers	ग्राहक अर आपूर्तिकर्ता (क्रेडिट खाता)
 customer_name_ph	ग्राहक या आपूर्तिकर्ता रो नाम
 new_customer_ph	नयो ग्राहक या आपूर्तिकर्ता रो नाम
-item_name_ph	वस्तु रो नांव (जियां कै मसाला डोसा)
 item_price_ph	कीमत
 start_template	उत्पाद
 team	टीम
@@ -229,17 +177,11 @@ team_pins	टीम अर PINs
 my_pin_settings	म्हारो PIN
 settings_hub_help_my_pin	इण डिवाइस माथै साइन इन करियोड़ा मिनख रै वास्तै अनलॉक PIN नै बदलो।
 team_self_help	एक साइन-इन: एक नयो PIN, एक नयो पासवर्ड, या दोनूं। थारै कनै जो है बांनै राखबा रै वास्तै एक बक्सा खाली छोड़ दो। मालिक सूं पूछो कै थनै न्यारी-न्यारी स्क्रीन या अधिकार चाइजै।
-backup_settings	बैकअप अर सेटिंग्स
-lock_app	ऐप नै लॉक करो
 pick	चुणो
-select	चुणो
 advance	अग्रिम
 owner	मालिक
 staff	कर्मचारी
 photo	फोटू
-auto	ऑटो
-prev	पैली
-next	आगलो
 ok	ठीक छै
 this_shop	सर्वर मोड
 extra_till	ग्राहक मोड
@@ -248,17 +190,13 @@ server	सर्वर मोड
 client	ग्राहक मोड
 language_currency	भाषा अर मुद्रा
 language	भाषा
-choose_language	आपणी भाषा चुणो
 language_setup_hint	इण उपकरण री भाषा रो पालन करो, या खुद कोई एक चुणो।
 lang_follow_platform	उपकरण री भाषा
 lang_pick_user	भाषा चुणो
 lang_platform_now	अबै डिवाइस री भाषा
 selected_language	चुण्यो गयो
-continue	जारी राखो
 this_device	यो उपकरण
 device_use_q	इण उपकरण रो उपयोग कियां कर्यो जावेला?
-last_server_mode	सर्वर हो — जारी राखण रै वास्तै टैप करो
-last_client_mode	ग्राहक हो — जारी राखण रै वास्तै टैप करो
 choose_server	एक सर्वर चुणो
 choose_server_hint	कोई मौजूदा सर्वर खोलो, या फेर दूजा कारोबार रै वास्तै बणाओ।
 create_new_server	नयो सर्वर बणाओ
@@ -268,12 +206,6 @@ server_remove_pin_ph	मालिक PIN एक सर्वर नै हटा
 only_owner_remove_server	सर्वर नै फगत मालिक ई हटा सकै है
 owner_pin_remove_server	इण सर्वर नै हटाबा रै वास्तै मालिक PIN री जरूरत है
 device_setup_help	सर्वर अठै किताबां राखै है। क्लाइंट एक सर्वर रै साथै जोड़ै है।
-app_template_heading	स्टार्टर कैटलॉग (वैकल्पिक)
-app_template_blurb	एक नमूना सूची नै लोड करै है; मालिक जाहिर (जाहिर), एडमिन आसिफ (आसिफ, पिन 1111), कैशियर नवाज (नवाज, पिन 0000); कर/जीएसटी बंद; आगला साइडबार; इतिहास 4 घंटे रै बाद साफ़ हो जावै है (अर बैकअप रै मांय अबार साफ़ करो); आज उतार दो; संकीर्ण ट्रे रै वास्तै कॉम्पैक्ट बिल + मानक मार्जिन। कर अर साइडबार पीयर नै सेटिंग्स रै मांय पाछो चालू कर सकां।
-app_template_apply	स्टार्टर कैटलॉग लागू करो
-app_template_skip	अबार तांई छोड़ो
-app_template_status	सर्वर तैयार है — स्टार्टर कैटलॉग लागू करो, या छोड़ो
-app_template_importing	{title} लगाणो...
 currency	मुद्रा
 backup	बैकअप
 use	प्रयोग करो
@@ -307,7 +239,7 @@ attachments_last_expense	संलग्नक (लास्ट एक्सप�
 bank	बैंक
 bank_in	बैंक रै मांय
 bank_out	बैंक आउट
-bank_reconciliation	बैंक सुलह (आपरै बैंक विवरण रै खिलाफ टिक लगाओ)
+bank_reconciliation	बैंक सुलह
 bank_to_till	बैंक → तांई
 book_add_dish	किताब — वस्तु / वस्तु जोड़ो
 book_opening_credit	किताब — ओपनिंग क्रेडिट
@@ -337,9 +269,6 @@ share_whatsapp	शेयर करो WhatsApp
 lan_pages_heading	वाई-फाई माथै ग्राहक पन्ना
 lan_pages_help	इण दुकान रै वाई-फाई माथै, ग्राहक पेज डिस्प्ले बोर्ड अर प्रतिक्रिया रै वास्तै काम करै है। मोबाइल डेटा माथै लोगां नै बाद मांय क्लाउड री जरूरत पड़ैला। एक कार्ड टर्मिनल या भुगतान लिंक वैकल्पिक है अर कदैई काउंटर नै ब्लॉक कोनी करै।
 diag_send_heading	इण उपकरण नै साझा करो
-optional_login_heading	वैकल्पिक लॉगिन
-rights_heading	अधिकार
-ops_panel	स्थानीय संचालन
 crm_heading	ग्राहक अर संदेश
 crm_help	जन्मदिन, निष्ठा, निष्क्रिय अर शीर्ष मेहमान — कतार SMS या WhatsApp इरादा। संदेश रै मांय {name} अर {points} रो प्रयोग करो। मालिक टैप भेजै है; कोई भी चीज खुद सूं कोनी फूटै।
 crm_queue_sms	कतार SMS
@@ -364,21 +293,17 @@ till_wallet_topup_ph	टॉप-अप वॉलेट री रकम
 till_voucher_issue_amt_ph	वाउचर री रकम जारी करो
 till_voucher_issue_code_ph	नयो वाउचर कोड
 bulk_price_apply	थोक कीमत लागू करो
-card_terminal_optional	कार्ड टर्मिनल / भुगतान लिंक (जद इंटरनेट उपलब्ध है तो वैकल्पिक)
 copy_report	रिपोर्ट री प्रतिलिपि
 counted_cash_ph	दराज रै मांय नकदी गिणी
 country_tax	देश अर कर
 create_backup	बैकअप बणाओ
 credit_limit_heading	क्रेडिट सीमा (चयनित ग्राहक या आपूर्तिकर्ता)
-day_close_summary	दिन रो समापन रो सारांश
 delete_party	चुणियोड़ा ग्राहक या आपूर्तिकर्ता नै हटाओ
-delivery	वितरण
 done_open_books	होग्यो — किताबां खोलो
 drawer_count	दराज री गिणती (वैकल्पिक)
 expense_heading	खर्चो
 export_day	निर्यात रो दिन
 extra_note_bill_ph	इण बिल/बिक्री माथै अतिरिक्त नोट
-extra_note_expense_ph	लारला खर्चा माथै अतिरिक्त नोट
 extra_tills_heading	अतिरिक्त टिल
 other_devices_help_heading	दूजा उपकरणां नै सेट करो
 other_devices_help	इण उपकरण (सर्वर) माथै: दूजा उपकरण → अतिरिक्त टिल री अनुमति देवो। पेयरिंग कोड अर वाई-फाई एड्रेस माथै ध्यान राखजो। जे ओ दिखाई देवै तो दूजा उपकरणां नै कनेक्ट करण री अनुमति देवो माथै टैप करो। कम्प्यूटर माथै, इण कम्प्यूटर रै साथै शुरू करो माथै टैप करो। एक दूजा डिवाइस माथै: ऐप इंस्टॉल करो, क्लाइंट मोड चुणो, दुकान रो सर्वर ढूंढो (या पता टाइप करो), पेयरिंग कोड दर्ज करो, अबार पेयर करो। जे वाई-फाई बंद हो जावै तो आर्डर डिवाइस माथै इंतजार करै है अर जद सर्वर फेरूं जवाब देवै है तो जावै है। सर्वर माथै अतिरिक्त प्रिंटर सेट करिया जावै है (सेटिंग्स → प्रिंटर) — अतिरिक्त टिल्स वठै बिल भेजै है।
@@ -392,7 +317,6 @@ login_id_ph	उपयोगकर्ता नाम
 mark_cleared	निशान साफ़ होग्यो
 new_party_clear	नयो ग्राहक या आपूर्तिकर्ता (साफ रूप)
 new_party_kind_supplier_ph	नयो ग्राहक या आपूर्तिकर्ता किस्म (आपूर्तिकर्ता)
-next_country	आगलो देश
 next_order	आगलो आदेश (डेस्क साफ करो)
 note_gstin_ph	नोट / GSTIN / समझौता री याद दिरावै है
 notes_attach_party	नोट्स अर संलग्नक (चयनित ग्राहक या आपूर्तिकर्ता)
@@ -410,8 +334,6 @@ pay_ap_cash	एपी नै नकद भुगतान करो
 pay_ap_heading	आपां बांनै जो देणो है बो चुकाओ (एपी)
 pay_ap_upi	एपी UPI चुकाओ
 pay_selected_heading	चुणीज्योड़ा वेतन (ऋण चुकाणो / अग्रिम लेणो)
-pick_from_items	म्हारी चीजां मांय सूं चुणो
-prev_country	पिछला देश
 print_open	छापो/खोलो
 reason_amend_ph	संशोधन / शून्य / वापसी रो कारण
 reason_note_ph	कारण / नोट (बर्बादी, गिणती, ...)
@@ -435,14 +357,10 @@ history_after_hours	घण्टां पछै
 history_hours_ph	घंटे (1-168, डिफ़ॉल्ट 4)
 history_hours_save	घंटे बचाओ
 history_clear_now	अबार इतिहास साफ करो
-history_cleared	व्यापार रो इतिहास साफ़ कर दियो गयो — सेटअप राख्यो गयो
-history_retention_saved	इतिहास साफ करणो बचायो गयो
 history_hours_saved	इतिहास रा घंटा बचाया गया
-history_owner_only	फगत मालिक या प्रशासक ई इतिहास नै साफ़ कर सकै है
 rollup	रोल-अप
 save_brand	ब्रांड बचाओ
 save_business_id	व्यापार री आईडी बचाओ
-save_business_name	व्यापार रो नांव बचाओ
 save_features	बचाओ
 save_features_named	{name} बचाओ
 save_features_ok	{name} रै वास्तै सेव कर दियो गयो सेटअप
@@ -473,7 +391,6 @@ copy_pair_code	जोड़ी कोड री प्रतिलिपि ब�
 new_pair_code	नयो जोड़ी कोड
 pair_finishing	जोड़ी खत्म करणो... दुकान री किताबां नै लागू करणो
 pair_opening	टिल खोल रिया हां...
-pair_copied	जोड़ी कोड कॉपी कर दियो गयो
 lan_offline_waiting	दुकान रो सर्वर अप्रचलित · {n} इंतजार कर रियो है
 lan_connecting	दुकान सूं जुड़ रिया हां...
 lan_live	लाइव
@@ -487,7 +404,6 @@ firewall_waiting	व्यवस्थापक रै संकेत री �
 lan_join_help	दूजा डिवाइस माथै: क्लाइंट मोड → दुकान रो सर्वर ढूंढो (या {addr} टाइप करो) → पेयरिंग कोड {code}।
 lan_pair_status	Wi‑Fi {addr}
 lan_join_help_no_addr	एक पते रै वास्तै इण उपकरण नै Wi‑Fi सूं जोड़ो।
-lan_no_address	अबार तांई कोई Wi‑Fi पतो कोनी — दुकान Wi‑Fi सूं जुड़ो।
 lan_not_listening	उपकरण स्वीकार कोनी कर रया है (पोर्ट {port} व्यस्त)। ऐप नै फेरूं चालू करो।
 lan_tills_off	अतिरिक्त टिल बंद है। बांनै दूजा उपकरण नै जोड़बा री इजाजत दो।
 paired_with	जोड़ी · {url}
@@ -508,41 +424,21 @@ printers_help	प्रिंटर ढूंढो, एक नै चुणब�
 printers_host_only	प्रिंटर दुकान रै डिवाइस (सर्वर) माथै लगायोड़ा है। यो टिल बिल अर पुराणी टिकट नै बठै भेजै है - सर्वर माथै रैवण नै ढूंढो / जोड़ो / असाइन करो। टेस्ट पेज अर बिल प्रिंट साइज सर्वर माथै जावै।
 printers_find_heading	प्रिंटर ढूंढो
 printers_find_tip	फाइंड इण उपकरण नै स्कैन करै है अर सूची नै अद्यतन राखै है।
-printers_pool_heading	प्रिंटर
-printers_pool_tip	फाइंड इण उपकरण नै स्कैन करै है अर इण सूची नै अद्यतन राखै है।
 printers_pool_empty	(अजै तांई कोई कोनी — ढूंढो माथै टैप करो)
-printers_routes_help	प्रिंटर ढूंढो जिणनै ऑपरेटिंग सिस्टम पैली सूं जाणै है। बिल अर पर्ची रै प्रारूप रै तहत बिल अर हरेक खंड नै बांनै सौंपो।
 printer_assign_dd	असली प्रिंटर: {place}
 printer_assign_pick	असली प्रिंटर रो चयन करो
 printer_profile_heading	लेआउट
 vp_delivery_heading	वितरण
 vp_delivery_help	यो आभासी प्रिंटर नौकरियां नै कियां भेजै है — ओएस दस्तावेज, रॉ बाइट्स, या ईएससी/पीओएस। पर्ची सामग्री (प्रकार आकार, रैप, मार्जिन) बिल / पर्ची प्रारूप रै आधार माथै तय करी जावै है, अठै नीं।
-vp_type_size_heading	आकार आकार
-vp_wrap_heading	लपेटण री चौड़ाई
-vp_margin_heading	मार्जिन
 vp_delivery_spooler	ओएस दस्तावेज (सिस्टम स्पूलर)
 vp_delivery_raw	डिवाइस रै वास्तै कच्ची बाइट्स
 vp_delivery_escpos	ESC/POS थर्मल कमांड
 virtual_printer_new	नयो वर्चुअल प्रिंटर
 virtual_printer_selected	“{name}” नै संपादित करणो — स्विच करण रै वास्तै सूची मांय सूं दूजा माथै टैप करो
-virtual_printer_tap_list	इणनै संपादित करण रै वास्तै सूची रै मांय एक आभासी प्रिंटर नै टैप करो
 config_layout_portrait	चित्र
 config_layout_landscape	परिदृश्य
 config_send_os	सिस्टम स्पूलर
 config_send_escpos	ESC/POS
-profiles_heading	लेआउट
-profiles_empty	(अजै तांई कोई लेआउट कोनी)
-profile_builtin	बिल्ट-इन
-profile_custom	रीत
-profile_name_ph	लेआउट रो नांव
-profile_new	नयो लेआउट
-profile_delete	लेआउट नै हटाओ
-profile_created	लेआउट बणायो गयो
-profile_deleted	लेआउट हटा दियो गयो
-profile_builtin_keep	अंतर्निहित लेआउट नै हटाया कोनी जा सकै
-config_saved	अपडेट कर दियो गयो
-config_selected	चुण्यो गयो “{name}”
-printer_output_heading	आभासी प्रिंटर
 virtual_printers_heading	आभासी प्रिंटर
 virtual_printers_empty	अबार तांई कोई आभासी प्रिंटर कोनी है — नीचै मान सेट करो, फेर बचाओ। जद थारै कनै कीं है, तो संपादित करण सारू सूची मांय सूं एक माथै टैप करो।
 virtual_printer_name_ph	आभासी प्रिंटर रो नांव (वैकल्पिक)
@@ -554,71 +450,32 @@ virtual_printer_deleted	आभासी प्रिंटर "{name}" नै �
 virtual_printer_updated	आभासी प्रिंटर अपडेट कर दियो गयो
 virtual_printer_updated_named	आभासी प्रिंटर “{name}” अपडेट कर दियो गयो है
 virtual_draft_layout	आगला वर्चुअल प्रिंटर रै वास्तै मान तय करिया गया है
-virtual_draft_send	आगला आभासी प्रिंटर रै वास्तै मान तय करियो गयो है
 virtual_need_real	पैली एक असली प्रिंटर चुणो
 virtual_need_select	हटाबा रै वास्तै एक आभासी प्रिंटर रो चयन करो
 real_printer_selected	चुण्यो गयो: {name}
-printers_routes_heading	जठै चीजां छपै है
-route_pick_heading	जगां
 route_editing	संपादन: {name}
-route_assigned	{printer} नै {place} रै मांय जोड़ दियो
-route_already_assigned	इण जगै माथै पैली सूं ई: {printer}
 route_cleared	साफ कर दियो गयो {name}
-route_assigned_empty	इण जगै माथै कोई कोनी
-route_tap_select	चुणबा तांई टैप करो
 route_tap_selected	चुण्यो गयो
-route_pick_printer_first	पैली एक प्रिंटर माथै टैप करो
-route_assigned_heading	प्रिंटर
-route_add_heading	असाइन करो
-printer_label_ph	नाम (जियां कै काउंटर प्रिंटर)
 printer_target_ph	सिस्टम प्रिंटर रो नांव या होस्ट:9100
 printer_target_default	इण कंप्यूटर रो सामान्य प्रिंटर (कोरो पतो)
-printer_wire_heading	प्रोफाइल
-printer_wire_escpos	ESC/POS
-printer_wire_os	चित्र
-printer_wire_os_portrait	चित्र
-printer_wire_os_landscape	परिदृश्य
-printer_wire_escpos_short	ESC/POS
-printer_wire_os_short	चित्र
-printer_wire_os_landscape_short	परिदृश्य
-printer_format_custom	नयो कस्टम प्रोफाइल
-printer_format_custom_label	कस्टम
-printer_format_custom_added	इण जगै रै वास्तै कस्टम प्रोफाइल जोड़ दियो गयो है
-add_printer	प्रिंटर जोड़ो
-route_pick_ph	बिल या कोई दुकान रो खंड
 route_bill	बिल
-route_dont_print	प्रिंटर कोनी
 station_print_pick_first	पैली एक दुकान रो खंड चुणो
-station_vps_empty	अबार तांई कोई प्रिंटर कोनी — सेटिंग्स → प्रिंटर रै तळै बांनै ढूंढो
 bill_printers_dd	बिल रै वास्तै प्रिंटर
 bill_printers_dd_n	बिल रै वास्तै {n} प्रिंटर · बदलबा रै वास्तै टैप करो
 station_vp_attached	प्रिंटर लगायोड़ो है
 station_vp_detached	स्टेशन सूं प्रिंटर हटा दियो गयो
-route_up	ऊपर
-route_down	नीचै
-route_clear	साफ करो
-save_printers	प्रिंटर बचाओ
 print_test_page	एक परीक्षण पन्ना छापो
 no_printer_assigned	प्रिंटर कोनी
-test_page_no_printer	{place} रै वास्तै कोई प्रिंटर कोनी — इणनै एक प्रिंटर जोड़ो, फेर फेरूं कोशिश करो
 test_page_pick_first	पैली परीक्षण पृष्ठ रै वास्तै प्रिंटर चुणो — फेर परीक्षण पृष्ठ प्रिंट करो
 test_printers_dd	परीक्षण पन्ना रै वास्तै प्रिंटर
 test_printers_dd_n	परीक्षण पृष्ठ रै वास्तै {n} प्रिंटर · बदलबा रै वास्तै टैप करो
 test_printer_picked	परीक्षण: {name} माथै
 test_printer_cleared	परीक्षण कोनी: {name}
 test_page_sent_n	परीक्षण पन्ना {n} प्रिंटर नै भेज दियो गयो है
-batch_cancel	रद्द कर दियो
-batch_cancel_n	रद्द करो चिन्हित ({n})
-batch_cancel_none	पैली एक या एक सूं बेसी भेजी गई चीजां नै चिन्हित करो — फेर चिन्हित रद्द करो
-batch_cancel_title	चिन्हित वस्तुवां नै रद्द करो — एक कारण, हरेक खंड रै वास्तै एक रद्द करण री पर्ची
-batch_cancel_ok	{n} वस्तुवां रद्द कर दी गई · {slips} रद्द पर्ची (s) → {kitchens}
-batch_cancel_ok_noprint	{n} आइटम रद्द कर दिया गया — ऑटो-प्रिंट बंद है, इण वास्तै कोई रद्द पर्ची कोनी
 printers_saved	बचायो गयो
-test_page_sent	परीक्षण पन्ना भेज दियो गयो है — प्रिंटर री जांच करो
 test_page_sent_one	टेस्ट पेज {name} माथै भेज दियो गयो है — प्रिंटर री जांच करो
 printers_found	मिल्यो {n}: {list}
 printers_find_synced	{n} — {new} नयो मिल्यो
-printer_on_device	बचायो गयो
 printer_already_added	पैली सूं ई जोड़ दियो गयो है
 printer_already_saved	पैली सूं बचायो गयो है: {name}
 find_printers	प्रिंटर ढूंढो
@@ -628,7 +485,6 @@ cancelled	रद्द कर दियो गयो
 printers_tap_find	प्रिंटर री सूची बणाबा रै वास्तै ढूंढो माथै टैप करो जिणनै ओ डिवाइस इस्तेमाल कर सकै है।
 printers_none_found	कोई भी कोनी मिल्यो — सिस्टम प्रिंटर रो नाम या आईपी (जियां 192.168.1.50) टाइप करो।
 printer_from_find	जोड़ दियो गयो {name}
-bill_printer_ph	बिलां रै वास्तै प्रिंटर
 queue_refused	दुकान रै द्वारा स्वीकार नीं करियो गयो है ({n}) — काउंटर माथै हरेक री जांच करो:
 clear_not_accepted	जांच करीजी — आ सूची साफ़ कर दी
 device_name_ph	इण उपकरण रो नांव
@@ -638,7 +494,6 @@ connected_now	अबार जुड़योड़ो
 backup_failed	लास्ट ऑटोमैटिक बैकअप फेल होग्यो: {e}
 backup_overdue	{n} दिनां तांई कोई बैकअप कोनी — ऐप नै इण डिवाइस माथै खुलो राखो ताकि ओ बैकअप ले सकै।
 disk_low	इण डिवाइस माथै फगत {mb} एमबी मुफ्त है — बैकअप जल्द ही फेल हो जावैला। थोड़ी सी जगां खाली करो।
-last_seen_devices	लारली बार देख्यो गयो: {time}
 connection_to_shop	दुकान सूं कनेक्शन
 supplier_name_ph	आपूर्तिकर्ता रो नांव (या ग्राहक)
 supplier_ph	आपूर्तिकर्ता
@@ -696,7 +551,6 @@ currency_use_help	स्क्रॉल करो अर किणी भी स
 day_close_help	एक दिन री समाप्ति री रिकॉर्डिंग करणो ओ सारांश (अर अगर गिणती करी जावै तो दराज री भिन्नता) नै लेखापरीक्षा लॉग मांय सहेज लेवै है। ओ बेचणो बंद कोनी करै।
 expenses_word	खर्चा
 feature_access_help	वे कांई खोल सकै है — वैकल्पिक; ऊपरली नौकरी पैली सूं ई एक डिफॉल्ट सेट कर राखी है
-footer_local	स्थानीय SQLite · हमेशा रै वास्तै मुफ्त · शून्य बादळ
 fresh_book_kirano	ताजा = खाली कैटलॉग (बाद में आइटम जोड़ो)। किताब = ओपनिंग स्टॉक टाइप करो अर नीचे थानै कुण देनदार है।
 fresh_selected	ताजा चुण्यो गयो है - कैटलॉग खाली रैवेला। जद तैयार हो जावो तो होग्यो माथै टैप करो।
 gross_word	सकल
@@ -709,12 +563,9 @@ net_word	शुद्ध
 offline_badge	ऑफलाइन
 optional_login_help	वैकल्पिक लॉगिन (आईडी + पासवर्ड)। मालिक एक बार सेट कर देवै है; फगत उपयोगकर्ता ही बाद मांय पासवर्ड बदल सकै है।
 or_unlock_login	या फेर लॉगिन आईडी + पासवर्ड सूं अनलॉक करो
-permission_preset	नौकरी (स्क्रीन अर धन री क्रियावां सेट करै है)
-preset_help_kirano	कैशियर: बेचो। प्रबंधक: बेचो + वस्तुवां + शून्य/संशोधित करो।
-product_locked_kirano	किरानो
+permission_preset	नौकरी
 product_only_kirano	किरानो किराणा / किराना ऑपरेटिंग सिस्टम है: काउंटर सेल, स्टॉक, क्रेडिट अर किताबां - थारै उपकरणां माथै ऑफलाइन।
 purchases_cogs	खरीदी (COGS)
-qty_cap	मात्रा
 restore_help	पुनर्स्थापना: एक बैकअप उठाओ। किताबां उण बगत री तरै ई खुलै है; अबार जकी किताबां है बां नै पैली बचा ली जावै है, सो इणनै पूर्ववत करियो जा सकै है।
 wipe_data_heading	स्थानीय डेटा नै हटाओ
 wipe_data_help	फगत मालिक — विंडोज अनइंस्टॉल रै समान विकल्प। व्यावसायिक अभिलेख व्यापार इतिहास नै साफ़ करै है पण वस्तुवां अर सेटअप नै राखै है (जियां कै आपातकालीन अनलॉक पिन)। दुकान रो सेटअप किताबां रो डाटाबेस हटा देवै है। स्क्रीन री वरीयतावां विंडो/भाषा नै साफ़ कर देवै है। मालिक रै पिन सूं पुष्टि करो। टीम माथै आपातकालीन अनलॉक पिन अलग है (अनलॉक रै बगत गुप्त रूप सूं पोंछो)।
@@ -747,7 +598,6 @@ staff_renamed	नाम बचायो गयो
 staff_setup_copied_hire	सेटअप {name} सूं कॉपी करियो गयो है — एक नयो नाम अर PIN सेट करो, फेर स्टाफ जोड़ो
 staff_setup_copied_edit	{from} रो सेटअप {to} माथै कॉपी कर दियो
 staff_copy_need_selected	पैली किण नै संपादित करणो है, ओ चुणो
-staff_copy_need_source	किण रो सेटअप कॉपी करणो है, ओ चुणो
 staff_copy_same	ओ ईज मिनख है- कोई दूजो चुणो
 staff_rename_need_selected	पैली किण रो नांव बदळणो है, ओ चुणो
 team_pick_hint	चुणो कै किण नै संपादित करणो है — स्क्रीन, मनी राइट्स अर स्टेशन फगत उण मिनख रै वास्तै ही दिखाई देवै है।
@@ -762,15 +612,9 @@ unit_picker_off	बंद
 we_owe_them	म्हे बां रो ऋणी हां
 who_unlocking	कुण खोल रियो है?
 locked_word	बंद कर दियो गयो
-show_pin	PIN दिखाओ
-hide_pin	PIN छुपाओ
 set_owner_pin	मालिक नै सेट करो PIN
 enter_owner_passcode	मालिक रो पासकोड दर्ज करो
 enter_staff_passcode	स्टाफ पासकोड दर्ज करो
-pin_count_zero	0 / 12 अंक · कम सूं कम 4, फेर ठीक है
-pin_count_need	{} / 12 अंक · {} और री जरूरत है
-pin_count_full	12 / 12 अंक · ठीक दबाओ
-pin_count_ready	{} / 12 अंक · तैयार होबा माथै ठीक दबाओ
 pin_hint_choose	4-12 अंक चुणो · बचाबा रै वास्तै दर्ज करो या अनलॉक करो
 pin_hint_new	नयो 4-12 अंक रो मालिक PIN · दर्ज करो या अनलॉक करो
 pin_hint_shop_code	दुकान रो उपकरण · जोड़ी कोड {}
@@ -779,23 +623,15 @@ pin_hint_paired	जोड़ी बणाबा तांई अतिरिक�
 pin_hint_pair_first	अतिरिक्त टिल — पैली दुकान रै उपकरण सूं जोड़ो
 unlock_to_continue	जारी राखबा तांई ताळो खोलो
 no_staff_yet	अबार तांई कोई स्टाफ कोनी — मालिक रै रूप मांय अनलॉक करो, फेर टीम
-status_server_set_pin	सर्वर मोड — मालिक PIN सेट करो
-status_server_tills	सर्वर मोड — अतिरिक्त टिल जुड़ सकै है। ताळो खोलो
-status_server_unlock	सर्वर मोड — मालिक रै रूप मांय अनलॉक करो
-status_client_unlock	ग्राहक मोड — बेचबा रै वास्तै अनलॉक करो
 icon_new_selected	आइकन: नयी फाइल चुणी गई है — ब्रांड बचाओ माथै टैप करो
 icon_custom	आइकन: कस्टम वेन्यू रो निशान
 icon_default	आइकन: Kumkaj चिन्ह (डिफ़ॉल्ट) — एक कस्टम रो चयन करो
 logo_yours	लोगो: थारी दुकान रो लोगो — स्क्रीन अर रसीदां माथै दिखायो गयो है
 logo_default	लोगो: Kumkaj चिन्ह (डिफ़ॉल्ट) — जे थारै कनै है तो खुद रो चुणो
-tmpl_current	हाल: {} — {}
-tmpl_selected	चुण्यो गयो: {} — {}
 setup_complete	सेटअप पूरो होग्यो
 onboard_fresh_tmpl	ताजा · {} — कैटलॉग खाली शुरू होवै है; आइटम रै मांय आइटम जोड़ो, फेर होग्यो।
 onboard_book_tmpl	बुक · {} — आइटम अर ओपनिंग क्रेडिट जोड़ो, फेर होग्यो।
-onboard_template_tmpl	जे थै चावो तो जगै रो नांव बताओ, फेर ओ चुणो कै किण भांत सरू करणो है।
 tmpl_blurb	किराणा काउंटर: बेचो, स्टॉक करो, खाता, आपूर्तिकर्ता खरीदो, किताबां।
-tmpl_how	काउंटर माथै बेचो; स्टॉक रै वास्तै खरीदो; दिन री किताब रै वास्तै किताबां।
 reports_facet_title	रिपोर्ट
 reports_facet_help	दिन री किताबां, ग्राहक या आपूर्तिकर्ता री उम्र बढ़णो, बैंक पोस्ट अर अवधि पी एंड एल।
 against_bill_ph	ऊपर # बिल रै खिलाफ (वैकल्पिक)
@@ -806,14 +642,12 @@ amount_ph	रकम
 amount_received_ph	प्राप्त रकम
 amount_we_pay_ph	रकम जिणनै म्हे चुकावांला
 business_name_ph	व्यापार रो नांव
-category_new_ph	श्रेणी (वैकल्पिक, जे नयो बणायो गयो है)
 code_bag_ph	कोड (बैग)
 conv_factor_ph	कारक (25 = 1 बैग → 25 किलो)
 country_code_ph	देश रो कोड जियां कै आईएन, जीबी, यूएस, एई, बीआर
 credit_khata_amount_ph	क्रेडिट / क्रेडिट लेजर री रकम
 credit_limit_ph	क्रेडिट सीमा (0 = कोई कोनी)
 from_code_ph	कोड (बैग) सूं
-item_name_lang_ph	वस्तु रो नांव — आपरी भाषा मांय टाइप करो
 login_id_opt_ph	उपयोगकर्ता नाम (आवश्यक, अनूठो)
 manager_pin_ph	प्रबंधक PIN मंजूरी देबा तांई (केवल जद थै रद्द नीं कर सको)
 new_branch_name_ph	नूंवी शाखा रो नांव
@@ -821,15 +655,12 @@ new_password_ph	नयो पासवर्ड (वैकल्पिक)
 new_pin_ph	नयो PIN (4-12 अंक)
 note_bank_ph	नोट (जमा, निकासी, …)
 note_buy_expense_ph	नोट (ईंधन, किरायो, …)
-note_expense_ph	नोट (ईंधन, दफ्तर, …)
 options_kirano_ph	विकल्प — आकार*: छोटो=199, मोटो=399 | टॉपिंग्स+3: पनीर=40, जैतून=30 | अतिरिक्त पनीर=40
-part_second_way_ph	दूजा तरीका सूं भाग (वैकल्पिक)
 phone_ph	फोन
 place_name_ph	इण जगै रो नांव
 qty_example_ph	मात्रा (जियां कै किलोग्राम रै वास्तै 1.5)
 quantity_ph	मात्रा
 reason_required_ph	कारण (आवश्यक)
-role_title_ph	भूमिका रो शीर्षक (जियां कै बरिस्ता)
 service_pct_ph	सेवा % वैकल्पिक 0/10/12
 short_code_ph	छोटो कोड (एमजी02)
 starting_password_ph	शुरुआती पासवर्ड (वैकल्पिक)
@@ -864,14 +695,11 @@ shift_handover	शिफ्ट हस्तांतरण
 shift_since	आ पाळी
 expected_in_drawer	दराज रै मांय अपेक्षित
 right_discount	छूट दो
-pick_category	एक श्रेणी चुणो
-close_category_list	श्रेणी री सूची बंद करो
 new_category_row	नयी श्रेणी — जद थै वस्तु नै सहेजो हो जणा बणाई गई है
 your_category	थारी श्रेणी
 suggested_category	सुझायो गयो — म्हारी चीजां सूं
 category_search_ph	श्रेणी — आपरी खोज करो या कोई नयो टाइप करो
 cancel_item_short	रद्द करो
-cancel_item_title	इण वस्तु नै रद्द करो — बैक ऑफिस नै रद्द करण री पर्ची मिलैला
 return_to_customer	ग्राहक नै पाछो भेजो
 short_by	छोटो
 tip_not_sale	टिप (स्टाफ री, बिक्री कोनी)
@@ -884,9 +712,7 @@ finding_server	इण Wi‑Fi माथै दुकान रो सर्व�
 no_server_found	कोई कोनी मिल्यो। सर्वर माथै: सेटिंग्स → दूजा उपकरण → अतिरिक्त टिल्स री अनुमति देवो (सही Wi‑Fi)। या फेर बठै दिखायो गयो आईपी टाइप करो।
 servers_found_pick	जिण दुकान सूं थै जुड़णो चावो हो बां माथै टैप करो।
 server_host_selected	{host} रो उपयोग कर — जोड़ी कोड दर्ज करो, फेर अबै जोड़ो करो।
-print_bill	बिल छापो
 approval_pin_ph	प्रबंधक PIN (केवल जद पूछ्यो जावै)
-confirm	पुष्टि करो
 menu_search_ph	वस्तु या छोटो कोड ढूंढो
 customer_paid_ph	ग्राहक भुगतान कर दियो
 tip_ph	टिप
@@ -896,7 +722,6 @@ bill_format_help	हरेक बिल माथै थारी दुका�
 bill_header_ph	पतो | फोन
 fssai_ph	एफएसएसएआई / दुकान रो लाइसेंस नं. (वैकेल्पिक)
 bill_footer_ph	फुटर (जियां कै धन्यवाद, फेरूं जावो)
-save_bill_format	बिल रो स्वरूप बचाओ
 kot_field_on	दिखाओ
 kot_field_off	लुकणो
 kot_weight_light	उजास
@@ -907,10 +732,8 @@ kot_weight_bold	बोल्ड
 kot_align_start	सरू करो
 kot_align_center	केन्द्र
 kot_align_end	समाप्त करो
-content_width	सामग्री री चौड़ाई (मिमी)
 content_width_bill	बिल सामग्री री चौड़ाई (मिमी)
 content_width_ph	या फेर कोई सामग्री री चौड़ाई टाइप करो, 40-210 मिमी
-content_width_help	आ पर्ची कित्ती चौड़ी छपै है। बिल आपरी चौड़ाई राखै है।
 content_width_bill_help	ग्राहक रो बिल कितरो चौड़ो छपै है। डिफॉल्ट 210 मिमी (पृष्ठ)। 58 मिमी संकीर्ण पर्ची, 80 मिमी चौड़ी पर्ची, 112 मिमी 4-इंच, 210 मिमी ए 4-चौड़ी। सूं 210 तांई कोई भी मान टाइप करो। पर्ची टैब माथै टिकट री आपरी चौड़ाई हुया करै है।
 vp_paper_width	सामग्री री चौड़ाई (मिमी)
 vp_paper_width_ph	या फेर कोई सामग्री री चौड़ाई टाइप करो, 40-210 मिमी
@@ -925,9 +748,6 @@ test_bill_sent	बिल रो पूर्वावलोकन भेज द�
 test_print_no_printer	इण काम रै वास्तै कोई प्रिंटर कोनी — इण स्क्रीन माथै कोई एक चुणो
 std_print	बिल प्रिंट रो आकार
 std_print_help	ओएस / दस्तावेज़ प्रिंटर माथै मानक पोर्ट्रेट अर लैंडस्केप बिल नौकरियां रै वास्तै फॉन्ट आकार (बिंदु दर्ज करो - छोटा/सामान्य/बड़ो नीं)। दोनूं दिशावां माथै एक ई आकार।
-std_size_s	छोटो
-std_size_m	सामान्य
-std_size_l	बडो
 save_std_print	बिल प्रिंट रो आकार बचाओ
 std_print_saved	बिल प्रिंट रो आकार बचायो गयो
 print_brand_kit	प्रिंट ब्रांड किट
@@ -940,14 +760,9 @@ choose_payment_qr	भुगतान क्यूआर चुणो
 clear_payment_qr	भुगतान क्यूआर साफ करो
 payment_qr_set	भुगतान क्यूआर: फ़ाइल माथै — ग्राहक प्रदर्शन माथै दिखायो गयो है (वठै राशि यूपीआई क्यूआर नै बदल देवै है)
 payment_qr_none	भुगतान क्यूआर: कोई कोनी — भुगतान करतां बगत UPI आईडी सूं क्यूआर री राशि
-aggregator_import	एग्रीगेटर आदेश (फाइल)
-aggregator_import_help	वैकल्पिक स्थानीय आयात: बैकअप फोल्डर (सरणी या {"orders":[…]}) रै मांय import_aggregator_orders.json राखो, फेर आयात माथै टैप करो। काउंटर नै कदैई ब्लॉक मत करो; लाइव Zomato/Swiggy बादळ है।
-import_aggregator_file	एग्रीगेटर फाइल आयात करो
 team_pick_ph	संपादन करण सारू कर्मचारी — नाम, उपयोगकर्ता नाम, या चुणो
 select_staff	इण स्टाफ नै चुणो
 rights_help	इण मिनख रै वास्तै धन री कार्रवाई — साइकिल चलाबा रै वास्तै टैप करो: अनुमति है → बॉस पिन री जरूरत है → अनुमति कोनी है। प्रिंट बिल फेरूं फगत बिल है; खंड नीचे दीरीजी जांच सूची है।
-dish_picker_help	म्हारी चीजां नै ढूंढो या ब्राउज करो अर उणरो नाम अर फोटू भरबा रै वास्तै एक नै टैप करो — या आपरो खुद रो नाम राखो। आपरी कीमत तय करो (0 ठीक है), फेर वस्तु जोड़ो।
-close_dish_list	वस्तु सूची बंद करो
 own_item_name	इणनै आपरै खुद रै वस्तु रै नांव रै रूप मांय बरतौ
 on_your_menu	कैटलॉग रै मांय
 edit	संपादित करो
@@ -958,24 +773,16 @@ add_scheme	BOGO जोड़ो
 schedule_ph	घंटे — सोम-शुक्र 07:00-11:00 या शाम 17:00-19:00=150
 upi_vpa_ph	UPI ID (VPA)
 upi_payee_ph	UPI भुगतानकर्ता रो नाम (वैकल्पिक)
-upi_qr	UPI QR
 show_upi_qr	UPI क्यूआर दिखाओ
 close_upi_qr	बंद करो
 upi_qr_help	ग्राहक स्कैन करै है अर भुगतान करै है। वे भुगतान करबा रै बाद भुगतान लेवो माथै टैप करो। दूजी स्क्रीन: लैन माथै सर्वर यूआरएल/डिस्प्ले खोलो।
-recently_done	हाल ही रै मांय करियो गयो
 role_help_customer	भूमिका: ग्राहक - क्रेडिट लेजर (वे म्हारै माथै ऋणी है)। एक ई ग्राहक या आपूर्तिकर्ता स्टॉक री आपूर्ति भी कर सकै है।
 role_help_both	भूमिकावां: ग्राहक + आपूर्तिकर्ता — एक ग्राहक या आपूर्तिकर्ता, क्रेडिट खाता बही अर देय खाता बही, रिपोर्टां मांय शुद्ध।
 role_help_supplier	भूमिका: आपूर्तिकर्ता - खरीदारी रै वास्तै आपां बांनै देनदार हां।
-items_word	वस्तुवां
-items_section	वस्तुवां
-back_to_order	आदेश माथै पाछो जावो
-new_items_head	अजै तांई कोनी भेज्यो गयो
 price_ph	कीमत
 price_ph_gst_inside	कीमत ({tax} समेत)
-tax_rates_missing_hint	इण वस्तुवां माथै कोई {tax} दर कोनी — वस्तुवां माथै कर दर तय करीजी है (कीमतां मांय {tax} रै तहत {tax} शामिल है)
 taxable_value	कर योग्य मूल्य
 gst_inside_price_note	({tax} समावेशी)
-start_with_template	म्हारै आइटम टेम्पलेट सूं सरू करो
 template_heading	शुरुआती चीजां
 template_info	{c} श्रेणियां अर {d} वस्तुवां फोटूवां रै साथै, जोड़बा नै त्यार। कीमतां ₹0 सूं शुरू होवै है — आपरी कीमतां नै पछै तय करो।
 template_import	पूरो टेम्पलेट आयात करो
@@ -997,21 +804,13 @@ opening_client	क्लाइंट खोल रियो है...
 preparing_desk	डेस्क तैयार कर री है...
 opening_server	सर्वर खोल रियो है...
 creating_server	सर्वर बणा रिया हां...
-order_empty_pick	ऑर्डर खाली — आइटम चुणबा रै वास्तै ऊपर आइटम जोड़ो माथै टैप करो।
 add_dishes	चीजां जोड़ो
 order_so_far	इण क्रम माथै: {n} · {total}
 no_dish_match	कोई भी वस्तु “{q}” सूं मेल कोनी खावै
-pick_dishes_help	जोड़बा रै वास्तै कोई वस्तु नै टैप करो · सूची नै संकुचित करण रै वास्तै कोई श्रेणी चुणो
 pick_done	होग्यो
-pick_done_dd	होग्यो · {label}
-printer_route_mode	जे इण जगै माथै केई प्रिंटर है
-printer_mode_first	पैली ओ काम करै है
-printer_mode_all	सगळा माथै प्रिंट करो
 kot_field_up	ऊपर जावो
 kot_field_down	नीचै जावो
-app_template_blurb_extra	साथै ई: मालिक जाहिर, एडमिन आसिफ, कैशियर नवाज; आगला साइडबार; घंटे रै बाद रो इतिहास; आज उतार दो; कॉम्पैक्ट बिल।
 dishes_n	{n} वस्तुवां
-recipe_ph	नुस्खा (वैकल्पिक — काउंटर री दुकान माथै अप्रयुक्त)
 reorder_ph	और खरीदो
 set_reorder	पुनर्क्रमण स्तर तय करो
 low_stock_alert	कम चाल रैयो है — जल्द ही खरीदो: {items}
@@ -1020,7 +819,6 @@ show_unpriced	बिना कीमत रै फगत वस्तुवा�
 show_all_dishes	सगळी चीजां दिखाओ
 role_title_rest_ph	भूमिका रो शीर्षक (जियां कै कप्तान, मुख्य रसोइया)
 preset_help_rest	कैशियर: बेचो। प्रबंधक: बेचो + वस्तुवां + शून्य/संशोधित करो।
-kind_raw	दुकान रै वास्तै खरीद्यो गयो
 kind_resale	बेचबा रै वास्तै खरीद्यो
 kind_dish	स्टॉक री गिणती मत करो
 buy_unit_ph	इकाई (किलो, लीटर, पीसी)

@@ -1,5 +1,4 @@
 # Estonian — Eesti (et). One key<TAB>text per line, in en() order; keep {placeholders}.
-app_tagline	Apteegilett: ravimid, partiid, khata ja raamatud. Tasuta võrguühenduseta.
 barcode_ph	Vöötkood / EAN
 composition_ph	Sool / koostis (otsitav)
 schedule_h_off	Ajakava H – väljas (omaniku lipp)
@@ -13,7 +12,6 @@ expiry_alerts	Aegumishoiatused (järgmised 7 päeva)
 expiry_none	Järgmise 7 päeva jooksul ei aegu ükski partii.
 rx_nudge	Omanik märgistas Rx / Ajakava H – vajadusel lisage märge.
 unlock	Avage lukustus
-pin_hint	Omanik PIN algab 0000-st
 sell	müüa
 buy	Osta
 books	Päevaraamat
@@ -32,17 +30,13 @@ reports_month	Kasum ja kahjum (kuu)
 reports_aging	Tasumata / deebetkrediit
 reports_balance_sheet	Bilanss
 reports	Pangaraamat ja P&L
-refresh	Värskenda
 undo	Võta tagasi
-start_tracking	Alustage jälgimist
 stock_minus	− Varud
 stock_plus	+ Laoseis
 settle_cash	Arvelda sularaha
 settle_card	Arvelda kaart
 items	Ravimid
 nav_items	Ravimid
-more	Rohkem
-your_items	Teie ravimid
 items_help	Puudutage üksust selle muutmiseks. Uus üksus tühjendab vormi. Otsige nime või lühikoodi järgi, määrake hind (0 sobib) ja seejärel Lisa. Juba registreeritud müük säilitab nime, mille eest neile esitati süüdistus.
 add_item	Lisa üksus
 new_item	Uus ese
@@ -53,28 +47,22 @@ remove	Eemalda
 removed_items	Eemaldatud üksused
 removed_help	Taastamine paneb üksuse tagasi jaotisesse Üksused täpselt sellisena, nagu see oli – hind, foto ja kategooria.
 restore_item	Taasta
-empty_catalog	Ravimeid veel pole. Avage Ravimid, lisage nimi, vöötkood või sool, seejärel müüge.
+empty_catalog	Ravimeid veel pole.
 total	Kokku
 cash	Sularaha
 upi	UPI
 card	Kaart
 credit	Kliendid ja tarnijad
 clear	Selge
-ready_to_sell	Broneerimiseks valmis
 today_prefix	Täna
-today_mid	täna
 owed	silmapaistev
-round_word	ümmargune
 back	Tagasi
 sold_out	Pole saadaval
 restock	Varude taastamine
 not_tracked	Ei jälgita
 in_stock	laos
 marked_sold_out	Märgitud kättesaamatuks
-add_upper	LISA
-na	Ei kehti
 qty	Wt/kv
-unit_at	Hinda @
 actual	Tegelik
 applied	Rakendatud
 note_ph	Märkus (valikuline)
@@ -93,21 +81,13 @@ bill_item_qty	Kogus
 bill_item_price	Hind
 bill_item_amount	Summa
 bill_item_note	Rx / müügiteatis
-bill_item_col_gap	Veeru vahe
 bill_item_col_order	Veergude järjekord
 bill_item_col_sep	Veeru reeglid
-bill_item_gap_tight	Tihe
-bill_item_gap_comfort	Mugav
-bill_item_gap_wide	Lai
-bill_item_num_width	Numbriveerud
-bill_item_num_compact	Kompaktne
-bill_item_num_comfort	Mugav
-bill_item_num_wide	Lai
-bill_item_num_align	Numbrid joondatud
-bill_item_gap_em	Vahe (em)
-bill_item_qty_min	Kogus min (em)
-bill_item_price_min	Hind min (em)
-bill_item_amount_min	Summa min (em)
+slip_col_width	Laius (mm)
+slip_col_start	Algusvahe (px)
+slip_col_end	Lõpuvahe (px)
+slip_col_align	Teksti joondus
+slip_columns_help	Iga veeru laius sisaldab selle algus- ja lõpuvahet. Tekst murdub oma veeru sees; mis jääb sisu laiusest välja, lõigatakse ära – paberil ja eelvaates.
 bill_total_qty_label	Kogukoguse silt
 bill_total_subtotal_label	Alasumma silt
 bill_total_grand_label	Totaalne etikett
@@ -120,11 +100,7 @@ bill_total_qty	Kogus
 bill_total_subtotal	Vahesumma
 bill_total_grand	Kokkuvõttes
 kot_unassigned	Määramata
-pos_tab_items	Lisatud üksused
-pos_tab_payment	Makse
-settings_hub_title	Seaded
 settings_hub_help	Avage üks ala korraga – vähem kerimist, selgemad valikud.
-settings_back	Tagasi
 settings_sec_language	Keel ja valuuta
 settings_sec_country	Riik ja maks
 settings_sec_tills	Muud seadmed
@@ -166,35 +142,17 @@ diag_cleared	Diagnostikalogid on kustutatud
 sidebar_settings	Külgriba
 sidebar_settings_help	Samad ikoonid mis külgsiinil. Järjestuse muutmiseks lohistage rida. Kuvamiseks või peitmiseks pöörake lülitit. Seaded ja Lukk jäävad alati ribale.
 sidebar_always_on_short	Alati sees
-sidebar_back_settings	Tagasi
-sidebar_shown	Näidatud
-sidebar_hidden	Peidetud
-sidebar_always_on	Alati baaris
-sidebar_shown_hint	Näidatud külgmisel siinil / alumistel sakidel
-sidebar_hidden_hint	Baari eest peidetud
 sidebar_menu_items	Üksused
 sidebar_enable_all	Luba kõik
 sidebar_disable_all	Keela kõik
 sidebar_order_saved	Külgriba järjekord salvestatud
 sidebar_visibility_saved	Külgriba nähtavus on salvestatud
-amounts_hide	Peida
-amounts_show	Näita
-printers_none_hint	Esmalt salvestage printer selles seadmes ja seejärel lisage see arvele või jaotisesse
-counter	Loendur
-dine_in	Loendur
-takeaway	Kaasa
-order	Tellimus
 sales	Müük
-sales_refunds	Müük ja tagasimaksed
 day_close	Päev lähedal
 reports_expenses	Pangaraamat ja P&L
 nav_reports	Aruanded
 nav_settings	Seaded
 nav_lock	Lukk
-no_sale_yet	Müüki veel pole
-favorites	Lemmikud
-favorites_help	Tooted, mida müüte sageli ja mis on salvestatud teie sisselogimiseks. Lisage arvele üks või koostage loend kõigist allolevatest üksustest.
-your_favorites	Sinu lemmikud
 all_items	Kõik esemed
 frequent	Sagedane
 added_items	Lisatud üksused
@@ -211,8 +169,6 @@ zero_sales_on	Lubage 0 ₹
 zero_sales_off	Nõua hinda
 zero_sales_saved_on	Nullväärtusega müük lubatud
 zero_sales_saved_off	Müügihind peab olema üle 0 ₹
-no_favorites	Lemmikuid pole veel – lisage üksusi allolevast loendist.
-add_to_bill	Lisa arvele
 added	Lisatud
 owes_word	võlgu
 selected_word	Valitud
@@ -221,19 +177,11 @@ chip_missing_customer	Valitud klient puudub – vali uuesti
 chip_no_customer	Klienti veel pole – sisestage nimi ja puudutage seejärel Krediit
 credit_summary_fmt	{} kliendid · avatud krediit {} · hoitud ettemaksed {}
 recent_label	Viimased:
-start_order	Alusta tellimist
-open_bill	Ava arve
-collect_payment	Koguge makse
-payment_pending	Makse ootel
-collect_at_counter	letile koguma
 inventory	Inventuur
-inventory_stock	Varud ja laoseisud
 branches	Filiaalid
-branches_org	Filiaalid & org
 credit_customers	Kliendid ja tarnijad (krediidikontod)
 customer_name_ph	Kliendi või tarnija nimi
 new_customer_ph	Uue kliendi või tarnija nimi
-item_name_ph	Kauba nimi (nt Masala Dosa)
 item_price_ph	Hind
 start_template	Toode
 team	Meeskond
@@ -241,17 +189,11 @@ team_pins	Meeskond ja PIN-d
 my_pin_settings	Minu PIN
 settings_hub_help_my_pin	Muutke sellesse seadmesse sisse logitud inimese avamisnumbrit PIN.
 team_self_help	Üks sisselogimine: uus PIN, uus parool või mõlemad. Jätke lahter tühjaks, et hoida seda, mis teil on. Küsige omanikult, kas vajate erinevaid ekraane või õigusi.
-backup_settings	Varundamine ja seaded
-lock_app	Lukusta rakendus
 pick	Vali
-select	Valige
 advance	Edasiminek
 owner	Omanik
 staff	Personal
 photo	Foto
-auto	Automaatne
-prev	Eelmine
-next	Edasi
 ok	OK
 this_shop	Serveri režiim
 extra_till	Kliendi režiim
@@ -260,17 +202,13 @@ server	Serveri režiim
 client	Kliendi režiim
 language_currency	Keel ja valuuta
 language	Keel
-choose_language	Valige oma keel
 language_setup_hint	Järgige selle seadme keelt või valige see ise.
 lang_follow_platform	Seadme keel
 lang_pick_user	Valige keel
 lang_platform_now	Seadme keel nüüd
 selected_language	Valitud
-continue	Jätka
 this_device	SEE SEADE
 device_use_q	Kuidas seda seadet kasutatakse?
-last_server_mode	Oli server – puudutage jätkamiseks
-last_client_mode	Oli klient – puudutage jätkamiseks
 choose_server	Valige server
 choose_server_hint	Avage olemasolev server või looge see teise ettevõtte jaoks.
 create_new_server	Loo uus server
@@ -280,12 +218,6 @@ server_remove_pin_ph	Omanik PIN serveri eemaldamiseks
 only_owner_remove_server	Ainult omanik saab serveri eemaldada
 owner_pin_remove_server	Selle serveri eemaldamiseks on vaja omanikku PIN
 device_setup_help	Server hoiab siin raamatuid. Klient ühendab serveriga.
-app_template_heading	Stardikataloog (valikuline)
-app_template_blurb	Laadib näidiskataloogi; Omanik Zahir (zahir), administraator Asif (asif, PIN 1111), kassapidaja Nawaz (nawaz, PIN 0000); maks/GST maha; eesmine külgriba; ajalugu kustutatakse 4 tunni pärast (ja varunduses Kustuta kohe); Täna eemaldage; kompaktne arve + standardsed veerised kitsastele salvedele. Maksu- ja külgriba sarnased rakendused saab seadetes uuesti sisse lülitada.
-app_template_apply	Rakenda stardikataloog
-app_template_skip	Jäta praegu vahele
-app_template_status	Server on valmis – rakendage Starter-kataloogi või jätke vahele
-app_template_importing	{title} rakendamine…
 currency	Valuuta
 backup	Varundamine
 use	Kasutage
@@ -319,7 +251,7 @@ attachments_last_expense	Manused (viimane kulu)
 bank	pank
 bank_in	Pank sisse
 bank_out	Pank välja
-bank_reconciliation	Panga vastavusse viimine (märkige oma pangaväljavõttel linnuke)
+bank_reconciliation	Panga vastavusse viimine
 bank_to_till	Pank → kassa
 book_add_dish	Broneeri – lisa üksus/üksus
 book_opening_credit	Raamat — algustiitrid
@@ -349,9 +281,6 @@ share_whatsapp	Jaga WhatsApp
 lan_pages_heading	Kliendi lehed WiFi-s
 lan_pages_help	Selle poe WiFi-s töötavad kliendilehed kuvalaua ja tagasiside jaoks. Mobiilse andmeside kasutajad vajavad pilve hiljem. Kaarditerminal või makselink on valikuline ega blokeeri loendurit kunagi.
 diag_send_heading	Jaga seda seadet välja
-optional_login_heading	Valikuline sisselogimine
-rights_heading	Õigused
-ops_panel	Kohalikud operatsioonid
 crm_heading	Kliendid ja sõnumid
 crm_help	Sünnipäev, lojaalsus, passiivsed ja parimad külalised – järjekord SMS või WhatsApp kavatsused. Kasutage sõnumis märke {name} ja {points}. Omaniku kraanid saadavad; miski ei plahvata iseenesest.
 crm_queue_sms	Järjekord SMS
@@ -376,21 +305,17 @@ till_wallet_topup_ph	Täiendage rahakoti summat
 till_voucher_issue_amt_ph	Väljasta vautšeri summa
 till_voucher_issue_code_ph	Uus vautšeri kood
 bulk_price_apply	Rakenda hulgihind
-card_terminal_optional	Kaarditerminal / makselink (valikuline, kui internet on saadaval)
 copy_report	Kopeeri aruanne
 counted_cash_ph	Loetud sularaha sahtlis
 country_tax	Riik ja maks
 create_backup	Loo varukoopia
 credit_limit_heading	Krediidilimiit (valitud klient või tarnija)
-day_close_summary	Päeva kokkuvõte
 delete_party	Kustutage valitud klient või tarnija
-delivery	Kohaletoimetamine
 done_open_books	Valmis — raamatud lahti
 drawer_count	Sahtlite arv (valikuline)
 expense_heading	Kulu
 export_day	Ekspordi päev
 extra_note_bill_ph	Lisamärkus selle arve/müügi kohta
-extra_note_expense_ph	Lisamärkus viimase kulu kohta
 extra_tills_heading	Lisakassad
 other_devices_help_heading	Seadistage muud seadmed
 other_devices_help	Selles seadmes (serveris): muud seadmed → Luba lisakassad. Märkige üles sidumiskood ja WiFi-aadress. Puudutage valikut Luba teistel seadmetel ühenduda, kui see kuvatakse. Puudutage arvutis valikut Alusta selle arvutiga. Igas teises seadmes: installige rakendus, valige Kliendirežiim, Otsige üles poe server (või sisestage aadress), sisestage sidumiskood, Siduge kohe. Tellimused ootavad seadmes, kui WiFi katkeb, ja lähevad, kui server uuesti vastab. Lisaprinterid seadistatakse serveris (Seaded → Printerid) — lisakassad saadavad sinna arveid.
@@ -404,7 +329,6 @@ login_id_ph	Kasutajanimi
 mark_cleared	Mark kustutatud
 new_party_clear	Uus klient või tarnija (selge vorm)
 new_party_kind_supplier_ph	Uus klient või tarnija (tarnija)
-next_country	Järgmine riik
 next_order	Järgmine tellimus (puhas laud)
 note_gstin_ph	Märkus / GSTIN / kokkuleppe meeldetuletus
 notes_attach_party	Märkused ja manused (valitud klient või tarnija)
@@ -422,8 +346,6 @@ pay_ap_cash	Makske AP-le sularahas
 pay_ap_heading	Makske, mida me neile võlgneme (AP)
 pay_ap_upi	Maksa AP UPI
 pay_selected_heading	Maksmine valitud (võla tasumine / ettemakse võtmine)
-pick_from_items	Valige meie kaupade hulgast
-prev_country	Eelmine riik
 print_open	Prindi / ava
 reason_amend_ph	Muudatuse / tühine / raha tagastamise põhjus
 reason_note_ph	Põhjus/märkus (raiskamine, arv jne)
@@ -447,14 +369,10 @@ history_after_hours	Pärast tunde
 history_hours_ph	Tunnid (1–168, vaikimisi 4)
 history_hours_save	Säästke tunde
 history_clear_now	Kustuta ajalugu
-history_cleared	Kauplemisajalugu tühjendatud – seadistus säilinud
-history_retention_saved	Ajaloo tühjendamine on salvestatud
 history_hours_saved	Ajaloo tunnid salvestatud
-history_owner_only	Ainult omanik või administraator saab ajalugu kustutada
 rollup	Koond
 save_brand	Salvestage kaubamärk
 save_business_id	Salvesta ettevõtte ID
-save_business_name	Salvestage ettevõtte nimi
 save_features	Salvesta
 save_features_named	Salvesta {name}
 save_features_ok	Salvestatud seadistus {name} jaoks
@@ -485,7 +403,6 @@ copy_pair_code	Kopeerige sidumiskood
 new_pair_code	Uus sidumiskood
 pair_finishing	Paari lõpetamine… poe raamatute rakendamine
 pair_opening	Kassa avamine…
-pair_copied	Sidumiskood on kopeeritud
 lan_offline_waiting	Poe server kättesaamatu · {n} ootab
 lan_connecting	Poega ühendamine…
 lan_live	Otse
@@ -499,7 +416,6 @@ firewall_waiting	Administraatori viipa ootamine…
 lan_join_help	Teises seadmes: kliendirežiim → otsige poe server (või sisestage {addr}) → sidumiskood {code}.
 lan_pair_status	Wi‑Fi {addr}
 lan_join_help_no_addr	Ühendage see seade aadressi saamiseks numbriga Wi‑Fi.
-lan_no_address	Aadressi Wi‑Fi pole veel – ühendage poega Wi‑Fi.
 lan_not_listening	Seadmeid ei aktsepteerita (port {port} hõivatud). Taaskäivitage rakendus.
 lan_tills_off	Lisakassad on välja lülitatud. Lubage neil lubada teisel seadmel liituda.
 paired_with	Seotud · {url}
@@ -520,41 +436,21 @@ printers_help	Otsige üles printerid, puudutage seda selle valimiseks ja seejär
 printers_host_only	Printerid seadistatakse kaupluse seadmes (serveris). See kassa saadab sinna arved ja vanad piletid — leidke / lisage / määrake serveris viibimine. Testleht ja arve trükisuurus lähevad serverisse.
 printers_find_heading	Otsige printereid
 printers_find_tip	Find skannib seda seadet ja hoiab loendi ajakohasena.
-printers_pool_heading	Printerid
-printers_pool_tip	Find skannib selle seadme ja hoiab seda loendit ajakohasena.
 printers_pool_empty	(veel mitte ühtegi – puudutage Otsi)
-printers_routes_help	Otsige üles printerid, mida operatsioonisüsteem juba teab. Määrake need arvele ja igale jaotisele Bill & Slip formaadis.
 printer_assign_dd	Päris printer: {place}
 printer_assign_pick	Valige tõeline printer
 printer_profile_heading	Paigutus
 vp_delivery_heading	Kohaletoimetamine
 vp_delivery_help	Kuidas see virtuaalne printer töid saadab – OS-i dokument, töötlemata baidid või ESC/POS. Sertifikaadi sisu (kirja suurus, ümbris, veerised) otsustab arve / sedeli vorming, mitte siin.
-vp_type_size_heading	Tüübi suurus
-vp_wrap_heading	Mähise laius
-vp_margin_heading	Marginaalid
 vp_delivery_spooler	OS-i dokument (süsteemi spuuler)
 vp_delivery_raw	Toorbaidid seadmesse
 vp_delivery_escpos	ESC/POS termilised käsud
 virtual_printer_new	Uus virtuaalne printer
 virtual_printer_selected	Redigeerimine „{name}” – vahetamiseks puudutage loendis teist
-virtual_printer_tap_list	Puudutage loendis virtuaalset printerit selle redigeerimiseks
 config_layout_portrait	Portree
 config_layout_landscape	Maastik
 config_send_os	Süsteemi spooler
 config_send_escpos	ESC/POS
-profiles_heading	Paigutused
-profiles_empty	(paigutusi veel pole)
-profile_builtin	sisseehitatud
-profile_custom	kohandatud
-profile_name_ph	Paigutuse nimi
-profile_new	Uus paigutus
-profile_delete	Kustuta paigutus
-profile_created	Paigutus loodud
-profile_deleted	Paigutus kustutatud
-profile_builtin_keep	Sisseehitatud paigutusi ei saa kustutada
-config_saved	Uuendatud
-config_selected	Valitud "{name}"
-printer_output_heading	Virtuaalsed printerid
 virtual_printers_heading	Virtuaalsed printerid
 virtual_printers_empty	Virtuaalseid printereid pole veel – määrake allpool väärtused ja seejärel Salvesta. Kui teil on mõned, puudutage seda muutmiseks loendis.
 virtual_printer_name_ph	Virtuaalse printeri nimi (valikuline)
@@ -566,71 +462,32 @@ virtual_printer_deleted	Virtuaalne printer „{name}” on kustutatud
 virtual_printer_updated	Virtuaalne printer on värskendatud
 virtual_printer_updated_named	Virtuaalne printer “{name}” on värskendatud
 virtual_draft_layout	Järgmise virtuaalprinteri väärtused on määratud
-virtual_draft_send	Järgmise virtuaalprinteri väärtus on määratud
 virtual_need_real	Valige esmalt tõeline printer
 virtual_need_select	Valige kustutamiseks virtuaalne printer
 real_printer_selected	Valitud: {name}
-printers_routes_heading	Kus asjad trükitakse
-route_pick_heading	Koht
 route_editing	Redigeerimine: {name}
-route_assigned	{printer} lisati punktile {place}
-route_already_assigned	Juba selles kohas: {printer}
 route_cleared	Kustutatud {name}
-route_assigned_empty	Mitte ühtegi selles kohas
-route_tap_select	puudutage valimiseks
 route_tap_selected	valitud
-route_pick_printer_first	Puudutage esmalt printerit
-route_assigned_heading	Printerid
-route_add_heading	Määra
-printer_label_ph	Nimi (nt loenduri printer)
 printer_target_ph	Süsteemiprinteri nimi või host:9100
 printer_target_default	selle arvuti tavaline printer (tühi aadress)
-printer_wire_heading	Profiil
-printer_wire_escpos	ESC/POS
-printer_wire_os	Portree
-printer_wire_os_portrait	Portree
-printer_wire_os_landscape	Maastik
-printer_wire_escpos_short	ESC/POS
-printer_wire_os_short	Portree
-printer_wire_os_landscape_short	Maastik
-printer_format_custom	Uus kohandatud profiil
-printer_format_custom_label	Kohandatud
-printer_format_custom_added	Selle koha jaoks lisati kohandatud profiil
-add_printer	Lisage printer
-route_pick_ph	Arve või ambulatooriumi osakond
 route_bill	Arve
-route_dont_print	Printerit pole
 station_print_pick_first	Valige esmalt ambulatooriumi osa
-station_vps_empty	Printereid pole veel – leiate need jaotisest Seaded → Printerid
 bill_printers_dd	Printerid arve jaoks
 bill_printers_dd_n	{n} printerid arve jaoks · puudutage muutmiseks
 station_vp_attached	Printer lisatud
 station_vp_detached	Printer jaamast eemaldatud
-route_up	Üles
-route_down	Alla
-route_clear	Selge
-save_printers	Salvestage printerid
 print_test_page	Printige testleht
 no_printer_assigned	Printerit pole
-test_page_no_printer	Numbri {place} jaoks pole printerit – kinnitage sellele printer ja proovige uuesti
 test_page_pick_first	Valige esmalt testlehe printerid ja seejärel printige testleht
 test_printers_dd	Printerid testlehe jaoks
 test_printers_dd_n	{n} printerid testlehe jaoks · puudutage muutmiseks
 test_printer_picked	Test: {name}
 test_printer_cleared	Ei testita: {name}
 test_page_sent_n	Testleht saadeti {n} printeritele
-batch_cancel	Tühistamine märgitud
-batch_cancel_n	Tühista märgitud ({n})
-batch_cancel_none	Märkige esmalt üks või mitu saadetud üksust – seejärel märgistage Tühista
-batch_cancel_title	Tühista märgitud ravimid – üks põhjus, üks tühistamisleht sektsiooni kohta
-batch_cancel_ok	{n} üksused on tühistatud · {slips} tühistada sedel(id) → {kitchens}
-batch_cancel_ok_noprint	{n} üksused on tühistatud – automaatne printimine on välja lülitatud, seega pole tühistamisluba
 printers_saved	Salvestatud
-test_page_sent	Testleht saadetud – kontrollige printerit
 test_page_sent_one	Testleht saadeti aadressile {name} — kontrollige seda printerit
 printers_found	Leitud {n}: {list}
 printers_find_synced	Leiti {n} — {new} uut
-printer_on_device	salvestatud
 printer_already_added	juba lisatud
 printer_already_saved	Juba salvestatud: {name}
 find_printers	Otsige printereid
@@ -640,7 +497,6 @@ cancelled	Tühistatud
 printers_tap_find	Puudutage Otsi, et loetleda printerid, mida see seade saab kasutada.
 printers_none_found	Ühtegi ei leitud – sisestage süsteemiprinteri nimi või IP (nt 192.168.1.50).
 printer_from_find	Lisatud {name}
-bill_printer_ph	Printer arvete jaoks
 queue_refused	Pood ei aktsepteeri ({n}) – kontrollige neid igaüht letist:
 clear_not_accepted	Märgitud – tühjendage see loend
 device_name_ph	Selle seadme nimi
@@ -650,7 +506,6 @@ connected_now	nüüd ühendatud
 backup_failed	Viimane automaatne varundamine ebaõnnestus: {e}
 backup_overdue	{n} päeva ei varundata – hoidke rakendus selles seadmes avatud, et see saaks varundada.
 disk_low	Selles seadmes on ainult {mb} MB vaba – varukoopiate tegemine nurjub peagi. Vabastage ruumi.
-last_seen_devices	Viimati nähtud: {time}
 connection_to_shop	Ühendus kauplusega
 supplier_name_ph	Tarnija (või kliendi) nimi
 supplier_ph	Tarnija
@@ -708,7 +563,6 @@ currency_use_help	Kerige ja toksake Kasuta mis tahes toetatud valuuta jaoks.
 day_close_help	Päeva sulgemise salvestamine salvestab selle kokkuvõtte (ja sahtli dispersiooni, kui see on arvestatud) auditi logisse. See ei lõpeta müüki.
 expenses_word	Kulud
 feature_access_help	Mida nad saavad avada – valikuline; ülaltoodud töö määrab juba vaikeväärtuse
-footer_local	Kohalik SQLite · Igavesti tasuta · Zero Cloud
 fresh_book_tabiyat	Värske = tühi kataloog (lisage üksusi hiljem). Raamat = tüüp avamisaktsia ja kes on teile võlgu allpool.
 fresh_selected	Värske valitud – kataloog jääb tühjaks. Kui olete valmis, puudutage valikut Valmis.
 gross_word	jäme
@@ -721,12 +575,9 @@ net_word	Neto
 offline_badge	OFFLINE
 optional_login_help	Valikuline sisselogimine (id + parool). Omanik komplekteerib üks kord; ainult kasutaja saab hiljem parooli muuta.
 or_unlock_login	Või avage sisselogimise ID + parool
-permission_preset	Töö (määrab ekraanid ja rahatoimingud)
-preset_help_tabiyat	Kassapidaja: müüa. Haldaja: müüa + esemed + tühine/muuda.
-product_locked_tabiyat	Tabiyat
+permission_preset	Töö
 product_only_tabiyat	Tabiyat on apteegi operatsioonisüsteem: ravimite müük, partii/aegumise raamatupidamine, krediit ja raamatud – võrguühenduseta teie seadmetes. Ajakava H / Rx lipud on omaniku märkused, mitte vastavus.
 purchases_cogs	Ostud (COGS)
-qty_cap	QTY
 restore_help	Taasta: vali varukoopia. Raamatud avanevad nagu siis; raamatud, nagu nad praegu on, salvestatakse esmalt, nii et selle saab tagasi võtta.
 wipe_data_heading	Kustutage kohalikud andmed
 wipe_data_help	Ainult omanik – samad valikud nagu Windowsi desinstallimine. Ärikirjed kustutavad kauplemisajaloo, kuid säilitavad üksused ja seadistuse (nt hädaolukorra avamise PIN-kood). Poe seadistamine eemaldab raamatute andmebaasi. Ekraani eelistused tühjendab akna/keele. Kinnitage omaniku PIN-koodiga. Meeskonna hädaabiluku PIN-kood on eraldi (varjatud pühkimine avamisel).
@@ -759,7 +610,6 @@ staff_renamed	Nimi salvestatud
 staff_setup_copied_hire	Seadistamine kopeeritud asukohast {name} – määrake uus nimi ja PIN, seejärel lisage töötajaid
 staff_setup_copied_edit	{from} seadistus kopeeriti asukohta {to}
 staff_copy_need_selected	Valige, keda kõigepealt redigeerida
-staff_copy_need_source	Valige, kelle seadistus kopeerida
 staff_copy_same	See on sama inimene – vali keegi teine
 staff_rename_need_selected	Valige, keda kõigepealt ümber nimetada
 team_pick_hint	Valige, keda muuta – ekraanid, rahaõigused ja jaamad kuvatakse ainult selle inimese jaoks.
@@ -774,15 +624,9 @@ unit_picker_off	Väljas
 we_owe_them	Oleme neile võlgu
 who_unlocking	Kes avab?
 locked_word	Lukustatud
-show_pin	Näita PIN
-hide_pin	Peida PIN
 set_owner_pin	MÄÄRA OMANIKU PIN
 enter_owner_passcode	SISESTAGE OMANIKU POOLKOOD
 enter_staff_passcode	SISESTAGE PERSONALI POOLKOOD
-pin_count_zero	0/12 numbrit · vähemalt 4, seejärel OK
-pin_count_need	{} / 12 numbrit · vaja {} rohkem
-pin_count_full	12/12 numbrit · vajutage OK
-pin_count_ready	{} / 12 numbrit · vajutage OK, kui olete valmis
 pin_hint_choose	Valige 4–12 numbrit · Salvestamiseks sisestage või avage
 pin_hint_new	Uus 4–12-kohaline omanik PIN · Sisestage või avage
 pin_hint_shop_code	Ostke seadet · sidumiskood {}
@@ -791,23 +635,15 @@ pin_hint_paired	Lisa kuni sidumiseni – müümiseks avage lukustus
 pin_hint_pair_first	Lisakass – esmalt siduge poeseadmega
 unlock_to_continue	Jätkamiseks avage lukustus
 no_staff_yet	Töötajaid pole veel – avage omanikuna ja seejärel meeskonnana
-status_server_set_pin	Serverirežiim – määrake omanik PIN
-status_server_tills	Serverirežiim – liituda saavad lisakassad. Avage lukustus
-status_server_unlock	Serverirežiim – avage omanikuna lukustus
-status_client_unlock	Kliendirežiim – avage müümiseks
 icon_new_selected	Ikoon: uus fail on valitud – puudutage Salvesta bränd
 icon_custom	Ikoon: kohandatud koha märk
 icon_default	Ikoon: Kumkaj märk (vaikimisi) – valige kohandatud
 logo_yours	Logo: teie poe logo – kuvatakse ekraanidel ja kviitungitel
 logo_default	Logo: Kumkaj märk (vaikimisi) — valige oma, kui teil see on
-tmpl_current	Praegune: {} — {}
-tmpl_selected	Valitud: {} — {}
 setup_complete	Seadistamine on lõpetatud
 onboard_fresh_tmpl	Värske · {} — kataloog algab tühjalt; lisage üksused jaotisesse Üksused ja seejärel Valmis.
 onboard_book_tmpl	Broneeri · {} — lisage üksused ja alguskrediit, seejärel valige Valmis.
-onboard_template_tmpl	Soovi korral nimetage koht ja seejärel valige, kuidas alustada.
 tmpl_blurb	Apteegi loendur: ravimid, partii / aegumiskuupäev, khata, raamatud.
-tmpl_how	Müüa letis; Osta laos; Päevaraamatud raamat.
 reports_facet_title	Aruanded
 reports_facet_help	Päevaraamatud, klientide või tarnijate vananemine, pangapostitused ja perioodi kasumiaruanded.
 against_bill_ph	Ülaltoodud arve # vastu (valikuline)
@@ -818,14 +654,12 @@ amount_ph	Summa
 amount_received_ph	Saadud summa
 amount_we_pay_ph	Summa, mida maksame
 business_name_ph	Ärinimi
-category_new_ph	Kategooria (valikuline, luuakse, kui uus)
 code_bag_ph	Kood (kott)
 conv_factor_ph	Tegur (25 = 1 kott → 25 kg)
 country_code_ph	Riigikood nt. IN, GB, USA, AE, BR
 credit_khata_amount_ph	Krediidi / krediidi pearaamatu summa
 credit_limit_ph	Krediidilimiit (0 = puudub)
 from_code_ph	Koodist (kotist)
-item_name_lang_ph	Kauba nimi – sisestage see oma keeles
 login_id_opt_ph	Kasutajanimi (nõutav, kordumatu)
 manager_pin_ph	Haldur PIN kinnitamiseks (ainult siis, kui te ei saa tühistada)
 new_branch_name_ph	Uus filiaali nimi
@@ -833,15 +667,12 @@ new_password_ph	Uus parool (valikuline)
 new_pin_ph	Uus PIN (4–12 numbrit)
 note_bank_ph	Märkus (deposiit, väljamakse, ...)
 note_buy_expense_ph	Märkus (kütus, rent, …)
-note_expense_ph	Märkus (kütus, kontor, …)
 options_tabiyat_ph	Valikud — Suurus*: Väike=199, Suur=399 | Lisandid+3: Juust=40, Oliiv=30 | Lisajuust = 40
-part_second_way_ph	Teisel viisil eraldamine (valikuline)
 phone_ph	Telefon
 place_name_ph	Selle koha nimi
 qty_example_ph	Kogus (nt 1,5 kg kohta)
 quantity_ph	Kogus
 reason_required_ph	Põhjus (nõutav)
-role_title_ph	Rolli nimetus (nt Barista)
 service_pct_ph	Teenus % valikuline 0/10/12
 short_code_ph	Lühikood (MG02)
 starting_password_ph	Käivitusparool (valikuline)
@@ -876,14 +707,11 @@ shift_handover	Vahetuste üleandmine
 shift_since	See nihe alates
 expected_in_drawer	Oodatud sahtlisse
 right_discount	Tee allahindlust
-pick_category	Valige kategooria
-close_category_list	Sule kategooriate loend
 new_category_row	Uus kategooria – luuakse üksuse salvestamisel
 your_category	Teie kategooria
 suggested_category	Soovitatav – meie kaupadest
 category_search_ph	Kategooria – otsige oma või sisestage uus
 cancel_item_short	Tühista
-cancel_item_title	Tühista see üksus – back office saab tühistamise teatise
 return_to_customer	Tagasi kliendi juurde
 short_by	Lühike
 tip_not_sale	Jootraha (personali, mitte müük)
@@ -896,9 +724,7 @@ finding_server	Poe serveri otsimine sellel Wi‑Fi…
 no_server_found	Ühtegi ei leitud. Serveris: Seaded → Muud seadmed → Luba lisakassad (sama Wi‑Fi). Või tippige seal näidatud IP.
 servers_found_pick	Puudutage poodi, millega soovite ühenduse luua.
 server_host_selected	Kasutades {host} — sisestage sidumiskood ja seejärel Siduge kohe.
-print_bill	Prindi arve
 approval_pin_ph	Haldur PIN (ainult küsimisel)
-confirm	Kinnita
 menu_search_ph	Otsige üksust või lühikoodi
 customer_paid_ph	Klient maksis
 tip_ph	Näpunäide
@@ -908,7 +734,6 @@ bill_format_help	Igale arvele trükitakse teie poe nime all. Eraldage read märg
 bill_header_ph	Aadress | telefon
 fssai_ph	Ravimiluba nr. (valikuline – teie sõnastus)
 bill_footer_ph	Jalus (nt aitäh, külastage uuesti)
-save_bill_format	Salvesta arve vorming
 kot_field_on	näidata
 kot_field_off	peita
 kot_weight_light	Valgus
@@ -919,10 +744,8 @@ kot_weight_bold	Paks
 kot_align_start	Alusta
 kot_align_center	Keskus
 kot_align_end	Lõpp
-content_width	Sisu laius (mm)
 content_width_bill	Arve sisu laius (mm)
 content_width_ph	Või sisestage sisu laius 40–210 mm
-content_width_help	Kui laia see slip prindib. Bill hoiab oma laiust.
 content_width_bill_help	Kui laiaks prinditakse kliendi arve. Vaikimisi 210 mm (lehekülg). 58 mm kitsas slip, 80 mm lai, 112 mm 4-tolline, 210 mm A4 laius. Sisestage mis tahes väärtus vahemikus 40 kuni 210. Piletitel on oma laius slipi vahekaardil.
 vp_paper_width	Sisu laius (mm)
 vp_paper_width_ph	Või sisestage sisu laius 40–210 mm
@@ -937,9 +760,6 @@ test_bill_sent	Arve eelvaade saadetud
 test_print_no_printer	Selle töö jaoks pole printerit – valige sellel ekraanil üks printer
 std_print	Arve trükisuurus
 std_print_help	Fondi suurus standardsete püstpaigutus- ja rõhtpaigutustega arvete jaoks OS-i / dokumendiprinterites (sisestage punktid — mitte Väike/Tavaline/Suur). Mõlemal suunal sama suurus.
-std_size_s	Väike
-std_size_m	Tavaline
-std_size_l	Suur
 save_std_print	Salvestage arve trükisuurus
 std_print_saved	Arve prindisuurus on salvestatud
 print_brand_kit	Prindibrändi komplekt
@@ -952,14 +772,9 @@ choose_payment_qr	Valige makse QR
 clear_payment_qr	Tühjenda makse QR
 payment_qr_set	Makse QR: failis – kuvatakse kliendi ekraanil (asendab seal oleva summa UPI QR)
 payment_qr_none	Makse QR: puudub — summa QR alates UPI ID maksmisel
-aggregator_import	Koondtellimused (fail)
-aggregator_import_help	Valikuline kohalik import: sisestage import_aggregator_orders.json varukoopiate kausta (massiivi või {"orders":[…]}), seejärel puudutage valikut Import. Ei blokeeri loendurit kunagi; live Zomato/Swiggy on pilv.
-import_aggregator_file	Impordi koondfail
 team_pick_ph	Töötajad, keda muuta – nimi, kasutajanimi või valik
 select_staff	Valige see personal
 rights_help	Selle inimese rahatoimingud — puudutage tsükli tegemiseks: Lubatud → Vajab ülemuse PIN-koodi → Pole lubatud. Prindi arve uuesti on ainult arved; jaotised on kontrollnimekiri allpool.
-dish_picker_help	Otsige või sirvige meie üksusi ja puudutage ühte, et täita selle nimi ja foto – või jätke oma nimi alles. Määrake oma hind (0 on hea) ja seejärel Lisa üksus.
-close_dish_list	Sule üksuste loend
 own_item_name	Kasutage seda oma üksuse nimena
 on_your_menu	Ravimite nimekirjas
 edit	Muuda
@@ -970,24 +785,16 @@ add_scheme	Lisa BOGO
 schedule_ph	Ajad — E-R 07:00-11:00 või õhtul 17:00-19:00=150
 upi_vpa_ph	UPI ID (VPA)
 upi_payee_ph	UPI maksesaaja nimi (valikuline)
-upi_qr	UPI QR
 show_upi_qr	Kuva UPI QR
 close_upi_qr	Sule
 upi_qr_help	Klient skannib ja maksab. Puudutage valikut Võta makse pärast maksmist. Teine ekraan: avage serveri URL / kuva LAN-is.
-recently_done	Hiljuti tehtud
 role_help_customer	Roll: Klient – krediidireskontra (nad on meile võlgu). Sama klient või tarnija võib ka varusid tarnida.
 role_help_both	Rollid: Klient + Tarnija – üks klient või tarnija, krediidireskontra ja maksete pearaamatud, neto aruannetes.
 role_help_supplier	Roll: tarnija – oleme neile ostude eest võlgu.
-items_word	esemed
-items_section	Üksused
-back_to_order	Tagasi tellimuse juurde
-new_items_head	Pole veel saadetud
 price_ph	Hind
 price_ph_gst_inside	Hind ({tax} kaasa arvatud)
-tax_rates_missing_hint	Nendel esemetel ei ole {tax} määra – kaupade puhul on määratud maksumäär (hinnad sisaldavad juba {tax} ja {tax} koos)
 taxable_value	Maksustatav väärtus
 gst_inside_price_note	({tax} kaasa arvatud)
-start_with_template	Alustage meie üksuste malliga
 template_heading	Algelemendid
 template_info	{c} kategooriad ja {d} üksused koos fotodega, lisamiseks valmis. Hinnad algavad 0 ₹ - määrake oma hind pärast seda.
 template_import	Impordi täielik mall
@@ -1009,21 +816,13 @@ opening_client	Kliendi avamine…
 preparing_desk	Töölaua ettevalmistamine…
 opening_server	Serveri avamine…
 creating_server	Serveri loomine…
-order_empty_pick	Telli tühi – puudutage üksuste valimiseks ülaltoodud valikut Lisa üksusi.
 add_dishes	Lisage ravimeid
 order_so_far	Sellel tellimusel: {n} · {total}
 no_dish_match	Ükski üksus ei vasta "{q}"
-pick_dishes_help	Puudutage üksust selle lisamiseks · valige loendi kitsendamiseks kategooria
 pick_done	Valmis
-pick_done_dd	Valmis · {label}
-printer_route_mode	Kui selles kohas on mitu printerit
-printer_mode_first	Esiteks see töötab
-printer_mode_all	Trüki kõigile
 kot_field_up	Liigu üles
 kot_field_down	Liigu alla
-app_template_blurb_extra	Samuti: omanik Zahir, administraator Asif, kassapidaja Nawaz; eesmine külgriba; ajalugu 4 tunni pärast; Täna eemaldage; kompaktne arve.
 dishes_n	{n} üksused
-recipe_ph	Retsept (valikuline – letipoes kasutamata)
 reorder_ph	Osta rohkem aadressilt
 set_reorder	Määrake ümbertellimuse tase
 low_stock_alert	otsas – ostke varsti: {items}
@@ -1032,7 +831,6 @@ show_unpriced	Kuva ainult üksused ilma hinnata
 show_all_dishes	Kuva kõik üksused
 role_title_rest_ph	Rolli nimetus (nt kapten, peakokk)
 preset_help_rest	Kassapidaja: müüa. Haldaja: müüa + esemed + tühine/muuda.
-kind_raw	Ühendusvarud
 kind_resale	Ostis ravimeid
 kind_dish	Ärge arvestage aktsiaid
 buy_unit_ph	Ühik (kg, liiter, tk)

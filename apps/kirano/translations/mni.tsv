@@ -1,7 +1,5 @@
 # Manipuri — ꯃꯤꯇꯩꯂꯣꯟ (mni). One key<TAB>text per line, in en() order; keep {placeholders}.
-app_tagline	ꯀꯤꯔꯥꯅꯥ ꯌꯣꯟꯕꯒꯤ ꯐꯝ: ꯌꯣꯟꯕ, ꯁ꯭ꯇꯣꯛ, ꯈꯥꯇꯥ ꯑꯃꯁꯨꯡ ꯅꯨꯃꯤꯠꯀꯤ ꯂꯥꯏꯔꯤꯛ. ꯑꯣꯐꯂꯥꯏꯟꯗ ꯃꯃꯜ ꯂꯩꯇꯦ.
 unlock	ꯍꯥꯡꯗꯣꯛꯎ
-pin_hint	ꯃꯄꯨꯒꯤ PIN ꯑꯁꯤ 0000 ꯗꯒꯤ ꯍꯧꯏ
 sell	ꯌꯣꯟꯕ
 buy	ꯂꯩꯕ
 books	ꯅꯨꯃꯤꯠꯀꯤ ꯂꯥꯏꯔꯤꯛ
@@ -20,17 +18,13 @@ reports_month	ꯂꯥꯟꯖꯥ ꯑꯃꯁꯨꯡ ꯃꯥꯡꯈꯤ (ꯊꯥ)
 reports_aging	ꯂꯩꯔꯤꯕ / ꯂꯦꯟ-ꯂꯦꯟ
 reports_balance_sheet	ꯕꯦꯂꯦꯟꯁ ꯁꯤꯠ
 reports	ꯕꯦꯡꯛꯀꯤ ꯂꯥꯏꯔꯤꯛ ꯑꯃꯁꯨꯡ ꯂ&ꯃ
-refresh	ꯑꯅꯧ ꯇꯧꯕꯤꯌꯨ
 undo	ꯇꯧꯗꯕ ꯍꯟꯕꯤꯔꯛꯎ
-start_tracking	ꯂꯤꯁꯤꯡ ꯍꯧꯕꯤꯌꯨ
 stock_minus	− ꯁ꯭ꯇꯣꯛ
 stock_plus	+ ꯁ꯭ꯇꯣꯛ
 settle_cash	ꯁꯦꯟꯅ ꯄꯤꯕꯤꯌꯨ
 settle_card	ꯀꯥꯔꯗꯅ ꯄꯤꯕꯤꯌꯨ
 items	ꯄꯣꯠ
 nav_items	ꯄꯣꯠ
-more	ꯍꯦꯟꯅ
-your_items	ꯅꯍꯥꯛꯀꯤ ꯄꯣꯠ
 items_help	ꯍꯣꯡꯗꯣꯛꯅꯕ ꯄꯣꯠ ꯑꯃꯗ ꯅꯝꯕꯤꯌꯨ. ꯄꯣꯠ ꯑꯅꯧꯕꯅ ꯐꯣꯔꯝ ꯁꯦꯡꯗꯣꯛꯏ. ꯃꯤꯡ ꯅꯠꯇ꯭ꯔꯒ ꯀꯣꯗ ꯑꯄꯤꯛꯄꯅ ꯊꯤꯕꯤꯌꯨ, ꯃꯃꯜ ꯊꯝꯕꯤꯌꯨ (0 ꯌꯥꯏ), ꯃꯇꯨꯡꯗ ꯍꯥꯞꯆꯤꯟꯕꯤꯌꯨ. ꯍꯥꯟꯅ ꯄꯥꯏꯔꯕ ꯌꯣꯟꯕ ꯑꯗꯨ ꯕꯤꯜ ꯁꯥꯈꯤꯕ ꯃꯤꯡꯗ ꯂꯩꯔꯒꯅꯤ.
 add_item	ꯄꯣꯠ ꯍꯥꯞꯆꯤꯟꯕꯤꯌꯨ
 new_item	ꯄꯣꯠ ꯑꯅꯧꯕ
@@ -41,28 +35,22 @@ remove	ꯂꯣꯠꯎ
 removed_items	ꯂꯣꯠꯈꯤꯕ ꯄꯣꯠ
 removed_help	ꯍꯟꯕꯤꯌꯨ ꯍꯥꯏꯕꯗ ꯄꯣꯠ ꯑꯗꯨ ꯄꯣꯠꯇ ꯍꯟꯅ ꯆꯪꯏ, ꯍꯥꯟꯅ ꯂꯩꯔꯝꯕ ꯃꯇꯝꯗ — ꯃꯃꯜ, ꯐꯣꯇꯣ ꯑꯃꯁꯨꯡ ꯐꯨꯡ.
 restore_item	ꯍꯟꯕꯤꯔꯛꯎ
-empty_catalog	ꯄꯣꯠ ꯑꯃꯠꯇ ꯂꯩꯇꯦ. ꯄꯣꯠ ꯍꯥꯡꯗꯣꯛꯎ, ꯃꯤꯡ ꯑꯃꯁꯨꯡ ꯃꯃꯜ ꯍꯥꯞꯆꯤꯟꯕꯤꯌꯨ, ꯃꯇꯨꯡꯗ ꯌꯣꯟꯕꯒꯤ ꯐꯝꯗꯒꯤ ꯌꯣꯟꯕꯤꯌꯨ.
+empty_catalog	ꯄꯣꯠ ꯑꯃꯠꯇ ꯂꯩꯇꯦ.
 total	ꯑꯄꯨꯟꯕ
 cash	ꯁꯦꯟ
 upi	UPI
 card	ꯀꯥꯔꯗ
 credit	ꯃꯤ
 clear	ꯁꯦꯡꯗꯣꯛꯎ
-ready_to_sell	ꯏꯅꯕ ꯁꯦꯝꯃꯤ
 today_prefix	ꯉꯁꯤ
-today_mid	ꯉꯁꯤ
 owed	ꯂꯩꯔꯤꯕ
-round_word	ꯃꯨꯟꯗꯣꯛ
 back	ꯍꯟꯖꯤꯜꯂꯨ
 sold_out	ꯂꯣꯏꯔꯦ
 restock	ꯍꯟꯅ ꯃꯄꯥꯡꯕꯤꯌꯨ
 not_tracked	ꯂꯤꯁꯤꯡ ꯇꯧꯗꯦ
 in_stock	ꯁ꯭ꯇꯣꯛꯇ
 marked_sold_out	ꯂꯣꯏꯔꯦ ꯍꯥꯌꯅ ꯃꯥꯏꯊꯤꯜ ꯄꯤꯔꯦ
-add_upper	ꯍꯥꯞꯆꯤꯟꯕꯤꯌꯨ
-na	—
 qty	ꯃꯁꯤꯡ
-unit_at	ꯃꯃꯜ @
 actual	ꯑꯁꯣꯌꯕ
 applied	ꯁꯤꯖꯤꯟꯅꯔꯦ
 note_ph	ꯋꯥꯍꯩ (ꯌꯥꯕ ꯑꯣꯏꯔꯕꯗꯤ)
@@ -81,21 +69,13 @@ bill_item_qty	ꯃꯁꯤꯡ
 bill_item_price	ꯃꯃꯜ
 bill_item_amount	ꯁꯦꯟ
 bill_item_note	ꯄꯣꯠ ꯅꯣꯠ
-bill_item_col_gap	ꯀꯣꯂꯝꯒꯤ ꯂꯝꯕꯤ
 bill_item_col_order	ꯀꯣꯂꯝꯒꯤ ꯃꯇꯥꯡ
 bill_item_col_sep	ꯀꯣꯂꯝꯒꯤ ꯂꯥꯏꯟ
-bill_item_gap_tight	ꯑꯄꯤꯛꯄ
-bill_item_gap_comfort	ꯅꯨꯡꯉꯥꯏꯕ
-bill_item_gap_wide	ꯑꯋꯥꯡꯕ
-bill_item_num_width	ꯃꯁꯤꯡꯒꯤ ꯀꯣꯂꯝ
-bill_item_num_compact	ꯑꯄꯤꯛꯄ
-bill_item_num_comfort	ꯅꯨꯡꯉꯥꯏꯕ
-bill_item_num_wide	ꯑꯋꯥꯡꯕ
-bill_item_num_align	ꯃꯁꯤꯡ ꯆꯨꯝꯅꯕꯤꯌꯨ
-bill_item_gap_em	ꯂꯝꯕꯤ (em)
-bill_item_qty_min	ꯃꯁꯤꯡ ꯍꯦꯟꯅ ꯄꯤꯛꯄ (em)
-bill_item_price_min	ꯃꯃꯜ ꯍꯦꯟꯅ ꯄꯤꯛꯄ (em)
-bill_item_amount_min	ꯁꯦꯟ ꯍꯦꯟꯅ ꯄꯤꯛꯄ (em)
+slip_col_width	ꯄꯥꯛ (mm)
+slip_col_start	ꯍꯧꯔꯛꯐꯝꯒꯤ ꯃꯐꯝ (px)
+slip_col_end	ꯂꯣꯏꯔꯛꯐꯝꯒꯤ ꯃꯐꯝ (px)
+slip_col_align	ꯏꯕꯒꯤ ꯂꯩꯃꯤꯟ
+slip_columns_help	ꯀꯣꯂꯝ ꯈꯨꯗꯤꯡꯃꯛꯀꯤ ꯄꯥꯛꯇꯥ ꯃꯁꯤꯒꯤ ꯍꯧꯔꯛꯐꯝ ꯑꯃꯁꯨꯡ ꯂꯣꯏꯔꯛꯐꯝꯒꯤ ꯃꯐꯝ ꯌꯥꯎꯏ꯫ ꯏꯕ ꯑꯁꯤ ꯃꯁꯥꯒꯤ ꯀꯣꯂꯝꯒꯤ ꯃꯅꯨꯡꯗꯥ ꯀꯣꯌꯁꯤꯜꯂꯤ; ꯀꯟꯇꯦꯟꯇꯀꯤ ꯄꯥꯛ ꯍꯦꯟꯒꯠꯂꯕꯥ ꯑꯗꯨ ꯆꯦ ꯑꯃꯁꯨꯡ ꯄ꯭ꯔꯤꯚ꯭ꯌꯨꯗꯥ ꯀꯀꯊꯠꯂꯤ꯫
 bill_total_qty_label	ꯃꯁꯤꯡ ꯑꯄꯨꯟꯕꯒꯤ ꯃꯤꯡ
 bill_total_subtotal_label	ꯑꯄꯨꯟꯕ ꯑꯄꯤꯛꯄꯒꯤ ꯃꯤꯡ
 bill_total_grand_label	ꯑꯄꯨꯟꯕ ꯑꯆꯧꯕꯒꯤ ꯃꯤꯡ
@@ -108,11 +88,7 @@ bill_total_qty	ꯃꯁꯤꯡ ꯑꯄꯨꯟꯕ
 bill_total_subtotal	ꯑꯄꯨꯟꯕ ꯑꯄꯤꯛꯄ
 bill_total_grand	ꯑꯄꯨꯟꯕ ꯑꯆꯧꯕ
 kot_unassigned	ꯐꯝꯂꯝ ꯂꯩꯇꯦ
-pos_tab_items	ꯍꯥꯞꯆꯤꯟꯈꯤꯕ ꯄꯣꯠ
-pos_tab_payment	ꯄꯤꯕ
-settings_hub_title	ꯁꯦꯝꯐꯝ
 settings_hub_help	ꯐꯝ ꯑꯃ ꯑꯃ ꯍꯥꯡꯗꯣꯛꯎ — ꯂꯥꯟꯊꯣꯛ ꯏꯀꯥꯏ, ꯈꯟꯕ ꯃꯦꯟꯅ.
-settings_back	ꯍꯟꯖꯤꯜꯂꯨ
 settings_sec_language	ꯂꯣꯟ ꯑꯃꯁꯨꯡ ꯁꯦꯟꯒꯤ ꯃꯃꯤꯡ
 settings_sec_country	ꯂꯩꯄꯥꯛ ꯑꯃꯁꯨꯡ ꯀꯔ
 settings_sec_tills	ꯃꯁꯤꯟ ꯑꯇꯣꯞꯄ
@@ -154,35 +130,17 @@ diag_cleared	ꯌꯦꯡꯕꯒꯤ ꯂꯥꯏꯔꯤꯛ ꯁꯦꯡꯗꯣꯛꯈꯤ
 sidebar_settings	ꯁ꯭ꯛꯔꯤꯟꯒꯤ ꯃꯄꯥꯟ
 sidebar_settings_help	ꯃꯄꯥꯟꯒꯤ ꯕꯥꯔꯒꯤ ꯃꯁꯛ. ꯂꯥꯏꯟ ꯊꯥꯗꯣꯛꯎ, ꯃꯇꯥꯡ ꯍꯣꯡꯗꯣꯛꯅꯕ. ꯁ꯭ꯋꯤꯆ ꯍꯣꯡꯗꯣꯛꯎ, ꯎꯠꯅꯕ ꯅꯠꯇ꯭ꯔꯒ ꯂꯥꯞꯅꯕ. ꯁꯦꯝꯐꯝ ꯑꯃꯁꯨꯡ ꯊꯤꯡꯕ ꯕꯥꯔꯗ ꯂꯩꯔꯣꯝꯃꯤ.
 sidebar_always_on_short	ꯍꯥꯡꯗꯣꯛꯂꯣꯝ
-sidebar_back_settings	ꯍꯟꯖꯤꯜꯂꯨ
-sidebar_shown	ꯎꯠꯈꯤ
-sidebar_hidden	ꯂꯥꯞꯈꯤ
-sidebar_always_on	ꯕꯥꯔꯗ ꯂꯩꯔꯣꯝꯃꯤ
-sidebar_shown_hint	ꯃꯄꯥꯟꯒꯤ ꯕꯥꯔ / ꯃꯈꯥꯒꯤ ꯇꯦꯕꯗ ꯎꯠꯏ
-sidebar_hidden_hint	ꯕꯥꯔꯗꯒꯤ ꯂꯥꯞꯈꯤ
 sidebar_menu_items	ꯄꯣꯠ
 sidebar_enable_all	ꯄꯨꯝꯅꯃꯛ ꯍꯥꯡꯗꯣꯛꯎ
 sidebar_disable_all	ꯄꯨꯝꯅꯃꯛ ꯊꯤꯡꯕꯤꯌꯨ
 sidebar_order_saved	ꯃꯄꯥꯟꯒꯤ ꯃꯇꯥꯡ ꯊꯝꯂꯦ
 sidebar_visibility_saved	ꯃꯄꯥꯟꯒꯤ ꯎꯕ ꯊꯝꯂꯦ
-amounts_hide	ꯂꯥꯞꯄꯤꯌꯨ
-amounts_show	ꯎꯠꯂꯨ
-printers_none_hint	ꯑꯍꯥꯟꯕ ꯃꯁꯤꯟ ꯑꯁꯤꯗ ꯄ꯭ꯔꯤꯟꯇꯔ ꯊꯝꯎ, ꯃꯇꯨꯡꯗ ꯕꯤꯜ ꯅꯠꯇ꯭ꯔꯒ ꯂꯝ ꯑꯃꯗ ꯍꯥꯞꯆꯤꯟꯕꯤꯌꯨ
-counter	ꯌꯣꯟꯕꯒꯤ ꯐꯝ
-dine_in	ꯌꯣꯟꯕꯒꯤ ꯐꯝ
-takeaway	ꯄꯨꯔꯛꯄꯤꯌꯨ
-order	ꯌꯥꯕ
 sales	ꯌꯣꯟꯕ
-sales_refunds	ꯌꯣꯟꯕ ꯑꯃꯁꯨꯡ ꯁꯦꯟ ꯍꯟꯕꯤꯔꯛꯄ
 day_close	ꯅꯨꯃꯤꯠ ꯊꯤꯡꯕ
 reports_expenses	ꯕꯦꯡꯛꯀꯤ ꯂꯥꯏꯔꯤꯛ ꯑꯃꯁꯨꯡ ꯂ&ꯃ
 nav_reports	ꯔꯤꯄꯣꯔꯇ
 nav_settings	ꯁꯦꯝꯐꯝ
 nav_lock	ꯊꯤꯡꯕꯤꯌꯨ
-no_sale_yet	ꯌꯣꯟꯕ ꯍꯧꯖꯤꯛ ꯂꯩꯇꯦ
-favorites	ꯄꯥꯝꯕ
-favorites_help	ꯅꯍꯥꯛꯅ ꯌꯥꯝꯅ ꯌꯣꯟꯕ ꯄꯣꯠ, ꯅꯍꯥꯛꯀꯤ ꯆꯪꯕꯒꯤꯗꯃꯛ ꯊꯝꯂꯦ. ꯑꯃ ꯕꯤꯜꯗ ꯍꯥꯞꯆꯤꯟꯕꯤꯌꯨ, ꯅꯠꯇ꯭ꯔꯒ ꯃꯈꯥꯒꯤ ꯄꯣꯠ ꯄꯨꯝꯅꯃꯛꯇꯒꯤ ꯂꯤꯁ꯭ꯇ ꯁꯥꯕꯤꯌꯨ.
-your_favorites	ꯅꯍꯥꯛꯀꯤ ꯄꯥꯝꯕ
 all_items	ꯄꯣꯠ ꯄꯨꯝꯅꯃꯛ
 frequent	ꯌꯥꯝꯅ ꯌꯣꯟꯕ
 added_items	ꯍꯥꯞꯆꯤꯟꯈꯤꯕ ꯄꯣꯠ
@@ -199,8 +157,6 @@ zero_sales_on	₹0 ꯌꯥꯕꯤꯌꯨ
 zero_sales_off	ꯃꯃꯜ ꯃꯊꯧ ꯇꯥꯏ
 zero_sales_saved_on	ꯃꯃꯜ ꯁꯨꯅ꯭ꯌꯥꯒꯤ ꯌꯣꯟꯕ ꯌꯥꯔꯦ
 zero_sales_saved_off	ꯌꯣꯟꯕꯅ ꯃꯃꯜ ₹0ꯗꯒꯤ ꯋꯥꯡꯕ ꯂꯩꯒꯗꯕꯅꯤ
-no_favorites	ꯄꯥꯝꯕ ꯍꯧꯖꯤꯛ ꯂꯩꯇꯦ — ꯃꯈꯥꯒꯤ ꯂꯤꯁ꯭ꯇꯇꯒꯤ ꯄꯣꯠ ꯍꯥꯞꯆꯤꯟꯕꯤꯌꯨ.
-add_to_bill	ꯕꯤꯜꯗ ꯍꯥꯞꯆꯤꯟꯕꯤꯌꯨ
 added	ꯍꯥꯞꯆꯤꯟꯈꯤ
 owes_word	ꯂꯦꯟꯏ
 selected_word	ꯈꯟꯈꯤ
@@ -209,19 +165,11 @@ chip_missing_customer	ꯈꯟꯈꯤꯕ ꯀꯦꯟꯅꯕ ꯃꯥꯡꯈꯤ — ꯍꯟ
 chip_no_customer	ꯀꯦꯟꯅꯕ ꯍꯧꯖꯤꯛ ꯂꯩꯇꯦ — ꯃꯤꯡ ꯏꯕꯤꯌꯨ, ꯃꯗꯨꯒꯤ ꯃꯇꯨꯡꯗ ꯂꯦꯟꯕ ꯅꯝꯃꯨ
 credit_summary_fmt	ꯀꯦꯟꯅꯕ {} · ꯍꯥꯡꯗꯣꯛꯂꯤꯕ ꯂꯦꯟꯕ {} · ꯊꯝꯂꯤꯕ ꯃꯃꯥꯡ ꯁꯦꯟ {}
 recent_label	ꯅꯛꯄ:
-start_order	ꯌꯥꯕ ꯍꯧꯕꯤꯌꯨ
-open_bill	ꯕꯤꯜ ꯍꯥꯡꯗꯣꯛꯎ
-collect_payment	ꯄꯤꯕ ꯂꯧꯕꯤꯌꯨ
-payment_pending	ꯄꯤꯕ ꯉꯥꯏꯔꯤ
-collect_at_counter	ꯌꯣꯟꯕꯒꯤ ꯐꯝꯗꯒꯤ ꯂꯧꯕꯤꯌꯨ
 inventory	ꯁ꯭ꯇꯣꯛ
-inventory_stock	ꯁ꯭ꯇꯣꯛ ꯑꯃꯁꯨꯡ ꯄꯣꯠ
 branches	ꯁꯥꯈꯥ
-branches_org	ꯁꯥꯈꯥ ꯑꯃꯁꯨꯡ ꯂꯨꯞ
 credit_customers	ꯃꯤ (ꯈꯥꯇꯥ ꯑꯃꯁꯨꯡ ꯄꯤꯔꯤꯕ)
 customer_name_ph	ꯃꯤꯒꯤ ꯃꯤꯡ
 new_customer_ph	ꯃꯤ ꯑꯅꯧꯕꯒꯤ ꯃꯤꯡ
-item_name_ph	ꯄꯣꯠꯀꯤ ꯃꯤꯡ (ꯈꯨꯗꯝ Masala Dosa)
 item_price_ph	ꯃꯃꯜ
 start_template	ꯄꯣꯠ
 team	ꯂꯨꯞ
@@ -229,17 +177,11 @@ team_pins	ꯂꯨꯞ ꯑꯃꯁꯨꯡ PIN
 my_pin_settings	ꯑꯩꯒꯤ PIN
 settings_hub_help_my_pin	ꯃꯁꯤꯟ ꯑꯁꯤꯗ ꯆꯪꯂꯛꯄ ꯃꯤꯑꯣꯏꯒꯤ ꯍꯥꯡꯗꯣꯛꯄ PIN ꯍꯣꯡꯗꯣꯛꯎ.
 team_self_help	ꯆꯪꯕ ꯑꯃ: PIN ꯑꯅꯧꯕ, ꯄꯥꯁꯋꯥꯔꯗ ꯑꯅꯧꯕ, ꯅꯠꯇ꯭ꯔꯒ ꯑꯅꯤꯃꯛ. ꯕꯣꯛꯁ ꯍꯥꯏꯗꯕ ꯊꯝꯕꯤꯌꯨ, ꯍꯧꯖꯤꯛ ꯂꯩꯕ ꯊꯝꯅꯕ. ꯁ꯭ꯛꯔꯤꯟ ꯅꯠꯇ꯭ꯔꯒ ꯍꯛ ꯑꯇꯣꯞꯄ ꯃꯊꯧ ꯇꯥꯔꯕꯗꯤ ꯃꯄꯨꯗ ꯍꯪꯕꯤꯌꯨ.
-backup_settings	ꯀꯣꯄꯤ ꯑꯃꯁꯨꯡ ꯁꯦꯝꯐꯝ
-lock_app	ꯑꯦꯞ ꯊꯤꯡꯕꯤꯌꯨ
 pick	ꯂꯧꯕꯤꯌꯨ
-select	ꯈꯟꯕꯤꯌꯨ
 advance	ꯃꯃꯥꯡ ꯁꯦꯟ
 owner	ꯃꯄꯨ
 staff	ꯊꯕꯛꯇꯧꯕ
 photo	ꯁꯛꯇꯝ
-auto	ꯃꯁꯥ
-prev	ꯃꯃꯥꯡ
-next	ꯃꯊꯪ
 ok	OK
 this_shop	Server
 extra_till	ꯈꯣꯡꯖꯦꯜ
@@ -248,17 +190,13 @@ server	Server
 client	ꯈꯣꯡꯖꯦꯜ
 language_currency	ꯂꯣꯟ ꯑꯃꯁꯨꯡ ꯁꯦꯟꯒꯤ ꯃꯃꯤꯡ
 language	ꯂꯣꯟ
-choose_language	ꯅꯍꯥꯛꯀꯤ ꯂꯣꯟ ꯈꯟꯕꯤꯌꯨ
 language_setup_hint	ꯃꯁꯤꯟ ꯑꯁꯤꯒꯤ ꯂꯣꯟ ꯁꯨꯕꯤꯌꯨ, ꯅꯠꯇ꯭ꯔꯒ ꯃꯁꯥꯅ ꯈꯟꯕꯤꯌꯨ.
 lang_follow_platform	ꯃꯁꯤꯟꯒꯤ ꯂꯣꯟ
 lang_pick_user	ꯂꯣꯟ ꯈꯟꯕꯤꯌꯨ
 lang_platform_now	ꯃꯁꯤꯟꯒꯤ ꯂꯣꯟ ꯍꯧꯖꯤꯛ
 selected_language	ꯈꯟꯈꯤ
-continue	ꯃꯈꯥ ꯆꯠꯂꯨ
 this_device	ꯃꯁꯤꯟ ꯑꯁꯤ
 device_use_q	ꯃꯁꯤꯟ ꯑꯁꯤ ꯀꯔꯝꯅ ꯁꯤꯖꯤꯟꯅꯒꯅꯤ?
-last_server_mode	Server ꯑꯣꯏꯔꯝꯃꯤ — ꯅꯝꯃꯨ, ꯃꯈꯥ ꯆꯠꯅꯕ
-last_client_mode	ꯈꯣꯡꯖꯦꯜ ꯑꯣꯏꯔꯝꯃꯤ — ꯅꯝꯃꯨ, ꯃꯈꯥ ꯆꯠꯅꯕ
 choose_server	server ꯈꯟꯕꯤꯌꯨ
 choose_server_hint	ꯂꯩꯔꯤꯕ server ꯍꯥꯡꯗꯣꯛꯎ, ꯅꯠꯇ꯭ꯔꯒ ꯂꯨꯆꯤꯡ ꯑꯇꯣꯞꯄꯒꯤꯗꯃꯛ ꯁꯥꯕꯤꯌꯨ.
 create_new_server	server ꯑꯅꯧꯕ ꯁꯥꯕꯤꯌꯨ
@@ -268,12 +206,6 @@ server_remove_pin_ph	ꯃꯄꯨꯒꯤ PIN, server ꯂꯣꯠꯅꯕ
 only_owner_remove_server	ꯃꯄꯨꯅꯈꯛꯇ server ꯂꯣꯠꯄ ꯌꯥꯏ
 owner_pin_remove_server	server ꯑꯁꯤ ꯂꯣꯠꯅꯕ ꯃꯄꯨꯒꯤ PIN ꯃꯊꯧ ꯇꯥꯏ
 device_setup_help	Serverꯅ ꯂꯥꯏꯔꯤꯛ ꯃꯐꯝ ꯑꯁꯤꯗ ꯊꯝꯏ. ꯈꯣꯡꯖꯦꯜ Serverꯒ ꯆꯨꯝꯅꯏ.
-app_template_heading	ꯍꯧꯔꯛꯄ ꯂꯤꯁ꯭ꯇ (ꯃꯊꯧ ꯇꯥꯕ)
-app_template_blurb	ꯂꯤꯁ꯭ꯇ ꯎꯠꯄ ꯑꯃ ꯂꯧꯏ; ꯃꯄꯨ Zahir (zahir), ꯑꯦꯗꯃꯤꯟ Asif (asif, PIN 1111), ꯁꯦꯟ ꯌꯦꯡꯕ Nawaz (nawaz, PIN 0000); ꯇꯦꯛꯁ/GST ꯊꯤꯡꯂꯦ; ꯃꯃꯥꯡꯒꯤ ꯁꯥꯏꯗꯕꯥꯔ; ꯄꯨꯌꯥ ꯄꯨꯡ 4 ꯃꯇꯨꯡꯗ ꯁꯦꯡꯗꯣꯛꯏ (ꯑꯃꯁꯨꯡ ꯀꯣꯄꯤꯗ ꯄꯨꯌꯥ ꯍꯧꯖꯤꯛ ꯁꯦꯡꯗꯣꯛꯎ); ꯉꯁꯤꯒꯤ ꯄꯥꯠ ꯊꯤꯡꯂꯦ; ꯑꯄꯤꯛꯄ ꯇ꯭ꯔꯦꯒꯤꯗꯃꯛ ꯑꯄꯤꯛꯄ ꯕꯤꯜ + Standard ꯃꯥꯔꯖꯤꯟ. ꯇꯦꯛꯁ ꯑꯃꯁꯨꯡ ꯁꯥꯏꯗꯕꯥꯔꯒꯤ ꯑꯇꯣꯞꯄ ꯂꯝ ꯁꯦꯝꯐꯝꯗ ꯍꯟꯅ ꯍꯥꯡꯗꯣꯛꯄ ꯌꯥꯏ.
-app_template_apply	ꯍꯧꯔꯛꯄ ꯂꯤꯁ꯭ꯇ ꯁꯤꯖꯤꯟꯅꯕꯤꯌꯨ
-app_template_skip	ꯍꯧꯖꯤꯛ ꯀꯣꯏꯗꯣꯛꯎ
-app_template_status	Server ꯁꯦꯝꯈ꯭ꯔꯦ — ꯍꯧꯔꯛꯄ ꯂꯤꯁ꯭ꯇ ꯁꯤꯖꯤꯟꯅꯕꯤꯌꯨ, ꯅꯠꯇ꯭ꯔꯒ ꯊꯥꯗꯣꯛꯎ
-app_template_importing	{title} ꯁꯤꯖꯤꯟꯅꯔꯤ…
 currency	ꯁꯦꯟꯒꯤ ꯃꯃꯤꯡ
 backup	ꯀꯣꯄꯤ
 use	ꯁꯤꯖꯤꯟꯅꯕꯤꯌꯨ
@@ -307,7 +239,7 @@ attachments_last_expense	ꯌꯣꯟꯕ (ꯆꯥꯟꯕ ꯑꯔꯣꯏꯕ)
 bank	ꯕꯦꯡꯛ
 bank_in	ꯕꯦꯡꯛ ꯆꯪꯕ
 bank_out	ꯕꯦꯡꯛ ꯊꯣꯔꯛꯄ
-bank_reconciliation	ꯕꯦꯡꯛ ꯆꯨꯝꯅꯕ (ꯅꯍꯥꯛꯀꯤ ꯕꯦꯡꯛ ꯔꯤꯄꯣꯔꯇꯒ ꯌꯦꯡꯕꯤꯌꯨ)
+bank_reconciliation	ꯕꯦꯡꯛ ꯆꯨꯝꯅꯕ
 bank_to_till	ꯕꯦꯡꯛ → ꯐꯝ
 book_add_dish	ꯂꯥꯏꯔꯤꯛ — ꯄꯣꯠ ꯍꯥꯞꯆꯤꯟꯕꯤꯌꯨ
 book_opening_credit	ꯂꯥꯏꯔꯤꯛ — ꯍꯧꯔꯤꯕ ꯂꯦꯟꯕ
@@ -337,9 +269,6 @@ share_whatsapp	WhatsAppꯗ ꯁꯤꯡꯕꯤꯌꯨ
 lan_pages_heading	Wi‑Fiꯗ ꯀꯦꯟꯅꯕꯒꯤ ꯂꯃꯥꯏ
 lan_pages_help	ꯀꯦꯟꯐꯝ ꯑꯁꯤꯒꯤ Wi‑Fiꯗ ꯀꯦꯟꯅꯕꯒꯤ ꯂꯃꯥꯏ ꯎꯠꯄ ꯕꯣꯔꯗ ꯑꯃꯁꯨꯡ ꯋꯥꯈꯜ ꯐꯣꯡꯗꯣꯛꯄꯗ ꯆꯠꯏ. ꯃꯣꯕꯥꯏꯜ ꯗꯦꯇꯥ ꯁꯤꯖꯤꯟꯅꯕꯁꯤꯡꯒꯤꯗꯃꯛ ꯃꯇꯨꯡꯗ Cloud ꯃꯊꯧ ꯇꯥꯏ. ꯀꯥꯔꯗ ꯃꯁꯤꯟ ꯅꯠꯇ꯭ꯔꯒ ꯄꯤꯕ ꯂꯤꯡꯛ ꯃꯊꯧ ꯇꯥꯕꯅꯤ, ꯌꯣꯟꯕꯒꯤ ꯐꯝ ꯀꯩꯗꯧꯅꯨꯡ ꯊꯤꯡꯍꯟꯗꯦ.
 diag_send_heading	ꯃꯁꯤꯟ ꯑꯁꯤꯗꯒꯤ ꯊꯣꯔꯛꯄ
-optional_login_heading	ꯆꯪꯕ ꯌꯥꯕ ꯑꯣꯏꯔꯕꯗꯤ
-rights_heading	ꯍꯛ
-ops_panel	ꯃꯅꯨꯡꯒꯤ ꯊꯕꯛ
 crm_heading	ꯀꯦꯟꯅꯕ ꯑꯃꯁꯨꯡ ꯄꯥꯎꯖꯦꯜ
 crm_help	ꯄꯣꯛꯄ ꯅꯨꯃꯤꯠ, ꯊꯥꯖꯕ, ꯊꯕꯛ ꯇꯧꯗꯕ ꯑꯃꯁꯨꯡ ꯃꯊꯛꯀꯤ ꯀꯩꯗꯧꯅꯨꯡ — SMS ꯅꯠꯇ꯭ꯔꯒ WhatsApp ꯂꯥꯏꯟ. ꯄꯥꯎꯖꯦꯜꯗ {name} ꯑꯃꯁꯨꯡ {points} ꯁꯤꯖꯤꯟꯅꯕꯤꯌꯨ. ꯃꯄꯨꯅ ꯊꯥꯕ ꯅꯝꯃꯤ; ꯃꯁꯥꯅ ꯊꯣꯔꯛꯇꯦ.
 crm_queue_sms	SMS ꯂꯥꯏꯟ
@@ -364,21 +293,17 @@ till_wallet_topup_ph	ꯋꯥꯂꯦꯠꯇ ꯍꯥꯞꯆꯤꯟꯅꯕ ꯁꯦꯟ
 till_voucher_issue_amt_ph	ꯄꯤꯅꯕ ꯚꯥꯎꯆꯔ ꯁꯦꯟ
 till_voucher_issue_code_ph	ꯚꯥꯎꯆꯔ ꯀꯣꯗ ꯑꯅꯧꯕ
 bulk_price_apply	ꯃꯃꯜ ꯌꯥꯝꯕ ꯁꯤꯖꯤꯟꯅꯕꯤꯌꯨ
-card_terminal_optional	ꯀꯥꯔꯗ ꯃꯁꯤꯟ / ꯄꯤꯕꯒꯤ ꯂꯤꯡꯛ (ꯏꯟꯇꯔꯅꯦꯠ ꯂꯩꯔꯕ ꯃꯇꯝꯗ ꯌꯥꯕ ꯑꯣꯏꯔꯕꯗꯤ)
 copy_report	ꯔꯤꯄꯣꯔꯇ ꯀꯣꯄꯤ
 counted_cash_ph	ꯕꯣꯛꯁꯇ ꯂꯤꯁꯤꯡ ꯇꯧꯔꯕ ꯁꯦꯟ
 country_tax	ꯂꯩꯄꯥꯛ ꯑꯃꯁꯨꯡ ꯀꯔ
 create_backup	ꯀꯣꯄꯤ ꯁꯥꯕꯤꯌꯨ
 credit_limit_heading	ꯂꯦꯟꯕꯒꯤ ꯆꯥꯡ (ꯈꯟꯈꯤꯕ / ꯃꯤꯡ ꯄꯤꯔꯕ ꯃꯤ)
-day_close_summary	ꯅꯨꯃꯤꯠ ꯊꯤꯡꯕꯒꯤ ꯋꯥꯔꯣꯜ
 delete_party	ꯈꯟꯈꯤꯕ ꯃꯤ ꯀꯛꯊꯠꯎ
-delivery	ꯌꯧꯍꯟꯕ
 done_open_books	ꯂꯣꯏꯔꯦ — ꯂꯥꯏꯔꯤꯛ ꯍꯥꯡꯗꯣꯛꯎ
 drawer_count	ꯕꯣꯛꯁ ꯂꯤꯁꯤꯡ (ꯌꯥꯕ ꯑꯣꯏꯔꯕꯗꯤ)
 expense_heading	ꯆꯥꯟꯕ
 export_day	ꯅꯨꯃꯤꯠ ꯊꯣꯔꯛꯄꯤꯌꯨ
 extra_note_bill_ph	ꯕꯤꯜ / ꯌꯣꯟꯕ ꯑꯁꯤꯗ ꯋꯥꯍꯩ ꯍꯦꯟꯕ
-extra_note_expense_ph	ꯆꯥꯟꯕ ꯑꯔꯣꯏꯕꯗ ꯋꯥꯍꯩ ꯍꯦꯟꯕ
 extra_tills_heading	ꯐꯝ ꯍꯦꯟꯕ
 other_devices_help_heading	ꯃꯁꯤꯟ ꯑꯇꯣꯞꯄ ꯁꯦꯝꯕꯤꯌꯨ
 other_devices_help	ꯃꯁꯤꯟ ꯑꯁꯤꯗ (Server): ꯃꯁꯤꯟ ꯑꯇꯣꯞꯄ → ꯐꯝ ꯍꯦꯟꯕ ꯌꯥꯕꯤꯌꯨ. ꯄꯦꯌꯔ ꯀꯣꯗ ꯑꯃꯁꯨꯡ Wi‑Fi ꯂꯩꯐꯝ ꯌꯦꯡꯕꯤꯌꯨ. ꯎꯔꯕꯗꯤ ꯃꯁꯤꯟ ꯑꯇꯣꯞꯄ ꯌꯣꯟꯕ ꯌꯥꯕꯤꯌꯨ ꯅꯝꯕꯤꯌꯨ. ꯀꯝꯄ꯭ꯌꯨꯇꯔꯗ ꯀꯝꯄ꯭ꯌꯨꯇꯔ ꯑꯁꯤꯒ ꯍꯧꯕꯤꯌꯨ ꯅꯝꯕꯤꯌꯨ. ꯃꯁꯤꯟ ꯑꯇꯣꯞꯄ ꯈꯨꯗꯤꯡꯃꯛꯇ: ꯑꯦꯞ ꯍꯥꯞꯆꯤꯟꯕꯤꯌꯨ, ꯈꯣꯡꯖꯦꯜ ꯃꯣꯗ ꯈꯜꯂꯨ, ꯀꯦꯟꯐꯝꯒꯤ Server ꯊꯤꯕꯤꯌꯨ (ꯅꯠꯇ꯭ꯔꯒ ꯂꯩꯐꯝ ꯏꯕꯤꯌꯨ), ꯄꯦꯌꯔ ꯀꯣꯗ ꯍꯥꯞꯆꯤꯟꯕꯤꯌꯨ, ꯍꯧꯖꯤꯛ ꯄꯦꯌꯔ. Wi‑Fi ꯇꯥꯈ꯭ꯔꯕꯗꯤ ꯑꯣꯔꯗꯔ ꯃꯁꯤꯟꯗ ꯂꯩ, Server ꯍꯟꯅ ꯄꯥꯎꯈꯨꯝ ꯄꯤꯔꯕꯗ ꯆꯠꯏ. ꯄ꯭ꯔꯤꯟꯇꯔ ꯍꯦꯟꯕ Serverꯗ ꯊꯝꯃꯤ (ꯁꯦꯝꯐꯝ → ꯄ꯭ꯔꯤꯟꯇꯔ) — ꯐꯝ ꯍꯦꯟꯕꯅ ꯕꯤꯜ ꯃꯐꯝ ꯑꯗꯨꯗ ꯊꯥꯏ.
@@ -392,7 +317,6 @@ login_id_ph	ꯁꯤꯖꯤꯟꯅꯔꯤꯕꯒꯤ ꯃꯤꯡ
 mark_cleared	ꯁꯦꯡꯗꯣꯛꯈꯤ ꯍꯥꯌꯅ ꯃꯥꯏꯊꯤꯜ ꯄꯤꯕꯤꯌꯨ
 new_party_clear	ꯃꯤ ꯑꯅꯧꯕ (ꯐꯣꯔꯝ ꯁꯦꯡꯗꯣꯛꯎ)
 new_party_kind_supplier_ph	ꯃꯤ ꯑꯅꯧꯕꯒꯤ ꯃꯈꯜ (ꯄꯤꯔꯤꯕ)
-next_country	ꯂꯩꯄꯥꯛ ꯃꯊꯪ
 next_order	ꯌꯥꯕ ꯃꯊꯪ (ꯐꯝ ꯁꯦꯡꯗꯣꯛꯎ)
 note_gstin_ph	ꯋꯥꯍꯩ / GSTIN / ꯋꯥꯔꯦꯞ ꯅꯤꯡꯁꯤꯡꯕ
 notes_attach_party	ꯋꯥꯍꯩ ꯑꯃꯁꯨꯡ ꯌꯣꯟꯕ (ꯈꯟꯈꯤꯕ ꯃꯤ)
@@ -410,8 +334,6 @@ pay_ap_cash	AP ꯁꯦꯟꯅ ꯄꯤꯕꯤꯌꯨ
 pay_ap_heading	ꯑꯩꯈꯣꯌꯅ ꯂꯦꯟꯕ ꯄꯤꯕꯤꯌꯨ (AP)
 pay_ap_upi	AP UPIꯅ ꯄꯤꯕꯤꯌꯨ
 pay_selected_heading	ꯈꯟꯈꯤꯕ ꯄꯤꯕꯤꯌꯨ (ꯂꯦꯟꯕ ꯂꯣꯏꯁꯤꯟꯕ / ꯃꯃꯥꯡ ꯁꯦꯟ ꯂꯧꯕꯤꯌꯨ)
-pick_from_items	ꯑꯩꯈꯣꯌꯒꯤ ꯄꯣꯠꯇꯒꯤ ꯂꯧꯕꯤꯌꯨ
-prev_country	ꯂꯩꯄꯥꯛ ꯃꯃꯥꯡ
 print_open	ꯄ꯭ꯔꯤꯟꯇ / ꯍꯥꯡꯗꯣꯛꯎ
 reason_amend_ph	ꯁꯦꯝꯕ / ꯇꯣꯛꯄ / ꯍꯟꯕꯤꯔꯛꯄꯒꯤ ꯔꯤꯖꯟ
 reason_note_ph	ꯔꯤꯖꯟ / ꯋꯥꯍꯩ (ꯃꯥꯡꯈꯤ, ꯂꯤꯁꯤꯡ, …)
@@ -435,14 +357,10 @@ history_after_hours	ꯄꯨꯡꯒꯤ ꯃꯇꯨꯡꯗ
 history_hours_ph	ꯄꯨꯡ (1–168, ꯃꯔꯨ 4)
 history_hours_save	ꯄꯨꯡ ꯊꯝꯕꯤꯌꯨ
 history_clear_now	ꯄꯨꯌꯥ ꯍꯧꯖꯤꯛ ꯁꯦꯡꯗꯣꯛꯎ
-history_cleared	ꯂꯨꯆꯤꯡꯒꯤ ꯄꯨꯌꯥ ꯁꯦꯡꯗꯣꯛꯈꯤ — ꯁꯦꯝꯕ ꯊꯝꯂꯦ
-history_retention_saved	ꯄꯨꯌꯥ ꯁꯦꯡꯗꯣꯛꯄ ꯊꯝꯂꯦ
 history_hours_saved	ꯄꯨꯌꯥꯒꯤ ꯄꯨꯡ ꯊꯝꯂꯦ
-history_owner_only	ꯃꯄꯨ ꯅꯠꯇ꯭ꯔꯒ ꯑꯦꯗꯃꯤꯟꯅꯈꯛꯇ ꯄꯨꯌꯥ ꯁꯦꯡꯗꯣꯛꯄ ꯌꯥꯏ
 rollup	ꯈꯣꯝꯖꯤꯟꯕ
 save_brand	ꯃꯤꯡ ꯊꯝꯕꯤꯌꯨ
 save_business_id	ꯂꯨꯆꯤꯡꯒꯤ ꯃꯁꯛ ꯊꯝꯕꯤꯌꯨ
-save_business_name	ꯂꯨꯆꯤꯡꯒꯤ ꯃꯤꯡ ꯊꯝꯕꯤꯌꯨ
 save_features	ꯊꯝꯎ
 save_features_named	{name} ꯊꯝꯕꯤꯌꯨ
 save_features_ok	{name}ꯒꯤ ꯁꯦꯝꯕ ꯊꯝꯂꯦ
@@ -473,7 +391,6 @@ copy_pair_code	ꯄꯦꯌꯔ ꯀꯣꯗ ꯀꯣꯄꯤ
 new_pair_code	ꯄꯦꯌꯔ ꯀꯣꯗ ꯑꯅꯧꯕ
 pair_finishing	ꯄꯦꯌꯔ ꯂꯣꯏꯔꯤ… ꯀꯦꯟꯐꯝꯒꯤ ꯂꯥꯏꯔꯤꯛ ꯁꯤꯖꯤꯟꯅꯔꯤ
 pair_opening	ꯐꯝ ꯍꯥꯡꯗꯣꯛꯂꯤ…
-pair_copied	ꯄꯦꯌꯔ ꯀꯣꯗ ꯀꯣꯄꯤ ꯇꯧꯔꯦ
 lan_offline_waiting	ꯀꯦꯟꯐꯝꯒꯤ server ꯌꯧꯕ ꯉꯝꯗꯦ · {n} ꯉꯥꯏꯔꯤ
 lan_connecting	ꯀꯦꯟꯐꯝꯗ ꯌꯣꯟꯂꯤ…
 lan_live	ꯍꯧꯖꯤꯛ
@@ -487,7 +404,6 @@ firewall_waiting	ꯑꯦꯗꯃꯤꯟꯒꯤ ꯍꯪꯕ ꯉꯥꯏꯔꯤ…
 lan_join_help	ꯃꯁꯤꯟ ꯑꯇꯣꯞꯄꯗ: ꯈꯣꯡꯖꯦꯜ ꯃꯣꯗ → ꯀꯦꯟꯐꯝꯒꯤ server ꯊꯤꯕꯤꯌꯨ (ꯅꯠꯇ꯭ꯔꯒ {addr} ꯏꯕꯤꯌꯨ) → ꯄꯦꯌꯔ ꯀꯣꯗ {code}.
 lan_pair_status	Wi‑Fi {addr}
 lan_join_help_no_addr	ꯃꯁꯤꯟ ꯑꯁꯤ Wi‑Fiꯗ ꯌꯣꯟꯕꯤꯌꯨ, ꯑꯦꯗ꯭ꯔꯦꯁ ꯐꯪꯅꯕ.
-lan_no_address	Wi‑Fi ꯑꯦꯗ꯭ꯔꯦꯁ ꯍꯧꯖꯤꯛ ꯂꯩꯇꯦ — ꯀꯦꯟꯐꯝꯒꯤ Wi‑Fiꯗ ꯌꯣꯟꯕꯤꯌꯨ.
 lan_not_listening	ꯃꯁꯤꯟ ꯌꯥꯗꯦ (ꯄꯣꯔꯇ {port} ꯁꯤꯖꯤꯟꯅꯔꯤ). ꯑꯦꯞ ꯍꯟꯅ ꯍꯧꯕꯤꯌꯨ.
 lan_tills_off	ꯐꯝ ꯍꯦꯟꯕ ꯊꯤꯡꯂꯦ. ꯌꯥꯕꯤꯌꯨ, ꯃꯁꯤꯟ ꯑꯇꯣꯞꯄ ꯌꯥꯎꯅꯕ.
 paired_with	ꯄꯦꯌꯔ ꯇꯧꯔꯦ · {url}
@@ -508,41 +424,21 @@ printers_help	ꯄ꯭ꯔꯤꯟꯇꯔ ꯊꯤꯕꯤꯌꯨ, ꯈꯜꯂꯅꯕ ꯑꯃ�
 printers_host_only	ꯄ꯭ꯔꯤꯟꯇꯔ ꯀꯦꯟꯐꯝꯒꯤ ꯃꯁꯤꯟ (Server)ꯗ ꯊꯝꯃꯤ. ꯐꯝ ꯑꯁꯤꯅ ꯕꯤꯜ ꯑꯃꯁꯨꯡ ꯑꯔꯤꯕ ꯇꯤꯀꯦꯠ ꯃꯐꯝ ꯑꯗꯨꯗ ꯊꯥꯏ — ꯊꯤꯕ / ꯍꯥꯞꯆꯤꯟꯕ / ꯄꯤꯕ Serverꯗ ꯂꯩ. ꯇꯦꯁ꯭ꯇ ꯂꯃꯥꯏ ꯑꯃꯁꯨꯡ ꯕꯤꯜ ꯄ꯭ꯔꯤꯟꯇꯀꯤ ꯑꯋꯥꯡ ꯁꯥꯡ Serverꯗ ꯆꯠꯏ.
 printers_find_heading	ꯄ꯭ꯔꯤꯟꯇꯔ ꯊꯤꯕꯤꯌꯨ
 printers_find_tip	ꯊꯤꯕꯅ ꯃꯁꯤꯟ ꯑꯁꯤ ꯌꯦꯡꯏ, ꯂꯤꯁ꯭ꯇ ꯑꯅꯧ ꯊꯝꯃꯤ.
-printers_pool_heading	ꯄ꯭ꯔꯤꯟꯇꯔ
-printers_pool_tip	ꯊꯤꯕꯅ ꯃꯁꯤꯟ ꯑꯁꯤ ꯌꯦꯡꯏ, ꯂꯤꯁ꯭ꯇ ꯑꯁꯤ ꯑꯅꯧ ꯊꯝꯃꯤ.
 printers_pool_empty	(ꯍꯧꯖꯤꯛ ꯂꯩꯇꯦ — ꯊꯤꯕꯤꯌꯨ ꯅꯝꯃꯨ)
-printers_routes_help	ꯑꯣꯄꯔꯦꯇꯤꯡ ꯁꯤꯁ꯭ꯇꯦꯝꯅ ꯍꯥꯟꯅꯗꯒꯤ ꯈꯪꯕ ꯄ꯭ꯔꯤꯟꯇꯔ ꯊꯤꯕꯤꯌꯨ. ꯕꯤꯜ ꯑꯃꯁꯨꯡ ꯄꯔꯆꯤ ꯃꯑꯣꯡꯗ ꯃꯈꯣꯏ ꯕꯤꯜ ꯑꯃꯁꯨꯡ ꯂꯝ ꯈꯨꯗꯤꯡꯃꯛꯇ ꯄꯤꯕꯤꯌꯨ.
 printer_assign_dd	ꯑꯁꯣꯌꯕ ꯄ꯭ꯔꯤꯟꯇꯔ: {place}
 printer_assign_pick	ꯑꯁꯣꯌꯕ ꯄ꯭ꯔꯤꯟꯇꯔ ꯈꯟꯕꯤꯌꯨ
 printer_profile_heading	ꯁꯦꯝꯗꯣꯛ
 vp_delivery_heading	ꯌꯧꯍꯟꯕ
 vp_delivery_help	ꯚꯔꯆꯨꯑꯦꯜ ꯄ꯭ꯔꯤꯟꯇꯔ ꯑꯁꯤꯅ ꯊꯕꯛ ꯀꯔꯝꯅ ꯊꯥꯏ — OS ꯂꯥꯏꯔꯤꯛ, ꯔ ꯕꯥꯏꯠ, ꯅꯠꯇ꯭ꯔꯒ ESC/POS. ꯄꯔꯆꯤꯒꯤ ꯋꯥꯍꯩ (ꯃꯌꯦꯛ ꯆꯥꯎꯕ, ꯂꯣꯝ, ꯃꯥꯔꯖꯤꯟ) ꯕꯤꯜ / ꯄꯔꯆꯤ ꯃꯑꯣꯡꯅ ꯈꯟꯏ, ꯃꯐꯝ ꯑꯁꯤꯅ ꯅꯠꯇꯦ.
-vp_type_size_heading	ꯃꯌꯦꯛ ꯆꯥꯎꯕ
-vp_wrap_heading	ꯂꯣꯠꯄꯒꯤ ꯑꯋꯥꯡꯕ
-vp_margin_heading	ꯃꯔꯖꯤꯟ
 vp_delivery_spooler	ꯁꯤꯁ꯭ꯇꯦꯝ ꯂꯥꯏꯔꯤꯛ (ꯁꯤꯁ꯭ꯇꯦꯝ ꯂꯥꯏꯟ)
 vp_delivery_raw	ꯕꯥꯏꯠ ꯑꯔꯥꯟꯕ ꯃꯁꯤꯟꯗ
 vp_delivery_escpos	ESC/POS ꯑꯁꯥꯕ ꯄꯥꯎꯖꯦꯜ
 virtual_printer_new	ꯄ꯭ꯔꯤꯟꯇꯔ ꯃꯤꯇꯝ ꯑꯅꯧꯕ
 virtual_printer_selected	“{name}” ꯁꯦꯝꯂꯤ — ꯂꯤꯁ꯭ꯇꯇ ꯑꯇꯣꯞꯄ ꯅꯝꯃꯨ, ꯍꯣꯡꯗꯣꯛꯅꯕ
-virtual_printer_tap_list	ꯂꯤꯁ꯭ꯇꯇ ꯄ꯭ꯔꯤꯟꯇꯔ ꯃꯤꯇꯝ ꯅꯝꯃꯨ, ꯁꯦꯝꯅꯕ
 config_layout_portrait	ꯂꯦꯡꯗꯣꯛꯄ
 config_layout_landscape	ꯄꯥꯏꯕ
 config_send_os	ꯁꯤꯁ꯭ꯇꯦꯝ ꯂꯥꯏꯟ
 config_send_escpos	ESC/POS
-profiles_heading	ꯁꯦꯝꯗꯣꯛ
-profiles_empty	(ꯁꯦꯝꯗꯣꯛ ꯍꯧꯖꯤꯛ ꯂꯩꯇꯦ)
-profile_builtin	ꯃꯅꯨꯡ ꯁꯥꯕ
-profile_custom	ꯃꯁꯥꯒꯤ
-profile_name_ph	ꯁꯦꯝꯗꯣꯛꯀꯤ ꯃꯤꯡ
-profile_new	ꯁꯦꯝꯗꯣꯛ ꯑꯅꯧꯕ
-profile_delete	ꯁꯦꯝꯗꯣꯛ ꯀꯛꯊꯠꯎ
-profile_created	ꯁꯦꯝꯗꯣꯛ ꯁꯥꯔꯦ
-profile_deleted	ꯁꯦꯝꯗꯣꯛ ꯀꯛꯈꯤ
-profile_builtin_keep	ꯃꯅꯨꯡ ꯁꯥꯕ ꯁꯦꯝꯗꯣꯛ ꯀꯛꯄ ꯉꯝꯗꯦ
-config_saved	ꯑꯅꯧ ꯇꯧꯔꯦ
-config_selected	“{name}” ꯈꯟꯈꯤ
-printer_output_heading	ꯄ꯭ꯔꯤꯟꯇꯔ ꯃꯤꯇꯝ
 virtual_printers_heading	ꯄ꯭ꯔꯤꯟꯇꯔ ꯃꯤꯇꯝ
 virtual_printers_empty	ꯄ꯭ꯔꯤꯟꯇꯔ ꯃꯤꯇꯝ ꯍꯧꯖꯤꯛ ꯂꯩꯇꯦ — ꯃꯈꯥꯗ ꯆꯥꯡ ꯊꯝꯕꯤꯌꯨ, ꯃꯗꯨꯒꯤ ꯃꯇꯨꯡꯗ ꯊꯝꯕꯤꯌꯨ. ꯂꯩꯔꯕ ꯃꯇꯨꯡꯗ ꯂꯤꯁ꯭ꯇꯇ ꯑꯃ ꯅꯝꯃꯨ, ꯁꯦꯝꯅꯕ.
 virtual_printer_name_ph	ꯄ꯭ꯔꯤꯟꯇꯔ ꯃꯤꯇꯝꯒꯤ ꯃꯤꯡ (ꯌꯥꯕ ꯑꯣꯏꯔꯕꯗꯤ)
@@ -554,71 +450,32 @@ virtual_printer_deleted	ꯄ꯭ꯔꯤꯟꯇꯔ ꯃꯤꯇꯝ “{name}” ꯀꯛ�
 virtual_printer_updated	ꯄ꯭ꯔꯤꯟꯇꯔ ꯃꯤꯇꯝ ꯑꯅꯧ ꯇꯧꯔꯦ
 virtual_printer_updated_named	ꯄ꯭ꯔꯤꯟꯇꯔ ꯃꯤꯇꯝ “{name}” ꯑꯅꯧ ꯇꯧꯔꯦ
 virtual_draft_layout	ꯄ꯭ꯔꯤꯟꯇꯔ ꯃꯤꯇꯝ ꯃꯊꯪꯒꯤꯗꯃꯛ ꯆꯥꯡ ꯊꯝꯂꯦ
-virtual_draft_send	ꯄ꯭ꯔꯤꯟꯇꯔ ꯃꯤꯇꯝ ꯃꯊꯪꯒꯤꯗꯃꯛ ꯆꯥꯡ ꯊꯝꯂꯦ
 virtual_need_real	ꯑꯁꯣꯌꯕ ꯄ꯭ꯔꯤꯟꯇꯔ ꯍꯧꯖꯤꯛ ꯈꯟꯕꯤꯌꯨ
 virtual_need_select	ꯀꯛꯅꯕ ꯄ꯭ꯔꯤꯟꯇꯔ ꯃꯤꯇꯝ ꯈꯟꯕꯤꯌꯨ
 real_printer_selected	ꯈꯟꯈꯤ: {name}
-printers_routes_heading	ꯄ꯭ꯔꯤꯟꯇ ꯇꯧꯕ ꯐꯝ
-route_pick_heading	ꯐꯝ
 route_editing	ꯁꯦꯝꯂꯤ: {name}
-route_assigned	{printer} {place}ꯗ ꯍꯥꯞꯆꯤꯟꯈꯤ
-route_already_assigned	ꯐꯝ ꯑꯁꯤꯗ ꯂꯩꯔꯦ: {printer}
 route_cleared	{name} ꯁꯦꯡꯗꯣꯛꯈꯤ
-route_assigned_empty	ꯐꯝ ꯑꯁꯤꯗ ꯂꯩꯇꯦ
-route_tap_select	ꯅꯝꯃꯨ, ꯈꯟꯅꯕ
 route_tap_selected	ꯈꯟꯈꯤ
-route_pick_printer_first	ꯄ꯭ꯔꯤꯟꯇꯔ ꯍꯧꯖꯤꯛ ꯅꯝꯃꯨ
-route_assigned_heading	ꯄ꯭ꯔꯤꯟꯇꯔ
-route_add_heading	ꯌꯣꯟꯕꯤꯌꯨ
-printer_label_ph	ꯃꯤꯡ (ꯈꯨꯗꯝ ꯌꯣꯟꯕꯒꯤ ꯐꯝ ꯄ꯭ꯔꯤꯟꯇꯔ)
 printer_target_ph	ꯁꯤꯁ꯭ꯇꯦꯝ ꯄ꯭ꯔꯤꯟꯇꯔꯒꯤ ꯃꯤꯡ ꯅꯠꯇ꯭ꯔꯒ host:9100
 printer_target_default	ꯀꯝꯄ꯭ꯌꯨꯇꯔ ꯑꯁꯤꯒꯤ ꯃꯔꯨ ꯄ꯭ꯔꯤꯟꯇꯔ (ꯑꯦꯗ꯭ꯔꯦꯁ ꯍꯥꯏꯗꯕ)
-printer_wire_heading	ꯃꯈꯜ
-printer_wire_escpos	ESC/POS
-printer_wire_os	ꯂꯦꯡꯗꯣꯛꯄ
-printer_wire_os_portrait	ꯂꯦꯡꯗꯣꯛꯄ
-printer_wire_os_landscape	ꯄꯥꯏꯕ
-printer_wire_escpos_short	ESC/POS
-printer_wire_os_short	ꯂꯦꯡꯗꯣꯛꯄ
-printer_wire_os_landscape_short	ꯄꯥꯏꯕ
-printer_format_custom	ꯃꯈꯜ ꯃꯁꯥꯒꯤ ꯑꯅꯧꯕ
-printer_format_custom_label	ꯃꯁꯥꯒꯤ
-printer_format_custom_added	ꯐꯝ ꯑꯁꯤꯒꯤꯗꯃꯛ ꯃꯈꯜ ꯃꯁꯥꯒꯤ ꯍꯥꯞꯆꯤꯟꯈꯤ
-add_printer	ꯄ꯭ꯔꯤꯟꯇꯔ ꯍꯥꯞꯆꯤꯟꯕꯤꯌꯨ
-route_pick_ph	ꯕꯤꯜ ꯅꯠꯇ꯭ꯔꯒ ꯀꯦꯟꯐꯝꯒꯤ ꯂꯝ
 route_bill	ꯕꯤꯜ
-route_dont_print	ꯄ꯭ꯔꯤꯟꯇꯔ ꯂꯩꯇꯦ
 station_print_pick_first	ꯑꯍꯥꯟꯕ ꯀꯦꯟꯐꯝꯒꯤ ꯂꯝ ꯈꯜꯂꯨ
-station_vps_empty	ꯄ꯭ꯔꯤꯟꯇꯔ ꯍꯧꯖꯤꯛ ꯂꯩꯇꯦ — ꯁꯦꯝꯐꯝ → ꯄ꯭ꯔꯤꯟꯇꯔꯒꯤ ꯃꯈꯥꯗ ꯊꯤꯕꯤꯌꯨ
 bill_printers_dd	ꯕꯤꯜꯒꯤ ꯄ꯭ꯔꯤꯟꯇꯔ
 bill_printers_dd_n	ꯕꯤꯜꯒꯤ ꯄ꯭ꯔꯤꯟꯇꯔ {n} · ꯅꯝꯃꯨ, ꯍꯣꯡꯗꯣꯛꯅꯕ
 station_vp_attached	ꯄ꯭ꯔꯤꯟꯇꯔ ꯌꯣꯟꯈꯤ
 station_vp_detached	ꯄ꯭ꯔꯤꯟꯇꯔ ꯐꯝꯂꯝꯗꯒꯤ ꯂꯣꯠꯈꯤ
-route_up	ꯃꯊꯛ
-route_down	ꯃꯈꯥ
-route_clear	ꯁꯦꯡꯗꯣꯛꯎ
-save_printers	ꯄ꯭ꯔꯤꯟꯇꯔ ꯊꯝꯕꯤꯌꯨ
 print_test_page	ꯇꯦꯁ꯭ꯇ ꯂꯃꯥꯏ ꯄ꯭ꯔꯤꯟꯇ ꯇꯧꯕꯤꯌꯨ
 no_printer_assigned	ꯄ꯭ꯔꯤꯟꯇꯔ ꯂꯩꯇꯦ
-test_page_no_printer	{place}ꯒꯤꯗꯃꯛ ꯄ꯭ꯔꯤꯟꯇꯔ ꯂꯩꯇꯦ — ꯄ꯭ꯔꯤꯟꯇꯔ ꯌꯣꯟꯕꯤꯌꯨ, ꯃꯗꯨꯒꯤ ꯃꯇꯨꯡꯗ ꯍꯟꯅ ꯍꯣꯠꯅꯕꯤꯌꯨ
 test_page_pick_first	ꯇꯦꯁ꯭ꯇ ꯂꯃꯥꯏꯒꯤꯗꯃꯛ ꯄ꯭ꯔꯤꯟꯇꯔ ꯍꯧꯖꯤꯛ ꯈꯟꯕꯤꯌꯨ — ꯃꯗꯨꯒꯤ ꯃꯇꯨꯡꯗ ꯇꯦꯁ꯭ꯇ ꯂꯃꯥꯏ ꯄ꯭ꯔꯤꯟꯇ ꯇꯧꯕꯤꯌꯨ
 test_printers_dd	ꯇꯦꯁ꯭ꯇ ꯂꯃꯥꯏꯒꯤ ꯄ꯭ꯔꯤꯟꯇꯔ
 test_printers_dd_n	ꯇꯦꯁ꯭ꯇ ꯂꯃꯥꯏꯒꯤ ꯄ꯭ꯔꯤꯟꯇꯔ {n} · ꯅꯝꯃꯨ, ꯍꯣꯡꯗꯣꯛꯅꯕ
 test_printer_picked	ꯇꯦꯁ꯭ꯇ: {name}
 test_printer_cleared	ꯇꯦꯁ꯭ꯇ ꯇꯧꯗꯦ: {name}
 test_page_sent_n	ꯇꯦꯁ꯭ꯇ ꯂꯃꯥꯏ ꯄ꯭ꯔꯤꯟꯇꯔ {n}ꯗ ꯊꯥꯔꯦ
-batch_cancel	ꯃꯥꯏꯊꯤꯜ ꯄꯤꯔꯕ ꯇꯣꯛꯎ
-batch_cancel_n	ꯃꯥꯏꯊꯤꯜ ꯄꯤꯔꯕ ꯇꯣꯛꯎ ({n})
-batch_cancel_none	ꯑꯍꯥꯟꯕ ꯊꯥꯈꯤꯕ ꯄꯣꯠ ꯑꯃ ꯅꯠꯇ꯭ꯔꯒ ꯌꯥꯝꯅ ꯃꯥꯏ ꯊꯝꯕꯤꯌꯨ — ꯃꯇꯨꯡꯗ ꯃꯥꯏ ꯊꯝꯈꯤꯕ ꯀꯛꯍꯟꯕꯤꯌꯨ
-batch_cancel_title	ꯃꯥꯏ ꯊꯝꯈꯤꯕ ꯄꯣꯠ ꯀꯛꯍꯟꯕꯤꯌꯨ — ꯃꯔꯝ ꯑꯃ, ꯂꯝ ꯈꯨꯗꯤꯡꯃꯛꯇ ꯀꯛꯍꯟꯕ ꯄꯔꯆꯤ ꯑꯃ
-batch_cancel_ok	ꯄꯣꯠ {n} ꯀꯛꯍꯟꯈ꯭ꯔꯦ · ꯀꯛꯍꯟꯕ ꯄꯔꯆꯤ {slips} → {kitchens}
-batch_cancel_ok_noprint	ꯄꯣꯠ {n} ꯀꯛꯍꯟꯈ꯭ꯔꯦ — ꯃꯁꯥ ꯄ꯭ꯔꯤꯟꯇ ꯊꯤꯡꯂꯦ, ꯃꯔꯝ ꯑꯗꯨꯅ ꯀꯛꯍꯟꯕ ꯄꯔꯆꯤ ꯂꯩꯇꯦ
 printers_saved	ꯊꯝꯂꯦ
-test_page_sent	ꯇꯦꯁ꯭ꯇ ꯂꯃꯥꯏ ꯊꯥꯔꯦ — ꯄ꯭ꯔꯤꯟꯇꯔ ꯌꯦꯡꯕꯤꯌꯨ
 test_page_sent_one	ꯇꯦꯁ꯭ꯇ ꯂꯃꯥꯏ {name}ꯗ ꯊꯥꯔꯦ — ꯄ꯭ꯔꯤꯟꯇꯔ ꯑꯗꯨ ꯌꯦꯡꯕꯤꯌꯨ
 printers_found	{n} ꯐꯪꯈꯤ: {list}
 printers_find_synced	{n} ꯐꯪꯈꯤ — {new} ꯑꯅꯧꯕ
-printer_on_device	ꯊꯝꯂꯦ
 printer_already_added	ꯍꯥꯞꯆꯤꯟꯈ꯭ꯔꯦ
 printer_already_saved	ꯊꯝꯈ꯭ꯔꯦ: {name}
 find_printers	ꯄ꯭ꯔꯤꯟꯇꯔ ꯊꯤꯕꯤꯌꯨ
@@ -628,7 +485,6 @@ cancelled	ꯇꯣꯛꯈꯤ
 printers_tap_find	ꯊꯤꯕꯤꯌꯨ ꯅꯝꯃꯨ, ꯃꯁꯤꯟ ꯑꯁꯤꯅ ꯁꯤꯖꯤꯟꯅꯕ ꯌꯥꯕ ꯄ꯭ꯔꯤꯟꯇꯔ ꯂꯤꯁ꯭ꯇ ꯎꯠꯅꯕ.
 printers_none_found	ꯐꯪꯗꯦ — ꯁꯤꯁ꯭ꯇꯦꯝ ꯄ꯭ꯔꯤꯟꯇꯔꯒꯤ ꯃꯤꯡ ꯅꯠꯇ꯭ꯔꯒ IP ꯏꯕꯤꯌꯨ (ꯈꯨꯗꯝ 192.168.1.50).
 printer_from_find	{name} ꯍꯥꯞꯆꯤꯟꯈꯤ
-bill_printer_ph	ꯕꯤꯜꯒꯤ ꯄ꯭ꯔꯤꯟꯇꯔ
 queue_refused	ꯀꯦꯟꯐꯝꯅ ꯌꯥꯗꯦ ({n}) — ꯈꯨꯗꯤꯡꯃꯛ ꯌꯣꯟꯕꯒꯤ ꯐꯝꯗ ꯌꯦꯡꯕꯤꯌꯨ:
 clear_not_accepted	ꯌꯦꯡꯈꯤ — ꯂꯤꯁ꯭ꯇ ꯑꯁꯤ ꯁꯦꯡꯗꯣꯛꯎ
 device_name_ph	ꯃꯁꯤꯟ ꯑꯁꯤꯒꯤ ꯃꯤꯡ
@@ -638,7 +494,6 @@ connected_now	ꯍꯧꯖꯤꯛ ꯌꯣꯟꯂꯦ
 backup_failed	ꯃꯁꯥ ꯀꯣꯄꯤ ꯑꯔꯣꯏꯕ ꯃꯥꯏ ꯄꯥꯛꯇꯦ: {e}
 backup_overdue	ꯅꯨꯃꯤꯠ {n} ꯀꯣꯄꯤ ꯂꯩꯇꯦ — ꯃꯁꯤꯟ ꯑꯁꯤꯗ ꯑꯦꯞ ꯍꯥꯡꯗꯣꯛꯂꯨ, ꯀꯣꯄꯤ ꯇꯧꯕ ꯉꯝꯅꯕ.
 disk_low	ꯃꯁꯤꯟ ꯑꯁꯤꯗ MB {mb}ꯈꯛꯇ ꯂꯩꯔꯦ — ꯀꯣꯄꯤ ꯊꯨꯅ ꯃꯥꯏ ꯄꯥꯛꯇꯔꯣꯏ. ꯐꯝ ꯍꯥꯏꯗꯕ ꯁꯦꯝꯕꯤꯌꯨ.
-last_seen_devices	ꯎꯕ ꯑꯔꯣꯏꯕ: {time}
 connection_to_shop	ꯀꯦꯟꯐꯝꯒꯤ ꯌꯣꯟꯕ
 supplier_name_ph	ꯄꯤꯔꯤꯕꯒꯤ ꯃꯤꯡ (ꯅꯠꯇ꯭ꯔꯒ ꯃꯤ)
 supplier_ph	ꯄꯤꯔꯤꯕ
@@ -696,7 +551,6 @@ currency_use_help	ꯂꯥꯟꯊꯣꯛꯎ ꯑꯃꯁꯨꯡ ꯁꯤꯖꯤꯟꯅꯕꯤ
 day_close_help	ꯅꯨꯃꯤꯠ ꯊꯤꯡꯕ ꯏꯕꯅ ꯋꯥꯔꯣꯜ ꯑꯁꯤ (ꯑꯃꯁꯨꯡ ꯕꯣꯛꯁꯀꯤ ꯇꯣꯈꯥꯏꯕ, ꯂꯤꯁꯤꯡ ꯇꯧꯔꯕꯗꯤ) ꯑꯣꯗꯤꯠ ꯂꯣꯒꯗ ꯊꯝꯏ. ꯌꯣꯟꯕ ꯊꯤꯡꯗꯦ.
 expenses_word	ꯆꯥꯟꯕ
 feature_access_help	ꯃꯈꯣꯌꯅ ꯍꯥꯡꯗꯣꯛꯄ ꯌꯥꯕ — ꯌꯥꯕ ꯑꯣꯏꯔꯕꯗꯤ; ꯃꯊꯛꯀꯤ ꯊꯕꯛꯅ ꯃꯔꯨ ꯊꯝꯈ꯭ꯔꯦ
-footer_local	SQLite ꯃꯅꯨꯡ · ꯃꯈꯥ ꯉꯥꯏꯗꯕ ꯂꯩꯔꯣꯝ · ꯀ꯭ꯂꯥꯎꯗ ꯂꯩꯇꯕ
 fresh_book_kirano	ꯑꯅꯧꯕ = ꯍꯥꯡꯕ ꯂꯤꯁ꯭ꯇ (ꯄꯣꯠ ꯃꯇꯨꯡꯗ ꯍꯥꯞꯆꯤꯟꯕꯤꯌꯨ). ꯂꯥꯏꯔꯤꯛ = ꯃꯈꯥꯗ ꯍꯧꯔꯛꯄ ꯁ꯭ꯇꯣꯛ ꯑꯃꯁꯨꯡ ꯀꯅꯅ ꯅꯍꯥꯛꯄꯨ ꯄꯤꯒꯗꯕꯅꯣ ꯏꯕꯤꯌꯨ.
 fresh_selected	ꯑꯅꯧ ꯈꯟꯈꯤ — ꯂꯤꯁ꯭ꯇ ꯍꯥꯏꯗꯕ ꯂꯩꯔꯣꯝꯃꯤ. ꯁꯦꯝꯃꯤꯕ ꯃꯇꯝꯗ ꯂꯣꯏꯔꯦ ꯅꯝꯃꯨ.
 gross_word	ꯑꯄꯨꯟꯕ ꯑꯔꯥꯟꯕ
@@ -709,12 +563,9 @@ net_word	ꯁꯦꯟꯊꯣꯛ
 offline_badge	ꯑꯣꯟꯂꯥꯏꯟ ꯌꯥꯎꯗꯕ
 optional_login_help	ꯆꯪꯕ ꯌꯥꯕ ꯑꯣꯏꯔꯕꯗꯤ (ꯃꯁꯛ + ꯄꯥꯁꯋꯥꯔꯗ). ꯃꯄꯨꯅ ꯃꯇꯝ ꯑꯃ ꯊꯝꯏ; ꯁꯤꯖꯤꯟꯅꯔꯤꯕꯅꯈꯛꯇ ꯃꯇꯨꯡꯗ ꯄꯥꯁꯋꯥꯔꯗ ꯍꯣꯡꯗꯣꯛꯄ ꯌꯥꯏ.
 or_unlock_login	ꯅꯠꯇ꯭ꯔꯒ ꯆꯪꯕꯒꯤ ꯃꯁꯛ + ꯄꯥꯁꯋꯥꯔꯗꯅ ꯍꯥꯡꯗꯣꯛꯎ
-permission_preset	ꯊꯕꯛ (ꯁ꯭ꯛꯔꯤꯟ ꯑꯃꯁꯨꯡ ꯁꯦꯟꯒꯤ ꯊꯕꯛ ꯊꯝꯏ)
-preset_help_kirano	ꯁꯦꯟ ꯌꯦꯡꯕ: ꯌꯣꯟꯕ. ꯃꯄꯨꯔꯣꯏ: ꯌꯣꯟꯕ + ꯄꯣꯠ + ꯇꯣꯛꯄ/ꯁꯦꯝꯕ.
-product_locked_kirano	Kirano
+permission_preset	ꯊꯕꯛ
 product_only_kirano	Kirano ꯍꯥꯏꯕ ꯀꯤꯔꯥꯅꯥ ꯑꯣꯄꯔꯦꯇꯤꯡ ꯁꯤꯁ꯭ꯇꯦꯝꯅꯤ: ꯌꯣꯟꯕꯒꯤ ꯐꯝꯗ ꯌꯣꯟꯕ, ꯁ꯭ꯇꯣꯛ, ꯁꯦꯜ ꯑꯃꯁꯨꯡ ꯂꯥꯏꯔꯤꯛ — ꯅꯍꯥꯛꯀꯤ ꯃꯁꯤꯟꯗ ꯑꯣꯐꯂꯥꯏꯟ.
 purchases_cogs	ꯂꯩꯕ (COGS)
-qty_cap	ꯃꯁꯤꯡ
 restore_help	ꯍꯟꯕꯤꯔꯛꯎ: ꯀꯣꯄꯤ ꯈꯟꯕꯤꯌꯨ. ꯂꯥꯏꯔꯤꯛ ꯃꯇꯝ ꯑꯗꯨꯒꯤ ꯃꯇꯨꯡ ꯏꯟꯅ ꯍꯥꯡꯗꯣꯛꯏ; ꯍꯧꯖꯤꯛꯀꯤ ꯂꯥꯏꯔꯤꯛ ꯍꯧꯖꯤꯛ ꯊꯝꯃꯤ, ꯃꯗꯨꯅ ꯇꯧꯗꯕ ꯍꯟꯕꯤꯔꯛꯄ ꯌꯥꯏ.
 wipe_data_heading	ꯃꯅꯨꯡꯒꯤ ꯗꯥꯇꯥ ꯀꯛꯊꯠꯎ
 wipe_data_help	ꯃꯄꯨꯒꯤꯗꯃꯛ ꯈꯛꯇ — Windows ꯂꯧꯊꯣꯛꯄꯒ ꯃꯥꯟꯅꯅꯕ ꯈꯜꯂꯕ. ꯂꯨꯍꯣꯡꯕ ꯔꯦꯀꯣꯔꯗꯅ ꯂꯨꯍꯣꯡꯕ ꯄꯨꯌꯥ ꯁꯦꯡꯗꯣꯛꯏ, ꯄꯣꯠ ꯑꯃꯁꯨꯡ ꯁꯦꯠꯑꯞ ꯊꯝꯃꯤ (ꯑꯦꯃꯔꯖꯦꯟꯁꯤ ꯍꯥꯡꯗꯣꯛꯄ PINꯒ ꯃꯥꯟꯅꯅ). ꯀꯦꯟꯐꯝ ꯁꯦꯠꯑꯞꯅ ꯂꯥꯏꯔꯤꯛ ꯗꯦꯇꯥꯕꯦꯁ ꯂꯧꯊꯣꯛꯏ. ꯁ꯭ꯛꯔꯤꯟ ꯄꯥꯝꯕꯅ ꯋꯤꯟꯗꯣ / ꯂꯣꯟ ꯁꯦꯡꯗꯣꯛꯏ. ꯃꯄꯨ PINꯅ ꯌꯥꯕꯤꯌꯨ. ꯇꯤꯝꯗ ꯑꯦꯃꯔꯖꯦꯟꯁꯤ ꯍꯥꯡꯗꯣꯛꯄ PIN ꯈꯦꯠꯅꯅꯤ (ꯍꯥꯡꯗꯣꯛꯄꯗ ꯂꯣꯠꯅ ꯀꯛꯍꯟꯕ).
@@ -747,7 +598,6 @@ staff_renamed	ꯃꯤꯡ ꯊꯝꯂꯦ
 staff_setup_copied_hire	ꯁꯦꯝꯕ {name}ꯗꯒꯤ ꯀꯣꯄꯤ ꯇꯧꯔꯦ — ꯃꯤꯡ ꯑꯃꯁꯨꯡ PIN ꯑꯅꯧꯕ ꯊꯝꯕꯤꯌꯨ, ꯃꯗꯨꯒꯤ ꯃꯇꯨꯡꯗ ꯊꯕꯛꯇꯧꯕ ꯍꯥꯞꯆꯤꯟꯕꯤꯌꯨ
 staff_setup_copied_edit	{from}ꯒꯤ ꯁꯦꯝꯕ {to}ꯗ ꯀꯣꯄꯤ ꯇꯧꯔꯦ
 staff_copy_need_selected	ꯁꯦꯝꯅꯕ ꯀꯅꯥ ꯍꯧꯖꯤꯛ ꯈꯟꯕꯤꯌꯨ
-staff_copy_need_source	ꯁꯦꯝꯕ ꯀꯣꯄꯤ ꯇꯧꯅꯕ ꯀꯅꯥ ꯈꯟꯕꯤꯌꯨ
 staff_copy_same	ꯃꯤꯑꯣꯏ ꯑꯗꯨꯅꯤ — ꯃꯤꯑꯣꯏ ꯑꯇꯣꯞꯄ ꯈꯟꯕꯤꯌꯨ
 staff_rename_need_selected	ꯃꯤꯡ ꯍꯣꯡꯗꯣꯛꯅꯕ ꯀꯅꯥ ꯍꯧꯖꯤꯛ ꯈꯟꯕꯤꯌꯨ
 team_pick_hint	ꯀꯅꯕꯨ ꯍꯣꯡꯗꯣꯛꯀꯗꯒꯦ ꯈꯜꯂꯨ — ꯁ꯭ꯛꯔꯤꯟ, ꯁꯦꯟꯒꯤ ꯍꯛ ꯑꯃꯁꯨꯡ ꯐꯝꯂꯝ ꯃꯤ ꯑꯗꯨꯒꯤꯗꯃꯛ ꯈꯛꯇ ꯎꯠꯏ.
@@ -762,15 +612,9 @@ unit_picker_off	ꯊꯤꯡꯕ
 we_owe_them	ꯑꯩꯈꯣꯌꯅ ꯃꯈꯣꯌꯕꯨ ꯂꯦꯟꯏ
 who_unlocking	ꯀꯅꯥꯅ ꯍꯥꯡꯗꯣꯛꯂꯤꯕꯅꯣ?
 locked_word	ꯊꯤꯡꯂꯦ
-show_pin	PIN ꯎꯠꯂꯨ
-hide_pin	PIN ꯂꯥꯞꯄꯤꯌꯨ
 set_owner_pin	ꯃꯄꯨꯒꯤ PIN ꯊꯝꯕꯤꯌꯨ
 enter_owner_passcode	ꯃꯄꯨꯒꯤ ꯄꯥꯁꯀꯣꯗ ꯏꯕꯤꯌꯨ
 enter_staff_passcode	ꯊꯕꯛꯇꯧꯕꯒꯤ ꯄꯥꯁꯀꯣꯗ ꯏꯕꯤꯌꯨ
-pin_count_zero	0 / 12 ꯗꯤꯖꯤꯠ · ꯈ꯭ꯕꯥꯏꯗꯒꯤ ꯄꯤꯛꯄ 4, ꯃꯗꯨꯒꯤ ꯃꯇꯨꯡꯗ OK
-pin_count_need	{} / 12 ꯗꯤꯖꯤꯠ · {} ꯍꯦꯟꯕ ꯃꯊꯧ ꯇꯥꯏ
-pin_count_full	12 / 12 ꯗꯤꯖꯤꯠ · OK ꯅꯝꯃꯨ
-pin_count_ready	{} / 12 ꯗꯤꯖꯤꯠ · ꯁꯦꯝꯃꯤꯕ ꯃꯇꯝꯗ OK ꯅꯝꯃꯨ
 pin_hint_choose	ꯗꯤꯖꯤꯠ 4–12 ꯈꯟꯕꯤꯌꯨ · Enter ꯅꯠꯇ꯭ꯔꯒ ꯍꯥꯡꯗꯣꯛꯎ, ꯊꯝꯅꯕ
 pin_hint_new	ꯃꯄꯨꯒꯤ PIN ꯑꯅꯧꯕ ꯗꯤꯖꯤꯠ 4–12 · Enter ꯅꯠꯇ꯭ꯔꯒ ꯍꯥꯡꯗꯣꯛꯎ
 pin_hint_shop_code	ꯀꯦꯟꯐꯝꯒꯤ ꯃꯁꯤꯟ · ꯄꯦꯌꯔ ꯀꯣꯗ {}
@@ -779,23 +623,15 @@ pin_hint_paired	ꯐꯝ ꯍꯦꯟꯕ ꯄꯦꯌꯔ ꯇꯧꯔꯦ — ꯍꯥꯡꯗ�
 pin_hint_pair_first	ꯐꯝ ꯍꯦꯟꯕ — ꯀꯦꯟꯐꯝꯒꯤ ꯃꯁꯤꯟ ꯍꯧꯖꯤꯛ ꯄꯦꯌꯔ
 unlock_to_continue	ꯍꯥꯡꯗꯣꯛꯎ, ꯃꯈꯥ ꯆꯠꯅꯕ
 no_staff_yet	ꯊꯕꯛꯇꯧꯕ ꯍꯧꯖꯤꯛ ꯂꯩꯇꯦ — ꯃꯄꯨ ꯑꯣꯏꯅ ꯍꯥꯡꯗꯣꯛꯎ, ꯃꯗꯨꯒꯤ ꯃꯇꯨꯡꯗ ꯂꯨꯞ
-status_server_set_pin	Server ꯃꯣꯗ — ꯃꯄꯨꯒꯤ PIN ꯊꯝꯕꯤꯌꯨ
-status_server_tills	Server ꯃꯣꯗ — ꯐꯝ ꯍꯦꯟꯕ ꯌꯥꯎꯕ ꯌꯥꯏ. ꯍꯥꯡꯗꯣꯛꯎ
-status_server_unlock	Server ꯃꯣꯗ — ꯃꯄꯨ ꯑꯣꯏꯅ ꯍꯥꯡꯗꯣꯛꯎ
-status_client_unlock	ꯈꯣꯡꯖꯦꯜ ꯃꯣꯗ — ꯍꯥꯡꯗꯣꯛꯎ, ꯌꯣꯟꯅꯕ
 icon_new_selected	ꯃꯁꯛ: ꯐꯥꯏꯜ ꯑꯅꯧꯕ ꯈꯟꯈꯤ — ꯃꯤꯡ ꯊꯝꯕꯤꯌꯨ ꯅꯝꯃꯨ
 icon_custom	ꯃꯁꯛ: ꯐꯝꯒꯤ ꯃꯁꯥꯒꯤ ꯃꯤꯡ
 icon_default	ꯃꯁꯛ: Kumkaj ꯃꯤꯡ (ꯃꯔꯨ) — ꯃꯁꯥꯒꯤ ꯑꯃ ꯈꯟꯕꯤꯌꯨ
 logo_yours	ꯂꯣꯒꯣ: ꯅꯍꯥꯛꯀꯤ ꯀꯦꯟꯐꯝ ꯂꯣꯒꯣ — ꯁ꯭ꯛꯔꯤꯟ ꯑꯃꯁꯨꯡ ꯔꯤꯁꯤꯠꯇ ꯎꯠꯏ
 logo_default	ꯂꯣꯒꯣ: Kumkaj ꯃꯤꯡ (ꯃꯔꯨ) — ꯂꯩꯔꯕꯗꯤ ꯅꯍꯥꯛꯀꯤ ꯈꯟꯕꯤꯌꯨ
-tmpl_current	ꯍꯧꯖꯤꯛ: {} — {}
-tmpl_selected	ꯈꯟꯈꯤ: {} — {}
 setup_complete	ꯁꯦꯝꯕ ꯂꯣꯏꯔꯦ
 onboard_fresh_tmpl	ꯑꯅꯧ · {} — ꯂꯤꯁ꯭ꯇ ꯍꯥꯏꯗꯕ ꯍꯧꯏ; ꯄꯣꯠꯇ ꯄꯣꯠ ꯍꯥꯞꯆꯤꯟꯕꯤꯌꯨ, ꯃꯗꯨꯒꯤ ꯃꯇꯨꯡꯗ ꯂꯣꯏꯔꯦ.
 onboard_book_tmpl	ꯂꯥꯏꯔꯤꯛ · {} — ꯄꯣꯠ ꯑꯃꯁꯨꯡ ꯍꯧꯔꯤꯕ ꯂꯦꯟꯕ ꯍꯥꯞꯆꯤꯟꯕꯤꯌꯨ, ꯃꯗꯨꯒꯤ ꯃꯇꯨꯡꯗ ꯂꯣꯏꯔꯦ.
-onboard_template_tmpl	ꯄꯥꯝꯕꯗꯤ ꯐꯝꯒꯤ ꯃꯤꯡ ꯊꯝꯕꯤꯌꯨ, ꯃꯗꯨꯒꯤ ꯃꯇꯨꯡꯗ ꯍꯧꯕꯒꯤ ꯂꯝ ꯈꯟꯕꯤꯌꯨ.
 tmpl_blurb	ꯀꯤꯔꯥꯅꯥ ꯌꯣꯟꯕꯒꯤ ꯐꯝ: ꯌꯣꯟꯕ, ꯁ꯭ꯇꯣꯛ, ꯈꯥꯇꯥ, ꯄꯤꯔꯤꯕꯗꯒꯤ ꯂꯧꯕ, ꯂꯥꯏꯔꯤꯛ.
-tmpl_how	ꯌꯣꯟꯕꯒꯤ ꯐꯝꯗ ꯌꯣꯟꯕꯤꯌꯨ; ꯁ꯭ꯇꯣꯛꯀꯤꯗꯃꯛ ꯂꯧꯕꯤꯌꯨ; ꯅꯨꯃꯤꯠꯀꯤ ꯂꯥꯏꯔꯤꯛꯀꯤꯗꯃꯛ ꯂꯥꯏꯔꯤꯛ.
 reports_facet_title	ꯔꯤꯄꯣꯔꯇ
 reports_facet_help	ꯅꯨꯃꯤꯠꯀꯤ ꯂꯥꯏꯔꯤꯛ, ꯃꯤꯒꯤ ꯆꯍꯤ, ꯕꯦꯡꯛ ꯏꯕ, ꯑꯃꯁꯨꯡ ꯃꯇꯝꯒꯤ ꯂꯥꯟꯊꯣꯛ-ꯃꯥꯡꯕ.
 against_bill_ph	ꯃꯊꯛꯀꯤ ꯕꯤꯜ #ꯒ (ꯌꯥꯕ ꯑꯣꯏꯔꯕꯗꯤ)
@@ -806,14 +642,12 @@ amount_ph	ꯁꯦꯟ
 amount_received_ph	ꯐꯪꯈꯤꯕ ꯁꯦꯟ
 amount_we_pay_ph	ꯑꯩꯈꯣꯌꯅ ꯄꯤꯕ ꯁꯦꯟ
 business_name_ph	ꯂꯨꯆꯤꯡꯒꯤ ꯃꯤꯡ
-category_new_ph	ꯐꯨꯡ (ꯌꯥꯕ ꯑꯣꯏꯔꯕꯗꯤ, ꯑꯅꯧꯕꯗꯤ ꯁꯥꯏ)
 code_bag_ph	ꯀꯣꯗ (ꯕꯦꯒ)
 conv_factor_ph	ꯐꯦꯛꯇꯔ (25 = 1 ꯕꯦꯒ → 25 kg)
 country_code_ph	ꯂꯩꯄꯥꯛ ꯀꯣꯗ ꯈꯨꯗꯝ IN, GB, US, AE, BR
 credit_khata_amount_ph	ꯂꯦꯟꯕ / ꯈꯥꯇꯥ ꯁꯦꯟ
 credit_limit_ph	ꯂꯦꯟꯕꯒꯤ ꯆꯥꯡ (0 = ꯂꯩꯇꯦ)
 from_code_ph	ꯀꯣꯗ ꯗꯒꯤ (ꯕꯦꯒ)
-item_name_lang_ph	ꯄꯣꯠꯀꯤ ꯃꯤꯡ — ꯅꯍꯥꯛꯀꯤ ꯂꯣꯟꯗ ꯏꯕꯤꯌꯨ
 login_id_opt_ph	ꯁꯤꯖꯤꯟꯅꯔꯤꯕꯒꯤ ꯃꯤꯡ (ꯃꯊꯧ ꯇꯥꯏ, ꯇꯣꯈꯥꯏ)
 manager_pin_ph	ꯃꯄꯨꯔꯣꯏ PIN, ꯌꯥꯅꯕ (ꯇꯣꯛꯄ ꯉꯝꯗꯔꯕꯗꯈꯛꯇ)
 new_branch_name_ph	ꯁꯥꯈꯥ ꯑꯅꯧꯕꯒꯤ ꯃꯤꯡ
@@ -821,15 +655,12 @@ new_password_ph	ꯄꯥꯁꯋꯥꯔꯗ ꯑꯅꯧꯕ (ꯌꯥꯕ ꯑꯣꯏꯔꯕꯗ
 new_pin_ph	PIN ꯑꯅꯧꯕ (ꯗꯤꯖꯤꯠ 4–12)
 note_bank_ph	ꯋꯥꯍꯩ (ꯊꯝꯕ, ꯊꯣꯔꯛꯄ, …)
 note_buy_expense_ph	ꯋꯥꯍꯩ (ꯌꯨ, ꯂꯨꯍꯥꯡ, …)
-note_expense_ph	ꯋꯥꯍꯩ (ꯌꯨ, ꯑꯣꯐꯤꯁ, …)
 options_kirano_ph	ꯈꯟꯕ — ꯆꯥꯎꯕ*: ꯄꯤꯛꯄ=199, ꯆꯥꯎꯕ=399 | ꯍꯥꯞꯆꯤꯟꯕ+3: ꯆꯤꯖ=40, ꯑꯣꯂꯤꯚ=30 | ꯆꯤꯖ ꯍꯦꯟꯕ=40
-part_second_way_ph	ꯂꯝ ꯑꯅꯤꯁꯨꯕꯒꯤ ꯁꯔꯨꯛ (ꯌꯥꯕ ꯑꯣꯏꯔꯕꯗꯤ)
 phone_ph	ꯐꯣꯟ
 place_name_ph	ꯐꯝ ꯑꯁꯤꯒꯤ ꯃꯤꯡ
 qty_example_ph	ꯃꯁꯤꯡ (ꯈꯨꯗꯝ kgꯒꯤꯗꯃꯛ 1.5)
 quantity_ph	ꯃꯁꯤꯡ
 reason_required_ph	ꯔꯤꯖꯟ (ꯃꯊꯧ ꯇꯥꯏ)
-role_title_ph	ꯊꯕꯛꯀꯤ ꯃꯤꯡ (ꯈꯨꯗꯝ Barista)
 service_pct_ph	ꯁꯔꯕꯤꯁ % ꯌꯥꯕ ꯑꯣꯏꯔꯕꯗꯤ 0/10/12
 short_code_ph	ꯀꯣꯗ ꯇꯦꯟꯕ (MG02)
 starting_password_ph	ꯍꯧꯔꯤꯕ ꯄꯥꯁꯋꯥꯔꯗ (ꯌꯥꯕ ꯑꯣꯏꯔꯕꯗꯤ)
@@ -864,14 +695,11 @@ shift_handover	ꯁꯤꯐꯠ ꯄꯤꯕ
 shift_since	ꯁꯤꯐꯠ ꯑꯁꯤ
 expected_in_drawer	ꯕꯣꯛꯁꯇ ꯉꯥꯏꯕ
 right_discount	ꯍꯟꯊꯕ ꯄꯤꯕꯤꯌꯨ
-pick_category	ꯐꯨꯡ ꯈꯟꯕꯤꯌꯨ
-close_category_list	ꯐꯨꯡ ꯂꯤꯁ꯭ꯇ ꯊꯤꯡꯕꯤꯌꯨ
 new_category_row	ꯐꯨꯡ ꯑꯅꯧꯕ — ꯄꯣꯠ ꯊꯝꯔꯕ ꯃꯇꯝꯗ ꯁꯥꯏ
 your_category	ꯅꯍꯥꯛꯀꯤ ꯐꯨꯡ
 suggested_category	ꯄꯥꯎꯖꯦꯜ — ꯑꯩꯈꯣꯏꯒꯤ ꯄꯣꯠꯇꯒꯤ
 category_search_ph	ꯐꯨꯡ — ꯅꯍꯥꯛꯀꯤ ꯊꯤꯕꯤꯌꯨ ꯅꯠꯇ꯭ꯔꯒ ꯑꯅꯧꯕ ꯏꯕꯤꯌꯨ
 cancel_item_short	ꯇꯣꯛꯎ
-cancel_item_title	ꯄꯣꯠ ꯑꯁꯤ ꯀꯛꯍꯟꯕꯤꯌꯨ — ꯕꯦꯛ ꯑꯣꯐꯤꯁꯅ ꯀꯛꯍꯟꯕ ꯄꯔꯆꯤ ꯐꯪꯏ
 return_to_customer	ꯀꯦꯟꯅꯕꯗ ꯍꯟꯕꯤꯔꯛꯎ
 short_by	ꯀꯝꯕ
 tip_not_sale	ꯍꯦꯟꯕ ꯁꯦꯟ (ꯊꯕꯛꯇꯧꯕꯒꯤ, ꯌꯣꯟꯕ ꯅꯠꯇꯦ)
@@ -884,9 +712,7 @@ finding_server	ꯀꯦꯟꯐꯝꯒꯤ Server Wi‑Fi ꯑꯁꯤꯗ ꯊꯤꯔꯤ…
 no_server_found	ꯐꯪꯗꯦ. Serverꯗ: ꯁꯦꯝꯐꯝ → ꯃꯁꯤꯟ ꯑꯇꯣꯞꯄ → ꯐꯝ ꯍꯦꯟꯕ ꯌꯥꯕꯤꯌꯨ (Wi‑Fi ꯑꯗꯨ). ꯅꯠꯇ꯭ꯔꯒ ꯃꯐꯝ ꯑꯗꯨꯗ ꯎꯠꯂꯤꯕ IP ꯏꯕꯤꯌꯨ.
 servers_found_pick	ꯌꯣꯟꯅꯕ ꯄꯥꯝꯕ ꯀꯦꯟꯐꯝ ꯅꯝꯃꯨ.
 server_host_selected	{host} ꯁꯤꯖꯤꯟꯅꯔꯤ — ꯄꯦꯌꯔ ꯀꯣꯗ ꯏꯕꯤꯌꯨ, ꯃꯗꯨꯒꯤ ꯃꯇꯨꯡꯗ ꯍꯧꯖꯤꯛ ꯄꯦꯌꯔ.
-print_bill	ꯕꯤꯜ ꯄ꯭ꯔꯤꯟꯇ ꯇꯧꯕꯤꯌꯨ
 approval_pin_ph	ꯃꯄꯨꯔꯣꯏ PIN (ꯍꯪꯈꯤꯕꯗꯈꯛꯇ)
-confirm	ꯅꯦꯝꯕꯤꯌꯨ
 menu_search_ph	ꯄꯣꯠ ꯅꯠꯇ꯭ꯔꯒ ꯀꯣꯗ ꯇꯦꯟꯕ ꯊꯤꯕꯤꯌꯨ
 customer_paid_ph	ꯀꯦꯟꯅꯕꯅ ꯄꯤꯔꯦ
 tip_ph	ꯍꯦꯟꯕ ꯁꯦꯟ
@@ -896,7 +722,6 @@ bill_format_help	ꯕꯤꯜ ꯈꯨꯗꯤꯡꯃꯛꯇ ꯅꯍꯥꯛꯀꯤ ꯀꯦꯟ
 bill_header_ph	ꯂꯩꯐꯝ | ꯐꯣꯟ
 fssai_ph	FSSAI / ꯀꯦꯟꯐꯝ ꯂꯥꯏꯁꯦꯟꯁ ꯅꯝꯕꯔ (ꯃꯊꯧ ꯇꯥꯕ)
 bill_footer_ph	ꯃꯈꯥ ꯋꯥꯍꯩ (ꯈꯨꯗꯝ ꯊꯥꯒꯠꯆꯔꯤ, ꯍꯟꯅ ꯂꯥꯛꯎ)
-save_bill_format	ꯕꯤꯜꯒꯤ ꯁꯦꯝꯗꯣꯛ ꯊꯝꯕꯤꯌꯨ
 kot_field_on	ꯎꯠꯄ
 kot_field_off	ꯂꯥꯞꯄ
 kot_weight_light	ꯑꯉꯧꯕ
@@ -907,10 +732,8 @@ kot_weight_bold	ꯆꯥꯎꯕ
 kot_align_start	ꯍꯧꯕꯤꯌꯨ
 kot_align_center	ꯃꯌꯥꯏ
 kot_align_end	ꯂꯣꯏꯕ
-content_width	ꯃꯅꯨꯡꯒꯤ ꯑꯋꯥꯡꯕ (mm)
 content_width_bill	ꯕꯤꯜꯒꯤ ꯃꯅꯨꯡ ꯑꯋꯥꯡꯕ (mm)
 content_width_ph	ꯅꯠꯇ꯭ꯔꯒ ꯃꯅꯨꯡ ꯑꯋꯥꯡꯕ ꯏꯕꯤꯌꯨ, 40–210 mm
-content_width_help	ꯄꯔꯆꯤ ꯑꯁꯤ ꯀꯔꯝꯅ ꯑꯋꯥꯡꯕ ꯄ꯭ꯔꯤꯟꯇ ꯇꯧꯒꯅꯣ. ꯕꯤꯜꯅ ꯃꯁꯥꯒꯤ ꯑꯋꯥꯡ ꯁꯥꯡ ꯊꯝꯃꯤ.
 content_width_bill_help	ꯀꯦꯟꯅꯕꯒꯤ ꯕꯤꯜ ꯀꯔꯝꯅ ꯑꯋꯥꯡꯕ ꯄ꯭ꯔꯤꯟꯇ ꯇꯧꯒꯅꯣ. ꯍꯥꯟꯅꯗꯒꯤ 210 mm (ꯂꯃꯥꯏ). 58 mm ꯑꯄꯤꯛꯄ ꯄꯔꯆꯤ, 80 mm ꯑꯋꯥꯡꯕ ꯄꯔꯆꯤ, 112 mm 4-ꯏꯟꯆ, 210 mm A4-ꯑꯋꯥꯡꯕ. 40ꯗꯒꯤ 210 ꯐꯥꯎꯕ ꯃꯃꯜ ꯑꯃꯍꯦꯛꯇ ꯏꯕꯤꯌꯨ. ꯇꯤꯀꯦꯠꯀꯤ ꯑꯋꯥꯡ ꯁꯥꯡ ꯄꯔꯆꯤ ꯇꯦꯕꯗ ꯂꯩ.
 vp_paper_width	ꯃꯅꯨꯡꯒꯤ ꯑꯋꯥꯡꯕ (mm)
 vp_paper_width_ph	ꯅꯠꯇ꯭ꯔꯒ ꯃꯅꯨꯡ ꯑꯋꯥꯡꯕ ꯏꯕꯤꯌꯨ, 40–210 mm
@@ -925,9 +748,6 @@ test_bill_sent	ꯕꯤꯜ ꯃꯃꯥꯡ ꯌꯦꯡꯕ ꯊꯥꯔꯦ
 test_print_no_printer	ꯊꯕꯛ ꯑꯗꯨꯒꯤ ꯄ꯭ꯔꯤꯟꯇꯔ ꯂꯩꯇꯦ — ꯁ꯭ꯛꯔꯤꯟ ꯑꯁꯤꯗ ꯑꯃ ꯈꯟꯕꯤꯌꯨ
 std_print	ꯕꯤꯜ ꯄ꯭ꯔꯤꯟꯇꯀꯤ ꯆꯥꯎꯕ
 std_print_help	OS / ꯂꯥꯏꯔꯤꯛ ꯄ꯭ꯔꯤꯟꯇꯔꯗ Standard ꯋꯥꯡꯕ ꯑꯃꯁꯨꯡ ꯑꯇꯦꯡꯕ ꯕꯤꯜ ꯊꯕꯛꯀꯤ ꯃꯌꯦꯛ ꯆꯥꯎꯕ (ꯄꯣꯏꯟꯇ ꯏꯕꯤꯌꯨ — ꯑꯄꯤꯛꯄ/ꯑꯆꯨꯝꯕ/ꯆꯥꯎꯕ ꯅꯠꯇꯦ). ꯃꯥꯏꯀꯩ ꯑꯅꯤꯗ ꯆꯥꯎꯕ ꯑꯃꯃꯛ.
-std_size_s	ꯄꯤꯛꯄ
-std_size_m	ꯃꯇꯧ
-std_size_l	ꯆꯥꯎꯕ
 save_std_print	ꯕꯤꯜ ꯄ꯭ꯔꯤꯟꯇꯀꯤ ꯆꯥꯎꯕ ꯊꯝꯕꯤꯌꯨ
 std_print_saved	ꯕꯤꯜ ꯄ꯭ꯔꯤꯟꯇꯀꯤ ꯆꯥꯎꯕ ꯊꯝꯂꯦ
 print_brand_kit	ꯄ꯭ꯔꯤꯟꯇ ꯃꯤꯡ ꯀꯤꯠ
@@ -940,14 +760,9 @@ choose_payment_qr	ꯄꯤꯕ QR ꯈꯟꯕꯤꯌꯨ
 clear_payment_qr	ꯄꯤꯕ QR ꯀꯛꯊꯠꯎ
 payment_qr_set	ꯄꯤꯕ QR: ꯐꯥꯏꯜꯗ ꯂꯩ — ꯀꯦꯟꯅꯕ ꯎꯠꯄꯗ ꯎꯠꯏ (ꯃꯐꯝ ꯑꯗꯨꯗ ꯃꯃꯜ UPI QRꯒꯤ ꯃꯍꯨꯠ)
 payment_qr_none	ꯄꯤꯕ QR: ꯂꯩꯇꯦ — ꯄꯤꯕ ꯃꯇꯝꯗ UPI IDꯗꯒꯤ ꯁꯦꯟ QR
-aggregator_import	ꯑꯦꯒ꯭ꯔꯤꯒꯦꯇꯔ ꯌꯥꯕ (ꯐꯥꯏꯜ)
-aggregator_import_help	ꯌꯥꯕ ꯃꯅꯨꯡ ꯆꯪꯍꯟꯕ: ꯀꯣꯄꯤ ꯐꯣꯜꯗꯔꯗ import_aggregator_orders.json ꯊꯝꯕꯤꯌꯨ (ꯂꯤꯁ꯭ꯇ ꯅꯠꯇ꯭ꯔꯒ {"orders":[…]}), ꯃꯗꯨꯒꯤ ꯃꯇꯨꯡꯗ ꯆꯪꯍꯟꯕꯤꯌꯨ ꯅꯝꯃꯨ. ꯌꯣꯟꯕꯒꯤ ꯐꯝ ꯊꯤꯡꯗꯦ; ꯍꯧꯖꯤꯛꯀꯤ Zomato/Swiggy ꯑꯁꯤ Cloud ꯅꯤ.
-import_aggregator_file	ꯑꯦꯒ꯭ꯔꯤꯒꯦꯇꯔ ꯐꯥꯏꯜ ꯆꯪꯍꯟꯕꯤꯌꯨ
 team_pick_ph	ꯁꯦꯝꯅꯕ ꯊꯕꯛꯇꯧꯕ — ꯃꯤꯡ, ꯁꯤꯖꯤꯟꯅꯔꯤꯕꯒꯤ ꯃꯤꯡ, ꯅꯠꯇ꯭ꯔꯒ ꯈꯟꯕ
 select_staff	ꯊꯕꯛꯇꯧꯕ ꯑꯁꯤ ꯈꯟꯕꯤꯌꯨ
 rights_help	ꯃꯤ ꯑꯁꯤꯒꯤ ꯁꯦꯟ ꯊꯕꯛ — ꯍꯣꯡꯗꯣꯛꯅꯕ ꯅꯝꯕꯤꯌꯨ: ꯌꯥꯕ → ꯃꯄꯨ PIN ꯃꯊꯧ ꯇꯥꯏ → ꯌꯥꯗꯦ. ꯕꯤꯜ ꯍꯟꯅ ꯄ꯭ꯔꯤꯟꯇ ꯇꯧꯕꯤꯌꯨ ꯕꯤꯜꯒꯤꯗꯃꯛ ꯈꯛꯇꯅꯤ; ꯂꯝ ꯃꯈꯥꯒꯤ ꯂꯤꯁ꯭ꯇꯇ ꯂꯩ.
-dish_picker_help	ꯑꯩꯈꯣꯏꯒꯤ ꯄꯣꯠ ꯊꯤꯕꯤꯌꯨ ꯅꯠꯇ꯭ꯔꯒ ꯌꯦꯡꯕꯤꯌꯨ, ꯃꯤꯡ ꯑꯃꯁꯨꯡ ꯐꯣꯇꯣ ꯃꯄꯨꯡ ꯐꯥꯍꯟꯅꯕ ꯑꯃ ꯅꯝꯕꯤꯌꯨ — ꯅꯠꯇ꯭ꯔꯒ ꯅꯍꯥꯛꯀꯤ ꯃꯤꯡ ꯊꯝꯕꯤꯌꯨ. ꯅꯍꯥꯛꯀꯤ ꯃꯃꯜ ꯊꯝꯕꯤꯌꯨ (0 ꯌꯥꯏ), ꯃꯇꯨꯡꯗ ꯄꯣꯠ ꯍꯥꯞꯆꯤꯟꯕꯤꯌꯨ.
-close_dish_list	ꯄꯣꯠ ꯂꯤꯁ꯭ꯇ ꯈꯨꯝꯕꯤꯌꯨ
 own_item_name	ꯃꯁꯤ ꯅꯍꯥꯛꯀꯤ ꯄꯣꯠ ꯃꯤꯡ ꯑꯣꯏꯅ ꯁꯤꯖꯤꯟꯅꯕꯤꯌꯨ
 on_your_menu	ꯂꯤꯁ꯭ꯇꯇ
 edit	ꯁꯦꯝꯕꯤꯌꯨ
@@ -958,24 +773,16 @@ add_scheme	BOGO ꯍꯥꯞꯆꯤꯟꯕꯤꯌꯨ
 schedule_ph	ꯄꯨꯡ — Mon-Fri 07:00-11:00 ꯅꯠꯇ꯭ꯔꯒ Evening 17:00-19:00=150
 upi_vpa_ph	UPI ID (VPA)
 upi_payee_ph	UPI ꯐꯪꯕꯒꯤ ꯃꯤꯡ (ꯌꯥꯕ ꯑꯣꯏꯔꯕꯗꯤ)
-upi_qr	UPI QR
 show_upi_qr	UPI QR ꯎꯠꯂꯨ
 close_upi_qr	ꯊꯤꯡꯕꯤꯌꯨ
 upi_qr_help	ꯀꯦꯟꯅꯕꯅ ꯁ꯭ꯀꯦꯟ ꯇꯧꯕꯤꯌꯨ, ꯄꯤꯕꯤꯌꯨ. ꯄꯤꯔꯕ ꯃꯇꯨꯡꯗ ꯄꯤꯕ ꯂꯧꯕꯤꯌꯨ ꯅꯝꯕꯤꯌꯨ. ꯁ꯭ꯛꯔꯤꯟ ꯑꯅꯤꯁꯨꯕ: LANꯗ Server URL /display ꯍꯥꯡꯗꯣꯛꯎ.
-recently_done	ꯍꯧꯖꯤꯛ ꯂꯣꯏꯔꯛꯈꯤ
 role_help_customer	ꯊꯕꯛ: ꯀꯦꯟꯅꯕ — ꯈꯥꯇꯥ (ꯃꯈꯣꯌꯅ ꯑꯩꯈꯣꯌꯕꯨ ꯂꯦꯟꯏ). ꯃꯤ ꯑꯗꯨꯅ ꯄꯣꯠꯁꯨ ꯄꯤꯕ ꯌꯥꯏ.
 role_help_both	ꯊꯕꯛ: ꯀꯦꯟꯅꯕ + ꯄꯤꯔꯤꯕ — ꯃꯤ ꯑꯃ, ꯈꯥꯇꯥ ꯑꯃꯁꯨꯡ ꯄꯤꯅꯕ ꯂꯥꯏꯔꯤꯛ, ꯔꯤꯄꯣꯔꯇꯇ ꯁꯦꯟꯊꯣꯛ.
 role_help_supplier	ꯊꯕꯛ: ꯄꯤꯔꯤꯕ — ꯂꯩꯕꯒꯤꯗꯃꯛ ꯑꯩꯈꯣꯌꯅ ꯃꯈꯣꯌꯕꯨ ꯂꯦꯟꯏ.
-items_word	ꯄꯣꯠ
-items_section	ꯄꯣꯠ
-back_to_order	ꯌꯥꯕꯗ ꯍꯟꯕꯤꯔꯛꯎ
-new_items_head	ꯍꯧꯖꯤꯛ ꯊꯥꯗꯦ
 price_ph	ꯃꯃꯜ
 price_ph_gst_inside	ꯃꯃꯜ ({tax} ꯌꯥꯎꯔꯦ)
-tax_rates_missing_hint	ꯄꯣꯠ ꯑꯁꯤꯗ {tax} ꯔꯦꯠ ꯂꯩꯇꯦ — ꯄꯣꯠꯇ ꯇꯦꯛꯁ ꯔꯦꯠ ꯊꯝꯕꯤꯌꯨ (ꯃꯃꯜꯗ ꯍꯥꯟꯅꯗꯒꯤ {tax} ꯌꯥꯎꯔꯦ, {tax} ꯌꯥꯎꯕꯒꯤ ꯃꯈꯥꯗ)
 taxable_value	ꯀꯔ ꯄꯤꯅꯕ ꯃꯃꯜ
 gst_inside_price_note	({tax} ꯌꯥꯎꯔꯦ)
-start_with_template	ꯑꯩꯈꯣꯏꯒꯤ ꯄꯣꯠ ꯇꯦꯝꯄ꯭ꯂꯦꯠꯇꯒꯤ ꯍꯧꯕꯤꯌꯨ
 template_heading	ꯍꯧꯔꯛꯄ ꯄꯣꯠ
 template_info	ꯐꯨꯡ {c} ꯑꯃꯁꯨꯡ ꯄꯣꯠ {d} ꯐꯣꯇꯣꯒ ꯂꯣꯏꯅꯅ, ꯍꯥꯞꯆꯤꯟꯅꯕ ꯁꯦꯝꯈ꯭ꯔꯦ. ꯃꯃꯜ ₹0ꯗꯒꯤ ꯍꯧꯏ — ꯃꯇꯨꯡꯗ ꯅꯍꯥꯛꯀꯤꯕꯨ ꯊꯝꯕꯤꯌꯨ.
 template_import	ꯃꯤꯡ ꯄꯨꯝꯅꯃꯛ ꯆꯪꯍꯟꯕꯤꯌꯨ
@@ -997,21 +804,13 @@ opening_client	ꯈꯣꯡꯖꯦꯜ ꯍꯥꯡꯗꯣꯛꯂꯤ…
 preparing_desk	ꯇꯦꯕꯜ ꯁꯦꯝꯂꯤ…
 opening_server	Server ꯍꯥꯡꯗꯣꯛꯂꯤ…
 creating_server	Server ꯁꯥꯂꯤ…
-order_empty_pick	ꯑꯣꯔꯗꯔ ꯍꯥꯡꯂꯦ — ꯄꯣꯠ ꯈꯜꯂꯅꯕ ꯃꯊꯛꯇ ꯄꯣꯠ ꯍꯥꯞꯆꯤꯟꯕꯤꯌꯨ ꯅꯝꯕꯤꯌꯨ.
 add_dishes	ꯄꯣꯠ ꯍꯥꯞꯆꯤꯟꯕꯤꯌꯨ
 order_so_far	ꯌꯥꯕ ꯑꯁꯤꯗ: {n} · {total}
 no_dish_match	“{q}”ꯒ ꯆꯥꯅꯕ ꯄꯣꯠ ꯂꯩꯇꯦ
-pick_dishes_help	ꯍꯥꯞꯆꯤꯟꯅꯕ ꯄꯣꯠ ꯅꯝꯕꯤꯌꯨ · ꯂꯤꯁ꯭ꯇ ꯑꯄꯤꯛꯄ ꯇꯧꯅꯕ ꯐꯨꯡ ꯈꯜꯂꯨ
 pick_done	ꯂꯣꯏꯔꯦ
-pick_done_dd	ꯂꯣꯏꯔꯦ · {label}
-printer_route_mode	ꯐꯝ ꯑꯁꯤꯗ ꯄ꯭ꯔꯤꯟꯇꯔ ꯌꯥꯝꯕ ꯂꯩꯔꯕꯗꯤ
-printer_mode_first	ꯊꯕꯛ ꯇꯧꯕ ꯑꯍꯥꯟꯕ
-printer_mode_all	ꯄꯨꯝꯅꯃꯛꯇ ꯄ꯭ꯔꯤꯟꯇ ꯇꯧꯕꯤꯌꯨ
 kot_field_up	ꯃꯊꯛ ꯂꯣꯠꯎ
 kot_field_down	ꯃꯈꯥ ꯂꯣꯠꯎ
-app_template_blurb_extra	ꯑꯃꯁꯨꯡ: ꯃꯄꯨ Zahir, ꯑꯦꯗꯃꯤꯟ Asif, ꯁꯦꯟ ꯌꯦꯡꯕ Nawaz; ꯃꯃꯥꯡꯒꯤ ꯁꯥꯏꯗꯕꯥꯔ; ꯄꯨꯡ 4 ꯃꯇꯨꯡꯗ ꯄꯨꯌꯥ; ꯉꯁꯤꯒꯤ ꯄꯥꯠ ꯊꯤꯡꯂꯦ; ꯑꯄꯤꯛꯄ ꯕꯤꯜ.
 dishes_n	ꯄꯣꯠ {n}
-recipe_ph	ꯔꯦꯁꯤꯄꯤ (ꯃꯊꯧ ꯇꯥꯕ — ꯌꯣꯟꯕꯒꯤ ꯐꯝꯒꯤ ꯀꯦꯟꯐꯝꯗ ꯁꯤꯖꯤꯟꯅꯗꯦ)
 reorder_ph	ꯍꯦꯟꯕ ꯂꯩꯕ ꯆꯥꯡ
 set_reorder	ꯍꯟꯅ ꯂꯩꯅꯕ ꯆꯥꯡ ꯊꯝꯕꯤꯌꯨ
 low_stock_alert	ꯀꯝꯂꯤ — ꯊꯨꯅ ꯂꯩꯕꯤꯌꯨ: {items}
@@ -1020,7 +819,6 @@ show_unpriced	ꯃꯃꯜ ꯂꯩꯇꯕ ꯄꯣꯠ ꯈꯛꯇ ꯎꯠꯄꯤꯌꯨ
 show_all_dishes	ꯄꯣꯠ ꯄꯨꯝꯅꯃꯛ ꯎꯠꯄꯤꯌꯨ
 role_title_rest_ph	ꯊꯕꯛꯀꯤ ꯃꯤꯡ (ꯈꯨꯗꯝ Captain, ꯆꯥꯛ ꯍꯧꯕ)
 preset_help_rest	ꯁꯦꯟ ꯌꯦꯡꯕ: ꯌꯣꯟꯕ. ꯃꯄꯨꯔꯣꯏ: ꯌꯣꯟꯕ + ꯄꯣꯠ + ꯇꯣꯛꯄ/ꯁꯦꯝꯕ.
-kind_raw	ꯀꯦꯟꯐꯝꯒꯤ ꯁꯤꯖꯤꯟꯅꯕꯒꯤꯗꯃꯛ ꯂꯧꯈꯤꯕ
 kind_resale	ꯌꯣꯟꯅꯕ ꯂꯧꯈꯤꯕ
 kind_dish	ꯁ꯭ꯇꯣꯛ ꯔꯣꯏꯗꯕꯅꯤ
 buy_unit_ph	ꯌꯨꯅꯤꯠ (kg, litre, pcs)

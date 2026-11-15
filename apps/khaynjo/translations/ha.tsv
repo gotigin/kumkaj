@@ -41,7 +41,7 @@ remove	Cire
 removed_items	Kayayyakin da aka cire
 removed_help	Mayarwa tana dawo da kaya a menu kamar yadda yake — farashi, hoto da rukuni. Rafin abincinmu ba a cire shi ba, don haka koyaushe za a iya ƙara abinci.
 restore_item	Mayar
-empty_catalog	Babu abinci tukuna. Buɗe Menu, ƙara abinci (suna + farashi), sai ka ɗauki oda.
+empty_catalog	Babu abinci tukuna.
 total	Jimla
 cash	Tsabar kuɗi
 upi	UPI
@@ -103,23 +103,14 @@ bill_item_qty	Adadi
 bill_item_price	Farashi
 bill_item_amount	Adadin kuɗi
 bill_item_note	Bayanin abinci
-bill_item_col_gap	Tsakanin ginshiƙai
 bill_item_col_order	Tsarin ginshiƙai
 bill_item_col_sep	Layukan ginshiƙai
-bill_item_gap_tight	Kunkuntar
-bill_item_gap_comfort	Da dadi
-bill_item_gap_wide	Fadi
-bill_item_num_width	Ginshiƙan lamba
-bill_item_num_compact	Kunkuntar
-bill_item_num_comfort	Da dadi
-bill_item_num_wide	Fadi
-bill_item_num_align	Daidaita lambobi
-bill_item_gap_em	Tsakani (em)
-bill_item_qty_min	Mafi ƙarancin adadi (em)
-bill_item_price_min	Mafi ƙarancin farashi (em)
-bill_item_amount_min	Mafi ƙarancin adadin kuɗi (em)
-kot_item_qty_width	Ginshiƙar adadi
-kot_item_num_align	Daidaita adadi
+slip_columns	Ginshiƙai
+slip_col_width	Faɗi (mm)
+slip_col_start	Sararin farko (px)
+slip_col_end	Sararin ƙarshe (px)
+slip_col_align	Jeri na rubutu
+slip_columns_help	Faɗin kowane ginshiƙi ya haɗa da sararin farkonsa da na ƙarshensa. Rubutu yana naɗewa a cikin ginshiƙinsa; abin da ya wuce faɗin abun ciki ana yanke shi, a takarda da kuma a samfoti.
 bill_total_qty_label	Alamar jimlar adadi
 bill_total_subtotal_label	Alamar jimla ta ƙasa
 bill_total_grand_label	Alamar babban jimla
@@ -221,7 +212,6 @@ sidebar_order_saved	An ajiye tsarin gefen allo
 sidebar_visibility_saved	An ajiye ganin gefen allo
 amounts_hide	Ɓoye
 amounts_show	Nuna
-printers_none_hint	Da fari ajiye firinta a wannan na'ura, sai ka ƙara shi ga Lissafi ko kicin
 counter	Tebur ciniki
 dine_in	Ci a nan
 takeaway	Ɗauka
@@ -328,8 +318,6 @@ selected_language	An zaɓa
 continue	Ci gaba
 this_device	WANNAN NA'URA
 device_use_q	Ta yaya za a yi amfani da wannan na'ura?
-last_server_mode	Server ne — taɓa don ci gaba
-last_client_mode	Abokin haɗi ne — taɓa don ci gaba
 choose_server	Zaɓi server
 choose_server_hint	Buɗe server da ke akwai, ko ƙirƙiri ɗaya ga wani kasuwanci.
 create_new_server	Ƙirƙiri sabon server
@@ -391,7 +379,7 @@ attachments_last_expense	Haɗe-haɗe (kuɗin fita na ƙarshe)
 bank	Banki
 bank_in	Shiga banki
 bank_out	Fita banki
-bank_reconciliation	Daidaita banki (yi alama da bayanin bankinka)
+bank_reconciliation	Daidaita banki
 bank_to_till	Banki → akwatin kuɗi
 book_add_dish	Littafi — ƙara abinci / kaya
 book_opening_credit	Littafi — bashi na farawa
@@ -744,7 +732,6 @@ station_print_pick_first	Da fari zaɓi tashar kicin
 station_print_editing	Ana gyara firintocin “{name}”
 station_vps_dd	Firintocin wannan tasha
 station_vps_dd_n	firinta {n} · taɓa don canzawa
-station_vps_empty	Babu firinta tukuna — nemo su a ƙarƙashin Saituna → Firintoci
 bill_printers_dd	Firintocin lissafi
 bill_printers_dd_n	firinta {n} na lissafi · taɓa don canzawa
 job_layout	Tsari
@@ -889,7 +876,7 @@ net_word	Tsantsa
 offline_badge	BA INTANET
 optional_login_help	Shiga na zaɓi (lamba + kalmar sirri). Mamallaki yana saita sau ɗaya; mai amfani kaɗai ne zai iya canza kalmar sirri daga baya.
 or_unlock_login	Ko buɗe da lambar shiga + kalmar sirri
-permission_preset	Aiki (yana sa alloli da ayyukan kuɗi)
+permission_preset	Aiki
 preset_help_khaynjo	Mai akwatin kuɗi: sayar. Manaja: sayar + kayayyaki + soke/gyara.
 product_locked_khaynjo	Khaynjo
 product_only_khaynjo	Wannan manhaja Khaynjo ce kawai — tsarin aiki na gidan abinci. Sauran fannoni samfuran Kumkaj ne daban.
@@ -961,10 +948,6 @@ pin_hint_paired	An haɗa ƙarin akwatin kuɗi — buɗe don sayarwa
 pin_hint_pair_first	Ƙarin akwatin kuɗi — da fari haɗa da na'urar shago
 unlock_to_continue	Buɗe don ci gaba
 no_staff_yet	Babu ma'aikaci tukuna — buɗe a matsayin Mamallaki, sai Tawaga
-status_server_set_pin	Yanayin Server — sa PIN na Mamallaki
-status_server_tills	Yanayin Server — ƙarin akwatunan kuɗi na iya shiga. Buɗe
-status_server_unlock	Yanayin Server — buɗe a matsayin Mamallaki
-status_client_unlock	Yanayin Abokin haɗi — buɗe don sayarwa
 icon_new_selected	Alama: an zaɓi sabon fayil — taɓa Ajiye alama
 icon_custom	Alama: tambarin wurin al'ada
 icon_default	Alama: tambarin Kumkaj (tsoho) — zaɓi na al'ada
@@ -1033,7 +1016,7 @@ book_kind_balance	Takardar daidaito
 order_help	Taɓa kaya don ƙarawa.
 floor_help	Taɓa tebur don ɗauka ko canza oda. Launuka suna nuna babu kowa → an zauna → kicin → a shirye → ana ci → lissafi → an biya. Jerin jira, ajiyar wuri, da ƙara tebur suna a sassan ƙasa.
 kitchen_help	Takardun kicin (KOT), sabo a ƙarshe. Fara → A shirye → An gama yana motsa takarda. Takardu ba sa nuna farashi.
-kitchen_empty	Babu takarda a buɗe. KOT da aka aika daga Oda ko Falo yana bayyana a nan.
+kitchen_empty	Babu takarda a buɗe.
 add_a_table	Ƙara tebur
 add_station_heading	Ƙara tashar kicin
 categories_help	Taɓa Yi amfani don saka kayan da ke sama a ƙarƙashin wannan rukuni. Hoto yana ba rukuni hoto; idan babu, haruffan farko suke bayyana.
@@ -1131,7 +1114,6 @@ bill_format_help	Ana buga a ƙarƙashin sunan gidan abincinku a kowane lissafi. 
 bill_header_ph	Adireshi | waya
 fssai_ph	Lambar lasisin FSSAI (Indiya)
 bill_footer_ph	Ƙasa (misali Mun gode, sake zuwa)
-save_bill_format	Ajiye tsarin lissafi
 reset_bill_format	Mayar da tsoho
 bill_format_reset	An mayar da tsarin lissafi zuwa tsoho
 reset_kot_format	Mayar da tsoho
@@ -1201,13 +1183,11 @@ kot_copies_3	3
 kot_title_ph	Take (fanko = KOT - KITCHEN ORDER)
 kot_footer_ph	Bayanin kicin (ba dole ba, babu farashi)
 kot_preview	Duban farko
-save_kot_format	Ajiye tsarin KOT
 test_kot_format	KOT na gwaji
 test_kot_sent	An aika duban farko na takardar kicin
 test_bill_format	Lissafin gwaji
 test_bill_sent	An aika duban farko na lissafi
 test_print_no_printer	Babu firinta ga wannan aiki — zaɓi ɗaya a wannan allo
-kot_format_saved	An ajiye tsarin KOT
 std_print	Girman bugun lissafi
 std_print_help	Girman rubutu na ayyukan lissafi na Tsaye da Kwatance a firintocin takarda na tsarin (shigar da maki — ba Ƙanana/Na al'ada/Babba ba). Girman iri ɗaya a bangarorin biyu. Girman takardar kicin yana a shafin KOT.
 std_size_s	Ƙanana
@@ -1264,7 +1244,6 @@ new_items_head	Ba a aika tukuna
 price_ph	Farashi
 price_ph_gst_inside	Farashi ({tax} a ciki)
 cancel_needs_table	Buɗe wannan oda daga Falo (tebur) don soke bayan kicin ya samu — KOT na tebur ciniki yana kan takarda har ka karɓi biya
-tax_rates_missing_hint	Babu farashin {tax} a waɗannan abinci — a Menu sa Farashin haraji (farashi sun riga sun haɗa {tax} a ƙarƙashin {tax} a ciki)
 taxable_value	Adadin da ake caje haraji
 gst_inside_price_note	({tax} a ciki)
 start_with_template	Fara da samfurin menu namu
@@ -1318,9 +1297,7 @@ order_empty_pick	Oda fanko — taɓa Ƙara abinci a sama don zaɓar abinci.
 add_dishes	Ƙara abinci
 order_so_far	A wannan oda: {n} · {total}
 no_dish_match	Babu abinci da ya dace da “{q}”
-pick_dishes_help	Taɓa abinci don ƙarawa · zaɓi rukuni don ƙuntata jeri
 pick_done	An gama
-pick_done_dd	An gama · {label}
 printer_route_mode	Idan firintoci da yawa a wannan wuri
 printer_mode_first	Na farko da ya yi aiki
 printer_mode_all	Buga a duka

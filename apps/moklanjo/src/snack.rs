@@ -58,6 +58,25 @@ impl SnackKind {
     }
 }
 
+/// A warning that a job did not print because this device has no printer
+/// for it: its snack gets a Find printers button (the Printers sheet), so
+/// the fix is right there — not "go to Settings → Printers" (owner
+/// 2026-11-14). The caller shows it only while no printer is saved.
+pub fn wants_find_printers(msg: &str) -> bool {
+    let m = msg.to_lowercase();
+    [
+        "no printer",
+        "no bill printer",
+        "no label printer",
+        "no awb label printer",
+        "no receipt printer",
+        "printer in settings",
+        "settings → printers",
+    ]
+    .iter()
+    .any(|k| m.contains(k))
+}
+
 /// Guess kind from a status string so existing `set_status` call sites get a
 /// sensible face without rewriting every `Err` branch.
 pub fn classify(msg: &str) -> SnackKind {
@@ -110,7 +129,8 @@ pub fn classify(msg: &str) -> SnackKind {
         // Print route empty — must beat OK "printed" inside "not printed".
         "not printed",
         "no printer",
-        "add a kitchen printer",
+        "no awb label printer",
+        "no receipt printer",
         "shop device",
     ];
     for w in WARN {
@@ -175,16 +195,14 @@ mod tests {
         assert_eq!(classify("Sale undone — cart restored"), SnackKind::Success);
         assert_eq!(classify("Read-only on this extra till"), SnackKind::Warn);
         assert_eq!(
-            classify(
-                "KOTs are not printed on this device — add a kitchen printer in Settings → Printers"
-            ),
+            classify("Label not printed — no label printer on this device"),
             SnackKind::Warn
         );
         assert_eq!(
-            classify("Print selected again on the shop device (kitchen printers are on the counter)"),
+            classify("Print again on the shop device (printers are on the counter)"),
             SnackKind::Warn
         );
-        assert_eq!(classify("2 KOT(s) → Kitchen · printed"), SnackKind::Success);
+        assert_eq!(classify("AWB label · printed"), SnackKind::Success);
     }
 
     #[test]
@@ -205,4 +223,15 @@ mod tests {
         assert!((SnackKind::clamp_secs(99.0) - 60.0).abs() < f64::EPSILON);
         assert!((SnackKind::clamp_secs(f64::NAN) - SnackKind::DEFAULT_SECS).abs() < f64::EPSILON);
     }
+    #[test]
+    fn no_printer_warnings_offer_find_printers() {
+        assert_eq!(classify("Label saved: x.pdf — no AWB label printer on this device yet"), SnackKind::Warn);
+        assert!(wants_find_printers("Run sheet ready · Ravi — no receipt printer on this device yet"));
+        assert!(wants_find_printers("Bill not printed — no bill printer. Settings → Bill format"));
+        assert!(wants_find_printers("No printer for that job — choose one on this screen"));
+        assert!(wants_find_printers("Label saved: AWB 12 — set an AWB label printer in Settings → Printers"));
+        assert!(!wants_find_printers("Printed on Counter printer"));
+        assert!(!wants_find_printers("Sale recorded"));
+    }
+
 }

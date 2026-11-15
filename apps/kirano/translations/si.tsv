@@ -1,7 +1,5 @@
 # Sinhala — සිංහල (si). One key<TAB>text per line, in en() order; keep {placeholders}.
-app_tagline	කිරණ කවුන්ටරය: විකිණීම, තොග, කටා සහ පොත්. නොබැඳිව නොමිලේ.
 unlock	අගුළු හරින්න
-pin_hint	හිමිකරු PIN 0000 ලෙස ආරම්භ වේ
 sell	විකුණනවා
 buy	මිලදී ගන්න
 books	දින ලෙජරය
@@ -20,17 +18,13 @@ reports_month	ලාභය සහ අලාභය (මාසය)
 reports_aging	කැපී පෙනෙන / හර-ණය
 reports_balance_sheet	ශේෂ පත්රය
 reports	බැංකු ලෙජරය සහ P&L
-refresh	නැවුම් කරන්න
 undo	අහෝසි කරන්න
-start_tracking	ලුහුබැඳීම ආරම්භ කරන්න
 stock_minus	- කොටස්
 stock_plus	+ තොග
 settle_cash	මුදල් පියවන්න
 settle_card	කාඩ්පත විසඳන්න
 items	මෙනු මෙනු අයිතම
 nav_items	මෙනු මෙනු අයිතම
-more	තවත්
-your_items	ඔබේ අයිතම
 items_help	එය සංස්කරණය කිරීමට අයිතමයක් තට්ටු කරන්න. නව අයිතමය පෝරමය හිස් කරයි. නම හෝ කෙටි කේතය අනුව සොයන්න, මිලක් නියම කරන්න (0 හොඳයි), ඉන්පසු එකතු කරන්න. දැනටමත් වාර්තා කර ඇති විකුණුම් ඔවුන් චෝදනා කළ නම තබා ගන්න.
 add_item	මෙනු අයිතමය එක් කරන්න
 new_item	නව මෙනු අයිතමය
@@ -41,28 +35,22 @@ remove	ඉවත් කරන්න
 removed_items	මෙනු අයිතම ඉවත් කරන ලදී
 removed_help	ප්‍රතිසාධනය අයිතමය තිබූ ආකාරයටම අයිතම තුළට දමයි - මිල, ඡායාරූප සහ ප්‍රවර්ගය.
 restore_item	ප්‍රතිෂ්ඨාපනය කරන්න
-empty_catalog	තවම අයිතම නැත. අයිතම විවෘත කරන්න, නම සහ මිල එකතු කරන්න, ඉන්පසු කවුන්ටරයෙන් විකුණන්න.
+empty_catalog	තවම අයිතම නැත.
 total	මුළු
 cash	මුදල්
 upi	UPI
 card	කාඩ්පත
 credit	පාරිභෝගිකයින් සහ සැපයුම්කරුවන්
 clear	පැහැදිලියි
-ready_to_sell	ලෙජරයට සූදානම්
 today_prefix	අද
-today_mid	අද
 owed	කැපී පෙනෙන
-round_word	රවුම්
 back	ආපසු
 sold_out	ලබා ගත නොහැක
 restock	නැවත ගබඩා කරන්න
 not_tracked	ලුහුබැඳ නැත
 in_stock	තොගයේ
 marked_sold_out	නොමැති බව සලකුණු කර ඇත
-add_upper	එකතු කරන්න
-na	නැත
 qty	බර/ප්‍රමාණය
-unit_at	අගය @
 actual	සැබෑ
 applied	අයදුම් කළා
 note_ph	සටහන (විකල්ප)
@@ -81,21 +69,13 @@ bill_item_qty	ප්‍රමාණය
 bill_item_price	මිල
 bill_item_amount	මුදල
 bill_item_note	අයිතම සටහන
-bill_item_col_gap	තීරු පරතරය
 bill_item_col_order	තීරු අනුපිළිවෙල
 bill_item_col_sep	තීරු නීති
-bill_item_gap_tight	තදයි
-bill_item_gap_comfort	සුවපහසුයි
-bill_item_gap_wide	පුළුල්
-bill_item_num_width	අංක තීරු
-bill_item_num_compact	සංයුක්ත
-bill_item_num_comfort	සුවපහසුයි
-bill_item_num_wide	පුළුල්
-bill_item_num_align	ඉලක්කම් පෙළගස්වයි
-bill_item_gap_em	පරතරය (එම්)
-bill_item_qty_min	ප්‍රමාණය විනාඩි (em)
-bill_item_price_min	මිල අවම (em)
-bill_item_amount_min	අවම මුදල (එම්)
+slip_col_width	පළල (mm)
+slip_col_start	ආරම්භක ඉඩ (px)
+slip_col_end	අවසාන ඉඩ (px)
+slip_col_align	පෙළ පෙළගැස්ම
+slip_columns_help	සෑම තීරුවකම පළලට එහි ආරම්භක සහ අවසාන ඉඩ ඇතුළත් වේ. පෙළ තම තීරුව තුළම ඔතා යයි; අන්තර්ගත පළලෙන් ඔබ්බට ඇති දේ කඩදාසියේ සහ පෙරදසුනේ කැපී යයි.
 bill_total_qty_label	මුළු qty ලේබලය
 bill_total_subtotal_label	උප සම්පූර්ණ ලේබලය
 bill_total_grand_label	විශාල සම්පූර්ණ ලේබලය
@@ -108,11 +88,7 @@ bill_total_qty	මුළු qty
 bill_total_subtotal	උප එකතුව
 bill_total_grand	විශාල එකතුව
 kot_unassigned	පැවරීම නොකළ
-pos_tab_items	මෙනු අයිතම එකතු කරන ලදී
-pos_tab_payment	ගෙවීම
-settings_hub_title	සැකසීම්
 settings_hub_help	වරකට එක් ප්‍රදේශයක් විවෘත කරන්න - අඩු අනුචලන, පැහැදිලි තේරීම්.
-settings_back	ආපසු
 settings_sec_language	භාෂාව සහ මුදල්
 settings_sec_country	රට සහ බදු
 settings_sec_tills	වෙනත් උපාංග
@@ -154,35 +130,17 @@ diag_cleared	රෝග විනිශ්චය ලොග හිස් කරන
 sidebar_settings	පැති තීරුව
 sidebar_settings_help	පැති රේල් එකට සමාන අයිකන. නැවත ඇණවුම් කිරීමට පේළියක් අදින්න. පෙන්වීමට හෝ සැඟවීමට ස්විචය පෙරළන්න. සැකසීම් සහ අගුල සෑම විටම තීරුවේ පවතී.
 sidebar_always_on_short	සැමවිටම ක්‍රියාත්මකයි
-sidebar_back_settings	ආපසු
-sidebar_shown	පෙන්වා ඇත
-sidebar_hidden	සැඟවී ඇත
-sidebar_always_on	නිතරම බාර් එකේ
-sidebar_shown_hint	පැති රේල් / පහළ ටැබ් මත පෙන්වා ඇත
-sidebar_hidden_hint	තීරුවෙන් සැඟවී ඇත
 sidebar_menu_items	මෙනු මෙනු අයිතම
 sidebar_enable_all	සියල්ල සබල කරන්න
 sidebar_disable_all	සියල්ල අක්‍රිය කරන්න
 sidebar_order_saved	පැති තීරු ඇණවුම සුරකින ලදී
 sidebar_visibility_saved	පැති තීරු දෘශ්‍යතාව සුරකින ලදී
-amounts_hide	සඟවන්න
-amounts_show	පෙන්වන්න
-printers_none_hint	පළමුව මෙම උපාංගයේ මුද්‍රණ යන්ත්‍රයක් සුරකින්න, පසුව එය බිල්පතට හෝ කොටසකට එක් කරන්න
-counter	කවුන්ටරය
-dine_in	කවුන්ටරය
-takeaway	රැගෙන යාම
-order	ආපනශාලා ඇණවුම
 sales	විකුණුම්
-sales_refunds	විකුණුම් සහ ආපසු ගෙවීම්
 day_close	දවස කිට්ටුයි
 reports_expenses	බැංකු ලෙජරය සහ P&L
 nav_reports	වාර්තා
 nav_settings	සැකසීම්
 nav_lock	අගුළු දමන්න
-no_sale_yet	තවමත් විකිණීමක් නැත
-favorites	ප්රියතම
-favorites_help	ඔබ නිතර අලෙවි කරන මෙනු මෙනු අයිතම, ඔබගේ පිවිසුම සඳහා සුරකින ලදී. අමුත්තන්ගේ බිල්පතට එකක් එක් කරන්න, නැතහොත් පහත සියලුම මෙනු අයිතම වලින් ඔබේ ලැයිස්තුව සාදන්න.
-your_favorites	ඔබේ ප්රියතම
 all_items	සියලුම මෙනු අයිතම
 frequent	නිතර
 added_items	මෙනු මෙනු අයිතම එකතු කරන ලදී
@@ -199,8 +157,6 @@ zero_sales_on	₹0 ඉඩ දෙන්න
 zero_sales_off	මිල අවශ්යයි
 zero_sales_saved_on	ශුන්‍ය අගය විකිණීමට අවසර ඇත
 zero_sales_saved_off	විකුණුම් සඳහා රුපියල් 0 ට වැඩි මිලක් තිබිය යුතුය
-no_favorites	තවමත් ප්‍රියතමයන් නොමැත - පහත ලැයිස්තුවෙන් මෙනු අයිතම එක් කරන්න.
-add_to_bill	අමුත්තන්ගේ බිල්පතට එකතු කරන්න
 added	එකතු කරන ලදී
 owes_word	ණයයි
 selected_word	තෝරා ගන්නා ලදී
@@ -209,19 +165,11 @@ chip_missing_customer	තෝරාගත් පාරිභෝගිකයා �
 chip_no_customer	තවම පාරිභෝගිකයෙක් නැත - නමක් ටයිප් කරන්න, ඉන්පසු ණය තට්ටු කරන්න
 credit_summary_fmt	{} පාරිභෝගිකයන් · විවෘත ණය {} · අත්තිකාරම් රඳවා ඇත {}
 recent_label	මෑත:
-start_order	ඇණවුම ආරම්භ කරන්න
-open_bill	අමුත්තන්ගේ බිල්පත විවෘත කරන්න
-collect_payment	ගෙවීම එකතු කරන්න
-payment_pending	ගෙවීම පොරොත්තුවෙන්
-collect_at_counter	කවුන්ටරයේ එකතු කරන්න
 inventory	ඉන්වෙන්ටරි
-inventory_stock	ඉන්වෙන්ටරි සහ කොටස්
 branches	ශාඛා
-branches_org	ශාඛා සහ ආයතන
 credit_customers	පාරිභෝගිකයින් සහ සැපයුම්කරුවන් (ණය ගිණුම්)
 customer_name_ph	පාරිභෝගිකයාගේ හෝ සැපයුම්කරුගේ නම
 new_customer_ph	නව පාරිභෝගිකයාගේ හෝ සැපයුම්කරුගේ නම
-item_name_ph	මෙනු අයිතමයේ නම (උදා. මසාලා දෝසා)
 item_price_ph	මිල
 start_template	නිෂ්පාදනය
 team	කණ්ඩායම
@@ -229,17 +177,11 @@ team_pins	කණ්ඩායම සහ PINs
 my_pin_settings	මගේ PIN
 settings_hub_help_my_pin	මෙම උපාංගයට පුරනය වී ඇති පුද්ගලයා සඳහා අගුලු හැරීම PIN වෙනස් කරන්න.
 team_self_help	එක් පුරනයක්: නව PIN, නව මුරපදයක්, හෝ දෙකම. ඔබ සතුව ඇති දේ තබා ගැනීමට පෙට්ටියක් හිස්ව තබන්න. ඔබට විවිධ තිර හෝ අයිතිවාසිකම් අවශ්‍ය දැයි හිමිකරුගෙන් විමසන්න.
-backup_settings	උපස්ථ සහ සැකසුම්
-lock_app	යෙදුම අගුළු දමන්න
 pick	තෝරාගන්න
-select	තෝරන්න
 advance	අත්තිකාරම්
 owner	හිමිකරු
 staff	කාර්ය මණ්ඩලය
 photo	ඡායාරූපය
-auto	ඔටෝ
-prev	පෙර
-next	ඊළඟට
 ok	OK
 this_shop	සේවාදායක මාදිලිය
 extra_till	සේවාලාභී මාදිලිය
@@ -248,17 +190,13 @@ server	සේවාදායක මාදිලිය
 client	සේවාලාභී මාදිලිය
 language_currency	භාෂාව සහ මුදල්
 language	භාෂාව
-choose_language	ඔබේ භාෂාව තෝරන්න
 language_setup_hint	මෙම උපාංගයේ භාෂාව අනුගමනය කරන්න, නැතහොත් ඔබම එකක් තෝරන්න.
 lang_follow_platform	උපාංග භාෂාව
 lang_pick_user	භාෂාව තෝරන්න
 lang_platform_now	උපාංග භාෂාව දැන්
 selected_language	තෝරා ගන්නා ලදී
-continue	දිගටම කරගෙන යන්න
 this_device	මෙම උපාංගය
 device_use_q	මෙම උපාංගය භාවිතා කරන්නේ කෙසේද?
-last_server_mode	සේවාදායකය විය — ඉදිරියට යාමට තට්ටු කරන්න
-last_client_mode	සේවාදායකයා විය - ඉදිරියට යාමට තට්ටු කරන්න
 choose_server	සේවාදායකයක් තෝරන්න
 choose_server_hint	පවතින සේවාදායකයක් විවෘත කරන්න, නැතහොත් වෙනත් ව්‍යාපාරයක් සඳහා එකක් සාදන්න.
 create_new_server	නව සේවාදායකයක් සාදන්න
@@ -268,12 +206,6 @@ server_remove_pin_ph	සේවාදායකයක් ඉවත් කිරී
 only_owner_remove_server	සේවාදායකයක් ඉවත් කළ හැක්කේ හිමිකරුට පමණි
 owner_pin_remove_server	මෙම සේවාදායකය ඉවත් කිරීමට හිමිකරු PIN අවශ්‍යයි
 device_setup_help	සේවාදායකය මෙහි ලෙජර් තබා ගනී. සේවාදායක යුගල සේවාදායකයකට.
-app_template_heading	ආරම්භක නාමාවලිය (විකල්ප)
-app_template_blurb	නියැදි නාමාවලියක් පූරණය කරයි; හිමිකරු Zahir (zahir), Admin Asif (asif, PIN 1111), Cashier Nawaz (nawaz, PIN 0000); බදු / GST කපා හැරීම; ඉදිරිපස පැති තීරුව; පැය 4කට පසු ඉතිහාසය හිස් වේ (සහ දැන් උපස්ථයේ හිස් කරන්න); අද ගලවන්න; සංයුක්ත බිල්පත + පටු තැටි සඳහා සම්මත මායිම්. බදු සහ පැති තීරු සම වයසේ මිතුරන් සැකසීම් තුළ නැවත ක්‍රියාත්මක කළ හැක.
-app_template_apply	ආරම්භක නාමාවලිය යොදන්න
-app_template_skip	දැනට මග හරින්න
-app_template_status	සේවාදායකය සූදානම් - ආරම්භක නාමාවලිය යොදන්න, නැතහොත් මඟ හරින්න
-app_template_importing	{title} අයදුම් කරමින්...
 currency	මුදල්
 backup	උපස්ථ
 use	භාවිතා කරන්න
@@ -307,7 +239,7 @@ attachments_last_expense	ඇමුණුම් (අවසන් වියදම�
 bank	බැංකුව
 bank_in	බැංකුව තුළ
 bank_out	බැංකුවෙන් මුදල්
-bank_reconciliation	බැංකු ප්‍රතිසන්ධානය (ඔබේ බැංකු ප්‍රකාශයට එරෙහිව ලකුණු කරන්න)
+bank_reconciliation	බැංකු ප්‍රතිසන්ධානය
 bank_to_till	බැංකු → මුදල් ලේඛනය
 book_add_dish	පොත - අයිතමය / අයිතමය එකතු කරන්න
 book_opening_credit	ලෙජරය - විවෘත ණය
@@ -337,9 +269,6 @@ share_whatsapp	බෙදාගන්න WhatsApp
 lan_pages_heading	Wi‑Fi මත පාරිභෝගික පිටු
 lan_pages_help	මෙම සාප්පුවේ Wi‑Fi මත, පාරිභෝගික පිටු සංදර්ශක පුවරුව සහ ප්‍රතිපෝෂණ සඳහා ක්‍රියා කරයි. ජංගම දත්ත මත සිටින පුද්ගලයින්ට පසුව Cloud අවශ්‍ය වේ. කාඩ්පත් පර්යන්තයක් හෝ ගෙවීම් සබැඳියක් විකල්ප වන අතර කිසි විටෙකත් කවුන්ටරය අවහිර නොකරයි.
 diag_send_heading	මෙම උපාංගයෙන් බෙදා ගන්න
-optional_login_heading	විකල්ප පුරනය වීම
-rights_heading	අයිතිවාසිකම්
-ops_panel	දේශීය මෙහෙයුම්
 crm_heading	පාරිභෝගිකයින් සහ පණිවිඩ
 crm_help	උපන් දිනය, පක්ෂපාතීත්වය, අක්‍රිය සහ ඉහළම අමුත්තන් - පෝලිම් SMS හෝ WhatsApp අභිප්‍රායන්. පණිවිඩයේ {name} සහ {points} භාවිතා කරන්න. හිමිකරු ටැප් යැවීම; කිසිවක් තනිවම පිපිරෙන්නේ නැත.
 crm_queue_sms	පෝලිම SMS
@@ -364,21 +293,17 @@ till_wallet_topup_ph	Top-up wallet මුදල
 till_voucher_issue_amt_ph	වවුචර් මුදල නිකුත් කරන්න
 till_voucher_issue_code_ph	නව වවුචර් කේතය
 bulk_price_apply	තොග මිල යොදන්න
-card_terminal_optional	කාඩ්පත් පර්යන්තය / ගෙවීම් සබැඳිය (අන්තර්ජාලය පවතින විට විකල්ප)
 copy_report	වාර්තාව පිටපත් කරන්න
 counted_cash_ph	ලාච්චුවේ මුදල් ගණන් කළා
 country_tax	රට සහ බදු
 create_backup	උපස්ථ සාදන්න
 credit_limit_heading	ණය සීමාව (තෝරාගත් පාරිභෝගිකයා හෝ සැපයුම්කරු)
-day_close_summary	දින සමීප සාරාංශය
 delete_party	තෝරාගත් පාරිභෝගිකයා හෝ සැපයුම්කරු මකන්න
-delivery	භාරදීම
 done_open_books	නිමයි - ලෙජර් විවෘත කරන්න
 drawer_count	ලාච්චු ගණන (විකල්ප)
 expense_heading	වියදම්
 export_day	අපනයන දිනය
 extra_note_bill_ph	මෙම ආගන්තුක බිල්පත / විකිණීම පිළිබඳ අමතර සටහන
-extra_note_expense_ph	අවසාන වියදම් පිළිබඳ අමතර සටහනක්
 extra_tills_heading	අමතර මුදල් රෙජිස්ටර්
 other_devices_help_heading	වෙනත් උපාංග සකසන්න
 other_devices_help	මෙම උපාංගයේ (සේවාදායකය): වෙනත් උපාංග → අමතර ටිල්ස් වලට ඉඩ දෙන්න. යුගල කිරීමේ කේතය සහ Wi‑Fi ලිපිනය සටහන් කරන්න. එය දිස්වන්නේ නම් වෙනත් උපාංගවලට සම්බන්ධ වීමට ඉඩ දෙන්න තට්ටු කරන්න. පරිගණකයක, මෙම පරිගණකය සමඟ ආරම්භ කරන්න තට්ටු කරන්න. එකිනෙකාගේ උපාංගය මත: යෙදුම ස්ථාපනය කරන්න, සේවාලාභී මාදිලිය තෝරන්න, සාප්පුවේ සේවාදායකය සොයන්න (හෝ ලිපිනය ටයිප් කරන්න), යුගල කිරීමේ කේතය ඇතුළත් කරන්න, දැන් යුගල කරන්න. Wi‑Fi පහත වැටේ නම් ඇණවුම් උපාංගය මත රැඳී සිට සේවාදායකය නැවත පිළිතුරු දෙන විට යන්න. අමතර මුද්‍රණ යන්ත්‍ර සේවාදායකයේ සකසා ඇත (සැකසීම් → මුද්‍රණ යන්ත්‍ර) — අමතර ටිල්ස් එහි බිල්පත් යවයි.
@@ -392,7 +317,6 @@ login_id_ph	පරිශීලක නාමය
 mark_cleared	ලකුණ නිෂ්කාශනය විය
 new_party_clear	නව පාරිභෝගිකයා හෝ සැපයුම්කරු (පැහැදිලි පෝරමය)
 new_party_kind_supplier_ph	නව පාරිභෝගික හෝ සැපයුම්කරු වර්ගය (සැපයුම්කරු)
-next_country	ඊළඟ රට
 next_order	ඊළඟ ඇණවුම (පැහැදිලි මේසය)
 note_gstin_ph	සටහන / GSTIN / ගිවිසුම් මතක් කිරීම
 notes_attach_party	සටහන් සහ ඇමුණුම් (තෝරාගත් පාරිභෝගිකයා හෝ සැපයුම්කරු)
@@ -410,8 +334,6 @@ pay_ap_cash	AP මුදල් ගෙවන්න
 pay_ap_heading	අපි ඔවුන්ට ගෙවිය යුතු දේ ගෙවන්න (AP)
 pay_ap_upi	AP UPI ගෙවන්න
 pay_selected_heading	තෝරාගත් ගෙවීම (ණය පියවීම / අත්තිකාරම් ගන්න)
-pick_from_items	අපගේ මෙනු අයිතම වලින් තෝරන්න
-prev_country	පෙර රට
 print_open	මුද්‍රණය / විවෘත කරන්න
 reason_amend_ph	සංශෝධන / අවලංගු / ආපසු ගෙවීමට හේතුව
 reason_note_ph	හේතුව / සටහන (නාස්තිය, ගණන් කිරීම, ...)
@@ -435,14 +357,10 @@ history_after_hours	පැය ගණනකට පසු
 history_hours_ph	පැය (1–168, පෙරනිමි 4)
 history_hours_save	පැය ඉතිරි කරන්න
 history_clear_now	දැන් ඉතිහාසය හිස් කරන්න
-history_cleared	වෙළඳ ඉතිහාසය හිස් කර ඇත - සැකසුම තබා ඇත
-history_retention_saved	ඉතිහාසය ඉවත් කිරීම සුරැකිණි
 history_hours_saved	ඉතිහාස පැය ගණන සුරකින ලදී
-history_owner_only	ඉතිහාසය හිස් කළ හැක්කේ හිමිකරුට හෝ පරිපාලකට පමණි
 rollup	සාරාංශගත කිරීම
 save_brand	වෙළඳ නාමය සුරකින්න
 save_business_id	ව්යාපාර හැඳුනුම්පත සුරකින්න
-save_business_name	ව්‍යාපාරයේ නම සුරකින්න
 save_features	සුරකින්න
 save_features_named	සුරකින්න {name}
 save_features_ok	{name} සඳහා සුරැකි සැකසුම
@@ -473,7 +391,6 @@ copy_pair_code	යුගල කිරීමේ කේතය පිටපත් �
 new_pair_code	නව යුගල කේතය
 pair_finishing	නිමි යුගලය... සාප්පුවේ ලෙජර් යෙදීම
 pair_opening	මුදල් ලේඛනය විවෘත කරමින්...
-pair_copied	යුගල කිරීමේ කේතය පිටපත් කරන ලදී
 lan_offline_waiting	සාප්පු සේවාදායකයට ළඟා විය නොහැක · {n} රැඳී සිටීම
 lan_connecting	සාප්පුව වෙත සම්බන්ධ වෙමින්...
 lan_live	සජීවීව
@@ -487,7 +404,6 @@ firewall_waiting	පරිපාලක විමසුම සඳහා රැඳ
 lan_join_help	අනෙක් උපාංගයේ: සේවාලාභී ප්‍රකාරය → වෙළඳසැලේ සේවාදායකය සොයන්න (හෝ ටයිප් කරන්න {addr}) → යුගල කිරීමේ කේතය {code}.
 lan_pair_status	Wi‑Fi {addr}
 lan_join_help_no_addr	ලිපිනයක් සඳහා මෙම උපාංගය Wi‑Fi වෙත සම්බන්ධ කරන්න.
-lan_no_address	තවම Wi‑Fi ලිපිනයක් නැත — සාප්පුව වෙත සම්බන්ධ වන්න Wi‑Fi.
 lan_not_listening	උපාංග පිළිගන්නේ නැත (වරාය {port} කාර්ය බහුල). යෙදුම නැවත ආරම්භ කරන්න.
 lan_tills_off	අමතර මුදල් රෙජිස්ටර් අක්‍රියයි. වෙනත් උපාංගයකට සම්බන්ධ වීමට ඔවුන්ට ඉඩ දෙන්න.
 paired_with	යුගලය · {url}
@@ -508,41 +424,21 @@ printers_help	මුද්‍රණ යන්ත්‍ර සොයන්න, �
 printers_host_only	මුද්‍රණ යන්ත්‍ර ගබඩා උපාංගයේ (සේවාදායකය) සකසා ඇත. මෙය බිල්පත් සහ පැරණි ටිකට්පත් එහි එවන තුරු - සේවාදායකයේ රැඳී සිටීම සොයන්න / එකතු කරන්න / පවරන්න. පරීක්ෂණ පිටුව සහ බිල්පත් මුද්‍රණ ප්‍රමාණය සේවාදායකය වෙත යන්න.
 printers_find_heading	මුද්‍රණ යන්ත්‍ර සොයන්න
 printers_find_tip	Find මෙම උපාංගය ස්කෑන් කර ලැයිස්තුව යාවත්කාලීනව තබයි.
-printers_pool_heading	මුද්‍රණ යන්ත්‍ර
-printers_pool_tip	Find මෙම උපාංගය ස්කෑන් කර මෙම ලැයිස්තුව යාවත්කාලීනව තබයි.
 printers_pool_empty	(තවමත් නැත - සොයන්න තට්ටු කරන්න)
-printers_routes_help	මෙහෙයුම් පද්ධතිය දැනටමත් දන්නා මුද්‍රණ යන්ත්‍ර සොයන්න. ඒවා බිල්පතට සහ බිල් සහ ස්ලිප් ආකෘතිය යටතේ එක් එක් කොටසට පවරන්න.
 printer_assign_dd	සැබෑ මුද්‍රණ යන්ත්‍රය: {place}
 printer_assign_pick	සැබෑ මුද්‍රණ යන්ත්‍රය තෝරන්න
 printer_profile_heading	පිරිසැලසුම
 vp_delivery_heading	භාරදීම
 vp_delivery_help	මෙම අතථ්‍ය මුද්‍රණ යන්ත්‍රය රැකියා යවන ආකාරය — OS ලේඛනය, අමු බයිට්, හෝ ESC/POS. ස්ලිප් අන්තර්ගතය (වර්ගයේ ප්‍රමාණය, එතුම, මායිම්) තීරණය වන්නේ බිල්පත් / ස්ලිප් ආකෘතියෙන් මිස මෙහි නොවේ.
-vp_type_size_heading	වර්ගයේ ප්රමාණය
-vp_wrap_heading	එතුම පළල
-vp_margin_heading	මායිම්
 vp_delivery_spooler	OS ලේඛනය (පද්ධති ස්පූලර්)
 vp_delivery_raw	උපාංගයට අමු බයිට්
 vp_delivery_escpos	ESC/POS තාප විධාන
 virtual_printer_new	නව අතථ්‍ය මුද්‍රණ යන්ත්‍රය
 virtual_printer_selected	"{name}" සංස්කරණය කිරීම - මාරු වීමට ලැයිස්තුවේ තවත් එකක් තට්ටු කරන්න
-virtual_printer_tap_list	එය සංස්කරණය කිරීමට ලැයිස්තුවේ ඇති අතථ්‍ය මුද්‍රණ යන්ත්‍රයක් තට්ටු කරන්න
 config_layout_portrait	පෝට්රේට්
 config_layout_landscape	භූ දර්ශනය
 config_send_os	පද්ධති ස්පූලර්
 config_send_escpos	ESC/POS
-profiles_heading	පිරිසැලසුම්
-profiles_empty	(තවම පිරිසැලසුම් නොමැත)
-profile_builtin	ඉදි කර ඇත
-profile_custom	චාරිත්රය
-profile_name_ph	පිරිසැලසුම් නම
-profile_new	නව පිරිසැලසුම
-profile_delete	පිරිසැලසුම මකන්න
-profile_created	පිරිසැලසුම සාදන ලදී
-profile_deleted	පිරිසැලසුම මකා ඇත
-profile_builtin_keep	සාදන ලද පිරිසැලසුම් මකා දැමිය නොහැක
-config_saved	යාවත්කාලීන කරන ලදී
-config_selected	"{name}" තෝරන ලදී
-printer_output_heading	අතථ්‍ය මුද්‍රණ යන්ත්‍ර
 virtual_printers_heading	අතථ්‍ය මුද්‍රණ යන්ත්‍ර
 virtual_printers_empty	තවම අතථ්‍ය මුද්‍රණ යන්ත්‍ර නොමැත - පහත අගයන් සකසන්න, ඉන්පසු සුරකින්න. ඔබට යම් ප්‍රමාණයක් ලැබුණු පසු, සංස්කරණය කිරීමට ලැයිස්තුවේ එකක් තට්ටු කරන්න.
 virtual_printer_name_ph	අතථ්‍ය මුද්‍රණ යන්ත්‍ර නම (විකල්ප)
@@ -554,71 +450,32 @@ virtual_printer_deleted	මකා දැමූ අතථ්‍ය මුද්�
 virtual_printer_updated	අතථ්‍ය මුද්‍රණ යන්ත්‍රය යාවත්කාලීන කරන ලදී
 virtual_printer_updated_named	අතථ්‍ය මුද්‍රණ යන්ත්‍රය “{name}” යාවත්කාලීන කරන ලදී
 virtual_draft_layout	ඊළඟ අතථ්‍ය මුද්‍රණ යන්ත්‍රය සඳහා අගයන් සකසා ඇත
-virtual_draft_send	මීළඟ අතථ්‍ය මුද්‍රණ යන්ත්‍රය සඳහා අගය සකසා ඇත
 virtual_need_real	මුලින්ම නියම මුද්‍රණ යන්ත්‍රයක් තෝරන්න
 virtual_need_select	මකා දැමීමට අතථ්‍ය මුද්‍රණ යන්ත්‍රයක් තෝරන්න
 real_printer_selected	තෝරාගත්: {name}
-printers_routes_heading	දේවල් මුද්‍රණය කරන තැන
-route_pick_heading	ස්ථානය
 route_editing	සංස්කරණය: {name}
-route_assigned	{printer} සිට {place} දක්වා එකතු කරන ලදී
-route_already_assigned	දැනටමත් මෙම ස්ථානයේ: {printer}
 route_cleared	හිස් කරන ලදී {name}
-route_assigned_empty	මෙම ස්ථානයේ කිසිවක් නැත
-route_tap_select	තේරීමට තට්ටු කරන්න
 route_tap_selected	තෝරාගත්
-route_pick_printer_first	පළමුව මුද්‍රණ යන්ත්‍රයක් තට්ටු කරන්න
-route_assigned_heading	මුද්‍රණ යන්ත්‍ර
-route_add_heading	පවරන්න
-printer_label_ph	නම (උදා. කවුන්ටර මුද්‍රණ යන්ත්‍රය)
 printer_target_ph	පද්ධති මුද්‍රණ යන්ත්‍රයේ නම හෝ සත්කාරක:9100
 printer_target_default	මෙම පරිගණකයේ සාමාන්‍ය මුද්‍රණ යන්ත්‍රය (හිස් ලිපිනය)
-printer_wire_heading	පැතිකඩ
-printer_wire_escpos	ESC/POS
-printer_wire_os	පෝට්රේට්
-printer_wire_os_portrait	පෝට්රේට්
-printer_wire_os_landscape	භූ දර්ශනය
-printer_wire_escpos_short	ESC/POS
-printer_wire_os_short	පෝට්රේට්
-printer_wire_os_landscape_short	භූ දර්ශනය
-printer_format_custom	නව අභිරුචි පැතිකඩ
-printer_format_custom_label	අභිරුචි
-printer_format_custom_added	මෙම ස්ථානය සඳහා අභිරුචි පැතිකඩ එක් කරන ලදී
-add_printer	මුද්රකය එක් කරන්න
-route_pick_ph	බිල්පතක් හෝ සාප්පු අංශයක්
 route_bill	ආරාධිත අමුත්තන්ගේ බිල්පත
-route_dont_print	මුද්‍රණ යන්ත්‍රයක් නැත
 station_print_pick_first	පළමුව සාප්පු අංශයක් තෝරන්න
-station_vps_empty	තවම මුද්‍රණ යන්ත්‍ර නැත - සැකසීම් → මුද්‍රණ යන්ත්‍ර යටතේ ඒවා සොයන්න
 bill_printers_dd	අමුත්තන්ගේ බිල්පත සඳහා මුද්‍රණ යන්ත්‍ර
 bill_printers_dd_n	අමුත්තන්ගේ බිල්පත සඳහා {n} මුද්‍රණ යන්ත්‍ර · වෙනස් කිරීමට තට්ටු කරන්න
 station_vp_attached	මුද්‍රණ යන්ත්‍රය අමුණා ඇත
 station_vp_detached	මුද්‍රණ යන්ත්‍රය නැවතුම්පොළෙන් ඉවත් කර ඇත
-route_up	ඉහළට
-route_down	පහළට
-route_clear	පැහැදිලියි
-save_printers	මුද්‍රණ යන්ත්‍ර සුරකින්න
 print_test_page	පරීක්ෂණ පිටුවක් මුද්‍රණය කරන්න
 no_printer_assigned	මුද්‍රණ යන්ත්‍රයක් නැත
-test_page_no_printer	{place} සඳහා මුද්‍රණ යන්ත්‍රයක් නැත - එයට මුද්‍රණ යන්ත්‍රයක් අමුණන්න, ඉන්පසු නැවත උත්සාහ කරන්න
 test_page_pick_first	පළමුව පරීක්ෂණ පිටුවක් සඳහා මුද්‍රණ යන්ත්‍ර තෝරන්න - පසුව පරීක්ෂණ පිටුවක් මුද්‍රණය කරන්න
 test_printers_dd	පරීක්ෂණ පිටුවක් සඳහා මුද්‍රණ යන්ත්‍ර
 test_printers_dd_n	පරීක්ෂණ පිටුවක් සඳහා {n} මුද්‍රණ යන්ත්‍ර · වෙනස් කිරීමට තට්ටු කරන්න
 test_printer_picked	පරීක්ෂණය: {name}
 test_printer_cleared	පරීක්ෂා කරන්නේ නැත: {name}
 test_page_sent_n	පරීක්ෂණ පිටුව {n} මුද්‍රණ යන්ත්‍ර වෙත යවන ලදී
-batch_cancel	අවලංගු කිරීම සලකුණු කර ඇත
-batch_cancel_n	අවලංගු කිරීම සලකුණු කරන ලදී ({n})
-batch_cancel_none	මුලින්ම යවන ලද අයිතම එකක් හෝ කිහිපයක් සලකුණු කරන්න — පසුව අවලංගු කරන්න සලකුණු කරන්න
-batch_cancel_title	සලකුණු කළ අයිතම අවලංගු කරන්න - එක් හේතුවක්, එක් කොටසකට එක් ස්ලිප් එකක් අවලංගු කරන්න
-batch_cancel_ok	{n} අයිතම අවලංගුයි · {slips} අවලංගු කිරීමේ ස්ලිප්(ය) → {kitchens}
-batch_cancel_ok_noprint	{n} අයිතම අවලංගු කරන ලදී - ස්වයංක්‍රීය මුද්‍රණය ක්‍රියාවිරහිතයි, එබැවින් අවලංගු කිරීමේ ස්ලිප් නොමැත
 printers_saved	සුරකින ලදී
-test_page_sent	පරීක්ෂණ පිටුව යවා ඇත - මුද්‍රණ යන්ත්‍රය පරීක්ෂා කරන්න
 test_page_sent_one	පරීක්ෂණ පිටුව {name} වෙත යවා ඇත — එම මුද්‍රණ යන්ත්‍රය පරීක්ෂා කරන්න
 printers_found	හමු විය {n}: {list}
 printers_find_synced	{n} — {new} නව සොයා ගන්නා ලදී
-printer_on_device	ගැලෙව්වා
 printer_already_added	දැනටමත් එකතු කර ඇත
 printer_already_saved	දැනටමත් සුරැකී ඇත: {name}
 find_printers	මුද්‍රණ යන්ත්‍ර සොයන්න
@@ -628,7 +485,6 @@ cancelled	අවලංගු කළා
 printers_tap_find	මෙම උපාංගය භාවිත කළ හැකි මුද්‍රණ යන්ත්‍ර ලැයිස්තුගත කිරීමට සොයන්න තට්ටු කරන්න.
 printers_none_found	කිසිවක් හමු නොවීය - පද්ධති මුද්‍රණ යන්ත්‍රයේ නමක් හෝ IP එකක් ටයිප් කරන්න (උදා. 192.168.1.50).
 printer_from_find	{name} එකතු කරන ලදී
-bill_printer_ph	අමුත්තන්ගේ බිල්පත් සඳහා මුද්රකය
 queue_refused	සාප්පුව විසින් පිළිගනු නොලැබේ ({n}) - කවුන්ටරයේ එක් එක් පරීක්ෂා කරන්න:
 clear_not_accepted	පරීක්ෂා කර ඇත - මෙම ලැයිස්තුව ඉවත් කරන්න
 device_name_ph	මෙම උපාංගයේ නම
@@ -638,7 +494,6 @@ connected_now	දැන් සම්බන්ධයි
 backup_failed	අවසාන ස්වයංක්‍රීය උපස්ථය අසාර්ථක විය: {e}
 backup_overdue	දින {n} සඳහා උපස්ථයක් නැත - උපස්ථ කිරීමට හැකි වන පරිදි මෙම උපාංගයේ යෙදුම විවෘතව තබා ගන්න.
 disk_low	මෙම උපාංගයේ {mb} MB පමණක් නොමිලේ - උපස්ථ ඉක්මනින් අසාර්ථක වනු ඇත. යම් ඉඩක් නිදහස් කරන්න.
-last_seen_devices	අවසන් වරට දුටුවේ: {time}
 connection_to_shop	සාප්පුව වෙත සම්බන්ධතාවය
 supplier_name_ph	සැපයුම්කරුගේ නම (හෝ පාරිභෝගිකයා)
 supplier_ph	සැපයුම්කරු
@@ -696,7 +551,6 @@ currency_use_help	අනුචලනය කර ඕනෑම සහාය දක�
 day_close_help	දිනක් ආසන්නයේ පටිගත කිරීම මෙම සාරාංශය (සහ ගණන් කළහොත් ලාච්චු විචලනය) විගණන ලොගයට සුරකියි. එය විකිණීම නතර නොවේ.
 expenses_word	වියදම්
 feature_access_help	ඔවුන් විවෘත කළ හැකි දේ - විකල්ප; ඉහත කාර්යය දැනටමත් පෙරනිමියක් සකසයි
-footer_local	දේශීය SQLite · නොමිලේ සදහටම · Zero Cloud
 fresh_book_kirano	නැවුම් = හිස් නාමාවලිය (අයිතම පසුව එකතු කරන්න). පොත = ආරම්භක කොටස් වර්ගය සහ ඔබට පහතින් ණයගැති අය.
 fresh_selected	නැවුම් තෝරාගත් - නාමාවලිය හිස්ව පවතී. සූදානම් වූ විට නිමයි තට්ටු කරන්න.
 gross_word	දළ
@@ -709,12 +563,9 @@ net_word	ශුද්ධ
 offline_badge	නොබැඳි
 optional_login_help	විකල්ප පුරනය වීම (id + මුරපදය). හිමිකරු එක් වරක් සකසයි; පසුව මුරපදය වෙනස් කළ හැක්කේ පරිශීලකයාට පමණි.
 or_unlock_login	නැතහොත් පිවිසුම් හැඳුනුම්පත + මුරපදය සමඟ අගුළු ඇරීම
-permission_preset	රැකියාව (තිර සහ මුදල් ක්‍රියා සකසයි)
-preset_help_kirano	අයකැමි: විකුණන්න. කළමනාකරු: විකිණීම + මෙනු අයිතම + අවලංගු/සංශෝධනය.
-product_locked_kirano	කිරානෝ
+permission_preset	රැකියාව
 product_only_kirano	කිරානෝ යනු සිල්ලර බඩු / කිරණ මෙහෙයුම් පද්ධතියයි: කවුන්ටර විකිණීම, කොටස්, ණය සහ පොත් - ඔබගේ උපාංගවල නොබැඳි.
 purchases_cogs	මිලදී ගැනීම් (COGS)
-qty_cap	ප්‍රමාණය
 restore_help	ප්‍රතිසාධනය කරන්න: උපස්ථයක් තෝරන්න. ලෙජර එදා මෙන් විවෘත වේ; දැන් තිබෙන ලෙජර පළමුව සුරැකේ, එබැවින් මෙය පසුගමනය කළ හැක.
 wipe_data_heading	දේශීය දත්ත මකන්න
 wipe_data_help	හිමිකරුට පමණි - වින්ඩෝස් අස්ථාපනය කිරීමට සමාන තේරීම්. ව්‍යාපාර වාර්තා වෙළඳ ඉතිහාසය හිස් කරන නමුත් අයිතම සහ පිහිටුවීම් තබා ගනී (හදිසි අගුළු ඇරීමේ PIN වැනි). සාප්පු පිහිටුවීම පොත් දත්ත ගබඩාව ඉවත් කරයි. තිර මනාප කවුළුව/භාෂාව හිස් කරයි. හිමිකරුගේ PIN අංකය සමඟ තහවුරු කරන්න. කණ්ඩායමේ හදිසි අගුළු ඇරීමේ PIN එක වෙනම ඇත (අගුළු හැරීමේදී රහසිගතව පිස දමන්න).
@@ -747,7 +598,6 @@ staff_renamed	නම සුරකින ලදී
 staff_setup_copied_hire	සැකසුම {name} වෙතින් පිටපත් කරන ලදී — නව නමක් සකසන්න සහ PIN, පසුව කාර්ය මණ්ඩලය එක් කරන්න
 staff_setup_copied_edit	{from} හි පිහිටුවීම {to} වෙත පිටපත් කරන ලදී
 staff_copy_need_selected	පළමුව සංස්කරණය කළ යුත්තේ කවුරුන්ද යන්න තෝරන්න
-staff_copy_need_source	පිටපත් කිරීමට කාගේ සැකසුම තෝරන්න
 staff_copy_same	ඒ එකම පුද්ගලයා - වෙනත් කෙනෙකු තෝරා ගන්න
 staff_rename_need_selected	පළමුව නැවත නම් කළ යුත්තේ කවුරුන්ද යන්න තෝරන්න
 team_pick_hint	සංස්කරණය කළ යුත්තේ කවුරුන්ද යන්න තෝරන්න - තිර, මුදල් හිමිකම් සහ ස්ථාන එම පුද්ගලයා සඳහා පමණක් දිස් වේ.
@@ -762,15 +612,9 @@ unit_picker_off	අක්රියයි
 we_owe_them	අපි ඔවුන්ට ණයයි
 who_unlocking	අගුළු හරින්නේ කවුද?
 locked_word	අගුලු දමා ඇත
-show_pin	පෙන්වන්න PIN
-hide_pin	සඟවන්න PIN
 set_owner_pin	හිමිකරු සකසන්න PIN
 enter_owner_passcode	හිමිකරුගේ මුර කේතය ඇතුළත් කරන්න
 enter_staff_passcode	කාර්ය මණ්ඩල මුර කේතය ඇතුළත් කරන්න
-pin_count_zero	ඉලක්කම් 0 / 12 · අවම වශයෙන් 4, පසුව හරි
-pin_count_need	{} / 12 ඉලක්කම් · තව {} අවශ්‍යයි
-pin_count_full	ඉලක්කම් 12/12 · හරි ඔබන්න
-pin_count_ready	{} / ඉලක්කම් 12 · සූදානම් වූ විට OK ඔබන්න
 pin_hint_choose	4-12 ඉලක්කම් තෝරන්න · සුරැකීමට ඇතුල් කරන්න හෝ අගුළු හරින්න
 pin_hint_new	නව ඉලක්කම් 4-12 හිමිකරු PIN · ඇතුල් කරන්න හෝ අගුළු හරින්න
 pin_hint_shop_code	සාප්පු උපාංගය · යුගල කිරීමේ කේතය {}
@@ -779,23 +623,15 @@ pin_hint_paired	අමතර මුදල් ලේඛනය යුගල කර
 pin_hint_pair_first	අමතර මුදල් ලේඛනය - පළමුව සාප්පු උපාංගයට යුගල කරන්න
 unlock_to_continue	දිගටම කරගෙන යාමට අගුලු හරින්න
 no_staff_yet	තවම කාර්ය මණ්ඩලයක් නැත - හිමිකරු ලෙස අගුළු හරින්න, පසුව කණ්ඩායම
-status_server_set_pin	සේවාදායක මාදිලිය - හිමිකරු සකසන්න PIN
-status_server_tills	සේවාදායක මාදිලිය - අමතර මුදල් රෙජිස්ටර් වලට සම්බන්ධ විය හැක. අගුළු හරින්න
-status_server_unlock	සේවාදායක මාදිලිය - හිමිකරු ලෙස අගුළු ඇරීම
-status_client_unlock	සේවාලාභී ප්‍රකාරය - විකිණීමට අගුළු හරින්න
 icon_new_selected	නිරූපකය: නව ගොනුවක් තෝරා ඇත - වෙළඳ නාමය සුරකින්න තට්ටු කරන්න
 icon_custom	නිරූපකය: අභිරුචි ස්ථාන සලකුණ
 icon_default	නිරූපකය: Kumkaj ලකුණ (පෙරනිමිය) — අභිරුචි එකක් තෝරන්න
 logo_yours	ලාංඡනය: ඔබේ සාප්පු ලාංඡනය - තිර සහ රිසිට්පත් මත පෙන්වා ඇත
 logo_default	ලාංඡනය: Kumkaj ලකුණ (පෙරනිමිය) — ඔබට එකක් තිබේ නම් ඔබේම එකක් තෝරන්න
-tmpl_current	වත්මන්: {} — {}
-tmpl_selected	තෝරාගත්: {} — {}
 setup_complete	පිහිටුවීම සම්පූර්ණයි
 onboard_fresh_tmpl	නැවුම් · {} — නාමාවලිය හිස්ව ආරම්භ වේ; මෙනු මෙනු අයිතමවල මෙනු අයිතම එක් කරන්න, පසුව නිමයි.
 onboard_book_tmpl	ලෙජරය · {} — මෙනු අයිතම සහ විවෘත ණය එක් කරන්න, පසුව නිමයි.
-onboard_template_tmpl	ඔබට අවශ්‍ය නම් ස්ථානය නම් කරන්න, ඉන්පසු ආරම්භ කරන ආකාරය තෝරන්න.
 tmpl_blurb	කිරණ කවුන්ටරය: විකිණීම, කොටස්, ඛාටා, සැපයුම්කරු මිලදී ගැනීම්, පොත්.
-tmpl_how	කවුන්ටරයේ විකුණන්න; කොටස් සඳහා මිලදී ගන්න; දින පොත සඳහා පොත්.
 reports_facet_title	වාර්තා
 reports_facet_help	දින ලෙජර, පාරිභෝගික හෝ සැපයුම්කරු වයස්ගත වීම, බැංකු තනතුරු, සහ කාල සීමාව P&L.
 against_bill_ph	ඉහත # ආගන්තුක බිල්පතට එරෙහිව (විකල්ප)
@@ -806,14 +642,12 @@ amount_ph	මුදල
 amount_received_ph	ලැබුණු මුදල
 amount_we_pay_ph	අපි ගෙවන මුදල
 business_name_ph	ව්යාපාර නාමය
-category_new_ph	ප්‍රවර්ගය (විකල්ප, අලුත් නම් සාදන ලදී)
 code_bag_ph	කේතය (බෑගය)
 conv_factor_ph	සාධකය (25 = 1 බෑගය → 25 kg)
 country_code_ph	රටේ කේතය උදා. IN, GB, US, AE, BR
 credit_khata_amount_ph	ණය / ණය ලෙජර් මුදල
 credit_limit_ph	ණය සීමාව (0 = කිසිවක් නැත)
 from_code_ph	කේතයෙන් (බෑගය)
-item_name_lang_ph	මෙනු මෙනු අයිතමයේ නම - එය ඔබේ භාෂාවෙන් ටයිප් කරන්න
 login_id_opt_ph	පරිශීලක නාමය (අවශ්ය, අද්විතීය)
 manager_pin_ph	කළමනාකරු PIN අනුමත කිරීමට (ඔබට අවලංගු කළ නොහැකි නම් පමණි)
 new_branch_name_ph	නව ශාඛාවේ නම
@@ -821,15 +655,12 @@ new_password_ph	නව මුරපදය (විකල්ප)
 new_pin_ph	නව PIN (ඉලක්කම් 4–12)
 note_bank_ph	සටහන (තැන්පතු, ආපසු ගැනීම, ...)
 note_buy_expense_ph	සටහන (ඉන්ධන, කුලිය, ...)
-note_expense_ph	සටහන (ඉන්ධන, කාර්යාලය, ...)
 options_kirano_ph	විකල්ප - Size*: Small=199, Large=399 | Toppings+3: Cheese=40, Olive=30 | Extra cheese=40
-part_second_way_ph	දෙවන මාර්ගයෙන් කොටස (විකල්ප)
 phone_ph	දුරකථනය
 place_name_ph	මෙම ස්ථානයේ නම
 qty_example_ph	ප්‍රමාණය (උදා: 1.5 kg සඳහා)
 quantity_ph	ප්රමාණය
 reason_required_ph	හේතුව (අවශ්‍යයි)
-role_title_ph	භූමිකාවේ මාතෘකාව (උදා. බැරිස්ටා)
 service_pct_ph	සේවා% විකල්ප 0/10/12
 short_code_ph	කෙටි කේතය (MG02)
 starting_password_ph	ආරම්භක මුරපදය (විකල්ප)
@@ -864,14 +695,11 @@ shift_handover	මාරුව භාරදීම
 shift_since	එතැන් සිට මෙම මාරුව
 expected_in_drawer	ලාච්චුවෙන් බලාපොරොත්තු වේ
 right_discount	වට්ටමක් දෙන්න
-pick_category	කාණ්ඩයක් තෝරන්න
-close_category_list	ප්‍රවර්ග ලැයිස්තුව වසන්න
 new_category_row	නව ප්‍රවර්ගය - ඔබ මෙනු අයිතමය සුරකින විට සාදන ලදී
 your_category	ඔබේ ප්‍රවර්ගය
 suggested_category	යෝජිත - අපගේ අයිතම වලින්
 category_search_ph	ප්‍රවර්ගය - ඔබගේ සොයන්න හෝ අලුත් එකක් ටයිප් කරන්න
 cancel_item_short	අවලංගු කරන්න
-cancel_item_title	මෙම අයිතමය අවලංගු කරන්න - පසු කාර්යාලයට අවලංගු පත්‍රිකාවක් ලැබේ
 return_to_customer	පාරිභෝගිකයා වෙත ආපසු යන්න
 short_by	කෙටියෙන්
 tip_not_sale	ඉඟිය (කාර්ය මණ්ඩලය, විකිණීමක් නොවේ)
@@ -884,9 +712,7 @@ finding_server	මෙම Wi‑Fi හි වෙළඳසැලේ සේවාද
 no_server_found	කිසිවක් හමු නොවීය. සේවාදායකයේ: සැකසීම් → වෙනත් උපාංග → අමතර මුදල් රෙජිස්ටර් වලට ඉඩ දෙන්න (එකම Wi‑Fi). නැතිනම් එහි පෙන්වා ඇති IP එක ටයිප් කරන්න.
 servers_found_pick	ඔබට සම්බන්ධ වීමට අවශ්‍ය වෙළඳසැල තට්ටු කරන්න.
 server_host_selected	{host} භාවිතා කරමින් - යුගල කිරීමේ කේතය ඇතුලත් කරන්න, පසුව දැන් යුගල කරන්න.
-print_bill	අමුත්තන්ගේ බිල්පත මුද්රණය කරන්න
 approval_pin_ph	කළමනාකරු PIN (ඇසුවහොත් පමණි)
-confirm	තහවුරු කරන්න
 menu_search_ph	මෙනු අයිතමය හෝ කෙටි කේතය සොයන්න
 customer_paid_ph	පාරිභෝගිකයා ගෙවා ඇත
 tip_ph	ඉඟිය
@@ -896,7 +722,6 @@ bill_format_help	සෑම බිල්පතකම ඔබේ සාප්පු
 bill_header_ph	ලිපිනය | දුරකථනය
 fssai_ph	FSSAI / සාප්පු බලපත්‍ර අංකය. (විකල්ප)
 bill_footer_ph	පාදකය (උදා. ස්තූතියි, නැවත පැමිණෙන්න)
-save_bill_format	අමුත්තන්ගේ බිල්පත් ආකෘතිය සුරකින්න
 kot_field_on	පෙන්වන්න
 kot_field_off	සඟවන්න
 kot_weight_light	ආලෝකය
@@ -907,10 +732,8 @@ kot_weight_bold	නිර්භීත
 kot_align_start	ආරම්භ කරන්න
 kot_align_center	මධ්යස්ථානය
 kot_align_end	අවසානය
-content_width	අන්තර්ගත පළල (මි.මී.)
 content_width_bill	අමුත්තන්ගේ බිල්පත් අන්තර්ගත පළල (මි.මී.)
 content_width_ph	නැතහොත් අන්තර්ගත පළලක් ටයිප් කරන්න, 40–210 mm
-content_width_help	මෙම ස්ලිප් මුද්‍රණය කෙතරම් පළලද. බිල් එහි පළල තබා ගනී.
 content_width_bill_help	පාරිභෝගික බිල්පත කෙතරම් පුළුල් ලෙස මුද්‍රණය වේ. පෙරනිමි 210 mm (පිටුව). 58 mm පටු ස්ලිප්, 80 mm පළල ස්ලිප්, 112 mm 4-අඟල්, 210 mm A4-පළල. 40 සිට 210 දක්වා ඕනෑම අගයක් ටයිප් කරන්න. ප්‍රවේශපත්‍රවල ස්ලිප් පටිත්තෙහි ඔවුන්ගේම පළල ඇත.
 vp_paper_width	අන්තර්ගත පළල (මි.මී.)
 vp_paper_width_ph	නැතහොත් අන්තර්ගත පළලක් ටයිප් කරන්න, 40–210 mm
@@ -925,9 +748,6 @@ test_bill_sent	ආරාධිත අමුත්තන්ගේ බිල්ප
 test_print_no_printer	එම කාර්යය සඳහා මුද්‍රණ යන්ත්‍රයක් නොමැත - මෙම තිරයේ එකක් තෝරන්න
 std_print	අමුත්තන්ගේ බිල්පත් මුද්‍රණ ප්‍රමාණය
 std_print_help	OS / ලේඛන මුද්‍රණ යන්ත්‍රවල සම්මත පෝට්රේට් සහ භූ දර්ශන බිල්පත් රැකියා සඳහා අකුරු ප්‍රමාණය (ලකුණු ඇතුළත් කරන්න — කුඩා/සාමාන්‍ය/විශාල නොවේ). දිශානති දෙකෙහිම එකම ප්‍රමාණය.
-std_size_s	කුඩා
-std_size_m	සාමාන්යයි
-std_size_l	විශාල
 save_std_print	අමුත්තන්ගේ බිල්පත් මුද්‍රණ ප්‍රමාණය සුරකින්න
 std_print_saved	අමුත්තන්ගේ බිල්පත් මුද්‍රණ ප්‍රමාණය සුරකින ලදී
 print_brand_kit	මුද්‍රණ සන්නාම කට්ටලය
@@ -940,14 +760,9 @@ choose_payment_qr	ගෙවීම් QR තෝරන්න
 clear_payment_qr	පැහැදිලි ගෙවීම QR
 payment_qr_set	ගෙවීම් QR: ගොනුවේ — පාරිභෝගික සංදර්ශකයේ පෙන්වා ඇත (එහිදී UPI QR මුදල ප්‍රතිස්ථාපනය වේ)
 payment_qr_none	ගෙවීම් QR: කිසිවක් නැත - ගෙවන විට UPI ID වෙතින් QR මුදල
-aggregator_import	එකතු කිරීමේ ඇණවුම් (ගොනුව)
-aggregator_import_help	විකල්ප දේශීය ආයාත: උපස්ථ ෆෝල්ඩරය තුළ import_aggregator_orders.json දමන්න (අරාව හෝ {"ඇණවුම්":[…]}), ඉන්පසු ආයාත කරන්න තට්ටු කරන්න. කිසි විටෙකත් කවුන්ටරය අවහිර නොකරන්න; සජීවී Zomato/Swiggy යනු Cloud වේ.
-import_aggregator_file	එකතු කිරීමේ ගොනුව ආයාත කරන්න
 team_pick_ph	සංස්කරණය කිරීමට කාර්ය මණ්ඩලය - නම, පරිශීලක නාමය, හෝ තේරීම
 select_staff	මෙම කාර්ය මණ්ඩලය තෝරන්න
 rights_help	මෙම පුද්ගලයා සඳහා මුදල් ක්‍රියා — චක්‍ර කිරීමට තට්ටු කරන්න: අවසරයි → ප්‍රධානියාගේ PIN අවශ්‍යයි → අවසර නැත. නැවත මුද්‍රණ බිල්පත බිල්පත් පමණි; කොටස් පහත පිරික්සුම් ලැයිස්තුව වේ.
-dish_picker_help	අපගේ අයිතම සොයන්න හෝ බ්‍රවුස් කර එහි නම සහ ඡායාරූපය පිරවීමට එකක් තට්ටු කරන්න — නැතහොත් ඔබේම නම තබා ගන්න. ඔබේ මිල සකසන්න (0 හොඳයි), ඉන්පසු අයිතමය එක් කරන්න.
-close_dish_list	අයිතම ලැයිස්තුව වසන්න
 own_item_name	මෙය ඔබගේ මෙනු අයිතම නාමය ලෙස භාවිතා කරන්න
 on_your_menu	නාමාවලියෙහි
 edit	සංස්කරණය කරන්න
@@ -958,24 +773,16 @@ add_scheme	BOGO එකතු කරන්න
 schedule_ph	පැය — සඳු-සිකු 07:00-11:00 හෝ සවස 17:00-19:00=150
 upi_vpa_ph	UPI ID (VPA)
 upi_payee_ph	UPI ගෙවන්නාගේ නම (විකල්ප)
-upi_qr	UPI QR
 show_upi_qr	UPI QR පෙන්වන්න
 close_upi_qr	වසන්න
 upi_qr_help	පාරිභෝගිකයා ස්කෑන් කර ගෙවයි. ඔවුන් ගෙවූ පසු ගෙවීම් ගන්න තට්ටු කරන්න. දෙවන තිරය: LAN මත සේවාදායක URL/display විවෘත කරන්න.
-recently_done	මෑතකදී කළා
 role_help_customer	භූමිකාව: පාරිභෝගික — ණය ලෙජරය (ඔවුන් අපට ණයයි). එකම පාරිභෝගිකයාට හෝ සැපයුම්කරුට කොටස් සැපයිය හැකිය.
 role_help_both	භූමිකාවන්: පාරිභෝගික + සැපයුම්කරු - එක් පාරිභෝගිකයෙකු හෝ සැපයුම්කරුවෙකු, ණය ලෙජරය සහ ගෙවිය යුතු ලෙජර, වාර්තාවල ශුද්ධ.
 role_help_supplier	කාර්යභාරය: සැපයුම්කරු - අපි ඔවුන්ට මිලදී ගැනීම් සඳහා ණයගැතියි.
-items_word	මෙනු අයිතම
-items_section	මෙනු මෙනු අයිතම
-back_to_order	නැවත පිළිවෙලට
-new_items_head	තවම යවා නැත
 price_ph	මිල
 price_ph_gst_inside	මිල ({tax} ඇතුළුව)
-tax_rates_missing_hint	මෙම අයිතම සඳහා {tax} අනුපාතයක් නැත - අයිතම නියම කර ඇති බදු අනුපාතය (මිල දැනටමත් {tax} යටතේ {tax} ඇතුළත් වේ)
 taxable_value	බදු ගෙවිය හැකි වටිනාකම
 gst_inside_price_note	({tax} ඇතුළුව)
-start_with_template	අපගේ අයිතම අච්චුව සමඟ ආරම්භ කරන්න
 template_heading	ආරම්භක අයිතම
 template_info	{c} ප්‍රවර්ග සහ ඡායාරූප සහිත {d} අයිතම, එක් කිරීමට සූදානම්. මිල ගණන් රුපියල් 0 කින් ආරම්භ වේ — පසුව ඔබට සකසන්න.
 template_import	සම්පූර්ණ අච්චුව ආයාත කරන්න
@@ -997,21 +804,13 @@ opening_client	සේවාලාභියා විවෘත කරමින්
 preparing_desk	මේසය සූදානම් කරමින්...
 opening_server	සේවාදායකය විවෘත කරමින්...
 creating_server	සේවාදායකය නිර්මාණය කරමින්...
-order_empty_pick	ඇණවුම හිස් - අයිතම තෝරා ගැනීමට ඉහත අයිතම එකතු කරන්න තට්ටු කරන්න.
 add_dishes	අයිතම එකතු කරන්න
 order_so_far	මෙම ඇණවුම මත: {n} · {total}
 no_dish_match	"{q}" කිසිදු අයිතමයක් නොගැලපේ
-pick_dishes_help	අයිතමයක් එක් කිරීමට තට්ටු කරන්න · ලැයිස්තුව පටු කිරීමට ප්‍රවර්ගයක් තෝරන්න
 pick_done	කළා
-pick_done_dd	නිමයි · {label}
-printer_route_mode	මෙම ස්ථානයේ මුද්‍රණ යන්ත්‍ර කිහිපයක් තිබේ නම්
-printer_mode_first	මුලින්ම එය ක්රියා කරයි
-printer_mode_all	සියල්ල මත මුද්‍රණය කරන්න
 kot_field_up	ඉහළට ගමන් කරන්න
 kot_field_down	පහළට ගමන් කරන්න
-app_template_blurb_extra	තවද: හිමිකරු සහීර්, පරිපාලක අසීෆ්, මුදල් අයකැමි නවාස්; ඉදිරිපස පැති තීරුව; පැය 4 කට පසු ඉතිහාසය; අද ගලවන්න; සංයුක්ත බිල්පත.
 dishes_n	{n} අයිතම
-recipe_ph	වට්ටෝරුව (විකල්ප - කවුන්ටර සාප්පුවක භාවිතා නොකළ)
 reorder_ph	වැඩි මිලට ගන්න
 set_reorder	නැවත ඇණවුම් මට්ටම සකසන්න
 low_stock_alert	අඩුයි - ඉක්මනින් මිලදී ගන්න: {items}
@@ -1020,7 +819,6 @@ show_unpriced	මිලක් නොමැතිව භාණ්ඩ පමණක
 show_all_dishes	සියලුම අයිතම පෙන්වන්න
 role_title_rest_ph	භූමිකාවේ මාතෘකාව (උදා. කැප්ටන්, ප්‍රධාන කුක්)
 preset_help_rest	අයකැමි: විකුණන්න. කළමනාකරු: විකිණීම + මෙනු අයිතම + අවලංගු/සංශෝධනය.
-kind_raw	සාප්පු භාවිතය සඳහා මිලදී ගෙන ඇත
 kind_resale	විකිණීමට මිලදී ගෙන ඇත
 kind_dish	තොග ගණන් ගන්න එපා
 buy_unit_ph	ඒකකය (kg, ලීටර්, pcs)

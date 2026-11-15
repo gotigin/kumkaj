@@ -41,7 +41,7 @@ remove	הסר
 removed_items	פריטים שהוסרו
 removed_help	שחזור מחזיר את הפריט לתפריט בדיוק כפי שהיה — מחיר, תמונה וקטגוריה. המדף של המנות שלנו לא מוסר אף פעם, כך שאפשר תמיד להוסיף מנה שוב.
 restore_item	שחזר
-empty_catalog	עדיין אין מנות. פתחו את התפריט, הוסיפו מנה (שם + מחיר), ואז קחו הזמנה.
+empty_catalog	עדיין אין מנות.
 total	סה״כ
 cash	מזומן
 upi	UPI
@@ -103,23 +103,14 @@ bill_item_qty	כמות
 bill_item_price	מחיר
 bill_item_amount	סכום
 bill_item_note	הערת מנה
-bill_item_col_gap	רווח עמודות
 bill_item_col_order	סדר עמודות
 bill_item_col_sep	קווי עמודות
-bill_item_gap_tight	צפוף
-bill_item_gap_comfort	נוח
-bill_item_gap_wide	רחב
-bill_item_num_width	עמודות מספרים
-bill_item_num_compact	קומפקטי
-bill_item_num_comfort	נוח
-bill_item_num_wide	רחב
-bill_item_num_align	יישור מספרים
-bill_item_gap_em	רווח (em)
-bill_item_qty_min	כמות מינ׳ (em)
-bill_item_price_min	מחיר מינ׳ (em)
-bill_item_amount_min	סכום מינ׳ (em)
-kot_item_qty_width	עמודת כמות
-kot_item_num_align	יישור כמות
+slip_columns	עמודות
+slip_col_width	רוחב (mm)
+slip_col_start	רווח התחלה (px)
+slip_col_end	רווח סיום (px)
+slip_col_align	יישור טקסט
+slip_columns_help	רוחב כל עמודה כולל את רווח ההתחלה והסיום שלה. הטקסט נשבר בתוך העמודה שלו; מה שחורג מרוחב התוכן נחתך – על הנייר ובתצוגה המקדימה.
 bill_total_qty_label	תווית כמות כוללת
 bill_total_subtotal_label	תווית ביניים
 bill_total_grand_label	תווית סה״כ
@@ -221,7 +212,6 @@ sidebar_order_saved	סדר סרגל הצד נשמר
 sidebar_visibility_saved	נראות סרגל הצד נשמרה
 amounts_hide	הסתר
 amounts_show	הצג
-printers_none_hint	שמרו קודם מדפסת במכשיר הזה, ואז הוסיפו אותה לחשבון או למטבח
 counter	דלפק
 dine_in	באולם
 takeaway	לקחת
@@ -328,8 +318,6 @@ selected_language	נבחר
 continue	המשך
 this_device	המכשיר הזה
 device_use_q	איך ישמש המכשיר הזה?
-last_server_mode	היה שרת — הקישו כדי להמשיך
-last_client_mode	היה מסוף — הקישו כדי להמשיך
 choose_server	בחרו שרת
 choose_server_hint	פתחו שרת קיים, או צרו אחד לעסק אחר.
 create_new_server	צור שרת חדש
@@ -391,7 +379,7 @@ attachments_last_expense	קבצים מצורפים (ההוצאה האחרונה)
 bank	בנק
 bank_in	כניסה לבנק
 bank_out	יציאה מהבנק
-bank_reconciliation	התאמת בנק (סמנו מול דף החשבון)
+bank_reconciliation	התאמת בנק
 bank_to_till	בנק → קופה
 book_add_dish	ספר — הוסף מנה / פריט
 book_opening_credit	ספר — אשראי פתיחה
@@ -744,7 +732,6 @@ station_print_pick_first	בחרו קודם עמדת מטבח
 station_print_editing	עורכים מדפסות עבור “{name}”
 station_vps_dd	מדפסות לעמדה הזו
 station_vps_dd_n	{n} מדפסות · הקישו לשינוי
-station_vps_empty	עדיין אין מדפסות — מצאו אותן תחת הגדרות → מדפסות
 bill_printers_dd	מדפסות לחשבון
 bill_printers_dd_n	{n} מדפסות לחשבון · הקישו לשינוי
 job_layout	פריסה
@@ -889,7 +876,7 @@ net_word	נטו
 offline_badge	לא מקוון
 optional_login_help	כניסה אופציונלית (מזהה + סיסמה). הבעלים קובע פעם אחת; רק המשתמש יכול לשנות סיסמה אחר כך.
 or_unlock_login	או פתחו עם מזהה כניסה + סיסמה
-permission_preset	תפקיד (קובע מסכים ופעולות כסף)
+permission_preset	תפקיד
 preset_help_khaynjo	קופאי: מוכר. מנהל משמרת: מוכר + פריטים + ביטול/תיקון.
 product_locked_khaynjo	Khaynjo
 product_only_khaynjo	היישום הזה הוא Khaynjo בלבד — מערכת הפעלה למסעדה. פנים מסחר אחרים יוצאים כמוצרי Kumkaj נפרדים.
@@ -961,10 +948,6 @@ pin_hint_paired	קופה נוספת מזווגת — פתחו כדי למכור
 pin_hint_pair_first	קופה נוספת — זווגו קודם למכשיר החנות
 unlock_to_continue	פתחו כדי להמשיך
 no_staff_yet	עדיין אין צוות — פתחו כבעלים, ואז צוות
-status_server_set_pin	מצב שרת — קבעו PIN בעלים
-status_server_tills	מצב שרת — קופות נוספות יכולות להצטרף. פתח
-status_server_unlock	מצב שרת — פתחו כבעלים
-status_client_unlock	מצב מסוף — פתחו כדי למכור
 icon_new_selected	סמל: נבחר קובץ חדש — הקישו שמור מותג
 icon_custom	סמל: סימן מקום מותאם
 icon_default	סמל: סימן Kumkaj (ברירת מחדל) — בחרו אחד מותאם
@@ -1033,7 +1016,7 @@ book_kind_balance	מאזן
 order_help	הקישו על פריט כדי להוסיף אותו.
 floor_help	הקישו על שולחן כדי לקחת או לשנות את ההזמנה. הצבעים מראים פנוי → יושב → מטבח → מוכן → אוכל → חשבון → שולם. רשימת המתנה, הזמנות מראש והוספת שולחנות נמצאים בסעיפים למטה.
 kitchen_help	פתקי מטבח (KOT), החדש אחרון. התחל → מוכן → בוצע מקדם פתק. הפתקים אף פעם לא מציגים מחירים.
-kitchen_empty	אין פתקים פתוחים. KOT שנשלח מהזמנה או מהאולם מופיע כאן.
+kitchen_empty	אין פתקים פתוחים.
 add_a_table	הוסף שולחן
 add_station_heading	הוסף עמדת מטבח
 categories_help	הקישו השתמש כדי לשייך את הפריט למעלה לקטגוריה הזו. תמונה נותנת לקטגוריה תמונה; בלי תמונה מוצגות ראשי התיבות.
@@ -1131,7 +1114,6 @@ bill_format_help	מודפס מתחת לשם המסעדה שלכם בכל חשב�
 bill_header_ph	כתובת | טלפון
 fssai_ph	מס׳ רישיון FSSAI (הודו)
 bill_footer_ph	כותרת תחתונה (למשל תודה, בואו שוב)
-save_bill_format	שמור פורמט חשבון
 reset_bill_format	אפס לברירת מחדל
 bill_format_reset	פורמט החשבון אופס לברירת מחדל
 reset_kot_format	אפס לברירת מחדל
@@ -1201,13 +1183,11 @@ kot_copies_3	3
 kot_title_ph	כותרת (ריק = KOT - KITCHEN ORDER)
 kot_footer_ph	הערת מטבח (לא חובה, בלי מחירים)
 kot_preview	תצוגה מקדימה
-save_kot_format	שמור פורמט KOT
 test_kot_format	KOT בדיקה
 test_kot_sent	תצוגה מקדימה של פתק המטבח נשלחה
 test_bill_format	חשבון בדיקה
 test_bill_sent	תצוגה מקדימה של החשבון נשלחה
 test_print_no_printer	אין מדפסת לעבודה הזו — בחרו אחת במסך הזה
-kot_format_saved	פורמט ה־KOT נשמר
 std_print	גודל הדפסת חשבון
 std_print_help	גודל גופן לעבודות חשבון לאורך ולרוחב רגילות במדפסות OS / מסמך (הקלידו נקודות — לא קטן/רגיל/גדול). אותו גודל בשני הכיוונים. גדלי פתק המטבח נמצאים בלשונית KOT.
 std_size_s	קטן
@@ -1264,7 +1244,6 @@ new_items_head	עדיין לא נשלח
 price_ph	מחיר
 price_ph_gst_inside	מחיר ({tax} כלול)
 cancel_needs_table	פתחו את ההזמנה הזו מהאולם (שולחן) כדי לבטל אחרי שהמטבח קיבל אותה — KOT של הדלפק נשארים על הפתק עד שגובים תשלום
-tax_rates_missing_hint	אין שער {tax} על המנות האלה — בתפריט קבעו שער מס (המחירים כבר כוללים {tax} תחת {tax} כלול)
 taxable_value	ערך חייב במס
 gst_inside_price_note	({tax} כלול)
 start_with_template	התחילו עם תבנית התפריט שלנו
@@ -1318,9 +1297,7 @@ order_empty_pick	ההזמנה ריקה — הקישו הוסף מנות למעל
 add_dishes	הוסף מנות
 order_so_far	בהזמנה הזו: {n} · {total}
 no_dish_match	אין מנה שמתאימה ל־“{q}”
-pick_dishes_help	הקישו על מנה כדי להוסיף אותה · בחרו קטגוריה כדי לצמצם את הרשימה
 pick_done	בוצע
-pick_done_dd	בוצע · {label}
 printer_route_mode	אם יש כמה מדפסות במקום הזה
 printer_mode_first	הראשונה שעובדת
 printer_mode_all	הדפס בכולן

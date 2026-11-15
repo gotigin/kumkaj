@@ -564,8 +564,8 @@ impl App {
                 OpenList::CategoryPicker => st.category_picker_open = false,
             }
         }
-        // Outside tap / Back cleared suggest_open but left the Kitchen
-        // (and similar) face stuck on "Done · …" until a later sync_chrome.
+        // Outside tap / Back: repaint the Kitchen face now (its stations may
+        // have changed while the list was open); ComboField draws ˅ / ˄.
         if let OpenList::Suggest(SuggestField::KotStation) = list {
             self.paint_kot_station_dd(cx);
         }

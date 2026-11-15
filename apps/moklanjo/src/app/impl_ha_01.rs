@@ -488,151 +488,11 @@ impl App {
         if self.ui.button(cx, ids!(more_lock)).clicked(actions) {
             nav_click = Some(NavTab::Lock);
         }
-        match nav_click {
-            Some(NavTab::Books) => {
-                let result = (|| -> Result<(), String> {
-                    let mut st = app_state().lock().unwrap();
-                    st.refresh_books_overview()?;
-                    Ok(())
-                })();
-                if let Err(e) = result {
-                    self.set_status(cx, e);
-                } else {
-                    // Drop leftover focus so the old Sell face cannot look selected.
-                    cx.set_key_focus(Area::Empty);
-                    self.go_peer(cx, Screen::Books);
-                }
-            }
-            Some(NavTab::Sell) => {
-                cx.set_key_focus(Area::Empty);
-                self.go_peer_if_allowed(cx, Screen::Pos, |s| s.can_access_sell());
-            }
-            Some(NavTab::Buy) => {
-                cx.set_key_focus(Area::Empty);
-                self.go_peer_if_allowed(cx, Screen::Buy, |s| {
-                    s.can_access_inventory() || s.can_access_sales() || s.is_owner()
-                });
-            }
-            Some(NavTab::Rates) => {
-                cx.set_key_focus(Area::Empty);
-                self.go_peer_if_allowed(cx, Screen::Menu, |s| s.can_access_items());
-            }
-            Some(NavTab::Sales) => {
-                cx.set_key_focus(Area::Empty);
-                self.go_peer_if_allowed(cx, Screen::Sales, |s| s.can_access_sales());
-            }
-            Some(NavTab::Credit) => {
-                cx.set_key_focus(Area::Empty);
-                self.go_peer_if_allowed(cx, Screen::Credit, |s| s.can_access_credit());
-            }
-            Some(NavTab::Team) => {
-                cx.set_key_focus(Area::Empty);
-                self.go_peer_if_allowed(cx, Screen::Team, |s| {
-                    s.can_manage_team() || s.can_change_own_credentials()
-                });
-            }
-            Some(NavTab::Settings) => {
-                cx.set_key_focus(Area::Empty);
-                self.go_peer_if_allowed(cx, Screen::Settings, |s| s.can_open_settings_shell());
-            }
-            Some(NavTab::DayClose) => {
-                let result = (|| -> Result<(), String> {
-                    let mut st = app_state().lock().unwrap();
-                    st.refresh_day_close_text()?;
-                    Ok(())
-                })();
-                if let Err(e) = result {
-                    self.set_status(cx, e);
-                } else {
-                    self.go_peer(cx, Screen::DayClose);
-                }
-            }
-            Some(NavTab::Ops)
-            | Some(NavTab::Cod)
-            | Some(NavTab::Riders)
-            | Some(NavTab::Reports) => {
-                let focus = match nav_click {
-                    Some(NavTab::Ops) => ReportsNav::Ops,
-                    Some(NavTab::Cod) => ReportsNav::Cod,
-                    Some(NavTab::Riders) => ReportsNav::Riders,
-                    _ => ReportsNav::Bank,
-                };
-                let result = (|| -> Result<(), String> {
-                    let mut st = app_state().lock().unwrap();
-                    let actor = st.actor()?;
-                    if !actor.is_owner() && !actor.can_access_sales() {
-                        return Err("Not allowed".into());
-                    }
-                    st.reports_nav = focus;
-                    st.refresh_reports_facet()?;
-                    Ok(())
-                })();
-                if let Err(e) = result {
-                    self.set_status(cx, e);
-                } else {
-                    self.go_peer(cx, Screen::Reports);
-                }
-            }
-            Some(NavTab::Inventory) => {
-                let result = (|| -> Result<(), String> {
-                    let mut st = app_state().lock().unwrap();
-                    let actor = st.actor()?;
-                    if !actor.can_access_inventory() && !actor.is_owner() {
-                        return Err("Not allowed for your role".into());
-                    }
-                    st.refresh_inventory_text()?;
-                    Ok(())
-                })();
-                if let Err(e) = result {
-                    self.set_status(cx, e);
-                } else {
-                    self.go_peer(cx, Screen::Inventory);
-                }
-            }
-            Some(NavTab::Branches) => {
-                let result = (|| -> Result<(), String> {
-                    let mut st = app_state().lock().unwrap();
-                    let actor = st.actor()?;
-                    if !actor.can_access_branches() && !actor.is_owner() {
-                        return Err("Not allowed for your role".into());
-                    }
-                    st.refresh_branches_text()?;
-                    Ok(())
-                })();
-                if let Err(e) = result {
-                    self.set_status(cx, e);
-                } else {
-                    self.go_peer(cx, Screen::Branches);
-                }
-            }
-            Some(NavTab::Lock) => {
-                self.clear_undo_snackbar(cx);
-                let dest = {
-                    let mut st = app_state().lock().unwrap();
-                    if let Some(store) = st.store.as_ref() {
-                        let _ = store.set_active_session_staff_id(None);
-                    }
-                    st.session = None;
-                    st.clear_team_edit_selection();
-                    st.pin_buffer.clear();
-                    st.status = "Locked".into();
-                    if st.must_confirm_device_role {
-                        Screen::DeviceSetup
-                    } else {
-                        Screen::Lock
-                    }
-                };
-                self.go_peer(cx, dest);
-            }
-            None => {}
+        if let Some(tab) = nav_click {
+            self.open_nav_tab(cx, tab);
         }
         self.handle_settings_hub_actions(cx, actions);
-        if self.ui.button(cx, ids!(sidebar_settings_open)).clicked(actions) {
-            self.go_if_allowed(cx, Screen::SidebarSettings, |s| s.can_access_settings());
-        }
-        if self.ui.button(cx, ids!(sidebar_settings_back)).clicked(actions)
-            || self.ui.button(cx, ids!(header_back)).clicked(actions)
-        {
+        if self.ui.button(cx, ids!(header_back)).clicked(actions) {
             self.navigate_back(cx);
         }
         self.handle_sidebar_nav_list_actions(cx, actions);
@@ -1001,6 +861,7 @@ impl App {
         }
         if self.ui.button(cx, ids!(device_role_cancel)).clicked(actions) {
             request_role_open_cancel();
+            self.set_status(cx, app_t("cancelled"));
             self.paint_role_open_busy_chrome(cx);
         }
         if self.ui.button(cx, ids!(server_create_new)).clicked(actions) {
@@ -1541,6 +1402,49 @@ impl App {
             if self.ui.button(cx, id).clicked(actions) {
                 self.clear_snack(cx);
             }
+        }
+        // The Printers sheet: Find / Cancel, a saved printer per button, OK.
+        if self.ui.button(cx, ids!(pm_find_cancel)).clicked(actions) {
+            print_share::cancel_find_printers();
+            self.show_found_printers(cx);
+            self.paint_submit_busy_chrome(cx);
+            self.paint_printers_modal(cx);
+        }
+        if self.ui.button(cx, ids!(pm_find_btn)).clicked(actions)
+            && !print_share::is_finding_printers()
+        {
+            print_share::find_printers_in_background();
+            find_printers_armed().store(true, std::sync::atomic::Ordering::SeqCst);
+            self.show_found_printers(cx);
+            self.paint_submit_busy_chrome(cx);
+            self.paint_printers_modal(cx);
+        }
+        for (i, id) in PM_PICKS.iter().enumerate() {
+            if self.ui.button(cx, id).clicked(actions) {
+                self.pick_printer_in_modal(cx, i);
+            }
+        }
+        if self.ui.button(cx, ids!(pm_close)).clicked(actions)
+            || self.ui.modal(cx, ids!(printers_modal)).dismissed(actions)
+        {
+            self.close_printers_modal(cx);
+        }
+        if self.ui.button(cx, ids!(snack_find_printers)).clicked(actions) {
+            // The job the warning names; else the place being edited on
+            // Settings → Printers (a test print there names no job).
+            let route = {
+                let st = app_state().lock().unwrap();
+                let text = st.snack_text.to_lowercase();
+                if text.contains("label") {
+                    print_share::RouteKey::Label
+                } else if text.contains("receipt") || text.contains("run sheet") {
+                    print_share::RouteKey::Receipt
+                } else {
+                    parse_courier_route_key(&st.printer_route_key)
+                }
+            };
+            self.clear_snack(cx);
+            self.open_printers_modal(cx, route);
         }
     }
 }

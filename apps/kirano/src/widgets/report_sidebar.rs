@@ -400,21 +400,8 @@ impl Widget for SidebarNavList {
                     let item = list.item(cx, item_id, id!(Item));
                     let label = {
                         let lang = app_state().lock().unwrap().locale.language.clone();
-                        match tab {
-                            NavTab::Books => locale::t(&lang, "books"),
-                            NavTab::Sell => locale::t(&lang, "sell"),
-                            NavTab::Buy => locale::t(&lang, "buy"),
-                            NavTab::Menu => locale::t(&lang, "sidebar_menu_items"),
-                            NavTab::Sales => locale::t(&lang, "sales"),
-                            NavTab::DayClose => locale::t(&lang, "day_close"),
-                            NavTab::Reports => locale::t(&lang, "nav_reports"),
-                            NavTab::Inventory => locale::t(&lang, "inventory"),
-                            NavTab::Branches => locale::t(&lang, "branches"),
-                            NavTab::Credit => locale::t(&lang, "credit"),
-                            NavTab::Team => locale::t(&lang, "team"),
-                            NavTab::Settings => locale::t(&lang, "nav_settings"),
-                            NavTab::Lock => locale::t(&lang, "nav_lock"),
-                        }
+                        // Shown to shop admins only, so Team reads "Team & PINs".
+                        locale::t(&lang, nav_tab_label_key(tab, false))
                     };
                     let visible = nav_tab_is_visible(&hidden, tab);
                     let always = nav_tab_always_visible(tab);
@@ -485,9 +472,9 @@ struct StockList {
 
 impl Widget for StockList {
     fn draw_walk(&mut self, cx: &mut Cx2d, scope: &mut Scope, walk: Walk) -> DrawStep {
-        let (items, raw, resale, low, levels) = {
+        let (items, resale, low, levels) = {
             let st = app_state().lock().unwrap();
-            (st.stock_items(), st.t("kind_raw"), st.t("kind_resale"), st.t("low_badge"), st.reorder_levels.clone())
+            (st.stock_items(), st.t("kind_resale"), st.t("low_badge"), st.reorder_levels.clone())
         };
         // Full content height + page scroll (CustomerList / SaleList rule).
         // A short Fixed pitch (old 62) clipped the last Fit rows into the
@@ -509,7 +496,7 @@ impl Widget for StockList {
                     let item = list.item(cx, item_id, id!(Item));
                     item.label(cx, ids!(stock_name)).set_text(cx, &p.name);
                     item.label(cx, ids!(stock_kind))
-                        .set_text(cx, if p.is_raw() { &raw } else { &resale });
+                        .set_text(cx, &resale);
                     item.label(cx, ids!(stock_qty))
                         .set_text(cx, &p.format_on_hand());
                     let reorder_at = levels.get(&p.id).copied().unwrap_or(store::DEFAULT_REORDER_AT);

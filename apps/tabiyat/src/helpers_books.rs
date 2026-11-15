@@ -192,7 +192,7 @@ fn route_virtual_printer_suggest_rows(
         );
     }
     if rows.is_empty() {
-        rows.push(SuggestRow::new(t("station_vps_empty"), String::new()));
+        rows.push(SuggestRow::new(t("find_printers"), FIND_PRINTERS_ROW));
     }
     rows
 }
@@ -217,7 +217,7 @@ fn toggle_route_virtual_printer(st: &mut AppState, vp_id: &str) -> Result<String
             st.save_printer_draft()?;
             Ok(st.t("station_vp_detached"))
         }
-        None => Err(st.t("station_vps_empty")),
+        None => Err(st.t("printers_tap_find")),
     }
 }
 

@@ -39,7 +39,7 @@ adding_item	Lisätään uusi hinta
 editing_item	Muokkaus
 save	Tallenna
 remove	Poista
-empty_catalog	Ei vielä hintoja. Avaa Hinnat ja palvelut, lisää yksi (nimi + hinta, yksikkökg) ja sitten Varaus.
+empty_catalog	Ei vielä hintoja.
 counter_sale	Vastavaraus
 total	Yhteensä
 cash	Käteinen
@@ -171,8 +171,6 @@ selected_language	Valittu
 continue	Jatka
 this_device	TÄMÄ LAITE
 device_use_q	Miten tätä laitetta käytetään?
-last_server_mode	Oli palvelin — napauta jatkaaksesi
-last_client_mode	Oli pääte — napauta jatkaaksesi
 choose_server	Valitse palvelin
 choose_server_hint	Avaa olemassa oleva palvelin tai luo uusi toiselle yritykselle.
 create_new_server	Luo uusi palvelin
@@ -501,8 +499,6 @@ job_layout	Asettelu
 job_delivery	Miten työ lähetetään
 job_size	Kirjasinkoko
 job_size_ph	esim. 18, 20, 26…
-save_receipt_format	Tallenna kuitin muoto
-save_label_format	Tallenna tarran muoto
 test_receipt_format	Testikuitti
 test_label_format	Testitarra
 test_receipt_sent	Kuitin näyte lähetetty
@@ -610,7 +606,7 @@ units_heading	Yksiköt
 booking_measures	Varaustoimenpiteet
 drawer_count	Laatikon laskenta (valinnainen)
 spreadsheet_csv	Taulukko (CSV)
-bank_reconciliation	Pankin täsmäytys (ruksi tiliotetta vasten)
+bank_reconciliation	Pankin täsmäytys
 book_add_product	Varaa - lisää tuote / hinta
 book_opening_credit	Kirja — alkuluotto
 account_kind	Tilin laji (napauta yhtä)
@@ -650,7 +646,7 @@ net_word	Netto
 offline_badge	EI VERKOSSA
 optional_login_help	Valinnainen kirjautuminen (tunnus + salasana). Omistaja asettaa kerran; vain käyttäjä voi vaihtaa salasanan myöhemmin.
 or_unlock_login	Tai avaa lukitus kirjautumistunnuksella ja salasanalla
-permission_preset	Työ (asettaa näytöt ja oikeudet)
+permission_preset	Työ
 preset_help_moklanjo	Kassahenkilö: myy. Päällikkö: myy + tuotteet + mitätöi/oikaise.
 product_locked_moklanjo	Moklanjo
 product_only_moklanjo	Tämä sovellus on vain Moklanjo - kirjat + varauspöytä. Muut kaupan pinnat toimitetaan erillisinä tuotteina myöhemmin.
@@ -698,10 +694,6 @@ pin_hint_paired	Lisäkassa paritettu — avaa lukitus myydäksesi
 pin_hint_pair_first	Lisäkassa — parita ensin liikkeen laitteeseen
 unlock_to_continue	Avaa lukitus jatkaaksesi
 no_staff_yet	Ei vielä henkilöstöä — avaa lukitus omistajana, sitten Tiimi
-status_server_set_pin	Palvelintila — aseta omistajan PIN
-status_server_tills	Palvelintila — lisäkassat voivat liittyä. Avaa lukitus
-status_server_unlock	Palvelintila — avaa lukitus omistajana
-status_client_unlock	Päätetila — avaa lukitus myydäksesi
 icon_new_selected	Kuvake: uusi tiedosto valittu — napauta Tallenna merkki
 icon_custom	Kuvake: oma paikan merkki
 icon_default	Kuvake: Kumkaj-merkki (oletus) — valitse oma

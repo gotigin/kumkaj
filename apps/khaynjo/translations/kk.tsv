@@ -41,7 +41,7 @@ remove	Алып тастау
 removed_items	Алынған тауарлар
 removed_help	Қалпына келтіру тауарды мәзірге дәл бұрынғыдай қайтарады — баға, фото және санат. Біздің тағам сөреміз ешқашан алынбайды, сондықтан тағамды әрқашан қайта қосуға болады.
 restore_item	Қалпына келтіру
-empty_catalog	Әлі тағам жоқ. Мәзірді ашып, тағам қосыңыз (ат + баға), содан тапсырыс алыңыз.
+empty_catalog	Әлі тағам жоқ.
 total	Барлығы
 cash	Қолма-қол
 upi	UPI
@@ -103,23 +103,14 @@ bill_item_qty	Сан
 bill_item_price	Баға
 bill_item_amount	Сома
 bill_item_note	Тағам ескертпесі
-bill_item_col_gap	Баған аралығы
 bill_item_col_order	Баған реті
 bill_item_col_sep	Баған сызықтары
-bill_item_gap_tight	Тығыз
-bill_item_gap_comfort	Ыңғайлы
-bill_item_gap_wide	Кең
-bill_item_num_width	Сан бағандары
-bill_item_num_compact	Ықшам
-bill_item_num_comfort	Ыңғайлы
-bill_item_num_wide	Кең
-bill_item_num_align	Сандарды туралау
-bill_item_gap_em	Аралық (em)
-bill_item_qty_min	Мин. сан (em)
-bill_item_price_min	Мин. баға (em)
-bill_item_amount_min	Мин. сома (em)
-kot_item_qty_width	Сан бағаны
-kot_item_num_align	Санды туралау
+slip_columns	Бағандар
+slip_col_width	Ені (mm)
+slip_col_start	Бастапқы аралық (px)
+slip_col_end	Соңғы аралық (px)
+slip_col_align	Мәтінді туралау
+slip_columns_help	Әр бағанның ені оның бастапқы және соңғы аралығын қамтиды. Мәтін өз бағанының ішінде тасымалданады; мазмұн енінен шығып кеткен бөлігі қағазда да, алдын ала қарауда да кесіледі.
 bill_total_qty_label	Жалпы сан белгісі
 bill_total_subtotal_label	Аралық сома белгісі
 bill_total_grand_label	Жалпы сома белгісі
@@ -221,7 +212,6 @@ sidebar_order_saved	Бүйір тақта реті сақталды
 sidebar_visibility_saved	Бүйір тақта көрінісі сақталды
 amounts_hide	Жасыру
 amounts_show	Көрсету
-printers_none_hint	Алдымен осы құрылғыда принтер сақтаңыз, содан оны Шотқа немесе асүйге қосыңыз
 counter	Касса
 dine_in	Орында
 takeaway	Алып кету
@@ -328,8 +318,6 @@ selected_language	Таңдалған
 continue	Жалғастыру
 this_device	ОСЫ ҚҰРЫЛҒЫ
 device_use_q	Бұл құрылғы қалай қолданылады?
-last_server_mode	Сервер еді — жалғастыру үшін түртіңіз
-last_client_mode	Клиент еді — жалғастыру үшін түртіңіз
 choose_server	Сервер таңдаңыз
 choose_server_hint	Бар серверді ашыңыз немесе басқа бизнеске жаңасын жасаңыз.
 create_new_server	Жаңа сервер жасау
@@ -391,7 +379,7 @@ attachments_last_expense	Тіркемелер (соңғы шығын)
 bank	Банк
 bank_in	Банкке кіріс
 bank_out	Банктен шығыс
-bank_reconciliation	Банк салыстыруы (банк үзіндісіне қарсы белгілеңіз)
+bank_reconciliation	Банк салыстыруы
 bank_to_till	Банк → касса
 book_add_dish	Кітап — тағам / тауар қосу
 book_opening_credit	Кітап — бастапқы несие
@@ -744,7 +732,6 @@ station_print_pick_first	Алдымен асүй станциясын таңда
 station_print_editing	«{name}» принтерлерін өңдеу
 station_vps_dd	Осы станцияның принтерлері
 station_vps_dd_n	{n} принтер · өзгерту үшін түртіңіз
-station_vps_empty	Әлі принтер жоқ — Параметрлер → Принтерлер ішінен табыңыз
 bill_printers_dd	Шот принтерлері
 bill_printers_dd_n	шотқа {n} принтер · өзгерту үшін түртіңіз
 job_layout	Орналасу
@@ -889,7 +876,7 @@ net_word	Таза
 offline_badge	ОФЛАЙН
 optional_login_help	Міндетті емес кіру (id + құпиясөз). Иесі бір рет қояды; құпиясөзді кейін тек пайдаланушы өзгерте алады.
 or_unlock_login	Немесе кіру id + құпиясөзбен құлыпты ашыңыз
-permission_preset	Жұмыс (экран мен ақша әрекетін қояды)
+permission_preset	Жұмыс
 preset_help_khaynjo	Кассир: сатады. Басқарушы: сату + тауар + күшін жою/түзету.
 product_locked_khaynjo	Khaynjo
 product_only_khaynjo	Бұл қолданба тек Khaynjo — мейрамхана операциялық жүйесі. Басқа сауда беттері жеке Kumkaj өнімдері болып шығады.
@@ -961,10 +948,6 @@ pin_hint_paired	Қосымша касса жұпталған — сату үші
 pin_hint_pair_first	Қосымша касса — алдымен дүкен құрылғысымен жұптаңыз
 unlock_to_continue	Жалғастыру үшін құлыпты ашыңыз
 no_staff_yet	Әлі қызметкер жоқ — Иесі болып құлыпты ашып, содан Топ
-status_server_set_pin	Сервер режимі — Иесінің PIN қойыңыз
-status_server_tills	Сервер режимі — қосымша кассалар қосыла алады. Құлыпты ашыңыз
-status_server_unlock	Сервер режимі — Иесі болып құлыпты ашыңыз
-status_client_unlock	Клиент режимі — сату үшін құлыпты ашыңыз
 icon_new_selected	Белгіше: жаңа файл таңдалды — Брендті сақтауды түртіңіз
 icon_custom	Белгіше: өз орнының белгісі
 icon_default	Белгіше: Kumkaj белгісі (әдепкі) — өзін таңдаңыз
@@ -1033,7 +1016,7 @@ book_kind_balance	Баланс
 order_help	Қосу үшін тауарды түртіңіз.
 floor_help	Тапсырыс алу немесе өзгерту үшін үстелді түртіңіз. Түстер бос → отырған → асүй → дайын → жеп жатыр → шот → төленгенді көрсетеді. Күту тізімі, бронь және үстел қосу төмендегі бөлімдерде.
 kitchen_help	Асүй фиштері (KOT), ең жаңасы соңында. Бастау → Дайын → Бітті фишті жылжытады. Фиштер ешқашан баға көрсетпейді.
-kitchen_empty	Ашық фиш жоқ. Тапсырыс немесе Залдан жіберілген KOT осында шығады.
+kitchen_empty	Ашық фиш жоқ.
 add_a_table	Үстел қосу
 add_station_heading	Асүй станциясын қосу
 categories_help	Жоғарыдағы тауарды сол санатқа салу үшін Қолдануды түртіңіз. Фото санатқа сурет береді; жоқ болса бас әріптері шығады.
@@ -1131,7 +1114,6 @@ bill_format_help	Әр шотта мейрамхана атының астынд�
 bill_header_ph	Мекенжай | телефон
 fssai_ph	FSSAI лицензия № (Үндістан)
 bill_footer_ph	Төменгі жазу (мыс. Рақмет, қайта келіңіз)
-save_bill_format	Шот пішімін сақтау
 reset_bill_format	Әдепкіге қайтару
 bill_format_reset	Шот пішімі әдепкіге қайтарылды
 reset_kot_format	Әдепкіге қайтару
@@ -1201,13 +1183,11 @@ kot_copies_3	3
 kot_title_ph	Тақырып (бос = KOT - KITCHEN ORDER)
 kot_footer_ph	Асүй ескертпесі (міндетті емес, бағасыз)
 kot_preview	Алдын ала көру
-save_kot_format	KOT пішімін сақтау
 test_kot_format	Сынақ KOT
 test_kot_sent	Асүй фишінің алдын ала көрінісі жіберілді
 test_bill_format	Сынақ шоты
 test_bill_sent	Шоттың алдын ала көрінісі жіберілді
 test_print_no_printer	Ол тапсырмаға принтер жоқ — осы экранда біреуін таңдаңыз
-kot_format_saved	KOT пішімі сақталды
 std_print	Шот басу өлшемі
 std_print_help	ОЖ / құжат принтерлеріндегі стандарт тік және көлденең шот тапсырмаларының қаріп өлшемі (пункт жазыңыз — Кіші/Қалыпты/Үлкен емес). Екі бағдарда бір өлшем. Асүй фишінің өлшемі KOT қойындысында.
 std_size_s	Кіші
@@ -1264,7 +1244,6 @@ new_items_head	Әлі жіберілмеген
 price_ph	Баға
 price_ph_gst_inside	Баға ({tax} ішінде)
 cancel_needs_table	Асүй алған соң бас тарту үшін осы тапсырысты Залдан (үстел) ашыңыз — касса KOT-тары төлем қабылдағанша фиште қалады
-tax_rates_missing_hint	Осы тағамдарда {tax} мөлшерлемесі жоқ — Мәзірде Салық мөлшерлемесін қойыңыз (бағалар {tax} ішінде бөлімінде {tax} қамтиды)
 taxable_value	Салық салынатын құн
 gst_inside_price_note	({tax} ішінде)
 start_with_template	Біздің мәзір үлгісімен бастау
@@ -1318,9 +1297,7 @@ order_empty_pick	Тапсырыс бос — тағам таңдау үшін ж
 add_dishes	Тағам қосу
 order_so_far	Осы тапсырыста: {n} · {total}
 no_dish_match	«{q}» сәйкес тағам жоқ
-pick_dishes_help	Қосу үшін тағамды түртіңіз · тізімді тарылту үшін санат таңдаңыз
 pick_done	Дайын
-pick_done_dd	Дайын · {label}
 printer_route_mode	Бұл орында бірнеше принтер болса
 printer_mode_first	Бірінші істегені
 printer_mode_all	Барлығына басу

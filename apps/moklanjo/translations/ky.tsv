@@ -39,7 +39,7 @@ adding_item	Жаңы тариф кошуу
 editing_item	Түзөтүү
 save	Сактоо
 remove	Алып салуу
-empty_catalog	Азырынча тарифтер жок. Баалар жана кызматтарды ачып, бирөөсүн кошуңуз (аты + баасы, кг бирдиги), андан соң Ээлеп коюу.
+empty_catalog	Азырынча тарифтер жок.
 counter_sale	Каршы брондоо
 total	Бардыгы
 cash	Накталай акча
@@ -171,8 +171,6 @@ selected_language	Тандалган
 continue	Улантуу
 this_device	БУЛ АПБАТ
 device_use_q	Бул аппарат кантип колдонулат?
-last_server_mode	Сервер болгон — улантуу үчүн таптаңыз
-last_client_mode	Кардар болгон — улантуу үчүн таптаңыз
 choose_server	Серверди тандаңыз
 choose_server_hint	Учурдагы серверди ачыңыз же башка бизнес үчүн серверди түзүңүз.
 create_new_server	Жаңы сервер түзүңүз
@@ -501,8 +499,6 @@ job_layout	Макет
 job_delivery	Жумуш кантип жөнөтүлөт
 job_size	Арип өлчөмү
 job_size_ph	мис. 18, 20, 26…
-save_receipt_format	Квитанция форматын сактоо
-save_label_format	Энбелги форматын сактоо
 test_receipt_format	Сыноо квитанциясы
 test_label_format	Сыноо белгиси
 test_receipt_sent	Квитанциянын үлгүсү жөнөтүлдү
@@ -610,7 +606,7 @@ units_heading	Бирдиктер
 booking_measures	Брондоо чаралары
 drawer_count	тартма саны (милдеттүү эмес)
 spreadsheet_csv	Электрондук жадыбал (CSV)
-bank_reconciliation	Банктык салыштыруу (банктык көчүрмөңүзгө каршы белги коюңуз)
+bank_reconciliation	Банктык салыштыруу
 book_add_product	Китеп - продукт / баа кошуу
 book_opening_credit	Бухгалтердик китеп – кредитти ачуу
 account_kind	Каттоо эсебинин түрү (бирин таптаңыз)
@@ -650,7 +646,7 @@ net_word	Таза
 offline_badge	ОФЛАЙН
 optional_login_help	Кошумча логин (id + сырсөз). Ээси бир жолу белгилейт; кийин гана колдонуучу сырсөздү өзгөртө алат.
 or_unlock_login	Же логин id + сырсөз менен кулпусун ачыңыз
-permission_preset	Жумуш (экрандарды жана укуктарды орнотот)
+permission_preset	Жумуш
 preset_help_moklanjo	Кассир: сатам. Менеджер: сатуу + меню пункттары + жокко чыгаруу / өзгөртүү.
 product_locked_moklanjo	Moklanjo
 product_only_moklanjo	Бул колдонмо Moklanjo гана - китептер + брондоо столу. Башка соода жүздөрү кийинчерээк өзүнчө продуктылар катары жөнөтүлөт.
@@ -698,10 +694,6 @@ pin_hint_paired	Кошумча касса жупташтырылган — са�
 pin_hint_pair_first	Кошумча кассалык аппарат — биринчи дүкөндүн аппаратына жуптаңыз
 unlock_to_continue	Улантуу үчүн кулпусун ачыңыз
 no_staff_yet	Азырынча кызматкер жок — Ээси, андан кийин Команда катары кулпусун ачыңыз
-status_server_set_pin	Сервер режими — Ээси PIN коюу
-status_server_tills	Сервер режими — кошумча кассалар кошула алат. Кулпуну ачуу
-status_server_unlock	Server Mode — Ээси катары кулпусун ачуу
-status_client_unlock	Кардар режими — сатуу үчүн кулпусун ачуу
 icon_new_selected	Белги: жаңы файл тандалды — брендди сактоо таптаңыз
 icon_custom	Icon: ыңгайлаштырылган жер белгиси
 icon_default	Белги: Kumkaj белги (демейки) — ыңгайлаштырылганды тандаңыз

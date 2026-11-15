@@ -39,7 +39,7 @@ adding_item	కొత్త రేట్ జోడిస్తోంది
 editing_item	సవరిస్తోంది
 save	సేవ్ చేయి
 remove	తొలగించు
-empty_catalog	ఇంకా రేట్లు లేవు. రేట్లు & సేవలు తెరిచి, ఒకటి జోడించండి (పేరు + ధర, యూనిట్ kg), తర్వాత బుకింగ్.
+empty_catalog	ఇంకా రేట్లు లేవు.
 counter_sale	కౌంటర్ బుకింగ్
 total	మొత్తం
 cash	నగదు
@@ -171,8 +171,6 @@ selected_language	ఎంచుకున్నది
 continue	కొనసాగించు
 this_device	ఈ పరికరం
 device_use_q	ఈ పరికరం ఎలా ఉపయోగించబడుతుంది?
-last_server_mode	ఇంతకు ముందు సర్వర్ — కొనసాగించడానికి నొక్కండి
-last_client_mode	ఇంతకు ముందు క్లయింట్ — కొనసాగించడానికి నొక్కండి
 choose_server	సర్వర్‌ను ఎంచుకోండి
 choose_server_hint	ఈ పరికరంలో ఇప్పటికే సర్వర్లు ఉన్నాయి. ఒకదాన్ని తెరవండి, లేదా మరో వ్యాపారం కోసం కొత్త సర్వర్ సృష్టించండి.
 create_new_server	కొత్త సర్వర్ సృష్టించు
@@ -501,8 +499,6 @@ job_layout	లేఅవుట్
 job_delivery	పని ఎలా పంపబడుతుంది
 job_size	ఫాంట్ పరిమాణం
 job_size_ph	ఉదా. 18, 20, 26…
-save_receipt_format	రసీదు ఫార్మాట్ సేవ్ చేయి
-save_label_format	లేబుల్ ఫార్మాట్ సేవ్ చేయి
 test_receipt_format	టెస్ట్ రసీదు
 test_label_format	టెస్ట్ లేబుల్
 test_receipt_sent	నమూనా రసీదు పంపారు
@@ -610,7 +606,7 @@ units_heading	యూనిట్లు
 booking_measures	బుకింగ్ కొలతలు
 drawer_count	డ్రాయర్ లెక్క (ఐచ్ఛికం)
 spreadsheet_csv	స్ప్రెడ్‌షీట్ (CSV)
-bank_reconciliation	బ్యాంక్ సరిపోలిక (మీ బ్యాంక్ స్టేట్‌మెంట్‌తో టిక్ చేయండి)
+bank_reconciliation	బ్యాంక్ సరిపోలిక
 book_add_product	బుక్ — ఉత్పత్తి / రేట్ జోడించు
 book_opening_credit	బుక్ — ప్రారంభ అరువు
 account_kind	ఖాతా రకం (ఒకటి నొక్కండి)
@@ -650,7 +646,7 @@ net_word	నికరం
 offline_badge	ఆఫ్‌లైన్
 optional_login_help	ఐచ్ఛిక లాగిన్ (ఐడీ + పాస్‌వర్డ్). యజమాని ఒకసారి సెట్ చేస్తారు; తర్వాత వినియోగదారు మాత్రమే పాస్‌వర్డ్ మార్చగలరు.
 or_unlock_login	లేదా లాగిన్ ఐడీ + పాస్‌వర్డ్‌తో అన్‌లాక్ చేయండి
-permission_preset	పని (స్క్రీన్లు, హక్కులు పెడుతుంది)
+permission_preset	పని
 preset_help_moklanjo	క్యాషియర్: అమ్మండి. మేనేజర్: అమ్మండి + ఐటమ్‌లు + రద్దు/సవరణ.
 product_locked_moklanjo	Moklanjo
 product_only_moklanjo	ఈ యాప్ Moklanjo మాత్రమే — ఖాతాలు + బుకింగ్ డెస్క్. ఇతర వ్యాపారాల ఉత్పత్తులు తర్వాత విడిగా వస్తాయి.
@@ -698,10 +694,6 @@ pin_hint_paired	అదనపు టిల్ జత చేయబడింది 
 pin_hint_pair_first	అదనపు టిల్ — ముందు షాప్ పరికరానికి జత చేయండి
 unlock_to_continue	కొనసాగించడానికి అన్‌లాక్ చేయండి
 no_staff_yet	ఇంకా సిబ్బంది లేరు — యజమానిగా అన్‌లాక్ చేయండి, తర్వాత Team
-status_server_set_pin	సర్వర్ మోడ్ — యజమాని PIN సెట్ చేయండి
-status_server_tills	సర్వర్ మోడ్ — అదనపు టిల్‌లు చేరవచ్చు. అన్‌లాక్ చేయండి
-status_server_unlock	సర్వర్ మోడ్ — యజమానిగా అన్‌లాక్ చేయండి
-status_client_unlock	క్లయింట్ మోడ్ — అమ్మడానికి అన్‌లాక్ చేయండి
 icon_new_selected	ఐకాన్: కొత్త ఫైల్ ఎంచుకోబడింది — బ్రాండ్ సేవ్ చేయి నొక్కండి
 icon_custom	ఐకాన్: మీ షాపు గుర్తు
 icon_default	ఐకాన్: Kumkaj గుర్తు (డిఫాల్ట్) — మీది ఎంచుకోండి

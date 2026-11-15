@@ -41,7 +41,7 @@ remove	إزالة
 removed_items	أصناف محذوفة
 removed_help	استعادة تُرجع الصنف إلى القائمة كما كان تماماً — السعر والصورة والفئة. رف الأطباق لدينا لا يُحذف أبداً، لذا يمكنك إضافة أي طبق مرة أخرى.
 restore_item	استعادة
-empty_catalog	لا أصناف بعد. افتح القائمة والأصناف، أضف واحداً (الاسم + السعر)، ثم خذ طلباً.
+empty_catalog	لا أصناف بعد.
 total	المجموع
 cash	نقداً
 upi	UPI
@@ -103,23 +103,14 @@ bill_item_qty	كمية
 bill_item_price	السعر
 bill_item_amount	المبلغ
 bill_item_note	ملاحظة
-bill_item_col_gap	فراغ الأعمدة
 bill_item_col_order	ترتيب الأعمدة
 bill_item_col_sep	خطوط الأعمدة
-bill_item_gap_tight	ضيق
-bill_item_gap_comfort	مريح
-bill_item_gap_wide	واسع
-bill_item_num_width	أعمدة الأرقام
-bill_item_num_compact	مضغوط
-bill_item_num_comfort	مريح
-bill_item_num_wide	واسع
-bill_item_num_align	محاذاة الأرقام
-bill_item_gap_em	فراغ (em)
-bill_item_qty_min	حد أدنى للكمية (em)
-bill_item_price_min	حد أدنى للسعر (em)
-bill_item_amount_min	حد أدنى للمبلغ (em)
-kot_item_qty_width	عمود الكمية
-kot_item_num_align	محاذاة الكمية
+slip_columns	الأعمدة
+slip_col_width	العرض (mm)
+slip_col_start	مسافة البداية (px)
+slip_col_end	مسافة النهاية (px)
+slip_col_align	محاذاة النص
+slip_columns_help	يشمل عرض كل عمود مسافتي البداية والنهاية. يلتف النص داخل عموده، وما يتجاوز عرض المحتوى يُقص على الورق وفي المعاينة.
 bill_total_qty_label	تسمية إجمالي الكمية
 bill_total_subtotal_label	تسمية المجموع الفرعي
 bill_total_grand_label	تسمية الإجمالي
@@ -221,7 +212,6 @@ sidebar_order_saved	تم حفظ ترتيب الشريط الجانبي
 sidebar_visibility_saved	تم حفظ رؤية الشريط الجانبي
 amounts_hide	إخفاء
 amounts_show	إظهار
-printers_none_hint	احفظ طابعة على هذا الجهاز أولاً، ثم أضفها إلى الفاتورة أو المطبخ
 counter	كاونتر
 dine_in	في المطعم
 takeaway	سفري
@@ -328,8 +318,6 @@ selected_language	المختارة
 continue	متابعة
 this_device	هذا الجهاز
 device_use_q	كيف سيُستخدم هذا الجهاز؟
-last_server_mode	كان خادمًا — اضغط للمتابعة
-last_client_mode	كان عميلًا — اضغط للمتابعة
 choose_server	اختر خادماً
 choose_server_hint	هذا الجهاز لديه خوادم بالفعل. افتح واحداً أو أنشئ خادماً جديداً لنشاط آخر.
 create_new_server	إنشاء خادم جديد
@@ -391,7 +379,7 @@ attachments_last_expense	المرفقات (آخر مصروف)
 bank	البنك
 bank_in	إيداع بنكي
 bank_out	سحب بنكي
-bank_reconciliation	التسوية البنكية (علّم مقابل كشف حسابك)
+bank_reconciliation	التسوية البنكية
 bank_to_till	البنك ← الكاونتر
 book_add_dish	احجز — أضف طبقاً / صنفاً
 book_opening_credit	احجز — رصيد افتتاحي
@@ -744,7 +732,6 @@ station_print_pick_first	اختر محطة مطبخ أولاً
 station_print_editing	تعديل طابعات “{name}”
 station_vps_dd	طابعات هذه المحطة
 station_vps_dd_n	{n} طابعة · انقر للتغيير
-station_vps_empty	لا طابعات بعد — ابحث عنها في الإعدادات ← الطابعات
 bill_printers_dd	طابعات للفاتورة
 bill_printers_dd_n	{n} طابعة(ات) للفاتورة · اضغط للتغيير
 job_layout	التخطيط
@@ -889,7 +876,7 @@ net_word	الصافي
 offline_badge	دون اتصال
 optional_login_help	دخول اختياري (معرف + كلمة مرور). يضبطه المالك مرة واحدة؛ وبعدها يمكن للمستخدم فقط تغيير كلمة المرور.
 or_unlock_login	أو افتح القفل بمعرف الدخول + كلمة المرور
-permission_preset	إعداد الأذونات (ما يمكن الوصول إليه)
+permission_preset	إعداد الأذونات
 preset_help_khaynjo	أمين الصندوق: البيع. المدير: البيع + الأصناف + الإلغاء/التعديل.
 product_locked_khaynjo	Khaynjo
 product_only_khaynjo	هذا التطبيق Khaynjo فقط — نظام تشغيل المطاعم. للمهن الأخرى منتجات Kumkaj منفصلة.
@@ -961,10 +948,6 @@ pin_hint_paired	الكاونتر الإضافي مقترن — افتح القف
 pin_hint_pair_first	الكاونتر الإضافي — اقترن بجهاز المتجر أولاً
 unlock_to_continue	افتح القفل للمتابعة
 no_staff_yet	لا موظفون بعد — افتح القفل كمالك، ثم الفريق
-status_server_set_pin	وضع الخادم — عيّن رمز المالك
-status_server_tills	وضع الخادم — يمكن للكاونترات الإضافية الانضمام. افتح القفل
-status_server_unlock	وضع الخادم — افتح القفل كمالك
-status_client_unlock	وضع العميل — افتح القفل للبيع
 icon_new_selected	الأيقونة: تم اختيار ملف جديد — اضغط حفظ العلامة
 icon_custom	الأيقونة: شعار متجرك الخاص
 icon_default	الأيقونة: شعار Kumkaj (الافتراضي) — اختر شعارك
@@ -1033,7 +1016,7 @@ book_kind_balance	الميزانية العمومية
 order_help	اختر طلبًا مفتوحًا، أو اختر طاولة وابدأ طلبًا جديدًا. انقر العناصر الجاهزة، أرسل KOT، فوتر عنصرًا أو أكثر، قسّم الفاتورة وسوِّ الدفع.
 floor_help	تُظهر كل طاولة ما إذا كان الضيوف جالسين، وما فاتورتهم المفتوحة، ومن يحتاج الخدمة التالية.
 kitchen_help	تتبع الجاهز لكل نوع أو لكل عنصر — سجّله في KOT كما تريد.
-kitchen_empty	لا شيء مفتوحًا الآن — ستظهر الطلبات الجديدة هنا.
+kitchen_empty	لا شيء مفتوحًا الآن.
 add_a_table	إضافة طاولة
 add_station_heading	إضافة محطة · مثل تندور، جنوب الهند
 categories_help	تُظهر الفئة إلى أي جزء من القائمة ينتمي الطبق — مثل الوجبات الخفيفة أو الطبق الرئيسي أو البرياني. أنشئ الفئات بطريقتك: اختر الأسماء التي نقترحها، أعد تسميتها أو أضف أسماءك.
@@ -1131,7 +1114,6 @@ bill_format_help	يُطبع تحت اسم المطعم في كل فاتورة. �
 bill_header_ph	العنوان | الهاتف
 fssai_ph	رقم ترخيص FSSAI (الهند)
 bill_footer_ph	التذييل (مثل شكرًا، عُد مجددًا)
-save_bill_format	احفظ تنسيق الفاتورة
 reset_bill_format	إعادة للافتراضي
 bill_format_reset	أُعيد تنسيق الفاتورة للافتراضي
 reset_kot_format	إعادة للافتراضي
@@ -1201,13 +1183,11 @@ kot_copies_3	3
 kot_title_ph	العنوان (فارغ = KOT - KITCHEN ORDER)
 kot_footer_ph	ملاحظة المطبخ (اختياري، بلا أسعار)
 kot_preview	معاينة
-save_kot_format	حفظ تنسيق KOT
 test_kot_format	اختبار تذكرة المطبخ
 test_kot_sent	تم إرسال معاينة تذكرة المطبخ
 test_bill_format	اختبار الفاتورة
 test_bill_sent	تم إرسال معاينة الفاتورة
 test_print_no_printer	لا يوجد طابعة لهذا الطلب — اختر واحدة من هذه الشاشة
-kot_format_saved	تم حفظ تنسيق KOT
 std_print	حجم طباعة الفاتورة
 std_print_help	حجم الخط لفواتير Standard الطولية والعرضية (KOT الحراري منفصل). نفس الحجم في الاتجاهين.
 std_size_s	صغير
@@ -1264,7 +1244,6 @@ new_items_head	لم يُرسل بعد
 price_ph	السعر
 price_ph_gst_inside	السعر ({tax} شامل)
 cancel_needs_table	افتح هذا الطلب من الصالة (طاولة) للإلغاء بعد المطبخ — تبقى KOT الكاونتر على التذكرة حتى الدفع
-tax_rates_missing_hint	لا نسبة {tax} على هذه الأطباق — عيّن نسبة الضريبة في القائمة (مع {tax} inclusive يكون السعر شاملاً {tax})
 taxable_value	القيمة الخاضعة
 gst_inside_price_note	({tax} شامل)
 start_with_template	ابدأ بقالب قائمتنا
@@ -1318,9 +1297,7 @@ order_empty_pick	الطلب فارغ — اضغط «إضافة أطباق» با
 add_dishes	إضافة أطباق
 order_so_far	في هذا الطلب: {n} · {total}
 no_dish_match	لا يوجد طبق يطابق «{q}»
-pick_dishes_help	اضغط على طبق لإضافته · اختر فئة لتضييق القائمة
 pick_done	تم
-pick_done_dd	تم · {label}
 printer_route_mode	إذا كان هناك عدة طابعات في هذا المكان
 printer_mode_first	الأولى التي تعمل
 printer_mode_all	الطباعة على الكل

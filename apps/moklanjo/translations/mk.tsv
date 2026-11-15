@@ -39,7 +39,7 @@ adding_item	Додавање нова стапка
 editing_item	Уредување
 save	Зачувај
 remove	Отстрани
-empty_catalog	Сè уште нема стапки. Отворете Цени и услуги, додадете едно (име + цена, единица кг), потоа Резервирање.
+empty_catalog	Сè уште нема стапки.
 counter_sale	Резервација на шалтер
 total	Вкупно
 cash	Готовина
@@ -171,8 +171,6 @@ selected_language	Избрани
 continue	Продолжи
 this_device	ОВОЈ УРЕД
 device_use_q	Како ќе се користи овој уред?
-last_server_mode	Беше сервер - допрете за да продолжите
-last_client_mode	Беше клиент - допрете за да продолжите
 choose_server	Изберете сервер
 choose_server_hint	Отворете постоечки сервер или креирајте за друг бизнис.
 create_new_server	Создадете нов сервер
@@ -501,8 +499,6 @@ job_layout	Распоред
 job_delivery	Како се испраќа работата
 job_size	Големина на фонтот
 job_size_ph	на пр. 18, 20, 26…
-save_receipt_format	Зачувај формат на потврда
-save_label_format	Зачувај формат на етикета
 test_receipt_format	Тест потврда
 test_label_format	Тест етикета
 test_receipt_sent	Испратена е примерок од потврдата
@@ -610,7 +606,7 @@ units_heading	Единици
 booking_measures	Мерки за резервација
 drawer_count	Број на фиоки (изборно)
 spreadsheet_csv	Табеларен лист (CSV)
-bank_reconciliation	Банкарско помирување (штиклирајте со вашата банкарска извод)
+bank_reconciliation	Банкарско помирување
 book_add_product	Резервирајте - додадете производ / стапка
 book_opening_credit	Леџер - кредит за отворање
 account_kind	Вид на сметка (допрете еден)
@@ -650,7 +646,7 @@ net_word	Нето
 offline_badge	ОФЛАЈН
 optional_login_help	Изборно најавување (ид + лозинка). Сопственик поставува еднаш; само корисникот може да ја смени лозинката подоцна.
 or_unlock_login	Или отклучете со ID за најава + лозинка
-permission_preset	Работа (поставува екрани и права)
+permission_preset	Работа
 preset_help_moklanjo	Касиерка: продаде. Менаџер: продаде + ставки од менито + неважечки/измени.
 product_locked_moklanjo	Моклањо
 product_only_moklanjo	Оваа апликација е само Moklanjo - книги + биро за резервации. Други трговски се соочува брод како посебни производи подоцна.
@@ -698,10 +694,6 @@ pin_hint_paired	Спарена дополнителна каса - отклуч�
 pin_hint_pair_first	Дополнителна каса - прво спарете се со уредот на продавницата
 unlock_to_continue	Отклучете за да продолжите
 no_staff_yet	Сè уште нема персонал - отклучете како Сопственик, а потоа Тим
-status_server_set_pin	Режим на сервер - поставете го сопственикот PIN
-status_server_tills	Серверски режим — може да се приклучат дополнителни каси. Отклучи
-status_server_unlock	Режим на сервер - отклучете како сопственик
-status_client_unlock	Клиент режим - отклучете за да продадете
 icon_new_selected	Икона: избрана нова датотека - допрете Зачувај бренд
 icon_custom	Икона: приспособена ознака за место на одржување
 icon_default	Икона: ознака Kumkaj (стандардно) - изберете приспособена

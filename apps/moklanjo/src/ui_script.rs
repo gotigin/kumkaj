@@ -3104,6 +3104,41 @@ script_mod! {
             border_size: 0.
         }
     }
+    // ˅ / ˄ on every control that opens a pick list (ComboField in
+    // widgets/pick_lists.rs): drawn after the control, at its right edge,
+    // from the list's own open flag — never a stale "Done" face. A white
+    // under-stroke keeps the mark visible on a hovered (dark) button.
+    mod.widgets.ComboFieldBase = #(ComboField::register_widget(vm))
+    mod.widgets.ComboField = set_type_default() do mod.widgets.ComboFieldBase{
+        width: Fill height: Fit
+        flow: Overlay
+        draw_closed +: {
+            mark_color: uniform(#x0B1220)
+            pixel: fn() {
+                let sdf = Sdf2d.viewport(self.pos * self.rect_size)
+                let c = self.rect_size * vec2(0.5, 0.5)
+                sdf.move_to(c.x - 6.0, c.y - 3.0)
+                sdf.line_to(c.x, c.y + 3.0)
+                sdf.line_to(c.x + 6.0, c.y - 3.0)
+                sdf.stroke_keep(#xFFFFFFB0, 5.0)
+                sdf.stroke(self.mark_color, 2.2)
+                return sdf.result
+            }
+        }
+        draw_open +: {
+            mark_color: uniform(#x0B1220)
+            pixel: fn() {
+                let sdf = Sdf2d.viewport(self.pos * self.rect_size)
+                let c = self.rect_size * vec2(0.5, 0.5)
+                sdf.move_to(c.x - 6.0, c.y + 3.0)
+                sdf.line_to(c.x, c.y - 3.0)
+                sdf.line_to(c.x + 6.0, c.y + 3.0)
+                sdf.stroke_keep(#xFFFFFFB0, 5.0)
+                sdf.stroke(self.mark_color, 2.2)
+                return sdf.result
+            }
+        }
+    }
     mod.widgets.SuggestListBase = #(SuggestList::register_widget(vm))
     mod.widgets.SuggestList = set_type_default() do mod.widgets.SuggestListBase{
         width: Fill height: Fit
@@ -3566,7 +3601,6 @@ script_mod! {
                                         rail_books_icon := Image{
                                             width: 22 height: 22
                                             fit: ImageFit.Stretch
-                                            src: crate_resource("self:resources/nav/books.webp")
                                         }
                                     }
                                 }
@@ -3582,7 +3616,6 @@ script_mod! {
                                         rail_sell_icon := Image{
                                             width: 22 height: 22
                                             fit: ImageFit.Stretch
-                                            src: crate_resource("self:resources/nav/sell.webp")
                                         }
                                     }
                                 }
@@ -3598,7 +3631,6 @@ script_mod! {
                                         rail_buy_icon := Image{
                                             width: 22 height: 22
                                             fit: ImageFit.Stretch
-                                            src: crate_resource("self:resources/nav/buy.webp")
                                         }
                                     }
                                 }
@@ -3614,7 +3646,6 @@ script_mod! {
                                         rail_rates_icon := Image{
                                             width: 22 height: 22
                                             fit: ImageFit.Stretch
-                                            src: crate_resource("self:resources/nav/rates.webp")
                                         }
                                     }
                                 }
@@ -3630,7 +3661,6 @@ script_mod! {
                                         rail_ops_icon := Image{
                                             width: 22 height: 22
                                             fit: ImageFit.Stretch
-                                            src: crate_resource("self:resources/nav/ops.webp")
                                         }
                                     }
                                 }
@@ -3646,7 +3676,6 @@ script_mod! {
                                         rail_cod_icon := Image{
                                             width: 22 height: 22
                                             fit: ImageFit.Stretch
-                                            src: crate_resource("self:resources/nav/cod.webp")
                                         }
                                     }
                                 }
@@ -3662,7 +3691,6 @@ script_mod! {
                                         rail_riders_icon := Image{
                                             width: 22 height: 22
                                             fit: ImageFit.Stretch
-                                            src: crate_resource("self:resources/nav/riders.webp")
                                         }
                                     }
                                 }
@@ -3678,7 +3706,6 @@ script_mod! {
                                         rail_sales_icon := Image{
                                             width: 22 height: 22
                                             fit: ImageFit.Stretch
-                                            src: crate_resource("self:resources/nav/sales.webp")
                                         }
                                     }
                                 }
@@ -3694,7 +3721,6 @@ script_mod! {
                                         rail_day_close_icon := Image{
                                             width: 22 height: 22
                                             fit: ImageFit.Stretch
-                                            src: crate_resource("self:resources/nav/day_close.webp")
                                         }
                                     }
                                 }
@@ -3710,7 +3736,6 @@ script_mod! {
                                         rail_reports_icon := Image{
                                             width: 22 height: 22
                                             fit: ImageFit.Stretch
-                                            src: crate_resource("self:resources/nav/reports.webp")
                                         }
                                     }
                                 }
@@ -3726,7 +3751,6 @@ script_mod! {
                                         rail_inventory_icon := Image{
                                             width: 22 height: 22
                                             fit: ImageFit.Stretch
-                                            src: crate_resource("self:resources/nav/inventory.webp")
                                         }
                                     }
                                 }
@@ -3742,7 +3766,6 @@ script_mod! {
                                         rail_branches_icon := Image{
                                             width: 22 height: 22
                                             fit: ImageFit.Stretch
-                                            src: crate_resource("self:resources/nav/branches.webp")
                                         }
                                     }
                                 }
@@ -3758,7 +3781,6 @@ script_mod! {
                                         rail_credit_icon := Image{
                                             width: 22 height: 22
                                             fit: ImageFit.Stretch
-                                            src: crate_resource("self:resources/nav/credit.webp")
                                         }
                                     }
                                 }
@@ -3774,7 +3796,6 @@ script_mod! {
                                         rail_team_icon := Image{
                                             width: 22 height: 22
                                             fit: ImageFit.Stretch
-                                            src: crate_resource("self:resources/nav/team.webp")
                                         }
                                     }
                                 }
@@ -3790,7 +3811,6 @@ script_mod! {
                                         rail_settings_icon := Image{
                                             width: 22 height: 22
                                             fit: ImageFit.Stretch
-                                            src: crate_resource("self:resources/nav/settings.webp")
                                         }
                                     }
                                 }
@@ -3806,7 +3826,183 @@ script_mod! {
                                         rail_lock_icon := Image{
                                             width: 22 height: 22
                                             fit: ImageFit.Stretch
-                                            src: crate_resource("self:resources/nav/lock.webp")
+                                        }
+                                    }
+                                }
+                                // More slots: Settings sections are nav items too (2026-11-15).
+                                rail_x16_slot := View{
+                                    visible: false
+                                    width: Fill height: Fit
+                                    flow: Overlay
+                                    rail_x16 := TabBtn{text: ""}
+                                    rail_x16_on := TabBtnActive{text: "" visible: false}
+                                    View{
+                                        width: Fit height: 40
+                                        align: Align{x: 0.0 y: 0.5}
+                                        padding: Inset{left: 10. right: 0. top: 0. bottom: 0.}
+                                        rail_x16_icon := Image{
+                                            width: 22 height: 22
+                                            fit: ImageFit.Stretch
+                                        }
+                                    }
+                                }
+                                rail_x17_slot := View{
+                                    visible: false
+                                    width: Fill height: Fit
+                                    flow: Overlay
+                                    rail_x17 := TabBtn{text: ""}
+                                    rail_x17_on := TabBtnActive{text: "" visible: false}
+                                    View{
+                                        width: Fit height: 40
+                                        align: Align{x: 0.0 y: 0.5}
+                                        padding: Inset{left: 10. right: 0. top: 0. bottom: 0.}
+                                        rail_x17_icon := Image{
+                                            width: 22 height: 22
+                                            fit: ImageFit.Stretch
+                                        }
+                                    }
+                                }
+                                rail_x18_slot := View{
+                                    visible: false
+                                    width: Fill height: Fit
+                                    flow: Overlay
+                                    rail_x18 := TabBtn{text: ""}
+                                    rail_x18_on := TabBtnActive{text: "" visible: false}
+                                    View{
+                                        width: Fit height: 40
+                                        align: Align{x: 0.0 y: 0.5}
+                                        padding: Inset{left: 10. right: 0. top: 0. bottom: 0.}
+                                        rail_x18_icon := Image{
+                                            width: 22 height: 22
+                                            fit: ImageFit.Stretch
+                                        }
+                                    }
+                                }
+                                rail_x19_slot := View{
+                                    visible: false
+                                    width: Fill height: Fit
+                                    flow: Overlay
+                                    rail_x19 := TabBtn{text: ""}
+                                    rail_x19_on := TabBtnActive{text: "" visible: false}
+                                    View{
+                                        width: Fit height: 40
+                                        align: Align{x: 0.0 y: 0.5}
+                                        padding: Inset{left: 10. right: 0. top: 0. bottom: 0.}
+                                        rail_x19_icon := Image{
+                                            width: 22 height: 22
+                                            fit: ImageFit.Stretch
+                                        }
+                                    }
+                                }
+                                rail_x20_slot := View{
+                                    visible: false
+                                    width: Fill height: Fit
+                                    flow: Overlay
+                                    rail_x20 := TabBtn{text: ""}
+                                    rail_x20_on := TabBtnActive{text: "" visible: false}
+                                    View{
+                                        width: Fit height: 40
+                                        align: Align{x: 0.0 y: 0.5}
+                                        padding: Inset{left: 10. right: 0. top: 0. bottom: 0.}
+                                        rail_x20_icon := Image{
+                                            width: 22 height: 22
+                                            fit: ImageFit.Stretch
+                                        }
+                                    }
+                                }
+                                rail_x21_slot := View{
+                                    visible: false
+                                    width: Fill height: Fit
+                                    flow: Overlay
+                                    rail_x21 := TabBtn{text: ""}
+                                    rail_x21_on := TabBtnActive{text: "" visible: false}
+                                    View{
+                                        width: Fit height: 40
+                                        align: Align{x: 0.0 y: 0.5}
+                                        padding: Inset{left: 10. right: 0. top: 0. bottom: 0.}
+                                        rail_x21_icon := Image{
+                                            width: 22 height: 22
+                                            fit: ImageFit.Stretch
+                                        }
+                                    }
+                                }
+                                rail_x22_slot := View{
+                                    visible: false
+                                    width: Fill height: Fit
+                                    flow: Overlay
+                                    rail_x22 := TabBtn{text: ""}
+                                    rail_x22_on := TabBtnActive{text: "" visible: false}
+                                    View{
+                                        width: Fit height: 40
+                                        align: Align{x: 0.0 y: 0.5}
+                                        padding: Inset{left: 10. right: 0. top: 0. bottom: 0.}
+                                        rail_x22_icon := Image{
+                                            width: 22 height: 22
+                                            fit: ImageFit.Stretch
+                                        }
+                                    }
+                                }
+                                rail_x23_slot := View{
+                                    visible: false
+                                    width: Fill height: Fit
+                                    flow: Overlay
+                                    rail_x23 := TabBtn{text: ""}
+                                    rail_x23_on := TabBtnActive{text: "" visible: false}
+                                    View{
+                                        width: Fit height: 40
+                                        align: Align{x: 0.0 y: 0.5}
+                                        padding: Inset{left: 10. right: 0. top: 0. bottom: 0.}
+                                        rail_x23_icon := Image{
+                                            width: 22 height: 22
+                                            fit: ImageFit.Stretch
+                                        }
+                                    }
+                                }
+                                rail_x24_slot := View{
+                                    visible: false
+                                    width: Fill height: Fit
+                                    flow: Overlay
+                                    rail_x24 := TabBtn{text: ""}
+                                    rail_x24_on := TabBtnActive{text: "" visible: false}
+                                    View{
+                                        width: Fit height: 40
+                                        align: Align{x: 0.0 y: 0.5}
+                                        padding: Inset{left: 10. right: 0. top: 0. bottom: 0.}
+                                        rail_x24_icon := Image{
+                                            width: 22 height: 22
+                                            fit: ImageFit.Stretch
+                                        }
+                                    }
+                                }
+                                rail_x25_slot := View{
+                                    visible: false
+                                    width: Fill height: Fit
+                                    flow: Overlay
+                                    rail_x25 := TabBtn{text: ""}
+                                    rail_x25_on := TabBtnActive{text: "" visible: false}
+                                    View{
+                                        width: Fit height: 40
+                                        align: Align{x: 0.0 y: 0.5}
+                                        padding: Inset{left: 10. right: 0. top: 0. bottom: 0.}
+                                        rail_x25_icon := Image{
+                                            width: 22 height: 22
+                                            fit: ImageFit.Stretch
+                                        }
+                                    }
+                                }
+                                rail_x26_slot := View{
+                                    visible: false
+                                    width: Fill height: Fit
+                                    flow: Overlay
+                                    rail_x26 := TabBtn{text: ""}
+                                    rail_x26_on := TabBtnActive{text: "" visible: false}
+                                    View{
+                                        width: Fit height: 40
+                                        align: Align{x: 0.0 y: 0.5}
+                                        padding: Inset{left: 10. right: 0. top: 0. bottom: 0.}
+                                        rail_x26_icon := Image{
+                                            width: 22 height: 22
+                                            fit: ImageFit.Stretch
                                         }
                                     }
                                 }
@@ -4388,7 +4584,7 @@ script_mod! {
                                     font_size: 22.
                                 }
                                 onboard_status := WrapLabel{
-                                    body: "Name this counter if you want, then Start fresh or Bring my book."
+                                    body: ""
                                     font_color: #x3A4554
                                     font_size: 13.
                                 }
@@ -4426,6 +4622,8 @@ script_mod! {
                                             body: " "
                                             font_color: #x3A4554
                                             font_size: 12.
+                                            // The logo is shown beside it — a line restating it is cluster text.
+                                            visible: false
                                         }
                                     }
                                 }
@@ -4477,9 +4675,10 @@ script_mod! {
                                     flow: Down spacing: 8
                                     visible: false
                                     h_fresh_selected := WrapLabel{
-                                        body: "Fresh selected — catalogue stays empty. Tap Done when ready."
+                                        body: ""
                                         font_color: #x3A4554
                                         font_size: 12.
+                                        visible: false
                                     }
                                 }
                                 onboard_book_panel := View{
@@ -4925,12 +5124,14 @@ script_mod! {
                                         tip: "Pick a party to fill, or leave blank for walk-in. Needed for home pickup and RTO."
                                     }
                                 }
-                                booking_origin_name_input := FieldInput{empty_text: "Sender name"}
+                                mod.widgets.ComboField{field: "booking_origin"
+                                    booking_origin_name_input := FieldInput{empty_text: "Sender name"}
+                                }
                                 booking_origin_suggest := mod.widgets.SuggestList{field: "booking_origin"}
                                 booking_origin_phone_input := FieldInput{empty_text: "Sender phone"}
                                 booking_origin_address_input := FieldInput{empty_text: "Pickup / origin address"}
                                 booking_consignor_hint := WrapLabel{
-                                    body: "Pick a party to fill, or leave blank for walk-in. Needed for home pickup and RTO."
+                                    body: ""
                                     font_color: #x3A4554
                                     font_size: 11.
                                     visible: false
@@ -4952,9 +5153,13 @@ script_mod! {
                                 booking_consignee_input := FieldInput{empty_text: "Receiver name"}
                                 booking_consignee_phone_input := FieldInput{empty_text: "Receiver phone"}
                                 booking_consignee_address_input := FieldInput{empty_text: "Delivery address"}
-                                booking_destination_input := FieldInput{empty_text: "Destination city / zone"}
+                                mod.widgets.ComboField{field: "booking_destination"
+                                    booking_destination_input := FieldInput{empty_text: "Destination city / zone"}
+                                }
                                 booking_destination_suggest := mod.widgets.SuggestList{field: "booking_destination"}
-                                booking_zone_input := FieldInput{empty_text: "Zone (name from Rates)"}
+                                mod.widgets.ComboField{field: "booking_zone"
+                                    booking_zone_input := FieldInput{empty_text: "Zone (name from Rates)"}
+                                }
                                 booking_zone_suggest := mod.widgets.SuggestList{field: "booking_zone"}
                                 booking_pincode_label := WrapLabel{
                                     width: Fit
@@ -4982,7 +5187,7 @@ script_mod! {
                                     }
                                 }
                                 booking_scope_hint := WrapLabel{
-                                    body: "Volumetric ÷5000 (domestic) — tap International for ÷6000 air"
+                                    body: ""
                                     font_color: #x3A4554
                                     font_size: 11.
                                     visible: false
@@ -5067,7 +5272,9 @@ script_mod! {
                                         font_color: #x0B1220
                                         font_size: 12.
                                     }
-                                    booking_carrier_pick_input := FieldInput{empty_text: "Carrier for cost (from compare)"}
+                                    mod.widgets.ComboField{field: "booking_carrier"
+                                        booking_carrier_pick_input := FieldInput{empty_text: "Carrier for cost (from compare)"}
+                                    }
                                     booking_carrier_suggest := mod.widgets.SuggestList{field: "booking_carrier"}
                                     booking_apply_carrier_cost := RowSecondaryBtn{text: "Use carrier cost"}
                                     FormFieldRow{
@@ -5113,7 +5320,7 @@ script_mod! {
                                 }
                                 next_booking_btn := RowPrimaryBtn{text: "Next booking" visible: false}
                                 empty_catalog := WrapLabel{
-                                    body: "No rates yet. Open Rates & services, add one (name + price, unit kg), then Booking."
+                                    body: ""
                                     font_color: #x0B1220
                                     font_size: 14.
                                 }
@@ -5177,7 +5384,7 @@ script_mod! {
                                     draw_bg.border_color: #x4A5568
                                     cart_list := mod.widgets.CartList{}
                                     cart_empty_hint := WrapLabel{
-                                        body: "Desk empty — set destination & weight, tap ADD on a rate, then pay."
+                                        body: ""
                                         font_color: #x3A4554
                                         font_size: 12.
                                     }
@@ -5262,7 +5469,7 @@ script_mod! {
 
                                     // Amounts only — full bill in one field, or mix that adds up.
                                     h_mix_type_hint_moklanjo := WrapLabel{
-                                        body: "Type how much in each (cash / UPI / card / credit). Must add up to the bill. Credit needs a customer above."
+                                        body: ""
                                         font_color: #x3A4554
                                         font_size: 11.
                                         visible: false
@@ -5304,7 +5511,7 @@ script_mod! {
                                 }
 
                                 cart_round_hint := WrapLabel{
-                                    body: "Rounded starts equal to Applied. Edit only to round the bill."
+                                    body: ""
                                     font_color: #x0B1220
                                     font_size: 12.
                                     visible: false
@@ -5314,8 +5521,10 @@ script_mod! {
                                     font_color: #x0B1220
                                     font_size: 13.
                                 }
-                                customer_name_input := FieldInput{
-                                    empty_text: "Customer name"
+                                mod.widgets.ComboField{field: "customer_name"
+                                    customer_name_input := FieldInput{
+                                        empty_text: "Customer name"
+                                    }
                                 }
                                 customer_name_suggest := mod.widgets.SuggestList{field: "customer_name"}
                                 customer_use := NavBtn{text: "Add / use this name"}
@@ -5354,7 +5563,9 @@ script_mod! {
                                 }
                                 FormFieldRow{
                                     menu_price_input := FieldInput{empty_text: "Price"}
-                                    menu_unit_input := FieldInput{empty_text: "Unit (kg or blank)"}
+                                    mod.widgets.ComboField{field: "menu_unit"
+                                        menu_unit_input := FieldInput{empty_text: "Unit (kg or blank)"}
+                                    }
                                 }
                                 menu_unit_suggest := mod.widgets.SuggestList{field: "menu_unit"}
                                 FormFieldRow{
@@ -5363,20 +5574,30 @@ script_mod! {
                                 }
                                 FormFieldRow{
                                     menu_extra_kg_input := FieldInput{empty_text: "Extra / kg"}
-                                    menu_zone_input := FieldInput{empty_text: "Zone name"}
+                                    mod.widgets.ComboField{field: "menu_zone"
+                                        menu_zone_input := FieldInput{empty_text: "Zone name"}
+                                    }
                                 }
                                 menu_zone_suggest := mod.widgets.SuggestList{field: "menu_zone"}
                                 FormFieldRow{
-                                    menu_carrier_input := FieldInput{empty_text: "Carrier (blank = our sell rate)"}
-                                    menu_party_input := FieldInput{empty_text: "Party (blank = all customers)"}
+                                    mod.widgets.ComboField{field: "menu_carrier"
+                                        menu_carrier_input := FieldInput{empty_text: "Carrier (blank = our sell rate)"}
+                                    }
+                                    mod.widgets.ComboField{field: "menu_party"
+                                        menu_party_input := FieldInput{empty_text: "Party (blank = all customers)"}
+                                    }
                                 }
                                 menu_carrier_suggest := mod.widgets.SuggestList{field: "menu_carrier"}
                                 menu_party_suggest := mod.widgets.SuggestList{field: "menu_party"}
-                                menu_tax_input := FieldInput{
-                                    empty_text: "Tax rate name or % — Standard, Reduced, 0, 5, 12, 18, 20"
+                                mod.widgets.ComboField{field: "menu_tax"
+                                    menu_tax_input := FieldInput{
+                                        empty_text: "Tax rate name or % — Standard, Reduced, 0, 5, 12, 18, 20"
+                                    }
                                 }
                                 menu_tax_suggest := mod.widgets.SuggestList{field: "menu_tax"}
-                                menu_category_input := FieldInput{empty_text: "Category (optional, created if new)"}
+                                mod.widgets.ComboField{field: "menu_category"
+                                    menu_category_input := FieldInput{empty_text: "Category (optional, created if new)"}
+                                }
                                 menu_category_suggest := mod.widgets.SuggestList{field: "menu_category"}
                                 menu_modifiers_input := FieldInput{empty_text: "Options (optional) — Large=20, Gift wrap=10"}
                                 View{
@@ -5437,11 +5658,15 @@ script_mod! {
                                     tip: "Money out: goods received (purchase) or running costs (expense). Same books as Booking."
                                 }
                                 h_goods_received := WrapLabel{body: "Goods received" font_color: #x0B1220 font_size: 15.}
-                                buy_item_input := FieldInput{empty_text: "Item name"}
+                                mod.widgets.ComboField{field: "buy_item"
+                                    buy_item_input := FieldInput{empty_text: "Item name"}
+                                }
                                 buy_item_suggest := mod.widgets.SuggestList{field: "buy_item"}
                                 buy_qty_input := FieldInput{empty_text: "Qty (e.g. 1.5 for kg)"}
                                 buy_cost_input := FieldInput{empty_text: "Unit cost"}
-                                buy_supplier_input := FieldInput{empty_text: "Supplier name (or party)"}
+                                mod.widgets.ComboField{field: "buy_supplier"
+                                    buy_supplier_input := FieldInput{empty_text: "Supplier name (or party)"}
+                                }
                                 buy_supplier_suggest := mod.widgets.SuggestList{field: "buy_supplier"}
                                 h_buy_party_kind := Label{
                                     text: "New party kind"
@@ -5619,7 +5844,7 @@ script_mod! {
                                     }
                                 }
                                 amend_round_hint := WrapLabel{
-                                    body: "Rounded Total starts equal to Applied Total. Edit only to round the bill."
+                                    body: ""
                                     font_color: #x0B1220
                                     font_size: 12.
                                     visible: false
@@ -5692,12 +5917,18 @@ script_mod! {
                                     credit_add_phone := FieldInput{empty_text: "Phone"}
                                 }
                                 FormFieldRow{
-                                    party_country_input := FieldInput{empty_text: "Country"}
-                                    party_state_input := FieldInput{empty_text: "State / region"}
+                                    mod.widgets.ComboField{field: "party_country"
+                                        party_country_input := FieldInput{empty_text: "Country"}
+                                    }
+                                    mod.widgets.ComboField{field: "party_state"
+                                        party_state_input := FieldInput{empty_text: "State / region"}
+                                    }
                                 }
                                 party_country_suggest := mod.widgets.SuggestList{field: "party_country"}
                                 party_state_suggest := mod.widgets.SuggestList{field: "party_state"}
-                                party_pincode_input := FieldInput{empty_text: "PIN / ZIP / postcode"}
+                                mod.widgets.ComboField{field: "party_pincode"
+                                    party_pincode_input := FieldInput{empty_text: "PIN / ZIP / postcode"}
+                                }
                                 party_pincode_suggest := mod.widgets.SuggestList{field: "party_pincode"}
                                 credit_add_address := FieldInput{empty_text: "Street / area address"}
                                 // Optional logo — same pick/clear pattern as Rates photos.
@@ -5786,7 +6017,9 @@ script_mod! {
                                 h_credit_limit_heading := WrapLabel{body: "Credit limit" font_color: #x0B1220 font_size: 15.}
                                 FormFieldRow{
                                     credit_limit_input := FieldInput{empty_text: "Credit limit (0 = none)"}
-                                    credit_limit_party := FieldInput{empty_text: "Party name (or use selected)"}
+                                    mod.widgets.ComboField{field: "credit_party"
+                                        credit_limit_party := FieldInput{empty_text: "Party name (or use selected)"}
+                                    }
                                 }
                                 credit_party_suggest := mod.widgets.SuggestList{field: "credit_party"}
                                 ActionStack{
@@ -5896,11 +6129,13 @@ script_mod! {
                                 staff_add_cashier := StackPrimaryBtn{text: "Add staff"}
                                 }
                                 FormCard{
-                                team_pick_input := FieldInput{empty_text: "Staff to edit — name, username, or pick"}
+                                mod.widgets.ComboField{field: "team_pick"
+                                    team_pick_input := FieldInput{empty_text: "Staff to edit — name, username, or pick"}
+                                }
                                 team_pick_suggest := mod.widgets.SuggestList{field: "team_pick"}
                                 team_pick_btn := NavBtn{text: "Select this staff" visible: false}
                                 team_pick_hint := WrapLabel{
-                                    body: "Pick who to edit — screens and rights appear for that person only."
+                                    body: ""
                                     font_color: #x3A4554
                                     font_size: 12.
                                 }
@@ -6046,152 +6281,17 @@ script_mod! {
                                     settings_help := InfoHelp{
                                         tip: "Follow this device’s language, or pick one yourself."
                                     }
-                                    ActionStack{
-                                        settings_hub_language_slot := View{
-                                            width: Fill height: Fit
-                                            flow: Overlay
-                                            settings_hub_language := HubDestBtn{text: "Language & currency"}
-                                            View{
-                                                width: Fill height: Fill
-                                                flow: Right
-                                                align: Align{x: 0.0 y: 0.5}
-                                                padding: Inset{left: 12. right: 0. top: 0. bottom: 0.}
-                                                SettingsHubMark{text: "\u{f1ab}"}
-                                            }
-                                        }
-                                        settings_hub_country_slot := View{
-                                            width: Fill height: Fit
-                                            flow: Overlay
-                                            settings_hub_country := HubDestBtn{text: "Country & tax"}
-                                            View{
-                                                width: Fill height: Fill
-                                                flow: Right
-                                                align: Align{x: 0.0 y: 0.5}
-                                                padding: Inset{left: 12. right: 0. top: 0. bottom: 0.}
-                                                SettingsHubMark{text: "\u{f0ac}"}
-                                            }
-                                        }
-                                        settings_hub_brand_slot := View{
-                                            width: Fill height: Fit
-                                            flow: Overlay
-                                            settings_hub_brand := HubDestBtn{text: "Your brand (in-app)"}
-                                            View{
-                                                width: Fill height: Fill
-                                                flow: Right
-                                                align: Align{x: 0.0 y: 0.5}
-                                                padding: Inset{left: 12. right: 0. top: 0. bottom: 0.}
-                                                SettingsHubMark{text: "\u{f1fc}"}
-                                            }
-                                        }
-                                        settings_hub_printers_slot := View{
-                                            width: Fill height: Fit
-                                            flow: Overlay
-                                            settings_hub_printers := HubDestBtn{text: "Printers on this device"}
-                                            View{
-                                                width: Fill height: Fill
-                                                flow: Right
-                                                align: Align{x: 0.0 y: 0.5}
-                                                padding: Inset{left: 12. right: 0. top: 0. bottom: 0.}
-                                                SettingsHubMark{text: "\u{f02f}"}
-                                            }
-                                        }
-                                        settings_hub_awb_slot := View{
-                                            width: Fill height: Fit
-                                            flow: Overlay
-                                            settings_hub_awb := HubDestBtn{text: "Carrier AWB number pools"}
-                                            View{
-                                                width: Fill height: Fill
-                                                flow: Right
-                                                align: Align{x: 0.0 y: 0.5}
-                                                padding: Inset{left: 12. right: 0. top: 0. bottom: 0.}
-                                                SettingsHubMark{text: "\u{f02a}"}
-                                            }
-                                        }
-                                        settings_hub_measures_slot := View{
-                                            width: Fill height: Fit
-                                            flow: Overlay
-                                            settings_hub_measures := HubDestBtn{text: "Booking measures"}
-                                            View{
-                                                width: Fill height: Fill
-                                                flow: Right
-                                                align: Align{x: 0.0 y: 0.5}
-                                                padding: Inset{left: 12. right: 0. top: 0. bottom: 0.}
-                                                SettingsHubMark{text: "\u{f5cd}"}
-                                            }
-                                        }
-                                        settings_hub_units_slot := View{
-                                            width: Fill height: Fit
-                                            flow: Overlay
-                                            settings_hub_units := HubDestBtn{text: "Units"}
-                                            View{
-                                                width: Fill height: Fill
-                                                flow: Right
-                                                align: Align{x: 0.0 y: 0.5}
-                                                padding: Inset{left: 12. right: 0. top: 0. bottom: 0.}
-                                                SettingsHubMark{text: "\u{f545}"}
-                                            }
-                                        }
-                                        settings_hub_devices_slot := View{
-                                            width: Fill height: Fit
-                                            flow: Overlay
-                                            settings_hub_devices := HubDestBtn{text: "Extra tills & branches"}
-                                            View{
-                                                width: Fill height: Fill
-                                                flow: Right
-                                                align: Align{x: 0.0 y: 0.5}
-                                                padding: Inset{left: 12. right: 0. top: 0. bottom: 0.}
-                                                SettingsHubMark{text: "\u{f6ff}"}
-                                            }
-                                        }
-                                        settings_hub_alerts_slot := View{
-                                            width: Fill height: Fit
-                                            flow: Overlay
-                                            settings_hub_alerts := HubDestBtn{text: "Alerts"}
-                                            View{
-                                                width: Fill height: Fill
-                                                flow: Right
-                                                align: Align{x: 0.0 y: 0.5}
-                                                padding: Inset{left: 12. right: 0. top: 0. bottom: 0.}
-                                                SettingsHubMark{text: "\u{f0f3}"}
-                                            }
-                                        }
-                                        settings_hub_backup_slot := View{
-                                            width: Fill height: Fit
-                                            flow: Overlay
-                                            settings_hub_backup := HubDestBtn{text: "Backup"}
-                                            View{
-                                                width: Fill height: Fill
-                                                flow: Right
-                                                align: Align{x: 0.0 y: 0.5}
-                                                padding: Inset{left: 12. right: 0. top: 0. bottom: 0.}
-                                                SettingsHubMark{text: "\u{f1c0}"}
-                                            }
-                                        }
-                                        settings_hub_diag_slot := View{
-                                            width: Fill height: Fit
-                                            flow: Overlay
-                                            settings_hub_diag := HubDestBtn{text: "Diagnostics"}
-                                            View{
-                                                width: Fill height: Fill
-                                                flow: Right
-                                                align: Align{x: 0.0 y: 0.5}
-                                                padding: Inset{left: 12. right: 0. top: 0. bottom: 0.}
-                                                SettingsHubMark{text: "\u{f0f1}"}
-                                            }
-                                        }
-                                        sidebar_settings_open_slot := View{
-                                            width: Fill height: Fit
-                                            flow: Overlay
-                                            sidebar_settings_open := HubDestBtn{text: "Sidebar settings"}
-                                            View{
-                                                width: Fill height: Fill
-                                                flow: Right
-                                                align: Align{x: 0.0 y: 0.5}
-                                                padding: Inset{left: 12. right: 0. top: 0. bottom: 0.}
-                                                SettingsHubMark{text: "\u{f0c9}"}
-                                            }
-                                        }
+                                    // One list of nav items (Khaynjo owner, 2026-11-15): every Settings
+                                    // section and every screen, same row as the rail's — tap opens, ↑↓
+                                    // orders, the switch puts it on the rail / bottom bar. No Sidebar heading.
+                                    settings_nav_bulk := View{
+                                        width: Fill height: Fit
+                                        flow: Right
+                                        spacing: 8
+                                        sidebar_enable_all := NavBtn{text: "Enable All"}
+                                        sidebar_disable_all := NavBtn{text: "Disable All"}
                                     }
+                                    sidebar_nav_list := mod.widgets.SidebarNavList{}
                                 }
                                 settings_panel_language := View{
                                     width: Fill height: Fit
@@ -6249,8 +6349,10 @@ script_mod! {
                                     }
                                     FormCard{
                                     fiscal_label := mod.widgets.ReportText{}
-                                    country_code_input := FieldInput{
-                                        empty_text: "Country code e.g. IN, GB, US, AE, BR"
+                                    mod.widgets.ComboField{field: "country"
+                                        country_code_input := FieldInput{
+                                            empty_text: "Country code e.g. IN, GB, US, AE, BR"
+                                        }
                                     }
                                     country_suggest := mod.widgets.SuggestList{field: "country"}
                                     ActionStack{
@@ -6285,17 +6387,15 @@ script_mod! {
                                     fiscal_save := StackPrimaryBtn{text: "Save business id"}
                                     }
                                     FormCard{
-                                    h_datetime_appearance := WrapLabel{
-                                        width: Fill
-                                        body: "Date & time appearance"
-                                        font_color: #x0B1220
-                                        font_size: 15.
-                                    }
-                                    datetime_appearance_help := WrapLabel{
-                                        width: Fill
-                                        body: "Books keep year-first RFC3339 inside. These only change how dates and clocks look on receipts, labels, reports, and the screen."
-                                        font_color: #x3A4554
-                                        font_size: 12.
+                                    // Title + ℹ (the explanation was a grey paragraph — cluster text, 2026-11-14).
+                                    View{
+                                        width: Fill height: Fit
+                                        flow: Right spacing: 0
+                                        align: Align{y: 0.5}
+                                        h_datetime_appearance := WrapLabel{width: Fit body: "Date & time appearance" font_color: #x0B1220 font_size: 15.}
+                                        datetime_appearance_help := InfoHelp{
+                                            tip: "Books keep year-first RFC3339 inside. These only change how dates and clocks look on receipts, labels, reports, and the screen."
+                                        }
                                     }
                                     datetime_example_label := WrapLabel{
                                         width: Fill
@@ -6445,7 +6545,9 @@ script_mod! {
                                         width: Fill height: Fit
                                         visible: false
                                     printer_label_input := FieldInput{empty_text: "Name (e.g. Desk)"}
-                                    printer_target_input := FieldInput{empty_text: "host:9100 · bt:MAC · usb:VID:PID · system name"}
+                                    mod.widgets.ComboField{field: "printer_target"
+                                        printer_target_input := FieldInput{empty_text: "host:9100 · bt:MAC · usb:VID:PID · system name"}
+                                    }
                                     printer_target_suggest := mod.widgets.SuggestList{field: "printer_target"}
                                     h_printer_mode := WrapLabel{
                                         width: Fill
@@ -6543,9 +6645,10 @@ script_mod! {
                                     }
                                     h_job_size := WrapLabel{body: "Font size" font_color: #x0B1220 font_size: 14.}
                                     job_size_input := FieldInput{empty_text: "e.g. 18, 20, 26…"}
-                                    job_format_save := StackPrimaryBtn{text: "Save format"}
                                     job_format_test := StackSecondaryBtn{text: "Test print"}
-                                    route_add_printer_input := FieldInput{empty_text: "Add printer to this route"}
+                                    mod.widgets.ComboField{field: "route_add_printer"
+                                        route_add_printer_input := FieldInput{empty_text: "Add printer to this route"}
+                                    }
                                     route_add_printer_suggest := mod.widgets.SuggestList{field: "route_add_printer"}
                                     ActionStack{
                                         route_add := RowSecondaryBtn{text: "Add to route"}
@@ -6567,7 +6670,9 @@ script_mod! {
                                     FormCard{
                                     h_awb_pools := WrapLabel{body: "Carrier AWB number pools" font_color: #x0B1220 font_size: 16.}
                                     awb_pools_label := mod.widgets.ReportText{}
-                                    awb_pool_carrier_input := FieldInput{empty_text: "Carrier party name"}
+                                    mod.widgets.ComboField{field: "awb_pool_carrier"
+                                        awb_pool_carrier_input := FieldInput{empty_text: "Carrier party name"}
+                                    }
                                     awb_pool_carrier_suggest := mod.widgets.SuggestList{field: "awb_pool_carrier"}
                                     FormFieldRow{
                                         awb_pool_start_input := FieldInput{empty_text: "Start no."}
@@ -6594,9 +6699,13 @@ script_mod! {
                                         visible: false
                                     }
                                     measure_label := mod.widgets.ReportText{}
-                                    measure_dim_input := FieldInput{empty_text: "Dimension unit code (cm)"}
+                                    mod.widgets.ComboField{field: "measure_dim"
+                                        measure_dim_input := FieldInput{empty_text: "Dimension unit code (cm)"}
+                                    }
                                     measure_dim_suggest := mod.widgets.SuggestList{field: "measure_dim"}
-                                    measure_weight_input := FieldInput{empty_text: "Weight unit code (kg)"}
+                                    mod.widgets.ComboField{field: "measure_weight"
+                                        measure_weight_input := FieldInput{empty_text: "Weight unit code (kg)"}
+                                    }
                                     measure_weight_suggest := mod.widgets.SuggestList{field: "measure_weight"}
                                     measure_divisor_input := FieldInput{empty_text: "Volumetric divisor (5000 domestic)"}
                                     measure_slab_input := FieldInput{empty_text: "Chargeable slab in kg (0.5)"}
@@ -6622,9 +6731,13 @@ script_mod! {
                                     unit_add := StackPrimaryBtn{text: "Add unit"}
                                     }
                                     FormCard{
-                                    conv_from_input := FieldInput{empty_text: "From code (bag)"}
+                                    mod.widgets.ComboField{field: "conv_from"
+                                        conv_from_input := FieldInput{empty_text: "From code (bag)"}
+                                    }
                                     conv_from_suggest := mod.widgets.SuggestList{field: "conv_from"}
-                                    conv_to_input := FieldInput{empty_text: "To code (kg)"}
+                                    mod.widgets.ComboField{field: "conv_to"
+                                        conv_to_input := FieldInput{empty_text: "To code (kg)"}
+                                    }
                                     conv_to_suggest := mod.widgets.SuggestList{field: "conv_to"}
                                     conv_factor_input := FieldInput{empty_text: "Factor (25 = 1 bag → 25 kg)"}
                                     conv_add := StackPrimaryBtn{text: "Add conversion"}
@@ -6693,12 +6806,15 @@ script_mod! {
                                     flow: Down spacing: 12
                                     visible: false
                                     FormCard{
-                                    h_alerts := WrapLabel{body: "Alerts" font_color: #x0B1220 font_size: 20.}
-                                    h_alerts_help := WrapLabel{
-                                        width: Fill
-                                        body: "How long status messages stay on screen for you (this login)."
-                                        font_color: #x3A4554
-                                        font_size: 12.
+                                    // Title + ℹ (the explanation was a grey paragraph — cluster text, 2026-11-14).
+                                    View{
+                                        width: Fill height: Fit
+                                        flow: Right spacing: 0
+                                        align: Align{y: 0.5}
+                                        h_alerts := WrapLabel{width: Fit body: "Alerts" font_color: #x0B1220 font_size: 20.}
+                                        h_alerts_help := InfoHelp{
+                                            tip: "How long status messages stay on screen for you (this login)."
+                                        }
                                     }
                                     snack_secs_input := FieldInput{empty_text: "Seconds (3–60, default 10)"}
                                     snack_secs_save := StackPrimaryBtn{text: "Save alert time"}
@@ -6730,7 +6846,7 @@ script_mod! {
                                     backup_path_label := WrapLabel{body: "" font_color: #x0B1220}
                                     h_restore_help := WrapLabel{
                                         width: Fill
-                                        body: "Restore: put restore.sqlite3 in the backups folder, then tap Restore."
+                                        body: ""
                                         font_color: #x0B1220
                                     }
                                     ActionStack{
@@ -6738,17 +6854,15 @@ script_mod! {
                                         restore_cancel := RowSecondaryBtn{text: "Cancel" visible: false}
                                         restore_progress := WrapLabel{visible: false body: "" font_color: #x0B1220 font_size: 15.}
                                     }
-                                    h_wipe_data := WrapLabel{
-                                        width: Fill
-                                        body: "Delete local data"
-                                        font_color: #x0B1220
-                                        font_size: 17.
-                                    }
-                                    wipe_data_help := WrapLabel{
-                                        width: Fill
-                                        body: "Owner only — same choices as Windows uninstall. Business records keeps rates/setup (like emergency unlock PIN). Shop setup removes the books. Confirm with Owner PIN. Team emergency PIN is separate."
-                                        font_color: #x3A4554
-                                        font_size: 12.
+                                    // Title + ℹ (the explanation was a grey paragraph — cluster text, 2026-11-14).
+                                    View{
+                                        width: Fill height: Fit
+                                        flow: Right spacing: 0
+                                        align: Align{y: 0.5}
+                                        h_wipe_data := WrapLabel{width: Fit body: "Delete local data" font_color: #x0B1220 font_size: 17.}
+                                        wipe_data_help := InfoHelp{
+                                            tip: "Owner only — same choices as Windows uninstall. Business records keeps rates/setup (like emergency unlock PIN). Shop setup removes the books. Confirm with Owner PIN. Team emergency PIN is separate."
+                                        }
                                     }
                                     View{
                                         width: Fill height: Fit
@@ -6841,29 +6955,6 @@ script_mod! {
                                     }
                                     diag_clear := NavBtn{text: "Clear diagnostic logs"}
                                 }
-                            }
-                        }
-
-                        sidebar_settings_screen := ScrollYView{
-                            width: Fill height: Fill
-                            visible: false
-                            View{
-                                width: Fill height: Fit
-                                flow: Down spacing: 12
-                                padding: Inset{left: 16. right: 16. top: 8. bottom: 120.}
-                                // Back is header_back — body Back stays hidden.
-                                sidebar_settings_back := QuietFitBtn{text: "Back" visible: false}
-                                sidebar_settings_help := InfoHelp{
-                                    tip: "Same icons as the side rail. Drag a row to reorder. Flip the switch to show or hide. Settings and Lock always stay on the bar."
-                                }
-                                View{
-                                    width: Fill height: Fit
-                                    flow: Right
-                                    spacing: 8
-                                    sidebar_enable_all := NavBtn{text: "Enable All"}
-                                    sidebar_disable_all := NavBtn{text: "Disable All"}
-                                }
-                                sidebar_nav_list := mod.widgets.SidebarNavList{}
                             }
                         }
 
@@ -6970,7 +7061,9 @@ script_mod! {
                                                 width: Fill height: Fit
                                                 flow: Right spacing: 8
                                                 align: Align{y: 0.5}
-                                                ops_carrier_input := FieldInput{empty_text: "Carrier"}
+                                                mod.widgets.ComboField{field: "ops_carrier"
+                                                    ops_carrier_input := FieldInput{empty_text: "Carrier"}
+                                                }
                                                 ops_handover_carrier := LaneBtnOn{text: "Hand to carrier"}
                                             }
                                             ops_carrier_suggest := mod.widgets.SuggestList{field: "ops_carrier"}
@@ -6978,7 +7071,9 @@ script_mod! {
                                                 width: Fill height: Fit
                                                 flow: Right spacing: 8
                                                 align: Align{y: 0.5}
-                                                ops_rider_input := FieldInput{empty_text: "Rider"}
+                                                mod.widgets.ComboField{field: "ops_rider"
+                                                    ops_rider_input := FieldInput{empty_text: "Rider"}
+                                                }
                                                 ops_dispatch_fleet := LaneBtnOn{text: "Send with rider"}
                                             }
                                             ops_rider_suggest := mod.widgets.SuggestList{field: "ops_rider"}
@@ -7058,7 +7153,9 @@ script_mod! {
                                         cod_awb_input := FieldInput{empty_text: "Scan or type AWBs"}
                                         cod_collect := LaneBtnOn{text: "Collect COD"}
                                     }
-                                    ops_party_input := FieldInput{empty_text: "Consignor"}
+                                    mod.widgets.ComboField{field: "ops_party"
+                                        ops_party_input := FieldInput{empty_text: "Consignor"}
+                                    }
                                     ops_party_suggest := mod.widgets.SuggestList{field: "ops_party"}
                                     ActionStack{
                                         ops_cod_remit := RowPrimaryBtn{text: "Pay out COD to consignor"}
@@ -7071,7 +7168,9 @@ script_mod! {
                                     flow: Down spacing: 12
                                     visible: false
                                     FormCard{
-                                        settle_rider_input := FieldInput{empty_text: "Rider"}
+                                        mod.widgets.ComboField{field: "settle_rider"
+                                            settle_rider_input := FieldInput{empty_text: "Rider"}
+                                        }
                                         settle_rider_suggest := mod.widgets.SuggestList{field: "settle_rider"}
                                         ops_rider_cod_input := FieldInput{empty_text: "COD handed in"}
                                         ops_settle_rider_cod := RowPrimaryBtn{text: "Settle rider COD"}
@@ -7209,7 +7308,9 @@ script_mod! {
                                     tip: "Type the item name (part of it is enough), a quantity, then adjust. Items that are not counted yet need Start tracking once."
                                 }
                                 inventory_label := mod.widgets.ReportText{}
-                                inv_item_input := FieldInput{empty_text: "Item name"}
+                                mod.widgets.ComboField{field: "inv_item"
+                                    inv_item_input := FieldInput{empty_text: "Item name"}
+                                }
                                 inv_item_suggest := mod.widgets.SuggestList{field: "inv_item"}
                                 inv_qty_input := FieldInput{empty_text: "Quantity"}
                                 inv_note_input := FieldInput{empty_text: "Reason / note (wastage, count, …)"}
@@ -7221,7 +7322,9 @@ script_mod! {
                                 h_goods_received_2 := WrapLabel{ width: Fit
                                                     body: "Goods received" font_color: #x0B1220 font_size: 15.}
                                 inv_cost_input := FieldInput{empty_text: "Unit cost"}
-                                inv_supplier_input := FieldInput{empty_text: "Supplier"}
+                                mod.widgets.ComboField{field: "inv_supplier"
+                                    inv_supplier_input := FieldInput{empty_text: "Supplier"}
+                                }
                                 inv_supplier_suggest := mod.widgets.SuggestList{field: "inv_supplier"}
                                 inv_purchase := NavBtn{text: "Record purchase"}
                             }
@@ -7316,6 +7419,33 @@ script_mod! {
                             draw_bg.color: #xC44E10
                             draw_bg.border_radius: 12.
                             snack_label_warn := WrapLabel{width: Fill body: "" font_color: #xffffff font_size: 13. selectable: false}
+                            // "No printer" warning: find and pick one right here
+                            // (Printers sheet).
+                            snack_find_printers := Button{
+                                visible: false
+                                text: "Find printers"
+                                width: Fit height: 36
+                                padding: Inset{left: 14. right: 14.}
+                                draw_bg +: {
+                                    color: #xffffff
+                                    color_hover: #xFDE3D3
+                                    color_down: #xF9C9AC
+                                    color_focus: #xffffff
+                                    color_2: #xffffff
+                                    color_2_hover: #xFDE3D3
+                                    color_2_down: #xF9C9AC
+                                    color_2_focus: #xffffff
+                                    border_radius: 10.
+                                    border_size: 0.
+                                }
+                                draw_text +: {
+                                    color: #x8A3208
+                                    color_hover: #x8A3208
+                                    color_down: #x8A3208
+                                    color_focus: #x8A3208
+                                    text_style +: {font_size: 13.}
+                                }
+                            }
                             snack_dismiss_warn := CloseIconBtn{
                                 draw_bg +: { mark_color: #xffffff  color: #x072058 color_hover: #x0A3A8C color_down: #x02030B color_focus: #x072058 color_2: #x072058 color_2_hover: #x0A3A8C color_2_down: #x02030B color_2_focus: #x072058 border_radius: 10. border_size: 0. }
                             }
@@ -7454,7 +7584,6 @@ script_mod! {
                                             nav_books_icon := Image{
                                                 width: 22 height: 22
                                                 fit: ImageFit.Stretch
-                                                src: crate_resource("self:resources/nav/books.webp")
                                             }
                                         }
                                     }
@@ -7470,7 +7599,6 @@ script_mod! {
                                             nav_sell_icon := Image{
                                                 width: 22 height: 22
                                                 fit: ImageFit.Stretch
-                                                src: crate_resource("self:resources/nav/sell.webp")
                                             }
                                         }
                                     }
@@ -7486,7 +7614,6 @@ script_mod! {
                                             nav_buy_icon := Image{
                                                 width: 22 height: 22
                                                 fit: ImageFit.Stretch
-                                                src: crate_resource("self:resources/nav/buy.webp")
                                             }
                                         }
                                     }
@@ -7502,7 +7629,6 @@ script_mod! {
                                             nav_rates_icon := Image{
                                                 width: 22 height: 22
                                                 fit: ImageFit.Stretch
-                                                src: crate_resource("self:resources/nav/rates.webp")
                                             }
                                         }
                                     }
@@ -7518,7 +7644,6 @@ script_mod! {
                                             nav_ops_icon := Image{
                                                 width: 22 height: 22
                                                 fit: ImageFit.Stretch
-                                                src: crate_resource("self:resources/nav/ops.webp")
                                             }
                                         }
                                     }
@@ -7534,7 +7659,6 @@ script_mod! {
                                             nav_cod_icon := Image{
                                                 width: 22 height: 22
                                                 fit: ImageFit.Stretch
-                                                src: crate_resource("self:resources/nav/cod.webp")
                                             }
                                         }
                                     }
@@ -7550,7 +7674,6 @@ script_mod! {
                                             nav_riders_icon := Image{
                                                 width: 22 height: 22
                                                 fit: ImageFit.Stretch
-                                                src: crate_resource("self:resources/nav/riders.webp")
                                             }
                                         }
                                     }
@@ -7566,7 +7689,6 @@ script_mod! {
                                             nav_sales_icon := Image{
                                                 width: 22 height: 22
                                                 fit: ImageFit.Stretch
-                                                src: crate_resource("self:resources/nav/sales.webp")
                                             }
                                         }
                                     }
@@ -7582,7 +7704,6 @@ script_mod! {
                                             nav_day_close_icon := Image{
                                                 width: 22 height: 22
                                                 fit: ImageFit.Stretch
-                                                src: crate_resource("self:resources/nav/day_close.webp")
                                             }
                                         }
                                     }
@@ -7598,7 +7719,6 @@ script_mod! {
                                             nav_reports_icon := Image{
                                                 width: 22 height: 22
                                                 fit: ImageFit.Stretch
-                                                src: crate_resource("self:resources/nav/reports.webp")
                                             }
                                         }
                                     }
@@ -7614,7 +7734,6 @@ script_mod! {
                                             nav_inventory_icon := Image{
                                                 width: 22 height: 22
                                                 fit: ImageFit.Stretch
-                                                src: crate_resource("self:resources/nav/inventory.webp")
                                             }
                                         }
                                     }
@@ -7630,7 +7749,6 @@ script_mod! {
                                             nav_branches_icon := Image{
                                                 width: 22 height: 22
                                                 fit: ImageFit.Stretch
-                                                src: crate_resource("self:resources/nav/branches.webp")
                                             }
                                         }
                                     }
@@ -7646,7 +7764,6 @@ script_mod! {
                                             nav_credit_icon := Image{
                                                 width: 22 height: 22
                                                 fit: ImageFit.Stretch
-                                                src: crate_resource("self:resources/nav/credit.webp")
                                             }
                                         }
                                     }
@@ -7662,7 +7779,6 @@ script_mod! {
                                             nav_team_icon := Image{
                                                 width: 22 height: 22
                                                 fit: ImageFit.Stretch
-                                                src: crate_resource("self:resources/nav/team.webp")
                                             }
                                         }
                                     }
@@ -7678,7 +7794,6 @@ script_mod! {
                                             nav_settings_icon := Image{
                                                 width: 22 height: 22
                                                 fit: ImageFit.Stretch
-                                                src: crate_resource("self:resources/nav/settings.webp")
                                             }
                                         }
                                     }
@@ -7694,7 +7809,183 @@ script_mod! {
                                             nav_lock_icon := Image{
                                                 width: 22 height: 22
                                                 fit: ImageFit.Stretch
-                                                src: crate_resource("self:resources/nav/lock.webp")
+                                            }
+                                        }
+                                    }
+                                    // More slots: Settings sections are nav items too (2026-11-15).
+                                    nav_x16_slot := View{
+                                        visible: false
+                                        width: Fit{min: FitBound.Abs(72.)} height: Fit
+                                        flow: Overlay
+                                        nav_x16 := NavChip{text: ""}
+                                        nav_x16_on := NavChipActive{text: "" visible: false}
+                                        View{
+                                            width: Fit height: Fill
+                                            align: Align{x: 0.0 y: 0.5}
+                                            padding: Inset{left: 10. right: 0. top: 0. bottom: 0.}
+                                            nav_x16_icon := Image{
+                                                width: 22 height: 22
+                                                fit: ImageFit.Stretch
+                                            }
+                                        }
+                                    }
+                                    nav_x17_slot := View{
+                                        visible: false
+                                        width: Fit{min: FitBound.Abs(72.)} height: Fit
+                                        flow: Overlay
+                                        nav_x17 := NavChip{text: ""}
+                                        nav_x17_on := NavChipActive{text: "" visible: false}
+                                        View{
+                                            width: Fit height: Fill
+                                            align: Align{x: 0.0 y: 0.5}
+                                            padding: Inset{left: 10. right: 0. top: 0. bottom: 0.}
+                                            nav_x17_icon := Image{
+                                                width: 22 height: 22
+                                                fit: ImageFit.Stretch
+                                            }
+                                        }
+                                    }
+                                    nav_x18_slot := View{
+                                        visible: false
+                                        width: Fit{min: FitBound.Abs(72.)} height: Fit
+                                        flow: Overlay
+                                        nav_x18 := NavChip{text: ""}
+                                        nav_x18_on := NavChipActive{text: "" visible: false}
+                                        View{
+                                            width: Fit height: Fill
+                                            align: Align{x: 0.0 y: 0.5}
+                                            padding: Inset{left: 10. right: 0. top: 0. bottom: 0.}
+                                            nav_x18_icon := Image{
+                                                width: 22 height: 22
+                                                fit: ImageFit.Stretch
+                                            }
+                                        }
+                                    }
+                                    nav_x19_slot := View{
+                                        visible: false
+                                        width: Fit{min: FitBound.Abs(72.)} height: Fit
+                                        flow: Overlay
+                                        nav_x19 := NavChip{text: ""}
+                                        nav_x19_on := NavChipActive{text: "" visible: false}
+                                        View{
+                                            width: Fit height: Fill
+                                            align: Align{x: 0.0 y: 0.5}
+                                            padding: Inset{left: 10. right: 0. top: 0. bottom: 0.}
+                                            nav_x19_icon := Image{
+                                                width: 22 height: 22
+                                                fit: ImageFit.Stretch
+                                            }
+                                        }
+                                    }
+                                    nav_x20_slot := View{
+                                        visible: false
+                                        width: Fit{min: FitBound.Abs(72.)} height: Fit
+                                        flow: Overlay
+                                        nav_x20 := NavChip{text: ""}
+                                        nav_x20_on := NavChipActive{text: "" visible: false}
+                                        View{
+                                            width: Fit height: Fill
+                                            align: Align{x: 0.0 y: 0.5}
+                                            padding: Inset{left: 10. right: 0. top: 0. bottom: 0.}
+                                            nav_x20_icon := Image{
+                                                width: 22 height: 22
+                                                fit: ImageFit.Stretch
+                                            }
+                                        }
+                                    }
+                                    nav_x21_slot := View{
+                                        visible: false
+                                        width: Fit{min: FitBound.Abs(72.)} height: Fit
+                                        flow: Overlay
+                                        nav_x21 := NavChip{text: ""}
+                                        nav_x21_on := NavChipActive{text: "" visible: false}
+                                        View{
+                                            width: Fit height: Fill
+                                            align: Align{x: 0.0 y: 0.5}
+                                            padding: Inset{left: 10. right: 0. top: 0. bottom: 0.}
+                                            nav_x21_icon := Image{
+                                                width: 22 height: 22
+                                                fit: ImageFit.Stretch
+                                            }
+                                        }
+                                    }
+                                    nav_x22_slot := View{
+                                        visible: false
+                                        width: Fit{min: FitBound.Abs(72.)} height: Fit
+                                        flow: Overlay
+                                        nav_x22 := NavChip{text: ""}
+                                        nav_x22_on := NavChipActive{text: "" visible: false}
+                                        View{
+                                            width: Fit height: Fill
+                                            align: Align{x: 0.0 y: 0.5}
+                                            padding: Inset{left: 10. right: 0. top: 0. bottom: 0.}
+                                            nav_x22_icon := Image{
+                                                width: 22 height: 22
+                                                fit: ImageFit.Stretch
+                                            }
+                                        }
+                                    }
+                                    nav_x23_slot := View{
+                                        visible: false
+                                        width: Fit{min: FitBound.Abs(72.)} height: Fit
+                                        flow: Overlay
+                                        nav_x23 := NavChip{text: ""}
+                                        nav_x23_on := NavChipActive{text: "" visible: false}
+                                        View{
+                                            width: Fit height: Fill
+                                            align: Align{x: 0.0 y: 0.5}
+                                            padding: Inset{left: 10. right: 0. top: 0. bottom: 0.}
+                                            nav_x23_icon := Image{
+                                                width: 22 height: 22
+                                                fit: ImageFit.Stretch
+                                            }
+                                        }
+                                    }
+                                    nav_x24_slot := View{
+                                        visible: false
+                                        width: Fit{min: FitBound.Abs(72.)} height: Fit
+                                        flow: Overlay
+                                        nav_x24 := NavChip{text: ""}
+                                        nav_x24_on := NavChipActive{text: "" visible: false}
+                                        View{
+                                            width: Fit height: Fill
+                                            align: Align{x: 0.0 y: 0.5}
+                                            padding: Inset{left: 10. right: 0. top: 0. bottom: 0.}
+                                            nav_x24_icon := Image{
+                                                width: 22 height: 22
+                                                fit: ImageFit.Stretch
+                                            }
+                                        }
+                                    }
+                                    nav_x25_slot := View{
+                                        visible: false
+                                        width: Fit{min: FitBound.Abs(72.)} height: Fit
+                                        flow: Overlay
+                                        nav_x25 := NavChip{text: ""}
+                                        nav_x25_on := NavChipActive{text: "" visible: false}
+                                        View{
+                                            width: Fit height: Fill
+                                            align: Align{x: 0.0 y: 0.5}
+                                            padding: Inset{left: 10. right: 0. top: 0. bottom: 0.}
+                                            nav_x25_icon := Image{
+                                                width: 22 height: 22
+                                                fit: ImageFit.Stretch
+                                            }
+                                        }
+                                    }
+                                    nav_x26_slot := View{
+                                        visible: false
+                                        width: Fit{min: FitBound.Abs(72.)} height: Fit
+                                        flow: Overlay
+                                        nav_x26 := NavChip{text: ""}
+                                        nav_x26_on := NavChipActive{text: "" visible: false}
+                                        View{
+                                            width: Fit height: Fill
+                                            align: Align{x: 0.0 y: 0.5}
+                                            padding: Inset{left: 10. right: 0. top: 0. bottom: 0.}
+                                            nav_x26_icon := Image{
+                                                width: 22 height: 22
+                                                fit: ImageFit.Stretch
                                             }
                                         }
                                     }
@@ -7754,6 +8045,63 @@ script_mod! {
                     // backdrop is overridden transparent and its content
                     // fills the window, so the ghost's abs_pos is in window
                     // coordinates and nothing else is visible.
+                    // Printers, wherever a job had no printer (owner 2026-11-14):
+                    // Find here, then tap a printer to give it the job that was
+                    // missing (receipt or AWB label) — never "go to Settings →
+                    // Printers". Opened by a "no printer" warning's button.
+                    printers_modal := Modal{
+                        content +: {
+                            width: Fill height: Fill
+                            align: Align{x: 0.5 y: 0.5}
+                            padding: Inset{left: 16. right: 16. top: 20. bottom: 20.}
+                            printers_sheet := RoundedView{
+                                width: Fill{max: 480.} height: Fit
+                                flow: Down spacing: 12
+                                padding: Inset{left: 20. right: 20. top: 18. bottom: 18.}
+                                draw_bg.color: #xF7F9FC
+                                draw_bg.border_radius: 18.
+                                View{
+                                    width: Fill height: Fit
+                                    flow: Right spacing: 0
+                                    align: Align{x: 0.0 y: 0.5}
+                                    pm_title := WrapLabel{
+                                        width: Fit
+                                        body: "Printers on this device" font_color: #x0B1220 font_size: 16.}
+                                    pm_title_help := InfoHelp{tip: " "}
+                                }
+                                ActionStack{
+                                    pm_find_btn := RowSecondaryBtn{text: "Find printers"}
+                                }
+                                // Fit + no wrap — safe to show/hide while Find runs.
+                                pm_find_cancel := QuietFitBtn{text: "Cancel" visible: false}
+                                pm_found_label := WrapLabel{
+                                    width: Fill
+                                    body: ""
+                                    font_color: #x3A4554
+                                    font_size: 12.
+                                    visible: false
+                                }
+                                pm_pick_hint := WrapLabel{
+                                    width: Fill
+                                    body: ""
+                                    font_color: #x0B1220
+                                    font_size: 14.
+                                    visible: false
+                                }
+                                // Saved printers (Find saves what it finds): tap one
+                                // to print this job on it.
+                                ActionStack{
+                                    pm_pick_0 := RowSecondaryBtn{text: "" visible: false}
+                                    pm_pick_1 := RowSecondaryBtn{text: "" visible: false}
+                                    pm_pick_2 := RowSecondaryBtn{text: "" visible: false}
+                                    pm_pick_3 := RowSecondaryBtn{text: "" visible: false}
+                                    pm_pick_4 := RowSecondaryBtn{text: "" visible: false}
+                                    pm_pick_5 := RowSecondaryBtn{text: "" visible: false}
+                                }
+                                pm_close := RowPrimaryBtn{text: "OK"}
+                            }
+                        }
+                    }
                     nav_drag_modal := Modal{
                         can_dismiss: false
                         bg_view +: {

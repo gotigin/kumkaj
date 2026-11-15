@@ -280,7 +280,6 @@ fn paint_submit_busy_chrome(&mut self, cx: &mut Cx) {
             .button(cx, ids!(header_back))
             .set_visible(cx, show_back);
         for id in [
-            ids!(sidebar_settings_back),
             ids!(settings_detail_back),
             ids!(line_action_back),
             ids!(floor_pick_back),
@@ -458,7 +457,22 @@ fn paint_submit_busy_chrome(&mut self, cx: &mut Cx) {
         *deferred_till_sync_frame().lock().unwrap() = Some(cx.new_next_frame());
     }
 
+    /// Chrome for the current screen. After an unlock, the landing then
+    /// runs as a tap on its nav item would (`unlocked_home_from`): Day
+    /// close loads its figures, Books its overview, a Settings section opens.
     fn sync_chrome(&mut self, cx: &mut Cx) {
+        self.sync_chrome_body(cx);
+        let tab = {
+            let mut st = app_state().lock().unwrap();
+            let tab = st.nav_tab_after_unlock.take();
+            tab.filter(|t| st.session.is_some() && st.screen == screen_for_nav_tab(*t))
+        };
+        if let Some(tab) = tab {
+            self.open_nav_tab(cx, tab);
+        }
+    }
+
+    fn sync_chrome_body(&mut self, cx: &mut Cx) {
         let _span = stall_span("sync_chrome");
         // While other devices depend on this one, its screen stays on:
         // Android dozes a dark device and drops them (desktops hold the
@@ -499,7 +513,7 @@ fn paint_submit_busy_chrome(&mut self, cx: &mut Cx) {
                 } else if st.device_role.is_host() && !st.onboarding_complete {
                     st.screen = Screen::Onboard;
                 } else {
-                    st.screen = unlocked_home_from(&st);
+                    st.screen = unlocked_home_from(&mut st);
                 }
             }
             // Follow-OS mode: keep UI language in sync with the device.
@@ -510,17 +524,7 @@ fn paint_submit_busy_chrome(&mut self, cx: &mut Cx) {
         // While a worker holds the books (import / restore / CSV / VACUUM),
         // never run SQL from the UI — busy_timeout waits look like a freeze.
         // Still switch screens + shell so the user can leave the busy page.
-        let heavy_job = menu_import_busy().load(std::sync::atomic::Ordering::SeqCst)
-            || restore_busy().load(std::sync::atomic::Ordering::SeqCst)
-            || csv_import_busy().load(std::sync::atomic::Ordering::SeqCst)
-            || shelf_mat_busy().load(std::sync::atomic::Ordering::SeqCst)
-            || backup_busy().load(std::sync::atomic::Ordering::SeqCst)
-            || backup_copy_busy().load(std::sync::atomic::Ordering::SeqCst)
-            || aggregator_import_busy().load(std::sync::atomic::Ordering::SeqCst)
-            || diag_export_busy().load(std::sync::atomic::Ordering::SeqCst)
-            || printer_add_busy().load(std::sync::atomic::Ordering::SeqCst)
-            || print_share::is_finding_printers()
-            || role_open_busy().load(std::sync::atomic::Ordering::SeqCst);
+        let heavy_job = heavy_books_job();
         let pair_busy = client_pair_busy().load(std::sync::atomic::Ordering::SeqCst);
         if heavy_job || pair_busy {
             if heavy_job {
@@ -571,7 +575,12 @@ fn paint_submit_busy_chrome(&mut self, cx: &mut Cx) {
         // hundreds of labels — and the page sat blank until that finished.
         // Section bodies are filled by `open_settings_panel`, not here.
         {
-            let on_settings = app_state().lock().unwrap().screen == Screen::Settings;
+            // Right after an unlock the whole chrome paints once (header line,
+            // this person's rail), Settings or not.
+            let on_settings = {
+                let st = app_state().lock().unwrap();
+                st.screen == Screen::Settings && st.nav_tab_after_unlock.is_none()
+            };
             if on_settings {
                 let rtl = locale::is_rtl(&app_state().lock().unwrap().locale.language);
                 self.show_screen(cx, Screen::Settings);
@@ -759,11 +768,9 @@ fn paint_submit_busy_chrome(&mut self, cx: &mut Cx) {
                 st.t("currency"),
                 cur
             );
-            let empty_msg = if st.products.is_empty() {
-                "No items yet. Open Menu to add your dishes and items.".to_string()
-            } else {
-                st.t("empty_catalog")
-            };
+            // Short state only; the button beside it opens Menu (the English-only
+            // "No items yet. Open Menu to add…" was cluster text, 2026-11-14).
+            let empty_msg = st.t("empty_catalog");
             let natural_label = st.money(st.cart.actual_total());
             let applied_label = st.money(st.cart.applied_total());
             let total_input =
@@ -869,7 +876,6 @@ fn paint_submit_busy_chrome(&mut self, cx: &mut Cx) {
                         | Screen::Credit
                         | Screen::Team
                         | Screen::Settings
-                        | Screen::SidebarSettings
                         | Screen::Inventory
                         | Screen::Branches
                 );
@@ -1321,8 +1327,11 @@ fn paint_submit_busy_chrome(&mut self, cx: &mut Cx) {
             // closes it to check; a word when the search finds nothing.
             self.ui.view(cx, ids!(cat_strip)).set_visible(cx, !cats.is_empty());
             self.ui.widget(cx, ids!(menu_modal_title)).set_text(cx, &st.t("add_dishes"));
+            // Empty order: nothing under the title — how to add is Order's ℹ
+            // (the "Tap a dish to add it · pick a category…" line was cluster
+            // text, owner 2026-11-14).
             let summary = if st.cart.is_empty() {
-                st.t("pick_dishes_help")
+                String::new()
             } else {
                 let qty: i64 = cart_qty_by_product(&st.cart.lines).values().sum();
                 st.t("order_so_far")
@@ -1330,6 +1339,7 @@ fn paint_submit_busy_chrome(&mut self, cx: &mut Cx) {
                     .replace("{total}", &st.money(st.cart.rounded_total()))
             };
             self.ui.widget(cx, ids!(menu_modal_summary)).set_text(cx, &summary);
+            self.ui.widget(cx, ids!(menu_modal_summary)).set_visible(cx, !summary.is_empty());
             self.ui.button(cx, ids!(menu_pick_done)).set_text(cx, &st.t("pick_done"));
             let products_empty = st.visible_products().is_empty();
             let frequent_empty = st.menu_pick_open
@@ -1429,6 +1439,7 @@ fn paint_submit_busy_chrome(&mut self, cx: &mut Cx) {
             }
             drop(st);
             self.paint_frequent_config(cx);
+            self.reveal_active_category_chip(cx);
         }
         self.set_report_rows(cx, ids!(staff_label), staff_rows);
         self.ui
@@ -1858,7 +1869,7 @@ fn paint_submit_busy_chrome(&mut self, cx: &mut Cx) {
             self.ui
                 .view(cx, ids!(kot_station_wrap))
                 .set_visible(cx, ticket_open);
-            // Dropdown label: Kitchen, Kitchen · stations, or Done · … while open.
+            // Dropdown label: Kitchen or Kitchen · stations (ComboField draws ˅ / ˄).
             self.paint_kot_station_dd(cx);
             // Station applies on checkbox tap. No second "Use this station" button.
             self.ui
@@ -2193,7 +2204,6 @@ fn paint_submit_busy_chrome(&mut self, cx: &mut Cx) {
                 ids!(sale_attach_hint),
                 ids!(sale_attach_list),
                 &attach_txt,
-                "(no attachments yet — select a sale)",
             );
         }
         {
@@ -2213,7 +2223,6 @@ fn paint_submit_busy_chrome(&mut self, cx: &mut Cx) {
                 ids!(party_attach_hint),
                 ids!(party_attach_list),
                 &attach_txt,
-                "(no attachments yet — select a party)",
             );
         }
         {
@@ -2314,7 +2323,6 @@ fn paint_submit_busy_chrome(&mut self, cx: &mut Cx) {
                 ids!(expense_attach_hint),
                 ids!(expense_attach_list),
                 &attach_txt,
-                "(no attachments yet — log an expense)",
             );
         }
         self.set_report_rows(cx, ids!(sale_history_label), sale_history);
@@ -2437,9 +2445,19 @@ fn paint_submit_busy_chrome(&mut self, cx: &mut Cx) {
                         .lines
                         .iter()
                         .all(|l| l.is_sent() && l.kot_id != QUEUED_KOT);
+                // An order with no table (Counter / Takeaway / Delivery) takes
+                // the same step (owner, 2026-11-15). It has no Table actions,
+                // so once its bill is out the same button prints it again —
+                // for those with the Reprint right, as a table's reprint.
+                let counter_open = st.selected_table_id.is_none()
+                    && st.screen == Screen::Pos
+                    && !st.cart.lines.is_empty();
+                let may_print_counter =
+                    session_may_print_bill(st.session.as_ref(), st.cart.bill_printed);
                 self.ui.button(cx, ids!(print_bill_quick)).set_visible(
                     cx,
-                    table_open && !bill_printed && may_print_bill && all_reached && !splitting,
+                    (table_open && !bill_printed && may_print_bill && all_reached && !splitting)
+                        || (counter_open && may_print_counter && all_reached),
                 );
                 // Split / bill actions are counter work — hide when Settle Denied.
                 self.ui
@@ -2597,7 +2615,7 @@ fn paint_submit_busy_chrome(&mut self, cx: &mut Cx) {
         // Screens / rights / stations / copy-onto / remove / save only when a
         // person is selected — never floating with no target.
         {
-            let (selected, selected_name, has_selected, rights, lang, manage_team, self_tip) = {
+            let (selected, selected_name, has_selected, rights, lang, manage_team, self_tip, needs_pin) = {
                 let st = app_state().lock().unwrap();
                 let manage_team = st
                     .session
@@ -2609,6 +2627,7 @@ fn paint_submit_busy_chrome(&mut self, cx: &mut Cx) {
                     .as_ref()
                     .and_then(|id| st.staff.iter().find(|s| &s.id == id));
                 let selected_name = member.map(|s| s.name.clone()).unwrap_or_default();
+                let needs_pin = member.is_some_and(|s| !s.is_owner() && !s.has_pin());
                 let selected = member
                     .map(|s| format!("{}: {}", st.t("editing_staff"), s.lock_label()))
                     .unwrap_or_else(|| " ".to_string());
@@ -2621,6 +2640,7 @@ fn paint_submit_busy_chrome(&mut self, cx: &mut Cx) {
                     st.locale.language.clone(),
                     manage_team,
                     self_tip,
+                    needs_pin,
                 )
             };
             self.ui
@@ -2632,6 +2652,9 @@ fn paint_submit_busy_chrome(&mut self, cx: &mut Cx) {
             self.ui
                 .view(cx, ids!(team_selected_setup))
                 .set_visible(cx, manage_team && has_selected);
+            self.ui
+                .view(cx, ids!(staff_first_pin_row))
+                .set_visible(cx, manage_team && needs_pin);
             {
                 let help = self.ui.widget(cx, ids!(team_help)).as_info_help();
                 let title = locale::t(&lang, if self_tip { "my_pin_settings" } else { "team" });
@@ -3158,7 +3181,8 @@ fn paint_submit_busy_chrome(&mut self, cx: &mut Cx) {
                         };
                         base
                     } else {
-                        st.t("pair_intro")
+                        // The heading's ℹ says how (pair_intro) — no copy here.
+                        String::new()
                     }
                 }));
             // What this device still owes the shop, and what the shop would

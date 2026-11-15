@@ -26,12 +26,12 @@ mod ux_rules_tests {
     #[test]
     fn a_report_reads_as_headings_rows_and_lines() {
         let rows = parse_report(
-            "Rajdhani — day close\nSales: 1\nRevenue ₹120.00\nPeriod 2026-10-24 → 2026-10-24\n\nTop items\n  Masala Dosa · 1 · ₹120.00\n-----",
+            "Asha Stores — day close\nSales: 1\nRevenue ₹120.00\nPeriod 2026-10-24 → 2026-10-24\n\nTop items\n  Masala Dosa · 1 · ₹120.00\n-----",
         );
         assert_eq!(
             rows,
             vec![
-                ReportRow::Head("Rajdhani — day close".into()),
+                ReportRow::Head("Asha Stores — day close".into()),
                 ReportRow::Kv("Sales".into(), "1".into()),
                 ReportRow::Kv("Revenue".into(), "₹120.00".into()),
                 ReportRow::Line("Period 2026-10-24 → 2026-10-24".into()),
@@ -123,11 +123,20 @@ mod ux_rules_tests {
         );
     }
 
-    /// Empty states name the pharmacy rail (Sell, Medicines).
+    /// Empty states are a short fact (owner, 2026-11-14): no instructions —
+    /// the ℹ explains and the button beside it acts — and never a screen
+    /// name a waiter cannot find on the rail ("Ordering screen", "Menu &
+    /// items").
     #[test]
     fn empty_states_name_the_rail_screens() {
-        let menu = locale::t("en", "empty_catalog");
-        assert!(menu.contains("Medicines") && !menu.contains("Menu & items"), "{menu}");
+        for key in ["empty_catalog"] {
+            let text = locale::t("en", key);
+            assert!(!text.contains("Ordering") && !text.contains("Menu & items"), "{text}");
+            assert!(
+                !text.contains("Open ") && !text.contains("Tap ") && !text.contains(" then ") && text.chars().count() <= 40,
+                "instructions in an empty state: {text}"
+            );
+        }
         assert_eq!(locale::t("en", "nav_items"), "Medicines");
         assert_eq!(locale::t("en", "sell"), "Sell");
     }

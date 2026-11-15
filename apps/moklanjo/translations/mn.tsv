@@ -39,7 +39,7 @@ adding_item	Шинэ тариф нэмж байна
 editing_item	Засварлаж байна
 save	Хадгалах
 remove	Хасах
-empty_catalog	Одоогоор үнэ байхгүй. Үнэ болон үйлчилгээг нээж, нэгийг (нэр + үнэ, нэгж кг), дараа нь Захиалга нэмнэ үү.
+empty_catalog	Одоогоор үнэ байхгүй.
 counter_sale	Эсрэг захиалга
 total	Нийт
 cash	Бэлэн
@@ -171,8 +171,6 @@ selected_language	Сонгосон
 continue	Үргэлжлүүлэх
 this_device	ЭНЭ ТӨХӨӨРӨМЖ
 device_use_q	Энэ төхөөрөмжийг хэрхэн ашиглах вэ?
-last_server_mode	Сервер байсан — үргэлжлүүлэхийн тулд товшино
-last_client_mode	Клиент байсан — үргэлжлүүлэхийн тулд товшино
 choose_server	Сервер сонгоно
 choose_server_hint	Байгаа серверийг нээх эсвэл өөр бизнест шинийг үүсгэнэ.
 create_new_server	Шинэ сервер үүсгэх
@@ -501,8 +499,6 @@ job_layout	Байрлал
 job_delivery	Ажил хэрхэн илгээгдэх вэ
 job_size	Үсгийн хэмжээ
 job_size_ph	ж. 18, 20, 26…
-save_receipt_format	Баримт бичгийн форматыг хадгалах
-save_label_format	Шошгоны форматыг хадгалах
 test_receipt_format	Туршилтын баримт
 test_label_format	Туршилтын шошго
 test_receipt_sent	Баримт бичгийн дээжийг илгээсэн
@@ -610,7 +606,7 @@ units_heading	Нэгжүүд
 booking_measures	Захиалгын арга хэмжээ
 drawer_count	Шүүгээний тооллого (заавал биш)
 spreadsheet_csv	Хүснэгт (CSV)
-bank_reconciliation	Банк тулгалт (банкны хуулгатай тулгаж тэмдэглэнэ)
+bank_reconciliation	Банк тулгалт
 book_add_product	Ном - бүтээгдэхүүн / үнэ нэмэх
 book_opening_credit	Дэвтэр — эхний зээл
 account_kind	Дансны төрөл (нэгийг товшино)
@@ -650,7 +646,7 @@ net_word	Цэвэр
 offline_badge	ОФЛАЙН
 optional_login_help	Заавал биш нэвтрэлт (id + нууц үг). Эзэмшигч нэг удаа тохируулна; нууц үгийг дараа нь зөвхөн хэрэглэгч өөрчилнө.
 or_unlock_login	Эсвэл нэвтрэх id + нууц үгээр түгжээ тайлна
-permission_preset	Ажил (дэлгэц болон эрхийг тохируулах)
+permission_preset	Ажил
 preset_help_moklanjo	Кассчин: зарна. Менежер: борлуулалт + бараа + хүчингүй/засвар.
 product_locked_moklanjo	Мокланжо
 product_only_moklanjo	Энэ програм нь зөвхөн Мокланжо юм - ном + захиалгын ширээ. Бусад худалдааны нүүр царай дараа нь тусдаа бүтээгдэхүүн болгон нийлүүлдэг.
@@ -698,10 +694,6 @@ pin_hint_paired	Нэмэлт касс хослуулсан — зарахын т
 pin_hint_pair_first	Нэмэлт касс — эхлээд дэлгүүрийн төхөөрөмжтэй хослуулна
 unlock_to_continue	Үргэлжлүүлэхийн тулд түгжээ тайлна
 no_staff_yet	Ажилтан одоогоор алга — Эзэмшигчээр түгжээ тайлаад Баг
-status_server_set_pin	Сервер горим — Эзэмшигчийн PIN тохируулна
-status_server_tills	Сервер горим — нэмэлт касс нэгдэж болно. Түгжээ тайлах
-status_server_unlock	Сервер горим — Эзэмшигчээр түгжээ тайлна
-status_client_unlock	Клиент горим — зарахын тулд түгжээ тайлна
 icon_new_selected	Дүрс: шинэ файл сонгогдлоо — Брэнд хадгалах дээр товшино
 icon_custom	Дүрс: өөрийн газрын тэмдэг
 icon_default	Дүрс: Kumkaj тэмдэг (анхдагч) — өөрийнхийг сонгоно

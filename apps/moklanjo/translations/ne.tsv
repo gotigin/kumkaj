@@ -39,7 +39,7 @@ adding_item	नयाँ दर थप्दै
 editing_item	सम्पादन गर्दै
 save	सुरक्षित गर्नुहोस्
 remove	हटाउनुहोस्
-empty_catalog	अहिले कुनै दर छैन। दर र सेवा खोल्नुहोस्, एउटा थप्नुहोस् (नाम + मूल्य, एकाइ kg), अनि बुकिङ।
+empty_catalog	अहिले कुनै दर छैन।
 counter_sale	काउन्टर बुकिङ
 total	जम्मा
 cash	नगद
@@ -171,8 +171,6 @@ selected_language	छानिएको
 continue	जारी राख्नुहोस्
 this_device	यो उपकरण
 device_use_q	यो उपकरण कसरी प्रयोग हुन्छ?
-last_server_mode	सर्भर थियो — जारी राख्न थिच्नुहोस्
-last_client_mode	क्लाइन्ट थियो — जारी राख्न थिच्नुहोस्
 choose_server	सर्भर छान्नुहोस्
 choose_server_hint	भइरहेको सर्भर खोल्नुहोस्, वा अर्को व्यवसायका लागि नयाँ बनाउनुहोस्।
 create_new_server	नयाँ सर्भर बनाउनुहोस्
@@ -501,8 +499,6 @@ job_layout	लेआउट
 job_delivery	काम कसरी पठाइन्छ
 job_size	अक्षर आकार
 job_size_ph	जस्तै 18, 20, 26…
-save_receipt_format	रसिद ढाँचा सुरक्षित गर्नुहोस्
-save_label_format	लेबल ढाँचा सुरक्षित गर्नुहोस्
 test_receipt_format	परीक्षण रसिद
 test_label_format	परीक्षण लेबल
 test_receipt_sent	नमुना रसिद पठाइयो
@@ -610,7 +606,7 @@ units_heading	एकाइ
 booking_measures	बुकिङका नाप
 drawer_count	दराज गणना (ऐच्छिक)
 spreadsheet_csv	स्प्रेडसिट (CSV)
-bank_reconciliation	बैंक मिलान (बैंक विवरणसँग चिन्ह लगाउनुहोस्)
+bank_reconciliation	बैंक मिलान
 book_add_product	खाता — उत्पादन / दर थप्नुहोस्
 book_opening_credit	खाता — सुरुको उधारो
 account_kind	खाताको प्रकार (एउटा थिच्नुहोस्)
@@ -650,7 +646,7 @@ net_word	खुद
 offline_badge	अफलाइन
 optional_login_help	ऐच्छिक लगइन (id + पासवर्ड)। मालिकले एकपटक राख्छन्; पछि पासवर्ड प्रयोगकर्ताले मात्र बदल्न सक्छन्।
 or_unlock_login	वा लगइन id + पासवर्डले अनलक गर्नुहोस्
-permission_preset	काम (स्क्रिन र अधिकार तय गर्छ)
+permission_preset	काम
 preset_help_moklanjo	क्यासियर: बेच्ने। प्रबन्धक: बेच्ने + सामान + रद्द/संशोधन।
 product_locked_moklanjo	Moklanjo
 product_only_moklanjo	यो एप Moklanjo मात्र हो — खाता + बुकिङ डेस्क। अन्य व्यापारका रूप पछि छुट्टै उत्पादनका रूपमा आउँछन्।
@@ -698,10 +694,6 @@ pin_hint_paired	थप टिल जोडियो — बेच्न अन�
 pin_hint_pair_first	थप टिल — पहिले पसलको उपकरणसँग जोड्नुहोस्
 unlock_to_continue	जारी राख्न अनलक गर्नुहोस्
 no_staff_yet	अहिलेसम्म कर्मचारी छैन — मालिकका रूपमा अनलक गर्नुहोस्, अनि टोली
-status_server_set_pin	सर्भर मोड — मालिकको PIN राख्नुहोस्
-status_server_tills	सर्भर मोड — थप टिल जोडिन सक्छन्। अनलक गर्नुहोस्
-status_server_unlock	सर्भर मोड — मालिकका रूपमा अनलक गर्नुहोस्
-status_client_unlock	क्लाइन्ट मोड — बेच्न अनलक गर्नुहोस्
 icon_new_selected	आइकन: नयाँ फाइल छानियो — ब्रान्ड सुरक्षित गर्नुहोस् थिच्नुहोस्
 icon_custom	आइकन: आफ्नै पसलको चिन्ह
 icon_default	आइकन: Kumkaj चिन्ह (पूर्वनिर्धारित) — आफ्नै छान्नुहोस्

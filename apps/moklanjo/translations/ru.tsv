@@ -39,7 +39,7 @@ adding_item	Добавление тарифа
 editing_item	Редактирование
 save	Сохранить
 remove	Удалить
-empty_catalog	Тарифов пока нет. Откройте Тарифы и услуги, добавьте один (имя + цена, единица кг), затем Отправка.
+empty_catalog	Тарифов пока нет.
 counter_sale	Отправка со стойки
 total	Итого
 cash	Наличные
@@ -171,8 +171,6 @@ selected_language	Выбрано
 continue	Продолжить
 this_device	ЭТО УСТРОЙСТВО
 device_use_q	Как будет использоваться это устройство?
-last_server_mode	Был сервером — нажмите, чтобы продолжить
-last_client_mode	Был клиентом — нажмите, чтобы продолжить
 choose_server	Выбрать сервер
 choose_server_hint	На этом устройстве уже есть серверы. Откройте один или создайте новый для другого бизнеса.
 create_new_server	Создать новый сервер
@@ -501,8 +499,6 @@ job_layout	Макет
 job_delivery	Как отправляется задание
 job_size	Размер шрифта
 job_size_ph	напр. 18, 20, 26…
-save_receipt_format	Сохранить формат чека
-save_label_format	Сохранить формат этикетки
 test_receipt_format	Пробный чек
 test_label_format	Пробная этикетка
 test_receipt_sent	Образец чека отправлен
@@ -610,7 +606,7 @@ units_heading	Единицы
 booking_measures	Размеры отправки
 drawer_count	Пересчёт кассы (необязательно)
 spreadsheet_csv	Таблица (CSV)
-bank_reconciliation	Банковская сверка (отмечать по выписке)
+bank_reconciliation	Банковская сверка
 book_add_product	Отправка — добавить продукт / тариф
 book_opening_credit	Отправка — начальный кредит
 account_kind	Тип счёта (нажмите один)
@@ -650,7 +646,7 @@ net_word	Нетто
 offline_badge	ОФЛАЙН
 optional_login_help	Необязательный вход (ID + пароль). Владелец задаёт один раз; позже только сам пользователь может менять пароль.
 or_unlock_login	Или разблокировать по ID входа + паролю
-permission_preset	Должность (задаёт экраны и права)
+permission_preset	Должность
 preset_help_moklanjo	Кассир: продажа. Менеджер: продажа + позиции + аннуляция/правка.
 product_locked_moklanjo	Moklanjo
 product_only_moklanjo	Это приложение — только Moklanjo: учёт и стойка приёма. Для других отраслей позже будут отдельные продукты.
@@ -698,10 +694,6 @@ pin_hint_paired	Дополнительная касса подключена —
 pin_hint_pair_first	Дополнительная касса — сначала подключиться к устройству магазина
 unlock_to_continue	Разблокировать, чтобы продолжить
 no_staff_yet	Персонала пока нет — разблокировать как Владелец, затем Команда
-status_server_set_pin	Режим сервера — задать PIN владельца
-status_server_tills	Режим сервера — дополнительные кассы могут подключиться. Разблокировать
-status_server_unlock	Режим сервера — разблокировать как Владелец
-status_client_unlock	Режим клиента — разблокировать для продажи
 icon_new_selected	Значок: выбран новый файл — нажмите Сохранить бренд
 icon_custom	Значок: собственный знак магазина
 icon_default	Значок: знак Kumkaj (по умолчанию) — выберите свой

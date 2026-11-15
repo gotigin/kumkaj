@@ -41,7 +41,7 @@ remove	Хориҷ
 removed_items	Молҳои хориҷшуда
 removed_help	Бозгашт молро ба меню ҳамон тавр бармегардонад — нарх, акс ва гурӯҳ. Рафи таомҳои мо хориҷ намешавад, бинобар ин таомро ҳамеша дубора илова кардан мумкин аст.
 restore_item	Бозгашт
-empty_catalog	Ҳанӯз таом нест. Менюро кушоед, таом илова кунед (ном + нарх), сипас фармоиш гиред.
+empty_catalog	Ҳанӯз таом нест.
 total	Ҷамъ
 cash	Нақд
 upi	UPI
@@ -103,23 +103,14 @@ bill_item_qty	Миқдор
 bill_item_price	Нарх
 bill_item_amount	Маблағ
 bill_item_note	Ёддошти таом
-bill_item_col_gap	Фосилаи сутунҳо
 bill_item_col_order	Тартиби сутунҳо
 bill_item_col_sep	Хатҳои сутун
-bill_item_gap_tight	Танг
-bill_item_gap_comfort	Роҳат
-bill_item_gap_wide	Васеъ
-bill_item_num_width	Сутунҳои рақам
-bill_item_num_compact	Танг
-bill_item_num_comfort	Роҳат
-bill_item_num_wide	Васеъ
-bill_item_num_align	Ҳамвор кардани рақамҳо
-bill_item_gap_em	Фосила (em)
-bill_item_qty_min	Миқдори камтарин (em)
-bill_item_price_min	Нархи камтарин (em)
-bill_item_amount_min	Маблағи камтарин (em)
-kot_item_qty_width	Сутуни миқдор
-kot_item_num_align	Ҳамвор кардани миқдор
+slip_columns	Сутунҳо
+slip_col_width	Паҳно (mm)
+slip_col_start	Фосилаи оғоз (px)
+slip_col_end	Фосилаи анҷом (px)
+slip_col_align	Ҳамворкунии матн
+slip_columns_help	Паҳнои ҳар сутун фосилаи оғоз ва анҷоми онро дар бар мегирад. Матн дар дохили сутуни худ интиқол меёбад; он чи аз паҳнои мундариҷа берун мебарояд, дар коғаз ва пешнамоиш бурида мешавад.
 bill_total_qty_label	Нишони ҷамъи миқдор
 bill_total_subtotal_label	Нишони ҷамъи хурд
 bill_total_grand_label	Нишони ҷамъи калон
@@ -221,7 +212,6 @@ sidebar_order_saved	Тартиби канор захира шуд
 sidebar_visibility_saved	Намоиши канор захира шуд
 amounts_hide	Пинҳон
 amounts_show	Нишон
-printers_none_hint	Аввал чопгарро дар ин дастгоҳ захира кунед, баъд ба Ҳисоб ё ошхона илова кунед
 counter	Мизи фурӯш
 dine_in	Дар ин ҷо хӯрдан
 takeaway	Бо худ бурдан
@@ -328,8 +318,6 @@ selected_language	Интихобшуда
 continue	Давом
 this_device	ИН ДАСТГОҲ
 device_use_q	Ин дастгоҳ чӣ гуна истифода мешавад?
-last_server_mode	Server буд — зер кунед, то давом диҳед
-last_client_mode	Мизоҷ буд — зер кунед, то давом диҳед
 choose_server	Интихоби server
 choose_server_hint	Server-и мавҷударо кушоед, ё барои тиҷорати дигар яке созед.
 create_new_server	Сохтани server-и нав
@@ -391,7 +379,7 @@ attachments_last_expense	Замимаҳо (хароҷоти охирин)
 bank	Бонк
 bank_in	Бонк даромад
 bank_out	Бонк баромад
-bank_reconciliation	Мутобиқати бонк (бо изҳороти бонки худ муқоиса кунед)
+bank_reconciliation	Мутобиқати бонк
 bank_to_till	Бонк → қуттӣ
 book_add_dish	Дафтар — иловаи таом / мол
 book_opening_credit	Дафтар — қарзи оғоз
@@ -744,7 +732,6 @@ station_print_pick_first	Аввал истгоҳи ошхонаро интихо
 station_print_editing	Таҳрири чопгарҳои «{name}»
 station_vps_dd	Чопгарҳои ин истгоҳ
 station_vps_dd_n	{n} чопгар · зер кунед, то иваз шавад
-station_vps_empty	Ҳанӯз чопгар нест — аз Танзимот → Чопгарҳо ёбед
 bill_printers_dd	Чопгарҳои ҳисоб
 bill_printers_dd_n	{n} чопгар барои ҳисоб · зер кунед, то иваз шавад
 job_layout	Тарҳ
@@ -889,7 +876,7 @@ net_word	Соф
 offline_badge	БЕ ШАБАКА
 optional_login_help	Воридшавии ихтиёрӣ (шиноснома + парол). Соҳиб як бор мегузорад; танҳо корбар баъдтар паролро иваз мекунад.
 or_unlock_login	Ё бо шиносномаи воридшавӣ + парол кушоед
-permission_preset	Кор (экранҳо ва амалҳои пулро муайян мекунад)
+permission_preset	Кор
 preset_help_khaynjo	Хазинадор: фурӯш. Мудир: фурӯш + молҳо + бекор/ислоҳ.
 product_locked_khaynjo	Khaynjo
 product_only_khaynjo	Ин барнома танҳо Khaynjo аст — низоми кори тарабхона. Чеҳраҳои тиҷорати дигар ҳамчун маҳсулоти ҷудогонаи Kumkaj мебароянд.
@@ -961,10 +948,6 @@ pin_hint_paired	Қуттии иловагӣ ҷуфт шуд — барои фу�
 pin_hint_pair_first	Қуттии иловагӣ — аввал ба дастгоҳи дӯкон ҷуфт кунед
 unlock_to_continue	Барои давом кушоед
 no_staff_yet	Ҳанӯз корманд нест — ҳамчун Соҳиб кушоед, сипас Даста
-status_server_set_pin	Ҳолати Server — PIN-и Соҳибро гузоред
-status_server_tills	Ҳолати Server — қуттиҳои иловагӣ ҳамроҳ шуда метавонанд. Кушоед
-status_server_unlock	Ҳолати Server — ҳамчун Соҳиб кушоед
-status_client_unlock	Ҳолати Мизоҷ — барои фурӯш кушоед
 icon_new_selected	Нишон: файли нав интихоб шуд — Захираи нишонро зер кунед
 icon_custom	Нишон: нишони махсуси ҷой
 icon_default	Нишон: нишони Kumkaj (пешфарз) — якеи махсус интихоб кунед
@@ -1033,7 +1016,7 @@ book_kind_balance	Варақаи тавозун
 order_help	Ба мол зер кунед, то илова шавад.
 floor_help	Ба миз зер кунед, то фармоишро гиред ё иваз кунед. Рангҳо нишон медиҳанд: холӣ → нишаста → ошхона → тайёр → хӯрдан → ҳисоб → пардохт. Рӯйхати интизор, захираҳо ва иловаи мизҳо дар бахшҳои поён ҳастанд.
 kitchen_help	Варақаҳои ошхона (KOT), навтарин охир. Оғоз → Тайёр → Анҷом варақаро пеш мебарад. Варақаҳо ҳеҷ гоҳ нарх нишон намедиҳанд.
-kitchen_empty	Варақаи кушода нест. KOT аз Фармоиш ё Зал ин ҷо пайдо мешавад.
+kitchen_empty	Варақаи кушода нест.
 add_a_table	Иловаи миз
 add_station_heading	Иловаи истгоҳи ошхона
 categories_help	Истифодаро зер кунед, то моли боло дар он гурӯҳ сабт шавад. Акс ба гурӯҳ расм медиҳад; бе он ҳарфҳои аввалро нишон медиҳад.
@@ -1131,7 +1114,6 @@ bill_format_help	Дар зери номи тарабхонаи шумо дар �
 bill_header_ph	Суроға | телефон
 fssai_ph	Рақами иҷозатномаи FSSAI (Ҳиндустон)
 bill_footer_ph	Поён (мисол Ташаккур, боз биёед)
-save_bill_format	Захираи тарҳи ҳисоб
 reset_bill_format	Бозгашт ба пешфарз
 bill_format_reset	Тарҳи ҳисоб ба пешфарз баргашт
 reset_kot_format	Бозгашт ба пешфарз
@@ -1201,13 +1183,11 @@ kot_copies_3	3
 kot_title_ph	Сарлавҳа (холӣ = KOT - KITCHEN ORDER)
 kot_footer_ph	Ёддошти ошхона (ихтиёрӣ, бе нарх)
 kot_preview	Пешнамоиш
-save_kot_format	Захираи тарҳи KOT
 test_kot_format	KOT-и озмоиш
 test_kot_sent	Пешнамоиши варақаи ошхона фиристода шуд
 test_bill_format	Ҳисоби озмоиш
 test_bill_sent	Пешнамоиши ҳисоб фиристода шуд
 test_print_no_printer	Барои он кор чопгар нест — якеро дар ин экран интихоб кунед
-kot_format_saved	Тарҳи KOT захира шуд
 std_print	Андозаи чопи ҳисоб
 std_print_help	Андозаи ҳарф барои корҳои ҳисоби Амудӣ ва Уфуқии оддӣ дар чопгарҳои система / ҳуҷҷат (нуқтаҳоро ворид кунед — на Хурд/Оддӣ/Калон). Ҳамон андоза дар ҳар ду самт. Андозаҳои варақаи ошхона дар варақаи KOT ҳастанд.
 std_size_s	Хурд
@@ -1264,7 +1244,6 @@ new_items_head	Ҳанӯз фиристода нашудааст
 price_ph	Нарх
 price_ph_gst_inside	Нарх ({tax} дар нарх)
 cancel_needs_table	Ин фармоишро аз Зал (миз) кушоед, то пас аз расидан ба ошхона бекор кунед — KOT-ҳои мизи фурӯш то гирифтани пардохт дар варақа мемонанд
-tax_rates_missing_hint	Меъёри {tax} дар ин таомҳо нест — дар Меню Меъёри андозро гузоред (нархҳо аллакай {tax}-ро дар зери {tax} дар нарх доранд)
 taxable_value	Арзиши андозбандӣ
 gst_inside_price_note	({tax} дар нарх)
 start_with_template	Бо қолаби менюи мо оғоз кунед
@@ -1318,9 +1297,7 @@ order_empty_pick	Фармоиш холӣ аст — Иловаи таомҳор�
 add_dishes	Иловаи таомҳо
 order_so_far	Дар ин фармоиш: {n} · {total}
 no_dish_match	Таоме ба «{q}» мувофиқ нест
-pick_dishes_help	Ба таом зер кунед, то илова шавад · гурӯҳеро интихоб кунед, то рӯйхат танг шавад
 pick_done	Тайёр
-pick_done_dd	Тайёр · {label}
 printer_route_mode	Агар дар ин ҷой чанд чопгар бошад
 printer_mode_first	Аввалине, ки кор мекунад
 printer_mode_all	Дар ҳама чоп

@@ -39,7 +39,7 @@ adding_item	Legger til en ny sats
 editing_item	Redigerer
 save	Lagre
 remove	Fjern
-empty_catalog	Ingen priser ennå. Åpne Priser og tjenester, legg til en (navn + pris, enhet kg), og deretter Booking.
+empty_catalog	Ingen priser ennå.
 counter_sale	Tellerbestilling
 total	Totalt
 cash	Kontant
@@ -171,8 +171,6 @@ selected_language	Valgt
 continue	Fortsett
 this_device	DENNE ENHETEN
 device_use_q	Hvordan skal denne enheten brukes?
-last_server_mode	Var Server — trykk for å fortsette
-last_client_mode	Var Klient — trykk for å fortsette
 choose_server	Velg en server
 choose_server_hint	Åpne en eksisterende server, eller opprett en for en annen virksomhet.
 create_new_server	Opprett ny server
@@ -501,8 +499,6 @@ job_layout	Oppsett
 job_delivery	Hvordan jobben sendes
 job_size	Skriftstørrelse
 job_size_ph	f.eks. 18, 20, 26…
-save_receipt_format	Lagre kvitteringsformat
-save_label_format	Lagre etikettformat
 test_receipt_format	Testkvittering
 test_label_format	Testetikett
 test_receipt_sent	Eksempel på kvittering sendt
@@ -610,7 +606,7 @@ units_heading	Enheter
 booking_measures	Bookingtiltak
 drawer_count	Skufftelling (valgfritt)
 spreadsheet_csv	Regneark (CSV)
-bank_reconciliation	Bankavstemming (kryss av mot kontoutskriften)
+bank_reconciliation	Bankavstemming
 book_add_product	Bestill — legg til produkt / pris
 book_opening_credit	Bok — inngående kreditt
 account_kind	Kontotype (trykk én)
@@ -650,7 +646,7 @@ net_word	Netto
 offline_badge	FRAKOBLET
 optional_login_help	Valgfri innlogging (id + passord). Eier setter én gang; bare brukeren kan endre passordet senere.
 or_unlock_login	Eller lås opp med innloggings-id + passord
-permission_preset	Jobb (angir skjermer og rettigheter)
+permission_preset	Jobb
 preset_help_moklanjo	Kasserer: selger. Leder: salg + varer + annuller/endre.
 product_locked_moklanjo	Moklanjo
 product_only_moklanjo	Denne appen er kun Moklanjo - bøker + bookingskranke. Andre handelsansikter sendes som separate produkter senere.
@@ -698,10 +694,6 @@ pin_hint_paired	Ekstra kasse er paret — lås opp for å selge
 pin_hint_pair_first	Ekstra kasse — par med butikkens enhet først
 unlock_to_continue	Lås opp for å fortsette
 no_staff_yet	Ingen ansatte ennå — lås opp som Eier, deretter Lag
-status_server_set_pin	Servermodus — sett Eier-PIN
-status_server_tills	Servermodus — ekstra kasser kan bli med. Lås opp
-status_server_unlock	Servermodus — lås opp som Eier
-status_client_unlock	Klientmodus — lås opp for å selge
 icon_new_selected	Ikon: ny fil valgt — trykk Lagre merke
 icon_custom	Ikon: eget stedmerke
 icon_default	Ikon: Kumkaj-merke (standard) — velg et eget

@@ -1008,7 +1008,7 @@ fn pad_view_over_base(cx: &mut Cx, view: &ViewRef, key: LiveId, extra: Inset) {
 /// keeps off the status / gesture bars. Anchored overlays (the nav drag
 /// ghost, column dropdowns) are left out: they place themselves.
 /// `nav_order_tests::every_modal_is_an_inset_sheet_or_anchored` checks this.
-const INSET_SHEETS: &[&str] = &["menu_modal", "lock_staff_modal", "upi_qr_modal"];
+const INSET_SHEETS: &[&str] = &["menu_modal", "lock_staff_modal", "upi_qr_modal", "printers_modal"];
 
 /// The client / brand name inside a catalogue pack title, so each screen can
 /// name its own level: onboarding "{name} App Template", Menu "{name}
