@@ -69,12 +69,10 @@ bill_item_qty	Qtà
 bill_item_price	Prezzo
 bill_item_amount	Importo
 bill_item_note	Nota articolo
-bill_item_col_order	Ordine colonne
 bill_item_col_sep	Righe di colonna
 slip_col_width	Larghezza (mm)
 slip_col_start	Spazio iniziale (px)
 slip_col_end	Spazio finale (px)
-slip_col_align	Allineamento del testo
 slip_columns_help	La larghezza di ogni colonna comprende il suo spazio iniziale e finale. Il testo va a capo all’interno della sua colonna; ciò che supera la larghezza del contenuto viene tagliato, su carta e nell’anteprima.
 bill_total_qty_label	Etichetta qtà totale
 bill_total_subtotal_label	Etichetta subtotale
@@ -431,7 +429,6 @@ printer_profile_heading	Layout
 vp_delivery_heading	Invio
 vp_delivery_help	Come questa stampante virtuale invia i lavori — documento del sistema, byte grezzi o ESC/POS. Il contenuto dello scontrino (corpo, a capo, margini) lo decide il formato conto / scontrino, non qui.
 vp_delivery_spooler	Documento OS (spooler di sistema)
-vp_delivery_raw	Byte grezzi al dispositivo
 vp_delivery_escpos	Comandi termici ESC/POS
 virtual_printer_new	Nuova stampante virtuale
 virtual_printer_selected	Modifica di “{name}”: tocca un'altra nell'elenco per cambiare
@@ -718,7 +715,6 @@ customer_paid_ph	Il cliente ha dato
 tip_ph	Mancia
 find_server	Trova il server del locale
 bill_format	Formato del conto
-bill_format_help	Stampato sotto il nome del tuo negozio su ogni conto. Separa le righe con | (es. MG Road, Rajkot | Tel 98250 00000).
 bill_header_ph	Indirizzo | telefono
 fssai_ph	N. licenza FSSAI / del negozio (facoltativo)
 bill_footer_ph	Piè di pagina (es. Grazie, a presto)
@@ -808,8 +804,6 @@ add_dishes	Aggiungi articoli
 order_so_far	In questo ordine: {n} · {total}
 no_dish_match	Nessun articolo corrisponde a «{q}»
 pick_done	Fatto
-kot_field_up	Sposta su
-kot_field_down	Sposta giù
 dishes_n	{n} articoli
 reorder_ph	Riordina a
 set_reorder	Imposta livello di riordino
@@ -841,3 +835,6 @@ sel_copy	Copia
 sel_select_all	Seleziona tutto
 sel_copied	Copiato
 nav_loading	Caricamento…
+printer_mode_first	Prima che funzioni
+printer_mode_all	Stampa su tutti
+slip_columns	Colonne

@@ -83,9 +83,7 @@ print_cancelled_kot_needed	Oipe'a raê peteî mesa comedor orekóva plato cancel
 print_cancelled_kot_none	Ndaipóri plato cancelado ko pedido-pe
 print_cancelled_kot_client	Impresión oñembogue ({n}) {place} oñemondóvape g̃uarã — impresión kosina rehegua Servidor-pe
 kot_banner	Bandera amable
-kot_banner_ph	Pancarta (blanco = ndaipóri) .
 kot_item_prefix	Item ñe’ẽpehẽtai
-kot_item_prefix_ph	p.e. [OÑEMBOGUAPY].
 kot_strike	Huelga plato réra
 kot_strike_note	Huelga plato nota rehegua
 kot_strike_on	Pe
@@ -103,13 +101,11 @@ bill_item_qty	Hetakue
 bill_item_price	Precio
 bill_item_amount	Monto rehegua
 bill_item_note	Nota plato rehegua
-bill_item_col_order	Columna ñemohenda
 bill_item_col_sep	Umi regla columna rehegua
 slip_columns	Columna-kuéra
 slip_col_width	Pe (mm)
 slip_col_start	Ñepyrũha pa’ũ (px)
 slip_col_end	Pahaha pa’ũ (px)
-slip_col_align	Moñe’ẽrã ñembohysýi
 slip_columns_help	Peteĩteĩ columna pe oguereko ipype iñepyrũha ha ipahaha pa’ũ. Moñe’ẽrã oñembojere icolumna ryepýpe; contenido pe rehasáva oñeikytĩ kuatiápe ha jehechaukápe.
 bill_total_qty_label	Total qty etiqueta rehegua
 bill_total_subtotal_label	Sub etiqueta total rehegua
@@ -643,7 +639,6 @@ vp_type_size_heading	Tipo tuichakue
 vp_wrap_heading	Envoltura ipekue
 vp_margin_heading	Margen-kuéra rehegua
 vp_delivery_spooler	Kuatia SO rehegua (sistema spooler) .
-vp_delivery_raw	Byte crudo tembipuru’ípe
 vp_delivery_escpos	ESC/POS umi tembiapoukapy térmico rehegua
 virtual_printer_new	Impresora virtual pyahu
 virtual_printer_selected	Emohenda “{name}” — epoko ambuépe lista-pe eñemoambue hag̃ua
@@ -1110,7 +1105,6 @@ remove_these_tables	Ojepe’a ko’ã mesa ojekaru haguã
 table_remove_ph	Ojepe’a: T1-T24, térã peteĩ mesa ojekaru haguã réra
 find_server	Eheka pe tenda servidor
 bill_format	Formato de proyecto de ley rehegua
-bill_format_help	Oñeimprimi nde restaurante réra guýpe opaite factura-pe. Ojesepara línea rehegua | (e.g. tape MG, Rajkot | Teléfono 98250 00000).
 bill_header_ph	Dirección | teléfono rupive
 fssai_ph	FSSAI licencia no. (India) .
 bill_footer_ph	Footer (e.g. Aguyje, evisita jey)
@@ -1127,7 +1121,6 @@ kot_field_hide	Oñomi
 kot_field_on	ohechauka
 kot_field_off	okañy
 kot_field_size	Fuente tuichakue
-kot_field_size_ph	p.e. 16, 20, 24, 28, 32 rehegua...
 kot_weight_light	Tesapeha
 bill_kot_panel_help	Bill ha cocina deslizamiento diseño, peteîteî orekóva contenido ancho propio. Bill Cashier ha’e pe ome’ẽva térã omohendava’ekue pe factura; KOT Mesero ha’e pe omondova’ekue upe boleto de cocina — pe pedido rembiasakue henyhẽva opyta umi arandukápe.
 std_size_ph	p.e. 18, 20, 26 rehegua...
@@ -1157,7 +1150,6 @@ kot_style_item_qty	Artículo · Qty
 kot_style_field_pick	Eiporavo campo
 kot_weight_regular	Mbohekojoja
 kot_weight_bold	Audaz
-kot_align	Oñemohenda porã
 kot_align_start	Eñepyrũ
 kot_align_center	Centro
 kot_align_end	Opa
@@ -1307,18 +1299,8 @@ kot_show_item_hdr	Artículo · Qty
 kot_hide_item_hdr	Oñomi umi columna
 kot_show_title	Línea título rehegua
 kot_hide_title	Oñomi título
-kot_field_order	Pe orden de impresión rehegua
-kot_field_up	Eñemongu’e yvate gotyo
-kot_field_down	Eñemongu’e oguejy haguã
 kot_field_cycle	Eiporavo ambue mba’e
 kot_field_select	Eiporavo ambue mba’e
-kot_field_time	Aravo
-kot_field_kot_no	KOT Nahániri
-kot_field_area	Área rehegua
-kot_field_table	Mesa ojekaru haguã
-kot_field_shop	Tenda réra
-kot_field_waiter	Mba’apoharakuéra
-kot_field_station	Estación
 dishes_n	{n} tembi’u rehegua
 recipe_ph	Receta (opcional) — peteĩ porción oipuru: Mandyju=0,2, Paneer=0,15
 reorder_ph	Ejogua hetave ko’ápe

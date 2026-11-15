@@ -83,9 +83,7 @@ print_cancelled_kot_needed	Chaw tihbo nei dawhkan hawng hmasa
 print_cancelled_kot_none	He order hian chaw tihbo a nei lo
 print_cancelled_kot_client	Tihbo print ({n}) {place} atan thawn a ni — buh chhumna chu Server-ah a print
 kot_banner	Khop hming
-kot_banner_ph	Hming (ruak = awm lo)
 kot_item_prefix	Thil hming hma
-kot_item_prefix_ph	entir [TIHBO]
 kot_strike	Chaw hming rih
 kot_strike_note	Chaw lehkha rih
 kot_strike_on	Hawng
@@ -103,13 +101,11 @@ bill_item_qty	Zat
 bill_item_price	Man
 bill_item_amount	Sum zat
 bill_item_note	Chaw lehkha
-bill_item_col_order	Column indawr dan
 bill_item_col_sep	Column ri
 slip_columns	Column-te
 slip_col_width	Zau (mm)
 slip_col_start	Tirhna awmna (px)
 slip_col_end	Tâwpna awmna (px)
-slip_col_align	Thuziak inremna
 slip_columns_help	Column tin zauah a tirhna leh a tâwpna awmna a tel. Thuziak chu a column chhungah a inthlawk; thil awm zau aia zau chu lehkha ah leh hmaa enna ah a tan ang.
 bill_total_qty_label	Zat zawng hming
 bill_total_subtotal_label	Zawng te hming
@@ -643,7 +639,6 @@ vp_type_size_heading	Type len
 vp_wrap_heading	Wrap vang
 vp_margin_heading	Margin
 vp_delivery_spooler	System lehkha (system spooler)
-vp_delivery_raw	Byte raw device ah
 vp_delivery_escpos	ESC/POS lum thupe
 virtual_printer_new	Print na ru thar
 virtual_printer_selected	“{name}” siam mek — dang list-ah khawih la, thlak turin
@@ -1110,7 +1105,6 @@ remove_these_tables	He dawhkan te paih
 table_remove_ph	Paih: T1-T24, emaw dawhkan pakhat hming
 find_server	Dawr server zawng
 bill_format	Bill rem dan
-bill_format_help	Bill tinah i rawt hming hnuaih print. Ri | in then (entir MG Road, Rajkot | Ph 98250 00000).
 bill_header_ph	Address | phone
 fssai_ph	FSSAI licence no. (India)
 bill_footer_ph	Hnuai (entir Lawm e, lo kal leh)
@@ -1127,7 +1121,6 @@ kot_field_hide	Thup
 kot_field_on	lantir
 kot_field_off	thup
 kot_field_size	Type len
-kot_field_size_ph	entir 16, 20, 24, 28, 32…
 kot_weight_light	Zang
 bill_kot_panel_help	Bill leh buh chhumna lehkha rem, tin hian chhung vang an nei. Bill Sum khawmtu chu bill chhuah emaw khar tu a ni; KOT Rawih tu chu buh chhumna lehkha kha thawn tu a ni — order thu kim chu lekhapui-ah a awm.
 std_size_ph	entir 18, 20, 26…
@@ -1157,7 +1150,6 @@ kot_style_item_qty	Thil · Zat
 kot_style_field_pick	Field thlang
 kot_weight_regular	Dan
 kot_weight_bold	Rih
-kot_align	Intlun
 kot_align_start	Tan
 kot_align_center	Lai
 kot_align_end	Tawp
@@ -1307,18 +1299,8 @@ kot_show_item_hdr	Thil · Zat
 kot_hide_item_hdr	Column thup
 kot_show_title	Hming ri
 kot_hide_title	Hming thup
-kot_field_order	Print indawr dan
-kot_field_up	Chung thawn
-kot_field_down	Hnuai thawn
 kot_field_cycle	Dawt thlang
 kot_field_select	Dawt thlang
-kot_field_time	Hun
-kot_field_kot_no	KOT no.
-kot_field_area	Hmun
-kot_field_table	Dawhkan
-kot_field_shop	Dawr hming
-kot_field_waiter	Hnathawk
-kot_field_station	Hmun
 dishes_n	chaw {n}
 recipe_ph	Recipe (duh chuan) — then pakhat hman: Buh=0.2, Paneer=0.15
 reorder_ph	Lei leh hun

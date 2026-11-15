@@ -81,12 +81,10 @@ bill_item_qty	Qté
 bill_item_price	Prix
 bill_item_amount	Montant
 bill_item_note	Note Rx / de vente
-bill_item_col_order	Ordre des colonnes
 bill_item_col_sep	Filets de colonne
 slip_col_width	Largeur (mm)
 slip_col_start	Espace de début (px)
 slip_col_end	Espace de fin (px)
-slip_col_align	Alignement du texte
 slip_columns_help	La largeur de chaque colonne comprend son espace de début et de fin. Le texte passe à la ligne dans sa colonne ; ce qui dépasse la largeur du contenu est coupé, sur papier comme dans l’aperçu.
 bill_total_qty_label	Libellé qté totale
 bill_total_subtotal_label	Libellé sous-total
@@ -443,7 +441,6 @@ printer_profile_heading	Mise en page
 vp_delivery_heading	Livraison
 vp_delivery_help	Comment cette imprimante virtuelle envoie les travaux — document du système, octets bruts ou ESC/POS. Le contenu du ticket (corps, retour à la ligne, marges) vient du format addition / ticket, pas d'ici.
 vp_delivery_spooler	Document OS (spouleur système)
-vp_delivery_raw	Octets bruts vers l'appareil
 vp_delivery_escpos	Commandes thermiques ESC/POS
 virtual_printer_new	Nouvelle imprimante virtuelle
 virtual_printer_selected	Modification de « {name} » — touchez une autre dans la liste pour changer
@@ -730,7 +727,6 @@ customer_paid_ph	Client a payé
 tip_ph	Pourboire
 find_server	Trouver le serveur de l'établissement
 bill_format	Format de l'addition
-bill_format_help	Imprimé sous le nom de votre magasin sur chaque addition. Séparez les lignes avec | (p. ex. MG Road, Rajkot | Tél 98250 00000).
 bill_header_ph	Adresse | téléphone
 fssai_ph	N° de licence de pharmacie (facultatif — votre texte)
 bill_footer_ph	Pied (ex. Merci, à bientôt)
@@ -820,8 +816,6 @@ add_dishes	Ajouter des médicaments
 order_so_far	Sur cette commande : {n} · {total}
 no_dish_match	Aucun article ne correspond à « {q} »
 pick_done	Terminé
-kot_field_up	Déplacer vers le haut
-kot_field_down	Déplacer vers le bas
 dishes_n	{n} articles
 reorder_ph	Racheter à
 set_reorder	Fixer le seuil de réapprovisionnement
@@ -853,3 +847,6 @@ sel_copy	Copier
 sel_select_all	Tout sélectionner
 sel_copied	Copié
 nav_loading	Chargement…
+printer_mode_first	Le premier qui fonctionne
+printer_mode_all	Imprimer sur tous
+slip_columns	Colonnes

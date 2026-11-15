@@ -83,9 +83,7 @@ print_cancelled_kot_needed	Najpierw otwórz stół jadalny z anulowanymi daniami
 print_cancelled_kot_none	Brak anulowanych dań w tym zamówieniu
 print_cancelled_kot_client	Druk anulowany ({n}) za {place} wysłany — wydruki kuchenne na serwerze
 kot_banner	Miły baner
-kot_banner_ph	Baner (pusty = brak)
 kot_item_prefix	Przedrostek przedmiotu
-kot_item_prefix_ph	np. [ANULOWANY]
 kot_strike	Zapisz nazwę dania
 kot_strike_note	Uwaga dotycząca uderzenia w danie
 kot_strike_on	Włączone
@@ -103,13 +101,11 @@ bill_item_qty	Ilość
 bill_item_price	Cena
 bill_item_amount	Kwota
 bill_item_note	Uwaga dotycząca dania
-bill_item_col_order	Kolejność kolumn
 bill_item_col_sep	Reguły kolumnowe
 slip_columns	Kolumny
 slip_col_width	Szerokość (mm)
 slip_col_start	Odstęp na początku (px)
 slip_col_end	Odstęp na końcu (px)
-slip_col_align	Wyrównanie tekstu
 slip_columns_help	Szerokość każdej kolumny obejmuje jej odstęp na początku i na końcu. Tekst zawija się w obrębie swojej kolumny; to, co wykracza poza szerokość treści, jest obcinane – na papierze i w podglądzie.
 bill_total_qty_label	Etykieta z całkowitą ilością
 bill_total_subtotal_label	Etykieta sumy częściowej
@@ -643,7 +639,6 @@ vp_type_size_heading	Wpisz rozmiar
 vp_wrap_heading	Szerokość owinięcia
 vp_margin_heading	Marginesy
 vp_delivery_spooler	Dokument systemu operacyjnego (bufor systemowy)
-vp_delivery_raw	Surowe bajty do urządzenia
 vp_delivery_escpos	ESC/POS polecenia termiczne
 virtual_printer_new	Nowa wirtualna drukarka
 virtual_printer_selected	Edycja „{name}” — dotknij innego na liście, aby przełączyć
@@ -1110,7 +1105,6 @@ remove_these_tables	Usuń te stoły do jadalni
 table_remove_ph	Usuń: T1-T24 lub nazwę jednego stołu jadalnego
 find_server	Znajdź serwer sklepu
 bill_format	Format rachunku
-bill_format_help	Drukowane pod nazwą Twojej restauracji na każdym rachunku. Oddziel linie znakiem | (np. MG Road, Rajkot | Ph 98250 00000).
 bill_header_ph	Adres | telefon
 fssai_ph	Licencja FSSAI nr. (Indie)
 bill_footer_ph	Stopka (np. Dziękuję, odwiedź ponownie)
@@ -1127,7 +1121,6 @@ kot_field_hide	Ukryj
 kot_field_on	pokaż
 kot_field_off	ukryć
 kot_field_size	Rozmiar czcionki
-kot_field_size_ph	np. 16, 20, 24, 28, 32…
 kot_weight_light	Światło
 bill_kot_panel_help	Układ rachunków i kartek kuchennych, każdy z własną szerokością treści. Bill Cashier to osoba wystawiająca lub rozliczająca rachunek; KOT Kelner wysłał ten bilet do kuchni — pełna historia zamówienia pozostaje w księgach.
 std_size_ph	np. 18, 20, 26…
@@ -1157,7 +1150,6 @@ kot_style_item_qty	Pozycja · Ilość
 kot_style_field_pick	Wybierz pole
 kot_weight_regular	Regularne
 kot_weight_bold	Odważne
-kot_align	Wyrównaj
 kot_align_start	Zacznij
 kot_align_center	Centrum
 kot_align_end	Koniec
@@ -1307,18 +1299,8 @@ kot_show_item_hdr	Pozycja · Ilość
 kot_hide_item_hdr	Ukryj kolumny
 kot_show_title	Linia tytułowa
 kot_hide_title	Ukryj tytuł
-kot_field_order	Zamówienie wydruku
-kot_field_up	Przesuń się w górę
-kot_field_down	Przesuń w dół
 kot_field_cycle	Wybierz dalej
 kot_field_select	Wybierz dalej
-kot_field_time	Czas
-kot_field_kot_no	KOT Nie
-kot_field_area	Obszar
-kot_field_table	Stół jadalny
-kot_field_shop	Nazwa sklepu
-kot_field_waiter	Personel
-kot_field_station	Stacja
 dishes_n	{n} potraw
 recipe_ph	Przepis (opcjonalnie) – w jednej porcji wykorzystano: Ryż=0,2, Paneer=0,15
 reorder_ph	Kup więcej na

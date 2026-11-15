@@ -81,12 +81,10 @@ bill_item_qty	Cant.
 bill_item_price	Prezo
 bill_item_amount	Importe
 bill_item_note	Rx / nota de venda
-bill_item_col_order	Orde das columnas
 bill_item_col_sep	Liñas de columna
 slip_col_width	Ancho (mm)
 slip_col_start	Espazo inicial (px)
 slip_col_end	Espazo final (px)
-slip_col_align	Aliñamento do texto
 slip_columns_help	O ancho de cada columna inclúe o seu espazo inicial e final. O texto axústase dentro da súa columna; o que pasa do ancho do contido recórtase, no papel e na vista previa.
 bill_total_qty_label	Etiqueta de cant. total
 bill_total_subtotal_label	Etiqueta de subtotal
@@ -443,7 +441,6 @@ printer_profile_heading	Disposición
 vp_delivery_heading	Entrega
 vp_delivery_help	Como esta impresora virtual envía traballos: documento do SO, bytes en bruto ou ESC/POS. O contido do documento (tamaño do tipo, envoltura, marxes) decídese polo formato de factura/slip, non aquí.
 vp_delivery_spooler	Documento do SO (cola do sistema)
-vp_delivery_raw	Bytes en bruto ao dispositivo
 vp_delivery_escpos	Ordes térmicas ESC/POS
 virtual_printer_new	Impresora virtual nova
 virtual_printer_selected	Editando «{name}» — prema outra da lista para cambiar
@@ -730,7 +727,6 @@ customer_paid_ph	O cliente pagou
 tip_ph	Propina
 find_server	Atopar o servidor da tenda
 bill_format	Formato da conta
-bill_format_help	Impreso baixo o nome da túa tenda en cada factura. Separa liñas con | (por exemplo, MG Road, Rajkot | Teléfono 98250 00000).
 bill_header_ph	Enderezo | teléfono
 fssai_ph	Licenza de drogas núm. (opcional: a súa redacción)
 bill_footer_ph	Pé (p. ex. Grazas, volva)
@@ -820,8 +816,6 @@ add_dishes	Engade medicamentos
 order_so_far	Neste pedido: {n} · {total}
 no_dish_match	Ningún elemento coincide con "{q}"
 pick_done	Feito
-kot_field_up	Subir
-kot_field_down	Baixar
 dishes_n	Elementos {n}
 reorder_ph	Volver mercar en
 set_reorder	Poñer o nivel de reposición
@@ -853,3 +847,6 @@ sel_copy	Copiar
 sel_select_all	Seleccionar todo
 sel_copied	Copiado
 nav_loading	Cargando…
+printer_mode_first	A primeira que funcione
+printer_mode_all	Imprimir en todas
+slip_columns	Columnas

@@ -113,7 +113,6 @@ impl AppState {
             floor_sections_open: Vec::new(),
             order_sections_open: Vec::new(),
             kot_slip_draft: print_share::KotSlipFormat::default(),
-            kot_field_edit_idx: 0,
             kot_edit_kind: print_share::KotSlipKind::Original,
             kot_style_field: print_share::KotStyleField::Area,
             bill_kot_tab_kot: false,
@@ -121,8 +120,6 @@ impl AppState {
             bill_slip_draft: print_share::BillSlipFormat::default(),
             bill_style_field: print_share::BillStyleField::Shop,
             bill_field_edit_idx: 0,
-            bill_item_col_edit_idx: 0,
-            kot_item_col_edit: print_share::KotItemCol::Item,
             device_setup_sections_open: vec!["role".into()],
             draft_venue_icon_path: None,
             pending_backup_copy: None,
@@ -210,14 +207,28 @@ impl AppState {
             rail_collapsed: false,
             books_report_kind: BooksReportKind::Today,
         };
-        if let Ok(dir) = store::data_dir() {
+        // Tests never open this machine's books or printers, and never
+        // print. The library's own "capture under cargo test" does not
+        // reach the app's tests (they link the library built normally), so
+        // they loaded the shop's printers.json and sent real jobs to its
+        // printer (2026-11-15).
+        let this_machine = !cfg!(test);
+        if cfg!(test) {
+            print_share::set_sink(print_share::PrintSink::Capture);
+        }
+        if let Some(dir) = store::data_dir().ok().filter(|_| this_machine) {
             state.data_base = Some(dir.clone());
             print_share::use_device_dir(&dir);
             diag::ensure_ready(&dir, store::APP_ID, env!("CARGO_PKG_VERSION"));
             state.printer_draft = print_share::printers();
             let _ = state.refresh_local_servers();
         }
-        match Store::open_default() {
+        let opened = if this_machine {
+            Store::open_default()
+        } else {
+            Err("No local server (tests use their own books)".to_string())
+        };
+        match opened {
             Ok(store) => {
                 state.status = String::new();
                 state.store = Some(store);

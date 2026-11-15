@@ -83,9 +83,7 @@ print_cancelled_kot_needed	פתחו קודם שולחן עם מנות מבוטל
 print_cancelled_kot_none	אין מנות מבוטלות בהזמנה הזו
 print_cancelled_kot_client	הדפסת מבוטלות ({n}) עבור {place} נשלחה — המטבח מדפיס בשרת
 kot_banner	סרט הסוג
-kot_banner_ph	סרט (ריק = אין)
 kot_item_prefix	קידומת פריט
-kot_item_prefix_ph	למשל [מבוטל]
 kot_strike	קו על שם המנה
 kot_strike_note	קו על הערת המנה
 kot_strike_on	פועל
@@ -103,13 +101,11 @@ bill_item_qty	כמות
 bill_item_price	מחיר
 bill_item_amount	סכום
 bill_item_note	הערת מנה
-bill_item_col_order	סדר עמודות
 bill_item_col_sep	קווי עמודות
 slip_columns	עמודות
 slip_col_width	רוחב (mm)
 slip_col_start	רווח התחלה (px)
 slip_col_end	רווח סיום (px)
-slip_col_align	יישור טקסט
 slip_columns_help	רוחב כל עמודה כולל את רווח ההתחלה והסיום שלה. הטקסט נשבר בתוך העמודה שלו; מה שחורג מרוחב התוכן נחתך – על הנייר ובתצוגה המקדימה.
 bill_total_qty_label	תווית כמות כוללת
 bill_total_subtotal_label	תווית ביניים
@@ -643,7 +639,6 @@ vp_type_size_heading	גודל אות
 vp_wrap_heading	רוחב גלישה
 vp_margin_heading	שוליים
 vp_delivery_spooler	מסמך OS (תור המערכת)
-vp_delivery_raw	בתים גולמיים למכשיר
 vp_delivery_escpos	פקודות תרמיות ESC/POS
 virtual_printer_new	מדפסת וירטואלית חדשה
 virtual_printer_selected	עורכים את “{name}” — הקישו על אחרת ברשימה כדי לעבור
@@ -1110,7 +1105,6 @@ remove_these_tables	הסר את השולחנות האלה
 table_remove_ph	הסר: T1-T24, או שם של שולחן אחד
 find_server	מצא את שרת החנות
 bill_format	פורמט חשבון
-bill_format_help	מודפס מתחת לשם המסעדה שלכם בכל חשבון. הפרידו שורות ב־| (למשל MG Road, Rajkot | טל׳ 98250 00000).
 bill_header_ph	כתובת | טלפון
 fssai_ph	מס׳ רישיון FSSAI (הודו)
 bill_footer_ph	כותרת תחתונה (למשל תודה, בואו שוב)
@@ -1127,7 +1121,6 @@ kot_field_hide	הסתר
 kot_field_on	הצג
 kot_field_off	הסתר
 kot_field_size	גודל גופן
-kot_field_size_ph	למשל 16, 20, 24, 28, 32…
 kot_weight_light	דק
 bill_kot_panel_help	פריסת חשבון ופתק מטבח, לכל אחד רוחב תוכן משלו. קופאי החשבון הוא מי שהנפיק או סגר את החשבון; מלצר ה־KOT הוא מי ששלח את פתק המטבח הזה — סיפור ההזמנה המלא נשאר בספרים.
 std_size_ph	למשל 18, 20, 26…
@@ -1157,7 +1150,6 @@ kot_style_item_qty	פריט · כמות
 kot_style_field_pick	בחר שדה
 kot_weight_regular	רגיל
 kot_weight_bold	מודגש
-kot_align	יישור
 kot_align_start	התחלה
 kot_align_center	מרכז
 kot_align_end	סוף
@@ -1307,18 +1299,8 @@ kot_show_item_hdr	פריט · כמות
 kot_hide_item_hdr	הסתר עמודות
 kot_show_title	שורת כותרת
 kot_hide_title	הסתר כותרת
-kot_field_order	סדר הדפסה
-kot_field_up	הזז למעלה
-kot_field_down	הזז למטה
 kot_field_cycle	בחר את הבא
 kot_field_select	בחר את הבא
-kot_field_time	שעה
-kot_field_kot_no	מס׳ KOT
-kot_field_area	אזור
-kot_field_table	שולחן
-kot_field_shop	שם החנות
-kot_field_waiter	צוות
-kot_field_station	עמדה
 dishes_n	{n} מנות
 recipe_ph	מתכון (לא חובה) — מנה אחת משתמשת: אורז=0.2, Paneer=0.15
 reorder_ph	קנו עוד ב־

@@ -69,12 +69,10 @@ bill_item_qty	Adet
 bill_item_price	Fiyat
 bill_item_amount	Tutar
 bill_item_note	Ürün notu
-bill_item_col_order	Sütun sırası
 bill_item_col_sep	Sütun çizgileri
 slip_col_width	Genişlik (mm)
 slip_col_start	Başlangıç boşluğu (px)
 slip_col_end	Bitiş boşluğu (px)
-slip_col_align	Metin hizalama
 slip_columns_help	Her sütunun genişliği başlangıç ve bitiş boşluğunu da içerir. Metin kendi sütunu içinde kaydırılır; içerik genişliğini aşan kısım kâğıtta ve önizlemede kesilir.
 bill_total_qty_label	Toplam adet etiketi
 bill_total_subtotal_label	Ara toplam etiketi
@@ -431,7 +429,6 @@ printer_profile_heading	Yerleşim
 vp_delivery_heading	Teslimat
 vp_delivery_help	Bu sanal yazıcı işleri nasıl gönderir — sistem belgesi, ham bayt veya ESC/POS. Fiş içeriği (punto, kaydırma, kenar boşluğu) hesap / fiş biçiminden gelir, buradan değil.
 vp_delivery_spooler	İşletim sistemi belgesi (sistem kuyruğu)
-vp_delivery_raw	Cihaza ham bayt
 vp_delivery_escpos	ESC/POS termal komutları
 virtual_printer_new	Yeni sanal yazıcı
 virtual_printer_selected	“{name}” düzenleniyor — listede başkasına dokunup geçin
@@ -718,7 +715,6 @@ customer_paid_ph	Müşteri verdi
 tip_ph	Bahşiş
 find_server	Dükkânın sunucusunu bul
 bill_format	Hesap biçimi
-bill_format_help	Her hesabın üstünde dükkân adınızın altında basılır. Satırları | ile ayırın (ör. MG Road, Rajkot | Tel 98250 00000).
 bill_header_ph	Adres | telefon
 fssai_ph	FSSAI / dükkân ruhsat no. (isteğe bağlı)
 bill_footer_ph	Alt bilgi (ör. Teşekkürler, yine bekleriz)
@@ -808,8 +804,6 @@ add_dishes	Ürün ekle
 order_so_far	Bu siparişte: {n} · {total}
 no_dish_match	“{q}” ile eşleşen ürün yok
 pick_done	Tamam
-kot_field_up	Yukarı taşı
-kot_field_down	Aşağı taşı
 dishes_n	{n} ürün
 reorder_ph	Şu miktarda yeniden al
 set_reorder	Yeniden sipariş seviyesini ayarla
@@ -841,3 +835,6 @@ sel_copy	Kopyala
 sel_select_all	Tümünü seç
 sel_copied	Kopyalandı
 nav_loading	Yükleniyor…
+printer_mode_first	Çalışanı olan ilkini
+printer_mode_all	Hepsi üzerinde baskı al
+slip_columns	Sütunlar

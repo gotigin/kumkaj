@@ -83,9 +83,7 @@ print_cancelled_kot_needed	Алдымен бас тартылған тағамы
 print_cancelled_kot_none	Бұл тапсырыста бас тартылған тағам жоқ
 print_cancelled_kot_client	Бас тартылғанды басу ({n}) {place} үшін жіберілді — асүй Серверде басады
 kot_banner	Түр баннері
-kot_banner_ph	Баннер (бос = жоқ)
 kot_item_prefix	Тауар префиксі
-kot_item_prefix_ph	мыс. [БАС ТАРТЫЛДЫ]
 kot_strike	Тағам атын сызу
 kot_strike_note	Тағам ескертпесін сызу
 kot_strike_on	Қосулы
@@ -103,13 +101,11 @@ bill_item_qty	Сан
 bill_item_price	Баға
 bill_item_amount	Сома
 bill_item_note	Тағам ескертпесі
-bill_item_col_order	Баған реті
 bill_item_col_sep	Баған сызықтары
 slip_columns	Бағандар
 slip_col_width	Ені (mm)
 slip_col_start	Бастапқы аралық (px)
 slip_col_end	Соңғы аралық (px)
-slip_col_align	Мәтінді туралау
 slip_columns_help	Әр бағанның ені оның бастапқы және соңғы аралығын қамтиды. Мәтін өз бағанының ішінде тасымалданады; мазмұн енінен шығып кеткен бөлігі қағазда да, алдын ала қарауда да кесіледі.
 bill_total_qty_label	Жалпы сан белгісі
 bill_total_subtotal_label	Аралық сома белгісі
@@ -643,7 +639,6 @@ vp_type_size_heading	Қаріп өлшемі
 vp_wrap_heading	Тасымал ені
 vp_margin_heading	Жиектер
 vp_delivery_spooler	ОЖ құжаты (жүйелік спулер)
-vp_delivery_raw	Құрылғыға шикі байт
 vp_delivery_escpos	ESC/POS термокомандалары
 virtual_printer_new	Жаңа виртуалды принтер
 virtual_printer_selected	«{name}» өңделуде — ауыстыру үшін тізімдегі басқасын түртіңіз
@@ -1110,7 +1105,6 @@ remove_these_tables	Осы үстелдерді алып тастау
 table_remove_ph	Алып тастау: T1-T24 немесе бір үстелдің аты
 find_server	Дүкен серверін табу
 bill_format	Шот пішімі
-bill_format_help	Әр шотта мейрамхана атының астында басылады. Жолдарды | белгісімен бөліңіз (мыс. MG Road, Rajkot | Тел 98250 00000).
 bill_header_ph	Мекенжай | телефон
 fssai_ph	FSSAI лицензия № (Үндістан)
 bill_footer_ph	Төменгі жазу (мыс. Рақмет, қайта келіңіз)
@@ -1127,7 +1121,6 @@ kot_field_hide	Жасыру
 kot_field_on	көрсету
 kot_field_off	жасыру
 kot_field_size	Қаріп өлшемі
-kot_field_size_ph	мыс. 16, 20, 24, 28, 32…
 kot_weight_light	Жіңішке
 bill_kot_panel_help	Шот пен асүй фишінің орналасуы, әрқайсысының өз мазмұн ені бар. Шот кассирі шотты берген немесе жапқан адам; KOT даяшы сол асүй фишін жіберген адам — тапсырыстың толық тарихы кітаптарда қалады.
 std_size_ph	мыс. 18, 20, 26…
@@ -1157,7 +1150,6 @@ kot_style_item_qty	Тауар · Саны
 kot_style_field_pick	Өріс таңдау
 kot_weight_regular	Қалыпты
 kot_weight_bold	Қалың
-kot_align	Туралау
 kot_align_start	Басы
 kot_align_center	Ортасы
 kot_align_end	Соңы
@@ -1307,18 +1299,8 @@ kot_show_item_hdr	Тауар · Саны
 kot_hide_item_hdr	Бағандарды жасыру
 kot_show_title	Тақырып жолы
 kot_hide_title	Тақырыпты жасыру
-kot_field_order	Басу реті
-kot_field_up	Жоғары жылжыту
-kot_field_down	Төмен жылжыту
 kot_field_cycle	Келесіні таңдау
 kot_field_select	Келесіні таңдау
-kot_field_time	Уақыт
-kot_field_kot_no	KOT №
-kot_field_area	Аймақ
-kot_field_table	Үстел
-kot_field_shop	Дүкен аты
-kot_field_waiter	Қызметкер
-kot_field_station	Станция
 dishes_n	{n} тағам
 recipe_ph	Рецепт (міндетті емес) — бір порция қолданады: Күріш=0.2, Панир=0.15
 reorder_ph	Тағы сатып алу

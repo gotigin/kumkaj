@@ -83,9 +83,7 @@ print_cancelled_kot_needed	Obriu primer una taula amb plats anul·lats
 print_cancelled_kot_none	No hi ha plats anul·lats en aquesta comanda
 print_cancelled_kot_client	Anul·lats ({n}) per a {place} enviats — la cuina imprimeix al Servidor
 kot_banner	Bàner de tipus
-kot_banner_ph	Bàner (buit = cap)
 kot_item_prefix	Prefix d'article
-kot_item_prefix_ph	p. ex. [ANUL·LAT]
 kot_strike	Ratlla el nom del plat
 kot_strike_note	Ratlla la nota del plat
 kot_strike_on	Activat
@@ -103,13 +101,11 @@ bill_item_qty	Qtat
 bill_item_price	Preu
 bill_item_amount	Import
 bill_item_note	Nota del plat
-bill_item_col_order	Ordre de columnes
 bill_item_col_sep	Línies de columna
 slip_columns	Columnes
 slip_col_width	Amplada (mm)
 slip_col_start	Espai inicial (px)
 slip_col_end	Espai final (px)
-slip_col_align	Alineació del text
 slip_columns_help	L’amplada de cada columna inclou el seu espai inicial i final. El text s’ajusta dins la seva columna; el que sobrepassa l’amplada del contingut es retalla, en paper i a la previsualització.
 bill_total_qty_label	Etiqueta de qtat total
 bill_total_subtotal_label	Etiqueta de subtotal
@@ -643,7 +639,6 @@ vp_type_size_heading	Mida de lletra
 vp_wrap_heading	Amplada de línia
 vp_margin_heading	Marges
 vp_delivery_spooler	Document del SO (cua del sistema)
-vp_delivery_raw	Bytes en brut al dispositiu
 vp_delivery_escpos	Ordres tèrmiques ESC/POS
 virtual_printer_new	Impressora virtual nova
 virtual_printer_selected	S'edita «{name}» — toqueu-ne una altra de la llista per canviar
@@ -1110,7 +1105,6 @@ remove_these_tables	Treu aquestes taules
 table_remove_ph	Treu: T1-T24, o el nom d'una taula
 find_server	Troba el servidor de la botiga
 bill_format	Format del compte
-bill_format_help	S'imprimeix sota el nom del restaurant a cada compte. Separeu les línies amb | (p. ex. MG Road, Rajkot | Tel 98250 00000).
 bill_header_ph	Adreça | telèfon
 fssai_ph	Núm. de llicència FSSAI (Índia)
 bill_footer_ph	Peu (p. ex. Gràcies, torneu)
@@ -1127,7 +1121,6 @@ kot_field_hide	Amaga
 kot_field_on	mostra
 kot_field_off	amaga
 kot_field_size	Mida de lletra
-kot_field_size_ph	p. ex. 16, 20, 24, 28, 32…
 kot_weight_light	Prima
 bill_kot_panel_help	Disposició del compte i del tiquet de cuina, cadascun amb la seva amplada de contingut. El Caixer del compte és qui l'ha emès o tancat; el Cambrer del KOT és qui ha enviat aquell tiquet — la història sencera de la comanda queda als llibres.
 std_size_ph	p. ex. 18, 20, 26…
@@ -1157,7 +1150,6 @@ kot_style_item_qty	Article · Qtat
 kot_style_field_pick	Selecciona el camp
 kot_weight_regular	Normal
 kot_weight_bold	Negreta
-kot_align	Alineació
 kot_align_start	Inici
 kot_align_center	Centre
 kot_align_end	Final
@@ -1307,18 +1299,8 @@ kot_show_item_hdr	Article · Qtat
 kot_hide_item_hdr	Amaga les columnes
 kot_show_title	Línia de títol
 kot_hide_title	Amaga el títol
-kot_field_order	Ordre d'impressió
-kot_field_up	Puja
-kot_field_down	Baixa
 kot_field_cycle	Selecciona el següent
 kot_field_select	Selecciona el següent
-kot_field_time	Hora
-kot_field_kot_no	Núm. KOT
-kot_field_area	Zona
-kot_field_table	Taula
-kot_field_shop	Nom de la botiga
-kot_field_waiter	Personal
-kot_field_station	Estació
 dishes_n	{n} plats
 recipe_ph	Recepta (opcional) — una ració fa servir: Rice=0.2, Paneer=0.15
 reorder_ph	Torna a comprar a

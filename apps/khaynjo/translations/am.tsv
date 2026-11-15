@@ -83,9 +83,7 @@ print_cancelled_kot_needed	መጀመሪያ የተሰረዙ ምግቦች ያሉ�
 print_cancelled_kot_none	በዚህ ትዕዛዝ ላይ የተሰረዘ ምግብ የለም
 print_cancelled_kot_client	የተሰረዘ ማተም ({n}) ለ {place} ተልኳል — ኩሽናው በሰርቨር ያትማል
 kot_banner	የአይነት ሰንደቅ
-kot_banner_ph	ሰንደቅ (ባዶ = የለም)
 kot_item_prefix	የእቃ ቅድመ ቃል
-kot_item_prefix_ph	ለምሳሌ [የተሰረዘ]
 kot_strike	የምግብ ስም ሰርዝ
 kot_strike_note	የምግብ ማስታወሻ ሰርዝ
 kot_strike_on	በርቷል
@@ -103,13 +101,11 @@ bill_item_qty	ብዛት
 bill_item_price	ዋጋ
 bill_item_amount	መጠን
 bill_item_note	የምግብ ማስታወሻ
-bill_item_col_order	የአምድ ቅደም ተከተል
 bill_item_col_sep	የአምድ መስመሮች
 slip_columns	አምዶች
 slip_col_width	ስፋት (mm)
 slip_col_start	የመጀመሪያ ክፍተት (px)
 slip_col_end	የመጨረሻ ክፍተት (px)
-slip_col_align	የጽሑፍ አሰላለፍ
 slip_columns_help	የእያንዳንዱ አምድ ስፋት የመጀመሪያና የመጨረሻ ክፍተቱን ያካትታል። ጽሑፉ በአምዱ ውስጥ ይጠቀለላል፤ ከይዘቱ ስፋት በላይ ያለው በወረቀትም በቅድመ እይታም ይቆረጣል።
 bill_total_qty_label	የጠቅላላ ብዛት መለያ
 bill_total_subtotal_label	የንዑስ ድምር መለያ
@@ -643,7 +639,6 @@ vp_type_size_heading	የፊደል መጠን
 vp_wrap_heading	የመጠቅለያ ስፋት
 vp_margin_heading	ህዳሶች
 vp_delivery_spooler	የስርዓት ሰነድ (የስርዓት ስፑለር)
-vp_delivery_raw	ጥሬ ባይቶች ወደ መሣሪያ
 vp_delivery_escpos	ESC/POS የሙቀት ትዕዛዞች
 virtual_printer_new	አዲስ ምናባዊ ማተሚያ
 virtual_printer_selected	“{name}” በማስተካከል ላይ — ለመቀየር በዝርዝሩ ሌላውን ይንኩ
@@ -1110,7 +1105,6 @@ remove_these_tables	እነዚህን ጠረጴዛዎች አስወግድ
 table_remove_ph	አስወግድ፦ T1-T24፣ ወይም የአንድ ጠረጴዛ ስም
 find_server	የሱቁን ሰርቨር ፈልግ
 bill_format	የሂሳብ ቅርጸት
-bill_format_help	በእያንዳንዱ ሂሳብ ላይ ከምግብ ቤትዎ ስም በታች ይታተማል። መስመሮችን በ | ይለዩ (ለምሳሌ MG Road, Rajkot | ስል 98250 00000)።
 bill_header_ph	አድራሻ | ስልክ
 fssai_ph	የ FSSAI ፈቃድ ቁጥር (ሕንድ)
 bill_footer_ph	ግርጌ (ለምሳሌ አመሰግናለሁ፣ እንደገና ይምጡ)
@@ -1127,7 +1121,6 @@ kot_field_hide	ደብቅ
 kot_field_on	አሳይ
 kot_field_off	ደብቅ
 kot_field_size	የፊደል መጠን
-kot_field_size_ph	ለምሳሌ 16፣ 20፣ 24፣ 28፣ 32…
 kot_weight_light	ቀጭን
 bill_kot_panel_help	የሂሳብ እና የኩሽና ወረቀት አቀማመጥ፣ እያንዳንዱ የራሱ የይዘት ስፋት አለው። የሂሳብ ገንዘብ ተቀባይ ሂሳቡን ያወጣ ወይም የዘጋው ነው፤ የ KOT አስተናጋጅ ያንን የኩሽና ትኬት የላከው ነው — ሙሉ የትዕዛዝ ታሪክ በመዝገቦች ውስጥ ይቆያል።
 std_size_ph	ለምሳሌ 18፣ 20፣ 26…
@@ -1157,7 +1150,6 @@ kot_style_item_qty	እቃ · ብዛት
 kot_style_field_pick	መስክ ምረጥ
 kot_weight_regular	መደበኛ
 kot_weight_bold	ደማቅ
-kot_align	አሰላለፍ
 kot_align_start	መጀመሪያ
 kot_align_center	መሃል
 kot_align_end	መጨረሻ
@@ -1307,18 +1299,8 @@ kot_show_item_hdr	እቃ · ብዛት
 kot_hide_item_hdr	አምዶች ደብቅ
 kot_show_title	የርዕስ መስመር
 kot_hide_title	ርዕስ ደብቅ
-kot_field_order	የህትመት ቅደም ተከተል
-kot_field_up	ወደ ላይ አንቀሳቅስ
-kot_field_down	ወደ ታች አንቀሳቅስ
 kot_field_cycle	ቀጣዩን ምረጥ
 kot_field_select	ቀጣዩን ምረጥ
-kot_field_time	ሰዓት
-kot_field_kot_no	የ KOT ቁጥር
-kot_field_area	አካባቢ
-kot_field_table	ጠረጴዛ
-kot_field_shop	የሱቅ ስም
-kot_field_waiter	ሰራተኛ
-kot_field_station	ጣቢያ
 dishes_n	{n} ምግቦች
 recipe_ph	የምግብ አሰራር (አማራጭ) — አንድ ድርሻ ይጠቀማል፦ ሩዝ=0.2፣ ፓኒር=0.15
 reorder_ph	ተጨማሪ ግዛ በ

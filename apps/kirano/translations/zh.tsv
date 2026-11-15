@@ -69,12 +69,10 @@ bill_item_qty	数量
 bill_item_price	单价
 bill_item_amount	金额
 bill_item_note	项目备注
-bill_item_col_order	列顺序
 bill_item_col_sep	列线
 slip_col_width	宽度 (mm)
 slip_col_start	开头间距 (px)
 slip_col_end	结尾间距 (px)
-slip_col_align	文字对齐
 slip_columns_help	每列的宽度已包含其开头和结尾间距。文字在所属列内换行；超出内容宽度的部分，在纸上和预览中都会被裁掉。
 bill_total_qty_label	总数量标签
 bill_total_subtotal_label	小计标签
@@ -431,7 +429,6 @@ printer_profile_heading	版式
 vp_delivery_heading	发送方式
 vp_delivery_help	此虚拟打印机如何发送作业 - 操作系统文档、原始字节或 ESC/POS。单据内容（字号、换行、页边距）由帐单/单据格式决定，此处不作说明。
 vp_delivery_spooler	系统文档（系统后台打印）
-vp_delivery_raw	原始字节到设备
 vp_delivery_escpos	ESC/POS 热敏命令
 virtual_printer_new	新建虚拟打印机
 virtual_printer_selected	正在编辑“{name}”——点列表中另一项以切换
@@ -718,7 +715,6 @@ customer_paid_ph	客人付款
 tip_ph	小费
 find_server	查找店内服务器
 bill_format	账单格式
-bill_format_help	每张账单上都印有您商店的名称。用 | 分隔行（例如 MG Road, Rajkot | Ph 98250 00000）。
 bill_header_ph	地址 | 电话
 fssai_ph	FSSAI / 商店许可证号（选修的）
 bill_footer_ph	页脚（如：谢谢，欢迎再来）
@@ -808,8 +804,6 @@ add_dishes	添加项目
 order_so_far	本单：{n} · {total}
 no_dish_match	没有项目匹配“{q}”
 pick_done	完成
-kot_field_up	上移
-kot_field_down	下移
 dishes_n	{n} 项目
 reorder_ph	低于此数补货
 set_reorder	设置补货线
@@ -841,3 +835,6 @@ sel_copy	复制
 sel_select_all	全选
 sel_copied	已复制
 nav_loading	加载中…
+printer_mode_first	第一个可用的
+printer_mode_all	全部打印
+slip_columns	列

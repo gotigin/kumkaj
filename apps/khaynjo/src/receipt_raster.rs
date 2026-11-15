@@ -14,14 +14,10 @@ use unicode_bidi::BidiInfo;
 pub const PAPER_DOTS: usize = 384;
 /// Most bytes of picture data in one `GS v 0` band: strictly under 3 KB.
 pub const BAND_PAYLOAD_MAX: usize = 3 * 1024 - 1;
-/// Pause between two pictures, and before the cut, on a paced writer.
-pub const PIECE_PAUSE_MS: u64 = 40;
 
-/// Rows per `GS v 0` command. A head that is still printing drops the next
-/// picture; one 128-dot band is about three lines, which is all that came
-/// out when the rest of the ticket arrived in the same burst. Each band's
-/// payload stays under 3 KB so it fits a small receive buffer, at any width
-/// (58 mm, 80 mm, or a 210 mm page).
+/// Rows per `GS v 0` command: a tall picture is several `GS v 0` bands in
+/// one job (standard ESC/POS raster), each band's picture data under 3 KB,
+/// at any width.
 pub fn band_rows(row_bytes: usize) -> usize {
     (BAND_PAYLOAD_MAX / row_bytes.max(1)).max(1)
 }
@@ -218,6 +214,18 @@ pub struct PairHalf {
 pub const SIZE_MIN: f32 = 1.0;
 pub const SIZE_MAX: f32 = 200.0;
 
+/// Dots of the picture in one px. A px is the standard pixel, 1/96 inch —
+/// what every other app means by a px (owner, 2026-11-15: "30px means
+/// 30px"; 18 px is ordinary reading text). The picture has 576 dots per
+/// 80 mm of content (7.2 per mm) on every content width, so a size is the
+/// same on 58, 80 or 210 mm, in the preview and on paper.
+pub const PX_DOTS: f32 = 576.0 / 80.0 * 25.4 / 96.0;
+
+/// A size in px, in the picture's dots.
+pub fn px_dots(px: f32) -> f32 {
+    px * PX_DOTS
+}
+
 /// How the slip is drawn: Standard (bills) vs KOT (kitchen tickets).
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 pub enum SlipStyle {
@@ -315,70 +323,6 @@ fn pack_escpos_picture(drawn: (Vec<u8>, usize), width_dots: usize) -> Vec<u8> {
     out
 }
 
-/// One `GS v 0` picture at a time, then the cut. A thermal head prints the
-/// first picture and drops the rest when they arrive in one burst.
-pub fn write_escpos_paced(
-    bytes: &[u8],
-    mut write_flush: impl FnMut(&[u8]) -> Result<(), String>,
-) -> Result<(), String> {
-    let pieces = escpos_raster_pieces(bytes);
-    for (i, piece) in pieces.iter().enumerate() {
-        if i > 0 {
-            std::thread::sleep(std::time::Duration::from_millis(PIECE_PAUSE_MS));
-        }
-        write_flush(piece)?;
-    }
-    Ok(())
-}
-
-/// Byte length of each paced piece, in order (they add up to the job).
-/// Writers that run outside Rust (Windows PowerShell) send these one at a
-/// time with [`PIECE_PAUSE_MS`] between them.
-pub fn escpos_piece_lengths(bytes: &[u8]) -> Vec<usize> {
-    escpos_raster_pieces(bytes).iter().map(|p| p.len()).collect()
-}
-
-/// The job split for pacing, every byte in order: the reset with the first
-/// picture, then each further picture, and anything between two pictures
-/// (a copy's feed and cut, the next copy's reset) or after the last one as
-/// its own piece, so the head gets a pause before each cut. Plain-text jobs
-/// are one piece.
-fn escpos_raster_pieces(bytes: &[u8]) -> Vec<&[u8]> {
-    let mut spans = Vec::new();
-    let mut i = 0usize;
-    while i + 8 <= bytes.len() {
-        if bytes[i..i + 4] == [0x1D, 0x76, 0x30, 0x00] {
-            let width = bytes[i + 4] as usize + ((bytes[i + 5] as usize) << 8);
-            let height = bytes[i + 6] as usize + ((bytes[i + 7] as usize) << 8);
-            let end = (i + 8 + width.saturating_mul(height)).min(bytes.len());
-            spans.push((i, end));
-            i = end;
-            continue;
-        }
-        i += 1;
-    }
-    if spans.is_empty() {
-        return vec![bytes];
-    }
-    let mut pieces = Vec::new();
-    let mut from = 0usize;
-    for (n, &(start, end)) in spans.iter().enumerate() {
-        if n == 0 {
-            // ESC @ (and anything else before the first picture) rides with it.
-            pieces.push(&bytes[from..end]);
-        } else {
-            if start > from {
-                pieces.push(&bytes[from..start]);
-            }
-            pieces.push(&bytes[start..end]);
-        }
-        from = end;
-    }
-    if from < bytes.len() {
-        pieces.push(&bytes[from..]);
-    }
-    pieces
-}
 
 /// `text` drawn with kitchen metrics.
 pub fn draw(text: &str) -> (Vec<u8>, usize) {
@@ -390,12 +334,10 @@ pub fn draw_style(text: &str, style: SlipStyle) -> (Vec<u8>, usize) {
     draw_metrics(text, &metrics(style))
 }
 
-// Sizes are literal (owner, 2026-11-15: "30px means 30px"): a size of N is
-// N dots in the picture on every content width, and so are the side margin
-// and the line pitch. The content width only moves the end edge. Until
-// 2026-11-15 a wider page multiplied every size by width / 576 (and for a
-// few hours every width by 1512 / 576) — virtual sizes, rejected
-// (docs/PRINTER.md "Sizes are literal", lessons 11).
+// A size of N px is N standard pixels (`PX_DOTS` dots each) on every
+// content width; the content width only moves the end edge. A size scaled
+// by the width (2026-11-07) and a size read as printer dots (micro text,
+// 2026-11-15) were both wrong (docs/PRINTER.md "Sizes", lessons 11).
 
 fn rule_thickness(em: f32, weight: RasterWeight) -> usize {
     let f = match weight {
@@ -433,8 +375,11 @@ fn paint_rule(dots: &mut [bool], width: usize, y: usize, side: f32, thick: usize
 pub fn draw_metrics(text: &str, src: &RasterMetrics) -> (Vec<u8>, usize) {
     let faces = faces();
     let width = src.page_dots();
+    // Type size, line spacing and baseline are px; the side margin is dots.
     let m = RasterMetrics {
-        line: src.line.max(1),
+        em: px_dots(src.em),
+        line: ((src.line.max(1) as f32) * PX_DOTS).round().max(1.0) as usize,
+        baseline: px_dots(src.baseline),
         width_dots: width,
         ..*src
     };
@@ -501,7 +446,7 @@ pub fn draw_lines(lines: &[StyledLine], page: &RasterMetrics) -> (Vec<u8>, usize
         if line.text.trim().is_empty() && !matches!(line.tab, Some(LineColumns::Pair(_))) {
             continue;
         }
-        let em = line.em.clamp(SIZE_MIN, SIZE_MAX);
+        let em = px_dots(line.em.clamp(SIZE_MIN, SIZE_MAX));
         if is_rule_line(&line.text) {
             let rule_px = rule_thickness(em, line.weight);
             let gap = ((em * 0.35).round() as usize).clamp(4, 18);
@@ -783,7 +728,7 @@ fn pair_row(
         (line.text.as_str(), line.em, line.weight, line.align, 0.0f32),
         (right.text.as_str(), right.em, right.weight, right.align, half),
     ] {
-        let em = em.clamp(SIZE_MIN, SIZE_MAX);
+        let em = px_dots(em.clamp(SIZE_MIN, SIZE_MAX));
         let pitch = line_pitch(em);
         let m = RasterMetrics {
             em,
@@ -820,7 +765,7 @@ fn pair_row(
         pitch: height.max(1),
         rule_px: 0,
         strike: None,
-        strike_em: line.em,
+        strike_em: px_dots(line.em.clamp(SIZE_MIN, SIZE_MAX)),
         sep_xs: Vec::new(),
     }
 }
@@ -945,7 +890,7 @@ pub fn png_lines(lines: &[StyledLine], m: &RasterMetrics) -> Result<Vec<u8>, Str
 /// Body-type height in the PNG, in pixels. The on-screen preview uses this
 /// so a uniform scale can stay readable.
 pub fn drawn_type_px(em: f32, width_dots: usize) -> f64 {
-    let drawn = em.clamp(SIZE_MIN, SIZE_MAX);
+    let drawn = px_dots(em.clamp(SIZE_MIN, SIZE_MAX));
     drawn as f64 * png_pixel_scale(width_dots.max(1)) as f64
 }
 
@@ -1525,8 +1470,9 @@ mod tests {
         ] {
             assert!(missing_letters(sample).is_empty(), "{sample}: {:?}", missing_letters(sample));
             let (rows, height) = draw(sample);
-            let line = metrics(SlipStyle::Kot).line;
-            assert_eq!(height, line, "{sample} fits one line");
+            // Kitchen type is px: whole lines of `line` px each (it may wrap).
+            let line = ((metrics(SlipStyle::Kot).line as f32) * PX_DOTS).round() as usize;
+            assert_eq!(height % line, 0, "{sample}: whole lines");
             assert!(ink(&rows) > 150, "{sample} left ink on the paper");
         }
         assert_eq!(missing_letters("炒饭"), vec!['炒', '饭']);
@@ -1778,51 +1724,8 @@ mod tests {
         assert_eq!(band_rows(5000), 1);
     }
 
-    /// The paced split sends every byte, one picture per piece, and the feed
-    /// and cut as a piece of their own (a pause comes before the cut).
-    #[test]
-    fn paced_pieces_keep_every_byte_and_end_on_the_cut() {
-        let job = escpos_picture(&"ખીચડી\n".repeat(12));
-        let pieces = escpos_raster_pieces(&job);
-        let pictures = job.windows(4).filter(|w| *w == [0x1D, 0x76, 0x30, 0x00]).count();
-        assert_eq!(pieces.len(), pictures + 1);
-        assert_eq!(pieces.concat(), job);
-        assert_eq!(&pieces[0][..2], &[0x1B, 0x40]);
-        for p in &pieces[1..pieces.len() - 1] {
-            assert_eq!(&p[..4], &[0x1D, 0x76, 0x30, 0x00]);
-        }
-        assert!(pieces.last().unwrap().ends_with(&[0x1D, 0x56, 0x00]));
-        assert_eq!(escpos_piece_lengths(&job).iter().sum::<usize>(), job.len());
-    }
 
-    /// Copies back to back: copy one's cut and copy two's reset are sent
-    /// (they were dropped between pictures, so copies ran together uncut).
-    #[test]
-    fn paced_copies_keep_each_cut() {
-        let one = escpos_picture(&"ખીચડી\n".repeat(6));
-        let two = [one.clone(), one.clone()].concat();
-        let pieces = escpos_raster_pieces(&two);
-        assert_eq!(pieces.concat(), two);
-        let cuts = pieces
-            .iter()
-            .filter(|p| p.windows(3).any(|w| w == [0x1D, 0x56, 0x00]))
-            .count();
-        assert_eq!(cuts, 2);
-        let mut sent = Vec::new();
-        write_escpos_paced(&two, |p| {
-            sent.extend_from_slice(p);
-            Ok(())
-        })
-        .unwrap();
-        assert_eq!(sent, two);
-    }
 
-    /// Plain-text ESC/POS (no picture) is one piece, untouched.
-    #[test]
-    fn text_jobs_are_one_piece() {
-        let job = b"\x1b@Thali 2\nChaas 1\n\n\n\x1dV\x00".to_vec();
-        assert_eq!(escpos_raster_pieces(&job), vec![&job[..]]);
-    }
 
     fn ink_rows(rows: &[u8], width: usize, height: usize) -> usize {
         let row_bytes = width / 8;
@@ -1831,9 +1734,10 @@ mod tests {
             .count()
     }
 
-    /// Sizes are literal (owner, 2026-11-15): the same line draws the same
-    /// dots on every content width — size 30 is 30 dots tall type with its
-    /// own pitch, at 58, 80, 112 and 210 mm alike.
+    /// A size is standard px (owner, 2026-11-15): size 30 is 30 × 1/96 inch
+    /// type — `PX_DOTS` dots per px, about 57 dots — with its own pitch, the
+    /// same at 58, 80, 112 and 210 mm alike. Never one dot per px (micro
+    /// text) and never scaled by the width.
     #[test]
     fn a_size_is_the_same_dots_on_every_content_width() {
         let draw = |dots: usize| {
@@ -1857,7 +1761,10 @@ mod tests {
         };
         let slip = draw(576);
         assert!(slip.0 > 8, "80 mm type left no ink ({slip:?})");
-        assert_eq!(slip.1, (30.0f32 * 1.45).round() as usize, "pitch of size 30 is its own");
+        assert_eq!(slip.1, (px_dots(30.0) * 1.45).round() as usize, "pitch of size 30 is its own");
+        // 30 px of type: an M's ink is most of its em, far above 30 dots.
+        assert!(slip.0 as f32 > px_dots(30.0) * 0.55, "size 30 drew micro type ({slip:?})");
+        assert!((PX_DOTS - 1.905).abs() < 0.001, "a px is 1/96 inch at 7.2 dots per mm");
         for dots in [384, 808, 1512] {
             assert_eq!(draw(dots), slip, "{dots} dots drew size 30 at another size");
         }

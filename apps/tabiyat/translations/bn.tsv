@@ -81,12 +81,10 @@ bill_item_qty	পরিমাণ
 bill_item_price	দর
 bill_item_amount	পরিমাণ
 bill_item_note	Rx / বিক্রির নোট
-bill_item_col_order	কলামের ক্রম
 bill_item_col_sep	কলামের রেখা
 slip_col_width	প্রস্থ (mm)
 slip_col_start	শুরুর ফাঁকা স্থান (px)
 slip_col_end	শেষের ফাঁকা স্থান (px)
-slip_col_align	লেখার সারিবদ্ধতা
 slip_columns_help	প্রতিটি কলামের প্রস্থে তার শুরু ও শেষের ফাঁকা স্থান অন্তর্ভুক্ত। লেখা নিজের কলামের ভেতরেই মোড়ানো হয়; বিষয়বস্তুর প্রস্থের বাইরে যা থাকে তা কাগজে ও প্রিভিউতে কেটে যায়।
 bill_total_qty_label	মোট সংখ্যা লেবেল
 bill_total_subtotal_label	উপমোট লেবেল
@@ -443,7 +441,6 @@ printer_profile_heading	লেআউট
 vp_delivery_heading	ডেলিভারি
 vp_delivery_help	এই ভার্চুয়াল প্রিন্টার কীভাবে কাজ পাঠায় — OS ডকুমেন্ট, কাঁচা বাইট বা ESC/POS। স্লিপের বিষয় (অক্ষরের মাপ, মোড়ানো, মার্জিন) বিল / স্লিপ ফরম্যাট ঠিক করে, এখানে নয়।
 vp_delivery_spooler	OS নথি (সিস্টেম স্পুলার)
-vp_delivery_raw	ডিভাইসে কাঁচা বাইট
 vp_delivery_escpos	ESC/POS থার্মাল কমান্ড
 virtual_printer_new	নতুন ভার্চুয়াল প্রিন্টার
 virtual_printer_selected	“{name}” সম্পাদনা — তালিকায় অন্যটিতে ট্যাপ করে বদলান
@@ -730,7 +727,6 @@ customer_paid_ph	গ্রাহক দিয়েছেন
 tip_ph	টিপ
 find_server	দোকানের সার্ভার খুঁজুন
 bill_format	বিলের ফরম্যাট
-bill_format_help	প্রতিটি বিলে আপনার দোকানের নামের নিচে ছাপা হয়। সারি | দিয়ে আলাদা করুন (যেমন MG Road, Rajkot | Ph 98250 00000)।
 bill_header_ph	ঠিকানা | ফোন
 fssai_ph	ড্রাগ লাইসেন্স নং (ঐচ্ছিক — আপনার ভাষায়)
 bill_footer_ph	ফুটার (যেমন ধন্যবাদ, আবার আসবেন)
@@ -820,8 +816,6 @@ add_dishes	ওষুধ যোগ করুন
 order_so_far	এই অর্ডারে: {n} · {total}
 no_dish_match	“{q}”-এর সাথে কোনো আইটেম মেলে না
 pick_done	হয়ে গেছে
-kot_field_up	ওপরে নিন
-kot_field_down	নিচে নিন
 dishes_n	{n}টি আইটেম
 reorder_ph	এতে পৌঁছালে আরও কিনুন
 set_reorder	পুনরায় অর্ডারের মাত্রা ঠিক করুন
@@ -853,3 +847,6 @@ sel_copy	কপি করুন
 sel_select_all	সব নির্বাচন করুন
 sel_copied	কপি হয়েছে
 nav_loading	লোড হচ্ছে…
+printer_mode_first	যেটা আগে চলে
+printer_mode_all	সবগুলোতে ছাপুন
+slip_columns	কলাম

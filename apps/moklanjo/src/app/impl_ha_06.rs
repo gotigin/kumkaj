@@ -726,11 +726,6 @@ impl App {
                 ids!(job_deliv_os_on),
             ),
             (
-                print_share::DELIVERY_RAW_DEVICE,
-                ids!(job_deliv_raw),
-                ids!(job_deliv_raw_on),
-            ),
-            (
                 print_share::DELIVERY_ESCPOS,
                 ids!(job_deliv_escpos),
                 ids!(job_deliv_escpos_on),

@@ -83,9 +83,7 @@ print_cancelled_kot_needed	Първо отворете маса с отказа�
 print_cancelled_kot_none	Няма отказани ястия в тази поръчка
 print_cancelled_kot_client	Печат на отказани ({n}) за {place} е изпратен — кухнята печата на Сървъра
 kot_banner	Лента за вид
-kot_banner_ph	Лента (празно = няма)
 kot_item_prefix	Префикс на артикул
-kot_item_prefix_ph	напр. [ОТКАЗАНО]
 kot_strike	Зачеркни името на ястието
 kot_strike_note	Зачеркни бележката към ястието
 kot_strike_on	Вкл.
@@ -103,13 +101,11 @@ bill_item_qty	Кол.
 bill_item_price	Цена
 bill_item_amount	Сума
 bill_item_note	Бележка към ястие
-bill_item_col_order	Ред на колони
 bill_item_col_sep	Линии на колони
 slip_columns	Колони
 slip_col_width	Ширина (mm)
 slip_col_start	Начално отстояние (px)
 slip_col_end	Крайно отстояние (px)
-slip_col_align	Подравняване на текста
 slip_columns_help	Ширината на всяка колона включва началното и крайното ѝ отстояние. Текстът се пренася в рамките на колоната си; всичко извън ширината на съдържанието се отрязва — на хартия и в прегледа.
 bill_total_qty_label	Етикет Общо кол.
 bill_total_subtotal_label	Етикет Междинна сума
@@ -643,7 +639,6 @@ vp_type_size_heading	Размер на шрифта
 vp_wrap_heading	Ширина на пренасяне
 vp_margin_heading	Полета
 vp_delivery_spooler	Документ на ОС (системен спулер)
-vp_delivery_raw	Сурови байтове към устройството
 vp_delivery_escpos	Термични команди ESC/POS
 virtual_printer_new	Нов виртуален принтер
 virtual_printer_selected	Редактиране на „{name}“ — докоснете друг в списъка, за да смените
@@ -1110,7 +1105,6 @@ remove_these_tables	Премахни тези маси
 table_remove_ph	Премахни: T1-T24 или името на една маса
 find_server	Намери сървъра на заведението
 bill_format	Формат на сметката
-bill_format_help	Печата се под името на ресторанта на всяка сметка. Отделни редове с | (напр. MG Road, Rajkot | Тел 98250 00000).
 bill_header_ph	Адрес | телефон
 fssai_ph	Лиценз FSSAI № (Индия)
 bill_footer_ph	Долен колонтитул (напр. Благодарим, заповядайте отново)
@@ -1127,7 +1121,6 @@ kot_field_hide	Скрий
 kot_field_on	показва
 kot_field_off	скрива
 kot_field_size	Размер на шрифта
-kot_field_size_ph	напр. 16, 20, 24, 28, 32…
 kot_weight_light	Тънък
 bill_kot_panel_help	Подредба на сметката и кухненския фиш, всеки със своя ширина на съдържанието. Касиер на сметката е който е издал или приключил сметката; Сервитьор на KOT е който е пратил този кухненски фиш — пълната история на поръчката остава в книгите.
 std_size_ph	напр. 18, 20, 26…
@@ -1157,7 +1150,6 @@ kot_style_item_qty	Артикул · Кол.
 kot_style_field_pick	Избери поле
 kot_weight_regular	Обикновен
 kot_weight_bold	Получер
-kot_align	Подравняване
 kot_align_start	Начало
 kot_align_center	Център
 kot_align_end	Край
@@ -1307,18 +1299,8 @@ kot_show_item_hdr	Артикул · Кол.
 kot_hide_item_hdr	Скрий колоните
 kot_show_title	Ред за заглавие
 kot_hide_title	Скрий заглавието
-kot_field_order	Ред на печат
-kot_field_up	Премести нагоре
-kot_field_down	Премести надолу
 kot_field_cycle	Избери следващото
 kot_field_select	Избери следващото
-kot_field_time	Час
-kot_field_kot_no	KOT №
-kot_field_area	Зона
-kot_field_table	Маса
-kot_field_shop	Име на заведението
-kot_field_waiter	Персонал
-kot_field_station	Станция
 dishes_n	{n} ястия
 recipe_ph	Рецепта (по избор) — една порция ползва: Ориз=0.2, Панир=0.15
 reorder_ph	Купи още при

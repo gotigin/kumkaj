@@ -83,9 +83,7 @@ print_cancelled_kot_needed	ବାତିଲ୍ ଖାଦ୍ୟ ଥିବା ଟ�
 print_cancelled_kot_none	ଏହି ଅର୍ଡରରେ ବାତିଲ୍ ନାହିଁ
 print_cancelled_kot_client	ବାତିଲ୍ ({n}) {place} ପଠାଗଲା — ସର୍ଭରରେ ଛପିବ
 kot_banner	ବ୍ୟାନର
-kot_banner_ph	ବ୍ୟାନର (ଖାଲି = ନାହିଁ)
 kot_item_prefix	ଆଇଟମ୍ ଉପସର୍ଗ
-kot_item_prefix_ph	ଯେପରି [CANCELLED] 
 kot_strike	ଖାଦ୍ୟ ନାମ କାଟ
 kot_strike_note	ନୋଟ୍ କାଟ
 kot_strike_on	ଚାଲୁ
@@ -103,13 +101,11 @@ bill_item_qty	ପରିମାଣ
 bill_item_price	ଦର
 bill_item_amount	ରାଶି
 bill_item_note	ନୋଟ୍
-bill_item_col_order	ସ୍ତମ୍ଭ କ୍ରମ
 bill_item_col_sep	ସ୍ତମ୍ଭ ରେଖା
 slip_columns	ସ୍ତମ୍ଭଗୁଡ଼ିକ
 slip_col_width	ପ୍ରସ୍ଥ (mm)
 slip_col_start	ଆରମ୍ଭ ସ୍ଥାନ (px)
 slip_col_end	ଶେଷ ସ୍ଥାନ (px)
-slip_col_align	ଲେଖା ସଜାଣି
 slip_columns_help	ପ୍ରତ୍ୟେକ ସ୍ତମ୍ଭର ପ୍ରସ୍ଥରେ ଏହାର ଆରମ୍ଭ ଓ ଶେଷ ସ୍ଥାନ ଅନ୍ତର୍ଭୁକ୍ତ। ଲେଖା ନିଜ ସ୍ତମ୍ଭ ଭିତରେ ଗୁଡ଼ାଇ ହୁଏ; ବିଷୟବସ୍ତୁର ପ୍ରସ୍ଥ ବାହାରେ ଥିବା ଅଂଶ କାଗଜରେ ଓ ପୂର୍ବାବଲୋକନରେ କଟିଯାଏ।
 bill_total_qty_label	ମୋଟ ସଂଖ୍ୟା ଲେବଲ
 bill_total_subtotal_label	ଉପଯୋଗ ଲେବଲ
@@ -643,7 +639,6 @@ vp_type_size_heading	ଅକ୍ଷର ଆକାର
 vp_wrap_heading	ର୍ୟାପ୍ ଚଉଡ଼ା
 vp_margin_heading	ମାର୍ଜିନ୍
 vp_delivery_spooler	OS ଡକ୍ୟୁମେଣ୍ଟ (ସିଷ୍ଟମ୍ ସ୍ପୁଲର୍)
-vp_delivery_raw	ଡିଭାଇସକୁ କଞ୍ଚା ବାଇଟ୍
 vp_delivery_escpos	ESC/POS ଥର୍ମାଲ୍ କମାଣ୍ଡ
 virtual_printer_new	ନୂଆ ଭର୍ଚୁଆଲ୍ ପ୍ରିଣ୍ଟର
 virtual_printer_selected	“{name}” ସମ୍ପାଦନ — ତାଲିକାରେ ଅନ୍ୟଟିରେ ଟ୍ୟାପ୍ କରି ବଦଳାନ୍ତୁ
@@ -1110,7 +1105,6 @@ remove_these_tables	ଏହି ଟେବୁଲ୍ ହଟାନ୍ତୁ
 table_remove_ph	ହଟାନ୍ତୁ: T1-T24, କିମ୍ବା ଗୋଟିଏ ଟେବୁଲର ନାମ
 find_server	ଦୋକାନର ସର୍ଭର ଖୋଜନ୍ତୁ
 bill_format	ବିଲ୍ ଫର୍ମାଟ୍
-bill_format_help	ପ୍ରତି ବିଲରେ ଆପଣଙ୍କ ରେଷ୍ଟୁରାଣ୍ଟ ନାମ ତଳେ ଛପାଯାଏ। ଧାଡ଼ିଗୁଡ଼ିକୁ | ଦ୍ୱାରା ଅଲଗା କରନ୍ତୁ (ଯେପରି MG Road, Rajkot | Ph 98250 00000)।
 bill_header_ph	ଠିକଣା | ଫୋନ୍
 fssai_ph	FSSAI ଲାଇସେନ୍ସ ନଂ (ଭାରତ)
 bill_footer_ph	ଫୁଟର୍ (ଯେପରି ଧନ୍ୟବାଦ, ପୁଣି ଆସନ୍ତୁ)
@@ -1127,7 +1121,6 @@ kot_field_hide	ଲୁଚାନ୍ତୁ
 kot_field_on	ଦେଖାଅ
 kot_field_off	ଲୁଚାଅ
 kot_field_size	ଫଣ୍ଟ ଆକାର
-kot_field_size_ph	ଯେପରି 16, 20, 24, 28, 32…
 kot_weight_light	ହାଲୁକା
 bill_kot_panel_help	ବିଲ୍ ବିଷୟବସ୍ତୁ ଓ ରୋଷେଇ ସ୍ଲିପ୍ ଟାଇପୋଗ୍ରାଫି। ଉପରେ ଥିବା ବିଷୟବସ୍ତୁ ଚଉଡ଼ା ହିଁ ବିଲ୍ ଓ ରୋଷେଇ ସ୍ଲିପ୍ ଦୁହିଁର ଚଉଡ଼ା।
 std_size_ph	ଯେପରି 18, 20, 26…
@@ -1157,7 +1150,6 @@ kot_style_item_qty	ଆଇଟମ୍ · ସଂଖ୍ୟା
 kot_style_field_pick	କ୍ଷେତ୍ର ବାଛନ୍ତୁ
 kot_weight_regular	ସାଧାରଣ
 kot_weight_bold	ମୋଟା
-kot_align	ସଜାଣି
 kot_align_start	ଆରମ୍ଭ କରନ୍ତୁ
 kot_align_center	ମଝିରେ
 kot_align_end	ଶେଷରେ
@@ -1307,18 +1299,8 @@ kot_show_item_hdr	ଆଇଟମ୍ · ସଂଖ୍ୟା
 kot_hide_item_hdr	ସ୍ତମ୍ଭ ଲୁଚାନ୍ତୁ
 kot_show_title	ଶୀର୍ଷକ ଧାଡ଼ି
 kot_hide_title	ଶୀର୍ଷକ ଲୁଚାନ୍ତୁ
-kot_field_order	ଛପା କ୍ରମ
-kot_field_up	ଉପରକୁ ନିଅନ୍ତୁ
-kot_field_down	ତଳକୁ ନିଅନ୍ତୁ
 kot_field_cycle	ପରବର୍ତ୍ତୀ ବାଛନ୍ତୁ
 kot_field_select	ପରବର୍ତ୍ତୀ ବାଛନ୍ତୁ
-kot_field_time	ସମୟ
-kot_field_kot_no	KOT ନଂ
-kot_field_area	ଅଞ୍ଚଳ
-kot_field_table	ଟେବୁଲ
-kot_field_shop	ଦୋକାନ ନାମ
-kot_field_waiter	କର୍ମଚାରୀ
-kot_field_station	ଷ୍ଟେସନ୍
 dishes_n	{n}ଟି ଖାଦ୍ୟ
 recipe_ph	ରେସିପି (ଇଚ୍ଛାଧୀନ) — ଗୋଟିଏ ପ୍ଲେଟରେ ଲାଗେ: Rice=0.2, Paneer=0.15
 reorder_ph	ଏତିକିରେ ଆହୁରି କିଣନ୍ତୁ

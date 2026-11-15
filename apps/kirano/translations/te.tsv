@@ -69,12 +69,10 @@ bill_item_qty	పరిమాణం
 bill_item_price	ధర
 bill_item_amount	మొత్తం
 bill_item_note	ఐటమ్ నోట్
-bill_item_col_order	నిలువు క్రమం
 bill_item_col_sep	నిలువు గీత
 slip_col_width	వెడల్పు (mm)
 slip_col_start	ప్రారంభ స్థలం (px)
 slip_col_end	ముగింపు స్థలం (px)
-slip_col_align	వచన అమరిక
 slip_columns_help	ప్రతి నిలువు వరుస వెడల్పులో దాని ప్రారంభ, ముగింపు స్థలం కలిసి ఉంటాయి. వచనం తన నిలువు వరుసలోనే చుట్టుకుంటుంది; కంటెంట్ వెడల్పు దాటినది కాగితంపైనా ప్రివ్యూలోనూ కత్తిరించబడుతుంది.
 bill_total_qty_label	మొత్తం సంఖ్య లేబుల్
 bill_total_subtotal_label	ఉప మొత్తం లేబుల్
@@ -431,7 +429,6 @@ printer_profile_heading	లేఅవుట్
 vp_delivery_heading	డెలివరీ
 vp_delivery_help	ఈ వర్చువల్ ప్రింటర్ పనులను ఎలా పంపుతుంది — OS డాక్యుమెంట్, ముడి బైట్లు, లేదా ESC/POS. స్లిప్ కంటెంట్ (అక్షర పరిమాణం, చుట్టడం, మార్జిన్లు) బిల్లు / స్లిప్ ఫార్మాట్ నిర్ణయిస్తుంది, ఇక్కడ కాదు.
 vp_delivery_spooler	OS పత్రం (సిస్టమ్ స్పూలర్)
-vp_delivery_raw	పరికరానికి ముడి బైట్లు
 vp_delivery_escpos	ESC/POS థర్మల్ కమాండ్‌లు
 virtual_printer_new	కొత్త వర్చువల్ ప్రింటర్
 virtual_printer_selected	“{name}” సవరణ — జాబితాలో మరొకదాన్ని నొక్కి మార్చండి
@@ -718,7 +715,6 @@ customer_paid_ph	కస్టమర్ ఇచ్చింది
 tip_ph	టిప్
 find_server	షాప్ సర్వర్ కనుగొనండి
 bill_format	బిల్ ఫార్మాట్
-bill_format_help	ప్రతి బిల్లుపై మీ దుకాణం పేరు కింద ముద్రించబడుతుంది. వరుసలను | తో వేరు చేయండి (ఉదా. MG Road, Rajkot | Ph 98250 00000).
 bill_header_ph	చిరునామా | ఫోన్
 fssai_ph	FSSAI / దుకాణం లైసెన్స్ నం. (ఐచ్ఛికం)
 bill_footer_ph	ఫుటర్ (ఉదా. ధన్యవాదాలు, మళ్లీ రండి)
@@ -808,8 +804,6 @@ add_dishes	ఐటమ్‌లు జోడించు
 order_so_far	ఈ ఆర్డర్‌లో: {n} · {total}
 no_dish_match	“{q}”కు ఏ ఐటమ్ సరిపోలలేదు
 pick_done	అయింది
-kot_field_up	పైకి జరుపు
-kot_field_down	కిందికి జరుపు
 dishes_n	{n} ఐటమ్‌లు
 reorder_ph	ఇంత వద్ద మరింత కొనండి
 set_reorder	రీఆర్డర్ స్థాయి పెట్టు
@@ -841,3 +835,6 @@ sel_copy	కాపీ
 sel_select_all	అన్నీ ఎంచుకోండి
 sel_copied	కాపీ అయింది
 nav_loading	లోడ్ అవుతోంది…
+printer_mode_first	మొదట పనిచేసేది
+printer_mode_all	అన్నింటిపై ముద్రించు
+slip_columns	నిలువు వరుసలు

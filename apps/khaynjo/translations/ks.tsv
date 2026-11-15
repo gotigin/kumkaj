@@ -83,9 +83,7 @@ print_cancelled_kot_needed	گۄڈٕ کھولِو کینسل ڈِشَن سۭتۍ 
 print_cancelled_kot_none	اَتھ آرڈرَس پیٹھ چھُنہٕ کانٛہہ تہِ منسوخ کرنہٕ آمُت ڈِش
 print_cancelled_kot_client	{place} خٲطرٕ چھاپ کینسل ({n}) سوزنہٕ آمُت — کچن پرنٹ Server پیٹھ
 kot_banner	مہربان بینر
-kot_banner_ph	بینر (خٲلی = کانٛہہ تہِ)
 kot_item_prefix	آیٹم پریفکس
-kot_item_prefix_ph	مثلاً [CANCELLED]
 kot_strike	سٹرائیک ڈِش ناو
 kot_strike_note	سٹرائیک ڈِش نوٹ
 kot_strike_on	چالو
@@ -103,13 +101,11 @@ bill_item_qty	تعداد
 bill_item_price	قۭمَت
 bill_item_amount	رقم
 bill_item_note	ڈش نوٹ
-bill_item_col_order	کالم ترتیب
 bill_item_col_sep	کالم اصول
 slip_columns	کالَم
 slip_col_width	چوڑٲے (mm)
 slip_col_start	شروعاتُک جاے (px)
 slip_col_end	آخرُک جاے (px)
-slip_col_align	متنٕچ ترتیٖب
 slip_columns_help	پرٛتھ کالمُک چوڑٲے منٛز چھےٚ تمیٚک شروعات تہٕ آخرُک جاے شامل۔ متن چھُ پنٕنِس کالمس اندر لپیٹنہٕ یِوان؛ مواد کہِ چوڑٲے نیٚبر یُس چھُ سُہ چھُ کاغزس پؠٹھ تہٕ پیش نظارس منٛز کٹنہٕ یِوان۔
 bill_total_qty_label	کل qty لیبل
 bill_total_subtotal_label	ذیلی کُل لیبل
@@ -643,7 +639,6 @@ vp_type_size_heading	قٕسمُک سایِز
 vp_wrap_heading	ریپ چوڑائی
 vp_margin_heading	حاشیہ
 vp_delivery_spooler	او ایس ڈاکیومینٹ (سسٹم سپولر)
-vp_delivery_raw	را بایِٹ ٹو ڈیوائس
 vp_delivery_escpos	ESC/POS تھرمل کمانڈ
 virtual_printer_new	نٔو ورچوئل پرنٹر
 virtual_printer_selected	اؠڈِٹ کَرنہٕ آمُت "{name}" — بَدلاونہٕ خٲطرٕ کٔرِو بیٚیِس فہرستَس مَنٛز دَبٲیِو
@@ -1110,7 +1105,6 @@ remove_these_tables	یِم ٹیبل ہٹٲوِو
 table_remove_ph	ہٹٲوِو: T1-T24، یا أکِس ٹیبلُک ناو
 find_server	دُکانُک سرور ژھانٛڑِو
 bill_format	بِل فارمیٹ
-bill_format_help	پرٮ۪تھ بِلہِ پٮ۪ٹھ چھاپنہٕ یِوان تُہنٛدِس ریسٹورَنٹ کِس ناوَس تَل چھاپنہٕ۔ اَلگ لٲنہٕ | (مثلاً ایم جی روڈ، راجکوٹ | پی ایچ 98250 00000)۔
 bill_header_ph	ایڈریس | فون
 fssai_ph	FSSAI لایسنس نمبر۔ (ہندوستان)
 bill_footer_ph	فوٹر (مثلاً شُکریہ، دُبارٕ وزِٹ)
@@ -1127,7 +1121,6 @@ kot_field_hide	چھُپاوُن
 kot_field_on	ہاو
 kot_field_off	ہوٗر کَر
 kot_field_size	فانٹ سایِز
-kot_field_size_ph	مثلاً 16، 20، 24، 28، 32...
 kot_weight_light	گاش
 bill_kot_panel_help	بل تہٕ کچن سلپ لے آؤٹ، پرٮ۪تھ أکِس پنُن موادُک کھجر۔ بل کیشِیر چھُ سُہ یُس بِل جٲری کٔرِتھ یا تصفیہ کٔرِ۔ KOT ویٹر چھہ سہ یمۍ کچنچ ٹکٹ سوزمژ — مکمل آرڈرچ کہانی چھیہ کتابن منز موجود۔
 std_size_ph	مثلاً 18، 20، 26...
@@ -1157,7 +1150,6 @@ kot_style_item_qty	آئٹم · Qty
 kot_style_field_pick	ژٲرِو فیلڈٕ
 kot_weight_regular	باقٲعدٕ
 kot_weight_bold	بولڈ
-kot_align	صف بندی کٔرِو
 kot_align_start	شروع کرُن
 kot_align_center	مرکز
 kot_align_end	اند
@@ -1307,18 +1299,8 @@ kot_show_item_hdr	آئٹم · Qty
 kot_hide_item_hdr	کالم کٔرِو ہٲوِو
 kot_show_title	ٹایٹل لائن
 kot_hide_title	عنوان چھُ ہٲوِو
-kot_field_order	پرنٹ آرڈر
-kot_field_up	ہیوٚر کٔرِو
-kot_field_down	بۄن کُن گٔژھِو
 kot_field_cycle	اَمہِ پتہٕ ژٲرِو
 kot_field_select	اَمہِ پتہٕ ژٲرِو
-kot_field_time	وَکھ
-kot_field_kot_no	KOT نہٕ
-kot_field_area	رقبہ
-kot_field_table	میز
-kot_field_shop	دُکانُک ناو
-kot_field_waiter	مُلازِم
-kot_field_station	سٹیشن
 dishes_n	{n} ڈِش
 recipe_ph	ریسپی (اختیاری) — اکھ حصہٕ چھُ استعمال کران: توٚمل=0.2، پٔنیر=0.15
 reorder_ph	مٔزیٖد ہیٚیِو

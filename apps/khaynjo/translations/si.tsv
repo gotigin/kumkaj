@@ -83,9 +83,7 @@ print_cancelled_kot_needed	පළමුව අවලංගු කළ කෑම �
 print_cancelled_kot_none	මෙම ඇණවුමේ අවලංගු කළ කෑම නැත
 print_cancelled_kot_client	{place} සඳහා මුද්‍රණය අවලංගු කරන ලදී ({n}) යවා ඇත — මුළුතැන්ගෙයි මුද්‍රණ සේවාදායකයේ
 kot_banner	කාරුණික බැනරය
-kot_banner_ph	බැනරය (හිස් = කිසිවක් නැත)
 kot_item_prefix	මෙනු මෙනු අයිතම උපසර්ගය
-kot_item_prefix_ph	උදා. [අවලංගු කරන ලදී]
 kot_strike	වර්ජන කෑමේ නම
 kot_strike_note	පිඟන් සටහන වර්ජනය කරන්න
 kot_strike_on	ක්‍රියාත්මකයි
@@ -103,13 +101,11 @@ bill_item_qty	ප්‍රමාණය
 bill_item_price	මිල
 bill_item_amount	මුදල
 bill_item_note	පිඟන් සටහන
-bill_item_col_order	තීරු අනුපිළිවෙල
 bill_item_col_sep	තීරු නීති
 slip_columns	තීරු
 slip_col_width	පළල (mm)
 slip_col_start	ආරම්භක ඉඩ (px)
 slip_col_end	අවසාන ඉඩ (px)
-slip_col_align	පෙළ පෙළගැස්ම
 slip_columns_help	සෑම තීරුවකම පළලට එහි ආරම්භක සහ අවසාන ඉඩ ඇතුළත් වේ. පෙළ තම තීරුව තුළම ඔතා යයි; අන්තර්ගත පළලෙන් ඔබ්බට ඇති දේ කඩදාසියේ සහ පෙරදසුනේ කැපී යයි.
 bill_total_qty_label	මුළු qty ලේබලය
 bill_total_subtotal_label	උප සම්පූර්ණ ලේබලය
@@ -643,7 +639,6 @@ vp_type_size_heading	වර්ගයේ ප්රමාණය
 vp_wrap_heading	එතුම පළල
 vp_margin_heading	මායිම්
 vp_delivery_spooler	OS ලේඛනය (පද්ධති ස්පූලර්)
-vp_delivery_raw	උපාංගයට අමු බයිට්
 vp_delivery_escpos	ESC/POS තාප විධාන
 virtual_printer_new	නව අතථ්‍ය මුද්‍රණ යන්ත්‍රය
 virtual_printer_selected	"{name}" සංස්කරණය කිරීම - මාරු වීමට ලැයිස්තුවේ තවත් එකක් තට්ටු කරන්න
@@ -1110,7 +1105,6 @@ remove_these_tables	මෙම කෑම මේස ඉවත් කරන්න
 table_remove_ph	ඉවත් කරන්න: T1-T24, හෝ එක් කෑම මේසයක නම
 find_server	වෙළඳසැලේ සේවාදායකය සොයා ගන්න
 bill_format	ආගන්තුක ආගන්තුක බිල්පත් ආකෘතිය
-bill_format_help	සෑම ආගන්තුක බිල්පතකම ඔබේ අවන්හලේ නම යටතේ මුද්‍රණය කර ඇත. සමඟින් වෙනම රේඛා | (උදා. MG පාර, රාජ්කොට් | Ph 98250 00000).
 bill_header_ph	ලිපිනය | දුරකථනය
 fssai_ph	FSSAI බලපත්‍ර අංකය. (ඉන්දියාව)
 bill_footer_ph	පාදකය (උදා. ස්තූතියි, නැවත පැමිණෙන්න)
@@ -1127,7 +1121,6 @@ kot_field_hide	සඟවන්න
 kot_field_on	පෙන්වන්න
 kot_field_off	සඟවන්න
 kot_field_size	අකුරු ප්රමාණය
-kot_field_size_ph	උදා. 16, 20, 24, 28, 32...
 kot_weight_light	ආලෝකය
 bill_kot_panel_help	ආගන්තුක ආගන්තුක බිල්පත් සහ මුළුතැන්ගෙයි ස්ලිප් පිරිසැලසුම, සෑම එකක්ම එහි අන්තර්ගත පළල ඇත. ආගන්තුක ආගන්තුක බිල්පත් අයකැමි යනු ආගන්තුක බිල්පත නිකුත් කළ හෝ පියවූ අයයි; KOT වේටර් එම මුළුතැන්ගෙයි ටිකට් එක එව්වේ කවුද - සම්පූර්ණ ඇණවුම් කතාව ලෙජර්වල පවතී.
 std_size_ph	උදා. 18, 20, 26…
@@ -1157,7 +1150,6 @@ kot_style_item_qty	මෙනු මෙනු අයිතමය · Qty
 kot_style_field_pick	ක්ෂේත්රය තෝරන්න
 kot_weight_regular	නිතිපතා
 kot_weight_bold	නිර්භීත
-kot_align	පෙළගස්වන්න
 kot_align_start	ආරම්භ කරන්න
 kot_align_center	මධ්යස්ථානය
 kot_align_end	අවසානය
@@ -1307,18 +1299,8 @@ kot_show_item_hdr	මෙනු මෙනු අයිතමය · Qty
 kot_hide_item_hdr	තීරු සඟවන්න
 kot_show_title	මාතෘකා රේඛාව
 kot_hide_title	මාතෘකාව සඟවන්න
-kot_field_order	මුද්‍රණ ඇණවුම
-kot_field_up	ඉහළට ගමන් කරන්න
-kot_field_down	පහළට ගමන් කරන්න
 kot_field_cycle	ඊළඟට තෝරන්න
 kot_field_select	ඊළඟට තෝරන්න
-kot_field_time	කාලය
-kot_field_kot_no	KOT අංකය
-kot_field_area	ප්රදේශය
-kot_field_table	කෑම මේසය
-kot_field_shop	සාප්පුවේ නම
-kot_field_waiter	කාර්ය මණ්ඩලය
-kot_field_station	දුම්රිය ස්ථානය
 dishes_n	{n} කෑම වර්ග
 recipe_ph	වට්ටෝරුව (විකල්ප) - එක් කොටසක් භාවිතා කරයි: Rice=0.2, Paneer=0.15
 reorder_ph	වැඩි මිලට ගන්න

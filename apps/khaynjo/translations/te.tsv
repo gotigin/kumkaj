@@ -83,9 +83,7 @@ print_cancelled_kot_needed	రద్దు వంటకాలున్న టే
 print_cancelled_kot_none	ఈ ఆర్డర్‌లో రద్దు లేదు
 print_cancelled_kot_client	రద్దు ({n}) {place} పంపబడింది — సర్వర్‌లో ప్రింట్
 kot_banner	బ్యానర్
-kot_banner_ph	బ్యానర్ (ఖాళీ = లేదు)
 kot_item_prefix	ఐటమ్ ప్రిఫిక్స్
-kot_item_prefix_ph	ఉదా. [CANCELLED] 
 kot_strike	వంటకం పేరు కొట్టు
 kot_strike_note	నోట్ కొట్టు
 kot_strike_on	ఆన్
@@ -103,13 +101,11 @@ bill_item_qty	పరిమాణం
 bill_item_price	ధర
 bill_item_amount	మొత్తం
 bill_item_note	నోట్
-bill_item_col_order	నిలువు క్రమం
 bill_item_col_sep	నిలువు గీత
 slip_columns	నిలువు వరుసలు
 slip_col_width	వెడల్పు (mm)
 slip_col_start	ప్రారంభ స్థలం (px)
 slip_col_end	ముగింపు స్థలం (px)
-slip_col_align	వచన అమరిక
 slip_columns_help	ప్రతి నిలువు వరుస వెడల్పులో దాని ప్రారంభ, ముగింపు స్థలం కలిసి ఉంటాయి. వచనం తన నిలువు వరుసలోనే చుట్టుకుంటుంది; కంటెంట్ వెడల్పు దాటినది కాగితంపైనా ప్రివ్యూలోనూ కత్తిరించబడుతుంది.
 bill_total_qty_label	మొత్తం సంఖ్య లేబుల్
 bill_total_subtotal_label	ఉప మొత్తం లేబుల్
@@ -643,7 +639,6 @@ vp_type_size_heading	అక్షర పరిమాణం
 vp_wrap_heading	ర్యాప్ వెడల్పు
 vp_margin_heading	మార్జిన్లు
 vp_delivery_spooler	OS పత్రం (సిస్టమ్ స్పూలర్)
-vp_delivery_raw	పరికరానికి ముడి బైట్లు
 vp_delivery_escpos	ESC/POS థర్మల్ కమాండ్‌లు
 virtual_printer_new	కొత్త వర్చువల్ ప్రింటర్
 virtual_printer_selected	“{name}” సవరణ — జాబితాలో మరొకదాన్ని నొక్కి మార్చండి
@@ -1110,7 +1105,6 @@ remove_these_tables	ఈ టేబుళ్లను తీసివేయి
 table_remove_ph	తీసివేయి: T1-T24, లేదా ఒక టేబుల్ పేరు
 find_server	షాప్ సర్వర్ కనుగొనండి
 bill_format	బిల్ ఫార్మాట్
-bill_format_help	ప్రతి బిల్‌లో మీ రెస్టారెంట్ పేరు కింద ప్రింట్ అవుతుంది. లైన్లను | తో వేరు చేయండి (ఉదా. MG Road, Rajkot | Ph 98250 00000).
 bill_header_ph	చిరునామా | ఫోన్
 fssai_ph	FSSAI లైసెన్స్ నం. (భారత్)
 bill_footer_ph	ఫుటర్ (ఉదా. ధన్యవాదాలు, మళ్లీ రండి)
@@ -1127,7 +1121,6 @@ kot_field_hide	దాచు
 kot_field_on	చూపు
 kot_field_off	దాచు
 kot_field_size	ఫాంట్ పరిమాణం
-kot_field_size_ph	ఉదా. 16, 20, 24, 28, 32…
 kot_weight_light	తేలిక
 bill_kot_panel_help	బిల్ కంటెంట్ మరియు వంటగది స్లిప్ టైపోగ్రఫీ. పైన ఉన్న కంటెంట్ వెడల్పే బిల్ మరియు వంటగది స్లిప్ రెండింటి వెడల్పు.
 std_size_ph	ఉదా. 18, 20, 26…
@@ -1157,7 +1150,6 @@ kot_style_item_qty	ఐటమ్ · సంఖ్య
 kot_style_field_pick	ఫీల్డ్ ఎంచుకోండి
 kot_weight_regular	సాధారణ
 kot_weight_bold	బొద్దు
-kot_align	అమరిక
 kot_align_start	ప్రారంభించండి
 kot_align_center	మధ్యలో
 kot_align_end	చివరలో
@@ -1307,18 +1299,8 @@ kot_show_item_hdr	ఐటమ్ · సంఖ్య
 kot_hide_item_hdr	కాలమ్‌లు దాచు
 kot_show_title	శీర్షిక వరుస
 kot_hide_title	శీర్షిక దాచు
-kot_field_order	ముద్రణ క్రమం
-kot_field_up	పైకి జరుపు
-kot_field_down	కిందికి జరుపు
 kot_field_cycle	తదుపరిది ఎంచుకో
 kot_field_select	తదుపరిది ఎంచుకో
-kot_field_time	సమయం
-kot_field_kot_no	KOT నెం.
-kot_field_area	ఏరియా
-kot_field_table	టేబుల్
-kot_field_shop	షాప్ పేరు
-kot_field_waiter	సిబ్బంది
-kot_field_station	స్టేషన్
 dishes_n	{n} వంటకాలు
 recipe_ph	రెసిపీ (ఐచ్ఛికం) — ఒక ప్లేట్‌కు: Rice=0.2, Paneer=0.15
 reorder_ph	ఇంత వద్ద మరింత కొనండి

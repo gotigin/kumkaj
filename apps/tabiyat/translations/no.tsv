@@ -81,12 +81,10 @@ bill_item_qty	Antall
 bill_item_price	Pris
 bill_item_amount	Beløp
 bill_item_note	Rx / salgsseddel
-bill_item_col_order	Kolonnerekkefølge
 bill_item_col_sep	Kolonnelinjer
 slip_col_width	Bredde (mm)
 slip_col_start	Startavstand (px)
 slip_col_end	Sluttavstand (px)
-slip_col_align	Tekstjustering
 slip_columns_help	Bredden på hver kolonne inkluderer start- og sluttavstanden. Teksten brytes innenfor sin kolonne; det som går utover innholdsbredden, kuttes – på papiret og i forhåndsvisningen.
 bill_total_qty_label	Etikett totalt antall
 bill_total_subtotal_label	Etikett delsumn
@@ -443,7 +441,6 @@ printer_profile_heading	Oppsett
 vp_delivery_heading	Levering
 vp_delivery_help	Hvordan denne virtuelle skriveren sender jobber – OS-dokument, råbyte eller ESC/POS. Slipsinnhold (typestørrelse, omslag, marginer) bestemmes av regningen / Slip-formatet, ikke her.
 vp_delivery_spooler	OS-dokument (systemkø)
-vp_delivery_raw	Råbyte til enheten
 vp_delivery_escpos	ESC/POS termiske kommandoer
 virtual_printer_new	Ny virtuell skriver
 virtual_printer_selected	Redigerer «{name}» — trykk en annen i listen for å bytte
@@ -730,7 +727,6 @@ customer_paid_ph	Kunden betalte
 tip_ph	Tips
 find_server	Finn butikkens server
 bill_format	Regningsformat
-bill_format_help	Trykt under butikkens navn på hver regning. Skill linjer med | (f.eks. MG Road, Rajkot | Ph 98250 00000).
 bill_header_ph	Adresse | telefon
 fssai_ph	Narkotikalisens nr. (valgfritt – din formulering)
 bill_footer_ph	Bunntekst (f.eks. Takk, kom igjen)
@@ -820,8 +816,6 @@ add_dishes	Legg til medisiner
 order_so_far	På denne bestillingen: {n} · {total}
 no_dish_match	Ingen varer samsvarer med "{q}"
 pick_done	Ferdig
-kot_field_up	Flytt opp
-kot_field_down	Flytt ned
 dishes_n	{n} elementer
 reorder_ph	Kjøp mer ved
 set_reorder	Sett bestillingsnivå
@@ -853,3 +847,6 @@ sel_copy	Kopier
 sel_select_all	Velg alt
 sel_copied	Kopiert
 nav_loading	Laster inn…
+printer_mode_first	Første som virker
+printer_mode_all	Skriv ut på alle
+slip_columns	Kolonner

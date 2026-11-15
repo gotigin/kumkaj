@@ -69,12 +69,10 @@ bill_item_qty	ᱠᱩᱭᱴᱤ
 bill_item_price	ᱜᱚᱱᱚᱝ
 bill_item_amount	ᱴᱟᱠᱟ
 bill_item_note	ᱡᱤᱱᱤᱥ ᱱᱚᱴ
-bill_item_col_order	ᱠᱚᱞᱟᱢ ᱚᱰᱟᱨ
 bill_item_col_sep	ᱠᱷᱟᱢᱵᱟ ᱟᱹᱨᱤ
 slip_col_width	ᱚᱥᱟᱨ (mm)
 slip_col_start	ᱮᱛᱦᱚᱵ ᱡᱟᱭᱜᱟ (px)
 slip_col_end	ᱢᱩᱪᱟᱹᱫ ᱡᱟᱭᱜᱟ (px)
-slip_col_align	ᱚᱞ ᱥᱟᱡᱟᱣ
 slip_columns_help	ᱡᱚᱛᱚ ᱠᱚᱞᱟᱢ ᱨᱮᱭᱟᱜ ᱚᱥᱟᱨ ᱨᱮ ᱚᱱᱟ ᱨᱮᱭᱟᱜ ᱮᱛᱦᱚᱵ ᱟᱨ ᱢᱩᱪᱟᱹᱫ ᱡᱟᱭᱜᱟ ᱥᱮᱞᱮᱫ ᱢᱮᱱᱟᱜᱼᱟ᱾ ᱚᱞ ᱫᱚ ᱟᱡᱟᱜ ᱠᱚᱞᱟᱢ ᱵᱷᱤᱛᱨᱤ ᱨᱮ ᱜᱩᱴᱤᱭᱟᱹᱜᱼᱟ; ᱡᱤᱱᱤᱥ ᱚᱥᱟᱨ ᱠᱷᱚᱱ ᱵᱟᱦᱨᱮ ᱡᱟᱦᱟᱸ ᱢᱮᱱᱟᱜᱼᱟ ᱚᱱᱟ ᱠᱟᱜᱚᱡ ᱟᱨ ᱢᱟᱲᱟᱝ ᱧᱮᱞ ᱨᱮ ᱜᱮᱫ ᱜᱤᱰᱤᱭᱚᱜᱼᱟ᱾
 bill_total_qty_label	ᱢᱩᱴ qty ᱞᱮᱵᱮᱞ
 bill_total_subtotal_label	ᱥᱟᱵᱽ ᱢᱩᱴᱟᱞ ᱞᱮᱵᱮᱞ
@@ -431,7 +429,6 @@ printer_profile_heading	ᱞᱮᱭᱟᱣᱩᱴ
 vp_delivery_heading	ᱰᱮᱞᱤᱵᱷᱟᱨᱤ
 vp_delivery_help	ᱱᱚᱣᱟ ᱵᱷᱟᱨᱪᱩᱣᱟᱞ ᱯᱨᱤᱱᱴᱟᱨ ᱪᱮᱫ ᱞᱮᱠᱟ ᱠᱟᱹᱢᱤ ᱠᱚ ᱵᱷᱮᱡᱟᱭᱟ — ᱚᱮᱥ ᱰᱚᱠᱭᱩᱢᱮᱱᱴ, ᱨᱚ ᱵᱟᱭᱤᱴᱥ, ᱵᱟᱝᱠᱷᱟᱱ ᱤᱮᱥᱤ/ᱯᱤᱳᱮᱥ᱾ ᱥᱞᱤᱯ ᱡᱤᱱᱤᱥ (ᱞᱮᱠᱟᱱ ᱜᱚᱲᱦᱚᱱ, ᱵᱮᱫᱷᱟᱣ, ᱢᱟᱨᱡᱤᱱ) ᱫᱚ ᱵᱤᱞ/ᱥᱞᱤᱯ ᱨᱩᱯ ᱦᱚᱛᱮᱛᱮ ᱴᱷᱟᱹᱣᱠᱟᱹᱜᱼᱟ, ᱱᱚᱸᱰᱮ ᱫᱚ ᱵᱟᱝ ᱾
 vp_delivery_spooler	ᱚᱮᱥ ᱰᱚᱠᱭᱩᱢᱮᱱᱴ (ᱥᱤᱥᱴᱚᱢ ᱥᱯᱩᱞᱟᱨ)
-vp_delivery_raw	ᱰᱤᱵᱷᱟᱭᱤᱥ ᱨᱮ ᱨᱚ ᱵᱟᱭᱤᱴᱥ
 vp_delivery_escpos	ᱤ ᱮᱥ ᱥᱤ/ᱯᱤ ᱚ ᱮᱥ ᱛᱷᱟᱨᱢᱟᱞ ᱟᱫᱮᱥ
 virtual_printer_new	ᱱᱟᱶᱟ ᱵᱷᱟᱨᱪᱩᱣᱟᱞ ᱯᱨᱤᱱᱴᱟᱨ
 virtual_printer_selected	ᱥᱟᱥᱟᱯᱲᱟᱣ "{name}" — ᱵᱚᱫᱚᱞ ᱞᱟᱹᱜᱤᱫ ᱛᱟᱞᱠᱟ ᱨᱮ ᱮᱴᱟᱜ ᱴᱮᱯ ᱢᱮ
@@ -718,7 +715,6 @@ customer_paid_ph	ᱜᱚᱨᱦᱟᱢ ᱯᱩᱭᱥᱟᱹ ᱮᱢ ᱠᱮᱫᱟᱭ
 tip_ph	ᱴᱤᱯ
 find_server	ᱫᱩᱠᱟᱹᱱ ᱨᱮᱱᱟᱜ ᱥᱮᱨᱵᱷᱟᱨ ᱯᱟᱱᱛᱮ ᱢᱮ
 bill_format	ᱵᱤᱞ ᱨᱩᱯ
-bill_format_help	ᱥᱟᱱᱟᱢ ᱵᱤᱞ ᱨᱮ ᱟᱢᱟᱜ ᱫᱚᱠᱟᱱ ᱨᱮᱭᱟᱜ ᱧᱩᱛᱩᱢ ᱛᱮ ᱪᱷᱟᱯᱟ ᱟᱠᱟᱱᱟ ᱾ ᱥᱟᱶ ᱵᱷᱮᱜᱟᱨ ᱞᱟᱭᱤᱱ | (ᱡᱮᱞᱠᱟ ᱮᱢ ᱡᱤ ᱨᱚᱰ, ᱨᱟᱡᱠᱚᱴ | ᱯᱤ ᱮᱪ ᱙᱘᱒᱕᱐ ᱐᱐᱐᱐)᱾
 bill_header_ph	ᱴᱷᱤᱠᱟᱹᱱᱟ | ᱯᱷᱚᱱ
 fssai_ph	FSSAI/ ᱫᱩᱠᱟᱹᱱ ᱞᱟᱭᱥᱮᱱᱥ ᱮᱞ᱾ (ᱚᱯᱥᱚᱱ)
 bill_footer_ph	ᱯᱷᱩᱴᱟᱨ (ᱡᱮᱞᱠᱟ ᱟᱭᱢᱟ ᱥᱟᱨᱦᱟᱣ, ᱫᱚᱦᱲᱟ ᱧᱮᱞ ᱢᱮ)
@@ -808,8 +804,6 @@ add_dishes	ᱡᱤᱱᱤᱥ ᱠᱚ ᱥᱮᱞᱮᱫ ᱢᱮ
 order_so_far	ᱱᱚᱣᱟ ᱚᱰᱟᱨ ᱨᱮ: {n} · {total}
 no_dish_match	ᱡᱟᱦᱟᱱ ᱡᱤᱱᱤᱥ ᱜᱮ “{q}” ᱵᱟᱝ ᱢᱤᱞᱟᱹᱣᱜ ᱠᱟᱱᱟ
 pick_done	ᱥᱟᱹᱛ ᱮᱱᱟ
-kot_field_up	ᱪᱮᱛᱟᱱ ᱥᱮᱱᱚᱜ ᱢᱮ
-kot_field_down	ᱞᱟᱛᱟᱨ ᱥᱮᱱᱚᱜ ᱢᱮ
 dishes_n	{n} ᱡᱤᱱᱤᱥ ᱠᱚ
 reorder_ph	ᱟᱨᱦᱚᱸ ᱠᱤᱨᱤᱧ ᱢᱮ
 set_reorder	ᱫᱚᱦᱲᱟ ᱚᱨᱰᱟᱨ ᱞᱮᱵᱮᱞ ᱥᱮᱴ ᱢᱮ
@@ -841,3 +835,6 @@ sel_copy	ᱱᱚᱠᱚᱞ ᱢᱮ
 sel_select_all	ᱡᱚᱛᱚ ᱵᱟᱪᱷᱟᱣ ᱢᱮ
 sel_copied	ᱱᱚᱠᱚᱞ ᱮᱱᱟ
 nav_loading	ᱞᱚᱰ ᱦᱩᱭ ᱠᱟᱱᱟ…
+printer_mode_first	ᱯᱩᱭᱞᱩ ᱚᱱᱟ ᱠᱟᱹᱢᱤᱭᱟ
+printer_mode_all	ᱥᱟᱱᱟᱢ ᱨᱮ ᱪᱷᱟᱯᱟ ᱢᱮ
+slip_columns	ᱠᱚᱞᱟᱢ ᱠᱚ

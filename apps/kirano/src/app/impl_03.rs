@@ -733,12 +733,6 @@ fn fit_inside_system_bars(&mut self, cx: &mut Cx) {
             .button(cx, ids!(printer_mode_first_on))
             .set_text(cx, &app_t("vp_delivery_spooler"));
         self.ui
-            .button(cx, ids!(printer_mode_all))
-            .set_text(cx, &app_t("vp_delivery_raw"));
-        self.ui
-            .button(cx, ids!(printer_mode_all_on))
-            .set_text(cx, &app_t("vp_delivery_raw"));
-        self.ui
             .button(cx, ids!(vp_deliv_escpos))
             .set_text(cx, &app_t("vp_delivery_escpos"));
         self.ui
@@ -753,15 +747,9 @@ fn fit_inside_system_bars(&mut self, cx: &mut Cx) {
         );
         self.paint_choice_pair(
             cx,
-            ids!(printer_mode_all),
-            ids!(printer_mode_all_on),
-            d == print_share::DELIVERY_RAW_DEVICE,
-        );
-        self.paint_choice_pair(
-            cx,
             ids!(vp_deliv_escpos),
             ids!(vp_deliv_escpos_on),
-            d == print_share::DELIVERY_ESCPOS,
+            d == print_share::DELIVERY_ESCPOS || d == print_share::DELIVERY_RAW_DEVICE,
         );
         self.ui
             .button(cx, ids!(virtual_printer_new_btn))
@@ -1137,7 +1125,6 @@ fn fit_inside_system_bars(&mut self, cx: &mut Cx) {
         for id in [
             ids!(change_label),
             ids!(h_bill_format),
-            ids!(h_bill_format_help),
             ids!(h_rights_help),
             ids!(team_selected_label),
             ids!(client_found_label),
@@ -1289,7 +1276,6 @@ fn fit_inside_system_bars(&mut self, cx: &mut Cx) {
         }
         for (id, key) in [
             (ids!(h_bill_format), "bill_format"),
-            (ids!(h_bill_format_help), "bill_format_help"),
             (ids!(h_print_brand), "print_brand_kit"),
             (ids!(h_onboard_layout), "onboard_layout"),
             (ids!(h_venue_icon), "app_icon"),

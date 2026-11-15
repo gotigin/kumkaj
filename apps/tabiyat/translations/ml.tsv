@@ -81,12 +81,10 @@ bill_item_qty	എണ്ണം
 bill_item_price	വില
 bill_item_amount	തുക
 bill_item_note	Rx / വിൽപ്പന കുറിപ്പ്
-bill_item_col_order	നിര ക്രമം
 bill_item_col_sep	നിര വര
 slip_col_width	വീതി (mm)
 slip_col_start	തുടക്കത്തിലെ ഇടം (px)
 slip_col_end	അവസാനത്തെ ഇടം (px)
-slip_col_align	ടെക്സ്റ്റ് വിന്യാസം
 slip_columns_help	ഓരോ കോളത്തിന്റെയും വീതിയിൽ അതിന്റെ തുടക്കത്തിലെയും അവസാനത്തെയും ഇടം ഉൾപ്പെടുന്നു. ടെക്സ്റ്റ് സ്വന്തം കോളത്തിനുള്ളിൽ പൊതിയുന്നു; ഉള്ളടക്കത്തിന്റെ വീതിക്ക് പുറത്തുള്ളത് കടലാസിലും പ്രിവ്യൂവിലും മുറിഞ്ഞുപോകും.
 bill_total_qty_label	ആകെ എണ്ണം ലേബൽ
 bill_total_subtotal_label	ഉപമൊത്തം ലേബൽ
@@ -443,7 +441,6 @@ printer_profile_heading	ലേഔട്ട്
 vp_delivery_heading	ഡെലിവറി
 vp_delivery_help	ഈ വെർച്വൽ പ്രിന്റർ ജോലികൾ എങ്ങനെ അയയ്ക്കുന്നു — OS ഡോക്യുമെന്റ്, റോ ബൈറ്റുകൾ, അല്ലെങ്കിൽ ESC/POS. സ്ലിപ്പ് ഉള്ളടക്കം (അക്ഷര വലുപ്പം, പൊതിയൽ, മാർജിനുകൾ) ബിൽ / സ്ലിപ്പ് ഫോർമാറ്റ് തീരുമാനിക്കും, ഇവിടെ അല്ല.
 vp_delivery_spooler	OS രേഖ (സിസ്റ്റം സ്പൂളർ)
-vp_delivery_raw	ഉപകരണത്തിലേക്ക് അസംസ്കൃത ബൈറ്റ്
 vp_delivery_escpos	ESC/POS തെർമൽ കമാൻഡുകൾ
 virtual_printer_new	പുതിയ വെർച്വൽ പ്രിന്റർ
 virtual_printer_selected	“{name}” എഡിറ്റ് — ലിസ്റ്റിൽ മറ്റൊന്ന് ടാപ്പ് ചെയ്ത് മാറ്റുക
@@ -730,7 +727,6 @@ customer_paid_ph	ഉപഭോക്താവ് നൽകിയത്
 tip_ph	ടിപ്പ്
 find_server	കടയുടെ സെർവർ കണ്ടെത്തുക
 bill_format	ബിൽ ഫോർമാറ്റ്
-bill_format_help	ഓരോ ബില്ലിലും നിങ്ങളുടെ കടയുടെ പേരിന് താഴെ അച്ചടിക്കും. വരികൾ | കൊണ്ട് വേർതിരിക്കുക (ഉദാ. MG Road, Rajkot | Ph 98250 00000).
 bill_header_ph	വിലാസം | ഫോൺ
 fssai_ph	മരുന്ന് ലൈസൻസ് നം. (ഐച്ഛികം — നിങ്ങളുടെ വാക്കുകളിൽ)
 bill_footer_ph	ഫൂട്ടർ (ഉദാ. നന്ദി, വീണ്ടും വരിക)
@@ -820,8 +816,6 @@ add_dishes	മരുന്നുകൾ ചേർക്കുക
 order_so_far	ഈ ഓർഡറിൽ: {n} · {total}
 no_dish_match	“{q}”-മായി ഒരു ഇനവും പൊരുത്തപ്പെടുന്നില്ല
 pick_done	കഴിഞ്ഞു
-kot_field_up	മുകളിലേക്ക് നീക്കുക
-kot_field_down	താഴേക്ക് നീക്കുക
 dishes_n	{n} ഇനങ്ങൾ
 reorder_ph	ഇത്രയാകുമ്പോൾ കൂടുതൽ വാങ്ങുക
 set_reorder	റീഓർഡർ നില വെക്കുക
@@ -853,3 +847,6 @@ sel_copy	പകർത്തുക
 sel_select_all	എല്ലാം തിരഞ്ഞെടുക്കുക
 sel_copied	പകർത്തി
 nav_loading	ലോഡ് ചെയ്യുന്നു…
+printer_mode_first	ആദ്യം പ്രവർത്തിക്കുന്നത്
+printer_mode_all	എല്ലാറ്റിലും അച്ചടിക്കുക
+slip_columns	കോളങ്ങൾ

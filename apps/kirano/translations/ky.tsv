@@ -69,12 +69,10 @@ bill_item_qty	Саны
 bill_item_price	Баасы
 bill_item_amount	Суммасы
 bill_item_note	Элемент эскертүүсү
-bill_item_col_order	Мамыча тартиби
 bill_item_col_sep	Мамыча эрежелери
 slip_col_width	Туурасы (mm)
 slip_col_start	Башталыш аралыгы (px)
 slip_col_end	Аяк аралыгы (px)
-slip_col_align	Текстти тегиздөө
 slip_columns_help	Ар бир мамычанын туурасы анын башталыш жана аяк аралыгын камтыйт. Текст өз мамычасынын ичинде которулат; мазмундун туурасынан чыккан бөлүгү кагазда да, алдын ала көрүүдө да кесилет.
 bill_total_qty_label	Жалпы сан энбелгиси
 bill_total_subtotal_label	Кошумча жалпы энбелги
@@ -431,7 +429,6 @@ printer_profile_heading	Макет
 vp_delivery_heading	Жеткирүү
 vp_delivery_help	Бул виртуалдык принтер тапшырмаларды кантип жөнөтөт — OS документи, чийки байттар же ESC/POS. Слиптин мазмуну (түрдүн өлчөмү, таңуу, четтери) бул жерде эмес, эсеп/слип форматы менен чечилет.
 vp_delivery_spooler	OS документи (системанын спулери)
-vp_delivery_raw	Түзмөккө чийки байттар
 vp_delivery_escpos	ESC/POS жылуулук буйруктары
 virtual_printer_new	Жаңы виртуалдык принтер
 virtual_printer_selected	“{name}” түзөтүү — которуу үчүн тизмеден башкасын таптаңыз
@@ -718,7 +715,6 @@ customer_paid_ph	Кардар төлөдү
 tip_ph	Кеңеш
 find_server	Дүкөндүн серверин табыңыз
 bill_format	Коноктун эсеп форматы
-bill_format_help	Ар бир эсепке дүкөнүңүздүн аты менен басылган. | менен өзүнчө саптар (мисалы, MG Road, Rajkot | Ph 98250 00000).
 bill_header_ph	Дарек | телефон
 fssai_ph	FSSAI / дүкөн лицензиясы №. (милдеттүү эмес)
 bill_footer_ph	Колонтитул (мис. Рахмат, дагы бир жолу кириңиз)
@@ -808,8 +804,6 @@ add_dishes	Элементтерди кошуу
 order_so_far	Бул буйрутма боюнча: {n} · {total}
 no_dish_match	"{q}" эч нерсе дал келбейт
 pick_done	Бүттү
-kot_field_up	Өйдө жылдыруу
-kot_field_down	Төмөн жылдыруу
 dishes_n	{n} нерсе
 reorder_ph	Көбүрөөк сатып алыңыз
 set_reorder	Кайра иреттөө деңгээлин коюу
@@ -841,3 +835,6 @@ sel_copy	Көчүрүү
 sel_select_all	Баарын тандоо
 sel_copied	Көчүрүлдү
 nav_loading	Жүктөлүүдө…
+printer_mode_first	Биринчи бул иштейт
+printer_mode_all	Баарына басып чыгаруу
+slip_columns	Мамычалар

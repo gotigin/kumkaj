@@ -69,12 +69,10 @@ bill_item_qty	Sasia
 bill_item_price	Çmimi
 bill_item_amount	Shuma
 bill_item_note	Shënim i artikullit
-bill_item_col_order	Renditja e kolonave
 bill_item_col_sep	Vijat e kolonave
 slip_col_width	Gjerësia (mm)
 slip_col_start	Hapësira në fillim (px)
 slip_col_end	Hapësira në fund (px)
-slip_col_align	Rreshtimi i tekstit
 slip_columns_help	Gjerësia e çdo kolone përfshin hapësirën e saj në fillim dhe në fund. Teksti mbështillet brenda kolonës së tij; çfarë del përtej gjerësisë së përmbajtjes pritet, në letër dhe në pamjen paraprake.
 bill_total_qty_label	Etiketa e sasisë totale
 bill_total_subtotal_label	Etiketa e nëntotalit
@@ -431,7 +429,6 @@ printer_profile_heading	Paraqitja
 vp_delivery_heading	Dërgesë
 vp_delivery_help	Si dërgon punë ky printer virtual - dokument OS, bajt të papërpunuar ose ESC/POS. Përmbajtja e fletëve (madhësia e llojit, mbështjellja, kufijtë) vendoset nga formati i faturës / Slip, jo këtu.
 vp_delivery_spooler	Dokument OS (radha e sistemit)
-vp_delivery_raw	Bajte të papërpunuara te pajisja
 vp_delivery_escpos	Komanda termike ESC/POS
 virtual_printer_new	Printer virtual i ri
 virtual_printer_selected	Po ndryshohet “{name}” — prekni një tjetër në listë për të kaluar
@@ -718,7 +715,6 @@ customer_paid_ph	Klienti pagoi
 tip_ph	Bakshish
 find_server	Gjej serverin e dyqanit
 bill_format	Formati i faturës
-bill_format_help	Shtypur nën emrin e dyqanit tuaj në çdo faturë. Linjat e ndara me | (p.sh. MG Road, Rajkot | Ph 98250 00000).
 bill_header_ph	Adresa | telefoni
 fssai_ph	FSSAI / licencë dyqani nr. (opsionale)
 bill_footer_ph	Fundi (p.sh. Faleminderit, ejani përsëri)
@@ -808,8 +804,6 @@ add_dishes	Shto artikuj
 order_so_far	Në këtë porosi: {n} · {total}
 no_dish_match	Asnjë artikull nuk përputhet me "{q}"
 pick_done	U krye
-kot_field_up	Lëviz lart
-kot_field_down	Lëviz poshtë
 dishes_n	artikuj {n}
 reorder_ph	Bli më shumë te
 set_reorder	Vendos nivelin e riblerjes
@@ -841,3 +835,6 @@ sel_copy	Kopjo
 sel_select_all	Përzgjidh të gjitha
 sel_copied	U kopjua
 nav_loading	Po ngarkohet…
+printer_mode_first	I pari që punon
+printer_mode_all	Shtyp te të gjithë
+slip_columns	Kolonat

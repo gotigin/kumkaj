@@ -69,12 +69,10 @@ bill_item_qty	ብዛት
 bill_item_price	ዋጋ
 bill_item_amount	መጠን
 bill_item_note	የንጥል ማስታወሻ
-bill_item_col_order	የአምድ ቅደም ተከተል
 bill_item_col_sep	የአምድ መስመሮች
 slip_col_width	ስፋት (mm)
 slip_col_start	የመጀመሪያ ክፍተት (px)
 slip_col_end	የመጨረሻ ክፍተት (px)
-slip_col_align	የጽሑፍ አሰላለፍ
 slip_columns_help	የእያንዳንዱ አምድ ስፋት የመጀመሪያና የመጨረሻ ክፍተቱን ያካትታል። ጽሑፉ በአምዱ ውስጥ ይጠቀለላል፤ ከይዘቱ ስፋት በላይ ያለው በወረቀትም በቅድመ እይታም ይቆረጣል።
 bill_total_qty_label	የጠቅላላ ብዛት መለያ
 bill_total_subtotal_label	የንዑስ ድምር መለያ
@@ -431,7 +429,6 @@ printer_profile_heading	አቀማመጥ
 vp_delivery_heading	ማድረስ
 vp_delivery_help	How this virtual printer sends jobs — OS document, raw bytes, or ESC/POS. Slip content (type size, wrap, margins) is decided by the bill / Slip format, not here.
 vp_delivery_spooler	የስርዓት ሰነድ (የስርዓት ስፑለር)
-vp_delivery_raw	ጥሬ ባይቶች ወደ መሣሪያ
 vp_delivery_escpos	ESC/POS የሙቀት ትዕዛዞች
 virtual_printer_new	አዲስ ምናባዊ ማተሚያ
 virtual_printer_selected	“{name}” በማስተካከል ላይ — ለመቀየር በዝርዝሩ ሌላውን ይንኩ
@@ -718,7 +715,6 @@ customer_paid_ph	ደንበኛ የከፈለው
 tip_ph	ትፕ
 find_server	የሱቁን ሰርቨር ፈልግ
 bill_format	የሂሳብ ቅርጸት
-bill_format_help	Printed under your shop's name on every bill. Separate lines with | (e.g. MG Road, Rajkot | Ph 98250 00000).
 bill_header_ph	አድራሻ | ስልክ
 fssai_ph	FSSAI / የሱቅ ፈቃድ ቁጥር (አማራጭ)
 bill_footer_ph	ግርጌ (ለምሳሌ አመሰግናለሁ፣ እንደገና ይምጡ)
@@ -808,8 +804,6 @@ add_dishes	ንጥሎችን ያክሉ
 order_so_far	በዚህ ትዕዛዝ፦ {n} · {total}
 no_dish_match	ከ"{q}" ጋር የሚዛመድ ምንም ንጥል የለም
 pick_done	ጨርስ
-kot_field_up	ወደ ላይ አንቀሳቅስ
-kot_field_down	ወደ ታች አንቀሳቅስ
 dishes_n	{n} items
 reorder_ph	ተጨማሪ ግዛ በ
 set_reorder	የድጋሚ ትዕዛዝ ደረጃ አስቀምጥ
@@ -841,3 +835,6 @@ sel_copy	ቅዳ
 sel_select_all	ሁሉንም ምረጥ
 sel_copied	ተቀድቷል
 nav_loading	በመጫን ላይ…
+printer_mode_first	የመጀመሪያው የሚሠራው
+printer_mode_all	በሁሉም ላይ አትም
+slip_columns	አምዶች

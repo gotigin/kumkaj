@@ -401,8 +401,13 @@ input fields (vendor patch: `TextFlow::paragraph_align_x`,
    `set_status` (DEV.md bug **7a**), not wrap/Fill.
    *2026-11-07:* Print model — **Printer** = OS device (Settings → Printers,
    Find). **Bill & KOT format** owns content width, portrait/landscape,
-   how the job is sent (OS document / ESC/POS / raw), type size, and which
-   printers print the bill or each kitchen. See [`PRINTER.md`](../../../docs/PRINTER.md).
+   how the job is sent (OS document / ESC/POS; Raw removed 2026-11-15), type
+   size, and which printers print the bill or each kitchen. See
+   [`PRINTER.md`](../../../docs/PRINTER.md).
+   *2026-11-15:* the Bill and KOT tabs are one list of lines in print order,
+   the open line edited where it sits, preview beside it on wide screens,
+   every row responsive (PRINTER.md § How the Bill and KOT tabs are laid
+   out, lesson 20).
    *2026-11-03:* Device setup and Floor accordions keep ℹ **beside** the
    title; a Fill `_ext` sibling makes the rest of the card toggle too
    (DEV.md bug **7c**). Same generous-hit idea for checklist rows; sidebar

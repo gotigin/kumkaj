@@ -69,12 +69,10 @@ bill_item_qty	Kol.
 bill_item_price	Cijena
 bill_item_amount	Iznos
 bill_item_note	Napomena o artiklu
-bill_item_col_order	Redoslijed kolona
 bill_item_col_sep	Linije kolona
 slip_col_width	Širina (mm)
 slip_col_start	Početni razmak (px)
 slip_col_end	Završni razmak (px)
-slip_col_align	Poravnanje teksta
 slip_columns_help	Širina svake kolone uključuje njen početni i završni razmak. Tekst se prelama unutar svoje kolone; ono što prelazi širinu sadržaja odsijeca se na papiru i u pregledu.
 bill_total_qty_label	Natpis ukupne kol.
 bill_total_subtotal_label	Natpis međuzbira
@@ -431,7 +429,6 @@ printer_profile_heading	Raspored
 vp_delivery_heading	Dostava
 vp_delivery_help	Kako ovaj virtuelni štampač šalje zadatke — OS dokument, neobrađene bajtove ili ESC/POS. Sadržaj slip-a (veličina tipa, omot, margine) se određuje prema formatu računa/slipa, a ne ovdje.
 vp_delivery_spooler	Dokument OS-a (sistemski red)
-vp_delivery_raw	Sirovi bajtovi na uređaj
 vp_delivery_escpos	Termalne komande ESC/POS
 virtual_printer_new	Novi virtualni štampač
 virtual_printer_selected	Uređivanje „{name}” — dodirnite drugi na spisku da prebacite
@@ -718,7 +715,6 @@ customer_paid_ph	Mušterija je platila
 tip_ph	Napojnica
 find_server	Pronađi server lokala
 bill_format	Oblik računa
-bill_format_help	Štampano pod imenom vaše radnje na svakom računu. Odvojite redove sa | (npr. MG Road, Rajkot | Ph 98250 00000).
 bill_header_ph	Adresa | telefon
 fssai_ph	FSSAI / licenca radnje br. (opciono)
 bill_footer_ph	Podnožje (npr. Hvala, dođite opet)
@@ -808,8 +804,6 @@ add_dishes	Dodajte stavke
 order_so_far	Na ovoj narudžbi: {n} · {total}
 no_dish_match	Nijedna stavka ne odgovara “{q}”
 pick_done	Gotovo
-kot_field_up	Pomakni gore
-kot_field_down	Pomakni dolje
 dishes_n	{n} stavke
 reorder_ph	Naruči još pri
 set_reorder	Postavi nivo narudžbe
@@ -841,3 +835,6 @@ sel_copy	Kopiraj
 sel_select_all	Odaberi sve
 sel_copied	Kopirano
 nav_loading	Učitavanje…
+printer_mode_first	Prvi koji radi
+printer_mode_all	Štampaj na sve
+slip_columns	Kolone

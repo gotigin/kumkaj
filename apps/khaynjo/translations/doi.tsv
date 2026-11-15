@@ -83,9 +83,7 @@ print_cancelled_kot_needed	पैह्ले रद्द कीते गे�
 print_cancelled_kot_none	इस आर्डर पर कोई रद्द व्यंजन नेईं
 print_cancelled_kot_client	{place} भेजे गेदे लेई प्रिंट रद्द ({n}) — सर्वर पर रसोई प्रिंट
 kot_banner	दयालु बैनर
-kot_banner_ph	बैनर (रिक्त = कोई नहीं)
 kot_item_prefix	मेनू मेनू आइटम उपसर्ग
-kot_item_prefix_ph	उदा. [रद्द कीता गेदा]
 kot_strike	पकवान नाम हड़ताल
 kot_strike_note	पकवान नोट हड़ताल करो
 kot_strike_on	पर
@@ -103,13 +101,11 @@ bill_item_qty	मात्रा
 bill_item_price	कीमत
 bill_item_amount	रकम
 bill_item_note	डिश नोट
-bill_item_col_order	स्तंभ क्रम
 bill_item_col_sep	स्तंभ नियम
 slip_columns	स्तंभ
 slip_col_width	चौड़ाई (mm)
 slip_col_start	शुरू दी थाह् (px)
 slip_col_end	अंत दी थाह् (px)
-slip_col_align	लिखत दी सीध
 slip_columns_help	हर स्तंभ दी चौड़ाई च उसदी शुरू ते अंत दी थाह् शामल ऐ। लिखत अपने स्तंभ दे अंदर लपेटोंदी ऐ; सामग्री दी चौड़ाई थमां बाह्र जो ऐ ओह् कागज ते पूर्वावलोकन दोनें च कट्टी जंदा ऐ।
 bill_total_qty_label	कुल मात्रा लेबल
 bill_total_subtotal_label	उप कुल लेबल
@@ -643,7 +639,6 @@ vp_type_size_heading	टाइप साइज
 vp_wrap_heading	लपेटें चौड़ाई
 vp_margin_heading	हाशिए दा
 vp_delivery_spooler	ओएस दस्तावेज (सिस्टम स्पूलर) ऐ।
-vp_delivery_raw	डिवाइस गी कच्चे बाइट
 vp_delivery_escpos	ESC/POS थर्मल कमांड
 virtual_printer_new	नमां आभासी प्रिंटर
 virtual_printer_selected	“{name}” गी संपादत करना — स्विच करने लेई सूची च इक होर टैप करो
@@ -1110,7 +1105,6 @@ remove_these_tables	इन डाइनिंग टेबल को हटा �
 table_remove_ph	हटाओ: T1-T24, या इक डाइनिंग टेबल दा नां
 find_server	दुकान दा सर्वर ढूंढो
 bill_format	बिल दा प्रारूप
-bill_format_help	हर बिल पर अपने रेस्टोरेंट दे नां कन्नै छपी दी। साथ अलग लाइनें | (जैसे एमजी रोड, राजकोट | पीएच 98250 00000)।
 bill_header_ph	पता | फोन
 fssai_ph	एफएसएसएआई लाइसेंस नंबर 1। (भारत) दा
 bill_footer_ph	पाद लेख (जैसे धन्यवाद, दोबारा दौरा करो)
@@ -1127,7 +1121,6 @@ kot_field_hide	छुपा दे
 kot_field_on	दिखाओ
 kot_field_off	छुपा दे
 kot_field_size	फॉन्ट दा साइज
-kot_field_size_ph	उदा. 16, 20, 24, 28, 32 ऐ...
 kot_weight_light	रोशनी
 bill_kot_panel_help	बिल ते रसोई दी पर्ची लेआउट, हर इक दी अपनी सामग्री चौड़ाई ऐ। बिल कैशियर ओह् ऐ जिसने बिल जारी कीता जां निपटारा कीता; KOT वेटर ही है जिसने उस रसोई दी टिकट भेजी — फुल ऑर्डर दी कहानी लेजर विच ही रह जांदी है।
 std_size_ph	उदा. 18, 20, 26 ऐ...
@@ -1157,7 +1150,6 @@ kot_style_item_qty	मेनू मेनू आइटम · मात्रा
 kot_style_field_pick	फील्ड चुनें
 kot_weight_regular	नियमित
 kot_weight_bold	बोल्ड
-kot_align	संरेखित करो
 kot_align_start	शुरू कर दे
 kot_align_center	केंद्र
 kot_align_end	अंत
@@ -1307,18 +1299,8 @@ kot_show_item_hdr	मेनू मेनू आइटम · मात्रा
 kot_hide_item_hdr	स्तंभ छुपाओ
 kot_show_title	टाइटल लाइन
 kot_hide_title	टाइटल छुपा दे
-kot_field_order	प्रिंट आर्डर
-kot_field_up	ऊपर चली जाओ
-kot_field_down	नीचे चले जाओ
 kot_field_cycle	अगला चुनें
 kot_field_select	अगला चुनें
-kot_field_time	वक्त
-kot_field_kot_no	KOT न
-kot_field_area	इलाका
-kot_field_table	डाइनिंग टेबल
-kot_field_shop	दुकान दा नाम
-kot_field_waiter	स्टाफ ने दी
-kot_field_station	स्टेशन
 dishes_n	{n} पकवान
 recipe_ph	नुस्खा (वैकल्पिक) — इक हिस्से च इस्तेमाल कीता जंदा ऐ: चावल = 0.2, पनीर = 0.15
 reorder_ph	पर और खरीदें

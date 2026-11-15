@@ -83,9 +83,7 @@ print_cancelled_kot_needed	पहिने रद्द व्यंजन व�
 print_cancelled_kot_none	एहि ऑर्डरपर कोनो रद्द व्यंजन नहि
 print_cancelled_kot_client	{place} लेल रद्द छापू ({n}) पठाओल — भनसा सर्वरपर छापत
 kot_banner	प्रकार बैनर
-kot_banner_ph	बैनर (खाली = नहि)
 kot_item_prefix	सामान उपसर्ग
-kot_item_prefix_ph	जेना [CANCELLED]
 kot_strike	व्यंजनक नाम काटू
 kot_strike_note	व्यंजनक टिप्पणी काटू
 kot_strike_on	चालू
@@ -103,13 +101,11 @@ bill_item_qty	मात्रा
 bill_item_price	दाम
 bill_item_amount	राशि
 bill_item_note	व्यंजनक टिप्पणी
-bill_item_col_order	स्तंभक क्रम
 bill_item_col_sep	स्तंभ रेखा
 slip_columns	स्तंभ
 slip_col_width	चौड़ाइ (mm)
 slip_col_start	शुरुआतक जगह (px)
 slip_col_end	अंतक जगह (px)
-slip_col_align	लिखावटक सीध
 slip_columns_help	प्रत्येक स्तंभक चौड़ाइमे ओकर शुरुआत आ अंतक जगह सम्मिलित अछि। लिखावट अपन स्तंभक भीतर लपेटाइत अछि; सामग्रीक चौड़ाइसँ बाहर जे अछि से कागज आ पूर्वावलोकन दुनूमे कटि जाइत अछि।
 bill_total_qty_label	कुल मात्रा लेबल
 bill_total_subtotal_label	उप-जोड़ लेबल
@@ -643,7 +639,6 @@ vp_type_size_heading	अक्षर आकार
 vp_wrap_heading	लपेटक चौड़ाई
 vp_margin_heading	हाशिया
 vp_delivery_spooler	OS दस्तावेज (सिस्टम स्पूलर)
-vp_delivery_raw	डिवाइसकेँ कच्चा बाइट
 vp_delivery_escpos	ESC/POS थर्मल आदेश
 virtual_printer_new	नव वर्चुअल प्रिंटर
 virtual_printer_selected	“{name}” बदलि रहल छी — बदलबाक लेल सूचीमे आन दबाउ
@@ -1110,7 +1105,6 @@ remove_these_tables	ई टेबल हटाउ
 table_remove_ph	हटाउ: T1-T24, वा एकटा टेबलक नाम
 find_server	दोकानक सर्वर खोजू
 bill_format	बिल प्रारूप
-bill_format_help	प्रत्येक बिलपर अहाँक रेस्टोरेंटक नामक नीचाँ छपैत अछि। पंक्ति | सँ अलग करू (जेना MG Road, Rajkot | Ph 98250 00000)।
 bill_header_ph	पता | फोन
 fssai_ph	FSSAI लाइसेंस नं. (भारत)
 bill_footer_ph	फुटर (जेना धन्यवाद, फेर आउ)
@@ -1127,7 +1121,6 @@ kot_field_hide	नुकाउ
 kot_field_on	देखाउ
 kot_field_off	नुकाउ
 kot_field_size	अक्षर आकार
-kot_field_size_ph	जेना 16, 20, 24, 28, 32…
 kot_weight_light	पातर
 bill_kot_panel_help	बिल आ भनसा पर्चीक बनावट, प्रत्येकक अपन चौड़ाई। बिलक कैशियर ओ छथि जे बिल जारी वा निपटेलनि; KOT वेटर ओ छथि जे ओ भनसा टिकट पठेलनि — पूरा ऑर्डरक कथा बहीमे रहैत अछि।
 std_size_ph	जेना 18, 20, 26…
@@ -1157,7 +1150,6 @@ kot_style_item_qty	सामान · मात्रा
 kot_style_field_pick	फील्ड चुनू
 kot_weight_regular	सामान्य
 kot_weight_bold	मोट
-kot_align	संरेखण
 kot_align_start	शुरू
 kot_align_center	बीचमे
 kot_align_end	अंतमे
@@ -1307,18 +1299,8 @@ kot_show_item_hdr	सामान · मात्रा
 kot_hide_item_hdr	स्तंभ नुकाउ
 kot_show_title	शीर्षक पंक्ति
 kot_hide_title	शीर्षक नुकाउ
-kot_field_order	छपाइक क्रम
-kot_field_up	ऊपर करू
-kot_field_down	नीचाँ करू
 kot_field_cycle	अगिला चुनू
 kot_field_select	अगिला चुनू
-kot_field_time	समय
-kot_field_kot_no	KOT नं.
-kot_field_area	क्षेत्र
-kot_field_table	टेबल
-kot_field_shop	दोकानक नाम
-kot_field_waiter	कर्मचारी
-kot_field_station	स्टेशन
 dishes_n	{n} व्यंजन
 recipe_ph	विधि (वैकल्पिक) — एक भागमे लगैत अछि: Rice=0.2, Paneer=0.15
 reorder_ph	एतेक भेलापर आओर कीनू

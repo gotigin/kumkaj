@@ -83,9 +83,7 @@ print_cancelled_kot_needed	སྔོན་ལ་ཆ་མེད་དུ་བ�
 print_cancelled_kot_none	མངགས་ཉོ་འདིའི་ཐོག་ཟས་རིགས་ཆ་མེད་དུ་བཏང་མེད།
 print_cancelled_kot_client	པར་ཤུས་མེད་པར་བཟོས་པ། ({n}) {place} ལ་བཏང་བ་རེད།
 kot_banner	བྱམས་བརྩེའི་དར་ཆ།
-kot_banner_ph	དར་ཆ། (སྟོང་པ་ = མེད།)
 kot_item_prefix	དཀར་ཆག་དཀར་ཆག་རྣམ་གྲངས་སྔོན་འཇུག་།
-kot_item_prefix_ph	དཔེར་ན། [ཆ་མེད་དུ་བཏང་བ།]
 kot_strike	སྡེར་མའི་མིང་།
 kot_strike_note	སྡེར་མའི་དྲན་ཐོ།
 kot_strike_on	ཨང༌།
@@ -103,13 +101,11 @@ bill_item_qty	གྲངས།
 bill_item_price	རིན་གོང་།
 bill_item_amount	དངུལ་འབོར།
 bill_item_note	སྡེར་མའི་དྲན་ཐོ།
-bill_item_col_order	ཐིག་ཕྲེང་གོ་རིམ།
 bill_item_col_sep	ཀ་རིལ་ཁྲིམས་ལུགས།
 slip_columns	ཀ་རིལ།
 slip_col_width	ཞེང་ཚད། (mm)
 slip_col_start	འགོའི་བར་སྟོང་། (px)
 slip_col_end	མཇུག་གི་བར་སྟོང་། (px)
-slip_col_align	ཡི་གེའི་ཕྱོགས་སྒྲིག
 slip_columns_help	ཀ་རིལ་རེ་རེའི་ཞེང་ཚད་ནང་དུ་འགོ་དང་མཇུག་གི་བར་སྟོང་ཚུད་ཡོད། ཡི་གེ་རང་གི་ཀ་རིལ་ནང་དུ་འཁྱིལ་ཡོང་། ནང་དོན་གྱི་ཞེང་ཚད་ལས་བརྒལ་བ་ནི་ཤོག་བུ་དང་སྔོན་ལྟ་གཉིས་ཀར་བཅད་ཡོང་།
 bill_total_qty_label	ཁྱོན་བསྡོམས་འབོར་ཚད་ཀྱི་མིང་བྱང་།
 bill_total_subtotal_label	ཡན་ལག་བསྡོམས་རྩིས་མིང་རྟགས།
@@ -643,7 +639,6 @@ vp_type_size_heading	ཡིག་གཟུགས་ཆེ་ཆུང་།
 vp_wrap_heading	དཀྲིས་པའི་ཞེང་ཚད།
 vp_margin_heading	མཐའ་ཚད།
 vp_delivery_spooler	OS ཡིག་ཆ། (མ་ལག་གཡོ་སྒྱུ།)
-vp_delivery_raw	ཡོ་ཆས་ལ་བའེ་ཊི་སྔོ་ཚལ།
 vp_delivery_escpos	ESC/POS ཚ་དྲོད་བཀའ་བཀོད།
 virtual_printer_new	གཟུགས་བརྙན་པར་འཕྲུལ་གསར་པ།
 virtual_printer_selected	རྩོམ་སྒྲིག་ “{name}” — བརྗེ་སྒྱུར་བྱེད་པར་ཐོ་གཞུང་ནང་གཞན་ཞིག་ལ་རྡེབ་རོགས།
@@ -1110,7 +1105,6 @@ remove_these_tables	ཟ་ཁང་གི་ཅོག་ཙེ་འདི་ད
 table_remove_ph	མེད་པར་བཟོ: T1-T24 ཡང་ན་ཟ་ཁང་གི་ལྕོག་རྩེ་གཅིག་གི་མིང་།
 find_server	ཚོང་ཁང་གི་སར་བར་འཚོལ་བ།
 bill_format	བྱུང་འཛིན་རྣམ་པ།
-bill_format_help	དངུལ་འཛིན་རེ་རེའི་སྟེང་དུ་ཁྱེད་ཀྱི་ཟ་ཁང་གི་མིང་འོག་པར་སྐྲུན་བྱས། གྲལ་ཐིག་སོ་སོ་དང་མཉམ་དུ་ | (དཔེར་ན། རྗ་ཀོཊ་ཀྱི་ཨེམ་ཇི་ལམ། | ཕི་ཨེཆ་༩༨༢༥༠༠༠༠)
 bill_header_ph	ཁ་བྱང་ | ཁ་པར།
 fssai_ph	FSSAI ཆོག་མཆན་ཨང་། (རྒྱ་གར།)
 bill_footer_ph	མཇུག་ཡིག་(དཔེར་ན། ཐུགས་རྗེ་ཆེ། ཡང་བསྐྱར་ཕེབས་ཤོག)
@@ -1127,7 +1121,6 @@ kot_field_hide	གསང་བ།
 kot_field_on	སྟོན།
 kot_field_off	གསང་བ།
 kot_field_size	ཡིག་གཟུགས་ཆེ་ཆུང་།
-kot_field_size_ph	དཔེར་ན། ༡༦ ༢༠ ༢༤ ༢༨ ༣༢...
 kot_weight_light	འོད།
 bill_kot_panel_help	བིལ་དང་ཐབ་ཚང་གི་ཤོག་བུའི་བཀོད་སྒྲིག རེ་རེར་ནང་དོན་གྱི་རྒྱ་ཁྱོན་རེ་རེ་ཡོད། བིལ་དངུལ་ཁང་ནི་བིལ་དེ་བཏོན་པའམ་ཡང་ན་ཐག་གཅོད་བྱེད་མཁན་དེ་རེད། KOT ཐབ་ཚང་གི་ལག་ཁྱེར་དེ་བཏང་མཁན་ནི་ཞབས་ཞུ་བ་ཡིན། མངགས་ཉོའི་སྒྲུང་ཆ་ཚང་རྩིས་ཁྲའི་ནང་དུ་བསྡད་ཡོད།
 std_size_ph	དཔེར་ན། ༡༨ ༢༠ ༢༦...
@@ -1157,7 +1150,6 @@ kot_style_item_qty	དཀར་ཆག་དཀར་ཆག་རྣམ་གྲ�
 kot_style_field_pick	ཡིག་དུམ་འདེམས།
 kot_weight_regular	རྒྱུན་སྲོལ།
 kot_weight_bold	བརྗིད་པོ།
-kot_align	ཕྲེང་བསྒྲིགས།
 kot_align_start	འགོ་བརྩམས།
 kot_align_center	ལྟེ་བ།
 kot_align_end	མཇུག་སྒྲིལ།
@@ -1307,18 +1299,8 @@ kot_show_item_hdr	དཀར་ཆག་དཀར་ཆག་རྣམ་གྲ�
 kot_hide_item_hdr	ཐིག་ཕྲེང་སྦས།
 kot_show_title	མགོ་བརྗོད་ཕྲེང་བ།
 kot_hide_title	ཁ་བྱང་སྦས།
-kot_field_order	པར་སྐྲུན་གོ་རིམ།
-kot_field_up	ཡར་སྤོ་བ།
-kot_field_down	མར་སྤོ་བ།
 kot_field_cycle	རྗེས་མ་འདེམས།
 kot_field_select	རྗེས་མ་འདེམས།
-kot_field_time	དུས་ཚོད།
-kot_field_kot_no	KOT མེད།
-kot_field_area	ས་ཁོངས།
-kot_field_table	ཟ་ཁང་གི་ཅོག་ཙེ།
-kot_field_shop	ཚོང་ཁང་གི་མིང་།
-kot_field_waiter	ལས་བྱེད་པ།
-kot_field_station	ས་ཚིགས།
 dishes_n	{n} སྡེར་མ།
 recipe_ph	བཟོ་སྟངས། (འདམ་ཀ) — ཆ་ཤས་གཅིག་བེད་སྤྱོད་བྱེད། ཆུམ་=0.2, པ་ནིར་=0.15
 reorder_ph	མང་ཙམ་ཉོས།

@@ -433,12 +433,11 @@ struct PrinterDeliveryList {
 
 impl Widget for PrinterDeliveryList {
     fn draw_walk(&mut self, cx: &mut Cx2d, scope: &mut Scope, walk: Walk) -> DrawStep {
-        let (printers, os_l, raw_l, esc_l, empty) = {
+        let (printers, os_l, esc_l, empty) = {
             let st = app_state().lock().unwrap();
             (
                 st.printer_draft.printers.clone(),
                 st.t("vp_delivery_spooler"),
-                st.t("vp_delivery_raw"),
                 st.t("vp_delivery_escpos"),
                 st.t("printers_pool_empty"),
             )
@@ -460,7 +459,6 @@ impl Widget for PrinterDeliveryList {
                             .set_text(cx, &plain_display_text(&empty));
                         for (idle, on) in [
                             (ids!(deliv_os), ids!(deliv_os_on)),
-                            (ids!(deliv_raw), ids!(deliv_raw_on)),
                             (ids!(deliv_escpos), ids!(deliv_escpos_on)),
                         ] {
                             item.button(cx, idle).set_visible(cx, false);
@@ -494,8 +492,6 @@ impl Widget for PrinterDeliveryList {
                             .set_text(cx, &plain_display_text(&line));
                         item.button(cx, ids!(deliv_os)).set_text(cx, &os_l);
                         item.button(cx, ids!(deliv_os_on)).set_text(cx, &os_l);
-                        item.button(cx, ids!(deliv_raw)).set_text(cx, &raw_l);
-                        item.button(cx, ids!(deliv_raw_on)).set_text(cx, &raw_l);
                         item.button(cx, ids!(deliv_escpos)).set_text(cx, &esc_l);
                         item.button(cx, ids!(deliv_escpos_on)).set_text(cx, &esc_l);
                         let pairs = [
@@ -503,11 +499,6 @@ impl Widget for PrinterDeliveryList {
                                 ids!(deliv_os),
                                 ids!(deliv_os_on),
                                 delivery.as_deref() == Some(print_share::DELIVERY_SYSTEM_SPOOLER),
-                            ),
-                            (
-                                ids!(deliv_raw),
-                                ids!(deliv_raw_on),
-                                delivery.as_deref() == Some(print_share::DELIVERY_RAW_DEVICE),
                             ),
                             (
                                 ids!(deliv_escpos),

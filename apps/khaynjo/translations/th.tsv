@@ -83,9 +83,7 @@ print_cancelled_kot_needed	เปิดโต๊ะที่มีรายก�
 print_cancelled_kot_none	ไม่มีรายการยกเลิกในออเดอร์นี้
 print_cancelled_kot_client	ส่งที่ยกเลิก ({n}) ของ {place} แล้ว — พิมพ์ที่เซิร์ฟเวอร์
 kot_banner	แบนเนอร์
-kot_banner_ph	แบนเนอร์ (ว่าง = ไม่มี)
 kot_item_prefix	คำนำหน้าเมนู
-kot_item_prefix_ph	เช่น [CANCELLED]
 kot_strike	ขีดฆ่าชื่อ
 kot_strike_note	ขีดฆ่าโน้ต
 kot_strike_on	เปิด
@@ -103,13 +101,11 @@ bill_item_qty	จำนวน
 bill_item_price	ราคา
 bill_item_amount	จำนวนเงิน
 bill_item_note	โน้ต
-bill_item_col_order	ลำดับคอลัมน์
 bill_item_col_sep	เส้นคอลัมน์
 slip_columns	คอลัมน์
 slip_col_width	ความกว้าง (mm)
 slip_col_start	ระยะว่างต้น (px)
 slip_col_end	ระยะว่างท้าย (px)
-slip_col_align	การจัดแนวข้อความ
 slip_columns_help	ความกว้างของแต่ละคอลัมน์รวมระยะว่างต้นและท้ายของคอลัมน์นั้น ข้อความจะตัดบรรทัดภายในคอลัมน์ของตัวเอง ส่วนที่เกินความกว้างเนื้อหาจะถูกตัดออกทั้งบนกระดาษและในตัวอย่าง
 bill_total_qty_label	ป้ายจำนวนรวม
 bill_total_subtotal_label	ป้ายยอดย่อย
@@ -643,7 +639,6 @@ vp_type_size_heading	ขนาดตัวอักษร
 vp_wrap_heading	ความกว้างตัดบรรทัด
 vp_margin_heading	ขอบ
 vp_delivery_spooler	เอกสาร OS (สพูลเลอร์ระบบ)
-vp_delivery_raw	ไบต์ดิบไปยังอุปกรณ์
 vp_delivery_escpos	คำสั่งความร้อน ESC/POS
 virtual_printer_new	เครื่องพิมพ์เสมือนใหม่
 virtual_printer_selected	กำลังแก้ไข “{name}” — แตะอันอื่นในรายการเพื่อสลับ
@@ -1110,7 +1105,6 @@ remove_these_tables	ลบโต๊ะเหล่านี้
 table_remove_ph	ลบ: T1-T24 หรือชื่อโต๊ะหนึ่งตัว
 find_server	ค้นหาเซิร์ฟเวอร์ของร้าน
 bill_format	รูปแบบบิล
-bill_format_help	พิมพ์ใต้ชื่อร้านในทุกบิล แยกบรรทัดด้วย | (เช่น MG Road, Rajkot | โทร 98250 00000)
 bill_header_ph	ที่อยู่ | โทรศัพท์
 fssai_ph	เลขใบอนุญาต FSSAI (อินเดีย)
 bill_footer_ph	ท้ายบิล (เช่น ขอบคุณ แล้วพบกันใหม่)
@@ -1127,7 +1121,6 @@ kot_field_hide	ซ่อน
 kot_field_on	แสดง
 kot_field_off	ซ่อน
 kot_field_size	ขนาดฟอนต์
-kot_field_size_ph	เช่น 16, 20, 24, 28, 32…
 kot_weight_light	บาง
 bill_kot_panel_help	เนื้อหาบิลและตัวอักษรสลิปครัว ความกว้างเนื้อหาด้านบนคือความกว้างของทั้งบิลและสลิปครัว
 std_size_ph	เช่น 18, 20, 26…
@@ -1157,7 +1150,6 @@ kot_style_item_qty	รายการ · จำนวน
 kot_style_field_pick	เลือกช่อง
 kot_weight_regular	ปกติ
 kot_weight_bold	ตัวหนา
-kot_align	จัดแนว
 kot_align_start	เริ่ม
 kot_align_center	ตรงกลาง
 kot_align_end	จบ
@@ -1307,18 +1299,8 @@ kot_show_item_hdr	รายการ · จำนวน
 kot_hide_item_hdr	ซ่อนคอลัมน์
 kot_show_title	บรรทัดหัวข้อ
 kot_hide_title	ซ่อนหัวข้อ
-kot_field_order	พิมพ์คำสั่ง
-kot_field_up	ย้ายขึ้น
-kot_field_down	ย้ายลง
 kot_field_cycle	เลือกถัดไป
 kot_field_select	เลือกถัดไป
-kot_field_time	เวลา
-kot_field_kot_no	เลข KOT
-kot_field_area	พื้นที่
-kot_field_table	โต๊ะ
-kot_field_shop	ชื่อร้าน
-kot_field_waiter	พนักงาน
-kot_field_station	สถานี
 dishes_n	{n} รายการ
 recipe_ph	สูตร (ไม่บังคับ) — หนึ่งที่ใช้: Rice=0.2, Paneer=0.15
 reorder_ph	สั่งเพิ่มเมื่อเหลือ

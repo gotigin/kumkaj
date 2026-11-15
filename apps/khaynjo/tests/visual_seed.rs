@@ -18,6 +18,8 @@ use std::path::PathBuf;
 #[test]
 #[ignore]
 fn seed_visual() {
+    // Its tickets never reach a printer, whatever the environment says.
+    kumkaj_khaynjo::print_share::set_sink(kumkaj_khaynjo::print_share::PrintSink::Off);
     let s = if let Ok(base) = std::env::var("SEED_DATA_DIR") {
         let base = PathBuf::from(base);
         std::fs::create_dir_all(&base).unwrap();

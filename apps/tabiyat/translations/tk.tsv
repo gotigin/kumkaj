@@ -81,12 +81,10 @@ bill_item_qty	Mukdar
 bill_item_price	Bahasy
 bill_item_amount	Mukdary
 bill_item_note	Rx / satuw belligi
-bill_item_col_order	Sütün tertibi
 bill_item_col_sep	Sütüniň düzgünleri
 slip_col_width	Ini (mm)
 slip_col_start	Başlangyç aralyk (px)
 slip_col_end	Soňky aralyk (px)
-slip_col_align	Tekst deňlemesi
 slip_columns_help	Her sütüniň ini onuň başlangyç we soňky aralygyny öz içine alýar. Tekst öz sütüniniň içinde setirden-setire geçýär; mazmunyň ininden çykýan bölek kagyzda-da, deslapky görnüşde-de kesilýär.
 bill_total_qty_label	Jemi bellik
 bill_total_subtotal_label	Jemi bellik
@@ -443,7 +441,6 @@ printer_profile_heading	Salgy
 vp_delivery_heading	Eltip bermek
 vp_delivery_help	Bu wirtual printeriň nädip iş iberýändigi - OS resminamasy, çig baýt ýa-da ESC / POS. Süýşmek mazmuny (görnüşiň ululygy, örtügi, gyralary) bärde däl-de, faktura / süýşmek formaty bilen kesgitlenýär.
 vp_delivery_spooler	OS resminamasy (ulgam spooler)
-vp_delivery_raw	Enjam üçin çig baýt
 vp_delivery_escpos	ESC/POS termiki buýruklar
 virtual_printer_new	Täze wirtual printer
 virtual_printer_selected	“{name}” redaktirlemek - geçmek üçin sanawdaky başga birine basyň
@@ -730,7 +727,6 @@ customer_paid_ph	Müşderi töledi
 tip_ph	Maslahat
 find_server	Dükanyň serwerini tapyň
 bill_format	Hasap formaty
-bill_format_help	Her fakturada dükanyňyzyň ady bilen çap edilýär. | Bilen aýry setirler (meselem MG ýoly, Rajkot | Ph 98250 00000).
 bill_header_ph	Salgy | telefon
 fssai_ph	Neşe serişdeleriniň ygtyýarnamasy (islege görä - sözleriňiz)
 bill_footer_ph	Aşakdaky ýazgy (meselem, sag boluň, gaýtadan baryp görüň)
@@ -820,8 +816,6 @@ add_dishes	Derman goşuň
 order_so_far	Bu sargyt boýunça: {n} · {total}
 no_dish_match	Hiç bir zat “{q}” bilen gabat gelenok
 pick_done	Boldy
-kot_field_up	Göçüriň
-kot_field_down	Aşak süýşüriň
 dishes_n	{n} elementler
 reorder_ph	Has köp satyn alyň
 set_reorder	Düzediş derejesini düzüň
@@ -853,3 +847,6 @@ sel_copy	Göçür
 sel_select_all	Hemmesini saýla
 sel_copied	Göçürildi
 nav_loading	Ýüklenýär…
+printer_mode_first	Ilki bilen işleýär
+printer_mode_all	Hemmesini çap et
+slip_columns	Sütünler

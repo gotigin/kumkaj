@@ -6318,43 +6318,22 @@ impl MatchEvent for App {
                     break;
                 }
             }
-            for (idle, on, field) in [
-                (ids!(kot_pick_title), ids!(kot_pick_title_on), print_share::KotStyleField::Title),
-                (ids!(kot_pick_shop), ids!(kot_pick_shop_on), print_share::KotStyleField::Shop),
-                (ids!(kot_pick_time), ids!(kot_pick_time_on), print_share::KotStyleField::Time),
-                (ids!(kot_pick_waiter), ids!(kot_pick_waiter_on), print_share::KotStyleField::Waiter),
-                (ids!(kot_pick_station), ids!(kot_pick_station_on), print_share::KotStyleField::Station),
-                (ids!(kot_pick_table), ids!(kot_pick_table_on), print_share::KotStyleField::Table),
-                (ids!(kot_pick_no), ids!(kot_pick_no_on), print_share::KotStyleField::KotNo),
-                (ids!(kot_pick_area), ids!(kot_pick_area_on), print_share::KotStyleField::Area),
-                (ids!(kot_pick_qty), ids!(kot_pick_qty_on), print_share::KotStyleField::ItemQty),
-            ] {
-                if self.choice_chip_clicked(cx, actions, idle, on) {
-                    let mut st = app_state().lock().unwrap();
-                    if st.kot_style_field != field {
-                        st.kot_style_field = field;
-                        style_changed = true;
+            // Tap a closed line (before or after the open one) to open it.
+            {
+                let lines = kot_lines(&app_state().lock().unwrap().kot_slip_draft);
+                for (i, field) in lines.into_iter().enumerate().take(KOT_PICK_BTNS.len()) {
+                    let (a, a_on) = KOT_PICK_BTNS[i];
+                    let (b, b_on) = KOT_AFTER_BTNS[i];
+                    if self.choice_chip_clicked(cx, actions, a, a_on)
+                        || self.choice_chip_clicked(cx, actions, b, b_on)
+                    {
+                        let mut st = app_state().lock().unwrap();
+                        if st.kot_style_field != field {
+                            st.kot_style_field = field;
+                            style_changed = true;
+                        }
+                        break;
                     }
-                    break;
-                }
-            }
-            for (i, idle, on) in [
-                (0, ids!(kot_ord_0), ids!(kot_ord_0_on)),
-                (1, ids!(kot_ord_1), ids!(kot_ord_1_on)),
-                (2, ids!(kot_ord_2), ids!(kot_ord_2_on)),
-                (3, ids!(kot_ord_3), ids!(kot_ord_3_on)),
-                (4, ids!(kot_ord_4), ids!(kot_ord_4_on)),
-                (5, ids!(kot_ord_5), ids!(kot_ord_5_on)),
-                (6, ids!(kot_ord_6), ids!(kot_ord_6_on)),
-            ] {
-                if self.choice_chip_clicked(cx, actions, idle, on) {
-                    let mut st = app_state().lock().unwrap();
-                    ensure_kot_field_order(&mut st.kot_slip_draft);
-                    if i < st.kot_slip_draft.field_order.len() && st.kot_field_edit_idx != i {
-                        st.kot_field_edit_idx = i;
-                        style_changed = true;
-                    }
-                    break;
                 }
             }
             if self.choice_chip_clicked(cx, actions, ids!(kot_field_show), ids!(kot_field_show_on))
@@ -6419,86 +6398,70 @@ impl MatchEvent for App {
                     break;
                 }
             }
-            // Item columns of the kind being edited (each kind its own).
-            for (idle, on, col) in [
-                (ids!(kot_col_item), ids!(kot_col_item_on), print_share::KotItemCol::Item),
-                (ids!(kot_col_qty), ids!(kot_col_qty_on), print_share::KotItemCol::Qty),
+            // Item columns of the kind being edited (each kind its own): one
+            // row each — header text, width, start / end space, alignment.
+            for (row, col) in [
+                (KOT_COL_ROWS[0], print_share::KotItemCol::Item),
+                (KOT_COL_ROWS[1], print_share::KotItemCol::Qty),
             ] {
-                if self.choice_chip_clicked(cx, actions, idle, on) {
-                    app_state().lock().unwrap().kot_item_col_edit = col;
+                let kot_col_edit = |f: &dyn Fn(&mut print_share::SlipColumn)| {
+                    let mut st = app_state().lock().unwrap();
+                    let kind = st.kot_edit_kind;
+                    let mut cols = st.kot_slip_draft.item_columns(kind);
+                    f(cols.get_mut(col));
+                    *cols.get_mut(col) = cols.get(col).clamped();
+                    st.kot_slip_draft.kind_styles.get_mut(kind).item_columns = Some(cols);
+                };
+                if let Some(v) = self.slip_column_input(cx, actions, &[row, id!(col_width)]) {
+                    kot_col_edit(&|c| c.width_mm = v);
                     slip_changed = true;
                 }
-            }
-            let kot_col_edit = |f: &dyn Fn(&mut print_share::SlipColumn)| {
-                let mut st = app_state().lock().unwrap();
-                let kind = st.kot_edit_kind;
-                let pick = st.kot_item_col_edit;
-                let mut cols = st.kot_slip_draft.item_columns(kind);
-                f(cols.get_mut(pick));
-                *cols.get_mut(pick) = cols.get(pick).clamped();
-                st.kot_slip_draft.kind_styles.get_mut(kind).item_columns = Some(cols);
-            };
-            if let Some(v) = self.slip_column_input(cx, actions, ids!(kot_col_width_input)) {
-                kot_col_edit(&|c| c.width_mm = v);
-                slip_changed = true;
-            }
-            if let Some(v) = self.slip_column_input(cx, actions, ids!(kot_col_start_input)) {
-                kot_col_edit(&|c| c.start_px = v.round() as u32);
-                slip_changed = true;
-            }
-            if let Some(v) = self.slip_column_input(cx, actions, ids!(kot_col_end_input)) {
-                kot_col_edit(&|c| c.end_px = v.round() as u32);
-                slip_changed = true;
-            }
-            for (idle, on, align) in [
-                (ids!(kot_col_align_start), ids!(kot_col_align_start_on), print_share::KotAlign::Start),
-                (ids!(kot_col_align_center), ids!(kot_col_align_center_on), print_share::KotAlign::Center),
-                (ids!(kot_col_align_end), ids!(kot_col_align_end_on), print_share::KotAlign::End),
-            ] {
-                if self.choice_chip_clicked(cx, actions, idle, on) {
-                    kot_col_edit(&|c| c.align = align);
+                if let Some(v) = self.slip_column_input(cx, actions, &[row, id!(col_start)]) {
+                    kot_col_edit(&|c| c.start_px = v.round() as u32);
                     slip_changed = true;
                 }
-            }
-            if let Some(raw) = self
-                .ui
-                .text_input(cx, ids!(kot_item_hdr_item_input))
-                .changed(actions)
-            {
-                app_state().lock().unwrap().kot_slip_draft.item_header_item = raw;
-                slip_changed = true;
-            }
-            if let Some(raw) = self
-                .ui
-                .text_input(cx, ids!(kot_item_hdr_qty_input))
-                .changed(actions)
-            {
-                app_state().lock().unwrap().kot_slip_draft.item_header_qty = raw;
-                slip_changed = true;
-            }
-            // Move up/down reorder the print-order row that is selected.
-            if self.ui.button(cx, ids!(kot_field_up)).clicked(actions) {
-                let mut st = app_state().lock().unwrap();
-                ensure_kot_field_order(&mut st.kot_slip_draft);
-                let n = st.kot_slip_draft.field_order.len();
-                if n > 0 {
-                    let i = st.kot_field_edit_idx.min(n - 1);
-                    if i > 0 {
-                        st.kot_slip_draft.field_order.swap(i, i - 1);
-                        st.kot_field_edit_idx = i - 1;
+                if let Some(v) = self.slip_column_input(cx, actions, &[row, id!(col_end)]) {
+                    kot_col_edit(&|c| c.end_px = v.round() as u32);
+                    slip_changed = true;
+                }
+                for (idle, on, align) in [
+                    (id!(col_a_start), id!(col_a_start_on), print_share::KotAlign::Start),
+                    (id!(col_a_center), id!(col_a_center_on), print_share::KotAlign::Center),
+                    (id!(col_a_end), id!(col_a_end_on), print_share::KotAlign::End),
+                ] {
+                    if self.choice_chip_clicked(cx, actions, &[row, idle], &[row, on]) {
+                        kot_col_edit(&|c| c.align = align);
                         slip_changed = true;
                     }
                 }
+                if let Some(raw) = self.ui.text_input(cx, &[row, id!(col_header)]).changed(actions) {
+                    let mut st = app_state().lock().unwrap();
+                    match col {
+                        print_share::KotItemCol::Item => st.kot_slip_draft.item_header_item = raw,
+                        print_share::KotItemCol::Qty => st.kot_slip_draft.item_header_qty = raw,
+                    }
+                    slip_changed = true;
+                }
             }
-            if self.ui.button(cx, ids!(kot_field_down)).clicked(actions) {
-                let mut st = app_state().lock().unwrap();
-                ensure_kot_field_order(&mut st.kot_slip_draft);
-                let n = st.kot_slip_draft.field_order.len();
-                if n > 0 {
-                    let i = st.kot_field_edit_idx.min(n - 1);
-                    if i + 1 < n {
-                        st.kot_slip_draft.field_order.swap(i, i + 1);
-                        st.kot_field_edit_idx = i + 1;
+            for (idle, on, header) in [
+                (ids!(kot_item_header_on), ids!(kot_item_header_on_on), true),
+                (ids!(kot_item_header_off), ids!(kot_item_header_off_on), false),
+            ] {
+                if self.choice_chip_clicked(cx, actions, idle, on) {
+                    app_state()
+                        .lock()
+                        .unwrap()
+                        .kot_slip_draft
+                        .set_field_shown(print_share::KotStyleField::ItemQty, header);
+                    slip_changed = true;
+                }
+            }
+            // ↑ / ↓ move the open info line among the info lines.
+            for (btn, up) in [(ids!(kot_field_up), true), (ids!(kot_field_down), false)] {
+                if self.ui.button(cx, btn).clicked(actions) {
+                    let mut st = app_state().lock().unwrap();
+                    let field = st.kot_style_field;
+                    if kot_move_line(&mut st.kot_slip_draft, field, up) {
                         slip_changed = true;
                     }
                 }
@@ -6721,21 +6684,8 @@ impl MatchEvent for App {
                     break;
                 }
             }
-            for (i, idle, on) in [
-                (0, ids!(bill_ord_0), ids!(bill_ord_0_on)),
-                (1, ids!(bill_ord_1), ids!(bill_ord_1_on)),
-                (2, ids!(bill_ord_2), ids!(bill_ord_2_on)),
-                (3, ids!(bill_ord_3), ids!(bill_ord_3_on)),
-                (4, ids!(bill_ord_4), ids!(bill_ord_4_on)),
-                (5, ids!(bill_ord_5), ids!(bill_ord_5_on)),
-                (6, ids!(bill_ord_6), ids!(bill_ord_6_on)),
-                (7, ids!(bill_ord_7), ids!(bill_ord_7_on)),
-                (8, ids!(bill_ord_8), ids!(bill_ord_8_on)),
-                (9, ids!(bill_ord_9), ids!(bill_ord_9_on)),
-                (10, ids!(bill_ord_10), ids!(bill_ord_10_on)),
-                (11, ids!(bill_ord_11), ids!(bill_ord_11_on)),
-                (12, ids!(bill_ord_12), ids!(bill_ord_12_on)),
-            ] {
+            // Rows after the open line: slot i is the i-th line of the order.
+            for (i, (idle, on)) in BILL_AFTER_BTNS.into_iter().enumerate() {
                 if self.choice_chip_clicked(cx, actions, idle, on) {
                     self.commit_bill_field_value(cx);
                     let mut st = app_state().lock().unwrap();
@@ -6859,78 +6809,6 @@ impl MatchEvent for App {
             if self.choice_chip_clicked(
                 cx,
                 actions,
-                ids!(bill_item_name_on),
-                ids!(bill_item_name_on_on),
-            ) {
-                app_state().lock().unwrap().bill_slip_draft.item_show_name = true;
-                bill_changed = true;
-            }
-            if self.choice_chip_clicked(
-                cx,
-                actions,
-                ids!(bill_item_name_off),
-                ids!(bill_item_name_off_on),
-            ) {
-                app_state().lock().unwrap().bill_slip_draft.item_show_name = false;
-                bill_changed = true;
-            }
-            if self.choice_chip_clicked(
-                cx,
-                actions,
-                ids!(bill_item_qty_on),
-                ids!(bill_item_qty_on_on),
-            ) {
-                app_state().lock().unwrap().bill_slip_draft.item_show_qty = true;
-                bill_changed = true;
-            }
-            if self.choice_chip_clicked(
-                cx,
-                actions,
-                ids!(bill_item_qty_off),
-                ids!(bill_item_qty_off_on),
-            ) {
-                app_state().lock().unwrap().bill_slip_draft.item_show_qty = false;
-                bill_changed = true;
-            }
-            if self.choice_chip_clicked(
-                cx,
-                actions,
-                ids!(bill_item_price_on),
-                ids!(bill_item_price_on_on),
-            ) {
-                app_state().lock().unwrap().bill_slip_draft.item_show_price = true;
-                bill_changed = true;
-            }
-            if self.choice_chip_clicked(
-                cx,
-                actions,
-                ids!(bill_item_price_off),
-                ids!(bill_item_price_off_on),
-            ) {
-                app_state().lock().unwrap().bill_slip_draft.item_show_price = false;
-                bill_changed = true;
-            }
-            if self.choice_chip_clicked(
-                cx,
-                actions,
-                ids!(bill_item_amount_on),
-                ids!(bill_item_amount_on_on),
-            ) {
-                app_state().lock().unwrap().bill_slip_draft.item_show_amount = true;
-                bill_changed = true;
-            }
-            if self.choice_chip_clicked(
-                cx,
-                actions,
-                ids!(bill_item_amount_off),
-                ids!(bill_item_amount_off_on),
-            ) {
-                app_state().lock().unwrap().bill_slip_draft.item_show_amount = false;
-                bill_changed = true;
-            }
-            if self.choice_chip_clicked(
-                cx,
-                actions,
                 ids!(bill_item_note_on),
                 ids!(bill_item_note_on_on),
             ) {
@@ -6944,73 +6822,6 @@ impl MatchEvent for App {
                 ids!(bill_item_note_off_on),
             ) {
                 app_state().lock().unwrap().bill_slip_draft.item_show_note = false;
-                bill_changed = true;
-            }
-            // The selected item column's width, spaces and alignment.
-            let bill_col_edit = |f: &dyn Fn(&mut print_share::SlipColumn)| {
-                let mut st = app_state().lock().unwrap();
-                let order = st.bill_slip_draft.clone().clamped().item_col_order;
-                let idx = st.bill_item_col_edit_idx.min(order.len().saturating_sub(1));
-                let Some(pick) = order.get(idx).and_then(|id| print_share::BillItemCol::from_id(id)) else {
-                    return;
-                };
-                let mut cols = st.bill_slip_draft.item_columns();
-                f(cols.get_mut(pick));
-                *cols.get_mut(pick) = cols.get(pick).clamped();
-                st.bill_slip_draft.item_columns = Some(cols);
-            };
-            if let Some(v) = self.slip_column_input(cx, actions, ids!(bill_col_width_input)) {
-                bill_col_edit(&|c| c.width_mm = v);
-                bill_changed = true;
-            }
-            if let Some(v) = self.slip_column_input(cx, actions, ids!(bill_col_start_input)) {
-                bill_col_edit(&|c| c.start_px = v.round() as u32);
-                bill_changed = true;
-            }
-            if let Some(v) = self.slip_column_input(cx, actions, ids!(bill_col_end_input)) {
-                bill_col_edit(&|c| c.end_px = v.round() as u32);
-                bill_changed = true;
-            }
-            for (idle, on, align) in [
-                (ids!(bill_col_align_start), ids!(bill_col_align_start_on), print_share::KotAlign::Start),
-                (ids!(bill_col_align_center), ids!(bill_col_align_center_on), print_share::KotAlign::Center),
-                (ids!(bill_col_align_end), ids!(bill_col_align_end_on), print_share::KotAlign::End),
-            ] {
-                if self.choice_chip_clicked(cx, actions, idle, on) {
-                    bill_col_edit(&|c| c.align = align);
-                    bill_changed = true;
-                }
-            }
-            if let Some(raw) = self
-                .ui
-                .text_input(cx, ids!(bill_item_hdr_item_input))
-                .changed(actions)
-            {
-                app_state().lock().unwrap().bill_slip_draft.item_header_item = raw;
-                bill_changed = true;
-            }
-            if let Some(raw) = self
-                .ui
-                .text_input(cx, ids!(bill_item_hdr_qty_input))
-                .changed(actions)
-            {
-                app_state().lock().unwrap().bill_slip_draft.item_header_qty = raw;
-                bill_changed = true;
-            }
-            if let Some(raw) = self
-                .ui
-                .text_input(cx, ids!(bill_item_hdr_price_input))
-                .changed(actions)
-            {
-                app_state().lock().unwrap().bill_slip_draft.item_header_price = raw;
-                bill_changed = true;
-            }
-            if let Some(raw) = self
-                .ui
-                .text_input(cx, ids!(bill_item_hdr_amount_input))
-                .changed(actions)
-            {
-                app_state().lock().unwrap().bill_slip_draft.item_header_amount = raw;
                 bill_changed = true;
             }
             if self.choice_chip_clicked(
@@ -7031,48 +6842,80 @@ impl MatchEvent for App {
                 app_state().lock().unwrap().bill_slip_draft.item_col_sep = false;
                 bill_changed = true;
             }
-            for (i, idle, on) in [
-                (0, ids!(bill_col_ord_0), ids!(bill_col_ord_0_on)),
-                (1, ids!(bill_col_ord_1), ids!(bill_col_ord_1_on)),
-                (2, ids!(bill_col_ord_2), ids!(bill_col_ord_2_on)),
-                (3, ids!(bill_col_ord_3), ids!(bill_col_ord_3_on)),
-            ] {
-                if self.choice_chip_clicked(cx, actions, idle, on) {
-                    app_state().lock().unwrap().bill_item_col_edit_idx = i;
+            // Item column rows: each row edits its own column (show, header,
+            // width, start, end, alignment, place in the order).
+            let col_order = app_state().lock().unwrap().bill_slip_draft.clone().clamped().item_col_order;
+            for (i, row) in BILL_COL_ROWS.into_iter().enumerate() {
+                let Some(col) = col_order.get(i).and_then(|id| print_share::BillItemCol::from_id(id)) else {
+                    continue;
+                };
+                for (idle, on, show) in [
+                    (id!(col_show_on), id!(col_show_on_on), true),
+                    (id!(col_show_off), id!(col_show_off_on), false),
+                ] {
+                    if self.choice_chip_clicked(cx, actions, &[row, idle], &[row, on]) {
+                        let mut st = app_state().lock().unwrap();
+                        let d = &mut st.bill_slip_draft;
+                        match col {
+                            print_share::BillItemCol::Name => d.item_show_name = show,
+                            print_share::BillItemCol::Qty => d.item_show_qty = show,
+                            print_share::BillItemCol::Price => d.item_show_price = show,
+                            print_share::BillItemCol::Amount => d.item_show_amount = show,
+                        }
+                        bill_changed = true;
+                    }
+                }
+                if let Some(raw) = self.ui.text_input(cx, &[row, id!(col_header)]).changed(actions) {
+                    let mut st = app_state().lock().unwrap();
+                    let d = &mut st.bill_slip_draft;
+                    match col {
+                        print_share::BillItemCol::Name => d.item_header_item = raw,
+                        print_share::BillItemCol::Qty => d.item_header_qty = raw,
+                        print_share::BillItemCol::Price => d.item_header_price = raw,
+                        print_share::BillItemCol::Amount => d.item_header_amount = raw,
+                    }
                     bill_changed = true;
                 }
-            }
-            if self.ui.button(cx, ids!(bill_col_ord_up)).clicked(actions) {
-                let mut st = app_state().lock().unwrap();
-                if st.bill_slip_draft.item_col_order.is_empty() {
-                    st.bill_slip_draft.item_col_order = print_share::BillItemCol::ALL
-                        .iter()
-                        .map(|c| c.id().to_string())
-                        .collect();
-                }
-                let i = st
-                    .bill_item_col_edit_idx
-                    .min(st.bill_slip_draft.item_col_order.len().saturating_sub(1));
-                if i > 0 {
-                    st.bill_slip_draft.item_col_order.swap(i, i - 1);
-                    st.bill_item_col_edit_idx = i - 1;
+                let edit = |f: &dyn Fn(&mut print_share::SlipColumn)| {
+                    let mut st = app_state().lock().unwrap();
+                    let mut cols = st.bill_slip_draft.item_columns();
+                    f(cols.get_mut(col));
+                    *cols.get_mut(col) = cols.get(col).clamped();
+                    st.bill_slip_draft.item_columns = Some(cols);
+                };
+                if let Some(v) = self.slip_column_input(cx, actions, &[row, id!(col_width)]) {
+                    edit(&|c| c.width_mm = v);
                     bill_changed = true;
                 }
-            }
-            if self.ui.button(cx, ids!(bill_col_ord_down)).clicked(actions) {
-                let mut st = app_state().lock().unwrap();
-                if st.bill_slip_draft.item_col_order.is_empty() {
-                    st.bill_slip_draft.item_col_order = print_share::BillItemCol::ALL
-                        .iter()
-                        .map(|c| c.id().to_string())
-                        .collect();
-                }
-                let n = st.bill_slip_draft.item_col_order.len();
-                let i = st.bill_item_col_edit_idx.min(n.saturating_sub(1));
-                if i + 1 < n {
-                    st.bill_slip_draft.item_col_order.swap(i, i + 1);
-                    st.bill_item_col_edit_idx = i + 1;
+                if let Some(v) = self.slip_column_input(cx, actions, &[row, id!(col_start)]) {
+                    edit(&|c| c.start_px = v.round() as u32);
                     bill_changed = true;
+                }
+                if let Some(v) = self.slip_column_input(cx, actions, &[row, id!(col_end)]) {
+                    edit(&|c| c.end_px = v.round() as u32);
+                    bill_changed = true;
+                }
+                for (idle, on, align) in [
+                    (id!(col_a_start), id!(col_a_start_on), print_share::KotAlign::Start),
+                    (id!(col_a_center), id!(col_a_center_on), print_share::KotAlign::Center),
+                    (id!(col_a_end), id!(col_a_end_on), print_share::KotAlign::End),
+                ] {
+                    if self.choice_chip_clicked(cx, actions, &[row, idle], &[row, on]) {
+                        edit(&|c| c.align = align);
+                        bill_changed = true;
+                    }
+                }
+                let up = self.ui.button(cx, &[row, id!(col_up)]).clicked(actions);
+                let down = self.ui.button(cx, &[row, id!(col_down)]).clicked(actions);
+                if up || down {
+                    let mut st = app_state().lock().unwrap();
+                    let mut order = st.bill_slip_draft.clone().clamped().item_col_order;
+                    let j = if up { i.checked_sub(1) } else { Some(i + 1).filter(|j| *j < order.len()) };
+                    if let Some(j) = j {
+                        order.swap(i, j);
+                        st.bill_slip_draft.item_col_order = order;
+                        bill_changed = true;
+                    }
                 }
             }
             for (idle, on, partner) in [
@@ -7290,6 +7133,31 @@ impl MatchEvent for App {
                 }
             }
         }
+        for (idle, on, mode) in [
+            (ids!(bill_print_first), ids!(bill_print_first_on), print_share::RoutePrintMode::First),
+            (ids!(bill_print_all), ids!(bill_print_all_on), print_share::RoutePrintMode::All),
+        ] {
+            if self.choice_chip_clicked(cx, actions, idle, on) {
+                let result = (|| -> Result<String, String> {
+                    let mut st = app_state().lock().unwrap();
+                    if st.device_role == DeviceRole::Client {
+                        return Err(st.t("printers_host_only"));
+                    }
+                    st.printer_draft.set_print_mode(print_share::RouteKey::Bill, mode);
+                    st.save_printer_draft()?;
+                    Ok(st.t(match mode {
+                        print_share::RoutePrintMode::All => "printer_mode_all",
+                        print_share::RoutePrintMode::First => "printer_mode_first",
+                    }))
+                })();
+                match result {
+                    Ok(msg) => self.set_status(cx, msg),
+                    Err(e) => self.set_status(cx, e),
+                }
+                self.sync_job_drive_ui(cx);
+                break;
+            }
+        }
         if self.ui.button(cx, ids!(bill_printers_dd)).clicked(actions) {
             let is_client = app_state().lock().unwrap().device_role == DeviceRole::Client;
             if is_client {
@@ -7352,10 +7220,8 @@ impl MatchEvent for App {
             (false, ids!(kot_layout_portrait), ids!(kot_layout_portrait_on), Some(false), None),
             (false, ids!(kot_layout_landscape), ids!(kot_layout_landscape_on), Some(true), None),
             (true, ids!(bill_deliv_os), ids!(bill_deliv_os_on), None, Some(print_share::DELIVERY_SYSTEM_SPOOLER)),
-            (true, ids!(bill_deliv_raw), ids!(bill_deliv_raw_on), None, Some(print_share::DELIVERY_RAW_DEVICE)),
             (true, ids!(bill_deliv_escpos), ids!(bill_deliv_escpos_on), None, Some(print_share::DELIVERY_ESCPOS)),
             (false, ids!(kot_deliv_os), ids!(kot_deliv_os_on), None, Some(print_share::DELIVERY_SYSTEM_SPOOLER)),
-            (false, ids!(kot_deliv_raw), ids!(kot_deliv_raw_on), None, Some(print_share::DELIVERY_RAW_DEVICE)),
             (false, ids!(kot_deliv_escpos), ids!(kot_deliv_escpos_on), None, Some(print_share::DELIVERY_ESCPOS)),
         ] {
             if self.choice_chip_clicked(cx, actions, idle, on) {
@@ -8997,11 +8863,6 @@ impl MatchEvent for App {
                         print_share::DELIVERY_SYSTEM_SPOOLER,
                     ),
                     (
-                        ids!(deliv_raw),
-                        ids!(deliv_raw_on),
-                        print_share::DELIVERY_RAW_DEVICE,
-                    ),
-                    (
                         ids!(deliv_escpos),
                         ids!(deliv_escpos_on),
                         print_share::DELIVERY_ESCPOS,
@@ -9035,7 +8896,6 @@ impl MatchEvent for App {
                     let name = printer_display_name(&p, |k| st.t(k));
                     let how = match delivery {
                         print_share::DELIVERY_SYSTEM_SPOOLER => st.t("vp_delivery_spooler"),
-                        print_share::DELIVERY_RAW_DEVICE => st.t("vp_delivery_raw"),
                         _ => st.t("vp_delivery_escpos"),
                     };
                     Ok(format!("{name} — {how}"))
@@ -9139,11 +8999,6 @@ impl MatchEvent for App {
                 ids!(printer_mode_first),
                 ids!(printer_mode_first_on),
                 print_share::DELIVERY_SYSTEM_SPOOLER,
-            ),
-            (
-                ids!(printer_mode_all),
-                ids!(printer_mode_all_on),
-                print_share::DELIVERY_RAW_DEVICE,
             ),
             (
                 ids!(vp_deliv_escpos),

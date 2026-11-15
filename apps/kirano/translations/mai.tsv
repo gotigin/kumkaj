@@ -69,12 +69,10 @@ bill_item_qty	मात्रा
 bill_item_price	दाम
 bill_item_amount	राशि
 bill_item_note	सामानक टिप्पणी
-bill_item_col_order	स्तंभक क्रम
 bill_item_col_sep	स्तंभ रेखा
 slip_col_width	चौड़ाइ (mm)
 slip_col_start	शुरुआतक जगह (px)
 slip_col_end	अंतक जगह (px)
-slip_col_align	लिखावटक सीध
 slip_columns_help	प्रत्येक स्तंभक चौड़ाइमे ओकर शुरुआत आ अंतक जगह सम्मिलित अछि। लिखावट अपन स्तंभक भीतर लपेटाइत अछि; सामग्रीक चौड़ाइसँ बाहर जे अछि से कागज आ पूर्वावलोकन दुनूमे कटि जाइत अछि।
 bill_total_qty_label	कुल मात्रा लेबल
 bill_total_subtotal_label	उप-जोड़ लेबल
@@ -431,7 +429,6 @@ printer_profile_heading	बनावट
 vp_delivery_heading	डिलीवरी
 vp_delivery_help	ई वर्चुअल प्रिंटर काज कोना पठबैत अछि — OS दस्तावेज, कच्चा बाइट, वा ESC/POS। पर्चीक सामग्री (अक्षर आकार, लपेट, हाशिया) बिल / पर्ची प्रारूप तय करैत अछि, एतए नहि।
 vp_delivery_spooler	OS दस्तावेज (सिस्टम स्पूलर)
-vp_delivery_raw	डिवाइसकेँ कच्चा बाइट
 vp_delivery_escpos	ESC/POS थर्मल आदेश
 virtual_printer_new	नव वर्चुअल प्रिंटर
 virtual_printer_selected	“{name}” बदलि रहल छी — बदलबाक लेल सूचीमे आन दबाउ
@@ -718,7 +715,6 @@ customer_paid_ph	ग्राहक देलनि
 tip_ph	टिप
 find_server	दोकानक सर्वर खोजू
 bill_format	बिल प्रारूप
-bill_format_help	प्रत्येक बिलपर अहाँक दोकानक नामक नीचाँ छपैत अछि। पंक्ति | सँ अलग करू (जेना MG Road, Rajkot | Ph 98250 00000)।
 bill_header_ph	पता | फोन
 fssai_ph	FSSAI / दोकान लाइसेंस नं. (वैकल्पिक)
 bill_footer_ph	फुटर (जेना धन्यवाद, फेर आउ)
@@ -808,8 +804,6 @@ add_dishes	सामान जोड़ू
 order_so_far	एहि ऑर्डरपर: {n} · {total}
 no_dish_match	“{q}” सँ कोनो सामान नहि मिलैत अछि
 pick_done	भऽ गेल
-kot_field_up	ऊपर करू
-kot_field_down	नीचाँ करू
 dishes_n	{n} सामान
 reorder_ph	एतेक भेलापर आओर कीनू
 set_reorder	फेर ऑर्डरक स्तर राखू
@@ -841,3 +835,6 @@ sel_copy	कॉपी करू
 sel_select_all	सभ चुनू
 sel_copied	कॉपी भ' गेल
 nav_loading	लोड भ' रहल अछि…
+printer_mode_first	जे पहिने चलए
+printer_mode_all	सभपर छापू
+slip_columns	स्तंभ

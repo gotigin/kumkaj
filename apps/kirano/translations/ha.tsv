@@ -69,12 +69,10 @@ bill_item_qty	Adadi
 bill_item_price	Farashi
 bill_item_amount	Adadin kuɗi
 bill_item_note	bayanin kula
-bill_item_col_order	Tsarin ginshiƙai
 bill_item_col_sep	Layukan ginshiƙai
 slip_col_width	Faɗi (mm)
 slip_col_start	Sararin farko (px)
 slip_col_end	Sararin ƙarshe (px)
-slip_col_align	Jeri na rubutu
 slip_columns_help	Faɗin kowane ginshiƙi ya haɗa da sararin farkonsa da na ƙarshensa. Rubutu yana naɗewa a cikin ginshiƙinsa; abin da ya wuce faɗin abun ciki ana yanke shi, a takarda da kuma a samfoti.
 bill_total_qty_label	Alamar jimlar adadi
 bill_total_subtotal_label	Alamar jimla ta ƙasa
@@ -431,7 +429,6 @@ printer_profile_heading	Tsari
 vp_delivery_heading	Isarwa
 vp_delivery_help	Yadda wannan firinta mai kama-da-wane ke aika ayyuka - Takardun OS, raw bytes, ko ESC/POS. Abubuwan zamewa (girman nau'in nau'in, kunsa, margins) ana yanke hukunci ta tsarin lissafin/Slip, ba a nan ba.
 vp_delivery_spooler	Takardar tsarin (jerin bugu)
-vp_delivery_raw	Bytes ɗanyen zuwa na'ura
 vp_delivery_escpos	Umarnin zafi na ESC/POS
 virtual_printer_new	Sabon firinta na kama-da-kama
 virtual_printer_selected	Ana gyara “{name}” — taɓa wani a jeri don canzawa
@@ -718,7 +715,6 @@ customer_paid_ph	Abokin ciniki ya biya
 tip_ph	Kyauta ga ma'aikaci
 find_server	Nemo server na shago
 bill_format	Tsarin lissafi
-bill_format_help	Buga a ƙarƙashin sunan shagon ku akan kowane lissafin kuɗi. Layi dabam tare da | (misali Hanyar MG, Rajkot | Ph 98250 00000).
 bill_header_ph	Adireshi | waya
 fssai_ph	FSSAI / lasisin shagon no. (na zaɓi)
 bill_footer_ph	Ƙasa (misali Mun gode, sake zuwa)
@@ -808,8 +804,6 @@ add_dishes	Ƙara abubuwa
 order_so_far	A wannan oda: {n} · {total}
 no_dish_match	Babu wani abu da ya dace da "{q}"
 pick_done	An gama
-kot_field_up	Matsar sama
-kot_field_down	Matsar ƙasa
 dishes_n	{n} abubuwa
 reorder_ph	Sake saya a
 set_reorder	Sa matakin sake saya
@@ -841,3 +835,6 @@ sel_copy	Kwafi
 sel_select_all	Zaɓi duka
 sel_copied	An kwafa
 nav_loading	Ana lodawa…
+printer_mode_first	Na farko da ya yi aiki
+printer_mode_all	Buga a duka
+slip_columns	Ginshiƙai

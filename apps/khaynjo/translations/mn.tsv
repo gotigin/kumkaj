@@ -83,9 +83,7 @@ print_cancelled_kot_needed	Эхлээд цуцлагдсан хоолтой ши
 print_cancelled_kot_none	Энэ захиалгад цуцлагдсан хоол алга
 print_cancelled_kot_client	Цуцлагдсаныг хэвлэх ({n}) {place}-д илгээгдлээ — гал тогоо Сервер дээр хэвлэнэ
 kot_banner	Төрлийн тууз
-kot_banner_ph	Тууз (хоосон = байхгүй)
 kot_item_prefix	Барааны угтвар
-kot_item_prefix_ph	ж.нь [ЦУЦЛАГДСАН]
 kot_strike	Хоолны нэрийг зурах
 kot_strike_note	Хоолны тэмдэглэлийг зурах
 kot_strike_on	Асаалттай
@@ -103,13 +101,11 @@ bill_item_qty	Тоо
 bill_item_price	Үнэ
 bill_item_amount	Дүн
 bill_item_note	Хоолны тэмдэглэл
-bill_item_col_order	Баганын дараалал
 bill_item_col_sep	Баганын шугам
 slip_columns	Баганууд
 slip_col_width	Өргөн (mm)
 slip_col_start	Эхлэлийн зай (px)
 slip_col_end	Төгсгөлийн зай (px)
-slip_col_align	Текстийн зэрэгцүүлэлт
 slip_columns_help	Багана бүрийн өргөнд түүний эхлэл ба төгсгөлийн зай багтана. Текст өөрийн баганын дотор мөр шилжинэ; агуулгын өргөнөөс хэтэрсэн хэсэг цаасан дээр болон урьдчилан харахад тасарна.
 bill_total_qty_label	Нийт тооны шошго
 bill_total_subtotal_label	Дэд дүнгийн шошго
@@ -643,7 +639,6 @@ vp_type_size_heading	Үсгийн хэмжээ
 vp_wrap_heading	Мөр хугарах өргөн
 vp_margin_heading	Зах
 vp_delivery_spooler	ОС баримт (системийн түр хадгалагч)
-vp_delivery_raw	Төхөөрөмж рүү түүхий байт
 vp_delivery_escpos	ESC/POS дулааны команд
 virtual_printer_new	Шинэ виртуал принтер
 virtual_printer_selected	„{name}“ засварлаж байна — солихын тулд жагсаалтын нөгөөг товшино
@@ -1110,7 +1105,6 @@ remove_these_tables	Эдгээр ширээг хасах
 table_remove_ph	Хасах: T1-T24 эсвэл нэг ширээний нэр
 find_server	Дэлгүүрийн серверийг олох
 bill_format	Тооцооны хэлбэр
-bill_format_help	Рестораны нэрийн доор тооцоо бүрд хэвлэгдэнэ. Мөрийг | тэмдгээр тусгаарлана (ж. MG Road, Rajkot | Утас 98250 00000).
 bill_header_ph	Хаяг | утас
 fssai_ph	FSSAI лицензийн № (Энэтхэг)
 bill_footer_ph	Доод хэсэг (ж. Баярлалаа, дахин ирээрэй)
@@ -1127,7 +1121,6 @@ kot_field_hide	Нуух
 kot_field_on	харуулах
 kot_field_off	нуух
 kot_field_size	Үсгийн хэмжээ
-kot_field_size_ph	ж. 16, 20, 24, 28, 32…
 kot_weight_light	Нарийн
 bill_kot_panel_help	Тооцоо ба гал тогооны хуудасны байрлал, тус бүр өөрийн агуулгын өргөнтэй. Тооцооны кассчин нь тооцоог гаргасан эсвэл хаасан хүн; KOT зөөгч нь тэр гал тогооны хуудсыг илгээсэн хүн — захиалгын бүтэн түүх номд үлдэнэ.
 std_size_ph	ж. 18, 20, 26…
@@ -1157,7 +1150,6 @@ kot_style_item_qty	Бараа · Тоо
 kot_style_field_pick	Талбар сонгох
 kot_weight_regular	Энгийн
 kot_weight_bold	Бүдүүн
-kot_align	Зэрэгцүүлэх
 kot_align_start	Эхлэл
 kot_align_center	Төв
 kot_align_end	Төгсгөл
@@ -1307,18 +1299,8 @@ kot_show_item_hdr	Бараа · Тоо
 kot_hide_item_hdr	Баганыг нуух
 kot_show_title	Гарчгийн мөр
 kot_hide_title	Гарчгийг нуух
-kot_field_order	Хэвлэх дараалал
-kot_field_up	Дээш зөөх
-kot_field_down	Доош зөөх
 kot_field_cycle	Дараагийг сонгох
 kot_field_select	Дараагийг сонгох
-kot_field_time	Цаг
-kot_field_kot_no	KOT №
-kot_field_area	Бүс
-kot_field_table	Ширээ
-kot_field_shop	Дэлгүүрийн нэр
-kot_field_waiter	Ажилтан
-kot_field_station	Станц
 dishes_n	{n} хоол
 recipe_ph	Жор (заавал биш) — нэг порц хэрэглэнэ: Будаа=0.2, Панир=0.15
 reorder_ph	Дахин авах

@@ -69,12 +69,10 @@ bill_item_qty	Кти
 bill_item_price	Цена
 bill_item_amount	Износ
 bill_item_note	Напомена о предмету
-bill_item_col_order	Редослед колоне
 bill_item_col_sep	Правила колона
 slip_col_width	Ширина (mm)
 slip_col_start	Почетни размак (px)
 slip_col_end	Завршни размак (px)
-slip_col_align	Поравнање текста
 slip_columns_help	Ширина сваке колоне укључује њен почетни и завршни размак. Текст се прелама унутар своје колоне; оно што прелази ширину садржаја одсеца се, на папиру и у прегледу.
 bill_total_qty_label	Ознака укупне количине
 bill_total_subtotal_label	Ознака суб тотал
@@ -431,7 +429,6 @@ printer_profile_heading	Лаиоут
 vp_delivery_heading	Испорука
 vp_delivery_help	Како овај виртуелни штампач шаље задатке — ОС документ, необрађене бајтове или ЕСЦ/ПОС. Садржај слип-а (величина типа, омот, маргине) се одређује на основу рачуна / формата листића, а не овде.
 vp_delivery_spooler	ОС документ (системски спулер)
-vp_delivery_raw	Необрађени бајтови на уређај
 vp_delivery_escpos	ESC/POS термичке команде
 virtual_printer_new	Нови виртуелни штампач
 virtual_printer_selected	Уређивање „{name}“ — додирните други на листи да бисте се пребацили
@@ -718,7 +715,6 @@ customer_paid_ph	Купац је платио
 tip_ph	Савет
 find_server	Пронађите сервер продавнице
 bill_format	Формат рачуна
-bill_format_help	Одштампано под именом ваше продавнице на сваком рачуну. Одвојите редове са | (нпр. МГ Роад, Рајкот | Пх 98250 00000).
 bill_header_ph	Адреса | телефон
 fssai_ph	ФССАИ / лиценца продавнице бр. (опционо)
 bill_footer_ph	Подножје (нпр. хвала, посетите поново)
@@ -808,8 +804,6 @@ add_dishes	Додајте ставке
 order_so_far	Овим редоследом: {n} · {total}
 no_dish_match	Ниједна ставка не одговара „{q}“
 pick_done	Готово
-kot_field_up	Помери се горе
-kot_field_down	Помери се доле
 dishes_n	{n} ставке
 reorder_ph	Купите више на
 set_reorder	Подесите ниво промене редоследа
@@ -841,3 +835,6 @@ sel_copy	Копирај
 sel_select_all	Изабери све
 sel_copied	Копирано
 nav_loading	Учитавање…
+printer_mode_first	Прво то ради
+printer_mode_all	Штампајте на свим
+slip_columns	Колоне

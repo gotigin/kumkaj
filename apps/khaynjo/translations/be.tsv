@@ -83,9 +83,7 @@ print_cancelled_kot_needed	Спачатку адкрыйце стол са ск�
 print_cancelled_kot_none	На гэтым заказе няма скасаваных страў
 print_cancelled_kot_client	Друк скасаваных ({n}) для {place} адпраўлены — кухня друкуе на Серверы
 kot_banner	Банер віду
-kot_banner_ph	Банер (пусто = няма)
 kot_item_prefix	Прэфікс пазіцыі
-kot_item_prefix_ph	напр. [СКАСАВАНА]
 kot_strike	Закрэсліць назву стравы
 kot_strike_note	Закрэсліць нататку стравы
 kot_strike_on	Укл
@@ -103,13 +101,11 @@ bill_item_qty	Кольк.
 bill_item_price	Цана
 bill_item_amount	Сума
 bill_item_note	Нататка стравы
-bill_item_col_order	Парадак слупкоў
 bill_item_col_sep	Лінейкі слупкоў
 slip_columns	Слупкі
 slip_col_width	Шырыня (mm)
 slip_col_start	Прастора ў пачатку (px)
 slip_col_end	Прастора ў канцы (px)
-slip_col_align	Выраўноўванне тэксту
 slip_columns_help	Шырыня кожнага слупка ўключае прастору ў пачатку і ў канцы. Тэкст пераносіцца ўнутры свайго слупка; усё, што выходзіць за шырыню змесціва, абразаецца — на паперы і ў папярэднім праглядзе.
 bill_total_qty_label	Подпіс агульнай колькасці
 bill_total_subtotal_label	Подпіс прамежкавага выніку
@@ -643,7 +639,6 @@ vp_type_size_heading	Памер тыпу
 vp_wrap_heading	Шырыня абкручвання
 vp_margin_heading	Палі
 vp_delivery_spooler	Дакумент АС (сістэмны спулер)
-vp_delivery_raw	Неапрацаваныя байты на прыладу
 vp_delivery_escpos	ESC/POS цеплавыя каманды
 virtual_printer_new	Новы віртуальны прынтэр
 virtual_printer_selected	Рэдагаванне «{name}» — націсніце іншы ў спісе, каб пераключыцца
@@ -1110,7 +1105,6 @@ remove_these_tables	Прыбярыце гэтыя абедзенныя стал�
 table_remove_ph	Выдаліць: T1-T24 або назву аднаго абедзеннага стала
 find_server	Знайдзіце сервер крамы
 bill_format	Фармат рахунку
-bill_format_help	Друкуецца пад назвай вашага рэстарана на кожным рахунку. Аддзяляйце радкі знакам | (напрыклад, MG Road, Раджкот | тэл. 98250 00000).
 bill_header_ph	Адрас | тэлефон
 fssai_ph	FSSAI ліцэнзія № (Індыя)
 bill_footer_ph	Ніжні калонтытул (напрыклад, Дзякуй, наведайце яшчэ)
@@ -1127,7 +1121,6 @@ kot_field_hide	Схаваць
 kot_field_on	паказаць
 kot_field_off	схаваць
 kot_field_size	Памер шрыфта
-kot_field_size_ph	напр. 16, 20, 24, 28, 32…
 kot_weight_light	Святло
 bill_kot_panel_help	Планіроўка рахункаў і кухонных плашчоў, кожны са сваёй уласнай шырынёй кантэнту. Касір рахункаў - гэта той, хто выставіў або разлічыўся па рахунку; KOT Афіцыянт даслаў квіток на кухню — поўная гісторыя замовы застаецца ў кнігах.
 std_size_ph	напр. 18, 20, 26…
@@ -1157,7 +1150,6 @@ kot_style_item_qty	Пункт · Коль-ць
 kot_style_field_pick	Выберыце поле
 kot_weight_regular	Рэгулярны
 kot_weight_bold	Тлусты
-kot_align	Выраўнаваць
 kot_align_start	Пачаць
 kot_align_center	Цэнтр
 kot_align_end	Канец
@@ -1307,18 +1299,8 @@ kot_show_item_hdr	Пункт · Коль-ць
 kot_hide_item_hdr	Схаваць слупкі
 kot_show_title	Радок загалоўка
 kot_hide_title	Схаваць назву
-kot_field_order	Заказ друку
-kot_field_up	Рухайцеся ўверх
-kot_field_down	Рухайцеся ўніз
 kot_field_cycle	Выберыце далей
 kot_field_select	Выберыце далей
-kot_field_time	Час
-kot_field_kot_no	KOT Не
-kot_field_area	Плошча
-kot_field_table	Абедзенны стол
-kot_field_shop	Назва крамы
-kot_field_waiter	Персанал
-kot_field_station	Станцыя
 dishes_n	{n} стравы
 recipe_ph	Рэцэпт (па жаданні) — на адну порцыю выкарыстоўваецца: рыс = 0,2, панір = 0,15
 reorder_ph	Купляйце больш на

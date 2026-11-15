@@ -69,12 +69,10 @@ bill_item_qty	تعداد
 bill_item_price	اگهه
 bill_item_amount	رقم
 bill_item_note	شيون نوٽ
-bill_item_col_order	ڪالم جو ترتيب
 bill_item_col_sep	ڪالمن جون ضابطيون
 slip_col_width	ويڪر (mm)
 slip_col_start	شروعاتي جاءِ (px)
 slip_col_end	آخري جاءِ (px)
-slip_col_align	متن جي ترتيب
 slip_columns_help	هر ڪالم جي ويڪر ۾ ان جي شروعاتي ۽ آخري جاءِ شامل آهي. متن پنهنجي ڪالم اندر ويڙهجي ٿو؛ مواد جي ويڪر کان ٻاهر جيڪو آهي اهو ڪاغذ ۽ اڳ ڏيک ٻنهي ۾ ڪٽجي ٿو.
 bill_total_qty_label	ڪل مقدار جو ليبل
 bill_total_subtotal_label	ذيل جي ڪل جو ليبل
@@ -431,7 +429,6 @@ printer_profile_heading	خاڪو
 vp_delivery_heading	پهچ
 vp_delivery_help	هي ورچوئل پرنٽر ڪيئن موڪلي ٿو نوڪريون - OS دستاويز، خام بائيٽ، يا ESC/POS. سلپ مواد (قسم جي سائيز، لفافي، مارجن) بل / سلپ فارميٽ طرفان فيصلو ڪيو ويو آهي، هتي نه.
 vp_delivery_spooler	او ايس دستاويز (سسٽم اسپولر)
-vp_delivery_raw	ڊيوائس ڏانهن را بائيٽس
 vp_delivery_escpos	ESC/POS ٿرمل ڪمانڊس
 virtual_printer_new	نئون ورچوئل پرنٽر
 virtual_printer_selected	“{name}” کي ايڊٽ ڪري ٿو — تبديل ڪرڻ لاءِ لسٽ ۾ ٻئي تي ٽيپ ڪريو
@@ -718,7 +715,6 @@ customer_paid_ph	گراهڪ ادا ڪيو
 tip_ph	ٽِپ
 find_server	دوڪان جو سرور ڳوليو
 bill_format	بل جو فارميٽ
-bill_format_help	هر بل تي توهان جي دڪان جي نالي هيٺ ڇپيل. سان الڳ لائينون | (مثال طور MG روڊ، راجڪوٽ | Ph 98250 00000).
 bill_header_ph	پتو | فون
 fssai_ph	FSSAI / دڪان جو لائسنس نمبر. (اختياري)
 bill_footer_ph	فوٽر (مثال طور مهرباني، ٻيهر اچو)
@@ -808,8 +804,6 @@ add_dishes	شيون شامل ڪريو
 order_so_far	هن آرڊر تي: {n} · {total}
 no_dish_match	ڪابه شيءِ ”{q}“ سان نه ٿي ملي.
 pick_done	ٿي ويو
-kot_field_up	مٿي وڃو
-kot_field_down	هيٺ وڃو
 dishes_n	{n} شيون
 reorder_ph	وڌيڪ خريد ڪريو
 set_reorder	ري آرڊر ليول مقرر ڪريو
@@ -841,3 +835,6 @@ sel_copy	ڪاپي ڪريو
 sel_select_all	سڀ چونڊيو
 sel_copied	ڪاپي ٿي وئي
 nav_loading	لوڊ ٿي رهيو آهي…
+printer_mode_first	پهريون جيڪو ڪم ڪري ٿو
+printer_mode_all	سڀ تي ڇپيو
+slip_columns	ڪالم

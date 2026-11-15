@@ -81,12 +81,10 @@ bill_item_qty	Քանակ
 bill_item_price	Գին
 bill_item_amount	Գումար
 bill_item_note	Rx / վաճառքի նշում
-bill_item_col_order	Սյունակների կարգ
 bill_item_col_sep	Սյունակների գծեր
 slip_col_width	Լայնություն (mm)
 slip_col_start	Սկզբի տարածք (px)
 slip_col_end	Վերջի տարածք (px)
-slip_col_align	Տեքստի հավասարեցում
 slip_columns_help	Յուրաքանչյուր սյունակի լայնությունը ներառում է դրա սկզբի և վերջի տարածքը։ Տեքստը փաթաթվում է իր սյունակի ներսում. բովանդակության լայնությունից դուրս մնացածը կտրվում է՝ թղթի վրա և նախադիտման մեջ։
 bill_total_qty_label	Ընդհանուր քանակի պիտակ
 bill_total_subtotal_label	Ենթագումարի պիտակ
@@ -443,7 +441,6 @@ printer_profile_heading	Դասավորություն
 vp_delivery_heading	Առաքում
 vp_delivery_help	Ինչպես է այս վիրտուալ տպիչը ուղարկում աշխատանքներ՝ OS փաստաթուղթ, չմշակված բայթեր կամ ESC/POS: Սեղանի բովանդակությունը (տեսակի չափը, փաթաթան, լուսանցքները) որոշվում է օրինագծի / սանդղակի ձևաչափով, ոչ թե այստեղ:
 vp_delivery_spooler	ՕՀ փաստաթուղթ (համակարգային սպուլեր)
-vp_delivery_raw	Հում բայթեր դեպի սարք
 vp_delivery_escpos	ESC/POS ջերմային հրամաններ
 virtual_printer_new	Նոր վիրտուալ տպիչ
 virtual_printer_selected	Խմբագրում է «{name}» — փոխելու համար հպեք ցանկի մեկ ուրիշին
@@ -730,7 +727,6 @@ customer_paid_ph	Հաճախորդը վճարել է
 tip_ph	Թեյավճար
 find_server	Գտնել խանութի սերվերը
 bill_format	Հաշվի ձևաչափ
-bill_format_help	Տպված է ձեր խանութի անվան տակ յուրաքանչյուր թղթադրամի վրա: Առանձին տողեր | (օրինակ՝ MG Road, Rajkot | Ph 98250 00000):
 bill_header_ph	Հասցե | հեռախոս
 fssai_ph	Թմրամիջոցների լիցենզիա թիվ. (ըստ ցանկության - ձեր ձևակերպումը)
 bill_footer_ph	Ստորագիր (օր. Շնորհակալություն, նորից այցելեք)
@@ -820,8 +816,6 @@ add_dishes	Ավելացնել դեղամիջոցներ
 order_so_far	Այս պատվերում՝ {n} · {total}
 no_dish_match	Ոչ մի նյութ չի համապատասխանում «{q}»-ին
 pick_done	Արված
-kot_field_up	Վեր տեղափոխել
-kot_field_down	Վար տեղափոխել
 dishes_n	{n} տարրեր
 reorder_ph	Գնել ավելին՝
 set_reorder	Դնել վերապատվերի մակարդակ
@@ -853,3 +847,6 @@ sel_copy	Պատճենել
 sel_select_all	Ընտրել բոլորը
 sel_copied	Պատճենվեց
 nav_loading	Բեռնվում է…
+printer_mode_first	Առաջինը, որ աշխատում է
+printer_mode_all	Տպել բոլորում
+slip_columns	Սյունակներ

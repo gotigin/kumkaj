@@ -69,12 +69,10 @@ bill_item_qty	Hetakue
 bill_item_price	Precio
 bill_item_amount	Monto rehegua
 bill_item_note	Nota de artículo rehegua
-bill_item_col_order	Columna ñemohenda
 bill_item_col_sep	Umi regla columna rehegua
 slip_col_width	Pe (mm)
 slip_col_start	Ñepyrũha pa’ũ (px)
 slip_col_end	Pahaha pa’ũ (px)
-slip_col_align	Moñe’ẽrã ñembohysýi
 slip_columns_help	Peteĩteĩ columna pe oguereko ipype iñepyrũha ha ipahaha pa’ũ. Moñe’ẽrã oñembojere icolumna ryepýpe; contenido pe rehasáva oñeikytĩ kuatiápe ha jehechaukápe.
 bill_total_qty_label	Total qty etiqueta rehegua
 bill_total_subtotal_label	Sub etiqueta total rehegua
@@ -431,7 +429,6 @@ printer_profile_heading	Diseño rehegua
 vp_delivery_heading	Ñeme’ẽ
 vp_delivery_help	Mbaꞌeichaitépa ko impresora virtual omondo tembiapo — kuatia SO rehegua, byte raw térã ESC/POS. Contenido deslizamiento (tipo tuichakue, envoltura, márgen) ojedesidi formato factura / Deslizamiento rupive, ndaha'éi ko'ápe.
 vp_delivery_spooler	Kuatia SO rehegua (sistema spooler) .
-vp_delivery_raw	Byte crudo tembipuru’ípe
 vp_delivery_escpos	ESC/POS umi tembiapoukapy térmico rehegua
 virtual_printer_new	Impresora virtual pyahu
 virtual_printer_selected	Emohenda “{name}” — epoko ambuépe lista-pe eñemoambue hag̃ua
@@ -718,7 +715,6 @@ customer_paid_ph	Cliente opaga
 tip_ph	Consejo
 find_server	Eheka pe tenda servidor
 bill_format	Formato de proyecto de ley rehegua
-bill_format_help	Oñeimprimi nde tenda réra guýpe opaite factura-pe. Ojesepara línea rehegua | (e.g. tape MG, Rajkot | Teléfono 98250 00000).
 bill_header_ph	Dirección | teléfono rupive
 fssai_ph	FSSAI / tenda licencia no. (poravokuaa)
 bill_footer_ph	Footer (e.g. Aguyje, evisita jey)
@@ -808,8 +804,6 @@ add_dishes	Oñemoĩve umi mba’e
 order_so_far	Ko tembiapoukapy rehe: {n} · {total}
 no_dish_match	Ndaipóri mba’e ojoajúva “{q}” rehe.
 pick_done	Ojejapo
-kot_field_up	Eñemongu’e yvate gotyo
-kot_field_down	Eñemongu’e oguejy haguã
 dishes_n	{n} mba’e
 reorder_ph	Ejogua hetave ko’ápe
 set_reorder	Oñemohenda nivel de reordenamiento
@@ -841,3 +835,6 @@ sel_copy	Ekopia
 sel_select_all	Eiporavo opavave
 sel_copied	Okopiáma
 nav_loading	Henyhẽhína…
+printer_mode_first	Primero upéva osẽ porã
+printer_mode_all	Eimprimi opavave ári
+slip_columns	Columna-kuéra

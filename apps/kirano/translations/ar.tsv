@@ -69,12 +69,10 @@ bill_item_qty	كمية
 bill_item_price	السعر
 bill_item_amount	المبلغ
 bill_item_note	مذكرة البند
-bill_item_col_order	ترتيب الأعمدة
 bill_item_col_sep	خطوط الأعمدة
 slip_col_width	العرض (mm)
 slip_col_start	مسافة البداية (px)
 slip_col_end	مسافة النهاية (px)
-slip_col_align	محاذاة النص
 slip_columns_help	يشمل عرض كل عمود مسافتي البداية والنهاية. يلتف النص داخل عموده، وما يتجاوز عرض المحتوى يُقص على الورق وفي المعاينة.
 bill_total_qty_label	تسمية إجمالي الكمية
 bill_total_subtotal_label	تسمية المجموع الفرعي
@@ -431,7 +429,6 @@ printer_profile_heading	التخطيط
 vp_delivery_heading	التسليم
 vp_delivery_help	كيف ترسل هذه الطابعة الافتراضية المهام - مستند نظام التشغيل، أو وحدات البايت الأولية، أو ESC/POS. يتم تحديد محتوى القسيمة (حجم النوع، الغلاف، الهوامش) من خلال تنسيق الفاتورة/القسيمة، وليس هنا.
 vp_delivery_spooler	مستند النظام (بكرة النظام)
-vp_delivery_raw	بايتات خام للجهاز
 vp_delivery_escpos	أوامر حرارية ESC/POS
 virtual_printer_new	طابعة افتراضية جديدة
 virtual_printer_selected	تعديل “{name}” — انقر أخرى في القائمة للتبديل
@@ -718,7 +715,6 @@ customer_paid_ph	دفع الزبون
 tip_ph	بقشيش
 find_server	ابحث عن خادم المطعم
 bill_format	تنسيق الفاتورة
-bill_format_help	مطبوعة تحت اسم متجرك على كل فاتورة. خطوط منفصلة مع | (على سبيل المثال، طريق MG، راجكوت | هاتف: 00000 98250).
 bill_header_ph	العنوان | الهاتف
 fssai_ph	FSSAI / رخصة المحل رقم. (خياري)
 bill_footer_ph	التذييل (مثل شكرًا، عُد مجددًا)
@@ -808,8 +804,6 @@ add_dishes	إضافة عناصر
 order_so_far	في هذا الطلب: {n} · {total}
 no_dish_match	لا يوجد عنصر يطابق "{q}"
 pick_done	تم
-kot_field_up	التحرك للأعلى
-kot_field_down	التحرك للأسفل
 dishes_n	عناصر {n}
 reorder_ph	اشترِ المزيد عند
 set_reorder	تعيين حد إعادة الطلب
@@ -841,3 +835,6 @@ sel_copy	نسخ
 sel_select_all	تحديد الكل
 sel_copied	تم النسخ
 nav_loading	جارٍ التحميل…
+printer_mode_first	الأولى التي تعمل
+printer_mode_all	الطباعة على الكل
+slip_columns	الأعمدة

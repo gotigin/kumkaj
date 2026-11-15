@@ -81,12 +81,10 @@ bill_item_qty	Zat
 bill_item_price	Man
 bill_item_amount	Sum zat
 bill_item_note	Rx / hralhna tur note
-bill_item_col_order	Column indawr dan
 bill_item_col_sep	Column ri
 slip_col_width	Zau (mm)
 slip_col_start	Tirhna awmna (px)
 slip_col_end	Tâwpna awmna (px)
-slip_col_align	Thuziak inremna
 slip_columns_help	Column tin zauah a tirhna leh a tâwpna awmna a tel. Thuziak chu a column chhungah a inthlawk; thil awm zau aia zau chu lehkha ah leh hmaa enna ah a tan ang.
 bill_total_qty_label	Zat zawng hming
 bill_total_subtotal_label	Zawng te hming
@@ -443,7 +441,6 @@ printer_profile_heading	Rem dan
 vp_delivery_heading	Thlen
 vp_delivery_help	He virtual printer hian hna a thawn dan — OS document, raw byte, emaw ESC/POS emaw. Slip content (type size, wrap, margins) hi bill / Slip format hmanga tihfel a ni a, hetah hian a innghat lo.
 vp_delivery_spooler	System lehkha (system spooler)
-vp_delivery_raw	Byte raw device ah
 vp_delivery_escpos	ESC/POS lum thupe
 virtual_printer_new	Print na ru thar
 virtual_printer_selected	“{name}” siam mek — dang list-ah khawih la, thlak turin
@@ -730,7 +727,6 @@ customer_paid_ph	Customer pe
 tip_ph	Lawmman
 find_server	Dawr server zawng
 bill_format	Bill rem dan
-bill_format_help	Bill tinah i dawr hming hnuaiah print vek a ni. Line hrang hrang | (e.g. MG Road, Rajkot | Ph 98250 00000 ah zawhfiah theih a ni).
 bill_header_ph	Address | phone
 fssai_ph	Ruihhlo licence no. (optional — i thumal hman dan)
 bill_footer_ph	Hnuai (entir Lawm e, lo kal leh)
@@ -820,8 +816,6 @@ add_dishes	Damdawi dah tel bawk ang che
 order_so_far	He order-ah: {n} · {total}
 no_dish_match	Item pakhat mah “{q}” nen a inmil lo.
 pick_done	A zo
-kot_field_up	Chung thawn
-kot_field_down	Hnuai thawn
 dishes_n	{n} thil chi hrang hrang
 reorder_ph	Lei leh hun
 set_reorder	Lei leh zat dah
@@ -853,3 +847,6 @@ sel_copy	Copy rawh
 sel_select_all	A zavaia thlang rawh
 sel_copied	Copy a ni ta
 nav_loading	Load mek mek a ni…
+printer_mode_first	Hmasa thawk
+printer_mode_all	Zawng zawng print
+slip_columns	Column-te

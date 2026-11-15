@@ -83,9 +83,7 @@ print_cancelled_kot_needed	İptal yemekleri olan masayı açın
 print_cancelled_kot_none	Bu siparişte iptal yok
 print_cancelled_kot_client	{place} için iptal ({n}) gönderildi — sunucuda yazdırılır
 kot_banner	Banner
-kot_banner_ph	Banner (boş = yok)
 kot_item_prefix	Öğe öneki
-kot_item_prefix_ph	örn. [CANCELLED]
 kot_strike	İsmi çiz
 kot_strike_note	Notu çiz
 kot_strike_on	Açık
@@ -103,13 +101,11 @@ bill_item_qty	Adet
 bill_item_price	Fiyat
 bill_item_amount	Tutar
 bill_item_note	Not
-bill_item_col_order	Sütun sırası
 bill_item_col_sep	Sütun çizgileri
 slip_columns	Sütunlar
 slip_col_width	Genişlik (mm)
 slip_col_start	Başlangıç boşluğu (px)
 slip_col_end	Bitiş boşluğu (px)
-slip_col_align	Metin hizalama
 slip_columns_help	Her sütunun genişliği başlangıç ve bitiş boşluğunu da içerir. Metin kendi sütunu içinde kaydırılır; içerik genişliğini aşan kısım kâğıtta ve önizlemede kesilir.
 bill_total_qty_label	Toplam adet etiketi
 bill_total_subtotal_label	Ara toplam etiketi
@@ -643,7 +639,6 @@ vp_type_size_heading	Yazı boyutu
 vp_wrap_heading	Kaydırma genişliği
 vp_margin_heading	Kenar boşlukları
 vp_delivery_spooler	İşletim sistemi belgesi (sistem kuyruğu)
-vp_delivery_raw	Cihaza ham bayt
 vp_delivery_escpos	ESC/POS termal komutları
 virtual_printer_new	Yeni sanal yazıcı
 virtual_printer_selected	“{name}” düzenleniyor — listede başkasına dokunup geçin
@@ -1110,7 +1105,6 @@ remove_these_tables	Bu masaları kaldır
 table_remove_ph	Kaldır: T1-T24 veya bir masanın adı
 find_server	Dükkânın sunucusunu bul
 bill_format	Hesap biçimi
-bill_format_help	Her hesapta restoran adının altına basılır. Satırları | ile ayırın (ör. MG Road, Rajkot | Tel 98250 00000).
 bill_header_ph	Adres | telefon
 fssai_ph	FSSAI lisans no. (Hindistan)
 bill_footer_ph	Alt bilgi (ör. Teşekkürler, yine bekleriz)
@@ -1127,7 +1121,6 @@ kot_field_hide	Gizle
 kot_field_on	göster
 kot_field_off	gizle
 kot_field_size	Yazı tipi boyutu
-kot_field_size_ph	örn. 16, 20, 24, 28, 32…
 kot_weight_light	İnce
 bill_kot_panel_help	Fiş içeriği ve mutfak fişi tipografisi. Yukarıdaki içerik genişliği hem fişin hem de mutfak fişinin genişliğidir.
 std_size_ph	örn. 18, 20, 26…
@@ -1157,7 +1150,6 @@ kot_style_item_qty	Kalem · Adet
 kot_style_field_pick	Alan seç
 kot_weight_regular	Normal
 kot_weight_bold	Kalın
-kot_align	Hizala
 kot_align_start	Başlat
 kot_align_center	Ortala
 kot_align_end	Sonuna al
@@ -1307,18 +1299,8 @@ kot_show_item_hdr	Kalem · Adet
 kot_hide_item_hdr	Sütunları gizle
 kot_show_title	Başlık satırı
 kot_hide_title	Başlığı gizle
-kot_field_order	Siparişi yazdır
-kot_field_up	Yukarı taşı
-kot_field_down	Aşağı taşı
 kot_field_cycle	Sonrakini seç
 kot_field_select	Sonrakini seç
-kot_field_time	Saat
-kot_field_kot_no	KOT no
-kot_field_area	Alan
-kot_field_table	Masa
-kot_field_shop	Dükkân adı
-kot_field_waiter	Personel
-kot_field_station	İstasyon
 dishes_n	{n} yemek
 recipe_ph	Tarif (isteğe bağlı) — bir porsiyon kullanır: Rice=0.2, Paneer=0.15
 reorder_ph	Şu miktarda yeniden al

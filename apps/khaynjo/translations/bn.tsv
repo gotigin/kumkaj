@@ -83,9 +83,7 @@ print_cancelled_kot_needed	বাতিল খাবারের টেবিল
 print_cancelled_kot_none	এই অর্ডারে বাতিল নেই
 print_cancelled_kot_client	বাতিল ({n}) {place} পাঠানো — সার্ভারে ছাপা
 kot_banner	ব্যানার
-kot_banner_ph	ব্যানার (ফাঁকা = নেই)
 kot_item_prefix	আইটেম উপসর্গ
-kot_item_prefix_ph	যেমন [CANCELLED] 
 kot_strike	খাবারের নাম কাট
 kot_strike_note	নোট কাট
 kot_strike_on	চালু
@@ -103,13 +101,11 @@ bill_item_qty	পরিমাণ
 bill_item_price	দর
 bill_item_amount	পরিমাণ
 bill_item_note	নোট
-bill_item_col_order	কলামের ক্রম
 bill_item_col_sep	কলামের রেখা
 slip_columns	কলাম
 slip_col_width	প্রস্থ (mm)
 slip_col_start	শুরুর ফাঁকা স্থান (px)
 slip_col_end	শেষের ফাঁকা স্থান (px)
-slip_col_align	লেখার সারিবদ্ধতা
 slip_columns_help	প্রতিটি কলামের প্রস্থে তার শুরু ও শেষের ফাঁকা স্থান অন্তর্ভুক্ত। লেখা নিজের কলামের ভেতরেই মোড়ানো হয়; বিষয়বস্তুর প্রস্থের বাইরে যা থাকে তা কাগজে ও প্রিভিউতে কেটে যায়।
 bill_total_qty_label	মোট সংখ্যা লেবেল
 bill_total_subtotal_label	উপমোট লেবেল
@@ -643,7 +639,6 @@ vp_type_size_heading	অক্ষরের আকার
 vp_wrap_heading	র‍্যাপ প্রস্থ
 vp_margin_heading	মার্জিন
 vp_delivery_spooler	OS নথি (সিস্টেম স্পুলার)
-vp_delivery_raw	ডিভাইসে কাঁচা বাইট
 vp_delivery_escpos	ESC/POS থার্মাল কমান্ড
 virtual_printer_new	নতুন ভার্চুয়াল প্রিন্টার
 virtual_printer_selected	“{name}” সম্পাদনা — তালিকায় অন্যটিতে ট্যাপ করে বদলান
@@ -1110,7 +1105,6 @@ remove_these_tables	এই টেবিলগুলো সরান
 table_remove_ph	সরান: T1-T24, অথবা একটি টেবিলের নাম
 find_server	দোকানের সার্ভার খুঁজুন
 bill_format	বিলের ফরম্যাট
-bill_format_help	প্রতিটি বিলে আপনার রেস্তোরাঁর নামের নিচে ছাপা হয়। লাইনগুলো | দিয়ে আলাদা করুন (যেমন MG Road, Rajkot | Ph 98250 00000)।
 bill_header_ph	ঠিকানা | ফোন
 fssai_ph	FSSAI লাইসেন্স নং (ভারত)
 bill_footer_ph	ফুটার (যেমন ধন্যবাদ, আবার আসবেন)
@@ -1127,7 +1121,6 @@ kot_field_hide	লুকান
 kot_field_on	দেখাও
 kot_field_off	লুকাও
 kot_field_size	ফন্ট আকার
-kot_field_size_ph	যেমন 16, 20, 24, 28, 32…
 kot_weight_light	হালকা
 bill_kot_panel_help	বিল বিষয়বস্তু ও রান্নাঘর স্লিপ টাইপোগ্রাফি। ওপরের বিষয়বস্তুর প্রস্থই বিল ও রান্নাঘর স্লিপ দুটোর প্রস্থ।
 std_size_ph	যেমন 18, 20, 26…
@@ -1157,7 +1150,6 @@ kot_style_item_qty	আইটেম · সংখ্যা
 kot_style_field_pick	ক্ষেত্র বেছে নিন
 kot_weight_regular	সাধারণ
 kot_weight_bold	মোটা
-kot_align	সারিবদ্ধ
 kot_align_start	শুরু করুন
 kot_align_center	মাঝে
 kot_align_end	শেষে
@@ -1307,18 +1299,8 @@ kot_show_item_hdr	আইটেম · সংখ্যা
 kot_hide_item_hdr	কলাম লুকান
 kot_show_title	শিরোনামের সারি
 kot_hide_title	শিরোনাম লুকান
-kot_field_order	ছাপার ক্রম
-kot_field_up	ওপরে নিন
-kot_field_down	নিচে নিন
 kot_field_cycle	পরেরটা বাছুন
 kot_field_select	পরেরটা বাছুন
-kot_field_time	সময়
-kot_field_kot_no	KOT নং
-kot_field_area	এলাকা
-kot_field_table	টেবিল
-kot_field_shop	দোকানের নাম
-kot_field_waiter	কর্মী
-kot_field_station	স্টেশন
 dishes_n	{n}টি পদ
 recipe_ph	রেসিপি (ঐচ্ছিক) — এক প্লেটে লাগে: Rice=0.2, Paneer=0.15
 reorder_ph	এতে পৌঁছালে আরও কিনুন

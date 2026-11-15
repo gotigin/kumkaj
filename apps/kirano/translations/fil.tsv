@@ -69,12 +69,10 @@ bill_item_qty	Dami
 bill_item_price	Presyo
 bill_item_amount	Halaga
 bill_item_note	Tala ng item
-bill_item_col_order	Pagkakasunod-sunod ng hanay
 bill_item_col_sep	Mga panuntunan sa hanay
 slip_col_width	Lapad (mm)
 slip_col_start	Espasyo sa simula (px)
 slip_col_end	Espasyo sa dulo (px)
-slip_col_align	Pagkakahanay ng teksto
 slip_columns_help	Kasama sa lapad ng bawat column ang espasyo nito sa simula at dulo. Bumabalot ang teksto sa loob ng column nito; ang lumalampas sa lapad ng nilalaman ay napuputol, sa papel at sa preview.
 bill_total_qty_label	Kabuuang dami ng label
 bill_total_subtotal_label	Sub kabuuang label
@@ -431,7 +429,6 @@ printer_profile_heading	Ayos
 vp_delivery_heading	Paghahatid
 vp_delivery_help	Paano nagpapadala ng mga trabaho ang virtual printer na ito — OS na dokumento, raw byte, o ESC/POS. Ang slip content (type size, wrap, margins) ay napagpasyahan ng bill / Slip format, hindi dito.
 vp_delivery_spooler	Dokumento ng OS (spooler ng system)
-vp_delivery_raw	Raw byte sa device
 vp_delivery_escpos	ESC/POS thermal command
 virtual_printer_new	Bagong virtual na printer
 virtual_printer_selected	Pag-edit ng “{name}” — tapikin ang isa pa sa listahan para lumipat
@@ -718,7 +715,6 @@ customer_paid_ph	Nagbayad ang customer
 tip_ph	Dagdag
 find_server	Hanapin ang server ng shop
 bill_format	Format ng bill
-bill_format_help	Naka-print sa ilalim ng pangalan ng iyong tindahan sa bawat bill. Paghiwalayin ang mga linya na may | (hal. MG Road, Rajkot | Ph 98250 00000).
 bill_header_ph	Address | telepono
 fssai_ph	FSSAI / lisensya ng tindahan no. (opsyonal)
 bill_footer_ph	Footer (hal. Salamat, bumisita muli)
@@ -808,8 +804,6 @@ add_dishes	Magdagdag ng mga item
 order_so_far	Sa order na ito: {n} · {total}
 no_dish_match	Walang item na tumutugma sa "{q}"
 pick_done	Tapos na
-kot_field_up	Umakyat
-kot_field_down	Ilipat pababa
 dishes_n	{n} item
 reorder_ph	Bumili ng higit pa sa
 set_reorder	Itakda ang antas ng muling pagkakaayos
@@ -841,3 +835,6 @@ sel_copy	Kopyahin
 sel_select_all	Piliin lahat
 sel_copied	Nakopya na
 nav_loading	Naglo-load…
+printer_mode_first	Una na gumagana
+printer_mode_all	I-print sa lahat
+slip_columns	Mga column

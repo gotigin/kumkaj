@@ -83,9 +83,7 @@ print_cancelled_kot_needed	Buka meja makan dengan hidangan yang dibatalkan dahul
 print_cancelled_kot_none	Tiada hidangan yang dibatalkan pada pesanan ini
 print_cancelled_kot_client	Cetakan dibatalkan ({n}) untuk {place} dihantar — cetakan dapur di Pelayan
 kot_banner	Sepanduk yang baik hati
-kot_banner_ph	Sepanduk (kosong = tiada)
 kot_item_prefix	Awalan item menu menu
-kot_item_prefix_ph	cth. [DIBATALKAN]
 kot_strike	Nama hidangan Strike
 kot_strike_note	Nota hidangan pukul
 kot_strike_on	hidup
@@ -103,13 +101,11 @@ bill_item_qty	Kuantiti
 bill_item_price	harga
 bill_item_amount	Jumlah
 bill_item_note	Nota hidangan
-bill_item_col_order	Susunan lajur
 bill_item_col_sep	Peraturan lajur
 slip_columns	Lajur
 slip_col_width	Lebar (mm)
 slip_col_start	Ruang permulaan (px)
 slip_col_end	Ruang penghujung (px)
-slip_col_align	Penjajaran teks
 slip_columns_help	Lebar setiap lajur termasuk ruang permulaan dan penghujungnya. Teks dibalut di dalam lajurnya; apa-apa yang melepasi lebar kandungan dipotong, di atas kertas dan dalam pratonton.
 bill_total_qty_label	Jumlah label kuantiti
 bill_total_subtotal_label	Sub jumlah label
@@ -643,7 +639,6 @@ vp_type_size_heading	Saiz taip
 vp_wrap_heading	Lebar bungkus
 vp_margin_heading	Margin
 vp_delivery_spooler	Dokumen OS (spooler sistem)
-vp_delivery_raw	Bait mentah ke peranti
 vp_delivery_escpos	ESC/POS arahan terma
 virtual_printer_new	Pencetak maya baharu
 virtual_printer_selected	Mengedit “{name}” — ketik satu lagi dalam senarai untuk bertukar
@@ -1110,7 +1105,6 @@ remove_these_tables	Keluarkan meja makan ini
 table_remove_ph	Alih keluar: T1-T24, atau satu nama meja makan
 find_server	Cari pelayan kedai
 bill_format	Format bil
-bill_format_help	Dicetak di bawah nama restoran anda pada setiap bil. Pisahkan baris dengan | (cth. MG Road, Rajkot | Ph 98250 00000).
 bill_header_ph	Alamat | telefon
 fssai_ph	No. lesen FSSAI (India)
 bill_footer_ph	Pengaki (cth. Terima kasih, lawati lagi)
@@ -1127,7 +1121,6 @@ kot_field_hide	Sembunyi
 kot_field_on	tunjuk
 kot_field_off	bersembunyi
 kot_field_size	Saiz fon
-kot_field_size_ph	cth. 16, 20, 24, 28, 32…
 kot_weight_light	Cahaya
 bill_kot_panel_help	Susun atur bil dan slip dapur, masing-masing dengan lebar kandungannya sendiri. Juruwang Bil ialah yang mengeluarkan atau menyelesaikan bil; KOT Pelayan adalah yang menghantar tiket dapur itu — cerita pesanan penuh kekal dalam lejar.
 std_size_ph	cth. 18, 20, 26…
@@ -1157,7 +1150,6 @@ kot_style_item_qty	Item menu menu · Kuantiti
 kot_style_field_pick	Pilih medan
 kot_weight_regular	Biasa
 kot_weight_bold	berani
-kot_align	Selaraskan
 kot_align_start	Mulakan
 kot_align_center	Pusat
 kot_align_end	tamat
@@ -1307,18 +1299,8 @@ kot_show_item_hdr	Item menu menu · Kuantiti
 kot_hide_item_hdr	Sembunyikan lajur
 kot_show_title	Baris tajuk
 kot_hide_title	Sembunyikan tajuk
-kot_field_order	Pesanan cetakan
-kot_field_up	Bergerak ke atas
-kot_field_down	Bergerak ke bawah
 kot_field_cycle	Pilih seterusnya
 kot_field_select	Pilih seterusnya
-kot_field_time	Masa
-kot_field_kot_no	KOT Tidak
-kot_field_area	Kawasan
-kot_field_table	Meja makan
-kot_field_shop	Nama kedai
-kot_field_waiter	Kakitangan
-kot_field_station	Stesen
 dishes_n	{n} hidangan
 recipe_ph	Resipi (pilihan) — satu bahagian menggunakan: Beras=0.2, Paneer=0.15
 reorder_ph	Beli lebih banyak di

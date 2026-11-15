@@ -83,9 +83,7 @@ print_cancelled_kot_needed	Sokafy ny latabatra misy ny lovia nofoanana aloha
 print_cancelled_kot_none	Tsy misy lovia nofoanana tamin'ity baiko ity
 print_cancelled_kot_client	Nanafoana ny fanontam-pirinty ({n}) ho an'ny {place} nalefa — mamoaka amin'ny lakozia ao amin'ny Server
 kot_banner	Sôkôlà malefaka
-kot_banner_ph	Sainam-pirenena (banga = tsy misy)
 kot_item_prefix	Fanampin'anarana entana
-kot_item_prefix_ph	ohatra [NAHAFOY]
 kot_strike	Anaran'ny lovia vita tselatra
 kot_strike_note	Taratasy fanamarihana amin'ny lovia
 kot_strike_on	Velona
@@ -103,13 +101,11 @@ bill_item_qty	Isa
 bill_item_price	Vidiny
 bill_item_amount	Vola
 bill_item_note	Fanamarihana lovia
-bill_item_col_order	Filaharana andàlana
 bill_item_col_sep	Fitsipika andàlana
 slip_columns	Tsanganana
 slip_col_width	Sakany (mm)
 slip_col_start	Elanelana fanombohana (px)
 slip_col_end	Elanelana fiafarana (px)
-slip_col_align	Fandaharana soratra
 slip_columns_help	Ny sakan’ny tsanganana tsirairay dia ahitana ny elanelana fanombohana sy fiafarany. Mivalona ao anatin’ny tsanganany ny soratra; ny mihoatra ny sakan’ny votoaty dia tapahina, eo amin’ny taratasy sy amin’ny topi-maso.
 bill_total_qty_label	Marika isan-jato totalin'ny habetsahana
 bill_total_subtotal_label	Marika totalina
@@ -643,7 +639,6 @@ vp_type_size_heading	Habe soratra
 vp_wrap_heading	Savaivony
 vp_margin_heading	Sisiny
 vp_delivery_spooler	Antontan-taratasy OS (spooler rafitra)
-vp_delivery_raw	Baity mivantana ho any amin'ny fitaovana
 vp_delivery_escpos	ESC/POS baiko mafana
 virtual_printer_new	Mpangonta virtoaly vaovao
 virtual_printer_selected	Manitsy “{name}” — tsindrio ny hafa ao amin'ny lisitra mba hanova
@@ -1110,7 +1105,6 @@ remove_these_tables	Esory ireto latabatra ireto
 table_remove_ph	Esory: T1-T24, na ny anaran'ny latabatra iray
 find_server	Mitadiava ny serveur an'ny fivarotana
 bill_format	Endrika faktiora
-bill_format_help	Printy eo ambanin'ny anaran'ny trano fisakafoananao amin'ny faktiora tsirairay. Saraho amin'ny tsipika | (oh: MG Road, Rajkot | Ph 98250 00000).
 bill_header_ph	Adiresy | finday
 fssai_ph	FSSAI laharan'ny fahazoan-dalana (India)
 bill_footer_ph	Fanamarihana farany (oh: Misaotra, mitsidika indray)
@@ -1127,7 +1121,6 @@ kot_field_hide	Afeno
 kot_field_on	aseho
 kot_field_off	afeno
 kot_field_size	Haben'ny soratra
-kot_field_size_ph	oh: 16, 20, 24, 28, 32…
 kot_weight_light	Mazava
 bill_kot_panel_help	Ny faktiora sy ny endriky ny takelaka an-dakozia, samy manana ny sakany votoatiny manokana. Ny Mpandray vola dia ilay nanome na nandoa ny faktiora; KOT Ny Mpanampy sakafo dia ilay nandefa ilay tapakila an-dakozia — mitoetra ao anaty boky ny tantaran'ny baikon'ny sakafo feno.
 std_size_ph	oh: 18, 20, 26…
@@ -1157,7 +1150,6 @@ kot_style_item_qty	Entana · Isan'izy
 kot_style_field_pick	Safidio ny saha
 kot_weight_regular	Mahazatra
 kot_weight_bold	Matavy
-kot_align	Atsipazo
 kot_align_start	Manomboha
 kot_align_center	Afovoany
 kot_align_end	Farany
@@ -1307,18 +1299,8 @@ kot_show_item_hdr	Entana · Isan'izy
 kot_hide_item_hdr	Afeno ny tsanganana
 kot_show_title	Andalana lohateny
 kot_hide_title	Afeno ny lohateny
-kot_field_order	Filaharana pirinty
-kot_field_up	Miakatra
-kot_field_down	Midina
 kot_field_cycle	Misafidiana manaraka
 kot_field_select	Misafidiana manaraka
-kot_field_time	Ora
-kot_field_kot_no	KOT Tsia
-kot_field_area	Faritra
-kot_field_table	Latabatra
-kot_field_shop	Anaran'ny fivarotana
-kot_field_waiter	Mpiasa
-kot_field_station	Toerana
 dishes_n	{n} lovia
 recipe_ph	Fomba fahandro (tsy voatery) — ampiasaina amin’ny ampahany iray: Vary=0.2, Paneer=0.15
 reorder_ph	Mividiana bebe kokoa amin’ny

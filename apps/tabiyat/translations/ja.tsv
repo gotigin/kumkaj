@@ -81,12 +81,10 @@ bill_item_qty	数量
 bill_item_price	単価
 bill_item_amount	金額
 bill_item_note	受信/販売メモ
-bill_item_col_order	列の順
 bill_item_col_sep	列の罫線
 slip_col_width	幅 (mm)
 slip_col_start	先頭の余白 (px)
 slip_col_end	末尾の余白 (px)
-slip_col_align	文字揃え
 slip_columns_help	各列の幅には先頭と末尾の余白が含まれます。文字は列の中で折り返し、内容の幅からはみ出した部分は用紙でもプレビューでも切り取られます。
 bill_total_qty_label	合計数量ラベル
 bill_total_subtotal_label	小計ラベル
@@ -443,7 +441,6 @@ printer_profile_heading	レイアウト
 vp_delivery_heading	配信
 vp_delivery_help	この仮想プリンターがジョブを送信する方法 (OS ドキュメント、生バイト、または ESC/POS)。伝票内容（活字サイズ、折り返し、余白）は、ここではなく請求書・伝票フォーマットにより決定されます。
 vp_delivery_spooler	OS文書（システムスプーラー）
-vp_delivery_raw	デバイスへ生バイト
 vp_delivery_escpos	ESC/POSサーマルコマンド
 virtual_printer_new	新しい仮想プリンター
 virtual_printer_selected	「{name}」を編集中 — 一覧の別項目をタップして切替
@@ -730,7 +727,6 @@ customer_paid_ph	お預かり
 tip_ph	チップ
 find_server	店のサーバーを探す
 bill_format	伝票の書式
-bill_format_help	すべての請求書にお店の名前の下に印刷されます。 | で行を区切る(例: MG Road、ラージコート | Ph 98250 00000)。
 bill_header_ph	住所 | 電話
 fssai_ph	医薬品販売許可番号(オプション - あなたの言葉遣い)
 bill_footer_ph	フッター（例：ありがとうございました）
@@ -820,8 +816,6 @@ add_dishes	薬を追加する
 order_so_far	この注文：{n} · {total}
 no_dish_match	「{q}」に一致する項目はありません
 pick_done	完了
-kot_field_up	上に移動
-kot_field_down	下に移動
 dishes_n	{n} アイテム
 reorder_ph	この数で補充
 set_reorder	発注点を設定
@@ -853,3 +847,6 @@ sel_copy	コピー
 sel_select_all	すべて選択
 sel_copied	コピーしました
 nav_loading	読み込み中…
+printer_mode_first	最初に動作するもの
+printer_mode_all	すべてで印刷
+slip_columns	列

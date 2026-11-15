@@ -83,9 +83,7 @@ print_cancelled_kot_needed	Pirmiausia atidarykite stalą su atšauktais patiekal
 print_cancelled_kot_none	Šiame užsakyme nėra atšauktų patiekalų
 print_cancelled_kot_client	Atšauktų spausdinimas ({n}) vietai {place} išsiųstas — virtuvė spausdina Serveryje
 kot_banner	Rūšies juosta
-kot_banner_ph	Juosta (tuščia = nėra)
 kot_item_prefix	Prekės priešdėlis
-kot_item_prefix_ph	pvz. [ATŠAUKTA]
 kot_strike	Perbraukti patiekalo pavadinimą
 kot_strike_note	Perbraukti patiekalo pastabą
 kot_strike_on	Įjungta
@@ -103,13 +101,11 @@ bill_item_qty	Kiekis
 bill_item_price	Kaina
 bill_item_amount	Suma
 bill_item_note	Patiekalo pastaba
-bill_item_col_order	Stulpelių tvarka
 bill_item_col_sep	Stulpelių linijos
 slip_columns	Stulpeliai
 slip_col_width	Plotis (mm)
 slip_col_start	Pradžios tarpas (px)
 slip_col_end	Pabaigos tarpas (px)
-slip_col_align	Teksto lygiuotė
 slip_columns_help	Kiekvieno stulpelio plotis apima jo pradžios ir pabaigos tarpą. Tekstas laužomas savo stulpelio viduje; tai, kas išeina už turinio pločio, nukerpama – popieriuje ir peržiūroje.
 bill_total_qty_label	Bendro kiekio etiketė
 bill_total_subtotal_label	Tarpinės sumos etiketė
@@ -643,7 +639,6 @@ vp_type_size_heading	Šrifto dydis
 vp_wrap_heading	Laužymo plotis
 vp_margin_heading	Paraštės
 vp_delivery_spooler	OS dokumentas (sistemos kaupiklis)
-vp_delivery_raw	Neapdoroti baitai į įrenginį
 vp_delivery_escpos	ESC/POS terminės komandos
 virtual_printer_new	Naujas virtualus spausdintuvas
 virtual_printer_selected	Redaguojama „{name}“ — bakstelėkite kitą sąraše, kad perjungtumėte
@@ -1110,7 +1105,6 @@ remove_these_tables	Pašalinti šiuos stalus
 table_remove_ph	Pašalinti: T1-T24 arba vieno stalo pavadinimas
 find_server	Rasti parduotuvės serverį
 bill_format	Sąskaitos formatas
-bill_format_help	Spausdinama po restorano pavadinimu kiekvienoje sąskaitoje. Eilutes skirkite | (pvz. MG Road, Rajkot | Tel. 98250 00000).
 bill_header_ph	Adresas | telefonas
 fssai_ph	FSSAI licencijos nr. (Indija)
 bill_footer_ph	Poraštė (pvz. Ačiū, apsilankykite dar)
@@ -1127,7 +1121,6 @@ kot_field_hide	Slėpti
 kot_field_on	rodyti
 kot_field_off	slėpti
 kot_field_size	Šrifto dydis
-kot_field_size_ph	pvz. 16, 20, 24, 28, 32…
 kot_weight_light	Plonas
 bill_kot_panel_help	Sąskaitos ir virtuvės lapelio išdėstymas, kiekvienas su savo turinio pločiu. Sąskaitos kasininkas yra tas, kuris išdavė arba uždarė sąskaitą; KOT padavėjas yra tas, kuris išsiuntė tą virtuvės lapelį — visa užsakymo istorija lieka knygose.
 std_size_ph	pvz. 18, 20, 26…
@@ -1157,7 +1150,6 @@ kot_style_item_qty	Prekė · Kiekis
 kot_style_field_pick	Rinktis lauką
 kot_weight_regular	Įprastas
 kot_weight_bold	Pusjuodis
-kot_align	Lygiuotė
 kot_align_start	Pradžia
 kot_align_center	Centras
 kot_align_end	Pabaiga
@@ -1307,18 +1299,8 @@ kot_show_item_hdr	Prekė · Kiekis
 kot_hide_item_hdr	Slėpti stulpelius
 kot_show_title	Antraštės eilutė
 kot_hide_title	Slėpti antraštę
-kot_field_order	Spausdinimo tvarka
-kot_field_up	Perkelti aukštyn
-kot_field_down	Perkelti žemyn
 kot_field_cycle	Rinktis kitą
 kot_field_select	Rinktis kitą
-kot_field_time	Laikas
-kot_field_kot_no	KOT nr.
-kot_field_area	Zona
-kot_field_table	Stalas
-kot_field_shop	Parduotuvės pavadinimas
-kot_field_waiter	Personalas
-kot_field_station	Stotis
 dishes_n	{n} patiekalai
 recipe_ph	Receptas (nebūtina) — viena porcija naudoja: Ryžiai=0.2, Paneer=0.15
 reorder_ph	Pirkti daugiau nuo

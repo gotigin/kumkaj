@@ -6635,10 +6635,6 @@ script_mod! {
                                             job_deliv_os_on := SegBtnOn{text: "OS document (system spooler)" visible: false}
                                         }
                                         View{width: Fill height: Fit flow: Overlay
-                                            job_deliv_raw := SegBtn{text: "Raw bytes to device"}
-                                            job_deliv_raw_on := SegBtnOn{text: "Raw bytes to device" visible: false}
-                                        }
-                                        View{width: Fill height: Fit flow: Overlay
                                             job_deliv_escpos := SegBtn{text: "ESC/POS thermal commands"}
                                             job_deliv_escpos_on := SegBtnOn{text: "ESC/POS thermal commands" visible: false}
                                         }

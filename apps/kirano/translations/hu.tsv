@@ -69,12 +69,10 @@ bill_item_qty	Menny
 bill_item_price	Ár
 bill_item_amount	Összeg
 bill_item_note	Tétel megjegyzés
-bill_item_col_order	Oszlopsorrend
 bill_item_col_sep	Oszlopszabályok
 slip_col_width	Szélesség (mm)
 slip_col_start	Kezdő térköz (px)
 slip_col_end	Záró térköz (px)
-slip_col_align	Szöveg igazítása
 slip_columns_help	Minden oszlop szélessége tartalmazza a kezdő és záró térközét. A szöveg az oszlopán belül tördelődik; ami túlnyúlik a tartalom szélességén, levágódik – papíron és az előnézetben is.
 bill_total_qty_label	Teljes mennyiség címke
 bill_total_subtotal_label	Részösszeg címke
@@ -431,7 +429,6 @@ printer_profile_heading	Elrendezés
 vp_delivery_heading	Szállítás
 vp_delivery_help	Hogyan küldi el ez a virtuális nyomtató a feladatokat – OS-dokumentum, nyers bájtok vagy ESC/POS. A szelvény tartalmát (típusméret, borítás, margók) a számla/szelvény formátuma határozza meg, nem itt.
 vp_delivery_spooler	OS dokumentum (rendszer spooler)
-vp_delivery_raw	Nyers bájtok az eszközre
 vp_delivery_escpos	ESC/POS termikus parancsok
 virtual_printer_new	Új virtuális nyomtató
 virtual_printer_selected	„{name}” szerkesztése – a váltáshoz érintsen meg egy másikat a listában
@@ -718,7 +715,6 @@ customer_paid_ph	Az ügyfél fizetett
 tip_ph	Tipp
 find_server	Keresse meg az üzlet szerverét
 bill_format	Számlaformátum
-bill_format_help	Minden számlán az üzlete neve alatt található. Külön sorokat | (pl. MG Road, Rajkot | Ph. 98250 00000).
 bill_header_ph	Cím | telefon
 fssai_ph	FSSAI / bolti engedély sz. (választható)
 bill_footer_ph	Lábléc (pl. Köszönöm, látogassa meg újra)
@@ -808,8 +804,6 @@ add_dishes	Elemek hozzáadása
 order_so_far	Ennél a rendelésnél: {n} · {total}
 no_dish_match	Egyetlen elem sem felel meg a következőnek: „{q}”
 pick_done	Kész
-kot_field_up	Lépj felfelé
-kot_field_down	Mozgás lefelé
 dishes_n	{n} tételek
 reorder_ph	Vásároljon többet itt
 set_reorder	Állítsa be az újrarendelési szintet
@@ -841,3 +835,6 @@ sel_copy	Másolás
 sel_select_all	Az összes kijelölése
 sel_copied	Másolva
 nav_loading	Betöltés…
+printer_mode_first	Először is ez működik
+printer_mode_all	Nyomtatás az összesre
+slip_columns	Oszlopok

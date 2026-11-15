@@ -83,9 +83,7 @@ print_cancelled_kot_needed	ᱯᱩᱭᱞᱩ ᱨᱮ ᱠᱮᱱᱥᱮᱞ ᱠᱟᱱ �
 print_cancelled_kot_none	ᱱᱚᱣᱟ ᱚᱰᱟᱨ ᱨᱮ ᱪᱮᱫ ᱰᱤᱥ ᱦᱚᱸ ᱵᱟᱝ ᱨᱚᱫᱽ ᱟᱠᱟᱱᱟ
 print_cancelled_kot_client	ᱨᱚᱫᱽ ({n}) {place} ᱞᱟᱹᱜᱤᱫ ᱠᱩᱞ ᱟᱠᱟᱱᱟ — ᱫᱟᱠᱟ ᱚᱲᱟᱜ ᱥᱮᱨᱵᱷᱟᱨ ᱨᱮ ᱪᱷᱟᱯᱟᱭᱟ
 kot_banner	ᱫᱟᱭᱟ ᱵᱮᱱᱟᱨ
-kot_banner_ph	ᱵᱮᱱᱟᱨ (ᱠᱷᱟᱹᱞᱤ = ᱪᱮᱫ ᱦᱚᱸ ᱵᱟᱝ)
 kot_item_prefix	ᱡᱤᱱᱤᱥ ᱢᱟᱲᱟᱝ
-kot_item_prefix_ph	ᱡᱮᱞᱠᱟ [ᱨᱚᱫᱽ ᱟᱠᱟᱱᱟ]
 kot_strike	ᱥᱴᱨᱟᱭᱤᱠ ᱰᱤᱥ ᱧᱩᱛᱩᱢ
 kot_strike_note	ᱥᱴᱨᱟᱭᱤᱠ ᱰᱤᱥ ᱱᱳᱴ
 kot_strike_on	ᱪᱟᱹᱞᱩ
@@ -103,13 +101,11 @@ bill_item_qty	ᱠᱩᱭᱴᱤ
 bill_item_price	ᱜᱚᱱᱚᱝ
 bill_item_amount	ᱴᱟᱠᱟ
 bill_item_note	ᱰᱤᱥ ᱱᱚᱴ
-bill_item_col_order	ᱠᱚᱞᱟᱢ ᱚᱰᱟᱨ
 bill_item_col_sep	ᱠᱷᱟᱢᱵᱟ ᱟᱹᱨᱤ
 slip_columns	ᱠᱚᱞᱟᱢ ᱠᱚ
 slip_col_width	ᱚᱥᱟᱨ (mm)
 slip_col_start	ᱮᱛᱦᱚᱵ ᱡᱟᱭᱜᱟ (px)
 slip_col_end	ᱢᱩᱪᱟᱹᱫ ᱡᱟᱭᱜᱟ (px)
-slip_col_align	ᱚᱞ ᱥᱟᱡᱟᱣ
 slip_columns_help	ᱡᱚᱛᱚ ᱠᱚᱞᱟᱢ ᱨᱮᱭᱟᱜ ᱚᱥᱟᱨ ᱨᱮ ᱚᱱᱟ ᱨᱮᱭᱟᱜ ᱮᱛᱦᱚᱵ ᱟᱨ ᱢᱩᱪᱟᱹᱫ ᱡᱟᱭᱜᱟ ᱥᱮᱞᱮᱫ ᱢᱮᱱᱟᱜᱼᱟ᱾ ᱚᱞ ᱫᱚ ᱟᱡᱟᱜ ᱠᱚᱞᱟᱢ ᱵᱷᱤᱛᱨᱤ ᱨᱮ ᱜᱩᱴᱤᱭᱟᱹᱜᱼᱟ; ᱡᱤᱱᱤᱥ ᱚᱥᱟᱨ ᱠᱷᱚᱱ ᱵᱟᱦᱨᱮ ᱡᱟᱦᱟᱸ ᱢᱮᱱᱟᱜᱼᱟ ᱚᱱᱟ ᱠᱟᱜᱚᱡ ᱟᱨ ᱢᱟᱲᱟᱝ ᱧᱮᱞ ᱨᱮ ᱜᱮᱫ ᱜᱤᱰᱤᱭᱚᱜᱼᱟ᱾
 bill_total_qty_label	ᱢᱩᱴ qty ᱞᱮᱵᱮᱞ
 bill_total_subtotal_label	ᱥᱟᱵᱽ ᱢᱩᱴᱟᱞ ᱞᱮᱵᱮᱞ
@@ -643,7 +639,6 @@ vp_type_size_heading	ᱴᱟᱭᱤᱯ ᱥᱟᱭᱤᱡᱽ
 vp_wrap_heading	ᱚᱥᱟᱨ ᱵᱮᱫᱷᱟᱣ ᱢᱮ
 vp_margin_heading	ᱢᱟᱨᱡᱤᱱᱥ
 vp_delivery_spooler	ᱚᱮᱥ ᱰᱚᱠᱭᱩᱢᱮᱱᱴ (ᱥᱤᱥᱴᱚᱢ ᱥᱯᱩᱞᱟᱨ)
-vp_delivery_raw	ᱰᱤᱵᱷᱟᱭᱤᱥ ᱨᱮ ᱨᱚ ᱵᱟᱭᱤᱴᱥ
 vp_delivery_escpos	ᱤ ᱮᱥ ᱥᱤ/ᱯᱤ ᱚ ᱮᱥ ᱛᱷᱟᱨᱢᱟᱞ ᱟᱫᱮᱥ
 virtual_printer_new	ᱱᱟᱶᱟ ᱵᱷᱟᱨᱪᱩᱣᱟᱞ ᱯᱨᱤᱱᱴᱟᱨ
 virtual_printer_selected	ᱥᱟᱥᱟᱯᱲᱟᱣ "{name}" — ᱵᱚᱫᱚᱞ ᱞᱟᱹᱜᱤᱫ ᱛᱟᱞᱠᱟ ᱨᱮ ᱮᱴᱟᱜ ᱴᱮᱯ ᱢᱮ
@@ -1110,7 +1105,6 @@ remove_these_tables	ᱱᱚᱶᱟ ᱴᱮᱵᱩᱞ ᱠᱚ ᱚᱪᱚᱜᱽ ᱢᱮ
 table_remove_ph	ᱚᱪᱚᱜᱽ ᱢᱮ: T1-T24, ᱟᱨ ᱵᱟᱝ ᱢᱤᱫ ᱴᱮᱵᱩᱞ ᱨᱮᱭᱟᱜ ᱧᱩᱛᱩᱢ
 find_server	ᱫᱩᱠᱟᱹᱱ ᱨᱮᱱᱟᱜ ᱥᱮᱨᱵᱷᱟᱨ ᱯᱟᱱᱛᱮ ᱢᱮ
 bill_format	ᱵᱤᱞ ᱨᱩᱯ
-bill_format_help	ᱥᱟᱱᱟᱢ ᱵᱤᱞ ᱨᱮ ᱟᱢᱟᱜ ᱨᱮᱥᱴᱚᱨᱮᱱᱴ ᱨᱮᱭᱟᱜ ᱧᱩᱛᱩᱢ ᱛᱮ ᱪᱷᱟᱯᱟ ᱟᱠᱟᱱᱟ ᱾ ᱥᱟᱶ ᱵᱷᱮᱜᱟᱨ ᱞᱟᱭᱤᱱ | (ᱡᱮᱞᱠᱟ ᱮᱢ ᱡᱤ ᱨᱚᱰ, ᱨᱟᱡᱠᱚᱴ | ᱯᱤ ᱮᱪ 98250 0000)᱾
 bill_header_ph	ᱴᱷᱤᱠᱟᱹᱱᱟ | ᱯᱷᱚᱱ
 fssai_ph	FSSAI ᱞᱟᱭᱥᱮᱱᱥ ᱮᱞ᱾ (ᱵᱷᱟᱨᱚᱛ)
 bill_footer_ph	ᱯᱷᱩᱴᱟᱨ (ᱡᱮᱞᱠᱟ ᱟᱭᱢᱟ ᱥᱟᱨᱦᱟᱣ, ᱫᱚᱦᱲᱟ ᱧᱮᱞ ᱢᱮ)
@@ -1127,7 +1121,6 @@ kot_field_hide	ᱩᱠᱩᱭ ᱢᱮ
 kot_field_on	ᱩᱫᱩᱜ
 kot_field_off	ᱩᱠᱩ
 kot_field_size	ᱯᱷᱚᱱᱴ ᱥᱟᱭᱤᱡᱽ
-kot_field_size_ph	ᱡᱮᱞᱠᱟ 16, 20, 24, 28, 32...
 kot_weight_light	ᱢᱟᱨᱥᱟᱞ
 bill_kot_panel_help	ᱵᱤᱞ ᱟᱨ ᱫᱟᱠᱟ ᱚᱲᱟᱜ ᱨᱮᱭᱟᱜ ᱥᱞᱤᱯ ᱞᱮᱭᱟᱣᱩᱴ, ᱥᱟᱱᱟᱢ ᱨᱮᱭᱟᱜ ᱟᱯᱱᱟᱨ ᱡᱤᱱᱤᱥ ᱚᱥᱟᱨ ᱢᱮᱱᱟᱜᱼᱟ᱾ ᱵᱤᱞ ᱠᱮᱥᱤᱭᱟᱨ ᱫᱚ ᱩᱱᱤ ᱠᱟᱱᱟᱭ ᱚᱠᱚᱭ ᱵᱤᱞ ᱮ ᱡᱟᱨᱩᱲ ᱟᱠᱟᱫᱟ ᱥᱮ ᱥᱚᱢᱟᱱ ᱟᱠᱟᱫᱟ; ᱠᱮᱴ ᱣᱮᱴᱟᱨ ᱫᱚ ᱩᱱᱤ ᱫᱟᱠᱟ ᱚᱲᱟᱜ ᱨᱮᱭᱟᱜ ᱴᱤᱠᱤᱴ ᱠᱩᱞ ᱠᱮᱫᱟᱭ - ᱯᱩᱨᱟᱹ ᱚᱰᱟᱨ ᱠᱟᱹᱦᱱᱤ ᱯᱚᱛᱚᱵ ᱨᱮ ᱛᱟᱦᱮᱱᱟ ᱾
 std_size_ph	ᱡᱮᱞᱠᱟ 18, 20, 26...
@@ -1157,7 +1150,6 @@ kot_style_item_qty	ᱡᱤᱱᱤᱥ · ᱜᱚᱱᱚᱝ
 kot_style_field_pick	ᱯᱟᱦᱴᱟ ᱵᱟᱪᱷᱟᱣ ᱢᱮ
 kot_weight_regular	ᱞᱮᱛᱟᱲ
 kot_weight_bold	ᱵᱚᱞᱰ
-kot_align	ᱞᱟᱹᱭᱤᱱ
 kot_align_start	ᱮᱦᱚᱵᱽ ᱢᱮ
 kot_align_center	ᱛᱟᱞᱟ
 kot_align_end	ᱢᱩᱪᱟᱹᱫ
@@ -1307,18 +1299,8 @@ kot_show_item_hdr	ᱡᱤᱱᱤᱥ · ᱜᱚᱱᱚᱝ
 kot_hide_item_hdr	ᱠᱷᱟᱢᱵᱟ ᱩᱠᱩᱭ ᱢᱮ
 kot_show_title	ᱴᱟᱭᱴᱟᱞ ᱞᱟᱭᱤᱱ
 kot_hide_title	ᱥᱟᱛᱟᱢ ᱩᱠᱩᱭ ᱢᱮ
-kot_field_order	ᱯᱨᱤᱱᱴ ᱚᱰᱟᱨ
-kot_field_up	ᱪᱮᱛᱟᱱ ᱥᱮᱱᱚᱜ ᱢᱮ
-kot_field_down	ᱞᱟᱛᱟᱨ ᱥᱮᱱᱚᱜ ᱢᱮ
 kot_field_cycle	ᱛᱟᱭᱚᱢ ᱵᱟᱪᱷᱟᱣ ᱢᱮ
 kot_field_select	ᱛᱟᱭᱚᱢ ᱵᱟᱪᱷᱟᱣ ᱢᱮ
-kot_field_time	ᱚᱠᱛᱚ
-kot_field_kot_no	KOT ᱵᱟᱝ
-kot_field_area	ᱴᱚᱴᱷᱟ
-kot_field_table	ᱴᱮᱵᱩᱞ
-kot_field_shop	ᱫᱚᱠᱟᱱ ᱧᱩᱛᱩᱢ
-kot_field_waiter	ᱠᱟᱹᱢᱤᱭᱟᱹ
-kot_field_station	ᱥᱴᱮᱥᱚᱱ
 dishes_n	{n} ᱰᱤᱥ ᱠᱚ
 recipe_ph	ᱡᱚᱢᱟᱜ ᱥᱟᱠᱟᱢ (ᱚᱯᱥᱚᱱᱟᱞ) — ᱢᱤᱫ ᱦᱟᱹᱴᱤᱧ ᱵᱮᱵᱷᱟᱨ: ᱫᱟᱠᱟ=0.2, ᱯᱟᱱᱤᱨ=0.15
 reorder_ph	ᱟᱨᱦᱚᱸ ᱠᱤᱨᱤᱧ ᱢᱮ

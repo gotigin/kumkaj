@@ -83,9 +83,7 @@ print_cancelled_kot_needed	रद्द पदार्थ आशिल्ले
 print_cancelled_kot_none	ह्या ऑर्डरांत रद्द ना
 print_cancelled_kot_client	रद्द छापात ({n}) {place} खातीर धाडलें — किचन सर्व्हराचेर छापिता
 kot_banner	प्रकाराची पट्टी
-kot_banner_ph	पट्टी (रिकामी = कांयच ना)
 kot_item_prefix	वस्तुचो आदलांव
-kot_item_prefix_ph	देखीक [रद्द]
 kot_strike	पदार्थाचें नांव कापात
 kot_strike_note	पदार्थाची नोंद कापात
 kot_strike_on	चालू
@@ -103,13 +101,11 @@ bill_item_qty	संख्या
 bill_item_price	किंमत
 bill_item_amount	रक्कम
 bill_item_note	पदार्थाची नोंद
-bill_item_col_order	स्तंभांचो क्रम
 bill_item_col_sep	स्तंभाच्यो रेगो
 slip_columns	स्तंभ
 slip_col_width	रुंदाय (mm)
 slip_col_start	सुरवेची सुवात (px)
 slip_col_end	निमाणी सुवात (px)
-slip_col_align	मजकुराची मांडणी
 slip_columns_help	दर स्तंभाच्या रुंदायेंत ताची सुरवेची आनी निमाणी सुवात आसा. मजकूर आपल्या स्तंभाभितर गुठलायता; आशयाच्या रुंदाये भायर जें आसा तें कागदाचेर आनी पूर्वदर्शनांत कातरता.
 bill_total_qty_label	एकूण संख्येचें लेबल
 bill_total_subtotal_label	उपबेरीज लेबल
@@ -643,7 +639,6 @@ vp_type_size_heading	प्रकार आकार
 vp_wrap_heading	गुठलावपाची रुंदाय
 vp_margin_heading	मार्जिन
 vp_delivery_spooler	ओएस दस्तावेज (सिस्टम स्पूलर) 1.1.
-vp_delivery_raw	डिव्हायसाक कच्चे बाइट
 vp_delivery_escpos	ईएससी/पीओएस उश्णताय आदेश
 virtual_printer_new	नवो आभासी प्रिंटर
 virtual_printer_selected	“{name}” संपादीत करप — स्वीच करपाक वळेरेंत दुसरो टॅप करचो
@@ -1110,7 +1105,6 @@ remove_these_tables	हीं टेबलां काडून उडोवच
 table_remove_ph	काडून उडोवचें: T1-T24, वा एका टेबलाचें नांव
 find_server	दुकानाचो सर्वर सोदून काडात
 bill_format	बिल स्वरूप
-bill_format_help	दर एका बिलाचेर तुमच्या रेस्टॉरंटाच्या नांवान छापून आयिल्लें. वेगळीं ओळीं | (देखीक- एमजी रोड, राजकोट | फोन 98250 00000).
 bill_header_ph	पत्तो | फोन
 fssai_ph	एफएसएसएआय परवानो क्र. (भारत)
 bill_footer_ph	तळटीप (देखीक- धन्यवाद, परतून भेट दिवची)
@@ -1127,7 +1121,6 @@ kot_field_hide	लिपोवचें
 kot_field_on	दाखोवचें
 kot_field_off	लिपोवचें
 kot_field_size	फॉन्टाचो आकार
-kot_field_size_ph	उदा. १६, २०, २४, २८, ३२...
 kot_weight_light	उजवाड
 bill_kot_panel_help	बिल आनी किचन स्लिप मांडावळ, दरेकल्याची स्वताची सामुग्री रुंदाय आसता. बिल कॅशियर हो बिल जारी केल्लो वा निवळावण करपी; केओटी वेटरान ती रांदचे कुडीची तिकेट धाडली — पुराय ऑर्डराची काणी पुस्तकांनी उरता.
 std_size_ph	उदा. १८, २०, २६ आनी...
@@ -1157,7 +1150,6 @@ kot_style_item_qty	आयटम · प्रमाण
 kot_style_field_pick	क्षेत्र निवडात
 kot_weight_regular	नियमीत
 kot_weight_bold	ठळक
-kot_align	एके वळीन दवरचें
 kot_align_start	सुरवात
 kot_align_center	केंद्र
 kot_align_end	समाप्ती
@@ -1307,18 +1299,8 @@ kot_show_item_hdr	आयटम · Qty
 kot_hide_item_hdr	स्तंभ लिपोय
 kot_show_title	शिर्षक ओळ
 kot_hide_title	शिर्षक लिपोवप
-kot_field_order	छापपाची क्रम[बदल]
-kot_field_up	वयर सरचें
-kot_field_down	सकयल वचात
 kot_field_cycle	फुडलें निवडात
 kot_field_select	फुडलें निवडात
-kot_field_time	वेळ
-kot_field_kot_no	KOT क्रमांक
-kot_field_area	वाठार
-kot_field_table	टेबल
-kot_field_shop	दुकानाचें नांव
-kot_field_waiter	कर्मचारी
-kot_field_station	स्टेशन
 dishes_n	0 पदार्थ {n}
 recipe_ph	पाककृती (पर्यायी) — एक भाग वापरता: तांदूळ=0.2, पनीर=0.15
 reorder_ph	हांगा चड खरेदी करात

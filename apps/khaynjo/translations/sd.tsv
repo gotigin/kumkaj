@@ -83,9 +83,7 @@ print_cancelled_kot_needed	پهريون منسوخ ٿيل ڊشز سان ٽيبل
 print_cancelled_kot_none	هن آرڊر تي ڪوئي منسوخ ٿيل ڊش ناهي
 print_cancelled_kot_client	منسوخ ٿيل پرنٽ ڪريو ({n}) لاءِ {place} موڪلڻي — کاڌي جي ڪمري ۾ پرنٽ ٿيندو Server تي
 kot_banner	سٺي بينر
-kot_banner_ph	بينر (خالي = نه ڪو)
 kot_item_prefix	شئي جي پيش لفظ
-kot_item_prefix_ph	مثال طور [CANCELLED]
 kot_strike	ڊش جو نالو ختم ڪريو
 kot_strike_note	ڊش جو نوٽ ختم ڪريو
 kot_strike_on	چالو
@@ -103,13 +101,11 @@ bill_item_qty	تعداد
 bill_item_price	اگهه
 bill_item_amount	رقم
 bill_item_note	پاڻيءَ جو نوٽ
-bill_item_col_order	ڪالم جو ترتيب
 bill_item_col_sep	ڪالمن جون ضابطيون
 slip_columns	ڪالم
 slip_col_width	ويڪر (mm)
 slip_col_start	شروعاتي جاءِ (px)
 slip_col_end	آخري جاءِ (px)
-slip_col_align	متن جي ترتيب
 slip_columns_help	هر ڪالم جي ويڪر ۾ ان جي شروعاتي ۽ آخري جاءِ شامل آهي. متن پنهنجي ڪالم اندر ويڙهجي ٿو؛ مواد جي ويڪر کان ٻاهر جيڪو آهي اهو ڪاغذ ۽ اڳ ڏيک ٻنهي ۾ ڪٽجي ٿو.
 bill_total_qty_label	ڪل مقدار جو ليبل
 bill_total_subtotal_label	ذيل جي ڪل جو ليبل
@@ -643,7 +639,6 @@ vp_type_size_heading	قسم جي سائيز
 vp_wrap_heading	لپيٽ جي ويڪرائي
 vp_margin_heading	مارجنز
 vp_delivery_spooler	او ايس دستاويز (سسٽم اسپولر)
-vp_delivery_raw	ڊيوائس ڏانهن را بائيٽس
 vp_delivery_escpos	ESC/POS ٿرمل ڪمانڊس
 virtual_printer_new	نئون ورچوئل پرنٽر
 virtual_printer_selected	“{name}” کي ايڊٽ ڪري ٿو — تبديل ڪرڻ لاءِ لسٽ ۾ ٻئي تي ٽيپ ڪريو
@@ -1110,7 +1105,6 @@ remove_these_tables	هي ٽيبلز هٽايو
 table_remove_ph	هٽايو: T1-T24، يا هڪ ٽيبل جو نالو
 find_server	دوڪان جو سرور ڳوليو
 bill_format	بل جو فارميٽ
-bill_format_help	توهان جي ريسٽورنٽ جي نالي هيٺ هر بل تي ڇپيل. الڳ لائينون | سان جدا ڪريو (مثال طور MG روڊ، راڄڪوٽ | فون 98250 00000).
 bill_header_ph	پتو | فون
 fssai_ph	FSSAI لائسنس نمبر (ڀارت)
 bill_footer_ph	فوٽر (مثال طور مهرباني، ٻيهر اچو)
@@ -1127,7 +1121,6 @@ kot_field_hide	لڪايو
 kot_field_on	ڏيکاريو
 kot_field_off	لڪايو
 kot_field_size	فونٽ جو سائيز
-kot_field_size_ph	مثال طور 16، 20، 24، 28، 32...
 kot_weight_light	روشني
 bill_kot_panel_help	بِل ۽ ڪچن سلپ جو ترتيب، هر هڪ پنهنجي مواد جي ويڪرائي سان. بِل جو ڪيشئر اهو آهي جنهن بِل جاري ڪيو يا نڀايو؛ KOT ويٽر اهو آهي جنهن ڪچن ٽڪيٽ موڪلي — مڪمل آرڊر جي ڪهاڻي ڪتابن ۾ رهي ٿي.
 std_size_ph	مثال طور 18، 20، 26...
@@ -1157,7 +1150,6 @@ kot_style_item_qty	شئ · مقدار
 kot_style_field_pick	فيڪلڊ چونڊيو
 kot_weight_regular	عام
 kot_weight_bold	ٿلهو
-kot_align	صف سان ترتيب ڏيو
 kot_align_start	شروع ڪريو
 kot_align_center	مرڪز
 kot_align_end	آخر
@@ -1307,18 +1299,8 @@ kot_show_item_hdr	شئ · مقدار
 kot_hide_item_hdr	ڪالمن کي لڪاءِ
 kot_show_title	عنوان واري لائن
 kot_hide_title	عنوان لڪاءِ
-kot_field_order	ڇپائي جو ترتيب
-kot_field_up	مٿي وڃو
-kot_field_down	هيٺ وڃو
 kot_field_cycle	اڳيون چونڊيو
 kot_field_select	اڳيون چونڊيو
-kot_field_time	وقت
-kot_field_kot_no	KOT ناهي
-kot_field_area	علائقو
-kot_field_table	ٽيبل
-kot_field_shop	دڪان جو نالو
-kot_field_waiter	عملو
-kot_field_station	اسٽیشن
 dishes_n	{n} ڊشز
 recipe_ph	ترڪيب (اختياري) — هڪ حصو استعمال ڪري ٿو: چانور=0.2، پنير=0.15
 reorder_ph	وڌيڪ خريد ڪريو

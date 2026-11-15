@@ -69,12 +69,10 @@ bill_item_qty	ຈຳນວນ
 bill_item_price	ລາຄາ
 bill_item_amount	ຈໍານວນ
 bill_item_note	ບັນທຶກລາຍການ
-bill_item_col_order	ລຳດັບຖັນ
 bill_item_col_sep	ກົດລະບຽບຖັນ
 slip_col_width	ຄວາມກວ້າງ (mm)
 slip_col_start	ຊ່ອງວ່າງຕົ້ນ (px)
 slip_col_end	ຊ່ອງວ່າງທ້າຍ (px)
-slip_col_align	ການຈັດຕຳແໜ່ງຂໍ້ຄວາມ
 slip_columns_help	ຄວາມກວ້າງຂອງແຕ່ລະຖັນລວມທັງຊ່ອງວ່າງຕົ້ນ ແລະ ທ້າຍຂອງມັນ. ຂໍ້ຄວາມຈະຕັດແຖວພາຍໃນຖັນຂອງມັນ; ສ່ວນທີ່ເກີນຄວາມກວ້າງເນື້ອຫາຈະຖືກຕັດອອກ ທັງໃນເຈ້ຍ ແລະ ໃນການເບິ່ງຕົວຢ່າງ.
 bill_total_qty_label	ປ້າຍຈຳນວນທັງໝົດ
 bill_total_subtotal_label	ປ້າຍທັງໝົດຍ່ອຍ
@@ -431,7 +429,6 @@ printer_profile_heading	ແຜນຜັງ
 vp_delivery_heading	ການຈັດສົ່ງ
 vp_delivery_help	ເຄື່ອງພິມສະເໝືອນນີ້ສົ່ງວຽກແນວໃດ — ເອກະສານ OS, ໄບຕ໌ດິບ, ຫຼື ESC/POS. ເນື້ອໃນ Slip (ຂະຫນາດປະເພດ, wrap, margins) ຖືກຕັດສິນໂດຍໃບບິນ / ຮູບແບບ Slip, ບໍ່ແມ່ນທີ່ນີ້.
 vp_delivery_spooler	ເອກະສານ OS (ຕົວຈັດວາງລະບົບ)
-vp_delivery_raw	ໄບຕ໌ດິບໄປຫາອຸປະກອນ
 vp_delivery_escpos	ESC/POS ຄໍາສັ່ງຄວາມຮ້ອນ
 virtual_printer_new	ເຄື່ອງພິມສະເໝືອນໃໝ່
 virtual_printer_selected	ການແກ້ໄຂ “{name}” — ແຕະອັນອື່ນໃນລາຍການເພື່ອສະຫຼັບ
@@ -718,7 +715,6 @@ customer_paid_ph	ລູກຄ້າຈ່າຍແລ້ວ
 tip_ph	ເຄັດລັບ
 find_server	ຊອກຫາເຄື່ອງແມ່ຂ່າຍຂອງຮ້ານ
 bill_format	ຮູບແບບໃບບິນ
-bill_format_help	ພິມພາຍໃຕ້ຊື່ຮ້ານຂອງທ່ານໃນທຸກໃບບິນ. ແຍກສາຍດ້ວຍ | (ເຊັ່ນ: MG Road, Rajkot | Ph 98250 00000).
 bill_header_ph	ທີ່ຢູ່ | ໂທລະສັບ
 fssai_ph	FSSAI / ໃບອະນຸຍາດຮ້ານຄ້າ No. (ທາງເລືອກ)
 bill_footer_ph	ສ່ວນທ້າຍ (ເຊັ່ນ: ຂອບໃຈ, ເຂົ້າເບິ່ງອີກຄັ້ງ)
@@ -808,8 +804,6 @@ add_dishes	ເພີ່ມລາຍການ
 order_so_far	ໃນຄໍາສັ່ງນີ້: {n} · {total}
 no_dish_match	ບໍ່ມີລາຍການໃດກົງກັບ “{q}”
 pick_done	ສຳເລັດແລ້ວ
-kot_field_up	ຍ້າຍຂຶ້ນ
-kot_field_down	ຍ້າຍລົງ
 dishes_n	ລາຍການ {n}
 reorder_ph	ຊື້ເພີ່ມເຕີມໄດ້ທີ່
 set_reorder	ຕັ້ງລະດັບການສັ່ງຄືນ
@@ -841,3 +835,6 @@ sel_copy	ສຳເນົາ
 sel_select_all	ເລືອກທັງໝົດ
 sel_copied	ສຳເນົາແລ້ວ
 nav_loading	ກຳລັງໂຫຼດ…
+printer_mode_first	ທໍາອິດທີ່ເຮັດວຽກ
+printer_mode_all	ພິມທັງໝົດ
+slip_columns	ຖັນ

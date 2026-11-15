@@ -81,12 +81,10 @@ bill_item_qty	Cant.
 bill_item_price	Preț
 bill_item_amount	Sumă
 bill_item_note	Rx / notă de vânzare
-bill_item_col_order	Ordine coloane
 bill_item_col_sep	Linii coloane
 slip_col_width	Lățime (mm)
 slip_col_start	Spațiu la început (px)
 slip_col_end	Spațiu la sfârșit (px)
-slip_col_align	Alinierea textului
 slip_columns_help	Lățimea fiecărei coloane include spațiul de la început și de la sfârșit. Textul se încadrează în coloana sa; ce depășește lățimea conținutului este tăiat, pe hârtie și în previzualizare.
 bill_total_qty_label	Etichetă cant. totală
 bill_total_subtotal_label	Etichetă subtotal
@@ -443,7 +441,6 @@ printer_profile_heading	Așezare
 vp_delivery_heading	Livrare
 vp_delivery_help	Cum trimite joburile această imprimantă virtuală — document OS, octeți bruți sau ESC/POS. Conținutul fișei (mărimea caracterelor, împachetarea, marginile) îl decide formatul notei / fișei, nu aici.
 vp_delivery_spooler	Document OS (spooler de sistem)
-vp_delivery_raw	Octeți bruți către dispozitiv
 vp_delivery_escpos	Comenzi termice ESC/POS
 virtual_printer_new	Imprimantă virtuală nouă
 virtual_printer_selected	Se editează „{name}” — atinge altul din listă ca să schimbi
@@ -730,7 +727,6 @@ customer_paid_ph	Clientul a plătit
 tip_ph	Bacșiș
 find_server	Găsește serverul localului
 bill_format	Format notă
-bill_format_help	Tipărit sub numele magazinului pe fiecare notă. Separă liniile cu | (de ex. MG Road, Rajkot | Tel. 98250 00000).
 bill_header_ph	Adresă | telefon
 fssai_ph	Nr. licență medicamente (opțional — formularea ta)
 bill_footer_ph	Subsol (ex. Mulțumim, reveniți)
@@ -820,8 +816,6 @@ add_dishes	Adaugă medicamente
 order_so_far	În comanda asta: {n} · {total}
 no_dish_match	Niciun articol nu corespunde „{q}”
 pick_done	Gata
-kot_field_up	Mută în sus
-kot_field_down	Mută în jos
 dishes_n	{n} articole
 reorder_ph	Cumpără mai mult de la
 set_reorder	Setează nivelul de recomandă
@@ -853,3 +847,6 @@ sel_copy	Copiază
 sel_select_all	Selectează tot
 sel_copied	Copiat
 nav_loading	Se încarcă…
+printer_mode_first	Prima care merge
+printer_mode_all	Tipărește pe toate
+slip_columns	Coloane

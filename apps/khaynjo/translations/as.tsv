@@ -83,9 +83,7 @@ print_cancelled_kot_needed	বাতিল খাদ্য থকা মেজ �
 print_cancelled_kot_none	এই অৰ্ডাৰত বাতিল নাই
 print_cancelled_kot_client	বাতিল ({n}) {place} পঠোৱা — চাৰ্ভাৰত ছপা
 kot_banner	বেনাৰ
-kot_banner_ph	বেনাৰ (খালী = নাই)
 kot_item_prefix	আইটেম উপসৰ্গ
-kot_item_prefix_ph	যেনে [CANCELLED] 
 kot_strike	খাদ্যৰ নাম কাট
 kot_strike_note	নোট কাট
 kot_strike_on	চলা
@@ -103,13 +101,11 @@ bill_item_qty	পৰিমাণ
 bill_item_price	দাম
 bill_item_amount	পৰিমাণ
 bill_item_note	নোট
-bill_item_col_order	স্তম্ভৰ ক্ৰম
 bill_item_col_sep	স্তম্ভৰ ৰেখা
 slip_columns	স্তম্ভসমূহ
 slip_col_width	প্ৰস্থ (mm)
 slip_col_start	আৰম্ভণিৰ ঠাই (px)
 slip_col_end	শেষৰ ঠাই (px)
-slip_col_align	লিখনিৰ সংৰেখন
 slip_columns_help	প্ৰতিটো স্তম্ভৰ প্ৰস্থত ইয়াৰ আৰম্ভণি আৰু শেষৰ ঠাই অন্তৰ্ভুক্ত। লিখনি নিজৰ স্তম্ভৰ ভিতৰতে মেৰিয়াই যায়; সমলৰ প্ৰস্থৰ বাহিৰৰ অংশ কাগজত আৰু পূৰ্বদৰ্শনত কটা যায়।
 bill_total_qty_label	মুঠ সংখ্যা লেবেল
 bill_total_subtotal_label	উপযোগ লেবেল
@@ -643,7 +639,6 @@ vp_type_size_heading	আখৰৰ আকাৰ
 vp_wrap_heading	ৰেপ বহল
 vp_margin_heading	মাৰ্জিন
 vp_delivery_spooler	OS নথি (ছিষ্টেম স্পুলাৰ)
-vp_delivery_raw	ডিভাইচলৈ কেঁচা বাইট
 vp_delivery_escpos	ESC/POS থাৰ্মেল কমাণ্ড
 virtual_printer_new	নতুন ভাৰ্চুৱেল প্ৰিণ্টাৰ
 virtual_printer_selected	“{name}” সম্পাদনা — তালিকাত আনত টেপ কৰি সলনি কৰক
@@ -1110,7 +1105,6 @@ remove_these_tables	এই মেজবোৰ আঁতৰাওক
 table_remove_ph	আঁতৰাওক: T1-T24, নহয় এখন মেজৰ নাম
 find_server	দোকানৰ চাৰ্ভাৰ বিচাৰক
 bill_format	বিলৰ ফৰ্মেট
-bill_format_help	প্ৰতিখন বিলত আপোনাৰ ৰেষ্টুৰেণ্টৰ নামৰ তলত ছপা হয়। শাৰীবোৰ | দি পৃথক কৰক (যেনে MG Road, Rajkot | Ph 98250 00000)।
 bill_header_ph	ঠিকনা | ফোন
 fssai_ph	FSSAI অনুজ্ঞাপত্ৰ নং (ভাৰত)
 bill_footer_ph	ফুটাৰ (যেনে ধন্যবাদ, আকৌ আহিব)
@@ -1127,7 +1121,6 @@ kot_field_hide	লুকুৱাওক
 kot_field_on	দেখুৱাওক
 kot_field_off	লুকুৱাওক
 kot_field_size	ফণ্ট আকাৰ
-kot_field_size_ph	যেনে 16, 20, 24, 28, 32…
 kot_weight_light	পাতল
 bill_kot_panel_help	বিল বিষয়বস্তু আৰু ৰন্ধনশালা স্লিপ টাইপ'গ্ৰাফী। ওপৰৰ বিষয়বস্তুৰ বহলেই বিল আৰু ৰন্ধনশালা স্লিপ দুয়োটাৰে বহল।
 std_size_ph	যেনে 18, 20, 26…
@@ -1157,7 +1150,6 @@ kot_style_item_qty	আইটেম · সংখ্যা
 kot_style_field_pick	ক্ষেত্ৰ বাছক
 kot_weight_regular	সাধাৰণ
 kot_weight_bold	ডাঠ
-kot_align	সংৰেখন
 kot_align_start	আৰম্ভ কৰক
 kot_align_center	মাজত
 kot_align_end	শেষত
@@ -1307,18 +1299,8 @@ kot_show_item_hdr	আইটেম · সংখ্যা
 kot_hide_item_hdr	স্তম্ভ লুকুৱাওক
 kot_show_title	শিৰোনামৰ শাৰী
 kot_hide_title	শিৰোনাম লুকুৱাওক
-kot_field_order	ছপাৰ ক্ৰম
-kot_field_up	ওপৰলৈ নিয়ক
-kot_field_down	তললৈ নিয়ক
 kot_field_cycle	পিছৰটো বাছক
 kot_field_select	পিছৰটো বাছক
-kot_field_time	সময়
-kot_field_kot_no	KOT নং
-kot_field_area	এলেকা
-kot_field_table	মেজ
-kot_field_shop	দোকানৰ নাম
-kot_field_waiter	কৰ্মচাৰী
-kot_field_station	ষ্টেচন
 dishes_n	{n}টা ব্যঞ্জন
 recipe_ph	ৰেচিপি (ঐচ্ছিক) — এখন প্লেটত লাগে: Rice=0.2, Paneer=0.15
 reorder_ph	ইমানত আৰু কিনক

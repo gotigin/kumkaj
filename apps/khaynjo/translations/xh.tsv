@@ -83,9 +83,7 @@ print_cancelled_kot_needed	Vula itafile enokutya okurhoxisiweyo kuqala
 print_cancelled_kot_none	Akukho kutya okurhoxisiweyo kweli odolo
 print_cancelled_kot_client	Shicilela okurhoxisiweyo ({n}) kwe-{place} okuthunyelweyo — ikhithini ishicilela kwiSeva
 kot_banner	Ibhena yohlobo
-kot_banner_ph	Ibhena (ungenanto = akukho)
 kot_item_prefix	Isimaphambili sento
-kot_item_prefix_ph	umz. [IRHOXISIWE]
 kot_strike	Krwela igama lokutya
 kot_strike_note	Krwela inqaku lokutya
 kot_strike_on	Ivuliwe
@@ -103,13 +101,11 @@ bill_item_qty	Inani
 bill_item_price	Ixabiso
 bill_item_amount	Imali
 bill_item_note	Inqaku lokutya
-bill_item_col_order	Ulandelelwano lweekholamu
 bill_item_col_sep	Imigca yeekholamu
 slip_columns	Iikholamu
 slip_col_width	Ububanzi (mm)
 slip_col_start	Isithuba sokuqala (px)
 slip_col_end	Isithuba sokugqibela (px)
-slip_col_align	Ulungelelaniso lombhalo
 slip_columns_help	Ububanzi bekholamu nganye buquka isithuba sayo sokuqala nesokugqibela. Umbhalo usongeka ngaphakathi kwikholamu yawo; oko kudlula ububanzi bomxholo kuyanqunyulwa, ephepheni nakwimbonakalo yangaphambili.
 bill_total_qty_label	Ileyibhile yenani elipheleleyo
 bill_total_subtotal_label	Ileyibhile yesixa esincinci
@@ -643,7 +639,6 @@ vp_type_size_heading	Ubukhulu bohlobo
 vp_wrap_heading	Ububanzi bokusonga
 vp_margin_heading	Imida
 vp_delivery_spooler	Uxwebhu lwenkqubo (ispula yenkqubo)
-vp_delivery_raw	Iibhayithi ezimsulwa kwisixhobo
 vp_delivery_escpos	Imiyalelo yobushushu ye-ESC/POS
 virtual_printer_new	Umshicileli omtsha wobuchwepheshe
 virtual_printer_selected	Uhlela “{name}” — cofa omnye kuluhlu ukuze utshintshe
@@ -1110,7 +1105,6 @@ remove_these_tables	Susa ezi tafile
 table_remove_ph	Susa: T1-T24, okanye igama letafile enye
 find_server	Fumana iseva yevenkile
 bill_format	Ufomathi wetyala
-bill_format_help	Kushicilelwa phantsi kwegama lerestyu yakho kwityala ngalinye. Hlula imigca ngo-| (umz. MG Road, Rajkot | Ph 98250 00000).
 bill_header_ph	Idilesi | ifowuni
 fssai_ph	Inombolo yelayisensi ye-FSSAI (iIndiya)
 bill_footer_ph	Ezantsi (umz. Enkosi, buyani kwakhona)
@@ -1127,7 +1121,6 @@ kot_field_hide	Fihla
 kot_field_on	bonisa
 kot_field_off	fihla
 kot_field_size	Ubukhulu befonti
-kot_field_size_ph	umz. 16, 20, 24, 28, 32…
 kot_weight_light	Khaphukhaphu
 bill_kot_panel_help	Uyilo lwesliphu yetyala nekhithini, nganye inobubanzi bayo. Umcangci wetyala ngumntu okhuphe okanye ogqibe ityala; uMphakeli we-KOT ngumntu othumele loo tikiti yekhithini — ibali elipheleleyo leodolo lihlala kwiincwadi.
 std_size_ph	umz. 18, 20, 26…
@@ -1157,7 +1150,6 @@ kot_style_item_qty	Into · Inani
 kot_style_field_pick	Khetha intsimi
 kot_weight_regular	Eqhelekileyo
 kot_weight_bold	Etyebileyo
-kot_align	Lungelelanisa
 kot_align_start	Isiqalo
 kot_align_center	Embindini
 kot_align_end	Isiphelo
@@ -1307,18 +1299,8 @@ kot_show_item_hdr	Into · Inani
 kot_hide_item_hdr	Fihla iikholamu
 kot_show_title	Umgca wesihloko
 kot_hide_title	Fihla isihloko
-kot_field_order	Ulandelelwano lokushicilela
-kot_field_up	Nyusa
-kot_field_down	Yihlisa
 kot_field_cycle	Khetha elandelayo
 kot_field_select	Khetha elandelayo
-kot_field_time	Ixesha
-kot_field_kot_no	Inombolo ye-KOT
-kot_field_area	Indawo
-kot_field_table	Itafile
-kot_field_shop	Igama levenkile
-kot_field_waiter	Abasebenzi
-kot_field_station	Isikhululo
 dishes_n	ukutya {n}
 recipe_ph	Iresiphi (akuyomfuneko) — isiqingatha esinye sisebenzisa: iRice=0.2, iPaneer=0.15
 reorder_ph	Thenga ngakumbi ku

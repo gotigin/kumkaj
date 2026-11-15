@@ -322,6 +322,39 @@ impl SuggestField {
     }
 }
 
+/// Bill format: one row per item column, in print order.
+const BILL_COL_ROWS: [LiveId; 4] = [id!(bill_col_row_0), id!(bill_col_row_1), id!(bill_col_row_2), id!(bill_col_row_3)];
+/// Bill format: the row wrappers before the open line (print order).
+const BILL_PICK_ROWS: [&[LiveId]; 13] = [ids!(bill_pick_row_0), ids!(bill_pick_row_1), ids!(bill_pick_row_2), ids!(bill_pick_row_3), ids!(bill_pick_row_4), ids!(bill_pick_row_5), ids!(bill_pick_row_6), ids!(bill_pick_row_7), ids!(bill_pick_row_8), ids!(bill_pick_row_9), ids!(bill_pick_row_10), ids!(bill_pick_row_11), ids!(bill_pick_row_12)];
+/// Bill format: the row wrappers after the open line.
+const BILL_AFTER_ROWS: [&[LiveId]; 13] = [ids!(bill_after_row_0), ids!(bill_after_row_1), ids!(bill_after_row_2), ids!(bill_after_row_3), ids!(bill_after_row_4), ids!(bill_after_row_5), ids!(bill_after_row_6), ids!(bill_after_row_7), ids!(bill_after_row_8), ids!(bill_after_row_9), ids!(bill_after_row_10), ids!(bill_after_row_11), ids!(bill_after_row_12)];
+/// Bill format: the row buttons after the open line.
+const BILL_AFTER_BTNS: [(&[LiveId], &[LiveId]); 13] = [
+    (ids!(bill_after_0), ids!(bill_after_0_on)),
+    (ids!(bill_after_1), ids!(bill_after_1_on)),
+    (ids!(bill_after_2), ids!(bill_after_2_on)),
+    (ids!(bill_after_3), ids!(bill_after_3_on)),
+    (ids!(bill_after_4), ids!(bill_after_4_on)),
+    (ids!(bill_after_5), ids!(bill_after_5_on)),
+    (ids!(bill_after_6), ids!(bill_after_6_on)),
+    (ids!(bill_after_7), ids!(bill_after_7_on)),
+    (ids!(bill_after_8), ids!(bill_after_8_on)),
+    (ids!(bill_after_9), ids!(bill_after_9_on)),
+    (ids!(bill_after_10), ids!(bill_after_10_on)),
+    (ids!(bill_after_11), ids!(bill_after_11_on)),
+    (ids!(bill_after_12), ids!(bill_after_12_on)),
+];
+
+/// Bill format, form beside preview: (split, form column, open-line editor,
+/// preview column, the spacer that moves the preview down).
+const SLIP_PREVIEW_ALIGN: [(&[LiveId], &[LiveId], &[LiveId], &[LiveId], &[LiveId]); 1] = [(
+    ids!(bill_split),
+    ids!(bill_form_col),
+    ids!(bill_line_editor),
+    ids!(bill_preview_col),
+    ids!(bill_preview_lead),
+)];
+
 /// Settings → Where things print: tap one of these to put that pool printer
 /// on the focused route (Bill / station). Slots match the DSL below.
 const ROUTE_ADD_PRINTER_BTNS: [&[LiveId]; 16] = [

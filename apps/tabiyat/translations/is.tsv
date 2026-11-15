@@ -81,12 +81,10 @@ bill_item_qty	Magn
 bill_item_price	Verð
 bill_item_amount	Upphæð
 bill_item_note	Rx / sölunótur
-bill_item_col_order	Dálka röð
 bill_item_col_sep	Dálkareglur
 slip_col_width	Breidd (mm)
 slip_col_start	Upphafsbil (px)
 slip_col_end	Lokabil (px)
-slip_col_align	Jöfnun texta
 slip_columns_help	Breidd hvers dálks inniheldur upphafs- og lokabil hans. Texti brotnar innan síns dálks; það sem nær út fyrir breidd efnisins er skorið af, á pappír og í forskoðun.
 bill_total_qty_label	Heildarmagn merki
 bill_total_subtotal_label	Undir heildarmerki
@@ -443,7 +441,6 @@ printer_profile_heading	Skipulag
 vp_delivery_heading	Afhending
 vp_delivery_help	Hvernig þessi sýndarprentari sendir störf - OS skjal, hrá bæti eða ESC/POS. Innihald miða (tegundarstærð, vefja, spássíur) er ákveðið af reikningi / miðasniði, ekki hér.
 vp_delivery_spooler	OS skjal (kerfisspooler)
-vp_delivery_raw	Hrá bæti í tæki
 vp_delivery_escpos	ESC/POS hitaskipanir
 virtual_printer_new	Nýr sýndarprentari
 virtual_printer_selected	Breytir „{name}“ — pikkaðu á annað á listanum til að skipta
@@ -730,7 +727,6 @@ customer_paid_ph	Viðskiptavinur greiddi
 tip_ph	Ábending
 find_server	Finndu netþjón búðarinnar
 bill_format	Reikningssnið
-bill_format_help	Prentað undir nafni verslunarinnar þinnar á hverjum seðli. Aðskildu línur með | (t.d. MG Road, Rajkot | Ph 98250 00000).
 bill_header_ph	Heimilisfang | síma
 fssai_ph	Fíkniefnaleyfi nr. (valfrjálst - orðalag þitt)
 bill_footer_ph	Fótur (t.d. Þakka þér, komdu aftur)
@@ -820,8 +816,6 @@ add_dishes	Bæta við lyfjum
 order_so_far	Í þessari pöntun: {n} · {total}
 no_dish_match	Enginn hlutur passar við „{q}“
 pick_done	Búið
-kot_field_up	Færðu þig upp
-kot_field_down	Færðu þig niður
 dishes_n	{n} hlutir
 reorder_ph	Kaupa meira á
 set_reorder	Stilltu endurröðunarstig
@@ -853,3 +847,6 @@ sel_copy	Afrita
 sel_select_all	Velja allt
 sel_copied	Afritað
 nav_loading	Hleður…
+printer_mode_first	Fyrst sem virkar
+printer_mode_all	Prenta á alla
+slip_columns	Dálkar

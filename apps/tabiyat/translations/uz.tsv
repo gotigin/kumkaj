@@ -81,12 +81,10 @@ bill_item_qty	Miqdor
 bill_item_price	Narx
 bill_item_amount	Summa
 bill_item_note	Rx / savdo eslatmasi
-bill_item_col_order	Ustun tartibi
 bill_item_col_sep	Ustun chiziqlari
 slip_col_width	Kenglik (mm)
 slip_col_start	Boshlanish oralig‘i (px)
 slip_col_end	Oxirgi oraliq (px)
-slip_col_align	Matnni tekislash
 slip_columns_help	Har bir ustunning kengligi uning boshlanish va oxirgi oralig‘ini o‘z ichiga oladi. Matn o‘z ustuni ichida qatorga o‘tadi; kontent kengligidan oshgan qism qog‘ozda ham, oldindan ko‘rishda ham kesiladi.
 bill_total_qty_label	Jami miqdor yorligʻi
 bill_total_subtotal_label	Oraliq summa yorligʻi
@@ -443,7 +441,6 @@ printer_profile_heading	Joylashuv
 vp_delivery_heading	Yetkazib berish
 vp_delivery_help	Ushbu virtual printer vazifalarni qanday yuboradi - OS hujjati, xom baytlar yoki ESC/POS. Slip tarkibi (turi o'lchami, o'rami, chekkalari) bu erda emas, hisob-kitob / Slip formatiga qarab belgilanadi.
 vp_delivery_spooler	OT hujjati (tizim navbati)
-vp_delivery_raw	Qurilmaga xom bayt
 vp_delivery_escpos	ESC/POS termal buyruqlari
 virtual_printer_new	Yangi virtual printer
 virtual_printer_selected	„{name}“ tahrirlanmoqda — almashtirish uchun roʻyxatdagi boshqasini bosing
@@ -730,7 +727,6 @@ customer_paid_ph	Mijoz toʻladi
 tip_ph	Choychaqa
 find_server	Doʻkon serverini topish
 bill_format	Hisob formati
-bill_format_help	Har bir hisobda do'koningiz nomi ostida chop etiladi. Satrlarni | bilan ajrating (masalan, MG Road, Rajkot | Ph 98250 00000).
 bill_header_ph	Manzil | telefon
 fssai_ph	Dori-darmonlarni qabul qilish uchun litsenziya raqami. (ixtiyoriy - sizning so'zlaringiz)
 bill_footer_ph	Pastki yozuv (mas. Rahmat, yana keling)
@@ -820,8 +816,6 @@ add_dishes	Dori-darmonlarni qo'shing
 order_so_far	Shu buyurtmada: {n} · {total}
 no_dish_match	Hech qanday element “{q}”ga mos kelmaydi
 pick_done	Tayyor
-kot_field_up	Yuqoriga koʻchirish
-kot_field_down	Pastga koʻchirish
 dishes_n	{n} items
 reorder_ph	Yana sotib olish
 set_reorder	Qayta buyurtma darajasini qoʻyish
@@ -853,3 +847,6 @@ sel_copy	Nusxalash
 sel_select_all	Hammasini tanlash
 sel_copied	Nusxalandi
 nav_loading	Yuklanmoqda…
+printer_mode_first	Birinchi ishlagani
+printer_mode_all	Hammasiga chop etish
+slip_columns	Ustunlar

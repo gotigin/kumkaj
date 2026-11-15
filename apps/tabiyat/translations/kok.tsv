@@ -81,12 +81,10 @@ bill_item_qty	संख्या
 bill_item_price	किंमत
 bill_item_amount	रक्कम
 bill_item_note	Rx / विक्री नोंद
-bill_item_col_order	स्तंभांचो क्रम
 bill_item_col_sep	स्तंभाच्यो रेगो
 slip_col_width	रुंदाय (mm)
 slip_col_start	सुरवेची सुवात (px)
 slip_col_end	निमाणी सुवात (px)
-slip_col_align	मजकुराची मांडणी
 slip_columns_help	दर स्तंभाच्या रुंदायेंत ताची सुरवेची आनी निमाणी सुवात आसा. मजकूर आपल्या स्तंभाभितर गुठलायता; आशयाच्या रुंदाये भायर जें आसा तें कागदाचेर आनी पूर्वदर्शनांत कातरता.
 bill_total_qty_label	एकूण संख्येचें लेबल
 bill_total_subtotal_label	उपबेरीज लेबल
@@ -443,7 +441,6 @@ printer_profile_heading	रचणाय
 vp_delivery_heading	डिलिवरी
 vp_delivery_help	हो आभासी प्रिंटर काम कशें धाडटा — OS दस्तावेज, रॉ बाइट, वा ESC/POS. स्लिपाचो मजकूर (अक्षर आकार, वळण, समास) बिल / स्लिप स्वरूप थारायता, हांगा ना.
 vp_delivery_spooler	ओएस दस्तावेज (सिस्टम स्पूलर) 1.1.
-vp_delivery_raw	डिव्हायसाक कच्चे बाइट
 vp_delivery_escpos	ईएससी/पीओएस उश्णताय आदेश
 virtual_printer_new	नवो आभासी प्रिंटर
 virtual_printer_selected	“{name}” संपादीत करप — स्वीच करपाक वळेरेंत दुसरो टॅप करचो
@@ -730,7 +727,6 @@ customer_paid_ph	गिरायकान फारीक केलें
 tip_ph	टीप
 find_server	दुकानाचो सर्वर सोदून काडात
 bill_format	बिल स्वरूप
-bill_format_help	दरेक बिलाचेर दुकानाच्या नांवाखाला छापता. ओळी | न वेगळ्यो करात (देखीक MG Road, Rajkot | Ph 98250 00000).
 bill_header_ph	पत्तो | फोन
 fssai_ph	औषध परवानो नं. (पर्यायी — तुमचे शब्द)
 bill_footer_ph	तळटीप (देखीक- धन्यवाद, परतून भेट दिवची)
@@ -820,8 +816,6 @@ add_dishes	वखदां जोडात
 order_so_far	ह्या ऑर्डराचेर: {n} · {total}
 no_dish_match	“{q}” कडेन खंयचीच वस्त मेळना
 pick_done	जालें
-kot_field_up	वयर सरचें
-kot_field_down	सकयल वचात
 dishes_n	{n} वस्तू
 reorder_ph	हांगा चड खरेदी करात
 set_reorder	रिऑर्डर लेव्हल सेट करात
@@ -853,3 +847,6 @@ sel_copy	प्रत करात
 sel_select_all	सगळें वेंचात
 sel_copied	प्रत केली
 nav_loading	लोड जाता…
+printer_mode_first	पयलें, तें काम करता
+printer_mode_all	सगळ्यांचेर छापप
+slip_columns	स्तंभ

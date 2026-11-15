@@ -69,12 +69,10 @@ bill_item_qty	Antal
 bill_item_price	Pris
 bill_item_amount	Belopp
 bill_item_note	Objekt anmärkning
-bill_item_col_order	Kolumnordning
 bill_item_col_sep	Kolumnlinjer
 slip_col_width	Bredd (mm)
 slip_col_start	Startavstånd (px)
 slip_col_end	Slutavstånd (px)
-slip_col_align	Textjustering
 slip_columns_help	Varje kolumns bredd inkluderar dess start- och slutavstånd. Texten radbryts inom sin kolumn; det som går utanför innehållsbredden klipps bort – på papper och i förhandsvisningen.
 bill_total_qty_label	Etikett för totalt antal
 bill_total_subtotal_label	Etikett för delsumma
@@ -431,7 +429,6 @@ printer_profile_heading	Plan
 vp_delivery_heading	Leverans
 vp_delivery_help	Hur den här virtuella skrivaren skickar jobb – OS-dokument, råbyte eller ESC/POS. Slipinnehåll (typstorlek, omslag, marginaler) bestäms av räkningen / Slip-formatet, inte här.
 vp_delivery_spooler	OS-dokument (systemspooler)
-vp_delivery_raw	Raw byte till enhet
 vp_delivery_escpos	ESC/POS termiska kommandon
 virtual_printer_new	Ny virtuell skrivare
 virtual_printer_selected	Redigera "{name}" – tryck på en annan i listan för att byta
@@ -718,7 +715,6 @@ customer_paid_ph	Kunden betalade
 tip_ph	Tips
 find_server	Hitta butikens server
 bill_format	Notaformat
-bill_format_help	Tryckt under din butiks namn på varje sedel. Separera rader med | (t.ex. MG Road, Rajkot | Ph 98250 00000).
 bill_header_ph	Adress | telefon
 fssai_ph	FSSAI / butikslicens nr. (frivillig)
 bill_footer_ph	Sidfot (t.ex. Tack, besök igen)
@@ -808,8 +804,6 @@ add_dishes	Lägg till objekt
 order_so_far	På denna beställning: {n} · {total}
 no_dish_match	Inget objekt matchar "{q}"
 pick_done	Klart
-kot_field_up	Flytta uppåt
-kot_field_down	Flytta ner
 dishes_n	{n} objekt
 reorder_ph	Köp fler på
 set_reorder	Ställ in omordningsnivå
@@ -841,3 +835,6 @@ sel_copy	Kopiera
 sel_select_all	Markera allt
 sel_copied	Kopierat
 nav_loading	Läser in…
+printer_mode_first	Först fungerar det
+printer_mode_all	Skriv ut på alla
+slip_columns	Kolumner

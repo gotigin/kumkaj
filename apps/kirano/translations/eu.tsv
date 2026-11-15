@@ -69,12 +69,10 @@ bill_item_qty	Kop.
 bill_item_price	Prezioa
 bill_item_amount	Zenbatekoa
 bill_item_note	Elementuaren oharra
-bill_item_col_order	Zutabe-ordena
 bill_item_col_sep	Zutabe-marra
 slip_col_width	Zabalera (mm)
 slip_col_start	Hasierako tartea (px)
 slip_col_end	Amaierako tartea (px)
-slip_col_align	Testuaren lerrokatzea
 slip_columns_help	Zutabe bakoitzaren zabalerak hasierako eta amaierako tartea barne hartzen ditu. Testua bere zutabearen barruan egokitzen da; edukiaren zabaleratik kanpo geratzen dena moztu egiten da, paperean eta aurrebistan.
 bill_total_qty_label	Guztizko kopuru etiketa
 bill_total_subtotal_label	Azpitotal etiketa
@@ -431,7 +429,6 @@ printer_profile_heading	Antolamendua
 vp_delivery_heading	Banaketa
 vp_delivery_help	Inprimagailu birtual honek lanak nola bidaltzen dituen — OS dokumentua, byte gordinak edo ESC/POS. Aurkezpenaren edukia (motaren tamaina, itzulbiratzea, marjinak) fakturak / Slip formatuak erabakitzen du, ez hemen.
 vp_delivery_spooler	OS dokumentua (sistema-spoolerra)
-vp_delivery_raw	Byte gordinak gailura
 vp_delivery_escpos	ESC/POS agindu termikoak
 virtual_printer_new	Inprimagailu birtual berria
 virtual_printer_selected	“{name}” editatzen — sakatu zerrendako beste bat aldatzeko
@@ -718,7 +715,6 @@ customer_paid_ph	Bezeroak ordaindu du
 tip_ph	Aholkua
 find_server	Aurkitu dendaren zerbitzaria
 bill_format	Kontu-formatua
-bill_format_help	Zure dendaren izenean inprimatuta faktura guztietan. Bereizi lerroak | (adibidez, MG Road, Rajkot | Ph 98250 00000).
 bill_header_ph	Helbidea | telefonoa
 fssai_ph	FSSAI / denda lizentzia zk. (aukerakoa)
 bill_footer_ph	Oina (adib. Eskerrik asko, etorri berriro)
@@ -808,8 +804,6 @@ add_dishes	Gehitu elementuak
 order_so_far	Eskaera honetan: {n} · {total}
 no_dish_match	Ez dago "{q}" bat datorren elementurik
 pick_done	Egina
-kot_field_up	Mugitu gora
-kot_field_down	Mugitu behera
 dishes_n	{n} elementuak
 reorder_ph	Erosi gehiago hemendik
 set_reorder	Ezarri berriro eskatzeko maila
@@ -841,3 +835,6 @@ sel_copy	Kopiatu
 sel_select_all	Hautatu guztiak
 sel_copied	Kopiatuta
 nav_loading	Kargatzen…
+printer_mode_first	Lehena funtzionatzen duena
+printer_mode_all	Inprimatu guztietan
+slip_columns	Zutabeak

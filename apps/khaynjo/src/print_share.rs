@@ -689,8 +689,8 @@ impl SlipColumn {
     fn column_box(&self, content_mm: u32) -> crate::receipt_raster::ColumnBox {
         crate::receipt_raster::ColumnBox {
             width: self.width_mm * content_dots_per_mm(content_mm),
-            start: self.start_px as f32,
-            end: self.end_px as f32,
+            start: crate::receipt_raster::px_dots(self.start_px as f32),
+            end: crate::receipt_raster::px_dots(self.end_px as f32),
             align: self.align.line_align(),
         }
     }
@@ -2170,9 +2170,10 @@ pub struct BillSlipFormat {
     /// Caption for the settled sale total line. Empty → `Total`.
     #[serde(default = "default_bill_total_paid_label")]
     pub total_paid_label: String,
-    /// Field-id pairs printed on one line as `left\tright` when both show.
-    /// Empty falls back to product defaults (time+table, cashier+bill_no).
-    #[serde(default)]
+    /// Field-id pairs printed on one row when both show. A save without it
+    /// gets the product defaults (time+table, cashier+bill_no); an empty list
+    /// means no pairs — every line on its own row (the owner sets Alone).
+    #[serde(default = "default_bill_meta_pairs")]
     pub meta_pairs: Vec<[String; 2]>,
     /// Print order of the lines. Empty means [`BillStyleField::ALL`].
     #[serde(default)]
@@ -2536,28 +2537,21 @@ impl BillSlipFormat {
             }
         }
         self.field_order = order;
-        if self.meta_pairs.is_empty() {
-            self.meta_pairs = default_bill_meta_pairs();
-        } else {
-            let mut pairs = Vec::new();
-            for pair in &self.meta_pairs {
-                let a = BillStyleField::from_id(pair[0].trim());
-                let b = BillStyleField::from_id(pair[1].trim());
-                if let (Some(a), Some(b)) = (a, b) {
-                    if a.is_pairable() && b.is_pairable() && a != b {
-                        let ids = [a.id().to_string(), b.id().to_string()];
-                        if !pairs.iter().any(|have: &[String; 2]| have == &ids) {
-                            pairs.push(ids);
-                        }
+        // Only real pairs of pairable fields; none left means none (Alone).
+        let mut pairs = Vec::new();
+        for pair in &self.meta_pairs {
+            let a = BillStyleField::from_id(pair[0].trim());
+            let b = BillStyleField::from_id(pair[1].trim());
+            if let (Some(a), Some(b)) = (a, b) {
+                if a.is_pairable() && b.is_pairable() && a != b {
+                    let ids = [a.id().to_string(), b.id().to_string()];
+                    if !pairs.iter().any(|have: &[String; 2]| have == &ids) {
+                        pairs.push(ids);
                     }
                 }
             }
-            self.meta_pairs = if pairs.is_empty() {
-                default_bill_meta_pairs()
-            } else {
-                pairs
-            };
         }
+        self.meta_pairs = pairs;
         // The owner's columns; saves from before columns start filling the
         // content width (then keep their mm whatever the width).
         self.item_columns = Some(self.item_columns().clamped());
@@ -2632,9 +2626,6 @@ impl BillSlipFormat {
     pub fn set_meta_partner(&mut self, field: BillStyleField, partner: Option<BillStyleField>) {
         if !field.is_pairable() {
             return;
-        }
-        if self.meta_pairs.is_empty() {
-            self.meta_pairs = default_bill_meta_pairs();
         }
         self.meta_pairs
             .retain(|pair| pair[0] != field.id() && pair[1] != field.id());
@@ -3756,7 +3747,11 @@ mod kot_slip_format_tests {
         let mut text = String::new();
         append_pair(&mut text, (&fmt.time, "MMM"), (&fmt.table, "MMM"), false);
         let (xs, h, side) = inked_xs(&text, 80);
-        assert_eq!(h, (40.0f32 * 1.45).round() as usize, "as tall as the larger half");
+        assert_eq!(
+            h,
+            (crate::receipt_raster::px_dots(40.0) * 1.45).round() as usize,
+            "as tall as the larger half"
+        );
         let w = paper_dots_for_wrap_cols(wrap_cols_for_paper_mm(80)) as f32;
         let mid = side + (w - 2.0 * side) * 0.5;
         assert!(xs.iter().any(|&x| (x as f32) < mid) && xs.iter().any(|&x| (x as f32) >= mid));
@@ -4240,16 +4235,17 @@ mod kot_slip_format_tests {
             }];
             crate::receipt_raster::draw_lines(&lines, &page).1
         };
-        let pitch = ((KOT_EM_NORMAL as f32 * 1.45).round() as usize).clamp(16, 96);
+        let pitch = (crate::receipt_raster::px_dots(KOT_EM_NORMAL as f32) * 1.45).round() as usize;
         let h58 = draw(384);
         let h80 = draw(576);
-        // Long cancelled banner may wrap on a narrow head; 80 mm must not be taller.
+        // The banner wraps where the content is too narrow for its size; the
+        // wider content needs no more lines, never fewer dots per line.
         assert!(h58 >= pitch, "58 mm draws the cancel banner:\n{banner}");
         assert!(
             h80 <= h58,
             "80 mm must not need more rows than 58 mm ({h80} vs {h58})"
         );
-        assert_eq!(h80, pitch, "80 mm keeps the cancel banner on one line");
+        assert_eq!(h80 % pitch, 0, "whole lines of the banner's own size");
     }
 
     #[test]
@@ -4862,7 +4858,8 @@ pub fn normalize_delivery(raw: &str) -> String {
     match raw.trim() {
         "" => DELIVERY_ESCPOS.into(),
         DELIVERY_SYSTEM_SPOOLER | "os" | "document" | "spooler" => DELIVERY_SYSTEM_SPOOLER.into(),
-        DELIVERY_RAW_DEVICE | "raw" => DELIVERY_RAW_DEVICE.into(),
+        // "Raw" sent the same ESC/POS bytes; it is no longer a choice (2026-11-15).
+        DELIVERY_RAW_DEVICE | "raw" => DELIVERY_ESCPOS.into(),
         DELIVERY_ESCPOS | "esc_pos" | "esc-pos" | "thermal" => DELIVERY_ESCPOS.into(),
         other => other.to_string(),
     }
@@ -6232,7 +6229,7 @@ pub fn can_print_format(target: &PrinterTarget, format: &PrintFormat) -> bool {
 pub fn can_print_delivery(target: &PrinterTarget, delivery: &str) -> bool {
     matches!(
         classify_send(target, delivery),
-        SendKind::EscPos | SendKind::Raw | SendKind::OsDocument
+        SendKind::EscPos | SendKind::OsDocument
     )
 }
 
@@ -6241,8 +6238,6 @@ pub fn can_print_delivery(target: &PrinterTarget, delivery: &str) -> bool {
 pub enum SendKind {
     /// Thermal ESC/POS payload via raw spool or direct write.
     EscPos,
-    /// Same thermal payload as ESC/POS, raw spool / direct write only.
-    Raw,
     /// PNG of the slip via the system spooler / Android print.
     OsDocument,
     /// Owner chose a How this target cannot do — clear error, no silent swap.
@@ -6256,7 +6251,7 @@ pub fn classify_send(target: &PrinterTarget, delivery: &str) -> SendKind {
         DELIVERY_SYSTEM_SPOOLER => match target {
             PrinterTarget::Network(_) | PrinterTarget::Bluetooth(_) | PrinterTarget::Usb(_) => {
                 SendKind::Unsupported(
-                    "OS document needs a system print queue — this is a direct device. Pick ESC/POS or Raw, or use a named queue.",
+                    "OS document needs a system print queue — this is a direct device. Pick ESC/POS, or use a named queue.",
                 )
             }
             PrinterTarget::AndroidPrint => {
@@ -6267,17 +6262,6 @@ pub fn classify_send(target: &PrinterTarget, delivery: &str) -> SendKind {
                 }
             }
             PrinterTarget::Default | PrinterTarget::Named(_) => SendKind::OsDocument,
-        },
-        DELIVERY_RAW_DEVICE => match target {
-            PrinterTarget::AndroidPrint => SendKind::Unsupported(
-                "Raw bytes need Network, Bluetooth, USB, or a named queue — Android print is for OS document",
-            ),
-            PrinterTarget::Default | PrinterTarget::Named(_) if cfg!(target_os = "android") => {
-                SendKind::Unsupported(
-                    "Raw bytes on Android need Network, Bluetooth, or USB",
-                )
-            }
-            _ => SendKind::Raw,
         },
         _ => {
             // ESC/POS (and unknown → normalized ESC/POS)
@@ -6939,9 +6923,8 @@ fn send_to_printer(
     match classify_send(target, delivery) {
         SendKind::Unsupported(msg) => Err(msg.into()),
         SendKind::OsDocument => send_os_document(format, target, path, text, copies),
-        SendKind::Raw | SendKind::EscPos => {
-            // Same thermal payload; both go through raw spool / direct write.
-            // ESC/POS Named → print_system_raw is the path that already worked.
+        SendKind::EscPos => {
+            // ESC/POS bytes, sent raw to the picked device or queue.
             let bytes = replicate_escpos_copies(&escpos_job_format(format, text), copies);
             send_thermal_bytes(target, &bytes)
         }
@@ -6970,14 +6953,14 @@ fn send_os_document(
         }
         PrinterTarget::Network(_) | PrinterTarget::Bluetooth(_) | PrinterTarget::Usb(_) => {
             Err(
-                "OS document needs a system print queue — this is a direct device. Pick ESC/POS or Raw, or use a named queue."
+                "OS document needs a system print queue — this is a direct device. Pick ESC/POS, or use a named queue."
                     .into(),
             )
         }
     }
 }
 
-/// ESC/POS or Raw: thermal bytes to the device / raw queue.
+/// ESC/POS: the job bytes to the device / raw queue.
 fn send_thermal_bytes(target: &PrinterTarget, bytes: &[u8]) -> Result<(), String> {
     match target {
         PrinterTarget::Network(addr) => print_network_bytes(addr, bytes),
@@ -7085,6 +7068,10 @@ fn print_system_standard(
     }
 }
 
+
+
+
+
 /// Put a content-width slip on a wider page canvas so spooler "fit to page"
 /// still preserves the owner's mm (150 mm ≠ 210 mm on A4).
 ///
@@ -7145,126 +7132,23 @@ pub fn print_network_mode(addr: &str, mode: PrinterMode, text: &str) -> Result<(
     print_network_format(addr, &f, text)
 }
 
+/// ESC/POS to a network printer: connect to its raw port, send the
+/// whole job, close — the standard way. No retries, status probing or
+/// draining layered on top (2026-11-15).
 fn print_network_bytes(addr: &str, bytes: &[u8]) -> Result<(), String> {
-    if bytes.len() > ESC_POS_JOB_MAX {
-        return Err(format!(
-            "print job too large ({} bytes) — refused so the kitchen printer is not flooded",
-            bytes.len()
-        ));
-    }
     let sock: std::net::SocketAddr = addr.parse().map_err(|_| format!("{addr} is not a printer address"))?;
-    let mut stream = connect_printer(&sock)?;
-    // A head busy with a long ticket reads slowly; TCP holds our writes until
-    // it does. That is waiting, not a failure.
+    let mut stream = std::net::TcpStream::connect_timeout(&sock, Duration::from_secs(5))
+        .map_err(|e| format!("cannot reach it ({e}) — is it on and on this network?"))?;
     let _ = stream.set_write_timeout(Some(Duration::from_secs(30)));
-    // One raster picture at a time. A single burst prints the first band
-    // (about three lines) and the head drops the rest of the ticket.
-    crate::receipt_raster::write_escpos_paced(bytes, |piece| {
-        stream.write_all(piece).map_err(|e| e.to_string())?;
-        stream.flush().map_err(|e| e.to_string())
-    })?;
-    finish_printer_stream(addr, stream, bytes.len())
-}
-
-/// Open the printer's raw port. A printer still printing the previous ticket
-/// often refuses (or resets) a second connection until it is done: keep
-/// trying for a while instead of failing a ticket that would print a moment
-/// later. A printer that never answers fails after two tries.
-fn connect_printer(sock: &std::net::SocketAddr) -> Result<std::net::TcpStream, String> {
-    use std::io::ErrorKind;
-    let busy_until = std::time::Instant::now() + Duration::from_secs(6);
-    let mut silent_tries = 0;
-    loop {
-        match std::net::TcpStream::connect_timeout(sock, Duration::from_secs(4)) {
-            Ok(stream) => return Ok(stream),
-            Err(e) => {
-                let busy = matches!(
-                    e.kind(),
-                    ErrorKind::ConnectionRefused | ErrorKind::ConnectionReset | ErrorKind::ConnectionAborted
-                );
-                if !busy {
-                    silent_tries += 1;
-                }
-                if (busy && std::time::Instant::now() < busy_until) || (!busy && silent_tries < 2) {
-                    std::thread::sleep(Duration::from_millis(400));
-                    continue;
-                }
-                return Err(format!("cannot reach it ({e}) — is it on and on this network?"));
-            }
-        }
-    }
-}
-
-/// ESC/POS real-time status (DLE EOT 1) after the last byte. The printer
-/// answers only once it has read everything before it, so the answer means
-/// the ticket reached the head; an "offline" answer (cover open, out of
-/// paper, error) is a failure the counter must hear about. A printer that
-/// does not answer is remembered, and later jobs only half-close and give it
-/// a moment to read, so the next ticket never lands on top of this one.
-fn finish_printer_stream(addr: &str, mut stream: std::net::TcpStream, sent: usize) -> Result<(), String> {
-    use std::io::Read;
-    static ANSWERS: Mutex<Option<std::collections::HashMap<String, bool>>> = Mutex::new(None);
-    let known = ANSWERS
-        .lock()
-        .unwrap()
-        .get_or_insert_with(Default::default)
-        .get(addr)
-        .copied();
-    if known != Some(false) {
-        // Long jobs take longer to read: wait for the answer accordingly.
-        let wait = Duration::from_millis((1500 + sent as u64 / 4).min(12_000));
-        let _ = stream.set_read_timeout(Some(wait));
-        if stream.write_all(&[0x10, 0x04, 0x01]).and_then(|_| stream.flush()).is_ok() {
-            let mut reply = [0u8; 1];
-            match stream.read(&mut reply) {
-                Ok(1) => {
-                    ANSWERS
-                        .lock()
-                        .unwrap()
-                        .get_or_insert_with(Default::default)
-                        .insert(addr.to_string(), true);
-                    if let Some(problem) = escpos_status_problem(reply[0]) {
-                        return Err(problem.into());
-                    }
-                    return Ok(());
-                }
-                _ => {
-                    ANSWERS
-                        .lock()
-                        .unwrap()
-                        .get_or_insert_with(Default::default)
-                        .insert(addr.to_string(), false);
-                }
-            }
-        }
-    }
-    // No status: stop sending, let the printer finish reading, then close.
+    stream.write_all(bytes).map_err(|e| e.to_string())?;
+    stream.flush().map_err(|e| e.to_string())?;
     let _ = stream.shutdown(std::net::Shutdown::Write);
-    let _ = stream.set_read_timeout(Some(Duration::from_millis(600)));
-    let mut sink = [0u8; 64];
-    while let Ok(n) = stream.read(&mut sink) {
-        if n == 0 {
-            break;
-        }
-    }
     Ok(())
 }
 
-/// A DLE EOT 1 reply that says the printer cannot print. The fixed bits
-/// (bit 1 and 4 set, bit 0 and 7 clear) must match, so another device's
-/// stray byte is never read as a fault.
-fn escpos_status_problem(reply: u8) -> Option<&'static str> {
-    if reply & 0x93 != 0x12 {
-        return None;
-    }
-    if reply & 0x08 != 0 {
-        return Some("the printer says it is offline — check paper, the cover, and its light");
-    }
-    None
-}
 
-/// Cap for one ESC/POS payload (text or raster bands).
-const ESC_POS_JOB_MAX: usize = 512_000;
+
+
 
 /// Thermal / network ESC/POS job (printer-agnostic).
 ///
@@ -7282,25 +7166,13 @@ pub fn escpos_job(text: &str) -> Vec<u8> {
 
 pub fn escpos_job_format(format: &PrintFormat, text: &str) -> Vec<u8> {
     let cleaned = text.replace('\r', "");
-    let plain = strip_kot_style_marks(&cleaned);
     let metrics = format.raster_metrics();
-    // A slip carries a size and a weight on every line. Draw those with Noto
-    // so 16 and 32, and Light and Bold, are different ink. Unmarked text
-    // stays on the built-in font when the head has the letters. The same
-    // encoder is used for a bill and for a kitchen ticket.
+    // The slip as a picture — the same picture as the preview — in standard
+    // ESC/POS raster (`GS v 0`), whatever the text or the printer.
     if cleaned.contains(KOT_STYLE_MARK) {
-        return escpos_picture_styled(&cleaned, &metrics);
-    }
-    if printer_has_letters(&plain) {
-        if let Some((gs, col_div)) = escpos_gs_bang_for_em(format.em) {
-            let cols = (format.line.clamp(KOT_CHARS_MIN, KOT_CHARS_MAX) as usize / col_div).max(8);
-            let expanded = expand_kot_column_tabs(&cleaned, cols);
-            escpos_job_text_cols_sized(&expanded, cols, gs)
-        } else {
-            crate::receipt_raster::escpos_picture_metrics(&plain, &metrics)
-        }
+        escpos_picture_styled(&cleaned, &metrics)
     } else {
-        crate::receipt_raster::escpos_picture_metrics(&plain, &metrics)
+        crate::receipt_raster::escpos_picture_metrics(&strip_kot_style_marks(&cleaned), &metrics)
     }
 }
 
@@ -7585,137 +7457,15 @@ fn escpos_picture_styled(text: &str, default: &crate::receipt_raster::RasterMetr
     crate::receipt_raster::escpos_picture_lines(&styled_slip_lines(text, default), default)
 }
 
-/// Map format `em` to ESC/POS `GS !` n and a wrap-column divisor.
-/// Normal → 1×1; Large → 2×2. Small / custom return `None` so the caller
-/// rasterises (built-in Font A cannot go below 1×).
-fn escpos_gs_bang_for_em(em: f32) -> Option<(u8, usize)> {
-    // Shared buckets: Standard 18/22/26 · KOT 20/24/28.
-    if (em - STD_EM_NORMAL).abs() < 1.5 || (em - KOT_EM_NORMAL as f32).abs() < 1.5 {
-        Some((0x00, 1)) // 1×1
-    } else if (em - STD_EM_LARGE).abs() < 1.5 || (em - KOT_EM_LARGE as f32).abs() < 1.5 {
-        Some((0x11, 2)) // 2× width and height — wrap at half columns
-    } else {
-        None
-    }
-}
 
-pub fn escpos_job_mode(mode: PrinterMode, text: &str) -> Vec<u8> {
-    match mode {
-        PrinterMode::Standard => escpos_job_format(&PrintFormat::standard(), text),
-        PrinterMode::Kot => escpos_job_format(&PrintFormat::kot(), text),
-    }
-}
 
-/// Built-in-font ASCII job. Soft-wraps long lines to 32 cols (safe on 58 mm
-/// and 80 mm Font A) so heads do not mid-word wrap into incomplete lines.
-pub fn escpos_job_text(text: &str) -> Vec<u8> {
-    escpos_job_text_cols(text, KOT_CHARS_58MM as usize)
-}
 
-/// Like [`escpos_job_text`], with an explicit wrap width (clamped).
-pub fn escpos_job_text_cols(text: &str, cols: usize) -> Vec<u8> {
-    escpos_job_text_cols_sized(text, cols, 0x00)
-}
 
-/// ASCII ESC/POS job with explicit `GS !` character size (`n`: high nibble =
-/// width−1, low nibble = height−1; `0x00` = 1×1, `0x11` = 2×2).
-pub fn escpos_job_text_cols_sized(text: &str, cols: usize, gs_bang: u8) -> Vec<u8> {
-    let cols = (cols as u32).clamp(KOT_CHARS_MIN, KOT_CHARS_MAX) as usize;
-    let plain = strip_kot_style_marks(text);
-    let wrapped = wrap_escpos_cols(&plain, cols);
-    let mut out = Vec::with_capacity(wrapped.len().saturating_add(48));
-    out.extend_from_slice(&[0x1B, 0x40]); // ESC @: reset
-    out.extend_from_slice(&[0x1B, 0x74, 0x00]); // ESC t 0: PC437
-    out.extend_from_slice(&[0x1B, 0x4D, 0x00]); // ESC M 0: Font A
-    out.extend_from_slice(&[0x1D, 0x21, gs_bang]); // GS ! n: character size
-    out.extend_from_slice(&[0x1B, 0x61, 0x00]); // ESC a 0: left align
-    out.extend_from_slice(&[0x1B, 0x32]); // ESC 2: default line spacing
-    out.extend(escpos_text(&wrapped));
-    out.extend_from_slice(b"\n\n\n\n\n"); // LF only — never CR
-    out.extend_from_slice(&[0x1D, 0x56, 0x00]); // GS V 0: full cut
-    out
-}
 
-/// Soft-wrap each input line to `cols` (break on spaces when possible).
-fn wrap_escpos_cols(text: &str, cols: usize) -> String {
-    let cols = cols.max(8);
-    let mut out = String::with_capacity(text.len().saturating_add(16));
-    for (i, line) in text.lines().enumerate() {
-        if i > 0 {
-            out.push('\n');
-        }
-        if line.chars().count() <= cols {
-            out.push_str(line);
-            continue;
-        }
-        let mut width = 0usize;
-        let mut first_on_row = true;
-        for word in line.split(' ') {
-            let wlen = word.chars().count();
-            if wlen == 0 {
-                continue;
-            }
-            if first_on_row {
-                out.push_str(word);
-                width = wlen;
-                first_on_row = false;
-            } else if width + 1 + wlen <= cols {
-                out.push(' ');
-                out.push_str(word);
-                width += 1 + wlen;
-            } else {
-                out.push('\n');
-                out.push_str(word);
-                width = wlen;
-            }
-        }
-    }
-    out
-}
 
-/// Same as [`escpos_job`] (raster).
-pub fn escpos_job_picture(text: &str) -> Vec<u8> {
-    escpos_job(text)
-}
 
-/// Every letter of `text` is one a receipt printer's built-in font has, or
-/// one of the few symbols our slips use that can be spelt out.
-pub fn printer_has_letters(text: &str) -> bool {
-    text.chars().all(|c| c.is_ascii() || spelt_out(c).is_some())
-}
 
-/// Symbols our slips use, spelt in plain ASCII.
-fn spelt_out(c: char) -> Option<&'static [u8]> {
-    Some(match c {
-        '₹' => b"Rs.",
-        '—' | '–' | '·' | '•' => b"-",
-        '×' | '✕' => b"x",
-        '“' | '”' | '„' => b"\"",
-        '‘' | '’' => b"'",
-        '…' => b"...",
-        '€' => b"EUR",
-        '£' => b"GBP",
-        '\u{a0}' | '\u{202f}' => b" ",
-        _ => return None,
-    })
-}
 
-/// Text a receipt printer's built-in font can show: printable ASCII only
-/// (space–`~` and LF), symbols spelt out, anything else as "?".
-/// **Never emit CR** — on many ESC/POS heads CR reprints on the same row
-/// (overstrike); stacked lines collapse to the last one with `_`-like smear.
-pub fn escpos_text(text: &str) -> Vec<u8> {
-    let mut out = Vec::with_capacity(text.len());
-    for c in text.chars() {
-        match c {
-            '\n' => out.push(b'\n'),
-            '\r' | '\t' => {}
-            c if c.is_ascii_graphic() || c == ' ' => out.push(c as u8),
-            c => out.extend_from_slice(spelt_out(c).unwrap_or(b"?")),
-        }
-    }
-    out
-}
 
 /// Print a Standard bill **image** (PNG from Noto raster) on the OS printer.
 /// `content_along_width`: portrait (content = PNG width); false after landscape
@@ -7751,7 +7501,7 @@ fn print_system_image(
         cmd.args(["-o", "orientation-requested=3"]);
         cmd.arg("--").arg(path);
         match cmd.output() {
-            Ok(out) if out.status.success() => cups_confirm_after_lp(name, &out.stdout),
+            Ok(out) if out.status.success() => lp_job_queued(name, &out.stdout),
             Ok(out) => Err(first_line(&out.stderr).unwrap_or_else(|| "the printing system refused the job".into())),
             Err(_) => {
                 let opener = if cfg!(target_os = "macos") { "open" } else { "xdg-open" };
@@ -7833,37 +7583,12 @@ fn parse_lp_request_id(stdout: &str) -> Option<String> {
     }
 }
 
-/// CUPS often accepts a job (`lp` exit 0) while the backend cannot reach the
-/// device — classic message: "Waiting for printer to become available".
-/// That must not look like a successful print in the app.
-#[cfg(any(target_os = "linux", target_os = "macos"))]
-fn cups_printer_unreachable(name: &str) -> Option<String> {
-    let out = Command::new("lpstat").args(["-p", name]).output().ok()?;
-    let text = String::from_utf8_lossy(&out.stdout);
-    let lower = text.to_ascii_lowercase();
-    if !(lower.contains("waiting for printer to become available")
-        || lower.contains("printer not connected")
-        || lower.contains("unable to locate printer"))
-    {
-        return None;
-    }
-    let detail = text
-        .lines()
-        .map(str::trim)
-        .find(|l| {
-            let l = l.to_ascii_lowercase();
-            l.contains("waiting") || l.contains("unable") || l.contains("not connected")
-        })
-        .unwrap_or("printer not reachable");
-    Some(format!(
-        "Printer \"{name}\" did not take the job ({detail}) — check cable/power, or use a Network/USB address in Settings → Printers"
-    ))
-}
 
-/// After `lp` accepts the job: log it, and fail if CUPS already says the
-/// printer is unreachable (otherwise the UI shows success with no paper).
+/// `lp` accepted the job: the queue has it, and the system prints it. Log
+/// its id. The app does not watch, judge or cancel a queued job — the queue
+/// is the owner's (2026-11-15).
 #[cfg(any(target_os = "linux", target_os = "macos"))]
-fn cups_confirm_after_lp(name: Option<&str>, lp_stdout: &[u8]) -> Result<(), String> {
+fn lp_job_queued(name: Option<&str>, lp_stdout: &[u8]) -> Result<(), String> {
     let stdout = String::from_utf8_lossy(lp_stdout);
     let job = parse_lp_request_id(&stdout);
     let who = name.unwrap_or("(default)");
@@ -7874,138 +7599,44 @@ fn cups_confirm_after_lp(name: Option<&str>, lp_stdout: &[u8]) -> Result<(), Str
         "lp_queued",
         format!("printer={who} job={job_s}"),
     );
-    let printer = match name {
-        Some(n) => n.to_string(),
-        None => match cups_default_printer() {
-            Some(n) => n,
-            None => return Ok(()),
-        },
-    };
-    // `lp` returns when CUPS has the job, before the backend has tried the
-    // device. Watch the job briefly (this runs on the print worker, never the
-    // UI): done → printed; the queue says the printer cannot be reached →
-    // cancel and fail. Copies are one job, so this runs once per ticket.
-    let deadline = std::time::Instant::now() + Duration::from_secs(3);
-    loop {
-        if let Some(blocked) = cups_printer_unreachable(&printer) {
-            if let Some(job) = &job {
-                let _ = Command::new("cancel").arg(job).output();
-            }
-            eprintln!("[print] CUPS unreachable: {blocked}");
-            crate::diag::warn(crate::diag::Cat::Print, "cups_unreachable", &blocked);
-            return Err(blocked);
-        }
-        let pending = job.as_deref().is_some_and(cups_job_pending);
-        if !pending || std::time::Instant::now() >= deadline {
-            // Done, or still printing a long page: the device has it.
-            return Ok(());
-        }
-        std::thread::sleep(Duration::from_millis(300));
-    }
+    Ok(())
 }
 
-/// The queue `lp` uses when no printer is named (`lpstat -d`).
-#[cfg(any(target_os = "linux", target_os = "macos"))]
-fn cups_default_printer() -> Option<String> {
-    let out = Command::new("lpstat").arg("-d").output().ok()?;
-    let text = String::from_utf8_lossy(&out.stdout);
-    let name = text.rsplit(':').next()?.trim();
-    (!name.is_empty() && !text.to_ascii_lowercase().contains("no system default"))
-        .then(|| name.to_string())
-}
 
-/// Whether CUPS still lists `job` as queued or printing (`lpstat -o`).
-#[cfg(any(target_os = "linux", target_os = "macos"))]
-fn cups_job_pending(job: &str) -> bool {
-    let Ok(out) = Command::new("lpstat").arg("-o").output() else {
-        return false;
-    };
-    String::from_utf8_lossy(&out.stdout)
-        .lines()
-        .any(|l| l.split_whitespace().next() == Some(job))
-}
 
-/// Send ESC/POS bytes to a system printer as a **raw** job (KOT on desktop queues).
+/// ESC/POS to a system printer: the whole job as one raw job on the
+/// queue the owner picked (`lp -o raw`, Windows `WritePrinter`). Never
+/// routed around that queue (docs/PRINTER.md "What went wrong" 9).
 fn print_system_raw(name: Option<&str>, bytes: &[u8]) -> Result<(), String> {
-    if bytes.len() > ESC_POS_JOB_MAX {
-        return Err(format!(
-            "print job too large ({} bytes) — refused so the kitchen printer is not flooded",
-            bytes.len()
-        ));
-    }
-    // A CUPS queue that is a raw TCP socket: talk to that printer directly,
-    // paced and confirmed like a network address. `lp` hands the whole job
-    // to the socket backend in one burst, and reports success once queued.
-    #[cfg(any(target_os = "linux", target_os = "macos"))]
-    if let Some(addr) = name.and_then(cups_socket_address) {
-        return print_network_bytes(&addr, bytes);
-    }
-    // A CUPS queue that is a USB printer on this computer: write to its
-    // device node, paced and confirmed like a `usb:` printer. CUPS's usb
-    // backend holds the printer ~8 s per job (it waits 7 s for the printer's
-    // back channel, then 1 s more), so every KOT came back "still printing"
-    // and the next ticket queued behind it (2026-11-14). Node gone or busy
-    // (CUPS is printing), or jobs already queued: CUPS, in order.
-    #[cfg(target_os = "linux")]
-    if let Some(name) = name
-        && let Some(node) = cups_local_usb_node(name)
-        && let Ok(file) = crate::print_usb::open_usblp(&node)
-    {
-        let node = node.display().to_string();
-        eprintln!("[print] usb direct printer={name} node={node}");
-        crate::diag::info(crate::diag::Cat::Print, "usb_direct", format!("printer={name} node={node}"));
-        return crate::print_usb::write_usblp(file, bytes);
-    }
     let dir = std::env::temp_dir().join("kumkaj-kot-raw");
     fs::create_dir_all(&dir).map_err(|e| e.to_string())?;
     let path = dir.join(format!("{}.bin", uuid::Uuid::new_v4()));
     fs::write(&path, bytes).map_err(|e| e.to_string())?;
-    let pieces = crate::receipt_raster::escpos_piece_lengths(bytes);
-    let result = print_system_raw_path(name, &path, &pieces);
+    let result = print_system_raw_path(name, &path);
     let _ = fs::remove_file(&path);
     result
 }
 
-/// Windows script: write the bytes in `$pieces` order, one paced piece at a
-/// time ([`crate::receipt_raster::PIECE_PAUSE_MS`] between them). Each piece
-/// loops until WritePrinter took all of it.
+/// Windows script: hand `$bytes` to WritePrinter until all of it is taken
+/// (it may take a job in parts) — one job, no pauses.
 #[cfg(any(target_os = "windows", test))]
-pub(crate) fn powershell_paced_write_loop(class: &str, pieces: &[usize]) -> String {
-    let list = if pieces.is_empty() {
-        "0".to_string()
-    } else {
-        pieces.iter().map(|n| n.to_string()).collect::<Vec<_>>().join(",")
-    };
-    let pause = crate::receipt_raster::PIECE_PAUSE_MS;
+pub(crate) fn powershell_write_loop(class: &str) -> String {
     format!(
-        r#"$pieces = @({list})
-        $offset = 0
-        $first = $true
-        foreach ($len in $pieces) {{
-          if ($len -le 0) {{ continue }}
-          if (-not $first) {{ Start-Sleep -Milliseconds {pause} }}
-          $first = $false
-          $end = $offset + $len
-          while ($offset -lt $end) {{
-            $written = 0
-            $ptr = [IntPtr]::Add($pinned.AddrOfPinnedObject(), $offset)
-            $chunk = $end - $offset
-            if (-not [{class}]::WritePrinter($h, $ptr, $chunk, [ref]$written)) {{ throw "WritePrinter failed" }}
-            if ($written -le 0) {{ throw "WritePrinter wrote nothing" }}
-            $offset += $written
-          }}
-        }}
-        if ($offset -ne $bytes.Length) {{ throw "WritePrinter sent $offset of $($bytes.Length) bytes" }}"#
+        r#"$offset = 0
+        while ($offset -lt $bytes.Length) {{
+          $written = 0
+          $ptr = [IntPtr]::Add($pinned.AddrOfPinnedObject(), $offset)
+          if (-not [{class}]::WritePrinter($h, $ptr, $bytes.Length - $offset, [ref]$written)) {{ throw "WritePrinter failed" }}
+          if ($written -le 0) {{ throw "WritePrinter wrote nothing" }}
+          $offset += $written
+        }}"#
     )
 }
 
-fn print_system_raw_path(name: Option<&str>, path: &Path, pieces: &[usize]) -> Result<(), String> {
+fn print_system_raw_path(name: Option<&str>, path: &Path) -> Result<(), String> {
     #[cfg(any(target_os = "linux", target_os = "macos"))]
     {
-        // Raw spool for other backends (USB, serial, IPP): bytes go to the
-        // device as-is. USB and serial hold the host back while the head is
-        // busy; socket queues never get here (see `print_system_raw`).
-        let _ = pieces;
+        // A raw job on the picked queue: the bytes reach the device as-is.
         let mut cmd = Command::new("lp");
         cmd.args(["-o", "raw"]);
         if let Some(name) = name {
@@ -8013,7 +7644,7 @@ fn print_system_raw_path(name: Option<&str>, path: &Path, pieces: &[usize]) -> R
         }
         cmd.arg("--").arg(path);
         match cmd.output() {
-            Ok(out) if out.status.success() => cups_confirm_after_lp(name, &out.stdout),
+            Ok(out) if out.status.success() => lp_job_queued(name, &out.stdout),
             Ok(out) => {
                 let detail = first_line(&out.stderr).unwrap_or_else(|| "raw print refused".into());
                 Err(format!(
@@ -8086,7 +7717,7 @@ try {{
 "#,
                 path_s = path_s,
                 name = quote(name),
-                write_loop = powershell_paced_write_loop("KumkajRawPrint", pieces),
+                write_loop = powershell_write_loop("KumkajRawPrint"),
             )
         } else {
             // No name → default printer via Out-Printer still page-layouts; refuse
@@ -8112,7 +7743,7 @@ try {{
     }
     #[cfg(target_os = "android")]
     {
-        let _ = (name, path, pieces);
+        let _ = (name, path);
         Err(
             "Android has no system printer drivers for kitchen tickets — use a network address (host:9100) in Settings → Printers"
                 .into(),
@@ -8120,91 +7751,14 @@ try {{
     }
     #[cfg(not(any(target_os = "linux", target_os = "macos", target_os = "windows", target_os = "android")))]
     {
-        let _ = (name, path, pieces);
+        let _ = (name, path);
         Err("printing is not supported on this system".into())
     }
 }
 
-/// The usblp node of a CUPS queue whose device is a USB printer on this
-/// computer (`lpstat -v NAME` → `usb://Maker/Model?serial=X`), while CUPS
-/// has no job queued for it.
-#[cfg(target_os = "linux")]
-fn cups_local_usb_node(name: &str) -> Option<std::path::PathBuf> {
-    let out = Command::new("lpstat").args(["-v", name]).output().ok()?;
-    let serial = parse_cups_usb_serial(&String::from_utf8_lossy(&out.stdout))?;
-    let queued = Command::new("lpstat").args(["-o", name]).output().ok()?;
-    if !queued.status.success() || !String::from_utf8_lossy(&queued.stdout).trim().is_empty() {
-        return None;
-    }
-    crate::print_usb::usblp_path_for_serial(&serial)
-}
 
-/// The `serial=` of an `lpstat -v` line for a `usb://` device, decoded.
-/// Another backend, or a USB device named without a serial: `None` (two
-/// identical printers could not be told apart).
-#[cfg(any(target_os = "linux", test))]
-fn parse_cups_usb_serial(lpstat: &str) -> Option<String> {
-    let uri = lpstat.split("usb://").nth(1)?.split_whitespace().next()?;
-    let raw = uri.split_once('?')?.1.split('&').find_map(|kv| kv.strip_prefix("serial="))?;
-    let bytes = raw.as_bytes();
-    let mut out = Vec::with_capacity(bytes.len());
-    let mut i = 0;
-    while i < bytes.len() {
-        let hex = (bytes[i] == b'%')
-            .then(|| raw.get(i + 1..i + 3))
-            .flatten()
-            .and_then(|h| u8::from_str_radix(h, 16).ok());
-        match hex {
-            Some(b) => {
-                out.push(b);
-                i += 3;
-            }
-            None => {
-                out.push(bytes[i]);
-                i += 1;
-            }
-        }
-    }
-    let serial = String::from_utf8_lossy(&out).trim().to_string();
-    (!serial.is_empty()).then_some(serial)
-}
 
-/// `host:port` of a CUPS queue whose device is a raw socket
-/// (`lpstat -v NAME` → `device for NAME: socket://192.168.1.50:9100`).
-#[cfg(any(target_os = "linux", target_os = "macos"))]
-fn cups_socket_address(name: &str) -> Option<String> {
-    use std::net::ToSocketAddrs;
-    let out = Command::new("lpstat").args(["-v", name]).output().ok()?;
-    let host_port = parse_cups_socket_uri(&String::from_utf8_lossy(&out.stdout))?;
-    let addr = host_port.to_socket_addrs().ok()?.next()?;
-    Some(addr.to_string())
-}
 
-/// The `host:port` in an `lpstat -v` line for a `socket://` device (port
-/// 9100 when the URI names none). Any other backend: `None`.
-#[cfg(any(target_os = "linux", target_os = "macos", test))]
-fn parse_cups_socket_uri(lpstat: &str) -> Option<String> {
-    let rest = lpstat.split("socket://").nth(1)?;
-    let hostport: &str = rest
-        .split(|c: char| c.is_whitespace() || c == '/' || c == '?')
-        .next()?;
-    if hostport.is_empty() {
-        return None;
-    }
-    // `[v6]:port`, `[v6]`, `host:port`, `host`.
-    if hostport.starts_with('[') {
-        return Some(if hostport.contains("]:") {
-            hostport.to_string()
-        } else {
-            format!("{hostport}:{RAW_PRINT_PORT}")
-        });
-    }
-    Some(if hostport.contains(':') {
-        hostport.to_string()
-    } else {
-        format!("{hostport}:{RAW_PRINT_PORT}")
-    })
-}
 
 #[cfg(not(target_os = "android"))]
 fn first_line(bytes: &[u8]) -> Option<String> {
@@ -8666,57 +8220,8 @@ mod tests {
         assert!(can_print(&PrinterTarget::Network("10.0.0.9:9100".into())));
     }
 
-    /// A receipt printer's own font has no ₹ or dashes: they are spelt out,
-    /// and anything it cannot draw is a ? — never bytes that garble the job.
-    #[test]
-    fn receipt_printer_text_is_plain() {
-        assert_eq!(escpos_text("Thali × 2 — ₹500\r\n"), b"Thali x 2 - Rs.500\n".to_vec());
-        assert_eq!(escpos_text("ખીચડી"), b"?????".to_vec());
-        assert!(printer_has_letters("Thali × 2 — ₹500"));
-        assert!(!printer_has_letters("ખીચડી"));
-        // Built-in-font path stays ASCII (even when forced); Indic slips use raster.
-        let text_job = escpos_job_text("2 x ખીચડી");
-        assert!(!text_job.windows(3).any(|w| w == [0x1D, 0x76, 0x30]));
-        assert!(text_job.windows(5).any(|w| w == b"?????"));
-        assert!(text_job.len() < 256, "text job must stay tiny, got {}", text_job.len());
-        let ascii_job = escpos_job("KOT 7\n2 x Thali\n1 x Roti");
-        assert_eq!(&ascii_job[..2], &[0x1B, 0x40]);
-        assert!(
-            !ascii_job.windows(4).any(|w| w == [0x1D, 0x76, 0x30, 0x00]),
-            "ASCII slips use plain ESC/POS text — not GS v 0 raster"
-        );
-        assert!(ascii_job.windows(5).any(|w| w == b"Thali"));
-        assert!(ascii_job.ends_with(&[0x1D, 0x56, 0x00]));
-        assert!(ascii_job.len() < ESC_POS_JOB_MAX);
-        let indic = escpos_job("KOT\nખીચડી x 2");
-        assert!(
-            indic.windows(4).any(|w| w == [0x1D, 0x76, 0x30, 0x00]),
-            "scripts without built-in letters still use raster"
-        );
-        assert_eq!(escpos_text("A\u{1b}B\n"), b"A?B\n".to_vec());
-        // CR must never appear — it overstrikes on many heads.
-        assert!(!escpos_text("A\nB").contains(&b'\r'));
-        assert_eq!(escpos_text("A\nB"), b"A\nB".to_vec());
-    }
 
 
-    /// ASCII thermal jobs stay plain ESC/POS; Indic still uses GS v 0 raster.
-    #[test]
-    fn escpos_jobs_prefer_text_when_printer_has_letters() {
-        let ascii = escpos_job("KOT 1\n2 x Tea\n1 x Roti");
-        assert_eq!(&ascii[..2], &[0x1B, 0x40], "reset");
-        assert!(
-            !ascii.windows(4).any(|w| w == [0x1D, 0x76, 0x30, 0x00]),
-            "plain text for ASCII"
-        );
-        let indic = escpos_job("ખીચડી");
-        assert!(
-            indic.windows(4).any(|w| w == [0x1D, 0x76, 0x30, 0x00]),
-            "raster for scripts without built-in letters"
-        );
-        assert!(indic.len() < ESC_POS_JOB_MAX);
-        assert!(escpos_text("Café").iter().all(|&b| b != 0xC3));
-    }
 
     #[test]
     fn route_picks_format_printers_are_destinations_only() {
@@ -8740,8 +8245,8 @@ mod tests {
     #[test]
     fn send_approach_follows_format_not_printer_kind() {
         let mut cfg = DevicePrinters::default();
-        let named = cfg.add_printer("80Series2", "80Series2");
-        let usb = cfg.add_printer("USB", "usb:0fe6:811e:abc");
+        let named = cfg.add_printer("CounterPrinter", "CounterPrinter");
+        let usb = cfg.add_printer("USB", "usb:1a2b:3c4d:abc");
         let office = cfg.add_printer("Brother", "Brother_DCP-L2640DW");
         for id in [&named, &usb, &office] {
             assert!(
@@ -8771,14 +8276,14 @@ mod tests {
             "printers": [
                 {
                     "id": "p1",
-                    "label": "80Series2",
-                    "target": "80Series2",
+                    "label": "CounterPrinter",
+                    "target": "CounterPrinter",
                     "delivery": "system_spooler"
                 },
                 {
                     "id": "p2",
                     "label": "USB",
-                    "target": "usb:0fe6:811e:abc",
+                    "target": "usb:1a2b:3c4d:abc",
                     "delivery": "escpos"
                 }
             ],
@@ -8803,17 +8308,18 @@ mod tests {
 
     #[test]
     fn classify_send_honours_how_without_swapping() {
-        let named = PrinterTarget::Named("80Series2".into());
-        let usb = PrinterTarget::Usb("usb:0fe6:811e".into());
+        let named = PrinterTarget::Named("CounterPrinter".into());
+        let usb = PrinterTarget::Usb("usb:1a2b:3c4d".into());
         let net = PrinterTarget::Network("192.168.1.10:9100".into());
         assert_eq!(classify_send(&named, DELIVERY_ESCPOS), SendKind::EscPos);
-        assert_eq!(classify_send(&named, DELIVERY_RAW_DEVICE), SendKind::Raw);
+        // A printer saved as Raw sends the same ESC/POS bytes.
+        assert_eq!(classify_send(&named, &normalize_delivery(DELIVERY_RAW_DEVICE)), SendKind::EscPos);
         assert_eq!(
             classify_send(&named, DELIVERY_SYSTEM_SPOOLER),
             SendKind::OsDocument
         );
         assert_eq!(classify_send(&usb, DELIVERY_ESCPOS), SendKind::EscPos);
-        assert_eq!(classify_send(&usb, DELIVERY_RAW_DEVICE), SendKind::Raw);
+        assert_eq!(classify_send(&usb, &normalize_delivery("raw")), SendKind::EscPos);
         assert!(matches!(
             classify_send(&usb, DELIVERY_SYSTEM_SPOOLER),
             SendKind::Unsupported(_)
@@ -8823,19 +8329,19 @@ mod tests {
             SendKind::Unsupported(_)
         ));
         assert!(!can_print_delivery(&usb, DELIVERY_SYSTEM_SPOOLER));
-        assert!(can_print_delivery(&named, DELIVERY_RAW_DEVICE));
+        assert!(can_print_delivery(&named, &normalize_delivery(DELIVERY_RAW_DEVICE)));
     }
 
     #[test]
-    fn printer_raw_override_beats_format_os() {
+    fn a_printer_saved_as_raw_prints_esc_pos() {
         let mut cfg = DevicePrinters::default();
-        let p = cfg.add_printer("80Series2", "80Series2");
+        let p = cfg.add_printer("CounterPrinter", "CounterPrinter");
         cfg.set_job_drive(true, false, DELIVERY_SYSTEM_SPOOLER);
         assert!(cfg.set_printer_delivery(&p, DELIVERY_RAW_DEVICE));
         cfg.routes.bill = vec![p];
         let d = &cfg.destinations_for(RouteKey::Bill)[0];
-        assert_eq!(d.delivery, DELIVERY_RAW_DEVICE);
-        assert_eq!(classify_send(&d.target, &d.delivery), SendKind::Raw);
+        assert_eq!(normalize_delivery(&d.delivery), DELIVERY_ESCPOS);
+        assert_eq!(classify_send(&d.target, &normalize_delivery(&d.delivery)), SendKind::EscPos);
     }
 
     #[test]
@@ -8853,8 +8359,8 @@ mod tests {
     #[test]
     fn find_leaves_delivery_empty() {
         let mut cfg = DevicePrinters::default();
-        let named = cfg.add_printer("80Series2", "80Series2");
-        let usb = cfg.add_printer("USB", "usb:0fe6:811e:abc");
+        let named = cfg.add_printer("CounterPrinter", "CounterPrinter");
+        let usb = cfg.add_printer("USB", "usb:1a2b:3c4d:abc");
         assert!(cfg.printer_by_id(&named).unwrap().delivery.trim().is_empty());
         assert!(cfg.printer_by_id(&usb).unwrap().delivery.trim().is_empty());
     }
@@ -8953,7 +8459,7 @@ mod tests {
     #[test]
     fn kot_test_uses_kot_format_not_bill() {
         let mut cfg = DevicePrinters::default();
-        let p = cfg.add_printer("Kitchen", "80Series2");
+        let p = cfg.add_printer("Kitchen", "CounterPrinter");
         cfg.set_job_drive(true, false, DELIVERY_SYSTEM_SPOOLER);
         cfg.set_job_drive(false, false, DELIVERY_ESCPOS);
         cfg.set_kot_content_line(wrap_cols_for_paper_mm(80));
@@ -8970,7 +8476,7 @@ mod tests {
         // print_one_printer(kind=Kot) must resolve KOT How, not Bill OS.
         assert_eq!(
             classify_send(
-                &PrinterTarget::Named("80Series2".into()),
+                &PrinterTarget::Named("CounterPrinter".into()),
                 &delivery_for_printer("", &kot)
             ),
             SendKind::EscPos
@@ -9119,70 +8625,32 @@ mod tests {
             buf
         });
         print_network(&addr, "KOT 12 · D3\n2 x Thali").unwrap();
-        // The whole job, then only the status request (DLE EOT 1) that asks
-        // the printer to confirm it read everything.
-        let mut want = escpos_job("KOT 12 · D3\n2 x Thali");
-        want.extend_from_slice(&[0x10, 0x04, 0x01]);
-        assert_eq!(got.join().unwrap(), want);
+        // Exactly the job: nothing appended (no status query), nothing split.
+        assert_eq!(got.join().unwrap(), escpos_job("KOT 12 · D3\n2 x Thali"));
         // Nobody listening: said in words, not a hang.
         let closed = std::net::TcpListener::bind("127.0.0.1:0").unwrap().local_addr().unwrap().to_string();
         assert!(print_network(&closed, "x").unwrap_err().contains("cannot reach"));
     }
 
-    /// A printer that answers the status request: "online" is success, and
-    /// "offline" (out of paper, cover open) is a failure, never "printed".
-    #[test]
-    fn network_printer_status_reply_decides_the_outcome() {
-        fn fake_printer(reply: u8) -> String {
-            let listener = std::net::TcpListener::bind("127.0.0.1:0").unwrap();
-            let addr = listener.local_addr().unwrap().to_string();
-            std::thread::spawn(move || {
-                let (mut conn, _) = listener.accept().unwrap();
-                let mut got = Vec::new();
-                let mut buf = [0u8; 4096];
-                while let Ok(n) = std::io::Read::read(&mut conn, &mut buf) {
-                    if n == 0 {
-                        break;
-                    }
-                    got.extend_from_slice(&buf[..n]);
-                    if got.ends_with(&[0x10, 0x04, 0x01]) {
-                        let _ = conn.write_all(&[reply]);
-                        break;
-                    }
-                }
-            });
-            addr
-        }
-        assert!(print_network(&fake_printer(0x12), "KOT 1\n1 x Chaas").is_ok());
-        let err = print_network(&fake_printer(0x1A), "KOT 2\n1 x Chaas").unwrap_err();
-        assert!(err.contains("offline"), "{err}");
-    }
 
     /// A Server answering a waiter waits for the paper: a printer that took
-    /// the job says nothing, one that is offline is named — and outside a
+    /// the job says nothing, one that cannot be reached is named — and outside a
     /// confirm (the till's own UI thread) nothing ever waits.
     #[test]
     fn confirm_paper_reports_what_the_printer_did() {
-        fn fake_printer(reply: u8) -> String {
+        // A printer that takes the job (reads it all), and an address where
+        // nothing listens.
+        fn taking_printer() -> String {
             let listener = std::net::TcpListener::bind("127.0.0.1:0").unwrap();
             let addr = listener.local_addr().unwrap().to_string();
             std::thread::spawn(move || {
                 let (mut conn, _) = listener.accept().unwrap();
                 let mut got = Vec::new();
-                let mut buf = [0u8; 4096];
-                while let Ok(n) = std::io::Read::read(&mut conn, &mut buf) {
-                    if n == 0 {
-                        break;
-                    }
-                    got.extend_from_slice(&buf[..n]);
-                    if got.ends_with(&[0x10, 0x04, 0x01]) {
-                        let _ = conn.write_all(&[reply]);
-                        break;
-                    }
-                }
+                let _ = std::io::Read::read_to_end(&mut conn, &mut got);
             });
             addr
         }
+        let nobody = std::net::TcpListener::bind("127.0.0.1:0").unwrap().local_addr().unwrap().to_string();
         let kot = PrintFormat {
             id: FORMAT_KOT.into(),
             label: "KOT".into(),
@@ -9208,13 +8676,13 @@ mod tests {
         };
         assert!(confirm_channel().is_none(), "no confirm open: nobody waits");
         let paper = ConfirmPaper::start();
-        queue(job(fake_printer(0x12))).unwrap();
+        queue(job(taking_printer())).unwrap();
         assert_eq!(paper.finish(Duration::from_secs(10)), Vec::<String>::new());
         let paper = ConfirmPaper::start();
-        queue(job(fake_printer(0x1A))).unwrap();
+        queue(job(nobody)).unwrap();
         let said = paper.finish(Duration::from_secs(10));
         assert!(
-            said.iter().any(|p| p.contains("did not print") && p.contains("offline")),
+            said.iter().any(|p| p.contains("did not print") && p.contains("cannot reach")),
             "{said:?}"
         );
         assert!(confirm_channel().is_none(), "finish closes the confirm");
@@ -9292,65 +8760,58 @@ mod tests {
         }
     }
 
-    #[test]
-    fn a_cups_socket_queue_names_its_printer() {
-        assert_eq!(
-            parse_cups_socket_uri("device for Kitchen: socket://192.168.1.50:9100\n").as_deref(),
-            Some("192.168.1.50:9100")
-        );
-        assert_eq!(
-            parse_cups_socket_uri("device for K: socket://kitchen.local/?contimeout=30").as_deref(),
-            Some("kitchen.local:9100")
-        );
-        assert_eq!(
-            parse_cups_socket_uri("device for K: socket://[fe80::1]:9100").as_deref(),
-            Some("[fe80::1]:9100")
-        );
-        assert_eq!(parse_cups_socket_uri("device for Canon: usb://Canon/G3010?serial=1"), None);
-        assert_eq!(parse_cups_socket_uri("device for Brother: ipp://10.0.0.3/ipp/print"), None);
-    }
 
-    /// A CUPS queue on this computer's USB is told by its serial, which is
-    /// how its device node is found (the kitchen's 80 mm printer, 2026-11-14).
-    #[test]
-    fn a_cups_usb_queue_names_its_printers_serial() {
-        assert_eq!(
-            parse_cups_usb_serial("device for 80Series2: usb:///80Series2?serial=GD107B9714B7F14B0\n").as_deref(),
-            Some("GD107B9714B7F14B0")
-        );
-        assert_eq!(
-            parse_cups_usb_serial("device for TM: usb://EPSON/TM-T20II?serial=X4ZF%20012&interface=1").as_deref(),
-            Some("X4ZF 012")
-        );
-        // No serial: two identical printers could not be told apart.
-        assert_eq!(parse_cups_usb_serial("device for P: usb://Printer/80Series"), None);
-        assert_eq!(parse_cups_usb_serial("device for P: usb://Printer/80Series?serial="), None);
-        assert_eq!(parse_cups_usb_serial("device for K: socket://192.168.1.50:9100"), None);
-        assert_eq!(parse_cups_usb_serial("device for B: lpd://BRW4845E6DDDB92/BINARY_P1"), None);
-    }
 
-    /// DLE EOT 1: only a reply with the fixed bits is read, and only the
-    /// offline bit is a failure.
+    /// The Windows raw writer hands the whole job to WritePrinter, no pauses.
     #[test]
-    fn printer_status_offline_is_a_failure() {
-        assert_eq!(escpos_status_problem(0x12), None);
-        assert!(escpos_status_problem(0x1A).is_some());
-        // Not a status byte (fixed bits wrong): never a false alarm.
-        assert_eq!(escpos_status_problem(0x08), None);
-        assert_eq!(escpos_status_problem(0xFF), None);
-    }
-
-    /// The Windows raw writer sends the same pieces, in order, with a pause.
-    #[test]
-    fn windows_raw_writer_sends_each_piece() {
-        let job = crate::receipt_raster::escpos_picture(&"ખીચડી\n".repeat(12));
-        let pieces = crate::receipt_raster::escpos_piece_lengths(&job);
-        let script = powershell_paced_write_loop("KumkajRawPrint", &pieces);
-        let list = pieces.iter().map(|n| n.to_string()).collect::<Vec<_>>().join(",");
-        assert!(script.contains(&format!("$pieces = @({list})")));
-        assert!(script.contains("Start-Sleep -Milliseconds 40"));
+    fn windows_raw_writer_sends_the_whole_job() {
+        let script = powershell_write_loop("KumkajRawPrint");
         assert!(script.contains("[KumkajRawPrint]::WritePrinter"));
-        assert!(script.contains("$offset -ne $bytes.Length"));
+        assert!(script.contains("$bytes.Length - $offset"));
+        assert!(!script.contains("Start-Sleep") && !script.contains("$pieces"));
+    }
+
+    /// ESC/POS is the slip picture in standard raster, for any text: reset,
+    /// `GS v 0` bands, feed, cut — no text-or-picture guess.
+    #[test]
+    fn an_escpos_job_is_the_slip_picture() {
+        for text in ["KOT 7\n2 x Thali\n1 x Roti", "KOT\nખીચડી x 2"] {
+            let job = escpos_job(text);
+            assert_eq!(&job[..2], &[0x1B, 0x40], "{text}: reset first");
+            assert!(job.windows(4).any(|w| w == [0x1D, 0x76, 0x30, 0x00]), "{text}: raster");
+            assert!(job.ends_with(&[0x1D, 0x56, 0x00]), "{text}: cut last");
+            assert!(!job.windows(2).any(|w| w == [0x10, 0x04]), "{text}: no status query");
+        }
+    }
+
+
+
+
+    /// Alone means alone (owner, 2026-11-15): with both pairs cleared,
+    /// Cashier and Bill no each print on their own row, through a save and
+    /// a reload. A save from before pairs existed keeps the product pairs.
+    #[test]
+    fn a_line_set_alone_stays_on_its_own_row() {
+        let mut fmt = BillSlipFormat::default();
+        fmt.set_meta_partner(BillStyleField::Time, None);
+        fmt.set_meta_partner(BillStyleField::Cashier, None);
+        let fmt = fmt.clamped();
+        assert!(fmt.meta_pairs.is_empty(), "{:?}", fmt.meta_pairs);
+        let back = BillSlipFormat::parse(&serde_json::to_string(&fmt).unwrap());
+        assert_eq!(back.meta_pair_of(BillStyleField::Cashier), None);
+        assert_eq!(back.meta_pair_of(BillStyleField::Time), None);
+        let mut text = String::new();
+        {
+            let _stage = BillStage::begin();
+            append_bill_field(&mut text, &back, BillStyleField::Cashier, "Cashier: Asha", false);
+            append_bill_field(&mut text, &back, BillStyleField::BillNo, "Bill No.: 12", false);
+            text.push_str(&bill_stage_finish(&back, false));
+        }
+        let rows: Vec<&str> = text.lines().filter(|l| l.contains("Cashier") || l.contains("Bill No")).collect();
+        assert_eq!(rows.len(), 2, "two rows: {rows:?}");
+        assert!(rows.iter().all(|r| !r.contains('\t')), "not a pair: {rows:?}");
+        let old = BillSlipFormat::parse("{}");
+        assert_eq!(old.meta_pair_of(BillStyleField::Cashier), Some(BillStyleField::BillNo));
     }
 
     /// Printers belong to each shop's books folder and reload from there.
@@ -9517,7 +8978,7 @@ mod tests {
     #[test]
     fn dedupe_keeps_virtual_printer_station_attach() {
         let mut cfg = DevicePrinters::default();
-        let real = cfg.add_printer("80Series2", "80Series2");
+        let real = cfg.add_printer("CounterPrinter", "CounterPrinter");
         let vp = cfg
             .add_virtual_printer(
                 "KOTPrinter",
@@ -9547,7 +9008,7 @@ mod tests {
     #[test]
     fn vp_destination_uses_place_slip_metrics_not_vp_leftovers() {
         let mut cfg = DevicePrinters::default();
-        let real = cfg.add_printer("80Series2", "80Series2");
+        let real = cfg.add_printer("CounterPrinter", "CounterPrinter");
         // Stale VP metrics (UI no longer edits these — Bill & KOT format owns them).
         let _vp = cfg
             .add_virtual_printer(
@@ -9593,7 +9054,7 @@ mod tests {
         ));
         let _ = fs::create_dir_all(&dir);
         let mut cfg = DevicePrinters::default();
-        let real = cfg.add_printer("80Series2", "80Series2");
+        let real = cfg.add_printer("CounterPrinter", "CounterPrinter");
         let vp = cfg
             .add_virtual_printer(
                 "KOTPrinter",
@@ -9623,8 +9084,8 @@ mod tests {
     #[test]
     fn same_destination_is_not_added_twice() {
         let mut cfg = DevicePrinters::default();
-        let (a, first) = cfg.ensure_printer("80Series2", "80Series2");
-        let (b, second) = cfg.ensure_printer("80Series2", "80Series2");
+        let (a, first) = cfg.ensure_printer("CounterPrinter", "CounterPrinter");
+        let (b, second) = cfg.ensure_printer("CounterPrinter", "CounterPrinter");
         assert!(first);
         assert!(!second);
         assert_eq!(a, b);
@@ -9633,8 +9094,8 @@ mod tests {
         cfg.printers.push(
             NamedPrinter {
                 id: "dup".into(),
-                label: "80Series2".into(),
-                target: "80Series2".into(),
+                label: "CounterPrinter".into(),
+                target: "CounterPrinter".into(),
                 delivery: String::new(),
                 _legacy_mode: None,
             }

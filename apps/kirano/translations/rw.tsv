@@ -69,12 +69,10 @@ bill_item_qty	Umubare
 bill_item_price	Igiciro
 bill_item_amount	Amafaranga
 bill_item_note	Icyitonderwa
-bill_item_col_order	Urutonde rw'inkingi
 bill_item_col_sep	Imirongo y'inkingi
 slip_col_width	Ubugari (mm)
 slip_col_start	Umwanya w’intangiriro (px)
 slip_col_end	Umwanya w’iherezo (px)
-slip_col_align	Gutondeka umwandiko
 slip_columns_help	Ubugari bwa buri nkingi burimo umwanya wayo w’intangiriro n’uw’iherezo. Umwandiko ujya ku murongo mushya imbere mu nkingi yawo; ibirenga ubugari bw’ibirimo bicibwa, ku mpapuro no mu igaragaza.
 bill_total_qty_label	Umutwe w'umubare wose
 bill_total_subtotal_label	Umutwe w'igiteranyo gito
@@ -431,7 +429,6 @@ printer_profile_heading	Imiterere
 vp_delivery_heading	Gutanga
 vp_delivery_help	Uburyo iyi printer ya verisiyo yohereza akazi - inyandiko ya OS, bytes mbisi, cyangwa ESC / POS. Ibirimo kunyerera (ubwoko bwubunini, gupfunyika, margins) byemejwe na fagitire / Imiterere ya Slip, ntabwo hano.
 vp_delivery_spooler	Inyandiko ya sisitemu (spooler ya sisitemu)
-vp_delivery_raw	Bytes zoroheje ku gikoresho
 vp_delivery_escpos	Amabwiriza y'ubushyuhe ESC/POS
 virtual_printer_new	Mucapyi mushya w'ubuhanga
 virtual_printer_selected	Urimo guhindura “{name}” — kanda undi ku rutonde uhindure
@@ -718,7 +715,6 @@ customer_paid_ph	Umukiriya yishyuye
 tip_ph	Inyongera
 find_server	Shaka seriveri y'iduka
 bill_format	Imiterere y'inyemezabuguzi
-bill_format_help	Byacapwe munsi yizina ryibicuruzwa byawe kuri fagitire. Gutandukanya imirongo hamwe na | (urugero: Umuhanda MG, Rajkot | Ph 98250 00000).
 bill_header_ph	Aderesi | telefone
 fssai_ph	Uruhushya rwa FSSAI / iduka no. (bidashoboka)
 bill_footer_ph	Hasi (urugero Murakoze, mugaruke)
@@ -808,8 +804,6 @@ add_dishes	Ongeramo ibintu
 order_so_far	Kuri iyi komande: {n} · {total}
 no_dish_match	Nta kintu gihuye na “{q}”
 pick_done	Byarangiye
-kot_field_up	Zamura
-kot_field_down	Manuka
 dishes_n	Ibintu bya {n}
 reorder_ph	Ongera ugure kuri
 set_reorder	Shyira urwego rwo kongera kugura
@@ -841,3 +835,6 @@ sel_copy	Kopera
 sel_select_all	Hitamo byose
 sel_copied	Byakoporowe
 nav_loading	Biriguma gufunguka…
+printer_mode_first	Iya mbere ikora
+printer_mode_all	Capa kuri byose
+slip_columns	Inkingi

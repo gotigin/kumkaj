@@ -69,12 +69,10 @@ bill_item_qty	Antal
 bill_item_price	Pris
 bill_item_amount	Beløb
 bill_item_note	Varenote
-bill_item_col_order	Kolonnerækkefølge
 bill_item_col_sep	Kolonnelinjer
 slip_col_width	Bredde (mm)
 slip_col_start	Startafstand (px)
 slip_col_end	Slutafstand (px)
-slip_col_align	Tekstjustering
 slip_columns_help	Hver kolonnes bredde omfatter dens start- og slutafstand. Teksten ombrydes inden for sin kolonne; det, der ligger ud over indholdsbredden, skæres af – på papiret og i forhåndsvisningen.
 bill_total_qty_label	Etiket for antal i alt
 bill_total_subtotal_label	Etiket for subtotal
@@ -431,7 +429,6 @@ printer_profile_heading	Layout
 vp_delivery_heading	Udbringning
 vp_delivery_help	Sådan sender denne virtuelle printer job — OS-dokument, rå bytes eller ESC/POS. Seddelindhold (skriftstørrelse, ombrydning, margener) bestemmes af regnings- / seddelformatet, ikke her.
 vp_delivery_spooler	OS-dokument (systemkø)
-vp_delivery_raw	Rå bytes til enhed
 vp_delivery_escpos	ESC/POS-termiske kommandoer
 virtual_printer_new	Ny virtuel printer
 virtual_printer_selected	Retter “{name}” — tryk på en anden i listen for at skifte
@@ -718,7 +715,6 @@ customer_paid_ph	Kunden betalte
 tip_ph	Drikkepenge
 find_server	Find butikkens server
 bill_format	Regningsformat
-bill_format_help	Trykkes under butikkens navn på hver regning. Adskil linjer med | (f.eks. MG Road, Rajkot | Tlf. 98250 00000).
 bill_header_ph	Adresse | telefon
 fssai_ph	FSSAI / butikstilladelsesnr. (valgfrit)
 bill_footer_ph	Sidefod (f.eks. Tak, kom igen)
@@ -808,8 +804,6 @@ add_dishes	Tilføj varer
 order_so_far	På denne ordre: {n} · {total}
 no_dish_match	Ingen vare matcher “{q}”
 pick_done	Færdig
-kot_field_up	Flyt op
-kot_field_down	Flyt ned
 dishes_n	{n} varer
 reorder_ph	Køb mere ved
 set_reorder	Sæt genbestillingsniveau
@@ -841,3 +835,6 @@ sel_copy	Kopiér
 sel_select_all	Vælg alt
 sel_copied	Kopieret
 nav_loading	Indlæser…
+printer_mode_first	Første der virker
+printer_mode_all	Udskriv på alle
+slip_columns	Kolonner

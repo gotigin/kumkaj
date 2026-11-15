@@ -83,9 +83,7 @@ print_cancelled_kot_needed	បើកតុដែលមានម្ហូបល�
 print_cancelled_kot_none	ការកុម្ម៉ង់នេះគ្មានម្ហូបលុបចោល
 print_cancelled_kot_client	ការបោះពុម្ពលុបចោល ({n}) សម្រាប់ {place} បានផ្ញើ — ផ្ទះបាយបោះពុម្ពនៅ Server
 kot_banner	ស្លាកប្រភេទ
-kot_banner_ph	ស្លាក (ទទេ = គ្មាន)
 kot_item_prefix	បុព្វបទទំនិញ
-kot_item_prefix_ph	ឧ. [បានលុបចោល]
 kot_strike	ឆូតឈ្មោះម្ហូប
 kot_strike_note	ឆូតអក្សរម្ហូប
 kot_strike_on	បើក
@@ -103,13 +101,11 @@ bill_item_qty	បរិមាណ
 bill_item_price	តម្លៃ
 bill_item_amount	ទឹកប្រាក់
 bill_item_note	កំណត់ចំណាំម្ហូប
-bill_item_col_order	លំដាប់ជួរឈរ
 bill_item_col_sep	បន្ទាត់ជួរឈរ
 slip_columns	ជួរឈរ
 slip_col_width	ទទឹង (mm)
 slip_col_start	ចន្លោះដើម (px)
 slip_col_end	ចន្លោះចុង (px)
-slip_col_align	ការតម្រឹមអត្ថបទ
 slip_columns_help	ទទឹងនៃជួរឈរនីមួយៗរួមបញ្ចូលចន្លោះដើម និងចន្លោះចុងរបស់វា។ អត្ថបទរុំនៅក្នុងជួរឈររបស់វា; អ្វីដែលលើសពីទទឹងមាតិកានឹងត្រូវកាត់ចេញ ទាំងលើក្រដាស និងក្នុងការមើលជាមុន។
 bill_total_qty_label	ស្លាកសរុបបរិមាណ
 bill_total_subtotal_label	ស្លាកសរុបរង
@@ -643,7 +639,6 @@ vp_type_size_heading	ទំហំអក្សរ
 vp_wrap_heading	ទទឹងរុំ
 vp_margin_heading	រឹម
 vp_delivery_spooler	ឯកសារប្រព័ន្ធ (ជួរប្រព័ន្ធ)
-vp_delivery_raw	បៃឆៅទៅឧបករណ៍
 vp_delivery_escpos	ពាក្យបញ្ជាកម្ដៅ ESC/POS
 virtual_printer_new	ម៉ាស៊ីននិម្មិតថ្មី
 virtual_printer_selected	កំពុងកែ “{name}” — ប៉ះមួយទៀតក្នុងបញ្ជីដើម្បីប្ដូរ
@@ -1110,7 +1105,6 @@ remove_these_tables	ដកតុទាំងនេះ
 table_remove_ph	ដក៖ T1-T24 ឬឈ្មោះតុមួយ
 find_server	ស្វែងរក server ហាង
 bill_format	ទម្រង់វិក្កយបត្រ
-bill_format_help	បោះពុម្ពក្រោមឈ្មោះភោជនីយដ្ឋានរបស់អ្នកលើវិក្កយបត្រនីមួយៗ។ បំបែកបន្ទាត់ដោយ | (ឧ. MG Road, Rajkot | ទូរស័ព្ទ 98250 00000)។
 bill_header_ph	អាសយដ្ឋាន | ទូរស័ព្ទ
 fssai_ph	លេខអាជ្ញាប័ណ្ណ FSSAI (ឥណ្ឌា)
 bill_footer_ph	បាត (ឧ. អរគុណ សូមមកម្ដងទៀត)
@@ -1127,7 +1121,6 @@ kot_field_hide	លាក់
 kot_field_on	បង្ហាញ
 kot_field_off	លាក់
 kot_field_size	ទំហំអក្សរ
-kot_field_size_ph	ឧ. 16, 20, 24, 28, 32…
 kot_weight_light	ស្តើង
 bill_kot_panel_help	ប្លង់វិក្កយបត្រ និងសន្លឹកផ្ទះបាយ នីមួយៗមានទទឹងខ្លឹមសាររបស់ខ្លួន។ អ្នកគិតលុយវិក្កយបត្រគឺអ្នកចេញ ឬទូទាត់វិក្កយបត្រ; អ្នកបម្រើ KOT គឺអ្នកផ្ញើសន្លឹកផ្ទះបាយនោះ — រឿងការកុម្ម៉ង់ពេញនៅក្នុងសៀវភៅ។
 std_size_ph	ឧ. 18, 20, 26…
@@ -1157,7 +1150,6 @@ kot_style_item_qty	ទំនិញ · បរិមាណ
 kot_style_field_pick	ជ្រើសវាល
 kot_weight_regular	ធម្មតា
 kot_weight_bold	ដិត
-kot_align	តម្រឹម
 kot_align_start	ដើម
 kot_align_center	កណ្ដាល
 kot_align_end	ចុង
@@ -1307,18 +1299,8 @@ kot_show_item_hdr	ទំនិញ · បរិមាណ
 kot_hide_item_hdr	លាក់ជួរឈរ
 kot_show_title	បន្ទាត់ចំណងជើង
 kot_hide_title	លាក់ចំណងជើង
-kot_field_order	លំដាប់បោះពុម្ព
-kot_field_up	ផ្លាស់ឡើង
-kot_field_down	ផ្លាស់ចុះ
 kot_field_cycle	ជ្រើសបន្ទាប់
 kot_field_select	ជ្រើសបន្ទាប់
-kot_field_time	ម៉ោង
-kot_field_kot_no	លេខ KOT
-kot_field_area	កន្លែង
-kot_field_table	តុ
-kot_field_shop	ឈ្មោះហាង
-kot_field_waiter	បុគ្គលិក
-kot_field_station	ស្ថានីយ
 dishes_n	ម្ហូប {n}
 recipe_ph	រូបមន្ត (ស្រេចចិត្ត) — មួយចំណែកប្រើ៖ អង្ករ=0.2 Paneer=0.15
 reorder_ph	ទិញបន្ថែមពេល

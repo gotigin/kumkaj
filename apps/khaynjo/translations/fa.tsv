@@ -83,9 +83,7 @@ print_cancelled_kot_needed	اول میزی با غذاهای لغوشده را �
 print_cancelled_kot_none	غذای لغوشده‌ای در این سفارش نیست
 print_cancelled_kot_client	چاپ لغوشده ({n}) برای {place} فرستاده شد — آشپزخانه روی سرور چاپ می‌کند
 kot_banner	نوار نوع
-kot_banner_ph	نوار (خالی = هیچ)
 kot_item_prefix	پیشوند کالا
-kot_item_prefix_ph	مثلاً [لغو]
 kot_strike	خط روی نام غذا
 kot_strike_note	خط روی یادداشت غذا
 kot_strike_on	روشن
@@ -103,13 +101,11 @@ bill_item_qty	تعداد
 bill_item_price	قیمت
 bill_item_amount	مبلغ
 bill_item_note	یادداشت غذا
-bill_item_col_order	ترتیب ستون
 bill_item_col_sep	خط ستون
 slip_columns	ستون‌ها
 slip_col_width	پهنا (mm)
 slip_col_start	فاصلهٔ آغاز (px)
 slip_col_end	فاصلهٔ پایان (px)
-slip_col_align	ترازبندی متن
 slip_columns_help	پهنای هر ستون شامل فاصلهٔ آغاز و پایان آن است. متن درون ستون خودش می‌شکند؛ هرچه از پهنای محتوا بیرون بزند، روی کاغذ و در پیش‌نمایش بریده می‌شود.
 bill_total_qty_label	برچسب جمع تعداد
 bill_total_subtotal_label	برچسب جمع جزء
@@ -643,7 +639,6 @@ vp_type_size_heading	اندازه حروف
 vp_wrap_heading	پهنای شکستن خط
 vp_margin_heading	حاشیه‌ها
 vp_delivery_spooler	سند سیستم (صف چاپ)
-vp_delivery_raw	بایت خام به دستگاه
 vp_delivery_escpos	فرمان حرارتی ESC/POS
 virtual_printer_new	چاپگر مجازی تازه
 virtual_printer_selected	ویرایش «{name}» — برای عوض کردن روی دیگری در فهرست بزنید
@@ -1110,7 +1105,6 @@ remove_these_tables	برداشتن این میزها
 table_remove_ph	برداشتن: T1-T24، یا نام یک میز
 find_server	پیدا کردن سرور فروشگاه
 bill_format	قالب صورتحساب
-bill_format_help	زیر نام رستوران روی هر صورتحساب چاپ می‌شود. خط‌ها را با | جدا کنید (مثلاً MG Road, Rajkot | تلفن 98250 00000).
 bill_header_ph	نشانی | تلفن
 fssai_ph	شماره پروانه FSSAI (هند)
 bill_footer_ph	پاورقی (مثلاً ممنون، دوباره بیایید)
@@ -1127,7 +1121,6 @@ kot_field_hide	پنهان
 kot_field_on	نمایان
 kot_field_off	پنهان
 kot_field_size	اندازه حروف
-kot_field_size_ph	مثلاً ۱۶، ۲۰، ۲۴، ۲۸، ۳۲…
 kot_weight_light	نازک
 bill_kot_panel_help	چیدمان صورتحساب و برگه آشپزخانه، هر کدام با پهنای محتوای خودش. صندوقدار صورتحساب کسی است که صورتحساب را صادر یا تسویه کرده؛ پیشخدمت KOT کسی است که آن برگه آشپزخانه را فرستاده — داستان کامل سفارش در دفتر می‌ماند.
 std_size_ph	مثلاً ۱۸، ۲۰، ۲۶…
@@ -1157,7 +1150,6 @@ kot_style_item_qty	کالا · تعداد
 kot_style_field_pick	انتخاب فیلد
 kot_weight_regular	معمولی
 kot_weight_bold	ضخیم
-kot_align	تراز
 kot_align_start	آغاز
 kot_align_center	وسط
 kot_align_end	پایان
@@ -1307,18 +1299,8 @@ kot_show_item_hdr	کالا · تعداد
 kot_hide_item_hdr	پنهان کردن ستون‌ها
 kot_show_title	خط عنوان
 kot_hide_title	پنهان کردن عنوان
-kot_field_order	ترتیب چاپ
-kot_field_up	بالا بردن
-kot_field_down	پایین بردن
 kot_field_cycle	انتخاب بعدی
 kot_field_select	انتخاب بعدی
-kot_field_time	زمان
-kot_field_kot_no	شماره KOT
-kot_field_area	ناحیه
-kot_field_table	میز
-kot_field_shop	نام فروشگاه
-kot_field_waiter	کارکنان
-kot_field_station	ایستگاه
 dishes_n	{n} غذا
 recipe_ph	دستور (اختیاری) — یک پرس مصرف می‌کند: برنج=۰٫۲، Paneer=۰٫۱۵
 reorder_ph	خرید بیشتر در

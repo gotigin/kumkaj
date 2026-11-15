@@ -69,12 +69,10 @@ bill_item_qty	Qtd
 bill_item_price	Preço
 bill_item_amount	Valor
 bill_item_note	Nota do item
-bill_item_col_order	Ordem das colunas
 bill_item_col_sep	Riscos das colunas
 slip_col_width	Largura (mm)
 slip_col_start	Espaço inicial (px)
 slip_col_end	Espaço final (px)
-slip_col_align	Alinhamento do texto
 slip_columns_help	A largura de cada coluna inclui o seu espaço inicial e final. O texto quebra dentro da sua coluna; o que passa da largura do conteúdo é cortado, no papel e na pré-visualização.
 bill_total_qty_label	Rótulo qtd total
 bill_total_subtotal_label	Rótulo subtotal
@@ -431,7 +429,6 @@ printer_profile_heading	Layout
 vp_delivery_heading	Entrega
 vp_delivery_help	Como esta impressora virtual envia trabalhos — documento do sistema operacional, bytes brutos ou ESC/POS. O conteúdo do boleto (tamanho do tipo, envoltório, margens) é decidido pelo formato da fatura / boleto, não aqui.
 vp_delivery_spooler	Documento do SO (spooler do sistema)
-vp_delivery_raw	Bytes brutos para o dispositivo
 vp_delivery_escpos	Comandos térmicos ESC/POS
 virtual_printer_new	Nova impressora virtual
 virtual_printer_selected	A editar “{name}” — toque outra na lista para mudar
@@ -718,7 +715,6 @@ customer_paid_ph	Cliente pagou
 tip_ph	Gorjeta
 find_server	Encontrar o servidor da loja
 bill_format	Formato da conta
-bill_format_help	Impresso com o nome da sua loja em todas as faturas. Linhas separadas com | (por exemplo, MG Road, Rajkot | Ph 98250 00000).
 bill_header_ph	Endereço | telefone
 fssai_ph	FSSAI / licença de loja nº. (opcional)
 bill_footer_ph	Rodapé (ex. Obrigado, volte sempre)
@@ -808,8 +804,6 @@ add_dishes	Adicionar itens
 order_so_far	Neste pedido: {n} · {total}
 no_dish_match	Nenhum item corresponde a “{q}”
 pick_done	Concluído
-kot_field_up	Mover para cima
-kot_field_down	Mover para baixo
 dishes_n	Itens {n}
 reorder_ph	Comprar mais em
 set_reorder	Definir nível de reposição
@@ -841,3 +835,6 @@ sel_copy	Copiar
 sel_select_all	Selecionar tudo
 sel_copied	Copiado
 nav_loading	Carregando…
+printer_mode_first	A primeira que funciona
+printer_mode_all	Imprimir em todos
+slip_columns	Colunas

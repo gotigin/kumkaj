@@ -83,9 +83,7 @@ print_cancelled_kot_needed	취소 요리가 있는 테이블을 여세요
 print_cancelled_kot_none	이 주문에 취소 없음
 print_cancelled_kot_client	{place} 취소({n}) 전송 — 서버에서 인쇄
 kot_banner	배너
-kot_banner_ph	배너(비움=없음)
 kot_item_prefix	항목 접두사
-kot_item_prefix_ph	예: [CANCELLED]
 kot_strike	요리명 취소선
 kot_strike_note	메모 취소선
 kot_strike_on	켜기
@@ -103,13 +101,11 @@ bill_item_qty	수량
 bill_item_price	단가
 bill_item_amount	금액
 bill_item_note	메모
-bill_item_col_order	열 순서
 bill_item_col_sep	열 구분선
 slip_columns	열
 slip_col_width	너비 (mm)
 slip_col_start	시작 여백 (px)
 slip_col_end	끝 여백 (px)
-slip_col_align	텍스트 정렬
 slip_columns_help	각 열의 너비에는 시작 여백과 끝 여백이 포함됩니다. 텍스트는 자기 열 안에서 줄 바꿈되고, 내용 너비를 넘는 부분은 종이와 미리보기 모두에서 잘립니다.
 bill_total_qty_label	총수량 라벨
 bill_total_subtotal_label	소계 라벨
@@ -643,7 +639,6 @@ vp_type_size_heading	글자 크기
 vp_wrap_heading	줄바꿈 폭
 vp_margin_heading	여백
 vp_delivery_spooler	OS 문서(시스템 스풀러)
-vp_delivery_raw	장치에 원시 바이트
 vp_delivery_escpos	ESC/POS 열전사 명령
 virtual_printer_new	새 가상 프린터
 virtual_printer_selected	“{name}” 편집 중 — 목록의 다른 항목을 탭해 전환
@@ -1110,7 +1105,6 @@ remove_these_tables	이 테이블 삭제
 table_remove_ph	삭제: T1-T24 또는 테이블 이름
 find_server	매장 서버 찾기
 bill_format	계산서 형식
-bill_format_help	모든 계산서의 식당 이름 아래에 인쇄됩니다. 줄은 | 로 구분 (예: MG Road, Rajkot | Tel 98250 00000).
 bill_header_ph	주소 | 전화
 fssai_ph	FSSAI 허가번호 (인도)
 bill_footer_ph	하단 문구 (예: 감사합니다, 또 오세요)
@@ -1127,7 +1121,6 @@ kot_field_hide	숨기기
 kot_field_on	표시
 kot_field_off	숨김
 kot_field_size	글꼴 크기
-kot_field_size_ph	예: 16, 20, 24, 28, 32…
 kot_weight_light	얇게
 bill_kot_panel_help	영수증 내용과 주방 전표 서체. 위의 내용 폭이 영수증과 주방 전표의 폭입니다.
 std_size_ph	예: 18, 20, 26…
@@ -1157,7 +1150,6 @@ kot_style_item_qty	항목 · 수량
 kot_style_field_pick	필드 선택
 kot_weight_regular	보통
 kot_weight_bold	굵게
-kot_align	정렬
 kot_align_start	시작
 kot_align_center	중앙 정렬
 kot_align_end	끝
@@ -1307,18 +1299,8 @@ kot_show_item_hdr	항목 · 수량
 kot_hide_item_hdr	열 숨기기
 kot_show_title	제목 줄
 kot_hide_title	제목 숨기기
-kot_field_order	주문 인쇄
-kot_field_up	위로 이동
-kot_field_down	아래로 이동
 kot_field_cycle	다음 선택
 kot_field_select	다음 선택
-kot_field_time	시간
-kot_field_kot_no	KOT 번호
-kot_field_area	영역
-kot_field_table	테이블
-kot_field_shop	매장 이름
-kot_field_waiter	직원
-kot_field_station	스테이션
 dishes_n	요리 {n}개
 recipe_ph	레시피(선택) — 1인분 사용량: Rice=0.2, Paneer=0.15
 reorder_ph	이 수량에서 추가 구매

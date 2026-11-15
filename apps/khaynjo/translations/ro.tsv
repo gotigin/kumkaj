@@ -83,9 +83,7 @@ print_cancelled_kot_needed	Deschide mai întâi o masă cu feluri anulate
 print_cancelled_kot_none	Niciun fel anulat în această comandă
 print_cancelled_kot_client	Tipărire anulate ({n}) pentru {place} trimisă — bucătăria tipărește pe Server
 kot_banner	Banner de tip
-kot_banner_ph	Banner (gol = niciunul)
 kot_item_prefix	Prefix articol
-kot_item_prefix_ph	ex. [ANULAT]
 kot_strike	Taie numele felului
 kot_strike_note	Taie nota felului
 kot_strike_on	Pornit
@@ -103,13 +101,11 @@ bill_item_qty	Cant.
 bill_item_price	Preț
 bill_item_amount	Sumă
 bill_item_note	Notă fel
-bill_item_col_order	Ordine coloane
 bill_item_col_sep	Linii coloane
 slip_columns	Coloane
 slip_col_width	Lățime (mm)
 slip_col_start	Spațiu la început (px)
 slip_col_end	Spațiu la sfârșit (px)
-slip_col_align	Alinierea textului
 slip_columns_help	Lățimea fiecărei coloane include spațiul de la început și de la sfârșit. Textul se încadrează în coloana sa; ce depășește lățimea conținutului este tăiat, pe hârtie și în previzualizare.
 bill_total_qty_label	Etichetă cant. totală
 bill_total_subtotal_label	Etichetă subtotal
@@ -643,7 +639,6 @@ vp_type_size_heading	Mărime literă
 vp_wrap_heading	Lățime de înfășurare
 vp_margin_heading	Margini
 vp_delivery_spooler	Document OS (spooler de sistem)
-vp_delivery_raw	Octeți bruți către dispozitiv
 vp_delivery_escpos	Comenzi termice ESC/POS
 virtual_printer_new	Imprimantă virtuală nouă
 virtual_printer_selected	Se editează „{name}” — atinge altul din listă ca să schimbi
@@ -1110,7 +1105,6 @@ remove_these_tables	Elimină aceste mese
 table_remove_ph	Elimină: T1-T24 sau numele unei mese
 find_server	Găsește serverul localului
 bill_format	Format notă
-bill_format_help	Tipărit sub numele restaurantului pe fiecare notă. Separă rândurile cu | (ex. MG Road, Rajkot | Tel 98250 00000).
 bill_header_ph	Adresă | telefon
 fssai_ph	Nr. licență FSSAI (India)
 bill_footer_ph	Subsol (ex. Mulțumim, reveniți)
@@ -1127,7 +1121,6 @@ kot_field_hide	Ascunde
 kot_field_on	afișează
 kot_field_off	ascunde
 kot_field_size	Mărime font
-kot_field_size_ph	ex. 16, 20, 24, 28, 32…
 kot_weight_light	Subțire
 bill_kot_panel_help	Așezarea notei și a bonului de bucătărie, fiecare cu lățimea ei de conținut. Casierul notei e cine a emis sau a închis nota; Chelnerul KOT e cine a trimis bonul acela de bucătărie — povestea completă a comenzii rămâne în cărți.
 std_size_ph	ex. 18, 20, 26…
@@ -1157,7 +1150,6 @@ kot_style_item_qty	Articol · Cant.
 kot_style_field_pick	Alege câmpul
 kot_weight_regular	Obișnuit
 kot_weight_bold	Aldin
-kot_align	Aliniere
 kot_align_start	Început
 kot_align_center	Centru
 kot_align_end	Sfârșit
@@ -1307,18 +1299,8 @@ kot_show_item_hdr	Articol · Cant.
 kot_hide_item_hdr	Ascunde coloanele
 kot_show_title	Linie de titlu
 kot_hide_title	Ascunde titlul
-kot_field_order	Ordine de tipărire
-kot_field_up	Mută în sus
-kot_field_down	Mută în jos
 kot_field_cycle	Alege următorul
 kot_field_select	Alege următorul
-kot_field_time	Ora
-kot_field_kot_no	KOT nr.
-kot_field_area	Zonă
-kot_field_table	Masă
-kot_field_shop	Numele localului
-kot_field_waiter	Personal
-kot_field_station	Stație
 dishes_n	{n} feluri
 recipe_ph	Rețetă (opțional) — o porție folosește: Orez=0.2, Paneer=0.15
 reorder_ph	Cumpără mai mult de la

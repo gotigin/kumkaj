@@ -198,8 +198,6 @@ struct AppState {
     order_sections_open: Vec<String>,
     /// Settings → Bill & KOT: draft kitchen-slip options (preview before Save).
     kot_slip_draft: print_share::KotSlipFormat,
-    /// Index into `kot_slip_draft.field_order` for the Phase-2 order designer.
-    kot_field_edit_idx: usize,
     /// Which KOT kind's field typography is being edited (Bill & KOT format).
     kot_edit_kind: print_share::KotSlipKind,
     /// Which field's size/weight is focused for the selected kind.
@@ -214,11 +212,6 @@ struct AppState {
     bill_style_field: print_share::BillStyleField,
     /// Which row of the bill print order is selected.
     bill_field_edit_idx: usize,
-    /// Which item column (name/qty/price/amount) is selected for reorder
-    /// and for its width / spaces / alignment.
-    bill_item_col_edit_idx: usize,
-    /// Which KOT item column (Item / Qty) the column editor shows.
-    kot_item_col_edit: print_share::KotItemCol,
     /// DeviceSetup accordions (`language`, `role`, `public_templates`, `private_template`).
     device_setup_sections_open: Vec<String>,
     /// Pending custom icon path from picker (before Save brand).

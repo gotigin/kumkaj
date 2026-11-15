@@ -83,9 +83,7 @@ print_cancelled_kot_needed	Откройте стол с отменёнными �
 print_cancelled_kot_none	Нет отменённых блюд в заказе
 print_cancelled_kot_client	Отмены ({n}) для {place} отправлены — печать на сервере
 kot_banner	Баннер
-kot_banner_ph	Баннер (пусто = нет)
 kot_item_prefix	Префикс блюда
-kot_item_prefix_ph	напр. [CANCELLED]
 kot_strike	Зачеркнуть имя
 kot_strike_note	Зачеркнуть заметку
 kot_strike_on	Вкл
@@ -103,13 +101,11 @@ bill_item_qty	Кол-во
 bill_item_price	Цена
 bill_item_amount	Сумма
 bill_item_note	Заметка
-bill_item_col_order	Порядок столбцов
 bill_item_col_sep	Линии столбцов
 slip_columns	Столбцы
 slip_col_width	Ширина (mm)
 slip_col_start	Отступ в начале (px)
 slip_col_end	Отступ в конце (px)
-slip_col_align	Выравнивание текста
 slip_columns_help	Ширина каждого столбца включает его отступы в начале и в конце. Текст переносится внутри своего столбца; всё, что выходит за ширину содержимого, обрезается — на бумаге и в предпросмотре.
 bill_total_qty_label	Подпись итога кол-ва
 bill_total_subtotal_label	Подпись подытога
@@ -643,7 +639,6 @@ vp_type_size_heading	Размер шрифта
 vp_wrap_heading	Ширина переноса
 vp_margin_heading	Поля
 vp_delivery_spooler	Документ ОС (системный спулер)
-vp_delivery_raw	Сырые байты на устройство
 vp_delivery_escpos	Термокоманды ESC/POS
 virtual_printer_new	Новый виртуальный принтер
 virtual_printer_selected	Правка «{name}» — нажмите другую в списке, чтобы переключить
@@ -1110,7 +1105,6 @@ remove_these_tables	Убрать эти столы
 table_remove_ph	Убрать: T1-T24 или название стола
 find_server	Найти сервер заведения
 bill_format	Формат счёта
-bill_format_help	Печатается под названием заведения на каждом счёте. Разделяйте строки знаком | (напр. MG Road, Rajkot | Тел 98250 00000).
 bill_header_ph	Адрес | телефон
 fssai_ph	№ лицензии FSSAI (Индия)
 bill_footer_ph	Нижняя строка (напр. Спасибо, ждём снова)
@@ -1127,7 +1121,6 @@ kot_field_hide	Скрыть
 kot_field_on	показать
 kot_field_off	скрыть
 kot_field_size	Размер шрифта
-kot_field_size_ph	напр. 16, 20, 24, 28, 32…
 kot_weight_light	Тонкий
 bill_kot_panel_help	Содержимое счёта и типографика кухонных слипов. Ширина содержимого выше — это ширина и счёта, и кухонного слипа.
 std_size_ph	напр. 18, 20, 26…
@@ -1157,7 +1150,6 @@ kot_style_item_qty	Позиция · Кол-во
 kot_style_field_pick	Выбрать поле
 kot_weight_regular	Обычный
 kot_weight_bold	Жирный
-kot_align	Выровнять
 kot_align_start	Начать
 kot_align_center	По центру
 kot_align_end	В конец
@@ -1307,18 +1299,8 @@ kot_show_item_hdr	Позиция · Кол-во
 kot_hide_item_hdr	Скрыть столбцы
 kot_show_title	Строка заголовка
 kot_hide_title	Скрыть заголовок
-kot_field_order	Печать заказа
-kot_field_up	Переместить вверх
-kot_field_down	Переместить вниз
 kot_field_cycle	Выбрать следующий
 kot_field_select	Выбрать следующий
-kot_field_time	Время
-kot_field_kot_no	№ KOT
-kot_field_area	Область
-kot_field_table	Стол
-kot_field_shop	Название магазина
-kot_field_waiter	Персонал
-kot_field_station	Станция
 dishes_n	Блюд: {n}
 recipe_ph	Рецепт (необязательно) — на порцию: Rice=0.2, Paneer=0.15
 reorder_ph	Докупить при

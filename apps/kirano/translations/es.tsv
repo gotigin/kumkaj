@@ -69,12 +69,10 @@ bill_item_qty	Cant.
 bill_item_price	Precio
 bill_item_amount	Importe
 bill_item_note	Nota del artículo
-bill_item_col_order	Orden de columnas
 bill_item_col_sep	Líneas de columna
 slip_col_width	Ancho (mm)
 slip_col_start	Espacio inicial (px)
 slip_col_end	Espacio final (px)
-slip_col_align	Alineación del texto
 slip_columns_help	El ancho de cada columna incluye su espacio inicial y final. El texto se ajusta dentro de su columna; lo que sobrepasa el ancho del contenido se recorta, en papel y en la vista previa.
 bill_total_qty_label	Etiqueta cant. total
 bill_total_subtotal_label	Etiqueta subtotal
@@ -431,7 +429,6 @@ printer_profile_heading	Diseño
 vp_delivery_heading	Entrega
 vp_delivery_help	Cómo envía los trabajos esta impresora virtual — documento del sistema, bytes en crudo o ESC/POS. El contenido del vale (tamaño, ajuste, márgenes) lo decide el formato de cuenta / vale, no esto.
 vp_delivery_spooler	Documento del SO (cola del sistema)
-vp_delivery_raw	Bytes crudos al dispositivo
 vp_delivery_escpos	Comandos térmicos ESC/POS
 virtual_printer_new	Nueva impresora virtual
 virtual_printer_selected	Editando “{name}”: toque otra en la lista para cambiar
@@ -718,7 +715,6 @@ customer_paid_ph	Pagó el cliente
 tip_ph	Propina
 find_server	Buscar el servidor del local
 bill_format	Formato de cuenta
-bill_format_help	Se imprime bajo el nombre de tu tienda en cada cuenta. Separa líneas con | (p. ej. MG Road, Rajkot | Tel 98250 00000).
 bill_header_ph	Dirección | teléfono
 fssai_ph	N.º de licencia FSSAI / de la tienda (opcional)
 bill_footer_ph	Pie (ej. Gracias, vuelva pronto)
@@ -808,8 +804,6 @@ add_dishes	Añadir artículos
 order_so_far	En este pedido: {n} · {total}
 no_dish_match	Ningún artículo coincide con «{q}»
 pick_done	Listo
-kot_field_up	Mover arriba
-kot_field_down	Mover abajo
 dishes_n	{n} artículos
 reorder_ph	Comprar más en
 set_reorder	Fijar nivel de reposición
@@ -841,3 +835,6 @@ sel_copy	Copiar
 sel_select_all	Seleccionar todo
 sel_copied	Copiado
 nav_loading	Cargando…
+printer_mode_first	La primera que funcione
+printer_mode_all	Imprimir en todas
+slip_columns	Columnas

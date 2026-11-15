@@ -81,12 +81,10 @@ bill_item_qty	मात्रा
 bill_item_price	कीमत
 bill_item_amount	रकम
 bill_item_note	आरएक्स / बिक्री नोट
-bill_item_col_order	स्तंभ क्रम
 bill_item_col_sep	स्तंभ रा नियम
 slip_col_width	चौड़ाई (mm)
 slip_col_start	सरुआत री जगां (px)
 slip_col_end	छेहली जगां (px)
-slip_col_align	लिखावट री सीध
 slip_columns_help	हर स्तंभ री चौड़ाई में उणरी सरुआत अर छेहली जगां सामल है। लिखावट आपरै स्तंभ रै मांय लिपटै; सामग्री री चौड़ाई सूं बारै जको है वो कागज अर पूर्वावलोकन दोनूं में कट जावै।
 bill_total_qty_label	कुल लेबल री मात्रा
 bill_total_subtotal_label	उप कुल लेबल
@@ -443,7 +441,6 @@ printer_profile_heading	लेआउट
 vp_delivery_heading	वितरण
 vp_delivery_help	यो आभासी प्रिंटर नौकरियां नै कियां भेजै है — ओएस दस्तावेज, रॉ बाइट्स, या ईएससी/पीओएस। पर्ची सामग्री (प्रकार आकार, रैप, मार्जिन) बिल / पर्ची प्रारूप रै आधार माथै तय करी जावै है, अठै नीं।
 vp_delivery_spooler	ओएस दस्तावेज (सिस्टम स्पूलर)
-vp_delivery_raw	डिवाइस रै वास्तै कच्ची बाइट्स
 vp_delivery_escpos	ESC/POS थर्मल कमांड
 virtual_printer_new	नयो वर्चुअल प्रिंटर
 virtual_printer_selected	“{name}” नै संपादित करणो — स्विच करण रै वास्तै सूची मांय सूं दूजा माथै टैप करो
@@ -730,7 +727,6 @@ customer_paid_ph	ग्राहक भुगतान कर दियो
 tip_ph	टिप
 find_server	दुकान रो सर्वर ढूंढो
 bill_format	बिल रो स्वरूप
-bill_format_help	हरेक बिल माथै थारी दुकान रै नाम सूं छप्योड़ो है। न्यारी-न्यारी ओळ्यां रै साथै | (जियां कै एमजी रोड, राजकोट | पीएच 98250 00000)।
 bill_header_ph	पतो | फोन
 fssai_ph	दवा लाइसेंस संख्या (वैकल्पिक — थारी शब्दावली)
 bill_footer_ph	फुटर (जियां कै धन्यवाद, फेरूं जावो)
@@ -820,8 +816,6 @@ add_dishes	दवाईयां मिलाओ
 order_so_far	इण क्रम माथै: {n} · {total}
 no_dish_match	कोई भी वस्तु “{q}” सूं मेल कोनी खावै
 pick_done	होग्यो
-kot_field_up	ऊपर जावो
-kot_field_down	नीचै जावो
 dishes_n	{n} items
 reorder_ph	और खरीदो
 set_reorder	पुनर्क्रमण स्तर तय करो
@@ -853,3 +847,6 @@ sel_copy	कॉपी करो
 sel_select_all	सगळो चुणो
 sel_copied	कॉपी होयग्यो
 nav_loading	लोड हो रह्यो है…
+printer_mode_first	पैली ओ काम करै है
+printer_mode_all	सगळा माथै प्रिंट करो
+slip_columns	स्तंभ

@@ -81,12 +81,10 @@ bill_item_qty	จำนวน
 bill_item_price	ราคา
 bill_item_amount	จำนวนเงิน
 bill_item_note	หมายเหตุ Rx / การขาย
-bill_item_col_order	ลำดับคอลัมน์
 bill_item_col_sep	เส้นคอลัมน์
 slip_col_width	ความกว้าง (mm)
 slip_col_start	ระยะว่างต้น (px)
 slip_col_end	ระยะว่างท้าย (px)
-slip_col_align	การจัดแนวข้อความ
 slip_columns_help	ความกว้างของแต่ละคอลัมน์รวมระยะว่างต้นและท้ายของคอลัมน์นั้น ข้อความจะตัดบรรทัดภายในคอลัมน์ของตัวเอง ส่วนที่เกินความกว้างเนื้อหาจะถูกตัดออกทั้งบนกระดาษและในตัวอย่าง
 bill_total_qty_label	ป้ายจำนวนรวม
 bill_total_subtotal_label	ป้ายยอดย่อย
@@ -443,7 +441,6 @@ printer_profile_heading	เลย์เอาต์
 vp_delivery_heading	การส่ง
 vp_delivery_help	เครื่องพิมพ์เสมือนนี้ส่งงานอย่างไร — เอกสารของระบบ ไบต์ดิบ หรือ ESC/POS เนื้อหาสลิป (ขนาดตัวอักษร การตัดบรรทัด ขอบ) กำหนดโดยรูปแบบบิล / สลิป ไม่ใช่ที่นี่
 vp_delivery_spooler	เอกสาร OS (สพูลเลอร์ระบบ)
-vp_delivery_raw	ไบต์ดิบไปยังอุปกรณ์
 vp_delivery_escpos	คำสั่งความร้อน ESC/POS
 virtual_printer_new	เครื่องพิมพ์เสมือนใหม่
 virtual_printer_selected	กำลังแก้ไข “{name}” — แตะอันอื่นในรายการเพื่อสลับ
@@ -730,7 +727,6 @@ customer_paid_ph	ลูกค้าจ่าย
 tip_ph	ทิป
 find_server	ค้นหาเซิร์ฟเวอร์ของร้าน
 bill_format	รูปแบบบิล
-bill_format_help	พิมพ์ใต้ชื่อร้านบนทุกบิล แยกบรรทัดด้วย | (เช่น MG Road, Rajkot | Ph 98250 00000)
 bill_header_ph	ที่อยู่ | โทรศัพท์
 fssai_ph	เลขใบอนุญาตยา (ไม่บังคับ — ใช้ถ้อยคำของคุณ)
 bill_footer_ph	ท้ายบิล (เช่น ขอบคุณ แล้วพบกันใหม่)
@@ -820,8 +816,6 @@ add_dishes	เพิ่มยา
 order_so_far	ในออร์เดอร์นี้: {n} · {total}
 no_dish_match	ไม่มีสินค้าที่ตรงกับ “{q}”
 pick_done	เสร็จ
-kot_field_up	ย้ายขึ้น
-kot_field_down	ย้ายลง
 dishes_n	{n} รายการ
 reorder_ph	สั่งเพิ่มเมื่อเหลือ
 set_reorder	ตั้งจุดสั่งซื้อซ้ำ
@@ -853,3 +847,6 @@ sel_copy	คัดลอก
 sel_select_all	เลือกทั้งหมด
 sel_copied	คัดลอกแล้ว
 nav_loading	กำลังโหลด…
+printer_mode_first	ตัวแรกที่ใช้ได้
+printer_mode_all	พิมพ์ทั้งหมด
+slip_columns	คอลัมน์

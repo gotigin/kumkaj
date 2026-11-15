@@ -69,12 +69,10 @@ bill_item_qty	Миқдор
 bill_item_price	Нарх
 bill_item_amount	Маблағ
 bill_item_note	Эзоҳ
-bill_item_col_order	Тартиби сутунҳо
 bill_item_col_sep	Хатҳои сутун
 slip_col_width	Паҳно (mm)
 slip_col_start	Фосилаи оғоз (px)
 slip_col_end	Фосилаи анҷом (px)
-slip_col_align	Ҳамворкунии матн
 slip_columns_help	Паҳнои ҳар сутун фосилаи оғоз ва анҷоми онро дар бар мегирад. Матн дар дохили сутуни худ интиқол меёбад; он чи аз паҳнои мундариҷа берун мебарояд, дар коғаз ва пешнамоиш бурида мешавад.
 bill_total_qty_label	Нишони ҷамъи миқдор
 bill_total_subtotal_label	Нишони ҷамъи хурд
@@ -431,7 +429,6 @@ printer_profile_heading	Тарҳ
 vp_delivery_heading	Расондан
 vp_delivery_help	Чӣ гуна ин принтери виртуалӣ корҳоро мефиристад - ҳуҷҷати OS, байтҳои хом ё ESC/POS. Мундариҷаи слип (андозаи намуд, печондан, маржа) аз рӯи вексел / формати слип муайян карда мешавад, на дар ин ҷо.
 vp_delivery_spooler	Ҳуҷҷати система (навбати система)
-vp_delivery_raw	Байтҳои хом ба дастгоҳ
 vp_delivery_escpos	Фармонҳои гармии ESC/POS
 virtual_printer_new	Чопгари маҷозии нав
 virtual_printer_selected	Таҳрири «{name}» — барои иваз дигареро дар рӯйхат зер кунед
@@ -718,7 +715,6 @@ customer_paid_ph	Муштарӣ пардохт
 tip_ph	Инъом
 find_server	Ёфтани server-и дӯкон
 bill_format	Тарҳи ҳисоб
-bill_format_help	Дар ҳар як вексел зери номи мағозаи шумо чоп карда мешавад. Хатҳои ҷудогона бо | (масалан, MG Road, Rajkot | Ph 98250 00000).
 bill_header_ph	Суроға | телефон
 fssai_ph	FSSAI / иҷозатномаи мағоза №. (ихтиёрӣ)
 bill_footer_ph	Поён (мисол Ташаккур, боз биёед)
@@ -808,8 +804,6 @@ add_dishes	Илова кардани ашё
 order_so_far	Дар ин фармоиш: {n} · {total}
 no_dish_match	Ягон ашё ба "{q}" мувофиқат намекунад
 pick_done	Анҷом ёфт
-kot_field_up	Боло бар
-kot_field_down	Поён бар
 dishes_n	{n} ашё
 reorder_ph	Боз харед вақте
 set_reorder	Гузоштани сатҳи бозхарид
@@ -841,3 +835,6 @@ sel_copy	Нусха бардоштан
 sel_select_all	Ҳамаро интихоб кардан
 sel_copied	Нусха бардошта шуд
 nav_loading	Боркунӣ…
+printer_mode_first	Аввалине, ки кор мекунад
+printer_mode_all	Дар ҳама чоп
+slip_columns	Сутунҳо

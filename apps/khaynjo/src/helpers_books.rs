@@ -156,7 +156,6 @@ fn virtual_printers_list_rows(
             t("config_layout_portrait")
         };
         let delivery = match vals.delivery.as_str() {
-            print_share::DELIVERY_RAW_DEVICE => t("vp_delivery_raw"),
             print_share::DELIVERY_ESCPOS => t("vp_delivery_escpos"),
             _ => t("vp_delivery_spooler"),
         };
@@ -299,45 +298,99 @@ fn printer_place_choices(
     out
 }
 
+/// The seven KOT info lines, in the order a new format prints them.
+const KOT_INFO_IDS: [&str; 7] = ["time", "kot_no", "area", "table", "shop", "waiter", "station"];
+
+fn kot_field_of_id(id: &str) -> Option<print_share::KotStyleField> {
+    use print_share::KotStyleField as F;
+    Some(match id {
+        "time" => F::Time,
+        "kot_no" => F::KotNo,
+        "area" => F::Area,
+        "table" => F::Table,
+        "shop" => F::Shop,
+        "waiter" => F::Waiter,
+        "station" => F::Station,
+        _ => return None,
+    })
+}
+
+/// The info lines in print order: the saved order, then any line it lacks
+/// (the ticket prints those last too). Unknown and repeated ids are dropped.
+fn kot_info_order(fmt: &print_share::KotSlipFormat) -> Vec<&'static str> {
+    let mut out: Vec<&'static str> = Vec::new();
+    let saved = fmt.field_order.iter().map(String::as_str);
+    let defaults = KOT_INFO_IDS.iter().copied();
+    let ids: Vec<&str> = if fmt.field_order.is_empty() {
+        defaults.collect()
+    } else {
+        saved.chain(defaults).collect()
+    };
+    for id in ids {
+        if let Some(known) = KOT_INFO_IDS.iter().copied().find(|k| *k == id)
+            && !out.contains(&known)
+        {
+            out.push(known);
+        }
+    }
+    out
+}
+
+/// Settings → KOT format list, in print order: Title (with the kind banner
+/// above it), the seven info lines, Item / Qty.
+fn kot_lines(fmt: &print_share::KotSlipFormat) -> Vec<print_share::KotStyleField> {
+    let mut out = vec![print_share::KotStyleField::Title];
+    out.extend(kot_info_order(fmt).into_iter().filter_map(kot_field_of_id));
+    out.push(print_share::KotStyleField::ItemQty);
+    out
+}
+
+/// Only the info lines move; Title stays first and Item / Qty last.
+fn kot_line_moves(field: print_share::KotStyleField) -> bool {
+    !matches!(
+        field,
+        print_share::KotStyleField::Title | print_share::KotStyleField::ItemQty
+    )
+}
+
+/// One closed KOT line: name · show/hide · size · weight · align (Item / Qty
+/// always prints, so it has no show/hide).
+fn kot_line_label(
+    fmt: &print_share::KotSlipFormat,
+    kind: print_share::KotSlipKind,
+    field: print_share::KotStyleField,
+    s: &dyn Fn(&str) -> String,
+) -> String {
+    let style = fmt.field_style(kind, field);
+    let mut parts = vec![s(field.locale_key())];
+    if field != print_share::KotStyleField::ItemQty {
+        parts.push(if fmt.field_shown(field) { s("kot_field_on") } else { s("kot_field_off") });
+    }
+    parts.push(style.size_em.to_string());
+    parts.push(s(style.weight.locale_key()));
+    parts.push(s(style.align.locale_key()));
+    parts.join(" · ")
+}
+
+/// Move an info line one place up or down among the info lines. Title and
+/// Item / Qty keep their places. True when the order changed.
+fn kot_move_line(fmt: &mut print_share::KotSlipFormat, field: print_share::KotStyleField, up: bool) -> bool {
+    let mut order = kot_info_order(fmt);
+    let Some(i) = order.iter().position(|id| kot_field_of_id(id) == Some(field)) else {
+        return false;
+    };
+    let j = if up { i.checked_sub(1) } else { Some(i + 1).filter(|j| *j < order.len()) };
+    let Some(j) = j else {
+        return false;
+    };
+    order.swap(i, j);
+    fmt.field_order = order.into_iter().map(str::to_string).collect();
+    true
+}
+
 /// Kitchen destinations for unsent cart lines: `(station display name, line count)`.
 /// Order follows `priority` station ids when provided; else first-seen.
 /// Empty station → `unassigned` label (caller supplies it).
-fn kot_order_ids(fmt: &print_share::KotSlipFormat) -> Vec<String> {
-    if fmt.field_order.is_empty() {
-        vec![
-            "time".into(),
-            "kot_no".into(),
-            "area".into(),
-            "table".into(),
-            "shop".into(),
-            "waiter".into(),
-            "station".into(),
-        ]
-    } else {
-        fmt.field_order.clone()
-    }
-}
-
-fn ensure_kot_field_order(fmt: &mut print_share::KotSlipFormat) {
-    if fmt.field_order.is_empty() {
-        fmt.field_order = kot_order_ids(fmt);
-    }
-}
-
-/// Human label for a KOT field-order id (Settings list — not raw `kot_no`).
-fn kot_field_order_label(id: &str, t: &impl Fn(&str) -> String) -> String {
-    match id {
-        "time" => t("kot_field_time"),
-        "kot_no" => t("kot_field_kot_no"),
-        "area" => t("kot_field_area"),
-        "table" => t("kot_field_table"),
-        "shop" => t("kot_field_shop"),
-        "waiter" => t("kot_field_waiter"),
-        "station" => t("kot_field_station"),
-        other => other.to_string(),
-    }
-}
-
 fn pending_kot_destinations(
     products: &[domain::Product],
     stations: &[domain::KitchenStation],

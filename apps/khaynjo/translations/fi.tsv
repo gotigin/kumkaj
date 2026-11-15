@@ -83,9 +83,7 @@ print_cancelled_kot_needed	Avaa ensin pöytä, jossa on peruttuja annoksia
 print_cancelled_kot_none	Tässä tilauksessa ei ole peruttuja annoksia
 print_cancelled_kot_client	Peruttujen tulostus ({n}) paikalle {place} lähetetty — keittiö tulostaa palvelimella
 kot_banner	Lajinauha
-kot_banner_ph	Nauha (tyhjä = ei mitään)
 kot_item_prefix	Rivin etuliite
-kot_item_prefix_ph	esim. [PERUTTU]
 kot_strike	Yliviivaa annoksen nimi
 kot_strike_note	Yliviivaa annoksen huomautus
 kot_strike_on	Päällä
@@ -103,13 +101,11 @@ bill_item_qty	Määrä
 bill_item_price	Hinta
 bill_item_amount	Summa
 bill_item_note	Annoksen huomautus
-bill_item_col_order	Sarakkeiden järjestys
 bill_item_col_sep	Sarakkeiden viivat
 slip_columns	Sarakkeet
 slip_col_width	Leveys (mm)
 slip_col_start	Alkuväli (px)
 slip_col_end	Loppuväli (px)
-slip_col_align	Tekstin tasaus
 slip_columns_help	Kunkin sarakkeen leveys sisältää sen alku- ja loppuvälin. Teksti rivittyy oman sarakkeensa sisällä; sisällön leveyden yli menevä osa leikkautuu pois – paperilla ja esikatselussa.
 bill_total_qty_label	Kokonaismäärän otsikko
 bill_total_subtotal_label	Välisumman otsikko
@@ -643,7 +639,6 @@ vp_type_size_heading	Kirjasinkoko
 vp_wrap_heading	Rivityksen leveys
 vp_margin_heading	Marginaalit
 vp_delivery_spooler	Käyttöjärjestelmän asiakirja (järjestelmän tulostusjono)
-vp_delivery_raw	Raakatavut laitteelle
 vp_delivery_escpos	ESC/POS-lämpökomennot
 virtual_printer_new	Uusi virtuaalitulostin
 virtual_printer_selected	Muokataan “{name}” — vaihda napauttamalla toista listassa
@@ -1110,7 +1105,6 @@ remove_these_tables	Poista nämä pöydät
 table_remove_ph	Poista: T1-T24 tai yhden pöydän nimi
 find_server	Etsi liikkeen palvelin
 bill_format	Laskun muoto
-bill_format_help	Tulostetaan ravintolasi nimen alle jokaiselle laskulle. Erota rivit merkillä | (esim. MG Road, Rajkot | Puh 98250 00000).
 bill_header_ph	Osoite | puhelin
 fssai_ph	FSSAI-luvan nro (Intia)
 bill_footer_ph	Alatunniste (esim. Kiitos, tervetuloa uudelleen)
@@ -1127,7 +1121,6 @@ kot_field_hide	Piilota
 kot_field_on	näytä
 kot_field_off	piilota
 kot_field_size	Kirjasinkoko
-kot_field_size_ph	esim. 16, 20, 24, 28, 32…
 kot_weight_light	Ohut
 bill_kot_panel_help	Laskun ja keittiölipukkeen asettelu, kummallakin oma sisällön leveys. Laskun kassahenkilö on se, joka antoi tai kuittasi laskun; KOT:n tarjoilija on se, joka lähetti keittiölipukkeen — koko tilauksen tarina pysyy kirjoissa.
 std_size_ph	esim. 18, 20, 26…
@@ -1157,7 +1150,6 @@ kot_style_item_qty	Tuote · määrä
 kot_style_field_pick	Valitse kenttä
 kot_weight_regular	Tavallinen
 kot_weight_bold	Lihava
-kot_align	Tasaus
 kot_align_start	Alku
 kot_align_center	Keskelle
 kot_align_end	Loppu
@@ -1307,18 +1299,8 @@ kot_show_item_hdr	Tuote · määrä
 kot_hide_item_hdr	Piilota sarakkeet
 kot_show_title	Otsikkorivi
 kot_hide_title	Piilota otsikko
-kot_field_order	Tulostusjärjestys
-kot_field_up	Siirrä ylös
-kot_field_down	Siirrä alas
 kot_field_cycle	Valitse seuraava
 kot_field_select	Valitse seuraava
-kot_field_time	Aika
-kot_field_kot_no	KOT-nro
-kot_field_area	Alue
-kot_field_table	Pöytä
-kot_field_shop	Liikkeen nimi
-kot_field_waiter	Henkilöstö
-kot_field_station	Asema
 dishes_n	{n} annosta
 recipe_ph	Resepti (valinnainen) — yksi annos käyttää: Riisi=0.2, Paneer=0.15
 reorder_ph	Tilaa lisää kun

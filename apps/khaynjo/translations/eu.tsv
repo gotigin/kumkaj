@@ -83,9 +83,7 @@ print_cancelled_kot_needed	Ireki lehenik utzitako platerak dituen mahai bat
 print_cancelled_kot_none	Ez dago plater utzirik eskaera honetan
 print_cancelled_kot_client	Utziak inprimatu ({n}) {place} bidalita — sukaldeak Zerbitzarian inprimatzen du
 kot_banner	Motaren banda
-kot_banner_ph	Banda (hutsik = bat ere ez)
 kot_item_prefix	Artikuluaren aurrizkia
-kot_item_prefix_ph	adib. [UTZITA]
 kot_strike	Plateraren izena marratu
 kot_strike_note	Plateraren oharra marratu
 kot_strike_on	Piztuta
@@ -103,13 +101,11 @@ bill_item_qty	Kop.
 bill_item_price	Prezioa
 bill_item_amount	Zenbatekoa
 bill_item_note	Plateraren oharra
-bill_item_col_order	Zutabe-ordena
 bill_item_col_sep	Zutabe-marra
 slip_columns	Zutabeak
 slip_col_width	Zabalera (mm)
 slip_col_start	Hasierako tartea (px)
 slip_col_end	Amaierako tartea (px)
-slip_col_align	Testuaren lerrokatzea
 slip_columns_help	Zutabe bakoitzaren zabalerak hasierako eta amaierako tartea barne hartzen ditu. Testua bere zutabearen barruan egokitzen da; edukiaren zabaleratik kanpo geratzen dena moztu egiten da, paperean eta aurrebistan.
 bill_total_qty_label	Guztizko kopuru etiketa
 bill_total_subtotal_label	Azpitotal etiketa
@@ -643,7 +639,6 @@ vp_type_size_heading	Letra-neurria
 vp_wrap_heading	Itzulbiratze-zabalera
 vp_margin_heading	Marjinak
 vp_delivery_spooler	OS dokumentua (sistema-spoolerra)
-vp_delivery_raw	Byte gordinak gailura
 vp_delivery_escpos	ESC/POS agindu termikoak
 virtual_printer_new	Inprimagailu birtual berria
 virtual_printer_selected	“{name}” editatzen — sakatu zerrendako beste bat aldatzeko
@@ -1110,7 +1105,6 @@ remove_these_tables	Kendu mahai hauek
 table_remove_ph	Kendu: T1-T24, edo mahai baten izena
 find_server	Aurkitu dendaren zerbitzaria
 bill_format	Kontu-formatua
-bill_format_help	Jatetxearen izenaren azpian inprimatzen da kontu bakoitzean. Lerroak | ikurrarekin bereizi (adib. MG Road, Rajkot | Tel 98250 00000).
 bill_header_ph	Helbidea | telefonoa
 fssai_ph	FSSAI lizentzia zk. (India)
 bill_footer_ph	Oina (adib. Eskerrik asko, etorri berriro)
@@ -1127,7 +1121,6 @@ kot_field_hide	Ezkutatu
 kot_field_on	erakutsi
 kot_field_off	ezkutatu
 kot_field_size	Letra-neurria
-kot_field_size_ph	adib. 16, 20, 24, 28, 32…
 kot_weight_light	Arina
 bill_kot_panel_help	Kontuaren eta sukaldeko txartelaren antolamendua, bakoitzak bere eduki-zabalerarekin. Kontuaren kutxazaina da kontua eman edo kitatu duena; KOTeko zerbitzaria da sukaldeko txartel hori bidali duena — eskaeraren istorio osoa liburuetan geratzen da.
 std_size_ph	adib. 18, 20, 26…
@@ -1157,7 +1150,6 @@ kot_style_item_qty	Artikulua · Kopurua
 kot_style_field_pick	Hautatu eremua
 kot_weight_regular	Arrunta
 kot_weight_bold	Lodia
-kot_align	Lerrokatzea
 kot_align_start	Hasiera
 kot_align_center	Erdia
 kot_align_end	Amaiera
@@ -1307,18 +1299,8 @@ kot_show_item_hdr	Artikulua · Kopurua
 kot_hide_item_hdr	Ezkutatu zutabeak
 kot_show_title	Izenburu-lerroa
 kot_hide_title	Ezkutatu izenburua
-kot_field_order	Inprimatze-ordena
-kot_field_up	Mugitu gora
-kot_field_down	Mugitu behera
 kot_field_cycle	Hautatu hurrengoa
 kot_field_select	Hautatu hurrengoa
-kot_field_time	Ordua
-kot_field_kot_no	KOT zk.
-kot_field_area	Eremua
-kot_field_table	Mahaia
-kot_field_shop	Dendaren izena
-kot_field_waiter	Langilea
-kot_field_station	Geltokia
 dishes_n	{n} plater
 recipe_ph	Errezeta (aukerakoa) — anoa batek erabiltzen du: Arroza=0.2, Paneer=0.15
 reorder_ph	Erosi gehiago hemendik

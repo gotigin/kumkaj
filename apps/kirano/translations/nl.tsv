@@ -69,12 +69,10 @@ bill_item_qty	Aantal
 bill_item_price	Prijs
 bill_item_amount	Bedrag
 bill_item_note	Artikelnotitie
-bill_item_col_order	Kolomvolgorde
 bill_item_col_sep	Kolomlijnen
 slip_col_width	Breedte (mm)
 slip_col_start	Beginruimte (px)
 slip_col_end	Eindruimte (px)
-slip_col_align	Tekstuitlijning
 slip_columns_help	De breedte van elke kolom omvat de begin- en eindruimte. Tekst loopt door binnen zijn kolom; wat buiten de inhoudsbreedte valt, wordt afgesneden – op papier en in het voorbeeld.
 bill_total_qty_label	Label totaal aantal
 bill_total_subtotal_label	Label subtotaal
@@ -431,7 +429,6 @@ printer_profile_heading	Indeling
 vp_delivery_heading	Aflevering
 vp_delivery_help	Hoe deze virtuele printer taken verstuurt — OS-document, ruwe bytes of ESC/POS. Boninhoud (lettergrootte, afbreken, marges) wordt bepaald door het rekening- / bonformaat, niet hier.
 vp_delivery_spooler	OS-document (systeemspooler)
-vp_delivery_raw	Ruwe bytes naar apparaat
 vp_delivery_escpos	ESC/POS-thermische opdrachten
 virtual_printer_new	Nieuwe virtuele printer
 virtual_printer_selected	“{name}” bewerken — tik een andere in de lijst om te wisselen
@@ -718,7 +715,6 @@ customer_paid_ph	Klant betaalde
 tip_ph	Fooi
 find_server	Server van de zaak zoeken
 bill_format	Rekeningopmaak
-bill_format_help	Staat onder de naam van uw winkel op elke rekening. Scheid regels met | (bijv. MG Road, Rajkot | Ph 98250 00000).
 bill_header_ph	Adres | telefoon
 fssai_ph	FSSAI- / winkelvergunningsnr. (optioneel)
 bill_footer_ph	Voettekst (bijv. Bedankt, tot ziens)
@@ -808,8 +804,6 @@ add_dishes	Artikelen toevoegen
 order_so_far	Op deze bestelling: {n} · {total}
 no_dish_match	Geen artikel komt overeen met „{q}“
 pick_done	Klaar
-kot_field_up	Omhoog verplaatsen
-kot_field_down	Omlaag verplaatsen
 dishes_n	{n} artikelen
 reorder_ph	Bijkopen bij
 set_reorder	Bestelniveau instellen
@@ -841,3 +835,6 @@ sel_copy	Kopiëren
 sel_select_all	Alles selecteren
 sel_copied	Gekopieerd
 nav_loading	Laden…
+printer_mode_first	Eerste die werkt
+printer_mode_all	Afdrukken op alle
+slip_columns	Kolommen

@@ -69,12 +69,10 @@ bill_item_qty	পৰিমাণ
 bill_item_price	দাম
 bill_item_amount	পৰিমাণ
 bill_item_note	বস্তুৰ টোকা
-bill_item_col_order	স্তম্ভৰ ক্ৰম
 bill_item_col_sep	স্তম্ভৰ ৰেখা
 slip_col_width	প্ৰস্থ (mm)
 slip_col_start	আৰম্ভণিৰ ঠাই (px)
 slip_col_end	শেষৰ ঠাই (px)
-slip_col_align	লিখনিৰ সংৰেখন
 slip_columns_help	প্ৰতিটো স্তম্ভৰ প্ৰস্থত ইয়াৰ আৰম্ভণি আৰু শেষৰ ঠাই অন্তৰ্ভুক্ত। লিখনি নিজৰ স্তম্ভৰ ভিতৰতে মেৰিয়াই যায়; সমলৰ প্ৰস্থৰ বাহিৰৰ অংশ কাগজত আৰু পূৰ্বদৰ্শনত কটা যায়।
 bill_total_qty_label	মুঠ সংখ্যা লেবেল
 bill_total_subtotal_label	উপযোগ লেবেল
@@ -431,7 +429,6 @@ printer_profile_heading	লেআউট
 vp_delivery_heading	ডেলিভাৰী
 vp_delivery_help	এই ভাৰ্চুৱেল প্ৰিণ্টাৰে কাম কেনেকৈ পঠিয়ায় — OS নথি, কেঁচা বাইট বা ESC/POS। স্লিপৰ বিষয়বস্তু (আখৰৰ আকাৰ, মেৰিওৱা, মাৰ্জিন) বিল / স্লিপ ফৰ্মেটে ঠিক কৰে, ইয়াত নহয়।
 vp_delivery_spooler	OS নথি (ছিষ্টেম স্পুলাৰ)
-vp_delivery_raw	ডিভাইচলৈ কেঁচা বাইট
 vp_delivery_escpos	ESC/POS থাৰ্মেল কমাণ্ড
 virtual_printer_new	নতুন ভাৰ্চুৱেল প্ৰিণ্টাৰ
 virtual_printer_selected	“{name}” সম্পাদনা — তালিকাত আনত টেপ কৰি সলনি কৰক
@@ -718,7 +715,6 @@ customer_paid_ph	গ্ৰাহকে দিলে
 tip_ph	টিপ
 find_server	দোকানৰ চাৰ্ভাৰ বিচাৰক
 bill_format	বিলৰ ফৰ্মেট
-bill_format_help	প্ৰতিখন বিলত আপোনাৰ দোকানৰ নামৰ তলত ছপা হয়। শাৰী | ৰে পৃথক কৰক (যেনে MG Road, Rajkot | Ph 98250 00000)।
 bill_header_ph	ঠিকনা | ফোন
 fssai_ph	FSSAI / দোকানৰ অনুজ্ঞাপত্ৰ নং (ঐচ্ছিক)
 bill_footer_ph	ফুটাৰ (যেনে ধন্যবাদ, আকৌ আহিব)
@@ -808,8 +804,6 @@ add_dishes	বস্তু যোগ কৰক
 order_so_far	এই অৰ্ডাৰত: {n} · {total}
 no_dish_match	“{q}” ৰ সৈতে কোনো বস্তু নিমিলে
 pick_done	হ'ল
-kot_field_up	ওপৰলৈ নিয়ক
-kot_field_down	তললৈ নিয়ক
 dishes_n	{n}টা বস্তু
 reorder_ph	ইমানত আৰু কিনক
 set_reorder	পুনৰ অৰ্ডাৰৰ স্তৰ ঠিক কৰক
@@ -841,3 +835,6 @@ sel_copy	কপি কৰক
 sel_select_all	সকলো বাছনি কৰক
 sel_copied	কপি কৰা হ'ল
 nav_loading	ল'ড হৈ আছে…
+printer_mode_first	যিটো প্ৰথমে চলে
+printer_mode_all	সকলোতে ছপাওক
+slip_columns	স্তম্ভসমূহ

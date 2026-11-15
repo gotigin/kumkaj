@@ -73,6 +73,13 @@ Read with `docs/DEV.md` (UI-thread rules, bug lists) and
 - **Kirano / Tabiyat:** the Floor tile walk ran on every action on every
   screen and built list items (Khaynjo's first-actions freeze): only on Floor,
   only drawn rows.
+- **Kirano / Tabiyat:** Bill & Slip format form brought to Khaynjo's
+  (2026-11-15): one list of bill lines, the open line edited where it sits,
+  item columns and totals one row each, the side preview beside the open line
+  on wide screens, every row responsive (`layout_slip_editors`,
+  `align_slip_previews`); the hidden print-order list and the old
+  column picker are gone. Ported from Khaynjo's code (identical before), with
+  each app's colours and widgets.
 - **All four:** `check-lock-guards.sh` now also flags `app_t(` under a live
   `app_state()` guard (the Menu template download deadlock class) — clean.
 - **Android (all apps, shared Makepad):** touch selection on the AGS2 — held
@@ -203,7 +210,7 @@ printers → sheet → Find → Done → the station list shows the printers).
 | Change | Where it is written down |
 |---|---|
 | Live LAN socket: both loops poll (100 ms) instead of parking in a 25–35 s read — a tablet's KOT took up to 24 s, now ≈70 ms; silent socket closes after 45 s; frames read with the `101` head kept; slow phone writes logged (`lan_write_slow`) | DEV.md § LAN "Both loops poll" |
-| A CUPS queue that is a local USB printer prints raw jobs straight to its usblp node (CUPS held the printer ~8 s per job); the usblp lookup reads `usbmisc` and resolves the relative sysfs link | PRINTER.md "What went wrong" 9–10 |
+| The usblp lookup for a `usb:` printer reads `usbmisc` and resolves the relative sysfs link. (Routing a CUPS USB queue straight to its usblp node was removed 2026-11-15 — one machine's setup made the rule.) | PRINTER.md "What went wrong" 9–10 |
 | Shop settings mirrored on every Client (`SHOP_PREF_KEYS`, snapshot + deltas); sidebar layout is a `BooksOp`; Khaynjo: GST wording and Tax invoice off by default | DEV.md § LAN "Shop settings on every device", DESIGN.md "One screen for every device" |
 | Cluster texts removed (state restated, copies of tips, instruction bars, empty-state instructions, bracketed explanations); layout guard `layout_labels_carry_no_explanations`; `scripts/ui-text-inventory.sh` | DESIGN.md "Explanations live in ℹ" |
 | Bill / KOT / receipt-label formats save themselves (no Save buttons) | DESIGN.md "Formats save themselves" |

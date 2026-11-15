@@ -83,9 +83,7 @@ print_cancelled_kot_needed	Vula itafula lokudlela elinezitsha ezikhanseliwe kuqa
 print_cancelled_kot_none	Azikho izitsha ezikhanseliwe kuleli oda
 print_cancelled_kot_client	Ukuphrinta kukhanseliwe ({n}) kokuthi {place} kuthunyelwe — amaphrinti asekhishini Kuseva
 kot_banner	Isibhengezo esinomusa
-kot_banner_ph	Isibhengezo (singenalutho = akukho)
 kot_item_prefix	Isiqalo sento yemenyu
-kot_item_prefix_ph	isib. [KUKHANSISIWE]
 kot_strike	Shaya igama lesidlo
 kot_strike_note	Shaya inothi lokudla
 kot_strike_on	Vuliwe
@@ -103,13 +101,11 @@ bill_item_qty	Inani
 bill_item_price	Inani
 bill_item_amount	Inani
 bill_item_note	Inothi lesidlo
-bill_item_col_order	Ukuhleleka kwekholomu
 bill_item_col_sep	Imithetho yekholomu
 slip_columns	Amakholomu
 slip_col_width	Ububanzi (mm)
 slip_col_start	Isikhala sokuqala (px)
 slip_col_end	Isikhala sokugcina (px)
-slip_col_align	Ukuqondanisa umbhalo
 slip_columns_help	Ububanzi bekholomu ngayinye bufaka isikhala sayo sokuqala nesokugcina. Umbhalo usongeka ngaphakathi kwekholomu yawo; okudlula ububanzi bokuqukethwe kuyanqunywa, ephepheni nasekubukeni kuqala.
 bill_total_qty_label	Isamba selebula ye-qty
 bill_total_subtotal_label	Isamba selebula engaphansi
@@ -643,7 +639,6 @@ vp_type_size_heading	Uhlobo losayizi
 vp_wrap_heading	Ukugoqa ububanzi
 vp_margin_heading	Amamajini
 vp_delivery_spooler	Idokhumenti ye-OS (i-system spooler)
-vp_delivery_raw	Amabhayithi angahluziwe kudivayisi
 vp_delivery_escpos	ESC/POS imiyalo eshisayo
 virtual_printer_new	Iphrinta entsha ebonakalayo
 virtual_printer_selected	Ukuhlela “{name}” — thepha enye ohlwini ukuze ushintshe
@@ -1110,7 +1105,6 @@ remove_these_tables	Susa lawa matafula okudlela
 table_remove_ph	Susa: T1-T24, noma igama letafula lokudlela elilodwa
 find_server	Thola iseva yesitolo
 bill_format	Ifomethi yebhili yesivakashi sesivakashi
-bill_format_help	Iphrintwe ngaphansi kwegama lendawo yokudlela yakho kuwo wonke amabhili esivakashi. Hlukanisa imigqa nge | (isb. MG Road, Rajkot | Ph 98250 00000).
 bill_header_ph	Ikheli | ifoni
 fssai_ph	FSSAI Inombolo yelayisense. (India)
 bill_footer_ph	Unyaweni (isb. Ngiyabonga, vakashela futhi)
@@ -1127,7 +1121,6 @@ kot_field_hide	Fihla
 kot_field_on	umbukiso
 kot_field_off	fihla
 kot_field_size	Usayizi wefonti
-kot_field_size_ph	isib. 16, 20, 24, 28, 32…
 kot_weight_light	Ukukhanya
 bill_kot_panel_help	Ibhili yesivakashi sesivakashi nesakhiwo sesiliphu sasekhishini, ngasinye sinobubanzi baso bokuqukethwe. Ibhili yesivakashi sesivakashi UCashier nguyena okhiphe noma okhokhele ibhili yesivakashi; KOT Uweta nguyena othumele lelo thikithi lasekhishini — indaba egcwele ye-oda ihlala kumaleja.
 std_size_ph	isib. 18, 20, 26…
@@ -1157,7 +1150,6 @@ kot_style_item_qty	Into yemenyu · Ubuningi
 kot_style_field_pick	Khetha inkambu
 kot_weight_regular	Okuvamile
 kot_weight_bold	Okugqamile
-kot_align	Qondanisa
 kot_align_start	Qala
 kot_align_center	Isikhungo
 kot_align_end	Qeda
@@ -1307,18 +1299,8 @@ kot_show_item_hdr	Into yemenyu · Ubuningi
 kot_hide_item_hdr	Fihla amakholomu
 kot_show_title	Umugqa wesihloko
 kot_hide_title	Fihla isihloko
-kot_field_order	Phrinta i-oda
-kot_field_up	Hambisa phezulu
-kot_field_down	Hamba phansi
 kot_field_cycle	Khetha okulandelayo
 kot_field_select	Khetha okulandelayo
-kot_field_time	Isikhathi
-kot_field_kot_no	KOT inombolo
-kot_field_area	Indawo
-kot_field_table	Itafula lokudlela
-kot_field_shop	Igama lesitolo
-kot_field_waiter	Abasebenzi
-kot_field_station	Isiteshi
 dishes_n	{n} izitsha
 recipe_ph	Iresiphi (uyazikhethela) — ingxenye eyodwa isebenzisa: Rice=0.2, Paneer=0.15
 reorder_ph	Thenga okuningi ku-

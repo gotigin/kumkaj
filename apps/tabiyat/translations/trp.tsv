@@ -81,12 +81,10 @@ bill_item_qty	কুবাংমা
 bill_item_price	দাম
 bill_item_amount	রাং
 bill_item_note	রক্স / ফালমানি কোকতৱমা
-bill_item_col_order	খলম নি ওরদের
 bill_item_col_sep	কলম নি কেরং
 slip_col_width	বাগা (mm)
 slip_col_start	সালকসা জায়গা (px)
 slip_col_end	তামাখালনি জায়গা (px)
-slip_col_align	সুংমানি তাবুক
 slip_columns_help	খলম কাইসানি বাগা বিনি সালকসা বো তামাখালনি জায়গা সুমানি। সুংমা বিনি খলম সিনিসে সাপুইমানি; কাতারনি বাগা কাসানো বুসুক অ তাতা আছিক বো ফৗরৗননি সিনি তিকতুইমানি।
 bill_total_qty_label	জত কুতয় মুং
 bill_total_subtotal_label	সুব জত লাবেল
@@ -443,7 +441,6 @@ printer_profile_heading	নকসা
 vp_delivery_heading	তুবুমানি
 vp_delivery_help	ও সৱকাংনি সৱকাংনি সৱিনাইরোক বাহাই খে সামুংরোকনো রোহোরনাই — OS নি সৱিজাক, কৱতাল বয়তে, এবা ESC/POS. সলিপ নি মানৱি (সৱকাংনি কোতোরমা, খুমুলৱংও, মারগিন) বিলল/সলিপ নি মুং বাই চোংজাক, ওরো য়া.
 vp_delivery_spooler	ওস নি সুইজাক (সিসতেম ন সুকাকনাই)
-vp_delivery_raw	সামান নি বাগুই কুতাল বয়তেস
 vp_delivery_escpos	ESC/POS কুচাংমা দাগিমুং
 virtual_printer_new	কুতাল সুনামজাক পরিনতের
 virtual_printer_selected	“{name}” ন সুলাইউই — সুলাইনা বাগুই লিসত নি তেই কাইসা ন চলিচক খাই দি
@@ -730,7 +727,6 @@ customer_paid_ph	গরাহক রাং রুখা
 tip_ph	তিপ
 find_server	দুকান নি সেরভের ন নাইদি
 bill_format	বিল নি সুনামুং
-bill_format_help	জোতো বিলল নি সাকাও নিনি দুকান নি মুং বাই পরিনত খলাইজাক. কৱতাল লিনে বাই | (উ.গ. MG লামা, রাজকোত | ফ 98250 00000).
 bill_header_ph	আদরেস নি কক | ফনে
 fssai_ph	দরুগস নি লাইচেনচে নো. (চাজাকয়া — নিনি কোকথাই)
 bill_footer_ph	য়াফাঙ (এ.গ. হামবাই য়াফার, তেইসা নাইদি)
@@ -820,8 +816,6 @@ add_dishes	দাৱারোক রৱদি
 order_so_far	ও ককতুমা বাই: {n} · {total}
 no_dish_match	খোরোকসা ফানো মানৱি “{q}” বাই মালাইয়া
 pick_done	কুথার
-kot_field_up	সাকাও হিমদি
-kot_field_down	তুইমাও হিমদি
 dishes_n	{n} মানৱিরোক
 reorder_ph	তেইব পাই দি
 set_reorder	লেভেল সুনামদি
@@ -853,3 +847,6 @@ sel_copy	চপয় খাইদি
 sel_select_all	জত বাছায় খাইদি
 sel_copied	চপয় খাইখা
 nav_loading	Load khlaiwi tongo…
+printer_mode_first	পুইলা আব সামুং তাংনাই
+printer_mode_all	জতন পরিনত খাইদি
+slip_columns	খলমরগ

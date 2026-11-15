@@ -83,9 +83,7 @@ print_cancelled_kot_needed	Åbn et bord med annullerede retter først
 print_cancelled_kot_none	Ingen annullerede retter på denne ordre
 print_cancelled_kot_client	Udskriv annullerede ({n}) for {place} sendt — køkkenet udskriver på Serveren
 kot_banner	Slagsbanner
-kot_banner_ph	Banner (tom = ingen)
 kot_item_prefix	Varepræfiks
-kot_item_prefix_ph	f.eks. [ANNULLERET]
 kot_strike	Streg retnavn over
 kot_strike_note	Streg retnote over
 kot_strike_on	Til
@@ -103,13 +101,11 @@ bill_item_qty	Antal
 bill_item_price	Pris
 bill_item_amount	Beløb
 bill_item_note	Retnote
-bill_item_col_order	Kolonnerækkefølge
 bill_item_col_sep	Kolonnelinjer
 slip_columns	Kolonner
 slip_col_width	Bredde (mm)
 slip_col_start	Startafstand (px)
 slip_col_end	Slutafstand (px)
-slip_col_align	Tekstjustering
 slip_columns_help	Hver kolonnes bredde omfatter dens start- og slutafstand. Teksten ombrydes inden for sin kolonne; det, der ligger ud over indholdsbredden, skæres af – på papiret og i forhåndsvisningen.
 bill_total_qty_label	Etiket for antal i alt
 bill_total_subtotal_label	Etiket for subtotal
@@ -643,7 +639,6 @@ vp_type_size_heading	Skriftstørrelse
 vp_wrap_heading	Ombrydningsbredde
 vp_margin_heading	Margener
 vp_delivery_spooler	OS-dokument (systemkø)
-vp_delivery_raw	Rå bytes til enhed
 vp_delivery_escpos	ESC/POS-termiske kommandoer
 virtual_printer_new	Ny virtuel printer
 virtual_printer_selected	Retter “{name}” — tryk på en anden i listen for at skifte
@@ -1110,7 +1105,6 @@ remove_these_tables	Fjern disse borde
 table_remove_ph	Fjern: T1-T24, eller ét bords navn
 find_server	Find butikkens server
 bill_format	Regningsformat
-bill_format_help	Trykkes under restaurantens navn på hver regning. Adskil linjer med | (f.eks. MG Road, Rajkot | Tlf 98250 00000).
 bill_header_ph	Adresse | telefon
 fssai_ph	FSSAI-licensnr. (Indien)
 bill_footer_ph	Sidefod (f.eks. Tak, kom igen)
@@ -1127,7 +1121,6 @@ kot_field_hide	Skjul
 kot_field_on	vis
 kot_field_off	skjul
 kot_field_size	Skriftstørrelse
-kot_field_size_ph	f.eks. 16, 20, 24, 28, 32…
 kot_weight_light	Let
 bill_kot_panel_help	Layout for regning og køkkenseddel, hver med sin indholdsbredde. Regningens kasserer er den der udstedte eller afregnede regningen; KOT-tjeneren er den der sendte den køkkenbon — hele ordreforløbet bliver i bøgerne.
 std_size_ph	f.eks. 18, 20, 26…
@@ -1157,7 +1150,6 @@ kot_style_item_qty	Vare · Antal
 kot_style_field_pick	Vælg felt
 kot_weight_regular	Almindelig
 kot_weight_bold	Fed
-kot_align	Justering
 kot_align_start	Start
 kot_align_center	Centreret
 kot_align_end	Slut
@@ -1307,18 +1299,8 @@ kot_show_item_hdr	Vare · Antal
 kot_hide_item_hdr	Skjul kolonner
 kot_show_title	Titellinje
 kot_hide_title	Skjul titel
-kot_field_order	Udskriftsrækkefølge
-kot_field_up	Flyt op
-kot_field_down	Flyt ned
 kot_field_cycle	Vælg næste
 kot_field_select	Vælg næste
-kot_field_time	Tid
-kot_field_kot_no	KOT-nr.
-kot_field_area	Område
-kot_field_table	Bord
-kot_field_shop	Butiksnavn
-kot_field_waiter	Personale
-kot_field_station	Station
 dishes_n	{n} retter
 recipe_ph	Opskrift (valgfri) — én portion bruger: Ris=0,2, Paneer=0,15
 reorder_ph	Køb mere ved

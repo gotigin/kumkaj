@@ -83,9 +83,7 @@ print_cancelled_kot_needed	Agorwch fwrdd gyda phrydau wedi'u canslo yn gyntaf
 print_cancelled_kot_none	Dim prydau wedi'u canslo ar yr archeb hon
 print_cancelled_kot_client	Argraffu canslwyd ({n}) ar gyfer {place} wedi'i anfon — mae'r gegin yn argraffu ar y Gweinydd
 kot_banner	Baner math
-kot_banner_ph	Baner (gwag = dim)
 kot_item_prefix	Rhagddodiad eitem
-kot_item_prefix_ph	e.e. [WEDI CANSLIO]
 kot_strike	Taro enw'r pryd
 kot_strike_note	Taro nodyn y pryd
 kot_strike_on	Ymlaen
@@ -103,13 +101,11 @@ bill_item_qty	Nifer
 bill_item_price	Pris
 bill_item_amount	Swm
 bill_item_note	Nodyn y pryd
-bill_item_col_order	Trefn colofnau
 bill_item_col_sep	Llinellau colofn
 slip_columns	Colofnau
 slip_col_width	Lled (mm)
 slip_col_start	Gofod dechrau (px)
 slip_col_end	Gofod diwedd (px)
-slip_col_align	Alinio testun
 slip_columns_help	Mae lled pob colofn yn cynnwys ei gofod dechrau a’i gofod diwedd. Mae testun yn lapio y tu mewn i’w golofn; caiff unrhyw beth y tu hwnt i led y cynnwys ei dorri, ar bapur ac yn y rhagolwg.
 bill_total_qty_label	Label cyfanswm nifer
 bill_total_subtotal_label	Label is-gyfanswm
@@ -643,7 +639,6 @@ vp_type_size_heading	Maint teip
 vp_wrap_heading	Lled lapio
 vp_margin_heading	Ymylon
 vp_delivery_spooler	Dogfen OS (sbwliwr system)
-vp_delivery_raw	Beitiau crai i'r ddyfais
 vp_delivery_escpos	Gorchmynion thermol ESC/POS
 virtual_printer_new	Argraffydd rhithwir newydd
 virtual_printer_selected	Yn golygu “{name}” — tapiwch un arall yn y rhestr i newid
@@ -1110,7 +1105,6 @@ remove_these_tables	Tynnu'r byrddau hyn
 table_remove_ph	Tynnu: T1-T24, neu enw un bwrdd
 find_server	Dewch o hyd i weinydd y siop
 bill_format	Fformat bil
-bill_format_help	Wedi'i argraffu o dan enw'ch bwyty ar bob bil. Gwahanwch linellau gyda | (e.e. MG Road, Rajkot | Ffôn 98250 00000).
 bill_header_ph	Cyfeiriad | ffôn
 fssai_ph	Rhif trwydded FSSAI (India)
 bill_footer_ph	Troedyn (e.e. Diolch, dewch eto)
@@ -1127,7 +1121,6 @@ kot_field_hide	Cuddio
 kot_field_on	dangos
 kot_field_off	cuddio
 kot_field_size	Maint ffont
-kot_field_size_ph	e.e. 16, 20, 24, 28, 32…
 kot_weight_light	Ysgafn
 bill_kot_panel_help	Cynllun bil a slip cegin, pob un â'i led cynnwys ei hun. Ariannwr y bil yw pwy a gyhoeddodd neu setlodd y bil; Gweinydd KOT yw pwy a anfonodd y tocyn cegin hwnnw — mae stori lawn yr archeb yn aros yn y llyfrau.
 std_size_ph	e.e. 18, 20, 26…
@@ -1157,7 +1150,6 @@ kot_style_item_qty	Eitem · Nifer
 kot_style_field_pick	Dewis maes
 kot_weight_regular	Rheolaidd
 kot_weight_bold	Trwm
-kot_align	Alinio
 kot_align_start	Dechrau
 kot_align_center	Canol
 kot_align_end	Diwedd
@@ -1307,18 +1299,8 @@ kot_show_item_hdr	Eitem · Nifer
 kot_hide_item_hdr	Cuddio colofnau
 kot_show_title	Llinell deitl
 kot_hide_title	Cuddio teitl
-kot_field_order	Trefn argraffu
-kot_field_up	Symud i fyny
-kot_field_down	Symud i lawr
 kot_field_cycle	Dewis y nesaf
 kot_field_select	Dewis y nesaf
-kot_field_time	Amser
-kot_field_kot_no	KOT rhif
-kot_field_area	Ardal
-kot_field_table	Bwrdd
-kot_field_shop	Enw siop
-kot_field_waiter	Gweithwyr
-kot_field_station	Gorsaf
 dishes_n	{n} pryd
 recipe_ph	Rysáit (dewisol) — mae un dogn yn defnyddio: Reis=0.2, Paneer=0.15
 reorder_ph	Prynu mwy ar

@@ -81,12 +81,10 @@ bill_item_qty	Ilość
 bill_item_price	Cena
 bill_item_amount	Kwota
 bill_item_note	Rx / notatka sprzedażowa
-bill_item_col_order	Kolejność kolumn
 bill_item_col_sep	Reguły kolumnowe
 slip_col_width	Szerokość (mm)
 slip_col_start	Odstęp na początku (px)
 slip_col_end	Odstęp na końcu (px)
-slip_col_align	Wyrównanie tekstu
 slip_columns_help	Szerokość każdej kolumny obejmuje jej odstęp na początku i na końcu. Tekst zawija się w obrębie swojej kolumny; to, co wykracza poza szerokość treści, jest obcinane – na papierze i w podglądzie.
 bill_total_qty_label	Etykieta z całkowitą ilością
 bill_total_subtotal_label	Etykieta sumy częściowej
@@ -443,7 +441,6 @@ printer_profile_heading	Układ
 vp_delivery_heading	Dostawa
 vp_delivery_help	Jak ta wirtualna drukarka wysyła zadania — dokument systemu operacyjnego, surowe bajty lub ESC/POS. Treść kuponu (rozmiar typu, opakowanie, marginesy) jest ustalana na podstawie formatu rachunku/listu, a nie tutaj.
 vp_delivery_spooler	Dokument systemu operacyjnego (bufor systemowy)
-vp_delivery_raw	Surowe bajty do urządzenia
 vp_delivery_escpos	ESC/POS polecenia termiczne
 virtual_printer_new	Nowa wirtualna drukarka
 virtual_printer_selected	Edycja „{name}” — dotknij innego na liście, aby przełączyć
@@ -730,7 +727,6 @@ customer_paid_ph	Klient zapłacił
 tip_ph	Wskazówka
 find_server	Znajdź serwer sklepu
 bill_format	Format rachunku
-bill_format_help	Drukowane pod nazwą Twojego sklepu na każdym rachunku. Oddziel linie znakiem | (np. MG Road, Rajkot | Ph 98250 00000).
 bill_header_ph	Adres | telefon
 fssai_ph	Pozwolenie na lek nr. (opcjonalnie – Twoje sformułowanie)
 bill_footer_ph	Stopka (np. Dziękuję, odwiedź ponownie)
@@ -820,8 +816,6 @@ add_dishes	Dodaj leki
 order_so_far	W tej kolejności: {n} · {total}
 no_dish_match	Żaden element nie pasuje do „{q}”
 pick_done	Gotowe
-kot_field_up	Przesuń się w górę
-kot_field_down	Przesuń w dół
 dishes_n	Elementy {n}
 reorder_ph	Kup więcej na
 set_reorder	Ustaw poziom ponownego zamówienia
@@ -853,3 +847,6 @@ sel_copy	Kopiuj
 sel_select_all	Zaznacz wszystko
 sel_copied	Skopiowano
 nav_loading	Wczytywanie…
+printer_mode_first	Po pierwsze, to działa
+printer_mode_all	Drukuj na wszystkim
+slip_columns	Kolumny

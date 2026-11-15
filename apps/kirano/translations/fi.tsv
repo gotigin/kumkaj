@@ -69,12 +69,10 @@ bill_item_qty	Määrä
 bill_item_price	Hinta
 bill_item_amount	Summa
 bill_item_note	Tuotehuomautus
-bill_item_col_order	Sarakkeiden järjestys
 bill_item_col_sep	Sarakkeiden viivat
 slip_col_width	Leveys (mm)
 slip_col_start	Alkuväli (px)
 slip_col_end	Loppuväli (px)
-slip_col_align	Tekstin tasaus
 slip_columns_help	Kunkin sarakkeen leveys sisältää sen alku- ja loppuvälin. Teksti rivittyy oman sarakkeensa sisällä; sisällön leveyden yli menevä osa leikkautuu pois – paperilla ja esikatselussa.
 bill_total_qty_label	Kokonaismäärän otsikko
 bill_total_subtotal_label	Välisumman otsikko
@@ -431,7 +429,6 @@ printer_profile_heading	Asettelu
 vp_delivery_heading	Kuljetus
 vp_delivery_help	Kuinka tämä virtuaalinen tulostin lähettää töitä – käyttöjärjestelmädokumentti, raakatavut tai ESC/POS. Luettelon sisältö (tyyppikoko, rivitys, marginaalit) määräytyy laskun / kuittimuodon mukaan, ei täällä.
 vp_delivery_spooler	Käyttöjärjestelmän asiakirja (järjestelmän tulostusjono)
-vp_delivery_raw	Raakatavut laitteelle
 vp_delivery_escpos	ESC/POS-lämpökomennot
 virtual_printer_new	Uusi virtuaalitulostin
 virtual_printer_selected	Muokataan “{name}” — vaihda napauttamalla toista listassa
@@ -718,7 +715,6 @@ customer_paid_ph	Asiakas maksoi
 tip_ph	Tippi
 find_server	Etsi liikkeen palvelin
 bill_format	Laskun muoto
-bill_format_help	Painettu myymäläsi nimen alle jokaiseen laskuun. Erottele rivit | (esim. MG Road, Rajkot | puh. 98250 00000).
 bill_header_ph	Osoite | puhelin
 fssai_ph	FSSAI / kaupan lisenssi nro. (valinnainen)
 bill_footer_ph	Alatunniste (esim. Kiitos, tervetuloa uudelleen)
@@ -808,8 +804,6 @@ add_dishes	Lisää kohteita
 order_so_far	Tässä tilauksessa: {n} · {total}
 no_dish_match	Yksikään kohde ei vastaa "{q}"
 pick_done	Valmis
-kot_field_up	Siirrä ylös
-kot_field_down	Siirrä alas
 dishes_n	{n} tuotteet
 reorder_ph	Tilaa lisää kun
 set_reorder	Aseta täydennysraja
@@ -841,3 +835,6 @@ sel_copy	Kopioi
 sel_select_all	Valitse kaikki
 sel_copied	Kopioitu
 nav_loading	Ladataan…
+printer_mode_first	Ensimmäinen joka toimii
+printer_mode_all	Tulosta kaikille
+slip_columns	Sarakkeet
