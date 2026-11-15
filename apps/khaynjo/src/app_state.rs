@@ -156,6 +156,8 @@ struct AppState {
     snack_timer: Timer,
     /// Auto-dismiss seconds for snacks (per signed-in user; default 10).
     snack_secs: f64,
+    /// Settings → WhatsApp: enable draft (saved with Save WhatsApp).
+    wa_cloud_enabled: bool,
     /// Keeps the floor and kitchen live: every few seconds the tables'
     /// visit states (and minutes) refresh; a tablet pulls from the Server.
     live_timer: Timer,

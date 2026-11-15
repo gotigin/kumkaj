@@ -1040,6 +1040,7 @@ enum NavTab {
     SetBill,
     SetSelling,
     SetAlerts,
+    SetWhatsapp,
     SetBackup,
     SetDiag,
     SetPrivacy,
@@ -1059,7 +1060,7 @@ enum BooksReportKind {
 /// bottom bar (slots are positions; which tab a slot shows comes from
 /// `AppState.nav_order`). Settings sections come first, as on the Settings
 /// list; they start hidden on the bars ([`nav_tab_default_hidden`]).
-const NAV_TABS: [NavTab; 28] = [
+const NAV_TABS: [NavTab; 29] = [
     NavTab::SetLanguage,
     NavTab::SetCountry,
     NavTab::SetTills,
@@ -1071,6 +1072,7 @@ const NAV_TABS: [NavTab; 28] = [
     NavTab::SetSelling,
     NavTab::Team,
     NavTab::SetAlerts,
+    NavTab::SetWhatsapp,
     NavTab::SetBackup,
     NavTab::SetDiag,
     NavTab::SetPrivacy,
@@ -1103,6 +1105,7 @@ fn nav_tab_settings_panel(tab: NavTab) -> Option<&'static str> {
         NavTab::SetBill => "bill",
         NavTab::SetSelling => "selling",
         NavTab::SetAlerts => "alerts",
+        NavTab::SetWhatsapp => "whatsapp",
         NavTab::SetBackup => "backup",
         NavTab::SetDiag => "diag",
         NavTab::SetPrivacy => "privacy",
@@ -1154,6 +1157,7 @@ fn nav_tab_label_key(tab: NavTab, my_pin_only: bool) -> &'static str {
         NavTab::SetBill => "settings_sec_bill",
         NavTab::SetSelling => "settings_sec_selling",
         NavTab::SetAlerts => "settings_sec_alerts",
+        NavTab::SetWhatsapp => "settings_sec_whatsapp",
         NavTab::SetBackup => "settings_sec_backup",
         NavTab::SetDiag => "settings_sec_diag",
         NavTab::SetPrivacy => "settings_sec_privacy",
@@ -1187,6 +1191,7 @@ fn nav_tab_key(tab: NavTab) -> &'static str {
         NavTab::SetBill => "set_bill",
         NavTab::SetSelling => "set_selling",
         NavTab::SetAlerts => "set_alerts",
+        NavTab::SetWhatsapp => "set_whatsapp",
         NavTab::SetBackup => "set_backup",
         NavTab::SetDiag => "set_diag",
         NavTab::SetPrivacy => "set_privacy",
@@ -1222,6 +1227,7 @@ fn nav_tab_icon_bytes(tab: NavTab) -> &'static [u8] {
         NavTab::SetBill => include_bytes!("../resources/settings/bill.webp").as_slice(),
         NavTab::SetSelling => include_bytes!("../resources/settings/selling.webp").as_slice(),
         NavTab::SetAlerts => include_bytes!("../resources/settings/alerts.webp").as_slice(),
+        NavTab::SetWhatsapp => include_bytes!("../resources/settings/whatsapp.webp").as_slice(),
         NavTab::SetBackup => include_bytes!("../resources/settings/backup.webp").as_slice(),
         NavTab::SetDiag => include_bytes!("../resources/settings/diag.webp").as_slice(),
         NavTab::SetPrivacy => include_bytes!("../resources/settings/privacy.webp").as_slice(),

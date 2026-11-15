@@ -454,6 +454,26 @@ pub enum BooksOp {
         parts: Vec<(PayMethod, i64)>,
     },
     SaveBackupCopy,
+    /// WhatsApp Cloud API credentials (Server only; token never returned to Clients).
+    SetWhatsappCloud {
+        enabled: bool,
+        phone_number_id: String,
+        /// Empty keeps the existing token.
+        access_token: String,
+        template_name: String,
+        template_lang: String,
+    },
+    TestWhatsappCloud,
+    DisconnectWhatsappCloud,
+    SetPartyWhatsappOk {
+        party_id: String,
+        ok: bool,
+    },
+    /// Send bill PDF via Meta (Server). `force_retry` for deliberate Unknown retry.
+    SendWhatsappBill {
+        sale_id: String,
+        force_retry: bool,
+    },
 }
 
 impl BooksOp {
@@ -546,6 +566,11 @@ impl BooksOp {
             Self::ClearTradingHistory => "Clear trading history",
             Self::LogExpense { .. } => "Log expenses",
             Self::SaveBackupCopy => "Save a backup copy",
+            Self::SetWhatsappCloud { .. } => "WhatsApp Cloud settings",
+            Self::TestWhatsappCloud => "Test WhatsApp Cloud",
+            Self::DisconnectWhatsappCloud => "Disconnect WhatsApp Cloud",
+            Self::SetPartyWhatsappOk { .. } => "WhatsApp consent",
+            Self::SendWhatsappBill { .. } => "Send bill on WhatsApp",
         }
         .to_string()
     }
@@ -666,6 +691,12 @@ impl BooksOp {
             Self::ClearTradingHistory => "Trading history cleared — setup kept".into(),
             Self::LogExpense { .. } => "Expense logged".into(),
             Self::SaveBackupCopy => "Backup saved on the shop device".into(),
+            Self::SetWhatsappCloud { .. } => "WhatsApp settings saved".into(),
+            Self::TestWhatsappCloud => "WhatsApp connection checked".into(),
+            Self::DisconnectWhatsappCloud => "WhatsApp disconnected".into(),
+            Self::SetPartyWhatsappOk { ok: true, .. } => "WhatsApp consent recorded".into(),
+            Self::SetPartyWhatsappOk { .. } => "WhatsApp consent cleared".into(),
+            Self::SendWhatsappBill { .. } => "WhatsApp bill send finished".into(),
         }
     }
 }
@@ -1645,6 +1676,29 @@ impl Store {
                 self.note_backup_copy_saved()?;
                 Ok(format!("Backup saved on the shop device ({})", file.display()))
             }
+            BooksOp::SetWhatsappCloud {
+                enabled,
+                phone_number_id,
+                access_token,
+                template_name,
+                template_lang,
+            } => self.set_whatsapp_cloud_creds(
+                enabled,
+                &phone_number_id,
+                &access_token,
+                &template_name,
+                &template_lang,
+                actor,
+            ),
+            BooksOp::TestWhatsappCloud => self.test_whatsapp_cloud(actor),
+            BooksOp::DisconnectWhatsappCloud => self.disconnect_whatsapp_cloud(actor),
+            BooksOp::SetPartyWhatsappOk { party_id, ok } => {
+                self.set_party_whatsapp_ok(&party_id, ok, actor)
+            }
+            BooksOp::SendWhatsappBill {
+                sale_id,
+                force_retry,
+            } => self.send_whatsapp_bill_pdf(&sale_id, force_retry, actor),
         }
     }
 

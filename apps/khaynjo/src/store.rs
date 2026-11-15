@@ -119,6 +119,8 @@ mod service;
 mod recipes;
 #[path = "store_ops.rs"]
 mod ops;
+#[path = "store_whatsapp.rs"]
+mod whatsapp;
 #[path = "store_template.rs"]
 mod template;
 pub use template::{
@@ -10356,6 +10358,15 @@ impl Store {
         self.conn
             .execute("DELETE FROM meta WHERE key LIKE 'ui_%'", [])
             .map_err(|e| e.to_string())?;
+        // WhatsApp Cloud sidecar secrets (never in SQLite backups).
+        if let Some(dir) = self.path.parent() {
+            let _ = std::fs::remove_file(dir.join("whatsapp_cloud.secret"));
+            let _ = std::fs::remove_file(dir.join("whatsapp_cloud.key"));
+        }
+        let _ = self.conn.execute(
+            "DELETE FROM meta WHERE key = 'whatsapp_cloud_public' OR key LIKE 'whatsapp_ok:%'",
+            [],
+        );
         Ok(())
     }
 

@@ -295,6 +295,7 @@ fn nav_tab_permitted(tab: NavTab, caps: NavCaps) -> bool {
         | NavTab::SetBill
         | NavTab::SetSelling
         | NavTab::SetAlerts
+        | NavTab::SetWhatsapp
         | NavTab::SetBackup
         | NavTab::SetDiag
         | NavTab::SetPrivacy => caps.shop_settings,

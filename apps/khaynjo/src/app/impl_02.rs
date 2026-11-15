@@ -1144,6 +1144,15 @@ fn paint_submit_busy_chrome(&mut self, cx: &mut Cx) {
             };
             self.ui.text_input(cx, ids!(menu_price_input)).set_empty_text(cx, price_ph);
             self.ui.view(cx, ids!(sale_detail)).set_visible(cx, st.selected_sale_id.is_some());
+            let wa_cloud_on = st
+                .store
+                .as_ref()
+                .and_then(|s| s.whatsapp_cloud_public().ok())
+                .map(|p| p.enabled && p.has_token && !p.phone_number_id.is_empty())
+                .unwrap_or(false);
+            self.ui
+                .button(cx, ids!(receipt_whatsapp_cloud_btn))
+                .set_visible(cx, st.selected_sale_id.is_some() && wa_cloud_on);
 
             let party_picked = st.selected_customer_id.is_some();
             self.ui.view(cx, ids!(party_detail)).set_visible(cx, party_picked);
@@ -2020,6 +2029,24 @@ fn paint_submit_busy_chrome(&mut self, cx: &mut Cx) {
             self.ui
                 .button(cx, ids!(credit_add_btn))
                 .set_text(cx, form_btn_label);
+            let (wa_ok, wa_label, wa_help) = {
+                let st = app_state().lock().unwrap();
+                let ok = st
+                    .selected_customer_id
+                    .as_ref()
+                    .and_then(|id| st.store.as_ref().and_then(|s| s.party_whatsapp_ok(id).ok()))
+                    .unwrap_or(false);
+                (ok, st.t("whatsapp_consent"), st.t("whatsapp_consent_help"))
+            };
+            self.ui
+                .widget(cx, ids!(party_wa_ok_label))
+                .set_text(cx, &plain_display_text(&wa_label));
+            {
+                let tip = self.ui.widget(cx, ids!(party_wa_ok_help)).as_info_help();
+                tip.set_tip(&plain_display_text(&wa_help));
+            }
+            self.paint_choice_pair(cx, ids!(party_wa_ok_off), ids!(party_wa_ok_off_on), !wa_ok);
+            self.paint_choice_pair(cx, ids!(party_wa_ok_on), ids!(party_wa_ok_on_on), wa_ok);
         }
         self.ui
             .widget(cx, ids!(credit_chip)).set_text(cx, &plain_display_text(&credit_chip));

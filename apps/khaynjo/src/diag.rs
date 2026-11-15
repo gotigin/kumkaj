@@ -200,6 +200,10 @@ pub fn redact_text(raw: &str) -> String {
         || lower.contains("pairing code")
         || lower.contains("bearer ")
         || lower.contains("authorization:")
+        || lower.contains("access_token")
+        || lower.contains("access token")
+        || lower.contains("whatsapp_cloud.secret")
+        || (lower.contains("eaa") && lower.contains("token"))
     {
         return "[redacted-secret]".into();
     }

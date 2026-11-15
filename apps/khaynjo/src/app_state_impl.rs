@@ -93,6 +93,7 @@ impl AppState {
             snack_kind: SnackKind::Info,
             snack_timer: Timer::empty(),
             snack_secs: SnackKind::DEFAULT_SECS,
+            wa_cloud_enabled: false,
             live_timer: Timer::empty(),
             pin_buffer: String::new(),
             pin_visible: false,

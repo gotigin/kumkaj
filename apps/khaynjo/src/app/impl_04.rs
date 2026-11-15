@@ -784,6 +784,7 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
             (ids!(nav_x25), ids!(nav_x25_on)),
             (ids!(nav_x26), ids!(nav_x26_on)),
             (ids!(nav_x27), ids!(nav_x27_on)),
+            (ids!(nav_x28), ids!(nav_x28_on)),
         ]
     }
 
@@ -817,6 +818,7 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
             (ids!(rail_x25), ids!(rail_x25_on)),
             (ids!(rail_x26), ids!(rail_x26_on)),
             (ids!(rail_x27), ids!(rail_x27_on)),
+            (ids!(rail_x28), ids!(rail_x28_on)),
         ]
     }
 
@@ -850,6 +852,7 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
             ids!(nav_x25_icon),
             ids!(nav_x26_icon),
             ids!(nav_x27_icon),
+            ids!(nav_x28_icon),
         ]
     }
 
@@ -883,6 +886,7 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
             ids!(rail_x25_icon),
             ids!(rail_x26_icon),
             ids!(rail_x27_icon),
+            ids!(rail_x28_icon),
         ]
     }
 
@@ -949,6 +953,7 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
                 ids!(rail_x25_slot),
                 ids!(rail_x26_slot),
                 ids!(rail_x27_slot),
+                ids!(rail_x28_slot),
             ]
         } else {
             [
@@ -980,6 +985,7 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
                 ids!(nav_x25_slot),
                 ids!(nav_x26_slot),
                 ids!(nav_x27_slot),
+                ids!(nav_x28_slot),
             ]
         }
     }
@@ -1564,6 +1570,7 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
             (ids!(settings_panel_bill), "bill"),
             (ids!(settings_panel_selling), "selling"),
             (ids!(settings_panel_alerts), "alerts"),
+            (ids!(settings_panel_whatsapp), "whatsapp"),
             (ids!(settings_panel_backup), "backup"),
             (ids!(settings_panel_diag), "diag"),
             (ids!(settings_panel_privacy), "privacy"),
@@ -1654,6 +1661,9 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
                 .button(cx, ids!(snack_secs_save))
                 .set_text(cx, &save);
         }
+        if panel == Some("whatsapp") {
+            self.paint_whatsapp_panel(cx);
+        }
         if panel == Some("diag") {
             self.sync_diag_panel(cx);
         }
@@ -1662,6 +1672,103 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
         }
         // Hub ↔ section: always refresh ‹ (do not rely on a later full sync_chrome).
         self.paint_header_back_chrome(cx);
+    }
+
+    /// Settings → WhatsApp Cloud API (Server credentials).
+    fn paint_whatsapp_panel(&mut self, cx: &mut Cx) {
+        let (title, help, pub_cfg, is_client, enable_on, labels) = {
+            let st = app_state().lock().unwrap();
+            let pub_cfg = st
+                .store
+                .as_ref()
+                .and_then(|s| s.whatsapp_cloud_public().ok())
+                .unwrap_or_default();
+            let labels = (
+                st.t("whatsapp_phone_id_ph"),
+                st.t("whatsapp_token_ph"),
+                st.t("whatsapp_template_ph"),
+                st.t("whatsapp_template_lang_ph"),
+                st.t("whatsapp_save"),
+                st.t("whatsapp_test"),
+                st.t("whatsapp_disconnect"),
+                st.t("whatsapp_server_only"),
+                st.t("whatsapp_enable"),
+                st.t("whatsapp_disable"),
+            );
+            (
+                st.t("settings_sec_whatsapp"),
+                st.t("whatsapp_cloud_help"),
+                pub_cfg,
+                st.device_role == DeviceRole::Client,
+                st.wa_cloud_enabled,
+                labels,
+            )
+        };
+        self.ui
+            .widget(cx, ids!(h_whatsapp))
+            .set_text(cx, &plain_display_text(&title));
+        {
+            let tip = self.ui.widget(cx, ids!(h_whatsapp_help)).as_info_help();
+            tip.set_tip(&plain_display_text(&help));
+        }
+        self.ui
+            .widget(cx, ids!(whatsapp_server_hint))
+            .set_text(cx, &plain_display_text(&labels.7));
+        self.ui
+            .widget(cx, ids!(whatsapp_server_hint))
+            .set_visible(cx, is_client);
+        self.paint_choice_pair(
+            cx,
+            ids!(wa_enable_off),
+            ids!(wa_enable_off_on),
+            !enable_on,
+        );
+        self.paint_choice_pair(cx, ids!(wa_enable_on), ids!(wa_enable_on_on), enable_on);
+        self.ui
+            .button(cx, ids!(wa_enable_off))
+            .set_text(cx, &labels.9);
+        self.ui
+            .button(cx, ids!(wa_enable_off_on))
+            .set_text(cx, &labels.9);
+        self.ui
+            .button(cx, ids!(wa_enable_on))
+            .set_text(cx, &labels.8);
+        self.ui
+            .button(cx, ids!(wa_enable_on_on))
+            .set_text(cx, &labels.8);
+
+        let phone_field = self.ui.text_input(cx, ids!(wa_phone_id_input));
+        phone_field.set_empty_text(cx, labels.0.clone());
+        if !cx.has_key_focus(phone_field.area()) && !is_client {
+            phone_field.set_text(cx, &pub_cfg.phone_number_id);
+        }
+        let token_field = self.ui.text_input(cx, ids!(wa_token_input));
+        token_field.set_empty_text(cx, labels.1.clone());
+        // Never paint the access token into the field.
+        if !cx.has_key_focus(token_field.area()) {
+            token_field.set_text(cx, "");
+        }
+        let tmpl = self.ui.text_input(cx, ids!(wa_template_input));
+        tmpl.set_empty_text(cx, labels.2.clone());
+        if !cx.has_key_focus(tmpl.area()) && !is_client {
+            tmpl.set_text(cx, &pub_cfg.template_name);
+        }
+        let lang = self.ui.text_input(cx, ids!(wa_template_lang_input));
+        lang.set_empty_text(cx, labels.3.clone());
+        if !cx.has_key_focus(lang.area()) && !is_client {
+            lang.set_text(cx, &pub_cfg.template_lang);
+        }
+        self.ui.button(cx, ids!(wa_save_btn)).set_text(cx, &labels.4);
+        self.ui.button(cx, ids!(wa_test_btn)).set_text(cx, &labels.5);
+        self.ui
+            .button(cx, ids!(wa_disconnect_btn))
+            .set_text(cx, &labels.6);
+        let editable = !is_client;
+        self.ui.button(cx, ids!(wa_save_btn)).set_visible(cx, editable);
+        self.ui.button(cx, ids!(wa_test_btn)).set_visible(cx, editable);
+        self.ui
+            .button(cx, ids!(wa_disconnect_btn))
+            .set_visible(cx, editable);
     }
 
     /// Settings → Privacy: same `PRIVACY.md` as the website, rendered as Markdown
@@ -1715,6 +1822,17 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
         }
         if panel == Some("privacy") {
             self.paint_privacy_panel(cx);
+        }
+        if panel == Some("whatsapp") {
+            {
+                let mut st = app_state().lock().unwrap();
+                if let Some(store) = st.store.as_ref() {
+                    if let Ok(p) = store.whatsapp_cloud_public() {
+                        st.wa_cloud_enabled = p.enabled;
+                    }
+                }
+            }
+            self.paint_whatsapp_panel(cx);
         }
         if panel == Some("units") {
             let units_rows = {

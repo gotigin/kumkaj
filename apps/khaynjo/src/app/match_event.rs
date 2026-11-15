@@ -457,6 +457,108 @@ impl MatchEvent for App {
             }
             self.sync_chrome(cx);
         }
+        if self.ui.button(cx, ids!(wa_enable_on)).clicked(actions)
+            || self.ui.button(cx, ids!(wa_enable_on_on)).clicked(actions)
+        {
+            app_state().lock().unwrap().wa_cloud_enabled = true;
+            self.paint_whatsapp_panel(cx);
+        }
+        if self.ui.button(cx, ids!(wa_enable_off)).clicked(actions)
+            || self.ui.button(cx, ids!(wa_enable_off_on)).clicked(actions)
+        {
+            app_state().lock().unwrap().wa_cloud_enabled = false;
+            self.paint_whatsapp_panel(cx);
+        }
+        if self.ui.button(cx, ids!(wa_save_btn)).clicked(actions) {
+            let phone_id = self.ui.text_input(cx, ids!(wa_phone_id_input)).text();
+            let token = self.ui.text_input(cx, ids!(wa_token_input)).text();
+            let template = self.ui.text_input(cx, ids!(wa_template_input)).text();
+            let lang = self.ui.text_input(cx, ids!(wa_template_lang_input)).text();
+            let enabled = app_state().lock().unwrap().wa_cloud_enabled;
+            let result = (|| -> Result<String, String> {
+                let mut st = app_state().lock().unwrap();
+                st.books_op(BooksOp::SetWhatsappCloud {
+                    enabled,
+                    phone_number_id: phone_id,
+                    access_token: token,
+                    template_name: template,
+                    template_lang: lang,
+                })
+            })();
+            match result {
+                Ok(msg) => {
+                    self.ui.text_input(cx, ids!(wa_token_input)).set_text(cx, "");
+                    self.set_status(cx, msg);
+                }
+                Err(e) => self.set_status(cx, e),
+            }
+            self.paint_whatsapp_panel(cx);
+        }
+        if self.ui.button(cx, ids!(wa_test_btn)).clicked(actions) {
+            self.show_work_status(cx, "Checking WhatsApp…");
+            let result = (|| -> Result<String, String> {
+                let mut st = app_state().lock().unwrap();
+                st.books_op(BooksOp::TestWhatsappCloud)
+            })();
+            match result {
+                Ok(msg) => self.set_status(cx, msg),
+                Err(e) => self.set_status(cx, e),
+            }
+        }
+        if self.ui.button(cx, ids!(wa_disconnect_btn)).clicked(actions) {
+            let result = (|| -> Result<String, String> {
+                let mut st = app_state().lock().unwrap();
+                st.books_op(BooksOp::DisconnectWhatsappCloud)
+            })();
+            match result {
+                Ok(msg) => {
+                    app_state().lock().unwrap().wa_cloud_enabled = false;
+                    self.set_status(cx, msg);
+                }
+                Err(e) => self.set_status(cx, e),
+            }
+            self.paint_whatsapp_panel(cx);
+        }
+        if self.ui.button(cx, ids!(party_wa_ok_on)).clicked(actions)
+            || self.ui.button(cx, ids!(party_wa_ok_on_on)).clicked(actions)
+        {
+            let result = (|| -> Result<String, String> {
+                let mut st = app_state().lock().unwrap();
+                let id = st
+                    .selected_customer_id
+                    .clone()
+                    .ok_or_else(|| "Pick a party first".to_string())?;
+                st.books_op(BooksOp::SetPartyWhatsappOk {
+                    party_id: id,
+                    ok: true,
+                })
+            })();
+            match result {
+                Ok(msg) => self.set_status(cx, msg),
+                Err(e) => self.set_status(cx, e),
+            }
+            self.sync_chrome(cx);
+        }
+        if self.ui.button(cx, ids!(party_wa_ok_off)).clicked(actions)
+            || self.ui.button(cx, ids!(party_wa_ok_off_on)).clicked(actions)
+        {
+            let result = (|| -> Result<String, String> {
+                let mut st = app_state().lock().unwrap();
+                let id = st
+                    .selected_customer_id
+                    .clone()
+                    .ok_or_else(|| "Pick a party first".to_string())?;
+                st.books_op(BooksOp::SetPartyWhatsappOk {
+                    party_id: id,
+                    ok: false,
+                })
+            })();
+            match result {
+                Ok(msg) => self.set_status(cx, msg),
+                Err(e) => self.set_status(cx, e),
+            }
+            self.sync_chrome(cx);
+        }
         if self.ui.button(cx, ids!(header_back)).clicked(actions) {
             self.navigate_back(cx);
         }
@@ -7948,6 +8050,25 @@ impl MatchEvent for App {
                     self.set_status(cx, "WhatsApp share opened (Net optional on device)");
                 }
                 Err(e) => self.set_status(cx, e),
+            }
+        }
+        if self.ui.button(cx, ids!(receipt_whatsapp_cloud_btn)).clicked(actions) {
+            let sale_id = app_state().lock().unwrap().selected_sale_id.clone();
+            if let Some(sale_id) = sale_id {
+                self.show_work_status(cx, "Sending bill on WhatsApp…");
+                let result = (|| -> Result<String, String> {
+                    let mut st = app_state().lock().unwrap();
+                    st.books_op(BooksOp::SendWhatsappBill {
+                        sale_id,
+                        force_retry: false,
+                    })
+                })();
+                match result {
+                    Ok(msg) => self.set_status(cx, msg),
+                    Err(e) => self.set_status(cx, e),
+                }
+            } else {
+                self.set_status(cx, "Select a sale first");
             }
         }
         if self.ui.button(cx, ids!(day_close_copy)).clicked(actions) {

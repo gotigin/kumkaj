@@ -23,6 +23,7 @@ pub mod menu_templates;
 pub mod lan_ws;
 pub mod net;
 pub mod notify;
+pub mod whatsapp_cloud;
 pub mod phone;
 pub mod privacy_policy;
 pub mod precise;

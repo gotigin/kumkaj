@@ -1934,6 +1934,9 @@ fn fit_inside_system_bars(&mut self, cx: &mut Cx) {
         self.ui.button(cx, ids!(receipt_print_btn)).set_text(cx, &s("print_open"));
         self.ui.button(cx, ids!(receipt_share_btn)).set_text(cx, &s("copy_receipt"));
         self.ui.button(cx, ids!(receipt_whatsapp_btn)).set_text(cx, &s("share_whatsapp"));
+        self.ui
+            .button(cx, ids!(receipt_whatsapp_cloud_btn))
+            .set_text(cx, &s("whatsapp_send_bill"));
         self.ui.button(cx, ids!(waitlist_add)).set_text(cx, &s("waitlist_add"));
         self.ui.button(cx, ids!(bulk_price_apply)).set_text(cx, &s("bulk_price_apply"));
         self.ui

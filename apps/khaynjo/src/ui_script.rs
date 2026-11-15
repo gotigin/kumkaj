@@ -5555,6 +5555,22 @@ script_mod! {
                                         }
                                     }
                                 }
+                                rail_x28_slot := View{
+                                    visible: false
+                                    width: Fill height: Fit
+                                    flow: Overlay
+                                    rail_x28 := TabBtn{text: ""}
+                                    rail_x28_on := TabBtnActive{text: "" visible: false}
+                                    View{
+                                        width: Fit height: 40
+                                        align: Align{x: 0.0 y: 0.5}
+                                        padding: Inset{left: 10. right: 0. top: 0. bottom: 0.}
+                                        rail_x28_icon := Image{
+                                            width: 22 height: 22
+                                            fit: ImageFit.Stretch
+                                        }
+                                    }
+                                }
                             }
                         }
                     }
@@ -8629,6 +8645,7 @@ script_mod! {
                                         flow: Right spacing: 8
                                         receipt_share_btn := NavBtn{text: "Copy receipt"}
                                         receipt_whatsapp_btn := NavBtn{text: "Share WhatsApp"}
+                                        receipt_whatsapp_cloud_btn := NavBtn{text: "Send via WhatsApp" visible: false}
                                         receipt_print_btn := NavBtn{text: "Print / open"}
                                     }
                                     amend_cart_list := mod.widgets.CartList{}
@@ -8778,6 +8795,27 @@ script_mod! {
                                     FormFieldRow{
                                         credit_add_name := FieldInput{empty_text: "Party name"}
                                         credit_add_phone := FieldInput{empty_text: "Phone"}
+                                    }
+                                    View{
+                                        width: Fill height: Fit
+                                        flow: Right spacing: 0
+                                        align: Align{y: 0.5}
+                                        party_wa_ok_label := WrapLabel{width: Fit body: "WhatsApp OK" font_color: #x260B08 font_size: 14.}
+                                        party_wa_ok_help := InfoHelp{
+                                            tip: "Guest agreed to receive WhatsApp messages. A phone number alone is not consent."
+                                        }
+                                    }
+                                    View{
+                                        width: Fill height: Fit
+                                        flow: Right spacing: 6
+                                        View{width: Fill height: Fit flow: Overlay
+                                            party_wa_ok_off := SegBtn{text: "No"}
+                                            party_wa_ok_off_on := SegBtnOn{text: "No" visible: false}
+                                        }
+                                        View{width: Fill height: Fit flow: Overlay
+                                            party_wa_ok_on := SegBtn{text: "Yes"}
+                                            party_wa_ok_on_on := SegBtnOn{text: "Yes" visible: false}
+                                        }
                                     }
                                     credit_add_birthday := FieldInput{empty_text: "Birthday (MM-DD or YYYY-MM-DD)"}
                                     h_account_kind := WrapLabel{
@@ -11367,6 +11405,50 @@ sibling_pickers_heading := WrapLabel{body: "Areas · stations · tax rates" font
                                         snack_secs_save := StackPrimaryBtn{text: "Save alert time"}
                                     }
                                 }
+                                settings_panel_whatsapp := View{
+                                    width: Fill height: Fit
+                                    flow: Down spacing: 12
+                                    visible: false
+                                    FormCard{
+                                        View{
+                                            width: Fill height: Fit
+                                            flow: Right spacing: 0
+                                            align: Align{y: 0.5}
+                                            h_whatsapp := WrapLabel{width: Fit body: "WhatsApp" font_color: #x260B08 font_size: 16.}
+                                            h_whatsapp_help := InfoHelp{
+                                                tip: "Use your own Meta WhatsApp Cloud API. System User token with whatsapp_business_messaging. Credentials stay on this Server only."
+                                            }
+                                        }
+                                        whatsapp_server_hint := WrapLabel{
+                                            width: Fill
+                                            body: ""
+                                            font_color: #x6B4A3F
+                                            font_size: 13.
+                                            visible: false
+                                        }
+                                        View{
+                                            width: Fill height: Fit
+                                            flow: Right spacing: 6
+                                            View{width: Fill height: Fit flow: Overlay
+                                                wa_enable_off := SegBtn{text: "Off"}
+                                                wa_enable_off_on := SegBtnOn{text: "Off" visible: false}
+                                            }
+                                            View{width: Fill height: Fit flow: Overlay
+                                                wa_enable_on := SegBtn{text: "Enable"}
+                                                wa_enable_on_on := SegBtnOn{text: "Enable" visible: false}
+                                            }
+                                        }
+                                        wa_phone_id_input := FieldInput{empty_text: "Phone Number ID"}
+                                        wa_token_input := FieldInput{empty_text: "Access Token (leave blank to keep)" is_password: true}
+                                        wa_template_input := FieldInput{empty_text: "Bill template name (optional)"}
+                                        wa_template_lang_input := FieldInput{empty_text: "Template language (e.g. en)"}
+                                        ActionStack{
+                                            wa_save_btn := StackPrimaryBtn{text: "Save WhatsApp"}
+                                            wa_test_btn := StackSecondaryBtn{text: "Test connection"}
+                                            wa_disconnect_btn := DangerBtn{text: "Disconnect"}
+                                        }
+                                    }
+                                }
                                 settings_panel_backup := View{
                                     width: Fill height: Fit
                                     flow: Down spacing: 12
@@ -12427,6 +12509,22 @@ h_backup := WrapLabel{body: "Backup" font_color: #x260B08 font_size: 16.}
                                             align: Align{x: 0.0 y: 0.5}
                                             padding: Inset{left: 10. right: 0. top: 0. bottom: 0.}
                                             nav_x27_icon := Image{
+                                                width: 22 height: 22
+                                                fit: ImageFit.Stretch
+                                            }
+                                        }
+                                    }
+                                    nav_x28_slot := View{
+                                        visible: false
+                                        width: Fit{min: FitBound.Abs(72.)} height: Fit
+                                        flow: Overlay
+                                        nav_x28 := NavChip{text: ""}
+                                        nav_x28_on := NavChipActive{text: "" visible: false}
+                                        View{
+                                            width: Fit height: Fill
+                                            align: Align{x: 0.0 y: 0.5}
+                                            padding: Inset{left: 10. right: 0. top: 0. bottom: 0.}
+                                            nav_x28_icon := Image{
                                                 width: 22 height: 22
                                                 fit: ImageFit.Stretch
                                             }
