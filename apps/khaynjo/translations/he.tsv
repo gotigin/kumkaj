@@ -92,10 +92,6 @@ bill_item_layout	פריסת פריט
 bill_item_layout_columns	עמודות
 bill_item_layout_stacked	מוערם
 bill_item_header	כותרות עמודות
-bill_item_hdr_item	כותרת פריט
-bill_item_hdr_qty	כותרת כמות
-bill_item_hdr_price	כותרת מחיר
-bill_item_hdr_amount	כותרת סכום
 bill_item_name	שם המנה
 bill_item_qty	כמות
 bill_item_price	מחיר
@@ -103,6 +99,20 @@ bill_item_amount	סכום
 bill_item_note	הערת מנה
 bill_item_col_sep	קווי עמודות
 slip_columns	עמודות
+slip_col_header	כותרת
+bill_line_logo	לוגו
+bill_logo_picture	תמונה
+bill_logo_choose	בחירת תמונה
+bill_logo_remove	הסרת תמונה
+bill_logo_none	אין תמונה
+bill_logo_unreadable	זו לא תמונה שהאפליקציה יכולה לקרוא
+bill_logo_width	רוחב (px)
+bill_logo_height	גובה (px)
+bill_logo_tones	גוני אפור
+bill_logo_solid	מלא
+bill_logo_shaded	מוצלל
+bill_logo_help	רוחב וגובה ב‑px. ריק עוקב אחר התמונה: אחד ריק שומר על הצורה, שניהם ריקים משתמשים בגודל שלה; שניהם מוגדרים מתאימים אותה בפנים, לעולם לא מתוחה. בלי תמונה: לוגו מוצג שומר את הגובה שלו כרווח ריק; הסתרה מסירה אותו.
+bill_logo_tones_help	מלא: כל נקודה שחורה או לבנה, ללוגואים חדים. מוצלל: גוני האפור הופכים לדפוסי נקודות עדינים, לתמונות ולהצללה רכה.
 slip_col_width	רוחב (mm)
 slip_col_start	רווח התחלה (px)
 slip_col_end	רווח סיום (px)
@@ -167,6 +177,21 @@ alerts_help	כמה זמן הודעות מצב נשארות על המסך עבו�
 snack_secs_ph	שניות (3–60, ברירת מחדל 10)
 snack_secs_save	שמור זמן התראה
 snack_secs_saved	זמן ההתראה נשמר — {n} שניות
+settings_sec_whatsapp	WhatsApp
+whatsapp_cloud_help	Use your own Meta WhatsApp Cloud API. Create a System User token with whatsapp_business_messaging (temporary dashboard tokens expire). Credentials stay on this Server only — never on extra tills. Accepted means Meta took the request, not that the guest received it.
+whatsapp_phone_id_ph	Phone Number ID
+whatsapp_token_ph	Access Token (leave blank to keep)
+whatsapp_template_ph	Bill template name (optional)
+whatsapp_template_lang_ph	Template language (e.g. en)
+whatsapp_enable	Enable
+whatsapp_disable	Off
+whatsapp_save	Save WhatsApp
+whatsapp_test	Test connection
+whatsapp_disconnect	Disconnect
+whatsapp_send_bill	Send via WhatsApp
+whatsapp_consent	WhatsApp OK
+whatsapp_consent_help	Guest agreed to receive WhatsApp messages. A phone number alone is not consent.
+whatsapp_server_only	Configure WhatsApp on the shop Server device
 settings_sec_backup	גיבוי ושחזור
 settings_sec_diag	אבחון
 settings_sec_privacy	פרטיות
@@ -729,6 +754,13 @@ station_vps_dd	מדפסות לעמדה הזו
 station_vps_dd_n	{n} מדפסות · הקישו לשינוי
 bill_printers_dd	מדפסות לחשבון
 bill_printers_dd_n	{n} מדפסות לחשבון · הקישו לשינוי
+paper_heading	נייר
+paper_size	{w} × {h} mm
+paper_roll	גליל {w} מ״מ
+paper_not_set	הנייר עדיין לא ידוע
+paper_length_mm	אורך (mm)
+printer_paper_help	הנייר של מדפסת זו במ״מ. אורך ריק הוא גליל: כל קבלה ארוכה כמו התוכן שלה. „מצא מדפסות” ממלא נייר ריק ממנהל ההתקן של המדפסת (גליל 80 מ״מ כשאינו יכול לומר) ולעולם אינו משנה נייר שכבר הוגדר.
+preview_help	הקבלה הזו על הנייר של המדפסת שנבחרה למטה, כפי שהיא מודפסת שם: בגודל אמיתי מהפינה השמאלית העליונה שהמדפסת מגיעה אליה (אפור: שוליים שאינה מגיעה אליהם), קבלה ארוכה על יותר דפים, כל מה שעובר את קצה הנייר נחתך. בחירת מדפסת משנה רק את התצוגה המקדימה; הנייר של כל מדפסת מוגדר תחת „מדפסות”.
 job_layout	פריסה
 job_delivery	איך העבודה נשלחת
 job_delivery_help	מסמך OS, בתים גולמיים, או ESC/POS. החשבון ופתק המטבח שומרים כל אחד את שלו. כל עבודה יכולה ללכת לכל מדפסת שמצא שמר.
@@ -1105,9 +1137,6 @@ remove_these_tables	הסר את השולחנות האלה
 table_remove_ph	הסר: T1-T24, או שם של שולחן אחד
 find_server	מצא את שרת החנות
 bill_format	פורמט חשבון
-bill_header_ph	כתובת | טלפון
-fssai_ph	מס׳ רישיון FSSAI (הודו)
-bill_footer_ph	כותרת תחתונה (למשל תודה, בואו שוב)
 reset_bill_format	אפס לברירת מחדל
 bill_format_reset	פורמט החשבון אופס לברירת מחדל
 reset_kot_format	אפס לברירת מחדל
@@ -1146,7 +1175,6 @@ kot_kind_modified	שונה
 kot_kind_cancelled	בוטל
 kot_style_heading	גודל ומשקל האות של השדה
 kot_style_title	כותרת
-kot_style_item_qty	פריט · כמות
 kot_style_field_pick	בחר שדה
 kot_weight_regular	רגיל
 kot_weight_bold	מודגש
@@ -1158,8 +1186,8 @@ content_width_bill	רוחב תוכן החשבון (מ״מ)
 content_width_kot	רוחב תוכן ה־KOT (מ״מ)
 content_width_ph	או הקלידו רוחב תוכן, 40–210 מ״מ
 content_width_help	כמה רחב הפתק הזה מודפס. לחשבון ול־KOT יש לכל אחד רוחב משלו.
-content_width_bill_help	כמה רחב מודפס חשבון האורח. ברירת מחדל 210 מ״מ (עמוד). 58 מ״מ פתק צר, 80 מ״מ פתק רחב, 112 מ״מ 4 אינץ׳, 210 מ״מ רוחב A4. הקלידו כל ערך מ־40 עד 210. לפתקי מטבח יש רוחב משלהם בלשונית KOT.
-content_width_kot_help	כמה רחב מודפס פתק המטבח. ברירת מחדל 80 מ״מ. 58 מ״מ פתק צר, 80 מ״מ פתק רחב, 112 מ״מ 4 אינץ׳, 210 מ״מ עמוד. הקלידו כל ערך מ־40 עד 210. לחשבונות אורח יש רוחב משלהם בלשונית חשבון.
+content_width_bill_help	באיזה רוחב מודפס החשבון של האורח, ב-mm (40–210). הוא מודפס בגודל האמיתי הזה על כל נייר; על נייר צר יותר, החלק שמעבר לקצה ההדפסה נחתך (ראו נייר). לכרטיסי המטבח יש רוחב משלהם בלשונית KOT.
+content_width_kot_help	באיזה רוחב מודפס כרטיס המטבח, ב-mm (40–210). הוא מודפס בגודל האמיתי הזה על כל נייר; על נייר צר יותר, החלק שמעבר לקצה ההדפסה נחתך (ראו נייר). לחשבונות האורחים יש רוחב משלהם בלשונית חשבון.
 vp_paper_width	רוחב תוכן (מ״מ)
 vp_paper_width_ph	או הקלידו רוחב תוכן, 40–210 מ״מ
 vp_paper_width_help	רוחב התוכן נקבע תחת פורמט חשבון ו־KOT — בנפרד לחשבון (ברירת מחדל 210 מ״מ) ולפתק המטבח (ברירת מחדל 80 מ״מ).
@@ -1213,8 +1241,6 @@ schemes_help	BOGO, אחוז הנחה ושילובים קבועים. שילובי
 scheme_bogo_ph	קנו 2 תאלי, קבלו 1 צ׳אס
 add_scheme	הוסף BOGO
 schedule_ph	שעות / happy hour — ב׳–ו׳ 07:00-11:00 או HappyHour 17:00-19:00=150
-upi_vpa_ph	מזהה UPI (VPA)
-upi_payee_ph	שם מוטב UPI (לא חובה)
 upi_qr	UPI QR
 show_upi_qr	הצג UPI QR
 close_upi_qr	סגור
@@ -1295,8 +1321,6 @@ printer_mode_first	הראשונה שעובדת
 printer_mode_all	הדפס בכולן
 kot_show_area	אזור
 kot_hide_area	הסתר אזור
-kot_show_item_hdr	פריט · כמות
-kot_hide_item_hdr	הסתר עמודות
 kot_show_title	שורת כותרת
 kot_hide_title	הסתר כותרת
 kot_field_cycle	בחר את הבא
@@ -1337,12 +1361,12 @@ private_code_ph	קוד בן 12 ספרות
 stamp_on	חותמת: בקובץ
 pay_qr_on	QR תשלום: בקובץ
 pay_qr_off	QR תשלום: אין
+printers_screen_tip	חיפוש מציג את המדפסות שהמכשיר הזה יכול להשתמש בהן ושומר אותן לחנות הזו. מדפסות חשבון: תבנית חשבון ו-KOT ← חשבון. מטבח: מטבח ← עמדות מטבח.
+printers_found_none	לא נמצאו מדפסות.
+nav_loading	טוען…
+kot_copy_from	העתק מ
+kot_copy_from_help	מעתיק את הגודל, העובי והיישור של כל שורה מאותו סוג לסוג הזה. הסוג הזה שומר על הבאנר, קידומת הפריט והקו החוצה שלו. שמור את תבנית ה-KOT כדי לשמור.
 items_tmpl_heading	תבניות פריטים
 items_tmpl_help	מנות, קטגוריות ותמונות לתפריט שלך. הגדרות החנות והצוות נשארים כפי שהם.
 public_tmpl_help	תפריטי פתיחה שכל אחד יכול להוריד. נדרש אינטרנט פעם אחת.
 private_tmpl_help	תפריטי לקוח הנעולים בקוד בן 12 ספרות מאיש הקשר שלך ב-Khaynjo.
-printers_screen_tip	חיפוש מציג את המדפסות שהמכשיר הזה יכול להשתמש בהן ושומר אותן לחנות הזו. מדפסות חשבון: תבנית חשבון ו-KOT ← חשבון. מטבח: מטבח ← עמדות מטבח.
-printers_found_none	לא נמצאו מדפסות.
-kot_copy_from	העתק מ
-kot_copy_from_help	מעתיק את הגודל, העובי והיישור של כל שורה מאותו סוג לסוג הזה. הסוג הזה שומר על הבאנר, קידומת הפריט והקו החוצה שלו. שמור את תבנית ה-KOT כדי לשמור.
-nav_loading	טוען…

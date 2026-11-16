@@ -60,10 +60,6 @@ bill_item_layout	Layout dos itens
 bill_item_layout_columns	Colunas
 bill_item_layout_stacked	Empilhado
 bill_item_header	Cabeçalhos
-bill_item_hdr_item	Cabeçalho do item
-bill_item_hdr_qty	Cabeçalho da qtd
-bill_item_hdr_price	Cabeçalho do preço
-bill_item_hdr_amount	Cabeçalho do valor
 bill_item_name	Nome do item
 bill_item_qty	Qtd
 bill_item_price	Preço
@@ -71,6 +67,13 @@ bill_item_amount	Valor
 bill_item_note	Nota do item
 bill_item_col_sep	Riscos das colunas
 slip_col_width	Largura (mm)
+paper_heading	Papel
+paper_size	{w} × {h} mm
+paper_roll	rolo de {w} mm
+paper_not_set	papel ainda desconhecido
+paper_length_mm	Comprimento (mm)
+printer_paper_help	O papel desta impressora em mm. Um Comprimento vazio é um rolo: cada recibo tem o comprimento do seu conteúdo. Procurar impressoras preenche o papel vazio pelo driver da impressora (um rolo de 80 mm quando ele não sabe dizer) e nunca altera um papel já definido.
+preview_help	Este recibo no papel da impressora escolhida abaixo, tal como é impresso nela: em tamanho real a partir do canto superior esquerdo que a impressora alcança (cinza: margens que não alcança), um recibo longo em mais folhas, tudo além da borda do papel é cortado. Escolher uma impressora só altera a pré-visualização; o papel de cada impressora define-se em Impressoras.
 slip_col_start	Espaço inicial (px)
 slip_col_end	Espaço final (px)
 slip_columns_help	A largura de cada coluna inclui o seu espaço inicial e final. O texto quebra dentro da sua coluna; o que passa da largura do conteúdo é cortado, no papel e na pré-visualização.
@@ -838,3 +841,4 @@ nav_loading	Carregando…
 printer_mode_first	A primeira que funciona
 printer_mode_all	Imprimir em todos
 slip_columns	Colunas
+slip_col_header	Cabeçalho

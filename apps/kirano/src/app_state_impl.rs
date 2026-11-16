@@ -1,4 +1,56 @@
 impl AppState {
+    /// The printer the Bill preview is drawn on: the one picked in its
+    /// dropdown while it is still saved, else the first printer the bill
+    /// goes to, else the first saved printer (docs/PRINTER.md § Paper and
+    /// preview). Picking it changes the preview only.
+    fn preview_printer(&self) -> Option<&print_share::NamedPrinter> {
+        let draft = &self.printer_draft;
+        if let Some(p) = self
+            .bill_preview_printer
+            .as_deref()
+            .and_then(|id| draft.printer_by_id(id))
+        {
+            return Some(p);
+        }
+        draft
+            .route_for(print_share::RouteKey::Bill)
+            .iter()
+            .find_map(|slot| {
+                let slot = slot.trim();
+                let id = match draft.virtual_printer_by_id(slot) {
+                    Some(vp) => vp.printer_id.clone(),
+                    None => print_share::DevicePrinters::decode_route_slot(slot).0,
+                };
+                draft.printer_by_id(&id)
+            })
+            .or_else(|| draft.printers.first())
+    }
+
+    /// What the preview draws the bill on: the active printer's paper and how
+    /// the bill is sent (the Bill format: OS document or ESC/POS). With no
+    /// printer saved: an 80 mm roll. A printer whose paper is not known yet
+    /// is asked (its driver answers on its own thread; the answer fills it
+    /// and redraws).
+    fn preview_paper(&self) -> PreviewPaper {
+        let os_document = self
+            .printer_draft
+            .format_for(print_share::RouteKey::Bill)
+            .document;
+        let roll = os_paper::PaperMm {
+            width_mm: print_share::DEFAULT_PAPER_WIDTH_MM,
+            length_mm: 0.0,
+        };
+        let Some(p) = self.preview_printer() else {
+            return PreviewPaper { paper: roll, os_document, driver: None };
+        };
+        let driver = if !p.has_driver() || (!os_document && p.paper().is_some()) {
+            None
+        } else {
+            os_paper::papers_for(&p.target).and_then(|r| r.ok())
+        };
+        PreviewPaper { paper: p.paper().unwrap_or(roll), os_document, driver }
+    }
+
     fn boot() -> Self {
         let mut state = Self {
             store: None,
@@ -41,6 +93,8 @@ impl AppState {
             nav_tab_after_unlock: None,
             last_nav_saved: None,
             printer_selected_id: None,
+            bill_preview_printer: None,
+            printer_paper_open: None,
             test_printer_ids: Vec::new(),
             printer_vp_landscape: false,
             printer_vp_em: print_share::STD_EM_NORMAL,
@@ -812,6 +866,22 @@ impl AppState {
                     &self.printer_route_key,
                     |k| self.t(k),
                 )
+            }
+            // Every saved printer as `name · paper`; ✓ = the preview's.
+            SuggestField::BillPreviewPaper => {
+                ask_drivers_for_missing_papers(&self.printer_draft.printers);
+                let active = self.preview_printer().map(|p| p.id.clone());
+                preview_paper_rows(&self.printer_draft.printers, active.as_deref(), |k| self.t(k))
+                    .into_iter()
+                    .map(|r| {
+                        let row = suggest::SuggestRow::new(r.title, String::new());
+                        if r.selected {
+                            row.with_action("\u{2713}")
+                        } else {
+                            row
+                        }
+                    })
+                    .collect()
             }
             SuggestField::TestPrinters => {
                 test_printers_suggest_rows(

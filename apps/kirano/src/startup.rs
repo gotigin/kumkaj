@@ -223,7 +223,7 @@ mod tests {
     #[cfg(target_os = "linux")]
     #[test]
     fn the_linux_autostart_entry_comes_and_goes() {
-        let dir = std::env::temp_dir().join(format!("kirano-autostart-{}", crate::domain::new_id()));
+        let dir = crate::test_dirs::run_root().join(format!("kirano-autostart-{}", crate::domain::new_id()));
         let entry = dir.join("autostart").join("kumkaj-kirano.desktop");
         set_linux_entry(&entry, true, std::path::Path::new("/opt/kirano/kumkaj-kirano")).unwrap();
         let text = std::fs::read_to_string(&entry).unwrap();

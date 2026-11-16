@@ -501,6 +501,17 @@ job_size	Mida de lletra
 job_size_ph	p. ex. 18, 20, 26…
 test_receipt_format	Rebut de prova
 test_label_format	Etiqueta de prova
+paper_heading	Paper
+paper_size	{w} × {h} mm
+paper_roll	rotlle de {w} mm
+paper_not_set	paper encara desconegut
+paper_length_mm	Llargada (mm)
+printer_paper_help	El paper d'aquesta impressora en mm. Una Llargada buida és un rotlle: cada tiquet és tan llarg com el seu contingut. Troba impressores omple el paper buit amb el del controlador de la impressora (un rotlle de 80 mm si no ho pot dir) i mai no canvia un paper ja definit.
+preview_help	Aquest tiquet sobre el paper de la impressora triada a sota, tal com s'hi imprimeix: a mida real des de la cantonada superior esquerra que la impressora pot assolir (gris: vores que no pot), un tiquet llarg en més fulls, tot el que passa de la vora del paper es retalla. Triar una impressora només canvia la previsualització; el paper de cada impressora es defineix a Impressores.
+slip_col_width	Amplada (mm)
+no_printer_assigned	Sense impressora
+printer_target_default	la impressora habitual d'aquest ordinador (adreça buida)
+job_preview	Vista prèvia
 test_receipt_sent	Rebut de mostra enviat
 test_label_sent	Mostra d'etiqueta enviada
 test_print_no_printer	Cap impressora per a aquesta feina — afegeix-ne una sota aquest lloc

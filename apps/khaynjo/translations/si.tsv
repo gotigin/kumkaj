@@ -92,10 +92,6 @@ bill_item_layout	මෙනු මෙනු අයිතම පිරිසැල
 bill_item_layout_columns	තීරු
 bill_item_layout_stacked	ගොඩගැසී ඇත
 bill_item_header	තීරු ශීර්ෂ
-bill_item_hdr_item	මෙනු මෙනු අයිතම ශීර්ෂකය
-bill_item_hdr_qty	ප්‍රමාණ ශීර්ෂකය
-bill_item_hdr_price	මිල ශීර්ෂකය
-bill_item_hdr_amount	මුදල ශීර්ෂකය
 bill_item_name	පිඟානේ නම
 bill_item_qty	ප්‍රමාණය
 bill_item_price	මිල
@@ -103,6 +99,20 @@ bill_item_amount	මුදල
 bill_item_note	පිඟන් සටහන
 bill_item_col_sep	තීරු නීති
 slip_columns	තීරු
+slip_col_header	ශීර්ෂකය
+bill_line_logo	ලාංඡනය
+bill_logo_picture	පින්තූරය
+bill_logo_choose	පින්තූරය තෝරන්න
+bill_logo_remove	පින්තූරය ඉවත් කරන්න
+bill_logo_none	පින්තූරයක් නැත
+bill_logo_unreadable	මෙම යෙදුමට කියවිය හැකි පින්තූරයක් නොවේ
+bill_logo_width	පළල (px)
+bill_logo_height	උස (px)
+bill_logo_tones	අළු පැහැ
+bill_logo_solid	ඝන
+bill_logo_shaded	සෙවණැලි සහිත
+bill_logo_help	පළල සහ උස px වලින්. හිස් නම් පින්තූරය අනුගමනය කරයි: එකක් හිස් නම් හැඩය රැකේ, දෙකම හිස් නම් එහිම ප්‍රමාණය; දෙකම දුන්නොත් ඇතුළට ගැළපේ, කිසිදා ඇදෙන්නේ නැත. පින්තූරයක් නැත්නම්: පෙන්වන ලාංඡනය එහි උස හිස් ඉඩක් ලෙස තබයි; සඟවන්න එය ඉවත් කරයි.
+bill_logo_tones_help	ඝන: සෑම තිතක්ම කළු හෝ සුදු, පැහැදිලි ලාංඡන සඳහා. සෙවණැලි සහිත: අළු පැහැය සියුම් තිත් රටාවක් වේ, ඡායාරූප සහ මෘදු සෙවණැලි සඳහා.
 slip_col_width	පළල (mm)
 slip_col_start	ආරම්භක ඉඩ (px)
 slip_col_end	අවසාන ඉඩ (px)
@@ -167,6 +177,21 @@ alerts_help	ඔබ වෙනුවෙන් තත්ත්‍ව පණිව�
 snack_secs_ph	තත්පර (3-60, පෙරනිමි 10)
 snack_secs_save	අනතුරු ඇඟවීමේ කාලය ඉතිරි කරන්න
 snack_secs_saved	අනතුරු ඇඟවීමේ කාලය ඉතිරි කර ඇත - තත්පර {n}
+settings_sec_whatsapp	WhatsApp
+whatsapp_cloud_help	Use your own Meta WhatsApp Cloud API. Create a System User token with whatsapp_business_messaging (temporary dashboard tokens expire). Credentials stay on this Server only — never on extra tills. Accepted means Meta took the request, not that the guest received it.
+whatsapp_phone_id_ph	Phone Number ID
+whatsapp_token_ph	Access Token (leave blank to keep)
+whatsapp_template_ph	Bill template name (optional)
+whatsapp_template_lang_ph	Template language (e.g. en)
+whatsapp_enable	Enable
+whatsapp_disable	Off
+whatsapp_save	Save WhatsApp
+whatsapp_test	Test connection
+whatsapp_disconnect	Disconnect
+whatsapp_send_bill	Send via WhatsApp
+whatsapp_consent	WhatsApp OK
+whatsapp_consent_help	Guest agreed to receive WhatsApp messages. A phone number alone is not consent.
+whatsapp_server_only	Configure WhatsApp on the shop Server device
 settings_sec_backup	උපස්ථ සහ ප්‍රතිසාධනය
 settings_sec_diag	රෝග විනිශ්චය
 settings_sec_privacy	පෞද්ගලිකත්වය
@@ -729,6 +754,13 @@ station_vps_dd	මෙම ස්ථානය සඳහා මුද්‍රණ �
 station_vps_dd_n	{n} මුද්‍රණ යන්ත්‍ර · වෙනස් කිරීමට තට්ටු කරන්න
 bill_printers_dd	අමුත්තන්ගේ බිල්පත සඳහා මුද්‍රණ යන්ත්‍ර
 bill_printers_dd_n	අමුත්තන්ගේ බිල්පත සඳහා {n} මුද්‍රණ යන්ත්‍ර · වෙනස් කිරීමට තට්ටු කරන්න
+paper_heading	කඩදාසි
+paper_size	{w} × {h} mm
+paper_roll	{w} mm රෝලය
+paper_not_set	කඩදාසිය තවම නොදනී
+paper_length_mm	දිග (mm)
+printer_paper_help	මෙම මුද්‍රණ යන්ත්‍රයේ කඩදාසිය mm වලින්. හිස් දිග යනු රෝලයකි: සෑම පත්‍රිකාවක්ම එහි අන්තර්ගතය තරම් දිගය. මුද්‍රණ යන්ත්‍ර සොයන්න හිස් කඩදාසිය මුද්‍රණ යන්ත්‍රයේ ධාවකයෙන් පුරවයි (කිව නොහැකි නම් 80 mm රෝලය) සහ දැනටමත් සැකසූ එකක් කිසිදා වෙනස් නොකරයි.
+preview_help	පහතින් තෝරාගත් මුද්‍රණ යන්ත්‍රයේ කඩදාසිය මත මෙම පත්‍රිකාව, එහි මුද්‍රණය වන ආකාරයටම: යන්ත්‍රයට ළඟා විය හැකි ඉහළ වම් කෙළවරේ සිට සැබෑ ප්‍රමාණයෙන් (අළු: ළඟා නොවන දාර), දිගු පත්‍රිකාව තවත් පිටුවල, කඩදාසි දාරයෙන් ඔබ්බට ඇති සියල්ල කැපේ. මුද්‍රණ යන්ත්‍රයක් තේරීමෙන් පෙරදසුන පමණක් වෙනස් වේ; එක් එක් යන්ත්‍රයේ කඩදාසිය මුද්‍රණ යන්ත්‍ර යටතේ සැකසේ.
 job_layout	පිරිසැලසුම
 job_delivery	රැකියාව යවන ආකාරය
 job_delivery_help	OS ලේඛනය, අමු බයිට්, හෝ ESC/POS. අමුත්තන්ගේ බිල්පත සහ මුළුතැන්ගෙයි ටිකට් එක එක එක ඒවා තබා ගනී. ඕනෑම කාර්යයක් සොයන්න සුරකින ලද ඕනෑම මුද්‍රණ යන්ත්‍රයකට යා හැක.
@@ -1105,9 +1137,6 @@ remove_these_tables	මෙම කෑම මේස ඉවත් කරන්න
 table_remove_ph	ඉවත් කරන්න: T1-T24, හෝ එක් කෑම මේසයක නම
 find_server	වෙළඳසැලේ සේවාදායකය සොයා ගන්න
 bill_format	ආගන්තුක ආගන්තුක බිල්පත් ආකෘතිය
-bill_header_ph	ලිපිනය | දුරකථනය
-fssai_ph	FSSAI බලපත්‍ර අංකය. (ඉන්දියාව)
-bill_footer_ph	පාදකය (උදා. ස්තූතියි, නැවත පැමිණෙන්න)
 reset_bill_format	පෙරනිමියට යළි පිහිටුවන්න
 bill_format_reset	ආගන්තුක ආගන්තුක බිල්පත් ආකෘතිය පෙරනිමියට යළි පිහිටුවන ලදී
 reset_kot_format	පෙරනිමියට යළි පිහිටුවන්න
@@ -1146,7 +1175,6 @@ kot_kind_modified	වෙනස් කර ඇත
 kot_kind_cancelled	අවලංගු කළා
 kot_style_heading	ක්ෂේත්‍ර වර්ගය ප්‍රමාණය සහ බර
 kot_style_title	මාතෘකාව
-kot_style_item_qty	මෙනු මෙනු අයිතමය · Qty
 kot_style_field_pick	ක්ෂේත්රය තෝරන්න
 kot_weight_regular	නිතිපතා
 kot_weight_bold	නිර්භීත
@@ -1158,8 +1186,8 @@ content_width_bill	අමුත්තන්ගේ බිල්පත් අන�
 content_width_kot	KOT අන්තර්ගත පළල (මි.මී.)
 content_width_ph	නැතහොත් අන්තර්ගත පළලක් ටයිප් කරන්න, 40–210 mm
 content_width_help	මෙම ස්ලිප් මුද්‍රණය කෙතරම් පළලද. ආගන්තුක ආගන්තුක බිල්පත සහ KOT එක් එක් ඒවායේ පළල තබා ගන්න.
-content_width_bill_help	ආගන්තුක බිල්පත කොපමණ පළලකින් මුද්‍රණය වේ. පෙරනිමි 210 mm (පිටුව). 58 mm පටු ස්ලිප්, 80 mm පළල ස්ලිප්, 112 mm 4-අඟල්, 210 mm A4-පළල. 40 සිට 210 දක්වා ඕනෑම අගයක් ටයිප් කරන්න. මුළුතැන්ගෙයි ටිකට්පත් KOT ටැබය මත ඔවුන්ගේම පළල ඇත.
-content_width_kot_help	මුළුතැන්ගෙයි ටිකට් පත කොතරම් පළලකින් මුද්‍රණය වේ. පෙරනිමිය 80 mm. 58 mm පටු ස්ලිප්, 80 mm පළල ස්ලිප්, 112 mm 4-අඟල්, 210 mm පිටුව. 40 සිට 210 දක්වා ඕනෑම අගයක් ටයිප් කරන්න. ආගන්තුක අමුත්තන්ගේ බිල්පත් ආගන්තුක ආගන්තුක බිල්පත් පටිත්තෙහි ඔවුන්ගේම පළල ඇත.
+content_width_bill_help	අමුත්තාගේ බිල්පත කොපමණ පළලින් මුද්‍රණය වේද, mm වලින් (40–210). එය ඕනෑම කඩදාසියක මෙම සැබෑ ප්‍රමාණයෙන් මුද්‍රණය වේ; මීට වඩා පටු කඩදාසියක මුද්‍රණ දාරයෙන් ඔබ්බට ඇති කොටස කැපේ (කඩදාසි බලන්න). කුස්සියේ ටිකට්පත්වලට KOT ටැබයේ ඒවායේම පළලක් ඇත.
+content_width_kot_help	කුස්සියේ ටිකට්පත කොපමණ පළලින් මුද්‍රණය වේද, mm වලින් (40–210). එය ඕනෑම කඩදාසියක මෙම සැබෑ ප්‍රමාණයෙන් මුද්‍රණය වේ; මීට වඩා පටු කඩදාසියක මුද්‍රණ දාරයෙන් ඔබ්බට ඇති කොටස කැපේ (කඩදාසි බලන්න). අමුත්තන්ගේ බිල්පත්වලට බිල් ටැබයේ ඒවායේම පළලක් ඇත.
 vp_paper_width	අන්තර්ගත පළල (මි.මී.)
 vp_paper_width_ph	නැතහොත් අන්තර්ගත පළලක් ටයිප් කරන්න, 40–210 mm
 vp_paper_width_help	ආගන්තුක ආගන්තුක බිල්පත සහ KOT ආකෘතිය යටතේ අන්තර්ගත පළල සකසා ඇත — අමුත්තන්ගේ බිල්පත (පෙරනිමි 210 mm) සහ මුළුතැන්ගෙයි ටිකට් (පෙරනිමිය 80 mm) සඳහා වෙන වෙනම.
@@ -1213,8 +1241,6 @@ schemes_help	BOGO, සියයට අඩු, සහ ස්ථාවර සං�
 scheme_bogo_ph	Buy 2 Thali get 1 Chaas
 add_scheme	BOGO එකතු කරන්න
 schedule_ph	පැය / ප්‍රීතිමත් පැය - Mon-Fri 07:00-11:00 හෝ HappyHour 17:00-19:00=150
-upi_vpa_ph	UPI ID (VPA)
-upi_payee_ph	UPI ගෙවන්නාගේ නම (විකල්ප)
 upi_qr	UPI QR
 show_upi_qr	UPI QR පෙන්වන්න
 close_upi_qr	වසන්න
@@ -1295,8 +1321,6 @@ printer_mode_first	මුලින්ම එය ක්රියා කරයි
 printer_mode_all	සියල්ල මත මුද්‍රණය කරන්න
 kot_show_area	ප්රදේශය
 kot_hide_area	ප්රදේශය සඟවන්න
-kot_show_item_hdr	මෙනු මෙනු අයිතමය · Qty
-kot_hide_item_hdr	තීරු සඟවන්න
 kot_show_title	මාතෘකා රේඛාව
 kot_hide_title	මාතෘකාව සඟවන්න
 kot_field_cycle	ඊළඟට තෝරන්න
@@ -1337,12 +1361,12 @@ private_code_ph	ඉලක්කම් 12 කේතය
 stamp_on	මුද්දරය: ගොනුවේ
 pay_qr_on	ගෙවීම් QR: ගොනුවේ
 pay_qr_off	ගෙවීම් QR: කිසිවක් නැත
+printers_screen_tip	සොයන්න මඟින් මෙම උපාංගයට භාවිත කළ හැකි මුද්‍රණ යන්ත්‍ර පෙන්වා මෙම වෙළඳසැල සඳහා සුරකියි. බිල් මුද්‍රණ යන්ත්‍ර: බිල් සහ KOT ආකෘතිය → බිල්. කුස්සිය: කුස්සිය → කුස්සි ස්ථාන.
+printers_found_none	මුද්‍රණ යන්ත්‍ර හමු නොවීය.
+nav_loading	පූරණය වෙමින්…
+kot_copy_from	මෙයින් පිටපත් කරන්න
+kot_copy_from_help	එම වර්ගයේ සෑම පේළියකම ප්‍රමාණය, ඝනකම සහ පෙළගැස්ම මෙයට පිටපත් කරයි. මෙම වර්ගය එහිම බැනරය, අයිතම උපසර්ගය සහ කපා හැරීම තබා ගනී. තබා ගැනීමට KOT ආකෘතිය සුරකින්න.
 items_tmpl_heading	අයිතම අච්චු
 items_tmpl_help	ඔබේ මෙනුව සඳහා කෑම, කාණ්ඩ සහ ඡායාරූප. වෙළඳසැල් සැකසුම් සහ කාර්ය මණ්ඩලය එලෙසම පවතී.
 public_tmpl_help	ඕනෑම කෙනෙකුට බාගත කළ හැකි ආරම්භක මෙනු. වරක් අන්තර්ජාලය අවශ්‍යයි.
 private_tmpl_help	ඔබේ Khaynjo සම්බන්ධතාවයෙන් ලැබෙන ඉලක්කම් 12 කේතයකින් ආරක්ෂිත පාරිභෝගික මෙනු.
-printers_screen_tip	සොයන්න මඟින් මෙම උපාංගයට භාවිත කළ හැකි මුද්‍රණ යන්ත්‍ර පෙන්වා මෙම වෙළඳසැල සඳහා සුරකියි. බිල් මුද්‍රණ යන්ත්‍ර: බිල් සහ KOT ආකෘතිය → බිල්. කුස්සිය: කුස්සිය → කුස්සි ස්ථාන.
-printers_found_none	මුද්‍රණ යන්ත්‍ර හමු නොවීය.
-kot_copy_from	මෙයින් පිටපත් කරන්න
-kot_copy_from_help	එම වර්ගයේ සෑම පේළියකම ප්‍රමාණය, ඝනකම සහ පෙළගැස්ම මෙයට පිටපත් කරයි. මෙම වර්ගය එහිම බැනරය, අයිතම උපසර්ගය සහ කපා හැරීම තබා ගනී. තබා ගැනීමට KOT ආකෘතිය සුරකින්න.
-nav_loading	පූරණය වෙමින්…

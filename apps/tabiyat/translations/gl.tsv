@@ -72,10 +72,6 @@ bill_item_layout	Disposición do artigo
 bill_item_layout_columns	Columnas
 bill_item_layout_stacked	Amoreado
 bill_item_header	Cabeceiras de columna
-bill_item_hdr_item	Cabeceira de artigo
-bill_item_hdr_qty	Cabeceira de cant.
-bill_item_hdr_price	Cabeceira de prezo
-bill_item_hdr_amount	Cabeceira de importe
 bill_item_name	Nome do medicamento
 bill_item_qty	Cant.
 bill_item_price	Prezo
@@ -83,6 +79,13 @@ bill_item_amount	Importe
 bill_item_note	Rx / nota de venda
 bill_item_col_sep	Liñas de columna
 slip_col_width	Ancho (mm)
+paper_heading	Papel
+paper_size	{w} × {h} mm
+paper_roll	rolo de {w} mm
+paper_not_set	papel aínda descoñecido
+paper_length_mm	Longo (mm)
+printer_paper_help	O papel desta impresora en mm. Un Longo baleiro é un rolo: cada tíquet é tan longo coma o seu contido. Atopar impresoras enche o papel baleiro co do controlador da impresora (un rolo de 80 mm se non o pode dicir) e nunca cambia un xa definido.
+preview_help	Este tíquet sobre o papel da impresora escollida abaixo, tal como se imprime alí: a tamaño real desde a esquina superior esquerda que alcanza a impresora (gris: bordos que non alcanza), un tíquet longo en máis follas, todo o que pasa do bordo do papel recórtase. Escoller unha impresora só cambia a vista previa; o papel de cada impresora defínese en Impresoras.
 slip_col_start	Espazo inicial (px)
 slip_col_end	Espazo final (px)
 slip_columns_help	O ancho de cada columna inclúe o seu espazo inicial e final. O texto axústase dentro da súa columna; o que pasa do ancho do contido recórtase, no papel e na vista previa.
@@ -850,3 +853,4 @@ nav_loading	Cargando…
 printer_mode_first	A primeira que funcione
 printer_mode_all	Imprimir en todas
 slip_columns	Columnas
+slip_col_header	Cabeceira

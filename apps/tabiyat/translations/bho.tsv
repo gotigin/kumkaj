@@ -72,10 +72,6 @@ bill_item_layout	सामान के बनावट
 bill_item_layout_columns	खंभा
 bill_item_layout_stacked	ढेर
 bill_item_header	खंभा शीर्षक
-bill_item_hdr_item	सामान शीर्षक
-bill_item_hdr_qty	मात्रा शीर्षक
-bill_item_hdr_price	दाम शीर्षक
-bill_item_hdr_amount	रकम शीर्षक
 bill_item_name	दवाई के नाम
 bill_item_qty	मात्रा
 bill_item_price	दाम
@@ -83,6 +79,13 @@ bill_item_amount	रकम
 bill_item_note	Rx / बिक्री टिप्पणी
 bill_item_col_sep	खंभा रेखा
 slip_col_width	चौड़ाई (mm)
+paper_heading	कागज
+paper_size	{w} × {h} mm
+paper_roll	{w} mm रोल
+paper_not_set	कागज अभी पता नइखे
+paper_length_mm	लंबाई (mm)
+printer_paper_help	एह प्रिंटर के कागज mm में। खाली लंबाई के मतलब रोल: हर पर्ची ओकरा सामग्री जेतना लंबा होला। प्रिंटर खोजीं खाली कागज प्रिंटर के ड्राइवर से भर देला (ना बता सके त 80 mm रोल) आ पहिले से तय कागज कबो ना बदलेला।
+preview_help	ई पर्ची नीचे चुनल प्रिंटर के कागज पर, जइसे उहाँ छपी: प्रिंटर जहाँ ले पहुँचेला ओह ऊपर बाँया कोना से असली नाप में (धूसर: जहाँ ना पहुँचे), लंबा पर्ची अउरी पन्ना पर, कागज के किनारा से आगे के हिस्सा कट जाला। प्रिंटर चुनला से खाली पूर्वावलोकन बदलेला; हर प्रिंटर के कागज प्रिंटर में तय होला।
 slip_col_start	सुरुआत के जगह (px)
 slip_col_end	आखिर के जगह (px)
 slip_columns_help	हर खंभा के चौड़ाई में ओकर सुरुआत आ आखिर के जगह शामिल बा। लिखावट अपना खंभा के भीतर लपेटा जाला; सामग्री के चौड़ाई से बाहर जवन बा ऊ कागज आ पूर्वावलोकन दूनो में कट जाला।
@@ -850,3 +853,4 @@ nav_loading	लोड हो रहल बा…
 printer_mode_first	जवन पहिले चले
 printer_mode_all	सब पर छापीं
 slip_columns	खंभा
+slip_col_header	शीर्षक

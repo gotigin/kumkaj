@@ -92,10 +92,6 @@ bill_item_layout	Nhazi ihe
 bill_item_layout_columns	Ogidi
 bill_item_layout_stacked	Kwakọba
 bill_item_header	Isi ogidi
-bill_item_hdr_item	Isi ihe
-bill_item_hdr_qty	Isi ọnụọgụ
-bill_item_hdr_price	Isi ọnụahịa
-bill_item_hdr_amount	Isi ego
 bill_item_name	Aha nri
 bill_item_qty	Ọnụọgụ
 bill_item_price	Ọnụahịa
@@ -103,6 +99,20 @@ bill_item_amount	Ego
 bill_item_note	Ndetu nri
 bill_item_col_sep	Ahịrị ogidi
 slip_columns	Kọlụm
+slip_col_header	Isi
+bill_line_logo	Akara
+bill_logo_picture	Foto
+bill_logo_choose	Họrọ foto
+bill_logo_remove	Wepụ foto
+bill_logo_none	Enweghị foto
+bill_logo_unreadable	Ọ bụghị foto ngwa a nwere ike ịgụ
+bill_logo_width	Obosara (px)
+bill_logo_height	Ogologo (px)
+bill_logo_tones	Ntụ ntụ
+bill_logo_solid	Siri ike
+bill_logo_shaded	Nwere ndò
+bill_logo_help	Obosara na ogologo na px. Ihe tọgbọ chakoo na-eso foto ahụ: otu tọgbọ chakoo na-edobe ọdịdị ya, ha abụọ tọgbọ chakoo na-eji nha nke ya; ma etinye ha abụọ, ọ na-abanye n'ime, anaghị agbatị ya. Enweghị foto: akara a na-egosi na-edobe ogologo ya dị ka oghere efu; Zoo na-ewepụ ya.
+bill_logo_tones_help	Siri ike: ntụpọ ọ bụla ojii ma ọ bụ ọcha, maka akara doro anya. Nwere ndò: ntụ ntụ na-aghọ ụkpụrụ ntụpọ dị nro, maka foto na ndò dị nro.
 slip_col_width	Obosara (mm)
 slip_col_start	Ohere mmalite (px)
 slip_col_end	Ohere njedebe (px)
@@ -167,6 +177,21 @@ alerts_help	Ogologo oge ozi ọnọdụ na-anọ n'ihuenyo maka gị (nbanye a).
 snack_secs_ph	Sekọnd (3–60, ndabara 10)
 snack_secs_save	Chekwaa oge ọkwa
 snack_secs_saved	Echekwara oge ọkwa — {n} sekọnd
+settings_sec_whatsapp	WhatsApp
+whatsapp_cloud_help	Use your own Meta WhatsApp Cloud API. Create a System User token with whatsapp_business_messaging (temporary dashboard tokens expire). Credentials stay on this Server only — never on extra tills. Accepted means Meta took the request, not that the guest received it.
+whatsapp_phone_id_ph	Phone Number ID
+whatsapp_token_ph	Access Token (leave blank to keep)
+whatsapp_template_ph	Bill template name (optional)
+whatsapp_template_lang_ph	Template language (e.g. en)
+whatsapp_enable	Enable
+whatsapp_disable	Off
+whatsapp_save	Save WhatsApp
+whatsapp_test	Test connection
+whatsapp_disconnect	Disconnect
+whatsapp_send_bill	Send via WhatsApp
+whatsapp_consent	WhatsApp OK
+whatsapp_consent_help	Guest agreed to receive WhatsApp messages. A phone number alone is not consent.
+whatsapp_server_only	Configure WhatsApp on the shop Server device
 settings_sec_backup	Nchekwa na nweghachi
 settings_sec_diag	Nnyocha
 settings_sec_privacy	Nzuzo
@@ -729,6 +754,13 @@ station_vps_dd	Igwe mbipụta maka ọdụ a
 station_vps_dd_n	Igwe mbipụta {n} · kpatụ ka ị gbanwee
 bill_printers_dd	Igwe mbipụta maka ụgwọ
 bill_printers_dd_n	Igwe mbipụta {n} maka ụgwọ · kpatụ ka ị gbanwee
+paper_heading	Akwụkwọ
+paper_size	{w} × {h} mm
+paper_roll	mpịakọta {w} mm
+paper_not_set	a maghị akwụkwọ ahụ ugbu a
+paper_length_mm	Ogologo (mm)
+printer_paper_help	Akwụkwọ igwe mbipụta a na mm. Ogologo tọgbọ chakoo bụ mpịakọta: akwụkwọ ọ bụla dị ogologo dị ka ihe dị n'ime ya. Chọta igwe mbipụta na-ejupụta akwụkwọ tọgbọ chakoo site na draịva igwe mbipụta ahụ (mpịakọta 80 mm mgbe ọ na-enweghị ike ịkọ) ma ọ dịghị mgbe ọ na-agbanwe nke e debere ugbu a.
+preview_help	Akwụkwọ a n'elu akwụkwọ igwe mbipụta a họọrọ n'okpuru, dịka ọ na-ebipụta ebe ahụ: nha n'ezie site na nkuku elu aka ekpe igwe ahụ na-eru (ntụ: nsọtụ ọ na-anaghị eru), akwụkwọ ogologo na peeji ndị ọzọ, ihe niile gafere nsọtụ akwụkwọ ka a na-ebipụ. Ịhọrọ igwe mbipụta na-agbanwe naanị nlele; a na-edobe akwụkwọ igwe ọ bụla n'okpuru Igwe mbipụta.
 job_layout	Nhazi
 job_delivery	Otu a na-ezipu ọrụ
 job_delivery_help	Akwụkwọ sistemụ, bayịt ozugbo, ma ọ bụ ESC/POS. Ụgwọ na tiketi kichin nwere nke ha. Ọrụ ọ bụla nwere ike ịga na igwe mbipụta ọ bụla Chọta chekwara.
@@ -1105,9 +1137,6 @@ remove_these_tables	Wepụ tebụl ndị a
 table_remove_ph	Wepụ: T1-T24, ma ọ bụ aha otu tebụl
 find_server	Chọta sava ụlọ ahịa
 bill_format	Ụdị ụgwọ
-bill_header_ph	Adreesị | ekwentị
-fssai_ph	Nọmba ikike FSSAI (India)
-bill_footer_ph	Ala (dịka Daalụ, bịa ọzọ)
 reset_bill_format	Weghachi na ndabara
 bill_format_reset	E weghachiri ụdị ụgwọ na ndabara
 reset_kot_format	Weghachi na ndabara
@@ -1146,7 +1175,6 @@ kot_kind_modified	Emeziri
 kot_kind_cancelled	Akagbuola
 kot_style_heading	Nha na ịdị arọ ụdị ubi
 kot_style_title	Isiokwu
-kot_style_item_qty	Ihe · Ọnụ
 kot_style_field_pick	Họrọ ubi
 kot_weight_regular	Nkịtị
 kot_weight_bold	Oke
@@ -1158,8 +1186,8 @@ content_width_bill	Obosara ihe ụgwọ (mm)
 content_width_kot	Obosara ihe KOT (mm)
 content_width_ph	Ma ọ bụ dee obosara ihe, 40–210 mm
 content_width_help	Obosara slip a na-ebipụta. Ụgwọ na KOT nwere obosara nke ha.
-content_width_bill_help	Obosara ụgwọ ndị ọbịa na-ebipụta. Ndabara 210 mm (ibe). Slip warara 58 mm, slip sara 80 mm, 112 mm 4-inch, 210 mm obosara A4. Dee ọnụọgụ ọ bụla site na 40 ruo 210. Tiketi kichin nwere obosara nke ha na taabụ KOT.
-content_width_kot_help	Obosara tiketi kichin na-ebipụta. Ndabara 80 mm. Slip warara 58 mm, slip sara 80 mm, 112 mm 4-inch, ibe 210 mm. Dee ọnụọgụ ọ bụla site na 40 ruo 210. Ụgwọ ndị ọbịa nwere obosara nke ha na taabụ Ụgwọ.
+content_width_bill_help	Otú ụgwọ ọbịa si sara mbara mgbe e bipụtara ya, na mm (40–210). A na-ebipụta ya n'ezigbo nha a n'akwụkwọ ọ bụla; n'akwụkwọ dị warara karịa, a na-ebipụ akụkụ gafere ọnụ mbipụta (lee Akwụkwọ). Tiketi kichin nwere obosara nke ha na taabụ KOT.
+content_width_kot_help	Otú tiketi kichin si sara mbara mgbe e bipụtara ya, na mm (40–210). A na-ebipụta ya n'ezigbo nha a n'akwụkwọ ọ bụla; n'akwụkwọ dị warara karịa, a na-ebipụ akụkụ gafere ọnụ mbipụta (lee Akwụkwọ). Ụgwọ ndị ọbịa nwere obosara nke ha na taabụ Ụgwọ.
 vp_paper_width	Obosara ihe (mm)
 vp_paper_width_ph	Ma ọ bụ dee obosara ihe, 40–210 mm
 vp_paper_width_help	A na-etinye obosara ihe n'okpuru Ụdị ụgwọ na KOT — iche maka ụgwọ (ndabara 210 mm) na tiketi kichin (ndabara 80 mm).
@@ -1213,8 +1241,6 @@ schemes_help	BOGO, pasent mbelata, na ngwakọta kwụ otu ebe. Ngwakọta na-ag
 scheme_bogo_ph	Zụta Thali 2 nweta Chaas 1
 add_scheme	Tinye BOGO
 schedule_ph	Awa / awa obi ụtọ — Mon-Fri 07:00-11:00 ma ọ bụ HappyHour 17:00-19:00=150
-upi_vpa_ph	Njirimara UPI (VPA)
-upi_payee_ph	Aha onye na-anata UPI (nhọrọ)
 upi_qr	UPI QR
 show_upi_qr	Gosi UPI QR
 close_upi_qr	Mechie
@@ -1295,8 +1321,6 @@ printer_mode_first	Nke mbụ rụrụ ọrụ
 printer_mode_all	Bipụta na niile
 kot_show_area	Mpaghara
 kot_hide_area	Zoo mpaghara
-kot_show_item_hdr	Ihe · Ọnụ
-kot_hide_item_hdr	Zoo ogidi
 kot_show_title	Ahịrị isiokwu
 kot_hide_title	Zoo isiokwu
 kot_field_cycle	Họrọ nke ọzọ
@@ -1337,12 +1361,12 @@ private_code_ph	Koodu ọnụọgụ 12
 stamp_on	Stampụ: dị na faịlụ
 pay_qr_on	QR ịkwụ ụgwọ: dị na faịlụ
 pay_qr_off	QR ịkwụ ụgwọ: ọ dịghị
+printers_screen_tip	Chọọ na-egosi ndị nbipụta ngwaọrụ a nwere ike iji ma chekwaa ha maka ụlọ ahịa a. Ndị nbipụta ụgwọ: Usoro ụgwọ na KOT → Ụgwọ. Kichin: Kichin → Ọdụ kichin.
+printers_found_none	Ahụghị nbipụta ọ bụla.
+nav_loading	Na-ebugo…
+kot_copy_from	Detuo site na
+kot_copy_from_help	Ọ na-edetuo nha, ọkpụrụkpụ na nhazi nke ahịrị ọ bụla site n'ụdị ahụ banye n'nke a. Ụdị a na-edebe banner ya, prefix ihe na ọkara ya. Chekwaa usoro KOT ka ọ dịrị.
 items_tmpl_heading	Ndebiri ihe
 items_tmpl_help	Nri, ụdị na foto maka menu gị. Ntọala ụlọ ahịa na ndị ọrụ na-anọgide otú ha dị.
 public_tmpl_help	Menu mmalite onye ọ bụla nwere ike ibudata. Achọrọ ịntanetị otu ugboro.
 private_tmpl_help	Menu ndị ahịa ejiri koodu ọnụọgụ 12 sitere n'aka onye kọntaktị Khaynjo gị kpọchie.
-printers_screen_tip	Chọọ na-egosi ndị nbipụta ngwaọrụ a nwere ike iji ma chekwaa ha maka ụlọ ahịa a. Ndị nbipụta ụgwọ: Usoro ụgwọ na KOT → Ụgwọ. Kichin: Kichin → Ọdụ kichin.
-printers_found_none	Ahụghị nbipụta ọ bụla.
-kot_copy_from	Detuo site na
-kot_copy_from_help	Ọ na-edetuo nha, ọkpụrụkpụ na nhazi nke ahịrị ọ bụla site n'ụdị ahụ banye n'nke a. Ụdị a na-edebe banner ya, prefix ihe na ọkara ya. Chekwaa usoro KOT ka ọ dịrị.
-nav_loading	Na-ebugo…

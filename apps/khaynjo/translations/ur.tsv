@@ -92,10 +92,6 @@ bill_item_layout	آئٹم لے آؤٹ
 bill_item_layout_columns	کالم
 bill_item_layout_stacked	قطاریں
 bill_item_header	کالم سرخیاں
-bill_item_hdr_item	آئٹم سرخی
-bill_item_hdr_qty	تعداد سرخی
-bill_item_hdr_price	نرخ سرخی
-bill_item_hdr_amount	رقم سرخی
 bill_item_name	پکوان کا نام
 bill_item_qty	مقدار
 bill_item_price	نرخ
@@ -103,6 +99,20 @@ bill_item_amount	رقم
 bill_item_note	نوٹ
 bill_item_col_sep	کالم لکیر
 slip_columns	کالم
+slip_col_header	سرخی
+bill_line_logo	لوگو
+bill_logo_picture	تصویر
+bill_logo_choose	تصویر چنیں
+bill_logo_remove	تصویر ہٹائیں
+bill_logo_none	کوئی تصویر نہیں
+bill_logo_unreadable	یہ ایسی تصویر نہیں جو ایپ پڑھ سکے
+bill_logo_width	چوڑائی (px)
+bill_logo_height	اونچائی (px)
+bill_logo_tones	سرمئی رنگ
+bill_logo_solid	ٹھوس
+bill_logo_shaded	سایہ دار
+bill_logo_help	چوڑائی اور اونچائی px میں۔ خالی رہے تو تصویر کے مطابق: ایک خالی ہو تو شکل برقرار رہتی ہے، دونوں خالی ہوں تو اس کا اپنا ناپ؛ دونوں بھریں تو اندر سما جاتی ہے، کبھی کھنچتی نہیں۔ تصویر نہ ہو تو: دکھایا گیا لوگو اپنی اونچائی خالی جگہ کے طور پر رکھتا ہے؛ چھپائیں اسے ہٹا دیتا ہے۔
+bill_logo_tones_help	ٹھوس: ہر نقطہ کالا یا سفید، صاف لوگو کے لیے۔ سایہ دار: سرمئی باریک نقطوں کا نمونہ بن جاتا ہے، تصاویر اور ہلکے سائے کے لیے۔
 slip_col_width	چوڑائی (mm)
 slip_col_start	آغاز کی جگہ (px)
 slip_col_end	اختتام کی جگہ (px)
@@ -167,6 +177,21 @@ alerts_help	حالت کے پیغامات آپ کے لیے اسکرین پر کت
 snack_secs_ph	سیکنڈ (3–60، طے شدہ 10)
 snack_secs_save	اطلاع کا وقت محفوظ کریں
 snack_secs_saved	اطلاع کا وقت محفوظ ہو گیا — {n} سیکنڈ
+settings_sec_whatsapp	WhatsApp
+whatsapp_cloud_help	Use your own Meta WhatsApp Cloud API. Create a System User token with whatsapp_business_messaging (temporary dashboard tokens expire). Credentials stay on this Server only — never on extra tills. Accepted means Meta took the request, not that the guest received it.
+whatsapp_phone_id_ph	Phone Number ID
+whatsapp_token_ph	Access Token (leave blank to keep)
+whatsapp_template_ph	Bill template name (optional)
+whatsapp_template_lang_ph	Template language (e.g. en)
+whatsapp_enable	Enable
+whatsapp_disable	Off
+whatsapp_save	Save WhatsApp
+whatsapp_test	Test connection
+whatsapp_disconnect	Disconnect
+whatsapp_send_bill	Send via WhatsApp
+whatsapp_consent	WhatsApp OK
+whatsapp_consent_help	Guest agreed to receive WhatsApp messages. A phone number alone is not consent.
+whatsapp_server_only	Configure WhatsApp on the shop Server device
 settings_sec_backup	بیک اپ اور بحالی
 settings_sec_diag	تشخیص
 settings_sec_privacy	رازداری
@@ -729,6 +754,13 @@ station_vps_dd	اس اسٹیشن کے پرنٹر
 station_vps_dd_n	{n} پرنٹر · بدلنے کے لیے ٹیپ
 bill_printers_dd	بل کے پرنٹر
 bill_printers_dd_n	بل کے لیے {n} پرنٹر · بدلنے کے لیے دبائیں
+paper_heading	کاغذ
+paper_size	{w} × {h} mm
+paper_roll	{w} mm رول
+paper_not_set	کاغذ ابھی معلوم نہیں
+paper_length_mm	لمبائی (mm)
+printer_paper_help	اس پرنٹر کا کاغذ mm میں۔ خالی لمبائی کا مطلب رول: ہر پرچی اپنے مواد جتنی لمبی ہوتی ہے۔ پرنٹر تلاش کریں خالی کاغذ پرنٹر کے ڈرائیور سے بھرتا ہے (نہ بتا سکے تو 80 mm رول) اور پہلے سے طے کاغذ کبھی نہیں بدلتا۔
+preview_help	نیچے چنے گئے پرنٹر کے کاغذ پر یہ پرچی، جیسے وہاں چھپتی ہے: پرنٹر جہاں تک پہنچتا ہے اس اوپری بائیں کونے سے اصل ناپ میں (سرمئی: کنارے جہاں نہیں پہنچتا)، لمبی پرچی مزید صفحات پر، کاغذ کے کنارے سے آگے کا سب کٹ جاتا ہے۔ پرنٹر چننے سے صرف پیش منظر بدلتا ہے؛ ہر پرنٹر کا کاغذ پرنٹرز میں طے ہوتا ہے۔
 job_layout	لے آؤٹ
 job_delivery	کام کیسے بھیجا جاتا ہے
 job_delivery_help	OS دستاویز، خام بائٹس یا ESC/POS۔ بل اور باورچی خانے کا ٹکٹ دونوں اپنا اپنا رکھتے ہیں۔ کوئی بھی کام تلاش کے محفوظ کیے کسی بھی پرنٹر پر جا سکتا ہے۔
@@ -1105,9 +1137,6 @@ remove_these_tables	یہ میزیں ہٹائیں
 table_remove_ph	ہٹائیں: T1-T24، یا ایک میز کا نام
 find_server	دکان کا سرور تلاش کریں
 bill_format	بل کی ترتیب
-bill_header_ph	پتہ | فون
-fssai_ph	FSSAI لائسنس نمبر (بھارت)
-bill_footer_ph	فوٹر (مثلاً شکریہ، پھر تشریف لائیں)
 reset_bill_format	ڈیفالٹ پر واپس
 bill_format_reset	بل کی ترتیب ڈیفالٹ پر
 reset_kot_format	ڈیفالٹ پر واپس
@@ -1146,7 +1175,6 @@ kot_kind_modified	ترمیم شدہ
 kot_kind_cancelled	منسوخ
 kot_style_heading	فیلڈ سائز اور وزن
 kot_style_title	عنوان
-kot_style_item_qty	آئٹم · تعداد
 kot_style_field_pick	فیلڈ منتخب کریں
 kot_weight_regular	عام
 kot_weight_bold	موٹا
@@ -1158,8 +1186,8 @@ content_width_bill	بل کی چوڑائی (mm)
 content_width_kot	KOT کی چوڑائی (mm)
 content_width_ph	یا مواد کی چوڑائی لکھیں، 40–210 ملی میٹر
 content_width_help	یہ پرچی کتنی چوڑی چھپے۔ بل اور KOT دونوں اپنی اپنی چوڑائی رکھتے ہیں۔
-content_width_bill_help	مہمان کا بل کتنا چوڑا چھپے۔ پہلے سے 210 mm (صفحہ)۔ 58 mm تنگ پرچی، 80 mm چوڑی پرچی، 112 mm 4-انچ، 210 mm A4-چوڑا۔ 40 سے 210 تک کوئی بھی قدر لکھیں۔ باورچی خانے کے ٹکٹ کی اپنی چوڑائی KOT ٹیب پر ہے۔
-content_width_kot_help	باورچی خانے کا ٹکٹ کتنا چوڑا چھپے۔ پہلے سے 80 mm۔ 58 mm تنگ پرچی، 80 mm چوڑی پرچی، 112 mm 4-انچ، 210 mm صفحہ۔ 40 سے 210 تک کوئی بھی قدر لکھیں۔ مہمان بل کی اپنی چوڑائی بل ٹیب پر ہے۔
+content_width_bill_help	مہمان کا بل کتنا چوڑا چھپتا ہے، mm میں (40–210)۔ یہ کسی بھی کاغذ پر اسی اصل ناپ میں چھپتا ہے؛ اس سے تنگ کاغذ پر چھپائی کے کنارے سے آگے کا حصہ کٹ جاتا ہے (کاغذ دیکھیں)۔ باورچی خانے کے ٹکٹوں کی اپنی چوڑائی KOT ٹیب پر ہے۔
+content_width_kot_help	باورچی خانے کا ٹکٹ کتنا چوڑا چھپتا ہے، mm میں (40–210)۔ یہ کسی بھی کاغذ پر اسی اصل ناپ میں چھپتا ہے؛ اس سے تنگ کاغذ پر چھپائی کے کنارے سے آگے کا حصہ کٹ جاتا ہے (کاغذ دیکھیں)۔ مہمانوں کے بلوں کی اپنی چوڑائی بل ٹیب پر ہے۔
 vp_paper_width	مواد کی چوڑائی (ملی میٹر)
 vp_paper_width_ph	یا مواد کی چوڑائی لکھیں، 40–210 ملی میٹر
 vp_paper_width_help	مواد کی چوڑائی بل اور KOT فارمیٹ میں سیٹ ہوتی ہے۔ یہ بل اور باورچی خانے کے ٹکٹ دونوں پر لاگو ہوتی ہے۔
@@ -1213,8 +1241,6 @@ schemes_help	X خریدیں Y پائیں — سیٹل پر خود بخود۔ م�
 scheme_bogo_ph	2 Thali خریدیں تو 1 Chaas پائیں
 add_scheme	BOGO شامل کریں
 schedule_ph	وقت / ہیپی آور — Mon-Fri 07:00-11:00 یا HappyHour 17:00-19:00=150
-upi_vpa_ph	UPI ID (VPA)
-upi_payee_ph	UPI وصول کنندہ (اختیاری)
 upi_qr	UPI QR
 show_upi_qr	UPI QR دکھائیں
 close_upi_qr	بند
@@ -1295,8 +1321,6 @@ printer_mode_first	جو پہلے چلے
 printer_mode_all	سب پر چھاپیں
 kot_show_area	علاقہ
 kot_hide_area	علاقہ چھپائیں
-kot_show_item_hdr	آئٹم · تعداد
-kot_hide_item_hdr	کالم چھپائیں
 kot_show_title	عنوان کی قطار
 kot_hide_title	عنوان چھپائیں
 kot_field_cycle	اگلا چنیں
@@ -1337,12 +1361,12 @@ private_code_ph	12 ہندسوں کا کوڈ
 stamp_on	اسٹیمپ: فائل پر
 pay_qr_on	ادائیگی QR: فائل پر
 pay_qr_off	ادائیگی QR: نہیں
+printers_screen_tip	تلاش وہ پرنٹر دکھاتی ہے جو یہ ڈیوائس استعمال کر سکتی ہے اور انہیں اس دکان کے لیے محفوظ کرتی ہے۔ بل پرنٹر: بل اور KOT فارمیٹ ← بل۔ کچن: کچن ← کچن اسٹیشن۔
+printers_found_none	کوئی پرنٹر نہیں ملا۔
+nav_loading	لوڈ ہو رہا ہے…
+kot_copy_from	اس سے کاپی کریں
+kot_copy_from_help	اس قسم کی ہر سطر کا سائز، موٹائی اور ترتیب اس میں کاپی کرتا ہے۔ یہ قسم اپنا بینر، آئٹم سابقہ اور کٹی لکیر رکھتی ہے۔ رکھنے کے لیے KOT فارمیٹ محفوظ کریں۔
 items_tmpl_heading	آئٹم ٹیمپلیٹس
 items_tmpl_help	آپ کے مینو کے لیے پکوان، زمرے اور تصاویر۔ دکان کی ترتیبات اور عملہ جیسے ہیں ویسے ہی رہتے ہیں۔
 public_tmpl_help	ابتدائی مینو جنہیں کوئی بھی ڈاؤن لوڈ کر سکتا ہے۔ ایک بار انٹرنیٹ چاہیے۔
 private_tmpl_help	آپ کے Khaynjo رابطے سے ملنے والے 12 ہندسوں کے کوڈ سے محفوظ گاہک مینو۔
-printers_screen_tip	تلاش وہ پرنٹر دکھاتی ہے جو یہ ڈیوائس استعمال کر سکتی ہے اور انہیں اس دکان کے لیے محفوظ کرتی ہے۔ بل پرنٹر: بل اور KOT فارمیٹ ← بل۔ کچن: کچن ← کچن اسٹیشن۔
-printers_found_none	کوئی پرنٹر نہیں ملا۔
-kot_copy_from	اس سے کاپی کریں
-kot_copy_from_help	اس قسم کی ہر سطر کا سائز، موٹائی اور ترتیب اس میں کاپی کرتا ہے۔ یہ قسم اپنا بینر، آئٹم سابقہ اور کٹی لکیر رکھتی ہے۔ رکھنے کے لیے KOT فارمیٹ محفوظ کریں۔
-nav_loading	لوڈ ہو رہا ہے…

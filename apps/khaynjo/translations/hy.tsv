@@ -92,10 +92,6 @@ bill_item_layout	Ապրանքների դասավորություն
 bill_item_layout_columns	Սյունակներ
 bill_item_layout_stacked	Տողերով
 bill_item_header	Սյունակների վերնագրեր
-bill_item_hdr_item	Ապրանքի վերնագիր
-bill_item_hdr_qty	Քանակի վերնագիր
-bill_item_hdr_price	Գնի վերնագիր
-bill_item_hdr_amount	Գումարի վերնագիր
 bill_item_name	Ուտեստի անուն
 bill_item_qty	Քանակ
 bill_item_price	Գին
@@ -103,6 +99,20 @@ bill_item_amount	Գումար
 bill_item_note	Ուտեստի նշում
 bill_item_col_sep	Սյունակների գծեր
 slip_columns	Սյունակներ
+slip_col_header	Վերնագիր
+bill_line_logo	Լոգո
+bill_logo_picture	Նկար
+bill_logo_choose	Ընտրել նկար
+bill_logo_remove	Հեռացնել նկարը
+bill_logo_none	Նկար չկա
+bill_logo_unreadable	Սա նկար չէ, որը հավելվածը կարող է կարդալ
+bill_logo_width	Լայնություն (px)
+bill_logo_height	Բարձրություն (px)
+bill_logo_tones	Մոխրագույններ
+bill_logo_solid	Հոծ
+bill_logo_shaded	Ստվերված
+bill_logo_help	Լայնությունը և բարձրությունը px-ով։ Դատարկը հետևում է նկարին. մեկը դատարկ՝ պահում է ձևը, երկուսն էլ դատարկ՝ օգտագործում են նրա չափը. երկուսն էլ տրված՝ տեղավորում են ներսում, երբեք չձգելով։ Առանց նկարի. ցուցադրվող լոգոն պահում է իր բարձրությունը որպես դատարկ տեղ. Թաքցնել-ը հեռացնում է այն։
+bill_logo_tones_help	Հոծ. յուրաքանչյուր կետ սև կամ սպիտակ, հստակ լոգոների համար։ Ստվերված. մոխրագույնները դառնում են նուրբ կետային նախշեր, լուսանկարների և մեղմ ստվերի համար։
 slip_col_width	Լայնություն (mm)
 slip_col_start	Սկզբի տարածք (px)
 slip_col_end	Վերջի տարածք (px)
@@ -167,6 +177,21 @@ alerts_help	Որքան ժամանակ կարգավիճակի հաղորդագր�
 snack_secs_ph	Վայրկյան (3–60, լռելյայն 10)
 snack_secs_save	Պահել ծանուցման ժամանակը
 snack_secs_saved	Ծանուցման ժամանակը պահվել է — {n} վայրկյան
+settings_sec_whatsapp	WhatsApp
+whatsapp_cloud_help	Use your own Meta WhatsApp Cloud API. Create a System User token with whatsapp_business_messaging (temporary dashboard tokens expire). Credentials stay on this Server only — never on extra tills. Accepted means Meta took the request, not that the guest received it.
+whatsapp_phone_id_ph	Phone Number ID
+whatsapp_token_ph	Access Token (leave blank to keep)
+whatsapp_template_ph	Bill template name (optional)
+whatsapp_template_lang_ph	Template language (e.g. en)
+whatsapp_enable	Enable
+whatsapp_disable	Off
+whatsapp_save	Save WhatsApp
+whatsapp_test	Test connection
+whatsapp_disconnect	Disconnect
+whatsapp_send_bill	Send via WhatsApp
+whatsapp_consent	WhatsApp OK
+whatsapp_consent_help	Guest agreed to receive WhatsApp messages. A phone number alone is not consent.
+whatsapp_server_only	Configure WhatsApp on the shop Server device
 settings_sec_backup	Պահուստ և վերականգնում
 settings_sec_diag	Ախտորոշում
 settings_sec_privacy	Գաղտնիություն
@@ -729,6 +754,13 @@ station_vps_dd	Տպիչներ այս կայանի համար
 station_vps_dd_n	{n} տպիչ · հպեք փոխելու համար
 bill_printers_dd	Տպիչներ հաշվի համար
 bill_printers_dd_n	{n} տպիչ հաշվի համար · հպեք փոխելու համար
+paper_heading	Թուղթ
+paper_size	{w} × {h} mm
+paper_roll	{w} մմ գլան
+paper_not_set	թուղթը դեռ հայտնի չէ
+paper_length_mm	Երկարություն (mm)
+printer_paper_help	Այս տպիչի թուղթը մմ-ով։ Դատարկ Երկարությունը գլան է՝ յուրաքանչյուր կտրոն իր բովանդակության չափ երկար է։ «Գտնել տպիչներ»-ը դատարկ թուղթը լրացնում է տպիչի դրայվերից (80 մմ գլան, եթե չի կարող ասել) և երբեք չի փոխում արդեն սահմանվածը։
+preview_help	Այս կտրոնը ներքևում ընտրված տպիչի թղթի վրա, ինչպես այնտեղ տպվում է՝ իրական չափով այն վերին ձախ անկյունից, որին տպիչը հասնում է (մոխրագույն՝ եզրեր, որոնց չի հասնում), երկար կտրոնը ավելի շատ թերթերի վրա, թղթի եզրից այն կողմ ամեն ինչ կտրվում է։ Տպիչ ընտրելը փոխում է միայն նախադիտումը. յուրաքանչյուր տպիչի թուղթը սահմանվում է «Տպիչներ»-ում։
 job_layout	Դասավորություն
 job_delivery	Ինչպես է ուղարկվում աշխատանքը
 job_delivery_help	ՕՀ փաստաթուղթ, հում բայթեր կամ ESC/POS։ Հաշիվն ու խոհանոցի թերթիկը յուրաքանչյուրը պահում է իրենը։ Աշխատանքը կարող է գնալ Որոնման պահած ցանկացած տպիչ։
@@ -1105,9 +1137,6 @@ remove_these_tables	Հեռացնել այս սեղանները
 table_remove_ph	Հեռացնել՝ T1-T24 կամ մեկ սեղանի անուն
 find_server	Գտնել խանութի սերվերը
 bill_format	Հաշվի ձևաչափ
-bill_header_ph	Հասցե | հեռախոս
-fssai_ph	FSSAI լիցենզիայի № (Հնդկաստան)
-bill_footer_ph	Ստորագիր (օր. Շնորհակալություն, նորից այցելեք)
 reset_bill_format	Վերականգնել լռելյայնը
 bill_format_reset	Հաշվի ձևաչափը վերականգնվել է լռելյայն
 reset_kot_format	Վերականգնել լռելյայնը
@@ -1146,7 +1175,6 @@ kot_kind_modified	Փոփոխված
 kot_kind_cancelled	Չեղարկված
 kot_style_heading	Դաշտի չափ և հաստություն
 kot_style_title	Վերնագիր
-kot_style_item_qty	Ապրանք · Քանակ
 kot_style_field_pick	Ընտրել դաշտ
 kot_weight_regular	Սովորական
 kot_weight_bold	Թավ
@@ -1158,8 +1186,8 @@ content_width_bill	Հաշվի բովանդակության լայնությու�
 content_width_kot	KOT բովանդակության լայնություն (mm)
 content_width_ph	Կամ մուտքագրեք բովանդակության լայնություն, 40–210 mm
 content_width_help	Որքան լայն է տպվում այս թերթիկը։ Հաշիվն ու KOT-ը յուրաքանչյուրը պահում է իր լայնությունը։
-content_width_bill_help	Որքան լայն է տպվում հյուրի հաշիվը։ Լռելյայն 210 mm (էջ)։ 58 mm նեղ թերթիկ, 80 mm լայն թերթիկ, 112 mm 4 դյույմ, 210 mm A4 լայնք։ Մուտքագրեք 40-ից 210 ցանկացած արժեք։ Խոհանոցի թերթիկներն իրենց լայնությունն ունեն KOT ներդիրում։
-content_width_kot_help	Որքան լայն է տպվում խոհանոցի թերթիկը։ Լռելյայն 80 mm։ 58 mm նեղ, 80 mm լայն, 112 mm 4 դյույմ, 210 mm էջ։ Մուտքագրեք 40-ից 210։ Հյուրի հաշիվներն իրենց լայնությունն ունեն Հաշիվ ներդիրում։
+content_width_bill_help	Որքան լայն է տպվում հյուրի հաշիվը, mm-ով (40–210)։ Այն տպվում է այս իրական չափով ցանկացած թղթի վրա. ավելի նեղ թղթի վրա տպման եզրից այն կողմ մասը կտրվում է (տե՛ս Թուղթ)։ Խոհանոցի կտրոններն ունեն իրենց լայնությունը KOT ներդիրում։
+content_width_kot_help	Որքան լայն է տպվում խոհանոցի կտրոնը, mm-ով (40–210)։ Այն տպվում է այս իրական չափով ցանկացած թղթի վրա. ավելի նեղ թղթի վրա տպման եզրից այն կողմ մասը կտրվում է (տե՛ս Թուղթ)։ Հյուրերի հաշիվներն ունեն իրենց լայնությունը Հաշիվ ներդիրում։
 vp_paper_width	Բովանդակության լայնություն (mm)
 vp_paper_width_ph	Կամ մուտքագրեք բովանդակության լայնություն, 40–210 mm
 vp_paper_width_help	Բովանդակության լայնությունը դրվում է Հաշվի և KOT ձևաչափում — առանձին հաշվի համար (լռելյայն 210 mm) և խոհանոցի թերթիկի (լռելյայն 80 mm)։
@@ -1213,8 +1241,6 @@ schemes_help	BOGO, տոկոս զեղչ և ֆիքսված կոմբո։ Կոմբո
 scheme_bogo_ph	Գնիր 2 Thali ստացիր 1 Chaas
 add_scheme	Ավելացնել BOGO
 schedule_ph	Ժամեր / ուրախ ժամ — Երկ-Ուրբ 07:00-11:00 կամ HappyHour 17:00-19:00=150
-upi_vpa_ph	UPI նույնացուցիչ (VPA)
-upi_payee_ph	UPI ստացողի անուն (ըստ ցանկության)
 upi_qr	UPI QR
 show_upi_qr	Ցույց տալ UPI QR
 close_upi_qr	Փակել
@@ -1295,8 +1321,6 @@ printer_mode_first	Առաջինը, որ աշխատում է
 printer_mode_all	Տպել բոլորում
 kot_show_area	Գոտի
 kot_hide_area	Թաքցնել գոտին
-kot_show_item_hdr	Ապրանք · Քանակ
-kot_hide_item_hdr	Թաքցնել սյունակները
 kot_show_title	Վերնագրի տող
 kot_hide_title	Թաքցնել վերնագիրը
 kot_field_cycle	Ընտրել հաջորդը
@@ -1337,12 +1361,12 @@ private_code_ph	12-նիշ կոդ
 stamp_on	Կնիք՝ ֆայլում
 pay_qr_on	Վճարման QR՝ ֆայլում
 pay_qr_off	Վճարման QR՝ չկա
+printers_screen_tip	Որոնումը ցույց է տալիս տպիչները, որոնք այս սարքը կարող է օգտագործել, և պահում է դրանք այս խանութի համար։ Հաշվի տպիչներ՝ Հաշվի և KOT ձևաչափ → Հաշիվ։ Խոհանոց՝ Խոհանոց → Խոհանոցի կայաններ։
+printers_found_none	Տպիչներ չեն գտնվել։
+nav_loading	Բեռնվում է…
+kot_copy_from	Պատճենել
+kot_copy_from_help	Պատճենում է այդ տեսակի յուրաքանչյուր տողի չափը, հաստությունը և հավասարեցումը այս մեկի մեջ։ Այս տեսակը պահում է իր պաստառը, ապրանքի նախածանցը և վրագիծը։ Պահելու համար պահպանեք KOT ձևաչափը։
 items_tmpl_heading	Ապրանքների ձևանմուշներ
 items_tmpl_help	Ուտեստներ, կատեգորիաներ և լուսանկարներ ձեր ճաշացանկի համար։ Խանութի կարգավորումները և անձնակազմը մնում են նույնը։
 public_tmpl_help	Մեկնարկային ճաշացանկեր, որոնք կարող է ներբեռնել յուրաքանչյուրը։ Ինտերնետ պետք է մեկ անգամ։
 private_tmpl_help	Հաճախորդների ճաշացանկեր՝ փակված ձեր Khaynjo կոնտակտի 12-նիշ կոդով։
-printers_screen_tip	Որոնումը ցույց է տալիս տպիչները, որոնք այս սարքը կարող է օգտագործել, և պահում է դրանք այս խանութի համար։ Հաշվի տպիչներ՝ Հաշվի և KOT ձևաչափ → Հաշիվ։ Խոհանոց՝ Խոհանոց → Խոհանոցի կայաններ։
-printers_found_none	Տպիչներ չեն գտնվել։
-kot_copy_from	Պատճենել
-kot_copy_from_help	Պատճենում է այդ տեսակի յուրաքանչյուր տողի չափը, հաստությունը և հավասարեցումը այս մեկի մեջ։ Այս տեսակը պահում է իր պաստառը, ապրանքի նախածանցը և վրագիծը։ Պահելու համար պահպանեք KOT ձևաչափը։
-nav_loading	Բեռնվում է…

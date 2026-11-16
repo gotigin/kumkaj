@@ -92,10 +92,6 @@ bill_item_layout	དཀར་ཆག་དཀར་ཆག་རྣམ་གྲང
 bill_item_layout_columns	ཀ་རིལ།
 bill_item_layout_stacked	བརྩེགས་བརྩེགས་བྱས་པ།
 bill_item_header	ཀེར་ཐིག་མགོ།
-bill_item_hdr_item	དཀར་ཆག་དཀར་ཆག་རྣམ་གྲངས་མགོ།
-bill_item_hdr_qty	མགོའི་གྲངས་ཚད།
-bill_item_hdr_price	རིན་གོང་མགོ།
-bill_item_hdr_amount	དངུལ་འབོར་མགོ།
 bill_item_name	ཟས་རིགས་ཀྱི་མིང་།
 bill_item_qty	གྲངས།
 bill_item_price	རིན་གོང་།
@@ -103,6 +99,20 @@ bill_item_amount	དངུལ་འབོར།
 bill_item_note	སྡེར་མའི་དྲན་ཐོ།
 bill_item_col_sep	ཀ་རིལ་ཁྲིམས་ལུགས།
 slip_columns	ཀ་རིལ།
+slip_col_header	མགོ།
+bill_line_logo	མཚོན་རྟགས།
+bill_logo_picture	པར་རིས།
+bill_logo_choose	པར་རིས་འདེམས།
+bill_logo_remove	པར་རིས་སུབ།
+bill_logo_none	པར་རིས་མེད།
+bill_logo_unreadable	མཉེན་ཆས་འདིས་ཀློག་ཐུབ་པའི་པར་རིས་མིན།
+bill_logo_width	ཞེང་། (px)
+bill_logo_height	མཐོ་ཚད། (px)
+bill_logo_tones	ཐལ་མདོག
+bill_logo_solid	སྲ་བ།
+bill_logo_shaded	གྲིབ་ཅན།
+bill_logo_help	ཞེང་དང་མཐོ་ཚད་px ཐོག་ཡིན། སྟོང་པ་ཡིན་ན་པར་རིས་ལྟར་འགྲོ། གཅིག་སྟོང་ན་དབྱིབས་སྲུང་། གཉིས་ཀ་སྟོང་ན་རང་གི་ཚད་བེད་སྤྱོད། གཉིས་ཀ་བཀོད་ན་ནང་དུ་འཚམ་པར་འཇུག་ལ་ནམ་ཡང་འཐེན་མི་བྱེད། པར་རིས་མེད་ན། མངོན་པའི་མཚོན་རྟགས་ཀྱིས་མཐོ་ཚད་བར་སྟོང་དུ་ཉར། སྦས་ན་སུབ།
+bill_logo_tones_help	སྲ་བ། ཐིག་ལེ་རེ་རེ་ནག་པོའམ་དཀར་པོ། གསལ་བའི་མཚོན་རྟགས་ཆེད། གྲིབ་ཅན། ཐལ་མདོག་ཐིག་ལེ་ཕྲ་མོའི་རི་མོར་འགྱུར། པར་དང་གྲིབ་མ་འཇམ་པོའི་ཆེད།
 slip_col_width	ཞེང་ཚད། (mm)
 slip_col_start	འགོའི་བར་སྟོང་། (px)
 slip_col_end	མཇུག་གི་བར་སྟོང་། (px)
@@ -167,6 +177,21 @@ alerts_help	ཁྱེད་ཀྱི་ཆེད་དུ་གནས་ཚུ�
 snack_secs_ph	སྐར་ཆ། (3–60, སྔོན་སྒྲིག་10)
 snack_secs_save	ཉེན་བརྡའི་དུས་ཚོད་སྲུང་བ།
 snack_secs_saved	ཉེན་བརྡའི་དུས་ཚོད་ཉར་ཚགས་བྱས། {n}སྐར་ཆ།
+settings_sec_whatsapp	WhatsApp
+whatsapp_cloud_help	Use your own Meta WhatsApp Cloud API. Create a System User token with whatsapp_business_messaging (temporary dashboard tokens expire). Credentials stay on this Server only — never on extra tills. Accepted means Meta took the request, not that the guest received it.
+whatsapp_phone_id_ph	Phone Number ID
+whatsapp_token_ph	Access Token (leave blank to keep)
+whatsapp_template_ph	Bill template name (optional)
+whatsapp_template_lang_ph	Template language (e.g. en)
+whatsapp_enable	Enable
+whatsapp_disable	Off
+whatsapp_save	Save WhatsApp
+whatsapp_test	Test connection
+whatsapp_disconnect	Disconnect
+whatsapp_send_bill	Send via WhatsApp
+whatsapp_consent	WhatsApp OK
+whatsapp_consent_help	Guest agreed to receive WhatsApp messages. A phone number alone is not consent.
+whatsapp_server_only	Configure WhatsApp on the shop Server device
 settings_sec_backup	རྒྱབ་སྣོན་དང་སླར་གསོ།
 settings_sec_diag	ནད་རྟགས་བརྟག་དཔྱད།
 settings_sec_privacy	སྒེར་གྱི་གསང་བ།
@@ -729,6 +754,13 @@ station_vps_dd	ས་ཚིགས་འདིའི་དཔར་འཕྲུ�
 station_vps_dd_n	{n} པར་འཕྲུལ་ · བརྗེ་སྒྱུར་བྱེད་པར་རྡེབ།
 bill_printers_dd	དཔྱ་ཁྲལ་གྱི་དཔར་མཁན།
 bill_printers_dd_n	{n} དཔྱ་ཁྲལ་གྱི་དཔར་འཕྲུལ་ · བརྗེ་སྒྱུར་བྱེད་པར་རྡེབ།
+paper_heading	ཤོག་བུ།
+paper_size	{w} × {h} mm
+paper_roll	{w} mm ཤོག་སྒྲིལ།
+paper_not_set	ཤོག་བུ་ད་དུང་མ་ཤེས།
+paper_length_mm	རིང་ཚད། (mm)
+printer_paper_help	དཔར་འཕྲུལ་འདིའི་ཤོག་བུ་ mm ནང་། རིང་ཚད་སྟོང་པ་ནི་ཤོག་སྒྲིལ་ཡིན། ཤོག་ཆ་རེ་རེ་ནང་དོན་ཇི་ཙམ་ཡོད་པ་ལྟར་རིང་། དཔར་འཕྲུལ་འཚོལ་བས་ཤོག་བུ་སྟོང་པ་དཔར་འཕྲུལ་གྱི་སྐུལ་ཆས་ནས་ཁ་སྐོང་བྱེད། (བཤད་མ་ཐུབ་ན་ 80 mm ཤོག་སྒྲིལ།) སྔོན་ནས་གཏན་འཁེལ་བ་ནམ་ཡང་མི་འགྱུར།
+preview_help	ཤོག་ཆ་འདི་འོག་ཏུ་འདེམས་པའི་དཔར་འཕྲུལ་གྱི་ཤོག་བུའི་སྟེང་དུ། དེར་པར་དུ་བསྐྲུན་པ་ལྟར། དཔར་འཕྲུལ་སླེབ་ཐུབ་པའི་གོང་གཡོན་ཟུར་ནས་ཚད་ངོ་མ། (སྐྱ་བོ། སླེབ་མི་ཐུབ་པའི་མཐའ།) ཤོག་ཆ་རིང་པོ་ཤོག་ལྷེ་མང་བའི་སྟེང་། ཤོག་བུའི་མཐའ་ལས་བརྒལ་བ་གཅོད། དཔར་འཕྲུལ་འདེམས་ན་སྔོན་ལྟ་ཁོ་ན་འགྱུར། དཔར་འཕྲུལ་རེ་རེའི་ཤོག་བུ་པར་ཁང་། འོག་ཏུ་གཏན་འཁེལ་བྱེད།
 job_layout	བཀོད་སྒྲིག།
 job_delivery	ལས་ཀ་ཇི་ལྟར་གཏོང་བ།
 job_delivery_help	OS ཡིག་ཆ་དང་། བཱའིཊ་སྔོན། ཡང་ན་ESC/POS དངུལ་འཛིན་དང་ཐབ་ཚང་གི་ལག་ཁྱེར་རེ་རེ་བཞིན་རང་ཉིད་ཀྱི་བདག་དབང་དུ་བཞག་ཡོད། ལས་ཀ་གང་རུང་ཞིག་པར་སྐྲུན་འཕྲུལ་ཆས་གང་རུང་ཞིག་ལ་འགྲོ་ཐུབ།
@@ -1105,9 +1137,6 @@ remove_these_tables	ཟ་ཁང་གི་ཅོག་ཙེ་འདི་ད
 table_remove_ph	མེད་པར་བཟོ: T1-T24 ཡང་ན་ཟ་ཁང་གི་ལྕོག་རྩེ་གཅིག་གི་མིང་།
 find_server	ཚོང་ཁང་གི་སར་བར་འཚོལ་བ།
 bill_format	བྱུང་འཛིན་རྣམ་པ།
-bill_header_ph	ཁ་བྱང་ | ཁ་པར།
-fssai_ph	FSSAI ཆོག་མཆན་ཨང་། (རྒྱ་གར།)
-bill_footer_ph	མཇུག་ཡིག་(དཔེར་ན། ཐུགས་རྗེ་ཆེ། ཡང་བསྐྱར་ཕེབས་ཤོག)
 reset_bill_format	སྔོན་སྒྲིག་ལ་སླར་སྒྲིག་བྱེད་པ།
 bill_format_reset	བྱུང་འཛིན་རྩ་སྒྲིག་སྔོན་སྒྲིག་ལ་སླར་སྒྲིག་བྱེད།
 reset_kot_format	སྔོན་སྒྲིག་ལ་སླར་སྒྲིག་བྱེད་པ།
@@ -1146,7 +1175,6 @@ kot_kind_modified	བཟོ་བཅོས།
 kot_kind_cancelled	ཕྱིར་འཐེན་བྱས།
 kot_style_heading	ས་ཁོངས་རིགས་ཀྱི་ཆེ་ཆུང་དང་ལྗིད་ཚད།
 kot_style_title	མཚན་བྱང་།
-kot_style_item_qty	དཀར་ཆག་དཀར་ཆག་རྣམ་གྲངས། · གྲངས།
 kot_style_field_pick	ཡིག་དུམ་འདེམས།
 kot_weight_regular	རྒྱུན་སྲོལ།
 kot_weight_bold	བརྗིད་པོ།
@@ -1158,8 +1186,8 @@ content_width_bill	བྱུང་འཛིན་ནང་དོན་གྱི�
 content_width_kot	KOT ནང་དོན་གྱི་ཞེང་ཚད་(mm)
 content_width_ph	ཡང་ན་ནང་དོན་གྱི་ཞེང་ཚད་40–210mmཡིག་དཔར་རྐྱབས།
 content_width_help	ཤོག་བུ་འདིའི་པར་གཞི་ག་ཚོད་རྒྱ་ཆེ་བ་རེད། བིལ་དང་KOTརེ་རེས་རང་ཉིད་ཀྱི་རྒྱ་ཁྱོན་ཉར་ཡོད།
-content_width_bill_help	མགྲོན་པོའི་དངུལ་བྱང་དེ་ག་ཚོད་རྒྱ་ཆེ་བ་རེད། སྔོན་སྒྲིག 210 mm (ཤོག་ངོས།) 58 mm དོག་པོའི་བཤུད་འགྲོས་དང་། 80 mm རྒྱ་ཁྱོན་ཤུད་འགྱུར། 112 mm 4-inch 210 mm A4-ཞེང་ཚད། ནས་ ༢༡༠ བར་གྱི་རིན་ཐང་གང་རུང་ཞིག་བྲིས། KOT མཆོང་ལྡེ་སྟེང་ལ་ཐབ་ཚང་གི་འཛིན་བྱང་ལ་རང་ཉིད་ཀྱི་རྒྱ་ཁྱོན་ཡོད།
-content_width_kot_help	ཐབ་ཚང་གི་འཛིན་བྱང་པར་ཤུས་ག་ཚོད་རྒྱ་ཆེ་བ་རེད། སྔོན་སྒྲིག་80mm། ༥༨ མི་ལི་མི་ཊར་དོག་པོ་དང་། ༨༠ མི་ལི་མི་ཊར་རྒྱ་ཆེ་བ། ༡༡༢ མི་ལི་མི་ཊར་ ༤ ཤོག་ངོས། ༢༡༠ མི་ལི་མི་ཊར་ ཤོག་ངོས། ནས་ ༢༡༠ བར་གྱི་རིན་ཐང་གང་རུང་ཞིག་ཡིག་འཇུག་བྱོས། མགྲོན་པོའི་དངུལ་འཛིན་ལ་དངུལ་འཛིན་མཆོང་ལྡེ་སྟེང་ལ་རང་ཉིད་ཀྱི་རྒྱ་ཁྱོན་ཡོད།
+content_width_bill_help	མགྲོན་པོའི་དངུལ་ཐོ་ཞེང་ཇི་ཙམ་པར་འདེབས། mm (40–210)། ཤོག་བུ་གང་ཡིན་ཡང་ཚད་ངོ་མ་འདིར་པར་འདེབས། དེ་ལས་ཞེང་ཆུང་བའི་ཤོག་བུ་ཐོག་པར་མཐའ་ལས་བརྒལ་བའི་ཆ་གཏུབ། (ཤོག་བུ་ལ་ལྟོས།) ཐབ་ཚང་ཤོག་བྱང་གི་ཞེང་ KOT ཤོག་ངོས་སུ་ཡོད།
+content_width_kot_help	ཐབ་ཚང་ཤོག་བྱང་ཞེང་ཇི་ཙམ་པར་འདེབས། mm (40–210)། ཤོག་བུ་གང་ཡིན་ཡང་ཚད་ངོ་མ་འདིར་པར་འདེབས། དེ་ལས་ཞེང་ཆུང་བའི་ཤོག་བུ་ཐོག་པར་མཐའ་ལས་བརྒལ་བའི་ཆ་གཏུབ། (ཤོག་བུ་ལ་ལྟོས།) མགྲོན་པོའི་དངུལ་ཐོའི་ཞེང་དངུལ་ཐོ་ཤོག་ངོས་སུ་ཡོད།
 vp_paper_width	ནང་དོན་གྱི་ཞེང་ཚད་(mm)
 vp_paper_width_ph	ཡང་ན་ནང་དོན་གྱི་ཞེང་ཚད་40–210mmཡིག་དཔར་རྐྱབས།
 vp_paper_width_help	ནང་དོན་གྱི་རྒྱ་ཁྱོན་དེ་དངུལ་འཛིན་དང་KOT རྩ་སྒྲིག་འོག་སྒྲིག་ཡོད། དངུལ་འཛིན་(སྔོན་སྒྲིག་210mm)དང་ཐབ་ཚང་གི་འཛིན་བྱང་(སྔོན་སྒྲིག་80mm)ལ་སོ་སོར་བཀོད་ཡོད།
@@ -1213,8 +1241,6 @@ schemes_help	BOGO བརྒྱ་ཆའི་ཆག་ཡང་དང་གཏ�
 scheme_bogo_ph	Buy 2 Thali get 1 Chaas
 add_scheme	BOGO ཁ་སྣོན།
 schedule_ph	ཆུ་ཚོད་ / དགའ་སྤྲོའི་དུས་ཚོད། — གཟའ་ཟླ་བ་ནས་གཟའ་པ་སངས ༠༧:༠༠-༡༡:༠༠ ཡང་ན་དགའ་སྤྲོའི་ཆུ་ཚོད་ ༡༧:༠༠-༡༩:༠༠ = ༡༥༠
-upi_vpa_ph	UPI ID (VPA)
-upi_payee_ph	UPI གླ་ཆ་ལེན་མཁན་གྱི་མིང་། (འདམ་ཀ)
 upi_qr	UPI QR
 show_upi_qr	UPI QR སྟོན།
 close_upi_qr	སྒོ་བརྒྱབ།
@@ -1295,8 +1321,6 @@ printer_mode_first	དང་པོ་དེ་ལས་ཀ་བྱེད་ཀ�
 printer_mode_all	ཚང་མར་དཔར་བསྐྲུན།
 kot_show_area	ས་ཁོངས།
 kot_hide_area	ས་ཁུལ།
-kot_show_item_hdr	དཀར་ཆག་དཀར་ཆག་རྣམ་གྲངས། · གྲངས།
-kot_hide_item_hdr	ཐིག་ཕྲེང་སྦས།
 kot_show_title	མགོ་བརྗོད་ཕྲེང་བ།
 kot_hide_title	ཁ་བྱང་སྦས།
 kot_field_cycle	རྗེས་མ་འདེམས།
@@ -1337,12 +1361,12 @@ private_code_ph	ཨང་ཀི་ ༡༢ ཡི་ཨང་རྟགས།
 stamp_on	མཚོན་རྟགས། ཡིག་ཆའི་སྟེང་།
 pay_qr_on	དངུལ་སྤྲོད་པའི་QR: ཡིག་ཆའི་སྟེང་།
 pay_qr_off	དངུལ་སྤྲོད་པའི་QR: མེད།
+printers_screen_tip	འཚོལ་བས་སྒྲིག་ཆས་འདིས་བེད་སྤྱོད་ཐུབ་པའི་པར་ཆས་སྟོན་ཞིང་ཚོང་ཁང་འདིའི་ཆེད་ཉར་ཚགས་བྱེད། རྩིས་ཁྲའི་པར་ཆས། རྩིས་ཁྲ་དང་KOT རྣམ་གཞག → རྩིས་ཁྲ། ཇ་ཁང་། ཇ་ཁང་ → ཇ་ཁང་གི་ས་ཚིགས།
+printers_found_none	པར་ཆས་གང་ཡང་རྙེད་མ་བྱུང་།
+nav_loading	ནང་འཇུག་བྱེད་བཞིན་པ…
+kot_copy_from	འདི་ནས་འདྲ་བཤུས།
+kot_copy_from_help	རིགས་དེའི་ཐིག་ཕྲེང་རེ་རེའི་ཆེ་ཆུང་དང་སྲ་ཞན། སྒྲིག་སྟངས་འདིར་འདྲ་བཤུས་བྱེད། རིགས་འདིས་རང་གི་དར་ཆ། དངོས་པོའི་སྔོན་སྦྱོར། ཐིག་འཐེན་ཉར་ཚགས་བྱེད། ཉར་བར་KOT རྣམ་གཞག་ཉར་ཚགས་གྱིས།
 items_tmpl_heading	དངོས་པོའི་དཔེ་གཞི།
 items_tmpl_help	ཁྱེད་ཀྱི་ཟས་ཐོའི་ཆེད་ཁ་ལག་དང་རིགས་དབྱེ། པར་རིས། ཚོང་ཁང་གི་སྒྲིག་འགོད་དང་ལས་མི་ཇི་བཞིན་གནས།
 public_tmpl_help	སུས་ཀྱང་ཕབ་ལེན་བྱེད་ཐུབ་པའི་འགོ་འཛུགས་ཟས་ཐོ། ཐེངས་གཅིག་དྲ་རྒྱ་དགོས།
 private_tmpl_help	ཁྱེད་ཀྱི་Khaynjo འབྲེལ་མི་ནས་ཐོབ་པའི་ཨང་གྲངས་ ༡༢ ཡི་ཨང་རྟགས་ཀྱིས་སྲུང་བའི་ཚོང་མགྲོན་ཟས་ཐོ།
-printers_screen_tip	འཚོལ་བས་སྒྲིག་ཆས་འདིས་བེད་སྤྱོད་ཐུབ་པའི་པར་ཆས་སྟོན་ཞིང་ཚོང་ཁང་འདིའི་ཆེད་ཉར་ཚགས་བྱེད། རྩིས་ཁྲའི་པར་ཆས། རྩིས་ཁྲ་དང་KOT རྣམ་གཞག → རྩིས་ཁྲ། ཇ་ཁང་། ཇ་ཁང་ → ཇ་ཁང་གི་ས་ཚིགས།
-printers_found_none	པར་ཆས་གང་ཡང་རྙེད་མ་བྱུང་།
-kot_copy_from	འདི་ནས་འདྲ་བཤུས།
-kot_copy_from_help	རིགས་དེའི་ཐིག་ཕྲེང་རེ་རེའི་ཆེ་ཆུང་དང་སྲ་ཞན། སྒྲིག་སྟངས་འདིར་འདྲ་བཤུས་བྱེད། རིགས་འདིས་རང་གི་དར་ཆ། དངོས་པོའི་སྔོན་སྦྱོར། ཐིག་འཐེན་ཉར་ཚགས་བྱེད། ཉར་བར་KOT རྣམ་གཞག་ཉར་ཚགས་གྱིས།
-nav_loading	ནང་འཇུག་བྱེད་བཞིན་པ…

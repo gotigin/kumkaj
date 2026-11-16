@@ -537,7 +537,7 @@ mod tests {
 
     #[test]
     fn shelf_scan_reads_folders_and_skips_other_files() {
-        let root = std::env::temp_dir().join(format!("kirano-shelf-{}", std::process::id()));
+        let root = crate::test_dirs::run_root().join(format!("kirano-shelf-{}", std::process::id()));
         let _ = std::fs::remove_dir_all(&root);
         std::fs::create_dir_all(root.join("staples")).unwrap();
         std::fs::write(root.join("staples/atta-5kg.webp"), b"x").unwrap();

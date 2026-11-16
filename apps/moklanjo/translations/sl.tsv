@@ -501,6 +501,17 @@ job_size	Velikost pisave
 job_size_ph	npr. 18, 20, 26…
 test_receipt_format	Prejem testa
 test_label_format	Testna nalepka
+paper_heading	Papir
+paper_size	{w} × {h} mm
+paper_roll	zvitek {w} mm
+paper_not_set	papir še ni znan
+paper_length_mm	Dolžina (mm)
+printer_paper_help	Papir tega tiskalnika v mm. Prazna Dolžina je zvitek: vsak račun je dolg toliko kot njegova vsebina. Poišči tiskalnike izpolni prazen papir iz gonilnika tiskalnika (zvitek 80 mm, ko tega ne more povedati) in nikoli ne spremeni že nastavljenega.
+preview_help	Ta račun na papirju tiskalnika, izbranega spodaj, kot se tam natisne: v dejanski velikosti od zgornjega levega kota, do katerega tiskalnik seže (sivo: robovi, do katerih ne seže), dolg račun na več listih, vse čez rob papirja se odreže. Izbira tiskalnika spremeni le predogled; papir vsakega tiskalnika se nastavi pod Tiskalniki.
+slip_col_width	Širina (mm)
+no_printer_assigned	Brez tiskalnika
+printer_target_default	običajni tiskalnik tega računalnika (prazen naslov)
+job_preview	Predogled
 test_receipt_sent	Vzorec potrdila je poslan
 test_label_sent	Vzorec nalepke je poslan
 test_print_no_printer	Za to opravilo ni tiskalnika — dodajte ga pod to mesto

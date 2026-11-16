@@ -56,6 +56,35 @@ pub fn encode_bytes_as_webp_fit(bytes: &[u8], dest_webp: &Path, max_edge: u32) -
     write_webp(&img, dest_webp)
 }
 
+/// Standard base64 (RFC 4648, `+/`, `=` padding): pictures inside text —
+/// HTML data URIs, a slip's picture line.
+pub fn encode_base64(data: &[u8]) -> String {
+    const T: &[u8] = b"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
+    let mut out = String::with_capacity((data.len() + 2) / 3 * 4);
+    for chunk in data.chunks(3) {
+        let mut n = (chunk[0] as u32) << 16;
+        if chunk.len() > 1 {
+            n |= (chunk[1] as u32) << 8;
+        }
+        if chunk.len() > 2 {
+            n |= chunk[2] as u32;
+        }
+        out.push(T[((n >> 18) & 63) as usize] as char);
+        out.push(T[((n >> 12) & 63) as usize] as char);
+        out.push(if chunk.len() > 1 {
+            T[((n >> 6) & 63) as usize] as char
+        } else {
+            '='
+        });
+        out.push(if chunk.len() > 2 {
+            T[(n & 63) as usize] as char
+        } else {
+            '='
+        });
+    }
+    out
+}
+
 /// Standard base64 (RFC 4648, `+/`, `=` padding; whitespace and line
 /// breaks ignored) — for a picture carried inside a JSON file, such as an
 /// app template's shop logo in `shop_defaults.json`.
@@ -157,7 +186,7 @@ mod tests {
 
     #[test]
     fn fit_shrinks_large_photos_and_leaves_small_ones() {
-        let dir = std::env::temp_dir().join(format!("khaynjo-media-fit-{}", std::process::id()));
+        let dir = crate::test_dirs::run_root().join(format!("khaynjo-media-fit-{}", std::process::id()));
         std::fs::create_dir_all(&dir).unwrap();
         let big = dir.join("big.png");
         image::RgbImage::new(1000, 500).save(&big).unwrap();

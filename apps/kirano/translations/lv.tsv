@@ -60,10 +60,6 @@ bill_item_layout	Pozīciju izkārtojums
 bill_item_layout_columns	Kolonnas
 bill_item_layout_stacked	Kārtās
 bill_item_header	Kolonnu virsraksti
-bill_item_hdr_item	Pozīcijas virsraksts
-bill_item_hdr_qty	Daudzuma virsraksts
-bill_item_hdr_price	Cenas virsraksts
-bill_item_hdr_amount	Summas virsraksts
 bill_item_name	Pozīcijas nosaukums
 bill_item_qty	Daudzums
 bill_item_price	Cena
@@ -71,6 +67,13 @@ bill_item_amount	Summa
 bill_item_note	Vienuma piezīme
 bill_item_col_sep	Kolonnu līnijas
 slip_col_width	Platums (mm)
+paper_heading	Papīrs
+paper_size	{w} × {h} mm
+paper_roll	{w} mm rullis
+paper_not_set	papīrs vēl nav zināms
+paper_length_mm	Garums (mm)
+printer_paper_help	Šī printera papīrs mm. Tukšs Garums ir rullis: katrs čeks ir tik garš kā tā saturs. “Atrast printerus” aizpilda tukšu papīru no printera draivera (80 mm rullis, ja tas nevar pateikt) un nekad nemaina jau iestatītu.
+preview_help	Šis čeks zemāk izvēlētā printera papīrā, kā tas tur drukājas: īstā izmērā no augšējā kreisā stūra, kuru printeris sasniedz (pelēks: malas, kuras nesasniedz), garš čeks vairākās lapās, viss aiz papīra malas tiek nogriezts. Printera izvēle maina tikai priekšskatījumu; katra printera papīrs tiek iestatīts sadaļā Printeri.
 slip_col_start	Sākuma atstarpe (px)
 slip_col_end	Beigu atstarpe (px)
 slip_columns_help	Katras kolonnas platumā ietilpst tās sākuma un beigu atstarpe. Teksts tiek pārnests savas kolonnas iekšpusē; tas, kas pārsniedz satura platumu, tiek nogriezts — uz papīra un priekšskatījumā.
@@ -838,3 +841,4 @@ nav_loading	Ielādē…
 printer_mode_first	Pirmais, kas darbojas
 printer_mode_all	Drukāt uz visiem
 slip_columns	Kolonnas
+slip_col_header	Virsraksts

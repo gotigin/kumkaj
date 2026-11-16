@@ -666,11 +666,81 @@ fn fit_inside_system_bars(&mut self, cx: &mut Cx) {
             .set_visible(cx, host);
     }
 
+    /// Settings → Printers: each saved printer as `name · paper`, one list of
+    /// any length (`PrinterPaperRows`). Tapping one keeps it highlighted
+    /// where it sits with its Width / Length right under it (the rows after
+    /// it continue below); tapping it again closes it. docs/PRINTER.md §
+    /// Paper and preview.
+    fn paint_printer_rows(&mut self, cx: &mut Cx) {
+        let (host, count, open_at, w, l, texts) = {
+            let st = app_state().lock().unwrap();
+            let printers = &st.printer_draft.printers;
+            ask_drivers_for_missing_papers(printers);
+            let open_at = st
+                .printer_paper_open
+                .as_deref()
+                .and_then(|id| printers.iter().position(|p| p.id == id));
+            let paper = open_at.and_then(|i| printers[i].paper());
+            let w = paper.map(|p| os_paper::mm_text(p.width_mm)).unwrap_or_default();
+            let l = paper
+                .filter(|p| !p.is_roll())
+                .map(|p| os_paper::mm_text(p.length_mm))
+                .unwrap_or_default();
+            (
+                st.device_role != DeviceRole::Client,
+                printers.len(),
+                open_at,
+                w,
+                l,
+                [
+                    st.t("paper_heading"),
+                    st.t("printer_paper_help"),
+                    st.t("slip_col_width"),
+                    st.t("paper_length_mm"),
+                ],
+            )
+        };
+        for (id, show) in [
+            (ids!(printers_rows), host && count > 0),
+            (ids!(printers_after_rows), host && open_at.is_some_and(|o| o + 1 < count)),
+        ] {
+            self.ui.widget(cx, id).set_visible(cx, show);
+            self.ui.widget(cx, id).redraw(cx);
+        }
+        let open = host && open_at.is_some();
+        self.ui.view(cx, ids!(printer_paper_editor)).set_visible(cx, open);
+        if open {
+            let [head, help, w_label, l_label] = texts;
+            self.ui
+                .widget(cx, ids!(h_printer_paper))
+                .set_text(cx, &plain_display_text(&head));
+            self.ui
+                .widget(cx, ids!(printer_paper_help))
+                .as_info_help()
+                .set_tip(&plain_display_text(&help));
+            self.ui
+                .widget(cx, ids!(h_printer_paper_w))
+                .set_text(cx, &plain_display_text(&w_label));
+            self.ui
+                .widget(cx, ids!(h_printer_paper_l))
+                .set_text(cx, &plain_display_text(&l_label));
+            for (id, v) in [(ids!(printer_paper_w_input), &w), (ids!(printer_paper_l_input), &l)] {
+                let input = self.ui.text_input(cx, id);
+                // Never under the owner's typing.
+                if !cx.has_key_focus(input.area()) && input.text() != *v {
+                    input.set_text(cx, v);
+                }
+            }
+        }
+        // The list is the rows above; the old names-only list stays hidden.
+        self.ui.widget(cx, ids!(printers_pool_label)).set_visible(cx, false);
+    }
+
     /// Fill+wrap face (Stack*/SegBtn). Place chips and add-printer buttons are
     /// Fit (ChipBtn / QuietFitBtn). Kitchen on/off and KOT/Standard are
     /// visibility swaps of fixed-label overlays.
     fn paint_printers_panel(&mut self, cx: &mut Cx) {
-        let (pool_rows, virtual_rows, assign_label, landscape, delivery, paper_mm, _vp_empty, editing) = {
+        let (virtual_rows, assign_label, landscape, delivery, paper_mm, _vp_empty, editing) = {
             let mut st = app_state().lock().unwrap();
             print_share::PrintFormat::ensure_builtins(&mut st.printer_draft.formats);
             // Do not rewrite printers.json from paint. Flattening here looked
@@ -699,8 +769,6 @@ fn fit_inside_system_bars(&mut self, cx: &mut Cx) {
             let paper_mm = st.printer_vp_paper_width_mm;
             let editing = st.virtual_printer_sel.is_some();
             let selected = st.printer_selected_id.clone();
-            let pool_rows =
-                printers_pool_rows(&st.printer_draft, selected.as_deref(), |k| st.t(k));
             let virtual_rows = virtual_printers_list_rows(
                 &st.printer_draft,
                 st.virtual_printer_sel.as_deref(),
@@ -714,7 +782,6 @@ fn fit_inside_system_bars(&mut self, cx: &mut Cx) {
                 .unwrap_or_else(|| st.t("printer_assign_pick"));
             let assign_label = st.t("printer_assign_dd").replace("{place}", &real_name);
             (
-                pool_rows,
                 virtual_rows,
                 assign_label,
                 landscape,
@@ -725,7 +792,7 @@ fn fit_inside_system_bars(&mut self, cx: &mut Cx) {
             )
         };
         self.show_found_printers(cx);
-        self.set_report_rows(cx, ids!(printers_pool_label), pool_rows);
+        self.paint_printer_rows(cx);
         self.ui.widget(cx, ids!(printers_delivery_list)).redraw(cx);
         let test_n = app_state().lock().unwrap().test_printer_ids.len();
         let test_dd = if test_n == 0 {
@@ -805,10 +872,10 @@ fn fit_inside_system_bars(&mut self, cx: &mut Cx) {
             }
         }
         for (idle, on, mm, label) in [
-            (ids!(vp_paper_58), ids!(vp_paper_58_on), 58u32, "58 mm — narrow slip"),
-            (ids!(vp_paper_80), ids!(vp_paper_80_on), 80, "80 mm — wide slip"),
-            (ids!(vp_paper_112), ids!(vp_paper_112_on), 112, "112 mm — 4 inch slip"),
-            (ids!(vp_paper_210), ids!(vp_paper_210_on), 210, "210 mm — page"),
+            (ids!(vp_paper_58), ids!(vp_paper_58_on), 58u32, "58 mm"),
+            (ids!(vp_paper_80), ids!(vp_paper_80_on), 80, "80 mm"),
+            (ids!(vp_paper_112), ids!(vp_paper_112_on), 112, "112 mm"),
+            (ids!(vp_paper_210), ids!(vp_paper_210_on), 210, "210 mm"),
         ] {
             self.ui.button(cx, idle).set_text(cx, label);
             self.ui.button(cx, on).set_text(cx, label);
@@ -879,10 +946,8 @@ fn fit_inside_system_bars(&mut self, cx: &mut Cx) {
         if !host {
             self.ui.widget(cx, ids!(printers_found_label)).set_visible(cx, false);
         }
-        let has_printers = !app_state().lock().unwrap().printer_draft.printers.is_empty();
-        self.ui
-            .widget(cx, ids!(printers_pool_label))
-            .set_visible(cx, host && has_printers);
+        // The saved printers, each with its paper (paint_printer_rows).
+        self.paint_printer_rows(cx);
         self.ui.widget(cx, ids!(printers_delivery_list)).set_visible(cx, false);
         self.ui.button(cx, ids!(printer_place_dd)).set_visible(cx, false);
         self.ui.widget(cx, ids!(printers_routes_help)).set_visible(cx, false);
@@ -1221,9 +1286,6 @@ fn fit_inside_system_bars(&mut self, cx: &mut Cx) {
             ids!(table_area_input),
             ids!(table_range_input),
             ids!(table_remove_input),
-            ids!(bill_header_input),
-            ids!(fssai_input),
-            ids!(bill_footer_input),
             ids!(team_pick_input),
             ids!(staff_copy_hire_input),
             ids!(staff_edit_name_input),
@@ -1417,14 +1479,9 @@ fn fit_inside_system_bars(&mut self, cx: &mut Cx) {
             (ids!(table_area_input), "table_area_ph"),
             (ids!(table_range_input), "table_range_ph"),
             (ids!(table_remove_input), "table_remove_ph"),
-            (ids!(bill_header_input), "bill_header_ph"),
-            (ids!(fssai_input), "fssai_ph"),
-            (ids!(upi_vpa_input), "upi_vpa_ph"),
-            (ids!(upi_payee_input), "upi_payee_ph"),
             (ids!(scheme_bogo_input), "scheme_bogo_ph"),
             (ids!(menu_schedule_input), "schedule_ph"),
             (ids!(recall_kot_input), "recall_kot_ph"),
-            (ids!(bill_footer_input), "bill_footer_ph"),
             (ids!(team_pick_input), "team_pick_ph"),
             (ids!(staff_copy_hire_input), "staff_copy_hire_ph"),
             (ids!(staff_edit_name_input), "staff_edit_name_ph"),

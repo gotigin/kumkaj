@@ -92,10 +92,6 @@ bill_item_layout	Подредба на артикули
 bill_item_layout_columns	Колони
 bill_item_layout_stacked	На редове
 bill_item_header	Заглавия на колони
-bill_item_hdr_item	Заглавие Артикул
-bill_item_hdr_qty	Заглавие Кол.
-bill_item_hdr_price	Заглавие Цена
-bill_item_hdr_amount	Заглавие Сума
 bill_item_name	Име на ястие
 bill_item_qty	Кол.
 bill_item_price	Цена
@@ -103,6 +99,20 @@ bill_item_amount	Сума
 bill_item_note	Бележка към ястие
 bill_item_col_sep	Линии на колони
 slip_columns	Колони
+slip_col_header	Заглавие
+bill_line_logo	Лого
+bill_logo_picture	Изображение
+bill_logo_choose	Избери изображение
+bill_logo_remove	Премахни изображението
+bill_logo_none	Няма изображение
+bill_logo_unreadable	Не е изображение, което приложението може да прочете
+bill_logo_width	Ширина (px)
+bill_logo_height	Височина (px)
+bill_logo_tones	Сиви тонове
+bill_logo_solid	Плътно
+bill_logo_shaded	Със сенки
+bill_logo_help	Ширина и височина в px. Празното следва изображението: едно празно запазва формата, две празни — собствения размер; зададени и двете — изображението се вписва вътре, без разтягане. Без изображение: показаното лого пази височината си като празно място; „Скрий“ го премахва.
+bill_logo_tones_help	Плътно: всяка точка черна или бяла, за чисти лога. Със сенки: сивото става фин точков рисунък, за снимки и меки сенки.
 slip_col_width	Ширина (mm)
 slip_col_start	Начално отстояние (px)
 slip_col_end	Крайно отстояние (px)
@@ -167,6 +177,21 @@ alerts_help	Колко дълго съобщенията за състояние
 snack_secs_ph	Секунди (3–60, по подразбиране 10)
 snack_secs_save	Запази времето за известие
 snack_secs_saved	Времето за известие е запазено — {n} секунди
+settings_sec_whatsapp	WhatsApp
+whatsapp_cloud_help	Use your own Meta WhatsApp Cloud API. Create a System User token with whatsapp_business_messaging (temporary dashboard tokens expire). Credentials stay on this Server only — never on extra tills. Accepted means Meta took the request, not that the guest received it.
+whatsapp_phone_id_ph	Phone Number ID
+whatsapp_token_ph	Access Token (leave blank to keep)
+whatsapp_template_ph	Bill template name (optional)
+whatsapp_template_lang_ph	Template language (e.g. en)
+whatsapp_enable	Enable
+whatsapp_disable	Off
+whatsapp_save	Save WhatsApp
+whatsapp_test	Test connection
+whatsapp_disconnect	Disconnect
+whatsapp_send_bill	Send via WhatsApp
+whatsapp_consent	WhatsApp OK
+whatsapp_consent_help	Guest agreed to receive WhatsApp messages. A phone number alone is not consent.
+whatsapp_server_only	Configure WhatsApp on the shop Server device
 settings_sec_backup	Резервно копие и възстановяване
 settings_sec_diag	Диагностика
 settings_sec_privacy	Поверителност
@@ -729,6 +754,13 @@ station_vps_dd	Принтери за тази станция
 station_vps_dd_n	{n} принтер(а) · докоснете за промяна
 bill_printers_dd	Принтери за сметката
 bill_printers_dd_n	{n} принтер(а) за сметката · докоснете за промяна
+paper_heading	Хартия
+paper_size	{w} × {h} mm
+paper_roll	ролка {w} мм
+paper_not_set	хартията още не е известна
+paper_length_mm	Дължина (mm)
+printer_paper_help	Хартията на този принтер в мм. Празна Дължина означава ролка: всяка бележка е дълга колкото съдържанието ѝ. „Намери принтери“ попълва празната хартия от драйвера на принтера (ролка 80 мм, ако не може да каже) и никога не променя вече зададена.
+preview_help	Тази бележка върху хартията на принтера, избран по-долу, както се печата там: в реален размер от горния ляв ъгъл, до който принтерът стига (сиво: ръбове, до които не стига), дълга бележка на повече листове, всичко след ръба на хартията се отрязва. Изборът на принтер променя само прегледа; хартията на всеки принтер се задава в „Принтери“.
 job_layout	Подредба
 job_delivery	Как се изпраща задачата
 job_delivery_help	Документ на ОС, сурови байтове или ESC/POS. Сметката и кухненският фиш пазят всеки своето. Всяка задача може да отиде към всеки принтер, който Търсенето е запазило.
@@ -1105,9 +1137,6 @@ remove_these_tables	Премахни тези маси
 table_remove_ph	Премахни: T1-T24 или името на една маса
 find_server	Намери сървъра на заведението
 bill_format	Формат на сметката
-bill_header_ph	Адрес | телефон
-fssai_ph	Лиценз FSSAI № (Индия)
-bill_footer_ph	Долен колонтитул (напр. Благодарим, заповядайте отново)
 reset_bill_format	Върни подразбирането
 bill_format_reset	Форматът на сметката е върнат към подразбиране
 reset_kot_format	Върни подразбирането
@@ -1146,7 +1175,6 @@ kot_kind_modified	Променен
 kot_kind_cancelled	Отказан
 kot_style_heading	Размер и дебелина на полето
 kot_style_title	Заглавие
-kot_style_item_qty	Артикул · Кол.
 kot_style_field_pick	Избери поле
 kot_weight_regular	Обикновен
 kot_weight_bold	Получер
@@ -1158,8 +1186,8 @@ content_width_bill	Ширина на сметката (mm)
 content_width_kot	Ширина на KOT (mm)
 content_width_ph	Или въведете ширина на съдържанието, 40–210 mm
 content_width_help	Колко широк се печата този фиш. Сметката и KOT пазят всеки своята ширина.
-content_width_bill_help	Колко широка се печата сметката за госта. По подразбиране 210 mm (страница). 58 mm тесен фиш, 80 mm широк фиш, 112 mm 4 инча, 210 mm ширина A4. Въведете стойност от 40 до 210. Кухненските фишове имат своя ширина в раздела KOT.
-content_width_kot_help	Колко широк се печата кухненският фиш. По подразбиране 80 mm. 58 mm тесен фиш, 80 mm широк фиш, 112 mm 4 инча, 210 mm страница. Въведете стойност от 40 до 210. Сметките за гости имат своя ширина в раздела Сметка.
+content_width_bill_help	Колко широко се печата сметката на госта, в mm (40–210). Печата се в този реален размер на всякаква хартия; на по-тясна хартия частта след ръба за печат се изрязва (вижте Хартия). Кухненските бележки имат своя ширина в раздела KOT.
+content_width_kot_help	Колко широко се печата кухненската бележка, в mm (40–210). Печата се в този реален размер на всякаква хартия; на по-тясна хартия частта след ръба за печат се изрязва (вижте Хартия). Сметките на гостите имат своя ширина в раздела Сметка.
 vp_paper_width	Ширина на съдържанието (mm)
 vp_paper_width_ph	Или въведете ширина на съдържанието, 40–210 mm
 vp_paper_width_help	Ширината на съдържанието се задава във Формат на сметка и KOT — отделно за сметката (по подразбиране 210 mm) и кухненския фиш (по подразбиране 80 mm).
@@ -1213,8 +1241,6 @@ schemes_help	BOGO, процент отстъпка и фиксирани ком�
 scheme_bogo_ph	Купи 2 Thali получи 1 Chaas
 add_scheme	Добави BOGO
 schedule_ph	Часове / щастлив час — Пн-Пт 07:00-11:00 или HappyHour 17:00-19:00=150
-upi_vpa_ph	UPI идентификатор (VPA)
-upi_payee_ph	Име на получател UPI (по избор)
 upi_qr	UPI QR
 show_upi_qr	Покажи UPI QR
 close_upi_qr	Затвори
@@ -1295,8 +1321,6 @@ printer_mode_first	Първият, който работи
 printer_mode_all	Печат на всички
 kot_show_area	Зона
 kot_hide_area	Скрий зоната
-kot_show_item_hdr	Артикул · Кол.
-kot_hide_item_hdr	Скрий колоните
 kot_show_title	Ред за заглавие
 kot_hide_title	Скрий заглавието
 kot_field_cycle	Избери следващото
@@ -1337,12 +1361,12 @@ private_code_ph	12-цифрен код
 stamp_on	Печат: във файла
 pay_qr_on	QR за плащане: във файла
 pay_qr_off	QR за плащане: няма
+printers_screen_tip	Търсенето показва принтерите, които това устройство може да ползва, и ги запазва за този магазин. Принтери за сметки: Формат на сметка и KOT → Сметка. Кухня: Кухня → Кухненски станции.
+printers_found_none	Не са намерени принтери.
+nav_loading	Зареждане…
+kot_copy_from	Копиране от
+kot_copy_from_help	Копира размера, дебелината и подравняването на всеки ред от този вид в този. Този вид запазва своя банер, префикс на артикулите и зачертаване. Запазете формата на KOT, за да го запазите.
 items_tmpl_heading	Шаблони за артикули
 items_tmpl_help	Ястия, категории и снимки за вашето меню. Настройките на магазина и персоналът остават същите.
 public_tmpl_help	Начални менюта, които всеки може да изтегли. Нужен е интернет веднъж.
 private_tmpl_help	Клиентски менюта, заключени с 12-цифрен код от вашия контакт в Khaynjo.
-printers_screen_tip	Търсенето показва принтерите, които това устройство може да ползва, и ги запазва за този магазин. Принтери за сметки: Формат на сметка и KOT → Сметка. Кухня: Кухня → Кухненски станции.
-printers_found_none	Не са намерени принтери.
-kot_copy_from	Копиране от
-kot_copy_from_help	Копира размера, дебелината и подравняването на всеки ред от този вид в този. Този вид запазва своя банер, префикс на артикулите и зачертаване. Запазете формата на KOT, за да го запазите.
-nav_loading	Зареждане…

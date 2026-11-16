@@ -72,10 +72,6 @@ bill_item_layout	आयटम लेआउट
 bill_item_layout_columns	स्तंभ
 bill_item_layout_stacked	ओळी
 bill_item_header	स्तंभ शीर्षक
-bill_item_hdr_item	आयटम शीर्षक
-bill_item_hdr_qty	संख्या शीर्षक
-bill_item_hdr_price	दर शीर्षक
-bill_item_hdr_amount	रक्कम शीर्षक
 bill_item_name	औषधाचे नाव
 bill_item_qty	संख्या
 bill_item_price	दर
@@ -83,6 +79,13 @@ bill_item_amount	रक्कम
 bill_item_note	Rx / विक्री टीप
 bill_item_col_sep	स्तंभ रेषा
 slip_col_width	रुंदी (mm)
+paper_heading	कागद
+paper_size	{w} × {h} mm
+paper_roll	{w} mm रोल
+paper_not_set	कागद अजून माहीत नाही
+paper_length_mm	लांबी (mm)
+printer_paper_help	या प्रिंटरचा कागद mm मध्ये. रिकामी लांबी म्हणजे रोल: प्रत्येक पावती तिच्या मजकुराएवढी लांब असते. प्रिंटर शोधा रिकामा कागद प्रिंटरच्या ड्रायव्हरमधून भरते (सांगता न आल्यास 80 mm रोल) आणि आधीच ठरवलेला कागद कधीही बदलत नाही.
+preview_help	खाली निवडलेल्या प्रिंटरच्या कागदावर ही पावती, तिथे छापली जाते तशी: प्रिंटर जिथपर्यंत पोहोचतो त्या वरच्या डाव्या कोपऱ्यापासून खऱ्या मापात (करडा: जिथे पोहोचत नाही त्या कडा), लांब पावती अधिक पानांवर, कागदाच्या कडेपलीकडचे सर्व कापले जाते. प्रिंटर निवडल्याने फक्त पूर्वावलोकन बदलते; प्रत्येक प्रिंटरचा कागद प्रिंटर मध्ये ठरवला जातो.
 slip_col_start	सुरुवातीची जागा (px)
 slip_col_end	शेवटची जागा (px)
 slip_columns_help	प्रत्येक स्तंभाच्या रुंदीत त्याची सुरुवातीची आणि शेवटची जागा समाविष्ट आहे. मजकूर आपल्या स्तंभातच गुंडाळला जातो; मजकुराच्या रुंदीबाहेरचे कागदावर आणि पूर्वावलोकनात कापले जाते.
@@ -850,3 +853,4 @@ nav_loading	लोड होत आहे…
 printer_mode_first	आधी चालणारा
 printer_mode_all	सर्वांवर छापा
 slip_columns	स्तंभ
+slip_col_header	शीर्षक

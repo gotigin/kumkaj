@@ -316,7 +316,7 @@ mod tests {
     use crate::domain::{Cart, Money, PayMethod, Product};
 
     fn kitchen() -> (Store, std::path::PathBuf, StaffMember, Product) {
-        let path = std::env::temp_dir().join(format!("khaynjo-recipe-{}.sqlite3", new_id()));
+        let path = crate::test_dirs::run_root().join(format!("khaynjo-recipe-{}.sqlite3", new_id()));
         let store = Store::open_path(&path).unwrap();
         let owner = store.list_staff().unwrap().into_iter().next().unwrap();
         store.upsert_product(&Product::new_raw_material("Rice", "kg")).unwrap();

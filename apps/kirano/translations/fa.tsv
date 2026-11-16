@@ -60,10 +60,6 @@ bill_item_layout	چیدمان کالا
 bill_item_layout_columns	ستون‌ها
 bill_item_layout_stacked	روی هم
 bill_item_header	سرستون‌ها
-bill_item_hdr_item	سرستون کالا
-bill_item_hdr_qty	سرستون تعداد
-bill_item_hdr_price	سرستون قیمت
-bill_item_hdr_amount	سرستون مبلغ
 bill_item_name	نام کالا
 bill_item_qty	تعداد
 bill_item_price	قیمت
@@ -71,6 +67,13 @@ bill_item_amount	مبلغ
 bill_item_note	یادداشت مورد
 bill_item_col_sep	خط ستون
 slip_col_width	پهنا (mm)
+paper_heading	کاغذ
+paper_size	{w} × {h} mm
+paper_roll	رول {w} میلی‌متری
+paper_not_set	کاغذ هنوز معلوم نیست
+paper_length_mm	طول (mm)
+printer_paper_help	کاغذ این چاپگر به میلی‌متر. طول خالی یعنی رول: هر رسید به اندازهٔ محتوایش بلند است. «پیدا کردن چاپگرها» کاغذ خالی را از درایور چاپگر پر می‌کند (اگر نتواند بگوید، رول ۸۰ میلی‌متری) و هرگز کاغذی را که از قبل تعیین شده تغییر نمی‌دهد.
+preview_help	این رسید روی کاغذ چاپگری که پایین انتخاب شده، همان‌طور که آنجا چاپ می‌شود: در اندازهٔ واقعی از گوشهٔ بالا چپی که چاپگر به آن می‌رسد (خاکستری: لبه‌هایی که نمی‌رسد)، رسید بلند روی برگه‌های بیشتر، هرچه از لبهٔ کاغذ بگذرد بریده می‌شود. انتخاب چاپگر فقط پیش‌نمایش را تغییر می‌دهد؛ کاغذ هر چاپگر در «چاپگرها» تعیین می‌شود.
 slip_col_start	فاصلهٔ آغاز (px)
 slip_col_end	فاصلهٔ پایان (px)
 slip_columns_help	پهنای هر ستون شامل فاصلهٔ آغاز و پایان آن است. متن درون ستون خودش می‌شکند؛ هرچه از پهنای محتوا بیرون بزند، روی کاغذ و در پیش‌نمایش بریده می‌شود.
@@ -838,3 +841,4 @@ nav_loading	در حال بارگیری…
 printer_mode_first	نخستین که کار کند
 printer_mode_all	چاپ روی همه
 slip_columns	ستون‌ها
+slip_col_header	سرستون

@@ -165,8 +165,9 @@ pub fn catalogue_root() -> Option<PathBuf> {
             return Some(p);
         }
     }
-    if let Ok(dir) = std::env::var("KHAYNJO_CATALOGUE_DIR") {
-        let items = PathBuf::from(&dir).join("public").join("items");
+    // The same mirror catalogue_remote downloads into (KHAYNJO_CATALOGUE_DIR).
+    if let Some(dir) = crate::catalogue_remote::catalogue_fs_root() {
+        let items = dir.join("public").join("items");
         if items.is_dir() {
             return Some(items);
         }
@@ -591,7 +592,7 @@ mod tests {
 
     #[test]
     fn shelf_scan_reads_folders_and_skips_other_files() {
-        let root = std::env::temp_dir().join(format!("khaynjo-shelf-{}", std::process::id()));
+        let root = crate::test_dirs::run_root().join(format!("khaynjo-shelf-{}", std::process::id()));
         let _ = std::fs::remove_dir_all(&root);
         std::fs::create_dir_all(root.join("south-indian")).unwrap();
         std::fs::write(root.join("south-indian/masala-dosa.webp"), b"x").unwrap();

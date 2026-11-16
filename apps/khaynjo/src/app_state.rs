@@ -86,6 +86,12 @@ struct AppState {
     last_nav_saved: Option<(String, NavTab)>,
     /// Settings → Printers: real printer selected (for new / edit virtual).
     printer_selected_id: Option<String>,
+    /// Which saved printer's paper the Bill / KOT preview is drawn on (not
+    /// a setting: the preview only; docs/PRINTER.md § Paper and preview).
+    bill_preview_printer: Option<String>,
+    kot_preview_printer: Option<String>,
+    /// The printer open on Settings → Printers (its Width / Length shown).
+    printer_paper_open: Option<String>,
     /// Pool printers checked for "Print a test page" / "Test KOT" (multi-select).
     test_printer_ids: Vec<String>,
     /// Draft values for virtual printer create/edit (inline on the VP).
@@ -212,8 +218,6 @@ struct AppState {
     bill_slip_draft: print_share::BillSlipFormat,
     /// Which bill line's show / size / weight / align is open.
     bill_style_field: print_share::BillStyleField,
-    /// Which row of the bill print order is selected.
-    bill_field_edit_idx: usize,
     /// DeviceSetup accordions (`language`, `role`, `public_templates`, `private_template`).
     device_setup_sections_open: Vec<String>,
     /// Pending custom icon path from picker (before Save brand).

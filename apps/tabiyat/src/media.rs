@@ -102,7 +102,7 @@ mod tests {
 
     #[test]
     fn fit_shrinks_large_photos_and_leaves_small_ones() {
-        let dir = std::env::temp_dir().join(format!("tabiyat-media-fit-{}", std::process::id()));
+        let dir = crate::test_dirs::run_root().join(format!("tabiyat-media-fit-{}", std::process::id()));
         std::fs::create_dir_all(&dir).unwrap();
         let big = dir.join("big.png");
         image::RgbImage::new(1000, 500).save(&big).unwrap();

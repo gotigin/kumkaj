@@ -92,10 +92,6 @@ bill_item_layout	Öğe düzeni
 bill_item_layout_columns	Sütunlar
 bill_item_layout_stacked	Yığılmış
 bill_item_header	Sütun başlıkları
-bill_item_hdr_item	Öğe başlığı
-bill_item_hdr_qty	Adet başlığı
-bill_item_hdr_price	Fiyat başlığı
-bill_item_hdr_amount	Tutar başlığı
 bill_item_name	Ad
 bill_item_qty	Adet
 bill_item_price	Fiyat
@@ -103,6 +99,20 @@ bill_item_amount	Tutar
 bill_item_note	Not
 bill_item_col_sep	Sütun çizgileri
 slip_columns	Sütunlar
+slip_col_header	Başlık
+bill_line_logo	Logo
+bill_logo_picture	Resim
+bill_logo_choose	Resim seç
+bill_logo_remove	Resmi kaldır
+bill_logo_none	Resim yok
+bill_logo_unreadable	Uygulamanın okuyabildiği bir resim değil
+bill_logo_width	Genişlik (px)
+bill_logo_height	Yükseklik (px)
+bill_logo_tones	Griler
+bill_logo_solid	Düz
+bill_logo_shaded	Gölgeli
+bill_logo_help	Genişlik ve yükseklik px cinsinden. Boş olan resmi izler: biri boşsa biçimi korunur, ikisi de boşsa kendi boyutu kullanılır; ikisi de verilirse içine sığdırılır, asla gerilmez. Resim yok: gösterilen logo yüksekliğini boş alan olarak tutar; Gizle onu kaldırır.
+bill_logo_tones_help	Düz: her nokta siyah ya da beyaz, net logolar için. Gölgeli: griler ince nokta desenine dönüşür, fotoğraflar ve yumuşak gölgeler için.
 slip_col_width	Genişlik (mm)
 slip_col_start	Başlangıç boşluğu (px)
 slip_col_end	Bitiş boşluğu (px)
@@ -167,6 +177,21 @@ alerts_help	Durum mesajlarının sizin için ekranda kalma süresi (bu giriş).
 snack_secs_ph	Saniye (3–60, varsayılan 10)
 snack_secs_save	Uyarı süresini kaydet
 snack_secs_saved	Uyarı süresi kaydedildi — {n} saniye
+settings_sec_whatsapp	WhatsApp
+whatsapp_cloud_help	Use your own Meta WhatsApp Cloud API. Create a System User token with whatsapp_business_messaging (temporary dashboard tokens expire). Credentials stay on this Server only — never on extra tills. Accepted means Meta took the request, not that the guest received it.
+whatsapp_phone_id_ph	Phone Number ID
+whatsapp_token_ph	Access Token (leave blank to keep)
+whatsapp_template_ph	Bill template name (optional)
+whatsapp_template_lang_ph	Template language (e.g. en)
+whatsapp_enable	Enable
+whatsapp_disable	Off
+whatsapp_save	Save WhatsApp
+whatsapp_test	Test connection
+whatsapp_disconnect	Disconnect
+whatsapp_send_bill	Send via WhatsApp
+whatsapp_consent	WhatsApp OK
+whatsapp_consent_help	Guest agreed to receive WhatsApp messages. A phone number alone is not consent.
+whatsapp_server_only	Configure WhatsApp on the shop Server device
 settings_sec_backup	Yedekleme ve geri yükleme
 settings_sec_diag	Tanılama
 settings_sec_privacy	Gizlilik
@@ -729,6 +754,13 @@ station_vps_dd	Bu istasyonun yazıcıları
 station_vps_dd_n	{n} yazıcı · değiştirmek için dokunun
 bill_printers_dd	Fatura için yazıcılar
 bill_printers_dd_n	Fatura için {n} yazıcı(alar) · değiştirmek için dokunun
+paper_heading	Kâğıt
+paper_size	{w} × {h} mm
+paper_roll	{w} mm rulo
+paper_not_set	kâğıt henüz bilinmiyor
+paper_length_mm	Uzunluk (mm)
+printer_paper_help	Bu yazıcının kâğıdı mm cinsinden. Boş Uzunluk rulodur: her fiş içeriği kadar uzundur. Yazıcıları bul, boş kâğıdı yazıcının sürücüsünden doldurur (söyleyemezse 80 mm rulo) ve önceden ayarlanmış olanı asla değiştirmez.
+preview_help	Bu fiş, aşağıda seçilen yazıcının kâğıdında, orada basıldığı gibi: yazıcının ulaştığı sol üst köşeden gerçek boyutta (gri: ulaşamadığı kenarlar), uzun fiş daha çok sayfada, kâğıt kenarını aşan her şey kesilir. Yazıcı seçmek yalnızca önizlemeyi değiştirir; her yazıcının kâğıdı Yazıcılar altında ayarlanır.
 job_layout	Yerleşim
 job_delivery	İşin nasıl gönderildiği
 job_delivery_help	OS belgesi, ham bayt veya ESC/POS. Fatura ve mutfak bileti her birinin kendiğini korur. Her iki iş de Bul'un kaydettiği herhangi bir yazıcıya gidebilir.
@@ -1105,9 +1137,6 @@ remove_these_tables	Bu masaları kaldır
 table_remove_ph	Kaldır: T1-T24 veya bir masanın adı
 find_server	Dükkânın sunucusunu bul
 bill_format	Hesap biçimi
-bill_header_ph	Adres | telefon
-fssai_ph	FSSAI lisans no. (Hindistan)
-bill_footer_ph	Alt bilgi (ör. Teşekkürler, yine bekleriz)
 reset_bill_format	Varsayılana dön
 bill_format_reset	Hesap biçimi varsayılana döndü
 reset_kot_format	Varsayılana dön
@@ -1146,7 +1175,6 @@ kot_kind_modified	Değiştirildi
 kot_kind_cancelled	İptal
 kot_style_heading	Alan boyutu ve kalınlığı
 kot_style_title	Başlık
-kot_style_item_qty	Kalem · Adet
 kot_style_field_pick	Alan seç
 kot_weight_regular	Normal
 kot_weight_bold	Kalın
@@ -1158,8 +1186,8 @@ content_width_bill	Fatura içeriği genişliği (mm)
 content_width_kot	KOT içeriği genişliği (mm)
 content_width_ph	Veya içerik genişliği yazın, 40–210 mm
 content_width_help	Bu slipin ne kadar geniş baskı aldığı. Fatura ve KOT her birinin kendi genişliğini korur.
-content_width_bill_help	Misafir faturasının ne kadar geniş baskı aldığı. Varsayılan 210 mm (sayfa). 58 mm dar slip, 80 mm geniş slip, 112 mm 4 inçlik, 210 mm A4 genişliği. 40 ile 210 arasında herhangi bir değer girin. Mutfak biletleri KOT sekmesinde kendi genişliğine sahiptir.
-content_width_kot_help	Mutfak biletinin ne kadar geniş baskı aldığı. Varsayılan 80 mm. 58 mm dar slip, 80 mm geniş slip, 112 mm 4 inçlik, 210 mm sayfa. 40 ile 210 arasında herhangi bir değer girin. Misafir faturaları Fatura sekmesinde kendi genişliğine sahiptir.
+content_width_bill_help	Misafir hesabının ne genişlikte basıldığı, mm cinsinden (40–210). Her kâğıtta bu gerçek boyutta basılır; daha dar kâğıtta baskı kenarını aşan kısım kesilir (bkz. Kâğıt). Mutfak fişlerinin kendi genişliği KOT sekmesindedir.
+content_width_kot_help	Mutfak fişinin ne genişlikte basıldığı, mm cinsinden (40–210). Her kâğıtta bu gerçek boyutta basılır; daha dar kâğıtta baskı kenarını aşan kısım kesilir (bkz. Kâğıt). Misafir hesaplarının kendi genişliği Hesap sekmesindedir.
 vp_paper_width	İçerik genişliği (mm)
 vp_paper_width_ph	Veya içerik genişliği yazın, 40–210 mm
 vp_paper_width_help	İçerik genişliği Fiş ve KOT biçiminde ayarlanır. Fişe ve mutfak fişine uygulanır.
@@ -1213,8 +1241,6 @@ schemes_help	X al Y kazan — ödemede otomatik. Örn. Buy 2 Thali get 1 Chaas
 scheme_bogo_ph	2 Thali al, 1 Chaas kazan
 add_scheme	BOGO ekle
 schedule_ph	Saat / happy hour — Mon-Fri 07:00-11:00 veya HappyHour 17:00-19:00=150
-upi_vpa_ph	UPI ID (VPA)
-upi_payee_ph	UPI alıcı (isteğe bağlı)
 upi_qr	UPI QR
 show_upi_qr	UPI QR göster
 close_upi_qr	Kapat
@@ -1295,8 +1321,6 @@ printer_mode_first	Çalışanı olan ilkini
 printer_mode_all	Hepsi üzerinde baskı al
 kot_show_area	Alan
 kot_hide_area	Alanı gizle
-kot_show_item_hdr	Kalem · Adet
-kot_hide_item_hdr	Sütunları gizle
 kot_show_title	Başlık satırı
 kot_hide_title	Başlığı gizle
 kot_field_cycle	Sonrakini seç
@@ -1337,12 +1361,12 @@ private_code_ph	12 haneli kod
 stamp_on	Damga: dosyada
 pay_qr_on	Ödeme QR: dosyada
 pay_qr_off	Ödeme QR: yok
+printers_screen_tip	Ara, bu cihazın kullanabileceği yazıcıları listeler ve bu mağaza için kaydeder. Hesap yazıcıları: Hesap ve KOT biçimi → Hesap. Mutfak: Mutfak → Mutfak istasyonları.
+printers_found_none	Yazıcı bulunamadı.
+nav_loading	Yükleniyor…
+kot_copy_from	Şuradan kopyala
+kot_copy_from_help	O türdeki her satırın boyutunu, kalınlığını ve hizalamasını bu türe kopyalar. Bu tür kendi başlığını, ürün önekini ve üstü çizgisini korur. Korumak için KOT biçimini kaydedin.
 items_tmpl_heading	Ürün şablonları
 items_tmpl_help	Menünüz için yemekler, kategoriler ve fotoğraflar. Mağaza ayarları ve personel olduğu gibi kalır.
 public_tmpl_help	Herkesin indirebileceği başlangıç menüleri. Bir kez internet gerekir.
 private_tmpl_help	Khaynjo bağlantınızdan gelen 12 haneli kodla korunan müşteri menüleri.
-printers_screen_tip	Ara, bu cihazın kullanabileceği yazıcıları listeler ve bu mağaza için kaydeder. Hesap yazıcıları: Hesap ve KOT biçimi → Hesap. Mutfak: Mutfak → Mutfak istasyonları.
-printers_found_none	Yazıcı bulunamadı.
-kot_copy_from	Şuradan kopyala
-kot_copy_from_help	O türdeki her satırın boyutunu, kalınlığını ve hizalamasını bu türe kopyalar. Bu tür kendi başlığını, ürün önekini ve üstü çizgisini korur. Korumak için KOT biçimini kaydedin.
-nav_loading	Yükleniyor…

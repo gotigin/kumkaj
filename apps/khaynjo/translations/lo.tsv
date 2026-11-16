@@ -92,10 +92,6 @@ bill_item_layout	ຮູບແບບລາຍການ
 bill_item_layout_columns	ຖັນ
 bill_item_layout_stacked	ຊ້ອນກັນ
 bill_item_header	ສ່ວນຫົວຖັນ
-bill_item_hdr_item	ສ່ວນຫົວລາຍການ
-bill_item_hdr_qty	ສ່ວນຫົວ Qty
-bill_item_hdr_price	ສ່ວນຫົວລາຄາ
-bill_item_hdr_amount	ສ່ວນຫົວຈໍານວນ
 bill_item_name	ຊື່ອາຫານ
 bill_item_qty	ຈຳນວນ
 bill_item_price	ລາຄາ
@@ -103,6 +99,20 @@ bill_item_amount	ຈໍານວນ
 bill_item_note	ບັນທຶກອາຫານ
 bill_item_col_sep	ກົດລະບຽບຖັນ
 slip_columns	ຖັນ
+slip_col_header	ສ່ວນຫົວ
+bill_line_logo	ໂລໂກ້
+bill_logo_picture	ຮູບ
+bill_logo_choose	ເລືອກຮູບ
+bill_logo_remove	ລຶບຮູບອອກ
+bill_logo_none	ບໍ່ມີຮູບ
+bill_logo_unreadable	ບໍ່ແມ່ນຮູບທີ່ແອັບອ່ານໄດ້
+bill_logo_width	ຄວາມກວ້າງ (px)
+bill_logo_height	ຄວາມສູງ (px)
+bill_logo_tones	ສີເທົາ
+bill_logo_solid	ທຶບ
+bill_logo_shaded	ມີເງົາ
+bill_logo_help	ຄວາມກວ້າງ ແລະ ຄວາມສູງເປັນ px. ຫວ່າງໄວ້ຈະຕາມຮູບ: ຫວ່າງອັນໜຶ່ງຮັກສາຮູບຮ່າງ, ຫວ່າງທັງສອງໃຊ້ຂະໜາດຂອງຮູບເອງ; ໃສ່ທັງສອງຈະໃສ່ພາຍໃນ, ບໍ່ດຶງຢືດຈັກເທື່ອ. ບໍ່ມີຮູບ: ໂລໂກ້ທີ່ສະແດງຮັກສາຄວາມສູງເປັນບ່ອນຫວ່າງ; ເຊື່ອງຈະລຶບອອກ.
+bill_logo_tones_help	ທຶບ: ແຕ່ລະຈຸດດຳ ຫຼື ຂາວ, ສຳລັບໂລໂກ້ຄົມຊັດ. ມີເງົາ: ສີເທົາກາຍເປັນລາຍຈຸດລະອຽດ, ສຳລັບຮູບຖ່າຍ ແລະ ເງົາອ່ອນ.
 slip_col_width	ຄວາມກວ້າງ (mm)
 slip_col_start	ຊ່ອງວ່າງຕົ້ນ (px)
 slip_col_end	ຊ່ອງວ່າງທ້າຍ (px)
@@ -167,6 +177,21 @@ alerts_help	ຂໍ້ຄວາມສະຖານະຢູ່ໃນໜ້າຈ�
 snack_secs_ph	ວິນາທີ (3–60, ຄ່າເລີ່ມຕົ້ນ 10)
 snack_secs_save	ປະຢັດເວລາເຕືອນ
 snack_secs_saved	ບັນທຶກເວລາແຈ້ງເຕືອນ — {n} ວິນາທີ
+settings_sec_whatsapp	WhatsApp
+whatsapp_cloud_help	Use your own Meta WhatsApp Cloud API. Create a System User token with whatsapp_business_messaging (temporary dashboard tokens expire). Credentials stay on this Server only — never on extra tills. Accepted means Meta took the request, not that the guest received it.
+whatsapp_phone_id_ph	Phone Number ID
+whatsapp_token_ph	Access Token (leave blank to keep)
+whatsapp_template_ph	Bill template name (optional)
+whatsapp_template_lang_ph	Template language (e.g. en)
+whatsapp_enable	Enable
+whatsapp_disable	Off
+whatsapp_save	Save WhatsApp
+whatsapp_test	Test connection
+whatsapp_disconnect	Disconnect
+whatsapp_send_bill	Send via WhatsApp
+whatsapp_consent	WhatsApp OK
+whatsapp_consent_help	Guest agreed to receive WhatsApp messages. A phone number alone is not consent.
+whatsapp_server_only	Configure WhatsApp on the shop Server device
 settings_sec_backup	ສຳຮອງຂໍ້ມູນ & ຟື້ນຟູ
 settings_sec_diag	ການວິນິດໄສ
 settings_sec_privacy	ຄວາມເປັນສ່ວນຕົວ
@@ -729,6 +754,13 @@ station_vps_dd	ເຄື່ອງພິມສໍາລັບສະຖານີ�
 station_vps_dd_n	{n}ເຄື່ອງພິມ · ແຕະເພື່ອປ່ຽນ
 bill_printers_dd	ເຄື່ອງພິມສໍາລັບໃບບິນຄ່າ
 bill_printers_dd_n	{n}ເຄື່ອງພິມສຳລັບໃບບິນ · ແຕະເພື່ອປ່ຽນ
+paper_heading	ເຈ້ຍ
+paper_size	{w} × {h} mm
+paper_roll	ມ້ວນ {w} mm
+paper_not_set	ຍັງບໍ່ຮູ້ເຈ້ຍ
+paper_length_mm	ຄວາມຍາວ (mm)
+printer_paper_help	ເຈ້ຍຂອງເຄື່ອງພິມນີ້ເປັນ mm. ຄວາມຍາວຫວ່າງ ແມ່ນມ້ວນ: ໃບບິນແຕ່ລະໃບຍາວເທົ່າເນື້ອໃນຂອງມັນ. ຊອກຫາເຄື່ອງພິມ ຕື່ມເຈ້ຍທີ່ຫວ່າງຈາກໄດເວີຂອງເຄື່ອງພິມ (ມ້ວນ 80 mm ເມື່ອມັນບອກບໍ່ໄດ້) ແລະ ບໍ່ເຄີຍປ່ຽນເຈ້ຍທີ່ຕັ້ງໄວ້ແລ້ວ.
+preview_help	ໃບບິນນີ້ຢູ່ເທິງເຈ້ຍຂອງເຄື່ອງພິມທີ່ເລືອກຢູ່ລຸ່ມ, ຄືກັບທີ່ພິມອອກຢູ່ບ່ອນນັ້ນ: ຂະໜາດແທ້ຈາກມຸມຊ້າຍເທິງທີ່ເຄື່ອງພິມໄປເຖິງ (ສີເທົາ: ຂອບທີ່ໄປບໍ່ເຖິງ), ໃບບິນຍາວຢູ່ໃນຫຼາຍແຜ່ນ, ສ່ວນທີ່ເກີນຂອບເຈ້ຍຖືກຕັດ. ການເລືອກເຄື່ອງພິມປ່ຽນແຕ່ຕົວຢ່າງ; ເຈ້ຍຂອງແຕ່ລະເຄື່ອງພິມຕັ້ງໄວ້ໃນ ເຄື່ອງພິມ.
 job_layout	ແຜນຜັງ
 job_delivery	ວິທີການສົ່ງວຽກ
 job_delivery_help	ເອກະສານ OS, ໄບຕ໌ດິບ, ຫຼື ESC/POS. ໃບເກັບເງິນແລະປີ້ເຮືອນຄົວແຕ່ລະຄົນເກັບຮັກສາຂອງຕົນເອງ. ທັງສອງວຽກສາມາດໄປຫາເຄື່ອງພິມໃດກໍໄດ້ທີ່ Find ໄດ້ບັນທຶກໄວ້.
@@ -1105,9 +1137,6 @@ remove_these_tables	ເອົາໂຕະອາຫານເຫຼົ່ານີ
 table_remove_ph	ເອົາອອກ: T1-T24, ຫຼືຫນຶ່ງຊື່ຂອງຕາຕະລາງ dining
 find_server	ຊອກຫາເຄື່ອງແມ່ຂ່າຍຂອງຮ້ານ
 bill_format	ຮູບແບບໃບບິນ
-bill_header_ph	ທີ່ຢູ່ | ໂທລະສັບ
-fssai_ph	FSSAI ເລກທະບຽນ. (ອິນເດຍ)
-bill_footer_ph	ສ່ວນທ້າຍ (ເຊັ່ນ: ຂອບໃຈ, ເຂົ້າເບິ່ງອີກຄັ້ງ)
 reset_bill_format	ຣີເຊັດເປັນຄ່າເລີ່ມຕົ້ນ
 bill_format_reset	ຣີເຊັດຮູບແບບໃບບິນເປັນຄ່າເລີ່ມຕົ້ນ
 reset_kot_format	ຣີເຊັດເປັນຄ່າເລີ່ມຕົ້ນ
@@ -1146,7 +1175,6 @@ kot_kind_modified	ດັດແກ້
 kot_kind_cancelled	ຍົກເລີກ
 kot_style_heading	ຂະໜາດ ແລະນ້ຳໜັກປະເພດສະໜາມ
 kot_style_title	ຫົວຂໍ້
-kot_style_item_qty	ລາຍການ · ຈຳນວນ
 kot_style_field_pick	ເລືອກຊ່ອງຂໍ້ມູນ
 kot_weight_regular	ປົກກະຕິ
 kot_weight_bold	ກ້າຫານ
@@ -1158,8 +1186,8 @@ content_width_bill	ຄວາມກວ້າງຂອງເນື້ອໃນໃ�
 content_width_kot	KOT ຄວາມກວ້າງຂອງເນື້ອຫາ (ມມ)
 content_width_ph	ຫຼືພິມຄວາມກວ້າງຂອງເນື້ອຫາ, 40–210 ມມ
 content_width_help	ແຜ່ນນີ້ພິມກວ້າງເທົ່າໃດ. ໃບບິນ ແລະ KOT ແຕ່ລະຄົນຮັກສາຄວາມກວ້າງຂອງຕົນເອງ.
-content_width_bill_help	ພິມໃບບິນແຂກກວ້າງເທົ່າໃດ. ຄ່າເລີ່ມຕົ້ນ 210 ມມ (ໜ້າ). ເລື່ອນແຄບ 58 ມມ, ກວ້າງ 80 ມມ, ກວ້າງ 112 ມມ 4 ນິ້ວ, ກວ້າງ 210 ມມ A4. ພິມຄ່າໃດກໍໄດ້ຈາກ 40 ຫາ 210. ປີ້ເຮືອນຄົວມີຄວາມກວ້າງຂອງຕົນເອງຢູ່ໃນແຖບ KOT.
-content_width_kot_help	ພິມປີ້ເຮືອນຄົວກວ້າງເທົ່າໃດ. ຄ່າເລີ່ມຕົ້ນ 80 ມມ. ເລື່ອນແຄບ 58 mm, slip ກວ້າງ 80 mm, 112 mm 4 ນິ້ວ, 210 mm. ພິມຄ່າໃດໆກໍຕາມຈາກ 40 ຫາ 210. ໃບບິນແຂກມີຄວາມກວ້າງຂອງຕົນເອງຢູ່ໃນແຖບໃບບິນ.
+content_width_bill_help	ໃບບິນແຂກພິມກວ້າງເທົ່າໃດ, ເປັນ mm (40–210). ມັນພິມຕາມຂະໜາດແທ້ນີ້ເທິງເຈ້ຍໃດກໍໄດ້; ເທິງເຈ້ຍທີ່ແຄບກວ່າ ສ່ວນທີ່ເກີນຂອບການພິມຈະຖືກຕັດ (ເບິ່ງ ເຈ້ຍ). ໃບສັ່ງເຮືອນຄົວມີຄວາມກວ້າງຂອງຕົນໃນແຖບ KOT.
+content_width_kot_help	ໃບສັ່ງເຮືອນຄົວພິມກວ້າງເທົ່າໃດ, ເປັນ mm (40–210). ມັນພິມຕາມຂະໜາດແທ້ນີ້ເທິງເຈ້ຍໃດກໍໄດ້; ເທິງເຈ້ຍທີ່ແຄບກວ່າ ສ່ວນທີ່ເກີນຂອບການພິມຈະຖືກຕັດ (ເບິ່ງ ເຈ້ຍ). ໃບບິນແຂກມີຄວາມກວ້າງຂອງຕົນໃນແຖບ ບິນ.
 vp_paper_width	ຄວາມກວ້າງຂອງເນື້ອຫາ (ມມ)
 vp_paper_width_ph	ຫຼືພິມຄວາມກວ້າງຂອງເນື້ອຫາ, 40–210 ມມ
 vp_paper_width_help	ຄວາມກວ້າງຂອງເນື້ອຫາຖືກກຳນົດພາຍໃຕ້ຮູບແບບ Bill & KOT — ແຍກກັນສຳລັບໃບບິນ (ຄ່າເລີ່ມຕົ້ນ 210 ມມ) ແລະ ປີ້ເຮືອນຄົວ (ຄ່າເລີ່ມຕົ້ນ 80 ມມ).
@@ -1213,8 +1241,6 @@ schemes_help	BOGO, ສ່ວນຫຼຸດ ແລະ ຄອມໂບຄົງ�
 scheme_bogo_ph	ຊື້ 2 Thali ແຖມ 1Chaas
 add_scheme	ເພີ່ມ BOGO
 schedule_ph	ຊົ່ວໂມງ / Happy Hour — ຈັນ-ສຸກ 07:00-11:00 ຫຼື HappyHour 17:00-19:00=150
-upi_vpa_ph	UPI ID (VPA)
-upi_payee_ph	UPI ຊື່ຜູ້ຮັບເງິນ (ເລືອກໄດ້)
 upi_qr	UPI QR
 show_upi_qr	ສະແດງ UPI QR
 close_upi_qr	ປິດ
@@ -1295,8 +1321,6 @@ printer_mode_first	ທໍາອິດທີ່ເຮັດວຽກ
 printer_mode_all	ພິມທັງໝົດ
 kot_show_area	ພື້ນທີ່
 kot_hide_area	ເຊື່ອງພື້ນທີ່
-kot_show_item_hdr	ລາຍການ · ຈຳນວນ
-kot_hide_item_hdr	ເຊື່ອງຖັນ
 kot_show_title	ຫົວຂໍ້
 kot_hide_title	ເຊື່ອງຊື່
 kot_field_cycle	ເລືອກຕໍ່ໄປ
@@ -1337,12 +1361,12 @@ private_code_ph	ລະຫັດ 12 ຕົວເລກ
 stamp_on	ສະແຕມ: ຢູ່ໃນເອກະສານ
 pay_qr_on	ການຈ່າຍເງິນ QR: ໃນໄຟລ໌
 pay_qr_off	ການຈ່າຍເງິນ QR: ບໍ່ມີ
+printers_screen_tip	ຊອກຫາຈະສະແດງເຄື່ອງພິມທີ່ອຸປະກອນນີ້ໃຊ້ໄດ້ ແລະ ບັນທຶກໄວ້ສຳລັບຮ້ານນີ້. ເຄື່ອງພິມໃບບິນ: ຮູບແບບໃບບິນ ແລະ KOT → ໃບບິນ. ເຮືອນຄົວ: ເຮືອນຄົວ → ສະຖານີເຮືອນຄົວ.
+printers_found_none	ບໍ່ພົບເຄື່ອງພິມ.
+nav_loading	ກຳລັງໂຫຼດ…
+kot_copy_from	ສຳເນົາຈາກ
+kot_copy_from_help	ສຳເນົາຂະໜາດ, ຄວາມໜາ ແລະ ການຈັດວາງຂອງແຕ່ລະແຖວຈາກປະເພດນັ້ນມາໃສ່ປະເພດນີ້. ປະເພດນີ້ຮັກສາປ້າຍ, ຄຳນຳໜ້າລາຍການ ແລະ ເສັ້ນຂີດຂ້າຂອງຕົນເອງ. ບັນທຶກຮູບແບບ KOT ເພື່ອຮັກສາໄວ້.
 items_tmpl_heading	ແມ່ແບບລາຍການ
 items_tmpl_help	ອາຫານ, ໝວດໝູ່ ແລະ ຮູບພາບສຳລັບເມນູຂອງທ່ານ. ການຕັ້ງຄ່າຮ້ານ ແລະ ພະນັກງານຍັງຄືເກົ່າ.
 public_tmpl_help	ເມນູເລີ່ມຕົ້ນທີ່ທຸກຄົນດາວໂຫຼດໄດ້. ຕ້ອງໃຊ້ອິນເຕີເນັດເທື່ອດຽວ.
 private_tmpl_help	ເມນູລູກຄ້າທີ່ລັອກດ້ວຍລະຫັດ 12 ຕົວເລກຈາກຜູ້ຕິດຕໍ່ Khaynjo ຂອງທ່ານ.
-printers_screen_tip	ຊອກຫາຈະສະແດງເຄື່ອງພິມທີ່ອຸປະກອນນີ້ໃຊ້ໄດ້ ແລະ ບັນທຶກໄວ້ສຳລັບຮ້ານນີ້. ເຄື່ອງພິມໃບບິນ: ຮູບແບບໃບບິນ ແລະ KOT → ໃບບິນ. ເຮືອນຄົວ: ເຮືອນຄົວ → ສະຖານີເຮືອນຄົວ.
-printers_found_none	ບໍ່ພົບເຄື່ອງພິມ.
-kot_copy_from	ສຳເນົາຈາກ
-kot_copy_from_help	ສຳເນົາຂະໜາດ, ຄວາມໜາ ແລະ ການຈັດວາງຂອງແຕ່ລະແຖວຈາກປະເພດນັ້ນມາໃສ່ປະເພດນີ້. ປະເພດນີ້ຮັກສາປ້າຍ, ຄຳນຳໜ້າລາຍການ ແລະ ເສັ້ນຂີດຂ້າຂອງຕົນເອງ. ບັນທຶກຮູບແບບ KOT ເພື່ອຮັກສາໄວ້.
-nav_loading	ກຳລັງໂຫຼດ…

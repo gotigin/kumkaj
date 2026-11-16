@@ -60,10 +60,6 @@ bill_item_layout	Paraqitja e artikujve
 bill_item_layout_columns	Kolona
 bill_item_layout_stacked	Të grumbulluara
 bill_item_header	Titujt e kolonave
-bill_item_hdr_item	Titulli i artikullit
-bill_item_hdr_qty	Titulli i sasisë
-bill_item_hdr_price	Titulli i çmimit
-bill_item_hdr_amount	Titulli i shumës
 bill_item_name	Emri i artikullit
 bill_item_qty	Sasia
 bill_item_price	Çmimi
@@ -71,6 +67,13 @@ bill_item_amount	Shuma
 bill_item_note	Shënim i artikullit
 bill_item_col_sep	Vijat e kolonave
 slip_col_width	Gjerësia (mm)
+paper_heading	Letër
+paper_size	{w} × {h} mm
+paper_roll	rrotull {w} mm
+paper_not_set	letra ende e panjohur
+paper_length_mm	Gjatësia (mm)
+printer_paper_help	Letra e këtij printeri në mm. Gjatësia bosh është rrotull: çdo faturë është aq e gjatë sa përmbajtja e saj. Gjej printerët plotëson letrën bosh nga drajveri i printerit (rrotull 80 mm kur nuk mund ta thotë) dhe kurrë nuk ndryshon një të vendosur tashmë.
+preview_help	Kjo faturë në letrën e printerit të zgjedhur më poshtë, siç printohet atje: në madhësi reale nga këndi i sipërm majtas që arrin printeri (gri: skajet që nuk i arrin), një faturë e gjatë në më shumë fletë, gjithçka përtej skajit të letrës pritet. Zgjedhja e printerit ndryshon vetëm pamjen paraprake; letra e çdo printeri vendoset te Printerët.
 slip_col_start	Hapësira në fillim (px)
 slip_col_end	Hapësira në fund (px)
 slip_columns_help	Gjerësia e çdo kolone përfshin hapësirën e saj në fillim dhe në fund. Teksti mbështillet brenda kolonës së tij; çfarë del përtej gjerësisë së përmbajtjes pritet, në letër dhe në pamjen paraprake.
@@ -838,3 +841,4 @@ nav_loading	Po ngarkohet…
 printer_mode_first	I pari që punon
 printer_mode_all	Shtyp te të gjithë
 slip_columns	Kolonat
+slip_col_header	Titulli

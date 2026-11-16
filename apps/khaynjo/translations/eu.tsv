@@ -92,10 +92,6 @@ bill_item_layout	Artikuluen antolamendua
 bill_item_layout_columns	Zutabeak
 bill_item_layout_stacked	Pilatuta
 bill_item_header	Zutabe-izenburuak
-bill_item_hdr_item	Artikulu-izenburua
-bill_item_hdr_qty	Kopuru-izenburua
-bill_item_hdr_price	Prezio-izenburua
-bill_item_hdr_amount	Zenbateko-izenburua
 bill_item_name	Plateraren izena
 bill_item_qty	Kop.
 bill_item_price	Prezioa
@@ -103,6 +99,20 @@ bill_item_amount	Zenbatekoa
 bill_item_note	Plateraren oharra
 bill_item_col_sep	Zutabe-marra
 slip_columns	Zutabeak
+slip_col_header	Izenburua
+bill_line_logo	Logotipoa
+bill_logo_picture	Irudia
+bill_logo_choose	Aukeratu irudia
+bill_logo_remove	Kendu irudia
+bill_logo_none	Irudirik ez
+bill_logo_unreadable	Ez da aplikazioak irakur dezakeen irudia
+bill_logo_width	Zabalera (px)
+bill_logo_height	Altuera (px)
+bill_logo_tones	Grisak
+bill_logo_solid	Trinkoa
+bill_logo_shaded	Itzalduna
+bill_logo_help	Zabalera eta altuera px-tan. Hutsik dagoenak irudiari jarraitzen dio: bat hutsik bada forma gordetzen du, biak hutsik bere tamaina erabiltzen dute; biak ezarrita barruan sartzen da, inoiz luzatu gabe. Irudirik ez: erakutsitako logotipoak bere altuera hutsune gisa gordetzen du; Ezkutatu-k kentzen du.
+bill_logo_tones_help	Trinkoa: puntu bakoitza beltza edo zuria, logotipo garbietarako. Itzalduna: grisak puntu-eredu finak bihurtzen dira, argazki eta itzal leunetarako.
 slip_col_width	Zabalera (mm)
 slip_col_start	Hasierako tartea (px)
 slip_col_end	Amaierako tartea (px)
@@ -167,6 +177,21 @@ alerts_help	Zenbat denboran geratzen diren egoera-mezuak pantailan zuretzat (sai
 snack_secs_ph	Segundoak (3–60, lehenetsia 10)
 snack_secs_save	Gorde abisu-denbora
 snack_secs_saved	Abisu-denbora gordeta — {n} segundo
+settings_sec_whatsapp	WhatsApp
+whatsapp_cloud_help	Use your own Meta WhatsApp Cloud API. Create a System User token with whatsapp_business_messaging (temporary dashboard tokens expire). Credentials stay on this Server only — never on extra tills. Accepted means Meta took the request, not that the guest received it.
+whatsapp_phone_id_ph	Phone Number ID
+whatsapp_token_ph	Access Token (leave blank to keep)
+whatsapp_template_ph	Bill template name (optional)
+whatsapp_template_lang_ph	Template language (e.g. en)
+whatsapp_enable	Enable
+whatsapp_disable	Off
+whatsapp_save	Save WhatsApp
+whatsapp_test	Test connection
+whatsapp_disconnect	Disconnect
+whatsapp_send_bill	Send via WhatsApp
+whatsapp_consent	WhatsApp OK
+whatsapp_consent_help	Guest agreed to receive WhatsApp messages. A phone number alone is not consent.
+whatsapp_server_only	Configure WhatsApp on the shop Server device
 settings_sec_backup	Babeskopia eta leheneratzea
 settings_sec_diag	Diagnostikoak
 settings_sec_privacy	Pribatutasuna
@@ -729,6 +754,13 @@ station_vps_dd	Inprimagailuak geltoki honetarako
 station_vps_dd_n	{n} inprimagailu · sakatu aldatzeko
 bill_printers_dd	Inprimagailuak konturako
 bill_printers_dd_n	{n} inprimagailu konturako · sakatu aldatzeko
+paper_heading	Papera
+paper_size	{w} × {h} mm
+paper_roll	{w} mm-ko erroilua
+paper_not_set	papera oraindik ezezaguna
+paper_length_mm	Luzera (mm)
+printer_paper_help	Inprimagailu honen papera mm-tan. Luzera hutsa erroilua da: tiket bakoitza bere edukia bezain luzea da. Aurkitu inprimagailuak aukerak paper hutsa inprimagailuaren kontrolatzailetik betetzen du (80 mm-ko erroilua ezin badu esan) eta ez du inoiz aldatzen jada ezarritakoa.
+preview_help	Tiket hau behean aukeratutako inprimagailuaren paperean, han inprimatzen den bezala: benetako tamainan inprimagailuak iristen duen goiko ezkerreko izkinatik (grisa: iristen ez dituen ertzak), tiket luzea orri gehiagotan, paperaren ertzetik haratago dagoena moztu egiten da. Inprimagailu bat aukeratzeak aurrebista bakarrik aldatzen du; inprimagailu bakoitzaren papera Inprimagailuak atalean ezartzen da.
 job_layout	Antolamendua
 job_delivery	Lana nola bidaltzen den
 job_delivery_help	OS dokumentua, byte gordinak edo ESC/POS. Kontuak eta sukaldeko txartelak bakoitzak berea gordetzen du. Edozein lan Bilaketak gorde duen edozein inprimagailutara joan daiteke.
@@ -1105,9 +1137,6 @@ remove_these_tables	Kendu mahai hauek
 table_remove_ph	Kendu: T1-T24, edo mahai baten izena
 find_server	Aurkitu dendaren zerbitzaria
 bill_format	Kontu-formatua
-bill_header_ph	Helbidea | telefonoa
-fssai_ph	FSSAI lizentzia zk. (India)
-bill_footer_ph	Oina (adib. Eskerrik asko, etorri berriro)
 reset_bill_format	Berrezarri lehenetsira
 bill_format_reset	Kontu-formatua lehenetsira berrezarrita
 reset_kot_format	Berrezarri lehenetsira
@@ -1146,7 +1175,6 @@ kot_kind_modified	Aldatua
 kot_kind_cancelled	Ezeztatuta
 kot_style_heading	Eremuaren neurria eta lodiera
 kot_style_title	Izenburua
-kot_style_item_qty	Artikulua · Kopurua
 kot_style_field_pick	Hautatu eremua
 kot_weight_regular	Arrunta
 kot_weight_bold	Lodia
@@ -1158,8 +1186,8 @@ content_width_bill	Kontuaren eduki-zabalera (mm)
 content_width_kot	KOTaren eduki-zabalera (mm)
 content_width_ph	Edo idatzi eduki-zabalera bat, 40–210 mm
 content_width_help	Zenbateko zabalera inprimatzen den txartel hau. Kontuak eta KOTak bakoitzak bere zabalera gordetzen du.
-content_width_bill_help	Gonbidatuaren kontua zenbateko zabaleran inprimatzen den. Lehenetsia 210 mm (orria). 58 mm txartel estua, 80 mm txartel zabala, 112 mm 4 hazbete, 210 mm A4 zabalera. Idatzi 40tik 210era edozein balio. Sukaldeko txartelek beren zabalera dute KOT fitxan.
-content_width_kot_help	Sukaldeko txartela zenbateko zabaleran inprimatzen den. Lehenetsia 80 mm. 58 mm txartel estua, 80 mm txartel zabala, 112 mm 4 hazbete, 210 mm orria. Idatzi 40tik 210era edozein balio. Gonbidatuen kontuek beren zabalera dute Kontua fitxan.
+content_width_bill_help	Bezeroaren faktura zein zabal inprimatzen den, mm-tan (40–210). Edozein paperetan benetako tamaina honetan inprimatzen da; paper estuago batean, inprimatze-ertzetik haratagoko zatia moztu egiten da (ikus Papera). Sukaldeko txartelek beren zabalera dute KOT fitxan.
+content_width_kot_help	Sukaldeko txartela zein zabal inprimatzen den, mm-tan (40–210). Edozein paperetan benetako tamaina honetan inprimatzen da; paper estuago batean, inprimatze-ertzetik haratagoko zatia moztu egiten da (ikus Papera). Bezeroen fakturek beren zabalera dute Faktura fitxan.
 vp_paper_width	Eduki-zabalera (mm)
 vp_paper_width_ph	Edo idatzi eduki-zabalera bat, 40–210 mm
 vp_paper_width_help	Eduki-zabalera Kontu eta KOT formatuan ezartzen da — kontuarentzat bereiz (lehenetsia 210 mm) eta sukaldeko txartelarentzat (lehenetsia 80 mm).
@@ -1213,8 +1241,6 @@ schemes_help	BOGO, ehuneko deskontua eta konbo finkoak. Konboak sukaldeko lerroe
 scheme_bogo_ph	Erosi 2 Thali lortu 1 Chaas
 add_scheme	Gehitu BOGO
 schedule_ph	Orduak / ordu zoriontsua — Al-Ol 07:00-11:00 edo HappyHour 17:00-19:00=150
-upi_vpa_ph	UPI identifikatzailea (VPA)
-upi_payee_ph	UPI hartzailearen izena (aukerakoa)
 upi_qr	UPI QR
 show_upi_qr	Erakutsi UPI QR
 close_upi_qr	Itxi
@@ -1295,8 +1321,6 @@ printer_mode_first	Lehena funtzionatzen duena
 printer_mode_all	Inprimatu guztietan
 kot_show_area	Eremua
 kot_hide_area	Ezkutatu eremua
-kot_show_item_hdr	Artikulua · Kopurua
-kot_hide_item_hdr	Ezkutatu zutabeak
 kot_show_title	Izenburu-lerroa
 kot_hide_title	Ezkutatu izenburua
 kot_field_cycle	Hautatu hurrengoa
@@ -1337,12 +1361,12 @@ private_code_ph	12 digituko kodea
 stamp_on	Zigilua: fitxategian
 pay_qr_on	Ordainketa QR: fitxategian
 pay_qr_off	Ordainketa QR: bat ere ez
+printers_screen_tip	Bilatu-k gailu honek erabil ditzakeen inprimagailuak erakusten ditu eta denda honetarako gordetzen ditu. Faktura-inprimagailuak: Faktura eta KOT formatua → Faktura. Sukaldea: Sukaldea → Sukaldeko estazioak.
+printers_found_none	Ez da inprimagailurik aurkitu.
+nav_loading	Kargatzen…
+kot_copy_from	Kopiatu hemendik
+kot_copy_from_help	Mota horretako lerro bakoitzaren tamaina, lodiera eta lerrokadura honetara kopiatzen ditu. Mota honek bere bandera, elementu-aurrizkia eta marratua gordetzen ditu. Gordetzeko, gorde KOT formatua.
 items_tmpl_heading	Elementu txantiloiak
 items_tmpl_help	Platerak, kategoriak eta argazkiak zure menurako. Dendaren ezarpenak eta langileak dauden bezala geratzen dira.
 public_tmpl_help	Edonork deskarga ditzakeen hasierako menuak. Behin internet behar da.
 private_tmpl_help	Zure Khaynjo kontaktuaren 12 digituko kode batekin babestutako bezero-menuak.
-printers_screen_tip	Bilatu-k gailu honek erabil ditzakeen inprimagailuak erakusten ditu eta denda honetarako gordetzen ditu. Faktura-inprimagailuak: Faktura eta KOT formatua → Faktura. Sukaldea: Sukaldea → Sukaldeko estazioak.
-printers_found_none	Ez da inprimagailurik aurkitu.
-kot_copy_from	Kopiatu hemendik
-kot_copy_from_help	Mota horretako lerro bakoitzaren tamaina, lodiera eta lerrokadura honetara kopiatzen ditu. Mota honek bere bandera, elementu-aurrizkia eta marratua gordetzen ditu. Gordetzeko, gorde KOT formatua.
-nav_loading	Kargatzen…

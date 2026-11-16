@@ -181,10 +181,12 @@ enum SuggestField {
     BillPrinters,
     /// Settings → Printers: which pool printers get a test page.
     TestPrinters,
+    /// Bill & KOT → Bill: the printer whose paper the preview is drawn on.
+    BillPreviewPaper,
 }
 
 impl SuggestField {
-    const ALL: [SuggestField; 22] = [
+    const ALL: [SuggestField; 23] = [
         SuggestField::MenuUnit,
         SuggestField::MenuTax,
         SuggestField::MenuGroup,
@@ -207,6 +209,7 @@ impl SuggestField {
         SuggestField::PrinterAssign,
         SuggestField::BillPrinters,
         SuggestField::TestPrinters,
+        SuggestField::BillPreviewPaper,
     ];
 
     /// The `field:` a `SuggestList` names in the DSL.
@@ -234,6 +237,7 @@ impl SuggestField {
             SuggestField::PrinterAssign => "printer_assign",
             SuggestField::BillPrinters => "bill_printers",
             SuggestField::TestPrinters => "test_printers",
+            SuggestField::BillPreviewPaper => "bill_preview_paper",
         }
     }
 
@@ -261,6 +265,7 @@ impl SuggestField {
             SuggestField::PrinterAssign => ids!(printer_assign_input),
             SuggestField::BillPrinters => ids!(bill_printers_input),
             SuggestField::TestPrinters => ids!(printers_test_input),
+            SuggestField::BillPreviewPaper => ids!(bill_preview_paper_input),
         }
     }
 
@@ -288,6 +293,7 @@ impl SuggestField {
             SuggestField::PrinterAssign => ids!(printer_assign_suggest),
             SuggestField::BillPrinters => ids!(bill_printers_suggest),
             SuggestField::TestPrinters => ids!(printers_test_suggest),
+            SuggestField::BillPreviewPaper => ids!(bill_preview_paper_suggest),
         }
     }
 
@@ -301,6 +307,7 @@ impl SuggestField {
             SuggestField::PrinterAssign => Some(ids!(printer_assign_dd)),
             SuggestField::BillPrinters => Some(ids!(bill_printers_dd)),
             SuggestField::TestPrinters => Some(ids!(printers_test_dd)),
+            SuggestField::BillPreviewPaper => Some(ids!(bill_preview_paper_dd)),
             _ => None,
         }
     }

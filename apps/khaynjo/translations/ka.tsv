@@ -92,10 +92,6 @@ bill_item_layout	პოზიციის განლაგება
 bill_item_layout_columns	სვეტები
 bill_item_layout_stacked	დასტად
 bill_item_header	სვეტების სათაურები
-bill_item_hdr_item	პოზიციის სათაური
-bill_item_hdr_qty	რაოდენობის სათაური
-bill_item_hdr_price	ფასის სათაური
-bill_item_hdr_amount	თანხის სათაური
 bill_item_name	კერძის სახელი
 bill_item_qty	რაოდ.
 bill_item_price	ფასი
@@ -103,6 +99,20 @@ bill_item_amount	თანხა
 bill_item_note	კერძის შენიშვნა
 bill_item_col_sep	სვეტების ხაზები
 slip_columns	სვეტები
+slip_col_header	სათაური
+bill_line_logo	ლოგო
+bill_logo_picture	სურათი
+bill_logo_choose	სურათის არჩევა
+bill_logo_remove	სურათის წაშლა
+bill_logo_none	სურათი არ არის
+bill_logo_unreadable	ეს არ არის სურათი, რომელსაც აპი წაიკითხავს
+bill_logo_width	სიგანე (px)
+bill_logo_height	სიმაღლე (px)
+bill_logo_tones	ნაცრისფრები
+bill_logo_solid	მკვრივი
+bill_logo_shaded	დაჩრდილული
+bill_logo_help	სიგანე და სიმაღლე px-ში. ცარიელი სურათს მიჰყვება: ერთი ცარიელი ინარჩუნებს ფორმას, ორივე ცარიელი იყენებს მის ზომას; ორივე მითითებული მოათავსებს შიგნით, არასოდეს გაწელავს. სურათის გარეშე: ნაჩვენები ლოგო ინარჩუნებს სიმაღლეს ცარიელ ადგილად; დამალვა შლის მას.
+bill_logo_tones_help	მკვრივი: ყოველი წერტილი შავი ან თეთრი, მკაფიო ლოგოებისთვის. დაჩრდილული: ნაცრისფერი იქცევა წვრილი წერტილების ნახატად, ფოტოებისა და რბილი ჩრდილისთვის.
 slip_col_width	სიგანე (mm)
 slip_col_start	საწყისი სივრცე (px)
 slip_col_end	ბოლო სივრცე (px)
@@ -167,6 +177,21 @@ alerts_help	რამდენ ხანს რჩება სტატუს�
 snack_secs_ph	წამი (3–60, ნაგულისხმევი 10)
 snack_secs_save	შეტყობინების დროის შენახვა
 snack_secs_saved	შეტყობინების დრო შენახულია — {n} წამი
+settings_sec_whatsapp	WhatsApp
+whatsapp_cloud_help	Use your own Meta WhatsApp Cloud API. Create a System User token with whatsapp_business_messaging (temporary dashboard tokens expire). Credentials stay on this Server only — never on extra tills. Accepted means Meta took the request, not that the guest received it.
+whatsapp_phone_id_ph	Phone Number ID
+whatsapp_token_ph	Access Token (leave blank to keep)
+whatsapp_template_ph	Bill template name (optional)
+whatsapp_template_lang_ph	Template language (e.g. en)
+whatsapp_enable	Enable
+whatsapp_disable	Off
+whatsapp_save	Save WhatsApp
+whatsapp_test	Test connection
+whatsapp_disconnect	Disconnect
+whatsapp_send_bill	Send via WhatsApp
+whatsapp_consent	WhatsApp OK
+whatsapp_consent_help	Guest agreed to receive WhatsApp messages. A phone number alone is not consent.
+whatsapp_server_only	Configure WhatsApp on the shop Server device
 settings_sec_backup	სარეზერვო ასლი და აღდგენა
 settings_sec_diag	დიაგნოსტიკა
 settings_sec_privacy	კონფიდენციალურობა
@@ -729,6 +754,13 @@ station_vps_dd	პრინტერები ამ სადგურისთ
 station_vps_dd_n	{n} პრინტერები · შეეხეთ შესაცვლელად
 bill_printers_dd	პრინტერები სტუმრის ანგარიშისთვის
 bill_printers_dd_n	{n} პრინტერები სტუმრის ანგარიშისთვის · შეეხეთ შესაცვლელად
+paper_heading	ქაღალდი
+paper_size	{w} × {h} mm
+paper_roll	{w} მმ რულონი
+paper_not_set	ქაღალდი ჯერ უცნობია
+paper_length_mm	სიგრძე (mm)
+printer_paper_help	ამ პრინტერის ქაღალდი მმ-ში. ცარიელი სიგრძე რულონია: თითოეული ჩეკი თავისი შიგთავსის სიგრძისაა. „იპოვნეთ პრინტერები“ ცარიელ ქაღალდს პრინტერის დრაივერიდან ავსებს (80 მმ რულონი, თუ ვერ ამბობს) და არასოდეს ცვლის უკვე დაყენებულს.
+preview_help	ეს ჩეკი ქვემოთ არჩეული პრინტერის ქაღალდზე, ისე როგორც იქ იბეჭდება: რეალური ზომით ზედა მარცხენა კუთხიდან, სადამდეც პრინტერი წვდება (ნაცრისფერი: კიდეები, სადაც ვერ წვდება), გრძელი ჩეკი მეტ ფურცელზე, ქაღალდის კიდის იქით ყველაფერი იჭრება. პრინტერის არჩევა მხოლოდ გადახედვას ცვლის; თითოეული პრინტერის ქაღალდი „პრინტერები“-ში დგინდება.
 job_layout	განლაგება
 job_delivery	როგორ იგზავნება სამუშაო
 job_delivery_help	OS დოკუმენტი, ნედლი ბაიტები ან ESC/POS. სტუმრის ბილეთი და სამზარეულოს ბილეთი თითოეულს ინახავს. ნებისმიერ სამუშაოს შეუძლია წავიდეს ნებისმიერ პრინტერზე, რომელიც Find შენახულია.
@@ -1105,9 +1137,6 @@ remove_these_tables	ამოიღეთ ეს სასადილო მა
 table_remove_ph	ამოღება: T1-T24, ან ერთი სასადილო მაგიდის სახელი
 find_server	იპოვნეთ მაღაზიის სერვერი
 bill_format	სტუმარი სტუმრის კანონპროექტის ფორმატი
-bill_header_ph	მისამართი | ტელეფონი
-fssai_ph	FSSAI ლიცენზიის No. (ინდოეთი)
-bill_footer_ph	ქვედა კოლონტიტული (მაგ. გმადლობთ, ხელახლა ეწვიეთ)
 reset_bill_format	გადატვირთეთ ნაგულისხმევად
 bill_format_reset	სტუმარი სტუმრის ბილეთის ფორმატი გადაკეთდა ნაგულისხმევად
 reset_kot_format	გადატვირთეთ ნაგულისხმევად
@@ -1146,7 +1175,6 @@ kot_kind_modified	შეცვლილია
 kot_kind_cancelled	გაუქმდა
 kot_style_heading	ველის ტიპი ზომა და წონა
 kot_style_title	სათაური
-kot_style_item_qty	მენიუს პუნქტი · რაოდენობა
 kot_style_field_pick	აირჩიეთ ველი
 kot_weight_regular	რეგულარული
 kot_weight_bold	თამამი
@@ -1158,8 +1186,8 @@ content_width_bill	სტუმარი სტუმრის ბილეთ�
 content_width_kot	KOT შინაარსის სიგანე (მმ)
 content_width_ph	ან ჩაწერეთ შინაარსის სიგანე, 40–210 mm
 content_width_help	რამდენად ფართოა ეს სლიპი. სტუმარი სტუმრის ანგარიში და KOT თითოეული ინარჩუნებს საკუთარ სიგანეს.
-content_width_bill_help	რამდენად ფართოა სტუმრის კანონპროექტი. ნაგულისხმევი 210 mm (გვერდი). 58 mm ვიწრო სრიალი, 80 mm ფართო სრიალი, 112 mm 4 დიუმიანი, 210 mm A4 სიგანის. ჩაწერეთ ნებისმიერი მნიშვნელობა 40-დან 210-მდე. სამზარეულოს ბილეთებს აქვთ საკუთარი სიგანე KOT ჩანართზე.
-content_width_kot_help	რამდენად ფართოდ იბეჭდება სამზარეულოს ბილეთი. ნაგულისხმევი 80 mm. 58 mm ვიწრო სრიალი, 80 mm ფართო სრიალი, 112 mm 4 დიუმიანი, 210 mm გვერდი. აკრიფეთ ნებისმიერი მნიშვნელობა 40-დან 210-მდე. სტუმარი სტუმრის გადასახადებს აქვს საკუთარი სიგანე სტუმარი სტუმრის ბილეთის ჩანართზე.
+content_width_bill_help	რა სიგანით იბეჭდება სტუმრის ანგარიში, mm-ში (40–210). ის ამ რეალური ზომით იბეჭდება ნებისმიერ ქაღალდზე; უფრო ვიწრო ქაღალდზე ბეჭდვის კიდის იქით ნაწილი იჭრება (იხ. ქაღალდი). სამზარეულოს ბარათებს თავისი სიგანე აქვთ KOT ჩანართზე.
+content_width_kot_help	რა სიგანით იბეჭდება სამზარეულოს ბარათი, mm-ში (40–210). ის ამ რეალური ზომით იბეჭდება ნებისმიერ ქაღალდზე; უფრო ვიწრო ქაღალდზე ბეჭდვის კიდის იქით ნაწილი იჭრება (იხ. ქაღალდი). სტუმრების ანგარიშებს თავისი სიგანე აქვთ ანგარიშის ჩანართზე.
 vp_paper_width	შინაარსის სიგანე (მმ)
 vp_paper_width_ph	ან ჩაწერეთ შინაარსის სიგანე, 40–210 mm
 vp_paper_width_help	კონტენტის სიგანე დაყენებულია სტუმრის ანგარიშის და KOT ფორმატში — სტუმრის ბილეთისთვის (ნაგულისხმევი 210 mm) და სამზარეულოს ბილეთისთვის (ნაგულისხმევი 80 mm).
@@ -1213,8 +1241,6 @@ schemes_help	BOGO, პროცენტული ფასდაკლება
 scheme_bogo_ph	Buy 2 Thali get 1 Chaas
 add_scheme	დაამატეთ BOGO
 schedule_ph	საათები / ბედნიერი საათი — Mon-Fri 07:00-11:00 ან HappyHour 17:00-19:00=150
-upi_vpa_ph	UPI ID (VPA)
-upi_payee_ph	UPI გადახდის მიმღების სახელი (არასავალდებულო)
 upi_qr	UPI QR
 show_upi_qr	ჩვენება UPI QR
 close_upi_qr	დახურვა
@@ -1295,8 +1321,6 @@ printer_mode_first	ჯერ ეს მუშაობს
 printer_mode_all	ბეჭდვა ყველაზე
 kot_show_area	ფართობი
 kot_hide_area	არეალის დამალვა
-kot_show_item_hdr	მენიუს პუნქტი · რაოდენობა
-kot_hide_item_hdr	სვეტების დამალვა
 kot_show_title	სათაურის ხაზი
 kot_hide_title	სათაურის დამალვა
 kot_field_cycle	აირჩიეთ შემდეგი
@@ -1337,12 +1361,12 @@ private_code_ph	12-ციფრიანი კოდი
 stamp_on	ბეჭედი: ფაილზე
 pay_qr_on	გადახდის QR: ფაილში
 pay_qr_off	გადახდის QR: არცერთი
+printers_screen_tip	ძებნა აჩვენებს პრინტერებს, რომელთა გამოყენებაც ამ მოწყობილობას შეუძლია, და ინახავს მათ ამ მაღაზიისთვის. ანგარიშის პრინტერები: ანგარიშისა და KOT-ის ფორმატი → ანგარიში. სამზარეულო: სამზარეულო → სამზარეულოს სადგურები.
+printers_found_none	პრინტერები ვერ მოიძებნა.
+nav_loading	იტვირთება…
+kot_copy_from	კოპირება
+kot_copy_from_help	აკოპირებს იმ სახეობის თითოეული ხაზის ზომას, სისქეს და სწორებას ამაში. ეს სახეობა ინარჩუნებს საკუთარ ბანერს, ნივთის პრეფიქსს და გადახაზვას. შესანარჩუნებლად შეინახეთ KOT ფორმატი.
 items_tmpl_heading	ნივთების შაბლონები
 items_tmpl_help	კერძები, კატეგორიები და ფოტოები თქვენი მენიუსთვის. მაღაზიის პარამეტრები და პერსონალი უცვლელი რჩება.
 public_tmpl_help	საწყისი მენიუები, რომელთა ჩამოტვირთვაც ყველას შეუძლია. ინტერნეტი ერთხელ არის საჭირო.
 private_tmpl_help	კლიენტის მენიუები, დაცული თქვენი Khaynjo კონტაქტის 12-ნიშნა კოდით.
-printers_screen_tip	ძებნა აჩვენებს პრინტერებს, რომელთა გამოყენებაც ამ მოწყობილობას შეუძლია, და ინახავს მათ ამ მაღაზიისთვის. ანგარიშის პრინტერები: ანგარიშისა და KOT-ის ფორმატი → ანგარიში. სამზარეულო: სამზარეულო → სამზარეულოს სადგურები.
-printers_found_none	პრინტერები ვერ მოიძებნა.
-kot_copy_from	კოპირება
-kot_copy_from_help	აკოპირებს იმ სახეობის თითოეული ხაზის ზომას, სისქეს და სწორებას ამაში. ეს სახეობა ინარჩუნებს საკუთარ ბანერს, ნივთის პრეფიქსს და გადახაზვას. შესანარჩუნებლად შეინახეთ KOT ფორმატი.
-nav_loading	იტვირთება…

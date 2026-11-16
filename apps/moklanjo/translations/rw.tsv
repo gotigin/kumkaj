@@ -501,6 +501,17 @@ job_size	Ubunini bw'imyandikire
 job_size_ph	urugero 18, 20, 26…
 test_receipt_format	Inyemezabwishyu
 test_label_format	Ikimenyetso
+paper_heading	Impapuro
+paper_size	{w} × {h} mm
+paper_roll	umuzingo wa {w} mm
+paper_not_set	impapuro ntiramenyekana
+paper_length_mm	Uburebure (mm)
+printer_paper_help	Impapuro z'iyi capyi muri mm. Uburebure butanditse ni umuzingo: buri gapapuro kangana n'ibikarimo. Shaka amacapyi yuzuza impapuro zitanditse ikoresheje porogaramu ya capyi (umuzingo wa 80 mm iyo itabivuga) kandi ntijya ihindura izashyizweho.
+preview_help	Aka gapapuro ku mpapuro za capyi yatoranyijwe hepfo, nk'uko gacapwa aho: mu bunini nyabwo uhereye ku nguni yo hejuru ibumoso capyi igeraho (ibara ry'ivu: impande itageraho), agapapuro karekare ku mpapuro nyinshi, ibirenze inkombe y'urupapuro birakatwa. Gutoranya capyi bihindura igaragaza gusa; impapuro za buri capyi zishyirwaho muri Amacapyi.
+slip_col_width	Ubugari (mm)
+no_printer_assigned	Nta mucapyi
+printer_target_default	mucapyi usanzwe wa iyi mudasobwa (aderesi ubusa)
+job_preview	Igereranya
 test_receipt_sent	Icyitegererezo cyoherejwe
 test_label_sent	Icyitegererezo cyoherejwe
 test_print_no_printer	Nta printer kuri ako kazi - ongeraho imwe munsi yaha

@@ -92,10 +92,6 @@ bill_item_layout	આઇટમ લેઆઉટ
 bill_item_layout_columns	સ્તંભ
 bill_item_layout_stacked	પંક્તિઓ
 bill_item_header	સ્તંભ શીર્ષક
-bill_item_hdr_item	આઇટમ શીર્ષક
-bill_item_hdr_qty	સંખ્યા શીર્ષક
-bill_item_hdr_price	ભાવ શીર્ષક
-bill_item_hdr_amount	રકમ શીર્ષક
 bill_item_name	વાનગીનું નામ
 bill_item_qty	જથ્થો
 bill_item_price	ભાવ
@@ -103,6 +99,20 @@ bill_item_amount	રકમ
 bill_item_note	નોંધ
 bill_item_col_sep	સ્તંભ રેખા
 slip_columns	સ્તંભો
+slip_col_header	શીર્ષક
+bill_line_logo	લોગો
+bill_logo_picture	ચિત્ર
+bill_logo_choose	ચિત્ર પસંદ કરો
+bill_logo_remove	ચિત્ર દૂર કરો
+bill_logo_none	કોઈ ચિત્ર નથી
+bill_logo_unreadable	આ એપ વાંચી શકે એવું ચિત્ર નથી
+bill_logo_width	પહોળાઈ (px)
+bill_logo_height	ઊંચાઈ (px)
+bill_logo_tones	ભૂખરા
+bill_logo_solid	ઘટ્ટ
+bill_logo_shaded	છાયાવાળું
+bill_logo_help	પહોળાઈ અને ઊંચાઈ px માં. ખાલી રાખો તો ચિત્ર મુજબ: એક ખાલી હોય તો આકાર જળવાય, બંને ખાલી હોય તો તેનું પોતાનું માપ; બંને ભરેલાં હોય તો અંદર સમાઈ જાય, ક્યારેય ખેંચાય નહીં. ચિત્ર ન હોય તો: બતાવેલો લોગો તેની ઊંચાઈ ખાલી જગ્યા તરીકે રાખે; છુપાવો તેને દૂર કરે.
+bill_logo_tones_help	ઘટ્ટ: દરેક બિંદુ કાળું કે સફેદ, સ્પષ્ટ લોગો માટે. છાયાવાળું: ભૂખરા રંગ ઝીણા બિંદુઓની ભાતમાં બદલાય, ફોટા અને હળવી છાયા માટે.
 slip_col_width	પહોળાઈ (mm)
 slip_col_start	શરૂઆતની જગ્યા (px)
 slip_col_end	અંતની જગ્યા (px)
@@ -167,6 +177,21 @@ alerts_help	સ્થિતિ સંદેશા તમારા માટે �
 snack_secs_ph	સેકન્ડ (3–60, મૂળ 10)
 snack_secs_save	સૂચના સમય સાચવો
 snack_secs_saved	સૂચના સમય સાચવ્યો — {n} સેકન્ડ
+settings_sec_whatsapp	WhatsApp
+whatsapp_cloud_help	Use your own Meta WhatsApp Cloud API. Create a System User token with whatsapp_business_messaging (temporary dashboard tokens expire). Credentials stay on this Server only — never on extra tills. Accepted means Meta took the request, not that the guest received it.
+whatsapp_phone_id_ph	Phone Number ID
+whatsapp_token_ph	Access Token (leave blank to keep)
+whatsapp_template_ph	Bill template name (optional)
+whatsapp_template_lang_ph	Template language (e.g. en)
+whatsapp_enable	Enable
+whatsapp_disable	Off
+whatsapp_save	Save WhatsApp
+whatsapp_test	Test connection
+whatsapp_disconnect	Disconnect
+whatsapp_send_bill	Send via WhatsApp
+whatsapp_consent	WhatsApp OK
+whatsapp_consent_help	Guest agreed to receive WhatsApp messages. A phone number alone is not consent.
+whatsapp_server_only	Configure WhatsApp on the shop Server device
 settings_sec_backup	બેકઅપ અને પુનઃસ્થાપન
 settings_sec_diag	નિદાન
 settings_sec_privacy	ગોપનીયતા
@@ -729,6 +754,13 @@ station_vps_dd	આ સ્ટેશનના પ્રિન્ટર
 station_vps_dd_n	{n} પ્રિન્ટર · બદલવા ટૅપ
 bill_printers_dd	બિલ માટે પ્રિન્ટર
 bill_printers_dd_n	બિલ માટે {n} પ્રિન્ટર · બદલવા દબાવો
+paper_heading	કાગળ
+paper_size	{w} × {h} mm
+paper_roll	{w} mm રોલ
+paper_not_set	કાગળ હજી ખબર નથી
+paper_length_mm	લંબાઈ (mm)
+printer_paper_help	આ પ્રિન્ટરનો કાગળ mm માં. ખાલી લંબાઈ એટલે રોલ: દરેક સ્લિપ તેની સામગ્રી જેટલી લાંબી હોય છે. પ્રિન્ટર શોધો ખાલી કાગળ પ્રિન્ટરના ડ્રાઇવર પરથી ભરે છે (ન કહી શકે તો 80 mm રોલ) અને પહેલેથી નક્કી કાગળ ક્યારેય બદલતું નથી.
+preview_help	નીચે પસંદ કરેલા પ્રિન્ટરના કાગળ પર આ સ્લિપ, ત્યાં જેમ છપાય છે તેમ: પ્રિન્ટર જ્યાં સુધી પહોંચે છે તે ઉપરના ડાબા ખૂણાથી સાચા માપમાં (રાખોડી: જ્યાં નથી પહોંચતું તે કિનારીઓ), લાંબી સ્લિપ વધુ પાનાં પર, કાગળની કિનારીથી આગળનું બધું કપાઈ જાય છે. પ્રિન્ટર પસંદ કરવાથી ફક્ત પૂર્વાવલોકન બદલાય છે; દરેક પ્રિન્ટરનો કાગળ પ્રિન્ટર હેઠળ નક્કી થાય છે.
 job_layout	લેઆઉટ
 job_delivery	કામ કેવી રીતે મોકલાય છે
 job_delivery_help	OS દસ્તાવેજ, કાચા બાઇટ અથવા ESC/POS. બિલ અને રસોડાની ટિકિટ બંને પોતપોતાનું રાખે છે. કોઈ પણ કામ શોધો એ સાચવેલા કોઈ પણ પ્રિન્ટર પર જઈ શકે.
@@ -1105,9 +1137,6 @@ remove_these_tables	આ ટેબલ કાઢો
 table_remove_ph	કાઢો: T1-T24, અથવા એક ટેબલનું નામ
 find_server	દુકાનનું સર્વર શોધો
 bill_format	બિલ ફોર્મેટ
-bill_header_ph	સરનામું | ફોન
-fssai_ph	FSSAI લાઇસન્સ નં. (ભારત)
-bill_footer_ph	ફૂટર (દા.ત. આભાર, ફરી પધારજો)
 reset_bill_format	ડિફોલ્ટ પર પાછા
 bill_format_reset	બિલ ફોર્મેટ ડિફોલ્ટ પર
 reset_kot_format	ડિફોલ્ટ પર પાછા
@@ -1146,7 +1175,6 @@ kot_kind_modified	બદલાયેલ
 kot_kind_cancelled	રદ
 kot_style_heading	ફીલ્ડ કદ અને વજન
 kot_style_title	શીર્ષક
-kot_style_item_qty	આઇટમ · સંખ્યા
 kot_style_field_pick	ફીલ્ડ પસંદ કરો
 kot_weight_regular	સામાન્ય
 kot_weight_bold	જાડું
@@ -1158,8 +1186,8 @@ content_width_bill	બિલની પહોળાઈ (mm)
 content_width_kot	KOT ની પહોળાઈ (mm)
 content_width_ph	અથવા સામગ્રી પહોળાઈ લખો, 40–210 મિમી
 content_width_help	આ સ્લિપ કેટલી પહોળી છપાય. બિલ અને KOT બંને પોતપોતાની પહોળાઈ રાખે છે.
-content_width_bill_help	મહેમાનનું બિલ કેટલું પહોળું છપાય. મૂળ 210 mm (પાનું). 58 mm સાંકડી સ્લિપ, 80 mm પહોળી સ્લિપ, 112 mm 4-ઇંચ, 210 mm A4-પહોળું. 40 થી 210 વચ્ચે કોઈ પણ મૂલ્ય લખો. રસોડાની ટિકિટની પોતાની પહોળાઈ KOT ટૅબ પર છે.
-content_width_kot_help	રસોડાની ટિકિટ કેટલી પહોળી છપાય. મૂળ 80 mm. 58 mm સાંકડી સ્લિપ, 80 mm પહોળી સ્લિપ, 112 mm 4-ઇંચ, 210 mm પાનું. 40 થી 210 વચ્ચે કોઈ પણ મૂલ્ય લખો. મહેમાન બિલની પોતાની પહોળાઈ બિલ ટૅબ પર છે.
+content_width_bill_help	મહેમાનનું બિલ કેટલું પહોળું છપાય, mm માં (40–210). કોઈપણ કાગળ પર આ જ સાચા માપમાં છપાય છે; આનાથી સાંકડા કાગળ પર છાપની કિનારથી આગળનો ભાગ કપાય છે (કાગળ જુઓ). રસોડાની ટિકિટની પોતાની પહોળાઈ KOT ટેબ પર છે.
+content_width_kot_help	રસોડાની ટિકિટ કેટલી પહોળી છપાય, mm માં (40–210). કોઈપણ કાગળ પર આ જ સાચા માપમાં છપાય છે; આનાથી સાંકડા કાગળ પર છાપની કિનારથી આગળનો ભાગ કપાય છે (કાગળ જુઓ). મહેમાનના બિલની પોતાની પહોળાઈ બિલ ટેબ પર છે.
 vp_paper_width	સામગ્રી પહોળાઈ (મિમી)
 vp_paper_width_ph	અથવા સામગ્રી પહોળાઈ લખો, 40–210 મિમી
 vp_paper_width_help	સામગ્રી પહોળાઈ બિલ અને KOT ફોર્મેટમાં સેટ થાય છે. તે બિલ અને રસોડાની ટિકિટ બંને પર લાગુ પડે છે.
@@ -1213,8 +1241,6 @@ schemes_help	X ખરીદો Y મેળવો — સેટલ પર આપ�
 scheme_bogo_ph	Buy 2 Thali get 1 Chaas
 add_scheme	BOGO ઉમેરો
 schedule_ph	સમય / હૅપી અવર — Mon-Fri 07:00-11:00 અથવા HappyHour 17:00-19:00=150
-upi_vpa_ph	UPI ID (VPA)
-upi_payee_ph	UPI પ્રાપ્તકર્તા (વૈકલ્પિક)
 upi_qr	UPI QR
 show_upi_qr	UPI QR બતાવો
 close_upi_qr	બંધ
@@ -1295,8 +1321,6 @@ printer_mode_first	જે પહેલાં ચાલે
 printer_mode_all	બધા પર છાપો
 kot_show_area	વિસ્તાર
 kot_hide_area	વિસ્તાર છુપાવો
-kot_show_item_hdr	આઇટમ · સંખ્યા
-kot_hide_item_hdr	કૉલમ છુપાવો
 kot_show_title	શીર્ષક પંક્તિ
 kot_hide_title	શીર્ષક છુપાવો
 kot_field_cycle	આગળનું પસંદ કરો
@@ -1337,12 +1361,12 @@ private_code_ph	12 અંકનો કોડ
 stamp_on	સ્ટેમ્પ: ફાઇલ પર
 pay_qr_on	પેમેન્ટ QR: ફાઇલ પર
 pay_qr_off	પેમેન્ટ QR: નથી
+printers_screen_tip	શોધો આ ઉપકરણ વાપરી શકે તેવા પ્રિન્ટર બતાવે છે અને આ દુકાન માટે સાચવે છે. બિલ પ્રિન્ટર: બિલ અને KOT ફોર્મેટ → બિલ. રસોડું: રસોડું → રસોડા સ્ટેશન.
+printers_found_none	કોઈ પ્રિન્ટર મળ્યું નથી.
+nav_loading	લોડ થઈ રહ્યું છે…
+kot_copy_from	આમાંથી કૉપિ કરો
+kot_copy_from_help	તે પ્રકારની દરેક લાઇનનું કદ, જાડાઈ અને ગોઠવણી આમાં કૉપિ કરે છે. આ પ્રકાર પોતાનું બેનર, આઇટમ ઉપસર્ગ અને છેકો રાખે છે. રાખવા માટે KOT ફોર્મેટ સાચવો.
 items_tmpl_heading	આઇટમ ટેમ્પ્લેટ
 items_tmpl_help	તમારા મેનૂ માટે વાનગીઓ, શ્રેણીઓ અને ફોટા. દુકાનના સેટિંગ્સ અને સ્ટાફ જેમ છે તેમ જ રહે છે.
 public_tmpl_help	કોઈ પણ ડાઉનલોડ કરી શકે તેવા શરૂઆતના મેનૂ. એક વાર ઇન્ટરનેટ જોઈએ.
 private_tmpl_help	તમારા Khaynjo સંપર્ક પાસેથી મળેલા 12-અંકના કોડથી સુરક્ષિત ગ્રાહક મેનૂ.
-printers_screen_tip	શોધો આ ઉપકરણ વાપરી શકે તેવા પ્રિન્ટર બતાવે છે અને આ દુકાન માટે સાચવે છે. બિલ પ્રિન્ટર: બિલ અને KOT ફોર્મેટ → બિલ. રસોડું: રસોડું → રસોડા સ્ટેશન.
-printers_found_none	કોઈ પ્રિન્ટર મળ્યું નથી.
-kot_copy_from	આમાંથી કૉપિ કરો
-kot_copy_from_help	તે પ્રકારની દરેક લાઇનનું કદ, જાડાઈ અને ગોઠવણી આમાં કૉપિ કરે છે. આ પ્રકાર પોતાનું બેનર, આઇટમ ઉપસર્ગ અને છેકો રાખે છે. રાખવા માટે KOT ફોર્મેટ સાચવો.
-nav_loading	લોડ થઈ રહ્યું છે…

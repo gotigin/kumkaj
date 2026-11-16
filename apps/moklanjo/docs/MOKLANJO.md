@@ -298,6 +298,12 @@ LAN pilot readiness (both apps): [`PRODUCTION_STATE_FOR_OFFLINE_USAGE.md`](../..
   hardware. *2026-11-07:* Print model — **Printer** = OS device (Find).
   Job format (Receipt | Label) owns content width, layout, and how the
   job is sent (OS document / raw / ESC/POS). No kitchen station groups.
+  *2026-11-16:* the printer owns its paper (width, length; blank length =
+  a roll), set on Settings → Printers where the printer sits, filled by
+  Find from its driver; OS documents print at real size on that paper
+  from the printable top-left (no more `fit-to-page`, which printed an
+  80 mm receipt page-wide); the job format shows a preview on any saved
+  printer's paper (`docs/PRINTER.md` § Paper and preview, § Moklanjo).
 
 ## Lessons adopted from Khaynjo (2026-11-02)
 

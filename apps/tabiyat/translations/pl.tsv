@@ -72,10 +72,6 @@ bill_item_layout	Układ przedmiotu
 bill_item_layout_columns	Kolumny
 bill_item_layout_stacked	Ułożone
 bill_item_header	Nagłówki kolumn
-bill_item_hdr_item	Nagłówek pozycji
-bill_item_hdr_qty	Nagłówek ilościowy
-bill_item_hdr_price	Nagłówek ceny
-bill_item_hdr_amount	Nagłówek kwoty
 bill_item_name	Nazwa leku
 bill_item_qty	Ilość
 bill_item_price	Cena
@@ -83,6 +79,13 @@ bill_item_amount	Kwota
 bill_item_note	Rx / notatka sprzedażowa
 bill_item_col_sep	Reguły kolumnowe
 slip_col_width	Szerokość (mm)
+paper_heading	Papier
+paper_size	{w} × {h} mm
+paper_roll	rolka {w} mm
+paper_not_set	papier jeszcze nieznany
+paper_length_mm	Długość (mm)
+printer_paper_help	Papier tej drukarki w mm. Pusta Długość to rolka: każdy paragon jest tak długi jak jego treść. Znajdź drukarki uzupełnia pusty papier ze sterownika drukarki (rolka 80 mm, gdy nie potrafi powiedzieć) i nigdy nie zmienia już ustawionego.
+preview_help	Ten paragon na papierze drukarki wybranej poniżej, tak jak się na niej drukuje: w rzeczywistym rozmiarze od lewego górnego rogu, do którego sięga drukarka (szary: krawędzie, do których nie sięga), długi paragon na kilku arkuszach, wszystko poza krawędzią papieru jest obcinane. Wybór drukarki zmienia tylko podgląd; papier każdej drukarki ustawia się w Drukarki.
 slip_col_start	Odstęp na początku (px)
 slip_col_end	Odstęp na końcu (px)
 slip_columns_help	Szerokość każdej kolumny obejmuje jej odstęp na początku i na końcu. Tekst zawija się w obrębie swojej kolumny; to, co wykracza poza szerokość treści, jest obcinane – na papierze i w podglądzie.
@@ -850,3 +853,4 @@ nav_loading	Wczytywanie…
 printer_mode_first	Po pierwsze, to działa
 printer_mode_all	Drukuj na wszystkim
 slip_columns	Kolumny
+slip_col_header	Nagłówek

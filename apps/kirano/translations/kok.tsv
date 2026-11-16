@@ -60,10 +60,6 @@ bill_item_layout	वस्तूची मांडावळ
 bill_item_layout_columns	स्तंभ
 bill_item_layout_stacked	एकमेकाचेर
 bill_item_header	स्तंभाचीं शिर्षकां
-bill_item_hdr_item	वस्तुचें शिर्षक
-bill_item_hdr_qty	संख्येचें शिर्षक
-bill_item_hdr_price	किमतीचें शिर्षक
-bill_item_hdr_amount	रकमेचें शिर्षक
 bill_item_name	आयटम नांव
 bill_item_qty	संख्या
 bill_item_price	किंमत
@@ -71,6 +67,13 @@ bill_item_amount	रक्कम
 bill_item_note	वस्तू नोट
 bill_item_col_sep	स्तंभाच्यो रेगो
 slip_col_width	रुंदाय (mm)
+paper_heading	कागद
+paper_size	{w} × {h} mm
+paper_roll	{w} mm रोल
+paper_not_set	कागद अजून खबर ना
+paper_length_mm	लांबाय (mm)
+printer_paper_help	ह्या प्रिंटराचो कागद mm त। रिकामी लांबाय म्हळ्यार रोल: दरेक पावती तिच्या मजकुरा इतली लांब जाता। प्रिंटर सोदून काडात रिकामो कागद प्रिंटराच्या ड्रायव्हरांतल्यान भरता (सांगूंक जायना जाल्यार 80 mm रोल) आनी आदींच थारायल्लो कागद केन्नाच बदलना।
+preview_help	सकयल वेंचिल्ल्या प्रिंटराच्या कागदार ही पावती, थंय छापतात तशी: प्रिंटर पावता त्या वयल्या दाव्या कोनशांतल्यान खऱ्या मापांत (भुरको: पावना ते देग), लांब पावती चड पानांचेर, कागदाच्या देगेभायलें सगळें कातरता। प्रिंटर वेंचल्यार फकत पूर्वावलोकन बदलता; दरेक प्रिंटराचो कागद प्रिंटर हांगा थारायतात।
 slip_col_start	सुरवेची सुवात (px)
 slip_col_end	निमाणी सुवात (px)
 slip_columns_help	दर स्तंभाच्या रुंदायेंत ताची सुरवेची आनी निमाणी सुवात आसा. मजकूर आपल्या स्तंभाभितर गुठलायता; आशयाच्या रुंदाये भायर जें आसा तें कागदाचेर आनी पूर्वदर्शनांत कातरता.
@@ -838,3 +841,4 @@ nav_loading	लोड जाता…
 printer_mode_first	पयलें, तें काम करता
 printer_mode_all	सगळ्यांचेर छापप
 slip_columns	स्तंभ
+slip_col_header	शिर्षक

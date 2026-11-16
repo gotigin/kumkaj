@@ -247,6 +247,49 @@ impl MatchEvent for App {
                         }
                     }
                     FileDialogAction::FileSelected { id, paths }
+                        if *id == live_id!(bill_logo_choose) =>
+                    {
+                        if let Some(path) = paths.first() {
+                            match self.materialize_picked_file(cx, path) {
+                                Ok(file) => {
+                                    let outcome = (|| -> Result<String, String> {
+                                        let bytes = std::fs::read(&file)
+                                            .map_err(|e| format!("Could not read the picture: {e}"))?;
+                                        // Refuse what does not read as a picture before it is sent.
+                                        let picked = print_share::BillLogoImage::from_bytes(bytes.clone())
+                                            .ok_or_else(|| app_t("bill_logo_unreadable"))?;
+                                        let filename = file
+                                            .file_name()
+                                            .and_then(|n| n.to_str())
+                                            .unwrap_or("logo.png")
+                                            .to_string();
+                                        let mut st = app_state().lock().unwrap();
+                                        let msg = st.books_op_light(BooksOp::ImportBillLogo { filename, bytes })?;
+                                        // The books' copy where this device has the books; a Client
+                                        // shows the picture it sent.
+                                        let stored = st.store.as_ref().and_then(|s| s.bill_logo_image().ok().flatten());
+                                        let draft = &mut st.bill_slip_draft;
+                                        draft.logo_image = stored.or(Some(picked));
+                                        // Choosing a picture shows the line.
+                                        draft.logo.show = true;
+                                        Ok(msg)
+                                    })();
+                                    match outcome {
+                                        Ok(msg) => {
+                                            if !msg.is_empty() {
+                                                self.set_status(cx, msg);
+                                            }
+                                            self.schedule_format_autosave(cx, true, false);
+                                            self.sync_bill_format_ui(cx);
+                                        }
+                                        Err(e) => self.set_status(cx, e),
+                                    }
+                                }
+                                Err(e) => self.set_status(cx, e),
+                            }
+                        }
+                    }
+                    FileDialogAction::FileSelected { id, paths }
                         if *id == live_id!(print_stamp_pick) =>
                     {
                         if let Some(path) = paths.first() {
@@ -4525,6 +4568,29 @@ impl MatchEvent for App {
                         self.ui.widget(cx, field.list()).redraw(cx);
                         needs_chrome = false;
                     }
+                    // The preview's printer: changes the preview only — not
+                    // who prints, nothing saved (docs/PRINTER.md § Paper and
+                    // preview).
+                    SuggestField::BillPreviewPaper | SuggestField::KotPreviewPaper => {
+                        let kot = field == SuggestField::KotPreviewPaper;
+                        {
+                            let mut st = app_state().lock().unwrap();
+                            let rows = preview_paper_rows(&st.printer_draft.printers, None, |k| st.t(k));
+                            if let Some(r) = rows.into_iter().find(|r| r.title == value) {
+                                if kot {
+                                    st.kot_preview_printer = Some(r.printer_id);
+                                } else {
+                                    st.bill_preview_printer = Some(r.printer_id);
+                                }
+                            }
+                        }
+                        self.sync_preview_paper_ui(cx);
+                        if kot {
+                            self.sync_kot_format_ui(cx);
+                        } else {
+                            self.sync_bill_format_ui(cx);
+                        }
+                    }
                     SuggestField::TestPrinters | SuggestField::KotTestPrinters => {
                         let msg = {
                             let mut st = app_state().lock().unwrap();
@@ -6757,43 +6823,16 @@ impl MatchEvent for App {
                     }
                 }
             }
-            for (i, idle, on) in [
-                (0, ids!(bill_pick_shop), ids!(bill_pick_shop_on)),
-                (1, ids!(bill_pick_header), ids!(bill_pick_header_on)),
-                (2, ids!(bill_pick_fssai), ids!(bill_pick_fssai_on)),
-                (3, ids!(bill_pick_title), ids!(bill_pick_title_on)),
-                (4, ids!(bill_pick_customer), ids!(bill_pick_customer_on)),
-                (5, ids!(bill_pick_billno), ids!(bill_pick_billno_on)),
-                (6, ids!(bill_pick_time), ids!(bill_pick_time_on)),
-                (7, ids!(bill_pick_cashier), ids!(bill_pick_cashier_on)),
-                (8, ids!(bill_pick_table), ids!(bill_pick_table_on)),
-                (9, ids!(bill_pick_items), ids!(bill_pick_items_on)),
-                (10, ids!(bill_pick_total), ids!(bill_pick_total_on)),
-                (11, ids!(bill_pick_footer), ids!(bill_pick_footer_on)),
-                (12, ids!(bill_pick_upi), ids!(bill_pick_upi_on)),
-            ] {
+            // Rows before and after the open line: slot i is the i-th line of
+            // the print order. The open line is the one fact; its place is
+            // always found in the order (a stored index went stale).
+            for (i, (idle, on)) in BILL_PICK_BTNS.into_iter().chain(BILL_AFTER_BTNS).enumerate() {
+                let i = i % BILL_PICK_BTNS.len();
                 if self.choice_chip_clicked(cx, actions, idle, on) {
                     self.commit_bill_field_value(cx);
                     let mut st = app_state().lock().unwrap();
                     let order = st.bill_slip_draft.ordered();
                     if let Some(field) = order.get(i).copied() {
-                        st.bill_field_edit_idx = i;
-                        if st.bill_style_field != field {
-                            st.bill_style_field = field;
-                        }
-                        bill_changed = true;
-                    }
-                    break;
-                }
-            }
-            // Rows after the open line: slot i is the i-th line of the order.
-            for (i, (idle, on)) in BILL_AFTER_BTNS.into_iter().enumerate() {
-                if self.choice_chip_clicked(cx, actions, idle, on) {
-                    self.commit_bill_field_value(cx);
-                    let mut st = app_state().lock().unwrap();
-                    let order = st.bill_slip_draft.ordered();
-                    if let Some(field) = order.get(i).copied() {
-                        st.bill_field_edit_idx = i;
                         st.bill_style_field = field;
                         bill_changed = true;
                     }
@@ -6803,45 +6842,25 @@ impl MatchEvent for App {
             if self.ui.button(cx, ids!(bill_field_up)).clicked(actions) {
                 self.commit_bill_field_value(cx);
                 let mut st = app_state().lock().unwrap();
-                let n = st.bill_slip_draft.ordered().len();
-                let i = st.bill_field_edit_idx.min(n.saturating_sub(1));
-                if i > 0 {
-                    st.bill_slip_draft.field_order = st
-                        .bill_slip_draft
-                        .ordered()
-                        .iter()
-                        .map(|f| f.id().to_string())
-                        .collect();
-                    st.bill_slip_draft.field_order.swap(i, i - 1);
-                    st.bill_field_edit_idx = i - 1;
-                    st.bill_style_field = print_share::BillStyleField::from_id(
-                        &st.bill_slip_draft.field_order[i - 1],
-                    )
-                    .unwrap_or(st.bill_style_field);
+                let order = st.bill_slip_draft.ordered();
+                let open = st.bill_style_field;
+                if let Some(i) = order.iter().position(|f| *f == open).filter(|i| *i > 0) {
+                    let mut ids: Vec<String> = order.iter().map(|f| f.id().to_string()).collect();
+                    ids.swap(i, i - 1);
+                    st.bill_slip_draft.field_order = ids;
                     bill_changed = true;
                 }
             }
             if self.ui.button(cx, ids!(bill_field_down)).clicked(actions) {
                 self.commit_bill_field_value(cx);
                 let mut st = app_state().lock().unwrap();
-                let n = st.bill_slip_draft.ordered().len();
-                if n > 0 {
-                    let i = st.bill_field_edit_idx.min(n - 1);
-                    if i + 1 < n {
-                        st.bill_slip_draft.field_order = st
-                            .bill_slip_draft
-                            .ordered()
-                            .iter()
-                            .map(|f| f.id().to_string())
-                            .collect();
-                        st.bill_slip_draft.field_order.swap(i, i + 1);
-                        st.bill_field_edit_idx = i + 1;
-                        st.bill_style_field = print_share::BillStyleField::from_id(
-                            &st.bill_slip_draft.field_order[i + 1],
-                        )
-                        .unwrap_or(st.bill_style_field);
-                        bill_changed = true;
-                    }
+                let order = st.bill_slip_draft.ordered();
+                let open = st.bill_style_field;
+                if let Some(i) = order.iter().position(|f| *f == open).filter(|i| i + 1 < order.len()) {
+                    let mut ids: Vec<String> = order.iter().map(|f| f.id().to_string()).collect();
+                    ids.swap(i, i + 1);
+                    st.bill_slip_draft.field_order = ids;
+                    bill_changed = true;
                 }
             }
             if self.choice_chip_clicked(cx, actions, ids!(bill_copies_1), ids!(bill_copies_1_on)) {
@@ -6855,6 +6874,51 @@ impl MatchEvent for App {
             if self.choice_chip_clicked(cx, actions, ids!(bill_copies_3), ids!(bill_copies_3_on)) {
                 app_state().lock().unwrap().bill_slip_draft.copies = 3;
                 bill_changed = true;
+            }
+            // Logo: the picture, its box (blank = follows the picture) and greys.
+            if self.ui.button(cx, ids!(bill_logo_choose)).clicked(actions) {
+                let title = app_t("bill_logo_choose");
+                self.pick_print_brand_image(cx, live_id!(bill_logo_choose), &title);
+            }
+            if self.ui.button(cx, ids!(bill_logo_remove)).clicked(actions) {
+                let outcome = app_state().lock().unwrap().books_op_light(BooksOp::ClearBillLogo);
+                match outcome {
+                    Ok(_) => {
+                        // The line keeps its place and box: blank space of its
+                        // Height until Hide (docs/PRINTER.md "Logo").
+                        app_state().lock().unwrap().bill_slip_draft.logo_image = None;
+                        bill_changed = true;
+                    }
+                    Err(e) => self.set_status(cx, e),
+                }
+            }
+            for (id, height) in [(ids!(bill_logo_width_input), false), (ids!(bill_logo_height_input), true)] {
+                if let Some(raw) = self.ui.text_input(cx, id).changed(actions) {
+                    let raw = raw.trim();
+                    let px = if raw.is_empty() {
+                        Some(0)
+                    } else {
+                        raw.parse::<u32>().ok().map(|v| v.min(print_share::BILL_LOGO_PX_MAX))
+                    };
+                    if let Some(px) = px {
+                        let mut st = app_state().lock().unwrap();
+                        if height {
+                            st.bill_slip_draft.logo_height_px = px;
+                        } else {
+                            st.bill_slip_draft.logo_width_px = px;
+                        }
+                        bill_changed = true;
+                    }
+                }
+            }
+            for (idle, on, tones) in [
+                (ids!(bill_logo_solid), ids!(bill_logo_solid_on), print_share::BillLogoTones::Solid),
+                (ids!(bill_logo_shaded), ids!(bill_logo_shaded_on), print_share::BillLogoTones::Shaded),
+            ] {
+                if self.choice_chip_clicked(cx, actions, idle, on) {
+                    app_state().lock().unwrap().bill_slip_draft.logo_tones = tones;
+                    bill_changed = true;
+                }
             }
             if self.choice_chip_clicked(cx, actions, ids!(bill_field_show), ids!(bill_field_show_on))
             {
@@ -7276,6 +7340,89 @@ impl MatchEvent for App {
                 }
                 self.sync_job_drive_ui(cx);
                 self.ui.widget(cx, ids!(bill_printers_suggest)).redraw(cx);
+            }
+        }
+        // The preview's printer: which saved printer's paper it is drawn on.
+        for (dd, field) in [
+            (ids!(bill_preview_paper_dd), SuggestField::BillPreviewPaper),
+            (ids!(kot_preview_paper_dd), SuggestField::KotPreviewPaper),
+        ] {
+            if self.ui.button(cx, dd).clicked(actions) {
+                {
+                    let mut st = app_state().lock().unwrap();
+                    if st.suggest_open == Some(field) {
+                        st.suggest_open = None;
+                    } else {
+                        // A driver that could not be read is asked again.
+                        os_paper::forget_failed();
+                        st.open_suggest(field, "");
+                    }
+                }
+                self.sync_preview_paper_ui(cx);
+                self.ui.widget(cx, field.list()).redraw(cx);
+            }
+        }
+        // Settings → Printers: tap a printer to open its paper where it sits;
+        // tap it again to close it (docs/PRINTER.md § Paper and preview).
+        let mut tapped: Option<usize> = None;
+        for part in [ids!(printers_rows), ids!(printers_after_rows)] {
+            let widget = self.ui.widget(cx, part);
+            let list = widget.portal_list(cx, ids!(list));
+            for (item_id, item) in list.items_with_actions(actions) {
+                if item.button(cx, ids!(row)).clicked(actions)
+                    || item.button(cx, ids!(row_on)).clicked(actions)
+                {
+                    tapped = widget
+                        .borrow::<PrinterPaperRows>()
+                        .map(|rows| rows.printer_index(item_id));
+                }
+            }
+        }
+        if let Some(i) = tapped {
+            {
+                let mut st = app_state().lock().unwrap();
+                let id = st.printer_draft.printers.get(i).map(|p| p.id.clone());
+                st.printer_paper_open = if st.printer_paper_open == id { None } else { id };
+            }
+            self.paint_printer_rows(cx);
+        }
+        // Its Width / Length: saved as soon as both read as a paper (a blank
+        // length is a roll); half-typed or out-of-range text is left alone.
+        let w_typed = self.ui.text_input(cx, ids!(printer_paper_w_input)).changed(actions).is_some();
+        let l_typed = self.ui.text_input(cx, ids!(printer_paper_l_input)).changed(actions).is_some();
+        if w_typed || l_typed {
+            let read = |s: String| -> Option<f64> {
+                let t = s.trim().replace(',', ".");
+                if t.is_empty() {
+                    return Some(0.0);
+                }
+                t.parse::<f64>().ok().filter(|v| v.is_finite())
+            };
+            let w = read(self.ui.text_input(cx, ids!(printer_paper_w_input)).text());
+            let l = read(self.ui.text_input(cx, ids!(printer_paper_l_input)).text());
+            let saved = {
+                let mut st = app_state().lock().unwrap();
+                let open = st.printer_paper_open.clone();
+                match (open, w, l) {
+                    (Some(id), Some(w), Some(l))
+                        if st.device_role != DeviceRole::Client
+                            && st.printer_draft.set_printer_paper_mm(&id, w, l) =>
+                    {
+                        st.save_printer_draft().map(|()| {
+                            print_share::configure(st.printer_draft.clone());
+                            true
+                        })
+                    }
+                    _ => Ok(false),
+                }
+            };
+            match saved {
+                Ok(true) => {
+                    self.paint_printer_rows(cx);
+                    self.sync_preview_paper_ui(cx);
+                }
+                Ok(false) => {}
+                Err(e) => self.set_status(cx, e),
             }
         }
         if self.ui.button(cx, ids!(printers_test_dd)).clicked(actions) {

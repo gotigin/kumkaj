@@ -92,10 +92,6 @@ bill_item_layout	የእቃ አቀማመጥ
 bill_item_layout_columns	አምዶች
 bill_item_layout_stacked	ተደራራቢ
 bill_item_header	የአምድ ርዕሶች
-bill_item_hdr_item	የእቃ ርዕስ
-bill_item_hdr_qty	የብዛት ርዕስ
-bill_item_hdr_price	የዋጋ ርዕስ
-bill_item_hdr_amount	የመጠን ርዕስ
 bill_item_name	የምግብ ስም
 bill_item_qty	ብዛት
 bill_item_price	ዋጋ
@@ -103,6 +99,20 @@ bill_item_amount	መጠን
 bill_item_note	የምግብ ማስታወሻ
 bill_item_col_sep	የአምድ መስመሮች
 slip_columns	አምዶች
+slip_col_header	ርዕስ
+bill_line_logo	አርማ
+bill_logo_picture	ሥዕል
+bill_logo_choose	ሥዕል ምረጥ
+bill_logo_remove	ሥዕል አስወግድ
+bill_logo_none	ሥዕል የለም
+bill_logo_unreadable	ይህ መተግበሪያ ሊያነበው የሚችል ሥዕል አይደለም
+bill_logo_width	ስፋት (px)
+bill_logo_height	ቁመት (px)
+bill_logo_tones	ግራጫዎች
+bill_logo_solid	ጠንካራ
+bill_logo_shaded	ጥላ ያለው
+bill_logo_help	ስፋት እና ቁመት በpx። ባዶ ሥዕሉን ይከተላል፦ አንዱ ባዶ ቅርጹን ይጠብቃል፣ ሁለቱም ባዶ የራሱን መጠን ይጠቀማሉ፤ ሁለቱም ሲሞሉ ሥዕሉ ውስጡ ይገባል፣ ፈጽሞ አይለጠጥም። ሥዕል ከሌለ፦ የሚታይ አርማ ቁመቱን እንደ ባዶ ቦታ ይይዛል፤ ደብቅ ያስወግደዋል።
+bill_logo_tones_help	ጠንካራ፦ እያንዳንዱ ነጥብ ጥቁር ወይም ነጭ፣ ለጥርት ያሉ አርማዎች። ጥላ ያለው፦ ግራጫዎች ጥቃቅን የነጥብ ቅጦች ይሆናሉ፣ ለፎቶዎች እና ለለስላሳ ጥላ።
 slip_col_width	ስፋት (mm)
 slip_col_start	የመጀመሪያ ክፍተት (px)
 slip_col_end	የመጨረሻ ክፍተት (px)
@@ -167,6 +177,21 @@ alerts_help	የሁኔታ መልዕክቶች በማያው ላይ ለእርስዎ 
 snack_secs_ph	ሰከንዶች (3–60፣ ነባሪ 10)
 snack_secs_save	የማንቂያ ጊዜ አስቀምጥ
 snack_secs_saved	የማንቂያ ጊዜ ተቀምጧል — {n} ሰከንድ
+settings_sec_whatsapp	WhatsApp
+whatsapp_cloud_help	Use your own Meta WhatsApp Cloud API. Create a System User token with whatsapp_business_messaging (temporary dashboard tokens expire). Credentials stay on this Server only — never on extra tills. Accepted means Meta took the request, not that the guest received it.
+whatsapp_phone_id_ph	Phone Number ID
+whatsapp_token_ph	Access Token (leave blank to keep)
+whatsapp_template_ph	Bill template name (optional)
+whatsapp_template_lang_ph	Template language (e.g. en)
+whatsapp_enable	Enable
+whatsapp_disable	Off
+whatsapp_save	Save WhatsApp
+whatsapp_test	Test connection
+whatsapp_disconnect	Disconnect
+whatsapp_send_bill	Send via WhatsApp
+whatsapp_consent	WhatsApp OK
+whatsapp_consent_help	Guest agreed to receive WhatsApp messages. A phone number alone is not consent.
+whatsapp_server_only	Configure WhatsApp on the shop Server device
 settings_sec_backup	ምትኬ እና መመለስ
 settings_sec_diag	ምርመራ
 settings_sec_privacy	ግላዊነት
@@ -729,6 +754,13 @@ station_vps_dd	ለዚህ ጣቢያ ማተሚያዎች
 station_vps_dd_n	{n} ማተሚያ · ለመቀየር ይንኩ
 bill_printers_dd	ለሂሳቡ ማተሚያዎች
 bill_printers_dd_n	ለሂሳቡ {n} ማተሚያ · ለመቀየር ይንኩ
+paper_heading	ወረቀት
+paper_size	{w} × {h} mm
+paper_roll	{w} mm ጥቅል
+paper_not_set	ወረቀቱ ገና አልታወቀም
+paper_length_mm	ርዝመት (mm)
+printer_paper_help	የዚህ ማተሚያ ወረቀት በ mm። ባዶ ርዝመት ጥቅል ነው፤ እያንዳንዱ ደረሰኝ እንደ ይዘቱ ይረዝማል። ማተሚያዎችን ፈልግ ባዶ ወረቀትን ከማተሚያው ሾፌር ይሞላል (መናገር ካልቻለ 80 mm ጥቅል) እና ቀድሞ የተዘጋጀውን በፍጹም አይቀይርም።
+preview_help	ይህ ደረሰኝ ከታች በተመረጠው ማተሚያ ወረቀት ላይ፣ እዚያ እንደሚታተመው፦ ማተሚያው ከሚደርስበት የላይኛው ግራ ጥግ በእውነተኛ መጠን (ግራጫ፦ የማይደርስባቸው ጠርዞች)፣ ረጅም ደረሰኝ በተጨማሪ ገጾች፣ ከወረቀቱ ጠርዝ ያለፈው ይቆረጣል። ማተሚያ መምረጥ ቅድመ እይታውን ብቻ ይቀይራል፤ የእያንዳንዱ ማተሚያ ወረቀት በማተሚያዎች ስር ይዘጋጃል።
 job_layout	አቀማመጥ
 job_delivery	ሥራው እንዴት እንደሚላክ
 job_delivery_help	የስርዓት ሰነድ፣ ጥሬ ባይቶች፣ ወይም ESC/POS። ሂሳቡ እና የኩሽና ትኬቱ እያንዳንዱ የራሱን ይይዛል። ማንኛውም ሥራ ፈልግ ወደ ባስቀመጠው ማንኛውም ማተሚያ ሊሄድ ይችላል።
@@ -1105,9 +1137,6 @@ remove_these_tables	እነዚህን ጠረጴዛዎች አስወግድ
 table_remove_ph	አስወግድ፦ T1-T24፣ ወይም የአንድ ጠረጴዛ ስም
 find_server	የሱቁን ሰርቨር ፈልግ
 bill_format	የሂሳብ ቅርጸት
-bill_header_ph	አድራሻ | ስልክ
-fssai_ph	የ FSSAI ፈቃድ ቁጥር (ሕንድ)
-bill_footer_ph	ግርጌ (ለምሳሌ አመሰግናለሁ፣ እንደገና ይምጡ)
 reset_bill_format	ወደ ነባሪ መልስ
 bill_format_reset	የሂሳብ ቅርጸት ወደ ነባሪ ተመልሷል
 reset_kot_format	ወደ ነባሪ መልስ
@@ -1146,7 +1175,6 @@ kot_kind_modified	የተሻሻለ
 kot_kind_cancelled	የተሰረዘ
 kot_style_heading	የመስክ ፊደል መጠን እና ክብደት
 kot_style_title	ርዕስ
-kot_style_item_qty	እቃ · ብዛት
 kot_style_field_pick	መስክ ምረጥ
 kot_weight_regular	መደበኛ
 kot_weight_bold	ደማቅ
@@ -1158,8 +1186,8 @@ content_width_bill	የሂሳብ ይዘት ስፋት (ሚሜ)
 content_width_kot	የ KOT ይዘት ስፋት (ሚሜ)
 content_width_ph	ወይም የይዘት ስፋት ይጻፉ፣ 40–210 ሚሜ
 content_width_help	ይህ ወረቀት ምን ያህል ስፋት እንደሚታተም። ሂሳብ እና KOT እያንዳንዱ የራሱን ስፋት ይይዛል።
-content_width_bill_help	የእንግዳ ሂሳብ ምን ያህል ስፋት እንደሚታተም። ነባሪ 210 ሚሜ (ገጽ)። 58 ሚሜ ጠባብ ወረቀት፣ 80 ሚሜ ሰፊ ወረቀት፣ 112 ሚሜ 4 ኢንች፣ 210 ሚሜ የ A4 ስፋት። ከ40 እስከ 210 ማንኛውንም እሴት ይጻፉ። የኩሽና ትኬቶች በ KOT ትር የራሳቸው ስፋት አላቸው።
-content_width_kot_help	የኩሽና ትኬት ምን ያህል ስፋት እንደሚታተም። ነባሪ 80 ሚሜ። 58 ሚሜ ጠባብ ወረቀት፣ 80 ሚሜ ሰፊ ወረቀት፣ 112 ሚሜ 4 ኢንች፣ 210 ሚሜ ገጽ። ከ40 እስከ 210 ማንኛውንም እሴት ይጻፉ። የእንግዳ ሂሳቦች በሂሳብ ትር የራሳቸው ስፋት አላቸው።
+content_width_bill_help	የእንግዳው ሂሳብ ምን ያህል ሰፊ እንደሚታተም፣ በmm (40–210)። በዚህ እውነተኛ መጠን በማንኛውም ወረቀት ይታተማል፤ ከዚህ ጠባብ በሆነ ወረቀት ከሚታተመው ጠርዝ ያለፈው ክፍል ይቆረጣል (ወረቀት ይመልከቱ)። የኩሽና ትኬቶች በKOT ትር የራሳቸው ስፋት አላቸው።
+content_width_kot_help	የኩሽና ትኬቱ ምን ያህል ሰፊ እንደሚታተም፣ በmm (40–210)። በዚህ እውነተኛ መጠን በማንኛውም ወረቀት ይታተማል፤ ከዚህ ጠባብ በሆነ ወረቀት ከሚታተመው ጠርዝ ያለፈው ክፍል ይቆረጣል (ወረቀት ይመልከቱ)። የእንግዳ ሂሳቦች በሂሳብ ትር የራሳቸው ስፋት አላቸው።
 vp_paper_width	የይዘት ስፋት (ሚሜ)
 vp_paper_width_ph	ወይም የይዘት ስፋት ይጻፉ፣ 40–210 ሚሜ
 vp_paper_width_help	የይዘት ስፋት በሂሳብ እና KOT ቅርጸት ስር ይዘጋጃል — ለሂሳቡ (ነባሪ 210 ሚሜ) እና ለኩሽና ትኬቱ (ነባሪ 80 ሚሜ) ለብቻ።
@@ -1213,8 +1241,6 @@ schemes_help	BOGO፣ በመቶኛ ቅናሽ እና ቋሚ ጥምረቶች። ጥ
 scheme_bogo_ph	2 ጣሊ ግዙ 1 ጫስ ያግኙ
 add_scheme	BOGO ጨምር
 schedule_ph	ሰዓታት / የደስታ ሰዓት — ሰኞ-አርብ 07:00-11:00 ወይም HappyHour 17:00-19:00=150
-upi_vpa_ph	የ UPI መታወቂያ (VPA)
-upi_payee_ph	የ UPI ተቀባይ ስም (አማራጭ)
 upi_qr	UPI QR
 show_upi_qr	UPI QR አሳይ
 close_upi_qr	ዝጋ
@@ -1295,8 +1321,6 @@ printer_mode_first	የመጀመሪያው የሚሠራው
 printer_mode_all	በሁሉም ላይ አትም
 kot_show_area	አካባቢ
 kot_hide_area	አካባቢ ደብቅ
-kot_show_item_hdr	እቃ · ብዛት
-kot_hide_item_hdr	አምዶች ደብቅ
 kot_show_title	የርዕስ መስመር
 kot_hide_title	ርዕስ ደብቅ
 kot_field_cycle	ቀጣዩን ምረጥ
@@ -1337,12 +1361,12 @@ private_code_ph	ባለ 12 አሃዝ ኮድ
 stamp_on	ማህተም፦ በፋይል ላይ
 pay_qr_on	የክፍያ QR፦ በፋይል ላይ
 pay_qr_off	የክፍያ QR፦ የለም
+printers_screen_tip	ፈልግ ይህ መሣሪያ የሚጠቀምባቸውን አታሚዎች ይዘረዝራል እና ለዚህ ሱቅ ያስቀምጣቸዋል። የሂሳብ አታሚዎች፦ የሂሳብ እና KOT ቅርጸት → ሂሳብ። ወጥ ቤት፦ ወጥ ቤት → የወጥ ቤት ጣቢያዎች።
+printers_found_none	ምንም አታሚ አልተገኘም።
+nav_loading	በመጫን ላይ…
+kot_copy_from	ቅዳ ከ
+kot_copy_from_help	የእያንዳንዱን መስመር መጠን፣ ውፍረት እና አሰላለፍ ከዚያ አይነት ወደዚህ ይቀዳል። ይህ አይነት የራሱን ባነር፣ የንጥል ቅድመ ቅጥያ እና መሰረዣ ይይዛል። ለማቆየት የKOT ቅርጸትን ያስቀምጡ።
 items_tmpl_heading	የዕቃ አብነቶች
 items_tmpl_help	ለምናሌዎ ምግቦች፣ ምድቦች እና ፎቶዎች። የሱቅ ቅንብሮች እና ሰራተኞች እንዳሉ ይቆያሉ።
 public_tmpl_help	ማንም ሊያወርዳቸው የሚችሉ መነሻ ምናሌዎች። አንድ ጊዜ ኢንተርኔት ያስፈልጋል።
 private_tmpl_help	ከKhaynjo አገናኝዎ በሚመጣ ባለ 12 አሃዝ ኮድ የተቆለፉ የደንበኛ ምናሌዎች።
-printers_screen_tip	ፈልግ ይህ መሣሪያ የሚጠቀምባቸውን አታሚዎች ይዘረዝራል እና ለዚህ ሱቅ ያስቀምጣቸዋል። የሂሳብ አታሚዎች፦ የሂሳብ እና KOT ቅርጸት → ሂሳብ። ወጥ ቤት፦ ወጥ ቤት → የወጥ ቤት ጣቢያዎች።
-printers_found_none	ምንም አታሚ አልተገኘም።
-kot_copy_from	ቅዳ ከ
-kot_copy_from_help	የእያንዳንዱን መስመር መጠን፣ ውፍረት እና አሰላለፍ ከዚያ አይነት ወደዚህ ይቀዳል። ይህ አይነት የራሱን ባነር፣ የንጥል ቅድመ ቅጥያ እና መሰረዣ ይይዛል። ለማቆየት የKOT ቅርጸትን ያስቀምጡ።
-nav_loading	በመጫን ላይ…

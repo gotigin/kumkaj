@@ -60,10 +60,6 @@ bill_item_layout	品目レイアウト
 bill_item_layout_columns	列
 bill_item_layout_stacked	縦並び
 bill_item_header	列見出し
-bill_item_hdr_item	品目見出し
-bill_item_hdr_qty	数量見出し
-bill_item_hdr_price	単価見出し
-bill_item_hdr_amount	金額見出し
 bill_item_name	品目名
 bill_item_qty	数量
 bill_item_price	単価
@@ -71,6 +67,13 @@ bill_item_amount	金額
 bill_item_note	アイテムメモ
 bill_item_col_sep	列の罫線
 slip_col_width	幅 (mm)
+paper_heading	用紙
+paper_size	{w} × {h} mm
+paper_roll	{w} mm ロール
+paper_not_set	用紙はまだ不明です
+paper_length_mm	長さ (mm)
+printer_paper_help	このプリンターの用紙 (mm)。長さが空欄ならロール紙で、伝票は内容の長さになります。「プリンターを探す」は空欄の用紙をプリンターのドライバーから入力し (わからない場合は 80 mm ロール)、設定済みの用紙は決して変更しません。
+preview_help	下で選んだプリンターの用紙に、そこで印刷されるとおりにこの伝票を表示します。プリンターが届く左上から実寸で (灰色: 届かない余白)、長い伝票は複数の用紙に、用紙の端を越えた部分は切れます。プリンターを選んでもプレビューだけが変わります。各プリンターの用紙は「プリンター」で設定します。
 slip_col_start	先頭の余白 (px)
 slip_col_end	末尾の余白 (px)
 slip_columns_help	各列の幅には先頭と末尾の余白が含まれます。文字は列の中で折り返し、内容の幅からはみ出した部分は用紙でもプレビューでも切り取られます。
@@ -838,3 +841,4 @@ nav_loading	読み込み中…
 printer_mode_first	最初に動作するもの
 printer_mode_all	すべてで印刷
 slip_columns	列
+slip_col_header	見出し

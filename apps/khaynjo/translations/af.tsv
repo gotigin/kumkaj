@@ -92,10 +92,6 @@ bill_item_layout	Item opstelling
 bill_item_layout_columns	Kolomme
 bill_item_layout_stacked	Gestapel
 bill_item_header	Kolom koppe
-bill_item_hdr_item	Item kop
-bill_item_hdr_qty	Hoeveelheid kop
-bill_item_hdr_price	Prijs kop
-bill_item_hdr_amount	Bedrag kop
 bill_item_name	Maalty naam
 bill_item_qty	Hoeveelheid
 bill_item_price	Prijs
@@ -103,6 +99,20 @@ bill_item_amount	Bedrag
 bill_item_note	Maalty nota
 bill_item_col_sep	Kolom reëls
 slip_columns	Kolomme
+slip_col_header	Kop
+bill_line_logo	Logo
+bill_logo_picture	Prent
+bill_logo_choose	Kies prent
+bill_logo_remove	Verwyder prent
+bill_logo_none	Geen prent
+bill_logo_unreadable	Nie 'n prent wat hierdie toep kan lees nie
+bill_logo_width	Breedte (px)
+bill_logo_height	Hoogte (px)
+bill_logo_tones	Grys
+bill_logo_solid	Solied
+bill_logo_shaded	Geskakeer
+bill_logo_help	Breedte en hoogte in px. Leeg volg die prent: een leeg behou sy vorm, albei leeg gebruik sy eie grootte; albei gestel pas dit binne-in, nooit gerek nie. Geen prent: 'n gewysde logo hou sy hoogte as leë spasie; Versteek verwyder dit.
+bill_logo_tones_help	Solied: elke kol swart of wit, vir skerp logo's. Geskakeer: grys word fyn kolpatrone, vir foto's en sagte skakering.
 slip_col_width	Breedte (mm)
 slip_col_start	Beginspasie (px)
 slip_col_end	Eindspasie (px)
@@ -167,6 +177,21 @@ alerts_help	Hoe lank bly statusboodskappe op die skerm vir jou (hierdie aanmeldi
 snack_secs_ph	Sekondes (3–60, standaard 10)
 snack_secs_save	Slaan waarskuwingstyd op
 snack_secs_saved	Waarskuwingstyd opgeslaan — {n} sekondes
+settings_sec_whatsapp	WhatsApp
+whatsapp_cloud_help	Use your own Meta WhatsApp Cloud API. Create a System User token with whatsapp_business_messaging (temporary dashboard tokens expire). Credentials stay on this Server only — never on extra tills. Accepted means Meta took the request, not that the guest received it.
+whatsapp_phone_id_ph	Phone Number ID
+whatsapp_token_ph	Access Token (leave blank to keep)
+whatsapp_template_ph	Bill template name (optional)
+whatsapp_template_lang_ph	Template language (e.g. en)
+whatsapp_enable	Enable
+whatsapp_disable	Off
+whatsapp_save	Save WhatsApp
+whatsapp_test	Test connection
+whatsapp_disconnect	Disconnect
+whatsapp_send_bill	Send via WhatsApp
+whatsapp_consent	WhatsApp OK
+whatsapp_consent_help	Guest agreed to receive WhatsApp messages. A phone number alone is not consent.
+whatsapp_server_only	Configure WhatsApp on the shop Server device
 settings_sec_backup	Back-up en herstel
 settings_sec_diag	Diagnostiek
 settings_sec_privacy	Privaatheid
@@ -729,6 +754,13 @@ station_vps_dd	Drukkers vir hierdie stasie
 station_vps_dd_n	{n} drukker(s) · tik om te verander
 bill_printers_dd	Drukkers vir die rekening
 bill_printers_dd_n	{n} drukker(s) vir die rekening · tik om te verander
+paper_heading	Papier
+paper_size	{w} × {h} mm
+paper_roll	{w} mm-rol
+paper_not_set	papier nog nie bekend nie
+paper_length_mm	Lengte (mm)
+printer_paper_help	Hierdie drukker se papier in mm. 'n Leë Lengte is 'n rol: elke strokie is so lank soos sy inhoud. Soek drukkers vul leë papier in vanaf die drukker se drywer ('n 80 mm-rol as dit nie kan sê nie) en verander nooit papier wat reeds gestel is nie.
+preview_help	Hierdie strokie op die papier van die drukker wat hieronder gekies is, soos dit daar druk: werklike grootte van die boonste linkerhoek wat die drukker kan bereik (grys: rande wat dit nie kan nie), 'n lang strokie op meer velle, alles verby die papier se rand afgesny. Om 'n drukker te kies verander net die voorskou; elke drukker se papier word onder Drukkers gestel.
 job_layout	Opstelling
 job_delivery	Hoe die taak gestuur word
 job_delivery_help	OS-dokument, ruwe bytes of ESC/POS. Die rekening en die keukintiket behou elkeen sy eie. Beide taak kan na enige drukker gaan wat Find gespaar het.
@@ -1105,9 +1137,6 @@ remove_these_tables	Verwyder hierdie tabelle
 table_remove_ph	Verwyder: T1-T24, of een tafel se naam
 find_server	Soek die winkel se bediener
 bill_format	Rekening formaat
-bill_header_ph	Adres | telefoon
-fssai_ph	FSSAI lisensienommer (Indië)
-bill_footer_ph	Voetstuk (bv. Dankie, besoek weer)
 reset_bill_format	Herstel na standaard
 bill_format_reset	Rekening formaat herstel na standaard
 reset_kot_format	Herstel na standaard
@@ -1146,7 +1175,6 @@ kot_kind_modified	Gewysig
 kot_kind_cancelled	Geheg
 kot_style_heading	Veldtipe-grootte en vetdruk
 kot_style_title	Titel
-kot_style_item_qty	Item · Aantal
 kot_style_field_pick	Kies veld
 kot_weight_regular	Normaal
 kot_weight_bold	Vet
@@ -1158,8 +1186,8 @@ content_width_bill	Faktuurinhoudbreedte (mm)
 content_width_kot	KOT-inhoudbreedte (mm)
 content_width_ph	Of tik 'n inhoudbreedte, 40–210 mm
 content_width_help	Hoe wyd hierdie bon druk. Faktuur en KOT behou elkeen hul eie breedte.
-content_width_bill_help	Hoe wyd die gaste-faktuur druk. Standaard 210 mm (blad). 58 mm smalle bon, 80 mm wyde bon, 112 mm 4-duim, 210 mm A4-wyd. Tik enige waarde van 40 tot 210. Keukentikkies het hul eie breedte op die KOT-oor.
-content_width_kot_help	Hoe wyd die keukentik druk. Standaard 80 mm. 58 mm smalle bon, 80 mm wyde bon, 112 mm 4-duim, 210 mm blad. Tik enige waarde van 40 tot 210. Gaste-fakture het hul eie breedte op die Faktuur-oor.
+content_width_bill_help	Hoe breed die gas se rekening druk, in mm (40–210). Dit druk op hierdie werklike grootte op enige papier; op papier smaller as dit word die deel verby die drukrand afgesny (sien Papier). Kombuiskaartjies het hul eie breedte op die KOT-oortjie.
+content_width_kot_help	Hoe breed die kombuiskaartjie druk, in mm (40–210). Dit druk op hierdie werklike grootte op enige papier; op papier smaller as dit word die deel verby die drukrand afgesny (sien Papier). Gasterekeninge het hul eie breedte op die Rekening-oortjie.
 vp_paper_width	Inhoudbreedte (mm)
 vp_paper_width_ph	Of tik 'n inhoudbreedte, 40–210 mm
 vp_paper_width_help	Inhoudbreedte word ingestel onder Faktuur & KOT-formaat – apart vir die faktuur (standaard 210 mm) en die keukentik (standaard 80 mm).
@@ -1213,8 +1241,6 @@ schemes_help	BOGO, persentasie-afslag en vaste kombinasies. Kombinasies brei uit
 scheme_bogo_ph	Koop 2 Thali kry 1 Chaas
 add_scheme	Voeg BOGO by
 schedule_ph	Ure / gelukkige uur – Ma-Vry 07:00-11:00 of GelukkigeUur 17:00-19:00=150
-upi_vpa_ph	UPI-ID (VPA)
-upi_payee_ph	UPI-betaler naam (opsioneel)
 upi_qr	UPI-QR
 show_upi_qr	Toon UPI-QR
 close_upi_qr	Sluit
@@ -1295,8 +1321,6 @@ printer_mode_first	Eers wat werk
 printer_mode_all	Druk op almal
 kot_show_area	Gebied
 kot_hide_area	Verberg gebied
-kot_show_item_hdr	Item · Aantal
-kot_hide_item_hdr	Verberg kolomme
 kot_show_title	Titellyn
 kot_hide_title	Verberg titel
 kot_field_cycle	Kies volgende
@@ -1337,12 +1361,12 @@ private_code_ph	12-syferkode
 stamp_on	Stempel: op lêer
 pay_qr_on	Betalings-QR: op lêer
 pay_qr_off	Betalings-QR: geen
+printers_screen_tip	Soek lys die drukkers wat hierdie toestel kan gebruik en stoor hulle vir hierdie winkel. Rekeningdrukkers: Rekening- en KOT-formaat → Rekening. Kombuis: Kombuis → Kombuisstasies.
+printers_found_none	Geen drukkers gevind nie.
+nav_loading	Laai tans…
+kot_copy_from	Kopieer van
+kot_copy_from_help	Kopieer die grootte, gewig en belyning van elke reël van daardie soort na hierdie een. Hierdie soort behou sy eie banier, itemvoorvoegsel en deurhaal. Stoor KOT-formaat om dit te hou.
 items_tmpl_heading	Itemsjablone
 items_tmpl_help	Geregte, kategorieë en foto's vir jou spyskaart. Winkelinstellings en personeel bly soos hulle is.
 public_tmpl_help	Beginspyskaarte wat enigiemand kan aflaai. Benodig een keer internet.
 private_tmpl_help	Kliëntspyskaarte agter 'n 12-syferkode van jou Khaynjo-kontak.
-printers_screen_tip	Soek lys die drukkers wat hierdie toestel kan gebruik en stoor hulle vir hierdie winkel. Rekeningdrukkers: Rekening- en KOT-formaat → Rekening. Kombuis: Kombuis → Kombuisstasies.
-printers_found_none	Geen drukkers gevind nie.
-kot_copy_from	Kopieer van
-kot_copy_from_help	Kopieer die grootte, gewig en belyning van elke reël van daardie soort na hierdie een. Hierdie soort behou sy eie banier, itemvoorvoegsel en deurhaal. Stoor KOT-formaat om dit te hou.
-nav_loading	Laai tans…

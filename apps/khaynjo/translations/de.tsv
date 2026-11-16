@@ -92,10 +92,6 @@ bill_item_layout	Artikellayout
 bill_item_layout_columns	Spalten
 bill_item_layout_stacked	Gestapelt
 bill_item_header	Spaltenköpfe
-bill_item_hdr_item	Artikelkopf
-bill_item_hdr_qty	Mengenkopf
-bill_item_hdr_price	Preiskopf
-bill_item_hdr_amount	Betragskopf
 bill_item_name	Name
 bill_item_qty	Menge
 bill_item_price	Preis
@@ -103,6 +99,20 @@ bill_item_amount	Betrag
 bill_item_note	Notiz
 bill_item_col_sep	Spaltlinien
 slip_columns	Spalten
+slip_col_header	Kopf
+bill_line_logo	Logo
+bill_logo_picture	Bild
+bill_logo_choose	Bild wählen
+bill_logo_remove	Bild entfernen
+bill_logo_none	Kein Bild
+bill_logo_unreadable	Kein Bild, das die App lesen kann
+bill_logo_width	Breite (px)
+bill_logo_height	Höhe (px)
+bill_logo_tones	Grautöne
+bill_logo_solid	Voll
+bill_logo_shaded	Schattiert
+bill_logo_help	Breite und Höhe in px. Leer folgt dem Bild: eines leer behält seine Form, beide leer nutzen seine eigene Größe; beide gesetzt passen es hinein, nie verzerrt. Kein Bild: ein angezeigtes Logo behält seine Höhe als Leerraum; Ausblenden entfernt es.
+bill_logo_tones_help	Voll: jeder Punkt schwarz oder weiß, für klare Logos. Schattiert: Grautöne werden zu feinen Punktmustern, für Fotos und weiche Schatten.
 slip_col_width	Breite (mm)
 slip_col_start	Abstand am Anfang (px)
 slip_col_end	Abstand am Ende (px)
@@ -167,6 +177,21 @@ alerts_help	Wie lange Statusmeldungen für Sie sichtbar bleiben (diese Anmeldung
 snack_secs_ph	Sekunden (3–60, Standard 10)
 snack_secs_save	Hinweisdauer speichern
 snack_secs_saved	Hinweisdauer gespeichert — {n} Sekunden
+settings_sec_whatsapp	WhatsApp
+whatsapp_cloud_help	Use your own Meta WhatsApp Cloud API. Create a System User token with whatsapp_business_messaging (temporary dashboard tokens expire). Credentials stay on this Server only — never on extra tills. Accepted means Meta took the request, not that the guest received it.
+whatsapp_phone_id_ph	Phone Number ID
+whatsapp_token_ph	Access Token (leave blank to keep)
+whatsapp_template_ph	Bill template name (optional)
+whatsapp_template_lang_ph	Template language (e.g. en)
+whatsapp_enable	Enable
+whatsapp_disable	Off
+whatsapp_save	Save WhatsApp
+whatsapp_test	Test connection
+whatsapp_disconnect	Disconnect
+whatsapp_send_bill	Send via WhatsApp
+whatsapp_consent	WhatsApp OK
+whatsapp_consent_help	Guest agreed to receive WhatsApp messages. A phone number alone is not consent.
+whatsapp_server_only	Configure WhatsApp on the shop Server device
 settings_sec_backup	Sicherung & Wiederherstellung
 settings_sec_diag	Diagnose
 settings_sec_privacy	Datenschutz
@@ -729,6 +754,13 @@ station_vps_dd	Drucker für diese Station
 station_vps_dd_n	{n} Drucker · tippen zum Ändern
 bill_printers_dd	Druckgeräte für die Rechnung
 bill_printers_dd_n	{n} Druckgerät(e) für die Rechnung · tippen zum Ändern
+paper_heading	Papier
+paper_size	{w} × {h} mm
+paper_roll	{w}-mm-Rolle
+paper_not_set	Papier noch unbekannt
+paper_length_mm	Länge (mm)
+printer_paper_help	Das Papier dieses Druckers in mm. Eine leere Länge ist eine Rolle: Jeder Beleg ist so lang wie sein Inhalt. „Drucker suchen“ füllt leeres Papier aus dem Treiber des Druckers (eine 80-mm-Rolle, wenn er es nicht sagen kann) und ändert nie ein bereits gesetztes.
+preview_help	Dieser Beleg auf dem Papier des unten gewählten Druckers, so wie er dort druckt: in echter Größe ab der oberen linken Ecke, die der Drucker erreicht (grau: Ränder, die er nicht erreicht), ein langer Beleg auf weiteren Blättern, alles jenseits des Papierrands abgeschnitten. Die Druckerwahl ändert nur die Vorschau; das Papier jedes Druckers wird unter „Drucker“ gesetzt.
 job_layout	Layout
 job_delivery	Wie der Auftrag gesendet wird
 job_delivery_help	OS-Dokument, rohe Bytes oder ESC/POS. Die Rechnung und das Küchenticket behalten jeweils ihre eigenen Einstellungen. Jeder Auftrag kann an jedes von Find gespeicherte Druckgerät gesendet werden.
@@ -1105,9 +1137,6 @@ remove_these_tables	Diese Tische entfernen
 table_remove_ph	Entfernen: T1-T24 oder der Name eines Tisches
 find_server	Server des Lokals finden
 bill_format	Rechnungsformat
-bill_header_ph	Adresse | Telefon
-fssai_ph	FSSAI-Lizenznr. (Indien)
-bill_footer_ph	Fußzeile (z. B. Danke, bis bald)
 reset_bill_format	Auf Standard
 bill_format_reset	Rechnungsformat zurückgesetzt
 reset_kot_format	Auf Standard
@@ -1146,7 +1175,6 @@ kot_kind_modified	Geändert
 kot_kind_cancelled	Storniert
 kot_style_heading	Feldgröße und -stärke
 kot_style_title	Titel
-kot_style_item_qty	Artikel · Menge
 kot_style_field_pick	Feld wählen
 kot_weight_regular	Normal
 kot_weight_bold	Fett
@@ -1158,8 +1186,8 @@ content_width_bill	Breite des Rechnungsinhalts (mm)
 content_width_kot	Breite des KOT-Inhalts (mm)
 content_width_ph	Oder Inhaltsbreite eingeben, 40–210 mm
 content_width_help	Wie breit dieser Slip gedruckt wird. Rechnung und KOT behalten jeweils ihre eigene Breite.
-content_width_bill_help	Wie breit die Gastrechnung gedruckt wird. Standard 210 mm (Seite). 58 mm schmaler Slip, 80 mm breiter Slip, 112 mm 4-Zoll, 210 mm A4-breit. Geben Sie einen beliebigen Wert von 40 bis 210 ein. Küchenscheine haben ihre eigene Breite auf dem KOT-Tab.
-content_width_kot_help	Wie breit der Küchenschein gedruckt wird. Standard 80 mm. 58 mm schmaler Slip, 80 mm breiter Slip, 112 mm 4-Zoll, 210 mm Seite. Geben Sie einen beliebigen Wert von 40 bis 210 ein. Gastrechnungen haben ihre eigene Breite auf dem Rechnung-Tab.
+content_width_bill_help	Wie breit die Gastrechnung gedruckt wird, in mm (40–210). Sie wird auf jedem Papier in dieser echten Größe gedruckt; auf schmalerem Papier wird der Teil hinter dem Druckrand abgeschnitten (siehe Papier). Küchenbons haben ihre eigene Breite im Tab KOT.
+content_width_kot_help	Wie breit der Küchenbon gedruckt wird, in mm (40–210). Er wird auf jedem Papier in dieser echten Größe gedruckt; auf schmalerem Papier wird der Teil hinter dem Druckrand abgeschnitten (siehe Papier). Gastrechnungen haben ihre eigene Breite im Tab Rechnung.
 vp_paper_width	Inhaltsbreite (mm)
 vp_paper_width_ph	Oder Inhaltsbreite eingeben, 40–210 mm
 vp_paper_width_help	Die Inhaltsbreite wird unter Rechnungs- und KOT-Format festgelegt. Sie gilt für Rechnung und Küchenbon.
@@ -1213,8 +1241,6 @@ schemes_help	Kauf X erhalt Y — beim Kassieren. Z. B. Buy 2 Thali get 1 Chaas
 scheme_bogo_ph	Buy 2 Thali get 1 Chaas
 add_scheme	BOGO hinzufügen
 schedule_ph	Zeiten / Happy Hour — Mon-Fri 07:00-11:00 oder HappyHour 17:00-19:00=150
-upi_vpa_ph	UPI ID (VPA)
-upi_payee_ph	UPI-Empfänger (optional)
 upi_qr	UPI QR
 show_upi_qr	UPI-QR zeigen
 close_upi_qr	Schließen
@@ -1295,8 +1321,6 @@ printer_mode_first	Erster, der funktioniert
 printer_mode_all	Auf allen drucken
 kot_show_area	Bereich
 kot_hide_area	Bereich ausblenden
-kot_show_item_hdr	Artikel · Menge
-kot_hide_item_hdr	Spalten ausblenden
 kot_show_title	Titelleiste
 kot_hide_title	Titel ausblenden
 kot_field_cycle	Nächsten auswählen
@@ -1337,12 +1361,12 @@ private_code_ph	12-stelliger Code
 stamp_on	Stempel: gespeichert
 pay_qr_on	Zahlungs-QR: gespeichert
 pay_qr_off	Zahlungs-QR: keiner
+printers_screen_tip	Suchen listet die Drucker auf, die dieses Gerät nutzen kann, und speichert sie für diesen Shop. Rechnungsdrucker: Rechnungs- & KOT-Format → Rechnung. Küche: Küche → Küchenstationen.
+printers_found_none	Keine Drucker gefunden.
+nav_loading	Wird geladen…
+kot_copy_from	Kopieren von
+kot_copy_from_help	Kopiert Größe, Stärke und Ausrichtung jeder Zeile von dieser Art in diese. Diese Art behält ihr eigenes Banner, Artikelpräfix und Durchstreichen. KOT-Format speichern, um es zu behalten.
 items_tmpl_heading	Artikelvorlagen
 items_tmpl_help	Gerichte, Kategorien und Fotos für Ihre Speisekarte. Shop-Einstellungen und Personal bleiben unverändert.
 public_tmpl_help	Startmenüs, die jeder herunterladen kann. Einmal Internet nötig.
 private_tmpl_help	Kundenmenüs, geschützt durch einen 12-stelligen Code von Ihrem Khaynjo-Kontakt.
-printers_screen_tip	Suchen listet die Drucker auf, die dieses Gerät nutzen kann, und speichert sie für diesen Shop. Rechnungsdrucker: Rechnungs- & KOT-Format → Rechnung. Küche: Küche → Küchenstationen.
-printers_found_none	Keine Drucker gefunden.
-kot_copy_from	Kopieren von
-kot_copy_from_help	Kopiert Größe, Stärke und Ausrichtung jeder Zeile von dieser Art in diese. Diese Art behält ihr eigenes Banner, Artikelpräfix und Durchstreichen. KOT-Format speichern, um es zu behalten.
-nav_loading	Wird geladen…

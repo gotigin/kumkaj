@@ -92,10 +92,6 @@ bill_item_layout	Mahsulot joylashuvi
 bill_item_layout_columns	Ustunlar
 bill_item_layout_stacked	Qatorlab
 bill_item_header	Ustun sarlavhalari
-bill_item_hdr_item	Mahsulot sarlavhasi
-bill_item_hdr_qty	Miqdor sarlavhasi
-bill_item_hdr_price	Narx sarlavhasi
-bill_item_hdr_amount	Summa sarlavhasi
 bill_item_name	Taom nomi
 bill_item_qty	Miqdor
 bill_item_price	Narx
@@ -103,6 +99,20 @@ bill_item_amount	Summa
 bill_item_note	Taom izohi
 bill_item_col_sep	Ustun chiziqlari
 slip_columns	Ustunlar
+slip_col_header	Sarlavha
+bill_line_logo	Logotip
+bill_logo_picture	Rasm
+bill_logo_choose	Rasm tanlash
+bill_logo_remove	Rasmni olib tashlash
+bill_logo_none	Rasm yoʻq
+bill_logo_unreadable	Bu ilova oʻqiy oladigan rasm emas
+bill_logo_width	Kenglik (px)
+bill_logo_height	Balandlik (px)
+bill_logo_tones	Kulrang tuslar
+bill_logo_solid	Yaxlit
+bill_logo_shaded	Soyali
+bill_logo_help	Kenglik va balandlik px’da. Boʻsh rasmga ergashadi: bittasi boʻsh boʻlsa shakli saqlanadi, ikkalasi boʻsh boʻlsa oʻz oʻlchami; ikkalasi berilsa ichiga sigʻdiriladi, hech qachon choʻzilmaydi. Rasm yoʻq: koʻrsatilgan logotip balandligini boʻsh joy sifatida saqlaydi; Yashirish uni olib tashlaydi.
+bill_logo_tones_help	Yaxlit: har bir nuqta qora yoki oq, aniq logotiplar uchun. Soyali: kulrang mayda nuqtali naqshga aylanadi, suratlar va yumshoq soya uchun.
 slip_col_width	Kenglik (mm)
 slip_col_start	Boshlanish oralig‘i (px)
 slip_col_end	Oxirgi oraliq (px)
@@ -167,6 +177,21 @@ alerts_help	Holat xabarlari siz uchun ekranda qancha turadi (shu kirish).
 snack_secs_ph	Soniya (3–60, odatiy 10)
 snack_secs_save	Ogohlantirish vaqtini saqlash
 snack_secs_saved	Ogohlantirish vaqti saqlandi — {n} soniya
+settings_sec_whatsapp	WhatsApp
+whatsapp_cloud_help	Use your own Meta WhatsApp Cloud API. Create a System User token with whatsapp_business_messaging (temporary dashboard tokens expire). Credentials stay on this Server only — never on extra tills. Accepted means Meta took the request, not that the guest received it.
+whatsapp_phone_id_ph	Phone Number ID
+whatsapp_token_ph	Access Token (leave blank to keep)
+whatsapp_template_ph	Bill template name (optional)
+whatsapp_template_lang_ph	Template language (e.g. en)
+whatsapp_enable	Enable
+whatsapp_disable	Off
+whatsapp_save	Save WhatsApp
+whatsapp_test	Test connection
+whatsapp_disconnect	Disconnect
+whatsapp_send_bill	Send via WhatsApp
+whatsapp_consent	WhatsApp OK
+whatsapp_consent_help	Guest agreed to receive WhatsApp messages. A phone number alone is not consent.
+whatsapp_server_only	Configure WhatsApp on the shop Server device
 settings_sec_backup	Zaxira nusxa va tiklash
 settings_sec_diag	Diagnostika
 settings_sec_privacy	Maxfiylik
@@ -729,6 +754,13 @@ station_vps_dd	Shu stansiya printerlari
 station_vps_dd_n	{n} printer · oʻzgartirish uchun bosing
 bill_printers_dd	Hisob printerlari
 bill_printers_dd_n	hisob uchun {n} printer · oʻzgartirish uchun bosing
+paper_heading	Qogʻoz
+paper_size	{w} × {h} mm
+paper_roll	{w} mm rulon
+paper_not_set	qogʻoz hali nomaʼlum
+paper_length_mm	Uzunlik (mm)
+printer_paper_help	Bu printerning qogʻozi mm da. Boʻsh Uzunlik — rulon: har bir chek mazmuni qadar uzun. Printerlarni topish boʻsh qogʻozni printer drayveridan toʻldiradi (ayta olmasa, 80 mm rulon) va oldindan belgilanganini hech qachon oʻzgartirmaydi.
+preview_help	Pastda tanlangan printer qogʻozidagi bu chek, u yerda qanday chop etilsa shunday: printer yetadigan yuqori chap burchakdan haqiqiy oʻlchamda (kulrang: yetmaydigan chetlar), uzun chek koʻproq varaqda, qogʻoz chetidan oʻtgan hamma narsa kesiladi. Printer tanlash faqat oldindan koʻrishni oʻzgartiradi; har bir printer qogʻozi Printerlar boʻlimida belgilanadi.
 job_layout	Joylashuv
 job_delivery	Ish qanday yuboriladi
 job_delivery_help	OT hujjati, xom bayt yoki ESC/POS. Hisob va oshxona varaqi har biri oʻzinikini saqlaydi. Har qanday ish Qidiruv saqlagan istalgan printerga borishi mumkin.
@@ -1105,9 +1137,6 @@ remove_these_tables	Bu stollarni olib tashlash
 table_remove_ph	Olib tashlash: T1-T24 yoki bitta stol nomi
 find_server	Doʻkon serverini topish
 bill_format	Hisob formati
-bill_header_ph	Manzil | telefon
-fssai_ph	FSSAI litsenziya № (Hindiston)
-bill_footer_ph	Pastki yozuv (mas. Rahmat, yana keling)
 reset_bill_format	Andozaga qaytarish
 bill_format_reset	Hisob formati andozaga qaytarildi
 reset_kot_format	Andozaga qaytarish
@@ -1146,7 +1175,6 @@ kot_kind_modified	Oʻzgartirilgan
 kot_kind_cancelled	Bekor qilingan
 kot_style_heading	Maydon oʻlchami va qalinligi
 kot_style_title	Sarlavha
-kot_style_item_qty	Mahsulot · Miqdor
 kot_style_field_pick	Maydon tanlash
 kot_weight_regular	Oddiy
 kot_weight_bold	Qalin
@@ -1158,8 +1186,8 @@ content_width_bill	Hisob mazmuni kengligi (mm)
 content_width_kot	KOT mazmuni kengligi (mm)
 content_width_ph	Yoki mazmun kengligini yozing, 40–210 mm
 content_width_help	Bu varaq qanchalik keng chop etiladi. Hisob va KOT har biri oʻz kengligini saqlaydi.
-content_width_bill_help	Mehmon hisobi qanchalik keng chop etiladi. Andoza 210 mm (sahifa). 58 mm tor varaq, 80 mm keng varaq, 112 mm 4 dyuym, 210 mm A4 kenglik. 40 dan 210 gacha istalgan qiymatni yozing. Oshxona varaqlari oʻz kengligiga ega, KOT yorligʻida.
-content_width_kot_help	Oshxona varaqi qanchalik keng chop etiladi. Andoza 80 mm. 58 mm tor, 80 mm keng, 112 mm 4 dyuym, 210 mm sahifa. 40 dan 210 gacha yozing. Mehmon hisoblari oʻz kengligiga ega, Hisob yorligʻida.
+content_width_bill_help	Mehmon hisobi qanday kenglikda chop etiladi, mm da (40–210). U istalgan qogʻozda shu haqiqiy oʻlchamda chop etiladi; bundan torroq qogʻozda chop qirrasidan oʻtgan qism kesiladi (Qogʻozga qarang). Oshxona cheklarining oʻz kengligi KOT yorligʻida.
+content_width_kot_help	Oshxona cheki qanday kenglikda chop etiladi, mm da (40–210). U istalgan qogʻozda shu haqiqiy oʻlchamda chop etiladi; bundan torroq qogʻozda chop qirrasidan oʻtgan qism kesiladi (Qogʻozga qarang). Mehmon hisoblarining oʻz kengligi Hisob yorligʻida.
 vp_paper_width	Mazmun kengligi (mm)
 vp_paper_width_ph	Yoki mazmun kengligini yozing, 40–210 mm
 vp_paper_width_help	Mazmun kengligi Hisob va KOT formatida qoʻyiladi — hisob uchun alohida (andoza 210 mm) va oshxona varaqi uchun (andoza 80 mm).
@@ -1213,8 +1241,6 @@ schemes_help	BOGO, foiz chegirma va qatʼiy kombo. Kombolar KOT yuborishda oshxo
 scheme_bogo_ph	2 Thali sotib oling, 1 Chaas oling
 add_scheme	BOGO qoʻshish
 schedule_ph	Soatlar / baxtli soat — Du-Ju 07:00-11:00 yoki HappyHour 17:00-19:00=150
-upi_vpa_ph	UPI identifikator (VPA)
-upi_payee_ph	UPI oluvchi nomi (ixtiyoriy)
 upi_qr	UPI QR
 show_upi_qr	UPI QR koʻrsatish
 close_upi_qr	Yopish
@@ -1295,8 +1321,6 @@ printer_mode_first	Birinchi ishlagani
 printer_mode_all	Hammasiga chop etish
 kot_show_area	Hudud
 kot_hide_area	Hududni yashirish
-kot_show_item_hdr	Mahsulot · Miqdor
-kot_hide_item_hdr	Ustunlarni yashirish
 kot_show_title	Sarlavha qatori
 kot_hide_title	Sarlavhani yashirish
 kot_field_cycle	Keyingisini tanlash
@@ -1337,12 +1361,12 @@ private_code_ph	12 xonali kod
 stamp_on	Muhr: faylda
 pay_qr_on	Toʻlov QR: faylda
 pay_qr_off	Toʻlov QR: yoʻq
+printers_screen_tip	Qidirish ushbu qurilma foydalana oladigan printerlarni ko'rsatadi va ularni ushbu do'kon uchun saqlaydi. Hisob printerlari: Hisob va KOT formati → Hisob. Oshxona: Oshxona → Oshxona stansiyalari.
+printers_found_none	Printer topilmadi.
+nav_loading	Yuklanmoqda…
+kot_copy_from	Nusxa olish
+kot_copy_from_help	O turdagi har bir qatorning o'lchami, qalinligi va tekislanishini shu turga ko'chiradi. Bu tur o'z banneri, mahsulot prefiksi va ustidan chizilishini saqlaydi. Saqlab qolish uchun KOT formatini saqlang.
 items_tmpl_heading	Mahsulot shablonlari
 items_tmpl_help	Menyungiz uchun taomlar, toifalar va rasmlar. Do'kon sozlamalari va xodimlar o'z holicha qoladi.
 public_tmpl_help	Har kim yuklab olishi mumkin bo'lgan boshlang'ich menyular. Internet bir marta kerak.
 private_tmpl_help	Khaynjo kontaktingizdan kelgan 12 xonali kod bilan himoyalangan mijoz menyulari.
-printers_screen_tip	Qidirish ushbu qurilma foydalana oladigan printerlarni ko'rsatadi va ularni ushbu do'kon uchun saqlaydi. Hisob printerlari: Hisob va KOT formati → Hisob. Oshxona: Oshxona → Oshxona stansiyalari.
-printers_found_none	Printer topilmadi.
-kot_copy_from	Nusxa olish
-kot_copy_from_help	O turdagi har bir qatorning o'lchami, qalinligi va tekislanishini shu turga ko'chiradi. Bu tur o'z banneri, mahsulot prefiksi va ustidan chizilishini saqlaydi. Saqlab qolish uchun KOT formatini saqlang.
-nav_loading	Yuklanmoqda…

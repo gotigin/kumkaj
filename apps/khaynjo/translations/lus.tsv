@@ -92,10 +92,6 @@ bill_item_layout	Thil rem dan
 bill_item_layout_columns	Column
 bill_item_layout_stacked	In chhung
 bill_item_header	Column hming
-bill_item_hdr_item	Thil hming
-bill_item_hdr_qty	Zat hming
-bill_item_hdr_price	Man hming
-bill_item_hdr_amount	Sum zat hming
 bill_item_name	Chaw hming
 bill_item_qty	Zat
 bill_item_price	Man
@@ -103,6 +99,20 @@ bill_item_amount	Sum zat
 bill_item_note	Chaw lehkha
 bill_item_col_sep	Column ri
 slip_columns	Column-te
+slip_col_header	Hming
+bill_line_logo	Logo
+bill_logo_picture	Thlalak
+bill_logo_choose	Thlalak thlang rawh
+bill_logo_remove	Thlalak paih rawh
+bill_logo_none	Thlalak a awm lo
+bill_logo_unreadable	App hian a chhiar theih thlalak a ni lo
+bill_logo_width	Zau zawng (px)
+bill_logo_height	Sang zawng (px)
+bill_logo_tones	Dum-var
+bill_logo_solid	Khal
+bill_logo_shaded	Hlim nei
+bill_logo_help	Zau zawng leh sang zawng px-ah. Ruak chuan thlalak a zui: pakhat a ruak chuan a hmel a vawng, pahnih a ruak chuan a size ngei a hmang; pahnih a dah chuan a chhungah a dah lut a, a pawt thui ngai lo. Thlalak a awm loh chuan: logo lan chuan a sang zawng hmun ruak angin a vawng; Thup chuan a paih.
+bill_logo_tones_help	Khal: dot tin dum emaw var emaw, logo chiang tak atan. Hlim nei: dum-var chu dot te tak te ruangam a ni, thlalak leh hlim nem atan.
 slip_col_width	Zau (mm)
 slip_col_start	Tirhna awmna (px)
 slip_col_end	Tâwpna awmna (px)
@@ -167,6 +177,21 @@ alerts_help	Dinhmun thu i screen-ah rei engzat (second)
 snack_secs_ph	Second (3–60, dan 10)
 snack_secs_save	Hriattir hun dah tha
 snack_secs_saved	Hriattir hun dah tha a ni — second {n}
+settings_sec_whatsapp	WhatsApp
+whatsapp_cloud_help	Use your own Meta WhatsApp Cloud API. Create a System User token with whatsapp_business_messaging (temporary dashboard tokens expire). Credentials stay on this Server only — never on extra tills. Accepted means Meta took the request, not that the guest received it.
+whatsapp_phone_id_ph	Phone Number ID
+whatsapp_token_ph	Access Token (leave blank to keep)
+whatsapp_template_ph	Bill template name (optional)
+whatsapp_template_lang_ph	Template language (e.g. en)
+whatsapp_enable	Enable
+whatsapp_disable	Off
+whatsapp_save	Save WhatsApp
+whatsapp_test	Test connection
+whatsapp_disconnect	Disconnect
+whatsapp_send_bill	Send via WhatsApp
+whatsapp_consent	WhatsApp OK
+whatsapp_consent_help	Guest agreed to receive WhatsApp messages. A phone number alone is not consent.
+whatsapp_server_only	Configure WhatsApp on the shop Server device
 settings_sec_backup	Backup leh kir leh
 settings_sec_diag	Harsatna en
 settings_sec_privacy	Thuruk
@@ -729,6 +754,13 @@ station_vps_dd	He hmun print na
 station_vps_dd_n	print na {n} · khawih la, thlak turin
 bill_printers_dd	Bill print na
 bill_printers_dd_n	bill print na {n} · khawih la, thlak turin
+paper_heading	Lehkha
+paper_size	{w} × {h} mm
+paper_roll	{w} mm roll
+paper_not_set	lehkha hriat a la ni lo
+paper_length_mm	A sei zawng (mm)
+printer_paper_help	He print na lehkha hi mm-in. A sei zawng awm lo chu roll a ni: slip tin chu a chhunga thil ang zelin a sei a ni. Print na zawng hian lehkha awm lo chu print na driver atangin a dah khat (a sawi thei loh chuan 80 mm roll) a, lo ruat tawh chu engtikah mah a thlak ngai lo.
+preview_help	He slip hi a hnuaia print na thlan lehkhaah, chutah a chhuah ang ngeiin: print na thlen theih chunglam vei kil atangin a lianna dik takin (dum var: a thlen theih loh kawng), slip sei chu phek tam zawkah, lehkha kawng piah lam apiang chu an tan. Print na thlan hian a hmaa en lawk chauh a thlak; print na tin lehkha chu Print na hnuaiah ruat a ni.
 job_layout	Rem dan
 job_delivery	Hna thawn dan
 job_delivery_help	System lehkha, byte raw, emaw ESC/POS. Bill leh buh chhumna lehkha chuan an mahni an vawng. Hna tin chu Zawng dah tha print na eng pawh a kal thei.
@@ -1105,9 +1137,6 @@ remove_these_tables	He dawhkan te paih
 table_remove_ph	Paih: T1-T24, emaw dawhkan pakhat hming
 find_server	Dawr server zawng
 bill_format	Bill rem dan
-bill_header_ph	Address | phone
-fssai_ph	FSSAI licence no. (India)
-bill_footer_ph	Hnuai (entir Lawm e, lo kal leh)
 reset_bill_format	Dan ah kir
 bill_format_reset	Bill rem dan dan ah kir a ni
 reset_kot_format	Dan ah kir
@@ -1146,7 +1175,6 @@ kot_kind_modified	Siam tawh
 kot_kind_cancelled	Tihbo
 kot_style_heading	Field type len leh rih zat
 kot_style_title	Hming
-kot_style_item_qty	Thil · Zat
 kot_style_field_pick	Field thlang
 kot_weight_regular	Dan
 kot_weight_bold	Rih
@@ -1158,8 +1186,8 @@ content_width_bill	Bill chhung vang (mm)
 content_width_kot	KOT chhung vang (mm)
 content_width_ph	Emaw chhung vang ziak, 40–210 mm
 content_width_help	He lehkha vang engzat print. Bill leh KOT chuan an vang an vawng.
-content_width_bill_help	Khual bill vang engzat print. Dan 210 mm (page). 58 mm lehkha tep, 80 mm lehkha vang, 112 mm 4-inch, 210 mm A4 vang. 40 atanga 210 zat eng pawh ziak. Buh chhumna lehkha hian KOT tab-ah vang then an nei.
-content_width_kot_help	Buh chhumna lehkha vang engzat print. Dan 80 mm. 58 mm lehkha tep, 80 mm lehkha vang, 112 mm 4-inch, 210 mm page. 40 atanga 210 zat eng pawh ziak. Khual bill hian Bill tab-ah vang then an nei.
+content_width_bill_help	Mikhual bill zau zawng a print dan, mm-in (40–210). Lehkha engpawh-ah he lian dan tak takah hian a print; hei aia zim lehkhaah chuan print kawn piah hmun chu a tan (Lehkha en rawh). Kitchen ticket-te zau zawng chu KOT tab-ah a awm.
+content_width_kot_help	Kitchen ticket zau zawng a print dan, mm-in (40–210). Lehkha engpawh-ah he lian dan tak takah hian a print; hei aia zim lehkhaah chuan print kawn piah hmun chu a tan (Lehkha en rawh). Mikhual bill-te zau zawng chu Bill tab-ah a awm.
 vp_paper_width	Chhung vang (mm)
 vp_paper_width_ph	Emaw chhung vang ziak, 40–210 mm
 vp_paper_width_help	Chhung vang chu Bill leh KOT rem dan hnuaih dah — bill (dan 210 mm) leh buh chhumna lehkha (dan 80 mm) thenin.
@@ -1213,8 +1241,6 @@ schemes_help	BOGO, percent tlem, leh combo ding. Combo chu KOT Thawn hunah buh c
 scheme_bogo_ph	Thali 2 lei la Chaas 1 dawng
 add_scheme	BOGO telh
 schedule_ph	Darkar / hun nuam — Nii-Zirtawp 07:00-11:00 emaw HappyHour 17:00-19:00=150
-upi_vpa_ph	UPI hmingchhiar (VPA)
-upi_payee_ph	UPI dawngtu hming (duh chuan)
 upi_qr	UPI QR
 show_upi_qr	UPI QR lantir
 close_upi_qr	Khar
@@ -1295,8 +1321,6 @@ printer_mode_first	Hmasa thawk
 printer_mode_all	Zawng zawng print
 kot_show_area	Hmun
 kot_hide_area	Hmun thup
-kot_show_item_hdr	Thil · Zat
-kot_hide_item_hdr	Column thup
 kot_show_title	Hming ri
 kot_hide_title	Hming thup
 kot_field_cycle	Dawt thlang
@@ -1337,12 +1361,12 @@ private_code_ph	Code number 12
 stamp_on	Seal: file-ah awm
 pay_qr_on	Pek QR: file-ah awm
 pay_qr_off	Pek QR: awm lo
+printers_screen_tip	Zawng hian he device-in a hman theih printer-te a lantir a, he dawr atan a dahṭha ṭhin. Bill printer-te: Bill leh KOT format → Bill. Chawhmeh: Chawhmeh → Chawhmeh station-te.
+printers_found_none	Printer hmuh a ni lo.
+nav_loading	Load mek mek a ni…
+kot_copy_from	Hei atang hian copy rawh
+kot_copy_from_help	Chu kind atanga line tinte size, thickness leh alignment hi heta copy a ni. He kind hian a banner, item prefix leh strike a vawng tlat. Vawn tlat nan KOT format save rawh.
 items_tmpl_heading	Item template-te
 items_tmpl_help	I menu atan chaw chi hrang hrang, category leh thlalak. Dawr setting leh hnathawktute chu an awm angin an awm reng ang.
 public_tmpl_help	Tu pawhin an download theih menu tirhna. Internet vawi khat a ngai.
 private_tmpl_help	I Khaynjo inbiakpawhna atanga code digit 12 hmanga humhalh customer menu-te.
-printers_screen_tip	Zawng hian he device-in a hman theih printer-te a lantir a, he dawr atan a dahṭha ṭhin. Bill printer-te: Bill leh KOT format → Bill. Chawhmeh: Chawhmeh → Chawhmeh station-te.
-printers_found_none	Printer hmuh a ni lo.
-kot_copy_from	Hei atang hian copy rawh
-kot_copy_from_help	Chu kind atanga line tinte size, thickness leh alignment hi heta copy a ni. He kind hian a banner, item prefix leh strike a vawng tlat. Vawn tlat nan KOT format save rawh.
-nav_loading	Load mek mek a ni…

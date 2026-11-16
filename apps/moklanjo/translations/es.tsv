@@ -501,6 +501,17 @@ job_size	Tamaño de fuente
 job_size_ph	p. ej. 18, 20, 26…
 test_receipt_format	Probar recibo
 test_label_format	Probar etiqueta
+paper_heading	Papel
+paper_size	{w} × {h} mm
+paper_roll	rollo de {w} mm
+paper_not_set	papel aún desconocido
+paper_length_mm	Largo (mm)
+printer_paper_help	El papel de esta impresora en mm. Un Largo vacío es un rollo: cada ticket es tan largo como su contenido. Buscar impresoras rellena el papel vacío con el del controlador de la impresora (un rollo de 80 mm si no puede decirlo) y nunca cambia uno ya definido.
+preview_help	Este ticket sobre el papel de la impresora elegida abajo, tal como se imprime allí: a tamaño real desde la esquina superior izquierda que alcanza la impresora (gris: bordes que no alcanza), un ticket largo en más hojas, todo lo que pasa del borde del papel se recorta. Elegir una impresora solo cambia la vista previa; el papel de cada impresora se define en Impresoras.
+slip_col_width	Ancho (mm)
+no_printer_assigned	Sin impresora
+printer_target_default	impresora predeterminada
+job_preview	Vista previa
 test_receipt_sent	Recibo de ejemplo enviado
 test_label_sent	Etiqueta de ejemplo enviada
 test_print_no_printer	No hay impresora para ese trabajo — añade una en este lugar

@@ -501,6 +501,17 @@ job_size	Rozmiar czcionki
 job_size_ph	np. 18, 20, 26…
 test_receipt_format	Odbiór testowy
 test_label_format	Etykieta testowa
+paper_heading	Papier
+paper_size	{w} × {h} mm
+paper_roll	rolka {w} mm
+paper_not_set	papier jeszcze nieznany
+paper_length_mm	Długość (mm)
+printer_paper_help	Papier tej drukarki w mm. Pusta Długość to rolka: każdy paragon jest tak długi jak jego treść. Znajdź drukarki uzupełnia pusty papier ze sterownika drukarki (rolka 80 mm, gdy nie potrafi powiedzieć) i nigdy nie zmienia już ustawionego.
+preview_help	Ten paragon na papierze drukarki wybranej poniżej, tak jak się na niej drukuje: w rzeczywistym rozmiarze od lewego górnego rogu, do którego sięga drukarka (szary: krawędzie, do których nie sięga), długi paragon na kilku arkuszach, wszystko poza krawędzią papieru jest obcinane. Wybór drukarki zmienia tylko podgląd; papier każdej drukarki ustawia się w Drukarki.
+slip_col_width	Szerokość (mm)
+no_printer_assigned	Brak drukarki
+printer_target_default	zwykła drukarka tego komputera (pusty adres)
+job_preview	Podgląd
 test_receipt_sent	Wysłano próbny paragon
 test_label_sent	Wysłano próbną etykietę
 test_print_no_printer	Brak drukarki dla tego zadania — dodaj ją w tym miejscu

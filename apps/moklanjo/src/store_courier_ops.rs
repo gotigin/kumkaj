@@ -1375,7 +1375,7 @@ mod courier_ops_tests {
     use crate::rider_mode::{RiderPodEvent, SigPoint, SigStroke};
 
     fn temp_db() -> PathBuf {
-        std::env::temp_dir().join(format!("mok-courier-ops-{}.sqlite3", new_id()))
+        crate::test_dirs::run_root().join(format!("mok-courier-ops-{}.sqlite3", new_id()))
     }
 
     fn book_one(store: &mut Store, dest: &str, area: &str, cod: i64) -> Sale {

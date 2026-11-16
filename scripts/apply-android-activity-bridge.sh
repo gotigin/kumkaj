@@ -76,8 +76,20 @@ else
 fi
 
 PRINT_MARK='    // Kumkaj: PrintManager + Bluetooth SPP + USB host ESC/POS.'
-if grep -q 'kumkajEscposPieceEnds' "$JAVA"; then
-  echo "Android print/Bluetooth/USB bridge already present."
+# The block we inserted runs from the marker to the needle. It is current
+# only when it equals the snippet; any other copy is replaced below. (The
+# old test — "kumkajEscposPieceEnds is there" — kept the paced writes of an
+# older snippet in every build after the snippet dropped them, 2026-11-15.)
+print_block() {
+  awk -v mark="$PRINT_MARK" -v needle="$NEEDLE" '
+    $0 == mark { on = 1 }
+    on && index($0, needle) == 1 { exit }
+    on { print }
+  ' "$JAVA"
+}
+if grep -qF "$PRINT_MARK" "$JAVA" \
+  && cmp -s <(print_block) "$ROOT/patches/makepad/MakepadActivity-print.java"; then
+  echo "Android print/Bluetooth/USB bridge already present (current)."
 elif grep -q 'public boolean printDocument' "$JAVA" && ! grep -qF "$PRINT_MARK" "$JAVA"; then
   # printDocument without our marker: not ours to rewrite. Leave it.
   echo "Android print bridge present without the Kumkaj marker — not replaced; check $JAVA" >&2

@@ -92,10 +92,6 @@ bill_item_layout	ប្លង់ទំនិញ
 bill_item_layout_columns	ជួរឈរ
 bill_item_layout_stacked	ដាក់ជង់
 bill_item_header	ក្បាលជួរឈរ
-bill_item_hdr_item	ក្បាលទំនិញ
-bill_item_hdr_qty	ក្បាលបរិមាណ
-bill_item_hdr_price	ក្បាលតម្លៃ
-bill_item_hdr_amount	ក្បាលទឹកប្រាក់
 bill_item_name	ឈ្មោះម្ហូប
 bill_item_qty	បរិមាណ
 bill_item_price	តម្លៃ
@@ -103,6 +99,20 @@ bill_item_amount	ទឹកប្រាក់
 bill_item_note	កំណត់ចំណាំម្ហូប
 bill_item_col_sep	បន្ទាត់ជួរឈរ
 slip_columns	ជួរឈរ
+slip_col_header	ក្បាល
+bill_line_logo	ឡូហ្គោ
+bill_logo_picture	រូបភាព
+bill_logo_choose	ជ្រើសរូបភាព
+bill_logo_remove	ដករូបភាពចេញ
+bill_logo_none	គ្មានរូបភាព
+bill_logo_unreadable	មិនមែនជារូបភាពដែលកម្មវិធីអាចអានបានទេ
+bill_logo_width	ទទឹង (px)
+bill_logo_height	កម្ពស់ (px)
+bill_logo_tones	ពណ៌ប្រផេះ
+bill_logo_solid	ដិត
+bill_logo_shaded	មានស្រមោល
+bill_logo_help	ទទឹង និងកម្ពស់ជា px។ ទុកទទេនឹងតាមរូបភាព៖ មួយទទេរក្សារាង ទាំងពីរទទេប្រើទំហំផ្ទាល់របស់វា ទាំងពីរកំណត់នឹងដាក់ចូលខាងក្នុង មិនដែលពន្លាតឡើយ។ គ្មានរូបភាព៖ ឡូហ្គោដែលបង្ហាញរក្សាកម្ពស់ជាចន្លោះទំនេរ លាក់នឹងដកវាចេញ។
+bill_logo_tones_help	ដិត៖ ចំណុចនីមួយៗខ្មៅ ឬស សម្រាប់ឡូហ្គោច្បាស់។ មានស្រមោល៖ ពណ៌ប្រផេះក្លាយជាលំនាំចំណុចល្អិត សម្រាប់រូបថត និងស្រមោលស្រាល។
 slip_col_width	ទទឹង (mm)
 slip_col_start	ចន្លោះដើម (px)
 slip_col_end	ចន្លោះចុង (px)
@@ -167,6 +177,21 @@ alerts_help	សារស្ថានភាពនៅលើអេក្រង់�
 snack_secs_ph	វិនាទី (3–60 លំនាំដើម 10)
 snack_secs_save	រក្សាទុករយៈពេលជូនដំណឹង
 snack_secs_saved	រយៈពេលជូនដំណឹងបានរក្សាទុក — {n} វិនាទី
+settings_sec_whatsapp	WhatsApp
+whatsapp_cloud_help	Use your own Meta WhatsApp Cloud API. Create a System User token with whatsapp_business_messaging (temporary dashboard tokens expire). Credentials stay on this Server only — never on extra tills. Accepted means Meta took the request, not that the guest received it.
+whatsapp_phone_id_ph	Phone Number ID
+whatsapp_token_ph	Access Token (leave blank to keep)
+whatsapp_template_ph	Bill template name (optional)
+whatsapp_template_lang_ph	Template language (e.g. en)
+whatsapp_enable	Enable
+whatsapp_disable	Off
+whatsapp_save	Save WhatsApp
+whatsapp_test	Test connection
+whatsapp_disconnect	Disconnect
+whatsapp_send_bill	Send via WhatsApp
+whatsapp_consent	WhatsApp OK
+whatsapp_consent_help	Guest agreed to receive WhatsApp messages. A phone number alone is not consent.
+whatsapp_server_only	Configure WhatsApp on the shop Server device
 settings_sec_backup	ច្បាប់ចម្លង និងស្ដារ
 settings_sec_diag	ពិនិត្យបញ្ហា
 settings_sec_privacy	ឯកជនភាព
@@ -729,6 +754,13 @@ station_vps_dd	ម៉ាស៊ីនសម្រាប់ស្ថានីយ�
 station_vps_dd_n	ម៉ាស៊ីន {n} · ប៉ះដើម្បីប្ដូរ
 bill_printers_dd	ម៉ាស៊ីនសម្រាប់វិក្កយបត្រ
 bill_printers_dd_n	ម៉ាស៊ីន {n} សម្រាប់វិក្កយបត្រ · ប៉ះដើម្បីប្ដូរ
+paper_heading	ក្រដាស
+paper_size	{w} × {h} mm
+paper_roll	រមូល {w} mm
+paper_not_set	មិនទាន់ដឹងក្រដាសនៅឡើយ
+paper_length_mm	ប្រវែង (mm)
+printer_paper_help	ក្រដាសរបស់ម៉ាស៊ីនបោះពុម្ពនេះជា mm។ ប្រវែងទទេ គឺជារមូល៖ វិក្កយបត្រនីមួយៗវែងស្មើខ្លឹមសាររបស់វា។ ស្វែងរកម៉ាស៊ីនបោះពុម្ព បំពេញក្រដាសទទេពីកម្មវិធីបញ្ជារបស់ម៉ាស៊ីនបោះពុម្ព (រមូល 80 mm ពេលវាមិនអាចប្រាប់បាន) ហើយមិនដែលប្តូរក្រដាសដែលបានកំណត់រួចទេ។
+preview_help	វិក្កយបត្រនេះនៅលើក្រដាសនៃម៉ាស៊ីនបោះពុម្ពដែលបានជ្រើសខាងក្រោម ដូចដែលវាបោះពុម្ពនៅទីនោះ៖ ទំហំពិតពីជ្រុងខាងលើឆ្វេងដែលម៉ាស៊ីនទៅដល់ (ប្រផេះ៖ គែមដែលវាមិនទៅដល់) វិក្កយបត្រវែងនៅលើសន្លឹកច្រើនទៀត អ្វីដែលហួសគែមក្រដាសត្រូវកាត់ចោល។ ការជ្រើសម៉ាស៊ីនបោះពុម្ពប្តូរតែការមើលជាមុនប៉ុណ្ណោះ; ក្រដាសរបស់ម៉ាស៊ីនបោះពុម្ពនីមួយៗកំណត់នៅក្រោម ម៉ាស៊ីនបោះពុម្ព។
 job_layout	ប្លង់
 job_delivery	របៀបផ្ញើការងារ
 job_delivery_help	ឯកសារប្រព័ន្ធ បៃឆៅ ឬ ESC/POS។ វិក្កយបត្រ និងសន្លឹកផ្ទះបាយរក្សារបស់ខ្លួន។ ការងារនីមួយៗអាចទៅម៉ាស៊ីនណាដែលស្វែងរកបានរក្សាទុក។
@@ -1105,9 +1137,6 @@ remove_these_tables	ដកតុទាំងនេះ
 table_remove_ph	ដក៖ T1-T24 ឬឈ្មោះតុមួយ
 find_server	ស្វែងរក server ហាង
 bill_format	ទម្រង់វិក្កយបត្រ
-bill_header_ph	អាសយដ្ឋាន | ទូរស័ព្ទ
-fssai_ph	លេខអាជ្ញាប័ណ្ណ FSSAI (ឥណ្ឌា)
-bill_footer_ph	បាត (ឧ. អរគុណ សូមមកម្ដងទៀត)
 reset_bill_format	ត្រឡប់ទៅលំនាំដើម
 bill_format_reset	ទម្រង់វិក្កយបត្របានត្រឡប់ទៅលំនាំដើម
 reset_kot_format	ត្រឡប់ទៅលំនាំដើម
@@ -1146,7 +1175,6 @@ kot_kind_modified	បានកែ
 kot_kind_cancelled	បានលុបចោល
 kot_style_heading	ទំហំ និងទម្ងន់ប្រភេទវាល
 kot_style_title	ចំណងជើង
-kot_style_item_qty	ទំនិញ · បរិមាណ
 kot_style_field_pick	ជ្រើសវាល
 kot_weight_regular	ធម្មតា
 kot_weight_bold	ដិត
@@ -1158,8 +1186,8 @@ content_width_bill	ទទឹងខ្លឹមសារវិក្កយបត�
 content_width_kot	ទទឹងខ្លឹមសារ KOT (mm)
 content_width_ph	ឬវាយទទឹងខ្លឹមសារ 40–210 mm
 content_width_help	សន្លឹកនេះបោះពុម្ពទូលាយប៉ុណ្ណា។ វិក្កយបត្រ និង KOT នីមួយៗរក្សាទទឹងរបស់ខ្លួន។
-content_width_bill_help	វិក្កយបត្រភ្ញៀវបោះពុម្ពទូលាយប៉ុណ្ណា។ លំនាំដើម 210 mm (ទំព័រ)។ 58 mm សន្លឹកតូច 80 mm សន្លឹកធំ 112 mm 4 អ៊ីញ 210 mm ទទឹង A4។ វាយតម្លៃណាមួយពី 40 ដល់ 210។ សន្លឹកផ្ទះបាយមានទទឹងដាច់នៅផ្ទាំង KOT។
-content_width_kot_help	សន្លឹកផ្ទះបាយបោះពុម្ពទូលាយប៉ុណ្ណា។ លំនាំដើម 80 mm។ 58 mm សន្លឹកតូច 80 mm សន្លឹកធំ 112 mm 4 អ៊ីញ 210 mm ទំព័រ។ វាយតម្លៃណាមួយពី 40 ដល់ 210។ វិក្កយបត្រភ្ញៀវមានទទឹងដាច់នៅផ្ទាំងវិក្កយបត្រ។
+content_width_bill_help	ទទឹងដែលវិក្កយបត្ររបស់ភ្ញៀវត្រូវបោះពុម្ព ជា mm (40–210)។ វាត្រូវបោះពុម្ពតាមទំហំពិតនេះលើក្រដាសណាក៏បាន; លើក្រដាសតូចជាងនេះ ផ្នែកដែលហួសគែមបោះពុម្ពត្រូវកាត់ (មើល ក្រដាស)។ សំបុត្រផ្ទះបាយមានទទឹងផ្ទាល់ខ្លួននៅផ្ទាំង KOT។
+content_width_kot_help	ទទឹងដែលសំបុត្រផ្ទះបាយត្រូវបោះពុម្ព ជា mm (40–210)។ វាត្រូវបោះពុម្ពតាមទំហំពិតនេះលើក្រដាសណាក៏បាន; លើក្រដាសតូចជាងនេះ ផ្នែកដែលហួសគែមបោះពុម្ពត្រូវកាត់ (មើល ក្រដាស)។ វិក្កយបត្រភ្ញៀវមានទទឹងផ្ទាល់ខ្លួននៅផ្ទាំង វិក្កយបត្រ។
 vp_paper_width	ទទឹងខ្លឹមសារ (mm)
 vp_paper_width_ph	ឬវាយទទឹងខ្លឹមសារ 40–210 mm
 vp_paper_width_help	ទទឹងខ្លឹមសារកំណត់ក្រោម ទម្រង់វិក្កយបត្រ និង KOT — ដាច់សម្រាប់វិក្កយបត្រ (លំនាំដើម 210 mm) និងសន្លឹកផ្ទះបាយ (លំនាំដើម 80 mm)។
@@ -1213,8 +1241,6 @@ schemes_help	BOGO បញ្ចុះភាគរយ និងឈុតថេរ�
 scheme_bogo_ph	ទិញ 2 Thali ទទួល 1 Chaas
 add_scheme	បន្ថែម BOGO
 schedule_ph	ម៉ោង / ម៉ោងរីករាយ — ចន្ទ-សុក្រ 07:00-11:00 ឬ HappyHour 17:00-19:00=150
-upi_vpa_ph	អត្តសញ្ញាណ UPI (VPA)
-upi_payee_ph	ឈ្មោះអ្នកទទួល UPI (ស្រេចចិត្ត)
 upi_qr	QR UPI
 show_upi_qr	បង្ហាញ QR UPI
 close_upi_qr	បិទ
@@ -1295,8 +1321,6 @@ printer_mode_first	ដំបូងដែលដំណើរការ
 printer_mode_all	បោះពុម្ពទាំងអស់
 kot_show_area	កន្លែង
 kot_hide_area	លាក់កន្លែង
-kot_show_item_hdr	ទំនិញ · បរិមាណ
-kot_hide_item_hdr	លាក់ជួរឈរ
 kot_show_title	បន្ទាត់ចំណងជើង
 kot_hide_title	លាក់ចំណងជើង
 kot_field_cycle	ជ្រើសបន្ទាប់
@@ -1337,12 +1361,12 @@ private_code_ph	លេខកូដ 12 ខ្ទង់
 stamp_on	ត្រា៖ មានឯកសារ
 pay_qr_on	QR បង់៖ មានឯកសារ
 pay_qr_off	QR បង់៖ គ្មាន
+printers_screen_tip	ស្វែងរកបង្ហាញម៉ាស៊ីនបោះពុម្ពដែលឧបករណ៍នេះអាចប្រើបាន ហើយរក្សាទុកសម្រាប់ហាងនេះ។ ម៉ាស៊ីនបោះពុម្ពវិក្កយបត្រ៖ ទម្រង់វិក្កយបត្រ និង KOT → វិក្កយបត្រ។ ផ្ទះបាយ៖ ផ្ទះបាយ → ស្ថានីយផ្ទះបាយ។
+printers_found_none	រកមិនឃើញម៉ាស៊ីនបោះពុម្ពទេ។
+nav_loading	កំពុងផ្ទុក…
+kot_copy_from	ចម្លងពី
+kot_copy_from_help	ចម្លងទំហំ កម្រាស់ និងការតម្រឹមនៃបន្ទាត់នីមួយៗពីប្រភេទនោះមកប្រភេទនេះ។ ប្រភេទនេះរក្សាបដា បុព្វបទមុខទំនិញ និងការគូសឆូតរបស់ខ្លួន។ រក្សាទុកទម្រង់ KOT ដើម្បីរក្សាវា។
 items_tmpl_heading	គំរូមុខទំនិញ
 items_tmpl_help	ម្ហូប ប្រភេទ និងរូបថតសម្រាប់ម៉ឺនុយរបស់អ្នក។ ការកំណត់ហាង និងបុគ្គលិកនៅដដែល។
 public_tmpl_help	ម៉ឺនុយចាប់ផ្ដើមដែលអ្នកណាក៏អាចទាញយកបាន។ ត្រូវការអ៊ីនធឺណិតម្ដង។
 private_tmpl_help	ម៉ឺនុយអតិថិជនដែលចាក់សោដោយលេខកូដ 12 ខ្ទង់ពីទំនាក់ទំនង Khaynjo របស់អ្នក។
-printers_screen_tip	ស្វែងរកបង្ហាញម៉ាស៊ីនបោះពុម្ពដែលឧបករណ៍នេះអាចប្រើបាន ហើយរក្សាទុកសម្រាប់ហាងនេះ។ ម៉ាស៊ីនបោះពុម្ពវិក្កយបត្រ៖ ទម្រង់វិក្កយបត្រ និង KOT → វិក្កយបត្រ។ ផ្ទះបាយ៖ ផ្ទះបាយ → ស្ថានីយផ្ទះបាយ។
-printers_found_none	រកមិនឃើញម៉ាស៊ីនបោះពុម្ពទេ។
-kot_copy_from	ចម្លងពី
-kot_copy_from_help	ចម្លងទំហំ កម្រាស់ និងការតម្រឹមនៃបន្ទាត់នីមួយៗពីប្រភេទនោះមកប្រភេទនេះ។ ប្រភេទនេះរក្សាបដា បុព្វបទមុខទំនិញ និងការគូសឆូតរបស់ខ្លួន។ រក្សាទុកទម្រង់ KOT ដើម្បីរក្សាវា។
-nav_loading	កំពុងផ្ទុក…

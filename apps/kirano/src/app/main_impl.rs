@@ -129,6 +129,8 @@ impl App {
             startup::set_notify(|| makepad_widgets::makepad_platform::thread::SignalToUI::set_ui_signal());
             phone::set_notify(|| makepad_widgets::makepad_platform::thread::SignalToUI::set_ui_signal());
             print_share::set_notify(|| makepad_widgets::makepad_platform::thread::SignalToUI::set_ui_signal());
+            // A printer's paper sizes are read on a worker (CUPS / PowerShell).
+            os_paper::set_notify(|| makepad_widgets::makepad_platform::thread::SignalToUI::set_ui_signal());
             // Printer Find is Settings → Find printers only (never at startup).
             net::set_books_changed_hook(|| {
                 BOOKS_CHANGED.store(true, std::sync::atomic::Ordering::SeqCst);
@@ -148,6 +150,38 @@ impl App {
                     }
                     start_auto_backups(path);
                 }
+            }
+        }
+        if matches!(event, Event::Signal) && os_paper::take_ready() {
+            // A driver answered: a printer with no paper gets its driver's
+            // (never changing one already set), then every face that shows a
+            // printer's paper and the preview (the edges the printer cannot
+            // reach) are drawn again (docs/PRINTER.md § Paper and preview).
+            let open = {
+                let mut st = app_state().lock().unwrap();
+                if st.device_role != DeviceRole::Client
+                    && st.printer_draft.fill_missing_papers(&os_paper::answers(), false) > 0
+                {
+                    if let Err(e) = st.save_printer_draft() {
+                        log!("printer papers not saved: {e}");
+                    } else {
+                        print_share::configure(st.printer_draft.clone());
+                    }
+                }
+                st.suggest_open
+            };
+            if open == Some(SuggestField::BillPreviewPaper) {
+                app_state()
+                    .lock()
+                    .unwrap()
+                    .open_suggest(SuggestField::BillPreviewPaper, "");
+                self.ui
+                    .widget(cx, SuggestField::BillPreviewPaper.list())
+                    .redraw(cx);
+            }
+            self.sync_preview_paper_ui(cx);
+            if self.ui.view(cx, ids!(settings_panel_printers)).visible() {
+                self.paint_printer_rows(cx);
             }
         }
         if matches!(event, Event::Signal) && (thumbs::take_ready() || lan_images::take_ready()) {

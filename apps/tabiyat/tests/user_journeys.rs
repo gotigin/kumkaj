@@ -25,7 +25,7 @@ fn temp_db() -> PathBuf {
         .duration_since(UNIX_EPOCH)
         .unwrap()
         .as_nanos();
-    std::env::temp_dir().join(format!("tabiyat-journey-{n}-{}.sqlite3", new_id()))
+    kumkaj_tabiyat::test_dirs::run_root().join(format!("tabiyat-journey-{n}-{}.sqlite3", new_id()))
 }
 
 /// A working pharmacy counter: owner, cashier, helper, medicine SKUs.

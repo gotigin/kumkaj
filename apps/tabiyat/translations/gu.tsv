@@ -72,10 +72,6 @@ bill_item_layout	આઇટમ લેઆઉટ
 bill_item_layout_columns	સ્તંભ
 bill_item_layout_stacked	પંક્તિઓ
 bill_item_header	સ્તંભ શીર્ષક
-bill_item_hdr_item	આઇટમ શીર્ષક
-bill_item_hdr_qty	સંખ્યા શીર્ષક
-bill_item_hdr_price	ભાવ શીર્ષક
-bill_item_hdr_amount	રકમ શીર્ષક
 bill_item_name	દવાનું નામ
 bill_item_qty	જથ્થો
 bill_item_price	ભાવ
@@ -83,6 +79,13 @@ bill_item_amount	રકમ
 bill_item_note	Rx / વેચાણ નોંધ
 bill_item_col_sep	સ્તંભ રેખા
 slip_col_width	પહોળાઈ (mm)
+paper_heading	કાગળ
+paper_size	{w} × {h} mm
+paper_roll	{w} mm રોલ
+paper_not_set	કાગળ હજી ખબર નથી
+paper_length_mm	લંબાઈ (mm)
+printer_paper_help	આ પ્રિન્ટરનો કાગળ mm માં. ખાલી લંબાઈ એટલે રોલ: દરેક સ્લિપ તેની સામગ્રી જેટલી લાંબી હોય છે. પ્રિન્ટર શોધો ખાલી કાગળ પ્રિન્ટરના ડ્રાઇવર પરથી ભરે છે (ન કહી શકે તો 80 mm રોલ) અને પહેલેથી નક્કી કાગળ ક્યારેય બદલતું નથી.
+preview_help	નીચે પસંદ કરેલા પ્રિન્ટરના કાગળ પર આ સ્લિપ, ત્યાં જેમ છપાય છે તેમ: પ્રિન્ટર જ્યાં સુધી પહોંચે છે તે ઉપરના ડાબા ખૂણાથી સાચા માપમાં (રાખોડી: જ્યાં નથી પહોંચતું તે કિનારીઓ), લાંબી સ્લિપ વધુ પાનાં પર, કાગળની કિનારીથી આગળનું બધું કપાઈ જાય છે. પ્રિન્ટર પસંદ કરવાથી ફક્ત પૂર્વાવલોકન બદલાય છે; દરેક પ્રિન્ટરનો કાગળ પ્રિન્ટર હેઠળ નક્કી થાય છે.
 slip_col_start	શરૂઆતની જગ્યા (px)
 slip_col_end	અંતની જગ્યા (px)
 slip_columns_help	દરેક સ્તંભની પહોળાઈમાં તેની શરૂઆત અને અંતની જગ્યા સામેલ છે. લખાણ પોતાના સ્તંભની અંદર જ વીંટાય છે; સામગ્રીની પહોળાઈ બહારનું કાગળ પર અને પૂર્વાવલોકનમાં કપાઈ જાય છે.
@@ -850,3 +853,4 @@ nav_loading	લોડ થઈ રહ્યું છે…
 printer_mode_first	જે પહેલાં ચાલે
 printer_mode_all	બધા પર છાપો
 slip_columns	સ્તંભો
+slip_col_header	શીર્ષક

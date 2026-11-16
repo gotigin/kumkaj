@@ -190,6 +190,7 @@ pub struct OwnerColumns {
 }
 
 /// One column, like a CSS border box: `width` includes `start` and `end`.
+/// All three are dots.
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub struct ColumnBox {
     pub width: f32,
@@ -219,7 +220,11 @@ pub const SIZE_MAX: f32 = 200.0;
 /// 30px"; 18 px is ordinary reading text). The picture has 576 dots per
 /// 80 mm of content (7.2 per mm) on every content width, so a size is the
 /// same on 58, 80 or 210 mm, in the preview and on paper.
-pub const PX_DOTS: f32 = 576.0 / 80.0 * 25.4 / 96.0;
+pub const PX_DOTS: f32 = DOTS_PER_MM * 25.4 / 96.0;
+
+/// Dots of the picture in one mm of content: 576 dots per 80 mm. Item
+/// column widths, the OS-document paper size and the px above all use it.
+pub const DOTS_PER_MM: f32 = 576.0 / 80.0;
 
 /// A size in px, in the picture's dots.
 pub fn px_dots(px: f32) -> f32 {

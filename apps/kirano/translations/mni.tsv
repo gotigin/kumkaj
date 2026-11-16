@@ -60,10 +60,6 @@ bill_item_layout	ꯄꯣꯠꯀꯤ ꯁꯦꯝꯗꯣꯛ
 bill_item_layout_columns	ꯀꯣꯂꯝ
 bill_item_layout_stacked	ꯆꯦꯠꯄ
 bill_item_header	ꯀꯣꯂꯝꯒꯤ ꯃꯤꯡ
-bill_item_hdr_item	ꯄꯣꯠꯀꯤ ꯃꯤꯡ
-bill_item_hdr_qty	ꯃꯁꯤꯡꯒꯤ ꯃꯤꯡ
-bill_item_hdr_price	ꯃꯃꯜꯒꯤ ꯃꯤꯡ
-bill_item_hdr_amount	ꯁꯦꯟꯒꯤ ꯃꯤꯡ
 bill_item_name	ꯄꯣꯠꯀꯤ ꯃꯤꯡ
 bill_item_qty	ꯃꯁꯤꯡ
 bill_item_price	ꯃꯃꯜ
@@ -71,6 +67,13 @@ bill_item_amount	ꯁꯦꯟ
 bill_item_note	ꯄꯣꯠ ꯅꯣꯠ
 bill_item_col_sep	ꯀꯣꯂꯝꯒꯤ ꯂꯥꯏꯟ
 slip_col_width	ꯄꯥꯛ (mm)
+paper_heading	ꯆꯦ
+paper_size	{w} × {h} mm
+paper_roll	{w} mm ꯔꯣꯜ
+paper_not_set	ꯆꯦ ꯑꯗꯨ ꯍꯧꯖꯤꯛ ꯐꯥꯑꯣꯕꯥ ꯈꯉꯗ꯭ꯔꯤ
+paper_length_mm	ꯑꯁꯥꯡꯕ (mm)
+printer_paper_help	ꯄ꯭ꯔꯤꯟꯇꯔ ꯑꯁꯤꯒꯤ ꯆꯦ mm ꯗ꯭ꯥ꯫ ꯑꯍꯥꯡꯕ ꯑꯁꯥꯡꯕ ꯑꯁꯤ ꯔꯣꯜ ꯑꯃꯅꯤ: ꯁ꯭ꯂꯤꯞ ꯈꯨꯗꯤꯡꯃꯛ ꯃꯁꯤꯒꯤ ꯃꯅꯨꯡꯗ꯭ꯥ ꯂꯩꯕ ꯃꯇꯨꯡ ꯏꯟꯅ ꯁꯥꯡꯏ꯫ ꯄ꯭ꯔꯤꯟꯇꯔ ꯊꯤꯕꯤꯌꯨ ꯅ ꯑꯍꯥꯡꯕ ꯆꯦ ꯄ꯭ꯔꯤꯟꯇꯔꯒꯤ ꯗ꯭ꯔꯥꯏꯚꯔꯗꯒꯤ ꯃꯄꯨꯡ ꯐꯥꯍꯜꯂꯤ (ꯍꯥꯌꯕ ꯉꯝꯗ꯭ꯔꯕꯗ꯭ꯥ 80 mm ꯔꯣꯜ) ꯑꯃꯁꯨꯡ ꯍꯥꯟꯅꯅ ꯁꯦꯝꯂꯕ ꯑꯗꯨ ꯀꯩꯗꯧꯉꯩꯗ꯭ꯁꯨ ꯍꯣꯡꯗꯣꯛꯇꯦ꯫
+preview_help	ꯃꯈꯥꯗ꯭ꯥ ꯈꯅꯈꯤꯕ ꯄ꯭ꯔꯤꯟꯇꯔꯒꯤ ꯆꯦꯗ꯭ꯥ ꯁ꯭ꯂꯤꯞ ꯑꯁꯤ, ꯃꯐꯝ ꯑꯗꯨꯗ꯭ꯥ ꯐꯣꯡꯗꯣꯛꯂꯤꯕ ꯃꯑꯣꯡꯗ꯭ꯥ: ꯄ꯭ꯔꯤꯟꯇꯔꯅ ꯌꯧꯕ ꯃꯊꯛꯀꯤ ꯑꯣꯏ ꯀꯣꯟꯅꯗꯒꯤ ꯑꯆꯨꯝꯕ ꯆꯥꯡꯗ꯭ꯥ (ꯃꯆꯨ ꯑꯃꯨꯕ: ꯌꯧꯗꯕ ꯃꯅꯥꯛ), ꯁꯥꯡꯕ ꯁ꯭ꯂꯤꯞ ꯂꯥꯃꯥꯏ ꯍꯦꯟꯅ ꯃꯔꯥꯡꯗ꯭ꯥ, ꯆꯦꯒꯤ ꯃꯅꯥꯛ ꯍꯦꯟꯒꯠꯂꯕ ꯄꯨꯝꯅꯃꯛ ꯀꯛꯂꯒꯅꯤ꯫ ꯄ꯭ꯔꯤꯟꯇꯔ ꯈꯅꯕꯅ ꯃꯃꯥꯡꯗ꯭ꯥ ꯌꯦꯡꯕ ꯈꯛꯇꯃꯛ ꯍꯣꯡꯗꯣꯛꯏ; ꯄ꯭ꯔꯤꯟꯇꯔ ꯈꯨꯗꯤꯡꯃꯛꯀꯤ ꯆꯦ ꯄ꯭ꯔꯤꯟꯇꯔ ꯃꯈꯥꯗ꯭ꯥ ꯁꯦꯝꯃꯤ꯫
 slip_col_start	ꯍꯧꯔꯛꯐꯝꯒꯤ ꯃꯐꯝ (px)
 slip_col_end	ꯂꯣꯏꯔꯛꯐꯝꯒꯤ ꯃꯐꯝ (px)
 slip_columns_help	ꯀꯣꯂꯝ ꯈꯨꯗꯤꯡꯃꯛꯀꯤ ꯄꯥꯛꯇꯥ ꯃꯁꯤꯒꯤ ꯍꯧꯔꯛꯐꯝ ꯑꯃꯁꯨꯡ ꯂꯣꯏꯔꯛꯐꯝꯒꯤ ꯃꯐꯝ ꯌꯥꯎꯏ꯫ ꯏꯕ ꯑꯁꯤ ꯃꯁꯥꯒꯤ ꯀꯣꯂꯝꯒꯤ ꯃꯅꯨꯡꯗꯥ ꯀꯣꯌꯁꯤꯜꯂꯤ; ꯀꯟꯇꯦꯟꯇꯀꯤ ꯄꯥꯛ ꯍꯦꯟꯒꯠꯂꯕꯥ ꯑꯗꯨ ꯆꯦ ꯑꯃꯁꯨꯡ ꯄ꯭ꯔꯤꯚ꯭ꯌꯨꯗꯥ ꯀꯀꯊꯠꯂꯤ꯫
@@ -838,3 +841,4 @@ nav_loading	লোড তৌরি…
 printer_mode_first	ꯊꯕꯛ ꯇꯧꯕ ꯑꯍꯥꯟꯕ
 printer_mode_all	ꯄꯨꯝꯅꯃꯛꯇ ꯄ꯭ꯔꯤꯟꯇ ꯇꯧꯕꯤꯌꯨ
 slip_columns	ꯀꯣꯂꯝꯁꯤꯡ
+slip_col_header	ꯃꯤꯡ

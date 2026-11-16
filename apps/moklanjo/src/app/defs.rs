@@ -134,24 +134,6 @@ fn units_report_rows(store: &Store) -> Vec<ReportRow> {
 }
 
 /// The printers added on this device, in the order they are tried.
-fn courier_printers_pool_rows(draft: &print_share::DevicePrinters) -> Vec<ReportRow> {
-    if draft.printers.is_empty() {
-        return vec![ReportRow::Line("(none yet — tap Find printers)".into())];
-    }
-    draft
-        .printers
-        .iter()
-        .enumerate()
-        .map(|(i, p)| {
-            let target = if p.target.is_empty() {
-                "this computer's usual printer (blank address)".to_string()
-            } else {
-                p.target.clone()
-            };
-            ReportRow::Kv(format!("{}. {}", i + 1, p.label), target)
-        })
-        .collect()
-}
 
 /// Where receipts and AWB labels print, the printers in the order they are
 /// tried; › marks the route being edited.

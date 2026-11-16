@@ -51,6 +51,9 @@ impl AppState {
             nav_tab_after_unlock: None,
             last_nav_saved: None,
             printer_selected_id: None,
+            bill_preview_printer: None,
+            kot_preview_printer: None,
+            printer_paper_open: None,
             test_printer_ids: Vec::new(),
             printer_vp_landscape: false,
             printer_vp_em: print_share::STD_EM_NORMAL,
@@ -120,7 +123,6 @@ impl AppState {
             kitchen_panel: KitchenPanel::Live,
             bill_slip_draft: print_share::BillSlipFormat::default(),
             bill_style_field: print_share::BillStyleField::Shop,
-            bill_field_edit_idx: 0,
             device_setup_sections_open: vec!["role".into()],
             draft_venue_icon_path: None,
             pending_backup_copy: None,
@@ -878,6 +880,52 @@ impl AppState {
         self.printer_draft.set_standard_em(em);
     }
 
+    /// The printer the Bill (`kot` false) or KOT preview is drawn on: the one
+    /// picked in its dropdown while it is still saved, else the first printer
+    /// of that tab, else the first saved printer (docs/PRINTER.md § Paper and
+    /// preview). Picking it changes the preview only.
+    fn preview_printer(&self, kot: bool) -> Option<&print_share::NamedPrinter> {
+        let picked = if kot { &self.kot_preview_printer } else { &self.bill_preview_printer };
+        if let Some(p) = picked.as_deref().and_then(|id| self.printer_draft.printer_by_id(id)) {
+            return Some(p);
+        }
+        let tab = if kot {
+            self.printer_draft.kitchen_printers()
+        } else {
+            self.printer_draft.route_printers(print_share::RouteKey::Bill)
+        };
+        tab.into_iter().next().or_else(|| self.printer_draft.printers.first())
+    }
+
+    /// What the preview draws its slip on: the active printer's paper and how
+    /// that printer is sent jobs. With no printer saved: an 80 mm roll sent
+    /// the tab's way. A printer whose paper is not known yet is asked (its
+    /// driver answers on its own thread; the answer fills it and redraws).
+    fn preview_paper(&self, kot: bool) -> PreviewPaper {
+        let format = if kot {
+            self.printer_draft.format_for(print_share::RouteKey::Kot { station_id: "" })
+        } else {
+            self.printer_draft.format_for(print_share::RouteKey::Bill)
+        };
+        let roll = os_paper::PaperMm { width_mm: print_share::DEFAULT_PAPER_WIDTH_MM, length_mm: 0.0 };
+        let Some(p) = self.preview_printer(kot) else {
+            return PreviewPaper {
+                paper: roll,
+                os_document: print_share::normalize_delivery(format.delivery_id())
+                    == print_share::DELIVERY_SYSTEM_SPOOLER,
+                driver: None,
+            };
+        };
+        let delivery = print_share::delivery_for_printer(p.delivery_id(), &format);
+        let os_document = delivery == print_share::DELIVERY_SYSTEM_SPOOLER;
+        let driver = if !p.has_driver() || (!os_document && p.paper().is_some()) {
+            None
+        } else {
+            os_paper::papers_for(&p.target).and_then(|r| r.ok())
+        };
+        PreviewPaper { paper: p.paper().unwrap_or(roll), os_document, driver }
+    }
+
     /// Flush `printer_draft` to this shop's printers.json. Re-applies
     /// books-meta KOT and Standard sizes first so a stale Settings draft
     /// cannot clobber a Client-saved size.
@@ -1488,6 +1536,23 @@ impl AppState {
                     &self.test_printer_ids,
                     |k| self.t(k),
                 )
+            }
+            // Every saved printer as `name · paper`; ✓ = the preview's.
+            SuggestField::BillPreviewPaper | SuggestField::KotPreviewPaper => {
+                let kot = field == SuggestField::KotPreviewPaper;
+                ask_drivers_for_missing_papers(&self.printer_draft.printers);
+                let active = self.preview_printer(kot).map(|p| p.id.clone());
+                preview_paper_rows(&self.printer_draft.printers, active.as_deref(), |k| self.t(k))
+                    .into_iter()
+                    .map(|r| {
+                        let row = SuggestRow::new(r.title, String::new());
+                        if r.selected {
+                            row.with_action("\u{2713}")
+                        } else {
+                            row
+                        }
+                    })
+                    .collect()
             }
             // Who took deliveries before, then the active staff.
             SuggestField::DeliveryBy => {

@@ -92,10 +92,6 @@ bill_item_layout	Vareoppsett
 bill_item_layout_columns	Kolonner
 bill_item_layout_stacked	Stablet
 bill_item_header	Kolonneoverskrifter
-bill_item_hdr_item	Vareoverskrift
-bill_item_hdr_qty	Antallsoverskrift
-bill_item_hdr_price	Prisoverskrift
-bill_item_hdr_amount	Beløpsoverskrift
 bill_item_name	Rettenavn
 bill_item_qty	Antall
 bill_item_price	Pris
@@ -103,6 +99,20 @@ bill_item_amount	Beløp
 bill_item_note	Rettmerknad
 bill_item_col_sep	Kolonnelinjer
 slip_columns	Kolonner
+slip_col_header	Overskrift
+bill_line_logo	Logo
+bill_logo_picture	Bilde
+bill_logo_choose	Velg bilde
+bill_logo_remove	Fjern bilde
+bill_logo_none	Ingen bilde
+bill_logo_unreadable	Ikke et bilde appen kan lese
+bill_logo_width	Bredde (px)
+bill_logo_height	Høyde (px)
+bill_logo_tones	Gråtoner
+bill_logo_solid	Heldekkende
+bill_logo_shaded	Skyggelagt
+bill_logo_help	Bredde og høyde i px. Tomt følger bildet: ett tomt beholder formen, begge tomme bruker bildets egen størrelse; begge satt passer det inni, aldri strukket. Ingen bilde: en vist logo beholder høyden sin som tom plass; Skjul fjerner den.
+bill_logo_tones_help	Heldekkende: hver prikk svart eller hvit, for skarpe logoer. Skyggelagt: grått blir fine prikkmønstre, for bilder og myk skygge.
 slip_col_width	Bredde (mm)
 slip_col_start	Startavstand (px)
 slip_col_end	Sluttavstand (px)
@@ -167,6 +177,21 @@ alerts_help	Hvor lenge statusmeldinger blir på skjermen for deg (denne påloggi
 snack_secs_ph	Sekunder (3–60, standard 10)
 snack_secs_save	Lagre varseltid
 snack_secs_saved	Varseltid lagret — {n} sekunder
+settings_sec_whatsapp	WhatsApp
+whatsapp_cloud_help	Use your own Meta WhatsApp Cloud API. Create a System User token with whatsapp_business_messaging (temporary dashboard tokens expire). Credentials stay on this Server only — never on extra tills. Accepted means Meta took the request, not that the guest received it.
+whatsapp_phone_id_ph	Phone Number ID
+whatsapp_token_ph	Access Token (leave blank to keep)
+whatsapp_template_ph	Bill template name (optional)
+whatsapp_template_lang_ph	Template language (e.g. en)
+whatsapp_enable	Enable
+whatsapp_disable	Off
+whatsapp_save	Save WhatsApp
+whatsapp_test	Test connection
+whatsapp_disconnect	Disconnect
+whatsapp_send_bill	Send via WhatsApp
+whatsapp_consent	WhatsApp OK
+whatsapp_consent_help	Guest agreed to receive WhatsApp messages. A phone number alone is not consent.
+whatsapp_server_only	Configure WhatsApp on the shop Server device
 settings_sec_backup	Sikkerhetskopi og gjenoppretting
 settings_sec_diag	Diagnostikk
 settings_sec_privacy	Personvern
@@ -729,6 +754,13 @@ station_vps_dd	Skrivere for denne stasjonen
 station_vps_dd_n	{n} skriver(e) · trykk for å endre
 bill_printers_dd	Skrivere for regningen
 bill_printers_dd_n	{n} skriver(e) for regningen · trykk for å endre
+paper_heading	Papir
+paper_size	{w} × {h} mm
+paper_roll	{w} mm-rull
+paper_not_set	papir ikke kjent ennå
+paper_length_mm	Lengde (mm)
+printer_paper_help	Papiret i denne skriveren i mm. Tom Lengde er en rull: hver kvittering er like lang som innholdet. Finn skrivere fyller inn tomt papir fra skriverdriveren (en 80 mm-rull når den ikke kan si det) og endrer aldri papir som allerede er satt.
+preview_help	Denne kvitteringen på papiret i skriveren som er valgt nedenfor, slik den skrives ut der: i ekte størrelse fra øvre venstre hjørne skriveren når (grått: kanter den ikke når), en lang kvittering på flere ark, alt utenfor papirkanten kuttes. Å velge skriver endrer bare forhåndsvisningen; papiret til hver skriver settes under Skrivere.
 job_layout	Oppsett
 job_delivery	Hvordan jobben sendes
 job_delivery_help	OS-dokument, råbyte eller ESC/POS. Regningen og kjøkkenlappen beholder hver sin. Hver jobb kan gå til en hvilken som helst skriver Finn har lagret.
@@ -1105,9 +1137,6 @@ remove_these_tables	Fjern disse bordene
 table_remove_ph	Fjern: T1-T24, eller ett bords navn
 find_server	Finn butikkens server
 bill_format	Regningsformat
-bill_header_ph	Adresse | telefon
-fssai_ph	FSSAI-lisensnr. (India)
-bill_footer_ph	Bunntekst (f.eks. Takk, kom igjen)
 reset_bill_format	Tilbakestill til standard
 bill_format_reset	Regningsformat tilbakestilt til standard
 reset_kot_format	Tilbakestill til standard
@@ -1146,7 +1175,6 @@ kot_kind_modified	Endret
 kot_kind_cancelled	Avbestilt
 kot_style_heading	Feltets størrelse og vekt
 kot_style_title	Tittel
-kot_style_item_qty	Vare · Antall
 kot_style_field_pick	Velg felt
 kot_weight_regular	Vanlig
 kot_weight_bold	Fet
@@ -1158,8 +1186,8 @@ content_width_bill	Regningens innholdsbredde (mm)
 content_width_kot	KOT-innholdsbredde (mm)
 content_width_ph	Eller skriv en innholdsbredde, 40–210 mm
 content_width_help	Hvor bredt denne lappen skrives ut. Regning og KOT beholder hver sin bredde.
-content_width_bill_help	Hvor bredt gjesteregningen skrives ut. Standard 210 mm (side). 58 mm smal lapp, 80 mm bred lapp, 112 mm 4 tommer, 210 mm A4-bred. Skriv en verdi fra 40 til 210. Kjøkkenlapper har sin egen bredde på KOT-fanen.
-content_width_kot_help	Hvor bredt kjøkkenlappen skrives ut. Standard 80 mm. 58 mm smal lapp, 80 mm bred lapp, 112 mm 4 tommer, 210 mm side. Skriv fra 40 til 210. Gjesteregninger har sin egen bredde på Regning-fanen.
+content_width_bill_help	Hvor bred gjestens regning skrives ut, i mm (40–210). Den skrives ut i denne virkelige størrelsen på hvilket som helst papir; på smalere papir kuttes delen utenfor utskriftskanten (se Papir). Kjøkkenlapper har egen bredde i fanen KOT.
+content_width_kot_help	Hvor bred kjøkkenlappen skrives ut, i mm (40–210). Den skrives ut i denne virkelige størrelsen på hvilket som helst papir; på smalere papir kuttes delen utenfor utskriftskanten (se Papir). Gjesteregninger har egen bredde i fanen Regning.
 vp_paper_width	Innholdsbredde (mm)
 vp_paper_width_ph	Eller skriv en innholdsbredde, 40–210 mm
 vp_paper_width_help	Innholdsbredde settes under Regning- og KOT-format — hver for seg for regningen (standard 210 mm) og kjøkkenlappen (standard 80 mm).
@@ -1213,8 +1241,6 @@ schemes_help	BOGO, prosentrabatt og faste kombinasjoner. Kombinasjoner utvides t
 scheme_bogo_ph	Kjøp 2 Thali få 1 Chaas
 add_scheme	Legg til BOGO
 schedule_ph	Timer / happy hour — man-fre 07:00-11:00 eller HappyHour 17:00-19:00=150
-upi_vpa_ph	UPI-ID (VPA)
-upi_payee_ph	UPI-mottakernavn (valgfritt)
 upi_qr	UPI QR
 show_upi_qr	Vis UPI QR
 close_upi_qr	Lukk
@@ -1295,8 +1321,6 @@ printer_mode_first	Første som virker
 printer_mode_all	Skriv ut på alle
 kot_show_area	Sone
 kot_hide_area	Skjul sone
-kot_show_item_hdr	Vare · Antall
-kot_hide_item_hdr	Skjul kolonner
 kot_show_title	Tittellinje
 kot_hide_title	Skjul tittel
 kot_field_cycle	Velg neste
@@ -1337,12 +1361,12 @@ private_code_ph	12-sifret kode
 stamp_on	Stempel: på fil
 pay_qr_on	Betalings-QR: på fil
 pay_qr_off	Betalings-QR: ingen
+printers_screen_tip	Søk viser skriverne denne enheten kan bruke, og lagrer dem for butikken. Regningsskrivere: Regnings- og KOT-format → Regning. Kjøkken: Kjøkken → Kjøkkenstasjoner.
+printers_found_none	Fant ingen skrivere.
+nav_loading	Laster inn…
+kot_copy_from	Kopier fra
+kot_copy_from_help	Kopierer størrelse, tykkelse og justering for hver linje fra den typen til denne. Denne typen beholder sitt eget banner, vareprefiks og gjennomstreking. Lagre KOT-format for å beholde det.
 items_tmpl_heading	Varemaler
 items_tmpl_help	Retter, kategorier og bilder til menyen din. Butikkinnstillinger og ansatte forblir som de er.
 public_tmpl_help	Startmenyer som alle kan laste ned. Krever internett én gang.
 private_tmpl_help	Kundemenyer låst med en 12-sifret kode fra Khaynjo-kontakten din.
-printers_screen_tip	Søk viser skriverne denne enheten kan bruke, og lagrer dem for butikken. Regningsskrivere: Regnings- og KOT-format → Regning. Kjøkken: Kjøkken → Kjøkkenstasjoner.
-printers_found_none	Fant ingen skrivere.
-kot_copy_from	Kopier fra
-kot_copy_from_help	Kopierer størrelse, tykkelse og justering for hver linje fra den typen til denne. Denne typen beholder sitt eget banner, vareprefiks og gjennomstreking. Lagre KOT-format for å beholde det.
-nav_loading	Laster inn…

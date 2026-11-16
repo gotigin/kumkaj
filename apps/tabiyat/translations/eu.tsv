@@ -72,10 +72,6 @@ bill_item_layout	Artikuluen antolamendua
 bill_item_layout_columns	Zutabeak
 bill_item_layout_stacked	Pilatuta
 bill_item_header	Zutabe-izenburuak
-bill_item_hdr_item	Artikulu-izenburua
-bill_item_hdr_qty	Kopuru-izenburua
-bill_item_hdr_price	Prezio-izenburua
-bill_item_hdr_amount	Zenbateko-izenburua
 bill_item_name	Sendagaiaren izena
 bill_item_qty	Kop.
 bill_item_price	Prezioa
@@ -83,6 +79,13 @@ bill_item_amount	Zenbatekoa
 bill_item_note	Rx / salmenta oharra
 bill_item_col_sep	Zutabe-marra
 slip_col_width	Zabalera (mm)
+paper_heading	Papera
+paper_size	{w} × {h} mm
+paper_roll	{w} mm-ko erroilua
+paper_not_set	papera oraindik ezezaguna
+paper_length_mm	Luzera (mm)
+printer_paper_help	Inprimagailu honen papera mm-tan. Luzera hutsa erroilua da: tiket bakoitza bere edukia bezain luzea da. Aurkitu inprimagailuak aukerak paper hutsa inprimagailuaren kontrolatzailetik betetzen du (80 mm-ko erroilua ezin badu esan) eta ez du inoiz aldatzen jada ezarritakoa.
+preview_help	Tiket hau behean aukeratutako inprimagailuaren paperean, han inprimatzen den bezala: benetako tamainan inprimagailuak iristen duen goiko ezkerreko izkinatik (grisa: iristen ez dituen ertzak), tiket luzea orri gehiagotan, paperaren ertzetik haratago dagoena moztu egiten da. Inprimagailu bat aukeratzeak aurrebista bakarrik aldatzen du; inprimagailu bakoitzaren papera Inprimagailuak atalean ezartzen da.
 slip_col_start	Hasierako tartea (px)
 slip_col_end	Amaierako tartea (px)
 slip_columns_help	Zutabe bakoitzaren zabalerak hasierako eta amaierako tartea barne hartzen ditu. Testua bere zutabearen barruan egokitzen da; edukiaren zabaleratik kanpo geratzen dena moztu egiten da, paperean eta aurrebistan.
@@ -850,3 +853,4 @@ nav_loading	Kargatzen…
 printer_mode_first	Lehena funtzionatzen duena
 printer_mode_all	Inprimatu guztietan
 slip_columns	Zutabeak
+slip_col_header	Izenburua

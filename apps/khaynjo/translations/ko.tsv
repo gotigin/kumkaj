@@ -92,10 +92,6 @@ bill_item_layout	항목 레이아웃
 bill_item_layout_columns	열
 bill_item_layout_stacked	세로
 bill_item_header	열 머리글
-bill_item_hdr_item	항목 머리글
-bill_item_hdr_qty	수량 머리글
-bill_item_hdr_price	단가 머리글
-bill_item_hdr_amount	금액 머리글
 bill_item_name	요리명
 bill_item_qty	수량
 bill_item_price	단가
@@ -103,6 +99,20 @@ bill_item_amount	금액
 bill_item_note	메모
 bill_item_col_sep	열 구분선
 slip_columns	열
+slip_col_header	머리글
+bill_line_logo	로고
+bill_logo_picture	그림
+bill_logo_choose	그림 선택
+bill_logo_remove	그림 제거
+bill_logo_none	그림 없음
+bill_logo_unreadable	이 앱이 읽을 수 있는 그림이 아닙니다
+bill_logo_width	너비 (px)
+bill_logo_height	높이 (px)
+bill_logo_tones	회색
+bill_logo_solid	단색
+bill_logo_shaded	음영
+bill_logo_help	너비와 높이는 px입니다. 비워 두면 그림을 따릅니다. 하나를 비우면 모양을 유지하고, 둘 다 비우면 그림 원래 크기를 씁니다. 둘 다 넣으면 그 안에 맞추며 늘리지 않습니다. 그림 없음: 표시된 로고는 높이만큼 빈 공간을 남깁니다. 숨기기는 이를 없앱니다.
+bill_logo_tones_help	단색: 각 점을 검정 또는 흰색으로, 선명한 로고용. 음영: 회색을 고운 점 무늬로, 사진과 부드러운 음영용.
 slip_col_width	너비 (mm)
 slip_col_start	시작 여백 (px)
 slip_col_end	끝 여백 (px)
@@ -167,6 +177,21 @@ alerts_help	상태 메시지가 화면에 머무는 시간(이 로그인).
 snack_secs_ph	초 (3–60, 기본 10)
 snack_secs_save	알림 시간 저장
 snack_secs_saved	알림 시간 저장됨 — {n}초
+settings_sec_whatsapp	WhatsApp
+whatsapp_cloud_help	Use your own Meta WhatsApp Cloud API. Create a System User token with whatsapp_business_messaging (temporary dashboard tokens expire). Credentials stay on this Server only — never on extra tills. Accepted means Meta took the request, not that the guest received it.
+whatsapp_phone_id_ph	Phone Number ID
+whatsapp_token_ph	Access Token (leave blank to keep)
+whatsapp_template_ph	Bill template name (optional)
+whatsapp_template_lang_ph	Template language (e.g. en)
+whatsapp_enable	Enable
+whatsapp_disable	Off
+whatsapp_save	Save WhatsApp
+whatsapp_test	Test connection
+whatsapp_disconnect	Disconnect
+whatsapp_send_bill	Send via WhatsApp
+whatsapp_consent	WhatsApp OK
+whatsapp_consent_help	Guest agreed to receive WhatsApp messages. A phone number alone is not consent.
+whatsapp_server_only	Configure WhatsApp on the shop Server device
 settings_sec_backup	백업 및 복원
 settings_sec_diag	진단
 settings_sec_privacy	개인정보
@@ -729,6 +754,13 @@ station_vps_dd	이 스테이션의 프린터
 station_vps_dd_n	{n}대 프린터 · 탭하여 변경
 bill_printers_dd	영수증용 프린터
 bill_printers_dd_n	영수증용 {n} 개의 프린터 · 변경하려면 탭하세요
+paper_heading	용지
+paper_size	{w} × {h} mm
+paper_roll	{w}mm 롤
+paper_not_set	용지를 아직 모름
+paper_length_mm	길이 (mm)
+printer_paper_help	이 프린터의 용지(mm). 길이가 비어 있으면 롤이며 각 전표는 내용만큼 깁니다. 프린터 찾기는 빈 용지를 프린터 드라이버에서 채우고(알 수 없으면 80mm 롤) 이미 정한 용지는 절대 바꾸지 않습니다.
+preview_help	아래에서 고른 프린터의 용지에 이 전표가 그곳에서 인쇄되는 그대로 보입니다. 프린터가 닿는 왼쪽 위에서부터 실제 크기로(회색: 닿지 않는 가장자리), 긴 전표는 여러 장에, 용지 가장자리를 넘는 부분은 잘립니다. 프린터를 고르면 미리보기만 바뀝니다. 각 프린터의 용지는 프린터에서 정합니다.
 job_layout	레이아웃
 job_delivery	작업 전송 방식
 job_delivery_help	OS 문서, 원본 바이트 또는 ESC/POS. 영수증과 주방 티켓은 각각 독립적으로 관리됩니다. 두 작업 모두 찾은 프린터 중 어느 곳으로든 보낼 수 있습니다.
@@ -1105,9 +1137,6 @@ remove_these_tables	이 테이블 삭제
 table_remove_ph	삭제: T1-T24 또는 테이블 이름
 find_server	매장 서버 찾기
 bill_format	계산서 형식
-bill_header_ph	주소 | 전화
-fssai_ph	FSSAI 허가번호 (인도)
-bill_footer_ph	하단 문구 (예: 감사합니다, 또 오세요)
 reset_bill_format	기본값으로
 bill_format_reset	계산서 형식을 기본값으로 되돌림
 reset_kot_format	기본값으로
@@ -1146,7 +1175,6 @@ kot_kind_modified	수정됨
 kot_kind_cancelled	취소됨
 kot_style_heading	필드 크기와 굵기
 kot_style_title	제목
-kot_style_item_qty	항목 · 수량
 kot_style_field_pick	필드 선택
 kot_weight_regular	보통
 kot_weight_bold	굵게
@@ -1158,8 +1186,8 @@ content_width_bill	영수증 내용 너비 (mm)
 content_width_kot	KOT 내용 너비 (mm)
 content_width_ph	또는 콘텐츠 폭 입력, 40–210 mm
 content_width_help	이 영수증이 인쇄되는 너비입니다. 영수증과 KOT 는 각각 자체 너비를 유지합니다.
-content_width_bill_help	고객 영수증이 인쇄되는 너비입니다. 기본값 210 mm(페이지). 58 mm 좁은 영수증, 80 mm 넓은 영수증, 112 mm 4 인치, 210 mm A4 광폭. 40 에서 210 사이의 값을 입력하세요. 주방 티켓은 KOT 탭에서 자체 너비를 가집니다.
-content_width_kot_help	주방 티켓이 인쇄되는 너비입니다. 기본값 80 mm. 58 mm 좁은 영수증, 80 mm 넓은 영수증, 112 mm 4 인치, 210 mm 페이지. 40 에서 210 사이의 값을 입력하세요. 고객 영수증은 Bill 탭에서 자체 너비를 가집니다.
+content_width_bill_help	손님 계산서 인쇄 폭(mm, 40–210). 어떤 용지에서도 이 실제 크기로 인쇄됩니다. 이보다 좁은 용지에서는 인쇄 가장자리를 넘는 부분이 잘립니다(용지 참고). 주방 티켓의 폭은 KOT 탭에서 따로 정합니다.
+content_width_kot_help	주방 티켓 인쇄 폭(mm, 40–210). 어떤 용지에서도 이 실제 크기로 인쇄됩니다. 이보다 좁은 용지에서는 인쇄 가장자리를 넘는 부분이 잘립니다(용지 참고). 손님 계산서의 폭은 계산서 탭에서 따로 정합니다.
 vp_paper_width	콘텐츠 폭(mm)
 vp_paper_width_ph	또는 콘텐츠 폭 입력, 40–210 mm
 vp_paper_width_help	콘텐츠 폭은 영수증 및 KOT 형식에서 설정합니다. 영수증과 주방 전표에 적용됩니다.
@@ -1213,8 +1241,6 @@ schemes_help	X 구매 시 Y — 결제 시 자동. 예: Buy 2 Thali get 1 Chaas
 scheme_bogo_ph	Buy 2 Thali get 1 Chaas
 add_scheme	BOGO 추가
 schedule_ph	시간/해피아워 — Mon-Fri 07:00-11:00 또는 HappyHour 17:00-19:00=150
-upi_vpa_ph	UPI ID (VPA)
-upi_payee_ph	UPI 수취인(선택)
 upi_qr	UPI QR
 show_upi_qr	UPI QR 표시
 close_upi_qr	닫기
@@ -1295,8 +1321,6 @@ printer_mode_first	작동하는 첫 번째 프린터
 printer_mode_all	모두 인쇄
 kot_show_area	영역
 kot_hide_area	영역 숨기기
-kot_show_item_hdr	항목 · 수량
-kot_hide_item_hdr	열 숨기기
 kot_show_title	제목 줄
 kot_hide_title	제목 숨기기
 kot_field_cycle	다음 선택
@@ -1337,12 +1361,12 @@ private_code_ph	12자리 코드
 stamp_on	스탬프: 저장됨
 pay_qr_on	결제 QR: 저장됨
 pay_qr_off	결제 QR: 없음
+printers_screen_tip	찾기는 이 기기에서 쓸 수 있는 프린터를 보여 주고 이 매장용으로 저장합니다. 계산서 프린터: 계산서 및 KOT 형식 → 계산서. 주방: 주방 → 주방 스테이션.
+printers_found_none	프린터를 찾지 못했습니다.
+nav_loading	불러오는 중…
+kot_copy_from	복사 원본
+kot_copy_from_help	그 종류의 각 줄 크기, 굵기, 정렬을 이 종류로 복사합니다. 이 종류의 배너, 품목 접두사, 취소선은 그대로 유지됩니다. 유지하려면 KOT 형식을 저장하세요.
 items_tmpl_heading	품목 템플릿
 items_tmpl_help	메뉴에 넣을 요리, 카테고리, 사진. 매장 설정과 직원은 그대로 유지됩니다.
 public_tmpl_help	누구나 내려받을 수 있는 시작 메뉴. 인터넷이 한 번 필요합니다.
 private_tmpl_help	Khaynjo 담당자가 준 12자리 코드로 잠긴 고객 메뉴.
-printers_screen_tip	찾기는 이 기기에서 쓸 수 있는 프린터를 보여 주고 이 매장용으로 저장합니다. 계산서 프린터: 계산서 및 KOT 형식 → 계산서. 주방: 주방 → 주방 스테이션.
-printers_found_none	프린터를 찾지 못했습니다.
-kot_copy_from	복사 원본
-kot_copy_from_help	그 종류의 각 줄 크기, 굵기, 정렬을 이 종류로 복사합니다. 이 종류의 배너, 품목 접두사, 취소선은 그대로 유지됩니다. 유지하려면 KOT 형식을 저장하세요.
-nav_loading	불러오는 중…

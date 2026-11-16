@@ -60,10 +60,6 @@ bill_item_layout	Menú menú nisqapi elementokuna churay
 bill_item_layout_columns	Columnakuna
 bill_item_layout_stacked	Apilado
 bill_item_header	Sapanchasqa umalliqkuna
-bill_item_hdr_item	Menú menú nisqapi elemento umalliq
-bill_item_hdr_qty	Yupay umalliq
-bill_item_hdr_price	Precio umalliq
-bill_item_hdr_amount	Cantidad umalliq
 bill_item_name	Menú menú nisqapi elemento suti
 bill_item_qty	Yupay
 bill_item_price	Precio
@@ -71,6 +67,13 @@ bill_item_amount	Cantidad nisqa
 bill_item_note	Nota de artículo
 bill_item_col_sep	Columna kamachiykuna
 slip_col_width	Kinray (mm)
+paper_heading	Rapi
+paper_size	{w} × {h} mm
+paper_roll	{w} mm muyuq
+paper_not_set	rapiqa manaraq yachasqachu
+paper_length_mm	Suni (mm)
+printer_paper_help	Kay impresorap rapin mm-pi. Ch'usaq Suni muyuqmi: sapa boletaqa ukhunpi kaqninman hina sunin. Impresorakunata maskay ch'usaq rapita impresorap driverninmanta hunt'achin (mana niyta atispaqa 80 mm muyuq) hinaspa manan hayk'appas churasqataqa tikranchu.
+preview_help	Kay boletaqa uraypi akllasqa impresorap rapinpi, chaypi imprimikusqanman hina: impresora chayasqan hanaq lluq'i k'uchumanta chiqap sayayninpi (uqi: mana chayasqan patakuna), suni boleta astawan rapikunapi, rapip patanta pasaqqa kuchusqa. Impresorata akllayqa ñawpaq qhawayllatan tikran; sapa impresorap rapinqa Impresorakuna nisqapi churakun.
 slip_col_start	Qallariy chusaq (px)
 slip_col_end	Tukukuy chusaq (px)
 slip_columns_help	Sapa columnap kinraynin qallariy chusaqta tukukuy chusaqta ima hap’in. Qillqaqa columnan ukhupi muyun; contenidop kinraynin hawan kaqqa p’anqapi qhawarichiypi ima kuchusqa kanqa.
@@ -838,3 +841,4 @@ nav_loading	Cargachkan…
 printer_mode_first	Ñawpaqtaqa chaymi llamkan
 printer_mode_all	Tukuypi imprimiy
 slip_columns	Columnakuna
+slip_col_header	Umalliq

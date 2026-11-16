@@ -92,10 +92,6 @@ bill_item_layout	सामानको लेआउट
 bill_item_layout_columns	स्तम्भ
 bill_item_layout_stacked	थाक
 bill_item_header	स्तम्भ शीर्षक
-bill_item_hdr_item	सामान शीर्षक
-bill_item_hdr_qty	परिमाण शीर्षक
-bill_item_hdr_price	मूल्य शीर्षक
-bill_item_hdr_amount	रकम शीर्षक
 bill_item_name	परिकारको नाम
 bill_item_qty	परिमाण
 bill_item_price	मूल्य
@@ -103,6 +99,20 @@ bill_item_amount	रकम
 bill_item_note	परिकारको टिप्पणी
 bill_item_col_sep	स्तम्भ रेखा
 slip_columns	स्तम्भहरू
+slip_col_header	शीर्षक
+bill_line_logo	लोगो
+bill_logo_picture	चित्र
+bill_logo_choose	चित्र छान्नुहोस्
+bill_logo_remove	चित्र हटाउनुहोस्
+bill_logo_none	चित्र छैन
+bill_logo_unreadable	यो एपले पढ्न सक्ने चित्र होइन
+bill_logo_width	चौडाइ (px)
+bill_logo_height	उचाइ (px)
+bill_logo_tones	खैरो
+bill_logo_solid	ठोस
+bill_logo_shaded	छायादार
+bill_logo_help	चौडाइ र उचाइ px मा। खाली छाडे चित्रअनुसार: एउटा खाली भए आकार रहन्छ, दुवै खाली भए आफ्नै नाप; दुवै दिए भित्र अटाइन्छ, कहिल्यै तानिँदैन। चित्र नभए: देखाइएको लोगोले आफ्नो उचाइ खाली ठाउँका रूपमा राख्छ; लुकाउनुहोस्ले हटाउँछ।
+bill_logo_tones_help	ठोस: हरेक थोप्लो कालो वा सेतो, स्पष्ट लोगोका लागि। छायादार: खैरो रङ मसिना थोप्लाको बुट्टा बन्छ, फोटो र हल्का छायाका लागि।
 slip_col_width	चौडाइ (mm)
 slip_col_start	सुरुको ठाउँ (px)
 slip_col_end	अन्त्यको ठाउँ (px)
@@ -167,6 +177,21 @@ alerts_help	स्थिति सन्देश तपाईंका ला�
 snack_secs_ph	सेकेन्ड (3–60, पूर्वनिर्धारित 10)
 snack_secs_save	सूचना समय सुरक्षित गर्नुहोस्
 snack_secs_saved	सूचना समय सुरक्षित — {n} सेकेन्ड
+settings_sec_whatsapp	WhatsApp
+whatsapp_cloud_help	Use your own Meta WhatsApp Cloud API. Create a System User token with whatsapp_business_messaging (temporary dashboard tokens expire). Credentials stay on this Server only — never on extra tills. Accepted means Meta took the request, not that the guest received it.
+whatsapp_phone_id_ph	Phone Number ID
+whatsapp_token_ph	Access Token (leave blank to keep)
+whatsapp_template_ph	Bill template name (optional)
+whatsapp_template_lang_ph	Template language (e.g. en)
+whatsapp_enable	Enable
+whatsapp_disable	Off
+whatsapp_save	Save WhatsApp
+whatsapp_test	Test connection
+whatsapp_disconnect	Disconnect
+whatsapp_send_bill	Send via WhatsApp
+whatsapp_consent	WhatsApp OK
+whatsapp_consent_help	Guest agreed to receive WhatsApp messages. A phone number alone is not consent.
+whatsapp_server_only	Configure WhatsApp on the shop Server device
 settings_sec_backup	ब्याकअप र पुनर्स्थापना
 settings_sec_diag	निदान
 settings_sec_privacy	गोपनीयता
@@ -729,6 +754,13 @@ station_vps_dd	यो स्टेसनका प्रिन्टर
 station_vps_dd_n	{n} प्रिन्टर · बदल्न थिच्नुहोस्
 bill_printers_dd	बिलका प्रिन्टर
 bill_printers_dd_n	बिलका लागि {n} प्रिन्टर · बदल्न थिच्नुहोस्
+paper_heading	कागज
+paper_size	{w} × {h} mm
+paper_roll	{w} mm रोल
+paper_not_set	कागज अझै थाहा छैन
+paper_length_mm	लम्बाइ (mm)
+printer_paper_help	यो प्रिन्टरको कागज mm मा। खाली लम्बाइको अर्थ रोल: हरेक पर्ची आफ्नो सामग्री जत्तिकै लामो हुन्छ। प्रिन्टर खोज्नुहोस् ले खाली कागज प्रिन्टरको ड्राइभरबाट भर्छ (भन्न नसके 80 mm रोल) र पहिले नै तोकिएको कागज कहिल्यै बदल्दैन।
+preview_help	तल छानिएको प्रिन्टरको कागजमा यो पर्ची, त्यहाँ छापिने जस्तै: प्रिन्टर पुग्ने माथिल्लो बायाँ कुनाबाट वास्तविक नापमा (खैरो: नपुग्ने किनारा), लामो पर्ची थप पानाहरूमा, कागजको किनाराभन्दा परको सबै काटिन्छ। प्रिन्टर छान्दा पूर्वावलोकन मात्र बदलिन्छ; हरेक प्रिन्टरको कागज प्रिन्टर मा तोकिन्छ।
 job_layout	लेआउट
 job_delivery	काम कसरी पठाइन्छ
 job_delivery_help	OS कागजात, कच्चा बाइट, वा ESC/POS। बिल र भान्सा टिकट दुवैले आफ्नै राख्छन्। कुनै पनि काम खोज्नुहोस् ले सुरक्षित गरेको कुनै पनि प्रिन्टरमा जान सक्छ।
@@ -1105,9 +1137,6 @@ remove_these_tables	यी टेबल हटाउनुहोस्
 table_remove_ph	हटाउनुहोस्: T1-T24, वा एउटा टेबलको नाम
 find_server	पसलको सर्भर खोज्नुहोस्
 bill_format	बिल ढाँचा
-bill_header_ph	ठेगाना | फोन
-fssai_ph	FSSAI इजाजत नं. (भारत)
-bill_footer_ph	फुटर (जस्तै धन्यवाद, फेरि आउनुहोला)
 reset_bill_format	पूर्वनिर्धारितमा फर्काउनुहोस्
 bill_format_reset	बिल ढाँचा पूर्वनिर्धारितमा फर्कियो
 reset_kot_format	पूर्वनिर्धारितमा फर्काउनुहोस्
@@ -1146,7 +1175,6 @@ kot_kind_modified	परिवर्तित
 kot_kind_cancelled	रद्द भयो
 kot_style_heading	फिल्डको अक्षर आकार र मोटाइ
 kot_style_title	शीर्षक
-kot_style_item_qty	सामान · परिमाण
 kot_style_field_pick	फिल्ड छान्नुहोस्
 kot_weight_regular	सामान्य
 kot_weight_bold	मोटो
@@ -1158,8 +1186,8 @@ content_width_bill	बिलको चौडाइ (mm)
 content_width_kot	KOT को चौडाइ (mm)
 content_width_ph	वा चौडाइ लेख्नुहोस्, 40–210 mm
 content_width_help	यो पर्ची कति चौडा छापिन्छ। बिल र KOT दुवैले आफ्नै चौडाइ राख्छन्।
-content_width_bill_help	पाहुनाको बिल कति चौडा छापिन्छ। पूर्वनिर्धारित 210 mm (पृष्ठ)। 58 mm साँघुरो पर्ची, 80 mm चौडा पर्ची, 112 mm 4-इन्च, 210 mm A4-चौडा। 40 देखि 210 सम्म जुनसुकै मान लेख्नुहोस्। भान्सा टिकटको आफ्नै चौडाइ KOT ट्याबमा छ।
-content_width_kot_help	भान्सा टिकट कति चौडा छापिन्छ। पूर्वनिर्धारित 80 mm। 58 mm साँघुरो पर्ची, 80 mm चौडा पर्ची, 112 mm 4-इन्च, 210 mm पृष्ठ। 40 देखि 210 सम्म जुनसुकै मान लेख्नुहोस्। पाहुनाको बिलको आफ्नै चौडाइ बिल ट्याबमा छ।
+content_width_bill_help	पाहुनाको बिल कति चौडा छापिन्छ, mm मा (40–210)। यो जुनसुकै कागजमा यही वास्तविक नापमा छापिन्छ; यसभन्दा साँघुरो कागजमा छपाइको किनारभन्दा परको भाग काटिन्छ (कागज हेर्नुहोस्)। भान्साका टिकटको आफ्नै चौडाइ KOT ट्याबमा छ।
+content_width_kot_help	भान्साको टिकट कति चौडा छापिन्छ, mm मा (40–210)। यो जुनसुकै कागजमा यही वास्तविक नापमा छापिन्छ; यसभन्दा साँघुरो कागजमा छपाइको किनारभन्दा परको भाग काटिन्छ (कागज हेर्नुहोस्)। पाहुनाका बिलको आफ्नै चौडाइ बिल ट्याबमा छ।
 vp_paper_width	सामग्रीको चौडाइ (mm)
 vp_paper_width_ph	वा चौडाइ लेख्नुहोस्, 40–210 mm
 vp_paper_width_help	चौडाइ बिल र KOT ढाँचामा राखिन्छ — बिल (पूर्वनिर्धारित 210 mm) र भान्सा टिकट (पूर्वनिर्धारित 80 mm) का लागि छुट्टाछुट्टै।
@@ -1213,8 +1241,6 @@ schemes_help	BOGO, प्रतिशत छुट र निश्चित क
 scheme_bogo_ph	2 थाली किन्दा 1 छाछ
 add_scheme	BOGO थप्नुहोस्
 schedule_ph	घण्टा / ह्याप्पी आवर — Mon-Fri 07:00-11:00 वा HappyHour 17:00-19:00=150
-upi_vpa_ph	UPI ID (VPA)
-upi_payee_ph	UPI प्राप्तकर्ताको नाम (ऐच्छिक)
 upi_qr	UPI QR
 show_upi_qr	UPI QR देखाउनुहोस्
 close_upi_qr	बन्द गर्नुहोस्
@@ -1295,8 +1321,6 @@ printer_mode_first	पहिले चल्ने
 printer_mode_all	सबैमा छाप्नुहोस्
 kot_show_area	क्षेत्र
 kot_hide_area	क्षेत्र लुकाउनुहोस्
-kot_show_item_hdr	सामान · परिमाण
-kot_hide_item_hdr	स्तम्भ लुकाउनुहोस्
 kot_show_title	शीर्षक पङ्क्ति
 kot_hide_title	शीर्षक लुकाउनुहोस्
 kot_field_cycle	अर्को छान्नुहोस्
@@ -1337,12 +1361,12 @@ private_code_ph	१२ अंकको कोड
 stamp_on	छाप: फाइलमा छ
 pay_qr_on	भुक्तानी QR: फाइलमा छ
 pay_qr_off	भुक्तानी QR: छैन
+printers_screen_tip	खोज्नुहोस् ले यो उपकरणले प्रयोग गर्न सक्ने प्रिन्टरहरू देखाउँछ र यो पसलका लागि सुरक्षित गर्छ। बिल प्रिन्टर: बिल र KOT ढाँचा → बिल। भान्सा: भान्सा → भान्सा स्टेसनहरू।
+printers_found_none	कुनै प्रिन्टर फेला परेन।
+nav_loading	लोड हुँदैछ…
+kot_copy_from	यसबाट प्रतिलिपि गर्नुहोस्
+kot_copy_from_help	त्यो प्रकारको प्रत्येक पङ्क्तिको आकार, मोटाइ र पङ्क्तिबद्धता यसमा प्रतिलिपि गर्छ। यो प्रकारले आफ्नै ब्यानर, वस्तु उपसर्ग र काटिएको रेखा राख्छ। राख्न KOT ढाँचा सुरक्षित गर्नुहोस्।
 items_tmpl_heading	वस्तु टेम्प्लेटहरू
 items_tmpl_help	तपाईंको मेनुका लागि परिकार, श्रेणी र फोटो। पसलका सेटिङ र कर्मचारी जस्ताको तस्तै रहन्छन्।
 public_tmpl_help	जो कोहीले डाउनलोड गर्न सक्ने सुरुआती मेनुहरू। एक पटक इन्टरनेट चाहिन्छ।
 private_tmpl_help	तपाईंको Khaynjo सम्पर्कबाट पाएको १२ अङ्कको कोडले सुरक्षित ग्राहक मेनुहरू।
-printers_screen_tip	खोज्नुहोस् ले यो उपकरणले प्रयोग गर्न सक्ने प्रिन्टरहरू देखाउँछ र यो पसलका लागि सुरक्षित गर्छ। बिल प्रिन्टर: बिल र KOT ढाँचा → बिल। भान्सा: भान्सा → भान्सा स्टेसनहरू।
-printers_found_none	कुनै प्रिन्टर फेला परेन।
-kot_copy_from	यसबाट प्रतिलिपि गर्नुहोस्
-kot_copy_from_help	त्यो प्रकारको प्रत्येक पङ्क्तिको आकार, मोटाइ र पङ्क्तिबद्धता यसमा प्रतिलिपि गर्छ। यो प्रकारले आफ्नै ब्यानर, वस्तु उपसर्ग र काटिएको रेखा राख्छ। राख्न KOT ढाँचा सुरक्षित गर्नुहोस्।
-nav_loading	लोड हुँदैछ…

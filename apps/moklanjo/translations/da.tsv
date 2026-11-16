@@ -501,6 +501,17 @@ job_size	Skriftstørrelse
 job_size_ph	f.eks. 18, 20, 26…
 test_receipt_format	Test kvittering
 test_label_format	Test etiket
+paper_heading	Papir
+paper_size	{w} × {h} mm
+paper_roll	{w} mm-rulle
+paper_not_set	papir endnu ikke kendt
+paper_length_mm	Længde (mm)
+printer_paper_help	Denne printers papir i mm. En tom Længde er en rulle: hver bon er lige så lang som sit indhold. Find printere udfylder tomt papir fra printerens driver (en 80 mm-rulle, når den ikke kan sige det) og ændrer aldrig papir, der allerede er sat.
+preview_help	Denne bon på papiret i printeren valgt nedenfor, som den udskrives der: i virkelig størrelse fra det øverste venstre hjørne, printeren kan nå (gråt: kanter den ikke kan), en lang bon på flere ark, alt ud over papirets kant skæres af. At vælge en printer ændrer kun eksemplet; hver printers papir sættes under Printere.
+slip_col_width	Bredde (mm)
+no_printer_assigned	Ingen printer
+printer_target_default	denne computers sædvanlige printer (tom adresse)
+job_preview	Forhåndsvisning
 test_receipt_sent	Prøvekvittering sendt
 test_label_sent	Prøveetiket sendt
 test_print_no_printer	Ingen printer til det job — tilføj en under dette sted

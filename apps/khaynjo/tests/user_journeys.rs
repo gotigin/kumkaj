@@ -25,7 +25,7 @@ fn temp_db() -> PathBuf {
         .duration_since(UNIX_EPOCH)
         .unwrap()
         .as_nanos();
-    std::env::temp_dir().join(format!("khaynjo-journey-{n}-{}.sqlite3", new_id()))
+    kumkaj_khaynjo::test_dirs::run_root().join(format!("khaynjo-journey-{n}-{}.sqlite3", new_id()))
 }
 
 /// A working Rajdhani-style shop: owner, waiter, cashier, menu, D1–D4 + Parcel.

@@ -72,10 +72,6 @@ bill_item_layout	Item opstelling
 bill_item_layout_columns	Kolomme
 bill_item_layout_stacked	Gestapel
 bill_item_header	Kolom koppe
-bill_item_hdr_item	Item kop
-bill_item_hdr_qty	Hoeveelheid kop
-bill_item_hdr_price	Prijs kop
-bill_item_hdr_amount	Bedrag kop
 bill_item_name	Medisyne naam
 bill_item_qty	Hoeveelheid
 bill_item_price	Prijs
@@ -83,6 +79,13 @@ bill_item_amount	Bedrag
 bill_item_note	Voorskrif / verkoopsnota
 bill_item_col_sep	Kolom reëls
 slip_col_width	Breedte (mm)
+paper_heading	Papier
+paper_size	{w} × {h} mm
+paper_roll	{w} mm-rol
+paper_not_set	papier nog nie bekend nie
+paper_length_mm	Lengte (mm)
+printer_paper_help	Hierdie drukker se papier in mm. 'n Leë Lengte is 'n rol: elke strokie is so lank soos sy inhoud. Soek drukkers vul leë papier in vanaf die drukker se drywer ('n 80 mm-rol as dit nie kan sê nie) en verander nooit papier wat reeds gestel is nie.
+preview_help	Hierdie strokie op die papier van die drukker wat hieronder gekies is, soos dit daar druk: werklike grootte van die boonste linkerhoek wat die drukker kan bereik (grys: rande wat dit nie kan nie), 'n lang strokie op meer velle, alles verby die papier se rand afgesny. Om 'n drukker te kies verander net die voorskou; elke drukker se papier word onder Drukkers gestel.
 slip_col_start	Beginspasie (px)
 slip_col_end	Eindspasie (px)
 slip_columns_help	Elke kolom se breedte sluit sy begin- en eindspasie in. Teks vou binne sy kolom; wat verby die inhoudbreedte lê, word afgesny, op papier en in die voorskou.
@@ -850,3 +853,4 @@ nav_loading	Laai tans…
 printer_mode_first	Eers wat werk
 printer_mode_all	Druk op almal
 slip_columns	Kolomme
+slip_col_header	Kop

@@ -501,6 +501,17 @@ job_size	Veličina slova
 job_size_ph	npr. 18, 20, 26…
 test_receipt_format	Probna priznanica
 test_label_format	Probna naljepnica
+paper_heading	Papir
+paper_size	{w} × {h} mm
+paper_roll	rola {w} mm
+paper_not_set	papir još nije poznat
+paper_length_mm	Duljina (mm)
+printer_paper_help	Papir ovog pisača u mm. Prazna Duljina je rola: svaki račun dug je koliko i njegov sadržaj. Pronađi pisače popunjava prazan papir iz upravljačkog programa pisača (rola od 80 mm kad ne može reći) i nikad ne mijenja već postavljen.
+preview_help	Ovaj račun na papiru pisača odabranog ispod, kako se ondje ispisuje: u stvarnoj veličini od gornjeg lijevog kuta do kojeg pisač dopire (sivo: rubovi do kojih ne dopire), dug račun na više listova, sve preko ruba papira se odreže. Odabir pisača mijenja samo pregled; papir svakog pisača postavlja se pod Pisači.
+slip_col_width	Širina (mm)
+no_printer_assigned	Bez pisača
+printer_target_default	uobičajeni pisač ovog računala (prazna adresa)
+job_preview	Pretpregled
 test_receipt_sent	Uzorak priznanice poslan
 test_label_sent	Uzorak naljepnice poslan
 test_print_no_printer	Nema pisača za taj posao — dodajte jedan pod ovim mjestom

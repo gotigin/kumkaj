@@ -26,6 +26,8 @@ impl SuggestList {
 
 impl Widget for SuggestList {
     fn draw_walk(&mut self, cx: &mut Cx2d, scope: &mut Scope, walk: Walk) -> DrawStep {
+        // The preview's printer list marks the one in use (✓) like a dropdown's pick.
+        let paper_menu = self.field == "bill_preview_paper";
         let (open, rows, rev, lang) = {
             let st = app_state().lock().unwrap();
             (
@@ -100,13 +102,19 @@ impl Widget for SuggestList {
                     item.label(cx, ids!(title)).set_text(cx, &row.value);
                     item.label(cx, ids!(subtitle)).set_text(cx, &row.subtitle);
                     item.label(cx, ids!(subtitle)).set_visible(cx, !row.subtitle.is_empty());
-                    let action = if row.action.trim().is_empty() {
-                        use_text.as_str()
+                    if paper_menu {
+                        let on = row.action == "\u{2713}";
+                        item.label(cx, ids!(action)).set_visible(cx, on);
+                        item.label(cx, ids!(action)).set_text(cx, if on { "\u{2713}" } else { "" });
                     } else {
-                        row.action.as_str()
-                    };
-                    item.label(cx, ids!(action)).set_visible(cx, true);
-                    item.label(cx, ids!(action)).set_text(cx, action);
+                        let action = if row.action.trim().is_empty() {
+                            use_text.as_str()
+                        } else {
+                            row.action.as_str()
+                        };
+                        item.label(cx, ids!(action)).set_visible(cx, true);
+                        item.label(cx, ids!(action)).set_text(cx, action);
+                    }
                     item.draw_all_unscoped(cx);
                     drew += 1;
                 }

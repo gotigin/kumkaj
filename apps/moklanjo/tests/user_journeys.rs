@@ -27,7 +27,7 @@ fn temp_db() -> PathBuf {
         .duration_since(UNIX_EPOCH)
         .unwrap()
         .as_nanos();
-    std::env::temp_dir().join(format!("moklanjo-journey-{n}-{}.sqlite3", new_id()))
+    kumkaj_moklanjo::test_dirs::run_root().join(format!("moklanjo-journey-{n}-{}.sqlite3", new_id()))
 }
 
 struct Office {

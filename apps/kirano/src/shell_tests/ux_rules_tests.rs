@@ -47,7 +47,7 @@ mod ux_rules_tests {
     /// one conversions row per unit they start from.
     #[test]
     fn units_list_by_family_not_one_paragraph() {
-        let home = std::env::temp_dir().join(format!("kirano-units-{}", new_id()));
+        let home = kumkaj_kirano::test_dirs::run_root().join(format!("kirano-units-{}", new_id()));
         std::fs::create_dir_all(&home).unwrap();
         let store = Store::open_path(&home.join("books.sqlite3")).unwrap();
         store.add_unit("bag", "Bag").unwrap();
@@ -161,7 +161,7 @@ mod ux_rules_tests {
     /// toggle target (keys line up index for index).
     #[test]
     fn sibling_pickers_show_names_and_keep_their_targets() {
-        let path = std::env::temp_dir().join(format!("kirano-pickers-{}.sqlite3", new_id()));
+        let path = kumkaj_kirano::test_dirs::run_root().join(format!("kirano-pickers-{}.sqlite3", new_id()));
         let store = Store::open_path(&path).unwrap();
         store.add_tax_rate("Shop GST 7%", "SHOP7", 700).unwrap();
         let rows = sibling_pickers_rows(&store, |k| locale::t("en", k));

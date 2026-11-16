@@ -72,10 +72,6 @@ bill_item_layout	Raspored stavki
 bill_item_layout_columns	Kolone
 bill_item_layout_stacked	Složeno
 bill_item_header	Zaglavlja kolona
-bill_item_hdr_item	Zaglavlje stavke
-bill_item_hdr_qty	Zaglavlje kol.
-bill_item_hdr_price	Zaglavlje cijene
-bill_item_hdr_amount	Zaglavlje iznosa
 bill_item_name	Ime lijeka
 bill_item_qty	Kol.
 bill_item_price	Cijena
@@ -83,6 +79,13 @@ bill_item_amount	Iznos
 bill_item_note	Rx / napomena prodaje
 bill_item_col_sep	Linije kolona
 slip_col_width	Širina (mm)
+paper_heading	Papir
+paper_size	{w} × {h} mm
+paper_roll	rolna {w} mm
+paper_not_set	papir još nije poznat
+paper_length_mm	Dužina (mm)
+printer_paper_help	Papir ovog štampača u mm. Prazna Dužina je rolna: svaki račun je dug koliko i njegov sadržaj. Pronađi štampače popunjava prazan papir iz drajvera štampača (rolna od 80 mm kad ne može reći) i nikad ne mijenja već postavljen.
+preview_help	Ovaj račun na papiru štampača odabranog ispod, kako se tamo štampa: u stvarnoj veličini od gornjeg lijevog ugla do kojeg štampač dopire (sivo: rubovi do kojih ne dopire), dug račun na više listova, sve preko ruba papira se odsijeca. Odabir štampača mijenja samo pregled; papir svakog štampača postavlja se pod Štampači.
 slip_col_start	Početni razmak (px)
 slip_col_end	Završni razmak (px)
 slip_columns_help	Širina svake kolone uključuje njen početni i završni razmak. Tekst se prelama unutar svoje kolone; ono što prelazi širinu sadržaja odsijeca se na papiru i u pregledu.
@@ -850,3 +853,4 @@ nav_loading	Učitavanje…
 printer_mode_first	Prvi koji radi
 printer_mode_all	Štampaj na sve
 slip_columns	Kolone
+slip_col_header	Zaglavlje

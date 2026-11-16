@@ -92,10 +92,6 @@ bill_item_layout	Тарҳи молҳо
 bill_item_layout_columns	Сутунҳо
 bill_item_layout_stacked	Болои ҳам
 bill_item_header	Сарлавҳаҳои сутун
-bill_item_hdr_item	Сарлавҳаи мол
-bill_item_hdr_qty	Сарлавҳаи миқдор
-bill_item_hdr_price	Сарлавҳаи нарх
-bill_item_hdr_amount	Сарлавҳаи маблағ
 bill_item_name	Номи таом
 bill_item_qty	Миқдор
 bill_item_price	Нарх
@@ -103,6 +99,20 @@ bill_item_amount	Маблағ
 bill_item_note	Ёддошти таом
 bill_item_col_sep	Хатҳои сутун
 slip_columns	Сутунҳо
+slip_col_header	Сарлавҳа
+bill_line_logo	Логотип
+bill_logo_picture	Тасвир
+bill_logo_choose	Интихоби тасвир
+bill_logo_remove	Тоза кардани тасвир
+bill_logo_none	Тасвир нест
+bill_logo_unreadable	Ин тасвире нест, ки барнома хонда метавонад
+bill_logo_width	Паҳноӣ (px)
+bill_logo_height	Баландӣ (px)
+bill_logo_tones	Тобишҳои хокистарӣ
+bill_logo_solid	Яклухт
+bill_logo_shaded	Соядор
+bill_logo_help	Паҳноӣ ва баландӣ бо px. Холӣ ба тасвир пайравӣ мекунад: яке холӣ шаклро нигоҳ медорад, ҳарду холӣ андозаи худашро; ҳарду дода шаванд, дарун ҷой мешавад, ҳеҷ гоҳ кашида намешавад. Бе тасвир: логотипи нишондода баландии худро ҳамчун ҷои холӣ нигоҳ медорад; Пинҳон кардан онро тоза мекунад.
+bill_logo_tones_help	Яклухт: ҳар нуқта сиёҳ ё сафед, барои логотипҳои равшан. Соядор: хокистарӣ ба нақши нуқтаҳои майда табдил меёбад, барои аксҳо ва сояи нарм.
 slip_col_width	Паҳно (mm)
 slip_col_start	Фосилаи оғоз (px)
 slip_col_end	Фосилаи анҷом (px)
@@ -167,6 +177,21 @@ alerts_help	Паёми ҳолат дар экрани шумо чанд сони
 snack_secs_ph	Сонияҳо (3–60, пешфарз 10)
 snack_secs_save	Захираи вақти огоҳӣ
 snack_secs_saved	Вақти огоҳӣ захира шуд — {n} сония
+settings_sec_whatsapp	WhatsApp
+whatsapp_cloud_help	Use your own Meta WhatsApp Cloud API. Create a System User token with whatsapp_business_messaging (temporary dashboard tokens expire). Credentials stay on this Server only — never on extra tills. Accepted means Meta took the request, not that the guest received it.
+whatsapp_phone_id_ph	Phone Number ID
+whatsapp_token_ph	Access Token (leave blank to keep)
+whatsapp_template_ph	Bill template name (optional)
+whatsapp_template_lang_ph	Template language (e.g. en)
+whatsapp_enable	Enable
+whatsapp_disable	Off
+whatsapp_save	Save WhatsApp
+whatsapp_test	Test connection
+whatsapp_disconnect	Disconnect
+whatsapp_send_bill	Send via WhatsApp
+whatsapp_consent	WhatsApp OK
+whatsapp_consent_help	Guest agreed to receive WhatsApp messages. A phone number alone is not consent.
+whatsapp_server_only	Configure WhatsApp on the shop Server device
 settings_sec_backup	Нусха ва барқарор
 settings_sec_diag	Ташхиси хато
 settings_sec_privacy	Махфият
@@ -729,6 +754,13 @@ station_vps_dd	Чопгарҳои ин истгоҳ
 station_vps_dd_n	{n} чопгар · зер кунед, то иваз шавад
 bill_printers_dd	Чопгарҳои ҳисоб
 bill_printers_dd_n	{n} чопгар барои ҳисоб · зер кунед, то иваз шавад
+paper_heading	Коғаз
+paper_size	{w} × {h} mm
+paper_roll	ғалтаки {w} мм
+paper_not_set	коғаз ҳоло маълум нест
+paper_length_mm	Дарозӣ (mm)
+printer_paper_help	Коғази ин чопгар бо мм. Дарозии холӣ ғалтак аст: ҳар чек ба андозаи мундариҷааш дароз аст. «Ҷустуҷӯи чопгарҳо» коғази холиро аз драйвери чопгар пур мекунад (ғалтаки 80 мм, агар гуфта натавонад) ва ҳеҷ гоҳ коғази аллакай муқарраршударо иваз намекунад.
+preview_help	Ин чек дар коғази чопгари дар поён интихобшуда, ҳамон тавре ки он ҷо чоп мешавад: бо андозаи воқеӣ аз кунҷи болои чапе, ки чопгар мерасад (хокистарӣ: канорҳое, ки намерасад), чеки дароз дар варақҳои бештар, ҳар чӣ аз канори коғаз мегузарад, бурида мешавад. Интихоби чопгар танҳо пешнамоишро иваз мекунад; коғази ҳар чопгар дар «Чопгарҳо» муқаррар мешавад.
 job_layout	Тарҳ
 job_delivery	Чӣ гуна кор фиристода мешавад
 job_delivery_help	Ҳуҷҷати система, байтҳои хом, ё ESC/POS. Ҳисоб ва варақаи ошхона ҳар кадом худро нигоҳ медорад. Ҳар кор метавонад ба ҳар чопгаре, ки Ҷустуҷӯ захира кардааст, равад.
@@ -1105,9 +1137,6 @@ remove_these_tables	Ин мизҳоро хориҷ кунед
 table_remove_ph	Хориҷ: T1-T24, ё номи як миз
 find_server	Ёфтани server-и дӯкон
 bill_format	Тарҳи ҳисоб
-bill_header_ph	Суроға | телефон
-fssai_ph	Рақами иҷозатномаи FSSAI (Ҳиндустон)
-bill_footer_ph	Поён (мисол Ташаккур, боз биёед)
 reset_bill_format	Бозгашт ба пешфарз
 bill_format_reset	Тарҳи ҳисоб ба пешфарз баргашт
 reset_kot_format	Бозгашт ба пешфарз
@@ -1146,7 +1175,6 @@ kot_kind_modified	Тағйирёфта
 kot_kind_cancelled	Бекор
 kot_style_heading	Андоза ва ғафсии навъи майдон
 kot_style_title	Сарлавҳа
-kot_style_item_qty	Мол · Миқдор
 kot_style_field_pick	Интихоби майдон
 kot_weight_regular	Оддӣ
 kot_weight_bold	Ғафс
@@ -1158,8 +1186,8 @@ content_width_bill	Паҳнои мундариҷаи ҳисоб (мм)
 content_width_kot	Паҳнои мундариҷаи KOT (мм)
 content_width_ph	Ё паҳнои мундариҷа нависед, 40–210 мм
 content_width_help	Ин варақа чанд васеъ чоп мешавад. Ҳисоб ва KOT ҳар кадом паҳнои худро нигоҳ медорад.
-content_width_bill_help	Ҳисоби меҳмон чанд васеъ чоп мешавад. Пешфарз 210 мм (саҳифа). 58 мм варақаи танг, 80 мм варақаи васеъ, 112 мм 4 дюйм, 210 мм паҳнои A4. Ҳар қимат аз 40 то 210 нависед. Варақаҳои ошхона паҳнои ҷудо дар варақаи KOT доранд.
-content_width_kot_help	Варақаи ошхона чанд васеъ чоп мешавад. Пешфарз 80 мм. 58 мм варақаи танг, 80 мм варақаи васеъ, 112 мм 4 дюйм, 210 мм саҳифа. Ҳар қимат аз 40 то 210 нависед. Ҳисобҳои меҳмон паҳнои ҷудо дар варақаи Ҳисоб доранд.
+content_width_bill_help	Ҳисоби меҳмон бо кадом паҳно чоп мешавад, бо mm (40–210). Он дар ҳар коғаз бо ҳамин андозаи воқеӣ чоп мешавад; дар коғази танҷтар қисми берун аз канори чоп бурида мешавад (Коғазро бинед). Чиптаҳои ошхона паҳнои худро дар ҷадвалаки KOT доранд.
+content_width_kot_help	Чиптаи ошхона бо кадом паҳно чоп мешавад, бо mm (40–210). Он дар ҳар коғаз бо ҳамин андозаи воқеӣ чоп мешавад; дар коғази танҷтар қисми берун аз канори чоп бурида мешавад (Коғазро бинед). Ҳисобҳои меҳмонон паҳнои худро дар ҷадвалаки Ҳисоб доранд.
 vp_paper_width	Паҳнои мундариҷа (мм)
 vp_paper_width_ph	Ё паҳнои мундариҷа нависед, 40–210 мм
 vp_paper_width_help	Паҳнои мундариҷа дар Тарҳи ҳисоб ва KOT гузошта мешавад — ҷудогона барои ҳисоб (пешфарз 210 мм) ва варақаи ошхона (пешфарз 80 мм).
@@ -1213,8 +1241,6 @@ schemes_help	BOGO, тахфифи фоизӣ ва маҷмӯаҳои собит.
 scheme_bogo_ph	2 Thali харед, 1 Chaas гиред
 add_scheme	Иловаи BOGO
 schedule_ph	Соатҳо / соати хуш — Душ-Ҷум 07:00-11:00 ё HappyHour 17:00-19:00=150
-upi_vpa_ph	Шиносномаи UPI (VPA)
-upi_payee_ph	Номи гирандаи UPI (ихтиёрӣ)
 upi_qr	QR-и UPI
 show_upi_qr	Нишон додани QR-и UPI
 close_upi_qr	Пӯшидан
@@ -1295,8 +1321,6 @@ printer_mode_first	Аввалине, ки кор мекунад
 printer_mode_all	Дар ҳама чоп
 kot_show_area	Ҷой
 kot_hide_area	Пинҳон кардани ҷой
-kot_show_item_hdr	Мол · Миқдор
-kot_hide_item_hdr	Пинҳон кардани сутунҳо
 kot_show_title	Сатри сарлавҳа
 kot_hide_title	Пинҳон кардани сарлавҳа
 kot_field_cycle	Навбатиро интихоб кунед
@@ -1337,12 +1361,12 @@ private_code_ph	Рамзи 12-рақама
 stamp_on	Мӯҳр: дар файл
 pay_qr_on	QR-и пардохт: дар файл
 pay_qr_off	QR-и пардохт: нест
+printers_screen_tip	Ҷустуҷӯ принтерҳоеро нишон медиҳад, ки ин дастгоҳ истифода карда метавонад, ва онҳоро барои ин мағоза нигоҳ медорад. Принтерҳои ҳисоб: Формати ҳисоб ва KOT → Ҳисоб. Ошхона: Ошхона → Истгоҳҳои ошхона.
+printers_found_none	Ягон принтер ёфт нашуд.
+nav_loading	Боркунӣ…
+kot_copy_from	Нусха аз
+kot_copy_from_help	Андоза, ғафсӣ ва ҳамворкунии ҳар сатрро аз он навъ ба ин навъ нусха мебардорад. Ин навъ баннер, пешванди мол ва хатзаниашро нигоҳ медорад. Барои нигоҳ доштан формати KOT-ро захира кунед.
 items_tmpl_heading	Қолибҳои мол
 items_tmpl_help	Хӯрокҳо, категорияҳо ва аксҳо барои менюи шумо. Танзимоти мағоза ва кормандон ҳамон тавр мемонанд.
 public_tmpl_help	Менюҳои ибтидоӣ, ки ҳар кас метавонад боргирӣ кунад. Интернет як бор лозим аст.
 private_tmpl_help	Менюҳои мизоҷон, ки бо рамзи 12-рақамаи тамоси Khaynjo-и шумо қулф шудаанд.
-printers_screen_tip	Ҷустуҷӯ принтерҳоеро нишон медиҳад, ки ин дастгоҳ истифода карда метавонад, ва онҳоро барои ин мағоза нигоҳ медорад. Принтерҳои ҳисоб: Формати ҳисоб ва KOT → Ҳисоб. Ошхона: Ошхона → Истгоҳҳои ошхона.
-printers_found_none	Ягон принтер ёфт нашуд.
-kot_copy_from	Нусха аз
-kot_copy_from_help	Андоза, ғафсӣ ва ҳамворкунии ҳар сатрро аз он навъ ба ин навъ нусха мебардорад. Ин навъ баннер, пешванди мол ва хатзаниашро нигоҳ медорад. Барои нигоҳ доштан формати KOT-ро захира кунед.
-nav_loading	Боркунӣ…

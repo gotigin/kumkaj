@@ -92,10 +92,6 @@ bill_item_layout	ଆଇଟମ୍ ଲେଆଉଟ୍
 bill_item_layout_columns	ସ୍ତମ୍ଭ
 bill_item_layout_stacked	ଧାଡ଼ି
 bill_item_header	ସ୍ତମ୍ଭ ଶୀର୍ଷକ
-bill_item_hdr_item	ଆଇଟମ୍ ଶୀର୍ଷକ
-bill_item_hdr_qty	ସଂଖ୍ୟା ଶୀର୍ଷକ
-bill_item_hdr_price	ଦର ଶୀର୍ଷକ
-bill_item_hdr_amount	ରାଶି ଶୀର୍ଷକ
 bill_item_name	ଖାଦ୍ୟ ନାମ
 bill_item_qty	ପରିମାଣ
 bill_item_price	ଦର
@@ -103,6 +99,20 @@ bill_item_amount	ରାଶି
 bill_item_note	ନୋଟ୍
 bill_item_col_sep	ସ୍ତମ୍ଭ ରେଖା
 slip_columns	ସ୍ତମ୍ଭଗୁଡ଼ିକ
+slip_col_header	ଶୀର୍ଷକ
+bill_line_logo	ଲୋଗୋ
+bill_logo_picture	ଚିତ୍ର
+bill_logo_choose	ଚିତ୍ର ବାଛନ୍ତୁ
+bill_logo_remove	ଚିତ୍ର ହଟାନ୍ତୁ
+bill_logo_none	କୌଣସି ଚିତ୍ର ନାହିଁ
+bill_logo_unreadable	ଏହି ଆପ୍ ପଢ଼ିପାରୁଥିବା ଚିତ୍ର ନୁହେଁ
+bill_logo_width	ଓସାର (px)
+bill_logo_height	ଉଚ୍ଚତା (px)
+bill_logo_tones	ଧୂସର
+bill_logo_solid	ଘନ
+bill_logo_shaded	ଛାୟାଯୁକ୍ତ
+bill_logo_help	ଓସାର ଓ ଉଚ୍ଚତା px ରେ। ଖାଲି ରଖିଲେ ଚିତ୍ର ଅନୁସାରେ: ଗୋଟିଏ ଖାଲି ହେଲେ ଆକାର ରହେ, ଦୁଇଟି ଖାଲି ହେଲେ ନିଜ ମାପ; ଦୁଇଟି ଦେଲେ ଭିତରେ ଖାପ ଖାଏ, କେବେ ବି ଟାଣି ଲମ୍ବା ହୁଏ ନାହିଁ। ଚିତ୍ର ନଥିଲେ: ଦେଖାଯାଉଥିବା ଲୋଗୋ ନିଜ ଉଚ୍ଚତାକୁ ଖାଲି ସ୍ଥାନ ଭାବେ ରଖେ; ଲୁଚାନ୍ତୁ ଏହାକୁ ହଟାଏ।
+bill_logo_tones_help	ଘନ: ପ୍ରତ୍ୟେକ ବିନ୍ଦୁ କଳା ବା ଧଳା, ସ୍ପଷ୍ଟ ଲୋଗୋ ପାଇଁ। ଛାୟାଯୁକ୍ତ: ଧୂସର ସୂକ୍ଷ୍ମ ବିନ୍ଦୁର ନମୁନା ହୁଏ, ଫଟୋ ଓ କୋମଳ ଛାୟା ପାଇଁ।
 slip_col_width	ପ୍ରସ୍ଥ (mm)
 slip_col_start	ଆରମ୍ଭ ସ୍ଥାନ (px)
 slip_col_end	ଶେଷ ସ୍ଥାନ (px)
@@ -167,6 +177,21 @@ alerts_help	ସ୍ଥିତି ବାର୍ତ୍ତା ଆପଣଙ୍କ ପ�
 snack_secs_ph	ସେକେଣ୍ଡ (3–60, ଡିଫଲ୍ଟ 10)
 snack_secs_save	ସୂଚନା ସମୟ ସେଭ୍ କରନ୍ତୁ
 snack_secs_saved	ସୂଚନା ସମୟ ସେଭ୍ ହେଲା — {n} ସେକେଣ୍ଡ
+settings_sec_whatsapp	WhatsApp
+whatsapp_cloud_help	Use your own Meta WhatsApp Cloud API. Create a System User token with whatsapp_business_messaging (temporary dashboard tokens expire). Credentials stay on this Server only — never on extra tills. Accepted means Meta took the request, not that the guest received it.
+whatsapp_phone_id_ph	Phone Number ID
+whatsapp_token_ph	Access Token (leave blank to keep)
+whatsapp_template_ph	Bill template name (optional)
+whatsapp_template_lang_ph	Template language (e.g. en)
+whatsapp_enable	Enable
+whatsapp_disable	Off
+whatsapp_save	Save WhatsApp
+whatsapp_test	Test connection
+whatsapp_disconnect	Disconnect
+whatsapp_send_bill	Send via WhatsApp
+whatsapp_consent	WhatsApp OK
+whatsapp_consent_help	Guest agreed to receive WhatsApp messages. A phone number alone is not consent.
+whatsapp_server_only	Configure WhatsApp on the shop Server device
 settings_sec_backup	ବ୍ୟାକଅପ୍ ଓ ପୁନଃସ୍ଥାପନ
 settings_sec_diag	ଡାଇଗ୍ନୋଷ୍ଟିକ୍ସ
 settings_sec_privacy	ଗୋପନୀୟତା
@@ -729,6 +754,13 @@ station_vps_dd	ଏହି ଷ୍ଟେସନ୍ ପ୍ରିଣ୍ଟର
 station_vps_dd_n	{n} ପ୍ରିଣ୍ଟର · ବଦଳାଇବାକୁ ଟ୍ୟାପ୍
 bill_printers_dd	ବିଲ ପାଇଁ ପ୍ରିଣ୍ଟର
 bill_printers_dd_n	ବିଲ ପାଇଁ {n}ଟି ପ୍ରିଣ୍ଟର · ବଦଳାଇବାକୁ ଦବାନ୍ତୁ
+paper_heading	କାଗଜ
+paper_size	{w} × {h} mm
+paper_roll	{w} mm ରୋଲ
+paper_not_set	କାଗଜ ଏପର୍ଯ୍ୟନ୍ତ ଜଣା ନାହିଁ
+paper_length_mm	ଲମ୍ବ (mm)
+printer_paper_help	ଏହି ପ୍ରିଣ୍ଟରର କାଗଜ mm ରେ। ଖାଲି ଲମ୍ବ ଅର୍ଥ ରୋଲ: ପ୍ରତ୍ୟେକ ସ୍ଲିପ୍ ତାହାର ବିଷୟବସ୍ତୁ ଯେତିକି ଲମ୍ବା। ପ୍ରିଣ୍ଟର ଖୋଜନ୍ତୁ ଖାଲି କାଗଜକୁ ପ୍ରିଣ୍ଟରର ଡ୍ରାଇଭରରୁ ଭରେ (କହିପାରୁନଥିଲେ 80 mm ରୋଲ) ଏବଂ ପୂର୍ବରୁ ସ୍ଥିର କାଗଜକୁ କେବେ ବଦଳାଏ ନାହିଁ।
+preview_help	ତଳେ ବଛାଯାଇଥିବା ପ୍ରିଣ୍ଟରର କାଗଜ ଉପରେ ଏହି ସ୍ଲିପ୍, ସେଠାରେ ଯେପରି ଛପାଯାଏ: ପ୍ରିଣ୍ଟର ପହଞ୍ଚୁଥିବା ଉପର ବାମ କୋଣରୁ ପ୍ରକୃତ ମାପରେ (ଧୂସର: ପହଞ୍ଚୁନଥିବା ଧାର), ଲମ୍ବା ସ୍ଲିପ୍ ଅଧିକ ପୃଷ୍ଠାରେ, କାଗଜ ଧାର ବାହାରର ସବୁ କଟିଯାଏ। ପ୍ରିଣ୍ଟର ବାଛିଲେ କେବଳ ପୂର୍ବାବଲୋକନ ବଦଳେ; ପ୍ରତ୍ୟେକ ପ୍ରିଣ୍ଟରର କାଗଜ ପ୍ରିଣ୍ଟର ରେ ସ୍ଥିର ହୁଏ।
 job_layout	ଲେଆଉଟ୍
 job_delivery	କାମ କିପରି ପଠାଯାଏ
 job_delivery_help	OS ଡକ୍ୟୁମେଣ୍ଟ, କଞ୍ଚା ବାଇଟ୍ କିମ୍ବା ESC/POS। ବିଲ ଓ ରୋଷେଇ ଟିକେଟ ଦୁହେଁ ନିଜ ନିଜର ରଖନ୍ତି। ଯେକୌଣସି କାମ ଖୋଜନ୍ତୁ ସଞ୍ଚୟ କରିଥିବା ଯେକୌଣସି ପ୍ରିଣ୍ଟରକୁ ଯାଇପାରେ।
@@ -1105,9 +1137,6 @@ remove_these_tables	ଏହି ଟେବୁଲ୍ ହଟାନ୍ତୁ
 table_remove_ph	ହଟାନ୍ତୁ: T1-T24, କିମ୍ବା ଗୋଟିଏ ଟେବୁଲର ନାମ
 find_server	ଦୋକାନର ସର୍ଭର ଖୋଜନ୍ତୁ
 bill_format	ବିଲ୍ ଫର୍ମାଟ୍
-bill_header_ph	ଠିକଣା | ଫୋନ୍
-fssai_ph	FSSAI ଲାଇସେନ୍ସ ନଂ (ଭାରତ)
-bill_footer_ph	ଫୁଟର୍ (ଯେପରି ଧନ୍ୟବାଦ, ପୁଣି ଆସନ୍ତୁ)
 reset_bill_format	ଡିଫଲ୍ଟକୁ ଫେରନ୍ତୁ
 bill_format_reset	ବିଲ୍ ଫର୍ମାଟ୍ ଡିଫଲ୍ଟକୁ
 reset_kot_format	ଡିଫଲ୍ଟକୁ ଫେରନ୍ତୁ
@@ -1146,7 +1175,6 @@ kot_kind_modified	ପରିବର୍ତ୍ତିତ
 kot_kind_cancelled	ବାତିଲ୍
 kot_style_heading	କ୍ଷେତ୍ର ଆକାର ଓ ଓଜନ
 kot_style_title	ଶୀର୍ଷକ
-kot_style_item_qty	ଆଇଟମ୍ · ସଂଖ୍ୟା
 kot_style_field_pick	କ୍ଷେତ୍ର ବାଛନ୍ତୁ
 kot_weight_regular	ସାଧାରଣ
 kot_weight_bold	ମୋଟା
@@ -1158,8 +1186,8 @@ content_width_bill	ବିଲ ବିଷୟବସ୍ତୁ ଓସାର (mm)
 content_width_kot	KOT ବିଷୟବସ୍ତୁ ଓସାର (mm)
 content_width_ph	କିମ୍ବା ବିଷୟବସ୍ତୁ ଚଉଡ଼ା ଲେଖନ୍ତୁ, 40–210 ମିମି
 content_width_help	ଏହି ସ୍ଲିପ୍ କେତେ ଓସାରରେ ଛପା ହେବ। ବିଲ ଓ KOT ଦୁହେଁ ନିଜ ନିଜ ଓସାର ରଖନ୍ତି।
-content_width_bill_help	ଅତିଥି ବିଲ କେତେ ଓସାରରେ ଛପା ହେବ। ପୂର୍ବନିର୍ଦ୍ଧାରିତ 210 mm (ପୃଷ୍ଠା)। 58 mm ସଂକୀର୍ଣ୍ଣ ସ୍ଲିପ୍, 80 mm ଓସାର ସ୍ଲିପ୍, 112 mm 4-ଇଞ୍ଚ, 210 mm A4-ଓସାର। 40 ରୁ 210 ମଧ୍ୟରେ ଯେକୌଣସି ମୂଲ୍ୟ ଲେଖନ୍ତୁ। ରୋଷେଇ ଟିକେଟର ନିଜ ଓସାର KOT ଟ୍ୟାବରେ ଅଛି।
-content_width_kot_help	ରୋଷେଇ ଟିକେଟ କେତେ ଓସାରରେ ଛପା ହେବ। ପୂର୍ବନିର୍ଦ୍ଧାରିତ 80 mm। 58 mm ସଂକୀର୍ଣ୍ଣ ସ୍ଲିପ୍, 80 mm ଓସାର ସ୍ଲିପ୍, 112 mm 4-ଇଞ୍ଚ, 210 mm ପୃଷ୍ଠା। 40 ରୁ 210 ମଧ୍ୟରେ ଯେକୌଣସି ମୂଲ୍ୟ ଲେଖନ୍ତୁ। ଅତିଥି ବିଲର ନିଜ ଓସାର ବିଲ ଟ୍ୟାବରେ ଅଛି।
+content_width_bill_help	ଅତିଥିଙ୍କ ବିଲ କେତେ ଚଉଡ଼ା ଛପାହୁଏ, mm ରେ (40–210)। ଯେକୌଣସି କାଗଜରେ ଏହି ପ୍ରକୃତ ମାପରେ ଛପାହୁଏ; ଏହାଠାରୁ ସଂକୀର୍ଣ୍ଣ କାଗଜରେ ଛପା ଧାର ପରର ଅଂଶ କଟିଯାଏ (କାଗଜ ଦେଖନ୍ତୁ)। ରୋଷେଇ ଟିକେଟର ନିଜ ଚଉଡ଼ା KOT ଟ୍ୟାବରେ ଅଛି।
+content_width_kot_help	ରୋଷେଇ ଟିକେଟ କେତେ ଚଉଡ଼ା ଛପାହୁଏ, mm ରେ (40–210)। ଯେକୌଣସି କାଗଜରେ ଏହି ପ୍ରକୃତ ମାପରେ ଛପାହୁଏ; ଏହାଠାରୁ ସଂକୀର୍ଣ୍ଣ କାଗଜରେ ଛପା ଧାର ପରର ଅଂଶ କଟିଯାଏ (କାଗଜ ଦେଖନ୍ତୁ)। ଅତିଥି ବିଲର ନିଜ ଚଉଡ଼ା ବିଲ ଟ୍ୟାବରେ ଅଛି।
 vp_paper_width	ବିଷୟବସ୍ତୁ ଚଉଡ଼ା (ମିମି)
 vp_paper_width_ph	କିମ୍ବା ବିଷୟବସ୍ତୁ ଚଉଡ଼ା ଲେଖନ୍ତୁ, 40–210 ମିମି
 vp_paper_width_help	ବିଷୟବସ୍ତୁ ଚଉଡ଼ା ବିଲ୍ ଓ KOT ଫର୍ମାଟରେ ସେଟ୍ ହୁଏ। ଏହା ବିଲ୍ ଓ ରୋଷେଇ ଟିକେଟ୍ ଉଭୟରେ ଲାଗୁ ହୁଏ।
@@ -1213,8 +1241,6 @@ schemes_help	X କିଣନ୍ତୁ Y ପାଆନ୍ତୁ — ସେଟଲର
 scheme_bogo_ph	Buy 2 Thali get 1 Chaas
 add_scheme	BOGO ଯୋଡ଼ନ୍ତୁ
 schedule_ph	ସମୟ / ହ୍ୟାପି ଆୱାର — Mon-Fri 07:00-11:00 ବା HappyHour 17:00-19:00=150
-upi_vpa_ph	UPI ID (VPA)
-upi_payee_ph	UPI ଗ୍ରହୀତା (ବୈକଳ୍ପିକ)
 upi_qr	UPI QR
 show_upi_qr	UPI QR ଦେଖାନ୍ତୁ
 close_upi_qr	ବନ୍ଦ
@@ -1295,8 +1321,6 @@ printer_mode_first	ଯାହା ପ୍ରଥମେ ଚାଲେ
 printer_mode_all	ସବୁଥିରେ ଛାପନ୍ତୁ
 kot_show_area	ଅଞ୍ଚଳ
 kot_hide_area	ଅଞ୍ଚଳ ଲୁଚାନ୍ତୁ
-kot_show_item_hdr	ଆଇଟମ୍ · ସଂଖ୍ୟା
-kot_hide_item_hdr	ସ୍ତମ୍ଭ ଲୁଚାନ୍ତୁ
 kot_show_title	ଶୀର୍ଷକ ଧାଡ଼ି
 kot_hide_title	ଶୀର୍ଷକ ଲୁଚାନ୍ତୁ
 kot_field_cycle	ପରବର୍ତ୍ତୀ ବାଛନ୍ତୁ
@@ -1337,12 +1361,12 @@ private_code_ph	12 ଅଙ୍କର କୋଡ୍
 stamp_on	ଷ୍ଟାମ୍ପ: ଫାଇଲରେ
 pay_qr_on	ପେମେଣ୍ଟ QR: ଫାଇଲରେ
 pay_qr_off	ପେମେଣ୍ଟ QR: ନାହିଁ
+printers_screen_tip	ଖୋଜନ୍ତୁ ଏହି ଡିଭାଇସ୍ ବ୍ୟବହାର କରିପାରୁଥିବା ପ୍ରିଣ୍ଟରଗୁଡ଼ିକ ଦେଖାଏ ଏବଂ ଏହି ଦୋକାନ ପାଇଁ ସେଭ୍ କରେ। ବିଲ୍ ପ୍ରିଣ୍ଟର: ବିଲ୍ ଓ KOT ଫର୍ମାଟ୍ → ବିଲ୍। ରୋଷେଇ ଘର: ରୋଷେଇ ଘର → ରୋଷେଇ ଷ୍ଟେସନ୍।
+printers_found_none	କୌଣସି ପ୍ରିଣ୍ଟର ମିଳିଲା ନାହିଁ।
+nav_loading	ଲୋଡ୍ ହେଉଛି…
+kot_copy_from	ଏଥିରୁ କପି କରନ୍ତୁ
+kot_copy_from_help	ସେହି ପ୍ରକାରର ପ୍ରତ୍ୟେକ ଧାଡ଼ିର ଆକାର, ମୋଟେଇ ଓ ସଜ୍ଜା ଏଥିରେ କପି କରେ। ଏହି ପ୍ରକାର ନିଜର ବ୍ୟାନର, ଆଇଟମ ଉପସର୍ଗ ଓ କଟା ଗାର ରଖେ। ରଖିବା ପାଇଁ KOT ଫର୍ମାଟ ସେଭ କରନ୍ତୁ।
 items_tmpl_heading	ଆଇଟମ୍ ଟେମ୍ପଲେଟ୍
 items_tmpl_help	ଆପଣଙ୍କ ମେନୁ ପାଇଁ ବ୍ୟଞ୍ଜନ, ବର୍ଗ ଓ ଫଟୋ। ଦୋକାନ ସେଟିଂସ୍ ଓ କର୍ମଚାରୀ ଯେମିତି ଅଛନ୍ତି ସେମିତି ରହନ୍ତି।
 public_tmpl_help	ଯେକେହି ଡାଉନଲୋଡ୍ କରିପାରୁଥିବା ଆରମ୍ଭ ମେନୁ। ଥରେ ଇଣ୍ଟରନେଟ୍ ଦରକାର।
 private_tmpl_help	ଆପଣଙ୍କ Khaynjo ଯୋଗାଯୋଗଙ୍କଠାରୁ ମିଳିଥିବା 12-ଅଙ୍କ କୋଡ୍ ଦ୍ୱାରା ସୁରକ୍ଷିତ ଗ୍ରାହକ ମେନୁ।
-printers_screen_tip	ଖୋଜନ୍ତୁ ଏହି ଡିଭାଇସ୍ ବ୍ୟବହାର କରିପାରୁଥିବା ପ୍ରିଣ୍ଟରଗୁଡ଼ିକ ଦେଖାଏ ଏବଂ ଏହି ଦୋକାନ ପାଇଁ ସେଭ୍ କରେ। ବିଲ୍ ପ୍ରିଣ୍ଟର: ବିଲ୍ ଓ KOT ଫର୍ମାଟ୍ → ବିଲ୍। ରୋଷେଇ ଘର: ରୋଷେଇ ଘର → ରୋଷେଇ ଷ୍ଟେସନ୍।
-printers_found_none	କୌଣସି ପ୍ରିଣ୍ଟର ମିଳିଲା ନାହିଁ।
-kot_copy_from	ଏଥିରୁ କପି କରନ୍ତୁ
-kot_copy_from_help	ସେହି ପ୍ରକାରର ପ୍ରତ୍ୟେକ ଧାଡ଼ିର ଆକାର, ମୋଟେଇ ଓ ସଜ୍ଜା ଏଥିରେ କପି କରେ। ଏହି ପ୍ରକାର ନିଜର ବ୍ୟାନର, ଆଇଟମ ଉପସର୍ଗ ଓ କଟା ଗାର ରଖେ। ରଖିବା ପାଇଁ KOT ଫର୍ମାଟ ସେଭ କରନ୍ତୁ।
-nav_loading	ଲୋଡ୍ ହେଉଛି…

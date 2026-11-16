@@ -92,10 +92,6 @@ bill_item_layout	মানুই নি লায়উত
 bill_item_layout_columns	খলম
 bill_item_layout_stacked	সতাচক খাইজাক
 bill_item_header	খলমনি বখরক
-bill_item_hdr_item	মানুই নি বখরক
-bill_item_hdr_qty	কতয় বখরক
-bill_item_hdr_price	মুচুংমা বখরক
-bill_item_hdr_amount	বখরক রাং
 bill_item_name	দিশ নি মুং
 bill_item_qty	কুবাংমা
 bill_item_price	দাম
@@ -103,6 +99,20 @@ bill_item_amount	রাং
 bill_item_note	দিশ নি ককতুমা
 bill_item_col_sep	কলম নি কেরং
 slip_columns	খলমরগ
+slip_col_header	বখরক
+bill_line_logo	লগʼ
+bill_logo_picture	সাকা
+bill_logo_choose	সাকা বাসাগ
+bill_logo_remove	সাকা কুফুরথক
+bill_logo_none	সাকা কিরি
+bill_logo_unreadable	অ এপ্পে পরিওনো মান সাকা কিরি
+bill_logo_width	ফাঁ (px)
+bill_logo_height	কখা (px)
+bill_logo_tones	খুলুম রঙ
+bill_logo_solid	ককলক
+bill_logo_shaded	বাখুলুম
+bill_logo_help	ফাঁ বো কখা px-ও। খুফুর থাংখে সাকা সিলিক: কাইসা খুফুর থাংখে বুকুনি রূপ থাংগো, কাইনৈ খুফুর থাংখে বিনি নাপ; কাইনৈ রুখে বিসিনি তুংগো, কঅরা তুকুই কিরি। সাকা কিরিখে: নুকজাকমা লগʼ বিনি কখা খুফুর জাগা বায়ই রাংগো; খুম্বারখে কুফুরথকগো।
+bill_logo_tones_help	ককলক: বাগৈনি বিন্দু কচাক বা কুফুর, সাফা লগʼনি বাগি। বাখুলুম: খুলুম রঙ কিচিং বিন্দুনি নকশা অংগো, সাকা বো সুখুম বাখুলুমনি বাগি।
 slip_col_width	বাগা (mm)
 slip_col_start	সালকসা জায়গা (px)
 slip_col_end	তামাখালনি জায়গা (px)
@@ -167,6 +177,21 @@ alerts_help	নুংনি বাগুই সচরেএন ও বুসু�
 snack_secs_ph	সেকনদ (3-60, সুকাংনি 10)
 snack_secs_save	আলেরত জরা মুথাংদি
 snack_secs_saved	আলেরত জরা মুথাংজাক খা — {n} সেকন
+settings_sec_whatsapp	WhatsApp
+whatsapp_cloud_help	Use your own Meta WhatsApp Cloud API. Create a System User token with whatsapp_business_messaging (temporary dashboard tokens expire). Credentials stay on this Server only — never on extra tills. Accepted means Meta took the request, not that the guest received it.
+whatsapp_phone_id_ph	Phone Number ID
+whatsapp_token_ph	Access Token (leave blank to keep)
+whatsapp_template_ph	Bill template name (optional)
+whatsapp_template_lang_ph	Template language (e.g. en)
+whatsapp_enable	Enable
+whatsapp_disable	Off
+whatsapp_save	Save WhatsApp
+whatsapp_test	Test connection
+whatsapp_disconnect	Disconnect
+whatsapp_send_bill	Send via WhatsApp
+whatsapp_consent	WhatsApp OK
+whatsapp_consent_help	Guest agreed to receive WhatsApp messages. A phone number alone is not consent.
+whatsapp_server_only	Configure WhatsApp on the shop Server device
 settings_sec_backup	বাচকুপ তেই কিফিলুই তুবুদি
 settings_sec_diag	বেমার সাইমানমানি
 settings_sec_privacy	গোপনীয়তা
@@ -729,6 +754,13 @@ station_vps_dd	ও সতাতিওন নি বাগুই পরিনত�
 station_vps_dd_n	{n} সুইজাক(রক) · সুলাইনা বাগুই চাপদি
 bill_printers_dd	বিল নি বাগুই পরিনতের
 bill_printers_dd_n	{n} বিল নি বাগুই পরিনতের(রক) · সুলাইনা বাগুই তাপদি
+paper_heading	কাগজ
+paper_size	{w} × {h} mm
+paper_roll	{w} mm রোল
+paper_not_set	কাগজ তাবুক তাই নাইথি
+paper_length_mm	কালাই (mm)
+printer_paper_help	ই প্রিন্টারনি কাগজ mm ও। কালাই কুসুক অর্থ রোল: সাবকং স্লিপ বিনি সামগ্রী কাসা কালাই। পরিনতের নাইদি কুসুক কাগজ প্রিন্টারনি ড্রাইভার নি বুথুক (সাগই মান খই খা 80 mm রোল) তেই সিকাম নি থিক খলাইমানি কাগজ তাংখা সুইয়া।
+preview_help	ই স্লিপ য়াখুল নি সাইমানি প্রিন্টারনি কাগজ সাকাংও, অ'ও ছাপা খলাইজাক: প্রিন্টার থাংমানি সাকাং আগলা কোণ নি সত্যি মাপ ও (ধূসর: থাংমান য়াফুরু), কালাই স্লিপ বেসি পাতা ও, কাগজনি য়াফুরু নি উয়াংগ বাগই তান'জাক। প্রিন্টার সাইখা খা প্রিভিউ সাকসা সুইয়ই; সাবকং প্রিন্টারনি কাগজ প্রিন্টার ও থিক খলাইয়ই।
 job_layout	নকসা
 job_delivery	সামুং বাহাই খে রহরজাক
 job_delivery_help	ওস নি সুইজাক, কুতাল বাইত, এবা ESC/POS. বিল তেই রাংচাকনি তিচকেত খরকসা খরকসা খে সাক সাকনি থানি তঙুই তঙ. জেসা ফান সামুং জেসা ফান পরিনতের ও থাঙুই মান ফিনদ সাভে খলাইজাক.
@@ -1105,9 +1137,6 @@ remove_these_tables	ও তাবলে ন সুকাক দি
 table_remove_ph	কুচাক দি: ত1-ত24, এবা কাইসা তাবলে নি মুং
 find_server	দুকান নি সেরভের ন নাইদি
 bill_format	বিল নি সুনামুং
-bill_header_ph	আদরেস নি কক | ফনে
-fssai_ph	FSSAI লাইসেনস নি রাং. (ভারাত)
-bill_footer_ph	য়াফাঙ (এ.গ. হামবাই য়াফার, তেইসা নাইদি)
 reset_bill_format	সুকাংনি হাই খে রেসেত খাই দি
 bill_format_reset	বিল নি ফরমাত সুকাংনি হাই খে সুলাইজাক
 reset_kot_format	সুকাংনি হাই খে রেসেত খাই দি
@@ -1146,7 +1175,6 @@ kot_kind_modified	সুলাইজাক
 kot_kind_cancelled	চানচেল উংখা
 kot_style_heading	কুতাল মুংনি কতরমা & কতরমা
 kot_style_title	মুং
-kot_style_item_qty	মানুই · কুবাংমা
 kot_style_field_pick	খাকচাংমা জাগা চংদি
 kot_weight_regular	কুপলাইসা
 kot_weight_bold	বলদ
@@ -1158,8 +1186,8 @@ content_width_bill	বিল নি মানুই নি কতরমা (ম)
 content_width_kot	KOT মানুইরকনি কতরমা (ম)
 content_width_ph	এবা খে কাইসা মানুই কতরমা সুইদি, 40-210 ম
 content_width_help	ও সলিপ নি পরিনত বুসুক উংখা. বিল তেই KOT খরকসা খরকসা সাক সাকনি রাংচাকন নারুকনাই.
-content_width_bill_help	গুএসত বিল বাহাই খে পরিনত উংখা. 210 ম নি সুকাং (পাজাক). 58 ম কুচার সলিপ, 80 ম কতর সলিপ, 112 ম 4-ইনচ, 210 ম আ4-কুরাক. নি সিমি 210 জরা জেসা ফান রাং তয়পে খাই দি.KOT তাব ও রাংচাকনি তিচকেত নি রাং নি রাংচাক তঙ.
-content_width_kot_help	তিচকেত নি পরিনত উংখা বাহাই খে. সুকাং 80 ম. 58 ম সুপরাকজাক, 80 ম কতর সুপরাকজাক, 112 ম 4-ইনচ, 210 ম বুলা. নি সিমি 210 জরা জেসা ফান ভালুএ ন তয়পে খাই দি.বিল তাব ও গুএসত নি বিল রক নি সাক সাকনি উইদথ তঙ.
+content_width_bill_help	খুলুমজাকনি বিল বেসে ফাৎলাই ছাপা জাগো, mm-ও (40–210)। বো যে কাগজনো এই সত্যি মাপ বাই ছাপা জাগো; অনি সিপিং কাগজনো ছাপানি কিনারা সালায়নি বিসিং কাৎগো (কাগজ নুক)। চাক্সালনি টিকেটনি নিজ ফাৎলাই KOT টেবনো তংগো।
+content_width_kot_help	চাক্সালনি টিকেট বেসে ফাৎলাই ছাপা জাগো, mm-ও (40–210)। বো যে কাগজনো এই সত্যি মাপ বাই ছাপা জাগো; অনি সিপিং কাগজনো ছাপানি কিনারা সালায়নি বিসিং কাৎগো (কাগজ নুক)। খুলুমজাকনি বিলনি নিজ ফাৎলাই বিল টেবনো তংগো।
 vp_paper_width	কুমাজাকনি কতরমা (ম)
 vp_paper_width_ph	এবা খে কাইসা মানুই কতরমা সুইদি, 40-210 ম
 vp_paper_width_help	বিল & KOT ফরমাত নি বিসিংতুই উঙুই তঙ — বিল (সুকাংনি 210 ম) তেই থুংমুংনি তিকেত (সুকাংনি 80 ম) নি বাগুই কাইসা খে.
@@ -1213,8 +1241,6 @@ schemes_help	BOGO, 100-1000, তেই সুলাইজাক চমব. চ�
 scheme_bogo_ph	Buy 2 Thali get 1 Chaas
 add_scheme	BOGO চাপদি
 schedule_ph	জরা / খাকচাংমা জরা — সাল-সুম 07:00-11:00 এবা HappyHour 17:00-19:00=150
-upi_vpa_ph	UPI ID (VPA)
-upi_payee_ph	UPI রাং মানাই মুং (চাজাক য়া)
 upi_qr	UPI QR
 show_upi_qr	ফুনুকদি UPI QR
 close_upi_qr	খলবুই
@@ -1295,8 +1321,6 @@ printer_mode_first	পুইলা আব সামুং তাংনাই
 printer_mode_all	জতন পরিনত খাইদি
 kot_show_area	আমচাই
 kot_hide_area	জাগা ন খুমদি
-kot_show_item_hdr	মানুই · কুবাংমা
-kot_hide_item_hdr	কলম ন খুমদি
 kot_show_title	মুচুংতুই লিনে
 kot_hide_title	মুচুংতুই রুদি
 kot_field_cycle	তেই কাইসা চংদি
@@ -1337,12 +1361,12 @@ private_code_ph	12 অংকনি কোড
 stamp_on	সতামপ: ফিলে-ও
 pay_qr_on	রাং রুমানি QR: ফিলে-ও
 pay_qr_off	রাং রুমানি QR: কুরুই
+printers_screen_tip	Nai ni bai hono device ni haikhlai mani printer rog na tongnai tei hono dokan ni bagwi tongnai. Bill printer rog: Bill tei KOT format → Bill. Ochaksa: Ochaksa → Ochaksa station rog.
+printers_found_none	Printer kaisa mani mano.
+nav_loading	Load khlaiwi tongo…
+kot_copy_from	Oro thani copy khlai
+kot_copy_from_help	Ade bwsa line bwsa size, thickness bai alignment oro copy khlaio. Ao bwsa bini banner, item prefix bai strike rwkhaio. Rwkhaini bagwi KOT format save khlai.
 items_tmpl_heading	Item template rog
 items_tmpl_help	Nini menu bai chakhwi, category tei photo rog. Dokan ni setting tei staff rog jesa tongo osa tongnai.
 public_tmpl_help	Sabo bo download khlainai pha phaiwi menu rog. Kaisa internet nangnai.
 private_tmpl_help	Nini Khaynjo contact ni bisingo mani 12 digit code bai rakha khlaiwi customer menu rog.
-printers_screen_tip	Nai ni bai hono device ni haikhlai mani printer rog na tongnai tei hono dokan ni bagwi tongnai. Bill printer rog: Bill tei KOT format → Bill. Ochaksa: Ochaksa → Ochaksa station rog.
-printers_found_none	Printer kaisa mani mano.
-kot_copy_from	Oro thani copy khlai
-kot_copy_from_help	Ade bwsa line bwsa size, thickness bai alignment oro copy khlaio. Ao bwsa bini banner, item prefix bai strike rwkhaio. Rwkhaini bagwi KOT format save khlai.
-nav_loading	Load khlaiwi tongo…

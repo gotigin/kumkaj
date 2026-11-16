@@ -60,10 +60,6 @@ bill_item_layout	Öğe düzeni
 bill_item_layout_columns	Sütunlar
 bill_item_layout_stacked	Yığılmış
 bill_item_header	Sütun başlıkları
-bill_item_hdr_item	Öğe başlığı
-bill_item_hdr_qty	Adet başlığı
-bill_item_hdr_price	Fiyat başlığı
-bill_item_hdr_amount	Tutar başlığı
 bill_item_name	Öğe adı
 bill_item_qty	Adet
 bill_item_price	Fiyat
@@ -71,6 +67,13 @@ bill_item_amount	Tutar
 bill_item_note	Ürün notu
 bill_item_col_sep	Sütun çizgileri
 slip_col_width	Genişlik (mm)
+paper_heading	Kâğıt
+paper_size	{w} × {h} mm
+paper_roll	{w} mm rulo
+paper_not_set	kâğıt henüz bilinmiyor
+paper_length_mm	Uzunluk (mm)
+printer_paper_help	Bu yazıcının kâğıdı mm cinsinden. Boş Uzunluk rulodur: her fiş içeriği kadar uzundur. Yazıcıları bul, boş kâğıdı yazıcının sürücüsünden doldurur (söyleyemezse 80 mm rulo) ve önceden ayarlanmış olanı asla değiştirmez.
+preview_help	Bu fiş, aşağıda seçilen yazıcının kâğıdında, orada basıldığı gibi: yazıcının ulaştığı sol üst köşeden gerçek boyutta (gri: ulaşamadığı kenarlar), uzun fiş daha çok sayfada, kâğıt kenarını aşan her şey kesilir. Yazıcı seçmek yalnızca önizlemeyi değiştirir; her yazıcının kâğıdı Yazıcılar altında ayarlanır.
 slip_col_start	Başlangıç boşluğu (px)
 slip_col_end	Bitiş boşluğu (px)
 slip_columns_help	Her sütunun genişliği başlangıç ve bitiş boşluğunu da içerir. Metin kendi sütunu içinde kaydırılır; içerik genişliğini aşan kısım kâğıtta ve önizlemede kesilir.
@@ -838,3 +841,4 @@ nav_loading	Yükleniyor…
 printer_mode_first	Çalışanı olan ilkini
 printer_mode_all	Hepsi üzerinde baskı al
 slip_columns	Sütunlar
+slip_col_header	Başlık

@@ -60,10 +60,6 @@ bill_item_layout	د توکو ترتیب
 bill_item_layout_columns	کالمونه
 bill_item_layout_stacked	پټه شوې
 bill_item_header	د کالم سرلیکونه
-bill_item_hdr_item	د توکي سرلیک
-bill_item_hdr_qty	مقدار سرلیک
-bill_item_hdr_price	د قیمت سرلیک
-bill_item_hdr_amount	د مقدار سرلیک
 bill_item_name	د توکي نوم
 bill_item_qty	مقدار
 bill_item_price	قیمت
@@ -71,6 +67,13 @@ bill_item_amount	مقدار
 bill_item_note	د توکو یادښت
 bill_item_col_sep	د کالم قواعد
 slip_col_width	سور (mm)
+paper_heading	کاغذ
+paper_size	{w} × {h} mm
+paper_roll	{w} mm رول
+paper_not_set	کاغذ لا معلوم نه دی
+paper_length_mm	اوږدوالی (mm)
+printer_paper_help	د دې چاپګر کاغذ په mm. خالي اوږدوالی رول دی: هره رسید د خپل محتوا په اندازه اوږده ده. «چاپګر ومومئ» خالي کاغذ د چاپګر له ډرایور ډکوي (که ونه شي ویلای، 80 mm رول) او هېڅکله مخکې ټاکل شوی نه بدلوي.
+preview_help	دا رسید لاندې ټاکل شوي چاپګر په کاغذ، لکه څنګه چې هلته چاپېږي: د هغه پورته کیڼ کونج څخه چې چاپګر ورته رسېږي په ریښتیني اندازه (خړ: هغه څنډې چې نه رسېږي)، اوږده رسید په ډېرو پاڼو، د کاغذ له څنډې هاخوا هرڅه پرې کېږي. د چاپګر ټاکل یوازې مخکتنه بدلوي؛ د هر چاپګر کاغذ په «چاپګر» کې ټاکل کېږي.
 slip_col_start	د پیل واټن (px)
 slip_col_end	د پای واټن (px)
 slip_columns_help	د هرې ستنې سور کې د هغې د پیل او پای واټن شامل دی. متن د خپلې ستنې دننه ماتیږي؛ هغه څه چې د منځپانګې له سور څخه وځي، په کاغذ او مخکتنه کې پرې کیږي.
@@ -838,3 +841,4 @@ nav_loading	بارېږي…
 printer_mode_first	لومړی دا کار کوي
 printer_mode_all	په ټولو کې چاپ کړئ
 slip_columns	ستنې
+slip_col_header	سرلیک

@@ -92,10 +92,6 @@ bill_item_layout	Artículo ñemohenda
 bill_item_layout_columns	Umi columna rehegua
 bill_item_layout_stacked	Oñembohyru
 bill_item_header	Umi vore iñakãrapu’ãva
-bill_item_hdr_item	Mba’e iñakãrapu’ãva
-bill_item_hdr_qty	Qty iñakãrapu’ãva
-bill_item_hdr_price	Precio iñakãrapu’ãva
-bill_item_hdr_amount	Monto iñakãrapu’ãva
 bill_item_name	Tembi’u réra
 bill_item_qty	Hetakue
 bill_item_price	Precio
@@ -103,6 +99,20 @@ bill_item_amount	Monto rehegua
 bill_item_note	Nota plato rehegua
 bill_item_col_sep	Umi regla columna rehegua
 slip_columns	Columna-kuéra
+slip_col_header	Iñakãrapu’ãva
+bill_line_logo	Logo
+bill_logo_picture	Ta'anga
+bill_logo_choose	Eiporavo ta'anga
+bill_logo_remove	Embogue ta'anga
+bill_logo_none	Ndaipóri ta'anga
+bill_logo_unreadable	Ndaha'éi ta'anga ko app ikatúva omoñe'ẽ
+bill_logo_width	Pe'a (px)
+bill_logo_height	Yvatekue (px)
+bill_logo_tones	Hovyũ‑morotĩ
+bill_logo_solid	Hatã
+bill_logo_shaded	Kuarahy'ãme
+bill_logo_help	Pe'a ha yvatekue px‑pe. Nandi ohasa ta'anga rehe: peteĩ nandi oñongatu iñemohenda, mokõive nandi oipuru itamaño; mokõive oñemoĩramo oike ipype, ndojepysói araka'eve. Ta'anga'ỹre: logo ojehechaukáva oñongatu iyvatekue tenda nandi ramo; Mokañy oipe'a.
+bill_logo_tones_help	Hatã: opa kyta hũ térã morotĩ, logo hesakãvape g̃uarã. Kuarahy'ãme: hovyũ‑morotĩ oiko kyta michĩ ra'angáramo, ta'anga ha kuarahy'ã sua'ípe g̃uarã.
 slip_col_width	Pe (mm)
 slip_col_start	Ñepyrũha pa’ũ (px)
 slip_col_end	Pahaha pa’ũ (px)
@@ -167,6 +177,21 @@ alerts_help	Mboy tiémpopa opyta pantalla-pe ndéve g̃uarã umi marandu estado 
 snack_secs_ph	Segúndo (3–60, 10 por defecto) .
 snack_secs_save	Eñongatu tiempo de alerta
 snack_secs_saved	Tiempo de alerta oñeñongatúva — {n} segundos
+settings_sec_whatsapp	WhatsApp
+whatsapp_cloud_help	Use your own Meta WhatsApp Cloud API. Create a System User token with whatsapp_business_messaging (temporary dashboard tokens expire). Credentials stay on this Server only — never on extra tills. Accepted means Meta took the request, not that the guest received it.
+whatsapp_phone_id_ph	Phone Number ID
+whatsapp_token_ph	Access Token (leave blank to keep)
+whatsapp_template_ph	Bill template name (optional)
+whatsapp_template_lang_ph	Template language (e.g. en)
+whatsapp_enable	Enable
+whatsapp_disable	Off
+whatsapp_save	Save WhatsApp
+whatsapp_test	Test connection
+whatsapp_disconnect	Disconnect
+whatsapp_send_bill	Send via WhatsApp
+whatsapp_consent	WhatsApp OK
+whatsapp_consent_help	Guest agreed to receive WhatsApp messages. A phone number alone is not consent.
+whatsapp_server_only	Configure WhatsApp on the shop Server device
 settings_sec_backup	Copia de seguridad & jegueru jey
 settings_sec_diag	Diagnóstico rehegua
 settings_sec_privacy	Ñemiguáva
@@ -729,6 +754,13 @@ station_vps_dd	Impresora ko emisora-pe guarã
 station_vps_dd_n	{n} impresorakuéra · epoko emoambue hag̃ua
 bill_printers_dd	Impresora-kuéra pe factura-pe guarã
 bill_printers_dd_n	{n} impresorakuéra factura-pe g̃uarã · epoko emoambue hag̃ua
+paper_heading	Kuatia
+paper_size	{w} × {h} mm
+paper_roll	{w} mm jere
+paper_not_set	kuatia ndojekuaái gueteri
+paper_length_mm	Puku (mm)
+printer_paper_help	Ko impresora kuatia mm-pe. Puku nandi ha'e jere: opa comprobante ipuku ijehupyrukuéicha. Eheka umi impresora omyenyhẽ kuatia nandi impresora driver-gui (80 mm jere ndaikatúiramo he'i) ha araka'eve ndomoambuéi oñemboguapýmava.
+preview_help	Ko comprobante impresora oñeiporavóva yvy gotyo kuatiápe, upépe oñeimprimi haguéicha: tuichakue añetete yvate asu gotyo impresora ohupytývagui (hũngy: henda ndohupytýiva), comprobante ipukúva hoja hetavépe, kuatia rembe'y rapykuéri oĩva oñekytĩ. Impresora jeporavo omoambue vista previa añoite; opa impresora kuatia oñemboguapy Impresora-kuéra-pe.
 job_layout	Diseño rehegua
 job_delivery	Mba’éichapa oñemondo tembiapo
 job_delivery_help	Kuatia SO rehegua, byte raw, térã ESC/POS. Pe factura ha pe boleto de cocina káda uno oñongatu imbaʼéva. Tahaꞌe peteĩva tembiapo ikatu oho oimeraẽ impresora Find oñongatuvaꞌekuépe.
@@ -1105,9 +1137,6 @@ remove_these_tables	Ojepe’a ko’ã mesa ojekaru haguã
 table_remove_ph	Ojepe’a: T1-T24, térã peteĩ mesa ojekaru haguã réra
 find_server	Eheka pe tenda servidor
 bill_format	Formato de proyecto de ley rehegua
-bill_header_ph	Dirección | teléfono rupive
-fssai_ph	FSSAI licencia no. (India) .
-bill_footer_ph	Footer (e.g. Aguyje, evisita jey)
 reset_bill_format	Oñemoĩjey ñepyrũrãme
 bill_format_reset	Factura formato oñemohenda jey por defecto-pe
 reset_kot_format	Oñemoĩjey ñepyrũrãme
@@ -1146,7 +1175,6 @@ kot_kind_modified	Oñemoambue
 kot_kind_cancelled	Oñembogue
 kot_style_heading	Tipo de campo tuichakue & ipohýi
 kot_style_title	Título
-kot_style_item_qty	Artículo · Qty
 kot_style_field_pick	Eiporavo campo
 kot_weight_regular	Mbohekojoja
 kot_weight_bold	Audaz
@@ -1158,8 +1186,8 @@ content_width_bill	Factura contenido ipekue (mm) .
 content_width_kot	KOT contenido ipekue (mm) .
 content_width_ph	Térã ehai peteĩ contenido ipekue, 40–210 mm
 content_width_help	Mba’éichapa ipypuku ko slip oimprimi. Bill ha KOT peteĩteĩ oguereko ipukukue.
-content_width_bill_help	Mba’éichapa tuicha oñeimprimi pe factura invitado rehegua. Por defecto 210 mm (página). 58 mm deslizamiento estrecho, 80 mm ipekue deslizamiento, 112 mm 4 pulgada, 210 mm A4 ipekue. Ehai oimeraẽva valor 40 guive 210 peve.Umi boleto cocina rehegua oguereko ipukukue tee pe ficha KOT-pe.
-content_width_kot_help	Mba’éichapa tuicha oñeimprimi pe boleto de cocina. Por defecto 80 mm rehegua. 58 mm deslizamiento estrecho, deslizamiento ipekue 80 mm, 112 mm 4 pulgadas, 210 mm página. Ehai oimeraẽva valor 40 guive 210 peve.Umi factura invitado rehegua oguereko ipukukue tee pestaña Factura-pe.
+content_width_bill_help	Mboýpa ipysokue oñemboheko ohóva cuenta, mm-pe (40–210). Oñemboheko ko tuichakue añeteguáme oimeraẽ kuatiápe; kuatia ipoʼivévape, pehẽ ohasáva imprenta rembeʼy oñekytĩ (ehecha Kuatia). Kosina boletokuéra oguereko ipysokue KOT tab-pe.
+content_width_kot_help	Mboýpa ipysokue oñemboheko kosina boleto, mm-pe (40–210). Oñemboheko ko tuichakue añeteguáme oimeraẽ kuatiápe; kuatia ipoʼivévape, pehẽ ohasáva imprenta rembeʼy oñekytĩ (ehecha Kuatia). Ohóva cuentakuéra oguereko ipysokue Cuenta tab-pe.
 vp_paper_width	Contenido ipekue (mm) .
 vp_paper_width_ph	Térã ehai peteĩ contenido ipekue, 40–210 mm
 vp_paper_width_help	Contenido ipekue oñemohenda formato Bill & KOT guýpe — peteĩteĩ factura-pe g̃uarã (210 mm por defecto) ha boleto cocina-pe g̃uarã (80 mm por defecto).
@@ -1213,8 +1241,6 @@ schemes_help	BOGO, porcentaje-off, ha combo fijo. Umi combo oñembotuichave lín
 scheme_bogo_ph	Jogua 2 Thali ohupyty 1 Chaas
 add_scheme	Oñemoĩve BOGO .
 schedule_ph	Aravo / aravo vy’apavẽ — Lunes-Vie 07:00-11:00 térã HappyHour 17:00-19:00=150
-upi_vpa_ph	UPI ID (VPA)
-upi_payee_ph	UPI ojepagáva réra (opcional) .
 upi_qr	UPI QR
 show_upi_qr	Ohechauka UPI QR
 close_upi_qr	Oñemboty
@@ -1295,8 +1321,6 @@ printer_mode_first	Primero upéva osẽ porã
 printer_mode_all	Eimprimi opavave ári
 kot_show_area	Área rehegua
 kot_hide_area	Oñomi área
-kot_show_item_hdr	Artículo · Qty
-kot_hide_item_hdr	Oñomi umi columna
 kot_show_title	Línea título rehegua
 kot_hide_title	Oñomi título
 kot_field_cycle	Eiporavo ambue mba’e
@@ -1337,12 +1361,12 @@ private_code_ph	Código 12 papapy
 stamp_on	Sello: archivo-pe
 pay_qr_on	QR de pago: archivo-pe
 pay_qr_off	Pago QR: ndaipóri
+printers_screen_tip	Jeheka ohechauka umi impresora ko mba'e ikatúva oipuru ha oñongatu ko tendápe guarã. Impresora cuenta-pe guarã: Cuenta ha KOT formato → Cuenta. Tembiapoha: Tembiapoha → Tembiapoha estación.
+printers_found_none	Ndojejuhúi impresora.
+nav_loading	Henyhẽhína…
+kot_copy_from	Kopia ko'águi
+kot_copy_from_help	Okopia peteĩteĩ línea tuichakue, ipohyikue ha iñembohysýi upe tipo-gui ko'ápe. Ko tipo oñongatu ijehegui banner, prefijo ha tachado. Eñongatu formato KOT reñongatu hag̃ua.
 items_tmpl_heading	Mba'e techaukaha
 items_tmpl_help	Tembi'u, mba'e jehaipy ha ta'anga ne menu-pe guarã. Tenda ñemboheko ha mba'apoharakuéra opyta ojeguáicha.
 public_tmpl_help	Menu ñepyrũrã oimeraẽva ikatúva omboguejy. Oikotevẽ internet peteĩ jey.
 private_tmpl_help	Cliente menu oñeñongatúva 12 papapy código rehe ne Khaynjo kuatiápe guive.
-printers_screen_tip	Jeheka ohechauka umi impresora ko mba'e ikatúva oipuru ha oñongatu ko tendápe guarã. Impresora cuenta-pe guarã: Cuenta ha KOT formato → Cuenta. Tembiapoha: Tembiapoha → Tembiapoha estación.
-printers_found_none	Ndojejuhúi impresora.
-kot_copy_from	Kopia ko'águi
-kot_copy_from_help	Okopia peteĩteĩ línea tuichakue, ipohyikue ha iñembohysýi upe tipo-gui ko'ápe. Ko tipo oñongatu ijehegui banner, prefijo ha tachado. Eñongatu formato KOT reñongatu hag̃ua.
-nav_loading	Henyhẽhína…

@@ -92,10 +92,6 @@ bill_item_layout	Układ przedmiotu
 bill_item_layout_columns	Kolumny
 bill_item_layout_stacked	Ułożone
 bill_item_header	Nagłówki kolumn
-bill_item_hdr_item	Nagłówek pozycji
-bill_item_hdr_qty	Nagłówek ilościowy
-bill_item_hdr_price	Nagłówek ceny
-bill_item_hdr_amount	Nagłówek kwoty
 bill_item_name	Nazwa dania
 bill_item_qty	Ilość
 bill_item_price	Cena
@@ -103,6 +99,20 @@ bill_item_amount	Kwota
 bill_item_note	Uwaga dotycząca dania
 bill_item_col_sep	Reguły kolumnowe
 slip_columns	Kolumny
+slip_col_header	Nagłówek
+bill_line_logo	Logo
+bill_logo_picture	Obraz
+bill_logo_choose	Wybierz obraz
+bill_logo_remove	Usuń obraz
+bill_logo_none	Brak obrazu
+bill_logo_unreadable	To nie jest obraz, który aplikacja umie odczytać
+bill_logo_width	Szerokość (px)
+bill_logo_height	Wysokość (px)
+bill_logo_tones	Szarości
+bill_logo_solid	Pełne
+bill_logo_shaded	Cieniowane
+bill_logo_help	Szerokość i wysokość w px. Puste podąża za obrazem: jedno puste zachowuje kształt, oba puste używają jego rozmiaru; oba podane mieszczą go w środku, nigdy rozciągniętego. Bez obrazu: pokazane logo zachowuje swoją wysokość jako puste miejsce; Ukryj je usuwa.
+bill_logo_tones_help	Pełne: każda kropka czarna lub biała, dla ostrych logo. Cieniowane: szarości stają się drobnym wzorem kropek, dla zdjęć i miękkich cieni.
 slip_col_width	Szerokość (mm)
 slip_col_start	Odstęp na początku (px)
 slip_col_end	Odstęp na końcu (px)
@@ -167,6 +177,21 @@ alerts_help	Jak długo komunikaty o statusie pozostają na ekranie (w tym logowa
 snack_secs_ph	Sekundy (3–60, domyślnie 10)
 snack_secs_save	Oszczędź czas alertu
 snack_secs_saved	Zapisano czas alertu — {n} sekund
+settings_sec_whatsapp	WhatsApp
+whatsapp_cloud_help	Use your own Meta WhatsApp Cloud API. Create a System User token with whatsapp_business_messaging (temporary dashboard tokens expire). Credentials stay on this Server only — never on extra tills. Accepted means Meta took the request, not that the guest received it.
+whatsapp_phone_id_ph	Phone Number ID
+whatsapp_token_ph	Access Token (leave blank to keep)
+whatsapp_template_ph	Bill template name (optional)
+whatsapp_template_lang_ph	Template language (e.g. en)
+whatsapp_enable	Enable
+whatsapp_disable	Off
+whatsapp_save	Save WhatsApp
+whatsapp_test	Test connection
+whatsapp_disconnect	Disconnect
+whatsapp_send_bill	Send via WhatsApp
+whatsapp_consent	WhatsApp OK
+whatsapp_consent_help	Guest agreed to receive WhatsApp messages. A phone number alone is not consent.
+whatsapp_server_only	Configure WhatsApp on the shop Server device
 settings_sec_backup	Kopia zapasowa i przywracanie
 settings_sec_diag	Diagnostyka
 settings_sec_privacy	Prywatność
@@ -729,6 +754,13 @@ station_vps_dd	Drukarki dla tej stacji
 station_vps_dd_n	{n} drukarki · dotknij, aby zmienić
 bill_printers_dd	Drukarki za rachunek
 bill_printers_dd_n	{n} drukarki do rachunku · dotknij, aby zmienić
+paper_heading	Papier
+paper_size	{w} × {h} mm
+paper_roll	rolka {w} mm
+paper_not_set	papier jeszcze nieznany
+paper_length_mm	Długość (mm)
+printer_paper_help	Papier tej drukarki w mm. Pusta Długość to rolka: każdy paragon jest tak długi jak jego treść. Znajdź drukarki uzupełnia pusty papier ze sterownika drukarki (rolka 80 mm, gdy nie potrafi powiedzieć) i nigdy nie zmienia już ustawionego.
+preview_help	Ten paragon na papierze drukarki wybranej poniżej, tak jak się na niej drukuje: w rzeczywistym rozmiarze od lewego górnego rogu, do którego sięga drukarka (szary: krawędzie, do których nie sięga), długi paragon na kilku arkuszach, wszystko poza krawędzią papieru jest obcinane. Wybór drukarki zmienia tylko podgląd; papier każdej drukarki ustawia się w Drukarki.
 job_layout	Układ
 job_delivery	Jak praca jest wysyłana
 job_delivery_help	Dokument systemu operacyjnego, surowe bajty lub ESC/POS. Rachunek i bilet do kuchni zachowują swoje własne. Każde zadanie może zostać przesłane do dowolnej drukarki zapisanej przez Find.
@@ -1105,9 +1137,6 @@ remove_these_tables	Usuń te stoły do jadalni
 table_remove_ph	Usuń: T1-T24 lub nazwę jednego stołu jadalnego
 find_server	Znajdź serwer sklepu
 bill_format	Format rachunku
-bill_header_ph	Adres | telefon
-fssai_ph	Licencja FSSAI nr. (Indie)
-bill_footer_ph	Stopka (np. Dziękuję, odwiedź ponownie)
 reset_bill_format	Przywróć ustawienia domyślne
 bill_format_reset	Format rachunku przywrócony do wartości domyślnych
 reset_kot_format	Przywróć ustawienia domyślne
@@ -1146,7 +1175,6 @@ kot_kind_modified	Zmodyfikowany
 kot_kind_cancelled	Anulowano
 kot_style_heading	Rozmiar i waga typu pola
 kot_style_title	Tytuł
-kot_style_item_qty	Pozycja · Ilość
 kot_style_field_pick	Wybierz pole
 kot_weight_regular	Regularne
 kot_weight_bold	Odważne
@@ -1158,8 +1186,8 @@ content_width_bill	Szerokość zawartości banknotów (mm)
 content_width_kot	KOT szerokość zawartości (mm)
 content_width_ph	Możesz też wpisać szerokość treści 40–210 mm
 content_width_help	Jak szeroki jest wydruk tego poślizgu. Bill i KOT zachowują swoją szerokość.
-content_width_bill_help	Szerokość wydruku rachunku gościa. Domyślnie 210 mm (strona). Wąska kartka 58 mm, szerokość 80 mm, 112 mm 4 cale, szerokość A4 210 mm. Wpisz dowolną wartość od 40 do 210. Bilety kuchenne mają własną szerokość na zakładce KOT.
-content_width_kot_help	Szerokość wydruku kwitu kuchennego. Domyślnie 80 mm. Pasek wąski 58 mm, pasek szeroki 80 mm, 112 mm 4 cale, strona 210 mm. Wpisz dowolną wartość od 40 do 210. Rachunki gości mają swoją własną szerokość na karcie Rachunek.
+content_width_bill_help	Jak szeroko drukuje się rachunek gościa, w mm (40–210). Drukuje się w tym rzeczywistym rozmiarze na dowolnym papierze; na węższym papierze część za krawędzią druku jest obcinana (zob. Papier). Bilety kuchenne mają własną szerokość na karcie KOT.
+content_width_kot_help	Jak szeroko drukuje się bilet kuchenny, w mm (40–210). Drukuje się w tym rzeczywistym rozmiarze na dowolnym papierze; na węższym papierze część za krawędzią druku jest obcinana (zob. Papier). Rachunki gości mają własną szerokość na karcie Rachunek.
 vp_paper_width	Szerokość zawartości (mm)
 vp_paper_width_ph	Możesz też wpisać szerokość treści 40–210 mm
 vp_paper_width_help	Szerokość treści ustawiana jest w formacie Bill & KOT — osobno dla rachunku (domyślnie 210 mm) i kwitu kuchennego (domyślnie 80 mm).
@@ -1213,8 +1241,6 @@ schemes_help	BOGO, procent zniżki i stałe kombinacje. Kombinacje rozszerzają 
 scheme_bogo_ph	Buy 2 Thali get 1 Chaas
 add_scheme	Dodaj BOGO
 schedule_ph	Godziny / happy hour — pon.-pt. 07:00-11:00 lub HappyHour 17:00-19:00=150
-upi_vpa_ph	UPI ID (VPA)
-upi_payee_ph	UPI nazwa odbiorcy płatności (opcjonalnie)
 upi_qr	UPI QR
 show_upi_qr	Pokaż UPI QR
 close_upi_qr	Zamknij
@@ -1295,8 +1321,6 @@ printer_mode_first	Po pierwsze, to działa
 printer_mode_all	Drukuj na wszystkim
 kot_show_area	Obszar
 kot_hide_area	Ukryj obszar
-kot_show_item_hdr	Pozycja · Ilość
-kot_hide_item_hdr	Ukryj kolumny
 kot_show_title	Linia tytułowa
 kot_hide_title	Ukryj tytuł
 kot_field_cycle	Wybierz dalej
@@ -1337,12 +1361,12 @@ private_code_ph	12-cyfrowy kod
 stamp_on	Znaczek: w aktach
 pay_qr_on	QR płatności: w pliku
 pay_qr_off	QR płatności: brak
+printers_screen_tip	Szukaj pokazuje drukarki, których to urządzenie może używać, i zapisuje je dla tego sklepu. Drukarki rachunków: Format rachunku i KOT → Rachunek. Kuchnia: Kuchnia → Stanowiska kuchni.
+printers_found_none	Nie znaleziono drukarek.
+nav_loading	Wczytywanie…
+kot_copy_from	Kopiuj z
+kot_copy_from_help	Kopiuje rozmiar, grubość i wyrównanie każdego wiersza z tego rodzaju do tego. Ten rodzaj zachowuje własny baner, prefiks pozycji i przekreślenie. Zapisz format KOT, aby to zachować.
 items_tmpl_heading	Szablony pozycji
 items_tmpl_help	Dania, kategorie i zdjęcia do Twojego menu. Ustawienia sklepu i personel pozostają bez zmian.
 public_tmpl_help	Menu startowe, które każdy może pobrać. Internet potrzebny raz.
 private_tmpl_help	Menu klientów zablokowane 12-cyfrowym kodem od Twojego kontaktu w Khaynjo.
-printers_screen_tip	Szukaj pokazuje drukarki, których to urządzenie może używać, i zapisuje je dla tego sklepu. Drukarki rachunków: Format rachunku i KOT → Rachunek. Kuchnia: Kuchnia → Stanowiska kuchni.
-printers_found_none	Nie znaleziono drukarek.
-kot_copy_from	Kopiuj z
-kot_copy_from_help	Kopiuje rozmiar, grubość i wyrównanie każdego wiersza z tego rodzaju do tego. Ten rodzaj zachowuje własny baner, prefiks pozycji i przekreślenie. Zapisz format KOT, aby to zachować.
-nav_loading	Wczytywanie…

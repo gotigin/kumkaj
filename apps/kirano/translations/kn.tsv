@@ -60,10 +60,6 @@ bill_item_layout	ಐಟಂ ಲೇಔಟ್
 bill_item_layout_columns	ಕಂಭಗಳು
 bill_item_layout_stacked	ಸಾಲುಗಳು
 bill_item_header	ಕಂಭ ಶೀರ್ಷಿಕೆ
-bill_item_hdr_item	ಐಟಂ ಶೀರ್ಷಿಕೆ
-bill_item_hdr_qty	ಸಂಖ್ಯೆ ಶೀರ್ಷಿಕೆ
-bill_item_hdr_price	ದರ ಶೀರ್ಷಿಕೆ
-bill_item_hdr_amount	ಮೊತ್ತ ಶೀರ್ಷಿಕೆ
 bill_item_name	ಐಟಂ ಹೆಸರು
 bill_item_qty	ಪ್ರಮಾಣ
 bill_item_price	ದರ
@@ -71,6 +67,13 @@ bill_item_amount	ಮೊತ್ತ
 bill_item_note	ಐಟಂ ಟಿಪ್ಪಣಿ
 bill_item_col_sep	ಕಂಭ ಗೆರೆ
 slip_col_width	ಅಗಲ (mm)
+paper_heading	ಕಾಗದ
+paper_size	{w} × {h} mm
+paper_roll	{w} mm ರೋಲ್
+paper_not_set	ಕಾಗದ ಇನ್ನೂ ತಿಳಿದಿಲ್ಲ
+paper_length_mm	ಉದ್ದ (mm)
+printer_paper_help	ಈ ಮುದ್ರಕದ ಕಾಗದ mm ನಲ್ಲಿ. ಖಾಲಿ ಉದ್ದ ಎಂದರೆ ರೋಲ್: ಪ್ರತಿ ಚೀಟಿ ಅದರ ವಿಷಯದಷ್ಟೇ ಉದ್ದ. ಮುದ್ರಕಗಳನ್ನು ಹುಡುಕಿ ಖಾಲಿ ಕಾಗದವನ್ನು ಮುದ್ರಕದ ಡ್ರೈವರ್‌ನಿಂದ ತುಂಬಿಸುತ್ತದೆ (ಹೇಳಲಾಗದಿದ್ದರೆ 80 mm ರೋಲ್) ಮತ್ತು ಈಗಾಗಲೇ ಹೊಂದಿಸಿದ ಕಾಗದವನ್ನು ಎಂದಿಗೂ ಬದಲಿಸುವುದಿಲ್ಲ.
+preview_help	ಕೆಳಗೆ ಆಯ್ಕೆ ಮಾಡಿದ ಮುದ್ರಕದ ಕಾಗದದ ಮೇಲೆ ಈ ಚೀಟಿ, ಅಲ್ಲಿ ಮುದ್ರಣವಾಗುವಂತೆ: ಮುದ್ರಕ ತಲುಪುವ ಮೇಲಿನ ಎಡ ಮೂಲೆಯಿಂದ ನಿಜ ಗಾತ್ರದಲ್ಲಿ (ಬೂದು: ತಲುಪದ ಅಂಚುಗಳು), ಉದ್ದ ಚೀಟಿ ಹೆಚ್ಚು ಹಾಳೆಗಳಲ್ಲಿ, ಕಾಗದದ ಅಂಚಿನಾಚೆಗಿನದೆಲ್ಲ ಕತ್ತರಿಸಲ್ಪಡುತ್ತದೆ. ಮುದ್ರಕ ಆಯ್ಕೆ ಮಾಡಿದರೆ ಮುನ್ನೋಟ ಮಾತ್ರ ಬದಲಾಗುತ್ತದೆ; ಪ್ರತಿ ಮುದ್ರಕದ ಕಾಗದವನ್ನು ಪ್ರಿಂಟರ್‌ಗಳು ಅಡಿಯಲ್ಲಿ ಹೊಂದಿಸಲಾಗುತ್ತದೆ.
 slip_col_start	ಆರಂಭದ ಜಾಗ (px)
 slip_col_end	ಕೊನೆಯ ಜಾಗ (px)
 slip_columns_help	ಪ್ರತಿ ಕಾಲಮ್‌ನ ಅಗಲದಲ್ಲಿ ಅದರ ಆರಂಭ ಮತ್ತು ಕೊನೆಯ ಜಾಗ ಸೇರಿದೆ. ಪಠ್ಯ ತನ್ನ ಕಾಲಮ್ ಒಳಗೇ ಸುತ್ತುತ್ತದೆ; ವಿಷಯದ ಅಗಲವನ್ನು ಮೀರಿದ್ದು ಕಾಗದದಲ್ಲೂ ಪೂರ್ವವೀಕ್ಷಣೆಯಲ್ಲೂ ಕತ್ತರಿಸಲ್ಪಡುತ್ತದೆ.
@@ -838,3 +841,4 @@ nav_loading	ಲೋಡ್ ಆಗುತ್ತಿದೆ…
 printer_mode_first	ಮೊದಲು ಕೆಲಸ ಮಾಡುವುದು
 printer_mode_all	ಎಲ್ಲದರಲ್ಲೂ ಮುದ್ರಿಸಿ
 slip_columns	ಕಾಲಮ್‌ಗಳು
+slip_col_header	ಶೀರ್ಷಿಕೆ

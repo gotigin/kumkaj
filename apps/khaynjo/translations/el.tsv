@@ -92,10 +92,6 @@ bill_item_layout	Διάταξη ειδών
 bill_item_layout_columns	Στήλες
 bill_item_layout_stacked	Σε στοίβα
 bill_item_header	Κεφαλίδες στηλών
-bill_item_hdr_item	Κεφαλίδα είδους
-bill_item_hdr_qty	Κεφαλίδα ποσ.
-bill_item_hdr_price	Κεφαλίδα τιμής
-bill_item_hdr_amount	Κεφαλίδα ποσού
 bill_item_name	Όνομα πιάτου
 bill_item_qty	Ποσ.
 bill_item_price	Τιμή
@@ -103,6 +99,20 @@ bill_item_amount	Ποσό
 bill_item_note	Σημείωση πιάτου
 bill_item_col_sep	Γραμμές στηλών
 slip_columns	Στήλες
+slip_col_header	Κεφαλίδα
+bill_line_logo	Λογότυπο
+bill_logo_picture	Εικόνα
+bill_logo_choose	Επιλογή εικόνας
+bill_logo_remove	Αφαίρεση εικόνας
+bill_logo_none	Καμία εικόνα
+bill_logo_unreadable	Δεν είναι εικόνα που μπορεί να διαβάσει η εφαρμογή
+bill_logo_width	Πλάτος (px)
+bill_logo_height	Ύψος (px)
+bill_logo_tones	Γκρίζοι τόνοι
+bill_logo_solid	Συμπαγές
+bill_logo_shaded	Σκιασμένο
+bill_logo_help	Πλάτος και ύψος σε px. Το κενό ακολουθεί την εικόνα: ένα κενό κρατά το σχήμα της, και τα δύο κενά το δικό της μέγεθος· και τα δύο ορισμένα τη χωρούν μέσα, ποτέ τεντωμένη. Χωρίς εικόνα: ένα εμφανές λογότυπο κρατά το ύψος του ως κενό χώρο· η Απόκρυψη το αφαιρεί.
+bill_logo_tones_help	Συμπαγές: κάθε κουκκίδα μαύρη ή λευκή, για καθαρά λογότυπα. Σκιασμένο: οι γκρίζοι τόνοι γίνονται λεπτά μοτίβα κουκκίδων, για φωτογραφίες και απαλή σκίαση.
 slip_col_width	Πλάτος (mm)
 slip_col_start	Κενό αρχής (px)
 slip_col_end	Κενό τέλους (px)
@@ -167,6 +177,21 @@ alerts_help	Πόσο μένουν στην οθόνη τα μηνύματα κα
 snack_secs_ph	Δευτερόλεπτα (3–60, προεπιλογή 10)
 snack_secs_save	Αποθήκευση διάρκειας ειδοποίησης
 snack_secs_saved	Η διάρκεια ειδοποίησης αποθηκεύτηκε — {n} δευτερόλεπτα
+settings_sec_whatsapp	WhatsApp
+whatsapp_cloud_help	Use your own Meta WhatsApp Cloud API. Create a System User token with whatsapp_business_messaging (temporary dashboard tokens expire). Credentials stay on this Server only — never on extra tills. Accepted means Meta took the request, not that the guest received it.
+whatsapp_phone_id_ph	Phone Number ID
+whatsapp_token_ph	Access Token (leave blank to keep)
+whatsapp_template_ph	Bill template name (optional)
+whatsapp_template_lang_ph	Template language (e.g. en)
+whatsapp_enable	Enable
+whatsapp_disable	Off
+whatsapp_save	Save WhatsApp
+whatsapp_test	Test connection
+whatsapp_disconnect	Disconnect
+whatsapp_send_bill	Send via WhatsApp
+whatsapp_consent	WhatsApp OK
+whatsapp_consent_help	Guest agreed to receive WhatsApp messages. A phone number alone is not consent.
+whatsapp_server_only	Configure WhatsApp on the shop Server device
 settings_sec_backup	Αντίγραφο ασφαλείας και επαναφορά
 settings_sec_diag	Διαγνωστικά
 settings_sec_privacy	Απόρρητο
@@ -729,6 +754,13 @@ station_vps_dd	Εκτυπωτές για αυτόν τον σταθμό
 station_vps_dd_n	{n} εκτυπωτής/ές · αγγίξτε για αλλαγή
 bill_printers_dd	Εκτυπωτές για τον λογαριασμό
 bill_printers_dd_n	{n} εκτυπωτής/ές για τον λογαριασμό · αγγίξτε για αλλαγή
+paper_heading	Χαρτί
+paper_size	{w} × {h} mm
+paper_roll	ρολό {w} mm
+paper_not_set	το χαρτί δεν είναι ακόμη γνωστό
+paper_length_mm	Μήκος (mm)
+printer_paper_help	Το χαρτί αυτού του εκτυπωτή σε mm. Κενό Μήκος σημαίνει ρολό: κάθε απόδειξη έχει το μήκος του περιεχομένου της. Η «Εύρεση εκτυπωτών» συμπληρώνει κενό χαρτί από το πρόγραμμα οδήγησης του εκτυπωτή (ρολό 80 mm όταν δεν μπορεί να πει) και δεν αλλάζει ποτέ χαρτί που έχει ήδη οριστεί.
+preview_help	Αυτή η απόδειξη στο χαρτί του εκτυπωτή που επιλέχθηκε παρακάτω, όπως τυπώνεται εκεί: σε πραγματικό μέγεθος από την πάνω αριστερή γωνία που φτάνει ο εκτυπωτής (γκρι: άκρες που δεν φτάνει), μια μεγάλη απόδειξη σε περισσότερα φύλλα, ό,τι περνά την άκρη του χαρτιού κόβεται. Η επιλογή εκτυπωτή αλλάζει μόνο την προεπισκόπηση· το χαρτί κάθε εκτυπωτή ορίζεται στους Εκτυπωτές.
 job_layout	Διάταξη
 job_delivery	Πώς στέλνεται η εργασία
 job_delivery_help	Έγγραφο OS, ακατέργαστα byte ή ESC/POS. Ο λογαριασμός και το δελτίο κουζίνας κρατούν το καθένα το δικό του. Κάθε εργασία μπορεί να πάει σε όποιον εκτυπωτή έχει αποθηκεύσει η Εύρεση.
@@ -1105,9 +1137,6 @@ remove_these_tables	Αφαίρεση αυτών των τραπεζιών
 table_remove_ph	Αφαίρεση: T1-T24 ή όνομα ενός τραπεζιού
 find_server	Εύρεση του server του μαγαζιού
 bill_format	Μορφή λογαριασμού
-bill_header_ph	Διεύθυνση | τηλέφωνο
-fssai_ph	Αριθμός άδειας FSSAI (Ινδία)
-bill_footer_ph	Υποσέλιδο (π.χ. Ευχαριστούμε, ελάτε ξανά)
 reset_bill_format	Επαναφορά προεπιλογής
 bill_format_reset	Η μορφή λογαριασμού επέστρεψε στην προεπιλογή
 reset_kot_format	Επαναφορά προεπιλογής
@@ -1146,7 +1175,6 @@ kot_kind_modified	Τροποποιημένο
 kot_kind_cancelled	Ακυρωμένο
 kot_style_heading	Μέγεθος και βάρος πεδίου
 kot_style_title	Τίτλος
-kot_style_item_qty	Είδος · Ποσ.
 kot_style_field_pick	Επιλογή πεδίου
 kot_weight_regular	Κανονικό
 kot_weight_bold	Έντονο
@@ -1158,8 +1186,8 @@ content_width_bill	Πλάτος περιεχομένου λογαριασμού 
 content_width_kot	Πλάτος περιεχομένου KOT (mm)
 content_width_ph	Ή γράψτε πλάτος περιεχομένου, 40–210 mm
 content_width_help	Πόσο πλατύ τυπώνεται αυτό το δελτίο. Ο λογαριασμός και το KOT κρατούν το καθένα το δικό του πλάτος.
-content_width_bill_help	Πόσο πλατύς τυπώνεται ο λογαριασμός επισκέπτη. Προεπιλογή 210 mm (σελίδα). 58 mm στενό δελτίο, 80 mm φαρδύ δελτίο, 112 mm 4 ίντσες, 210 mm πλάτος A4. Γράψτε οποιαδήποτε τιμή από 40 έως 210. Τα δελτία κουζίνας έχουν δικό τους πλάτος στην καρτέλα KOT.
-content_width_kot_help	Πόσο πλατύ τυπώνεται το δελτίο κουζίνας. Προεπιλογή 80 mm. 58 mm στενό δελτίο, 80 mm φαρδύ δελτίο, 112 mm 4 ίντσες, 210 mm σελίδα. Γράψτε οποιαδήποτε τιμή από 40 έως 210. Οι λογαριασμοί επισκεπτών έχουν δικό τους πλάτος στην καρτέλα Λογαριασμός.
+content_width_bill_help	Πόσο φαρδύς τυπώνεται ο λογαριασμός του πελάτη, σε mm (40–210). Τυπώνεται σε αυτό το πραγματικό μέγεθος σε οποιοδήποτε χαρτί· σε στενότερο χαρτί το μέρος πέρα από την άκρη εκτύπωσης κόβεται (δείτε Χαρτί). Τα δελτία κουζίνας έχουν δικό τους πλάτος στην καρτέλα KOT.
+content_width_kot_help	Πόσο φαρδύ τυπώνεται το δελτίο κουζίνας, σε mm (40–210). Τυπώνεται σε αυτό το πραγματικό μέγεθος σε οποιοδήποτε χαρτί· σε στενότερο χαρτί το μέρος πέρα από την άκρη εκτύπωσης κόβεται (δείτε Χαρτί). Οι λογαριασμοί πελατών έχουν δικό τους πλάτος στην καρτέλα Λογαριασμός.
 vp_paper_width	Πλάτος περιεχομένου (mm)
 vp_paper_width_ph	Ή γράψτε πλάτος περιεχομένου, 40–210 mm
 vp_paper_width_help	Το πλάτος περιεχομένου ορίζεται στη Μορφή λογαριασμού και KOT — χωριστά για τον λογαριασμό (προεπιλογή 210 mm) και το δελτίο κουζίνας (προεπιλογή 80 mm).
@@ -1213,8 +1241,6 @@ schemes_help	BOGO, ποσοστό έκπτωσης και σταθεροί συ�
 scheme_bogo_ph	Αγόρασε 2 Thali πάρε 1 Chaas
 add_scheme	Προσθήκη BOGO
 schedule_ph	Ώρες / happy hour — Δευ-Παρ 07:00-11:00 ή HappyHour 17:00-19:00=150
-upi_vpa_ph	UPI ID (VPA)
-upi_payee_ph	Όνομα δικαιούχου UPI (προαιρετικό)
 upi_qr	UPI QR
 show_upi_qr	Εμφάνιση UPI QR
 close_upi_qr	Κλείσιμο
@@ -1295,8 +1321,6 @@ printer_mode_first	Ο πρώτος που δουλεύει
 printer_mode_all	Εκτύπωση σε όλους
 kot_show_area	Χώρος
 kot_hide_area	Απόκρυψη χώρου
-kot_show_item_hdr	Είδος · Ποσ.
-kot_hide_item_hdr	Απόκρυψη στηλών
 kot_show_title	Γραμμή τίτλου
 kot_hide_title	Απόκρυψη τίτλου
 kot_field_cycle	Επιλογή επόμενου
@@ -1337,12 +1361,12 @@ private_code_ph	12ψήφιος κωδικός
 stamp_on	Σφραγίδα: στο αρχείο
 pay_qr_on	QR πληρωμής: στο αρχείο
 pay_qr_off	QR πληρωμής: κανένα
+printers_screen_tip	Η Εύρεση δείχνει τους εκτυπωτές που μπορεί να χρησιμοποιήσει αυτή η συσκευή και τους αποθηκεύει για αυτό το κατάστημα. Εκτυπωτές λογαριασμών: Μορφή λογαριασμού & KOT → Λογαριασμός. Κουζίνα: Κουζίνα → Σταθμοί κουζίνας.
+printers_found_none	Δεν βρέθηκαν εκτυπωτές.
+nav_loading	Φόρτωση…
+kot_copy_from	Αντιγραφή από
+kot_copy_from_help	Αντιγράφει το μέγεθος, το πάχος και τη στοίχιση κάθε γραμμής από εκείνο το είδος σε αυτό. Αυτό το είδος κρατά το δικό του banner, πρόθεμα ειδών και διακριτή διαγραφή. Αποθηκεύστε τη μορφή KOT για να το κρατήσετε.
 items_tmpl_heading	Πρότυπα ειδών
 items_tmpl_help	Πιάτα, κατηγορίες και φωτογραφίες για το μενού σας. Οι ρυθμίσεις καταστήματος και το προσωπικό μένουν ως έχουν.
 public_tmpl_help	Αρχικά μενού που μπορεί να κατεβάσει ο καθένας. Χρειάζεται ίντερνετ μία φορά.
 private_tmpl_help	Μενού πελατών κλειδωμένα με 12ψήφιο κωδικό από την επαφή σας στο Khaynjo.
-printers_screen_tip	Η Εύρεση δείχνει τους εκτυπωτές που μπορεί να χρησιμοποιήσει αυτή η συσκευή και τους αποθηκεύει για αυτό το κατάστημα. Εκτυπωτές λογαριασμών: Μορφή λογαριασμού & KOT → Λογαριασμός. Κουζίνα: Κουζίνα → Σταθμοί κουζίνας.
-printers_found_none	Δεν βρέθηκαν εκτυπωτές.
-kot_copy_from	Αντιγραφή από
-kot_copy_from_help	Αντιγράφει το μέγεθος, το πάχος και τη στοίχιση κάθε γραμμής από εκείνο το είδος σε αυτό. Αυτό το είδος κρατά το δικό του banner, πρόθεμα ειδών και διακριτή διαγραφή. Αποθηκεύστε τη μορφή KOT για να το κρατήσετε.
-nav_loading	Φόρτωση…

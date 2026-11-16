@@ -92,10 +92,6 @@ bill_item_layout	Меню меню пунктунун жайгашуусу
 bill_item_layout_columns	Мамычалар
 bill_item_layout_stacked	Үйүлгөн
 bill_item_header	Мамычалардын аталыштары
-bill_item_hdr_item	Меню меню пунктунун аталышы
-bill_item_hdr_qty	Саны баш
-bill_item_hdr_price	Баа аталышы
-bill_item_hdr_amount	Сумма баш аты
 bill_item_name	Тамактын аты
 bill_item_qty	Саны
 bill_item_price	Баасы
@@ -103,6 +99,20 @@ bill_item_amount	Суммасы
 bill_item_note	Тамактын эскертүүсү
 bill_item_col_sep	Мамыча эрежелери
 slip_columns	Мамычалар
+slip_col_header	Аталыш
+bill_line_logo	Логотип
+bill_logo_picture	Сүрөт
+bill_logo_choose	Сүрөт тандоо
+bill_logo_remove	Сүрөттү алып салуу
+bill_logo_none	Сүрөт жок
+bill_logo_unreadable	Бул колдонмо окуй ала турган сүрөт эмес
+bill_logo_width	Туурасы (px)
+bill_logo_height	Бийиктиги (px)
+bill_logo_tones	Боз түстөр
+bill_logo_solid	Бүтүн
+bill_logo_shaded	Көлөкөлүү
+bill_logo_help	Туурасы жана бийиктиги px менен. Бош калса сүрөткө ылайыкташат: бирөө бош болсо формасы сакталат, экөө тең бош болсо өз өлчөмү; экөө тең берилсе ичине батырат, эч качан чоймолобойт. Сүрөт жок: көрсөтүлгөн логотип бийиктигин бош орун катары сактайт; Жашыруу аны алып салат.
+bill_logo_tones_help	Бүтүн: ар бир чекит кара же ак, так логотиптер үчүн. Көлөкөлүү: боз түстөр майда чекит оймосуна айланат, сүрөт жана жумшак көлөкө үчүн.
 slip_col_width	Туурасы (mm)
 slip_col_start	Башталыш аралыгы (px)
 slip_col_end	Аяк аралыгы (px)
@@ -167,6 +177,21 @@ alerts_help	Статус билдирүүлөрү сиз үчүн канча у�
 snack_secs_ph	Секунд (3–60, демейки 10)
 snack_secs_save	Эскертүү убактысын үнөмдөңүз
 snack_secs_saved	Эскертүү убактысы сакталды — {n} секунд
+settings_sec_whatsapp	WhatsApp
+whatsapp_cloud_help	Use your own Meta WhatsApp Cloud API. Create a System User token with whatsapp_business_messaging (temporary dashboard tokens expire). Credentials stay on this Server only — never on extra tills. Accepted means Meta took the request, not that the guest received it.
+whatsapp_phone_id_ph	Phone Number ID
+whatsapp_token_ph	Access Token (leave blank to keep)
+whatsapp_template_ph	Bill template name (optional)
+whatsapp_template_lang_ph	Template language (e.g. en)
+whatsapp_enable	Enable
+whatsapp_disable	Off
+whatsapp_save	Save WhatsApp
+whatsapp_test	Test connection
+whatsapp_disconnect	Disconnect
+whatsapp_send_bill	Send via WhatsApp
+whatsapp_consent	WhatsApp OK
+whatsapp_consent_help	Guest agreed to receive WhatsApp messages. A phone number alone is not consent.
+whatsapp_server_only	Configure WhatsApp on the shop Server device
 settings_sec_backup	Камдык көчүрмөнү сактоо жана калыбына келтирүү
 settings_sec_diag	Диагностика
 settings_sec_privacy	Купуялык
@@ -729,6 +754,13 @@ station_vps_dd	Бул станция үчүн принтерлер
 station_vps_dd_n	{n} принтерлер · өзгөртүү үчүн таптаңыз
 bill_printers_dd	Конок эсеби үчүн принтерлер
 bill_printers_dd_n	{n} конок эсеби үчүн принтерлер · өзгөртүү үчүн таптаңыз
+paper_heading	Кагаз
+paper_size	{w} × {h} mm
+paper_roll	{w} мм түрмөк
+paper_not_set	кагаз азырынча белгисиз
+paper_length_mm	Узундугу (mm)
+printer_paper_help	Бул принтердин кагазы мм менен. Бош Узундук — түрмөк: ар бир чек мазмунундай узун. «Принтерлерди табыңыз» бош кагазды принтердин драйверинен толтурат (айта албаса, 80 мм түрмөк) жана мурунтан коюлганды эч качан өзгөртпөйт.
+preview_help	Төмөндө тандалган принтердин кагазындагы ушул чек, ал жерде басылгандай: принтер жеткен жогорку сол бурчтан чыныгы өлчөмдө (боз: жетпеген четтер), узун чек көбүрөөк баракта, кагаздын четинен ашкандын баары кесилет. Принтер тандоо алдын ала көрүүнү гана өзгөртөт; ар бир принтердин кагазы «Принтерлер» бөлүмүндө коюлат.
 job_layout	Макет
 job_delivery	Жумуш кантип жөнөтүлөт
 job_delivery_help	OS документи, чийки байттар же ESC/POS. Конок эсеби жана ашкана билети ар бири өзүнчө сакталат. Кайсы жумуш болбосун Find сакталган принтерге өтө алат.
@@ -1105,9 +1137,6 @@ remove_these_tables	Бул ашкана үстөлдөрүн алып салың
 table_remove_ph	Алып салуу: T1-T24, же бир ашкананын аталышы
 find_server	Дүкөндүн серверин табыңыз
 bill_format	Коноктун эсеп форматы
-bill_header_ph	Дарек | телефон
-fssai_ph	FSSAI лицензия №. (Индия)
-bill_footer_ph	Колонтитул (мис. Рахмат, дагы бир жолу кириңиз)
 reset_bill_format	Демейки абалга кайтаруу
 bill_format_reset	Коноктун эсебинин форматы демейкиге кайтарылды
 reset_kot_format	Демейки абалга кайтаруу
@@ -1146,7 +1175,6 @@ kot_kind_modified	Өзгөртүлгөн
 kot_kind_cancelled	Жокко чыгарылды
 kot_style_heading	Талаа түрү өлчөмү жана салмагы
 kot_style_title	Аталыш
-kot_style_item_qty	Меню меню пункту · Саны
 kot_style_field_pick	Талаа тандоо
 kot_weight_regular	Регулярдуу
 kot_weight_bold	Калың
@@ -1158,8 +1186,8 @@ content_width_bill	Коноктун эсебинин мазмунунун туу
 content_width_kot	KOT мазмундун туурасы (мм)
 content_width_ph	Же мазмундун туурасын териңиз, 40–210 mm
 content_width_help	Бул слип канчалык кенен басып чыгарат. Коноктун эсеби жана KOT ар бири өзүнүн туурасын сактайт.
-content_width_bill_help	Коноктун эсеби канчалык кең. Демейки 210 mm (бет). 58 mm тар тайгалак, 80 mm кең тайгалак, 112 mm 4 дюймдук, 210 mm A4 форматында. 40тан 210го чейинки каалаган маанини териңиз. Ашкана билеттеринин KOT өтмөгүндө өзүнүн туурасы бар.
-content_width_kot_help	Ашкана билети канчалык кең. Демейки 80 mm. 58 mm тар тайга, 80 mm кең тайга, 112 mm 4-дюйм, 210 mm бет. 40тан 210го чейинки каалаган маанини териңиз. Конок конок эсептеринин конок конок эсеби өтмөгүндө өзүнүн туурасы бар.
+content_width_bill_help	Коноктун эсеби канчалык кең басылат, mm менен (40–210). Ал ар кандай кагазга ушул чыныгы өлчөмдө басылат; андан тар кагазда басуу четинен ашкан бөлүгү кесилет (Кагазды караңыз). Ашкана билеттеринин өз кеңдиги KOT өтмөгүндө.
+content_width_kot_help	Ашкана билети канчалык кең басылат, mm менен (40–210). Ал ар кандай кагазга ушул чыныгы өлчөмдө басылат; андан тар кагазда басуу четинен ашкан бөлүгү кесилет (Кагазды караңыз). Конок эсептеринин өз кеңдиги Эсеп өтмөгүндө.
 vp_paper_width	Мазмундун туурасы (мм)
 vp_paper_width_ph	Же мазмундун туурасын териңиз, 40–210 mm
 vp_paper_width_help	Мазмундун туурасы Коноктун эсеби жана KOT форматында — конок эсеби (демейки 210 mm) жана ашкана билети (демейки 80 mm) үчүн өзүнчө орнотулган.
@@ -1213,8 +1241,6 @@ schemes_help	BOGO, пайыздык арзандатуу жана турукту
 scheme_bogo_ph	Buy 2 Thali get 1 Chaas
 add_scheme	BOGO кошуу
 schedule_ph	Сааттар / бактылуу саат — Mon-Fri 07:00-11:00 же HappyHour 17:00-19:00=150
-upi_vpa_ph	UPI ID (VPA)
-upi_payee_ph	UPI алуучунун аты (милдеттүү эмес)
 upi_qr	UPI QR
 show_upi_qr	UPI QR көрсөтүү
 close_upi_qr	Жабуу
@@ -1295,8 +1321,6 @@ printer_mode_first	Биринчи бул иштейт
 printer_mode_all	Баарына басып чыгаруу
 kot_show_area	Район
 kot_hide_area	Аймакты жашыруу
-kot_show_item_hdr	Меню меню пункту · Саны
-kot_hide_item_hdr	Мамычаларды жашыруу
 kot_show_title	Титул сызыгы
 kot_hide_title	Аталышын жашыруу
 kot_field_cycle	Кийинкиди тандаңыз
@@ -1337,12 +1361,12 @@ private_code_ph	12 сандуу код
 stamp_on	Мөөр: файлда
 pay_qr_on	Төлөм QR: файлда
 pay_qr_off	Төлөм QR: жок
+printers_screen_tip	Издөө бул түзмөк колдоно алган принтерлерди көрсөтөт жана аларды бул дүкөн үчүн сактайт. Эсеп принтерлери: Эсеп жана KOT форматы → Эсеп. Ашкана: Ашкана → Ашкана станциялары.
+printers_found_none	Принтер табылган жок.
+nav_loading	Жүктөлүүдө…
+kot_copy_from	Көчүрүү булагы
+kot_copy_from_help	Ошол түрдүн ар бир сабынын өлчөмүн, калыңдыгын жана тегиздөөсүн бул түргө көчүрөт. Бул түр өз баннерин, товар префиксин жана сызылышын сактайт. Сактоо үчүн KOT форматын сактаңыз.
 items_tmpl_heading	Товар үлгүлөрү
 items_tmpl_help	Менюңуз үчүн тамактар, категориялар жана сүрөттөр. Дүкөн жөндөөлөрү жана кызматкерлер ошол бойдон калат.
 public_tmpl_help	Каалаган адам жүктөп ала турган баштапкы менюлар. Интернет бир жолу керек.
 private_tmpl_help	Khaynjo байланышыңыздан келген 12 сандуу код менен корголгон кардар менюлары.
-printers_screen_tip	Издөө бул түзмөк колдоно алган принтерлерди көрсөтөт жана аларды бул дүкөн үчүн сактайт. Эсеп принтерлери: Эсеп жана KOT форматы → Эсеп. Ашкана: Ашкана → Ашкана станциялары.
-printers_found_none	Принтер табылган жок.
-kot_copy_from	Көчүрүү булагы
-kot_copy_from_help	Ошол түрдүн ар бир сабынын өлчөмүн, калыңдыгын жана тегиздөөсүн бул түргө көчүрөт. Бул түр өз баннерин, товар префиксин жана сызылышын сактайт. Сактоо үчүн KOT форматын сактаңыз.
-nav_loading	Жүктөлүүдө…

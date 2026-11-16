@@ -862,7 +862,7 @@ mod tests {
     }
 
     fn temp(name: &str) -> PathBuf {
-        std::env::temp_dir().join(format!("courier-{name}-{}.sqlite3", new_id()))
+        crate::test_dirs::run_root().join(format!("courier-{name}-{}.sqlite3", new_id()))
     }
 
     /// A Server (cashier Asha 2222, a ₹100 parcel rate) and a device paired

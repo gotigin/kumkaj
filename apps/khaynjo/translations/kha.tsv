@@ -92,10 +92,6 @@ bill_item_layout	Ka jingpynbeit ia ki tiar
 bill_item_layout_columns	Ki tnum
 bill_item_layout_stacked	La buh lang
 bill_item_header	Ki khlieh jong ki column
-bill_item_hdr_item	Ka khlieh jong ka tiar
-bill_item_hdr_qty	Ka jingbun ki khlieh
-bill_item_hdr_price	Ka khlieh dor
-bill_item_hdr_amount	Ka khlieh jong ka jingkhein
 bill_item_name	Kyrteng jingbam
 bill_item_qty	Ka jingbun
 bill_item_price	Ka dor
@@ -103,6 +99,20 @@ bill_item_amount	Ka jingbun
 bill_item_note	Jingthoh jingbam
 bill_item_col_sep	Ki kyndon jong ki kolom
 slip_columns	Ki kolom
+slip_col_header	Ka khlieh
+bill_line_logo	Logo
+bill_logo_picture	Dur
+bill_logo_choose	Jied dur
+bill_logo_remove	Weng ïa ka dur
+bill_logo_none	Ym don dur
+bill_logo_unreadable	Kam dei ka dur ba ka app ka lah ban pule
+bill_logo_width	Ka jingshabar (px)
+bill_logo_height	Ka jingjrong (px)
+bill_logo_tones	Ki rong grey
+bill_logo_solid	Kyrkhu
+bill_logo_shaded	Ba don dyngkhong
+bill_logo_help	Jingshabar bad jingjrong ha px. Ba thylliej ka bud ïa ka dur: kawei ba thylliej ka bat ïa ka rukom, baroh ar ba thylliej ki pyndonkam ïa ka jingkhraw jong ka; lada baroh ar ki don, ka shong hapoh, ym pat sait. Ym don dur: ka logo ba pyni ka bat ïa ka jingjrong kum ka jaka ba thylliej; Buh rieh ka weng ïa ka.
+bill_logo_tones_help	Kyrkhu: man la ka shirong ka long iong ne lieh, na ka bynta ki logo ba shai. Ba don dyngkhong: ki rong grey ki long ki dur shirong ba rit, na ka bynta ki dur bad ka dyngkhong ba jem.
 slip_col_width	Ka jingshah (mm)
 slip_col_start	Ka jaka ha kaba sdang (px)
 slip_col_end	Ka jaka ha kaba kut (px)
@@ -167,6 +177,21 @@ alerts_help	Katno por ki khubor status ki sah ha ka screen na ka bynta jong phi 
 snack_secs_ph	Ki sekhon (3-60, ka jingpynkylla 10)
 snack_secs_save	Pynsah ia ka por jingpynbna
 snack_secs_saved	Ka por pyntip ba la pynduna — {n} sekhon .
+settings_sec_whatsapp	WhatsApp
+whatsapp_cloud_help	Use your own Meta WhatsApp Cloud API. Create a System User token with whatsapp_business_messaging (temporary dashboard tokens expire). Credentials stay on this Server only — never on extra tills. Accepted means Meta took the request, not that the guest received it.
+whatsapp_phone_id_ph	Phone Number ID
+whatsapp_token_ph	Access Token (leave blank to keep)
+whatsapp_template_ph	Bill template name (optional)
+whatsapp_template_lang_ph	Template language (e.g. en)
+whatsapp_enable	Enable
+whatsapp_disable	Off
+whatsapp_save	Save WhatsApp
+whatsapp_test	Test connection
+whatsapp_disconnect	Disconnect
+whatsapp_send_bill	Send via WhatsApp
+whatsapp_consent	WhatsApp OK
+whatsapp_consent_help	Guest agreed to receive WhatsApp messages. A phone number alone is not consent.
+whatsapp_server_only	Configure WhatsApp on the shop Server device
 settings_sec_backup	Ka jingpynkylla bad pynphai biang
 settings_sec_diag	Ka jingpeit bniah
 settings_sec_privacy	Ka jingshimet
@@ -729,6 +754,13 @@ station_vps_dd	Ki nongpynmih kot na ka bynta kane ka steshon
 station_vps_dd_n	Ki nongpynmih kot {n} · tap ban pynkylla
 bill_printers_dd	Ki nongpynmih kot na ka bynta ka bill
 bill_printers_dd_n	{n} ki nongpynmih kot na ka bynta ka bill · tap ban pynkylla .
+paper_heading	Ka shla
+paper_size	{w} × {h} mm
+paper_roll	ka roll {w} mm
+paper_not_set	ka shla bym pat tip shuh
+paper_length_mm	Ka jingjrong (mm)
+printer_paper_help	Ka shla jong kane ka nongpynmih kot ha mm. Ka jingjrong ba khlem don ka long roll: kawei pa kawei ka slip ka jrong kumba ka jingdon ha ka. Wad ia ki nongpynmih kot ka pynpura ia ka shla ba khlem don na ka driver jong ka nongpynmih kot (roll 80 mm lada kam lah ban ong) bad kam pynkylla ei ei ia kaba la pynbeit.
+preview_help	Kane ka slip ha ka shla jong ka nongpynmih kot ba la jied hapoh, kumba ka pynmih hangta: ha ka jingheh shisha na ka kona khlieh kadiang ba ka nongpynmih kot ka poi (saw-iong: ki kyndon ba kam poi), ka slip ba jrong ha ki sla kiba kham bun, kiei kiei ba palat ia ka kyndon ka shla la ot. Ban jied ka nongpynmih kot ka pynkylla tang ia ka jingpeit lypa; ka shla jong man ka nongpynmih kot la pynbeit hapoh Ki nongpynmih kot.
 job_layout	Ka jingpynbeit
 job_delivery	Kumno la phah ia ka kam .
 job_delivery_help	Ka kot OS, ki byte ba thymmai, lane ESC/POS. Ka bill bad ka tiket bam kawei pa kawei ka buh la ka jong ka jong ka jong ka. Kawei na ki kam ka lah ban leit sha kano kano ka printer kaba ka Find ka la save.
@@ -1105,9 +1137,6 @@ remove_these_tables	Pynduh noh ia kine ki miej bam .
 table_remove_ph	Pynduh noh: T1-T24, lane kawei ka kyrteng jong ka miej bam
 find_server	Pyni ia ka server jong ka dukan
 bill_format	Ka rukom bill
-bill_header_ph	Ka jaka sah | phone
-fssai_ph	FSSAI ka laisen no. (India)
-bill_footer_ph	Hapoh (e.g. Khublei, leit jngoh biang)
 reset_bill_format	Pynphai biang sha ka jinglong tynrai
 bill_format_reset	Pynkylla biang ia ka dur jong ka bill sha kaba rim
 reset_kot_format	Pynphai biang sha ka jinglong tynrai
@@ -1146,7 +1175,6 @@ kot_kind_modified	La pynkylla
 kot_kind_cancelled	La weng noh
 kot_style_heading	Ka jingheh & jingkhia jong ka jait lyngkha
 kot_style_title	Kyrteng
-kot_style_item_qty	Tiar · Ka Jingbun
 kot_style_field_pick	Jied ia ka jaka
 kot_weight_regular	Kaba man ka por
 kot_weight_bold	Bashlur
@@ -1158,8 +1186,8 @@ content_width_bill	Ka jingheh jong ka jingdon jong ka bill (mm)
 content_width_kot	KOT ka jingheh jong ka jingdon (mm)
 content_width_ph	Lane thoh ia ka jingheh jong ka jingdon, 40-210 mm .
 content_width_help	Katno ka heh kane ka slip shon. U Bill bad KOT uwei pa uwei u bat ia la ka jong ka jingheh.
-content_width_bill_help	Katno ka heh ka jingpynmih bill jong ki nongwan. Ka jinglong 210 mm (ka sla). 58 mm ka slip kaba rit, 80 mm ka slip kaba heh, 112 mm 4 inshi, 210 mm ka A4. Typ ia kano kano ka dor naduh 40 haduh 210. Ki tiket bam ki don la ka jong ka jingheh ha ka tab KOT.
-content_width_kot_help	Katno ka heh ka jingpynmih tiket kamra bam. Ka jinglong 80 mm. 58 mm ka slip kaba rit, 80 mm ka slip kaba heh, 112 mm 4 inshi, 210 mm ka sla. Typ ia kano kano ka jingkhein naduh 40 haduh 210. Ki bill jong ki nongwan ki don la ka jong ka jingheh ha ka Bill tab.
+content_width_bill_help	Katno ka snar ka bill jong u jingkhawai ka print, ha mm (40–210). Ka print ha kane ka jingheh shaphang ha kino kino ki shla; ha ka shla kaba khlem snar, ka bynta kaba palat ia ka kyrdan print ka khylliat (peit Ka shla). Ki tiket kitchen ki don ka jingsnar jong ki ha ka tab KOT.
+content_width_kot_help	Katno ka snar ka tiket kitchen ka print, ha mm (40–210). Ka print ha kane ka jingheh shaphang ha kino kino ki shla; ha ka shla kaba khlem snar, ka bynta kaba palat ia ka kyrdan print ka khylliat (peit Ka shla). Ki bill jingkhawai ki don ka jingsnar jong ki ha ka tab Bill.
 vp_paper_width	Ka jingheh jong ka jingdon (mm)
 vp_paper_width_ph	Lane thoh ia ka jingheh jong ka jingdon, 40-210 mm .
 vp_paper_width_help	Ia ka jingheh jong ka jingdon la buh hapoh ka rukom Bill & KOT — kyrpang na ka bynta ka bill (ba la buh 210 mm) bad ka tiket bam (ba la buh 80 mm).
@@ -1213,8 +1241,6 @@ schemes_help	BOGO, ka jingpynhiar na ka shispah, bad ki jingpynkylla ba la buh. 
 scheme_bogo_ph	Thied 2 Thali ioh 1 Chaas .
 add_scheme	Pyndap BOGO
 schedule_ph	Ki kynta / por ba kmen — Nyngkong-Palei 07:00-11:00 lane ka por ba kmen 17:00-19:00=150
-upi_vpa_ph	UPI ID (VPA)
-upi_payee_ph	UPI kyrteng jong u nongsiew (da jied)
 upi_qr	UPI QR
 show_upi_qr	Pyni UPI QR
 close_upi_qr	Khang
@@ -1295,8 +1321,6 @@ printer_mode_first	Nyngkong kata ka treikam
 printer_mode_all	Pynmih ha baroh
 kot_show_area	Ka jaka
 kot_hide_area	Ka jaka buhrieh
-kot_show_item_hdr	Tiar · Ka Jingbun
-kot_hide_item_hdr	Pynrieh ia ki tduh
 kot_show_title	U lain kyrteng
 kot_hide_title	Burieh ia ka kyrteng
 kot_field_cycle	Jied ia kaba bud
@@ -1337,12 +1361,12 @@ private_code_ph	Kod 12 dijit
 stamp_on	Muhor: ha ka file
 pay_qr_on	Ka jingsiew QR: ha ka file
 pay_qr_off	Ka jingsiew QR: ym don
+printers_screen_tip	Wad ka pyni ia ki printer ba lah ban pyndonkam da kane ka device bad ka buh ia ki na kane ka dukan. Ki printer bill: Format Bill bad KOT → Bill. Kamra iiong: Kamra iiong → Ki station kamra iiong.
+printers_found_none	Ym shem ei ei ka printer.
+nav_loading	Dang load…
+kot_copy_from	Kopi na
+kot_copy_from_help	Kopi ia ka jingkhraw, ka jingkhlaw bad ka jingpynlong jong kawei pa kawei ka laiñ na kata ka jait sha kane. Kane ka jait ka bat ia la ka banner, ka prefix jong ka jingkhaii bad ka strike. Pynneh ia ka KOT format ban bat ia ka.
 items_tmpl_heading	Ki template jingkhaii
 items_tmpl_help	Ki jingbam, ki kynhun bad ki dur na ka menu jong phi. Ki setting jong ka dukan bad ki nongtrei ki sah kumba ki long.
 public_tmpl_help	Ki menu jingsdang ba uno uno lah ban download. Donkam ia ka internet shisien.
 private_tmpl_help	Ki menu jong ki nongthied ba la khar da ka code 12 dijit na u nongiadei Khaynjo jong phi.
-printers_screen_tip	Wad ka pyni ia ki printer ba lah ban pyndonkam da kane ka device bad ka buh ia ki na kane ka dukan. Ki printer bill: Format Bill bad KOT → Bill. Kamra iiong: Kamra iiong → Ki station kamra iiong.
-printers_found_none	Ym shem ei ei ka printer.
-kot_copy_from	Kopi na
-kot_copy_from_help	Kopi ia ka jingkhraw, ka jingkhlaw bad ka jingpynlong jong kawei pa kawei ka laiñ na kata ka jait sha kane. Kane ka jait ka bat ia la ka banner, ka prefix jong ka jingkhaii bad ka strike. Pynneh ia ka KOT format ban bat ia ka.
-nav_loading	Dang load…

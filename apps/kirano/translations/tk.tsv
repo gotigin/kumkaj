@@ -60,10 +60,6 @@ bill_item_layout	Menýu menýusynyň tertibi
 bill_item_layout_columns	Sütünler
 bill_item_layout_stacked	Toplanan
 bill_item_header	Sütün sözbaşylary
-bill_item_hdr_item	Menýu menýu elementiniň sözbaşy
-bill_item_hdr_qty	Sözbaşy
-bill_item_hdr_price	Bahanyň sözbaşy
-bill_item_hdr_amount	Mukdar sözbaşy
 bill_item_name	Menýu menýusynyň ady
 bill_item_qty	Mukdar
 bill_item_price	Bahasy
@@ -71,6 +67,13 @@ bill_item_amount	Mukdary
 bill_item_note	Haryt belligi
 bill_item_col_sep	Sütüniň düzgünleri
 slip_col_width	Ini (mm)
+paper_heading	Kagyz
+paper_size	{w} × {h} mm
+paper_roll	{w} mm rulon
+paper_not_set	kagyz entek belli däl
+paper_length_mm	Uzynlyk (mm)
+printer_paper_help	Bu printeriň kagyzy mm-de. Boş Uzynlyk rulondyr: her çek mazmuny ýaly uzyn bolýar. Printerleri tapyň boş kagyzy printeriň draýwerinden doldurýar (aýdyp bilmese, 80 mm rulon) we eýýäm bellenen kagyzy hiç haçan üýtgetmeýär.
+preview_help	Aşakda saýlanan printeriň kagyzyndaky bu çek, ol ýerde çap edilişi ýaly: printeriň ýetýän ýokarky çep burçundan hakyky ölçegde (çal: ýetmeýän gyralary), uzyn çek has köp sahypada, kagyzyň gyrasyndan aşýan ähli zat kesilýär. Printer saýlamak diňe deslapky görnüşi üýtgedýär; her printeriň kagyzy Çap edijiler bölüminde bellenýär.
 slip_col_start	Başlangyç aralyk (px)
 slip_col_end	Soňky aralyk (px)
 slip_columns_help	Her sütüniň ini onuň başlangyç we soňky aralygyny öz içine alýar. Tekst öz sütüniniň içinde setirden-setire geçýär; mazmunyň ininden çykýan bölek kagyzda-da, deslapky görnüşde-de kesilýär.
@@ -838,3 +841,4 @@ nav_loading	Ýüklenýär…
 printer_mode_first	Ilki bilen işleýär
 printer_mode_all	Hemmesini çap et
 slip_columns	Sütünler
+slip_col_header	Sözbaşy

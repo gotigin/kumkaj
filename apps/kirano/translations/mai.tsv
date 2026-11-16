@@ -60,10 +60,6 @@ bill_item_layout	सामानक बनावट
 bill_item_layout_columns	स्तंभ
 bill_item_layout_stacked	ढेर
 bill_item_header	स्तंभ शीर्षक
-bill_item_hdr_item	सामान शीर्षक
-bill_item_hdr_qty	मात्रा शीर्षक
-bill_item_hdr_price	दाम शीर्षक
-bill_item_hdr_amount	राशि शीर्षक
 bill_item_name	सामानक नाम
 bill_item_qty	मात्रा
 bill_item_price	दाम
@@ -71,6 +67,13 @@ bill_item_amount	राशि
 bill_item_note	सामानक टिप्पणी
 bill_item_col_sep	स्तंभ रेखा
 slip_col_width	चौड़ाइ (mm)
+paper_heading	कागज
+paper_size	{w} × {h} mm
+paper_roll	{w} mm रोल
+paper_not_set	कागज एखन धरि पता नहि
+paper_length_mm	लंबाइ (mm)
+printer_paper_help	एहि प्रिंटरक कागज mm मे। खाली लंबाइक अर्थ रोल: प्रत्येक पर्ची अपन सामग्री जतेक नमगर होइत अछि। प्रिंटर खोजू खाली कागज प्रिंटरक ड्राइवर सँ भरैत अछि (नहि कहि सकय तँ 80 mm रोल) आ पहिने सँ तय कागज कहियो नहि बदलैत अछि।
+preview_help	ई पर्ची नीचाँ चुनल प्रिंटरक कागज पर, जेना ओतय छपैत अछि: प्रिंटर जतय धरि पहुँचैत अछि ओहि ऊपरका बामा कोण सँ असली नाप मे (धूसर: किनारा जतय नहि पहुँचैत), नमगर पर्ची बेसी पन्ना पर, कागजक किनारा सँ आगाँक सभ कटि जाइत अछि। प्रिंटर चुनला सँ मात्र पूर्वावलोकन बदलैत अछि; प्रत्येक प्रिंटरक कागज प्रिंटर मे तय होइत अछि।
 slip_col_start	शुरुआतक जगह (px)
 slip_col_end	अंतक जगह (px)
 slip_columns_help	प्रत्येक स्तंभक चौड़ाइमे ओकर शुरुआत आ अंतक जगह सम्मिलित अछि। लिखावट अपन स्तंभक भीतर लपेटाइत अछि; सामग्रीक चौड़ाइसँ बाहर जे अछि से कागज आ पूर्वावलोकन दुनूमे कटि जाइत अछि।
@@ -838,3 +841,4 @@ nav_loading	लोड भ' रहल अछि…
 printer_mode_first	जे पहिने चलए
 printer_mode_all	सभपर छापू
 slip_columns	स्तंभ
+slip_col_header	शीर्षक

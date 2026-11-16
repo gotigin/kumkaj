@@ -2328,7 +2328,7 @@ mod tests {
 
     /// An office with a cashier (2222), a manager (9999) and a ₹100 rate.
     fn office() -> (PathBuf, Store, Guard) {
-        let path = std::env::temp_dir().join(format!("moklanjo-lan-{}.sqlite3", new_id()));
+        let path = crate::test_dirs::run_root().join(format!("moklanjo-lan-{}.sqlite3", new_id()));
         let store = Store::open_path(&path).unwrap();
         let owner = store.list_staff().unwrap().into_iter().next().unwrap();
         store
@@ -2653,7 +2653,7 @@ mod tests {
         let (path, store, guard) = office();
         let (device, _) = paired_device(&path, &store, &guard, "Asha", "2222");
         let party = store.add_customer_kind("Mehta Traders", "", "Consignor").unwrap();
-        let png = std::env::temp_dir().join(format!("moklanjo-logo-{}.png", party.id));
+        let png = crate::test_dirs::run_root().join(format!("moklanjo-logo-{}.png", party.id));
         image::RgbImage::new(64, 64).save(&png).unwrap();
         let key = store.import_party_image(&party.id, &png).unwrap();
         let file = crate::lan_images::key_file(&key).unwrap().to_string();
@@ -2974,7 +2974,7 @@ mod tests {
     /// is the exact guard, this the end-to-end check.
     #[test]
     fn a_busy_years_books_still_sync_quickly() {
-        let path = std::env::temp_dir().join(format!("moklanjo-year-{}.sqlite3", new_id()));
+        let path = crate::test_dirs::run_root().join(format!("moklanjo-year-{}.sqlite3", new_id()));
         let store = Store::open_path(&path).unwrap();
         store.seed_busy_books_for_test(200, 150, 2000);
         let started = Instant::now();
@@ -2999,7 +2999,7 @@ mod tests {
         let owner = store.list_staff().unwrap().into_iter().find(|s| s.is_owner()).unwrap();
         let party = store.find_or_create_customer("Sharma Traders").unwrap();
         store.seed_opening_credit(&party.id, 50_000, &owner).unwrap();
-        let device_path = std::env::temp_dir().join(format!("moklanjo-device-{}.sqlite3", new_id()));
+        let device_path = crate::test_dirs::run_root().join(format!("moklanjo-device-{}.sqlite3", new_id()));
         let device = Store::open_path(&device_path).unwrap();
         let first = build_snapshot(&store).unwrap();
         apply_snapshot(&device, &first).unwrap();
@@ -3115,7 +3115,7 @@ mod tests {
             .apply_books_op(crate::books_op::BooksOp::SetCurrency { code: "USD".into() }, &owner)
             .unwrap();
         store.meta_set_for_test("booking_slab_kg", Some("2"));
-        let device_path = std::env::temp_dir().join(format!("moklanjo-client-prefs-{}.sqlite3", new_id()));
+        let device_path = crate::test_dirs::run_root().join(format!("moklanjo-client-prefs-{}.sqlite3", new_id()));
         let device = Store::open_path(&device_path).unwrap();
         device.prepare_as_client_terminal().unwrap();
         apply_snapshot(&device, &build_snapshot(&store).unwrap()).unwrap();

@@ -92,10 +92,6 @@ bill_item_layout	Макет позиций
 bill_item_layout_columns	Столбцы
 bill_item_layout_stacked	Столбиком
 bill_item_header	Заголовки
-bill_item_hdr_item	Заголовок позиции
-bill_item_hdr_qty	Заголовок кол-ва
-bill_item_hdr_price	Заголовок цены
-bill_item_hdr_amount	Заголовок суммы
 bill_item_name	Название
 bill_item_qty	Кол-во
 bill_item_price	Цена
@@ -103,6 +99,20 @@ bill_item_amount	Сумма
 bill_item_note	Заметка
 bill_item_col_sep	Линии столбцов
 slip_columns	Столбцы
+slip_col_header	Заголовок
+bill_line_logo	Логотип
+bill_logo_picture	Изображение
+bill_logo_choose	Выбрать изображение
+bill_logo_remove	Удалить изображение
+bill_logo_none	Нет изображения
+bill_logo_unreadable	Это не изображение, которое приложение может прочитать
+bill_logo_width	Ширина (px)
+bill_logo_height	Высота (px)
+bill_logo_tones	Оттенки серого
+bill_logo_solid	Сплошной
+bill_logo_shaded	С растром
+bill_logo_help	Ширина и высота в px. Пустое следует изображению: одно пустое сохраняет форму, оба пустых — собственный размер; оба заданных вписывают его внутрь, никогда не растягивая. Без изображения: показанный логотип оставляет свою высоту пустым местом; «Скрыть» убирает его.
+bill_logo_tones_help	Сплошной: каждая точка чёрная или белая, для чётких логотипов. С растром: серое становится мелким узором точек, для фото и мягких теней.
 slip_col_width	Ширина (mm)
 slip_col_start	Отступ в начале (px)
 slip_col_end	Отступ в конце (px)
@@ -167,6 +177,21 @@ alerts_help	Сколько сообщения о состоянии остают
 snack_secs_ph	Секунды (3–60, по умолчанию 10)
 snack_secs_save	Сохранить время уведомлений
 snack_secs_saved	Время уведомлений сохранено — {n} с
+settings_sec_whatsapp	WhatsApp
+whatsapp_cloud_help	Use your own Meta WhatsApp Cloud API. Create a System User token with whatsapp_business_messaging (temporary dashboard tokens expire). Credentials stay on this Server only — never on extra tills. Accepted means Meta took the request, not that the guest received it.
+whatsapp_phone_id_ph	Phone Number ID
+whatsapp_token_ph	Access Token (leave blank to keep)
+whatsapp_template_ph	Bill template name (optional)
+whatsapp_template_lang_ph	Template language (e.g. en)
+whatsapp_enable	Enable
+whatsapp_disable	Off
+whatsapp_save	Save WhatsApp
+whatsapp_test	Test connection
+whatsapp_disconnect	Disconnect
+whatsapp_send_bill	Send via WhatsApp
+whatsapp_consent	WhatsApp OK
+whatsapp_consent_help	Guest agreed to receive WhatsApp messages. A phone number alone is not consent.
+whatsapp_server_only	Configure WhatsApp on the shop Server device
 settings_sec_backup	Резервное копирование и восстановление
 settings_sec_diag	Диагностика
 settings_sec_privacy	Конфиденциальность
@@ -729,6 +754,13 @@ station_vps_dd	Принтеры этой станции
 station_vps_dd_n	{n} принтер(ов) · нажмите, чтобы изменить
 bill_printers_dd	Принтеры для чека
 bill_printers_dd_n	{n} принтер(ов) для чека · коснитесь, чтобы изменить
+paper_heading	Бумага
+paper_size	{w} × {h} mm
+paper_roll	рулон {w} мм
+paper_not_set	бумага пока неизвестна
+paper_length_mm	Длина (mm)
+printer_paper_help	Бумага этого принтера в мм. Пустая Длина — это рулон: каждый чек такой длины, как его содержимое. «Найти принтеры» заполняет пустую бумагу из драйвера принтера (рулон 80 мм, если он не может сказать) и никогда не меняет уже заданную.
+preview_help	Этот чек на бумаге принтера, выбранного ниже, так, как он там печатается: в реальном размере от верхнего левого угла, до которого достаёт принтер (серым: края, до которых не достаёт), длинный чек на нескольких листах, всё за краем бумаги обрезается. Выбор принтера меняет только предпросмотр; бумага каждого принтера задаётся в «Принтеры».
 job_layout	Макет
 job_delivery	Как отправляется задание
 job_delivery_help	Документ ОС, сырые байты или ESC/POS. Чек и кухонный тикет хранятся отдельно. Каждое задание может быть отправлено на любой найденный принтер.
@@ -1105,9 +1137,6 @@ remove_these_tables	Убрать эти столы
 table_remove_ph	Убрать: T1-T24 или название стола
 find_server	Найти сервер заведения
 bill_format	Формат счёта
-bill_header_ph	Адрес | телефон
-fssai_ph	№ лицензии FSSAI (Индия)
-bill_footer_ph	Нижняя строка (напр. Спасибо, ждём снова)
 reset_bill_format	Сбросить
 bill_format_reset	Формат счёта сброшен
 reset_kot_format	Сбросить
@@ -1146,7 +1175,6 @@ kot_kind_modified	Изменён
 kot_kind_cancelled	Отменён
 kot_style_heading	Размер и насыщенность поля
 kot_style_title	Заголовок
-kot_style_item_qty	Позиция · Кол-во
 kot_style_field_pick	Выбрать поле
 kot_weight_regular	Обычный
 kot_weight_bold	Жирный
@@ -1158,8 +1186,8 @@ content_width_bill	Ширина билла (мм)
 content_width_kot	Ширина KOT (мм)
 content_width_ph	Или введите ширину содержимого, 40–210 мм
 content_width_help	Ширина печати чека. Билл и KOT сохраняют собственную ширину.
-content_width_bill_help	Ширина печати гостевого билла. По умолчанию 210 мм (лист). Узкий чек 58 мм, широкий чек 80 мм, 4-дюймовый 112 мм, A4-широкий 210 мм. Введите любое значение от 40 до 210. Кухонные чеки имеют собственную ширину на вкладке KOT.
-content_width_kot_help	Ширина печати кухонного чека. По умолчанию 80 мм. Узкий чек 58 мм, широкий чек 80 мм, 4-дюймовый 112 мм, лист 210 мм. Введите любое значение от 40 до 210. Гостевые биллы имеют собственную ширину на вкладке Билл.
+content_width_bill_help	Насколько широко печатается счёт гостя, в mm (40–210). Он печатается в этом настоящем размере на любой бумаге; на более узкой бумаге часть за краем печати обрезается (см. Бумага). У кухонных чеков своя ширина на вкладке KOT.
+content_width_kot_help	Насколько широко печатается кухонный чек, в mm (40–210). Он печатается в этом настоящем размере на любой бумаге; на более узкой бумаге часть за краем печати обрезается (см. Бумага). У счетов гостей своя ширина на вкладке Счёт.
 vp_paper_width	Ширина содержимого (мм)
 vp_paper_width_ph	Или введите ширину содержимого, 40–210 мм
 vp_paper_width_help	Ширина содержимого задаётся в формате счёта и KOT. Действует и на счёт, и на кухонный слип.
@@ -1213,8 +1241,6 @@ schemes_help	Купи X получи Y — при оплате. Напр. Buy 2 
 scheme_bogo_ph	Buy 2 Thali get 1 Chaas
 add_scheme	Добавить BOGO
 schedule_ph	Часы / happy hour — Mon-Fri 07:00-11:00 или HappyHour 17:00-19:00=150
-upi_vpa_ph	UPI ID (VPA)
-upi_payee_ph	Получатель UPI (необяз.)
 upi_qr	UPI QR
 show_upi_qr	Показать QR UPI
 close_upi_qr	Закрыть
@@ -1295,8 +1321,6 @@ printer_mode_first	Первый рабочий
 printer_mode_all	Печать на всех
 kot_show_area	Область
 kot_hide_area	Скрыть область
-kot_show_item_hdr	Позиция · Кол-во
-kot_hide_item_hdr	Скрыть столбцы
 kot_show_title	Строка заголовка
 kot_hide_title	Скрыть заголовок
 kot_field_cycle	Выбрать следующий
@@ -1337,12 +1361,12 @@ private_code_ph	12-значный код
 stamp_on	Штамп: в файле
 pay_qr_on	QR оплаты: в файле
 pay_qr_off	QR оплаты: нет
+printers_screen_tip	Поиск показывает принтеры, которыми может пользоваться это устройство, и сохраняет их для этого магазина. Принтеры счетов: Формат счёта и KOT → Счёт. Кухня: Кухня → Кухонные станции.
+printers_found_none	Принтеры не найдены.
+nav_loading	Загрузка…
+kot_copy_from	Копировать из
+kot_copy_from_help	Копирует размер, толщину и выравнивание каждой строки из того вида в этот. Этот вид сохраняет свой баннер, префикс позиций и зачёркивание. Сохраните формат KOT, чтобы оставить изменения.
 items_tmpl_heading	Шаблоны позиций
 items_tmpl_help	Блюда, категории и фото для вашего меню. Настройки магазина и персонал остаются без изменений.
 public_tmpl_help	Стартовые меню, которые может скачать любой. Интернет нужен один раз.
 private_tmpl_help	Меню клиентов, закрытые 12-значным кодом от вашего контакта Khaynjo.
-printers_screen_tip	Поиск показывает принтеры, которыми может пользоваться это устройство, и сохраняет их для этого магазина. Принтеры счетов: Формат счёта и KOT → Счёт. Кухня: Кухня → Кухонные станции.
-printers_found_none	Принтеры не найдены.
-kot_copy_from	Копировать из
-kot_copy_from_help	Копирует размер, толщину и выравнивание каждой строки из того вида в этот. Этот вид сохраняет свой баннер, префикс позиций и зачёркивание. Сохраните формат KOT, чтобы оставить изменения.
-nav_loading	Загрузка…

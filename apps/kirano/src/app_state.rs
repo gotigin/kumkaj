@@ -67,6 +67,11 @@ struct AppState {
     last_nav_saved: Option<(String, NavTab)>,
     /// Settings → Printers: real printer selected (for new / edit virtual).
     printer_selected_id: Option<String>,
+    /// The printer the Bill preview is drawn on (docs/PRINTER.md § Paper and
+    /// preview); `None`: the bill's first printer.
+    bill_preview_printer: Option<String>,
+    /// Settings → Printers: the printer whose paper is open where it sits.
+    printer_paper_open: Option<String>,
     /// Pool printers checked for "Print a test page" / "Test KOT" (multi-select).
     test_printer_ids: Vec<String>,
     /// Draft values for virtual printer create/edit (inline on the VP).

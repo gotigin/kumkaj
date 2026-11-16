@@ -92,10 +92,6 @@ bill_item_layout	ఐటమ్ లేఅవుట్
 bill_item_layout_columns	నిలువు వరుసలు
 bill_item_layout_stacked	వరుసలు
 bill_item_header	నిలువు శీర్షికలు
-bill_item_hdr_item	ఐటమ్ శీర్షిక
-bill_item_hdr_qty	సంఖ్య శీర్షిక
-bill_item_hdr_price	ధర శీర్షిక
-bill_item_hdr_amount	మొత్తం శీర్షిక
 bill_item_name	వంటకం పేరు
 bill_item_qty	పరిమాణం
 bill_item_price	ధర
@@ -103,6 +99,20 @@ bill_item_amount	మొత్తం
 bill_item_note	నోట్
 bill_item_col_sep	నిలువు గీత
 slip_columns	నిలువు వరుసలు
+slip_col_header	శీర్షిక
+bill_line_logo	లోగో
+bill_logo_picture	చిత్రం
+bill_logo_choose	చిత్రం ఎంచుకోండి
+bill_logo_remove	చిత్రం తీసివేయండి
+bill_logo_none	చిత్రం లేదు
+bill_logo_unreadable	ఈ యాప్ చదవగల చిత్రం కాదు
+bill_logo_width	వెడల్పు (px)
+bill_logo_height	ఎత్తు (px)
+bill_logo_tones	బూడిద
+bill_logo_solid	ఘన
+bill_logo_shaded	నీడతో
+bill_logo_help	వెడల్పు, ఎత్తు px లో. ఖాళీగా ఉంటే చిత్రాన్ని అనుసరిస్తుంది: ఒకటి ఖాళీ అయితే ఆకారం నిలుస్తుంది, రెండూ ఖాళీ అయితే దాని సొంత పరిమాణం; రెండూ ఇస్తే లోపల అమరుతుంది, ఎప్పుడూ సాగదీయదు. చిత్రం లేకపోతే: చూపిన లోగో తన ఎత్తును ఖాళీ స్థలంగా ఉంచుతుంది; దాచు దాన్ని తీసివేస్తుంది.
+bill_logo_tones_help	ఘన: ప్రతి చుక్క నలుపు లేదా తెలుపు, స్పష్టమైన లోగోలకు. నీడతో: బూడిద సన్నని చుక్కల నమూనా అవుతుంది, ఫోటోలు మరియు మృదువైన నీడకు.
 slip_col_width	వెడల్పు (mm)
 slip_col_start	ప్రారంభ స్థలం (px)
 slip_col_end	ముగింపు స్థలం (px)
@@ -167,6 +177,21 @@ alerts_help	స్థితి సందేశాలు మీకు తెర�
 snack_secs_ph	సెకన్లు (3–60, డిఫాల్ట్ 10)
 snack_secs_save	హెచ్చరిక సమయం సేవ్ చేయి
 snack_secs_saved	హెచ్చరిక సమయం సేవ్ అయింది — {n} సెకన్లు
+settings_sec_whatsapp	WhatsApp
+whatsapp_cloud_help	Use your own Meta WhatsApp Cloud API. Create a System User token with whatsapp_business_messaging (temporary dashboard tokens expire). Credentials stay on this Server only — never on extra tills. Accepted means Meta took the request, not that the guest received it.
+whatsapp_phone_id_ph	Phone Number ID
+whatsapp_token_ph	Access Token (leave blank to keep)
+whatsapp_template_ph	Bill template name (optional)
+whatsapp_template_lang_ph	Template language (e.g. en)
+whatsapp_enable	Enable
+whatsapp_disable	Off
+whatsapp_save	Save WhatsApp
+whatsapp_test	Test connection
+whatsapp_disconnect	Disconnect
+whatsapp_send_bill	Send via WhatsApp
+whatsapp_consent	WhatsApp OK
+whatsapp_consent_help	Guest agreed to receive WhatsApp messages. A phone number alone is not consent.
+whatsapp_server_only	Configure WhatsApp on the shop Server device
 settings_sec_backup	బ్యాకప్ & పునరుద్ధరణ
 settings_sec_diag	డయాగ్నస్టిక్స్
 settings_sec_privacy	గోప్యత
@@ -729,6 +754,13 @@ station_vps_dd	ఈ స్టేషన్ ప్రింటర్లు
 station_vps_dd_n	{n} ప్రింటర్లు · మార్చడానికి నొక్కండి
 bill_printers_dd	బిల్లు ప్రింటర్లు
 bill_printers_dd_n	బిల్లు కోసం {n} ప్రింటర్లు · మార్చడానికి నొక్కండి
+paper_heading	కాగితం
+paper_size	{w} × {h} mm
+paper_roll	{w} mm రోల్
+paper_not_set	కాగితం ఇంకా తెలియదు
+paper_length_mm	పొడవు (mm)
+printer_paper_help	ఈ ప్రింటర్ కాగితం mm లో. ఖాళీ పొడవు అంటే రోల్: ప్రతి స్లిప్ దాని విషయమంత పొడవు ఉంటుంది. ప్రింటర్లను కనుగొను ఖాళీ కాగితాన్ని ప్రింటర్ డ్రైవర్ నుండి నింపుతుంది (చెప్పలేకపోతే 80 mm రోల్) మరియు ఇప్పటికే సెట్ చేసినదాన్ని ఎప్పుడూ మార్చదు.
+preview_help	కింద ఎంచుకున్న ప్రింటర్ కాగితంపై ఈ స్లిప్, అక్కడ ముద్రించినట్లే: ప్రింటర్ చేరే పై ఎడమ మూల నుండి నిజమైన పరిమాణంలో (బూడిద: చేరని అంచులు), పొడవైన స్లిప్ మరిన్ని పేజీలపై, కాగితం అంచు దాటినదంతా కత్తిరించబడుతుంది. ప్రింటర్‌ను ఎంచుకుంటే ప్రివ్యూ మాత్రమే మారుతుంది; ప్రతి ప్రింటర్ కాగితం ప్రింటర్లు లో సెట్ చేయబడుతుంది.
 job_layout	లేఅవుట్
 job_delivery	పని ఎలా పంపబడుతుంది
 job_delivery_help	OS డాక్యుమెంట్, ముడి బైట్లు, లేదా ESC/POS. బిల్లు, వంటగది టికెట్ రెండూ వాటివి అవి ఉంచుకుంటాయి. ఏ పని అయినా వెతుకు సేవ్ చేసిన ఏ ప్రింటర్‌కైనా వెళ్లవచ్చు.
@@ -1105,9 +1137,6 @@ remove_these_tables	ఈ టేబుళ్లను తీసివేయి
 table_remove_ph	తీసివేయి: T1-T24, లేదా ఒక టేబుల్ పేరు
 find_server	షాప్ సర్వర్ కనుగొనండి
 bill_format	బిల్ ఫార్మాట్
-bill_header_ph	చిరునామా | ఫోన్
-fssai_ph	FSSAI లైసెన్స్ నం. (భారత్)
-bill_footer_ph	ఫుటర్ (ఉదా. ధన్యవాదాలు, మళ్లీ రండి)
 reset_bill_format	డిఫాల్ట్‌కు రీసెట్
 bill_format_reset	బిల్ ఫార్మాట్ డిఫాల్ట్‌కు
 reset_kot_format	డిఫాల్ట్‌కు రీసెట్
@@ -1146,7 +1175,6 @@ kot_kind_modified	మార్చబడింది
 kot_kind_cancelled	రద్దు
 kot_style_heading	ఫీల్డ్ పరిమాణం & బరువు
 kot_style_title	శీర్షిక
-kot_style_item_qty	ఐటమ్ · సంఖ్య
 kot_style_field_pick	ఫీల్డ్ ఎంచుకోండి
 kot_weight_regular	సాధారణ
 kot_weight_bold	బొద్దు
@@ -1158,8 +1186,8 @@ content_width_bill	బిల్లు కంటెంట్ వెడల్ప�
 content_width_kot	KOT కంటెంట్ వెడల్పు (mm)
 content_width_ph	లేదా కంటెంట్ వెడల్పు టైప్ చేయండి, 40–210 మిమీ
 content_width_help	ఈ స్లిప్ ఎంత వెడల్పుగా ముద్రించాలి. బిల్లు, KOT రెండూ వాటి వెడల్పు అవి ఉంచుకుంటాయి.
-content_width_bill_help	అతిథి బిల్లు ఎంత వెడల్పుగా ముద్రించాలి. డిఫాల్ట్ 210 mm (పేజీ). 58 mm ఇరుకు స్లిప్, 80 mm వెడల్పు స్లిప్, 112 mm 4-అంగుళాలు, 210 mm A4-వెడల్పు. 40 నుండి 210 వరకు ఏ విలువైనా టైప్ చేయండి. వంటగది టికెట్లకు వాటి వెడల్పు KOT ట్యాబ్‌లో ఉంది.
-content_width_kot_help	వంటగది టికెట్ ఎంత వెడల్పుగా ముద్రించాలి. డిఫాల్ట్ 80 mm. 58 mm ఇరుకు స్లిప్, 80 mm వెడల్పు స్లిప్, 112 mm 4-అంగుళాలు, 210 mm పేజీ. 40 నుండి 210 వరకు ఏ విలువైనా టైప్ చేయండి. అతిథి బిల్లులకు వాటి వెడల్పు బిల్లు ట్యాబ్‌లో ఉంది.
+content_width_bill_help	అతిథి బిల్లు ఎంత వెడల్పుగా ముద్రించబడుతుంది, mm లో (40–210). ఏ కాగితంపైనైనా ఈ నిజమైన పరిమాణంలోనే ముద్రించబడుతుంది; దీనికంటే ఇరుకైన కాగితంపై ముద్రణ అంచు దాటిన భాగం కత్తిరించబడుతుంది (కాగితం చూడండి). వంటగది టికెట్లకు KOT ట్యాబ్‌లో స్వంత వెడల్పు ఉంది.
+content_width_kot_help	వంటగది టికెట్ ఎంత వెడల్పుగా ముద్రించబడుతుంది, mm లో (40–210). ఏ కాగితంపైనైనా ఈ నిజమైన పరిమాణంలోనే ముద్రించబడుతుంది; దీనికంటే ఇరుకైన కాగితంపై ముద్రణ అంచు దాటిన భాగం కత్తిరించబడుతుంది (కాగితం చూడండి). అతిథి బిల్లులకు బిల్లు ట్యాబ్‌లో స్వంత వెడల్పు ఉంది.
 vp_paper_width	కంటెంట్ వెడల్పు (మిమీ)
 vp_paper_width_ph	లేదా కంటెంట్ వెడల్పు టైప్ చేయండి, 40–210 మిమీ
 vp_paper_width_help	కంటెంట్ వెడల్పు బిల్ & KOT ఆకృతిలో సెట్ అవుతుంది. ఇది బిల్ మరియు వంటగది టికెట్‌కు వర్తిస్తుంది.
@@ -1213,8 +1241,6 @@ schemes_help	X కొని Y పొందండి — సెటిల్‌ల
 scheme_bogo_ph	Buy 2 Thali get 1 Chaas
 add_scheme	BOGO జోడించు
 schedule_ph	సమయం / హ్యాపీ అవర్ — Mon-Fri 07:00-11:00 లేదా HappyHour 17:00-19:00=150
-upi_vpa_ph	UPI ID (VPA)
-upi_payee_ph	UPI స్వీకర్త (ఐచ్ఛికం)
 upi_qr	UPI QR
 show_upi_qr	UPI QR చూపు
 close_upi_qr	మూసివేయి
@@ -1295,8 +1321,6 @@ printer_mode_first	మొదట పనిచేసేది
 printer_mode_all	అన్నింటిపై ముద్రించు
 kot_show_area	ఏరియా
 kot_hide_area	ఏరియా దాచు
-kot_show_item_hdr	ఐటమ్ · సంఖ్య
-kot_hide_item_hdr	కాలమ్‌లు దాచు
 kot_show_title	శీర్షిక వరుస
 kot_hide_title	శీర్షిక దాచు
 kot_field_cycle	తదుపరిది ఎంచుకో
@@ -1337,12 +1361,12 @@ private_code_ph	12 అంకెల కోడ్
 stamp_on	స్టాంప్: ఫైల్‌లో
 pay_qr_on	చెల్లింపు QR: ఫైల్‌లో
 pay_qr_off	చెల్లింపు QR: లేదు
+printers_screen_tip	వెతుకు ఈ పరికరం ఉపయోగించగల ప్రింటర్‌లను చూపించి ఈ దుకాణం కోసం సేవ్ చేస్తుంది. బిల్ ప్రింటర్‌లు: బిల్ & KOT ఫార్మాట్ → బిల్. వంటగది: వంటగది → వంటగది స్టేషన్‌లు.
+printers_found_none	ప్రింటర్‌లు ఏవీ కనబడలేదు.
+nav_loading	లోడ్ అవుతోంది…
+kot_copy_from	దీని నుండి కాపీ చేయండి
+kot_copy_from_help	ఆ రకంలోని ప్రతి వరుస పరిమాణం, మందం, అమరికను దీనిలోకి కాపీ చేస్తుంది. ఈ రకం తన సొంత బ్యానర్, అంశ ఉపసర్గ, కొట్టివేతను ఉంచుకుంటుంది. ఉంచడానికి KOT ఫార్మాట్‌ను సేవ్ చేయండి.
 items_tmpl_heading	అంశం టెంప్లేట్‌లు
 items_tmpl_help	మీ మెనూ కోసం వంటకాలు, వర్గాలు మరియు ఫోటోలు. దుకాణ సెట్టింగ్‌లు మరియు సిబ్బంది అలాగే ఉంటారు.
 public_tmpl_help	ఎవరైనా డౌన్‌లోడ్ చేసుకోగల ప్రారంభ మెనూలు. ఒకసారి ఇంటర్నెట్ కావాలి.
 private_tmpl_help	మీ Khaynjo పరిచయం ఇచ్చే 12-అంకెల కోడ్‌తో రక్షించిన కస్టమర్ మెనూలు.
-printers_screen_tip	వెతుకు ఈ పరికరం ఉపయోగించగల ప్రింటర్‌లను చూపించి ఈ దుకాణం కోసం సేవ్ చేస్తుంది. బిల్ ప్రింటర్‌లు: బిల్ & KOT ఫార్మాట్ → బిల్. వంటగది: వంటగది → వంటగది స్టేషన్‌లు.
-printers_found_none	ప్రింటర్‌లు ఏవీ కనబడలేదు.
-kot_copy_from	దీని నుండి కాపీ చేయండి
-kot_copy_from_help	ఆ రకంలోని ప్రతి వరుస పరిమాణం, మందం, అమరికను దీనిలోకి కాపీ చేస్తుంది. ఈ రకం తన సొంత బ్యానర్, అంశ ఉపసర్గ, కొట్టివేతను ఉంచుకుంటుంది. ఉంచడానికి KOT ఫార్మాట్‌ను సేవ్ చేయండి.
-nav_loading	లోడ్ అవుతోంది…

@@ -2982,6 +2982,20 @@ impl MatchEvent for App {
                             .redraw(cx);
                         needs_chrome = false;
                     }
+                    // The preview's printer: changes the preview only — not
+                    // who prints, nothing saved (docs/PRINTER.md § Paper and
+                    // preview).
+                    SuggestField::BillPreviewPaper => {
+                        {
+                            let mut st = app_state().lock().unwrap();
+                            let rows = preview_paper_rows(&st.printer_draft.printers, None, |k| st.t(k));
+                            if let Some(r) = rows.into_iter().find(|r| r.title == value) {
+                                st.bill_preview_printer = Some(r.printer_id);
+                            }
+                        }
+                        self.sync_preview_paper_ui(cx);
+                        self.sync_bill_format_ui(cx);
+                    }
                     SuggestField::BillPrinters => {
                         let msg = {
                             let mut st = app_state().lock().unwrap();
@@ -5010,6 +5024,86 @@ impl MatchEvent for App {
                 }
                 self.sync_job_drive_ui(cx);
                 self.ui.widget(cx, ids!(bill_printers_suggest)).redraw(cx);
+            }
+        }
+        // The preview's printer: which saved printer's paper it is drawn on.
+        if self.ui.button(cx, ids!(bill_preview_paper_dd)).clicked(actions) {
+            {
+                let mut st = app_state().lock().unwrap();
+                if st.suggest_open == Some(SuggestField::BillPreviewPaper) {
+                    st.suggest_open = None;
+                } else {
+                    // A driver that could not be read is asked again.
+                    os_paper::forget_failed();
+                    st.open_suggest(SuggestField::BillPreviewPaper, "");
+                }
+            }
+            self.sync_preview_paper_ui(cx);
+            self.ui
+                .widget(cx, SuggestField::BillPreviewPaper.list())
+                .redraw(cx);
+        }
+        // Settings → Printers: tap a printer to open its paper where it sits;
+        // tap it again to close it (docs/PRINTER.md § Paper and preview).
+        let mut tapped: Option<usize> = None;
+        for part in [ids!(printers_rows), ids!(printers_after_rows)] {
+            let widget = self.ui.widget(cx, part);
+            let list = widget.portal_list(cx, ids!(list));
+            for (item_id, item) in list.items_with_actions(actions) {
+                if item.button(cx, ids!(row)).clicked(actions)
+                    || item.button(cx, ids!(row_on)).clicked(actions)
+                {
+                    tapped = widget
+                        .borrow::<PrinterPaperRows>()
+                        .map(|rows| rows.printer_index(item_id));
+                }
+            }
+        }
+        if let Some(i) = tapped {
+            {
+                let mut st = app_state().lock().unwrap();
+                let id = st.printer_draft.printers.get(i).map(|p| p.id.clone());
+                st.printer_paper_open = if st.printer_paper_open == id { None } else { id };
+            }
+            self.paint_printer_rows(cx);
+        }
+        // Its Width / Length: saved as soon as both read as a paper (a blank
+        // length is a roll); half-typed or out-of-range text is left alone.
+        let w_typed = self.ui.text_input(cx, ids!(printer_paper_w_input)).changed(actions).is_some();
+        let l_typed = self.ui.text_input(cx, ids!(printer_paper_l_input)).changed(actions).is_some();
+        if w_typed || l_typed {
+            let read = |s: String| -> Option<f64> {
+                let t = s.trim().replace(',', ".");
+                if t.is_empty() {
+                    return Some(0.0);
+                }
+                t.parse::<f64>().ok().filter(|v| v.is_finite())
+            };
+            let w = read(self.ui.text_input(cx, ids!(printer_paper_w_input)).text());
+            let l = read(self.ui.text_input(cx, ids!(printer_paper_l_input)).text());
+            let saved = {
+                let mut st = app_state().lock().unwrap();
+                let open = st.printer_paper_open.clone();
+                match (open, w, l) {
+                    (Some(id), Some(w), Some(l))
+                        if st.device_role != DeviceRole::Client
+                            && st.printer_draft.set_printer_paper_mm(&id, w, l) =>
+                    {
+                        st.save_printer_draft().map(|()| {
+                            print_share::configure(st.printer_draft.clone());
+                            true
+                        })
+                    }
+                    _ => Ok(false),
+                }
+            };
+            match saved {
+                Ok(true) => {
+                    self.paint_printer_rows(cx);
+                    self.sync_preview_paper_ui(cx);
+                }
+                Ok(false) => {}
+                Err(e) => self.set_status(cx, e),
             }
         }
         if self.ui.button(cx, ids!(printers_test_dd)).clicked(actions) {

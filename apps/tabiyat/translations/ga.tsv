@@ -72,10 +72,6 @@ bill_item_layout	Leagan amach na míre
 bill_item_layout_columns	Colúin
 bill_item_layout_stacked	Cruachta
 bill_item_header	Ceanntásca colúin
-bill_item_hdr_item	Ceanntásc míre
-bill_item_hdr_qty	Ceanntásc QTY
-bill_item_hdr_price	Ceanntásc praghais
-bill_item_hdr_amount	Ceanntásc méide
 bill_item_name	Ainm an leighis
 bill_item_qty	Cainníocht
 bill_item_price	Praghas
@@ -83,6 +79,13 @@ bill_item_amount	Suim
 bill_item_note	Rx / nóta díola
 bill_item_col_sep	Rialacha colúin
 slip_col_width	Leithead (mm)
+paper_heading	Páipéar
+paper_size	{w} × {h} mm
+paper_roll	rolla {w} mm
+paper_not_set	páipéar nach eol fós
+paper_length_mm	Fad (mm)
+printer_paper_help	Páipéar an phrintéara seo i mm. Is rolla é Fad folamh: tá gach duillín chomh fada lena ábhar. Líonann Faigh priontálaithe páipéar folamh ó thiománaí an phrintéara (rolla 80 mm mura féidir leis a rá) agus ní athraíonn sé riamh páipéar atá socraithe cheana.
+preview_help	An duillín seo ar pháipéar an phrintéara a roghnaíodh thíos, mar a phriontálann sé ansin: fíormhéid ón gcúinne uachtarach clé is féidir leis an bprintéir a shroicheadh (liath: imill nach féidir), duillín fada ar níos mó leathanach, gearrtar gach rud thar imeall an pháipéir. Ní athraíonn roghnú printéara ach an réamhamharc; socraítear páipéar gach printéara faoi Printéirí.
 slip_col_start	Spás tosaigh (px)
 slip_col_end	Spás deiridh (px)
 slip_columns_help	Áirítear spás tosaigh agus deiridh gach colúin ina leithead. Timfhillteann an téacs taobh istigh dá cholún; gearrtar aon rud thar leithead an ábhair, ar pháipéar agus sa réamhamharc.
@@ -850,3 +853,4 @@ nav_loading	Á lódáil…
 printer_mode_first	Ar dtús sin a oibríonn
 printer_mode_all	Clóigh ar gach rud
 slip_columns	Colúin
+slip_col_header	Ceanntásc

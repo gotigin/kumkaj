@@ -92,10 +92,6 @@ bill_item_layout	Rivien asettelu
 bill_item_layout_columns	Sarakkeet
 bill_item_layout_stacked	Pinottu
 bill_item_header	Sarakeotsikot
-bill_item_hdr_item	Tuoteotsikko
-bill_item_hdr_qty	Määräotsikko
-bill_item_hdr_price	Hintaotsikko
-bill_item_hdr_amount	Summaotsikko
 bill_item_name	Annoksen nimi
 bill_item_qty	Määrä
 bill_item_price	Hinta
@@ -103,6 +99,20 @@ bill_item_amount	Summa
 bill_item_note	Annoksen huomautus
 bill_item_col_sep	Sarakkeiden viivat
 slip_columns	Sarakkeet
+slip_col_header	Otsikko
+bill_line_logo	Logo
+bill_logo_picture	Kuva
+bill_logo_choose	Valitse kuva
+bill_logo_remove	Poista kuva
+bill_logo_none	Ei kuvaa
+bill_logo_unreadable	Ei kuva, jota sovellus osaa lukea
+bill_logo_width	Leveys (px)
+bill_logo_height	Korkeus (px)
+bill_logo_tones	Harmaasävyt
+bill_logo_solid	Tasainen
+bill_logo_shaded	Varjostettu
+bill_logo_help	Leveys ja korkeus px:nä. Tyhjä seuraa kuvaa: yksi tyhjä säilyttää muodon, molemmat tyhjät käyttävät kuvan omaa kokoa; molemmat asetettuina kuva sovitetaan sisään, ei koskaan venytettynä. Ei kuvaa: näytetty logo pitää korkeutensa tyhjänä tilana; Piilota poistaa sen.
+bill_logo_tones_help	Tasainen: jokainen piste musta tai valkoinen, teräville logoille. Varjostettu: harmaasävyistä tulee hienoja pistekuvioita, valokuville ja pehmeille varjoille.
 slip_col_width	Leveys (mm)
 slip_col_start	Alkuväli (px)
 slip_col_end	Loppuväli (px)
@@ -167,6 +177,21 @@ alerts_help	Kuinka kauan tilaviestit pysyvät näytöllä sinulle (tämä kirjau
 snack_secs_ph	Sekuntia (3–60, oletus 10)
 snack_secs_save	Tallenna ilmoitusaika
 snack_secs_saved	Ilmoitusaika tallennettu — {n} sekuntia
+settings_sec_whatsapp	WhatsApp
+whatsapp_cloud_help	Use your own Meta WhatsApp Cloud API. Create a System User token with whatsapp_business_messaging (temporary dashboard tokens expire). Credentials stay on this Server only — never on extra tills. Accepted means Meta took the request, not that the guest received it.
+whatsapp_phone_id_ph	Phone Number ID
+whatsapp_token_ph	Access Token (leave blank to keep)
+whatsapp_template_ph	Bill template name (optional)
+whatsapp_template_lang_ph	Template language (e.g. en)
+whatsapp_enable	Enable
+whatsapp_disable	Off
+whatsapp_save	Save WhatsApp
+whatsapp_test	Test connection
+whatsapp_disconnect	Disconnect
+whatsapp_send_bill	Send via WhatsApp
+whatsapp_consent	WhatsApp OK
+whatsapp_consent_help	Guest agreed to receive WhatsApp messages. A phone number alone is not consent.
+whatsapp_server_only	Configure WhatsApp on the shop Server device
 settings_sec_backup	Varmuuskopio ja palautus
 settings_sec_diag	Diagnostiikka
 settings_sec_privacy	Yksityisyys
@@ -729,6 +754,13 @@ station_vps_dd	Tulostimet tälle asemalle
 station_vps_dd_n	{n} tulostinta · napauta vaihtaaksesi
 bill_printers_dd	Tulostimet laskulle
 bill_printers_dd_n	{n} tulostinta laskulle · napauta vaihtaaksesi
+paper_heading	Paperi
+paper_size	{w} × {h} mm
+paper_roll	{w} mm:n rulla
+paper_not_set	paperia ei vielä tiedetä
+paper_length_mm	Pituus (mm)
+printer_paper_help	Tämän tulostimen paperi millimetreinä. Tyhjä Pituus on rulla: jokainen kuitti on sisältönsä mittainen. Etsi tulostimet täyttää tyhjän paperin tulostimen ajurista (80 mm:n rulla, jos se ei osaa sanoa) eikä koskaan muuta jo asetettua.
+preview_help	Tämä kuitti alla valitun tulostimen paperilla, kuten se siellä tulostuu: todellisessa koossa vasemmasta yläkulmasta, johon tulostin ylettyy (harmaa: reunat, joihin se ei ylety), pitkä kuitti useammalle arkille, kaikki paperin reunan yli leikataan pois. Tulostimen valinta muuttaa vain esikatselua; kunkin tulostimen paperi asetetaan kohdassa Tulostimet.
 job_layout	Asettelu
 job_delivery	Miten työ lähetetään
 job_delivery_help	Käyttöjärjestelmän asiakirja, raakatavut tai ESC/POS. Lasku ja keittiölipuke pitävät kumpikin omansa. Kumpi tahansa työ voi mennä mille tahansa tulostimelle, jonka Etsi on tallentanut.
@@ -1105,9 +1137,6 @@ remove_these_tables	Poista nämä pöydät
 table_remove_ph	Poista: T1-T24 tai yhden pöydän nimi
 find_server	Etsi liikkeen palvelin
 bill_format	Laskun muoto
-bill_header_ph	Osoite | puhelin
-fssai_ph	FSSAI-luvan nro (Intia)
-bill_footer_ph	Alatunniste (esim. Kiitos, tervetuloa uudelleen)
 reset_bill_format	Palauta oletus
 bill_format_reset	Laskun muoto palautettu oletukseksi
 reset_kot_format	Palauta oletus
@@ -1146,7 +1175,6 @@ kot_kind_modified	Muutettu
 kot_kind_cancelled	Peruttu
 kot_style_heading	Kentän kirjasinkoko ja paksuus
 kot_style_title	Otsikko
-kot_style_item_qty	Tuote · määrä
 kot_style_field_pick	Valitse kenttä
 kot_weight_regular	Tavallinen
 kot_weight_bold	Lihava
@@ -1158,8 +1186,8 @@ content_width_bill	Laskun sisällön leveys (mm)
 content_width_kot	KOT:n sisällön leveys (mm)
 content_width_ph	Tai kirjoita sisällön leveys, 40–210 mm
 content_width_help	Kuinka leveänä tämä lipuke tulostuu. Lasku ja KOT pitävät kumpikin oman leveytensä.
-content_width_bill_help	Kuinka leveänä vieraan lasku tulostuu. Oletus 210 mm (sivu). 58 mm kapea lipuke, 80 mm leveä lipuke, 112 mm 4 tuumaa, 210 mm A4-levyinen. Kirjoita mikä tahansa arvo 40–210. Keittiölipukkeilla on oma leveys KOT-välilehdellä.
-content_width_kot_help	Kuinka leveänä keittiölipuke tulostuu. Oletus 80 mm. 58 mm kapea lipuke, 80 mm leveä lipuke, 112 mm 4 tuumaa, 210 mm sivu. Kirjoita mikä tahansa arvo 40–210. Vieraan laskuilla on oma leveys Lasku-välilehdellä.
+content_width_bill_help	Kuinka leveänä asiakkaan lasku tulostuu, millimetreinä (40–210). Se tulostuu tässä todellisessa koossa millä tahansa paperilla; kapeammalla paperilla tulostusreunan yli menevä osa leikkautuu (katso Paperi). Keittiölipukkeilla on oma leveytensä KOT-välilehdellä.
+content_width_kot_help	Kuinka leveänä keittiölipuke tulostuu, millimetreinä (40–210). Se tulostuu tässä todellisessa koossa millä tahansa paperilla; kapeammalla paperilla tulostusreunan yli menevä osa leikkautuu (katso Paperi). Asiakkaiden laskuilla on oma leveytensä Lasku-välilehdellä.
 vp_paper_width	Sisällön leveys (mm)
 vp_paper_width_ph	Tai kirjoita sisällön leveys, 40–210 mm
 vp_paper_width_help	Sisällön leveys asetetaan kohdassa Laskun ja KOT:n muoto — erikseen laskulle (oletus 210 mm) ja keittiölipukkeelle (oletus 80 mm).
@@ -1213,8 +1241,6 @@ schemes_help	BOGO, prosenttialennus ja kiinteät yhdistelmät. Yhdistelmät laaj
 scheme_bogo_ph	Osta 2 thalia, saat 1 chaasin
 add_scheme	Lisää BOGO
 schedule_ph	Tunnit / happy hour — ma–pe 07:00–11:00 tai HappyHour 17:00–19:00=150
-upi_vpa_ph	UPI-tunnus (VPA)
-upi_payee_ph	UPI-saajan nimi (valinnainen)
 upi_qr	UPI QR
 show_upi_qr	Näytä UPI-QR
 close_upi_qr	Sulje
@@ -1295,8 +1321,6 @@ printer_mode_first	Ensimmäinen joka toimii
 printer_mode_all	Tulosta kaikille
 kot_show_area	Alue
 kot_hide_area	Piilota alue
-kot_show_item_hdr	Tuote · määrä
-kot_hide_item_hdr	Piilota sarakkeet
 kot_show_title	Otsikkorivi
 kot_hide_title	Piilota otsikko
 kot_field_cycle	Valitse seuraava
@@ -1337,12 +1361,12 @@ private_code_ph	12-numeroinen koodi
 stamp_on	Leima: tiedostossa
 pay_qr_on	Maksu-QR: tiedostossa
 pay_qr_off	Maksu-QR: ei ole
+printers_screen_tip	Etsi näyttää tulostimet, joita tämä laite voi käyttää, ja tallentaa ne tälle myymälälle. Laskutulostimet: Laskun ja KOT:n muoto → Lasku. Keittiö: Keittiö → Keittiöasemat.
+printers_found_none	Tulostimia ei löytynyt.
+nav_loading	Ladataan…
+kot_copy_from	Kopioi lajista
+kot_copy_from_help	Kopioi kunkin rivin koon, paksuuden ja tasauksen siitä lajista tähän. Tämä laji säilyttää oman bannerinsa, tuote-etuliitteensä ja yliviivauksensa. Tallenna KOT-muoto, jotta muutos säilyy.
 items_tmpl_heading	Tuotemallit
 items_tmpl_help	Ruoat, kategoriat ja kuvat ruokalistallesi. Myymälän asetukset ja henkilökunta pysyvät ennallaan.
 public_tmpl_help	Aloitusruokalistat, jotka kuka tahansa voi ladata. Internet tarvitaan kerran.
 private_tmpl_help	Asiakasruokalistat, jotka avataan Khaynjo-yhteyshenkilösi 12-numeroisella koodilla.
-printers_screen_tip	Etsi näyttää tulostimet, joita tämä laite voi käyttää, ja tallentaa ne tälle myymälälle. Laskutulostimet: Laskun ja KOT:n muoto → Lasku. Keittiö: Keittiö → Keittiöasemat.
-printers_found_none	Tulostimia ei löytynyt.
-kot_copy_from	Kopioi lajista
-kot_copy_from_help	Kopioi kunkin rivin koon, paksuuden ja tasauksen siitä lajista tähän. Tämä laji säilyttää oman bannerinsa, tuote-etuliitteensä ja yliviivauksensa. Tallenna KOT-muoto, jotta muutos säilyy.
-nav_loading	Ladataan…

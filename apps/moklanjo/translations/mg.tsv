@@ -501,6 +501,17 @@ job_size	Haben'ny soratra
 job_size_ph	oh: 18, 20, 26…
 test_receipt_format	Taratasy fanamarinana
 test_label_format	Label fitsapana
+paper_heading	Taratasy
+paper_size	{w} × {h} mm
+paper_roll	horonana {w} mm
+paper_not_set	tsy fantatra mbola ny taratasy
+paper_length_mm	Halavana (mm)
+printer_paper_help	Ny taratasin'ity mpanonta ity amin'ny mm. Horonana ny Halavana banga: mitovy halava amin'ny votoatiny ny tapakila tsirairay. Ny Mitadiava milina fanontam-pirinty dia mameno ny taratasy banga avy amin'ny mpitondra ny mpanonta (horonana 80 mm raha tsy afaka milaza izy) ary tsy manova mihitsy izay efa voapetraka.
+preview_help	Ity tapakila ity eo amin'ny taratasin'ny mpanonta voafidy etsy ambany, toy ny hanontana azy any: habe tena izy manomboka amin'ny zoro ambony havia tratran'ny mpanonta (volondavenona: sisiny tsy tratrany), tapakila lava amin'ny pejy maromaro kokoa, tapahina izay mihoatra ny sisin'ny taratasy. Ny fisafidianana mpanonta dia manova ny topi-maso ihany; apetraka ao amin'ny Mpanonta ny taratasin'ny mpanonta tsirairay.
+slip_col_width	Sakany (mm)
+no_printer_assigned	Tsy misy milina fanontam-pirinty
+printer_target_default	Mpanonta mahazatra amin'ity solosaina ity (adiresy foana)
+job_preview	Topi-maso
 test_receipt_sent	Santionany rosia nalefa
 test_label_sent	Etikety santionany nalefa
 test_print_no_printer	Tsy misy mpanonta ho an'io asa io - ampio iray eo ambanin'ity toerana ity

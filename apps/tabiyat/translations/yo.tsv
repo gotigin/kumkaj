@@ -72,10 +72,6 @@ bill_item_layout	Ifilelẹ ohun akojọ aṣayan
 bill_item_layout_columns	Awọn ọwọn
 bill_item_layout_stacked	Tolera
 bill_item_header	Awọn akọle ọwọn
-bill_item_hdr_item	Akọsori ohun akojọ aṣayan
-bill_item_hdr_qty	Qty akọsori
-bill_item_hdr_price	Akọsori idiyele
-bill_item_hdr_amount	Akọsori iye
 bill_item_name	Oruko oogun
 bill_item_qty	Iye
 bill_item_price	Iye owo
@@ -83,6 +79,13 @@ bill_item_amount	Iye
 bill_item_note	Rx / akọsilẹ tita
 bill_item_col_sep	Awọn ofin ọwọn
 slip_col_width	Fífẹ̀ (mm)
+paper_heading	Ìwé
+paper_size	{w} × {h} mm
+paper_roll	ìyípo {w} mm
+paper_not_set	a kò tíì mọ ìwé
+paper_length_mm	Gígùn (mm)
+printer_paper_help	Ìwé atẹwe yìí ní mm. Gígùn òfo jẹ́ ìyípo: rísíìtì kọ̀ọ̀kan gùn tó àkóónú rẹ̀. Wa awọn atẹwe ń kún ìwé òfo láti inú awakọ̀ atẹwe (ìyípo 80 mm nígbà tí kò lè sọ) kò sì ní yí èyí tí a ti ṣètò padà láéláé.
+preview_help	Rísíìtì yìí lórí ìwé atẹwe tí a yàn nísàlẹ̀, bí ó ṣe ń tẹ̀ níbẹ̀: ìwọ̀n gidi láti igun òkè òsì tí atẹwe dé (eérú: etí tí kò dé), rísíìtì gígùn lórí ojú-ìwé púpọ̀ sí i, gbogbo ohun tó kọjá etí ìwé ni a gé. Yíyan atẹwe kan ń yí àwòtẹ́lẹ̀ nìkan padà; a ń ṣètò ìwé atẹwe kọ̀ọ̀kan lábẹ́ Awọn ẹrọ atẹwe.
 slip_col_start	Àyè ìbẹ̀rẹ̀ (px)
 slip_col_end	Àyè ìparí (px)
 slip_columns_help	Fífẹ̀ ọ̀wọ̀n kọ̀ọ̀kan ní àyè ìbẹ̀rẹ̀ àti ìparí rẹ̀ nínú. Ọ̀rọ̀ máa ń ká sínú ọ̀wọ̀n rẹ̀; ohun tó bá kọjá fífẹ̀ àkóónú ni a ó gé, lórí ìwé àti nínú àwòtẹ́lẹ̀.
@@ -850,3 +853,4 @@ nav_loading	Ń gbé e wọlé…
 printer_mode_first	Akọkọ ti o ṣiṣẹ
 printer_mode_all	Tẹjade lori gbogbo
 slip_columns	Àwọn ọ̀wọ̀n
+slip_col_header	Akọle

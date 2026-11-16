@@ -92,10 +92,6 @@ bill_item_layout	Tétel elrendezése
 bill_item_layout_columns	Oszlopok
 bill_item_layout_stacked	Halmozott
 bill_item_header	Oszlopfejlécek
-bill_item_hdr_item	Elem fejléce
-bill_item_hdr_qty	Mennyiség fejléc
-bill_item_hdr_price	Ár fejléc
-bill_item_hdr_amount	Összeg fejléc
 bill_item_name	Az étel neve
 bill_item_qty	Menny
 bill_item_price	Ár
@@ -103,6 +99,20 @@ bill_item_amount	Összeg
 bill_item_note	Dish jegyzet
 bill_item_col_sep	Oszlopszabályok
 slip_columns	Oszlopok
+slip_col_header	Fejléc
+bill_line_logo	Logó
+bill_logo_picture	Kép
+bill_logo_choose	Kép kiválasztása
+bill_logo_remove	Kép eltávolítása
+bill_logo_none	Nincs kép
+bill_logo_unreadable	Nem olyan kép, amelyet az alkalmazás olvasni tud
+bill_logo_width	Szélesség (px)
+bill_logo_height	Magasság (px)
+bill_logo_tones	Szürkék
+bill_logo_solid	Tömör
+bill_logo_shaded	Árnyalt
+bill_logo_help	Szélesség és magasság px-ben. Az üres a képet követi: az egyik üres megtartja az alakot, mindkettő üres a kép saját méretét használja; mindkettő megadva belül illeszti, soha nem nyújtja. Nincs kép: a látható logó megtartja magasságát üres helyként; az Elrejtés eltávolítja.
+bill_logo_tones_help	Tömör: minden pont fekete vagy fehér, éles logókhoz. Árnyalt: a szürkék finom pontmintává válnak, fotókhoz és lágy árnyékoláshoz.
 slip_col_width	Szélesség (mm)
 slip_col_start	Kezdő térköz (px)
 slip_col_end	Záró térköz (px)
@@ -167,6 +177,21 @@ alerts_help	Mennyi ideig maradnak az állapotüzenetek a képernyőn az Ön szá
 snack_secs_ph	Másodpercek (3–60, alapértelmezett 10)
 snack_secs_save	Takarítson meg riasztási időt
 snack_secs_saved	Mentett riasztási idő — {n} másodperc
+settings_sec_whatsapp	WhatsApp
+whatsapp_cloud_help	Use your own Meta WhatsApp Cloud API. Create a System User token with whatsapp_business_messaging (temporary dashboard tokens expire). Credentials stay on this Server only — never on extra tills. Accepted means Meta took the request, not that the guest received it.
+whatsapp_phone_id_ph	Phone Number ID
+whatsapp_token_ph	Access Token (leave blank to keep)
+whatsapp_template_ph	Bill template name (optional)
+whatsapp_template_lang_ph	Template language (e.g. en)
+whatsapp_enable	Enable
+whatsapp_disable	Off
+whatsapp_save	Save WhatsApp
+whatsapp_test	Test connection
+whatsapp_disconnect	Disconnect
+whatsapp_send_bill	Send via WhatsApp
+whatsapp_consent	WhatsApp OK
+whatsapp_consent_help	Guest agreed to receive WhatsApp messages. A phone number alone is not consent.
+whatsapp_server_only	Configure WhatsApp on the shop Server device
 settings_sec_backup	Biztonsági mentés és visszaállítás
 settings_sec_diag	Diagnosztika
 settings_sec_privacy	Adatvédelem
@@ -729,6 +754,13 @@ station_vps_dd	Nyomtatók ehhez az állomáshoz
 station_vps_dd_n	{n} nyomtatók · érintse meg a módosításhoz
 bill_printers_dd	Nyomtatók a számlához
 bill_printers_dd_n	{n} nyomtatók a számlához · érintse meg a módosításhoz
+paper_heading	Papír
+paper_size	{w} × {h} mm
+paper_roll	{w} mm-es tekercs
+paper_not_set	a papír még nem ismert
+paper_length_mm	Hossz (mm)
+printer_paper_help	A nyomtató papírja mm-ben. Az üres Hossz tekercset jelent: minden blokk olyan hosszú, mint a tartalma. A Keressen nyomtatókat kitölti az üres papírt a nyomtató illesztőprogramjából (80 mm-es tekercs, ha az nem tudja megmondani), és soha nem módosítja a már beállítottat.
+preview_help	Ez a blokk a lent kiválasztott nyomtató papírján, ahogy ott nyomtatódik: valós méretben attól a bal felső saroktól, ameddig a nyomtató elér (szürke: szélek, ahová nem ér el), a hosszú blokk több lapon, ami túlnyúlik a papír szélén, levágódik. A nyomtató kiválasztása csak az előnézetet módosítja; minden nyomtató papírját a Nyomtatók alatt kell beállítani.
 job_layout	Elrendezés
 job_delivery	Hogyan küldik el a munkát
 job_delivery_help	OS dokumentum, nyers bájtok vagy ESC/POS. The bill and the kitchen ticket each keep their own. Bármelyik feladat elküldhető bármely olyan nyomtatóra, amelyet a Find elmentett.
@@ -1105,9 +1137,6 @@ remove_these_tables	Távolítsa el ezeket az étkezőasztalokat
 table_remove_ph	Távolítsa el: T1-T24 vagy egy étkezőasztal nevét
 find_server	Keresse meg az üzlet szerverét
 bill_format	Számlaformátum
-bill_header_ph	Cím | telefon
-fssai_ph	FSSAI engedély sz. (India)
-bill_footer_ph	Lábléc (pl. Köszönöm, látogassa meg újra)
 reset_bill_format	Visszaállítás alapértelmezettre
 bill_format_reset	A számlaformátum visszaállt az alapértelmezettre
 reset_kot_format	Visszaállítás alapértelmezettre
@@ -1146,7 +1175,6 @@ kot_kind_modified	Módosítva
 kot_kind_cancelled	Törölve
 kot_style_heading	Mezőtípus mérete és súlya
 kot_style_title	Cím
-kot_style_item_qty	Tétel · Menny
 kot_style_field_pick	Válassza ki a mezőt
 kot_weight_regular	Rendszeres
 kot_weight_bold	Félkövér
@@ -1158,8 +1186,8 @@ content_width_bill	Számlatartalom szélessége (mm)
 content_width_kot	KOT tartalom szélesség (mm)
 content_width_ph	Vagy írjon be egy tartalomszélességet, 40–210 mm
 content_width_help	Milyen szélesre nyomtat ez a cédula. Bill és KOT megtartja a saját szélességét.
-content_width_bill_help	Milyen szélesre nyomtatja ki a vendégszámlát. Alapértelmezett 210 mm (oldal). 58 mm keskeny, 80 mm széles, 112 mm 4 hüvelykes, 210 mm A4-es szélességű. Írjon be tetszőleges értéket 40 és 210 között. A konyhajegyek saját szélességgel rendelkeznek a KOT lapon.
-content_width_kot_help	Milyen szélesre nyomtat a konyhajegy. Alapértelmezett 80 mm. 58 mm keskeny, 80 mm széles, 112 mm 4 hüvelykes, 210 mm-es oldal. Írjon be tetszőleges értéket 40 és 210 között. A vendégszámláknak saját szélességük van a Számla lapon.
+content_width_bill_help	Milyen szélesen nyomtatódik a vendég számlája, mm-ben (40–210). Bármilyen papírra ebben a valódi méretben nyomtatódik; keskenyebb papíron a nyomtatási szélen túli rész levágódik (lásd Papír). A konyhai bonoknak saját szélessége van a KOT lapon.
+content_width_kot_help	Milyen szélesen nyomtatódik a konyhai bon, mm-ben (40–210). Bármilyen papírra ebben a valódi méretben nyomtatódik; keskenyebb papíron a nyomtatási szélen túli rész levágódik (lásd Papír). A vendégszámláknak saját szélessége van a Számla lapon.
 vp_paper_width	Tartalom szélessége (mm)
 vp_paper_width_ph	Vagy írjon be egy tartalomszélességet, 40–210 mm
 vp_paper_width_help	A tartalom szélessége a Számla és KOT formátumban van beállítva – külön a számlához (alapértelmezett 210 mm) és a konyhajegyhez (alapértelmezett 80 mm).
@@ -1213,8 +1241,6 @@ schemes_help	BOGO, százalékos kedvezmény és rögzített kombók. A kombók k
 scheme_bogo_ph	Vásároljon 2 Thali, kap 1 Chaas
 add_scheme	BOGO hozzáadása
 schedule_ph	Hours / happy hour — H-P 07:00-11:00 vagy HappyHour 17:00-19:00=150
-upi_vpa_ph	UPI ID (VPA)
-upi_payee_ph	UPI kedvezményezett neve (nem kötelező)
 upi_qr	UPI QR
 show_upi_qr	UPI QR megjelenítése
 close_upi_qr	Bezárás
@@ -1295,8 +1321,6 @@ printer_mode_first	Először is ez működik
 printer_mode_all	Nyomtatás az összesre
 kot_show_area	Terület
 kot_hide_area	Terület elrejtése
-kot_show_item_hdr	Tétel · Menny
-kot_hide_item_hdr	Oszlopok elrejtése
 kot_show_title	Címsor
 kot_hide_title	Cím elrejtése
 kot_field_cycle	Válassza a következőt
@@ -1337,12 +1361,12 @@ private_code_ph	12 jegyű kód
 stamp_on	Bélyegző: az iratokon
 pay_qr_on	Fizetési QR: fájlban
 pay_qr_off	Fizetési QR: nincs
+printers_screen_tip	A Keresés felsorolja a nyomtatókat, amelyeket ez az eszköz használhat, és elmenti őket ehhez az üzlethez. Számlanyomtatók: Számla- és KOT-formátum → Számla. Konyha: Konyha → Konyhai állomások.
+printers_found_none	Nem található nyomtató.
+nav_loading	Betöltés…
+kot_copy_from	Másolás innen
+kot_copy_from_help	Átmásolja annak a fajtának minden sora méretét, vastagságát és igazítását ebbe. Ez a fajta megtartja saját szalagcímét, tételelőtagját és áthúzását. A megtartáshoz mentse a KOT formátumot.
 items_tmpl_heading	Tételsablonok
 items_tmpl_help	Ételek, kategóriák és fotók az étlapjához. Az üzlet beállításai és a személyzet változatlanok maradnak.
 public_tmpl_help	Kezdő étlapok, amelyeket bárki letölthet. Egyszer kell hozzá internet.
 private_tmpl_help	Ügyfél-étlapok, amelyeket a Khaynjo-kapcsolattartójától kapott 12 jegyű kód nyit meg.
-printers_screen_tip	A Keresés felsorolja a nyomtatókat, amelyeket ez az eszköz használhat, és elmenti őket ehhez az üzlethez. Számlanyomtatók: Számla- és KOT-formátum → Számla. Konyha: Konyha → Konyhai állomások.
-printers_found_none	Nem található nyomtató.
-kot_copy_from	Másolás innen
-kot_copy_from_help	Átmásolja annak a fajtának minden sora méretét, vastagságát és igazítását ebbe. Ez a fajta megtartja saját szalagcímét, tételelőtagját és áthúzását. A megtartáshoz mentse a KOT formátumot.
-nav_loading	Betöltés…

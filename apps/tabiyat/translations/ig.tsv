@@ -72,10 +72,6 @@ bill_item_layout	Nhazi ihe
 bill_item_layout_columns	Ogidi
 bill_item_layout_stacked	Kwakọba
 bill_item_header	Isi ogidi
-bill_item_hdr_item	Isi ihe
-bill_item_hdr_qty	Isi ọnụọgụ
-bill_item_hdr_price	Isi ọnụahịa
-bill_item_hdr_amount	Isi ego
 bill_item_name	Aha ọgwụ
 bill_item_qty	Ọnụọgụ
 bill_item_price	Ọnụahịa
@@ -83,6 +79,13 @@ bill_item_amount	Ego
 bill_item_note	Rx/ ndetu ire ere
 bill_item_col_sep	Ahịrị ogidi
 slip_col_width	Obosara (mm)
+paper_heading	Akwụkwọ
+paper_size	{w} × {h} mm
+paper_roll	mpịakọta {w} mm
+paper_not_set	a maghị akwụkwọ ahụ ugbu a
+paper_length_mm	Ogologo (mm)
+printer_paper_help	Akwụkwọ igwe mbipụta a na mm. Ogologo tọgbọ chakoo bụ mpịakọta: akwụkwọ ọ bụla dị ogologo dị ka ihe dị n'ime ya. Chọta igwe mbipụta na-ejupụta akwụkwọ tọgbọ chakoo site na draịva igwe mbipụta ahụ (mpịakọta 80 mm mgbe ọ na-enweghị ike ịkọ) ma ọ dịghị mgbe ọ na-agbanwe nke e debere ugbu a.
+preview_help	Akwụkwọ a n'elu akwụkwọ igwe mbipụta a họọrọ n'okpuru, dịka ọ na-ebipụta ebe ahụ: nha n'ezie site na nkuku elu aka ekpe igwe ahụ na-eru (ntụ: nsọtụ ọ na-anaghị eru), akwụkwọ ogologo na peeji ndị ọzọ, ihe niile gafere nsọtụ akwụkwọ ka a na-ebipụ. Ịhọrọ igwe mbipụta na-agbanwe naanị nlele; a na-edobe akwụkwọ igwe ọ bụla n'okpuru Igwe mbipụta.
 slip_col_start	Ohere mmalite (px)
 slip_col_end	Ohere njedebe (px)
 slip_columns_help	Obosara kọlụm ọ bụla gụnyere ohere mmalite na njedebe ya. Ederede na-ekechi n’ime kọlụm ya; ihe gafere obosara ọdịnaya ka a na-egbubi, n’akwụkwọ na n’ihe ngosi.
@@ -850,3 +853,4 @@ nav_loading	Na-ebugo…
 printer_mode_first	Nke mbụ rụrụ ọrụ
 printer_mode_all	Bipụta na niile
 slip_columns	Kọlụm
+slip_col_header	Isi

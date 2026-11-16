@@ -501,6 +501,17 @@ job_size	Lettergrootte
 job_size_ph	bijv. 18, 20, 26…
 test_receipt_format	Testkwitantie
 test_label_format	Testlabel
+paper_heading	Papier
+paper_size	{w} × {h} mm
+paper_roll	rol van {w} mm
+paper_not_set	papier nog onbekend
+paper_length_mm	Lengte (mm)
+printer_paper_help	Het papier van deze printer in mm. Een lege Lengte is een rol: elke bon is zo lang als de inhoud. Printers zoeken vult leeg papier in vanuit het stuurprogramma van de printer (een rol van 80 mm als het dat niet kan zeggen) en wijzigt nooit papier dat al is ingesteld.
+preview_help	Deze bon op het papier van de printer die hieronder gekozen is, zoals hij daar afdrukt: op ware grootte vanaf de linkerbovenhoek die de printer bereikt (grijs: randen die hij niet bereikt), een lange bon op meer vellen, alles voorbij de papierrand wordt afgesneden. Een printer kiezen verandert alleen het voorbeeld; het papier van elke printer stel je in onder Printers.
+slip_col_width	Breedte (mm)
+no_printer_assigned	Geen printer
+printer_target_default	standaardprinter
+job_preview	Voorbeeld
 test_receipt_sent	Voorbeeldkwitantie verzonden
 test_label_sent	Voorbeeldlabel verzonden
 test_print_no_printer	Geen printer voor die taak — voeg er een toe onder deze plek

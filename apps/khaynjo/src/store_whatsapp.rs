@@ -342,7 +342,9 @@ impl Store {
             }
         }
 
-        let receipt = self.format_receipt_text(sale_id)?;
+        // The words of the bill, as the receipt file has them: no line
+        // marks, column directive or picture data (those are for printers).
+        let receipt = crate::print_share::strip_kot_style_marks(&self.format_receipt_text(sale_id)?);
         let pdf = receipt_text_to_pdf(&receipt);
         let filename = format!("bill-{}.pdf", sale_id.chars().take(12).collect::<String>());
         let inv = sale.invoice_no.trim();

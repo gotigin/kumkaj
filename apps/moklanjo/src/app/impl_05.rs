@@ -1182,16 +1182,17 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
 
     /// Pool + routes draft, and the system printers found here.
     fn sync_printer_fields(&mut self, cx: &mut Cx) {
-        let (pool_rows, route_rows, format_id) = {
+        let (route_rows, format_id) = {
             let st = app_state().lock().unwrap();
             let key = parse_courier_route_key(&st.printer_route_key);
             (
-                courier_printers_pool_rows(&st.printer_draft),
                 courier_printer_route_rows(&st.printer_draft, &st.printer_route_key, |k| st.t(k)),
                 st.printer_draft.format_id_for(key),
             )
         };
-        self.set_report_rows(cx, ids!(printers_pool_label), pool_rows);
+        // The saved printers with their papers (paint_printer_rows; the
+        // old names-only list `printers_pool_label` stays hidden).
+        self.paint_printer_rows(cx);
         self.set_report_rows(cx, ids!(printer_routes_label), route_rows);
         self.paint_choice_pair(
             cx,
@@ -1297,6 +1298,142 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
         }
     }
 
+    /// Settings → Printers: the saved printers as `name · paper`, the open
+    /// one's Width / Length where it sits (docs/PRINTER.md § Paper and
+    /// preview). Any number of printers; a printer with no paper yet has its
+    /// driver asked (the answer fills it and paints again).
+    fn paint_printer_rows(&mut self, cx: &mut Cx) {
+        let (host, count, open_at, w, l, texts) = {
+            let st = app_state().lock().unwrap();
+            let printers = &st.printer_draft.printers;
+            ask_drivers_for_missing_papers(printers);
+            let open_at = st
+                .printer_paper_open
+                .as_deref()
+                .and_then(|id| printers.iter().position(|p| p.id == id));
+            let paper = open_at.and_then(|i| printers[i].paper());
+            let w = paper.map(|p| os_paper::mm_text(p.width_mm)).unwrap_or_default();
+            let l = paper
+                .filter(|p| !p.is_roll())
+                .map(|p| os_paper::mm_text(p.length_mm))
+                .unwrap_or_default();
+            (
+                st.device_role != DeviceRole::Client,
+                printers.len(),
+                open_at,
+                w,
+                l,
+                [
+                    st.t("paper_heading"),
+                    st.t("printer_paper_help"),
+                    st.t("slip_col_width"),
+                    st.t("paper_length_mm"),
+                ],
+            )
+        };
+        for (id, show) in [
+            (ids!(printers_rows), host && count > 0),
+            (ids!(printers_after_rows), host && open_at.is_some_and(|o| o + 1 < count)),
+        ] {
+            self.ui.widget(cx, id).set_visible(cx, show);
+            self.ui.widget(cx, id).redraw(cx);
+        }
+        let open = host && open_at.is_some();
+        self.ui.view(cx, ids!(printer_paper_editor)).set_visible(cx, open);
+        if open {
+            let [head, help, w_label, l_label] = texts;
+            self.ui
+                .widget(cx, ids!(h_printer_paper))
+                .set_text(cx, &plain_display_text(&head));
+            self.ui
+                .widget(cx, ids!(printer_paper_help))
+                .as_info_help()
+                .set_tip(&plain_display_text(&help));
+            self.ui
+                .widget(cx, ids!(h_printer_paper_w))
+                .set_text(cx, &plain_display_text(&w_label));
+            self.ui
+                .widget(cx, ids!(h_printer_paper_l))
+                .set_text(cx, &plain_display_text(&l_label));
+            for (id, v) in [(ids!(printer_paper_w_input), &w), (ids!(printer_paper_l_input), &l)] {
+                let input = self.ui.text_input(cx, id);
+                // Never under the owner's typing.
+                if !cx.has_key_focus(input.area()) && input.text() != *v {
+                    input.set_text(cx, v);
+                }
+            }
+        }
+        // The list is the rows above (no empty-state line: Find is beside it).
+        self.ui.widget(cx, ids!(printers_pool_label)).set_visible(cx, false);
+    }
+
+    /// The focused job (receipt or AWB label) as it prints on the preview's
+    /// printer: the dropdown face is `name · paper` of that printer (every
+    /// saved printer can be picked; it changes the preview only), the ℹ says
+    /// what the preview shows, the picture is the job's own sample on that
+    /// paper — the one Test print sends (docs/PRINTER.md § Paper and preview).
+    fn sync_job_preview(&mut self, cx: &mut Cx) {
+        let (host, heading, tip, face, paper, format, text) = {
+            let st = app_state().lock().unwrap();
+            let label = st.printer_route_key == "label";
+            let key = parse_courier_route_key(&st.printer_route_key);
+            let face = match st.preview_printer(label) {
+                Some(p) => printer_paper_line(p, |k| st.t(k)),
+                None => format!(
+                    "{} · {}",
+                    st.t("no_printer_assigned"),
+                    st.t("paper_roll")
+                        .replace("{w}", &os_paper::mm_text(print_share::DEFAULT_PAPER_WIDTH_MM))
+                ),
+            };
+            let shop = st.venue_title.clone();
+            let text = if label {
+                labels::AwbLabel::sample(&shop).to_plain_text()
+            } else {
+                sample_receipt_text(&shop, &st.fiscal.format_now())
+            };
+            (
+                st.device_role != DeviceRole::Client,
+                st.t("job_preview"),
+                st.t("preview_help"),
+                face,
+                st.preview_paper(label),
+                st.printer_draft.format_for(key),
+                text,
+            )
+        };
+        for id in [
+            ids!(job_preview_head),
+            ids!(job_preview_paper_dd),
+            ids!(job_preview_card),
+        ] {
+            self.ui.widget(cx, id).set_visible(cx, host);
+        }
+        if !host {
+            return;
+        }
+        self.ui
+            .widget(cx, ids!(h_job_preview))
+            .set_text(cx, &plain_display_text(&heading));
+        self.ui
+            .widget(cx, ids!(job_preview_help))
+            .as_info_help()
+            .set_tip(&plain_display_text(&tip));
+        // A dropdown face is its value only; ComboField draws ˅ / ˄.
+        let btn = self.ui.button(cx, ids!(job_preview_paper_dd));
+        if btn.text() != face {
+            btn.set_text(cx, &face);
+        }
+        if let Some(mut pic) = self
+            .ui
+            .widget(cx, ids!(job_preview))
+            .borrow_mut::<SlipPicture>()
+        {
+            pic.show(cx, &format, &text, &paper);
+        }
+        self.ui.view(cx, ids!(job_preview_card)).redraw(cx);
+    }
+
     /// Receipt and label each keep their own width, layout, delivery, and type size.
     fn sync_job_format_ui(&mut self, cx: &mut Cx) {
         let (fmt, test) = {
@@ -1360,6 +1497,7 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
             ids!(job_deliv_escpos_on),
             del == print_share::DELIVERY_ESCPOS || del == print_share::DELIVERY_RAW_DEVICE,
         );
+        self.sync_job_preview(cx);
     }
 
     /// Receipt / label format saves itself (owner, 2026-11-14: "every
@@ -2172,6 +2310,8 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
             return true;
         }
         let top_level = [
+            ids!(printer_paper_l_input),
+            ids!(printer_paper_w_input),
             ids!(cart_total_input),
             ids!(customer_name_input),
             ids!(menu_name_input),

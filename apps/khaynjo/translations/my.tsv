@@ -92,10 +92,6 @@ bill_item_layout	မူပိုင်ပစ္စည်း အစီအစဉ�
 bill_item_layout_columns	တန်းများ
 bill_item_layout_stacked	တန်းစွဲထားသည်
 bill_item_header	တန်းခေါင်းစီးများ
-bill_item_hdr_item	ပစ္စည်းခေါင်းစီး
-bill_item_hdr_qty	အရေအတွက် ခေါင်းစီး
-bill_item_hdr_price	စျေးနှုန်း ခေါင်းစီး
-bill_item_hdr_amount	စုစုပေါင်း ခေါင်းစီး
 bill_item_name	မုန့်ဟင်းခါးအမည်
 bill_item_qty	အရေအတွက်
 bill_item_price	ဈေးနှုန်း
@@ -103,6 +99,20 @@ bill_item_amount	ပမာဏ
 bill_item_note	မုန့်ဟင်းခါးမှတ်ချက်
 bill_item_col_sep	ကော်လံစည်းမျဉ်းများ
 slip_columns	ကော်လံများ
+slip_col_header	ခေါင်းစီး
+bill_line_logo	လိုဂို
+bill_logo_picture	ပုံ
+bill_logo_choose	ပုံရွေးရန်
+bill_logo_remove	ပုံဖယ်ရန်
+bill_logo_none	ပုံမရှိ
+bill_logo_unreadable	ဤအက်ပ်ဖတ်နိုင်သောပုံ မဟုတ်ပါ
+bill_logo_width	အကျယ် (px)
+bill_logo_height	အမြင့် (px)
+bill_logo_tones	မီးခိုးရောင်များ
+bill_logo_solid	ပြည့်
+bill_logo_shaded	အရိပ်ပါ
+bill_logo_help	အကျယ်နှင့်အမြင့်ကို px ဖြင့်။ ကွက်လပ်ထားလျှင် ပုံကိုလိုက်သည် - တစ်ခုကွက်လပ်ဆိုလျှင် ပုံသဏ္ဌာန်ထိန်းသည်၊ နှစ်ခုလုံးကွက်လပ်ဆိုလျှင် မူလအရွယ်ကိုသုံးသည်၊ နှစ်ခုလုံးထည့်လျှင် အထဲတွင်ကွက်တိထည့်ပြီး ဘယ်တော့မှ မဆွဲဆန့်ပါ။ ပုံမရှိလျှင် - ပြထားသော လိုဂိုသည် အမြင့်ကို နေရာလွတ်အဖြစ် ထားသည်၊ ဖျောက်ရန်က ဖယ်ရှားသည်။
+bill_logo_tones_help	ပြည့် - အစက်တိုင်း အမည်း သို့မဟုတ် အဖြူ၊ ပြတ်သားသော လိုဂိုအတွက်။ အရိပ်ပါ - မီးခိုးရောင်များ သေးငယ်သော အစက်ပုံစံဖြစ်လာသည်၊ ဓာတ်ပုံနှင့် နူးညံ့သောအရိပ်အတွက်။
 slip_col_width	အကျယ် (mm)
 slip_col_start	အစ နေရာလွတ် (px)
 slip_col_end	အဆုံး နေရာလွတ် (px)
@@ -167,6 +177,21 @@ alerts_help	အခြေအနေစာတိုများ မည်မျှ�
 snack_secs_ph	စက္ကန့်များ (3–60, ပုံမှန် 10)
 snack_secs_save	သတိပေးချိန်ကို သိမ်းဆည်းမည်
 snack_secs_saved	သတိပေးချိန် သိမ်းဆည်းပြီး — {n} စက္ကန့်
+settings_sec_whatsapp	WhatsApp
+whatsapp_cloud_help	Use your own Meta WhatsApp Cloud API. Create a System User token with whatsapp_business_messaging (temporary dashboard tokens expire). Credentials stay on this Server only — never on extra tills. Accepted means Meta took the request, not that the guest received it.
+whatsapp_phone_id_ph	Phone Number ID
+whatsapp_token_ph	Access Token (leave blank to keep)
+whatsapp_template_ph	Bill template name (optional)
+whatsapp_template_lang_ph	Template language (e.g. en)
+whatsapp_enable	Enable
+whatsapp_disable	Off
+whatsapp_save	Save WhatsApp
+whatsapp_test	Test connection
+whatsapp_disconnect	Disconnect
+whatsapp_send_bill	Send via WhatsApp
+whatsapp_consent	WhatsApp OK
+whatsapp_consent_help	Guest agreed to receive WhatsApp messages. A phone number alone is not consent.
+whatsapp_server_only	Configure WhatsApp on the shop Server device
 settings_sec_backup	မိတ္တူယူခြင်းနှင့် ပြန်လည်သုံးစွဲခြင်း
 settings_sec_diag	ရောဂါသိပ္ပံစမ်းသပ်ခြင်း
 settings_sec_privacy	ကိုယ်ရေးကိုယ်တာ
@@ -729,6 +754,13 @@ station_vps_dd	ဤစတေးရှင်းအတွက် ပရင်တာ�
 station_vps_dd_n	{n} ပရင်တာ(များ) · ပြောင်းရန် နှိပ်ပါ
 bill_printers_dd	ဘီလ်အတွက် ပရင်တာများ
 bill_printers_dd_n	ဘီလ်အတွက် {n} ပရင်တာ(များ) · ပြောင်းရန် နှိပ်ပါ
+paper_heading	စက္ကူ
+paper_size	{w} × {h} mm
+paper_roll	{w} mm လိပ်
+paper_not_set	စက္ကူကို မသိရသေးပါ
+paper_length_mm	အလျား (mm)
+printer_paper_help	ဤပရင်တာ၏ စက္ကူ (mm)။ အလျားမဖြည့်လျှင် လိပ်ဖြစ်သည်- ဘောက်ချာတိုင်းသည် ၎င်း၏အကြောင်းအရာ အရှည်အတိုင်း ရှည်သည်။ ပရင်တာတွေကို ရှာဖွေပါ သည် မဖြည့်ရသေးသော စက္ကူကို ပရင်တာ၏ ဒရိုက်ဗာမှ ဖြည့်ပေးသည် (မပြောနိုင်လျှင် 80 mm လိပ်) နှင့် သတ်မှတ်ပြီးသားကို ဘယ်တော့မှ မပြောင်းပါ။
+preview_help	အောက်တွင် ရွေးထားသော ပရင်တာ၏ စက္ကူပေါ်ရှိ ဤဘောက်ချာ၊ ထိုနေရာတွင် ပုံနှိပ်သည့်အတိုင်း- ပရင်တာ ရောက်နိုင်သော ဘယ်ဘက်အပေါ်ထောင့်မှ အရွယ်အမှန်ဖြင့် (မီးခိုး- မရောက်နိုင်သော အနားများ)၊ ရှည်သော ဘောက်ချာကို စာရွက်ပိုများပေါ်တွင်၊ စက္ကူအနားကို ကျော်သမျှ ဖြတ်ပစ်သည်။ ပရင်တာရွေးခြင်းသည် အစမ်းကြည့်ကိုသာ ပြောင်းသည်; ပရင်တာတစ်ခုစီ၏ စက္ကူကို ပရင်တာများ တွင် သတ်မှတ်သည်။
 job_layout	ပုံစံ
 job_delivery	အလုပ်ကို ပို့ပုံ
 job_delivery_help	OS စာတမ်း၊ စက်ရုပ် bytes သို့မဟုတ် ESC/POS။ ငွေတောင်းနှင့် မီးဖိုခန်းလက်မှတ်တိုင်းကို သက်ဆိုင်ရာကိုယ်ပိုင်ထားသည်။ အလုပ်မည်သည့် အရည်အသွေးမဆို Find မှ သိမ်းဆည်းထားသော မော်နီတာကို သို့ပို့နိုင်သည်။
@@ -1105,9 +1137,6 @@ remove_these_tables	ဤစားပွဲများကိုဖယ်ရှာ
 table_remove_ph	ဖယ်ရှားရန်: T1-T24, သို့မဟုတ် တစ်စားပွဲအမည်
 find_server	ဆိုင်၏ဆာဗာကိုရှာပါ
 bill_format	ဘီလ်ပုံစံ
-bill_header_ph	လိပ်စာ | ဖုန်း
-fssai_ph	FSSAI လိုင်စင်နံပါတ် (အိန္ဒိယ)
-bill_footer_ph	ဖူးတာ (ဥပမာ: ကျေးဇူးတင်ပါတယ်၊ နောက်တစ်ဖန်လာပါ)
 reset_bill_format	သတ်မှတ်ထားသောအခြေခံသို့ပြန်လည်သတ်မှတ်မယ်
 bill_format_reset	ဘီလ်ဖော်မက် သတ်မှတ်ထားသို့ပြန်လည်သတ်မှတ်ပြီး
 reset_kot_format	သတ်မှတ်ထားသောအခြေခံသို့ပြန်လည်သတ်မှတ်မယ်
@@ -1146,7 +1175,6 @@ kot_kind_modified	ပြင်ဆင်ထားသော
 kot_kind_cancelled	အားပယ်လိုက်သည်
 kot_style_heading	မယ်ထည်အမျိုးအစား အရွယ်အစားနှင့် အလေးချိန်
 kot_style_title	ခေါင်းစဉ်
-kot_style_item_qty	ပစ္စည်း · အရေအတွက်
 kot_style_field_pick	ကွင်းရွေးချယ်ရန်
 kot_weight_regular	ပုံမှန်
 kot_weight_bold	ထူ
@@ -1158,8 +1186,8 @@ content_width_bill	ဘီလ်အကြောင်းအရာ အကျယ်
 content_width_kot	KOT အကြောင်းအရာအကျယ် (မီလီမီတာ)
 content_width_ph	သို့မဟုတ် အကြောင်းအရာအကျယ် ၄၀–၂၁၀ မီလီမီတာ ဟု ရိုက်ထည့်ပါ
 content_width_help	ဒီစလစ်ပုံနှိပ်မှုက ဘယ်လောက်ကျယ်လဲ။ဘီလ်နဲ့ KOT တစ်ခုချင်းစီမှာ ကိုယ်ပိုင်အကျယ်ရှိပါတယ်။
-content_width_bill_help	ဧည့်သည်ဘီလ်၏ အကျယ်ကို ပုံနှိပ်နိုင်သည်။ပုံမှန် ၂၁၀ မီလီမီတာ (စာမျက်နှာ)။၅၈ မီလီမီတာ ကျဉ်းမြောင်းသော စလစ်၊ ၈၀ မီလီမီတာ အကျယ် စလစ်၊ ၁၁၂ မီလီမီတာ ၄ လက်မ၊ ၂၁၀ မီလီမီတာ A4 အကျယ်။၄၀ မှ ၂၁၀ အထိ မည်သည့်တန်ဖိုးကိုမဆို ရိုက်ထည့်ပါ။မီးဖိုချောင်လက်မှတ်များတွင် KOT တက်ဘ်တွင် ကိုယ်ပိုင်အကျယ်ရှိသည်။
-content_width_kot_help	မီးဖိုချောင်လက်မှတ် ပုံနှိပ်နိုင်မှု အကျယ်။ပုံမှန် ၈၀ မီလီမီတာ။ ၅၈ မီလီမီတာ ကျဉ်းမြောင်းသော စလစ်၊ ၈၀ မီလီမီတာ အကျယ် စလစ်၊ ၁၁၂ မီလီမီတာ ၄ လက်မ၊ ၂၁၀ မီလီမီတာ စာမျက်နှာ။၄၀ မှ ၂၁၀ အထိ မည်သည့်တန်ဖိုးမဆို ရိုက်ထည့်ပါ။ဧည့်သည်ဘီလ်များတွင် ဘီလ်တက်ဘ်တွင် ကိုယ်ပိုင်အကျယ်ရှိသည်။
+content_width_bill_help	ဧည့်သည်၏ ငွေတောင်းခံလွှာ ပုံနှိပ်သည့်အကျယ်၊ mm ဖြင့် (40–210)။ မည်သည့်စက္ကူပေါ်တွင်မဆို ဤအမှန်တကယ်အရွယ်အစားဖြင့် ပုံနှိပ်သည်; ၎င်းထက်ကျဉ်းသော စက္ကူပေါ်တွင် ပုံနှိပ်အစွန်းကျော်သည့်အပိုင်းကို ဖြတ်သည် (စက္ကူ ကိုကြည့်ပါ)။ မီးဖိုချောင်လက်မှတ်များ၏ အကျယ်ကို KOT တက်ဘ်တွင် သီးခြားထားသည်။
+content_width_kot_help	မီးဖိုချောင်လက်မှတ် ပုံနှိပ်သည့်အကျယ်၊ mm ဖြင့် (40–210)။ မည်သည့်စက္ကူပေါ်တွင်မဆို ဤအမှန်တကယ်အရွယ်အစားဖြင့် ပုံနှိပ်သည်; ၎င်းထက်ကျဉ်းသော စက္ကူပေါ်တွင် ပုံနှိပ်အစွန်းကျော်သည့်အပိုင်းကို ဖြတ်သည် (စက္ကူ ကိုကြည့်ပါ)။ ဧည့်သည်ငွေတောင်းခံလွှာများ၏ အကျယ်ကို ငွေတောင်းခံလွှာ တက်ဘ်တွင် သီးခြားထားသည်။
 vp_paper_width	အကြောင်းအရာအကျယ် (မီလီမီတာ)
 vp_paper_width_ph	သို့မဟုတ် အကြောင်းအရာအကျယ် ၄၀–၂၁၀ မီလီမီတာ ဟု ရိုက်ထည့်ပါ
 vp_paper_width_help	အကြောင်းအရာ အကျယ်ကို ဘေလ်နှင့် KOT ပုံစံအောက်တွင် သတ်မှတ်သည် — ဘေလ် (ပုံမှန် 210 mm) နှင့် မီးဖိုချောင်လက်မှတ် (ပုံမှန် 80 mm) သီးခြား။
@@ -1213,8 +1241,6 @@ schemes_help	BOGO ရာခိုင်နှုန်းလျော့ဈေ�
 scheme_bogo_ph	Buy 2 Thali get 1 Chaas
 add_scheme	BOGO ထည့်ပါ
 schedule_ph	အချိန် / ပျော်စောင့်ချိန်—တနင်္လာမှ စနေ 07:00-11:00 သို့မဟုတ် HappyHour 17:00-19:00=150
-upi_vpa_ph	UPI ID (VPA)
-upi_payee_ph	UPI စာရင်းထဲသို့ငွေပေးရသူအမည် (ရွေးချယ်နိုင်)
 upi_qr	UPI QR
 show_upi_qr	UPI QR ပြပါ
 close_upi_qr	ပိတ်မည်
@@ -1295,8 +1321,6 @@ printer_mode_first	အလုပ်ဖြစ်နေတဲ့ ပရင်တာ
 printer_mode_all	အားလုံးမှာပုံနှိပ်ပါ
 kot_show_area	ဒေသ
 kot_hide_area	ဒေသကို ဖျက်ပါ
-kot_show_item_hdr	ပစ္စည်း · အရေအတွက်
-kot_hide_item_hdr	အတန်းများကို ဖုံးထားပါ
 kot_show_title	ခေါင်းစီးလိုင်း
 kot_hide_title	ခေါင်းစီးကို ဖုံးထားပါ
 kot_field_cycle	နောက်တစ်ခုကိုရွေးပါ
@@ -1337,12 +1361,12 @@ private_code_ph	ဂဏန်း ၁၂ လုံးကုဒ်
 stamp_on	အမှတ်တံဆိပ်
 pay_qr_on	ငွေပေးချေမှု QR: ဖိုင်တွင်ရှိသည်
 pay_qr_off	ငွေပေးချေမှု QR: မရှိပါ
+printers_screen_tip	ရှာရန်သည် ဤစက်ပစ္စည်း သုံးနိုင်သော ပရင်တာများကို ပြပြီး ဤဆိုင်အတွက် သိမ်းဆည်းသည်။ ဘီလ်ပရင်တာများ: ဘီလ်နှင့် KOT ဖော်မက် → ဘီလ်။ မီးဖိုချောင်: မီးဖိုချောင် → မီးဖိုချောင် စခန်းများ။
+printers_found_none	ပရင်တာ မတွေ့ပါ။
+nav_loading	ဖွင့်နေသည်…
+kot_copy_from	ဤမှ ကူးယူရန်
+kot_copy_from_help	ထိုအမျိုးအစား၏ စာကြောင်းတိုင်း၏ အရွယ်အစား၊ အထူ နှင့် ချိန်ညှိမှုကို ဤအမျိုးအစားသို့ ကူးယူသည်။ ဤအမျိုးအစားသည် ၎င်း၏ နဖူးစည်း၊ ပစ္စည်းရှေ့ဆက် နှင့် ဖျက်မျဉ်းကို ထိန်းထားသည်။ ထိန်းထားရန် KOT ပုံစံကို သိမ်းပါ။
 items_tmpl_heading	ပစ္စည်းပုံစံများ
 items_tmpl_help	သင့်မီနူးအတွက် ဟင်းလျာများ၊ အမျိုးအစားများနှင့် ဓာတ်ပုံများ။ ဆိုင်ဆက်တင်များနှင့် ဝန်ထမ်းများ ယခင်အတိုင်းရှိနေမည်။
 public_tmpl_help	မည်သူမဆို ဒေါင်းလုဒ်လုပ်နိုင်သော စတင်မီနူးများ။ အင်တာနက် တစ်ကြိမ်လိုအပ်သည်။
 private_tmpl_help	သင်၏ Khaynjo ဆက်သွယ်သူထံမှ ဂဏန်း ၁၂ လုံးကုဒ်ဖြင့် ကာကွယ်ထားသော ဖောက်သည်မီနူးများ။
-printers_screen_tip	ရှာရန်သည် ဤစက်ပစ္စည်း သုံးနိုင်သော ပရင်တာများကို ပြပြီး ဤဆိုင်အတွက် သိမ်းဆည်းသည်။ ဘီလ်ပရင်တာများ: ဘီလ်နှင့် KOT ဖော်မက် → ဘီလ်။ မီးဖိုချောင်: မီးဖိုချောင် → မီးဖိုချောင် စခန်းများ။
-printers_found_none	ပရင်တာ မတွေ့ပါ။
-kot_copy_from	ဤမှ ကူးယူရန်
-kot_copy_from_help	ထိုအမျိုးအစား၏ စာကြောင်းတိုင်း၏ အရွယ်အစား၊ အထူ နှင့် ချိန်ညှိမှုကို ဤအမျိုးအစားသို့ ကူးယူသည်။ ဤအမျိုးအစားသည် ၎င်း၏ နဖူးစည်း၊ ပစ္စည်းရှေ့ဆက် နှင့် ဖျက်မျဉ်းကို ထိန်းထားသည်။ ထိန်းထားရန် KOT ပုံစံကို သိမ်းပါ။
-nav_loading	ဖွင့်နေသည်…

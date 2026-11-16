@@ -60,10 +60,6 @@ bill_item_layout	वस्तु रो लेआउट
 bill_item_layout_columns	स्तंभ
 bill_item_layout_stacked	ढेर करियोड़ो
 bill_item_header	स्तंभ शीर्षक
-bill_item_hdr_item	आइटम हेडर
-bill_item_hdr_qty	मात्रा हेडर
-bill_item_hdr_price	कीमत शीर्षक
-bill_item_hdr_amount	राशि शीर्षक
 bill_item_name	वस्तु रो नांव
 bill_item_qty	मात्रा
 bill_item_price	कीमत
@@ -71,6 +67,13 @@ bill_item_amount	रकम
 bill_item_note	मद नोट
 bill_item_col_sep	स्तंभ रा नियम
 slip_col_width	चौड़ाई (mm)
+paper_heading	कागद
+paper_size	{w} × {h} mm
+paper_roll	{w} mm रोल
+paper_not_set	कागद अबार पतो कोनी
+paper_length_mm	लंबाई (mm)
+printer_paper_help	इण प्रिंटर रो कागद mm में। खाली लंबाई रो मतलब रोल: हर पर्ची आपरी सामग्री जितरी लांबी होवै। प्रिंटर ढूंढो खाली कागद नै प्रिंटर रै ड्राइवर सूं भरै (नीं बता सकै तो 80 mm रोल) अर पैलां सूं तय कागद नै कदैई कोनी बदळै।
+preview_help	आ पर्ची नीचै चुण्योड़ा प्रिंटर रै कागद माथै, जियां उठै छपै: प्रिंटर जठै तांई पूगै उण ऊपरलै डावै कूणै सूं असली नाप में (भूरो: किनारा जठै कोनी पूगै), लांबी पर्ची बेसी पानां माथै, कागद रै किनारै सूं आगै रो सगळो कट जावै। प्रिंटर चुणण सूं फगत पूर्वावलोकन बदळै; हर प्रिंटर रो कागद प्रिंटर में तय होवै।
 slip_col_start	सरुआत री जगां (px)
 slip_col_end	छेहली जगां (px)
 slip_columns_help	हर स्तंभ री चौड़ाई में उणरी सरुआत अर छेहली जगां सामल है। लिखावट आपरै स्तंभ रै मांय लिपटै; सामग्री री चौड़ाई सूं बारै जको है वो कागज अर पूर्वावलोकन दोनूं में कट जावै।
@@ -838,3 +841,4 @@ nav_loading	लोड हो रह्यो है…
 printer_mode_first	पैली ओ काम करै है
 printer_mode_all	सगळा माथै प्रिंट करो
 slip_columns	स्तंभ
+slip_col_header	हेडर

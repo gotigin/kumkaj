@@ -92,10 +92,6 @@ bill_item_layout	Așezare articole
 bill_item_layout_columns	Coloane
 bill_item_layout_stacked	Pe rânduri
 bill_item_header	Antete de coloane
-bill_item_hdr_item	Antet articol
-bill_item_hdr_qty	Antet cant.
-bill_item_hdr_price	Antet preț
-bill_item_hdr_amount	Antet sumă
 bill_item_name	Nume fel
 bill_item_qty	Cant.
 bill_item_price	Preț
@@ -103,6 +99,20 @@ bill_item_amount	Sumă
 bill_item_note	Notă fel
 bill_item_col_sep	Linii coloane
 slip_columns	Coloane
+slip_col_header	Antet
+bill_line_logo	Siglă
+bill_logo_picture	Imagine
+bill_logo_choose	Alege imaginea
+bill_logo_remove	Elimină imaginea
+bill_logo_none	Nicio imagine
+bill_logo_unreadable	Nu este o imagine pe care aplicația o poate citi
+bill_logo_width	Lățime (px)
+bill_logo_height	Înălțime (px)
+bill_logo_tones	Nuanțe de gri
+bill_logo_solid	Plin
+bill_logo_shaded	Umbrit
+bill_logo_help	Lățime și înălțime în px. Golul urmează imaginea: unul gol păstrează forma, ambele goale folosesc mărimea ei; ambele setate o încadrează înăuntru, niciodată întinsă. Fără imagine: o siglă afișată își păstrează înălțimea ca spațiu gol; Ascunde o elimină.
+bill_logo_tones_help	Plin: fiecare punct negru sau alb, pentru sigle clare. Umbrit: griurile devin modele fine de puncte, pentru fotografii și umbre moi.
 slip_col_width	Lățime (mm)
 slip_col_start	Spațiu la început (px)
 slip_col_end	Spațiu la sfârșit (px)
@@ -167,6 +177,21 @@ alerts_help	Cât rămân mesajele de stare pe ecran pentru tine (această autent
 snack_secs_ph	Secunde (3–60, implicit 10)
 snack_secs_save	Salvează timpul alertei
 snack_secs_saved	Timpul alertei salvat — {n} secunde
+settings_sec_whatsapp	WhatsApp
+whatsapp_cloud_help	Use your own Meta WhatsApp Cloud API. Create a System User token with whatsapp_business_messaging (temporary dashboard tokens expire). Credentials stay on this Server only — never on extra tills. Accepted means Meta took the request, not that the guest received it.
+whatsapp_phone_id_ph	Phone Number ID
+whatsapp_token_ph	Access Token (leave blank to keep)
+whatsapp_template_ph	Bill template name (optional)
+whatsapp_template_lang_ph	Template language (e.g. en)
+whatsapp_enable	Enable
+whatsapp_disable	Off
+whatsapp_save	Save WhatsApp
+whatsapp_test	Test connection
+whatsapp_disconnect	Disconnect
+whatsapp_send_bill	Send via WhatsApp
+whatsapp_consent	WhatsApp OK
+whatsapp_consent_help	Guest agreed to receive WhatsApp messages. A phone number alone is not consent.
+whatsapp_server_only	Configure WhatsApp on the shop Server device
 settings_sec_backup	Copie de rezervă și restaurare
 settings_sec_diag	Diagnostic
 settings_sec_privacy	Confidențialitate
@@ -729,6 +754,13 @@ station_vps_dd	Imprimante pentru această stație
 station_vps_dd_n	{n} imprimantă(e) · atinge pentru a schimba
 bill_printers_dd	Imprimante pentru notă
 bill_printers_dd_n	{n} imprimantă(e) pentru notă · atinge pentru a schimba
+paper_heading	Hârtie
+paper_size	{w} × {h} mm
+paper_roll	rolă de {w} mm
+paper_not_set	hârtia încă necunoscută
+paper_length_mm	Lungime (mm)
+printer_paper_help	Hârtia acestei imprimante în mm. O Lungime goală înseamnă rolă: fiecare bon este lung cât conținutul său. Găsește imprimante completează hârtia goală din driverul imprimantei (rolă de 80 mm când nu poate spune) și nu schimbă niciodată una deja setată.
+preview_help	Acest bon pe hârtia imprimantei alese mai jos, așa cum se tipărește acolo: la dimensiune reală din colțul stânga-sus pe care îl atinge imprimanta (gri: margini pe care nu le atinge), un bon lung pe mai multe foi, tot ce trece de marginea hârtiei este tăiat. Alegerea unei imprimante schimbă doar previzualizarea; hârtia fiecărei imprimante se setează la Imprimante.
 job_layout	Așezare
 job_delivery	Cum se trimite lucrarea
 job_delivery_help	Document OS, octeți bruți sau ESC/POS. Nota și bonul de bucătărie își păstrează fiecare pe al său. Orice lucrare poate merge la orice imprimantă salvată de Căutare.
@@ -1105,9 +1137,6 @@ remove_these_tables	Elimină aceste mese
 table_remove_ph	Elimină: T1-T24 sau numele unei mese
 find_server	Găsește serverul localului
 bill_format	Format notă
-bill_header_ph	Adresă | telefon
-fssai_ph	Nr. licență FSSAI (India)
-bill_footer_ph	Subsol (ex. Mulțumim, reveniți)
 reset_bill_format	Resetează la implicit
 bill_format_reset	Formatul notei a fost resetat la implicit
 reset_kot_format	Resetează la implicit
@@ -1146,7 +1175,6 @@ kot_kind_modified	Modificat
 kot_kind_cancelled	Anulat
 kot_style_heading	Mărime și grosime câmp
 kot_style_title	Titlu
-kot_style_item_qty	Articol · Cant.
 kot_style_field_pick	Alege câmpul
 kot_weight_regular	Obișnuit
 kot_weight_bold	Aldin
@@ -1158,8 +1186,8 @@ content_width_bill	Lățime conținut notă (mm)
 content_width_kot	Lățime conținut KOT (mm)
 content_width_ph	Sau tastează o lățime de conținut, 40–210 mm
 content_width_help	Cât de lat se tipărește acest bon. Nota și KOT își păstrează fiecare lățimea.
-content_width_bill_help	Cât de lată se tipărește nota oaspetelui. Implicit 210 mm (pagină). 58 mm bon îngust, 80 mm bon lat, 112 mm 4 inci, 210 mm lățime A4. Tastează orice valoare de la 40 la 210. Bonurile de bucătărie au lățimea lor în fila KOT.
-content_width_kot_help	Cât de lat se tipărește bonul de bucătărie. Implicit 80 mm. 58 mm îngust, 80 mm lat, 112 mm 4 inci, 210 mm pagină. Tastează de la 40 la 210. Notele oaspeților au lățimea lor în fila Notă.
+content_width_bill_help	Cât de lată se tipărește nota clientului, în mm (40–210). Se tipărește la această mărime reală pe orice hârtie; pe hârtie mai îngustă, partea de dincolo de marginea de tipărire se taie (vezi Hârtie). Bonurile de bucătărie au lățimea lor în fila KOT.
+content_width_kot_help	Cât de lat se tipărește bonul de bucătărie, în mm (40–210). Se tipărește la această mărime reală pe orice hârtie; pe hârtie mai îngustă, partea de dincolo de marginea de tipărire se taie (vezi Hârtie). Notele clienților au lățimea lor în fila Notă.
 vp_paper_width	Lățime conținut (mm)
 vp_paper_width_ph	Sau tastează o lățime de conținut, 40–210 mm
 vp_paper_width_help	Lățimea conținutului se setează la Format notă și KOT — separat pentru notă (implicit 210 mm) și bonul de bucătărie (implicit 80 mm).
@@ -1213,8 +1241,6 @@ schemes_help	BOGO, reducere procentuală și combo-uri fixe. Combo-urile se desf
 scheme_bogo_ph	Cumpără 2 Thali primești 1 Chaas
 add_scheme	Adaugă BOGO
 schedule_ph	Ore / oră fericită — Lu-Vi 07:00-11:00 sau HappyHour 17:00-19:00=150
-upi_vpa_ph	ID UPI (VPA)
-upi_payee_ph	Nume beneficiar UPI (opțional)
 upi_qr	UPI QR
 show_upi_qr	Arată UPI QR
 close_upi_qr	Închide
@@ -1295,8 +1321,6 @@ printer_mode_first	Prima care merge
 printer_mode_all	Tipărește pe toate
 kot_show_area	Zonă
 kot_hide_area	Ascunde zona
-kot_show_item_hdr	Articol · Cant.
-kot_hide_item_hdr	Ascunde coloanele
 kot_show_title	Linie de titlu
 kot_hide_title	Ascunde titlul
 kot_field_cycle	Alege următorul
@@ -1337,12 +1361,12 @@ private_code_ph	Cod din 12 cifre
 stamp_on	Ștampilă: în fișier
 pay_qr_on	QR de plată: în fișier
 pay_qr_off	QR de plată: niciunul
+printers_screen_tip	Caută afișează imprimantele pe care le poate folosi acest dispozitiv și le salvează pentru acest magazin. Imprimante de notă: Format notă și KOT → Notă. Bucătărie: Bucătărie → Posturi de bucătărie.
+printers_found_none	Nu s-a găsit nicio imprimantă.
+nav_loading	Se încarcă…
+kot_copy_from	Copiază din
+kot_copy_from_help	Copiază mărimea, grosimea și alinierea fiecărui rând din acel tip în acesta. Acest tip își păstrează bannerul, prefixul de articol și tăierea. Salvați formatul KOT pentru a-l păstra.
 items_tmpl_heading	Șabloane de articole
 items_tmpl_help	Preparate, categorii și fotografii pentru meniul tău. Setările magazinului și personalul rămân la fel.
 public_tmpl_help	Meniuri de început pe care le poate descărca oricine. Necesită internet o dată.
 private_tmpl_help	Meniuri de client protejate cu un cod de 12 cifre de la contactul tău Khaynjo.
-printers_screen_tip	Caută afișează imprimantele pe care le poate folosi acest dispozitiv și le salvează pentru acest magazin. Imprimante de notă: Format notă și KOT → Notă. Bucătărie: Bucătărie → Posturi de bucătărie.
-printers_found_none	Nu s-a găsit nicio imprimantă.
-kot_copy_from	Copiază din
-kot_copy_from_help	Copiază mărimea, grosimea și alinierea fiecărui rând din acel tip în acesta. Acest tip își păstrează bannerul, prefixul de articol și tăierea. Salvați formatul KOT pentru a-l păstra.
-nav_loading	Se încarcă…

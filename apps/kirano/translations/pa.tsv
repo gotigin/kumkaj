@@ -60,10 +60,6 @@ bill_item_layout	ਆਈਟਮ ਲੇਆਉਟ
 bill_item_layout_columns	ਕਾਲਮ
 bill_item_layout_stacked	ਕਤਾਰਾਂ
 bill_item_header	ਕਾਲਮ ਸਿਰਲੇਖ
-bill_item_hdr_item	ਆਈਟਮ ਸਿਰਲੇਖ
-bill_item_hdr_qty	ਗਿਣਤੀ ਸਿਰਲੇਖ
-bill_item_hdr_price	ਦਰ ਸਿਰਲੇਖ
-bill_item_hdr_amount	ਰਕਮ ਸਿਰਲੇਖ
 bill_item_name	ਆਈਟਮ ਦਾ ਨਾਂ
 bill_item_qty	ਮਾਤਰਾ
 bill_item_price	ਦਰ
@@ -71,6 +67,13 @@ bill_item_amount	ਰਕਮ
 bill_item_note	ਆਈਟਮ ਨੋਟ
 bill_item_col_sep	ਕਾਲਮ ਰੇਖਾ
 slip_col_width	ਚੌੜਾਈ (mm)
+paper_heading	ਕਾਗਜ਼
+paper_size	{w} × {h} mm
+paper_roll	{w} mm ਰੋਲ
+paper_not_set	ਕਾਗਜ਼ ਅਜੇ ਪਤਾ ਨਹੀਂ
+paper_length_mm	ਲੰਬਾਈ (mm)
+printer_paper_help	ਇਸ ਪ੍ਰਿੰਟਰ ਦਾ ਕਾਗਜ਼ mm ਵਿੱਚ। ਖਾਲੀ ਲੰਬਾਈ ਦਾ ਮਤਲਬ ਰੋਲ: ਹਰ ਪਰਚੀ ਆਪਣੀ ਸਮੱਗਰੀ ਜਿੰਨੀ ਲੰਮੀ ਹੁੰਦੀ ਹੈ। ਪ੍ਰਿੰਟਰ ਲੱਭੋ ਖਾਲੀ ਕਾਗਜ਼ ਨੂੰ ਪ੍ਰਿੰਟਰ ਦੇ ਡਰਾਈਵਰ ਤੋਂ ਭਰਦਾ ਹੈ (ਨਾ ਦੱਸ ਸਕੇ ਤਾਂ 80 mm ਰੋਲ) ਅਤੇ ਪਹਿਲਾਂ ਤੋਂ ਤੈਅ ਕਾਗਜ਼ ਕਦੇ ਨਹੀਂ ਬਦਲਦਾ।
+preview_help	ਹੇਠਾਂ ਚੁਣੇ ਪ੍ਰਿੰਟਰ ਦੇ ਕਾਗਜ਼ ਉੱਤੇ ਇਹ ਪਰਚੀ, ਜਿਵੇਂ ਉੱਥੇ ਛਪਦੀ ਹੈ: ਪ੍ਰਿੰਟਰ ਜਿੱਥੇ ਤੱਕ ਪਹੁੰਚਦਾ ਹੈ ਉਸ ਉੱਪਰਲੇ ਖੱਬੇ ਕੋਨੇ ਤੋਂ ਅਸਲ ਨਾਪ ਵਿੱਚ (ਸਲੇਟੀ: ਕਿਨਾਰੇ ਜਿੱਥੇ ਨਹੀਂ ਪਹੁੰਚਦਾ), ਲੰਮੀ ਪਰਚੀ ਹੋਰ ਪੰਨਿਆਂ ਉੱਤੇ, ਕਾਗਜ਼ ਦੇ ਕਿਨਾਰੇ ਤੋਂ ਅੱਗੇ ਦਾ ਸਭ ਕੱਟਿਆ ਜਾਂਦਾ ਹੈ। ਪ੍ਰਿੰਟਰ ਚੁਣਨ ਨਾਲ ਸਿਰਫ਼ ਝਲਕ ਬਦਲਦੀ ਹੈ; ਹਰ ਪ੍ਰਿੰਟਰ ਦਾ ਕਾਗਜ਼ ਪ੍ਰਿੰਟਰ ਵਿੱਚ ਤੈਅ ਹੁੰਦਾ ਹੈ।
 slip_col_start	ਸ਼ੁਰੂਆਤੀ ਥਾਂ (px)
 slip_col_end	ਅੰਤਲੀ ਥਾਂ (px)
 slip_columns_help	ਹਰ ਕਾਲਮ ਦੀ ਚੌੜਾਈ ਵਿੱਚ ਉਸਦੀ ਸ਼ੁਰੂਆਤੀ ਅਤੇ ਅੰਤਲੀ ਥਾਂ ਸ਼ਾਮਲ ਹੈ। ਲਿਖਤ ਆਪਣੇ ਕਾਲਮ ਦੇ ਅੰਦਰ ਹੀ ਲਪੇਟੀ ਜਾਂਦੀ ਹੈ; ਸਮੱਗਰੀ ਦੀ ਚੌੜਾਈ ਤੋਂ ਬਾਹਰ ਵਾਲਾ ਹਿੱਸਾ ਕਾਗਜ਼ ਅਤੇ ਝਲਕ ਦੋਵਾਂ ਵਿੱਚ ਕੱਟਿਆ ਜਾਂਦਾ ਹੈ।
@@ -838,3 +841,4 @@ nav_loading	ਲੋਡ ਹੋ ਰਿਹਾ ਹੈ…
 printer_mode_first	ਜੋ ਪਹਿਲਾਂ ਚੱਲੇ
 printer_mode_all	ਸਭ 'ਤੇ ਛਾਪੋ
 slip_columns	ਕਾਲਮ
+slip_col_header	ਸਿਰਲੇਖ

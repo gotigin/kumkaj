@@ -60,10 +60,6 @@ bill_item_layout	菜品版式
 bill_item_layout_columns	列
 bill_item_layout_stacked	堆疊
 bill_item_header	列標題
-bill_item_hdr_item	品名錶頭
-bill_item_hdr_qty	數量表頭
-bill_item_hdr_price	單價表頭
-bill_item_hdr_amount	金額表頭
 bill_item_name	項目名稱
 bill_item_qty	數量
 bill_item_price	單價
@@ -71,6 +67,13 @@ bill_item_amount	金額
 bill_item_note	項目備註
 bill_item_col_sep	列線
 slip_col_width	寬度 (mm)
+paper_heading	紙張
+paper_size	{w} × {h} mm
+paper_roll	{w} mm 捲紙
+paper_not_set	紙張尚未得知
+paper_length_mm	長度 (mm)
+printer_paper_help	此打印機的紙張 (mm)。長度留空即為捲紙：每張單據與其內容一樣長。「查找打印機」會從打印機驅動程式填入空白紙張（無法得知時為 80 mm 捲紙），且絕不更改已設定的紙張。
+preview_help	此單據在下方所選打印機的紙張上，與在那裡列印的完全相同：從打印機可達的左上角起以實際尺寸列印（灰色：無法到達的邊緣），長單據印在更多張紙上，超出紙張邊緣的部分會被切掉。選擇打印機只會改變預覽；每台打印機的紙張在「打印機」中設定。
 slip_col_start	開頭間距 (px)
 slip_col_end	結尾間距 (px)
 slip_columns_help	每欄的寬度已包含其開頭與結尾間距。文字在所屬欄內換行；超出內容寬度的部分，在紙上和預覽中都會被裁掉。
@@ -838,3 +841,4 @@ nav_loading	載入中…
 printer_mode_first	第一個可用的
 printer_mode_all	全部打印
 slip_columns	欄
+slip_col_header	表頭

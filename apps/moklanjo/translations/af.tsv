@@ -501,6 +501,17 @@ job_size	Lettergrootte
 job_size_ph	bv. 18, 20, 26…
 test_receipt_format	Test receipt
 test_label_format	Test label
+paper_heading	Papier
+paper_size	{w} × {h} mm
+paper_roll	{w} mm-rol
+paper_not_set	papier nog nie bekend nie
+paper_length_mm	Lengte (mm)
+printer_paper_help	Hierdie drukker se papier in mm. 'n Leë Lengte is 'n rol: elke strokie is so lank soos sy inhoud. Soek drukkers vul leë papier in vanaf die drukker se drywer ('n 80 mm-rol as dit nie kan sê nie) en verander nooit papier wat reeds gestel is nie.
+preview_help	Hierdie strokie op die papier van die drukker wat hieronder gekies is, soos dit daar druk: werklike grootte van die boonste linkerhoek wat die drukker kan bereik (grys: rande wat dit nie kan nie), 'n lang strokie op meer velle, alles verby die papier se rand afgesny. Om 'n drukker te kies verander net die voorskou; elke drukker se papier word onder Drukkers gestel.
+slip_col_width	Breedte (mm)
+no_printer_assigned	Geen drukker
+printer_target_default	Gewone drukker van hierdie rekenaar (leë adres)
+job_preview	Voorbeeld
 test_receipt_sent	Sample receipt sent
 test_label_sent	Sample label sent
 test_print_no_printer	Geen drukker vir daardie werk nie — voeg een by onder hierdie plek

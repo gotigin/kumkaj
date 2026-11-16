@@ -72,10 +72,6 @@ bill_item_layout	Itemindeling
 bill_item_layout_columns	Kolommen
 bill_item_layout_stacked	Gestapeld
 bill_item_header	Kolomkoppen
-bill_item_hdr_item	Itemkop
-bill_item_hdr_qty	Aantalkop
-bill_item_hdr_price	Prijskop
-bill_item_hdr_amount	Bedragkop
 bill_item_name	Naam geneesmiddel
 bill_item_qty	Aantal
 bill_item_price	Prijs
@@ -83,6 +79,13 @@ bill_item_amount	Bedrag
 bill_item_note	Rx- / verkoopnotitie
 bill_item_col_sep	Kolomlijnen
 slip_col_width	Breedte (mm)
+paper_heading	Papier
+paper_size	{w} × {h} mm
+paper_roll	rol van {w} mm
+paper_not_set	papier nog onbekend
+paper_length_mm	Lengte (mm)
+printer_paper_help	Het papier van deze printer in mm. Een lege Lengte is een rol: elke bon is zo lang als de inhoud. Printers zoeken vult leeg papier in vanuit het stuurprogramma van de printer (een rol van 80 mm als het dat niet kan zeggen) en wijzigt nooit papier dat al is ingesteld.
+preview_help	Deze bon op het papier van de printer die hieronder gekozen is, zoals hij daar afdrukt: op ware grootte vanaf de linkerbovenhoek die de printer bereikt (grijs: randen die hij niet bereikt), een lange bon op meer vellen, alles voorbij de papierrand wordt afgesneden. Een printer kiezen verandert alleen het voorbeeld; het papier van elke printer stel je in onder Printers.
 slip_col_start	Beginruimte (px)
 slip_col_end	Eindruimte (px)
 slip_columns_help	De breedte van elke kolom omvat de begin- en eindruimte. Tekst loopt door binnen zijn kolom; wat buiten de inhoudsbreedte valt, wordt afgesneden – op papier en in het voorbeeld.
@@ -850,3 +853,4 @@ nav_loading	Laden…
 printer_mode_first	Eerste die werkt
 printer_mode_all	Afdrukken op alle
 slip_columns	Kolommen
+slip_col_header	Kop

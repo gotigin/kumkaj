@@ -92,10 +92,6 @@ bill_item_layout	ਆਈਟਮ ਲੇਆਉਟ
 bill_item_layout_columns	ਕਾਲਮ
 bill_item_layout_stacked	ਕਤਾਰਾਂ
 bill_item_header	ਕਾਲਮ ਸਿਰਲੇਖ
-bill_item_hdr_item	ਆਈਟਮ ਸਿਰਲੇਖ
-bill_item_hdr_qty	ਗਿਣਤੀ ਸਿਰਲੇਖ
-bill_item_hdr_price	ਦਰ ਸਿਰਲੇਖ
-bill_item_hdr_amount	ਰਕਮ ਸਿਰਲੇਖ
 bill_item_name	ਪਕਵਾਨ ਦਾ ਨਾਮ
 bill_item_qty	ਮਾਤਰਾ
 bill_item_price	ਦਰ
@@ -103,6 +99,20 @@ bill_item_amount	ਰਕਮ
 bill_item_note	ਨੋਟ
 bill_item_col_sep	ਕਾਲਮ ਰੇਖਾ
 slip_columns	ਕਾਲਮ
+slip_col_header	ਸਿਰਲੇਖ
+bill_line_logo	ਲੋਗੋ
+bill_logo_picture	ਤਸਵੀਰ
+bill_logo_choose	ਤਸਵੀਰ ਚੁਣੋ
+bill_logo_remove	ਤਸਵੀਰ ਹਟਾਓ
+bill_logo_none	ਕੋਈ ਤਸਵੀਰ ਨਹੀਂ
+bill_logo_unreadable	ਇਹ ਐਪ ਪੜ੍ਹ ਸਕਣ ਵਾਲੀ ਤਸਵੀਰ ਨਹੀਂ
+bill_logo_width	ਚੌੜਾਈ (px)
+bill_logo_height	ਉਚਾਈ (px)
+bill_logo_tones	ਸਲੇਟੀ
+bill_logo_solid	ਠੋਸ
+bill_logo_shaded	ਛਾਂਦਾਰ
+bill_logo_help	ਚੌੜਾਈ ਅਤੇ ਉਚਾਈ px ਵਿੱਚ। ਖਾਲੀ ਰਹੇ ਤਾਂ ਤਸਵੀਰ ਮੁਤਾਬਕ: ਇੱਕ ਖਾਲੀ ਤਾਂ ਆਕਾਰ ਬਣਿਆ ਰਹਿੰਦਾ, ਦੋਵੇਂ ਖਾਲੀ ਤਾਂ ਉਸਦਾ ਆਪਣਾ ਨਾਪ; ਦੋਵੇਂ ਭਰੇ ਤਾਂ ਅੰਦਰ ਸਮਾ ਜਾਂਦੀ, ਕਦੇ ਨਹੀਂ ਖਿੱਚਦੀ। ਤਸਵੀਰ ਨਹੀਂ: ਦਿਖਾਇਆ ਲੋਗੋ ਆਪਣੀ ਉਚਾਈ ਖਾਲੀ ਥਾਂ ਵਜੋਂ ਰੱਖਦਾ ਹੈ; ਲੁਕਾਓ ਇਸਨੂੰ ਹਟਾ ਦਿੰਦਾ ਹੈ।
+bill_logo_tones_help	ਠੋਸ: ਹਰ ਬਿੰਦੀ ਕਾਲੀ ਜਾਂ ਚਿੱਟੀ, ਸਾਫ਼ ਲੋਗੋ ਲਈ। ਛਾਂਦਾਰ: ਸਲੇਟੀ ਬਰੀਕ ਬਿੰਦੀਆਂ ਦਾ ਨਮੂਨਾ ਬਣ ਜਾਂਦਾ, ਫ਼ੋਟੋ ਅਤੇ ਹਲਕੀ ਛਾਂ ਲਈ।
 slip_col_width	ਚੌੜਾਈ (mm)
 slip_col_start	ਸ਼ੁਰੂਆਤੀ ਥਾਂ (px)
 slip_col_end	ਅੰਤਲੀ ਥਾਂ (px)
@@ -167,6 +177,21 @@ alerts_help	ਸਥਿਤੀ ਸੁਨੇਹੇ ਤੁਹਾਡੇ ਲਈ ਸਕ�
 snack_secs_ph	ਸਕਿੰਟ (3–60, ਮੂਲ 10)
 snack_secs_save	ਸੂਚਨਾ ਸਮਾਂ ਸੰਭਾਲੋ
 snack_secs_saved	ਸੂਚਨਾ ਸਮਾਂ ਸੰਭਾਲਿਆ — {n} ਸਕਿੰਟ
+settings_sec_whatsapp	WhatsApp
+whatsapp_cloud_help	Use your own Meta WhatsApp Cloud API. Create a System User token with whatsapp_business_messaging (temporary dashboard tokens expire). Credentials stay on this Server only — never on extra tills. Accepted means Meta took the request, not that the guest received it.
+whatsapp_phone_id_ph	Phone Number ID
+whatsapp_token_ph	Access Token (leave blank to keep)
+whatsapp_template_ph	Bill template name (optional)
+whatsapp_template_lang_ph	Template language (e.g. en)
+whatsapp_enable	Enable
+whatsapp_disable	Off
+whatsapp_save	Save WhatsApp
+whatsapp_test	Test connection
+whatsapp_disconnect	Disconnect
+whatsapp_send_bill	Send via WhatsApp
+whatsapp_consent	WhatsApp OK
+whatsapp_consent_help	Guest agreed to receive WhatsApp messages. A phone number alone is not consent.
+whatsapp_server_only	Configure WhatsApp on the shop Server device
 settings_sec_backup	ਬੈਕਅੱਪ ਤੇ ਬਹਾਲੀ
 settings_sec_diag	ਡਾਇਗਨੌਸਟਿਕਸ
 settings_sec_privacy	ਪਰਦੇਦਾਰੀ
@@ -729,6 +754,13 @@ station_vps_dd	ਇਸ ਸਟੇਸ਼ਨ ਦੇ ਪ੍ਰਿੰਟਰ
 station_vps_dd_n	{n} ਪ੍ਰਿੰਟਰ · ਬਦਲਣ ਲਈ ਟੈਪ
 bill_printers_dd	ਬਿੱਲ ਦੇ ਪ੍ਰਿੰਟਰ
 bill_printers_dd_n	ਬਿੱਲ ਲਈ {n} ਪ੍ਰਿੰਟਰ · ਬਦਲਣ ਲਈ ਦਬਾਓ
+paper_heading	ਕਾਗਜ਼
+paper_size	{w} × {h} mm
+paper_roll	{w} mm ਰੋਲ
+paper_not_set	ਕਾਗਜ਼ ਅਜੇ ਪਤਾ ਨਹੀਂ
+paper_length_mm	ਲੰਬਾਈ (mm)
+printer_paper_help	ਇਸ ਪ੍ਰਿੰਟਰ ਦਾ ਕਾਗਜ਼ mm ਵਿੱਚ। ਖਾਲੀ ਲੰਬਾਈ ਦਾ ਮਤਲਬ ਰੋਲ: ਹਰ ਪਰਚੀ ਆਪਣੀ ਸਮੱਗਰੀ ਜਿੰਨੀ ਲੰਮੀ ਹੁੰਦੀ ਹੈ। ਪ੍ਰਿੰਟਰ ਲੱਭੋ ਖਾਲੀ ਕਾਗਜ਼ ਨੂੰ ਪ੍ਰਿੰਟਰ ਦੇ ਡਰਾਈਵਰ ਤੋਂ ਭਰਦਾ ਹੈ (ਨਾ ਦੱਸ ਸਕੇ ਤਾਂ 80 mm ਰੋਲ) ਅਤੇ ਪਹਿਲਾਂ ਤੋਂ ਤੈਅ ਕਾਗਜ਼ ਕਦੇ ਨਹੀਂ ਬਦਲਦਾ।
+preview_help	ਹੇਠਾਂ ਚੁਣੇ ਪ੍ਰਿੰਟਰ ਦੇ ਕਾਗਜ਼ ਉੱਤੇ ਇਹ ਪਰਚੀ, ਜਿਵੇਂ ਉੱਥੇ ਛਪਦੀ ਹੈ: ਪ੍ਰਿੰਟਰ ਜਿੱਥੇ ਤੱਕ ਪਹੁੰਚਦਾ ਹੈ ਉਸ ਉੱਪਰਲੇ ਖੱਬੇ ਕੋਨੇ ਤੋਂ ਅਸਲ ਨਾਪ ਵਿੱਚ (ਸਲੇਟੀ: ਕਿਨਾਰੇ ਜਿੱਥੇ ਨਹੀਂ ਪਹੁੰਚਦਾ), ਲੰਮੀ ਪਰਚੀ ਹੋਰ ਪੰਨਿਆਂ ਉੱਤੇ, ਕਾਗਜ਼ ਦੇ ਕਿਨਾਰੇ ਤੋਂ ਅੱਗੇ ਦਾ ਸਭ ਕੱਟਿਆ ਜਾਂਦਾ ਹੈ। ਪ੍ਰਿੰਟਰ ਚੁਣਨ ਨਾਲ ਸਿਰਫ਼ ਝਲਕ ਬਦਲਦੀ ਹੈ; ਹਰ ਪ੍ਰਿੰਟਰ ਦਾ ਕਾਗਜ਼ ਪ੍ਰਿੰਟਰ ਵਿੱਚ ਤੈਅ ਹੁੰਦਾ ਹੈ।
 job_layout	ਲੇਆਉਟ
 job_delivery	ਕੰਮ ਕਿਵੇਂ ਭੇਜਿਆ ਜਾਂਦਾ ਹੈ
 job_delivery_help	OS ਦਸਤਾਵੇਜ਼, ਕੱਚੇ ਬਾਈਟ ਜਾਂ ESC/POS। ਬਿੱਲ ਤੇ ਰਸੋਈ ਟਿਕਟ ਦੋਵੇਂ ਆਪੋ-ਆਪਣਾ ਰੱਖਦੇ ਹਨ। ਕੋਈ ਵੀ ਕੰਮ ਲੱਭੋ ਦੇ ਸਾਂਭੇ ਕਿਸੇ ਵੀ ਪ੍ਰਿੰਟਰ 'ਤੇ ਜਾ ਸਕਦਾ ਹੈ।
@@ -1105,9 +1137,6 @@ remove_these_tables	ਇਹ ਮੇਜ਼ ਹਟਾਓ
 table_remove_ph	ਹਟਾਓ: T1-T24, ਜਾਂ ਇੱਕ ਮੇਜ਼ ਦਾ ਨਾਂ
 find_server	ਦੁਕਾਨ ਦਾ ਸਰਵਰ ਲੱਭੋ
 bill_format	ਬਿੱਲ ਫਾਰਮੈਟ
-bill_header_ph	ਪਤਾ | ਫ਼ੋਨ
-fssai_ph	FSSAI ਲਾਇਸੈਂਸ ਨੰ. (ਭਾਰਤ)
-bill_footer_ph	ਫੁੱਟਰ (ਜਿਵੇਂ ਧੰਨਵਾਦ, ਫਿਰ ਆਇਓ)
 reset_bill_format	ਡਿਫਾਲਟ ’ਤੇ ਵਾਪਸ
 bill_format_reset	ਬਿੱਲ ਫਾਰਮੈਟ ਡਿਫਾਲਟ ’ਤੇ
 reset_kot_format	ਡਿਫਾਲਟ ’ਤੇ ਵਾਪਸ
@@ -1146,7 +1175,6 @@ kot_kind_modified	ਬਦਲਿਆ
 kot_kind_cancelled	ਰੱਦ
 kot_style_heading	ਖੇਤਰ ਆਕਾਰ ਅਤੇ ਵਜ਼ਨ
 kot_style_title	ਸਿਰਲੇਖ
-kot_style_item_qty	ਆਈਟਮ · ਗਿਣਤੀ
 kot_style_field_pick	ਖੇਤਰ ਚੁਣੋ
 kot_weight_regular	ਆਮ
 kot_weight_bold	ਮੋਟਾ
@@ -1158,8 +1186,8 @@ content_width_bill	ਬਿੱਲ ਦੀ ਚੌੜਾਈ (mm)
 content_width_kot	KOT ਦੀ ਚੌੜਾਈ (mm)
 content_width_ph	ਜਾਂ ਸਮੱਗਰੀ ਚੌੜਾਈ ਲਿਖੋ, 40–210 ਮਿਮੀ
 content_width_help	ਇਹ ਪਰਚੀ ਕਿੰਨੀ ਚੌੜੀ ਛਪੇ। ਬਿੱਲ ਤੇ KOT ਦੋਵੇਂ ਆਪੋ-ਆਪਣੀ ਚੌੜਾਈ ਰੱਖਦੇ ਹਨ।
-content_width_bill_help	ਮਹਿਮਾਨ ਦਾ ਬਿੱਲ ਕਿੰਨਾ ਚੌੜਾ ਛਪੇ। ਮੂਲ 210 mm (ਸਫ਼ਾ)। 58 mm ਤੰਗ ਪਰਚੀ, 80 mm ਚੌੜੀ ਪਰਚੀ, 112 mm 4-ਇੰਚ, 210 mm A4-ਚੌੜਾ। 40 ਤੋਂ 210 ਤੱਕ ਕੋਈ ਵੀ ਮੁੱਲ ਲਿਖੋ। ਰਸੋਈ ਟਿਕਟ ਦੀ ਆਪਣੀ ਚੌੜਾਈ KOT ਟੈਬ 'ਤੇ ਹੈ।
-content_width_kot_help	ਰਸੋਈ ਟਿਕਟ ਕਿੰਨੀ ਚੌੜੀ ਛਪੇ। ਮੂਲ 80 mm। 58 mm ਤੰਗ ਪਰਚੀ, 80 mm ਚੌੜੀ ਪਰਚੀ, 112 mm 4-ਇੰਚ, 210 mm ਸਫ਼ਾ। 40 ਤੋਂ 210 ਤੱਕ ਕੋਈ ਵੀ ਮੁੱਲ ਲਿਖੋ। ਮਹਿਮਾਨ ਬਿੱਲ ਦੀ ਆਪਣੀ ਚੌੜਾਈ ਬਿੱਲ ਟੈਬ 'ਤੇ ਹੈ।
+content_width_bill_help	ਮਹਿਮਾਨ ਦਾ ਬਿੱਲ ਕਿੰਨਾ ਚੌੜਾ ਛਪਦਾ ਹੈ, mm ਵਿੱਚ (40–210)। ਇਹ ਕਿਸੇ ਵੀ ਕਾਗਜ਼ 'ਤੇ ਇਸੇ ਅਸਲ ਨਾਪ ਵਿੱਚ ਛਪਦਾ ਹੈ; ਇਸ ਤੋਂ ਭੀੜੇ ਕਾਗਜ਼ 'ਤੇ ਛਪਾਈ ਦੇ ਕਿਨਾਰੇ ਤੋਂ ਅੱਗੇ ਦਾ ਹਿੱਸਾ ਕੱਟਿਆ ਜਾਂਦਾ ਹੈ (ਕਾਗਜ਼ ਵੇਖੋ)। ਰਸੋਈ ਟਿਕਟਾਂ ਦੀ ਆਪਣੀ ਚੌੜਾਈ KOT ਟੈਬ 'ਤੇ ਹੈ।
+content_width_kot_help	ਰਸੋਈ ਟਿਕਟ ਕਿੰਨੀ ਚੌੜੀ ਛਪਦੀ ਹੈ, mm ਵਿੱਚ (40–210)। ਇਹ ਕਿਸੇ ਵੀ ਕਾਗਜ਼ 'ਤੇ ਇਸੇ ਅਸਲ ਨਾਪ ਵਿੱਚ ਛਪਦੀ ਹੈ; ਇਸ ਤੋਂ ਭੀੜੇ ਕਾਗਜ਼ 'ਤੇ ਛਪਾਈ ਦੇ ਕਿਨਾਰੇ ਤੋਂ ਅੱਗੇ ਦਾ ਹਿੱਸਾ ਕੱਟਿਆ ਜਾਂਦਾ ਹੈ (ਕਾਗਜ਼ ਵੇਖੋ)। ਮਹਿਮਾਨ ਬਿੱਲਾਂ ਦੀ ਆਪਣੀ ਚੌੜਾਈ ਬਿੱਲ ਟੈਬ 'ਤੇ ਹੈ।
 vp_paper_width	ਸਮੱਗਰੀ ਚੌੜਾਈ (ਮਿਮੀ)
 vp_paper_width_ph	ਜਾਂ ਸਮੱਗਰੀ ਚੌੜਾਈ ਲਿਖੋ, 40–210 ਮਿਮੀ
 vp_paper_width_help	ਸਮੱਗਰੀ ਚੌੜਾਈ ਬਿੱਲ ਅਤੇ KOT ਫਾਰਮੈਟ ਵਿੱਚ ਸੈੱਟ ਹੁੰਦੀ ਹੈ। ਇਹ ਬਿੱਲ ਅਤੇ ਰਸੋਈ ਟਿਕਟ ਦੋਵਾਂ ’ਤੇ ਲਾਗੂ ਹੁੰਦੀ ਹੈ।
@@ -1213,8 +1241,6 @@ schemes_help	X ਖਰੀਦੋ Y ਲਵੋ — ਸੈਟਲ ਤੇ ਆਪਣੇ 
 scheme_bogo_ph	Buy 2 Thali get 1 Chaas
 add_scheme	BOGO ਜੋੜੋ
 schedule_ph	ਸਮਾਂ / ਹੈਪੀ ਆਵਰ — Mon-Fri 07:00-11:00 ਜਾਂ HappyHour 17:00-19:00=150
-upi_vpa_ph	UPI ID (VPA)
-upi_payee_ph	UPI ਪ੍ਰਾਪਤਕਰਤਾ (ਵਿਕਲਪਿਕ)
 upi_qr	UPI QR
 show_upi_qr	UPI QR ਵਿਖਾਓ
 close_upi_qr	ਬੰਦ
@@ -1295,8 +1321,6 @@ printer_mode_first	ਜੋ ਪਹਿਲਾਂ ਚੱਲੇ
 printer_mode_all	ਸਭ 'ਤੇ ਛਾਪੋ
 kot_show_area	ਖੇਤਰ
 kot_hide_area	ਖੇਤਰ ਲੁਕਾਓ
-kot_show_item_hdr	ਆਈਟਮ · ਗਿਣਤੀ
-kot_hide_item_hdr	ਕਾਲਮ ਲੁਕਾਓ
 kot_show_title	ਸਿਰਲੇਖ ਕਤਾਰ
 kot_hide_title	ਸਿਰਲੇਖ ਲੁਕਾਓ
 kot_field_cycle	ਅਗਲਾ ਚੁਣੋ
@@ -1337,12 +1361,12 @@ private_code_ph	12 ਅੰਕਾਂ ਦਾ ਕੋਡ
 stamp_on	ਸਟੈਂਪ: ਫਾਈਲ ’ਤੇ
 pay_qr_on	ਭੁਗਤਾਨ QR: ਫਾਈਲ ’ਤੇ
 pay_qr_off	ਭੁਗਤਾਨ QR: ਨਹੀਂ
+printers_screen_tip	ਲੱਭੋ ਇਸ ਡਿਵਾਈਸ ਦੇ ਵਰਤਣਯੋਗ ਪ੍ਰਿੰਟਰ ਦਿਖਾਉਂਦਾ ਹੈ ਅਤੇ ਇਸ ਦੁਕਾਨ ਲਈ ਸੰਭਾਲਦਾ ਹੈ। ਬਿੱਲ ਪ੍ਰਿੰਟਰ: ਬਿੱਲ ਅਤੇ KOT ਫਾਰਮੈਟ → ਬਿੱਲ। ਰਸੋਈ: ਰਸੋਈ → ਰਸੋਈ ਸਟੇਸ਼ਨ।
+printers_found_none	ਕੋਈ ਪ੍ਰਿੰਟਰ ਨਹੀਂ ਮਿਲਿਆ।
+nav_loading	ਲੋਡ ਹੋ ਰਿਹਾ ਹੈ…
+kot_copy_from	ਇਸ ਤੋਂ ਕਾਪੀ ਕਰੋ
+kot_copy_from_help	ਉਸ ਕਿਸਮ ਦੀ ਹਰ ਲਾਈਨ ਦਾ ਆਕਾਰ, ਮੋਟਾਈ ਅਤੇ ਇਕਸਾਰਤਾ ਇਸ ਵਿੱਚ ਕਾਪੀ ਕਰਦਾ ਹੈ। ਇਹ ਕਿਸਮ ਆਪਣਾ ਬੈਨਰ, ਆਈਟਮ ਅਗੇਤਰ ਅਤੇ ਕੱਟੀ ਲਕੀਰ ਰੱਖਦੀ ਹੈ। ਰੱਖਣ ਲਈ KOT ਫਾਰਮੈਟ ਸੇਵ ਕਰੋ।
 items_tmpl_heading	ਆਈਟਮ ਟੈਂਪਲੇਟ
 items_tmpl_help	ਤੁਹਾਡੇ ਮੀਨੂ ਲਈ ਪਕਵਾਨ, ਸ਼੍ਰੇਣੀਆਂ ਅਤੇ ਫੋਟੋਆਂ। ਦੁਕਾਨ ਦੀਆਂ ਸੈਟਿੰਗਾਂ ਅਤੇ ਸਟਾਫ਼ ਜਿਵੇਂ ਹਨ ਉਵੇਂ ਹੀ ਰਹਿੰਦੇ ਹਨ।
 public_tmpl_help	ਸ਼ੁਰੂਆਤੀ ਮੀਨੂ ਜਿਨ੍ਹਾਂ ਨੂੰ ਕੋਈ ਵੀ ਡਾਊਨਲੋਡ ਕਰ ਸਕਦਾ ਹੈ। ਇੱਕ ਵਾਰ ਇੰਟਰਨੈੱਟ ਚਾਹੀਦਾ ਹੈ।
 private_tmpl_help	ਤੁਹਾਡੇ Khaynjo ਸੰਪਰਕ ਤੋਂ ਮਿਲੇ 12-ਅੰਕਾਂ ਦੇ ਕੋਡ ਨਾਲ ਸੁਰੱਖਿਅਤ ਗਾਹਕ ਮੀਨੂ।
-printers_screen_tip	ਲੱਭੋ ਇਸ ਡਿਵਾਈਸ ਦੇ ਵਰਤਣਯੋਗ ਪ੍ਰਿੰਟਰ ਦਿਖਾਉਂਦਾ ਹੈ ਅਤੇ ਇਸ ਦੁਕਾਨ ਲਈ ਸੰਭਾਲਦਾ ਹੈ। ਬਿੱਲ ਪ੍ਰਿੰਟਰ: ਬਿੱਲ ਅਤੇ KOT ਫਾਰਮੈਟ → ਬਿੱਲ। ਰਸੋਈ: ਰਸੋਈ → ਰਸੋਈ ਸਟੇਸ਼ਨ।
-printers_found_none	ਕੋਈ ਪ੍ਰਿੰਟਰ ਨਹੀਂ ਮਿਲਿਆ।
-kot_copy_from	ਇਸ ਤੋਂ ਕਾਪੀ ਕਰੋ
-kot_copy_from_help	ਉਸ ਕਿਸਮ ਦੀ ਹਰ ਲਾਈਨ ਦਾ ਆਕਾਰ, ਮੋਟਾਈ ਅਤੇ ਇਕਸਾਰਤਾ ਇਸ ਵਿੱਚ ਕਾਪੀ ਕਰਦਾ ਹੈ। ਇਹ ਕਿਸਮ ਆਪਣਾ ਬੈਨਰ, ਆਈਟਮ ਅਗੇਤਰ ਅਤੇ ਕੱਟੀ ਲਕੀਰ ਰੱਖਦੀ ਹੈ। ਰੱਖਣ ਲਈ KOT ਫਾਰਮੈਟ ਸੇਵ ਕਰੋ।
-nav_loading	ਲੋਡ ਹੋ ਰਿਹਾ ਹੈ…

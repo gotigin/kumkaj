@@ -28,6 +28,7 @@ pub mod lan_ws;
 pub mod net;
 pub mod notify;
 pub mod ops_local;
+pub mod os_paper;
 pub mod phone;
 pub mod precise;
 pub mod print_share;
@@ -42,6 +43,8 @@ pub mod snack;
 pub mod startup;
 pub mod store;
 pub mod suggest;
+#[doc(hidden)]
+pub mod test_dirs;
 pub mod thumbs;
 pub mod track;
 pub mod uninstall_wipe;

@@ -72,10 +72,6 @@ bill_item_layout	פריסת פריט
 bill_item_layout_columns	עמודות
 bill_item_layout_stacked	מוערם
 bill_item_header	כותרות עמודות
-bill_item_hdr_item	כותרת פריט
-bill_item_hdr_qty	כותרת כמות
-bill_item_hdr_price	כותרת מחיר
-bill_item_hdr_amount	כותרת סכום
 bill_item_name	שם רפואה
 bill_item_qty	כמות
 bill_item_price	מחיר
@@ -83,6 +79,13 @@ bill_item_amount	סכום
 bill_item_note	Rx / הערת מכירה
 bill_item_col_sep	קווי עמודות
 slip_col_width	רוחב (mm)
+paper_heading	נייר
+paper_size	{w} × {h} mm
+paper_roll	גליל {w} מ״מ
+paper_not_set	הנייר עדיין לא ידוע
+paper_length_mm	אורך (mm)
+printer_paper_help	הנייר של מדפסת זו במ״מ. אורך ריק הוא גליל: כל קבלה ארוכה כמו התוכן שלה. „מצא מדפסות” ממלא נייר ריק ממנהל ההתקן של המדפסת (גליל 80 מ״מ כשאינו יכול לומר) ולעולם אינו משנה נייר שכבר הוגדר.
+preview_help	הקבלה הזו על הנייר של המדפסת שנבחרה למטה, כפי שהיא מודפסת שם: בגודל אמיתי מהפינה השמאלית העליונה שהמדפסת מגיעה אליה (אפור: שוליים שאינה מגיעה אליהם), קבלה ארוכה על יותר דפים, כל מה שעובר את קצה הנייר נחתך. בחירת מדפסת משנה רק את התצוגה המקדימה; הנייר של כל מדפסת מוגדר תחת „מדפסות”.
 slip_col_start	רווח התחלה (px)
 slip_col_end	רווח סיום (px)
 slip_columns_help	רוחב כל עמודה כולל את רווח ההתחלה והסיום שלה. הטקסט נשבר בתוך העמודה שלו; מה שחורג מרוחב התוכן נחתך – על הנייר ובתצוגה המקדימה.
@@ -850,3 +853,4 @@ nav_loading	טוען…
 printer_mode_first	הראשונה שעובדת
 printer_mode_all	הדפס בכולן
 slip_columns	עמודות
+slip_col_header	כותרת

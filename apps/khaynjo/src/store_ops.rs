@@ -2290,31 +2290,9 @@ fn html_esc(s: &str) -> String {
         .replace('"', "&quot;")
 }
 
+/// Standard base64 ([`crate::media::encode_base64`]).
 pub fn base64_encode(data: &[u8]) -> String {
-    const T: &[u8] = b"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
-    let mut out = String::with_capacity((data.len() + 2) / 3 * 4);
-    for chunk in data.chunks(3) {
-        let mut n = (chunk[0] as u32) << 16;
-        if chunk.len() > 1 {
-            n |= (chunk[1] as u32) << 8;
-        }
-        if chunk.len() > 2 {
-            n |= chunk[2] as u32;
-        }
-        out.push(T[((n >> 18) & 63) as usize] as char);
-        out.push(T[((n >> 12) & 63) as usize] as char);
-        out.push(if chunk.len() > 1 {
-            T[((n >> 6) & 63) as usize] as char
-        } else {
-            '='
-        });
-        out.push(if chunk.len() > 2 {
-            T[(n & 63) as usize] as char
-        } else {
-            '='
-        });
-    }
-    out
+    crate::media::encode_base64(data)
 }
 
 /// WhatsApp share URL for a bill (opens device browser / app; Net optional).
@@ -2351,7 +2329,7 @@ mod tests {
         }
     }
     fn shop() -> Shop {
-        let path = std::env::temp_dir().join(format!("khaynjo-ops-{}.sqlite3", new_id()));
+        let path = crate::test_dirs::run_root().join(format!("khaynjo-ops-{}.sqlite3", new_id()));
         let store = Store::open_path(&path).unwrap();
         let owner = store.list_staff().unwrap().into_iter().next().unwrap();
         Shop { store, path, owner }

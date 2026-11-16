@@ -72,10 +72,6 @@ bill_item_layout	Isakhiwo sento yemenyu
 bill_item_layout_columns	Amakholomu
 bill_item_layout_stacked	Kustakiwe
 bill_item_header	Izihloko zekholomu
-bill_item_hdr_item	Unhlokweni wento yemenyu yemenyu
-bill_item_hdr_qty	Isihloko esikhulu
-bill_item_hdr_price	Isihloko senani
-bill_item_hdr_amount	Iheda yenani
 bill_item_name	Igama lomuthi
 bill_item_qty	Inani
 bill_item_price	Inani
@@ -83,6 +79,13 @@ bill_item_amount	Inani
 bill_item_note	I-Rx / inothi lokuthengisa
 bill_item_col_sep	Imithetho yekholomu
 slip_col_width	Ububanzi (mm)
+paper_heading	Iphepha
+paper_size	{w} × {h} mm
+paper_roll	umqulu we-{w} mm
+paper_not_set	iphepha alikaziwa okwamanje
+paper_length_mm	Ubude (mm)
+printer_paper_help	Iphepha lale phrinta ku-mm. UBude obungenalutho ngumqulu: irisidi ngayinye inde njengokuqukethwe kwayo. Thola amaphrinta igcwalisa iphepha elingenalutho kusuka kumshayeli wephrinta (umqulu we-80 mm uma ingakwazi ukusho) futhi ayisoze yashintsha eselisethiwe.
+preview_help	Le risidi ephepheni lephrinta ekhethwe ngezansi, njengoba iphrinta lapho: ubukhulu bangempela kusuka ekhoneni elingaphezulu kwesobunxele elifinyelelwa yiphrinta (mpunga: imiphetho engafinyelelwa), irisidi ende emakhasini amaningi, konke okudlula umphetho wephepha kuyasikwa. Ukukhetha iphrinta kushintsha ukubuka kuqala kuphela; iphepha lephrinta ngayinye lisethwa ngaphansi kwe-Amaphrinta.
 slip_col_start	Isikhala sokuqala (px)
 slip_col_end	Isikhala sokugcina (px)
 slip_columns_help	Ububanzi bekholomu ngayinye bufaka isikhala sayo sokuqala nesokugcina. Umbhalo usongeka ngaphakathi kwekholomu yawo; okudlula ububanzi bokuqukethwe kuyanqunywa, ephepheni nasekubukeni kuqala.
@@ -850,3 +853,4 @@ nav_loading	Iyalayisha…
 printer_mode_first	Okokuqala kuyasebenza
 printer_mode_all	Phrinta kukho konke
 slip_columns	Amakholomu
+slip_col_header	Isihloko

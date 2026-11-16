@@ -72,10 +72,6 @@ bill_item_layout	آیٹم لے آؤٹ
 bill_item_layout_columns	کالم
 bill_item_layout_stacked	اسٹیک کٔرِتھ
 bill_item_header	کالم ہیڈر
-bill_item_hdr_item	آیٹم ہیڈر
-bill_item_hdr_qty	Qty ہیڈر
-bill_item_hdr_price	پرائس ہیڈر
-bill_item_hdr_amount	رقم ہیڈر
 bill_item_name	دَواہِ ہُنٛد ناو
 bill_item_qty	تعداد
 bill_item_price	قۭمَت
@@ -83,6 +79,13 @@ bill_item_amount	رقم
 bill_item_note	Rx / فروختُک نوٹ
 bill_item_col_sep	کالم اصول
 slip_col_width	چوڑٲے (mm)
+paper_heading	کاغز
+paper_size	{w} × {h} mm
+paper_roll	{w} mm رول
+paper_not_set	کاغز چھُ نہٕ وُنہِ تام معلوٗم
+paper_length_mm	ڈیگھٕر (mm)
+printer_paper_help	یمہِ پرنٹرُک کاغز mm مَنٛز۔ خٲلی ڈیگھٕر چھُ رول: پرٛتھ پرچہٕ چھُ پننہِ مواد کِس حسابہٕ ڈیگھ۔ پرنٹر ژھانڈِو چھُ خٲلی کاغز پرنٹرٕچہِ ڈرایورٕ پیٹھٕ بَران (وَنِتھ ہیٚکہِ نہٕ تیٚلہِ 80 mm رول) تہٕ گۄڈٕے مقرر کاغز چھُ نہٕ زانٛہہ بدلاوان۔
+preview_help	یہ پرچہٕ بۄنہٕ ژارنہٕ آمت پرنٹرٕچہِ کاغزس پیٹھ، یِتھہٕ پٲٹھۍ تَتہِ چھپان چھُ: پرنٹر یتھ ہیٚرِم کھوٚوُر کۄنس تام واتان چھُ تَتہِ پیٹھٕ اصلی ناپس مَنٛز (سۄرمٕے: کنارٕ یِم نہٕ واتان چھِ)، ڈیگھ پرچہٕ زیادٕ ورقن پیٹھ، کاغزٕکہِ کنارٕ نیبر سورُے چھُ ژٹنہٕ یِوان۔ پرنٹر ژارنہٕ سٟتۍ چھُ صرف پیش منظر بدلان؛ پرٛتھ پرنٹرُک کاغز چھُ پرنٹر مَنٛز مقرر سپدان۔
 slip_col_start	شروعاتُک جاے (px)
 slip_col_end	آخرُک جاے (px)
 slip_columns_help	پرٛتھ کالمُک چوڑٲے منٛز چھےٚ تمیٚک شروعات تہٕ آخرُک جاے شامل۔ متن چھُ پنٕنِس کالمس اندر لپیٹنہٕ یِوان؛ مواد کہِ چوڑٲے نیٚبر یُس چھُ سُہ چھُ کاغزس پؠٹھ تہٕ پیش نظارس منٛز کٹنہٕ یِوان۔
@@ -850,3 +853,4 @@ nav_loading	لوڈ گژھان…
 printer_mode_first	گۄڈٕ یُس کٲم کران چھُ
 printer_mode_all	سارنی پیٹھ چھاپ
 slip_columns	کالَم
+slip_col_header	ہیڈر

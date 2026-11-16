@@ -501,6 +501,17 @@ job_size	Fondi suurus
 job_size_ph	nt. 18, 20, 26…
 test_receipt_format	Testi kviitung
 test_label_format	Katsemärgis
+paper_heading	Paber
+paper_size	{w} × {h} mm
+paper_roll	{w} mm rull
+paper_not_set	paber pole veel teada
+paper_length_mm	Pikkus (mm)
+printer_paper_help	Selle printeri paber millimeetrites. Tühi Pikkus on rull: iga tšekk on sama pikk kui selle sisu. „Otsige printereid“ täidab tühja paberi printeri draiveri järgi (80 mm rull, kui see ei oska öelda) ega muuda kunagi juba määratud paberit.
+preview_help	See tšekk allpool valitud printeri paberil, nagu see seal prinditakse: tegelikus suuruses ülemisest vasakust nurgast, kuhu printer ulatub (hall: servad, kuhu ei ulatu), pikk tšekk mitmel lehel, kõik üle paberi serva lõigatakse ära. Printeri valimine muudab ainult eelvaadet; iga printeri paber määratakse jaotises Printerid.
+slip_col_width	Laius (mm)
+no_printer_assigned	Printerit pole
+printer_target_default	selle arvuti tavaline printer (tühi aadress)
+job_preview	Eelvaade
 test_receipt_sent	Kviitungi näidis saadetud
 test_label_sent	Sildi näidis saadetud
 test_print_no_printer	Selle töö jaoks pole printerit – lisage üks selle koha alla

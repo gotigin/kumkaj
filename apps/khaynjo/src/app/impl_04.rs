@@ -2370,6 +2370,60 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
             == print_share::RoutePrintMode::All;
         self.paint_choice_pair(cx, ids!(bill_print_first), ids!(bill_print_first_on), !bill_all);
         self.paint_choice_pair(cx, ids!(bill_print_all), ids!(bill_print_all_on), bill_all);
+        self.sync_preview_paper_ui(cx);
+    }
+
+    /// The preview's printer on the Bill and KOT tabs: the dropdown face is
+    /// `name · paper` of the printer the preview is drawn on, the ℹ says
+    /// what the preview shows (docs/PRINTER.md § Paper and preview). Every
+    /// saved printer can be picked; it changes the preview only. A picture
+    /// drawn on another paper than its face names (the tab's printers
+    /// changed, Find added one, a paper was typed, a driver answered) is
+    /// drawn again: the two always agree.
+    fn sync_preview_paper_ui(&mut self, cx: &mut Cx) {
+        thread_local! {
+            static RESYNC: std::cell::Cell<bool> = const { std::cell::Cell::new(false) };
+        }
+        for (kot, dd, help, preview) in [
+            (false, ids!(bill_preview_paper_dd), ids!(bill_preview_help), ids!(bill_format_preview)),
+            (true, ids!(kot_preview_paper_dd), ids!(kot_preview_help), ids!(kot_format_preview)),
+        ] {
+            let (face, tip, now) = {
+                let st = app_state().lock().unwrap();
+                let face = match st.preview_printer(kot) {
+                    Some(p) => printer_paper_line(p, |k| st.t(k)),
+                    None => format!(
+                        "{} · {}",
+                        st.t("no_printer_assigned"),
+                        st.t("paper_roll")
+                            .replace("{w}", &os_paper::mm_text(print_share::DEFAULT_PAPER_WIDTH_MM))
+                    ),
+                };
+                (face, st.t("preview_help"), st.preview_paper(kot))
+            };
+            // A dropdown face is its value only; ComboField draws ˅ / ˄.
+            let btn = self.ui.button(cx, dd);
+            if btn.text() != face {
+                btn.set_text(cx, &face);
+            }
+            self.ui
+                .widget(cx, help)
+                .as_info_help()
+                .set_tip(&plain_display_text(&tip));
+            let stale = self
+                .ui
+                .widget(cx, preview)
+                .borrow::<KotSlipPreview>()
+                .is_some_and(|s| s.shown_paper().is_some_and(|p| *p != now));
+            if stale && !RESYNC.with(|r| r.replace(true)) {
+                if kot {
+                    self.sync_kot_format_ui(cx);
+                } else {
+                    self.sync_bill_format_ui(cx);
+                }
+                RESYNC.with(|r| r.set(false));
+            }
+        }
     }
 
     fn apply_job_drive(
@@ -2452,10 +2506,10 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
             field.set_text(cx, &mm.to_string());
         }
         for (idle, on, choice, label) in [
-            (ids!(content_width_58), ids!(content_width_58_on), 58u32, "58 mm — narrow slip"),
-            (ids!(content_width_80), ids!(content_width_80_on), 80, "80 mm — wide slip"),
-            (ids!(content_width_112), ids!(content_width_112_on), 112, "112 mm — 4 inch slip"),
-            (ids!(content_width_210), ids!(content_width_210_on), 210, "210 mm — page"),
+            (ids!(content_width_58), ids!(content_width_58_on), 58u32, "58 mm"),
+            (ids!(content_width_80), ids!(content_width_80_on), 80, "80 mm"),
+            (ids!(content_width_112), ids!(content_width_112_on), 112, "112 mm"),
+            (ids!(content_width_210), ids!(content_width_210_on), 210, "210 mm"),
         ] {
             self.ui.button(cx, idle).set_text(cx, label);
             self.ui.button(cx, on).set_text(cx, label);
@@ -2586,6 +2640,8 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
             Err(e) => self.set_status(cx, e),
         }
         self.sync_content_width_ui(cx);
+        // The Paper note says whether the new width fits each printer's paper.
+        self.sync_job_drive_ui(cx);
         if on_kot {
             self.sync_kot_format_ui(cx);
         } else {
@@ -2693,7 +2749,7 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
         let w = if side { page - preview_w - 12.0 } else { page };
         let flow_if = |fits: bool| if fits { Flow::right() } else { Flow::Down };
         // Paper cards span the page; the format forms span their column.
-        let rules: [(&[LiveId], bool); 23] = [
+        let rules: [(&[LiveId], bool); 26] = [
             (ids!(content_width_choices), page >= 860.0),
             (ids!(cw_row_a), page >= 400.0),
             (ids!(cw_row_b), page >= 400.0),
@@ -2713,6 +2769,11 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
             (ids!(bill_total_row_qty), w >= 520.0),
             (ids!(bill_total_row_sub), w >= 520.0),
             (ids!(bill_total_row_grand), w >= 520.0),
+            // Logo: the two sizes and the two greys pair up on a phone; the
+            // two picture buttons (longer words in many languages) from 400.
+            (ids!(bill_logo_btns), w >= 400.0),
+            (ids!(bill_logo_size), w >= 300.0),
+            (ids!(bill_logo_tones), w >= 260.0),
             (ids!(kot_item_opts_a), w >= 560.0),
             (ids!(kot_item_opts_b), w >= 560.0),
             (ids!(kot_title_pieces), w >= 560.0),
@@ -2853,17 +2914,33 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
         let style = draft.style(field).clone();
         // Same line the kitchen ticket uses: name · show/hide · size · weight · align.
         // A line that shares its row names its partner: "Bill no + Cashier".
+        // A line's name on the Bill tab. Logo's is translated; the others
+        // are still the English names (docs/PRINTER.md lesson 23).
+        let line_name = |kind: print_share::BillStyleField| match kind {
+            print_share::BillStyleField::Logo => s("bill_line_logo"),
+            _ => kind.label().to_string(),
+        };
         let row_label = |kind: print_share::BillStyleField| {
             let row = draft.style(kind);
             let name = match draft.meta_pair_of(kind) {
-                Some(partner) => format!("{} + {}", kind.label(), partner.label()),
-                None => kind.label().to_string(),
+                Some(partner) => format!("{} + {}", line_name(kind), line_name(partner)),
+                None => line_name(kind),
             };
             let on_off = if row.show {
                 s("kot_field_on")
             } else {
                 s("kot_field_off")
             };
+            // Logo: its box (blank sides follow the picture), not a type size.
+            if kind == print_share::BillStyleField::Logo {
+                let side = |px: u32| if px == 0 { "—".to_string() } else { px.to_string() };
+                return format!(
+                    "{name} · {on_off} · {} × {} px · {}",
+                    side(draft.logo_width_px),
+                    side(draft.logo_height_px),
+                    s(row.align.locale_key())
+                );
+            }
             format!(
                 "{} · {on_off} · {} · {} · {}",
                 name,
@@ -2873,30 +2950,10 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
             )
         };
         let order = draft.ordered();
-        let order_idx = {
-            let st = app_state().lock().unwrap();
-            st.bill_field_edit_idx
-        };
-        // The field list is the print order. Move up / down reorders these rows.
-        let slots = [
-            (ids!(bill_pick_shop), ids!(bill_pick_shop_on)),
-            (ids!(bill_pick_header), ids!(bill_pick_header_on)),
-            (ids!(bill_pick_fssai), ids!(bill_pick_fssai_on)),
-            (ids!(bill_pick_title), ids!(bill_pick_title_on)),
-            (ids!(bill_pick_customer), ids!(bill_pick_customer_on)),
-            (ids!(bill_pick_billno), ids!(bill_pick_billno_on)),
-            (ids!(bill_pick_time), ids!(bill_pick_time_on)),
-            (ids!(bill_pick_cashier), ids!(bill_pick_cashier_on)),
-            (ids!(bill_pick_table), ids!(bill_pick_table_on)),
-            (ids!(bill_pick_items), ids!(bill_pick_items_on)),
-            (ids!(bill_pick_total), ids!(bill_pick_total_on)),
-            (ids!(bill_pick_footer), ids!(bill_pick_footer_on)),
-            (ids!(bill_pick_upi), ids!(bill_pick_upi_on)),
-        ];
         // The open line is edited where it sits: rows before it, its editor,
         // then the rows after it (`bill_after_*`) — one list, no second list.
-        let open_idx = order_idx.min(order.len().saturating_sub(1));
-        for (i, (idle, on)) in slots.into_iter().enumerate() {
+        let open_idx = order.iter().position(|f| *f == field).unwrap_or(0);
+        for (i, (idle, on)) in BILL_PICK_BTNS.into_iter().enumerate() {
             let before = i < open_idx && i < order.len();
             let after = i > open_idx && i < order.len();
             self.ui.view(cx, BILL_PICK_ROWS[i]).set_visible(cx, before);
@@ -2914,7 +2971,61 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
         if let Some(kind) = order.get(open_idx) {
             self.ui
                 .widget(cx, ids!(bill_line_name))
-                .set_text(cx, &plain_display_text(kind.label()));
+                .set_text(cx, &plain_display_text(&line_name(*kind)));
+        }
+        // Logo has a box size, not a type size or weight.
+        let logo_open = field == print_share::BillStyleField::Logo;
+        self.ui.view(cx, ids!(bill_size_box)).set_visible(cx, !logo_open);
+        self.ui.view(cx, ids!(bill_line_weight)).set_visible(cx, !logo_open);
+        self.ui.view(cx, ids!(bill_logo_pieces)).set_visible(cx, logo_open);
+        if logo_open {
+            for (id, key) in [
+                (ids!(h_bill_logo_picture), "bill_logo_picture"),
+                (ids!(h_bill_logo_tones), "bill_logo_tones"),
+            ] {
+                self.ui.widget(cx, id).set_text(cx, &plain_display_text(&s(key)));
+            }
+            for (id, key) in [
+                (ids!(bill_logo_help), "bill_logo_help"),
+                (ids!(bill_logo_tones_help), "bill_logo_tones_help"),
+            ] {
+                self.ui
+                    .widget(cx, id)
+                    .as_info_help()
+                    .set_tip(&plain_display_text(&s(key)));
+            }
+            let status = match draft.logo_image.as_ref() {
+                Some(img) => format!("{} × {} px", img.width, img.height),
+                None => s("bill_logo_none"),
+            };
+            self.ui
+                .widget(cx, ids!(bill_logo_status))
+                .set_text(cx, &plain_display_text(&status));
+            self.ui.button(cx, ids!(bill_logo_choose)).set_text(cx, &s("bill_logo_choose"));
+            self.ui.button(cx, ids!(bill_logo_remove)).set_text(cx, &s("bill_logo_remove"));
+            self.ui
+                .button(cx, ids!(bill_logo_remove))
+                .set_visible(cx, draft.logo_image.is_some());
+            // Blank follows the picture; the hint names the box.
+            for (id, key, px) in [
+                (ids!(bill_logo_width_input), "bill_logo_width", draft.logo_width_px),
+                (ids!(bill_logo_height_input), "bill_logo_height", draft.logo_height_px),
+            ] {
+                let input = self.ui.text_input(cx, id);
+                input.set_empty_text(cx, s(key));
+                if !cx.has_key_focus(input.area()) {
+                    input.set_text(cx, &if px == 0 { String::new() } else { px.to_string() });
+                }
+            }
+            for (idle, on, key, tones) in [
+                (ids!(bill_logo_solid), ids!(bill_logo_solid_on), "bill_logo_solid", print_share::BillLogoTones::Solid),
+                (ids!(bill_logo_shaded), ids!(bill_logo_shaded_on), "bill_logo_shaded", print_share::BillLogoTones::Shaded),
+            ] {
+                let t = s(key);
+                self.ui.button(cx, idle).set_text(cx, &t);
+                self.ui.button(cx, on).set_text(cx, &t);
+                self.paint_choice_pair(cx, idle, on, draft.logo_tones == tones);
+            }
         }
         self.ui
             .widget(cx, ids!(h_bill_field_size))
@@ -2980,11 +3091,13 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
                     continue;
                 };
                 self.ui.view(cx, &[row]).set_visible(cx, true);
-                let (name_key, hdr_key, shown, header) = match col {
-                    print_share::BillItemCol::Name => ("bill_item_name", "bill_item_hdr_item", draft.item_show_name, draft.item_header_item.as_str()),
-                    print_share::BillItemCol::Qty => ("bill_item_qty", "bill_item_hdr_qty", draft.item_show_qty, draft.item_header_qty.as_str()),
-                    print_share::BillItemCol::Price => ("bill_item_price", "bill_item_hdr_price", draft.item_show_price, draft.item_header_price.as_str()),
-                    print_share::BillItemCol::Amount => ("bill_item_amount", "bill_item_hdr_amount", draft.item_show_amount, draft.item_header_amount.as_str()),
+                // The row's title names the column; its header box is just
+                // "Header" — not a second name for the same column.
+                let (name_key, shown, header) = match col {
+                    print_share::BillItemCol::Name => ("bill_item_name", draft.item_show_name, draft.item_header_item.as_str()),
+                    print_share::BillItemCol::Qty => ("bill_item_qty", draft.item_show_qty, draft.item_header_qty.as_str()),
+                    print_share::BillItemCol::Price => ("bill_item_price", draft.item_show_price, draft.item_header_price.as_str()),
+                    print_share::BillItemCol::Amount => ("bill_item_amount", draft.item_show_amount, draft.item_header_amount.as_str()),
                 };
                 self.ui
                     .widget(cx, &[row, id!(col_name)])
@@ -3004,7 +3117,7 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
                 self.ui
                     .view(cx, &[row, id!(col_header_box)])
                     .set_visible(cx, columns && draft.item_show_header);
-                hdr.set_empty_text(cx, s(hdr_key));
+                hdr.set_empty_text(cx, s("slip_col_header"));
                 if !cx.has_key_focus(hdr.area()) {
                     hdr.set_text(cx, header);
                 }
@@ -3166,7 +3279,8 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
             .widget(cx, ids!(bill_format_preview))
             .borrow_mut::<KotSlipPreview>()
         {
-            slip.show_slip(cx, &preview, &metrics, landscape, style.size_em as f32);
+            let paper = app_state().lock().unwrap().preview_paper(false);
+            slip.show_slip_on(cx, &preview, &metrics, landscape, style.size_em as f32, &paper);
         }
         self.ui.view(cx, ids!(bill_format_preview_card)).redraw(cx);
     }
@@ -3541,15 +3655,15 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
             // One row per column of this kind: header text, width (mm),
             // start / end space (px), alignment.
             let cols = draft.item_columns(edit_kind);
-            for (row, col, name_key, hdr_key, hdr) in [
-                (KOT_COL_ROWS[0], cols.item, "bill_item_name", "bill_item_hdr_item", draft.item_header_item.as_str()),
-                (KOT_COL_ROWS[1], cols.qty, "bill_item_qty", "bill_item_hdr_qty", draft.item_header_qty.as_str()),
+            for (row, col, name_key, hdr) in [
+                (KOT_COL_ROWS[0], cols.item, "bill_item_name", draft.item_header_item.as_str()),
+                (KOT_COL_ROWS[1], cols.qty, "bill_item_qty", draft.item_header_qty.as_str()),
             ] {
                 self.ui
                     .widget(cx, &[row, id!(col_name)])
                     .set_text(cx, &plain_display_text(&s(name_key)));
                 self.ui.view(cx, &[row, id!(col_header_box)]).set_visible(cx, header);
-                set_box(self, cx, &[row, id!(col_header)], s(hdr_key), hdr);
+                set_box(self, cx, &[row, id!(col_header)], s("slip_col_header"), hdr);
                 let width = if (col.width_mm - col.width_mm.round()).abs() < 0.05 {
                     format!("{}", col.width_mm.round() as i32)
                 } else {
@@ -3590,7 +3704,8 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
             .widget(cx, ids!(kot_format_preview))
             .borrow_mut::<KotSlipPreview>()
         {
-            slip.show_slip(cx, &preview, &metrics, landscape, field_style.size_em as f32);
+            let paper = app_state().lock().unwrap().preview_paper(true);
+            slip.show_slip_on(cx, &preview, &metrics, landscape, field_style.size_em as f32, &paper);
         }
         self.ui
             .view(cx, ids!(kot_format_preview_card))

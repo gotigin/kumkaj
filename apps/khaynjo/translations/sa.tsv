@@ -92,10 +92,6 @@ bill_item_layout	मेनू मेनू मद लेआउट्
 bill_item_layout_columns	स्तम्भाः
 bill_item_layout_stacked	स्तम्भितम्
 bill_item_header	स्तम्भशीर्षकाः
-bill_item_hdr_item	मेनू मेनू मद शीर्षकम्
-bill_item_hdr_qty	Qty शीर्षकम्
-bill_item_hdr_price	मूल्यशीर्षकम्
-bill_item_hdr_amount	राशि शीर्षक
 bill_item_name	डिश नाम
 bill_item_qty	संख्या
 bill_item_price	मूल्यम्
@@ -103,6 +99,20 @@ bill_item_amount	राशि
 bill_item_note	डिश नोट
 bill_item_col_sep	स्तम्भनियमाः
 slip_columns	स्तम्भाः
+slip_col_header	शीर्षकम्
+bill_line_logo	चिह्नम्
+bill_logo_picture	चित्रम्
+bill_logo_choose	चित्रं वृणुत
+bill_logo_remove	चित्रम् अपनयत
+bill_logo_none	चित्रं नास्ति
+bill_logo_unreadable	एतत् एप् पठितुं शक्नोति इति चित्रं न
+bill_logo_width	विस्तारः (px)
+bill_logo_height	उन्नतिः (px)
+bill_logo_tones	धूसराः
+bill_logo_solid	घनम्
+bill_logo_shaded	छायायुक्तम्
+bill_logo_help	विस्तारः उन्नतिः च px मध्ये। रिक्तं चित्रम् अनुसरति: एकं रिक्तम् आकारं रक्षति, उभे रिक्ते स्वमानं प्रयुङ्क्तः; उभे निर्दिष्टे अन्तः स्थापयतः, कदापि न विस्तारयतः। चित्रं नास्ति चेत्: दर्शितं चिह्नं स्वोन्नतिं रिक्तस्थानरूपेण रक्षति; गोपयतु तद् अपनयति।
+bill_logo_tones_help	घनम्: प्रत्येकं बिन्दुः कृष्णः श्वेतो वा, स्पष्टचिह्नेभ्यः। छायायुक्तम्: धूसराः सूक्ष्मबिन्दुरचनाः भवन्ति, चित्रेभ्यः मृदुच्छायायै च।
 slip_col_width	विस्तारः (mm)
 slip_col_start	आरम्भावकाशः (px)
 slip_col_end	अन्तावकाशः (px)
@@ -167,6 +177,21 @@ alerts_help	भवतः कृते कियत्कालं यावत�
 snack_secs_ph	सेकण्ड् (३–६०, पूर्वनिर्धारित १०) २.
 snack_secs_save	अलर्टसमयं रक्षतु
 snack_secs_saved	अलर्ट समय रक्षितः — {n} सेकण्ड्
+settings_sec_whatsapp	WhatsApp
+whatsapp_cloud_help	Use your own Meta WhatsApp Cloud API. Create a System User token with whatsapp_business_messaging (temporary dashboard tokens expire). Credentials stay on this Server only — never on extra tills. Accepted means Meta took the request, not that the guest received it.
+whatsapp_phone_id_ph	Phone Number ID
+whatsapp_token_ph	Access Token (leave blank to keep)
+whatsapp_template_ph	Bill template name (optional)
+whatsapp_template_lang_ph	Template language (e.g. en)
+whatsapp_enable	Enable
+whatsapp_disable	Off
+whatsapp_save	Save WhatsApp
+whatsapp_test	Test connection
+whatsapp_disconnect	Disconnect
+whatsapp_send_bill	Send via WhatsApp
+whatsapp_consent	WhatsApp OK
+whatsapp_consent_help	Guest agreed to receive WhatsApp messages. A phone number alone is not consent.
+whatsapp_server_only	Configure WhatsApp on the shop Server device
 settings_sec_backup	बैकअप & पुनर्स्थापन
 settings_sec_diag	निदानम्
 settings_sec_privacy	गोपनीयता
@@ -729,6 +754,13 @@ station_vps_dd	अस्य स्टेशनस्य कृते मुद�
 station_vps_dd_n	{n} मुद्रकाः · परिवर्तनार्थं ट्याप् कुर्वन्तु
 bill_printers_dd	बिलस्य कृते मुद्रकाः
 bill_printers_dd_n	{n} बिलस्य कृते मुद्रकाः · परिवर्तनार्थं ट्याप् कुर्वन्तु
+paper_heading	पत्रम्
+paper_size	{w} × {h} mm
+paper_roll	{w} mm वेष्टनम्
+paper_not_set	पत्रम् अद्यापि अज्ञातम्
+paper_length_mm	दैर्घ्यम् (mm)
+printer_paper_help	अस्य मुद्रकस्य पत्रं mm मध्ये। रिक्तं दैर्घ्यं वेष्टनम्: प्रत्येकं पत्रकं स्वविषयवस्तुवत् दीर्घं भवति। मुद्रकान् अन्वेष्टुम् रिक्तं पत्रं मुद्रकस्य चालकात् पूरयति (वक्तुं न शक्नोति चेत् 80 mm वेष्टनम्) पूर्वनिश्चितं पत्रं कदापि न परिवर्तयति।
+preview_help	अधः चितस्य मुद्रकस्य पत्रे इदं पत्रकम्, तत्र यथा मुद्र्यते: मुद्रकः यावत् प्राप्नोति तस्मात् ऊर्ध्ववामकोणात् यथार्थमाने (धूसरम्: अप्राप्याः प्रान्ताः), दीर्घं पत्रकम् अधिकेषु पृष्ठेषु, पत्रप्रान्तात् परं सर्वं छिद्यते। मुद्रकचयनेन केवलं पूर्वावलोकनं परिवर्तते; प्रत्येकस्य मुद्रकस्य पत्रं मुद्रकाः इत्यत्र निश्चीयते।
 job_layout	विन्यासः
 job_delivery	कथं कार्यं प्रेष्यते
 job_delivery_help	ओएस दस्तावेज, कच्चा बाइट्, अथवा ESC/POS। बिलम्, पाकशालायाः टिकटं च प्रत्येकं स्वकीयं धारयति। एकं कार्यं Find इत्यनेन रक्षितं कस्मिन् अपि मुद्रके गन्तुं शक्नोति ।
@@ -1105,9 +1137,6 @@ remove_these_tables	एतानि भोजनमेजाः निष्क�
 table_remove_ph	निष्कासयन्तु: T1-T24, अथवा एकस्य भोजनमेजस्य नाम
 find_server	दुकानस्य सर्वरं अन्वेष्टुम्
 bill_format	विधेयक प्रारूप
-bill_header_ph	पता | phone
-fssai_ph	FSSAI अनुज्ञापत्र सं. (भारत) ९.
-bill_footer_ph	पादलेखः (उदा. धन्यवादः, पुनः आगच्छन्तु)
 reset_bill_format	पूर्वनिर्धारितरूपेण पुनः सेट् कुर्वन्तु
 bill_format_reset	बिल प्रारूपं पूर्वनिर्धारितरूपेण पुनः सेट् कुर्वन्तु
 reset_kot_format	पूर्वनिर्धारितरूपेण पुनः सेट् कुर्वन्तु
@@ -1146,7 +1175,6 @@ kot_kind_modified	परिवर्तित
 kot_kind_cancelled	रद्दं कृतम्
 kot_style_heading	क्षेत्र प्रकार आकार & वजन
 kot_style_title	शीर्षकम्
-kot_style_item_qty	मेनू मेनू मद · मात्रा
 kot_style_field_pick	क्षेत्रं चिनोतु
 kot_weight_regular	नियमित
 kot_weight_bold	बोल्ड
@@ -1158,8 +1186,8 @@ content_width_bill	पत्रविस्तारः (mm)
 content_width_kot	KOT सामग्री चौड़ाई (मिमी)
 content_width_ph	अथवा सामग्रीविस्तारः, ४०–२१० मि.मी
 content_width_help	कियत् विस्तृतं एषा स्लिप् मुद्रयति। Bill and KOT each keep their own width.
-content_width_bill_help	अतिथिबिलम् कियत् विस्तृतं मुद्रयति। पूर्वनिर्धारित 210 मिमी (पृष्ठ)। ५८ मि.मी.संकीर्णः स्लिप्, ८० मि.मी.विस्तृतः स्लिप्, ११२ मि.मी.४-इञ्च्, २१० मि.मी. 40 तः 210 पर्यन्तं किमपि मूल्यं टङ्कयन्तु।पाकशालायाः टिकटस्य स्वकीया विस्तारः KOT ट्याब् इत्यत्र भवति।
-content_width_kot_help	पाकशालायाः टिकटं कियत् विस्तृतं मुद्रयति। पूर्वनिर्धारित 80 मि.मी. ५८ मिमी संकीर्ण पर्ची, ८० मिमी चौड़ा पर्ची, ११२ मिमी ४-इञ्च, २१० मिमी पृष्ठ। 40 तः 210 पर्यन्तं किमपि मूल्यं टङ्कयन्तु अतिथिबिलानां स्वकीया विस्तारः Bill ट्याब् मध्ये भवति ।
+content_width_bill_help	अतिथेः देयकं कियत् विस्तृतं मुद्र्यते, mm मध्ये (40–210)। एतत् कस्मिन्नपि पत्रे अस्मिन् एव वास्तविकमाने मुद्र्यते; अस्मात् संकीर्णतरे पत्रे मुद्रणधारायाः परः भागः छिद्यते (पत्रं पश्यत)। पाकशालापत्रिकाणां स्वविस्तारः KOT पट्टे अस्ति।
+content_width_kot_help	पाकशालापत्रिका कियत् विस्तृता मुद्र्यते, mm मध्ये (40–210)। एषा कस्मिन्नपि पत्रे अस्मिन् एव वास्तविकमाने मुद्र्यते; अस्मात् संकीर्णतरे पत्रे मुद्रणधारायाः परः भागः छिद्यते (पत्रं पश्यत)। अतिथिदेयकानां स्वविस्तारः देयकपट्टे अस्ति।
 vp_paper_width	सामग्री चौड़ाई (मि.मी.) २.
 vp_paper_width_ph	अथवा सामग्रीविस्तारः, ४०–२१० मि.मी
 vp_paper_width_help	सामग्रीविस्तारः Bill & KOT प्रारूपस्य अन्तर्गतं सेट् भवति — बिलस्य (पूर्वनिर्धारितं 210 mm) तथा च पाकशालाटिकटस्य (पूर्वनिर्धारितं 80 mm) कृते पृथक् ।
@@ -1213,8 +1241,6 @@ schemes_help	BOGO, प्रतिशत-अवरोधः, तथा निय
 scheme_bogo_ph	Buy 2 Thali get 1 Chaas
 add_scheme	योजयतु BOGO .
 schedule_ph	घण्टाः / सुखसमयः — सोम-शुक्रवासरः ०७:००-११:०० अथवा HappyHour १७:००-१९:००=१५०
-upi_vpa_ph	UPI ID (VPA)
-upi_payee_ph	UPI भुगतानकर्ता नाम (वैकल्पिक)
 upi_qr	UPI QR
 show_upi_qr	UPI QR दिखाएँ
 close_upi_qr	निमील्यताम्
@@ -1295,8 +1321,6 @@ printer_mode_first	प्रथमं तत् कार्यं करोत�
 printer_mode_all	सर्वेषु मुद्रयन्तु
 kot_show_area	क्षेत्रफलम्
 kot_hide_area	क्षेत्रं गोपयन्तु
-kot_show_item_hdr	मेनू मेनू मद · मात्रा
-kot_hide_item_hdr	स्तम्भान् गोपयन्तु
 kot_show_title	शीर्षक पङ्क्तिः
 kot_hide_title	शीर्षकं गोपयतु
 kot_field_cycle	अग्रिमम् चिनोतु
@@ -1337,12 +1361,12 @@ private_code_ph	द्वादशाङ्कसङ्केतः
 stamp_on	मुद्रिका: सञ्चिकायां
 pay_qr_on	भुगतान QR: सञ्चिकायां
 pay_qr_off	भुगतान QR: कोऽपि नास्ति
+printers_screen_tip	अन्विष्यतु इति अस्य यन्त्रस्य उपयोग्यानि मुद्रकाणि दर्शयति अस्मै आपणाय रक्षति च। देयक-मुद्रकाणि: देयक-KOT-प्रारूपम् → देयकम्। पाकशाला: पाकशाला → पाकशाला-स्थानानि।
+printers_found_none	किमपि मुद्रकं न प्राप्तम्।
+nav_loading	आरोप्यते…
+kot_copy_from	अस्मात् प्रतिलिखतु
+kot_copy_from_help	तस्य प्रकारस्य प्रत्येकपङ्क्तेः आकारं, स्थौल्यं, संरेखणं च अत्र प्रतिलिखति। अयं प्रकारः स्वस्य ध्वजं, वस्तु-उपसर्गं, छेदरेखां च रक्षति। रक्षणाय KOT प्रारूपं रक्षतु।
 items_tmpl_heading	वस्तु-प्रतिरूपाणि
 items_tmpl_help	भवतः मेनूकृते व्यञ्जनानि, वर्गाः चित्राणि च। आपणस्य विन्यासाः कर्मचारिणः च यथावत् तिष्ठन्ति।
 public_tmpl_help	आरम्भ-मेनूनि यानि कोऽपि अवतारयितुं शक्नोति। एकवारं अन्तर्जालम् आवश्यकम्।
 private_tmpl_help	भवतः Khaynjo-सम्पर्कात् प्राप्तेन 12-अङ्क-कूटेन रक्षितानि ग्राहक-मेनूनि।
-printers_screen_tip	अन्विष्यतु इति अस्य यन्त्रस्य उपयोग्यानि मुद्रकाणि दर्शयति अस्मै आपणाय रक्षति च। देयक-मुद्रकाणि: देयक-KOT-प्रारूपम् → देयकम्। पाकशाला: पाकशाला → पाकशाला-स्थानानि।
-printers_found_none	किमपि मुद्रकं न प्राप्तम्।
-kot_copy_from	अस्मात् प्रतिलिखतु
-kot_copy_from_help	तस्य प्रकारस्य प्रत्येकपङ्क्तेः आकारं, स्थौल्यं, संरेखणं च अत्र प्रतिलिखति। अयं प्रकारः स्वस्य ध्वजं, वस्तु-उपसर्गं, छेदरेखां च रक्षति। रक्षणाय KOT प्रारूपं रक्षतु।
-nav_loading	आरोप्यते…

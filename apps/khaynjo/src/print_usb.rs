@@ -545,7 +545,7 @@ mod tests {
     /// is a relative link to the interface, whose parent is the device.
     #[test]
     fn a_usblp_node_is_traced_to_its_usb_device_through_usbmisc() {
-        let root = std::env::temp_dir().join(format!("khaynjo-sysfs-{}", uuid::Uuid::new_v4()));
+        let root = crate::test_dirs::run_root().join(format!("khaynjo-sysfs-{}", uuid::Uuid::new_v4()));
         let dev = root.join("devices/usb7/7-3");
         let iface = dev.join("7-3:1.0");
         std::fs::create_dir_all(&iface).unwrap();

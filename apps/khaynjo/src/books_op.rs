@@ -288,6 +288,12 @@ pub enum BooksOp {
     },
     ClearPrintStamp,
     ClearPaymentQr,
+    /// The bill's Logo picture (Bill & KOT format → Bill → Logo).
+    ImportBillLogo {
+        filename: String,
+        bytes: Vec<u8>,
+    },
+    ClearBillLogo,
     SetKotFormat {
         format: KotSlipFormat,
     },
@@ -530,7 +536,9 @@ impl BooksOp {
             | Self::ImportPrintStamp { .. }
             | Self::ImportPaymentQr { .. }
             | Self::ClearPrintStamp
-            | Self::ClearPaymentQr => "Change the bill format",
+            | Self::ClearPaymentQr
+            | Self::ImportBillLogo { .. }
+            | Self::ClearBillLogo => "Change the bill format",
             Self::SetKotFormat { .. } | Self::SetKotStationPrefs { .. } => "Change the KOT format",
             Self::UpsertScheme { .. } => "Change schemes",
             Self::EnsureFloorArea { .. } => "Add floor area",
@@ -645,6 +653,8 @@ impl BooksOp {
             Self::ImportPaymentQr { .. } => "Payment QR saved for bill faces".into(),
             Self::ClearPrintStamp => "Stamp cleared".into(),
             Self::ClearPaymentQr => "Payment QR cleared".into(),
+            Self::ImportBillLogo { .. } => "Bill logo saved".into(),
+            Self::ClearBillLogo => "Bill logo removed".into(),
             Self::SetKotFormat { .. } => "KOT format saved".into(),
             Self::SetKotStationPrefs { .. } => "Kitchen order saved".into(),
             Self::UpsertScheme { .. } => "Scheme saved".into(),
@@ -1344,6 +1354,21 @@ impl Store {
                 }
                 self.set_payment_qr_key(None)?;
                 Ok("Payment QR cleared".into())
+            }
+            BooksOp::ImportBillLogo { filename, bytes } => {
+                if !actor.is_owner() && !actor.can_access_settings() {
+                    return Err("Not allowed to change bill format".into());
+                }
+                let file = write_upload(&filename, &bytes)?;
+                let _ = self.import_bill_logo(file.path())?;
+                Ok("Bill logo saved".into())
+            }
+            BooksOp::ClearBillLogo => {
+                if !actor.is_owner() && !actor.can_access_settings() {
+                    return Err("Not allowed to change bill format".into());
+                }
+                self.clear_bill_logo()?;
+                Ok("Bill logo removed".into())
             }
             BooksOp::SetKotFormat { format } => {
                 if !actor.is_owner() && !actor.can_access_settings() {

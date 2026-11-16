@@ -92,10 +92,6 @@ bill_item_layout	Tsarin kaya
 bill_item_layout_columns	Ginshiƙai
 bill_item_layout_stacked	A jere sama
 bill_item_header	Kan ginshiƙai
-bill_item_hdr_item	Kan kaya
-bill_item_hdr_qty	Kan adadi
-bill_item_hdr_price	Kan farashi
-bill_item_hdr_amount	Kan adadin kuɗi
 bill_item_name	Sunan abinci
 bill_item_qty	Adadi
 bill_item_price	Farashi
@@ -103,6 +99,20 @@ bill_item_amount	Adadin kuɗi
 bill_item_note	Bayanin abinci
 bill_item_col_sep	Layukan ginshiƙai
 slip_columns	Ginshiƙai
+slip_col_header	Kan
+bill_line_logo	Tambari
+bill_logo_picture	Hoto
+bill_logo_choose	Zaɓi hoto
+bill_logo_remove	Cire hoto
+bill_logo_none	Babu hoto
+bill_logo_unreadable	Ba hoto ne da manhajar za ta iya karantawa ba
+bill_logo_width	Faɗi (px)
+bill_logo_height	Tsawo (px)
+bill_logo_tones	Launin toka
+bill_logo_solid	Ƙaƙƙarfa
+bill_logo_shaded	Mai inuwa
+bill_logo_help	Faɗi da tsawo a px. Fanko yana bin hoton: ɗaya fanko yana riƙe siffarsa, duka biyu fanko suna amfani da girmansa; idan an saita duka biyu, yana shiga ciki, ba a taɓa miƙe shi ba. Babu hoto: tambarin da aka nuna yana riƙe tsawonsa a matsayin fili; Ɓoye yana cire shi.
+bill_logo_tones_help	Ƙaƙƙarfa: kowane ɗigo baƙi ko fari, don tambari mai haske. Mai inuwa: launin toka ya zama siraran ɗigo-ɗigo, don hotuna da inuwa mai laushi.
 slip_col_width	Faɗi (mm)
 slip_col_start	Sararin farko (px)
 slip_col_end	Sararin ƙarshe (px)
@@ -167,6 +177,21 @@ alerts_help	Tsawon lokacin da saƙon matsayi ke kan allo a gare ka (wannan shiga
 snack_secs_ph	Daƙiƙoƙi (3–60, tsoho 10)
 snack_secs_save	Ajiye lokacin sanarwa
 snack_secs_saved	An ajiye lokacin sanarwa — daƙiƙoƙi {n}
+settings_sec_whatsapp	WhatsApp
+whatsapp_cloud_help	Use your own Meta WhatsApp Cloud API. Create a System User token with whatsapp_business_messaging (temporary dashboard tokens expire). Credentials stay on this Server only — never on extra tills. Accepted means Meta took the request, not that the guest received it.
+whatsapp_phone_id_ph	Phone Number ID
+whatsapp_token_ph	Access Token (leave blank to keep)
+whatsapp_template_ph	Bill template name (optional)
+whatsapp_template_lang_ph	Template language (e.g. en)
+whatsapp_enable	Enable
+whatsapp_disable	Off
+whatsapp_save	Save WhatsApp
+whatsapp_test	Test connection
+whatsapp_disconnect	Disconnect
+whatsapp_send_bill	Send via WhatsApp
+whatsapp_consent	WhatsApp OK
+whatsapp_consent_help	Guest agreed to receive WhatsApp messages. A phone number alone is not consent.
+whatsapp_server_only	Configure WhatsApp on the shop Server device
 settings_sec_backup	Ajiyar madadin da dawowa
 settings_sec_diag	Binciken matsala
 settings_sec_privacy	Sirri
@@ -729,6 +754,13 @@ station_vps_dd	Firintocin wannan tasha
 station_vps_dd_n	firinta {n} · taɓa don canzawa
 bill_printers_dd	Firintocin lissafi
 bill_printers_dd_n	firinta {n} na lissafi · taɓa don canzawa
+paper_heading	Takarda
+paper_size	{w} × {h} mm
+paper_roll	nadi na {w} mm
+paper_not_set	ba a san takardar ba tukuna
+paper_length_mm	Tsawo (mm)
+printer_paper_help	Takardar wannan firinta a mm. Tsawo mara komai yana nufin nadi: kowace rasit tana da tsawon abin da ke cikinta. Nemo firintoci yana cike takarda mara komai daga direban firintar (nadi na 80 mm idan ba zai iya faɗi ba) kuma ba ya taɓa canza wadda aka riga aka saita.
+preview_help	Wannan rasit a kan takardar firintar da aka zaɓa a ƙasa, kamar yadda take bugawa a can: girman gaske daga kusurwar sama ta hagu da firintar ke kaiwa (toka: gefuna da ba ta kaiwa), dogon rasit a kan ƙarin shafuka, duk abin da ya wuce gefen takarda ana yanke shi. Zaɓar firinta yana canza samfoti kawai; ana saita takardar kowace firinta a Firintoci.
 job_layout	Tsari
 job_delivery	Yadda ake aika aikin
 job_delivery_help	Takardar tsarin, bytes ɗanyen, ko ESC/POS. Lissafi da takardar kicin kowanne yana da nasa. Kowanne aiki na iya zuwa kowane firinta da Nemo ya ajiye.
@@ -1105,9 +1137,6 @@ remove_these_tables	Cire waɗannan teburori
 table_remove_ph	Cire: T1-T24, ko sunan tebur ɗaya
 find_server	Nemo server na shago
 bill_format	Tsarin lissafi
-bill_header_ph	Adireshi | waya
-fssai_ph	Lambar lasisin FSSAI (Indiya)
-bill_footer_ph	Ƙasa (misali Mun gode, sake zuwa)
 reset_bill_format	Mayar da tsoho
 bill_format_reset	An mayar da tsarin lissafi zuwa tsoho
 reset_kot_format	Mayar da tsoho
@@ -1146,7 +1175,6 @@ kot_kind_modified	An gyara
 kot_kind_cancelled	An soke
 kot_style_heading	Girman rubutu da nauyin fili
 kot_style_title	Take
-kot_style_item_qty	Kaya · Adadi
 kot_style_field_pick	Zaɓi fili
 kot_weight_regular	Na al'ada
 kot_weight_bold	Mai kauri
@@ -1158,8 +1186,8 @@ content_width_bill	Faɗin abin cikin lissafi (mm)
 content_width_kot	Faɗin abin cikin KOT (mm)
 content_width_ph	Ko rubuta faɗin abin ciki, 40–210 mm
 content_width_help	Yadda wannan takarda take faɗi a bugu. Lissafi da KOT kowanne yana da faɗinsa.
-content_width_bill_help	Yadda lissafin baƙo yake faɗi a bugu. Tsoho 210 mm (shafi). Takarda ƙanƙanta 58 mm, takarda faɗi 80 mm, inci 4 shine 112 mm, faɗin A4 shine 210 mm. Rubuta kowane ƙima daga 40 zuwa 210. Takardun kicin suna da faɗinsu a shafin KOT.
-content_width_kot_help	Yadda takardar kicin take faɗi a bugu. Tsoho 80 mm. Takarda ƙanƙanta 58 mm, takarda faɗi 80 mm, inci 4 shine 112 mm, shafi 210 mm. Rubuta kowane ƙima daga 40 zuwa 210. Lissafin baƙo yana da faɗinsa a shafin Lissafi.
+content_width_bill_help	Faɗin da lissafin baƙo ke bugawa, a mm (40–210). Yana bugawa a wannan girman na gaske a kowace takarda; a takarda mafi kunkuntar, sashen da ya wuce gefen bugawa ana yanke shi (duba Takarda). Tikitin girki suna da nasu faɗin a shafin KOT.
+content_width_kot_help	Faɗin da tikitin girki ke bugawa, a mm (40–210). Yana bugawa a wannan girman na gaske a kowace takarda; a takarda mafi kunkuntar, sashen da ya wuce gefen bugawa ana yanke shi (duba Takarda). Lissafin baƙi suna da nasu faɗin a shafin Lissafi.
 vp_paper_width	Faɗin abin ciki (mm)
 vp_paper_width_ph	Ko rubuta faɗin abin ciki, 40–210 mm
 vp_paper_width_help	Ana sa faɗin abin ciki a ƙarƙashin Tsarin lissafi da KOT — daban ga lissafi (tsoho 210 mm) da takardar kicin (tsoho 80 mm).
@@ -1213,8 +1241,6 @@ schemes_help	Saya ɗaya samu ɗaya, kashe kashi, da haɗin kai. Haɗin kai yana 
 scheme_bogo_ph	Saya Thali 2 samu Chaas 1
 add_scheme	Ƙara saya-samu
 schedule_ph	Awowi / lokacin farashi — Lit-Jum 07:00-11:00 ko HappyHour 17:00-19:00=150
-upi_vpa_ph	Lambar UPI (VPA)
-upi_payee_ph	Sunan mai karɓar UPI (ba dole ba)
 upi_qr	QR na UPI
 show_upi_qr	Nuna QR na UPI
 close_upi_qr	Rufe
@@ -1295,8 +1321,6 @@ printer_mode_first	Na farko da ya yi aiki
 printer_mode_all	Buga a duka
 kot_show_area	Wuri
 kot_hide_area	Ɓoye wuri
-kot_show_item_hdr	Kaya · Adadi
-kot_hide_item_hdr	Ɓoye ginshiƙai
 kot_show_title	Layin take
 kot_hide_title	Ɓoye take
 kot_field_cycle	Zaɓi na gaba
@@ -1337,12 +1361,12 @@ private_code_ph	Lambar lambobi 12
 stamp_on	Hatimi: a fayil
 pay_qr_on	QR na biya: a fayil
 pay_qr_off	QR na biya: babu
+printers_screen_tip	Nema na nuna firintocin da wannan na'ura za ta iya amfani da su kuma yana adana su don wannan shago. Firintocin lissafi: Tsarin lissafi da KOT → Lissafi. Kicin: Kicin → Tashoshin kicin.
+printers_found_none	Ba a sami firinta ba.
+nav_loading	Ana lodawa…
+kot_copy_from	Kwafa daga
+kot_copy_from_help	Yana kwafa girma, kauri da daidaitawar kowane layi daga wannan nau'in zuwa wannan. Wannan nau'in yana riƙe tutarsa, prefix na abu da layin sokewa. Ajiye tsarin KOT don riƙe shi.
 items_tmpl_heading	Samfuran kayayyaki
 items_tmpl_help	Abinci, rukunai da hotuna don menu ɗinku. Saitunan shago da ma'aikata suna nan yadda suke.
 public_tmpl_help	Menu na farawa da kowa zai iya saukewa. Ana buƙatar intanet sau ɗaya.
 private_tmpl_help	Menu na abokan ciniki da aka kulle da lamba mai lambobi 12 daga wakilin Khaynjo ɗinku.
-printers_screen_tip	Nema na nuna firintocin da wannan na'ura za ta iya amfani da su kuma yana adana su don wannan shago. Firintocin lissafi: Tsarin lissafi da KOT → Lissafi. Kicin: Kicin → Tashoshin kicin.
-printers_found_none	Ba a sami firinta ba.
-kot_copy_from	Kwafa daga
-kot_copy_from_help	Yana kwafa girma, kauri da daidaitawar kowane layi daga wannan nau'in zuwa wannan. Wannan nau'in yana riƙe tutarsa, prefix na abu da layin sokewa. Ajiye tsarin KOT don riƙe shi.
-nav_loading	Ana lodawa…

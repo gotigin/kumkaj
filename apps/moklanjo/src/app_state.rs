@@ -49,6 +49,13 @@ struct AppState {
     printer_draft: print_share::DevicePrinters,
     /// Focused route: `receipt` or `label`.
     printer_route_key: String,
+    /// Settings → Printers: the printer each job's preview is drawn on
+    /// (receipt, label); `None`: that job's first printer (docs/PRINTER.md
+    /// § Paper and preview).
+    receipt_preview_printer: Option<String>,
+    label_preview_printer: Option<String>,
+    /// Settings → Printers: the printer whose paper is open where it sits.
+    printer_paper_open: Option<String>,
     /// Shop device: extra tills may pair on LAN. Off for a new shop.
     extra_tills_allowed: bool,
     /// False until Owner finishes first-run PIN setup (Server shop).

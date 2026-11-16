@@ -92,10 +92,6 @@ bill_item_layout	شئي جو ترتيب
 bill_item_layout_columns	ڪالمن
 bill_item_layout_stacked	اسٽيڪ ٿيل
 bill_item_header	ڪالمن جا هيڊر
-bill_item_hdr_item	آئٽم هيڊر
-bill_item_hdr_qty	مقدار هيڊر
-bill_item_hdr_price	قيمت هيڊر
-bill_item_hdr_amount	رقم هيڊر
 bill_item_name	پاڻيءَ جو نالو
 bill_item_qty	تعداد
 bill_item_price	اگهه
@@ -103,6 +99,20 @@ bill_item_amount	رقم
 bill_item_note	پاڻيءَ جو نوٽ
 bill_item_col_sep	ڪالمن جون ضابطيون
 slip_columns	ڪالم
+slip_col_header	هيڊر
+bill_line_logo	لوگو
+bill_logo_picture	تصوير
+bill_logo_choose	تصوير چونڊيو
+bill_logo_remove	تصوير هٽايو
+bill_logo_none	ڪا تصوير ناهي
+bill_logo_unreadable	اها اهڙي تصوير ناهي جيڪا ايپ پڙهي سگهي
+bill_logo_width	ويڪر (px)
+bill_logo_height	اوچائي (px)
+bill_logo_tones	ڀورا رنگ
+bill_logo_solid	ٺوس
+bill_logo_shaded	ڇانوَ وارو
+bill_logo_help	ويڪر ۽ اوچائي px ۾. خالي تصوير جي پيروي ڪري ٿو: هڪ خالي هجي ته شڪل برقرار رهي، ٻئي خالي هجن ته پنهنجي ماپ؛ ٻئي ڏنل هجن ته اندر سمائجي، ڪڏهن به نه ڇڪجي. تصوير ناهي: ڏيکاريل لوگو پنهنجي اوچائي خالي جاءِ طور رکي ٿو؛ لڪايو ان کي هٽائي ٿو.
+bill_logo_tones_help	ٺوس: هر نقطو ڪارو يا اڇو، صاف لوگو لاءِ. ڇانوَ وارو: ڀورا رنگ سنهن نقطن جو نمونو بڻجن ٿا، فوٽن ۽ نرم ڇانوَ لاءِ.
 slip_col_width	ويڪر (mm)
 slip_col_start	شروعاتي جاءِ (px)
 slip_col_end	آخري جاءِ (px)
@@ -167,6 +177,21 @@ alerts_help	توهان لاءِ اسٽيٽس پيغام اسڪرين تي ڪيت
 snack_secs_ph	سيڪنڊ (3–60، ڊيفالٽ 10)
 snack_secs_save	خبردار وقت محفوظ ڪريو
 snack_secs_saved	خبردار وقت محفوظ ٿيو — {n} سيڪنڊ
+settings_sec_whatsapp	WhatsApp
+whatsapp_cloud_help	Use your own Meta WhatsApp Cloud API. Create a System User token with whatsapp_business_messaging (temporary dashboard tokens expire). Credentials stay on this Server only — never on extra tills. Accepted means Meta took the request, not that the guest received it.
+whatsapp_phone_id_ph	Phone Number ID
+whatsapp_token_ph	Access Token (leave blank to keep)
+whatsapp_template_ph	Bill template name (optional)
+whatsapp_template_lang_ph	Template language (e.g. en)
+whatsapp_enable	Enable
+whatsapp_disable	Off
+whatsapp_save	Save WhatsApp
+whatsapp_test	Test connection
+whatsapp_disconnect	Disconnect
+whatsapp_send_bill	Send via WhatsApp
+whatsapp_consent	WhatsApp OK
+whatsapp_consent_help	Guest agreed to receive WhatsApp messages. A phone number alone is not consent.
+whatsapp_server_only	Configure WhatsApp on the shop Server device
 settings_sec_backup	بيڪ اپ ۽ بحالي
 settings_sec_diag	تشخيص
 settings_sec_privacy	رازداري
@@ -729,6 +754,13 @@ station_vps_dd	هن اسٽيشن جا پرِنٽر
 station_vps_dd_n	{n} پرنٽر(س) · تبديل ڪرڻ لاءِ ٽيپ ڪريو
 bill_printers_dd	بل لاءِ پرنٽر
 bill_printers_dd_n	{n} پرنٽر(ز) بل لاءِ · تبديل ڪرڻ لاءِ ٽيپ ڪريو
+paper_heading	ڪاغذ
+paper_size	{w} × {h} mm
+paper_roll	{w} mm رول
+paper_not_set	ڪاغذ اڃا معلوم ناهي
+paper_length_mm	ڊيگهه (mm)
+printer_paper_help	هن پرنٽر جو ڪاغذ mm ۾. خالي ڊيگهه جو مطلب رول: هر پرچي پنهنجي مواد جيتري ڊگهي ٿيندي آهي. پرنٽر ڳوليو خالي ڪاغذ پرنٽر جي ڊرائيور مان ڀري ٿو (نه ٻڌائي سگهي ته 80 mm رول) ۽ اڳ ۾ مقرر ڪاغذ ڪڏهن به نه بدلائيندو آهي.
+preview_help	هيٺ چونڊيل پرنٽر جي ڪاغذ تي هيءَ پرچي، جيئن اتي ڇپجي ٿي: پرنٽر جتي پهچي ٿو ان مٿئين کاٻي ڪنڊ کان اصل ماپ ۾ (ڀورو: ڪنارا جتي نٿو پهچي)، ڊگهي پرچي وڌيڪ صفحن تي، ڪاغذ جي ڪناري کان اڳتي سڀ ڪٽجي وڃي ٿو. پرنٽر چونڊڻ سان رڳو اڳ-نظارو بدلجي ٿو؛ هر پرنٽر جو ڪاغذ پرنٽر ۾ مقرر ٿئي ٿو.
 job_layout	خاڪو
 job_delivery	نوڪري ڪيئن موڪلي وڃي ٿي
 job_delivery_help	او ايس دستاويز، را بائيٽس، يا ESC/POS. بل ۽ باورچی خانه جو ٽڪيٽ هر هڪ پنهنجو رکندا آهن. ڪنهن به نوڪري کي ڪنهن به پرنٽر تي موڪلي سگهجي ٿو جيڪو Find محفوظ ڪيو آهي.
@@ -1105,9 +1137,6 @@ remove_these_tables	هي ٽيبلز هٽايو
 table_remove_ph	هٽايو: T1-T24، يا هڪ ٽيبل جو نالو
 find_server	دوڪان جو سرور ڳوليو
 bill_format	بل جو فارميٽ
-bill_header_ph	پتو | فون
-fssai_ph	FSSAI لائسنس نمبر (ڀارت)
-bill_footer_ph	فوٽر (مثال طور مهرباني، ٻيهر اچو)
 reset_bill_format	ڊيفالٽ تي ري سيٽ ڪريو
 bill_format_reset	بل جو فارميٽ ڊيفالٽ تي ري سيٽ ٿيو
 reset_kot_format	ڊيفالٽ تي ري سيٽ ڪريو
@@ -1146,7 +1175,6 @@ kot_kind_modified	ترميم ٿيل
 kot_kind_cancelled	منسوخ ٿي ويو
 kot_style_heading	ميدان جو قسم، سائيز ۽ وزن
 kot_style_title	عنوان
-kot_style_item_qty	شئ · مقدار
 kot_style_field_pick	فيڪلڊ چونڊيو
 kot_weight_regular	عام
 kot_weight_bold	ٿلهو
@@ -1158,8 +1186,8 @@ content_width_bill	بل جي مواد جي ويڪر (ايم ايم)
 content_width_kot	KOT مواد جو ويڪر (ايم ايم)
 content_width_ph	يا مواد جو ويڪر ٽائپ ڪريو، 40–210 ايم ايم
 content_width_help	هي سلپ ڪيترو ويڪرو ڇپندو. بل ۽ KOT هر هڪ پنهنجو ويڪر رکندو.
-content_width_bill_help	مهمان جو بل ڪيترو ويڪرو پرنٽ ٿئي ٿو. ڊيفالٽ 210 ملي ميٽر (پايو). 58 ملي ميٽر سنڍڙي سليپ، 80 ملي ميٽر ويڪرو سليپ، 112 ملي ميٽر 4-انچ، 210 ملي ميٽر A4-ويڪرو. 40 کان 210 تائين ڪا به قيمت ٽائيپ ڪريو. باورچی خاني جا ٽڪيٽس پنهنجون ويڪرائيون KOT ٽيب تي رکن ٿا.
-content_width_kot_help	باورچی خاني جو ٽڪيٽ ڪيترو ويڪرو پرنٽ ٿئي ٿو. ڊيفالٽ 80 ملي ميٽر. 58 ملي ميٽر سنڍڙي سليپ، 80 ملي ميٽر ويڪرو سليپ، 112 ملي ميٽر 4-انچ، 210 ملي ميٽر صفحو. 40 کان 210 تائين ڪا به قيمت ٽائيپ ڪريو. مهمانن جا بل بيلي ٽيب تي پنهنجون ويڪرائيون رکن ٿا.
+content_width_bill_help	مهمان جو بل ڪيترو ويڪرو ڇپجي ٿو، mm ۾ (40–210). اهو ڪنهن به ڪاغذ تي هن ئي اصل ماپ ۾ ڇپجي ٿو؛ ان کان سوڙهي ڪاغذ تي ڇپائي جي ڪناري کان اڳيون حصو ڪٽجي ٿو (ڪاغذ ڏسو). باورچي خاني جي ٽڪيٽن جي پنهنجي ويڪر KOT ٽيب تي آهي.
+content_width_kot_help	باورچي خاني جي ٽڪيٽ ڪيتري ويڪري ڇپجي ٿي، mm ۾ (40–210). اها ڪنهن به ڪاغذ تي هن ئي اصل ماپ ۾ ڇپجي ٿي؛ ان کان سوڙهي ڪاغذ تي ڇپائي جي ڪناري کان اڳيون حصو ڪٽجي ٿو (ڪاغذ ڏسو). مهمانن جي بلن جي پنهنجي ويڪر بل ٽيب تي آهي.
 vp_paper_width	مواد جي ويڪرائي (ملی ميٽر)
 vp_paper_width_ph	يا مواد جو ويڪر ٽائپ ڪريو، 40–210 ايم ايم
 vp_paper_width_help	مواد جي ويڪر کي بل ۽ KOT فارميٽ تحت مقرر ڪيو ويو آهي — بل لاءِ الڳ (پهرين سيٽنگ 210 mm) ۽ ڪچن ٽڪيٽ لاءِ الڳ (پهرين سيٽنگ 80 mm).
@@ -1213,8 +1241,6 @@ schemes_help	BOGO، سيڪڙو-رعايت، ۽ مقرر ڪيل ڪامبوز۔ ڪ
 scheme_bogo_ph	Buy 2 Thali get 1 Chaas
 add_scheme	شامل ڪريو BOGO
 schedule_ph	ڪلاڪ / خوشي جو وقت — سومر-جمعو 07:00-11:00 يا HappyHour 17:00-19:00=150
-upi_vpa_ph	UPI ID (VPA)
-upi_payee_ph	UPI وصول ڪندڙ جو نالو (اختياري)
 upi_qr	UPI QR
 show_upi_qr	UPI QR ڏيکاريو
 close_upi_qr	بند ڪريو
@@ -1295,8 +1321,6 @@ printer_mode_first	پهريون جيڪو ڪم ڪري ٿو
 printer_mode_all	سڀ تي ڇپيو
 kot_show_area	علائقو
 kot_hide_area	علائقو لڪايو
-kot_show_item_hdr	شئ · مقدار
-kot_hide_item_hdr	ڪالمن کي لڪاءِ
 kot_show_title	عنوان واري لائن
 kot_hide_title	عنوان لڪاءِ
 kot_field_cycle	اڳيون چونڊيو
@@ -1337,12 +1361,12 @@ private_code_ph	12 انگن وارو ڪوڊ
 stamp_on	اسٽيمپ: فائل تي
 pay_qr_on	ادائگي QR: فائل تي
 pay_qr_off	ادائگي QR: ڪوبه ناهي
+printers_screen_tip	ڳوليو اهي پرنٽر ڏيکاري ٿو جيڪي هي ڊوائيس استعمال ڪري سگهي ٿي ۽ انهن کي هن دڪان لاءِ محفوظ ڪري ٿو. بل پرنٽر: بل ۽ KOT فارميٽ ← بل. رڌڻو: رڌڻو ← رڌڻي جا اسٽيشن.
+printers_found_none	ڪو به پرنٽر نه مليو.
+nav_loading	لوڊ ٿي رهيو آهي…
+kot_copy_from	هتان ڪاپي ڪريو
+kot_copy_from_help	انهي قسم جي هر سٽ جي ماپ، ٿولهه ۽ ترتيب هن ۾ ڪاپي ڪري ٿو. هي قسم پنهنجو بينر، شيءِ جو اڳياڙي ۽ ڪٽ ليڪ رکي ٿو. رکڻ لاءِ KOT فارميٽ محفوظ ڪريو.
 items_tmpl_heading	شين جا سانچا
 items_tmpl_help	توهان جي مينيو لاءِ کاڌا، زمرا ۽ تصويرون. دڪان جون سيٽنگون ۽ عملو جيئن آهن تيئن ئي رهن ٿا.
 public_tmpl_help	شروعاتي مينيو جيڪي ڪو به ڊائون لوڊ ڪري سگهي ٿو. هڪ ڀيرو انٽرنيٽ گهرجي.
 private_tmpl_help	توهان جي Khaynjo رابطي کان مليل 12 انگن واري ڪوڊ سان محفوظ گراهڪ مينيو.
-printers_screen_tip	ڳوليو اهي پرنٽر ڏيکاري ٿو جيڪي هي ڊوائيس استعمال ڪري سگهي ٿي ۽ انهن کي هن دڪان لاءِ محفوظ ڪري ٿو. بل پرنٽر: بل ۽ KOT فارميٽ ← بل. رڌڻو: رڌڻو ← رڌڻي جا اسٽيشن.
-printers_found_none	ڪو به پرنٽر نه مليو.
-kot_copy_from	هتان ڪاپي ڪريو
-kot_copy_from_help	انهي قسم جي هر سٽ جي ماپ، ٿولهه ۽ ترتيب هن ۾ ڪاپي ڪري ٿو. هي قسم پنهنجو بينر، شيءِ جو اڳياڙي ۽ ڪٽ ليڪ رکي ٿو. رکڻ لاءِ KOT فارميٽ محفوظ ڪريو.
-nav_loading	لوڊ ٿي رهيو آهي…

@@ -60,10 +60,6 @@ bill_item_layout	Artículo ñemohenda
 bill_item_layout_columns	Umi columna rehegua
 bill_item_layout_stacked	Oñembohyru
 bill_item_header	Umi vore iñakãrapu’ãva
-bill_item_hdr_item	Mba’e iñakãrapu’ãva
-bill_item_hdr_qty	Qty iñakãrapu’ãva
-bill_item_hdr_price	Precio iñakãrapu’ãva
-bill_item_hdr_amount	Monto iñakãrapu’ãva
 bill_item_name	Mba’e réra
 bill_item_qty	Hetakue
 bill_item_price	Precio
@@ -71,6 +67,13 @@ bill_item_amount	Monto rehegua
 bill_item_note	Nota de artículo rehegua
 bill_item_col_sep	Umi regla columna rehegua
 slip_col_width	Pe (mm)
+paper_heading	Kuatia
+paper_size	{w} × {h} mm
+paper_roll	{w} mm jere
+paper_not_set	kuatia ndojekuaái gueteri
+paper_length_mm	Puku (mm)
+printer_paper_help	Ko impresora kuatia mm-pe. Puku nandi ha'e jere: opa comprobante ipuku ijehupyrukuéicha. Eheka umi impresora omyenyhẽ kuatia nandi impresora driver-gui (80 mm jere ndaikatúiramo he'i) ha araka'eve ndomoambuéi oñemboguapýmava.
+preview_help	Ko comprobante impresora oñeiporavóva yvy gotyo kuatiápe, upépe oñeimprimi haguéicha: tuichakue añetete yvate asu gotyo impresora ohupytývagui (hũngy: henda ndohupytýiva), comprobante ipukúva hoja hetavépe, kuatia rembe'y rapykuéri oĩva oñekytĩ. Impresora jeporavo omoambue vista previa añoite; opa impresora kuatia oñemboguapy Impresora-kuéra-pe.
 slip_col_start	Ñepyrũha pa’ũ (px)
 slip_col_end	Pahaha pa’ũ (px)
 slip_columns_help	Peteĩteĩ columna pe oguereko ipype iñepyrũha ha ipahaha pa’ũ. Moñe’ẽrã oñembojere icolumna ryepýpe; contenido pe rehasáva oñeikytĩ kuatiápe ha jehechaukápe.
@@ -838,3 +841,4 @@ nav_loading	Henyhẽhína…
 printer_mode_first	Primero upéva osẽ porã
 printer_mode_all	Eimprimi opavave ári
 slip_columns	Columna-kuéra
+slip_col_header	Iñakãrapu’ãva

@@ -72,10 +72,6 @@ bill_item_layout	Uyilo lwezinto
 bill_item_layout_columns	Iikholamu
 bill_item_layout_stacked	Zipakishwe
 bill_item_header	Iintloko zeekholamu
-bill_item_hdr_item	Intloko yento
-bill_item_hdr_qty	Intloko yenani
-bill_item_hdr_price	Intloko yexabiso
-bill_item_hdr_amount	Intloko yemali
 bill_item_name	Igama leyeza
 bill_item_qty	Inani
 bill_item_price	Ixabiso
@@ -83,6 +79,13 @@ bill_item_amount	Imali
 bill_item_note	Rx / inqaku lentengiso
 bill_item_col_sep	Imigca yeekholamu
 slip_col_width	Ububanzi (mm)
+paper_heading	Iphepha
+paper_size	{w} × {h} mm
+paper_roll	umqulu we-{w} mm
+paper_not_set	iphepha alikaziwa okwangoku
+paper_length_mm	Ubude (mm)
+printer_paper_help	Iphepha lalo mshicileli kwi-mm. UBude obungenanto ngumqulu: irisithi nganye inde njengomxholo wayo. Fumana abashicileli igcwalisa iphepha elingenanto kumqhubi womshicileli (umqulu we-80 mm xa ingakwazi ukuxela) kwaye ayize iguqule elimiselweyo.
+preview_help	Le risithi kwiphepha lomshicileli okhethwe ngezantsi, njengoko ishicilelwa apho: ubungakanani bokwenyani ukusuka kwikona ephezulu ekhohlo efikelelwa ngumshicileli (ngwevu: imiphetho engafikelelwayo), irisithi ende kumaphepha amaninzi, yonke into egqitha umphetho wephepha iyanqunyulwa. Ukukhetha umshicileli kutshintsha umboniso kuphela; iphepha lomshicileli ngamnye limiselwa phantsi kwe-Abashicileli.
 slip_col_start	Isithuba sokuqala (px)
 slip_col_end	Isithuba sokugqibela (px)
 slip_columns_help	Ububanzi bekholamu nganye buquka isithuba sayo sokuqala nesokugqibela. Umbhalo usongeka ngaphakathi kwikholamu yawo; oko kudlula ububanzi bomxholo kuyanqunyulwa, ephepheni nakwimbonakalo yangaphambili.
@@ -850,3 +853,4 @@ nav_loading	Iyalayisha…
 printer_mode_first	Eyokuqala esebenzayo
 printer_mode_all	Shicilela kuzo zonke
 slip_columns	Iikholamu
+slip_col_header	Intloko

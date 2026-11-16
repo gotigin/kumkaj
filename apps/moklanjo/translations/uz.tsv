@@ -501,6 +501,17 @@ job_size	Shrift oʻlchami
 job_size_ph	mas. 18, 20, 26…
 test_receipt_format	Sinov kvitansiyasi
 test_label_format	Sinov belgisi
+paper_heading	Qogʻoz
+paper_size	{w} × {h} mm
+paper_roll	{w} mm rulon
+paper_not_set	qogʻoz hali nomaʼlum
+paper_length_mm	Uzunlik (mm)
+printer_paper_help	Bu printerning qogʻozi mm da. Boʻsh Uzunlik — rulon: har bir chek mazmuni qadar uzun. Printerlarni topish boʻsh qogʻozni printer drayveridan toʻldiradi (ayta olmasa, 80 mm rulon) va oldindan belgilanganini hech qachon oʻzgartirmaydi.
+preview_help	Pastda tanlangan printer qogʻozidagi bu chek, u yerda qanday chop etilsa shunday: printer yetadigan yuqori chap burchakdan haqiqiy oʻlchamda (kulrang: yetmaydigan chetlar), uzun chek koʻproq varaqda, qogʻoz chetidan oʻtgan hamma narsa kesiladi. Printer tanlash faqat oldindan koʻrishni oʻzgartiradi; har bir printer qogʻozi Printerlar boʻlimida belgilanadi.
+slip_col_width	Kenglik (mm)
+no_printer_assigned	Printer yoʻq
+printer_target_default	shu kompyuterning odatdagi printeri (boʻsh manzil)
+job_preview	Koʻrib chiqish
 test_receipt_sent	Kvitansiya namunasi yuborildi
 test_label_sent	Yorliq namunasi yuborildi
 test_print_no_printer	Bu ish uchun printer yo‘q — bu joyning ostiga bittasini qo‘shing

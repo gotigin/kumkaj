@@ -72,10 +72,6 @@ bill_item_layout	Tata letak item
 bill_item_layout_columns	Kolom
 bill_item_layout_stacked	Bertumpuk
 bill_item_header	Header kolom
-bill_item_hdr_item	Judul item
-bill_item_hdr_qty	Judul jumlah
-bill_item_hdr_price	Judul harga
-bill_item_hdr_amount	Judul jumlah uang
 bill_item_name	Nama obat
 bill_item_qty	Jml
 bill_item_price	Harga
@@ -83,6 +79,13 @@ bill_item_amount	Jumlah
 bill_item_note	Rx / catatan penjualan
 bill_item_col_sep	Garis kolom
 slip_col_width	Lebar (mm)
+paper_heading	Kertas
+paper_size	{w} × {h} mm
+paper_roll	gulungan {w} mm
+paper_not_set	kertas belum diketahui
+paper_length_mm	Panjang (mm)
+printer_paper_help	Kertas printer ini dalam mm. Panjang kosong berarti gulungan: setiap struk sepanjang isinya. Cari printer mengisi kertas kosong dari driver printer (gulungan 80 mm bila tidak bisa memberi tahu) dan tidak pernah mengubah kertas yang sudah diatur.
+preview_help	Struk ini di kertas printer yang dipilih di bawah, seperti tercetak di sana: ukuran sebenarnya dari sudut kiri atas yang dapat dijangkau printer (abu-abu: tepi yang tidak terjangkau), struk panjang di lebih banyak lembar, semua yang melewati tepi kertas terpotong. Memilih printer hanya mengubah pratinjau; kertas tiap printer diatur di Printer.
 slip_col_start	Spasi awal (px)
 slip_col_end	Spasi akhir (px)
 slip_columns_help	Lebar setiap kolom sudah termasuk spasi awal dan akhirnya. Teks dibungkus di dalam kolomnya; bagian yang melewati lebar konten terpotong, di kertas maupun di pratinjau.
@@ -850,3 +853,4 @@ nav_loading	Memuat…
 printer_mode_first	Yang pertama yang berfungsi
 printer_mode_all	Cetak di semua
 slip_columns	Kolom
+slip_col_header	Judul

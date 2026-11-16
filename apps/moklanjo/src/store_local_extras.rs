@@ -712,7 +712,7 @@ mod tests {
             .duration_since(UNIX_EPOCH)
             .unwrap()
             .as_nanos();
-        std::env::temp_dir().join(format!("moklanjo-extras-{n}.sqlite3"))
+        crate::test_dirs::run_root().join(format!("moklanjo-extras-{n}.sqlite3"))
     }
 
     #[test]

@@ -92,10 +92,6 @@ bill_item_layout	सामान कै बनावट
 bill_item_layout_columns	खंभा
 bill_item_layout_stacked	ढेर
 bill_item_header	खंभा सीर्षक
-bill_item_hdr_item	सामान सीर्षक
-bill_item_hdr_qty	मात्रा सीर्षक
-bill_item_hdr_price	दाम सीर्षक
-bill_item_hdr_amount	रकम सीर्षक
 bill_item_name	बेंजन कै नाम
 bill_item_qty	मात्रा
 bill_item_price	दाम
@@ -103,6 +99,20 @@ bill_item_amount	रकम
 bill_item_note	बेंजन कै टिप्पणी
 bill_item_col_sep	खंभा रेखा
 slip_columns	खंभा
+slip_col_header	सीर्षक
+bill_line_logo	लोगो
+bill_logo_picture	फोटो
+bill_logo_choose	फोटो चुनौ
+bill_logo_remove	फोटो हटावौ
+bill_logo_none	फोटो नाहीं
+bill_logo_unreadable	ई ऐप पढ़ि सकै अइसन फोटो नाहीं
+bill_logo_width	चौड़ाई (px)
+bill_logo_height	ऊँचाई (px)
+bill_logo_tones	धूसर
+bill_logo_solid	ठोस
+bill_logo_shaded	छायादार
+bill_logo_help	चौड़ाई अउर ऊँचाई px मँ। खाली छोड़ै पै फोटो के हिसाब से: एक खाली तौ आकार बना रहत है, दुनौ खाली तौ अपने असली नाप मँ; दुनौ भरे तौ ओहिके भीतर समाय जात है, कबहूँ खिंचत नाहीं। फोटो नाहीं: देखाई देत लोगो आपन ऊँचाई खाली जगह के रूप मँ रखत है; छुपावौ से हट जात है।
+bill_logo_tones_help	ठोस: हर बिंदु करिया या सफेद, साफ लोगो खातिर। छायादार: धूसर महीन बिंदु के नमूना बनि जात है, फोटो अउर हल्की छाया खातिर।
 slip_col_width	चौड़ाई (mm)
 slip_col_start	सुरू कै जगह (px)
 slip_col_end	आखिरी कै जगह (px)
@@ -167,6 +177,21 @@ alerts_help	हाल कै संदेस आपके खातिर स्
 snack_secs_ph	सेकेंड (3–60, पहिले से 10)
 snack_secs_save	सूचना समय सहेजौ
 snack_secs_saved	सूचना समय सहेजा — {n} सेकेंड
+settings_sec_whatsapp	WhatsApp
+whatsapp_cloud_help	Use your own Meta WhatsApp Cloud API. Create a System User token with whatsapp_business_messaging (temporary dashboard tokens expire). Credentials stay on this Server only — never on extra tills. Accepted means Meta took the request, not that the guest received it.
+whatsapp_phone_id_ph	Phone Number ID
+whatsapp_token_ph	Access Token (leave blank to keep)
+whatsapp_template_ph	Bill template name (optional)
+whatsapp_template_lang_ph	Template language (e.g. en)
+whatsapp_enable	Enable
+whatsapp_disable	Off
+whatsapp_save	Save WhatsApp
+whatsapp_test	Test connection
+whatsapp_disconnect	Disconnect
+whatsapp_send_bill	Send via WhatsApp
+whatsapp_consent	WhatsApp OK
+whatsapp_consent_help	Guest agreed to receive WhatsApp messages. A phone number alone is not consent.
+whatsapp_server_only	Configure WhatsApp on the shop Server device
 settings_sec_backup	बैकअप अउर बहाली
 settings_sec_diag	जाँच
 settings_sec_privacy	गोपनीयता
@@ -729,6 +754,13 @@ station_vps_dd	ई स्टेसन कै प्रिंटर
 station_vps_dd_n	{n} प्रिंटर · बदलै खातिर दबावौ
 bill_printers_dd	बिल कै प्रिंटर
 bill_printers_dd_n	बिल खातिर {n} प्रिंटर · बदलै खातिर दबावौ
+paper_heading	कागज
+paper_size	{w} × {h} mm
+paper_roll	{w} mm रोल
+paper_not_set	कागज अबहिन पता नाहीं
+paper_length_mm	लंबाई (mm)
+printer_paper_help	ई प्रिंटर क कागज mm मा। खाली लंबाई क मतलब रोल: हर पर्ची ओकरे सामग्री जितनी लंबी होत है। प्रिंटर खोजौ खाली कागज प्रिंटर के ड्राइवर से भर देत है (न बताय सकै तौ 80 mm रोल) अउर पहिले से तय कागज कबहूँ नाहीं बदलत।
+preview_help	ई पर्ची नीचे चुने प्रिंटर के कागज पर, जइसे उहाँ छपी: प्रिंटर जहाँ तक पहुँचत है ओह ऊपरी बाएँ कोना से असली नाप मा (स्लेटी: जहाँ नाहीं पहुँचत), लंबी पर्ची अउर पन्ना पर, कागज के किनारा से आगे क हिस्सा कटि जात है। प्रिंटर चुनै से खाली पूर्वावलोकन बदलत है; हर प्रिंटर क कागज प्रिंटर मा तय होत है।
 job_layout	बनावट
 job_delivery	काम कइसे भेजा जात है
 job_delivery_help	OS दस्तावेज, कच्चा बाइट, या ESC/POS। बिल अउर रसोई टिकट दूनौ आपन-आपन रखत हैं। कौनौ काम खोजौ कै सहेजा कौनौ प्रिंटर पै जाय सकत है।
@@ -1105,9 +1137,6 @@ remove_these_tables	ई मेज हटावौ
 table_remove_ph	हटावौ: T1-T24, या एक मेज कै नाम
 find_server	दुकान कै सर्वर खोजौ
 bill_format	बिल कै रूप
-bill_header_ph	पता | फोन
-fssai_ph	FSSAI लाइसेंस नं. (भारत)
-bill_footer_ph	फुटर (जइसे धन्यवाद, फिर आयौ)
 reset_bill_format	डिफॉल्ट पै लौटावौ
 bill_format_reset	बिल कै रूप डिफॉल्ट पै लौटा
 reset_kot_format	डिफॉल्ट पै लौटावौ
@@ -1146,7 +1175,6 @@ kot_kind_modified	बदला
 kot_kind_cancelled	रद्द भवा
 kot_style_heading	फील्ड कै अक्षर आकार अउर मोटाई
 kot_style_title	सीर्षक
-kot_style_item_qty	सामान · मात्रा
 kot_style_field_pick	फील्ड चुनौ
 kot_weight_regular	सामान्य
 kot_weight_bold	मोटा
@@ -1158,8 +1186,8 @@ content_width_bill	बिल कै चौड़ाई (mm)
 content_width_kot	KOT कै चौड़ाई (mm)
 content_width_ph	या चौड़ाई लिखौ, 40–210 mm
 content_width_help	ई पर्ची केतना चौड़ा छपी। बिल अउर KOT दूनौ आपन-आपन चौड़ाई रखत हैं।
-content_width_bill_help	मेहमान कै बिल केतना चौड़ा छपी। डिफॉल्ट 210 mm (पन्ना)। 58 mm पातर पर्ची, 80 mm चौड़ा पर्ची, 112 mm 4-इंच, 210 mm A4-चौड़ा। 40 से 210 तक कौनौ मान लिखौ। रसोई टिकट कै आपन चौड़ाई KOT टैब पै है।
-content_width_kot_help	रसोई टिकट केतना चौड़ा छपी। डिफॉल्ट 80 mm। 58 mm पातर पर्ची, 80 mm चौड़ा पर्ची, 112 mm 4-इंच, 210 mm पन्ना। 40 से 210 तक कौनौ मान लिखौ। मेहमान बिल कै आपन चौड़ाई बिल टैब पै है।
+content_width_bill_help	मेहमान का बिल कितना चौड़ा छपत है, mm मा (40–210)। ई कउनौ कागज पै इहै असली नाप मा छपत है; एहसे सकरा कागज पै छपाई के किनारे से आगे वाला हिस्सा कट जात है (कागज देखौ)। रसोई टिकट कै आपन चौड़ाई KOT टैब पै है।
+content_width_kot_help	रसोई टिकट कितना चौड़ा छपत है, mm मा (40–210)। ई कउनौ कागज पै इहै असली नाप मा छपत है; एहसे सकरा कागज पै छपाई के किनारे से आगे वाला हिस्सा कट जात है (कागज देखौ)। मेहमान बिल कै आपन चौड़ाई बिल टैब पै है।
 vp_paper_width	सामग्री कै चौड़ाई (mm)
 vp_paper_width_ph	या चौड़ाई लिखौ, 40–210 mm
 vp_paper_width_help	चौड़ाई बिल अउर KOT कै रूप मा रखी जात है — बिल (डिफॉल्ट 210 mm) अउर रसोई टिकट (डिफॉल्ट 80 mm) खातिर अलग-अलग।
@@ -1213,8 +1241,6 @@ schemes_help	BOGO, प्रतिसत छूट अउर तय कॉम्
 scheme_bogo_ph	2 थाली लेव 1 छाछ पावौ
 add_scheme	BOGO जोड़ौ
 schedule_ph	घंटा / हैप्पी ऑवर — Mon-Fri 07:00-11:00 या HappyHour 17:00-19:00=150
-upi_vpa_ph	UPI ID (VPA)
-upi_payee_ph	UPI पावै वाला कै नाम (मर्जी कै)
 upi_qr	UPI QR
 show_upi_qr	UPI QR देखावौ
 close_upi_qr	बंद करौ
@@ -1295,8 +1321,6 @@ printer_mode_first	जउन पहिले चलै
 printer_mode_all	सब पै छापौ
 kot_show_area	इलाका
 kot_hide_area	इलाका लुकावौ
-kot_show_item_hdr	सामान · मात्रा
-kot_hide_item_hdr	खंभा लुकावौ
 kot_show_title	सीर्षक पंक्ति
 kot_hide_title	सीर्षक लुकावौ
 kot_field_cycle	अगला चुनौ
@@ -1337,12 +1361,12 @@ private_code_ph	12 अंक का कोड
 stamp_on	मोहर: फाइल मा है
 pay_qr_on	भुगतान QR: फाइल मा है
 pay_qr_off	भुगतान QR: नाहीं
+printers_screen_tip	खोजा ई डिवाइस कै इस्तेमाल लायक प्रिंटर दिखावत है अउर ई दुकान खातिर सहेजत है। बिल प्रिंटर: बिल अउर KOT फॉर्मेट → बिल। रसोई: रसोई → रसोई स्टेशन।
+printers_found_none	कउनो प्रिंटर नाहीं मिला।
+nav_loading	लोड होत अहै…
+kot_copy_from	एहसे कॉपी करा
+kot_copy_from_help	ओह किसिम की हर लाइन का आकार, मोटाई अउर संरेखण एहमा कॉपी करत है। ई किसिम आपन बैनर, आइटम उपसर्ग अउर काट-रेखा रखत है। रखै खातिर KOT फॉर्मेट सहेजा।
 items_tmpl_heading	आइटम टेम्पलेट
 items_tmpl_help	आपन मेनू खातिर पकवान, श्रेणी अउर फोटो। दुकान के सेटिंग अउर स्टाफ जस के तस रहत हैं।
 public_tmpl_help	सुरुआती मेनू जेका केहू डाउनलोड कइ सकत है। एक बार इंटरनेट चाही।
 private_tmpl_help	आपन Khaynjo संपर्क से मिला 12 अंक के कोड से खुलै वाला ग्राहक मेनू।
-printers_screen_tip	खोजा ई डिवाइस कै इस्तेमाल लायक प्रिंटर दिखावत है अउर ई दुकान खातिर सहेजत है। बिल प्रिंटर: बिल अउर KOT फॉर्मेट → बिल। रसोई: रसोई → रसोई स्टेशन।
-printers_found_none	कउनो प्रिंटर नाहीं मिला।
-kot_copy_from	एहसे कॉपी करा
-kot_copy_from_help	ओह किसिम की हर लाइन का आकार, मोटाई अउर संरेखण एहमा कॉपी करत है। ई किसिम आपन बैनर, आइटम उपसर्ग अउर काट-रेखा रखत है। रखै खातिर KOT फॉर्मेट सहेजा।
-nav_loading	लोड होत अहै…

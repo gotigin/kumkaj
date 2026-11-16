@@ -92,10 +92,6 @@ bill_item_layout	Menú menú nisqapi elementokuna churay
 bill_item_layout_columns	Columnakuna
 bill_item_layout_stacked	Apilado
 bill_item_header	Sapanchasqa umalliqkuna
-bill_item_hdr_item	Menú menú nisqapi elemento umalliq
-bill_item_hdr_qty	Yupay umalliq
-bill_item_hdr_price	Precio umalliq
-bill_item_hdr_amount	Cantidad umalliq
 bill_item_name	Plato suti
 bill_item_qty	Yupay
 bill_item_price	Precio
@@ -103,6 +99,20 @@ bill_item_amount	Cantidad nisqa
 bill_item_note	Nota de plato
 bill_item_col_sep	Columna kamachiykuna
 slip_columns	Columnakuna
+slip_col_header	Umalliq
+bill_line_logo	Logo
+bill_logo_picture	Siq'i
+bill_logo_choose	Siq'ita akllay
+bill_logo_remove	Siq'ita qichuy
+bill_logo_none	Mana siq'ichu
+bill_logo_unreadable	Manam app ñawinchayta atinan siq'ichu
+bill_logo_width	Kinra (px)
+bill_logo_height	Sayay (px)
+bill_logo_tones	Uqi llimpikuna
+bill_logo_solid	Sinchi
+bill_logo_shaded	Llanthuyuq
+bill_logo_help	Kinra sayaypas px nisqapi. Ch'usaq siq'ita qatin: huk ch'usaq kaqtin rikchayninta waqaychan, iskaynin ch'usaq kaqtin kikin sayayninta llamk'achin; iskaynin churasqa kaqtin ukhunman yaykuchin, manam hayk'appas chutaykunchu. Mana siq'iyuq: rikuchisqa logo sayayninta ch'usaq kitita hina waqaychan; Pakay qichun.
+bill_logo_tones_help	Sinchi: sapa t'iqa yana utaq yuraq, sut'i logokunapaq. Llanthuyuq: uqi llimpikuna ñañu t'iqakunaman tukun, siq'ikunapaq llamp'u llanthupaqpas.
 slip_col_width	Kinray (mm)
 slip_col_start	Qallariy chusaq (px)
 slip_col_end	Tukukuy chusaq (px)
@@ -167,6 +177,21 @@ alerts_help	Hayka unaytaq estado willakuy pantallapi qampaq qhipakunku (kay yayk
 snack_secs_ph	Segundakuna (3–60, ñawpaqmanta 10) .
 snack_secs_save	Alerta tiempota waqaychay
 snack_secs_saved	Alerta pacha waqaychasqa — {n} segundos
+settings_sec_whatsapp	WhatsApp
+whatsapp_cloud_help	Use your own Meta WhatsApp Cloud API. Create a System User token with whatsapp_business_messaging (temporary dashboard tokens expire). Credentials stay on this Server only — never on extra tills. Accepted means Meta took the request, not that the guest received it.
+whatsapp_phone_id_ph	Phone Number ID
+whatsapp_token_ph	Access Token (leave blank to keep)
+whatsapp_template_ph	Bill template name (optional)
+whatsapp_template_lang_ph	Template language (e.g. en)
+whatsapp_enable	Enable
+whatsapp_disable	Off
+whatsapp_save	Save WhatsApp
+whatsapp_test	Test connection
+whatsapp_disconnect	Disconnect
+whatsapp_send_bill	Send via WhatsApp
+whatsapp_consent	WhatsApp OK
+whatsapp_consent_help	Guest agreed to receive WhatsApp messages. A phone number alone is not consent.
+whatsapp_server_only	Configure WhatsApp on the shop Server device
 settings_sec_backup	Copia de seguridad & kutichiy
 settings_sec_diag	Diagnósticos nisqakuna
 settings_sec_privacy	Pakasqa kay
@@ -729,6 +754,13 @@ station_vps_dd	Kay estacionpaq impresorakuna
 station_vps_dd_n	{n} impresorakuna · ñit’iy cambianaykipaq
 bill_printers_dd	Invitado qullqipaq impresorakuna
 bill_printers_dd_n	{n} impresorakuna invitado qullqipaq · ñit'iy tikranaykipaq
+paper_heading	Rapi
+paper_size	{w} × {h} mm
+paper_roll	{w} mm muyuq
+paper_not_set	rapiqa manaraq yachasqachu
+paper_length_mm	Suni (mm)
+printer_paper_help	Kay impresorap rapin mm-pi. Ch'usaq Suni muyuqmi: sapa boletaqa ukhunpi kaqninman hina sunin. Impresorakunata maskay ch'usaq rapita impresorap driverninmanta hunt'achin (mana niyta atispaqa 80 mm muyuq) hinaspa manan hayk'appas churasqataqa tikranchu.
+preview_help	Kay boletaqa uraypi akllasqa impresorap rapinpi, chaypi imprimikusqanman hina: impresora chayasqan hanaq lluq'i k'uchumanta chiqap sayayninpi (uqi: mana chayasqan patakuna), suni boleta astawan rapikunapi, rapip patanta pasaqqa kuchusqa. Impresorata akllayqa ñawpaq qhawayllatan tikran; sapa impresorap rapinqa Impresorakuna nisqapi churakun.
 job_layout	Diseño
 job_delivery	Imaynatataq chay llamkay apachisqa
 job_delivery_help	OS qillqa, raw bytes, utaq ESC/POS. Invitadokunapaq facturapas, cocinapaq boletopas sapakamam kikinkuta waqaychanku. Mayqin llamk'anapas mayqin impresoramanpas riyta atinmi Tariy waqaychasqa.
@@ -1105,9 +1137,6 @@ remove_these_tables	Kay mikhuy mesakunata hurquy
 table_remove_ph	Qulluy: T1-T24, utaq huk mikhuy mesapa sutin
 find_server	Tiendapa servidorninta maskay
 bill_format	Invitado invitado factura formato
-bill_header_ph	Dirección | telefonowan
-fssai_ph	FSSAI licencia no. (India) .
-bill_footer_ph	Chaki qillqa (e.g. Gracias, yapamanta watukuy)
 reset_bill_format	Ñawpaqmanta churasqaman kutichiy
 bill_format_reset	Invitado invitado factura formato ñawpaqmanta churasqa
 reset_kot_format	Ñawpaqmanta churasqaman kutichiy
@@ -1146,7 +1175,6 @@ kot_kind_modified	Modificasqa
 kot_kind_cancelled	Cancelado
 kot_style_heading	Chakra laya sayay & llasaynin
 kot_style_title	Titulo
-kot_style_item_qty	Menú nisqapi kaq elemento · Qty
 kot_style_field_pick	Chakra akllay
 kot_weight_regular	Sapa kuti
 kot_weight_bold	Mana manchakuq
@@ -1158,8 +1186,8 @@ content_width_bill	Invitado invitado factura contenido ancho (mm) .
 content_width_kot	KOT contenido anchun (mm) .
 content_width_ph	Utaq huk contenido anchota qillqay, 40–210 mm .
 content_width_help	Mayna anchotataq kay slip imprimin. Invitado invitado factura y KOT sapankanku kikin anchonkuta waqaychanku.
-content_width_bill_help	Mayna anchotam invitadopa facturanqa imprimin. Ñawpaqmanta churasqa 210 mm (p'anqa). 58 mm k’iti llimp’i, 80 mm ancho llimp’i, 112 mm 4 pulgada, 210 mm A4 ancho. Ima chaniyuqtapas 40manta 210kama qillqay.Cocinamanta boletokunaqa KOT ñiqipi kikin anchoyuqmi.
-content_width_kot_help	Mayna anchotam cocinapi boleto imprimin. Ñawpaqmanta churasqa 80 mm. 58 mm k’iti llimp’i, 80 mm ancho llimp’i, 112 mm 4 pulgada, 210 mm p’anqa. Ima chaniyuqtapas 40 kaqmanta 210 kaqkama qillqay.Invitado invitado facturakuna kikin anchoyuq kanku Invitado invitado factura tablapi.
+content_width_bill_help	Hamuq runapa cuentan hayka kinrayta imprimikun, mm-pi (40–210). Mayqin rapipipas kay chiqap sayayninpi imprimikun; aswan k'ullku rapipi, imprimiy pata hawapi kaq parte kuchusqa (Rapi qhaway). Wayk'una boletokunaqa KOT pestañapi kikin kinrayniyuqmi.
+content_width_kot_help	Wayk'una boleto hayka kinrayta imprimikun, mm-pi (40–210). Mayqin rapipipas kay chiqap sayayninpi imprimikun; aswan k'ullku rapipi, imprimiy pata hawapi kaq parte kuchusqa (Rapi qhaway). Hamuq runakunapa cuentankunaqa Cuenta pestañapi kikin kinrayniyuqmi.
 vp_paper_width	Contenido anchun (mm) .
 vp_paper_width_ph	Utaq huk contenido anchota qillqay, 40–210 mm .
 vp_paper_width_help	Contenido ancho Invitado invitado qullqi & KOT formato kaqpi churasqa — sapanmanta invitado qullqipaq (ñawpaqmanta 210 mm) chaymanta yanuna boletopaq (ñawpaqmanta 80 mm).
@@ -1213,8 +1241,6 @@ schemes_help	BOGO, pachakmanta hukninmanta, hinallataq takyasqa combokuna. Combo
 scheme_bogo_ph	Buy 2 Thali get 1 Chaas
 add_scheme	Yapay BOGO .
 schedule_ph	Horas / kusikuy pacha — Mon-Fri 07:00-11:00 icha HappyHour 17:00-19:00=150 .
-upi_vpa_ph	UPI ID (VPA)
-upi_payee_ph	UPI pagaqpa sutin (munasqa) .
 upi_qr	UPI QR
 show_upi_qr	Qawachiy UPI QR
 close_upi_qr	Wichqay
@@ -1295,8 +1321,6 @@ printer_mode_first	Ñawpaqtaqa chaymi llamkan
 printer_mode_all	Tukuypi imprimiy
 kot_show_area	Área nisqa
 kot_hide_area	Pakakuy área
-kot_show_item_hdr	Menú nisqapi kaq elemento · Qty
-kot_hide_item_hdr	Columnakunata pakay
 kot_show_title	Titulo chiru
 kot_hide_title	Titulota pakay
 kot_field_cycle	Qatiqninta akllay
@@ -1337,12 +1361,12 @@ private_code_ph	12 yupaykunayuq código
 stamp_on	Sello: archivopi
 pay_qr_on	Pagay QR: archivopi
 pay_qr_off	Pagay QR: mana imapas
+printers_screen_tip	Maskay rikuchin kay equipo atinan impresorakunata, kay tiendapaqtaq waqaychan. Cuenta impresorakuna: Cuenta KOT formato → Cuenta. Yanuna wasi: Yanuna wasi → Yanuna estacionkuna.
+printers_found_none	Mana impresora tarikunchu.
+nav_loading	Cargachkan…
+kot_copy_from	Kaymanta copiay
+kot_copy_from_help	Chay laya sapa siq'ip hatun kayninta, rakhu kayninta, churakuyninta kayman copian. Kay laya kikin bannerninta, imap prefijonta, siq'isqanta waqaychan. Waqaychanapaq KOT formatota waqaychay.
 items_tmpl_heading	Imakuna plantillakuna
 items_tmpl_help	Mikhuykuna, rakikuna, fotokunapas menuykipaq. Tiendap churakuyninkuna llamkaqkunapas kasqanmanta qhipakunku.
 public_tmpl_help	Qallariy menukuna pipas uraykachiyta atin. Huk kutilla internet necesitakun.
 private_tmpl_help	Khaynjo willaqniykimanta 12 yupay codigowan wichqasqa clientekunap menunkuna.
-printers_screen_tip	Maskay rikuchin kay equipo atinan impresorakunata, kay tiendapaqtaq waqaychan. Cuenta impresorakuna: Cuenta KOT formato → Cuenta. Yanuna wasi: Yanuna wasi → Yanuna estacionkuna.
-printers_found_none	Mana impresora tarikunchu.
-kot_copy_from	Kaymanta copiay
-kot_copy_from_help	Chay laya sapa siq'ip hatun kayninta, rakhu kayninta, churakuyninta kayman copian. Kay laya kikin bannerninta, imap prefijonta, siq'isqanta waqaychan. Waqaychanapaq KOT formatota waqaychay.
-nav_loading	Cargachkan…

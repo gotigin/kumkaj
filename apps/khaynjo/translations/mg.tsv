@@ -92,10 +92,6 @@ bill_item_layout	Fandaharana entana
 bill_item_layout_columns	Andry
 bill_item_layout_stacked	Natsangana
 bill_item_header	Loha-tsanganana
-bill_item_hdr_item	Lohatenin'ny entana
-bill_item_hdr_qty	Lohahevitry ny isa
-bill_item_hdr_price	Lohatenin'ny vidiny
-bill_item_hdr_amount	Lohahevitra vola
 bill_item_name	Anaran'ny lovia
 bill_item_qty	Isa
 bill_item_price	Vidiny
@@ -103,6 +99,20 @@ bill_item_amount	Vola
 bill_item_note	Fanamarihana lovia
 bill_item_col_sep	Fitsipika andàlana
 slip_columns	Tsanganana
+slip_col_header	Lohateny
+bill_line_logo	Logo
+bill_logo_picture	Sary
+bill_logo_choose	Misafidiana sary
+bill_logo_remove	Esory ny sary
+bill_logo_none	Tsy misy sary
+bill_logo_unreadable	Tsy sary azon'ny fampiharana vakiana
+bill_logo_width	Sakany (px)
+bill_logo_height	Haavony (px)
+bill_logo_tones	Volon-davenona
+bill_logo_solid	Mafy
+bill_logo_shaded	Misy aloka
+bill_logo_help	Sakany sy haavony amin'ny px. Ny banga dia manaraka ny sary: iray banga mitazona ny endriny, samy banga mampiasa ny habeny manokana; samy voafaritra dia ampidirina ao anatiny, tsy hitarina mihitsy. Tsy misy sary: ny logo aseho dia mitazona ny haavony ho toerana banga; Afeno no manala azy.
+bill_logo_tones_help	Mafy: teboka tsirairay mainty na fotsy, ho an'ny logo mazava. Misy aloka: ny volon-davenona lasa lamina teboka madinika, ho an'ny sary sy aloka malefaka.
 slip_col_width	Sakany (mm)
 slip_col_start	Elanelana fanombohana (px)
 slip_col_end	Elanelana fiafarana (px)
@@ -167,6 +177,21 @@ alerts_help	Mandra-pahoviana ny hafatra momba ny sata no mijanona eo amin'ny efi
 snack_secs_ph	Segondra (3–60, default 10)
 snack_secs_save	Tehirizo ny fotoana fanairana
 snack_secs_saved	Fotoana fampandrenesana voavonjy — {n} segondra
+settings_sec_whatsapp	WhatsApp
+whatsapp_cloud_help	Use your own Meta WhatsApp Cloud API. Create a System User token with whatsapp_business_messaging (temporary dashboard tokens expire). Credentials stay on this Server only — never on extra tills. Accepted means Meta took the request, not that the guest received it.
+whatsapp_phone_id_ph	Phone Number ID
+whatsapp_token_ph	Access Token (leave blank to keep)
+whatsapp_template_ph	Bill template name (optional)
+whatsapp_template_lang_ph	Template language (e.g. en)
+whatsapp_enable	Enable
+whatsapp_disable	Off
+whatsapp_save	Save WhatsApp
+whatsapp_test	Test connection
+whatsapp_disconnect	Disconnect
+whatsapp_send_bill	Send via WhatsApp
+whatsapp_consent	WhatsApp OK
+whatsapp_consent_help	Guest agreed to receive WhatsApp messages. A phone number alone is not consent.
+whatsapp_server_only	Configure WhatsApp on the shop Server device
 settings_sec_backup	Manao backup & mamerina
 settings_sec_diag	Fanaraha-maso ara-pahasalamana
 settings_sec_privacy	Fiainana manokana
@@ -729,6 +754,13 @@ station_vps_dd	Milina fanontam-pirinty ho an'ity toeram-pahandroana ity
 station_vps_dd_n	{n} mpanonta · kitiho hanovàna
 bill_printers_dd	Mpanonta ho an’ny faktiora
 bill_printers_dd_n	{n} mpanonta ho an’ny faktiora · kitiho hanovàna
+paper_heading	Taratasy
+paper_size	{w} × {h} mm
+paper_roll	horonana {w} mm
+paper_not_set	tsy fantatra mbola ny taratasy
+paper_length_mm	Halavana (mm)
+printer_paper_help	Ny taratasin'ity mpanonta ity amin'ny mm. Horonana ny Halavana banga: mitovy halava amin'ny votoatiny ny tapakila tsirairay. Ny Mitadiava milina fanontam-pirinty dia mameno ny taratasy banga avy amin'ny mpitondra ny mpanonta (horonana 80 mm raha tsy afaka milaza izy) ary tsy manova mihitsy izay efa voapetraka.
+preview_help	Ity tapakila ity eo amin'ny taratasin'ny mpanonta voafidy etsy ambany, toy ny hanontana azy any: habe tena izy manomboka amin'ny zoro ambony havia tratran'ny mpanonta (volondavenona: sisiny tsy tratrany), tapakila lava amin'ny pejy maromaro kokoa, tapahina izay mihoatra ny sisin'ny taratasy. Ny fisafidianana mpanonta dia manova ny topi-maso ihany; apetraka ao amin'ny Mpanonta ny taratasin'ny mpanonta tsirairay.
 job_layout	Endrika
 job_delivery	Ahoana ny fandefasana ny asa
 job_delivery_help	Antontan-taratasy OS, bitra mivantana, na ESC/POS. Ny faktiora sy ny tapakila ao an-dakozia dia samy mitahiry ny azy. Ny asa iray na inona na inona dia azo alefa amin’ny mpanonta izay voatahiry ao amin’ny Tadiavo.
@@ -1105,9 +1137,6 @@ remove_these_tables	Esory ireto latabatra ireto
 table_remove_ph	Esory: T1-T24, na ny anaran'ny latabatra iray
 find_server	Mitadiava ny serveur an'ny fivarotana
 bill_format	Endrika faktiora
-bill_header_ph	Adiresy | finday
-fssai_ph	FSSAI laharan'ny fahazoan-dalana (India)
-bill_footer_ph	Fanamarihana farany (oh: Misaotra, mitsidika indray)
 reset_bill_format	Avereno amin'ny voalohany
 bill_format_reset	Endrika faktiora averina amin'ny voalohany
 reset_kot_format	Avereno amin'ny voalohany
@@ -1146,7 +1175,6 @@ kot_kind_modified	Novaina
 kot_kind_cancelled	Natoana
 kot_style_heading	Haben'ny karazana saha & lanja
 kot_style_title	Lohateny
-kot_style_item_qty	Entana · Isan'izy
 kot_style_field_pick	Safidio ny saha
 kot_weight_regular	Mahazatra
 kot_weight_bold	Matavy
@@ -1158,8 +1186,8 @@ content_width_bill	Sakan'ny votoatin'ny faktiora (mm)
 content_width_kot	KOT sakany atiny (mm)
 content_width_ph	Na manorata sakany atiny, 40–210 mm
 content_width_help	Ny sakany an'ity taratasy ity rehefa mivoaka printy. Samy mitazona ny sakany manokana ny faktiora sy ny KOT.
-content_width_bill_help	Ny sakany an'ny faktiora ho an'ny vahiny rehefa mivoaka printy. Default 210 mm (pejy). Taratasy manify 58 mm, taratasy malalaka 80 mm, 112 mm 4-inch, 210 mm A4-malalaka. Manorata sanda rehetra avy amin'ny 40 ka hatramin'ny 210. Ny tapakilan'ny lakozia dia manana ny sakany manokana ao amin'ny tabilao KOT.
-content_width_kot_help	Ny sakany an'ny tapakilan'ny lakozia rehefa mivoaka printy. Default 80 mm. Taratasy manify 58 mm, taratasy malalaka 80 mm, 112 mm 4-inch, 210 mm pejy. Manorata sanda rehetra avy amin'ny 40 ka hatramin'ny 210. Ny faktiora ho an'ny vahiny dia manana ny sakany manokana ao amin'ny tabilao Faktiora.
+content_width_bill_help	Ny sakan'ny faktioran'ny vahiny rehefa atonta, amin'ny mm (40–210). Atonta amin'ity habe marina ity amin'ny taratasy rehetra; amin'ny taratasy tery kokoa, tapahina ny ampahany mihoatra ny sisin'ny fanontana (jereo Taratasy). Manana ny sakany manokana ny tapakila an-dakozia ao amin'ny tabilao KOT.
+content_width_kot_help	Ny sakan'ny tapakila an-dakozia rehefa atonta, amin'ny mm (40–210). Atonta amin'ity habe marina ity amin'ny taratasy rehetra; amin'ny taratasy tery kokoa, tapahina ny ampahany mihoatra ny sisin'ny fanontana (jereo Taratasy). Manana ny sakany manokana ny faktioran'ny vahiny ao amin'ny tabilao Faktiora.
 vp_paper_width	Sakan'ny votoaty (mm)
 vp_paper_width_ph	Na manorata sakany atiny, 40–210 mm
 vp_paper_width_help	Ny sakany atiny dia apetraka eo ambanin'ny endrika Faktiora & KOT — misaraka ho an'ny faktiora (default 210 mm) sy ny tapakilan'ny lakozia (default 80 mm).
@@ -1213,8 +1241,6 @@ schemes_help	BOGO, fihenam-bidy isan-jato, ary combos raikitra. Ny combos dia ma
 scheme_bogo_ph	Buy 2 Thali get 1 Chaas
 add_scheme	Ampio BOGO
 schedule_ph	Ora / ora sambatra — Alatsinainy ka hatramin'ny Zoma 07:00-11:00 na HappyHour 17:00-19:00=150
-upi_vpa_ph	UPI ID (VPA)
-upi_payee_ph	UPI anaran'ny mpandoa (tsy voatery)
 upi_qr	UPI QR
 show_upi_qr	Asehoy UPI QR
 close_upi_qr	Hidio
@@ -1295,8 +1321,6 @@ printer_mode_first	Voalohany miasa
 printer_mode_all	Pirinty amin'ny rehetra
 kot_show_area	Faritra
 kot_hide_area	Afeno ny faritra
-kot_show_item_hdr	Entana · Isan'izy
-kot_hide_item_hdr	Afeno ny tsanganana
 kot_show_title	Andalana lohateny
 kot_hide_title	Afeno ny lohateny
 kot_field_cycle	Misafidiana manaraka
@@ -1337,12 +1361,12 @@ private_code_ph	Kaody 12 isa
 stamp_on	Tombo-kase: ao amin'ny rakitra
 pay_qr_on	Fandoavam-bola QR: ao amin'ny rakitra
 pay_qr_off	Fandoavam-bola QR: tsy misy
+printers_screen_tip	Ny Mitady dia mampiseho ireo mpanonta azon'ity fitaovana ity ampiasaina ary mitahiry azy ireo ho an'ity fivarotana ity. Mpanonta faktiora: Endrika faktiora sy KOT → Faktiora. Lakozia: Lakozia → Toeram-piasan'ny lakozia.
+printers_found_none	Tsy nahitana mpanonta.
+nav_loading	Mampiditra…
+kot_copy_from	Adikao avy amin'ny
+kot_copy_from_help	Mandika ny haben'ny, ny hateviny ary ny filaharan'ny andalana tsirairay avy amin'io karazana io ho amin'ity. Mitazona ny sora-baventy, ny tovona entana ary ny tsipika fanafoanana azy ity karazana ity. Tehirizo ny endrika KOT mba hitazomana azy.
 items_tmpl_heading	Modely entana
 items_tmpl_help	Sakafo, sokajy ary sary ho an'ny menu-nao. Mijanona toy ny teo ny fikirakirana fivarotana sy ny mpiasa.
 public_tmpl_help	Menu fanombohana azon'ny rehetra alaina. Mila internet indray mandeha.
 private_tmpl_help	Menu mpanjifa voahidy amin'ny kaody 12 isa avy amin'ny mpifandray Khaynjo anao.
-printers_screen_tip	Ny Mitady dia mampiseho ireo mpanonta azon'ity fitaovana ity ampiasaina ary mitahiry azy ireo ho an'ity fivarotana ity. Mpanonta faktiora: Endrika faktiora sy KOT → Faktiora. Lakozia: Lakozia → Toeram-piasan'ny lakozia.
-printers_found_none	Tsy nahitana mpanonta.
-kot_copy_from	Adikao avy amin'ny
-kot_copy_from_help	Mandika ny haben'ny, ny hateviny ary ny filaharan'ny andalana tsirairay avy amin'io karazana io ho amin'ity. Mitazona ny sora-baventy, ny tovona entana ary ny tsipika fanafoanana azy ity karazana ity. Tehirizo ny endrika KOT mba hitazomana azy.
-nav_loading	Mampiditra…

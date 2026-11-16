@@ -60,10 +60,6 @@ bill_item_layout	আইটেম লেআউট
 bill_item_layout_columns	কলাম
 bill_item_layout_stacked	সারি
 bill_item_header	কলাম শিরোনাম
-bill_item_hdr_item	আইটেম শিরোনাম
-bill_item_hdr_qty	সংখ্যা শিরোনাম
-bill_item_hdr_price	দর শিরোনাম
-bill_item_hdr_amount	টাকা শিরোনাম
 bill_item_name	আইটেমের নাম
 bill_item_qty	পরিমাণ
 bill_item_price	দর
@@ -71,6 +67,13 @@ bill_item_amount	পরিমাণ
 bill_item_note	আইটেমের নোট
 bill_item_col_sep	কলামের রেখা
 slip_col_width	প্রস্থ (mm)
+paper_heading	কাগজ
+paper_size	{w} × {h} mm
+paper_roll	{w} mm রোল
+paper_not_set	কাগজ এখনও জানা নেই
+paper_length_mm	দৈর্ঘ্য (mm)
+printer_paper_help	এই প্রিন্টারের কাগজ mm-এ। খালি দৈর্ঘ্য মানে রোল: প্রতিটি স্লিপ তার বিষয়বস্তুর সমান লম্বা। প্রিন্টার খুঁজুন খালি কাগজ প্রিন্টারের ড্রাইভার থেকে পূরণ করে (বলতে না পারলে 80 mm রোল) এবং আগে থেকে ঠিক করা কাগজ কখনও বদলায় না।
+preview_help	নিচে বেছে নেওয়া প্রিন্টারের কাগজে এই স্লিপ, সেখানে যেমন ছাপা হয়: প্রিন্টার যে উপরের বাঁ কোণ পর্যন্ত পৌঁছায় সেখান থেকে আসল মাপে (ধূসর: যে কিনারায় পৌঁছায় না), লম্বা স্লিপ আরও পাতায়, কাগজের কিনারার বাইরের অংশ কেটে যায়। প্রিন্টার বাছলে শুধু প্রিভিউ বদলায়; প্রতিটি প্রিন্টারের কাগজ প্রিন্টার-এ ঠিক করা হয়।
 slip_col_start	শুরুর ফাঁকা স্থান (px)
 slip_col_end	শেষের ফাঁকা স্থান (px)
 slip_columns_help	প্রতিটি কলামের প্রস্থে তার শুরু ও শেষের ফাঁকা স্থান অন্তর্ভুক্ত। লেখা নিজের কলামের ভেতরেই মোড়ানো হয়; বিষয়বস্তুর প্রস্থের বাইরে যা থাকে তা কাগজে ও প্রিভিউতে কেটে যায়।
@@ -838,3 +841,4 @@ nav_loading	লোড হচ্ছে…
 printer_mode_first	যেটা আগে চলে
 printer_mode_all	সবগুলোতে ছাপুন
 slip_columns	কলাম
+slip_col_header	শিরোনাম

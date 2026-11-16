@@ -72,10 +72,6 @@ bill_item_layout	Susun atur item menu menu
 bill_item_layout_columns	Lajur
 bill_item_layout_stacked	Bertindan
 bill_item_header	Pengepala lajur
-bill_item_hdr_item	Pengepala item menu menu
-bill_item_hdr_qty	Pengepala kuantiti
-bill_item_hdr_price	Pengepala harga
-bill_item_hdr_amount	Pengepala amaun
 bill_item_name	Nama ubat
 bill_item_qty	Kuantiti
 bill_item_price	harga
@@ -83,6 +79,13 @@ bill_item_amount	Jumlah
 bill_item_note	Rx / nota jualan
 bill_item_col_sep	Peraturan lajur
 slip_col_width	Lebar (mm)
+paper_heading	Kertas
+paper_size	{w} × {h} mm
+paper_roll	gulung {w} mm
+paper_not_set	kertas belum diketahui
+paper_length_mm	Panjang (mm)
+printer_paper_help	Kertas pencetak ini dalam mm. Panjang kosong ialah gulung: setiap slip sepanjang kandungannya. Cari pencetak mengisi kertas kosong daripada pemacu pencetak (gulung 80 mm apabila ia tidak dapat memberitahu) dan tidak pernah mengubah kertas yang sudah ditetapkan.
+preview_help	Slip ini pada kertas pencetak yang dipilih di bawah, seperti yang dicetak di sana: saiz sebenar dari penjuru kiri atas yang dapat dicapai pencetak (kelabu: tepi yang tidak dicapai), slip panjang pada lebih banyak helaian, apa-apa yang melepasi tepi kertas dipotong. Memilih pencetak hanya mengubah pratonton; kertas setiap pencetak ditetapkan di Pencetak.
 slip_col_start	Ruang permulaan (px)
 slip_col_end	Ruang penghujung (px)
 slip_columns_help	Lebar setiap lajur termasuk ruang permulaan dan penghujungnya. Teks dibalut di dalam lajurnya; apa-apa yang melepasi lebar kandungan dipotong, di atas kertas dan dalam pratonton.
@@ -850,3 +853,4 @@ nav_loading	Memuatkan…
 printer_mode_first	Pertama yang berfungsi
 printer_mode_all	Cetak pada semua
 slip_columns	Lajur
+slip_col_header	Pengepala

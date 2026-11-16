@@ -501,6 +501,17 @@ job_size	Fuente tuichakue
 job_size_ph	p.e. 18, 20, 26 rehegua...
 test_receipt_format	Prueba recibo rehegua
 test_label_format	Etiqueta de prueba rehegua
+paper_heading	Kuatia
+paper_size	{w} × {h} mm
+paper_roll	{w} mm jere
+paper_not_set	kuatia ndojekuaái gueteri
+paper_length_mm	Puku (mm)
+printer_paper_help	Ko impresora kuatia mm-pe. Puku nandi ha'e jere: opa comprobante ipuku ijehupyrukuéicha. Eheka umi impresora omyenyhẽ kuatia nandi impresora driver-gui (80 mm jere ndaikatúiramo he'i) ha araka'eve ndomoambuéi oñemboguapýmava.
+preview_help	Ko comprobante impresora oñeiporavóva yvy gotyo kuatiápe, upépe oñeimprimi haguéicha: tuichakue añetete yvate asu gotyo impresora ohupytývagui (hũngy: henda ndohupytýiva), comprobante ipukúva hoja hetavépe, kuatia rembe'y rapykuéri oĩva oñekytĩ. Impresora jeporavo omoambue vista previa añoite; opa impresora kuatia oñemboguapy Impresora-kuéra-pe.
+slip_col_width	Pe (mm)
+no_printer_assigned	Ndaipóri impresora
+printer_target_default	ko komputadóra impresora jepivegua (dirección en blanco) .
+job_preview	Tembiecharã tenondegua
 test_receipt_sent	Recibo muestra oñemondova’ekue
 test_label_sent	Etiqueta muestra oñemondova’ekue
 test_print_no_printer	Ndaipóri impresora upe tembiaporã — emoĩ peteĩ ko tenda guýpe

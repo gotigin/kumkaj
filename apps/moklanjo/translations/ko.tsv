@@ -501,6 +501,17 @@ job_size	글꼴 크기
 job_size_ph	예: 18, 20, 26…
 test_receipt_format	테스트 영수증
 test_label_format	테스트 라벨
+paper_heading	용지
+paper_size	{w} × {h} mm
+paper_roll	{w}mm 롤
+paper_not_set	용지를 아직 모름
+paper_length_mm	길이 (mm)
+printer_paper_help	이 프린터의 용지(mm). 길이가 비어 있으면 롤이며 각 전표는 내용만큼 깁니다. 프린터 찾기는 빈 용지를 프린터 드라이버에서 채우고(알 수 없으면 80mm 롤) 이미 정한 용지는 절대 바꾸지 않습니다.
+preview_help	아래에서 고른 프린터의 용지에 이 전표가 그곳에서 인쇄되는 그대로 보입니다. 프린터가 닿는 왼쪽 위에서부터 실제 크기로(회색: 닿지 않는 가장자리), 긴 전표는 여러 장에, 용지 가장자리를 넘는 부분은 잘립니다. 프린터를 고르면 미리보기만 바뀝니다. 각 프린터의 용지는 프린터에서 정합니다.
+slip_col_width	너비 (mm)
+no_printer_assigned	프린터 없음
+printer_target_default	기본 프린터
+job_preview	미리보기
 test_receipt_sent	샘플 영수증이 전송되었습니다.
 test_label_sent	샘플 라벨 전송됨
 test_print_no_printer	해당 작업에 대한 프린터가 없습니다. 이 위치에 프린터를 추가하세요

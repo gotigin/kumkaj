@@ -60,10 +60,6 @@ bill_item_layout	Ka jingpynbeit ia ki tiar
 bill_item_layout_columns	Ki tnum
 bill_item_layout_stacked	La buh lang
 bill_item_header	Ki khlieh jong ki column
-bill_item_hdr_item	Ka khlieh jong ka tiar
-bill_item_hdr_qty	Ka jingbun ki khlieh
-bill_item_hdr_price	Ka khlieh dor
-bill_item_hdr_amount	Ka khlieh jong ka jingkhein
 bill_item_name	Ka kyrteng jong ka tiar
 bill_item_qty	Ka jingbun
 bill_item_price	Ka dor
@@ -71,6 +67,13 @@ bill_item_amount	Ka jingbun
 bill_item_note	Jingpynkynmaw
 bill_item_col_sep	Ki kyndon jong ki kolom
 slip_col_width	Ka jingshah (mm)
+paper_heading	Ka shla
+paper_size	{w} × {h} mm
+paper_roll	ka roll {w} mm
+paper_not_set	ka shla bym pat tip shuh
+paper_length_mm	Ka jingjrong (mm)
+printer_paper_help	Ka shla jong kane ka nongpynmih kot ha mm. Ka jingjrong ba khlem don ka long roll: kawei pa kawei ka slip ka jrong kumba ka jingdon ha ka. Wad ia ki nongpynmih kot ka pynpura ia ka shla ba khlem don na ka driver jong ka nongpynmih kot (roll 80 mm lada kam lah ban ong) bad kam pynkylla ei ei ia kaba la pynbeit.
+preview_help	Kane ka slip ha ka shla jong ka nongpynmih kot ba la jied hapoh, kumba ka pynmih hangta: ha ka jingheh shisha na ka kona khlieh kadiang ba ka nongpynmih kot ka poi (saw-iong: ki kyndon ba kam poi), ka slip ba jrong ha ki sla kiba kham bun, kiei kiei ba palat ia ka kyndon ka shla la ot. Ban jied ka nongpynmih kot ka pynkylla tang ia ka jingpeit lypa; ka shla jong man ka nongpynmih kot la pynbeit hapoh Ki nongpynmih kot.
 slip_col_start	Ka jaka ha kaba sdang (px)
 slip_col_end	Ka jaka ha kaba kut (px)
 slip_columns_help	Ka jingshah jong man la ka kolom ka kynthup ia ka jaka ha kaba sdang bad ha kaba kut. Ka jingthoh ka kynthup hapoh ka kolom jong ka; kaei kaba palat ia ka jingshah ka jingdon ka sait, ha ka shla bad ha ka jingpeit shuwa.
@@ -838,3 +841,4 @@ nav_loading	Dang load…
 printer_mode_first	Nyngkong kata ka treikam
 printer_mode_all	Pynmih ha baroh
 slip_columns	Ki kolom
+slip_col_header	Ka khlieh

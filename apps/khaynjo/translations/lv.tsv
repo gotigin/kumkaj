@@ -92,10 +92,6 @@ bill_item_layout	Pozīciju izkārtojums
 bill_item_layout_columns	Kolonnas
 bill_item_layout_stacked	Kārtās
 bill_item_header	Kolonnu virsraksti
-bill_item_hdr_item	Pozīcijas virsraksts
-bill_item_hdr_qty	Daudzuma virsraksts
-bill_item_hdr_price	Cenas virsraksts
-bill_item_hdr_amount	Summas virsraksts
 bill_item_name	Ēdiena nosaukums
 bill_item_qty	Daudzums
 bill_item_price	Cena
@@ -103,6 +99,20 @@ bill_item_amount	Summa
 bill_item_note	Ēdiena piezīme
 bill_item_col_sep	Kolonnu līnijas
 slip_columns	Kolonnas
+slip_col_header	Virsraksts
+bill_line_logo	Logotips
+bill_logo_picture	Attēls
+bill_logo_choose	Izvēlēties attēlu
+bill_logo_remove	Noņemt attēlu
+bill_logo_none	Nav attēla
+bill_logo_unreadable	Tas nav attēls, ko lietotne var nolasīt
+bill_logo_width	Platums (px)
+bill_logo_height	Augstums (px)
+bill_logo_tones	Pelēkie toņi
+bill_logo_solid	Vienlaidu
+bill_logo_shaded	Ēnots
+bill_logo_help	Platums un augstums px. Tukšais seko attēlam: viens tukšs saglabā formu, abi tukši izmanto tā izmēru; abi norādīti ievieto to iekšā, nekad neizstiepjot. Bez attēla: rādītais logotips patur savu augstumu kā tukšu vietu; Paslēpt to noņem.
+bill_logo_tones_help	Vienlaidu: katrs punkts melns vai balts, skaidriem logotipiem. Ēnots: pelēkie toņi kļūst par smalku punktu rakstu, fotoattēliem un maigām ēnām.
 slip_col_width	Platums (mm)
 slip_col_start	Sākuma atstarpe (px)
 slip_col_end	Beigu atstarpe (px)
@@ -167,6 +177,21 @@ alerts_help	Cik ilgi statusa ziņas paliek ekrānā jums (šī pieteikšanās).
 snack_secs_ph	Sekundes (3–60, noklusējums 10)
 snack_secs_save	Saglabāt paziņojuma laiku
 snack_secs_saved	Paziņojuma laiks saglabāts — {n} sekundes
+settings_sec_whatsapp	WhatsApp
+whatsapp_cloud_help	Use your own Meta WhatsApp Cloud API. Create a System User token with whatsapp_business_messaging (temporary dashboard tokens expire). Credentials stay on this Server only — never on extra tills. Accepted means Meta took the request, not that the guest received it.
+whatsapp_phone_id_ph	Phone Number ID
+whatsapp_token_ph	Access Token (leave blank to keep)
+whatsapp_template_ph	Bill template name (optional)
+whatsapp_template_lang_ph	Template language (e.g. en)
+whatsapp_enable	Enable
+whatsapp_disable	Off
+whatsapp_save	Save WhatsApp
+whatsapp_test	Test connection
+whatsapp_disconnect	Disconnect
+whatsapp_send_bill	Send via WhatsApp
+whatsapp_consent	WhatsApp OK
+whatsapp_consent_help	Guest agreed to receive WhatsApp messages. A phone number alone is not consent.
+whatsapp_server_only	Configure WhatsApp on the shop Server device
 settings_sec_backup	Dublējums un atjaunošana
 settings_sec_diag	Diagnostika
 settings_sec_privacy	Privātums
@@ -729,6 +754,13 @@ station_vps_dd	Printeri šai stacijai
 station_vps_dd_n	{n} printeri · pieskarieties, lai mainītu
 bill_printers_dd	Printeri rēķinam
 bill_printers_dd_n	{n} printeri rēķinam · pieskarieties, lai mainītu
+paper_heading	Papīrs
+paper_size	{w} × {h} mm
+paper_roll	{w} mm rullis
+paper_not_set	papīrs vēl nav zināms
+paper_length_mm	Garums (mm)
+printer_paper_help	Šī printera papīrs mm. Tukšs Garums ir rullis: katrs čeks ir tik garš kā tā saturs. “Atrast printerus” aizpilda tukšu papīru no printera draivera (80 mm rullis, ja tas nevar pateikt) un nekad nemaina jau iestatītu.
+preview_help	Šis čeks zemāk izvēlētā printera papīrā, kā tas tur drukājas: īstā izmērā no augšējā kreisā stūra, kuru printeris sasniedz (pelēks: malas, kuras nesasniedz), garš čeks vairākās lapās, viss aiz papīra malas tiek nogriezts. Printera izvēle maina tikai priekšskatījumu; katra printera papīrs tiek iestatīts sadaļā Printeri.
 job_layout	Izkārtojums
 job_delivery	Kā darbs tiek sūtīts
 job_delivery_help	OS dokuments, neapstrādāti baiti vai ESC/POS. Rēķins un virtuves zīme katrs patur savu. Jebkurš darbs var iet uz jebkuru printeri, ko Atrast ir saglabājis.
@@ -1105,9 +1137,6 @@ remove_these_tables	Noņemt šos galdus
 table_remove_ph	Noņemt: T1-T24 vai viena galda nosaukums
 find_server	Atrast veikala serveri
 bill_format	Rēķina formāts
-bill_header_ph	Adrese | tālrunis
-fssai_ph	FSSAI licences nr. (Indija)
-bill_footer_ph	Kājene (piem. Paldies, nāciet vēl)
 reset_bill_format	Atjaunot noklusējumu
 bill_format_reset	Rēķina formāts atjaunots uz noklusējumu
 reset_kot_format	Atjaunot noklusējumu
@@ -1146,7 +1175,6 @@ kot_kind_modified	Labots
 kot_kind_cancelled	Atcelts
 kot_style_heading	Lauka burtu izmērs un biezums
 kot_style_title	Virsraksts
-kot_style_item_qty	Pozīcija · daudzums
 kot_style_field_pick	Atlasīt lauku
 kot_weight_regular	Parasts
 kot_weight_bold	Trekns
@@ -1158,8 +1186,8 @@ content_width_bill	Rēķina satura platums (mm)
 content_width_kot	KOT satura platums (mm)
 content_width_ph	Vai ierakstiet satura platumu, 40–210 mm
 content_width_help	Cik plats šī lapa drukājas. Rēķins un KOT katrs patur savu platumu.
-content_width_bill_help	Cik plats drukājas viesa rēķins. Noklusējums 210 mm (lapa). 58 mm šaura lapa, 80 mm plata lapa, 112 mm 4 collas, 210 mm A4 platumā. Ierakstiet jebkuru vērtību no 40 līdz 210. Virtuves zīmēm ir savs platums KOT cilnē.
-content_width_kot_help	Cik plata drukājas virtuves zīme. Noklusējums 80 mm. 58 mm šaura lapa, 80 mm plata lapa, 112 mm 4 collas, 210 mm lapa. Ierakstiet jebkuru vērtību no 40 līdz 210. Viesu rēķiniem ir savs platums Rēķina cilnē.
+content_width_bill_help	Cik plati tiek drukāts viesa rēķins, mm (40–210). Tas tiek drukāts šajā īstajā izmērā uz jebkura papīra; uz šaurāka papīra daļa aiz drukas malas tiek nogriezta (sk. Papīrs). Virtuves čekiem ir savs platums cilnē KOT.
+content_width_kot_help	Cik plati tiek drukāts virtuves čeks, mm (40–210). Tas tiek drukāts šajā īstajā izmērā uz jebkura papīra; uz šaurāka papīra daļa aiz drukas malas tiek nogriezta (sk. Papīrs). Viesu rēķiniem ir savs platums cilnē Rēķins.
 vp_paper_width	Satura platums (mm)
 vp_paper_width_ph	Vai ierakstiet satura platumu, 40–210 mm
 vp_paper_width_help	Satura platums tiek iestatīts sadaļā Rēķina un KOT formāts — atsevišķi rēķinam (noklusējums 210 mm) un virtuves zīmei (noklusējums 80 mm).
@@ -1213,8 +1241,6 @@ schemes_help	BOGO, procentu atlaide un fiksēti komplekti. Komplekti izvēršas 
 scheme_bogo_ph	Pērciet 2 thali, saņemiet 1 chaas
 add_scheme	Pievienot BOGO
 schedule_ph	Stundas / happy hour — Pr–Pk 07:00–11:00 vai HappyHour 17:00–19:00=150
-upi_vpa_ph	UPI id (VPA)
-upi_payee_ph	UPI saņēmēja vārds (nav obligāts)
 upi_qr	UPI QR
 show_upi_qr	Rādīt UPI QR
 close_upi_qr	Aizvērt
@@ -1295,8 +1321,6 @@ printer_mode_first	Pirmais, kas darbojas
 printer_mode_all	Drukāt uz visiem
 kot_show_area	Zona
 kot_hide_area	Slēpt zonu
-kot_show_item_hdr	Pozīcija · daudzums
-kot_hide_item_hdr	Slēpt kolonnas
 kot_show_title	Virsraksta rinda
 kot_hide_title	Slēpt virsrakstu
 kot_field_cycle	Atlasīt nākamo
@@ -1337,12 +1361,12 @@ private_code_ph	12 ciparu kods
 stamp_on	Zīmogs: failā
 pay_qr_on	Maksājuma QR: failā
 pay_qr_off	Maksājuma QR: nav
+printers_screen_tip	Meklēt parāda printerus, ko šī ierīce var izmantot, un saglabā tos šim veikalam. Rēķinu printeri: Rēķina un KOT formāts → Rēķins. Virtuve: Virtuve → Virtuves stacijas.
+printers_found_none	Printeri netika atrasti.
+nav_loading	Ielādē…
+kot_copy_from	Kopēt no
+kot_copy_from_help	Kopē katras rindas izmēru, biezumu un līdzinājumu no tā veida uz šo. Šis veids saglabā savu baneri, preces prefiksu un pārsvītrojumu. Lai paturētu, saglabājiet KOT formātu.
 items_tmpl_heading	Preču veidnes
 items_tmpl_help	Ēdieni, kategorijas un fotoattēli jūsu ēdienkartei. Veikala iestatījumi un darbinieki paliek nemainīgi.
 public_tmpl_help	Sākuma ēdienkartes, ko var lejupielādēt ikviens. Internets vajadzīgs vienreiz.
 private_tmpl_help	Klientu ēdienkartes, kas aizslēgtas ar 12 ciparu kodu no jūsu Khaynjo kontakta.
-printers_screen_tip	Meklēt parāda printerus, ko šī ierīce var izmantot, un saglabā tos šim veikalam. Rēķinu printeri: Rēķina un KOT formāts → Rēķins. Virtuve: Virtuve → Virtuves stacijas.
-printers_found_none	Printeri netika atrasti.
-kot_copy_from	Kopēt no
-kot_copy_from_help	Kopē katras rindas izmēru, biezumu un līdzinājumu no tā veida uz šo. Šis veids saglabā savu baneri, preces prefiksu un pārsvītrojumu. Lai paturētu, saglabājiet KOT formātu.
-nav_loading	Ielādē…

@@ -501,6 +501,17 @@ job_size	Laki ng font
 job_size_ph	hal. 18, 20, 26…
 test_receipt_format	Pagsubok na resibo
 test_label_format	Test label
+paper_heading	Papel
+paper_size	{w} × {h} mm
+paper_roll	{w} mm na rolyo
+paper_not_set	hindi pa alam ang papel
+paper_length_mm	Haba (mm)
+printer_paper_help	Ang papel ng printer na ito sa mm. Ang walang lamang Haba ay rolyo: bawat resibo ay kasinghaba ng laman nito. Pinupunan ng Maghanap ng mga printer ang walang lamang papel mula sa driver ng printer (80 mm na rolyo kapag hindi nito masabi) at hindi kailanman binabago ang naitakda na.
+preview_help	Ang resibong ito sa papel ng printer na pinili sa ibaba, gaya ng pagkaka-print doon: tunay na laki mula sa itaas na kaliwang abot ng printer (kulay abo: mga gilid na hindi nito abot), mahabang resibo sa mas maraming pahina, pinuputol ang lampas sa gilid ng papel. Ang pagpili ng printer ay preview lang ang binabago; ang papel ng bawat printer ay itinatakda sa Mga Printer.
+slip_col_width	Lapad (mm)
+no_printer_assigned	Walang printer
+printer_target_default	ang karaniwang printer ng computer na ito (blangko ang address)
+job_preview	Silipin
 test_receipt_sent	Ipinadala ang sample na resibo
 test_label_sent	Ipinadala ang sample na label
 test_print_no_printer	Walang printer para sa trabahong iyon — magdagdag ng isa sa ilalim ng lugar na ito

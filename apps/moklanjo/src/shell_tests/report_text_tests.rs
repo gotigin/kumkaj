@@ -55,7 +55,7 @@ mod report_text_tests {
     /// one conversions row per unit they start from.
     #[test]
     fn units_list_by_family_not_one_paragraph() {
-        let home = std::env::temp_dir().join(format!("courier-units-{}", new_id()));
+        let home = kumkaj_moklanjo::test_dirs::run_root().join(format!("courier-units-{}", new_id()));
         std::fs::create_dir_all(&home).unwrap();
         let store = Store::open_path(&home.join("books.sqlite3")).unwrap();
         let owner = store.list_staff().unwrap().into_iter().next().unwrap();

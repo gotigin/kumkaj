@@ -501,6 +501,17 @@ job_size	Nha mkpụrụedemede
 job_size_ph	dịka 18, 20, 26…
 test_receipt_format	Nyochaa nnata
 test_label_format	Nnwale akara
+paper_heading	Akwụkwọ
+paper_size	{w} × {h} mm
+paper_roll	mpịakọta {w} mm
+paper_not_set	a maghị akwụkwọ ahụ ugbu a
+paper_length_mm	Ogologo (mm)
+printer_paper_help	Akwụkwọ igwe mbipụta a na mm. Ogologo tọgbọ chakoo bụ mpịakọta: akwụkwọ ọ bụla dị ogologo dị ka ihe dị n'ime ya. Chọta igwe mbipụta na-ejupụta akwụkwọ tọgbọ chakoo site na draịva igwe mbipụta ahụ (mpịakọta 80 mm mgbe ọ na-enweghị ike ịkọ) ma ọ dịghị mgbe ọ na-agbanwe nke e debere ugbu a.
+preview_help	Akwụkwọ a n'elu akwụkwọ igwe mbipụta a họọrọ n'okpuru, dịka ọ na-ebipụta ebe ahụ: nha n'ezie site na nkuku elu aka ekpe igwe ahụ na-eru (ntụ: nsọtụ ọ na-anaghị eru), akwụkwọ ogologo na peeji ndị ọzọ, ihe niile gafere nsọtụ akwụkwọ ka a na-ebipụ. Ịhọrọ igwe mbipụta na-agbanwe naanị nlele; a na-edobe akwụkwọ igwe ọ bụla n'okpuru Igwe mbipụta.
+slip_col_width	Obosara (mm)
+no_printer_assigned	Enweghị igwe mbipụta
+printer_target_default	igwe mbipụta kọmputa a na-ejikarị (adreesị efu)
+job_preview	Nlele
 test_receipt_sent	Ezitere nnata nlele
 test_label_sent	Ezitere akara nlele
 test_print_no_printer	Enweghị ngwa nbipute maka ọrụ ahụ - tinye otu n'okpuru ebe a

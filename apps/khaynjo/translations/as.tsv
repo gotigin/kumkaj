@@ -92,10 +92,6 @@ bill_item_layout	আইটেম লেআউট
 bill_item_layout_columns	স্তম্ভ
 bill_item_layout_stacked	শাৰী
 bill_item_header	স্তম্ভ শিৰোনাম
-bill_item_hdr_item	আইটেম শিৰোনাম
-bill_item_hdr_qty	সংখ্যা শিৰোনাম
-bill_item_hdr_price	দাম শিৰোনাম
-bill_item_hdr_amount	ধন শিৰোনাম
 bill_item_name	খাদ্যৰ নাম
 bill_item_qty	পৰিমাণ
 bill_item_price	দাম
@@ -103,6 +99,20 @@ bill_item_amount	পৰিমাণ
 bill_item_note	নোট
 bill_item_col_sep	স্তম্ভৰ ৰেখা
 slip_columns	স্তম্ভসমূহ
+slip_col_header	শিৰোনাম
+bill_line_logo	ল'গ'
+bill_logo_picture	ছবি
+bill_logo_choose	ছবি বাছক
+bill_logo_remove	ছবি আঁতৰাওক
+bill_logo_none	ছবি নাই
+bill_logo_unreadable	এই এপে পঢ়িব পৰা ছবি নহয়
+bill_logo_width	বহল (px)
+bill_logo_height	উচ্চতা (px)
+bill_logo_tones	ধূসৰ
+bill_logo_solid	নিৰেট
+bill_logo_shaded	ছাঁযুক্ত
+bill_logo_help	বহল আৰু উচ্চতা px-ত। খালী থাকিলে ছবিক অনুসৰণ কৰে: এটা খালী হ'লে আকৃতি ৰাখে, দুয়োটা খালী হ'লে নিজৰ আকাৰ লয়; দুয়োটা দিলে ভিতৰত খাপ খায়, কেতিয়াও টানি দীঘল নকৰে। ছবি নাথাকিলে: দেখুওৱা ল'গ'ই নিজৰ উচ্চতা খালী ঠাই হিচাপে ৰাখে; লুকুৱাওকে আঁতৰায়।
+bill_logo_tones_help	নিৰেট: প্ৰতিটো বিন্দু ক'লা বা বগা, স্পষ্ট ল'গ'ৰ বাবে। ছাঁযুক্ত: ধূসৰ সূক্ষ্ম বিন্দুৰ আৰ্হি হয়, ফটো আৰু কোমল ছাঁৰ বাবে।
 slip_col_width	প্ৰস্থ (mm)
 slip_col_start	আৰম্ভণিৰ ঠাই (px)
 slip_col_end	শেষৰ ঠাই (px)
@@ -167,6 +177,21 @@ alerts_help	অৱস্থাৰ বাৰ্তা আপোনাৰ বা�
 snack_secs_ph	ছেকেণ্ড (3–60, ডিফল্ট 10)
 snack_secs_save	সতৰ্কবাণীৰ সময় সাঁচক
 snack_secs_saved	সতৰ্কবাণীৰ সময় সাঁচা হ'ল — {n} ছেকেণ্ড
+settings_sec_whatsapp	WhatsApp
+whatsapp_cloud_help	Use your own Meta WhatsApp Cloud API. Create a System User token with whatsapp_business_messaging (temporary dashboard tokens expire). Credentials stay on this Server only — never on extra tills. Accepted means Meta took the request, not that the guest received it.
+whatsapp_phone_id_ph	Phone Number ID
+whatsapp_token_ph	Access Token (leave blank to keep)
+whatsapp_template_ph	Bill template name (optional)
+whatsapp_template_lang_ph	Template language (e.g. en)
+whatsapp_enable	Enable
+whatsapp_disable	Off
+whatsapp_save	Save WhatsApp
+whatsapp_test	Test connection
+whatsapp_disconnect	Disconnect
+whatsapp_send_bill	Send via WhatsApp
+whatsapp_consent	WhatsApp OK
+whatsapp_consent_help	Guest agreed to receive WhatsApp messages. A phone number alone is not consent.
+whatsapp_server_only	Configure WhatsApp on the shop Server device
 settings_sec_backup	বেকআপ আৰু পুনৰুদ্ধাৰ
 settings_sec_diag	ডায়গনষ্টিক্স
 settings_sec_privacy	গোপনীয়তা
@@ -729,6 +754,13 @@ station_vps_dd	এই ষ্টেচনৰ প্ৰিণ্টাৰ
 station_vps_dd_n	{n} প্ৰিণ্টাৰ · সলনি কৰিবলৈ টেপ
 bill_printers_dd	বিলৰ প্ৰিণ্টাৰ
 bill_printers_dd_n	বিলৰ বাবে {n}টা প্ৰিণ্টাৰ · সলনি কৰিবলৈ টিপক
+paper_heading	কাগজ
+paper_size	{w} × {h} mm
+paper_roll	{w} mm ৰোল
+paper_not_set	কাগজ এতিয়াও জনা নাই
+paper_length_mm	দৈৰ্ঘ্য (mm)
+printer_paper_help	এই প্ৰিণ্টাৰৰ কাগজ mm ত। খালী দৈৰ্ঘ্য মানে ৰোল: প্ৰতিখন ৰচিদ তাৰ সমলৰ সমান দীঘল। প্ৰিণ্টাৰ বিচাৰকে খালী কাগজ প্ৰিণ্টাৰৰ ড্ৰাইভাৰৰ পৰা পূৰণ কৰে (ক'ব নোৱাৰিলে 80 mm ৰোল) আৰু আগতে ঠিক কৰা কাগজ কেতিয়াও সলনি নকৰে।
+preview_help	তলত বাছি লোৱা প্ৰিণ্টাৰৰ কাগজত এই ৰচিদখন, তাত যেনেকৈ ছপা হয়: প্ৰিণ্টাৰে পাব পৰা ওপৰৰ বাওঁফালৰ পৰা প্ৰকৃত আকাৰত (ধূসৰ: পাব নোৱাৰা কিনাৰ), দীঘল ৰচিদ অধিক পৃষ্ঠাত, কাগজৰ কিনাৰৰ বাহিৰৰ অংশ কাটি পেলোৱা হয়। প্ৰিণ্টাৰ বাছিলে কেৱল পূৰ্বদৰ্শন সলনি হয়; প্ৰতিটো প্ৰিণ্টাৰৰ কাগজ প্ৰিণ্টাৰৰ তলত ঠিক কৰা হয়।
 job_layout	লেআউট
 job_delivery	কাম কেনেকৈ পঠিওৱা হয়
 job_delivery_help	OS নথি, কেঁচা বাইট বা ESC/POS। বিল আৰু পাকঘৰৰ টিকট দুয়োটাই নিজৰ নিজৰ ৰাখে। যিকোনো কাম বিচাৰক-এ সাঁচা যিকোনো প্ৰিণ্টাৰলৈ যাব পাৰে।
@@ -1105,9 +1137,6 @@ remove_these_tables	এই মেজবোৰ আঁতৰাওক
 table_remove_ph	আঁতৰাওক: T1-T24, নহয় এখন মেজৰ নাম
 find_server	দোকানৰ চাৰ্ভাৰ বিচাৰক
 bill_format	বিলৰ ফৰ্মেট
-bill_header_ph	ঠিকনা | ফোন
-fssai_ph	FSSAI অনুজ্ঞাপত্ৰ নং (ভাৰত)
-bill_footer_ph	ফুটাৰ (যেনে ধন্যবাদ, আকৌ আহিব)
 reset_bill_format	ডিফল্টলৈ ঘূৰক
 bill_format_reset	বিলৰ ফৰ্মেট ডিফল্টলৈ
 reset_kot_format	ডিফল্টলৈ ঘূৰক
@@ -1146,7 +1175,6 @@ kot_kind_modified	পৰিৱৰ্তিত
 kot_kind_cancelled	বাতিল
 kot_style_heading	ক্ষেত্ৰৰ আকাৰ আৰু ওজন
 kot_style_title	শিৰোনাম
-kot_style_item_qty	আইটেম · সংখ্যা
 kot_style_field_pick	ক্ষেত্ৰ বাছক
 kot_weight_regular	সাধাৰণ
 kot_weight_bold	ডাঠ
@@ -1158,8 +1186,8 @@ content_width_bill	বিলৰ বিষয়বস্তুৰ বহল (mm)
 content_width_kot	KOT ৰ বিষয়বস্তুৰ বহল (mm)
 content_width_ph	বা বিষয়বস্তুৰ বহল লিখক, 40–210 মিমি
 content_width_help	এই স্লিপ কিমান বহলকৈ ছপা হ’ব। বিল আৰু KOT দুয়োটাই নিজৰ নিজৰ বহল ৰাখে।
-content_width_bill_help	অতিথিৰ বিল কিমান বহলকৈ ছপা হ’ব। পূৰ্বনিৰ্ধাৰিত 210 mm (পৃষ্ঠা)। 58 mm ঠেক স্লিপ, 80 mm বহল স্লিপ, 112 mm 4-ইঞ্চি, 210 mm A4-বহল। 40 ৰ পৰা 210 লৈ যিকোনো মান লিখক। পাকঘৰৰ টিকটৰ নিজৰ বহল KOT টেবত আছে।
-content_width_kot_help	পাকঘৰৰ টিকট কিমান বহলকৈ ছপা হ’ব। পূৰ্বনিৰ্ধাৰিত 80 mm। 58 mm ঠেক স্লিপ, 80 mm বহল স্লিপ, 112 mm 4-ইঞ্চি, 210 mm পৃষ্ঠা। 40 ৰ পৰা 210 লৈ যিকোনো মান লিখক। অতিথিৰ বিলৰ নিজৰ বহল বিল টেবত আছে।
+content_width_bill_help	অতিথিৰ বিল কিমান বহলকৈ ছপা হয়, mm ত (40–210)। ই যিকোনো কাগজত এই প্ৰকৃত আকাৰত ছপা হয়; ইয়াতকৈ ঠেক কাগজত ছপাৰ কাষৰ বাহিৰৰ অংশ কটা যায় (কাগজ চাওক)। পাকঘৰৰ টিকটৰ নিজা বহলতা KOT টেবত আছে।
+content_width_kot_help	পাকঘৰৰ টিকট কিমান বহলকৈ ছপা হয়, mm ত (40–210)। ই যিকোনো কাগজত এই প্ৰকৃত আকাৰত ছপা হয়; ইয়াতকৈ ঠেক কাগজত ছপাৰ কাষৰ বাহিৰৰ অংশ কটা যায় (কাগজ চাওক)। অতিথিৰ বিলৰ নিজা বহলতা বিল টেবত আছে।
 vp_paper_width	বিষয়বস্তুৰ বহল (মিমি)
 vp_paper_width_ph	বা বিষয়বস্তুৰ বহল লিখক, 40–210 মিমি
 vp_paper_width_help	বিষয়বস্তুৰ বহল বিল আৰু KOT বিন্যাসত ছেট হয়। ই বিল আৰু ৰন্ধনশালাৰ টিকট দুয়োটাতে প্ৰযোজ্য।
@@ -1213,8 +1241,6 @@ schemes_help	X কিনিয়ক Y পাওক — চেটেলত অ�
 scheme_bogo_ph	২ Thali কিনিলে ১ Chaas পাব
 add_scheme	BOGO যোগ
 schedule_ph	সময় / হেপ্পী আৱাৰ — Mon-Fri 07:00-11:00 বা HappyHour 17:00-19:00=150
-upi_vpa_ph	UPI ID (VPA)
-upi_payee_ph	UPI গ্ৰহণকাৰী (ঐচ্ছিক)
 upi_qr	UPI QR
 show_upi_qr	UPI QR দেখুৱাওক
 close_upi_qr	বন্ধ
@@ -1295,8 +1321,6 @@ printer_mode_first	যিটো প্ৰথমে চলে
 printer_mode_all	সকলোতে ছপাওক
 kot_show_area	এলেকা
 kot_hide_area	এলেকা লুকুৱাওক
-kot_show_item_hdr	আইটেম · সংখ্যা
-kot_hide_item_hdr	স্তম্ভ লুকুৱাওক
 kot_show_title	শিৰোনামৰ শাৰী
 kot_hide_title	শিৰোনাম লুকুৱাওক
 kot_field_cycle	পিছৰটো বাছক
@@ -1337,12 +1361,12 @@ private_code_ph	১২-অংকৰ ক'ড
 stamp_on	ষ্টাম্প: ফাইলত
 pay_qr_on	পেমেণ্ট QR: ফাইলত
 pay_qr_off	পেমেণ্ট QR: নাই
+printers_screen_tip	বিচাৰক এই ডিভাইচে ব্যৱহাৰ কৰিব পৰা প্ৰিণ্টাৰবোৰ দেখুৱায় আৰু এই দোকানৰ বাবে সাঁচি ৰাখে। বিল প্ৰিণ্টাৰ: বিল আৰু KOT ফৰ্মেট → বিল। পাকঘৰ: পাকঘৰ → পাকঘৰ ষ্টেচন।
+printers_found_none	কোনো প্ৰিণ্টাৰ পোৱা নগ'ল।
+nav_loading	ল'ড হৈ আছে…
+kot_copy_from	ইয়াৰ পৰা কপি কৰক
+kot_copy_from_help	সেই প্ৰকাৰৰ প্ৰতিটো শাৰীৰ আকাৰ, ওজন আৰু সজ্জা ইয়ালৈ কপি কৰে। এই প্ৰকাৰে নিজৰ বেনাৰ, বস্তুৰ উপসৰ্গ আৰু কাটি দিয়া ৰাখে। ৰাখিবলৈ KOT ফৰ্মেট সাঁচক।
 items_tmpl_heading	সামগ্ৰী টেমপ্লেট
 items_tmpl_help	আপোনাৰ মেনুৰ বাবে ব্যঞ্জন, শ্ৰেণী আৰু ফটো। দোকানৰ ছেটিং আৰু কৰ্মচাৰী যিদৰে আছে তেনেদৰেই থাকে।
 public_tmpl_help	যিকোনো লোকে ডাউনলোড কৰিব পৰা আৰম্ভণি মেনু। এবাৰ ইণ্টাৰনেট লাগে।
 private_tmpl_help	আপোনাৰ Khaynjo যোগাযোগৰ পৰা পোৱা ১২-অংকৰ ক'ডেৰে সুৰক্ষিত গ্ৰাহক মেনু।
-printers_screen_tip	বিচাৰক এই ডিভাইচে ব্যৱহাৰ কৰিব পৰা প্ৰিণ্টাৰবোৰ দেখুৱায় আৰু এই দোকানৰ বাবে সাঁচি ৰাখে। বিল প্ৰিণ্টাৰ: বিল আৰু KOT ফৰ্মেট → বিল। পাকঘৰ: পাকঘৰ → পাকঘৰ ষ্টেচন।
-printers_found_none	কোনো প্ৰিণ্টাৰ পোৱা নগ'ল।
-kot_copy_from	ইয়াৰ পৰা কপি কৰক
-kot_copy_from_help	সেই প্ৰকাৰৰ প্ৰতিটো শাৰীৰ আকাৰ, ওজন আৰু সজ্জা ইয়ালৈ কপি কৰে। এই প্ৰকাৰে নিজৰ বেনাৰ, বস্তুৰ উপসৰ্গ আৰু কাটি দিয়া ৰাখে। ৰাখিবলৈ KOT ফৰ্মেট সাঁচক।
-nav_loading	ল'ড হৈ আছে…

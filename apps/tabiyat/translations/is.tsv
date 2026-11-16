@@ -72,10 +72,6 @@ bill_item_layout	Uppsetning valmyndaratriðis
 bill_item_layout_columns	Dálkar
 bill_item_layout_stacked	Staflað
 bill_item_header	Dálkahausar
-bill_item_hdr_item	Heiti valmyndaratriðis
-bill_item_hdr_qty	Magn haus
-bill_item_hdr_price	Verðhaus
-bill_item_hdr_amount	Upphæðarhaus
 bill_item_name	Nafn lyfs
 bill_item_qty	Magn
 bill_item_price	Verð
@@ -83,6 +79,13 @@ bill_item_amount	Upphæð
 bill_item_note	Rx / sölunótur
 bill_item_col_sep	Dálkareglur
 slip_col_width	Breidd (mm)
+paper_heading	Pappír
+paper_size	{w} × {h} mm
+paper_roll	{w} mm rúlla
+paper_not_set	pappír enn óþekktur
+paper_length_mm	Lengd (mm)
+printer_paper_help	Pappír þessa prentara í mm. Auð Lengd er rúlla: hver kvittun er jafnlöng innihaldi sínu. Finndu prentara fyllir í auðan pappír úr rekli prentarans (80 mm rúlla þegar hann getur ekki sagt til) og breytir aldrei pappír sem þegar er stilltur.
+preview_help	Þessi kvittun á pappír prentarans sem valinn er hér fyrir neðan, eins og hún prentast þar: í raunstærð frá efra vinstra horninu sem prentarinn nær (grátt: brúnir sem hann nær ekki), löng kvittun á fleiri blöðum, allt út fyrir brún pappírsins er skorið af. Að velja prentara breytir aðeins forskoðun; pappír hvers prentara er stilltur undir Prentarar.
 slip_col_start	Upphafsbil (px)
 slip_col_end	Lokabil (px)
 slip_columns_help	Breidd hvers dálks inniheldur upphafs- og lokabil hans. Texti brotnar innan síns dálks; það sem nær út fyrir breidd efnisins er skorið af, á pappír og í forskoðun.
@@ -850,3 +853,4 @@ nav_loading	Hleður…
 printer_mode_first	Fyrst sem virkar
 printer_mode_all	Prenta á alla
 slip_columns	Dálkar
+slip_col_header	Haus

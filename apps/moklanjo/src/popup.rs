@@ -96,6 +96,9 @@ impl App {
     fn suggest_owns_point(&self, cx: &Cx, field: SuggestField, abs: DVec2) -> bool {
         area_hit(cx, self.ui.text_input(cx, field.input()).area(), abs)
             || area_hit(cx, self.ui.widget(cx, field.list()).area(), abs)
+            || field
+                .opener()
+                .is_some_and(|o| area_hit(cx, self.ui.widget(cx, o).area(), abs))
     }
 
     /// The type-or-pick field under a screen point, if any.

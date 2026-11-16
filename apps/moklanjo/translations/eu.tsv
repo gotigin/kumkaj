@@ -501,6 +501,17 @@ job_size	Letra-neurria
 job_size_ph	adib. 18, 20, 26…
 test_receipt_format	Proba ordainagiria
 test_label_format	Proba-etiketa
+paper_heading	Papera
+paper_size	{w} × {h} mm
+paper_roll	{w} mm-ko erroilua
+paper_not_set	papera oraindik ezezaguna
+paper_length_mm	Luzera (mm)
+printer_paper_help	Inprimagailu honen papera mm-tan. Luzera hutsa erroilua da: tiket bakoitza bere edukia bezain luzea da. Aurkitu inprimagailuak aukerak paper hutsa inprimagailuaren kontrolatzailetik betetzen du (80 mm-ko erroilua ezin badu esan) eta ez du inoiz aldatzen jada ezarritakoa.
+preview_help	Tiket hau behean aukeratutako inprimagailuaren paperean, han inprimatzen den bezala: benetako tamainan inprimagailuak iristen duen goiko ezkerreko izkinatik (grisa: iristen ez dituen ertzak), tiket luzea orri gehiagotan, paperaren ertzetik haratago dagoena moztu egiten da. Inprimagailu bat aukeratzeak aurrebista bakarrik aldatzen du; inprimagailu bakoitzaren papera Inprimagailuak atalean ezartzen da.
+slip_col_width	Zabalera (mm)
+no_printer_assigned	Inprimagailurik ez
+printer_target_default	ordenagailu honen ohiko inprimagailua (helbide hutsa)
+job_preview	Aurreikuspena
 test_receipt_sent	Bidalitako ordainagiria lagina
 test_label_sent	Bidali da etiketa lagina
 test_print_no_printer	Ez dago inprimagailurik lan horretarako — gehitu bat toki honen azpian

@@ -72,10 +72,6 @@ bill_item_layout	Thil rem dan
 bill_item_layout_columns	Column
 bill_item_layout_stacked	In chhung
 bill_item_header	Column hming
-bill_item_hdr_item	Thil hming
-bill_item_hdr_qty	Zat hming
-bill_item_hdr_price	Man hming
-bill_item_hdr_amount	Sum zat hming
 bill_item_name	Damdawi hming
 bill_item_qty	Zat
 bill_item_price	Man
@@ -83,6 +79,13 @@ bill_item_amount	Sum zat
 bill_item_note	Rx / hralhna tur note
 bill_item_col_sep	Column ri
 slip_col_width	Zau (mm)
+paper_heading	Lehkha
+paper_size	{w} × {h} mm
+paper_roll	{w} mm roll
+paper_not_set	lehkha hriat a la ni lo
+paper_length_mm	A sei zawng (mm)
+printer_paper_help	He print na lehkha hi mm-in. A sei zawng awm lo chu roll a ni: slip tin chu a chhunga thil ang zelin a sei a ni. Print na zawng hian lehkha awm lo chu print na driver atangin a dah khat (a sawi thei loh chuan 80 mm roll) a, lo ruat tawh chu engtikah mah a thlak ngai lo.
+preview_help	He slip hi a hnuaia print na thlan lehkhaah, chutah a chhuah ang ngeiin: print na thlen theih chunglam vei kil atangin a lianna dik takin (dum var: a thlen theih loh kawng), slip sei chu phek tam zawkah, lehkha kawng piah lam apiang chu an tan. Print na thlan hian a hmaa en lawk chauh a thlak; print na tin lehkha chu Print na hnuaiah ruat a ni.
 slip_col_start	Tirhna awmna (px)
 slip_col_end	Tâwpna awmna (px)
 slip_columns_help	Column tin zauah a tirhna leh a tâwpna awmna a tel. Thuziak chu a column chhungah a inthlawk; thil awm zau aia zau chu lehkha ah leh hmaa enna ah a tan ang.
@@ -850,3 +853,4 @@ nav_loading	Load mek mek a ni…
 printer_mode_first	Hmasa thawk
 printer_mode_all	Zawng zawng print
 slip_columns	Column-te
+slip_col_header	Hming

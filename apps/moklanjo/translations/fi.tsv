@@ -501,6 +501,17 @@ job_size	Kirjasinkoko
 job_size_ph	esim. 18, 20, 26…
 test_receipt_format	Testikuitti
 test_label_format	Testitarra
+paper_heading	Paperi
+paper_size	{w} × {h} mm
+paper_roll	{w} mm:n rulla
+paper_not_set	paperia ei vielä tiedetä
+paper_length_mm	Pituus (mm)
+printer_paper_help	Tämän tulostimen paperi millimetreinä. Tyhjä Pituus on rulla: jokainen kuitti on sisältönsä mittainen. Etsi tulostimet täyttää tyhjän paperin tulostimen ajurista (80 mm:n rulla, jos se ei osaa sanoa) eikä koskaan muuta jo asetettua.
+preview_help	Tämä kuitti alla valitun tulostimen paperilla, kuten se siellä tulostuu: todellisessa koossa vasemmasta yläkulmasta, johon tulostin ylettyy (harmaa: reunat, joihin se ei ylety), pitkä kuitti useammalle arkille, kaikki paperin reunan yli leikataan pois. Tulostimen valinta muuttaa vain esikatselua; kunkin tulostimen paperi asetetaan kohdassa Tulostimet.
+slip_col_width	Leveys (mm)
+no_printer_assigned	Ei tulostinta
+printer_target_default	tämän tietokoneen tavallinen tulostin (tyhjä osoite)
+job_preview	Esikatselu
 test_receipt_sent	Kuitin näyte lähetetty
 test_label_sent	Näytetarra lähetetty
 test_print_no_printer	Ei tulostinta tälle työlle – lisää yksi tämän paikan alle

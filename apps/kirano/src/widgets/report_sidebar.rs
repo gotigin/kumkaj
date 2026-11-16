@@ -643,6 +643,10 @@ struct SlipPreview {
     /// repaints run several times per tap; the same picture is not redrawn.
     #[rust]
     page_key: u64,
+    /// The paper the picture was last drawn on (`show_slip_on`); a face that
+    /// names another printer draws it again.
+    #[rust]
+    shown_paper: Option<PreviewPaper>,
 }
 
 fn preview_viewport(cx: &Cx) -> f64 {
@@ -815,28 +819,69 @@ impl SlipPreview {
         }
     }
 
-    /// Show the print picture of `text`. One scale, chosen on draw, keeps the
-    /// print's ratio: big enough to read, and fitted to the screen when that
-    /// still is. The same picture as last time is not drawn again, and it goes
-    /// to the screen as pixels (no PNG encode / decode on the UI thread).
-    pub fn show_slip(
+    /// Show `text` on a printer's paper exactly as it prints there
+    /// (docs/PRINTER.md § Paper and preview): OS document — the print's own
+    /// page (`os_paper::page_for`) and sheet plan, the whole paper drawn,
+    /// the edges the printer cannot reach shaded, a long slip on its next
+    /// sheets, a wide one cut where the print cuts it; ESC/POS — the roll
+    /// the printer's width wide, the picture it gets from its left edge.
+    /// One scale, chosen on draw, keeps the print's ratio: big enough to
+    /// read, and fitted to the screen when that still is. The same picture
+    /// is not drawn again; it goes to the screen as pixels (no PNG round trip).
+    pub fn show_slip_on(
         &mut self,
         cx: &mut Cx,
         text: &str,
         metrics: &receipt_raster::RasterMetrics,
         landscape: bool,
         size_em: f32,
+        paper: &PreviewPaper,
     ) {
+        // Before any early return: the face compares against this.
+        self.shown_paper = Some(paper.clone());
         let type_px = print_share::preview_type_px(size_em, metrics.page_dots());
-        let key = print_share::slip_preview_key(text, metrics, landscape, type_px);
+        let key = {
+            use std::hash::{Hash, Hasher};
+            let mut h = std::collections::hash_map::DefaultHasher::new();
+            print_share::slip_preview_key(text, metrics, landscape, type_px).hash(&mut h);
+            format!("{paper:?}").hash(&mut h);
+            h.finish()
+        };
         if self.page && self.page_key == key {
             return;
         }
-        let (gray, w, h) = print_share::slip_page_gray(text, metrics, landscape);
+        let (px, w, h) = print_share::slip_page_gray(text, metrics, false);
+        let Some(upright) = ::image::GrayImage::from_raw(w, h, px) else {
+            return;
+        };
+        // The picture draws each printer dot as a block of pixels.
+        let dot = (w as usize / metrics.page_dots().max(1)).max(1) as u32;
+        let content_mm = print_share::os_document_content_mm(metrics);
+        let pic = if paper.os_document {
+            let plan = os_paper::page_for(
+                paper.paper,
+                paper.driver.as_ref(),
+                print_share::slip_mm(&upright, content_mm),
+                landscape,
+            );
+            os_paper::preview_picture(&upright, dot, content_mm, Some(&plan.page), landscape, 0.0, None)
+        } else {
+            let turned = landscape.then(|| ::image::imageops::rotate90(&upright));
+            os_paper::preview_picture(
+                &upright,
+                dot,
+                content_mm,
+                None,
+                landscape,
+                paper.paper.width_mm,
+                turned.as_ref(),
+            )
+        };
+        let (pw, ph) = pic.gray.dimensions();
         let Ok(buf) = makepad_widgets::makepad_draw::image_cache::ImageBuffer::new(
-            &gray,
-            w as usize,
-            h as usize,
+            pic.gray.as_raw(),
+            pw as usize,
+            ph as usize,
         ) else {
             return;
         };
@@ -850,8 +895,9 @@ impl SlipPreview {
         }
         self.page = true;
         self.page_key = key;
-        self.page_px = (w.max(1) as f64, h.max(1) as f64);
-        self.type_px = type_px.max(1.0);
+        self.page_px = (pw.max(1) as f64, ph.max(1) as f64);
+        // The readable check is in the picture's own pixels.
+        self.type_px = (type_px / pic.per_px.max(1e-6)).max(1.0);
         self.rows.clear();
         self.walk.width = Size::fill();
         self.walk.height = Size::fit();
@@ -860,5 +906,10 @@ impl SlipPreview {
             card.walk.height = Size::fill();
         }
         self.view.redraw(cx);
+    }
+
+    /// The paper the picture was last drawn on (`show_slip_on`).
+    pub fn shown_paper(&self) -> Option<&PreviewPaper> {
+        self.shown_paper.as_ref()
     }
 }

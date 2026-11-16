@@ -72,10 +72,6 @@ bill_item_layout	Bố cục món
 bill_item_layout_columns	Cột
 bill_item_layout_stacked	Xếp dọc
 bill_item_header	Tiêu đề cột
-bill_item_hdr_item	Tiêu đề thuốc
-bill_item_hdr_qty	Tiêu đề SL
-bill_item_hdr_price	Tiêu đề đơn giá
-bill_item_hdr_amount	Tiêu đề thành tiền
 bill_item_name	Tên thuốc
 bill_item_qty	SL
 bill_item_price	Đơn giá
@@ -83,6 +79,13 @@ bill_item_amount	Thành tiền
 bill_item_note	Rx / ghi chú bán hàng
 bill_item_col_sep	Kẻ cột
 slip_col_width	Chiều rộng (mm)
+paper_heading	Giấy
+paper_size	{w} × {h} mm
+paper_roll	cuộn {w} mm
+paper_not_set	chưa biết giấy
+paper_length_mm	Chiều dài (mm)
+printer_paper_help	Giấy của máy in này tính bằng mm. Chiều dài để trống là cuộn: mỗi phiếu dài bằng nội dung của nó. Tìm máy in điền giấy còn trống từ trình điều khiển của máy in (cuộn 80 mm khi không thể cho biết) và không bao giờ đổi giấy đã đặt.
+preview_help	Phiếu này trên giấy của máy in được chọn bên dưới, đúng như khi in ở đó: kích thước thật từ góc trên bên trái mà máy in tới được (xám: các mép không tới được), phiếu dài in trên nhiều tờ hơn, phần vượt mép giấy bị cắt. Chọn máy in chỉ đổi bản xem trước; giấy của mỗi máy in được đặt trong Máy in.
 slip_col_start	Khoảng đầu (px)
 slip_col_end	Khoảng cuối (px)
 slip_columns_help	Chiều rộng mỗi cột đã gồm khoảng đầu và khoảng cuối của nó. Chữ xuống dòng trong cột của nó; phần vượt quá chiều rộng nội dung bị cắt, trên giấy và trong bản xem trước.
@@ -850,3 +853,4 @@ nav_loading	Đang tải…
 printer_mode_first	Máy đầu tiên hoạt động
 printer_mode_all	In trên tất cả
 slip_columns	Cột
+slip_col_header	Tiêu đề

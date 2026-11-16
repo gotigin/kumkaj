@@ -302,6 +302,189 @@
         }
     }
 
+    /**
+     * OS document slip on any paper (docs/PRINTER.md § Paper). The slip is
+     * upright and {@code contentUm} micrometres wide on paper; the print
+     * dialog picks the printer and its paper. Each page draws the slip at
+     * its real size from that paper's printable top-left (the printer's own
+     * minimum margins). Nothing is fitted: a longer slip goes on to more
+     * pages, split in the blank band between two lines; a wider one is cut
+     * at the printable edge. {@code landscape} only turns the sheet.
+     */
+    public boolean printSlipPages(
+            final String jobName, final byte[] pngBytes, final int contentUm, final boolean landscape) {
+        final byte[] body = pngBytes == null ? new byte[0] : pngBytes;
+        final String title = (jobName == null || jobName.length() == 0) ? "Slip" : jobName;
+        try {
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    try {
+                        PrintManager pm = (PrintManager) getSystemService(PRINT_SERVICE);
+                        if (pm == null) {
+                            return;
+                        }
+                        final android.graphics.Bitmap bmp =
+                                android.graphics.BitmapFactory.decodeByteArray(body, 0, body.length);
+                        if (bmp == null || contentUm <= 0) {
+                            Log.e(LOG_TAG, "printSlipPages: bad slip");
+                            return;
+                        }
+                        final int bw = bmp.getWidth();
+                        final int bh = bmp.getHeight();
+                        // Blank bands between lines (a page may end in one) and
+                        // the last row with ink (nothing after it is printed).
+                        final java.util.ArrayList<Integer> gaps = new java.util.ArrayList<>();
+                        int inkEnd = 0;
+                        int gapStart = -1;
+                        final int[] row = new int[bw];
+                        for (int y = 0; y < bh; y++) {
+                            bmp.getPixels(row, 0, bw, 0, y, bw, 1);
+                            boolean ink = false;
+                            for (int x = 0; x < bw; x++) {
+                                int c = row[x];
+                                int lum = (((c >> 16) & 255) * 299 + ((c >> 8) & 255) * 587 + (c & 255) * 114) / 1000;
+                                if ((c >>> 24) > 0 && lum < 200) {
+                                    ink = true;
+                                    break;
+                                }
+                            }
+                            if (ink) {
+                                if (gapStart >= 0) {
+                                    gaps.add((gapStart + y) / 2);
+                                    gapStart = -1;
+                                }
+                                inkEnd = y + 1;
+                            } else if (gapStart < 0) {
+                                gapStart = y;
+                            }
+                        }
+                        final int len = Math.max(1, inkEnd);
+                        // PDF points per slip pixel: the slip's own mm on paper.
+                        final float ptPerPx = (contentUm / 25400f * 72f) / bw;
+                        final java.util.ArrayList<int[]> slices = new java.util.ArrayList<>();
+                        // page width, height, left, top, right, bottom (points)
+                        final float[] page = new float[6];
+                        PrintAttributes attrs = new PrintAttributes.Builder()
+                                .setMediaSize(landscape
+                                        ? PrintAttributes.MediaSize.UNKNOWN_LANDSCAPE
+                                        : PrintAttributes.MediaSize.UNKNOWN_PORTRAIT)
+                                .setColorMode(PrintAttributes.COLOR_MODE_MONOCHROME)
+                                .build();
+                        pm.print(title, new PrintDocumentAdapter() {
+                            @Override
+                            public void onLayout(
+                                    PrintAttributes oldAttributes,
+                                    PrintAttributes newAttributes,
+                                    android.os.CancellationSignal cancellationSignal,
+                                    LayoutResultCallback callback,
+                                    android.os.Bundle extras) {
+                                if (cancellationSignal.isCanceled()) {
+                                    callback.onLayoutCancelled();
+                                    return;
+                                }
+                                PrintAttributes.MediaSize media = newAttributes.getMediaSize();
+                                if (media == null || media.getWidthMils() <= 0 || media.getHeightMils() <= 0) {
+                                    callback.onLayoutFailed("No paper size");
+                                    return;
+                                }
+                                PrintAttributes.Margins m = newAttributes.getMinMargins();
+                                page[0] = media.getWidthMils() * 72f / 1000f;
+                                page[1] = media.getHeightMils() * 72f / 1000f;
+                                page[2] = m == null ? 0f : m.getLeftMils() * 72f / 1000f;
+                                page[3] = m == null ? 0f : m.getTopMils() * 72f / 1000f;
+                                page[4] = m == null ? 0f : m.getRightMils() * 72f / 1000f;
+                                page[5] = m == null ? 0f : m.getBottomMils() * 72f / 1000f;
+                                int room = Math.max(1, (int) Math.floor((page[1] - page[3] - page[5]) / ptPerPx));
+                                slices.clear();
+                                int start = 0;
+                                while (start < len) {
+                                    int limit = start + room;
+                                    if (limit >= len) {
+                                        slices.add(new int[]{start, len});
+                                        break;
+                                    }
+                                    int floor = start + room / 2;
+                                    int end = limit;
+                                    for (int g : gaps) {
+                                        if (g > floor && g <= limit) {
+                                            end = g;
+                                        }
+                                    }
+                                    slices.add(new int[]{start, end});
+                                    start = end;
+                                }
+                                PrintDocumentInfo info = new PrintDocumentInfo.Builder(title)
+                                        .setContentType(PrintDocumentInfo.CONTENT_TYPE_DOCUMENT)
+                                        .setPageCount(slices.size())
+                                        .build();
+                                callback.onLayoutFinished(info, true);
+                            }
+
+                            @Override
+                            public void onWrite(
+                                    android.print.PageRange[] pages,
+                                    android.os.ParcelFileDescriptor destination,
+                                    android.os.CancellationSignal cancellationSignal,
+                                    WriteResultCallback callback) {
+                                android.graphics.pdf.PdfDocument pdf =
+                                        new android.graphics.pdf.PdfDocument();
+                                try {
+                                    int pw = Math.max(1, Math.round(page[0]));
+                                    int ph = Math.max(1, Math.round(page[1]));
+                                    for (int i = 0; i < slices.size(); i++) {
+                                        boolean wanted = false;
+                                        for (android.print.PageRange r : pages) {
+                                            if (i >= r.getStart() && i <= r.getEnd()) {
+                                                wanted = true;
+                                                break;
+                                            }
+                                        }
+                                        if (!wanted) {
+                                            continue;
+                                        }
+                                        if (cancellationSignal.isCanceled()) {
+                                            callback.onWriteCancelled();
+                                            return;
+                                        }
+                                        android.graphics.pdf.PdfDocument.Page p = pdf.startPage(
+                                                new android.graphics.pdf.PdfDocument.PageInfo.Builder(pw, ph, i).create());
+                                        android.graphics.Canvas canvas = p.getCanvas();
+                                        int[] s = slices.get(i);
+                                        canvas.save();
+                                        canvas.clipRect(page[2], page[3], page[0] - page[4], page[1] - page[5]);
+                                        android.graphics.Rect src = new android.graphics.Rect(0, s[0], bw, s[1]);
+                                        android.graphics.RectF dst = new android.graphics.RectF(
+                                                page[2], page[3],
+                                                page[2] + bw * ptPerPx, page[3] + (s[1] - s[0]) * ptPerPx);
+                                        canvas.drawBitmap(bmp, src, dst, null);
+                                        canvas.restore();
+                                        pdf.finishPage(p);
+                                    }
+                                    java.io.FileOutputStream out =
+                                            new java.io.FileOutputStream(destination.getFileDescriptor());
+                                    pdf.writeTo(out);
+                                    callback.onWriteFinished(pages);
+                                } catch (Throwable e) {
+                                    Log.e(LOG_TAG, "printSlipPages write failed", e);
+                                    callback.onWriteFailed(e.getMessage());
+                                } finally {
+                                    pdf.close();
+                                }
+                            }
+                        }, attrs);
+                    } catch (Throwable e) {
+                        Log.e(LOG_TAG, "printSlipPages failed", e);
+                    }
+                }
+            });
+            return true;
+        } catch (Throwable e) {
+            Log.e(LOG_TAG, "printSlipPages schedule failed", e);
+            return false;
+        }
+    }
+
     public boolean printDocument(final String jobName, final String text) {
         final String body = text == null ? "" : text;
         final String title = (jobName == null || jobName.length() == 0) ? "Slip" : jobName;

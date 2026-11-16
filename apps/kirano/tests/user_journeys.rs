@@ -25,7 +25,7 @@ fn temp_db() -> PathBuf {
         .duration_since(UNIX_EPOCH)
         .unwrap()
         .as_nanos();
-    std::env::temp_dir().join(format!("kirano-journey-{n}-{}.sqlite3", new_id()))
+    kumkaj_kirano::test_dirs::run_root().join(format!("kirano-journey-{n}-{}.sqlite3", new_id()))
 }
 
 /// A working kirana counter: owner, cashier, helper, grocery SKUs.

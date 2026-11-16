@@ -1,6 +1,6 @@
 --- a/platform/src/os/linux/android/android_jni.rs
 +++ b/platform/src/os/linux/android/android_jni.rs
-@@ -1574,6 +1574,169 @@
+@@ -1574,6 +1574,197 @@
      ok != 0
  }
  
@@ -128,6 +128,34 @@
 +        "(Ljava/lang/String;[BZ)Z",
 +        job_name,
 +        arr,
++        landscape as u8 as std::os::raw::c_int
++    );
++    ok != 0
++}
++
++/// OS document slip on any paper: the upright slip and its width on paper
++/// (micrometres). The print dialog picks the paper; the slip is drawn at its
++/// real size from that paper's printable top-left, on as many pages as it
++/// needs (MakepadActivity-print.java `printSlipPages`).
++pub unsafe fn to_java_print_slip(job_name: String, png: &[u8], content_um: i32, landscape: bool) -> bool {
++    let env = attach_jni_env();
++    let Ok(job_name) = CString::new(job_name) else {
++        return false;
++    };
++    let job_name = ((**env).NewStringUTF.unwrap())(env, job_name.as_ptr());
++    let arr = ((**env).NewByteArray.unwrap())(env, png.len() as i32);
++    if arr.is_null() {
++        return false;
++    }
++    ((**env).SetByteArrayRegion.unwrap())(env, arr, 0, png.len() as i32, png.as_ptr() as *const i8);
++    let ok = ndk_utils::call_bool_method!(
++        env,
++        get_activity(),
++        "printSlipPages",
++        "(Ljava/lang/String;[BIZ)Z",
++        job_name,
++        arr,
++        content_um as std::os::raw::c_int,
 +        landscape as u8 as std::os::raw::c_int
 +    );
 +    ok != 0

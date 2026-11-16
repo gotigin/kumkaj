@@ -60,10 +60,6 @@ bill_item_layout	የእቃ አቀማመጥ
 bill_item_layout_columns	አምዶች
 bill_item_layout_stacked	ተደራራቢ
 bill_item_header	የአምድ ርዕሶች
-bill_item_hdr_item	የእቃ ርዕስ
-bill_item_hdr_qty	የብዛት ርዕስ
-bill_item_hdr_price	የዋጋ ርዕስ
-bill_item_hdr_amount	የመጠን ርዕስ
 bill_item_name	የእቃ ስም
 bill_item_qty	ብዛት
 bill_item_price	ዋጋ
@@ -71,6 +67,13 @@ bill_item_amount	መጠን
 bill_item_note	የንጥል ማስታወሻ
 bill_item_col_sep	የአምድ መስመሮች
 slip_col_width	ስፋት (mm)
+paper_heading	ወረቀት
+paper_size	{w} × {h} mm
+paper_roll	{w} mm ጥቅል
+paper_not_set	ወረቀቱ ገና አልታወቀም
+paper_length_mm	ርዝመት (mm)
+printer_paper_help	የዚህ ማተሚያ ወረቀት በ mm። ባዶ ርዝመት ጥቅል ነው፤ እያንዳንዱ ደረሰኝ እንደ ይዘቱ ይረዝማል። ማተሚያዎችን ፈልግ ባዶ ወረቀትን ከማተሚያው ሾፌር ይሞላል (መናገር ካልቻለ 80 mm ጥቅል) እና ቀድሞ የተዘጋጀውን በፍጹም አይቀይርም።
+preview_help	ይህ ደረሰኝ ከታች በተመረጠው ማተሚያ ወረቀት ላይ፣ እዚያ እንደሚታተመው፦ ማተሚያው ከሚደርስበት የላይኛው ግራ ጥግ በእውነተኛ መጠን (ግራጫ፦ የማይደርስባቸው ጠርዞች)፣ ረጅም ደረሰኝ በተጨማሪ ገጾች፣ ከወረቀቱ ጠርዝ ያለፈው ይቆረጣል። ማተሚያ መምረጥ ቅድመ እይታውን ብቻ ይቀይራል፤ የእያንዳንዱ ማተሚያ ወረቀት በማተሚያዎች ስር ይዘጋጃል።
 slip_col_start	የመጀመሪያ ክፍተት (px)
 slip_col_end	የመጨረሻ ክፍተት (px)
 slip_columns_help	የእያንዳንዱ አምድ ስፋት የመጀመሪያና የመጨረሻ ክፍተቱን ያካትታል። ጽሑፉ በአምዱ ውስጥ ይጠቀለላል፤ ከይዘቱ ስፋት በላይ ያለው በወረቀትም በቅድመ እይታም ይቆረጣል።
@@ -838,3 +841,4 @@ nav_loading	በመጫን ላይ…
 printer_mode_first	የመጀመሪያው የሚሠራው
 printer_mode_all	በሁሉም ላይ አትም
 slip_columns	አምዶች
+slip_col_header	ርዕስ
