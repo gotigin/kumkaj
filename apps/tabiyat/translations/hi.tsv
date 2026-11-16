@@ -72,10 +72,6 @@ bill_item_layout	आइटम लेआउट
 bill_item_layout_columns	स्तंभ
 bill_item_layout_stacked	पंक्तियाँ
 bill_item_header	स्तंभ शीर्षक
-bill_item_hdr_item	आइटम शीर्षक
-bill_item_hdr_qty	संख्या शीर्षक
-bill_item_hdr_price	दर शीर्षक
-bill_item_hdr_amount	राशि शीर्षक
 bill_item_name	दवा का नाम
 bill_item_qty	मात्रा
 bill_item_price	दर
@@ -83,6 +79,13 @@ bill_item_amount	राशि
 bill_item_note	Rx / बिक्री नोट
 bill_item_col_sep	स्तंभ रेखा
 slip_col_width	चौड़ाई (mm)
+paper_heading	कागज़
+paper_size	{w} × {h} mm
+paper_roll	{w} mm रोल
+paper_not_set	कागज़ अभी पता नहीं
+paper_length_mm	लंबाई (mm)
+printer_paper_help	इस प्रिंटर का कागज़ mm में। खाली लंबाई का मतलब रोल: हर पर्ची अपनी सामग्री जितनी लंबी होती है। प्रिंटर खोजें खाली कागज़ प्रिंटर के ड्राइवर से भरता है (न बता सके तो 80 mm रोल) और पहले से तय कागज़ कभी नहीं बदलता।
+preview_help	यह पर्ची नीचे चुने गए प्रिंटर के कागज़ पर, जैसे वहाँ छपती है: प्रिंटर जहाँ तक पहुँचता है उस ऊपरी बाएँ कोने से असली नाप में (धूसर: किनारे जहाँ नहीं पहुँचता), लंबी पर्ची और पन्नों पर, कागज़ के किनारे से आगे का सब कट जाता है। प्रिंटर चुनने से सिर्फ़ पूर्वावलोकन बदलता है; हर प्रिंटर का कागज़ प्रिंटर में तय होता है।
 slip_col_start	शुरुआत की जगह (px)
 slip_col_end	अंत की जगह (px)
 slip_columns_help	हर स्तंभ की चौड़ाई में उसकी शुरुआत और अंत की जगह शामिल है। टेक्स्ट अपने स्तंभ के भीतर ही लिपटता है; सामग्री की चौड़ाई से बाहर जो है वह कागज़ और पूर्वावलोकन दोनों में कट जाता है।
@@ -850,3 +853,4 @@ nav_loading	लोड हो रहा है…
 printer_mode_first	जो पहले चले
 printer_mode_all	सब पर छापें
 slip_columns	स्तंभ
+slip_col_header	शीर्षक

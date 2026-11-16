@@ -72,10 +72,6 @@ bill_item_layout	Postavitev artiklov
 bill_item_layout_columns	Stolpci
 bill_item_layout_stacked	V vrsticah
 bill_item_header	Glave stolpcev
-bill_item_hdr_item	Glava artikla
-bill_item_hdr_qty	Glava kol.
-bill_item_hdr_price	Glava cene
-bill_item_hdr_amount	Glava zneska
 bill_item_name	Ime zdravila
 bill_item_qty	Kol.
 bill_item_price	Cena
@@ -83,6 +79,13 @@ bill_item_amount	Znesek
 bill_item_note	Rx / obvestilo o prodaji
 bill_item_col_sep	Črte stolpcev
 slip_col_width	Širina (mm)
+paper_heading	Papir
+paper_size	{w} × {h} mm
+paper_roll	zvitek {w} mm
+paper_not_set	papir še ni znan
+paper_length_mm	Dolžina (mm)
+printer_paper_help	Papir tega tiskalnika v mm. Prazna Dolžina je zvitek: vsak račun je dolg toliko kot njegova vsebina. Poišči tiskalnike izpolni prazen papir iz gonilnika tiskalnika (zvitek 80 mm, ko tega ne more povedati) in nikoli ne spremeni že nastavljenega.
+preview_help	Ta račun na papirju tiskalnika, izbranega spodaj, kot se tam natisne: v dejanski velikosti od zgornjega levega kota, do katerega tiskalnik seže (sivo: robovi, do katerih ne seže), dolg račun na več listih, vse čez rob papirja se odreže. Izbira tiskalnika spremeni le predogled; papir vsakega tiskalnika se nastavi pod Tiskalniki.
 slip_col_start	Začetni razmik (px)
 slip_col_end	Končni razmik (px)
 slip_columns_help	Širina vsakega stolpca vključuje njegov začetni in končni razmik. Besedilo se prelomi znotraj svojega stolpca; kar sega čez širino vsebine, se odreže – na papirju in v predogledu.
@@ -850,3 +853,4 @@ nav_loading	Nalaganje…
 printer_mode_first	Prvi, ki dela
 printer_mode_all	Natisni na vseh
 slip_columns	Stolpci
+slip_col_header	Glava

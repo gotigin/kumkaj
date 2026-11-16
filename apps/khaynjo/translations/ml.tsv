@@ -92,10 +92,6 @@ bill_item_layout	ഇനം ലേഔട്ട്
 bill_item_layout_columns	നിരകൾ
 bill_item_layout_stacked	വരികൾ
 bill_item_header	നിര തലക്കെട്ട്
-bill_item_hdr_item	ഇനം തലക്കെട്ട്
-bill_item_hdr_qty	എണ്ണം തലക്കെട്ട്
-bill_item_hdr_price	വില തലക്കെട്ട്
-bill_item_hdr_amount	തുക തലക്കെട്ട്
 bill_item_name	വിഭവത്തിന്റെ പേര്
 bill_item_qty	എണ്ണം
 bill_item_price	വില
@@ -103,6 +99,20 @@ bill_item_amount	തുക
 bill_item_note	കുറിപ്പ്
 bill_item_col_sep	നിര വര
 slip_columns	കോളങ്ങൾ
+slip_col_header	തലക്കെട്ട്
+bill_line_logo	ലോഗോ
+bill_logo_picture	ചിത്രം
+bill_logo_choose	ചിത്രം തിരഞ്ഞെടുക്കുക
+bill_logo_remove	ചിത്രം നീക്കുക
+bill_logo_none	ചിത്രമില്ല
+bill_logo_unreadable	ഈ ആപ്പിന് വായിക്കാവുന്ന ചിത്രമല്ല
+bill_logo_width	വീതി (px)
+bill_logo_height	ഉയരം (px)
+bill_logo_tones	ചാരനിറങ്ങൾ
+bill_logo_solid	ഉറച്ചത്
+bill_logo_shaded	നിഴലുള്ളത്
+bill_logo_help	വീതിയും ഉയരവും px-ൽ. ശൂന്യമായാൽ ചിത്രത്തെ പിന്തുടരും: ഒന്ന് ശൂന്യമായാൽ ആകൃതി നിലനിൽക്കും, രണ്ടും ശൂന്യമായാൽ സ്വന്തം വലിപ്പം; രണ്ടും നൽകിയാൽ ഉള്ളിൽ ഒതുക്കും, ഒരിക്കലും വലിച്ചുനീട്ടില്ല. ചിത്രമില്ലെങ്കിൽ: കാണിക്കുന്ന ലോഗോ അതിന്റെ ഉയരം ഒഴിഞ്ഞ ഇടമായി നിലനിർത്തും; മറയ്ക്കുക അത് നീക്കും.
+bill_logo_tones_help	ഉറച്ചത്: ഓരോ കുത്തും കറുപ്പോ വെളുപ്പോ, വ്യക്തമായ ലോഗോകൾക്ക്. നിഴലുള്ളത്: ചാരനിറം നേർത്ത കുത്തുകളുടെ മാതൃകയാകും, ഫോട്ടോകൾക്കും മൃദുവായ നിഴലിനും.
 slip_col_width	വീതി (mm)
 slip_col_start	തുടക്കത്തിലെ ഇടം (px)
 slip_col_end	അവസാനത്തെ ഇടം (px)
@@ -167,6 +177,21 @@ alerts_help	സ്റ്റാറ്റസ് സന്ദേശങ്ങൾ ന
 snack_secs_ph	സെക്കൻഡ് (3–60, ഡിഫോൾട്ട് 10)
 snack_secs_save	അറിയിപ്പ് സമയം സേവ് ചെയ്യുക
 snack_secs_saved	അറിയിപ്പ് സമയം സേവ് ചെയ്തു — {n} സെക്കൻഡ്
+settings_sec_whatsapp	WhatsApp
+whatsapp_cloud_help	Use your own Meta WhatsApp Cloud API. Create a System User token with whatsapp_business_messaging (temporary dashboard tokens expire). Credentials stay on this Server only — never on extra tills. Accepted means Meta took the request, not that the guest received it.
+whatsapp_phone_id_ph	Phone Number ID
+whatsapp_token_ph	Access Token (leave blank to keep)
+whatsapp_template_ph	Bill template name (optional)
+whatsapp_template_lang_ph	Template language (e.g. en)
+whatsapp_enable	Enable
+whatsapp_disable	Off
+whatsapp_save	Save WhatsApp
+whatsapp_test	Test connection
+whatsapp_disconnect	Disconnect
+whatsapp_send_bill	Send via WhatsApp
+whatsapp_consent	WhatsApp OK
+whatsapp_consent_help	Guest agreed to receive WhatsApp messages. A phone number alone is not consent.
+whatsapp_server_only	Configure WhatsApp on the shop Server device
 settings_sec_backup	ബാക്കപ്പും പുനഃസ്ഥാപനവും
 settings_sec_diag	ഡയഗ്നോസ്റ്റിക്സ്
 settings_sec_privacy	സ്വകാര്യത
@@ -729,6 +754,13 @@ station_vps_dd	ഈ സ്റ്റേഷന്റെ പ്രിന്ററു
 station_vps_dd_n	{n} പ്രിന്ററുകൾ · മാറ്റാൻ ടാപ്പ്
 bill_printers_dd	ബില്ലിനുള്ള പ്രിന്ററുകൾ
 bill_printers_dd_n	ബില്ലിന് {n} പ്രിന്ററുകൾ · മാറ്റാൻ ടാപ്പ് ചെയ്യുക
+paper_heading	പേപ്പർ
+paper_size	{w} × {h} mm
+paper_roll	{w} mm റോൾ
+paper_not_set	പേപ്പർ ഇതുവരെ അറിയില്ല
+paper_length_mm	നീളം (mm)
+printer_paper_help	ഈ പ്രിന്ററിന്റെ പേപ്പർ mm-ൽ. ശൂന്യമായ നീളം ഒരു റോൾ ആണ്: ഓരോ സ്ലിപ്പും അതിന്റെ ഉള്ളടക്കത്തിന്റെ നീളമാണ്. പ്രിന്ററുകൾ കണ്ടെത്തുക ശൂന്യമായ പേപ്പർ പ്രിന്ററിന്റെ ഡ്രൈവറിൽ നിന്ന് പൂരിപ്പിക്കുന്നു (പറയാൻ കഴിയാത്തപ്പോൾ 80 mm റോൾ), ഇതിനകം സജ്ജമാക്കിയത് ഒരിക്കലും മാറ്റില്ല.
+preview_help	താഴെ തിരഞ്ഞെടുത്ത പ്രിന്ററിന്റെ പേപ്പറിൽ ഈ സ്ലിപ്പ്, അവിടെ അച്ചടിക്കുന്നതുപോലെ: പ്രിന്റർ എത്തുന്ന മുകളിലെ ഇടത് മൂലയിൽ നിന്ന് യഥാർത്ഥ വലുപ്പത്തിൽ (ചാരനിറം: എത്താത്ത അരികുകൾ), നീണ്ട സ്ലിപ്പ് കൂടുതൽ ഷീറ്റുകളിൽ, പേപ്പറിന്റെ അരികിനപ്പുറമുള്ളതെല്ലാം മുറിക്കപ്പെടും. പ്രിന്റർ തിരഞ്ഞെടുക്കുന്നത് പ്രിവ്യൂ മാത്രം മാറ്റുന്നു; ഓരോ പ്രിന്ററിന്റെയും പേപ്പർ പ്രിന്ററുകൾ എന്നതിൽ സജ്ജമാക്കുന്നു.
 job_layout	ലേഔട്ട്
 job_delivery	ജോലി എങ്ങനെ അയയ്ക്കുന്നു
 job_delivery_help	OS ഡോക്യുമെന്റ്, റോ ബൈറ്റുകൾ, അല്ലെങ്കിൽ ESC/POS. ബില്ലും അടുക്കള ടിക്കറ്റും സ്വന്തം വീതം സൂക്ഷിക്കും. ഏത് ജോലിയും കണ്ടെത്തുക സേവ് ചെയ്ത ഏത് പ്രിന്ററിലേക്കും പോകാം.
@@ -1105,9 +1137,6 @@ remove_these_tables	ഈ മേശകൾ നീക്കം ചെയ്യുക
 table_remove_ph	നീക്കുക: T1-T24, അല്ലെങ്കിൽ ഒരു മേശയുടെ പേര്
 find_server	കടയുടെ സെർവർ കണ്ടെത്തുക
 bill_format	ബിൽ ഫോർമാറ്റ്
-bill_header_ph	വിലാസം | ഫോൺ
-fssai_ph	FSSAI ലൈസൻസ് നം. (ഇന്ത്യ)
-bill_footer_ph	ഫൂട്ടർ (ഉദാ. നന്ദി, വീണ്ടും വരിക)
 reset_bill_format	ഡിഫോൾട്ടിലേക്ക് റീസെറ്റ്
 bill_format_reset	ബിൽ ഫോർമാറ്റ് ഡിഫോൾട്ടിലേക്ക്
 reset_kot_format	ഡിഫോൾട്ടിലേക്ക് റീസെറ്റ്
@@ -1146,7 +1175,6 @@ kot_kind_modified	മാറ്റിയത്
 kot_kind_cancelled	റദ്ദാക്കിയത്
 kot_style_heading	ഫീൽഡ് വലുപ്പവും ഭാരവും
 kot_style_title	തലക്കെട്ട്
-kot_style_item_qty	ഇനം · എണ്ണം
 kot_style_field_pick	ഫീൽഡ് തിരഞ്ഞെടുക്കുക
 kot_weight_regular	സാധാരണ
 kot_weight_bold	കട്ടിയുള്ള
@@ -1158,8 +1186,8 @@ content_width_bill	ബിൽ ഉള്ളടക്ക വീതി (mm)
 content_width_kot	KOT ഉള്ളടക്ക വീതി (mm)
 content_width_ph	അല്ലെങ്കിൽ ഉള്ളടക്ക വീതി ടൈപ്പ് ചെയ്യുക, 40–210 മിമി
 content_width_help	ഈ സ്ലിപ്പ് എത്ര വീതിയിൽ അച്ചടിക്കണം. ബില്ലും KOT-ഉം സ്വന്തം വീതി സൂക്ഷിക്കും.
-content_width_bill_help	അതിഥി ബിൽ എത്ര വീതിയിൽ അച്ചടിക്കണം. സ്ഥിരം 210 mm (പേജ്). 58 mm ഇടുങ്ങിയ സ്ലിപ്പ്, 80 mm വീതിയുള്ള സ്ലിപ്പ്, 112 mm 4-ഇഞ്ച്, 210 mm A4-വീതി. 40 മുതൽ 210 വരെ ഏത് മൂല്യവും ടൈപ്പ് ചെയ്യുക. അടുക്കള ടിക്കറ്റുകൾക്ക് സ്വന്തം വീതി KOT ടാബിലുണ്ട്.
-content_width_kot_help	അടുക്കള ടിക്കറ്റ് എത്ര വീതിയിൽ അച്ചടിക്കണം. സ്ഥിരം 80 mm. 58 mm ഇടുങ്ങിയ സ്ലിപ്പ്, 80 mm വീതിയുള്ള സ്ലിപ്പ്, 112 mm 4-ഇഞ്ച്, 210 mm പേജ്. 40 മുതൽ 210 വരെ ഏത് മൂല്യവും ടൈപ്പ് ചെയ്യുക. അതിഥി ബില്ലുകൾക്ക് സ്വന്തം വീതി ബിൽ ടാബിലുണ്ട്.
+content_width_bill_help	അതിഥിയുടെ ബിൽ എത്ര വീതിയിൽ അച്ചടിക്കുന്നു, mm-ൽ (40–210). ഏത് പേപ്പറിലും ഈ യഥാർത്ഥ വലുപ്പത്തിൽ അച്ചടിക്കുന്നു; ഇതിലും ഇടുങ്ങിയ പേപ്പറിൽ അച്ചടി അരികിനപ്പുറമുള്ള ഭാഗം മുറിയുന്നു (പേപ്പർ കാണുക). അടുക്കള ടിക്കറ്റുകൾക്ക് KOT ടാബിൽ സ്വന്തം വീതിയുണ്ട്.
+content_width_kot_help	അടുക്കള ടിക്കറ്റ് എത്ര വീതിയിൽ അച്ചടിക്കുന്നു, mm-ൽ (40–210). ഏത് പേപ്പറിലും ഈ യഥാർത്ഥ വലുപ്പത്തിൽ അച്ചടിക്കുന്നു; ഇതിലും ഇടുങ്ങിയ പേപ്പറിൽ അച്ചടി അരികിനപ്പുറമുള്ള ഭാഗം മുറിയുന്നു (പേപ്പർ കാണുക). അതിഥി ബില്ലുകൾക്ക് ബിൽ ടാബിൽ സ്വന്തം വീതിയുണ്ട്.
 vp_paper_width	ഉള്ളടക്ക വീതി (മിമി)
 vp_paper_width_ph	അല്ലെങ്കിൽ ഉള്ളടക്ക വീതി ടൈപ്പ് ചെയ്യുക, 40–210 മിമി
 vp_paper_width_help	ഉള്ളടക്ക വീതി ബിൽ & KOT ഫോർമാറ്റിൽ സജ്ജമാക്കും. ഇത് ബില്ലിനും അടുക്കള ടിക്കറ്റിനും ബാധകമാണ്.
@@ -1213,8 +1241,6 @@ schemes_help	X വാങ്ങി Y നേടുക — സെറ്റിലി
 scheme_bogo_ph	2 Thali വാങ്ങിയാൽ 1 Chaas സൗജന്യം
 add_scheme	BOGO ചേർക്കുക
 schedule_ph	സമയം / ഹാപ്പി അവർ — Mon-Fri 07:00-11:00 അല്ലെങ്കിൽ HappyHour 17:00-19:00=150
-upi_vpa_ph	UPI ID (VPA)
-upi_payee_ph	UPI സ്വീകർത്താവ് (ഓപ്ഷണൽ)
 upi_qr	UPI QR
 show_upi_qr	UPI QR കാണിക്കുക
 close_upi_qr	അടയ്ക്കുക
@@ -1295,8 +1321,6 @@ printer_mode_first	ആദ്യം പ്രവർത്തിക്കുന്
 printer_mode_all	എല്ലാറ്റിലും അച്ചടിക്കുക
 kot_show_area	ഏരിയ
 kot_hide_area	ഏരിയ മറയ്ക്കുക
-kot_show_item_hdr	ഇനം · എണ്ണം
-kot_hide_item_hdr	കോളങ്ങൾ മറയ്ക്കുക
 kot_show_title	തലക്കെട്ട് വരി
 kot_hide_title	തലക്കെട്ട് മറയ്ക്കുക
 kot_field_cycle	അടുത്തത് തിരഞ്ഞെടുക്കുക
@@ -1337,12 +1361,12 @@ private_code_ph	12 അക്ക കോഡ്
 stamp_on	സ്റ്റാമ്പ്: ഫയലിൽ
 pay_qr_on	പേയ്മെന്റ് QR: ഫയലിൽ
 pay_qr_off	പേയ്മെന്റ് QR: ഇല്ല
+printers_screen_tip	തിരയുക ഈ ഉപകരണത്തിന് ഉപയോഗിക്കാവുന്ന പ്രിന്ററുകൾ കാണിച്ച് ഈ കടയ്ക്കായി സേവ് ചെയ്യുന്നു. ബിൽ പ്രിന്ററുകൾ: ബിൽ & KOT ഫോർമാറ്റ് → ബിൽ. അടുക്കള: അടുക്കള → അടുക്കള സ്റ്റേഷനുകൾ.
+printers_found_none	പ്രിന്ററുകളൊന്നും കണ്ടെത്തിയില്ല.
+nav_loading	ലോഡ് ചെയ്യുന്നു…
+kot_copy_from	ഇതിൽ നിന്ന് പകർത്തുക
+kot_copy_from_help	ആ തരത്തിലെ ഓരോ വരിയുടെയും വലിപ്പം, കനം, ക്രമീകരണം ഇതിലേക്ക് പകർത്തുന്നു. ഈ തരം സ്വന്തം ബാനർ, ഇനം മുൻപ്രത്യയം, വെട്ടുവര എന്നിവ നിലനിർത്തുന്നു. നിലനിർത്താൻ KOT ഫോർമാറ്റ് സേവ് ചെയ്യുക.
 items_tmpl_heading	ഇനം ടെംപ്ലേറ്റുകൾ
 items_tmpl_help	നിങ്ങളുടെ മെനുവിനുള്ള വിഭവങ്ങൾ, വിഭാഗങ്ങൾ, ഫോട്ടോകൾ. കടയുടെ ക്രമീകരണങ്ങളും ജീവനക്കാരും അതേപടി തുടരും.
 public_tmpl_help	ആർക്കും ഡൗൺലോഡ് ചെയ്യാവുന്ന തുടക്ക മെനുകൾ. ഒരിക്കൽ ഇന്റർനെറ്റ് വേണം.
 private_tmpl_help	നിങ്ങളുടെ Khaynjo കോൺടാക്റ്റിൽ നിന്നുള്ള 12 അക്ക കോഡ് കൊണ്ട് സംരക്ഷിച്ച ഉപഭോക്തൃ മെനുകൾ.
-printers_screen_tip	തിരയുക ഈ ഉപകരണത്തിന് ഉപയോഗിക്കാവുന്ന പ്രിന്ററുകൾ കാണിച്ച് ഈ കടയ്ക്കായി സേവ് ചെയ്യുന്നു. ബിൽ പ്രിന്ററുകൾ: ബിൽ & KOT ഫോർമാറ്റ് → ബിൽ. അടുക്കള: അടുക്കള → അടുക്കള സ്റ്റേഷനുകൾ.
-printers_found_none	പ്രിന്ററുകളൊന്നും കണ്ടെത്തിയില്ല.
-kot_copy_from	ഇതിൽ നിന്ന് പകർത്തുക
-kot_copy_from_help	ആ തരത്തിലെ ഓരോ വരിയുടെയും വലിപ്പം, കനം, ക്രമീകരണം ഇതിലേക്ക് പകർത്തുന്നു. ഈ തരം സ്വന്തം ബാനർ, ഇനം മുൻപ്രത്യയം, വെട്ടുവര എന്നിവ നിലനിർത്തുന്നു. നിലനിർത്താൻ KOT ഫോർമാറ്റ് സേവ് ചെയ്യുക.
-nav_loading	ലോഡ് ചെയ്യുന്നു…

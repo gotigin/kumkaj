@@ -92,10 +92,6 @@ bill_item_layout	Varelayout
 bill_item_layout_columns	Kolonner
 bill_item_layout_stacked	Stablet
 bill_item_header	Kolonneoverskrifter
-bill_item_hdr_item	Vareoverskrift
-bill_item_hdr_qty	Antaloverskrift
-bill_item_hdr_price	Prisoverskrift
-bill_item_hdr_amount	Beløbsoverskrift
 bill_item_name	Retnavn
 bill_item_qty	Antal
 bill_item_price	Pris
@@ -103,6 +99,20 @@ bill_item_amount	Beløb
 bill_item_note	Retnote
 bill_item_col_sep	Kolonnelinjer
 slip_columns	Kolonner
+slip_col_header	Overskrift
+bill_line_logo	Logo
+bill_logo_picture	Billede
+bill_logo_choose	Vælg billede
+bill_logo_remove	Fjern billede
+bill_logo_none	Intet billede
+bill_logo_unreadable	Ikke et billede, appen kan læse
+bill_logo_width	Bredde (px)
+bill_logo_height	Højde (px)
+bill_logo_tones	Gråtoner
+bill_logo_solid	Fast
+bill_logo_shaded	Skraveret
+bill_logo_help	Bredde og højde i px. Tomt følger billedet: ét tomt bevarer formen, begge tomme bruger dets egen størrelse; begge angivet passer det ind, aldrig strakt. Intet billede: et vist logo beholder sin højde som tom plads; Skjul fjerner det.
+bill_logo_tones_help	Fast: hver prik sort eller hvid, til skarpe logoer. Skraveret: gråtoner bliver til fine prikmønstre, til fotos og blød skygge.
 slip_col_width	Bredde (mm)
 slip_col_start	Startafstand (px)
 slip_col_end	Slutafstand (px)
@@ -167,6 +177,21 @@ alerts_help	Hvor længe statusbeskeder bliver på skærmen for dig (dette login)
 snack_secs_ph	Sekunder (3–60, standard 10)
 snack_secs_save	Gem beskedtid
 snack_secs_saved	Beskedtid gemt — {n} sekunder
+settings_sec_whatsapp	WhatsApp
+whatsapp_cloud_help	Use your own Meta WhatsApp Cloud API. Create a System User token with whatsapp_business_messaging (temporary dashboard tokens expire). Credentials stay on this Server only — never on extra tills. Accepted means Meta took the request, not that the guest received it.
+whatsapp_phone_id_ph	Phone Number ID
+whatsapp_token_ph	Access Token (leave blank to keep)
+whatsapp_template_ph	Bill template name (optional)
+whatsapp_template_lang_ph	Template language (e.g. en)
+whatsapp_enable	Enable
+whatsapp_disable	Off
+whatsapp_save	Save WhatsApp
+whatsapp_test	Test connection
+whatsapp_disconnect	Disconnect
+whatsapp_send_bill	Send via WhatsApp
+whatsapp_consent	WhatsApp OK
+whatsapp_consent_help	Guest agreed to receive WhatsApp messages. A phone number alone is not consent.
+whatsapp_server_only	Configure WhatsApp on the shop Server device
 settings_sec_backup	Sikkerhedskopi og gendan
 settings_sec_diag	Diagnostik
 settings_sec_privacy	Privatliv
@@ -729,6 +754,13 @@ station_vps_dd	Printere til denne station
 station_vps_dd_n	{n} printer(e) · tryk for at ændre
 bill_printers_dd	Printere til regningen
 bill_printers_dd_n	{n} printer(e) til regningen · tryk for at ændre
+paper_heading	Papir
+paper_size	{w} × {h} mm
+paper_roll	{w} mm-rulle
+paper_not_set	papir endnu ikke kendt
+paper_length_mm	Længde (mm)
+printer_paper_help	Denne printers papir i mm. En tom Længde er en rulle: hver bon er lige så lang som sit indhold. Find printere udfylder tomt papir fra printerens driver (en 80 mm-rulle, når den ikke kan sige det) og ændrer aldrig papir, der allerede er sat.
+preview_help	Denne bon på papiret i printeren valgt nedenfor, som den udskrives der: i virkelig størrelse fra det øverste venstre hjørne, printeren kan nå (gråt: kanter den ikke kan), en lang bon på flere ark, alt ud over papirets kant skæres af. At vælge en printer ændrer kun eksemplet; hver printers papir sættes under Printere.
 job_layout	Layout
 job_delivery	Hvordan jobbet sendes
 job_delivery_help	OS-dokument, rå bytes eller ESC/POS. Regningen og køkkenbonen har hver deres. Begge job kan gå til enhver printer som Find har gemt.
@@ -1105,9 +1137,6 @@ remove_these_tables	Fjern disse borde
 table_remove_ph	Fjern: T1-T24, eller ét bords navn
 find_server	Find butikkens server
 bill_format	Regningsformat
-bill_header_ph	Adresse | telefon
-fssai_ph	FSSAI-licensnr. (Indien)
-bill_footer_ph	Sidefod (f.eks. Tak, kom igen)
 reset_bill_format	Nulstil til standard
 bill_format_reset	Regningsformat nulstillet til standard
 reset_kot_format	Nulstil til standard
@@ -1146,7 +1175,6 @@ kot_kind_modified	Ændret
 kot_kind_cancelled	Annulleret
 kot_style_heading	Feltets skriftstørrelse og vægt
 kot_style_title	Titel
-kot_style_item_qty	Vare · Antal
 kot_style_field_pick	Vælg felt
 kot_weight_regular	Almindelig
 kot_weight_bold	Fed
@@ -1158,8 +1186,8 @@ content_width_bill	Regningens indholdsbredde (mm)
 content_width_kot	KOT-indholdsbredde (mm)
 content_width_ph	Eller skriv en indholdsbredde, 40–210 mm
 content_width_help	Hvor bred denne seddel udskrives. Regning og KOT har hver deres bredde.
-content_width_bill_help	Hvor bred gæsteregningen udskrives. Standard 210 mm (side). 58 mm smal seddel, 80 mm bred seddel, 112 mm 4 tommer, 210 mm A4-bred. Skriv en værdi fra 40 til 210. Køkkenboner har deres egen bredde under fanen KOT.
-content_width_kot_help	Hvor bred køkkenbonen udskrives. Standard 80 mm. 58 mm smal seddel, 80 mm bred seddel, 112 mm 4 tommer, 210 mm side. Skriv en værdi fra 40 til 210. Gæsteregninger har deres egen bredde under fanen Regning.
+content_width_bill_help	Hvor bred gæstens regning udskrives, i mm (40–210). Den udskrives i denne rigtige størrelse på ethvert papir; på smallere papir skæres delen ud over udskriftskanten af (se Papir). Køkkenbonner har deres egen bredde på fanen KOT.
+content_width_kot_help	Hvor bred køkkenbonen udskrives, i mm (40–210). Den udskrives i denne rigtige størrelse på ethvert papir; på smallere papir skæres delen ud over udskriftskanten af (se Papir). Gæsteregninger har deres egen bredde på fanen Regning.
 vp_paper_width	Indholdsbredde (mm)
 vp_paper_width_ph	Eller skriv en indholdsbredde, 40–210 mm
 vp_paper_width_help	Indholdsbredde sættes under Regning- og KOT-format — særskilt for regningen (standard 210 mm) og køkkenbonen (standard 80 mm).
@@ -1213,8 +1241,6 @@ schemes_help	BOGO, procent fra og faste menuer. Menuer foldes ud til køkkenlinj
 scheme_bogo_ph	Køb 2 Thali få 1 Chaas
 add_scheme	Tilføj BOGO
 schedule_ph	Timer / happy hour — man-fre 07:00-11:00 eller HappyHour 17:00-19:00=150
-upi_vpa_ph	UPI-id (VPA)
-upi_payee_ph	UPI-modtagernavn (valgfrit)
 upi_qr	UPI-QR
 show_upi_qr	Vis UPI-QR
 close_upi_qr	Luk
@@ -1295,8 +1321,6 @@ printer_mode_first	Første der virker
 printer_mode_all	Udskriv på alle
 kot_show_area	Område
 kot_hide_area	Skjul område
-kot_show_item_hdr	Vare · Antal
-kot_hide_item_hdr	Skjul kolonner
 kot_show_title	Titellinje
 kot_hide_title	Skjul titel
 kot_field_cycle	Vælg næste
@@ -1337,12 +1361,12 @@ private_code_ph	12-cifret kode
 stamp_on	Stempel: på fil
 pay_qr_on	Betalings-QR: på fil
 pay_qr_off	Betalings-QR: ingen
+printers_screen_tip	Søg viser de printere, denne enhed kan bruge, og gemmer dem for butikken. Regningsprintere: Regnings- og KOT-format → Regning. Køkken: Køkken → Køkkenstationer.
+printers_found_none	Ingen printere fundet.
+nav_loading	Indlæser…
+kot_copy_from	Kopiér fra
+kot_copy_from_help	Kopierer størrelse, tykkelse og justering for hver linje fra den type til denne. Denne type beholder sit eget banner, varepræfiks og gennemstregning. Gem KOT-format for at beholde det.
 items_tmpl_heading	Vareskabeloner
 items_tmpl_help	Retter, kategorier og billeder til dit menukort. Butiksindstillinger og personale forbliver som de er.
 public_tmpl_help	Startmenuer som alle kan hente. Kræver internet én gang.
 private_tmpl_help	Kundemenuer låst med en 12-cifret kode fra din Khaynjo-kontakt.
-printers_screen_tip	Søg viser de printere, denne enhed kan bruge, og gemmer dem for butikken. Regningsprintere: Regnings- og KOT-format → Regning. Køkken: Køkken → Køkkenstationer.
-printers_found_none	Ingen printere fundet.
-kot_copy_from	Kopiér fra
-kot_copy_from_help	Kopierer størrelse, tykkelse og justering for hver linje fra den type til denne. Denne type beholder sit eget banner, varepræfiks og gennemstregning. Gem KOT-format for at beholde det.
-nav_loading	Indlæser…

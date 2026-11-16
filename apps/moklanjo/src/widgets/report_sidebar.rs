@@ -532,3 +532,139 @@ impl Widget for SidebarNavList {
         self.view.handle_event(cx, event, scope);
     }
 }
+
+/// Settings → Printers: the focused job (receipt or AWB label) exactly as it
+/// prints on the preview's printer (docs/PRINTER.md § Paper and preview):
+/// OS document — the whole paper, the print's own sheets from the
+/// printable top-left, the edges the printer cannot reach shaded; ESC/POS —
+/// the roll the printer's width wide, the picture from its left edge. One
+/// scale keeps the print's ratio: big enough to read, and fitted to the
+/// screen when that still is. The same picture is not drawn again.
+#[derive(Script, ScriptHook, Widget)]
+struct SlipPicture {
+    #[deref]
+    view: View,
+    #[rust]
+    settle: NextFrame,
+    /// Picture size in pixels, and the body-type height inside it.
+    #[rust]
+    page_px: (f64, f64),
+    #[rust]
+    type_px: f64,
+    /// Last column width that laid out (this frame's may not be ready yet).
+    #[rust]
+    page_width: f64,
+    /// Content key of the picture on screen (0 = none).
+    #[rust]
+    key: u64,
+}
+
+/// How tall a picture may be before the page scrolls.
+fn slip_picture_viewport(cx: &Cx) -> f64 {
+    let mut best = 0.0f64;
+    for id in cx.windows.id_iter() {
+        let h = cx.windows[id].get_inner_size().y;
+        if h.is_finite() && h > best {
+            best = h;
+        }
+    }
+    if best < 200.0 {
+        640.0
+    } else {
+        // Room for the settings header above the picture.
+        (best * 0.62).clamp(220.0, 900.0)
+    }
+}
+
+impl Widget for SlipPicture {
+    fn draw_walk(&mut self, cx: &mut Cx2d, scope: &mut Scope, walk: Walk) -> DrawStep {
+        let (pw, ph) = self.page_px;
+        if pw <= 1.0 || ph <= 1.0 {
+            return DrawStep::done();
+        }
+        // The column width is whatever this screen laid out; the picture
+        // keeps its own proportions inside it — no fixed pixel size.
+        let rect = cx.peek_walk_turtle(walk);
+        let mut avail = rect.size.x;
+        if !avail.is_finite() || avail < 40.0 {
+            avail = self.page_width;
+        }
+        if avail < 40.0 {
+            // Not laid out yet: try again next frame.
+            self.settle = cx.new_next_frame();
+        } else {
+            self.page_width = avail;
+        }
+        let mut draw_walk = walk;
+        if avail > 40.0 {
+            let viewport = slip_picture_viewport(cx.cx);
+            let (w, h) = print_share::preview_frame(pw, ph, avail, viewport, self.type_px);
+            draw_walk.width = Size::Fixed(w);
+            draw_walk.height = Size::Fixed(h);
+        }
+        while self.view.draw_walk(cx, scope, draw_walk).step().is_some() {}
+        DrawStep::done()
+    }
+
+    fn handle_event(&mut self, cx: &mut Cx, event: &Event, _scope: &mut Scope) {
+        if self.settle.is_event(event).is_some() {
+            self.view.redraw(cx);
+        }
+        // The picture does not scroll or take taps; the page scrolls over it.
+    }
+}
+
+impl SlipPicture {
+    /// Draw `text` printed with `format` on `paper`.
+    pub fn show(
+        &mut self,
+        cx: &mut Cx,
+        format: &print_share::PrintFormat,
+        text: &str,
+        paper: &PreviewPaper,
+    ) {
+        let key = {
+            use std::hash::{Hash, Hasher};
+            let mut h = std::collections::hash_map::DefaultHasher::new();
+            text.hash(&mut h);
+            format!("{format:?}").hash(&mut h);
+            format!("{paper:?}").hash(&mut h);
+            h.finish().max(1)
+        };
+        if self.key == key {
+            return;
+        }
+        let upright = print_share::slip_gray(format, text);
+        let content_mm = print_share::os_document_content_mm(&format.raster_metrics());
+        let pic = if paper.os_document {
+            let plan = os_paper::page_for(
+                paper.paper,
+                paper.driver.as_ref(),
+                print_share::slip_mm(&upright, content_mm),
+                format.landscape,
+            );
+            os_paper::preview_picture(&upright, 1, content_mm, Some(&plan.page), format.landscape, 0.0, None)
+        } else {
+            // ESC/POS gets the upright picture (the job never turns it).
+            os_paper::preview_picture(&upright, 1, content_mm, None, false, paper.paper.width_mm, None)
+        };
+        let (pw, ph) = pic.gray.dimensions();
+        let Ok(buf) = makepad_widgets::makepad_draw::image_cache::ImageBuffer::new(
+            pic.gray.as_raw(),
+            pw as usize,
+            ph as usize,
+        ) else {
+            return;
+        };
+        let img = self.view.image(cx, ids!(slip));
+        let texture = buf.into_new_texture(cx);
+        img.set_texture(cx, Some(texture));
+        img.redraw(cx);
+        self.key = key;
+        self.page_px = (pw.max(1) as f64, ph.max(1) as f64);
+        // The readable check is in the picture's own pixels.
+        self.type_px = (print_share::preview_type_px(format.em) / pic.per_px.max(1e-6)).max(1.0);
+        self.view.redraw(cx);
+    }
+
+}

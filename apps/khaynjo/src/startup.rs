@@ -223,7 +223,7 @@ mod tests {
     #[cfg(target_os = "linux")]
     #[test]
     fn the_linux_autostart_entry_comes_and_goes() {
-        let dir = std::env::temp_dir().join(format!("khaynjo-autostart-{}", crate::domain::new_id()));
+        let dir = crate::test_dirs::run_root().join(format!("khaynjo-autostart-{}", crate::domain::new_id()));
         let entry = dir.join("autostart").join("kumkaj-khaynjo.desktop");
         set_linux_entry(&entry, true, std::path::Path::new("/opt/khaynjo/kumkaj-khaynjo")).unwrap();
         let text = std::fs::read_to_string(&entry).unwrap();

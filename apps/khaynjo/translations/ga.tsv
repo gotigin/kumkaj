@@ -92,10 +92,6 @@ bill_item_layout	Leagan amach na míre
 bill_item_layout_columns	Colúin
 bill_item_layout_stacked	Cruachta
 bill_item_header	Ceanntásca colúin
-bill_item_hdr_item	Ceanntásc míre
-bill_item_hdr_qty	Ceanntásc QTY
-bill_item_hdr_price	Ceanntásc praghais
-bill_item_hdr_amount	Ceanntásc méide
 bill_item_name	Ainm na mias
 bill_item_qty	Cainníocht
 bill_item_price	Praghas
@@ -103,6 +99,20 @@ bill_item_amount	Suim
 bill_item_note	Nóta mias
 bill_item_col_sep	Rialacha colúin
 slip_columns	Colúin
+slip_col_header	Ceanntásc
+bill_line_logo	Lógó
+bill_logo_picture	Pictiúr
+bill_logo_choose	Roghnaigh pictiúr
+bill_logo_remove	Bain an pictiúr
+bill_logo_none	Gan pictiúr
+bill_logo_unreadable	Ní pictiúr é ar féidir leis an aip a léamh
+bill_logo_width	Leithead (px)
+bill_logo_height	Airde (px)
+bill_logo_tones	Liathanna
+bill_logo_solid	Soladach
+bill_logo_shaded	Scáthaithe
+bill_logo_help	Leithead agus airde i px. Leanann bán an pictiúr: coimeádann ceann bán an cruth, úsáideann an dá cheann bána a mhéid féin; nuair a shocraítear an dá cheann cuirtear isteach é, gan síneadh riamh. Gan pictiúr: coimeádann lógó taispeánta a airde mar spás bán; baineann Folaigh é.
+bill_logo_tones_help	Soladach: gach ponc dubh nó bán, do lógónna glana. Scáthaithe: éiríonn na liathanna ina bpatrúin poncanna míne, do ghrianghraif agus scáthú bog.
 slip_col_width	Leithead (mm)
 slip_col_start	Spás tosaigh (px)
 slip_col_end	Spás deiridh (px)
@@ -167,6 +177,21 @@ alerts_help	Cé chomh fada agus a fhanann teachtaireachtaí stádais ar an scái
 snack_secs_ph	Soicindí (3 -60, réamhshocrú 10)
 snack_secs_save	Sábháil am foláirimh
 snack_secs_saved	Sábháladh an t — am foláirimh — {n} soicind
+settings_sec_whatsapp	WhatsApp
+whatsapp_cloud_help	Use your own Meta WhatsApp Cloud API. Create a System User token with whatsapp_business_messaging (temporary dashboard tokens expire). Credentials stay on this Server only — never on extra tills. Accepted means Meta took the request, not that the guest received it.
+whatsapp_phone_id_ph	Phone Number ID
+whatsapp_token_ph	Access Token (leave blank to keep)
+whatsapp_template_ph	Bill template name (optional)
+whatsapp_template_lang_ph	Template language (e.g. en)
+whatsapp_enable	Enable
+whatsapp_disable	Off
+whatsapp_save	Save WhatsApp
+whatsapp_test	Test connection
+whatsapp_disconnect	Disconnect
+whatsapp_send_bill	Send via WhatsApp
+whatsapp_consent	WhatsApp OK
+whatsapp_consent_help	Guest agreed to receive WhatsApp messages. A phone number alone is not consent.
+whatsapp_server_only	Configure WhatsApp on the shop Server device
 settings_sec_backup	Déan cúltaca agus athchóirigh
 settings_sec_diag	Diagnóisic
 settings_sec_privacy	Príobháideacht
@@ -729,6 +754,13 @@ station_vps_dd	Printéirí don stáisiún seo
 station_vps_dd_n	{n} printéir(í) · sconna chun athrú
 bill_printers_dd	Printéirí don bhille
 bill_printers_dd_n	{n} printéir(í) don bhille · sconna chun athrú
+paper_heading	Páipéar
+paper_size	{w} × {h} mm
+paper_roll	rolla {w} mm
+paper_not_set	páipéar nach eol fós
+paper_length_mm	Fad (mm)
+printer_paper_help	Páipéar an phrintéara seo i mm. Is rolla é Fad folamh: tá gach duillín chomh fada lena ábhar. Líonann Faigh priontálaithe páipéar folamh ó thiománaí an phrintéara (rolla 80 mm mura féidir leis a rá) agus ní athraíonn sé riamh páipéar atá socraithe cheana.
+preview_help	An duillín seo ar pháipéar an phrintéara a roghnaíodh thíos, mar a phriontálann sé ansin: fíormhéid ón gcúinne uachtarach clé is féidir leis an bprintéir a shroicheadh (liath: imill nach féidir), duillín fada ar níos mó leathanach, gearrtar gach rud thar imeall an pháipéir. Ní athraíonn roghnú printéara ach an réamhamharc; socraítear páipéar gach printéara faoi Printéirí.
 job_layout	Leagan amach
 job_delivery	Conas a seoltar an post
 job_delivery_help	Doiciméad OS, baits amh, nó ESC/POS. Coinníonn an bille agus an ticéad cistin a gcuid féin. Is féidir le haon post dul chuig aon printéir a sábháladh.
@@ -1105,9 +1137,6 @@ remove_these_tables	Bain na táblaí seo
 table_remove_ph	Bain: T1-T24, nó ainm bhord amháin
 find_server	Faigh freastalaí an tsiopa
 bill_format	Formáid bhille
-bill_header_ph	Seoladh | fón
-fssai_ph	Uimhir ceadúnais FSSAI (India)
-bill_footer_ph	Bunleathanach (m.sh. Go raibh maith agat, tabhair cuairt arís)
 reset_bill_format	Athshocraigh go dtí réamhshocraithe
 bill_format_reset	Formáid bhille athshocraithe go dtí réamhshocrú
 reset_kot_format	Athshocraigh go dtí réamhshocraithe
@@ -1146,7 +1175,6 @@ kot_kind_modified	Leathnaithe
 kot_kind_cancelled	Cealaithe
 kot_style_heading	Cineál réimse, méid & meáchan
 kot_style_title	Teideal
-kot_style_item_qty	Mír · Cainníocht
 kot_style_field_pick	Roghnaigh réimse
 kot_weight_regular	Rialta
 kot_weight_bold	Láidir
@@ -1158,8 +1186,8 @@ content_width_bill	Leithead ábhair an bhille (mm)
 content_width_kot	Leithead ábhair KOT (mm)
 content_width_ph	Nó clóscríobh leithead an ábhair, 40–210 mm
 content_width_help	Cé chomh leathan a phriontaíonn an sleamhnán seo. Coinníonn Bill agus KOT a gcuid leithead féin.
-content_width_bill_help	Cé chomh leathan agus a phriontálann bille an aírithe. Réamhshocraithe 210 mm (leathanach). Sleamhnán cúinge 58 mm, sleamhnán leathan 80 mm, 112 mm 4-orlach, 210 mm leathan A4. Cuir isteach luach ar bith ó 40 go 210. Tá leithead féin ag ticéid na cistine ar an táb KOT.
-content_width_kot_help	Cén leithead a phriontálann ticéad na cistine. Réamhshocraithe 80 mm. Sleamhnán caol 58 mm, sleamhnán leathan 80 mm, 112 mm 4-orlach, 210 mm leathanach. Clóscríobh aon luach ó 40 go 210. Tá a leithead féin ag bileoga cuairteoirí ar an táb Bill.
+content_width_bill_help	Cé chomh leathan is a phriontáiltear bille an aoi, i mm (40–210). Priontáiltear é sa mhéid fíor seo ar aon pháipéar; ar pháipéar níos cúinge, gearrtar an chuid thar imeall an phriontála (féach Páipéar). Tá a leithead féin ag ticéid chistine ar an gcluaisín KOT.
+content_width_kot_help	Cé chomh leathan is a phriontáiltear ticéad na cistine, i mm (40–210). Priontáiltear é sa mhéid fíor seo ar aon pháipéar; ar pháipéar níos cúinge, gearrtar an chuid thar imeall an phriontála (féach Páipéar). Tá a leithead féin ag billí aíonna ar an gcluaisín Bille.
 vp_paper_width	Leithead ábhair (mm)
 vp_paper_width_ph	Nó clóscríobh leithead an ábhair, 40–210 mm
 vp_paper_width_help	Tá leithead an ábhair socraithe faoin bhformáid Bill & KOT — go leithligh don bhille (réamhshocraithe 210 mm) agus don ticéad cistine (réamhshocraithe 80 mm).
@@ -1213,8 +1241,6 @@ schemes_help	BOGO, céatadán-off, agus comhaid shocraithe. Méadaíonn comhaid 
 scheme_bogo_ph	Ceannaigh 2 Thali faigh 1 Chaas
 add_scheme	Cuir BOGO leis
 schedule_ph	Uaireanta / uair shona — Luan-Aoine 07:00-11:00 nó HappyHour 17:00-19:00=150
-upi_vpa_ph	UPI ID (VPA)
-upi_payee_ph	Ainm íocaí UPI (roghnach)
 upi_qr	UPI QR
 show_upi_qr	Taispeáin UPI QR
 close_upi_qr	Dún
@@ -1295,8 +1321,6 @@ printer_mode_first	Ar dtús sin a oibríonn
 printer_mode_all	Clóigh ar gach rud
 kot_show_area	Réimse
 kot_hide_area	Folaigh limistéar
-kot_show_item_hdr	Mír · Cainníocht
-kot_hide_item_hdr	Folmhaigh colúin
 kot_show_title	Líne teidil
 kot_hide_title	Folach an teideal
 kot_field_cycle	Roghnaigh an chéad cheann eile
@@ -1337,12 +1361,12 @@ private_code_ph	Cód 12 dhigit
 stamp_on	Stampa: ar comhad
 pay_qr_on	Íocaíocht QR: ar comhad
 pay_qr_off	Íocaíocht QR: gan
+printers_screen_tip	Liostaíonn Aimsigh na printéirí is féidir leis an ngléas seo a úsáid agus sábhálann sé iad don siopa seo. Printéirí bille: Formáid bille agus KOT → Bille. Cistin: Cistin → Stáisiúin chistine.
+printers_found_none	Níor aimsíodh aon phrintéir.
+nav_loading	Á lódáil…
+kot_copy_from	Cóipeáil ó
+kot_copy_from_help	Cóipeálann sé méid, tiús agus ailíniú gach líne ón gcineál sin isteach sa cheann seo. Coinníonn an cineál seo a mheirge, a réimír míre agus a líne tríd féin. Sábháil formáid KOT chun é a choinneáil.
 items_tmpl_heading	Teimpléid earraí
 items_tmpl_help	Miasa, catagóirí agus grianghraif do do bhiachlár. Fanann socruithe an tsiopa agus an fhoireann mar atá.
 public_tmpl_help	Biachláir tosaigh is féidir le duine ar bith a íoslódáil. Teastaíonn an t-idirlíon uair amháin.
 private_tmpl_help	Biachláir cliant faoi ghlas le cód 12 dhigit ó do theagmhálaí Khaynjo.
-printers_screen_tip	Liostaíonn Aimsigh na printéirí is féidir leis an ngléas seo a úsáid agus sábhálann sé iad don siopa seo. Printéirí bille: Formáid bille agus KOT → Bille. Cistin: Cistin → Stáisiúin chistine.
-printers_found_none	Níor aimsíodh aon phrintéir.
-kot_copy_from	Cóipeáil ó
-kot_copy_from_help	Cóipeálann sé méid, tiús agus ailíniú gach líne ón gcineál sin isteach sa cheann seo. Coinníonn an cineál seo a mheirge, a réimír míre agus a líne tríd féin. Sábháil formáid KOT chun é a choinneáil.
-nav_loading	Á lódáil…

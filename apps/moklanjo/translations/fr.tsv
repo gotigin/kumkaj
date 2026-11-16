@@ -501,6 +501,17 @@ job_size	Taille de police
 job_size_ph	ex. 18, 20, 26…
 test_receipt_format	Tester le reçu
 test_label_format	Tester l'étiquette
+paper_heading	Papier
+paper_size	{w} × {h} mm
+paper_roll	rouleau de {w} mm
+paper_not_set	papier encore inconnu
+paper_length_mm	Longueur (mm)
+printer_paper_help	Le papier de cette imprimante en mm. Une Longueur vide est un rouleau : chaque ticket est aussi long que son contenu. Rechercher des imprimantes remplit un papier vide d'après le pilote de l'imprimante (un rouleau de 80 mm s'il ne peut pas le dire) et ne change jamais un papier déjà défini.
+preview_help	Ce ticket sur le papier de l'imprimante choisie ci-dessous, tel qu'il s'y imprime : en taille réelle depuis le coin supérieur gauche que l'imprimante atteint (gris : bords qu'elle n'atteint pas), un long ticket sur plusieurs feuilles, tout ce qui dépasse le bord du papier est coupé. Choisir une imprimante ne change que l'aperçu ; le papier de chaque imprimante se règle dans Imprimantes.
+slip_col_width	Largeur (mm)
+no_printer_assigned	Aucune imprimante
+printer_target_default	imprimante par défaut
+job_preview	Aperçu
 test_receipt_sent	Reçu d'exemple envoyé
 test_label_sent	Étiquette d'exemple envoyée
 test_print_no_printer	Pas d'imprimante pour ce travail — ajoutez-en une à cet endroit

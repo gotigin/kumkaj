@@ -72,10 +72,6 @@ bill_item_layout	Vareoppsett
 bill_item_layout_columns	Kolonner
 bill_item_layout_stacked	Stablet
 bill_item_header	Kolonneoverskrifter
-bill_item_hdr_item	Vareoverskrift
-bill_item_hdr_qty	Antallsoverskrift
-bill_item_hdr_price	Prisoverskrift
-bill_item_hdr_amount	Beløpsoverskrift
 bill_item_name	Medisinnavn
 bill_item_qty	Antall
 bill_item_price	Pris
@@ -83,6 +79,13 @@ bill_item_amount	Beløp
 bill_item_note	Rx / salgsseddel
 bill_item_col_sep	Kolonnelinjer
 slip_col_width	Bredde (mm)
+paper_heading	Papir
+paper_size	{w} × {h} mm
+paper_roll	{w} mm-rull
+paper_not_set	papir ikke kjent ennå
+paper_length_mm	Lengde (mm)
+printer_paper_help	Papiret i denne skriveren i mm. Tom Lengde er en rull: hver kvittering er like lang som innholdet. Finn skrivere fyller inn tomt papir fra skriverdriveren (en 80 mm-rull når den ikke kan si det) og endrer aldri papir som allerede er satt.
+preview_help	Denne kvitteringen på papiret i skriveren som er valgt nedenfor, slik den skrives ut der: i ekte størrelse fra øvre venstre hjørne skriveren når (grått: kanter den ikke når), en lang kvittering på flere ark, alt utenfor papirkanten kuttes. Å velge skriver endrer bare forhåndsvisningen; papiret til hver skriver settes under Skrivere.
 slip_col_start	Startavstand (px)
 slip_col_end	Sluttavstand (px)
 slip_columns_help	Bredden på hver kolonne inkluderer start- og sluttavstanden. Teksten brytes innenfor sin kolonne; det som går utover innholdsbredden, kuttes – på papiret og i forhåndsvisningen.
@@ -850,3 +853,4 @@ nav_loading	Laster inn…
 printer_mode_first	Første som virker
 printer_mode_all	Skriv ut på alle
 slip_columns	Kolonner
+slip_col_header	Overskrift

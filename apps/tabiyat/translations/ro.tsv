@@ -72,10 +72,6 @@ bill_item_layout	Așezare articole
 bill_item_layout_columns	Coloane
 bill_item_layout_stacked	Pe rânduri
 bill_item_header	Antete de coloane
-bill_item_hdr_item	Antet articol
-bill_item_hdr_qty	Antet cant.
-bill_item_hdr_price	Antet preț
-bill_item_hdr_amount	Antet sumă
 bill_item_name	Nume medicament
 bill_item_qty	Cant.
 bill_item_price	Preț
@@ -83,6 +79,13 @@ bill_item_amount	Sumă
 bill_item_note	Rx / notă de vânzare
 bill_item_col_sep	Linii coloane
 slip_col_width	Lățime (mm)
+paper_heading	Hârtie
+paper_size	{w} × {h} mm
+paper_roll	rolă de {w} mm
+paper_not_set	hârtia încă necunoscută
+paper_length_mm	Lungime (mm)
+printer_paper_help	Hârtia acestei imprimante în mm. O Lungime goală înseamnă rolă: fiecare bon este lung cât conținutul său. Găsește imprimante completează hârtia goală din driverul imprimantei (rolă de 80 mm când nu poate spune) și nu schimbă niciodată una deja setată.
+preview_help	Acest bon pe hârtia imprimantei alese mai jos, așa cum se tipărește acolo: la dimensiune reală din colțul stânga-sus pe care îl atinge imprimanta (gri: margini pe care nu le atinge), un bon lung pe mai multe foi, tot ce trece de marginea hârtiei este tăiat. Alegerea unei imprimante schimbă doar previzualizarea; hârtia fiecărei imprimante se setează la Imprimante.
 slip_col_start	Spațiu la început (px)
 slip_col_end	Spațiu la sfârșit (px)
 slip_columns_help	Lățimea fiecărei coloane include spațiul de la început și de la sfârșit. Textul se încadrează în coloana sa; ce depășește lățimea conținutului este tăiat, pe hârtie și în previzualizare.
@@ -850,3 +853,4 @@ nav_loading	Se încarcă…
 printer_mode_first	Prima care merge
 printer_mode_all	Tipărește pe toate
 slip_columns	Coloane
+slip_col_header	Antet

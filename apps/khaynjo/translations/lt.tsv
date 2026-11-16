@@ -92,10 +92,6 @@ bill_item_layout	Prekių išdėstymas
 bill_item_layout_columns	Stulpeliai
 bill_item_layout_stacked	Eilutėmis
 bill_item_header	Stulpelių antraštės
-bill_item_hdr_item	Prekės antraštė
-bill_item_hdr_qty	Kiekio antraštė
-bill_item_hdr_price	Kainos antraštė
-bill_item_hdr_amount	Sumos antraštė
 bill_item_name	Patiekalo pavadinimas
 bill_item_qty	Kiekis
 bill_item_price	Kaina
@@ -103,6 +99,20 @@ bill_item_amount	Suma
 bill_item_note	Patiekalo pastaba
 bill_item_col_sep	Stulpelių linijos
 slip_columns	Stulpeliai
+slip_col_header	Antraštė
+bill_line_logo	Logotipas
+bill_logo_picture	Paveikslėlis
+bill_logo_choose	Pasirinkti paveikslėlį
+bill_logo_remove	Pašalinti paveikslėlį
+bill_logo_none	Paveikslėlio nėra
+bill_logo_unreadable	Tai ne paveikslėlis, kurį programa gali perskaityti
+bill_logo_width	Plotis (px)
+bill_logo_height	Aukštis (px)
+bill_logo_tones	Pilki tonai
+bill_logo_solid	Vientisas
+bill_logo_shaded	Šešėliuotas
+bill_logo_help	Plotis ir aukštis px. Tuščias seka paveikslėlį: vienas tuščias išlaiko formą, abu tušti naudoja jo dydį; abu nustatyti įtalpina jį viduje, niekada neištempia. Be paveikslėlio: rodomas logotipas palieka savo aukštį kaip tuščią vietą; Slėpti jį pašalina.
+bill_logo_tones_help	Vientisas: kiekvienas taškas juodas arba baltas, ryškiems logotipams. Šešėliuotas: pilka tampa smulkių taškų raštu, nuotraukoms ir švelniems šešėliams.
 slip_col_width	Plotis (mm)
 slip_col_start	Pradžios tarpas (px)
 slip_col_end	Pabaigos tarpas (px)
@@ -167,6 +177,21 @@ alerts_help	Kiek laiko būsenos pranešimai lieka ekrane jums (šis prisijungima
 snack_secs_ph	Sekundės (3–60, numatyta 10)
 snack_secs_save	Išsaugoti įspėjimo laiką
 snack_secs_saved	Įspėjimo laikas išsaugotas — {n} sekundės
+settings_sec_whatsapp	WhatsApp
+whatsapp_cloud_help	Use your own Meta WhatsApp Cloud API. Create a System User token with whatsapp_business_messaging (temporary dashboard tokens expire). Credentials stay on this Server only — never on extra tills. Accepted means Meta took the request, not that the guest received it.
+whatsapp_phone_id_ph	Phone Number ID
+whatsapp_token_ph	Access Token (leave blank to keep)
+whatsapp_template_ph	Bill template name (optional)
+whatsapp_template_lang_ph	Template language (e.g. en)
+whatsapp_enable	Enable
+whatsapp_disable	Off
+whatsapp_save	Save WhatsApp
+whatsapp_test	Test connection
+whatsapp_disconnect	Disconnect
+whatsapp_send_bill	Send via WhatsApp
+whatsapp_consent	WhatsApp OK
+whatsapp_consent_help	Guest agreed to receive WhatsApp messages. A phone number alone is not consent.
+whatsapp_server_only	Configure WhatsApp on the shop Server device
 settings_sec_backup	Atsarginė kopija ir atkūrimas
 settings_sec_diag	Diagnostika
 settings_sec_privacy	Privatumas
@@ -729,6 +754,13 @@ station_vps_dd	Šios stoties spausdintuvai
 station_vps_dd_n	{n} spausdintuvas(-ai) · bakstelėkite, kad pakeistumėte
 bill_printers_dd	Sąskaitos spausdintuvai
 bill_printers_dd_n	{n} spausdintuvas(-ai) sąskaitai · bakstelėkite, kad pakeistumėte
+paper_heading	Popierius
+paper_size	{w} × {h} mm
+paper_roll	{w} mm ritinys
+paper_not_set	popierius dar nežinomas
+paper_length_mm	Ilgis (mm)
+printer_paper_help	Šio spausdintuvo popierius mm. Tuščias Ilgis reiškia ritinį: kiekvienas kvitas tokio ilgio, kaip jo turinys. „Rasti spausdintuvus“ užpildo tuščią popierių iš spausdintuvo tvarkyklės (80 mm ritinys, kai ji negali pasakyti) ir niekada nekeičia jau nustatyto.
+preview_help	Šis kvitas žemiau pasirinkto spausdintuvo popieriuje, kaip ten spausdinamas: tikru dydžiu nuo viršutinio kairiojo kampo, kurį spausdintuvas pasiekia (pilka: kraštai, kurių nepasiekia), ilgas kvitas daugiau lapų, viskas už popieriaus krašto nukerpama. Pasirinkus spausdintuvą keičiasi tik peržiūra; kiekvieno spausdintuvo popierius nustatomas skiltyje „Spausdintuvai“.
 job_layout	Išdėstymas
 job_delivery	Kaip siunčiamas darbas
 job_delivery_help	OS dokumentas, neapdoroti baitai arba ESC/POS. Sąskaita ir virtuvės lapelis kiekvienas laiko savąjį. Bet kuris darbas gali eiti į bet kurį spausdintuvą, kurį Paieška išsaugojo.
@@ -1105,9 +1137,6 @@ remove_these_tables	Pašalinti šiuos stalus
 table_remove_ph	Pašalinti: T1-T24 arba vieno stalo pavadinimas
 find_server	Rasti parduotuvės serverį
 bill_format	Sąskaitos formatas
-bill_header_ph	Adresas | telefonas
-fssai_ph	FSSAI licencijos nr. (Indija)
-bill_footer_ph	Poraštė (pvz. Ačiū, apsilankykite dar)
 reset_bill_format	Atstatyti numatytąjį
 bill_format_reset	Sąskaitos formatas atstatytas į numatytąjį
 reset_kot_format	Atstatyti numatytąjį
@@ -1146,7 +1175,6 @@ kot_kind_modified	Pakeistas
 kot_kind_cancelled	Atšauktas
 kot_style_heading	Lauko dydis ir storis
 kot_style_title	Antraštė
-kot_style_item_qty	Prekė · Kiekis
 kot_style_field_pick	Rinktis lauką
 kot_weight_regular	Įprastas
 kot_weight_bold	Pusjuodis
@@ -1158,8 +1186,8 @@ content_width_bill	Sąskaitos turinio plotis (mm)
 content_width_kot	KOT turinio plotis (mm)
 content_width_ph	Arba įveskite turinio plotį, 40–210 mm
 content_width_help	Kokio pločio spausdinamas šis lapelis. Sąskaita ir KOT kiekvienas laiko savo plotį.
-content_width_bill_help	Kokio pločio spausdinama svečio sąskaita. Numatyta 210 mm (puslapis). 58 mm siauras lapelis, 80 mm platus lapelis, 112 mm 4 coliai, 210 mm A4 plotis. Įveskite bet kurią reikšmę nuo 40 iki 210. Virtuvės lapeliai turi savo plotį KOT kortelėje.
-content_width_kot_help	Kokio pločio spausdinamas virtuvės lapelis. Numatyta 80 mm. 58 mm siauras, 80 mm platus, 112 mm 4 coliai, 210 mm puslapis. Įveskite nuo 40 iki 210. Svečių sąskaitos turi savo plotį Sąskaitos kortelėje.
+content_width_bill_help	Kokio pločio spausdinama svečio sąskaita, mm (40–210). Ji spausdinama šiuo tikruoju dydžiu ant bet kokio popieriaus; ant siauresnio popieriaus dalis už spausdinimo krašto nukerpama (žr. Popierius). Virtuvės kvitai turi savo plotį skirtuke KOT.
+content_width_kot_help	Kokio pločio spausdinamas virtuvės kvitas, mm (40–210). Jis spausdinamas šiuo tikruoju dydžiu ant bet kokio popieriaus; ant siauresnio popieriaus dalis už spausdinimo krašto nukerpama (žr. Popierius). Svečių sąskaitos turi savo plotį skirtuke Sąskaita.
 vp_paper_width	Turinio plotis (mm)
 vp_paper_width_ph	Arba įveskite turinio plotį, 40–210 mm
 vp_paper_width_help	Turinio plotis nustatomas Sąskaitos ir KOT formate — atskirai sąskaitai (numatyta 210 mm) ir virtuvės lapeliui (numatyta 80 mm).
@@ -1213,8 +1241,6 @@ schemes_help	BOGO, procentinė nuolaida ir fiksuoti rinkiniai. Rinkiniai išsisk
 scheme_bogo_ph	Pirk 2 Thali gauk 1 Chaas
 add_scheme	Pridėti BOGO
 schedule_ph	Valandos / laiminga valanda — Pr-Pn 07:00-11:00 arba HappyHour 17:00-19:00=150
-upi_vpa_ph	UPI identifikatorius (VPA)
-upi_payee_ph	UPI gavėjo vardas (nebūtina)
 upi_qr	UPI QR
 show_upi_qr	Rodyti UPI QR
 close_upi_qr	Uždaryti
@@ -1295,8 +1321,6 @@ printer_mode_first	Pirmas, kuris veikia
 printer_mode_all	Spausdinti visuose
 kot_show_area	Zona
 kot_hide_area	Slėpti zoną
-kot_show_item_hdr	Prekė · Kiekis
-kot_hide_item_hdr	Slėpti stulpelius
 kot_show_title	Antraštės eilutė
 kot_hide_title	Slėpti antraštę
 kot_field_cycle	Rinktis kitą
@@ -1337,12 +1361,12 @@ private_code_ph	12 skaitmenų kodas
 stamp_on	Antspaudas: faile
 pay_qr_on	Mokėjimo QR: faile
 pay_qr_off	Mokėjimo QR: nėra
+printers_screen_tip	Ieškoti parodo spausdintuvus, kuriuos gali naudoti šis įrenginys, ir išsaugo juos šiai parduotuvei. Sąskaitų spausdintuvai: Sąskaitos ir KOT formatas → Sąskaita. Virtuvė: Virtuvė → Virtuvės stotys.
+printers_found_none	Spausdintuvų nerasta.
+nav_loading	Įkeliama…
+kot_copy_from	Kopijuoti iš
+kot_copy_from_help	Nukopijuoja kiekvienos eilutės dydį, storį ir lygiavimą iš tos rūšies į šią. Ši rūšis išlaiko savo reklaminę juostą, prekės priešdėlį ir perbraukimą. Kad išliktų, išsaugokite KOT formatą.
 items_tmpl_heading	Prekių šablonai
 items_tmpl_help	Patiekalai, kategorijos ir nuotraukos jūsų meniu. Parduotuvės nustatymai ir darbuotojai lieka tokie patys.
 public_tmpl_help	Pradiniai meniu, kuriuos gali atsisiųsti bet kas. Internetas reikalingas kartą.
 private_tmpl_help	Klientų meniu, užrakinti 12 skaitmenų kodu iš jūsų Khaynjo kontakto.
-printers_screen_tip	Ieškoti parodo spausdintuvus, kuriuos gali naudoti šis įrenginys, ir išsaugo juos šiai parduotuvei. Sąskaitų spausdintuvai: Sąskaitos ir KOT formatas → Sąskaita. Virtuvė: Virtuvė → Virtuvės stotys.
-printers_found_none	Spausdintuvų nerasta.
-kot_copy_from	Kopijuoti iš
-kot_copy_from_help	Nukopijuoja kiekvienos eilutės dydį, storį ir lygiavimą iš tos rūšies į šią. Ši rūšis išlaiko savo reklaminę juostą, prekės priešdėlį ir perbraukimą. Kad išliktų, išsaugokite KOT formatą.
-nav_loading	Įkeliama…

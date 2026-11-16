@@ -92,10 +92,6 @@ bill_item_layout	Layout ng item sa menu ng menu
 bill_item_layout_columns	Mga hanay
 bill_item_layout_stacked	Nakasalansan
 bill_item_header	Mga header ng column
-bill_item_hdr_item	Header ng item sa menu ng menu
-bill_item_hdr_qty	Dami ng header
-bill_item_hdr_price	Header ng presyo
-bill_item_hdr_amount	Header ng halaga
 bill_item_name	Pangalan ng ulam
 bill_item_qty	Dami
 bill_item_price	Presyo
@@ -103,6 +99,20 @@ bill_item_amount	Halaga
 bill_item_note	Tala ng ulam
 bill_item_col_sep	Mga panuntunan sa hanay
 slip_columns	Mga column
+slip_col_header	Header
+bill_line_logo	Logo
+bill_logo_picture	Larawan
+bill_logo_choose	Pumili ng larawan
+bill_logo_remove	Alisin ang larawan
+bill_logo_none	Walang larawan
+bill_logo_unreadable	Hindi ito larawang mababasa ng app
+bill_logo_width	Lapad (px)
+bill_logo_height	Taas (px)
+bill_logo_tones	Mga kulay-abo
+bill_logo_solid	Buo
+bill_logo_shaded	May lilim
+bill_logo_help	Lapad at taas sa px. Ang blangko ay sumusunod sa larawan: isang blangko ay nananatili ang hugis, parehong blangko ay gagamit ng sariling laki; kapag parehong nakatakda, ipinapasok ito sa loob, hindi kailanman binabanat. Walang larawan: ang ipinapakitang logo ay nagtatabi ng taas nito bilang bakanteng espasyo; inaalis ito ng Itago.
+bill_logo_tones_help	Buo: bawat tuldok ay itim o puti, para sa malilinaw na logo. May lilim: nagiging pinong disenyo ng tuldok ang kulay-abo, para sa mga larawan at malambot na lilim.
 slip_col_width	Lapad (mm)
 slip_col_start	Espasyo sa simula (px)
 slip_col_end	Espasyo sa dulo (px)
@@ -167,6 +177,21 @@ alerts_help	Gaano katagal nananatili ang mga status message sa screen para sa iy
 snack_secs_ph	Segundo (3–60, default 10)
 snack_secs_save	I-save ang oras ng alerto
 snack_secs_saved	Na-save ang oras ng alerto — {n} segundo
+settings_sec_whatsapp	WhatsApp
+whatsapp_cloud_help	Use your own Meta WhatsApp Cloud API. Create a System User token with whatsapp_business_messaging (temporary dashboard tokens expire). Credentials stay on this Server only — never on extra tills. Accepted means Meta took the request, not that the guest received it.
+whatsapp_phone_id_ph	Phone Number ID
+whatsapp_token_ph	Access Token (leave blank to keep)
+whatsapp_template_ph	Bill template name (optional)
+whatsapp_template_lang_ph	Template language (e.g. en)
+whatsapp_enable	Enable
+whatsapp_disable	Off
+whatsapp_save	Save WhatsApp
+whatsapp_test	Test connection
+whatsapp_disconnect	Disconnect
+whatsapp_send_bill	Send via WhatsApp
+whatsapp_consent	WhatsApp OK
+whatsapp_consent_help	Guest agreed to receive WhatsApp messages. A phone number alone is not consent.
+whatsapp_server_only	Configure WhatsApp on the shop Server device
 settings_sec_backup	I-backup at i-restore
 settings_sec_diag	Mga diagnostic
 settings_sec_privacy	Privacy
@@ -729,6 +754,13 @@ station_vps_dd	Mga printer para sa istasyong ito
 station_vps_dd_n	{n} printer · i-tap para baguhin
 bill_printers_dd	Mga printer para sa bill
 bill_printers_dd_n	{n} printer para sa bill · i-tap para baguhin
+paper_heading	Papel
+paper_size	{w} × {h} mm
+paper_roll	{w} mm na rolyo
+paper_not_set	hindi pa alam ang papel
+paper_length_mm	Haba (mm)
+printer_paper_help	Ang papel ng printer na ito sa mm. Ang walang lamang Haba ay rolyo: bawat resibo ay kasinghaba ng laman nito. Pinupunan ng Maghanap ng mga printer ang walang lamang papel mula sa driver ng printer (80 mm na rolyo kapag hindi nito masabi) at hindi kailanman binabago ang naitakda na.
+preview_help	Ang resibong ito sa papel ng printer na pinili sa ibaba, gaya ng pagkaka-print doon: tunay na laki mula sa itaas na kaliwang abot ng printer (kulay abo: mga gilid na hindi nito abot), mahabang resibo sa mas maraming pahina, pinuputol ang lampas sa gilid ng papel. Ang pagpili ng printer ay preview lang ang binabago; ang papel ng bawat printer ay itinatakda sa Mga Printer.
 job_layout	Ayos
 job_delivery	Paano ipinadala ang trabaho
 job_delivery_help	Dokumento ng OS, raw byte, o ESC/POS. Ang bill at ang tiket sa kusina ay may kanya-kanyang hawak. Maaaring mapunta ang alinmang trabaho sa anumang printer na na-save ng Find.
@@ -1105,9 +1137,6 @@ remove_these_tables	Alisin ang mga hapag kainan na ito
 table_remove_ph	Alisin: T1-T24, o pangalan ng isang hapag kainan
 find_server	Hanapin ang server ng shop
 bill_format	Format ng bill
-bill_header_ph	Address | telepono
-fssai_ph	FSSAI license no. (India)
-bill_footer_ph	Footer (hal. Salamat, bumisita muli)
 reset_bill_format	I-reset sa default
 bill_format_reset	I-reset sa default ang format ng bill
 reset_kot_format	I-reset sa default
@@ -1146,7 +1175,6 @@ kot_kind_modified	Binago
 kot_kind_cancelled	Kinansela
 kot_style_heading	Laki at bigat ng uri ng field
 kot_style_title	Pamagat
-kot_style_item_qty	Menu item sa menu · Dami
 kot_style_field_pick	Pumili ng field
 kot_weight_regular	Karaniwan
 kot_weight_bold	Matapang
@@ -1158,8 +1186,8 @@ content_width_bill	Lapad ng nilalaman ng bill (mm)
 content_width_kot	KOT lapad ng nilalaman (mm)
 content_width_ph	O mag-type ng lapad ng nilalaman, 40–210 mm
 content_width_help	Gaano kalawak ang pag-print ng slip na ito. Ang bill at KOT bawat isa ay may sariling lapad.
-content_width_bill_help	Gaano kalawak ang na-print ng guest bill. Default na 210 mm (pahina). 58 mm narrow slip, 80 mm wide slip, 112 mm 4-inch, 210 mm A4-wide. Mag-type ng anumang halaga mula 40 hanggang 210. Ang mga tiket sa kusina ay may sariling lapad sa tab na KOT.
-content_width_kot_help	Gaano kalawak ang mga print ng tiket sa kusina. Default na 80 mm. 58 mm narrow slip, 80 mm wide slip, 112 mm 4-inch, 210 mm na pahina. Mag-type ng anumang halaga mula 40 hanggang 210. Ang mga bill ng bisita ay may sariling lapad sa tab na Bill.
+content_width_bill_help	Gaano kalapad ipi-print ang bill ng bisita, sa mm (40–210). Ipinapi-print ito sa tunay na laking ito sa anumang papel; sa mas makitid na papel, pinuputol ang bahaging lampas sa gilid ng print (tingnan ang Papel). May sariling lapad ang mga tiket sa kusina sa tab na KOT.
+content_width_kot_help	Gaano kalapad ipi-print ang tiket sa kusina, sa mm (40–210). Ipinapi-print ito sa tunay na laking ito sa anumang papel; sa mas makitid na papel, pinuputol ang bahaging lampas sa gilid ng print (tingnan ang Papel). May sariling lapad ang mga bill ng bisita sa tab na Bill.
 vp_paper_width	Lapad ng nilalaman (mm)
 vp_paper_width_ph	O mag-type ng lapad ng nilalaman, 40–210 mm
 vp_paper_width_help	Ang lapad ng nilalaman ay nakatakda sa ilalim ng Bill at KOT na format — hiwalay para sa bill (default 210 mm) at ang tiket sa kusina (default na 80 mm).
@@ -1213,8 +1241,6 @@ schemes_help	BOGO, percent-off, at fixed combos. Lumalawak ang mga combo sa mga 
 scheme_bogo_ph	Buy 2 Thali get 1 Chaas
 add_scheme	Magdagdag ng BOGO
 schedule_ph	Oras / happy hour — Lun-Biy 07:00-11:00 o HappyHour 17:00-19:00=150
-upi_vpa_ph	UPI ID (VPA)
-upi_payee_ph	UPI pangalan ng nagbabayad (opsyonal)
 upi_qr	UPI QR
 show_upi_qr	Ipakita ang UPI QR
 close_upi_qr	Isara
@@ -1295,8 +1321,6 @@ printer_mode_first	Una na gumagana
 printer_mode_all	I-print sa lahat
 kot_show_area	Lugar
 kot_hide_area	Itago ang lugar
-kot_show_item_hdr	Menu item sa menu · Dami
-kot_hide_item_hdr	Itago ang mga column
 kot_show_title	linya ng pamagat
 kot_hide_title	Itago ang pamagat
 kot_field_cycle	Piliin ang susunod
@@ -1337,12 +1361,12 @@ private_code_ph	12-digit na code
 stamp_on	Stamp: sa file
 pay_qr_on	QR ng Pagbabayad: nasa file
 pay_qr_off	QR ng Pagbabayad: wala
+printers_screen_tip	Ipinapakita ng Hanapin ang mga printer na magagamit ng device na ito at sine-save ang mga ito para sa tindahang ito. Mga printer ng bill: Format ng Bill at KOT → Bill. Kusina: Kusina → Mga istasyon ng kusina.
+printers_found_none	Walang nakitang printer.
+nav_loading	Naglo-load…
+kot_copy_from	Kopyahin mula sa
+kot_copy_from_help	Kinokopya ang laki, kapal at pagkakahanay ng bawat linya mula sa uring iyon papunta rito. Pinananatili ng uring ito ang sarili nitong banner, prefix ng item at strike. I-save ang KOT format para manatili ito.
 items_tmpl_heading	Mga template ng item
 items_tmpl_help	Mga putahe, kategorya at larawan para sa menu mo. Mananatili ang settings ng tindahan at ang staff.
 public_tmpl_help	Mga panimulang menu na puwedeng i-download ng kahit sino. Kailangan ng internet nang isang beses.
 private_tmpl_help	Mga menu ng kliyente na naka-lock sa 12-digit na code mula sa iyong Khaynjo contact.
-printers_screen_tip	Ipinapakita ng Hanapin ang mga printer na magagamit ng device na ito at sine-save ang mga ito para sa tindahang ito. Mga printer ng bill: Format ng Bill at KOT → Bill. Kusina: Kusina → Mga istasyon ng kusina.
-printers_found_none	Walang nakitang printer.
-kot_copy_from	Kopyahin mula sa
-kot_copy_from_help	Kinokopya ang laki, kapal at pagkakahanay ng bawat linya mula sa uring iyon papunta rito. Pinananatili ng uring ito ang sarili nitong banner, prefix ng item at strike. I-save ang KOT format para manatili ito.
-nav_loading	Naglo-load…

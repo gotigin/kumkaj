@@ -1771,6 +1771,19 @@ script_mod! {
             text_style +: {font_size: 12.}
         }
     }
+    // A dropdown's face and its type-or-pick field: ComboField draws ˅ / ˄
+    // over the control's last 38 px, so these keep that room (a long face
+    // wraps before the mark instead of running under it; a face keeps its
+    // centre). Every control directly inside a ComboField is one of these.
+    let ComboFace = StackSecondaryBtn{
+        padding: Inset{left: 48. right: 48. top: 14. bottom: 14.}
+        // Wrap like every full-width face (DEV.md bug 7 / CTA faces): a long
+        // value goes on to a second line instead of running under the mark.
+        flow: Right{wrap: true}
+    }
+    let ComboInput = FieldInput{
+        padding: Inset{left: 14. right: 48. top: 16. bottom: 12.}
+    }
 
     // Compact cart / totals field — same caret as FieldInput; tighter padding.
     // Ticket fields sit beside their own labels: no floating caption.
@@ -3858,6 +3871,30 @@ script_mod! {
     // A report on screen (day close, books, …): headings, "label  value"
     // rows with the value at the right, and plain lines — in a white card,
     // never one run-on paragraph. Fed with the same text that prints.
+    // Settings → Printers: the saved printers, one list in two parts around
+    // the open printer's paper (PrinterPaperRows) — any number of printers.
+    mod.widgets.PrinterPaperRowsBase = #(PrinterPaperRows::register_widget(vm))
+    mod.widgets.PrinterPaperRows = set_type_default() do mod.widgets.PrinterPaperRowsBase{
+        width: Fill height: Fit
+        list := PortalList{
+            width: Fill height: Fill
+            spacing: 0
+            drag_scrolling: false
+            bounce_at_start: false
+            bounce_at_end: false
+            capture_overload: false
+            scroll_bar: ScrollBar{bar_size: 0.}
+            Item := View{
+                width: Fill height: Fit
+                flow: Overlay
+                texture_caching: false
+                // A long name wraps (phone width) instead of running off.
+                row := FieldRowBtn{text: " " flow: Right{wrap: true} margin: Inset{left: 0. right: 0. top: 0. bottom: 8.}}
+                row_on := FieldRowBtnOn{text: " " visible: false flow: Right{wrap: true} margin: Inset{left: 0. right: 0. top: 0. bottom: 8.}}
+            }
+        }
+    }
+
     mod.widgets.ReportTextBase = #(ReportText::register_widget(vm))
     mod.widgets.ReportText = set_type_default() do mod.widgets.ReportTextBase{
         width: Fill height: Fit
@@ -6194,7 +6231,7 @@ script_mod! {
                                         font_size: 13.
                                     }
                                     mod.widgets.ComboField{field: "customer_name"
-                                        customer_name_input := FieldInput{
+                                        customer_name_input := ComboInput{
                                             empty_text: "Customer name"
                                         }
                                     }
@@ -6377,18 +6414,18 @@ script_mod! {
                                 FormFieldRow{
                                     menu_price_input := FieldInput{empty_text: "Price"}
                                     mod.widgets.ComboField{field: "menu_unit"
-                                        menu_unit_input := FieldInput{empty_text: "Unit (blank = each)"}
+                                        menu_unit_input := ComboInput{empty_text: "Unit (blank = each)"}
                                     }
                                 }
                                 menu_unit_suggest := mod.widgets.SuggestList{field: "menu_unit"}
                                 mod.widgets.ComboField{field: "menu_tax"
-                                    menu_tax_input := FieldInput{
+                                    menu_tax_input := ComboInput{
                                         empty_text: "Tax rate name or % — Standard, Reduced, 0, 5, 12, 18, 20"
                                     }
                                 }
                                 menu_tax_suggest := mod.widgets.SuggestList{field: "menu_tax"}
                                 mod.widgets.ComboField{field: "category"
-                                    menu_category_input := FieldInput{empty_text: "Category — search yours or type a new one"}
+                                    menu_category_input := ComboInput{empty_text: "Category — search yours or type a new one"}
                                 }
                                 // Category picker: opens on focus, searches as you
                                 // type; the typed name is always a row too.
@@ -6401,7 +6438,7 @@ script_mod! {
                                 // (own UUID, price, stock, station), grouped by name.
                                 menu_variations_input := FieldInput{empty_text: "Sizes as separate items (optional) — Half=120, Full=200"}
                                 mod.widgets.ComboField{field: "menu_group"
-                                    menu_group_input := FieldInput{empty_text: "Strength / pack group (optional)"}
+                                    menu_group_input := ComboInput{empty_text: "Strength / pack group (optional)"}
                                 }
                                 menu_group_suggest := mod.widgets.SuggestList{field: "menu_group"}
                                 menu_schedule_input := FieldInput{empty_text: "Hours — Mon-Fri 07:00-11:00 or Evening 17:00-19:00=150"}
@@ -6498,19 +6535,19 @@ script_mod! {
                                 FormCard{
                                     h_goods_received := WrapLabel{body: "Goods received" font_color: #x023637 font_size: 17.}
                                     mod.widgets.ComboField{field: "buy_item"
-                                        buy_item_input := FieldInput{empty_text: "Item name"}
+                                        buy_item_input := ComboInput{empty_text: "Item name"}
                                     }
                                     buy_item_suggest := mod.widgets.SuggestList{field: "buy_item"}
                                     FormFieldRow{
                                         buy_qty_input := FieldInput{empty_text: "Qty"}
                                         mod.widgets.ComboField{field: "buy_unit"
-                                            buy_unit_input := FieldInput{empty_text: "Unit"}
+                                            buy_unit_input := ComboInput{empty_text: "Unit"}
                                         }
                                     }
                                     buy_unit_suggest := mod.widgets.SuggestList{field: "buy_unit"}
                                     buy_cost_input := FieldInput{empty_text: "Unit cost"}
                                     mod.widgets.ComboField{field: "buy_supplier"
-                                        buy_supplier_input := FieldInput{empty_text: "Supplier name (or party)"}
+                                        buy_supplier_input := ComboInput{empty_text: "Supplier name (or party)"}
                                     }
                                     buy_supplier_suggest := mod.widgets.SuggestList{field: "buy_supplier"}
                                     // The chips (or the default, Supplier) set it — never typed.
@@ -6867,7 +6904,7 @@ script_mod! {
                                             width: Fill height: Fit
                                             visible: false
                                             mod.widgets.ComboField{field: "credit_party"
-                                                credit_limit_party := FieldInput{empty_text: "Party name (or use selected)"}
+                                                credit_limit_party := ComboInput{empty_text: "Party name (or use selected)"}
                                             }
                                         }
                                     }
@@ -6942,7 +6979,7 @@ script_mod! {
                                 flow: Down spacing: 10
                                 staff_label := mod.widgets.ReportText{}
                                 mod.widgets.ComboField{field: "team_pick"
-                                    team_pick_input := FieldInput{empty_text: "Pick a person to edit — leave empty to add someone"}
+                                    team_pick_input := ComboInput{empty_text: "Pick a person to edit — leave empty to add someone"}
                                 }
                                 team_pick_suggest := mod.widgets.SuggestList{field: "team_pick"}
                                 team_pick_hint := WrapLabel{
@@ -6991,7 +7028,7 @@ script_mod! {
                                 // this form — then Add creates a new id. Remove is
                                 // not here (it belongs with the selected person below).
                                 mod.widgets.ComboField{field: "team_copy_hire"
-                                    staff_copy_hire_input := FieldInput{
+                                    staff_copy_hire_input := ComboInput{
                                         empty_text: "Copy setup from (optional)"
                                     }
                                 }
@@ -7031,7 +7068,7 @@ script_mod! {
                                     staff_set_login := RowSecondaryBtn{text: "Apply login to selected"}
                                 }
                                 mod.widgets.ComboField{field: "team_copy_edit"
-                                    staff_copy_edit_input := FieldInput{
+                                    staff_copy_edit_input := ComboInput{
                                         empty_text: "Copy setup from another person"
                                     }
                                 }
@@ -7294,7 +7331,7 @@ script_mod! {
                                     FormCard{
                                     fiscal_label := mod.widgets.ReportText{}
                                     mod.widgets.ComboField{field: "country"
-                                        country_code_input := FieldInput{
+                                        country_code_input := ComboInput{
                                             empty_text: "Country code e.g. IN, GB, US, AE, BR"
                                         }
                                     }
@@ -7570,11 +7607,11 @@ h_units_heading := WrapLabel{body: "Units" font_color: #x023637 font_size: 20.}
                                 }
                                 FormCard{
                                 mod.widgets.ComboField{field: "conv_from"
-                                    conv_from_input := FieldInput{empty_text: "From code (bag)"}
+                                    conv_from_input := ComboInput{empty_text: "From code (bag)"}
                                 }
                                 conv_from_suggest := mod.widgets.SuggestList{field: "conv_from"}
                                 mod.widgets.ComboField{field: "conv_to"
-                                    conv_to_input := FieldInput{empty_text: "To code (kg)"}
+                                    conv_to_input := ComboInput{empty_text: "To code (kg)"}
                                 }
                                 conv_to_suggest := mod.widgets.SuggestList{field: "conv_to"}
                                 conv_factor_input := FieldInput{empty_text: "Factor (1 bag → kg)"}
@@ -7593,7 +7630,7 @@ h_units_heading := WrapLabel{body: "Units" font_color: #x023637 font_size: 20.}
                                 bulk_price_heading := WrapLabel{ width: Fit
                                                     body: "Bulk medicine price" font_color: #x023637 font_size: 18.}
                                 mod.widgets.ComboField{field: "bulk_cat"
-                                    bulk_cat_input := FieldInput{empty_text: "Category name"}
+                                    bulk_cat_input := ComboInput{empty_text: "Category name"}
                                 }
                                 bulk_cat_suggest := mod.widgets.SuggestList{field: "bulk_cat"}
                                 FormFieldRow{
@@ -7631,12 +7668,41 @@ h_units_heading := WrapLabel{body: "Units" font_color: #x023637 font_size: 20.}
                                         font_color: #x074D3E
                                         font_size: 12.
                                     }
+                                    // The saved printers, each `name · paper`, in one list (owner
+                                    // 2026-11-16: the printer owns its paper). Tapping one opens its
+                                    // Width / Length where it sits (one list in two parts around the
+                                    // open one; docs/PRINTER.md § Paper and preview).
+                                    printers_rows := mod.widgets.PrinterPaperRows{part: "before" visible: false}
+                                    printer_paper_editor := RoundedView{
+                                        width: Fill height: Fit flow: Down spacing: 8 visible: false
+                                        margin: Inset{left: 0. right: 0. top: 0. bottom: 8.}
+                                        padding: Inset{left: 12. right: 12. top: 10. bottom: 12.}
+                                        draw_bg.color: #xE8F4F4
+                                        draw_bg.border_radius: 12.
+                                        draw_bg.border_size: 1.5
+                                        draw_bg.border_color: #x023637
+                                        View{width: Fill height: Fit flow: Right spacing: 0 align: Align{y: 0.5}
+                                            h_printer_paper := WrapLabel{width: Fit body: "Paper" font_color: #x023637 font_size: 14.}
+                                            printer_paper_help := InfoHelp{tip: " "}
+                                        }
+                                        View{width: Fill height: Fit flow: Right spacing: 8
+                                            View{width: Fill height: Fit flow: Down spacing: 4
+                                                h_printer_paper_w := WrapLabel{width: Fill body: "Width (mm)" font_color: #x023637 font_size: 13.}
+                                                printer_paper_w_input := FieldInput{width: Fill empty_text: ""}
+                                            }
+                                            View{width: Fill height: Fit flow: Down spacing: 4
+                                                h_printer_paper_l := WrapLabel{width: Fill body: "Length (mm)" font_color: #x023637 font_size: 13.}
+                                                printer_paper_l_input := FieldInput{width: Fill empty_text: ""}
+                                            }
+                                        }
+                                    }
+                                    printers_after_rows := mod.widgets.PrinterPaperRows{part: "after" visible: false}
                                     printers_pool_label := mod.widgets.ReportText{}
                                     // Legacy — Find used to mirror the pool in a second list.
                                     printers_found_list := mod.widgets.ReportText{visible: false}
                                     printers_pool_help := InfoHelp{tip: " " visible: false}
                                     mod.widgets.ComboField{field: "test_printers"
-                                        printers_test_dd := StackSecondaryBtn{text: "Printers for a test page" flow: Down}
+                                        printers_test_dd := ComboFace{text: "Printers for a test page"}
                                     }
                                     printers_test_input := FieldInput{
                                         height: 0.
@@ -7656,7 +7722,7 @@ h_units_heading := WrapLabel{body: "Units" font_color: #x023637 font_size: 20.}
                                     printers_routes_help := InfoHelp{tip: " " visible: false}
                                     View{width: Fill height: Fit visible: false
                                         mod.widgets.ComboField{field: "printer_place"
-                                            printer_place_dd := StackSecondaryBtn{text: "Bill" flow: Down}
+                                            printer_place_dd := ComboFace{text: "Bill"}
                                         }
                                     }
                                     // FieldInput has no `visible`. A hidden wrapper keeps the
@@ -7712,7 +7778,7 @@ h_units_heading := WrapLabel{body: "Units" font_color: #x023637 font_size: 20.}
                                     }
                                     ActionStack{
                                         mod.widgets.ComboField{field: "printer_assign"
-                                            printer_assign_dd := StackSecondaryBtn{text: "Select real printer" flow: Down}
+                                            printer_assign_dd := ComboFace{text: "Select real printer"}
                                         }
                                     }
                                     printer_assign_input := FieldInput{
@@ -8018,7 +8084,7 @@ h_units_heading := WrapLabel{body: "Units" font_color: #x023637 font_size: 20.}
                                     }
                                 }
                                 mod.widgets.ComboField{field: "bill_printers"
-                                    bill_printers_dd := StackSecondaryBtn{text: "Printers for the bill" flow: Down}
+                                    bill_printers_dd := ComboFace{text: "Printers for the bill"}
                                 }
                                 bill_printers_input := FieldInput{
                                     height: 0.
@@ -8570,7 +8636,23 @@ h_units_heading := WrapLabel{body: "Units" font_color: #x023637 font_size: 20.}
                                 // Wide screens: grows so the preview sits beside the open line.
                                 bill_preview_lead := View{width: Fill height: 0}
                                 FormCard{
-                                h_bill_preview := WrapLabel{body: "Preview" font_color: #x023637 font_size: 14.}
+                                View{width: Fill height: Fit flow: Right spacing: 0 align: Align{y: 0.5}
+                                    h_bill_preview := WrapLabel{width: Fit body: "Preview" font_color: #x023637 font_size: 14.}
+                                    bill_preview_help := InfoHelp{tip: " "}
+                                }
+                                // Which printer's paper the preview is drawn on — every saved
+                                // printer; picking one changes the preview only (docs/PRINTER.md
+                                // § Paper and preview).
+                                mod.widgets.ComboField{field: "bill_preview_paper"
+                                    bill_preview_paper_dd := ComboFace{text: "Paper"}
+                                }
+                                bill_preview_paper_input := FieldInput{
+                                    height: 0.
+                                    empty_text: ""
+                                    margin: Inset{left: 0. right: 0. top: 0. bottom: 0.}
+                                    padding: Inset{left: 0. right: 0. top: 0. bottom: 0.}
+                                }
+                                bill_preview_paper_suggest := mod.widgets.SuggestList{field: "bill_preview_paper"}
                                 bill_format_preview_card := View{
                                     width: Fill height: Fit
                                     bill_format_preview := mod.widgets.SlipPreview{}
@@ -8964,7 +9046,7 @@ h_backup := WrapLabel{body: "Backup" font_color: #x023637 font_size: 20.}
                                 }
                                 FormCard{
                                     mod.widgets.ComboField{field: "inv_item"
-                                        inv_item_input := FieldInput{empty_text: "Item name"}
+                                        inv_item_input := ComboInput{empty_text: "Item name"}
                                     }
                                     inv_item_suggest := mod.widgets.SuggestList{field: "inv_item"}
                                     View{
@@ -9031,7 +9113,7 @@ h_backup := WrapLabel{body: "Backup" font_color: #x023637 font_size: 20.}
                                     branch_code_input := FieldInput{empty_text: "Short code (MG02)"}
                                     branch_add := StackPrimaryBtn{text: "Add branch"}
                                     mod.widgets.ComboField{field: "branch_switch"
-                                        branch_switch_input := FieldInput{empty_text: "Branch name to sell from"}
+                                        branch_switch_input := ComboInput{empty_text: "Branch name to sell from"}
                                     }
                                     branch_switch_suggest := mod.widgets.SuggestList{field: "branch_switch"}
                                     branch_switch := NavBtn{text: "Switch this device"}

@@ -92,10 +92,6 @@ bill_item_layout	Artikeluppställning
 bill_item_layout_columns	Kolumner
 bill_item_layout_stacked	Staplad
 bill_item_header	Kolumnrubriker
-bill_item_hdr_item	Artikelrubrik
-bill_item_hdr_qty	Antalsrubrik
-bill_item_hdr_price	Prisrubrik
-bill_item_hdr_amount	Beloppsrubrik
 bill_item_name	Rättnamn
 bill_item_qty	Antal
 bill_item_price	Pris
@@ -103,6 +99,20 @@ bill_item_amount	Belopp
 bill_item_note	Rättanteckning
 bill_item_col_sep	Kolumnlinjer
 slip_columns	Kolumner
+slip_col_header	Rubrik
+bill_line_logo	Logotyp
+bill_logo_picture	Bild
+bill_logo_choose	Välj bild
+bill_logo_remove	Ta bort bild
+bill_logo_none	Ingen bild
+bill_logo_unreadable	Inte en bild som appen kan läsa
+bill_logo_width	Bredd (px)
+bill_logo_height	Höjd (px)
+bill_logo_tones	Gråtoner
+bill_logo_solid	Heltäckande
+bill_logo_shaded	Skuggad
+bill_logo_help	Bredd och höjd i px. Tomt följer bilden: en tom behåller formen, båda tomma använder bildens egen storlek; båda angivna passar in den, aldrig utdragen. Ingen bild: en visad logotyp behåller sin höjd som tomt utrymme; Dölj tar bort den.
+bill_logo_tones_help	Heltäckande: varje punkt svart eller vit, för skarpa logotyper. Skuggad: grått blir fina punktmönster, för foton och mjuk skuggning.
 slip_col_width	Bredd (mm)
 slip_col_start	Startavstånd (px)
 slip_col_end	Slutavstånd (px)
@@ -167,6 +177,21 @@ alerts_help	Hur länge statusmeddelanden ligger kvar på skärmen för dig (den 
 snack_secs_ph	Sekunder (3–60, standard 10)
 snack_secs_save	Spara aviseringstid
 snack_secs_saved	Aviseringstid sparad — {n} sekunder
+settings_sec_whatsapp	WhatsApp
+whatsapp_cloud_help	Use your own Meta WhatsApp Cloud API. Create a System User token with whatsapp_business_messaging (temporary dashboard tokens expire). Credentials stay on this Server only — never on extra tills. Accepted means Meta took the request, not that the guest received it.
+whatsapp_phone_id_ph	Phone Number ID
+whatsapp_token_ph	Access Token (leave blank to keep)
+whatsapp_template_ph	Bill template name (optional)
+whatsapp_template_lang_ph	Template language (e.g. en)
+whatsapp_enable	Enable
+whatsapp_disable	Off
+whatsapp_save	Save WhatsApp
+whatsapp_test	Test connection
+whatsapp_disconnect	Disconnect
+whatsapp_send_bill	Send via WhatsApp
+whatsapp_consent	WhatsApp OK
+whatsapp_consent_help	Guest agreed to receive WhatsApp messages. A phone number alone is not consent.
+whatsapp_server_only	Configure WhatsApp on the shop Server device
 settings_sec_backup	Säkerhetskopiera och återställa
 settings_sec_diag	Diagnostik
 settings_sec_privacy	Integritet
@@ -729,6 +754,13 @@ station_vps_dd	Skrivare för denna station
 station_vps_dd_n	{n} skrivare · tryck för att ändra
 bill_printers_dd	Skrivare för räkningen
 bill_printers_dd_n	{n} skrivare för räkningen · tryck för att ändra
+paper_heading	Papper
+paper_size	{w} × {h} mm
+paper_roll	{w} mm-rulle
+paper_not_set	papper ännu okänt
+paper_length_mm	Längd (mm)
+printer_paper_help	Den här skrivarens papper i mm. Tom Längd är en rulle: varje kvitto är lika långt som sitt innehåll. Hitta skrivare fyller i tomt papper från skrivarens drivrutin (en 80 mm-rulle när den inte kan säga) och ändrar aldrig ett papper som redan är satt.
+preview_help	Det här kvittot på papperet i skrivaren som valts nedan, så som det skrivs ut där: i verklig storlek från det övre vänstra hörnet skrivaren når (grått: kanter den inte når), ett långt kvitto på fler ark, allt bortom papperskanten skärs av. Att välja skrivare ändrar bara förhandsvisningen; varje skrivares papper ställs in under Skrivare.
 job_layout	Upplägg
 job_delivery	Hur jobbet skickas
 job_delivery_help	OS-dokument, råbytes eller ESC/POS. Notan och köksbiljetten behåller var sin. Båda jobben kan gå till alla skrivare som Find har sparat.
@@ -1105,9 +1137,6 @@ remove_these_tables	Ta bort dessa tabeller
 table_remove_ph	Ta bort: T1-T24, eller ett bords namn
 find_server	Hitta butikens server
 bill_format	Notaformat
-bill_header_ph	Adress | telefon
-fssai_ph	FSSAI licensnr. (Indien)
-bill_footer_ph	Sidfot (t.ex. Tack, besök igen)
 reset_bill_format	Återställ till standard
 bill_format_reset	Fakturans format återställs till standard
 reset_kot_format	Återställ till standard
@@ -1146,7 +1175,6 @@ kot_kind_modified	Modifierad
 kot_kind_cancelled	Avbruten
 kot_style_heading	Fälttyps storlek och vikt
 kot_style_title	Titel
-kot_style_item_qty	Artikel · Antal
 kot_style_field_pick	Välj fält
 kot_weight_regular	Vanligt
 kot_weight_bold	Fet
@@ -1158,8 +1186,8 @@ content_width_bill	Fakturans innehållsbredd (mm)
 content_width_kot	KOT innehållsbredd (mm)
 content_width_ph	Eller skriv en innehållsbredd, 40–210 mm
 content_width_help	Hur brett den här slipen trycker. Nota och KOT håller var sin bredd.
-content_width_bill_help	Hur bred gästräkningen skrivs ut. Standard 210 mm (sida). 58 mm smal slip, 80 mm bred slip, 112 mm 4 tum, 210 mm A4 bred. Skriv valfritt värde från 40 till 210. Köksbiljetter har sin egen bredd på KOT-fliken.
-content_width_kot_help	Hur brett köksbiljetten skrivs ut. Standard 80 mm. 58 mm smal slip, 80 mm bred slip, 112 mm 4-tum, 210 mm sida. Skriv valfritt värde från 40 till 210. Gästräkningar har sin egen bredd på fliken Nota.
+content_width_bill_help	Hur brett gästens nota skrivs ut, i mm (40–210). Den skrivs ut i denna verkliga storlek på vilket papper som helst; på smalare papper beskärs delen bortom utskriftskanten (se Papper). Köksbongar har egen bredd på fliken KOT.
+content_width_kot_help	Hur brett köksbongen skrivs ut, i mm (40–210). Den skrivs ut i denna verkliga storlek på vilket papper som helst; på smalare papper beskärs delen bortom utskriftskanten (se Papper). Gästnotor har egen bredd på fliken Nota.
 vp_paper_width	Innehållsbredd (mm)
 vp_paper_width_ph	Eller skriv en innehållsbredd, 40–210 mm
 vp_paper_width_help	Innehållsbredd ställs in under Nota- och KOT-format — separat för notan (standard 210 mm) och köksbiljetten (standard 80 mm).
@@ -1213,8 +1241,6 @@ schemes_help	BOGO, procent rabatt och fasta kombinationer. Combos expanderar til
 scheme_bogo_ph	Köp 2 Thali få 1 Chaas
 add_scheme	Lägg till BOGO
 schedule_ph	Timmar/happy hour — mån-fre 07:00-11:00 eller HappyHour 17:00-19:00=150
-upi_vpa_ph	UPI ID (VPA)
-upi_payee_ph	UPI-betalningsmottagarens namn (valfritt)
 upi_qr	UPI QR
 show_upi_qr	Visa UPI QR
 close_upi_qr	Stäng
@@ -1295,8 +1321,6 @@ printer_mode_first	Först fungerar det
 printer_mode_all	Skriv ut på alla
 kot_show_area	Område
 kot_hide_area	Göm området
-kot_show_item_hdr	Artikel · Antal
-kot_hide_item_hdr	Dölj kolumner
 kot_show_title	Titelrad
 kot_hide_title	Dölj titel
 kot_field_cycle	Välj nästa
@@ -1337,12 +1361,12 @@ private_code_ph	12-siffrig kod
 stamp_on	Stämpel: på fil
 pay_qr_on	Betalnings-QR: på fil
 pay_qr_off	Betalnings-QR: ingen
+printers_screen_tip	Sök visar skrivarna den här enheten kan använda och sparar dem för butiken. Notaskrivare: Nota- och KOT-format → Nota. Kök: Kök → Köksstationer.
+printers_found_none	Inga skrivare hittades.
+nav_loading	Läser in…
+kot_copy_from	Kopiera från
+kot_copy_from_help	Kopierar storlek, tjocklek och justering för varje rad från den typen till denna. Denna typ behåller sin egen banderoll, artikelprefix och genomstrykning. Spara KOT-format för att behålla det.
 items_tmpl_heading	Artikelmallar
 items_tmpl_help	Rätter, kategorier och bilder till din meny. Butiksinställningar och personal förblir som de är.
 public_tmpl_help	Startmenyer som vem som helst kan ladda ner. Kräver internet en gång.
 private_tmpl_help	Kundmenyer låsta med en 12-siffrig kod från din Khaynjo-kontakt.
-printers_screen_tip	Sök visar skrivarna den här enheten kan använda och sparar dem för butiken. Notaskrivare: Nota- och KOT-format → Nota. Kök: Kök → Köksstationer.
-printers_found_none	Inga skrivare hittades.
-kot_copy_from	Kopiera från
-kot_copy_from_help	Kopierar storlek, tjocklek och justering för varje rad från den typen till denna. Denna typ behåller sin egen banderoll, artikelprefix och genomstrykning. Spara KOT-format för att behålla det.
-nav_loading	Läser in…

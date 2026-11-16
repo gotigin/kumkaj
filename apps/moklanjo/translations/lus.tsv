@@ -501,6 +501,17 @@ job_size	Type len
 job_size_ph	entir 18, 20, 26…
 test_receipt_format	Test dawn a ni
 test_label_format	Test label a ni
+paper_heading	Lehkha
+paper_size	{w} × {h} mm
+paper_roll	{w} mm roll
+paper_not_set	lehkha hriat a la ni lo
+paper_length_mm	A sei zawng (mm)
+printer_paper_help	He print na lehkha hi mm-in. A sei zawng awm lo chu roll a ni: slip tin chu a chhunga thil ang zelin a sei a ni. Print na zawng hian lehkha awm lo chu print na driver atangin a dah khat (a sawi thei loh chuan 80 mm roll) a, lo ruat tawh chu engtikah mah a thlak ngai lo.
+preview_help	He slip hi a hnuaia print na thlan lehkhaah, chutah a chhuah ang ngeiin: print na thlen theih chunglam vei kil atangin a lianna dik takin (dum var: a thlen theih loh kawng), slip sei chu phek tam zawkah, lehkha kawng piah lam apiang chu an tan. Print na thlan hian a hmaa en lawk chauh a thlak; print na tin lehkha chu Print na hnuaiah ruat a ni.
+slip_col_width	Zau (mm)
+no_printer_assigned	Print na awm lo
+printer_target_default	he computer print na dan (address ruak)
+job_preview	En hma
 test_receipt_sent	Sample receipt thawn a ni
 test_label_sent	Sample label thawn a ni
 test_print_no_printer	Chu hna atan chuan printer a awm lo — he hmun hnuaiah hian pakhat dah belh rawh

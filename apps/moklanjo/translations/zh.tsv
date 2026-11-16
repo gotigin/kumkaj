@@ -501,6 +501,17 @@ job_size	字号
 job_size_ph	例如 18, 20, 26…
 test_receipt_format	测试收据
 test_label_format	测试标签
+paper_heading	纸张
+paper_size	{w} × {h} mm
+paper_roll	{w} mm 卷纸
+paper_not_set	纸张尚未得知
+paper_length_mm	长度 (mm)
+printer_paper_help	此打印机的纸张（mm）。长度留空即为卷纸：每张单据与其内容一样长。“查找打印机”会从打印机驱动程序填入空白纸张（无法得知时为 80 mm 卷纸），且绝不更改已设置的纸张。
+preview_help	此单据在下方所选打印机的纸张上，与在那里打印的完全相同：从打印机可达的左上角起按实际尺寸打印（灰色：无法到达的边缘），长单据打印在更多张纸上，超出纸张边缘的部分会被切掉。选择打印机只会改变预览；每台打印机的纸张在“打印机”中设置。
+slip_col_width	宽度 (mm)
+no_printer_assigned	无打印机
+printer_target_default	默认打印机
+job_preview	预览
 test_receipt_sent	示例收据已送出
 test_label_sent	示例标签已送出
 test_print_no_printer	该作业没有打印机 — 请在此位置添加一台

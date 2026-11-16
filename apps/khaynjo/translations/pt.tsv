@@ -92,10 +92,6 @@ bill_item_layout	Layout dos itens
 bill_item_layout_columns	Colunas
 bill_item_layout_stacked	Empilhado
 bill_item_header	Cabeçalhos
-bill_item_hdr_item	Cabeçalho do item
-bill_item_hdr_qty	Cabeçalho da qtd
-bill_item_hdr_price	Cabeçalho do preço
-bill_item_hdr_amount	Cabeçalho do valor
 bill_item_name	Nome
 bill_item_qty	Qtd
 bill_item_price	Preço
@@ -103,6 +99,20 @@ bill_item_amount	Valor
 bill_item_note	Nota
 bill_item_col_sep	Riscos das colunas
 slip_columns	Colunas
+slip_col_header	Cabeçalho
+bill_line_logo	Logotipo
+bill_logo_picture	Imagem
+bill_logo_choose	Escolher imagem
+bill_logo_remove	Remover imagem
+bill_logo_none	Sem imagem
+bill_logo_unreadable	Não é uma imagem que a app consiga ler
+bill_logo_width	Largura (px)
+bill_logo_height	Altura (px)
+bill_logo_tones	Cinzas
+bill_logo_solid	Sólido
+bill_logo_shaded	Sombreado
+bill_logo_help	Largura e altura em px. Vazio segue a imagem: um vazio mantém a forma, ambos vazios usam o tamanho dela; ambos definidos encaixam-na dentro, nunca esticada. Sem imagem: um logotipo visível mantém a sua altura como espaço em branco; Ocultar remove-o.
+bill_logo_tones_help	Sólido: cada ponto preto ou branco, para logotipos nítidos. Sombreado: os cinzas tornam-se padrões de pontos finos, para fotos e sombras suaves.
 slip_col_width	Largura (mm)
 slip_col_start	Espaço inicial (px)
 slip_col_end	Espaço final (px)
@@ -167,6 +177,21 @@ alerts_help	Quanto tempo as mensagens de estado ficam no ecrã para si (este in�
 snack_secs_ph	Segundos (3–60, predefinição 10)
 snack_secs_save	Guardar tempo dos avisos
 snack_secs_saved	Tempo dos avisos guardado — {n} segundos
+settings_sec_whatsapp	WhatsApp
+whatsapp_cloud_help	Use your own Meta WhatsApp Cloud API. Create a System User token with whatsapp_business_messaging (temporary dashboard tokens expire). Credentials stay on this Server only — never on extra tills. Accepted means Meta took the request, not that the guest received it.
+whatsapp_phone_id_ph	Phone Number ID
+whatsapp_token_ph	Access Token (leave blank to keep)
+whatsapp_template_ph	Bill template name (optional)
+whatsapp_template_lang_ph	Template language (e.g. en)
+whatsapp_enable	Enable
+whatsapp_disable	Off
+whatsapp_save	Save WhatsApp
+whatsapp_test	Test connection
+whatsapp_disconnect	Disconnect
+whatsapp_send_bill	Send via WhatsApp
+whatsapp_consent	WhatsApp OK
+whatsapp_consent_help	Guest agreed to receive WhatsApp messages. A phone number alone is not consent.
+whatsapp_server_only	Configure WhatsApp on the shop Server device
 settings_sec_backup	Backup e restauração
 settings_sec_diag	Diagnóstico
 settings_sec_privacy	Privacidade
@@ -729,6 +754,13 @@ station_vps_dd	Impressoras desta estação
 station_vps_dd_n	{n} impressora(s) · toque para mudar
 bill_printers_dd	Impressoras para a conta
 bill_printers_dd_n	{n} impressora(s) para a conta · toque para alterar
+paper_heading	Papel
+paper_size	{w} × {h} mm
+paper_roll	rolo de {w} mm
+paper_not_set	papel ainda desconhecido
+paper_length_mm	Comprimento (mm)
+printer_paper_help	O papel desta impressora em mm. Um Comprimento vazio é um rolo: cada recibo tem o comprimento do seu conteúdo. Procurar impressoras preenche o papel vazio pelo driver da impressora (um rolo de 80 mm quando ele não sabe dizer) e nunca altera um papel já definido.
+preview_help	Este recibo no papel da impressora escolhida abaixo, tal como é impresso nela: em tamanho real a partir do canto superior esquerdo que a impressora alcança (cinza: margens que não alcança), um recibo longo em mais folhas, tudo além da borda do papel é cortado. Escolher uma impressora só altera a pré-visualização; o papel de cada impressora define-se em Impressoras.
 job_layout	Layout
 job_delivery	Como o trabalho é enviado
 job_delivery_help	Documento do sistema operacional, bytes brutos ou ESC/POS. A conta e o ticket da cozinha mantêm os seus próprios. Qualquer um dos trabalhos pode ir para qualquer impressora encontrada pelo Find.
@@ -1105,9 +1137,6 @@ remove_these_tables	Remover estas mesas
 table_remove_ph	Remover: T1-T24 ou o nome de uma mesa
 find_server	Encontrar o servidor da loja
 bill_format	Formato da conta
-bill_header_ph	Endereço | telefone
-fssai_ph	Nº licença FSSAI (Índia)
-bill_footer_ph	Rodapé (ex. Obrigado, volte sempre)
 reset_bill_format	Repor predefinição
 bill_format_reset	Formato da conta redefinido
 reset_kot_format	Repor predefinição
@@ -1146,7 +1175,6 @@ kot_kind_modified	Modificado
 kot_kind_cancelled	Cancelado
 kot_style_heading	Tamanho e peso do campo
 kot_style_title	Título
-kot_style_item_qty	Artigo · Qtd
 kot_style_field_pick	Selecionar campo
 kot_weight_regular	Normal
 kot_weight_bold	Negrito
@@ -1158,8 +1186,8 @@ content_width_bill	Largura do conteúdo da conta (mm)
 content_width_kot	Largura do conteúdo do KOT (mm)
 content_width_ph	Ou escreva uma largura de conteúdo, 40–210 mm
 content_width_help	Quão largo este recibo imprime. A conta e o KOT mantêm suas próprias larguras.
-content_width_bill_help	Quão largo a conta do cliente imprime. Padrão 210 mm (página). Recibo estreito de 58 mm, recibo largo de 80 mm, 4 polegadas de 112 mm, A4 largo de 210 mm. Digite qualquer valor entre 40 e 210. Os tickets da cozinha têm sua própria largura na aba KOT.
-content_width_kot_help	Quão largo o ticket da cozinha imprime. Padrão 80 mm. Recibo estreito de 58 mm, recibo largo de 80 mm, 4 polegadas de 112 mm, página de 210 mm. Digite qualquer valor entre 40 e 210. As contas do cliente têm sua própria largura na aba Conta.
+content_width_bill_help	Largura com que a conta do cliente é impressa, em mm (40–210). É impressa neste tamanho real em qualquer papel; em papel mais estreito, a parte além da margem de impressão é cortada (ver Papel). Os talões de cozinha têm a sua largura no separador KOT.
+content_width_kot_help	Largura com que o talão de cozinha é impresso, em mm (40–210). É impresso neste tamanho real em qualquer papel; em papel mais estreito, a parte além da margem de impressão é cortada (ver Papel). As contas dos clientes têm a sua largura no separador Conta.
 vp_paper_width	Largura do conteúdo (mm)
 vp_paper_width_ph	Ou escreva uma largura de conteúdo, 40–210 mm
 vp_paper_width_help	A largura do conteúdo define-se em Formato de conta e KOT. Aplica-se à conta e ao ticket de cozinha.
@@ -1213,8 +1241,6 @@ schemes_help	Compre X ganhe Y — ao fechar. Ex. Buy 2 Thali get 1 Chaas
 scheme_bogo_ph	Buy 2 Thali get 1 Chaas
 add_scheme	Adicionar BOGO
 schedule_ph	Horário / happy hour — Mon-Fri 07:00-11:00 ou HappyHour 17:00-19:00=150
-upi_vpa_ph	UPI ID (VPA)
-upi_payee_ph	Beneficiário UPI (opcional)
 upi_qr	UPI QR
 show_upi_qr	Mostrar QR UPI
 close_upi_qr	Fechar
@@ -1295,8 +1321,6 @@ printer_mode_first	A primeira que funciona
 printer_mode_all	Imprimir em todos
 kot_show_area	Área
 kot_hide_area	Ocultar área
-kot_show_item_hdr	Artigo · Qtd
-kot_hide_item_hdr	Ocultar colunas
 kot_show_title	Linha de título
 kot_hide_title	Ocultar título
 kot_field_cycle	Selecionar próximo
@@ -1337,12 +1361,12 @@ private_code_ph	Código de 12 dígitos
 stamp_on	Carimbo: em ficheiro
 pay_qr_on	QR de pagamento: em ficheiro
 pay_qr_off	QR de pagamento: nenhum
+printers_screen_tip	Procurar lista as impressoras que este dispositivo pode usar e as salva para esta loja. Impressoras de conta: Formato de conta e KOT → Conta. Cozinha: Cozinha → Estações de cozinha.
+printers_found_none	Nenhuma impressora encontrada.
+nav_loading	Carregando…
+kot_copy_from	Copiar de
+kot_copy_from_help	Copia o tamanho, a espessura e o alinhamento de cada linha daquele tipo para este. Este tipo mantém seu próprio banner, prefixo de item e tachado. Salve o formato KOT para manter.
 items_tmpl_heading	Modelos de itens
 items_tmpl_help	Pratos, categorias e fotos para o seu cardápio. As configurações da loja e a equipe continuam como estão.
 public_tmpl_help	Cardápios iniciais que qualquer pessoa pode baixar. Precisa de internet uma vez.
 private_tmpl_help	Cardápios de cliente protegidos por um código de 12 dígitos do seu contato Khaynjo.
-printers_screen_tip	Procurar lista as impressoras que este dispositivo pode usar e as salva para esta loja. Impressoras de conta: Formato de conta e KOT → Conta. Cozinha: Cozinha → Estações de cozinha.
-printers_found_none	Nenhuma impressora encontrada.
-kot_copy_from	Copiar de
-kot_copy_from_help	Copia o tamanho, a espessura e o alinhamento de cada linha daquele tipo para este. Este tipo mantém seu próprio banner, prefixo de item e tachado. Salve o formato KOT para manter.
-nav_loading	Carregando…

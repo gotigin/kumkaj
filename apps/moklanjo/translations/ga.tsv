@@ -501,6 +501,17 @@ job_size	Méid cló
 job_size_ph	m.sh. 18, 20, 26…
 test_receipt_format	Admháil tástála
 test_label_format	Lipéad tástála
+paper_heading	Páipéar
+paper_size	{w} × {h} mm
+paper_roll	rolla {w} mm
+paper_not_set	páipéar nach eol fós
+paper_length_mm	Fad (mm)
+printer_paper_help	Páipéar an phrintéara seo i mm. Is rolla é Fad folamh: tá gach duillín chomh fada lena ábhar. Líonann Faigh priontálaithe páipéar folamh ó thiománaí an phrintéara (rolla 80 mm mura féidir leis a rá) agus ní athraíonn sé riamh páipéar atá socraithe cheana.
+preview_help	An duillín seo ar pháipéar an phrintéara a roghnaíodh thíos, mar a phriontálann sé ansin: fíormhéid ón gcúinne uachtarach clé is féidir leis an bprintéir a shroicheadh (liath: imill nach féidir), duillín fada ar níos mó leathanach, gearrtar gach rud thar imeall an pháipéir. Ní athraíonn roghnú printéara ach an réamhamharc; socraítear páipéar gach printéara faoi Printéirí.
+slip_col_width	Leithead (mm)
+no_printer_assigned	Gan printéir
+printer_target_default	priontálaí rialta an ríomhaire seo (seoladh folamh)
+job_preview	Réamhamharc
 test_receipt_sent	Admháil samplach seolta
 test_label_sent	Lipéad samplach seolta
 test_print_no_printer	Gan printéir don phost sin - cuir ceann faoin áit seo

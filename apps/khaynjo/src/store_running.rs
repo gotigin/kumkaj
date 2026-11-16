@@ -2397,6 +2397,7 @@ impl Store {
         }
         fmt.upi_vpa = self.upi_vpa()?;
         fmt.upi_payee = self.upi_payee()?;
+        fmt.logo_image = self.bill_logo_image().ok().flatten();
         Ok(fmt.clamped())
     }
 
@@ -2705,7 +2706,7 @@ mod tests {
     /// A restaurant with an owner, a manager (PIN 9999), a cashier, a
     /// waiter, two dishes, Dine In D1–D3, and the seeded Parcel P1–P24.
     fn shop() -> Shop {
-        let path = std::env::temp_dir().join(format!("khaynjo-running-{}.sqlite3", new_id()));
+        let path = crate::test_dirs::run_root().join(format!("khaynjo-running-{}.sqlite3", new_id()));
         let store = Store::open_path(&path).unwrap();
         let owner = store.list_staff().unwrap().into_iter().next().unwrap();
         store.add_staff("Mona", StaffRole::Manager, "Manager", "9999", &owner).unwrap();

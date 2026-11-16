@@ -92,10 +92,6 @@ bill_item_layout	Rozloženie položky
 bill_item_layout_columns	Stĺpce
 bill_item_layout_stacked	Skladaný
 bill_item_header	Hlavičky stĺpcov
-bill_item_hdr_item	Hlavička položky
-bill_item_hdr_qty	Množstvo hlavičky
-bill_item_hdr_price	Hlavička ceny
-bill_item_hdr_amount	Hlavička sumy
 bill_item_name	Názov jedla
 bill_item_qty	Množ
 bill_item_price	Cena
@@ -103,6 +99,20 @@ bill_item_amount	Suma
 bill_item_note	Poznámka k jedlu
 bill_item_col_sep	Pravidlá stĺpcov
 slip_columns	Stĺpce
+slip_col_header	Hlavička
+bill_line_logo	Logo
+bill_logo_picture	Obrázok
+bill_logo_choose	Vybrať obrázok
+bill_logo_remove	Odstrániť obrázok
+bill_logo_none	Žiadny obrázok
+bill_logo_unreadable	Nie je to obrázok, ktorý aplikácia vie prečítať
+bill_logo_width	Šírka (px)
+bill_logo_height	Výška (px)
+bill_logo_tones	Sivé tóny
+bill_logo_solid	Plné
+bill_logo_shaded	Tieňované
+bill_logo_help	Šírka a výška v px. Prázdne sa riadi obrázkom: jedno prázdne zachová tvar, obe prázdne použijú jeho veľkosť; obe zadané ho vložia dovnútra, nikdy roztiahnutý. Bez obrázka: zobrazené logo ponechá svoju výšku ako prázdne miesto; Skryť ho odstráni.
+bill_logo_tones_help	Plné: každá bodka čierna alebo biela, pre ostré logá. Tieňované: sivé tóny sa zmenia na jemný vzor bodiek, pre fotky a jemné tiene.
 slip_col_width	Šírka (mm)
 slip_col_start	Medzera na začiatku (px)
 slip_col_end	Medzera na konci (px)
@@ -167,6 +177,21 @@ alerts_help	Ako dlho zostávajú stavové správy na obrazovke (toto prihláseni
 snack_secs_ph	Sekundy (3 – 60, predvolená hodnota 10)
 snack_secs_save	Ušetrite čas upozornenia
 snack_secs_saved	Uložený čas upozornenia — {n} sekúnd
+settings_sec_whatsapp	WhatsApp
+whatsapp_cloud_help	Use your own Meta WhatsApp Cloud API. Create a System User token with whatsapp_business_messaging (temporary dashboard tokens expire). Credentials stay on this Server only — never on extra tills. Accepted means Meta took the request, not that the guest received it.
+whatsapp_phone_id_ph	Phone Number ID
+whatsapp_token_ph	Access Token (leave blank to keep)
+whatsapp_template_ph	Bill template name (optional)
+whatsapp_template_lang_ph	Template language (e.g. en)
+whatsapp_enable	Enable
+whatsapp_disable	Off
+whatsapp_save	Save WhatsApp
+whatsapp_test	Test connection
+whatsapp_disconnect	Disconnect
+whatsapp_send_bill	Send via WhatsApp
+whatsapp_consent	WhatsApp OK
+whatsapp_consent_help	Guest agreed to receive WhatsApp messages. A phone number alone is not consent.
+whatsapp_server_only	Configure WhatsApp on the shop Server device
 settings_sec_backup	Zálohovanie a obnovenie
 settings_sec_diag	Diagnostika
 settings_sec_privacy	Súkromie
@@ -729,6 +754,13 @@ station_vps_dd	Tlačiarne pre túto stanicu
 station_vps_dd_n	{n} tlačiarní · klepnutím zmeníte
 bill_printers_dd	Tlačiarne na účet
 bill_printers_dd_n	{n} tlačiarní na účet · klepnutím zmeníte
+paper_heading	Papier
+paper_size	{w} × {h} mm
+paper_roll	rolka {w} mm
+paper_not_set	papier zatiaľ nie je známy
+paper_length_mm	Dĺžka (mm)
+printer_paper_help	Papier tejto tlačiarne v mm. Prázdna Dĺžka je rolka: každý bloček je taký dlhý ako jeho obsah. Nájdite tlačiarne doplní prázdny papier z ovládača tlačiarne (rolka 80 mm, keď to nevie povedať) a nikdy nezmení už nastavený.
+preview_help	Tento bloček na papieri tlačiarne vybranej nižšie, ako sa na nej vytlačí: v skutočnej veľkosti od ľavého horného rohu, kam tlačiareň dosiahne (sivé: okraje, kam nedosiahne), dlhý bloček na viacerých listoch, všetko za okrajom papiera sa oreže. Výber tlačiarne mení len náhľad; papier každej tlačiarne sa nastavuje v časti Tlačiarne.
 job_layout	Rozloženie
 job_delivery	Ako sa úloha odosiela
 job_delivery_help	Dokument OS, nespracované bajty alebo ESC/POS. Účet a lístok do kuchyne si ponechajú svoje. Každá úloha môže prejsť na ktorúkoľvek tlačiareň, ktorú funkcia Find uložila.
@@ -1105,9 +1137,6 @@ remove_these_tables	Odstráňte tieto jedálenské stoly
 table_remove_ph	Odstráňte: T1-T24 alebo názov jedného jedálenského stola
 find_server	Nájdite server obchodu
 bill_format	Formát faktúry
-bill_header_ph	Adresa | telefón
-fssai_ph	FSSAI licencia č. (India)
-bill_footer_ph	Päta (napr. Ďakujem, navštívte znova)
 reset_bill_format	Obnoviť predvolené nastavenie
 bill_format_reset	Formát faktúry bol obnovený na predvolený
 reset_kot_format	Obnoviť predvolené nastavenie
@@ -1146,7 +1175,6 @@ kot_kind_modified	Upravené
 kot_kind_cancelled	Zrušené
 kot_style_heading	Veľkosť a hmotnosť typu poľa
 kot_style_title	Názov
-kot_style_item_qty	Položka · Množ
 kot_style_field_pick	Vyberte pole
 kot_weight_regular	Pravidelné
 kot_weight_bold	Tučné
@@ -1158,8 +1186,8 @@ content_width_bill	Šírka obsahu faktúry (mm)
 content_width_kot	KOT šírka obsahu (mm)
 content_width_ph	Alebo zadajte šírku obsahu 40–210 mm
 content_width_help	Ako široko sa tlačí tento lístok. Bill a KOT si každý ponechávajú svoju vlastnú šírku.
-content_width_bill_help	Ako široko sa tlačí účet pre hostí. Štandardne 210 mm (strana). Šírka 58 mm, šírka 80 mm, 112 mm 4 palce, 210 mm šírka A4. Zadajte ľubovoľnú hodnotu od 40 do 210. Lístky do kuchyne majú svoju vlastnú šírku na karte KOT.
-content_width_kot_help	Ako široko vytlačí lístok do kuchyne. Štandardne 80 mm. 58 mm úzky list, 80 mm široký list, 112 mm 4-palcový, 210 mm list. Zadajte ľubovoľnú hodnotu od 40 do 210. Účty pre hostí majú na karte Faktúra svoju vlastnú šírku.
+content_width_bill_help	Ako široko sa tlačí účet hosťa, v mm (40–210). Tlačí sa v tejto skutočnej veľkosti na akýkoľvek papier; na užšom papieri sa časť za okrajom tlače oreže (pozri Papier). Kuchynské lístky majú vlastnú šírku na karte KOT.
+content_width_kot_help	Ako široko sa tlačí kuchynský lístok, v mm (40–210). Tlačí sa v tejto skutočnej veľkosti na akýkoľvek papier; na užšom papieri sa časť za okrajom tlače oreže (pozri Papier). Účty hostí majú vlastnú šírku na karte Účet.
 vp_paper_width	Šírka obsahu (mm)
 vp_paper_width_ph	Alebo zadajte šírku obsahu 40–210 mm
 vp_paper_width_help	Šírka obsahu sa nastavuje vo formáte Bill & KOT — oddelene pre bankovku (predvolená hodnota 210 mm) a lístok do kuchyne (predvolená hodnota 80 mm).
@@ -1213,8 +1241,6 @@ schemes_help	BOGO, percentuálna zľava a pevné kombinácie. Kombá sa rozšír
 scheme_bogo_ph	Kúpte 2 Thali a získajte 1 Chaas
 add_scheme	Pridať BOGO
 schedule_ph	Hodiny / šťastná hodina – Po-Pia 07:00-11:00 alebo HappyHour 17:00-19:00=150
-upi_vpa_ph	UPI ID (VPA)
-upi_payee_ph	UPI meno príjemcu platby (voliteľné)
 upi_qr	UPI QR
 show_upi_qr	Zobraziť UPI QR
 close_upi_qr	Zavrieť
@@ -1295,8 +1321,6 @@ printer_mode_first	Najprv to funguje
 printer_mode_all	Tlač na všetky
 kot_show_area	Oblasť
 kot_hide_area	Skryť oblasť
-kot_show_item_hdr	Položka · Množ
-kot_hide_item_hdr	Skryť stĺpce
 kot_show_title	Titulný riadok
 kot_hide_title	Skryť názov
 kot_field_cycle	Vyberte ďalšie
@@ -1337,12 +1361,12 @@ private_code_ph	12-miestny kód
 stamp_on	Pečiatka: v evidencii
 pay_qr_on	Platba QR: v evidencii
 pay_qr_off	Platba QR: žiadna
+printers_screen_tip	Hľadať zobrazí tlačiarne, ktoré toto zariadenie môže použiť, a uloží ich pre tento obchod. Tlačiarne účtov: Formát účtu a KOT → Účet. Kuchyňa: Kuchyňa → Kuchynské stanovištia.
+printers_found_none	Nenašli sa žiadne tlačiarne.
+nav_loading	Načítava sa…
+kot_copy_from	Kopírovať z
+kot_copy_from_help	Skopíruje veľkosť, hrúbku a zarovnanie každého riadka z daného druhu do tohto. Tento druh si ponechá vlastný banner, predponu položiek a prečiarknutie. Na zachovanie uložte formát KOT.
 items_tmpl_heading	Šablóny položiek
 items_tmpl_help	Jedlá, kategórie a fotky pre vaše menu. Nastavenia obchodu a personál zostávajú bez zmeny.
 public_tmpl_help	Štartovacie menu, ktoré si môže stiahnuť ktokoľvek. Internet je potrebný raz.
 private_tmpl_help	Klientske menu chránené 12-miestnym kódom od vášho kontaktu Khaynjo.
-printers_screen_tip	Hľadať zobrazí tlačiarne, ktoré toto zariadenie môže použiť, a uloží ich pre tento obchod. Tlačiarne účtov: Formát účtu a KOT → Účet. Kuchyňa: Kuchyňa → Kuchynské stanovištia.
-printers_found_none	Nenašli sa žiadne tlačiarne.
-kot_copy_from	Kopírovať z
-kot_copy_from_help	Skopíruje veľkosť, hrúbku a zarovnanie každého riadka z daného druhu do tohto. Tento druh si ponechá vlastný banner, predponu položiek a prečiarknutie. Na zachovanie uložte formát KOT.
-nav_loading	Načítava sa…

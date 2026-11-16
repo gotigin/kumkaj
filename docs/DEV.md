@@ -215,6 +215,16 @@ on every OS — never gate one on the device.
    button whenever the list closed another way (outside press, Back, a
    screen change) — removed in all four apps. New pick list → wrap its
    control in ComboField; never a face that changes with open state.
+   **The control inside is `ComboFace` (a button face) or `ComboInput` (a
+   type-or-pick field)** (2026-11-16, all four apps). ComboField draws the
+   mark over the control's last 38 px; these keep 48 px clear on that side
+   (a face on both, so it stays centred) and the face wraps (`flow:
+   Right{wrap: true}`, as every full-width face — bug 7 / CTA faces). Before,
+   every dropdown face set `flow: Down`, so a long value ("Counter-4in ·
+   101.6 × 152.4 mm", "3 printer(s) for the bill · tap to change") ran
+   under ˅ at phone width instead of going on to a second line. Never set
+   `flow` on a ComboFace at the call site. Checked at 420 px (no stall on a
+   face change).
 10. **No printer saved → Find printers right there** (owner 2026-11-14).
    Never tell the owner to go to Settings → Printers. A printer checklist
    (bill, kitchen station, test page / KOT, assign) with no printer saved
@@ -932,10 +942,16 @@ their own APK by the production label (`khaynjo.apk`, `kumkajcourier.apk`)
 — Moklanjo's used to copy every APK and AAB under `target/`, other apps'
 and dev builds included.
 
-**Emulator on this host (x86_64):** Google's system images here are
-x86_64 without ARM translation, so the arm64 APK will not install. Add
-the target once (`rustup target add x86_64-linux-android`) and build with
-cargo-makepad's `--abi=x86_64`. Create the AVD with `ANDROID_USER_HOME`,
+**Emulator on this host (x86_64):** the API 33 Play image here is x86_64
+only (no ARM translation), so the arm64 APK will not install there; the
+API 35 / 36.1 / 37 images list `x86_64,arm64-v8a` (`ndk_translation`). For
+a dev check build x86_64 anyway: add the target once (`rustup target add
+x86_64-linux-android`) and build with cargo-makepad's `--abi=x86_64`
+(`android … --abi=x86_64 build`, then `adb -s emulator-<port> install`).
+With a tablet also attached, every adb call names the emulator with `-s`.
+Boot an existing AVD with `-read-only` (nothing is saved back into it). The
+Android print dialog also lists real printers it finds on the LAN — pick
+**Save as PDF** for a check (2026-11-16, PRINTER.md § Paper). Create the AVD with `ANDROID_USER_HOME`,
 `ANDROID_EMULATOR_HOME` and `ANDROID_AVD_HOME` pointed at a scratch folder:
 `avdmanager` otherwise rewrites the developer's `~/.android/devices.xml`
 (it renamed it to `devices.xml.old` once, 2026-10-26). A LAN test across
@@ -1512,7 +1528,7 @@ migrate on load; blank fields stay empty (no invented “Default” printer).
   Layout: one list per tab in print order, the open line edited where it
   sits (`bill_pick_*` / `bill_after_*`, `kot_pick_*` / `kot_after_*` slots
   are positions in that list; `kot_lines` / `kot_move_line` keep Title first
-  and Item / Qty last). `layout_slip_editors` sets every row's flow from the
+  and Items (`ItemQty`) last). `layout_slip_editors` sets every row's flow from the
   form card width; `align_slip_previews` (after each draw) moves the side
   preview beside the open line — a redraw requested inside a draw is
   dropped, so it queues the next draw with `cx.redraw_list_in_draw`.
@@ -1933,6 +1949,17 @@ when Android smoke was skipped (no adb/device/APK) unless
 `CERT_ALLOW_ANDROID_SKIP=1` — do not claim Play-ready without a device proof.
 `CERT_REQUIRE_ADB=1` still forces a hard fail on skip for any tier.
 
+**A failed check must fail the tier (fixed 2026-11-16).** Every tier was
+called as `run_x "$app" || ok=0`. Inside a function called from `||`,
+`&&` or `if`, bash ignores `set -e`, even in a subshell that sets it again.
+So a failing `cargo test --bins` mid-tier went on to the next check, and
+the tier passed on the last check's status: "CERT PASS [khaynjo/fast]" with
+`test result: FAILED` in its own `log.txt`. Tiers now run through `tier
+run_x "$app"`: a plain call, each tier in its own subshell, errexit live
+inside. Every earlier fast log from 2026-11-15/16 was checked: only that one
+run had hidden a failure. When reading a cert, grep its `log.txt` for
+`FAILED` too, not only the summary line.
+
 Honesty: does not replace Console / Partner Center human review, full OCR of
 every language, or a real-device GPU farm. Apple stays scaffold-only until
 Makepad iOS packaging is product-ready.
@@ -1966,19 +1993,54 @@ integration tests set a sink themselves.
 Moklanjo, which got its print sink (2026-10-24) so store-level printing
 can never reach the OS printer from a test.
 
-**Open (2026-11-15): tests leave their books and images in `/tmp`.** Test
-helpers open books as `std::env::temp_dir()/<name>-<id>.sqlite3`
-(`store.rs` `temp_db`, `net.rs` `khaynjo-year-*`, the LAN / journey /
-service tests, all four apps) and never remove them. Item images go next to
-the books (`Store::item_images_dir` = the book's folder + `item_images`), so
-every run adds to one shared `/tmp/item_images`. By 2026-11-15 that folder
-held 51.75 GB (103,628 test images in two days) and the loose test books
-~50 GB; `/tmp` hit the user's quota (`EDQUOT`) and a whole test run
-failed. The images were cleared that day; the books and the
-`khaynjo-staged-*` folders were left. Fix still to do: each test opens its
-books in its own temporary folder and removes it at the end, so its images
-go with it. Until then, if a run fails with "Disk quota exceeded", look at
-`/tmp/item_images` and the `/tmp/*.sqlite3*` files first.
+### Tests leave nothing in the temp folder
+
+**Fixed 2026-11-16, all four apps** (open since 2026-11-15). Test code
+never uses `std::env::temp_dir()` itself. It uses `test_dirs::run_root()`
+(`src/test_dirs.rs`, a hidden library module; `crate::test_dirs::…` in the
+library, `kumkaj_<app>::test_dirs::…` from `shell_tests/` and `tests/`).
+That is one folder per test process, `<temp>/kumkaj-test-run-<pid>`. A
+run first removes the folders of runs whose process has ended (Linux
+checks `/proc/<pid>`; elsewhere a folder unchanged for a day). So
+whatever a test leaves is gone by the next test binary: books,
+`item_images`, receipts, attachments, staged catalogues, `printers.json`,
+even after a panic skipped the clean-up. App code keeps
+`std::env::temp_dir()` for its own temporary files (print jobs, uploads,
+smoke output).
+
+The store also removes `<books>-wal` / `<books>-shm` when it closes if the
+books file is gone (`SidecarSweep`, the last field of `Store`, so it drops
+after the connection; test
+`books_removed_while_open_leave_no_journal_beside_them`). Tests delete
+their books while the store is still open. SQLite then cannot fold the
+journal back on close, and it left both files on every run. In the app a
+leftover `-wal` would be read as the journal of the next books file made at
+that path.
+
+Guard (`test_code_never_writes_to_the_bare_temp_folder`, each app's
+`test_dirs.rs`). It scans `src/` and `tests/`, skipping strings and
+comments, and fails on `std::env::temp_dir()` in test code (a
+`#[cfg(test)]` / `#[cfg(all(test, …))]` item, `shell_tests/`, `tests/`)
+or `run_root()` in app code. `the_scan_tells_test_code_from_app_code`
+checks the scan itself.
+
+Measured, one `cargo test -p kumkaj-khaynjo` in an empty `TMPDIR`:
+
+| | Left in the temp folder |
+|---|---|
+| Before | 1.5 GB: 16 books, 166 `-wal` + 166 `-shm`, 897 MB `item_images`, receipts / attachments / brand images / staged folders, `printers.json` |
+| After | one empty `kumkaj-test-run-<pid>` (the last test binary's), removed by the next run |
+
+How it was found: by 2026-11-16 the old leftovers in `/tmp` were ~100 GB:
+55,909 test books and journals (77.8 GB), `item_images` 21 GB (back after
+being cleared on 2026-11-15) and 84 `khaynjo-staged-*` folders (6.1 GB).
+That reached the per-user quota on the `/tmp` tmpfs (`EDQUOT`), and
+`cargo khaynjo-dev` failed building `ring` because `cc` could not write its
+temporary files. Folders from before the fix are not swept (they are not
+`kumkaj-test-run-*`). Remove them by hand: the `/tmp/*.sqlite3*` test books
+(`kumkaj-*`, `<app>-*`), `/tmp/item_images`, `/tmp/khaynjo-staged-*`.
+While `/tmp` is full, `TMPDIR=$PWD/target/test-tmp` lets builds and tests
+run.
 
 ## Packaging
 
@@ -2109,7 +2171,7 @@ Platform ids: see **Platform naming** above (`com.moklanjo` / `com.moklanjo.debu
 2. Finish onboarding — Moklanjo is locked; Fresh or Book, then Done
 3. Booking desk: weigh / rate / cash or account; confirm bill totals (Actual / Applied / Rounded)
 4. Owner: Day book shows today; Pay out records carrier bills & expenses; Parties settle; Day close; Reports
-4b. Waiter (no Sales): unlock → Floor/Order (not Day book); nav has no Books/Buy/Reports; Day book hub must not show Expense / Day close / Bank / Parties or TODAY money
+4b. Cashier (seed: Asha, PIN 2222): unlock lands on the cashier's first permitted nav item, later on the last one used; the rail shows only the peers the cashier's rights allow, and the Day book hub shows no Expense / Day close / Bank / Parties or TODAY money those rights do not allow (MOKLANJO.md § Rights match chrome)
 5. More → Rates: zones/services, tax rate name or %, optional photo (initials or custom — no food-menu pack)
 5b. Settings → Country & tax: apply `GB` (VAT inclusive, £), then `US` (sales tax exclusive, $); save a business id and check it prints
 6. Ops / COD / Riders when fleet features are used

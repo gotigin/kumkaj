@@ -92,10 +92,6 @@ bill_item_layout	Uppsetning valmyndaratriðis
 bill_item_layout_columns	Dálkar
 bill_item_layout_stacked	Staflað
 bill_item_header	Dálkahausar
-bill_item_hdr_item	Heiti valmyndaratriðis
-bill_item_hdr_qty	Magn haus
-bill_item_hdr_price	Verðhaus
-bill_item_hdr_amount	Upphæðarhaus
 bill_item_name	Nafn fats
 bill_item_qty	Magn
 bill_item_price	Verð
@@ -103,6 +99,20 @@ bill_item_amount	Upphæð
 bill_item_note	Rétt aths
 bill_item_col_sep	Dálkareglur
 slip_columns	Dálkar
+slip_col_header	Haus
+bill_line_logo	Merki
+bill_logo_picture	Mynd
+bill_logo_choose	Velja mynd
+bill_logo_remove	Fjarlægja mynd
+bill_logo_none	Engin mynd
+bill_logo_unreadable	Ekki mynd sem forritið getur lesið
+bill_logo_width	Breidd (px)
+bill_logo_height	Hæð (px)
+bill_logo_tones	Gráir tónar
+bill_logo_solid	Heilt
+bill_logo_shaded	Skyggt
+bill_logo_help	Breidd og hæð í px. Autt fylgir myndinni: eitt autt heldur löguninni, bæði auð nota eigin stærð myndarinnar; bæði stillt koma henni fyrir inni í, aldrei teygð. Engin mynd: sýnt merki heldur hæð sinni sem auðu rými; Fela fjarlægir það.
+bill_logo_tones_help	Heilt: hver punktur svartur eða hvítur, fyrir skýr merki. Skyggt: gráir tónar verða fínt punktamynstur, fyrir ljósmyndir og mjúka skyggingu.
 slip_col_width	Breidd (mm)
 slip_col_start	Upphafsbil (px)
 slip_col_end	Lokabil (px)
@@ -167,6 +177,21 @@ alerts_help	Hversu lengi stöðuskilaboð eru á skjánum fyrir þig (þessi inn
 snack_secs_ph	Sekúndur (3–60, sjálfgefið 10)
 snack_secs_save	Sparaðu viðvörunartíma
 snack_secs_saved	Viðvörunartími vistaður — {n} sekúndur
+settings_sec_whatsapp	WhatsApp
+whatsapp_cloud_help	Use your own Meta WhatsApp Cloud API. Create a System User token with whatsapp_business_messaging (temporary dashboard tokens expire). Credentials stay on this Server only — never on extra tills. Accepted means Meta took the request, not that the guest received it.
+whatsapp_phone_id_ph	Phone Number ID
+whatsapp_token_ph	Access Token (leave blank to keep)
+whatsapp_template_ph	Bill template name (optional)
+whatsapp_template_lang_ph	Template language (e.g. en)
+whatsapp_enable	Enable
+whatsapp_disable	Off
+whatsapp_save	Save WhatsApp
+whatsapp_test	Test connection
+whatsapp_disconnect	Disconnect
+whatsapp_send_bill	Send via WhatsApp
+whatsapp_consent	WhatsApp OK
+whatsapp_consent_help	Guest agreed to receive WhatsApp messages. A phone number alone is not consent.
+whatsapp_server_only	Configure WhatsApp on the shop Server device
 settings_sec_backup	Afrita og endurheimta
 settings_sec_diag	Greining
 settings_sec_privacy	Persónuvernd
@@ -729,6 +754,13 @@ station_vps_dd	Prentarar fyrir þessa stöð
 station_vps_dd_n	{n} prentarar · pikkaðu á til að breyta
 bill_printers_dd	Prentarar fyrir reikninginn
 bill_printers_dd_n	{n} prentarar fyrir reikninginn · pikkaðu á til að breyta
+paper_heading	Pappír
+paper_size	{w} × {h} mm
+paper_roll	{w} mm rúlla
+paper_not_set	pappír enn óþekktur
+paper_length_mm	Lengd (mm)
+printer_paper_help	Pappír þessa prentara í mm. Auð Lengd er rúlla: hver kvittun er jafnlöng innihaldi sínu. Finndu prentara fyllir í auðan pappír úr rekli prentarans (80 mm rúlla þegar hann getur ekki sagt til) og breytir aldrei pappír sem þegar er stilltur.
+preview_help	Þessi kvittun á pappír prentarans sem valinn er hér fyrir neðan, eins og hún prentast þar: í raunstærð frá efra vinstra horninu sem prentarinn nær (grátt: brúnir sem hann nær ekki), löng kvittun á fleiri blöðum, allt út fyrir brún pappírsins er skorið af. Að velja prentara breytir aðeins forskoðun; pappír hvers prentara er stilltur undir Prentarar.
 job_layout	Skipulag
 job_delivery	Hvernig starfið er sent
 job_delivery_help	OS skjal, óunnin bæti eða ESC/POS. Seðillinn og eldhúsmiðinn halda hver sínu. Hvort verkið getur farið í hvaða prentara sem Finnur hefur vistað.
@@ -1105,9 +1137,6 @@ remove_these_tables	Fjarlægðu þessi borðstofuborð
 table_remove_ph	Fjarlægja: T1-T24, eða eitt borðstofuborð
 find_server	Finndu netþjón búðarinnar
 bill_format	Reikningssnið
-bill_header_ph	Heimilisfang | síma
-fssai_ph	FSSAI leyfi nr. (Indland)
-bill_footer_ph	Fótur (t.d. Þakka þér, komdu aftur)
 reset_bill_format	Endurstilla í sjálfgefið
 bill_format_reset	Reikningssnið endurstillt á sjálfgefið
 reset_kot_format	Endurstilla í sjálfgefið
@@ -1146,7 +1175,6 @@ kot_kind_modified	Breytt
 kot_kind_cancelled	Hætt við
 kot_style_heading	Stærð og þyngd reitstegundar
 kot_style_title	Titill
-kot_style_item_qty	Valmyndaratriði í valmynd · Magn
 kot_style_field_pick	Veldu reit
 kot_weight_regular	Venjulegur
 kot_weight_bold	Djarft
@@ -1158,8 +1186,8 @@ content_width_bill	Innihaldsbreidd reiknings (mm)
 content_width_kot	KOT innihaldsbreidd (mm)
 content_width_ph	Eða sláðu inn innihaldsbreidd, 40–210 mm
 content_width_help	Hversu breiður þessi miði prentar. Bill og KOT halda hver sína breidd.
-content_width_bill_help	Hversu breiður gestareikningurinn prentast. Sjálfgefið 210 mm (síða). 58 mm mjó miði, 80 mm breiður miði, 112 mm 4 tommu, 210 mm A4 á breidd. Sláðu inn hvaða gildi sem er frá 40 til 210. Eldhúsmiðar hafa sína eigin breidd á KOT flipanum.
-content_width_kot_help	Hversu breiður eldhúsmiðinn er prentaður. Sjálfgefið 80 mm. 58 mm mjó miði, 80 mm breiður miði, 112 mm 4 tommu, 210 mm síða. Sláðu inn hvaða gildi sem er frá 40 til 210. Gestareikningar hafa sína eigin breidd á Bill flipanum.
+content_width_bill_help	Hversu breiður reikningur gestsins prentast, í mm (40–210). Hann prentast í þessari raunstærð á hvaða pappír sem er; á mjórri pappír er hlutinn handan prentbrúnar skorinn af (sjá Pappír). Eldhúsmiðar hafa eigin breidd á flipanum KOT.
+content_width_kot_help	Hversu breiður eldhúsmiðinn prentast, í mm (40–210). Hann prentast í þessari raunstærð á hvaða pappír sem er; á mjórri pappír er hlutinn handan prentbrúnar skorinn af (sjá Pappír). Reikningar gesta hafa eigin breidd á flipanum Reikningur.
 vp_paper_width	Efnisbreidd (mm)
 vp_paper_width_ph	Eða sláðu inn innihaldsbreidd, 40–210 mm
 vp_paper_width_help	Efnisbreidd er stillt undir Bill & KOT sniði — sérstaklega fyrir reikninginn (sjálfgefið 210 mm) og eldhúsmiðann (sjálfgefið 80 mm).
@@ -1213,8 +1241,6 @@ schemes_help	BOGO, prósentafsláttur og föst samsetning. Samsetningar stækka 
 scheme_bogo_ph	Buy 2 Thali get 1 Chaas
 add_scheme	Bæta við BOGO
 schedule_ph	Klukkutímar / happy hour — mán-fös 07:00-11:00 eða HappyHour 17:00-19:00=150
-upi_vpa_ph	UPI ID (VPA)
-upi_payee_ph	UPI nafn greiðsluviðtakanda (valfrjálst)
 upi_qr	UPI QR
 show_upi_qr	Sýna UPI QR
 close_upi_qr	Loka
@@ -1295,8 +1321,6 @@ printer_mode_first	Fyrst sem virkar
 printer_mode_all	Prenta á alla
 kot_show_area	Svæði
 kot_hide_area	Fela svæði
-kot_show_item_hdr	Valmyndaratriði í valmynd · Magn
-kot_hide_item_hdr	Fela dálka
 kot_show_title	Titillína
 kot_hide_title	Fela titil
 kot_field_cycle	Veldu næst
@@ -1337,12 +1361,12 @@ private_code_ph	12 stafa kóði
 stamp_on	Stimpill: á skrá
 pay_qr_on	Greiðslu QR: á skrá
 pay_qr_off	Greiðslu QR: engin
+printers_screen_tip	Leita sýnir prentarana sem þetta tæki getur notað og vistar þá fyrir þessa verslun. Reikningsprentarar: Snið reiknings og KOT → Reikningur. Eldhús: Eldhús → Eldhússtöðvar.
+printers_found_none	Engir prentarar fundust.
+nav_loading	Hleður…
+kot_copy_from	Afrita frá
+kot_copy_from_help	Afritar stærð, þykkt og jöfnun hverrar línu úr þeirri gerð yfir í þessa. Þessi gerð heldur eigin borða, vöruforskeyti og yfirstrikun. Vistaðu KOT-snið til að halda því.
 items_tmpl_heading	Sniðmát vara
 items_tmpl_help	Réttir, flokkar og myndir fyrir matseðilinn þinn. Verslunarstillingar og starfsfólk haldast óbreytt.
 public_tmpl_help	Upphafsmatseðlar sem hver sem er getur sótt. Þarf internet einu sinni.
 private_tmpl_help	Matseðlar viðskiptavina læstir með 12 stafa kóða frá Khaynjo-tengilið þínum.
-printers_screen_tip	Leita sýnir prentarana sem þetta tæki getur notað og vistar þá fyrir þessa verslun. Reikningsprentarar: Snið reiknings og KOT → Reikningur. Eldhús: Eldhús → Eldhússtöðvar.
-printers_found_none	Engir prentarar fundust.
-kot_copy_from	Afrita frá
-kot_copy_from_help	Afritar stærð, þykkt og jöfnun hverrar línu úr þeirri gerð yfir í þessa. Þessi gerð heldur eigin borða, vöruforskeyti og yfirstrikun. Vistaðu KOT-snið til að halda því.
-nav_loading	Hleður…

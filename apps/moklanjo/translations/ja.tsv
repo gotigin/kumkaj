@@ -501,6 +501,17 @@ job_size	フォントサイズ
 job_size_ph	例: 18, 20, 26…
 test_receipt_format	テスト受信
 test_label_format	テストラベル
+paper_heading	用紙
+paper_size	{w} × {h} mm
+paper_roll	{w} mm ロール
+paper_not_set	用紙はまだ不明です
+paper_length_mm	長さ (mm)
+printer_paper_help	このプリンターの用紙 (mm)。長さが空欄ならロール紙で、伝票は内容の長さになります。「プリンターを探す」は空欄の用紙をプリンターのドライバーから入力し (わからない場合は 80 mm ロール)、設定済みの用紙は決して変更しません。
+preview_help	下で選んだプリンターの用紙に、そこで印刷されるとおりにこの伝票を表示します。プリンターが届く左上から実寸で (灰色: 届かない余白)、長い伝票は複数の用紙に、用紙の端を越えた部分は切れます。プリンターを選んでもプレビューだけが変わります。各プリンターの用紙は「プリンター」で設定します。
+slip_col_width	幅 (mm)
+no_printer_assigned	プリンターなし
+printer_target_default	默认プリンター
+job_preview	プレビュー
 test_receipt_sent	領収書のサンプルを送信しました
 test_label_sent	サンプルラベルを送信しました
 test_print_no_printer	そのジョブにはプリンターがありません - この場所にプリンターを追加します

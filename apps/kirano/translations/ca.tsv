@@ -60,10 +60,6 @@ bill_item_layout	Disposició de l'article
 bill_item_layout_columns	Columnes
 bill_item_layout_stacked	Apilat
 bill_item_header	Capçaleres de columna
-bill_item_hdr_item	Capçalera d'article
-bill_item_hdr_qty	Capçalera de qtat
-bill_item_hdr_price	Capçalera de preu
-bill_item_hdr_amount	Capçalera d'import
 bill_item_name	Nom de l'article
 bill_item_qty	Qtat
 bill_item_price	Preu
@@ -71,6 +67,13 @@ bill_item_amount	Import
 bill_item_note	Nota d'article
 bill_item_col_sep	Línies de columna
 slip_col_width	Amplada (mm)
+paper_heading	Paper
+paper_size	{w} × {h} mm
+paper_roll	rotlle de {w} mm
+paper_not_set	paper encara desconegut
+paper_length_mm	Llargada (mm)
+printer_paper_help	El paper d'aquesta impressora en mm. Una Llargada buida és un rotlle: cada tiquet és tan llarg com el seu contingut. Troba impressores omple el paper buit amb el del controlador de la impressora (un rotlle de 80 mm si no ho pot dir) i mai no canvia un paper ja definit.
+preview_help	Aquest tiquet sobre el paper de la impressora triada a sota, tal com s'hi imprimeix: a mida real des de la cantonada superior esquerra que la impressora pot assolir (gris: vores que no pot), un tiquet llarg en més fulls, tot el que passa de la vora del paper es retalla. Triar una impressora només canvia la previsualització; el paper de cada impressora es defineix a Impressores.
 slip_col_start	Espai inicial (px)
 slip_col_end	Espai final (px)
 slip_columns_help	L’amplada de cada columna inclou el seu espai inicial i final. El text s’ajusta dins la seva columna; el que sobrepassa l’amplada del contingut es retalla, en paper i a la previsualització.
@@ -838,3 +841,4 @@ nav_loading	S'està carregant…
 printer_mode_first	La primera que funcioni
 printer_mode_all	Imprimeix a totes
 slip_columns	Columnes
+slip_col_header	Capçalera

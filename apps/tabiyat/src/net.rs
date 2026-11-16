@@ -2464,7 +2464,7 @@ mod tests {
 
     /// A Server with a cashier (2222), a manager (9999) and a ₹200 Thali.
     fn lan_shop() -> (PathBuf, Store, Guard) {
-        let path = std::env::temp_dir().join(format!("tabiyat-lan-{}.sqlite3", new_id()));
+        let path = crate::test_dirs::run_root().join(format!("tabiyat-lan-{}.sqlite3", new_id()));
         let store = Store::open_path(&path).unwrap();
         let owner = store.list_staff().unwrap().into_iter().next().unwrap();
         store.add_staff("Wasim", StaffRole::Cashier, "Cashier", "2222", &owner).unwrap();
@@ -2971,7 +2971,7 @@ mod tests {
     /// is the exact guard, this the end-to-end check.
     #[test]
     fn a_busy_years_books_still_sync_quickly() {
-        let path = std::env::temp_dir().join(format!("tabiyat-year-{}.sqlite3", new_id()));
+        let path = crate::test_dirs::run_root().join(format!("tabiyat-year-{}.sqlite3", new_id()));
         let store = Store::open_path(&path).unwrap();
         store.seed_busy_books_for_test(200, 150, 2000);
         let started = Instant::now();
@@ -2999,7 +2999,7 @@ mod tests {
         assert_eq!(snap.venue_icon_key, "custom:venue_icon.webp");
 
         let device_path =
-            std::env::temp_dir().join(format!("tabiyat-device-logo-{}.sqlite3", new_id()));
+            crate::test_dirs::run_root().join(format!("tabiyat-device-logo-{}.sqlite3", new_id()));
         let device = Store::open_path(&device_path).unwrap();
         // Seed a leftover logo from a prior shop, then pair to this Server.
         device.set_paired_server_id("server-old").unwrap();
@@ -3049,7 +3049,7 @@ mod tests {
         let mut cart = Cart::default();
         cart.add_or_bump(&thali);
         store.finalize_sale(&cart.to_sale_draft().unwrap(), PayMethod::Cash, None, &owner).unwrap();
-        let device_path = std::env::temp_dir().join(format!("tabiyat-device-{}.sqlite3", new_id()));
+        let device_path = crate::test_dirs::run_root().join(format!("tabiyat-device-{}.sqlite3", new_id()));
         let device = Store::open_path(&device_path).unwrap();
         let first = build_snapshot(&store).unwrap();
         apply_snapshot(&device, &first).unwrap();
@@ -3166,7 +3166,7 @@ mod tests {
             .apply_books_op(crate::books_op::BooksOp::SetCurrency { code: "USD".into() }, &owner)
             .unwrap();
         store.meta_set_for_test("frequent_days", Some("7"));
-        let device_path = std::env::temp_dir().join(format!("tabiyat-client-prefs-{}.sqlite3", new_id()));
+        let device_path = crate::test_dirs::run_root().join(format!("tabiyat-client-prefs-{}.sqlite3", new_id()));
         let device = Store::open_path(&device_path).unwrap();
         device.prepare_as_client_terminal().unwrap();
         apply_snapshot(&device, &build_snapshot(&store).unwrap()).unwrap();

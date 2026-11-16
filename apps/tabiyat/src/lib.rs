@@ -25,6 +25,7 @@ pub mod net;
 pub mod notify;
 pub mod phone;
 pub mod precise;
+pub mod os_paper;
 pub mod print_share;
 #[cfg(target_os = "android")]
 pub mod print_android;
@@ -36,6 +37,8 @@ pub mod snack;
 pub mod startup;
 pub mod store;
 pub mod suggest;
+#[doc(hidden)]
+pub mod test_dirs;
 pub mod thumbs;
 pub mod uninstall_wipe;
 pub mod upi_qr;

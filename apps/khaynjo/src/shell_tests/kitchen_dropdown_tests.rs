@@ -20,7 +20,7 @@ mod kitchen_dropdown_tests {
     impl DeskShop {
         fn new() -> Self {
             let path =
-                std::env::temp_dir().join(format!("khaynjo-kitchen-dd-{}.sqlite3", new_id()));
+                kumkaj_khaynjo::test_dirs::run_root().join(format!("khaynjo-kitchen-dd-{}.sqlite3", new_id()));
             let store = Store::open_path(&path).unwrap();
             let owner = store.list_staff().unwrap().into_iter().next().unwrap();
             let tandoor = store.add_station("Tandoor").unwrap();

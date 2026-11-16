@@ -72,10 +72,6 @@ bill_item_layout	Rozloženie položky
 bill_item_layout_columns	Stĺpce
 bill_item_layout_stacked	Skladaný
 bill_item_header	Hlavičky stĺpcov
-bill_item_hdr_item	Hlavička položky
-bill_item_hdr_qty	Množstvo hlavičky
-bill_item_hdr_price	Hlavička ceny
-bill_item_hdr_amount	Hlavička sumy
 bill_item_name	Názov medicíny
 bill_item_qty	Množ
 bill_item_price	Cena
@@ -83,6 +79,13 @@ bill_item_amount	Suma
 bill_item_note	Rx / poznámka k predaju
 bill_item_col_sep	Pravidlá stĺpcov
 slip_col_width	Šírka (mm)
+paper_heading	Papier
+paper_size	{w} × {h} mm
+paper_roll	rolka {w} mm
+paper_not_set	papier zatiaľ nie je známy
+paper_length_mm	Dĺžka (mm)
+printer_paper_help	Papier tejto tlačiarne v mm. Prázdna Dĺžka je rolka: každý bloček je taký dlhý ako jeho obsah. Nájdite tlačiarne doplní prázdny papier z ovládača tlačiarne (rolka 80 mm, keď to nevie povedať) a nikdy nezmení už nastavený.
+preview_help	Tento bloček na papieri tlačiarne vybranej nižšie, ako sa na nej vytlačí: v skutočnej veľkosti od ľavého horného rohu, kam tlačiareň dosiahne (sivé: okraje, kam nedosiahne), dlhý bloček na viacerých listoch, všetko za okrajom papiera sa oreže. Výber tlačiarne mení len náhľad; papier každej tlačiarne sa nastavuje v časti Tlačiarne.
 slip_col_start	Medzera na začiatku (px)
 slip_col_end	Medzera na konci (px)
 slip_columns_help	Šírka každého stĺpca zahŕňa jeho medzeru na začiatku a na konci. Text sa zalamuje vo svojom stĺpci; čo presahuje šírku obsahu, sa oreže – na papieri aj v náhľade.
@@ -850,3 +853,4 @@ nav_loading	Načítava sa…
 printer_mode_first	Najprv to funguje
 printer_mode_all	Tlač na všetky
 slip_columns	Stĺpce
+slip_col_header	Hlavička

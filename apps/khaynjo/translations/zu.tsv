@@ -92,10 +92,6 @@ bill_item_layout	Isakhiwo sento yemenyu
 bill_item_layout_columns	Amakholomu
 bill_item_layout_stacked	Kustakiwe
 bill_item_header	Izihloko zekholomu
-bill_item_hdr_item	Unhlokweni wento yemenyu yemenyu
-bill_item_hdr_qty	Isihloko esikhulu
-bill_item_hdr_price	Isihloko senani
-bill_item_hdr_amount	Iheda yenani
 bill_item_name	Igama lesidlo
 bill_item_qty	Inani
 bill_item_price	Inani
@@ -103,6 +99,20 @@ bill_item_amount	Inani
 bill_item_note	Inothi lesidlo
 bill_item_col_sep	Imithetho yekholomu
 slip_columns	Amakholomu
+slip_col_header	Isihloko
+bill_line_logo	Ilogo
+bill_logo_picture	Isithombe
+bill_logo_choose	Khetha isithombe
+bill_logo_remove	Susa isithombe
+bill_logo_none	Asikho isithombe
+bill_logo_unreadable	Akusona isithombe i-app engasifunda
+bill_logo_width	Ububanzi (px)
+bill_logo_height	Ubude (px)
+bill_logo_tones	Ompunga
+bill_logo_solid	Okuqinile
+bill_logo_shaded	Okunesithunzi
+bill_logo_help	Ububanzi nobude ku-px. Okungenalutho kulandela isithombe: esisodwa esingenalutho sigcina ukwakheka, kokubili okungenalutho kusebenzisa usayizi waso; kokubili okubekiwe kusifaka ngaphakathi, kungasinwebi. Asikho isithombe: ilogo eboniswayo igcina ubude bayo njengendawo engenalutho; Fihla iyayisusa.
+bill_logo_tones_help	Okuqinile: ichashazi ngalinye limnyama noma limhlophe, kumalogo acacile. Okunesithunzi: ompunga uba iphethini yamachashazi amancane, ezithombeni nesithunzi esithambile.
 slip_col_width	Ububanzi (mm)
 slip_col_start	Isikhala sokuqala (px)
 slip_col_end	Isikhala sokugcina (px)
@@ -167,6 +177,21 @@ alerts_help	Imilayezo yesimo ihlala isikhathi esingakanani esikrinini kuwe (lokh
 snack_secs_ph	Amasekhondi (3–60, okuzenzakalelayo 10)
 snack_secs_save	Londoloza isikhathi sokuxwayisa
 snack_secs_saved	Isikhathi sesexwayiso silondoloziwe — {n} imizuzwana
+settings_sec_whatsapp	WhatsApp
+whatsapp_cloud_help	Use your own Meta WhatsApp Cloud API. Create a System User token with whatsapp_business_messaging (temporary dashboard tokens expire). Credentials stay on this Server only — never on extra tills. Accepted means Meta took the request, not that the guest received it.
+whatsapp_phone_id_ph	Phone Number ID
+whatsapp_token_ph	Access Token (leave blank to keep)
+whatsapp_template_ph	Bill template name (optional)
+whatsapp_template_lang_ph	Template language (e.g. en)
+whatsapp_enable	Enable
+whatsapp_disable	Off
+whatsapp_save	Save WhatsApp
+whatsapp_test	Test connection
+whatsapp_disconnect	Disconnect
+whatsapp_send_bill	Send via WhatsApp
+whatsapp_consent	WhatsApp OK
+whatsapp_consent_help	Guest agreed to receive WhatsApp messages. A phone number alone is not consent.
+whatsapp_server_only	Configure WhatsApp on the shop Server device
 settings_sec_backup	Gcina futhi ubuyisele
 settings_sec_diag	Ukuxilonga
 settings_sec_privacy	Ubumfihlo
@@ -729,6 +754,13 @@ station_vps_dd	Amaphrinta alesi siteshi
 station_vps_dd_n	{n} amaphrinta · thepha ukuze ushintshe
 bill_printers_dd	Amaphrinta webhili yesivakashi
 bill_printers_dd_n	{n} amaphrinta webhili yesivakashi · thepha ukuze ushintshe
+paper_heading	Iphepha
+paper_size	{w} × {h} mm
+paper_roll	umqulu we-{w} mm
+paper_not_set	iphepha alikaziwa okwamanje
+paper_length_mm	Ubude (mm)
+printer_paper_help	Iphepha lale phrinta ku-mm. UBude obungenalutho ngumqulu: irisidi ngayinye inde njengokuqukethwe kwayo. Thola amaphrinta igcwalisa iphepha elingenalutho kusuka kumshayeli wephrinta (umqulu we-80 mm uma ingakwazi ukusho) futhi ayisoze yashintsha eselisethiwe.
+preview_help	Le risidi ephepheni lephrinta ekhethwe ngezansi, njengoba iphrinta lapho: ubukhulu bangempela kusuka ekhoneni elingaphezulu kwesobunxele elifinyelelwa yiphrinta (mpunga: imiphetho engafinyelelwa), irisidi ende emakhasini amaningi, konke okudlula umphetho wephepha kuyasikwa. Ukukhetha iphrinta kushintsha ukubuka kuqala kuphela; iphepha lephrinta ngayinye lisethwa ngaphansi kwe-Amaphrinta.
 job_layout	Isakhiwo
 job_delivery	Umsebenzi uthunyelwa kanjani
 job_delivery_help	Idokhumenti ye-OS, amabhayithi angavuthiwe, noma ESC/POS. Ibhili yesivakashi kanye nethikithi lasekhishini ngayinye igcina eyayo. Noma yimuphi umsebenzi ungaya kunoma iyiphi iphrinta Thola elondoloziwe.
@@ -1105,9 +1137,6 @@ remove_these_tables	Susa lawa matafula okudlela
 table_remove_ph	Susa: T1-T24, noma igama letafula lokudlela elilodwa
 find_server	Thola iseva yesitolo
 bill_format	Ifomethi yebhili yesivakashi sesivakashi
-bill_header_ph	Ikheli | ifoni
-fssai_ph	FSSAI Inombolo yelayisense. (India)
-bill_footer_ph	Unyaweni (isb. Ngiyabonga, vakashela futhi)
 reset_bill_format	Setha kabusha kube okumisiwe
 bill_format_reset	Ifomethi yebhili yesivakashi isethwe kabusha ukuze ibe okumisiwe
 reset_kot_format	Setha kabusha kube okumisiwe
@@ -1146,7 +1175,6 @@ kot_kind_modified	Kulungisiwe
 kot_kind_cancelled	Kukhanseliwe
 kot_style_heading	Usayizi wohlobo lwensimu nesisindo
 kot_style_title	Isihloko
-kot_style_item_qty	Into yemenyu · Ubuningi
 kot_style_field_pick	Khetha inkambu
 kot_weight_regular	Okuvamile
 kot_weight_bold	Okugqamile
@@ -1158,8 +1186,8 @@ content_width_bill	Ububanzi bokuqukethwe kwebhili yesivakashi sesivakashi (mm)
 content_width_kot	KOT ububanzi bokuqukethwe (mm)
 content_width_ph	Noma thayipha ububanzi bokuqukethwe, 40–210 mm
 content_width_help	Ukuphrinta kwalesi siliphu kubanzi kangakanani. Ibhili yesivakashi sesivakashi futhi KOT ngayinye igcina ububanzi bayo.
-content_width_bill_help	Ukuphrinta kwebhili yesivakashi kubanzi kangakanani. Okuzenzakalelayo 210 mm (ikhasi). 58 mm ukushelela okuncane, 80 mm ukushelela okubanzi, 112 mm 4-intshi, 210 mm A4-wide. Thayipha noma yiliphi inani ukusuka ku-40 ukuya ku-210. Amathikithi ekhishi anobubanzi bawo kuthebhu KOT.
-content_width_kot_help	Ukuphrinta kwethikithi lasekhishini kubanzi kangakanani. Okuzenzakalelayo 80 mm. 58 mm ukushelela okuncane, 80 mm ukushelela okubanzi, 112 mm 4-intshi, 210 mm ikhasi. Thayipha noma yiliphi inani ukusuka kokungu-40 ukuya kokungu-210. Izikweletu zesivakashi ezinobubanzi bazo kuthebhu yenkokhelo yesihambeli sesivakashi.
+content_width_bill_help	Ububanzi iphrintwa ngabo i-bill yesivakashi, ngama-mm (40–210). Iphrintwa ngalo sayizi wangempela kunoma yiliphi iphepha; ephepheni elincane kakhulu, ingxenye edlula amaphethelo okuphrinta iyanqunywa (bheka Iphepha). Amathikithi asekhishini anobubanzi bawo kuthebhu ye-KOT.
+content_width_kot_help	Ububanzi iphrintwa ngabo ithikithi lasekhishini, ngama-mm (40–210). Liphrintwa ngalo sayizi wangempela kunoma yiliphi iphepha; ephepheni elincane kakhulu, ingxenye edlula amaphethelo okuphrinta iyanqunywa (bheka Iphepha). Ama-bill ezivakashi anobubanzi bawo kuthebhu ye-Bill.
 vp_paper_width	Ububanzi bokuqukethwe (mm)
 vp_paper_width_ph	Noma thayipha ububanzi bokuqukethwe, 40–210 mm
 vp_paper_width_help	Ububanzi bokuqukethwe busethwe ngaphansi kwesakhiwo sebhili yesivakashi & KOT — ngokwehlukana kwenkokhelo yesivakashi (okuzenzakalelayo 210 mm) kanye nethikithi lasekhishini (okuzenzakalelayo 80 mm).
@@ -1213,8 +1241,6 @@ schemes_help	BOGO, iphesenti lesaphulelo, nama-combo alungisiwe. Ama-Combo anweb
 scheme_bogo_ph	Buy 2 Thali get 1 Chaas
 add_scheme	Engeza BOGO
 schedule_ph	Amahora / ihora lenjabulo — Mon-Fri 07:00-11:00 noma HappyHour 17:00-19:00=150
-upi_vpa_ph	UPI ID (VPA)
-upi_payee_ph	UPI igama lomkhokheli (uma uthanda)
 upi_qr	UPI QR
 show_upi_qr	Bonisa UPI QR
 close_upi_qr	Vala
@@ -1295,8 +1321,6 @@ printer_mode_first	Okokuqala kuyasebenza
 printer_mode_all	Phrinta kukho konke
 kot_show_area	Indawo
 kot_hide_area	Fihla indawo
-kot_show_item_hdr	Into yemenyu · Ubuningi
-kot_hide_item_hdr	Fihla amakholomu
 kot_show_title	Umugqa wesihloko
 kot_hide_title	Fihla isihloko
 kot_field_cycle	Khetha okulandelayo
@@ -1337,12 +1361,12 @@ private_code_ph	Ikhodi yezinombolo ezingu-12
 stamp_on	Isitembu: efayelini
 pay_qr_on	I-QR yokukhokha: efayeleni
 pay_qr_off	Inkokhelo ye-QR: ayikho
+printers_screen_tip	Sesha ibonisa amaphrinta le divayisi engawasebenzisa futhi iwagcine kulesi sitolo. Amaphrinta ezikweletu: Ifomethi yesikweletu ne-KOT → Isikweletu. Ikhishi: Ikhishi → Iziteshi zekhishi.
+printers_found_none	Awekho amaphrinta atholakele.
+nav_loading	Iyalayisha…
+kot_copy_from	Kopisha ku
+kot_copy_from_help	Ikopisha usayizi, ubukhulu nokuqondaniswa komugqa ngamunye kusuka kuloho hlobo kuya kulolu. Lolu hlobo lugcina ibhanela lalo, isiqalo sento nomugqa wokucisha. Londoloza ifomethi ye-KOT ukuze uyigcine.
 items_tmpl_heading	Izifanekiso zezinto
 items_tmpl_help	Izitsha, izigaba nezithombe zemenyu yakho. Izilungiselelo zesitolo nabasebenzi kuhlala kunjalo.
 public_tmpl_help	Amamenyu okuqala noma ubani angawalanda. Kudingeka i-inthanethi kanye.
 private_tmpl_help	Amamenyu amakhasimende akhiyiwe ngekhodi yezinombolo ezi-12 evela kuxhumana naye wakho we-Khaynjo.
-printers_screen_tip	Sesha ibonisa amaphrinta le divayisi engawasebenzisa futhi iwagcine kulesi sitolo. Amaphrinta ezikweletu: Ifomethi yesikweletu ne-KOT → Isikweletu. Ikhishi: Ikhishi → Iziteshi zekhishi.
-printers_found_none	Awekho amaphrinta atholakele.
-kot_copy_from	Kopisha ku
-kot_copy_from_help	Ikopisha usayizi, ubukhulu nokuqondaniswa komugqa ngamunye kusuka kuloho hlobo kuya kulolu. Lolu hlobo lugcina ibhanela lalo, isiqalo sento nomugqa wokucisha. Londoloza ifomethi ye-KOT ukuze uyigcine.
-nav_loading	Iyalayisha…

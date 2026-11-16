@@ -501,6 +501,17 @@ job_size	Burtu izmērs
 job_size_ph	piem. 18, 20, 26…
 test_receipt_format	Pārbaudes kvīts
 test_label_format	Testa etiķete
+paper_heading	Papīrs
+paper_size	{w} × {h} mm
+paper_roll	{w} mm rullis
+paper_not_set	papīrs vēl nav zināms
+paper_length_mm	Garums (mm)
+printer_paper_help	Šī printera papīrs mm. Tukšs Garums ir rullis: katrs čeks ir tik garš kā tā saturs. “Atrast printerus” aizpilda tukšu papīru no printera draivera (80 mm rullis, ja tas nevar pateikt) un nekad nemaina jau iestatītu.
+preview_help	Šis čeks zemāk izvēlētā printera papīrā, kā tas tur drukājas: īstā izmērā no augšējā kreisā stūra, kuru printeris sasniedz (pelēks: malas, kuras nesasniedz), garš čeks vairākās lapās, viss aiz papīra malas tiek nogriezts. Printera izvēle maina tikai priekšskatījumu; katra printera papīrs tiek iestatīts sadaļā Printeri.
+slip_col_width	Platums (mm)
+no_printer_assigned	Nav printera
+printer_target_default	šī datora parastais printeris (tukša adrese)
+job_preview	Priekšskatījums
 test_receipt_sent	Kvīts paraugs nosūtīts
 test_label_sent	Etiķetes paraugs nosūtīts
 test_print_no_printer	Šim darbam nav printera — pievienojiet vienu zem šīs vietas

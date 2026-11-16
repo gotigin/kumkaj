@@ -92,10 +92,6 @@ bill_item_layout	Cynllun eitemau
 bill_item_layout_columns	Colofnau
 bill_item_layout_stacked	Wedi'u pentyrru
 bill_item_header	Penawdau colofnau
-bill_item_hdr_item	Pennawd eitem
-bill_item_hdr_qty	Pennawd nifer
-bill_item_hdr_price	Pennawd pris
-bill_item_hdr_amount	Pennawd swm
 bill_item_name	Enw'r pryd
 bill_item_qty	Nifer
 bill_item_price	Pris
@@ -103,6 +99,20 @@ bill_item_amount	Swm
 bill_item_note	Nodyn y pryd
 bill_item_col_sep	Llinellau colofn
 slip_columns	Colofnau
+slip_col_header	Pennawd
+bill_line_logo	Logo
+bill_logo_picture	Llun
+bill_logo_choose	Dewis llun
+bill_logo_remove	Tynnu'r llun
+bill_logo_none	Dim llun
+bill_logo_unreadable	Nid llun y gall yr ap ei ddarllen
+bill_logo_width	Lled (px)
+bill_logo_height	Uchder (px)
+bill_logo_tones	Llwydion
+bill_logo_solid	Solet
+bill_logo_shaded	Wedi'i liwio
+bill_logo_help	Lled ac uchder mewn px. Mae gwag yn dilyn y llun: un gwag yn cadw'i siâp, y ddau'n wag yn defnyddio'i faint ei hun; y ddau wedi'u gosod yn ei ffitio y tu mewn, byth wedi'i ymestyn. Dim llun: mae logo a ddangosir yn cadw'i uchder fel lle gwag; mae Cuddio yn ei dynnu.
+bill_logo_tones_help	Solet: pob dot yn ddu neu'n wyn, ar gyfer logos clir. Wedi'i liwio: llwydion yn troi'n batrymau dotiau mân, ar gyfer lluniau a chysgod meddal.
 slip_col_width	Lled (mm)
 slip_col_start	Gofod dechrau (px)
 slip_col_end	Gofod diwedd (px)
@@ -167,6 +177,21 @@ alerts_help	Pa mor y mae negeseuon statws yn aros ar y sgrin i chi (y mewngofnod
 snack_secs_ph	Eiliadau (3–60, rhagosodiad 10)
 snack_secs_save	Cadw amser rhybudd
 snack_secs_saved	Amser rhybudd wedi'i gadw — {n} eiliad
+settings_sec_whatsapp	WhatsApp
+whatsapp_cloud_help	Use your own Meta WhatsApp Cloud API. Create a System User token with whatsapp_business_messaging (temporary dashboard tokens expire). Credentials stay on this Server only — never on extra tills. Accepted means Meta took the request, not that the guest received it.
+whatsapp_phone_id_ph	Phone Number ID
+whatsapp_token_ph	Access Token (leave blank to keep)
+whatsapp_template_ph	Bill template name (optional)
+whatsapp_template_lang_ph	Template language (e.g. en)
+whatsapp_enable	Enable
+whatsapp_disable	Off
+whatsapp_save	Save WhatsApp
+whatsapp_test	Test connection
+whatsapp_disconnect	Disconnect
+whatsapp_send_bill	Send via WhatsApp
+whatsapp_consent	WhatsApp OK
+whatsapp_consent_help	Guest agreed to receive WhatsApp messages. A phone number alone is not consent.
+whatsapp_server_only	Configure WhatsApp on the shop Server device
 settings_sec_backup	Copi wrth gefn ac adfer
 settings_sec_diag	Diagnosteg
 settings_sec_privacy	Preifatrwydd
@@ -729,6 +754,13 @@ station_vps_dd	Argraffwyr ar gyfer y orsaf hon
 station_vps_dd_n	{n} argraffydd · tapiwch i newid
 bill_printers_dd	Argraffwyr ar gyfer y bil
 bill_printers_dd_n	{n} argraffydd ar gyfer y bil · tapiwch i newid
+paper_heading	Papur
+paper_size	{w} × {h} mm
+paper_roll	rholyn {w} mm
+paper_not_set	papur heb ei wybod eto
+paper_length_mm	Hyd (mm)
+printer_paper_help	Papur yr argraffydd hwn mewn mm. Mae Hyd gwag yn rholyn: mae pob slip mor hir â'i gynnwys. Mae Dewch o hyd i argraffwyr yn llenwi papur gwag o yrrwr yr argraffydd (rholyn 80 mm pan na all ddweud) a byth yn newid un sydd eisoes wedi'i osod.
+preview_help	Y slip hwn ar bapur yr argraffydd a ddewiswyd isod, fel y mae'n argraffu yno: maint go iawn o'r gornel chwith uchaf y gall yr argraffydd ei chyrraedd (llwyd: ymylon na all), slip hir ar ragor o dudalennau, popeth y tu hwnt i ymyl y papur wedi'i dorri. Mae dewis argraffydd yn newid y rhagolwg yn unig; caiff papur pob argraffydd ei osod o dan Argraffwyr.
 job_layout	Cynllun
 job_delivery	Sut mae'r swydd yn cael ei hanfon
 job_delivery_help	Dogfen OS, beitiau crai, neu ESC/POS. Mae'r bil a thocyn y gegin yn cadw eu rhai eu hunain. Gall y naill swydd neu'r llall fynd at unrhyw argraffydd y mae Chwilio wedi'i gadw.
@@ -1105,9 +1137,6 @@ remove_these_tables	Tynnu'r byrddau hyn
 table_remove_ph	Tynnu: T1-T24, neu enw un bwrdd
 find_server	Dewch o hyd i weinydd y siop
 bill_format	Fformat bil
-bill_header_ph	Cyfeiriad | ffôn
-fssai_ph	Rhif trwydded FSSAI (India)
-bill_footer_ph	Troedyn (e.e. Diolch, dewch eto)
 reset_bill_format	Ailosod i'r rhagosodiad
 bill_format_reset	Fformat bil wedi'i ailosod i'r rhagosodiad
 reset_kot_format	Ailosod i'r rhagosodiad
@@ -1146,7 +1175,6 @@ kot_kind_modified	Wedi'i addasu
 kot_kind_cancelled	Wedi'i ganslo
 kot_style_heading	Maint a phwysau math maes
 kot_style_title	Teitl
-kot_style_item_qty	Eitem · Nifer
 kot_style_field_pick	Dewis maes
 kot_weight_regular	Rheolaidd
 kot_weight_bold	Trwm
@@ -1158,8 +1186,8 @@ content_width_bill	Lled cynnwys bil (mm)
 content_width_kot	Lled cynnwys KOT (mm)
 content_width_ph	Neu teipiwch led cynnwys, 40–210 mm
 content_width_help	Pa mor lyd yw'r slip hwn yn argraffu. Mae bil a KOT yn cadw eu lled eu hunain.
-content_width_bill_help	Pa mor lyd mae bil y gwestai yn argraffu. Rhagosodiad 210 mm (tudalen). Slip cul 58 mm, slip llydan 80 mm, 112 mm 4 modfedd, 210 mm lled A4. Teipiwch unrhyw werth o 40 i 210. Mae gan docynnau cegin eu lled eu hunain ar dab KOT.
-content_width_kot_help	Pa mor lyd mae tocyn y gegin yn argraffu. Rhagosodiad 80 mm. Slip cul 58 mm, slip llydan 80 mm, 112 mm 4 modfedd, tudalen 210 mm. Teipiwch unrhyw werth o 40 i 210. Mae gan filiau gwesteion eu lled eu hunain ar dab Bil.
+content_width_bill_help	Pa mor llydan mae bil y gwestai yn argraffu, mewn mm (40–210). Mae'n argraffu yn y maint go iawn hwn ar unrhyw bapur; ar bapur culach, mae'r rhan y tu hwnt i ymyl yr argraffu yn cael ei thorri (gweler Papur). Mae gan docynnau cegin eu lled eu hunain ar y tab KOT.
+content_width_kot_help	Pa mor llydan mae tocyn y gegin yn argraffu, mewn mm (40–210). Mae'n argraffu yn y maint go iawn hwn ar unrhyw bapur; ar bapur culach, mae'r rhan y tu hwnt i ymyl yr argraffu yn cael ei thorri (gweler Papur). Mae gan filiau gwesteion eu lled eu hunain ar y tab Bil.
 vp_paper_width	Lled cynnwys (mm)
 vp_paper_width_ph	Neu teipiwch led cynnwys, 40–210 mm
 vp_paper_width_help	Mae lled cynnwys wedi'i osod o dan Fformat bil a KOT — ar wahân ar gyfer y bil (rhagosodiad 210 mm) a thocyn y gegin (rhagosodiad 80 mm).
@@ -1213,8 +1241,6 @@ schemes_help	BOGO, canran i ffwrdd, a chombo sefydlog. Mae combo'n ehangu i line
 scheme_bogo_ph	Prynu 2 Thali cael 1 Chaas
 add_scheme	Ychwanegu BOGO
 schedule_ph	Oriau / awr hapus — Llun-Gwe 07:00-11:00 neu HappyHour 17:00-19:00=150
-upi_vpa_ph	ID UPI (VPA)
-upi_payee_ph	Enw talai UPI (dewisol)
 upi_qr	UPI QR
 show_upi_qr	Dangos UPI QR
 close_upi_qr	Cau
@@ -1295,8 +1321,6 @@ printer_mode_first	Y cyntaf sy'n gweithio
 printer_mode_all	Argraffu ar bob un
 kot_show_area	Ardal
 kot_hide_area	Cuddio ardal
-kot_show_item_hdr	Eitem · Nifer
-kot_hide_item_hdr	Cuddio colofnau
 kot_show_title	Llinell deitl
 kot_hide_title	Cuddio teitl
 kot_field_cycle	Dewis y nesaf
@@ -1337,12 +1361,12 @@ private_code_ph	Cod 12 digid
 stamp_on	Sêl: ar ffeil
 pay_qr_on	QR talu: ar ffeil
 pay_qr_off	QR talu: dim
+printers_screen_tip	Mae Chwilio'n rhestru'r argraffwyr y gall y ddyfais hon eu defnyddio ac yn eu cadw ar gyfer y siop hon. Argraffwyr biliau: Fformat bil a KOT → Bil. Cegin: Cegin → Gorsafoedd cegin.
+printers_found_none	Heb ganfod argraffwyr.
+nav_loading	Yn llwytho…
+kot_copy_from	Copïo o
+kot_copy_from_help	Yn copïo maint, trwch ac aliniad pob llinell o'r math hwnnw i hwn. Mae'r math hwn yn cadw ei faner, rhagddodiad eitem a llinell drwodd ei hun. Cadwch fformat KOT i'w gadw.
 items_tmpl_heading	Templedi eitemau
 items_tmpl_help	Prydau, categorïau a lluniau ar gyfer eich bwydlen. Mae gosodiadau'r siop a'r staff yn aros fel y maen nhw.
 public_tmpl_help	Bwydlenni cychwynnol y gall unrhyw un eu lawrlwytho. Angen y rhyngrwyd unwaith.
 private_tmpl_help	Bwydlenni cleientiaid wedi'u cloi â chod 12 digid gan eich cyswllt Khaynjo.
-printers_screen_tip	Mae Chwilio'n rhestru'r argraffwyr y gall y ddyfais hon eu defnyddio ac yn eu cadw ar gyfer y siop hon. Argraffwyr biliau: Fformat bil a KOT → Bil. Cegin: Cegin → Gorsafoedd cegin.
-printers_found_none	Heb ganfod argraffwyr.
-kot_copy_from	Copïo o
-kot_copy_from_help	Yn copïo maint, trwch ac aliniad pob llinell o'r math hwnnw i hwn. Mae'r math hwn yn cadw ei faner, rhagddodiad eitem a llinell drwodd ei hun. Cadwch fformat KOT i'w gadw.
-nav_loading	Yn llwytho…

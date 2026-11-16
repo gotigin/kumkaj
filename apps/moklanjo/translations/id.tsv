@@ -501,6 +501,17 @@ job_size	Ukuran font
 job_size_ph	mis. 18, 20, 26…
 test_receipt_format	Tanda terima tes
 test_label_format	Label uji
+paper_heading	Kertas
+paper_size	{w} × {h} mm
+paper_roll	gulungan {w} mm
+paper_not_set	kertas belum diketahui
+paper_length_mm	Panjang (mm)
+printer_paper_help	Kertas printer ini dalam mm. Panjang kosong berarti gulungan: setiap struk sepanjang isinya. Cari printer mengisi kertas kosong dari driver printer (gulungan 80 mm bila tidak bisa memberi tahu) dan tidak pernah mengubah kertas yang sudah diatur.
+preview_help	Struk ini di kertas printer yang dipilih di bawah, seperti tercetak di sana: ukuran sebenarnya dari sudut kiri atas yang dapat dijangkau printer (abu-abu: tepi yang tidak terjangkau), struk panjang di lebih banyak lembar, semua yang melewati tepi kertas terpotong. Memilih printer hanya mengubah pratinjau; kertas tiap printer diatur di Printer.
+slip_col_width	Lebar (mm)
+no_printer_assigned	Tidak ada printer
+printer_target_default	printer default
+job_preview	Pratinjau
 test_receipt_sent	Contoh resi terkirim
 test_label_sent	Label sampel dikirim
 test_print_no_printer	Tidak ada printer untuk pekerjaan itu — tambahkan satu di bawah tempat ini

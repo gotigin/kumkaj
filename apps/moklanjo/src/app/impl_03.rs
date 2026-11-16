@@ -678,7 +678,11 @@ fn fit_inside_system_bars(&mut self, cx: &mut Cx) {
                 added += 1;
             }
         }
-        if added > 0 {
+        // Every printer with no paper gets its driver's (or an 80 mm roll);
+        // a paper already set is never changed (docs/PRINTER.md § Paper and
+        // preview).
+        let filled = st.printer_draft.fill_missing_papers(&os_paper::answers(), true);
+        if added > 0 || filled > 0 {
             let base = st.data_base.clone().ok_or("No store path to save printers")?;
             print_share::save_device_printers(&base, &st.printer_draft)?;
         }

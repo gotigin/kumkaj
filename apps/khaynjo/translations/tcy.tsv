@@ -92,10 +92,6 @@ bill_item_layout	ಐಟಂ ಲೇಔಟ್
 bill_item_layout_columns	ಕಾಲಮ್ ಲು
 bill_item_layout_stacked	ಜೋಡಣೆ ಆತ್ಂಡ್
 bill_item_header	ಕಾಲಮ್ ಶೀರ್ಷಿಕೆಲು
-bill_item_hdr_item	ಐಟಂ ಹೆಡರ್
-bill_item_hdr_qty	ಪ್ರಮಾಣದ ತಲೆಬುರುಡೆ
-bill_item_hdr_price	ಬೆಲೆ ತಲೆಬುಕ್ಕೊ
-bill_item_hdr_amount	ಮೊತ್ತದ ತಲೆಬುರುಡೆ
 bill_item_name	ಖಾದ್ಯದ ಪುದರ್
 bill_item_qty	ಪ್ರಮಾಣ
 bill_item_price	ಬೆಲೆ
@@ -103,6 +99,20 @@ bill_item_amount	ಮೊತ್ತ
 bill_item_note	ಡಿಶ್ ಟಿಪ್ಪಣಿ
 bill_item_col_sep	ಕಾಲಮ್ ನಿಯಮೊಲು
 slip_columns	ಕಾಲಮ್‌ಲು
+slip_col_header	ಶೀರ್ಷಿಕೆ
+bill_line_logo	ಲೋಗೋ
+bill_logo_picture	ಪಟೊ
+bill_logo_choose	ಪಟೊ ಆಯ್ಕೆ ಮಲ್ಪುಲೆ
+bill_logo_remove	ಪಟೊ ದೆಪ್ಪುಲೆ
+bill_logo_none	ಪಟೊ ಇಜ್ಜಿ
+bill_logo_unreadable	ಈ ಆ್ಯಪ್ ಓದುವಂಚಿನ ಪಟೊ ಅತ್ತ್
+bill_logo_width	ಅಗಲ (px)
+bill_logo_height	ಎತ್ತರ (px)
+bill_logo_tones	ಬೂದು
+bill_logo_solid	ಗಟ್ಟಿ
+bill_logo_shaded	ನೆಳಲ್‌ದ
+bill_logo_help	ಅಗಲ ಬೊಕ್ಕ ಎತ್ತರ px ಡ್. ಖಾಲಿ ಆಂಡ ಪಟೊನು ಪಿರೊ ಪೋಪುಂಡು: ಒಂಜಿ ಖಾಲಿ ಆಂಡ ರೂಪೊ ಒರಿಪುಂಡು, ರಡ್ಡ್‌ಲಾ ಖಾಲಿ ಆಂಡ ಅಯಿತ ಸ್ವಂತ ಗಾತ್ರೊ; ರಡ್ಡ್‌ಲಾ ಕೊರ್ಂಡ ಉಲಾಯಿ ಸೇರುಂಡು, ಏಪಲಾ ಎಳೆಯುಜಿ. ಪಟೊ ಇಜ್ಜಿಂಡ: ತೋಜಾಯಿನ ಲೋಗೋ ಅಯಿತ ಎತ್ತರೊನು ಖಾಲಿ ಜಾಗೆ ಆದ್ ದೀಪುಂಡು; ದೆಂಗಾಲೆ ಅಯಿನ್ ದೆಪ್ಪುಂಡು.
+bill_logo_tones_help	ಗಟ್ಟಿ: ಪ್ರತಿ ಚುಕ್ಕಿ ಕಪ್ಪು ಅತ್ತಂಡ ಬೊಲ್ದು, ಸ್ಪಷ್ಟ ಲೋಗೋಲೆಗ್. ನೆಳಲ್‌ದ: ಬೂದು ಸಣ್ಣ ಚುಕ್ಕಿಲೆನ ಮಾದರಿ ಆಪುಂಡು, ಫೋಟೋ ಬೊಕ್ಕ ಮೆತ್ತನೆ ನೆಳಲ್‌ಗ್.
 slip_col_width	ಅಗಲ (mm)
 slip_col_start	ಸುರುತ ಜಾಗೆ (px)
 slip_col_end	ಅಕೇರಿದ ಜಾಗೆ (px)
@@ -167,6 +177,21 @@ alerts_help	ನಿಕ್ಲೆಗ್ ಎಂಚ ಸಮಯ ಮುಟ್ಟ ಸ್�
 snack_secs_ph	ಸೆಕೆಂಡ್ ಲು (3–60, ಡಿಫಾಲ್ಟ್ 10)
 snack_secs_save	ಎಚ್ಚರಿಕೆದ ಸಮಯೊನು ಉಳಿತಾಯ ಮಲ್ಪುಲೆ
 snack_secs_saved	ಎಚ್ಚರಿಕೆದ ಸಮಯ ಉಳಿತಾಯ ಆತ್ಂಡ್ — {n} ಸೆಕೆಂಡ್ ಲು
+settings_sec_whatsapp	WhatsApp
+whatsapp_cloud_help	Use your own Meta WhatsApp Cloud API. Create a System User token with whatsapp_business_messaging (temporary dashboard tokens expire). Credentials stay on this Server only — never on extra tills. Accepted means Meta took the request, not that the guest received it.
+whatsapp_phone_id_ph	Phone Number ID
+whatsapp_token_ph	Access Token (leave blank to keep)
+whatsapp_template_ph	Bill template name (optional)
+whatsapp_template_lang_ph	Template language (e.g. en)
+whatsapp_enable	Enable
+whatsapp_disable	Off
+whatsapp_save	Save WhatsApp
+whatsapp_test	Test connection
+whatsapp_disconnect	Disconnect
+whatsapp_send_bill	Send via WhatsApp
+whatsapp_consent	WhatsApp OK
+whatsapp_consent_help	Guest agreed to receive WhatsApp messages. A phone number alone is not consent.
+whatsapp_server_only	Configure WhatsApp on the shop Server device
 settings_sec_backup	ಬ್ಯಾಕಪ್ ಬೊಕ್ಕ ಪುನಃಸ್ಥಾಪನೆ
 settings_sec_diag	ರೋಗನಿರ್ಣಯ
 settings_sec_privacy	ಗೌಪ್ಯತೆ
@@ -729,6 +754,13 @@ station_vps_dd	ಈ ನಿಲ್ದಾಣೊಗು ಮುದ್ರಕೊಲು
 station_vps_dd_n	{n} ಮುದ್ರಕೊಲು · ಬದಲಾವಣೆ ಮಲ್ಪೆರೆ ಒತ್ತುಲೆ
 bill_printers_dd	ಬಿಲ್ ಗ್ ಮುದ್ರಕೊಲು
 bill_printers_dd_n	ಬಿಲ್ ಗ್ {n} ಮುದ್ರಕೊಲು · ಬದಲಾವಣೆ ಮಲ್ಪೆರೆ ಒತ್ತುಲೆ
+paper_heading	ಕಾಗದ
+paper_size	{w} × {h} mm
+paper_roll	{w} mm ರೋಲ್
+paper_not_set	ಕಾಗದ ಇಂಚಿಪ ಗೊತ್ತಿಜ್ಜಿ
+paper_length_mm	ಉದ್ದ (mm)
+printer_paper_help	ಈ ಮುದ್ರಕೊದ ಕಾಗದ mm ಡ್. ಖಾಲಿ ಉದ್ದ ಪಂಡ ರೋಲ್: ಪ್ರತಿ ಚೀಟಿ ಅಯಿತ ವಿಷಯೊದಷ್ಟೇ ಉದ್ದ. ಮುದ್ರಕೊಲೆನ್ ತೂಲೆ ಖಾಲಿ ಕಾಗದೊನು ಮುದ್ರಕೊದ ಡ್ರೈವರ್‌ಡ್ದ್ ಭರ್ತಿ ಮಲ್ಪುಂಡು (ಪಣರೆ ಆಪಂದಿನಲ್ಪ 80 mm ರೋಲ್) ಬುಕ್ಕ ದುಂಬೇ ದೀತಿನ ಕಾಗದೊನು ಒರಾಯಿಲಾ ಬದಲ್ ಮಲ್ಪುಜಿ.
+preview_help	ತಿರ್ತ್ ಆಯ್ಕೆ ಮಲ್ತಿನ ಮುದ್ರಕೊದ ಕಾಗದೊದ ಮಿತ್ತ್ ಈ ಚೀಟಿ, ಅಲ್ಪ ಮುದ್ರಣ ಆಪಿನ ಲೆಕ್ಕೊ: ಮುದ್ರಕ ಎತ್ತುನ ಮಿತ್ತ್‌ದ ಎಡತ ಮೂಲೆಡ್ದ್ ನಿಜ ಗಾತ್ರೊಡು (ಬೂದು: ಎತ್ತಂದಿನ ಅಂಚುಲು), ಉದ್ದ ಚೀಟಿ ಎಚ್ಚ ಹಾಳೆಲೆಡ್, ಕಾಗದೊದ ಅಂಚುಡ್ದ್ ಅಡೆಯಿತ್ತಿನವು ಮಾತಾ ಕತ್ತರಿಸಾವು. ಮುದ್ರಕ ಆಯ್ಕೆ ಮಲ್ತ್‌ಂಡ ಮುನ್ನೋಟ ಮಾತ್ರ ಬದಲಾಪುಂಡು; ಪ್ರತಿ ಮುದ್ರಕೊದ ಕಾಗದೊನು ಮುದ್ರಕೊಲು ಡ್ ದೀಪಿನಿ.
 job_layout	ಲೇಔಟ್
 job_delivery	ಬೇಲೆನ್ ಎಂಚ ಕಡಪುಡುವೆರ್
 job_delivery_help	ಓಎಸ್ ಡಾಕ್ಯುಮೆಂಟ್, ರಾ ಬೈಟ್ಸ್, ಅತ್ತ್ಂಡ ESC/POS. ಬಿಲ್ ಬೊಕ್ಕ ಅಡುಗೆಮನೆದ ಟಿಕೆಟ್ ಒಂಜೊಂಜಿ ತನ್ನವೇ ಆದ್ ಉಪ್ಪುಂಡು. ಒಂಜಿ ಕೆಲಸೊನು ಫೈಂಡ್ ಉಳಿತಾಯ ಮಲ್ತಿನ ಏತ್ ಪ್ರಿಂಟರ್ ಗ್ ಲಾ ಪೋವೊಲಿ.
@@ -1105,9 +1137,6 @@ remove_these_tables	ಈ ಡೈನಿಂಗ್ ಟೇಬಲ್ ಲೆನ್ ದ�
 table_remove_ph	ತೆಗೆತ್ ಪಾಡ್ಲೆ: T1-T24, ಅತ್ತ್ಂಡ ಒಂಜಿ ಡೈನಿಂಗ್ ಟೇಬಲ್ ದ ಪುದರ್
 find_server	ಅಂಗಡಿದ ಸರ್ವರ್ ನ್ ತೂಲೆ
 bill_format	ಬಿಲ್ ಫಾರ್ಮ್ಯಾಟ್
-bill_header_ph	ವಿಳಾಸ | ಫೋನ್
-fssai_ph	FSSAI ಲೈಸೆನ್ಸ್ ನಂ. (ಭಾರತ)
-bill_footer_ph	ಅಡಿಟಿಪ್ಪಣಿ (ಉದಾ. ಧನ್ಯವಾದೊಲು, ಮತ್ತೆ ಭೇಟಿ ಕೊರ್ಲೆ)
 reset_bill_format	ಡಿಫಾಲ್ಟ್ ಗ್ ಮರುಹೊಂದಿಸಲೆ
 bill_format_reset	ಬಿಲ್ ಫಾರ್ಮ್ಯಾಟ್ ನ್ ಡಿಫಾಲ್ಟ್ ಗ್ ಮರುಸ್ಥಾಪನೆ ಮಲ್ಪುಲೆ
 reset_kot_format	ಡಿಫಾಲ್ಟ್ ಗ್ ಮರುಹೊಂದಿಸಲೆ
@@ -1146,7 +1175,6 @@ kot_kind_modified	ಮಾರ್ಪಾಡ್ ಮಲ್ತಿನ
 kot_kind_cancelled	ರದ್ದು ಮಲ್ತೆರ್
 kot_style_heading	ಕ್ಷೇತ್ರದ ಬಗೆತ ಗಾತ್ರ ಬೊಕ್ಕ ತೂಕ
 kot_style_title	ಶೀರ್ಷಿಕೆ
-kot_style_item_qty	ಐಟಂ · ಪ್ರಮಾಣ
 kot_style_field_pick	ಕ್ಷೇತ್ರೊನು ಆಯ್ಕೆ ಮಲ್ಪುಲೆ
 kot_weight_regular	ನಿಯಮಿತ
 kot_weight_bold	ಬೋಲ್ಡ್
@@ -1158,8 +1186,8 @@ content_width_bill	ಬಿಲ್ ವಿಷಯದ ಅಗಲ (ಎಂಎಂ)
 content_width_kot	KOT ವಿಷಯದ ಅಗಲ (ಮಿಮೀ)
 content_width_ph	ಅತ್ತ್ಂಡ ಒಂಜಿ ವಿಷಯದ ಅಗಲೊನು ಟೈಪ್ ಮಲ್ಪುಲೆ, 40–210 ಮಿಮೀ
 content_width_help	ಈ ಸ್ಲಿಪ್ ಎಂಚ ಅಗಲೊಡು ಮುದ್ರಣ ಆಪುಂಡು. ಬಿಲ್ ಬೊಕ್ಕ KOT ಒಂಜೊಂಜಿ ಅಕ್ಲೆನ ಅಗಲೊನು ದೀವೊಂದಿತ್ತೆರ್.
-content_width_bill_help	ಅತಿಥಿ ಬಿಲ್ ಎಂಚ ಅಗಲ ಮುದ್ರಣ ಆಪುಂಡು. ಡಿಫಾಲ್ಟ್ 210 ಎಂಎಂ (ಪುಟ). 58 ಎಂಎಂ ಕಿರಿದಾದ ಸ್ಲಿಪ್, 80 ಎಂಎಂ ಅಗಲದ ಸ್ಲಿಪ್, 112 ಎಂಎಂ 4-ಇಂಚ್, 210 ಎಂಎಂ ಎ4-ಅಗಲ. 40 ರ್ದ್ 210 ಮುಟ್ಟ ಏತ್ ಮೌಲ್ಯೊನು ಟೈಪ್ ಮಲ್ಪುಲೆ. ಕಿಚನ್ ಟಿಕೆಟ್ ಲೆಗ್ KOT ಟ್ಯಾಬ್ ಡ್ ಅಯಿಕ್ಲೆನ ಸ್ವಂತ ಅಗಲ ಉಂಡು.
-content_width_kot_help	ಅಡುಗೆಮನೆದ ಟಿಕೆಟ್ ಎಂಚ ಅಗಲೊಡು ಮುದ್ರಣ ಆಪುಂಡು. ಡಿಫಾಲ್ಟ್ 80 ಎಂಎಂ. 58 ಎಂಎಂ ಕಿರಿದಾದ ಸ್ಲಿಪ್, 80 ಎಂಎಂ ಅಗಲದ ಸ್ಲಿಪ್, 112 ಎಂಎಂ 4-ಇಂಚ್, 210 ಎಂಎಂ ಪುಟ. ರ್ದ್ 210 ಮುಟ್ಟ ಏತ್ ಮೌಲ್ಯೊನು ಟೈಪ್ ಮಲ್ಪುಲೆ. ಅತಿಥಿ ಬಿಲ್ಲುಲೆಗ್ ಬಿಲ್ ಟ್ಯಾಬ್ ಡ್ ಅಕ್ಲೆನ ಸ್ವಂತ ಅಗಲ ಉಂಡು.
+content_width_bill_help	ಅತಿಥಿನ ಬಿಲ್ ಎಂಚಿನ ಅಗಲಡ್ ಮುದ್ರಣ ಆಪುಂಡು, mm ಡ್ (40–210). ಏಪಲಾ ಕಾಗದೊಡು ಉಂದೇ ನಿಜವಾಯಿನ ಅಳತೆಡ್ ಮುದ್ರಣ ಆಪುಂಡು; ಉಂದೆಡ್ದ್ ಕಿರಿದಾಯಿನ ಕಾಗದೊಡು ಮುದ್ರಣದ ಅಂಚುದ ಆಚೆದ ಭಾಗ ಕಡಪುಂಡು (ಕಾಗದ ತೂಲೆ). ಅಡಿಗೆ ಟಿಕೆಟ್‌ಲೆನ ಸ್ವಂತ ಅಗಲ KOT ಟ್ಯಾಬ್‌ಡ್ ಉಂಡು.
+content_width_kot_help	ಅಡಿಗೆ ಟಿಕೆಟ್ ಎಂಚಿನ ಅಗಲಡ್ ಮುದ್ರಣ ಆಪುಂಡು, mm ಡ್ (40–210). ಏಪಲಾ ಕಾಗದೊಡು ಉಂದೇ ನಿಜವಾಯಿನ ಅಳತೆಡ್ ಮುದ್ರಣ ಆಪುಂಡು; ಉಂದೆಡ್ದ್ ಕಿರಿದಾಯಿನ ಕಾಗದೊಡು ಮುದ್ರಣದ ಅಂಚುದ ಆಚೆದ ಭಾಗ ಕಡಪುಂಡು (ಕಾಗದ ತೂಲೆ). ಅತಿಥಿ ಬಿಲ್ಲ್‌ಲೆನ ಸ್ವಂತ ಅಗಲ ಬಿಲ್ ಟ್ಯಾಬ್‌ಡ್ ಉಂಡು.
 vp_paper_width	ವಿಷಯದ ಅಗಲ (ಎಂಎಂ)
 vp_paper_width_ph	ಅತ್ತ್ಂಡ ಒಂಜಿ ವಿಷಯದ ಅಗಲೊನು ಟೈಪ್ ಮಲ್ಪುಲೆ, 40–210 ಮಿಮೀ
 vp_paper_width_help	ವಿಷಯದ ಅಗಲೊನು ಬಿಲ್ & KOT ಸ್ವರೂಪೊಡು ನಿಗದಿ ಮಲ್ಪುವೆರ್ — ಬಿಲ್ (ಪೂರ್ವನಿಯೋಜಿತ 210 ಎಂಎಂ) ಬೊಕ್ಕ ಅಡಿಗೆ ಟಿಕೆಟ್ (ಪೂರ್ವನಿಯೋಜಿತ 80 ಎಂಎಂ) ಗ್ ಪ್ರತ್ಯೇಕವಾದ್.
@@ -1213,8 +1241,6 @@ schemes_help	BOGO, ಪರ್ಸೆಂಟ್-ಆಫ್, ಬೊಕ್ಕ ಫಿಕ
 scheme_bogo_ph	2 Thali ಕೊಂಡೊಂದು 1 Chaas ದೆತೊನ್ಲೆ
 add_scheme	BOGO ಸೇರಾಲೆ
 schedule_ph	ಗಂಟೆಲು / ಸಂತೋಷದ ಗಂಟೆ — ಸೋಮ-ಶುಕ್ರವಾರ 07:00-11:00 ಅತ್ತಂದೆ ಸಂತೋಷದ ಗಂಟೆ 17:00-19:00=150
-upi_vpa_ph	UPI ID (VPA)
-upi_payee_ph	UPI ಪಾವತಿ ಪಡೆಯಿನ ಪುದರ್ (ಐಚ್ಛಿಕ)
 upi_qr	UPI QR
 show_upi_qr	UPI QR ನ್ ತೋಜಾಲೆ
 close_upi_qr	ಮುಚ್ಚ
@@ -1295,8 +1321,6 @@ printer_mode_first	ಸುರುಕು ಅಯಿನ್ ಕೆಲಸ ಮಲ್ಪ�
 printer_mode_all	ಮಾತಾ ಮುದ್ರಣ ಮಲ್ಪುಲೆ
 kot_show_area	ಪ್ರದೇಶ
 kot_hide_area	ಜಾಗೆನ್ ಮುಚ್ಚಿದ್ ದೀಲೆ
-kot_show_item_hdr	ಐಟಂ · ಪ್ರಮಾಣ
-kot_hide_item_hdr	ಕಾಲಮ್ ಲೆನ್ ಮರೆಮಾಚೊಡು
 kot_show_title	ಶೀರ್ಷಿಕೆ ಸಾಲು
 kot_hide_title	ಶೀರ್ಷಿಕೆನ್ ಮುಚ್ಚುಲೆ
 kot_field_cycle	ದುಂಬುಗು ಆಯ್ಕೆ ಮಲ್ಪುಲೆ
@@ -1337,12 +1361,12 @@ private_code_ph	12 ಅಂಕೆದ ಕೋಡ್
 stamp_on	ಸ್ಟ್ಯಾಂಪ್: ಫೈಲ್ ಡ್
 pay_qr_on	ಪಾವತಿ ಕ್ಯೂಆರ್: ಫೈಲ್ ಡ್
 pay_qr_off	ಪಾವತಿ QR: ಒವ್ವೆಲಾ ಇಜ್ಜಿ
+printers_screen_tip	ನಾಡ್ಲೆ ಈ ಸಾಧನೊಗು ಬಳಸೊಲಿ ಆಪಿನ ಪ್ರಿಂಟರ್‌ಲೆನ್ ತೋಜಾವುಂಡು ಬೊಕ್ಕ ಈ ಅಂಗಡಿಗಾದ್ ದೀಪುಂಡು. ಬಿಲ್ ಪ್ರಿಂಟರ್‌ಲು: ಬಿಲ್ ಬೊಕ್ಕ KOT ಫಾರ್ಮ್ಯಾಟ್ → ಬಿಲ್. ಅಟಿಲ್ ಕೋಣೆ: ಅಟಿಲ್ ಕೋಣೆ → ಅಟಿಲ್ ಕೋಣೆದ ಸ್ಟೇಷನ್‌ಲು.
+printers_found_none	ಒವ್ವೇ ಪ್ರಿಂಟರ್ ತಿಕ್ಕಿಜಿ.
+nav_loading	ಲೋಡ್ ಆವೊಂದುಂಡು…
+kot_copy_from	ಇಡ್ದ್ ನಕಲ್ ಮಲ್ಪುಲೆ
+kot_copy_from_help	ಆ ಬಗೆತ ಪ್ರತಿ ಸಾಲ್‌ದ ಗಾತ್ರ, ದಪ್ಪ ಬೊಕ್ಕ ಜೋಡಣೆನ್ ಮೂಲಗ್ ನಕಲ್ ಮಲ್ಪುಂಡು. ಈ ಬಗೆ ತನ್ನ ಬ್ಯಾನರ್, ಐಟಂ ಪೂರ್ವಪದ ಬೊಕ್ಕ ಗೆರೆನ್ ದೀವೊಂದುಂಡು. ದೀಯೆರೆ KOT ಫಾರ್ಮ್ಯಾಟ್ ಉಳಿಪುಲೆ.
 items_tmpl_heading	ಐಟಂ ಟೆಂಪ್ಲೇಟ್ಲು
 items_tmpl_help	ಇರೆನ ಮೆನುಗು ವನಸ್, ವರ್ಗೊಲು ಬೊಕ್ಕ ಫೋಟೊಲು. ಅಂಗಡಿದ ಸೆಟ್ಟಿಂಗ್ಲು ಬೊಕ್ಕ ಕೆಲಸದಕುಲು ಇತ್ತಿಲೆಕ್ಕನೇ ಉಪ್ಪುವೆರ್.
 public_tmpl_help	ಏರ್ ಬೇಕಾಂಡಲ ಡೌನ್‌ಲೋಡ್ ಮಲ್ಪೊಲಿ ಸುರುತ ಮೆನುಲು. ಒರ ಇಂಟರ್ನೆಟ್ ಬೋಡು.
 private_tmpl_help	ಇರೆನ Khaynjo ಸಂಪರ್ಕೊಡ್ದ್ ಬರ್ಪಿನ 12 ಅಂಕೆದ ಕೋಡ್‌ಡ್ ರಕ್ಷಣೆ ಆಯಿನ ಗಿರಾಕಿ ಮೆನುಲು.
-printers_screen_tip	ನಾಡ್ಲೆ ಈ ಸಾಧನೊಗು ಬಳಸೊಲಿ ಆಪಿನ ಪ್ರಿಂಟರ್‌ಲೆನ್ ತೋಜಾವುಂಡು ಬೊಕ್ಕ ಈ ಅಂಗಡಿಗಾದ್ ದೀಪುಂಡು. ಬಿಲ್ ಪ್ರಿಂಟರ್‌ಲು: ಬಿಲ್ ಬೊಕ್ಕ KOT ಫಾರ್ಮ್ಯಾಟ್ → ಬಿಲ್. ಅಟಿಲ್ ಕೋಣೆ: ಅಟಿಲ್ ಕೋಣೆ → ಅಟಿಲ್ ಕೋಣೆದ ಸ್ಟೇಷನ್‌ಲು.
-printers_found_none	ಒವ್ವೇ ಪ್ರಿಂಟರ್ ತಿಕ್ಕಿಜಿ.
-kot_copy_from	ಇಡ್ದ್ ನಕಲ್ ಮಲ್ಪುಲೆ
-kot_copy_from_help	ಆ ಬಗೆತ ಪ್ರತಿ ಸಾಲ್‌ದ ಗಾತ್ರ, ದಪ್ಪ ಬೊಕ್ಕ ಜೋಡಣೆನ್ ಮೂಲಗ್ ನಕಲ್ ಮಲ್ಪುಂಡು. ಈ ಬಗೆ ತನ್ನ ಬ್ಯಾನರ್, ಐಟಂ ಪೂರ್ವಪದ ಬೊಕ್ಕ ಗೆರೆನ್ ದೀವೊಂದುಂಡು. ದೀಯೆರೆ KOT ಫಾರ್ಮ್ಯಾಟ್ ಉಳಿಪುಲೆ.
-nav_loading	ಲೋಡ್ ಆವೊಂದುಂಡು…

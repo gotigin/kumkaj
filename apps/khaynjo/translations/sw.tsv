@@ -92,10 +92,6 @@ bill_item_layout	Mpangilio wa bidhaa
 bill_item_layout_columns	Safu
 bill_item_layout_stacked	Imepangwa
 bill_item_header	Vichwa vya safu
-bill_item_hdr_item	Kichwa cha bidhaa
-bill_item_hdr_qty	Kichwa cha idadi
-bill_item_hdr_price	Kichwa cha bei
-bill_item_hdr_amount	Kichwa cha kiasi
 bill_item_name	Jina
 bill_item_qty	Idadi
 bill_item_price	Bei
@@ -103,6 +99,20 @@ bill_item_amount	Kiasi
 bill_item_note	Kidokezo
 bill_item_col_sep	Mistari ya safu
 slip_columns	Safu wima
+slip_col_header	Kichwa
+bill_line_logo	Nembo
+bill_logo_picture	Picha
+bill_logo_choose	Chagua picha
+bill_logo_remove	Ondoa picha
+bill_logo_none	Hakuna picha
+bill_logo_unreadable	Si picha ambayo programu inaweza kusoma
+bill_logo_width	Upana (px)
+bill_logo_height	Urefu (px)
+bill_logo_tones	Rangi za kijivu
+bill_logo_solid	Thabiti
+bill_logo_shaded	Yenye kivuli
+bill_logo_help	Upana na urefu kwa px. Tupu hufuata picha: moja tupu huhifadhi umbo, zote mbili tupu hutumia ukubwa wake; zote mbili zikiwekwa huitosheleza ndani, kamwe haivutwi. Hakuna picha: nembo inayoonyeshwa huhifadhi urefu wake kama nafasi tupu; Ficha huiondoa.
+bill_logo_tones_help	Thabiti: kila nukta nyeusi au nyeupe, kwa nembo zilizo wazi. Yenye kivuli: kijivu huwa michoro ya nukta ndogo, kwa picha na kivuli laini.
 slip_col_width	Upana (mm)
 slip_col_start	Nafasi ya mwanzo (px)
 slip_col_end	Nafasi ya mwisho (px)
@@ -167,6 +177,21 @@ alerts_help	Ujumbe wa hali ukae skrini kwa muda gani kwako (kuingia huku).
 snack_secs_ph	Sekunde (3–60, chaguo-msingi 10)
 snack_secs_save	Hifadhi muda wa arifa
 snack_secs_saved	Muda wa arifa umehifadhiwa — sekunde {n}
+settings_sec_whatsapp	WhatsApp
+whatsapp_cloud_help	Use your own Meta WhatsApp Cloud API. Create a System User token with whatsapp_business_messaging (temporary dashboard tokens expire). Credentials stay on this Server only — never on extra tills. Accepted means Meta took the request, not that the guest received it.
+whatsapp_phone_id_ph	Phone Number ID
+whatsapp_token_ph	Access Token (leave blank to keep)
+whatsapp_template_ph	Bill template name (optional)
+whatsapp_template_lang_ph	Template language (e.g. en)
+whatsapp_enable	Enable
+whatsapp_disable	Off
+whatsapp_save	Save WhatsApp
+whatsapp_test	Test connection
+whatsapp_disconnect	Disconnect
+whatsapp_send_bill	Send via WhatsApp
+whatsapp_consent	WhatsApp OK
+whatsapp_consent_help	Guest agreed to receive WhatsApp messages. A phone number alone is not consent.
+whatsapp_server_only	Configure WhatsApp on the shop Server device
 settings_sec_backup	Backup na kurudisha tena
 settings_sec_diag	Uchunguzi
 settings_sec_privacy	Faragha
@@ -729,6 +754,13 @@ station_vps_dd	Printa za kituo hiki
 station_vps_dd_n	{n} printa · gusa kubadili
 bill_printers_dd	Vifaa vya kuvunja kwa fursa
 bill_printers_dd_n	{n} vifaa vya kuvunja kwa fursa · bonyeza ili kubadilisha
+paper_heading	Karatasi
+paper_size	{w} × {h} mm
+paper_roll	gombo la {w} mm
+paper_not_set	karatasi bado haijulikani
+paper_length_mm	Urefu (mm)
+printer_paper_help	Karatasi ya printa hii kwa mm. Urefu mtupu ni gombo: kila risiti ni ndefu kama maudhui yake. Tafuta printa hujaza karatasi tupu kutoka kwa dereva wa printa (gombo la 80 mm isipoweza kusema) na kamwe haibadilishi iliyokwisha wekwa.
+preview_help	Risiti hii kwenye karatasi ya printa iliyochaguliwa hapa chini, kama inavyochapishwa huko: ukubwa halisi kutoka kona ya juu kushoto ambayo printa hufikia (kijivu: kingo isizofikia), risiti ndefu kwenye kurasa zaidi, kila kitu kinachopita ukingo wa karatasi hukatwa. Kuchagua printa hubadilisha onyesho la awali tu; karatasi ya kila printa huwekwa chini ya Printa.
 job_layout	Mpangilio
 job_delivery	Jinsi kazi inavyoandikwa
 job_delivery_help	Dola la OS, mabano ya asili, au ESC/POS. Fursa na tiketi za kituo kila moja hubaki zake. Kazi yoyote inaweza kwenda kwenye vifaa vilivyopatikana Find ilivyohifadhiwa.
@@ -1105,9 +1137,6 @@ remove_these_tables	Ondoa meza hizi
 table_remove_ph	Ondoa: T1-T24, au jina la meza moja
 find_server	Tafuta seva ya duka
 bill_format	Muundo wa bili
-bill_header_ph	Anwani | simu
-fssai_ph	Namba ya leseni FSSAI (India)
-bill_footer_ph	Chini (mf. Asante, karibu tena)
 reset_bill_format	Rejesha chaguo-msingi
 bill_format_reset	Muundo wa bili umerejeshwa
 reset_kot_format	Rejesha chaguo-msingi
@@ -1146,7 +1175,6 @@ kot_kind_modified	Imebadilishwa
 kot_kind_cancelled	Imefutwa
 kot_style_heading	Ukubwa na uzito wa sehemu
 kot_style_title	Kichwa
-kot_style_item_qty	Kipengele · Idadi
 kot_style_field_pick	Chagua sehemu
 kot_weight_regular	Kawaida
 kot_weight_bold	Nzito
@@ -1158,8 +1186,8 @@ content_width_bill	Upana wa muundo wa bilio (mm)
 content_width_kot	Upana wa muundo wa KOT (mm)
 content_width_ph	Au andika upana wa maudhui, 40–210 mm
 content_width_help	Upana ambao slipi hii inapinda. Bilio na KOT kila moja hubaki na upana wake mwenyewe.
-content_width_bill_help	Upana ambao bilio la mgeni linapinda. Asilimia ya asili 210 mm (neno). Slipi nyembamba 58 mm, slipi pana 80 mm, 4-inch 112 mm, A4-pana 210 mm. Andika thamani yoyote kutoka 40 hadi 210. Tiki za chakula zina upana wake mwenyewe kwenye tab ya KOT.
-content_width_kot_help	Upana ambao tiki ya matambaa inapinda. Asilimia ya asili 80 mm. Slipi nyembamba 58 mm, slipi pana 80 mm, 4-inch 112 mm, neno 210 mm. Andika thamani yoyote kutoka 40 hadi 210. Bilio la mgeni lina upana wake mwenyewe kwenye tab ya Bilio.
+content_width_bill_help	Upana ambao bili ya mgeni huchapishwa, kwa mm (40–210). Huchapishwa kwa ukubwa huu halisi kwenye karatasi yoyote; kwenye karatasi nyembamba zaidi, sehemu inayopita ukingo wa kuchapisha hukatwa (tazama Karatasi). Tiketi za jikoni zina upana wake kwenye kichupo cha KOT.
+content_width_kot_help	Upana ambao tiketi ya jikoni huchapishwa, kwa mm (40–210). Huchapishwa kwa ukubwa huu halisi kwenye karatasi yoyote; kwenye karatasi nyembamba zaidi, sehemu inayopita ukingo wa kuchapisha hukatwa (tazama Karatasi). Bili za wageni zina upana wake kwenye kichupo cha Bili.
 vp_paper_width	Upana wa maudhui (mm)
 vp_paper_width_ph	Au andika upana wa maudhui, 40–210 mm
 vp_paper_width_help	Upana wa maudhui unawekwa chini ya Muundo wa bili na KOT. Unatumika kwa bili na tiketi ya jiko.
@@ -1213,8 +1241,6 @@ schemes_help	Nunua X pata Y — kiotomatiki maliponi. Mf. Buy 2 Thali get 1 Chaa
 scheme_bogo_ph	Buy 2 Thali get 1 Chaas
 add_scheme	Ongeza BOGO
 schedule_ph	Saa / happy hour — Mon-Fri 07:00-11:00 au HappyHour 17:00-19:00=150
-upi_vpa_ph	UPI ID (VPA)
-upi_payee_ph	Mpokeaji UPI (si lazima)
 upi_qr	UPI QR
 show_upi_qr	Onyesha QR ya UPI
 close_upi_qr	Funga
@@ -1295,8 +1321,6 @@ printer_mode_first	Yake ya kwanza inayofanya kazi
 printer_mode_all	Piga kwa wote
 kot_show_area	Eneo
 kot_hide_area	Fichua eneo
-kot_show_item_hdr	Kipengele · Idadi
-kot_hide_item_hdr	Fichua safu
 kot_show_title	Mstari wa kichwa
 kot_hide_title	Fichua kichwa
 kot_field_cycle	Chagua inayofuata
@@ -1337,12 +1361,12 @@ private_code_ph	Msimbo wa tarakimu 12
 stamp_on	Muhuri: kwenye faili
 pay_qr_on	QR ya malipo: kwenye faili
 pay_qr_off	QR ya malipo: hakuna
+printers_screen_tip	Tafuta huonyesha printa ambazo kifaa hiki kinaweza kutumia na kuzihifadhi kwa duka hili. Printa za bili: Muundo wa Bili na KOT → Bili. Jikoni: Jikoni → Vituo vya jikoni.
+printers_found_none	Hakuna printa iliyopatikana.
+nav_loading	Inapakia…
+kot_copy_from	Nakili kutoka
+kot_copy_from_help	Inanakili ukubwa, unene na mpangilio wa kila mstari kutoka aina hiyo kwenda hii. Aina hii inabaki na bango lake, kiambishi cha bidhaa na mstari wa kufuta. Hifadhi muundo wa KOT ili kuubakiza.
 items_tmpl_heading	Violezo vya bidhaa
 items_tmpl_help	Vyakula, kategoria na picha za menyu yako. Mipangilio ya duka na wafanyakazi hubaki kama ilivyo.
 public_tmpl_help	Menyu za kuanzia ambazo yeyote anaweza kupakua. Inahitaji intaneti mara moja.
 private_tmpl_help	Menyu za wateja zilizofungwa kwa msimbo wa tarakimu 12 kutoka kwa mwakilishi wako wa Khaynjo.
-printers_screen_tip	Tafuta huonyesha printa ambazo kifaa hiki kinaweza kutumia na kuzihifadhi kwa duka hili. Printa za bili: Muundo wa Bili na KOT → Bili. Jikoni: Jikoni → Vituo vya jikoni.
-printers_found_none	Hakuna printa iliyopatikana.
-kot_copy_from	Nakili kutoka
-kot_copy_from_help	Inanakili ukubwa, unene na mpangilio wa kila mstari kutoka aina hiyo kwenda hii. Aina hii inabaki na bango lake, kiambishi cha bidhaa na mstari wa kufuta. Hifadhi muundo wa KOT ili kuubakiza.
-nav_loading	Inapakia…

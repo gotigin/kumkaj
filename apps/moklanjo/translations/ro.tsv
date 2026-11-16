@@ -501,6 +501,17 @@ job_size	Mărime font
 job_size_ph	ex. 18, 20, 26…
 test_receipt_format	Chitanță de test
 test_label_format	Etichetă de test
+paper_heading	Hârtie
+paper_size	{w} × {h} mm
+paper_roll	rolă de {w} mm
+paper_not_set	hârtia încă necunoscută
+paper_length_mm	Lungime (mm)
+printer_paper_help	Hârtia acestei imprimante în mm. O Lungime goală înseamnă rolă: fiecare bon este lung cât conținutul său. Găsește imprimante completează hârtia goală din driverul imprimantei (rolă de 80 mm când nu poate spune) și nu schimbă niciodată una deja setată.
+preview_help	Acest bon pe hârtia imprimantei alese mai jos, așa cum se tipărește acolo: la dimensiune reală din colțul stânga-sus pe care îl atinge imprimanta (gri: margini pe care nu le atinge), un bon lung pe mai multe foi, tot ce trece de marginea hârtiei este tăiat. Alegerea unei imprimante schimbă doar previzualizarea; hârtia fiecărei imprimante se setează la Imprimante.
+slip_col_width	Lățime (mm)
+no_printer_assigned	Nicio imprimantă
+printer_target_default	imprimanta obișnuită a acestui calculator (adresă goală)
+job_preview	Previzualizare
 test_receipt_sent	Chitanță mostră trimisă
 test_label_sent	Etichetă mostră trimisă
 test_print_no_printer	Nicio imprimantă pentru acel job — adaugă una la acest loc

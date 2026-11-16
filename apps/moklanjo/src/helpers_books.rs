@@ -239,3 +239,85 @@ fn load_product_thumb(cx: &mut Cx, item: &WidgetRef, product: &Product) {
     let path = image_key_path(product.image_key.as_deref(), &dir, lan_images::PhotoKind::Item);
     apply_thumb_avatar(cx, item, &product.name, &path);
 }
+
+/// A printer's paper for people: `80 mm roll`, `210 × 297 mm`, or that it
+/// is not known yet (docs/PRINTER.md § Paper and preview).
+fn paper_summary(p: &print_share::NamedPrinter, t: impl Fn(&str) -> String) -> String {
+    let mm = os_paper::mm_text;
+    match p.paper() {
+        Some(pp) if pp.is_roll() => t("paper_roll").replace("{w}", &mm(pp.width_mm)),
+        Some(pp) => t("paper_size")
+            .replace("{w}", &mm(pp.width_mm))
+            .replace("{h}", &mm(pp.length_mm)),
+        None => t("paper_not_set"),
+    }
+}
+
+/// Ask the driver of every printer that has no paper yet (on its own
+/// thread; the answer fills it — never one already set — and redraws, see
+/// `main_impl`). ESC/POS devices have no driver to ask.
+fn ask_drivers_for_missing_papers(printers: &[print_share::NamedPrinter]) {
+    for p in printers {
+        if p.paper().is_none() && p.has_driver() {
+            let _ = os_paper::papers_for(&p.target);
+        }
+    }
+}
+
+/// A saved printer's name for people: its label (Find names it), else its
+/// address, else this computer's usual printer.
+fn printer_paper_name(p: &print_share::NamedPrinter, t: impl Fn(&str) -> String) -> String {
+    let label = p.label.trim();
+    if !label.is_empty() {
+        return label.to_string();
+    }
+    let target = p.target.trim();
+    if !target.is_empty() {
+        return target.to_string();
+    }
+    t("printer_target_default")
+}
+
+/// One saved printer as the lists show it: `name · paper`.
+fn printer_paper_line(p: &print_share::NamedPrinter, t: impl Fn(&str) -> String) -> String {
+    format!("{} · {}", printer_paper_name(p, &t), paper_summary(p, &t))
+}
+
+/// One row of the preview's printer dropdown: every saved printer is listed;
+/// picking one only changes the preview.
+struct PreviewPaperRow {
+    title: String,
+    printer_id: String,
+    selected: bool,
+}
+
+fn preview_paper_rows(
+    printers: &[print_share::NamedPrinter],
+    active: Option<&str>,
+    t: impl Fn(&str) -> String,
+) -> Vec<PreviewPaperRow> {
+    let lines: Vec<String> = printers.iter().map(|p| printer_paper_line(p, &t)).collect();
+    printers
+        .iter()
+        .zip(&lines)
+        .map(|(p, line)| {
+            // Two printers that read the same are told apart by their id.
+            let twin = lines.iter().filter(|l| *l == line).count() > 1;
+            PreviewPaperRow {
+                title: if twin { format!("{line} ({})", p.id) } else { line.clone() },
+                printer_id: p.id.clone(),
+                selected: active == Some(p.id.as_str()),
+            }
+        })
+        .collect()
+}
+
+/// What the preview draws its slip on: the active printer's paper, how the
+/// slip is sent there, and what its driver said (for the edges it cannot
+/// reach). `None` driver: not asked (ESC/POS) or not answered yet.
+#[derive(Clone, Debug, PartialEq)]
+struct PreviewPaper {
+    paper: os_paper::PaperMm,
+    os_document: bool,
+    driver: Option<os_paper::PrinterPapers>,
+}

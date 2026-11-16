@@ -92,10 +92,6 @@ bill_item_layout	เลย์เอาต์รายการ
 bill_item_layout_columns	คอลัมน์
 bill_item_layout_stacked	ซ้อน
 bill_item_header	หัวคอลัมน์
-bill_item_hdr_item	หัวข้อรายการ
-bill_item_hdr_qty	หัวข้อจำนวน
-bill_item_hdr_price	หัวข้อราคา
-bill_item_hdr_amount	หัวข้อยอด
 bill_item_name	ชื่อ
 bill_item_qty	จำนวน
 bill_item_price	ราคา
@@ -103,6 +99,20 @@ bill_item_amount	จำนวนเงิน
 bill_item_note	โน้ต
 bill_item_col_sep	เส้นคอลัมน์
 slip_columns	คอลัมน์
+slip_col_header	หัวข้อ
+bill_line_logo	โลโก้
+bill_logo_picture	รูปภาพ
+bill_logo_choose	เลือกรูปภาพ
+bill_logo_remove	นำรูปภาพออก
+bill_logo_none	ไม่มีรูปภาพ
+bill_logo_unreadable	ไม่ใช่รูปภาพที่แอปนี้อ่านได้
+bill_logo_width	ความกว้าง (px)
+bill_logo_height	ความสูง (px)
+bill_logo_tones	สีเทา
+bill_logo_solid	ทึบ
+bill_logo_shaded	แรเงา
+bill_logo_help	ความกว้างและความสูงเป็น px ว่างไว้จะตามรูป: ว่างหนึ่งช่องคงรูปทรง ว่างทั้งสองใช้ขนาดเดิมของรูป ใส่ทั้งสองจะใส่รูปไว้ข้างใน ไม่ยืดเลย ไม่มีรูป: โลโก้ที่แสดงจะเว้นความสูงไว้เป็นที่ว่าง ซ่อนจะนำออก
+bill_logo_tones_help	ทึบ: ทุกจุดเป็นสีดำหรือขาว สำหรับโลโก้คมชัด แรเงา: สีเทากลายเป็นลายจุดละเอียด สำหรับภาพถ่ายและเงานุ่ม
 slip_col_width	ความกว้าง (mm)
 slip_col_start	ระยะว่างต้น (px)
 slip_col_end	ระยะว่างท้าย (px)
@@ -167,6 +177,21 @@ alerts_help	ข้อความสถานะจะแสดงบนจอ�
 snack_secs_ph	วินาที (3–60 ค่าเริ่มต้น 10)
 snack_secs_save	บันทึกเวลาแจ้งเตือน
 snack_secs_saved	บันทึกเวลาแจ้งเตือนแล้ว — {n} วินาที
+settings_sec_whatsapp	WhatsApp
+whatsapp_cloud_help	Use your own Meta WhatsApp Cloud API. Create a System User token with whatsapp_business_messaging (temporary dashboard tokens expire). Credentials stay on this Server only — never on extra tills. Accepted means Meta took the request, not that the guest received it.
+whatsapp_phone_id_ph	Phone Number ID
+whatsapp_token_ph	Access Token (leave blank to keep)
+whatsapp_template_ph	Bill template name (optional)
+whatsapp_template_lang_ph	Template language (e.g. en)
+whatsapp_enable	Enable
+whatsapp_disable	Off
+whatsapp_save	Save WhatsApp
+whatsapp_test	Test connection
+whatsapp_disconnect	Disconnect
+whatsapp_send_bill	Send via WhatsApp
+whatsapp_consent	WhatsApp OK
+whatsapp_consent_help	Guest agreed to receive WhatsApp messages. A phone number alone is not consent.
+whatsapp_server_only	Configure WhatsApp on the shop Server device
 settings_sec_backup	สำรองข้อมูลและกู้คืน
 settings_sec_diag	การวินิจฉัย
 settings_sec_privacy	ความเป็นส่วนตัว
@@ -729,6 +754,13 @@ station_vps_dd	เครื่องพิมพ์ของสถานีน�
 station_vps_dd_n	{n} เครื่องพิมพ์ · แตะเพื่อเปลี่ยน
 bill_printers_dd	เครื่องพิมพ์สำหรับบิล
 bill_printers_dd_n	{n} เครื่องพิมพ์สำหรับบิล · แตะเพื่อเปลี่ยน
+paper_heading	กระดาษ
+paper_size	{w} × {h} mm
+paper_roll	ม้วน {w} mm
+paper_not_set	ยังไม่ทราบกระดาษ
+paper_length_mm	ความยาว (mm)
+printer_paper_help	กระดาษของเครื่องพิมพ์นี้เป็น mm ความยาวว่างคือม้วน: ใบเสร็จแต่ละใบยาวเท่าเนื้อหา ค้นหาเครื่องพิมพ์ จะเติมกระดาษที่ว่างจากไดรเวอร์ของเครื่องพิมพ์ (ม้วน 80 mm เมื่อบอกไม่ได้) และไม่เปลี่ยนกระดาษที่ตั้งไว้แล้ว
+preview_help	ใบเสร็จนี้บนกระดาษของเครื่องพิมพ์ที่เลือกด้านล่าง ตามที่พิมพ์ออกมาที่นั่น: ขนาดจริงจากมุมซ้ายบนที่เครื่องพิมพ์พิมพ์ถึง (สีเทา: ขอบที่พิมพ์ไม่ถึง) ใบเสร็จยาวอยู่หลายแผ่น ส่วนที่เกินขอบกระดาษถูกตัด การเลือกเครื่องพิมพ์เปลี่ยนแค่ตัวอย่าง กระดาษของแต่ละเครื่องตั้งใน เครื่องพิมพ์
 job_layout	เลย์เอาต์
 job_delivery	วิธีการส่งงาน
 job_delivery_help	เอกสาร OS, ไบต์ดิบ หรือ ESC/POS บิลและใบสั่งครัวแต่ละใบมีของตัวเอง งานใดก็ได้สามารถส่งไปยังเครื่องพิมพ์ที่ Find บันทึกไว้ได้
@@ -1105,9 +1137,6 @@ remove_these_tables	ลบโต๊ะเหล่านี้
 table_remove_ph	ลบ: T1-T24 หรือชื่อโต๊ะหนึ่งตัว
 find_server	ค้นหาเซิร์ฟเวอร์ของร้าน
 bill_format	รูปแบบบิล
-bill_header_ph	ที่อยู่ | โทรศัพท์
-fssai_ph	เลขใบอนุญาต FSSAI (อินเดีย)
-bill_footer_ph	ท้ายบิล (เช่น ขอบคุณ แล้วพบกันใหม่)
 reset_bill_format	กลับค่าเริ่มต้น
 bill_format_reset	รีเซ็ตรูปแบบบิลแล้ว
 reset_kot_format	กลับค่าเริ่มต้น
@@ -1146,7 +1175,6 @@ kot_kind_modified	แก้ไข
 kot_kind_cancelled	ยกเลิก
 kot_style_heading	ขนาดและน้ำหนักช่อง
 kot_style_title	ชื่อเรื่อง
-kot_style_item_qty	รายการ · จำนวน
 kot_style_field_pick	เลือกช่อง
 kot_weight_regular	ปกติ
 kot_weight_bold	ตัวหนา
@@ -1158,8 +1186,8 @@ content_width_bill	ความกว้างเนื้อหาใบแจ�
 content_width_kot	ความกว้างเนื้อหา KOT (มม.)
 content_width_ph	หรือพิมพ์ความกว้างเนื้อหา 40–210 มม.
 content_width_help	ความกว้างที่สลิปพิมพ์ออก ใบแจ้งหนี้และ KOT แต่ละรายการมีขนาดความกว้างของตัวเอง
-content_width_bill_help	ความกว้างที่ใบแจ้งหนี้ลูกค้าพิมพ์ออก ค่าเริ่มต้น 210 มม. (หน้ากระดาษ) สลิปแคบ 58 มม., สลิปกว้าง 80 มม., สลิป 4 นิ้ว 112 มม., สลิป A4 กว้าง 210 มม. พิมพ์ค่าใดก็ได้จาก 40 ถึง 210 ใบสั่งครัวมีขนาดความกว้างของตัวเองในแท็บ KOT
-content_width_kot_help	ความกว้างที่ใบสั่งครัวพิมพ์ออก ค่าเริ่มต้น 80 มม. สลิปแคบ 58 มม., สลิปกว้าง 80 มม., สลิป 4 นิ้ว 112 มม., หน้ากระดาษ 210 มม. พิมพ์ค่าใดก็ได้จาก 40 ถึง 210 ใบแจ้งหนี้ลูกค้ามีขนาดความกว้างของตัวเองในแท็บใบแจ้งหนี้
+content_width_bill_help	ใบเสร็จของแขกพิมพ์กว้างเท่าใด เป็น mm (40–210) พิมพ์ตามขนาดจริงนี้บนกระดาษใดก็ได้ บนกระดาษที่แคบกว่านี้ ส่วนที่เกินขอบการพิมพ์จะถูกตัด (ดู กระดาษ) ตั๋วครัวมีความกว้างของตัวเองในแท็บ KOT
+content_width_kot_help	ตั๋วครัวพิมพ์กว้างเท่าใด เป็น mm (40–210) พิมพ์ตามขนาดจริงนี้บนกระดาษใดก็ได้ บนกระดาษที่แคบกว่านี้ ส่วนที่เกินขอบการพิมพ์จะถูกตัด (ดู กระดาษ) ใบเสร็จของแขกมีความกว้างของตัวเองในแท็บ บิล
 vp_paper_width	ความกว้างเนื้อหา (มม.)
 vp_paper_width_ph	หรือพิมพ์ความกว้างเนื้อหา 40–210 มม.
 vp_paper_width_help	ความกว้างเนื้อหาตั้งในรูปแบบบิลและ KOT ใช้กับบิลและใบครัว
@@ -1213,8 +1241,6 @@ schemes_help	ซื้อ X ได้ Y — ตอนเก็บเงิน �
 scheme_bogo_ph	Buy 2 Thali get 1 Chaas
 add_scheme	เพิ่ม BOGO
 schedule_ph	เวลา / Happy Hour — Mon-Fri 07:00-11:00 หรือ HappyHour 17:00-19:00=150
-upi_vpa_ph	UPI ID (VPA)
-upi_payee_ph	ชื่อผู้รับ UPI (ไม่บังคับ)
 upi_qr	UPI QR
 show_upi_qr	แสดง QR UPI
 close_upi_qr	ปิด
@@ -1295,8 +1321,6 @@ printer_mode_first	ตัวแรกที่ใช้ได้
 printer_mode_all	พิมพ์ทั้งหมด
 kot_show_area	พื้นที่
 kot_hide_area	ซ่อนพื้นที่
-kot_show_item_hdr	รายการ · จำนวน
-kot_hide_item_hdr	ซ่อนคอลัมน์
 kot_show_title	บรรทัดหัวข้อ
 kot_hide_title	ซ่อนหัวข้อ
 kot_field_cycle	เลือกถัดไป
@@ -1337,12 +1361,12 @@ private_code_ph	รหัส 12 หลัก
 stamp_on	ตรา: มีไฟล์
 pay_qr_on	QR ชำระ: มีไฟล์
 pay_qr_off	QR ชำระ: ไม่มี
+printers_screen_tip	ค้นหาจะแสดงเครื่องพิมพ์ที่อุปกรณ์นี้ใช้ได้และบันทึกไว้สำหรับร้านนี้ เครื่องพิมพ์บิล: รูปแบบบิลและ KOT → บิล ครัว: ครัว → สถานีครัว
+printers_found_none	ไม่พบเครื่องพิมพ์
+nav_loading	กำลังโหลด…
+kot_copy_from	คัดลอกจาก
+kot_copy_from_help	คัดลอกขนาด ความหนา และการจัดแนวของทุกบรรทัดจากประเภทนั้นมาที่ประเภทนี้ ประเภทนี้ยังคงใช้แบนเนอร์ คำนำหน้ารายการ และขีดฆ่าของตัวเอง บันทึกรูปแบบ KOT เพื่อเก็บไว้
 items_tmpl_heading	เทมเพลตรายการ
 items_tmpl_help	อาหาร หมวดหมู่ และรูปภาพสำหรับเมนูของคุณ การตั้งค่าร้านและพนักงานยังคงเหมือนเดิม
 public_tmpl_help	เมนูเริ่มต้นที่ใครก็ดาวน์โหลดได้ ต้องใช้อินเทอร์เน็ตครั้งเดียว
 private_tmpl_help	เมนูลูกค้าที่ล็อกด้วยรหัส 12 หลักจากผู้ติดต่อ Khaynjo ของคุณ
-printers_screen_tip	ค้นหาจะแสดงเครื่องพิมพ์ที่อุปกรณ์นี้ใช้ได้และบันทึกไว้สำหรับร้านนี้ เครื่องพิมพ์บิล: รูปแบบบิลและ KOT → บิล ครัว: ครัว → สถานีครัว
-printers_found_none	ไม่พบเครื่องพิมพ์
-kot_copy_from	คัดลอกจาก
-kot_copy_from_help	คัดลอกขนาด ความหนา และการจัดแนวของทุกบรรทัดจากประเภทนั้นมาที่ประเภทนี้ ประเภทนี้ยังคงใช้แบนเนอร์ คำนำหน้ารายการ และขีดฆ่าของตัวเอง บันทึกรูปแบบ KOT เพื่อเก็บไว้
-nav_loading	กำลังโหลด…

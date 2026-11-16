@@ -107,6 +107,8 @@ impl App {
                 makepad_widgets::makepad_platform::thread::SignalToUI::set_ui_signal()
             });
             print_share::set_notify(|| makepad_widgets::makepad_platform::thread::SignalToUI::set_ui_signal());
+            // A printer's paper sizes are read on a worker (CUPS / PowerShell).
+            os_paper::set_notify(|| makepad_widgets::makepad_platform::thread::SignalToUI::set_ui_signal());
             // Windows answers "start with this computer" on a worker (reg.exe).
             startup::set_notify(|| makepad_widgets::makepad_platform::thread::SignalToUI::set_ui_signal());
             // Printer Find is Settings → Find printers only (never at startup).
@@ -130,6 +132,41 @@ impl App {
                     }
                     start_auto_backups(path);
                 }
+            }
+        }
+        if matches!(event, Event::Signal) && os_paper::take_ready() {
+            // A driver answered: a printer with no paper gets its driver's
+            // (never changing one already set), then the printer list, the
+            // preview's face and its picture (the edges the printer cannot
+            // reach) are drawn again (docs/PRINTER.md § Paper and preview).
+            let open = {
+                let mut st = app_state().lock().unwrap();
+                if st.device_role != DeviceRole::Client
+                    && st.printer_draft.fill_missing_papers(&os_paper::answers(), false) > 0
+                {
+                    let saved = match st.data_base.clone() {
+                        Some(base) => print_share::save_device_printers(&base, &st.printer_draft),
+                        None => Err("Storage not ready".to_string()),
+                    };
+                    // Saving configures the print queue too.
+                    if let Err(e) = saved {
+                        log!("printer papers not saved: {e}");
+                    }
+                }
+                st.suggest_open
+            };
+            if open == Some(SuggestField::JobPreviewPaper) {
+                app_state()
+                    .lock()
+                    .unwrap()
+                    .open_suggest(SuggestField::JobPreviewPaper, "");
+                self.ui
+                    .widget(cx, SuggestField::JobPreviewPaper.list())
+                    .redraw(cx);
+            }
+            if app_state().lock().unwrap().screen == Screen::Settings {
+                self.paint_printer_rows(cx);
+                self.sync_job_preview(cx);
             }
         }
         if matches!(event, Event::Signal) && (thumbs::take_ready() | lan_images::take_ready()) {

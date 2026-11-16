@@ -501,6 +501,17 @@ job_size	Şrift ölçüsü
 job_size_ph	məs. 18, 20, 26…
 test_receipt_format	Sınaq qəbz
 test_label_format	Sınaq etiket
+paper_heading	Kağız
+paper_size	{w} × {h} mm
+paper_roll	{w} mm rulon
+paper_not_set	kağız hələ məlum deyil
+paper_length_mm	Uzunluq (mm)
+printer_paper_help	Bu printerin kağızı mm ilə. Boş Uzunluq rulondur: hər çek məzmunu qədər uzun olur. Printerləri tap boş kağızı printerin sürücüsündən doldurur (deyə bilmirsə 80 mm rulon) və artıq təyin olunmuş kağızı heç vaxt dəyişmir.
+preview_help	Bu çek aşağıda seçilmiş printerin kağızında, orada çap olunduğu kimi: printerin çata bildiyi yuxarı sol küncdən real ölçüdə (boz: çata bilmədiyi kənarlar), uzun çek daha çox vərəqdə, kağızın kənarından kənara çıxan hər şey kəsilir. Printer seçmək yalnız önizləməni dəyişir; hər printerin kağızı Printerlər bölməsində təyin olunur.
+slip_col_width	En (mm)
+no_printer_assigned	Printer yoxdur
+printer_target_default	bu kompüterin adi printeri (ünvan boş)
+job_preview	Önizləmə
 test_receipt_sent	Nümunə qəbz göndərildi
 test_label_sent	Nümunə etiket göndərildi
 test_print_no_printer	Bu iş üçün printer yoxdur — birini bu yerin altına əlavə edin

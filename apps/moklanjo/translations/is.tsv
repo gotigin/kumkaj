@@ -501,6 +501,17 @@ job_size	Leturstærð
 job_size_ph	t.d. 18, 20, 26...
 test_receipt_format	Prófkvittun
 test_label_format	Prófunarmerki
+paper_heading	Pappír
+paper_size	{w} × {h} mm
+paper_roll	{w} mm rúlla
+paper_not_set	pappír enn óþekktur
+paper_length_mm	Lengd (mm)
+printer_paper_help	Pappír þessa prentara í mm. Auð Lengd er rúlla: hver kvittun er jafnlöng innihaldi sínu. Finndu prentara fyllir í auðan pappír úr rekli prentarans (80 mm rúlla þegar hann getur ekki sagt til) og breytir aldrei pappír sem þegar er stilltur.
+preview_help	Þessi kvittun á pappír prentarans sem valinn er hér fyrir neðan, eins og hún prentast þar: í raunstærð frá efra vinstra horninu sem prentarinn nær (grátt: brúnir sem hann nær ekki), löng kvittun á fleiri blöðum, allt út fyrir brún pappírsins er skorið af. Að velja prentara breytir aðeins forskoðun; pappír hvers prentara er stilltur undir Prentarar.
+slip_col_width	Breidd (mm)
+no_printer_assigned	Enginn prentari
+printer_target_default	Venjulegur prentari þessarar tölvu (autt heimilisfang)
+job_preview	Forskoðun
 test_receipt_sent	Dæmi um kvittun send
 test_label_sent	Sýnishorn sendur
 test_print_no_printer	Enginn prentari fyrir það verk - bættu einum við undir þessum stað

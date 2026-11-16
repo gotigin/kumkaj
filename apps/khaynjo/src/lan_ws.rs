@@ -804,10 +804,10 @@ mod tests {
     /// next delta — and a delta that changed no setting carries none.
     #[test]
     fn a_settings_change_rides_the_next_delta() {
-        let server_path = std::env::temp_dir().join(format!("khaynjo-ws-prefs-{}.sqlite3", crate::domain::new_id()));
+        let server_path = crate::test_dirs::run_root().join(format!("khaynjo-ws-prefs-{}.sqlite3", crate::domain::new_id()));
         let server = Store::open_path(&server_path).unwrap();
         let before = snapshot(&server);
-        let device_path = std::env::temp_dir().join(format!("khaynjo-ws-prefs-dev-{}.sqlite3", crate::domain::new_id()));
+        let device_path = crate::test_dirs::run_root().join(format!("khaynjo-ws-prefs-dev-{}.sqlite3", crate::domain::new_id()));
         let device = Store::open_path(&device_path).unwrap();
         device.prepare_as_client_terminal().unwrap();
         apply_snapshot(&device, &before).unwrap();

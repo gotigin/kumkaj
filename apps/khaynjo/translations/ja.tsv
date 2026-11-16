@@ -92,10 +92,6 @@ bill_item_layout	品目レイアウト
 bill_item_layout_columns	列
 bill_item_layout_stacked	縦並び
 bill_item_header	列見出し
-bill_item_hdr_item	品目見出し
-bill_item_hdr_qty	数量見出し
-bill_item_hdr_price	単価見出し
-bill_item_hdr_amount	金額見出し
 bill_item_name	料理名
 bill_item_qty	数量
 bill_item_price	単価
@@ -103,6 +99,20 @@ bill_item_amount	金額
 bill_item_note	メモ
 bill_item_col_sep	列の罫線
 slip_columns	列
+slip_col_header	見出し
+bill_line_logo	ロゴ
+bill_logo_picture	画像
+bill_logo_choose	画像を選ぶ
+bill_logo_remove	画像を削除
+bill_logo_none	画像なし
+bill_logo_unreadable	このアプリで読めない画像です
+bill_logo_width	幅 (px)
+bill_logo_height	高さ (px)
+bill_logo_tones	グレー
+bill_logo_solid	ベタ
+bill_logo_shaded	網点
+bill_logo_help	幅と高さは px。空欄は画像に合わせます：片方が空欄なら形を保ち、両方空欄なら画像そのままの大きさ。両方入れると枠内に収め、伸ばしません。画像なし：表示中のロゴは高さ分の余白を残します。非表示で消えます。
+bill_logo_tones_help	ベタ：各ドットを黒か白に。くっきりしたロゴ向け。網点：グレーを細かい点の模様に。写真や柔らかな陰影向け。
 slip_col_width	幅 (mm)
 slip_col_start	先頭の余白 (px)
 slip_col_end	末尾の余白 (px)
@@ -167,6 +177,21 @@ alerts_help	状態メッセージを画面に表示しておく時間（この�
 snack_secs_ph	秒（3–60、既定 10）
 snack_secs_save	表示時間を保存
 snack_secs_saved	表示時間を保存しました — {n} 秒
+settings_sec_whatsapp	WhatsApp
+whatsapp_cloud_help	Use your own Meta WhatsApp Cloud API. Create a System User token with whatsapp_business_messaging (temporary dashboard tokens expire). Credentials stay on this Server only — never on extra tills. Accepted means Meta took the request, not that the guest received it.
+whatsapp_phone_id_ph	Phone Number ID
+whatsapp_token_ph	Access Token (leave blank to keep)
+whatsapp_template_ph	Bill template name (optional)
+whatsapp_template_lang_ph	Template language (e.g. en)
+whatsapp_enable	Enable
+whatsapp_disable	Off
+whatsapp_save	Save WhatsApp
+whatsapp_test	Test connection
+whatsapp_disconnect	Disconnect
+whatsapp_send_bill	Send via WhatsApp
+whatsapp_consent	WhatsApp OK
+whatsapp_consent_help	Guest agreed to receive WhatsApp messages. A phone number alone is not consent.
+whatsapp_server_only	Configure WhatsApp on the shop Server device
 settings_sec_backup	バックアップとリストア
 settings_sec_diag	診断
 settings_sec_privacy	プライバシー
@@ -729,6 +754,13 @@ station_vps_dd	このステーションのプリンター
 station_vps_dd_n	{n} 台のプリンター · タップして変更
 bill_printers_dd	請求書のプリンター
 bill_printers_dd_n	請求書用の {n} プリンター · タップして変更
+paper_heading	用紙
+paper_size	{w} × {h} mm
+paper_roll	{w} mm ロール
+paper_not_set	用紙はまだ不明です
+paper_length_mm	長さ (mm)
+printer_paper_help	このプリンターの用紙 (mm)。長さが空欄ならロール紙で、伝票は内容の長さになります。「プリンターを探す」は空欄の用紙をプリンターのドライバーから入力し (わからない場合は 80 mm ロール)、設定済みの用紙は決して変更しません。
+preview_help	下で選んだプリンターの用紙に、そこで印刷されるとおりにこの伝票を表示します。プリンターが届く左上から実寸で (灰色: 届かない余白)、長い伝票は複数の用紙に、用紙の端を越えた部分は切れます。プリンターを選んでもプレビューだけが変わります。各プリンターの用紙は「プリンター」で設定します。
 job_layout	レイアウト
 job_delivery	作業の送信方法
 job_delivery_help	OS ドキュメント、生バイト、または ESC/POS。請求書と厨房チケットはそれぞれ独立して管理されます。どちらのジョブも、Find が保存したプリンターのいずれかに送信できます
@@ -1105,9 +1137,6 @@ remove_these_tables	これらのテーブルを削除
 table_remove_ph	削除：T1-T24、またはテーブル名
 find_server	店のサーバーを探す
 bill_format	伝票の書式
-bill_header_ph	住所 | 電話
-fssai_ph	FSSAI 許可番号（インド）
-bill_footer_ph	フッター（例：ありがとうございました）
 reset_bill_format	既定に戻す
 bill_format_reset	伝票書式を既定に戻しました
 reset_kot_format	既定に戻す
@@ -1146,7 +1175,6 @@ kot_kind_modified	変更
 kot_kind_cancelled	取消
 kot_style_heading	項目のサイズと太さ
 kot_style_title	タイトル
-kot_style_item_qty	品目 · 数量
 kot_style_field_pick	項目を選択
 kot_weight_regular	標準
 kot_weight_bold	太字
@@ -1158,8 +1186,8 @@ content_width_bill	請求書コンテンツの幅（mm）
 content_width_kot	KOT コンテンツの幅（mm）
 content_width_ph	または内容幅を入力、40–210 mm
 content_width_help	このスリップの印刷幅。請求書と KOT はそれぞれ独自の幅を保持します
-content_width_bill_help	ゲスト請求書の印刷幅。デフォルトは 210 mm（ページ）。58 mm の細いスリップ、80 mm の広いスリップ、112 mm の 4 インチ、210 mm の A4 広め。40 から 210 の間の値を入力してください。キッチンチケットは KOT タブで独自の幅を保持します
-content_width_kot_help	キッチンチケットの印刷幅。デフォルトは 80 mm。58 mm の細いスリップ、80 mm の広いスリップ、112 mm の 4 インチ、210 mm のページ。40 から 210 の間の値を入力してください。ゲスト請求書は Bill タブで独自の幅を保持します
+content_width_bill_help	お客様の伝票の印刷幅（mm、40–210）。どの用紙にもこの実寸で印刷されます。これより狭い用紙では、印刷範囲の端を超えた部分が切れます（用紙を参照）。キッチン伝票の幅は KOT タブで別に設定します。
+content_width_kot_help	キッチン伝票の印刷幅（mm、40–210）。どの用紙にもこの実寸で印刷されます。これより狭い用紙では、印刷範囲の端を超えた部分が切れます（用紙を参照）。お客様の伝票の幅は会計タブで別に設定します。
 vp_paper_width	内容幅（mm）
 vp_paper_width_ph	または内容幅を入力、40–210 mm
 vp_paper_width_help	内容幅は伝票とKOT形式で設定します。伝票と厨房チケットの両方に適用されます。
@@ -1213,8 +1241,6 @@ schemes_help	X買ってY無料 — 会計時自動。例 Buy 2 Thali get 1 Chaas
 scheme_bogo_ph	Buy 2 Thali get 1 Chaas
 add_scheme	BOGOを追加
 schedule_ph	時間/ハッピーアワー — Mon-Fri 07:00-11:00 または HappyHour 17:00-19:00=150
-upi_vpa_ph	UPI ID (VPA)
-upi_payee_ph	UPI受取人名（任意）
 upi_qr	UPI QR
 show_upi_qr	UPI QRを表示
 close_upi_qr	閉じる
@@ -1295,8 +1321,6 @@ printer_mode_first	最初に動作するもの
 printer_mode_all	すべてで印刷
 kot_show_area	エリア
 kot_hide_area	エリアを非表示
-kot_show_item_hdr	品目 · 数量
-kot_hide_item_hdr	カラムを非表示
 kot_show_title	タイトル行
 kot_hide_title	タイトルを非表示
 kot_field_cycle	次の項目を選択
@@ -1337,12 +1361,12 @@ private_code_ph	12桁のコード
 stamp_on	スタンプ：保存済み
 pay_qr_on	支払いQR：保存済み
 pay_qr_off	支払いQR：なし
+printers_screen_tip	検索で、この端末で使えるプリンターを一覧にして、この店舗用に保存します。会計伝票のプリンター：伝票とKOTの書式 → 伝票。キッチン：キッチン → キッチンステーション。
+printers_found_none	プリンターが見つかりません。
+nav_loading	読み込み中…
+kot_copy_from	コピー元
+kot_copy_from_help	その種類の各行のサイズ・太さ・配置をこの種類にコピーします。この種類のバナー、品目の接頭辞、取り消し線はそのままです。保持するには KOT 形式を保存してください。
 items_tmpl_heading	商品テンプレート
 items_tmpl_help	メニュー用の料理・カテゴリー・写真。店舗の設定とスタッフはそのままです。
 public_tmpl_help	誰でもダウンロードできるスターターメニュー。インターネットが一度必要です。
 private_tmpl_help	Khaynjo担当者から届く12桁のコードで保護された顧客用メニュー。
-printers_screen_tip	検索で、この端末で使えるプリンターを一覧にして、この店舗用に保存します。会計伝票のプリンター：伝票とKOTの書式 → 伝票。キッチン：キッチン → キッチンステーション。
-printers_found_none	プリンターが見つかりません。
-kot_copy_from	コピー元
-kot_copy_from_help	その種類の各行のサイズ・太さ・配置をこの種類にコピーします。この種類のバナー、品目の接頭辞、取り消し線はそのままです。保持するには KOT 形式を保存してください。
-nav_loading	読み込み中…

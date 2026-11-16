@@ -92,10 +92,6 @@ bill_item_layout	د توکو ترتیب
 bill_item_layout_columns	کالمونه
 bill_item_layout_stacked	پټه شوې
 bill_item_header	د کالم سرلیکونه
-bill_item_hdr_item	د توکي سرلیک
-bill_item_hdr_qty	مقدار سرلیک
-bill_item_hdr_price	د قیمت سرلیک
-bill_item_hdr_amount	د مقدار سرلیک
 bill_item_name	د ډوډۍ نوم
 bill_item_qty	مقدار
 bill_item_price	قیمت
@@ -103,6 +99,20 @@ bill_item_amount	مقدار
 bill_item_note	د ډوډۍ یادښت
 bill_item_col_sep	د کالم قواعد
 slip_columns	ستنې
+slip_col_header	سرلیک
+bill_line_logo	لوګو
+bill_logo_picture	انځور
+bill_logo_choose	انځور وټاکئ
+bill_logo_remove	انځور لرې کړئ
+bill_logo_none	انځور نشته
+bill_logo_unreadable	دا داسې انځور نه دی چې اپ یې ولوستلای شي
+bill_logo_width	پلنوالی (px)
+bill_logo_height	لوړوالی (px)
+bill_logo_tones	خړ رنګونه
+bill_logo_solid	ټینګ
+bill_logo_shaded	سیوري لرونکی
+bill_logo_help	پلنوالی او لوړوالی په px. تش انځور تعقیبوي: یو تش وي نو بڼه ساتي، دواړه تش وي نو خپله اندازه کاروي؛ دواړه وټاکل شي نو دننه ځای کېږي، هېڅکله نه غځول کېږي. انځور نشته: ښودل شوی لوګو خپل لوړوالی د تش ځای په توګه ساتي؛ پټول یې لرې کوي.
+bill_logo_tones_help	ټینګ: هر ټکی تور یا سپین، د روښانه لوګوګانو لپاره. سیوري لرونکی: خړ رنګونه د وړو ټکو نقش جوړوي، د انځورونو او نرم سیوري لپاره.
 slip_col_width	سور (mm)
 slip_col_start	د پیل واټن (px)
 slip_col_end	د پای واټن (px)
@@ -167,6 +177,21 @@ alerts_help	څومره وخت د وضعیت پیغامونه ستاسو لپار
 snack_secs_ph	ثانیې (3-60، ډیفالټ 10)
 snack_secs_save	د خبرتیا وخت خوندي کړئ
 snack_secs_saved	د خبرتیا وخت خوندي شوی — {n} ثانیې
+settings_sec_whatsapp	WhatsApp
+whatsapp_cloud_help	Use your own Meta WhatsApp Cloud API. Create a System User token with whatsapp_business_messaging (temporary dashboard tokens expire). Credentials stay on this Server only — never on extra tills. Accepted means Meta took the request, not that the guest received it.
+whatsapp_phone_id_ph	Phone Number ID
+whatsapp_token_ph	Access Token (leave blank to keep)
+whatsapp_template_ph	Bill template name (optional)
+whatsapp_template_lang_ph	Template language (e.g. en)
+whatsapp_enable	Enable
+whatsapp_disable	Off
+whatsapp_save	Save WhatsApp
+whatsapp_test	Test connection
+whatsapp_disconnect	Disconnect
+whatsapp_send_bill	Send via WhatsApp
+whatsapp_consent	WhatsApp OK
+whatsapp_consent_help	Guest agreed to receive WhatsApp messages. A phone number alone is not consent.
+whatsapp_server_only	Configure WhatsApp on the shop Server device
 settings_sec_backup	بیک اپ او بیا رغونه
 settings_sec_diag	تشخیص
 settings_sec_privacy	محرميت
@@ -729,6 +754,13 @@ station_vps_dd	د دې سټیشن لپاره چاپګر
 station_vps_dd_n	{n} چاپګر · د بدلولو لپاره ټایپ کړئ
 bill_printers_dd	د بل لپاره چاپګر
 bill_printers_dd_n	د بیل لپاره {n} پرنټر · د بدلون لپاره ټایپ کړئ
+paper_heading	کاغذ
+paper_size	{w} × {h} mm
+paper_roll	{w} mm رول
+paper_not_set	کاغذ لا معلوم نه دی
+paper_length_mm	اوږدوالی (mm)
+printer_paper_help	د دې چاپګر کاغذ په mm. خالي اوږدوالی رول دی: هره رسید د خپل محتوا په اندازه اوږده ده. «چاپګر ومومئ» خالي کاغذ د چاپګر له ډرایور ډکوي (که ونه شي ویلای، 80 mm رول) او هېڅکله مخکې ټاکل شوی نه بدلوي.
+preview_help	دا رسید لاندې ټاکل شوي چاپګر په کاغذ، لکه څنګه چې هلته چاپېږي: د هغه پورته کیڼ کونج څخه چې چاپګر ورته رسېږي په ریښتیني اندازه (خړ: هغه څنډې چې نه رسېږي)، اوږده رسید په ډېرو پاڼو، د کاغذ له څنډې هاخوا هرڅه پرې کېږي. د چاپګر ټاکل یوازې مخکتنه بدلوي؛ د هر چاپګر کاغذ په «چاپګر» کې ټاکل کېږي.
 job_layout	ترتیب
 job_delivery	څنګه دنده لیږل کیږي
 job_delivery_help	ر یو خپل ځان ساتي. یا هم دنده کولی شي هر پرنټر ته الړ شي چې موندل یې خوندي کړي.
@@ -1105,9 +1137,6 @@ remove_these_tables	دا میزونه لرې کړئ
 table_remove_ph	لرې کړئ: T24-T1، یا د یو میز نوم
 find_server	د هټۍ سرور ومومئ
 bill_format	د بل بڼه
-bill_header_ph	پته | تلیفون
-fssai_ph	د FSSAI جواز نمبر (هند)
-bill_footer_ph	فوټر (د مثال په توګه مننه، بیا لیدنه وکړئ)
 reset_bill_format	ډیفالټ ته بیا تنظیم کړئ
 bill_format_reset	د بیل فارمیټ ډیفالټ ته ری سیٹ کړئ
 reset_kot_format	ډیفالټ ته بیا تنظیم کړئ
@@ -1146,7 +1175,6 @@ kot_kind_modified	تعدیل شوی
 kot_kind_cancelled	لغوه شو
 kot_style_heading	د ساحې ډول اندازه او وزن
 kot_style_title	عنوان
-kot_style_item_qty	توکي · مقدار
 kot_style_field_pick	ساحه غوره کړئ
 kot_weight_regular	منظم
 kot_weight_bold	بولډ
@@ -1158,8 +1186,8 @@ content_width_bill	د بل منځپانګې عرض (mm)
 content_width_kot	د KOT منځپانګې عرض (mm)
 content_width_ph	یا د منځپانګې پلنوالی ټایپ کړئ، 40-210 mm
 content_width_help	دا پرچی څومره پراخه ده. بل او KOT هر یو خپل عرض ساتي.
-content_width_bill_help	د 40 څخه تر 210 پورې کوم ارزښت ولیکئ. د پخلنځي ټکټونه د KOT ټب کې خپل عرض لري.
-content_width_kot_help	د 40 څخه تر 210 پورې کوم ارزښت ولیکئ. د میلمنو بیلونه د بل ټب کې خپل عرض لري.
+content_width_bill_help	د مېلمه بیل څومره پلن چاپیږي، په mm (40–210). په هر کاغذ دا اصلي اندازه چاپیږي؛ له دې نري کاغذ کې د چاپ له څنډې هاخوا برخه پرېکول کیږي (کاغذ وګورئ). د پخلنځي ټکټونه په KOT ټب کې خپل پلنوالی لري.
+content_width_kot_help	د پخلنځي ټکټ څومره پلن چاپیږي، په mm (40–210). په هر کاغذ دا اصلي اندازه چاپیږي؛ له دې نري کاغذ کې د چاپ له څنډې هاخوا برخه پرېکول کیږي (کاغذ وګورئ). د مېلمنو بیلونه په بیل ټب کې خپل پلنوالی لري.
 vp_paper_width	د منځپانګې عرض (mm)
 vp_paper_width_ph	یا د منځپانګې پلنوالی ټایپ کړئ، 40-210 mm
 vp_paper_width_help	جال توګه د بل لپاره (ډیفالټ 210 ملي میتر) او د پخلنځي ټکټ (ډیفالټ 80 ملي میتر).
@@ -1213,8 +1241,6 @@ schemes_help	2 تالي واخلئ 1 چاس ترالسه کړئ KOT Send سلن�
 scheme_bogo_ph	2 تالي واخلئ 1 چاس ترالسه کړئ
 add_scheme	اضافه کړئ BOGO
 schedule_ph	نه / د خوښۍ ساعت - دوشنبه - جمعه 00:07-00:11 یا د مبارک ساعت 00:17-00:19 = 150
-upi_vpa_ph	UPI ID (VPA)
-upi_payee_ph	د UPI تادیه کونکي نوم (اختیاري)
 upi_qr	UPI QR
 show_upi_qr	وښایاست QR UPI
 close_upi_qr	تړل
@@ -1295,8 +1321,6 @@ printer_mode_first	لومړی دا کار کوي
 printer_mode_all	په ټولو کې چاپ کړئ
 kot_show_area	ساحه
 kot_hide_area	ساحه پټ کړئ
-kot_show_item_hdr	توکي · مقدار
-kot_hide_item_hdr	کالمونه پټ کړئ
 kot_show_title	د سرلیک کرښه
 kot_hide_title	سرلیک پټ کړئ
 kot_field_cycle	بل وټاکئ
@@ -1337,12 +1361,12 @@ private_code_ph	۱۲ عددي کوډ
 stamp_on	ه فایل کې
 pay_qr_on	QR: په فایل کې
 pay_qr_off	د تادیې QR: هیڅ نه
+printers_screen_tip	لټون هغه پرنټرونه ښيي چې دا وسیله یې کارولی شي او د دې هټۍ لپاره یې خوندي کوي. د بل پرنټرونه: د بل او KOT بڼه ← بل. پخلنځی: پخلنځی ← د پخلنځي سټېشنونه.
+printers_found_none	هیڅ پرنټر ونه موندل شو.
+nav_loading	بارېږي…
+kot_copy_from	له دې څخه کاپي
+kot_copy_from_help	د هغه ډول د هرې کرښې اندازه، پنډوالی او ترتیب دې ډول ته کاپي کوي. دا ډول خپل بینر، د توکي مختاړی او کرښه وهل ساتي. د ساتلو لپاره د KOT بڼه خوندي کړئ.
 items_tmpl_heading	د توکو کينډۍ
 items_tmpl_help	ستاسو د مینو لپاره خواړه، کټګورۍ او انځورونه. د هټۍ تنظیمات او کارکوونکي لکه څنګه چې دي پاتې کیږي.
 public_tmpl_help	پیل مینوګانې چې هر څوک یې ښکته کولی شي. یو ځل انټرنیټ ته اړتیا ده.
 private_tmpl_help	د پیرودونکو مینوګانې چې ستاسو د Khaynjo اړیکې له ۱۲ عددي کوډ سره خوندي دي.
-printers_screen_tip	لټون هغه پرنټرونه ښيي چې دا وسیله یې کارولی شي او د دې هټۍ لپاره یې خوندي کوي. د بل پرنټرونه: د بل او KOT بڼه ← بل. پخلنځی: پخلنځی ← د پخلنځي سټېشنونه.
-printers_found_none	هیڅ پرنټر ونه موندل شو.
-kot_copy_from	له دې څخه کاپي
-kot_copy_from_help	د هغه ډول د هرې کرښې اندازه، پنډوالی او ترتیب دې ډول ته کاپي کوي. دا ډول خپل بینر، د توکي مختاړی او کرښه وهل ساتي. د ساتلو لپاره د KOT بڼه خوندي کړئ.
-nav_loading	بارېږي…

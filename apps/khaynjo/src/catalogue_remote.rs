@@ -158,8 +158,27 @@ pub fn catalogue_base_url() -> String {
         .unwrap_or_else(|| DEFAULT_CATALOGUE_BASE.to_string())
 }
 
+#[cfg(test)]
+thread_local! {
+    /// A test points the mirror at its own temporary tree for its own thread
+    /// only. Setting `KHAYNJO_CATALOGUE_DIR` for the process let every test
+    /// running beside it read that tree (the shelf and template tests failed
+    /// in full runs, 2026-11-16).
+    static TEST_FS_ROOT: std::cell::RefCell<Option<PathBuf>> = const { std::cell::RefCell::new(None) };
+}
+
+/// Point this thread's catalogue mirror at `root` (tests only).
+#[cfg(test)]
+pub(crate) fn set_test_fs_root(root: Option<PathBuf>) {
+    TEST_FS_ROOT.with(|r| *r.borrow_mut() = root);
+}
+
 /// Optional filesystem mirror of the CDN tree (`…/public/…`, `…/private/…`).
 pub fn catalogue_fs_root() -> Option<PathBuf> {
+    #[cfg(test)]
+    if let Some(root) = TEST_FS_ROOT.with(|r| r.borrow().clone()) {
+        return Some(root);
+    }
     std::env::var_os("KHAYNJO_CATALOGUE_DIR").map(PathBuf::from)
 }
 
@@ -1106,7 +1125,7 @@ mod tests {
     use std::cell::RefCell;
     use std::sync::Mutex;
 
-    /// `KHAYNJO_CATALOGUE_DIR` is process-global — serialize tests that mutate it.
+    /// The catalogue tests share fixtures; one at a time.
     fn catalogue_env_lock() -> std::sync::MutexGuard<'static, ()> {
         static LOCK: Mutex<()> = Mutex::new(());
         LOCK.lock().unwrap_or_else(|e| e.into_inner())
@@ -1114,7 +1133,7 @@ mod tests {
 
     fn tempfile_fixture() -> PathBuf {
         static N: std::sync::atomic::AtomicUsize = std::sync::atomic::AtomicUsize::new(0);
-        let dir = std::env::temp_dir().join(format!(
+        let dir = crate::test_dirs::run_root().join(format!(
             "khaynjo-catalogue-{}-{}-{}",
             std::process::id(),
             N.fetch_add(1, std::sync::atomic::Ordering::SeqCst),
@@ -1344,14 +1363,10 @@ mod tests {
         fs::write(pack.join("images/chai.webp"), b"RIFF....WEBP").unwrap();
 
         let _guard = catalogue_env_lock();
-        unsafe {
-            std::env::set_var("KHAYNJO_CATALOGUE_DIR", &root);
-        }
+        set_test_fs_root(Some(root.clone()));
         let data = root.join("data");
         let result = download_pack(&data, CatalogueVisibility::Private, code, &|| false);
-        unsafe {
-            std::env::remove_var("KHAYNJO_CATALOGUE_DIR");
-        }
+        set_test_fs_root(None);
         let (dest, man, tmpl) = result.unwrap();
         assert_eq!(man.title, "Demo Template");
         assert_eq!(tmpl.item_count(), 1);
@@ -1394,14 +1409,10 @@ mod tests {
         .unwrap();
 
         let _guard = catalogue_env_lock();
-        unsafe {
-            std::env::set_var("KHAYNJO_CATALOGUE_DIR", &root);
-        }
+        set_test_fs_root(Some(root.clone()));
         let data = root.join("data");
         let result = download_pack(&data, CatalogueVisibility::Public, "khaynjo-items", &|| false);
-        unsafe {
-            std::env::remove_var("KHAYNJO_CATALOGUE_DIR");
-        }
+        set_test_fs_root(None);
         let (dest, man, _) = result.unwrap();
         assert_eq!(man.kind, CatalogueKind::Shelf);
         assert!(dest.join("hot-beverages/chai.webp").is_file());
@@ -1450,14 +1461,10 @@ mod tests {
         .unwrap();
 
         let _guard = catalogue_env_lock();
-        unsafe {
-            std::env::set_var("KHAYNJO_CATALOGUE_DIR", &root);
-        }
+        set_test_fs_root(Some(root.clone()));
         let data = root.join("data");
         let result = download_pack(&data, CatalogueVisibility::Private, code, &|| false);
-        unsafe {
-            std::env::remove_var("KHAYNJO_CATALOGUE_DIR");
-        }
+        set_test_fs_root(None);
         let (dest, man, _) = result.unwrap();
         assert_eq!(man.shop_defaults_id, "rajdhani");
         assert!(dest.join("items/hot-beverages/chai.webp").is_file());

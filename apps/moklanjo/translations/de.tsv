@@ -501,6 +501,17 @@ job_size	Schriftgröße
 job_size_ph	z. B. 18, 20, 26…
 test_receipt_format	Testquittung
 test_label_format	Testetikett
+paper_heading	Papier
+paper_size	{w} × {h} mm
+paper_roll	{w}-mm-Rolle
+paper_not_set	Papier noch unbekannt
+paper_length_mm	Länge (mm)
+printer_paper_help	Das Papier dieses Druckers in mm. Eine leere Länge ist eine Rolle: Jeder Beleg ist so lang wie sein Inhalt. „Drucker suchen“ füllt leeres Papier aus dem Treiber des Druckers (eine 80-mm-Rolle, wenn er es nicht sagen kann) und ändert nie ein bereits gesetztes.
+preview_help	Dieser Beleg auf dem Papier des unten gewählten Druckers, so wie er dort druckt: in echter Größe ab der oberen linken Ecke, die der Drucker erreicht (grau: Ränder, die er nicht erreicht), ein langer Beleg auf weiteren Blättern, alles jenseits des Papierrands abgeschnitten. Die Druckerwahl ändert nur die Vorschau; das Papier jedes Druckers wird unter „Drucker“ gesetzt.
+slip_col_width	Breite (mm)
+no_printer_assigned	Kein Drucker
+printer_target_default	Standarddrucker
+job_preview	Vorschau
 test_receipt_sent	Beispielquittung gesendet
 test_label_sent	Beispiel-Etikett gesendet
 test_print_no_printer	Kein Drucker für diesen Auftrag — unter diesem Platz einen hinzufügen

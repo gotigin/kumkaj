@@ -92,10 +92,6 @@ bill_item_layout	Qaabka alaabta
 bill_item_layout_columns	Tiirar
 bill_item_layout_stacked	Is dul saaran
 bill_item_header	Cinwaannada tiirarka
-bill_item_hdr_item	Cinwaanka alaabta
-bill_item_hdr_qty	Cinwaanka tirada
-bill_item_hdr_price	Cinwaanka qiimaha
-bill_item_hdr_amount	Cinwaanka qaddarka
 bill_item_name	Magaca cuntada
 bill_item_qty	Tirada
 bill_item_price	Qiimaha
@@ -103,6 +99,20 @@ bill_item_amount	Qaddarka
 bill_item_note	Qoraalka cuntada
 bill_item_col_sep	Khadadka tiirarka
 slip_columns	Tiirarrada
+slip_col_header	Cinwaan
+bill_line_logo	Astaan
+bill_logo_picture	Sawir
+bill_logo_choose	Dooro sawir
+bill_logo_remove	Ka saar sawirka
+bill_logo_none	Sawir ma jiro
+bill_logo_unreadable	Ma aha sawir uu app-ku akhrin karo
+bill_logo_width	Ballac (px)
+bill_logo_height	Dherer (px)
+bill_logo_tones	Midabada cawlan
+bill_logo_solid	Adag
+bill_logo_shaded	Hadh leh
+bill_logo_help	Ballaca iyo dhererka px. Bannaanku wuxuu raacaa sawirka: mid bannaan wuxuu ilaaliyaa qaabka, labaduba bannaan waxay isticmaalaan cabbirkiisa; labaduba la dejiyo waxay gudaha ku rideen, marna lama kala jiido. Sawir ma jiro: astaanta la muujiyay waxay haysaa dhererkeeda meel bannaan ahaan; Qari ayaa ka saara.
+bill_logo_tones_help	Adag: dhibic kasta waa madow ama caddaan, astaamo cad awgood. Hadh leh: cawlku wuxuu noqdaa naqshad dhibco yaryar, sawirro iyo hadh jilicsan awgood.
 slip_col_width	Ballac (mm)
 slip_col_start	Meesha bilowga (px)
 slip_col_end	Meesha dhammaadka (px)
@@ -167,6 +177,21 @@ alerts_help	Inta ay fariinta xaaladdu ku sii jirto shaashadda adiga (gelitaan)
 snack_secs_ph	Ilbiriqsiyo (3–60, caadiga 10)
 snack_secs_save	Kaydi waqtiga digniinta
 snack_secs_saved	Waqtiga digniinta waa la kaydiyay — ilbiriqsiyo {n}
+settings_sec_whatsapp	WhatsApp
+whatsapp_cloud_help	Use your own Meta WhatsApp Cloud API. Create a System User token with whatsapp_business_messaging (temporary dashboard tokens expire). Credentials stay on this Server only — never on extra tills. Accepted means Meta took the request, not that the guest received it.
+whatsapp_phone_id_ph	Phone Number ID
+whatsapp_token_ph	Access Token (leave blank to keep)
+whatsapp_template_ph	Bill template name (optional)
+whatsapp_template_lang_ph	Template language (e.g. en)
+whatsapp_enable	Enable
+whatsapp_disable	Off
+whatsapp_save	Save WhatsApp
+whatsapp_test	Test connection
+whatsapp_disconnect	Disconnect
+whatsapp_send_bill	Send via WhatsApp
+whatsapp_consent	WhatsApp OK
+whatsapp_consent_help	Guest agreed to receive WhatsApp messages. A phone number alone is not consent.
+whatsapp_server_only	Configure WhatsApp on the shop Server device
 settings_sec_backup	Kaydka iyo soo celinta
 settings_sec_diag	Baaritaanka ciladda
 settings_sec_privacy	Asturnaanta
@@ -729,6 +754,13 @@ station_vps_dd	Daabacayaasha saldhigan
 station_vps_dd_n	daabacaha {n} · taabo si aad u beddesho
 bill_printers_dd	Daabacayaasha biilka
 bill_printers_dd_n	daabacaha {n} oo biilka ah · taabo si aad u beddesho
+paper_heading	Warqad
+paper_size	{w} × {h} mm
+paper_roll	duub {w} mm ah
+paper_not_set	warqadda weli lama yaqaan
+paper_length_mm	Dherer (mm)
+printer_paper_help	Warqadda daabacahan oo mm ah. Dherer bannaan waa duub: rasiid kastaa wuxuu le'eg yahay waxa ku jira. Raadi daabacayaasha waxay ka buuxisaa warqad bannaan darawalka daabacaha (duub 80 mm ah marka uusan sheegi karin) mana beddesho mid hore loo dejiyay.
+preview_help	Rasiidkan oo saaran warqadda daabacaha hoos laga doortay, sida uu halkaas ugu daabacmo: cabbir dhab ah laga bilaabo geeska bidix ee sare ee daabacuhu gaaro (cawl: geesaha uusan gaarin), rasiid dheer oo warqado badan ah, wax kasta oo dhaafa cidhifka warqadda waa la gooyaa. Dooranka daabace wuxuu beddelaa hordhaca oo keliya; warqadda daabace kasta waxaa lagu dejiyaa Daabacayaasha.
 job_layout	Qaab
 job_delivery	Sida shaqada loo diro
 job_delivery_help	Dukumentiga nidaamka, bayt cayriin, ama ESC/POS. Biilka iyo warqadda jikadu mid walba wuxuu hayaa midkiisa. Shaqo kasta waxay aadi kartaa daabacaha kasta oo Raadi kaydiyay.
@@ -1105,9 +1137,6 @@ remove_these_tables	Ka saar miisaskan
 table_remove_ph	Ka saar: T1-T24, ama magaca hal miis
 find_server	Raadi server-ka dukaanka
 bill_format	Qaabka biilka
-bill_header_ph	Cinwaan | taleefan
-fssai_ph	Lambarka shatiga FSSAI (Hindiya)
-bill_footer_ph	Hoos (tusaale Mahadsanid, mar kale soo booqo)
 reset_bill_format	Ku celi caadiga
 bill_format_reset	Qaabka biilka waxaa loo celiyay caadiga
 reset_kot_format	Ku celi caadiga
@@ -1146,7 +1175,6 @@ kot_kind_modified	La beddelay
 kot_kind_cancelled	La joojiyay
 kot_style_heading	Cabbirka iyo culeyska nooca goobta
 kot_style_title	Cinwaan
-kot_style_item_qty	Alaab · Tirada
 kot_style_field_pick	Dooro goob
 kot_weight_regular	Caadi
 kot_weight_bold	Dhumuc
@@ -1158,8 +1186,8 @@ content_width_bill	Ballaarinta khadka biilka (mm)
 content_width_kot	Ballaarinta khadka KOT (mm)
 content_width_ph	Ama qor ballaarin khad, 40–210 mm
 content_width_help	Intee in le'eg warqaddan loo daabaco. Biilka iyo KOT mid walba wuxuu hayaa ballaarintiisa.
-content_width_bill_help	Intee in le'eg biilka martida loo daabaco. Caadiga 210 mm (bog). 58 mm warqad cidhiidhi ah, 80 mm warqad ballaaran, 112 mm 4 inji, 210 mm ballaarinta A4. Qor qiime kasta 40 ilaa 210. Warqadaha jikadu waxay leeyihiin ballaarin gooni ah tabka KOT.
-content_width_kot_help	Intee in le'eg warqadda jikada loo daabaco. Caadiga 80 mm. 58 mm warqad cidhiidhi ah, 80 mm warqad ballaaran, 112 mm 4 inji, 210 mm bog. Qor qiime kasta 40 ilaa 210. Biilasha martida waxay leeyihiin ballaarin gooni ah tabka Biilka.
+content_width_bill_help	Inta uu le'eg yahay ballaca biilka martida marka la daabaco, mm (40–210). Wuxuu ku daabacmaa cabbirkan dhabta ah warqad kasta; warqad ka cidhiidhi ah, qaybta dhaafta geeska daabacaadda waa la jaraa (eeg Warqad). Tigidhada jikadu waxay leeyihiin ballac u gaar ah tabka KOT.
+content_width_kot_help	Inta uu le'eg yahay ballaca tigidhka jikada marka la daabaco, mm (40–210). Wuxuu ku daabacmaa cabbirkan dhabta ah warqad kasta; warqad ka cidhiidhi ah, qaybta dhaafta geeska daabacaadda waa la jaraa (eeg Warqad). Biilasha martidu waxay leeyihiin ballac u gaar ah tabka Biil.
 vp_paper_width	Ballaarinta khadka (mm)
 vp_paper_width_ph	Ama qor ballaarin khad, 40–210 mm
 vp_paper_width_help	Ballaarinta khadka waxaa lagu dejiyaa hoosta Qaabka biilka iyo KOT — si gooni ah biilka (caadiga 210 mm) iyo warqadda jikada (caadiga 80 mm).
@@ -1213,8 +1241,6 @@ schemes_help	BOGO, boqolkiiba dhimis, iyo isku-darka go'an. Isku-darku wuxuu u f
 scheme_bogo_ph	Iibso 2 Thali hel 1 Chaas
 add_scheme	Ku dar BOGO
 schedule_ph	Saacado / saacad farxad — Isn-Jim 07:00-11:00 ama HappyHour 17:00-19:00=150
-upi_vpa_ph	Aqoonsiga UPI (VPA)
-upi_payee_ph	Magaca lahaanshaha UPI (ikhtiyaari)
 upi_qr	QR-ka UPI
 show_upi_qr	Muuji QR-ka UPI
 close_upi_qr	Xir
@@ -1295,8 +1321,6 @@ printer_mode_first	Kan ugu horreeya ee shaqeeya
 printer_mode_all	Ku daabac dhammaan
 kot_show_area	Goob
 kot_hide_area	Qari goobta
-kot_show_item_hdr	Alaab · Tirada
-kot_hide_item_hdr	Qari tiirarka
 kot_show_title	Khadka cinwaanka
 kot_hide_title	Qari cinwaanka
 kot_field_cycle	Dooro kan xiga
@@ -1337,12 +1361,12 @@ private_code_ph	Koodh 12 lambar ah
 stamp_on	Shaabad: fayl ayaa ku jira
 pay_qr_on	QR bixin: fayl ayaa ku jira
 pay_qr_off	QR bixin: midna
+printers_screen_tip	Raadi waxay tusaysaa daabacayaasha qalabkani isticmaali karo waxayna u kaydisaa dukaankan. Daabacayaasha biilka: Qaabka biilka iyo KOT → Biil. Jikada: Jikada → Saldhigyada jikada.
+printers_found_none	Lama helin daabacayaal.
+nav_loading	Waa la soo shubayaa…
+kot_copy_from	Ka koobi
+kot_copy_from_help	Wuxuu koobiyeeyaa cabbirka, culeyska iyo toosinta sadar kasta oo ka yimid noocaas una gudbiyaa kan. Noocan wuxuu hayaa calankiisa, horgalaha shayga iyo xariiqda tirtirka. Kaydi qaabka KOT si uu u sii jiro.
 items_tmpl_heading	Qaababka alaabta
 items_tmpl_help	Cuntooyin, qaybo iyo sawirro loogu talagalay menu-gaaga. Dejinta dukaanka iyo shaqaaluhu sidooda ayay ahaanayaan.
 public_tmpl_help	Menu bilow ah oo qof walba soo dejin karo. Internet ayaa loo baahan yahay hal mar.
 private_tmpl_help	Menu macaamiil oo lagu xiray koodh 12 god ah oo ka yimid xiriirkaaga Khaynjo.
-printers_screen_tip	Raadi waxay tusaysaa daabacayaasha qalabkani isticmaali karo waxayna u kaydisaa dukaankan. Daabacayaasha biilka: Qaabka biilka iyo KOT → Biil. Jikada: Jikada → Saldhigyada jikada.
-printers_found_none	Lama helin daabacayaal.
-kot_copy_from	Ka koobi
-kot_copy_from_help	Wuxuu koobiyeeyaa cabbirka, culeyska iyo toosinta sadar kasta oo ka yimid noocaas una gudbiyaa kan. Noocan wuxuu hayaa calankiisa, horgalaha shayga iyo xariiqda tirtirka. Kaydi qaabka KOT si uu u sii jiro.
-nav_loading	Waa la soo shubayaa…

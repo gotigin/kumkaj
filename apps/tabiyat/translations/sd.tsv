@@ -72,10 +72,6 @@ bill_item_layout	شئي جو ترتيب
 bill_item_layout_columns	ڪالمن
 bill_item_layout_stacked	اسٽيڪ ٿيل
 bill_item_header	ڪالمن جا هيڊر
-bill_item_hdr_item	آئٽم هيڊر
-bill_item_hdr_qty	مقدار هيڊر
-bill_item_hdr_price	قيمت هيڊر
-bill_item_hdr_amount	رقم هيڊر
 bill_item_name	دوا جو نالو
 bill_item_qty	تعداد
 bill_item_price	اگهه
@@ -83,6 +79,13 @@ bill_item_amount	رقم
 bill_item_note	Rx / وڪرو نوٽ
 bill_item_col_sep	ڪالمن جون ضابطيون
 slip_col_width	ويڪر (mm)
+paper_heading	ڪاغذ
+paper_size	{w} × {h} mm
+paper_roll	{w} mm رول
+paper_not_set	ڪاغذ اڃا معلوم ناهي
+paper_length_mm	ڊيگهه (mm)
+printer_paper_help	هن پرنٽر جو ڪاغذ mm ۾. خالي ڊيگهه جو مطلب رول: هر پرچي پنهنجي مواد جيتري ڊگهي ٿيندي آهي. پرنٽر ڳوليو خالي ڪاغذ پرنٽر جي ڊرائيور مان ڀري ٿو (نه ٻڌائي سگهي ته 80 mm رول) ۽ اڳ ۾ مقرر ڪاغذ ڪڏهن به نه بدلائيندو آهي.
+preview_help	هيٺ چونڊيل پرنٽر جي ڪاغذ تي هيءَ پرچي، جيئن اتي ڇپجي ٿي: پرنٽر جتي پهچي ٿو ان مٿئين کاٻي ڪنڊ کان اصل ماپ ۾ (ڀورو: ڪنارا جتي نٿو پهچي)، ڊگهي پرچي وڌيڪ صفحن تي، ڪاغذ جي ڪناري کان اڳتي سڀ ڪٽجي وڃي ٿو. پرنٽر چونڊڻ سان رڳو اڳ-نظارو بدلجي ٿو؛ هر پرنٽر جو ڪاغذ پرنٽر ۾ مقرر ٿئي ٿو.
 slip_col_start	شروعاتي جاءِ (px)
 slip_col_end	آخري جاءِ (px)
 slip_columns_help	هر ڪالم جي ويڪر ۾ ان جي شروعاتي ۽ آخري جاءِ شامل آهي. متن پنهنجي ڪالم اندر ويڙهجي ٿو؛ مواد جي ويڪر کان ٻاهر جيڪو آهي اهو ڪاغذ ۽ اڳ ڏيک ٻنهي ۾ ڪٽجي ٿو.
@@ -850,3 +853,4 @@ nav_loading	لوڊ ٿي رهيو آهي…
 printer_mode_first	پهريون جيڪو ڪم ڪري ٿو
 printer_mode_all	سڀ تي ڇپيو
 slip_columns	ڪالم
+slip_col_header	هيڊر

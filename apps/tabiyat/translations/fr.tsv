@@ -72,10 +72,6 @@ bill_item_layout	Mise en page
 bill_item_layout_columns	Colonnes
 bill_item_layout_stacked	Empilé
 bill_item_header	En-têtes
-bill_item_hdr_item	En-tête article
-bill_item_hdr_qty	En-tête qté
-bill_item_hdr_price	En-tête prix
-bill_item_hdr_amount	En-tête montant
 bill_item_name	Nom du médicament
 bill_item_qty	Qté
 bill_item_price	Prix
@@ -83,6 +79,13 @@ bill_item_amount	Montant
 bill_item_note	Note Rx / de vente
 bill_item_col_sep	Filets de colonne
 slip_col_width	Largeur (mm)
+paper_heading	Papier
+paper_size	{w} × {h} mm
+paper_roll	rouleau de {w} mm
+paper_not_set	papier encore inconnu
+paper_length_mm	Longueur (mm)
+printer_paper_help	Le papier de cette imprimante en mm. Une Longueur vide est un rouleau : chaque ticket est aussi long que son contenu. Rechercher des imprimantes remplit un papier vide d'après le pilote de l'imprimante (un rouleau de 80 mm s'il ne peut pas le dire) et ne change jamais un papier déjà défini.
+preview_help	Ce ticket sur le papier de l'imprimante choisie ci-dessous, tel qu'il s'y imprime : en taille réelle depuis le coin supérieur gauche que l'imprimante atteint (gris : bords qu'elle n'atteint pas), un long ticket sur plusieurs feuilles, tout ce qui dépasse le bord du papier est coupé. Choisir une imprimante ne change que l'aperçu ; le papier de chaque imprimante se règle dans Imprimantes.
 slip_col_start	Espace de début (px)
 slip_col_end	Espace de fin (px)
 slip_columns_help	La largeur de chaque colonne comprend son espace de début et de fin. Le texte passe à la ligne dans sa colonne ; ce qui dépasse la largeur du contenu est coupé, sur papier comme dans l’aperçu.
@@ -850,3 +853,4 @@ nav_loading	Chargement…
 printer_mode_first	Le premier qui fonctionne
 printer_mode_all	Imprimer sur tous
 slip_columns	Colonnes
+slip_col_header	En-tête

@@ -501,6 +501,17 @@ job_size	Saiz fon
 job_size_ph	cth. 18, 20, 26…
 test_receipt_format	Resit ujian
 test_label_format	Label ujian
+paper_heading	Kertas
+paper_size	{w} × {h} mm
+paper_roll	gulung {w} mm
+paper_not_set	kertas belum diketahui
+paper_length_mm	Panjang (mm)
+printer_paper_help	Kertas pencetak ini dalam mm. Panjang kosong ialah gulung: setiap slip sepanjang kandungannya. Cari pencetak mengisi kertas kosong daripada pemacu pencetak (gulung 80 mm apabila ia tidak dapat memberitahu) dan tidak pernah mengubah kertas yang sudah ditetapkan.
+preview_help	Slip ini pada kertas pencetak yang dipilih di bawah, seperti yang dicetak di sana: saiz sebenar dari penjuru kiri atas yang dapat dicapai pencetak (kelabu: tepi yang tidak dicapai), slip panjang pada lebih banyak helaian, apa-apa yang melepasi tepi kertas dipotong. Memilih pencetak hanya mengubah pratonton; kertas setiap pencetak ditetapkan di Pencetak.
+slip_col_width	Lebar (mm)
+no_printer_assigned	Tiada pencetak
+printer_target_default	pencetak biasa komputer ini (alamat kosong)
+job_preview	Pratonton
 test_receipt_sent	Contoh resit dihantar
 test_label_sent	Label sampel dihantar
 test_print_no_printer	Tiada pencetak untuk kerja itu — tambahkan pencetak di bawah tempat ini

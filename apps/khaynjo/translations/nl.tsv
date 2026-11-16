@@ -92,10 +92,6 @@ bill_item_layout	Itemindeling
 bill_item_layout_columns	Kolommen
 bill_item_layout_stacked	Gestapeld
 bill_item_header	Kolomkoppen
-bill_item_hdr_item	Itemkop
-bill_item_hdr_qty	Aantalkop
-bill_item_hdr_price	Prijskop
-bill_item_hdr_amount	Bedragkop
 bill_item_name	Naam
 bill_item_qty	Aantal
 bill_item_price	Prijs
@@ -103,6 +99,20 @@ bill_item_amount	Bedrag
 bill_item_note	Notitie
 bill_item_col_sep	Kolomlijnen
 slip_columns	Kolommen
+slip_col_header	Kop
+bill_line_logo	Logo
+bill_logo_picture	Afbeelding
+bill_logo_choose	Afbeelding kiezen
+bill_logo_remove	Afbeelding verwijderen
+bill_logo_none	Geen afbeelding
+bill_logo_unreadable	Geen afbeelding die de app kan lezen
+bill_logo_width	Breedte (px)
+bill_logo_height	Hoogte (px)
+bill_logo_tones	Grijstinten
+bill_logo_solid	Vol
+bill_logo_shaded	Gearceerd
+bill_logo_help	Breedte en hoogte in px. Leeg volgt de afbeelding: één leeg behoudt de vorm, beide leeg gebruiken de eigen grootte; beide ingesteld passen hem erin, nooit uitgerekt. Geen afbeelding: een getoond logo houdt zijn hoogte als lege ruimte; Verbergen haalt het weg.
+bill_logo_tones_help	Vol: elke punt zwart of wit, voor scherpe logo's. Gearceerd: grijs wordt een fijn puntpatroon, voor foto's en zachte schaduw.
 slip_col_width	Breedte (mm)
 slip_col_start	Beginruimte (px)
 slip_col_end	Eindruimte (px)
@@ -167,6 +177,21 @@ alerts_help	Hoe lang statusberichten voor jou op het scherm blijven (deze login)
 snack_secs_ph	Seconden (3–60, standaard 10)
 snack_secs_save	Meldingstijd opslaan
 snack_secs_saved	Meldingstijd opgeslagen — {n} seconden
+settings_sec_whatsapp	WhatsApp
+whatsapp_cloud_help	Use your own Meta WhatsApp Cloud API. Create a System User token with whatsapp_business_messaging (temporary dashboard tokens expire). Credentials stay on this Server only — never on extra tills. Accepted means Meta took the request, not that the guest received it.
+whatsapp_phone_id_ph	Phone Number ID
+whatsapp_token_ph	Access Token (leave blank to keep)
+whatsapp_template_ph	Bill template name (optional)
+whatsapp_template_lang_ph	Template language (e.g. en)
+whatsapp_enable	Enable
+whatsapp_disable	Off
+whatsapp_save	Save WhatsApp
+whatsapp_test	Test connection
+whatsapp_disconnect	Disconnect
+whatsapp_send_bill	Send via WhatsApp
+whatsapp_consent	WhatsApp OK
+whatsapp_consent_help	Guest agreed to receive WhatsApp messages. A phone number alone is not consent.
+whatsapp_server_only	Configure WhatsApp on the shop Server device
 settings_sec_backup	Back-up en herstellen
 settings_sec_diag	Diagnose
 settings_sec_privacy	Privacy
@@ -729,6 +754,13 @@ station_vps_dd	Printers voor dit station
 station_vps_dd_n	{n} printer(s) · tik om te wijzigen
 bill_printers_dd	Printers voor de rekening
 bill_printers_dd_n	{n} printer(s) voor de rekening · tik om te wijzigen
+paper_heading	Papier
+paper_size	{w} × {h} mm
+paper_roll	rol van {w} mm
+paper_not_set	papier nog onbekend
+paper_length_mm	Lengte (mm)
+printer_paper_help	Het papier van deze printer in mm. Een lege Lengte is een rol: elke bon is zo lang als de inhoud. Printers zoeken vult leeg papier in vanuit het stuurprogramma van de printer (een rol van 80 mm als het dat niet kan zeggen) en wijzigt nooit papier dat al is ingesteld.
+preview_help	Deze bon op het papier van de printer die hieronder gekozen is, zoals hij daar afdrukt: op ware grootte vanaf de linkerbovenhoek die de printer bereikt (grijs: randen die hij niet bereikt), een lange bon op meer vellen, alles voorbij de papierrand wordt afgesneden. Een printer kiezen verandert alleen het voorbeeld; het papier van elke printer stel je in onder Printers.
 job_layout	Indeling
 job_delivery	Hoe de taak wordt verzonden
 job_delivery_help	OS-document, ruwe bytes of ESC/POS. De rekening en het keukenticket behouden elk hun eigen. Elke taak kan naar elke printer gaan die Find heeft opgeslagen.
@@ -1105,9 +1137,6 @@ remove_these_tables	Deze tafels verwijderen
 table_remove_ph	Verwijderen: T1-T24, of de naam van één tafel
 find_server	Server van de zaak zoeken
 bill_format	Rekeningopmaak
-bill_header_ph	Adres | telefoon
-fssai_ph	FSSAI-vergunningsnr. (India)
-bill_footer_ph	Voettekst (bijv. Bedankt, tot ziens)
 reset_bill_format	Standaard herstellen
 bill_format_reset	Rekeningopmaak hersteld
 reset_kot_format	Standaard herstellen
@@ -1146,7 +1175,6 @@ kot_kind_modified	Gewijzigd
 kot_kind_cancelled	Geannuleerd
 kot_style_heading	Veldgrootte en -dikte
 kot_style_title	Titel
-kot_style_item_qty	Artikel · Aantal
 kot_style_field_pick	Veld kiezen
 kot_weight_regular	Normaal
 kot_weight_bold	Vet
@@ -1158,8 +1186,8 @@ content_width_bill	Breedte factuurinhoud (mm)
 content_width_kot	Breedte KOT-inhoud (mm)
 content_width_ph	Of typ een inhoudsbreedte, 40–210 mm
 content_width_help	Hoe breed dit bonnetje afdrukt. Factuur en KOT behouden elk hun eigen breedte.
-content_width_bill_help	Hoe breed de gastfactuur afdrukt. Standaard 210 mm (pagina). 58 mm smal bonnetje, 80 mm breed bonnetje, 112 mm 4-duim, 210 mm A4-wijd. Typ elke waarde van 40 tot 210. Keukentickets hebben hun eigen breedte op het KOT-tabblad.
-content_width_kot_help	Hoe breed het keukenticket afdrukt. Standaard 80 mm. 58 mm smal bonnetje, 80 mm breed bonnetje, 112 mm 4-duim, 210 mm pagina. Typ elke waarde van 40 tot 210. Gastfacturen hebben hun eigen breedte op het Factuur-tabblad.
+content_width_bill_help	Hoe breed de rekening van de gast wordt afgedrukt, in mm (40–210). Hij wordt op elk papier op deze echte grootte afgedrukt; op smaller papier wordt het deel voorbij de afdrukrand afgesneden (zie Papier). Keukenbonnen hebben hun eigen breedte op het tabblad KOT.
+content_width_kot_help	Hoe breed de keukenbon wordt afgedrukt, in mm (40–210). Hij wordt op elk papier op deze echte grootte afgedrukt; op smaller papier wordt het deel voorbij de afdrukrand afgesneden (zie Papier). Gastrekeningen hebben hun eigen breedte op het tabblad Rekening.
 vp_paper_width	Inhoudsbreedte (mm)
 vp_paper_width_ph	Of typ een inhoudsbreedte, 40–210 mm
 vp_paper_width_help	Inhoudsbreedte stelt u in bij Rekening- en KOT-indeling. Geldt voor rekening en keukenbon.
@@ -1213,8 +1241,6 @@ schemes_help	Koop X krijg Y — bij afrekenen. Bijv. Buy 2 Thali get 1 Chaas
 scheme_bogo_ph	Koop 2 Thali, krijg 1 Chaas
 add_scheme	BOGO toevoegen
 schedule_ph	Tijden / happy hour — Mon-Fri 07:00-11:00 of HappyHour 17:00-19:00=150
-upi_vpa_ph	UPI ID (VPA)
-upi_payee_ph	UPI-ontvanger (optioneel)
 upi_qr	UPI QR
 show_upi_qr	Toon UPI-QR
 close_upi_qr	Sluiten
@@ -1295,8 +1321,6 @@ printer_mode_first	Eerste die werkt
 printer_mode_all	Afdrukken op alle
 kot_show_area	Gebied
 kot_hide_area	Gebied verbergen
-kot_show_item_hdr	Artikel · Aantal
-kot_hide_item_hdr	Kolommen verbergen
 kot_show_title	Titelregel
 kot_hide_title	Titel verbergen
 kot_field_cycle	Volgende selecteren
@@ -1337,12 +1361,12 @@ private_code_ph	12-cijferige code
 stamp_on	Stempel: opgeslagen
 pay_qr_on	Betaal-QR: opgeslagen
 pay_qr_off	Betaal-QR: geen
+printers_screen_tip	Zoeken toont de printers die dit apparaat kan gebruiken en bewaart ze voor deze winkel. Rekeningprinters: Rekening- en KOT-opmaak → Rekening. Keuken: Keuken → Keukenstations.
+printers_found_none	Geen printers gevonden.
+nav_loading	Laden…
+kot_copy_from	Kopiëren van
+kot_copy_from_help	Kopieert de grootte, dikte en uitlijning van elke regel van die soort naar deze. Deze soort houdt zijn eigen banner, artikelvoorvoegsel en doorhaling. Sla het KOT-formaat op om het te behouden.
 items_tmpl_heading	Artikelsjablonen
 items_tmpl_help	Gerechten, categorieën en foto's voor je menu. Winkelinstellingen en personeel blijven zoals ze zijn.
 public_tmpl_help	Startmenu's die iedereen kan downloaden. Eenmaal internet nodig.
 private_tmpl_help	Klantmenu's afgeschermd met een 12-cijferige code van je Khaynjo-contactpersoon.
-printers_screen_tip	Zoeken toont de printers die dit apparaat kan gebruiken en bewaart ze voor deze winkel. Rekeningprinters: Rekening- en KOT-opmaak → Rekening. Keuken: Keuken → Keukenstations.
-printers_found_none	Geen printers gevonden.
-kot_copy_from	Kopiëren van
-kot_copy_from_help	Kopieert de grootte, dikte en uitlijning van elke regel van die soort naar deze. Deze soort houdt zijn eigen banner, artikelvoorvoegsel en doorhaling. Sla het KOT-formaat op om het te behouden.
-nav_loading	Laden…

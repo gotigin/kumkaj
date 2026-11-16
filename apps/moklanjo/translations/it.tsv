@@ -501,6 +501,17 @@ job_size	Dimensione carattere
 job_size_ph	es. 18, 20, 26…
 test_receipt_format	Prova ricevuta
 test_label_format	Prova etichetta
+paper_heading	Carta
+paper_size	{w} × {h} mm
+paper_roll	rotolo da {w} mm
+paper_not_set	carta non ancora nota
+paper_length_mm	Lunghezza (mm)
+printer_paper_help	La carta di questa stampante in mm. Una Lunghezza vuota è un rotolo: ogni scontrino è lungo quanto il suo contenuto. Trova stampanti riempie la carta vuota dal driver della stampante (un rotolo da 80 mm quando non sa dirlo) e non cambia mai una carta già impostata.
+preview_help	Questo scontrino sulla carta della stampante scelta sotto, come vi si stampa: a grandezza reale dall'angolo in alto a sinistra che la stampante raggiunge (grigio: bordi che non raggiunge), uno scontrino lungo su più fogli, tutto oltre il bordo della carta viene tagliato. Scegliere una stampante cambia solo l'anteprima; la carta di ogni stampante si imposta in Stampanti.
+slip_col_width	Larghezza (mm)
+no_printer_assigned	Nessuna stampante
+printer_target_default	stampante predefinita
+job_preview	Anteprima
 test_receipt_sent	Ricevuta di esempio inviata
 test_label_sent	Etichetta di esempio inviata
 test_print_no_printer	Nessuna stampante per quel lavoro — aggiungine una in questo posto

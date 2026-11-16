@@ -72,10 +72,6 @@ bill_item_layout	আইটেম লেআউট
 bill_item_layout_columns	স্তম্ভ
 bill_item_layout_stacked	শাৰী
 bill_item_header	স্তম্ভ শিৰোনাম
-bill_item_hdr_item	আইটেম শিৰোনাম
-bill_item_hdr_qty	সংখ্যা শিৰোনাম
-bill_item_hdr_price	দাম শিৰোনাম
-bill_item_hdr_amount	ধন শিৰোনাম
 bill_item_name	দৰৱৰ নাম
 bill_item_qty	পৰিমাণ
 bill_item_price	দাম
@@ -83,6 +79,13 @@ bill_item_amount	পৰিমাণ
 bill_item_note	Rx / বিক্ৰীৰ টোকা
 bill_item_col_sep	স্তম্ভৰ ৰেখা
 slip_col_width	প্ৰস্থ (mm)
+paper_heading	কাগজ
+paper_size	{w} × {h} mm
+paper_roll	{w} mm ৰোল
+paper_not_set	কাগজ এতিয়াও জনা নাই
+paper_length_mm	দৈৰ্ঘ্য (mm)
+printer_paper_help	এই প্ৰিণ্টাৰৰ কাগজ mm ত। খালী দৈৰ্ঘ্য মানে ৰোল: প্ৰতিখন ৰচিদ তাৰ সমলৰ সমান দীঘল। প্ৰিণ্টাৰ বিচাৰকে খালী কাগজ প্ৰিণ্টাৰৰ ড্ৰাইভাৰৰ পৰা পূৰণ কৰে (ক'ব নোৱাৰিলে 80 mm ৰোল) আৰু আগতে ঠিক কৰা কাগজ কেতিয়াও সলনি নকৰে।
+preview_help	তলত বাছি লোৱা প্ৰিণ্টাৰৰ কাগজত এই ৰচিদখন, তাত যেনেকৈ ছপা হয়: প্ৰিণ্টাৰে পাব পৰা ওপৰৰ বাওঁফালৰ পৰা প্ৰকৃত আকাৰত (ধূসৰ: পাব নোৱাৰা কিনাৰ), দীঘল ৰচিদ অধিক পৃষ্ঠাত, কাগজৰ কিনাৰৰ বাহিৰৰ অংশ কাটি পেলোৱা হয়। প্ৰিণ্টাৰ বাছিলে কেৱল পূৰ্বদৰ্শন সলনি হয়; প্ৰতিটো প্ৰিণ্টাৰৰ কাগজ প্ৰিণ্টাৰৰ তলত ঠিক কৰা হয়।
 slip_col_start	আৰম্ভণিৰ ঠাই (px)
 slip_col_end	শেষৰ ঠাই (px)
 slip_columns_help	প্ৰতিটো স্তম্ভৰ প্ৰস্থত ইয়াৰ আৰম্ভণি আৰু শেষৰ ঠাই অন্তৰ্ভুক্ত। লিখনি নিজৰ স্তম্ভৰ ভিতৰতে মেৰিয়াই যায়; সমলৰ প্ৰস্থৰ বাহিৰৰ অংশ কাগজত আৰু পূৰ্বদৰ্শনত কটা যায়।
@@ -850,3 +853,4 @@ nav_loading	ল'ড হৈ আছে…
 printer_mode_first	যিটো প্ৰথমে চলে
 printer_mode_all	সকলোতে ছপাওক
 slip_columns	স্তম্ভসমূহ
+slip_col_header	শিৰোনাম

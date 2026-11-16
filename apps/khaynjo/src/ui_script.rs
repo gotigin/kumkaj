@@ -1791,6 +1791,19 @@ script_mod! {
             text_style +: {font_size: 12.}
         }
     }
+    // A dropdown's face and its type-or-pick field: ComboField draws ˅ / ˄
+    // over the control's last 38 px, so these keep that room (a long face
+    // wraps before the mark instead of running under it; a face keeps its
+    // centre). Every control directly inside a ComboField is one of these.
+    let ComboFace = StackSecondaryBtn{
+        padding: Inset{left: 48. right: 48. top: 14. bottom: 14.}
+        // Wrap like every full-width face (DEV.md bug 7 / CTA faces): a long
+        // value goes on to a second line instead of running under the mark.
+        flow: Right{wrap: true}
+    }
+    let ComboInput = FieldInput{
+        padding: Inset{left: 14. right: 48. top: 16. bottom: 12.}
+    }
 
     // Compact cart / totals field — same caret as FieldInput; tighter padding.
     // Ticket fields sit beside their own labels: no floating caption.
@@ -4068,6 +4081,29 @@ script_mod! {
     }
 
     // Settings → Printers: name + per-printer how-the-job-is-sent (Down SegBtns).
+    // Settings → Printers: the saved printers, one list in two parts around
+    // the open printer's paper (PrinterPaperRows) — any number of printers.
+    mod.widgets.PrinterPaperRowsBase = #(PrinterPaperRows::register_widget(vm))
+    mod.widgets.PrinterPaperRows = set_type_default() do mod.widgets.PrinterPaperRowsBase{
+        width: Fill height: Fit
+        list := PortalList{
+            width: Fill height: Fill
+            spacing: 0
+            drag_scrolling: false
+            bounce_at_start: false
+            bounce_at_end: false
+            capture_overload: false
+            scroll_bar: ScrollBar{bar_size: 0.}
+            Item := View{
+                width: Fill height: Fit
+                flow: Overlay
+                texture_caching: false
+                row := KotRowBtn{text: " "}
+                row_on := KotRowBtnOn{text: " " visible: false}
+            }
+        }
+    }
+
     mod.widgets.PrinterDeliveryListBase = #(PrinterDeliveryList::register_widget(vm))
     mod.widgets.PrinterDeliveryList = set_type_default() do mod.widgets.PrinterDeliveryListBase{
         width: Fill height: Fit
@@ -6982,7 +7018,7 @@ script_mod! {
                                                 flow: Down spacing: 6
                                                 // Dropdown — opens checkbox station list (not a type-in field).
                                                 mod.widgets.ComboField{field: "kot_station"
-                                                    kot_station_dd := StackSecondaryBtn{text: "Kitchen" flow: Right}
+                                                    kot_station_dd := ComboFace{text: "Kitchen"}
                                                 }
                                                 // TextInput has no `visible` — collapse height; wrap hides the strip.
                                                 kot_station_input := FieldInput{
@@ -7097,7 +7133,7 @@ script_mod! {
                                                 visible: false
                                             }
                                             mod.widgets.ComboField{field: "move_table"
-                                                move_target_input := FieldInput{empty_text: "Table name (e.g. D5, P2)"}
+                                                move_target_input := ComboInput{empty_text: "Table name (e.g. D5, P2)"}
                                             }
                                             move_target_suggest := mod.widgets.SuggestList{field: "move_table"}
                                             move_pin_input := FieldInput{empty_text: "Manager PIN (only if asked)"}
@@ -7148,7 +7184,7 @@ script_mod! {
                                             line_target_wrap := View{
                                                 width: Fill height: Fit
                                                 mod.widgets.ComboField{field: "line_table"
-                                                    line_target_input := FieldInput{empty_text: "Move to table (e.g. D5)"}
+                                                    line_target_input := ComboInput{empty_text: "Move to table (e.g. D5)"}
                                                 }
                                                 line_target_suggest := mod.widgets.SuggestList{field: "line_table"}
                                             }
@@ -7423,7 +7459,7 @@ script_mod! {
                                         font_size: 13.
                                     }
                                     mod.widgets.ComboField{field: "customer_name"
-                                        customer_name_input := FieldInput{
+                                        customer_name_input := ComboInput{
                                             empty_text: "Customer name"
                                         }
                                     }
@@ -7468,7 +7504,7 @@ script_mod! {
                                     }
                                     // Delivery orders: who takes it out (day report totals by them).
                                     mod.widgets.ComboField{field: "delivery_by"
-                                        delivery_by_input := FieldInput{empty_text: "Delivery by (rider or staff name)"}
+                                        delivery_by_input := ComboInput{empty_text: "Delivery by (rider or staff name)"}
                                     }
                                     delivery_by_suggest := mod.widgets.SuggestList{field: "delivery_by"}
                                 }
@@ -7973,7 +8009,7 @@ script_mod! {
                                         visible: false
                                         floor_ops_label := mod.widgets.ReportText{}
                                         mod.widgets.ComboField{field: "floor_waiter"
-                                            floor_waiter_filter := FieldInput{empty_text: "Filter floor by waiter name"}
+                                            floor_waiter_filter := ComboInput{empty_text: "Filter floor by waiter name"}
                                         }
                                         floor_waiter_suggest := mod.widgets.SuggestList{field: "floor_waiter"}
                                     }
@@ -8026,7 +8062,7 @@ script_mod! {
                                                 resv_when_input := FieldInput{empty_text: "When"}
                                             }
                                             mod.widgets.ComboField{field: "resv_table"
-                                                resv_table_input := FieldInput{empty_text: "Table (optional)"}
+                                                resv_table_input := ComboInput{empty_text: "Table (optional)"}
                                             }
                                             resv_table_suggest := mod.widgets.SuggestList{field: "resv_table"}
                                             ActionStack{
@@ -8068,7 +8104,7 @@ script_mod! {
                                         // Areas group the floor (Dine In, Parcel, AC …); a
                                         // parcel waiting for pickup is a table too.
                                         mod.widgets.ComboField{field: "table_area"
-                                            table_area_input := FieldInput{empty_text: "Area (e.g. Dine In, Parcel, AC)"}
+                                            table_area_input := ComboInput{empty_text: "Area (e.g. Dine In, Parcel, AC)"}
                                         }
                                         table_area_suggest := mod.widgets.SuggestList{field: "table_area"}
                                         table_add := StackPrimaryBtn{text: "Add table"}
@@ -8166,7 +8202,7 @@ script_mod! {
                                         station_add := StackPrimaryBtn{text: "Add station"}
                                         station_remove_heading := WrapLabel{body: "Remove a kitchen station" font_color: #x260B08 font_size: 15.}
                                         mod.widgets.ComboField{field: "station_remove"
-                                            station_remove_input := FieldInput{empty_text: "Tap a station in the list to remove it"}
+                                            station_remove_input := ComboInput{empty_text: "Tap a station in the list to remove it"}
                                         }
                                         station_remove_suggest := mod.widgets.SuggestList{field: "station_remove"}
                                         // Pick removes immediately; button kept for typed + tap.
@@ -8186,7 +8222,7 @@ script_mod! {
                                             }
                                         }
                                         mod.widgets.ComboField{field: "station_print"
-                                            station_print_input := FieldInput{empty_text: "Station to set printers"}
+                                            station_print_input := ComboInput{empty_text: "Station to set printers"}
                                         }
                                         station_print_suggest := mod.widgets.SuggestList{field: "station_print"}
                                         station_print_mode_row := View{
@@ -8203,7 +8239,7 @@ script_mod! {
                                         }
                                         ActionStack{
                                             mod.widgets.ComboField{field: "station_vps"
-                                                station_vps_dd := StackSecondaryBtn{text: "Printers for this station" flow: Down}
+                                                station_vps_dd := ComboFace{text: "Printers for this station"}
                                             }
                                         }
                                         station_vps_input := FieldInput{
@@ -8374,18 +8410,18 @@ script_mod! {
                                 FormFieldRow{
                                     menu_price_input := FieldInput{empty_text: "Price"}
                                     mod.widgets.ComboField{field: "menu_unit"
-                                        menu_unit_input := FieldInput{empty_text: "Unit (blank = each)"}
+                                        menu_unit_input := ComboInput{empty_text: "Unit (blank = each)"}
                                     }
                                 }
                                 menu_unit_suggest := mod.widgets.SuggestList{field: "menu_unit"}
                                 mod.widgets.ComboField{field: "menu_tax"
-                                    menu_tax_input := FieldInput{
+                                    menu_tax_input := ComboInput{
                                         empty_text: "Tax rate name or % — Standard, Reduced, 0, 5, 12, 18, 20"
                                     }
                                 }
                                 menu_tax_suggest := mod.widgets.SuggestList{field: "menu_tax"}
                                 mod.widgets.ComboField{field: "category"
-                                    menu_category_input := FieldInput{empty_text: "Category — search yours or type a new one"}
+                                    menu_category_input := ComboInput{empty_text: "Category — search yours or type a new one"}
                                 }
                                 // Category picker: opens on tap / typing / ↓
                                 // (never focus alone); typed name is always a row.
@@ -8393,7 +8429,7 @@ script_mod! {
                                 ActionStack{
                                 }
                                 mod.widgets.ComboField{field: "menu_station"
-                                    menu_station_input := FieldInput{empty_text: "Kitchen station (optional, e.g. Tandoor — created if new)"}
+                                    menu_station_input := ComboInput{empty_text: "Kitchen station (optional, e.g. Tandoor — created if new)"}
                                 }
                                 menu_station_suggest := mod.widgets.SuggestList{field: "menu_station"}
                                 // Variations (* pick one) and add-ons (+ multi), or a flat add-on list.
@@ -8402,7 +8438,7 @@ script_mod! {
                                 // (own UUID, price, stock, station), grouped by name.
                                 menu_variations_input := FieldInput{empty_text: "Sizes as separate items (optional) — Half=120, Full=200"}
                                 mod.widgets.ComboField{field: "menu_group"
-                                    menu_group_input := FieldInput{empty_text: "Dish group (optional) — e.g. Paneer Tikka"}
+                                    menu_group_input := ComboInput{empty_text: "Dish group (optional) — e.g. Paneer Tikka"}
                                 }
                                 menu_group_suggest := mod.widgets.SuggestList{field: "menu_group"}
                                 // A dearer area (AC) or a parcel price; other areas pay
@@ -8507,19 +8543,19 @@ script_mod! {
                                 FormCard{
                                     h_goods_received := WrapLabel{body: "Goods received" font_color: #x260B08 font_size: 17.}
                                     mod.widgets.ComboField{field: "buy_item"
-                                        buy_item_input := FieldInput{empty_text: "Item name"}
+                                        buy_item_input := ComboInput{empty_text: "Item name"}
                                     }
                                     buy_item_suggest := mod.widgets.SuggestList{field: "buy_item"}
                                     FormFieldRow{
                                         buy_qty_input := FieldInput{empty_text: "Qty"}
                                         mod.widgets.ComboField{field: "buy_unit"
-                                            buy_unit_input := FieldInput{empty_text: "Unit"}
+                                            buy_unit_input := ComboInput{empty_text: "Unit"}
                                         }
                                     }
                                     buy_unit_suggest := mod.widgets.SuggestList{field: "buy_unit"}
                                     buy_cost_input := FieldInput{empty_text: "Unit cost"}
                                     mod.widgets.ComboField{field: "buy_supplier"
-                                        buy_supplier_input := FieldInput{empty_text: "Supplier name (or party)"}
+                                        buy_supplier_input := ComboInput{empty_text: "Supplier name (or party)"}
                                     }
                                     buy_supplier_suggest := mod.widgets.SuggestList{field: "buy_supplier"}
                                     // The chips (or the default, Supplier) set it — never typed.
@@ -8915,7 +8951,7 @@ script_mod! {
                                             width: Fill height: Fit
                                             visible: false
                                             mod.widgets.ComboField{field: "credit_party"
-                                                credit_limit_party := FieldInput{empty_text: "Party name (or use selected)"}
+                                                credit_limit_party := ComboInput{empty_text: "Party name (or use selected)"}
                                             }
                                         }
                                     }
@@ -8990,7 +9026,7 @@ script_mod! {
                                 flow: Down spacing: 10
                                 staff_label := mod.widgets.ReportText{}
                                 mod.widgets.ComboField{field: "team_pick"
-                                    team_pick_input := FieldInput{empty_text: "Pick a person to edit — leave empty to add someone"}
+                                    team_pick_input := ComboInput{empty_text: "Pick a person to edit — leave empty to add someone"}
                                 }
                                 team_pick_suggest := mod.widgets.SuggestList{field: "team_pick"}
                                 // Same words as the field's placeholder — hidden (no repeat line).
@@ -9049,7 +9085,7 @@ script_mod! {
                                 // this form — then Add creates a new id. Remove is
                                 // not here (it belongs with the selected person below).
                                 mod.widgets.ComboField{field: "team_copy_hire"
-                                    staff_copy_hire_input := FieldInput{
+                                    staff_copy_hire_input := ComboInput{
                                         empty_text: "Copy setup from (optional)"
                                     }
                                 }
@@ -9098,7 +9134,7 @@ script_mod! {
                                     staff_set_login := RowSecondaryBtn{text: "Apply login to selected"}
                                 }
                                 mod.widgets.ComboField{field: "team_copy_edit"
-                                    staff_copy_edit_input := FieldInput{
+                                    staff_copy_edit_input := ComboInput{
                                         empty_text: "Copy setup from another person"
                                     }
                                 }
@@ -9447,7 +9483,7 @@ script_mod! {
                                     FormCard{
                                     fiscal_label := mod.widgets.ReportText{}
                                     mod.widgets.ComboField{field: "country"
-                                        country_code_input := FieldInput{
+                                        country_code_input := ComboInput{
                                             empty_text: "Country code e.g. IN, GB, US, AE, BR"
                                         }
                                     }
@@ -9846,11 +9882,11 @@ h_units_heading := WrapLabel{body: "Units" font_color: #x260B08 font_size: 16.}
                                 }
                                 FormCard{
                                 mod.widgets.ComboField{field: "conv_from"
-                                    conv_from_input := FieldInput{empty_text: "From code (bag)"}
+                                    conv_from_input := ComboInput{empty_text: "From code (bag)"}
                                 }
                                 conv_from_suggest := mod.widgets.SuggestList{field: "conv_from"}
                                 mod.widgets.ComboField{field: "conv_to"
-                                    conv_to_input := FieldInput{empty_text: "To code (kg)"}
+                                    conv_to_input := ComboInput{empty_text: "To code (kg)"}
                                 }
                                 conv_to_suggest := mod.widgets.SuggestList{field: "conv_to"}
                                 conv_factor_input := FieldInput{empty_text: "Factor (1 bag → kg)"}
@@ -9882,7 +9918,7 @@ sibling_pickers_heading := WrapLabel{body: "Areas · stations · tax rates" font
                                 settings_station_name_input := FieldInput{empty_text: "Station name (e.g. Tandoor, Fryer, Cold)"}
                                 settings_station_add := StackPrimaryBtn{text: "Add station"}
                                 mod.widgets.ComboField{field: "settings_station_remove"
-                                    settings_station_remove_input := FieldInput{empty_text: "Station name to remove"}
+                                    settings_station_remove_input := ComboInput{empty_text: "Station name to remove"}
                                 }
                                 settings_station_remove_suggest := mod.widgets.SuggestList{field: "settings_station_remove"}
                                 settings_station_remove := StackSecondaryBtn{text: "Remove station"}
@@ -9891,7 +9927,7 @@ sibling_pickers_heading := WrapLabel{body: "Areas · stations · tax rates" font
                                 bulk_price_heading := WrapLabel{ width: Fit
                                                     body: "Bulk menu price" font_color: #x260B08 font_size: 18.}
                                 mod.widgets.ComboField{field: "bulk_cat"
-                                    bulk_cat_input := FieldInput{empty_text: "Category name"}
+                                    bulk_cat_input := ComboInput{empty_text: "Category name"}
                                 }
                                 bulk_cat_suggest := mod.widgets.SuggestList{field: "bulk_cat"}
                                 FormFieldRow{
@@ -9933,6 +9969,35 @@ sibling_pickers_heading := WrapLabel{body: "Areas · stations · tax rates" font
                                         font_color: #x6B4A3F
                                         font_size: 12.
                                     }
+                                    // The saved printers, each `name · paper`, in one list (owner
+                                    // 2026-11-16: the printer owns its paper). Tapping one opens its
+                                    // Width / Length where it sits (one list in two parts around the open one,
+                                    // as the Bill lines; docs/PRINTER.md § Paper and preview).
+                                    printers_rows := mod.widgets.PrinterPaperRows{part: "before" visible: false}
+                                    printer_paper_editor := RoundedView{
+                                        width: Fill height: Fit flow: Down spacing: 8 visible: false
+                                        margin: Inset{left: 0. right: 0. top: 0. bottom: 8.}
+                                        padding: Inset{left: 12. right: 12. top: 10. bottom: 12.}
+                                        draw_bg.color: #xFFF8F4
+                                        draw_bg.border_radius: 12.
+                                        draw_bg.border_size: 1.5
+                                        draw_bg.border_color: #x9A0E10
+                                        View{width: Fill height: Fit flow: Right spacing: 0 align: Align{y: 0.5}
+                                            h_printer_paper := WrapLabel{width: Fit body: "Paper" font_color: #x260B08 font_size: 14.}
+                                            printer_paper_help := InfoHelp{tip: " "}
+                                        }
+                                        View{width: Fill height: Fit flow: Right spacing: 8
+                                            View{width: Fill height: Fit flow: Down spacing: 4
+                                                h_printer_paper_w := WrapLabel{width: Fill body: "Width (mm)" font_color: #x6B4A3F font_size: 12.}
+                                                printer_paper_w_input := FieldInput{width: Fill empty_text: ""}
+                                            }
+                                            View{width: Fill height: Fit flow: Down spacing: 4
+                                                h_printer_paper_l := WrapLabel{width: Fill body: "Length (mm)" font_color: #x6B4A3F font_size: 12.}
+                                                printer_paper_l_input := FieldInput{width: Fill empty_text: ""}
+                                            }
+                                        }
+                                    }
+                                    printers_after_rows := mod.widgets.PrinterPaperRows{part: "after" visible: false}
                                     // The saved printers, names only — Find fills and saves
                                     // them (printers.json). Owner 2026-11-13: this screen is
                                     // Find + the list, nothing else (no per-printer send
@@ -9944,7 +10009,7 @@ sibling_pickers_heading := WrapLabel{body: "Areas · stations · tax rates" font
                                     printers_found_list := mod.widgets.ReportText{visible: false}
                                     printers_pool_help := InfoHelp{tip: " " visible: false}
                                     mod.widgets.ComboField{field: "test_printers"
-                                        printers_test_dd := StackSecondaryBtn{text: "Printers for a test page" flow: Down visible: false}
+                                        printers_test_dd := ComboFace{text: "Printers for a test page" visible: false}
                                     }
                                     printers_test_input := FieldInput{
                                         height: 0.
@@ -9964,7 +10029,7 @@ sibling_pickers_heading := WrapLabel{body: "Areas · stations · tax rates" font
                                     printers_routes_help := InfoHelp{tip: " " visible: false}
                                     View{width: Fill height: Fit visible: false
                                         mod.widgets.ComboField{field: "printer_place"
-                                            printer_place_dd := StackSecondaryBtn{text: "Bill" flow: Down}
+                                            printer_place_dd := ComboFace{text: "Bill"}
                                         }
                                     }
                                     // FieldInput has no `visible`. A hidden wrapper keeps the
@@ -10020,7 +10085,7 @@ sibling_pickers_heading := WrapLabel{body: "Areas · stations · tax rates" font
                                     }
                                     ActionStack{
                                         mod.widgets.ComboField{field: "printer_assign"
-                                            printer_assign_dd := StackSecondaryBtn{text: "Select real printer" flow: Down}
+                                            printer_assign_dd := ComboFace{text: "Select real printer"}
                                         }
                                     }
                                     printer_assign_input := FieldInput{
@@ -10100,20 +10165,20 @@ sibling_pickers_heading := WrapLabel{body: "Areas · stations · tax rates" font
                                         width: Fill height: Fit
                                         flow: Down spacing: 6
                                         View{width: Fill height: Fit flow: Overlay
-                                            vp_paper_58 := SegBtn{text: "58 mm — narrow slip"}
-                                            vp_paper_58_on := SegBtnOn{text: "58 mm — narrow slip" visible: false}
+                                            vp_paper_58 := SegBtn{text: "58 mm"}
+                                            vp_paper_58_on := SegBtnOn{text: "58 mm" visible: false}
                                         }
                                         View{width: Fill height: Fit flow: Overlay
-                                            vp_paper_80 := SegBtn{text: "80 mm — wide slip"}
-                                            vp_paper_80_on := SegBtnOn{text: "80 mm — wide slip" visible: false}
+                                            vp_paper_80 := SegBtn{text: "80 mm"}
+                                            vp_paper_80_on := SegBtnOn{text: "80 mm" visible: false}
                                         }
                                         View{width: Fill height: Fit flow: Overlay
-                                            vp_paper_112 := SegBtn{text: "112 mm — 4 inch slip"}
-                                            vp_paper_112_on := SegBtnOn{text: "112 mm — 4 inch slip" visible: false}
+                                            vp_paper_112 := SegBtn{text: "112 mm"}
+                                            vp_paper_112_on := SegBtnOn{text: "112 mm" visible: false}
                                         }
                                         View{width: Fill height: Fit flow: Overlay
-                                            vp_paper_210 := SegBtn{text: "210 mm — page"}
-                                            vp_paper_210_on := SegBtnOn{text: "210 mm — page" visible: false}
+                                            vp_paper_210 := SegBtn{text: "210 mm"}
+                                            vp_paper_210_on := SegBtnOn{text: "210 mm" visible: false}
                                         }
                                     }
                                     vp_paper_width_input := TextInput{
@@ -10279,22 +10344,22 @@ sibling_pickers_heading := WrapLabel{body: "Areas · stations · tax rates" font
                                         flow: Down spacing: 6
                                         cw_row_a := View{width: Fill height: Fit flow: Right spacing: 6
                                             View{width: Fill height: Fit flow: Overlay
-                                                content_width_58 := SegBtn{text: "58 mm — narrow slip"}
-                                                content_width_58_on := SegBtnOn{text: "58 mm — narrow slip" visible: false}
+                                                content_width_58 := SegBtn{text: "58 mm"}
+                                                content_width_58_on := SegBtnOn{text: "58 mm" visible: false}
                                             }
                                             View{width: Fill height: Fit flow: Overlay
-                                                content_width_80 := SegBtn{text: "80 mm — wide slip"}
-                                                content_width_80_on := SegBtnOn{text: "80 mm — wide slip" visible: false}
+                                                content_width_80 := SegBtn{text: "80 mm"}
+                                                content_width_80_on := SegBtnOn{text: "80 mm" visible: false}
                                             }
                                         }
                                         cw_row_b := View{width: Fill height: Fit flow: Right spacing: 6
                                             View{width: Fill height: Fit flow: Overlay
-                                                content_width_112 := SegBtn{text: "112 mm — 4 inch slip"}
-                                                content_width_112_on := SegBtnOn{text: "112 mm — 4 inch slip" visible: false}
+                                                content_width_112 := SegBtn{text: "112 mm"}
+                                                content_width_112_on := SegBtnOn{text: "112 mm" visible: false}
                                             }
                                             View{width: Fill height: Fit flow: Overlay
-                                                content_width_210 := SegBtn{text: "210 mm — page"}
-                                                content_width_210_on := SegBtnOn{text: "210 mm — page" visible: false}
+                                                content_width_210 := SegBtn{text: "210 mm"}
+                                                content_width_210_on := SegBtnOn{text: "210 mm" visible: false}
                                             }
                                         }
                                     }
@@ -10344,7 +10409,7 @@ sibling_pickers_heading := WrapLabel{body: "Areas · stations · tax rates" font
                                     }
                                 }
                                 mod.widgets.ComboField{field: "bill_printers"
-                                    bill_printers_dd := StackSecondaryBtn{text: "Printers for the bill" flow: Down}
+                                    bill_printers_dd := ComboFace{text: "Printers for the bill"}
                                 }
                                 bill_printers_input := FieldInput{
                                     height: 0.
@@ -10431,6 +10496,10 @@ sibling_pickers_heading := WrapLabel{body: "Areas · stations · tax rates" font
                                         bill_pick_upi := KotRowBtn{text: "UPI"}
                                         bill_pick_upi_on := KotRowBtnOn{text: "UPI" visible: false}
                                     }
+                                    bill_pick_row_13 := View{width: Fill height: Fit flow: Overlay
+                                        bill_pick_13 := KotRowBtn{text: ""}
+                                        bill_pick_13_on := KotRowBtnOn{text: "" visible: false}
+                                    }
                                 }
                                 // The open line, edited where it sits: every control of the line in
                                 // its own row (wraps on narrow screens), its extras right under it.
@@ -10458,8 +10527,11 @@ sibling_pickers_heading := WrapLabel{body: "Areas · stations · tax rates" font
                                                     bill_field_hide := SegBtn{width: Fit text: "Hide"}
                                                     bill_field_hide_on := SegBtnOn{width: Fit text: "Hide" visible: false}
                                                 }
-                                                h_bill_field_size := WrapLabel{width: Fit body: "Font size" font_color: #x260B08 font_size: 13.}
-                                                bill_field_size_input := FieldInput{width: 88 empty_text: "px"}
+                                                // Font size; the Logo line has its box size below instead.
+                                                bill_size_box := View{width: Fit height: Fit flow: Right spacing: 6 align: Align{y: 0.5}
+                                                    h_bill_field_size := WrapLabel{width: Fit body: "Font size" font_color: #x260B08 font_size: 13.}
+                                                    bill_field_size_input := FieldInput{width: 88 empty_text: "px"}
+                                                }
                                             }
                                         }
                                         bill_line_style := View{width: Fill height: Fit flow: Right spacing: 8
@@ -10497,13 +10569,35 @@ sibling_pickers_heading := WrapLabel{body: "Areas · stations · tax rates" font
                                     bill_value_row := View{width: Fill height: Fit
                                         bill_field_value := FieldInput{empty_text: "Address | phone"}
                                     }
-                                    // Kept so older saves and hot reload still find the ids.
-                                    View{width: Fill height: Fit visible: false
-                                        bill_header_input := FieldInput{empty_text: "Address | phone"}
-                                        fssai_input := FieldInput{empty_text: "FSSAI licence no. (India)"}
-                                        upi_vpa_input := FieldInput{empty_text: "UPI ID (VPA)"}
-                                        upi_payee_input := FieldInput{empty_text: "UPI payee name (optional)"}
-                                        bill_footer_input := FieldInput{empty_text: "Footer (e.g. Thank you, visit again)"}
+                                    // Logo open: its picture, box size and greys (docs/PRINTER.md "Logo").
+                                    bill_logo_pieces := View{width: Fill height: Fit flow: Down spacing: 8 visible: false
+                                        bill_logo_head := View{width: Fill height: Fit flow: Right spacing: 0 align: Align{y: 0.5}
+                                            h_bill_logo_picture := WrapLabel{width: Fit body: "Picture" font_color: #x260B08 font_size: 14.}
+                                            bill_logo_help := InfoHelp{tip: ""}
+                                            bill_logo_status := WrapLabel{width: Fill body: "" font_color: #x6B4A3F font_size: 13.}
+                                        }
+                                        bill_logo_btns := View{width: Fill height: Fit flow: Right spacing: 8
+                                            bill_logo_choose := StackSecondaryBtn{width: Fill text: "Choose picture"}
+                                            bill_logo_remove := StackSecondaryBtn{width: Fill text: "Remove picture"}
+                                        }
+                                        bill_logo_size := View{width: Fill height: Fit flow: Right spacing: 8
+                                            bill_logo_width_input := FieldInput{width: Fill empty_text: "Width (px)"}
+                                            bill_logo_height_input := FieldInput{width: Fill empty_text: "Height (px)"}
+                                        }
+                                        View{width: Fill height: Fit flow: Right spacing: 0 align: Align{y: 0.5}
+                                            h_bill_logo_tones := WrapLabel{width: Fit body: "Greys" font_color: #x260B08 font_size: 14.}
+                                            bill_logo_tones_help := InfoHelp{tip: ""}
+                                        }
+                                        bill_logo_tones := View{width: Fill height: Fit flow: Right spacing: 6
+                                            View{width: Fill height: Fit flow: Overlay
+                                                bill_logo_solid := SegBtn{text: "Solid"}
+                                                bill_logo_solid_on := SegBtnOn{text: "Solid" visible: false}
+                                            }
+                                            View{width: Fill height: Fit flow: Overlay
+                                                bill_logo_shaded := SegBtn{text: "Shaded"}
+                                                bill_logo_shaded_on := SegBtnOn{text: "Shaded" visible: false}
+                                            }
+                                        }
                                     }
                                     bill_meta_pair := View{
                                         width: Fill height: Fit
@@ -10889,6 +10983,10 @@ sibling_pickers_heading := WrapLabel{body: "Areas · stations · tax rates" font
                                         bill_after_12 := KotRowBtn{text: ""}
                                         bill_after_12_on := KotRowBtnOn{text: "" visible: false}
                                     }
+                                    bill_after_row_13 := View{width: Fill height: Fit flow: Overlay visible: false
+                                        bill_after_13 := KotRowBtn{text: ""}
+                                        bill_after_13_on := KotRowBtnOn{text: "" visible: false}
+                                    }
                                 }
                                 }
                                 } // bill_form_col
@@ -10896,7 +10994,23 @@ sibling_pickers_heading := WrapLabel{body: "Areas · stations · tax rates" font
                                 // Wide screens: grows so the preview sits beside the open line.
                                 bill_preview_lead := View{width: Fill height: 0}
                                 FormCard{
-                                h_bill_preview := WrapLabel{body: "Preview" font_color: #x260B08 font_size: 14.}
+                                View{width: Fill height: Fit flow: Right spacing: 0 align: Align{y: 0.5}
+                                    h_bill_preview := WrapLabel{width: Fit body: "Preview" font_color: #x260B08 font_size: 14.}
+                                    bill_preview_help := InfoHelp{tip: " "}
+                                }
+                                // Which printer's paper the preview is drawn on — every saved
+                                // printer; picking one changes the preview only (docs/PRINTER.md
+                                // § Paper and preview).
+                                mod.widgets.ComboField{field: "bill_preview_paper"
+                                    bill_preview_paper_dd := ComboFace{text: "Paper"}
+                                }
+                                bill_preview_paper_input := FieldInput{
+                                    height: 0.
+                                    empty_text: ""
+                                    margin: Inset{left: 0. right: 0. top: 0. bottom: 0.}
+                                    padding: Inset{left: 0. right: 0. top: 0. bottom: 0.}
+                                }
+                                bill_preview_paper_suggest := mod.widgets.SuggestList{field: "bill_preview_paper"}
                                 bill_format_preview_card := View{
                                     width: Fill height: Fit
                                     bill_format_preview := mod.widgets.KotSlipPreview{}
@@ -11300,14 +11414,30 @@ sibling_pickers_heading := WrapLabel{body: "Areas · stations · tax rates" font
                                 // Wide screens: grows so the preview sits beside the open line.
                                 kot_preview_lead := View{width: Fill height: 0}
                                 FormCard{
-                                h_kot_preview := WrapLabel{body: "Preview" font_color: #x260B08 font_size: 14.}
+                                View{width: Fill height: Fit flow: Right spacing: 0 align: Align{y: 0.5}
+                                    h_kot_preview := WrapLabel{width: Fit body: "Preview" font_color: #x260B08 font_size: 14.}
+                                    kot_preview_help := InfoHelp{tip: " "}
+                                }
+                                // Which printer's paper the preview is drawn on — every saved
+                                // printer; picking one changes the preview only (docs/PRINTER.md
+                                // § Paper and preview).
+                                mod.widgets.ComboField{field: "kot_preview_paper"
+                                    kot_preview_paper_dd := ComboFace{text: "Paper"}
+                                }
+                                kot_preview_paper_input := FieldInput{
+                                    height: 0.
+                                    empty_text: ""
+                                    margin: Inset{left: 0. right: 0. top: 0. bottom: 0.}
+                                    padding: Inset{left: 0. right: 0. top: 0. bottom: 0.}
+                                }
+                                kot_preview_paper_suggest := mod.widgets.SuggestList{field: "kot_preview_paper"}
                                 kot_format_preview_card := View{
                                     width: Fill height: Fit
                                     kot_format_preview := mod.widgets.KotSlipPreview{}
                                 }
                                 kot_format_reset := StackSecondaryBtn{text: "Reset to default"}
                                 mod.widgets.ComboField{field: "kot_test_printers"
-                                    kot_test_printers_dd := StackSecondaryBtn{text: "Printers for Test KOT" flow: Down}
+                                    kot_test_printers_dd := ComboFace{text: "Printers for Test KOT"}
                                 }
                                 kot_test_printers_input := FieldInput{
                                     height: 0.
@@ -11772,7 +11902,7 @@ h_backup := WrapLabel{body: "Backup" font_color: #x260B08 font_size: 16.}
                                 }
                                 FormCard{
                                     mod.widgets.ComboField{field: "inv_item"
-                                        inv_item_input := FieldInput{empty_text: "Item name"}
+                                        inv_item_input := ComboInput{empty_text: "Item name"}
                                     }
                                     inv_item_suggest := mod.widgets.SuggestList{field: "inv_item"}
                                     View{
@@ -11839,7 +11969,7 @@ h_backup := WrapLabel{body: "Backup" font_color: #x260B08 font_size: 16.}
                                     branch_code_input := FieldInput{empty_text: "Short code (MG02)"}
                                     branch_add := StackPrimaryBtn{text: "Add branch"}
                                     mod.widgets.ComboField{field: "branch_switch"
-                                        branch_switch_input := FieldInput{empty_text: "Branch name to sell from"}
+                                        branch_switch_input := ComboInput{empty_text: "Branch name to sell from"}
                                     }
                                     branch_switch_suggest := mod.widgets.SuggestList{field: "branch_switch"}
                                     branch_switch := NavBtn{text: "Switch this device"}

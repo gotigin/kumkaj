@@ -92,10 +92,6 @@ bill_item_layout	Paraqitja e artikujve
 bill_item_layout_columns	Kolona
 bill_item_layout_stacked	Të grumbulluara
 bill_item_header	Titujt e kolonave
-bill_item_hdr_item	Titulli i artikullit
-bill_item_hdr_qty	Titulli i sasisë
-bill_item_hdr_price	Titulli i çmimit
-bill_item_hdr_amount	Titulli i shumës
 bill_item_name	Emri i pjatës
 bill_item_qty	Sasia
 bill_item_price	Çmimi
@@ -103,6 +99,20 @@ bill_item_amount	Shuma
 bill_item_note	Shënimi i pjatës
 bill_item_col_sep	Vijat e kolonave
 slip_columns	Kolonat
+slip_col_header	Titulli
+bill_line_logo	Logo
+bill_logo_picture	Figurë
+bill_logo_choose	Zgjidh figurë
+bill_logo_remove	Hiq figurën
+bill_logo_none	Pa figurë
+bill_logo_unreadable	Nuk është figurë që aplikacioni e lexon
+bill_logo_width	Gjerësia (px)
+bill_logo_height	Lartësia (px)
+bill_logo_tones	Gri
+bill_logo_solid	I plotë
+bill_logo_shaded	Me hije
+bill_logo_help	Gjerësia dhe lartësia në px. Bosh ndjek figurën: njëra bosh ruan formën, të dyja bosh përdorin madhësinë e saj; të dyja të vendosura e fusin brenda, kurrë të tendosur. Pa figurë: një logo e shfaqur e mban lartësinë si hapësirë bosh; Fshih e heq.
+bill_logo_tones_help	I plotë: çdo pikë e zezë ose e bardhë, për logo të qarta. Me hije: grit bëhen motive pikash të imta, për foto dhe hije të buta.
 slip_col_width	Gjerësia (mm)
 slip_col_start	Hapësira në fillim (px)
 slip_col_end	Hapësira në fund (px)
@@ -167,6 +177,21 @@ alerts_help	Sa kohë qëndrojnë mesazhet e gjendjes në ekran për ju (kjo hyrj
 snack_secs_ph	Sekonda (3–60, parazgjedhja 10)
 snack_secs_save	Ruaj kohën e njoftimit
 snack_secs_saved	Koha e njoftimit u ruajt — {n} sekonda
+settings_sec_whatsapp	WhatsApp
+whatsapp_cloud_help	Use your own Meta WhatsApp Cloud API. Create a System User token with whatsapp_business_messaging (temporary dashboard tokens expire). Credentials stay on this Server only — never on extra tills. Accepted means Meta took the request, not that the guest received it.
+whatsapp_phone_id_ph	Phone Number ID
+whatsapp_token_ph	Access Token (leave blank to keep)
+whatsapp_template_ph	Bill template name (optional)
+whatsapp_template_lang_ph	Template language (e.g. en)
+whatsapp_enable	Enable
+whatsapp_disable	Off
+whatsapp_save	Save WhatsApp
+whatsapp_test	Test connection
+whatsapp_disconnect	Disconnect
+whatsapp_send_bill	Send via WhatsApp
+whatsapp_consent	WhatsApp OK
+whatsapp_consent_help	Guest agreed to receive WhatsApp messages. A phone number alone is not consent.
+whatsapp_server_only	Configure WhatsApp on the shop Server device
 settings_sec_backup	Kopje rezervë dhe rikthim
 settings_sec_diag	Diagnostika
 settings_sec_privacy	Privatësia
@@ -729,6 +754,13 @@ station_vps_dd	Printerët për këtë stacion
 station_vps_dd_n	{n} printerë · prekni për të ndryshuar
 bill_printers_dd	Printerët për faturën
 bill_printers_dd_n	{n} printerë për faturën · prekni për të ndryshuar
+paper_heading	Letër
+paper_size	{w} × {h} mm
+paper_roll	rrotull {w} mm
+paper_not_set	letra ende e panjohur
+paper_length_mm	Gjatësia (mm)
+printer_paper_help	Letra e këtij printeri në mm. Gjatësia bosh është rrotull: çdo faturë është aq e gjatë sa përmbajtja e saj. Gjej printerët plotëson letrën bosh nga drajveri i printerit (rrotull 80 mm kur nuk mund ta thotë) dhe kurrë nuk ndryshon një të vendosur tashmë.
+preview_help	Kjo faturë në letrën e printerit të zgjedhur më poshtë, siç printohet atje: në madhësi reale nga këndi i sipërm majtas që arrin printeri (gri: skajet që nuk i arrin), një faturë e gjatë në më shumë fletë, gjithçka përtej skajit të letrës pritet. Zgjedhja e printerit ndryshon vetëm pamjen paraprake; letra e çdo printeri vendoset te Printerët.
 job_layout	Paraqitja
 job_delivery	Si dërgohet puna
 job_delivery_help	Dokument OS, bajte të papërpunuara, ose ESC/POS. Fatura dhe fleta e kuzhinës e mbajnë secila të vetën. Çdo punë mund të shkojë te çdo printer që Gjej ka ruajtur.
@@ -1105,9 +1137,6 @@ remove_these_tables	Hiq këto tavolina
 table_remove_ph	Hiq: T1-T24, ose emrin e një tavoline
 find_server	Gjej serverin e dyqanit
 bill_format	Formati i faturës
-bill_header_ph	Adresa | telefoni
-fssai_ph	Nr. i licencës FSSAI (India)
-bill_footer_ph	Fundi (p.sh. Faleminderit, ejani përsëri)
 reset_bill_format	Rivendos te parazgjedhja
 bill_format_reset	Formati i faturës u rivendos te parazgjedhja
 reset_kot_format	Rivendos te parazgjedhja
@@ -1146,7 +1175,6 @@ kot_kind_modified	E ndryshuar
 kot_kind_cancelled	E anuluar
 kot_style_heading	Madhësia dhe pesha e shkrimit të fushës
 kot_style_title	Titulli
-kot_style_item_qty	Artikulli · Sasia
 kot_style_field_pick	Zgjidh fushën
 kot_weight_regular	I rregullt
 kot_weight_bold	I trashë
@@ -1158,8 +1186,8 @@ content_width_bill	Gjerësia e përmbajtjes së faturës (mm)
 content_width_kot	Gjerësia e përmbajtjes së KOT-it (mm)
 content_width_ph	Ose shkruani një gjerësi përmbajtjeje, 40–210 mm
 content_width_help	Sa gjerë shtypet kjo fletë. Fatura dhe KOT-i e mbajnë secila gjerësinë e vet.
-content_width_bill_help	Sa gjerë shtypet fatura e mysafirit. Parazgjedhja 210 mm (faqe). 58 mm fletë e ngushtë, 80 mm fletë e gjerë, 112 mm 4 inç, 210 mm gjerësi A4. Shkruani çdo vlerë nga 40 deri në 210. Fletët e kuzhinës kanë gjerësinë e tyre te skeda KOT.
-content_width_kot_help	Sa gjerë shtypet fleta e kuzhinës. Parazgjedhja 80 mm. 58 mm fletë e ngushtë, 80 mm fletë e gjerë, 112 mm 4 inç, 210 mm faqe. Shkruani çdo vlerë nga 40 deri në 210. Faturat e mysafirëve kanë gjerësinë e tyre te skeda Fatura.
+content_width_bill_help	Sa gjerë shtypet fatura e mysafirit, në mm (40–210). Shtypet në këtë madhësi të vërtetë në çdo letër; në letër më të ngushtë, pjesa përtej skajit të shtypjes pritet (shih Letër). Biletat e kuzhinës kanë gjerësinë e tyre në skedën KOT.
+content_width_kot_help	Sa gjerë shtypet bileta e kuzhinës, në mm (40–210). Shtypet në këtë madhësi të vërtetë në çdo letër; në letër më të ngushtë, pjesa përtej skajit të shtypjes pritet (shih Letër). Faturat e mysafirëve kanë gjerësinë e tyre në skedën Faturë.
 vp_paper_width	Gjerësia e përmbajtjes (mm)
 vp_paper_width_ph	Ose shkruani një gjerësi përmbajtjeje, 40–210 mm
 vp_paper_width_help	Gjerësia e përmbajtjes vendoset te Formati i faturës dhe KOT-it — veçmas për faturën (parazgjedhja 210 mm) dhe fletën e kuzhinës (parazgjedhja 80 mm).
@@ -1213,8 +1241,6 @@ schemes_help	BOGO, përqindje zbritjeje dhe kombinime fikse. Kombinimet zgjerohe
 scheme_bogo_ph	Blini 2 thali, merrni 1 chaas
 add_scheme	Shto BOGO
 schedule_ph	Orët / happy hour — Hën–Pre 07:00–11:00 ose HappyHour 17:00–19:00=150
-upi_vpa_ph	Id UPI (VPA)
-upi_payee_ph	Emri i përfituesit UPI (opsional)
 upi_qr	UPI QR
 show_upi_qr	Shfaq UPI QR
 close_upi_qr	Mbyll
@@ -1295,8 +1321,6 @@ printer_mode_first	I pari që punon
 printer_mode_all	Shtyp te të gjithë
 kot_show_area	Zona
 kot_hide_area	Fshih zonën
-kot_show_item_hdr	Artikulli · Sasia
-kot_hide_item_hdr	Fshih kolonat
 kot_show_title	Rreshti i titullit
 kot_hide_title	Fshih titullin
 kot_field_cycle	Zgjidh tjetrën
@@ -1337,12 +1361,12 @@ private_code_ph	Kod me 12 shifra
 stamp_on	Vula: në skedar
 pay_qr_on	QR e pagesës: në skedar
 pay_qr_off	QR e pagesës: asnjë
+printers_screen_tip	Kërko liston printerat që mund të përdorë kjo pajisje dhe i ruan për këtë dyqan. Printerat e faturës: Formati i faturës dhe KOT → Fatura. Kuzhina: Kuzhina → Stacionet e kuzhinës.
+printers_found_none	Nuk u gjet asnjë printer.
+nav_loading	Po ngarkohet…
+kot_copy_from	Kopjo nga
+kot_copy_from_help	Kopjon madhësinë, trashësinë dhe shtrirjen e çdo rreshti nga ai lloj në këtë. Ky lloj mban banerin, parashtesën e artikullit dhe vijëzimin e vet. Ruani formatin KOT për ta mbajtur.
 items_tmpl_heading	Shabllone artikujsh
 items_tmpl_help	Pjata, kategori dhe foto për menunë tuaj. Cilësimet e dyqanit dhe stafi mbeten siç janë.
 public_tmpl_help	Menu fillestare që mund t'i shkarkojë kushdo. Nevojitet internet një herë.
 private_tmpl_help	Menu klientësh të kyçura me një kod 12-shifror nga kontakti juaj i Khaynjo.
-printers_screen_tip	Kërko liston printerat që mund të përdorë kjo pajisje dhe i ruan për këtë dyqan. Printerat e faturës: Formati i faturës dhe KOT → Fatura. Kuzhina: Kuzhina → Stacionet e kuzhinës.
-printers_found_none	Nuk u gjet asnjë printer.
-kot_copy_from	Kopjo nga
-kot_copy_from_help	Kopjon madhësinë, trashësinë dhe shtrirjen e çdo rreshti nga ai lloj në këtë. Ky lloj mban banerin, parashtesën e artikullit dhe vijëzimin e vet. Ruani formatin KOT për ta mbajtur.
-nav_loading	Po ngarkohet…

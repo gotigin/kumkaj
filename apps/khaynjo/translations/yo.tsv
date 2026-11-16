@@ -92,10 +92,6 @@ bill_item_layout	Ifilelẹ ohun akojọ aṣayan
 bill_item_layout_columns	Awọn ọwọn
 bill_item_layout_stacked	Tolera
 bill_item_header	Awọn akọle ọwọn
-bill_item_hdr_item	Akọsori ohun akojọ aṣayan
-bill_item_hdr_qty	Qty akọsori
-bill_item_hdr_price	Akọsori idiyele
-bill_item_hdr_amount	Akọsori iye
 bill_item_name	Orukọ awopọ
 bill_item_qty	Iye
 bill_item_price	Iye owo
@@ -103,6 +99,20 @@ bill_item_amount	Iye
 bill_item_note	Akọsilẹ satelaiti
 bill_item_col_sep	Awọn ofin ọwọn
 slip_columns	Àwọn ọ̀wọ̀n
+slip_col_header	Akọle
+bill_line_logo	Àmì
+bill_logo_picture	Àwòrán
+bill_logo_choose	Yan àwòrán
+bill_logo_remove	Yọ àwòrán kúrò
+bill_logo_none	Kò sí àwòrán
+bill_logo_unreadable	Kì í ṣe àwòrán tí áàpù yìí lè kà
+bill_logo_width	Ìbú (px)
+bill_logo_height	Gíga (px)
+bill_logo_tones	Àwọ̀ eérú
+bill_logo_solid	Líle
+bill_logo_shaded	Ẹlẹ́ji
+bill_logo_help	Ìbú àti gíga ní px. Òfo ń tẹ̀lé àwòrán: ọ̀kan òfo ń pa ìrísí rẹ̀ mọ́, méjèèjì òfo ń lo ìwọ̀n tirẹ̀; tí a bá ṣètò méjèèjì, ó ń wọ inú rẹ̀, a kì í fà á gùn. Kò sí àwòrán: àmì tí a fihàn ń pa gíga rẹ̀ mọ́ bí àyè òfo; Fipamọ́ ń yọ ọ́ kúrò.
+bill_logo_tones_help	Líle: àmì kọ̀ọ̀kan dúdú tàbí funfun, fún àmì tó mọ́. Ẹlẹ́ji: àwọ̀ eérú di àpẹẹrẹ àmì kéékèèké, fún fọ́tò àti ìji rírọ̀.
 slip_col_width	Fífẹ̀ (mm)
 slip_col_start	Àyè ìbẹ̀rẹ̀ (px)
 slip_col_end	Àyè ìparí (px)
@@ -167,6 +177,21 @@ alerts_help	Bawo ni awọn ifiranṣẹ ipo ṣe pẹ to loju iboju fun ọ (iw�
 snack_secs_ph	Awọn aaya (3–60, aiyipada 10)
 snack_secs_save	Fi akoko gbigbọn pamọ
 snack_secs_saved	Akoko itaniji ti fipamọ - {n} iṣẹju-aaya
+settings_sec_whatsapp	WhatsApp
+whatsapp_cloud_help	Use your own Meta WhatsApp Cloud API. Create a System User token with whatsapp_business_messaging (temporary dashboard tokens expire). Credentials stay on this Server only — never on extra tills. Accepted means Meta took the request, not that the guest received it.
+whatsapp_phone_id_ph	Phone Number ID
+whatsapp_token_ph	Access Token (leave blank to keep)
+whatsapp_template_ph	Bill template name (optional)
+whatsapp_template_lang_ph	Template language (e.g. en)
+whatsapp_enable	Enable
+whatsapp_disable	Off
+whatsapp_save	Save WhatsApp
+whatsapp_test	Test connection
+whatsapp_disconnect	Disconnect
+whatsapp_send_bill	Send via WhatsApp
+whatsapp_consent	WhatsApp OK
+whatsapp_consent_help	Guest agreed to receive WhatsApp messages. A phone number alone is not consent.
+whatsapp_server_only	Configure WhatsApp on the shop Server device
 settings_sec_backup	Afẹyinti & mu pada
 settings_sec_diag	Awọn iwadii aisan
 settings_sec_privacy	Àṣírí
@@ -729,6 +754,13 @@ station_vps_dd	Awọn atẹwe fun ibudo yii
 station_vps_dd_n	{n} awọn atẹwe · tẹ ni kia kia lati yipada
 bill_printers_dd	Awọn atẹwe fun owo
 bill_printers_dd_n	{n} awọn ẹrọ atẹwe fun owo naa · tẹ ni kia kia lati yipada
+paper_heading	Ìwé
+paper_size	{w} × {h} mm
+paper_roll	ìyípo {w} mm
+paper_not_set	a kò tíì mọ ìwé
+paper_length_mm	Gígùn (mm)
+printer_paper_help	Ìwé atẹwe yìí ní mm. Gígùn òfo jẹ́ ìyípo: rísíìtì kọ̀ọ̀kan gùn tó àkóónú rẹ̀. Wa awọn atẹwe ń kún ìwé òfo láti inú awakọ̀ atẹwe (ìyípo 80 mm nígbà tí kò lè sọ) kò sì ní yí èyí tí a ti ṣètò padà láéláé.
+preview_help	Rísíìtì yìí lórí ìwé atẹwe tí a yàn nísàlẹ̀, bí ó ṣe ń tẹ̀ níbẹ̀: ìwọ̀n gidi láti igun òkè òsì tí atẹwe dé (eérú: etí tí kò dé), rísíìtì gígùn lórí ojú-ìwé púpọ̀ sí i, gbogbo ohun tó kọjá etí ìwé ni a gé. Yíyan atẹwe kan ń yí àwòtẹ́lẹ̀ nìkan padà; a ń ṣètò ìwé atẹwe kọ̀ọ̀kan lábẹ́ Awọn ẹrọ atẹwe.
 job_layout	Ìfilélẹ
 job_delivery	Bawo ni a ṣe firanṣẹ iṣẹ naa
 job_delivery_help	Iwe aṣẹ OS, awọn baiti aise, tabi ESC/POS. Iwe-owo ati tikẹti ibi idana ounjẹ kọọkan tọju tirẹ. Eyikeyi iṣẹ le lọ si eyikeyi itẹwe Wa ti fipamọ.
@@ -1105,9 +1137,6 @@ remove_these_tables	Yọ awọn tabili ounjẹ wọnyi kuro
 table_remove_ph	Yọ: T1-T24, tabi ọkan ile ijeun orukọ
 find_server	Wa olupin ile itaja naa
 bill_format	Bill kika
-bill_header_ph	Adirẹsi | foonu
-fssai_ph	FSSAI iwe-ašẹ No. (India)
-bill_footer_ph	Ẹlẹsẹ (fun apẹẹrẹ, o ṣeun, ṣabẹwo lẹẹkansi)
 reset_bill_format	Tunto si aiyipada
 bill_format_reset	Atunto kika Bill si aiyipada
 reset_kot_format	Tunto si aiyipada
@@ -1146,7 +1175,6 @@ kot_kind_modified	Títúnṣe
 kot_kind_cancelled	fagilee
 kot_style_heading	Iwọn iru aaye & iwuwo
 kot_style_title	Akọle
-kot_style_item_qty	Akojọ aṣyn ohun kan · Qty
 kot_style_field_pick	Yan aaye
 kot_weight_regular	Deede
 kot_weight_bold	Igboya
@@ -1158,8 +1186,8 @@ content_width_bill	Iwọn akoonu iwe-owo (mm)
 content_width_kot	KOT Iwọn akoonu (mm)
 content_width_ph	Tabi tẹ iwọn akoonu kan, 40-210 mm
 content_width_help	Bawo ni isokuso yii ṣe gbooro to. Bill ati KOTkọọkan tọju iwọn tiwọn.
-content_width_bill_help	Bawo ni jakejado owo alejo tẹ jade. Aiyipada 210 mm (oju-iwe). 58 mm isokuso dín, 80 mm jakejado isokuso, 112 mm 4-inch, 210 mm A4-jakejado. Tẹ eyikeyi iye lati 40 si 210. Awọn tiketi idana ni iwọn tiwọn lori taabu KOT.
-content_width_kot_help	Bawo ni awọn titẹ tikẹti ibi idana ṣe gbooro. Aiyipada 80 mm. 58 mm isokuso dín, 80 mm jakejado isokuso, 112 mm 4-inch, 210 mm iwe. Tẹ iye eyikeyi lati 40 si 210. Awọn owo alejo ni iwọn tiwọn lori taabu Bill.
+content_width_bill_help	Bí owó-ìsanwó àlejò ṣe fẹ̀ tó nígbà tí a bá tẹ̀ ẹ́, ní mm (40–210). Ó ń tẹ̀ ní ìwọ̀n gidi yìí lórí ìwé èyíkéyìí; lórí ìwé tó dín ju èyí lọ, a gé apá tó kọjá etí ìtẹ̀wé (wo Ìwé). Àwọn tíkẹ́ẹ̀tì ilé-ìdáná ní fífẹ̀ tiwọn ní taabu KOT.
+content_width_kot_help	Bí tíkẹ́ẹ̀tì ilé-ìdáná ṣe fẹ̀ tó nígbà tí a bá tẹ̀ ẹ́, ní mm (40–210). Ó ń tẹ̀ ní ìwọ̀n gidi yìí lórí ìwé èyíkéyìí; lórí ìwé tó dín ju èyí lọ, a gé apá tó kọjá etí ìtẹ̀wé (wo Ìwé). Àwọn owó-ìsanwó àlejò ní fífẹ̀ tiwọn ní taabu Owó-ìsanwó.
 vp_paper_width	Ìbú àkóónú (mm)
 vp_paper_width_ph	Tabi tẹ iwọn akoonu kan, 40-210 mm
 vp_paper_width_help	Iwọn akoonu ti ṣeto labẹ ọna kika Bill & KOT - lọtọ fun owo naa (aiyipada 210 mm) ati tikẹti ibi idana (aiyipada 80 mm).
@@ -1213,8 +1241,6 @@ schemes_help	BOGO, ida ogorun, ati awọn akojọpọ ti o wa titi. Combos faagu
 scheme_bogo_ph	Buy 2 Thali get 1 Chaas
 add_scheme	Ṣe afikun BOGO
 schedule_ph	Awọn wakati / wakati ayọ — Mon-Jimọọ 07:00-11:00 tabi HappyHour 17:00-19:00=150
-upi_vpa_ph	UPI ID (VPA)
-upi_payee_ph	UPI Orukọ payee (aṣayan)
 upi_qr	UPI QR
 show_upi_qr	Ṣe afihan UPI QR
 close_upi_qr	Sunmọ
@@ -1295,8 +1321,6 @@ printer_mode_first	Akọkọ ti o ṣiṣẹ
 printer_mode_all	Tẹjade lori gbogbo
 kot_show_area	Agbegbe
 kot_hide_area	Tọju agbegbe
-kot_show_item_hdr	Akojọ aṣyn ohun kan · Qty
-kot_hide_item_hdr	Tọju awọn ọwọn
 kot_show_title	Laini akọle
 kot_hide_title	Tọju akọle
 kot_field_cycle	Yan atẹle
@@ -1337,12 +1361,12 @@ private_code_ph	Kóòdù oní-nọ́mbà 12
 stamp_on	Ontẹ: lori faili
 pay_qr_on	Isanwo QR: lori faili
 pay_qr_off	Isanwo QR: ko si
+printers_screen_tip	Wá máa ń fi àwọn ẹ̀rọ ìtẹ̀wé tí ẹ̀rọ yìí lè lò hàn, ó sì ń fi wọ́n pamọ́ fún ṣọ́ọ̀bù yìí. Ẹ̀rọ ìtẹ̀wé owó: Ìrísí owó àti KOT → Owó. Ilé ìdáná: Ilé ìdáná → Àwọn ibùdó ilé ìdáná.
+printers_found_none	A kò rí ẹ̀rọ ìtẹ̀wé kankan.
+nav_loading	Ń gbé e wọlé…
+kot_copy_from	Daakọ lati
+kot_copy_from_help	O n daakọ iwọn, ìwúwo ati títò ìlà kọọkan lati iru yẹn sí èyí. Iru yìí ń pa àsíá rẹ̀, ìbẹ̀rẹ̀ ohun àti ìlà ìparẹ́ rẹ̀ mọ́. Fi ọna KOT pamọ́ láti pa á mọ́.
 items_tmpl_heading	Àwọn àdàkọ ohun kan
 items_tmpl_help	Oúnjẹ, ẹ̀ka àti àwòrán fún mẹ́nù rẹ. Ètò ṣọ́ọ̀bù àti òṣìṣẹ́ máa wà bí wọ́n ṣe wà.
 public_tmpl_help	Mẹ́nù ìbẹ̀rẹ̀ tí ẹnikẹ́ni lè gbà sílẹ̀. Ó nílò íńtánẹ́ẹ̀tì lẹ́ẹ̀kan.
 private_tmpl_help	Mẹ́nù oníbàárà tí a tì pa pẹ̀lú kóòdù oní-nọ́ńbà 12 láti ọ̀dọ̀ alábàáṣepọ̀ Khaynjo rẹ.
-printers_screen_tip	Wá máa ń fi àwọn ẹ̀rọ ìtẹ̀wé tí ẹ̀rọ yìí lè lò hàn, ó sì ń fi wọ́n pamọ́ fún ṣọ́ọ̀bù yìí. Ẹ̀rọ ìtẹ̀wé owó: Ìrísí owó àti KOT → Owó. Ilé ìdáná: Ilé ìdáná → Àwọn ibùdó ilé ìdáná.
-printers_found_none	A kò rí ẹ̀rọ ìtẹ̀wé kankan.
-kot_copy_from	Daakọ lati
-kot_copy_from_help	O n daakọ iwọn, ìwúwo ati títò ìlà kọọkan lati iru yẹn sí èyí. Iru yìí ń pa àsíá rẹ̀, ìbẹ̀rẹ̀ ohun àti ìlà ìparẹ́ rẹ̀ mọ́. Fi ọna KOT pamọ́ láti pa á mọ́.
-nav_loading	Ń gbé e wọlé…

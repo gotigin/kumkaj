@@ -60,10 +60,6 @@ bill_item_layout	Kauba paigutus
 bill_item_layout_columns	Veerud
 bill_item_layout_stacked	Virnastatud
 bill_item_header	Veergude päised
-bill_item_hdr_item	Kauba päis
-bill_item_hdr_qty	Koguse päis
-bill_item_hdr_price	Hinna päis
-bill_item_hdr_amount	Summa päis
 bill_item_name	Kauba nimi
 bill_item_qty	Kogus
 bill_item_price	Hind
@@ -71,6 +67,13 @@ bill_item_amount	Summa
 bill_item_note	Kauba märkus
 bill_item_col_sep	Veeru reeglid
 slip_col_width	Laius (mm)
+paper_heading	Paber
+paper_size	{w} × {h} mm
+paper_roll	{w} mm rull
+paper_not_set	paber pole veel teada
+paper_length_mm	Pikkus (mm)
+printer_paper_help	Selle printeri paber millimeetrites. Tühi Pikkus on rull: iga tšekk on sama pikk kui selle sisu. „Otsige printereid“ täidab tühja paberi printeri draiveri järgi (80 mm rull, kui see ei oska öelda) ega muuda kunagi juba määratud paberit.
+preview_help	See tšekk allpool valitud printeri paberil, nagu see seal prinditakse: tegelikus suuruses ülemisest vasakust nurgast, kuhu printer ulatub (hall: servad, kuhu ei ulatu), pikk tšekk mitmel lehel, kõik üle paberi serva lõigatakse ära. Printeri valimine muudab ainult eelvaadet; iga printeri paber määratakse jaotises Printerid.
 slip_col_start	Algusvahe (px)
 slip_col_end	Lõpuvahe (px)
 slip_columns_help	Iga veeru laius sisaldab selle algus- ja lõpuvahet. Tekst murdub oma veeru sees; mis jääb sisu laiusest välja, lõigatakse ära – paberil ja eelvaates.
@@ -838,3 +841,4 @@ nav_loading	Laadimine…
 printer_mode_first	Esiteks see töötab
 printer_mode_all	Trüki kõigile
 slip_columns	Veerud
+slip_col_header	Päis

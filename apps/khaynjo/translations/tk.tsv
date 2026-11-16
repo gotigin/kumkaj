@@ -92,10 +92,6 @@ bill_item_layout	Menýu menýusynyň tertibi
 bill_item_layout_columns	Sütünler
 bill_item_layout_stacked	Toplanan
 bill_item_header	Sütün sözbaşylary
-bill_item_hdr_item	Menýu menýu elementiniň sözbaşy
-bill_item_hdr_qty	Sözbaşy
-bill_item_hdr_price	Bahanyň sözbaşy
-bill_item_hdr_amount	Mukdar sözbaşy
 bill_item_name	Nahar ady
 bill_item_qty	Mukdar
 bill_item_price	Bahasy
@@ -103,6 +99,20 @@ bill_item_amount	Mukdary
 bill_item_note	Nahar belligi
 bill_item_col_sep	Sütüniň düzgünleri
 slip_columns	Sütünler
+slip_col_header	Sözbaşy
+bill_line_logo	Logotip
+bill_logo_picture	Surat
+bill_logo_choose	Surat saýla
+bill_logo_remove	Suraty aýyr
+bill_logo_none	Surat ýok
+bill_logo_unreadable	Bu programmanyň okap bilýän suraty däl
+bill_logo_width	Ini (px)
+bill_logo_height	Beýikligi (px)
+bill_logo_tones	Çal reňkler
+bill_logo_solid	Gaty
+bill_logo_shaded	Kölegeli
+bill_logo_help	Ini we beýikligi px-de. Boş surata eýerýär: biri boş bolsa şekili saklanýar, ikisi hem boş bolsa öz ölçegi; ikisi hem berilse içine sygdyrylýar, hiç haçan çekilmeýär. Surat ýok: görkezilen logotip beýikligini boş ýer hökmünde saklaýar; Gizle ony aýyrýar.
+bill_logo_tones_help	Gaty: her nokat gara ýa-da ak, anyk logotipler üçin. Kölegeli: çal reňkler inçe nokat nagşyna öwrülýär, suratlar we ýumşak kölege üçin.
 slip_col_width	Ini (mm)
 slip_col_start	Başlangyç aralyk (px)
 slip_col_end	Soňky aralyk (px)
@@ -167,6 +177,21 @@ alerts_help	Status habarlary siziň üçin ekranda näçe wagt galar (bu giriş)
 snack_secs_ph	Sekuntlar (3–60, deslapky 10)
 snack_secs_save	Duýduryş wagtyny tygşytlaň
 snack_secs_saved	Duýduryş wagty tygşytlandy - {n} sekunt
+settings_sec_whatsapp	WhatsApp
+whatsapp_cloud_help	Use your own Meta WhatsApp Cloud API. Create a System User token with whatsapp_business_messaging (temporary dashboard tokens expire). Credentials stay on this Server only — never on extra tills. Accepted means Meta took the request, not that the guest received it.
+whatsapp_phone_id_ph	Phone Number ID
+whatsapp_token_ph	Access Token (leave blank to keep)
+whatsapp_template_ph	Bill template name (optional)
+whatsapp_template_lang_ph	Template language (e.g. en)
+whatsapp_enable	Enable
+whatsapp_disable	Off
+whatsapp_save	Save WhatsApp
+whatsapp_test	Test connection
+whatsapp_disconnect	Disconnect
+whatsapp_send_bill	Send via WhatsApp
+whatsapp_consent	WhatsApp OK
+whatsapp_consent_help	Guest agreed to receive WhatsApp messages. A phone number alone is not consent.
+whatsapp_server_only	Configure WhatsApp on the shop Server device
 settings_sec_backup	Uptiýaçlyk we dikeltmek
 settings_sec_diag	Diagnostika
 settings_sec_privacy	Gizlinlik
@@ -729,6 +754,13 @@ station_vps_dd	Bu stansiýa üçin printerler
 station_vps_dd_n	{n} printerler · üýtgetmek üçin basyň
 bill_printers_dd	Hasap üçin printerler
 bill_printers_dd_n	Hasap üçin {n} printerler · üýtgetmek üçin basyň
+paper_heading	Kagyz
+paper_size	{w} × {h} mm
+paper_roll	{w} mm rulon
+paper_not_set	kagyz entek belli däl
+paper_length_mm	Uzynlyk (mm)
+printer_paper_help	Bu printeriň kagyzy mm-de. Boş Uzynlyk rulondyr: her çek mazmuny ýaly uzyn bolýar. Printerleri tapyň boş kagyzy printeriň draýwerinden doldurýar (aýdyp bilmese, 80 mm rulon) we eýýäm bellenen kagyzy hiç haçan üýtgetmeýär.
+preview_help	Aşakda saýlanan printeriň kagyzyndaky bu çek, ol ýerde çap edilişi ýaly: printeriň ýetýän ýokarky çep burçundan hakyky ölçegde (çal: ýetmeýän gyralary), uzyn çek has köp sahypada, kagyzyň gyrasyndan aşýan ähli zat kesilýär. Printer saýlamak diňe deslapky görnüşi üýtgedýär; her printeriň kagyzy Çap edijiler bölüminde bellenýär.
 job_layout	Salgy
 job_delivery	Iş nädip iberilýär
 job_delivery_help	OS resminamasy, çig baýt ýa-da ESC/POS. Hasap we aşhana bileti hersi özini saklaýar. Islendik iş, ýatda saklan islendik printere gidip biler.
@@ -1105,9 +1137,6 @@ remove_these_tables	Bu nahar stollaryny aýyryň
 table_remove_ph	Aýyrmak: T1-T24 ýa-da bir nahar stolunyň ady
 find_server	Dükanyň serwerini tapyň
 bill_format	Hasap formaty
-bill_header_ph	Salgy | telefon
-fssai_ph	FSSAI ygtyýarnamasy (Hindistan)
-bill_footer_ph	Aşakdaky ýazgy (meselem, sag boluň, gaýtadan baryp görüň)
 reset_bill_format	Dymmaklyk
 bill_format_reset	Hasap formaty deslapky görnüşde
 reset_kot_format	Dymmaklyk
@@ -1146,7 +1175,6 @@ kot_kind_modified	Üýtgedildi
 kot_kind_cancelled	Atyryldy
 kot_style_heading	Meýdanyň görnüşi we agramy
 kot_style_title	Ady
-kot_style_item_qty	Menýu menýusy elementi
 kot_style_field_pick	Meýdany saýlaň
 kot_weight_regular	Yzygiderli
 kot_weight_bold	Batyr
@@ -1158,8 +1186,8 @@ content_width_bill	Hasap mazmunynyň ini (mm)
 content_width_kot	KOT mazmunyň ini (mm)
 content_width_ph	Ora-da mazmunyň giňligini 40–210 mm ýazyň
 content_width_help	Bu süýşmek näderejede giň. Bill we KOT hersi öz giňligini saklaýar.
-content_width_bill_help	Myhman fakturasy näderejede giň. Bellenen 210 mm (sahypa). 58 mm dar süýşmek, 80 mm giňlikdäki süýşmek, 112 mm 4 dýuým, ini 210 mm. 40-dan 210-a çenli islendik bahany ýazyň. Aşhana biletleriniň KOT goýmasynda öz giňligi bar.
-content_width_kot_help	Aşhana biletiniň çap edilişi nähili giň. Bellenen 80 mm. 58 mm dar süýşmek, 80 mm giňlikdäki süýşmek, 112 mm 4 dýuým, 210 mm sahypa. 40-dan 210-a çenli islendik bahany ýazyň.
+content_width_bill_help	Myhmanyň hasaby näçe giňlikde çap edilýär, mm-de (40–210). Ol islendik kagyzda şu hakyky ölçegde çap edilýär; mundan dar kagyzda çap gyrasyndan aňyrky bölek kesilýär (Kagyz serediň). Aşhana biletleriniň öz giňligi KOT goýmasynda.
+content_width_kot_help	Aşhana bileti näçe giňlikde çap edilýär, mm-de (40–210). Ol islendik kagyzda şu hakyky ölçegde çap edilýär; mundan dar kagyzda çap gyrasyndan aňyrky bölek kesilýär (Kagyz serediň). Myhman hasaplarynyň öz giňligi Hasap goýmasynda.
 vp_paper_width	Mazmunyň ini (mm)
 vp_paper_width_ph	Ora-da mazmunyň giňligini 40–210 mm ýazyň
 vp_paper_width_help	Mazmunyň giňligi Bill & KOT formatda kesgitlenýär - töleg üçin aýratyn (210 mm) we aşhana bileti (deslapky 80 mm).
@@ -1213,8 +1241,6 @@ schemes_help	BOGO, göterim arzanladyş we bellenen toplumlar. Toplumlar KOT ibe
 scheme_bogo_ph	Buy 2 Thali get 1 Chaas
 add_scheme	BOGO goş
 schedule_ph	Sagatlar / bagtly sagat - Duş-Juma 07: 00-11: 00 ýa-da HappyHour 17: 00-19: 00 = 150
-upi_vpa_ph	UPI ID (VPA)
-upi_payee_ph	UPI töleýjiniň ady (islege görä)
 upi_qr	UPI QR
 show_upi_qr	UPI QR görkeziň
 close_upi_qr	.Akyn
@@ -1295,8 +1321,6 @@ printer_mode_first	Ilki bilen işleýär
 printer_mode_all	Hemmesini çap et
 kot_show_area	Meýdany
 kot_hide_area	Meýdany gizläň
-kot_show_item_hdr	Menýu menýusy elementi
-kot_hide_item_hdr	Sütünleri gizläň
 kot_show_title	Adyň setiri
 kot_hide_title	Ady gizläň
 kot_field_cycle	Indiki saýlaň
@@ -1337,12 +1361,12 @@ private_code_ph	12 sanly kod
 stamp_on	Marka: faýlda
 pay_qr_on	Töleg QR: faýlda
 pay_qr_off	Töleg QR: ýok
+printers_screen_tip	Gözle bu enjamyň ulanyp biljek printerlerini görkezýär we olary bu dükan üçin ýatda saklaýar. Hasap printerleri: Hasap we KOT formaty → Hasap. Aşhana: Aşhana → Aşhana stansiýalary.
+printers_found_none	Printer tapylmady.
+nav_loading	Ýüklenýär…
+kot_copy_from	Şundan göçür
+kot_copy_from_help	Şol görnüşiň her setiriniň ölçegini, galyňlygyny we deňleşdirilişini şu görnüşe göçürýär. Bu görnüş öz bannerini, haryt prefiksini we üstüni çyzmagyny saklaýar. Saklamak üçin KOT formatyny ýatda saklaň.
 items_tmpl_heading	Haryt şablonlary
 items_tmpl_help	Menýuňyz üçin naharlar, kategoriýalar we suratlar. Dükan sazlamalary we işgärler bolşy ýaly galýar.
 public_tmpl_help	Islendik adamyň ýükläp bilýän başlangyç menýulary. Internet bir gezek gerek.
 private_tmpl_help	Khaynjo aragatnaşygyňyzdan gelen 12 sanly kod bilen goralýan müşderi menýulary.
-printers_screen_tip	Gözle bu enjamyň ulanyp biljek printerlerini görkezýär we olary bu dükan üçin ýatda saklaýar. Hasap printerleri: Hasap we KOT formaty → Hasap. Aşhana: Aşhana → Aşhana stansiýalary.
-printers_found_none	Printer tapylmady.
-kot_copy_from	Şundan göçür
-kot_copy_from_help	Şol görnüşiň her setiriniň ölçegini, galyňlygyny we deňleşdirilişini şu görnüşe göçürýär. Bu görnüş öz bannerini, haryt prefiksini we üstüni çyzmagyny saklaýar. Saklamak üçin KOT formatyny ýatda saklaň.
-nav_loading	Ýüklenýär…

@@ -72,10 +72,6 @@ bill_item_layout	Miz an paj atik
 bill_item_layout_columns	Kolòn
 bill_item_layout_stacked	An pile
 bill_item_header	Tèt kolòn
-bill_item_hdr_item	Tèt atik
-bill_item_hdr_qty	Tèt kantite
-bill_item_hdr_price	Tèt pri
-bill_item_hdr_amount	Tèt montan
 bill_item_name	Non medikaman
 bill_item_qty	Kant.
 bill_item_price	Pri
@@ -83,6 +79,13 @@ bill_item_amount	Montan
 bill_item_note	Rx / nòt vann
 bill_item_col_sep	Liy kolòn
 slip_col_width	Lajè (mm)
+paper_heading	Papye
+paper_size	{w} × {h} mm
+paper_roll	woulo {w} mm
+paper_not_set	papye a poko konnen
+paper_length_mm	Longè (mm)
+printer_paper_help	Papye enprimant sa a an mm. Yon Longè vid se yon woulo: chak resi gen longè sa li genyen ladan l. Chèche enprimant ranpli papye vid la ak sa chofè enprimant lan di (yon woulo 80 mm lè li pa ka di) epi li pa janm chanje yon papye ki deja mete.
+preview_help	Resi sa a sou papye enprimant ou chwazi anba a, jan li enprime la: gwosè reyèl depi kwen anwo agoch enprimant lan ka rive (gri: bò li pa ka rive), yon resi long sou plis fèy, tout sa ki depase bò papye a koupe. Chwazi yon enprimant chanje sèlman apèsi a; papye chak enprimant mete nan Enprimant.
 slip_col_start	Espas kòmansman (px)
 slip_col_end	Espas fen (px)
 slip_columns_help	Lajè chak kolòn gen ladan l espas kòmansman ak espas fen li. Tèks la vlope anndan kolòn li; sa ki depase lajè kontni an koupe, sou papye ak nan apèsi a.
@@ -850,3 +853,4 @@ nav_loading	Chajman…
 printer_mode_first	Premye ki mache
 printer_mode_all	Enprime sou tout
 slip_columns	Kolòn
+slip_col_header	Tèt

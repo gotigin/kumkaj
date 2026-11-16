@@ -146,7 +146,7 @@ mod ux_rules_tests {
     /// one conversions row per unit they start from.
     #[test]
     fn units_list_by_family_not_one_paragraph() {
-        let home = std::env::temp_dir().join(format!("khaynjo-units-{}", new_id()));
+        let home = kumkaj_khaynjo::test_dirs::run_root().join(format!("khaynjo-units-{}", new_id()));
         std::fs::create_dir_all(&home).unwrap();
         let store = Store::open_path(&home.join("books.sqlite3")).unwrap();
         store.add_unit("bag", "Bag").unwrap();
@@ -326,7 +326,7 @@ mod ux_rules_tests {
     /// every row keeps its toggle target (keys line up index for index).
     #[test]
     fn sibling_pickers_show_names_and_keep_their_targets() {
-        let path = std::env::temp_dir().join(format!("khaynjo-pickers-{}.sqlite3", new_id()));
+        let path = kumkaj_khaynjo::test_dirs::run_root().join(format!("khaynjo-pickers-{}.sqlite3", new_id()));
         let store = Store::open_path(&path).unwrap();
         store.add_station("Tandoor").unwrap();
         let rows = sibling_pickers_rows(&store, |k| locale::t("en", k));
@@ -374,7 +374,7 @@ mod ux_rules_tests {
         let ui = include_str!("../ui_script.rs");
         for decl in [
             "printers_delivery_list := mod.widgets.PrinterDeliveryList{visible: false}",
-            "printers_test_dd := StackSecondaryBtn{text: \"Printers for a test page\" flow: Down visible: false}",
+            "printers_test_dd := ComboFace{text: \"Printers for a test page\" visible: false}",
             "printers_pool_label := mod.widgets.ReportText{visible: false}",
         ] {
             assert!(ui.contains(decl), "missing: {decl}");

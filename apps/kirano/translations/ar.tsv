@@ -60,10 +60,6 @@ bill_item_layout	تخطيط الأصناف
 bill_item_layout_columns	أعمدة
 bill_item_layout_stacked	متراكب
 bill_item_header	عناوين الأعمدة
-bill_item_hdr_item	عنوان الصنف
-bill_item_hdr_qty	عنوان الكمية
-bill_item_hdr_price	عنوان السعر
-bill_item_hdr_amount	عنوان المبلغ
 bill_item_name	اسم الصنف
 bill_item_qty	كمية
 bill_item_price	السعر
@@ -71,6 +67,13 @@ bill_item_amount	المبلغ
 bill_item_note	مذكرة البند
 bill_item_col_sep	خطوط الأعمدة
 slip_col_width	العرض (mm)
+paper_heading	الورق
+paper_size	{w} × {h} mm
+paper_roll	لفة {w} مم
+paper_not_set	الورق غير معروف بعد
+paper_length_mm	الطول (mm)
+printer_paper_help	ورق هذه الطابعة بالمليمتر. الطول الفارغ يعني لفة: كل إيصال بطول محتواه. «ابحث عن الطابعات» يملأ الورق الفارغ من برنامج تشغيل الطابعة (لفة 80 مم إن لم يستطع التحديد) ولا يغيّر أبدًا ورقًا محددًا من قبل.
+preview_help	هذا الإيصال على ورق الطابعة المختارة أدناه كما يُطبع عليها: بالحجم الحقيقي من أعلى اليسار الذي تبلغه الطابعة (الرمادي: حواف لا تبلغها)، والإيصال الطويل على أوراق أكثر، وكل ما يتجاوز حافة الورق يُقص. اختيار طابعة يغيّر المعاينة فقط؛ ورق كل طابعة يُضبط في «الطابعات».
 slip_col_start	مسافة البداية (px)
 slip_col_end	مسافة النهاية (px)
 slip_columns_help	يشمل عرض كل عمود مسافتي البداية والنهاية. يلتف النص داخل عموده، وما يتجاوز عرض المحتوى يُقص على الورق وفي المعاينة.
@@ -838,3 +841,4 @@ nav_loading	جارٍ التحميل…
 printer_mode_first	الأولى التي تعمل
 printer_mode_all	الطباعة على الكل
 slip_columns	الأعمدة
+slip_col_header	العنوان

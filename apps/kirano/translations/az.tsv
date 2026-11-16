@@ -60,10 +60,6 @@ bill_item_layout	Məhsul düzümü
 bill_item_layout_columns	Sütunlar
 bill_item_layout_stacked	Üst-üstə
 bill_item_header	Sütun başlıqları
-bill_item_hdr_item	Məhsul başlığı
-bill_item_hdr_qty	Say başlığı
-bill_item_hdr_price	Qiymət başlığı
-bill_item_hdr_amount	Məbləğ başlığı
 bill_item_name	Məhsul adı
 bill_item_qty	Say
 bill_item_price	Qiymət
@@ -71,6 +67,13 @@ bill_item_amount	Məbləğ
 bill_item_note	Maddə qeydi
 bill_item_col_sep	Sütun xətləri
 slip_col_width	En (mm)
+paper_heading	Kağız
+paper_size	{w} × {h} mm
+paper_roll	{w} mm rulon
+paper_not_set	kağız hələ məlum deyil
+paper_length_mm	Uzunluq (mm)
+printer_paper_help	Bu printerin kağızı mm ilə. Boş Uzunluq rulondur: hər çek məzmunu qədər uzun olur. Printerləri tap boş kağızı printerin sürücüsündən doldurur (deyə bilmirsə 80 mm rulon) və artıq təyin olunmuş kağızı heç vaxt dəyişmir.
+preview_help	Bu çek aşağıda seçilmiş printerin kağızında, orada çap olunduğu kimi: printerin çata bildiyi yuxarı sol küncdən real ölçüdə (boz: çata bilmədiyi kənarlar), uzun çek daha çox vərəqdə, kağızın kənarından kənara çıxan hər şey kəsilir. Printer seçmək yalnız önizləməni dəyişir; hər printerin kağızı Printerlər bölməsində təyin olunur.
 slip_col_start	Başlanğıc boşluğu (px)
 slip_col_end	Son boşluq (px)
 slip_columns_help	Hər sütunun eni onun başlanğıc və son boşluğunu da əhatə edir. Mətn öz sütunu daxilində sətirlərə bölünür; məzmun enindən kənarda qalan hissə həm kağızda, həm də önizləmədə kəsilir.
@@ -838,3 +841,4 @@ nav_loading	Yüklənir…
 printer_mode_first	Birinci işləyən
 printer_mode_all	Hamısına çap et
 slip_columns	Sütunlar
+slip_col_header	Başlıq

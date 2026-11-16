@@ -1,4 +1,58 @@
 impl AppState {
+    /// The printer a job's preview is drawn on (`label`: the AWB label, else
+    /// the receipt): the one picked in its dropdown while it is still saved,
+    /// else that job's first printer, else the first saved printer
+    /// (docs/PRINTER.md § Paper and preview). Picking it changes the
+    /// preview only.
+    fn preview_printer(&self, label: bool) -> Option<&print_share::NamedPrinter> {
+        let draft = &self.printer_draft;
+        let picked = if label {
+            &self.label_preview_printer
+        } else {
+            &self.receipt_preview_printer
+        };
+        if let Some(p) = picked.as_deref().and_then(|id| draft.printer_by_id(id)) {
+            return Some(p);
+        }
+        let key = if label {
+            print_share::RouteKey::Label
+        } else {
+            print_share::RouteKey::Receipt
+        };
+        draft
+            .route_for(key)
+            .iter()
+            .find_map(|id| draft.printer_by_id(id))
+            .or_else(|| draft.printers.first())
+    }
+
+    /// What a job's preview draws on: the active printer's paper and how the
+    /// job is sent (its format: OS document or ESC/POS). With no printer
+    /// saved: an 80 mm roll. A printer whose paper is not known yet is asked
+    /// (its driver answers on its own thread; the answer fills it and
+    /// redraws).
+    fn preview_paper(&self, label: bool) -> PreviewPaper {
+        let key = if label {
+            print_share::RouteKey::Label
+        } else {
+            print_share::RouteKey::Receipt
+        };
+        let os_document = self.printer_draft.format_for(key).document;
+        let roll = os_paper::PaperMm {
+            width_mm: print_share::DEFAULT_PAPER_WIDTH_MM,
+            length_mm: 0.0,
+        };
+        let Some(p) = self.preview_printer(label) else {
+            return PreviewPaper { paper: roll, os_document, driver: None };
+        };
+        let driver = if !p.has_driver() || (!os_document && p.paper().is_some()) {
+            None
+        } else {
+            os_paper::papers_for(&p.target).and_then(|r| r.ok())
+        };
+        PreviewPaper { paper: p.paper().unwrap_or(roll), os_document, driver }
+    }
+
     fn boot() -> Self {
         let mut state = Self {
             store: None,
@@ -33,6 +87,9 @@ impl AppState {
             data_base: None,
             printer_draft: print_share::DevicePrinters::default(),
             printer_route_key: "receipt".into(),
+            receipt_preview_printer: None,
+            label_preview_printer: None,
+            printer_paper_open: None,
             owner_setup_complete: false,
             onboarding_complete: false,
             client_paired: false,
@@ -1305,6 +1362,23 @@ impl AppState {
                 print_share::found_printers()
                     .into_iter()
                     .map(|name| SuggestRow::new(name, here.clone()))
+                    .collect()
+            }
+            // Every saved printer as `name · paper`; ✓ = the preview's.
+            SuggestField::JobPreviewPaper => {
+                let label = self.printer_route_key == "label";
+                ask_drivers_for_missing_papers(&self.printer_draft.printers);
+                let active = self.preview_printer(label).map(|p| p.id.clone());
+                preview_paper_rows(&self.printer_draft.printers, active.as_deref(), |k| self.t(k))
+                    .into_iter()
+                    .map(|r| {
+                        let row = SuggestRow::new(r.title, String::new());
+                        if r.selected {
+                            row.with_action("\u{2713}")
+                        } else {
+                            row
+                        }
+                    })
                     .collect()
             }
             SuggestField::RouteAddPrinter => self

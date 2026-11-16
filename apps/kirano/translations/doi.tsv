@@ -60,10 +60,6 @@ bill_item_layout	मेनू मेनू आइटम लेआउट
 bill_item_layout_columns	स्तंभ
 bill_item_layout_stacked	ढेर हो गया
 bill_item_header	कॉलम हेडर
-bill_item_hdr_item	मेनू मेनू आइटम हेडर
-bill_item_hdr_qty	मात्रा हेडर
-bill_item_hdr_price	कीमत हेडर
-bill_item_hdr_amount	रकम हेडर
 bill_item_name	मेनू मेनू आइटम दा नाम
 bill_item_qty	मात्रा
 bill_item_price	कीमत
@@ -71,6 +67,13 @@ bill_item_amount	रकम
 bill_item_note	आइटम नोट
 bill_item_col_sep	स्तंभ नियम
 slip_col_width	चौड़ाई (mm)
+paper_heading	कागज
+paper_size	{w} × {h} mm
+paper_roll	{w} mm रोल
+paper_not_set	कागज अजें पता नेईं
+paper_length_mm	लम्बाई (mm)
+printer_paper_help	इस प्रिंटर दा कागज mm च। खाली लम्बाई दा मतलब रोल: हर पर्ची अपनी सामग्री जिन्नी लम्मी होंदी ऐ। प्रिंटर ढूंढो खाली कागज प्रिंटर दे ड्राइवर थमां भरदा ऐ (नेईं दस्सी सकै तां 80 mm रोल) ते पैह्लें थमां तय कागज कदें नेईं बदलदा।
+preview_help	एह् पर्ची थल्लै चुने दे प्रिंटर दे कागज उप्पर, जियां उत्थें छपदी ऐ: प्रिंटर जित्थें तगर पुज्जदा ऐ उस उप्परले खब्बे कूने थमां असली नाप च (स्लेटी: जित्थें नेईं पुज्जदा), लम्मी पर्ची होर पन्नें उप्पर, कागज दे कंढे थमां अग्गें दा हिस्सा कट्टी जंदा ऐ। प्रिंटर चुनने कन्नै सिर्फ झलक बदलदी ऐ; हर प्रिंटर दा कागज प्रिंटर च तय होंदा ऐ।
 slip_col_start	शुरू दी थाह् (px)
 slip_col_end	अंत दी थाह् (px)
 slip_columns_help	हर स्तंभ दी चौड़ाई च उसदी शुरू ते अंत दी थाह् शामल ऐ। लिखत अपने स्तंभ दे अंदर लपेटोंदी ऐ; सामग्री दी चौड़ाई थमां बाह्र जो ऐ ओह् कागज ते पूर्वावलोकन दोनें च कट्टी जंदा ऐ।
@@ -838,3 +841,4 @@ nav_loading	लोड होआ करदा ऐ…
 printer_mode_first	पैह्ले जेह्ड़ा कम्म करदा ऐ
 printer_mode_all	सब पर छापें
 slip_columns	स्तंभ
+slip_col_header	हेडर

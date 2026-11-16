@@ -72,10 +72,6 @@ bill_item_layout	Diseño de ítems
 bill_item_layout_columns	Columnas
 bill_item_layout_stacked	Apilado
 bill_item_header	Encabezados
-bill_item_hdr_item	Encabezado de ítem
-bill_item_hdr_qty	Encabezado de cant.
-bill_item_hdr_price	Encabezado de precio
-bill_item_hdr_amount	Encabezado de importe
 bill_item_name	Nombre del medicamento
 bill_item_qty	Cant.
 bill_item_price	Precio
@@ -83,6 +79,13 @@ bill_item_amount	Importe
 bill_item_note	Nota de Rx / venta
 bill_item_col_sep	Líneas de columna
 slip_col_width	Ancho (mm)
+paper_heading	Papel
+paper_size	{w} × {h} mm
+paper_roll	rollo de {w} mm
+paper_not_set	papel aún desconocido
+paper_length_mm	Largo (mm)
+printer_paper_help	El papel de esta impresora en mm. Un Largo vacío es un rollo: cada ticket es tan largo como su contenido. Buscar impresoras rellena el papel vacío con el del controlador de la impresora (un rollo de 80 mm si no puede decirlo) y nunca cambia uno ya definido.
+preview_help	Este ticket sobre el papel de la impresora elegida abajo, tal como se imprime allí: a tamaño real desde la esquina superior izquierda que alcanza la impresora (gris: bordes que no alcanza), un ticket largo en más hojas, todo lo que pasa del borde del papel se recorta. Elegir una impresora solo cambia la vista previa; el papel de cada impresora se define en Impresoras.
 slip_col_start	Espacio inicial (px)
 slip_col_end	Espacio final (px)
 slip_columns_help	El ancho de cada columna incluye su espacio inicial y final. El texto se ajusta dentro de su columna; lo que sobrepasa el ancho del contenido se recorta, en papel y en la vista previa.
@@ -850,3 +853,4 @@ nav_loading	Cargando…
 printer_mode_first	La primera que funcione
 printer_mode_all	Imprimir en todas
 slip_columns	Columnas
+slip_col_header	Encabezado

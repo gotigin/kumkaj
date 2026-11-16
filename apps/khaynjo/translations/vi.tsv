@@ -92,10 +92,6 @@ bill_item_layout	Bố cục món
 bill_item_layout_columns	Cột
 bill_item_layout_stacked	Xếp dọc
 bill_item_header	Tiêu đề cột
-bill_item_hdr_item	Tiêu đề món
-bill_item_hdr_qty	Tiêu đề SL
-bill_item_hdr_price	Tiêu đề đơn giá
-bill_item_hdr_amount	Tiêu đề thành tiền
 bill_item_name	Tên món
 bill_item_qty	SL
 bill_item_price	Đơn giá
@@ -103,6 +99,20 @@ bill_item_amount	Thành tiền
 bill_item_note	Ghi chú
 bill_item_col_sep	Kẻ cột
 slip_columns	Cột
+slip_col_header	Tiêu đề
+bill_line_logo	Logo
+bill_logo_picture	Hình
+bill_logo_choose	Chọn hình
+bill_logo_remove	Bỏ hình
+bill_logo_none	Không có hình
+bill_logo_unreadable	Không phải hình mà ứng dụng đọc được
+bill_logo_width	Rộng (px)
+bill_logo_height	Cao (px)
+bill_logo_tones	Sắc xám
+bill_logo_solid	Đặc
+bill_logo_shaded	Bóng
+bill_logo_help	Rộng và cao tính bằng px. Để trống thì theo hình: trống một ô giữ nguyên dáng, trống cả hai dùng cỡ gốc của hình; điền cả hai thì đặt vừa bên trong, không bao giờ kéo giãn. Không có hình: logo đang hiện giữ chiều cao của nó làm khoảng trống; Ẩn sẽ bỏ nó.
+bill_logo_tones_help	Đặc: mỗi chấm đen hoặc trắng, cho logo sắc nét. Bóng: sắc xám thành hoa văn chấm nhỏ, cho ảnh chụp và bóng mềm.
 slip_col_width	Chiều rộng (mm)
 slip_col_start	Khoảng đầu (px)
 slip_col_end	Khoảng cuối (px)
@@ -167,6 +177,21 @@ alerts_help	Thông báo trạng thái hiển thị bao lâu cho bạn (lần đ�
 snack_secs_ph	Giây (3–60, mặc định 10)
 snack_secs_save	Lưu thời gian thông báo
 snack_secs_saved	Đã lưu thời gian thông báo — {n} giây
+settings_sec_whatsapp	WhatsApp
+whatsapp_cloud_help	Use your own Meta WhatsApp Cloud API. Create a System User token with whatsapp_business_messaging (temporary dashboard tokens expire). Credentials stay on this Server only — never on extra tills. Accepted means Meta took the request, not that the guest received it.
+whatsapp_phone_id_ph	Phone Number ID
+whatsapp_token_ph	Access Token (leave blank to keep)
+whatsapp_template_ph	Bill template name (optional)
+whatsapp_template_lang_ph	Template language (e.g. en)
+whatsapp_enable	Enable
+whatsapp_disable	Off
+whatsapp_save	Save WhatsApp
+whatsapp_test	Test connection
+whatsapp_disconnect	Disconnect
+whatsapp_send_bill	Send via WhatsApp
+whatsapp_consent	WhatsApp OK
+whatsapp_consent_help	Guest agreed to receive WhatsApp messages. A phone number alone is not consent.
+whatsapp_server_only	Configure WhatsApp on the shop Server device
 settings_sec_backup	Sao lưu & khôi phục
 settings_sec_diag	Chẩn đoán
 settings_sec_privacy	Quyền riêng tư
@@ -729,6 +754,13 @@ station_vps_dd	Máy in của trạm này
 station_vps_dd_n	{n} máy in · chạm để đổi
 bill_printers_dd	Máy in cho hóa đơn
 bill_printers_dd_n	{n} máy in cho hóa đơn · nhấn để thay đổi
+paper_heading	Giấy
+paper_size	{w} × {h} mm
+paper_roll	cuộn {w} mm
+paper_not_set	chưa biết giấy
+paper_length_mm	Chiều dài (mm)
+printer_paper_help	Giấy của máy in này tính bằng mm. Chiều dài để trống là cuộn: mỗi phiếu dài bằng nội dung của nó. Tìm máy in điền giấy còn trống từ trình điều khiển của máy in (cuộn 80 mm khi không thể cho biết) và không bao giờ đổi giấy đã đặt.
+preview_help	Phiếu này trên giấy của máy in được chọn bên dưới, đúng như khi in ở đó: kích thước thật từ góc trên bên trái mà máy in tới được (xám: các mép không tới được), phiếu dài in trên nhiều tờ hơn, phần vượt mép giấy bị cắt. Chọn máy in chỉ đổi bản xem trước; giấy của mỗi máy in được đặt trong Máy in.
 job_layout	Bố cục
 job_delivery	Cách công việc được gửi đi
 job_delivery_help	Tài liệu hệ điều hành, dữ liệu thô hoặc ESC/POS. Hóa đơn và vé bếp đều giữ riêng của mình. Công việc nào cũng có thể gửi đến bất kỳ máy in nào đã Tìm lưu.
@@ -1105,9 +1137,6 @@ remove_these_tables	Xóa các bàn này
 table_remove_ph	Xóa: T1-T24, hoặc tên một bàn
 find_server	Tìm máy chủ của quán
 bill_format	Mẫu hóa đơn
-bill_header_ph	Địa chỉ | điện thoại
-fssai_ph	Số giấy phép FSSAI (Ấn Độ)
-bill_footer_ph	Chân trang (vd. Cảm ơn, hẹn gặp lại)
 reset_bill_format	Đặt lại mặc định
 bill_format_reset	Đã đặt lại mẫu hóa đơn
 reset_kot_format	Đặt lại mặc định
@@ -1146,7 +1175,6 @@ kot_kind_modified	Đã sửa
 kot_kind_cancelled	Đã hủy
 kot_style_heading	Cỡ và độ đậm trường
 kot_style_title	Tiêu đề
-kot_style_item_qty	Món · SL
 kot_style_field_pick	Chọn trường
 kot_weight_regular	Thường
 kot_weight_bold	Đậm
@@ -1158,8 +1186,8 @@ content_width_bill	Chiều rộng nội dung hóa đơn (mm)
 content_width_kot	Chiều rộng nội dung KOT (mm)
 content_width_ph	Hoặc nhập khổ nội dung, 40–210 mm
 content_width_help	Độ rộng in của vé này. Hóa đơn và KOT đều giữ riêng chiều rộng của chúng.
-content_width_bill_help	Độ rộng in của hóa đơn khách. Mặc định 210 mm (trang). Vé hẹp 58 mm, vé rộng 80 mm, vé 4 inch 112 mm, vé A4 rộng 210 mm. Nhập bất kỳ giá trị nào từ 40 đến 210. Vé nhà bếp có chiều rộng riêng trên tab KOT.
-content_width_kot_help	Độ rộng in của vé nhà bếp. Mặc định 80 mm. Vé hẹp 58 mm, vé rộng 80 mm, vé 4 inch 112 mm, trang 210 mm. Nhập bất kỳ giá trị nào từ 40 đến 210. Hóa đơn khách có chiều rộng riêng trên tab Bill.
+content_width_bill_help	Hóa đơn của khách in rộng bao nhiêu, tính bằng mm (40–210). Hóa đơn in đúng kích thước thật này trên mọi loại giấy; trên giấy hẹp hơn, phần vượt quá mép in bị cắt (xem Giấy). Phiếu bếp có độ rộng riêng ở thẻ KOT.
+content_width_kot_help	Phiếu bếp in rộng bao nhiêu, tính bằng mm (40–210). Phiếu in đúng kích thước thật này trên mọi loại giấy; trên giấy hẹp hơn, phần vượt quá mép in bị cắt (xem Giấy). Hóa đơn của khách có độ rộng riêng ở thẻ Hóa đơn.
 vp_paper_width	Khổ nội dung (mm)
 vp_paper_width_ph	Hoặc nhập khổ nội dung, 40–210 mm
 vp_paper_width_help	Khổ nội dung đặt trong Định dạng hóa đơn & KOT. Áp dụng cho hóa đơn và phiếu bếp.
@@ -1213,8 +1241,6 @@ schemes_help	Mua X tặng Y — khi thanh toán. VD Buy 2 Thali get 1 Chaas
 scheme_bogo_ph	Buy 2 Thali get 1 Chaas
 add_scheme	Thêm BOGO
 schedule_ph	Giờ / happy hour — Mon-Fri 07:00-11:00 hoặc HappyHour 17:00-19:00=150
-upi_vpa_ph	UPI ID (VPA)
-upi_payee_ph	Người nhận UPI (tuỳ chọn)
 upi_qr	UPI QR
 show_upi_qr	Hiện QR UPI
 close_upi_qr	Đóng
@@ -1295,8 +1321,6 @@ printer_mode_first	Máy đầu tiên hoạt động
 printer_mode_all	In trên tất cả
 kot_show_area	Khu vực
 kot_hide_area	Ẩn khu vực
-kot_show_item_hdr	Món · SL
-kot_hide_item_hdr	Ẩn cột
 kot_show_title	Dòng tiêu đề
 kot_hide_title	Ẩn tiêu đề
 kot_field_cycle	Chọn tiếp theo
@@ -1337,12 +1361,12 @@ private_code_ph	Mã 12 chữ số
 stamp_on	Tem: đã lưu
 pay_qr_on	QR thanh toán: đã lưu
 pay_qr_off	QR thanh toán: không
+printers_screen_tip	Tìm sẽ liệt kê các máy in thiết bị này dùng được và lưu chúng cho cửa hàng này. Máy in hóa đơn: Định dạng hóa đơn & KOT → Hóa đơn. Bếp: Bếp → Trạm bếp.
+printers_found_none	Không tìm thấy máy in nào.
+nav_loading	Đang tải…
+kot_copy_from	Sao chép từ
+kot_copy_from_help	Sao chép cỡ chữ, độ đậm và căn lề của mọi dòng từ loại đó sang loại này. Loại này giữ biểu ngữ, tiền tố món và gạch ngang của riêng nó. Lưu định dạng KOT để giữ lại.
 items_tmpl_heading	Mẫu món
 items_tmpl_help	Món ăn, danh mục và ảnh cho thực đơn của bạn. Cài đặt cửa hàng và nhân viên vẫn giữ nguyên.
 public_tmpl_help	Thực đơn khởi đầu mà ai cũng tải được. Cần internet một lần.
 private_tmpl_help	Thực đơn khách hàng được khóa bằng mã 12 chữ số từ người liên hệ Khaynjo của bạn.
-printers_screen_tip	Tìm sẽ liệt kê các máy in thiết bị này dùng được và lưu chúng cho cửa hàng này. Máy in hóa đơn: Định dạng hóa đơn & KOT → Hóa đơn. Bếp: Bếp → Trạm bếp.
-printers_found_none	Không tìm thấy máy in nào.
-kot_copy_from	Sao chép từ
-kot_copy_from_help	Sao chép cỡ chữ, độ đậm và căn lề của mọi dòng từ loại đó sang loại này. Loại này giữ biểu ngữ, tiền tố món và gạch ngang của riêng nó. Lưu định dạng KOT để giữ lại.
-nav_loading	Đang tải…

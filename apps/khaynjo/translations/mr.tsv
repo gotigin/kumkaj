@@ -92,10 +92,6 @@ bill_item_layout	आयटम लेआउट
 bill_item_layout_columns	स्तंभ
 bill_item_layout_stacked	ओळी
 bill_item_header	स्तंभ शीर्षक
-bill_item_hdr_item	आयटम शीर्षक
-bill_item_hdr_qty	संख्या शीर्षक
-bill_item_hdr_price	दर शीर्षक
-bill_item_hdr_amount	रक्कम शीर्षक
 bill_item_name	पदार्थाचे नाव
 bill_item_qty	संख्या
 bill_item_price	दर
@@ -103,6 +99,20 @@ bill_item_amount	रक्कम
 bill_item_note	नोंद
 bill_item_col_sep	स्तंभ रेषा
 slip_columns	स्तंभ
+slip_col_header	शीर्षक
+bill_line_logo	लोगो
+bill_logo_picture	चित्र
+bill_logo_choose	चित्र निवडा
+bill_logo_remove	चित्र काढा
+bill_logo_none	चित्र नाही
+bill_logo_unreadable	हे अ‍ॅप वाचू शकेल असे चित्र नाही
+bill_logo_width	रुंदी (px)
+bill_logo_height	उंची (px)
+bill_logo_tones	करडे
+bill_logo_solid	भरीव
+bill_logo_shaded	छायांकित
+bill_logo_help	रुंदी आणि उंची px मध्ये. रिकामे ठेवल्यास चित्रानुसार: एक रिकामे असल्यास आकार टिकतो, दोन्ही रिकामे असल्यास त्याचा स्वतःचा आकार; दोन्ही दिल्यास आत बसवले जाते, कधीही ताणले जात नाही. चित्र नसल्यास: दाखवलेला लोगो आपली उंची रिकामी जागा म्हणून ठेवतो; लपवा तो काढतो.
+bill_logo_tones_help	भरीव: प्रत्येक ठिपका काळा किंवा पांढरा, स्पष्ट लोगोसाठी. छायांकित: करडे बारीक ठिपक्यांचा नमुना बनतात, फोटो आणि मऊ छायेसाठी.
 slip_col_width	रुंदी (mm)
 slip_col_start	सुरुवातीची जागा (px)
 slip_col_end	शेवटची जागा (px)
@@ -167,6 +177,21 @@ alerts_help	स्थिती संदेश तुमच्यासाठी
 snack_secs_ph	सेकंद (3–60, मूळ 10)
 snack_secs_save	सूचना वेळ जतन करा
 snack_secs_saved	सूचना वेळ जतन झाली — {n} सेकंद
+settings_sec_whatsapp	WhatsApp
+whatsapp_cloud_help	Use your own Meta WhatsApp Cloud API. Create a System User token with whatsapp_business_messaging (temporary dashboard tokens expire). Credentials stay on this Server only — never on extra tills. Accepted means Meta took the request, not that the guest received it.
+whatsapp_phone_id_ph	Phone Number ID
+whatsapp_token_ph	Access Token (leave blank to keep)
+whatsapp_template_ph	Bill template name (optional)
+whatsapp_template_lang_ph	Template language (e.g. en)
+whatsapp_enable	Enable
+whatsapp_disable	Off
+whatsapp_save	Save WhatsApp
+whatsapp_test	Test connection
+whatsapp_disconnect	Disconnect
+whatsapp_send_bill	Send via WhatsApp
+whatsapp_consent	WhatsApp OK
+whatsapp_consent_help	Guest agreed to receive WhatsApp messages. A phone number alone is not consent.
+whatsapp_server_only	Configure WhatsApp on the shop Server device
 settings_sec_backup	बॅकअप व पुनर्स्थापना
 settings_sec_diag	निदान
 settings_sec_privacy	गोपनीयता
@@ -729,6 +754,13 @@ station_vps_dd	या स्टेशनचे प्रिंटर
 station_vps_dd_n	{n} प्रिंटर · बदलण्यासाठी टॅप
 bill_printers_dd	बिलाचे प्रिंटर
 bill_printers_dd_n	बिलासाठी {n} प्रिंटर · बदलायला दाबा
+paper_heading	कागद
+paper_size	{w} × {h} mm
+paper_roll	{w} mm रोल
+paper_not_set	कागद अजून माहीत नाही
+paper_length_mm	लांबी (mm)
+printer_paper_help	या प्रिंटरचा कागद mm मध्ये. रिकामी लांबी म्हणजे रोल: प्रत्येक पावती तिच्या मजकुराएवढी लांब असते. प्रिंटर शोधा रिकामा कागद प्रिंटरच्या ड्रायव्हरमधून भरते (सांगता न आल्यास 80 mm रोल) आणि आधीच ठरवलेला कागद कधीही बदलत नाही.
+preview_help	खाली निवडलेल्या प्रिंटरच्या कागदावर ही पावती, तिथे छापली जाते तशी: प्रिंटर जिथपर्यंत पोहोचतो त्या वरच्या डाव्या कोपऱ्यापासून खऱ्या मापात (करडा: जिथे पोहोचत नाही त्या कडा), लांब पावती अधिक पानांवर, कागदाच्या कडेपलीकडचे सर्व कापले जाते. प्रिंटर निवडल्याने फक्त पूर्वावलोकन बदलते; प्रत्येक प्रिंटरचा कागद प्रिंटर मध्ये ठरवला जातो.
 job_layout	लेआउट
 job_delivery	काम कसे पाठवले जाते
 job_delivery_help	OS दस्तऐवज, कच्चे बाइट किंवा ESC/POS. बिल आणि स्वयंपाकघर तिकीट दोन्ही आपापले ठेवतात. कोणतेही काम शोधा ने जतन केलेल्या कोणत्याही प्रिंटरवर जाऊ शकते.
@@ -1105,9 +1137,6 @@ remove_these_tables	हे टेबल काढा
 table_remove_ph	काढा: T1-T24, किंवा एका टेबलचे नाव
 find_server	दुकानाचा सर्व्हर शोधा
 bill_format	बिलचे स्वरूप
-bill_header_ph	पत्ता | फोन
-fssai_ph	FSSAI परवाना क्र. (भारत)
-bill_footer_ph	फूटर (उदा. धन्यवाद, पुन्हा या)
 reset_bill_format	डीफॉल्टवर परत
 bill_format_reset	बिल स्वरूप डीफॉल्टवर
 reset_kot_format	डीफॉल्टवर परत
@@ -1146,7 +1175,6 @@ kot_kind_modified	बदलले
 kot_kind_cancelled	रद्द
 kot_style_heading	फील्ड आकार आणि वजन
 kot_style_title	शीर्षक
-kot_style_item_qty	आयटम · संख्या
 kot_style_field_pick	फील्ड निवडा
 kot_weight_regular	सामान्य
 kot_weight_bold	जाड
@@ -1158,8 +1186,8 @@ content_width_bill	बिलाची रुंदी (mm)
 content_width_kot	KOT ची रुंदी (mm)
 content_width_ph	किंवा सामग्री रुंदी लिहा, 40–210 मिमी
 content_width_help	ही स्लिप किती रुंद छापायची. बिल आणि KOT दोन्ही आपापली रुंदी ठेवतात.
-content_width_bill_help	पाहुण्याचे बिल किती रुंद छापायचे. मूळ 210 mm (पान). 58 mm अरुंद स्लिप, 80 mm रुंद स्लिप, 112 mm 4-इंच, 210 mm A4-रुंद. 40 ते 210 मधील कोणतेही मूल्य टाइप करा. स्वयंपाकघर तिकिटांची स्वतःची रुंदी KOT टॅबवर आहे.
-content_width_kot_help	स्वयंपाकघर तिकीट किती रुंद छापायचे. मूळ 80 mm. 58 mm अरुंद स्लिप, 80 mm रुंद स्लिप, 112 mm 4-इंच, 210 mm पान. 40 ते 210 मधील कोणतेही मूल्य टाइप करा. पाहुण्यांच्या बिलांची स्वतःची रुंदी बिल टॅबवर आहे.
+content_width_bill_help	पाहुण्याचे बिल किती रुंद छापले जाते, mm मध्ये (40–210). कोणत्याही कागदावर हेच खरे माप छापले जाते; यापेक्षा अरुंद कागदावर छपाईच्या कडेपलीकडचा भाग कापला जातो (कागद पाहा). स्वयंपाकघराच्या तिकिटांची स्वतःची रुंदी KOT टॅबवर आहे.
+content_width_kot_help	स्वयंपाकघराचे तिकीट किती रुंद छापले जाते, mm मध्ये (40–210). कोणत्याही कागदावर हेच खरे माप छापले जाते; यापेक्षा अरुंद कागदावर छपाईच्या कडेपलीकडचा भाग कापला जातो (कागद पाहा). पाहुण्यांच्या बिलांची स्वतःची रुंदी बिल टॅबवर आहे.
 vp_paper_width	सामग्री रुंदी (मिमी)
 vp_paper_width_ph	किंवा सामग्री रुंदी लिहा, 40–210 मिमी
 vp_paper_width_help	सामग्री रुंदी बिल आणि KOT स्वरूपात सेट होते. ती बिल आणि स्वयंपाकघर तिकीट दोन्हींना लागू होते.
@@ -1213,8 +1241,6 @@ schemes_help	X विकत घ्या Y मिळवा — सेटलव�
 scheme_bogo_ph	Buy 2 Thali get 1 Chaas
 add_scheme	BOGO जोडा
 schedule_ph	वेळ / हॅपी अवर — Mon-Fri 07:00-11:00 किंवा HappyHour 17:00-19:00=150
-upi_vpa_ph	UPI ID (VPA)
-upi_payee_ph	UPI प्राप्तकर्ता (पर्यायी)
 upi_qr	UPI QR
 show_upi_qr	UPI QR दाखवा
 close_upi_qr	बंद
@@ -1295,8 +1321,6 @@ printer_mode_first	आधी चालणारा
 printer_mode_all	सर्वांवर छापा
 kot_show_area	क्षेत्र
 kot_hide_area	क्षेत्र लपवा
-kot_show_item_hdr	आयटम · संख्या
-kot_hide_item_hdr	स्तंभ लपवा
 kot_show_title	शीर्षक ओळ
 kot_hide_title	शीर्षक लपवा
 kot_field_cycle	पुढचे निवडा
@@ -1337,12 +1361,12 @@ private_code_ph	12 अंकी कोड
 stamp_on	स्टॅम्प: फाइलवर
 pay_qr_on	पेमेंट QR: फाइलवर
 pay_qr_off	पेमेंट QR: नाही
+printers_screen_tip	शोधा हे डिव्हाइस वापरू शकेल असे प्रिंटर दाखवते आणि या दुकानासाठी जतन करते. बिल प्रिंटर: बिल व KOT फॉरमॅट → बिल. स्वयंपाकघर: स्वयंपाकघर → स्वयंपाकघर स्टेशन.
+printers_found_none	एकही प्रिंटर सापडला नाही.
+nav_loading	लोड होत आहे…
+kot_copy_from	यातून कॉपी करा
+kot_copy_from_help	त्या प्रकारातील प्रत्येक ओळीचा आकार, जाडी आणि संरेखन यात कॉपी करते. हा प्रकार स्वतःचा बॅनर, आयटम उपसर्ग आणि खोडरेषा ठेवतो. ठेवण्यासाठी KOT फॉरमॅट जतन करा.
 items_tmpl_heading	आयटम टेम्पलेट
 items_tmpl_help	तुमच्या मेनूसाठी पदार्थ, श्रेणी आणि फोटो. दुकानाची सेटिंग्ज आणि कर्मचारी आहेत तसेच राहतात.
 public_tmpl_help	कोणीही डाउनलोड करू शकेल असे सुरुवातीचे मेनू. एकदा इंटरनेट लागते.
 private_tmpl_help	तुमच्या Khaynjo संपर्काकडून मिळालेल्या 12-अंकी कोडने सुरक्षित ग्राहक मेनू.
-printers_screen_tip	शोधा हे डिव्हाइस वापरू शकेल असे प्रिंटर दाखवते आणि या दुकानासाठी जतन करते. बिल प्रिंटर: बिल व KOT फॉरमॅट → बिल. स्वयंपाकघर: स्वयंपाकघर → स्वयंपाकघर स्टेशन.
-printers_found_none	एकही प्रिंटर सापडला नाही.
-kot_copy_from	यातून कॉपी करा
-kot_copy_from_help	त्या प्रकारातील प्रत्येक ओळीचा आकार, जाडी आणि संरेखन यात कॉपी करते. हा प्रकार स्वतःचा बॅनर, आयटम उपसर्ग आणि खोडरेषा ठेवतो. ठेवण्यासाठी KOT फॉरमॅट जतन करा.
-nav_loading	लोड होत आहे…

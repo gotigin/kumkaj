@@ -92,10 +92,6 @@ bill_item_layout	वस्तूची मांडावळ
 bill_item_layout_columns	स्तंभ
 bill_item_layout_stacked	एकमेकाचेर
 bill_item_header	स्तंभाचीं शिर्षकां
-bill_item_hdr_item	वस्तुचें शिर्षक
-bill_item_hdr_qty	संख्येचें शिर्षक
-bill_item_hdr_price	किमतीचें शिर्षक
-bill_item_hdr_amount	रकमेचें शिर्षक
 bill_item_name	पदार्थाचें नांव
 bill_item_qty	संख्या
 bill_item_price	किंमत
@@ -103,6 +99,20 @@ bill_item_amount	रक्कम
 bill_item_note	पदार्थाची नोंद
 bill_item_col_sep	स्तंभाच्यो रेगो
 slip_columns	स्तंभ
+slip_col_header	शिर्षक
+bill_line_logo	लोगो
+bill_logo_picture	चित्र
+bill_logo_choose	चित्र वेंचात
+bill_logo_remove	चित्र काडात
+bill_logo_none	चित्र ना
+bill_logo_unreadable	हें ऍप वाचूंक शकता असलें चित्र न्हय
+bill_logo_width	रुंदाय (px)
+bill_logo_height	उंचाय (px)
+bill_logo_tones	धुंवट
+bill_logo_solid	घट
+bill_logo_shaded	सावळ्याचें
+bill_logo_help	रुंदाय आनी उंचाय px त. रितें दवरल्यार चित्रा प्रमाण: एक रितें जाल्यार आकार उरता, दोनूय रितीं जाल्यार ताचो स्वताचो आकार; दोनूय भरल्यार भितर बसता, केन्नाच ओडून व्हड जायना. चित्र ना जाल्यार: दाखयल्लो लोगो आपली उंचाय रिती सुवात म्हूण दवरता; लिपय तो काडटा.
+bill_logo_tones_help	घट: दर एक बिंदू काळो वा धवो, स्पश्ट लोगोंखातीर. सावळ्याचें: धुंवट बारीक बिंदूंचो नमुनो जाता, फोटो आनी मोव सावळ्याखातीर.
 slip_col_width	रुंदाय (mm)
 slip_col_start	सुरवेची सुवात (px)
 slip_col_end	निमाणी सुवात (px)
@@ -167,6 +177,21 @@ alerts_help	स्थितीचे संदेश तुमच्या प�
 snack_secs_ph	सेकंद (3–60, सामान्य 10)
 snack_secs_save	सावधानाचो वेळ सांबाळात
 snack_secs_saved	सावधानाचो वेळ सांबाळलो — {n} सेकंद
+settings_sec_whatsapp	WhatsApp
+whatsapp_cloud_help	Use your own Meta WhatsApp Cloud API. Create a System User token with whatsapp_business_messaging (temporary dashboard tokens expire). Credentials stay on this Server only — never on extra tills. Accepted means Meta took the request, not that the guest received it.
+whatsapp_phone_id_ph	Phone Number ID
+whatsapp_token_ph	Access Token (leave blank to keep)
+whatsapp_template_ph	Bill template name (optional)
+whatsapp_template_lang_ph	Template language (e.g. en)
+whatsapp_enable	Enable
+whatsapp_disable	Off
+whatsapp_save	Save WhatsApp
+whatsapp_test	Test connection
+whatsapp_disconnect	Disconnect
+whatsapp_send_bill	Send via WhatsApp
+whatsapp_consent	WhatsApp OK
+whatsapp_consent_help	Guest agreed to receive WhatsApp messages. A phone number alone is not consent.
+whatsapp_server_only	Configure WhatsApp on the shop Server device
 settings_sec_backup	बॅकअप & पुनर्स्थापना
 settings_sec_diag	निदान करप
 settings_sec_privacy	गुपितताय
@@ -729,6 +754,13 @@ station_vps_dd	ह्या स्टेशनाचे प्रिंटर
 station_vps_dd_n	{n} मुद्रक (मुद्रक) · बदलपाक टॅप करात
 bill_printers_dd	बिला खातीर प्रिंटर
 bill_printers_dd_n	{n} बिला खातीर मुद्रक (मुद्रक) · बदलपाक टॅप करात
+paper_heading	कागद
+paper_size	{w} × {h} mm
+paper_roll	{w} mm रोल
+paper_not_set	कागद अजून खबर ना
+paper_length_mm	लांबाय (mm)
+printer_paper_help	ह्या प्रिंटराचो कागद mm त। रिकामी लांबाय म्हळ्यार रोल: दरेक पावती तिच्या मजकुरा इतली लांब जाता। प्रिंटर सोदून काडात रिकामो कागद प्रिंटराच्या ड्रायव्हरांतल्यान भरता (सांगूंक जायना जाल्यार 80 mm रोल) आनी आदींच थारायल्लो कागद केन्नाच बदलना।
+preview_help	सकयल वेंचिल्ल्या प्रिंटराच्या कागदार ही पावती, थंय छापतात तशी: प्रिंटर पावता त्या वयल्या दाव्या कोनशांतल्यान खऱ्या मापांत (भुरको: पावना ते देग), लांब पावती चड पानांचेर, कागदाच्या देगेभायलें सगळें कातरता। प्रिंटर वेंचल्यार फकत पूर्वावलोकन बदलता; दरेक प्रिंटराचो कागद प्रिंटर हांगा थारायतात।
 job_layout	रचणाय
 job_delivery	नोकरी कशी धाडटात
 job_delivery_help	ओएस दस्तावेज, कच्चे बाइट, वा ईएससी/पीओएस. बिल आनी रांदचे कुडीची तिकेट दरेकीं आपलीच दवरतात. एकूय काम खंयच्याय प्रिंटरांत वचूंक शकता Find has save.
@@ -1105,9 +1137,6 @@ remove_these_tables	हीं टेबलां काडून उडोवच
 table_remove_ph	काडून उडोवचें: T1-T24, वा एका टेबलाचें नांव
 find_server	दुकानाचो सर्वर सोदून काडात
 bill_format	बिल स्वरूप
-bill_header_ph	पत्तो | फोन
-fssai_ph	एफएसएसएआय परवानो क्र. (भारत)
-bill_footer_ph	तळटीप (देखीक- धन्यवाद, परतून भेट दिवची)
 reset_bill_format	पूर्वनिर्धारीत करपाक रीसेट करात
 bill_format_reset	बिल स्वरूप पूर्वनिर्धारीत करपाक रीसेट करचें
 reset_kot_format	पूर्वनिर्धारीत करपाक रीसेट करात
@@ -1146,7 +1175,6 @@ kot_kind_modified	सुदारीत केल्लें
 kot_kind_cancelled	रद्द केलां
 kot_style_heading	शेत प्रकार आकार & वजन
 kot_style_title	शीर्षक
-kot_style_item_qty	आयटम · प्रमाण
 kot_style_field_pick	क्षेत्र निवडात
 kot_weight_regular	नियमीत
 kot_weight_bold	ठळक
@@ -1158,8 +1186,8 @@ content_width_bill	बिल सामुग्री रुंदी (मिम
 content_width_kot	केओटी सामुग्री रुंदी (मिमी) 1.1.
 content_width_ph	वा आशयाची रुंदाय, ४०-२१० मिमी
 content_width_help	ही स्लिप कितली रूंद छापता. बिल आनी केओटी दरेकल्यान आपली रुंदाय दवरतात.
-content_width_bill_help	सोयऱ्यांचें बिल कितलें रूंद छापता. मुलभूत 210 मिमी (पान). ५८ मिमी संकुचीत स्लिप, ८० मिमी रुंद स्लिप, ११२ मिमी ४ इंच, २१० मिमी ए ४ रुंद. 40 ते 210 मेरेन खंयचेंय मोल टाइप करात.रांदचे कुडीची तिकेट KOT टॅबचेर स्वताची रुंदाय आसता.
-content_width_kot_help	रांदचे कुडीची तिकेट कितली रूंद छापता. डिफॉल्ट 80 मिमी. ५८ मिमी संकुचीत स्लिप, ८० मिमी रुंद स्लिप, ११२ मिमी ४ इंच, २१० मिमी पान. 40 ते 210 मेरेन खंयचेंय मोल टाइप करात.सोयऱ्यांच्या बिलांची स्वताची रुंदाय बिल टॅबचेर आसता.
+content_width_bill_help	सोयऱ्याचें बील कितलें रुंद छापता, mm त (40–210). खंयच्याय कागदार हेंच खऱें माप छापता; हाचे परस अरुंद कागदार छापणावळीच्या देगे भायलो भाग कातरता (कागद पळयात). रांदच्या कुडींतल्या तिकटांची स्वताची रुंदाय KOT टॅबार आसा.
+content_width_kot_help	रांदच्या कुडींतलें तिकट कितलें रुंद छापता, mm त (40–210). खंयच्याय कागदार हेंच खऱें माप छापता; हाचे परस अरुंद कागदार छापणावळीच्या देगे भायलो भाग कातरता (कागद पळयात). सोयऱ्यांच्या बिलांची स्वताची रुंदाय बील टॅबार आसा.
 vp_paper_width	आशय रुंदी (मिमी) 1 .
 vp_paper_width_ph	वा आशयाची रुंदाय, ४०-२१० मिमी
 vp_paper_width_help	सामुग्री रुंदाय बिल & KOT स्वरूपा खाला सेट केल्ली आसा — बिल (मुळावी 210 मिमी) आनी रांदचे कुडीची तिकीट (मुळावी 80 मिमी) खातीर वेगळी.
@@ -1213,8 +1241,6 @@ schemes_help	बीओजीओ, टक्केवारी-ऑफ, आनी �
 scheme_bogo_ph	2 थाळी विकत्यो घेयात, 1 चास घेयात
 add_scheme	बोगो जोडा
 schedule_ph	वरां / हॅपी अवर — सोम-शुक्र 07:00-11:00 वा हॅपी अवर 17:00-19:00=150
-upi_vpa_ph	UPI ID (VPA)
-upi_payee_ph	यू.पी.आय फारीकणीचें नांव (पर्यायी)
 upi_qr	UPI QR
 show_upi_qr	यू.पी.आय क्यू.आर. दाखय
 close_upi_qr	बंद करात
@@ -1295,8 +1321,6 @@ printer_mode_first	पयलें, तें काम करता
 printer_mode_all	सगळ्यांचेर छापप
 kot_show_area	वाठार
 kot_hide_area	सुवात लिपोवप
-kot_show_item_hdr	आयटम · Qty
-kot_hide_item_hdr	स्तंभ लिपोय
 kot_show_title	शिर्षक ओळ
 kot_hide_title	शिर्षक लिपोवप
 kot_field_cycle	फुडलें निवडात
@@ -1337,12 +1361,12 @@ private_code_ph	12 आंकड्यांचो कोड
 stamp_on	स्टॅम्प: फायलीचेर
 pay_qr_on	फारीकणी क्यूआर: फायलीचेर
 pay_qr_off	पेमेंट क्यूआर: कांयच ना
+printers_screen_tip	सोद ह्या डिवायसाक वापरूंक मेळपी प्रिंटर दाखयता आनी ह्या दुकानाखातीर सांबाळटा. बिल प्रिंटर: बिल आनी KOT फॉर्मेट → बिल. रांदची कूड: रांदची कूड → रांदच्या कुडीचीं स्टेशनां.
+printers_found_none	एकूय प्रिंटर मेळूंक ना.
+nav_loading	लोड जाता…
+kot_copy_from	हांतूंत कॉपी करात
+kot_copy_from_help	त्या प्रकारांतल्या दर ओळीचो आकार, जाडाय आनी मांडणी हातूंत कॉपी करता. हो प्रकार आपलो बॅनर, वस्तू उपसर्ग आनी काटरेखा दवरता. दवरपाक KOT फॉर्मॅट सांबाळात.
 items_tmpl_heading	वस्तू टेम्पलेट
 items_tmpl_help	तुमच्या मेनूखातीर पदार्थ, वर्ग आनी फोटो. दुकानाच्यो सेटिंग्ज आनी कर्मचारी आसात तशेच उरतात.
 public_tmpl_help	खंयच्याय मनशाक डाउनलोड करूं येता अशे सुरवातीचे मेनू. एक फावट इंटरनेट जाय.
 private_tmpl_help	तुमच्या Khaynjo संपर्का कडल्यान मेळपी 12 आंकड्यांच्या कोडान राखिल्ले गिरायक मेनू.
-printers_screen_tip	सोद ह्या डिवायसाक वापरूंक मेळपी प्रिंटर दाखयता आनी ह्या दुकानाखातीर सांबाळटा. बिल प्रिंटर: बिल आनी KOT फॉर्मेट → बिल. रांदची कूड: रांदची कूड → रांदच्या कुडीचीं स्टेशनां.
-printers_found_none	एकूय प्रिंटर मेळूंक ना.
-kot_copy_from	हांतूंत कॉपी करात
-kot_copy_from_help	त्या प्रकारांतल्या दर ओळीचो आकार, जाडाय आनी मांडणी हातूंत कॉपी करता. हो प्रकार आपलो बॅनर, वस्तू उपसर्ग आनी काटरेखा दवरता. दवरपाक KOT फॉर्मॅट सांबाळात.
-nav_loading	लोड जाता…

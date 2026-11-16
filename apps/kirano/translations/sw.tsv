@@ -60,10 +60,6 @@ bill_item_layout	Mpangilio wa bidhaa
 bill_item_layout_columns	Safu
 bill_item_layout_stacked	Imepangwa
 bill_item_header	Vichwa vya safu
-bill_item_hdr_item	Kichwa cha bidhaa
-bill_item_hdr_qty	Kichwa cha idadi
-bill_item_hdr_price	Kichwa cha bei
-bill_item_hdr_amount	Kichwa cha kiasi
 bill_item_name	Jina la bidhaa
 bill_item_qty	Idadi
 bill_item_price	Bei
@@ -71,6 +67,13 @@ bill_item_amount	Kiasi
 bill_item_note	Ujumbe wa kipengee
 bill_item_col_sep	Mistari ya safu
 slip_col_width	Upana (mm)
+paper_heading	Karatasi
+paper_size	{w} × {h} mm
+paper_roll	gombo la {w} mm
+paper_not_set	karatasi bado haijulikani
+paper_length_mm	Urefu (mm)
+printer_paper_help	Karatasi ya printa hii kwa mm. Urefu mtupu ni gombo: kila risiti ni ndefu kama maudhui yake. Tafuta printa hujaza karatasi tupu kutoka kwa dereva wa printa (gombo la 80 mm isipoweza kusema) na kamwe haibadilishi iliyokwisha wekwa.
+preview_help	Risiti hii kwenye karatasi ya printa iliyochaguliwa hapa chini, kama inavyochapishwa huko: ukubwa halisi kutoka kona ya juu kushoto ambayo printa hufikia (kijivu: kingo isizofikia), risiti ndefu kwenye kurasa zaidi, kila kitu kinachopita ukingo wa karatasi hukatwa. Kuchagua printa hubadilisha onyesho la awali tu; karatasi ya kila printa huwekwa chini ya Printa.
 slip_col_start	Nafasi ya mwanzo (px)
 slip_col_end	Nafasi ya mwisho (px)
 slip_columns_help	Upana wa kila safu wima unajumuisha nafasi yake ya mwanzo na ya mwisho. Maandishi hujikunja ndani ya safu yake; kinachozidi upana wa maudhui hukatwa, kwenye karatasi na kwenye onyesho la kukagua.
@@ -838,3 +841,4 @@ nav_loading	Inapakia…
 printer_mode_first	Yake ya kwanza inayofanya kazi
 printer_mode_all	Piga kwa wote
 slip_columns	Safu wima
+slip_col_header	Kichwa

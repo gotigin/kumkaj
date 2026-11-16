@@ -60,10 +60,6 @@ bill_item_layout	Tqassim tal-oġġetti
 bill_item_layout_columns	Kolonni
 bill_item_layout_stacked	Munzell
 bill_item_header	Intestaturi tal-kolonni
-bill_item_hdr_item	Intestatura tal-oġġett
-bill_item_hdr_qty	Intestatura tal-kwantità
-bill_item_hdr_price	Intestatura tal-prezz
-bill_item_hdr_amount	Intestatura tal-ammont
 bill_item_name	Isem tal-oġġett
 bill_item_qty	Kwantità
 bill_item_price	Prezz
@@ -71,6 +67,13 @@ bill_item_amount	Ammont
 bill_item_note	Nota tal-oġġett
 bill_item_col_sep	Linji tal-kolonni
 slip_col_width	Wisa’ (mm)
+paper_heading	Karta
+paper_size	{w} × {h} mm
+paper_roll	romblu ta' {w} mm
+paper_not_set	il-karta għadha mhix magħrufa
+paper_length_mm	Tul (mm)
+printer_paper_help	Il-karta ta' din l-istampatur f'mm. Tul vojt huwa romblu: kull riċevuta hija twila daqs il-kontenut tagħha. Sib stampaturi jimla l-karta vojta mis-sewwieq tal-istampatur (romblu ta' 80 mm meta ma jistax jgħid) u qatt ma jbiddel karta diġà ssettjata.
+preview_help	Din ir-riċevuta fuq il-karta tal-istampatur magħżul hawn taħt, kif tistampa hemm: fid-daqs reali mill-kantuniera ta' fuq ix-xellug li jilħaq l-istampatur (griż: truf li ma jilħaqx), riċevuta twila fuq aktar folji, kull ma jaqbeż it-tarf tal-karta jinqata'. L-għażla ta' stampatur tbiddel il-previżjoni biss; il-karta ta' kull stampatur tiġi ssettjata taħt Stampaturi.
 slip_col_start	Spazju tal-bidu (px)
 slip_col_end	Spazju tat-tmiem (px)
 slip_columns_help	Il-wisa’ ta’ kull kolonna tinkludi l-ispazju tal-bidu u tat-tmiem tagħha. It-test jitgeżwer ġewwa l-kolonna tiegħu; dak li jaqbeż il-wisa’ tal-kontenut jinqata’, fuq il-karta u fil-preview.
@@ -838,3 +841,4 @@ nav_loading	Qed jitgħabba…
 printer_mode_first	L-ewwel li taħdem
 printer_mode_all	Ippprintja fuq kollox
 slip_columns	Kolonni
+slip_col_header	Intestatura

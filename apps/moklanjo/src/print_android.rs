@@ -70,3 +70,18 @@ pub fn print_png(job_name: &str, png: &[u8], landscape: bool) -> Result<(), Stri
 pub fn list_print_services() -> Vec<String> {
     vec!["android-print:".into()]
 }
+
+/// OS document: the upright slip (the preview's picture) and its width on
+/// paper. The system print dialog picks the printer and the paper; each page
+/// draws the slip at its real size from that paper's printable top-left —
+/// no paper is assumed (docs/PRINTER.md § Paper). `landscape` turns the sheet.
+pub fn print_slip(job_name: &str, png: &[u8], content_mm: f64, landscape: bool) -> Result<(), String> {
+    let content_um = (content_mm * 1000.0).round().clamp(1.0, f64::from(i32::MAX)) as i32;
+    unsafe {
+        if android_jni::to_java_print_slip(job_name.to_owned(), png, content_um, landscape) {
+            Ok(())
+        } else {
+            Err("Android PrintManager refused the image job".into())
+        }
+    }
+}

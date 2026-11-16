@@ -92,10 +92,6 @@ bill_item_layout	Tata letak item
 bill_item_layout_columns	Kolom
 bill_item_layout_stacked	Bertumpuk
 bill_item_header	Header kolom
-bill_item_hdr_item	Judul item
-bill_item_hdr_qty	Judul jumlah
-bill_item_hdr_price	Judul harga
-bill_item_hdr_amount	Judul jumlah uang
 bill_item_name	Nama
 bill_item_qty	Jml
 bill_item_price	Harga
@@ -103,6 +99,20 @@ bill_item_amount	Jumlah
 bill_item_note	Catatan
 bill_item_col_sep	Garis kolom
 slip_columns	Kolom
+slip_col_header	Judul
+bill_line_logo	Logo
+bill_logo_picture	Gambar
+bill_logo_choose	Pilih gambar
+bill_logo_remove	Hapus gambar
+bill_logo_none	Tidak ada gambar
+bill_logo_unreadable	Bukan gambar yang bisa dibaca aplikasi ini
+bill_logo_width	Lebar (px)
+bill_logo_height	Tinggi (px)
+bill_logo_tones	Abu-abu
+bill_logo_solid	Padat
+bill_logo_shaded	Berbayang
+bill_logo_help	Lebar dan tinggi dalam px. Kosong mengikuti gambar: satu kosong menjaga bentuknya, keduanya kosong memakai ukurannya sendiri; keduanya diisi memasukkannya ke dalam, tidak pernah ditarik. Tanpa gambar: logo yang ditampilkan menyimpan tingginya sebagai ruang kosong; Sembunyikan menghapusnya.
+bill_logo_tones_help	Padat: setiap titik hitam atau putih, untuk logo yang tajam. Berbayang: abu-abu menjadi pola titik halus, untuk foto dan bayangan lembut.
 slip_col_width	Lebar (mm)
 slip_col_start	Spasi awal (px)
 slip_col_end	Spasi akhir (px)
@@ -167,6 +177,21 @@ alerts_help	Berapa lama pesan status tetap di layar untuk Anda (login ini).
 snack_secs_ph	Detik (3–60, bawaan 10)
 snack_secs_save	Simpan waktu peringatan
 snack_secs_saved	Waktu peringatan disimpan — {n} detik
+settings_sec_whatsapp	WhatsApp
+whatsapp_cloud_help	Use your own Meta WhatsApp Cloud API. Create a System User token with whatsapp_business_messaging (temporary dashboard tokens expire). Credentials stay on this Server only — never on extra tills. Accepted means Meta took the request, not that the guest received it.
+whatsapp_phone_id_ph	Phone Number ID
+whatsapp_token_ph	Access Token (leave blank to keep)
+whatsapp_template_ph	Bill template name (optional)
+whatsapp_template_lang_ph	Template language (e.g. en)
+whatsapp_enable	Enable
+whatsapp_disable	Off
+whatsapp_save	Save WhatsApp
+whatsapp_test	Test connection
+whatsapp_disconnect	Disconnect
+whatsapp_send_bill	Send via WhatsApp
+whatsapp_consent	WhatsApp OK
+whatsapp_consent_help	Guest agreed to receive WhatsApp messages. A phone number alone is not consent.
+whatsapp_server_only	Configure WhatsApp on the shop Server device
 settings_sec_backup	Cadangan & pulihkan
 settings_sec_diag	Diagnostik
 settings_sec_privacy	Privasi
@@ -729,6 +754,13 @@ station_vps_dd	Printer stasiun ini
 station_vps_dd_n	{n} printer · ketuk untuk mengubah
 bill_printers_dd	Printer untuk tagihan
 bill_printers_dd_n	{n} printer untuk tagihan · ketuk untuk mengubah
+paper_heading	Kertas
+paper_size	{w} × {h} mm
+paper_roll	gulungan {w} mm
+paper_not_set	kertas belum diketahui
+paper_length_mm	Panjang (mm)
+printer_paper_help	Kertas printer ini dalam mm. Panjang kosong berarti gulungan: setiap struk sepanjang isinya. Cari printer mengisi kertas kosong dari driver printer (gulungan 80 mm bila tidak bisa memberi tahu) dan tidak pernah mengubah kertas yang sudah diatur.
+preview_help	Struk ini di kertas printer yang dipilih di bawah, seperti tercetak di sana: ukuran sebenarnya dari sudut kiri atas yang dapat dijangkau printer (abu-abu: tepi yang tidak terjangkau), struk panjang di lebih banyak lembar, semua yang melewati tepi kertas terpotong. Memilih printer hanya mengubah pratinjau; kertas tiap printer diatur di Printer.
 job_layout	Tata letak
 job_delivery	Cara pengiriman pekerjaan
 job_delivery_help	Dokumen OS, byte mentah, atau ESC/POS. Tagihan dan tiket dapur masing-masing menyimpannya sendiri. Pekerjaan mana pun dapat dikirim ke printer yang ditemukan oleh Find.
@@ -1105,9 +1137,6 @@ remove_these_tables	Hapus meja ini
 table_remove_ph	Hapus: T1-T24, atau nama satu meja
 find_server	Cari server toko
 bill_format	Format tagihan
-bill_header_ph	Alamat | telepon
-fssai_ph	No. lisensi FSSAI (India)
-bill_footer_ph	Kaki (mis. Terima kasih, datang lagi)
 reset_bill_format	Reset bawaan
 bill_format_reset	Format tagihan direset
 reset_kot_format	Reset bawaan
@@ -1146,7 +1175,6 @@ kot_kind_modified	Diubah
 kot_kind_cancelled	Dibatalkan
 kot_style_heading	Ukuran & ketebalan bidang
 kot_style_title	Judul
-kot_style_item_qty	Item · Jml
 kot_style_field_pick	Pilih bidang
 kot_weight_regular	Biasa
 kot_weight_bold	Tebal
@@ -1158,8 +1186,8 @@ content_width_bill	Lebar konten tagihan (mm)
 content_width_kot	Lebar konten KOT (mm)
 content_width_ph	Atau ketik lebar konten, 40–210 mm
 content_width_help	Seberapa lebar slip ini dicetak. Tagihan dan KOT masing-masing mempertahankan lebar sendiri.
-content_width_bill_help	Seberapa lebar tagihan tamu dicetak. Default 210 mm (halaman). Slip sempit 58 mm, slip lebar 80 mm, 4 inci 112 mm, A4-lebar 210 mm. Ketik nilai apa pun dari 40 hingga 210. Tiket dapur memiliki lebar sendiri pada tab KOT.
-content_width_kot_help	Seberapa lebar tiket dapur dicetak. Default 80 mm. Slip sempit 58 mm, slip lebar 80 mm, 4 inci 112 mm, halaman 210 mm. Ketik nilai apa pun dari 40 hingga 210. Tagihan tamu memiliki lebar sendiri pada tab Tagihan.
+content_width_bill_help	Seberapa lebar tagihan tamu dicetak, dalam mm (40–210). Dicetak dalam ukuran asli ini di kertas apa pun; di kertas yang lebih sempit, bagian yang melewati tepi cetak dipotong (lihat Kertas). Tiket dapur punya lebar sendiri di tab KOT.
+content_width_kot_help	Seberapa lebar tiket dapur dicetak, dalam mm (40–210). Dicetak dalam ukuran asli ini di kertas apa pun; di kertas yang lebih sempit, bagian yang melewati tepi cetak dipotong (lihat Kertas). Tagihan tamu punya lebar sendiri di tab Tagihan.
 vp_paper_width	Lebar konten (mm)
 vp_paper_width_ph	Atau ketik lebar konten, 40–210 mm
 vp_paper_width_help	Lebar konten diatur di Format tagihan & KOT. Berlaku untuk tagihan dan tiket dapur.
@@ -1213,8 +1241,6 @@ schemes_help	Beli X dapat Y — otomatis saat bayar. Cth. Buy 2 Thali get 1 Chaa
 scheme_bogo_ph	Buy 2 Thali get 1 Chaas
 add_scheme	Tambah BOGO
 schedule_ph	Jam / happy hour — Mon-Fri 07:00-11:00 atau HappyHour 17:00-19:00=150
-upi_vpa_ph	UPI ID (VPA)
-upi_payee_ph	Penerima UPI (opsional)
 upi_qr	UPI QR
 show_upi_qr	Tampilkan QR UPI
 close_upi_qr	Tutup
@@ -1295,8 +1321,6 @@ printer_mode_first	Yang pertama yang berfungsi
 printer_mode_all	Cetak di semua
 kot_show_area	Area
 kot_hide_area	Sembunyikan area
-kot_show_item_hdr	Item · Jml
-kot_hide_item_hdr	Sembunyikan kolom
 kot_show_title	Baris judul
 kot_hide_title	Sembunyikan judul
 kot_field_cycle	Pilih berikutnya
@@ -1337,12 +1361,12 @@ private_code_ph	Kode 12 digit
 stamp_on	Stempel: tersimpan
 pay_qr_on	QR bayar: tersimpan
 pay_qr_off	QR bayar: tidak ada
+printers_screen_tip	Cari menampilkan printer yang bisa dipakai perangkat ini dan menyimpannya untuk toko ini. Printer tagihan: Format Tagihan & KOT → Tagihan. Dapur: Dapur → Stasiun dapur.
+printers_found_none	Tidak ada printer yang ditemukan.
+nav_loading	Memuat…
+kot_copy_from	Salin dari
+kot_copy_from_help	Menyalin ukuran, ketebalan, dan perataan setiap baris dari jenis itu ke jenis ini. Jenis ini tetap memakai banner, awalan item, dan coretannya sendiri. Simpan format KOT untuk mempertahankannya.
 items_tmpl_heading	Template item
 items_tmpl_help	Hidangan, kategori, dan foto untuk menu Anda. Pengaturan toko dan staf tetap seperti semula.
 public_tmpl_help	Menu awal yang bisa diunduh siapa saja. Perlu internet sekali.
 private_tmpl_help	Menu klien yang dikunci dengan kode 12 digit dari kontak Khaynjo Anda.
-printers_screen_tip	Cari menampilkan printer yang bisa dipakai perangkat ini dan menyimpannya untuk toko ini. Printer tagihan: Format Tagihan & KOT → Tagihan. Dapur: Dapur → Stasiun dapur.
-printers_found_none	Tidak ada printer yang ditemukan.
-kot_copy_from	Salin dari
-kot_copy_from_help	Menyalin ukuran, ketebalan, dan perataan setiap baris dari jenis itu ke jenis ini. Jenis ini tetap memakai banner, awalan item, dan coretannya sendiri. Simpan format KOT untuk mempertahankannya.
-nav_loading	Memuat…

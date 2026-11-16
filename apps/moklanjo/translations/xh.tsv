@@ -501,6 +501,17 @@ job_size	Ubukhulu befonti
 job_size_ph	umz. 18, 20, 26…
 test_receipt_format	Irisithi yovavanyo
 test_label_format	Ileyibhile yovavanyo
+paper_heading	Iphepha
+paper_size	{w} × {h} mm
+paper_roll	umqulu we-{w} mm
+paper_not_set	iphepha alikaziwa okwangoku
+paper_length_mm	Ubude (mm)
+printer_paper_help	Iphepha lalo mshicileli kwi-mm. UBude obungenanto ngumqulu: irisithi nganye inde njengomxholo wayo. Fumana abashicileli igcwalisa iphepha elingenanto kumqhubi womshicileli (umqulu we-80 mm xa ingakwazi ukuxela) kwaye ayize iguqule elimiselweyo.
+preview_help	Le risithi kwiphepha lomshicileli okhethwe ngezantsi, njengoko ishicilelwa apho: ubungakanani bokwenyani ukusuka kwikona ephezulu ekhohlo efikelelwa ngumshicileli (ngwevu: imiphetho engafikelelwayo), irisithi ende kumaphepha amaninzi, yonke into egqitha umphetho wephepha iyanqunyulwa. Ukukhetha umshicileli kutshintsha umboniso kuphela; iphepha lomshicileli ngamnye limiselwa phantsi kwe-Abashicileli.
+slip_col_width	Ububanzi (mm)
+no_printer_assigned	Akukho mshicileli
+printer_target_default	umshicileli oqhelekileyo wale khompyutha (idilesi engenanto)
+job_preview	Ukujonga
 test_receipt_sent	Isampulu yerisithi ithunyelwe
 test_label_sent	Isampulu ileyibhile ithunyelwe
 test_print_no_printer	Akukho mshicileli walo msebenzi - yongeza enye phantsi kwale ndawo

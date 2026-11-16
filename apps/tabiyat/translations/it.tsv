@@ -72,10 +72,6 @@ bill_item_layout	Layout voci
 bill_item_layout_columns	Colonne
 bill_item_layout_stacked	Impilato
 bill_item_header	Intestazioni
-bill_item_hdr_item	Intestazione voce
-bill_item_hdr_qty	Intestazione qtà
-bill_item_hdr_price	Intestazione prezzo
-bill_item_hdr_amount	Intestazione importo
 bill_item_name	Nome del medicinale
 bill_item_qty	Qtà
 bill_item_price	Prezzo
@@ -83,6 +79,13 @@ bill_item_amount	Importo
 bill_item_note	Nota Rx / di vendita
 bill_item_col_sep	Righe di colonna
 slip_col_width	Larghezza (mm)
+paper_heading	Carta
+paper_size	{w} × {h} mm
+paper_roll	rotolo da {w} mm
+paper_not_set	carta non ancora nota
+paper_length_mm	Lunghezza (mm)
+printer_paper_help	La carta di questa stampante in mm. Una Lunghezza vuota è un rotolo: ogni scontrino è lungo quanto il suo contenuto. Trova stampanti riempie la carta vuota dal driver della stampante (un rotolo da 80 mm quando non sa dirlo) e non cambia mai una carta già impostata.
+preview_help	Questo scontrino sulla carta della stampante scelta sotto, come vi si stampa: a grandezza reale dall'angolo in alto a sinistra che la stampante raggiunge (grigio: bordi che non raggiunge), uno scontrino lungo su più fogli, tutto oltre il bordo della carta viene tagliato. Scegliere una stampante cambia solo l'anteprima; la carta di ogni stampante si imposta in Stampanti.
 slip_col_start	Spazio iniziale (px)
 slip_col_end	Spazio finale (px)
 slip_columns_help	La larghezza di ogni colonna comprende il suo spazio iniziale e finale. Il testo va a capo all’interno della sua colonna; ciò che supera la larghezza del contenuto viene tagliato, su carta e nell’anteprima.
@@ -850,3 +853,4 @@ nav_loading	Caricamento…
 printer_mode_first	Prima che funzioni
 printer_mode_all	Stampa su tutti
 slip_columns	Colonne
+slip_col_header	Intestazione

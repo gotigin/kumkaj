@@ -501,6 +501,17 @@ job_size	Cỡ chữ
 job_size_ph	vd. 18, 20, 26…
 test_receipt_format	Biên nhận kiểm tra
 test_label_format	Nhãn kiểm tra
+paper_heading	Giấy
+paper_size	{w} × {h} mm
+paper_roll	cuộn {w} mm
+paper_not_set	chưa biết giấy
+paper_length_mm	Chiều dài (mm)
+printer_paper_help	Giấy của máy in này tính bằng mm. Chiều dài để trống là cuộn: mỗi phiếu dài bằng nội dung của nó. Tìm máy in điền giấy còn trống từ trình điều khiển của máy in (cuộn 80 mm khi không thể cho biết) và không bao giờ đổi giấy đã đặt.
+preview_help	Phiếu này trên giấy của máy in được chọn bên dưới, đúng như khi in ở đó: kích thước thật từ góc trên bên trái mà máy in tới được (xám: các mép không tới được), phiếu dài in trên nhiều tờ hơn, phần vượt mép giấy bị cắt. Chọn máy in chỉ đổi bản xem trước; giấy của mỗi máy in được đặt trong Máy in.
+slip_col_width	Chiều rộng (mm)
+no_printer_assigned	Không có máy in
+printer_target_default	máy in mặc định
+job_preview	Xem trước
 test_receipt_sent	Đã gửi biên nhận mẫu
 test_label_sent	Nhãn mẫu đã được gửi
 test_print_no_printer	Không có máy in cho công việc đó - thêm một máy in vào vị trí này

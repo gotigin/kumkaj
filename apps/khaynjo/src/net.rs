@@ -3534,7 +3534,7 @@ mod tests {
 
     /// A Server with a waiter (2222), a manager (9999), a ₹200 Thali and D1.
     fn lan_shop() -> (PathBuf, Store, Guard) {
-        let path = std::env::temp_dir().join(format!("khaynjo-lan-{}.sqlite3", new_id()));
+        let path = crate::test_dirs::run_root().join(format!("khaynjo-lan-{}.sqlite3", new_id()));
         let store = Store::open_path(&path).unwrap();
         let owner = store.list_staff().unwrap().into_iter().next().unwrap();
         store.add_staff("Wasim", StaffRole::Waiter, "Captain", "2222", &owner).unwrap();
@@ -4309,7 +4309,7 @@ mod tests {
         *printers.route_mut(crate::print_share::RouteKey::Kot { station_id: "" }) =
             vec![kitchen];
         crate::print_share::with_test_printers(printers, || {
-            let path = std::env::temp_dir().join(format!("khaynjo-batch-cancel-{}.sqlite3", new_id()));
+            let path = crate::test_dirs::run_root().join(format!("khaynjo-batch-cancel-{}.sqlite3", new_id()));
             let store = Store::open_path(&path).unwrap();
             let owner = store.list_staff().unwrap().into_iter().next().unwrap();
             store
@@ -4389,7 +4389,7 @@ mod tests {
         *printers.route_mut(crate::print_share::RouteKey::Kot { station_id: "" }) =
             vec![kitchen];
         crate::print_share::with_test_printers(printers, || {
-            let path = std::env::temp_dir().join(format!("khaynjo-net-{}.sqlite3", new_id()));
+            let path = crate::test_dirs::run_root().join(format!("khaynjo-net-{}.sqlite3", new_id()));
             let store = Store::open_path(&path).unwrap();
             let owner = store.list_staff().unwrap().into_iter().next().unwrap();
             store.add_staff("Wasim", StaffRole::Waiter, "Captain", "2222", &owner).unwrap();
@@ -4445,7 +4445,7 @@ mod tests {
     /// come from the stored ticket by name.
     #[test]
     fn counter_kot_reprints_the_picked_dishes() {
-        let path = std::env::temp_dir().join(format!("khaynjo-ctrreprint-{}.sqlite3", new_id()));
+        let path = crate::test_dirs::run_root().join(format!("khaynjo-ctrreprint-{}.sqlite3", new_id()));
         let store = Store::open_path(&path).unwrap();
         let owner = store.list_staff().unwrap().into_iter().next().unwrap();
         let tandoor = store.add_station("Tandoor").unwrap();
@@ -4499,7 +4499,7 @@ mod tests {
 
     #[test]
     fn sent_kots_print_one_paper_per_station_without_prices() {
-        let path = std::env::temp_dir().join(format!("khaynjo-kotprint-{}.sqlite3", new_id()));
+        let path = crate::test_dirs::run_root().join(format!("khaynjo-kotprint-{}.sqlite3", new_id()));
         let store = Store::open_path(&path).unwrap();
         let owner = store.list_staff().unwrap().into_iter().next().unwrap();
         let tandoor = store.add_station("Tandoor").unwrap();
@@ -4581,7 +4581,7 @@ mod tests {
     /// is the exact guard, this the end-to-end check.
     #[test]
     fn a_busy_years_books_still_sync_quickly() {
-        let path = std::env::temp_dir().join(format!("khaynjo-year-{}.sqlite3", new_id()));
+        let path = crate::test_dirs::run_root().join(format!("khaynjo-year-{}.sqlite3", new_id()));
         let store = Store::open_path(&path).unwrap();
         store.seed_busy_books_for_test(200, 150, 2000);
         let started = Instant::now();
@@ -4609,7 +4609,7 @@ mod tests {
         assert_eq!(snap.venue_icon_key, "custom:venue_icon.webp");
 
         let device_path =
-            std::env::temp_dir().join(format!("khaynjo-device-logo-{}.sqlite3", new_id()));
+            crate::test_dirs::run_root().join(format!("khaynjo-device-logo-{}.sqlite3", new_id()));
         let device = Store::open_path(&device_path).unwrap();
         // Seed a leftover logo from a prior shop, then pair to this Server.
         device.set_paired_server_id("server-old").unwrap();
@@ -4670,7 +4670,7 @@ mod tests {
         );
 
         let device_path =
-            std::env::temp_dir().join(format!("khaynjo-client-stations-{}.sqlite3", new_id()));
+            crate::test_dirs::run_root().join(format!("khaynjo-client-stations-{}.sqlite3", new_id()));
         let device = Store::open_path(&device_path).unwrap();
         device.prepare_as_client_terminal().unwrap();
         apply_snapshot(&device, &snap).unwrap();
@@ -4707,7 +4707,7 @@ mod tests {
     #[test]
     fn a_snapshot_lands_whole_or_not_at_all() {
         let (path, store, _) = lan_shop();
-        let device_path = std::env::temp_dir().join(format!("khaynjo-device-{}.sqlite3", new_id()));
+        let device_path = crate::test_dirs::run_root().join(format!("khaynjo-device-{}.sqlite3", new_id()));
         let device = Store::open_path(&device_path).unwrap();
         let first = build_snapshot(&store).unwrap();
         apply_snapshot(&device, &first).unwrap();
@@ -4847,7 +4847,7 @@ mod tests {
         store.set_nav_order_csv("floor,pos").unwrap();
         store.apply_books_op(crate::books_op::BooksOp::SetCurrency { code: "USD".into() }, &owner).unwrap();
 
-        let device_path = std::env::temp_dir().join(format!("khaynjo-client-prefs-{}.sqlite3", new_id()));
+        let device_path = crate::test_dirs::run_root().join(format!("khaynjo-client-prefs-{}.sqlite3", new_id()));
         let device = Store::open_path(&device_path).unwrap();
         device.prepare_as_client_terminal().unwrap();
         // The tablet's own copy: every pay chip, nothing hidden, its own zoom.

@@ -162,7 +162,7 @@ mod tests {
             .duration_since(UNIX_EPOCH)
             .unwrap()
             .as_nanos();
-        let path = std::env::temp_dir().join(format!("kirano-uninstall-wipe-{nanos}"));
+        let path = crate::test_dirs::run_root().join(format!("kirano-uninstall-wipe-{nanos}"));
         let _ = fs::remove_dir_all(&path);
         fs::create_dir_all(&path).unwrap();
         path

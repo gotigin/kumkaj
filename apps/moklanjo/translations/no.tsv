@@ -501,6 +501,17 @@ job_size	Skriftstørrelse
 job_size_ph	f.eks. 18, 20, 26…
 test_receipt_format	Testkvittering
 test_label_format	Testetikett
+paper_heading	Papir
+paper_size	{w} × {h} mm
+paper_roll	{w} mm-rull
+paper_not_set	papir ikke kjent ennå
+paper_length_mm	Lengde (mm)
+printer_paper_help	Papiret i denne skriveren i mm. Tom Lengde er en rull: hver kvittering er like lang som innholdet. Finn skrivere fyller inn tomt papir fra skriverdriveren (en 80 mm-rull når den ikke kan si det) og endrer aldri papir som allerede er satt.
+preview_help	Denne kvitteringen på papiret i skriveren som er valgt nedenfor, slik den skrives ut der: i ekte størrelse fra øvre venstre hjørne skriveren når (grått: kanter den ikke når), en lang kvittering på flere ark, alt utenfor papirkanten kuttes. Å velge skriver endrer bare forhåndsvisningen; papiret til hver skriver settes under Skrivere.
+slip_col_width	Bredde (mm)
+no_printer_assigned	Ingen skriver
+printer_target_default	den vanlige skriveren på denne datamaskinen (tom adresse)
+job_preview	Forhåndsvisning
 test_receipt_sent	Eksempel på kvittering sendt
 test_label_sent	Eksempeletikett sendt
 test_print_no_printer	Ingen skriver for den jobben – legg til en under dette stedet

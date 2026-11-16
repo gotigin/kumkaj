@@ -1789,6 +1789,19 @@ script_mod! {
             text_style: theme.font_regular{font_size: 10.5}
         }
     }
+    // A dropdown's face and its type-or-pick field: ComboField draws ˅ / ˄
+    // over the control's last 38 px, so these keep that room (a long face
+    // wraps before the mark instead of running under it; a face keeps its
+    // centre). Every control directly inside a ComboField is one of these.
+    let ComboFace = StackSecondaryBtn{
+        padding: Inset{left: 48. right: 48. top: 14. bottom: 14.}
+        // Wrap like every full-width face (DEV.md bug 7 / CTA faces): a long
+        // value goes on to a second line instead of running under the mark.
+        flow: Right{wrap: true}
+    }
+    let ComboInput = FieldInput{
+        padding: Inset{left: 14. right: 48. top: 15. bottom: 15.}
+    }
 
     // Compact cart / totals field — same caret as FieldInput; tighter padding.
     // These sit beside their own labels (Unit @, Applied, ROUNDED) with "0"
@@ -3357,6 +3370,51 @@ script_mod! {
             draw_bg.border_color: #xA8B4C4
         }
     }
+    // Settings → Printers: the saved printers, one list in two parts around
+    // the open printer's paper (PrinterPaperRows) — any number of printers.
+    mod.widgets.PrinterPaperRowsBase = #(PrinterPaperRows::register_widget(vm))
+    mod.widgets.PrinterPaperRows = set_type_default() do mod.widgets.PrinterPaperRowsBase{
+        width: Fill height: Fit
+        list := PortalList{
+            width: Fill height: Fill
+            spacing: 0
+            drag_scrolling: false
+            bounce_at_start: false
+            bounce_at_end: false
+            capture_overload: false
+            scroll_bar: ScrollBar{bar_size: 0.}
+            Item := View{
+                width: Fill height: Fit
+                flow: Overlay
+                texture_caching: false
+                // A long name wraps (phone width) instead of running off.
+                row := SegBtn{text: " " width: Fill align: Align{x: 0.0 y: 0.5} flow: Right{wrap: true} padding: Inset{left: 12. right: 12. top: 10. bottom: 10.} margin: Inset{left: 0. right: 0. top: 0. bottom: 8.}}
+                row_on := SegBtnOn{text: " " visible: false width: Fill align: Align{x: 0.0 y: 0.5} flow: Right{wrap: true} padding: Inset{left: 12. right: 12. top: 10. bottom: 10.} margin: Inset{left: 0. right: 0. top: 0. bottom: 8.}}
+            }
+        }
+    }
+
+    // Settings → Printers: the job (receipt or label) as it prints on the
+    // preview's printer — the whole paper (SlipPicture).
+    mod.widgets.SlipPictureBase = #(SlipPicture::register_widget(vm))
+    mod.widgets.SlipPicture = set_type_default() do mod.widgets.SlipPictureBase{
+        width: Fill height: Fit
+        card := RoundedView{
+            width: Fill height: Fill
+            flow: Down
+            padding: 0.
+            draw_bg.color: #ffffff
+            draw_bg.border_radius: 12.
+            draw_bg.border_size: 1.
+            draw_bg.border_color: #xE0E8F0
+            slip := Image{
+                width: Fill
+                height: Fill
+                fit: ImageFit.Stretch
+            }
+        }
+    }
+
     mod.widgets.ReportTextBase = #(ReportText::register_widget(vm))
     mod.widgets.ReportText = set_type_default() do mod.widgets.ReportTextBase{
         width: Fill height: Fit
@@ -5125,7 +5183,7 @@ script_mod! {
                                     }
                                 }
                                 mod.widgets.ComboField{field: "booking_origin"
-                                    booking_origin_name_input := FieldInput{empty_text: "Sender name"}
+                                    booking_origin_name_input := ComboInput{empty_text: "Sender name"}
                                 }
                                 booking_origin_suggest := mod.widgets.SuggestList{field: "booking_origin"}
                                 booking_origin_phone_input := FieldInput{empty_text: "Sender phone"}
@@ -5154,11 +5212,11 @@ script_mod! {
                                 booking_consignee_phone_input := FieldInput{empty_text: "Receiver phone"}
                                 booking_consignee_address_input := FieldInput{empty_text: "Delivery address"}
                                 mod.widgets.ComboField{field: "booking_destination"
-                                    booking_destination_input := FieldInput{empty_text: "Destination city / zone"}
+                                    booking_destination_input := ComboInput{empty_text: "Destination city / zone"}
                                 }
                                 booking_destination_suggest := mod.widgets.SuggestList{field: "booking_destination"}
                                 mod.widgets.ComboField{field: "booking_zone"
-                                    booking_zone_input := FieldInput{empty_text: "Zone (name from Rates)"}
+                                    booking_zone_input := ComboInput{empty_text: "Zone (name from Rates)"}
                                 }
                                 booking_zone_suggest := mod.widgets.SuggestList{field: "booking_zone"}
                                 booking_pincode_label := WrapLabel{
@@ -5273,7 +5331,7 @@ script_mod! {
                                         font_size: 12.
                                     }
                                     mod.widgets.ComboField{field: "booking_carrier"
-                                        booking_carrier_pick_input := FieldInput{empty_text: "Carrier for cost (from compare)"}
+                                        booking_carrier_pick_input := ComboInput{empty_text: "Carrier for cost (from compare)"}
                                     }
                                     booking_carrier_suggest := mod.widgets.SuggestList{field: "booking_carrier"}
                                     booking_apply_carrier_cost := RowSecondaryBtn{text: "Use carrier cost"}
@@ -5522,7 +5580,7 @@ script_mod! {
                                     font_size: 13.
                                 }
                                 mod.widgets.ComboField{field: "customer_name"
-                                    customer_name_input := FieldInput{
+                                    customer_name_input := ComboInput{
                                         empty_text: "Customer name"
                                     }
                                 }
@@ -5564,7 +5622,7 @@ script_mod! {
                                 FormFieldRow{
                                     menu_price_input := FieldInput{empty_text: "Price"}
                                     mod.widgets.ComboField{field: "menu_unit"
-                                        menu_unit_input := FieldInput{empty_text: "Unit (kg or blank)"}
+                                        menu_unit_input := ComboInput{empty_text: "Unit (kg or blank)"}
                                     }
                                 }
                                 menu_unit_suggest := mod.widgets.SuggestList{field: "menu_unit"}
@@ -5575,28 +5633,28 @@ script_mod! {
                                 FormFieldRow{
                                     menu_extra_kg_input := FieldInput{empty_text: "Extra / kg"}
                                     mod.widgets.ComboField{field: "menu_zone"
-                                        menu_zone_input := FieldInput{empty_text: "Zone name"}
+                                        menu_zone_input := ComboInput{empty_text: "Zone name"}
                                     }
                                 }
                                 menu_zone_suggest := mod.widgets.SuggestList{field: "menu_zone"}
                                 FormFieldRow{
                                     mod.widgets.ComboField{field: "menu_carrier"
-                                        menu_carrier_input := FieldInput{empty_text: "Carrier (blank = our sell rate)"}
+                                        menu_carrier_input := ComboInput{empty_text: "Carrier (blank = our sell rate)"}
                                     }
                                     mod.widgets.ComboField{field: "menu_party"
-                                        menu_party_input := FieldInput{empty_text: "Party (blank = all customers)"}
+                                        menu_party_input := ComboInput{empty_text: "Party (blank = all customers)"}
                                     }
                                 }
                                 menu_carrier_suggest := mod.widgets.SuggestList{field: "menu_carrier"}
                                 menu_party_suggest := mod.widgets.SuggestList{field: "menu_party"}
                                 mod.widgets.ComboField{field: "menu_tax"
-                                    menu_tax_input := FieldInput{
+                                    menu_tax_input := ComboInput{
                                         empty_text: "Tax rate name or % — Standard, Reduced, 0, 5, 12, 18, 20"
                                     }
                                 }
                                 menu_tax_suggest := mod.widgets.SuggestList{field: "menu_tax"}
                                 mod.widgets.ComboField{field: "menu_category"
-                                    menu_category_input := FieldInput{empty_text: "Category (optional, created if new)"}
+                                    menu_category_input := ComboInput{empty_text: "Category (optional, created if new)"}
                                 }
                                 menu_category_suggest := mod.widgets.SuggestList{field: "menu_category"}
                                 menu_modifiers_input := FieldInput{empty_text: "Options (optional) — Large=20, Gift wrap=10"}
@@ -5659,13 +5717,13 @@ script_mod! {
                                 }
                                 h_goods_received := WrapLabel{body: "Goods received" font_color: #x0B1220 font_size: 15.}
                                 mod.widgets.ComboField{field: "buy_item"
-                                    buy_item_input := FieldInput{empty_text: "Item name"}
+                                    buy_item_input := ComboInput{empty_text: "Item name"}
                                 }
                                 buy_item_suggest := mod.widgets.SuggestList{field: "buy_item"}
                                 buy_qty_input := FieldInput{empty_text: "Qty (e.g. 1.5 for kg)"}
                                 buy_cost_input := FieldInput{empty_text: "Unit cost"}
                                 mod.widgets.ComboField{field: "buy_supplier"
-                                    buy_supplier_input := FieldInput{empty_text: "Supplier name (or party)"}
+                                    buy_supplier_input := ComboInput{empty_text: "Supplier name (or party)"}
                                 }
                                 buy_supplier_suggest := mod.widgets.SuggestList{field: "buy_supplier"}
                                 h_buy_party_kind := Label{
@@ -5918,16 +5976,16 @@ script_mod! {
                                 }
                                 FormFieldRow{
                                     mod.widgets.ComboField{field: "party_country"
-                                        party_country_input := FieldInput{empty_text: "Country"}
+                                        party_country_input := ComboInput{empty_text: "Country"}
                                     }
                                     mod.widgets.ComboField{field: "party_state"
-                                        party_state_input := FieldInput{empty_text: "State / region"}
+                                        party_state_input := ComboInput{empty_text: "State / region"}
                                     }
                                 }
                                 party_country_suggest := mod.widgets.SuggestList{field: "party_country"}
                                 party_state_suggest := mod.widgets.SuggestList{field: "party_state"}
                                 mod.widgets.ComboField{field: "party_pincode"
-                                    party_pincode_input := FieldInput{empty_text: "PIN / ZIP / postcode"}
+                                    party_pincode_input := ComboInput{empty_text: "PIN / ZIP / postcode"}
                                 }
                                 party_pincode_suggest := mod.widgets.SuggestList{field: "party_pincode"}
                                 credit_add_address := FieldInput{empty_text: "Street / area address"}
@@ -6018,7 +6076,7 @@ script_mod! {
                                 FormFieldRow{
                                     credit_limit_input := FieldInput{empty_text: "Credit limit (0 = none)"}
                                     mod.widgets.ComboField{field: "credit_party"
-                                        credit_limit_party := FieldInput{empty_text: "Party name (or use selected)"}
+                                        credit_limit_party := ComboInput{empty_text: "Party name (or use selected)"}
                                     }
                                 }
                                 credit_party_suggest := mod.widgets.SuggestList{field: "credit_party"}
@@ -6130,7 +6188,7 @@ script_mod! {
                                 }
                                 FormCard{
                                 mod.widgets.ComboField{field: "team_pick"
-                                    team_pick_input := FieldInput{empty_text: "Staff to edit — name, username, or pick"}
+                                    team_pick_input := ComboInput{empty_text: "Staff to edit — name, username, or pick"}
                                 }
                                 team_pick_suggest := mod.widgets.SuggestList{field: "team_pick"}
                                 team_pick_btn := NavBtn{text: "Select this staff" visible: false}
@@ -6350,7 +6408,7 @@ script_mod! {
                                     FormCard{
                                     fiscal_label := mod.widgets.ReportText{}
                                     mod.widgets.ComboField{field: "country"
-                                        country_code_input := FieldInput{
+                                        country_code_input := ComboInput{
                                             empty_text: "Country code e.g. IN, GB, US, AE, BR"
                                         }
                                     }
@@ -6537,6 +6595,35 @@ script_mod! {
                                     // Fill wrap CTA visible inside the Find ActionStack.
                                     find_printers_cancel := QuietFitBtn{text: "Cancel" visible: false}
                                     h_printers_pool := WrapLabel{body: "Printers" font_color: #x0B1220 font_size: 16.}
+                                    // The saved printers, each `name · paper`, in one list (owner
+                                    // 2026-11-16: the printer owns its paper). Tapping one opens its
+                                    // Width / Length where it sits (one list in two parts around the
+                                    // open one; docs/PRINTER.md § Paper and preview).
+                                    printers_rows := mod.widgets.PrinterPaperRows{part: "before" visible: false}
+                                    printer_paper_editor := RoundedView{
+                                        width: Fill height: Fit flow: Down spacing: 8 visible: false
+                                        margin: Inset{left: 0. right: 0. top: 0. bottom: 8.}
+                                        padding: Inset{left: 12. right: 12. top: 10. bottom: 12.}
+                                        draw_bg.color: #xEEF3F8
+                                        draw_bg.border_radius: 12.
+                                        draw_bg.border_size: 1.5
+                                        draw_bg.border_color: #x072058
+                                        View{width: Fill height: Fit flow: Right spacing: 0 align: Align{y: 0.5}
+                                            h_printer_paper := WrapLabel{width: Fit body: "Paper" font_color: #x0B1220 font_size: 14.}
+                                            printer_paper_help := InfoHelp{tip: " "}
+                                        }
+                                        View{width: Fill height: Fit flow: Right spacing: 8
+                                            View{width: Fill height: Fit flow: Down spacing: 4
+                                                h_printer_paper_w := WrapLabel{width: Fill body: "Width (mm)" font_color: #x0B1220 font_size: 13.}
+                                                printer_paper_w_input := FieldInput{width: Fill empty_text: ""}
+                                            }
+                                            View{width: Fill height: Fit flow: Down spacing: 4
+                                                h_printer_paper_l := WrapLabel{width: Fill body: "Length (mm)" font_color: #x0B1220 font_size: 13.}
+                                                printer_paper_l_input := FieldInput{width: Fill empty_text: ""}
+                                            }
+                                        }
+                                    }
+                                    printers_after_rows := mod.widgets.PrinterPaperRows{part: "after" visible: false}
                                     printers_pool_label := mod.widgets.ReportText{}
                                     // Manual name, target, and Thermal/Portrait/Landscape
                                     // profiles. Find supplies real printers. Receipt and
@@ -6546,7 +6633,7 @@ script_mod! {
                                         visible: false
                                     printer_label_input := FieldInput{empty_text: "Name (e.g. Desk)"}
                                     mod.widgets.ComboField{field: "printer_target"
-                                        printer_target_input := FieldInput{empty_text: "host:9100 · bt:MAC · usb:VID:PID · system name"}
+                                        printer_target_input := ComboInput{empty_text: "host:9100 · bt:MAC · usb:VID:PID · system name"}
                                     }
                                     printer_target_suggest := mod.widgets.SuggestList{field: "printer_target"}
                                     h_printer_mode := WrapLabel{
@@ -6641,9 +6728,30 @@ script_mod! {
                                     }
                                     h_job_size := WrapLabel{body: "Font size" font_color: #x0B1220 font_size: 14.}
                                     job_size_input := FieldInput{empty_text: "e.g. 18, 20, 26…"}
+                                    // The job as it prints on a printer's paper — every saved
+                                    // printer can be picked; picking one changes the preview
+                                    // only (docs/PRINTER.md § Paper and preview).
+                                    job_preview_head := View{width: Fill height: Fit flow: Right spacing: 0 align: Align{y: 0.5}
+                                        h_job_preview := WrapLabel{width: Fit body: "Preview" font_color: #x0B1220 font_size: 14.}
+                                        job_preview_help := InfoHelp{tip: " "}
+                                    }
+                                    mod.widgets.ComboField{field: "job_preview_paper"
+                                        job_preview_paper_dd := ComboFace{text: "Paper"}
+                                    }
+                                    job_preview_paper_input := FieldInput{
+                                        height: 0.
+                                        empty_text: ""
+                                        margin: Inset{left: 0. right: 0. top: 0. bottom: 0.}
+                                        padding: Inset{left: 0. right: 0. top: 0. bottom: 0.}
+                                    }
+                                    job_preview_paper_suggest := mod.widgets.SuggestList{field: "job_preview_paper"}
+                                    job_preview_card := View{
+                                        width: Fill height: Fit
+                                        job_preview := mod.widgets.SlipPicture{}
+                                    }
                                     job_format_test := StackSecondaryBtn{text: "Test print"}
                                     mod.widgets.ComboField{field: "route_add_printer"
-                                        route_add_printer_input := FieldInput{empty_text: "Add printer to this route"}
+                                        route_add_printer_input := ComboInput{empty_text: "Add printer to this route"}
                                     }
                                     route_add_printer_suggest := mod.widgets.SuggestList{field: "route_add_printer"}
                                     ActionStack{
@@ -6667,7 +6775,7 @@ script_mod! {
                                     h_awb_pools := WrapLabel{body: "Carrier AWB number pools" font_color: #x0B1220 font_size: 16.}
                                     awb_pools_label := mod.widgets.ReportText{}
                                     mod.widgets.ComboField{field: "awb_pool_carrier"
-                                        awb_pool_carrier_input := FieldInput{empty_text: "Carrier party name"}
+                                        awb_pool_carrier_input := ComboInput{empty_text: "Carrier party name"}
                                     }
                                     awb_pool_carrier_suggest := mod.widgets.SuggestList{field: "awb_pool_carrier"}
                                     FormFieldRow{
@@ -6696,11 +6804,11 @@ script_mod! {
                                     }
                                     measure_label := mod.widgets.ReportText{}
                                     mod.widgets.ComboField{field: "measure_dim"
-                                        measure_dim_input := FieldInput{empty_text: "Dimension unit code (cm)"}
+                                        measure_dim_input := ComboInput{empty_text: "Dimension unit code (cm)"}
                                     }
                                     measure_dim_suggest := mod.widgets.SuggestList{field: "measure_dim"}
                                     mod.widgets.ComboField{field: "measure_weight"
-                                        measure_weight_input := FieldInput{empty_text: "Weight unit code (kg)"}
+                                        measure_weight_input := ComboInput{empty_text: "Weight unit code (kg)"}
                                     }
                                     measure_weight_suggest := mod.widgets.SuggestList{field: "measure_weight"}
                                     measure_divisor_input := FieldInput{empty_text: "Volumetric divisor (5000 domestic)"}
@@ -6728,11 +6836,11 @@ script_mod! {
                                     }
                                     FormCard{
                                     mod.widgets.ComboField{field: "conv_from"
-                                        conv_from_input := FieldInput{empty_text: "From code (bag)"}
+                                        conv_from_input := ComboInput{empty_text: "From code (bag)"}
                                     }
                                     conv_from_suggest := mod.widgets.SuggestList{field: "conv_from"}
                                     mod.widgets.ComboField{field: "conv_to"
-                                        conv_to_input := FieldInput{empty_text: "To code (kg)"}
+                                        conv_to_input := ComboInput{empty_text: "To code (kg)"}
                                     }
                                     conv_to_suggest := mod.widgets.SuggestList{field: "conv_to"}
                                     conv_factor_input := FieldInput{empty_text: "Factor (25 = 1 bag → 25 kg)"}
@@ -7058,7 +7166,7 @@ script_mod! {
                                                 flow: Right spacing: 8
                                                 align: Align{y: 0.5}
                                                 mod.widgets.ComboField{field: "ops_carrier"
-                                                    ops_carrier_input := FieldInput{empty_text: "Carrier"}
+                                                    ops_carrier_input := ComboInput{empty_text: "Carrier"}
                                                 }
                                                 ops_handover_carrier := LaneBtnOn{text: "Hand to carrier"}
                                             }
@@ -7068,7 +7176,7 @@ script_mod! {
                                                 flow: Right spacing: 8
                                                 align: Align{y: 0.5}
                                                 mod.widgets.ComboField{field: "ops_rider"
-                                                    ops_rider_input := FieldInput{empty_text: "Rider"}
+                                                    ops_rider_input := ComboInput{empty_text: "Rider"}
                                                 }
                                                 ops_dispatch_fleet := LaneBtnOn{text: "Send with rider"}
                                             }
@@ -7150,7 +7258,7 @@ script_mod! {
                                         cod_collect := LaneBtnOn{text: "Collect COD"}
                                     }
                                     mod.widgets.ComboField{field: "ops_party"
-                                        ops_party_input := FieldInput{empty_text: "Consignor"}
+                                        ops_party_input := ComboInput{empty_text: "Consignor"}
                                     }
                                     ops_party_suggest := mod.widgets.SuggestList{field: "ops_party"}
                                     ActionStack{
@@ -7165,7 +7273,7 @@ script_mod! {
                                     visible: false
                                     FormCard{
                                         mod.widgets.ComboField{field: "settle_rider"
-                                            settle_rider_input := FieldInput{empty_text: "Rider"}
+                                            settle_rider_input := ComboInput{empty_text: "Rider"}
                                         }
                                         settle_rider_suggest := mod.widgets.SuggestList{field: "settle_rider"}
                                         ops_rider_cod_input := FieldInput{empty_text: "COD handed in"}
@@ -7305,7 +7413,7 @@ script_mod! {
                                 }
                                 inventory_label := mod.widgets.ReportText{}
                                 mod.widgets.ComboField{field: "inv_item"
-                                    inv_item_input := FieldInput{empty_text: "Item name"}
+                                    inv_item_input := ComboInput{empty_text: "Item name"}
                                 }
                                 inv_item_suggest := mod.widgets.SuggestList{field: "inv_item"}
                                 inv_qty_input := FieldInput{empty_text: "Quantity"}
@@ -7319,7 +7427,7 @@ script_mod! {
                                                     body: "Goods received" font_color: #x0B1220 font_size: 15.}
                                 inv_cost_input := FieldInput{empty_text: "Unit cost"}
                                 mod.widgets.ComboField{field: "inv_supplier"
-                                    inv_supplier_input := FieldInput{empty_text: "Supplier"}
+                                    inv_supplier_input := ComboInput{empty_text: "Supplier"}
                                 }
                                 inv_supplier_suggest := mod.widgets.SuggestList{field: "inv_supplier"}
                                 inv_purchase := NavBtn{text: "Record purchase"}

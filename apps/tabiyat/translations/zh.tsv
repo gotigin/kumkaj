@@ -72,10 +72,6 @@ bill_item_layout	菜品版式
 bill_item_layout_columns	列
 bill_item_layout_stacked	堆叠
 bill_item_header	列标题
-bill_item_hdr_item	品名表头
-bill_item_hdr_qty	数量表头
-bill_item_hdr_price	单价表头
-bill_item_hdr_amount	金额表头
 bill_item_name	药品名称
 bill_item_qty	数量
 bill_item_price	单价
@@ -83,6 +79,13 @@ bill_item_amount	金额
 bill_item_note	Rx / 销售备注
 bill_item_col_sep	列线
 slip_col_width	宽度 (mm)
+paper_heading	纸张
+paper_size	{w} × {h} mm
+paper_roll	{w} mm 卷纸
+paper_not_set	纸张尚未得知
+paper_length_mm	长度 (mm)
+printer_paper_help	此打印机的纸张（mm）。长度留空即为卷纸：每张单据与其内容一样长。“查找打印机”会从打印机驱动程序填入空白纸张（无法得知时为 80 mm 卷纸），且绝不更改已设置的纸张。
+preview_help	此单据在下方所选打印机的纸张上，与在那里打印的完全相同：从打印机可达的左上角起按实际尺寸打印（灰色：无法到达的边缘），长单据打印在更多张纸上，超出纸张边缘的部分会被切掉。选择打印机只会改变预览；每台打印机的纸张在“打印机”中设置。
 slip_col_start	开头间距 (px)
 slip_col_end	结尾间距 (px)
 slip_columns_help	每列的宽度已包含其开头和结尾间距。文字在所属列内换行；超出内容宽度的部分，在纸上和预览中都会被裁掉。
@@ -850,3 +853,4 @@ nav_loading	加载中…
 printer_mode_first	第一个可用的
 printer_mode_all	全部打印
 slip_columns	列
+slip_col_header	表头

@@ -153,12 +153,45 @@ impl App {
             startup::set_notify(|| makepad_widgets::makepad_platform::thread::SignalToUI::set_ui_signal());
             phone::set_notify(|| makepad_widgets::makepad_platform::thread::SignalToUI::set_ui_signal());
             print_share::set_notify(|| makepad_widgets::makepad_platform::thread::SignalToUI::set_ui_signal());
+            // A printer's paper sizes are read on a worker (CUPS / PowerShell).
+            os_paper::set_notify(|| makepad_widgets::makepad_platform::thread::SignalToUI::set_ui_signal());
             // Printer Find is Settings → Find printers only (never at startup).
             net::set_books_changed_hook(|| {
                 BOOKS_CHANGED.store(true, std::sync::atomic::Ordering::SeqCst);
                 FACET_DIRTY.store(true, std::sync::atomic::Ordering::SeqCst);
                 makepad_widgets::makepad_platform::thread::SignalToUI::set_ui_signal();
             });
+        }
+        if matches!(event, Event::Signal) && os_paper::take_ready() {
+            // A driver answered: a printer with no paper gets its driver's
+            // (never changing one already set), then every face that shows
+            // a printer's paper and both previews (the edges the printer
+            // cannot reach) are drawn again (docs/PRINTER.md § Paper and preview).
+            let open = {
+                let mut st = app_state().lock().unwrap();
+                if st.device_role != DeviceRole::Client
+                    && st.printer_draft.fill_missing_papers(&os_paper::answers(), false) > 0
+                {
+                    if let Err(e) = st.save_printer_draft() {
+                        log!("printer papers not saved: {e}");
+                    } else {
+                        print_share::configure(st.printer_draft.clone());
+                    }
+                }
+                st.suggest_open
+            };
+            if let Some(field @ (SuggestField::BillPreviewPaper | SuggestField::KotPreviewPaper)) = open {
+                app_state().lock().unwrap().open_suggest(field, "");
+                self.ui.widget(cx, field.list()).redraw(cx);
+            }
+            self.sync_preview_paper_ui(cx);
+            if self.ui.view(cx, ids!(settings_panel_printers)).visible() {
+                self.paint_printer_rows(cx);
+            }
+            if app_state().lock().unwrap().screen == Screen::Settings {
+                self.sync_bill_format_ui(cx);
+                self.sync_kot_format_ui(cx);
+            }
         }
         if matches!(event, Event::Signal) && (thumbs::take_ready() || lan_images::take_ready()) {
             // Targeted redraw only. Full-tree `ui.redraw` while a FingerDown is

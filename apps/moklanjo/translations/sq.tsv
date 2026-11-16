@@ -501,6 +501,17 @@ job_size	Madhësia e gërmës
 job_size_ph	p.sh. 18, 20, 26…
 test_receipt_format	Fatura e testimit
 test_label_format	Etiketa e provës
+paper_heading	Letër
+paper_size	{w} × {h} mm
+paper_roll	rrotull {w} mm
+paper_not_set	letra ende e panjohur
+paper_length_mm	Gjatësia (mm)
+printer_paper_help	Letra e këtij printeri në mm. Gjatësia bosh është rrotull: çdo faturë është aq e gjatë sa përmbajtja e saj. Gjej printerët plotëson letrën bosh nga drajveri i printerit (rrotull 80 mm kur nuk mund ta thotë) dhe kurrë nuk ndryshon një të vendosur tashmë.
+preview_help	Kjo faturë në letrën e printerit të zgjedhur më poshtë, siç printohet atje: në madhësi reale nga këndi i sipërm majtas që arrin printeri (gri: skajet që nuk i arrin), një faturë e gjatë në më shumë fletë, gjithçka përtej skajit të letrës pritet. Zgjedhja e printerit ndryshon vetëm pamjen paraprake; letra e çdo printeri vendoset te Printerët.
+slip_col_width	Gjerësia (mm)
+no_printer_assigned	Pa printer
+printer_target_default	printeri i zakonshëm i këtij kompjuteri (adresë bosh)
+job_preview	Shembull
 test_receipt_sent	Shembull i faturës u dërgua
 test_label_sent	Shembulli i etiketës u dërgua
 test_print_no_printer	Nuk ka printer për atë punë — shtoni një nën këtë vend

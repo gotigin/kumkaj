@@ -501,6 +501,17 @@ job_size	የፊደል መጠን
 job_size_ph	ለምሳሌ 18፣ 20፣ 26…
 test_receipt_format	Test receipt
 test_label_format	Test label
+paper_heading	ወረቀት
+paper_size	{w} × {h} mm
+paper_roll	{w} mm ጥቅል
+paper_not_set	ወረቀቱ ገና አልታወቀም
+paper_length_mm	ርዝመት (mm)
+printer_paper_help	የዚህ ማተሚያ ወረቀት በ mm። ባዶ ርዝመት ጥቅል ነው፤ እያንዳንዱ ደረሰኝ እንደ ይዘቱ ይረዝማል። ማተሚያዎችን ፈልግ ባዶ ወረቀትን ከማተሚያው ሾፌር ይሞላል (መናገር ካልቻለ 80 mm ጥቅል) እና ቀድሞ የተዘጋጀውን በፍጹም አይቀይርም።
+preview_help	ይህ ደረሰኝ ከታች በተመረጠው ማተሚያ ወረቀት ላይ፣ እዚያ እንደሚታተመው፦ ማተሚያው ከሚደርስበት የላይኛው ግራ ጥግ በእውነተኛ መጠን (ግራጫ፦ የማይደርስባቸው ጠርዞች)፣ ረጅም ደረሰኝ በተጨማሪ ገጾች፣ ከወረቀቱ ጠርዝ ያለፈው ይቆረጣል። ማተሚያ መምረጥ ቅድመ እይታውን ብቻ ይቀይራል፤ የእያንዳንዱ ማተሚያ ወረቀት በማተሚያዎች ስር ይዘጋጃል።
+slip_col_width	ስፋት (mm)
+no_printer_assigned	ማተሚያ የለም
+printer_target_default	የዚህ ኮምፒውተር የተለመደ ማተሚያ (ባዶ አድራሻ)
+job_preview	ቅድመ እይታ
 test_receipt_sent	Sample receipt sent
 test_label_sent	Sample label sent
 test_print_no_printer	ለዚያ ሥራ ምንም አታሚ የለም - በዚህ ቦታ ስር አንድ ይጨምሩ

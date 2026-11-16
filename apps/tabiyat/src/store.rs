@@ -25,6 +25,31 @@ use std::path::{Path, PathBuf};
 pub struct Store {
     conn: Connection,
     path: PathBuf,
+    /// Last field: dropped after `conn` has closed. See [`SidecarSweep`].
+    _sidecars: SidecarSweep,
+}
+
+/// When the books file is gone by the time the connection closes, removes
+/// its `-wal` / `-shm` beside it. SQLite deletes both itself on a clean
+/// close, but not when the file was removed while open (the journal has no
+/// file left to go back into), and a `-wal` left at that path would be
+/// read as the journal of the next books file made there. Tests remove
+/// their books while the store is still open; until 2026-11-16 every run
+/// left both files behind (~52,000 of them, 67 GB in `/tmp`).
+struct SidecarSweep(PathBuf);
+
+impl Drop for SidecarSweep {
+    fn drop(&mut self) {
+        let gone = matches!(fs::symlink_metadata(&self.0),
+            Err(e) if e.kind() == std::io::ErrorKind::NotFound);
+        if gone {
+            for suffix in ["-wal", "-shm"] {
+                let mut side = self.0.clone().into_os_string();
+                side.push(suffix);
+                let _ = fs::remove_file(side);
+            }
+        }
+    }
 }
 
 /// One unit of work on the books: lands whole or not at all. Outside a
@@ -178,6 +203,7 @@ impl Store {
         let mut store = Self {
             conn,
             path: path.to_path_buf(),
+            _sidecars: SidecarSweep(path.to_path_buf()),
         };
         let stamp: i64 = store
             .conn
@@ -11391,7 +11417,7 @@ mod tests {
     /// until a copy leaves (the second folder, or "Save a backup copy").
     #[test]
     fn a_week_without_a_copy_off_the_device_is_said() {
-        let home = std::env::temp_dir().join(format!("kumkaj-copy-due-{}", new_id()));
+        let home = crate::test_dirs::run_root().join(format!("kumkaj-copy-due-{}", new_id()));
         fs::create_dir_all(&home).unwrap();
         let store = Store::open_path(&home.join("books.sqlite3")).unwrap();
         assert_eq!(store.backup_copy_overdue_days().unwrap(), None, "no backups yet");
@@ -11411,7 +11437,7 @@ mod tests {
     #[test]
     fn automatic_backups_run_daily_keep_two_weeks_and_copy_to_a_second_place() {
         // Its own folder: the backups land beside the books.
-        let home = std::env::temp_dir().join(format!("kumkaj-books-{}", new_id()));
+        let home = crate::test_dirs::run_root().join(format!("kumkaj-books-{}", new_id()));
         fs::create_dir_all(&home).unwrap();
         let store = Store::open_path(&home.join("books.sqlite3")).unwrap();
         let dir = store.auto_backup_dir();
@@ -11424,7 +11450,7 @@ mod tests {
         for day in 1..=20 {
             fs::write(dir.join(format!("auto-202501{day:02}-000000000.sqlite3")), b"old").unwrap();
         }
-        let second = std::env::temp_dir().join(format!("kumkaj-second-{}", new_id()));
+        let second = crate::test_dirs::run_root().join(format!("kumkaj-second-{}", new_id()));
         store.set_backup_copy_dir(Some(&second)).unwrap();
         store.meta_set("last_backup_at", "2020-01-01T00:00:00+00:00").unwrap();
         let made = store.auto_backup_if_due().unwrap().unwrap();
@@ -11434,7 +11460,7 @@ mod tests {
         assert!(second.join(made.file_name().unwrap()).exists(), "copied to the second place");
         assert_eq!(store.backup_copy_error().unwrap(), "");
         // The second place is gone (USB pulled): said, and the backup still made.
-        let gone = std::env::temp_dir().join(format!("kumkaj-file-{}", new_id()));
+        let gone = crate::test_dirs::run_root().join(format!("kumkaj-file-{}", new_id()));
         fs::write(&gone, b"not a folder").unwrap();
         store.set_backup_copy_dir(Some(&gone.join("sub"))).unwrap();
         store.meta_set("last_backup_at", "2020-01-01T00:00:00+00:00").unwrap();
@@ -11452,11 +11478,11 @@ mod tests {
         let store = Store::open_path(&path).unwrap();
         store.upsert_product(&test_product("Tea", 20)).unwrap();
         drop(store);
-        let junk = std::env::temp_dir().join(format!("kumkaj-junk-{}.sqlite3", new_id()));
+        let junk = crate::test_dirs::run_root().join(format!("kumkaj-junk-{}.sqlite3", new_id()));
         fs::write(&junk, b"not a database at all").unwrap();
         let refused = Store::restore_from_to_path(&junk, &path).err().unwrap_or_default();
         assert!(refused.contains("not a backup"), "{refused}");
-        let other = std::env::temp_dir().join(format!("kumkaj-other-{}.sqlite3", new_id()));
+        let other = crate::test_dirs::run_root().join(format!("kumkaj-other-{}.sqlite3", new_id()));
         Connection::open(&other).unwrap().execute_batch("CREATE TABLE notes(x TEXT);").unwrap();
         assert!(Store::restore_from_to_path(&other, &path).is_err());
         // The books are untouched.
@@ -11475,7 +11501,7 @@ mod tests {
         let path = temp_db();
         let store = Store::open_path(&path).unwrap();
         store.upsert_product(&test_product("Tea", 20)).unwrap();
-        let other = std::env::temp_dir().join(format!("kumkaj-other-app-{}.sqlite3", new_id()));
+        let other = crate::test_dirs::run_root().join(format!("kumkaj-other-app-{}.sqlite3", new_id()));
         store.backup_to(&other).unwrap();
         drop(store);
         Connection::open(&other)
@@ -11501,7 +11527,7 @@ mod tests {
     /// told until a backup works again.
     #[test]
     fn a_failing_backup_is_reported_until_one_works() {
-        let dir = std::env::temp_dir().join(format!("kumkaj-backup-health-{}", new_id()));
+        let dir = crate::test_dirs::run_root().join(format!("kumkaj-backup-health-{}", new_id()));
         fs::create_dir_all(&dir).unwrap();
         let store = Store::open_path(&dir.join("tabiyat.sqlite3")).unwrap();
         // Where the backups folder should be, there is a file.
@@ -11594,7 +11620,27 @@ mod tests {
             .duration_since(UNIX_EPOCH)
             .unwrap()
             .as_nanos();
-        std::env::temp_dir().join(format!("kumkaj-smoke-{n}-{}.sqlite3", new_id()))
+        crate::test_dirs::run_root().join(format!("kumkaj-smoke-{n}-{}.sqlite3", new_id()))
+    }
+
+    #[test]
+    fn books_removed_while_open_leave_no_journal_beside_them() {
+        let path = temp_db();
+        let side = |suffix: &str| {
+            let mut p = path.clone().into_os_string();
+            p.push(suffix);
+            PathBuf::from(p)
+        };
+        let store = Store::open_path(&path).unwrap();
+        store
+            .conn
+            .execute_batch("CREATE TABLE sweep_check(x); INSERT INTO sweep_check VALUES (1);")
+            .unwrap();
+        assert!(side("-wal").exists(), "WAL books keep a journal while open");
+        std::fs::remove_file(&path).unwrap();
+        drop(store);
+        assert!(!side("-wal").exists(), "-wal left beside removed books");
+        assert!(!side("-shm").exists(), "-shm left beside removed books");
     }
 
     fn test_product(name: &str, rupees: i64) -> Product {
@@ -11764,7 +11810,7 @@ mod tests {
             .add_attachment_note(AttachmentEntity::Sale, &sale.id, "Desk", "less spicy", &owner)
             .unwrap();
 
-        let png_path = std::env::temp_dir().join(format!("attach-png-{}.png", sale.id));
+        let png_path = crate::test_dirs::run_root().join(format!("attach-png-{}.png", sale.id));
         std::fs::write(&png_path, tiny_png_bytes()).unwrap();
         let img = store
             .add_attachment_image(AttachmentEntity::Sale, &sale.id, &png_path, "bill photo", &owner)
@@ -11777,7 +11823,7 @@ mod tests {
         assert_eq!(&webp[0..4], b"RIFF");
         assert_eq!(&webp[8..12], b"WEBP");
 
-        let pdf_path = std::env::temp_dir().join(format!("attach-pdf-{}.pdf", sale.id));
+        let pdf_path = crate::test_dirs::run_root().join(format!("attach-pdf-{}.pdf", sale.id));
         std::fs::write(&pdf_path, b"%PDF-1.4 test").unwrap();
         store
             .add_attachment_file(AttachmentEntity::Sale, &sale.id, &pdf_path, "invoice", &owner)
@@ -11792,7 +11838,7 @@ mod tests {
         assert!(summary.contains("image:"));
         assert!(summary.contains("file:"));
 
-        let exe = std::env::temp_dir().join(format!("attach-bad-{}.exe", sale.id));
+        let exe = crate::test_dirs::run_root().join(format!("attach-bad-{}.exe", sale.id));
         std::fs::write(&exe, b"MZ").unwrap();
         assert!(store
             .add_attachment_image(AttachmentEntity::Sale, &sale.id, &exe, "", &owner)
@@ -11828,7 +11874,7 @@ mod tests {
     fn category_takes_a_shelf_photo_only_when_it_has_none() {
         let path = temp_db();
         let store = Store::open_path(&path).unwrap();
-        let png = std::env::temp_dir().join(format!("cat-photo-{}.png", new_id()));
+        let png = crate::test_dirs::run_root().join(format!("cat-photo-{}.png", new_id()));
         std::fs::write(&png, tiny_png_bytes()).unwrap();
         let cat = store.add_category("Bakery Cafe").unwrap();
         assert!(store.set_category_photo_if_missing(&cat.id, &png).unwrap());
@@ -11844,7 +11890,7 @@ mod tests {
     fn import_item_image_stores_webp() {
         let path = temp_db();
         let store = Store::open_path(&path).unwrap();
-        let png_path = std::env::temp_dir().join("item-img-test.png");
+        let png_path = crate::test_dirs::run_root().join("item-img-test.png");
         std::fs::write(&png_path, tiny_png_bytes()).unwrap();
         let key = store.import_item_image("prod1", &png_path).unwrap();
         assert!(key.ends_with(".webp"));
@@ -12508,7 +12554,7 @@ mod tests {
         store
             .finalize_sale(&draft, PayMethod::Cash, None, &owner)
             .unwrap();
-        let backup = std::env::temp_dir().join(format!(
+        let backup = crate::test_dirs::run_root().join(format!(
             "kumkaj-backup-{}.sqlite3",
             SystemTime::now()
                 .duration_since(UNIX_EPOCH)

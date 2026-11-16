@@ -501,6 +501,17 @@ job_size	Tamaño de letra
 job_size_ph	p. ex. 18, 20, 26…
 test_receipt_format	Recibo de proba
 test_label_format	Etiqueta de proba
+paper_heading	Papel
+paper_size	{w} × {h} mm
+paper_roll	rolo de {w} mm
+paper_not_set	papel aínda descoñecido
+paper_length_mm	Longo (mm)
+printer_paper_help	O papel desta impresora en mm. Un Longo baleiro é un rolo: cada tíquet é tan longo coma o seu contido. Atopar impresoras enche o papel baleiro co do controlador da impresora (un rolo de 80 mm se non o pode dicir) e nunca cambia un xa definido.
+preview_help	Este tíquet sobre o papel da impresora escollida abaixo, tal como se imprime alí: a tamaño real desde a esquina superior esquerda que alcanza a impresora (gris: bordos que non alcanza), un tíquet longo en máis follas, todo o que pasa do bordo do papel recórtase. Escoller unha impresora só cambia a vista previa; o papel de cada impresora defínese en Impresoras.
+slip_col_width	Ancho (mm)
+no_printer_assigned	Sen impresora
+printer_target_default	a impresora habitual deste ordenador (enderezo baleiro)
+job_preview	Vista previa
 test_receipt_sent	Recibo de mostra enviado
 test_label_sent	Etiqueta de mostra enviada
 test_print_no_printer	Non hai impresora para ese traballo. Engade unha debaixo deste lugar

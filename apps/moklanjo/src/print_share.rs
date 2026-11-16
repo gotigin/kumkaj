@@ -138,7 +138,8 @@ fn default_side() -> f32 { STD_SIDE }
 
 /// Document type-size presets. Product built-ins are generic (any OS queue).
 /// Narrow-tray tuning is owner/template choice — not assumed for every shop.
-/// OS jobs still fit-to-page so PNGs are not printed ~16″ wide at 72 DPI.
+/// OS documents print at real size on the printer's own paper
+/// (docs/PRINTER.md § Paper and preview).
 pub const STD_EM_SMALL: f32 = 18.0;
 pub const STD_EM_NORMAL: f32 = 20.0;
 pub const STD_EM_LARGE: f32 = 26.0;
@@ -283,15 +284,91 @@ impl PrinterMode {
     }
 }
 
-/// Destination only.
-#[derive(Clone, Debug, PartialEq, Eq, Serialize, Deserialize)]
+/// A printer on this device and the paper in it (docs/PRINTER.md § Paper
+/// and preview — owner, 2026-11-16: the printer owns its paper).
+#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
 pub struct NamedPrinter {
     pub id: String,
     pub label: String,
     pub target: String,
+    /// Width of the paper in it, mm; 0 = not known yet (Find fills it).
+    #[serde(default, skip_serializing_if = "mm_unset")]
+    pub paper_width_mm: f64,
+    /// Length of one sheet, mm; 0 = a roll (each job as long as its content).
+    #[serde(default, skip_serializing_if = "mm_unset")]
+    pub paper_length_mm: f64,
     #[serde(default, alias = "wire", alias = "mode", skip_serializing)]
     pub _legacy_mode: Option<String>,
 }
+
+
+fn mm_unset(v: &f64) -> bool {
+    !(*v > 0.0)
+}
+
+/// The default when a printer cannot say what paper it holds: the common
+/// 80 mm receipt roll (owner, 2026-11-16). Never A4 or another sheet.
+pub const DEFAULT_PAPER_WIDTH_MM: f64 = 80.0;
+
+/// Narrowest and widest paper a printer may be set to, mm (a typo guard).
+pub const PAPER_MM_MIN: f64 = 10.0;
+pub const PAPER_MM_MAX: f64 = 2000.0;
+
+/// mm to 0.1 mm, as people read and type it.
+pub fn round_mm(mm: f64) -> f64 {
+    (mm * 10.0).round() / 10.0
+}
+
+impl NamedPrinter {
+    /// The paper set for this printer, if any.
+    pub fn paper(&self) -> Option<crate::os_paper::PaperMm> {
+        crate::os_paper::PaperMm::new(self.paper_width_mm, self.paper_length_mm)
+    }
+
+    /// A system print queue (or the system default) — the only printers
+    /// with a driver to ask what paper they hold. ESC/POS devices (network
+    /// raw, USB, Bluetooth) and Android's print services have none.
+    pub fn has_driver(&self) -> bool {
+        matches!(parse_target(&self.target), PrinterTarget::Named(_) | PrinterTarget::Default)
+    }
+
+    /// Give a printer with no paper one: the driver's current paper, else
+    /// (nothing to ask, or a driver that cannot say) an 80 mm roll. A paper
+    /// already set is never changed. `driver` is `None` when it was not asked
+    /// (or not yet answered). `default_when_unanswered`: Find (and a job,
+    /// which must print on something) give the default to a printer whose
+    /// driver did not answer (owner, 2026-11-16); a screen repaint never
+    /// does, so a moment's silence is not saved as its paper. Returns
+    /// whether it changed.
+    pub fn fill_paper(
+        &mut self,
+        driver: Option<&Result<crate::os_paper::PrinterPapers, String>>,
+        default_when_unanswered: bool,
+    ) -> bool {
+        if self.paper().is_some() {
+            return false;
+        }
+        let set = |p: &mut Self, w: f64, l: f64| {
+            p.paper_width_mm = w;
+            p.paper_length_mm = l;
+            true
+        };
+        // Nothing to ask (ESC/POS devices, Android's print services — the
+        // system dialog picks their paper): the default straight away.
+        if !self.has_driver() {
+            return set(self, DEFAULT_PAPER_WIDTH_MM, 0.0);
+        }
+        match driver {
+            Some(Ok(papers)) => match papers.default_paper() {
+                Some(p) => set(self, round_mm(p.width_mm), round_mm(p.height_mm)),
+                None => set(self, DEFAULT_PAPER_WIDTH_MM, 0.0),
+            },
+            Some(Err(_)) if default_when_unanswered => set(self, DEFAULT_PAPER_WIDTH_MM, 0.0),
+            _ => false,
+        }
+    }
+}
+
 
 #[derive(Clone, Debug, PartialEq, Eq, Serialize, Deserialize)]
 pub struct PrintRoutes {
@@ -443,6 +520,8 @@ impl DevicePrinters {
             id: id.clone(),
             label,
             target: tgt,
+            paper_width_mm: 0.0,
+            paper_length_mm: 0.0,
             _legacy_mode: None,
         });
         id
@@ -583,9 +662,49 @@ impl DevicePrinters {
             .iter()
             .filter_map(|id| {
                 let p = self.printers.iter().find(|p| p.id == *id)?;
-                Some(PrintDest { target: parse_target(&p.target), format: format.clone() })
+                Some(PrintDest {
+                    target: parse_target(&p.target),
+                    format: format.clone(),
+                    paper: p.paper(),
+                })
             })
             .collect()
+    }
+
+    /// The paper in one printer, as the owner typed it on Settings →
+    /// Printers: width mm, length mm (0 = a roll). Out-of-range values are
+    /// refused (returns false), nothing is clamped into a size not typed.
+    pub fn set_printer_paper_mm(&mut self, printer_id: &str, width_mm: f64, length_mm: f64) -> bool {
+        let ok = |v: f64| (PAPER_MM_MIN..=PAPER_MM_MAX).contains(&v);
+        if !ok(width_mm) || !(length_mm == 0.0 || ok(length_mm)) {
+            return false;
+        }
+        match self.printers.iter_mut().find(|p| p.id == printer_id.trim()) {
+            Some(p) => {
+                p.paper_width_mm = round_mm(width_mm);
+                p.paper_length_mm = round_mm(length_mm);
+                true
+            }
+            None => false,
+        }
+    }
+
+    /// Find's step for papers: every printer with no paper gets one from its
+    /// driver's answer in `drivers` (target → answer), or the default where
+    /// that is right (`NamedPrinter::fill_paper`). Never changes a paper
+    /// already set. Returns how many printers got one.
+    pub fn fill_missing_papers(
+        &mut self,
+        drivers: &std::collections::HashMap<String, Result<crate::os_paper::PrinterPapers, String>>,
+        default_when_unanswered: bool,
+    ) -> usize {
+        let mut n = 0;
+        for p in &mut self.printers {
+            if p.fill_paper(drivers.get(p.target.trim()), default_when_unanswered) {
+                n += 1;
+            }
+        }
+        n
     }
 
     pub fn remove_printer(&mut self, id: &str) {
@@ -617,6 +736,9 @@ pub enum PrinterTarget {
 pub struct PrintDest {
     pub target: PrinterTarget,
     pub format: PrintFormat,
+    /// OS document: the paper set for the printer (`None` until known; the
+    /// send then asks the driver, as Find would). See [`NamedPrinter::fill_paper`].
+    pub paper: Option<crate::os_paper::PaperMm>,
 }
 
 /// Port network receipt printers listen on for raw jobs.
@@ -897,7 +1019,7 @@ fn queue(job: Job) {
             for job in rx {
                 let mut last_err: Option<(String, String)> = None;
                 for dest in &job.dests {
-                    match send_to_printer(&dest.format, &dest.target, &job.path, &job.text) {
+                    match send_to_printer(&dest.format, &dest.target, &job.path, &job.text, dest.paper) {
                         Ok(()) => {
                             last_err = None;
                             break;
@@ -932,6 +1054,7 @@ fn send_to_printer(
     target: &PrinterTarget,
     path: &Path,
     text: &str,
+    paper: Option<crate::os_paper::PaperMm>,
 ) -> Result<(), String> {
     let bytes = job_bytes(format, text);
     match target {
@@ -949,7 +1072,7 @@ fn send_to_printer(
         }
         PrinterTarget::Default => {
             if format.document {
-                print_system_standard(None, path, text, format, format.landscape)
+                print_system_standard(None, path, text, format, format.landscape, 1, paper)
             } else if cfg!(target_os = "android") {
                 Err(format!(
                     "format \"{}\" on Android needs Network, Bluetooth, or USB",
@@ -961,7 +1084,7 @@ fn send_to_printer(
         }
         PrinterTarget::Named(name) => {
             if format.document {
-                print_system_standard(Some(name), path, text, format, format.landscape)
+                print_system_standard(Some(name), path, text, format, format.landscape, 1, paper)
             } else if cfg!(target_os = "android") {
                 Err(format!(
                     "format \"{}\" on Android needs Network, Bluetooth, or USB",
@@ -974,41 +1097,413 @@ fn send_to_printer(
     }
 }
 
+/// The paper a job goes on: the printer's own, or — not set yet — what Find
+/// would give it from the same driver answer (the driver's paper, else an
+/// 80 mm roll). Never a size of the app's choosing.
+fn job_paper(
+    paper: Option<crate::os_paper::PaperMm>,
+    driver: &Result<crate::os_paper::PrinterPapers, String>,
+) -> crate::os_paper::PaperMm {
+    if let Some(p) = paper {
+        return p;
+    }
+    let mut probe = NamedPrinter {
+        id: String::new(),
+        label: String::new(),
+        target: String::new(),
+        paper_width_mm: 0.0,
+        paper_length_mm: 0.0,
+        _legacy_mode: None,
+    };
+    probe.fill_paper(Some(driver), true);
+    probe.paper().unwrap_or(crate::os_paper::PaperMm {
+        width_mm: DEFAULT_PAPER_WIDTH_MM,
+        length_mm: 0.0,
+    })
+}
+
+/// Android: the upright slip and its real width go to the system print
+/// dialog, where the owner picks the printer and the paper; the slip is drawn
+/// at its real size from that paper's printable top-left (patches/makepad/
+/// MakepadActivity-print.java `printSlipPages`). No paper is assumed.
 fn print_android_document(text: &str, format: &PrintFormat, landscape: bool) -> Result<(), String> {
-    // Honour format em / line / baseline / side (not fixed RasterMetrics::standard).
-    let png = slip_png(format, text)?;
+    let (png, mm) = os_document_slip(text, format)?;
     #[cfg(target_os = "android")]
     {
-        crate::print_android::print_png("Moklanjo", &png, landscape)
+        crate::print_android::print_slip("Moklanjo", &png, mm, landscape)
     }
     #[cfg(not(target_os = "android"))]
     {
-        let _ = (png, landscape);
+        let _ = (png, mm, landscape);
         Err("Android print service is only on Android".into())
     }
 }
 
-/// Standard (document) jobs: always render with bundled Noto fonts to a PNG,
-/// then hand that image to the OS printer — same glyphs on every platform.
+/// The OS-document slip: the picture a receipt or label prints as (the
+/// preview's), upright, and its width on paper in mm. Landscape is the
+/// paper's business (each system turns it on the sheet).
+fn os_document_slip(text: &str, format: &PrintFormat) -> Result<(Vec<u8>, f64), String> {
+    let png = slip_png(format, text)?;
+    Ok((png, os_document_content_mm(&format.raster_metrics())))
+}
+
+/// The slip's width on paper, in mm: its own dots at 7.2 per mm, so a px
+/// is 1/96 inch on paper at every content width (docs/PRINTER.md lesson 22).
+pub fn os_document_content_mm(metrics: &crate::receipt_raster::RasterMetrics) -> f64 {
+    metrics.page_dots().max(1) as f64 * 80.0 / 576.0
+}
+
+/// OS document: the preview's slip picture at its real size on a page that
+/// is exactly the printer's paper (Settings → Printers; docs/PRINTER.md §
+/// Paper and preview), from the top-left of its printable area. Plain UTF-8
+/// text depended on each driver's fonts (Indic became □).
 fn print_system_standard(
     name: Option<&str>,
     path: &Path,
     text: &str,
     format: &PrintFormat,
     landscape: bool,
+    copies: u32,
+    paper: Option<crate::os_paper::PaperMm>,
 ) -> Result<(), String> {
-    let png = slip_png(format, text)?;
-    let png_path = path.with_extension("png");
-    fs::write(&png_path, &png).map_err(|e| e.to_string())?;
     #[cfg(target_os = "android")]
     {
-        let _ = name;
-        crate::print_android::print_png("Moklanjo", &png, landscape)
+        let _ = (name, path, paper);
+        for _ in 0..copies.max(1) {
+            print_android_document(text, format, landscape)?;
+        }
+        Ok(())
     }
-    #[cfg(not(target_os = "android"))]
+    #[cfg(target_os = "windows")]
     {
-        print_system_image(name, &png_path, landscape)
+        // The driver lays the sheets out (its own printable area per page).
+        let (png, mm) = os_document_slip(text, format)?;
+        let slip = image::load_from_memory(&png).map_err(|e| e.to_string())?.to_luma8();
+        let (w, h) = slip.dimensions();
+        let gaps = crate::os_paper::line_gaps(slip.as_raw(), w as usize, h as usize);
+        let len = crate::os_paper::ink_end(slip.as_raw(), w as usize, h as usize).max(1);
+        let want = match paper {
+            Some(p) => p,
+            None => job_paper(paper, &crate::os_paper::query(name.unwrap_or(""))),
+        };
+        let png_path = path.with_extension("png");
+        fs::write(&png_path, &png).map_err(|e| e.to_string())?;
+        print_windows_slip(name, &png_path, mm, landscape, copies.max(1), want, &gaps, len)
     }
+    #[cfg(all(not(target_os = "android"), not(target_os = "windows")))]
+    {
+        let (png, mm) = os_document_slip(text, format)?;
+        print_cups_slip(name, path, &png, mm, landscape, copies.max(1), paper)
+    }
+}
+
+/// CUPS (Linux, macOS): the page is the printer's paper — the driver's own
+/// size when one matches, else `Custom.<w>x<l>mm`, a roll as long as the
+/// slip (`os_paper::page_for`). The slip is cut into sheets exactly that
+/// page's printable width, fitted (1:1) into its printable area at the
+/// top-left; every sheet goes in one job with the page named. The preview
+/// is drawn from the same plan.
+#[cfg(all(not(target_os = "android"), not(target_os = "windows")))]
+fn print_cups_slip(
+    name: Option<&str>,
+    path: &Path,
+    png: &[u8],
+    content_mm: f64,
+    landscape: bool,
+    copies: u32,
+    paper: Option<crate::os_paper::PaperMm>,
+) -> Result<(), String> {
+    let slip = image::load_from_memory(png).map_err(|e| e.to_string())?.to_luma8();
+    let (queue, driver) = match crate::os_paper::query_cups(name) {
+        Ok((queue, papers)) => (Some(queue), Ok(papers)),
+        Err(why) => (None, Err(why)),
+    };
+    let want = job_paper(paper, &driver);
+    let plan = crate::os_paper::page_for(want, driver.as_ref().ok(), slip_mm(&slip, content_mm), landscape);
+    if plan.fallback {
+        let mm = crate::os_paper::mm_text;
+        let asked = if want.is_roll() {
+            format!("{} mm roll", mm(want.width_mm))
+        } else {
+            format!("{} × {} mm", mm(want.width_mm), mm(want.length_mm))
+        };
+        note_problem(format!(
+            "{}: its driver has no {asked} paper and takes no other size — printed on its own paper, {} ({} × {} mm)",
+            queue.as_deref().or(name).unwrap_or("printer"),
+            plan.page.label,
+            mm(plan.page.width_mm),
+            mm(plan.page.height_mm)
+        ));
+    }
+    if let Err(why) = &driver {
+        // Still the printer's paper, from the top-left — never centred; only
+        // the edges it cannot reach are not known (CUPS fits the page into
+        // them, a few % smaller at most).
+        note_problem(format!(
+            "{why} — printed on the printer's paper ({}) from the top-left; the edges the printer cannot reach are unknown",
+            plan.media
+        ));
+    }
+    let (sheets, px_per_mm) = crate::os_paper::os_document_sheets(&slip, content_mm, &plan.page, landscape);
+    let ppm = (px_per_mm * 1000.0).round() as u32;
+    let ppi = ((px_per_mm * 25.4).round() as u32).max(1);
+    let mut files = Vec::with_capacity(sheets.len());
+    for (i, sheet) in sheets.into_iter().enumerate() {
+        let mut buf = std::io::Cursor::new(Vec::new());
+        image::DynamicImage::ImageLuma8(sheet)
+            .write_to(&mut buf, image::ImageFormat::Png)
+            .map_err(|e| e.to_string())?;
+        let file = if i == 0 {
+            path.with_extension("png")
+        } else {
+            let stem = path.file_stem().and_then(|s| s.to_str()).unwrap_or("receipt");
+            path.with_file_name(format!("{stem}-{}.png", i + 1))
+        };
+        fs::write(&file, png_with_density(buf.into_inner(), ppm)).map_err(|e| e.to_string())?;
+        files.push(file);
+    }
+    run_lp(queue.as_deref().or(name), copies, &lp_sheet_options(&plan.media, ppi), &files)
+}
+
+/// The upright slip's width and inked length on paper, mm.
+pub fn slip_mm(slip: &image::GrayImage, content_mm: f64) -> (f64, f64) {
+    let (w, h) = slip.dimensions();
+    let px_per_mm = f64::from(w.max(1)) / content_mm.max(1.0);
+    let len = crate::os_paper::ink_end(slip.as_raw(), w as usize, h as usize).max(1);
+    (content_mm, f64::from(len) / px_per_mm)
+}
+
+/// `lp` with the given options and sheets, one job.
+#[cfg(any(target_os = "linux", target_os = "macos"))]
+fn run_lp(
+    name: Option<&str>,
+    copies: u32,
+    options: &[String],
+    files: &[std::path::PathBuf],
+) -> Result<(), String> {
+    let mut cmd = Command::new("lp");
+    if let Some(name) = name {
+        cmd.args(["-d", name]);
+    }
+    if copies > 1 {
+        cmd.args(["-n", &copies.to_string(), "-o", "collate=true"]);
+    }
+    cmd.args(options);
+    cmd.arg("--");
+    for f in files {
+        cmd.arg(f);
+    }
+    match cmd.output() {
+        Ok(out) if out.status.success() => lp_job_queued(name, &out.stdout),
+        Ok(out) => Err(first_line(&out.stderr).unwrap_or_else(|| "the printing system refused the job".into())),
+        Err(_) => {
+            let opener = if cfg!(target_os = "macos") { "open" } else { "xdg-open" };
+            if let Some(first) = files.first() {
+                let _ = Command::new(opener).arg(first).spawn();
+            }
+            Err("this computer has no printing system (CUPS) — the slip was opened instead".into())
+        }
+    }
+}
+
+/// `lp` options for one OS-document sheet: the page the sheets were cut
+/// for, named so the driver uses it; each sheet is exactly that page's
+/// printable width, so `fit` is 1:1 and `position` puts it at the printable
+/// top-left (without `position`, or with `print-scaling=none`, CUPS centres
+/// a picture — lesson 21). Portrait: landscape sheets were turned before
+/// they were written.
+#[cfg(any(target_os = "linux", target_os = "macos", test))]
+fn lp_sheet_options(media: &str, ppi: u32) -> Vec<String> {
+    [
+        format!("media={media}"),
+        "print-scaling=fit".to_string(),
+        format!("ppi={ppi}"),
+        "position=top-left".to_string(),
+        "orientation-requested=3".to_string(),
+    ]
+    .into_iter()
+    .flat_map(|o| ["-o".to_string(), o])
+    .collect()
+}
+
+/// Windows: the printer's paper — the driver's own size that matches, else
+/// a custom `PaperSize` (a roll as long as the slip) — and each page drawn
+/// from the top-left of its printable area at the slip's real size; the
+/// next page starts where the last one ended, in the gap between lines.
+#[cfg(target_os = "windows")]
+#[allow(clippy::too_many_arguments)]
+fn print_windows_slip(
+    name: Option<&str>,
+    path: &Path,
+    content_mm: f64,
+    landscape: bool,
+    copies: u32,
+    paper: crate::os_paper::PaperMm,
+    gaps: &[u32],
+    len: u32,
+) -> Result<(), String> {
+    use std::os::windows::process::CommandExt;
+    const CREATE_NO_WINDOW: u32 = 0x0800_0000;
+    let script = windows_slip_script(
+        &path.display().to_string(),
+        name,
+        paper,
+        content_mm,
+        landscape,
+        copies,
+        gaps,
+        len,
+    );
+    let out = Command::new("powershell")
+        .args(["-NoProfile", "-NonInteractive", "-ExecutionPolicy", "Bypass", "-Command", &script])
+        .creation_flags(CREATE_NO_WINDOW)
+        .output()
+        .map_err(|e| format!("PowerShell did not start ({e})"))?;
+    if out.status.success() {
+        // The driver printed on a paper other than the printer's: say so.
+        for line in String::from_utf8_lossy(&out.stdout).lines() {
+            if let Some(note) = line.trim().strip_prefix("KUMKAJ-NOTE: ") {
+                note_problem(format!("{}: {note}", name.unwrap_or("printer")));
+            }
+        }
+        Ok(())
+    } else {
+        Err(first_line(&out.stderr).unwrap_or_else(|| "Windows refused the job".into()))
+    }
+}
+
+/// The PowerShell for [`print_windows_slip`]. Sizes are in hundredths of an
+/// inch (the printer Graphics' unit); the origin is the printable area's
+/// top-left (`OriginAtMargins` false). The page: the driver's size within
+/// 0.6 mm of the printer's paper, else a custom one; a roll is first set
+/// long, its printable area read, then set to the slip's length plus the
+/// edges it cannot reach. Nothing is fitted: the slip's px per hundredth of
+/// an inch come from its own mm.
+#[cfg(any(target_os = "windows", test))]
+#[allow(clippy::too_many_arguments)]
+fn windows_slip_script(
+    path: &str,
+    printer: Option<&str>,
+    paper: crate::os_paper::PaperMm,
+    content_mm: f64,
+    landscape: bool,
+    copies: u32,
+    gaps: &[u32],
+    len: u32,
+) -> String {
+    let q = |s: &str| s.replace('\'', "''");
+    let mut s = format!(
+        "Add-Type -AssemblyName System.Drawing; \
+         $img = [System.Drawing.Image]::FromFile('{}'); \
+         $doc = New-Object System.Drawing.Printing.PrintDocument; \
+         $doc.DocumentName = 'Moklanjo'; ",
+        q(path)
+    );
+    if let Some(n) = printer.map(str::trim).filter(|n| !n.is_empty()) {
+        s.push_str(&format!("$doc.PrinterSettings.PrinterName = '{}'; ", q(n)));
+    }
+    let gaps_ps = gaps.iter().map(|g| g.to_string()).collect::<Vec<_>>().join(",");
+    s.push_str(&format!(
+        "$doc.DefaultPageSettings.Landscape = {land}; \
+         $doc.PrinterSettings.Copies = [int16]{copies}; \
+         $doc.OriginAtMargins = $false; \
+         $script:img = $img; \
+         $script:per = $img.Width / ({mm:.4} / 25.4 * 100.0); \
+         $W = {w:.4}; $L = {l:.4}; \
+         if ({land}) {{ $along = {mm:.4} / 25.4 * 100.0 }} else {{ $along = {len} / $script:per }}; \
+         $script:note = ''; \
+         $own = $null; \
+         if ($L -gt 0) {{ foreach ($p in $doc.PrinterSettings.PaperSizes) {{ \
+           if ([Math]::Abs($p.Width - $W) -le 2.4 -and [Math]::Abs($p.Height - $L) -le 2.4) {{ $own = $p; break }} }} }}; \
+         $canCustom = @($doc.PrinterSettings.PaperSizes | Where-Object {{ $_.Kind -eq 'Custom' }}).Count -gt 0; \
+         if ($own) {{ $doc.DefaultPageSettings.PaperSize = $own }} elseif (-not $canCustom) {{ \
+           $script:note = 'KUMKAJ-NOTE: its driver has no such paper and takes no other size; printed on its own paper, ' + $doc.DefaultPageSettings.PaperSize.PaperName }} else {{ \
+           if ($L -gt 0) {{ $H = $L }} else {{ $H = $along + 100 }}; \
+           $doc.DefaultPageSettings.PaperSize = New-Object System.Drawing.Printing.PaperSize('Custom', [int][Math]::Round($W), [int][Math]::Ceiling($H)); \
+           if ($L -le 0) {{ \
+             $a = $doc.DefaultPageSettings.PrintableArea; $b = $doc.DefaultPageSettings.Bounds; \
+             if ({land}) {{ $edges = $a.X + ($b.Width - $a.X - $a.Width) }} else {{ $edges = $a.Y + ($b.Height - $a.Y - $a.Height) }}; \
+             if ($edges -lt 0) {{ $edges = 0 }}; \
+             $doc.DefaultPageSettings.PaperSize = New-Object System.Drawing.Printing.PaperSize('Custom', [int][Math]::Round($W), [int][Math]::Ceiling($along + $edges + 2)) }} }}; \
+         $script:gaps = @({gaps_ps}); \
+         $script:len = {len}; \
+         $script:y = 0; \
+         $doc.add_PrintPage({{ param($s,$e) \
+           $a = $e.PageSettings.PrintableArea; \
+           $room = [int][Math]::Floor($a.Height * $script:per); \
+           if ($room -lt 1) {{ $room = 1 }}; \
+           $wPx = [Math]::Min($script:img.Width, [Math]::Floor($a.Width * $script:per)); \
+           $start = $script:y; $limit = $start + $room; \
+           if ($limit -ge $script:len) {{ $end = $script:len }} else {{ \
+             $end = $limit; $floor = $start + [Math]::Floor($room / 2); \
+             foreach ($g in $script:gaps) {{ if ($g -gt $floor -and $g -le $limit) {{ $end = $g }} }} \
+           }}; \
+           $src = New-Object System.Drawing.RectangleF(0, $start, $wPx, ($end - $start)); \
+           $dst = New-Object System.Drawing.RectangleF(0, 0, ($wPx / $script:per), (($end - $start) / $script:per)); \
+           $e.Graphics.DrawImage($script:img, $dst, $src, [System.Drawing.GraphicsUnit]::Pixel); \
+           $script:y = $end; \
+           $e.HasMorePages = ($script:y -lt $script:len) }}); \
+         $doc.Print(); \
+         if ($script:note) {{ Write-Output $script:note }}; \
+         $img.Dispose(); \
+         $doc.Dispose();",
+        land = if landscape { "$true" } else { "$false" },
+        mm = content_mm,
+        w = paper.width_mm / 0.254,
+        l = paper.length_mm / 0.254,
+    ));
+    s
+}
+
+
+#[cfg(any(target_os = "linux", target_os = "macos", test))]
+fn png_crc(data: &[u8]) -> u32 {
+    let mut c = 0xFFFF_FFFFu32;
+    for &b in data {
+        c ^= u32::from(b);
+        for _ in 0..8 {
+            if c & 1 != 0 {
+                c = (c >> 1) ^ 0xEDB8_8320;
+            } else {
+                c >>= 1;
+            }
+        }
+    }
+    !c
+}
+
+/// Store pixels-per-metre so the printer lays the slip out at `content_mm`
+/// instead of assuming 72 dpi and clipping the page down to two rules.
+#[cfg(any(target_os = "linux", target_os = "macos", test))]
+fn png_with_density(png: Vec<u8>, ppm: u32) -> Vec<u8> {
+    if ppm == 0 || png.windows(4).any(|w| w == *b"pHYs") {
+        return png;
+    }
+    let Some(at) = png.windows(4).position(|w| w == *b"IHDR") else {
+        return png;
+    };
+    if at < 4 || at + 4 > png.len() {
+        return png;
+    }
+    let len = u32::from_be_bytes(png[at - 4..at].try_into().unwrap_or([0; 4])) as usize;
+    let after = at + 4 + len + 4;
+    if after > png.len() {
+        return png;
+    }
+    let mut body = Vec::with_capacity(13);
+    body.extend_from_slice(b"pHYs");
+    body.extend(ppm.to_be_bytes());
+    body.extend(ppm.to_be_bytes());
+    body.push(1);
+    let mut chunk = Vec::with_capacity(21);
+    chunk.extend((9u32).to_be_bytes());
+    chunk.extend_from_slice(&body);
+    chunk.extend(png_crc(&body).to_be_bytes());
+    let mut out = Vec::with_capacity(png.len() + chunk.len());
+    out.extend_from_slice(&png[..after]);
+    out.extend_from_slice(&chunk);
+    out.extend_from_slice(&png[after..]);
+    out
 }
 
 
@@ -1106,89 +1601,6 @@ pub fn escpos_job_format(format: &PrintFormat, text: &str) -> Vec<u8> {
 
 
 
-/// Print a Standard bill **image** (PNG from Noto raster) on the OS printer.
-#[cfg(not(target_os = "android"))]
-fn print_system_image(name: Option<&str>, path: &Path, landscape: bool) -> Result<(), String> {
-    #[cfg(any(target_os = "linux", target_os = "macos"))]
-    {
-        let mut cmd = Command::new("lp");
-        if let Some(name) = name {
-            cmd.args(["-d", name]);
-        }
-        // Without fit, CUPS often treats the PNG as 72 DPI (≈16″) and clips
-        // both sides on A4/Letter / Canon-class trays.
-        cmd.args(["-o", "fit-to-page"]);
-        cmd.args(["-o", "print-scaling=fit"]);
-        cmd.args([
-            "-o",
-            if landscape {
-                "orientation-requested=4"
-            } else {
-                "orientation-requested=3"
-            },
-        ]);
-        cmd.arg("--").arg(path);
-        match cmd.output() {
-            Ok(out) if out.status.success() => lp_job_queued(name, &out.stdout),
-            Ok(out) => Err(first_line(&out.stderr).unwrap_or_else(|| "the printing system refused the job".into())),
-            Err(_) => {
-                let opener = if cfg!(target_os = "macos") { "open" } else { "xdg-open" };
-                let _ = Command::new(opener).arg(path).spawn();
-                Err("this computer has no printing system (CUPS) — the slip was opened instead".into())
-            }
-        }
-    }
-    #[cfg(target_os = "windows")]
-    {
-        use std::os::windows::process::CommandExt;
-        const CREATE_NO_WINDOW: u32 = 0x0800_0000;
-        let quote = |s: &str| s.replace('\'', "''");
-        let path_q = quote(&path.display().to_string());
-        let land = if landscape { "$true" } else { "$false" };
-        let mut script = format!(
-            "Add-Type -AssemblyName System.Drawing; \
-             $img = [System.Drawing.Image]::FromFile('{path_q}'); \
-             $doc = New-Object System.Drawing.Printing.PrintDocument; \
-             $doc.DocumentName = 'Moklanjo'; \
-             $doc.DefaultPageSettings.Landscape = {land}; \
-             $doc.DefaultPageSettings.Margins = New-Object System.Drawing.Printing.Margins(75,75,75,75);"
-        );
-        if let Some(name) = name {
-            script.push_str(&format!(
-                "$doc.PrinterSettings.PrinterName = '{}';",
-                quote(name)
-            ));
-        }
-        script.push_str(
-            "$script:img = $img; \
-             $doc.add_PrintPage({ param($s,$e) \
-               $b = $e.MarginBounds; \
-               $scale = [Math]::Min($b.Width / $script:img.Width, $b.Height / $script:img.Height); \
-               $w = [int]($script:img.Width * $scale); \
-               $h = [int]($script:img.Height * $scale); \
-               $e.Graphics.DrawImage($script:img, $b.Left, $b.Top, $w, $h); \
-               $e.HasMorePages = $false }); \
-             $doc.Print(); \
-             $img.Dispose(); \
-             $doc.Dispose();",
-        );
-        let out = Command::new("powershell")
-            .args(["-NoProfile", "-NonInteractive", "-ExecutionPolicy", "Bypass", "-Command", &script])
-            .creation_flags(CREATE_NO_WINDOW)
-            .output()
-            .map_err(|e| format!("PowerShell did not start ({e})"))?;
-        if out.status.success() {
-            Ok(())
-        } else {
-            Err(first_line(&out.stderr).unwrap_or_else(|| "Windows refused the job".into()))
-        }
-    }
-    #[cfg(not(any(target_os = "linux", target_os = "macos", target_os = "windows")))]
-    {
-        let _ = (name, path, landscape);
-        Err("printing is not supported on this system".into())
-    }
-}
 
 /// ESC/POS to a system printer: the whole job as one raw job on the
 /// queue the owner picked (`lp -o raw`, Windows `WritePrinter`). Never
@@ -1455,6 +1867,18 @@ pub fn find_printers_in_background() {
                     }
                 }
             }
+            // What paper each system printer's driver says it holds, read
+            // here (off the screen), so the merge can fill a printer that
+            // has none. A paper already set is never changed by it
+            // (docs/PRINTER.md § Paper and preview).
+            for target in &found {
+                if find_cancelled() {
+                    break;
+                }
+                if matches!(parse_target(target), PrinterTarget::Named(_) | PrinterTarget::Default) {
+                    crate::os_paper::remember(target, crate::os_paper::query(target));
+                }
+            }
             let cancelled = find_cancelled();
             FIND_WAS_CANCELLED.store(cancelled, std::sync::atomic::Ordering::SeqCst);
             found.sort();
@@ -1661,7 +2085,7 @@ mod tests {
         *cfg.route_mut(RouteKey::Receipt) = vec![id];
         configure(cfg);
         let _ = take_captured();
-        let dir = std::env::temp_dir().join(format!("courier-print-{}", std::process::id()));
+        let dir = crate::test_dirs::run_root().join(format!("courier-print-{}", std::process::id()));
         let share = print_text(PrintKind::Receipt, "Booking receipt — test", Some(&dir)).unwrap();
         assert!(!share.opened, "the OS was not handed the job");
         let jobs = take_captured();
@@ -1708,7 +2132,7 @@ mod tests {
     #[test]
     fn device_printers_are_kept_per_install() {
         let _g = CFG_LOCK.lock().unwrap();
-        let base = std::env::temp_dir().join(format!("courier-printers-{}", uuid::Uuid::new_v4().simple()));
+        let base = crate::test_dirs::run_root().join(format!("courier-printers-{}", uuid::Uuid::new_v4().simple()));
         assert_eq!(load_device_printers(&base), DevicePrinters::default());
         let mut chosen = DevicePrinters::default();
         let desk = chosen.add_printer("Desk", "192.168.1.50");
@@ -1728,7 +2152,7 @@ mod tests {
     fn synthetic_default_printer_is_scrubbed() {
         let _g = CFG_LOCK.lock().unwrap();
         // A pool entry named Default with no address is never a real printer.
-        let base = std::env::temp_dir().join(format!("courier-scrub-{}", uuid::Uuid::new_v4().simple()));
+        let base = crate::test_dirs::run_root().join(format!("courier-scrub-{}", uuid::Uuid::new_v4().simple()));
         fs::create_dir_all(&base).unwrap();
         fs::write(
             base.join("printers.json"),
@@ -1741,10 +2165,201 @@ mod tests {
         let _ = fs::remove_dir_all(base);
         configure(DevicePrinters::default());
         let _ = take_captured();
-        let dir = std::env::temp_dir().join(format!("courier-label-skip-{}", uuid::Uuid::new_v4().simple()));
+        let dir = crate::test_dirs::run_root().join(format!("courier-label-skip-{}", uuid::Uuid::new_v4().simple()));
         let share = print_route(PrintKind::Label, RouteKey::Label, "AWB label", Some(&dir)).unwrap();
         assert!(!share.opened);
         assert!(take_captured().is_empty());
         let _ = fs::remove_dir_all(dir);
     }
+}
+
+/// The printer's paper (owner, 2026-11-16; docs/PRINTER.md § Paper and
+/// preview) — the same model and checks as Khaynjo's.
+#[cfg(test)]
+mod paper_tests {
+    use super::*;
+
+    /// Find's merge here: a printer whose address is saved already stays one row.
+    fn ensure(d: &mut DevicePrinters, label: &str, target: &str) -> String {
+        match d.printers.iter().find(|p| p.target.trim().eq_ignore_ascii_case(target.trim())) {
+            Some(p) => p.id.clone(),
+            None => d.add_printer(label, target),
+        }
+    }
+
+    #[test]
+    fn os_document_names_the_paper_and_starts_at_the_printable_top_left() {
+        let opts = lp_sheet_options("Card", 548);
+        let has = |o: &str| opts.windows(2).any(|w| w[0] == "-o" && w[1] == o);
+        assert!(has("media=Card"), "{opts:?}");
+        // Each sheet is the printable width, so fit is 1:1; without
+        // `position` CUPS centres a picture (PRINTER.md lesson 21).
+        assert!(has("print-scaling=fit"), "{opts:?}");
+        assert!(has("position=top-left"), "{opts:?}");
+        assert!(has("ppi=548"), "{opts:?}");
+        // Never `print-scaling=none`: CUPS centres the page with it.
+        assert!(!opts.iter().any(|o| o == "print-scaling=none"), "{opts:?}");
+    }
+
+    /// A job's paper is the printer's; not set yet, it is what Find would
+    /// give it from the same driver answer — never a size of the app's own.
+    #[test]
+    fn a_job_goes_on_the_printers_paper_or_what_find_would_give_it() {
+        let ppd = "*DefaultPageSize: Letter\n\
+*PageSize Letter/Letter: \"\"\n*PaperDimension Letter/Letter: \"612 792\"\n";
+        let driver = Ok(crate::os_paper::parse_ppd(ppd));
+        let set = crate::os_paper::PaperMm { width_mm: 101.6, length_mm: 0.0 };
+        assert_eq!(job_paper(Some(set), &driver), set, "the printer's own paper wins");
+        let p = job_paper(None, &driver);
+        assert!((p.width_mm - 215.9).abs() < 0.05 && (p.length_mm - 279.4).abs() < 0.05, "{p:?}");
+        // No answer: the 80 mm roll, never A4.
+        let p = job_paper(None, &Err("down".into()));
+        assert_eq!(p, crate::os_paper::PaperMm { width_mm: 80.0, length_mm: 0.0 });
+    }
+
+    /// Find fills a printer with no paper and never changes one already set,
+    /// however many times it runs (owner, 2026-11-16).
+    #[test]
+    fn find_twice_keeps_every_paper() {
+        let ppd = "*DefaultPageSize: A4\n*PageSize A4/A4: \"\"\n*PaperDimension A4/A4: \"595 842\"\n";
+        let mut d = DevicePrinters::default();
+        let office = ensure(&mut d, "Office", "Office");
+        let thermal = ensure(&mut d, "192.168.1.50:9100", "192.168.1.50:9100");
+        // Android's print service has no driver to ask: the default.
+        let android = ensure(&mut d, "Android print", "android-print:");
+        let set = ensure(&mut d, "Counter", "Counter");
+        assert!(d.set_printer_paper_mm(&set, 104.8, 0.0));
+        let mut answers = std::collections::HashMap::new();
+        answers.insert("Office".to_string(), Ok(crate::os_paper::parse_ppd(ppd)));
+        // The counter's driver now says A4: its set paper stays.
+        answers.insert("Counter".to_string(), Ok(crate::os_paper::parse_ppd(ppd)));
+        for _ in 0..2 {
+            d.fill_missing_papers(&answers, true);
+            ensure(&mut d, "Office", "Office");
+            ensure(&mut d, "Counter", "Counter");
+        }
+        let paper = |id: &str| d.printer_by_id(id).and_then(|p| p.paper());
+        let o = paper(&office).unwrap();
+        // Exactly what the driver says: 595 × 842 pt is 209.9 × 297.0 mm.
+        assert!((o.width_mm - 209.9).abs() < 0.05 && (o.length_mm - 297.0).abs() < 0.05, "{o:?}");
+        assert_eq!(paper(&thermal), crate::os_paper::PaperMm::new(80.0, 0.0), "ESC/POS: 80 mm roll");
+        assert_eq!(paper(&android), crate::os_paper::PaperMm::new(80.0, 0.0), "nothing to ask: 80 mm roll");
+        assert_eq!(paper(&set), crate::os_paper::PaperMm::new(104.8, 0.0), "set paper kept");
+        // Saved and loaded again: the papers are still there.
+        let json = serde_json::to_value(&d).unwrap();
+        let back: DevicePrinters = serde_json::from_value(json).unwrap();
+        assert_eq!(back.printer_by_id(&set).and_then(|p| p.paper()), crate::os_paper::PaperMm::new(104.8, 0.0));
+        // A screen repaint never saves a default from a silent driver.
+        let mut quiet = DevicePrinters::default();
+        let q = ensure(&mut quiet, "Quiet", "Quiet");
+        let mut silent = std::collections::HashMap::new();
+        silent.insert("Quiet".to_string(), Err("down".to_string()));
+        assert_eq!(quiet.fill_missing_papers(&silent, false), 0);
+        assert!(quiet.printer_by_id(&q).unwrap().paper().is_none());
+        assert_eq!(quiet.fill_missing_papers(&silent, true), 1, "Find gives the default");
+    }
+
+    /// Windows: the page is the printer's paper — the driver's size that
+    /// matches, else a custom one (or, with no custom sizes, the driver's own
+    /// paper, said so) — each page at the slip's real size from the
+    /// printable area, never shrunk.
+    #[test]
+    fn windows_os_document_draws_real_size_on_the_printers_paper() {
+        let card = crate::os_paper::PaperMm { width_mm: 101.6, length_mm: 152.4 };
+        let s = windows_slip_script(r"C:\Shop's\slip.png", Some("Front desk"), card, 80.0, false, 2, &[30, 75], 120);
+        assert!(s.contains(r"FromFile('C:\Shop''s\slip.png')"), "{s}");
+        assert!(s.contains("PrinterName = 'Front desk'"), "{s}");
+        assert!(s.contains("$W = 400.0000; $L = 600.0000;"), "{s}");
+        assert!(s.contains("PrintableArea") && s.contains("OriginAtMargins = $false"), "{s}");
+        assert!(s.contains("$dst = New-Object System.Drawing.RectangleF(0, 0,"), "{s}");
+        assert!(!s.contains("PageBounds"), "never the page: the printable area");
+        assert!(s.contains("$_.Kind -eq 'Custom'") && s.contains("KUMKAJ-NOTE: "), "{s}");
+        assert!(s.contains("$img.Width / (80.0000 / 25.4 * 100.0)"), "{s}");
+        let roll = crate::os_paper::PaperMm { width_mm: 80.0, length_mm: 0.0 };
+        let r = windows_slip_script("a.png", None, roll, 80.0, true, 1, &[], 10);
+        assert!(r.contains("$L = 0.0000;") && r.contains("$along + $edges + 2"), "{r}");
+    }
+
+    /// The OS document is the slip at its own dots ÷ 7.2 mm wide, so a px is
+    /// 1/96 inch on paper at every content width (PRINTER.md lesson 22).
+    #[test]
+    fn os_document_slip_is_7_2_dots_per_mm_at_every_width() {
+        for mm in [58u32, 80, 104, 112, 210] {
+            let mut f = PrintFormat::standard_portrait();
+            f.content_width_mm = mm;
+            f.line = wrap_cols_for_paper_mm(mm);
+            let m = f.raster_metrics();
+            let content = os_document_content_mm(&m);
+            assert!((content - m.page_dots() as f64 / 7.2).abs() < 1e-9, "{mm}: {content}");
+        }
+    }
+}
+
+/// The picture a receipt or label prints as — the same dots as the job —
+/// upright, one gray byte per dot (0 = ink). Drawn straight from the raster
+/// (no PNG round trip on the screen's thread).
+pub fn slip_gray(format: &PrintFormat, text: &str) -> image::GrayImage {
+    let metrics = format.raster_metrics();
+    // As each job draws it: OS documents the text as given, ESC/POS without CRs.
+    let cleaned = if format.document {
+        text.to_string()
+    } else {
+        text.replace('\r', "")
+    };
+    let (rows, height) = if format.is_label_format() {
+        crate::receipt_raster::draw_label(&cleaned, &awb_from_slip(&cleaned), &metrics)
+    } else {
+        crate::receipt_raster::draw_metrics(&cleaned, &metrics)
+    };
+    let width = metrics.page_dots().max(8);
+    let row_bytes = width / 8;
+    let height = height.max(1);
+    let mut gray = image::GrayImage::from_pixel(width as u32, height as u32, image::Luma([255]));
+    for y in 0..height {
+        let Some(row) = rows.get(y * row_bytes..(y + 1) * row_bytes) else {
+            break;
+        };
+        for (i, byte) in row.iter().enumerate() {
+            if *byte == 0 {
+                continue;
+            }
+            for bit in 0..8 {
+                if byte & (0x80 >> bit) != 0 {
+                    gray.put_pixel((i * 8 + bit) as u32, y as u32, image::Luma([0]));
+                }
+            }
+        }
+    }
+    gray
+}
+
+/// Body-type height in the print picture, in its pixels (one per dot).
+pub fn preview_type_px(em: f32) -> f64 {
+    f64::from(crate::receipt_raster::px_dots(em))
+}
+
+/// One scale for the whole print picture on screen.
+///
+/// `column` is the settings width. `viewport` is how tall the picture may be
+/// before the page scrolls. `type_px` is the body type inside the picture.
+/// A print that fits at a readable size is fitted. A print that would become
+/// unreadable if fitted to the viewport is held at a readable size instead,
+/// still no wider than the column, and the page scrolls for the rest.
+pub fn preview_frame(png_w: f64, png_h: f64, column: f64, viewport: f64, type_px: f64) -> (f64, f64) {
+    const READABLE: f64 = 15.0;
+    let png_w = png_w.max(1.0);
+    let png_h = png_h.max(1.0);
+    let column = column.max(40.0);
+    let viewport = viewport.max(160.0);
+    let fit_w = column / png_w;
+    let fit = fit_w.min(viewport / png_h);
+    let type_px = type_px.max(1.0);
+    let scale = if type_px * fit >= READABLE {
+        fit
+    } else {
+        (READABLE / type_px).min(fit_w)
+    };
+    let w = (png_w * scale).clamp(40.0, column);
+    let h = png_h * (w / png_w);
+    (w, h.max(1.0))
 }

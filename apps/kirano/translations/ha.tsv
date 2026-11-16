@@ -60,10 +60,6 @@ bill_item_layout	Tsarin kaya
 bill_item_layout_columns	Ginshiƙai
 bill_item_layout_stacked	A jere sama
 bill_item_header	Kan ginshiƙai
-bill_item_hdr_item	Kan kaya
-bill_item_hdr_qty	Kan adadi
-bill_item_hdr_price	Kan farashi
-bill_item_hdr_amount	Kan adadin kuɗi
 bill_item_name	Sunan kaya
 bill_item_qty	Adadi
 bill_item_price	Farashi
@@ -71,6 +67,13 @@ bill_item_amount	Adadin kuɗi
 bill_item_note	bayanin kula
 bill_item_col_sep	Layukan ginshiƙai
 slip_col_width	Faɗi (mm)
+paper_heading	Takarda
+paper_size	{w} × {h} mm
+paper_roll	nadi na {w} mm
+paper_not_set	ba a san takardar ba tukuna
+paper_length_mm	Tsawo (mm)
+printer_paper_help	Takardar wannan firinta a mm. Tsawo mara komai yana nufin nadi: kowace rasit tana da tsawon abin da ke cikinta. Nemo firintoci yana cike takarda mara komai daga direban firintar (nadi na 80 mm idan ba zai iya faɗi ba) kuma ba ya taɓa canza wadda aka riga aka saita.
+preview_help	Wannan rasit a kan takardar firintar da aka zaɓa a ƙasa, kamar yadda take bugawa a can: girman gaske daga kusurwar sama ta hagu da firintar ke kaiwa (toka: gefuna da ba ta kaiwa), dogon rasit a kan ƙarin shafuka, duk abin da ya wuce gefen takarda ana yanke shi. Zaɓar firinta yana canza samfoti kawai; ana saita takardar kowace firinta a Firintoci.
 slip_col_start	Sararin farko (px)
 slip_col_end	Sararin ƙarshe (px)
 slip_columns_help	Faɗin kowane ginshiƙi ya haɗa da sararin farkonsa da na ƙarshensa. Rubutu yana naɗewa a cikin ginshiƙinsa; abin da ya wuce faɗin abun ciki ana yanke shi, a takarda da kuma a samfoti.
@@ -838,3 +841,4 @@ nav_loading	Ana lodawa…
 printer_mode_first	Na farko da ya yi aiki
 printer_mode_all	Buga a duka
 slip_columns	Ginshiƙai
+slip_col_header	Kan

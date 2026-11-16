@@ -60,10 +60,6 @@ bill_item_layout	آئٹم لے آؤٹ
 bill_item_layout_columns	کالم
 bill_item_layout_stacked	قطاریں
 bill_item_header	کالم سرخیاں
-bill_item_hdr_item	آئٹم سرخی
-bill_item_hdr_qty	تعداد سرخی
-bill_item_hdr_price	نرخ سرخی
-bill_item_hdr_amount	رقم سرخی
 bill_item_name	آئٹم کا نام
 bill_item_qty	مقدار
 bill_item_price	نرخ
@@ -71,6 +67,13 @@ bill_item_amount	رقم
 bill_item_note	آئٹم نوٹ
 bill_item_col_sep	کالم لکیر
 slip_col_width	چوڑائی (mm)
+paper_heading	کاغذ
+paper_size	{w} × {h} mm
+paper_roll	{w} mm رول
+paper_not_set	کاغذ ابھی معلوم نہیں
+paper_length_mm	لمبائی (mm)
+printer_paper_help	اس پرنٹر کا کاغذ mm میں۔ خالی لمبائی کا مطلب رول: ہر پرچی اپنے مواد جتنی لمبی ہوتی ہے۔ پرنٹر تلاش کریں خالی کاغذ پرنٹر کے ڈرائیور سے بھرتا ہے (نہ بتا سکے تو 80 mm رول) اور پہلے سے طے کاغذ کبھی نہیں بدلتا۔
+preview_help	نیچے چنے گئے پرنٹر کے کاغذ پر یہ پرچی، جیسے وہاں چھپتی ہے: پرنٹر جہاں تک پہنچتا ہے اس اوپری بائیں کونے سے اصل ناپ میں (سرمئی: کنارے جہاں نہیں پہنچتا)، لمبی پرچی مزید صفحات پر، کاغذ کے کنارے سے آگے کا سب کٹ جاتا ہے۔ پرنٹر چننے سے صرف پیش منظر بدلتا ہے؛ ہر پرنٹر کا کاغذ پرنٹرز میں طے ہوتا ہے۔
 slip_col_start	آغاز کی جگہ (px)
 slip_col_end	اختتام کی جگہ (px)
 slip_columns_help	ہر کالم کی چوڑائی میں اس کی آغاز اور اختتام کی جگہ شامل ہے۔ متن اپنے کالم کے اندر ہی لپٹتا ہے؛ مواد کی چوڑائی سے باہر جو ہو وہ کاغذ اور پیش نظارہ دونوں میں کٹ جاتا ہے۔
@@ -838,3 +841,4 @@ nav_loading	لوڈ ہو رہا ہے…
 printer_mode_first	جو پہلے چلے
 printer_mode_all	سب پر چھاپیں
 slip_columns	کالم
+slip_col_header	سرخی

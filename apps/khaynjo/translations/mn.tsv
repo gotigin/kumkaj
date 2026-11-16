@@ -92,10 +92,6 @@ bill_item_layout	Барааны байрлал
 bill_item_layout_columns	Багана
 bill_item_layout_stacked	Мөрөөр
 bill_item_header	Баганын гарчиг
-bill_item_hdr_item	Барааны гарчиг
-bill_item_hdr_qty	Тооны гарчиг
-bill_item_hdr_price	Үнийн гарчиг
-bill_item_hdr_amount	Дүнгийн гарчиг
 bill_item_name	Хоолны нэр
 bill_item_qty	Тоо
 bill_item_price	Үнэ
@@ -103,6 +99,20 @@ bill_item_amount	Дүн
 bill_item_note	Хоолны тэмдэглэл
 bill_item_col_sep	Баганын шугам
 slip_columns	Баганууд
+slip_col_header	Гарчиг
+bill_line_logo	Лого
+bill_logo_picture	Зураг
+bill_logo_choose	Зураг сонгох
+bill_logo_remove	Зураг арилгах
+bill_logo_none	Зураг байхгүй
+bill_logo_unreadable	Энэ апп уншиж чадах зураг биш
+bill_logo_width	Өргөн (px)
+bill_logo_height	Өндөр (px)
+bill_logo_tones	Саарал өнгө
+bill_logo_solid	Битүү
+bill_logo_shaded	Сүүдэртэй
+bill_logo_help	Өргөн, өндрийг px-ээр. Хоосон бол зургийг дагана: нэг нь хоосон бол хэлбэрээ хадгална, хоёулаа хоосон бол өөрийн хэмжээг; хоёулааг өгвөл дотор нь багтаана, хэзээ ч сунгахгүй. Зураггүй: харагдаж буй лого өндрөө хоосон зай болгон хадгална; Нуух нь арилгана.
+bill_logo_tones_help	Битүү: цэг бүр хар эсвэл цагаан, тод логонд. Сүүдэртэй: саарал нарийн цэгэн хээ болно, зураг болон зөөлөн сүүдэрт.
 slip_col_width	Өргөн (mm)
 slip_col_start	Эхлэлийн зай (px)
 slip_col_end	Төгсгөлийн зай (px)
@@ -167,6 +177,21 @@ alerts_help	Төлөвийн мэдээ танд дэлгэц дээр хэр у
 snack_secs_ph	Секунд (3–60, анхдагч 10)
 snack_secs_save	Мэдэгдлийн хугацааг хадгалах
 snack_secs_saved	Мэдэгдлийн хугацаа хадгалагдлаа — {n} секунд
+settings_sec_whatsapp	WhatsApp
+whatsapp_cloud_help	Use your own Meta WhatsApp Cloud API. Create a System User token with whatsapp_business_messaging (temporary dashboard tokens expire). Credentials stay on this Server only — never on extra tills. Accepted means Meta took the request, not that the guest received it.
+whatsapp_phone_id_ph	Phone Number ID
+whatsapp_token_ph	Access Token (leave blank to keep)
+whatsapp_template_ph	Bill template name (optional)
+whatsapp_template_lang_ph	Template language (e.g. en)
+whatsapp_enable	Enable
+whatsapp_disable	Off
+whatsapp_save	Save WhatsApp
+whatsapp_test	Test connection
+whatsapp_disconnect	Disconnect
+whatsapp_send_bill	Send via WhatsApp
+whatsapp_consent	WhatsApp OK
+whatsapp_consent_help	Guest agreed to receive WhatsApp messages. A phone number alone is not consent.
+whatsapp_server_only	Configure WhatsApp on the shop Server device
 settings_sec_backup	Нөөц хуулбар ба сэргээх
 settings_sec_diag	Оношлогоо
 settings_sec_privacy	Нууцлал
@@ -729,6 +754,13 @@ station_vps_dd	Энэ станцын принтерүүд
 station_vps_dd_n	{n} принтер · өөрчлөхийн тулд товшино
 bill_printers_dd	Тооцооны принтерүүд
 bill_printers_dd_n	тооцоонд {n} принтер · өөрчлөхийн тулд товшино
+paper_heading	Цаас
+paper_size	{w} × {h} mm
+paper_roll	{w} мм ороомог
+paper_not_set	цаас хараахан тодорхойгүй
+paper_length_mm	Урт (mm)
+printer_paper_help	Энэ принтерийн цаас мм-ээр. Хоосон Урт нь ороомог: баримт бүр агуулгынхаа хэмжээгээр урт. «Принтер олох» хоосон цаасыг принтерийн драйвераас бөглөнө (хэлж чадахгүй бол 80 мм ороомог) бөгөөд аль хэдийн тохируулсныг хэзээ ч өөрчлөхгүй.
+preview_help	Доор сонгосон принтерийн цаасан дээрх энэ баримт, тэнд хэвлэгдэх ёсоор: принтерийн хүрдэг зүүн дээд булангаас бодит хэмжээгээр (саарал: хүрдэггүй ирмэг), урт баримт олон хуудсанд, цаасны ирмэгээс хэтэрсэн бүхэн тасардана. Принтер сонгох нь зөвхөн урьдчилан харахыг өөрчилнө; принтер бүрийн цаасыг «Принтерүүд»-д тохируулна.
 job_layout	Байрлал
 job_delivery	Ажил хэрхэн илгээгдэх вэ
 job_delivery_help	ОС баримт, түүхий байт эсвэл ESC/POS. Тооцоо ба гал тогооны хуудас тус бүр өөрийнхийг хадгална. Ажил бүрийг Хайлт хадгалсан аль ч принтер рүү явуулж болно.
@@ -1105,9 +1137,6 @@ remove_these_tables	Эдгээр ширээг хасах
 table_remove_ph	Хасах: T1-T24 эсвэл нэг ширээний нэр
 find_server	Дэлгүүрийн серверийг олох
 bill_format	Тооцооны хэлбэр
-bill_header_ph	Хаяг | утас
-fssai_ph	FSSAI лицензийн № (Энэтхэг)
-bill_footer_ph	Доод хэсэг (ж. Баярлалаа, дахин ирээрэй)
 reset_bill_format	Анхдагч руу буцаах
 bill_format_reset	Тооцооны хэлбэр анхдагч руу буцаагдлаа
 reset_kot_format	Анхдагч руу буцаах
@@ -1146,7 +1175,6 @@ kot_kind_modified	Өөрчлөгдсөн
 kot_kind_cancelled	Цуцлагдсан
 kot_style_heading	Талбарын хэмжээ ба бүдүүн
 kot_style_title	Гарчиг
-kot_style_item_qty	Бараа · Тоо
 kot_style_field_pick	Талбар сонгох
 kot_weight_regular	Энгийн
 kot_weight_bold	Бүдүүн
@@ -1158,8 +1186,8 @@ content_width_bill	Тооцооны агуулгын өргөн (mm)
 content_width_kot	KOT агуулгын өргөн (mm)
 content_width_ph	Эсвэл агуулгын өргөн бичнэ, 40–210 mm
 content_width_help	Энэ хуудас хэр өргөн хэвлэгдэх вэ. Тооцоо ба KOT тус бүр өөрийн өргөнийг хадгална.
-content_width_bill_help	Зочны тооцоо хэр өргөн хэвлэгдэх вэ. Анхдагч 210 mm (хуудас). 58 mm нарийн хуудас, 80 mm өргөн хуудас, 112 mm 4 инч, 210 mm A4 өргөн. 40-оос 210 хүртэл дурын утга бичнэ. Гал тогооны хуудас өөрийн өргөнтэй, KOT таб дээр.
-content_width_kot_help	Гал тогооны хуудас хэр өргөн хэвлэгдэх вэ. Анхдагч 80 mm. 58 mm нарийн, 80 mm өргөн, 112 mm 4 инч, 210 mm хуудас. 40-оос 210 хүртэл бичнэ. Зочны тооцоо өөрийн өргөнтэй, Тооцоо таб дээр.
+content_width_bill_help	Зочны тооцоо ямар өргөнтэй хэвлэгдэх, mm-ээр (40–210). Ямар ч цаасан дээр энэ жинхэнэ хэмжээгээр хэвлэгдэнэ; үүнээс нарийн цаасан дээр хэвлэх ирмэгээс цааших хэсэг тасарна (Цаас-ыг үзнэ үү). Гал тогооны тасалбарын өргөн KOT хавтсанд тусдаа.
+content_width_kot_help	Гал тогооны тасалбар ямар өргөнтэй хэвлэгдэх, mm-ээр (40–210). Ямар ч цаасан дээр энэ жинхэнэ хэмжээгээр хэвлэгдэнэ; үүнээс нарийн цаасан дээр хэвлэх ирмэгээс цааших хэсэг тасарна (Цаас-ыг үзнэ үү). Зочны тооцооны өргөн Тооцоо хавтсанд тусдаа.
 vp_paper_width	Агуулгын өргөн (mm)
 vp_paper_width_ph	Эсвэл агуулгын өргөн бичнэ, 40–210 mm
 vp_paper_width_help	Агуулгын өргөн Тооцоо ба KOT хэлбэр дор тохируулагдана — тооцоонд тусад нь (анхдагч 210 mm), гал тогооны хуудсанд (анхдагч 80 mm).
@@ -1213,8 +1241,6 @@ schemes_help	BOGO, хувийн хөнгөлөлт ба тогтмол комб�
 scheme_bogo_ph	2 Thali авч 1 Chaas ав
 add_scheme	BOGO нэмэх
 schedule_ph	Цаг / азтай цаг — Да-Ба 07:00-11:00 эсвэл HappyHour 17:00-19:00=150
-upi_vpa_ph	UPI танигч (VPA)
-upi_payee_ph	UPI хүлээн авагчийн нэр (заавал биш)
 upi_qr	UPI QR
 show_upi_qr	UPI QR харуулах
 close_upi_qr	Хаах
@@ -1295,8 +1321,6 @@ printer_mode_first	Эхний ажилладаг нь
 printer_mode_all	Бүгдэд хэвлэх
 kot_show_area	Бүс
 kot_hide_area	Бүсийг нуух
-kot_show_item_hdr	Бараа · Тоо
-kot_hide_item_hdr	Баганыг нуух
 kot_show_title	Гарчгийн мөр
 kot_hide_title	Гарчгийг нуух
 kot_field_cycle	Дараагийг сонгох
@@ -1337,12 +1361,12 @@ private_code_ph	12 оронтой код
 stamp_on	Тамга: файлд
 pay_qr_on	Төлбөрийн QR: файлд
 pay_qr_off	Төлбөрийн QR: алга
+printers_screen_tip	Хайх нь энэ төхөөрөмжийн ашиглаж болох принтерүүдийг харуулж, энэ дэлгүүрт хадгална. Тооцооны принтер: Тооцоо ба KOT формат → Тооцоо. Гал тогоо: Гал тогоо → Гал тогооны станцууд.
+printers_found_none	Принтер олдсонгүй.
+nav_loading	Ачаалж байна…
+kot_copy_from	Хуулах эх
+kot_copy_from_help	Тэр төрлийн мөр бүрийн хэмжээ, зузаан, зэрэгцүүлэлтийг энэ төрөлд хуулна. Энэ төрөл өөрийн баннер, барааны угтвар, дарсан зураасаа хадгална. Хадгалахын тулд KOT форматыг хадгална уу.
 items_tmpl_heading	Барааны загварууд
 items_tmpl_help	Таны цэсэнд зориулсан хоол, ангилал, зураг. Дэлгүүрийн тохиргоо болон ажилтнууд хэвээр үлдэнэ.
 public_tmpl_help	Хэн ч татаж авах боломжтой эхлэлийн цэсүүд. Интернет нэг удаа хэрэгтэй.
 private_tmpl_help	Таны Khaynjo холбоо барих хүнээс ирсэн 12 оронтой кодоор хамгаалагдсан харилцагчийн цэсүүд.
-printers_screen_tip	Хайх нь энэ төхөөрөмжийн ашиглаж болох принтерүүдийг харуулж, энэ дэлгүүрт хадгална. Тооцооны принтер: Тооцоо ба KOT формат → Тооцоо. Гал тогоо: Гал тогоо → Гал тогооны станцууд.
-printers_found_none	Принтер олдсонгүй.
-kot_copy_from	Хуулах эх
-kot_copy_from_help	Тэр төрлийн мөр бүрийн хэмжээ, зузаан, зэрэгцүүлэлтийг энэ төрөлд хуулна. Энэ төрөл өөрийн баннер, барааны угтвар, дарсан зураасаа хадгална. Хадгалахын тулд KOT форматыг хадгална уу.
-nav_loading	Ачаалж байна…

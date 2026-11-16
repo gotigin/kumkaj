@@ -92,10 +92,6 @@ bill_item_layout	Raspored stavki
 bill_item_layout_columns	Stupci
 bill_item_layout_stacked	Složeno
 bill_item_header	Zaglavlja stupaca
-bill_item_hdr_item	Zaglavlje stavke
-bill_item_hdr_qty	Zaglavlje kol.
-bill_item_hdr_price	Zaglavlje cijene
-bill_item_hdr_amount	Zaglavlje iznosa
 bill_item_name	Ime jela
 bill_item_qty	Kol.
 bill_item_price	Cijena
@@ -103,6 +99,20 @@ bill_item_amount	Iznos
 bill_item_note	Bilješka jela
 bill_item_col_sep	Crte stupaca
 slip_columns	Stupci
+slip_col_header	Zaglavlje
+bill_line_logo	Logotip
+bill_logo_picture	Slika
+bill_logo_choose	Odaberi sliku
+bill_logo_remove	Ukloni sliku
+bill_logo_none	Nema slike
+bill_logo_unreadable	Nije slika koju aplikacija može pročitati
+bill_logo_width	Širina (px)
+bill_logo_height	Visina (px)
+bill_logo_tones	Sive nijanse
+bill_logo_solid	Puno
+bill_logo_shaded	Sjenčano
+bill_logo_help	Širina i visina u px. Prazno prati sliku: jedno prazno čuva oblik, oba prazna koriste njezinu veličinu; oba zadana smještaju je unutra, nikad rastegnutu. Bez slike: prikazani logotip zadržava svoju visinu kao prazan prostor; Sakrij ga uklanja.
+bill_logo_tones_help	Puno: svaka točka crna ili bijela, za oštre logotipe. Sjenčano: sivo postaje fini uzorak točaka, za fotografije i meke sjene.
 slip_col_width	Širina (mm)
 slip_col_start	Početni razmak (px)
 slip_col_end	Završni razmak (px)
@@ -167,6 +177,21 @@ alerts_help	Koliko dugo poruke statusa ostaju na zaslonu za vas (ova prijava).
 snack_secs_ph	Sekunde (3–60, zadano 10)
 snack_secs_save	Spremi trajanje upozorenja
 snack_secs_saved	Trajanje upozorenja spremljeno — {n} sekundi
+settings_sec_whatsapp	WhatsApp
+whatsapp_cloud_help	Use your own Meta WhatsApp Cloud API. Create a System User token with whatsapp_business_messaging (temporary dashboard tokens expire). Credentials stay on this Server only — never on extra tills. Accepted means Meta took the request, not that the guest received it.
+whatsapp_phone_id_ph	Phone Number ID
+whatsapp_token_ph	Access Token (leave blank to keep)
+whatsapp_template_ph	Bill template name (optional)
+whatsapp_template_lang_ph	Template language (e.g. en)
+whatsapp_enable	Enable
+whatsapp_disable	Off
+whatsapp_save	Save WhatsApp
+whatsapp_test	Test connection
+whatsapp_disconnect	Disconnect
+whatsapp_send_bill	Send via WhatsApp
+whatsapp_consent	WhatsApp OK
+whatsapp_consent_help	Guest agreed to receive WhatsApp messages. A phone number alone is not consent.
+whatsapp_server_only	Configure WhatsApp on the shop Server device
 settings_sec_backup	Sigurnosna kopija i povrat
 settings_sec_diag	Dijagnostika
 settings_sec_privacy	Privatnost
@@ -729,6 +754,13 @@ station_vps_dd	Pisači za ovu stanicu
 station_vps_dd_n	{n} pisač/a · dodirnite za promjenu
 bill_printers_dd	Pisači za račun
 bill_printers_dd_n	{n} pisač/a za račun · dodirnite za promjenu
+paper_heading	Papir
+paper_size	{w} × {h} mm
+paper_roll	rola {w} mm
+paper_not_set	papir još nije poznat
+paper_length_mm	Duljina (mm)
+printer_paper_help	Papir ovog pisača u mm. Prazna Duljina je rola: svaki račun dug je koliko i njegov sadržaj. Pronađi pisače popunjava prazan papir iz upravljačkog programa pisača (rola od 80 mm kad ne može reći) i nikad ne mijenja već postavljen.
+preview_help	Ovaj račun na papiru pisača odabranog ispod, kako se ondje ispisuje: u stvarnoj veličini od gornjeg lijevog kuta do kojeg pisač dopire (sivo: rubovi do kojih ne dopire), dug račun na više listova, sve preko ruba papira se odreže. Odabir pisača mijenja samo pregled; papir svakog pisača postavlja se pod Pisači.
 job_layout	Raspored
 job_delivery	Kako se posao šalje
 job_delivery_help	Dokument OS-a, sirovi bajtovi ili ESC/POS. Račun i kuhinjski listić čuvaju svaki svoje. Bilo koji posao može ići na bilo koji pisač koji je Pronađi spremio.
@@ -1105,9 +1137,6 @@ remove_these_tables	Ukloni ove stolove
 table_remove_ph	Ukloni: T1-T24 ili ime jednog stola
 find_server	Pronađi server lokala
 bill_format	Oblik računa
-bill_header_ph	Adresa | telefon
-fssai_ph	Broj dozvole FSSAI (Indija)
-bill_footer_ph	Podnožje (npr. Hvala, dođite opet)
 reset_bill_format	Vrati na zadano
 bill_format_reset	Oblik računa vraćen na zadano
 reset_kot_format	Vrati na zadano
@@ -1146,7 +1175,6 @@ kot_kind_modified	Izmijenjeno
 kot_kind_cancelled	Otkazano
 kot_style_heading	Veličina i debljina polja
 kot_style_title	Naslov
-kot_style_item_qty	Stavka · Kol.
 kot_style_field_pick	Odaberi polje
 kot_weight_regular	Obično
 kot_weight_bold	Podebljano
@@ -1158,8 +1186,8 @@ content_width_bill	Širina sadržaja računa (mm)
 content_width_kot	Širina sadržaja KOT-a (mm)
 content_width_ph	Ili upišite širinu sadržaja, 40–210 mm
 content_width_help	Koliko široko se ovaj listić ispisuje. Račun i KOT čuvaju svaki svoju širinu.
-content_width_bill_help	Koliko široko se ispisuje račun za gosta. Zadano 210 mm (stranica). 58 mm uski listić, 80 mm široki listić, 112 mm 4 inča, 210 mm širina A4. Upišite bilo koju vrijednost od 40 do 210. Kuhinjski listići imaju svoju širinu na kartici KOT.
-content_width_kot_help	Koliko široko se ispisuje kuhinjski listić. Zadano 80 mm. 58 mm uski listić, 80 mm široki listić, 112 mm 4 inča, 210 mm stranica. Upišite bilo koju vrijednost od 40 do 210. Računi za goste imaju svoju širinu na kartici Račun.
+content_width_bill_help	Koliko se široko ispisuje račun gosta, u mm (40–210). Ispisuje se u ovoj stvarnoj veličini na bilo kojem papiru; na užem papiru dio iza ruba ispisa se odrezuje (vidi Papir). Kuhinjski listići imaju svoju širinu na kartici KOT.
+content_width_kot_help	Koliko se široko ispisuje kuhinjski listić, u mm (40–210). Ispisuje se u ovoj stvarnoj veličini na bilo kojem papiru; na užem papiru dio iza ruba ispisa se odrezuje (vidi Papir). Računi gostiju imaju svoju širinu na kartici Račun.
 vp_paper_width	Širina sadržaja (mm)
 vp_paper_width_ph	Ili upišite širinu sadržaja, 40–210 mm
 vp_paper_width_help	Širina sadržaja postavlja se pod Oblik računa i KOT-a — odvojeno za račun (zadano 210 mm) i kuhinjski listić (zadano 80 mm).
@@ -1213,8 +1241,6 @@ schemes_help	BOGO, postotak popusta i fiksne kombinacije. Kombinacije se rašire
 scheme_bogo_ph	Kupi 2 Thali dobij 1 Chaas
 add_scheme	Dodaj BOGO
 schedule_ph	Sati / happy hour — Pon-Pet 07:00-11:00 ili HappyHour 17:00-19:00=150
-upi_vpa_ph	UPI ID (VPA)
-upi_payee_ph	Ime primatelja UPI (nije obavezno)
 upi_qr	UPI QR
 show_upi_qr	Prikaži UPI QR
 close_upi_qr	Zatvori
@@ -1295,8 +1321,6 @@ printer_mode_first	Prvi koji radi
 printer_mode_all	Ispiši na sve
 kot_show_area	Zona
 kot_hide_area	Sakrij zonu
-kot_show_item_hdr	Stavka · Kol.
-kot_hide_item_hdr	Sakrij stupce
 kot_show_title	Redak naslova
 kot_hide_title	Sakrij naslov
 kot_field_cycle	Odaberi sljedeće
@@ -1337,12 +1361,12 @@ private_code_ph	12-znamenkasti kod
 stamp_on	Pečat: u datoteci
 pay_qr_on	QR plaćanja: u datoteci
 pay_qr_off	QR plaćanja: nema
+printers_screen_tip	Traži prikazuje pisače koje ovaj uređaj može koristiti i sprema ih za ovu trgovinu. Pisači za račune: Format računa i KOT → Račun. Kuhinja: Kuhinja → Kuhinjske stanice.
+printers_found_none	Nije pronađen nijedan pisač.
+nav_loading	Učitavanje…
+kot_copy_from	Kopiraj iz
+kot_copy_from_help	Kopira veličinu, debljinu i poravnanje svakog retka iz te vrste u ovu. Ova vrsta zadržava svoj natpis, prefiks stavke i precrtavanje. Spremite KOT format da ga zadržite.
 items_tmpl_heading	Predlošci stavki
 items_tmpl_help	Jela, kategorije i fotografije za vaš jelovnik. Postavke trgovine i osoblje ostaju nepromijenjeni.
 public_tmpl_help	Početni jelovnici koje svatko može preuzeti. Internet je potreban jednom.
 private_tmpl_help	Klijentski jelovnici zaključani 12-znamenkastim kodom od vašeg Khaynjo kontakta.
-printers_screen_tip	Traži prikazuje pisače koje ovaj uređaj može koristiti i sprema ih za ovu trgovinu. Pisači za račune: Format računa i KOT → Račun. Kuhinja: Kuhinja → Kuhinjske stanice.
-printers_found_none	Nije pronađen nijedan pisač.
-kot_copy_from	Kopiraj iz
-kot_copy_from_help	Kopira veličinu, debljinu i poravnanje svakog retka iz te vrste u ovu. Ova vrsta zadržava svoj natpis, prefiks stavke i precrtavanje. Spremite KOT format da ga zadržite.
-nav_loading	Učitavanje…

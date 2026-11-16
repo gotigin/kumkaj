@@ -60,10 +60,6 @@ bill_item_layout	सामानको लेआउट
 bill_item_layout_columns	स्तम्भ
 bill_item_layout_stacked	थाक
 bill_item_header	स्तम्भ शीर्षक
-bill_item_hdr_item	सामान शीर्षक
-bill_item_hdr_qty	परिमाण शीर्षक
-bill_item_hdr_price	मूल्य शीर्षक
-bill_item_hdr_amount	रकम शीर्षक
 bill_item_name	सामानको नाम
 bill_item_qty	परिमाण
 bill_item_price	मूल्य
@@ -71,6 +67,13 @@ bill_item_amount	रकम
 bill_item_note	सामानको टिप्पणी
 bill_item_col_sep	स्तम्भ रेखा
 slip_col_width	चौडाइ (mm)
+paper_heading	कागज
+paper_size	{w} × {h} mm
+paper_roll	{w} mm रोल
+paper_not_set	कागज अझै थाहा छैन
+paper_length_mm	लम्बाइ (mm)
+printer_paper_help	यो प्रिन्टरको कागज mm मा। खाली लम्बाइको अर्थ रोल: हरेक पर्ची आफ्नो सामग्री जत्तिकै लामो हुन्छ। प्रिन्टर खोज्नुहोस् ले खाली कागज प्रिन्टरको ड्राइभरबाट भर्छ (भन्न नसके 80 mm रोल) र पहिले नै तोकिएको कागज कहिल्यै बदल्दैन।
+preview_help	तल छानिएको प्रिन्टरको कागजमा यो पर्ची, त्यहाँ छापिने जस्तै: प्रिन्टर पुग्ने माथिल्लो बायाँ कुनाबाट वास्तविक नापमा (खैरो: नपुग्ने किनारा), लामो पर्ची थप पानाहरूमा, कागजको किनाराभन्दा परको सबै काटिन्छ। प्रिन्टर छान्दा पूर्वावलोकन मात्र बदलिन्छ; हरेक प्रिन्टरको कागज प्रिन्टर मा तोकिन्छ।
 slip_col_start	सुरुको ठाउँ (px)
 slip_col_end	अन्त्यको ठाउँ (px)
 slip_columns_help	प्रत्येक स्तम्भको चौडाइमा यसको सुरु र अन्त्यको ठाउँ समावेश हुन्छ। पाठ आफ्नै स्तम्भभित्र बेरिन्छ; सामग्रीको चौडाइभन्दा बाहिर भएको भाग कागजमा र पूर्वावलोकनमा काटिन्छ।
@@ -838,3 +841,4 @@ nav_loading	लोड हुँदैछ…
 printer_mode_first	पहिले चल्ने
 printer_mode_all	सबैमा छाप्नुहोस्
 slip_columns	स्तम्भहरू
+slip_col_header	शीर्षक

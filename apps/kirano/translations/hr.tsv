@@ -60,10 +60,6 @@ bill_item_layout	Raspored stavki
 bill_item_layout_columns	Stupci
 bill_item_layout_stacked	Složeno
 bill_item_header	Zaglavlja stupaca
-bill_item_hdr_item	Zaglavlje stavke
-bill_item_hdr_qty	Zaglavlje kol.
-bill_item_hdr_price	Zaglavlje cijene
-bill_item_hdr_amount	Zaglavlje iznosa
 bill_item_name	Ime stavke
 bill_item_qty	Kol.
 bill_item_price	Cijena
@@ -71,6 +67,13 @@ bill_item_amount	Iznos
 bill_item_note	Stavka bilješke
 bill_item_col_sep	Crte stupaca
 slip_col_width	Širina (mm)
+paper_heading	Papir
+paper_size	{w} × {h} mm
+paper_roll	rola {w} mm
+paper_not_set	papir još nije poznat
+paper_length_mm	Duljina (mm)
+printer_paper_help	Papir ovog pisača u mm. Prazna Duljina je rola: svaki račun dug je koliko i njegov sadržaj. Pronađi pisače popunjava prazan papir iz upravljačkog programa pisača (rola od 80 mm kad ne može reći) i nikad ne mijenja već postavljen.
+preview_help	Ovaj račun na papiru pisača odabranog ispod, kako se ondje ispisuje: u stvarnoj veličini od gornjeg lijevog kuta do kojeg pisač dopire (sivo: rubovi do kojih ne dopire), dug račun na više listova, sve preko ruba papira se odreže. Odabir pisača mijenja samo pregled; papir svakog pisača postavlja se pod Pisači.
 slip_col_start	Početni razmak (px)
 slip_col_end	Završni razmak (px)
 slip_columns_help	Širina svakog stupca uključuje njegov početni i završni razmak. Tekst se prelama unutar svog stupca; ono što prelazi širinu sadržaja odrezuje se, na papiru i u pregledu.
@@ -838,3 +841,4 @@ nav_loading	Učitavanje…
 printer_mode_first	Prvi koji radi
 printer_mode_all	Ispiši na sve
 slip_columns	Stupci
+slip_col_header	Zaglavlje

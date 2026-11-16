@@ -92,10 +92,6 @@ bill_item_layout	Rozložení položky
 bill_item_layout_columns	Sloupce
 bill_item_layout_stacked	Skládaný
 bill_item_header	Záhlaví sloupců
-bill_item_hdr_item	Záhlaví položky
-bill_item_hdr_qty	Záhlaví množství
-bill_item_hdr_price	Hlavička ceny
-bill_item_hdr_amount	Hlavička částky
 bill_item_name	Název pokrmu
 bill_item_qty	množství
 bill_item_price	Cena
@@ -103,6 +99,20 @@ bill_item_amount	Částka
 bill_item_note	Poznámka k jídlu
 bill_item_col_sep	Pravidla sloupců
 slip_columns	Sloupce
+slip_col_header	Záhlaví
+bill_line_logo	Logo
+bill_logo_picture	Obrázek
+bill_logo_choose	Vybrat obrázek
+bill_logo_remove	Odebrat obrázek
+bill_logo_none	Žádný obrázek
+bill_logo_unreadable	Není to obrázek, který aplikace umí přečíst
+bill_logo_width	Šířka (px)
+bill_logo_height	Výška (px)
+bill_logo_tones	Šedé tóny
+bill_logo_solid	Plné
+bill_logo_shaded	Stínované
+bill_logo_help	Šířka a výška v px. Prázdné se řídí obrázkem: jedno prázdné zachová tvar, obě prázdná použijí jeho velikost; obě zadaná jej vloží dovnitř, nikdy roztažený. Bez obrázku: zobrazené logo ponechá svou výšku jako prázdné místo; Skrýt jej odstraní.
+bill_logo_tones_help	Plné: každá tečka černá nebo bílá, pro ostrá loga. Stínované: šedé tóny se změní v jemný vzor teček, pro fotky a jemné stíny.
 slip_col_width	Šířka (mm)
 slip_col_start	Mezera na začátku (px)
 slip_col_end	Mezera na konci (px)
@@ -167,6 +177,21 @@ alerts_help	Jak dlouho zůstávají stavové zprávy na obrazovce (toto přihlá
 snack_secs_ph	Sekundy (3–60, výchozí 10)
 snack_secs_save	Ušetřete čas upozornění
 snack_secs_saved	Uložený čas upozornění — {n} sekund
+settings_sec_whatsapp	WhatsApp
+whatsapp_cloud_help	Use your own Meta WhatsApp Cloud API. Create a System User token with whatsapp_business_messaging (temporary dashboard tokens expire). Credentials stay on this Server only — never on extra tills. Accepted means Meta took the request, not that the guest received it.
+whatsapp_phone_id_ph	Phone Number ID
+whatsapp_token_ph	Access Token (leave blank to keep)
+whatsapp_template_ph	Bill template name (optional)
+whatsapp_template_lang_ph	Template language (e.g. en)
+whatsapp_enable	Enable
+whatsapp_disable	Off
+whatsapp_save	Save WhatsApp
+whatsapp_test	Test connection
+whatsapp_disconnect	Disconnect
+whatsapp_send_bill	Send via WhatsApp
+whatsapp_consent	WhatsApp OK
+whatsapp_consent_help	Guest agreed to receive WhatsApp messages. A phone number alone is not consent.
+whatsapp_server_only	Configure WhatsApp on the shop Server device
 settings_sec_backup	Zálohování a obnovení
 settings_sec_diag	Diagnostika
 settings_sec_privacy	Soukromí
@@ -729,6 +754,13 @@ station_vps_dd	Tiskárny pro tuto stanici
 station_vps_dd_n	{n} tiskáren · klepněte pro změnu
 bill_printers_dd	Tiskárny na účet
 bill_printers_dd_n	{n} tiskáren na účet · klepnutím změňte
+paper_heading	Papír
+paper_size	{w} × {h} mm
+paper_roll	role {w} mm
+paper_not_set	papír zatím není známý
+paper_length_mm	Délka (mm)
+printer_paper_help	Papír této tiskárny v mm. Prázdná Délka je role: každá účtenka je dlouhá jako její obsah. Najděte tiskárny doplní prázdný papír z ovladače tiskárny (role 80 mm, když to nedokáže říct) a nikdy nezmění papír, který už je nastavený.
+preview_help	Tato účtenka na papíru tiskárny vybrané níže, jak se na ní vytiskne: ve skutečné velikosti od levého horního rohu, kam tiskárna dosáhne (šedě: okraje, kam nedosáhne), dlouhá účtenka na více listech, vše za okrajem papíru se ořízne. Výběr tiskárny mění jen náhled; papír každé tiskárny se nastavuje v části Tiskárny.
 job_layout	Rozložení
 job_delivery	Jak je úloha odeslána
 job_delivery_help	Dokument OS, nezpracované bajty nebo ESC/POS. Účet a lístek do kuchyně si ponechají každý svůj. Každá úloha může přejít na jakoukoli tiskárnu, kterou funkce Find uložila.
@@ -1105,9 +1137,6 @@ remove_these_tables	Odstraňte tyto jídelní stoly
 table_remove_ph	Odstraňte: T1-T24 nebo název jednoho jídelního stolu
 find_server	Najděte server obchodu
 bill_format	Formát faktury
-bill_header_ph	Adresa | telefon
-fssai_ph	FSSAI číslo licence (Indie)
-bill_footer_ph	Zápatí (např. Děkuji, navštivte znovu)
 reset_bill_format	Obnovit výchozí
 bill_format_reset	Formát faktury byl resetován na výchozí
 reset_kot_format	Obnovit výchozí
@@ -1146,7 +1175,6 @@ kot_kind_modified	Upraveno
 kot_kind_cancelled	Zrušeno
 kot_style_heading	Typ pole velikost a hmotnost
 kot_style_title	Název
-kot_style_item_qty	Položka · Množ
 kot_style_field_pick	Vyberte pole
 kot_weight_regular	Pravidelné
 kot_weight_bold	Tučné
@@ -1158,8 +1186,8 @@ content_width_bill	Šířka obsahu faktury (mm)
 content_width_kot	KOT šířka obsahu (mm)
 content_width_ph	Nebo zadejte šířku obsahu 40–210 mm
 content_width_help	Jak široký se tento lístek tiskne. Bill a KOT si každý ponechává svou vlastní šířku.
-content_width_bill_help	Jak široký se tiskne účet pro hosty. Výchozí 210 mm (strana). 58 mm úzká lišta, 80 mm široká lišta, 112 mm 4 palce, 210 mm šířka A4. Zadejte libovolnou hodnotu od 40 do 210. Lístky do kuchyně mají svou vlastní šířku na záložce KOT.
-content_width_kot_help	Jak široce se tiskne lístek do kuchyně. Výchozí 80 mm. 58 mm úzký list, 80 mm široký list, 112 mm 4 palce, 210 mm list. Zadejte libovolnou hodnotu od 40 do 210. Účty pro hosty mají svou vlastní šířku na kartě Faktura.
+content_width_bill_help	Jak široce se tiskne účet hosta, v mm (40–210). Tiskne se v této skutečné velikosti na jakýkoli papír; na užším papíru se část za okrajem tisku ořízne (viz Papír). Kuchyňské lístky mají vlastní šířku na kartě KOT.
+content_width_kot_help	Jak široce se tiskne kuchyňský lístek, v mm (40–210). Tiskne se v této skutečné velikosti na jakýkoli papír; na užším papíru se část za okrajem tisku ořízne (viz Papír). Účty hostů mají vlastní šířku na kartě Účet.
 vp_paper_width	Šířka obsahu (mm)
 vp_paper_width_ph	Nebo zadejte šířku obsahu 40–210 mm
 vp_paper_width_help	Šířka obsahu se nastavuje ve formátu Bill & KOT — zvlášť pro bankovku (výchozí 210 mm) a lístek do kuchyně (výchozí 80 mm).
@@ -1213,8 +1241,6 @@ schemes_help	BOGO, sleva v procentech a pevná komba. Kombinace expandují na ku
 scheme_bogo_ph	Kupte 2 Thali a získejte 1 Chaas
 add_scheme	Přidat BOGO
 schedule_ph	Hodiny / šťastná hodina — Po-Pá 07:00-11:00 nebo HappyHour 17:00-19:00=150
-upi_vpa_ph	UPI ID (VPA)
-upi_payee_ph	UPI jméno příjemce platby (volitelné)
 upi_qr	UPI QR
 show_upi_qr	Zobrazit UPI QR
 close_upi_qr	Zavřít
@@ -1295,8 +1321,6 @@ printer_mode_first	Nejprve to funguje
 printer_mode_all	Tisk na všechny
 kot_show_area	Oblast
 kot_hide_area	Skrýt oblast
-kot_show_item_hdr	Položka · Množ
-kot_hide_item_hdr	Skrýt sloupce
 kot_show_title	Titulní řádek
 kot_hide_title	Skrýt název
 kot_field_cycle	Vyberte další
@@ -1337,12 +1361,12 @@ private_code_ph	12místný kód
 stamp_on	Razítko: v evidenci
 pay_qr_on	Platba QR: v evidenci
 pay_qr_off	Platba QR: žádná
+printers_screen_tip	Hledat vypíše tiskárny, které toto zařízení může použít, a uloží je pro tento obchod. Tiskárny účtů: Formát účtu a KOT → Účet. Kuchyně: Kuchyně → Kuchyňská stanoviště.
+printers_found_none	Nenalezeny žádné tiskárny.
+nav_loading	Načítání…
+kot_copy_from	Kopírovat z
+kot_copy_from_help	Zkopíruje velikost, tloušťku a zarovnání každého řádku z daného druhu do tohoto. Tento druh si ponechá vlastní banner, předponu položek a přeškrtnutí. Pro zachování uložte formát KOT.
 items_tmpl_heading	Šablony položek
 items_tmpl_help	Jídla, kategorie a fotky pro vaše menu. Nastavení obchodu a personál zůstávají beze změny.
 public_tmpl_help	Startovní menu, která si může stáhnout kdokoli. Internet je potřeba jednou.
 private_tmpl_help	Klientská menu chráněná 12místným kódem od vašeho kontaktu Khaynjo.
-printers_screen_tip	Hledat vypíše tiskárny, které toto zařízení může použít, a uloží je pro tento obchod. Tiskárny účtů: Formát účtu a KOT → Účet. Kuchyně: Kuchyně → Kuchyňská stanoviště.
-printers_found_none	Nenalezeny žádné tiskárny.
-kot_copy_from	Kopírovat z
-kot_copy_from_help	Zkopíruje velikost, tloušťku a zarovnání každého řádku z daného druhu do tohoto. Tento druh si ponechá vlastní banner, předponu položek a přeškrtnutí. Pro zachování uložte formát KOT.
-nav_loading	Načítání…

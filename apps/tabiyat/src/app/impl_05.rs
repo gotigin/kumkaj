@@ -70,6 +70,8 @@ fn print_or_share_receipt(&mut self, cx: &mut Cx, text: &str) {
             return true;
         }
         let top_level = [
+            ids!(printer_paper_l_input),
+            ids!(printer_paper_w_input),
             ids!(cart_total_input),
             ids!(customer_name_input),
             ids!(menu_name_input),

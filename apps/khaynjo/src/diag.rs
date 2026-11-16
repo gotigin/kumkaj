@@ -952,7 +952,7 @@ mod tests {
     }
 
     fn temp_dir() -> PathBuf {
-        let mut p = std::env::temp_dir();
+        let mut p = crate::test_dirs::run_root();
         p.push(format!(
             "kumkaj-diag-test-{}-{}",
             std::process::id(),

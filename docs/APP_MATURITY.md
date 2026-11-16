@@ -80,6 +80,36 @@ Read with `docs/DEV.md` (UI-thread rules, bug lists) and
   `align_slip_previews`); the hidden print-order list and the old
   column picker are gone. Ported from Khaynjo's code (identical before), with
   each app's colours and widgets.
+- **Open — Kirano / Tabiyat bill Logo** (2026-11-15): Khaynjo's Bill tab
+  has a Logo line (PRINTER.md § Logo, lesson 23); the two apps share the
+  Bill form and need the line, the picture line in the raster and the books
+  ops ported.
+- **Done 2026-11-16 (was open) — Moklanjo / Kirano / Tabiyat OS document on CUPS** (2026-11-15):
+  they still send the older picture job — Kirano / Tabiyat
+  `print-scaling=none` under 180 mm, Moklanjo the bare slip fitted to the
+  page — so the slip is centred on the sheet (a blank band above it) and
+  Moklanjo's fills the page at any width. Since 2026-11-16 Khaynjo prints
+  OS documents at real size on a page exactly the printer's paper (owner's
+  model: paper per printer on Settings → Printers, filled by Find, never
+  lost; the Bill / KOT preview drawn on any printer's paper — `os_paper.rs`,
+  `NamedPrinter::paper_width_mm`, Windows `windows_slip_script`, Android
+  `printSlipPages`; PRINTER.md § Paper and preview, lesson 24) — that is
+  the path to port, not the 210 mm page (it assumed A4). The Android Java
+  and JNI are shared (patches), so the three apps only need their Rust side.
+  The dropdown face fix (`ComboFace` / `ComboInput`) is already in all four.
+  **Ported 2026-11-16** (owner: "update them all … all the three apps"):
+  `os_paper.rs`, the printer's paper on `NamedPrinter`, Find asking each
+  driver, the real-size send (CUPS / Windows / Android `print_slip`), the
+  Printers list `name · paper` opened in place (`PrinterPaperRows`, any
+  number of printers) and the preview on any printer's paper — Kirano /
+  Tabiyat on the Bill tab, Moklanjo for the focused job (receipt or AWB
+  label) on Settings → Printers (`SlipPicture`). Each app's 18 paper tests
+  and suites green, `--tier=fast` PASS ×4, the screens checked on Xvfb.
+- **Open — Kirano / Tabiyat sample bill and Table line** (found 2026-11-16):
+  the Bill form still has Khaynjo's **Table** line, and the sample bill
+  prints "Dine In: D1" with Tea and Coffee (`render_sample`) — restaurant
+  words in a grocery / chemist app. Remove the line and use each shop's own
+  sample goods (owner rule: no restaurant code in these two, 2026-11-14).
 - **All four:** `check-lock-guards.sh` now also flags `app_t(` under a live
   `app_state()` guard (the Menu template download deadlock class) — clean.
 - **Android (all apps, shared Makepad):** touch selection on the AGS2 — held

@@ -60,10 +60,6 @@ bill_item_layout	Artikellayout
 bill_item_layout_columns	Spalten
 bill_item_layout_stacked	Gestapelt
 bill_item_header	Spaltenköpfe
-bill_item_hdr_item	Artikelkopf
-bill_item_hdr_qty	Mengenkopf
-bill_item_hdr_price	Preiskopf
-bill_item_hdr_amount	Betragskopf
 bill_item_name	Artikelname
 bill_item_qty	Menge
 bill_item_price	Preis
@@ -71,6 +67,13 @@ bill_item_amount	Betrag
 bill_item_note	Artikelnotiz
 bill_item_col_sep	Spaltlinien
 slip_col_width	Breite (mm)
+paper_heading	Papier
+paper_size	{w} × {h} mm
+paper_roll	{w}-mm-Rolle
+paper_not_set	Papier noch unbekannt
+paper_length_mm	Länge (mm)
+printer_paper_help	Das Papier dieses Druckers in mm. Eine leere Länge ist eine Rolle: Jeder Beleg ist so lang wie sein Inhalt. „Drucker suchen“ füllt leeres Papier aus dem Treiber des Druckers (eine 80-mm-Rolle, wenn er es nicht sagen kann) und ändert nie ein bereits gesetztes.
+preview_help	Dieser Beleg auf dem Papier des unten gewählten Druckers, so wie er dort druckt: in echter Größe ab der oberen linken Ecke, die der Drucker erreicht (grau: Ränder, die er nicht erreicht), ein langer Beleg auf weiteren Blättern, alles jenseits des Papierrands abgeschnitten. Die Druckerwahl ändert nur die Vorschau; das Papier jedes Druckers wird unter „Drucker“ gesetzt.
 slip_col_start	Abstand am Anfang (px)
 slip_col_end	Abstand am Ende (px)
 slip_columns_help	Die Breite jeder Spalte schließt ihren Abstand am Anfang und am Ende ein. Text wird innerhalb seiner Spalte umbrochen; was über die Inhaltsbreite hinausgeht, wird abgeschnitten – auf Papier und in der Vorschau.
@@ -838,3 +841,4 @@ nav_loading	Wird geladen…
 printer_mode_first	Erster, der funktioniert
 printer_mode_all	Auf allen drucken
 slip_columns	Spalten
+slip_col_header	Kopf

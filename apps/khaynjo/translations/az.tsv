@@ -92,10 +92,6 @@ bill_item_layout	Məhsul düzümü
 bill_item_layout_columns	Sütunlar
 bill_item_layout_stacked	Üst-üstə
 bill_item_header	Sütun başlıqları
-bill_item_hdr_item	Məhsul başlığı
-bill_item_hdr_qty	Say başlığı
-bill_item_hdr_price	Qiymət başlığı
-bill_item_hdr_amount	Məbləğ başlığı
 bill_item_name	Yemək adı
 bill_item_qty	Say
 bill_item_price	Qiymət
@@ -103,6 +99,20 @@ bill_item_amount	Məbləğ
 bill_item_note	Yemək qeydi
 bill_item_col_sep	Sütun xətləri
 slip_columns	Sütunlar
+slip_col_header	Başlıq
+bill_line_logo	Loqo
+bill_logo_picture	Şəkil
+bill_logo_choose	Şəkil seç
+bill_logo_remove	Şəkli sil
+bill_logo_none	Şəkil yoxdur
+bill_logo_unreadable	Bu tətbiqin oxuya bildiyi şəkil deyil
+bill_logo_width	En (px)
+bill_logo_height	Hündürlük (px)
+bill_logo_tones	Boz tonlar
+bill_logo_solid	Bərk
+bill_logo_shaded	Kölgəli
+bill_logo_help	En və hündürlük px ilə. Boş qalan şəklə uyğunlaşır: biri boşdursa forması qorunur, ikisi də boşdursa öz ölçüsü işlənir; ikisi də verilsə içinə sığdırılır, heç vaxt dartılmır. Şəkil yoxdursa: göstərilən loqo hündürlüyünü boş yer kimi saxlayır; Gizlət onu silir.
+bill_logo_tones_help	Bərk: hər nöqtə qara və ya ağ, aydın loqolar üçün. Kölgəli: boz tonlar incə nöqtə naxışlarına çevrilir, foto və yumşaq kölgə üçün.
 slip_col_width	En (mm)
 slip_col_start	Başlanğıc boşluğu (px)
 slip_col_end	Son boşluq (px)
@@ -167,6 +177,21 @@ alerts_help	Status mesajları ekranda sizin üçün (bu girişdə) nə qədər q
 snack_secs_ph	Saniyə (3–60, susmaya görə 10)
 snack_secs_save	Xəbərdarlıq vaxtını saxla
 snack_secs_saved	Xəbərdarlıq vaxtı saxlandı — {n} saniyə
+settings_sec_whatsapp	WhatsApp
+whatsapp_cloud_help	Use your own Meta WhatsApp Cloud API. Create a System User token with whatsapp_business_messaging (temporary dashboard tokens expire). Credentials stay on this Server only — never on extra tills. Accepted means Meta took the request, not that the guest received it.
+whatsapp_phone_id_ph	Phone Number ID
+whatsapp_token_ph	Access Token (leave blank to keep)
+whatsapp_template_ph	Bill template name (optional)
+whatsapp_template_lang_ph	Template language (e.g. en)
+whatsapp_enable	Enable
+whatsapp_disable	Off
+whatsapp_save	Save WhatsApp
+whatsapp_test	Test connection
+whatsapp_disconnect	Disconnect
+whatsapp_send_bill	Send via WhatsApp
+whatsapp_consent	WhatsApp OK
+whatsapp_consent_help	Guest agreed to receive WhatsApp messages. A phone number alone is not consent.
+whatsapp_server_only	Configure WhatsApp on the shop Server device
 settings_sec_backup	Ehtiyat nüsxə və bərpa
 settings_sec_diag	Diaqnostika
 settings_sec_privacy	Məxfilik
@@ -729,6 +754,13 @@ station_vps_dd	Bu postun printerləri
 station_vps_dd_n	{n} printer · dəyişmək üçün toxunun
 bill_printers_dd	Hesabın printerləri
 bill_printers_dd_n	Hesab üçün {n} printer · dəyişmək üçün toxunun
+paper_heading	Kağız
+paper_size	{w} × {h} mm
+paper_roll	{w} mm rulon
+paper_not_set	kağız hələ məlum deyil
+paper_length_mm	Uzunluq (mm)
+printer_paper_help	Bu printerin kağızı mm ilə. Boş Uzunluq rulondur: hər çek məzmunu qədər uzun olur. Printerləri tap boş kağızı printerin sürücüsündən doldurur (deyə bilmirsə 80 mm rulon) və artıq təyin olunmuş kağızı heç vaxt dəyişmir.
+preview_help	Bu çek aşağıda seçilmiş printerin kağızında, orada çap olunduğu kimi: printerin çata bildiyi yuxarı sol küncdən real ölçüdə (boz: çata bilmədiyi kənarlar), uzun çek daha çox vərəqdə, kağızın kənarından kənara çıxan hər şey kəsilir. Printer seçmək yalnız önizləməni dəyişir; hər printerin kağızı Printerlər bölməsində təyin olunur.
 job_layout	Maket
 job_delivery	İş necə göndərilir
 job_delivery_help	ƏS sənədi, xam baytlar və ya ESC/POS. Hesab və mətbəx bileti hər biri özünkünü saxlayır. Hər iş Tap-ın saxladığı istənilən printerə gedə bilər.
@@ -1105,9 +1137,6 @@ remove_these_tables	Bu masaları sil
 table_remove_ph	Sil: T1-T24 və ya bir masanın adı
 find_server	Mağazanın serverini tap
 bill_format	Hesab formatı
-bill_header_ph	Ünvan | telefon
-fssai_ph	FSSAI lisenziya № (Hindistan)
-bill_footer_ph	Altlıq (məs. Təşəkkür edirik, yenə gəlin)
 reset_bill_format	Susmaya qaytar
 bill_format_reset	Hesab formatı susmaya qaytarıldı
 reset_kot_format	Susmaya qaytar
@@ -1146,7 +1175,6 @@ kot_kind_modified	Dəyişdirilmiş
 kot_kind_cancelled	Ləğv olunmuş
 kot_style_heading	Sahənin şrift ölçüsü və qalınlığı
 kot_style_title	Başlıq
-kot_style_item_qty	Məhsul · Say
 kot_style_field_pick	Sahə seçin
 kot_weight_regular	Adi
 kot_weight_bold	Qalın
@@ -1158,8 +1186,8 @@ content_width_bill	Hesabın məzmun eni (mm)
 content_width_kot	KOT-un məzmun eni (mm)
 content_width_ph	Və ya məzmun eni yazın, 40–210 mm
 content_width_help	Bu slip nə qədər enində çap olunur. Hesab və KOT hər biri öz enini saxlayır.
-content_width_bill_help	Qonaq hesabı nə qədər enində çap olunur. Susma 210 mm (səhifə). 58 mm dar slip, 80 mm enli slip, 112 mm 4 düym, 210 mm A4 eni. 40-dan 210-a qədər istənilən dəyəri yazın. Mətbəx biletlərinin öz eni KOT vərəqindədir.
-content_width_kot_help	Mətbəx bileti nə qədər enində çap olunur. Susma 80 mm. 58 mm dar slip, 80 mm enli slip, 112 mm 4 düym, 210 mm səhifə. 40-dan 210-a qədər istənilən dəyəri yazın. Qonaq hesablarının öz eni Hesab vərəqindədir.
+content_width_bill_help	Qonaq hesabının nə qədər enli çap olunduğu, mm ilə (40–210). İstənilən kağızda bu real ölçüdə çap olunur; bundan dar kağızda çap kənarından kənara çıxan hissə kəsilir (Kağıza baxın). Mətbəx biletlərinin KOT tabında öz eni var.
+content_width_kot_help	Mətbəx biletinin nə qədər enli çap olunduğu, mm ilə (40–210). İstənilən kağızda bu real ölçüdə çap olunur; bundan dar kağızda çap kənarından kənara çıxan hissə kəsilir (Kağıza baxın). Qonaq hesablarının Hesab tabında öz eni var.
 vp_paper_width	Məzmun eni (mm)
 vp_paper_width_ph	Və ya məzmun eni yazın, 40–210 mm
 vp_paper_width_help	Məzmun eni Hesab və KOT formatı altında qoyulur — hesab üçün ayrı (susma 210 mm) və mətbəx bileti üçün ayrı (susma 80 mm).
@@ -1213,8 +1241,6 @@ schemes_help	BOGO, faiz endirimi və sabit kombolar. Kombolar KOT göndərəndə
 scheme_bogo_ph	Buy 2 Thali get 1 Chaas
 add_scheme	BOGO əlavə et
 schedule_ph	Saatlar / xoş saat — Mon-Fri 07:00-11:00 və ya HappyHour 17:00-19:00=150
-upi_vpa_ph	UPI ID (VPA)
-upi_payee_ph	UPI alanın adı (istəyə bağlı)
 upi_qr	UPI QR
 show_upi_qr	UPI QR göstər
 close_upi_qr	Bağla
@@ -1295,8 +1321,6 @@ printer_mode_first	Birinci işləyən
 printer_mode_all	Hamısına çap et
 kot_show_area	Zona
 kot_hide_area	Zonanı gizlət
-kot_show_item_hdr	Məhsul · Say
-kot_hide_item_hdr	Sütunları gizlət
 kot_show_title	Başlıq sətri
 kot_hide_title	Başlığı gizlət
 kot_field_cycle	Növbətini seç
@@ -1337,12 +1361,12 @@ private_code_ph	12 rəqəmli kod
 stamp_on	Möhür: faylda
 pay_qr_on	Ödəniş QR: faylda
 pay_qr_off	Ödəniş QR: yoxdur
+printers_screen_tip	Axtar bu cihazın istifadə edə biləcəyi printerləri göstərir və bu mağaza üçün saxlayır. Hesab printerləri: Hesab və KOT formatı → Hesab. Mətbəx: Mətbəx → Mətbəx stansiyaları.
+printers_found_none	Printer tapılmadı.
+nav_loading	Yüklənir…
+kot_copy_from	Buradan kopyala
+kot_copy_from_help	O növün hər sətrinin ölçüsünü, qalınlığını və düzülüşünü bu növə köçürür. Bu növ öz bannerini, məhsul prefiksini və üstündən xətti saxlayır. Saxlamaq üçün KOT formatını yadda saxlayın.
 items_tmpl_heading	Məhsul şablonları
 items_tmpl_help	Menyunuz üçün yeməklər, kateqoriyalar və şəkillər. Mağaza ayarları və işçilər olduğu kimi qalır.
 public_tmpl_help	Hər kəsin endirə biləcəyi başlanğıc menyular. Bir dəfə internet lazımdır.
 private_tmpl_help	Khaynjo əlaqənizdən gələn 12 rəqəmli kodla qorunan müştəri menyuları.
-printers_screen_tip	Axtar bu cihazın istifadə edə biləcəyi printerləri göstərir və bu mağaza üçün saxlayır. Hesab printerləri: Hesab və KOT formatı → Hesab. Mətbəx: Mətbəx → Mətbəx stansiyaları.
-printers_found_none	Printer tapılmadı.
-kot_copy_from	Buradan kopyala
-kot_copy_from_help	O növün hər sətrinin ölçüsünü, qalınlığını və düzülüşünü bu növə köçürür. Bu növ öz bannerini, məhsul prefiksini və üstündən xətti saxlayır. Saxlamaq üçün KOT formatını yadda saxlayın.
-nav_loading	Yüklənir…

@@ -501,6 +501,17 @@ job_size	字號
 job_size_ph	例如 18, 20, 26…
 test_receipt_format	測試收據
 test_label_format	測試標籤
+paper_heading	紙張
+paper_size	{w} × {h} mm
+paper_roll	{w} mm 捲紙
+paper_not_set	紙張尚未得知
+paper_length_mm	長度 (mm)
+printer_paper_help	此打印機的紙張 (mm)。長度留空即為捲紙：每張單據與其內容一樣長。「查找打印機」會從打印機驅動程式填入空白紙張（無法得知時為 80 mm 捲紙），且絕不更改已設定的紙張。
+preview_help	此單據在下方所選打印機的紙張上，與在那裡列印的完全相同：從打印機可達的左上角起以實際尺寸列印（灰色：無法到達的邊緣），長單據印在更多張紙上，超出紙張邊緣的部分會被切掉。選擇打印機只會改變預覽；每台打印機的紙張在「打印機」中設定。
+slip_col_width	寬度 (mm)
+no_printer_assigned	無打印機
+printer_target_default	默認打印機
+job_preview	預覽
 test_receipt_sent	已發送收據樣本
 test_label_sent	已發送標籤樣本
 test_print_no_printer	此作業沒有印表機 — 在該位置下新增一台印表機

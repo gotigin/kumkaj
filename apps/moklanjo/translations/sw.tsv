@@ -501,6 +501,17 @@ job_size	Ukubwa wa fonti
 job_size_ph	k.m. 18, 20, 26…
 test_receipt_format	Risiti ya majaribio
 test_label_format	Lebo ya majaribio
+paper_heading	Karatasi
+paper_size	{w} × {h} mm
+paper_roll	gombo la {w} mm
+paper_not_set	karatasi bado haijulikani
+paper_length_mm	Urefu (mm)
+printer_paper_help	Karatasi ya printa hii kwa mm. Urefu mtupu ni gombo: kila risiti ni ndefu kama maudhui yake. Tafuta printa hujaza karatasi tupu kutoka kwa dereva wa printa (gombo la 80 mm isipoweza kusema) na kamwe haibadilishi iliyokwisha wekwa.
+preview_help	Risiti hii kwenye karatasi ya printa iliyochaguliwa hapa chini, kama inavyochapishwa huko: ukubwa halisi kutoka kona ya juu kushoto ambayo printa hufikia (kijivu: kingo isizofikia), risiti ndefu kwenye kurasa zaidi, kila kitu kinachopita ukingo wa karatasi hukatwa. Kuchagua printa hubadilisha onyesho la awali tu; karatasi ya kila printa huwekwa chini ya Printa.
+slip_col_width	Upana (mm)
+no_printer_assigned	Hakuna printa
+printer_target_default	printa chaguo-msingi
+job_preview	Hakiki
 test_receipt_sent	Sampuli ya risiti imetumwa
 test_label_sent	Sampuli ya lebo imetumwa
 test_print_no_printer	Hakuna kichapishaji cha kazi hiyo - ongeza moja chini ya mahali hapa

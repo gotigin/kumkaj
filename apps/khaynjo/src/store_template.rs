@@ -1654,7 +1654,7 @@ mod tests {
     use std::path::PathBuf;
 
     fn scratch(tag: &str) -> PathBuf {
-        let dir = std::env::temp_dir().join(format!("khaynjo-template-{tag}-{}", new_id()));
+        let dir = crate::test_dirs::run_root().join(format!("khaynjo-template-{tag}-{}", new_id()));
         fs::create_dir_all(&dir).unwrap();
         dir
     }

@@ -92,10 +92,6 @@ bill_item_layout	Miz an paj atik
 bill_item_layout_columns	Kolòn
 bill_item_layout_stacked	An pile
 bill_item_header	Tèt kolòn
-bill_item_hdr_item	Tèt atik
-bill_item_hdr_qty	Tèt kantite
-bill_item_hdr_price	Tèt pri
-bill_item_hdr_amount	Tèt montan
 bill_item_name	Non plat
 bill_item_qty	Kant.
 bill_item_price	Pri
@@ -103,6 +99,20 @@ bill_item_amount	Montan
 bill_item_note	Nòt plat
 bill_item_col_sep	Liy kolòn
 slip_columns	Kolòn
+slip_col_header	Tèt
+bill_line_logo	Logo
+bill_logo_picture	Imaj
+bill_logo_choose	Chwazi yon imaj
+bill_logo_remove	Retire imaj la
+bill_logo_none	Pa gen imaj
+bill_logo_unreadable	Se pa yon imaj aplikasyon an ka li
+bill_logo_width	Lajè (px)
+bill_logo_height	Wotè (px)
+bill_logo_tones	Gri
+bill_logo_solid	Solid
+bill_logo_shaded	Lonbraj
+bill_logo_help	Lajè ak wotè an px. Vid swiv imaj la: youn vid kenbe fòm li, tou de vid itilize pwòp gwosè li; tou de mete fè l antre anndan, jamè etire. Pa gen imaj: yon logo ki parèt kenbe wotè li kòm espas vid; Kache retire l.
+bill_logo_tones_help	Solid: chak pwen nwa oswa blan, pou logo klè. Lonbraj: gri yo tounen ti modèl pwen fen, pou foto ak lonbraj dous.
 slip_col_width	Lajè (mm)
 slip_col_start	Espas kòmansman (px)
 slip_col_end	Espas fen (px)
@@ -167,6 +177,21 @@ alerts_help	Konbyen tan mesaj eta yo rete sou ekran pou ou (antre sa a).
 snack_secs_ph	Segond (3–60, default 10)
 snack_secs_save	Anrejistre tan alèt
 snack_secs_saved	Tan alèt anrejistre — {n} segond
+settings_sec_whatsapp	WhatsApp
+whatsapp_cloud_help	Use your own Meta WhatsApp Cloud API. Create a System User token with whatsapp_business_messaging (temporary dashboard tokens expire). Credentials stay on this Server only — never on extra tills. Accepted means Meta took the request, not that the guest received it.
+whatsapp_phone_id_ph	Phone Number ID
+whatsapp_token_ph	Access Token (leave blank to keep)
+whatsapp_template_ph	Bill template name (optional)
+whatsapp_template_lang_ph	Template language (e.g. en)
+whatsapp_enable	Enable
+whatsapp_disable	Off
+whatsapp_save	Save WhatsApp
+whatsapp_test	Test connection
+whatsapp_disconnect	Disconnect
+whatsapp_send_bill	Send via WhatsApp
+whatsapp_consent	WhatsApp OK
+whatsapp_consent_help	Guest agreed to receive WhatsApp messages. A phone number alone is not consent.
+whatsapp_server_only	Configure WhatsApp on the shop Server device
 settings_sec_backup	Sovgad ak retabli
 settings_sec_diag	Dyagnostik
 settings_sec_privacy	Vi prive
@@ -729,6 +754,13 @@ station_vps_dd	Enprimant pou estasyon sa a
 station_vps_dd_n	{n} enprimant · peze pou chanje
 bill_printers_dd	Enprimant pou kont lan
 bill_printers_dd_n	{n} enprimant pou kont lan · peze pou chanje
+paper_heading	Papye
+paper_size	{w} × {h} mm
+paper_roll	woulo {w} mm
+paper_not_set	papye a poko konnen
+paper_length_mm	Longè (mm)
+printer_paper_help	Papye enprimant sa a an mm. Yon Longè vid se yon woulo: chak resi gen longè sa li genyen ladan l. Chèche enprimant ranpli papye vid la ak sa chofè enprimant lan di (yon woulo 80 mm lè li pa ka di) epi li pa janm chanje yon papye ki deja mete.
+preview_help	Resi sa a sou papye enprimant ou chwazi anba a, jan li enprime la: gwosè reyèl depi kwen anwo agoch enprimant lan ka rive (gri: bò li pa ka rive), yon resi long sou plis fèy, tout sa ki depase bò papye a koupe. Chwazi yon enprimant chanje sèlman apèsi a; papye chak enprimant mete nan Enprimant.
 job_layout	Miz an paj
 job_delivery	Kijan travay la voye
 job_delivery_help	Dokiman OS, byte kri, oswa ESC/POS. Kont lan ak fich kwizin nan kenbe chak pa yo. Nenpòt travay ka ale sou nenpòt enprimant Chèche te sove.
@@ -1105,9 +1137,6 @@ remove_these_tables	Retire tab sa yo
 table_remove_ph	Retire: T1-T24, oswa non yon tab
 find_server	Chèche sèvè boutik la
 bill_format	Fòma kont
-bill_header_ph	Adrès | telefòn
-fssai_ph	Nimewo lisans FSSAI (End)
-bill_footer_ph	Pye (pa egzanp Mèsi, tounen ankò)
 reset_bill_format	Retounen default
 bill_format_reset	Fòma kont retounen default
 reset_kot_format	Retounen default
@@ -1146,7 +1175,6 @@ kot_kind_modified	Modifye
 kot_kind_cancelled	Anile
 kot_style_heading	Gwosè lèt ak pwa chan
 kot_style_title	Tit
-kot_style_item_qty	Atik · Kant.
 kot_style_field_pick	Chwazi chan
 kot_weight_regular	Nòmal
 kot_weight_bold	Gra
@@ -1158,8 +1186,8 @@ content_width_bill	Lajè kontni kont (mm)
 content_width_kot	Lajè kontni KOT (mm)
 content_width_ph	Oswa ekri yon lajè kontni, 40–210 mm
 content_width_help	Konbyen laj fich sa a enprime. Kont ak KOT kenbe chak pwòp lajè yo.
-content_width_bill_help	Konbyen laj kont envite a enprime. Default 210 mm (paj). 58 mm fich etwat, 80 mm fich laj, 112 mm 4 pous, 210 mm lajè A4. Ekri nenpòt valè de 40 a 210. Fich kwizin gen pwòp lajè yo sou onglet KOT.
-content_width_kot_help	Konbyen laj fich kwizin nan enprime. Default 80 mm. 58 mm fich etwat, 80 mm fich laj, 112 mm 4 pous, 210 mm paj. Ekri nenpòt valè de 40 a 210. Kont envite gen pwòp lajè yo sou onglet Kont.
+content_width_bill_help	Ki lajè bòdwo envite a enprime, an mm (40–210). Li enprime nan vrè gwosè sa a sou nenpòt papye; sou yon papye ki pi etwat, pati ki depase bò enpresyon an koupe (gade Papye). Tikè kizin yo gen pwòp lajè yo nan onglè KOT la.
+content_width_kot_help	Ki lajè tikè kizin nan enprime, an mm (40–210). Li enprime nan vrè gwosè sa a sou nenpòt papye; sou yon papye ki pi etwat, pati ki depase bò enpresyon an koupe (gade Papye). Bòdwo envite yo gen pwòp lajè yo nan onglè Bòdwo a.
 vp_paper_width	Lajè kontni (mm)
 vp_paper_width_ph	Oswa ekri yon lajè kontni, 40–210 mm
 vp_paper_width_help	Lajè kontni mete anba Fòma kont ak KOT — apa pou kont lan (default 210 mm) ak fich kwizin nan (default 80 mm).
@@ -1213,8 +1241,6 @@ schemes_help	BOGO, rabè pousantaj, ak konbo fiks. Konbo yo ouvri an liy kwizin 
 scheme_bogo_ph	Buy 2 Thali get 1 Chaas
 add_scheme	Ajoute BOGO
 schedule_ph	Lè / èdtan kè kontan — Mon-Fri 07:00-11:00 oswa HappyHour 17:00-19:00=150
-upi_vpa_ph	UPI ID (VPA)
-upi_payee_ph	Non benefisyè UPI (opsyonèl)
 upi_qr	UPI QR
 show_upi_qr	Montre QR UPI
 close_upi_qr	Fèmen
@@ -1295,8 +1321,6 @@ printer_mode_first	Premye ki mache
 printer_mode_all	Enprime sou tout
 kot_show_area	Zòn
 kot_hide_area	Kache zòn
-kot_show_item_hdr	Atik · Kant.
-kot_hide_item_hdr	Kache kolòn
 kot_show_title	Liy tit
 kot_hide_title	Kache tit
 kot_field_cycle	Chwazi pwochen
@@ -1337,12 +1361,12 @@ private_code_ph	Kòd 12 chif
 stamp_on	Tenm: nan fichye
 pay_qr_on	QR peman: nan fichye
 pay_qr_off	QR peman: pa gen
+printers_screen_tip	Chèche montre enprimant aparèy sa a ka itilize epi li sove yo pou boutik sa a. Enprimant fakti: Fòma fakti ak KOT → Fakti. Kizin: Kizin → Estasyon kizin.
+printers_found_none	Pa jwenn okenn enprimant.
+nav_loading	Chajman…
+kot_copy_from	Kopye soti nan
+kot_copy_from_help	Li kopye gwosè, epesè ak aliyman chak liy soti nan kalite sa a nan sa a. Kalite sa a kenbe pwòp banyè li, prefiks atik li ak bawotaj li. Sove fòma KOT la pou kenbe l.
 items_tmpl_heading	Modèl atik
 items_tmpl_help	Plat, kategori ak foto pou meni ou. Paramèt boutik la ak anplwaye yo rete jan yo ye a.
 public_tmpl_help	Meni pou kòmanse ke nenpòt moun ka telechaje. Bezwen entènèt yon fwa.
 private_tmpl_help	Meni kliyan ki fèmen ak yon kòd 12 chif ki soti nan kontak Khaynjo ou.
-printers_screen_tip	Chèche montre enprimant aparèy sa a ka itilize epi li sove yo pou boutik sa a. Enprimant fakti: Fòma fakti ak KOT → Fakti. Kizin: Kizin → Estasyon kizin.
-printers_found_none	Pa jwenn okenn enprimant.
-kot_copy_from	Kopye soti nan
-kot_copy_from_help	Li kopye gwosè, epesè ak aliyman chak liy soti nan kalite sa a nan sa a. Kalite sa a kenbe pwòp banyè li, prefiks atik li ak bawotaj li. Sove fòma KOT la pou kenbe l.
-nav_loading	Chajman…

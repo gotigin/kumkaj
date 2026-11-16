@@ -574,7 +574,7 @@ mod tests {
     use crate::store::Store;
 
     fn shop() -> (Store, std::path::PathBuf) {
-        let path = std::env::temp_dir().join(format!("khaynjo-service-{}.sqlite3", new_id()));
+        let path = crate::test_dirs::run_root().join(format!("khaynjo-service-{}.sqlite3", new_id()));
         let store = Store::open_path(&path).unwrap();
         store
             .upsert_product(&Product::new_basic(new_id(), "Thali", Money::from_rupees(200)))

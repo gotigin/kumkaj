@@ -92,10 +92,6 @@ bill_item_layout	Макет позиції
 bill_item_layout_columns	Стовпці
 bill_item_layout_stacked	Стосом
 bill_item_header	Заголовки стовпців
-bill_item_hdr_item	Заголовок позиції
-bill_item_hdr_qty	Заголовок кількості
-bill_item_hdr_price	Заголовок ціни
-bill_item_hdr_amount	Заголовок суми
 bill_item_name	Назва страви
 bill_item_qty	К-сть
 bill_item_price	Ціна
@@ -103,6 +99,20 @@ bill_item_amount	Сума
 bill_item_note	Нотатка страви
 bill_item_col_sep	Лінії стовпців
 slip_columns	Стовпці
+slip_col_header	Заголовок
+bill_line_logo	Логотип
+bill_logo_picture	Зображення
+bill_logo_choose	Вибрати зображення
+bill_logo_remove	Прибрати зображення
+bill_logo_none	Немає зображення
+bill_logo_unreadable	Це не зображення, яке застосунок може прочитати
+bill_logo_width	Ширина (px)
+bill_logo_height	Висота (px)
+bill_logo_tones	Відтінки сірого
+bill_logo_solid	Суцільно
+bill_logo_shaded	З растром
+bill_logo_help	Ширина й висота в px. Порожнє слідує за зображенням: одне порожнє зберігає форму, обидва порожні — власний розмір; обидва задані вписують його всередину, ніколи не розтягуючи. Без зображення: показаний логотип лишає свою висоту порожнім місцем; «Сховати» прибирає його.
+bill_logo_tones_help	Суцільно: кожна точка чорна або біла, для чітких логотипів. З растром: сіре стає дрібним візерунком точок, для фото й м'яких тіней.
 slip_col_width	Ширина (mm)
 slip_col_start	Відступ на початку (px)
 slip_col_end	Відступ у кінці (px)
@@ -167,6 +177,21 @@ alerts_help	Як довго статусні повідомлення лишаю
 snack_secs_ph	Секунди (3–60, типово 10)
 snack_secs_save	Зберегти час сповіщення
 snack_secs_saved	Час сповіщення збережено — {n} секунд
+settings_sec_whatsapp	WhatsApp
+whatsapp_cloud_help	Use your own Meta WhatsApp Cloud API. Create a System User token with whatsapp_business_messaging (temporary dashboard tokens expire). Credentials stay on this Server only — never on extra tills. Accepted means Meta took the request, not that the guest received it.
+whatsapp_phone_id_ph	Phone Number ID
+whatsapp_token_ph	Access Token (leave blank to keep)
+whatsapp_template_ph	Bill template name (optional)
+whatsapp_template_lang_ph	Template language (e.g. en)
+whatsapp_enable	Enable
+whatsapp_disable	Off
+whatsapp_save	Save WhatsApp
+whatsapp_test	Test connection
+whatsapp_disconnect	Disconnect
+whatsapp_send_bill	Send via WhatsApp
+whatsapp_consent	WhatsApp OK
+whatsapp_consent_help	Guest agreed to receive WhatsApp messages. A phone number alone is not consent.
+whatsapp_server_only	Configure WhatsApp on the shop Server device
 settings_sec_backup	Резервна копія й відновлення
 settings_sec_diag	Діагностика
 settings_sec_privacy	Конфіденційність
@@ -729,6 +754,13 @@ station_vps_dd	Принтери цієї станції
 station_vps_dd_n	{n} принтер(ів) · торкніться, щоб змінити
 bill_printers_dd	Принтери для рахунку
 bill_printers_dd_n	{n} принтер(ів) для рахунку · торкніться, щоб змінити
+paper_heading	Папір
+paper_size	{w} × {h} mm
+paper_roll	рулон {w} мм
+paper_not_set	папір поки невідомий
+paper_length_mm	Довжина (mm)
+printer_paper_help	Папір цього принтера в мм. Порожня Довжина — це рулон: кожен чек такої довжини, як його вміст. «Знайти принтери» заповнює порожній папір із драйвера принтера (рулон 80 мм, якщо він не може сказати) і ніколи не змінює вже заданий.
+preview_help	Цей чек на папері принтера, вибраного нижче, так, як він там друкується: у справжньому розмірі від верхнього лівого кута, до якого сягає принтер (сірим: краї, до яких не сягає), довгий чек на кількох аркушах, усе за краєм паперу обрізається. Вибір принтера змінює лише попередній перегляд; папір кожного принтера задається в «Принтери».
 job_layout	Макет
 job_delivery	Як надсилається завдання
 job_delivery_help	Документ ОС, сирі байти або ESC/POS. Рахунок і кухонний талон зберігають кожен своє. Будь-яке завдання може йти на будь-який принтер, який зберегло Знайти.
@@ -1105,9 +1137,6 @@ remove_these_tables	Прибрати ці столи
 table_remove_ph	Прибрати: T1-T24 або назву столу
 find_server	Знайти сервер крамниці
 bill_format	Формат рахунку
-bill_header_ph	Адреса | телефон
-fssai_ph	Номер ліцензії FSSAI (Індія)
-bill_footer_ph	Підвал (напр. Дякуємо, приходьте ще)
 reset_bill_format	Повернути типове
 bill_format_reset	Формат рахунку повернуто до типового
 reset_kot_format	Повернути типове
@@ -1146,7 +1175,6 @@ kot_kind_modified	Змінений
 kot_kind_cancelled	Скасований
 kot_style_heading	Кегль і насиченість поля
 kot_style_title	Заголовок
-kot_style_item_qty	Позиція · К-сть
 kot_style_field_pick	Вибрати поле
 kot_weight_regular	Звичайний
 kot_weight_bold	Жирний
@@ -1158,8 +1186,8 @@ content_width_bill	Ширина вмісту рахунку (mm)
 content_width_kot	Ширина вмісту KOT (mm)
 content_width_ph	Або впишіть ширину вмісту, 40–210 mm
 content_width_help	Якої ширини цей талон під час друку. Рахунок і KOT зберігають кожен свою ширину.
-content_width_bill_help	Якої ширини рахунок гостя. Типово 210 mm (сторінка). 58 mm вузький талон, 80 mm широкий талон, 112 mm 4 дюйми, 210 mm ширина A4. Впишіть будь-яке значення від 40 до 210. Кухонні талони мають свою ширину на вкладці KOT.
-content_width_kot_help	Якої ширини кухонний талон. Типово 80 mm. 58 mm вузький талон, 80 mm широкий талон, 112 mm 4 дюйми, 210 mm сторінка. Впишіть будь-яке значення від 40 до 210. Рахунки гостей мають свою ширину на вкладці Рахунок.
+content_width_bill_help	Наскільки широко друкується рахунок гостя, у mm (40–210). Він друкується в цьому справжньому розмірі на будь-якому папері; на вужчому папері частина за краєм друку обрізається (див. Папір). Кухонні чеки мають свою ширину на вкладці KOT.
+content_width_kot_help	Наскільки широко друкується кухонний чек, у mm (40–210). Він друкується в цьому справжньому розмірі на будь-якому папері; на вужчому папері частина за краєм друку обрізається (див. Папір). Рахунки гостей мають свою ширину на вкладці Рахунок.
 vp_paper_width	Ширина вмісту (mm)
 vp_paper_width_ph	Або впишіть ширину вмісту, 40–210 mm
 vp_paper_width_help	Ширина вмісту задається у Форматі рахунку й KOT — окремо для рахунку (типово 210 mm) і для кухонного талона (типово 80 mm).
@@ -1213,8 +1241,6 @@ schemes_help	BOGO, відсоткова знижка й фіксовані ко�
 scheme_bogo_ph	Buy 2 Thali get 1 Chaas
 add_scheme	Додати BOGO
 schedule_ph	Години / щаслива година — Mon-Fri 07:00-11:00 або HappyHour 17:00-19:00=150
-upi_vpa_ph	UPI ID (VPA)
-upi_payee_ph	Ім'я отримувача UPI (необов'язково)
 upi_qr	UPI QR
 show_upi_qr	Показати QR UPI
 close_upi_qr	Закрити
@@ -1295,8 +1321,6 @@ printer_mode_first	Перший, що спрацює
 printer_mode_all	Друкувати на всіх
 kot_show_area	Зона
 kot_hide_area	Сховати зону
-kot_show_item_hdr	Позиція · К-сть
-kot_hide_item_hdr	Сховати стовпці
 kot_show_title	Рядок заголовка
 kot_hide_title	Сховати заголовок
 kot_field_cycle	Вибрати наступне
@@ -1337,12 +1361,12 @@ private_code_ph	12-значний код
 stamp_on	Печатка: у файлі
 pay_qr_on	QR оплати: у файлі
 pay_qr_off	QR оплати: немає
+printers_screen_tip	Пошук показує принтери, якими може користуватися цей пристрій, і зберігає їх для цього магазину. Принтери рахунків: Формат рахунку та KOT → Рахунок. Кухня: Кухня → Кухонні станції.
+printers_found_none	Принтерів не знайдено.
+nav_loading	Завантаження…
+kot_copy_from	Копіювати з
+kot_copy_from_help	Копіює розмір, товщину й вирівнювання кожного рядка з того виду в цей. Цей вид зберігає свій банер, префікс позицій і закреслення. Збережіть формат KOT, щоб залишити зміни.
 items_tmpl_heading	Шаблони позицій
 items_tmpl_help	Страви, категорії та фото для вашого меню. Налаштування магазину й персонал залишаються без змін.
 public_tmpl_help	Стартові меню, які може завантажити будь-хто. Інтернет потрібен один раз.
 private_tmpl_help	Меню клієнтів, закриті 12-значним кодом від вашого контакту Khaynjo.
-printers_screen_tip	Пошук показує принтери, якими може користуватися цей пристрій, і зберігає їх для цього магазину. Принтери рахунків: Формат рахунку та KOT → Рахунок. Кухня: Кухня → Кухонні станції.
-printers_found_none	Принтерів не знайдено.
-kot_copy_from	Копіювати з
-kot_copy_from_help	Копіює розмір, товщину й вирівнювання кожного рядка з того виду в цей. Цей вид зберігає свій банер, префікс позицій і закреслення. Збережіть формат KOT, щоб залишити зміни.
-nav_loading	Завантаження…

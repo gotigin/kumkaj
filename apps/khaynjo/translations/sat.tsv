@@ -92,10 +92,6 @@ bill_item_layout	ᱡᱤᱱᱤᱥ ᱞᱮᱭᱟᱣᱩᱴ
 bill_item_layout_columns	ᱠᱷᱟᱢᱵᱟ
 bill_item_layout_stacked	ᱥᱴᱮᱠ ᱟᱠᱟᱱᱟ
 bill_item_header	ᱠᱚᱞᱟᱢ ᱦᱮᱰᱟᱨ
-bill_item_hdr_item	ᱡᱤᱱᱤᱥ ᱦᱮᱰᱟᱨ
-bill_item_hdr_qty	ᱠᱩᱭᱴᱤ ᱦᱮᱰᱟᱨ
-bill_item_hdr_price	ᱜᱚᱱᱚᱝ ᱦᱮᱰᱟᱨ
-bill_item_hdr_amount	ᱴᱟᱠᱟ ᱵᱚᱦᱚᱜ
 bill_item_name	ᱰᱤᱥ ᱧᱩᱛᱩᱢ
 bill_item_qty	ᱠᱩᱭᱴᱤ
 bill_item_price	ᱜᱚᱱᱚᱝ
@@ -103,6 +99,20 @@ bill_item_amount	ᱴᱟᱠᱟ
 bill_item_note	ᱰᱤᱥ ᱱᱚᱴ
 bill_item_col_sep	ᱠᱷᱟᱢᱵᱟ ᱟᱹᱨᱤ
 slip_columns	ᱠᱚᱞᱟᱢ ᱠᱚ
+slip_col_header	ᱦᱮᱰᱟᱨ
+bill_line_logo	ᱪᱤᱱᱦᱟᱹ
+bill_logo_picture	ᱪᱤᱛᱟᱹᱨ
+bill_logo_choose	ᱪᱤᱛᱟᱹᱨ ᱵᱟᱪᱷᱟᱣ ᱢᱮ
+bill_logo_remove	ᱪᱤᱛᱟᱹᱨ ᱚᱪᱚᱜ ᱢᱮ
+bill_logo_none	ᱪᱤᱛᱟᱹᱨ ᱵᱟᱹᱱᱩᱜᱼᱟ
+bill_logo_unreadable	ᱱᱚᱶᱟ ᱮᱯ ᱯᱟᱲᱦᱟᱣ ᱫᱟᱲᱮᱭᱟᱜ ᱪᱤᱛᱟᱹᱨ ᱫᱚ ᱵᱟᱝ
+bill_logo_width	ᱳᱥᱟᱨ (px)
+bill_logo_height	ᱩᱥᱩᱞ (px)
+bill_logo_tones	ᱯᱩᱸᱰ ᱦᱮᱸᱫᱮ
+bill_logo_solid	ᱠᱮᱴᱮᱡ
+bill_logo_shaded	ᱪᱷᱟᱭᱟᱱ
+bill_logo_help	ᱳᱥᱟᱨ ᱟᱨ ᱩᱥᱩᱞ px ᱨᱮ᱾ ᱠᱷᱟᱹᱞᱤ ᱫᱚ ᱪᱤᱛᱟᱹᱨ ᱛᱟᱭᱚᱢ ᱛᱮ: ᱢᱤᱫ ᱠᱷᱟᱹᱞᱤ ᱛᱤᱱ ᱫᱚ ᱧᱮᱞ ᱫᱚᱦᱚᱭᱟᱭ, ᱵᱟᱨᱭᱟ ᱠᱷᱟᱹᱞᱤ ᱛᱤᱱ ᱫᱚ ᱟᱡᱟᱜ ᱢᱟᱯ; ᱵᱟᱨᱭᱟ ᱮᱢ ᱠᱟᱱ ᱛᱤᱱ ᱫᱚ ᱵᱷᱤᱛᱤᱨ ᱫᱚᱦᱚᱭᱟᱭ, ᱡᱟᱦᱟᱸ ᱡᱷᱚᱜ ᱵᱟᱝ ᱚᱨᱜᱚᱫᱚᱜᱼᱟ᱾ ᱪᱤᱛᱟᱹᱨ ᱵᱟᱹᱱᱩᱜ ᱠᱷᱟᱱ: ᱩᱫᱩᱜ ᱪᱤᱱᱦᱟᱹ ᱫᱚ ᱟᱡᱟᱜ ᱩᱥᱩᱞ ᱠᱷᱟᱹᱞᱤ ᱡᱟᱭᱜᱟ ᱞᱮᱠᱟ ᱫᱚᱦᱚᱭᱟᱭ; ᱩᱠᱩ ᱫᱚ ᱚᱪᱚᱜᱼᱟᱭ᱾
+bill_logo_tones_help	ᱠᱮᱴᱮᱡ: ᱡᱚᱛᱚ ᱴᱩᱯᱩᱞ ᱦᱮᱸᱫᱮ ᱥᱮ ᱯᱩᱸᱰ, ᱯᱚᱨᱥᱟᱞ ᱪᱤᱱᱦᱟᱹ ᱞᱟᱹᱜᱤᱫ᱾ ᱪᱷᱟᱭᱟᱱ: ᱯᱩᱸᱰ ᱦᱮᱸᱫᱮ ᱫᱚ ᱦᱩᱰᱤᱧ ᱴᱩᱯᱩᱞ ᱨᱮᱭᱟᱜ ᱧᱮᱞ ᱦᱩᱭᱩᱜᱼᱟ, ᱪᱤᱛᱟᱹᱨ ᱟᱨ ᱞᱚᱞᱚᱢ ᱪᱷᱟᱭᱟ ᱞᱟᱹᱜᱤᱫ᱾
 slip_col_width	ᱚᱥᱟᱨ (mm)
 slip_col_start	ᱮᱛᱦᱚᱵ ᱡᱟᱭᱜᱟ (px)
 slip_col_end	ᱢᱩᱪᱟᱹᱫ ᱡᱟᱭᱜᱟ (px)
@@ -167,6 +177,21 @@ alerts_help	ᱟᱢ ᱞᱟᱹᱜᱤᱫ ᱥᱠᱨᱤᱱ ᱨᱮ ᱛᱤᱱᱟᱹᱜ 
 snack_secs_ph	ᱥᱮᱠᱮᱱᱰ (3–60, ᱰᱤᱯᱷᱚᱞᱴ 10)
 snack_secs_save	ᱮᱞᱟᱨᱴ ᱚᱠᱛᱚ ᱵᱟᱧᱪᱟᱣ ᱢᱮ
 snack_secs_saved	ᱮᱞᱟᱨᱴ ᱚᱠᱛᱚ ᱵᱟᱧᱪᱟᱣ ᱮᱱᱟ — {n} ᱥᱮᱠᱮᱱᱰ
+settings_sec_whatsapp	WhatsApp
+whatsapp_cloud_help	Use your own Meta WhatsApp Cloud API. Create a System User token with whatsapp_business_messaging (temporary dashboard tokens expire). Credentials stay on this Server only — never on extra tills. Accepted means Meta took the request, not that the guest received it.
+whatsapp_phone_id_ph	Phone Number ID
+whatsapp_token_ph	Access Token (leave blank to keep)
+whatsapp_template_ph	Bill template name (optional)
+whatsapp_template_lang_ph	Template language (e.g. en)
+whatsapp_enable	Enable
+whatsapp_disable	Off
+whatsapp_save	Save WhatsApp
+whatsapp_test	Test connection
+whatsapp_disconnect	Disconnect
+whatsapp_send_bill	Send via WhatsApp
+whatsapp_consent	WhatsApp OK
+whatsapp_consent_help	Guest agreed to receive WhatsApp messages. A phone number alone is not consent.
+whatsapp_server_only	Configure WhatsApp on the shop Server device
 settings_sec_backup	ᱵᱮᱠᱟᱯ ᱟᱨ ᱨᱤᱥᱴᱚᱨ
 settings_sec_diag	ᱰᱟᱭᱜᱽᱱᱚᱥᱴᱤᱠᱥ
 settings_sec_privacy	ᱫᱟᱱᱟᱝ
@@ -729,6 +754,13 @@ station_vps_dd	ᱱᱚᱶᱟ ᱥᱴᱮᱥᱚᱱ ᱞᱟᱹᱜᱤᱫ ᱯᱨᱤᱱ�
 station_vps_dd_n	{n} ᱯᱨᱤᱱᱴᱟᱨ(ᱠᱚ) · ᱵᱚᱫᱚᱞ ᱞᱟᱹᱜᱤᱫ ᱴᱮᱯ ᱢᱮ
 bill_printers_dd	ᱵᱤᱞ ᱞᱟᱹᱜᱤᱫ ᱯᱨᱤᱱᱴᱟᱨ
 bill_printers_dd_n	ᱵᱤᱞ ᱞᱟᱹᱜᱤᱫ {n} ᱯᱨᱤᱱᱴᱟᱨ(ᱠᱚ) · ᱵᱚᱫᱚᱞ ᱞᱟᱹᱜᱤᱫ ᱴᱮᱯ ᱢᱮ
+paper_heading	ᱠᱟᱜᱚᱡ
+paper_size	{w} × {h} mm
+paper_roll	{w} mm ᱨᱚᱞ
+paper_not_set	ᱠᱟᱜᱚᱡ ᱱᱤᱛᱚᱜ ᱦᱚᱸ ᱵᱟᱝ ᱵᱟᱰᱟᱭ ᱠᱟᱱᱟ
+paper_length_mm	ᱡᱮᱞᱮᱧ (mm)
+printer_paper_help	ᱱᱚᱶᱟ ᱯᱨᱤᱱᱴᱟᱨ ᱨᱮᱭᱟᱜ ᱠᱟᱜᱚᱡ mm ᱨᱮ᱾ ᱠᱷᱟᱞᱤ ᱡᱮᱞᱮᱧ ᱫᱚ ᱨᱚᱞ ᱠᱟᱱᱟ: ᱡᱚᱛᱚ ᱯᱚᱨᱪᱤ ᱩᱱᱤ ᱨᱮᱭᱟᱜ ᱡᱤᱱᱤᱥ ᱞᱮᱠᱟ ᱡᱮᱞᱮᱧ ᱦᱩᱭᱩᱜ ᱠᱟᱱᱟ᱾ ᱯᱨᱤᱱᱴᱟᱨ ᱯᱟᱱᱛᱮ ᱢᱮ ᱠᱷᱟᱞᱤ ᱠᱟᱜᱚᱡ ᱯᱨᱤᱱᱴᱟᱨ ᱨᱮᱭᱟᱜ ᱰᱨᱟᱭᱣᱟᱨ ᱠᱷᱚᱱ ᱯᱮᱨᱮᱡ ᱟ (ᱞᱟᱹᱭ ᱵᱟᱝ ᱫᱟᱲᱮᱭᱟᱜ ᱠᱷᱟᱱ 80 mm ᱨᱚᱞ) ᱟᱨ ᱢᱟᱲᱟᱝ ᱠᱷᱚᱱ ᱛᱷᱤᱠ ᱠᱟᱜᱚᱡ ᱫᱚ ᱡᱟᱦᱟᱸ ᱚᱠᱛᱚ ᱵᱟᱝ ᱵᱚᱫᱚᱞᱟ᱾
+preview_help	ᱞᱟᱛᱟᱨ ᱨᱮ ᱵᱟᱪᱷᱟᱣ ᱟᱠᱟᱱ ᱯᱨᱤᱱᱴᱟᱨ ᱨᱮᱭᱟᱜ ᱠᱟᱜᱚᱡ ᱨᱮ ᱱᱚᱶᱟ ᱯᱚᱨᱪᱤ, ᱚᱱᱰᱮ ᱪᱷᱟᱯᱟ ᱞᱮᱠᱟ: ᱯᱨᱤᱱᱴᱟᱨ ᱥᱮᱴᱮᱨᱚᱜ ᱠᱟᱱ ᱪᱮᱛᱟᱱ ᱞᱮᱸᱫᱟ ᱠᱚᱬᱮ ᱠᱷᱚᱱ ᱥᱟᱹᱨᱤ ᱢᱟᱯ ᱨᱮ (ᱫᱷᱩᱥᱩᱨ: ᱵᱟᱝ ᱥᱮᱴᱮᱨᱚᱜ ᱟᱫ ᱫᱷᱟᱨᱮ), ᱡᱮᱞᱮᱧ ᱯᱚᱨᱪᱤ ᱵᱟᱹᱲᱛᱤ ᱥᱟᱦᱴᱟ ᱨᱮ, ᱠᱟᱜᱚᱡ ᱫᱷᱟᱨᱮ ᱠᱷᱚᱱ ᱥᱟᱬᱮᱥ ᱡᱚᱛᱚ ᱜᱮ ᱠᱟᱴᱤᱡᱚᱜᱼᱟ᱾ ᱯᱨᱤᱱᱴᱟᱨ ᱵᱟᱪᱷᱟᱣ ᱛᱮ ᱢᱟᱲᱟᱝ ᱧᱮᱞ ᱜᱮ ᱵᱚᱫᱚᱞᱚᱜᱼᱟ; ᱡᱚᱛᱚ ᱯᱨᱤᱱᱴᱟᱨ ᱨᱮᱭᱟᱜ ᱠᱟᱜᱚᱡ ᱯᱨᱤᱱᱴᱟᱨ ᱨᱮ ᱛᱷᱤᱠ ᱦᱩᱭᱩᱜᱼᱟ᱾
 job_layout	ᱞᱮᱭᱟᱣᱩᱴ
 job_delivery	ᱪᱮᱫ ᱞᱮᱠᱟ ᱪᱟᱹᱠᱨᱤ ᱠᱚ ᱠᱩᱞ ᱟᱠᱟᱱᱟ
 job_delivery_help	ᱚᱮᱥ ᱰᱚᱠᱭᱩᱢᱮᱱᱴ, ᱨᱚ ᱵᱟᱭᱤᱴᱥ, ᱵᱟᱝᱠᱷᱟᱱ ᱤᱮᱥᱤ/ᱯᱤᱳᱮᱥ᱾ ᱵᱤᱞ ᱟᱨ ᱫᱟᱠᱟ ᱚᱲᱟᱜ ᱨᱮᱭᱟᱜ ᱴᱤᱠᱤᱴ ᱥᱟᱱᱟᱢ ᱠᱚ ᱟᱯᱱᱟᱨᱟᱜ ᱠᱚ ᱫᱚᱦᱚᱭᱟ ᱾ ᱡᱟᱦᱟᱸ ᱜᱮ ᱠᱟᱹᱢᱤ ᱡᱟᱦᱟᱸ ᱜᱮ ᱯᱨᱤᱱᱴᱟᱨ ᱛᱮ ᱥᱮᱱ ᱫᱟᱲᱮᱭᱟᱜᱼᱟ ᱯᱟᱱᱛᱮ ᱥᱟᱧᱪᱟᱣ ᱟᱠᱟᱱᱟ ᱾
@@ -1105,9 +1137,6 @@ remove_these_tables	ᱱᱚᱶᱟ ᱴᱮᱵᱩᱞ ᱠᱚ ᱚᱪᱚᱜᱽ ᱢᱮ
 table_remove_ph	ᱚᱪᱚᱜᱽ ᱢᱮ: T1-T24, ᱟᱨ ᱵᱟᱝ ᱢᱤᱫ ᱴᱮᱵᱩᱞ ᱨᱮᱭᱟᱜ ᱧᱩᱛᱩᱢ
 find_server	ᱫᱩᱠᱟᱹᱱ ᱨᱮᱱᱟᱜ ᱥᱮᱨᱵᱷᱟᱨ ᱯᱟᱱᱛᱮ ᱢᱮ
 bill_format	ᱵᱤᱞ ᱨᱩᱯ
-bill_header_ph	ᱴᱷᱤᱠᱟᱹᱱᱟ | ᱯᱷᱚᱱ
-fssai_ph	FSSAI ᱞᱟᱭᱥᱮᱱᱥ ᱮᱞ᱾ (ᱵᱷᱟᱨᱚᱛ)
-bill_footer_ph	ᱯᱷᱩᱴᱟᱨ (ᱡᱮᱞᱠᱟ ᱟᱭᱢᱟ ᱥᱟᱨᱦᱟᱣ, ᱫᱚᱦᱲᱟ ᱧᱮᱞ ᱢᱮ)
 reset_bill_format	ᱰᱤᱯᱷᱚᱞᱴ ᱨᱮ ᱨᱤᱥᱮᱴ ᱢᱮ
 bill_format_reset	ᱵᱤᱞ ᱯᱷᱚᱨᱢᱟᱴ ᱰᱤᱯᱷᱚᱞᱴ ᱨᱮ ᱨᱤᱥᱮᱴ ᱢᱮ
 reset_kot_format	ᱰᱤᱯᱷᱚᱞᱴ ᱨᱮ ᱨᱤᱥᱮᱴ ᱢᱮ
@@ -1146,7 +1175,6 @@ kot_kind_modified	ᱥᱚᱫᱚᱨ ᱟᱠᱟᱱ
 kot_kind_cancelled	ᱵᱟᱝ ᱦᱩᱭ ᱟᱠᱟᱱᱟ
 kot_style_heading	ᱯᱷᱤᱞᱰ ᱞᱮᱠᱟᱱ ᱜᱚᱲᱦᱚᱱ ᱟᱨ ᱚᱡᱚᱱ
 kot_style_title	ᱥᱟᱛᱟᱢ
-kot_style_item_qty	ᱡᱤᱱᱤᱥ · ᱜᱚᱱᱚᱝ
 kot_style_field_pick	ᱯᱟᱦᱴᱟ ᱵᱟᱪᱷᱟᱣ ᱢᱮ
 kot_weight_regular	ᱞᱮᱛᱟᱲ
 kot_weight_bold	ᱵᱚᱞᱰ
@@ -1158,8 +1186,8 @@ content_width_bill	ᱵᱤᱞ ᱡᱤᱱᱤᱥ ᱚᱥᱟᱨ (mm)
 content_width_kot	KOT ᱡᱤᱱᱤᱥ ᱚᱥᱟᱨ (mm)
 content_width_ph	ᱟᱨ ᱵᱟᱝ ᱢᱤᱫ ᱡᱤᱱᱤᱥ ᱚᱥᱟᱨ ᱴᱟᱭᱤᱯ ᱢᱮ, 40-210 ᱢᱤ.ᱢᱤ.
 content_width_help	ᱱᱚᱣᱟ ᱥᱞᱤᱯ ᱪᱷᱟᱯᱟ ᱛᱤᱱᱟᱹᱜ ᱚᱥᱟᱨ ᱾ ᱵᱤᱞ ᱟᱨ ᱠᱮ ᱚ ᱴᱤ ᱥᱟᱱᱟᱢ ᱠᱚ ᱟᱠᱚᱣᱟᱜ ᱚᱥᱟᱨ ᱠᱚ ᱫᱚᱦᱚᱭᱟ ᱾
-content_width_bill_help	ᱯᱮᱲᱟ ᱵᱤᱞ ᱛᱤᱱᱟᱹᱜ ᱚᱥᱟᱨ ᱪᱷᱟᱯᱟ ᱟᱠᱟᱱᱟ ᱾ ᱰᱤᱯᱷᱚᱞᱴ 210 ᱢᱤ.ᱢᱤ. (ᱥᱟᱦᱴᱟ)᱾ 58 ᱢᱤᱢᱤᱢ ᱥᱟᱠᱲᱟ ᱥᱞᱤᱯ, 80 ᱢᱤᱢᱤᱢ ᱚᱥᱟᱨ ᱥᱞᱤᱯ, 112 ᱢᱤᱢᱤᱢ 4-ᱤᱧᱪ, 210 ᱢᱤᱢᱤᱢ ᱮ4-ᱚᱥᱟᱨ ᱾ 40 ᱠᱷᱚᱱ 210 ᱦᱟᱹᱵᱤᱡ ᱡᱟᱦᱟᱱ ᱜᱚᱱᱚᱝ ᱴᱟᱭᱤᱯ ᱢᱮ᱾ ᱫᱟᱠᱟ ᱚᱲᱟᱜ ᱨᱮᱭᱟᱜ ᱴᱤᱠᱤᱴ ᱠᱚᱴ ᱴᱮᱵᱽ ᱨᱮ ᱟᱯᱱᱟᱨ ᱚᱥᱟᱨ ᱢᱮᱱᱟᱜᱼᱟ᱾
-content_width_kot_help	ᱫᱟᱠᱟ ᱚᱲᱟᱜ ᱨᱮᱭᱟᱜ ᱴᱤᱠᱤᱴ ᱛᱤᱱᱟᱹᱜ ᱚᱥᱟᱨ ᱪᱷᱟᱯᱟ ᱟᱠᱟᱱᱟ ᱾ ᱰᱤᱯᱷᱚᱞᱴ 80 ᱢᱤ.ᱢᱤ. 58 ᱢᱤᱢᱤᱢ ᱥᱟᱠᱲᱟ ᱥᱞᱤᱯ, 80 ᱢᱤᱢᱤᱢ ᱚᱥᱟᱨ ᱥᱞᱤᱯ, 112 ᱢᱤᱢᱤᱢ 4-ᱤᱧᱪ, 210 ᱢᱤᱢᱤᱢ ᱥᱟᱦᱴᱟ ᱾ 40 ᱠᱷᱚᱱ 210 ᱦᱟᱹᱵᱤᱡ ᱡᱟᱦᱟᱱ ᱜᱚᱱᱚᱝ ᱴᱟᱭᱤᱯ ᱢᱮ᱾ ᱵᱤᱞ ᱴᱮᱵᱽ ᱨᱮ ᱯᱮᱲᱟ ᱵᱤᱞ ᱨᱮᱭᱟᱜ ᱟᱯᱱᱟᱨ ᱚᱥᱟᱨ ᱛᱟᱦᱮᱱᱟ᱾
+content_width_bill_help	ᱯᱟᱦᱩᱱ ᱨᱮᱭᱟᱜ ᱵᱤᱞ ᱫᱚ ᱛᱤᱱᱟᱹᱜ ᱚᱥᱟᱨ ᱪᱷᱟᱯᱟᱜ ᱠᱟᱱᱟ, mm ᱨᱮ (40–210)᱾ ᱡᱟᱦᱟᱱ ᱠᱟᱜᱚᱡ ᱨᱮ ᱦᱚᱸ ᱱᱚᱶᱟ ᱥᱟᱹᱨᱤ ᱢᱟᱯ ᱨᱮ ᱪᱷᱟᱯᱟᱜ ᱠᱟᱱᱟ; ᱱᱚᱶᱟ ᱠᱷᱚᱱ ᱦᱤᱨᱤᱝ ᱠᱟᱜᱚᱡ ᱨᱮ ᱪᱷᱟᱯᱟ ᱫᱷᱟᱨᱮ ᱯᱟᱨᱚᱢ ᱦᱟᱹᱴᱤᱧ ᱫᱚ ᱜᱮᱫ ᱦᱩᱭᱩᱜ ᱠᱟᱱᱟ (ᱠᱟᱜᱚᱡ ᱧᱮᱞ ᱢᱮ)᱾ ᱩᱫᱩᱠ ᱚᱲᱟᱜ ᱴᱤᱠᱮᱴ ᱨᱮᱭᱟᱜ ᱟᱡᱟᱜ ᱚᱥᱟᱨ KOT ᱴᱮᱵ ᱨᱮ ᱢᱮᱱᱟᱜᱼᱟ᱾
+content_width_kot_help	ᱩᱫᱩᱠ ᱚᱲᱟᱜ ᱴᱤᱠᱮᱴ ᱫᱚ ᱛᱤᱱᱟᱹᱜ ᱚᱥᱟᱨ ᱪᱷᱟᱯᱟᱜ ᱠᱟᱱᱟ, mm ᱨᱮ (40–210)᱾ ᱡᱟᱦᱟᱱ ᱠᱟᱜᱚᱡ ᱨᱮ ᱦᱚᱸ ᱱᱚᱶᱟ ᱥᱟᱹᱨᱤ ᱢᱟᱯ ᱨᱮ ᱪᱷᱟᱯᱟᱜ ᱠᱟᱱᱟ; ᱱᱚᱶᱟ ᱠᱷᱚᱱ ᱦᱤᱨᱤᱝ ᱠᱟᱜᱚᱡ ᱨᱮ ᱪᱷᱟᱯᱟ ᱫᱷᱟᱨᱮ ᱯᱟᱨᱚᱢ ᱦᱟᱹᱴᱤᱧ ᱫᱚ ᱜᱮᱫ ᱦᱩᱭᱩᱜ ᱠᱟᱱᱟ (ᱠᱟᱜᱚᱡ ᱧᱮᱞ ᱢᱮ)᱾ ᱯᱟᱦᱩᱱ ᱵᱤᱞ ᱨᱮᱭᱟᱜ ᱟᱡᱟᱜ ᱚᱥᱟᱨ ᱵᱤᱞ ᱴᱮᱵ ᱨᱮ ᱢᱮᱱᱟᱜᱼᱟ᱾
 vp_paper_width	ᱡᱤᱱᱤᱥ ᱚᱥᱟᱨ (mm)
 vp_paper_width_ph	ᱟᱨ ᱵᱟᱝ ᱢᱤᱫ ᱡᱤᱱᱤᱥ ᱚᱥᱟᱨ ᱴᱟᱭᱤᱯ ᱢᱮ, 40-210 ᱢᱤ.ᱢᱤ.
 vp_paper_width_help	ᱡᱤᱱᱤᱥ ᱚᱥᱟᱨ ᱵᱤᱞ ᱟᱨ ᱠᱮᱴ ᱯᱨᱚᱨᱩᱢ ᱞᱟᱛᱟᱨ ᱨᱮ ᱥᱮᱴ ᱟᱠᱟᱱᱟ — ᱵᱤᱞ ᱞᱟᱹᱜᱤᱫ ᱡᱚᱲᱟᱣ ᱡᱚᱲᱟᱣ (ᱰᱤᱯᱷᱚᱞᱴ 210 ᱢᱤᱢᱤᱴᱤ) ᱟᱨ ᱫᱟᱠᱟ ᱚᱲᱟᱜ ᱨᱮᱭᱟᱜ ᱴᱤᱠᱤᱴ (ᱰᱤᱯᱷᱚᱞᱴ 80 ᱢᱤᱢᱤᱴᱤ)᱾
@@ -1213,8 +1241,6 @@ schemes_help	ᱵᱚᱜᱚ, ᱯᱨᱚᱛᱤᱥᱟᱛ-ᱵᱚᱸᱫ, ᱟᱨ ᱴᱷ�
 scheme_bogo_ph	2 ᱛᱷᱟᱞᱤ ᱠᱤᱨᱤᱧ ᱠᱟᱛᱮ 1 ᱪᱟᱥ ᱧᱟᱢᱚᱜᱼᱟ
 add_scheme	BOGO ᱥᱮᱞᱮᱫ ᱢᱮ
 schedule_ph	ᱚᱠᱛᱚ/ᱨᱟ.ᱥᱠᱟ. ᱚᱠᱛᱚ — ᱚᱛᱮ-ᱡᱟᱹᱨᱩᱢ 07:00-11:00 ᱵᱟᱝᱠᱷᱟᱱ ᱨᱟᱹᱥᱠᱟᱹ ᱚᱠᱛᱚ 17:00-19:00=150
-upi_vpa_ph	UPI ID (VPA)
-upi_payee_ph	ᱭᱩᱯᱤᱟᱭᱤ ᱯᱮᱭᱤ ᱧᱩᱛᱩᱢ (ᱚᱯᱥᱚᱱᱟᱞ)
 upi_qr	UPI QR
 show_upi_qr	ᱭᱩᱯᱤᱟᱭᱤ ᱠᱭᱩᱟᱨ ᱩᱫᱩᱜ ᱢᱮ
 close_upi_qr	ᱥᱩᱯᱩᱨ ᱢᱮ
@@ -1295,8 +1321,6 @@ printer_mode_first	ᱯᱩᱭᱞᱩ ᱚᱱᱟ ᱠᱟᱹᱢᱤᱭᱟ
 printer_mode_all	ᱥᱟᱱᱟᱢ ᱨᱮ ᱪᱷᱟᱯᱟ ᱢᱮ
 kot_show_area	ᱴᱚᱴᱷᱟ
 kot_hide_area	ᱴᱚᱴᱷᱟ ᱩᱠᱩᱭ ᱢᱮ
-kot_show_item_hdr	ᱡᱤᱱᱤᱥ · ᱜᱚᱱᱚᱝ
-kot_hide_item_hdr	ᱠᱷᱟᱢᱵᱟ ᱩᱠᱩᱭ ᱢᱮ
 kot_show_title	ᱴᱟᱭᱴᱟᱞ ᱞᱟᱭᱤᱱ
 kot_hide_title	ᱥᱟᱛᱟᱢ ᱩᱠᱩᱭ ᱢᱮ
 kot_field_cycle	ᱛᱟᱭᱚᱢ ᱵᱟᱪᱷᱟᱣ ᱢᱮ
@@ -1337,12 +1361,12 @@ private_code_ph	12 ᱮᱞ ᱠᱳᱰ
 stamp_on	ᱥᱴᱟᱢᱯ: ᱨᱮᱫ ᱨᱮ
 pay_qr_on	ᱯᱮᱢᱮᱱᱴ QR: ᱨᱮᱫ ᱨᱮ
 pay_qr_off	ᱯᱮᱢᱮᱱᱴ QR: ᱪᱮᱫ ᱦᱚᱸ ᱵᱟᱝ
+printers_screen_tip	ᱥᱮᱸᱫᱽᱨᱟ ᱫᱚ ᱱᱚᱶᱟ ᱰᱤᱵᱟᱭᱤᱥ ᱵᱮᱵᱷᱟᱨ ᱫᱟᱲᱮᱭᱟᱜ ᱯᱨᱤᱱᱴᱟᱨ ᱩᱫᱩᱜᱟᱭ ᱟᱨ ᱱᱚᱶᱟ ᱫᱚᱠᱟᱱ ᱞᱟᱹᱜᱤᱫ ᱥᱟᱺᱪᱟᱣ ᱮᱫᱟᱭ᱾ ᱵᱤᱞ ᱯᱨᱤᱱᱴᱟᱨ: ᱵᱤᱞ ᱟᱨ KOT ᱯᱷᱚᱨᱢᱮᱴ → ᱵᱤᱞ᱾ ᱩᱛᱩ ᱚᱲᱟᱜ: ᱩᱛᱩ ᱚᱲᱟᱜ → ᱩᱛᱩ ᱚᱲᱟᱜ ᱥᱴᱮᱥᱚᱱ᱾
+printers_found_none	ᱡᱟᱦᱟᱱ ᱯᱨᱤᱱᱴᱟᱨ ᱵᱟᱝ ᱧᱟᱢ ᱞᱮᱱᱟ᱾
+nav_loading	ᱞᱚᱰ ᱦᱩᱭ ᱠᱟᱱᱟ…
+kot_copy_from	ᱱᱚᱶᱟ ᱠᱷᱚᱱ ᱠᱚᱯᱤ ᱢᱮ
+kot_copy_from_help	ᱚᱱᱟ ᱞᱮᱠᱟᱱ ᱨᱮᱭᱟᱜ ᱡᱚᱛᱚ ᱫᱷᱟᱨᱤ ᱨᱮᱭᱟᱜ ᱢᱟᱯ, ᱢᱚᱴᱟ ᱟᱨ ᱥᱟᱡᱟᱣ ᱱᱚᱶᱟ ᱨᱮ ᱠᱚᱯᱤ ᱮᱫᱟᱭ᱾ ᱱᱚᱶᱟ ᱞᱮᱠᱟᱱ ᱫᱚ ᱟᱡᱟᱜ ᱵᱮᱱᱟᱨ, ᱡᱤᱱᱤᱥ ᱢᱟᱲᱟᱝ ᱟᱨ ᱠᱟᱴ ᱫᱷᱟᱨᱤ ᱫᱚᱦᱚᱭ ᱟ᱾ ᱫᱚᱦᱚ ᱞᱟᱹᱜᱤᱫ KOT ᱯᱷᱚᱨᱢᱟᱴ ᱥᱟᱺᱪᱟᱣ ᱢᱮ᱾
 items_tmpl_heading	ᱡᱤᱱᱤᱥ ᱴᱮᱢᱯᱞᱮᱴ
 items_tmpl_help	ᱟᱢᱟᱜ ᱢᱮᱱᱩ ᱞᱟᱹᱜᱤᱫ ᱡᱚᱢᱟᱜ, ᱛᱷᱚᱠ ᱟᱨ ᱪᱤᱛᱟᱹᱨ᱾ ᱫᱚᱠᱟᱱ ᱥᱮᱴᱤᱝ ᱟᱨ ᱠᱟᱹᱢᱤᱭᱟᱹ ᱡᱮᱞᱮᱠᱟ ᱢᱮᱱᱟᱜᱼᱟ ᱚᱱᱠᱟ ᱜᱮ ᱛᱟᱦᱮᱸᱱᱟ᱾
 public_tmpl_help	ᱡᱟᱦᱟᱸᱭ ᱦᱚᱸ ᱰᱟᱣᱱᱞᱚᱰ ᱫᱟᱲᱮᱭᱟᱜ ᱮᱛᱚᱦᱚᱵ ᱢᱮᱱᱩ᱾ ᱢᱤᱫᱴᱟᱹᱝ ᱡᱷᱚᱜ ᱤᱱᱴᱚᱨᱱᱮᱴ ᱞᱟᱹᱠᱛᱤᱭᱟ᱾
 private_tmpl_help	ᱟᱢᱟᱜ Khaynjo ᱥᱟᱹᱜᱟᱹᱭ ᱠᱷᱚᱱ ᱧᱟᱢ 12 ᱮᱞ ᱠᱳᱰ ᱛᱮ ᱨᱩᱠᱷᱤᱭᱟᱹ ᱜᱟᱦᱟᱠ ᱢᱮᱱᱩ᱾
-printers_screen_tip	ᱥᱮᱸᱫᱽᱨᱟ ᱫᱚ ᱱᱚᱶᱟ ᱰᱤᱵᱟᱭᱤᱥ ᱵᱮᱵᱷᱟᱨ ᱫᱟᱲᱮᱭᱟᱜ ᱯᱨᱤᱱᱴᱟᱨ ᱩᱫᱩᱜᱟᱭ ᱟᱨ ᱱᱚᱶᱟ ᱫᱚᱠᱟᱱ ᱞᱟᱹᱜᱤᱫ ᱥᱟᱺᱪᱟᱣ ᱮᱫᱟᱭ᱾ ᱵᱤᱞ ᱯᱨᱤᱱᱴᱟᱨ: ᱵᱤᱞ ᱟᱨ KOT ᱯᱷᱚᱨᱢᱮᱴ → ᱵᱤᱞ᱾ ᱩᱛᱩ ᱚᱲᱟᱜ: ᱩᱛᱩ ᱚᱲᱟᱜ → ᱩᱛᱩ ᱚᱲᱟᱜ ᱥᱴᱮᱥᱚᱱ᱾
-printers_found_none	ᱡᱟᱦᱟᱱ ᱯᱨᱤᱱᱴᱟᱨ ᱵᱟᱝ ᱧᱟᱢ ᱞᱮᱱᱟ᱾
-kot_copy_from	ᱱᱚᱶᱟ ᱠᱷᱚᱱ ᱠᱚᱯᱤ ᱢᱮ
-kot_copy_from_help	ᱚᱱᱟ ᱞᱮᱠᱟᱱ ᱨᱮᱭᱟᱜ ᱡᱚᱛᱚ ᱫᱷᱟᱨᱤ ᱨᱮᱭᱟᱜ ᱢᱟᱯ, ᱢᱚᱴᱟ ᱟᱨ ᱥᱟᱡᱟᱣ ᱱᱚᱶᱟ ᱨᱮ ᱠᱚᱯᱤ ᱮᱫᱟᱭ᱾ ᱱᱚᱶᱟ ᱞᱮᱠᱟᱱ ᱫᱚ ᱟᱡᱟᱜ ᱵᱮᱱᱟᱨ, ᱡᱤᱱᱤᱥ ᱢᱟᱲᱟᱝ ᱟᱨ ᱠᱟᱴ ᱫᱷᱟᱨᱤ ᱫᱚᱦᱚᱭ ᱟ᱾ ᱫᱚᱦᱚ ᱞᱟᱹᱜᱤᱫ KOT ᱯᱷᱚᱨᱢᱟᱴ ᱥᱟᱺᱪᱟᱣ ᱢᱮ᱾
-nav_loading	ᱞᱚᱰ ᱦᱩᱭ ᱠᱟᱱᱟ…

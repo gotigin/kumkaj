@@ -72,10 +72,6 @@ bill_item_layout	Rivien asettelu
 bill_item_layout_columns	Sarakkeet
 bill_item_layout_stacked	Pinottu
 bill_item_header	Sarakeotsikot
-bill_item_hdr_item	Tuoteotsikko
-bill_item_hdr_qty	Määräotsikko
-bill_item_hdr_price	Hintaotsikko
-bill_item_hdr_amount	Summaotsikko
 bill_item_name	Lääkkeen nimi
 bill_item_qty	Määrä
 bill_item_price	Hinta
@@ -83,6 +79,13 @@ bill_item_amount	Summa
 bill_item_note	Rx / myyntiilmoitus
 bill_item_col_sep	Sarakkeiden viivat
 slip_col_width	Leveys (mm)
+paper_heading	Paperi
+paper_size	{w} × {h} mm
+paper_roll	{w} mm:n rulla
+paper_not_set	paperia ei vielä tiedetä
+paper_length_mm	Pituus (mm)
+printer_paper_help	Tämän tulostimen paperi millimetreinä. Tyhjä Pituus on rulla: jokainen kuitti on sisältönsä mittainen. Etsi tulostimet täyttää tyhjän paperin tulostimen ajurista (80 mm:n rulla, jos se ei osaa sanoa) eikä koskaan muuta jo asetettua.
+preview_help	Tämä kuitti alla valitun tulostimen paperilla, kuten se siellä tulostuu: todellisessa koossa vasemmasta yläkulmasta, johon tulostin ylettyy (harmaa: reunat, joihin se ei ylety), pitkä kuitti useammalle arkille, kaikki paperin reunan yli leikataan pois. Tulostimen valinta muuttaa vain esikatselua; kunkin tulostimen paperi asetetaan kohdassa Tulostimet.
 slip_col_start	Alkuväli (px)
 slip_col_end	Loppuväli (px)
 slip_columns_help	Kunkin sarakkeen leveys sisältää sen alku- ja loppuvälin. Teksti rivittyy oman sarakkeensa sisällä; sisällön leveyden yli menevä osa leikkautuu pois – paperilla ja esikatselussa.
@@ -850,3 +853,4 @@ nav_loading	Ladataan…
 printer_mode_first	Ensimmäinen joka toimii
 printer_mode_all	Tulosta kaikille
 slip_columns	Sarakkeet
+slip_col_header	Otsikko

@@ -27,6 +27,8 @@ impl SuggestList {
 impl Widget for SuggestList {
     fn draw_walk(&mut self, cx: &mut Cx2d, scope: &mut Scope, walk: Walk) -> DrawStep {
         let cols_menu = self.field == "floor_cols";
+        // Paper lists mark the paper in use (✓) like a dropdown's pick.
+        let paper_menu = self.field == "bill_preview_paper" || self.field == "kot_preview_paper";
         let (open, rows, rev, lang, selected_cols) = {
             let st = app_state().lock().unwrap();
             (
@@ -55,7 +57,7 @@ impl Widget for SuggestList {
         };
         // Inside an AnchoredPopup (popup.rs): full height at once (the list
         // floats, nothing below it moves), capped to the room the popup has
-        // between the field and the window edge — the rest scrolls.
+        // between the field and the window edge â the rest scrolls.
         let (height, should_draw) = if let Some(limit) = popup_draw_limit() {
             if logic_open {
                 (full_h.min(limit), true)
@@ -98,9 +100,10 @@ impl Widget for SuggestList {
                     let Some(row) = draw_rows.get(item_id) else {
                         continue;
                     };
-                    let selected = cols_menu
+                    let selected = (cols_menu
                         && selected_cols >= 1
-                        && row.value.parse::<usize>().ok() == Some(selected_cols);
+                        && row.value.parse::<usize>().ok() == Some(selected_cols))
+                        || (paper_menu && row.action == "\u{2713}");
                     // The selected row is its own template (its background is
                     // the selected wash); hit Button hover sits on top.
                     let template = if selected { id!(ItemSel) } else { id!(Item) };
@@ -108,7 +111,7 @@ impl Widget for SuggestList {
                     item.widget(cx, ids!(title)).set_text(cx, &row.value);
                     item.widget(cx, ids!(subtitle)).set_text(cx, &row.subtitle);
                     item.widget(cx, ids!(subtitle)).set_visible(cx, !row.subtitle.is_empty());
-                    if cols_menu {
+                    if cols_menu || paper_menu {
                         item.label(cx, ids!(action)).set_visible(cx, selected);
                         item.label(cx, ids!(action)).set_text(
                             cx,
@@ -168,7 +171,7 @@ struct StationCheckList {
     view: View,
     #[live]
     field: String,
-    /// True while the menu was drawn open last frame — scroll resets only
+    /// True while the menu was drawn open last frame â scroll resets only
     /// on open, never on checkbox refresh (that felt like a jump).
     #[rust]
     was_open: bool,
@@ -267,7 +270,7 @@ impl Widget for StationCheckList {
                         || self.field == "test_printers"
                         || self.field == "kot_test_printers";
                     let team_stations = self.field == "team_kot_stations";
-                    // PrinterAssign / station VPs keep id in subtitle — never show it.
+                    // PrinterAssign / station VPs keep id in subtitle â never show it.
                     let sub = if printer_assign || station_vps {
                         String::new()
                     } else {
@@ -280,10 +283,10 @@ impl Widget for StationCheckList {
                     );
                     let action = row.action.trim();
                     let checked = !action.is_empty() && action != use_l;
-                    // Drawn box / filled+✓ — ☐ was missing from Noto (tofu).
+                    // Drawn box / filled+â â â was missing from Noto (tofu).
                     item.view(cx, ids!(check_off)).set_visible(cx, !checked);
                     item.view(cx, ids!(check_on)).set_visible(cx, checked);
-                    // Team person access: checkboxes only — no print-order ↑↓.
+                    // Team person access: checkboxes only â no print-order ââ.
                     // Test-printer checklists are multi-check only (no priority).
                     let test_pick =
                         self.field == "test_printers" || self.field == "kot_test_printers";
@@ -365,7 +368,7 @@ impl Widget for StationCheckList {
     }
 }
 
-/// The item form's category picker (see [`CategoryPick`]) — the item
+/// The item form's category picker (see [`CategoryPick`]) â the item
 /// picker's twin: closed it draws nothing; open it is a capped scrolling
 /// viewport. Rows show the category's photo, else its initials; a shelf
 /// folder shows one of its dishes.
@@ -466,7 +469,7 @@ impl Widget for CategoryPickList {
                         };
                         let (title, subtitle, initials_from, alias, photo) = match pick {
                             CategoryPick::New(name) => (
-                                format!("“{name}”"),
+                                format!("â{name}â"),
                                 new_text.clone(),
                                 name.clone(),
                                 None,
@@ -651,7 +654,7 @@ impl Widget for DishPickList {
                         };
                         let (title, subtitle, action, alias, photo) = match pick {
                             DishPick::Own(name) => (
-                                format!("“{name}”"),
+                                format!("â{name}â"),
                                 own_text.clone(),
                                 use_text.clone(),
                                 None,
@@ -661,7 +664,7 @@ impl Widget for DishPickList {
                                 Some(p) => (
                                     p.name.clone(),
                                     format!(
-                                        "{on_menu_text} · {}",
+                                        "{on_menu_text} Â· {}",
                                         p.price.format_localized(&currency, &fiscal)
                                     ),
                                     edit_text.clone(),
@@ -733,12 +736,12 @@ impl Widget for DishPickList {
     }
 }
 
-/// A control that opens a pick list under it — a "type or pick" field or a
-/// dropdown button — wrapped so it reads as a dropdown: after the control
-/// draws, a chevron is painted at its right edge, ˅ while the list is
-/// closed and ˄ while it is open. The open state is read from the list's
+/// A control that opens a pick list under it â a "type or pick" field or a
+/// dropdown button â wrapped so it reads as a dropdown: after the control
+/// draws, a chevron is painted at its right edge, Ë while the list is
+/// closed and Ë while it is open. The open state is read from the list's
 /// own flag on every draw (and checked on every event), so the mark can
-/// never be left pointing the wrong way — the old "Done · …" button faces
+/// never be left pointing the wrong way â the old "Done Â· â¦" button faces
 /// stayed after a list closed some other way (owner, 2026-11-14).
 /// An open list with no rows draws nothing, so it reads as closed.
 /// `field` is the list's `SuggestField` key; `"category"` is the item

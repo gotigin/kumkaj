@@ -501,6 +501,17 @@ job_size	Cabbirka farta
 job_size_ph	tusaale 18, 20, 26…
 test_receipt_format	Tijaabi rasiidka
 test_label_format	Summada tijaabada
+paper_heading	Warqad
+paper_size	{w} × {h} mm
+paper_roll	duub {w} mm ah
+paper_not_set	warqadda weli lama yaqaan
+paper_length_mm	Dherer (mm)
+printer_paper_help	Warqadda daabacahan oo mm ah. Dherer bannaan waa duub: rasiid kastaa wuxuu le'eg yahay waxa ku jira. Raadi daabacayaasha waxay ka buuxisaa warqad bannaan darawalka daabacaha (duub 80 mm ah marka uusan sheegi karin) mana beddesho mid hore loo dejiyay.
+preview_help	Rasiidkan oo saaran warqadda daabacaha hoos laga doortay, sida uu halkaas ugu daabacmo: cabbir dhab ah laga bilaabo geeska bidix ee sare ee daabacuhu gaaro (cawl: geesaha uusan gaarin), rasiid dheer oo warqado badan ah, wax kasta oo dhaafa cidhifka warqadda waa la gooyaa. Dooranka daabace wuxuu beddelaa hordhaca oo keliya; warqadda daabace kasta waxaa lagu dejiyaa Daabacayaasha.
+slip_col_width	Ballac (mm)
+no_printer_assigned	Daabacaha ma jiro
+printer_target_default	daabacaha caadiga ah ee kombiyuutarkan (cinwaan madhan)
+job_preview	Horudhac
 test_receipt_sent	Tusaalaha rasiidka la diray
 test_label_sent	Tusaalaha calaamada la diray
 test_print_no_printer	Ma jiro daabacaha shaqadaas - ku dar mid meeshan hoosteeda

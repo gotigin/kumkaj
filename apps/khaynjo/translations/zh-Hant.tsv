@@ -92,10 +92,6 @@ bill_item_layout	菜品版式
 bill_item_layout_columns	列
 bill_item_layout_stacked	堆疊
 bill_item_header	列標題
-bill_item_hdr_item	品名錶頭
-bill_item_hdr_qty	數量表頭
-bill_item_hdr_price	單價表頭
-bill_item_hdr_amount	金額表頭
 bill_item_name	菜名
 bill_item_qty	數量
 bill_item_price	單價
@@ -103,6 +99,20 @@ bill_item_amount	金額
 bill_item_note	備註
 bill_item_col_sep	列線
 slip_columns	欄
+slip_col_header	表頭
+bill_line_logo	標誌
+bill_logo_picture	圖片
+bill_logo_choose	選擇圖片
+bill_logo_remove	移除圖片
+bill_logo_none	沒有圖片
+bill_logo_unreadable	這不是本應用程式能讀取的圖片
+bill_logo_width	寬度 (px)
+bill_logo_height	高度 (px)
+bill_logo_tones	灰階
+bill_logo_solid	實心
+bill_logo_shaded	網點
+bill_logo_help	寬度和高度以 px 計。留空就跟隨圖片：留空一項保持比例，兩項都留空用圖片原尺寸；兩項都填就放進框內，絕不拉伸。沒有圖片：顯示中的標誌保留其高度作為空白；隱藏則移除。
+bill_logo_tones_help	實心：每個點非黑即白，適合清晰的標誌。網點：灰色變成細密的點狀紋理，適合照片和柔和陰影。
 slip_col_width	寬度 (mm)
 slip_col_start	開頭間距 (px)
 slip_col_end	結尾間距 (px)
@@ -167,6 +177,21 @@ alerts_help	狀態消息為你在屏幕上停留多久（本次登錄）。
 snack_secs_ph	秒數（3–60，默認 10）
 snack_secs_save	保存提示時長
 snack_secs_saved	提示時長已保存——{n} 秒
+settings_sec_whatsapp	WhatsApp
+whatsapp_cloud_help	Use your own Meta WhatsApp Cloud API. Create a System User token with whatsapp_business_messaging (temporary dashboard tokens expire). Credentials stay on this Server only — never on extra tills. Accepted means Meta took the request, not that the guest received it.
+whatsapp_phone_id_ph	Phone Number ID
+whatsapp_token_ph	Access Token (leave blank to keep)
+whatsapp_template_ph	Bill template name (optional)
+whatsapp_template_lang_ph	Template language (e.g. en)
+whatsapp_enable	Enable
+whatsapp_disable	Off
+whatsapp_save	Save WhatsApp
+whatsapp_test	Test connection
+whatsapp_disconnect	Disconnect
+whatsapp_send_bill	Send via WhatsApp
+whatsapp_consent	WhatsApp OK
+whatsapp_consent_help	Guest agreed to receive WhatsApp messages. A phone number alone is not consent.
+whatsapp_server_only	Configure WhatsApp on the shop Server device
 settings_sec_backup	備份與恢復
 settings_sec_diag	診斷
 settings_sec_privacy	隱私
@@ -729,6 +754,13 @@ station_vps_dd	此工位的打印機
 station_vps_dd_n	{n} 臺打印機 · 點按更改
 bill_printers_dd	帳單打印機
 bill_printers_dd_n	{n} 臺帳單打印機 · 點擊以更改
+paper_heading	紙張
+paper_size	{w} × {h} mm
+paper_roll	{w} mm 捲紙
+paper_not_set	紙張尚未得知
+paper_length_mm	長度 (mm)
+printer_paper_help	此打印機的紙張 (mm)。長度留空即為捲紙：每張單據與其內容一樣長。「查找打印機」會從打印機驅動程式填入空白紙張（無法得知時為 80 mm 捲紙），且絕不更改已設定的紙張。
+preview_help	此單據在下方所選打印機的紙張上，與在那裡列印的完全相同：從打印機可達的左上角起以實際尺寸列印（灰色：無法到達的邊緣），長單據印在更多張紙上，超出紙張邊緣的部分會被切掉。選擇打印機只會改變預覽；每台打印機的紙張在「打印機」中設定。
 job_layout	版式
 job_delivery	任務發送方式
 job_delivery_help	OS 文檔、原始字節或 ESC/POS。帳單和廚房票據各自保留自己的設置。任一任務均可發送至“已保存的”任意打印機。
@@ -1105,9 +1137,6 @@ remove_these_tables	刪除這些桌臺
 table_remove_ph	刪除：T1-T24，或某張桌臺的名稱
 find_server	查找店內服務器
 bill_format	帳單格式
-bill_header_ph	地址 | 電話
-fssai_ph	FSSAI 許可證號（印度）
-bill_footer_ph	頁腳（如：謝謝，歡迎再來）
 reset_bill_format	恢復默認
 bill_format_reset	帳單格式已恢復默認
 reset_kot_format	恢復默認
@@ -1146,7 +1175,6 @@ kot_kind_modified	已修改
 kot_kind_cancelled	已取消
 kot_style_heading	字段字號與字重
 kot_style_title	標題
-kot_style_item_qty	品項 · 數量
 kot_style_field_pick	選擇字段
 kot_weight_regular	常規
 kot_weight_bold	粗體
@@ -1158,8 +1186,8 @@ content_width_bill	帳單內容寬度 (mm)
 content_width_kot	KOT 內容寬度 (mm)
 content_width_ph	或輸入內容寬度，40–210 毫米
 content_width_help	此小票的打印寬度。帳單和 KOT 各自保持自己的寬度。
-content_width_bill_help	客人帳單的打印寬度。默認 210 mm（頁面）。58 mm 窄式小票，80 mm 寬式小票，112 mm 4 英寸，210 mm A4 寬幅。輸入 40 到 210 之間的任意值。廚房票據在 KOT 選項卡上擁有自己的寬度。
-content_width_kot_help	廚房票據的打印寬度。默認 80 mm。58 mm 窄式小票，80 mm 寬式小票，112 mm 4 英寸，210 mm 頁面。輸入 40 到 210 之間的任意值。客人帳單在帳單選項卡上擁有自己的寬度。
+content_width_bill_help	客人帳單的列印寬度（mm，40–210）。在任何紙張上都以此實際尺寸列印；在較窄的紙張上，超出列印邊緣的部分會被裁切（見紙張）。廚房單有自己的寬度，在 KOT 分頁設定。
+content_width_kot_help	廚房單的列印寬度（mm，40–210）。在任何紙張上都以此實際尺寸列印；在較窄的紙張上，超出列印邊緣的部分會被裁切（見紙張）。客人帳單有自己的寬度，在帳單分頁設定。
 vp_paper_width	內容寬度（毫米）
 vp_paper_width_ph	或輸入內容寬度，40–210 毫米
 vp_paper_width_help	內容寬度在「帳單與 KOT 格式」中設置。適用於帳單和廚房小票。
@@ -1213,8 +1241,6 @@ schemes_help	買 X 送 Y — 結帳自動。例：Buy 2 Thali get 1 Chaas
 scheme_bogo_ph	買 2 份 Thali 送 1 杯 Chaas
 add_scheme	添加買贈
 schedule_ph	時段/歡樂時光 — Mon-Fri 07:00-11:00 或 HappyHour 17:00-19:00=150
-upi_vpa_ph	UPI ID (VPA)
-upi_payee_ph	UPI收款人（可選）
 upi_qr	UPI QR
 show_upi_qr	顯示 UPI 二維碼
 close_upi_qr	關閉
@@ -1295,8 +1321,6 @@ printer_mode_first	第一個可用的
 printer_mode_all	全部打印
 kot_show_area	區域
 kot_hide_area	隱藏區域
-kot_show_item_hdr	品項 · 數量
-kot_hide_item_hdr	隱藏列
 kot_show_title	標題行
 kot_hide_title	隱藏標題
 kot_field_cycle	選擇下一個
@@ -1337,12 +1361,12 @@ private_code_ph	12 位數代碼
 stamp_on	印章：已存檔
 pay_qr_on	付款二維碼：已存檔
 pay_qr_off	付款二維碼：無
+printers_screen_tip	搜尋會列出此裝置可用的印表機，並為此商店儲存。帳單印表機：帳單與 KOT 格式 → 帳單。廚房：廚房 → 廚房工作站。
+printers_found_none	找不到印表機。
+nav_loading	載入中…
+kot_copy_from	複製自
+kot_copy_from_help	將該種類每一行的大小、粗細與對齊方式複製到此種類。此種類保留自己的橫幅、品項前綴與刪除線。儲存 KOT 格式即可保留。
 items_tmpl_heading	品項範本
 items_tmpl_help	菜單用的菜色、分類和照片。商店設定與員工維持不變。
 public_tmpl_help	任何人都能下載的入門菜單。需要連網一次。
 private_tmpl_help	由您的 Khaynjo 聯絡人提供 12 位數代碼保護的客戶菜單。
-printers_screen_tip	搜尋會列出此裝置可用的印表機，並為此商店儲存。帳單印表機：帳單與 KOT 格式 → 帳單。廚房：廚房 → 廚房工作站。
-printers_found_none	找不到印表機。
-kot_copy_from	複製自
-kot_copy_from_help	將該種類每一行的大小、粗細與對齊方式複製到此種類。此種類保留自己的橫幅、品項前綴與刪除線。儲存 KOT 格式即可保留。
-nav_loading	載入中…

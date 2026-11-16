@@ -60,10 +60,6 @@ bill_item_layout	Tétel elrendezése
 bill_item_layout_columns	Oszlopok
 bill_item_layout_stacked	Halmozott
 bill_item_header	Oszlopfejlécek
-bill_item_hdr_item	Elem fejléce
-bill_item_hdr_qty	Mennyiség fejléc
-bill_item_hdr_price	Ár fejléc
-bill_item_hdr_amount	Összeg fejléc
 bill_item_name	Elem neve
 bill_item_qty	Menny
 bill_item_price	Ár
@@ -71,6 +67,13 @@ bill_item_amount	Összeg
 bill_item_note	Tétel megjegyzés
 bill_item_col_sep	Oszlopszabályok
 slip_col_width	Szélesség (mm)
+paper_heading	Papír
+paper_size	{w} × {h} mm
+paper_roll	{w} mm-es tekercs
+paper_not_set	a papír még nem ismert
+paper_length_mm	Hossz (mm)
+printer_paper_help	A nyomtató papírja mm-ben. Az üres Hossz tekercset jelent: minden blokk olyan hosszú, mint a tartalma. A Keressen nyomtatókat kitölti az üres papírt a nyomtató illesztőprogramjából (80 mm-es tekercs, ha az nem tudja megmondani), és soha nem módosítja a már beállítottat.
+preview_help	Ez a blokk a lent kiválasztott nyomtató papírján, ahogy ott nyomtatódik: valós méretben attól a bal felső saroktól, ameddig a nyomtató elér (szürke: szélek, ahová nem ér el), a hosszú blokk több lapon, ami túlnyúlik a papír szélén, levágódik. A nyomtató kiválasztása csak az előnézetet módosítja; minden nyomtató papírját a Nyomtatók alatt kell beállítani.
 slip_col_start	Kezdő térköz (px)
 slip_col_end	Záró térköz (px)
 slip_columns_help	Minden oszlop szélessége tartalmazza a kezdő és záró térközét. A szöveg az oszlopán belül tördelődik; ami túlnyúlik a tartalom szélességén, levágódik – papíron és az előnézetben is.
@@ -838,3 +841,4 @@ nav_loading	Betöltés…
 printer_mode_first	Először is ez működik
 printer_mode_all	Nyomtatás az összesre
 slip_columns	Oszlopok
+slip_col_header	Fejléc

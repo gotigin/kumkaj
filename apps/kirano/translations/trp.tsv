@@ -60,10 +60,6 @@ bill_item_layout	মানুই নি লায়উত
 bill_item_layout_columns	খলম
 bill_item_layout_stacked	সতাচক খাইজাক
 bill_item_header	খলমনি বখরক
-bill_item_hdr_item	মানুই নি বখরক
-bill_item_hdr_qty	কতয় বখরক
-bill_item_hdr_price	মুচুংমা বখরক
-bill_item_hdr_amount	বখরক রাং
 bill_item_name	মানুই নি মুং
 bill_item_qty	কুবাংমা
 bill_item_price	দাম
@@ -71,6 +67,13 @@ bill_item_amount	রাং
 bill_item_note	মানৱি নোতে
 bill_item_col_sep	কলম নি কেরং
 slip_col_width	বাগা (mm)
+paper_heading	কাগজ
+paper_size	{w} × {h} mm
+paper_roll	{w} mm রোল
+paper_not_set	কাগজ তাবুক তাই নাইথি
+paper_length_mm	কালাই (mm)
+printer_paper_help	ই প্রিন্টারনি কাগজ mm ও। কালাই কুসুক অর্থ রোল: সাবকং স্লিপ বিনি সামগ্রী কাসা কালাই। পরিনতের নাইদি কুসুক কাগজ প্রিন্টারনি ড্রাইভার নি বুথুক (সাগই মান খই খা 80 mm রোল) তেই সিকাম নি থিক খলাইমানি কাগজ তাংখা সুইয়া।
+preview_help	ই স্লিপ য়াখুল নি সাইমানি প্রিন্টারনি কাগজ সাকাংও, অ'ও ছাপা খলাইজাক: প্রিন্টার থাংমানি সাকাং আগলা কোণ নি সত্যি মাপ ও (ধূসর: থাংমান য়াফুরু), কালাই স্লিপ বেসি পাতা ও, কাগজনি য়াফুরু নি উয়াংগ বাগই তান'জাক। প্রিন্টার সাইখা খা প্রিভিউ সাকসা সুইয়ই; সাবকং প্রিন্টারনি কাগজ প্রিন্টার ও থিক খলাইয়ই।
 slip_col_start	সালকসা জায়গা (px)
 slip_col_end	তামাখালনি জায়গা (px)
 slip_columns_help	খলম কাইসানি বাগা বিনি সালকসা বো তামাখালনি জায়গা সুমানি। সুংমা বিনি খলম সিনিসে সাপুইমানি; কাতারনি বাগা কাসানো বুসুক অ তাতা আছিক বো ফৗরৗননি সিনি তিকতুইমানি।
@@ -838,3 +841,4 @@ nav_loading	Load khlaiwi tongo…
 printer_mode_first	পুইলা আব সামুং তাংনাই
 printer_mode_all	জতন পরিনত খাইদি
 slip_columns	খলমরগ
+slip_col_header	বখরক

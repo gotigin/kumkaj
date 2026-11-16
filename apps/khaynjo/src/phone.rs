@@ -896,7 +896,7 @@ mod tests {
     }
 
     fn temp(name: &str) -> PathBuf {
-        std::env::temp_dir().join(format!("khaynjo-{name}-{}.sqlite3", new_id()))
+        crate::test_dirs::run_root().join(format!("khaynjo-{name}-{}.sqlite3", new_id()))
     }
 
     /// A Server (waiter Wasim 2222, Thali ₹200, table D1) and a phone paired

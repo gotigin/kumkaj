@@ -92,10 +92,6 @@ bill_item_layout	تخطيط الأصناف
 bill_item_layout_columns	أعمدة
 bill_item_layout_stacked	متراكب
 bill_item_header	عناوين الأعمدة
-bill_item_hdr_item	عنوان الصنف
-bill_item_hdr_qty	عنوان الكمية
-bill_item_hdr_price	عنوان السعر
-bill_item_hdr_amount	عنوان المبلغ
 bill_item_name	الاسم
 bill_item_qty	كمية
 bill_item_price	السعر
@@ -103,6 +99,20 @@ bill_item_amount	المبلغ
 bill_item_note	ملاحظة
 bill_item_col_sep	خطوط الأعمدة
 slip_columns	الأعمدة
+slip_col_header	العنوان
+bill_line_logo	الشعار
+bill_logo_picture	الصورة
+bill_logo_choose	اختر صورة
+bill_logo_remove	إزالة الصورة
+bill_logo_none	لا توجد صورة
+bill_logo_unreadable	ليست صورة يستطيع هذا التطبيق قراءتها
+bill_logo_width	العرض (px)
+bill_logo_height	الارتفاع (px)
+bill_logo_tones	الرماديات
+bill_logo_solid	صلب
+bill_logo_shaded	مظلل
+bill_logo_help	العرض والارتفاع بوحدة px. الفارغ يتبع الصورة: فارغ واحد يحفظ شكلها، وكلاهما فارغ يستخدم حجمها الأصلي؛ وتحديد الاثنين يضعها داخلهما دون تمطيط أبدًا. بلا صورة: يحتفظ الشعار الظاهر بارتفاعه مساحةً فارغة؛ والإخفاء يزيله.
+bill_logo_tones_help	صلب: كل نقطة سوداء أو بيضاء، لشعارات حادة. مظلل: يتحول الرمادي إلى أنماط نقاط دقيقة، للصور والتظليل الناعم.
 slip_col_width	العرض (mm)
 slip_col_start	مسافة البداية (px)
 slip_col_end	مسافة النهاية (px)
@@ -167,6 +177,21 @@ alerts_help	كم تبقى رسائل الحالة على الشاشة لك (له
 snack_secs_ph	ثوانٍ (3–60، الافتراضي 10)
 snack_secs_save	حفظ مدة التنبيه
 snack_secs_saved	حُفظت مدة التنبيه — {n} ثانية
+settings_sec_whatsapp	WhatsApp
+whatsapp_cloud_help	Use your own Meta WhatsApp Cloud API. Create a System User token with whatsapp_business_messaging (temporary dashboard tokens expire). Credentials stay on this Server only — never on extra tills. Accepted means Meta took the request, not that the guest received it.
+whatsapp_phone_id_ph	Phone Number ID
+whatsapp_token_ph	Access Token (leave blank to keep)
+whatsapp_template_ph	Bill template name (optional)
+whatsapp_template_lang_ph	Template language (e.g. en)
+whatsapp_enable	Enable
+whatsapp_disable	Off
+whatsapp_save	Save WhatsApp
+whatsapp_test	Test connection
+whatsapp_disconnect	Disconnect
+whatsapp_send_bill	Send via WhatsApp
+whatsapp_consent	WhatsApp OK
+whatsapp_consent_help	Guest agreed to receive WhatsApp messages. A phone number alone is not consent.
+whatsapp_server_only	Configure WhatsApp on the shop Server device
 settings_sec_backup	النسخ الاحتياطي واستعادة البيانات
 settings_sec_diag	التشخيص
 settings_sec_privacy	الخصوصية
@@ -729,6 +754,13 @@ station_vps_dd	طابعات هذه المحطة
 station_vps_dd_n	{n} طابعة · انقر للتغيير
 bill_printers_dd	طابعات للفاتورة
 bill_printers_dd_n	{n} طابعة(ات) للفاتورة · اضغط للتغيير
+paper_heading	الورق
+paper_size	{w} × {h} mm
+paper_roll	لفة {w} مم
+paper_not_set	الورق غير معروف بعد
+paper_length_mm	الطول (mm)
+printer_paper_help	ورق هذه الطابعة بالمليمتر. الطول الفارغ يعني لفة: كل إيصال بطول محتواه. «ابحث عن الطابعات» يملأ الورق الفارغ من برنامج تشغيل الطابعة (لفة 80 مم إن لم يستطع التحديد) ولا يغيّر أبدًا ورقًا محددًا من قبل.
+preview_help	هذا الإيصال على ورق الطابعة المختارة أدناه كما يُطبع عليها: بالحجم الحقيقي من أعلى اليسار الذي تبلغه الطابعة (الرمادي: حواف لا تبلغها)، والإيصال الطويل على أوراق أكثر، وكل ما يتجاوز حافة الورق يُقص. اختيار طابعة يغيّر المعاينة فقط؛ ورق كل طابعة يُضبط في «الطابعات».
 job_layout	التخطيط
 job_delivery	طريقة إرسال المهمة
 job_delivery_help	مستند نظام التشغيل، أو بايتات خام، أو ESC/POS. تحتفظ الفاتورة وطلب المطبخ (KOT) بكل منهما بنفسها. يمكن لأي مهمة أن تذهب إلى أي طابعة تم حفظها بواسطة Find.
@@ -1105,9 +1137,6 @@ remove_these_tables	أزل هذه الطاولات
 table_remove_ph	إزالة: T1-T24 أو اسم طاولة واحدة
 find_server	ابحث عن خادم المطعم
 bill_format	تنسيق الفاتورة
-bill_header_ph	العنوان | الهاتف
-fssai_ph	رقم ترخيص FSSAI (الهند)
-bill_footer_ph	التذييل (مثل شكرًا، عُد مجددًا)
 reset_bill_format	إعادة للافتراضي
 bill_format_reset	أُعيد تنسيق الفاتورة للافتراضي
 reset_kot_format	إعادة للافتراضي
@@ -1146,7 +1175,6 @@ kot_kind_modified	معدل
 kot_kind_cancelled	ملغى
 kot_style_heading	حجم الحقل ووزنه
 kot_style_title	العنوان
-kot_style_item_qty	صنف · كمية
 kot_style_field_pick	اختر الحقل
 kot_weight_regular	عادي
 kot_weight_bold	عريض
@@ -1158,8 +1186,8 @@ content_width_bill	عرض محتوى الفاتورة (مم)
 content_width_kot	عرض محتوى تذكرة المطبخ (مم)
 content_width_ph	أو اكتب عرض المحتوى، 40–210 مم
 content_width_help	عرض طباعة هذا السند. تحافظ الفاتورة وتذكرة المطبخ على عرض كل منهما بشكل منفصل.
-content_width_bill_help	عرض طباعة فاتورة الضيف. الافتراضي 210 مم (صفحة). سند ضيق 58 مم، سند عريض 80 مم، 4 بوصات 112 مم، صفحة A4 عريضة 210 مم. أدخل أي قيمة من 40 إلى 210. تذكرة المطبخ لها عرضها الخاص على تبويب تذكرة المطبخ.
-content_width_kot_help	عرض طباعة تذكرة المطبخ. الافتراضي 80 مم. سند ضيق 58 مم، سند عريض 80 مم، 4 بوصات 112 مم، صفحة 210 مم. أدخل أي قيمة من 40 إلى 210. الفواتير الخاصة بالضيوف لها عرضها الخاص على تبويب الفاتورة.
+content_width_bill_help	عرض فاتورة الضيف عند الطباعة، بالـ mm (40–210). تُطبع بهذا الحجم الحقيقي على أي ورق؛ وعلى ورق أضيق من ذلك يُقصّ الجزء الذي يتجاوز حافة الطباعة (انظر الورق). لتذاكر المطبخ عرضها الخاص في تبويب KOT.
+content_width_kot_help	عرض تذكرة المطبخ عند الطباعة، بالـ mm (40–210). تُطبع بهذا الحجم الحقيقي على أي ورق؛ وعلى ورق أضيق من ذلك يُقصّ الجزء الذي يتجاوز حافة الطباعة (انظر الورق). لفواتير الضيوف عرضها الخاص في تبويب الفاتورة.
 vp_paper_width	عرض المحتوى (مم)
 vp_paper_width_ph	أو اكتب عرض المحتوى، 40–210 مم
 vp_paper_width_help	يُضبط عرض المحتوى ضمن تنسيق الفاتورة وKOT. ينطبق على الفاتورة وتذكرة المطبخ.
@@ -1213,8 +1241,6 @@ schemes_help	اشترِ X واحصل على Y — عند التحصيل. مثا�
 scheme_bogo_ph	Buy 2 Thali get 1 Chaas
 add_scheme	أضف BOGO
 schedule_ph	الوقت / ساعة سعيدة — Mon-Fri 07:00-11:00 أو HappyHour 17:00-19:00=150
-upi_vpa_ph	UPI ID (VPA)
-upi_payee_ph	مستلم UPI (اختياري)
 upi_qr	UPI QR
 show_upi_qr	عرض QR لـ UPI
 close_upi_qr	إغلاق
@@ -1295,8 +1321,6 @@ printer_mode_first	الأولى التي تعمل
 printer_mode_all	الطباعة على الكل
 kot_show_area	المنطقة
 kot_hide_area	إخفاء المنطقة
-kot_show_item_hdr	صنف · كمية
-kot_hide_item_hdr	إخفاء الأعمدة
 kot_show_title	سطر العنوان
 kot_hide_title	إخفاء العنوان
 kot_field_cycle	تحديد التالي
@@ -1337,12 +1361,12 @@ private_code_ph	رمز من 12 رقمًا
 stamp_on	الختم: محفوظ
 pay_qr_on	QR الدفع: محفوظ
 pay_qr_off	QR الدفع: لا يوجد
+printers_screen_tip	يعرض البحث الطابعات التي يمكن لهذا الجهاز استخدامها ويحفظها لهذا المتجر. طابعات الفواتير: تنسيق الفاتورة وKOT ← الفاتورة. المطبخ: المطبخ ← محطات المطبخ.
+printers_found_none	لم يتم العثور على طابعات.
+nav_loading	جارٍ التحميل…
+kot_copy_from	نسخ من
+kot_copy_from_help	ينسخ حجم كل سطر ووزنه ومحاذاته من ذلك النوع إلى هذا النوع. يحتفظ هذا النوع بلافتته وبادئة العناصر والشطب الخاصة به. احفظ تنسيق KOT للاحتفاظ به.
 items_tmpl_heading	قوالب الأصناف
 items_tmpl_help	أطباق وفئات وصور لقائمتك. تبقى إعدادات المتجر والموظفون كما هم.
 public_tmpl_help	قوائم بداية يمكن لأي شخص تنزيلها. تحتاج إلى الإنترنت مرة واحدة.
 private_tmpl_help	قوائم عملاء محمية برمز من 12 رقمًا من جهة اتصالك في Khaynjo.
-printers_screen_tip	يعرض البحث الطابعات التي يمكن لهذا الجهاز استخدامها ويحفظها لهذا المتجر. طابعات الفواتير: تنسيق الفاتورة وKOT ← الفاتورة. المطبخ: المطبخ ← محطات المطبخ.
-printers_found_none	لم يتم العثور على طابعات.
-kot_copy_from	نسخ من
-kot_copy_from_help	ينسخ حجم كل سطر ووزنه ومحاذاته من ذلك النوع إلى هذا النوع. يحتفظ هذا النوع بلافتته وبادئة العناصر والشطب الخاصة به. احفظ تنسيق KOT للاحتفاظ به.
-nav_loading	جارٍ التحميل…

@@ -480,7 +480,11 @@ fn printers_found_line(t: impl Fn(&str) -> String) -> String {
 
 /// Merge every name from the last successful Find into the device pool and
 /// save. Returns `(newly_added, total_found)`. Does not remove printers that
-/// Find missed (offline / typed host:9100 stay).
+/// Find missed (offline / typed host:9100 stay). Printers with no paper get
+/// one (their driver's, or an 80 mm roll for ESC/POS devices and drivers
+/// that cannot say); a paper already set is never changed — matched by the
+/// printer's target, so every Find keeps it (docs/PRINTER.md § Paper and
+/// preview).
 fn sync_found_printers_into_pool(st: &mut AppState) -> Result<(usize, usize), String> {
     let found = print_share::found_printers();
     let total = found.len();
@@ -495,6 +499,7 @@ fn sync_found_printers_into_pool(st: &mut AppState) -> Result<(usize, usize), St
         }
     }
     st.printer_draft.dedupe_printers();
+    st.printer_draft.fill_missing_papers(&os_paper::answers(), true);
     st.save_printer_draft()?;
     Ok((newly, total))
 }
@@ -512,7 +517,8 @@ fn printer_display_name(p: &print_share::NamedPrinter, t: impl Fn(&str) -> Strin
     t("printer_target_default")
 }
 
-/// The printers Find saved on this device (read-only names). Selection for a
+/// The printers Find saved on this device, `name · paper` (read-only; the
+/// Printers sheet, and printers past Settings → Printers' open-in-place rows). Selection for a
 /// test page / Test KOT is the StationCheckList under the list.
 fn printers_pool_rows(
     draft: &print_share::DevicePrinters,
@@ -523,8 +529,76 @@ fn printers_pool_rows(
     draft
         .printers
         .iter()
-        .map(|p| ReportRow::Line(printer_display_name(p, &t)))
+        .map(|p| ReportRow::Line(printer_paper_line(p, &t)))
         .collect()
+}
+
+/// A printer's paper for people: `80 mm roll`, `210 × 297 mm`, or that it
+/// is not known yet (docs/PRINTER.md § Paper and preview).
+fn paper_summary(p: &print_share::NamedPrinter, t: impl Fn(&str) -> String) -> String {
+    let mm = os_paper::mm_text;
+    match p.paper() {
+        Some(pp) if pp.is_roll() => t("paper_roll").replace("{w}", &mm(pp.width_mm)),
+        Some(pp) => t("paper_size")
+            .replace("{w}", &mm(pp.width_mm))
+            .replace("{h}", &mm(pp.length_mm)),
+        None => t("paper_not_set"),
+    }
+}
+
+/// Ask the driver of every printer that has no paper yet (on its own
+/// thread; the answer fills it — never one already set — and redraws, see
+/// `main_impl`). ESC/POS devices have no driver to ask.
+fn ask_drivers_for_missing_papers(printers: &[print_share::NamedPrinter]) {
+    for p in printers {
+        if p.paper().is_none() && p.has_driver() {
+            let _ = os_paper::papers_for(&p.target);
+        }
+    }
+}
+
+/// One saved printer as the lists show it: `name · paper`.
+fn printer_paper_line(p: &print_share::NamedPrinter, t: impl Fn(&str) -> String) -> String {
+    format!("{} · {}", printer_display_name(p, &t), paper_summary(p, &t))
+}
+
+/// One row of a preview's printer dropdown: every saved printer is listed;
+/// picking one only changes the preview.
+struct PreviewPaperRow {
+    title: String,
+    printer_id: String,
+    selected: bool,
+}
+
+fn preview_paper_rows(
+    printers: &[print_share::NamedPrinter],
+    active: Option<&str>,
+    t: impl Fn(&str) -> String,
+) -> Vec<PreviewPaperRow> {
+    let lines: Vec<String> = printers.iter().map(|p| printer_paper_line(p, &t)).collect();
+    printers
+        .iter()
+        .zip(&lines)
+        .map(|(p, line)| {
+            // Two printers that read the same are told apart by their id.
+            let twin = lines.iter().filter(|l| *l == line).count() > 1;
+            PreviewPaperRow {
+                title: if twin { format!("{line} ({})", p.id) } else { line.clone() },
+                printer_id: p.id.clone(),
+                selected: active == Some(p.id.as_str()),
+            }
+        })
+        .collect()
+}
+
+/// What a preview draws its slip on: the active printer's paper, how that
+/// printer is sent jobs, and what its driver said (for the edges it cannot
+/// reach). `None` driver: not asked (ESC/POS) or not answered yet.
+#[derive(Clone, Debug, PartialEq)]
+struct PreviewPaper {
+    paper: os_paper::PaperMm,
+    os_document: bool,
+    driver: Option<os_paper::PrinterPapers>,
 }
 
 /// Checklist: pool printers for test page / Test KOT. `subtitle` = printer id.

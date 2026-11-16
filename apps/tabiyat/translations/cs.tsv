@@ -72,10 +72,6 @@ bill_item_layout	Rozložení položky
 bill_item_layout_columns	Sloupce
 bill_item_layout_stacked	Skládaný
 bill_item_header	Záhlaví sloupců
-bill_item_hdr_item	Záhlaví položky
-bill_item_hdr_qty	Záhlaví množství
-bill_item_hdr_price	Hlavička ceny
-bill_item_hdr_amount	Hlavička částky
 bill_item_name	Název medicíny
 bill_item_qty	množství
 bill_item_price	Cena
@@ -83,6 +79,13 @@ bill_item_amount	Částka
 bill_item_note	Rx / poznámka k prodeji
 bill_item_col_sep	Pravidla sloupců
 slip_col_width	Šířka (mm)
+paper_heading	Papír
+paper_size	{w} × {h} mm
+paper_roll	role {w} mm
+paper_not_set	papír zatím není známý
+paper_length_mm	Délka (mm)
+printer_paper_help	Papír této tiskárny v mm. Prázdná Délka je role: každá účtenka je dlouhá jako její obsah. Najděte tiskárny doplní prázdný papír z ovladače tiskárny (role 80 mm, když to nedokáže říct) a nikdy nezmění papír, který už je nastavený.
+preview_help	Tato účtenka na papíru tiskárny vybrané níže, jak se na ní vytiskne: ve skutečné velikosti od levého horního rohu, kam tiskárna dosáhne (šedě: okraje, kam nedosáhne), dlouhá účtenka na více listech, vše za okrajem papíru se ořízne. Výběr tiskárny mění jen náhled; papír každé tiskárny se nastavuje v části Tiskárny.
 slip_col_start	Mezera na začátku (px)
 slip_col_end	Mezera na konci (px)
 slip_columns_help	Šířka každého sloupce zahrnuje jeho mezeru na začátku a na konci. Text se zalamuje uvnitř svého sloupce; co přesahuje šířku obsahu, se ořízne – na papíře i v náhledu.
@@ -850,3 +853,4 @@ nav_loading	Načítání…
 printer_mode_first	Nejprve to funguje
 printer_mode_all	Tisk na všechny
 slip_columns	Sloupce
+slip_col_header	Záhlaví

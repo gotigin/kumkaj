@@ -92,10 +92,6 @@ bill_item_layout	Тауар орналасуы
 bill_item_layout_columns	Бағандар
 bill_item_layout_stacked	Жолдармен
 bill_item_header	Баған тақырыптары
-bill_item_hdr_item	Тауар тақырыбы
-bill_item_hdr_qty	Сан тақырыбы
-bill_item_hdr_price	Баға тақырыбы
-bill_item_hdr_amount	Сома тақырыбы
 bill_item_name	Тағам аты
 bill_item_qty	Сан
 bill_item_price	Баға
@@ -103,6 +99,20 @@ bill_item_amount	Сома
 bill_item_note	Тағам ескертпесі
 bill_item_col_sep	Баған сызықтары
 slip_columns	Бағандар
+slip_col_header	Тақырып
+bill_line_logo	Логотип
+bill_logo_picture	Сурет
+bill_logo_choose	Сурет таңдау
+bill_logo_remove	Суретті жою
+bill_logo_none	Сурет жоқ
+bill_logo_unreadable	Бұл қолданба оқи алатын сурет емес
+bill_logo_width	Ені (px)
+bill_logo_height	Биіктігі (px)
+bill_logo_tones	Сұр реңктер
+bill_logo_solid	Тұтас
+bill_logo_shaded	Көлеңкелі
+bill_logo_help	Ені мен биіктігі px-пен. Бос қалса суретке ереді: біреуі бос болса пішіні сақталады, екеуі де бос болса өз өлшемі; екеуі де берілсе ішіне сыйғызады, ешқашан созбайды. Сурет жоқ: көрсетілген логотип биіктігін бос орын ретінде сақтайды; Жасыру оны алып тастайды.
+bill_logo_tones_help	Тұтас: әр нүкте қара немесе ақ, анық логотиптер үшін. Көлеңкелі: сұр реңктер ұсақ нүкте өрнегіне айналады, фото және жұмсақ көлеңке үшін.
 slip_col_width	Ені (mm)
 slip_col_start	Бастапқы аралық (px)
 slip_col_end	Соңғы аралық (px)
@@ -167,6 +177,21 @@ alerts_help	Күй хабарлары сіз үшін экранда қанша 
 snack_secs_ph	Секунд (3–60, әдепкі 10)
 snack_secs_save	Ескерту уақытын сақтау
 snack_secs_saved	Ескерту уақыты сақталды — {n} секунд
+settings_sec_whatsapp	WhatsApp
+whatsapp_cloud_help	Use your own Meta WhatsApp Cloud API. Create a System User token with whatsapp_business_messaging (temporary dashboard tokens expire). Credentials stay on this Server only — never on extra tills. Accepted means Meta took the request, not that the guest received it.
+whatsapp_phone_id_ph	Phone Number ID
+whatsapp_token_ph	Access Token (leave blank to keep)
+whatsapp_template_ph	Bill template name (optional)
+whatsapp_template_lang_ph	Template language (e.g. en)
+whatsapp_enable	Enable
+whatsapp_disable	Off
+whatsapp_save	Save WhatsApp
+whatsapp_test	Test connection
+whatsapp_disconnect	Disconnect
+whatsapp_send_bill	Send via WhatsApp
+whatsapp_consent	WhatsApp OK
+whatsapp_consent_help	Guest agreed to receive WhatsApp messages. A phone number alone is not consent.
+whatsapp_server_only	Configure WhatsApp on the shop Server device
 settings_sec_backup	Сақтық көшірме және қалпына келтіру
 settings_sec_diag	Диагностика
 settings_sec_privacy	Құпиялық
@@ -729,6 +754,13 @@ station_vps_dd	Осы станцияның принтерлері
 station_vps_dd_n	{n} принтер · өзгерту үшін түртіңіз
 bill_printers_dd	Шот принтерлері
 bill_printers_dd_n	шотқа {n} принтер · өзгерту үшін түртіңіз
+paper_heading	Қағаз
+paper_size	{w} × {h} mm
+paper_roll	{w} мм орам
+paper_not_set	қағаз әлі белгісіз
+paper_length_mm	Ұзындығы (mm)
+printer_paper_help	Осы принтердің қағазы мм-мен. Бос Ұзындық — орам: әр чек мазмұнындай ұзын. «Принтерлерді табу» бос қағазды принтер драйверінен толтырады (айта алмаса, 80 мм орам) және бұрыннан орнатылғанды ешқашан өзгертпейді.
+preview_help	Төменде таңдалған принтердің қағазындағы осы чек, сонда басылатындай: принтер жететін жоғарғы сол бұрыштан нақты өлшемде (сұр: жетпейтін шеттер), ұзын чек көбірек парақта, қағаз шетінен асқанның бәрі кесіледі. Принтер таңдау тек алдын ала қарауды өзгертеді; әр принтердің қағазы «Принтерлер» бөлімінде орнатылады.
 job_layout	Орналасу
 job_delivery	Тапсырма қалай жіберіледі
 job_delivery_help	ОЖ құжаты, шикі байт немесе ESC/POS. Шот пен асүй фиші әрқайсысы өзін сақтайды. Кез келген тапсырма Іздеу сақтаған кез келген принтерге бара алады.
@@ -1105,9 +1137,6 @@ remove_these_tables	Осы үстелдерді алып тастау
 table_remove_ph	Алып тастау: T1-T24 немесе бір үстелдің аты
 find_server	Дүкен серверін табу
 bill_format	Шот пішімі
-bill_header_ph	Мекенжай | телефон
-fssai_ph	FSSAI лицензия № (Үндістан)
-bill_footer_ph	Төменгі жазу (мыс. Рақмет, қайта келіңіз)
 reset_bill_format	Әдепкіге қайтару
 bill_format_reset	Шот пішімі әдепкіге қайтарылды
 reset_kot_format	Әдепкіге қайтару
@@ -1146,7 +1175,6 @@ kot_kind_modified	Өзгертілген
 kot_kind_cancelled	Бас тартылған
 kot_style_heading	Өріс өлшемі мен қалыңдығы
 kot_style_title	Тақырып
-kot_style_item_qty	Тауар · Саны
 kot_style_field_pick	Өріс таңдау
 kot_weight_regular	Қалыпты
 kot_weight_bold	Қалың
@@ -1158,8 +1186,8 @@ content_width_bill	Шот мазмұнының ені (mm)
 content_width_kot	KOT мазмұнының ені (mm)
 content_width_ph	Немесе мазмұн енін жазыңыз, 40–210 mm
 content_width_help	Бұл фиш қаншалықты кең басылады. Шот пен KOT әрқайсысы өз енін сақтайды.
-content_width_bill_help	Қонақ шоты қаншалықты кең басылады. Әдепкі 210 mm (бет). 58 mm тар фиш, 80 mm кең фиш, 112 mm 4 дюйм, 210 mm A4 ені. 40 пен 210 арасындағы кез келген мәнді жазыңыз. Асүй фиштерінің ені KOT қойындысында.
-content_width_kot_help	Асүй фиші қаншалықты кең басылады. Әдепкі 80 mm. 58 mm тар фиш, 80 mm кең фиш, 112 mm 4 дюйм, 210 mm бет. 40 пен 210 арасында жазыңыз. Қонақ шоттарының ені Шот қойындысында.
+content_width_bill_help	Қонақ шотының басылатын ені, mm-мен (40–210). Кез келген қағазда осы нақты өлшемде басылады; бұдан тар қағазда басып шығару шетінен асқан бөлігі кесіледі (Қағаз бөлімін қараңыз). Ас үй билеттерінің өз ені KOT қойындысында.
+content_width_kot_help	Ас үй билетінің басылатын ені, mm-мен (40–210). Кез келген қағазда осы нақты өлшемде басылады; бұдан тар қағазда басып шығару шетінен асқан бөлігі кесіледі (Қағаз бөлімін қараңыз). Қонақ шоттарының өз ені Шот қойындысында.
 vp_paper_width	Мазмұн ені (mm)
 vp_paper_width_ph	Немесе мазмұн енін жазыңыз, 40–210 mm
 vp_paper_width_help	Мазмұн ені Шот және KOT пішімінде қойылады — шотқа бөлек (әдепкі 210 mm) және асүй фишіне (әдепкі 80 mm).
@@ -1213,8 +1241,6 @@ schemes_help	BOGO, пайыздық жеңілдік және тіркелген
 scheme_bogo_ph	2 Thali сатып ал, 1 Chaas ал
 add_scheme	BOGO қосу
 schedule_ph	Сағат / бақытты сағат — Дс-Жм 07:00-11:00 немесе HappyHour 17:00-19:00=150
-upi_vpa_ph	UPI идентификаторы (VPA)
-upi_payee_ph	UPI алушы аты (міндетті емес)
 upi_qr	UPI QR
 show_upi_qr	UPI QR көрсету
 close_upi_qr	Жабу
@@ -1295,8 +1321,6 @@ printer_mode_first	Бірінші істегені
 printer_mode_all	Барлығына басу
 kot_show_area	Аймақ
 kot_hide_area	Аймақты жасыру
-kot_show_item_hdr	Тауар · Саны
-kot_hide_item_hdr	Бағандарды жасыру
 kot_show_title	Тақырып жолы
 kot_hide_title	Тақырыпты жасыру
 kot_field_cycle	Келесіні таңдау
@@ -1337,12 +1361,12 @@ private_code_ph	12 таңбалы код
 stamp_on	Мөр: файлда
 pay_qr_on	Төлем QR: файлда
 pay_qr_off	Төлем QR: жоқ
+printers_screen_tip	Іздеу осы құрылғы қолдана алатын принтерлерді көрсетеді және оларды осы дүкен үшін сақтайды. Шот принтерлері: Шот және KOT пішімі → Шот. Ас үй: Ас үй → Ас үй станциялары.
+printers_found_none	Принтер табылмады.
+nav_loading	Жүктелуде…
+kot_copy_from	Көшіру көзі
+kot_copy_from_help	Сол түрдің әр жолының өлшемін, қалыңдығын және туралануын осы түрге көшіреді. Бұл түр өз баннерін, тауар префиксін және сызылуын сақтайды. Сақтау үшін KOT пішімін сақтаңыз.
 items_tmpl_heading	Тауар үлгілері
 items_tmpl_help	Мәзіріңізге арналған тағамдар, санаттар және фотолар. Дүкен баптаулары мен қызметкерлер өзгеріссіз қалады.
 public_tmpl_help	Кез келген адам жүктей алатын бастапқы мәзірлер. Интернет бір рет қажет.
 private_tmpl_help	Khaynjo байланысыңыз берген 12 таңбалы кодпен қорғалған клиент мәзірлері.
-printers_screen_tip	Іздеу осы құрылғы қолдана алатын принтерлерді көрсетеді және оларды осы дүкен үшін сақтайды. Шот принтерлері: Шот және KOT пішімі → Шот. Ас үй: Ас үй → Ас үй станциялары.
-printers_found_none	Принтер табылмады.
-kot_copy_from	Көшіру көзі
-kot_copy_from_help	Сол түрдің әр жолының өлшемін, қалыңдығын және туралануын осы түрге көшіреді. Бұл түр өз баннерін, тауар префиксін және сызылуын сақтайды. Сақтау үшін KOT пішімін сақтаңыз.
-nav_loading	Жүктелуде…

@@ -92,10 +92,6 @@ bill_item_layout	Tqassim tal-oġġetti
 bill_item_layout_columns	Kolonni
 bill_item_layout_stacked	Munzell
 bill_item_header	Intestaturi tal-kolonni
-bill_item_hdr_item	Intestatura tal-oġġett
-bill_item_hdr_qty	Intestatura tal-kwantità
-bill_item_hdr_price	Intestatura tal-prezz
-bill_item_hdr_amount	Intestatura tal-ammont
 bill_item_name	Isem il-platt
 bill_item_qty	Kwantità
 bill_item_price	Prezz
@@ -103,6 +99,20 @@ bill_item_amount	Ammont
 bill_item_note	Nota tal-platt
 bill_item_col_sep	Linji tal-kolonni
 slip_columns	Kolonni
+slip_col_header	Intestatura
+bill_line_logo	Logo
+bill_logo_picture	Stampa
+bill_logo_choose	Agħżel stampa
+bill_logo_remove	Neħħi l-istampa
+bill_logo_none	L-ebda stampa
+bill_logo_unreadable	Mhix stampa li l-app tista' taqra
+bill_logo_width	Wisa' (px)
+bill_logo_height	Għoli (px)
+bill_logo_tones	Griżi
+bill_logo_solid	Sod
+bill_logo_shaded	Bid-dell
+bill_logo_help	Wisa' u għoli f'px. Il-vojt isegwi l-istampa: wieħed vojt iżomm is-sura, it-tnejn vojta jużaw id-daqs tagħha; it-tnejn issettjati jdaħħluha ġewwa, qatt mġebbda. L-ebda stampa: logo muri jżomm l-għoli tiegħu bħala spazju vojt; Aħbi jneħħih.
+bill_logo_tones_help	Sod: kull tikka sewda jew bajda, għal logos ċari. Bid-dell: il-griżi jsiru disinji ta' tikek fini, għal ritratti u dell artab.
 slip_col_width	Wisa’ (mm)
 slip_col_start	Spazju tal-bidu (px)
 slip_col_end	Spazju tat-tmiem (px)
@@ -167,6 +177,21 @@ alerts_help	Kemm jibqgħu l-messaġġi tal-istatus fuq l-iskrin għalik (din id-
 snack_secs_ph	Sekondi (3–60, standard 10)
 snack_secs_save	Salva l-ħin tat-twissija
 snack_secs_saved	Ħin tat-twissija salvat — {n} sekondi
+settings_sec_whatsapp	WhatsApp
+whatsapp_cloud_help	Use your own Meta WhatsApp Cloud API. Create a System User token with whatsapp_business_messaging (temporary dashboard tokens expire). Credentials stay on this Server only — never on extra tills. Accepted means Meta took the request, not that the guest received it.
+whatsapp_phone_id_ph	Phone Number ID
+whatsapp_token_ph	Access Token (leave blank to keep)
+whatsapp_template_ph	Bill template name (optional)
+whatsapp_template_lang_ph	Template language (e.g. en)
+whatsapp_enable	Enable
+whatsapp_disable	Off
+whatsapp_save	Save WhatsApp
+whatsapp_test	Test connection
+whatsapp_disconnect	Disconnect
+whatsapp_send_bill	Send via WhatsApp
+whatsapp_consent	WhatsApp OK
+whatsapp_consent_help	Guest agreed to receive WhatsApp messages. A phone number alone is not consent.
+whatsapp_server_only	Configure WhatsApp on the shop Server device
 settings_sec_backup	Backup u restawr
 settings_sec_diag	Dijanjostiċi
 settings_sec_privacy	Privatezza
@@ -729,6 +754,13 @@ station_vps_dd	Stampaturi għal dan l-istazzjon
 station_vps_dd_n	{n} stampatur(i) · taptap biex tbiddel
 bill_printers_dd	Stampaturi għall-kont
 bill_printers_dd_n	{n} stampatur(i) għall-kont · taptap biex tbiddel
+paper_heading	Karta
+paper_size	{w} × {h} mm
+paper_roll	romblu ta' {w} mm
+paper_not_set	il-karta għadha mhix magħrufa
+paper_length_mm	Tul (mm)
+printer_paper_help	Il-karta ta' din l-istampatur f'mm. Tul vojt huwa romblu: kull riċevuta hija twila daqs il-kontenut tagħha. Sib stampaturi jimla l-karta vojta mis-sewwieq tal-istampatur (romblu ta' 80 mm meta ma jistax jgħid) u qatt ma jbiddel karta diġà ssettjata.
+preview_help	Din ir-riċevuta fuq il-karta tal-istampatur magħżul hawn taħt, kif tistampa hemm: fid-daqs reali mill-kantuniera ta' fuq ix-xellug li jilħaq l-istampatur (griż: truf li ma jilħaqx), riċevuta twila fuq aktar folji, kull ma jaqbeż it-tarf tal-karta jinqata'. L-għażla ta' stampatur tbiddel il-previżjoni biss; il-karta ta' kull stampatur tiġi ssettjata taħt Stampaturi.
 job_layout	Tqassim
 job_delivery	Kif jintbagħat ix-xogħol
 job_delivery_help	Dokument tal-OS, bytes mhux ipproċessati, jew ESC/POS. Il-kont u l-biljett tal-kċina kull wieħed iżomm tagħhom. Kwalunkwe xogħol jista' jmur għand kwalunkwe stampatur Sib li jkun salvat.
@@ -1105,9 +1137,6 @@ remove_these_tables	Neħħi dawn it-mwejjed
 table_remove_ph	Neħħi: T1-T24, jew isem ta' mejda waħda
 find_server	Sib is-server tal-ħanut
 bill_format	Format tal-kont
-bill_header_ph	Indirizz | telefon
-fssai_ph	Liċenzja FSSAI Nru. (Indja)
-bill_footer_ph	Footer (eż. Grazzi, erġa' żur)
 reset_bill_format	Irrisettja għal default
 bill_format_reset	Il-format tal-kont reset għal default
 reset_kot_format	Irrisettja għal default
@@ -1146,7 +1175,6 @@ kot_kind_modified	Modifikat
 kot_kind_cancelled	Ikkanċellat
 kot_style_heading	Daqs u piż tat-tip tal-qasam
 kot_style_title	Titolu
-kot_style_item_qty	Oġġett · Qty
 kot_style_field_pick	Agħżel il-qasam
 kot_weight_regular	Regolari
 kot_weight_bold	Qaħla
@@ -1158,8 +1186,8 @@ content_width_bill	Wisa' tal-kontenut tal-kont (mm)
 content_width_kot	Wisa' tal-kontenut KOT (mm)
 content_width_ph	Jew ittajpja wisa' ta' kontenut, 40–210 mm
 content_width_help	Kemm tistampa din is-slip wiesgħa. Il-kont u l-KOT kull wieħed iżomm il-wisa 'tagħhom.
-content_width_bill_help	Kemm jistampa l-kont tal-mistieden. Default 210 mm (paġna). Żlieq dejjaq ta '58 mm, żlieq ta' 80 mm wiesa ', 112 mm 4 pulzieri, 210 mm A4-wisa'. Ittajpja kwalunkwe valur minn 40 sa 210. Il-biljetti tal-kċina għandhom il-wisa' tagħhom fuq it-tab tal-KOT.
-content_width_kot_help	Kemm jistampa l-biljett tal-kċina. Default 80 mm. Żlieq dejjaq ta '58 mm, żlieq wiesa' ta '80 mm, paġna ta' 112 mm 4 pulzieri, 210 mm. Ittajpja kwalunkwe valur minn 40 sa 210. Il-kontijiet tal-mistednin għandhom il-wisa' tagħhom fit-tab Bill.
+content_width_bill_help	Kemm jiġi stampat wiesa' l-kont tal-klijent, f'mm (40–210). Jiġi stampat f'dan id-daqs veru fuq kwalunkwe karta; fuq karta idjaq, il-parti lil hinn mit-tarf tal-istampar tinqata' (ara Karta). Il-biljetti tal-kċina għandhom il-wisa' tagħhom fit-tab KOT.
+content_width_kot_help	Kemm jiġi stampat wiesa' l-biljett tal-kċina, f'mm (40–210). Jiġi stampat f'dan id-daqs veru fuq kwalunkwe karta; fuq karta idjaq, il-parti lil hinn mit-tarf tal-istampar tinqata' (ara Karta). Il-kontijiet tal-klijenti għandhom il-wisa' tagħhom fit-tab Kont.
 vp_paper_width	Wisa' tal-kontenut (mm)
 vp_paper_width_ph	Jew ittajpja wisa' ta' kontenut, 40–210 mm
 vp_paper_width_help	Il-wisa' tal-kontenut huwa stabbilit taħt il-format Kont u KOT — separatament għall-kont (default 210 mm) u l-biljett tal-kċina (default 80 mm).
@@ -1213,8 +1241,6 @@ schemes_help	BOGO, persentaġġ minn sħiħ, u kombos fissi. Il-kombos jespandu 
 scheme_bogo_ph	Ixtri 2 Thali u ġib 1 Chaas
 add_scheme	Żid BOGO
 schedule_ph	Sigħat / siegħa ferħana — Tnejn-Ġimgħa 07:00-11:00 jew SiegħaFerħana 17:00-19:00=150
-upi_vpa_ph	UPI ID (VPA)
-upi_payee_ph	Isem tal-benefiċjarju UPI (għażli)
 upi_qr	UPI QR
 show_upi_qr	Uri QR tal-UPI
 close_upi_qr	Agħlaq
@@ -1295,8 +1321,6 @@ printer_mode_first	L-ewwel li taħdem
 printer_mode_all	Ippprintja fuq kollox
 kot_show_area	Żona
 kot_hide_area	Aħbi żona
-kot_show_item_hdr	Oġġett · Kwantità
-kot_hide_item_hdr	Aħbi kolonni
 kot_show_title	Linja tat-titlu
 kot_hide_title	Aħbi l-unur
 kot_field_cycle	Agħżel li jmiss
@@ -1337,12 +1361,12 @@ private_code_ph	Kodiċi ta' 12-il ċifra
 stamp_on	Stamp: fil-fajl
 pay_qr_on	QR tal-Pagament: fuq il-fajl
 pay_qr_off	QR tal-Ħlas: xejn
+printers_screen_tip	Fittex juri l-printers li jista' juża dan it-tagħmir u jsalvahom għal dan il-ħanut. Printers tal-kont: Format tal-kont u KOT → Kont. Kċina: Kċina → Stazzjonijiet tal-kċina.
+printers_found_none	Ma nstabu l-ebda printers.
+nav_loading	Qed jitgħabba…
+kot_copy_from	Ikkopja minn
+kot_copy_from_help	Jikkopja d-daqs, il-ħxuna u l-allinjament ta' kull linja minn dak it-tip għal dan. Dan it-tip iżomm il-banner, il-prefiss tal-oġġett u l-ingassar tiegħu. Issejvja l-format KOT biex iżżommu.
 items_tmpl_heading	Mudelli tal-oġġetti
 items_tmpl_help	Platti, kategoriji u ritratti għall-menu tiegħek. Is-settings tal-ħanut u l-persunal jibqgħu kif inhuma.
 public_tmpl_help	Menus tal-bidu li kulħadd jista' jniżżel. Jeħtieġ l-internet darba.
 private_tmpl_help	Menus tal-klijenti msakkra b'kodiċi ta' 12-il ċifra mill-kuntatt Khaynjo tiegħek.
-printers_screen_tip	Fittex juri l-printers li jista' juża dan it-tagħmir u jsalvahom għal dan il-ħanut. Printers tal-kont: Format tal-kont u KOT → Kont. Kċina: Kċina → Stazzjonijiet tal-kċina.
-printers_found_none	Ma nstabu l-ebda printers.
-kot_copy_from	Ikkopja minn
-kot_copy_from_help	Jikkopja d-daqs, il-ħxuna u l-allinjament ta' kull linja minn dak it-tip għal dan. Dan it-tip iżomm il-banner, il-prefiss tal-oġġett u l-ingassar tiegħu. Issejvja l-format KOT biex iżżommu.
-nav_loading	Qed jitgħabba…

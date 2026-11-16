@@ -72,10 +72,6 @@ bill_item_layout	Layout ng item sa menu ng menu
 bill_item_layout_columns	Mga hanay
 bill_item_layout_stacked	Nakasalansan
 bill_item_header	Mga header ng column
-bill_item_hdr_item	Header ng item sa menu ng menu
-bill_item_hdr_qty	Dami ng header
-bill_item_hdr_price	Header ng presyo
-bill_item_hdr_amount	Header ng halaga
 bill_item_name	Pangalan ng gamot
 bill_item_qty	Dami
 bill_item_price	Presyo
@@ -83,6 +79,13 @@ bill_item_amount	Halaga
 bill_item_note	Rx / tala sa pagbebenta
 bill_item_col_sep	Mga panuntunan sa hanay
 slip_col_width	Lapad (mm)
+paper_heading	Papel
+paper_size	{w} × {h} mm
+paper_roll	{w} mm na rolyo
+paper_not_set	hindi pa alam ang papel
+paper_length_mm	Haba (mm)
+printer_paper_help	Ang papel ng printer na ito sa mm. Ang walang lamang Haba ay rolyo: bawat resibo ay kasinghaba ng laman nito. Pinupunan ng Maghanap ng mga printer ang walang lamang papel mula sa driver ng printer (80 mm na rolyo kapag hindi nito masabi) at hindi kailanman binabago ang naitakda na.
+preview_help	Ang resibong ito sa papel ng printer na pinili sa ibaba, gaya ng pagkaka-print doon: tunay na laki mula sa itaas na kaliwang abot ng printer (kulay abo: mga gilid na hindi nito abot), mahabang resibo sa mas maraming pahina, pinuputol ang lampas sa gilid ng papel. Ang pagpili ng printer ay preview lang ang binabago; ang papel ng bawat printer ay itinatakda sa Mga Printer.
 slip_col_start	Espasyo sa simula (px)
 slip_col_end	Espasyo sa dulo (px)
 slip_columns_help	Kasama sa lapad ng bawat column ang espasyo nito sa simula at dulo. Bumabalot ang teksto sa loob ng column nito; ang lumalampas sa lapad ng nilalaman ay napuputol, sa papel at sa preview.
@@ -850,3 +853,4 @@ nav_loading	Naglo-load…
 printer_mode_first	Una na gumagana
 printer_mode_all	I-print sa lahat
 slip_columns	Mga column
+slip_col_header	Header

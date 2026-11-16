@@ -2002,6 +2002,7 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
         }
         self.paint_choice_pair(cx, ids!(bill_print_first), ids!(bill_print_first_on), !bill_all);
         self.paint_choice_pair(cx, ids!(bill_print_all), ids!(bill_print_all_on), bill_all);
+        self.sync_preview_paper_ui(cx);
     }
 
     fn apply_job_drive(&mut self, cx: &mut Cx, landscape: Option<bool>, delivery: Option<&str>) {
@@ -2271,6 +2272,49 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
         }
     }
 
+    /// The Bill preview's printer: the dropdown face is `name · paper` of the
+    /// printer the preview is drawn on, the ℹ says what the preview shows
+    /// (docs/PRINTER.md § Paper and preview). Every saved printer can be
+    /// picked; it changes the preview only. A picture drawn on another paper
+    /// than the face names (the bill's printers changed, Find added one, a
+    /// paper was typed, a driver answered) is drawn again: the two agree.
+    fn sync_preview_paper_ui(&mut self, cx: &mut Cx) {
+        thread_local! {
+            static RESYNC: std::cell::Cell<bool> = const { std::cell::Cell::new(false) };
+        }
+        let (face, tip, now) = {
+            let st = app_state().lock().unwrap();
+            let face = match st.preview_printer() {
+                Some(p) => printer_paper_line(p, |k| st.t(k)),
+                None => format!(
+                    "{} · {}",
+                    st.t("no_printer_assigned"),
+                    st.t("paper_roll")
+                        .replace("{w}", &os_paper::mm_text(print_share::DEFAULT_PAPER_WIDTH_MM))
+                ),
+            };
+            (face, st.t("preview_help"), st.preview_paper())
+        };
+        // A dropdown face is its value only; ComboField draws ˅ / ˄.
+        let btn = self.ui.button(cx, ids!(bill_preview_paper_dd));
+        if btn.text() != face {
+            btn.set_text(cx, &face);
+        }
+        self.ui
+            .widget(cx, ids!(bill_preview_help))
+            .as_info_help()
+            .set_tip(&plain_display_text(&tip));
+        let stale = self
+            .ui
+            .widget(cx, ids!(bill_format_preview))
+            .borrow::<SlipPreview>()
+            .is_some_and(|s| s.shown_paper().is_some_and(|p| *p != now));
+        if stale && !RESYNC.with(|r| r.replace(true)) {
+            self.sync_bill_format_ui(cx);
+            RESYNC.with(|r| r.set(false));
+        }
+    }
+
     fn sync_bill_format_ui(&mut self, cx: &mut Cx) {
         // While a box is being typed, the draft must already hold that text
         // so the picture and a save in the same moment agree.
@@ -2439,11 +2483,13 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
                     continue;
                 };
                 self.ui.view(cx, &[row]).set_visible(cx, true);
-                let (name_key, hdr_key, shown, header) = match col {
-                    print_share::BillItemCol::Name => ("bill_item_name", "bill_item_hdr_item", draft.item_show_name, draft.item_header_item.as_str()),
-                    print_share::BillItemCol::Qty => ("bill_item_qty", "bill_item_hdr_qty", draft.item_show_qty, draft.item_header_qty.as_str()),
-                    print_share::BillItemCol::Price => ("bill_item_price", "bill_item_hdr_price", draft.item_show_price, draft.item_header_price.as_str()),
-                    print_share::BillItemCol::Amount => ("bill_item_amount", "bill_item_hdr_amount", draft.item_show_amount, draft.item_header_amount.as_str()),
+                // The row's title names the column; its header box is just
+                // "Header" — not a second name for the same column.
+                let (name_key, shown, header) = match col {
+                    print_share::BillItemCol::Name => ("bill_item_name", draft.item_show_name, draft.item_header_item.as_str()),
+                    print_share::BillItemCol::Qty => ("bill_item_qty", draft.item_show_qty, draft.item_header_qty.as_str()),
+                    print_share::BillItemCol::Price => ("bill_item_price", draft.item_show_price, draft.item_header_price.as_str()),
+                    print_share::BillItemCol::Amount => ("bill_item_amount", draft.item_show_amount, draft.item_header_amount.as_str()),
                 };
                 self.ui
                     .widget(cx, &[row, id!(col_name)])
@@ -2463,7 +2509,7 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
                 self.ui
                     .view(cx, &[row, id!(col_header_box)])
                     .set_visible(cx, columns && draft.item_show_header);
-                hdr.set_empty_text(cx, s(hdr_key));
+                hdr.set_empty_text(cx, s("slip_col_header"));
                 if !cx.has_key_focus(hdr.area()) {
                     hdr.set_text(cx, header);
                 }
@@ -2620,12 +2666,13 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
             (mm, base.landscape, base)
         };
         let metrics = print_share::metrics_at_content_mm(&base, mm);
+        let paper = app_state().lock().unwrap().preview_paper();
         if let Some(mut slip) = self
             .ui
             .widget(cx, ids!(bill_format_preview))
             .borrow_mut::<SlipPreview>()
         {
-            slip.show_slip(cx, &preview, &metrics, landscape, style.size_em as f32);
+            slip.show_slip_on(cx, &preview, &metrics, landscape, style.size_em as f32, &paper);
         }
         self.ui.view(cx, ids!(bill_format_preview_card)).redraw(cx);
     }

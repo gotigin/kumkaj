@@ -92,10 +92,6 @@ bill_item_layout	آیٹم لے آؤٹ
 bill_item_layout_columns	کالم
 bill_item_layout_stacked	اسٹیک کٔرِتھ
 bill_item_header	کالم ہیڈر
-bill_item_hdr_item	آیٹم ہیڈر
-bill_item_hdr_qty	Qty ہیڈر
-bill_item_hdr_price	پرائس ہیڈر
-bill_item_hdr_amount	رقم ہیڈر
 bill_item_name	ڈِش ناو
 bill_item_qty	تعداد
 bill_item_price	قۭمَت
@@ -103,6 +99,20 @@ bill_item_amount	رقم
 bill_item_note	ڈش نوٹ
 bill_item_col_sep	کالم اصول
 slip_columns	کالَم
+slip_col_header	ہیڈر
+bill_line_logo	لوگو
+bill_logo_picture	تصویر
+bill_logo_choose	تصویر ژارِو
+bill_logo_remove	تصویر کڈِو
+bill_logo_none	کانہہ تصویر نہ
+bill_logo_unreadable	یہ ایپ ہیکہِ نہ یہ تصویر پرٕنِتھ
+bill_logo_width	کھولہٕ (px)
+bill_logo_height	تھوٗد (px)
+bill_logo_tones	سَرمَیی
+bill_logo_solid	ٹھوس
+bill_logo_shaded	سایہٕ دار
+bill_logo_help	کھولہٕ تہٕ تھوٗد px منٛز۔ خٲلی تھاوِو تہٕ تصویرِ مطابق: اکھ خٲلی تہٕ شکل رَوان، دۄنوے خٲلی تہٕ پنُن ناپ؛ دۄنوے بھٲرِو تہٕ اندر سماوان، کُنہِ ساتھ نہ کھینچان۔ تصویر نہ: ہاونہٕ آمُت لوگو تھاوان پنٕنۍ تھوٗد خٲلی جاے ہِنٛز پٲٹھۍ؛ چھپاوُن کڈان۔
+bill_logo_tones_help	ٹھوس: پرٛتھ بِندۍ کالہٕ یا سفید، صاف لوگوہن خٲطرٕ۔ سایہٕ دار: سَرمَیی بنان بارٕکہٕ بِندیَن ہُند نمونہٕ، فوٹوہن تہٕ ہلکہِ سایہٕ خٲطرٕ۔
 slip_col_width	چوڑٲے (mm)
 slip_col_start	شروعاتُک جاے (px)
 slip_col_end	آخرُک جاے (px)
@@ -167,6 +177,21 @@ alerts_help	سٹیٹس میسج کوتاہ کال چھِ تُہندِ خٲطرٕ
 snack_secs_ph	سیکنڈ (3–60، ڈیفالٹ 10)
 snack_secs_save	الرٹ ٹایِم بچٲوِو
 snack_secs_saved	الرٹ ٹایِم محفوظ — {n} سیکنڈ
+settings_sec_whatsapp	WhatsApp
+whatsapp_cloud_help	Use your own Meta WhatsApp Cloud API. Create a System User token with whatsapp_business_messaging (temporary dashboard tokens expire). Credentials stay on this Server only — never on extra tills. Accepted means Meta took the request, not that the guest received it.
+whatsapp_phone_id_ph	Phone Number ID
+whatsapp_token_ph	Access Token (leave blank to keep)
+whatsapp_template_ph	Bill template name (optional)
+whatsapp_template_lang_ph	Template language (e.g. en)
+whatsapp_enable	Enable
+whatsapp_disable	Off
+whatsapp_save	Save WhatsApp
+whatsapp_test	Test connection
+whatsapp_disconnect	Disconnect
+whatsapp_send_bill	Send via WhatsApp
+whatsapp_consent	WhatsApp OK
+whatsapp_consent_help	Guest agreed to receive WhatsApp messages. A phone number alone is not consent.
+whatsapp_server_only	Configure WhatsApp on the shop Server device
 settings_sec_backup	بیک اپ اینڈ ریسٹور کٔرِو
 settings_sec_diag	تشخیصی
 settings_sec_privacy	رازداری
@@ -729,6 +754,13 @@ station_vps_dd	امہ سٹیشنک پرنٹر
 station_vps_dd_n	{n} پرنٹر · بدلاونہٕ خٲطرٕ ٹیپ کٔرِو
 bill_printers_dd	بلہٕ خٲطرٕ پرنٹر
 bill_printers_dd_n	{n} بِلہِ خٲطرٕ پرنٹر · بدلاونہٕ خٲطرٕ ٹیپ کٔرِو
+paper_heading	کاغز
+paper_size	{w} × {h} mm
+paper_roll	{w} mm رول
+paper_not_set	کاغز چھُ نہٕ وُنہِ تام معلوٗم
+paper_length_mm	ڈیگھٕر (mm)
+printer_paper_help	یمہِ پرنٹرُک کاغز mm مَنٛز۔ خٲلی ڈیگھٕر چھُ رول: پرٛتھ پرچہٕ چھُ پننہِ مواد کِس حسابہٕ ڈیگھ۔ پرنٹر ژھانڈِو چھُ خٲلی کاغز پرنٹرٕچہِ ڈرایورٕ پیٹھٕ بَران (وَنِتھ ہیٚکہِ نہٕ تیٚلہِ 80 mm رول) تہٕ گۄڈٕے مقرر کاغز چھُ نہٕ زانٛہہ بدلاوان۔
+preview_help	یہ پرچہٕ بۄنہٕ ژارنہٕ آمت پرنٹرٕچہِ کاغزس پیٹھ، یِتھہٕ پٲٹھۍ تَتہِ چھپان چھُ: پرنٹر یتھ ہیٚرِم کھوٚوُر کۄنس تام واتان چھُ تَتہِ پیٹھٕ اصلی ناپس مَنٛز (سۄرمٕے: کنارٕ یِم نہٕ واتان چھِ)، ڈیگھ پرچہٕ زیادٕ ورقن پیٹھ، کاغزٕکہِ کنارٕ نیبر سورُے چھُ ژٹنہٕ یِوان۔ پرنٹر ژارنہٕ سٟتۍ چھُ صرف پیش منظر بدلان؛ پرٛتھ پرنٹرُک کاغز چھُ پرنٹر مَنٛز مقرر سپدان۔
 job_layout	خاکہ
 job_delivery	نوکری کِتھٕ کٔنۍ چھِ سوزنہٕ یِوان
 job_delivery_help	او ایس ڈاکیومینٹ، را بایٹس، یا ESC/POS۔ بِل تہٕ کچنچ ٹکٹ چھِ پرٮ۪تھ کانٛہہ پنُن پنُن تھاوان۔ کُنہِ تہِ نوکری ہیکہِ کُنہِ تہِ پرنٹرَس پیٹھ گٔژھِتھ یُس فایِنڈَن محفوظ کوٚرمُت چھُ۔
@@ -1105,9 +1137,6 @@ remove_these_tables	یِم ٹیبل ہٹٲوِو
 table_remove_ph	ہٹٲوِو: T1-T24، یا أکِس ٹیبلُک ناو
 find_server	دُکانُک سرور ژھانٛڑِو
 bill_format	بِل فارمیٹ
-bill_header_ph	ایڈریس | فون
-fssai_ph	FSSAI لایسنس نمبر۔ (ہندوستان)
-bill_footer_ph	فوٹر (مثلاً شُکریہ، دُبارٕ وزِٹ)
 reset_bill_format	ڈیفالٹَس کُن کٔرِو ری سیٹ
 bill_format_reset	بِل فارمیٹ کَرنہٕ آمُت ڈیفالٹَس کُن دُبارٕ سیٹ
 reset_kot_format	ڈیفالٹَس کُن کٔرِو ری سیٹ
@@ -1146,7 +1175,6 @@ kot_kind_modified	ترمیم شُدٕ
 kot_kind_cancelled	منسوخ کرنہٕ آمُت
 kot_style_heading	فیلڈُک قٕسم سایِز تہٕ وزن
 kot_style_title	عنوان
-kot_style_item_qty	آئٹم · Qty
 kot_style_field_pick	ژٲرِو فیلڈٕ
 kot_weight_regular	باقٲعدٕ
 kot_weight_bold	بولڈ
@@ -1158,8 +1186,8 @@ content_width_bill	بِلہِ ہُنٛد موادُک کھجر (ملی میٹر)
 content_width_kot	KOT مواد کھجر (ملی میٹر)
 content_width_ph	یا ٹایپ کٔرِو موادُک کھجر، 40–210 ملی میٹر
 content_width_help	یہ پرچی کوتاہ کھوٚل چھاپان۔ بِل تہٕ KOT چھُ پرٮ۪تھ کانٛہہ پنُن پنُن کھجر تھاوان۔
-content_width_bill_help	مہمان بِل کوتاہ وسیع چھُ چھاپان۔ ڈیفالٹ 210 ملی میٹر (صفحہٕ)۔ 58 ملی میٹر نیرو سلپ، 80 ملی میٹر کھُل سلپ، 112 ملی میٹر 4 انچ، 210 ملی میٹر A4 کھُلہٕ۔ 40 پیٹھٕ 210 تام کٔرِو کانٛہہ تہِ ویلیو درٕج۔ کچن ٹکٹن ہُند پنُن کھجر چُھ KOT ٹیبس پیٹھ۔
-content_width_kot_help	کچنچ ٹکٹ کوتاہ وسیع چھاپان۔ ڈیفالٹ 80 ملی میٹر۔ 58 ملی میٹر نیرو سلپ، 80 ملی میٹر کھُلہٕ سلپ، 112 ملی میٹر 4 انچ، 210 ملی میٹر پیج۔ 40 پیٹھٕ 210 تام کٔرِو کانٛہہ تہِ ویلیو درٕج۔ مہمان بِلن ہُند پنُن کھجر چُھ بِل ٹیبس پیٹھ آسان۔
+content_width_bill_help	مہمانُن بِل کوتاہ کھُل چھپان، mm منٛز (40–210)۔ یہِ چھُ کُنہِ تہِ کاغزس پیٹھ یتھی اصلی ناپس منٛز چھپان؛ امہِ کھوتہٕ تنگ کاغزس پیٹھ چھُ چھاپنہٕ کہِ کنارہٕ پتہٕ حصہٕ کٹان (کاغز وُچھِو)۔ وَرِ ٹِکٹن ہُنٛد پنُن کھُلر چھُ KOT ٹیبس پیٹھ۔
+content_width_kot_help	وَرِ ٹِکٹ کوتاہ کھُل چھپان، mm منٛز (40–210)۔ یہِ چھُ کُنہِ تہِ کاغزس پیٹھ یتھی اصلی ناپس منٛز چھپان؛ امہِ کھوتہٕ تنگ کاغزس پیٹھ چھُ چھاپنہٕ کہِ کنارہٕ پتہٕ حصہٕ کٹان (کاغز وُچھِو)۔ مہمانن ہٕندین بِلن ہُنٛد پنُن کھُلر چھُ بِل ٹیبس پیٹھ۔
 vp_paper_width	موادُک چوڑائی (ملی میٹر)
 vp_paper_width_ph	یا ٹایپ کٔرِو موادُک کھجر، 40–210 ملی میٹر
 vp_paper_width_help	کنٹینٹ وڈتھ چُھ سیٹ کرنہٕ آمُت بل & KOT فارمیٹس تحت — الگ الگ بِلہٕ خٲطرٕ (ڈیفالٹ 210 ملی میٹر) تہٕ کچن ٹکٹ (ڈیفالٹ 80 ملی میٹر)۔
@@ -1213,8 +1241,6 @@ schemes_help	BOGO، فیصد آف تہٕ فکسڈ کومبوس۔ کومبوس چ
 scheme_bogo_ph	Buy 2 Thali get 1 Chaas
 add_scheme	BOGO شٲمِل کٔرِو
 schedule_ph	گھنٹہٕ / ہیپی آور — پیر-جمعہ 07:00-11:00 یا HappyHour 17:00-19:00=150
-upi_vpa_ph	UPI ID (VPA)
-upi_payee_ph	UPI payee ناو (اختیاری)
 upi_qr	UPI QR
 show_upi_qr	شو UPI QR
 close_upi_qr	بند کٔرِو
@@ -1295,8 +1321,6 @@ printer_mode_first	گۄڈٕ یُس کٲم کران چھُ
 printer_mode_all	سارنی پیٹھ چھاپ
 kot_show_area	رقبہ
 kot_hide_area	ژوٗرِ ہُنٛد علاقہٕ
-kot_show_item_hdr	آئٹم · Qty
-kot_hide_item_hdr	کالم کٔرِو ہٲوِو
 kot_show_title	ٹایٹل لائن
 kot_hide_title	عنوان چھُ ہٲوِو
 kot_field_cycle	اَمہِ پتہٕ ژٲرِو
@@ -1337,12 +1361,12 @@ private_code_ph	12 ہندسن ہُند کوڈ
 stamp_on	سٹیمپ: فایلہِ پیٹھ
 pay_qr_on	ادٲیگی QR: فایلَس پیٹھ
 pay_qr_off	اَدٲیگی QR: کانٛہہ تہِ
+printers_screen_tip	ژھانڈ ہاوان یِم پرنٹر یہِ ڈیوائس ہیٚکہِ استعمال کٔرِتھ تہٕ یِمن کران محفوظ یتھ دُکانہِ خٲطرٕ۔ بِل پرنٹر: بِل تہٕ KOT فارمیٹ ← بِل۔ رَنہٕ کوٚٹھ: رَنہٕ کوٚٹھ ← رَنہٕ کوٚٹھہِ سٹیشن۔
+printers_found_none	کانٛہہ پرنٹر چھُنہٕ میوٗلمُت۔
+nav_loading	لوڈ گژھان…
+kot_copy_from	یِتھ پٮ۪ٹھۍ کاپی کٔرِو
+kot_copy_from_help	تَتھ قٕسمٕچ ہر لایِنٕچ سایِز، موٹٲے تہٕ ترتیب یِتھ مَنٛز کاپی کران۔ یہِ قٕسم تھاوان پنُن بینر، آیِٹَم سابقہٕ تہٕ کٹ لایِن۔ تھاوٕنہٕ خٲطرٕ KOT فارمیٹ محفوظ کٔرِو۔
 items_tmpl_heading	آیٹم ٹیمپلیٹ
 items_tmpl_help	تُہندِس مینوٗ خٲطرٕ کھینہٕ، زٲژ تہٕ فوٹو۔ دُکانِچ سیٹِنگ تہٕ اسٹاف رَوان یِتھٕے پٲٹھۍ۔
 public_tmpl_help	شروٗعاتی مینوٗ یِم کانٛہہ تہِ ڈاوَن لوڈ ہیٚکہِ کٔرِتھ۔ اکہِ لٹہِ انٹرنیٹ ضروٗری۔
 private_tmpl_help	تُہندِس Khaynjo رابطہٕ پیٚٹھٕ میلٕن وٲلِس 12 ہندسن ہٕندِس کوڈس سٟتؠ محفوٗظ گاہک مینوٗ۔
-printers_screen_tip	ژھانڈ ہاوان یِم پرنٹر یہِ ڈیوائس ہیٚکہِ استعمال کٔرِتھ تہٕ یِمن کران محفوظ یتھ دُکانہِ خٲطرٕ۔ بِل پرنٹر: بِل تہٕ KOT فارمیٹ ← بِل۔ رَنہٕ کوٚٹھ: رَنہٕ کوٚٹھ ← رَنہٕ کوٚٹھہِ سٹیشن۔
-printers_found_none	کانٛہہ پرنٹر چھُنہٕ میوٗلمُت۔
-kot_copy_from	یِتھ پٮ۪ٹھۍ کاپی کٔرِو
-kot_copy_from_help	تَتھ قٕسمٕچ ہر لایِنٕچ سایِز، موٹٲے تہٕ ترتیب یِتھ مَنٛز کاپی کران۔ یہِ قٕسم تھاوان پنُن بینر، آیِٹَم سابقہٕ تہٕ کٹ لایِن۔ تھاوٕنہٕ خٲطرٕ KOT فارمیٹ محفوظ کٔرِو۔
-nav_loading	لوڈ گژھان…

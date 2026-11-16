@@ -92,10 +92,6 @@ bill_item_layout	Imiterere y'ibintu
 bill_item_layout_columns	Inkingi
 bill_item_layout_stacked	Byunze hejuru
 bill_item_header	Imitwe y'inkingi
-bill_item_hdr_item	Umutwe w'ikintu
-bill_item_hdr_qty	Umutwe w'umubare
-bill_item_hdr_price	Umutwe w'igiciro
-bill_item_hdr_amount	Umutwe w'amafaranga
 bill_item_name	Izina ry'ikiryo
 bill_item_qty	Umubare
 bill_item_price	Igiciro
@@ -103,6 +99,20 @@ bill_item_amount	Amafaranga
 bill_item_note	Icyitonderwa cy'ikiryo
 bill_item_col_sep	Imirongo y'inkingi
 slip_columns	Inkingi
+slip_col_header	Umutwe
+bill_line_logo	Ikirango
+bill_logo_picture	Ifoto
+bill_logo_choose	Hitamo ifoto
+bill_logo_remove	Kuraho ifoto
+bill_logo_none	Nta foto
+bill_logo_unreadable	Si ifoto porogaramu ishobora gusoma
+bill_logo_width	Ubugari (px)
+bill_logo_height	Uburebure (px)
+bill_logo_tones	Ibara ry'ivu
+bill_logo_solid	Rikomeye
+bill_logo_shaded	Rifite igicucu
+bill_logo_help	Ubugari n'uburebure muri px. Ubusa bukurikiza ifoto: kimwe kirimo ubusa kigumana imiterere, byombi birimo ubusa bikoresha ingano yayo; byombi byashyizweho biyishyira imbere, ntibikayirambure. Nta foto: ikirango kigaragara kibika uburebure bwacyo nk'umwanya urimo ubusa; Hisha ikivanaho.
+bill_logo_tones_help	Rikomeye: buri kadomo ni umukara cyangwa umweru, ku birango bisobanutse. Rifite igicucu: ibara ry'ivu rihinduka uduce tw'udomo duto, ku mafoto n'igicucu cyoroshye.
 slip_col_width	Ubugari (mm)
 slip_col_start	Umwanya w’intangiriro (px)
 slip_col_end	Umwanya w’iherezo (px)
@@ -167,6 +177,21 @@ alerts_help	Igihe ubutumwa bw'imiterere buguma ku rubuga rwawe (iyi ninjira).
 snack_secs_ph	Amasegonda (3–60, bisanzwe 10)
 snack_secs_save	Bika igihe cy'imenyesha
 snack_secs_saved	Igihe cy'imenyesha cyabitswe — amasegonda {n}
+settings_sec_whatsapp	WhatsApp
+whatsapp_cloud_help	Use your own Meta WhatsApp Cloud API. Create a System User token with whatsapp_business_messaging (temporary dashboard tokens expire). Credentials stay on this Server only — never on extra tills. Accepted means Meta took the request, not that the guest received it.
+whatsapp_phone_id_ph	Phone Number ID
+whatsapp_token_ph	Access Token (leave blank to keep)
+whatsapp_template_ph	Bill template name (optional)
+whatsapp_template_lang_ph	Template language (e.g. en)
+whatsapp_enable	Enable
+whatsapp_disable	Off
+whatsapp_save	Save WhatsApp
+whatsapp_test	Test connection
+whatsapp_disconnect	Disconnect
+whatsapp_send_bill	Send via WhatsApp
+whatsapp_consent	WhatsApp OK
+whatsapp_consent_help	Guest agreed to receive WhatsApp messages. A phone number alone is not consent.
+whatsapp_server_only	Configure WhatsApp on the shop Server device
 settings_sec_backup	Kopi y'inyuma no kugarura
 settings_sec_diag	Isuzuma
 settings_sec_privacy	Ubuzima bwite
@@ -729,6 +754,13 @@ station_vps_dd	Amacapyi ya iyi sitasiyo
 station_vps_dd_n	Amacapyi {n} · kanda uhindure
 bill_printers_dd	Amacapyi y'inyemezabuguzi
 bill_printers_dd_n	Amacapyi {n} y'inyemezabuguzi · kanda uhindure
+paper_heading	Impapuro
+paper_size	{w} × {h} mm
+paper_roll	umuzingo wa {w} mm
+paper_not_set	impapuro ntiramenyekana
+paper_length_mm	Uburebure (mm)
+printer_paper_help	Impapuro z'iyi capyi muri mm. Uburebure butanditse ni umuzingo: buri gapapuro kangana n'ibikarimo. Shaka amacapyi yuzuza impapuro zitanditse ikoresheje porogaramu ya capyi (umuzingo wa 80 mm iyo itabivuga) kandi ntijya ihindura izashyizweho.
+preview_help	Aka gapapuro ku mpapuro za capyi yatoranyijwe hepfo, nk'uko gacapwa aho: mu bunini nyabwo uhereye ku nguni yo hejuru ibumoso capyi igeraho (ibara ry'ivu: impande itageraho), agapapuro karekare ku mpapuro nyinshi, ibirenze inkombe y'urupapuro birakatwa. Gutoranya capyi bihindura igaragaza gusa; impapuro za buri capyi zishyirwaho muri Amacapyi.
 job_layout	Imiterere
 job_delivery	Uko akazi koherezwa
 job_delivery_help	Inyandiko ya sisitemu, bytes zoroheje, cyangwa ESC/POS. Inyemezabuguzi n'itike y'igikoni buri kimwe kigira icyacyo. Akazi aka gashobora kujya kuri mucapyi wese Shaka yabitse.
@@ -1105,9 +1137,6 @@ remove_these_tables	Kuraho aya meza
 table_remove_ph	Kuraho: T1-T24, cyangwa izina ry'imeza imwe
 find_server	Shaka seriveri y'iduka
 bill_format	Imiterere y'inyemezabuguzi
-bill_header_ph	Aderesi | telefone
-fssai_ph	Nomero y'uruhushya rwa FSSAI (India)
-bill_footer_ph	Hasi (urugero Murakoze, mugaruke)
 reset_bill_format	Subiza ku bisanzwe
 bill_format_reset	Imiterere y'inyemezabuguzi yasubijwe ku bisanzwe
 reset_kot_format	Subiza ku bisanzwe
@@ -1146,7 +1175,6 @@ kot_kind_modified	Byahinduwe
 kot_kind_cancelled	Byahagaritswe
 kot_style_heading	Ubunini n'uburemere bw'umurima
 kot_style_title	Umutwe
-kot_style_item_qty	Ikintu · Umubare
 kot_style_field_pick	Hitamo umurima
 kot_weight_regular	Bisanzwe
 kot_weight_bold	By'ingufu
@@ -1158,8 +1186,8 @@ content_width_bill	Ubugari bw'ibirimo by'inyemezabuguzi (mm)
 content_width_kot	Ubugari bw'ibirimo bya KOT (mm)
 content_width_ph	Cyangwa wandike ubugari bw'ibirimo, 40–210 mm
 content_width_help	Ubugari uru rupapuro rucapwa. Inyemezabuguzi na KOT buri kimwe kigira ubugari bwacyo.
-content_width_bill_help	Ubugari inyemezabuguzi y'umushyitsi icapwa. Bisanzwe 210 mm (urupapuro). Urupapuro rugufi 58 mm, urupapuro rugari 80 mm, 112 mm inci 4, 210 mm ubugari bwa A4. Andika igipimo icyo aricyo cyose kuva 40 kugeza 210. Amatiketi y'igikoni afite ubugari bwabyo ku gice cya KOT.
-content_width_kot_help	Ubugari itike y'igikoni icapwa. Bisanzwe 80 mm. Urupapuro rugufi 58 mm, urupapuro rugari 80 mm, 112 mm inci 4, urupapuro 210 mm. Andika igipimo icyo aricyo cyose kuva 40 kugeza 210. Inyemezabuguzi z'abashyitsi zifite ubugari bwazo ku gice cy'Inyemezabuguzi.
+content_width_bill_help	Ubugari inyemezabuguzi y'umushyitsi icapwamo, muri mm (40–210). Icapwa muri ubu bunini nyabwo ku mpapuro izo ari zo zose; ku mpapuro ntoya kurushaho, igice kirenze inkombe yo gucapa kiracibwa (reba Impapuro). Amatike y'igikoni afite ubugari bwayo ku gice cya KOT.
+content_width_kot_help	Ubugari itike y'igikoni icapwamo, muri mm (40–210). Icapwa muri ubu bunini nyabwo ku mpapuro izo ari zo zose; ku mpapuro ntoya kurushaho, igice kirenze inkombe yo gucapa kiracibwa (reba Impapuro). Inyemezabuguzi z'abashyitsi zifite ubugari bwazo ku gice cya Inyemezabuguzi.
 vp_paper_width	Ubugari bw'ibirimo (mm)
 vp_paper_width_ph	Cyangwa wandike ubugari bw'ibirimo, 40–210 mm
 vp_paper_width_help	Ubugari bw'ibirimo bushyirwa munsi y'Imiterere y'inyemezabuguzi na KOT — bitandukanye ku nyemezabuguzi (bisanzwe 210 mm) no ku tike y'igikoni (bisanzwe 80 mm).
@@ -1213,8 +1241,6 @@ schemes_help	BOGO, igabanywa ry'ijanisha, n'ibihuje bifite igiciro. Ibihuje byag
 scheme_bogo_ph	Gura Thali 2 ubone Chaas 1
 add_scheme	Ongeraho BOGO
 schedule_ph	Amasaha / isaha y'ibyishimo — Mon-Fri 07:00-11:00 cyangwa HappyHour 17:00-19:00=150
-upi_vpa_ph	Nomero ya UPI (VPA)
-upi_payee_ph	Izina ry'wakira UPI (bitari ngombwa)
 upi_qr	UPI QR
 show_upi_qr	Erekana UPI QR
 close_upi_qr	Funga
@@ -1295,8 +1321,6 @@ printer_mode_first	Iya mbere ikora
 printer_mode_all	Capa kuri byose
 kot_show_area	Uturere
 kot_hide_area	Hisha uturere
-kot_show_item_hdr	Ikintu · Umubare
-kot_hide_item_hdr	Hisha inkingi
 kot_show_title	Umurongo w'umutwe
 kot_hide_title	Hisha umutwe
 kot_field_cycle	Hitamo ikurikira
@@ -1337,12 +1361,12 @@ private_code_ph	Kode y'imibare 12
 stamp_on	Kashe: iri mu dosiye
 pay_qr_on	QR yo kwishyura: iri mu dosiye
 pay_qr_off	QR yo kwishyura: nta yo
+printers_screen_tip	Shakisha yerekana mucapyi iki gikoresho gishobora gukoresha kandi ikazibika kuri iri duka. Mucapyi za fagitire: Imiterere ya fagitire na KOT → Fagitire. Igikoni: Igikoni → Sitasiyo z'igikoni.
+printers_found_none	Nta mucapyi wabonetse.
+nav_loading	Biriguma gufunguka…
+kot_copy_from	Koporora kuri
+kot_copy_from_help	Ikoporora ingano, ubunini n'itondekanya rya buri murongo kuva kuri ubwo bwoko ijya kuri ubu. Ubu bwoko bugumana banneri yabwo, imbanziriza y'ikintu n'umurongo ukuraho. Bika imiterere ya KOT kugira ngo bigumeho.
 items_tmpl_heading	Inyandikorugero z'ibintu
 items_tmpl_help	Amafunguro, ibyiciro n'amafoto bya menu yawe. Igenamiterere ry'iduka n'abakozi bigumaho uko biri.
 public_tmpl_help	Menu zo gutangiriraho umuntu wese ashobora gukuraho. Bisaba interineti rimwe.
 private_tmpl_help	Menu z'abakiriya zifunzwe na kode y'imibare 12 iturutse ku muntu wawe wa Khaynjo.
-printers_screen_tip	Shakisha yerekana mucapyi iki gikoresho gishobora gukoresha kandi ikazibika kuri iri duka. Mucapyi za fagitire: Imiterere ya fagitire na KOT → Fagitire. Igikoni: Igikoni → Sitasiyo z'igikoni.
-printers_found_none	Nta mucapyi wabonetse.
-kot_copy_from	Koporora kuri
-kot_copy_from_help	Ikoporora ingano, ubunini n'itondekanya rya buri murongo kuva kuri ubwo bwoko ijya kuri ubu. Ubu bwoko bugumana banneri yabwo, imbanziriza y'ikintu n'umurongo ukuraho. Bika imiterere ya KOT kugira ngo bigumeho.
-nav_loading	Biriguma gufunguka…

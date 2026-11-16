@@ -501,6 +501,17 @@ job_size	Betűméret
 job_size_ph	például 18, 20, 26…
 test_receipt_format	Teszt nyugta
 test_label_format	Tesztcímke
+paper_heading	Papír
+paper_size	{w} × {h} mm
+paper_roll	{w} mm-es tekercs
+paper_not_set	a papír még nem ismert
+paper_length_mm	Hossz (mm)
+printer_paper_help	A nyomtató papírja mm-ben. Az üres Hossz tekercset jelent: minden blokk olyan hosszú, mint a tartalma. A Keressen nyomtatókat kitölti az üres papírt a nyomtató illesztőprogramjából (80 mm-es tekercs, ha az nem tudja megmondani), és soha nem módosítja a már beállítottat.
+preview_help	Ez a blokk a lent kiválasztott nyomtató papírján, ahogy ott nyomtatódik: valós méretben attól a bal felső saroktól, ameddig a nyomtató elér (szürke: szélek, ahová nem ér el), a hosszú blokk több lapon, ami túlnyúlik a papír szélén, levágódik. A nyomtató kiválasztása csak az előnézetet módosítja; minden nyomtató papírját a Nyomtatók alatt kell beállítani.
+slip_col_width	Szélesség (mm)
+no_printer_assigned	Nincs nyomtató
+printer_target_default	a számítógép szokásos nyomtatója (üres cím)
+job_preview	Előnézet
 test_receipt_sent	Nyugtaminta elküldve
 test_label_sent	Mintacímke elküldve
 test_print_no_printer	Ehhez a munkához nincs nyomtató – adjon hozzá egyet ehhez a helyhez

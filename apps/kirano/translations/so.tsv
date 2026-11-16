@@ -60,10 +60,6 @@ bill_item_layout	Qaabka alaabta
 bill_item_layout_columns	Tiirar
 bill_item_layout_stacked	Is dul saaran
 bill_item_header	Cinwaannada tiirarka
-bill_item_hdr_item	Cinwaanka alaabta
-bill_item_hdr_qty	Cinwaanka tirada
-bill_item_hdr_price	Cinwaanka qiimaha
-bill_item_hdr_amount	Cinwaanka qaddarka
 bill_item_name	Magaca alaabta
 bill_item_qty	Tirada
 bill_item_price	Qiimaha
@@ -71,6 +67,13 @@ bill_item_amount	Qaddarka
 bill_item_note	Shayga note
 bill_item_col_sep	Khadadka tiirarka
 slip_col_width	Ballac (mm)
+paper_heading	Warqad
+paper_size	{w} × {h} mm
+paper_roll	duub {w} mm ah
+paper_not_set	warqadda weli lama yaqaan
+paper_length_mm	Dherer (mm)
+printer_paper_help	Warqadda daabacahan oo mm ah. Dherer bannaan waa duub: rasiid kastaa wuxuu le'eg yahay waxa ku jira. Raadi daabacayaasha waxay ka buuxisaa warqad bannaan darawalka daabacaha (duub 80 mm ah marka uusan sheegi karin) mana beddesho mid hore loo dejiyay.
+preview_help	Rasiidkan oo saaran warqadda daabacaha hoos laga doortay, sida uu halkaas ugu daabacmo: cabbir dhab ah laga bilaabo geeska bidix ee sare ee daabacuhu gaaro (cawl: geesaha uusan gaarin), rasiid dheer oo warqado badan ah, wax kasta oo dhaafa cidhifka warqadda waa la gooyaa. Dooranka daabace wuxuu beddelaa hordhaca oo keliya; warqadda daabace kasta waxaa lagu dejiyaa Daabacayaasha.
 slip_col_start	Meesha bilowga (px)
 slip_col_end	Meesha dhammaadka (px)
 slip_columns_help	Ballaca tiir kastaa wuxuu ka kooban yahay meeshiisa bilowga iyo dhammaadka. Qoraalku wuxuu ku duubmaa tiirkiisa gudihiisa; wixii dhaafa ballaca waxa ku jira waa la jaraa, warqadda iyo horudhacaba.
@@ -838,3 +841,4 @@ nav_loading	Waa la soo shubayaa…
 printer_mode_first	Kan ugu horreeya ee shaqeeya
 printer_mode_all	Ku daabac dhammaan
 slip_columns	Tiirarrada
+slip_col_header	Cinwaan

@@ -60,10 +60,6 @@ bill_item_layout	ຮູບແບບລາຍການ
 bill_item_layout_columns	ຖັນ
 bill_item_layout_stacked	ຊ້ອນກັນ
 bill_item_header	ສ່ວນຫົວຖັນ
-bill_item_hdr_item	ສ່ວນຫົວລາຍການ
-bill_item_hdr_qty	ສ່ວນຫົວ Qty
-bill_item_hdr_price	ສ່ວນຫົວລາຄາ
-bill_item_hdr_amount	ສ່ວນຫົວຈໍານວນ
 bill_item_name	ຊື່ລາຍການ
 bill_item_qty	ຈຳນວນ
 bill_item_price	ລາຄາ
@@ -71,6 +67,13 @@ bill_item_amount	ຈໍານວນ
 bill_item_note	ບັນທຶກລາຍການ
 bill_item_col_sep	ກົດລະບຽບຖັນ
 slip_col_width	ຄວາມກວ້າງ (mm)
+paper_heading	ເຈ້ຍ
+paper_size	{w} × {h} mm
+paper_roll	ມ້ວນ {w} mm
+paper_not_set	ຍັງບໍ່ຮູ້ເຈ້ຍ
+paper_length_mm	ຄວາມຍາວ (mm)
+printer_paper_help	ເຈ້ຍຂອງເຄື່ອງພິມນີ້ເປັນ mm. ຄວາມຍາວຫວ່າງ ແມ່ນມ້ວນ: ໃບບິນແຕ່ລະໃບຍາວເທົ່າເນື້ອໃນຂອງມັນ. ຊອກຫາເຄື່ອງພິມ ຕື່ມເຈ້ຍທີ່ຫວ່າງຈາກໄດເວີຂອງເຄື່ອງພິມ (ມ້ວນ 80 mm ເມື່ອມັນບອກບໍ່ໄດ້) ແລະ ບໍ່ເຄີຍປ່ຽນເຈ້ຍທີ່ຕັ້ງໄວ້ແລ້ວ.
+preview_help	ໃບບິນນີ້ຢູ່ເທິງເຈ້ຍຂອງເຄື່ອງພິມທີ່ເລືອກຢູ່ລຸ່ມ, ຄືກັບທີ່ພິມອອກຢູ່ບ່ອນນັ້ນ: ຂະໜາດແທ້ຈາກມຸມຊ້າຍເທິງທີ່ເຄື່ອງພິມໄປເຖິງ (ສີເທົາ: ຂອບທີ່ໄປບໍ່ເຖິງ), ໃບບິນຍາວຢູ່ໃນຫຼາຍແຜ່ນ, ສ່ວນທີ່ເກີນຂອບເຈ້ຍຖືກຕັດ. ການເລືອກເຄື່ອງພິມປ່ຽນແຕ່ຕົວຢ່າງ; ເຈ້ຍຂອງແຕ່ລະເຄື່ອງພິມຕັ້ງໄວ້ໃນ ເຄື່ອງພິມ.
 slip_col_start	ຊ່ອງວ່າງຕົ້ນ (px)
 slip_col_end	ຊ່ອງວ່າງທ້າຍ (px)
 slip_columns_help	ຄວາມກວ້າງຂອງແຕ່ລະຖັນລວມທັງຊ່ອງວ່າງຕົ້ນ ແລະ ທ້າຍຂອງມັນ. ຂໍ້ຄວາມຈະຕັດແຖວພາຍໃນຖັນຂອງມັນ; ສ່ວນທີ່ເກີນຄວາມກວ້າງເນື້ອຫາຈະຖືກຕັດອອກ ທັງໃນເຈ້ຍ ແລະ ໃນການເບິ່ງຕົວຢ່າງ.
@@ -838,3 +841,4 @@ nav_loading	ກຳລັງໂຫຼດ…
 printer_mode_first	ທໍາອິດທີ່ເຮັດວຽກ
 printer_mode_all	ພິມທັງໝົດ
 slip_columns	ຖັນ
+slip_col_header	ສ່ວນຫົວ

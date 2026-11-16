@@ -92,10 +92,6 @@ bill_item_layout	Disposició de l'article
 bill_item_layout_columns	Columnes
 bill_item_layout_stacked	Apilat
 bill_item_header	Capçaleres de columna
-bill_item_hdr_item	Capçalera d'article
-bill_item_hdr_qty	Capçalera de qtat
-bill_item_hdr_price	Capçalera de preu
-bill_item_hdr_amount	Capçalera d'import
 bill_item_name	Nom del plat
 bill_item_qty	Qtat
 bill_item_price	Preu
@@ -103,6 +99,20 @@ bill_item_amount	Import
 bill_item_note	Nota del plat
 bill_item_col_sep	Línies de columna
 slip_columns	Columnes
+slip_col_header	Capçalera
+bill_line_logo	Logotip
+bill_logo_picture	Imatge
+bill_logo_choose	Tria una imatge
+bill_logo_remove	Treu la imatge
+bill_logo_none	Cap imatge
+bill_logo_unreadable	No és una imatge que l'aplicació pugui llegir
+bill_logo_width	Amplada (px)
+bill_logo_height	Alçada (px)
+bill_logo_tones	Grisos
+bill_logo_solid	Sòlid
+bill_logo_shaded	Ombrejat
+bill_logo_help	Amplada i alçada en px. El buit segueix la imatge: un buit en manté la forma, tots dos buits fan servir la seva mida; tots dos fixats la fan cabre a dins, mai estirada. Sense imatge: un logotip mostrat conserva l'alçada com a espai en blanc; Amaga el treu.
+bill_logo_tones_help	Sòlid: cada punt negre o blanc, per a logotips nítids. Ombrejat: els grisos esdevenen trames de punts fins, per a fotos i ombres suaus.
 slip_col_width	Amplada (mm)
 slip_col_start	Espai inicial (px)
 slip_col_end	Espai final (px)
@@ -167,6 +177,21 @@ alerts_help	Quant de temps romanen a la pantalla els missatges d'estat per a vó
 snack_secs_ph	Segons (3–60, per defecte 10)
 snack_secs_save	Desa el temps d'avís
 snack_secs_saved	Temps d'avís desat — {n} segons
+settings_sec_whatsapp	WhatsApp
+whatsapp_cloud_help	Use your own Meta WhatsApp Cloud API. Create a System User token with whatsapp_business_messaging (temporary dashboard tokens expire). Credentials stay on this Server only — never on extra tills. Accepted means Meta took the request, not that the guest received it.
+whatsapp_phone_id_ph	Phone Number ID
+whatsapp_token_ph	Access Token (leave blank to keep)
+whatsapp_template_ph	Bill template name (optional)
+whatsapp_template_lang_ph	Template language (e.g. en)
+whatsapp_enable	Enable
+whatsapp_disable	Off
+whatsapp_save	Save WhatsApp
+whatsapp_test	Test connection
+whatsapp_disconnect	Disconnect
+whatsapp_send_bill	Send via WhatsApp
+whatsapp_consent	WhatsApp OK
+whatsapp_consent_help	Guest agreed to receive WhatsApp messages. A phone number alone is not consent.
+whatsapp_server_only	Configure WhatsApp on the shop Server device
 settings_sec_backup	Còpia i restauració
 settings_sec_diag	Diagnòstic
 settings_sec_privacy	Privadesa
@@ -729,6 +754,13 @@ station_vps_dd	Impressores d'aquesta estació
 station_vps_dd_n	{n} impressora(es) · toqueu per canviar
 bill_printers_dd	Impressores del compte
 bill_printers_dd_n	{n} impressora(es) per al compte · toqueu per canviar
+paper_heading	Paper
+paper_size	{w} × {h} mm
+paper_roll	rotlle de {w} mm
+paper_not_set	paper encara desconegut
+paper_length_mm	Llargada (mm)
+printer_paper_help	El paper d'aquesta impressora en mm. Una Llargada buida és un rotlle: cada tiquet és tan llarg com el seu contingut. Troba impressores omple el paper buit amb el del controlador de la impressora (un rotlle de 80 mm si no ho pot dir) i mai no canvia un paper ja definit.
+preview_help	Aquest tiquet sobre el paper de la impressora triada a sota, tal com s'hi imprimeix: a mida real des de la cantonada superior esquerra que la impressora pot assolir (gris: vores que no pot), un tiquet llarg en més fulls, tot el que passa de la vora del paper es retalla. Triar una impressora només canvia la previsualització; el paper de cada impressora es defineix a Impressores.
 job_layout	Disseny
 job_delivery	Com s'envia el treball
 job_delivery_help	Document del SO, bytes en brut o ESC/POS. El compte i el tiquet de cuina en guarden un de propi. Qualsevol treball pot anar a qualsevol impressora que Troba hagi desat.
@@ -1105,9 +1137,6 @@ remove_these_tables	Treu aquestes taules
 table_remove_ph	Treu: T1-T24, o el nom d'una taula
 find_server	Troba el servidor de la botiga
 bill_format	Format del compte
-bill_header_ph	Adreça | telèfon
-fssai_ph	Núm. de llicència FSSAI (Índia)
-bill_footer_ph	Peu (p. ex. Gràcies, torneu)
 reset_bill_format	Torna al valor per defecte
 bill_format_reset	Format del compte tornat al valor per defecte
 reset_kot_format	Torna al valor per defecte
@@ -1146,7 +1175,6 @@ kot_kind_modified	Modificat
 kot_kind_cancelled	Anul·lat
 kot_style_heading	Mida i gruix del camp
 kot_style_title	Títol
-kot_style_item_qty	Article · Qtat
 kot_style_field_pick	Selecciona el camp
 kot_weight_regular	Normal
 kot_weight_bold	Negreta
@@ -1158,8 +1186,8 @@ content_width_bill	Amplada del contingut del compte (mm)
 content_width_kot	Amplada del contingut del KOT (mm)
 content_width_ph	O escriviu una amplada de contingut, 40–210 mm
 content_width_help	Quina amplada té aquest tiquet en imprimir. El compte i el KOT conserven cadascun la seva amplada.
-content_width_bill_help	Quina amplada té el compte del convidat. Per defecte 210 mm (pàgina). 58 mm tiquet estret, 80 mm tiquet ample, 112 mm 4 polzades, 210 mm ample A4. Escriviu qualsevol valor de 40 a 210. Els tiquets de cuina tenen la seva amplada a la pestanya KOT.
-content_width_kot_help	Quina amplada té el tiquet de cuina. Per defecte 80 mm. 58 mm tiquet estret, 80 mm tiquet ample, 112 mm 4 polzades, 210 mm pàgina. Escriviu qualsevol valor de 40 a 210. Els comptes de convidat tenen la seva amplada a la pestanya Compte.
+content_width_bill_help	Quina amplada té el compte del client en imprimir-se, en mm (40–210). S'imprimeix a aquesta mida real en qualsevol paper; en un paper més estret, la part que passa de la vora d'impressió es retalla (vegeu Paper). Els tiquets de cuina tenen la seva amplada a la pestanya KOT.
+content_width_kot_help	Quina amplada té el tiquet de cuina en imprimir-se, en mm (40–210). S'imprimeix a aquesta mida real en qualsevol paper; en un paper més estret, la part que passa de la vora d'impressió es retalla (vegeu Paper). Els comptes dels clients tenen la seva amplada a la pestanya Compte.
 vp_paper_width	Amplada del contingut (mm)
 vp_paper_width_ph	O escriviu una amplada de contingut, 40–210 mm
 vp_paper_width_help	L'amplada del contingut es posa a Format de compte i KOT — a part per al compte (per defecte 210 mm) i per al tiquet de cuina (per defecte 80 mm).
@@ -1213,8 +1241,6 @@ schemes_help	BOGO, percentatge de descompte i combos fixos. Els combos s'expande
 scheme_bogo_ph	Buy 2 Thali get 1 Chaas
 add_scheme	Afegeix BOGO
 schedule_ph	Hores / hora feliç — Mon-Fri 07:00-11:00 o HappyHour 17:00-19:00=150
-upi_vpa_ph	UPI ID (VPA)
-upi_payee_ph	Nom del beneficiari UPI (opcional)
 upi_qr	UPI QR
 show_upi_qr	Mostra el QR UPI
 close_upi_qr	Tanca
@@ -1295,8 +1321,6 @@ printer_mode_first	La primera que funcioni
 printer_mode_all	Imprimeix a totes
 kot_show_area	Zona
 kot_hide_area	Amaga la zona
-kot_show_item_hdr	Article · Qtat
-kot_hide_item_hdr	Amaga les columnes
 kot_show_title	Línia de títol
 kot_hide_title	Amaga el títol
 kot_field_cycle	Selecciona el següent
@@ -1337,12 +1361,12 @@ private_code_ph	Codi de 12 xifres
 stamp_on	Segell: al fitxer
 pay_qr_on	QR de pagament: al fitxer
 pay_qr_off	QR de pagament: cap
+printers_screen_tip	Cerca mostra les impressores que aquest dispositiu pot fer servir i les desa per a aquesta botiga. Impressores de tiquets: Format de tiquet i KOT → Tiquet. Cuina: Cuina → Estacions de cuina.
+printers_found_none	No s'ha trobat cap impressora.
+nav_loading	S'està carregant…
+kot_copy_from	Copia de
+kot_copy_from_help	Copia la mida, el gruix i l'alineació de cada línia d'aquest tipus a aquest. Aquest tipus conserva el seu bàner, el prefix d'article i el ratllat. Desa el format KOT per conservar-ho.
 items_tmpl_heading	Plantilles d'articles
 items_tmpl_help	Plats, categories i fotos per al teu menú. La configuració de la botiga i el personal es mantenen igual.
 public_tmpl_help	Menús inicials que tothom pot baixar. Cal internet una vegada.
 private_tmpl_help	Menús de client protegits amb un codi de 12 dígits del teu contacte de Khaynjo.
-printers_screen_tip	Cerca mostra les impressores que aquest dispositiu pot fer servir i les desa per a aquesta botiga. Impressores de tiquets: Format de tiquet i KOT → Tiquet. Cuina: Cuina → Estacions de cuina.
-printers_found_none	No s'ha trobat cap impressora.
-kot_copy_from	Copia de
-kot_copy_from_help	Copia la mida, el gruix i l'alineació de cada línia d'aquest tipus a aquest. Aquest tipus conserva el seu bàner, el prefix d'article i el ratllat. Desa el format KOT per conservar-ho.
-nav_loading	S'està carregant…

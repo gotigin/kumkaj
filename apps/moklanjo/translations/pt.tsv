@@ -501,6 +501,17 @@ job_size	Tamanho da fonte
 job_size_ph	ex. 18, 20, 26…
 test_receipt_format	Recibo de teste
 test_label_format	Etiqueta de teste
+paper_heading	Papel
+paper_size	{w} × {h} mm
+paper_roll	rolo de {w} mm
+paper_not_set	papel ainda desconhecido
+paper_length_mm	Comprimento (mm)
+printer_paper_help	O papel desta impressora em mm. Um Comprimento vazio é um rolo: cada recibo tem o comprimento do seu conteúdo. Procurar impressoras preenche o papel vazio pelo driver da impressora (um rolo de 80 mm quando ele não sabe dizer) e nunca altera um papel já definido.
+preview_help	Este recibo no papel da impressora escolhida abaixo, tal como é impresso nela: em tamanho real a partir do canto superior esquerdo que a impressora alcança (cinza: margens que não alcança), um recibo longo em mais folhas, tudo além da borda do papel é cortado. Escolher uma impressora só altera a pré-visualização; o papel de cada impressora define-se em Impressoras.
+slip_col_width	Largura (mm)
+no_printer_assigned	Sem impressora
+printer_target_default	impressora padrão
+job_preview	Pré-visualização
 test_receipt_sent	Exemplo de recibo enviado
 test_label_sent	Etiqueta de amostra enviada
 test_print_no_printer	Nenhuma impressora para esse trabalho – adicione uma neste local

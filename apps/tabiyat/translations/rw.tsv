@@ -72,10 +72,6 @@ bill_item_layout	Imiterere y'ibintu
 bill_item_layout_columns	Inkingi
 bill_item_layout_stacked	Byunze hejuru
 bill_item_header	Imitwe y'inkingi
-bill_item_hdr_item	Umutwe w'ikintu
-bill_item_hdr_qty	Umutwe w'umubare
-bill_item_hdr_price	Umutwe w'igiciro
-bill_item_hdr_amount	Umutwe w'amafaranga
 bill_item_name	Izina ry'ubuvuzi
 bill_item_qty	Umubare
 bill_item_price	Igiciro
@@ -83,6 +79,13 @@ bill_item_amount	Amafaranga
 bill_item_note	Inyandiko / kugurisha
 bill_item_col_sep	Imirongo y'inkingi
 slip_col_width	Ubugari (mm)
+paper_heading	Impapuro
+paper_size	{w} × {h} mm
+paper_roll	umuzingo wa {w} mm
+paper_not_set	impapuro ntiramenyekana
+paper_length_mm	Uburebure (mm)
+printer_paper_help	Impapuro z'iyi capyi muri mm. Uburebure butanditse ni umuzingo: buri gapapuro kangana n'ibikarimo. Shaka amacapyi yuzuza impapuro zitanditse ikoresheje porogaramu ya capyi (umuzingo wa 80 mm iyo itabivuga) kandi ntijya ihindura izashyizweho.
+preview_help	Aka gapapuro ku mpapuro za capyi yatoranyijwe hepfo, nk'uko gacapwa aho: mu bunini nyabwo uhereye ku nguni yo hejuru ibumoso capyi igeraho (ibara ry'ivu: impande itageraho), agapapuro karekare ku mpapuro nyinshi, ibirenze inkombe y'urupapuro birakatwa. Gutoranya capyi bihindura igaragaza gusa; impapuro za buri capyi zishyirwaho muri Amacapyi.
 slip_col_start	Umwanya w’intangiriro (px)
 slip_col_end	Umwanya w’iherezo (px)
 slip_columns_help	Ubugari bwa buri nkingi burimo umwanya wayo w’intangiriro n’uw’iherezo. Umwandiko ujya ku murongo mushya imbere mu nkingi yawo; ibirenga ubugari bw’ibirimo bicibwa, ku mpapuro no mu igaragaza.
@@ -850,3 +853,4 @@ nav_loading	Biriguma gufunguka…
 printer_mode_first	Iya mbere ikora
 printer_mode_all	Capa kuri byose
 slip_columns	Inkingi
+slip_col_header	Umutwe

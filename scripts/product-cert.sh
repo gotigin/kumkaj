@@ -858,6 +858,23 @@ MASTER="$REPORT_ROOT/SUMMARY-$STAMP.txt"
   echo
 } >"$MASTER"
 
+# Run one tier; a failed tier sets ok=0. Called as a plain command, never as
+# `run_x || ok=0`: bash ignores `set -e` inside a function called from `||`,
+# `&&` or `if` — even in a subshell that sets it again — so a failed `cargo
+# test` mid-tier went on to the next check and the tier ended in CERT PASS
+# (fast tier, 2026-11-16: a failing --bins test passed the cert). Each tier
+# runs in its own subshell: a tier that turns `set -e` back on and returns 1
+# then ends only that subshell, not the whole cert (tiers set no variables
+# a later tier reads).
+tier() {
+  local rc
+  set +e
+  ( "$@" )
+  rc=$?
+  set -e
+  [[ "$rc" -eq 0 ]] || ok=0
+}
+
 for app in "${APPS[@]}"; do
   OUT="$REPORT_ROOT/$app/$STAMP"
   mkdir -p "$OUT"
@@ -869,31 +886,31 @@ for app in "${APPS[@]}"; do
   log "==== $app ===="
   ok=1
   if [[ "$want_fast" -eq 1 ]]; then
-    run_fast "$app" || ok=0
+    tier run_fast "$app"
   fi
   if [[ "$ok" -eq 1 && "$want_ui" -eq 1 ]]; then
-    run_ui "$app" || ok=0
+    tier run_ui "$app"
   fi
   if [[ "$ok" -eq 1 && "$want_visual" -eq 1 ]]; then
-    run_visual "$app" || ok=0
+    tier run_visual "$app"
   fi
   if [[ "$ok" -eq 1 && "$want_resilience" -eq 1 ]]; then
-    run_resilience "$app" || ok=0
+    tier run_resilience "$app"
   fi
   if [[ "$ok" -eq 1 && "$want_xcomp" -eq 1 ]]; then
-    run_xcomp "$app" || ok=0
+    tier run_xcomp "$app"
   fi
   if [[ "$ok" -eq 1 && "$want_linux" -eq 1 ]]; then
-    run_linux_pkg "$app" || ok=0
+    tier run_linux_pkg "$app"
   fi
   if [[ "$ok" -eq 1 && "$want_android" -eq 1 ]]; then
-    run_android_device "$app" || ok=0
+    tier run_android_device "$app"
   fi
   if [[ "$ok" -eq 1 && "$want_wack" -eq 1 ]]; then
-    run_wack "$app" || ok=0
+    tier run_wack "$app"
   fi
   if [[ "$ok" -eq 1 && "$want_store" -eq 1 ]]; then
-    run_store "$app" || ok=0
+    tier run_store "$app"
   fi
   if [[ "$ok" -eq 1 ]]; then
     echo "APP PASS: $app" | tee -a "$SUMMARY" | tee -a "$MASTER"

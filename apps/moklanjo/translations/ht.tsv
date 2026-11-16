@@ -501,6 +501,17 @@ job_size	Gwosè lèt
 job_size_ph	pa egzanp 18, 20, 26…
 test_receipt_format	resi tès la
 test_label_format	Etikèt tès la
+paper_heading	Papye
+paper_size	{w} × {h} mm
+paper_roll	woulo {w} mm
+paper_not_set	papye a poko konnen
+paper_length_mm	Longè (mm)
+printer_paper_help	Papye enprimant sa a an mm. Yon Longè vid se yon woulo: chak resi gen longè sa li genyen ladan l. Chèche enprimant ranpli papye vid la ak sa chofè enprimant lan di (yon woulo 80 mm lè li pa ka di) epi li pa janm chanje yon papye ki deja mete.
+preview_help	Resi sa a sou papye enprimant ou chwazi anba a, jan li enprime la: gwosè reyèl depi kwen anwo agoch enprimant lan ka rive (gri: bò li pa ka rive), yon resi long sou plis fèy, tout sa ki depase bò papye a koupe. Chwazi yon enprimant chanje sèlman apèsi a; papye chak enprimant mete nan Enprimant.
+slip_col_width	Lajè (mm)
+no_printer_assigned	Pa gen enprimant
+printer_target_default	enprimant abitye òdinatè sa a (adrès vid)
+job_preview	Aperçu
 test_receipt_sent	Egzanp resi voye
 test_label_sent	Egzanp etikèt voye
 test_print_no_printer	Pa gen enprimant pou travay sa a - ajoute youn anba kote sa a

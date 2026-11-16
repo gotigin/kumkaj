@@ -72,10 +72,6 @@ bill_item_layout	Mahsulot joylashuvi
 bill_item_layout_columns	Ustunlar
 bill_item_layout_stacked	Qatorlab
 bill_item_header	Ustun sarlavhalari
-bill_item_hdr_item	Mahsulot sarlavhasi
-bill_item_hdr_qty	Miqdor sarlavhasi
-bill_item_hdr_price	Narx sarlavhasi
-bill_item_hdr_amount	Summa sarlavhasi
 bill_item_name	Tibbiyot nomi
 bill_item_qty	Miqdor
 bill_item_price	Narx
@@ -83,6 +79,13 @@ bill_item_amount	Summa
 bill_item_note	Rx / savdo eslatmasi
 bill_item_col_sep	Ustun chiziqlari
 slip_col_width	Kenglik (mm)
+paper_heading	Qogʻoz
+paper_size	{w} × {h} mm
+paper_roll	{w} mm rulon
+paper_not_set	qogʻoz hali nomaʼlum
+paper_length_mm	Uzunlik (mm)
+printer_paper_help	Bu printerning qogʻozi mm da. Boʻsh Uzunlik — rulon: har bir chek mazmuni qadar uzun. Printerlarni topish boʻsh qogʻozni printer drayveridan toʻldiradi (ayta olmasa, 80 mm rulon) va oldindan belgilanganini hech qachon oʻzgartirmaydi.
+preview_help	Pastda tanlangan printer qogʻozidagi bu chek, u yerda qanday chop etilsa shunday: printer yetadigan yuqori chap burchakdan haqiqiy oʻlchamda (kulrang: yetmaydigan chetlar), uzun chek koʻproq varaqda, qogʻoz chetidan oʻtgan hamma narsa kesiladi. Printer tanlash faqat oldindan koʻrishni oʻzgartiradi; har bir printer qogʻozi Printerlar boʻlimida belgilanadi.
 slip_col_start	Boshlanish oralig‘i (px)
 slip_col_end	Oxirgi oraliq (px)
 slip_columns_help	Har bir ustunning kengligi uning boshlanish va oxirgi oralig‘ini o‘z ichiga oladi. Matn o‘z ustuni ichida qatorga o‘tadi; kontent kengligidan oshgan qism qog‘ozda ham, oldindan ko‘rishda ham kesiladi.
@@ -850,3 +853,4 @@ nav_loading	Yuklanmoqda…
 printer_mode_first	Birinchi ishlagani
 printer_mode_all	Hammasiga chop etish
 slip_columns	Ustunlar
+slip_col_header	Sarlavha

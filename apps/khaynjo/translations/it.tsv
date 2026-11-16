@@ -92,10 +92,6 @@ bill_item_layout	Layout voci
 bill_item_layout_columns	Colonne
 bill_item_layout_stacked	Impilato
 bill_item_header	Intestazioni
-bill_item_hdr_item	Intestazione voce
-bill_item_hdr_qty	Intestazione qtà
-bill_item_hdr_price	Intestazione prezzo
-bill_item_hdr_amount	Intestazione importo
 bill_item_name	Nome
 bill_item_qty	Qtà
 bill_item_price	Prezzo
@@ -103,6 +99,20 @@ bill_item_amount	Importo
 bill_item_note	Nota
 bill_item_col_sep	Righe di colonna
 slip_columns	Colonne
+slip_col_header	Intestazione
+bill_line_logo	Logo
+bill_logo_picture	Immagine
+bill_logo_choose	Scegli immagine
+bill_logo_remove	Rimuovi immagine
+bill_logo_none	Nessuna immagine
+bill_logo_unreadable	Non è un'immagine che l'app sa leggere
+bill_logo_width	Larghezza (px)
+bill_logo_height	Altezza (px)
+bill_logo_tones	Grigi
+bill_logo_solid	Pieno
+bill_logo_shaded	Sfumato
+bill_logo_help	Larghezza e altezza in px. Vuoto segue l'immagine: uno vuoto ne mantiene la forma, entrambi vuoti usano la sua dimensione; entrambi impostati la adattano all'interno, mai deformata. Senza immagine: un logo visibile conserva la sua altezza come spazio vuoto; Nascondi lo rimuove.
+bill_logo_tones_help	Pieno: ogni punto nero o bianco, per loghi netti. Sfumato: i grigi diventano trame di punti fini, per foto e ombreggiature morbide.
 slip_col_width	Larghezza (mm)
 slip_col_start	Spazio iniziale (px)
 slip_col_end	Spazio finale (px)
@@ -167,6 +177,21 @@ alerts_help	Quanto restano sullo schermo i messaggi di stato per te (questo acce
 snack_secs_ph	Secondi (3–60, predefinito 10)
 snack_secs_save	Salva durata avvisi
 snack_secs_saved	Durata avvisi salvata — {n} secondi
+settings_sec_whatsapp	WhatsApp
+whatsapp_cloud_help	Use your own Meta WhatsApp Cloud API. Create a System User token with whatsapp_business_messaging (temporary dashboard tokens expire). Credentials stay on this Server only — never on extra tills. Accepted means Meta took the request, not that the guest received it.
+whatsapp_phone_id_ph	Phone Number ID
+whatsapp_token_ph	Access Token (leave blank to keep)
+whatsapp_template_ph	Bill template name (optional)
+whatsapp_template_lang_ph	Template language (e.g. en)
+whatsapp_enable	Enable
+whatsapp_disable	Off
+whatsapp_save	Save WhatsApp
+whatsapp_test	Test connection
+whatsapp_disconnect	Disconnect
+whatsapp_send_bill	Send via WhatsApp
+whatsapp_consent	WhatsApp OK
+whatsapp_consent_help	Guest agreed to receive WhatsApp messages. A phone number alone is not consent.
+whatsapp_server_only	Configure WhatsApp on the shop Server device
 settings_sec_backup	Backup e ripristino
 settings_sec_diag	Diagnostica
 settings_sec_privacy	Privacy
@@ -729,6 +754,13 @@ station_vps_dd	Stampanti di questa stazione
 station_vps_dd_n	{n} stampante/i · tocca per cambiare
 bill_printers_dd	Stampanti per il conto
 bill_printers_dd_n	{n} stampante/i per il conto · tocca per cambiare
+paper_heading	Carta
+paper_size	{w} × {h} mm
+paper_roll	rotolo da {w} mm
+paper_not_set	carta non ancora nota
+paper_length_mm	Lunghezza (mm)
+printer_paper_help	La carta di questa stampante in mm. Una Lunghezza vuota è un rotolo: ogni scontrino è lungo quanto il suo contenuto. Trova stampanti riempie la carta vuota dal driver della stampante (un rotolo da 80 mm quando non sa dirlo) e non cambia mai una carta già impostata.
+preview_help	Questo scontrino sulla carta della stampante scelta sotto, come vi si stampa: a grandezza reale dall'angolo in alto a sinistra che la stampante raggiunge (grigio: bordi che non raggiunge), uno scontrino lungo su più fogli, tutto oltre il bordo della carta viene tagliato. Scegliere una stampante cambia solo l'anteprima; la carta di ogni stampante si imposta in Stampanti.
 job_layout	Layout
 job_delivery	Come viene inviato il lavoro
 job_delivery_help	Documento OS, byte grezzi o ESC/POS. Il conto e lo scontrino della cucina mantengono ciascuno i propri. Ogni lavoro può essere inviato a qualsiasi stampante trovata da Find.
@@ -1105,9 +1137,6 @@ remove_these_tables	Rimuovi questi tavoli
 table_remove_ph	Rimuovi: T1-T24 o il nome di un tavolo
 find_server	Trova il server del locale
 bill_format	Formato del conto
-bill_header_ph	Indirizzo | telefono
-fssai_ph	N. licenza FSSAI (India)
-bill_footer_ph	Piè di pagina (es. Grazie, a presto)
 reset_bill_format	Ripristina predefinito
 bill_format_reset	Formato conto ripristinato
 reset_kot_format	Ripristina predefinito
@@ -1146,7 +1175,6 @@ kot_kind_modified	Modificato
 kot_kind_cancelled	Annullato
 kot_style_heading	Dimensione e peso del campo
 kot_style_title	Titolo
-kot_style_item_qty	Voce · Qtà
 kot_style_field_pick	Seleziona campo
 kot_weight_regular	Normale
 kot_weight_bold	Grassetto
@@ -1158,8 +1186,8 @@ content_width_bill	Larghezza contenuto fattura (mm)
 content_width_kot	Larghezza contenuto KOT (mm)
 content_width_ph	O digita una larghezza contenuto, 40–210 mm
 content_width_help	Larghezza di stampa di questo scontrino. Fattura e KOT mantengono ciascuna la propria larghezza.
-content_width_bill_help	Larghezza di stampa della fattura del cliente. Predefinito 210 mm (pagina). Scontrino stretto 58 mm, scontrino largo 80 mm, 4 pollici 112 mm, A4 largo 210 mm. Inserisci qualsiasi valore da 40 a 210. I ticket della cucina hanno la propria larghezza nella scheda KOT.
-content_width_kot_help	Larghezza di stampa del ticket della cucina. Predefinito 80 mm. Scontrino stretto 58 mm, scontrino largo 80 mm, 4 pollici 112 mm, pagina 210 mm. Inserisci qualsiasi valore da 40 a 210. Le fatture dei clienti hanno la propria larghezza nella scheda Fattura.
+content_width_bill_help	Quanto è largo il conto del cliente in stampa, in mm (40–210). Si stampa a questa dimensione reale su qualsiasi carta; su carta più stretta, la parte oltre il bordo di stampa viene tagliata (vedi Carta). Le comande di cucina hanno la propria larghezza nella scheda KOT.
+content_width_kot_help	Quanto è larga la comanda di cucina in stampa, in mm (40–210). Si stampa a questa dimensione reale su qualsiasi carta; su carta più stretta, la parte oltre il bordo di stampa viene tagliata (vedi Carta). I conti dei clienti hanno la propria larghezza nella scheda Conto.
 vp_paper_width	Larghezza contenuto (mm)
 vp_paper_width_ph	O digita una larghezza contenuto, 40–210 mm
 vp_paper_width_help	La larghezza contenuto si imposta in Formato conto e KOT. Vale per il conto e lo scontrino cucina.
@@ -1213,8 +1241,6 @@ schemes_help	Compra X ottieni Y — al pagamento. Es. Buy 2 Thali get 1 Chaas
 scheme_bogo_ph	Compra 2 Thali, ricevi 1 Chaas
 add_scheme	Aggiungi BOGO
 schedule_ph	Orari / happy hour — Mon-Fri 07:00-11:00 o HappyHour 17:00-19:00=150
-upi_vpa_ph	UPI ID (VPA)
-upi_payee_ph	Beneficiario UPI (opzionale)
 upi_qr	UPI QR
 show_upi_qr	Mostra QR UPI
 close_upi_qr	Chiudi
@@ -1295,8 +1321,6 @@ printer_mode_first	Prima che funzioni
 printer_mode_all	Stampa su tutti
 kot_show_area	Area
 kot_hide_area	Nascondi area
-kot_show_item_hdr	Voce · Qtà
-kot_hide_item_hdr	Nascondi colonne
 kot_show_title	Riga titolo
 kot_hide_title	Nascondi titolo
 kot_field_cycle	Seleziona successivo
@@ -1337,12 +1361,12 @@ private_code_ph	Codice a 12 cifre
 stamp_on	Timbro: in file
 pay_qr_on	QR di pagamento: in file
 pay_qr_off	QR di pagamento: nessuno
+printers_screen_tip	Cerca elenca le stampanti che questo dispositivo può usare e le salva per questo negozio. Stampanti del conto: Formato conto e KOT → Conto. Cucina: Cucina → Postazioni cucina.
+printers_found_none	Nessuna stampante trovata.
+nav_loading	Caricamento…
+kot_copy_from	Copia da
+kot_copy_from_help	Copia dimensione, spessore e allineamento di ogni riga da quel tipo a questo. Questo tipo mantiene il proprio banner, prefisso articolo e barrato. Salva il formato KOT per conservarlo.
 items_tmpl_heading	Modelli di articoli
 items_tmpl_help	Piatti, categorie e foto per il tuo menu. Impostazioni del negozio e personale restano invariati.
 public_tmpl_help	Menu iniziali che chiunque può scaricare. Serve internet una volta.
 private_tmpl_help	Menu cliente protetti da un codice di 12 cifre del tuo contatto Khaynjo.
-printers_screen_tip	Cerca elenca le stampanti che questo dispositivo può usare e le salva per questo negozio. Stampanti del conto: Formato conto e KOT → Conto. Cucina: Cucina → Postazioni cucina.
-printers_found_none	Nessuna stampante trovata.
-kot_copy_from	Copia da
-kot_copy_from_help	Copia dimensione, spessore e allineamento di ogni riga da quel tipo a questo. Questo tipo mantiene il proprio banner, prefisso articolo e barrato. Salva il formato KOT per conservarlo.
-nav_loading	Caricamento…

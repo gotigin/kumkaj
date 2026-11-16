@@ -72,10 +72,6 @@ bill_item_layout	Artikeluppställning
 bill_item_layout_columns	Kolumner
 bill_item_layout_stacked	Staplad
 bill_item_header	Kolumnrubriker
-bill_item_hdr_item	Artikelrubrik
-bill_item_hdr_qty	Antalsrubrik
-bill_item_hdr_price	Prisrubrik
-bill_item_hdr_amount	Beloppsrubrik
 bill_item_name	Läkemedelsnamn
 bill_item_qty	Antal
 bill_item_price	Pris
@@ -83,6 +79,13 @@ bill_item_amount	Belopp
 bill_item_note	Rx / rea not
 bill_item_col_sep	Kolumnlinjer
 slip_col_width	Bredd (mm)
+paper_heading	Papper
+paper_size	{w} × {h} mm
+paper_roll	{w} mm-rulle
+paper_not_set	papper ännu okänt
+paper_length_mm	Längd (mm)
+printer_paper_help	Den här skrivarens papper i mm. Tom Längd är en rulle: varje kvitto är lika långt som sitt innehåll. Hitta skrivare fyller i tomt papper från skrivarens drivrutin (en 80 mm-rulle när den inte kan säga) och ändrar aldrig ett papper som redan är satt.
+preview_help	Det här kvittot på papperet i skrivaren som valts nedan, så som det skrivs ut där: i verklig storlek från det övre vänstra hörnet skrivaren når (grått: kanter den inte når), ett långt kvitto på fler ark, allt bortom papperskanten skärs av. Att välja skrivare ändrar bara förhandsvisningen; varje skrivares papper ställs in under Skrivare.
 slip_col_start	Startavstånd (px)
 slip_col_end	Slutavstånd (px)
 slip_columns_help	Varje kolumns bredd inkluderar dess start- och slutavstånd. Texten radbryts inom sin kolumn; det som går utanför innehållsbredden klipps bort – på papper och i förhandsvisningen.
@@ -850,3 +853,4 @@ nav_loading	Läser in…
 printer_mode_first	Först fungerar det
 printer_mode_all	Skriv ut på alla
 slip_columns	Kolumner
+slip_col_header	Rubrik

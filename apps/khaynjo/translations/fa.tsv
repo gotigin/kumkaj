@@ -92,10 +92,6 @@ bill_item_layout	چیدمان کالا
 bill_item_layout_columns	ستون‌ها
 bill_item_layout_stacked	روی هم
 bill_item_header	سرستون‌ها
-bill_item_hdr_item	سرستون کالا
-bill_item_hdr_qty	سرستون تعداد
-bill_item_hdr_price	سرستون قیمت
-bill_item_hdr_amount	سرستون مبلغ
 bill_item_name	نام غذا
 bill_item_qty	تعداد
 bill_item_price	قیمت
@@ -103,6 +99,20 @@ bill_item_amount	مبلغ
 bill_item_note	یادداشت غذا
 bill_item_col_sep	خط ستون
 slip_columns	ستون‌ها
+slip_col_header	سرستون
+bill_line_logo	لوگو
+bill_logo_picture	تصویر
+bill_logo_choose	انتخاب تصویر
+bill_logo_remove	حذف تصویر
+bill_logo_none	بدون تصویر
+bill_logo_unreadable	تصویری نیست که این برنامه بتواند بخواند
+bill_logo_width	عرض (px)
+bill_logo_height	ارتفاع (px)
+bill_logo_tones	خاکستری‌ها
+bill_logo_solid	یکدست
+bill_logo_shaded	سایه‌دار
+bill_logo_help	عرض و ارتفاع به px. خالی از تصویر پیروی می‌کند: یکی خالی شکل را نگه می‌دارد، هر دو خالی اندازهٔ خود تصویر را؛ هر دو تعیین‌شده تصویر را درون آن جا می‌دهد، هرگز کشیده نمی‌شود. بدون تصویر: لوگوی نمایش‌داده ارتفاعش را به‌صورت فضای خالی نگه می‌دارد؛ پنهان کردن آن را حذف می‌کند.
+bill_logo_tones_help	یکدست: هر نقطه سیاه یا سفید، برای لوگوهای واضح. سایه‌دار: خاکستری‌ها به الگوی نقطه‌های ریز تبدیل می‌شوند، برای عکس و سایه‌روشن نرم.
 slip_col_width	پهنا (mm)
 slip_col_start	فاصلهٔ آغاز (px)
 slip_col_end	فاصلهٔ پایان (px)
@@ -167,6 +177,21 @@ alerts_help	پیام وضعیت چقدر روی صفحه برای شما بما�
 snack_secs_ph	ثانیه (۳–۶۰، پیش‌فرض ۱۰)
 snack_secs_save	ذخیره زمان هشدار
 snack_secs_saved	زمان هشدار ذخیره شد — {n} ثانیه
+settings_sec_whatsapp	WhatsApp
+whatsapp_cloud_help	Use your own Meta WhatsApp Cloud API. Create a System User token with whatsapp_business_messaging (temporary dashboard tokens expire). Credentials stay on this Server only — never on extra tills. Accepted means Meta took the request, not that the guest received it.
+whatsapp_phone_id_ph	Phone Number ID
+whatsapp_token_ph	Access Token (leave blank to keep)
+whatsapp_template_ph	Bill template name (optional)
+whatsapp_template_lang_ph	Template language (e.g. en)
+whatsapp_enable	Enable
+whatsapp_disable	Off
+whatsapp_save	Save WhatsApp
+whatsapp_test	Test connection
+whatsapp_disconnect	Disconnect
+whatsapp_send_bill	Send via WhatsApp
+whatsapp_consent	WhatsApp OK
+whatsapp_consent_help	Guest agreed to receive WhatsApp messages. A phone number alone is not consent.
+whatsapp_server_only	Configure WhatsApp on the shop Server device
 settings_sec_backup	پشتیبان و بازیابی
 settings_sec_diag	عیب‌یابی
 settings_sec_privacy	حریم خصوصی
@@ -729,6 +754,13 @@ station_vps_dd	چاپگرهای این ایستگاه
 station_vps_dd_n	{n} چاپگر · برای تغییر بزنید
 bill_printers_dd	چاپگرهای صورتحساب
 bill_printers_dd_n	{n} چاپگر برای صورتحساب · برای تغییر بزنید
+paper_heading	کاغذ
+paper_size	{w} × {h} mm
+paper_roll	رول {w} میلی‌متری
+paper_not_set	کاغذ هنوز معلوم نیست
+paper_length_mm	طول (mm)
+printer_paper_help	کاغذ این چاپگر به میلی‌متر. طول خالی یعنی رول: هر رسید به اندازهٔ محتوایش بلند است. «پیدا کردن چاپگرها» کاغذ خالی را از درایور چاپگر پر می‌کند (اگر نتواند بگوید، رول ۸۰ میلی‌متری) و هرگز کاغذی را که از قبل تعیین شده تغییر نمی‌دهد.
+preview_help	این رسید روی کاغذ چاپگری که پایین انتخاب شده، همان‌طور که آنجا چاپ می‌شود: در اندازهٔ واقعی از گوشهٔ بالا چپی که چاپگر به آن می‌رسد (خاکستری: لبه‌هایی که نمی‌رسد)، رسید بلند روی برگه‌های بیشتر، هرچه از لبهٔ کاغذ بگذرد بریده می‌شود. انتخاب چاپگر فقط پیش‌نمایش را تغییر می‌دهد؛ کاغذ هر چاپگر در «چاپگرها» تعیین می‌شود.
 job_layout	چیدمان
 job_delivery	کار چگونه فرستاده می‌شود
 job_delivery_help	سند سیستم، بایت خام، یا ESC/POS. صورتحساب و برگه آشپزخانه هر کدام مال خود را دارند. هر کار می‌تواند به هر چاپگری که پیدا کردن ذخیره کرده برود.
@@ -1105,9 +1137,6 @@ remove_these_tables	برداشتن این میزها
 table_remove_ph	برداشتن: T1-T24، یا نام یک میز
 find_server	پیدا کردن سرور فروشگاه
 bill_format	قالب صورتحساب
-bill_header_ph	نشانی | تلفن
-fssai_ph	شماره پروانه FSSAI (هند)
-bill_footer_ph	پاورقی (مثلاً ممنون، دوباره بیایید)
 reset_bill_format	بازگشت به پیش‌فرض
 bill_format_reset	قالب صورتحساب به پیش‌فرض برگشت
 reset_kot_format	بازگشت به پیش‌فرض
@@ -1146,7 +1175,6 @@ kot_kind_modified	تغییریافته
 kot_kind_cancelled	لغوشده
 kot_style_heading	اندازه و وزن حروف فیلد
 kot_style_title	عنوان
-kot_style_item_qty	کالا · تعداد
 kot_style_field_pick	انتخاب فیلد
 kot_weight_regular	معمولی
 kot_weight_bold	ضخیم
@@ -1158,8 +1186,8 @@ content_width_bill	پهنای محتوای صورتحساب (mm)
 content_width_kot	پهنای محتوای KOT (mm)
 content_width_ph	یا یک پهنای محتوا بنویسید، ۴۰–۲۱۰ mm
 content_width_help	این برگه چقدر پهن چاپ شود. صورتحساب و KOT هر کدام پهنای خود را دارند.
-content_width_bill_help	صورتحساب مهمان چقدر پهن چاپ شود. پیش‌فرض ۲۱۰ mm (صفحه). برگه باریک ۵۸ mm، برگه پهن ۸۰ mm، ۴ اینچ ۱۱۲ mm، پهنای A4 برابر ۲۱۰ mm. هر مقدار از ۴۰ تا ۲۱۰. برگه آشپزخانه پهنای خودش را در زبانه KOT دارد.
-content_width_kot_help	برگه آشپزخانه چقدر پهن چاپ شود. پیش‌فرض ۸۰ mm. برگه باریک ۵۸ mm، برگه پهن ۸۰ mm، ۴ اینچ ۱۱۲ mm، صفحه ۲۱۰ mm. هر مقدار از ۴۰ تا ۲۱۰. صورتحساب مهمان پهنای خودش را در زبانه صورتحساب دارد.
+content_width_bill_help	پهنای چاپ صورت‌حساب مهمان، به mm (40–210). روی هر کاغذی با همین اندازهٔ واقعی چاپ می‌شود؛ روی کاغذ باریک‌تر، بخشی که از لبهٔ چاپ می‌گذرد بریده می‌شود (کاغذ را ببینید). برگه‌های آشپزخانه پهنای خود را در زبانهٔ KOT دارند.
+content_width_kot_help	پهنای چاپ برگهٔ آشپزخانه، به mm (40–210). روی هر کاغذی با همین اندازهٔ واقعی چاپ می‌شود؛ روی کاغذ باریک‌تر، بخشی که از لبهٔ چاپ می‌گذرد بریده می‌شود (کاغذ را ببینید). صورت‌حساب‌های مهمانان پهنای خود را در زبانهٔ صورت‌حساب دارند.
 vp_paper_width	پهنای محتوا (mm)
 vp_paper_width_ph	یا یک پهنای محتوا بنویسید، ۴۰–۲۱۰ mm
 vp_paper_width_help	پهنای محتوا زیر قالب صورتحساب و KOT گذاشته می‌شود — جدا برای صورتحساب (پیش‌فرض ۲۱۰ mm) و برگه آشپزخانه (پیش‌فرض ۸۰ mm).
@@ -1213,8 +1241,6 @@ schemes_help	یکی بخر یکی ببر، درصد تخفیف، و ترکیب �
 scheme_bogo_ph	۲ Thali بخر ۱ Chaas ببر
 add_scheme	افزودن یکی‌بخر
 schedule_ph	ساعت / ساعت شاد — دوش–جمعه ۰۷:۰۰-۱۱:۰۰ یا HappyHour ۱۷:۰۰-۱۹:۰۰=۱۵۰
-upi_vpa_ph	شناسه UPI (VPA)
-upi_payee_ph	نام دریافت‌کننده UPI (اختیاری)
 upi_qr	QR یوپی‌آی
 show_upi_qr	نمایش QR یوپی‌آی
 close_upi_qr	بستن
@@ -1295,8 +1321,6 @@ printer_mode_first	نخستین که کار کند
 printer_mode_all	چاپ روی همه
 kot_show_area	ناحیه
 kot_hide_area	پنهان کردن ناحیه
-kot_show_item_hdr	کالا · تعداد
-kot_hide_item_hdr	پنهان کردن ستون‌ها
 kot_show_title	خط عنوان
 kot_hide_title	پنهان کردن عنوان
 kot_field_cycle	انتخاب بعدی
@@ -1337,12 +1361,12 @@ private_code_ph	کد ۱۲ رقمی
 stamp_on	مهر: در پرونده
 pay_qr_on	QR پرداخت: در پرونده
 pay_qr_off	QR پرداخت: هیچ
+printers_screen_tip	جستجو چاپگرهایی را که این دستگاه می‌تواند استفاده کند نشان می‌دهد و برای این فروشگاه ذخیره می‌کند. چاپگرهای صورت‌حساب: قالب صورت‌حساب و KOT ← صورت‌حساب. آشپزخانه: آشپزخانه ← ایستگاه‌های آشپزخانه.
+printers_found_none	چاپگری پیدا نشد.
+nav_loading	در حال بارگیری…
+kot_copy_from	کپی از
+kot_copy_from_help	اندازه، ضخامت و ترازبندی هر خط را از آن نوع به این نوع کپی می‌کند. این نوع بنر، پیشوند اقلام و خط‌خوردگی خودش را نگه می‌دارد. برای نگه داشتن، قالب KOT را ذخیره کنید.
 items_tmpl_heading	قالب‌های اقلام
 items_tmpl_help	غذاها، دسته‌ها و عکس‌ها برای منوی شما. تنظیمات فروشگاه و کارکنان همان‌طور که هستند می‌مانند.
 public_tmpl_help	منوهای آغازین که همه می‌توانند دانلود کنند. یک بار اینترنت لازم است.
 private_tmpl_help	منوهای مشتری که با کد ۱۲ رقمی از رابط Khaynjo شما قفل شده‌اند.
-printers_screen_tip	جستجو چاپگرهایی را که این دستگاه می‌تواند استفاده کند نشان می‌دهد و برای این فروشگاه ذخیره می‌کند. چاپگرهای صورت‌حساب: قالب صورت‌حساب و KOT ← صورت‌حساب. آشپزخانه: آشپزخانه ← ایستگاه‌های آشپزخانه.
-printers_found_none	چاپگری پیدا نشد.
-kot_copy_from	کپی از
-kot_copy_from_help	اندازه، ضخامت و ترازبندی هر خط را از آن نوع به این نوع کپی می‌کند. این نوع بنر، پیشوند اقلام و خط‌خوردگی خودش را نگه می‌دارد. برای نگه داشتن، قالب KOT را ذخیره کنید.
-nav_loading	در حال بارگیری…

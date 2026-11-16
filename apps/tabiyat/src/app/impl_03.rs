@@ -572,6 +572,78 @@ fn fit_inside_system_bars(&mut self, cx: &mut Cx) {
             .set_visible(cx, false);
     }
 
+    /// Settings → Printers: the saved printers as `name · paper`, the open
+    /// one's Width / Length where it sits (docs/PRINTER.md § Paper and
+    /// preview). Any number of printers; a printer with no paper yet has its
+    /// driver asked (the answer fills it and paints again).
+    fn paint_printer_rows(&mut self, cx: &mut Cx) {
+        let (host, count, open_at, w, l, texts) = {
+            let st = app_state().lock().unwrap();
+            let printers = &st.printer_draft.printers;
+            ask_drivers_for_missing_papers(printers);
+            let open_at = st
+                .printer_paper_open
+                .as_deref()
+                .and_then(|id| printers.iter().position(|p| p.id == id));
+            let paper = open_at.and_then(|i| printers[i].paper());
+            let w = paper.map(|p| os_paper::mm_text(p.width_mm)).unwrap_or_default();
+            let l = paper
+                .filter(|p| !p.is_roll())
+                .map(|p| os_paper::mm_text(p.length_mm))
+                .unwrap_or_default();
+            (
+                st.device_role != DeviceRole::Client,
+                printers.len(),
+                open_at,
+                w,
+                l,
+                [
+                    st.t("paper_heading"),
+                    st.t("printer_paper_help"),
+                    st.t("slip_col_width"),
+                    st.t("paper_length_mm"),
+                ],
+            )
+        };
+        for (id, show) in [
+            (ids!(printers_rows), host && count > 0),
+            (ids!(printers_after_rows), host && open_at.is_some_and(|o| o + 1 < count)),
+        ] {
+            self.ui.widget(cx, id).set_visible(cx, show);
+            self.ui.widget(cx, id).redraw(cx);
+        }
+        let open = host && open_at.is_some();
+        self.ui.view(cx, ids!(printer_paper_editor)).set_visible(cx, open);
+        if open {
+            let [head, help, w_label, l_label] = texts;
+            self.ui
+                .widget(cx, ids!(h_printer_paper))
+                .set_text(cx, &plain_display_text(&head));
+            self.ui
+                .widget(cx, ids!(printer_paper_help))
+                .as_info_help()
+                .set_tip(&plain_display_text(&help));
+            self.ui
+                .widget(cx, ids!(h_printer_paper_w))
+                .set_text(cx, &plain_display_text(&w_label));
+            self.ui
+                .widget(cx, ids!(h_printer_paper_l))
+                .set_text(cx, &plain_display_text(&l_label));
+            for (id, v) in [(ids!(printer_paper_w_input), &w), (ids!(printer_paper_l_input), &l)] {
+                let input = self.ui.text_input(cx, id);
+                // Never under the owner's typing.
+                if !cx.has_key_focus(input.area()) && input.text() != *v {
+                    input.set_text(cx, v);
+                }
+            }
+        }
+        // The list is the rows above; with no printer saved yet its own
+        // empty line stays.
+        self.ui
+            .widget(cx, ids!(printers_pool_label))
+            .set_visible(cx, host && count == 0);
+    }
+
     /// Fill+wrap face (Stack*/SegBtn). Place chips and add-printer buttons are
     /// Fit (ChipBtn / QuietFitBtn). Kitchen on/off and KOT/Standard are
     /// visibility swaps of fixed-label overlays.
@@ -781,7 +853,8 @@ fn fit_inside_system_bars(&mut self, cx: &mut Cx) {
         // One panel title only (`printers_panel_help`) — never a second "Printers".
         self.ui.widget(cx, ids!(printers_find_help)).set_visible(cx, false);
         self.ui.widget(cx, ids!(printers_found_label)).set_visible(cx, host);
-        self.ui.widget(cx, ids!(printers_pool_label)).set_visible(cx, host);
+        // The saved printers with their papers (paint_printer_rows).
+        self.paint_printer_rows(cx);
         self.ui.button(cx, ids!(printer_place_dd)).set_visible(cx, false);
         self.ui.widget(cx, ids!(printers_routes_help)).set_visible(cx, false);
         self.ui.button(cx, ids!(route_clear)).set_visible(cx, false);

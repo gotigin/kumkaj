@@ -19,7 +19,7 @@ mod nav_order_tests {
     /// they may no longer open → their first item (owner, 2026-11-15).
     #[test]
     fn unlock_returns_each_person_to_their_last_item() {
-        let path = std::env::temp_dir().join(format!("kirano-last-nav-{}.sqlite3", new_id()));
+        let path = kumkaj_kirano::test_dirs::run_root().join(format!("kirano-last-nav-{}.sqlite3", new_id()));
         let store = Store::open_path(&path).unwrap();
         let owner = store.list_staff().unwrap().into_iter().next().unwrap();
         let cash_id = store

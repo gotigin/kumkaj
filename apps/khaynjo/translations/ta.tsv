@@ -92,10 +92,6 @@ bill_item_layout	உருப்படி அமைப்பு
 bill_item_layout_columns	நெடுவரிசை
 bill_item_layout_stacked	வரிகள்
 bill_item_header	நெடுவரிசை தலைப்பு
-bill_item_hdr_item	உருப்படி தலைப்பு
-bill_item_hdr_qty	எண்ணிக்கை தலைப்பு
-bill_item_hdr_price	விலை தலைப்பு
-bill_item_hdr_amount	தொகை தலைப்பு
 bill_item_name	உணவுப் பெயர்
 bill_item_qty	எண்ணிக்கை
 bill_item_price	விலை
@@ -103,6 +99,20 @@ bill_item_amount	தொகை
 bill_item_note	குறிப்பு
 bill_item_col_sep	நெடுவரிசை கோடு
 slip_columns	நெடுவரிசைகள்
+slip_col_header	தலைப்பு
+bill_line_logo	சின்னம்
+bill_logo_picture	படம்
+bill_logo_choose	படத்தைத் தேர்க
+bill_logo_remove	படத்தை நீக்கு
+bill_logo_none	படம் இல்லை
+bill_logo_unreadable	இந்த ஆப் படிக்கக்கூடிய படம் அல்ல
+bill_logo_width	அகலம் (px)
+bill_logo_height	உயரம் (px)
+bill_logo_tones	சாம்பல்
+bill_logo_solid	திடம்
+bill_logo_shaded	நிழலுடன்
+bill_logo_help	அகலமும் உயரமும் px-இல். வெறுமையாக விட்டால் படத்தைப் பின்பற்றும்: ஒன்று வெறுமையானால் வடிவம் காக்கப்படும், இரண்டும் வெறுமையானால் அதன் சொந்த அளவு; இரண்டும் தந்தால் உள்ளே பொருத்தும், ஒருபோதும் இழுக்காது. படம் இல்லையெனில்: காட்டப்படும் சின்னம் தன் உயரத்தை வெற்று இடமாக வைக்கும்; மறை அதை நீக்கும்.
+bill_logo_tones_help	திடம்: ஒவ்வொரு புள்ளியும் கருப்பு அல்லது வெள்ளை, தெளிவான சின்னங்களுக்கு. நிழலுடன்: சாம்பல் நுண்ணிய புள்ளி வடிவமாகும், புகைப்படங்கள் மற்றும் மென்மையான நிழலுக்கு.
 slip_col_width	அகலம் (mm)
 slip_col_start	தொடக்க இடம் (px)
 slip_col_end	முடிவு இடம் (px)
@@ -167,6 +177,21 @@ alerts_help	நிலைச் செய்திகள் உங்களுக
 snack_secs_ph	விநாடிகள் (3–60, இயல்பு 10)
 snack_secs_save	அறிவிப்பு நேரத்தைச் சேமி
 snack_secs_saved	அறிவிப்பு நேரம் சேமிக்கப்பட்டது — {n} விநாடிகள்
+settings_sec_whatsapp	WhatsApp
+whatsapp_cloud_help	Use your own Meta WhatsApp Cloud API. Create a System User token with whatsapp_business_messaging (temporary dashboard tokens expire). Credentials stay on this Server only — never on extra tills. Accepted means Meta took the request, not that the guest received it.
+whatsapp_phone_id_ph	Phone Number ID
+whatsapp_token_ph	Access Token (leave blank to keep)
+whatsapp_template_ph	Bill template name (optional)
+whatsapp_template_lang_ph	Template language (e.g. en)
+whatsapp_enable	Enable
+whatsapp_disable	Off
+whatsapp_save	Save WhatsApp
+whatsapp_test	Test connection
+whatsapp_disconnect	Disconnect
+whatsapp_send_bill	Send via WhatsApp
+whatsapp_consent	WhatsApp OK
+whatsapp_consent_help	Guest agreed to receive WhatsApp messages. A phone number alone is not consent.
+whatsapp_server_only	Configure WhatsApp on the shop Server device
 settings_sec_backup	காப்புப்பிரதி & மீட்பு
 settings_sec_diag	கண்டறிதல்
 settings_sec_privacy	தனியுரிமை
@@ -729,6 +754,13 @@ station_vps_dd	இந்த நிலையத்தின் அச்சுப
 station_vps_dd_n	{n} அச்சுப்பொறி · மாற்ற தட்டவும்
 bill_printers_dd	பில் அச்சுப்பொறிகள்
 bill_printers_dd_n	பில்லுக்கு {n} அச்சுப்பொறிகள் · மாற்றத் தட்டவும்
+paper_heading	தாள்
+paper_size	{w} × {h} mm
+paper_roll	{w} mm சுருள்
+paper_not_set	தாள் இன்னும் தெரியவில்லை
+paper_length_mm	நீளம் (mm)
+printer_paper_help	இந்த அச்சுப்பொறியின் தாள் mm இல். வெற்று நீளம் என்பது சுருள்: ஒவ்வொரு சீட்டும் அதன் உள்ளடக்கத்தின் நீளம். அச்சுப்பொறிகளைக் கண்டுபிடி வெற்று தாளை அச்சுப்பொறியின் இயக்கியிலிருந்து நிரப்பும் (சொல்ல முடியாதபோது 80 mm சுருள்), ஏற்கனவே அமைத்ததை ஒருபோதும் மாற்றாது.
+preview_help	கீழே தேர்ந்த அச்சுப்பொறியின் தாளில் இந்தச் சீட்டு, அங்கே அச்சாவது போலவே: அச்சுப்பொறி எட்டும் மேல் இடது மூலையிலிருந்து உண்மை அளவில் (சாம்பல்: எட்டாத ஓரங்கள்), நீண்ட சீட்டு கூடுதல் தாள்களில், தாள் ஓரத்தைத் தாண்டியவை வெட்டப்படும். அச்சுப்பொறியைத் தேர்ந்தால் முன்னோட்டம் மட்டுமே மாறும்; ஒவ்வொரு அச்சுப்பொறியின் தாளும் அச்சுப்பொறிகள் இல் அமைக்கப்படும்.
 job_layout	லேஅவுட்
 job_delivery	வேலை எப்படி அனுப்பப்படுகிறது
 job_delivery_help	OS ஆவணம், மூல பைட்டுகள் அல்லது ESC/POS. பில்லும் சமையலறைச் சீட்டும் தங்களுடையதை வைத்திருக்கும். எந்த வேலையும் தேடு சேமித்த எந்த அச்சுப்பொறிக்கும் செல்லலாம்.
@@ -1105,9 +1137,6 @@ remove_these_tables	இந்த மேசைகளை நீக்கு
 table_remove_ph	நீக்கு: T1-T24, அல்லது ஒரு மேசையின் பெயர்
 find_server	கடையின் சர்வரைக் கண்டுபிடி
 bill_format	பில் வடிவம்
-bill_header_ph	முகவரி | தொலைபேசி
-fssai_ph	FSSAI உரிம எண் (இந்தியா)
-bill_footer_ph	அடிக்குறிப்பு (எ.கா. நன்றி, மீண்டும் வருக)
 reset_bill_format	இயல்புக்கு மீட்டமை
 bill_format_reset	பில் வடிவம் இயல்புக்கு
 reset_kot_format	இயல்புக்கு மீட்டமை
@@ -1146,7 +1175,6 @@ kot_kind_modified	மாற்றப்பட்டது
 kot_kind_cancelled	ரத்து
 kot_style_heading	புல அளவு மற்றும் எடை
 kot_style_title	தலைப்பு
-kot_style_item_qty	உணவு · எண்ணிக்கை
 kot_style_field_pick	புலத்தைத் தேர்வு
 kot_weight_regular	சாதாரண
 kot_weight_bold	தடித்த
@@ -1158,8 +1186,8 @@ content_width_bill	பில் உள்ளடக்க அகலம் (mm)
 content_width_kot	KOT உள்ளடக்க அகலம் (mm)
 content_width_ph	அல்லது உள்ளடக்க அகலம் எழுதுங்கள், 40–210 மிமீ
 content_width_help	இந்தச் சீட்டு எவ்வளவு அகலத்தில் அச்சாகும். பில்லும் KOT-உம் தங்கள் அகலத்தை வைத்திருக்கும்.
-content_width_bill_help	விருந்தினர் பில் எவ்வளவு அகலத்தில் அச்சாகும். இயல்பு 210 mm (பக்கம்). 58 mm குறுகிய சீட்டு, 80 mm அகலச் சீட்டு, 112 mm 4-அங்குலம், 210 mm A4-அகலம். 40 முதல் 210 வரை எந்த மதிப்பையும் தட்டச்சு செய்யவும். சமையலறைச் சீட்டுகளுக்குத் தனி அகலம் KOT தாவலில் உள்ளது.
-content_width_kot_help	சமையலறைச் சீட்டு எவ்வளவு அகலத்தில் அச்சாகும். இயல்பு 80 mm. 58 mm குறுகிய சீட்டு, 80 mm அகலச் சீட்டு, 112 mm 4-அங்குலம், 210 mm பக்கம். 40 முதல் 210 வரை எந்த மதிப்பையும் தட்டச்சு செய்யவும். விருந்தினர் பில்களுக்குத் தனி அகலம் பில் தாவலில் உள்ளது.
+content_width_bill_help	விருந்தினர் பில் எவ்வளவு அகலத்தில் அச்சாகிறது, mm இல் (40–210). எந்தத் தாளிலும் இந்த உண்மையான அளவில் அச்சாகும்; இதைவிடக் குறுகிய தாளில் அச்சு விளிம்புக்கு அப்பாலுள்ள பகுதி வெட்டப்படும் (தாள் பார்க்கவும்). சமையலறைச் சீட்டுகளுக்கு KOT தாவலில் சொந்த அகலம் உள்ளது.
+content_width_kot_help	சமையலறைச் சீட்டு எவ்வளவு அகலத்தில் அச்சாகிறது, mm இல் (40–210). எந்தத் தாளிலும் இந்த உண்மையான அளவில் அச்சாகும்; இதைவிடக் குறுகிய தாளில் அச்சு விளிம்புக்கு அப்பாலுள்ள பகுதி வெட்டப்படும் (தாள் பார்க்கவும்). விருந்தினர் பில்களுக்கு பில் தாவலில் சொந்த அகலம் உள்ளது.
 vp_paper_width	உள்ளடக்க அகலம் (மிமீ)
 vp_paper_width_ph	அல்லது உள்ளடக்க அகலம் எழுதுங்கள், 40–210 மிமீ
 vp_paper_width_help	உள்ளடக்க அகலம் பில் & KOT வடிவத்தில் அமைக்கப்படும். இது பில் மற்றும் சமையலறை டிக்கெட்டிற்கும் பொருந்தும்.
@@ -1213,8 +1241,6 @@ schemes_help	X வாங்கி Y பெறுங்கள் — பில்
 scheme_bogo_ph	Buy 2 Thali get 1 Chaas
 add_scheme	BOGO சேர்
 schedule_ph	நேரம் / ஹேப்பி அவர் — Mon-Fri 07:00-11:00 அல்லது HappyHour 17:00-19:00=150
-upi_vpa_ph	UPI ID (VPA)
-upi_payee_ph	UPI பெறுநர் (விருப்ப)
 upi_qr	UPI QR
 show_upi_qr	UPI QR காட்டு
 close_upi_qr	மூடு
@@ -1295,8 +1321,6 @@ printer_mode_first	முதலில் வேலை செய்வது
 printer_mode_all	அனைத்திலும் அச்சிடு
 kot_show_area	பகுதி
 kot_hide_area	பகுதியை மறை
-kot_show_item_hdr	உணவு · எண்ணிக்கை
-kot_hide_item_hdr	நெடுவரிசைகளை மறை
 kot_show_title	தலைப்பு வரி
 kot_hide_title	தலைப்பை மறை
 kot_field_cycle	அடுத்ததைத் தேர்ந்தெடு
@@ -1337,12 +1361,12 @@ private_code_ph	12 இலக்கக் குறியீடு
 stamp_on	முத்திரை: கோப்பில்
 pay_qr_on	கட்டண QR: கோப்பில்
 pay_qr_off	கட்டண QR: இல்லை
+printers_screen_tip	தேடு இந்த சாதனம் பயன்படுத்தக்கூடிய அச்சுப்பொறிகளைக் காட்டி இந்தக் கடைக்காகச் சேமிக்கிறது. பில் அச்சுப்பொறிகள்: பில் & KOT வடிவம் → பில். சமையலறை: சமையலறை → சமையலறை நிலையங்கள்.
+printers_found_none	அச்சுப்பொறி எதுவும் கிடைக்கவில்லை.
+nav_loading	ஏற்றுகிறது…
+kot_copy_from	இதிலிருந்து நகலெடு
+kot_copy_from_help	அந்த வகையின் ஒவ்வொரு வரியின் அளவு, தடிமன், சீரமைப்பை இதற்கு நகலெடுக்கிறது. இந்த வகை தன் சொந்த பேனர், பொருள் முன்னொட்டு, அடித்தல் கோட்டை வைத்துக்கொள்ளும். வைத்திருக்க KOT வடிவத்தைச் சேமிக்கவும்.
 items_tmpl_heading	உருப்படி வார்ப்புருக்கள்
 items_tmpl_help	உங்கள் மெனுவுக்கான உணவுகள், வகைகள் மற்றும் படங்கள். கடை அமைப்புகளும் ஊழியர்களும் அப்படியே இருக்கும்.
 public_tmpl_help	யார் வேண்டுமானாலும் பதிவிறக்கக்கூடிய தொடக்க மெனுக்கள். ஒருமுறை இணையம் தேவை.
 private_tmpl_help	உங்கள் Khaynjo தொடர்பிடமிருந்து வரும் 12 இலக்க குறியீட்டால் பாதுகாக்கப்பட்ட வாடிக்கையாளர் மெனுக்கள்.
-printers_screen_tip	தேடு இந்த சாதனம் பயன்படுத்தக்கூடிய அச்சுப்பொறிகளைக் காட்டி இந்தக் கடைக்காகச் சேமிக்கிறது. பில் அச்சுப்பொறிகள்: பில் & KOT வடிவம் → பில். சமையலறை: சமையலறை → சமையலறை நிலையங்கள்.
-printers_found_none	அச்சுப்பொறி எதுவும் கிடைக்கவில்லை.
-kot_copy_from	இதிலிருந்து நகலெடு
-kot_copy_from_help	அந்த வகையின் ஒவ்வொரு வரியின் அளவு, தடிமன், சீரமைப்பை இதற்கு நகலெடுக்கிறது. இந்த வகை தன் சொந்த பேனர், பொருள் முன்னொட்டு, அடித்தல் கோட்டை வைத்துக்கொள்ளும். வைத்திருக்க KOT வடிவத்தைச் சேமிக்கவும்.
-nav_loading	ஏற்றுகிறது…

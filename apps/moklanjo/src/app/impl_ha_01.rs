@@ -116,6 +116,24 @@ impl App {
                         .text_input(cx, ids!(credit_add_phone))
                         .set_empty_text(cx, ph);
                 }
+                if field == SuggestField::JobPreviewPaper {
+                    // The preview's printer: changes the preview only — not
+                    // who prints, nothing saved (docs/PRINTER.md § Paper and
+                    // preview).
+                    {
+                        let mut st = app_state().lock().unwrap();
+                        let label = st.printer_route_key == "label";
+                        let rows = preview_paper_rows(&st.printer_draft.printers, None, |k| st.t(k));
+                        if let Some(r) = rows.into_iter().find(|r| r.title == value) {
+                            if label {
+                                st.label_preview_printer = Some(r.printer_id);
+                            } else {
+                                st.receipt_preview_printer = Some(r.printer_id);
+                            }
+                        }
+                    }
+                    self.sync_job_preview(cx);
+                }
                 if field == SuggestField::RouteAddPrinter {
                     // Pick assigns that printer to the focused route (replace).
                     match self.assign_printer_to_focused_route(cx, &value) {

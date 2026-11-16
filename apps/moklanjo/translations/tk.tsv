@@ -501,6 +501,17 @@ job_size	Şriftiň ululygy
 job_size_ph	meselem 18, 20, 26…
 test_receipt_format	Synag kwitansiýasy
 test_label_format	Synag belligi
+paper_heading	Kagyz
+paper_size	{w} × {h} mm
+paper_roll	{w} mm rulon
+paper_not_set	kagyz entek belli däl
+paper_length_mm	Uzynlyk (mm)
+printer_paper_help	Bu printeriň kagyzy mm-de. Boş Uzynlyk rulondyr: her çek mazmuny ýaly uzyn bolýar. Printerleri tapyň boş kagyzy printeriň draýwerinden doldurýar (aýdyp bilmese, 80 mm rulon) we eýýäm bellenen kagyzy hiç haçan üýtgetmeýär.
+preview_help	Aşakda saýlanan printeriň kagyzyndaky bu çek, ol ýerde çap edilişi ýaly: printeriň ýetýän ýokarky çep burçundan hakyky ölçegde (çal: ýetmeýän gyralary), uzyn çek has köp sahypada, kagyzyň gyrasyndan aşýan ähli zat kesilýär. Printer saýlamak diňe deslapky görnüşi üýtgedýär; her printeriň kagyzy Çap edijiler bölüminde bellenýär.
+slip_col_width	Ini (mm)
+no_printer_assigned	Printer ýok
+printer_target_default	bu kompýuteriň adaty printeri (boş salgy)
+job_preview	Öňünden syn
 test_receipt_sent	Iberilen nusga
 test_label_sent	Iberilen nusga belligi
 test_print_no_printer	Bu iş üçin printer ýok - şu ýeriň aşagyna birini goşuň

@@ -113,10 +113,12 @@ enum SuggestField {
     PartyCountry,
     PartyState,
     PartyPincode,
+    /// Settings → Printers: the printer whose paper the job preview is drawn on.
+    JobPreviewPaper,
 }
 
 impl SuggestField {
-    const ALL: [SuggestField; 32] = [
+    const ALL: [SuggestField; 33] = [
         SuggestField::BookingDestination,
         SuggestField::BookingZone,
         SuggestField::BookingCarrier,
@@ -149,6 +151,7 @@ impl SuggestField {
         SuggestField::PartyCountry,
         SuggestField::PartyState,
         SuggestField::PartyPincode,
+        SuggestField::JobPreviewPaper,
     ];
 
     fn key(self) -> &'static str {
@@ -185,6 +188,7 @@ impl SuggestField {
             SuggestField::PartyCountry => "party_country",
             SuggestField::PartyState => "party_state",
             SuggestField::PartyPincode => "party_pincode",
+            SuggestField::JobPreviewPaper => "job_preview_paper",
         }
     }
 
@@ -222,6 +226,7 @@ impl SuggestField {
             SuggestField::PartyCountry => ids!(party_country_input),
             SuggestField::PartyState => ids!(party_state_input),
             SuggestField::PartyPincode => ids!(party_pincode_input),
+            SuggestField::JobPreviewPaper => ids!(job_preview_paper_input),
         }
     }
 
@@ -259,6 +264,18 @@ impl SuggestField {
             SuggestField::PartyCountry => ids!(party_country_suggest),
             SuggestField::PartyState => ids!(party_state_suggest),
             SuggestField::PartyPincode => ids!(party_pincode_suggest),
+            SuggestField::JobPreviewPaper => ids!(job_preview_paper_suggest),
+        }
+    }
+
+    /// The dropdown button that opens and closes this list, for a list a
+    /// button opens rather than a type-in field. A press on it is inside the
+    /// list: it toggles the list itself, so the outside-press rule must not
+    /// close it first and let the button open it again.
+    fn opener(self) -> Option<&'static [LiveId]> {
+        match self {
+            SuggestField::JobPreviewPaper => Some(ids!(job_preview_paper_dd)),
+            _ => None,
         }
     }
 }

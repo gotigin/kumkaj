@@ -1286,7 +1286,7 @@ mod tests {
         }
     }
     fn shop() -> Shop {
-        let path = std::env::temp_dir().join(format!("kirano-ops-{}.sqlite3", new_id()));
+        let path = crate::test_dirs::run_root().join(format!("kirano-ops-{}.sqlite3", new_id()));
         let store = Store::open_path(&path).unwrap();
         let owner = store.list_staff().unwrap().into_iter().next().unwrap();
         Shop { store, path, owner }

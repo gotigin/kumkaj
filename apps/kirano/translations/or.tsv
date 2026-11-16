@@ -60,10 +60,6 @@ bill_item_layout	ଆଇଟମ୍ ଲେଆଉଟ୍
 bill_item_layout_columns	ସ୍ତମ୍ଭ
 bill_item_layout_stacked	ଧାଡ଼ି
 bill_item_header	ସ୍ତମ୍ଭ ଶୀର୍ଷକ
-bill_item_hdr_item	ଆଇଟମ୍ ଶୀର୍ଷକ
-bill_item_hdr_qty	ସଂଖ୍ୟା ଶୀର୍ଷକ
-bill_item_hdr_price	ଦର ଶୀର୍ଷକ
-bill_item_hdr_amount	ରାଶି ଶୀର୍ଷକ
 bill_item_name	ଆଇଟମ୍ ନାମ
 bill_item_qty	ପରିମାଣ
 bill_item_price	ଦର
@@ -71,6 +67,13 @@ bill_item_amount	ରାଶି
 bill_item_note	ଆଇଟମ୍ ଟିପ୍ପଣୀ
 bill_item_col_sep	ସ୍ତମ୍ଭ ରେଖା
 slip_col_width	ପ୍ରସ୍ଥ (mm)
+paper_heading	କାଗଜ
+paper_size	{w} × {h} mm
+paper_roll	{w} mm ରୋଲ
+paper_not_set	କାଗଜ ଏପର୍ଯ୍ୟନ୍ତ ଜଣା ନାହିଁ
+paper_length_mm	ଲମ୍ବ (mm)
+printer_paper_help	ଏହି ପ୍ରିଣ୍ଟରର କାଗଜ mm ରେ। ଖାଲି ଲମ୍ବ ଅର୍ଥ ରୋଲ: ପ୍ରତ୍ୟେକ ସ୍ଲିପ୍ ତାହାର ବିଷୟବସ୍ତୁ ଯେତିକି ଲମ୍ବା। ପ୍ରିଣ୍ଟର ଖୋଜନ୍ତୁ ଖାଲି କାଗଜକୁ ପ୍ରିଣ୍ଟରର ଡ୍ରାଇଭରରୁ ଭରେ (କହିପାରୁନଥିଲେ 80 mm ରୋଲ) ଏବଂ ପୂର୍ବରୁ ସ୍ଥିର କାଗଜକୁ କେବେ ବଦଳାଏ ନାହିଁ।
+preview_help	ତଳେ ବଛାଯାଇଥିବା ପ୍ରିଣ୍ଟରର କାଗଜ ଉପରେ ଏହି ସ୍ଲିପ୍, ସେଠାରେ ଯେପରି ଛପାଯାଏ: ପ୍ରିଣ୍ଟର ପହଞ୍ଚୁଥିବା ଉପର ବାମ କୋଣରୁ ପ୍ରକୃତ ମାପରେ (ଧୂସର: ପହଞ୍ଚୁନଥିବା ଧାର), ଲମ୍ବା ସ୍ଲିପ୍ ଅଧିକ ପୃଷ୍ଠାରେ, କାଗଜ ଧାର ବାହାରର ସବୁ କଟିଯାଏ। ପ୍ରିଣ୍ଟର ବାଛିଲେ କେବଳ ପୂର୍ବାବଲୋକନ ବଦଳେ; ପ୍ରତ୍ୟେକ ପ୍ରିଣ୍ଟରର କାଗଜ ପ୍ରିଣ୍ଟର ରେ ସ୍ଥିର ହୁଏ।
 slip_col_start	ଆରମ୍ଭ ସ୍ଥାନ (px)
 slip_col_end	ଶେଷ ସ୍ଥାନ (px)
 slip_columns_help	ପ୍ରତ୍ୟେକ ସ୍ତମ୍ଭର ପ୍ରସ୍ଥରେ ଏହାର ଆରମ୍ଭ ଓ ଶେଷ ସ୍ଥାନ ଅନ୍ତର୍ଭୁକ୍ତ। ଲେଖା ନିଜ ସ୍ତମ୍ଭ ଭିତରେ ଗୁଡ଼ାଇ ହୁଏ; ବିଷୟବସ୍ତୁର ପ୍ରସ୍ଥ ବାହାରେ ଥିବା ଅଂଶ କାଗଜରେ ଓ ପୂର୍ବାବଲୋକନରେ କଟିଯାଏ।
@@ -838,3 +841,4 @@ nav_loading	ଲୋଡ୍ ହେଉଛି…
 printer_mode_first	ଯାହା ପ୍ରଥମେ ଚାଲେ
 printer_mode_all	ସବୁଥିରେ ଛାପନ୍ତୁ
 slip_columns	ସ୍ତମ୍ଭଗୁଡ଼ିକ
+slip_col_header	ଶୀର୍ଷକ

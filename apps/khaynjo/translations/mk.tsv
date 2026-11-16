@@ -92,10 +92,6 @@ bill_item_layout	Распоред на ставки од менито
 bill_item_layout_columns	Колони
 bill_item_layout_stacked	Наредени
 bill_item_header	Заглавија на колони
-bill_item_hdr_item	Заглавие на ставката од менито
-bill_item_hdr_qty	Количина заглавие
-bill_item_hdr_price	Цена заглавие
-bill_item_hdr_amount	Заглавие на износот
 bill_item_name	Име на садот
 bill_item_qty	Количина
 bill_item_price	Цена
@@ -103,6 +99,20 @@ bill_item_amount	Износ
 bill_item_note	Забелешка за јадење
 bill_item_col_sep	Правила за колони
 slip_columns	Колони
+slip_col_header	Заглавие
+bill_line_logo	Лого
+bill_logo_picture	Слика
+bill_logo_choose	Избери слика
+bill_logo_remove	Отстрани ја сликата
+bill_logo_none	Нема слика
+bill_logo_unreadable	Не е слика што апликацијата може да ја прочита
+bill_logo_width	Ширина (px)
+bill_logo_height	Висина (px)
+bill_logo_tones	Сиви тонови
+bill_logo_solid	Полно
+bill_logo_shaded	Засенчено
+bill_logo_help	Ширина и висина во px. Празното ја следи сликата: едно празно ја чува формата, двете празни ја користат нејзината големина; двете зададени ја сместуваат внатре, никогаш растегната. Без слика: прикажаното лого ја чува својата висина како празен простор; Скриј го отстранува.
+bill_logo_tones_help	Полно: секоја точка црна или бела, за остри логоа. Засенчено: сивото станува фин шаблон од точки, за фотографии и меки сенки.
 slip_col_width	Ширина (mm)
 slip_col_start	Почетно растојание (px)
 slip_col_end	Крајно растојание (px)
@@ -167,6 +177,21 @@ alerts_help	Колку долго пораките за статус остан�
 snack_secs_ph	Секунди (3–60, стандардно 10)
 snack_secs_save	Заштедете време за предупредување
 snack_secs_saved	Зачувано време на предупредување — {n} секунди
+settings_sec_whatsapp	WhatsApp
+whatsapp_cloud_help	Use your own Meta WhatsApp Cloud API. Create a System User token with whatsapp_business_messaging (temporary dashboard tokens expire). Credentials stay on this Server only — never on extra tills. Accepted means Meta took the request, not that the guest received it.
+whatsapp_phone_id_ph	Phone Number ID
+whatsapp_token_ph	Access Token (leave blank to keep)
+whatsapp_template_ph	Bill template name (optional)
+whatsapp_template_lang_ph	Template language (e.g. en)
+whatsapp_enable	Enable
+whatsapp_disable	Off
+whatsapp_save	Save WhatsApp
+whatsapp_test	Test connection
+whatsapp_disconnect	Disconnect
+whatsapp_send_bill	Send via WhatsApp
+whatsapp_consent	WhatsApp OK
+whatsapp_consent_help	Guest agreed to receive WhatsApp messages. A phone number alone is not consent.
+whatsapp_server_only	Configure WhatsApp on the shop Server device
 settings_sec_backup	Бекап и обновување
 settings_sec_diag	Дијагностика
 settings_sec_privacy	Приватност
@@ -729,6 +754,13 @@ station_vps_dd	Принтери за оваа станица
 station_vps_dd_n	{n} печатачи · допрете за промена
 bill_printers_dd	Принтери за сметката за гости
 bill_printers_dd_n	{n} печатачи за сметката за гости · допрете за промена
+paper_heading	Хартија
+paper_size	{w} × {h} mm
+paper_roll	ролна од {w} mm
+paper_not_set	хартијата сè уште не е позната
+paper_length_mm	Должина (mm)
+printer_paper_help	Хартијата на овој печатач во mm. Празна Должина значи ролна: секоја сметка е долга колку нејзината содржина. „Најдете печатачи“ ја пополнува празната хартија од двигателот на печатачот (ролна од 80 mm кога не може да каже) и никогаш не ја менува веќе поставената.
+preview_help	Оваа сметка на хартијата на печатачот избран подолу, како што се печати таму: во вистинска големина од горниот лев агол до кој печатачот допира (сиво: рабови до кои не допира), долга сметка на повеќе листови, сè преку работ на хартијата се отсекува. Изборот на печатач го менува само прегледот; хартијата на секој печатач се поставува во „Принтери“.
 job_layout	Распоред
 job_delivery	Како се испраќа работата
 job_delivery_help	ОС документ, необработени бајти или ESC/POS. Сметката за гости и картата за кујна си ја чуваат секоја своја. Секоја задача може да оди на кој било печатач што го зачувал Find.
@@ -1105,9 +1137,6 @@ remove_these_tables	Отстранете ги овие трпезариски м
 table_remove_ph	Отстрани: T1-T24, или име на една трпезариска маса
 find_server	Најдете го серверот на продавницата
 bill_format	Формат на сметка за гости за гости
-bill_header_ph	Адреса | телефон
-fssai_ph	FSSAI лиценца бр. (Индија)
-bill_footer_ph	Подножје (на пр. Ви благодариме, посетете повторно)
 reset_bill_format	Ресетирање на стандардно
 bill_format_reset	Форматот на сметката за гостите е ресетиран на стандардно
 reset_kot_format	Ресетирање на стандардно
@@ -1146,7 +1175,6 @@ kot_kind_modified	Изменето
 kot_kind_cancelled	Откажано
 kot_style_heading	Големина и тежина на типот на поле
 kot_style_title	Наслов
-kot_style_item_qty	Ставка од менито · Кол
 kot_style_field_pick	Изберете поле
 kot_weight_regular	Редовни
 kot_weight_bold	Задебелен
@@ -1158,8 +1186,8 @@ content_width_bill	Ширина на содржината на сметката 
 content_width_kot	KOT ширина на содржината (мм)
 content_width_ph	Или напишете ширина на содржината, 40–210 mm
 content_width_help	Колку широки отпечатоците на овој ливче. Сметката за гости и KOT секој има своја ширина.
-content_width_bill_help	Колку широк печати сметката за гости. Стандардна 210 mm (страница). 58 mm тесно лизгање, 80 mm широко лизгање, 112 mm 4 инчи, 210 mm А4 широко. Внесете која било вредност од 40 до 210. Билетите за кујна имаат своја ширина на картичката KOT.
-content_width_kot_help	Колку широк печати билетот во кујната. Стандардно 80 mm. 58 mm тесно лизгање, 80 mm широко лизгање, 112 mm 4-инчи, 210 mm страница. Внесете која било вредност од 40 до 210. Сметките на гостите имаат своја ширина на картичката Гостински сметки.
+content_width_bill_help	Колку широко се печати сметката на гостинот, во mm (40–210). Се печати во оваа вистинска големина на која било хартија; на потесна хартија делот зад работ за печатење се сече (види Хартија). Кујнските листови имаат своја ширина во табот KOT.
+content_width_kot_help	Колку широко се печати кујнскиот лист, во mm (40–210). Се печати во оваа вистинска големина на која било хартија; на потесна хартија делот зад работ за печатење се сече (види Хартија). Сметките на гостите имаат своја ширина во табот Сметка.
 vp_paper_width	Ширина на содржината (мм)
 vp_paper_width_ph	Или напишете ширина на содржината, 40–210 mm
 vp_paper_width_help	Ширината на содржината е поставена во формат за гостински сметки и KOT — одделно за сметката за гости (стандардно 210 mm) и билетот за кујна (стандарден 80 mm).
@@ -1213,8 +1241,6 @@ schemes_help	BOGO, процентуално исклучување и фиксн
 scheme_bogo_ph	Buy 2 Thali get 1 Chaas
 add_scheme	Додај BOGO
 schedule_ph	Часови / среќен час — Mon-Fri 07:00-11:00 или HappyHour 17:00-19:00=150
-upi_vpa_ph	UPI ID (VPA)
-upi_payee_ph	UPI име на примач (изборно)
 upi_qr	UPI QR
 show_upi_qr	Прикажи UPI QR
 close_upi_qr	Затвори
@@ -1295,8 +1321,6 @@ printer_mode_first	Прво тоа функционира
 printer_mode_all	Печатете на сите
 kot_show_area	Површина
 kot_hide_area	Скриј област
-kot_show_item_hdr	Ставка од менито · Кол
-kot_hide_item_hdr	Скриј колони
 kot_show_title	Насловната линија
 kot_hide_title	Сокриј наслов
 kot_field_cycle	Изберете следно
@@ -1337,12 +1361,12 @@ private_code_ph	12-цифрен код
 stamp_on	Печат: на датотека
 pay_qr_on	QR за плаќање: во датотека
 pay_qr_off	QR за плаќање: нема
+printers_screen_tip	Пребарај ги прикажува печатачите што овој уред може да ги користи и ги зачувува за оваа продавница. Печатачи за сметки: Формат на сметка и KOT → Сметка. Кујна: Кујна → Кујнски станици.
+printers_found_none	Не се пронајдени печатачи.
+nav_loading	Се вчитува…
+kot_copy_from	Копирај од
+kot_copy_from_help	Ги копира големината, дебелината и порамнувањето на секој ред од тој вид во овој. Овој вид го задржува својот банер, префикс на ставка и прецртување. Зачувајте го форматот KOT за да го задржите.
 items_tmpl_heading	Шаблони за артикли
 items_tmpl_help	Јадења, категории и фотографии за вашето мени. Поставките на продавницата и персоналот остануваат исти.
 public_tmpl_help	Почетни менија што секој може да ги преземе. Потребен е интернет еднаш.
 private_tmpl_help	Клиентски менија заклучени со 12-цифрен код од вашиот контакт во Khaynjo.
-printers_screen_tip	Пребарај ги прикажува печатачите што овој уред може да ги користи и ги зачувува за оваа продавница. Печатачи за сметки: Формат на сметка и KOT → Сметка. Кујна: Кујна → Кујнски станици.
-printers_found_none	Не се пронајдени печатачи.
-kot_copy_from	Копирај од
-kot_copy_from_help	Ги копира големината, дебелината и порамнувањето на секој ред од тој вид во овој. Овој вид го задржува својот банер, префикс на ставка и прецртување. Зачувајте го форматот KOT за да го задржите.
-nav_loading	Се вчитува…

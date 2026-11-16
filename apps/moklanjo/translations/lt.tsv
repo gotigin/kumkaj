@@ -501,6 +501,17 @@ job_size	Šrifto dydis
 job_size_ph	pvz. 18, 20, 26…
 test_receipt_format	Bandymo kvitas
 test_label_format	Bandymo etiketė
+paper_heading	Popierius
+paper_size	{w} × {h} mm
+paper_roll	{w} mm ritinys
+paper_not_set	popierius dar nežinomas
+paper_length_mm	Ilgis (mm)
+printer_paper_help	Šio spausdintuvo popierius mm. Tuščias Ilgis reiškia ritinį: kiekvienas kvitas tokio ilgio, kaip jo turinys. „Rasti spausdintuvus“ užpildo tuščią popierių iš spausdintuvo tvarkyklės (80 mm ritinys, kai ji negali pasakyti) ir niekada nekeičia jau nustatyto.
+preview_help	Šis kvitas žemiau pasirinkto spausdintuvo popieriuje, kaip ten spausdinamas: tikru dydžiu nuo viršutinio kairiojo kampo, kurį spausdintuvas pasiekia (pilka: kraštai, kurių nepasiekia), ilgas kvitas daugiau lapų, viskas už popieriaus krašto nukerpama. Pasirinkus spausdintuvą keičiasi tik peržiūra; kiekvieno spausdintuvo popierius nustatomas skiltyje „Spausdintuvai“.
+slip_col_width	Plotis (mm)
+no_printer_assigned	Nėra spausdintuvo
+printer_target_default	įprastas šio kompiuterio spausdintuvas (tuščias adresas)
+job_preview	Peržiūra
 test_receipt_sent	Kvito pavyzdys išsiųstas
 test_label_sent	Etiketės pavyzdys išsiųstas
 test_print_no_printer	Nėra spausdintuvo šiam darbui – pridėkite vieną po šia vieta

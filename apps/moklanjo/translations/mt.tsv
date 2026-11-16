@@ -501,6 +501,17 @@ job_size	Daqs tat-tipa
 job_size_ph	eż. 18, 20, 26...
 test_receipt_format	Irċevuta tat-test
 test_label_format	Tikketta tat-test
+paper_heading	Karta
+paper_size	{w} × {h} mm
+paper_roll	romblu ta' {w} mm
+paper_not_set	il-karta għadha mhix magħrufa
+paper_length_mm	Tul (mm)
+printer_paper_help	Il-karta ta' din l-istampatur f'mm. Tul vojt huwa romblu: kull riċevuta hija twila daqs il-kontenut tagħha. Sib stampaturi jimla l-karta vojta mis-sewwieq tal-istampatur (romblu ta' 80 mm meta ma jistax jgħid) u qatt ma jbiddel karta diġà ssettjata.
+preview_help	Din ir-riċevuta fuq il-karta tal-istampatur magħżul hawn taħt, kif tistampa hemm: fid-daqs reali mill-kantuniera ta' fuq ix-xellug li jilħaq l-istampatur (griż: truf li ma jilħaqx), riċevuta twila fuq aktar folji, kull ma jaqbeż it-tarf tal-karta jinqata'. L-għażla ta' stampatur tbiddel il-previżjoni biss; il-karta ta' kull stampatur tiġi ssettjata taħt Stampaturi.
+slip_col_width	Wisa’ (mm)
+no_printer_assigned	L-ebda stampatur
+printer_target_default	l-istampatur tas-soltu ta' dan il-kompjuter (indirizz vojt)
+job_preview	Previżjoni
 test_receipt_sent	Irċevuta tal-kampjun mibgħuta
 test_label_sent	Tikketta tal-kampjun mibgħuta
 test_print_no_printer	L-ebda printer għal dak ix-xogħol — żid wieħed taħt dan il-post

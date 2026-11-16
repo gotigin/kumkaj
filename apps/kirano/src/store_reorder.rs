@@ -89,7 +89,7 @@ mod tests {
 
     #[test]
     fn each_item_has_its_own_reorder_level() {
-        let path = std::env::temp_dir().join(format!("kirano-reorder-{}.sqlite3", new_id()));
+        let path = crate::test_dirs::run_root().join(format!("kirano-reorder-{}.sqlite3", new_id()));
         let store = Store::open_path(&path).unwrap();
         let owner = store.list_staff().unwrap().into_iter().next().unwrap();
         for name in ["Rice", "Sugar"] {

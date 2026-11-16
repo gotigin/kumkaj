@@ -407,7 +407,9 @@ input fields (vendor patch: `TextFlow::paragraph_align_x`,
    *2026-11-15:* the Bill and KOT tabs are one list of lines in print order,
    the open line edited where it sits, preview beside it on wide screens,
    every row responsive (PRINTER.md § How the Bill and KOT tabs are laid
-   out, lesson 20).
+   out, lesson 20). The Bill tab has a **Logo** line (picture, Width /
+   Height px with blank following the picture, Solid / Shaded greys, blank
+   space or none without a picture — PRINTER.md § Logo).
    *2026-11-03:* Device setup and Floor accordions keep ℹ **beside** the
    title; a Fill `_ext` sibling makes the rest of the card toggle too
    (DEV.md bug **7c**). Same generous-hit idea for checklist rows; sidebar
