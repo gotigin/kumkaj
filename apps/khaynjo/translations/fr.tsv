@@ -368,7 +368,7 @@ only_owner_remove_server	Seul le propriétaire peut supprimer un serveur
 owner_pin_remove_server	Code Owner requis pour supprimer ce serveur
 device_setup_help	Le serveur garde les livres ici. Le client s'appaire à un serveur.
 app_template_heading	Modèles de boutique
-app_template_blurb	Importez un menu de départ public, ou saisissez un code privé à 12 chiffres fourni par votre contact Khaynjo.
+app_template_blurb	Choisissez un menu de départ. Passer laisse une boutique vide.
 app_template_apply	Importer le modèle
 app_template_skip	Passer pour le moment
 app_template_status	Serveur prêt — importez un modèle, ou passez
@@ -376,10 +376,10 @@ app_template_importing	Application de {title}…
 app_template_downloading	Téléchargement du modèle…
 app_template_download_progress	Téléchargement… {p}% ({d} / {t})
 app_template_download_paused	Importez à nouveau pour reprendre — les fichiers terminés sont conservés
-app_template_public_hdr	Modèles publics
+app_template_public_hdr	Modèles
 app_template_private_hdr	Modèle privé
-app_template_public_hint	Ouvrez cette section pour charger la liste publique (internet nécessaire une fois).
-app_template_code_not_found	Code introuvable
+app_template_public_hint	Ouvrez cette section pour charger la liste (internet une fois).
+app_template_code_not_found	Modèle introuvable
 app_template_need_internet	Internet nécessaire pour télécharger les modèles
 app_template_import_selected	Importer la sélection
 app_template_check_code	Vérifier le code

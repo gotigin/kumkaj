@@ -368,7 +368,7 @@ only_owner_remove_server	仅 Owner 可删除服务器
 owner_pin_remove_server	删除此服务器需要 Owner PIN
 device_setup_help	服务器在此保存账簿。客户端与服务器配对。
 app_template_heading	店铺模板
-app_template_blurb	导入公开的入门菜单，或输入你的 Khaynjo 联系人提供的 12 位私人代码。
+app_template_blurb	选一个起步菜单。跳过会留下空店。
 app_template_apply	导入模板
 app_template_skip	暂时跳过
 app_template_status	服务器已就绪 — 导入模板，或跳过
@@ -376,10 +376,10 @@ app_template_importing	正在应用 {title}…
 app_template_downloading	正在下载模板…
 app_template_download_progress	正在下载… {p}% ({d} / {t})
 app_template_download_paused	再次导入即可续传 — 已完成的文件会保留
-app_template_public_hdr	公开模板
+app_template_public_hdr	模板
 app_template_private_hdr	私人模板
-app_template_public_hint	打开此部分以加载公开列表（首次需要网络）。
-app_template_code_not_found	未找到代码
+app_template_public_hint	打开这一段以载入清单（需要上网一次）。
+app_template_code_not_found	未找到模板
 app_template_need_internet	下载模板需要网络
 app_template_import_selected	导入所选
 app_template_check_code	检查代码

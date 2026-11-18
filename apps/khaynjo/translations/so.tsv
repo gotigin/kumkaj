@@ -368,7 +368,7 @@ only_owner_remove_server	Milkiilaha kaliya ayaa server ka saari kara
 owner_pin_remove_server	PIN-ka milkiilaha ayaa loo baahan yahay si loo saaro serverkan
 device_setup_help	Server-ku buugaagta halkan ayuu ku hayaa. Macaamiilku wuxuu la midaysmaa Server.
 app_template_heading	Qaababka dukaanka
-app_template_blurb	Soo deji menu bilow ah oo dadweyne, ama geli koodh gaar ah oo 12 god ah oo aad ka heshay xiriirkaaga Khaynjo.
+app_template_blurb	Dooro menu bilow. Ka boodiddu waxay ka tagtaa dukaan madhan.
 app_template_apply	Soo deji qaab
 app_template_skip	Hadda ka bood
 app_template_status	Server-ku waa diyaar — soo deji qaab, ama ka bood
@@ -376,10 +376,10 @@ app_template_importing	Waxaa la dabaqayaa {title}…
 app_template_downloading	Qaabka waa la soo dejinayaa…
 app_template_download_progress	Waa la soo dejinayaa… {p}% ({d} / {t})
 app_template_download_paused	Mar kale soo deji si aad u sii wadato — faylasha dhammaaday waa la hayaa
-app_template_public_hdr	Qaabab dadweyne
+app_template_public_hdr	Qaabab
 app_template_private_hdr	Qaab gaar ah
-app_template_public_hint	Fur qaybtan si aad u soo geliso liiska dadweynaha (internet hal mar ayaa loo baahan yahay).
-app_template_code_not_found	Koodhka lama helin
+app_template_public_hint	Fur qaybtan si aad u soo raro liiska (internet hal mar).
+app_template_code_not_found	Qaabka lama helin
 app_template_need_internet	Internet ayaa loo baahan yahay si loo soo dejiyo qaabab
 app_template_import_selected	Soo deji kan la doortay
 app_template_check_code	Hubi koodhka

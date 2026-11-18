@@ -368,7 +368,7 @@ only_owner_remove_server	Hanya Pemilik boleh mengalih keluar pelayan
 owner_pin_remove_server	Pemilik PIN dikehendaki mengalih keluar pelayan ini
 device_setup_help	Pelayan menyimpan lejar di sini. Pasangan pelanggan ke Pelayan.
 app_template_heading	Templat kedai
-app_template_blurb	Import menu permulaan awam, atau masukkan kod peribadi 12 digit daripada kenalan Khaynjo anda.
+app_template_blurb	Pilih menu permulaan. Langkau meninggalkan kedai kosong.
 app_template_apply	Import templat
 app_template_skip	Langkau buat masa ini
 app_template_status	Pelayan sedia — import templat, atau langkau
@@ -376,10 +376,10 @@ app_template_importing	Memohon {title}…
 app_template_downloading	Memuat turun templat…
 app_template_download_progress	Memuat turun… {p}% ({d} / {t})
 app_template_download_paused	Import semula untuk menyambung — fail yang siap disimpan
-app_template_public_hdr	Templat awam
+app_template_public_hdr	Templat
 app_template_private_hdr	Templat peribadi
-app_template_public_hint	Buka bahagian ini untuk memuatkan senarai awam (perlukan internet sekali).
-app_template_code_not_found	Kod tidak ditemui
+app_template_public_hint	Buka bahagian ini untuk memuatkan senarai (internet sekali).
+app_template_code_not_found	Templat tidak dijumpai
 app_template_need_internet	Perlukan internet untuk memuat turun templat
 app_template_import_selected	Import yang dipilih
 app_template_check_code	Semak kod

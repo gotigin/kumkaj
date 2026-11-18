@@ -4,21 +4,21 @@
 #
 # Usage:
 #   ./apps/khaynjo/scripts/publish-catalogue.sh
-#       # sync public/items + stage Khaynjo Full Template (public, optional)
-#   ./apps/khaynjo/scripts/publish-catalogue.sh --private-rajdhani --code=123456789012
-#   ./apps/khaynjo/scripts/publish-catalogue.sh --private=<folder> --code=123456789012
-#       # any client pack under catalogue/private-src/<folder>/ — e.g. one the
-#       # client made with "Export template" (`kumkaj-khaynjo --export-template`)
+#       # sync public/items + stage Khaynjo Full Template
+#   ./apps/khaynjo/scripts/publish-catalogue.sh --public-rajdhani
+#   ./apps/khaynjo/scripts/publish-catalogue.sh --public=<folder>
+#       # a pack under catalogue/private-src/<folder>/, published on the public
+#       # list (public/templates/<id>/). --public-rajdhani is --public=rajdhani.
+#       # "Export template" (`kumkaj-khaynjo --export-template`) writes that tree.
 #
-# Two optional app-level templates:
-#   • Public  — Khaynjo Full Template (`khaynjo-items`, kind: shelf → all items)
-#   • Private — a client's pack (menu + shop_defaults.json from catalogue/private-src/)
+# One public list (no private codes):
+#   • Khaynjo Full Template (`khaynjo-items`, kind: shelf → all items)
+#   • Optional authored packs (Rajdhani today) — menu + shop_defaults.json
 #
-# Neither is forced: DeviceSetup Skip leaves an empty shop. Public starters
-# (cafe / khaynjo-starter) are not DeviceSetup chips.
+# Neither is forced: DeviceSetup Skip leaves an empty shop. Café / Khaynjo
+# starter folders are not DeviceSetup chips.
 #
 # Every pack/items listing carries size + sha256 so devices resume file by file.
-# Private packs → sites/khaynjo/static/v1/catalogue/private/<code>/ (gitignored).
 # bash + jq only (no Python — .cursor/rules/no-python-scripts.mdc).
 set -euo pipefail
 
@@ -27,19 +27,22 @@ APP="$ROOT/apps/khaynjo"
 CDN="$ROOT/sites/khaynjo/static/v1/catalogue"
 SHELF="$APP/assets/items"
 # Authoring only — not scanned by menu_templates / not shipped in the APK.
-PRIVATE_SRC="$APP/catalogue/private-src"
+# Published packs land on the public list, not under private/{code}/.
+PACK_SRC="$APP/catalogue/private-src"
 
-PRIVATE_CODE=""
-DO_RAJDHANI=0
-PRIVATE_NAME="rajdhani"
+DO_PUBLIC=0
+PUBLIC_NAME=""
 
 for arg in "$@"; do
   case "$arg" in
-    --private-rajdhani) DO_RAJDHANI=1 ;;
-    --private=*) DO_RAJDHANI=1; PRIVATE_NAME="${arg#--private=}" ;;
-    --code=*) PRIVATE_CODE="${arg#--code=}" ;;
+    --public-rajdhani) DO_PUBLIC=1; PUBLIC_NAME="rajdhani" ;;
+    --public=*) DO_PUBLIC=1; PUBLIC_NAME="${arg#--public=}" ;;
+    --private-rajdhani|--private=*|--code=*)
+      echo "error: private catalogue codes are retired. Use --public-rajdhani or --public=<folder>." >&2
+      exit 1
+      ;;
     -h|--help)
-      sed -n '2,20p' "$0"
+      sed -n '2,22p' "$0"
       exit 0
       ;;
     *)
@@ -56,12 +59,8 @@ if [[ ! -d "$SHELF" ]]; then
   echo "Missing shelf $SHELF" >&2
   exit 1
 fi
-if [[ "$DO_RAJDHANI" -eq 1 && ! "$PRIVATE_CODE" =~ ^[0-9]{12}$ ]]; then
-  echo "--code= must be exactly 12 digits" >&2
-  exit 1
-fi
-if [[ ! "$PRIVATE_NAME" =~ ^[a-z0-9][a-z0-9-]*$ ]]; then
-  echo "--private= takes a folder name under catalogue/private-src/ (a-z, 0-9, -)" >&2
+if [[ "$DO_PUBLIC" -eq 1 && ! "$PUBLIC_NAME" =~ ^[a-z0-9][a-z0-9-]*$ ]]; then
+  echo "--public= takes a folder name under catalogue/private-src/ (a-z, 0-9, -)" >&2
   exit 1
 fi
 
@@ -224,7 +223,7 @@ for stale in cafe-starter khaynjo-starter; do
   fi
 done
 
-echo "3/4 Khaynjo Full Template (public items shelf) + public/index.json …"
+echo "3/4 Khaynjo Full Template (photo shelf) …"
 ITEMS_PACK="$CDN/public/templates/khaynjo-items"
 mkdir -p "$ITEMS_PACK"
 jq -n --indent 2 --argjson n "$ITEMS_COUNT" --argjson bytes "$ITEMS_BYTES" '
@@ -251,36 +250,45 @@ jq -n --indent 2 '
   }' > "$ITEMS_PACK/template.json"
 echo "  khaynjo-items: shelf (${ITEMS_COUNT} files, ${ITEMS_BYTES} bytes)"
 
-jq --indent 2 '{id, title, blurb, kind, bytes}' "$ITEMS_PACK/manifest.json" \
-  | jq -s --indent 2 '{schema: 1, templates: .}' > "$CDN/public/index.json"
-echo "  index.json: $(jq '.templates | length' "$CDN/public/index.json") public template (Full only)"
-
-echo "4/4 Private client pack (optional) …"
-if [[ "$DO_RAJDHANI" -eq 1 ]]; then
-  SRC="$PRIVATE_SRC/$PRIVATE_NAME"
+echo "4/4 Public authored pack (optional) + public/index.json …"
+if [[ "$DO_PUBLIC" -eq 1 ]]; then
+  SRC="$PACK_SRC/$PUBLIC_NAME"
   if [[ ! -f "$SRC/template.json" ]]; then
     echo "Missing $SRC/template.json (authoring tree; not shipped in the app)" >&2
     exit 1
   fi
   if [[ ! -f "$SRC/shop_defaults.json" ]]; then
-    echo "Missing $SRC/shop_defaults.json — a client's defaults must live in the pack" >&2
+    echo "Missing $SRC/shop_defaults.json — a shop template's defaults must live in the pack" >&2
     exit 1
   fi
-  DEST="$CDN/private/$PRIVATE_CODE"
-  build_pack "$SRC" "$DEST" private
-  jq --indent 2 '.blurb = "Client menu + shop defaults from this pack (optional private code)."' \
-    "$DEST/manifest.json" > "$DEST/manifest.json.tmp"
-  mv "$DEST/manifest.json.tmp" "$DEST/manifest.json"
-  # Recompute bytes after blurb-only edit (files unchanged).
-  if jq -e --arg id "$(jq -r '.id' "$DEST/manifest.json")" '.templates | any(.id == $id)' \
-      "$CDN/public/index.json" >/dev/null || grep -qF -- "$PRIVATE_CODE" "$CDN/public/index.json"; then
-    echo "error: private pack leaked into public/index.json" >&2
+  PACK_ID="$(jq -r '.id' "$SRC/template.json")"
+  if [[ ! "$PACK_ID" =~ ^[a-z0-9][a-z0-9-]*$ ]]; then
+    echo "error: $SRC/template.json id must be a public template id (a-z, 0-9, -)" >&2
     exit 1
   fi
-  echo "Private $PRIVATE_NAME pack → $DEST (keep the code off public git / docs)"
+  if [[ "$PACK_ID" == "khaynjo-items" ]]; then
+    echo "error: $PACK_ID is the photo shelf, not an authored pack" >&2
+    exit 1
+  fi
+  DEST="$CDN/public/templates/$PACK_ID"
+  build_pack "$SRC" "$DEST" public
+  echo "Public $PUBLIC_NAME pack → $DEST"
 else
-  echo "  skipped (pass --private-rajdhani or --private=<folder>, and --code=…, to stage)"
+  echo "  no authored pack (pass --public-rajdhani or --public=<folder> to stage one)"
 fi
+
+# khaynjo-items first, then any other public packs, so the shelf stays a chip
+# beside Rajdhani (and later packs) on the one public list.
+index_files=("$ITEMS_PACK/manifest.json")
+while IFS= read -r man; do
+  [[ -n "$man" ]] || continue
+  index_files+=("$man")
+done < <(find "$CDN/public/templates" -mindepth 2 -maxdepth 2 -name manifest.json \
+  ! -path '*/khaynjo-items/manifest.json' | LC_ALL=C sort)
+jq -s --indent 2 '{schema: 1, templates: map({id, title, blurb, kind, bytes})}' \
+  "${index_files[@]}" > "$CDN/public/index.json.tmp"
+mv "$CDN/public/index.json.tmp" "$CDN/public/index.json"
+echo "  index.json: $(jq '.templates | length' "$CDN/public/index.json") public template(s)"
 
 echo "Done. Site static tree: $CDN"
 echo "Deploy: ./sites/khaynjo/scripts/deploy-firebase.sh"

@@ -6030,7 +6030,7 @@ script_mod! {
                                                 server_pick_cancel := BackBtn{text: "Back"}
                                             }
                                             // One-shot after Server open — before Owner PIN.
-                                            // Public accordion + private 12-digit code; Skip → Owner PIN.
+                                            // One Templates list; Skip → Owner PIN.
                                             app_template_section := View{
                                                 width: Fill height: Fit
                                                 flow: Down spacing: 12
@@ -6046,7 +6046,7 @@ script_mod! {
                                                         font_size: 17.
                                                     }
                                                     app_template_help := InfoHelp{
-                                                        tip: "Import a public starter, or enter a private 12-digit code from your Khaynjo contact."
+                                                        tip: "Pick a starter menu. Skip leaves an empty shop."
                                                     }
                                                 }
                                                 // Busy only: the stable "Downloading template…" line.
@@ -6066,7 +6066,7 @@ script_mod! {
                                                         width: Fill height: Fit
                                                         flow: Right spacing: 0
                                                         align: Align{y: 0.5}
-                                                        setup_public_tmpl_hdr := AccordionHdrHitBtn{width: Fit text: "PUBLIC TEMPLATES"}
+                                                        setup_public_tmpl_hdr := AccordionHdrHitBtn{width: Fit text: "TEMPLATES"}
                                                         setup_public_tmpl_help := InfoHelp{
                                                             tip: "Starter menus anyone can download. Needs internet once."
                                                         }
@@ -6098,19 +6098,21 @@ script_mod! {
                                                         public_tmpl_import := NavBtn{text: "Import selected" visible: false}
                                                     }
                                                 }
-                                                RoundedView{
+                                                // Ids kept so a later paid gate can return. Hidden: templates are one public list.
+                                                setup_private_card := RoundedView{
                                                     width: Fill height: Fit
+                                                    visible: false
                                                     padding: Inset{left: 10. right: 10. top: 8. bottom: 8.}
                                                     flow: Down spacing: 8
-                                                    draw_bg.color: #xffffff
+                                                    draw_bg.color: #ffffff
                                                     draw_bg.border_radius: 12.
                                                     View{
                                                         width: Fill height: Fit
                                                         flow: Right spacing: 0
                                                         align: Align{y: 0.5}
-                                                        setup_private_tmpl_hdr := AccordionHdrHitBtn{width: Fit text: "PRIVATE TEMPLATE"}
+                                                        setup_private_tmpl_hdr := AccordionHdrHitBtn{width: Fit text: ""}
                                                         setup_private_tmpl_help := InfoHelp{
-                                                            tip: "Client menus gated by a 12-digit code from your Khaynjo contact."
+                                                            tip: " "
                                                         }
                                                         setup_private_tmpl_hdr_ext := AccordionHdrHitBtn{text: ""}
                                                     }
@@ -6118,12 +6120,13 @@ script_mod! {
                                                         width: Fill height: Fit
                                                         flow: Down spacing: 8
                                                         visible: false
-                                                        private_tmpl_code := FieldInput{empty_text: "12-digit code"}
-                                                        private_tmpl_check := NavBtn{text: "Check code"}
+                                                        private_tmpl_code := FieldInput{empty_text: ""}
+                                                        private_tmpl_check := NavBtn{text: "Check" visible: false}
                                                         private_tmpl_title := WrapLabel{
                                                             body: ""
                                                             font_color: #x260B08
                                                             font_size: 14.
+                                                            visible: false
                                                         }
                                                         private_tmpl_import := NavBtn{text: "Import" visible: false}
                                                     }
@@ -8351,11 +8354,10 @@ script_mod! {
                                     font_color: #x69090C
                                     font_size: 13.
                                 }
-                                // Item templates — the onboarding Shop templates pattern at
-                                // menu-items level: PUBLIC TEMPLATES (chip → Import selected)
-                                // and PRIVATE TEMPLATE (12-digit code → Check code → its name →
-                                // Import). Explanations live in the ℹ tips, never as inline
-                                // paragraphs. Busy: status line + Cancel (busy-action-chrome).
+                                // Item templates — the onboarding Shop templates list at
+                                // menu-items level: TEMPLATES chips from the public catalogue
+                                // → Import selected (items only). Explanations live in the ℹ
+                                // tips. Busy: status line + Cancel (busy-action-chrome).
                                 menu_tmpl_section := View{
                                     width: Fill height: Fit
                                     flow: Down spacing: 12
@@ -8383,7 +8385,7 @@ script_mod! {
                                             width: Fill height: Fit
                                             flow: Right spacing: 0
                                             align: Align{y: 0.5}
-                                            menu_public_tmpl_hdr := AccordionHdrHitBtn{width: Fit text: "PUBLIC TEMPLATES"}
+                                            menu_public_tmpl_hdr := AccordionHdrHitBtn{width: Fit text: "TEMPLATES"}
                                             template_help := InfoHelp{tip: " "}
                                             menu_public_tmpl_hdr_ext := AccordionHdrHitBtn{text: ""}
                                         }
@@ -8394,8 +8396,19 @@ script_mod! {
                                             View{
                                                 width: Fill height: Fit
                                                 flow: Right{wrap: true} spacing: 8
+                                                // Shelf fallback until the public list has loaded.
                                                 template_chip := ChipBtn{text: "Khaynjo Items Template"}
                                                 template_chip_on := ChipBtnActive{text: "Khaynjo Items Template" visible: false}
+                                                menu_cat_0 := ChipBtn{text: " " visible: false}
+                                                menu_cat_0_on := ChipBtnActive{text: " " visible: false}
+                                                menu_cat_1 := ChipBtn{text: " " visible: false}
+                                                menu_cat_1_on := ChipBtnActive{text: " " visible: false}
+                                                menu_cat_2 := ChipBtn{text: " " visible: false}
+                                                menu_cat_2_on := ChipBtnActive{text: " " visible: false}
+                                                menu_cat_3 := ChipBtn{text: " " visible: false}
+                                                menu_cat_3_on := ChipBtnActive{text: " " visible: false}
+                                                menu_cat_4 := ChipBtn{text: " " visible: false}
+                                                menu_cat_4_on := ChipBtnActive{text: " " visible: false}
                                             }
                                             template_import := NavBtn{text: "Import selected" visible: false}
                                             template_busy := View{
@@ -8411,19 +8424,21 @@ script_mod! {
                                             }
                                         }
                                     }
+                                    // Ids kept for a later paid gate. Hidden: Rajdhani is a public chip.
                                     client_template_card := RoundedView{
                                         width: Fill height: Fit
+                                        visible: false
                                         padding: Inset{left: 10. right: 10. top: 8. bottom: 8.}
                                         flow: Down spacing: 8
-                                        draw_bg.color: #xffffff
+                                        draw_bg.color: #ffffff
                                         draw_bg.border_radius: 12.
                                         View{
                                             width: Fill height: Fit
                                             flow: Right spacing: 0
                                             align: Align{y: 0.5}
-                                            menu_private_tmpl_hdr := AccordionHdrHitBtn{width: Fit text: "PRIVATE TEMPLATE"}
+                                            menu_private_tmpl_hdr := AccordionHdrHitBtn{width: Fit text: ""}
                                             menu_private_tmpl_help := InfoHelp{
-                                                tip: "Client menus gated by a 12-digit code from your Khaynjo contact."
+                                                tip: " "
                                             }
                                             menu_private_tmpl_hdr_ext := AccordionHdrHitBtn{text: ""}
                                         }
@@ -8431,8 +8446,8 @@ script_mod! {
                                             width: Fill height: Fit
                                             flow: Down spacing: 8
                                             visible: false
-                                            menu_priv_code := FieldInput{empty_text: "12-digit code"}
-                                            menu_priv_check := NavBtn{text: "Check code"}
+                                            menu_priv_code := FieldInput{empty_text: ""}
+                                            menu_priv_check := NavBtn{text: "Check" visible: false}
                                             menu_priv_title := WrapLabel{
                                                 body: " "
                                                 font_color: #x260B08

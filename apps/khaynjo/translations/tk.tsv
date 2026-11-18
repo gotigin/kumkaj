@@ -368,7 +368,7 @@ only_owner_remove_server	Serwerden diňe eýesi aýryp biler
 owner_pin_remove_server	Bu serweri aýyrmak üçin eýesi PIN talap edilýär
 device_setup_help	Serwer bu ýerde ýazgy ýazgylaryny saklaýar. Müşderi Serwere jübüt.
 app_template_heading	Dükan şablonlary
-app_template_blurb	Umumy başlangyç menýusyny import ediň ýa-da Khaynjo aragatnaşygyňyzdan alan 12 sanly şahsy koduňyzy giriziň.
+app_template_blurb	Başlangyç menýuny saýlaň. Geçmek dükani boş galdyrýar.
 app_template_apply	Şablony import et
 app_template_skip	Häzirlikçe geçiň
 app_template_status	Serwer taýýar — şablon import ediň ýa-da geçiň
@@ -376,10 +376,10 @@ app_template_importing	{title}…
 app_template_downloading	Şablon ýüklenýär…
 app_template_download_progress	Ýüklenýär… {p}% ({d} / {t})
 app_template_download_paused	Dowam etmek üçin täzeden import ediň — tamamlanan faýllar saklanýar
-app_template_public_hdr	Umumy şablonlar
+app_template_public_hdr	Şablonlar
 app_template_private_hdr	Şahsy şablon
-app_template_public_hint	Umumy sanawy ýüklemek üçin bu bölümi açyň (bir gezek internet gerek).
-app_template_code_not_found	Kod tapylmady
+app_template_public_hint	Sanawy ýüklemek üçin bu bölümi açyň (internet bir gezek).
+app_template_code_not_found	Şablon tapylmady
 app_template_need_internet	Şablonlary ýüklemek üçin internet gerek
 app_template_import_selected	Saýlananyny import et
 app_template_check_code	Kody barla

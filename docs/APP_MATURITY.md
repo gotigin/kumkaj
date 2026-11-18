@@ -272,7 +272,7 @@ printers → sheet → Find → Done → the station list shows the printers).
 | Settings holds the sidebar: one list, icons on every row, rows tap through; Sidebar screen removed; slot icons drawn by code only (`slot_icons_have_no_layout_picture`) | DESIGN.md "Settings holds the sidebar", DEV.md § WorldFonts |
 | Dish search: names first, then aliases / groups; an exact short code leads (Khaynjo, Kirano, Tabiyat) | KHAYNJO.md menu window row |
 | Opening the books logs its stages (`Kumkaj open:`, `role_open`) | DEV.md rule 7 |
-| Khaynjo: the Rajdhani pack names the shop and brings its logo (`shop_name`, `logo_base64`) | CATALOGUE_URLS.md |
+| Khaynjo: the Rajdhani pack names the shop and brings its logo (`shop_name`, `logo_base64`). It publishes on the public `/v1/catalogue` list (`--public-rajdhani`), the same path grammar the other apps would use for their own public starters. No 12-digit catalogue code. | CATALOGUE_URLS.md |
 | Khaynjo: Export template — a configured shop as a format-2 pack, applied whole on a new device; packs carry no PINs (first PIN from the Owner in Team). **Not yet in Moklanjo / Kirano / Tabiyat** (owner: Khaynjo first, then the other three) | apps/khaynjo/docs/CATALOGUE_URLS.md "Export template" |
 
 Visual baselines refreshed for the Settings redesign and the corrected

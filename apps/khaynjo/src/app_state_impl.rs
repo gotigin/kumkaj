@@ -158,7 +158,7 @@ impl AppState {
             menu_priv_title: String::new(),
             menu_priv_origin: false,
             menu_tmpl_open: Vec::new(),
-            template_pick: false,
+            menu_selected_id: None,
             suggest_open: None,
             suggest_rows: Vec::new(),
             suggest_rev: 0,

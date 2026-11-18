@@ -368,7 +368,7 @@ only_owner_remove_server	فقط مالک می‌تواند سرور را برد�
 owner_pin_remove_server	برای برداشتن این سرور PIN مالک لازم است
 device_setup_help	سرور دفترها را اینجا نگه می‌دارد. کلاینت به یک سرور جفت می‌شود.
 app_template_heading	قالب‌های فروشگاه
-app_template_blurb	یک منوی شروع عمومی وارد کنید، یا کد خصوصی ۱۲ رقمی را که از رابط Khaynjo خود گرفته‌اید وارد کنید.
+app_template_blurb	یک منوی آغازین برگزینید. رد کردن فروشگاه را خالی می‌گذارد.
 app_template_apply	وارد کردن قالب
 app_template_skip	فعلاً رد شو
 app_template_status	سرور آماده است — قالبی وارد کنید یا رد شوید
@@ -376,10 +376,10 @@ app_template_importing	در حال اعمال {title}…
 app_template_downloading	در حال دانلود قالب…
 app_template_download_progress	در حال دانلود… {p}% ({d} / {t})
 app_template_download_paused	برای ادامه دوباره وارد کنید — فایل‌های کامل‌شده نگه داشته می‌شوند
-app_template_public_hdr	قالب‌های عمومی
+app_template_public_hdr	قالب‌ها
 app_template_private_hdr	قالب خصوصی
-app_template_public_hint	برای بارگیری فهرست عمومی این بخش را باز کنید (یک بار اینترنت لازم است).
-app_template_code_not_found	کد پیدا نشد
+app_template_public_hint	این بخش را باز کنید تا فهرست بار شود (یک بار اینترنت لازم است).
+app_template_code_not_found	قالب پیدا نشد
 app_template_need_internet	برای دانلود قالب‌ها به اینترنت نیاز است
 app_template_import_selected	وارد کردن مورد انتخاب‌شده
 app_template_check_code	بررسی کد

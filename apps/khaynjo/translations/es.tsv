@@ -368,7 +368,7 @@ only_owner_remove_server	Solo el propietario puede quitar un servidor
 owner_pin_remove_server	Se requiere el PIN del propietario para quitar este servidor
 device_setup_help	El servidor guarda los libros aquí. El cliente se empareja con un servidor.
 app_template_heading	Plantillas de tienda
-app_template_blurb	Importa un menú inicial público o introduce un código privado de 12 dígitos de tu contacto de Khaynjo.
+app_template_blurb	Elija un menú de inicio. Omitir deja una tienda vacía.
 app_template_apply	Importar plantilla
 app_template_skip	Saltar por ahora
 app_template_status	Servidor listo — importa una plantilla u omite este paso
@@ -376,10 +376,10 @@ app_template_importing	Aplicando {title}…
 app_template_downloading	Descargando plantilla…
 app_template_download_progress	Descargando… {p}% ({d} / {t})
 app_template_download_paused	Importa de nuevo para reanudar — los archivos terminados se conservan
-app_template_public_hdr	Plantillas públicas
+app_template_public_hdr	Plantillas
 app_template_private_hdr	Plantilla privada
-app_template_public_hint	Abre esta sección para cargar la lista pública (necesita internet una vez).
-app_template_code_not_found	Código no encontrado
+app_template_public_hint	Abra esta sección para cargar la lista (internet una vez).
+app_template_code_not_found	Plantilla no encontrada
 app_template_need_internet	Se necesita internet para descargar plantillas
 app_template_import_selected	Importar seleccionada
 app_template_check_code	Comprobar código

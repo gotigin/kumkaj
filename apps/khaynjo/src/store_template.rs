@@ -1967,26 +1967,29 @@ mod tests {
     /// the result must equal the pack the client sent.
     ///
     /// ```text
-    /// PACK_CDN=sites/khaynjo/static/v1/catalogue PACK_CODE=<12 digits> \
-    /// PACK_SOURCE=apps/khaynjo/catalogue/private-src/<folder> \
+    /// PACK_CDN=sites/khaynjo/static/v1/catalogue PACK_ID=rajdhani \
+    /// PACK_SOURCE=apps/khaynjo/catalogue/private-src/rajdhani \
     ///   cargo test -p kumkaj-khaynjo --lib published_pack -- --ignored
     /// ```
+    /// `PACK_ID` defaults to `id` in the source `template.json`.
     #[test]
     #[ignore]
     fn published_pack_downloads_applies_and_exports_unchanged() {
-        let (Ok(cdn), Ok(code), Ok(source)) = (
-            std::env::var("PACK_CDN"),
-            std::env::var("PACK_CODE"),
-            std::env::var("PACK_SOURCE"),
-        ) else {
-            panic!("set PACK_CDN, PACK_CODE and PACK_SOURCE");
+        let (Ok(cdn), Ok(source)) = (std::env::var("PACK_CDN"), std::env::var("PACK_SOURCE")) else {
+            panic!("set PACK_CDN and PACK_SOURCE");
         };
+        let id = std::env::var("PACK_ID").ok().filter(|s| !s.is_empty()).unwrap_or_else(|| {
+            let raw = std::fs::read_to_string(Path::new(&source).join("template.json"))
+                .expect("source template.json");
+            let v: serde_json::Value = serde_json::from_str(&raw).expect("template json");
+            v["id"].as_str().expect("template id").to_string()
+        });
         let base = scratch("published");
         let (dir, man, _) = crate::catalogue_remote::download_pack_from(
             &crate::catalogue_remote::FsSource::new(&cdn),
             &base,
-            crate::catalogue_remote::CatalogueVisibility::Private,
-            &code,
+            crate::catalogue_remote::CatalogueVisibility::Public,
+            &id,
             &|| false,
             &|_| {},
         )

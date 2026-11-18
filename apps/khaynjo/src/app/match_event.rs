@@ -669,8 +669,6 @@ impl MatchEvent for App {
             (ids!(setup_role_hdr_ext), "role"),
             (ids!(setup_public_tmpl_hdr), "public_templates"),
             (ids!(setup_public_tmpl_hdr_ext), "public_templates"),
-            (ids!(setup_private_tmpl_hdr), "private_template"),
-            (ids!(setup_private_tmpl_hdr_ext), "private_template"),
         ] {
             if self.ui.button(cx, hdr).clicked(actions) {
                 self.toggle_device_setup_section(cx, key);
@@ -1086,7 +1084,7 @@ impl MatchEvent for App {
             app_state().lock().unwrap().picking_server = false;
             self.sync_chrome(cx);
         }
-        // Catalogue offer — public chips / private code / Skip → Owner PIN.
+        // Catalogue offer — template chips / Skip → Owner PIN.
         {
             let chips = [
                 (ids!(public_tmpl_0), ids!(public_tmpl_0_on), 0usize),
@@ -1136,71 +1134,6 @@ impl MatchEvent for App {
                 match job {
                     Ok((base, id)) => {
                         catalogue_fetch_job(CatalogueFetchKind::DownloadPublic { id }, base);
-                        self.paint_app_template_chrome(cx, true);
-                    }
-                    Err(e) => self.set_status(cx, e),
-                }
-            }
-        }
-        if self.ui.button(cx, ids!(private_tmpl_check)).clicked(actions) {
-            if catalogue_fetch_busy().load(std::sync::atomic::Ordering::SeqCst) {
-                // Ignore while busy.
-            } else {
-                let code = self.ui.text_input(cx, ids!(private_tmpl_code)).text();
-                match catalogue_remote::normalize_private_code(&code) {
-                    Ok(code) => {
-                        let base = app_state()
-                            .lock()
-                            .unwrap()
-                            .data_base
-                            .clone()
-                            .or_else(|| store::data_dir().ok());
-                        if let Some(base) = base {
-                            {
-                                let mut st = app_state().lock().unwrap();
-                                st.catalogue_private_title.clear();
-                                st.catalogue_private_code.clear();
-                                st.catalogue_selected_public_id = None;
-                            }
-                            catalogue_fetch_job(
-                                CatalogueFetchKind::PrivatePeek { code },
-                                base,
-                            );
-                            self.paint_app_template_chrome(cx, true);
-                        } else {
-                            self.set_status(cx, "No data directory");
-                        }
-                    }
-                    Err(e) => self.set_status(cx, e),
-                }
-            }
-        }
-        if self.ui.button(cx, ids!(private_tmpl_import)).clicked(actions) {
-            if menu_import_busy().load(std::sync::atomic::Ordering::SeqCst)
-                || catalogue_fetch_busy().load(std::sync::atomic::Ordering::SeqCst)
-            {
-                // Ignore while busy.
-            } else {
-                let job = (|| -> Result<(PathBuf, String), String> {
-                    let st = app_state().lock().unwrap();
-                    if !st.awaiting_app_template {
-                        return Err("App template is not offered now".into());
-                    }
-                    if st.catalogue_private_code.is_empty() || st.catalogue_private_title.is_empty()
-                    {
-                        return Err("Check a private code first".into());
-                    }
-                    let code = st.catalogue_private_code.clone();
-                    let base = st
-                        .data_base
-                        .clone()
-                        .or_else(|| store::data_dir().ok())
-                        .ok_or_else(|| "No data directory".to_string())?;
-                    Ok((base, code))
-                })();
-                match job {
-                    Ok((base, code)) => {
-                        catalogue_fetch_job(CatalogueFetchKind::DownloadPrivate { code }, base);
                         self.paint_app_template_chrome(cx, true);
                     }
                     Err(e) => self.set_status(cx, e),
@@ -2681,12 +2614,10 @@ impl MatchEvent for App {
                 self.sync_chrome(cx);
             }
         }
-        // Menu → Item templates: accordions + the public chip (onboarding pattern).
+        // Menu → Item templates: one accordion, chips from the public list.
         for (hdr, key) in [
             (ids!(menu_public_tmpl_hdr), "menu_public_tmpl"),
             (ids!(menu_public_tmpl_hdr_ext), "menu_public_tmpl"),
-            (ids!(menu_private_tmpl_hdr), "menu_private_tmpl"),
-            (ids!(menu_private_tmpl_hdr_ext), "menu_private_tmpl"),
         ] {
             if self.ui.button(cx, hdr).clicked(actions) {
                 self.toggle_menu_tmpl_section(cx, key);
@@ -2697,9 +2628,40 @@ impl MatchEvent for App {
         {
             {
                 let mut st = app_state().lock().unwrap();
-                st.template_pick = !st.template_pick;
+                let id = catalogue_remote::PUBLIC_ITEMS_TEMPLATE_ID.to_string();
+                if st.menu_selected_id.as_deref() == Some(id.as_str()) {
+                    st.menu_selected_id = None;
+                } else {
+                    st.menu_selected_id = Some(id);
+                }
             }
             self.paint_menu_public_card(cx);
+        }
+        {
+            let chips = [
+                (ids!(menu_cat_0), ids!(menu_cat_0_on), 0usize),
+                (ids!(menu_cat_1), ids!(menu_cat_1_on), 1),
+                (ids!(menu_cat_2), ids!(menu_cat_2_on), 2),
+                (ids!(menu_cat_3), ids!(menu_cat_3_on), 3),
+                (ids!(menu_cat_4), ids!(menu_cat_4_on), 4),
+            ];
+            for (idle, active, idx) in chips {
+                if self.ui.button(cx, idle).clicked(actions)
+                    || self.ui.button(cx, active).clicked(actions)
+                {
+                    {
+                        let mut st = app_state().lock().unwrap();
+                        if let Some((id, _, _)) = st.catalogue_public.get(idx).cloned() {
+                            if st.menu_selected_id.as_deref() == Some(id.as_str()) {
+                                st.menu_selected_id = None;
+                            } else {
+                                st.menu_selected_id = Some(id);
+                            }
+                        }
+                    }
+                    self.paint_menu_public_card(cx);
+                }
+            }
         }
         if self.ui.button(cx, ids!(template_no)).clicked(actions) {
             if menu_import_busy().load(std::sync::atomic::Ordering::SeqCst)
@@ -2715,31 +2677,40 @@ impl MatchEvent for App {
             {
                 // A job is running — its Cancel is on screen.
             } else {
-                let job = (|| -> Result<Option<PathBuf>, String> {
+                let job = (|| -> Result<Option<(PathBuf, String)>, String> {
                     let mut st = app_state().lock().unwrap();
                     let actor = st.actor()?;
                     if !actor.is_owner() && !actor.can_access_items() {
                         return Err("Not allowed to manage items".into());
+                    }
+                    let id = st
+                        .menu_selected_id
+                        .clone()
+                        .ok_or_else(|| "Pick a template".to_string())?;
+                    let shelf = id == catalogue_remote::PUBLIC_ITEMS_TEMPLATE_ID;
+                    if !shelf {
+                        // Named packs (Rajdhani) are written on the shop device.
+                        st.require_server_host(&st.t("app_template_import"))?;
                     }
                     if st.device_role == DeviceRole::Client {
                         st.books_op(BooksOp::ImportShelfTemplate)?;
                         st.template_confirm = false;
                         return Ok(None);
                     }
-                    Ok(Some(
-                        st.store
-                            .as_ref()
-                            .ok_or_else(|| "No store".to_string())?
-                            .db_path()
-                            .to_path_buf(),
-                    ))
+                    let db = st
+                        .store
+                        .as_ref()
+                        .ok_or_else(|| "No store".to_string())?
+                        .db_path()
+                        .to_path_buf();
+                    Ok(Some((db, id)))
                 })();
                 match job {
                     Ok(None) => {
                         self.set_status(cx, "Importing the menu template on the shop device…");
                         self.sync_chrome(cx);
                     }
-                    Ok(Some(db)) => {
+                    Ok(Some((db, id))) if id == catalogue_remote::PUBLIC_ITEMS_TEMPLATE_ID => {
                         if menu_images::shelf().is_empty()
                             && menu_images::install_expects_remote_catalogue()
                         {
@@ -2747,10 +2718,7 @@ impl MatchEvent for App {
                                 Ok(base) => {
                                     app_state().lock().unwrap().template_confirm = true;
                                     catalogue_fetch_job(
-                                        CatalogueFetchKind::DownloadPublic {
-                                            id: catalogue_remote::PUBLIC_ITEMS_TEMPLATE_ID
-                                                .into(),
-                                        },
+                                        CatalogueFetchKind::DownloadPublic { id },
                                         base,
                                     );
                                     self.paint_import_progress_chrome(cx);
@@ -2761,92 +2729,31 @@ impl MatchEvent for App {
                                     self.sync_chrome(cx);
                                 }
                             }
-                            return;
+                        } else {
+                            app_state().lock().unwrap().template_confirm = true;
+                            menu_import_job(db, MenuImportKind::Shelf);
+                            // Progress only — full sync_chrome would hit SQLite while the worker writes.
+                            self.paint_import_progress_chrome(cx);
                         }
-                        app_state().lock().unwrap().template_confirm = true;
-                        menu_import_job(db, MenuImportKind::Shelf);
-                        // Progress only — full sync_chrome would hit SQLite while the worker writes.
-                        self.paint_import_progress_chrome(cx);
                     }
+                    Ok(Some((_, id))) => match crate::store::data_dir() {
+                        Ok(base) => {
+                            app_state().lock().unwrap().template_confirm = true;
+                            catalogue_fetch_job(CatalogueFetchKind::DownloadPublic { id }, base);
+                            self.paint_import_progress_chrome(cx);
+                        }
+                        Err(e) => {
+                            app_state().lock().unwrap().template_confirm = false;
+                            self.set_status(cx, e.to_string());
+                            self.sync_chrome(cx);
+                        }
+                    },
                     Err(e) => {
                         app_state().lock().unwrap().template_confirm = false;
                         self.set_status(cx, e);
                         self.sync_chrome(cx);
                     }
                 }
-            }
-        }
-        // Menu → Private template: the onboarding private-template flow at
-        // menu-items level (Check code → its name → Import → menu only).
-        if self.ui.button(cx, ids!(menu_priv_check)).clicked(actions) {
-            if !catalogue_fetch_busy().load(std::sync::atomic::Ordering::SeqCst) {
-                let code = self.ui.text_input(cx, ids!(menu_priv_code)).text();
-                let job = (|| -> Result<(PathBuf, String), String> {
-                    let code = catalogue_remote::normalize_private_code(&code)?;
-                    let st = app_state().lock().unwrap();
-                    let actor = st.actor()?;
-                    if !actor.is_owner() && !actor.can_access_items() {
-                        return Err("Not allowed to manage items".into());
-                    }
-                    let base = st
-                        .data_base
-                        .clone()
-                        .or_else(|| store::data_dir().ok())
-                        .ok_or_else(|| "No data directory".to_string())?;
-                    Ok((base, code))
-                })();
-                match job {
-                    Ok((base, code)) => {
-                        {
-                            let mut st = app_state().lock().unwrap();
-                            st.menu_priv_code.clear();
-                            st.menu_priv_title.clear();
-                            st.menu_priv_origin = true;
-                        }
-                        catalogue_fetch_job(CatalogueFetchKind::PrivatePeek { code }, base);
-                        self.paint_menu_private_progress(cx);
-                    }
-                    Err(e) => self.set_status(cx, e),
-                }
-            }
-        }
-        if self.ui.button(cx, ids!(menu_priv_import)).clicked(actions) {
-            if !menu_import_busy().load(std::sync::atomic::Ordering::SeqCst)
-                && !catalogue_fetch_busy().load(std::sync::atomic::Ordering::SeqCst)
-            {
-                let job = (|| -> Result<(PathBuf, String), String> {
-                    let st = app_state().lock().unwrap();
-                    let actor = st.actor()?;
-                    if !actor.is_owner() && !actor.can_access_items() {
-                        return Err("Not allowed to manage items".into());
-                    }
-                    // The Server is the sole writer: import there.
-                    st.require_server_host(&st.t("app_template_import"))?;
-                    if st.menu_priv_code.is_empty() || st.menu_priv_title.is_empty() {
-                        return Err(st.t("app_template_check_code"));
-                    }
-                    let base = st
-                        .data_base
-                        .clone()
-                        .or_else(|| store::data_dir().ok())
-                        .ok_or_else(|| "No data directory".to_string())?;
-                    Ok((base, st.menu_priv_code.clone()))
-                })();
-                match job {
-                    Ok((base, code)) => {
-                        app_state().lock().unwrap().menu_priv_origin = true;
-                        catalogue_fetch_job(CatalogueFetchKind::DownloadPrivate { code }, base);
-                        self.paint_menu_private_progress(cx);
-                    }
-                    Err(e) => self.set_status(cx, e),
-                }
-            }
-        }
-        if self.ui.button(cx, ids!(menu_priv_cancel)).clicked(actions) {
-            if menu_import_busy().load(std::sync::atomic::Ordering::SeqCst)
-                || catalogue_fetch_busy().load(std::sync::atomic::Ordering::SeqCst)
-            {
-                request_books_job_cancel();
             }
         }
         if self.ui.button(cx, ids!(table_pick_btn)).clicked(actions) {

@@ -3,9 +3,9 @@
 //! Separate from the big photo shelf (`menu_images`): these are concrete
 //! restaurant menus — primary `name` plus optional aliases (e.g. English),
 //! listed prices, and photos (`shelf:…` or a file under the template).
-//! Public/demo folders under `assets/templates/`. Private client packs
-//! (Rajdhani) are authored under `catalogue/private-src/` and published to
-//! the CDN — they are not discovered here.
+//! Demo folders under `assets/templates/`. Authored packs (Rajdhani) live
+//! under `catalogue/private-src/` and are published onto the public catalogue
+//! list — they are not discovered here.
 
 use std::path::{Path, PathBuf};
 

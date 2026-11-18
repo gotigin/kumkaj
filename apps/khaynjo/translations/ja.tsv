@@ -368,7 +368,7 @@ only_owner_remove_server	サーバーを削除できるのは Owner のみ
 owner_pin_remove_server	このサーバーを削除するには Owner PIN が必要です
 device_setup_help	サーバーはここに帳簿を保存します。クライアントはサーバーとペアリングします。
 app_template_heading	店舗テンプレート
-app_template_blurb	公開スターターメニューを取り込むか、Khaynjo の担当者から受け取った 12 桁のプライベートコードを入力してください。
+app_template_blurb	最初のメニューを選んでください。スキップすると空の店のままです。
 app_template_apply	テンプレートを取り込む
 app_template_skip	後ほどスキップします
 app_template_status	サーバーの準備完了 — テンプレートを取り込むか、スキップしてください
@@ -376,10 +376,10 @@ app_template_importing	{title} を適用中…
 app_template_downloading	テンプレートをダウンロード中…
 app_template_download_progress	ダウンロード中… {p}% ({d} / {t})
 app_template_download_paused	もう一度インポートすると再開します — 完了したファイルは保持されます
-app_template_public_hdr	公開テンプレート
+app_template_public_hdr	テンプレート
 app_template_private_hdr	プライベートテンプレート
-app_template_public_hint	公開一覧を読み込むには、このセクションを開いてください（初回のみインターネットが必要）。
-app_template_code_not_found	コードが見つかりません
+app_template_public_hint	一覧を読み込むにはこの部分を開きます（インターネットは一度必要）。
+app_template_code_not_found	テンプレートが見つかりません
 app_template_need_internet	テンプレートのダウンロードにはインターネットが必要です
 app_template_import_selected	選択したものを取り込む
 app_template_check_code	コードを確認

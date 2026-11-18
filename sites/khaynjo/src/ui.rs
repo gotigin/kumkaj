@@ -1327,7 +1327,6 @@ script_mod! {
                                         Small{body: "1,459 dish photos · 25 kinds of kitchen"}
                                     }
                                 }
-                                Small{body: "Have a menu made for your restaurant? Your Khaynjo contact gives you a private 12-digit code to load it on setup."}
 
                                 Rule{}
                                 world_head := SecHead{

@@ -368,7 +368,7 @@ only_owner_remove_server	เฉพาะ Owner เท่านั้นที่
 owner_pin_remove_server	ต้องใช้ Owner PIN เพื่อลบเซิร์ฟเวอร์นี้
 device_setup_help	เซิร์ฟเวอร์เก็บบัญชีไว้ที่นี่ ไคลเอนต์จับคู่กับเซิร์ฟเวอร์
 app_template_heading	เทมเพลตร้าน
-app_template_blurb	นำเข้าเมนูเริ่มต้นสาธารณะ หรือใส่รหัสส่วนตัว 12 หลักจากผู้ติดต่อ Khaynjo ของคุณ
+app_template_blurb	เลือกเมนูเริ่มต้น การข้ามจะเหลือร้านว่าง
 app_template_apply	นำเข้าเทมเพลต
 app_template_skip	ข้ามไปก่อน
 app_template_status	เซิร์ฟเวอร์พร้อมแล้ว — นำเข้าเทมเพลต หรือข้าม
@@ -376,10 +376,10 @@ app_template_importing	กำลังใช้ {title}…
 app_template_downloading	กำลังดาวน์โหลดเทมเพลต…
 app_template_download_progress	กำลังดาวน์โหลด… {p}% ({d} / {t})
 app_template_download_paused	นำเข้าอีกครั้งเพื่อทำต่อ — ไฟล์ที่เสร็จแล้วจะถูกเก็บไว้
-app_template_public_hdr	เทมเพลตสาธารณะ
+app_template_public_hdr	เทมเพลต
 app_template_private_hdr	เทมเพลตส่วนตัว
-app_template_public_hint	เปิดส่วนนี้เพื่อโหลดรายการสาธารณะ (ใช้อินเทอร์เน็ตครั้งเดียว)
-app_template_code_not_found	ไม่พบรหัส
+app_template_public_hint	เปิดส่วนนี้เพื่อโหลดรายการ (ใช้อินเทอร์เน็ตครั้งเดียว)
+app_template_code_not_found	ไม่พบเทมเพลต
 app_template_need_internet	ต้องใช้อินเทอร์เน็ตเพื่อดาวน์โหลดเทมเพลต
 app_template_import_selected	นำเข้ารายการที่เลือก
 app_template_check_code	ตรวจรหัส

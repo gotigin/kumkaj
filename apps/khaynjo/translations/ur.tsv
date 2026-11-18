@@ -368,7 +368,7 @@ only_owner_remove_server	صرف Owner سرور ہٹا سکتا ہے
 owner_pin_remove_server	سرور ہٹانے کے لیے Owner PIN درکار ہے
 device_setup_help	سرور کھاتے یہیں رکھتا ہے۔ کلائنٹ کسی سرور سے جڑتا ہے۔
 app_template_heading	دکان کے ٹیمپلیٹ
-app_template_blurb	کوئی عوامی ابتدائی مینو درآمد کریں، یا اپنے Khaynjo رابطے سے ملا 12 ہندسوں کا نجی کوڈ درج کریں۔
+app_template_blurb	ایک ابتدائی مینو چنیں۔ چھوڑنے پر دکان خالی رہتی ہے۔
 app_template_apply	ٹیمپلیٹ درآمد کریں
 app_template_skip	ابھی چھوڑیں
 app_template_status	سرور تیار ہے — ٹیمپلیٹ درآمد کریں، یا چھوڑ دیں
@@ -376,10 +376,10 @@ app_template_importing	{title} لگا رہے ہیں…
 app_template_downloading	ٹیمپلیٹ ڈاؤن لوڈ ہو رہا ہے…
 app_template_download_progress	ڈاؤن لوڈ ہو رہا ہے… {p}% ({d} / {t})
 app_template_download_paused	دوبارہ شروع کرنے کے لیے پھر سے درآمد کریں — مکمل فائلیں محفوظ رہتی ہیں
-app_template_public_hdr	عوامی ٹیمپلیٹ
+app_template_public_hdr	سانچے
 app_template_private_hdr	نجی ٹیمپلیٹ
-app_template_public_hint	عوامی فہرست لوڈ کرنے کے لیے یہ حصہ کھولیں (ایک بار انٹرنیٹ درکار ہے)۔
-app_template_code_not_found	کوڈ نہیں ملا
+app_template_public_hint	فہرست لوڈ کرنے کے لیے یہ حصہ کھولیں (ایک بار انٹرنیٹ چاہیے)۔
+app_template_code_not_found	سانچہ نہیں ملا
 app_template_need_internet	ٹیمپلیٹ ڈاؤن لوڈ کرنے کے لیے انٹرنیٹ درکار ہے
 app_template_import_selected	منتخب درآمد کریں
 app_template_check_code	کوڈ جانچیں

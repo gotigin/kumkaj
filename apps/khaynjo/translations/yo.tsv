@@ -368,7 +368,7 @@ only_owner_remove_server	Olohun nikan ni o le yọ olupin kuro
 owner_pin_remove_server	Olohun PIN nilo lati yọ olupin yii kuro
 device_setup_help	Olupin ntọju awọn akọọlẹ nibi. Awọn orisii alabara si olupin kan.
 app_template_heading	Àwọn àdàkọ ilé ìtajà
-app_template_blurb	Gbé àtòjọ oúnjẹ ìbẹ̀rẹ̀ gbogbo ènìyàn wọlé, tàbí tẹ kóòdù àdáni oní-nọ́ńbà 12 tí o gbà lọ́wọ́ olùbásọ̀rọ̀ Khaynjo rẹ.
+app_template_blurb	Yan ménù ìbẹ̀rẹ̀. Fífò fi ilé ìtajà òfo sílẹ̀.
 app_template_apply	Gbé àdàkọ wọlé
 app_template_skip	Rekọja fun bayi
 app_template_status	Olùpèsè ti ṣetán — gbé àdàkọ kan wọlé, tàbí fò ó
@@ -376,10 +376,10 @@ app_template_importing	Nbere {title}…
 app_template_downloading	Ń gba àdàkọ sílẹ̀…
 app_template_download_progress	Ń gbà sílẹ̀… {p}% ({d} / {t})
 app_template_download_paused	Gbé wọlé lẹ́ẹ̀kan sí i láti tẹ̀síwájú — a máa tọ́jú àwọn fáìlì tó ti parí
-app_template_public_hdr	Àwọn àdàkọ gbogbo ènìyàn
+app_template_public_hdr	Àwòrán àfọwọ́kọ
 app_template_private_hdr	Àdàkọ àdáni
-app_template_public_hint	Ṣí apá yìí láti gbé àtòjọ gbogbo ènìyàn sókè (a nílò íńtánẹ́ẹ̀tì lẹ́ẹ̀kan).
-app_template_code_not_found	A kò rí kóòdù
+app_template_public_hint	Ṣí apá yìí láti kó àkójọ (íntánẹ́ẹ̀tì lẹ́ẹ̀kan).
+app_template_code_not_found	A kò rí àwòrán àfọwọ́kọ
 app_template_need_internet	A nílò íńtánẹ́ẹ̀tì láti gba àwọn àdàkọ sílẹ̀
 app_template_import_selected	Gbé èyí tí a yàn wọlé
 app_template_check_code	Ṣàyẹ̀wò kóòdù

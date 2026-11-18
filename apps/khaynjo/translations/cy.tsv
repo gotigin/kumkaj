@@ -368,7 +368,7 @@ only_owner_remove_server	Dim ond y Perchennog all dynnu gweinydd
 owner_pin_remove_server	Mae angen PIN y Perchennog i dynnu'r gweinydd hwn
 device_setup_help	Mae'r Gweinydd yn cadw'r llyfrau yma. Mae Cleient yn paru â Gweinydd.
 app_template_heading	Templedi siop
-app_template_blurb	Mewnforiwch fwydlen gychwynnol gyhoeddus, neu rhowch god preifat 12 digid gan eich cyswllt Khaynjo.
+app_template_blurb	Dewiswch fwydlen gychwyn. Mae hepgor yn gadael siop wag.
 app_template_apply	Mewnforio templed
 app_template_skip	Hepgor am y tro
 app_template_status	Gweinydd yn barod — mewnforiwch dempled, neu hepgor
@@ -376,10 +376,10 @@ app_template_importing	Yn cymhwyso {title}…
 app_template_downloading	Wrthi'n llwytho'r templed i lawr…
 app_template_download_progress	Wrthi'n llwytho i lawr… {p}% ({d} / {t})
 app_template_download_paused	Mewnforiwch eto i ailddechrau — cedwir y ffeiliau gorffenedig
-app_template_public_hdr	Templedi cyhoeddus
+app_template_public_hdr	Templedi
 app_template_private_hdr	Templed preifat
-app_template_public_hint	Agorwch yr adran hon i lwytho'r rhestr gyhoeddus (angen rhyngrwyd unwaith).
-app_template_code_not_found	Heb ddod o hyd i'r cod
+app_template_public_hint	Agorwch yr adran hon i lwytho'r rhestr (angen y rhyngrwyd unwaith).
+app_template_code_not_found	Ni ddaethpwyd o hyd i'r templed
 app_template_need_internet	Angen y rhyngrwyd i lwytho templedi i lawr
 app_template_import_selected	Mewnforio'r dewis
 app_template_check_code	Gwirio'r cod

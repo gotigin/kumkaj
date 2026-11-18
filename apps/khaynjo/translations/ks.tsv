@@ -368,7 +368,7 @@ only_owner_remove_server	صرف مٲلک ہیکہِ سرور ہٹٲوِتھ
 owner_pin_remove_server	مٲلِک PIN چھُ یہِ سٕروَر ہٹاونُک ضوروٗرَتھ
 device_setup_help	Server کتابہٕ چھِ یَتہِ تھاوان۔ Client چُھ Server سٕتۍ جوڑان۔
 app_template_heading	دُکانُک ٹیمپلیٹ
-app_template_blurb	اکھ عوٲمی شروٗعاتی مینیو درآمد کٔرِو، یا پنٕنہِ Khaynjo رابطہٕ پیٹھ میلمُت 12 ہِندسن ہُند ذٲتی کوڈ دِیو۔
+app_template_blurb	اَکھ شُروعاتی مینو ژٔارِو۔ ترٛاوُن چھُ دوکان خٲلی تھاوان۔
 app_template_apply	ٹیمپلیٹ درآمد کٔرِو
 app_template_skip	وُنکینَس کٔرِو سِکِپ
 app_template_status	سرور تیار — ٹیمپلیٹ درآمد کٔرِو، یا ترٲوِو
@@ -376,10 +376,10 @@ app_template_importing	لاگو کَرُن {title}...
 app_template_downloading	ٹیمپلیٹ ڈاؤن لوڈ گژھان…
 app_template_download_progress	ڈاؤن لوڈ گژھان… {p}% ({d} / {t})
 app_template_download_paused	دوبارہ شروٗع کرنہٕ خٲطرٕ دوبارہ درآمد کٔرِو — مکمل فائل رٹنہٕ یِوان
-app_template_public_hdr	عوٲمی ٹیمپلیٹ
+app_template_public_hdr	ٹیمپلیٹ
 app_template_private_hdr	ذٲتی ٹیمپلیٹ
-app_template_public_hint	عوٲمی لِسٹ لوڈ کرنہٕ خٲطرٕ یہ حِصہٕ کھولِو (اکہِ لٹہِ انٹرنیٹ ضروٗری)۔
-app_template_code_not_found	کوڈ آو نہٕ لبنہٕ
+app_template_public_hint	فہرست لوڈ کرنہٕ خٲطرٕ یہِ حِصہٕ کھُلاو (اَکھ لَٹہِ انٹرنیٹ چھُ ضروٗرت)۔
+app_template_code_not_found	ٹیمپلیٹ لبھنہٕ آمُت نَہ
 app_template_need_internet	ٹیمپلیٹ ڈاؤن لوڈ کرنہٕ خٲطرٕ چھُ انٹرنیٹ ضروٗری
 app_template_import_selected	ژارمُت درآمد کٔرِو
 app_template_check_code	کوڈ جانچِو

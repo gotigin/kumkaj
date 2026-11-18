@@ -18257,7 +18257,7 @@ mod staged_catalogue_tests {
     }
 
     #[test]
-    fn staged_public_index_is_full_template_only() {
+    fn staged_public_index_lists_the_shelf() {
         let Some(cdn) = staged_cdn() else {
             return;
         };
@@ -18265,16 +18265,19 @@ mod staged_catalogue_tests {
             &std::fs::read_to_string(cdn.join("public/index.json")).unwrap(),
         )
         .unwrap();
-        assert_eq!(index.templates.len(), 1, "one public chip: Khaynjo Full Template");
-        let entry = &index.templates[0];
-        assert_eq!(entry.id, catalogue_remote::PUBLIC_ITEMS_TEMPLATE_ID);
-        assert_eq!(entry.kind, CatalogueKind::Shelf);
+        let shelf = index
+            .templates
+            .iter()
+            .find(|e| e.id == catalogue_remote::PUBLIC_ITEMS_TEMPLATE_ID)
+            .expect("khaynjo-items on the public list");
+        assert_eq!(shelf.kind, CatalogueKind::Shelf);
         assert!(
-            entry.title.to_lowercase().contains("full")
-                || entry.title.to_lowercase().contains("items"),
+            shelf.title.to_lowercase().contains("full")
+                || shelf.title.to_lowercase().contains("items"),
             "{}",
-            entry.title
+            shelf.title
         );
+        assert!(index.templates.iter().all(|e| !e.id.is_empty() && !e.title.is_empty()));
     }
 
     #[test]

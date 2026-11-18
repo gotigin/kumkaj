@@ -368,7 +368,7 @@ only_owner_remove_server	Ní féidir leis an Úinéir amháin freastalaí a bhai
 owner_pin_remove_server	Teastaíonn PIN an úinéara chun an freastalaí seo a bhaint
 device_setup_help	Coinníonn an "Server" na leabhair anseo. Déanann an "Client" comhpháirt le "Freastalaí".
 app_template_heading	Teimpléid siopa
-app_template_blurb	Iompórtáil roghchlár tosaigh poiblí, nó cuir isteach cód príobháideach 12 dhigit ó do theagmhálaí Khaynjo.
+app_template_blurb	Roghnaigh biachlár tosaigh. Fágann scipeáil siopa folamh.
 app_template_apply	Iompórtáil teimpléad
 app_template_skip	Sicíl anois
 app_template_status	Freastalaí réidh — iompórtáil teimpléad, nó scipeáil
@@ -376,10 +376,10 @@ app_template_importing	Ag cur i bhfeidhm {title}…
 app_template_downloading	Teimpléad á íoslódáil…
 app_template_download_progress	Á íoslódáil… {p}% ({d} / {t})
 app_template_download_paused	Iompórtáil arís chun leanúint ar aghaidh — coinnítear na comhaid chríochnaithe
-app_template_public_hdr	Teimpléid phoiblí
+app_template_public_hdr	Teimpléid
 app_template_private_hdr	Teimpléad príobháideach
-app_template_public_hint	Oscail an chuid seo chun an liosta poiblí a lódáil (teastaíonn idirlíon uair amháin).
-app_template_code_not_found	Níor aimsíodh an cód
+app_template_public_hint	Oscail an rannóg seo chun an liosta a luchtú (idirlíon uair amháin).
+app_template_code_not_found	Níor aimsíodh an teimpléad
 app_template_need_internet	Teastaíonn an t-idirlíon chun teimpléid a íoslódáil
 app_template_import_selected	Iompórtáil an rogha
 app_template_check_code	Seiceáil an cód

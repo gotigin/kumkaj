@@ -368,7 +368,7 @@ only_owner_remove_server	শুধু Owner সার্ভার সরাত�
 owner_pin_remove_server	সার্ভার সরাতে Owner PIN লাগবে
 device_setup_help	সার্ভার খাতা এখানেই রাখে। ক্লায়েন্ট একটি সার্ভারের সঙ্গে যুক্ত হয়।
 app_template_heading	দোকানের টেমপ্লেট
-app_template_blurb	একটি পাবলিক স্টার্টার মেনু ইমপোর্ট করুন, অথবা আপনার Khaynjo যোগাযোগের দেওয়া ১২-সংখ্যার ব্যক্তিগত কোড দিন।
+app_template_blurb	একটি শুরুর মেনু বেছে নিন। এড়িয়ে গেলে দোকান খালি থাকে।
 app_template_apply	টেমপ্লেট ইমপোর্ট করুন
 app_template_skip	এখন বাদ দিন
 app_template_status	সার্ভার প্রস্তুত — একটি টেমপ্লেট ইমপোর্ট করুন, অথবা এড়িয়ে যান
@@ -376,10 +376,10 @@ app_template_importing	{title} লাগানো হচ্ছে…
 app_template_downloading	টেমপ্লেট ডাউনলোড হচ্ছে…
 app_template_download_progress	ডাউনলোড হচ্ছে… {p}% ({d} / {t})
 app_template_download_paused	আবার শুরু করতে আবার ইমপোর্ট করুন — সম্পূর্ণ ফাইলগুলো রাখা থাকে
-app_template_public_hdr	পাবলিক টেমপ্লেট
+app_template_public_hdr	টেমপ্লেট
 app_template_private_hdr	ব্যক্তিগত টেমপ্লেট
-app_template_public_hint	পাবলিক তালিকা লোড করতে এই অংশটি খুলুন (একবার ইন্টারনেট লাগবে)।
-app_template_code_not_found	কোড পাওয়া যায়নি
+app_template_public_hint	তালিকা লোড করতে এই অংশ খুলুন (একবার ইন্টারনেট লাগে)।
+app_template_code_not_found	টেমপ্লেট পাওয়া যায়নি
 app_template_need_internet	টেমপ্লেট ডাউনলোড করতে ইন্টারনেট দরকার
 app_template_import_selected	নির্বাচিতটি ইমপোর্ট করুন
 app_template_check_code	কোড যাচাই করুন

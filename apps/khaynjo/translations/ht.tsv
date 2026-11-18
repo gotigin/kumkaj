@@ -368,7 +368,7 @@ only_owner_remove_server	Se sèl Pwopriyetè a ki ka retire yon sèvè
 owner_pin_remove_server	PIN pwopriyetè obligatwa pou retire sèvè sa a
 device_setup_help	Sèvè a kenbe liv yo isit. Kliyan an makonnen ak yon Sèvè.
 app_template_heading	Modèl boutik
-app_template_blurb	Enpòte yon meni kòmansman piblik, oswa antre yon kòd prive 12 chif ou resevwa nan men kontak Khaynjo ou.
+app_template_blurb	Chwazi yon meni pou kòmanse. Sote a kite boutik la vid.
 app_template_apply	Enpòte modèl
 app_template_skip	Sote pou kounye a
 app_template_status	Sèvè a pare — enpòte yon modèl, oswa sote
@@ -376,10 +376,10 @@ app_template_importing	Y ap aplike {title}…
 app_template_downloading	Ap telechaje modèl…
 app_template_download_progress	Ap telechaje… {p}% ({d} / {t})
 app_template_download_paused	Enpòte ankò pou kontinye — fichye ki fini yo rete
-app_template_public_hdr	Modèl piblik
+app_template_public_hdr	Modèl
 app_template_private_hdr	Modèl prive
-app_template_public_hint	Louvri seksyon sa a pou chaje lis piblik la (bezwen entènèt yon fwa).
-app_template_code_not_found	Kòd la pa jwenn
+app_template_public_hint	Louvri pati sa a pou chaje lis la (entènèt yon fwa).
+app_template_code_not_found	Modèl la pa jwenn
 app_template_need_internet	Bezwen entènèt pou telechaje modèl
 app_template_import_selected	Enpòte sa ki chwazi a
 app_template_check_code	Tcheke kòd

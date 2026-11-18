@@ -368,7 +368,7 @@ only_owner_remove_server	Ny Tompony ihany no afaka manala mpizara
 owner_pin_remove_server	Tompony PIN ilaina hanalana ity mpizara ity
 device_setup_help	Server mitazona ny boky eto. Client mifandray amin'ny Server.
 app_template_heading	Modely fivarotana
-app_template_blurb	Ampidiro ny menio fanombohana ho an'ny besinimaro, na ampidiro ny kaody manokana misy isa 12 avy amin'ny mpifandray Khaynjo anao.
+app_template_blurb	Misafidiana sakafo fanombohana. Ny fandikana dia mamela fivarotana foana.
 app_template_apply	Hampiditra modely
 app_template_skip	Atsaharo aloha
 app_template_status	Vonona ny mpizara — ampidiro modely, na dingano
@@ -376,10 +376,10 @@ app_template_importing	Manaova {title}…
 app_template_downloading	Maka ny modely…
 app_template_download_progress	Maka… {p}% ({d} / {t})
 app_template_download_paused	Ampidiro indray mba hanohizana — voatahiry ireo rakitra vita
-app_template_public_hdr	Modely ho an'ny besinimaro
+app_template_public_hdr	Modely
 app_template_private_hdr	Modely manokana
-app_template_public_hint	Sokafy ity fizarana ity hampidirana ny lisitra ho an'ny besinimaro (ilaina indray mandeha ny aterineto).
-app_template_code_not_found	Tsy hita ny kaody
+app_template_public_hint	Sokafy ity fizarana ity hampidirana ny lisitra (internet indray mandeha).
+app_template_code_not_found	Tsy hita ny modely
 app_template_need_internet	Ilaina ny aterineto hakana modely
 app_template_import_selected	Hampiditra ny voafidy
 app_template_check_code	Hamarino ny kaody

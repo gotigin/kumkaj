@@ -368,7 +368,7 @@ only_owner_remove_server	Samo Lastnik lahko odstrani strežnik
 owner_pin_remove_server	Za odstranitev tega strežnika je potreben PIN lastnika
 device_setup_help	Strežnik knjige hrani tukaj. Odjemalec se poveže s Strežnikom.
 app_template_heading	Predloge trgovine
-app_template_blurb	Uvozite javni začetni meni ali vnesite zasebno 12-mestno kodo od svojega stika Khaynjo.
+app_template_blurb	Izberite začetni meni. Preskok pusti prazno trgovino.
 app_template_apply	Uvozi predlogo
 app_template_skip	Preskoči za zdaj
 app_template_status	Strežnik je pripravljen — uvozite predlogo ali preskočite
@@ -376,10 +376,10 @@ app_template_importing	Uporablja se {title}…
 app_template_downloading	Prenašanje predloge…
 app_template_download_progress	Prenašanje… {p}% ({d} / {t})
 app_template_download_paused	Za nadaljevanje znova uvozite — dokončane datoteke ostanejo
-app_template_public_hdr	Javne predloge
+app_template_public_hdr	Predloge
 app_template_private_hdr	Zasebna predloga
-app_template_public_hint	Odprite ta razdelek, da naložite javni seznam (internet je potreben enkrat).
-app_template_code_not_found	Kode ni mogoče najti
+app_template_public_hint	Odprite ta del, da naložite seznam (internet enkrat).
+app_template_code_not_found	Predloga ni najdena
 app_template_need_internet	Za prenos predlog je potreben internet
 app_template_import_selected	Uvozi izbrano
 app_template_check_code	Preveri kodo

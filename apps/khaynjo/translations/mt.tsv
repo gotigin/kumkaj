@@ -368,7 +368,7 @@ only_owner_remove_server	Is-Sid biss jista' jneħħi server
 owner_pin_remove_server	PIN tas-sid meħtieġ biex jitneħħa dan is-server
 device_setup_help	Server iżomm il-kotba hawn. Klijent pairs għal Server.
 app_template_heading	Mudelli tal-ħanut
-app_template_blurb	Importa menu tal-bidu pubbliku, jew daħħal kodiċi privat ta' 12-il ċifra mill-kuntatt tiegħek ta' Khaynjo.
+app_template_blurb	Agħżel menu tal-bidu. Aqbeż iħalli ħanut vojt.
 app_template_apply	Importa mudell
 app_template_skip	Aqbeż għalissa
 app_template_status	Is-server lest — importa mudell, jew aqbeż
@@ -376,10 +376,10 @@ app_template_importing	Qed tapplika {title}...
 app_template_downloading	Qed jitniżżel il-mudell…
 app_template_download_progress	Qed iniżżel… {p}% ({d} / {t})
 app_template_download_paused	Erġa' importa biex tkompli — il-fajls lesti jinżammu
-app_template_public_hdr	Mudelli pubbliċi
+app_template_public_hdr	Mudelli
 app_template_private_hdr	Mudell privat
-app_template_public_hint	Iftaħ din it-taqsima biex titgħabba l-lista pubblika (hemm bżonn l-internet darba).
-app_template_code_not_found	Il-kodiċi ma nstabx
+app_template_public_hint	Iftaħ din it-taqsima biex tgħabbi l-lista (internet darba).
+app_template_code_not_found	Il-mudell ma nstabx
 app_template_need_internet	Hemm bżonn l-internet biex jitniżżlu l-mudelli
 app_template_import_selected	Importa l-magħżul
 app_template_check_code	Iċċekkja l-kodiċi

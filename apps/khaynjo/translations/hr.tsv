@@ -368,7 +368,7 @@ only_owner_remove_server	Samo Vlasnik može ukloniti Server
 owner_pin_remove_server	Za uklanjanje ovog Servera potreban je PIN vlasnika
 device_setup_help	Server drži knjige ovdje. Klijent se uparuje sa Serverom.
 app_template_heading	Predlošci trgovine
-app_template_blurb	Uvezite javni početni jelovnik ili unesite privatni 12-znamenkasti kod od svog Khaynjo kontakta.
+app_template_blurb	Odaberite početni jelovnik. Preskakanje ostavlja prazan dućan.
 app_template_apply	Uvezi predložak
 app_template_skip	Preskoči zasada
 app_template_status	Poslužitelj spreman — uvezite predložak ili preskočite
@@ -376,10 +376,10 @@ app_template_importing	Primjena {title}…
 app_template_downloading	Preuzimanje predloška…
 app_template_download_progress	Preuzimanje… {p}% ({d} / {t})
 app_template_download_paused	Ponovno uvezite za nastavak — dovršene datoteke se čuvaju
-app_template_public_hdr	Javni predlošci
+app_template_public_hdr	Predlošci
 app_template_private_hdr	Privatni predložak
-app_template_public_hint	Otvorite ovaj odjeljak za učitavanje javnog popisa (jednom je potreban internet).
-app_template_code_not_found	Kod nije pronađen
+app_template_public_hint	Otvorite ovaj odjeljak da učitate popis (internet jednom).
+app_template_code_not_found	Predložak nije pronađen
 app_template_need_internet	Za preuzimanje predložaka potreban je internet
 app_template_import_selected	Uvezi odabrano
 app_template_check_code	Provjeri kod

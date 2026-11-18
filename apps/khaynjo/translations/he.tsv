@@ -368,7 +368,7 @@ only_owner_remove_server	רק הבעלים יכול להסיר שרת
 owner_pin_remove_server	נדרש PIN הבעלים כדי להסיר את השרת הזה
 device_setup_help	השרת שומר את הספרים כאן. המסוף מזווג לשרת.
 app_template_heading	תבניות חנות
-app_template_blurb	ייבאו תפריט התחלה ציבורי, או הזינו קוד פרטי בן 12 ספרות מאיש הקשר שלכם ב-Khaynjo.
+app_template_blurb	בחרו תפריט התחלה. דילוג משאיר חנות ריקה.
 app_template_apply	ייבוא תבנית
 app_template_skip	דלג לעכשיו
 app_template_status	השרת מוכן — ייבאו תבנית או דלגו
@@ -376,10 +376,10 @@ app_template_importing	מחילים את {title}…
 app_template_downloading	מוריד תבנית…
 app_template_download_progress	מוריד… {p}% ({d} / {t})
 app_template_download_paused	ייבאו שוב כדי להמשיך — קבצים שהושלמו נשמרים
-app_template_public_hdr	תבניות ציבוריות
+app_template_public_hdr	תבניות
 app_template_private_hdr	תבנית פרטית
-app_template_public_hint	פתחו את החלק הזה כדי לטעון את הרשימה הציבורית (נדרש אינטרנט פעם אחת).
-app_template_code_not_found	הקוד לא נמצא
+app_template_public_hint	פתחו את החלק הזה כדי לטעון את הרשימה (אינטרנט פעם אחת).
+app_template_code_not_found	התבנית לא נמצאה
 app_template_need_internet	נדרש אינטרנט להורדת תבניות
 app_template_import_selected	ייבוא הנבחר
 app_template_check_code	בדיקת קוד

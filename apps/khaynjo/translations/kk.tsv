@@ -368,7 +368,7 @@ only_owner_remove_server	Серверді тек Иесі алып тастай 
 owner_pin_remove_server	Бұл серверді алып тастауға иенің PIN-і керек
 device_setup_help	Сервер кітаптарды осында ұстайды. Клиент Серверге жұптасады.
 app_template_heading	Дүкен үлгілері
-app_template_blurb	Жалпыға ортақ бастапқы мәзірді импорттаңыз немесе Khaynjo байланысыңыздан алған 12 таңбалы жеке кодты енгізіңіз.
+app_template_blurb	Бастапқы мәзірді таңдаңыз. Өткізіп жіберу бос дүкен қалдырады.
 app_template_apply	Үлгіні импорттау
 app_template_skip	Әзірге өткізу
 app_template_status	Сервер дайын — үлгі импорттаңыз немесе өткізіп жіберіңіз
@@ -376,10 +376,10 @@ app_template_importing	{title} қолданылуда…
 app_template_downloading	Үлгі жүктелуде…
 app_template_download_progress	Жүктелуде… {p}% ({d} / {t})
 app_template_download_paused	Жалғастыру үшін қайта импорттаңыз — дайын файлдар сақталады
-app_template_public_hdr	Жалпы үлгілер
+app_template_public_hdr	Үлгілер
 app_template_private_hdr	Жеке үлгі
-app_template_public_hint	Жалпы тізімді жүктеу үшін осы бөлімді ашыңыз (бір рет интернет қажет).
-app_template_code_not_found	Код табылмады
+app_template_public_hint	Тізімді жүктеу үшін осы бөлімді ашыңыз (интернет бір рет).
+app_template_code_not_found	Үлгі табылмады
 app_template_need_internet	Үлгілерді жүктеу үшін интернет қажет
 app_template_import_selected	Таңдалғанды импорттау
 app_template_check_code	Кодты тексеру

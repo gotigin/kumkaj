@@ -368,7 +368,7 @@ only_owner_remove_server	Pe Ijára añoite ikatu oipe’a peteĩ servidor
 owner_pin_remove_server	Ijára PIN oñeikotevẽ ojeipe’a hag̃ua ko servidor
 device_setup_help	Servidor oñongatu umi aranduka ko’ápe. Cliente ombojoaju peteĩ Servidor-pe.
 app_template_heading	Ñemuha ñemboguatarã
-app_template_blurb	Egueru peteĩ tembi'u rysýi ñepyrũrã opavavépe guarã, térã emoinge pe ayvu ñemi 12 papaha rehupytýva ne irũ Khaynjo-gui.
+app_template_blurb	Eiporavo peteĩ menú ñepyrũ. Jesalta oheja tenda nandi.
 app_template_apply	Egueru ñemboguatarã
 app_template_skip	Ojesalta ko’áĝa ĝuarã
 app_template_status	Servidor oĩma — egueru peteĩ ñemboguatarã, térã ehasa
@@ -376,10 +376,10 @@ app_template_importing	Ojeporu {title}...
 app_template_downloading	Oñemboguejy ñemboguatarã…
 app_template_download_progress	Oñemboguejy… {p}% ({d} / {t})
 app_template_download_paused	Egueru jey eñepyrũ jey hag̃ua — umi marandurenda opáva oñeñongatu
-app_template_public_hdr	Ñemboguatarã opavavépe guarã
+app_template_public_hdr	Plantilla
 app_template_private_hdr	Ñemboguatarã ñemi
-app_template_public_hint	Embojuruja ko vore emyanyhẽ hag̃ua pe lista opavavépe guarã (oñeikotevẽ internet peteĩ jey).
-app_template_code_not_found	Ndojejuhúi ayvu
+app_template_public_hint	Eipe'a ko vore emoĩ haguã tysýi (internet peteĩ jey).
+app_template_code_not_found	Ndorekói plantilla
 app_template_need_internet	Oñeikotevẽ internet oñemboguejy hag̃ua ñemboguatarã
 app_template_import_selected	Egueru pe eiporavóva
 app_template_check_code	Ehecha ayvu

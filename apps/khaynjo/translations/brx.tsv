@@ -368,7 +368,7 @@ only_owner_remove_server	खोथिया गिबिआ सर्वर ब�
 owner_pin_remove_server	बे सर्वर बोखारनो गिबिनि PIN नांगौ
 device_setup_help	सर्वरआ बहीखौ बेयाव दोनो। क्लाइन्ट आ सर्वरजों जोरा।
 app_template_heading	दोकानि टेम्प्लेटफोर
-app_template_blurb	मोनसे सार्बजनिक जागायनाय मेनु लाबो, नाथाय नोंथांनि Khaynjo सोमोन्दोनिफ्राय मोननाय 12 अंकनि गुबुन कोड हो।
+app_template_blurb	फुंकौनि मेनु सायख। बारलायोब्ला दोकान खोथा दं।
 app_template_apply	टेम्प्लेट लाबो
 app_template_skip	दा बार
 app_template_status	सार्भार थियारि — मोनसे टेम्प्लेट लाबो, नाथाय नागार
@@ -376,10 +376,10 @@ app_template_importing	{title} बाहाय गासिनो…
 app_template_downloading	टेम्प्लेट डाउनल'ड जागासिनो…
 app_template_download_progress	डाउनल'ड जागासिनो… {p}% ({d} / {t})
 app_template_download_paused	फिन जागायनो थाखाय फिन लाबो — जोबनाय फाइलफोरखौ दोनथानाय जायो
-app_template_public_hdr	सार्बजनिक टेम्प्लेटफोर
+app_template_public_hdr	टेम्पलेट
 app_template_private_hdr	गुबुन टेम्प्लेट
-app_template_public_hint	सार्बजनिक लिस्टिखौ ल'ड खालामनो बे बाहागोखौ खेव (मोनसेबार इन्टारनेट नांगौ)।
-app_template_code_not_found	कोड मोनाखै
+app_template_public_hint	फारिलाइ लोड खालामनो थाखाय बे खोन्दो खेव (मोनसे इंटरनेट नांगौ)।
+app_template_code_not_found	टेम्पलेट मोनाखै
 app_template_need_internet	टेम्प्लेट डाउनल'ड खालामनो इन्टारनेट नांगौ
 app_template_import_selected	सायखनायखौ लाबो
 app_template_check_code	कोड नायबिजिर

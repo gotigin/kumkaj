@@ -368,7 +368,7 @@ only_owner_remove_server	Лише Власник може прибрати се�
 owner_pin_remove_server	Щоб прибрати цей сервер, потрібен PIN власника
 device_setup_help	Сервер тримає книги тут. Клієнт з'єднується з Сервером.
 app_template_heading	Шаблони крамниці
-app_template_blurb	Імпортуйте загальнодоступне стартове меню або введіть приватний 12-значний код від вашого контакту в Khaynjo.
+app_template_blurb	Оберіть початкове меню. Пропуск лишає порожню крамницю.
 app_template_apply	Імпортувати шаблон
 app_template_skip	Поки пропустити
 app_template_status	Сервер готовий — імпортуйте шаблон або пропустіть
@@ -376,10 +376,10 @@ app_template_importing	Застосовується {title}…
 app_template_downloading	Завантаження шаблону…
 app_template_download_progress	Завантаження… {p}% ({d} / {t})
 app_template_download_paused	Імпортуйте знову, щоб продовжити — готові файли зберігаються
-app_template_public_hdr	Загальні шаблони
+app_template_public_hdr	Шаблони
 app_template_private_hdr	Приватний шаблон
-app_template_public_hint	Відкрийте цей розділ, щоб завантажити загальний список (інтернет потрібен один раз).
-app_template_code_not_found	Код не знайдено
+app_template_public_hint	Відкрийте цей розділ, щоб завантажити список (інтернет один раз).
+app_template_code_not_found	Шаблон не знайдено
 app_template_need_internet	Для завантаження шаблонів потрібен інтернет
 app_template_import_selected	Імпортувати вибране
 app_template_check_code	Перевірити код

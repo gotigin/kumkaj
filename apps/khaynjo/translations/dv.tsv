@@ -368,7 +368,7 @@ only_owner_remove_server	ސަރވަރެއް ނައްތާލެވޭނީ ހަމައ�
 owner_pin_remove_server	މި ސަރވަރ ނައްތާލުމަށް ބޭނުންވާ އޯނަރ ޕިން
 device_setup_help	ސަރވަރ އިން ފޮތްތައް މިތާ ބަހައްޓައެވެ. ކްލައިންޓް ޖޯޑުތައް ސަރވަރ އަކަށް.
 app_template_heading	ފިހާރައިގެ ޓެމްޕްލޭޓް
-app_template_blurb	އާންމު ފެށުމުގެ މެނޫއެއް އިމްޕޯޓް ކުރޭ، ނުވަތަ ތިބާގެ Khaynjo ގުޅުމުން ލިބުނު 12 ޑިޖިޓްގެ ޕްރައިވެޓް ކޯޑެއް ޖައްސަވާ.
+app_template_blurb	ފެށުމުގެ މެނޫ އިޚްތިޔާރު ކުރޭ. ދޫކުރުމުން ފާރު ހުސްވެދާނެ.
 app_template_apply	ޓެމްޕްލޭޓް އިމްޕޯޓް ކުރޭ
 app_template_skip	މިވަގުތު ދޫކޮށްލާށެވެ
 app_template_status	ސާވަރ ތައްޔާރު — ޓެމްޕްލޭޓެއް އިމްޕޯޓް ކުރޭ، ނުވަތަ ދޫކޮށްލާ
@@ -376,10 +376,10 @@ app_template_importing	އެޕްލައި ކުރަނީ {title}...
 app_template_downloading	ޓެމްޕްލޭޓް ޑައުންލޯޑް ކުރަނީ…
 app_template_download_progress	ޑައުންލޯޑް ކުރަނީ… {p}% ({d} / {t})
 app_template_download_paused	ކުރިއަށް ގެންދަން އަލުން އިމްޕޯޓް ކުރޭ — ނިމިފައިވާ ފައިލްތައް ބަހައްޓާނެ
-app_template_public_hdr	އާންމު ޓެމްޕްލޭޓްތައް
+app_template_public_hdr	ޓެމްޕްލޭޓް
 app_template_private_hdr	ޕްރައިވެޓް ޓެމްޕްލޭޓް
-app_template_public_hint	އާންމު ލިސްޓު ލޯޑް ކުރުމަށް މި ބައި ހުޅުވާލާ (އެއްފަހަރު އިންޓަނެޓް ބޭނުންވޭ).
-app_template_code_not_found	ކޯޑް ނުފެނުނު
+app_template_public_hint	ލިސްޓު ލޯޑުކުރަން މި ބައި ހުޅުވާ (އިންޓަނެޓް އެއްފަހަރު ބޭނުން).
+app_template_code_not_found	ޓެމްޕްލޭޓް ނުފެނުނު
 app_template_need_internet	ޓެމްޕްލޭޓް ޑައުންލޯޑް ކުރުމަށް އިންޓަނެޓް ބޭނުންވޭ
 app_template_import_selected	ހޮވާފައިވާ އެއްޗެއް އިމްޕޯޓް ކުރޭ
 app_template_check_code	ކޯޑް ޗެކްކުރޭ

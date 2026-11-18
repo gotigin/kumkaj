@@ -368,7 +368,7 @@ only_owner_remove_server	Tang u Trai uba lah ban pynduh ia ka server .
 owner_pin_remove_server	U trai PIN donkam ban weng ia kane ka server
 device_setup_help	U Server u buh ia ki kot hangne. Ka klient ka pyniasoh ia u Server.
 app_template_heading	Ki template dukan
-app_template_blurb	Import ia ka menu ban sdang ba paidbah, ne thep ia ka code shimet ba don 12 tylli ba ïa ka code na u nongiadei jong me ha Khaynjo.
+app_template_blurb	Jied ia ka menu ban sdang. Ka pynphai ka ieh ia ka dukan khlem ei.
 app_template_apply	Import template
 app_template_skip	Skip na ka bynta mynta
 app_template_status	Ka server ka la khreh — import ia ka template, ne iehnoh
@@ -376,10 +376,10 @@ app_template_importing	Ka jingpyndonkam {title}...
 app_template_downloading	Dang download ia ka template…
 app_template_download_progress	Dang download… {p}% ({d} / {t})
 app_template_download_paused	Import biang ban bteng pat — ki file ba la dep la sah
-app_template_public_hdr	Ki template paidbah
+app_template_public_hdr	Ki template
 app_template_private_hdr	Template shimet
-app_template_public_hint	Plie ia kane ka bynta ban load ia ka list paidbah (donkam internet shisien).
-app_template_code_not_found	Ym shem ia ka code
+app_template_public_hint	Pynphai ia kane ban pyndap ia ka list (internet shi sien).
+app_template_code_not_found	Ym lah ban shem ia ka template
 app_template_need_internet	Donkam internet ban download ia ki template
 app_template_import_selected	Import ia kaba la jied
 app_template_check_code	Peit ia ka code

@@ -1012,8 +1012,8 @@ const INSET_SHEETS: &[&str] = &["menu_modal", "lock_staff_modal", "upi_qr_modal"
 
 /// The client / brand name inside a catalogue pack title, so each screen can
 /// name its own level: onboarding "{name} App Template", Menu "{name}
-/// Template". The private pack is one download for both (menu + shop
-/// settings); its title in the catalogue is e.g. "Rajdhani Menu Template".
+/// Template". One public pack serves both (menu + shop settings on setup,
+/// items only on Menu); its title is e.g. "Rajdhani Menu Template".
 fn template_client_name(title: &str) -> String {
     let t = title.trim();
     let lower = t.to_lowercase();

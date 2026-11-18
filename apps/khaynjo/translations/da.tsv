@@ -368,7 +368,7 @@ only_owner_remove_server	Kun ejeren kan fjerne en server
 owner_pin_remove_server	Ejer-PIN kræves for at fjerne denne server
 device_setup_help	Serveren holder bøgerne her. Klienten parres med en Server.
 app_template_heading	Butiksskabeloner
-app_template_blurb	Importér en offentlig startmenu, eller indtast en privat 12-cifret kode fra din Khaynjo-kontakt.
+app_template_blurb	Vælg en startmenu. Spring over lader en tom butik.
 app_template_apply	Importér skabelon
 app_template_skip	Spring over for nu
 app_template_status	Server klar — importér en skabelon, eller spring over
@@ -376,10 +376,10 @@ app_template_importing	Anvender {title}…
 app_template_downloading	Henter skabelon…
 app_template_download_progress	Henter… {p}% ({d} / {t})
 app_template_download_paused	Importér igen for at fortsætte — færdige filer beholdes
-app_template_public_hdr	Offentlige skabeloner
+app_template_public_hdr	Skabeloner
 app_template_private_hdr	Privat skabelon
-app_template_public_hint	Åbn denne sektion for at indlæse den offentlige liste (kræver internet én gang).
-app_template_code_not_found	Koden blev ikke fundet
+app_template_public_hint	Åbn dette afsnit for at hente listen (internet én gang).
+app_template_code_not_found	Skabelon ikke fundet
 app_template_need_internet	Kræver internet for at hente skabeloner
 app_template_import_selected	Importér valgte
 app_template_check_code	Tjek kode

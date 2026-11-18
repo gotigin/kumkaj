@@ -368,7 +368,7 @@ only_owner_remove_server	কেৱল Owner চাৰ্ভাৰ আঁতৰ�
 owner_pin_remove_server	চাৰ্ভাৰ আঁতৰাবলৈ Owner PIN লাগে
 device_setup_help	চাৰ্ভাৰে বহী ইয়াতে ৰাখে। ক্লায়েণ্ট এটা চাৰ্ভাৰৰ সৈতে যোৰ হয়।
 app_template_heading	দোকানৰ টেমপ্লেট
-app_template_blurb	এটা ৰাজহুৱা আৰম্ভণি মেনু আমদানি কৰক, বা আপোনাৰ Khaynjo যোগাযোগৰ পৰা পোৱা ১২-অংকৰ ব্যক্তিগত ক'ড দিয়ক।
+app_template_blurb	এটা আৰম্ভণিৰ মেনু বাছক। এৰি দিলে দোকান খালী থাকে।
 app_template_apply	টেমপ্লেট আমদানি কৰক
 app_template_skip	এতিয়া এৰক
 app_template_status	ছাৰ্ভাৰ সাজু — এটা টেমপ্লেট আমদানি কৰক, বা এৰি দিয়ক
@@ -376,10 +376,10 @@ app_template_importing	{title} প্ৰয়োগ কৰা হৈছে…
 app_template_downloading	টেমপ্লেট ডাউনল'ড হৈ আছে…
 app_template_download_progress	ডাউনল’ড হৈ আছে… {p}% ({d} / {t})
 app_template_download_paused	পুনৰ আৰম্ভ কৰিবলৈ আকৌ আমদানি কৰক — সম্পূৰ্ণ ফাইলবোৰ ৰখা হয়
-app_template_public_hdr	ৰাজহুৱা টেমপ্লেট
+app_template_public_hdr	সাঁচ
 app_template_private_hdr	ব্যক্তিগত টেমপ্লেট
-app_template_public_hint	ৰাজহুৱা তালিকা ল'ড কৰিবলৈ এই অংশটো খোলক (এবাৰ ইণ্টাৰনেট লাগে)।
-app_template_code_not_found	ক'ড পোৱা নগ'ল
+app_template_public_hint	তালিকা ল'ড কৰিবলৈ এই অংশ খোলক (এবাৰ ইণ্টাৰনেট লাগে)।
+app_template_code_not_found	সাঁচ পোৱা নগ'ল
 app_template_need_internet	টেমপ্লেট ডাউনল'ড কৰিবলৈ ইণ্টাৰনেট লাগে
 app_template_import_selected	বাছনি কৰাটো আমদানি কৰক
 app_template_check_code	ক'ড পৰীক্ষা কৰক

@@ -488,7 +488,7 @@ impl App {
         self.sync_chrome(cx);
     }
 
-    /// Idle: Public / Private accordions + Skip. Busy: status + Cancel.
+    /// Idle: Templates accordion + Skip. Busy: status + Cancel.
     fn paint_app_template_chrome(&mut self, cx: &mut Cx, visible: bool) {
         self.ui
             .view(cx, ids!(app_template_section))
@@ -512,10 +512,8 @@ impl App {
             cancel,
             progress,
             pub_status,
-            priv_title,
             sel_id,
             entries,
-            has_private,
         ) = {
             let st = app_state().lock().unwrap();
             let downloading = catalogue_fetch_busy().load(std::sync::atomic::Ordering::SeqCst);
@@ -557,16 +555,8 @@ impl App {
                 st.t("cancel"),
                 progress,
                 pub_status,
-                // App level: the private pack applies menu + shop settings.
-                if st.catalogue_private_title.is_empty() {
-                    String::new()
-                } else {
-                    st.t("app_tmpl_named")
-                        .replace("{name}", &template_client_name(&st.catalogue_private_title))
-                },
                 st.catalogue_selected_public_id.clone(),
                 st.catalogue_public.clone(),
-                !st.catalogue_private_title.is_empty(),
             )
         };
         self.ui
@@ -580,18 +570,13 @@ impl App {
             blurb_w.set_text(cx, &plain_display_text(&blurb));
         }
         {
-            let (help, public_help, private_help) = {
+            let (help, public_help) = {
                 let st = app_state().lock().unwrap();
-                (
-                    st.t("app_template_blurb"),
-                    st.t("public_tmpl_help"),
-                    st.t("private_tmpl_help"),
-                )
+                (st.t("app_template_blurb"), st.t("public_tmpl_help"))
             };
             for (id, tip) in [
                 (ids!(app_template_help), help),
                 (ids!(setup_public_tmpl_help), public_help),
-                (ids!(setup_private_tmpl_help), private_help),
             ] {
                 self.ui
                     .widget(cx, id)
@@ -602,15 +587,7 @@ impl App {
         self.ui
             .widget(cx, ids!(setup_public_tmpl_status))
             .set_text(cx, &plain_display_text(&pub_status));
-        self.ui
-            .widget(cx, ids!(private_tmpl_title))
-            .set_text(cx, &plain_display_text(&priv_title));
-        self.ui
-            .text_input(cx, ids!(private_tmpl_code))
-            .set_empty_text(cx, app_t("private_code_ph"));
-        self.ui
-            .button(cx, ids!(private_tmpl_import))
-            .set_visible(cx, has_private && !app_busy);
+        self.ui.view(cx, ids!(setup_private_card)).set_visible(cx, false);
         self.ui
             .button(cx, ids!(public_tmpl_import))
             .set_visible(cx, sel_id.is_some() && !app_busy);
@@ -624,8 +601,13 @@ impl App {
         for (i, (idle, active)) in chips.iter().enumerate() {
             if let Some((id, title, _)) = entries.get(i) {
                 let on = sel_id.as_ref() == Some(id);
-                self.ui.button(cx, *idle).set_text(cx, title);
-                self.ui.button(cx, *active).set_text(cx, title);
+                let label = if id == catalogue_remote::PUBLIC_ITEMS_TEMPLATE_ID {
+                    title.clone()
+                } else {
+                    app_t("app_tmpl_named").replace("{name}", &template_client_name(title))
+                };
+                self.ui.button(cx, *idle).set_text(cx, &label);
+                self.ui.button(cx, *active).set_text(cx, &label);
                 self.ui.button(cx, *idle).set_visible(cx, !on && !app_busy);
                 self.ui.button(cx, *active).set_visible(cx, on && !app_busy);
             } else {
@@ -652,7 +634,7 @@ impl App {
             .set_visible(cx, !app_busy);
         self.ui
             .button(cx, ids!(private_tmpl_check))
-            .set_visible(cx, !app_busy);
+            .set_visible(cx, false);
         self.sync_device_setup_sections(cx);
     }
 

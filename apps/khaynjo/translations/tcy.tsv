@@ -368,7 +368,7 @@ only_owner_remove_server	ಒಂಜಿ ಸರ್ವರ್ ನ್ ಮಾಲೀಕ�
 owner_pin_remove_server	ಈ ಸರ್ವರ್ ನ್ ತೆಗೆಯೆರೆ ಒನರ್ PIN ಬೋಡು
 device_setup_help	ಸರ್ವರ್ ಪುಸ್ತಕೊಲೆನ್ ಮುಲ್ಪ ದೀವೊಂದುಂಡು. ಕ್ಲೈಂಟ್ ಒಂಜಿ ಸರ್ವರ್ ಗ್ ಜೋಡಿ ಆಪುಂಡು.
 app_template_heading	ಅಂಗಡಿದ ಟೆಂಪ್ಲೇಟ್‌ಲು
-app_template_blurb	ಒಂಜಿ ಸಾರ್ವಜನಿಕ ಸುರುತ ಮೆನು ಆಮದು ಮಲ್ಪುಲೆ, ಅತ್ತ್ಂಡ ನಿಕ್ಲೆನ Khaynjo ಸಂಪರ್ಕೊಡ್ದು ತಿಕ್ಕಿನ 12 ಅಂಕೆದ ಖಾಸಗಿ ಕೋಡ್ ಪಾಡ್ಲೆ.
+app_template_blurb	ಒಂಜಿ ಸುರುತ ಮೆನು ಆಯ್ಕೆ ಮಲ್ಪುಲೆ. ಬುಡ್ಂಡ ಅಂಗಡಿ ಖಾಲಿ ಉಂಡು.
 app_template_apply	ಟೆಂಪ್ಲೇಟ್ ಆಮದು ಮಲ್ಪುಲೆ
 app_template_skip	ಇತ್ತೆ ಬುಡ್ಲೆ
 app_template_status	ಸರ್ವರ್ ತಯಾರ್ — ಒಂಜಿ ಟೆಂಪ್ಲೇಟ್ ಆಮದು ಮಲ್ಪುಲೆ, ಅತ್ತ್ಂಡ ಬುಡ್ಲೆ
@@ -376,10 +376,10 @@ app_template_importing	{title} ಅನ್ವಯಿಸೊಂದುಲ್ಲೆ...
 app_template_downloading	ಟೆಂಪ್ಲೇಟ್ ಡೌನ್‌ಲೋಡ್ ಆವೊಂದುಂಡು…
 app_template_download_progress	ಡೌನ್‌ಲೋಡ್ ಆವೊಂದುಂಡು… {p}% ({d} / {t})
 app_template_download_paused	ಕೊರಿಯರೆ ಕುಡ ಆಮದು ಮಲ್ಪುಲೆ — ಮುಗಿನ ಫೈಲ್‌ಲು ಒರಿಪುಂಡು
-app_template_public_hdr	ಸಾರ್ವಜನಿಕ ಟೆಂಪ್ಲೇಟ್‌ಲು
+app_template_public_hdr	ಟೆಂಪ್ಲೇಟ್
 app_template_private_hdr	ಖಾಸಗಿ ಟೆಂಪ್ಲೇಟ್
-app_template_public_hint	ಸಾರ್ವಜನಿಕ ಪಟ್ಟಿನ್ ಲೋಡ್ ಮಲ್ಪೆರೆ ಈ ವಿಭಾಗೊನು ತೆರೆಲೆ (ಒರೊ ಇಂಟರ್ನೆಟ್ ಬೋಡು).
-app_template_code_not_found	ಕೋಡ್ ತಿಕ್ಕಿಜಿ
+app_template_public_hint	ಪಟ್ಟಿ ಲೋಡ್ ಮಲ್ಪೆರೆ ಈ ಭಾಗ ದೆಪ್ಪುಲೆ (ಒರ ಇಂಟರ್ನೆಟ್ ಬೋಡು).
+app_template_code_not_found	ಟೆಂಪ್ಲೇಟ್ ತಿಕ್ಕಿಜ್ಜಿ
 app_template_need_internet	ಟೆಂಪ್ಲೇಟ್ ಡೌನ್‌ಲೋಡ್ ಮಲ್ಪೆರೆ ಇಂಟರ್ನೆಟ್ ಬೋಡು
 app_template_import_selected	ಆಯ್ಕೆ ಮಲ್ತಿನವುನು ಆಮದು ಮಲ್ಪುಲೆ
 app_template_check_code	ಕೋಡ್ ತೂಲೆ

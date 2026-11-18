@@ -368,7 +368,7 @@ only_owner_remove_server	ਸਿਰਫ਼ Owner ਸਰਵਰ ਹਟਾ ਸਕਦ�
 owner_pin_remove_server	ਸਰਵਰ ਹਟਾਉਣ ਲਈ Owner PIN ਚਾਹੀਦਾ ਹੈ
 device_setup_help	ਸਰਵਰ ਵਹੀ ਇੱਥੇ ਰੱਖਦਾ ਹੈ। ਕਲਾਇੰਟ ਕਿਸੇ ਸਰਵਰ ਨਾਲ ਜੁੜਦਾ ਹੈ।
 app_template_heading	ਦੁਕਾਨ ਟੈਂਪਲੇਟ
-app_template_blurb	ਕੋਈ ਜਨਤਕ ਸ਼ੁਰੂਆਤੀ ਮੀਨੂ ਆਯਾਤ ਕਰੋ, ਜਾਂ ਆਪਣੇ Khaynjo ਸੰਪਰਕ ਤੋਂ ਮਿਲਿਆ 12 ਅੰਕਾਂ ਦਾ ਨਿੱਜੀ ਕੋਡ ਪਾਓ।
+app_template_blurb	ਇੱਕ ਸ਼ੁਰੂਆਤੀ ਮੀਨੂ ਚੁਣੋ। ਛੱਡਣ ਨਾਲ ਦੁਕਾਨ ਖਾਲੀ ਰਹਿੰਦੀ ਹੈ।
 app_template_apply	ਟੈਂਪਲੇਟ ਆਯਾਤ ਕਰੋ
 app_template_skip	ਹੁਣ ਛੱਡੋ
 app_template_status	ਸਰਵਰ ਤਿਆਰ — ਟੈਂਪਲੇਟ ਆਯਾਤ ਕਰੋ, ਜਾਂ ਛੱਡੋ
@@ -376,10 +376,10 @@ app_template_importing	{title} ਲਾ ਰਹੇ ਹਾਂ…
 app_template_downloading	ਟੈਂਪਲੇਟ ਡਾਊਨਲੋਡ ਹੋ ਰਿਹਾ ਹੈ…
 app_template_download_progress	ਡਾਊਨਲੋਡ ਹੋ ਰਿਹਾ ਹੈ… {p}% ({d} / {t})
 app_template_download_paused	ਮੁੜ ਸ਼ੁਰੂ ਕਰਨ ਲਈ ਦੁਬਾਰਾ ਆਯਾਤ ਕਰੋ — ਪੂਰੀਆਂ ਫ਼ਾਈਲਾਂ ਰੱਖੀਆਂ ਜਾਂਦੀਆਂ ਹਨ
-app_template_public_hdr	ਜਨਤਕ ਟੈਂਪਲੇਟ
+app_template_public_hdr	ਟੈਮਪਲੇਟ
 app_template_private_hdr	ਨਿੱਜੀ ਟੈਂਪਲੇਟ
-app_template_public_hint	ਜਨਤਕ ਸੂਚੀ ਲੋਡ ਕਰਨ ਲਈ ਇਹ ਭਾਗ ਖੋਲ੍ਹੋ (ਇੱਕ ਵਾਰ ਇੰਟਰਨੈੱਟ ਚਾਹੀਦਾ ਹੈ)।
-app_template_code_not_found	ਕੋਡ ਨਹੀਂ ਮਿਲਿਆ
+app_template_public_hint	ਸੂਚੀ ਲੋਡ ਕਰਨ ਲਈ ਇਹ ਹਿੱਸਾ ਖੋਲ੍ਹੋ (ਇੱਕ ਵਾਰ ਇੰਟਰਨੈੱਟ ਚਾਹੀਦਾ)।
+app_template_code_not_found	ਟੈਮਪਲੇਟ ਨਹੀਂ ਮਿਲਿਆ
 app_template_need_internet	ਟੈਂਪਲੇਟ ਡਾਊਨਲੋਡ ਕਰਨ ਲਈ ਇੰਟਰਨੈੱਟ ਚਾਹੀਦਾ ਹੈ
 app_template_import_selected	ਚੁਣਿਆ ਆਯਾਤ ਕਰੋ
 app_template_check_code	ਕੋਡ ਜਾਂਚੋ

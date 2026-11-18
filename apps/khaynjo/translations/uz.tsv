@@ -368,7 +368,7 @@ only_owner_remove_server	Serverni faqat Egasi olib tashlay oladi
 owner_pin_remove_server	Bu serverni olib tashlash uchun eganing PIN kodi kerak
 device_setup_help	Server daftarlarini shu yerda saqlaydi. Mijoz Serverga juftlashadi.
 app_template_heading	Do'kon shablonlari
-app_template_blurb	Ommaviy boshlang'ich menyuni import qiling yoki Khaynjo kontaktingizdan olgan 12 raqamli shaxsiy kodni kiriting.
+app_template_blurb	Boshlang‘ich menyuni tanlang. O‘tkazib yuborish do‘konni bo‘sh qoldiradi.
 app_template_apply	Shablonni import qilish
 app_template_skip	Hozircha oʻtkazib yuborish
 app_template_status	Server tayyor — shablon import qiling yoki o'tkazib yuboring
@@ -376,10 +376,10 @@ app_template_importing	{title} qoʻllanilmoqda…
 app_template_downloading	Shablon yuklab olinmoqda…
 app_template_download_progress	Yuklab olinmoqda… {p}% ({d} / {t})
 app_template_download_paused	Davom ettirish uchun qayta import qiling — tayyor fayllar saqlanadi
-app_template_public_hdr	Ommaviy shablonlar
+app_template_public_hdr	Andozalar
 app_template_private_hdr	Shaxsiy shablon
-app_template_public_hint	Ommaviy ro'yxatni yuklash uchun ushbu bo'limni oching (bir marta internet kerak).
-app_template_code_not_found	Kod topilmadi
+app_template_public_hint	Ro‘yxatni yuklash uchun shu bo‘limni oching (internet bir marta).
+app_template_code_not_found	Andoza topilmadi
 app_template_need_internet	Shablonlarni yuklab olish uchun internet kerak
 app_template_import_selected	Tanlanganni import qilish
 app_template_check_code	Kodni tekshirish

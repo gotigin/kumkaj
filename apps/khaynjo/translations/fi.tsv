@@ -368,7 +368,7 @@ only_owner_remove_server	Vain omistaja voi poistaa palvelimen
 owner_pin_remove_server	Tämän palvelimen poistoon tarvitaan omistajan PIN
 device_setup_help	Palvelin pitää kirjat täällä. Pääte paritetaan palvelimeen.
 app_template_heading	Myymäläpohjat
-app_template_blurb	Tuo julkinen aloitusmenu tai syötä Khaynjo-yhteyshenkilöltäsi saatu yksityinen 12-numeroinen koodi.
+app_template_blurb	Valitse aloitusvalikko. Ohitus jättää tyhjän kaupan.
 app_template_apply	Tuo pohja
 app_template_skip	Ohita toistaiseksi
 app_template_status	Palvelin valmis — tuo pohja tai ohita
@@ -376,10 +376,10 @@ app_template_importing	Käytetään {title}…
 app_template_downloading	Ladataan pohjaa…
 app_template_download_progress	Ladataan… {p}% ({d} / {t})
 app_template_download_paused	Tuo uudelleen jatkaaksesi — valmiit tiedostot säilyvät
-app_template_public_hdr	Julkiset pohjat
+app_template_public_hdr	Mallit
 app_template_private_hdr	Yksityinen pohja
-app_template_public_hint	Avaa tämä osio ladataksesi julkisen luettelon (internet tarvitaan kerran).
-app_template_code_not_found	Koodia ei löytynyt
+app_template_public_hint	Avaa tämä osio ladataksesi luettelon (internet kerran).
+app_template_code_not_found	Mallia ei löydy
 app_template_need_internet	Pohjien lataamiseen tarvitaan internet
 app_template_import_selected	Tuo valittu
 app_template_check_code	Tarkista koodi

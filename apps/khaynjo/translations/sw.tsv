@@ -368,7 +368,7 @@ only_owner_remove_server	Owner pekee anaweza kuondoa seva
 owner_pin_remove_server	Owner PIN inahitajika kuondoa seva hii
 device_setup_help	Seva huhifadhi vitabu hapa. Mteja huoanishwa na seva.
 app_template_heading	Violezo vya duka
-app_template_blurb	Leta menyu ya kuanzia ya umma, au weka msimbo binafsi wa tarakimu 12 kutoka kwa mwasiliani wako wa Khaynjo.
+app_template_blurb	Chagua menyu ya kuanzia. Kuruka kunaacha duka tupu.
 app_template_apply	Leta kiolezo
 app_template_skip	Piga hapo sasa
 app_template_status	Seva iko tayari — leta kiolezo, au ruka
@@ -376,10 +376,10 @@ app_template_importing	Inapokea {title}…
 app_template_downloading	Inapakua kiolezo…
 app_template_download_progress	Inapakua… {p}% ({d} / {t})
 app_template_download_paused	Leta tena ili kuendelea — faili zilizokamilika zinahifadhiwa
-app_template_public_hdr	Violezo vya umma
+app_template_public_hdr	Violezo
 app_template_private_hdr	Kiolezo binafsi
-app_template_public_hint	Fungua sehemu hii kupakia orodha ya umma (intaneti inahitajika mara moja).
-app_template_code_not_found	Msimbo haukupatikana
+app_template_public_hint	Fungua sehemu hii kupakia orodha (intaneti mara moja).
+app_template_code_not_found	Kiolezo hakijapatikana
 app_template_need_internet	Intaneti inahitajika kupakua violezo
 app_template_import_selected	Leta kilichochaguliwa
 app_template_check_code	Kagua msimbo

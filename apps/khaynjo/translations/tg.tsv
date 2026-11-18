@@ -368,7 +368,7 @@ only_owner_remove_server	Танҳо соҳиб метавонад server-ро х
 owner_pin_remove_server	Барои хориҷи ин server PIN-и соҳиб лозим аст
 device_setup_help	Server дафтарҳоро ин ҷо нигоҳ медорад. Мизоҷ бо Server ҳамоҳанг мешавад.
 app_template_heading	Қолибҳои мағоза
-app_template_blurb	Менюи ибтидоии оммавиро ворид кунед ё рамзи хусусии 12-рақамаро, ки аз тамоси Khaynjo-и худ гирифтед, ворид намоед.
+app_template_blurb	Менюи оғозро интихоб кунед. Гузарондан мағозаро холӣ мегузорад.
 app_template_apply	Ворид кардани қолиб
 app_template_skip	Ҳоло гузарон
 app_template_status	Сервер омода аст — қолиб ворид кунед ё гузаред
@@ -376,10 +376,10 @@ app_template_importing	{title} татбиқ мешавад…
 app_template_downloading	Қолиб боргирӣ мешавад…
 app_template_download_progress	Боргирӣ… {p}% ({d} / {t})
 app_template_download_paused	Барои идома боз ворид кунед — файлҳои тайёр нигоҳ дошта мешаванд
-app_template_public_hdr	Қолибҳои оммавӣ
+app_template_public_hdr	Шаблонҳо
 app_template_private_hdr	Қолиби хусусӣ
-app_template_public_hint	Барои бор кардани рӯйхати оммавӣ ин бахшро кушоед (як бор интернет лозим).
-app_template_code_not_found	Рамз ёфт нашуд
+app_template_public_hint	Барои бор кардани рӯйхат ин қисмро кушоед (интернет як бор).
+app_template_code_not_found	Шаблон ёфт нашуд
 app_template_need_internet	Барои боргирии қолибҳо интернет лозим аст
 app_template_import_selected	Ворид кардани интихобшуда
 app_template_check_code	Санҷиши рамз

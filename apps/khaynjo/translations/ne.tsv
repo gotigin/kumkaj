@@ -368,7 +368,7 @@ only_owner_remove_server	मालिकले मात्र सर्भर �
 owner_pin_remove_server	यो सर्भर हटाउन मालिकको PIN चाहिन्छ
 device_setup_help	सर्भरले खाता यहीँ राख्छ। क्लाइन्ट सर्भरसँग जोडिन्छ।
 app_template_heading	पसल टेम्प्लेट
-app_template_blurb	सार्वजनिक सुरुआती मेनु आयात गर्नुहोस्, वा आफ्नो Khaynjo सम्पर्कबाट पाएको १२ अङ्कको निजी कोड हाल्नुहोस्।
+app_template_blurb	सुरुको मेनु छान्नुहोस्। छोड्दा पसल रित्तो रहन्छ।
 app_template_apply	टेम्प्लेट आयात गर्नुहोस्
 app_template_skip	अहिलेलाई छोड्नुहोस्
 app_template_status	सर्भर तयार — टेम्प्लेट आयात गर्नुहोस्, वा छोड्नुहोस्
@@ -376,10 +376,10 @@ app_template_importing	{title} लगाउँदै…
 app_template_downloading	टेम्प्लेट डाउनलोड हुँदैछ…
 app_template_download_progress	डाउनलोड हुँदैछ… {p}% ({d} / {t})
 app_template_download_paused	फेरि सुरु गर्न पुनः आयात गर्नुहोस् — पूरा भएका फाइलहरू राखिन्छन्
-app_template_public_hdr	सार्वजनिक टेम्प्लेट
+app_template_public_hdr	टेम्प्लेट
 app_template_private_hdr	निजी टेम्प्लेट
-app_template_public_hint	सार्वजनिक सूची लोड गर्न यो खण्ड खोल्नुहोस् (एक पटक इन्टरनेट चाहिन्छ)।
-app_template_code_not_found	कोड भेटिएन
+app_template_public_hint	सूची लोड गर्न यो भाग खोल्नुहोस् (एक पटक इन्टरनेट चाहिन्छ)।
+app_template_code_not_found	टेम्प्लेट भेटिएन
 app_template_need_internet	टेम्प्लेट डाउनलोड गर्न इन्टरनेट चाहिन्छ
 app_template_import_selected	छानिएको आयात गर्नुहोस्
 app_template_check_code	कोड जाँच्नुहोस्

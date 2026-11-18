@@ -368,7 +368,7 @@ only_owner_remove_server	Umnini kuphela onokususa iseva
 owner_pin_remove_server	I-PIN yomnini iyafuneka ukususa le seva
 device_setup_help	Iseva igcina iincwadi apha. Iklayenti idityaniswa neSeva.
 app_template_heading	Iitemplate zevenkile
-app_template_blurb	Ngenisa imenyu yokuqala yoluntu, okanye ufake ikhowudi yabucala yamanani ali-12 evela kumntu wakho woqhagamshelwano weKhaynjo.
+app_template_blurb	Khetha imenyu yokuqala. Ukutsiba kushiya ivenkile ingenanto.
 app_template_apply	Ngenisa itemplate
 app_template_skip	Tsiba okwangoku
 app_template_status	Iseva ilungile — ngenisa itemplate, okanye utsibe
@@ -376,10 +376,10 @@ app_template_importing	Ifaka {title}…
 app_template_downloading	Itemplate iyakhutshelwa…
 app_template_download_progress	Iyakhuphela… {p}% ({d} / {t})
 app_template_download_paused	Ngenisa kwakhona ukuze uqhubeke — iifayile ezigqityiweyo ziyagcinwa
-app_template_public_hdr	Iitemplate zoluntu
+app_template_public_hdr	Iitemplate
 app_template_private_hdr	Itemplate yabucala
-app_template_public_hint	Vula eli candelo ukuze ulayishe uluhlu loluntu (kufuneka i-intanethi kanye).
-app_template_code_not_found	Ikhowudi ayifumanekanga
+app_template_public_hint	Vula eli candelo ukulayisha uluhlu (i-intanethi kanye).
+app_template_code_not_found	Itemplate ayifunyanwanga
 app_template_need_internet	Kufuneka i-intanethi ukukhuphela iitemplate
 app_template_import_selected	Ngenisa okukhethiweyo
 app_template_check_code	Khangela ikhowudi

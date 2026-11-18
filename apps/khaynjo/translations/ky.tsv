@@ -368,7 +368,7 @@ only_owner_remove_server	Серверди Ээси гана өчүрө алат
 owner_pin_remove_server	Бул серверди алып салуу үчүн ээси PIN талап кылынат
 device_setup_help	Сервер бул жерде бухгалтердик китепти сактайт. Кардар серверге жупташат.
 app_template_heading	Дүкөн шаблондору
-app_template_blurb	Жалпыга ачык баштапкы менюну импорттоңуз же Khaynjo байланышыңыздан алган 12 сандуу жеке кодду киргизиңиз.
+app_template_blurb	Баштапкы менюну тандаңыз. Өткөрүп жиберүү бош дүкөн калтырат.
 app_template_apply	Шаблонду импорттоо
 app_template_skip	Азырынча өткөрүп жибериңиз
 app_template_status	Сервер даяр — шаблон импорттоңуз же өткөрүп жибериңиз
@@ -376,10 +376,10 @@ app_template_importing	{title} колдонулууда…
 app_template_downloading	Шаблон жүктөлүүдө…
 app_template_download_progress	Жүктөлүүдө… {p}% ({d} / {t})
 app_template_download_paused	Улантуу үчүн кайра импорттоңуз — даяр файлдар сакталат
-app_template_public_hdr	Жалпы шаблондор
+app_template_public_hdr	Үлгүлөр
 app_template_private_hdr	Жеке шаблон
-app_template_public_hint	Жалпы тизмени жүктөө үчүн бул бөлүмдү ачыңыз (бир жолу интернет керек).
-app_template_code_not_found	Код табылган жок
+app_template_public_hint	Тизмени жүктөө үчүн бул бөлүмдү ачыңыз (интернет бир жолу).
+app_template_code_not_found	Үлгү табылган жок
 app_template_need_internet	Шаблондорду жүктөө үчүн интернет керек
 app_template_import_selected	Тандалганды импорттоо
 app_template_check_code	Кодду текшерүү

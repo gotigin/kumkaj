@@ -368,7 +368,7 @@ only_owner_remove_server	फकत मालकाकच सर्वर का�
 owner_pin_remove_server	हो सर्वर काडून उडोवपाक मालक पिन जाय
 device_setup_help	सर्वर पुस्तकां हांगा दवरता. क्लायंट जोडी सर्वराक.
 app_template_heading	दुकान टेम्पलेट
-app_template_blurb	एक सार्वजनीक सुरवातेचो मेन्यू आयात करात, वा तुमच्या Khaynjo संपर्का कडल्यान मेळिल्लो 12 आंकड्यांचो खाजगी कोड घालात.
+app_template_blurb	एक सुरवेचो मेनू वेंचात. सोडल्यार दुकान रिकामें उरता.
 app_template_apply	टेम्पलेट आयात करात
 app_template_skip	आतां खातीर वगडावचें
 app_template_status	सर्व्हर तयार — टेम्पलेट आयात करात, वा सोडात
@@ -376,10 +376,10 @@ app_template_importing	{title} लागू करप...
 app_template_downloading	टेम्पलेट डाउनलोड जाता…
 app_template_download_progress	डाउनलोड जाता… {p}% ({d} / {t})
 app_template_download_paused	परत सुरू करपाक परत आयात करात — पुराय जाल्ल्यो फायली दवरतात
-app_template_public_hdr	सार्वजनीक टेम्पलेट
+app_template_public_hdr	टेम्पलेट
 app_template_private_hdr	खाजगी टेम्पलेट
-app_template_public_hint	सार्वजनीक वळेरी लोड करपाक हो विभाग उगडात (एक फावट इंटरनेट जाय).
-app_template_code_not_found	कोड मेळूंक ना
+app_template_public_hint	वळेरी लोड करपाक हो भाग उगडात (एक फावट इंटरनेट जाय).
+app_template_code_not_found	टेम्पलेट मेळूंक ना
 app_template_need_internet	टेम्पलेट डाउनलोड करपाक इंटरनेट जाय
 app_template_import_selected	वेंचिल्लें आयात करात
 app_template_check_code	कोड तपासात

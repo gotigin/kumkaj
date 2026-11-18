@@ -1028,26 +1028,20 @@ mod tests {
         std::path::Path::new(env!("CARGO_MANIFEST_DIR")).join("../..").join(rel)
     }
 
-    /// The Menus section quotes the public catalogue — keep the numbers true.
+    /// The Menus section does not offer a private code. The live list is
+    /// `public/index.json` (the photo shelf, plus authored packs when published).
     #[test]
     fn template_cards_match_the_public_catalogue() {
         let ui = include_str!("ui.rs");
         let cdn = std::path::Path::new(env!("CARGO_MANIFEST_DIR")).join("static/v1/catalogue/public");
         let index = std::fs::read_to_string(cdn.join("index.json")).unwrap();
-        for id in ["khaynjo-starter", "cafe-starter", "khaynjo-items"] {
-            assert!(index.contains(&format!("\"id\": \"{id}\"")), "{id} in public/index.json");
-        }
-        // No private pack is ever named on the public page.
-        assert!(!ui.to_lowercase().contains("rajdhani"));
-        let count = |rel: &str, needle: &str| {
-            std::fs::read_to_string(cdn.join(rel)).unwrap().matches(needle).count()
-        };
-        let starter_dishes = count("templates/khaynjo-starter/template.json", "\"price\"");
-        let starter_cats = count("templates/khaynjo-starter/template.json", "\"items\"");
-        let cafe_dishes = count("templates/cafe-starter/template.json", "\"price\"");
-        let cafe_cats = count("templates/cafe-starter/template.json", "\"items\"");
-        assert!(ui.contains(&format!("{starter_dishes} dishes · {starter_cats} categories")), "starter {starter_dishes}/{starter_cats}");
-        assert!(ui.contains(&format!("{cafe_dishes} dishes · {cafe_cats} categories")), "cafe {cafe_dishes}/{cafe_cats}");
+        assert!(
+            index.contains("\"id\": \"khaynjo-items\""),
+            "khaynjo-items in public/index.json"
+        );
+        let lower = ui.to_lowercase();
+        assert!(!lower.contains("12-digit"), "no private catalogue code on the site");
+        assert!(!lower.contains("private code"));
         // Shelf photo count comes from the items index (synced at publish).
         if let Ok(items) = std::fs::read_to_string(cdn.join("items/index.json")) {
             let n: usize = items

@@ -368,7 +368,7 @@ only_owner_remove_server	رڳو مالڪ سرور هٽائي سگھي ٿو
 owner_pin_remove_server	مالڪ PIN کي هن سرور کي هٽائڻ جي ضرورت آهي
 device_setup_help	Server هتي ڪتاب رکي ٿو. Client جو جوڙو Server سان آهي.
 app_template_heading	دڪان جا ٽيمپليٽ
-app_template_blurb	ڪو عوامي شروعاتي مينيو درآمد ڪريو، يا پنهنجي Khaynjo رابطي کان مليل 12 انگن وارو ذاتي ڪوڊ لکو.
+app_template_blurb	هڪ شروعاتي مينيو چونڊيو. ڇڏڻ دڪان خالي ڇڏي ٿو.
 app_template_apply	ٽيمپليٽ درآمد ڪريو
 app_template_skip	هاڻي لاءِ ڇڏي ڏيو
 app_template_status	سرور تيار — ٽيمپليٽ درآمد ڪريو، يا ڇڏي ڏيو
@@ -376,10 +376,10 @@ app_template_importing	{title} لاڳو ٿي رهيو آهي...
 app_template_downloading	ٽيمپليٽ ڊائونلوڊ ٿي رهيو آهي…
 app_template_download_progress	ڊائونلوڊ ٿي رهيو آهي… {p}% ({d} / {t})
 app_template_download_paused	ٻيهر شروع ڪرڻ لاءِ ٻيهر درآمد ڪريو — مڪمل فائلون رکيون وڃن ٿيون
-app_template_public_hdr	عوامي ٽيمپليٽ
+app_template_public_hdr	ٽيمپليٽ
 app_template_private_hdr	ذاتي ٽيمپليٽ
-app_template_public_hint	عوامي فهرست لوڊ ڪرڻ لاءِ هي حصو کوليو (هڪ ڀيرو انٽرنيٽ گهرجي).
-app_template_code_not_found	ڪوڊ نه مليو
+app_template_public_hint	فهرست لوڊ ڪرڻ لاءِ هي حصو کوليو (هڪ ڀيرو انٽرنيٽ گهرجي).
+app_template_code_not_found	ٽيمپليٽ نه مليو
 app_template_need_internet	ٽيمپليٽ ڊائونلوڊ ڪرڻ لاءِ انٽرنيٽ گهرجي
 app_template_import_selected	چونڊيل درآمد ڪريو
 app_template_check_code	ڪوڊ جانچيو

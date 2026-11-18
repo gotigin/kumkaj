@@ -368,7 +368,7 @@ only_owner_remove_server	Само власник може уклонити се�
 owner_pin_remove_server	Власник PIN је обавезан да уклони овај сервер
 device_setup_help	Сервер чува књиге овде. Клијент се упарује са сервером.
 app_template_heading	Шаблони продавнице
-app_template_blurb	Увезите јавни почетни мени или унесите приватни 12-цифрени код од свог Khaynjo контакта.
+app_template_blurb	Изаберите почетни мени. Прескакање оставља празну продавницу.
 app_template_apply	Увези шаблон
 app_template_skip	Прескочи за сада
 app_template_status	Сервер спреман — увезите шаблон или прескочите
@@ -376,10 +376,10 @@ app_template_importing	Примењује се {title}…
 app_template_downloading	Преузимање шаблона…
 app_template_download_progress	Преузимање… {p}% ({d} / {t})
 app_template_download_paused	Увезите поново за наставак — завршене датотеке се чувају
-app_template_public_hdr	Јавни шаблони
+app_template_public_hdr	Шаблони
 app_template_private_hdr	Приватни шаблон
-app_template_public_hint	Отворите овај одељак да учитате јавну листу (интернет је потребан једном).
-app_template_code_not_found	Код није пронађен
+app_template_public_hint	Отворите овај део да учитате списак (интернет једном).
+app_template_code_not_found	Шаблон није пронађен
 app_template_need_internet	За преузимање шаблона потребан је интернет
 app_template_import_selected	Увези изабрано
 app_template_check_code	Провери код

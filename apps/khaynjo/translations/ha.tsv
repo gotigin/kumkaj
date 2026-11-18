@@ -368,7 +368,7 @@ only_owner_remove_server	Mamallaki kaɗai ne zai iya cire server
 owner_pin_remove_server	Ana buƙatar PIN na mamallaki don cire wannan server
 device_setup_help	Server yana riƙe da littattafai a nan. Abokin haɗi yana haɗuwa da Server.
 app_template_heading	Samfuran shago
-app_template_blurb	Shigo da menu na farawa na jama'a, ko shigar da lambar sirri mai lamba 12 daga wanda kuke hulɗa da shi a Khaynjo.
+app_template_blurb	Zaɓi menu na farawa. Tsallakawa tana barin shago fanko.
 app_template_apply	Shigo da samfuri
 app_template_skip	Tsallake yanzu
 app_template_status	Sabar a shirye — shigo da samfuri, ko tsallake
@@ -376,10 +376,10 @@ app_template_importing	Ana amfani da {title}…
 app_template_downloading	Ana saukar da samfuri…
 app_template_download_progress	Ana saukewa… {p}% ({d} / {t})
 app_template_download_paused	Sake shigo da shi don ci gaba — ana ajiye fayilolin da suka kammala
-app_template_public_hdr	Samfuran jama'a
+app_template_public_hdr	Samfura
 app_template_private_hdr	Samfurin sirri
-app_template_public_hint	Buɗe wannan sashe don loda jerin jama'a (ana buƙatar intanet sau ɗaya).
-app_template_code_not_found	Ba a sami lambar ba
+app_template_public_hint	Buɗe wannan sashe don loda jerin (intanet sau ɗaya).
+app_template_code_not_found	Ba a sami samfurin ba
 app_template_need_internet	Ana buƙatar intanet don saukar da samfura
 app_template_import_selected	Shigo da zaɓaɓɓe
 app_template_check_code	Duba lamba

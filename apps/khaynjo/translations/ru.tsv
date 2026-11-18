@@ -368,7 +368,7 @@ only_owner_remove_server	Удалить сервер может только в�
 owner_pin_remove_server	Чтобы удалить этот сервер, нужен PIN владельца
 device_setup_help	Сервер хранит учёт здесь. Клиент подключается к серверу.
 app_template_heading	Шаблоны магазина
-app_template_blurb	Импортируйте общедоступное стартовое меню или введите личный 12-значный код от вашего контакта в Khaynjo.
+app_template_blurb	Выберите стартовое меню. Пропуск оставляет пустой магазин.
 app_template_apply	Импортировать шаблон
 app_template_skip	Пропустить пока
 app_template_status	Сервер готов — импортируйте шаблон или пропустите
@@ -376,10 +376,10 @@ app_template_importing	Применяется {title}…
 app_template_downloading	Загрузка шаблона…
 app_template_download_progress	Загрузка… {p}% ({d} / {t})
 app_template_download_paused	Импортируйте снова, чтобы продолжить — готовые файлы сохраняются
-app_template_public_hdr	Общие шаблоны
+app_template_public_hdr	Шаблоны
 app_template_private_hdr	Личный шаблон
-app_template_public_hint	Откройте этот раздел, чтобы загрузить общий список (интернет нужен один раз).
-app_template_code_not_found	Код не найден
+app_template_public_hint	Откройте этот раздел, чтобы загрузить список (интернет один раз).
+app_template_code_not_found	Шаблон не найден
 app_template_need_internet	Для загрузки шаблонов нужен интернет
 app_template_import_selected	Импортировать выбранное
 app_template_check_code	Проверить код

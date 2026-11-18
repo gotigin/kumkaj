@@ -368,7 +368,7 @@ only_owner_remove_server	ሰርቨርን ማስወገድ የሚችለው ባለ�
 owner_pin_remove_server	ይህን ሰርቨር ለማስወገድ የባለቤት ፒን ያስፈልጋል
 device_setup_help	ሰርቨር መዝገቦቹን እዚህ ይይዛል። ክላየንት ከሰርቨር ጋር ይጣመራል።
 app_template_heading	የሱቅ አብነቶች
-app_template_blurb	ይፋዊ የመጀመሪያ ምናሌ ያስገቡ፣ ወይም ከKhaynjo አድራሻዎ የተቀበሉትን ባለ 12 አሃዝ የግል ኮድ ያስገቡ።
+app_template_blurb	መነሻ ምናሌ ይምረጡ። መዝለል ባዶ ሱቅ ይተዋል።
 app_template_apply	አብነት አስገባ
 app_template_skip	ለአሁን ዝለል
 app_template_status	አገልጋዩ ዝግጁ ነው — አብነት ያስገቡ ወይም ይዝለሉ
@@ -376,10 +376,10 @@ app_template_importing	{title} በመተግበር ላይ…
 app_template_downloading	አብነት በማውረድ ላይ…
 app_template_download_progress	በማውረድ ላይ… {p}% ({d} / {t})
 app_template_download_paused	ለመቀጠል እንደገና ያስገቡ — የተጠናቀቁ ፋይሎች ይቀመጣሉ
-app_template_public_hdr	ይፋዊ አብነቶች
+app_template_public_hdr	አብነቶች
 app_template_private_hdr	የግል አብነት
-app_template_public_hint	ይፋዊ ዝርዝሩን ለመጫን ይህን ክፍል ይክፈቱ (አንድ ጊዜ ኢንተርኔት ያስፈልጋል)።
-app_template_code_not_found	ኮዱ አልተገኘም
+app_template_public_hint	ዝርዝሩን ለመጫን ይህን ክፍል ይክፈቱ (ኢንተርኔት አንድ ጊዜ ያስፈልጋል)።
+app_template_code_not_found	አብነት አልተገኘም
 app_template_need_internet	አብነቶችን ለማውረድ ኢንተርኔት ያስፈልጋል
 app_template_import_selected	የተመረጠውን አስገባ
 app_template_check_code	ኮድ አረጋግጥ

@@ -368,7 +368,7 @@ only_owner_remove_server	Vetëm Pronari mund të heqë një server
 owner_pin_remove_server	PIN-i i pronarit kërkohet për të hequr këtë server
 device_setup_help	Serveri i mban librat këtu. Terminali çiftohet me një Server.
 app_template_heading	Shabllone dyqani
-app_template_blurb	Importoni një meny fillestare publike, ose shkruani një kod privat 12-shifror nga kontakti juaj Khaynjo.
+app_template_blurb	Zgjidhni një menu fillestare. Kapërcimi lë një dyqan bosh.
 app_template_apply	Importo shabllonin
 app_template_skip	Anashkalo për tani
 app_template_status	Serveri është gati — importoni një shabllon ose kaloni
@@ -376,10 +376,10 @@ app_template_importing	Po zbatohet {title}…
 app_template_downloading	Po shkarkohet shablloni…
 app_template_download_progress	Po shkarkohet… {p}% ({d} / {t})
 app_template_download_paused	Importo përsëri për të vazhduar — skedarët e përfunduar ruhen
-app_template_public_hdr	Shabllone publike
+app_template_public_hdr	Shabllone
 app_template_private_hdr	Shabllon privat
-app_template_public_hint	Hapni këtë seksion për të ngarkuar listën publike (duhet internet një herë).
-app_template_code_not_found	Kodi nuk u gjet
+app_template_public_hint	Hapni këtë pjesë për të ngarkuar listën (internet një herë).
+app_template_code_not_found	Shablloni nuk u gjet
 app_template_need_internet	Duhet internet për të shkarkuar shabllone
 app_template_import_selected	Importo të zgjedhurin
 app_template_check_code	Kontrollo kodin

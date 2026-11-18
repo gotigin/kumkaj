@@ -363,7 +363,7 @@ Contract: [`apps/khaynjo/docs/CATALOGUE_URLS.md`](../apps/khaynjo/docs/CATALOGUE
 | 7 | Windows code-signing; Play developer account | Packaging |
 | 8 | Native-speaker review for Hindi / Gujarati copy | Phase 4 |
 | 9 | Real shop photos / testimonials with consent — or none | Never invented |
-| 10 | Dish photos on the product site | Khaynjo: public shelf under `/v1/catalogue/public/items/` + curated chapter media (owner OK). Private client packs stay off the public index. |
+| 10 | Dish photos on the product site | Khaynjo: photo shelf under `/v1/catalogue/public/items/` + curated chapter media (owner OK). Shop templates, including Rajdhani, are rows on the same public `/v1/catalogue` index. |
 
 ------------------------------------------------------------------------
 

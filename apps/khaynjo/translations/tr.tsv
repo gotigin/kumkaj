@@ -368,7 +368,7 @@ only_owner_remove_server	Sunucuyu yalnızca Owner silebilir
 owner_pin_remove_server	Bu sunucuyu kaldırmak için Owner PIN gerekli
 device_setup_help	Sunucu defterleri burada tutar. İstemci bir sunucuyla eşleşir.
 app_template_heading	Mağaza şablonları
-app_template_blurb	Herkese açık bir başlangıç menüsü içe aktarın veya Khaynjo bağlantınızdan aldığınız 12 haneli özel kodu girin.
+app_template_blurb	Bir başlangıç menüsü seçin. Atlamak boş dükkân bırakır.
 app_template_apply	Şablonu içe aktar
 app_template_skip	Şimdilik atla
 app_template_status	Sunucu hazır — bir şablon içe aktarın veya atlayın
@@ -376,10 +376,10 @@ app_template_importing	{title} uygulanıyor…
 app_template_downloading	Şablon indiriliyor…
 app_template_download_progress	İndiriliyor… {p}% ({d} / {t})
 app_template_download_paused	Devam etmek için yeniden içe aktarın — tamamlanan dosyalar saklanır
-app_template_public_hdr	Herkese açık şablonlar
+app_template_public_hdr	Şablonlar
 app_template_private_hdr	Özel şablon
-app_template_public_hint	Herkese açık listeyi yüklemek için bu bölümü açın (bir kez internet gerekir).
-app_template_code_not_found	Kod bulunamadı
+app_template_public_hint	Listeyi yüklemek için bu bölümü açın (internet bir kez).
+app_template_code_not_found	Şablon bulunamadı
 app_template_need_internet	Şablonları indirmek için internet gerekir
 app_template_import_selected	Seçileni içe aktar
 app_template_check_code	Kodu kontrol et

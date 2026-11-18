@@ -368,7 +368,7 @@ only_owner_remove_server	ꯃꯄꯨꯅꯈꯛꯇ server ꯂꯣꯠꯄ ꯌꯥꯏ
 owner_pin_remove_server	server ꯑꯁꯤ ꯂꯣꯠꯅꯕ ꯃꯄꯨꯒꯤ PIN ꯃꯊꯧ ꯇꯥꯏ
 device_setup_help	Serverꯅ ꯂꯥꯏꯔꯤꯛ ꯃꯐꯝ ꯑꯁꯤꯗ ꯊꯝꯏ. ꯈꯣꯡꯖꯦꯜ Serverꯒ ꯆꯨꯝꯅꯏ.
 app_template_heading	ꯗꯨꯀꯥꯟꯒꯤ ꯇꯦꯝꯄ꯭ꯂꯦꯠꯁꯤꯡ
-app_template_blurb	ꯃꯤꯌꯥꯝꯒꯤ ꯍꯧꯔꯛꯐꯝ ꯃꯦꯅꯨ ꯑꯃꯥ ꯏꯝꯄꯣꯔꯠ ꯇꯧꯕꯤꯌꯨ, ꯅꯠꯇ꯭ꯔꯒꯥ ꯅꯍꯥꯛꯀꯤ Khaynjo ꯀꯟꯇꯦꯛꯇꯇꯒꯤ ꯐꯪꯂꯕꯥ ꯃꯁꯤꯡ 12 ꯂꯩꯕꯥ ꯃꯁꯥꯒꯤ ꯀꯣꯗ ꯊꯥꯖꯤꯟꯕꯤꯌꯨ꯫
+app_template_blurb	অহানগী মেনু খাইবিয়ু। স্কিপ তৌবদা দুকান অহাংবা ওইরগে।
 app_template_apply	ꯇꯦꯝꯄ꯭ꯂꯦꯠ ꯏꯝꯄꯣꯔꯠ ꯇꯧꯕꯤꯌꯨ
 app_template_skip	ꯍꯧꯖꯤꯛ ꯀꯣꯏꯗꯣꯛꯎ
 app_template_status	ꯁꯔꯚꯔ ꯁꯦꯝ ꯁꯥꯔꯦ — ꯇꯦꯝꯄ꯭ꯂꯦꯠ ꯑꯃꯥ ꯏꯝꯄꯣꯔꯠ ꯇꯧꯕꯤꯌꯨ, ꯅꯠꯇ꯭ꯔꯒꯥ ꯊꯥꯗꯣꯛꯄꯤꯌꯨ
@@ -376,10 +376,10 @@ app_template_importing	{title} ꯁꯤꯖꯤꯟꯅꯔꯤ…
 app_template_downloading	ꯇꯦꯝꯄ꯭ꯂꯦꯠ ꯗꯥꯎꯟꯂꯣꯗ ꯇꯧꯔꯤ…
 app_template_download_progress	ꯗꯥꯎꯟꯂꯣꯗ ꯇꯧꯔꯤ… {p}% ({d} / {t})
 app_template_download_paused	ꯃꯈꯥ ꯆꯥꯡꯅꯕꯥ ꯑꯃꯨꯛ ꯍꯟꯅꯥ ꯏꯝꯄꯣꯔꯠ ꯇꯧꯕꯤꯌꯨ — ꯂꯣꯏꯔꯕꯥ ꯐꯥꯏꯜꯁꯤꯡ ꯊꯝꯂꯤ
-app_template_public_hdr	ꯃꯤꯌꯥꯝꯒꯤ ꯇꯦꯝꯄ꯭ꯂꯦꯠꯁꯤꯡ
+app_template_public_hdr	টেমপ্লেট
 app_template_private_hdr	ꯃꯁꯥꯒꯤ ꯇꯦꯝꯄ꯭ꯂꯦꯠ
-app_template_public_hint	ꯃꯤꯌꯥꯝꯒꯤ ꯂꯤꯁ꯭ꯠ ꯂꯣꯗ ꯇꯧꯅꯕꯥ ꯁꯦꯛꯁꯟ ꯑꯁꯤ ꯍꯥꯡꯗꯣꯛꯄꯤꯌꯨ (ꯑꯃꯨꯛ ꯏꯟꯇꯔꯅꯦꯠ ꯃꯊꯧ ꯇꯥꯏ)꯫
-app_template_code_not_found	ꯀꯣꯗ ꯐꯪꯗꯦ
+app_template_public_hint	লিস্ট লোড তৌনবা অসি খন্দো হাংবিয়ু (ইন্টারনেট অমুক হন্না দরকার)।
+app_template_code_not_found	টেমপ্লেট ফংদ্রি
 app_template_need_internet	ꯇꯦꯝꯄ꯭ꯂꯦꯠ ꯗꯥꯎꯟꯂꯣꯗ ꯇꯧꯅꯕꯥ ꯏꯟꯇꯔꯅꯦꯠ ꯃꯊꯧ ꯇꯥꯏ
 app_template_import_selected	ꯈꯅꯕꯥ ꯑꯗꯨ ꯏꯝꯄꯣꯔꯠ ꯇꯧꯕꯤꯌꯨ
 app_template_check_code	ꯀꯣꯗ ꯌꯦꯡꯕꯤꯌꯨ

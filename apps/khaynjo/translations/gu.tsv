@@ -368,7 +368,7 @@ only_owner_remove_server	ફક્ત Owner સર્વર દૂર કરી 
 owner_pin_remove_server	સર્વર દૂર કરવા Owner PIN જોઈએ
 device_setup_help	સર્વર ચોપડા અહીં જ રાખે છે. ક્લાયન્ટ કોઈ સર્વર સાથે જોડાય છે.
 app_template_heading	દુકાન ટેમ્પ્લેટ
-app_template_blurb	જાહેર શરૂઆતનું મેનૂ આયાત કરો, અથવા તમારા Khaynjo સંપર્ક પાસેથી મળેલો 12 અંકનો ખાનગી કોડ દાખલ કરો.
+app_template_blurb	શરૂઆતનું મેનૂ પસંદ કરો. છોડવાથી દુકાન ખાલી રહે.
 app_template_apply	ટેમ્પ્લેટ આયાત કરો
 app_template_skip	હમણાં છોડો
 app_template_status	સર્વર તૈયાર — ટેમ્પ્લેટ આયાત કરો, અથવા છોડો
@@ -376,10 +376,10 @@ app_template_importing	{title} લાગુ કરી રહ્યાં છી�
 app_template_downloading	ટેમ્પ્લેટ ડાઉનલોડ થાય છે…
 app_template_download_progress	ડાઉનલોડ થાય છે… {p}% ({d} / {t})
 app_template_download_paused	ફરી શરૂ કરવા ફરીથી આયાત કરો — પૂરી થયેલી ફાઇલો રહે છે
-app_template_public_hdr	જાહેર ટેમ્પ્લેટ
+app_template_public_hdr	ટેમ્પલેટ
 app_template_private_hdr	ખાનગી ટેમ્પ્લેટ
-app_template_public_hint	જાહેર યાદી લોડ કરવા આ વિભાગ ખોલો (એક વાર ઇન્ટરનેટ જોઈએ).
-app_template_code_not_found	કોડ મળ્યો નથી
+app_template_public_hint	યાદી લોડ કરવા આ વિભાગ ખોલો (એક વાર ઇન્ટરનેટ જોઈએ).
+app_template_code_not_found	ટેમ્પલેટ મળ્યું નહીં
 app_template_need_internet	ટેમ્પ્લેટ ડાઉનલોડ કરવા ઇન્ટરનેટ જોઈએ
 app_template_import_selected	પસંદ કરેલું આયાત કરો
 app_template_check_code	કોડ તપાસો

@@ -47,8 +47,8 @@ struct AppState {
     picking_server: bool,
     /// True while a brand-new server offers remote catalogue templates (before Owner PIN).
     awaiting_app_template: bool,
-    /// Cached public catalogue rows for the DeviceSetup accordion.
-    catalogue_public: Vec<(String, String, String)>, // id, title, blurb
+    /// Cached public catalogue rows (id, title, blurb) for Shop templates and Menu.
+    catalogue_public: Vec<(String, String, String)>,
     /// Last public-index fetch error (empty when ok / idle).
     catalogue_public_error: String,
     /// Private code last successfully peeked (12 digits).
@@ -218,7 +218,7 @@ struct AppState {
     bill_slip_draft: print_share::BillSlipFormat,
     /// Which bill line's show / size / weight / align is open.
     bill_style_field: print_share::BillStyleField,
-    /// DeviceSetup accordions (`language`, `role`, `public_templates`, `private_template`).
+    /// DeviceSetup accordions (`language`, `role`, `public_templates`).
     device_setup_sections_open: Vec<String>,
     /// Pending custom icon path from picker (before Save brand).
     draft_venue_icon_path: Option<PathBuf>,
@@ -286,19 +286,18 @@ struct AppState {
     /// only). `None` = first Choose a table (seat unsent desk punches).
     picking_from_table_id: Option<String>,
     /// The field whose "type or pick" list is open, and its rows.
-    /// Menu screen private items template (12-digit code): the code checked,
-    /// the pack title it opened, and whether the running catalogue fetch /
-    /// import was started from the Menu screen (menu items only, no shop
-    /// settings or staff — those are the onboarding App template).
+    /// Kept for a later paid gate. The Menu and Shop template screens do not
+    /// ask for a code; a public pack imported from Menu is items-only because
+    /// onboarding (`awaiting_app_template`) is the only place that applies
+    /// shop settings.
     menu_priv_code: String,
     menu_priv_title: String,
     menu_priv_origin: bool,
-    /// Menu → Item templates accordions that are open ("menu_public_tmpl",
-    /// "menu_private_tmpl"). Closed by default — headers + ℹ only.
+    /// Menu → Item templates accordions that are open (`menu_public_tmpl`).
+    /// Closed by default — header + ℹ only.
     menu_tmpl_open: Vec<String>,
-    /// Menu → Public templates: the Khaynjo Items Template chip is selected
-    /// (shows Import selected), as the onboarding public chips do.
-    template_pick: bool,
+    /// Menu → Templates: the selected public catalogue id (shows Import selected).
+    menu_selected_id: Option<String>,
     /// Open Copy / Select all menu (selection_menu.rs), read at draw time.
     sel_menu: Option<SelMenuOpen>,
     suggest_open: Option<SuggestField>,

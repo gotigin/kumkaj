@@ -5,7 +5,9 @@ base**, not inside the install binary. Fonts stay packaged; catalogue photos
 and named templates download after Server is chosen on first onboard.
 
 Sibling apps reuse the same path grammar with their own host
-(`moklanjo.com`, `kirano.shop`, `tabiyat.shop`).
+(`moklanjo.com`, `kirano.shop`, `tabiyat.shop`). The list is public.
+A paid, gated catalogue is a later feature; this document does not describe
+a private code.
 
 ## Namespace
 
@@ -28,26 +30,25 @@ https://khaynjo.com/v1/catalogue
 `./sites/khaynjo/scripts/deploy-firebase.sh` so
 `https://khaynjo.com/v1/catalogue/…` sits on the same host as `/`,
 `/privacy` (formatted from `apps/khaynjo/docs/PRIVACY.md`), and `/terms`.
-Config: `sites/khaynjo/firebase.json`. Private packs may live under
-`static/v1/catalogue/private/` on the host without being committed.
+Config: `sites/khaynjo/firebase.json`.
 
 Offline / staging tests: `KHAYNJO_CATALOGUE_DIR` may point at that folder (or
 any mirror with the same layout) so the app reads files without HTTP.
 
-## Two optional app-level templates
+## One public list
 
-Neither is forced — DeviceSetup **Skip for now** leaves an empty shop.
+Nothing is forced — DeviceSetup **Skip for now** leaves an empty shop.
 
-| Visibility | What | Where |
+| Template | What | Where |
 |---|---|---|
-| **Public** | **Khaynjo Full Template** — full dish photo shelf (`kind: shelf`) | `public/index.json` → `khaynjo-items` |
-| **Private** | A client's pack — e.g. **Rajdhani**: that client's menu + `shop_defaults.json` (shop name + logo, staff, tax chrome, KOT, …); exported packs carry the whole setup (see "Export template") | `private/{12digit}/` only |
+| **Khaynjo Full Template** | Full dish photo shelf (`kind: shelf`) | `public/index.json` → `khaynjo-items` |
+| **Authored pack** | A shop's menu + `shop_defaults.json` (shop name + logo, staff, tax chrome, KOT, …). **Rajdhani** today. Onboarding applies the whole pack ("{name} App Template"). Menu imports **items only** ("{name} Template"). | `public/templates/<id>/` and a row in `public/index.json` |
 
 Rajdhani is **not** shipped under `assets/templates/`. Authoring lives in
 `apps/khaynjo/catalogue/private-src/rajdhani/` and is published with
-`publish-catalogue.sh --private-rajdhani --code=…`. The install binary has
-no prestored Rajdhani menu or Zahir/Asif/Nawaz names — those come from the
-downloaded pack's `template.json` + `shop_defaults.json`.
+`publish-catalogue.sh --public-rajdhani`. The install binary has no prestored
+Rajdhani menu or Zahir/Asif/Nawaz names — those come from the downloaded
+pack's `template.json` + `shop_defaults.json`.
 
 ## Layout
 
@@ -55,18 +56,18 @@ downloaded pack's `template.json` + `shop_defaults.json`.
 {base}/
   public/
     index.json
-    templates/khaynjo-items/     # Full Template pointer (shelf)
-      manifest.json
-      template.json              # stub
+    templates/
+      khaynjo-items/             # Full Template pointer (shelf)
+        manifest.json
+        template.json            # stub
+      rajdhani/                  # authored pack (when published)
+        manifest.json
+        template.json
+        shop_defaults.json       # required when applies_shop_defaults
+        images/{file}.webp
     items/
       index.json
       {folder}/{file}.webp
-  private/
-    {12digit}/
-      manifest.json
-      template.json
-      shop_defaults.json         # required when applies_shop_defaults
-      images/{file}.webp
 ```
 
 ## `public/index.json` (schema 1)
@@ -81,18 +82,29 @@ downloaded pack's `template.json` + `shop_defaults.json`.
       "blurb": "Full public dish photo shelf (~1459 dishes). Optional — Skip leaves an empty shop.",
       "kind": "shelf",
       "bytes": 134302948
+    },
+    {
+      "id": "rajdhani",
+      "title": "Rajdhani Menu Template",
+      "blurb": "Non-veg caterers menu — Gujarati names, English aliases, listed prices, photos.",
+      "kind": "app_template",
+      "bytes": 0
     }
   ]
 }
 ```
+
+`bytes` on an authored pack is the pack size from its manifest. The shelf row
+is always listed; authored packs are added by `--public-rajdhani` /
+`--public=<folder>`.
 
 ## `manifest.json` (schema 1)
 
 | Field | Meaning |
 |---|---|
 | `kind` | `app_template` or `shelf` |
-| `visibility` | `public` or `private` |
-| `applies_shop_defaults` | When true, apply pack-local `shop_defaults` |
+| `visibility` | `public` for everything this script publishes |
+| `applies_shop_defaults` | When true, onboarding applies pack-local `shop_defaults`. Menu import ignores it |
 | `shop_defaults` | Relative path (usually `shop_defaults.json`) |
 | `shop_defaults_id` | Legacy; unused — do not hardcode client ids in the app |
 | `template` | `template.json` (empty for shelf) |
@@ -105,15 +117,11 @@ downloaded pack's `template.json` + `shop_defaults.json`.
 |---|---|
 | Public index | `{base}/public/index.json` |
 | Public pack | `{base}/public/templates/{id}/` |
-| Private pack | `{base}/private/{code}/` |
-
-Private `code` must be exactly **12 ASCII digits**.
 
 ## Device cache
 
 ```text
 {data}/catalogue/public/templates/{id}/
-{data}/catalogue/private/{code}/
 {data}/catalogue/public/items/
 ```
 
@@ -121,20 +129,22 @@ Private `code` must be exactly **12 ASCII digits**.
 
 ```text
 ./apps/khaynjo/scripts/publish-catalogue.sh
-./apps/khaynjo/scripts/publish-catalogue.sh --private-rajdhani --code=<12 digits>
-./apps/khaynjo/scripts/publish-catalogue.sh --private=<folder> --code=<12 digits>
+./apps/khaynjo/scripts/publish-catalogue.sh --public-rajdhani
+./apps/khaynjo/scripts/publish-catalogue.sh --public=<folder>
 ```
 
-Stages the Full Template + items shelf; optionally builds a private client
-pack from `catalogue/private-src/<folder>/` (`--private-rajdhani` =
-`--private=rajdhani`; requires `shop_defaults.json`). The script refuses a pack
-whose `app` is not `khaynjo` or whose staff carry a `pin`. Deploy:
+Stages the Full Template + items shelf, and optionally builds an authored
+pack from `catalogue/private-src/<folder>/` into `public/templates/<id>/`
+(`id` is the pack's `template.json` id; `--public-rajdhani` =
+`--public=rajdhani`). The pack is merged into `public/index.json` beside
+`khaynjo-items`. The script refuses a pack whose `app` is not `khaynjo`,
+whose staff carry a `pin`, or whose id is `khaynjo-items`. Deploy:
 `./sites/khaynjo/scripts/deploy-firebase.sh`.
 
 Checks: `cargo test -p kumkaj-khaynjo --lib catalogue_remote` and
 `cargo test -p kumkaj-khaynjo --lib staged_ -- --include-ignored`.
 
-### Shop name and logo in a private pack (2026-11-14)
+### Shop name and logo in an authored pack (2026-11-14)
 
 `shop_defaults.json` may carry `"shop_name"` (the venue title) and
 `"logo_base64"` (the shop mark: a WebP / PNG / JPEG, base64). Applying the App
@@ -151,15 +161,15 @@ magick logo.jpeg -resize 512x512 -quality 88 logo.webp
 # then set "logo_base64" in catalogue/private-src/<client>/shop_defaults.json to: base64 -w0 logo.webp
 ```
 
-Then publish with `--private-rajdhani` and deploy. A Menu → Private template
-re-import (items only) never touches the shop's name or logo.
+Then publish with `--public-rajdhani` (or `--public=<client>`) and deploy. A
+Menu → Templates re-import (items only) never touches the shop's name or logo.
 
 ## Export template — a client's own setup as a pack (2026-11-14)
 
 We can't ask a client for every font size, KOT field and setting. They set the
 shop up on their own device; the shop is then exported as a pack — the same
-three things `catalogue/private-src/<client>/` holds — and we publish it under
-their private code. A new device, branch or reinstall that applies it comes up
+three things `catalogue/private-src/<client>/` holds — and we publish it on
+the public list. A new device, branch or reinstall that applies it comes up
 the same. Khaynjo only so far; how the client sends the file to us is still
 open (owner, 2026-11-14), so today the export runs on our side from their books
 (e.g. a backup copy):
@@ -170,10 +180,10 @@ open (owner, 2026-11-14), so today the export runs on our side from their books
   apps/khaynjo/catalogue/private-src/<client>
 # what is wrong with a pack, and what changed since the published one
 ./target/debug/kumkaj-khaynjo --check-template apps/khaynjo/catalogue/private-src/<client> \
-  [sites/khaynjo/static/v1/catalogue/private/<code>]
-./apps/khaynjo/scripts/publish-catalogue.sh --private=<client> --code=<12 digits>
+  [sites/khaynjo/static/v1/catalogue/public/templates/<id>]
+./apps/khaynjo/scripts/publish-catalogue.sh --public=<client>
 # before deploying: download → apply → export must give back the same pack
-PACK_CDN=sites/khaynjo/static/v1/catalogue PACK_CODE=<code> \
+PACK_CDN=sites/khaynjo/static/v1/catalogue PACK_ID=<id> \
 PACK_SOURCE=apps/khaynjo/catalogue/private-src/<client> \
   cargo test -p kumkaj-khaynjo --lib published_pack -- --ignored
 ```
@@ -200,7 +210,7 @@ device's printers and print routes, the device language.
 rates, units, areas → menu → staff, tables, schemes, settings, faces, layouts,
 QR and stamp. For each list the pack's list is the list: what the new shop has
 and the pack lacks (seeded GST rates, T1–T24) is removed when nothing uses it,
-switched off otherwise. A Menu → Private template import stays items-only.
+switched off otherwise. A Menu → Templates import stays items-only.
 
 **No PINs.** People come in without a PIN and cannot sign in until the Owner
 gives each a first one: Team → pick the person → *Starting PIN* (shown only

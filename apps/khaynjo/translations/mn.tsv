@@ -368,7 +368,7 @@ only_owner_remove_server	Серверийг зөвхөн Эзэмшигч хас
 owner_pin_remove_server	Энэ серверийг хасахад эзэмшигчийн PIN хэрэгтэй
 device_setup_help	Сервер дэвтрээ энд хадгална. Клиент Серверт хослоно.
 app_template_heading	Дэлгүүрийн загварууд
-app_template_blurb	Нийтийн эхлэлийн цэс импортлох, эсвэл Khaynjo-гийн холбоо барих хүнээсээ авсан 12 оронтой хувийн кодыг оруулна уу.
+app_template_blurb	Эхлэх цэсийг сонгоно уу. Алгассан бол дэлгүүр хоосон үлдэнэ.
 app_template_apply	Загвар импортлох
 app_template_skip	Одоогоор алгасах
 app_template_status	Сервер бэлэн — загвар импортлох эсвэл алгасна уу
@@ -376,10 +376,10 @@ app_template_importing	{title} хэрэглэж байна…
 app_template_downloading	Загвар татаж байна…
 app_template_download_progress	Татаж байна… {p}% ({d} / {t})
 app_template_download_paused	Үргэлжлүүлэхийн тулд дахин импортлоно уу — дууссан файлууд хадгалагдана
-app_template_public_hdr	Нийтийн загварууд
+app_template_public_hdr	Загварууд
 app_template_private_hdr	Хувийн загвар
-app_template_public_hint	Нийтийн жагсаалтыг ачаалахын тулд энэ хэсгийг нээнэ үү (нэг удаа интернэт хэрэгтэй).
-app_template_code_not_found	Код олдсонгүй
+app_template_public_hint	Жагсаалтыг ачаалахын тулд энэ хэсгийг нээнэ үү (интернет нэг удаа).
+app_template_code_not_found	Загвар олдсонгүй
 app_template_need_internet	Загвар татахад интернэт хэрэгтэй
 app_template_import_selected	Сонгосныг импортлох
 app_template_check_code	Код шалгах

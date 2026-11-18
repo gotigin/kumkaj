@@ -1194,9 +1194,9 @@ Desktop stages them beside the app (`copy_app_menu_assets_if_present` in
 same two folders into the APK (`apply-android-activity-bridge.sh` →
 cargo-makepad) and extracts them into the app files dir on Server open so
 `catalogue_root` / `templates_root` match desktop. Menu → **Item templates →
-Public templates** hides only when the shelf is neither bundled nor expected
-from the CDN; the private items template comes from the catalogue (12-digit
-code), not from these folders.
+Templates** hides only when the shelf is neither bundled nor expected
+from the CDN and the public catalogue list is empty. Authored packs (Rajdhani)
+are rows on that same public list, not files in these folders.
 **Shelf** / **named client** imports run on the Server and copy each photo
 into `item_images` as `custom:…`; Clients pull missing photos over LAN
 (`GET /item-image`) into a local cache. Initials show only until that fetch

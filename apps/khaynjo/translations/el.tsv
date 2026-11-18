@@ -368,7 +368,7 @@ only_owner_remove_server	Μόνο ο Ιδιοκτήτης μπορεί να αφ
 owner_pin_remove_server	Για την αφαίρεση αυτού του Server απαιτείται PIN ιδιοκτήτη
 device_setup_help	Ο Server κρατά τα βιβλία εδώ. Ο Client ζευγαρώνει με έναν Server.
 app_template_heading	Πρότυπα καταστήματος
-app_template_blurb	Εισαγάγετε ένα δημόσιο αρχικό μενού ή πληκτρολογήστε έναν ιδιωτικό 12ψήφιο κωδικό από την επαφή σας στο Khaynjo.
+app_template_blurb	Διαλέξτε ένα αρχικό μενού. Η παράλειψη αφήνει άδειο κατάστημα.
 app_template_apply	Εισαγωγή προτύπου
 app_template_skip	Παράλειψη προς το παρόν
 app_template_status	Ο διακομιστής είναι έτοιμος — εισαγάγετε πρότυπο ή παραλείψτε
@@ -376,10 +376,10 @@ app_template_importing	Εφαρμογή {title}…
 app_template_downloading	Λήψη προτύπου…
 app_template_download_progress	Λήψη… {p}% ({d} / {t})
 app_template_download_paused	Εισαγάγετε ξανά για συνέχεια — τα ολοκληρωμένα αρχεία διατηρούνται
-app_template_public_hdr	Δημόσια πρότυπα
+app_template_public_hdr	Πρότυπα
 app_template_private_hdr	Ιδιωτικό πρότυπο
-app_template_public_hint	Ανοίξτε αυτή την ενότητα για να φορτώσετε τη δημόσια λίστα (χρειάζεται διαδίκτυο μία φορά).
-app_template_code_not_found	Ο κωδικός δεν βρέθηκε
+app_template_public_hint	Ανοίξτε αυτή την ενότητα για να φορτώσετε τη λίστα (ίντερνετ μία φορά).
+app_template_code_not_found	Το πρότυπο δεν βρέθηκε
 app_template_need_internet	Χρειάζεται διαδίκτυο για λήψη προτύπων
 app_template_import_selected	Εισαγωγή επιλεγμένου
 app_template_check_code	Έλεγχος κωδικού

@@ -368,7 +368,7 @@ only_owner_remove_server	Neitu chauhvin server a paih thei
 owner_pin_remove_server	He server paih nan Neitu PIN a ngai
 device_setup_help	Server hian lehkha hetah a vawng. Dawr dang chu Server nen a inmil.
 app_template_heading	Dawr template-te
-app_template_blurb	Mipui hman tur menu tirhna import rawh, a nih loh pawhin i Khaynjo inzawmpui hnen atanga code inthup 12 awmna chu chhu lut rawh.
+app_template_blurb	Menu bul tan i thlang ang. Kaltlang chuan dawr a ruak a awm ang.
 app_template_apply	Template import rawh
 app_template_skip	Tunah kaltlang
 app_template_status	Server a inpeih — template import rawh, a nih loh pawhin kal pel rawh
@@ -376,10 +376,10 @@ app_template_importing	{title} hman mek…
 app_template_downloading	Template download mek…
 app_template_download_progress	Download mek mek… {p}% ({d} / {t})
 app_template_download_paused	Chhunzawm leh turin import leh rawh — file zo tawh te chu vawn tlat a ni
-app_template_public_hdr	Mipui template-te
+app_template_public_hdr	Template
 app_template_private_hdr	Template inthup
-app_template_public_hint	Mipui list load nan he hmun hi hawng rawh (vawi khat internet a ngai).
-app_template_code_not_found	Code hmuh a ni lo
+app_template_public_hint	List dah luh turin he hmun hi hawng rawh (internet vawi khat a ngai).
+app_template_code_not_found	Template a awm lo
 app_template_need_internet	Template download nan internet a ngai
 app_template_import_selected	Thlan chu import rawh
 app_template_check_code	Code en rawh

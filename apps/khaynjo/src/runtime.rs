@@ -523,8 +523,12 @@ enum MenuImportKind {
 #[derive(Clone, Debug)]
 enum CatalogueFetchKind {
     PublicIndex,
+    /// Later paid gate. The product UI does not start this fetch.
+    #[allow(dead_code)]
     PrivatePeek { code: String },
     DownloadPublic { id: String },
+    /// Later paid gate. The product UI does not start this fetch.
+    #[allow(dead_code)]
     DownloadPrivate { code: String },
 }
 
@@ -722,8 +726,8 @@ fn catalogue_fetch_job(kind: CatalogueFetchKind, data_base: PathBuf) {
     *catalogue_fetch_running().lock().unwrap() = Some(kind.clone());
     *catalogue_fetch_progress().lock().unwrap() = None;
     let status = match &kind {
-        CatalogueFetchKind::PublicIndex => "Loading public templates…".to_string(),
-        CatalogueFetchKind::PrivatePeek { .. } => "Checking private code…".to_string(),
+        CatalogueFetchKind::PublicIndex => "Loading templates…".to_string(),
+        CatalogueFetchKind::PrivatePeek { .. } => "Checking template…".to_string(),
         CatalogueFetchKind::DownloadPublic { .. }
         | CatalogueFetchKind::DownloadPrivate { .. } => app_t("app_template_downloading"),
     };
@@ -1682,7 +1686,7 @@ fn accordion_estimate_h(key: &str) -> f64 {
         "role" => 160.0,
         "public_templates" => 220.0,
         "private_template" => 200.0,
-        "menu_public_tmpl" => 120.0,
+        "menu_public_tmpl" => 180.0,
         "menu_private_tmpl" => 160.0,
         _ => 100.0,
     }

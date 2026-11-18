@@ -368,7 +368,7 @@ only_owner_remove_server	Ang May-ari lang ang makakapag-alis ng server
 owner_pin_remove_server	Kinakailangan ng may-ari PIN na alisin ang server na ito
 device_setup_help	Pinapanatili ng server ang mga ledger dito. Nagpares ang kliyente sa isang Server.
 app_template_heading	Mga template ng tindahan
-app_template_blurb	Mag-import ng pampublikong panimulang menu, o ilagay ang pribadong 12-digit na code mula sa iyong Khaynjo contact.
+app_template_blurb	Pumili ng panimulang menu. Ang laktaw ay iiwang walang laman ang tindahan.
 app_template_apply	I-import ang template
 app_template_skip	Laktawan sa ngayon
 app_template_status	Handa na ang server — mag-import ng template, o laktawan
@@ -376,10 +376,10 @@ app_template_importing	Nag-a-apply {title}…
 app_template_downloading	Dina-download ang template…
 app_template_download_progress	Nagda-download… {p}% ({d} / {t})
 app_template_download_paused	Mag-import ulit para ituloy — naiingatan ang mga tapos nang file
-app_template_public_hdr	Mga pampublikong template
+app_template_public_hdr	Mga template
 app_template_private_hdr	Pribadong template
-app_template_public_hint	Buksan ang seksyong ito para i-load ang pampublikong listahan (kailangan ng internet nang isang beses).
-app_template_code_not_found	Hindi nakita ang code
+app_template_public_hint	Buksan ang bahaging ito para ikarga ang listahan (internet isang beses).
+app_template_code_not_found	Hindi nahanap ang template
 app_template_need_internet	Kailangan ng internet para mag-download ng mga template
 app_template_import_selected	I-import ang napili
 app_template_check_code	Suriin ang code

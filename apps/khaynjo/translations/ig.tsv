@@ -368,7 +368,7 @@ only_owner_remove_server	Naanị Onye nwe nwere ike iwepụ sava
 owner_pin_remove_server	Achọrọ PIN onye nwe iji wepụ sava a
 device_setup_help	Sava na-edebe akwụkwọ ebe a. Ngwa njedebe na-ejikọ na Sava.
 app_template_heading	Ụdị ụlọ ahịa
-app_template_blurb	Bubata menu mmalite ọha, ma ọ bụ tinye koodu nzuzo nwere ọnụọgụ 12 sitere n'aka onye kọntaktị Khaynjo gị.
+app_template_blurb	Họrọ menu mmalite. Ịmafee na-ahapụ ụlọ ahịa tọgbọ.
 app_template_apply	Bubata ụdị
 app_template_skip	Gafee ugbu a
 app_template_status	Sava dị njikere — bubata ụdị, ma ọ bụ wụfee
@@ -376,10 +376,10 @@ app_template_importing	Na-etinye {title}…
 app_template_downloading	Na-ebudata ụdị…
 app_template_download_progress	Na-ebudata… {p}% ({d} / {t})
 app_template_download_paused	Bubata ọzọ ka ịga n'ihu — a na-edebe faịlụ ndị gwụchara
-app_template_public_hdr	Ụdị ọha
+app_template_public_hdr	Akwụkwọ nlereanya
 app_template_private_hdr	Ụdị nzuzo
-app_template_public_hint	Mepee akụkụ a iji bulite ndepụta ọha (ịntanetị dị mkpa otu ugboro).
-app_template_code_not_found	Ahụghị koodu
+app_template_public_hint	Meghee ngalaba a iji bulite ndepụta (ịntanetị otu ugboro).
+app_template_code_not_found	Ahụghị akwụkwọ nlereanya
 app_template_need_internet	Ịntanetị dị mkpa iji budata ụdị
 app_template_import_selected	Bubata nke ahọrọ
 app_template_check_code	Lelee koodu

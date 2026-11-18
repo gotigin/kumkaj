@@ -368,7 +368,7 @@ only_owner_remove_server	Owner മാത്രമേ സെർവർ നീക�
 owner_pin_remove_server	സെർവർ നീക്കം ചെയ്യാൻ Owner PIN വേണം
 device_setup_help	സെർവർ കണക്കുകൾ ഇവിടെ സൂക്ഷിക്കുന്നു. ക്ലയന്റ് ഒരു സെർവറുമായി ജോടിയാകുന്നു.
 app_template_heading	കട ടെംപ്ലേറ്റുകൾ
-app_template_blurb	ഒരു പൊതു സ്റ്റാർട്ടർ മെനു ഇമ്പോർട്ട് ചെയ്യുക, അല്ലെങ്കിൽ നിങ്ങളുടെ Khaynjo കോൺടാക്റ്റിൽ നിന്ന് ലഭിച്ച 12 അക്ക സ്വകാര്യ കോഡ് നൽകുക.
+app_template_blurb	ഒരു തുടക്ക മെനു തിരഞ്ഞെടുക്കുക. ഒഴിവാക്കിയാൽ കട ശൂന്യമായി നിൽക്കും.
 app_template_apply	ടെംപ്ലേറ്റ് ഇമ്പോർട്ട് ചെയ്യുക
 app_template_skip	ഇപ്പോൾ ഒഴിവാക്കുക
 app_template_status	സെർവർ തയ്യാർ — ഒരു ടെംപ്ലേറ്റ് ഇമ്പോർട്ട് ചെയ്യുക, അല്ലെങ്കിൽ ഒഴിവാക്കുക
@@ -376,10 +376,10 @@ app_template_importing	{title} പ്രയോഗിക്കുന്നു…
 app_template_downloading	ടെംപ്ലേറ്റ് ഡൗൺലോഡ് ചെയ്യുന്നു…
 app_template_download_progress	ഡൗൺലോഡ് ചെയ്യുന്നു… {p}% ({d} / {t})
 app_template_download_paused	തുടരാൻ വീണ്ടും ഇമ്പോർട്ട് ചെയ്യുക — പൂർത്തിയായ ഫയലുകൾ സൂക്ഷിക്കും
-app_template_public_hdr	പൊതു ടെംപ്ലേറ്റുകൾ
+app_template_public_hdr	ടെംപ്ലേറ്റുകൾ
 app_template_private_hdr	സ്വകാര്യ ടെംപ്ലേറ്റ്
-app_template_public_hint	പൊതു പട്ടിക ലോഡ് ചെയ്യാൻ ഈ വിഭാഗം തുറക്കുക (ഒരിക്കൽ ഇന്റർനെറ്റ് വേണം).
-app_template_code_not_found	കോഡ് കണ്ടെത്തിയില്ല
+app_template_public_hint	പട്ടിക ലോഡ് ചെയ്യാൻ ഈ ഭാഗം തുറക്കുക (ഒരിക്കൽ ഇന്റർനെറ്റ് വേണം).
+app_template_code_not_found	ടെംപ്ലേറ്റ് കണ്ടെത്തിയില്ല
 app_template_need_internet	ടെംപ്ലേറ്റുകൾ ഡൗൺലോഡ് ചെയ്യാൻ ഇന്റർനെറ്റ് വേണം
 app_template_import_selected	തിരഞ്ഞെടുത്തത് ഇമ്പോർട്ട് ചെയ്യുക
 app_template_check_code	കോഡ് പരിശോധിക്കുക

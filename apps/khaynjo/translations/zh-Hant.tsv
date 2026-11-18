@@ -368,7 +368,7 @@ only_owner_remove_server	僅 Owner 可刪除服務器
 owner_pin_remove_server	刪除此服務器需要 Owner PIN
 device_setup_help	服務器在此保存帳簿。客戶端與服務器配對。
 app_template_heading	店舖範本
-app_template_blurb	匯入公開的入門菜單，或輸入你的 Khaynjo 聯絡人提供的 12 位私人代碼。
+app_template_blurb	選一個起步菜單。略過會留下空店。
 app_template_apply	匯入範本
 app_template_skip	暫時跳過
 app_template_status	伺服器已就緒 — 匯入範本，或略過
@@ -376,10 +376,10 @@ app_template_importing	正在應用 {title}…
 app_template_downloading	正在下載範本…
 app_template_download_progress	下載中… {p}% ({d} / {t})
 app_template_download_paused	再次匯入即可續傳 — 已完成的檔案會保留
-app_template_public_hdr	公開範本
+app_template_public_hdr	範本
 app_template_private_hdr	私人範本
-app_template_public_hint	開啟此區段以載入公開清單（首次需要網路）。
-app_template_code_not_found	找不到代碼
+app_template_public_hint	打開這一段以載入清單（需要上網一次）。
+app_template_code_not_found	找不到範本
 app_template_need_internet	下載範本需要網路
 app_template_import_selected	匯入所選
 app_template_check_code	檢查代碼

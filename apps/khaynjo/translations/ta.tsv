@@ -368,7 +368,7 @@ only_owner_remove_server	சேவையகத்தை Owner மட்டும
 owner_pin_remove_server	சேவையகத்தை நீக்க Owner PIN வேண்டும்
 device_setup_help	சர்வர் கணக்குகளை இங்கே வைத்திருக்கும். கிளையன்ட் ஒரு சர்வருடன் இணையும்.
 app_template_heading	கடை வார்ப்புருக்கள்
-app_template_blurb	ஒரு பொது தொடக்க மெனுவை இறக்குமதி செய்யவும், அல்லது உங்கள் Khaynjo தொடர்பிடமிருந்து பெற்ற 12 இலக்க தனிப்பட்ட குறியீட்டை உள்ளிடவும்.
+app_template_blurb	ஒரு தொடக்க பட்டியலைத் தேர்ந்தெடுக்கவும். தவிர்த்தால் கடை காலியாக இருக்கும்.
 app_template_apply	வார்ப்புருவை இறக்குமதி செய்
 app_template_skip	இப்போதைக்குத் தவிர்
 app_template_status	சர்வர் தயார் — ஒரு வார்ப்புருவை இறக்குமதி செய்யவும், அல்லது தவிர்க்கவும்
@@ -376,10 +376,10 @@ app_template_importing	{title} பயன்படுத்தப்படுக�
 app_template_downloading	வார்ப்புரு பதிவிறக்கப்படுகிறது…
 app_template_download_progress	பதிவிறக்குகிறது… {p}% ({d} / {t})
 app_template_download_paused	தொடர மீண்டும் இறக்குமதி செய்யவும் — முடிந்த கோப்புகள் வைக்கப்படும்
-app_template_public_hdr	பொது வார்ப்புருக்கள்
+app_template_public_hdr	வார்ப்புருக்கள்
 app_template_private_hdr	தனிப்பட்ட வார்ப்புரு
-app_template_public_hint	பொதுப் பட்டியலை ஏற்ற இந்தப் பகுதியைத் திறக்கவும் (ஒருமுறை இணையம் தேவை).
-app_template_code_not_found	குறியீடு கிடைக்கவில்லை
+app_template_public_hint	பட்டியலை ஏற்ற இந்தப் பகுதியைத் திறக்கவும் (ஒருமுறை இணையம் வேண்டும்).
+app_template_code_not_found	வார்ப்புரு கிடைக்கவில்லை
 app_template_need_internet	வார்ப்புருக்களைப் பதிவிறக்க இணையம் தேவை
 app_template_import_selected	தேர்ந்தெடுத்ததை இறக்குமதி செய்
 app_template_check_code	குறியீட்டைச் சரிபார்

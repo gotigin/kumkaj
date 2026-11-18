@@ -368,7 +368,7 @@ only_owner_remove_server	Ainult omanik saab serveri eemaldada
 owner_pin_remove_server	Selle serveri eemaldamiseks on vaja omanikku PIN
 device_setup_help	Server hoiab siin raamatuid. Klient ühendab serveriga.
 app_template_heading	Poe mallid
-app_template_blurb	Impordi avalik algmenüü või sisesta oma Khaynjo kontaktilt saadud privaatne 12-kohaline kood.
+app_template_blurb	Valige algmenüü. Vahelejätmine jätab tühja poe.
 app_template_apply	Impordi mall
 app_template_skip	Jäta praegu vahele
 app_template_status	Server valmis — impordi mall või jäta vahele
@@ -376,10 +376,10 @@ app_template_importing	{title} rakendamine…
 app_template_downloading	Malli allalaadimine…
 app_template_download_progress	Allalaadimine… {p}% ({d} / {t})
 app_template_download_paused	Jätkamiseks impordi uuesti — valmis failid jäävad alles
-app_template_public_hdr	Avalikud mallid
+app_template_public_hdr	Mallid
 app_template_private_hdr	Privaatne mall
-app_template_public_hint	Ava see jaotis avaliku loendi laadimiseks (internetti on vaja üks kord).
-app_template_code_not_found	Koodi ei leitud
+app_template_public_hint	Avage see jaotis loendi laadimiseks (internet üks kord).
+app_template_code_not_found	Malli ei leitud
 app_template_need_internet	Mallide allalaadimiseks on vaja internetti
 app_template_import_selected	Impordi valitud
 app_template_check_code	Kontrolli koodi

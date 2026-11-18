@@ -368,7 +368,7 @@ only_owner_remove_server	Aðeins eigandinn getur fjarlægt netþjón
 owner_pin_remove_server	Eigandi PIN þarf til að fjarlægja þennan netþjón
 device_setup_help	Þjónninn heldur bókhaldinu hér. Viðskiptavinur parar við netþjón.
 app_template_heading	Verslunarsniðmát
-app_template_blurb	Flyttu inn opinberan upphafsmatseðil, eða sláðu inn einkakóða með 12 tölustöfum frá Khaynjo-tengilið þínum.
+app_template_blurb	Veldu upphafsmatseðil. Sleppa skilur eftir tóma búð.
 app_template_apply	Flytja inn sniðmát
 app_template_skip	Slepptu í bili
 app_template_status	Þjónn tilbúinn — flyttu inn sniðmát, eða slepptu
@@ -376,10 +376,10 @@ app_template_importing	Er að sækja um {title}…
 app_template_downloading	Sæki sniðmát…
 app_template_download_progress	Sækir… {p}% ({d} / {t})
 app_template_download_paused	Flyttu inn aftur til að halda áfram — tilbúnar skrár eru geymdar
-app_template_public_hdr	Opinber sniðmát
+app_template_public_hdr	Sniðmát
 app_template_private_hdr	Einkasniðmát
-app_template_public_hint	Opnaðu þennan hluta til að hlaða opinbera listanum (netið þarf einu sinni).
-app_template_code_not_found	Kóði fannst ekki
+app_template_public_hint	Opnaðu þennan hluta til að hlaða listanum (internet einu sinni).
+app_template_code_not_found	Sniðmát fannst ekki
 app_template_need_internet	Netið þarf til að sækja sniðmát
 app_template_import_selected	Flytja inn valið
 app_template_check_code	Athuga kóða

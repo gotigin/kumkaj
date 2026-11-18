@@ -368,7 +368,7 @@ only_owner_remove_server	Jabeak soilik ken dezake zerbitzari bat
 owner_pin_remove_server	Jabearen PINa behar da zerbitzari hau kentzeko
 device_setup_help	Zerbitzariak liburuak hemen gordetzen ditu. Bezeroa Zerbitzari batekin parekatzen da.
 app_template_heading	Dendako txantiloiak
-app_template_blurb	Inportatu hasierako menu publiko bat, edo idatzi zure Khaynjo kontaktuaren 12 digituko kode pribatua.
+app_template_blurb	Aukeratu hasierako menu bat. Saltatzeak denda hutsik uzten du.
 app_template_apply	Inportatu txantiloia
 app_template_skip	Saltatu oraingoz
 app_template_status	Zerbitzaria prest — inportatu txantiloi bat edo saltatu
@@ -376,10 +376,10 @@ app_template_importing	{title} aplikatzen…
 app_template_downloading	Txantiloia deskargatzen…
 app_template_download_progress	Deskargatzen… {p}% ({d} / {t})
 app_template_download_paused	Inportatu berriro jarraitzeko — amaitutako fitxategiak gordetzen dira
-app_template_public_hdr	Txantiloi publikoak
+app_template_public_hdr	Txantiloiak
 app_template_private_hdr	Txantiloi pribatua
-app_template_public_hint	Ireki atal hau zerrenda publikoa kargatzeko (behin interneta behar da).
-app_template_code_not_found	Ez da kodea aurkitu
+app_template_public_hint	Ireki atal hau zerrenda kargatzeko (internet behin).
+app_template_code_not_found	Txantiloia ez da aurkitu
 app_template_need_internet	Interneta behar da txantiloiak deskargatzeko
 app_template_import_selected	Inportatu hautatutakoa
 app_template_check_code	Egiaztatu kodea

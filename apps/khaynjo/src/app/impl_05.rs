@@ -1483,20 +1483,14 @@ fn print_or_share_receipt(&mut self, cx: &mut Cx, text: &str) {
                 ids!(setup_public_tmpl_body),
                 "app_template_public_hdr",
             ),
-            (
-                "private_template",
-                ids!(setup_private_tmpl_hdr),
-                ids!(setup_private_tmpl_body),
-                "app_template_private_hdr",
-            ),
         ];
         let awaiting = app_state()
             .lock()
             .unwrap()
             .awaiting_app_template;
         for (key, hdr, body, caption_key) in sections {
-            // Catalogue accordions only while the post-Server offer is up.
-            let catalogue = *key == "public_templates" || *key == "private_template";
+            // The Templates accordion only while the post-Server offer is up.
+            let catalogue = *key == "public_templates";
             if catalogue && !awaiting {
                 self.ui.button(cx, hdr).set_visible(cx, false);
                 self.ui.view(cx, body).set_visible(cx, false);
@@ -1527,29 +1521,21 @@ fn print_or_share_receipt(&mut self, cx: &mut Cx, text: &str) {
 
     /// Menu → Item templates accordions (the onboarding Shop templates pattern).
     fn sync_menu_tmpl_sections(&mut self, cx: &mut Cx) {
-        let (open, public_cap, private_cap) = {
+        self.ui.view(cx, ids!(client_template_card)).set_visible(cx, false);
+        let (open, public_cap) = {
             let st = app_state().lock().unwrap();
             (
                 st.menu_tmpl_open.clone(),
                 st.t("app_template_public_hdr").to_uppercase(),
-                st.t("app_template_private_hdr").to_uppercase(),
             )
         };
         let animating = accordion_anims().lock().unwrap();
-        for (key, hdr, body, caption) in [
-            (
-                "menu_public_tmpl",
-                ids!(menu_public_tmpl_hdr),
-                ids!(menu_public_tmpl_body),
-                public_cap,
-            ),
-            (
-                "menu_private_tmpl",
-                ids!(menu_private_tmpl_hdr),
-                ids!(menu_private_tmpl_body),
-                private_cap,
-            ),
-        ] {
+        for (key, hdr, body, caption) in [(
+            "menu_public_tmpl",
+            ids!(menu_public_tmpl_hdr),
+            ids!(menu_public_tmpl_body),
+            public_cap,
+        )] {
             let is_open = open.iter().any(|k| k == key);
             let mark = if is_open {
                 ACCORDION_MARK_OPEN
@@ -1582,6 +1568,9 @@ fn print_or_share_receipt(&mut self, cx: &mut Cx, text: &str) {
         };
         self.start_section_height_anim(cx, key, will_open);
         self.sync_menu_tmpl_sections(cx);
+        if will_open && key == "menu_public_tmpl" {
+            self.kick_menu_catalogue_fetch(cx);
+        }
     }
 
     fn toggle_device_setup_section(&mut self, cx: &mut Cx, key: &str) {
@@ -1628,6 +1617,25 @@ fn print_or_share_receipt(&mut self, cx: &mut Cx, text: &str) {
         if let Some(base) = base.or_else(|| store::data_dir().ok()) {
             catalogue_fetch_job(CatalogueFetchKind::PublicIndex, base);
             self.paint_app_template_chrome(cx, true);
+        }
+    }
+
+    /// Menu → Templates opens with an empty list: load the same public index
+    /// the Shop templates offer uses, so Rajdhani shows up once it is published.
+    fn kick_menu_catalogue_fetch(&mut self, cx: &mut Cx) {
+        let (need_fetch, base) = {
+            let st = app_state().lock().unwrap();
+            (
+                st.catalogue_public.is_empty() && st.catalogue_public_error.is_empty(),
+                st.data_base.clone(),
+            )
+        };
+        if !need_fetch || catalogue_fetch_busy().load(std::sync::atomic::Ordering::SeqCst) {
+            return;
+        }
+        if let Some(base) = base.or_else(|| store::data_dir().ok()) {
+            catalogue_fetch_job(CatalogueFetchKind::PublicIndex, base);
+            self.paint_menu_public_card(cx);
         }
     }
 

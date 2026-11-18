@@ -368,7 +368,7 @@ only_owner_remove_server	ᱥᱩᱢᱩᱝ ᱢᱟᱞᱤᱠ ᱜᱮ ᱥᱮᱨᱵᱷ�
 owner_pin_remove_server	ᱱᱚᱣᱟ ᱥᱮᱨᱵᱷᱟᱨ ᱚᱪᱚᱜ ᱞᱟᱹᱜᱤᱫ ᱢᱟᱞᱤᱠ ᱯᱤᱱ ᱞᱟᱹᱠᱛᱤᱜ ᱠᱟᱱᱟ
 device_setup_help	ᱥᱮᱨᱵᱷᱟᱨ ᱯᱚᱛᱚᱵ ᱠᱚ ᱱᱚᱸᱰᱮ ᱫᱚᱦᱚ ᱟᱠᱟᱫᱟᱭ ᱾ ᱠᱞᱟᱭᱮᱱᱴ ᱫᱚ ᱥᱮᱨᱵᱷᱟᱨ ᱥᱟᱶ ᱡᱚᱲ ᱮᱫᱟᱭ ᱾
 app_template_heading	ᱫᱚᱠᱟᱱ ᱴᱮᱢᱯᱞᱮᱴ
-app_template_blurb	ᱢᱤᱫᱴᱟᱹᱝ ᱥᱟᱱᱟᱢᱟᱜ ᱮᱦᱚᱵ ᱢᱮᱱᱩ ᱟᱹᱜᱩ ᱢᱮ, ᱟᱨᱵᱟᱝ ᱟᱢᱟᱜ Khaynjo ᱥᱚᱢᱯᱚᱨᱠ ᱠᱷᱚᱱ ᱧᱟᱢ 12 ᱮᱞ ᱨᱮᱭᱟᱜ ᱱᱤᱡᱮᱨᱟᱜ ᱠᱳᱰ ᱟᱫᱮᱨ ᱢᱮ᱾
+app_template_blurb	मित् सुरुवाती मेनू साब। छाड़ रे दोकान फाका ताहेंआ।
 app_template_apply	ᱴᱮᱢᱯᱞᱮᱴ ᱟᱹᱜᱩ ᱢᱮ
 app_template_skip	ᱱᱤᱛᱚᱜ ᱞᱟᱹᱜᱤᱫ ᱵᱟᱹᱜᱤᱭᱟᱜ ᱢᱮ
 app_template_status	ᱥᱟᱨᱵᱷᱟᱨ ᱛᱭᱟᱨ — ᱢᱤᱫᱴᱟᱹᱝ ᱴᱮᱢᱯᱞᱮᱴ ᱟᱹᱜᱩ ᱢᱮ, ᱟᱨᱵᱟᱝ ᱟᱲᱟᱜ ᱢᱮ
@@ -376,10 +376,10 @@ app_template_importing	ᱟᱯᱞᱟᱭᱚᱜ ᱠᱟᱱᱟ {title}...
 app_template_downloading	ᱴᱮᱢᱯᱞᱮᱴ ᱰᱟᱣᱩᱱᱞᱚᱰ ᱦᱩᱭ ᱠᱟᱱᱟ…
 app_template_download_progress	ᱰᱟᱣᱩᱱᱞᱚᱰ ᱦᱩᱭ ᱠᱟᱱᱟ… {p}% ({d} / {t})
 app_template_download_paused	ᱫᱚᱦᱲᱟ ᱮᱦᱚᱵ ᱞᱟᱹᱜᱤᱫ ᱫᱚᱦᱲᱟ ᱟᱹᱜᱩ ᱢᱮ — ᱯᱩᱨᱟᱹ ᱦᱩᱭ ᱟᱠᱟᱱ ᱯᱷᱟᱭᱤᱞ ᱫᱚ ᱫᱚᱦᱚ ᱜᱮᱭᱟ
-app_template_public_hdr	ᱥᱟᱱᱟᱢᱟᱜ ᱴᱮᱢᱯᱞᱮᱴ
+app_template_public_hdr	टेम्पलेट
 app_template_private_hdr	ᱱᱤᱡᱮᱨᱟᱜ ᱴᱮᱢᱯᱞᱮᱴ
-app_template_public_hint	ᱥᱟᱱᱟᱢᱟᱜ ᱞᱤᱥᱴᱤ ᱞᱚᱰ ᱞᱟᱹᱜᱤᱫ ᱱᱚᱶᱟ ᱦᱟᱹᱴᱤᱧ ᱡᱷᱤᱡᱽ ᱢᱮ (ᱢᱤᱫ ᱫᱷᱟᱣ ᱤᱱᱴᱟᱨᱱᱮᱴ ᱞᱟᱹᱠᱛᱤ)᱾
-app_template_code_not_found	ᱠᱳᱰ ᱵᱟᱝ ᱧᱟᱢ ᱮᱱᱟ
+app_template_public_hint	सूची लोड लागित् नोवा भाग झिज (मित् दाव इंटरनेट लाकती)।
+app_template_code_not_found	टेम्पलेट बाङ नामोक् आ
 app_template_need_internet	ᱴᱮᱢᱯᱞᱮᱴ ᱰᱟᱣᱩᱱᱞᱚᱰ ᱞᱟᱹᱜᱤᱫ ᱤᱱᱴᱟᱨᱱᱮᱴ ᱞᱟᱹᱠᱛᱤ
 app_template_import_selected	ᱵᱟᱪᱷᱟᱣ ᱟᱠᱟᱱ ᱟᱹᱜᱩ ᱢᱮ
 app_template_check_code	ᱠᱳᱰ ᱧᱮᱞ ᱢᱮ

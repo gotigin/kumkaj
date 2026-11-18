@@ -368,7 +368,7 @@ only_owner_remove_server	Umnikazi kuphela ongasusa iseva
 owner_pin_remove_server	Umnikazi PIN uyadingeka ukuze kukhishwe le seva
 device_setup_help	Iseva igcina amaleja lapha. Iklayenti libhangqa kuseva.
 app_template_heading	Izifanekiso zesitolo
-app_template_blurb	Ngenisa imenyu yokuqala yomphakathi, noma ufake ikhodi yangasese yezinombolo eziyi-12 ovela kumxhumanisi wakho weKhaynjo.
+app_template_blurb	Khetha imenyu yokuqala. Ukweqa kushiya isitolo singenalutho.
 app_template_apply	Ngenisa isifanekiso
 app_template_skip	Yeqa okwamanje
 app_template_status	Iseva ilungile — ngenisa isifanekiso, noma weqe
@@ -376,10 +376,10 @@ app_template_importing	Ifaka {title}…
 app_template_downloading	Isifanekiso siyalandwa…
 app_template_download_progress	Iyalanda… {p}% ({d} / {t})
 app_template_download_paused	Ngenisa futhi ukuze uqhubeke — amafayela aqediwe ayagcinwa
-app_template_public_hdr	Izifanekiso zomphakathi
+app_template_public_hdr	Izifanekiso
 app_template_private_hdr	Isifanekiso sangasese
-app_template_public_hint	Vula lesi sigaba ukuze ulayishe uhlu lomphakathi (kudingeka i-inthanethi kanye).
-app_template_code_not_found	Ikhodi ayitholakalanga
+app_template_public_hint	Vula le ngxenye ukulayisha uhlu (i-inthanethi kanye).
+app_template_code_not_found	Isifanekiso asitholakali
 app_template_need_internet	Kudingeka i-inthanethi ukulanda izifanekiso
 app_template_import_selected	Ngenisa okukhethiwe
 app_template_check_code	Hlola ikhodi

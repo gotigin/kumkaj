@@ -368,7 +368,7 @@ only_owner_remove_server	Endast ägaren kan ta bort en server
 owner_pin_remove_server	Ägarens PIN-kod krävs för att ta bort den här servern
 device_setup_help	Servern håller böckerna här. Klientpar till en server.
 app_template_heading	Butiksmallar
-app_template_blurb	Importera en offentlig startmeny, eller ange en privat 12-siffrig kod från din Khaynjo-kontakt.
+app_template_blurb	Välj en startmeny. Hoppa över lämnar en tom butik.
 app_template_apply	Importera mall
 app_template_skip	Hoppa över nu
 app_template_status	Servern är redo — importera en mall eller hoppa över
@@ -376,10 +376,10 @@ app_template_importing	Ansöker {title}...
 app_template_downloading	Hämtar mall…
 app_template_download_progress	Hämtar… {p}% ({d} / {t})
 app_template_download_paused	Importera igen för att fortsätta — färdiga filer sparas
-app_template_public_hdr	Offentliga mallar
+app_template_public_hdr	Mallar
 app_template_private_hdr	Privat mall
-app_template_public_hint	Öppna det här avsnittet för att läsa in den offentliga listan (internet behövs en gång).
-app_template_code_not_found	Koden hittades inte
+app_template_public_hint	Öppna den här delen för att läsa in listan (internet en gång).
+app_template_code_not_found	Mallen hittades inte
 app_template_need_internet	Internet behövs för att hämta mallar
 app_template_import_selected	Importera valda
 app_template_check_code	Kontrollera kod

@@ -368,7 +368,7 @@ only_owner_remove_server	Dueñollam huk sirwiqta hurquyta atin
 owner_pin_remove_server	Dueño PIN kay sirwiqta hurqunapaq mañasqa
 device_setup_help	Servidor kaypi hatun qillqakunata waqaychan. Cliente pariskuna huk Servidorman.
 app_template_heading	Tiendap plantillankuna
-app_template_blurb	Llapanpaq qallariy mikhuna listata apamuy, utaq Khaynjo riqsisqaykimanta chaskisqayki 12 yupayniyuq sapan kodigota churay.
+app_template_blurb	Huk qallariy menuta akllay. Saltarqa qhatuta ch'usaqta saqin.
 app_template_apply	Plantillata apamuy
 app_template_skip	Kunankamaqa saltay
 app_template_status	Servidor listoña — plantillata apamuy, utaq saltay
@@ -376,10 +376,10 @@ app_template_importing	Aplicaspa {title}...
 app_template_downloading	Plantilla uraykachichkan…
 app_template_download_progress	Uraykachichkan… {p}% ({d} / {t})
 app_template_download_paused	Hukmanta apamuy qatipanaykipaq — tukusqa willañiqikunaqa waqaychasqa kanku
-app_template_public_hdr	Llapanpaq plantillakuna
+app_template_public_hdr	Plantillakuna
 app_template_private_hdr	Sapan plantilla
-app_template_public_hint	Llapanpaq listata cargananpaq kay rakita kichay (huk kutilla internet necesitakun).
-app_template_code_not_found	Kodigo mana tarisqachu
+app_template_public_hint	Kay rakita kichay listata churanaykipaq (internet huk kutilla).
+app_template_code_not_found	Plantilla mana tarisqachu
 app_template_need_internet	Plantillakunata uraykachinapaq internet necesitakun
 app_template_import_selected	Akllasqata apamuy
 app_template_check_code	Kodigota qhaway

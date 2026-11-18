@@ -368,7 +368,7 @@ only_owner_remove_server	Alleen de Owner mag een server verwijderen
 owner_pin_remove_server	Owner-PIN vereist om deze server te verwijderen
 device_setup_help	De server bewaart hier de boeken. Een client koppelt met een server.
 app_template_heading	Winkelsjablonen
-app_template_blurb	Importeer een openbaar startmenu, of voer een privé 12-cijferige code van je Khaynjo-contactpersoon in.
+app_template_blurb	Kies een startmenu. Overslaan laat een lege winkel.
 app_template_apply	Sjabloon importeren
 app_template_skip	Voorlopig overslaan
 app_template_status	Server klaar — importeer een sjabloon, of sla over
@@ -376,10 +376,10 @@ app_template_importing	Toepassen van {title}…
 app_template_downloading	Sjabloon downloaden…
 app_template_download_progress	Downloaden… {p}% ({d} / {t})
 app_template_download_paused	Importeer opnieuw om verder te gaan — voltooide bestanden blijven bewaard
-app_template_public_hdr	Openbare sjablonen
+app_template_public_hdr	Sjablonen
 app_template_private_hdr	Privésjabloon
-app_template_public_hint	Open dit gedeelte om de openbare lijst te laden (eenmalig internet nodig).
-app_template_code_not_found	Code niet gevonden
+app_template_public_hint	Open dit deel om de lijst te laden (eenmaal internet nodig).
+app_template_code_not_found	Sjabloon niet gevonden
 app_template_need_internet	Internet nodig om sjablonen te downloaden
 app_template_import_selected	Selectie importeren
 app_template_check_code	Code controleren

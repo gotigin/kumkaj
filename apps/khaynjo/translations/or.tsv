@@ -368,7 +368,7 @@ only_owner_remove_server	କେବଳ Owner ସର୍ଭର ହଟାଇପା�
 owner_pin_remove_server	ସର୍ଭର ହଟାଇବାକୁ Owner PIN ଦରକାର
 device_setup_help	ସର୍ଭର ଖାତା ଏଠାରେ ରଖେ। କ୍ଲାଏଣ୍ଟ ଏକ ସର୍ଭର ସହ ଯୋଡ଼ି ହୁଏ।
 app_template_heading	ଦୋକାନ ଟେମ୍ପଲେଟ
-app_template_blurb	ଏକ ସାର୍ବଜନୀନ ଆରମ୍ଭିକ ମେନୁ ଆମଦାନି କରନ୍ତୁ, କିମ୍ବା ଆପଣଙ୍କ Khaynjo ଯୋଗାଯୋଗରୁ ମିଳିଥିବା 12 ଅଙ୍କର ବ୍ୟକ୍ତିଗତ କୋଡ୍ ଦିଅନ୍ତୁ।
+app_template_blurb	ଏକ ଆରମ୍ଭ ମେନୁ ବାଛନ୍ତୁ। ଛାଡ଼ିଲେ ଦୋକାନ ଖାଲି ରହେ।
 app_template_apply	ଟେମ୍ପଲେଟ ଆମଦାନି କରନ୍ତୁ
 app_template_skip	ଏବେ ଛାଡ଼ନ୍ତୁ
 app_template_status	ସର୍ଭର ପ୍ରସ୍ତୁତ — ଏକ ଟେମ୍ପଲେଟ ଆମଦାନି କରନ୍ତୁ, କିମ୍ବା ଛାଡ଼ନ୍ତୁ
@@ -376,10 +376,10 @@ app_template_importing	{title} ଲଗାଯାଉଛି…
 app_template_downloading	ଟେମ୍ପଲେଟ ଡାଉନଲୋଡ୍ ହେଉଛି…
 app_template_download_progress	ଡାଉନଲୋଡ୍ ହେଉଛି… {p}% ({d} / {t})
 app_template_download_paused	ପୁଣି ଆରମ୍ଭ କରିବାକୁ ପୁଣି ଆମଦାନି କରନ୍ତୁ — ସମ୍ପୂର୍ଣ୍ଣ ଫାଇଲଗୁଡ଼ିକ ରଖାଯାଏ
-app_template_public_hdr	ସାର୍ବଜନୀନ ଟେମ୍ପଲେଟ
+app_template_public_hdr	ଟେମ୍ପଲେଟ
 app_template_private_hdr	ବ୍ୟକ୍ତିଗତ ଟେମ୍ପଲେଟ
-app_template_public_hint	ସାର୍ବଜନୀନ ତାଲିକା ଲୋଡ୍ କରିବାକୁ ଏହି ବିଭାଗ ଖୋଲନ୍ତୁ (ଥରେ ଇଣ୍ଟରନେଟ ଦରକାର)।
-app_template_code_not_found	କୋଡ୍ ମିଳିଲା ନାହିଁ
+app_template_public_hint	ତାଲିକା ଲୋଡ କରିବାକୁ ଏହି ଅଂଶ ଖୋଲନ୍ତୁ (ଥରେ ଇଣ୍ଟରନେଟ ଲାଗେ)।
+app_template_code_not_found	ଟେମ୍ପଲେଟ ମିଳିଲା ନାହିଁ
 app_template_need_internet	ଟେମ୍ପଲେଟ ଡାଉନଲୋଡ୍ ପାଇଁ ଇଣ୍ଟରନେଟ ଦରକାର
 app_template_import_selected	ବଛାଯାଇଥିବା ଆମଦାନି କରନ୍ତୁ
 app_template_check_code	କୋଡ୍ ଯାଞ୍ଚ କରନ୍ତୁ

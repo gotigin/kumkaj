@@ -368,7 +368,7 @@ only_owner_remove_server	සේවාදායකයක් ඉවත් කළ �
 owner_pin_remove_server	මෙම සේවාදායකය ඉවත් කිරීමට හිමිකරු PIN අවශ්‍යයි
 device_setup_help	සේවාදායකය මෙහි ලෙජර් තබා ගනී. සේවාදායක යුගල සේවාදායකයකට.
 app_template_heading	සාප්පු සැකිලි
-app_template_blurb	පොදු ආරම්භක මෙනුවක් ආයාත කරන්න, නැතහොත් ඔබේ Khaynjo සම්බන්ධතාවයෙන් ලැබුණු ඉලක්කම් 12ක පුද්ගලික කේතය ඇතුළත් කරන්න.
+app_template_blurb	ආරම්භක මෙනුවක් තෝරන්න. මඟ හැරීම හිස් කඩයක් තබයි.
 app_template_apply	සැකිල්ල ආයාත කරන්න
 app_template_skip	දැනට මග හරින්න
 app_template_status	සේවාදායකය සූදානම් — සැකිල්ලක් ආයාත කරන්න, නැතහොත් මඟ හරින්න
@@ -376,10 +376,10 @@ app_template_importing	{title} අයදුම් කරමින්...
 app_template_downloading	සැකිල්ල බාගත වෙමින්…
 app_template_download_progress	බාගත වෙමින්… {p}% ({d} / {t})
 app_template_download_paused	නැවත ආරම්භ කිරීමට නැවත ආයාත කරන්න — සම්පූර්ණ ගොනු තබා ගනී
-app_template_public_hdr	පොදු සැකිලි
+app_template_public_hdr	ආකෘති
 app_template_private_hdr	පුද්ගලික සැකිල්ල
-app_template_public_hint	පොදු ලැයිස්තුව පූරණය කිරීමට මෙම කොටස විවෘත කරන්න (එක් වරක් අන්තර්ජාලය අවශ්‍යයි).
-app_template_code_not_found	කේතය හමු නොවීය
+app_template_public_hint	ලැයිස්තුව පූරණය කිරීමට මෙම කොටස විවෘත කරන්න (අන්තර්ජාලය වරක්).
+app_template_code_not_found	ආකෘතිය හමු නොවීය
 app_template_need_internet	සැකිලි බාගත කිරීමට අන්තර්ජාලය අවශ්‍යයි
 app_template_import_selected	තෝරාගත් දේ ආයාත කරන්න
 app_template_check_code	කේතය පරීක්ෂා කරන්න

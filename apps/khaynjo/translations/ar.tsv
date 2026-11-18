@@ -368,7 +368,7 @@ only_owner_remove_server	المالك وحده يمكنه إزالة خادم
 owner_pin_remove_server	يلزم رمز المالك لإزالة هذا الخادم
 device_setup_help	الخادم يحفظ الدفاتر هنا. العميل يقترن بخادم.
 app_template_heading	قوالب المتجر
-app_template_blurb	استورد قائمة بداية عامة، أو أدخل رمزًا خاصًا من 12 رقمًا من جهة اتصالك في Khaynjo.
+app_template_blurb	اختر قائمة بداية. التخطي يترك متجراً فارغاً.
 app_template_apply	استيراد القالب
 app_template_skip	انتظر قليلاً
 app_template_status	الخادم جاهز — استورد قالبًا أو تخطَّ
@@ -376,10 +376,10 @@ app_template_importing	يتم تطبيق {title}…
 app_template_downloading	جارٍ تنزيل القالب…
 app_template_download_progress	جارٍ التنزيل… {p}% ({d} / {t})
 app_template_download_paused	استورد مرة أخرى للاستئناف — يُحتفظ بالملفات المكتملة
-app_template_public_hdr	قوالب عامة
+app_template_public_hdr	قوالب
 app_template_private_hdr	قالب خاص
-app_template_public_hint	افتح هذا القسم لتحميل القائمة العامة (يحتاج إلى الإنترنت مرة واحدة).
-app_template_code_not_found	الرمز غير موجود
+app_template_public_hint	افتح هذا القسم لتحميل القائمة (يلزم الإنترنت مرة واحدة).
+app_template_code_not_found	القالب غير موجود
 app_template_need_internet	يلزم الإنترنت لتنزيل القوالب
 app_template_import_selected	استيراد المحدد
 app_template_check_code	تحقق من الرمز

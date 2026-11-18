@@ -368,7 +368,7 @@ only_owner_remove_server	Server môže odstrániť iba vlastník
 owner_pin_remove_server	Na odstránenie tohto servera je potrebný vlastník PIN
 device_setup_help	Server tu uchováva knihy. Klient sa spáruje so serverom.
 app_template_heading	Šablóny obchodu
-app_template_blurb	Importujte verejné úvodné menu alebo zadajte súkromný 12-miestny kód od svojho kontaktu Khaynjo.
+app_template_blurb	Vyberte úvodné menu. Preskočenie nechá prázdny obchod.
 app_template_apply	Importovať šablónu
 app_template_skip	Zatiaľ preskočiť
 app_template_status	Server pripravený — importujte šablónu alebo preskočte
@@ -376,10 +376,10 @@ app_template_importing	Uplatňuje sa {title}…
 app_template_downloading	Sťahuje sa šablóna…
 app_template_download_progress	Sťahuje sa… {p}% ({d} / {t})
 app_template_download_paused	Pre pokračovanie importujte znova — hotové súbory zostanú
-app_template_public_hdr	Verejné šablóny
+app_template_public_hdr	Šablóny
 app_template_private_hdr	Súkromná šablóna
-app_template_public_hint	Otvorte túto časť na načítanie verejného zoznamu (internet je potrebný raz).
-app_template_code_not_found	Kód sa nenašiel
+app_template_public_hint	Otvorte túto časť a načítajte zoznam (internet raz).
+app_template_code_not_found	Šablóna sa nenašla
 app_template_need_internet	Na stiahnutie šablón je potrebný internet
 app_template_import_selected	Importovať vybrané
 app_template_check_code	Overiť kód

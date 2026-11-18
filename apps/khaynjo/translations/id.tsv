@@ -368,7 +368,7 @@ only_owner_remove_server	Hanya Owner yang boleh hapus server
 owner_pin_remove_server	PIN Owner wajib untuk menghapus server ini
 device_setup_help	Server menyimpan pembukuan di sini. Klien dipasangkan ke server.
 app_template_heading	Templat toko
-app_template_blurb	Impor menu awal publik, atau masukkan kode pribadi 12 digit dari kontak Khaynjo Anda.
+app_template_blurb	Pilih menu awal. Lewati membuat toko kosong.
 app_template_apply	Impor templat
 app_template_skip	Lewati untuk saat ini
 app_template_status	Server siap — impor templat, atau lewati
@@ -376,10 +376,10 @@ app_template_importing	Menerapkan {title}…
 app_template_downloading	Mengunduh templat…
 app_template_download_progress	Mengunduh… {p}% ({d} / {t})
 app_template_download_paused	Impor lagi untuk melanjutkan — file yang selesai tetap disimpan
-app_template_public_hdr	Templat publik
+app_template_public_hdr	Templat
 app_template_private_hdr	Templat pribadi
-app_template_public_hint	Buka bagian ini untuk memuat daftar publik (perlu internet sekali).
-app_template_code_not_found	Kode tidak ditemukan
+app_template_public_hint	Buka bagian ini untuk memuat daftar (internet sekali).
+app_template_code_not_found	Templat tidak ditemukan
 app_template_need_internet	Perlu internet untuk mengunduh templat
 app_template_import_selected	Impor yang dipilih
 app_template_check_code	Periksa kode

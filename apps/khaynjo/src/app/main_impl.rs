@@ -383,7 +383,7 @@ impl App {
             if let Some(outcome) = catalogue_fetch_once().lock().unwrap().take() {
                 match outcome.result {
                     Ok(CatalogueFetchOk::PublicIndex(index)) => {
-                        {
+                        let awaiting = {
                             let mut st = app_state().lock().unwrap();
                             st.catalogue_public = index
                                 .templates
@@ -391,8 +391,13 @@ impl App {
                                 .map(|e| (e.id, e.title, e.blurb))
                                 .collect();
                             st.catalogue_public_error.clear();
+                            st.awaiting_app_template
+                        };
+                        if awaiting {
+                            self.paint_app_template_chrome(cx, true);
+                        } else {
+                            self.paint_menu_public_card(cx);
                         }
-                        self.paint_app_template_chrome(cx, true);
                     }
                     Ok(CatalogueFetchOk::PrivatePeek(man)) if app_state().lock().unwrap().menu_priv_origin => {
                         // Menu → Private template: remember the code + pack, menu level.
@@ -448,15 +453,15 @@ impl App {
                                     },
                                 ));
                             }
-                            // Menu → Private template imports menu items only; the
-                            // onboarding App template also applies the shop settings.
-                            let menu_level = st.menu_priv_origin;
-                            let apply_defaults = !menu_level
+                            // Menu imports add items only. Onboarding (before Owner PIN)
+                            // also applies the pack's shop settings.
+                            let onboarding = st.awaiting_app_template;
+                            let apply_defaults = onboarding
                                 && (manifest.applies_shop_defaults
                                     || !manifest.shop_defaults.trim().is_empty()
                                     || pack_dir.join("shop_defaults.json").is_file());
                             let name = template_client_name(&manifest.title);
-                            let title = if menu_level {
+                            let title = if !onboarding {
                                 st.t("items_tmpl_named").replace("{name}", &name)
                             } else {
                                 st.t("app_tmpl_named").replace("{name}", &name)
@@ -472,13 +477,23 @@ impl App {
                         })();
                         match job {
                             Ok((db, kind)) => {
+                                let awaiting = app_state().lock().unwrap().awaiting_app_template;
                                 menu_import_job(db, kind);
                                 self.paint_import_progress_chrome(cx);
-                                self.paint_app_template_chrome(cx, true);
+                                if awaiting {
+                                    self.paint_app_template_chrome(cx, true);
+                                } else {
+                                    self.paint_menu_public_card(cx);
+                                }
                             }
                             Err(e) => {
+                                let awaiting = app_state().lock().unwrap().awaiting_app_template;
                                 self.set_status(cx, e);
-                                self.paint_app_template_chrome(cx, true);
+                                if awaiting {
+                                    self.paint_app_template_chrome(cx, true);
+                                } else {
+                                    self.paint_menu_public_card(cx);
+                                }
                             }
                         }
                     }
@@ -512,14 +527,18 @@ impl App {
                         if matches!(outcome.kind, CatalogueFetchKind::PublicIndex) {
                             app_state().lock().unwrap().catalogue_public_error = msg.clone();
                         }
-                        // A Menu-started public download that failed is over.
-                        app_state().lock().unwrap().template_confirm = false;
+                        // A Menu-started download that failed is over.
+                        let awaiting = {
+                            let mut st = app_state().lock().unwrap();
+                            st.template_confirm = false;
+                            st.menu_priv_origin = false;
+                            st.awaiting_app_template
+                        };
                         self.set_status(cx, msg);
-                        self.paint_app_template_chrome(cx, true);
-                        let menu = std::mem::take(&mut app_state().lock().unwrap().menu_priv_origin);
-                        if menu {
-                            self.paint_menu_private_card(cx);
-                            self.sync_chrome(cx);
+                        if awaiting {
+                            self.paint_app_template_chrome(cx, true);
+                        } else {
+                            self.paint_menu_public_card(cx);
                         }
                     }
                 }
@@ -559,7 +578,7 @@ impl App {
                 let menu_priv = {
                     let mut st = app_state().lock().unwrap();
                     st.template_confirm = false;
-                    st.template_pick = false;
+                    st.menu_selected_id = None;
                     let menu_priv = std::mem::take(&mut st.menu_priv_origin);
                     if menu_priv && msg.is_ok() {
                         // Imported: the card goes back to a fresh code entry.

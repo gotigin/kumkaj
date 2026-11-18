@@ -368,7 +368,7 @@ only_owner_remove_server	Chỉ Owner mới được xóa máy chủ
 owner_pin_remove_server	Cần Owner PIN để xóa máy chủ này
 device_setup_help	Máy chủ giữ sổ sách ở đây. Máy khách ghép đôi với máy chủ.
 app_template_heading	Mẫu cửa hàng
-app_template_blurb	Nhập một thực đơn khởi đầu công khai, hoặc nhập mã riêng 12 chữ số từ người liên hệ Khaynjo của bạn.
+app_template_blurb	Chọn một thực đơn bắt đầu. Bỏ qua để cửa hàng trống.
 app_template_apply	Nhập mẫu
 app_template_skip	Bỏ qua trước
 app_template_status	Máy chủ đã sẵn sàng — nhập một mẫu, hoặc bỏ qua
@@ -376,10 +376,10 @@ app_template_importing	Đang áp dụng {title}…
 app_template_downloading	Đang tải mẫu xuống…
 app_template_download_progress	Đang tải xuống… {p}% ({d} / {t})
 app_template_download_paused	Nhập lại để tiếp tục — các tệp đã xong được giữ lại
-app_template_public_hdr	Mẫu công khai
+app_template_public_hdr	Mẫu
 app_template_private_hdr	Mẫu riêng
-app_template_public_hint	Mở mục này để tải danh sách công khai (cần internet một lần).
-app_template_code_not_found	Không tìm thấy mã
+app_template_public_hint	Mở phần này để tải danh sách (cần internet một lần).
+app_template_code_not_found	Không thấy mẫu
 app_template_need_internet	Cần internet để tải mẫu xuống
 app_template_import_selected	Nhập mục đã chọn
 app_template_check_code	Kiểm tra mã

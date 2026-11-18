@@ -3,15 +3,7 @@ impl App {
 fn paint_import_progress_chrome(&mut self, cx: &mut Cx) {
         let (done, total) = *menu_import_progress().lock().unwrap();
         let cancel_label = app_state().lock().unwrap().t("cancel");
-        // Menu screen private items template: its own card shows the work.
-        if app_state().lock().unwrap().menu_priv_origin
-            && (catalogue_fetch_busy().load(std::sync::atomic::Ordering::SeqCst)
-                || menu_import_busy().load(std::sync::atomic::Ordering::SeqCst))
-        {
-            self.paint_menu_private_progress(cx);
-            return;
-        }
-        // Menu screen public items template (download, then shelf import).
+        // Menu screen template (download, then shelf or items-only pack import).
         if app_state().lock().unwrap().template_confirm
             && (catalogue_fetch_busy().load(std::sync::atomic::Ordering::SeqCst)
                 || menu_import_busy().load(std::sync::atomic::Ordering::SeqCst))
@@ -3379,10 +3371,10 @@ fn paint_submit_busy_chrome(&mut self, cx: &mut Cx) {
 }
 
 impl App {
-    /// Menu → Item templates heading + PUBLIC TEMPLATES card: the Khaynjo
-    /// Items Template chip → Import selected (the onboarding public chips).
-    /// What the template holds / what is missing goes in the ℹ tip. Busy
-    /// (Menu-started download or shelf import): status line + Cancel.
+    /// Menu → Item templates: chips from the public catalogue (the shelf, and
+    /// authored packs such as Rajdhani once they are listed). Import of a
+    /// named pack adds menu items only. The shelf chip's ℹ says what is
+    /// missing. Busy (Menu-started download or import): status line + Cancel.
     /// Returns the progress line (empty when idle). Never holds the
     /// `app_state` guard across widget calls.
     pub(crate) fn paint_menu_public_card(&mut self, cx: &mut Cx) -> String {
@@ -3390,13 +3382,27 @@ impl App {
         let remote_shelf = menu_images::install_expects_remote_catalogue();
         let shelf_ready = !shelf.is_empty();
         let fetch_busy = catalogue_fetch_busy().load(std::sync::atomic::Ordering::SeqCst);
-        let shelf_busy = matches!(
+        let import_busy = matches!(
             menu_import_running().lock().unwrap().as_ref(),
-            Some(MenuImportKind::Shelf) | Some(MenuImportKind::ShelfFromDir { .. })
+            Some(MenuImportKind::Shelf)
+                | Some(MenuImportKind::ShelfFromDir { .. })
+                | Some(MenuImportKind::AppTemplate { .. })
         );
-        let (busy, tip, importable, pick, chip, import_l, cancel, heading, help, line) = {
+        let (
+            busy,
+            tip,
+            importable,
+            selected_shelf,
+            shelf_label,
+            catalogue_chips,
+            show_fallback,
+            import_l,
+            cancel,
+            heading,
+            help,
+            line,
+        ) = {
             let st = app_state().lock().unwrap();
-            // Lock-free name scan — `products` is the cached list, no SQL.
             let have: std::collections::HashSet<String> =
                 st.products.iter().map(|p| p.name.trim().to_lowercase()).collect();
             let missing = shelf
@@ -3404,8 +3410,11 @@ impl App {
                 .filter(|d| !have.contains(&d.name.trim().to_lowercase()))
                 .count();
             let folders = menu_images::shelf_folders(shelf).len();
-            let busy = st.template_confirm && !st.menu_priv_origin && (fetch_busy || shelf_busy);
-            let tip = if !shelf_ready && remote_shelf {
+            let busy = st.template_confirm && (fetch_busy || import_busy);
+            let shelf_tip = if !st.catalogue_public_error.is_empty() && st.catalogue_public.is_empty()
+            {
+                st.catalogue_public_error.clone()
+            } else if !shelf_ready && remote_shelf {
                 st.t("template_need_download")
             } else if shelf.is_empty() {
                 String::new()
@@ -3416,9 +3425,45 @@ impl App {
                     .replace("{c}", &folders.to_string())
                     .replace("{d}", &missing.to_string())
             };
+            let selected = st.menu_selected_id.clone();
+            let show_fallback = st.catalogue_public.is_empty();
+            let shelf_importable = (!shelf_ready && remote_shelf) || (shelf_ready && missing > 0);
+            let named = selected.as_deref().filter(|id| *id != catalogue_remote::PUBLIC_ITEMS_TEMPLATE_ID);
+            let tip = if let Some(id) = named {
+                st.catalogue_public
+                    .iter()
+                    .find(|(i, _, _)| i == id)
+                    .map(|(_, _, blurb)| blurb.clone())
+                    .filter(|b| !b.is_empty())
+                    .unwrap_or_else(|| st.t("items_tmpl_help"))
+            } else {
+                shelf_tip
+            };
+            let importable = match selected.as_deref() {
+                Some(id) if id == catalogue_remote::PUBLIC_ITEMS_TEMPLATE_ID => shelf_importable,
+                Some(_) => true,
+                None => false,
+            };
+            let catalogue_chips: Vec<(String, bool)> = if show_fallback {
+                Vec::new()
+            } else {
+                st.catalogue_public
+                    .iter()
+                    .take(5)
+                    .map(|(id, title, _)| {
+                        let label = if id == catalogue_remote::PUBLIC_ITEMS_TEMPLATE_ID {
+                            st.t("items_tmpl_khaynjo")
+                        } else {
+                            st.t("items_tmpl_named")
+                                .replace("{name}", &template_client_name(title))
+                        };
+                        (label, selected.as_deref() == Some(id.as_str()))
+                    })
+                    .collect()
+            };
             let line = if !busy {
                 String::new()
-            } else if shelf_busy {
+            } else if import_busy {
                 let (done, total) = *menu_import_progress().lock().unwrap();
                 if total > 0 {
                     st.t("template_import_progress")
@@ -3434,9 +3479,11 @@ impl App {
             (
                 busy,
                 tip,
-                (!shelf_ready && remote_shelf) || (shelf_ready && missing > 0),
-                st.template_pick,
+                importable,
+                selected.as_deref() == Some(catalogue_remote::PUBLIC_ITEMS_TEMPLATE_ID),
                 st.t("items_tmpl_khaynjo"),
+                catalogue_chips,
+                show_fallback,
                 st.t("app_template_import_selected"),
                 st.t("cancel"),
                 st.t("items_tmpl_heading"),
@@ -3444,9 +3491,10 @@ impl App {
                 line,
             )
         };
+        self.ui.view(cx, ids!(client_template_card)).set_visible(cx, false);
         self.ui
             .view(cx, ids!(template_card))
-            .set_visible(cx, shelf_ready || remote_shelf);
+            .set_visible(cx, shelf_ready || remote_shelf || !show_fallback);
         self.ui
             .widget(cx, ids!(menu_tmpl_heading))
             .set_text(cx, &plain_display_text(&heading));
@@ -3459,14 +3507,32 @@ impl App {
             .as_info_help()
             .set_tip(&plain_display_text(if tip.is_empty() { " " } else { &tip }));
         let idle = self.ui.button(cx, ids!(template_chip));
-        idle.set_text(cx, &chip);
-        idle.set_visible(cx, !busy && !pick);
+        idle.set_text(cx, &shelf_label);
+        idle.set_visible(cx, show_fallback && !busy && !selected_shelf);
         let on = self.ui.button(cx, ids!(template_chip_on));
-        on.set_text(cx, &chip);
-        on.set_visible(cx, !busy && pick);
+        on.set_text(cx, &shelf_label);
+        on.set_visible(cx, show_fallback && !busy && selected_shelf);
+        let slots = [
+            (ids!(menu_cat_0), ids!(menu_cat_0_on)),
+            (ids!(menu_cat_1), ids!(menu_cat_1_on)),
+            (ids!(menu_cat_2), ids!(menu_cat_2_on)),
+            (ids!(menu_cat_3), ids!(menu_cat_3_on)),
+            (ids!(menu_cat_4), ids!(menu_cat_4_on)),
+        ];
+        for (i, (idle_id, on_id)) in slots.iter().enumerate() {
+            if let Some((label, picked)) = catalogue_chips.get(i) {
+                self.ui.button(cx, *idle_id).set_text(cx, label);
+                self.ui.button(cx, *on_id).set_text(cx, label);
+                self.ui.button(cx, *idle_id).set_visible(cx, !busy && !picked);
+                self.ui.button(cx, *on_id).set_visible(cx, !busy && *picked);
+            } else {
+                self.ui.button(cx, *idle_id).set_visible(cx, false);
+                self.ui.button(cx, *on_id).set_visible(cx, false);
+            }
+        }
         let import = self.ui.button(cx, ids!(template_import));
         import.set_text(cx, &import_l);
-        import.set_visible(cx, pick && importable && !busy);
+        import.set_visible(cx, importable && !busy);
         self.ui.view(cx, ids!(template_busy)).set_visible(cx, busy);
         if busy {
             self.ui
@@ -3479,85 +3545,8 @@ impl App {
         line
     }
 
-    /// Menu screen private items template card — the onboarding private
-    /// template's flow at menu-items level: code → Check code → "{name}
-    /// Template" + Import. Locks state in its own scope so the fetch / import
-    /// handlers can call it directly (sync_chrome skips the page paint while
-    /// the code field has focus).
+    /// The private Menu card stays hidden. A later paid gate can show it again.
     pub(crate) fn paint_menu_private_card(&mut self, cx: &mut Cx) {
-        let fetch_busy = catalogue_fetch_busy().load(std::sync::atomic::Ordering::SeqCst);
-        let import_busy = menu_import_busy().load(std::sync::atomic::Ordering::SeqCst);
-        let (busy, heading, ph, check_l, title, import_l) = {
-            let st = app_state().lock().unwrap();
-            let busy = st.menu_priv_origin && (fetch_busy || import_busy);
-            let title = (!st.menu_priv_title.is_empty()).then(|| {
-                st.t("items_tmpl_named")
-                    .replace("{name}", &template_client_name(&st.menu_priv_title))
-            });
-            (
-                busy,
-                st.t("private_tmpl_help"),
-                st.t("private_code_ph"),
-                st.t("app_template_check_code"),
-                title,
-                st.t("app_template_import"),
-            )
-        };
-        if busy {
-            self.paint_menu_private_progress(cx);
-            return;
-        }
-        self.ui.view(cx, ids!(client_template_card)).set_visible(cx, true);
-        self.ui
-            .widget(cx, ids!(menu_private_tmpl_help))
-            .as_info_help()
-            .set_tip(&plain_display_text(&heading));
-        self.ui.text_input(cx, ids!(menu_priv_code)).set_empty_text(cx, ph);
-        let check = self.ui.button(cx, ids!(menu_priv_check));
-        check.set_text(cx, &check_l);
-        check.set_visible(cx, true);
-        let t = self.ui.widget(cx, ids!(menu_priv_title));
-        t.set_visible(cx, title.is_some());
-        if let Some(title) = &title {
-            t.set_text(cx, title);
-        }
-        let import = self.ui.button(cx, ids!(menu_priv_import));
-        import.set_text(cx, &import_l);
-        import.set_visible(cx, title.is_some());
-        self.ui.button(cx, ids!(menu_priv_cancel)).set_visible(cx, false);
-        self.ui.widget(cx, ids!(client_template_info)).set_visible(cx, false);
-        self.ui.redraw(cx);
-    }
-
-    /// Menu screen private items template while its download / import runs:
-    /// progress line + Cancel replace Check code / Import (busy-action-chrome).
-    fn paint_menu_private_progress(&mut self, cx: &mut Cx) {
-        let import_busy = menu_import_busy().load(std::sync::atomic::Ordering::SeqCst);
-        let (line, cancel) = {
-            let st = app_state().lock().unwrap();
-            let line = if import_busy {
-                let (done, total) = *menu_import_progress().lock().unwrap();
-                if total > 0 {
-                    st.t("template_import_progress")
-                        .replace("{d}", &done.to_string())
-                        .replace("{t}", &total.to_string())
-                } else {
-                    st.t("template_importing")
-                }
-            } else {
-                catalogue_download_progress_text(&st.t("app_template_download_progress")).unwrap_or_else(|| st.t("app_template_downloading"))
-            };
-            (line, st.t("cancel"))
-        };
-        self.ui.button(cx, ids!(menu_priv_check)).set_visible(cx, false);
-        self.ui.button(cx, ids!(menu_priv_import)).set_visible(cx, false);
-        let c = self.ui.button(cx, ids!(menu_priv_cancel));
-        c.set_text(cx, &cancel);
-        c.set_visible(cx, true);
-        let status = self.ui.widget(cx, ids!(client_template_info));
-        status.set_visible(cx, true);
-        status.set_text(cx, &plain_display_text(&line));
-        let work = books_work_status().lock().unwrap().clone();
-        self.show_work_status(cx, work.unwrap_or(line));
+        self.ui.view(cx, ids!(client_template_card)).set_visible(cx, false);
     }
 }

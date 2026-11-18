@@ -368,7 +368,7 @@ only_owner_remove_server	Tikai īpašnieks var noņemt serveri
 owner_pin_remove_server	Lai noņemtu šo serveri, vajag īpašnieka PIN
 device_setup_help	Serveris glabā grāmatas šeit. Terminālis savienojas pārī ar serveri.
 app_template_heading	Veikala veidnes
-app_template_blurb	Importējiet publisku sākuma ēdienkarti vai ievadiet privātu 12 ciparu kodu no sava Khaynjo kontakta.
+app_template_blurb	Izvēlieties sākuma ēdienkarti. Izlaišana atstāj tukšu veikalu.
 app_template_apply	Importēt veidni
 app_template_skip	Pagaidām izlaist
 app_template_status	Serveris gatavs — importējiet veidni vai izlaidiet
@@ -376,10 +376,10 @@ app_template_importing	Lieto {title}…
 app_template_downloading	Lejupielādē veidni…
 app_template_download_progress	Lejupielādē… {p}% ({d} / {t})
 app_template_download_paused	Importējiet vēlreiz, lai turpinātu — pabeigtie faili tiek saglabāti
-app_template_public_hdr	Publiskās veidnes
+app_template_public_hdr	Veidnes
 app_template_private_hdr	Privāta veidne
-app_template_public_hint	Atveriet šo sadaļu, lai ielādētu publisko sarakstu (internets nepieciešams vienreiz).
-app_template_code_not_found	Kods nav atrasts
+app_template_public_hint	Atveriet šo sadaļu, lai ielādētu sarakstu (internets vienreiz).
+app_template_code_not_found	Veidne nav atrasta
 app_template_need_internet	Veidņu lejupielādei nepieciešams internets
 app_template_import_selected	Importēt atlasīto
 app_template_check_code	Pārbaudīt kodu

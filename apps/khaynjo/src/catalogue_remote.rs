@@ -1,4 +1,8 @@
-//! Remote catalogue under `{product}/v1/catalogue` (public list + private codes).
+//! Remote catalogue under `{product}/v1/catalogue`.
+//!
+//! The product list is public (`public/index.json`, `public/templates/<id>/`).
+//! [`CatalogueVisibility::Private`] and 12-digit codes stay here for a later
+//! paid gate; the app does not offer them.
 //!
 //! Docs: `apps/khaynjo/docs/CATALOGUE_URLS.md`. Fetches use HTTPS (`ureq`) or a
 //! local tree via `KHAYNJO_CATALOGUE_DIR` (same layout as the CDN). Windows,
@@ -1857,7 +1861,7 @@ mod tests {
             assert_eq!(fs::read(cached_shelf_dir(&data).join(&rel)).unwrap(), body);
         }
 
-        // A bad private code is "Not found" (UI: Code not found)…
+        // A private path that is not on the host is "Not found" (kept for a later gate)…
         let src = HttpSource::new(&base);
         assert_eq!(src.get("private/000000000000/manifest.json").unwrap_err(), "Not found");
         // …but a listed photo missing on the server is a publish fault.

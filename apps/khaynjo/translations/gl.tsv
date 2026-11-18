@@ -368,7 +368,7 @@ only_owner_remove_server	Só o Dono pode quitar un servidor
 owner_pin_remove_server	Cómpre o PIN do dono para quitar este servidor
 device_setup_help	O Servidor garda os libros aquí. O Cliente emparéllase cun Servidor.
 app_template_heading	Modelos da tenda
-app_template_blurb	Importa un menú inicial público, ou introduce un código privado de 12 díxitos do teu contacto de Khaynjo.
+app_template_blurb	Escolla un menú de inicio. Omitir deixa unha tenda baleira.
 app_template_apply	Importar modelo
 app_template_skip	Omitir de momento
 app_template_status	Servidor listo — importa un modelo ou omite
@@ -376,10 +376,10 @@ app_template_importing	Aplicando {title}…
 app_template_downloading	Descargando o modelo…
 app_template_download_progress	Descargando… {p}% ({d} / {t})
 app_template_download_paused	Importa de novo para continuar — consérvanse os ficheiros rematados
-app_template_public_hdr	Modelos públicos
+app_template_public_hdr	Modelos
 app_template_private_hdr	Modelo privado
-app_template_public_hint	Abre esta sección para cargar a lista pública (precisa internet unha vez).
-app_template_code_not_found	Non se atopou o código
+app_template_public_hint	Abra esta sección para cargar a lista (internet unha vez).
+app_template_code_not_found	Non se atopou o modelo
 app_template_need_internet	Precísase internet para descargar modelos
 app_template_import_selected	Importar o seleccionado
 app_template_check_code	Comprobar código

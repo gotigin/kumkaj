@@ -368,7 +368,7 @@ only_owner_remove_server	सर्वर नै फगत मालिक ई �
 owner_pin_remove_server	इण सर्वर नै हटाबा रै वास्तै मालिक PIN री जरूरत है
 device_setup_help	सर्वर अठै किताबां राखै है। क्लाइंट एक सर्वर रै साथै जोड़ै है।
 app_template_heading	दुकान टेम्पलेट
-app_template_blurb	कोई सार्वजनिक सरुआती मेनू आयात करो, या आपरै Khaynjo संपर्क सूं मिल्यो 12 अंकां रो निजी कोड डालो।
+app_template_blurb	एक शुरुआती मेनू चुणो। छोड़बा पर दुकान खाली रहसी।
 app_template_apply	टेम्पलेट आयात करो
 app_template_skip	अबार तांई छोड़ो
 app_template_status	सर्वर त्यार है — टेम्पलेट आयात करो, या छोड़ द्यो
@@ -376,10 +376,10 @@ app_template_importing	{title} लगाणो...
 app_template_downloading	टेम्पलेट डाउनलोड हो रियो है…
 app_template_download_progress	डाउनलोड हो रियो है… {p}% ({d} / {t})
 app_template_download_paused	फेरूं सरू करण सारू दुबारा आयात करो — पूरी फाइलां राखी जावै है
-app_template_public_hdr	सार्वजनिक टेम्पलेट
+app_template_public_hdr	टेम्पलेट
 app_template_private_hdr	निजी टेम्पलेट
-app_template_public_hint	सार्वजनिक सूची लोड करण सारू ओ हिस्सो खोलो (एक बार इंटरनेट चाईजै)।
-app_template_code_not_found	कोड कोनी मिल्यो
+app_template_public_hint	सूची लोड करबा वास्तै ओ हिस्सा खोलो (एक बार इंटरनेट चाही)।
+app_template_code_not_found	टेम्पलेट कोनी मिल्यो
 app_template_need_internet	टेम्पलेट डाउनलोड करण सारू इंटरनेट चाईजै
 app_template_import_selected	चुण्योड़ो आयात करो
 app_template_check_code	कोड जाँचो

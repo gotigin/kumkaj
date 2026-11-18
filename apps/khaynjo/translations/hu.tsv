@@ -368,7 +368,7 @@ only_owner_remove_server	Csak a Tulajdonos távolíthat el egy szervert
 owner_pin_remove_server	A kiszolgáló eltávolításához PIN tulajdonos szükséges
 device_setup_help	A szerver itt tartja a könyveket. A kliens egy szerverhez párosul.
 app_template_heading	Üzletsablonok
-app_template_blurb	Importáljon egy nyilvános kezdő étlapot, vagy adja meg a Khaynjo-kapcsolattartójától kapott 12 jegyű privát kódot.
+app_template_blurb	Válasszon kezdő menüt. A kihagyás üres boltot hagy.
 app_template_apply	Sablon importálása
 app_template_skip	Most hagyd ki
 app_template_status	A szerver kész — importáljon sablont, vagy hagyja ki
@@ -376,10 +376,10 @@ app_template_importing	{title} alkalmazása…
 app_template_downloading	Sablon letöltése…
 app_template_download_progress	Letöltés… {p}% ({d} / {t})
 app_template_download_paused	A folytatáshoz importáljon újra — a kész fájlok megmaradnak
-app_template_public_hdr	Nyilvános sablonok
+app_template_public_hdr	Sablonok
 app_template_private_hdr	Privát sablon
-app_template_public_hint	Nyissa meg ezt a részt a nyilvános lista betöltéséhez (egyszer internet kell).
-app_template_code_not_found	A kód nem található
+app_template_public_hint	Nyissa meg ezt a részt a lista betöltéséhez (internet egyszer).
+app_template_code_not_found	A sablon nem található
 app_template_need_internet	A sablonok letöltéséhez internet kell
 app_template_import_selected	Kijelölt importálása
 app_template_check_code	Kód ellenőrzése

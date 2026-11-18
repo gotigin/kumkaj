@@ -368,7 +368,7 @@ only_owner_remove_server	მხოლოდ მფლობელს შეუ�
 owner_pin_remove_server	ამ სერვერის წასაშლელად საჭიროა მფლობელი PIN
 device_setup_help	სერვერი აქ ინახავს ჩანაწერებს. კლიენტი წყვილდება სერვერზე.
 app_template_heading	მაღაზიის შაბლონები
-app_template_blurb	შემოიტანეთ საჯარო საწყისი მენიუ, ან შეიყვანეთ Khaynjo-ის თქვენი კონტაქტისგან მიღებული 12-ციფრიანი პირადი კოდი.
+app_template_blurb	აირჩიეთ საწყისი მენიუ. გამოტოვება ცარიელ მაღაზიას ტოვებს.
 app_template_apply	შაბლონის შემოტანა
 app_template_skip	ახლა გამოტოვეთ
 app_template_status	სერვერი მზადაა — შემოიტანეთ შაბლონი ან გამოტოვეთ
@@ -376,10 +376,10 @@ app_template_importing	მიმართვა {title}…
 app_template_downloading	შაბლონი იტვირთება…
 app_template_download_progress	იტვირთება… {p}% ({d} / {t})
 app_template_download_paused	გასაგრძელებლად ხელახლა შემოიტანეთ — დასრულებული ფაილები ინახება
-app_template_public_hdr	საჯარო შაბლონები
+app_template_public_hdr	შაბლონები
 app_template_private_hdr	პირადი შაბლონი
-app_template_public_hint	გახსენით ეს განყოფილება საჯარო სიის ჩასატვირთად (ინტერნეტი ერთხელ არის საჭირო).
-app_template_code_not_found	კოდი ვერ მოიძებნა
+app_template_public_hint	გახსენით ეს ნაწილი სიის ჩასატვირთად (ინტერნეტი ერთხელ).
+app_template_code_not_found	შაბლონი ვერ მოიძებნა
 app_template_need_internet	შაბლონების ჩამოსატვირთად საჭიროა ინტერნეტი
 app_template_import_selected	არჩეულის შემოტანა
 app_template_check_code	კოდის შემოწმება

@@ -368,7 +368,7 @@ only_owner_remove_server	یوازې مالک کولی شي سرور لرې کړ�
 owner_pin_remove_server	د دې سرور لرې کولو لپاره د مالک PIN اړین دی
 device_setup_help	سرور کتابونه دلته ساتي. کلاینټ له سرور سره جوړه کېږي.
 app_template_heading	د هټۍ کينډۍ
-app_template_blurb	يو عامه پيل مېنو راوړئ، يا هغه ۱۲ عددي شخصي کوډ وليکئ چې ستاسو د Khaynjo اړيکې درکړی.
+app_template_blurb	یو پیل منيو وټاکئ. پرېښودل دوکان تش پرېږدي.
 app_template_apply	کينډۍ راوړئ
 app_template_skip	د اوس لپاره پریږدئ
 app_template_status	سرور چمتو دی — يوه کينډۍ راوړئ، يا يې پرېږدئ
@@ -376,10 +376,10 @@ app_template_importing	درخواست کول {title}...
 app_template_downloading	کينډۍ ډاونلوډېږي…
 app_template_download_progress	ډاونلوډ کېږي… {p}% ({d} / {t})
 app_template_download_paused	د دوام لپاره بیا وارد کړئ — بشپړ شوي فایلونه ساتل کېږي
-app_template_public_hdr	عامه کينډۍ
+app_template_public_hdr	کينډۍ
 app_template_private_hdr	شخصي کينډۍ
-app_template_public_hint	د عامه لېست د پورته کولو لپاره دا برخه پرانيزئ (يو ځل انټرنېټ پکار دی).
-app_template_code_not_found	کوډ ونه موندل شو
+app_template_public_hint	لړليک د بارولو لپاره دا برخه پرانیزئ (یو ځل انټرنیټ پکار دی).
+app_template_code_not_found	کينډۍ ونه موندل شوه
 app_template_need_internet	د کينډيو د ډاونلوډ لپاره انټرنېټ ته اړتيا ده
 app_template_import_selected	ټاکل شوې راوړئ
 app_template_check_code	کوډ وګورئ

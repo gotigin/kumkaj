@@ -368,7 +368,7 @@ only_owner_remove_server	Solo l'Owner può rimuovere un server
 owner_pin_remove_server	Serve il PIN Owner per rimuovere questo server
 device_setup_help	Il server tiene qui i libri. Il client si abbina a un server.
 app_template_heading	Modelli negozio
-app_template_blurb	Importa un menu iniziale pubblico, oppure inserisci un codice privato di 12 cifre ricevuto dal tuo contatto Khaynjo.
+app_template_blurb	Scegli un menu di partenza. Salta lascia un negozio vuoto.
 app_template_apply	Importa modello
 app_template_skip	Salta per ora
 app_template_status	Server pronto — importa un modello o salta
@@ -376,10 +376,10 @@ app_template_importing	Applicazione di {title}…
 app_template_downloading	Download del modello…
 app_template_download_progress	Download in corso… {p}% ({d} / {t})
 app_template_download_paused	Importa di nuovo per riprendere — i file completati restano
-app_template_public_hdr	Modelli pubblici
+app_template_public_hdr	Modelli
 app_template_private_hdr	Modello privato
-app_template_public_hint	Apri questa sezione per caricare l'elenco pubblico (serve internet una volta).
-app_template_code_not_found	Codice non trovato
+app_template_public_hint	Apri questa sezione per caricare l'elenco (internet una volta).
+app_template_code_not_found	Modello non trovato
 app_template_need_internet	Serve internet per scaricare i modelli
 app_template_import_selected	Importa selezionato
 app_template_check_code	Verifica codice

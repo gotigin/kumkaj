@@ -368,7 +368,7 @@ only_owner_remove_server	Només el Propietari pot treure un servidor
 owner_pin_remove_server	Cal el PIN del propietari per treure aquest servidor
 device_setup_help	El Servidor guarda els llibres aquí. El Client s'aparella amb un Servidor.
 app_template_heading	Plantilles de botiga
-app_template_blurb	Importeu un menú inicial públic, o introduïu un codi privat de 12 xifres del vostre contacte de Khaynjo.
+app_template_blurb	Trieu un menú d'inici. Ometre deixa una botiga buida.
 app_template_apply	Importa la plantilla
 app_template_skip	Omet de moment
 app_template_status	Servidor a punt — importeu una plantilla o ometeu
@@ -376,10 +376,10 @@ app_template_importing	S'aplica {title}…
 app_template_downloading	S'està baixant la plantilla…
 app_template_download_progress	S'està baixant… {p}% ({d} / {t})
 app_template_download_paused	Torneu a importar per reprendre — els fitxers acabats es conserven
-app_template_public_hdr	Plantilles públiques
+app_template_public_hdr	Plantilles
 app_template_private_hdr	Plantilla privada
-app_template_public_hint	Obriu aquesta secció per carregar la llista pública (cal internet un cop).
-app_template_code_not_found	No s'ha trobat el codi
+app_template_public_hint	Obriu aquesta secció per carregar la llista (cal internet un cop).
+app_template_code_not_found	No s'ha trobat la plantilla
 app_template_need_internet	Cal internet per baixar plantilles
 app_template_import_selected	Importa la seleccionada
 app_template_check_code	Comprova el codi

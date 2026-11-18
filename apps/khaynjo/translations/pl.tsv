@@ -368,7 +368,7 @@ only_owner_remove_server	Tylko właściciel może usunąć serwer
 owner_pin_remove_server	Właściciel PIN wymagany do usunięcia tego serwera
 device_setup_help	Serwer prowadzi tutaj księgi. Klient łączy się z serwerem.
 app_template_heading	Szablony sklepu
-app_template_blurb	Zaimportuj publiczne menu startowe lub wpisz prywatny 12-cyfrowy kod od swojego kontaktu w Khaynjo.
+app_template_blurb	Wybierz menu startowe. Pominięcie zostawia pusty sklep.
 app_template_apply	Importuj szablon
 app_template_skip	Pomiń na razie
 app_template_status	Serwer gotowy — zaimportuj szablon lub pomiń
@@ -376,10 +376,10 @@ app_template_importing	Stosowanie {title}…
 app_template_downloading	Pobieranie szablonu…
 app_template_download_progress	Pobieranie… {p}% ({d} / {t})
 app_template_download_paused	Zaimportuj ponownie, aby wznowić — ukończone pliki zostają
-app_template_public_hdr	Publiczne szablony
+app_template_public_hdr	Szablony
 app_template_private_hdr	Prywatny szablon
-app_template_public_hint	Otwórz tę sekcję, aby wczytać publiczną listę (internet potrzebny raz).
-app_template_code_not_found	Nie znaleziono kodu
+app_template_public_hint	Otwórz tę część, aby wczytać listę (internet raz).
+app_template_code_not_found	Nie znaleziono szablonu
 app_template_need_internet	Do pobrania szablonów potrzebny jest internet
 app_template_import_selected	Importuj wybrane
 app_template_check_code	Sprawdź kod

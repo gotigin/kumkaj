@@ -368,7 +368,7 @@ only_owner_remove_server	సర్వర్‌ను Owner మాత్రమే
 owner_pin_remove_server	సర్వర్ తొలగించడానికి Owner PIN అవసరం
 device_setup_help	సర్వర్ ఖాతాలను ఇక్కడే ఉంచుతుంది. క్లయింట్ ఒక సర్వర్‌తో జత అవుతుంది.
 app_template_heading	దుకాణ టెంప్లేట్‌లు
-app_template_blurb	పబ్లిక్ స్టార్టర్ మెనూను దిగుమతి చేయండి, లేదా మీ Khaynjo పరిచయం నుండి పొందిన 12 అంకెల ప్రైవేట్ కోడ్‌ను నమోదు చేయండి.
+app_template_blurb	ఒక ప్రారంభ మెనూ ఎంచుకోండి. దాటితే దుకాణం ఖాళీగా ఉంటుంది.
 app_template_apply	టెంప్లేట్ దిగుమతి చేయండి
 app_template_skip	ప్రస్తుతానికి దాటవేయి
 app_template_status	సర్వర్ సిద్ధం — టెంప్లేట్ దిగుమతి చేయండి, లేదా దాటవేయండి
@@ -376,10 +376,10 @@ app_template_importing	{title} వర్తింపజేస్తోంది�
 app_template_downloading	టెంప్లేట్ డౌన్‌లోడ్ అవుతోంది…
 app_template_download_progress	డౌన్‌లోడ్ అవుతోంది… {p}% ({d} / {t})
 app_template_download_paused	కొనసాగించడానికి మళ్లీ దిగుమతి చేయండి — పూర్తైన ఫైళ్లు ఉంచబడతాయి
-app_template_public_hdr	పబ్లిక్ టెంప్లేట్‌లు
+app_template_public_hdr	టెంప్లేట్లు
 app_template_private_hdr	ప్రైవేట్ టెంప్లేట్
-app_template_public_hint	పబ్లిక్ జాబితాను లోడ్ చేయడానికి ఈ విభాగాన్ని తెరవండి (ఒక్కసారి ఇంటర్నెట్ అవసరం).
-app_template_code_not_found	కోడ్ కనుగొనబడలేదు
+app_template_public_hint	జాబితా లోడ్ చేయడానికి ఈ భాగం తెరవండి (ఒకసారి ఇంటర్నెట్ కావాలి).
+app_template_code_not_found	టెంప్లేట్ దొరకలేదు
 app_template_need_internet	టెంప్లేట్‌లను డౌన్‌లోడ్ చేయడానికి ఇంటర్నెట్ అవసరం
 app_template_import_selected	ఎంచుకున్నదాన్ని దిగుమతి చేయండి
 app_template_check_code	కోడ్ తనిఖీ చేయండి

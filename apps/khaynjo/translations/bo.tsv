@@ -368,7 +368,7 @@ only_owner_remove_server	བདག་པོ་ཁོ་ནས་སར་བར�
 owner_pin_remove_server	བདག་པོ་PIN སར་བར་འདི་མེད་པར་བཟོ་དགོས།
 device_setup_help	སར་བར་གྱིས་རྩིས་ཁྲ་འདིར་ཉར་གྱི་ཡོད། མཁོ་སྤྲོད་པ་ཞབས་ཞུ་འཕྲུལ་ཆས་ལ་ཆ་སྒྲིག་བྱེད།
 app_template_heading	ཚོང་ཁང་གི་དཔེ་གཞི།
-app_template_blurb	སྤྱི་སྤྱོད་ཀྱི་འགོ་འཛུགས་ཟས་ཐོ་ནང་འདྲེན་གནང་། ཡང་ན་ཁྱེད་ཀྱི་Khaynjo འབྲེལ་བ་ནས་ཐོབ་པའི་ཨང་གྲངས་ ༡༢ ཡོད་པའི་སྒེར་གྱི་ཚབ་རྟགས་འཇུག་རོགས།
+app_template_blurb	འགོ་འཛུགས་ཀྱི་ཐོ་གཞུང་འདེམས། བཀོལ་མེད་ན་ཚོང་ཁང་སྟོང་པ་ལུས།
 app_template_apply	དཔེ་གཞི་ནང་འདྲེན།
 app_template_skip	ད་ལྟ་མཆོང་།
 app_template_status	ཞབས་ཞུ་འཕྲུལ་ཆས་གྲ་སྒྲིག་ཡིན། — དཔེ་གཞི་ཞིག་ནང་འདྲེན་གནང་། ཡང་ན་མཆོང་།
@@ -376,10 +376,10 @@ app_template_importing	{title}...
 app_template_downloading	དཔེ་གཞི་ཕབ་ལེན་བྱེད་བཞིན་ཡོད།…
 app_template_download_progress	ཕབ་ལེན་བྱེད་བཞིན་ཡོད། {p}% ({d} / {t})
 app_template_download_paused	མུ་མཐུད་པར་ཡང་བསྐྱར་ནང་འདྲེན་གནང་། — གྲུབ་ཟིན་པའི་ཡིག་ཆ་ཉར་ཡོད།
-app_template_public_hdr	སྤྱི་སྤྱོད་དཔེ་གཞི།
+app_template_public_hdr	དཔེ་གཞི
 app_template_private_hdr	སྒེར་གྱི་དཔེ་གཞི།
-app_template_public_hint	སྤྱི་སྤྱོད་ཐོ་གཞུང་འཇུག་པར་སྡེ་ཚན་འདི་ཁ་ཕྱེ་རོགས། (དྲ་རྒྱ་ཐེངས་གཅིག་དགོས།)
-app_template_code_not_found	ཚབ་རྟགས་མ་རྙེད།
+app_template_public_hint	ཐོ་ཡིག་འཇུག་པར་ཚན་པ་འདི་ཕྱེ། (དྲ་རྒྱ་ཐེངས་གཅིག་དགོས།)
+app_template_code_not_found	དཔེ་གཞི་མ་རྙེད
 app_template_need_internet	དཔེ་གཞི་ཕབ་ལེན་ལ་དྲ་རྒྱ་དགོས།
 app_template_import_selected	འདེམས་པ་ནང་འདྲེན།
 app_template_check_code	ཚབ་རྟགས་ཞིབ་བཤེར།

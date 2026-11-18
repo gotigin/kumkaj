@@ -368,7 +368,7 @@ only_owner_remove_server	စာဗာကို ဖယ်ရှားနိုင
 owner_pin_remove_server	ပိုင်ရှင် PIN သည် ဒီဆာဗာကို ဖယ်ရှားရန် လိုအပ်သည်
 device_setup_help	Server သည် ဒီနေရာမှာ စာအုပ်များကို ထိန်းသိမ်းထားသည်။ Client သည် Server နှစ်ခုနှင့် ကိုက်ညီသည်။
 app_template_heading	ဆိုင်ပုံစံများ
-app_template_blurb	အများသုံး စတင်မီနူးကို တင်သွင်းပါ၊ သို့မဟုတ် သင့် Khaynjo အဆက်အသွယ်ထံမှ ရရှိသော ဂဏန်း ၁၂ လုံး ကိုယ်ပိုင်ကုဒ်ကို ထည့်ပါ။
+app_template_blurb	အစ မီနူးတစ်ခု ရွေးပါ။ ကျော်လိုက်ရင် ဆိုင်အလွတ် ကျန်သည်။
 app_template_apply	ပုံစံကို တင်သွင်းပါ
 app_template_skip	ယခုအချိန်တွင် ကျော်ပါ
 app_template_status	ဆာဗာ အဆင်သင့် — ပုံစံတစ်ခု တင်သွင်းပါ၊ သို့မဟုတ် ကျော်ပါ
@@ -376,10 +376,10 @@ app_template_importing	{title} ဖြင့် သက်ရောက်မှု
 app_template_downloading	ပုံစံကို ဒေါင်းလုဒ်လုပ်နေသည်…
 app_template_download_progress	ဒေါင်းလုဒ်လုပ်နေသည်… {p}% ({d} / {t})
 app_template_download_paused	ဆက်လုပ်ရန် ထပ်မံတင်သွင်းပါ — ပြီးဆုံးသောဖိုင်များ ထိန်းသိမ်းထားသည်
-app_template_public_hdr	အများသုံးပုံစံများ
+app_template_public_hdr	ပုံစံများ
 app_template_private_hdr	ကိုယ်ပိုင်ပုံစံ
-app_template_public_hint	အများသုံးစာရင်းကို ဖွင့်ရန် ဤအပိုင်းကို ဖွင့်ပါ (အင်တာနက် တစ်ကြိမ်လိုသည်)။
-app_template_code_not_found	ကုဒ်ကို ရှာမတွေ့ပါ
+app_template_public_hint	စာရင်းဖွင့်ရန် ဤအပိုင်းကို ဖွင့်ပါ (အင်တာနက် တစ်ကြိမ် လိုသည်)။
+app_template_code_not_found	ပုံစံ မတွေ့ပါ
 app_template_need_internet	ပုံစံများ ဒေါင်းလုဒ်လုပ်ရန် အင်တာနက်လိုသည်
 app_template_import_selected	ရွေးထားသည်ကို တင်သွင်းပါ
 app_template_check_code	ကုဒ်စစ်ပါ

@@ -368,7 +368,7 @@ only_owner_remove_server	Doar Proprietarul poate elimina un server
 owner_pin_remove_server	PIN-ul proprietarului e necesar ca să elimini acest server
 device_setup_help	Serverul ține registrele aici. Clientul se împerechează cu un Server.
 app_template_heading	Șabloane de magazin
-app_template_blurb	Importați un meniu de pornire public sau introduceți un cod privat de 12 cifre de la contactul dvs. Khaynjo.
+app_template_blurb	Alegeți un meniu de pornire. Omiterea lasă un magazin gol.
 app_template_apply	Importă șablonul
 app_template_skip	Sari deocamdată
 app_template_status	Server pregătit — importați un șablon sau săriți peste
@@ -376,10 +376,10 @@ app_template_importing	Se aplică {title}…
 app_template_downloading	Se descarcă șablonul…
 app_template_download_progress	Se descarcă… {p}% ({d} / {t})
 app_template_download_paused	Importați din nou pentru a relua — fișierele terminate se păstrează
-app_template_public_hdr	Șabloane publice
+app_template_public_hdr	Șabloane
 app_template_private_hdr	Șablon privat
-app_template_public_hint	Deschideți această secțiune pentru a încărca lista publică (e nevoie de internet o dată).
-app_template_code_not_found	Codul nu a fost găsit
+app_template_public_hint	Deschideți această parte ca să încărcați lista (internet o dată).
+app_template_code_not_found	Șablonul nu a fost găsit
 app_template_need_internet	E nevoie de internet pentru a descărca șabloane
 app_template_import_selected	Importă selecția
 app_template_check_code	Verifică codul

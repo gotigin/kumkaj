@@ -368,7 +368,7 @@ only_owner_remove_server	Bare Eieren kan fjerne en server
 owner_pin_remove_server	Eier-PIN kreves for å fjerne denne serveren
 device_setup_help	Serveren holder bøkene her. Klient pares med en Server.
 app_template_heading	Butikkmaler
-app_template_blurb	Importer en offentlig startmeny, eller skriv inn en privat 12-sifret kode fra Khaynjo-kontakten din.
+app_template_blurb	Velg en startmeny. Hopp over lar en tom butikk.
 app_template_apply	Importer mal
 app_template_skip	Hopp over nå
 app_template_status	Server klar — importer en mal, eller hopp over
@@ -376,10 +376,10 @@ app_template_importing	Bruker {title}…
 app_template_downloading	Laster ned mal…
 app_template_download_progress	Laster ned… {p}% ({d} / {t})
 app_template_download_paused	Importer på nytt for å fortsette — ferdige filer beholdes
-app_template_public_hdr	Offentlige maler
+app_template_public_hdr	Maler
 app_template_private_hdr	Privat mal
-app_template_public_hint	Åpne denne delen for å laste inn den offentlige listen (trenger internett én gang).
-app_template_code_not_found	Fant ikke koden
+app_template_public_hint	Åpne denne delen for å laste listen (internett én gang).
+app_template_code_not_found	Malen ble ikke funnet
 app_template_need_internet	Trenger internett for å laste ned maler
 app_template_import_selected	Importer valgte
 app_template_check_code	Sjekk koden

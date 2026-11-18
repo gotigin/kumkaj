@@ -368,7 +368,7 @@ only_owner_remove_server	Միայն Սեփականատերը կարող է հե�
 owner_pin_remove_server	Այս սերվերը հեռացնելու համար պետք է սեփականատիրոջ PIN-ը
 device_setup_help	Սերվերը մատյանները պահում է այստեղ։ Կլիենտը զուգակցվում է Սերվերի հետ։
 app_template_heading	Խանութի ձևանմուշներ
-app_template_blurb	Ներմուծեք հանրային մեկնարկային ճաշացանկ կամ մուտքագրեք Khaynjo-ի ձեր կոնտակտից ստացված 12 նիշանոց մասնավոր կոդը։
+app_template_blurb	Ընտրեք սկզբնական մենյու։ Բաց թողնելը դատարկ խանութ է թողնում։
 app_template_apply	Ներմուծել ձևանմուշը
 app_template_skip	Առայժմ բաց թողնել
 app_template_status	Սերվերը պատրաստ է — ներմուծեք ձևանմուշ կամ բաց թողեք
@@ -376,10 +376,10 @@ app_template_importing	Կիրառվում է {title}…
 app_template_downloading	Ձևանմուշի ներբեռնում…
 app_template_download_progress	Ներբեռնում… {p}% ({d} / {t})
 app_template_download_paused	Կրկին ներմուծեք շարունակելու համար — ավարտված ֆայլերը պահպանվում են
-app_template_public_hdr	Հանրային ձևանմուշներ
+app_template_public_hdr	Կաղապարներ
 app_template_private_hdr	Մասնավոր ձևանմուշ
-app_template_public_hint	Բացեք այս բաժինը հանրային ցանկը բեռնելու համար (մեկ անգամ անհրաժեշտ է ինտերնետ)։
-app_template_code_not_found	Կոդը չի գտնվել
+app_template_public_hint	Բացեք այս բաժինը՝ ցանկը բեռնելու համար (ինտերնետ մեկ անգամ)։
+app_template_code_not_found	Կաղապարը չի գտնվել
 app_template_need_internet	Ձևանմուշներ ներբեռնելու համար անհրաժեշտ է ինտերնետ
 app_template_import_selected	Ներմուծել ընտրվածը
 app_template_check_code	Ստուգել կոդը

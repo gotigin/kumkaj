@@ -368,7 +368,7 @@ only_owner_remove_server	নকফাং সিমি সে সেরভের 
 owner_pin_remove_server	ও সেরভের ন সুকাকনা বাগুই মালিক PIN নাংনাই
 device_setup_help	Server বওক রক ন আর তনুই তঙ. Client জরা উঙুই Server উংনাই.
 app_template_heading	দোকানি টেম্পলেটরগ
-app_template_blurb	কাইসা সাধারণ সুরু খায়নানি মেনু তুবুই, তংমা নিনি Khaynjo সম্পর্ক বিসিনি মানখে 12 সংখ্যাতি নিজবাই কোড ফুনুক।
+app_template_blurb	Menu thokni khlai. Kaltlang te dokan rwk o.
 app_template_apply	টেম্পলেট তুবুই
 app_template_skip	তাবুকনি বাগুই সকিপ খাইদি
 app_template_status	সার্ভার তৈয়ার — কাইসা টেম্পলেট তুবুই, তংমা নাইদি
@@ -376,10 +376,10 @@ app_template_importing	সামুং খলাইও {title}...
 app_template_downloading	টেম্পলেট ডাউনলোড তঙ…
 app_template_download_progress	ডাউনলোড তঙ... {p}% ({d} / {t})
 app_template_download_paused	আবার সুরু খায়নানি বাগই কপুইদি ফাইমানি খাদি — সাবুক ফাইলরগ রাখা তঙ
-app_template_public_hdr	সাধারণ টেম্পলেটরগ
+app_template_public_hdr	Template
 app_template_private_hdr	নিজবাই টেম্পলেট
-app_template_public_hint	সাধারণ তালিকা লোড খায়নানি বাগই অ ভাগ খুলুই (খেপ কাইসা ইন্টারনেট নাংগো)।
-app_template_code_not_found	কোড মানয়া
+app_template_public_hint	List dah luhna he hmun hi hong (internet vawi khat a ngai).
+app_template_code_not_found	Template mami kwlak
 app_template_need_internet	টেম্পলেট ডাউনলোড খায়নানি বাগই ইন্টারনেট নাংগো
 app_template_import_selected	বাসাগনাই তুবুই
 app_template_check_code	কোড নাইদি

@@ -368,7 +368,7 @@ only_owner_remove_server	Serveri yalnız Sahib silə bilər
 owner_pin_remove_server	Bu serveri silmək üçün Sahib PIN-i lazımdır
 device_setup_help	Server kitabları burada saxlayır. Klient Serverə qoşulur.
 app_template_heading	Mağaza şablonları
-app_template_blurb	İctimai başlanğıc menyusunu idxal edin və ya Khaynjo əlaqənizdən aldığınız 12 rəqəmli şəxsi kodu daxil edin.
+app_template_blurb	Başlanğıc menyusu seçin. Keçmək boş dükan saxlayır.
 app_template_apply	Şablonu idxal et
 app_template_skip	Hələlik keç
 app_template_status	Server hazırdır — şablon idxal edin və ya keçin
@@ -376,10 +376,10 @@ app_template_importing	{title} tətbiq olunur…
 app_template_downloading	Şablon endirilir…
 app_template_download_progress	Endirilir… {p}% ({d} / {t})
 app_template_download_paused	Davam etmək üçün yenidən idxal edin — tamamlanmış fayllar saxlanılır
-app_template_public_hdr	İctimai şablonlar
+app_template_public_hdr	Şablonlar
 app_template_private_hdr	Şəxsi şablon
-app_template_public_hint	İctimai siyahını yükləmək üçün bu bölməni açın (bir dəfə internet lazımdır).
-app_template_code_not_found	Kod tapılmadı
+app_template_public_hint	Siyahını yükləmək üçün bu bölməni açın (bir dəfə internet lazımdır).
+app_template_code_not_found	Şablon tapılmadı
 app_template_need_internet	Şablonları endirmək üçün internet lazımdır
 app_template_import_selected	Seçiləni idxal et
 app_template_check_code	Kodu yoxla

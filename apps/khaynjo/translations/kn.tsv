@@ -368,7 +368,7 @@ only_owner_remove_server	Owner ಮಾತ್ರ ಸರ್ವರ್ ತೆಗೆ�
 owner_pin_remove_server	ಸರ್ವರ್ ತೆಗೆಯಲು Owner PIN ಬೇಕು
 device_setup_help	ಸರ್ವರ್ ಲೆಕ್ಕಪುಸ್ತಕಗಳನ್ನು ಇಲ್ಲೇ ಇಡುತ್ತದೆ. ಕ್ಲೈಂಟ್ ಒಂದು ಸರ್ವರ್‌ಗೆ ಜೋಡಿಯಾಗುತ್ತದೆ.
 app_template_heading	ಅಂಗಡಿ ಟೆಂಪ್ಲೇಟ್‌ಗಳು
-app_template_blurb	ಸಾರ್ವಜನಿಕ ಆರಂಭಿಕ ಮೆನು ಆಮದು ಮಾಡಿ, ಅಥವಾ ನಿಮ್ಮ Khaynjo ಸಂಪರ್ಕದಿಂದ ಪಡೆದ 12 ಅಂಕಿಯ ಖಾಸಗಿ ಕೋಡ್ ನಮೂದಿಸಿ.
+app_template_blurb	ಆರಂಭದ ಮೆನು ಆಯ್ಕೆಮಾಡಿ. ಬಿಟ್ಟರೆ ಅಂಗಡಿ ಖಾಲಿ ಉಳಿಯುತ್ತದೆ.
 app_template_apply	ಟೆಂಪ್ಲೇಟ್ ಆಮದು ಮಾಡಿ
 app_template_skip	ಈಗ ಬಿಟ್ಟುಬಿಡಿ
 app_template_status	ಸರ್ವರ್ ಸಿದ್ಧ — ಟೆಂಪ್ಲೇಟ್ ಆಮದು ಮಾಡಿ, ಅಥವಾ ಬಿಟ್ಟುಬಿಡಿ
@@ -376,10 +376,10 @@ app_template_importing	{title} ಅನ್ವಯಿಸಲಾಗುತ್ತಿದ�
 app_template_downloading	ಟೆಂಪ್ಲೇಟ್ ಡೌನ್‌ಲೋಡ್ ಆಗುತ್ತಿದೆ…
 app_template_download_progress	ಡೌನ್‌ಲೋಡ್ ಆಗುತ್ತಿದೆ… {p}% ({d} / {t})
 app_template_download_paused	ಮುಂದುವರಿಸಲು ಮತ್ತೆ ಆಮದು ಮಾಡಿ — ಮುಗಿದ ಫೈಲ್‌ಗಳು ಉಳಿಯುತ್ತವೆ
-app_template_public_hdr	ಸಾರ್ವಜನಿಕ ಟೆಂಪ್ಲೇಟ್‌ಗಳು
+app_template_public_hdr	ಟೆಂಪ್ಲೇಟ್‌ಗಳು
 app_template_private_hdr	ಖಾಸಗಿ ಟೆಂಪ್ಲೇಟ್
-app_template_public_hint	ಸಾರ್ವಜನಿಕ ಪಟ್ಟಿಯನ್ನು ಲೋಡ್ ಮಾಡಲು ಈ ವಿಭಾಗ ತೆರೆಯಿರಿ (ಒಮ್ಮೆ ಇಂಟರ್ನೆಟ್ ಬೇಕು).
-app_template_code_not_found	ಕೋಡ್ ಸಿಗಲಿಲ್ಲ
+app_template_public_hint	ಪಟ್ಟಿ ಲೋಡ್ ಮಾಡಲು ಈ ಭಾಗ ತೆರೆಯಿರಿ (ಒಮ್ಮೆ ಇಂಟರ್ನೆಟ್ ಬೇಕು).
+app_template_code_not_found	ಟೆಂಪ್ಲೇಟ್ ಸಿಗಲಿಲ್ಲ
 app_template_need_internet	ಟೆಂಪ್ಲೇಟ್ ಡೌನ್‌ಲೋಡ್ ಮಾಡಲು ಇಂಟರ್ನೆಟ್ ಬೇಕು
 app_template_import_selected	ಆಯ್ಕೆ ಮಾಡಿದ್ದನ್ನು ಆಮದು ಮಾಡಿ
 app_template_check_code	ಕೋಡ್ ಪರಿಶೀಲಿಸಿ

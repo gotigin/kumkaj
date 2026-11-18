@@ -368,7 +368,7 @@ only_owner_remove_server	Nur der Owner darf einen Server entfernen
 owner_pin_remove_server	Owner-PIN nötig, um diesen Server zu entfernen
 device_setup_help	Der Server führt die Bücher hier. Ein Client koppelt sich mit einem Server.
 app_template_heading	Geschäftsvorlagen
-app_template_blurb	Importieren Sie ein öffentliches Startmenü oder geben Sie einen privaten 12-stelligen Code von Ihrem Khaynjo-Kontakt ein.
+app_template_blurb	Wählen Sie ein Startmenü. Überspringen lässt einen leeren Laden.
 app_template_apply	Vorlage importieren
 app_template_skip	Jetzt überspringen
 app_template_status	Server bereit — Vorlage importieren oder überspringen
@@ -376,10 +376,10 @@ app_template_importing	Wende {title} an…
 app_template_downloading	Vorlage wird heruntergeladen…
 app_template_download_progress	Wird heruntergeladen… {p}% ({d} / {t})
 app_template_download_paused	Erneut importieren, um fortzusetzen — fertige Dateien bleiben erhalten
-app_template_public_hdr	Öffentliche Vorlagen
+app_template_public_hdr	Vorlagen
 app_template_private_hdr	Private Vorlage
-app_template_public_hint	Öffnen Sie diesen Bereich, um die öffentliche Liste zu laden (einmalig Internet nötig).
-app_template_code_not_found	Code nicht gefunden
+app_template_public_hint	Öffnen Sie diesen Abschnitt, um die Liste zu laden (einmal Internet nötig).
+app_template_code_not_found	Vorlage nicht gefunden
 app_template_need_internet	Zum Herunterladen von Vorlagen ist Internet nötig
 app_template_import_selected	Auswahl importieren
 app_template_check_code	Code prüfen

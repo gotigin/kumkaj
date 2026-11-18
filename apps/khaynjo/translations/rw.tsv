@@ -368,7 +368,7 @@ only_owner_remove_server	Nyir'iduka wenyine ashobora gukuraho seriveri
 owner_pin_remove_server	PIN ya nyir'iduka irakenewe gukuraho iyi seriveri
 device_setup_help	Seriveri ibika ibitabo hano. Kiliya ihujwa na Seriveri.
 app_template_heading	Inyandikorugero z'iduka
-app_template_blurb	Injiza menu yo gutangira rusange, cyangwa wandike kode yihariye y'imibare 12 wahawe n'umuhuza wawe wa Khaynjo.
+app_template_blurb	Hitamo menu yo gutangira. Kurenga bisiga iduka ritagira ikintu.
 app_template_apply	Injiza inyandikorugero
 app_template_skip	Simbuka ubu
 app_template_status	Seriveri yiteguye — injiza inyandikorugero, cyangwa usimbuke
@@ -376,10 +376,10 @@ app_template_importing	Irimo gushyira {title}…
 app_template_downloading	Inyandikorugero iri gukururwa…
 app_template_download_progress	Birimo gukururwa… {p}% ({d} / {t})
 app_template_download_paused	Ongera winjize kugira ngo ukomeze — amadosiye yarangiye arabikwa
-app_template_public_hdr	Inyandikorugero rusange
+app_template_public_hdr	Inyandikorugero
 app_template_private_hdr	Inyandikorugero yihariye
-app_template_public_hint	Fungura iki gice kugira ngo ushyiremo urutonde rusange (hakenewe interineti rimwe).
-app_template_code_not_found	Kode ntiyabonetse
+app_template_public_hint	Fungura iki gice urebe urutonde (interineti rimwe).
+app_template_code_not_found	Inyandikorugero ntiyabonetse
 app_template_need_internet	Hakenewe interineti kugira ngo ukurure inyandikorugero
 app_template_import_selected	Injiza icyatoranyijwe
 app_template_check_code	Genzura kode

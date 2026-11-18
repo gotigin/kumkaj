@@ -368,7 +368,7 @@ only_owner_remove_server	Slegs die Eienaar kan 'n bediener verwyder
 owner_pin_remove_server	Eienaar se PIN vereis om hierdie bediener te verwyder
 device_setup_help	Die bediener hou die boeke hier. Kliënt paar aan 'n Bediener.
 app_template_heading	Winkelsjablone
-app_template_blurb	Voer 'n openbare beginspyskaart in, of tik 'n privaat 12-syferkode van jou Khaynjo-kontak in.
+app_template_blurb	Kies 'n beginspyskaart. Origaan laat 'n leë winkel.
 app_template_apply	Voer sjabloon in
 app_template_skip	Oorslaan vir nou
 app_template_status	Bediener gereed — voer 'n sjabloon in, of slaan oor
@@ -376,10 +376,10 @@ app_template_importing	Pas {title}… aan
 app_template_downloading	Laai sjabloon af…
 app_template_download_progress	Laai af… {p}% ({d} / {t})
 app_template_download_paused	Voer weer in om voort te gaan — klaar lêers word gehou
-app_template_public_hdr	Openbare sjablone
+app_template_public_hdr	Sjablone
 app_template_private_hdr	Privaat sjabloon
-app_template_public_hint	Maak hierdie afdeling oop om die openbare lys te laai (een keer internet nodig).
-app_template_code_not_found	Kode nie gevind nie
+app_template_public_hint	Maak hierdie deel oop om die lys te laai (een keer internet nodig).
+app_template_code_not_found	Sjabloon nie gevind nie
 app_template_need_internet	Internet nodig om sjablone af te laai
 app_template_import_selected	Voer gekose in
 app_template_check_code	Kontroleer kode
