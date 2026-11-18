@@ -867,11 +867,40 @@ script_mod! {
                             names := View{
                                 width: Fill height: Fit
                                 flow: Down
-                                spacing: 10
-                                Body{body: "Trademark: Gotigin — Memon for 'find it' (go-tee-geen). Slogan: Where Technology Meets Discovery."}
-                                Body{body: "Company: GOTIGIN SOFTWARE & HARDWARE PRIVATE LIMITED · mearaj@gotigin.com"}
-                                Body{body: "Brand: Kumkaj — concrete business operating system apps; complete business management software."}
-                                Body{body: "Products: Moklanjo · Khaynjo · Kirano · Tabiyat."}
+                                spacing: 16
+                                View{
+                                    width: Fill height: Fit
+                                    flow: Down
+                                    spacing: 4
+                                    Eyebrow{body: "TRADEMARK"}
+                                    Strong{body: "Gotigin"}
+                                    Small{body: "Memon for “find it” · pronounced go-tee-geen"}
+                                    Small{body: "Where Technology Meets Discovery"}
+                                }
+                                View{
+                                    width: Fill height: Fit
+                                    flow: Down
+                                    spacing: 4
+                                    Eyebrow{body: "COMPANY"}
+                                    Strong{body: "GOTIGIN SOFTWARE & HARDWARE PRIVATE LIMITED"}
+                                    Small{body: "mearaj@gotigin.com"}
+                                }
+                                View{
+                                    width: Fill height: Fit
+                                    flow: Down
+                                    spacing: 4
+                                    Eyebrow{body: "BRAND"}
+                                    Strong{body: "Kumkaj"}
+                                    Small{body: "Concrete business operating system apps"}
+                                }
+                                View{
+                                    width: Fill height: Fit
+                                    flow: Down
+                                    spacing: 4
+                                    Eyebrow{body: "PRODUCTS"}
+                                    Strong{body: "Moklanjo · Khaynjo · Kirano · Tabiyat"}
+                                    Small{body: "Courier · restaurant · grocery · pharmacy"}
+                                }
                             }
                             product_grid := View{
                                 width: Fill height: Fit
@@ -950,8 +979,15 @@ script_mod! {
                                     footer_icon := BrandIcon{
                                         src: crate_resource("self:resources/media/brand-logo.webp")
                                     }
-                                    footer_attribution := Small{
-                                        body: "© GOTIGIN SOFTWARE & HARDWARE PRIVATE LIMITED · Trademark Gotigin · Brand Kumkaj"
+                                    View{
+                                        width: Fill height: Fit
+                                        flow: Down
+                                        spacing: 2
+                                        footer_attribution := Small{
+                                            width: Fill
+                                            body: "© 2026 GOTIGIN SOFTWARE & HARDWARE PRIVATE LIMITED"
+                                        }
+                                        Small{width: Fill body: "Gotigin · Kumkaj"}
                                     }
                                 }
                                 footer_links := View{

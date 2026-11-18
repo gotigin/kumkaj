@@ -768,7 +768,13 @@ script_mod! {
                                     View{width: Fill height: 1}
                                     to_kumkaj := SecondaryBtn{text: "kumkaj.com  →"}
                                 }
-                                Small{body: "Gotigin · GOTIGIN SOFTWARE & HARDWARE PRIVATE LIMITED · Kumkaj · Tabiyat."}
+                                View{
+                                    width: Fill height: Fit
+                                    flow: Down
+                                    spacing: 2
+                                    Small{body: "© 2026 GOTIGIN SOFTWARE & HARDWARE PRIVATE LIMITED"}
+                                    Small{body: "Gotigin · Kumkaj · Tabiyat"}
+                                }
                             }
                         }
                     }

@@ -4,9 +4,13 @@ _Last updated: 18 November 2026_
 
 ## Who we are
 
-**Trademark:** Gotigin. **Company:** GOTIGIN SOFTWARE & HARDWARE PRIVATE
-LIMITED. **Brand:** Kumkaj — concrete business operating system apps
-(Moklanjo, Khaynjo, Kirano, Tabiyat). Website: [kumkaj.com](https://kumkaj.com).
+| | |
+| --- | --- |
+| **Trademark** | **Gotigin** — Memon for “find it” (go-tee-geen) |
+| **Company** | **GOTIGIN SOFTWARE & HARDWARE PRIVATE LIMITED** |
+| **Brand** | **Kumkaj** — concrete business operating system apps |
+| **Products** | Moklanjo · Khaynjo · Kirano · Tabiyat |
+| **Website** | [kumkaj.com](https://kumkaj.com) |
 
 ## The apps
 

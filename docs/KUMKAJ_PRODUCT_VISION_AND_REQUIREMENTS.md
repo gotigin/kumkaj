@@ -263,6 +263,14 @@ What a "multi-branch owner" gets is therefore *the same concrete
 product, N times*, plus a way to compare them — not an organization
 layer inside one set of books.
 
+**Grouping (compare / present):** same-type instances (outlets, books
+snapshots, …) may be clustered so the owner can compare and present them.
+That is a **dynamic presentation lens** (views / rules / named sets), not a
+mandatory field that merges books, and **not** a Wadhu platform **org**.
+Prefer UI words like **group** or **outlet group**. Wadhu **org** means
+cloud multi-purchase / multi-member billing only — see Wadhu
+`docs/IDENTITY_MODEL.md`.
+
 ------------------------------------------------------------------------
 
 ## 6. Local-First and Offline-First Operation

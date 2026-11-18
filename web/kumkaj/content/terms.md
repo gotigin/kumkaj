@@ -7,7 +7,16 @@ _Last updated: 2026-11-06_
 
 ## Website
 
-Gotigin (trademark) · GOTIGIN SOFTWARE & HARDWARE PRIVATE LIMITED (company) · Kumkaj (brand) and its products. Copy and screenshots are provided for information. Features described as **planned** are not yet available.
+**Trademark:** Gotigin — Memon for “find it” (go-tee-geen)  
+
+**Company:** GOTIGIN SOFTWARE & HARDWARE PRIVATE LIMITED  
+
+**Brand:** Kumkaj  
+
+**Products:** Moklanjo · Khaynjo · Kirano · Tabiyat  
+
+Copy and screenshots are provided for information. Features described as
+**planned** are not yet available.
 
 ## Software
 

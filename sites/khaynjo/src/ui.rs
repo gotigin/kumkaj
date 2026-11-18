@@ -1579,7 +1579,8 @@ script_mod! {
                                                 draw_selection +: { color: #xCFE3FFFF }
                                                 draw_block +: { selection_color: #xCFE3FFFF }
                                             }
-                                            OnRedBody{body: "Gotigin · GOTIGIN SOFTWARE & HARDWARE PRIVATE LIMITED · Kumkaj · Khaynjo."}
+                                            OnRedBody{body: "© 2026 GOTIGIN SOFTWARE & HARDWARE PRIVATE LIMITED"}
+                                            OnRedBody{body: "Gotigin · Kumkaj · Khaynjo"}
                                         }
                                     }
                                     footer_links := View{

@@ -815,7 +815,13 @@ script_mod! {
                                     to_terms := GhostBtn{text: "Terms"}
                                 }
                             }
-                            Small{body: "Gotigin · GOTIGIN SOFTWARE & HARDWARE PRIVATE LIMITED · Kumkaj · Kirano."}
+                            View{
+                                width: Fill height: Fit
+                                flow: Down
+                                spacing: 2
+                                Small{body: "© 2026 GOTIGIN SOFTWARE & HARDWARE PRIVATE LIMITED"}
+                                Small{body: "Gotigin · Kumkaj · Kirano"}
+                            }
                         }
                     }
                 }
