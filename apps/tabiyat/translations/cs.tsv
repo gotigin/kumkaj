@@ -79,13 +79,19 @@ bill_item_amount	Částka
 bill_item_note	Rx / poznámka k prodeji
 bill_item_col_sep	Pravidla sloupců
 slip_col_width	Šířka (mm)
-paper_heading	Papír
+paper_heading	Virtuální papír
 paper_size	{w} × {h} mm
 paper_roll	role {w} mm
 paper_not_set	papír zatím není známý
-paper_length_mm	Délka (mm)
-printer_paper_help	Papír této tiskárny v mm. Prázdná Délka je role: každá účtenka je dlouhá jako její obsah. Najděte tiskárny doplní prázdný papír z ovladače tiskárny (role 80 mm, když to nedokáže říct) a nikdy nezmění papír, který už je nastavený.
-preview_help	Tato účtenka na papíru tiskárny vybrané níže, jak se na ní vytiskne: ve skutečné velikosti od levého horního rohu, kam tiskárna dosáhne (šedě: okraje, kam nedosáhne), dlouhá účtenka na více listech, vše za okrajem papíru se ořízne. Výběr tiskárny mění jen náhled; papír každé tiskárny se nastavuje v části Tiskárny.
+na	N/A
+virtual_width_mm	Virtuální šířka (mm)
+virtual_length_mm	Virtuální délka (mm)
+reported_width_mm	Hlášená šířka (mm)
+reported_length_mm	Hlášená délka (mm)
+reported_paper	Hlášeno: {paper}
+virtual_paper	Virtuální: {paper}
+printer_paper_help	Hlášený je papír, na který je nastaven ovladač této tiskárny; aplikace jej pouze čte a N/A znamená, že není žádný ovladač, kterého by se dalo zeptat. Virtuální je papír, o kterém říkáte, že je v tiskárně doopravdy, v mm; prázdná délka znamená roli. Tiskárna tiskne na svůj vlastní papír; virtuální papír říká aplikaci, kolik z něj je skutečný papír, pro náhled, délku stránky a umístění účtenky. Najděte tiskárny doplní prázdný virtuální papír a nikdy nezmění ten, který jste nastavili.
+preview_help	Tato účtenka tak, jak se vytiskne na tiskárně vybrané níže, ve skutečné velikosti na jejím virtuálním papíru. Bílá je místo, kde se tiskne, šedý papír je mimo dosah tiskárny a vybledlý tisk se ořízne. Devět čtverců je papír: klepněte tam, kde má účtenka být. Dlouhá účtenka pokračuje na dalších stránkách. Výběr tiskárny mění jen náhled.
 slip_col_start	Mezera na začátku (px)
 slip_col_end	Mezera na konci (px)
 slip_columns_help	Šířka každého sloupce zahrnuje jeho mezeru na začátku a na konci. Text se zalamuje uvnitř svého sloupce; co přesahuje šířku obsahu, se ořízne – na papíře i v náhledu.
@@ -100,6 +106,12 @@ bill_item_piece_off	Vypnuto
 bill_total_qty	Celkové množství
 bill_total_subtotal	Mezisoučet
 bill_total_grand	Celkový součet
+bill_total_number_under	Číslo pod
+bill_total_caption_under	Štítek pod
+bill_total_own_line	Vlastní řádek
+bill_total_caption_with	U čísla
+bill_total_caption_none	Bez štítku
+bill_total_place_help	Vlastní řádek tiskne tento součet samostatně. Pod sloupcem se jeho číslo tiskne v daném sloupci položek, ve velikosti a tloušťce tohoto řádku; součty sdílejí jeden řádek, dokud není některý sloupec obsazen, pak začne nový řádek. Štítek je u čísla, pod jiným sloupcem, nebo se vynechá. Řádky daně, obsluhy, zaokrouhlení a platby se řídí položkou Mezisoučet.
 kot_unassigned	Nepřiřazeno
 settings_hub_help	Otevřete jednu oblast po druhé – méně posouvání, jasnější volby.
 settings_sec_language	Jazyk a měna
@@ -470,7 +482,7 @@ route_cleared	Vymazáno {name}
 route_tap_selected	vybrané
 printer_target_ph	Název systémové tiskárny nebo hostitel:9100
 printer_target_default	obvyklá tiskárna tohoto počítače (prázdná adresa)
-route_bill	Bille
+route_bill	Účet
 station_print_pick_first	Nejprve si vyberte ošetřovací část
 bill_printers_dd	Tiskárny na účet
 bill_printers_dd_n	{n} tiskáren na účet · klepnutím změňte
@@ -735,6 +747,20 @@ fssai_ph	Drogová licence č. (nepovinné – vaše znění)
 bill_footer_ph	Zápatí (např. Děkuji, navštivte znovu)
 kot_field_on	zobrazit
 kot_field_off	schovat se
+kot_field_show	Zobrazit
+kot_field_hide	Skrýt
+bill_line_shop	Obchod
+bill_line_address	Adresa
+bill_line_fssai	FSSAI
+bill_line_title	Název
+bill_line_customer	Zákazník
+bill_line_bill_no	Č. účtu
+bill_line_time	Čas
+bill_line_cashier	Pokladník
+bill_line_items	Položky
+bill_line_total	Celkem
+bill_line_footer	Zápatí
+bill_line_upi	UPI
 kot_weight_light	Světlo
 bill_kot_panel_help	Rozložení účtu a šířka obsahu. Pokladník je ten, kdo vystavil nebo uhradil účet – celý příběh o prodeji zůstává v knihách.
 std_size_ph	např. 18, 20, 26…
@@ -842,10 +868,10 @@ lane_declared_label	Daňový doklad
 lane_owner_label	Oznámení o hotovosti
 money_lane_bill	Účet: {lane}
 
-removing	Removing…
-removed	Removed
-updating_order	Updating…
-order_updated	Order updated
+removing	Odebírání…
+removed	Odebráno
+updating_order	Aktualizace…
+order_updated	Objednávka aktualizována
 sel_copy	Kopírovat
 sel_select_all	Vybrat vše
 sel_copied	Zkopírováno

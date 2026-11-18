@@ -171,7 +171,6 @@ fn report_tab_cols(line: &str) -> Option<ReportRow> {
 /// "2026-10-26T12:21:47+05:30" → "26 Oct 12:21" (as Backup shows times);
 /// anything else as written, minus seconds.
 /// RFC3339 → owner-facing date/time via fiscal helpers; fallback strips seconds.
-#[allow(dead_code)]
 fn short_when(at: &str) -> String {
     let shown = crate::fiscal::format_datetime(at, "dmy", "24h");
     if shown.is_empty() {
@@ -255,6 +254,22 @@ fn paint_report_cols(
     }
 }
 
+/// The least width a label keeps beside its value, and the gap between the
+/// two (`spacing` of the `Kv` row in the layout).
+const KV_MIN_LABEL_W: f64 = 96.0;
+const KV_GAP: f64 = 8.0;
+
+/// Whether a label/value row is drawn stacked — the label above, the value
+/// under it, both wrapping at the row's width — instead of side by side:
+/// when the value at its own width would leave the label less than
+/// [`KV_MIN_LABEL_W`]. Makepad has no flex-shrink: the value keeps its
+/// width and the label gets what is left, so a long value ("Standard
+/// Portrait · No printer assigned" on a phone) left the label a few px,
+/// wrapped one letter per line, and ran off the card itself (DEV.md bug 7j).
+fn kv_stacks(row_w: f64, value_w: f64) -> bool {
+    row_w > 1.0 && value_w > 0.0 && value_w + KV_GAP + KV_MIN_LABEL_W > row_w
+}
+
 /// A report or list on screen, laid out by [`parse_report`] (`set_text`)
 /// or given as rows (`set_rows`).
 #[derive(Script, ScriptHook, Widget)]
@@ -270,6 +285,12 @@ struct ReportText {
     measured: f64,
     #[rust]
     settle: NextFrame,
+    /// Each label/value row's value width as drawn beside its label
+    /// (0 = not measured yet) and the rows' width, for [`kv_stacks`].
+    #[rust]
+    kv_value_w: Vec<f64>,
+    #[rust]
+    kv_row_w: f64,
 }
 
 impl Widget for ReportText {
@@ -295,6 +316,9 @@ impl Widget for ReportText {
             )
         };
         let align_x = if rtl { 1.0 } else { 0.0 };
+        let mut value_w = std::mem::take(&mut self.kv_value_w);
+        let mut row_w = self.kv_row_w;
+        let mut restack = false;
         while let Some(step) = self.view.draw_walk(cx, scope, walk).step() {
             if let Some(mut list) = step.as_portal_list().borrow_mut() {
                 list.set_item_range(cx, 0, rows.len());
@@ -302,6 +326,10 @@ impl Widget for ReportText {
                     let Some(row) = rows.get(item_id) else {
                         continue;
                     };
+                    let is_kv = matches!(row, ReportRow::Kv(..));
+                    let stacked =
+                        is_kv && kv_stacks(row_w, value_w.get(item_id).copied().unwrap_or(0.0));
+                    let mut kv_eye = false;
                     let item = match row {
                         ReportRow::Head(t) => {
                             let item = list.item(cx, item_id, id!(Head));
@@ -309,12 +337,19 @@ impl Widget for ReportText {
                             item
                         }
                         ReportRow::Kv(k, v) => {
-                            let item = list.item(cx, item_id, if rtl { id!(KvRtl) } else { id!(Kv) });
+                            let template = match (stacked, rtl) {
+                                (false, false) => id!(Kv),
+                                (false, true) => id!(KvRtl),
+                                (true, false) => id!(KvStack),
+                                (true, true) => id!(KvStackRtl),
+                            };
+                            let item = list.item(cx, item_id, template);
                             set_report_label(cx, &item, ids!(k), k, align_x);
                             let (core, _) = split_trailing_count(v);
                             let money = looks_like_money_value(core);
                             let eye = item.button(cx, ids!(eye));
                             eye.set_visible(cx, money);
+                            kv_eye = money;
                             let shown = if money {
                                 let key = report_kv_amount_key(k);
                                 let visible = amount_key_visible(
@@ -364,12 +399,40 @@ impl Widget for ReportText {
                         ReportRow::Gap => list.item(cx, item_id, id!(Gap)),
                     };
                     item.draw_all_unscoped(cx);
+                    if is_kv {
+                        // The rows' width, and (side by side only: stacked,
+                        // the value fills the row) the value's own width.
+                        let w = item.area().rect(cx).size.x;
+                        let mut seen = value_w.get(item_id).copied().unwrap_or(0.0);
+                        if !stacked {
+                            seen = item.widget(cx, ids!(v)).area().rect(cx).size.x;
+                            if kv_eye {
+                                seen += item.widget(cx, ids!(eye)).area().rect(cx).size.x + KV_GAP;
+                            }
+                            if value_w.len() < rows.len() {
+                                value_w.resize(rows.len(), 0.0);
+                            }
+                            value_w[item_id] = seen;
+                        }
+                        if w > 1.0 {
+                            row_w = w;
+                        }
+                        if kv_stacks(row_w, seen) != stacked {
+                            restack = true;
+                        }
+                    }
                 }
                 extent = list.drawn_range_extent();
             }
         }
+        self.kv_value_w = value_w;
+        self.kv_row_w = row_w;
         if extent > 1.0 && (extent - self.measured).abs() > 1.0 {
             self.measured = extent;
+            self.settle = cx.new_next_frame();
+        }
+        if restack {
+            // A row changes shape (stacked / side by side): draw it again.
             self.settle = cx.new_next_frame();
         }
         DrawStep::done()
@@ -417,6 +480,7 @@ impl Widget for ReportText {
             self.text = v.to_string();
             self.rows = parse_report(v);
             self.measured = 0.0;
+            self.kv_value_w.clear();
             self.view.redraw(cx);
         }
     }
@@ -431,6 +495,7 @@ impl ReportText {
             self.text = report_rows_text(&rows);
             self.rows = rows;
             self.measured = 0.0;
+            self.kv_value_w.clear();
             self.view.redraw(cx);
         }
     }
@@ -636,17 +701,23 @@ impl SlipPicture {
         }
         let upright = print_share::slip_gray(format, text);
         let content_mm = print_share::os_document_content_mm(&format.raster_metrics());
+        // OS document: the print's own sheet (`os_paper::sheet_for`: the
+        // part of the printer's own page that is paper) and page plan, at
+        // the job's place; what the print cuts off is drawn faded.
+        let lay = print_share::slip_lay(format);
         let pic = if paper.os_document {
-            let plan = os_paper::page_for(
-                paper.paper,
-                paper.driver.as_ref(),
+            let sheet = os_paper::sheet_for(
+                paper.virtual_paper,
+                paper.own.as_ref(),
                 print_share::slip_mm(&upright, content_mm),
-                format.landscape,
+                lay.landscape,
             );
-            os_paper::preview_picture(&upright, 1, content_mm, Some(&plan.page), format.landscape, 0.0, None)
+            os_paper::preview_picture(&upright, 1, content_mm, Some(&sheet), 0.0, None, lay)
         } else {
-            // ESC/POS gets the upright picture (the job never turns it).
-            os_paper::preview_picture(&upright, 1, content_mm, None, false, paper.paper.width_mm, None)
+            // ESC/POS gets the upright picture (the job never turns it), at
+            // its place across the roll the virtual paper's width wide.
+            let lay = os_paper::Lay { landscape: false, place: lay.place };
+            os_paper::preview_picture(&upright, 1, content_mm, None, paper.virtual_paper.width_mm, None, lay)
         };
         let (pw, ph) = pic.gray.dimensions();
         let Ok(buf) = makepad_widgets::makepad_draw::image_cache::ImageBuffer::new(

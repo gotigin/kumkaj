@@ -678,10 +678,13 @@ fn fit_inside_system_bars(&mut self, cx: &mut Cx) {
                 added += 1;
             }
         }
-        // Every printer with no paper gets its driver's (or an 80 mm roll);
-        // a paper already set is never changed (docs/PRINTER.md § Paper and
-        // preview).
-        let filled = st.printer_draft.fill_missing_papers(&os_paper::answers(), true);
+        // What each found printer's driver reports replaces its reported
+        // paper; a printer with no virtual paper gets one (its driver's, or
+        // an 80 mm roll) and one already set is never changed. The saved
+        // system printers this Find did not meet are asked as well (on their
+        // own thread): their answers land the same way (`main_impl`).
+        let filled = st.printer_draft.take_driver_answers(&os_paper::answers(), true);
+        ask_drivers(&st.printer_draft.printers);
         if added > 0 || filled > 0 {
             let base = st.data_base.clone().ok_or("No store path to save printers")?;
             print_share::save_device_printers(&base, &st.printer_draft)?;

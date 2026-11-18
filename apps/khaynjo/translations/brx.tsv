@@ -101,6 +101,19 @@ bill_item_col_sep	खाम्फानि हांखो
 slip_columns	खाम्फाफोर
 slip_col_header	मुं
 bill_line_logo	लगʼ
+bill_line_shop	दोकान
+bill_line_address	थं
+bill_line_fssai	FSSAI
+bill_line_title	मुं
+bill_line_customer	ग्राहक
+bill_line_bill_no	बिल नं
+bill_line_time	सम
+bill_line_cashier	केसियार
+bill_line_table	टेबुल
+bill_line_items	आइटम
+bill_line_total	गासै
+bill_line_footer	फुटार
+bill_line_upi	युपिआइ
 bill_logo_picture	सावगारि
 bill_logo_choose	सावगारि सायख
 bill_logo_remove	सावगारि होखार
@@ -128,6 +141,12 @@ bill_item_piece_off	अफ
 bill_total_qty	गासै बिबां
 bill_total_subtotal	खाव गासै
 bill_total_grand	गासै रां
+bill_total_number_under	अनजिमा बेनि सिङाव
+bill_total_caption_under	लेबेल बेनि सिङाव
+bill_total_own_line	गावनि सारि
+bill_total_caption_with	अनजिमाजों लोगोसे
+bill_total_caption_none	लेबेल गैया
+bill_total_place_help	“गावनि सारि” आ बे गासैखौ हारसिङै छापायो। खाम्फानि सिङाव दोनब्ला बेनि अनजिमाया बे बेसादनि खाम्फायाव, बे सारिनि महर आरो रोजानि बादि छापा जायो; मोनसे खाम्फा आबुं जायाब्ला गासैफोरा मोनसे सारिखौ रानो, बेनि उनाव गोदान सारि जागायो। लेबेला अनजिमाजों लोगोसे, गुबुन खाम्फानि सिङाव थाङो, एबा गारनाय जायो। खाजोना, सेबा, राउन्डिं आरो रां होनायनि सारिफोरा “खाव गासै” खौ फालियो।
 reprint_incl	प्रिन्टआव
 reprint_skip	बार
 reprint_skip_meta	फिन प्रिन्टखौ बार
@@ -178,20 +197,20 @@ snack_secs_ph	सेकेन्ड (3–60, गेजेर 10)
 snack_secs_save	सांग्रांथिनि सम थिना दोन
 snack_secs_saved	सांग्रांथिनि सम थिना दोनबाय — {n} सेकेन्ड
 settings_sec_whatsapp	WhatsApp
-whatsapp_cloud_help	Use your own Meta WhatsApp Cloud API. Create a System User token with whatsapp_business_messaging (temporary dashboard tokens expire). Credentials stay on this Server only — never on extra tills. Accepted means Meta took the request, not that the guest received it.
-whatsapp_phone_id_ph	Phone Number ID
-whatsapp_token_ph	Access Token (leave blank to keep)
-whatsapp_template_ph	Bill template name (optional)
-whatsapp_template_lang_ph	Template language (e.g. en)
-whatsapp_enable	Enable
+whatsapp_cloud_help	नोंनि गावनि Meta WhatsApp Cloud API बाहाय। whatsapp_business_messaging गोनां System User टोकेन बानाय (डेशबर्डनि अस्थायी टोकेनफोरा जोबो)। बे फोरमायथिफोरा बे सर्वराव ल' थायो — बांसिन टिलाव माब्लाबाबो नङा। “आजावबाय” नि ओंथिया Meta-आ आरज लाबाय, गेस्टआ खिन्था मोनबाय बेनो नङा।
+whatsapp_phone_id_ph	फोन नम्बर ID
+whatsapp_token_ph	एक्सेस टोकेन (लाखिनो थाखाय लांदां लाखि)
+whatsapp_template_ph	बिल टेम्प्लेटनि मुं (नाङाब्लाबो)
+whatsapp_template_lang_ph	टेम्प्लेटनि राव (जेरै en)
+whatsapp_enable	अन खालाम
 whatsapp_disable	Off
-whatsapp_save	Save WhatsApp
-whatsapp_test	Test connection
-whatsapp_disconnect	Disconnect
-whatsapp_send_bill	Send via WhatsApp
+whatsapp_save	WhatsApp थिना दोन
+whatsapp_test	जोरा आनजाद खालाम
+whatsapp_disconnect	जोरा बोखार
+whatsapp_send_bill	WhatsApp जों दैथाय हो
 whatsapp_consent	WhatsApp OK
-whatsapp_consent_help	Guest agreed to receive WhatsApp messages. A phone number alone is not consent.
-whatsapp_server_only	Configure WhatsApp on the shop Server device
+whatsapp_consent_help	गेस्टआ WhatsApp खिन्था मोननो गनायथि होबाय। फोन नम्बरल' गनायथि नङा।
+whatsapp_server_only	WhatsApp-खौ दोकाननि सर्वर मेसिनाव सेट खालाम
 settings_sec_backup	ब्याकआप आरो लाबोफिन
 settings_sec_diag	डायग्नोस्टिक
 settings_sec_privacy	गुमुरनाय
@@ -637,7 +656,7 @@ choose_device_use	सर्वर एबा क्लाइन्ट साय�
 paired_note	जोरजाय। बायनायनो खुलि हो, एबा गोदानखौ मोननो फिन नुजा।
 last_update_at	जोबथा आपडेट: {time}।
 pair_intro	सर्वर नागिर, एबा बेनि थं आरो जोराना कोड लिर।
-pair_resume_hint	Already paired — enter your shop PIN, or Forget this shop to pair another.
+pair_resume_hint	सिगांनिफ्रायनो जोरा जाबाय — नोंनि दोकाननि PIN हो, एबा गुबुन दोकान जोरानो थाखाय “बे दोकानखौ बाव” नारसिन।
 queue_waiting	दोकान सिम सौहैनो नेथ' ({n}):
 queue_tries	{n} खेब नाजाबाय · जोबथा फिनहोनाय: {e}
 save_backup_copy	ब्याकआपनि कपि थिना दोन…
@@ -754,13 +773,18 @@ station_vps_dd	बे स्टेसननि प्रिन्टार
 station_vps_dd_n	{n} प्रिन्टार · सोलायनो सुदुं
 bill_printers_dd	बिलनि प्रिन्टार
 bill_printers_dd_n	बिलनि थाखाय {n} प्रिन्टार · सोलायनो सुदुं
-paper_heading	कागज
+paper_heading	भार्चुवेल कागज
 paper_size	{w} × {h} mm
 paper_roll	{w} mm रल
 paper_not_set	कागजखौ दानो मिथियाखैसो
-paper_length_mm	गुलाव (mm)
-printer_paper_help	बे प्रिन्टारनि कागज mm आव। लांदां गुलावा रल: रसिदफोरा बेनि बिजिरनि बादि गुलाव जायो। प्रिन्टार नागिरा लांदां कागजखौ प्रिन्टारनि ड्राइभारनिफ्राय आबुं होयो (बुंनो हाया जायोब्ला 80 mm रल) आरो सिगाङाव फारिलाय होनाय कागजखौ जेबोब सोलायाखै।
-preview_help	बे रसिदखौ गाहायाव सायखनाय प्रिन्टारनि कागजआव, बेयाव छापा जानाय बादि: प्रिन्टारा सौथो मोनो हानाय सौसारि आगसि फार्सेनिफ्राय थार महराव (गोमो: सौथो हायै बेरफोर), गुलाव रसिदा बांसिन बिलाइआव, कागजनि बेरनिफ्राय गोजानथि बाहागोआ दानजायो। प्रिन्टार सायखनाया सिगां नुथाय लाखिनायखौल' सोलायो; प्रिन्टार गोसेबो कागजा प्रिन्टार आव फारिलाय होनाय जायो।
+virtual_width_mm	भार्चुवेल गुवार (mm)
+virtual_length_mm	भार्चुवेल गुलाव (mm)
+reported_width_mm	फोरमायनाय गुवार (mm)
+reported_length_mm	फोरमायनाय गुलाव (mm)
+reported_paper	फोरमायनाय: {paper}
+virtual_paper	भार्चुवेल: {paper}
+printer_paper_help	फोरमायनाया बे प्रिन्टारनि ड्राइभारआ सेट जानाय कागज; एपआ बेखौ फरायो ल', आरो “लागू नङा” नि ओंथिया सोंनो थाखाय ड्राइभार गैया। भार्चुवेला प्रिन्टारआव थारैनो दं होननानै नोंथाङा बुंनाय कागज, mm आव; लांदां गुलावा रोल। प्रिन्टारा गावनि कागजआव छापा खालामो; भार्चुवेल कागजआ एपनो खिन्थायो बेनि बेसेबां थार कागज, सिगां नुथाय, बिलाइनि गुलाव आरो रसिदनि जायगानि थाखाय। प्रिन्टार नागिर आ लांदां भार्चुवेल कागजखौ आबुं खालामो आरो नोंथाङा सेट खालामनायखौ माब्लाबाबो सोलाया।
+preview_help	बे रसिदखौ गाहायाव सायखनाय प्रिन्टारआव छापा जानाय बादि, बेनि भार्चुवेल कागजआव थार महराव। गुफुर जायगायाव छापा जायो, गोमो कागजआव प्रिन्टारा सौथो हाया, आरो गोबां नङै कालिया दानजायो। गुबै खोनानि नथि खोनाया कागज: रसिदा थानो नांगौ जायगायाव नारसिन। गुलाव रसिदा बांसिन बिलाइआव थाङो। प्रिन्टार सायखनाया सिगां नुथायखौल' सोलायो।
 job_layout	साजाय
 job_delivery	खामानिखौ माबोरै दैथाय होयो
 job_delivery_help	OS दस्तावेज, रा अक्ट', एबा ESC/POS। बिल आरो नुथांनि टिकेटआ आलादा आलादा दोनो। जायखि जा खामानिबो नागिरा थिना दोनजानाय जायखि जा प्रिन्टारआव थाङनो हायो।
@@ -1266,8 +1290,8 @@ taxable_value	कर लागानाय मान
 gst_inside_price_note	({tax} सिं)
 start_with_template	जोंनि मेनु टेम्पलेटजों जागाय
 template_heading	जोंनि मेनु टेम्पलेट
-template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
-template_download_shelf	Download photo shelf
+template_need_download	जामुनि सार्बजनिक सावमुथि शेल्फ (~1,459 जामु) डाउनल'ड खालाम, बेनि उनाव गैयि मुंफोरखौ नोंनि मेनुआव लाबो।
+template_download_shelf	सावमुथि शेल्फ डाउनल'ड खालाम
 template_info	सावगारिजों {c} थाखो आरो {d} जामु, दाजाबनो गनांथि। बेसेन ₹0 निफ्राय जागायो — उन नोंनि साजाय।
 template_import	गासै टेम्पलेट लाबो
 template_confirm	बेफोरनि थाखोजों {d} जामु दाजाब? नोंहा दंनाय जामु महरै थायो।

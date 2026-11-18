@@ -101,6 +101,19 @@ bill_item_col_sep	Imithetho yekholomu
 slip_columns	Amakholomu
 slip_col_header	Isihloko
 bill_line_logo	Ilogo
+bill_line_shop	Isitolo
+bill_line_address	Ikheli
+bill_line_fssai	FSSAI
+bill_line_title	Isihloko
+bill_line_customer	Ikhasimende
+bill_line_bill_no	Inombolo yebhili
+bill_line_time	Isikhathi
+bill_line_cashier	Ukheshi
+bill_line_table	Itafula lokudlela
+bill_line_items	Izinto zemenyu
+bill_line_total	Ingqikithi
+bill_line_footer	Unyaweni
+bill_line_upi	UPI
 bill_logo_picture	Isithombe
 bill_logo_choose	Khetha isithombe
 bill_logo_remove	Susa isithombe
@@ -128,6 +141,12 @@ bill_item_piece_off	Valiwe
 bill_total_qty	Isamba se-qty
 bill_total_subtotal	Isamba esincane
 bill_total_grand	Isamba esikhulu
+bill_total_number_under	Inombolo ngaphansi kwe
+bill_total_caption_under	Ilebula ngaphansi kwe
+bill_total_own_line	Umugqa walo
+bill_total_caption_with	Kanye nenombolo
+bill_total_caption_none	Ayikho ilebula
+bill_total_place_help	Umugqa walo iphrinta lesi samba sodwa. Ngaphansi kwekholomu, inombolo yaso iphrintwa kuleyo kholomu yezinto, ngosayizi nobukhulu balo mugqa; izamba zabelana ngomugqa owodwa kuze kuthathwe ikholomu, bese kuqala umugqa omusha. Ilebula ihamba nenombolo, ngaphansi kwenye ikholomu, noma ishiywe. Imigqa yentela, yesevisi, yokuzungeza neyenkokhelo ilandela Isamba esincane.
 reprint_incl	Iyaphrinta
 reprint_skip	Yeqa
 reprint_skip_meta	Yeqa ukuphrinta kokuthola
@@ -170,7 +189,7 @@ settings_sec_pickers	Izindawo · iziteshi · amanani entela
 settings_sec_printers	Amaphrinta
 settings_sec_bill	Inkokhelo yesivakashi sesivakashi nefomethi KOT
 settings_sec_selling	Amasu nokuthengisa
-bill_kot_tab_bill	Ibhili yesivakashi sesivakashi
+bill_kot_tab_bill	Ibhili
 bill_kot_tab_kot	KOT
 settings_sec_alerts	Izexwayiso
 alerts_help	Imilayezo yesimo ihlala isikhathi esingakanani esikrinini kuwe (lokhu kungena ngemvume).
@@ -178,20 +197,20 @@ snack_secs_ph	Amasekhondi (3–60, okuzenzakalelayo 10)
 snack_secs_save	Londoloza isikhathi sokuxwayisa
 snack_secs_saved	Isikhathi sesexwayiso silondoloziwe — {n} imizuzwana
 settings_sec_whatsapp	WhatsApp
-whatsapp_cloud_help	Use your own Meta WhatsApp Cloud API. Create a System User token with whatsapp_business_messaging (temporary dashboard tokens expire). Credentials stay on this Server only — never on extra tills. Accepted means Meta took the request, not that the guest received it.
-whatsapp_phone_id_ph	Phone Number ID
-whatsapp_token_ph	Access Token (leave blank to keep)
-whatsapp_template_ph	Bill template name (optional)
-whatsapp_template_lang_ph	Template language (e.g. en)
-whatsapp_enable	Enable
+whatsapp_cloud_help	Sebenzisa eyakho i-Meta WhatsApp Cloud API. Dala ithokheni ye-System User ene-whatsapp_business_messaging (amathokheni esikhashana edeshibhodi ayaphelelwa yisikhathi). Imininingwane ihlala kule seva kuphela — ayikaze ibe kumarejista emali eyengeziwe. “Kwamukelwe” kusho ukuthi i-Meta isithathile isicelo, hhayi ukuthi isivakashi sisitholile.
+whatsapp_phone_id_ph	I-ID yenombolo yocingo
+whatsapp_token_ph	Ithokheni yokufinyelela (shiya kungenalutho ukuze uyigcine)
+whatsapp_template_ph	Igama lesifanekiso sebhili (uyazikhethela)
+whatsapp_template_lang_ph	Ulimi lwesifanekiso (isb. en)
+whatsapp_enable	Vumela
 whatsapp_disable	Off
-whatsapp_save	Save WhatsApp
-whatsapp_test	Test connection
-whatsapp_disconnect	Disconnect
-whatsapp_send_bill	Send via WhatsApp
+whatsapp_save	Londoloza i-WhatsApp
+whatsapp_test	Hlola ukuxhumana
+whatsapp_disconnect	Nqamula ukuxhumana
+whatsapp_send_bill	Thumela nge-WhatsApp
 whatsapp_consent	WhatsApp OK
-whatsapp_consent_help	Guest agreed to receive WhatsApp messages. A phone number alone is not consent.
-whatsapp_server_only	Configure WhatsApp on the shop Server device
+whatsapp_consent_help	Isivakashi sivumile ukuthola imiyalezo ye-WhatsApp. Inombolo yocingo iyodwa ayiyona imvume.
+whatsapp_server_only	Setha i-WhatsApp kudivayisi yeseva yesitolo
 settings_sec_backup	Gcina futhi ubuyisele
 settings_sec_diag	Ukuxilonga
 settings_sec_privacy	Ubumfihlo
@@ -583,7 +602,7 @@ server_ip_ph	IP yeseva (isb. 192.168.1.10)
 set_credit_limit	Faka umkhawulo kukhasimende noma umphakeli
 set_login_selected	Faka ukungena ngemvume kokukhethiwe
 set_login_named	Faka isicelo sokungena ku-{name}
-shop	Thenga
+shop	Isitolo
 show	Bonisa
 spreadsheet_csv	Isipredishithi (CSV)
 start_fresh	Qala kabusha
@@ -637,7 +656,7 @@ choose_device_use	Khetha Iseva noma Iklayenti.
 paired_note	Kubhanqiwe. Vula ukuze udayise, noma Vuselela ukuze uthole okwakamuva.
 last_update_at	Isibuyekezo sokugcina: {time}.
 pair_intro	Thola iseva, noma thayipha ikheli layo kanye nekhodi yokumatanisa.
-pair_resume_hint	Already paired — enter your shop PIN, or Forget this shop to pair another.
+pair_resume_hint	Sekubhanqiwe — faka i-PIN yesitolo sakho, noma uthinte “Khohlwa lesi sitolo” ukuze ubhanqe esinye.
 queue_waiting	Ilinde ukufinyelela esitolo ({n}):
 queue_tries	Izanywe izikhathi {n} · impendulo yokugcina: {e}
 save_backup_copy	Londoloza ikhophi eyisipele...
@@ -739,7 +758,7 @@ printer_format_custom_added	Iphrofayela yangokwezifiso yengezwe kule ndawo
 add_printer	Engeza iphrinta
 remove_printer	Susa
 route_pick_ph	Ibhili yesivakashi sesivakashi noma isiteshi sasekhishini
-route_bill	Ibhili yesivakashi sesivakashi
+route_bill	Ibhili
 route_default_kitchen	Asikho isiteshi (izitsha ezingabelwe)
 route_kot_station	Ikhishi
 route_dont_print	Ayikho iphrinta
@@ -754,13 +773,18 @@ station_vps_dd	Amaphrinta alesi siteshi
 station_vps_dd_n	{n} amaphrinta · thepha ukuze ushintshe
 bill_printers_dd	Amaphrinta webhili yesivakashi
 bill_printers_dd_n	{n} amaphrinta webhili yesivakashi · thepha ukuze ushintshe
-paper_heading	Iphepha
+paper_heading	Iphepha le-virtual
 paper_size	{w} × {h} mm
 paper_roll	umqulu we-{w} mm
 paper_not_set	iphepha alikaziwa okwamanje
-paper_length_mm	Ubude (mm)
-printer_paper_help	Iphepha lale phrinta ku-mm. UBude obungenalutho ngumqulu: irisidi ngayinye inde njengokuqukethwe kwayo. Thola amaphrinta igcwalisa iphepha elingenalutho kusuka kumshayeli wephrinta (umqulu we-80 mm uma ingakwazi ukusho) futhi ayisoze yashintsha eselisethiwe.
-preview_help	Le risidi ephepheni lephrinta ekhethwe ngezansi, njengoba iphrinta lapho: ubukhulu bangempela kusuka ekhoneni elingaphezulu kwesobunxele elifinyelelwa yiphrinta (mpunga: imiphetho engafinyelelwa), irisidi ende emakhasini amaningi, konke okudlula umphetho wephepha kuyasikwa. Ukukhetha iphrinta kushintsha ukubuka kuqala kuphela; iphepha lephrinta ngayinye lisethwa ngaphansi kwe-Amaphrinta.
+virtual_width_mm	Ububanzi be-virtual (mm)
+virtual_length_mm	Ubude be-virtual (mm)
+reported_width_mm	Ububanzi obubikiwe (mm)
+reported_length_mm	Ubude obubikiwe (mm)
+reported_paper	Okubikiwe: {paper}
+virtual_paper	I-virtual: {paper}
+printer_paper_help	Okubikiwe yiphepha umshayeli wale phrinta osethelwe kulo; uhlelo lokusebenza luyalifunda kuphela, futhi “Ayikho” isho ukuthi awukho umshayeli ongabuzwa. I-virtual yiphepha othi wena likhona ngempela kuphrinta, ku-mm; ubude obungenalutho ngumqulu. Iphrinta iphrinta ephepheni layo; iphepha le-virtual litshela uhlelo lokusebenza ukuthi lingakanani kulo eliyiphepha langempela, ukuze kusetshenziswe ekubukeni kuqala, ebudeni bekhasi nasendaweni yerisidi. Thola amaphrinta igcwalisa iphepha le-virtual elingenalutho futhi ayisoze yashintsha olisethile wena.
+preview_help	Le risidi njengoba iphrinta kuphrinta ekhethwe ngezansi, ngobukhulu bangempela ephepheni layo le-virtual. Okumhlophe yilapho iphrinta khona, iphepha elimpunga alifinyelelwa yiphrinta, futhi uyinki ofiphele uyasikwa. Izikwele eziyisishiyagalolunye ziyiphepha: thepha lapho irisidi kufanele ihlale khona. Irisidi ende iqhubeka emakhasini amaningi. Ukukhetha iphrinta kushintsha ukubuka kuqala kuphela.
 job_layout	Isakhiwo
 job_delivery	Umsebenzi uthunyelwa kanjani
 job_delivery_help	Idokhumenti ye-OS, amabhayithi angavuthiwe, noma ESC/POS. Ibhili yesivakashi kanye nethikithi lasekhishini ngayinye igcina eyayo. Noma yimuphi umsebenzi ungaya kunoma iyiphi iphrinta Thola elondoloziwe.
@@ -1053,7 +1077,7 @@ tile_occupied	Kumatasatasa
 tile_food_ready	Ukudla sekulungile
 tile_bill_printed	Ibhili yesivakashi sesivakashi iphrintiwe
 tile_paid	Ikhokhiwe
-tile_bill_btn	Ibhili yesivakashi sesivakashi
+tile_bill_btn	Ibhili
 tile_occupy_btn	Hlala izivakashi
 tile_free_btn	Phuma etafuleni lokudlela
 tile_ready_btn	Phuma etafuleni lokudlela
@@ -1205,7 +1229,7 @@ kot_footer_ph	Inothi lekhishi (uyazikhethela, awekho amanani)
 kot_preview	Buka kuqala
 test_kot_format	Zama ukuhlola KOT
 test_kot_sent	Ukuhlola kuqala ithikithi lasekhishini kuthunyelwe
-test_bill_format	Hlola ibhili yesivakashi
+test_bill_format	Ibhili yokuhlola
 test_bill_sent	Ukuhlola kuqala kwebhili yesivakashi sesivakashi kuthunyelwe
 test_print_no_printer	Ayikho iphrinta yalowo msebenzi — khetha eyodwa kulesi sikrini
 std_print	Usayizi wokuphrinta webhili yesivakashi sesivakashi
@@ -1238,7 +1262,7 @@ on_your_menu	Kumenyu yakho
 edit	Hlela
 schemes	Izikimu / okunikezwayo
 schemes_help	BOGO, iphesenti lesaphulelo, nama-combo alungisiwe. Ama-Combo anwebeka abe kolayini basekhishini kokuthi Thumela KOT; izingxenye zigcinwe kuze kube yilapho i-combo ivutha. Isibonelo: Buy 2 Thali get 1 Chaas
-scheme_bogo_ph	Buy 2 Thali get 1 Chaas
+scheme_bogo_ph	Thenga i-Thali engu-2, uthole i-Chaas engu-1
 add_scheme	Engeza BOGO
 schedule_ph	Amahora / ihora lenjabulo — Mon-Fri 07:00-11:00 noma HappyHour 17:00-19:00=150
 upi_qr	UPI QR
@@ -1266,8 +1290,8 @@ taxable_value	Inani elikhokhiswa intela
 gst_inside_price_note	({tax} kuhlanganisiwe)
 start_with_template	Qala ngesifanekiso sethu semenyu
 template_heading	Isifanekiso sethu semenyu
-template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
-template_download_shelf	Download photo shelf
+template_need_download	Landa ishalofu lomphakathi lezithombe zezitsha (~izitsha ezingu-1,459), bese ungenisa amagama angekho kumenyu yakho.
+template_download_shelf	Landa ishalofu lezithombe
 template_info	{c} izigaba kanye {d} izitsha ezinezithombe, ezilungele ukungezwa. Izintengo ziqala ku- ₹0 — setha eyakho ngemva kwalokho.
 template_import	Ngenisa isifanekiso esiphelele
 template_confirm	Engeza {d} izitsha ngezigaba zazo? Izitsha osuvele unazo hlala njengoba zinjalo.

@@ -1229,38 +1229,27 @@ impl Store {
             "--------------------",
             rtl,
         );
+        // Each total where the owner placed it: its own line, or under the
+        // item columns; the other amounts follow Sub total's place
+        // (print_share::BillTotalRows).
+        use crate::print_share::BillTotalKind;
+        let mut totals = crate::print_share::BillTotalRows::new(&fmt);
+        // A caption and its amount, as the line reads on its own.
+        let amount_line = |caption: &str, paise: i64| {
+            let amount = Money(paise).format_localized(&currency, &fiscal_settings);
+            (format!("{caption} {amount}"), amount)
+        };
         if fmt.total_show_qty {
             let qty_label = format_qty_display(total_qty_milli, 0, "");
             let qty_n = qty_label.strip_prefix('x').unwrap_or(qty_label.as_str());
-            crate::print_share::append_bill_like(
-                &mut out,
-                &fmt,
-                crate::print_share::BillStyleField::Total,
-                &format!("{}: {qty_n}", fmt.caption_total_qty()),
-                rtl,
-            );
+            let caption = fmt.caption_total_qty();
+            totals.total(BillTotalKind::Qty, &caption, qty_n, &format!("{caption}: {qty_n}"));
         }
         if sale.rounding_paise != 0 {
-            crate::print_share::append_bill_like(
-                &mut out,
-                &fmt,
-                crate::print_share::BillStyleField::Total,
-                &format!(
-                    "Applied {}",
-                    Money(sale.lines_total_paise).format_localized(&currency, &fiscal_settings)
-                ),
-                rtl,
-            );
-            crate::print_share::append_bill_like(
-                &mut out,
-                &fmt,
-                crate::print_share::BillStyleField::Total,
-                &format!(
-                    "Round {}",
-                    Money(sale.rounding_paise).format_localized(&currency, &fiscal_settings)
-                ),
-                rtl,
-            );
+            let (joined, amount) = amount_line("Applied", sale.lines_total_paise);
+            totals.amount("Applied", &amount, &joined);
+            let (joined, amount) = amount_line("Round", sale.rounding_paise);
+            totals.amount("Round", &amount, &joined);
         }
         // Inclusive: Net → tax → Total (same charged total). Exclusive:
         // Subtotal + tax → Total. Components always add to Total.
@@ -1273,77 +1262,25 @@ impl Store {
             } else {
                 "Subtotal".to_string()
             };
-            crate::print_share::append_bill_like(
-                &mut out,
-                &fmt,
-                crate::print_share::BillStyleField::Total,
-                &format!(
-                    "{base_caption} {}",
-                    sale.net().format_localized(&currency, &fiscal_settings)
-                ),
-                rtl,
-            );
+            // This is the bill's Sub total line, whatever its caption.
+            let net = sale.net().format_localized(&currency, &fiscal_settings);
+            totals.total(BillTotalKind::Subtotal, &base_caption, &net, &format!("{base_caption} {net}"));
             let components = fiscal_settings.tax_components(sale.tax_paise);
-            if components.is_empty() {
-                crate::print_share::append_bill_like(
-                    &mut out,
-                    &fmt,
-                    crate::print_share::BillStyleField::Total,
-                    &format!(
-                        "{tax_label} {}",
-                        sale.tax().format_localized(&currency, &fiscal_settings)
-                    ),
-                    rtl,
-                );
-            } else {
-                for (name, amount) in &components {
-                    crate::print_share::append_bill_like(
-                        &mut out,
-                        &fmt,
-                        crate::print_share::BillStyleField::Total,
-                        &format!(
-                            "{name} {}",
-                            Money(*amount).format_localized(&currency, &fiscal_settings)
-                        ),
-                        rtl,
-                    );
-                }
-                crate::print_share::append_bill_like(
-                    &mut out,
-                    &fmt,
-                    crate::print_share::BillStyleField::Total,
-                    &format!(
-                        "{tax_label} {}",
-                        sale.tax().format_localized(&currency, &fiscal_settings)
-                    ),
-                    rtl,
-                );
+            for (name, amount) in &components {
+                let (joined, amount) = amount_line(name, *amount);
+                totals.amount(name, &amount, &joined);
             }
+            let (joined, amount) = amount_line(&tax_label, sale.tax_paise);
+            totals.amount(&tax_label, &amount, &joined);
         }
         if sale.service_paise > 0 {
-            crate::print_share::append_bill_like(
-                &mut out,
-                &fmt,
-                crate::print_share::BillStyleField::Total,
-                &format!(
-                    "Service {}",
-                    Money(sale.service_paise).format_localized(&currency, &fiscal_settings)
-                ),
-                rtl,
-            );
+            let (joined, amount) = amount_line("Service", sale.service_paise);
+            totals.amount("Service", &amount, &joined);
         }
         if fmt.total_show_grand {
-            crate::print_share::append_bill_field(
-                &mut out,
-                &fmt,
-                crate::print_share::BillStyleField::Total,
-                &format!(
-                    "{} {}",
-                    fmt.caption_paid_total(),
-                    Money(sale.total_paise).format_localized(&currency, &fiscal_settings)
-                ),
-                rtl,
-            );
+            let caption = fmt.caption_paid_total();
+            let (joined, amount) = amount_line(&caption, sale.total_paise);
+            totals.total(BillTotalKind::Grand, &caption, &amount, &joined);
         }
         let tenders = self.sale_tenders(sale_id)?;
         if tenders.len() > 1 {
@@ -1351,35 +1288,26 @@ impl Store {
                 let label = PayMethod::parse(&method)
                     .map(|p| p.label_for(&fiscal_settings))
                     .unwrap_or(method);
-                crate::print_share::append_bill_like(
-                    &mut out,
-                    &fmt,
-                    crate::print_share::BillStyleField::Total,
-                    &format!(
-                        "{label} {}",
-                        Money(amount).format_localized(&currency, &fiscal_settings)
-                    ),
-                    rtl,
-                );
+                let (joined, amount) = amount_line(&label, amount);
+                totals.amount(&label, &amount, &joined);
             }
         } else {
-            crate::print_share::append_bill_like(
-                &mut out,
-                &fmt,
-                crate::print_share::BillStyleField::Total,
-                &match pay {
-                    Some(p) => p.label_for(&fiscal_settings),
-                    None => sale.pay_method.to_uppercase(),
-                },
-                rtl,
-            );
+            totals.words(&match pay {
+                Some(p) => p.label_for(&fiscal_settings),
+                None => sale.pay_method.to_uppercase(),
+            });
         }
         if sale.tax_paise > 0 && sale.tax_pricing().is_inside_price() {
+            totals.words(&format!("({tax_label} inclusive)"));
+        }
+        // The totals end here: the cashier and the cash handed over print
+        // after them, in the order they always did.
+        for line in totals.finish() {
             crate::print_share::append_bill_like(
                 &mut out,
                 &fmt,
                 crate::print_share::BillStyleField::Total,
-                &format!("({tax_label} inclusive)"),
+                &line,
                 rtl,
             );
         }
@@ -13565,6 +13493,116 @@ mod tests {
         assert!(receipt.contains("Subtotal") || receipt.contains("Sub Total") || receipt.contains("Sub total"), "{receipt}");
         assert!(receipt.contains("VAT"), "{receipt}");
         assert!(!receipt.contains("Incl."), "{receipt}");
+        let _ = std::fs::remove_file(path);
+    }
+
+    /// A paid bill's totals where the owner placed them: Sub total and the
+    /// paid total under Amount with their captions under Price, Total qty
+    /// under Qty — and the tax line follows Sub total, so the amounts of the
+    /// bill stay in one column.
+    #[test]
+    fn a_settled_bill_prints_its_totals_where_the_owner_placed_them() {
+        use crate::print_share::{BillItemCol, BillTotalCaption};
+        let path = temp_db();
+        let store = Store::open_path(&path).unwrap();
+        let owner = store.list_staff().unwrap().into_iter().next().unwrap();
+        store.apply_country_pack("AE").unwrap();
+        let mut shawarma = test_product("Shawarma", 100);
+        shawarma.tax_bps = 500;
+        store.upsert_product(&shawarma).unwrap();
+        let mut water = test_product("Water", 20);
+        water.tax_bps = 0;
+        store.upsert_product(&water).unwrap();
+        let mut cart = Cart::default();
+        cart.add_or_bump(&shawarma);
+        cart.add_or_bump(&water);
+        let draft = cart.to_sale_draft().unwrap();
+        let sale = store.finalize_sale(&draft, PayMethod::Card, None, &owner).unwrap();
+        assert_eq!((sale.net_paise, sale.tax_paise, sale.total_paise), (12_000, 500, 12_500));
+
+        let plain = |store: &Store| crate::print_share::strip_kot_style_marks(&store.format_receipt_text(&sale.id).unwrap());
+        // As it always printed: every total on its own line.
+        let before = plain(&store);
+        let own: Vec<&str> = before.lines().filter(|l| l.contains("Sub Total") || l.starts_with("Total")).collect();
+        assert_eq!(own.len(), 3, "Total Qty, Sub Total and Total lines:\n{before}");
+        assert!(own.iter().all(|l| !l.contains('\t')), "{own:?}");
+
+        let mut fmt = store.bill_slip_format().unwrap();
+        fmt.total_qty_place.set_number_col(Some(BillItemCol::Qty));
+        fmt.total_qty_place.set_caption_place(BillTotalCaption::Hidden);
+        for place in [&mut fmt.total_subtotal_place, &mut fmt.total_grand_place] {
+            place.set_number_col(Some(BillItemCol::Amount));
+            place.set_caption_place(BillTotalCaption::Under(BillItemCol::Price));
+        }
+        store.set_bill_slip_format(&fmt).unwrap();
+        let receipt = plain(&store);
+        let rows: Vec<Vec<&str>> = receipt
+            .lines()
+            .filter(|l| l.starts_with('\t'))
+            .map(|l| l.split('\t').collect())
+            .collect();
+        // Item | Qty | Price | Amount.
+        assert_eq!(rows.len(), 3, "three rows on the item columns:\n{receipt}");
+        assert_eq!(rows[0][..3], ["", "2", "Sub Total"], "{receipt}");
+        assert!(rows[0][3].contains("120.00"), "{receipt}");
+        assert_eq!(rows[1][..2], ["", ""], "{receipt}");
+        assert!(rows[1][2].contains("VAT") && rows[1][3].contains("5.00"), "the tax follows Sub total:\n{receipt}");
+        assert_eq!(rows[2][..3], ["", "", "Total"], "{receipt}");
+        assert!(rows[2][3].contains("125.00"), "{receipt}");
+        // The same lines otherwise: nothing else moved or went missing.
+        let rest = |text: &str| {
+            text.lines()
+                .filter(|l| !l.starts_with('\t') && !l.contains("Sub Total") && !l.starts_with("Total") && !l.starts_with("VAT"))
+                .map(str::to_string)
+                .collect::<Vec<_>>()
+        };
+        assert_eq!(rest(&receipt), rest(&before));
+        let _ = std::fs::remove_file(path);
+    }
+
+    /// A settled bill keeps the order of its Total lines: the totals, how
+    /// it was paid, the cash handed over, the tip — with every total on its
+    /// own line and with the totals under the item columns alike. (Lines
+    /// print grouped by their bill line, so the cashier is not among them.)
+    #[test]
+    fn a_settled_bill_keeps_its_line_order() {
+        use crate::print_share::BillItemCol;
+        let path = temp_db();
+        let store = Store::open_path(&path).unwrap();
+        let owner = store.list_staff().unwrap().into_iter().next().unwrap();
+        let mut tea = test_product("Tea", 20);
+        tea.tax_bps = 0;
+        store.upsert_product(&tea).unwrap();
+        let mut cart = Cart::default();
+        cart.add_or_bump(&tea);
+        let draft = cart.to_sale_draft().unwrap();
+        let sale = store.finalize_sale(&draft, PayMethod::Cash, None, &owner).unwrap();
+        store.record_settlement(&sale.id, 5_000, 3_000, 500, "cash", &owner).unwrap();
+
+        let order = |store: &Store| {
+            let text = crate::print_share::strip_kot_style_marks(&store.format_receipt_text(&sale.id).unwrap());
+            let at = |what: &str, found: &dyn Fn(&str) -> bool| {
+                text.lines().position(found).unwrap_or_else(|| panic!("no {what} line:\n{text}"))
+            };
+            let lines = [
+                at("Total Qty", &|l| l.contains("Total Qty")),
+                at("Total", &|l| l.contains("Total") && l.contains("20.00")),
+                at("pay method", &|l| l.trim() == "Cash"),
+                at("Paid", &|l| l.contains("Paid ") && l.contains("Change")),
+                at("Tip", &|l| l.contains("Tip ")),
+            ];
+            (lines, text)
+        };
+        let ([qty, grand, pay, paid, tip], text) = order(&store);
+        assert!(qty < grand && grand < pay && pay < paid && paid < tip, "{text}");
+
+        // Totals under the item columns share one row; the rest stays put.
+        let mut fmt = store.bill_slip_format().unwrap();
+        fmt.total_qty_place.set_number_col(Some(BillItemCol::Qty));
+        fmt.total_grand_place.set_number_col(Some(BillItemCol::Amount));
+        store.set_bill_slip_format(&fmt).unwrap();
+        let ([qty, grand, pay, paid, tip], text) = order(&store);
+        assert!(qty == grand && grand < pay && pay < paid && paid < tip, "{text}");
         let _ = std::fs::remove_file(path);
     }
 

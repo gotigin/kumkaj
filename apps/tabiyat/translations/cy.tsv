@@ -79,13 +79,19 @@ bill_item_amount	Swm
 bill_item_note	Nodyn Rx / gwerthiant
 bill_item_col_sep	Llinellau colofn
 slip_col_width	Lled (mm)
-paper_heading	Papur
+paper_heading	Papur rhithwir
 paper_size	{w} × {h} mm
 paper_roll	rholyn {w} mm
 paper_not_set	papur heb ei wybod eto
-paper_length_mm	Hyd (mm)
-printer_paper_help	Papur yr argraffydd hwn mewn mm. Mae Hyd gwag yn rholyn: mae pob slip mor hir â'i gynnwys. Mae Dewch o hyd i argraffwyr yn llenwi papur gwag o yrrwr yr argraffydd (rholyn 80 mm pan na all ddweud) a byth yn newid un sydd eisoes wedi'i osod.
-preview_help	Y slip hwn ar bapur yr argraffydd a ddewiswyd isod, fel y mae'n argraffu yno: maint go iawn o'r gornel chwith uchaf y gall yr argraffydd ei chyrraedd (llwyd: ymylon na all), slip hir ar ragor o dudalennau, popeth y tu hwnt i ymyl y papur wedi'i dorri. Mae dewis argraffydd yn newid y rhagolwg yn unig; caiff papur pob argraffydd ei osod o dan Argraffwyr.
+na	Amh.
+virtual_width_mm	Lled rhithwir (mm)
+virtual_length_mm	Hyd rhithwir (mm)
+reported_width_mm	Lled a adroddwyd (mm)
+reported_length_mm	Hyd a adroddwyd (mm)
+reported_paper	Adroddwyd: {paper}
+virtual_paper	Rhithwir: {paper}
+printer_paper_help	Adroddwyd yw'r papur y mae gyrrwr yr argraffydd hwn wedi'i osod iddo; dim ond ei ddarllen y mae'r ap, ac mae “Amh.” yn golygu nad oes gyrrwr i'w holi. Rhithwir yw'r papur rydych chi'n dweud sydd yn yr argraffydd mewn gwirionedd, mewn mm; rholyn yw hyd gwag. Mae'r argraffydd yn argraffu ar ei bapur ei hun; mae'r papur rhithwir yn dweud wrth yr ap faint ohono sy'n bapur go iawn, ar gyfer y rhagolwg, hyd y dudalen a lle'r slip. Mae Dewch o hyd i argraffwyr yn llenwi papur rhithwir gwag a byth yn newid un rydych chi wedi'i osod.
+preview_help	Y slip hwn fel y mae'n argraffu ar yr argraffydd a ddewiswyd isod, ar ei faint go iawn ar ei bapur rhithwir. Gwyn yw lle mae'n argraffu, mae papur llwyd y tu hwnt i gyrraedd yr argraffydd, ac mae inc gwelw yn cael ei dorri i ffwrdd. Y naw sgwâr yw'r papur: tapiwch lle dylai'r slip eistedd. Mae slip hir yn mynd ymlaen i ragor o dudalennau. Dim ond y rhagolwg y mae dewis argraffydd yn ei newid.
 slip_col_start	Gofod dechrau (px)
 slip_col_end	Gofod diwedd (px)
 slip_columns_help	Mae lled pob colofn yn cynnwys ei gofod dechrau a’i gofod diwedd. Mae testun yn lapio y tu mewn i’w golofn; caiff unrhyw beth y tu hwnt i led y cynnwys ei dorri, ar bapur ac yn y rhagolwg.
@@ -100,6 +106,12 @@ bill_item_piece_off	I ffwrdd
 bill_total_qty	Cyfanswm nifer
 bill_total_subtotal	Is-gyfanswm
 bill_total_grand	Cyfanswm mawr
+bill_total_number_under	Rhif o dan
+bill_total_caption_under	Label o dan
+bill_total_own_line	Llinell ei hun
+bill_total_caption_with	Gyda'r rhif
+bill_total_caption_none	Dim label
+bill_total_place_help	Mae Llinell ei hun yn argraffu'r cyfanswm hwn ar ei ben ei hun. O dan golofn, mae ei rif yn cael ei argraffu yn y golofn eitemau honno, ym maint a phwysau'r llinell hon; mae cyfansymiau'n rhannu rhes nes bod colofn wedi'i llenwi, yna mae rhes newydd yn dechrau. Mae'r label yn mynd gyda'r rhif, o dan golofn arall, neu'n cael ei hepgor. Mae llinellau treth, gwasanaeth, talgrynnu a thalu yn dilyn Is-gyfanswm.
 kot_unassigned	Heb ei aseinio
 settings_hub_help	Agorwch un ardal ar y tro — llai o sgrolio, dewisiadau cliriach.
 settings_sec_language	Iaith ac arian cyfred
@@ -735,6 +747,20 @@ fssai_ph	Rhif trwydded cyffuriau (dewisol — eich geiriad)
 bill_footer_ph	Troedyn (e.e. Diolch, dewch eto)
 kot_field_on	dangos
 kot_field_off	cuddio
+kot_field_show	Dangos
+kot_field_hide	Cuddio
+bill_line_shop	Siop
+bill_line_address	Cyfeiriad
+bill_line_fssai	FSSAI
+bill_line_title	Teitl
+bill_line_customer	Cwsmer
+bill_line_bill_no	Rhif y bil
+bill_line_time	Amser
+bill_line_cashier	Ariannwr
+bill_line_items	Eitemau
+bill_line_total	Cyfanswm
+bill_line_footer	Troedyn
+bill_line_upi	UPI
 kot_weight_light	Ysgafn
 bill_kot_panel_help	Cynllun y bil a lled y cynnwys. Ariannwr yw pwy gyhoeddodd neu setlo'r bil - mae'r stori werthu lawn yn aros yn y llyfrau.
 std_size_ph	e.e. 18, 20, 26…
@@ -842,10 +868,10 @@ lane_declared_label	Anfoneb dreth
 lane_owner_label	Memo arian
 money_lane_bill	Bil: {lane}
 
-removing	Removing…
-removed	Removed
-updating_order	Updating…
-order_updated	Order updated
+removing	Wrthi'n tynnu…
+removed	Wedi'i dynnu
+updating_order	Wrthi'n diweddaru…
+order_updated	Archeb wedi'i diweddaru
 sel_copy	Copïo
 sel_select_all	Dewis y cyfan
 sel_copied	Wedi copïo

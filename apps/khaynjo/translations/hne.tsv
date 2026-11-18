@@ -101,6 +101,19 @@ bill_item_col_sep	खंभा के लकीर
 slip_columns	खंभा
 slip_col_header	सिरनाम
 bill_line_logo	लोगो
+bill_line_shop	दुकान
+bill_line_address	पता
+bill_line_fssai	FSSAI
+bill_line_title	शीर्षक
+bill_line_customer	ग्राहक
+bill_line_bill_no	बिल नं.
+bill_line_time	समय
+bill_line_cashier	कैशियर
+bill_line_table	मेज़
+bill_line_items	आइटम
+bill_line_total	जम्मा
+bill_line_footer	फ़ुटर
+bill_line_upi	यूपीआई
 bill_logo_picture	फोटू
 bill_logo_choose	फोटू छांटव
 bill_logo_remove	फोटू हटावव
@@ -128,6 +141,12 @@ bill_item_piece_off	बंद
 bill_total_qty	जम्मा गिनती
 bill_total_subtotal	उपजम्मा
 bill_total_grand	कुल जम्मा
+bill_total_number_under	गिनती एकर खाल्हे
+bill_total_caption_under	लेबल एकर खाल्हे
+bill_total_own_line	अपन लाइन
+bill_total_caption_with	गिनती के संग
+bill_total_caption_none	लेबल नइ
+bill_total_place_help	“अपन लाइन” ए जम्मा ला अकेल्ला छापथे। खंभा के खाल्हे होय ले एकर गिनती ओही सामान वाले खंभा म, ए लाइन के नाप अउ मोटाई म छपथे; जब तक कोनो खंभा भर नइ जाय जम्मा मन एके कतार बांटथें, फेर नवा कतार सुरू होथे। लेबल गिनती के संग, दूसर खंभा के खाल्हे जाथे, या छोड़ दे जाथे। टैक्स, सेवा, राउंडिंग अउ भुगतान के लाइन मन “उपजम्मा” के पाछू चलथें।
 reprint_incl	छाप म
 reprint_skip	छोड़व
 reprint_skip_meta	फेर छाप छोड़व
@@ -178,20 +197,20 @@ snack_secs_ph	सेकंड (3–60, आम 10)
 snack_secs_save	चेतावनी के समय सहेजव
 snack_secs_saved	चेतावनी के समय सहेजे गे — {n} सेकंड
 settings_sec_whatsapp	WhatsApp
-whatsapp_cloud_help	Use your own Meta WhatsApp Cloud API. Create a System User token with whatsapp_business_messaging (temporary dashboard tokens expire). Credentials stay on this Server only — never on extra tills. Accepted means Meta took the request, not that the guest received it.
-whatsapp_phone_id_ph	Phone Number ID
-whatsapp_token_ph	Access Token (leave blank to keep)
-whatsapp_template_ph	Bill template name (optional)
-whatsapp_template_lang_ph	Template language (e.g. en)
-whatsapp_enable	Enable
+whatsapp_cloud_help	अपन खुद के Meta WhatsApp Cloud API बउरव। whatsapp_business_messaging वाला System User टोकन बनावव (डैशबोर्ड के अस्थायी टोकन के मियाद खतम हो जाथे)। ए जानकारी सिरिफ इही सर्वर म रहिथे — अतिरिक्त टिल म कभू नइ। “स्वीकृत” के मतलब हे के Meta ह अनुरोध ले लिस, ए नइ के मेहमान ल संदेश मिल गे।
+whatsapp_phone_id_ph	फ़ोन नंबर ID
+whatsapp_token_ph	एक्सेस टोकन (ओही ल रखे बर खाली छोड़व)
+whatsapp_template_ph	बिल टेम्पलेट के नाम (मन चाहे)
+whatsapp_template_lang_ph	टेम्पलेट के भाषा (जइसे en)
+whatsapp_enable	चालू करव
 whatsapp_disable	Off
-whatsapp_save	Save WhatsApp
-whatsapp_test	Test connection
-whatsapp_disconnect	Disconnect
-whatsapp_send_bill	Send via WhatsApp
-whatsapp_consent	WhatsApp OK
-whatsapp_consent_help	Guest agreed to receive WhatsApp messages. A phone number alone is not consent.
-whatsapp_server_only	Configure WhatsApp on the shop Server device
+whatsapp_save	WhatsApp सहेजव
+whatsapp_test	कनेक्शन जाँचव
+whatsapp_disconnect	कनेक्शन हटावव
+whatsapp_send_bill	WhatsApp ले भेजव
+whatsapp_consent	WhatsApp ठीक
+whatsapp_consent_help	मेहमान ह WhatsApp संदेश पाए बर सहमति दे हे। सिरिफ फ़ोन नंबर होना सहमति नो हे।
+whatsapp_server_only	WhatsApp ल दुकान के सर्वर डिवाइस म सेट करव
 settings_sec_backup	बैकअप व रीस्टोर
 settings_sec_diag	निदान
 settings_sec_privacy	गोपनीयता
@@ -637,7 +656,7 @@ choose_device_use	चुनव कि ए डिवाइस कइसन उप
 paired_note	जुड़ गे। बेचने बर खोलव, या दुकान से ताज़ा करव दबाकर नवीनतम लेव।
 last_update_at	दुकान से आख़िरी अपडेट: {time}।
 pair_intro	सर्वर खोजें, या उसका पता अउ पेयरिंग कोड लिखव।
-pair_resume_hint	Already paired — enter your shop PIN, or Forget this shop to pair another.
+pair_resume_hint	पहिली ले जुड़े हे — अपन दुकान के PIN डालव, या दूसर दुकान जोड़े बर “ए दुकान भूलेव” दबावव।
 queue_waiting	दुकान तक पहुँचने की प्रतीक्षा म ({n}):
 queue_tries	{n} बार कोशिश · आख़िरी जवाब: {e}
 save_backup_copy	बैकअप की कॉपी सहेजव…
@@ -754,13 +773,18 @@ station_vps_dd	इस स्टेशन के प्रिंटर
 station_vps_dd_n	{n} प्रिंटर · बदलने बर टैप
 bill_printers_dd	बिल के प्रिंटर
 bill_printers_dd_n	बिल बर {n} प्रिंटर · बदलने बर दबाव
-paper_heading	कागज
+paper_heading	आभासी कागज
 paper_size	{w} × {h} mm
 paper_roll	{w} mm रोल
 paper_not_set	कागज अभी पता नइ हे
-paper_length_mm	लंबाई (mm)
-printer_paper_help	ए प्रिंटर के कागज mm म। खाली लंबाई के मतलब रोल: हर पर्ची अपन सामग्री जतका लंबा होथे। प्रिंटर खोजें खाली कागज ल प्रिंटर के ड्राइवर ले भरथे (नइ बता सकय त 80 mm रोल) अउ पहिली ले तय कागज ल कभू नइ बदलय।
-preview_help	ए पर्ची नीचे चुने प्रिंटर के कागज म, जइसे उहाँ छपथे: प्रिंटर जिहाँ तक पहुँचथे ओ ऊपर डेरी कोना ले असली नाप म (धूसर: किनारा जिहाँ नइ पहुँचय), लंबा पर्ची अउ पन्ना म, कागज के किनारा ले आगू के सब कट जाथे। प्रिंटर चुने ले सिरिफ पूर्वावलोकन बदलथे; हर प्रिंटर के कागज प्रिंटर म तय होथे।
+virtual_width_mm	आभासी चौड़ाई (mm)
+virtual_length_mm	आभासी लंबाई (mm)
+reported_width_mm	बताय गे चौड़ाई (mm)
+reported_length_mm	बताय गे लंबाई (mm)
+reported_paper	बताय गे हे: {paper}
+virtual_paper	आभासी: {paper}
+printer_paper_help	बताय गे ओ कागज आय जेमा ए प्रिंटर के ड्राइवर सेट हे; ऐप ओला सिरिफ पढ़थे, अउ “नइ लागू” के मतलब हे कि पूछे बर कोनो ड्राइवर नइ हे। आभासी ओ कागज आय जेला तुमन कहिथव कि प्रिंटर म सहीच म लगे हे, mm म; खाली लंबाई के मतलब रोल आय। प्रिंटर अपन कागज म छापथे; आभासी कागज ऐप ला बताथे कि ओमा कतका असली कागज हे, पूर्वावलोकन, पन्ना के लंबाई अउ पर्ची के जगा बर। प्रिंटर खोजें खाली आभासी कागज ला भर देथे अउ तुंहर सेट करे ला कभू नइ बदलय।
+preview_help	ए पर्ची जइसे खाल्हे चुने गे प्रिंटर म छपथे, ओकर आभासी कागज म असली नाप म। सफेद जगा म छपथे, धूसर कागज तक प्रिंटर नइ पहुँचय, अउ फीका सियाही कट जाथे। नौ ठन खाना कागज आय: जिहाँ पर्ची बइठना चाही उहाँ टैप करव। लंबा पर्ची अउ पन्ना म जाथे। प्रिंटर चुने ले सिरिफ पूर्वावलोकन बदलथे।
 job_layout	लेआउट
 job_delivery	काम कइसन भेजा जाता हे
 job_delivery_help	OS दस्तावेज़, कच्चे बाइट या ESC/POS। बिल अउ रसोई टिकट दोनों अपना-अपना रखते हें। कोनो भी काम उस किसी भी प्रिंटर पर जा सकता हे जिसे खोजें ने सहेजा हे।
@@ -1040,7 +1064,7 @@ book_kind_today	आज की बही
 book_kind_month	इस महीने की बही
 book_kind_aging	बकाया / डेबिट-क्रेडिट
 book_kind_balance	बैलेवस शीट
-order_help	खुला ऑर्डर चुनव, या टेबल चुनव अउ नवा शुरू करव। तैयार वस्तुओं पर टैप करव, KOT भेजव, एक या अधिक वस्तुओं का बिल बनाएँ, बिल बाँटें, अउ भुगतान निपटाएँ।
+order_help	जोड़े बर आइटम म टैप करव।
 floor_help	प्रत्येक मेज़ दिखाती हे कि मेहमान बैठे हें या नइ, उनका खुला बिल का हे, अउ अगली सेवा किसे चाही।
 kitchen_help	प्रति वैरिएंट या प्रति आइटम तैयार मात्रा ट्रैक करव — जैसा चाहें KOT म दर्ज करव।
 kitchen_empty	अभी खुला कुछु नइ।
@@ -1266,8 +1290,8 @@ taxable_value	करयोग्य मूल्य
 gst_inside_price_note	({tax} शामिल)
 start_with_template	हमारे मेनू टेम्पलेट से शुरू करव
 template_heading	हमारा मेनू टेम्पलेट
-template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
-template_download_shelf	Download photo shelf
+template_need_download	व्यंजन मन के सार्वजनिक फ़ोटो शेल्फ़ (~1,459 व्यंजन) डाउनलोड करव, फेर जेन नाम नइ हे ओला अपन मेनू म आयात करव।
+template_download_shelf	फ़ोटो शेल्फ़ डाउनलोड करव
 template_info	{c} श्रेणियाँ अउ {d} व्यंजन फोटो सहित, जोड़ने ला तैयार। कीमत ₹0 से — बाद म अपनी कीमत रखें।
 template_import	पूरा टेम्पलेट जोड़व
 template_confirm	{d} व्यंजन उनकी श्रेणियों सहित जोड़व? तोर मौजूदा व्यंजन जैसे हें वैसे रहवगे।

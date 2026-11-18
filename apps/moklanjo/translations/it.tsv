@@ -158,8 +158,8 @@ ok	OK
 this_shop	Modalità server
 extra_till	Modalità client
 off	No
-server	Server
-client	Client
+server	Modalità server
+client	Modalità client
 language_currency	Lingua e valuta
 language	Lingua
 choose_language	Scegli la lingua
@@ -192,7 +192,7 @@ snack_secs_save	Salva durata avvisi
 snack_secs_saved	Durata avvisi salvata — {n} secondi
 snack_secs_bad	Inserisci i secondi come numero (3–60)
 cancelled	Annullato
-cancelling	Cancelling…
+cancelling	Cancellingâ¦
 cancel	Annulla
 opening_client	Apertura cliente…
 preparing_desk	Preparazione bancone…
@@ -495,19 +495,24 @@ printers_heading	Stampanti di questo dispositivo
 printers_help	Aggiungi ogni stampante una volta, poi scegli dove stampano le ricevute e le etichette AWB — si prova la prima dell'elenco; se fallisce, la successiva. Percorso vuoto = non stampare quella funzione. Destinazione vuota (predefinita), nome di sistema o indirizzo di rete (es. 192.168.1.50). Ogni dispositivo tiene le sue stampanti.
 job_width	Larghezza contenuto (mm)
 job_width_ph	Oppure scrivi una larghezza, 40–210 mm
-job_layout	Layout
+job_layout	Pianta
 job_delivery	Come viene inviato il lavoro
 job_size	Dimensione carattere
 job_size_ph	es. 18, 20, 26…
 test_receipt_format	Prova ricevuta
 test_label_format	Prova etichetta
-paper_heading	Carta
+paper_heading	Carta virtuale
 paper_size	{w} × {h} mm
 paper_roll	rotolo da {w} mm
 paper_not_set	carta non ancora nota
-paper_length_mm	Lunghezza (mm)
-printer_paper_help	La carta di questa stampante in mm. Una Lunghezza vuota è un rotolo: ogni scontrino è lungo quanto il suo contenuto. Trova stampanti riempie la carta vuota dal driver della stampante (un rotolo da 80 mm quando non sa dirlo) e non cambia mai una carta già impostata.
-preview_help	Questo scontrino sulla carta della stampante scelta sotto, come vi si stampa: a grandezza reale dall'angolo in alto a sinistra che la stampante raggiunge (grigio: bordi che non raggiunge), uno scontrino lungo su più fogli, tutto oltre il bordo della carta viene tagliato. Scegliere una stampante cambia solo l'anteprima; la carta di ogni stampante si imposta in Stampanti.
+virtual_width_mm	Larghezza virtuale (mm)
+virtual_length_mm	Lunghezza virtuale (mm)
+reported_width_mm	Larghezza dichiarata (mm)
+reported_length_mm	Lunghezza dichiarata (mm)
+reported_paper	Dichiarata: {paper}
+virtual_paper	Virtuale: {paper}
+printer_paper_help	Dichiarata è la carta su cui è impostato il driver di questa stampante; l'app la legge soltanto, e N/D significa che non c'è un driver a cui chiedere. Virtuale è la carta che tu dici essere davvero nella stampante, in mm; una lunghezza vuota è un rotolo. La stampante stampa sulla propria carta; la carta virtuale dice all'app quanta di essa è carta reale, per l'anteprima, la lunghezza della pagina e la posizione dello scontrino. Trova stampanti compila una carta virtuale vuota e non cambia mai quella che hai impostato tu.
+preview_help	Questo scontrino come viene stampato sulla stampante scelta qui sotto, a grandezza reale sulla sua carta virtuale. Il bianco è dove stampa, la carta grigia è fuori dalla portata della stampante e l'inchiostro sbiadito viene tagliato. I nove riquadri sono la carta: tocca dove deve stare lo scontrino. Uno scontrino lungo prosegue su altre pagine. Scegliere una stampante cambia solo l'anteprima.
 slip_col_width	Larghezza (mm)
 no_printer_assigned	Nessuna stampante
 printer_target_default	stampante predefinita
@@ -643,11 +648,11 @@ day_close_help	Registrare una chiusura giorno salva questo riepilogo (e la diffe
 expenses_word	Spese
 feature_access_help	Accesso alle funzioni del personale scelto (tocca dopo l'aggiunta)
 footer_local	SQLite locale · Gratis per sempre · Zero cloud
-fresh_book_moklanjo	Stampanti
+fresh_book_moklanjo	Da zero = catalogo vuoto (aggiungi gli articoli più tardi). Libro = scrivi sotto le scorte iniziali e chi ti deve.
 fresh_selected	Fresh selezionato — il catalogo resta vuoto. Tocca Done quando sei pronto.
 gross_word	Lordo
 how_start	Come vuoi iniziare?
-later_country_pack	Stampanti
+later_country_pack	Più tardi: Impostazioni → applica il pacchetto paese per le etichette di tassa e pagamento.
 local_badge	LOCALE
 measures_help_moklanjo	Come si misurano i pacchi al banco. Scrivi dimensioni e peso nelle unità che usi — standard (cm, m, in, ft · kg, g, lb, oz) o la tua unità legata a cm / kg sopra (direttamente o tramite altre unità). I libri registrano sempre kg. Lascia un campo vuoto per mantenerlo.
 mix_type_hint_moklanjo	Scrivi quanto in ciascuno (contanti / UPI / carta / credito). Deve eguagliare la fattura. Il credito richiede un cliente sopra.

@@ -101,6 +101,19 @@ bill_item_col_sep	Riscos das colunas
 slip_columns	Colunas
 slip_col_header	Cabeçalho
 bill_line_logo	Logotipo
+bill_line_shop	Loja
+bill_line_address	Endereço
+bill_line_fssai	FSSAI
+bill_line_title	Título
+bill_line_customer	Cliente
+bill_line_bill_no	N.º da conta
+bill_line_time	Hora
+bill_line_cashier	Caixa
+bill_line_table	Mesa
+bill_line_items	Itens
+bill_line_total	Total
+bill_line_footer	Rodapé
+bill_line_upi	UPI
 bill_logo_picture	Imagem
 bill_logo_choose	Escolher imagem
 bill_logo_remove	Remover imagem
@@ -128,6 +141,12 @@ bill_item_piece_off	Não
 bill_total_qty	Qtd total
 bill_total_subtotal	Subtotal
 bill_total_grand	Total
+bill_total_number_under	Número sob
+bill_total_caption_under	Rótulo sob
+bill_total_own_line	Linha própria
+bill_total_caption_with	Com o número
+bill_total_caption_none	Sem rótulo
+bill_total_place_help	Linha própria imprime este total sozinho. Sob uma coluna, o seu número é impresso nessa coluna de artigos, com o tamanho e a espessura desta linha; os totais partilham uma fila até uma coluna ficar ocupada, e então começa uma nova fila. O rótulo vai com o número, sob outra coluna, ou é omitido. As linhas de imposto, serviço, arredondamento e pagamento seguem Subtotal.
 reprint_incl	Na impressão
 reprint_skip	Excluir
 reprint_skip_meta	Fora da reimpressão
@@ -178,20 +197,20 @@ snack_secs_ph	Segundos (3–60, predefinição 10)
 snack_secs_save	Guardar tempo dos avisos
 snack_secs_saved	Tempo dos avisos guardado — {n} segundos
 settings_sec_whatsapp	WhatsApp
-whatsapp_cloud_help	Use your own Meta WhatsApp Cloud API. Create a System User token with whatsapp_business_messaging (temporary dashboard tokens expire). Credentials stay on this Server only — never on extra tills. Accepted means Meta took the request, not that the guest received it.
-whatsapp_phone_id_ph	Phone Number ID
-whatsapp_token_ph	Access Token (leave blank to keep)
-whatsapp_template_ph	Bill template name (optional)
-whatsapp_template_lang_ph	Template language (e.g. en)
-whatsapp_enable	Enable
+whatsapp_cloud_help	Use a sua própria API Meta WhatsApp Cloud. Crie um token de System User com whatsapp_business_messaging (os tokens temporários do painel expiram). As credenciais ficam apenas neste Servidor — nunca nas caixas extra. «Aceite» significa que a Meta recebeu o pedido, não que o cliente o recebeu.
+whatsapp_phone_id_ph	ID do número de telefone
+whatsapp_token_ph	Token de acesso (deixe em branco para manter)
+whatsapp_template_ph	Nome do modelo de conta (opcional)
+whatsapp_template_lang_ph	Idioma do modelo (p. ex. en)
+whatsapp_enable	Ativar
 whatsapp_disable	Off
-whatsapp_save	Save WhatsApp
-whatsapp_test	Test connection
-whatsapp_disconnect	Disconnect
-whatsapp_send_bill	Send via WhatsApp
+whatsapp_save	Guardar WhatsApp
+whatsapp_test	Testar ligação
+whatsapp_disconnect	Desligar
+whatsapp_send_bill	Enviar por WhatsApp
 whatsapp_consent	WhatsApp OK
-whatsapp_consent_help	Guest agreed to receive WhatsApp messages. A phone number alone is not consent.
-whatsapp_server_only	Configure WhatsApp on the shop Server device
+whatsapp_consent_help	O cliente aceitou receber mensagens do WhatsApp. Um número de telefone, por si só, não é consentimento.
+whatsapp_server_only	Configure o WhatsApp no dispositivo Servidor da loja
 settings_sec_backup	Backup e restauração
 settings_sec_diag	Diagnóstico
 settings_sec_privacy	Privacidade
@@ -637,7 +656,7 @@ choose_device_use	Escolha como este dispositivo é usado.
 paired_note	Emparelhado. Desbloqueie para vender, ou Atualizar para trazer o mais recente da loja.
 last_update_at	Última atualização da loja: {time}.
 pair_intro	Encontre o servidor ou digite o endereço e o código de emparelhamento.
-pair_resume_hint	Already paired — enter your shop PIN, or Forget this shop to pair another.
+pair_resume_hint	Já emparelhado — introduza o PIN da sua loja, ou toque em «Esquecer esta loja» para emparelhar outra.
 queue_waiting	À espera de chegar à loja ({n}):
 queue_tries	{n} tentativas · última resposta: {e}
 save_backup_copy	Guardar uma cópia de segurança…
@@ -656,7 +675,7 @@ printers_pool_empty	(nenhuma ainda — adicione abaixo)
 printers_routes_help	Escolha um local e depois Selecionar impressora. Marque Nome (KOT), (Standard Portrait) ou (Standard Landscape). ↑↓ ordem (o primeiro é prioridade). Desmarque para remover. Toque Done.
 printer_assign_dd	Escolher impressora para {place}
 printer_assign_pick	Selecionar impressora real
-printer_profile_heading	Layout
+printer_profile_heading	Planta
 printer_send_heading	Entrega
 vp_delivery_heading	Entrega
 vp_delivery_help	Como esta impressora virtual envia trabalhos — documento do SO, bytes brutos ou ESC/POS. O conteúdo do ticket (tamanho, quebra, margens) é decidido pelo formato de conta / KOT, não aqui.
@@ -754,14 +773,19 @@ station_vps_dd	Impressoras desta estação
 station_vps_dd_n	{n} impressora(s) · toque para mudar
 bill_printers_dd	Impressoras para a conta
 bill_printers_dd_n	{n} impressora(s) para a conta · toque para alterar
-paper_heading	Papel
+paper_heading	Papel virtual
 paper_size	{w} × {h} mm
 paper_roll	rolo de {w} mm
 paper_not_set	papel ainda desconhecido
-paper_length_mm	Comprimento (mm)
-printer_paper_help	O papel desta impressora em mm. Um Comprimento vazio é um rolo: cada recibo tem o comprimento do seu conteúdo. Procurar impressoras preenche o papel vazio pelo driver da impressora (um rolo de 80 mm quando ele não sabe dizer) e nunca altera um papel já definido.
-preview_help	Este recibo no papel da impressora escolhida abaixo, tal como é impresso nela: em tamanho real a partir do canto superior esquerdo que a impressora alcança (cinza: margens que não alcança), um recibo longo em mais folhas, tudo além da borda do papel é cortado. Escolher uma impressora só altera a pré-visualização; o papel de cada impressora define-se em Impressoras.
-job_layout	Layout
+virtual_width_mm	Largura virtual (mm)
+virtual_length_mm	Comprimento virtual (mm)
+reported_width_mm	Largura informada (mm)
+reported_length_mm	Comprimento informado (mm)
+reported_paper	Informado: {paper}
+virtual_paper	Virtual: {paper}
+printer_paper_help	Informado é o papel para o qual o driver desta impressora está definido; a app apenas o lê, e N/D significa que não há driver a quem perguntar. Virtual é o papel que você diz estar realmente na impressora, em mm; um comprimento vazio é um rolo. A impressora imprime no seu próprio papel; o papel virtual diz à app quanto dele é papel real, para a pré-visualização, o comprimento da página e a posição do recibo. Procurar impressoras preenche um papel virtual vazio e nunca altera um que você definiu.
+preview_help	Este recibo tal como é impresso na impressora escolhida abaixo, em tamanho real no papel virtual dela. Branco é onde imprime, o papel cinza fica fora do alcance da impressora, e a tinta esbatida é cortada. Os nove quadrados são o papel: toque onde o recibo deve ficar. Um recibo longo continua em mais páginas. Escolher uma impressora só altera a pré-visualização.
+job_layout	Planta
 job_delivery	Como o trabalho é enviado
 job_delivery_help	Documento do sistema operacional, bytes brutos ou ESC/POS. A conta e o ticket da cozinha mantêm os seus próprios. Qualquer um dos trabalhos pode ir para qualquer impressora encontrada pelo Find.
 station_vp_attached	Impressora anexada
@@ -1040,7 +1064,7 @@ book_kind_today	Livro de hoje
 book_kind_month	Livro deste mês
 book_kind_aging	Pendente / débito-crédito
 book_kind_balance	Balanço patrimonial
-order_help	Escolha um pedido aberto ou uma mesa para começar um novo. Toque nos itens prontos, envie o KOT, fature um ou mais itens, divida a conta e receba.
+order_help	Toque num artigo para o adicionar.
 floor_help	Cada mesa mostra se há clientes sentados, sua conta aberta e quem precisa de atendimento.
 kitchen_help	Acompanhe o pronto por variante ou por item — registre no KOT como quiser.
 kitchen_empty	Nada aberto agora.
@@ -1238,7 +1262,7 @@ on_your_menu	No seu cardápio
 edit	Editar
 schemes	Ofertas
 schemes_help	Compre X ganhe Y — ao fechar. Ex. Buy 2 Thali get 1 Chaas
-scheme_bogo_ph	Buy 2 Thali get 1 Chaas
+scheme_bogo_ph	Compre 2 Thali, leve 1 Chaas
 add_scheme	Adicionar BOGO
 schedule_ph	Horário / happy hour — Mon-Fri 07:00-11:00 ou HappyHour 17:00-19:00=150
 upi_qr	UPI QR
@@ -1266,8 +1290,8 @@ taxable_value	Valor tributável
 gst_inside_price_note	({tax} incluído)
 start_with_template	Começar com o nosso modelo de cardápio
 template_heading	Nosso modelo de cardápio
-template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
-template_download_shelf	Download photo shelf
+template_need_download	Transfira a estante pública de fotos de pratos (~1459 pratos) e depois importe para o seu menu os nomes em falta.
+template_download_shelf	Transferir estante de fotos
 template_info	{c} categorias e {d} pratos com fotos, prontos. Preço inicial ₹0 — defina o seu depois.
 template_import	Importar modelo completo
 template_confirm	Adicionar {d} pratos com as categorias? Os que já tem ficam como estão.

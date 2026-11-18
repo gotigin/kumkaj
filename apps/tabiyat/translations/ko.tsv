@@ -79,13 +79,19 @@ bill_item_amount	금액
 bill_item_note	Rx/판매 노트
 bill_item_col_sep	열 구분선
 slip_col_width	너비 (mm)
-paper_heading	용지
+paper_heading	가상 용지
 paper_size	{w} × {h} mm
 paper_roll	{w}mm 롤
 paper_not_set	용지를 아직 모름
-paper_length_mm	길이 (mm)
-printer_paper_help	이 프린터의 용지(mm). 길이가 비어 있으면 롤이며 각 전표는 내용만큼 깁니다. 프린터 찾기는 빈 용지를 프린터 드라이버에서 채우고(알 수 없으면 80mm 롤) 이미 정한 용지는 절대 바꾸지 않습니다.
-preview_help	아래에서 고른 프린터의 용지에 이 전표가 그곳에서 인쇄되는 그대로 보입니다. 프린터가 닿는 왼쪽 위에서부터 실제 크기로(회색: 닿지 않는 가장자리), 긴 전표는 여러 장에, 용지 가장자리를 넘는 부분은 잘립니다. 프린터를 고르면 미리보기만 바뀝니다. 각 프린터의 용지는 프린터에서 정합니다.
+na	없음
+virtual_width_mm	가상 너비 (mm)
+virtual_length_mm	가상 길이 (mm)
+reported_width_mm	보고된 너비 (mm)
+reported_length_mm	보고된 길이 (mm)
+reported_paper	보고됨: {paper}
+virtual_paper	가상: {paper}
+printer_paper_help	보고됨은 이 프린터의 드라이버에 설정된 용지입니다. 앱은 이를 읽기만 하며, “없음”은(는) 물어볼 드라이버가 없다는 뜻입니다. 가상은 프린터에 실제로 들어 있다고 직접 지정하는 용지이며 단위는 mm입니다. 길이를 비워 두면 롤 용지입니다. 프린터는 자기 용지에 인쇄합니다. 가상 용지는 그중 어디까지가 실제 종이인지 앱에 알려 주며, 미리보기, 페이지 길이, 전표 위치에 쓰입니다. 프린터 찾기은(는) 비어 있는 가상 용지를 채우고, 직접 설정한 용지는 절대 바꾸지 않습니다.
+preview_help	이 전표가 아래에서 선택한 프린터로 인쇄되는 모습 그대로, 그 가상 용지 위에 실제 크기로 표시됩니다. 흰색은 인쇄되는 곳이고, 회색 종이는 프린터가 닿지 않는 곳이며, 흐린 잉크는 잘려 나갑니다. 아홉 칸이 용지입니다. 전표가 놓일 자리를 누르세요. 긴 전표는 다음 페이지로 이어집니다. 프린터를 선택하면 미리보기만 바뀝니다.
 slip_col_start	시작 여백 (px)
 slip_col_end	끝 여백 (px)
 slip_columns_help	각 열의 너비에는 시작 여백과 끝 여백이 포함됩니다. 텍스트는 자기 열 안에서 줄 바꿈되고, 내용 너비를 넘는 부분은 종이와 미리보기 모두에서 잘립니다.
@@ -100,6 +106,12 @@ bill_item_piece_off	끄기
 bill_total_qty	총 수량
 bill_total_subtotal	소계
 bill_total_grand	합계
+bill_total_number_under	숫자를 둘 열
+bill_total_caption_under	라벨을 둘 열
+bill_total_own_line	단독 줄
+bill_total_caption_with	숫자와 함께
+bill_total_caption_none	라벨 없음
+bill_total_place_help	‘단독 줄’은(는) 이 합계를 단독으로 인쇄합니다. 열 아래에 두면 숫자가 해당 품목 열에 이 줄의 크기와 굵기로 인쇄됩니다. 합계들은 열이 찰 때까지 한 행을 함께 쓰고, 차면 새 행이 시작됩니다. 라벨은 숫자와 함께 두거나 다른 열 아래에 두거나 생략할 수 있습니다. 세금, 봉사료, 반올림, 결제 줄은 ‘소계’을(를) 따릅니다.
 kot_unassigned	할당되지 않음
 settings_hub_help	한 번에 한 영역만 엽니다 — 스크롤은 줄고 선택은 분명해집니다.
 settings_sec_language	언어와 통화
@@ -563,11 +575,11 @@ currency_use_help	스크롤하여 지원되는 통화에서 사용을 누르세�
 day_close_help	마감을 기록하면 이 요약(실사한 경우 서랍 차이 포함)이 감사 로그에 저장됩니다. 판매가 중단되지는 않습니다.
 expenses_word	경비
 feature_access_help	선택한 직원의 기능 접근(추가 후 누르기)
-fresh_book_tabiyat	프린터
+fresh_book_tabiyat	새로 = 빈 카탈로그(항목은 나중에 추가). 장부 = 아래에 기초 재고와 누가 빚졌는지 입력.
 fresh_selected	Fresh 선택됨 — 카탈로그가 비어 있습니다. 준비되면 Done을 누르세요.
 gross_word	총액
 how_start	어떻게 시작하시겠어요?
-later_country_pack	프린터
+later_country_pack	나중에: 설정 → 세금과 결제 이름에 국가 팩을 적용하세요.
 local_badge	로컬
 mix_type_hint_tabiyat	필요하면 현금/UPI/카드/외상으로 나누세요. 외상은 위에 고객이 필요합니다.
 money_in_sales	들어온 돈(판매)
@@ -688,7 +700,7 @@ book_kind_today	오늘 장부
 book_kind_month	이번 달 장부
 book_kind_aging	미결제 / 차변-대변
 book_kind_balance	대차대조표
-order_help	열린 주문을 선택하거나 테이블을 선택해 새로 시작하세요. 준비된 항목을 탭하고 KOT를 보내고, 하나 이상의 항목을 청구하고, 계산서를 나눠 결제를 완료하세요.
+order_help	항목을 눌러 추가하세요.
 categories_help	카테고리는 요리가 메뉴의 어느 부분에 속하는지 보여줍니다 — 예: 스낵, 메인 코스, 비리야니. 원하는 방식으로 카테고리를 만드세요: 제안하는 이름을 선택하거나, 이름을 바꾸거나, 직접 추가하세요.
 dish_search_ph	이름, 소금 또는 바코드를 검색하세요…
 sizes_as_items_ph	사이즈를 별도 품목으로 (선택) — 하프=120, 풀=200
@@ -735,6 +747,20 @@ fssai_ph	의약품 허가번호 (선택 사항 - 귀하의 문구)
 bill_footer_ph	하단 문구 (예: 감사합니다, 또 오세요)
 kot_field_on	표시
 kot_field_off	숨김
+kot_field_show	표시
+kot_field_hide	숨기기
+bill_line_shop	매장
+bill_line_address	주소
+bill_line_fssai	FSSAI
+bill_line_title	제목
+bill_line_customer	고객
+bill_line_bill_no	계산서 번호
+bill_line_time	시간
+bill_line_cashier	캐셔
+bill_line_items	항목
+bill_line_total	합계
+bill_line_footer	하단 문구
+bill_line_upi	UPI
 kot_weight_light	얇게
 bill_kot_panel_help	청구서 레이아웃 및 내용 너비. 계산원은 청구서를 발행하거나 정산한 사람입니다. 전체 판매 이야기는 장부에 남아 있습니다.
 std_size_ph	예: 18, 20, 26…
@@ -842,10 +868,10 @@ lane_declared_label	세금 계산서
 lane_owner_label	현금 메모
 money_lane_bill	영수증: {lane}
 
-removing	Removing…
-removed	Removed
-updating_order	Updating…
-order_updated	Order updated
+removing	제거 중…
+removed	제거됨
+updating_order	업데이트 중…
+order_updated	주문이 업데이트되었습니다
 sel_copy	복사
 sel_select_all	모두 선택
 sel_copied	복사됨

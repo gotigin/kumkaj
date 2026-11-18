@@ -1270,6 +1270,19 @@ script_mod! {
         }
     }
 
+    // One square of the 3 × 3 "where on the paper" grid under a preview's
+    // printer (owner, 2026-11-17): the chips' own look, idle and picked.
+    let PlaceCell = SegBtn{
+        width: 34 height: 26
+        padding: Inset{left: 0. right: 0. top: 0. bottom: 0.}
+        text: ""
+    }
+    let PlaceCellOn = SegBtnOn{
+        width: 34 height: 26
+        padding: Inset{left: 0. right: 0. top: 0. bottom: 0.}
+        text: ""
+    }
+
     // Booking desk page tabs (Parcel | Counter) — flat label + underline, not
     // bordered pills / radio chips (those are SegBtn for Domestic|International).
     let DeskTab = Button{
@@ -3482,6 +3495,59 @@ script_mod! {
                         margin: Inset{right: 8.}
                         font_color: #x3A4554
                         font_size: 13.
+                    }
+                }
+                // A value too wide to sit beside its label: the label
+                // above, the value under it, both wrapping at the row's
+                // width. Makepad has no flex-shrink — the Fit value kept its
+                // width and the Fill label got what was left, a letter per
+                // line (`kv_stacks` picks this row; DEV.md bug 7j).
+                KvStack := View{
+                    width: Fill height: Fit
+                    padding: Inset{top: 5. bottom: 5.}
+                    flow: Down spacing: 2
+                    k := WrapLabel{
+                        body: ""
+                        margin: Inset{right: 8.}
+                        font_color: #x3A4554
+                        font_size: 13.
+                    }
+                    vrow := View{
+                        width: Fill height: Fit
+                        flow: Right spacing: 8
+                        align: Align{y: 0.5}
+                        v := WrapLabel{
+                            width: Fill
+                            body: ""
+                            margin: Inset{right: 8.}
+                            font_color: #x0B1220
+                            font_size: 14.
+                        }
+                        eye := EyeIconBtn{visible: false}
+                    }
+                }
+                KvStackRtl := View{
+                    width: Fill height: Fit
+                    padding: Inset{top: 5. bottom: 5.}
+                    flow: Down spacing: 2
+                    k := WrapLabel{
+                        body: ""
+                        margin: Inset{right: 8.}
+                        font_color: #x3A4554
+                        font_size: 13.
+                    }
+                    vrow := View{
+                        width: Fill height: Fit
+                        flow: Right spacing: 8
+                        align: Align{y: 0.5}
+                        eye := EyeIconBtn{visible: false}
+                        v := WrapLabel{
+                            width: Fill
+                            body: ""
+                            margin: Inset{right: 8.}
+                            font_color: #x0B1220
+                            font_size: 14.
+                        }
                     }
                 }
                 Line := View{
@@ -6609,16 +6675,28 @@ script_mod! {
                                         draw_bg.border_size: 1.5
                                         draw_bg.border_color: #x072058
                                         View{width: Fill height: Fit flow: Right spacing: 0 align: Align{y: 0.5}
-                                            h_printer_paper := WrapLabel{width: Fit body: "Paper" font_color: #x0B1220 font_size: 14.}
+                                            h_printer_paper := WrapLabel{width: Fit body: "Virtual paper" font_color: #x0B1220 font_size: 14.}
                                             printer_paper_help := InfoHelp{tip: " "}
                                         }
-                                        View{width: Fill height: Fit flow: Right spacing: 8
-                                            View{width: Fill height: Fit flow: Down spacing: 4
-                                                h_printer_paper_w := WrapLabel{width: Fill body: "Width (mm)" font_color: #x0B1220 font_size: 13.}
-                                                printer_paper_w_input := FieldInput{width: Fill empty_text: ""}
+                                        // Row by row — what the printer's driver reports (read-only; "N/A"
+                                        // when nothing reported it), then the virtual paper the owner sets
+                                        // (owner, 2026-11-17) — so the two boxes stay level whatever the
+                                        // labels' lengths, in any language at any width.
+                                        View{width: Fill height: Fit flow: Down spacing: 4
+                                            View{width: Fill height: Fit flow: Right spacing: 8
+                                                h_printer_reported_w := WrapLabel{width: Fill body: "Reported width (mm)" font_color: #x0B1220 font_size: 13.}
+                                                h_printer_reported_l := WrapLabel{width: Fill body: "Reported length (mm)" font_color: #x0B1220 font_size: 13.}
                                             }
-                                            View{width: Fill height: Fit flow: Down spacing: 4
-                                                h_printer_paper_l := WrapLabel{width: Fill body: "Length (mm)" font_color: #x0B1220 font_size: 13.}
+                                            View{width: Fill height: Fit flow: Right spacing: 8
+                                                printer_reported_w := WrapLabel{width: Fill body: "N/A" font_color: #x0B1220 font_size: 14.}
+                                                printer_reported_l := WrapLabel{width: Fill body: "N/A" font_color: #x0B1220 font_size: 14.}
+                                            }
+                                            View{width: Fill height: Fit flow: Right spacing: 8
+                                                h_printer_paper_w := WrapLabel{width: Fill body: "Virtual width (mm)" font_color: #x0B1220 font_size: 13.}
+                                                h_printer_paper_l := WrapLabel{width: Fill body: "Virtual length (mm)" font_color: #x0B1220 font_size: 13.}
+                                            }
+                                            View{width: Fill height: Fit flow: Right spacing: 8
+                                                printer_paper_w_input := FieldInput{width: Fill empty_text: ""}
                                                 printer_paper_l_input := FieldInput{width: Fill empty_text: ""}
                                             }
                                         }
@@ -6745,6 +6823,57 @@ script_mod! {
                                         padding: Inset{left: 0. right: 0. top: 0. bottom: 0.}
                                     }
                                     job_preview_paper_suggest := mod.widgets.SuggestList{field: "job_preview_paper"}
+                                    // The picked printer's two papers, read-only: what its
+                                    // driver reports, and the virtual paper the preview draws.
+                                    job_preview_reported := WrapLabel{width: Fill body: " " font_color: #x0B1220 font_size: 12.}
+                                    job_preview_virtual := WrapLabel{width: Fill body: " " font_color: #x0B1220 font_size: 12.}
+                                    // Where the job sits on a paper bigger than it: a picture of
+                                    // the paper in nine squares (owner, 2026-11-17); the Preview ℹ
+                                    // explains them (docs/PRINTER.md § Paper and preview).
+                                    job_place_grid := View{width: Fit height: Fit flow: Down spacing: 4 margin: Inset{left: 0. right: 0. top: 2. bottom: 8.}
+                                        View{width: Fit height: Fit flow: Right spacing: 4
+                                            View{width: Fit height: Fit flow: Overlay
+                                                job_place_0_0 := PlaceCell{}
+                                                job_place_0_0_on := PlaceCellOn{visible: false}
+                                            }
+                                            View{width: Fit height: Fit flow: Overlay
+                                                job_place_0_1 := PlaceCell{}
+                                                job_place_0_1_on := PlaceCellOn{visible: false}
+                                            }
+                                            View{width: Fit height: Fit flow: Overlay
+                                                job_place_0_2 := PlaceCell{}
+                                                job_place_0_2_on := PlaceCellOn{visible: false}
+                                            }
+                                        }
+                                        View{width: Fit height: Fit flow: Right spacing: 4
+                                            View{width: Fit height: Fit flow: Overlay
+                                                job_place_1_0 := PlaceCell{}
+                                                job_place_1_0_on := PlaceCellOn{visible: false}
+                                            }
+                                            View{width: Fit height: Fit flow: Overlay
+                                                job_place_1_1 := PlaceCell{}
+                                                job_place_1_1_on := PlaceCellOn{visible: false}
+                                            }
+                                            View{width: Fit height: Fit flow: Overlay
+                                                job_place_1_2 := PlaceCell{}
+                                                job_place_1_2_on := PlaceCellOn{visible: false}
+                                            }
+                                        }
+                                        View{width: Fit height: Fit flow: Right spacing: 4
+                                            View{width: Fit height: Fit flow: Overlay
+                                                job_place_2_0 := PlaceCell{}
+                                                job_place_2_0_on := PlaceCellOn{visible: false}
+                                            }
+                                            View{width: Fit height: Fit flow: Overlay
+                                                job_place_2_1 := PlaceCell{}
+                                                job_place_2_1_on := PlaceCellOn{visible: false}
+                                            }
+                                            View{width: Fit height: Fit flow: Overlay
+                                                job_place_2_2 := PlaceCell{}
+                                                job_place_2_2_on := PlaceCellOn{visible: false}
+                                            }
+                                        }
+                                    }
                                     job_preview_card := View{
                                         width: Fill height: Fit
                                         job_preview := mod.widgets.SlipPicture{}

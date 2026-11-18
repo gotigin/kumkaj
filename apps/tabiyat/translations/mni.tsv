@@ -79,13 +79,19 @@ bill_item_amount	ꯁꯦꯟ
 bill_item_note	Rx / ꯌꯣꯟꯕꯒꯤ ꯅꯣꯠ
 bill_item_col_sep	ꯀꯣꯂꯝꯒꯤ ꯂꯥꯏꯟ
 slip_col_width	ꯄꯥꯛ (mm)
-paper_heading	ꯆꯦ
+paper_heading	ꯚꯔꯆꯨꯑꯦꯜ ꯆꯦ
 paper_size	{w} × {h} mm
 paper_roll	{w} mm ꯔꯣꯜ
 paper_not_set	ꯆꯦ ꯑꯗꯨ ꯍꯧꯖꯤꯛ ꯐꯥꯑꯣꯕꯥ ꯈꯉꯗ꯭ꯔꯤ
-paper_length_mm	ꯑꯁꯥꯡꯕ (mm)
-printer_paper_help	ꯄ꯭ꯔꯤꯟꯇꯔ ꯑꯁꯤꯒꯤ ꯆꯦ mm ꯗ꯭ꯥ꯫ ꯑꯍꯥꯡꯕ ꯑꯁꯥꯡꯕ ꯑꯁꯤ ꯔꯣꯜ ꯑꯃꯅꯤ: ꯁ꯭ꯂꯤꯞ ꯈꯨꯗꯤꯡꯃꯛ ꯃꯁꯤꯒꯤ ꯃꯅꯨꯡꯗ꯭ꯥ ꯂꯩꯕ ꯃꯇꯨꯡ ꯏꯟꯅ ꯁꯥꯡꯏ꯫ ꯄ꯭ꯔꯤꯟꯇꯔ ꯊꯤꯕꯤꯌꯨ ꯅ ꯑꯍꯥꯡꯕ ꯆꯦ ꯄ꯭ꯔꯤꯟꯇꯔꯒꯤ ꯗ꯭ꯔꯥꯏꯚꯔꯗꯒꯤ ꯃꯄꯨꯡ ꯐꯥꯍꯜꯂꯤ (ꯍꯥꯌꯕ ꯉꯝꯗ꯭ꯔꯕꯗ꯭ꯥ 80 mm ꯔꯣꯜ) ꯑꯃꯁꯨꯡ ꯍꯥꯟꯅꯅ ꯁꯦꯝꯂꯕ ꯑꯗꯨ ꯀꯩꯗꯧꯉꯩꯗ꯭ꯁꯨ ꯍꯣꯡꯗꯣꯛꯇꯦ꯫
-preview_help	ꯃꯈꯥꯗ꯭ꯥ ꯈꯅꯈꯤꯕ ꯄ꯭ꯔꯤꯟꯇꯔꯒꯤ ꯆꯦꯗ꯭ꯥ ꯁ꯭ꯂꯤꯞ ꯑꯁꯤ, ꯃꯐꯝ ꯑꯗꯨꯗ꯭ꯥ ꯐꯣꯡꯗꯣꯛꯂꯤꯕ ꯃꯑꯣꯡꯗ꯭ꯥ: ꯄ꯭ꯔꯤꯟꯇꯔꯅ ꯌꯧꯕ ꯃꯊꯛꯀꯤ ꯑꯣꯏ ꯀꯣꯟꯅꯗꯒꯤ ꯑꯆꯨꯝꯕ ꯆꯥꯡꯗ꯭ꯥ (ꯃꯆꯨ ꯑꯃꯨꯕ: ꯌꯧꯗꯕ ꯃꯅꯥꯛ), ꯁꯥꯡꯕ ꯁ꯭ꯂꯤꯞ ꯂꯥꯃꯥꯏ ꯍꯦꯟꯅ ꯃꯔꯥꯡꯗ꯭ꯥ, ꯆꯦꯒꯤ ꯃꯅꯥꯛ ꯍꯦꯟꯒꯠꯂꯕ ꯄꯨꯝꯅꯃꯛ ꯀꯛꯂꯒꯅꯤ꯫ ꯄ꯭ꯔꯤꯟꯇꯔ ꯈꯅꯕꯅ ꯃꯃꯥꯡꯗ꯭ꯥ ꯌꯦꯡꯕ ꯈꯛꯇꯃꯛ ꯍꯣꯡꯗꯣꯛꯏ; ꯄ꯭ꯔꯤꯟꯇꯔ ꯈꯨꯗꯤꯡꯃꯛꯀꯤ ꯆꯦ ꯄ꯭ꯔꯤꯟꯇꯔ ꯃꯈꯥꯗ꯭ꯥ ꯁꯦꯝꯃꯤ꯫
+na	—
+virtual_width_mm	ꯚꯔꯆꯨꯑꯦꯜ ꯄꯥꯛ (mm)
+virtual_length_mm	ꯚꯔꯆꯨꯑꯦꯜ ꯑꯁꯥꯡꯕ (mm)
+reported_width_mm	ꯔꯤꯄꯣꯔꯠ ꯇꯧꯔꯕ ꯄꯥꯛ (mm)
+reported_length_mm	ꯔꯤꯄꯣꯔꯠ ꯇꯧꯔꯕ ꯑꯁꯥꯡꯕ (mm)
+reported_paper	ꯔꯤꯄꯣꯔꯠ ꯇꯧꯔꯕ: {paper}
+virtual_paper	ꯚꯔꯆꯨꯑꯦꯜ: {paper}
+printer_paper_help	ꯔꯤꯄꯣꯔꯠ ꯇꯧꯔꯕ ꯍꯥꯏꯕꯁꯤ ꯄ꯭ꯔꯤꯟꯇꯔ ꯑꯁꯤꯒꯤ ꯗ꯭ꯔꯥꯏꯚꯔꯅ ꯁꯦꯝꯂꯤꯕ ꯆꯦꯅꯤ; ꯑꯦꯞꯅ ꯃꯗꯨ ꯄꯥꯕ ꯈꯛꯇꯅꯤ, ꯑꯃꯁꯨꯡ “—” ꯍꯥꯏꯕꯁꯤ ꯍꯪꯒꯗꯕ ꯗ꯭ꯔꯥꯏꯚꯔ ꯂꯩꯇꯦ ꯍꯥꯏꯕꯅꯤ꯫ ꯚꯔꯆꯨꯑꯦꯜ ꯍꯥꯏꯕꯁꯤ ꯄ꯭ꯔꯤꯟꯇꯔꯗ꯭ꯥ ꯇꯁꯦꯡꯅ ꯂꯩ ꯍꯥꯏꯅ ꯅꯍꯥꯛꯅ ꯍꯥꯏꯕ ꯆꯦꯅꯤ, mm ꯗ꯭ꯥ; ꯑꯍꯥꯡꯕ ꯑꯁꯥꯡꯕ ꯍꯥꯏꯕꯁꯤ ꯔꯣꯜꯅꯤ꯫ ꯄ꯭ꯔꯤꯟꯇꯔꯅ ꯃꯁꯥꯒꯤ ꯆꯦꯗ꯭ꯥ ꯐꯣꯡꯏ; ꯚꯔꯆꯨꯑꯦꯜ ꯆꯦꯅ ꯃꯗꯨꯒꯤ ꯀꯌꯥ ꯑꯁꯦꯡꯕ ꯆꯦꯅꯣ ꯍꯥꯏꯕ ꯑꯦꯞꯇ꯭ꯥ ꯈꯪꯍꯟꯏ, ꯃꯃꯥꯡꯗ꯭ꯥ ꯌꯦꯡꯕ, ꯂꯥꯃꯥꯏꯒꯤ ꯑꯁꯥꯡꯕ ꯑꯃꯁꯨꯡ ꯁ꯭ꯂꯤꯞꯀꯤ ꯃꯐꯝꯒꯤꯗꯃꯛ꯫ ꯄ꯭ꯔꯤꯟꯇꯔ ꯊꯤꯕꯤꯌꯨ ꯅ ꯑꯍꯥꯡꯕ ꯚꯔꯆꯨꯑꯦꯜ ꯆꯦ ꯃꯄꯨꯡ ꯐꯥꯍꯟꯏ ꯑꯃꯁꯨꯡ ꯅꯍꯥꯛꯅ ꯁꯦꯝꯂꯕꯗꯨ ꯀꯩꯗꯧꯉꯩꯗꯁꯨ ꯍꯣꯡꯗꯣꯛꯇꯦ꯫
+preview_help	ꯁ꯭ꯂꯤꯞ ꯑꯁꯤ ꯃꯈꯥꯗ꯭ꯥ ꯈꯅꯈꯤꯕ ꯄ꯭ꯔꯤꯟꯇꯔꯗ꯭ꯥ ꯐꯣꯡꯗꯣꯛꯂꯤꯕ ꯃꯑꯣꯡꯗ꯭ꯥ, ꯃꯗꯨꯒꯤ ꯚꯔꯆꯨꯑꯦꯜ ꯆꯦꯗ꯭ꯥ ꯑꯆꯨꯝꯕ ꯆꯥꯡꯗ꯭ꯥ꯫ ꯑꯉꯧꯕ ꯑꯁꯤ ꯐꯣꯡꯕ ꯃꯐꯝꯅꯤ, ꯃꯆꯨ ꯑꯃꯨꯕ ꯆꯦꯗ꯭ꯥ ꯄ꯭ꯔꯤꯟꯇꯔꯅ ꯌꯧꯗꯦ, ꯑꯃꯁꯨꯡ ꯃꯆꯨ ꯁꯥꯗꯕ ꯏꯟꯛ ꯀꯛꯂꯤ꯫ ꯀꯣꯔꯝ ꯃꯥꯄꯜ ꯑꯁꯤ ꯆꯦꯅꯤ: ꯁ꯭ꯂꯤꯞ ꯂꯩꯒꯗꯕ ꯃꯐꯝꯗ꯭ꯥ ꯇꯦꯞ ꯇꯧꯕꯤꯌꯨ꯫ ꯁꯥꯡꯕ ꯁ꯭ꯂꯤꯞ ꯂꯥꯃꯥꯏ ꯍꯦꯟꯅ ꯃꯔꯥꯡꯗ꯭ꯥ ꯆꯠꯂꯤ꯫ ꯄ꯭ꯔꯤꯟꯇꯔ ꯈꯅꯕꯅ ꯃꯃꯥꯡꯗ꯭ꯥ ꯌꯦꯡꯕ ꯈꯛꯇꯃꯛ ꯍꯣꯡꯗꯣꯛꯏ꯫
 slip_col_start	ꯍꯧꯔꯛꯐꯝꯒꯤ ꯃꯐꯝ (px)
 slip_col_end	ꯂꯣꯏꯔꯛꯐꯝꯒꯤ ꯃꯐꯝ (px)
 slip_columns_help	ꯀꯣꯂꯝ ꯈꯨꯗꯤꯡꯃꯛꯀꯤ ꯄꯥꯛꯇꯥ ꯃꯁꯤꯒꯤ ꯍꯧꯔꯛꯐꯝ ꯑꯃꯁꯨꯡ ꯂꯣꯏꯔꯛꯐꯝꯒꯤ ꯃꯐꯝ ꯌꯥꯎꯏ꯫ ꯏꯕ ꯑꯁꯤ ꯃꯁꯥꯒꯤ ꯀꯣꯂꯝꯒꯤ ꯃꯅꯨꯡꯗꯥ ꯀꯣꯌꯁꯤꯜꯂꯤ; ꯀꯟꯇꯦꯟꯇꯀꯤ ꯄꯥꯛ ꯍꯦꯟꯒꯠꯂꯕꯥ ꯑꯗꯨ ꯆꯦ ꯑꯃꯁꯨꯡ ꯄ꯭ꯔꯤꯚ꯭ꯌꯨꯗꯥ ꯀꯀꯊꯠꯂꯤ꯫
@@ -100,6 +106,12 @@ bill_item_piece_off	ꯊꯤꯡꯕ
 bill_total_qty	ꯃꯁꯤꯡ ꯑꯄꯨꯟꯕ
 bill_total_subtotal	ꯑꯄꯨꯟꯕ ꯑꯄꯤꯛꯄ
 bill_total_grand	ꯑꯄꯨꯟꯕ ꯑꯆꯧꯕ
+bill_total_number_under	ꯃꯁꯤꯡ ꯃꯁꯤꯒꯤ ꯃꯈꯥꯗ
+bill_total_caption_under	ꯃꯤꯡ ꯃꯁꯤꯒꯤ ꯃꯈꯥꯗ
+bill_total_own_line	ꯃꯁꯥꯒꯤ ꯂꯥꯏꯟ
+bill_total_caption_with	ꯃꯁꯤꯡꯒ ꯂꯣꯏꯅꯅ
+bill_total_caption_none	ꯃꯤꯡ ꯂꯩꯇꯦ
+bill_total_place_help	“ꯃꯁꯥꯒꯤ ꯂꯥꯏꯟ” ꯅ ꯑꯄꯨꯟꯕ ꯑꯁꯤ ꯃꯊꯟꯇꯅ ꯐꯣꯡꯏ꯫ ꯀꯣꯂꯝ ꯑꯃꯒꯤ ꯃꯈꯥꯗ ꯂꯩꯔꯕꯗꯤ ꯃꯁꯤꯒꯤ ꯃꯁꯤꯡ ꯑꯗꯨ ꯄꯣꯠꯂꯝꯒꯤ ꯀꯣꯂꯝ ꯑꯗꯨꯗ, ꯂꯥꯏꯟ ꯑꯁꯤꯒꯤ ꯆꯥꯎꯕ ꯑꯃꯁꯨꯡ ꯑꯊꯥꯕꯒꯤ ꯃꯑꯣꯡꯗ ꯐꯣꯡꯏ; ꯀꯣꯂꯝ ꯑꯃ ꯊꯟꯗ꯭ꯔꯤꯐꯥꯎꯕ ꯑꯄꯨꯟꯕꯁꯤꯡꯅ ꯄꯔꯦꯡ ꯑꯃ ꯁꯔꯨꯛ ꯌꯥꯅꯩ, ꯃꯗꯨꯒꯤ ꯃꯇꯨꯡꯗ ꯑꯅꯧꯕ ꯄꯔꯦꯡ ꯍꯧꯏ꯫ ꯃꯤꯡ ꯑꯗꯨ ꯃꯁꯤꯡꯒ ꯂꯣꯏꯅꯅ, ꯑꯇꯣꯞꯄ ꯀꯣꯂꯝꯒꯤ ꯃꯈꯥꯗ ꯆꯠꯏ, ꯅꯠꯇ꯭ꯔꯒ ꯊꯥꯗꯣꯛꯏ꯫ ꯇꯦꯛꯁ, ꯁꯔꯚꯤꯁ, ꯔꯥꯎꯟꯗꯤꯡ ꯑꯃꯁꯨꯡ ꯄꯦꯃꯦꯟꯇꯀꯤ ꯂꯥꯏꯟꯁꯤꯡꯅ “ꯑꯄꯨꯟꯕ ꯑꯄꯤꯛꯄ” ꯒꯤ ꯃꯇꯨꯡ ꯏꯟꯏ꯫
 kot_unassigned	ꯊꯕꯛ ꯄꯤꯗ꯭ꯔꯤꯕ
 settings_hub_help	ꯐꯝ ꯑꯃ ꯑꯃ ꯍꯥꯡꯗꯣꯛꯎ — ꯂꯥꯟꯊꯣꯛ ꯏꯀꯥꯏ, ꯈꯟꯕ ꯃꯦꯟꯅ.
 settings_sec_language	ꯂꯣꯟ ꯑꯃꯁꯨꯡ ꯁꯦꯟꯒꯤ ꯃꯃꯤꯡ
@@ -735,6 +747,20 @@ fssai_ph	ꯍꯤꯗꯥꯛ ꯂꯥꯏꯁꯦꯟꯁ ꯅꯝꯕꯔ (ꯌꯥꯕ ꯑꯣꯏ
 bill_footer_ph	ꯃꯈꯥ ꯋꯥꯍꯩ (ꯈꯨꯗꯝ ꯊꯥꯒꯠꯆꯔꯤ, ꯍꯟꯅ ꯂꯥꯛꯎ)
 kot_field_on	ꯎꯠꯄ
 kot_field_off	ꯂꯥꯞꯄ
+kot_field_show	ꯎꯠꯂꯨ
+kot_field_hide	ꯂꯥꯞꯄꯤꯌꯨ
+bill_line_shop	ꯀꯦꯟꯐꯝ
+bill_line_address	ꯂꯩꯐꯝ
+bill_line_fssai	FSSAI
+bill_line_title	ꯃꯤꯡꯃꯛ
+bill_line_customer	ꯀꯦꯟꯅꯕ
+bill_line_bill_no	ꯕꯤꯜ ꯅꯝꯕꯔ
+bill_line_time	ꯃꯇꯝ
+bill_line_cashier	ꯁꯦꯟ ꯌꯦꯡꯕ
+bill_line_items	ꯄꯣꯠ
+bill_line_total	ꯑꯄꯨꯟꯕ
+bill_line_footer	ꯃꯈꯥ ꯋꯥꯍꯩ
+bill_line_upi	UPI
 kot_weight_light	ꯑꯉꯧꯕ
 bill_kot_panel_help	ꯕꯤꯜ ꯃꯄꯥꯟ ꯑꯃꯁꯨꯡ ꯋꯥꯐꯝ ꯑꯄꯥꯛꯄ. ꯁꯦꯟ ꯌꯦꯡꯕ ꯑꯁꯤ ꯕꯤꯜ ꯄꯤꯕ ꯅꯠꯇ꯭ꯔꯒ ꯁꯦꯝꯈꯤꯕ ꯃꯤ — ꯌꯣꯟꯕꯒꯤ ꯋꯥꯔꯤ ꯄꯨꯝꯕ ꯂꯥꯏꯔꯤꯛꯇ ꯂꯩ.
 std_size_ph	ꯈꯨꯗꯝ 18, 20, 26…
@@ -842,14 +868,14 @@ lane_declared_label	ꯀꯔꯒꯤ ꯕꯤꯜ
 lane_owner_label	ꯁꯦꯟꯒꯤ ꯋꯥꯍꯩ
 money_lane_bill	ꯕꯤꯜ: {lane}
 
-removing	Removing…
-removed	Removed
-updating_order	Updating…
-order_updated	Order updated
+removing	ꯂꯧꯊꯣꯛꯂꯤ…
+removed	ꯂꯧꯊꯣꯛꯂꯦ
+updating_order	ꯑꯄꯗꯦꯠ ꯇꯧꯔꯤ…
+order_updated	ꯑꯣꯔꯗꯔ ꯑꯄꯗꯦꯠ ꯇꯧꯔꯦ
 sel_copy	ꯀꯣꯄꯤ ꯇꯧ
 sel_select_all	ꯄꯨꯝꯅꯃꯛ ꯈꯟꯕ
 sel_copied	ꯀꯣꯄꯤ ꯇꯧꯔꯦ
-nav_loading	লোড তৌরি…
+nav_loading	ꯂꯣꯗ ꯇꯧꯔꯤ…
 printer_mode_first	ꯊꯕꯛ ꯇꯧꯕ ꯑꯍꯥꯟꯕ
 printer_mode_all	ꯄꯨꯝꯅꯃꯛꯇ ꯄ꯭ꯔꯤꯟꯇ ꯇꯧꯕꯤꯌꯨ
 slip_columns	ꯀꯣꯂꯝꯁꯤꯡ

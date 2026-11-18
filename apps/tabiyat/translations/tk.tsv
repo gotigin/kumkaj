@@ -79,13 +79,19 @@ bill_item_amount	Mukdary
 bill_item_note	Rx / satuw belligi
 bill_item_col_sep	Sütüniň düzgünleri
 slip_col_width	Ini (mm)
-paper_heading	Kagyz
+paper_heading	Wirtual kagyz
 paper_size	{w} × {h} mm
 paper_roll	{w} mm rulon
 paper_not_set	kagyz entek belli däl
-paper_length_mm	Uzynlyk (mm)
-printer_paper_help	Bu printeriň kagyzy mm-de. Boş Uzynlyk rulondyr: her çek mazmuny ýaly uzyn bolýar. Printerleri tapyň boş kagyzy printeriň draýwerinden doldurýar (aýdyp bilmese, 80 mm rulon) we eýýäm bellenen kagyzy hiç haçan üýtgetmeýär.
-preview_help	Aşakda saýlanan printeriň kagyzyndaky bu çek, ol ýerde çap edilişi ýaly: printeriň ýetýän ýokarky çep burçundan hakyky ölçegde (çal: ýetmeýän gyralary), uzyn çek has köp sahypada, kagyzyň gyrasyndan aşýan ähli zat kesilýär. Printer saýlamak diňe deslapky görnüşi üýtgedýär; her printeriň kagyzy Çap edijiler bölüminde bellenýär.
+na	N / A.
+virtual_width_mm	Wirtual ini (mm)
+virtual_length_mm	Wirtual uzynlyk (mm)
+reported_width_mm	Habar berlen ini (mm)
+reported_length_mm	Habar berlen uzynlyk (mm)
+reported_paper	Habar berlen: {paper}
+virtual_paper	Wirtual: {paper}
+printer_paper_help	Habar berlen — bu printeriň draýweriniň sazlanan kagyzy; programma ony diňe okaýar, “N / A.” bolsa soralmaly draýweriň ýokdugyny aňladýar. Wirtual — printerde hakykatdan bar diýip siziň aýdýan kagyzyňyz, mm-de; boş uzynlyk rulondyr. Printer öz kagyzyna çap edýär; wirtual kagyz programma onuň näçesiniň hakyky kagyzdygyny aýdýar: deslapky görnüş, sahypanyň uzynlygy we çegiň ýeri üçin. Printerleri tapyň boş wirtual kagyzy doldurýar we siziň bellän kagyzyňyzy hiç haçan üýtgetmeýär.
+preview_help	Bu çek aşakda saýlanan printerde çap edilişi ýaly, onuň wirtual kagyzynda hakyky ölçegde. Ak ýer — çap edilýän ýer, çal kagyza printer ýetmeýär, solgun syýa bolsa kesilýär. Dokuz inedördül — kagyz: çegiň durmaly ýerine degiň. Uzyn çek indiki sahypalara geçýär. Printer saýlamak diňe deslapky görnüşi üýtgedýär.
 slip_col_start	Başlangyç aralyk (px)
 slip_col_end	Soňky aralyk (px)
 slip_columns_help	Her sütüniň ini onuň başlangyç we soňky aralygyny öz içine alýar. Tekst öz sütüniniň içinde setirden-setire geçýär; mazmunyň ininden çykýan bölek kagyzda-da, deslapky görnüşde-de kesilýär.
@@ -100,6 +106,12 @@ bill_item_piece_off	Öçürilen
 bill_total_qty	Jemi kw
 bill_total_subtotal	Jemi
 bill_total_grand	Jemi
+bill_total_number_under	San şunuň aşagynda
+bill_total_caption_under	Bellik şunuň aşagynda
+bill_total_own_line	Öz setiri
+bill_total_caption_with	San bilen bile
+bill_total_caption_none	Belliksiz
+bill_total_place_help	Öz setiri bu jemi aýratyn çap edýär. Sütüniň aşagynda onuň sany şol haryt sütüninde, şu setiriň ölçeginde we galyňlygynda çap edilýär; bir sütün eýelenýänçä jemler bir hatary paýlaşýar, soňra täze hatar başlanýar. Bellik san bilen bile, başga sütüniň aşagynda durýar ýa-da goýberilýär. Salgyt, hyzmat, tegelemek we töleg setirleri Jemi ýerine eýerýär.
 kot_unassigned	Bellenmedik
 settings_hub_help	Bir gezekde bir meýdany açyň - az aýlamak, has düşnükli saýlaw.
 settings_sec_language	Dil we walýuta
@@ -143,7 +155,7 @@ diag_cleared	Diagnostiki ýazgylar arassalandy
 sidebar_settings	Gapdal paneli
 sidebar_settings_help	Gapdal demir ýaly nyşanlar. Tertibe salmak üçin hatar süýräň. Görkezmek ýa-da gizlemek üçin wyklýuçateli süýşüriň. Sazlamalar we gulp elmydama barda galýar.
 sidebar_always_on_short	Elmydama işlediň
-sidebar_menu_items	Menýu menýu elementleri
+sidebar_menu_items	Harytlar
 sidebar_enable_all	Hemmesini işlet
 sidebar_disable_all	Hemmesini öçüriň
 sidebar_order_saved	Gapdal paneli tertibi saklandy
@@ -156,11 +168,11 @@ nav_settings	Sazlamalar
 nav_lock	Gulp
 all_items	Menýu elementleriniň hemmesi
 frequent	Quygy-ýygydan
-added_items	Menýu menýu elementleri goşuldy
+added_items	Menýu elementleri goşuldy
 added_items_empty	Bu tölegde entek hiç zat ýok - itemshli elementlerden ýa-da kategoriýadan bir zat goşuň.
 frequent_config_help	Doldurylan kagyzlardan köp satylan zatlar. Näçe gün seretmelidigini we näçe zady görkezmelidigini kesgitläň.
 frequent_days_ph	Günler (1)
-frequent_limit_ph	Menýu menýu elementleri (24)
+frequent_limit_ph	Menýu elementleri (24)
 frequent_apply	Giriş
 frequent_saved	Quygy-ýygydan: soňky {d} günler, iň ýokary {n} - {c} zatlar
 frequent_empty	Bu döwürde entek gutarnykly satuw ýok - hasaby çözüň (Sazlamalar şeýle diýlende rugsat berilýär) we olar şu ýerde görkezýärler.
@@ -317,7 +329,7 @@ drawer_count	Çyzgy sanamak (islege görä)
 expense_heading	Çykdajylar
 export_day	Eksport güni
 extra_note_bill_ph	Bu töleg / satuw barada goşmaça bellik
-extra_tills_heading	Goşmaça tölegler
+extra_tills_heading	Goşmaça kassalar
 other_devices_help_heading	Beýleki enjamlary guruň
 other_devices_help	Bu enjamda (Serwer): Beýleki enjamlar extra Goşmaça işlemäge rugsat beriň. Jübütleme kody we Wi - Fi adresine üns beriň. Görkezilse, beýleki enjamlaryň birikmegine rugsat beriň. Kompýuterde, Bu kompýuterden Başlamak düwmesine basyň. Birek-birege enjamda: programmany guruň, Müşderi reodeimini saýlaň, dükanyň serwerini tapyň (ýa-da adresi ýazyň), jübütleme koduny giriziň, Indi jübütläň. Serwer täzeden jogap bereninde Wi - Fi düşse we buýruklar enjamda garaşýar. Goşmaça printerler Serwerde (Sazlamalar → Printerler) goýulýar - goşmaça tölegler ol ýere töleg iberýär.
 forget_shop	Bu dükany ýatdan çykaryň
@@ -470,7 +482,7 @@ route_cleared	Arassalanyldy {name}
 route_tap_selected	saýlandy
 printer_target_ph	Ulgam printeriniň ady ýa-da öý eýesi: 9100
 printer_target_default	bu kompýuteriň adaty printeri (boş salgy)
-route_bill	Myhman tölegi
+route_bill	Hasap
 station_print_pick_first	Ilki bilen dispanser bölümini saýlaň
 bill_printers_dd	Hasap üçin printerler
 bill_printers_dd_n	Hasap üçin {n} printerler · üýtgetmek üçin basyň
@@ -595,7 +607,7 @@ wipe_schema_done	Dükany gurnamak süpürildi - Dowam etmek üçin Serwer ýa-da
 rounded_total	Jemi jemlenen
 setup_app_tabiyat	Tabiýat guruň
 shop_logo_optional	Dükanyň nyşany (islege görä)
-stock_type_help	Menýu elementiniň adyny (onuň bir bölegi ýeterlik), mukdaryny ýazyň, soňra sazlaň. Entek sanalmadyk menýu menýu elementleri bir gezek yzarlamaga başlamaly.
+stock_type_help	Menýu elementiniň adyny (onuň bir bölegi ýeterlik), mukdaryny ýazyň, soňra sazlaň. Entek sanalmadyk menýu elementleri bir gezek yzarlamaga başlamaly.
 team_owner_help	Kimdir birini goşmak üçin adamy boş goýuň: ady, iş, ulanyjy ady, PIN we goşmaça parol, soňra Goşuň. Şol bir görnüşi - adyny, ulanyjy adyny, parolyny, ekranlaryny we hukuklaryny redaktirlemek üçin adamy saýlaň - soňra Saklaň. Öz PIN we parolyňyz aşakda bir giriş. Eýesi başga biriniň PINini üýtgetmeýär.
 staff_name_ph	Işgärleriň ady
 staff_copy_hire_ph	Gurluşy göçüriň (islege görä)
@@ -641,7 +653,7 @@ icon_default	Nyşan: Kumkaj belligi (deslapky) - adaty birini saýlaň
 logo_yours	Logotip: dükanyňyzyň nyşany - ekranlarda we kwitansiýalarda görkezilýär
 logo_default	Logotip: Kumkaj belligi (deslapky) - bar bolsa özüňizi saýlaň
 setup_complete	Gurnama tamamlandy
-onboard_fresh_tmpl	Taze · {} - katalog boş başlaýar; menýu menýu elementlerine menýu elementlerini goşuň, soňra ýerine ýetirildi.
+onboard_fresh_tmpl	Taze · {} - katalog boş başlaýar; menýu elementlerine menýu elementlerini goşuň, soňra ýerine ýetirildi.
 onboard_book_tmpl	Ledger · {} - menýu elementlerini goşuň we karz açyň, soňra ýerine ýetirildi.
 tmpl_blurb	Dermanhana hasaplaýjy: dermanlar, partiýa / möhleti, hata, kitaplar.
 reports_facet_title	Hasabat
@@ -735,6 +747,20 @@ fssai_ph	Neşe serişdeleriniň ygtyýarnamasy (islege görä - sözleriňiz)
 bill_footer_ph	Aşakdaky ýazgy (meselem, sag boluň, gaýtadan baryp görüň)
 kot_field_on	görkezmek
 kot_field_off	gizle
+kot_field_show	Görkez
+kot_field_hide	Gizle
+bill_line_shop	Dükan
+bill_line_address	Salgy
+bill_line_fssai	FSSAI
+bill_line_title	Ady
+bill_line_customer	Müşderi
+bill_line_bill_no	Hasap №
+bill_line_time	Wagt
+bill_line_cashier	Kassir
+bill_line_items	Harytlar
+bill_line_total	Jemi
+bill_line_footer	Aşakdaky ýazgy
+bill_line_upi	UPI
 kot_weight_light	Lightagtylyk
 bill_kot_panel_help	Hasabyň tertibi we mazmunyň giňligi. Kassir hasaby kim çykardy ýa-da çözdi - satuwyň doly hekaýasy kitaplarda galýar.
 std_size_ph	meselem 18, 20, 26…
@@ -754,7 +780,7 @@ kot_copies	Göçürmeler
 kot_copies_1	1
 kot_copies_2	2
 kot_copies_3	3
-test_bill_format	Synag tölegi
+test_bill_format	Synag hasaby
 test_bill_sent	Hasap deslapky syn iberildi
 test_print_no_printer	Bu iş üçin printer ýok - bu ekranda birini saýlaň
 std_print	Hasap çap ölçegi
@@ -842,10 +868,10 @@ lane_declared_label	Salgyt-faktura
 lane_owner_label	Nagt ýatlama
 money_lane_bill	Hasap: {lane}
 
-removing	Removing…
-removed	Removed
-updating_order	Updating…
-order_updated	Order updated
+removing	Aýrylýar…
+removed	Aýryldy
+updating_order	Täzelenýär…
+order_updated	Sargyt täzelendi
 sel_copy	Göçür
 sel_select_all	Hemmesini saýla
 sel_copied	Göçürildi

@@ -79,13 +79,19 @@ bill_item_amount	סכום
 bill_item_note	Rx / הערת מכירה
 bill_item_col_sep	קווי עמודות
 slip_col_width	רוחב (mm)
-paper_heading	נייר
+paper_heading	נייר וירטואלי
 paper_size	{w} × {h} mm
 paper_roll	גליל {w} מ״מ
 paper_not_set	הנייר עדיין לא ידוע
-paper_length_mm	אורך (mm)
-printer_paper_help	הנייר של מדפסת זו במ״מ. אורך ריק הוא גליל: כל קבלה ארוכה כמו התוכן שלה. „מצא מדפסות” ממלא נייר ריק ממנהל ההתקן של המדפסת (גליל 80 מ״מ כשאינו יכול לומר) ולעולם אינו משנה נייר שכבר הוגדר.
-preview_help	הקבלה הזו על הנייר של המדפסת שנבחרה למטה, כפי שהיא מודפסת שם: בגודל אמיתי מהפינה השמאלית העליונה שהמדפסת מגיעה אליה (אפור: שוליים שאינה מגיעה אליהם), קבלה ארוכה על יותר דפים, כל מה שעובר את קצה הנייר נחתך. בחירת מדפסת משנה רק את התצוגה המקדימה; הנייר של כל מדפסת מוגדר תחת „מדפסות”.
+na	לא רלוונטי
+virtual_width_mm	רוחב וירטואלי (mm)
+virtual_length_mm	אורך וירטואלי (mm)
+reported_width_mm	רוחב מדווח (mm)
+reported_length_mm	אורך מדווח (mm)
+reported_paper	מדווח: {paper}
+virtual_paper	וירטואלי: {paper}
+printer_paper_help	מדווח הוא הנייר שמנהל ההתקן של המדפסת הזו מוגדר אליו; היישום רק קורא אותו, ו־“לא רלוונטי” פירושו שאין מנהל התקן שאפשר לשאול. וירטואלי הוא הנייר שלדבריך נמצא באמת במדפסת, במ"מ; אורך ריק הוא גליל. המדפסת מדפיסה על הנייר שלה; הנייר הווירטואלי אומר ליישום כמה ממנו הוא נייר אמיתי, עבור התצוגה המקדימה, אורך העמוד ומיקום הקבלה. מצא מדפסות ממלא נייר וירטואלי ריק ולעולם אינו משנה נייר שהגדרת.
+preview_help	הקבלה הזו כפי שהיא מודפסת במדפסת שנבחרה למטה, בגודל אמיתי על הנייר הווירטואלי שלה. לבן הוא המקום שבו מודפס, נייר אפור נמצא מחוץ להישג המדפסת, ודיו דהוי נחתך. תשעת הריבועים הם הנייר: הקש במקום שבו הקבלה צריכה לשבת. קבלה ארוכה ממשיכה לעמודים נוספים. בחירת מדפסת משנה רק את התצוגה המקדימה.
 slip_col_start	רווח התחלה (px)
 slip_col_end	רווח סיום (px)
 slip_columns_help	רוחב כל עמודה כולל את רווח ההתחלה והסיום שלה. הטקסט נשבר בתוך העמודה שלו; מה שחורג מרוחב התוכן נחתך – על הנייר ובתצוגה המקדימה.
@@ -100,6 +106,12 @@ bill_item_piece_off	כבוי
 bill_total_qty	כמות כוללת
 bill_total_subtotal	ביניים
 bill_total_grand	סה״כ
+bill_total_number_under	המספר מתחת ל
+bill_total_caption_under	התווית מתחת ל
+bill_total_own_line	שורה משלו
+bill_total_caption_with	עם המספר
+bill_total_caption_none	ללא תווית
+bill_total_place_help	„שורה משלו“ מדפיס את הסכום הזה לבדו. מתחת לעמודה, המספר שלו מודפס באותה עמודת פריטים, בגודל ובעובי של השורה הזו; סכומים חולקים שורה אחת עד שעמודה נתפסת, ואז מתחילה שורה חדשה. התווית באה עם המספר, מתחת לעמודה אחרת, או מושמטת. שורות המס, השירות, העיגול והתשלום הולכות אחרי „ביניים“.
 kot_unassigned	לא הוקצה
 settings_hub_help	פתחו אזור אחד בכל פעם — פחות גלילה, בחירות ברורות יותר.
 settings_sec_language	שפה ומטבע
@@ -735,6 +747,20 @@ fssai_ph	רישיון סמים מס. (אופציונלי - הניסוח שלך)
 bill_footer_ph	כותרת תחתונה (למשל תודה, בואו שוב)
 kot_field_on	הצג
 kot_field_off	הסתר
+kot_field_show	הצג
+kot_field_hide	הסתר
+bill_line_shop	חנות
+bill_line_address	כתובת
+bill_line_fssai	FSSAI
+bill_line_title	כותרת
+bill_line_customer	לקוח
+bill_line_bill_no	מס׳ חשבון
+bill_line_time	שעה
+bill_line_cashier	קופאי
+bill_line_items	פריטים
+bill_line_total	סה״כ
+bill_line_footer	כותרת תחתונה
+bill_line_upi	UPI
 kot_weight_light	דק
 bill_kot_panel_help	פריסת חשבונות ורוחב תוכן. הקופאי הוא מי שהנפיק או סילק את החשבון - סיפור המכירה המלא נשאר בספרים.
 std_size_ph	למשל 18, 20, 26…
@@ -842,10 +868,10 @@ lane_declared_label	חשבונית מס
 lane_owner_label	תזכיר מזומן
 money_lane_bill	חשבון: {lane}
 
-removing	Removing…
-removed	Removed
-updating_order	Updating…
-order_updated	Order updated
+removing	מסיר…
+removed	הוסר
+updating_order	מעדכן…
+order_updated	ההזמנה עודכנה
 sel_copy	העתק
 sel_select_all	בחר הכול
 sel_copied	הועתק

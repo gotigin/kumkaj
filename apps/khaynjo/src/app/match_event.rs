@@ -7133,6 +7133,35 @@ impl MatchEvent for App {
                 app_state().lock().unwrap().bill_slip_draft.total_paid_label = raw;
                 bill_changed = true;
             }
+            // Where each total prints: its number's column (or its own
+            // line), then its caption's place.
+            for (block, kind) in BILL_TOTAL_PLACES.into_iter().zip(print_share::BillTotalKind::ALL) {
+                let mut number_picks = vec![(id!(tp_n_own), id!(tp_n_own_on), None)];
+                number_picks.extend(BILL_TOTAL_NUMBER_COLS.into_iter().map(|(_, idle, on, col)| (idle, on, Some(col))));
+                for (idle, on, col) in number_picks {
+                    if self.choice_chip_clicked(cx, actions, &[block, idle], &[block, on]) {
+                        let mut st = app_state().lock().unwrap();
+                        st.bill_slip_draft.total_place_mut(kind).set_number_col(col);
+                        bill_changed = true;
+                    }
+                }
+                let mut caption_picks = vec![
+                    (id!(tp_c_with), id!(tp_c_with_on), print_share::BillTotalCaption::WithNumber),
+                    (id!(tp_c_none), id!(tp_c_none_on), print_share::BillTotalCaption::Hidden),
+                ];
+                caption_picks.extend(
+                    BILL_TOTAL_CAPTION_COLS
+                        .into_iter()
+                        .map(|(_, idle, on, col)| (idle, on, print_share::BillTotalCaption::Under(col))),
+                );
+                for (idle, on, caption) in caption_picks {
+                    if self.choice_chip_clicked(cx, actions, &[block, idle], &[block, on]) {
+                        let mut st = app_state().lock().unwrap();
+                        st.bill_slip_draft.total_place_mut(kind).set_caption_place(caption);
+                        bill_changed = true;
+                    }
+                }
+            }
             if self.choice_chip_clicked(
                 cx,
                 actions,
@@ -7360,6 +7389,22 @@ impl MatchEvent for App {
                 }
                 self.sync_preview_paper_ui(cx);
                 self.ui.widget(cx, field.list()).redraw(cx);
+            }
+        }
+        // Where the slip sits on its paper: the 3 × 3 grid beside each
+        // preview, a picture of the paper (owner, 2026-11-17). The square
+        // picked is where the slip lands.
+        for kot in [false, true] {
+            let mut picked = None;
+            for (down, row) in place_cells(kot).into_iter().enumerate() {
+                for (across, (idle, on)) in row.into_iter().enumerate() {
+                    if self.choice_chip_clicked(cx, actions, idle, on) {
+                        picked = Some(os_paper::Place::new(down as u8, across as u8));
+                    }
+                }
+            }
+            if let Some(place) = picked {
+                self.set_format_place(cx, kot, place);
             }
         }
         // Settings → Printers: tap a printer to open its paper where it sits;
@@ -9544,7 +9589,7 @@ impl MatchEvent for App {
             }
         }
         if self.ui.button(cx, ids!(print_test_btn)).clicked(actions) {
-            // Queue only — never wait for `lp` / PowerShell / TCP on the UI thread.
+            // Queue only — never wait for `lp` / the Windows spooler / TCP on the UI thread.
             // Host: every checked test printer. Client: Server prints the place.
             let is_client = app_state().lock().unwrap().device_role == DeviceRole::Client;
             let result = if is_client {

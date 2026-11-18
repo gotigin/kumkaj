@@ -2245,7 +2245,9 @@ fn discover_by_scan_cancellable(cancel: &impl Fn() -> bool) -> Vec<FoundServer> 
 
 /// Knock on each address (16 at a time, 300 ms each) and ask the ones that
 /// open for `/hello`. Routers that drop broadcasts still let this through.
-#[cfg(test)]
+/// Only the Linux scan test calls it (there all of 127.0.0.0/8 is this
+/// machine).
+#[cfg(all(test, target_os = "linux"))]
 fn scan_for_servers(addrs: Vec<SocketAddr>) -> Vec<FoundServer> {
     scan_for_servers_cancellable(addrs, &|| false)
 }

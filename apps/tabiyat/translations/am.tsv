@@ -79,13 +79,19 @@ bill_item_amount	መጠን
 bill_item_note	Rx / የሽያጭ ማስታወሻ
 bill_item_col_sep	የአምድ መስመሮች
 slip_col_width	ስፋት (mm)
-paper_heading	ወረቀት
+paper_heading	ምናባዊ ወረቀት
 paper_size	{w} × {h} mm
 paper_roll	{w} mm ጥቅል
 paper_not_set	ወረቀቱ ገና አልታወቀም
-paper_length_mm	ርዝመት (mm)
-printer_paper_help	የዚህ ማተሚያ ወረቀት በ mm። ባዶ ርዝመት ጥቅል ነው፤ እያንዳንዱ ደረሰኝ እንደ ይዘቱ ይረዝማል። ማተሚያዎችን ፈልግ ባዶ ወረቀትን ከማተሚያው ሾፌር ይሞላል (መናገር ካልቻለ 80 mm ጥቅል) እና ቀድሞ የተዘጋጀውን በፍጹም አይቀይርም።
-preview_help	ይህ ደረሰኝ ከታች በተመረጠው ማተሚያ ወረቀት ላይ፣ እዚያ እንደሚታተመው፦ ማተሚያው ከሚደርስበት የላይኛው ግራ ጥግ በእውነተኛ መጠን (ግራጫ፦ የማይደርስባቸው ጠርዞች)፣ ረጅም ደረሰኝ በተጨማሪ ገጾች፣ ከወረቀቱ ጠርዝ ያለፈው ይቆረጣል። ማተሚያ መምረጥ ቅድመ እይታውን ብቻ ይቀይራል፤ የእያንዳንዱ ማተሚያ ወረቀት በማተሚያዎች ስር ይዘጋጃል።
+na	የለም
+virtual_width_mm	ምናባዊ ስፋት (mm)
+virtual_length_mm	ምናባዊ ርዝመት (mm)
+reported_width_mm	የተዘገበ ስፋት (mm)
+reported_length_mm	የተዘገበ ርዝመት (mm)
+reported_paper	የተዘገበ፦ {paper}
+virtual_paper	ምናባዊ፦ {paper}
+printer_paper_help	የተዘገበ ማለት የዚህ ማተሚያ ድራይቨር የተቀናበረበት ወረቀት ነው፤ መተግበሪያው ያነበዋል ብቻ፣ “የለም” ማለት የሚጠየቅ ድራይቨር የለም ማለት ነው። ምናባዊ ማለት በማተሚያው ውስጥ በእርግጥ አለ የምትለው ወረቀት ነው፣ በ mm፤ ባዶ ርዝመት ጥቅል ነው። ማተሚያው በራሱ ወረቀት ላይ ያትማል፤ ምናባዊው ወረቀት ከዚያ ውስጥ ምን ያህሉ እውነተኛ ወረቀት እንደሆነ ለመተግበሪያው ይነግረዋል፣ ለቅድመ እይታ፣ ለገጽ ርዝመት እና ለደረሰኙ ቦታ። ማተሚያዎችን ፈልግ ባዶ ምናባዊ ወረቀትን ይሞላል፣ አንተ ያቀናበርከውን ግን ፈጽሞ አይቀይርም።
+preview_help	ይህ ደረሰኝ ከታች በተመረጠው ማተሚያ ላይ እንደሚታተመው፣ በእውነተኛ መጠን በምናባዊ ወረቀቱ ላይ። ነጭ የሚታተምበት ነው፣ ግራጫ ወረቀት ማተሚያው የማይደርስበት ነው፣ የደበዘዘ ቀለም ደግሞ ይቆረጣል። ዘጠኙ ካሬዎች ወረቀቱ ናቸው፦ ደረሰኙ የሚቀመጥበትን ንካ። ረጅም ደረሰኝ ወደ ተጨማሪ ገጾች ይሄዳል። ማተሚያ መምረጥ ቅድመ እይታውን ብቻ ይቀይራል።
 slip_col_start	የመጀመሪያ ክፍተት (px)
 slip_col_end	የመጨረሻ ክፍተት (px)
 slip_columns_help	የእያንዳንዱ አምድ ስፋት የመጀመሪያና የመጨረሻ ክፍተቱን ያካትታል። ጽሑፉ በአምዱ ውስጥ ይጠቀለላል፤ ከይዘቱ ስፋት በላይ ያለው በወረቀትም በቅድመ እይታም ይቆረጣል።
@@ -100,6 +106,12 @@ bill_item_piece_off	ጠፍቷል
 bill_total_qty	ጠቅላላ ብዛት
 bill_total_subtotal	ንዑስ ድምር
 bill_total_grand	ጠቅላላ ድምር
+bill_total_number_under	ቁጥሩ ከዚህ በታች
+bill_total_caption_under	መለያው ከዚህ በታች
+bill_total_own_line	የራሱ መስመር
+bill_total_caption_with	ከቁጥሩ ጋር
+bill_total_caption_none	መለያ የለም
+bill_total_place_help	“የራሱ መስመር” ይህን ድምር ለብቻው ያትማል። በአምድ ስር ሲሆን ቁጥሩ በዚያ የዕቃ አምድ ውስጥ በዚህ መስመር መጠንና ውፍረት ይታተማል፤ አምድ እስኪያዝ ድረስ ድምሮች አንድ ረድፍ ይጋራሉ፣ ከዚያ አዲስ ረድፍ ይጀምራል። መለያው ከቁጥሩ ጋር፣ በሌላ አምድ ስር ይሄዳል ወይም ይቀራል። የግብር፣ የአገልግሎት፣ የማጠጋጋትና የክፍያ መስመሮች “ንዑስ ድምር”ን ይከተላሉ።
 kot_unassigned	ያልተመደበ
 settings_hub_help	በአንድ ጊዜ አንድ ክፍል ይክፈቱ — ያነሰ ማሸብለል፣ ግልጽ ምርጫ።
 settings_sec_language	ቋንቋ እና ገንዘብ
@@ -735,6 +747,20 @@ fssai_ph	የመድኃኒት ፈቃድ ቁጥር. (አማራጭ - የእርስዎ
 bill_footer_ph	ግርጌ (ለምሳሌ አመሰግናለሁ፣ እንደገና ይምጡ)
 kot_field_on	አሳይ
 kot_field_off	ደብቅ
+kot_field_show	አሳይ
+kot_field_hide	ደብቅ
+bill_line_shop	ሱቅ
+bill_line_address	አድራሻ
+bill_line_fssai	FSSAI
+bill_line_title	ርዕስ
+bill_line_customer	ደንበኛ
+bill_line_bill_no	የሂሳብ ቁጥር
+bill_line_time	ሰዓት
+bill_line_cashier	ገንዘብ ተቀባይ
+bill_line_items	እቃዎች
+bill_line_total	ድምር
+bill_line_footer	ግርጌ
+bill_line_upi	UPI
 kot_weight_light	ቀጭን
 bill_kot_panel_help	የሂሳብ አቀማመጥ እና የይዘት ስፋት። ገንዘብ ተቀባይ ሂሳቡን ያወጣ ወይም ያስስተካከለው ሰው ነው - ሙሉው የሽያጭ መዝገብ በመጽሃፍቱ ውስጥ ይቆያል።
 std_size_ph	ለምሳሌ 18፣ 20፣ 26…
@@ -842,10 +868,10 @@ lane_declared_label	የግብር ደረሰኝ
 lane_owner_label	የጥሬ ገንዘብ ማስታወሻ
 money_lane_bill	ሂሳብ፦ {lane}
 
-removing	Removing…
-removed	Removed
-updating_order	Updating…
-order_updated	Order updated
+removing	በማስወገድ ላይ…
+removed	ተወግዷል
+updating_order	በማዘመን ላይ…
+order_updated	ትዕዛዙ ተዘምኗል
 sel_copy	ቅዳ
 sel_select_all	ሁሉንም ምረጥ
 sel_copied	ተቀድቷል

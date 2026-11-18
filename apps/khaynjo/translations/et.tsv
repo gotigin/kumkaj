@@ -101,6 +101,19 @@ bill_item_col_sep	Veeru reeglid
 slip_columns	Veerud
 slip_col_header	Päis
 bill_line_logo	Logo
+bill_line_shop	Pood
+bill_line_address	Aadress
+bill_line_fssai	FSSAI
+bill_line_title	Pealkiri
+bill_line_customer	Klient
+bill_line_bill_no	Arve nr
+bill_line_time	Aeg
+bill_line_cashier	Kassapidaja
+bill_line_table	Söögilaud
+bill_line_items	Üksused
+bill_line_total	Kokku
+bill_line_footer	Jalus
+bill_line_upi	UPI
 bill_logo_picture	Pilt
 bill_logo_choose	Vali pilt
 bill_logo_remove	Eemalda pilt
@@ -128,6 +141,12 @@ bill_item_piece_off	Väljas
 bill_total_qty	Kogus
 bill_total_subtotal	Vahesumma
 bill_total_grand	Kokkuvõttes
+bill_total_number_under	Arv veeru all
+bill_total_caption_under	Silt veeru all
+bill_total_own_line	Oma rida
+bill_total_caption_with	Koos arvuga
+bill_total_caption_none	Silti pole
+bill_total_place_help	Oma rida prindib selle kogusumma eraldi. Veeru all prinditakse selle arv sellesse kaubaveergu, selle rea suuruses ja paksuses; kogusummad jagavad üht rida, kuni mõni veerg on hõivatud, siis algab uus rida. Silt läheb koos arvuga, teise veeru alla või jäetakse ära. Maksu, teeninduse, ümardamise ja makse read järgivad kirjet Vahesumma.
 reprint_incl	Trükis
 reprint_skip	Jäta vahele
 reprint_skip_meta	Jäta taasteprint vahele
@@ -178,20 +197,20 @@ snack_secs_ph	Sekundid (3–60, vaikeväärtus 10)
 snack_secs_save	Säästke hoiatusaega
 snack_secs_saved	Hoiatuse aeg salvestatud — {n} sekundit
 settings_sec_whatsapp	WhatsApp
-whatsapp_cloud_help	Use your own Meta WhatsApp Cloud API. Create a System User token with whatsapp_business_messaging (temporary dashboard tokens expire). Credentials stay on this Server only — never on extra tills. Accepted means Meta took the request, not that the guest received it.
-whatsapp_phone_id_ph	Phone Number ID
-whatsapp_token_ph	Access Token (leave blank to keep)
-whatsapp_template_ph	Bill template name (optional)
-whatsapp_template_lang_ph	Template language (e.g. en)
-whatsapp_enable	Enable
+whatsapp_cloud_help	Kasutage oma Meta WhatsApp Cloud API-t. Looge System Useri tõend õigusega whatsapp_business_messaging (juhtpaneeli ajutised tõendid aeguvad). Andmed jäävad ainult sellesse serverisse — mitte kunagi lisakassadesse. „Vastu võetud“ tähendab, et Meta võttis taotluse vastu, mitte et külaline selle kätte sai.
+whatsapp_phone_id_ph	Telefoninumbri ID
+whatsapp_token_ph	Juurdepääsutõend (säilitamiseks jätke tühjaks)
+whatsapp_template_ph	Arvemalli nimi (valikuline)
+whatsapp_template_lang_ph	Malli keel (nt en)
+whatsapp_enable	Luba
 whatsapp_disable	Off
-whatsapp_save	Save WhatsApp
-whatsapp_test	Test connection
-whatsapp_disconnect	Disconnect
-whatsapp_send_bill	Send via WhatsApp
+whatsapp_save	Salvesta WhatsApp
+whatsapp_test	Testi ühendust
+whatsapp_disconnect	Katkesta ühendus
+whatsapp_send_bill	Saada WhatsAppiga
 whatsapp_consent	WhatsApp OK
-whatsapp_consent_help	Guest agreed to receive WhatsApp messages. A phone number alone is not consent.
-whatsapp_server_only	Configure WhatsApp on the shop Server device
+whatsapp_consent_help	Külaline nõustus WhatsAppi sõnumeid saama. Ainult telefoninumber ei ole nõusolek.
+whatsapp_server_only	Seadistage WhatsApp poe serveriseadmes
 settings_sec_backup	Varundamine ja taastamine
 settings_sec_diag	Diagnostika
 settings_sec_privacy	Privaatsus
@@ -637,7 +656,7 @@ choose_device_use	Valige Server või Klient.
 paired_note	Paaritud. Avage müümiseks või värskendage uusima teabe saamiseks.
 last_update_at	Viimane värskendus: {time}.
 pair_intro	Otsige üles server või tippige selle aadress ja sidumiskood.
-pair_resume_hint	Already paired — enter your shop PIN, or Forget this shop to pair another.
+pair_resume_hint	Juba seotud — sisestage oma poe PIN või puudutage „Unustage see pood“, et siduda teine.
 queue_waiting	Poodi jõudmise ootel ({n}):
 queue_tries	Proovitud {n} korda · viimane vastus: {e}
 save_backup_copy	Salvesta varukoopia…
@@ -754,13 +773,18 @@ station_vps_dd	Selle jaama printerid
 station_vps_dd_n	{n} printerid · puudutage muutmiseks
 bill_printers_dd	Printerid arve jaoks
 bill_printers_dd_n	{n} printerid arve jaoks · puudutage muutmiseks
-paper_heading	Paber
+paper_heading	Virtuaalne paber
 paper_size	{w} × {h} mm
 paper_roll	{w} mm rull
 paper_not_set	paber pole veel teada
-paper_length_mm	Pikkus (mm)
-printer_paper_help	Selle printeri paber millimeetrites. Tühi Pikkus on rull: iga tšekk on sama pikk kui selle sisu. „Otsige printereid“ täidab tühja paberi printeri draiveri järgi (80 mm rull, kui see ei oska öelda) ega muuda kunagi juba määratud paberit.
-preview_help	See tšekk allpool valitud printeri paberil, nagu see seal prinditakse: tegelikus suuruses ülemisest vasakust nurgast, kuhu printer ulatub (hall: servad, kuhu ei ulatu), pikk tšekk mitmel lehel, kõik üle paberi serva lõigatakse ära. Printeri valimine muudab ainult eelvaadet; iga printeri paber määratakse jaotises Printerid.
+virtual_width_mm	Virtuaalne laius (mm)
+virtual_length_mm	Virtuaalne pikkus (mm)
+reported_width_mm	Teatatud laius (mm)
+reported_length_mm	Teatatud pikkus (mm)
+reported_paper	Teatatud: {paper}
+virtual_paper	Virtuaalne: {paper}
+printer_paper_help	Teatatud on paber, millele selle printeri draiver on seadistatud; rakendus ainult loeb seda ja „Ei kehti“ tähendab, et pole draiverit, kellelt küsida. Virtuaalne on paber, mis teie sõnul on tegelikult printeris, millimeetrites; tühi pikkus tähendab rulli. Printer prindib oma paberile; virtuaalne paber ütleb rakendusele, kui suur osa sellest on päris paber – eelvaate, lehe pikkuse ja tšeki asukoha jaoks. „Otsige printereid“ täidab tühja virtuaalse paberi ega muuda kunagi teie määratut.
+preview_help	See tšekk nii, nagu see prinditakse allpool valitud printeris, tegelikus suuruses selle virtuaalsel paberil. Valge on koht, kuhu prinditakse, hall paber jääb printeri ulatusest välja ja tuhm tint lõigatakse ära. Üheksa ruutu on paber: puudutage kohta, kus tšekk peab asuma. Pikk tšekk jätkub järgmistel lehtedel. Printeri valimine muudab ainult eelvaadet.
 job_layout	Paigutus
 job_delivery	Kuidas töö saadetakse
 job_delivery_help	OS-i dokument, töötlemata baidid või ESC/POS. Arve ja köögipilet jäävad igaüks omale. Kumbki töö võib minna mis tahes printerisse, mille Find on salvestanud.
@@ -1163,7 +1187,7 @@ kot_show_station	Jaam
 kot_hide_station	Peida jaam
 kot_show_table	Söögilaud
 kot_hide_table	Peida söögilaud
-kot_show_kot_no	KOT Ei
+kot_show_kot_no	KOT nr
 kot_hide_kot_no	Peida KOT Ei
 kot_width	Pakendamise eelvaade (sisu laiuse määramine vahekaardil KOT)
 kot_width_58	58 mm
@@ -1266,8 +1290,8 @@ taxable_value	Maksustatav väärtus
 gst_inside_price_note	({tax} kaasa arvatud)
 start_with_template	Alustage meie menüümalliga
 template_heading	Meie menüü mall
-template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
-template_download_shelf	Download photo shelf
+template_need_download	Laadige alla roogade avalik fotoriiul (~1459 rooga), seejärel importige puuduvad nimed oma menüüsse.
+template_download_shelf	Laadi fotoriiul alla
 template_info	{c} kategooriad ja {d} toidud koos fotodega, lisamiseks valmis. Hinnad algavad 0 ₹ - määrake oma hind pärast seda.
 template_import	Impordi täielik mall
 template_confirm	Kas lisada {d} rooga nende kategooriatega? Juba olemasolevad toidud jäävad selliseks, nagu nad on.

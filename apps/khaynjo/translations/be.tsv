@@ -101,6 +101,19 @@ bill_item_col_sep	Лінейкі слупкоў
 slip_columns	Слупкі
 slip_col_header	Загаловак
 bill_line_logo	Лагатып
+bill_line_shop	Крама
+bill_line_address	Адрас
+bill_line_fssai	FSSAI
+bill_line_title	Назва
+bill_line_customer	Кліент
+bill_line_bill_no	№ рахунка
+bill_line_time	Час
+bill_line_cashier	Касір
+bill_line_table	Абедзенны стол
+bill_line_items	Прадметы
+bill_line_total	Разам
+bill_line_footer	Ніжні калонтытул
+bill_line_upi	UPI
 bill_logo_picture	Малюнак
 bill_logo_choose	Выбраць малюнак
 bill_logo_remove	Выдаліць малюнак
@@ -128,6 +141,12 @@ bill_item_piece_off	Выкл
 bill_total_qty	Агульная колькасць
 bill_total_subtotal	Прамежкавы вынік
 bill_total_grand	Агулам
+bill_total_number_under	Лік пад
+bill_total_caption_under	Подпіс пад
+bill_total_own_line	Асобны радок
+bill_total_caption_with	Разам з лікам
+bill_total_caption_none	Без подпісу
+bill_total_place_help	«Асобны радок» друкуе гэты вынік асобна. Пад слупком яго лік друкуецца ў гэтым слупку тавараў, памерам і таўшчынёй гэтага радка; вынікі дзеляць адзін рад, пакуль слупок не заняты, потым пачынаецца новы рад. Подпіс ідзе разам з лікам, пад іншым слупком або прапускаецца. Радкі падатку, абслугі, акруглення і аплаты ідуць за «Прамежкавы вынік».
 reprint_incl	У друк
 reprint_skip	Прапусціць
 reprint_skip_meta	Прапусціць паўторны друк
@@ -178,20 +197,20 @@ snack_secs_ph	Секунды (3–60, прадвызначэнне 10)
 snack_secs_save	Захаваць час апавяшчэння
 snack_secs_saved	Час апавяшчэння захаваны — {n} секунд
 settings_sec_whatsapp	WhatsApp
-whatsapp_cloud_help	Use your own Meta WhatsApp Cloud API. Create a System User token with whatsapp_business_messaging (temporary dashboard tokens expire). Credentials stay on this Server only — never on extra tills. Accepted means Meta took the request, not that the guest received it.
-whatsapp_phone_id_ph	Phone Number ID
-whatsapp_token_ph	Access Token (leave blank to keep)
-whatsapp_template_ph	Bill template name (optional)
-whatsapp_template_lang_ph	Template language (e.g. en)
-whatsapp_enable	Enable
+whatsapp_cloud_help	Выкарыстоўвайце ўласны Meta WhatsApp Cloud API. Стварыце токен System User з whatsapp_business_messaging (часовыя токены з панэлі заканчваюцца). Даныя застаюцца толькі на гэтым Серверы — ніколі на дадатковых касах. «Прынята» азначае, што Meta прыняла запыт, а не што госць яго атрымаў.
+whatsapp_phone_id_ph	ID нумара тэлефона
+whatsapp_token_ph	Токен доступу (пакіньце пустым, каб захаваць)
+whatsapp_template_ph	Назва шаблону рахунку (неабавязкова)
+whatsapp_template_lang_ph	Мова шаблону (напрыклад, en)
+whatsapp_enable	Уключыць
 whatsapp_disable	Off
-whatsapp_save	Save WhatsApp
-whatsapp_test	Test connection
-whatsapp_disconnect	Disconnect
-whatsapp_send_bill	Send via WhatsApp
-whatsapp_consent	WhatsApp OK
-whatsapp_consent_help	Guest agreed to receive WhatsApp messages. A phone number alone is not consent.
-whatsapp_server_only	Configure WhatsApp on the shop Server device
+whatsapp_save	Захаваць WhatsApp
+whatsapp_test	Праверыць злучэнне
+whatsapp_disconnect	Адключыць
+whatsapp_send_bill	Адправіць праз WhatsApp
+whatsapp_consent	WhatsApp добра
+whatsapp_consent_help	Госць пагадзіўся атрымліваць паведамленні WhatsApp. Адзін толькі нумар тэлефона — не згода.
+whatsapp_server_only	Наладзьце WhatsApp на прыладзе Сервер крамы
 settings_sec_backup	Рэзервовая копія і аднаўленне
 settings_sec_diag	Дыягностыка
 settings_sec_privacy	Прыватнасць
@@ -532,7 +551,7 @@ on_account_ap	На рахунку (AP)
 org_optional_ph	Арганізацыя (неабавязкова)
 paid_by	Аплачана
 paid_now	Аплачана зараз
-pair_now	Пара зараз
+pair_now	Спалучыць зараз
 pairing_code_ph	Код спалучэння
 party_name_selected_ph	Імя кліента або пастаўшчыка (або выкарыстоўвайце выбранае)
 password_ph	Пароль
@@ -637,7 +656,7 @@ choose_device_use	Выберыце сервер або кліент.
 paired_note	Парныя. Разблакіруйце, каб прадаць, або абнавіце, каб атрымаць апошняе.
 last_update_at	Апошняе абнаўленне: {time}.
 pair_intro	Знайдзіце сервер або ўвядзіце яго адрас і код спалучэння.
-pair_resume_hint	Already paired — enter your shop PIN, or Forget this shop to pair another.
+pair_resume_hint	Ужо спалучана — увядзіце PIN вашай крамы або націсніце «Забудзьцеся аб гэтай краме», каб спалучыць іншую.
 queue_waiting	У чаканні, каб дабрацца да крамы ({n}):
 queue_tries	Спрабаваў {n} разоў · апошні адказ: {e}
 save_backup_copy	Захаваць рэзервовую копію…
@@ -739,7 +758,7 @@ printer_format_custom_added	Карыстальніцкі профіль дада
 add_printer	Дадаць прынтэр
 remove_printer	Выдаліць
 route_pick_ph	Рахунак або кухонная станцыя
-route_bill	Біл
+route_bill	Рахунак
 route_default_kitchen	Няма станцыі (непрызначаныя талеркі)
 route_kot_station	кухня
 route_dont_print	Няма друкаркі
@@ -754,13 +773,18 @@ station_vps_dd	Прынтэры для гэтай станцыі
 station_vps_dd_n	{n} прынтэры · націсніце, каб змяніць
 bill_printers_dd	Прынтэры для рахункаў
 bill_printers_dd_n	{n} прынтэры для рахунку · націсніце, каб змяніць
-paper_heading	Папера
+paper_heading	Віртуальная папера
 paper_size	{w} × {h} mm
 paper_roll	рулон {w} мм
 paper_not_set	папера яшчэ невядомая
-paper_length_mm	Даўжыня (mm)
-printer_paper_help	Папера гэтага прынтара ў мм. Пустая Даўжыня — гэта рулон: кожны чэк такой даўжыні, як яго змест. «Знайдзіце прынтэры» запаўняе пустую паперу з драйвера прынтара (рулон 80 мм, калі ён не можа сказаць) і ніколі не мяняе ўжо зададзеную.
-preview_help	Гэты чэк на паперы прынтара, выбранага ніжэй, як ён там друкуецца: у сапраўдным памеры ад верхняга левага кута, да якога дастае прынтар (шэрае: краі, да якіх не дастае), доўгі чэк на некалькіх аркушах, усё за краем паперы абразаецца. Выбар прынтара мяняе толькі прагляд; папера кожнага прынтара задаецца ў «Прынтары».
+virtual_width_mm	Віртуальная шырыня (mm)
+virtual_length_mm	Віртуальная даўжыня (mm)
+reported_width_mm	Паведамленая шырыня (mm)
+reported_length_mm	Паведамленая даўжыня (mm)
+reported_paper	Паведамлена: {paper}
+virtual_paper	Віртуальная: {paper}
+printer_paper_help	Паведамленая — гэта папера, на якую настроены драйвер гэтага прынтара; праграма толькі чытае яе, а Н/Д азначае, што драйвера, які можна спытаць, няма. Віртуальная — гэта папера, якая, паводле вашых слоў, сапраўды ляжыць у прынтары, у mm; пустая даўжыня азначае рулон. Прынтар друкуе на сваёй паперы; віртуальная папера паведамляе праграме, якая яе частка — сапраўдная папера: для папярэдняга прагляду, даўжыні старонкі і месца чэка. Знайдзіце прынтэры запаўняе пустую віртуальную паперу і ніколі не мяняе зададзеную вамі.
+preview_help	Гэты чэк так, як ён друкуецца на выбраным ніжэй прынтары, у сапраўдным памеры на яго віртуальнай паперы. Белае — дзе друкуецца, шэрая папера па-за дасяжнасцю прынтара, а бляклая фарба абразаецца. Дзевяць квадратаў — гэта папера: націсніце там, дзе павінен стаяць чэк. Доўгі чэк пераходзіць на наступныя старонкі. Выбар прынтара мяняе толькі папярэдні прагляд.
 job_layout	Макет
 job_delivery	Як адпраўляецца заданне
 job_delivery_help	Дакумент АС, неапрацаваныя байты або ESC/POS. Рахунак і білет на кухню кожны пакідаюць свае. Любое заданне можа быць адпраўлена на любы прынтэр, захаваны Find.
@@ -1053,7 +1077,7 @@ tile_occupied	Акупаваны
 tile_food_ready	Ежа гатовая
 tile_bill_printed	Біл надрукаваны
 tile_paid	Платна
-tile_bill_btn	Біл
+tile_bill_btn	Рахунак
 tile_occupy_btn	Пасадзіць гасцей
 tile_free_btn	Вызваліць абедзенны стол
 tile_ready_btn	Вызваліць абедзенны стол
@@ -1163,7 +1187,7 @@ kot_show_station	Станцыя
 kot_hide_station	Схаваць станцыю
 kot_show_table	Абедзенны стол
 kot_hide_table	Схаваць абедзенны стол
-kot_show_kot_no	KOT Не
+kot_show_kot_no	№ KOT
 kot_hide_kot_no	Схаваць KOT Няма
 kot_width	Абгортка папярэдняга прагляду (усталяваць шырыню змесціва на ўкладцы KOT)
 kot_width_58	58 mm
@@ -1266,8 +1290,8 @@ taxable_value	Падаткаабкладаемы кошт
 gst_inside_price_note	({tax} уключна)
 start_with_template	Пачніце з нашага шаблону меню
 template_heading	Наш шаблон меню
-template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
-template_download_shelf	Download photo shelf
+template_need_download	Спампуйце агульную паліцу з фота страў (~1459 страў), потым імпартуйце адсутныя назвы ў сваё меню.
+template_download_shelf	Спампаваць паліцу з фота
 template_info	{c} катэгорый і {d} страў з фотаздымкамі, гатовых да дадання. Цэны пачынаюцца ад ₹0 - выбірайце пасля.
 template_import	Імпартаваць поўны шаблон
 template_confirm	Дадаць {d} страў з іх катэгорыямі? Стравы, якія ў вас ужо ёсць, застаюцца такімі, якія ёсць.

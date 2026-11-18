@@ -1303,31 +1303,40 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
     /// preview). Any number of printers; a printer with no paper yet has its
     /// driver asked (the answer fills it and paints again).
     fn paint_printer_rows(&mut self, cx: &mut Cx) {
-        let (host, count, open_at, w, l, texts) = {
+        let (host, count, open_at, w, l, reported, texts) = {
             let st = app_state().lock().unwrap();
             let printers = &st.printer_draft.printers;
-            ask_drivers_for_missing_papers(printers);
+            ask_drivers(printers);
             let open_at = st
                 .printer_paper_open
                 .as_deref()
                 .and_then(|id| printers.iter().position(|p| p.id == id));
-            let paper = open_at.and_then(|i| printers[i].paper());
+            let paper = open_at.and_then(|i| printers[i].virtual_paper());
             let w = paper.map(|p| os_paper::mm_text(p.width_mm)).unwrap_or_default();
             let l = paper
                 .filter(|p| !p.is_roll())
                 .map(|p| os_paper::mm_text(p.length_mm))
                 .unwrap_or_default();
+            // What the printer's driver reports, read-only: its width and
+            // length, or "N/A" when nothing reported them.
+            let reported = match open_at.and_then(|i| printers[i].reported_paper()) {
+                Some(r) => [os_paper::mm_text(r.width_mm), os_paper::mm_text(r.height_mm)],
+                None => [st.t("na"), st.t("na")],
+            };
             (
                 st.device_role != DeviceRole::Client,
                 printers.len(),
                 open_at,
                 w,
                 l,
+                reported,
                 [
                     st.t("paper_heading"),
                     st.t("printer_paper_help"),
-                    st.t("slip_col_width"),
-                    st.t("paper_length_mm"),
+                    st.t("virtual_width_mm"),
+                    st.t("virtual_length_mm"),
+                    st.t("reported_width_mm"),
+                    st.t("reported_length_mm"),
                 ],
             )
         };
@@ -1341,20 +1350,23 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
         let open = host && open_at.is_some();
         self.ui.view(cx, ids!(printer_paper_editor)).set_visible(cx, open);
         if open {
-            let [head, help, w_label, l_label] = texts;
-            self.ui
-                .widget(cx, ids!(h_printer_paper))
-                .set_text(cx, &plain_display_text(&head));
+            let [head, help, w_label, l_label, reported_w_label, reported_l_label] = texts;
+            let [reported_w, reported_l] = reported;
             self.ui
                 .widget(cx, ids!(printer_paper_help))
                 .as_info_help()
                 .set_tip(&plain_display_text(&help));
-            self.ui
-                .widget(cx, ids!(h_printer_paper_w))
-                .set_text(cx, &plain_display_text(&w_label));
-            self.ui
-                .widget(cx, ids!(h_printer_paper_l))
-                .set_text(cx, &plain_display_text(&l_label));
+            for (id, text) in [
+                (ids!(h_printer_paper), &head),
+                (ids!(h_printer_paper_w), &w_label),
+                (ids!(h_printer_paper_l), &l_label),
+                (ids!(h_printer_reported_w), &reported_w_label),
+                (ids!(h_printer_reported_l), &reported_l_label),
+                (ids!(printer_reported_w), &reported_w),
+                (ids!(printer_reported_l), &reported_l),
+            ] {
+                self.ui.widget(cx, id).set_text(cx, &plain_display_text(text));
+            }
             for (id, v) in [(ids!(printer_paper_w_input), &w), (ids!(printer_paper_l_input), &l)] {
                 let input = self.ui.text_input(cx, id);
                 // Never under the owner's typing.
@@ -1373,7 +1385,7 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
     /// what the preview shows, the picture is the job's own sample on that
     /// paper — the one Test print sends (docs/PRINTER.md § Paper and preview).
     fn sync_job_preview(&mut self, cx: &mut Cx) {
-        let (host, heading, tip, face, paper, format, text) = {
+        let (host, heading, tip, face, paper, format, text, lines) = {
             let st = app_state().lock().unwrap();
             let label = st.printer_route_key == "label";
             let key = parse_courier_route_key(&st.printer_route_key);
@@ -1392,25 +1404,55 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
             } else {
                 sample_receipt_text(&shop, &st.fiscal.format_now())
             };
+            let paper = st.preview_paper(label);
+            // The picked printer's two papers, read-only: what its driver
+            // reports ("N/A" when nothing does) and the virtual paper the
+            // picture is drawn on.
+            let reported = match st.preview_printer(label) {
+                Some(p) => reported_summary(p, |k| st.t(k)),
+                None => st.t("na"),
+            };
+            let lines = [
+                st.t("reported_paper").replace("{paper}", &reported),
+                st.t("virtual_paper")
+                    .replace("{paper}", &paper_text(paper.virtual_paper, |k| st.t(k))),
+            ];
             (
                 st.device_role != DeviceRole::Client,
                 st.t("job_preview"),
                 st.t("preview_help"),
                 face,
-                st.preview_paper(label),
+                paper,
                 st.printer_draft.format_for(key),
                 text,
+                lines,
             )
         };
         for id in [
             ids!(job_preview_head),
             ids!(job_preview_paper_dd),
+            ids!(job_preview_reported),
+            ids!(job_preview_virtual),
+            ids!(job_place_grid),
             ids!(job_preview_card),
         ] {
             self.ui.widget(cx, id).set_visible(cx, host);
         }
         if !host {
             return;
+        }
+        let [reported, virtual_line] = lines;
+        for (id, text) in [(ids!(job_preview_reported), &reported), (ids!(job_preview_virtual), &virtual_line)] {
+            self.ui.widget(cx, id).set_text(cx, &plain_display_text(text));
+        }
+        // The nine squares are the paper: the focused job's place is lit —
+        // the square is where the slip lands (left and right are the paper's
+        // own sides in every language; docs/PRINTER.md § Paper and preview).
+        for (down, row) in job_place_cells().into_iter().enumerate() {
+            for (across, (idle, on)) in row.into_iter().enumerate() {
+                let lit = format.place == os_paper::Place::new(down as u8, across as u8);
+                self.paint_choice_pair(cx, idle, on, lit);
+            }
         }
         self.ui
             .widget(cx, ids!(h_job_preview))
@@ -1561,6 +1603,23 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
         if let Some(em) = em {
             st.printer_draft.set_type_size(label, em);
         }
+        if let Some(base) = st.data_base.clone() {
+            print_share::save_device_printers(&base, &st.printer_draft)?;
+        }
+        print_share::configure(st.printer_draft.clone());
+        Ok(())
+    }
+
+    /// A square of the place grid was picked: the focused job (receipt or
+    /// label) keeps the place with this device's printers, as it keeps
+    /// portrait / landscape, and the preview draws it at once.
+    fn apply_focused_job_place(&mut self, place: os_paper::Place) -> Result<(), String> {
+        let mut st = app_state().lock().unwrap();
+        if st.device_role == DeviceRole::Client {
+            return Err(st.t("printers_host_only"));
+        }
+        let label = st.printer_route_key == "label";
+        st.printer_draft.set_job_place(label, place);
         if let Some(base) = st.data_base.clone() {
             print_share::save_device_printers(&base, &st.printer_draft)?;
         }
@@ -2448,4 +2507,26 @@ fn note_nav_draw() {
         Some(entry) => entry.1 = ms,
         None => costs.push((screen, ms)),
     }
+}
+
+/// The 3 × 3 grid's buttons under the job preview's printer, by row (top,
+/// middle, bottom) and column (left to right): idle and picked.
+fn job_place_cells() -> [[(&'static [LiveId], &'static [LiveId]); 3]; 3] {
+    [
+        [
+            (ids!(job_place_0_0), ids!(job_place_0_0_on)),
+            (ids!(job_place_0_1), ids!(job_place_0_1_on)),
+            (ids!(job_place_0_2), ids!(job_place_0_2_on)),
+        ],
+        [
+            (ids!(job_place_1_0), ids!(job_place_1_0_on)),
+            (ids!(job_place_1_1), ids!(job_place_1_1_on)),
+            (ids!(job_place_1_2), ids!(job_place_1_2_on)),
+        ],
+        [
+            (ids!(job_place_2_0), ids!(job_place_2_0_on)),
+            (ids!(job_place_2_1), ids!(job_place_2_1_on)),
+            (ids!(job_place_2_2), ids!(job_place_2_2_on)),
+        ],
+    ]
 }

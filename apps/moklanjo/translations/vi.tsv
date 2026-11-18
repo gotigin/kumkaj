@@ -192,7 +192,7 @@ snack_secs_save	Lưu thời gian thông báo
 snack_secs_saved	Đã lưu thời gian thông báo — {n} giây
 snack_secs_bad	Nhập số giây bằng chữ số (3–60)
 cancelled	Đã hủy
-cancelling	Cancelling…
+cancelling	Cancellingâ¦
 cancel	Hủy
 opening_client	Đang mở khách hàng…
 preparing_desk	Đang chuẩn bị bàn…
@@ -501,13 +501,18 @@ job_size	Cỡ chữ
 job_size_ph	vd. 18, 20, 26…
 test_receipt_format	Biên nhận kiểm tra
 test_label_format	Nhãn kiểm tra
-paper_heading	Giấy
+paper_heading	Giấy ảo
 paper_size	{w} × {h} mm
 paper_roll	cuộn {w} mm
 paper_not_set	chưa biết giấy
-paper_length_mm	Chiều dài (mm)
-printer_paper_help	Giấy của máy in này tính bằng mm. Chiều dài để trống là cuộn: mỗi phiếu dài bằng nội dung của nó. Tìm máy in điền giấy còn trống từ trình điều khiển của máy in (cuộn 80 mm khi không thể cho biết) và không bao giờ đổi giấy đã đặt.
-preview_help	Phiếu này trên giấy của máy in được chọn bên dưới, đúng như khi in ở đó: kích thước thật từ góc trên bên trái mà máy in tới được (xám: các mép không tới được), phiếu dài in trên nhiều tờ hơn, phần vượt mép giấy bị cắt. Chọn máy in chỉ đổi bản xem trước; giấy của mỗi máy in được đặt trong Máy in.
+virtual_width_mm	Chiều rộng ảo (mm)
+virtual_length_mm	Chiều dài ảo (mm)
+reported_width_mm	Chiều rộng được báo (mm)
+reported_length_mm	Chiều dài được báo (mm)
+reported_paper	Được báo: {paper}
+virtual_paper	Ảo: {paper}
+printer_paper_help	Được báo là giấy mà trình điều khiển của máy in này đang đặt; ứng dụng chỉ đọc nó, và “Không” nghĩa là không có trình điều khiển để hỏi. Ảo là giấy mà bạn cho biết thật sự đang nằm trong máy in, tính bằng mm; chiều dài để trống là cuộn. Máy in in trên giấy của chính nó; giấy ảo cho ứng dụng biết bao nhiêu phần trong đó là giấy thật, dùng cho bản xem trước, chiều dài trang và vị trí của phiếu. Tìm máy in điền giấy ảo còn trống và không bao giờ đổi giấy bạn đã đặt.
+preview_help	Phiếu này đúng như khi in trên máy in được chọn bên dưới, ở kích thước thật trên giấy ảo của máy. Phần trắng là nơi in, giấy xám nằm ngoài tầm của máy in, và mực mờ là phần bị cắt. Chín ô vuông là tờ giấy: chạm vào nơi phiếu cần nằm. Phiếu dài in tiếp sang các trang sau. Chọn máy in chỉ đổi bản xem trước.
 slip_col_width	Chiều rộng (mm)
 no_printer_assigned	Không có máy in
 printer_target_default	máy in mặc định
@@ -643,11 +648,11 @@ day_close_help	Ghi chốt ngày lưu tóm tắt này (và chênh lệch ngăn ti
 expenses_word	Chi phí
 feature_access_help	Quyền truy cập tính năng cho nhân viên đã chọn (nhấn sau khi thêm)
 footer_local	SQLite cục bộ · Miễn phí mãi mãi · Không đám mây
-fresh_book_moklanjo	Máy in
+fresh_book_moklanjo	Mới = danh mục trống (thêm mặt hàng sau). Sổ = nhập tồn kho đầu kỳ và ai đang nợ bạn ở bên dưới.
 fresh_selected	Đã chọn Fresh — danh mục trống. Chạm Done khi sẵn sàng.
 gross_word	Gộp
 how_start	Bạn muốn bắt đầu thế nào?
-later_country_pack	Máy in
+later_country_pack	Sau: Cài đặt → áp dụng gói quốc gia cho nhãn thuế và thanh toán.
 local_badge	CỤC BỘ
 measures_help_moklanjo	Cách đo bưu kiện tại quầy. Ghi kích thước và cân nặng theo đơn vị bạn dùng — chuẩn (cm, m, in, ft · kg, g, lb, oz) hoặc đơn vị riêng liên kết với cm / kg ở trên (trực tiếp hoặc qua đơn vị khác). Sổ luôn ghi kg. Để trống một trường để giữ nguyên.
 mix_type_hint_moklanjo	Ghi bao nhiêu ở mỗi loại (tiền mặt / UPI / thẻ / ghi nợ). Phải bằng hóa đơn. Ghi nợ cần khách hàng ở trên.

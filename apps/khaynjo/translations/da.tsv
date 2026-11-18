@@ -101,6 +101,19 @@ bill_item_col_sep	Kolonnelinjer
 slip_columns	Kolonner
 slip_col_header	Overskrift
 bill_line_logo	Logo
+bill_line_shop	Butik
+bill_line_address	Adresse
+bill_line_fssai	FSSAI
+bill_line_title	Titel
+bill_line_customer	Kunde
+bill_line_bill_no	Regningsnr.
+bill_line_time	Tid
+bill_line_cashier	Kasserer
+bill_line_table	Bord
+bill_line_items	Varer
+bill_line_total	I alt
+bill_line_footer	Sidefod
+bill_line_upi	UPI
 bill_logo_picture	Billede
 bill_logo_choose	Vælg billede
 bill_logo_remove	Fjern billede
@@ -128,6 +141,12 @@ bill_item_piece_off	Fra
 bill_total_qty	Antal i alt
 bill_total_subtotal	Subtotal
 bill_total_grand	Samlet total
+bill_total_number_under	Tal under
+bill_total_caption_under	Etiket under
+bill_total_own_line	Egen linje
+bill_total_caption_with	Ved tallet
+bill_total_caption_none	Ingen etiket
+bill_total_place_help	Egen linje udskriver denne total for sig selv. Under en kolonne udskrives tallet i den varekolonne, i denne linjes størrelse og vægt; totaler deler en række, indtil en kolonne er optaget, så begynder en ny række. Etiketten står ved tallet, under en anden kolonne eller udelades. Linjer for moms, service, afrunding og betaling følger Subtotal.
 reprint_incl	Med i udskrift
 reprint_skip	Spring over
 reprint_skip_meta	Spring genudskrift over
@@ -178,20 +197,20 @@ snack_secs_ph	Sekunder (3–60, standard 10)
 snack_secs_save	Gem beskedtid
 snack_secs_saved	Beskedtid gemt — {n} sekunder
 settings_sec_whatsapp	WhatsApp
-whatsapp_cloud_help	Use your own Meta WhatsApp Cloud API. Create a System User token with whatsapp_business_messaging (temporary dashboard tokens expire). Credentials stay on this Server only — never on extra tills. Accepted means Meta took the request, not that the guest received it.
-whatsapp_phone_id_ph	Phone Number ID
-whatsapp_token_ph	Access Token (leave blank to keep)
-whatsapp_template_ph	Bill template name (optional)
-whatsapp_template_lang_ph	Template language (e.g. en)
-whatsapp_enable	Enable
+whatsapp_cloud_help	Brug dit eget Meta WhatsApp Cloud API. Opret et System User-token med whatsapp_business_messaging (midlertidige tokens fra dashboardet udløber). Oplysningerne bliver kun på denne Server — aldrig på ekstra kasser. “Accepteret” betyder, at Meta tog imod anmodningen, ikke at gæsten modtog den.
+whatsapp_phone_id_ph	Telefonnummer-ID
+whatsapp_token_ph	Adgangstoken (lad stå tom for at beholde)
+whatsapp_template_ph	Navn på regningsskabelon (valgfri)
+whatsapp_template_lang_ph	Skabelonens sprog (f.eks. en)
+whatsapp_enable	Slå til
 whatsapp_disable	Off
-whatsapp_save	Save WhatsApp
-whatsapp_test	Test connection
-whatsapp_disconnect	Disconnect
+whatsapp_save	Gem WhatsApp
+whatsapp_test	Test forbindelsen
+whatsapp_disconnect	Afbryd forbindelsen
 whatsapp_send_bill	Send via WhatsApp
 whatsapp_consent	WhatsApp OK
-whatsapp_consent_help	Guest agreed to receive WhatsApp messages. A phone number alone is not consent.
-whatsapp_server_only	Configure WhatsApp on the shop Server device
+whatsapp_consent_help	Gæsten har sagt ja til at modtage WhatsApp-beskeder. Et telefonnummer alene er ikke samtykke.
+whatsapp_server_only	Sæt WhatsApp op på butikkens Server-enhed
 settings_sec_backup	Sikkerhedskopi og gendan
 settings_sec_diag	Diagnostik
 settings_sec_privacy	Privatliv
@@ -637,7 +656,7 @@ choose_device_use	Vælg Server eller Klient.
 paired_note	Parret. Lås op for at sælge, eller Opdater for det seneste.
 last_update_at	Seneste opdatering: {time}.
 pair_intro	Find serveren, eller skriv dens adresse og parringskode.
-pair_resume_hint	Already paired — enter your shop PIN, or Forget this shop to pair another.
+pair_resume_hint	Allerede parret — indtast butikkens PIN, eller tryk på “Glem denne butik” for at parre en anden.
 queue_waiting	Venter på at nå butikken ({n}):
 queue_tries	Forsøgt {n} gange · seneste svar: {e}
 save_backup_copy	Gem en kopi af sikkerhedskopien…
@@ -754,13 +773,18 @@ station_vps_dd	Printere til denne station
 station_vps_dd_n	{n} printer(e) · tryk for at ændre
 bill_printers_dd	Printere til regningen
 bill_printers_dd_n	{n} printer(e) til regningen · tryk for at ændre
-paper_heading	Papir
+paper_heading	Virtuelt papir
 paper_size	{w} × {h} mm
 paper_roll	{w} mm-rulle
 paper_not_set	papir endnu ikke kendt
-paper_length_mm	Længde (mm)
-printer_paper_help	Denne printers papir i mm. En tom Længde er en rulle: hver bon er lige så lang som sit indhold. Find printere udfylder tomt papir fra printerens driver (en 80 mm-rulle, når den ikke kan sige det) og ændrer aldrig papir, der allerede er sat.
-preview_help	Denne bon på papiret i printeren valgt nedenfor, som den udskrives der: i virkelig størrelse fra det øverste venstre hjørne, printeren kan nå (gråt: kanter den ikke kan), en lang bon på flere ark, alt ud over papirets kant skæres af. At vælge en printer ændrer kun eksemplet; hver printers papir sættes under Printere.
+virtual_width_mm	Virtuel bredde (mm)
+virtual_length_mm	Virtuel længde (mm)
+reported_width_mm	Rapporteret bredde (mm)
+reported_length_mm	Rapporteret længde (mm)
+reported_paper	Rapporteret: {paper}
+virtual_paper	Virtuelt: {paper}
+printer_paper_help	Rapporteret er det papir, som denne printers driver er indstillet til; appen læser det kun, og “—” betyder, at der ikke er nogen driver at spørge. Virtuelt er det papir, du siger faktisk ligger i printeren, i mm; en tom længde er en rulle. Printeren udskriver på sit eget papir; det virtuelle papir fortæller appen, hvor meget af det der er rigtigt papir, til forhåndsvisningen, sidelængden og bonens placering. Find printere udfylder et tomt virtuelt papir og ændrer aldrig et, du har indstillet.
+preview_help	Denne bon, som den udskrives på den printer, der er valgt nedenfor, i ægte størrelse på dens virtuelle papir. Hvidt er, hvor der udskrives, gråt papir er uden for printerens rækkevidde, og falmet blæk skæres væk. De ni felter er papiret: tryk der, hvor bonen skal sidde. En lang bon fortsætter på flere sider. At vælge en printer ændrer kun forhåndsvisningen.
 job_layout	Layout
 job_delivery	Hvordan jobbet sendes
 job_delivery_help	OS-dokument, rå bytes eller ESC/POS. Regningen og køkkenbonen har hver deres. Begge job kan gå til enhver printer som Find har gemt.
@@ -1266,8 +1290,8 @@ taxable_value	Skattepligtigt beløb
 gst_inside_price_note	({tax} inkl.)
 start_with_template	Start med vores menuskabelon
 template_heading	Vores menuskabelon
-template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
-template_download_shelf	Download photo shelf
+template_need_download	Hent den offentlige fotohylde med retter (~1.459 retter), og importér derefter manglende navne til din menu.
+template_download_shelf	Hent fotohylde
 template_info	{c} kategorier og {d} retter med foto, klar til at tilføje. Priser starter ved ₹0 — sæt dine bagefter.
 template_import	Importér hele skabelonen
 template_confirm	Tilføj {d} retter med deres kategorier? Retter du allerede har, bliver som de er.

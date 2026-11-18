@@ -44,7 +44,7 @@ restore_item	పునరుద్ధరించు
 empty_catalog	ఇంకా ఐటమ్‌లు లేవు.
 total	మొత్తం
 cash	నగదు
-upi	यूपीआई
+upi	UPI
 card	కార్డు
 credit	పార్టీలు
 clear	తుడిచివేయి
@@ -78,7 +78,7 @@ reprint_kot_needed	ముందు KOT పంపు — తర్వాత వ�
 reprint_kot_none_selected	పంపినవన్నీ దాటవేయబడ్డాయి — ప్రింట్ చేయడానికి «ప్రింట్‌లో» నొక్కండి
 reprint_kot_client	{place} కోసం మళ్లీ ముద్రించు ({n}) పంపారు — వంటగది సర్వర్ వద్ద ముద్రిస్తుంది
 print_cancelled_kot	రద్దు అన్నీ ప్రింట్
-print_cancelled_kot_ok	{n} रद्द छापे · {slips} पर्ची → {kitchens}
+print_cancelled_kot_ok	{n} రద్దయిన వంటకాలు ముద్రించబడ్డాయి · {slips} స్లిప్‌లు → {kitchens}
 print_cancelled_kot_needed	రద్దు వంటకాలున్న టేబుల్ తెరవండి
 print_cancelled_kot_none	ఈ ఆర్డర్‌లో రద్దు లేదు
 print_cancelled_kot_client	రద్దు ({n}) {place} పంపబడింది — సర్వర్‌లో ప్రింట్
@@ -101,6 +101,19 @@ bill_item_col_sep	నిలువు గీత
 slip_columns	నిలువు వరుసలు
 slip_col_header	శీర్షిక
 bill_line_logo	లోగో
+bill_line_shop	షాప్
+bill_line_address	చిరునామా
+bill_line_fssai	FSSAI
+bill_line_title	శీర్షిక
+bill_line_customer	కస్టమర్
+bill_line_bill_no	బిల్ నెం.
+bill_line_time	సమయం
+bill_line_cashier	క్యాషియర్
+bill_line_table	టేబుల్
+bill_line_items	వస్తువులు
+bill_line_total	మొత్తం
+bill_line_footer	ఫుటర్
+bill_line_upi	UPI
 bill_logo_picture	చిత్రం
 bill_logo_choose	చిత్రం ఎంచుకోండి
 bill_logo_remove	చిత్రం తీసివేయండి
@@ -128,6 +141,12 @@ bill_item_piece_off	ఆఫ్
 bill_total_qty	మొత్తం పరిమాణం
 bill_total_subtotal	ఉప మొత్తం
 bill_total_grand	మొత్తం
+bill_total_number_under	సంఖ్య దీని కింద
+bill_total_caption_under	లేబుల్ దీని కింద
+bill_total_own_line	సొంత వరుస
+bill_total_caption_with	సంఖ్యతో పాటు
+bill_total_caption_none	లేబుల్ లేదు
+bill_total_place_help	“సొంత వరుస” ఈ మొత్తాన్ని విడిగా ముద్రిస్తుంది. నిలువు వరుస కింద ఉంటే దాని సంఖ్య ఆ ఐటమ్ నిలువు వరుసలో, ఈ వరుస పరిమాణం మరియు మందంతో ముద్రించబడుతుంది; ఒక నిలువు వరుస నిండే వరకు మొత్తాలు ఒకే అడ్డు వరుసను పంచుకుంటాయి, తర్వాత కొత్త అడ్డు వరుస మొదలవుతుంది. లేబుల్ సంఖ్యతో పాటు, మరో నిలువు వరుస కింద వెళుతుంది, లేదా వదిలేయబడుతుంది. పన్ను, సేవ, రౌండింగ్ మరియు చెల్లింపు వరుసలు “ఉప మొత్తం” ను అనుసరిస్తాయి.
 reprint_incl	ప్రింట్‌లో
 reprint_skip	దాటవేయి
 reprint_skip_meta	రికవరీ ప్రింట్ దాటవేయి
@@ -178,20 +197,20 @@ snack_secs_ph	సెకన్లు (3–60, డిఫాల్ట్ 10)
 snack_secs_save	హెచ్చరిక సమయం సేవ్ చేయి
 snack_secs_saved	హెచ్చరిక సమయం సేవ్ అయింది — {n} సెకన్లు
 settings_sec_whatsapp	WhatsApp
-whatsapp_cloud_help	Use your own Meta WhatsApp Cloud API. Create a System User token with whatsapp_business_messaging (temporary dashboard tokens expire). Credentials stay on this Server only — never on extra tills. Accepted means Meta took the request, not that the guest received it.
-whatsapp_phone_id_ph	Phone Number ID
-whatsapp_token_ph	Access Token (leave blank to keep)
-whatsapp_template_ph	Bill template name (optional)
-whatsapp_template_lang_ph	Template language (e.g. en)
-whatsapp_enable	Enable
+whatsapp_cloud_help	మీ సొంత Meta WhatsApp Cloud API‌ని ఉపయోగించండి. whatsapp_business_messaging ఉన్న System User టోకెన్‌ను సృష్టించండి (డ్యాష్‌బోర్డ్ తాత్కాలిక టోకెన్‌ల గడువు ముగుస్తుంది). ఈ వివరాలు ఈ సర్వర్‌లో మాత్రమే ఉంటాయి — అదనపు టిల్‌లలో ఎప్పుడూ ఉండవు. “అంగీకరించబడింది” అంటే Meta అభ్యర్థనను తీసుకుంది అని అర్థం, అతిథికి సందేశం అందింది అని కాదు.
+whatsapp_phone_id_ph	ఫోన్ నంబర్ ID
+whatsapp_token_ph	యాక్సెస్ టోకెన్ (అదే ఉంచడానికి ఖాళీగా వదిలేయండి)
+whatsapp_template_ph	బిల్ టెంప్లేట్ పేరు (ఐచ్ఛికం)
+whatsapp_template_lang_ph	టెంప్లేట్ భాష (ఉదా. en)
+whatsapp_enable	ఆన్ చేయి
 whatsapp_disable	Off
-whatsapp_save	Save WhatsApp
-whatsapp_test	Test connection
-whatsapp_disconnect	Disconnect
-whatsapp_send_bill	Send via WhatsApp
-whatsapp_consent	WhatsApp OK
-whatsapp_consent_help	Guest agreed to receive WhatsApp messages. A phone number alone is not consent.
-whatsapp_server_only	Configure WhatsApp on the shop Server device
+whatsapp_save	WhatsApp సేవ్ చేయి
+whatsapp_test	కనెక్షన్ పరీక్షించు
+whatsapp_disconnect	డిస్‌కనెక్ట్ చేయి
+whatsapp_send_bill	WhatsApp ద్వారా పంపు
+whatsapp_consent	WhatsApp సరే
+whatsapp_consent_help	అతిథి WhatsApp సందేశాలు అందుకోవడానికి అంగీకరించారు. ఫోన్ నంబర్ ఉండటం మాత్రమే అంగీకారం కాదు.
+whatsapp_server_only	షాప్ సర్వర్ పరికరంలో WhatsApp‌ను సెట్ చేయండి
 settings_sec_backup	బ్యాకప్ & పునరుద్ధరణ
 settings_sec_diag	డయాగ్నస్టిక్స్
 settings_sec_privacy	గోప్యత
@@ -637,7 +656,7 @@ choose_device_use	ఈ పరికరాన్ని ఎలా వాడాల�
 paired_note	జత అయింది. అమ్మడానికి అన్‌లాక్ చేయండి, లేదా షాప్ నుండి తాజా వివరాలకు రిఫ్రెష్ చేయండి.
 last_update_at	షాప్ నుండి చివరి అప్‌డేట్: {time}.
 pair_intro	సర్వర్‌ను కనుగొనండి, లేదా దాని చిరునామా, జత కోడ్ టైప్ చేయండి.
-pair_resume_hint	Already paired — enter your shop PIN, or Forget this shop to pair another.
+pair_resume_hint	ఇప్పటికే జత చేయబడింది — మీ షాప్ PIN నమోదు చేయండి, లేదా వేరే షాప్‌ను జత చేయడానికి “ఈ షాప్‌ను మర్చిపో” నొక్కండి.
 queue_waiting	షాప్‌కు చేరడానికి వేచి ఉన్నాయి ({n}):
 queue_tries	{n} సార్లు ప్రయత్నం · చివరి జవాబు: {e}
 save_backup_copy	బ్యాకప్ కాపీ సేవ్ చేయి…
@@ -754,13 +773,18 @@ station_vps_dd	ఈ స్టేషన్ ప్రింటర్లు
 station_vps_dd_n	{n} ప్రింటర్లు · మార్చడానికి నొక్కండి
 bill_printers_dd	బిల్లు ప్రింటర్లు
 bill_printers_dd_n	బిల్లు కోసం {n} ప్రింటర్లు · మార్చడానికి నొక్కండి
-paper_heading	కాగితం
+paper_heading	వర్చువల్ కాగితం
 paper_size	{w} × {h} mm
 paper_roll	{w} mm రోల్
 paper_not_set	కాగితం ఇంకా తెలియదు
-paper_length_mm	పొడవు (mm)
-printer_paper_help	ఈ ప్రింటర్ కాగితం mm లో. ఖాళీ పొడవు అంటే రోల్: ప్రతి స్లిప్ దాని విషయమంత పొడవు ఉంటుంది. ప్రింటర్లను కనుగొను ఖాళీ కాగితాన్ని ప్రింటర్ డ్రైవర్ నుండి నింపుతుంది (చెప్పలేకపోతే 80 mm రోల్) మరియు ఇప్పటికే సెట్ చేసినదాన్ని ఎప్పుడూ మార్చదు.
-preview_help	కింద ఎంచుకున్న ప్రింటర్ కాగితంపై ఈ స్లిప్, అక్కడ ముద్రించినట్లే: ప్రింటర్ చేరే పై ఎడమ మూల నుండి నిజమైన పరిమాణంలో (బూడిద: చేరని అంచులు), పొడవైన స్లిప్ మరిన్ని పేజీలపై, కాగితం అంచు దాటినదంతా కత్తిరించబడుతుంది. ప్రింటర్‌ను ఎంచుకుంటే ప్రివ్యూ మాత్రమే మారుతుంది; ప్రతి ప్రింటర్ కాగితం ప్రింటర్లు లో సెట్ చేయబడుతుంది.
+virtual_width_mm	వర్చువల్ వెడల్పు (mm)
+virtual_length_mm	వర్చువల్ పొడవు (mm)
+reported_width_mm	నివేదించిన వెడల్పు (mm)
+reported_length_mm	నివేదించిన పొడవు (mm)
+reported_paper	నివేదించినది: {paper}
+virtual_paper	వర్చువల్: {paper}
+printer_paper_help	నివేదించినది అంటే ఈ ప్రింటర్ డ్రైవర్ సెట్ చేయబడిన కాగితం; యాప్ దాన్ని చదవడం మాత్రమే చేస్తుంది, “లేదు” అంటే అడగడానికి డ్రైవర్ లేదని అర్థం. వర్చువల్ అంటే ప్రింటర్‌లో నిజంగా ఉందని మీరు చెప్పే కాగితం, mm లో; ఖాళీ పొడవు అంటే రోల్. ప్రింటర్ తన సొంత కాగితంపై ముద్రిస్తుంది; అందులో ఎంత నిజమైన కాగితమో వర్చువల్ కాగితం యాప్‌కు చెబుతుంది, ప్రివ్యూ, పేజీ పొడవు మరియు స్లిప్ స్థానం కోసం. ప్రింటర్లను కనుగొను ఖాళీ వర్చువల్ కాగితాన్ని నింపుతుంది మరియు మీరు సెట్ చేసినదాన్ని ఎప్పుడూ మార్చదు.
+preview_help	ఈ స్లిప్ కింద ఎంచుకున్న ప్రింటర్‌పై ముద్రించినట్లే, దాని వర్చువల్ కాగితంపై నిజమైన పరిమాణంలో. తెలుపు చోట ముద్రిస్తుంది, బూడిద కాగితాన్ని ప్రింటర్ చేరదు, మరియు వెలిసిన సిరా కత్తిరించబడుతుంది. తొమ్మిది గడులే కాగితం: స్లిప్ ఉండాల్సిన చోట ట్యాప్ చేయండి. పొడవైన స్లిప్ మరిన్ని పేజీలకు వెళుతుంది. ప్రింటర్‌ను ఎంచుకుంటే ప్రివ్యూ మాత్రమే మారుతుంది.
 job_layout	లేఅవుట్
 job_delivery	పని ఎలా పంపబడుతుంది
 job_delivery_help	OS డాక్యుమెంట్, ముడి బైట్లు, లేదా ESC/POS. బిల్లు, వంటగది టికెట్ రెండూ వాటివి అవి ఉంచుకుంటాయి. ఏ పని అయినా వెతుకు సేవ్ చేసిన ఏ ప్రింటర్‌కైనా వెళ్లవచ్చు.
@@ -1040,7 +1064,7 @@ book_kind_today	ఈరోజు పుస్తకం
 book_kind_month	ఈ నెల పుస్తకం
 book_kind_aging	బకాయి / డెబిట్-క్రెడిట్
 book_kind_balance	బ్యాలెన్స్ షీట్
-order_help	ఓపెన్ ఆర్డర్‌ను ఎంచుకోండి, లేదా టేబుల్‌ను ఎంచుకుని కొత్తది ప్రారంభించండి. సిద్ధంగా ఉన్న వస్తువులను నొక్కండి, KOT పంపండి, ఒకటి లేదా అంతకంటే ఎక్కువ వస్తువులకు బిల్లు వేయండి, బిల్లును విభజించండి మరియు చెల్లింపు పరిష్కరించండి.
+order_help	జోడించడానికి ఒక ఐటెమ్‌ను నొక్కండి.
 floor_help	ప్రతి టేబుల్ అతిథులు కూర్చున్నారా, వారి ఓపెన్ బిల్లు ఏమిటి, తదుపరి సేవ ఎవరికి అవసరమో చూపిస్తుంది.
 kitchen_help	ప్రతి వేరియంట్ లేదా ప్రతి వస్తువు వారీగా సిద్ధమైన పరిమాణాన్ని ట్రాక్ చేయండి — KOTలో మీకు నచ్చినట్లు నమోదు చేయండి.
 kitchen_empty	ప్రస్తుతం ఏమీ ఓపెన్‌గా లేదు.
@@ -1238,7 +1262,7 @@ on_your_menu	మీ మెనూలో
 edit	సవరించు
 schemes	స్కీమ్‌లు / ఆఫర్‌లు
 schemes_help	X కొని Y పొందండి — సెటిల్‌లో ఆటో. ఉదా. Buy 2 Thali get 1 Chaas
-scheme_bogo_ph	Buy 2 Thali get 1 Chaas
+scheme_bogo_ph	2 థాలీ కొంటే 1 చాస్ ఉచితం
 add_scheme	BOGO జోడించు
 schedule_ph	సమయం / హ్యాపీ అవర్ — Mon-Fri 07:00-11:00 లేదా HappyHour 17:00-19:00=150
 upi_qr	UPI QR
@@ -1266,8 +1290,8 @@ taxable_value	పన్ను విలువ
 gst_inside_price_note	({tax} లోపల)
 start_with_template	మా మెనూ టెంప్లేట్‌తో ప్రారంభించండి
 template_heading	మా మెనూ టెంప్లేట్
-template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
-template_download_shelf	Download photo shelf
+template_need_download	వంటకాల పబ్లిక్ ఫోటో షెల్ఫ్‌ను (~1,459 వంటకాలు) డౌన్‌లోడ్ చేసి, తర్వాత లేని పేర్లను మీ మెనులోకి దిగుమతి చేయండి.
+template_download_shelf	ఫోటో షెల్ఫ్ డౌన్‌లోడ్ చేయి
 template_info	{c} వర్గాలు, {d} వంటకాలు ఫోటోలతో సిద్ధం. ధర ₹0 — తర్వాత మీ ధర పెట్టండి.
 template_import	పూర్తి టెంప్లేట్ దిగుమతి
 template_confirm	{d} వంటకాలను వాటి వర్గాలతో చేర్చాలా? మీ దగ్గర ఉన్నవి అలాగే ఉంటాయి.

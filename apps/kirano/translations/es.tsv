@@ -19,8 +19,8 @@ reports_aging	Pendiente / Dr-Cr
 reports_balance_sheet	Balance general
 reports	Informes
 undo	Deshacer
-stock_minus	− Stock
-stock_plus	+ Stock
+stock_minus	− Existencias
+stock_plus	+ Existencias
 settle_cash	Cobrar efectivo
 settle_card	Cobrar tarjeta
 items	Artículos
@@ -67,13 +67,19 @@ bill_item_amount	Importe
 bill_item_note	Nota del artículo
 bill_item_col_sep	Líneas de columna
 slip_col_width	Ancho (mm)
-paper_heading	Papel
+paper_heading	Papel virtual
 paper_size	{w} × {h} mm
 paper_roll	rollo de {w} mm
 paper_not_set	papel aún desconocido
-paper_length_mm	Largo (mm)
-printer_paper_help	El papel de esta impresora en mm. Un Largo vacío es un rollo: cada ticket es tan largo como su contenido. Buscar impresoras rellena el papel vacío con el del controlador de la impresora (un rollo de 80 mm si no puede decirlo) y nunca cambia uno ya definido.
-preview_help	Este ticket sobre el papel de la impresora elegida abajo, tal como se imprime allí: a tamaño real desde la esquina superior izquierda que alcanza la impresora (gris: bordes que no alcanza), un ticket largo en más hojas, todo lo que pasa del borde del papel se recorta. Elegir una impresora solo cambia la vista previa; el papel de cada impresora se define en Impresoras.
+na	N/D
+virtual_width_mm	Ancho virtual (mm)
+virtual_length_mm	Largo virtual (mm)
+reported_width_mm	Ancho informado (mm)
+reported_length_mm	Largo informado (mm)
+reported_paper	Informado: {paper}
+virtual_paper	Virtual: {paper}
+printer_paper_help	Informado es el papel al que está ajustado el controlador de esta impresora; la app solo lo lee, y N/D significa que no hay controlador al que preguntar. Virtual es el papel que tú dices que hay realmente en la impresora, en mm; un largo vacío es un rollo. La impresora imprime en su propio papel; el papel virtual le dice a la app cuánto de él es papel real, para la vista previa, el largo de página y el lugar del ticket. Buscar impresoras rellena un papel virtual vacío y nunca cambia el que tú has definido.
+preview_help	Este ticket tal como se imprime en la impresora elegida abajo, a tamaño real sobre su papel virtual. El blanco es donde imprime, el papel gris queda fuera del alcance de la impresora y la tinta atenuada se corta. Los nueve cuadros son el papel: toca donde debe ir el ticket. Un ticket largo sigue en más páginas. Elegir una impresora solo cambia la vista previa.
 slip_col_start	Espacio inicial (px)
 slip_col_end	Espacio final (px)
 slip_columns_help	El ancho de cada columna incluye su espacio inicial y final. El texto se ajusta dentro de su columna; lo que sobrepasa el ancho del contenido se recorta, en papel y en la vista previa.
@@ -88,6 +94,12 @@ bill_item_piece_off	No
 bill_total_qty	Cant. total
 bill_total_subtotal	Subtotal
 bill_total_grand	Total
+bill_total_number_under	Número bajo
+bill_total_caption_under	Etiqueta bajo
+bill_total_own_line	Línea propia
+bill_total_caption_with	Con el número
+bill_total_caption_none	Sin etiqueta
+bill_total_place_help	Línea propia imprime este total por sí solo. Bajo una columna, su número se imprime en esa columna de artículos, con el tamaño y el grosor de esta línea; los totales comparten una fila hasta que una columna queda ocupada, y entonces empieza una fila nueva. La etiqueta va con el número, bajo otra columna o se omite. Las líneas de impuesto, servicio, redondeo y pago siguen a Subtotal.
 kot_unassigned	Sin asignar
 settings_hub_help	Abre un área a la vez: menos desplazamiento, opciones más claras.
 settings_sec_language	Idioma y moneda
@@ -551,11 +563,11 @@ currency_use_help	Desplázate y toca Usar para cualquier moneda compatible.
 day_close_help	Registrar un cierre del día guarda este resumen (y la diferencia de caja si se contó) en el registro de auditoría. No detiene las ventas.
 expenses_word	Gastos
 feature_access_help	Acceso a funciones del personal seleccionado (toca tras añadir)
-fresh_book_kirano	Impresoras
+fresh_book_kirano	Nuevo = catálogo vacío (añada artículos después). Libro = escriba abajo el stock inicial y quién le debe.
 fresh_selected	Fresh elegido: el catálogo queda vacío. Toca Done cuando estés listo.
 gross_word	Bruto
 how_start	¿Cómo quieres empezar?
-later_country_pack	Impresoras
+later_country_pack	Después: Ajustes → aplique el paquete de su país para las etiquetas de impuestos y pago.
 local_badge	LOCAL
 mix_type_hint_kirano	Divide entre efectivo / UPI / tarjeta / crédito si hace falta. El crédito necesita un cliente arriba.
 money_in_sales	Dinero entrante (ventas)
@@ -643,7 +655,7 @@ amount_received_ph	Importe recibido
 amount_we_pay_ph	Importe que pagamos
 business_name_ph	Nombre del negocio
 code_bag_ph	Código (bag)
-conv_factor_ph	Factor (25 = 1 bag → 25 kg)
+conv_factor_ph	Factor (25 = 1 saco → 25 kg)
 country_code_ph	Código de país ej. IN, GB, US, AE, BR
 credit_khata_amount_ph	Importe a crédito / cuenta
 credit_limit_ph	Límite de crédito (0 = ninguno)
@@ -676,7 +688,7 @@ book_kind_today	Libro de hoy
 book_kind_month	Libro de este mes
 book_kind_aging	Pendiente / débito-crédito
 book_kind_balance	Balance general
-order_help	Elige un pedido abierto o una mesa para empezar uno nuevo. Toca artículos preparados, envía el KOT, factura uno o más artículos, divide la cuenta y cobra.
+order_help	Toca un artículo para añadirlo.
 categories_help	Una categoría indica a qué parte del menú pertenece un plato: aperitivos, plato principal o biryani. Crea categorías a tu manera: elige nuestros nombres, renómbralos o añade los tuyos.
 dish_search_ph	Buscar artículos o código corto…
 sizes_as_items_ph	Tamaños como productos aparte (opcional) — Media=120, Entera=200
@@ -723,6 +735,20 @@ fssai_ph	N.º de licencia FSSAI / de la tienda (opcional)
 bill_footer_ph	Pie (ej. Gracias, vuelva pronto)
 kot_field_on	mostrar
 kot_field_off	ocultar
+kot_field_show	Mostrar
+kot_field_hide	Ocultar
+bill_line_shop	Tienda
+bill_line_address	Dirección
+bill_line_fssai	FSSAI
+bill_line_title	Título
+bill_line_customer	Cliente
+bill_line_bill_no	N.º de cuenta
+bill_line_time	Hora
+bill_line_cashier	Cajero
+bill_line_items	Artículos
+bill_line_total	Total
+bill_line_footer	Pie
+bill_line_upi	UPI
 kot_weight_light	Fina
 bill_kot_panel_help	Diseño de la cuenta y ancho del contenido. El cajero es quien emitió o cobró la cuenta — la historia completa de la venta queda en los libros.
 std_size_ph	p. ej. 18, 20, 26…
@@ -830,10 +856,10 @@ lane_declared_label	Factura fiscal
 lane_owner_label	Nota de caja
 money_lane_bill	Factura: {lane}
 
-removing	Removing…
-removed	Removed
-updating_order	Updating…
-order_updated	Order updated
+removing	Eliminando…
+removed	Eliminado
+updating_order	Actualizando…
+order_updated	Pedido actualizado
 sel_copy	Copiar
 sel_select_all	Seleccionar todo
 sel_copied	Copiado

@@ -67,13 +67,19 @@ bill_item_amount	رقم
 bill_item_note	شيون نوٽ
 bill_item_col_sep	ڪالمن جون ضابطيون
 slip_col_width	ويڪر (mm)
-paper_heading	ڪاغذ
+paper_heading	ورچوئل ڪاغذ
 paper_size	{w} × {h} mm
 paper_roll	{w} mm رول
 paper_not_set	ڪاغذ اڃا معلوم ناهي
-paper_length_mm	ڊيگهه (mm)
-printer_paper_help	هن پرنٽر جو ڪاغذ mm ۾. خالي ڊيگهه جو مطلب رول: هر پرچي پنهنجي مواد جيتري ڊگهي ٿيندي آهي. پرنٽر ڳوليو خالي ڪاغذ پرنٽر جي ڊرائيور مان ڀري ٿو (نه ٻڌائي سگهي ته 80 mm رول) ۽ اڳ ۾ مقرر ڪاغذ ڪڏهن به نه بدلائيندو آهي.
-preview_help	هيٺ چونڊيل پرنٽر جي ڪاغذ تي هيءَ پرچي، جيئن اتي ڇپجي ٿي: پرنٽر جتي پهچي ٿو ان مٿئين کاٻي ڪنڊ کان اصل ماپ ۾ (ڀورو: ڪنارا جتي نٿو پهچي)، ڊگهي پرچي وڌيڪ صفحن تي، ڪاغذ جي ڪناري کان اڳتي سڀ ڪٽجي وڃي ٿو. پرنٽر چونڊڻ سان رڳو اڳ-نظارو بدلجي ٿو؛ هر پرنٽر جو ڪاغذ پرنٽر ۾ مقرر ٿئي ٿو.
+na	N/A
+virtual_width_mm	ورچوئل ويڪر (mm)
+virtual_length_mm	ورچوئل ڊيگهه (mm)
+reported_width_mm	ٻڌايل ويڪر (mm)
+reported_length_mm	ٻڌايل ڊيگهه (mm)
+reported_paper	ٻڌايل: {paper}
+virtual_paper	ورچوئل: {paper}
+printer_paper_help	ٻڌايل اهو ڪاغذ آهي جنهن تي هن پرنٽر جو ڊرائيور مقرر آهي؛ ايپ ان کي رڳو پڙهي ٿي، ۽ N/A جو مطلب آهي ته پڇڻ لاءِ ڪو ڊرائيور ناهي. ورچوئل اهو ڪاغذ آهي جيڪو توهان چئو ٿا ته واقعي پرنٽر ۾ آهي، mm ۾؛ خالي ڊيگهه جو مطلب رول آهي. پرنٽر پنهنجي ڪاغذ تي ڇاپي ٿو؛ ورچوئل ڪاغذ ايپ کي ٻڌائي ٿو ته ان مان ڪيترو اصل ڪاغذ آهي، اڳ-نظاري، صفحي جي ڊيگهه ۽ پرچي جي جاءِ لاءِ. پرنٽر ڳوليو خالي ورچوئل ڪاغذ ڀري ٿو ۽ توهان جو مقرر ڪيل ڪڏهن به نه بدلائيندو آهي.
+preview_help	هيءَ پرچي جيئن هيٺ چونڊيل پرنٽر تي ڇپجي ٿي، ان جي ورچوئل ڪاغذ تي اصل ماپ ۾. اڇي جاءِ تي ڇپجي ٿو، ڀوري ڪاغذ تائين پرنٽر نٿو پهچي، ۽ ڦڪي مس ڪٽجي وڃي ٿي. نو خانا ڪاغذ آهن: جتي پرچي هجڻ گهرجي اتي ٽيپ ڪريو. ڊگهي پرچي وڌيڪ صفحن تي وڃي ٿي. پرنٽر چونڊڻ سان رڳو اڳ-نظارو بدلجي ٿو.
 slip_col_start	شروعاتي جاءِ (px)
 slip_col_end	آخري جاءِ (px)
 slip_columns_help	هر ڪالم جي ويڪر ۾ ان جي شروعاتي ۽ آخري جاءِ شامل آهي. متن پنهنجي ڪالم اندر ويڙهجي ٿو؛ مواد جي ويڪر کان ٻاهر جيڪو آهي اهو ڪاغذ ۽ اڳ ڏيک ٻنهي ۾ ڪٽجي ٿو.
@@ -88,6 +94,12 @@ bill_item_piece_off	بند
 bill_total_qty	ڪل مقدار
 bill_total_subtotal	ذيلي ڪل
 bill_total_grand	مڪمل ڪل
+bill_total_number_under	نمبر هن جي هيٺان
+bill_total_caption_under	ليبل هن جي هيٺان
+bill_total_own_line	پنهنجي لائن
+bill_total_caption_with	نمبر سان گڏ
+bill_total_caption_none	ليبل ناهي
+bill_total_place_help	“پنهنجي لائن” هي ڪل اڪيلو ڇاپي ٿو. ڪالم جي هيٺان هجي ته ان جو نمبر ان ئي شين واري ڪالم ۾، هن لائن جي ماپ ۽ ٿولهه ۾ ڇپجي ٿو؛ جيستائين ڪو ڪالم ڀرجي نه وڃي ڪل هڪ ئي قطار ورهائين ٿا، پوءِ نئين قطار شروع ٿئي ٿي. ليبل نمبر سان گڏ، ٻئي ڪالم جي هيٺان وڃي ٿو، يا ڇڏيو وڃي ٿو. ٽيڪس، سروس، راؤنڊنگ ۽ ادائگي جون لائنون “ذيلي ڪل” جي پٺيان هلن ٿيون.
 kot_unassigned	اڻ مقرر ڪيل
 settings_hub_help	هڪ وقت ۾ هڪ ئي علائقو کوليو — گھٽ اسڪالرنگ، واضح چونڊون.
 settings_sec_language	ٻولي ۽ ڪرنسي
@@ -723,6 +735,20 @@ fssai_ph	FSSAI / دڪان جو لائسنس نمبر. (اختياري)
 bill_footer_ph	فوٽر (مثال طور مهرباني، ٻيهر اچو)
 kot_field_on	ڏيکاريو
 kot_field_off	لڪايو
+kot_field_show	ڏيکاريو
+kot_field_hide	لڪايو
+bill_line_shop	دڪان
+bill_line_address	پتو
+bill_line_fssai	FSSAI
+bill_line_title	عنوان
+bill_line_customer	گراهڪ
+bill_line_bill_no	بل نمبر
+bill_line_time	وقت
+bill_line_cashier	ڪيشيئر
+bill_line_items	شيون
+bill_line_total	ڪل
+bill_line_footer	فوٽر
+bill_line_upi	UPI
 kot_weight_light	روشني
 bill_kot_panel_help	بل جي ترتيب ۽ مواد جي چوٽي. ڪيشئر اهو آهي جيڪو بل جاري يا آباد ڪيو - مڪمل وڪرو ڪهاڻي ڪتابن ۾ رهي ٿي.
 std_size_ph	مثال طور 18، 20، 26...
@@ -830,10 +856,10 @@ lane_declared_label	ٽيڪس انوائس
 lane_owner_label	نقد ميمو
 money_lane_bill	بل: {lane}
 
-removing	Removing…
-removed	Removed
-updating_order	Updating…
-order_updated	Order updated
+removing	هٽائي رهيا آهيون…
+removed	هٽايو ويو
+updating_order	تازو ٿي رهيو آهي…
+order_updated	آرڊر تازو ٿيو
 sel_copy	ڪاپي ڪريو
 sel_select_all	سڀ چونڊيو
 sel_copied	ڪاپي ٿي وئي

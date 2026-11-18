@@ -79,7 +79,7 @@ reprint_kot_none_selected	Elke gestuurde gereg word oorgeslaan — tik op In pri
 reprint_kot_client	Druk weer ({n}) vir {place} gestuur — keukendruk by die Bediener
 print_cancelled_kot	Druk alle afgeskafde
 print_cancelled_kot_ok	Gedruk {n} afgeskafde gereg(te) · {slips} skuif(s) → {kitchens}
-print_cancelled_kot_needed	Open a table with cancelled dishes first
+print_cancelled_kot_needed	Maak eers ’n tafel met gekanselleerde geregte oop
 print_cancelled_kot_none	Geen afgeskrapde maaltye op hierdie bestelling nie
 print_cancelled_kot_client	Druk afgeskrap ({n}) vir {place} gestuur – keukendruk by die bediener
 kot_banner	Vriendelike banier
@@ -101,6 +101,19 @@ bill_item_col_sep	Kolom reëls
 slip_columns	Kolomme
 slip_col_header	Kop
 bill_line_logo	Logo
+bill_line_shop	Winkel
+bill_line_address	Adres
+bill_line_fssai	FSSAI
+bill_line_title	Titel
+bill_line_customer	Klant
+bill_line_bill_no	Faktuurnr.
+bill_line_time	Tyd
+bill_line_cashier	Kasier
+bill_line_table	Tafel
+bill_line_items	Items
+bill_line_total	Totaal
+bill_line_footer	Voetstuk
+bill_line_upi	UPI
 bill_logo_picture	Prent
 bill_logo_choose	Kies prent
 bill_logo_remove	Verwyder prent
@@ -128,6 +141,12 @@ bill_item_piece_off	Uit
 bill_total_qty	Totaal aantal
 bill_total_subtotal	Subtotaal
 bill_total_grand	Grand totaal
+bill_total_number_under	Getal onder
+bill_total_caption_under	Etiket onder
+bill_total_own_line	Eie lyn
+bill_total_caption_with	By die getal
+bill_total_caption_none	Geen etiket
+bill_total_place_help	Eie lyn druk hierdie totaal op sy eie. Onder 'n kolom word sy getal in daardie itemkolom gedruk, in hierdie lyn se grootte en gewig; totale deel 'n ry totdat 'n kolom beset is, dan begin 'n nuwe ry. Die etiket gaan by die getal, onder 'n ander kolom, of word weggelaat. Belasting-, diens-, afrondings- en betalingslyne volg Subtotaal.
 reprint_incl	In druk
 reprint_skip	Oorskiet
 reprint_skip_meta	Oorskiet hersteldruk
@@ -178,20 +197,20 @@ snack_secs_ph	Sekondes (3–60, standaard 10)
 snack_secs_save	Slaan waarskuwingstyd op
 snack_secs_saved	Waarskuwingstyd opgeslaan — {n} sekondes
 settings_sec_whatsapp	WhatsApp
-whatsapp_cloud_help	Use your own Meta WhatsApp Cloud API. Create a System User token with whatsapp_business_messaging (temporary dashboard tokens expire). Credentials stay on this Server only — never on extra tills. Accepted means Meta took the request, not that the guest received it.
-whatsapp_phone_id_ph	Phone Number ID
-whatsapp_token_ph	Access Token (leave blank to keep)
-whatsapp_template_ph	Bill template name (optional)
-whatsapp_template_lang_ph	Template language (e.g. en)
-whatsapp_enable	Enable
+whatsapp_cloud_help	Gebruik jou eie Meta WhatsApp Cloud API. Skep ’n System User-teken met whatsapp_business_messaging (tydelike tekens van die paneelbord verval). Die besonderhede bly net op hierdie Bediener — nooit op bykomende kasregisters nie. “Aanvaar” beteken Meta het die versoek geneem, nie dat die gas dit ontvang het nie.
+whatsapp_phone_id_ph	Telefoonnommer-ID
+whatsapp_token_ph	Toegangsteken (laat leeg om dit te behou)
+whatsapp_template_ph	Naam van rekeningsjabloon (opsioneel)
+whatsapp_template_lang_ph	Sjabloontaal (bv. en)
+whatsapp_enable	Aktiveer
 whatsapp_disable	Off
-whatsapp_save	Save WhatsApp
-whatsapp_test	Test connection
-whatsapp_disconnect	Disconnect
-whatsapp_send_bill	Send via WhatsApp
+whatsapp_save	Stoor WhatsApp
+whatsapp_test	Toets verbinding
+whatsapp_disconnect	Ontkoppel
+whatsapp_send_bill	Stuur via WhatsApp
 whatsapp_consent	WhatsApp OK
-whatsapp_consent_help	Guest agreed to receive WhatsApp messages. A phone number alone is not consent.
-whatsapp_server_only	Configure WhatsApp on the shop Server device
+whatsapp_consent_help	Die gas het ingestem om WhatsApp-boodskappe te ontvang. ’n Telefoonnommer alleen is nie toestemming nie.
+whatsapp_server_only	Stel WhatsApp op die winkel se Bediener-toestel op
 settings_sec_backup	Back-up en herstel
 settings_sec_diag	Diagnostiek
 settings_sec_privacy	Privaatheid
@@ -318,7 +337,7 @@ advance	Vooruit
 owner	Eienaar
 staff	Personeel
 photo	Foto
-auto	Auto
+auto	Outomaties
 prev	Vorige
 next	Volgende
 ok	OK
@@ -380,7 +399,7 @@ add_station	Voeg stasie by
 add_table	Voeg tafel by
 add_unit	Voeg eenheid by
 add_use_name	Gebruik hierdie naam
-allow_extra_tills	Toegelaat ekstra kasregisters
+allow_extra_tills	Laat ekstra kasregisters toe
 amend	Wysig
 apply_country_pack	Landpak toepas
 datetime_appearance	Datum- en tydweergawe
@@ -509,7 +528,7 @@ expense_heading	Uitgawe
 export_day	Exporteer dag
 extra_note_bill_ph	Aanvullende nota op hierdie rekening / verkoop
 extra_note_expense_ph	Aanvullende nota op laaste uitgawe
-extra_tills_heading	Bykomende lades
+extra_tills_heading	Bykomende kasregisters
 other_devices_help_heading	Stel ander toestelle op
 other_devices_help	Op hierdie toestel (Bediener): Ander toestelle → Laat bykomende lades toe. Onthou die paaringskode en Wi-Fi-adres. Tik Toelaat ander toestelle om te koppel as dit verskyn. Op 'n rekenaar, tik Begin met hierdie rekenaar. Op elke ander toestel: installeer die app, kies Kliëntmodus, vind die winkel se bediener (of tik die adres), voer die paaringskode in, Koppel nou. Bestellings wag op die toestel as Wi-Fi afbreek en gaan wanneer die Bediener weer antwoord. Keukendrukkers word op die Bediener ingestel (Instellings → Drukkers) – bykomende lades stuur KOT's daarheen.
 forget_shop	Vergeet hierdie winkel
@@ -617,7 +636,7 @@ pair_copied	Pareringskode gekopieer
 kot_waiting	Wag om te stuur
 lan_offline_waiting	Winkel se server onbereikbaar · {n} wag
 lan_connecting	Koppel aan winkel…
-lan_live	Live
+lan_live	Regstreeks
 lan_sending	{n} stuur
 lan_sign_in_to_send	Melder weer aan om {n} te stuur
 lan_pair_again	Paar hierdie toestel weer
@@ -637,7 +656,7 @@ choose_device_use	Kies Server of Kliënt.
 paired_note	Gepaar. Ontgrendel om te verkoop, of Ververs vir die nuutste.
 last_update_at	Laaste update: {time}.
 pair_intro	Vind die server, of tipe sy adres en paar kode.
-pair_resume_hint	Already paired — enter your shop PIN, or Forget this shop to pair another.
+pair_resume_hint	Reeds gekoppel — tik jou winkel se PIN in, of tik op “Vergeet hierdie winkel” om ’n ander een te koppel.
 queue_waiting	Wag om die winkel te bereik ({n}):
 queue_tries	Geprobeer {n} kere · laaste antwoord: {e}
 save_backup_copy	Stoor 'n rugsteunkopie…
@@ -754,13 +773,18 @@ station_vps_dd	Drukkers vir hierdie stasie
 station_vps_dd_n	{n} drukker(s) · tik om te verander
 bill_printers_dd	Drukkers vir die rekening
 bill_printers_dd_n	{n} drukker(s) vir die rekening · tik om te verander
-paper_heading	Papier
+paper_heading	Virtuele papier
 paper_size	{w} × {h} mm
 paper_roll	{w} mm-rol
 paper_not_set	papier nog nie bekend nie
-paper_length_mm	Lengte (mm)
-printer_paper_help	Hierdie drukker se papier in mm. 'n Leë Lengte is 'n rol: elke strokie is so lank soos sy inhoud. Soek drukkers vul leë papier in vanaf die drukker se drywer ('n 80 mm-rol as dit nie kan sê nie) en verander nooit papier wat reeds gestel is nie.
-preview_help	Hierdie strokie op die papier van die drukker wat hieronder gekies is, soos dit daar druk: werklike grootte van die boonste linkerhoek wat die drukker kan bereik (grys: rande wat dit nie kan nie), 'n lang strokie op meer velle, alles verby die papier se rand afgesny. Om 'n drukker te kies verander net die voorskou; elke drukker se papier word onder Drukkers gestel.
+virtual_width_mm	Virtuele breedte (mm)
+virtual_length_mm	Virtuele lengte (mm)
+reported_width_mm	Gerapporteerde breedte (mm)
+reported_length_mm	Gerapporteerde lengte (mm)
+reported_paper	Gerapporteer: {paper}
+virtual_paper	Virtueel: {paper}
+printer_paper_help	Gerapporteer is die papier waarop hierdie drukker se drywer gestel is; die app lees dit net, en N/V beteken daar is geen drywer om te vra nie. Virtueel is die papier wat volgens jou werklik in die drukker is, in mm; 'n leë lengte is 'n rol. Die drukker druk op sy eie papier; die virtuele papier sê vir die app hoeveel daarvan werklike papier is, vir die voorskou, die bladsylengte en die plek van die strokie. Soek drukkers vul 'n leë virtuele papier in en verander nooit een wat jy gestel het nie.
+preview_help	Hierdie strokie soos dit druk op die drukker wat hieronder gekies is, op ware grootte op sy virtuele papier. Wit is waar dit druk, grys papier is buite die drukker se bereik, en vervaagde ink word afgesny. Die nege blokkies is die papier: tik waar die strokie moet sit. 'n Lang strokie gaan oor na meer bladsye. Om 'n drukker te kies verander net die voorskou.
 job_layout	Opstelling
 job_delivery	Hoe die taak gestuur word
 job_delivery_help	OS-dokument, ruwe bytes of ESC/POS. Die rekening en die keukintiket behou elkeen sy eie. Beide taak kan na enige drukker gaan wat Find gespaar het.
@@ -1266,8 +1290,8 @@ taxable_value	Belastingbare waarde
 gst_inside_price_note	({tax} insluitend)
 start_with_template	Begin met ons menu-sjabloon
 template_heading	Ons menu-sjabloon
-template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
-template_download_shelf	Download photo shelf
+template_need_download	Laai die openbare fotorak van geregte af (~1 459 geregte), en voer dan die name wat ontbreek in jou menu in.
+template_download_shelf	Laai fotorak af
 template_info	{c} kategorieë en {d} geregte met foto's, gereed om by te voeg. Priese begin by ₹0 – stel joune daarna.
 template_import	Importeer volledige sjabloon
 template_confirm	Voeg {d} geregte hulle kategorieë by? Geregte wat jy reeds het, bly soos hulle is.
@@ -1296,7 +1320,7 @@ guests_word	gaste
 delivery_by_ph	Aflewering deur (ryer of personeelslid naam)
 kitchen_all_day	Om nou te kook: {items}
 kitchen_all_day_head	Om nou te kook
-kitchen_tab_live	Live
+kitchen_tab_live	Regstreeks
 kitchen_tab_recall	Herinner
 kitchen_tab_stations	Stasies
 split_bill	Verdeel rekening

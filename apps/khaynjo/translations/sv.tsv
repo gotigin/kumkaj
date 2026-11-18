@@ -101,6 +101,19 @@ bill_item_col_sep	Kolumnlinjer
 slip_columns	Kolumner
 slip_col_header	Rubrik
 bill_line_logo	Logotyp
+bill_line_shop	Butik
+bill_line_address	Adress
+bill_line_fssai	FSSAI
+bill_line_title	Titel
+bill_line_customer	Kund
+bill_line_bill_no	Notanr
+bill_line_time	Tid
+bill_line_cashier	Kassör
+bill_line_table	Bord
+bill_line_items	Föremål
+bill_line_total	Totalt
+bill_line_footer	Sidfot
+bill_line_upi	UPI
 bill_logo_picture	Bild
 bill_logo_choose	Välj bild
 bill_logo_remove	Ta bort bild
@@ -128,6 +141,12 @@ bill_item_piece_off	Av
 bill_total_qty	Totalt antal
 bill_total_subtotal	Delsumma
 bill_total_grand	Totalsumma
+bill_total_number_under	Tal under
+bill_total_caption_under	Etikett under
+bill_total_own_line	Egen rad
+bill_total_caption_with	Vid talet
+bill_total_caption_none	Ingen etikett
+bill_total_place_help	Egen rad skriver ut den här summan för sig. Under en kolumn skrivs talet ut i den artikelkolumnen, i den här radens storlek och vikt; summor delar en rad tills en kolumn är upptagen, sedan börjar en ny rad. Etiketten står vid talet, under en annan kolumn eller utelämnas. Rader för skatt, service, avrundning och betalning följer Delsumma.
 reprint_incl	I utskrift
 reprint_skip	Hoppa över
 reprint_skip_meta	Hoppa över återutskrift
@@ -178,20 +197,20 @@ snack_secs_ph	Sekunder (3–60, standard 10)
 snack_secs_save	Spara aviseringstid
 snack_secs_saved	Aviseringstid sparad — {n} sekunder
 settings_sec_whatsapp	WhatsApp
-whatsapp_cloud_help	Use your own Meta WhatsApp Cloud API. Create a System User token with whatsapp_business_messaging (temporary dashboard tokens expire). Credentials stay on this Server only — never on extra tills. Accepted means Meta took the request, not that the guest received it.
-whatsapp_phone_id_ph	Phone Number ID
-whatsapp_token_ph	Access Token (leave blank to keep)
-whatsapp_template_ph	Bill template name (optional)
-whatsapp_template_lang_ph	Template language (e.g. en)
-whatsapp_enable	Enable
+whatsapp_cloud_help	Använd ditt eget Meta WhatsApp Cloud API. Skapa en System User-token med whatsapp_business_messaging (tillfälliga tokens från instrumentpanelen går ut). Uppgifterna stannar bara på den här Servern — aldrig på extra kassor. ”Accepterad” betyder att Meta tog emot begäran, inte att gästen fick den.
+whatsapp_phone_id_ph	Telefonnummer-ID
+whatsapp_token_ph	Åtkomsttoken (lämna tomt för att behålla)
+whatsapp_template_ph	Namn på notamall (valfritt)
+whatsapp_template_lang_ph	Mallens språk (t.ex. en)
+whatsapp_enable	Aktivera
 whatsapp_disable	Off
-whatsapp_save	Save WhatsApp
-whatsapp_test	Test connection
-whatsapp_disconnect	Disconnect
-whatsapp_send_bill	Send via WhatsApp
+whatsapp_save	Spara WhatsApp
+whatsapp_test	Testa anslutning
+whatsapp_disconnect	Koppla från
+whatsapp_send_bill	Skicka via WhatsApp
 whatsapp_consent	WhatsApp OK
-whatsapp_consent_help	Guest agreed to receive WhatsApp messages. A phone number alone is not consent.
-whatsapp_server_only	Configure WhatsApp on the shop Server device
+whatsapp_consent_help	Gästen har godkänt att få WhatsApp-meddelanden. Enbart ett telefonnummer är inte samtycke.
+whatsapp_server_only	Ställ in WhatsApp på butikens Server-enhet
 settings_sec_backup	Säkerhetskopiera och återställa
 settings_sec_diag	Diagnostik
 settings_sec_privacy	Integritet
@@ -583,7 +602,7 @@ server_ip_ph	Server-IP (t.ex. 192.168.1.10)
 set_credit_limit	Tillämpa gräns för fest
 set_login_selected	Använd inloggning på valda
 set_login_named	Ansök inloggning på {name}
-shop	Handla
+shop	Butik
 show	Visa
 spreadsheet_csv	Kalkylblad (CSV)
 start_fresh	Börja fräscht
@@ -637,7 +656,7 @@ choose_device_use	Välj Server eller Klient.
 paired_note	Parat. Lås upp för att sälja, eller uppdatera för det senaste.
 last_update_at	Senaste uppdatering: {time}.
 pair_intro	Hitta servern eller skriv in dess adress och kopplingskod.
-pair_resume_hint	Already paired — enter your shop PIN, or Forget this shop to pair another.
+pair_resume_hint	Redan ihopparad — ange butikens PIN, eller tryck på ”Glöm den här butiken” för att para ihop en annan.
 queue_waiting	Väntar på att nå butiken ({n}):
 queue_tries	Försökt {n} gånger · senaste svar: {e}
 save_backup_copy	Spara en säkerhetskopia...
@@ -754,13 +773,18 @@ station_vps_dd	Skrivare för denna station
 station_vps_dd_n	{n} skrivare · tryck för att ändra
 bill_printers_dd	Skrivare för räkningen
 bill_printers_dd_n	{n} skrivare för räkningen · tryck för att ändra
-paper_heading	Papper
+paper_heading	Virtuellt papper
 paper_size	{w} × {h} mm
 paper_roll	{w} mm-rulle
 paper_not_set	papper ännu okänt
-paper_length_mm	Längd (mm)
-printer_paper_help	Den här skrivarens papper i mm. Tom Längd är en rulle: varje kvitto är lika långt som sitt innehåll. Hitta skrivare fyller i tomt papper från skrivarens drivrutin (en 80 mm-rulle när den inte kan säga) och ändrar aldrig ett papper som redan är satt.
-preview_help	Det här kvittot på papperet i skrivaren som valts nedan, så som det skrivs ut där: i verklig storlek från det övre vänstra hörnet skrivaren når (grått: kanter den inte når), ett långt kvitto på fler ark, allt bortom papperskanten skärs av. Att välja skrivare ändrar bara förhandsvisningen; varje skrivares papper ställs in under Skrivare.
+virtual_width_mm	Virtuell bredd (mm)
+virtual_length_mm	Virtuell längd (mm)
+reported_width_mm	Rapporterad bredd (mm)
+reported_length_mm	Rapporterad längd (mm)
+reported_paper	Rapporterat: {paper}
+virtual_paper	Virtuellt: {paper}
+printer_paper_help	Rapporterat är det papper som den här skrivarens drivrutin är inställd på; appen läser det bara, och E/T betyder att det inte finns någon drivrutin att fråga. Virtuellt är det papper du säger verkligen ligger i skrivaren, i mm; tom längd är en rulle. Skrivaren skriver ut på sitt eget papper; det virtuella papperet talar om för appen hur mycket av det som är riktigt papper, för förhandsvisningen, sidlängden och kvittots placering. Hitta skrivare fyller i ett tomt virtuellt papper och ändrar aldrig ett som du har ställt in.
+preview_help	Det här kvittot så som det skrivs ut på skrivaren som valts nedan, i verklig storlek på dess virtuella papper. Vitt är där den skriver, grått papper är utom skrivarens räckhåll, och blekt bläck skärs av. De nio rutorna är papperet: tryck där kvittot ska sitta. Ett långt kvitto fortsätter på fler sidor. Att välja skrivare ändrar bara förhandsvisningen.
 job_layout	Upplägg
 job_delivery	Hur jobbet skickas
 job_delivery_help	OS-dokument, råbytes eller ESC/POS. Notan och köksbiljetten behåller var sin. Båda jobben kan gå till alla skrivare som Find har sparat.
@@ -1048,7 +1072,7 @@ add_a_table	Lägg till en tabell
 add_station_heading	Lägg till en köksstation
 categories_help	Tryck på Använd för att spara objektet ovan under den kategorin. Foto ger kategorin en bild; utan en visar den sina initialer.
 dish_search_ph	Artikelnamn — sök i våra rätter eller skriv din egen
-tile_free	Gratis
+tile_free	Ledigt
 tile_occupied	Upptagen
 tile_food_ready	Mat klar
 tile_bill_printed	Nota utskriven
@@ -1266,8 +1290,8 @@ taxable_value	Skattepliktigt värde
 gst_inside_price_note	({tax} inklusive)
 start_with_template	Börja med vår menymall
 template_heading	Vår menymall
-template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
-template_download_shelf	Download photo shelf
+template_need_download	Hämta den offentliga fotohyllan med rätter (~1 459 rätter) och importera sedan namn som saknas till din meny.
+template_download_shelf	Hämta fotohylla
 template_info	{c} kategorier och {d} rätter med foton, redo att läggas till. Priserna börjar på 0 INR – ställ in ditt efter.
 template_import	Importera komplett mall
 template_confirm	Lägg till {d} rätter med deras kategorier? Rätter du redan har stannar som de är.

@@ -101,6 +101,19 @@ bill_item_col_sep	Reguły kolumnowe
 slip_columns	Kolumny
 slip_col_header	Nagłówek
 bill_line_logo	Logo
+bill_line_shop	Sklep
+bill_line_address	Adres
+bill_line_fssai	FSSAI
+bill_line_title	Tytuł
+bill_line_customer	Klient
+bill_line_bill_no	Nr rachunku
+bill_line_time	Czas
+bill_line_cashier	Kasjer
+bill_line_table	Stół jadalny
+bill_line_items	Przedmioty
+bill_line_total	Razem
+bill_line_footer	Stopka
+bill_line_upi	UPI
 bill_logo_picture	Obraz
 bill_logo_choose	Wybierz obraz
 bill_logo_remove	Usuń obraz
@@ -128,6 +141,12 @@ bill_item_piece_off	Wyłączone
 bill_total_qty	Całkowita ilość
 bill_total_subtotal	Suma podrzędna
 bill_total_grand	Wielka suma
+bill_total_number_under	Liczba pod
+bill_total_caption_under	Etykieta pod
+bill_total_own_line	Własna linia
+bill_total_caption_with	Przy liczbie
+bill_total_caption_none	Bez etykiety
+bill_total_place_help	Własna linia drukuje tę sumę osobno. Pod kolumną jej liczba jest drukowana w tej kolumnie pozycji, w rozmiarze i grubości tej linii; sumy dzielą jeden rząd, dopóki któraś kolumna nie zostanie zajęta, potem zaczyna się nowy rząd. Etykieta stoi przy liczbie, pod inną kolumną albo jest pomijana. Linie podatku, obsługi, zaokrąglenia i płatności idą za pozycją Suma podrzędna.
 reprint_incl	W druku
 reprint_skip	Pomiń
 reprint_skip_meta	Pomiń wydruk odzyskiwania
@@ -178,20 +197,20 @@ snack_secs_ph	Sekundy (3–60, domyślnie 10)
 snack_secs_save	Oszczędź czas alertu
 snack_secs_saved	Zapisano czas alertu — {n} sekund
 settings_sec_whatsapp	WhatsApp
-whatsapp_cloud_help	Use your own Meta WhatsApp Cloud API. Create a System User token with whatsapp_business_messaging (temporary dashboard tokens expire). Credentials stay on this Server only — never on extra tills. Accepted means Meta took the request, not that the guest received it.
-whatsapp_phone_id_ph	Phone Number ID
-whatsapp_token_ph	Access Token (leave blank to keep)
-whatsapp_template_ph	Bill template name (optional)
-whatsapp_template_lang_ph	Template language (e.g. en)
-whatsapp_enable	Enable
+whatsapp_cloud_help	Użyj własnego Meta WhatsApp Cloud API. Utwórz token System User z whatsapp_business_messaging (tymczasowe tokeny z panelu wygasają). Dane zostają tylko na tym Serwerze — nigdy na dodatkowych kasach. „Przyjęto” oznacza, że Meta przyjęła żądanie, a nie że gość je otrzymał.
+whatsapp_phone_id_ph	ID numeru telefonu
+whatsapp_token_ph	Token dostępu (zostaw puste, aby zachować)
+whatsapp_template_ph	Nazwa szablonu rachunku (opcjonalnie)
+whatsapp_template_lang_ph	Język szablonu (np. en)
+whatsapp_enable	Włącz
 whatsapp_disable	Off
-whatsapp_save	Save WhatsApp
-whatsapp_test	Test connection
-whatsapp_disconnect	Disconnect
-whatsapp_send_bill	Send via WhatsApp
+whatsapp_save	Zapisz WhatsApp
+whatsapp_test	Testuj połączenie
+whatsapp_disconnect	Rozłącz
+whatsapp_send_bill	Wyślij przez WhatsApp
 whatsapp_consent	WhatsApp OK
-whatsapp_consent_help	Guest agreed to receive WhatsApp messages. A phone number alone is not consent.
-whatsapp_server_only	Configure WhatsApp on the shop Server device
+whatsapp_consent_help	Gość zgodził się otrzymywać wiadomości WhatsApp. Sam numer telefonu nie jest zgodą.
+whatsapp_server_only	Skonfiguruj WhatsApp na urządzeniu Serwer sklepu
 settings_sec_backup	Kopia zapasowa i przywracanie
 settings_sec_diag	Diagnostyka
 settings_sec_privacy	Prywatność
@@ -637,7 +656,7 @@ choose_device_use	Wybierz serwer lub klienta.
 paired_note	Sparowane. Odblokuj, aby sprzedać lub odśwież, aby uzyskać najnowsze informacje.
 last_update_at	Ostatnia aktualizacja: {time}.
 pair_intro	Znajdź serwer lub wpisz jego adres i kod parowania.
-pair_resume_hint	Already paired — enter your shop PIN, or Forget this shop to pair another.
+pair_resume_hint	Już sparowano — wpisz PIN swojego sklepu albo dotknij „Zapomnij o tym sklepie”, aby sparować inny.
 queue_waiting	Oczekiwanie na dotarcie do sklepu ({n}):
 queue_tries	Próbowałem {n} razy · ostatnia odpowiedź: {e}
 save_backup_copy	Zapisz kopię zapasową…
@@ -754,13 +773,18 @@ station_vps_dd	Drukarki dla tej stacji
 station_vps_dd_n	{n} drukarki · dotknij, aby zmienić
 bill_printers_dd	Drukarki za rachunek
 bill_printers_dd_n	{n} drukarki do rachunku · dotknij, aby zmienić
-paper_heading	Papier
+paper_heading	Papier wirtualny
 paper_size	{w} × {h} mm
 paper_roll	rolka {w} mm
 paper_not_set	papier jeszcze nieznany
-paper_length_mm	Długość (mm)
-printer_paper_help	Papier tej drukarki w mm. Pusta Długość to rolka: każdy paragon jest tak długi jak jego treść. Znajdź drukarki uzupełnia pusty papier ze sterownika drukarki (rolka 80 mm, gdy nie potrafi powiedzieć) i nigdy nie zmienia już ustawionego.
-preview_help	Ten paragon na papierze drukarki wybranej poniżej, tak jak się na niej drukuje: w rzeczywistym rozmiarze od lewego górnego rogu, do którego sięga drukarka (szary: krawędzie, do których nie sięga), długi paragon na kilku arkuszach, wszystko poza krawędzią papieru jest obcinane. Wybór drukarki zmienia tylko podgląd; papier każdej drukarki ustawia się w Drukarki.
+virtual_width_mm	Szerokość wirtualna (mm)
+virtual_length_mm	Długość wirtualna (mm)
+reported_width_mm	Szerokość zgłoszona (mm)
+reported_length_mm	Długość zgłoszona (mm)
+reported_paper	Zgłoszony: {paper}
+virtual_paper	Wirtualny: {paper}
+printer_paper_help	Zgłoszony to papier, na który ustawiony jest sterownik tej drukarki; aplikacja tylko go odczytuje, a „Nie dotyczy” oznacza, że nie ma sterownika, którego można zapytać. Wirtualny to papier, który według Ciebie naprawdę jest w drukarce, w mm; pusta długość to rolka. Drukarka drukuje na swoim własnym papierze; papier wirtualny mówi aplikacji, ile z niego jest prawdziwym papierem, na potrzeby podglądu, długości strony i położenia paragonu. Znajdź drukarki uzupełnia pusty papier wirtualny i nigdy nie zmienia tego, który ustawisz.
+preview_help	Ten paragon tak, jak drukuje się na drukarce wybranej poniżej, w rzeczywistym rozmiarze na jej papierze wirtualnym. Białe to miejsce druku, szary papier jest poza zasięgiem drukarki, a wyblakły tusz zostaje obcięty. Dziewięć kwadratów to papier: dotknij tam, gdzie ma znaleźć się paragon. Długi paragon przechodzi na kolejne strony. Wybór drukarki zmienia tylko podgląd.
 job_layout	Układ
 job_delivery	Jak praca jest wysyłana
 job_delivery_help	Dokument systemu operacyjnego, surowe bajty lub ESC/POS. Rachunek i bilet do kuchni zachowują swoje własne. Każde zadanie może zostać przesłane do dowolnej drukarki zapisanej przez Find.
@@ -1163,7 +1187,7 @@ kot_show_station	Stacja
 kot_hide_station	Ukryj stację
 kot_show_table	Stół jadalny
 kot_hide_table	Ukryj stół jadalny
-kot_show_kot_no	KOT Nie
+kot_show_kot_no	Nr KOT
 kot_hide_kot_no	Ukryj KOT Nie
 kot_width	Zawijanie podglądu (ustaw szerokość treści na zakładce KOT)
 kot_width_58	58 mm
@@ -1238,7 +1262,7 @@ on_your_menu	W Twoim menu
 edit	Edytuj
 schemes	Schematy / oferty
 schemes_help	BOGO, procent zniżki i stałe kombinacje. Kombinacje rozszerzają się na linie kuchenne po wysłaniu KOT; komponenty pozostają utrzymane do momentu uruchomienia kombinacji. Przykład: Kup 2 Thali, a otrzymasz 1 Chaas
-scheme_bogo_ph	Buy 2 Thali get 1 Chaas
+scheme_bogo_ph	Kup 2 Thali, 1 Chaas gratis
 add_scheme	Dodaj BOGO
 schedule_ph	Godziny / happy hour — pon.-pt. 07:00-11:00 lub HappyHour 17:00-19:00=150
 upi_qr	UPI QR
@@ -1266,8 +1290,8 @@ taxable_value	Wartość podlegająca opodatkowaniu
 gst_inside_price_note	({tax} włącznie)
 start_with_template	Zacznij od naszego szablonu menu
 template_heading	Nasz szablon menu
-template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
-template_download_shelf	Download photo shelf
+template_need_download	Pobierz publiczną półkę zdjęć potraw (~1459 potraw), a potem zaimportuj brakujące nazwy do swojego menu.
+template_download_shelf	Pobierz półkę zdjęć
 template_info	{c} kategorii i {d} dań ze zdjęciami, gotowe do dodania. Ceny zaczynają się od 0 INR — ustaw swoje później.
 template_import	Importuj cały szablon
 template_confirm	Dodać {d} potraw wraz z ich kategoriami? Naczynia, które już masz, pozostają takie, jakie są.

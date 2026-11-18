@@ -79,13 +79,19 @@ bill_item_amount	Ego
 bill_item_note	Rx/ ndetu ire ere
 bill_item_col_sep	Ahịrị ogidi
 slip_col_width	Obosara (mm)
-paper_heading	Akwụkwọ
+paper_heading	Akwụkwọ nke echiche
 paper_size	{w} × {h} mm
 paper_roll	mpịakọta {w} mm
 paper_not_set	a maghị akwụkwọ ahụ ugbu a
-paper_length_mm	Ogologo (mm)
-printer_paper_help	Akwụkwọ igwe mbipụta a na mm. Ogologo tọgbọ chakoo bụ mpịakọta: akwụkwọ ọ bụla dị ogologo dị ka ihe dị n'ime ya. Chọta igwe mbipụta na-ejupụta akwụkwọ tọgbọ chakoo site na draịva igwe mbipụta ahụ (mpịakọta 80 mm mgbe ọ na-enweghị ike ịkọ) ma ọ dịghị mgbe ọ na-agbanwe nke e debere ugbu a.
-preview_help	Akwụkwọ a n'elu akwụkwọ igwe mbipụta a họọrọ n'okpuru, dịka ọ na-ebipụta ebe ahụ: nha n'ezie site na nkuku elu aka ekpe igwe ahụ na-eru (ntụ: nsọtụ ọ na-anaghị eru), akwụkwọ ogologo na peeji ndị ọzọ, ihe niile gafere nsọtụ akwụkwọ ka a na-ebipụ. Ịhọrọ igwe mbipụta na-agbanwe naanị nlele; a na-edobe akwụkwọ igwe ọ bụla n'okpuru Igwe mbipụta.
+na	Adịghị
+virtual_width_mm	Obosara nke echiche (mm)
+virtual_length_mm	Ogologo nke echiche (mm)
+reported_width_mm	Obosara a kọrọ (mm)
+reported_length_mm	Ogologo a kọrọ (mm)
+reported_paper	A kọrọ: {paper}
+virtual_paper	Nke echiche: {paper}
+printer_paper_help	A kọrọ bụ akwụkwọ nke e debere draịva nke igwe mbipụta a na ya; ngwa a na-agụ ya naanị, “Adịghị” pụtakwara na enweghị draịva a ga-ajụ. Nke echiche bụ akwụkwọ ị na-ekwu na ọ dị n'ezie n'ime igwe mbipụta, na mm; ogologo tọgbọ chakoo bụ mpịakọta. Igwe mbipụta na-ebipụta n'akwụkwọ nke ya; akwụkwọ nke echiche na-agwa ngwa a ole n'ime ya bụ ezigbo akwụkwọ, maka nlele, ogologo ibe na ebe akwụkwọ nnata ga-anọ. Chọta igwe mbipụta na-emeju akwụkwọ nke echiche tọgbọ chakoo, ọ dịghịkwa agbanwe nke ị debere.
+preview_help	Akwụkwọ nnata a dị ka a na-ebipụta ya n'igwe mbipụta a họọrọ n'okpuru, n'ezigbo nha n'akwụkwọ nke echiche ya. Ọcha bụ ebe ọ na-ebipụta, akwụkwọ ntụ ntụ bụ ebe igwe mbipụta anaghị eru, a na-ebipụkwa ink gbara ọchịchịrị. Igbe itoolu ahụ bụ akwụkwọ: pịa ebe akwụkwọ nnata kwesịrị ịnọ. Akwụkwọ nnata ogologo na-aga n'ihu na ibe ndị ọzọ. Ịhọrọ igwe mbipụta na-agbanwe naanị nlele.
 slip_col_start	Ohere mmalite (px)
 slip_col_end	Ohere njedebe (px)
 slip_columns_help	Obosara kọlụm ọ bụla gụnyere ohere mmalite na njedebe ya. Ederede na-ekechi n’ime kọlụm ya; ihe gafere obosara ọdịnaya ka a na-egbubi, n’akwụkwọ na n’ihe ngosi.
@@ -100,6 +106,12 @@ bill_item_piece_off	Gbanyụọ
 bill_total_qty	Ngụkọta ọnụọgụ
 bill_total_subtotal	Ngụkọta nta
 bill_total_grand	Ngụkọta ukwu
+bill_total_number_under	Ọnụọgụ n'okpuru
+bill_total_caption_under	Akara n'okpuru
+bill_total_own_line	Ahịrị nke ya
+bill_total_caption_with	Ya na ọnụọgụ
+bill_total_caption_none	Enweghị akara
+bill_total_place_help	Ahịrị nke ya na-ebipụta ngụkọta a naanị ya. N'okpuru kọlụm, a na-ebipụta ọnụọgụ ya na kọlụm ihe ahụ, n'ogo na ịdị arọ nke ahịrị a; ngụkọta na-ekekọrịta otu ahịrị ruo mgbe e were otu kọlụm, mgbe ahụ ahịrị ọhụrụ amalite. Akara na-eso ọnụọgụ, n'okpuru kọlụm ọzọ, ma ọ bụ a hapụ ya. Ahịrị ụtụ, ọrụ, mgbakọ na ịkwụ ụgwọ na-eso Ngụkọta nta.
 kot_unassigned	Ekenyeghi ya
 settings_hub_help	Mepee otu mpaghara n'otu oge — obere mpịakọta, nhọrọ doro anya.
 settings_sec_language	Asụsụ na ego
@@ -735,6 +747,20 @@ fssai_ph	Akwụkwọ ikike ọgwụ. (nhọrọ - okwu gị)
 bill_footer_ph	Ala (dịka Daalụ, bịa ọzọ)
 kot_field_on	gosi
 kot_field_off	zoo
+kot_field_show	Gosi
+kot_field_hide	Zoo
+bill_line_shop	Ụlọ ahịa
+bill_line_address	Adreesị
+bill_line_fssai	FSSAI
+bill_line_title	Isiokwu
+bill_line_customer	Onye ahịa
+bill_line_bill_no	Nọmba ụgwọ
+bill_line_time	Oge
+bill_line_cashier	Onye na-anakọta ego
+bill_line_items	Ihe
+bill_line_total	Ngụkọta
+bill_line_footer	Ala
+bill_line_upi	UPI
 kot_weight_light	Ọ dị mfe
 bill_kot_panel_help	Nhazi ụgwọ na obosara ọdịnaya. Cashier bụ onye nyere ma ọ bụ dozie ụgwọ ahụ - akụkọ ọrịre zuru oke na-anọ n'akwụkwọ.
 std_size_ph	dịka 18, 20, 26…
@@ -806,7 +832,7 @@ template_imported	Ihe agbakwunyere {d} yana ụdị {c} - tọọ ọnụ ahịa
 client_template_heading	Bubata katalọgụ
 client_template_info	{title}: ngalaba {c}, ihe {d} nwere ọnụ ahịa, foto na utu aha. Naanị ihe na-efu efu - aha ị nwerelarị.
 client_template_import	Bubata ọgwụ ndị a
-client_template_confirm	Add {d} items from {title}? Items you already have stay as they are.
+client_template_confirm	Tinye {d} ihe sitere na {title}? Ihe ị nwerelarị ka ọ dị.
 client_template_importing	Na-ebubata {title}…
 client_template_done	Ihe ọ bụla sitere na {title} dị na ihe gị.
 client_template_imported	Ihe agbakwunyere {d} yana ngalaba {c} sitere na {title}
@@ -842,10 +868,10 @@ lane_declared_label	Ụgwọ ụtụ
 lane_owner_label	Akwụkwọ ego aka
 money_lane_bill	Ụgwọ: {lane}
 
-removing	Removing…
-removed	Removed
-updating_order	Updating…
-order_updated	Order updated
+removing	Na-ewepụ…
+removed	Ewepụrụ
+updating_order	Na-emelite…
+order_updated	Emelitere iwu
 sel_copy	Detuo
 sel_select_all	Họrọ ihe niile
 sel_copied	E detuola

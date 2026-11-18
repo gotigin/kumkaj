@@ -88,7 +88,7 @@ kot_strike	Тамактын аталышы
 kot_strike_note	Strike тамактын нотасы
 kot_strike_on	Күйүк
 kot_strike_off	Өчүк
-bill_item_layout	Меню меню пунктунун жайгашуусу
+bill_item_layout	Меню пунктунун жайгашуусу
 bill_item_layout_columns	Мамычалар
 bill_item_layout_stacked	Үйүлгөн
 bill_item_header	Мамычалардын аталыштары
@@ -101,6 +101,19 @@ bill_item_col_sep	Мамыча эрежелери
 slip_columns	Мамычалар
 slip_col_header	Аталыш
 bill_line_logo	Логотип
+bill_line_shop	Дүкөн
+bill_line_address	Дарек
+bill_line_fssai	FSSAI
+bill_line_title	Аталыш
+bill_line_customer	Кардар
+bill_line_bill_no	Эсеп №
+bill_line_time	Убакыт
+bill_line_cashier	Кассир
+bill_line_table	Тамактануучу стол
+bill_line_items	Товарлар
+bill_line_total	Бардыгы
+bill_line_footer	Колонтитул
+bill_line_upi	UPI
 bill_logo_picture	Сүрөт
 bill_logo_choose	Сүрөт тандоо
 bill_logo_remove	Сүрөттү алып салуу
@@ -128,6 +141,12 @@ bill_item_piece_off	Өчүк
 bill_total_qty	Жалпы саны
 bill_total_subtotal	Кошумча жалпы
 bill_total_grand	Жалпы сумма
+bill_total_number_under	Сан мунун астында
+bill_total_caption_under	Энбелги мунун астында
+bill_total_own_line	Өз сабы
+bill_total_caption_with	Сан менен бирге
+bill_total_caption_none	Энбелгисиз
+bill_total_place_help	“Өз сабы” бул жыйынтыкты өзүнчө басат. Мамычанын астында анын саны ошол товар мамычасында, ушул саптын өлчөмү жана калыңдыгы менен басылат; бир мамыча ээлелгенге чейин жыйынтыктар бир катарды бөлүшөт, андан кийин жаңы катар башталат. Энбелги сан менен бирге, башка мамычанын астында турат же калтырылат. Салык, тейлөө, тегеректөө жана төлөм саптары “Кошумча жалпы” ордун ээрчийт.
 reprint_incl	Басмада
 reprint_skip	Өткөрүп жибер
 reprint_skip_meta	Калыбына келтирүүчү басып чыгарууну өткөрүп жиберүү
@@ -170,7 +189,7 @@ settings_sec_pickers	Райондор · станциялар · салык ст
 settings_sec_printers	Принтерлер
 settings_sec_bill	Коноктун эсеби жана KOT форматы
 settings_sec_selling	Схемалар жана сатуулар
-bill_kot_tab_bill	Коноктун эсеби
+bill_kot_tab_bill	Эсеп
 bill_kot_tab_kot	KOT
 settings_sec_alerts	Эскертүүлөр
 alerts_help	Статус билдирүүлөрү сиз үчүн канча убакытка чейин экранда калат (бул кирүү).
@@ -178,20 +197,20 @@ snack_secs_ph	Секунд (3–60, демейки 10)
 snack_secs_save	Эскертүү убактысын үнөмдөңүз
 snack_secs_saved	Эскертүү убактысы сакталды — {n} секунд
 settings_sec_whatsapp	WhatsApp
-whatsapp_cloud_help	Use your own Meta WhatsApp Cloud API. Create a System User token with whatsapp_business_messaging (temporary dashboard tokens expire). Credentials stay on this Server only — never on extra tills. Accepted means Meta took the request, not that the guest received it.
-whatsapp_phone_id_ph	Phone Number ID
-whatsapp_token_ph	Access Token (leave blank to keep)
-whatsapp_template_ph	Bill template name (optional)
-whatsapp_template_lang_ph	Template language (e.g. en)
-whatsapp_enable	Enable
+whatsapp_cloud_help	Өзүңүздүн Meta WhatsApp Cloud API'ңизди колдонуңуз. whatsapp_business_messaging бар System User токенин түзүңүз (башкаруу тактасынын убактылуу токендеринин мөөнөтү бүтөт). Маалыматтар ушул Серверде гана калат — кошумча кассаларда эч качан эмес. «Кабыл алынды» дегени — Meta суроону кабыл алды, конок аны алды дегенди билдирбейт.
+whatsapp_phone_id_ph	Телефон номеринин ID'си
+whatsapp_token_ph	Кирүү токени (сактап калуу үчүн бош калтырыңыз)
+whatsapp_template_ph	Эсеп шаблонунун аталышы (милдеттүү эмес)
+whatsapp_template_lang_ph	Шаблондун тили (мисалы, en)
+whatsapp_enable	Иштетүү
 whatsapp_disable	Off
-whatsapp_save	Save WhatsApp
-whatsapp_test	Test connection
-whatsapp_disconnect	Disconnect
-whatsapp_send_bill	Send via WhatsApp
+whatsapp_save	WhatsApp сактоо
+whatsapp_test	Туташууну текшерүү
+whatsapp_disconnect	Ажыратуу
+whatsapp_send_bill	WhatsApp аркылуу жөнөтүү
 whatsapp_consent	WhatsApp OK
-whatsapp_consent_help	Guest agreed to receive WhatsApp messages. A phone number alone is not consent.
-whatsapp_server_only	Configure WhatsApp on the shop Server device
+whatsapp_consent_help	Конок WhatsApp билдирүүлөрүн алууга макул болду. Телефон номеринин өзү эле макулдук эмес.
+whatsapp_server_only	WhatsApp'ты дүкөндүн Сервер түзүлүшүндө жөндөңүз
 settings_sec_backup	Камдык көчүрмөнү сактоо жана калыбына келтирүү
 settings_sec_diag	Диагностика
 settings_sec_privacy	Купуялык
@@ -226,7 +245,7 @@ sidebar_hidden	Жашырылган
 sidebar_always_on	Ар дайым барда
 sidebar_shown_hint	Капталда / астыңкы өтмөктө көрсөтүлгөн
 sidebar_hidden_hint	Бардан жашырылган
-sidebar_menu_items	Меню & Меню меню пункттары
+sidebar_menu_items	Меню & Меню пункттары
 sidebar_enable_all	Баарын иштетүү
 sidebar_disable_all	Баарын өчүрүү
 sidebar_order_saved	Капталдагы буйрутма сакталды
@@ -248,15 +267,15 @@ nav_settings	Орнотуулар
 nav_lock	Кулпу
 no_sale_yet	Азырынча сатуу жок
 favorites	Сүйүктүүлөр
-favorites_help	Сиз көп саткан меню меню пункттары, кирүү үчүн сакталган. Коноктордун эсебине бирөөнү кошуңуз же төмөнкү бардык меню пункттарынан тизмеңизди түзүңүз.
+favorites_help	Сиз көп саткан меню пункттары, кирүү үчүн сакталган. Коноктордун эсебине бирөөнү кошуңуз же төмөнкү бардык меню пункттарынан тизмеңизди түзүңүз.
 your_favorites	Сүйүктүүлөрүң
 all_items	Бардык меню пункттары
 frequent	Тез-тез
-added_items	Меню меню пункттары кошулду
+added_items	Меню пункттары кошулду
 added_items_empty	Бул буйрутма боюнча азырынча эч нерсе жок — Бардык менюдан же категориядан тамак кошуңуз.
 frequent_config_help	Көбүнчө тамак-аштар коноктордун эсептеринен сатылган. Канча күн көрүүнү жана канча тамакты көрсөтүүнү белгилеңиз.
 frequent_days_ph	Күндөр (1)
-frequent_limit_ph	Меню меню пункттары (24)
+frequent_limit_ph	Меню пункттары (24)
 frequent_apply	Колдонуу
 frequent_saved	Тез-тез: акыркы {d} күн, жогорку {n} — {c} тамактар
 frequent_empty	Бул мезгилде аягына чыккан сатуулар жок — конок эсебин чечиңиз (Жөндөөлөр ушундай деп айтса, ₹0 уруксат берилет) жана алар бул жерде көрсөтүлөт.
@@ -637,7 +656,7 @@ choose_device_use	Сервер же Кардар тандаңыз.
 paired_note	Жупташкан. Сатуу үчүн кулпусун ачыңыз же эң акыркысы үчүн жаңыртыңыз.
 last_update_at	Акыркы жаңыртуу: {time}.
 pair_intro	Серверди табыңыз же анын дарегин жана жупташтыруу кодун териңиз.
-pair_resume_hint	Already paired — enter your shop PIN, or Forget this shop to pair another.
+pair_resume_hint	Буга чейин жупташкан — дүкөнүңүздүн PIN кодун киргизиңиз же башкасын жуптоо үчүн «Бул дүкөндү унут» баскычын басыңыз.
 queue_waiting	Дүкөнгө жетүүнү күтүүдө ({n}):
 queue_tries	{n} жолу аракет кылынды · акыркы жооп: {e}
 save_backup_copy	Камдык көчүрмөнү сактоо…
@@ -739,7 +758,7 @@ printer_format_custom_added	Бул жерге ыңгайлаштырылган �
 add_printer	Принтерди кошуу
 remove_printer	Алып салуу
 route_pick_ph	Коноктун эсеби же ашкана станциясы
-route_bill	Коноктун эсеби
+route_bill	Эсеп
 route_default_kitchen	Станция жок (дайындалбаган тамактар)
 route_kot_station	Ашкана
 route_dont_print	Принтер жок
@@ -754,13 +773,18 @@ station_vps_dd	Бул станция үчүн принтерлер
 station_vps_dd_n	{n} принтерлер · өзгөртүү үчүн таптаңыз
 bill_printers_dd	Конок эсеби үчүн принтерлер
 bill_printers_dd_n	{n} конок эсеби үчүн принтерлер · өзгөртүү үчүн таптаңыз
-paper_heading	Кагаз
+paper_heading	Виртуалдык кагаз
 paper_size	{w} × {h} mm
 paper_roll	{w} мм түрмөк
 paper_not_set	кагаз азырынча белгисиз
-paper_length_mm	Узундугу (mm)
-printer_paper_help	Бул принтердин кагазы мм менен. Бош Узундук — түрмөк: ар бир чек мазмунундай узун. «Принтерлерди табыңыз» бош кагазды принтердин драйверинен толтурат (айта албаса, 80 мм түрмөк) жана мурунтан коюлганды эч качан өзгөртпөйт.
-preview_help	Төмөндө тандалган принтердин кагазындагы ушул чек, ал жерде басылгандай: принтер жеткен жогорку сол бурчтан чыныгы өлчөмдө (боз: жетпеген четтер), узун чек көбүрөөк баракта, кагаздын четинен ашкандын баары кесилет. Принтер тандоо алдын ала көрүүнү гана өзгөртөт; ар бир принтердин кагазы «Принтерлер» бөлүмүндө коюлат.
+virtual_width_mm	Виртуалдык туурасы (mm)
+virtual_length_mm	Виртуалдык узундугу (mm)
+reported_width_mm	Кабарланган туурасы (mm)
+reported_length_mm	Кабарланган узундугу (mm)
+reported_paper	Кабарланган: {paper}
+virtual_paper	Виртуалдык: {paper}
+printer_paper_help	Кабарланган — бул принтердин драйвери коюлган кагаз; колдонмо аны окуйт гана, ал эми «Жок» сурай турган драйвер жок дегенди билдирет. Виртуалдык — принтерде чындап эле турат деп сиз айткан кагаз, mm менен; бош узундук түрмөк дегенди билдирет. Принтер өз кагазына басат; виртуалдык кагаз колдонмого анын канчасы чыныгы кагаз экенин айтат: алдын ала көрүү, барактын узундугу жана чектин орду үчүн. Принтерлерди табыңыз бош виртуалдык кагазды толтурат жана сиз койгонду эч качан өзгөртпөйт.
+preview_help	Бул чек төмөндө тандалган принтерде кандай басылса, ошондой, анын виртуалдык кагазында чыныгы өлчөмдө. Ак — басылган жер, боз кагазга принтер жетпейт, ал эми өңү өчкөн сыя кесилет. Тогуз чарчы — кагаз: чек турушу керек жерди таптаңыз. Узун чек кийинки барактарга өтөт. Принтерди тандоо алдын ала көрүүнү гана өзгөртөт.
 job_layout	Макет
 job_delivery	Жумуш кантип жөнөтүлөт
 job_delivery_help	OS документи, чийки байттар же ESC/POS. Конок эсеби жана ашкана билети ар бири өзүнчө сакталат. Кайсы жумуш болбосун Find сакталган принтерге өтө алат.
@@ -768,7 +792,7 @@ station_vp_attached	Принтер тиркелген
 station_vp_detached	Принтер станциядан өчүрүлдү
 station_print_summary	{mode} · {n} принтерлер
 station_print_summary_none	Бул станцияда азырынча принтерлер жок — ал басып чыгарбайт
-stations_none	Азырынча станциялар жок — ылдыйга бирөөнү кошуңуз. Меню меню пункттары станцияны колдонушу үчүн, алардын KOT ошол жерде басып чыгарылышы мүмкүн.
+stations_none	Азырынча станциялар жок — ылдыйга бирөөнү кошуңуз. Меню пункттары станцияны колдонушу үчүн, алардын KOT ошол жерде басып чыгарылышы мүмкүн.
 route_up	Өйдө
 route_down	Төмөн
 route_remove	Алып салуу
@@ -1005,7 +1029,7 @@ country_code_ph	Өлкө коду мис. IN, GB, US, AE, BR
 credit_khata_amount_ph	Кредиттик/кредиттик китептин суммасы
 credit_limit_ph	Насыя чеги (0 = жок)
 from_code_ph	Коддон (баштык)
-item_name_lang_ph	Меню меню пунктунун аталышы — аны өз тилиңизде териңиз
+item_name_lang_ph	Меню пунктунун аталышы — аны өз тилиңизде териңиз
 login_id_opt_ph	Колдонуучунун аты (милдеттүү, уникалдуу)
 manager_pin_ph	Менеджер PIN бекитүү үчүн (эгер жокко чыгара албасаңыз)
 new_branch_name_ph	Жаңы филиалдын аталышы
@@ -1047,13 +1071,13 @@ kitchen_empty	Ачык билеттер жок.
 add_a_table	Тамактануучу үстөл кошуу
 add_station_heading	Ашкана станциясын кошуу
 categories_help	Ошол категорияга жогорудагы меню пунктун берүү үчүн Колдонууну таптаңыз. Сүрөт категорияга сүрөттү берет; бирисиз анын баш тамгаларын көрсөтөт.
-dish_search_ph	Меню меню пунктунун аталышы — биздин тамактарды издеңиз же өзүңүздүн тамактарыңызды жазыңыз
+dish_search_ph	Меню пунктунун аталышы — биздин тамактарды издеңиз же өзүңүздүн тамактарыңызды жазыңыз
 tile_free	Бош
 tile_occupied	ээлеген
 tile_food_ready	Тамак даяр
 tile_bill_printed	Коноктун эсеби басылып чыкты
 tile_paid	Төлөндү
-tile_bill_btn	Коноктун эсеби
+tile_bill_btn	Эсеп
 tile_occupy_btn	Конокторду отургузгула
 tile_free_btn	Тамактануучу столду бошот
 tile_ready_btn	Тамактануучу столду бошот
@@ -1205,7 +1229,7 @@ kot_footer_ph	Ашкана эскертүүсү (милдеттүү эмес, б
 kot_preview	Алдын ала көрүү
 test_kot_format	Сынап көрүңүз KOT
 test_kot_sent	Ашкана билетин алдын ала көрүү жөнөтүлдү
-test_bill_format	Конок эсебин текшерүү
+test_bill_format	Сыноо эсеби
 test_bill_sent	Коноктун эсебин алдын ала көрүү жөнөтүлдү
 test_print_no_printer	Ал жумуш үчүн принтер жок — бул экрандан бирин тандаңыз
 std_print	Конок конокторунун эсебин басып чыгаруу өлчөмү
@@ -1238,7 +1262,7 @@ on_your_menu	Менюңузда
 edit	Түзөтүү
 schemes	Схемалар / сунуштар
 schemes_help	BOGO, пайыздык арзандатуу жана туруктуу айкалыштар. KOT жөнөтүүдө комбинациялар ашкана линияларына чейин кеңейет; компоненттер комбо күйгүчө кармалат. Мисалы: Buy 2 Thali get 1 Chaas
-scheme_bogo_ph	Buy 2 Thali get 1 Chaas
+scheme_bogo_ph	2 Thali сатып алсаңыз, 1 Chaas бекер
 add_scheme	BOGO кошуу
 schedule_ph	Сааттар / бактылуу саат — Mon-Fri 07:00-11:00 же HappyHour 17:00-19:00=150
 upi_qr	UPI QR
@@ -1256,7 +1280,7 @@ choose_table	Тамактануучу үстөлдү тандаңыз
 change_table	Тамактануучу үстөлдү алмаштырыңыз
 pick_table_banner	Бул буйрутма үчүн ашкана үстөлүн тандаңыз
 items_word	меню пункттары
-items_section	Меню меню пункттары
+items_section	Товарлар
 back_to_order	Заказга кайтуу
 new_items_head	Азырынча жөнөтүлө элек
 price_ph	Баасы
@@ -1266,8 +1290,8 @@ taxable_value	Салык салынуучу маани
 gst_inside_price_note	({tax} кошкондо)
 start_with_template	Биздин меню үлгүсүнөн баштаңыз
 template_heading	Биздин меню шаблону
-template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
-template_download_shelf	Download photo shelf
+template_need_download	Тамактардын жалпы сүрөт текчесин (~1459 тамак) жүктөп алыңыз, андан кийин жок аталыштарды менюңузга импорттоңуз.
+template_download_shelf	Сүрөт текчесин жүктөп алуу
 template_info	{c} категориялары жана {d} тамактар сүрөттөрү бар, кошууга даяр. Баалар ₹0 башталат — сиздики кийинчерээк орнотуңуз.
 template_import	Толук шаблонду импорттоо
 template_confirm	{d} тамактарды категориялары менен кошосузбу? Сизде болгон тамактар ​​ошол бойдон калат.

@@ -3,7 +3,9 @@ title = "Privacy"
 description = "How Tabiyat and tabiyat.com treat your data."
 +++
 
-_Last updated: 2026-11-06_
+_Last updated: 2026-11-18_
+
+Canonical policy: [`apps/tabiyat/docs/PRIVACY.md`](../../docs/PRIVACY.md) — presented at [tabiyat.shop/privacy](https://tabiyat.shop/privacy).
 
 ## The app
 

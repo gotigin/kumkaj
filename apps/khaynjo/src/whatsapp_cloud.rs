@@ -3,7 +3,6 @@
 //! No Kumkaj backend. The shop Server device holds the token and calls
 //! `graph.facebook.com`. See plan: Phone Number ID + Access Token.
 
-use std::io::Read;
 use std::time::Duration;
 
 use serde::{Deserialize, Serialize};
@@ -581,15 +580,6 @@ pub fn open_secret(key: &[u8; 32], packed_hex: &str) -> Result<String, String> {
         .decrypt(nonce, ct)
         .map_err(|_| "decrypt failed — reconnect WhatsApp credentials".to_string())?;
     String::from_utf8(pt).map_err(|e| e.to_string())
-}
-
-#[allow(dead_code)]
-fn read_limited(r: &mut dyn Read, max: usize) -> Result<Vec<u8>, String> {
-    let mut buf = Vec::new();
-    r.take(max as u64)
-        .read_to_end(&mut buf)
-        .map_err(|e| e.to_string())?;
-    Ok(buf)
 }
 
 #[cfg(test)]

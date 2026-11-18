@@ -101,6 +101,19 @@ bill_item_col_sep	Սյունակների գծեր
 slip_columns	Սյունակներ
 slip_col_header	Վերնագիր
 bill_line_logo	Լոգո
+bill_line_shop	Խանութ
+bill_line_address	Հասցե
+bill_line_fssai	FSSAI
+bill_line_title	Վերնագիր
+bill_line_customer	Հաճախորդ
+bill_line_bill_no	Հաշիվ №
+bill_line_time	Ժամ
+bill_line_cashier	Գանձապահ
+bill_line_table	Սեղան
+bill_line_items	Ապրանքներ
+bill_line_total	Ընդամենը
+bill_line_footer	Ստորագիր
+bill_line_upi	UPI
 bill_logo_picture	Նկար
 bill_logo_choose	Ընտրել նկար
 bill_logo_remove	Հեռացնել նկարը
@@ -128,6 +141,12 @@ bill_item_piece_off	Անջ.
 bill_total_qty	Ընդհանուր քանակ
 bill_total_subtotal	Ենթագումար
 bill_total_grand	Վերջնական գումար
+bill_total_number_under	Թիվը՝ ներքո
+bill_total_caption_under	Պիտակը՝ ներքո
+bill_total_own_line	Առանձին տող
+bill_total_caption_with	Թվի հետ
+bill_total_caption_none	Առանց պիտակի
+bill_total_place_help	«Առանձին տող»-ը այս հանրագումարը տպում է առանձին։ Սյունակի ներքո դրա թիվը տպվում է ապրանքների այդ սյունակում՝ այս տողի չափով և հաստությամբ. հանրագումարները կիսում են մեկ շարք, մինչև որևէ սյունակ զբաղվի, հետո սկսվում է նոր շարք։ Պիտակը գնում է թվի հետ, այլ սյունակի ներքո կամ բաց է թողնվում։ Հարկի, սպասարկման, կլորացման և վճարման տողերը հետևում են «Ենթագումար»-ին։
 reprint_incl	Տպագրության մեջ
 reprint_skip	Բաց թողնել
 reprint_skip_meta	Բաց թողնել վերականգնող տպումը
@@ -178,20 +197,20 @@ snack_secs_ph	Վայրկյան (3–60, լռելյայն 10)
 snack_secs_save	Պահել ծանուցման ժամանակը
 snack_secs_saved	Ծանուցման ժամանակը պահվել է — {n} վայրկյան
 settings_sec_whatsapp	WhatsApp
-whatsapp_cloud_help	Use your own Meta WhatsApp Cloud API. Create a System User token with whatsapp_business_messaging (temporary dashboard tokens expire). Credentials stay on this Server only — never on extra tills. Accepted means Meta took the request, not that the guest received it.
-whatsapp_phone_id_ph	Phone Number ID
-whatsapp_token_ph	Access Token (leave blank to keep)
-whatsapp_template_ph	Bill template name (optional)
-whatsapp_template_lang_ph	Template language (e.g. en)
-whatsapp_enable	Enable
+whatsapp_cloud_help	Օգտագործեք ձեր սեփական Meta WhatsApp Cloud API-ն։ Ստեղծեք System User թոքեն whatsapp_business_messaging-ով (կառավարման վահանակի ժամանակավոր թոքենների ժամկետը լրանում է)։ Տվյալները մնում են միայն այս Սերվերում — երբեք լրացուցիչ դրամարկղներում։ «Ընդունված է» նշանակում է, որ Meta-ն ընդունել է հարցումը, ոչ թե որ հյուրը ստացել է այն։
+whatsapp_phone_id_ph	Հեռախոսահամարի ID
+whatsapp_token_ph	Մուտքի թոքեն (պահպանելու համար թողեք դատարկ)
+whatsapp_template_ph	Հաշվի ձևանմուշի անունը (ըստ ցանկության)
+whatsapp_template_lang_ph	Ձևանմուշի լեզուն (օր.՝ en)
+whatsapp_enable	Միացնել
 whatsapp_disable	Off
-whatsapp_save	Save WhatsApp
-whatsapp_test	Test connection
-whatsapp_disconnect	Disconnect
-whatsapp_send_bill	Send via WhatsApp
+whatsapp_save	Պահել WhatsApp-ը
+whatsapp_test	Ստուգել կապը
+whatsapp_disconnect	Անջատել կապը
+whatsapp_send_bill	Ուղարկել WhatsApp-ով
 whatsapp_consent	WhatsApp OK
-whatsapp_consent_help	Guest agreed to receive WhatsApp messages. A phone number alone is not consent.
-whatsapp_server_only	Configure WhatsApp on the shop Server device
+whatsapp_consent_help	Հյուրը համաձայնել է ստանալ WhatsApp հաղորդագրություններ։ Միայն հեռախոսահամարը համաձայնություն չէ։
+whatsapp_server_only	Կարգավորեք WhatsApp-ը խանութի Սերվեր սարքում
 settings_sec_backup	Պահուստ և վերականգնում
 settings_sec_diag	Ախտորոշում
 settings_sec_privacy	Գաղտնիություն
@@ -201,7 +220,7 @@ diag_level_error	Սխալներ
 diag_level_warn	Զգուշացումներ
 diag_level_info	Տեղեկություն
 diag_level_debug	Վրիպազերծում
-diag_support_start	Սկսել 30 րոպե աջակցության սեанс
+diag_support_start	Սկսել 30 րոպեանոց աջակցության սեանս
 diag_support_stop	Ավարտել աջակցության սեանսը
 diag_support_started	Աջակցության սեանսը միացված է — Վրիպազերծման մանրամասն 30 րոպե
 diag_support_ended	Աջակցության սեանսն ավարտվեց
@@ -637,7 +656,7 @@ choose_device_use	Ընտրեք Սերվեր կամ Կլիենտ։
 paired_note	Զուգակցված է։ Ապակողպեք վաճառելու համար կամ Թարմացրեք վերջինի համար։
 last_update_at	Վերջին թարմացում՝ {time}։
 pair_intro	Գտեք սերվերը կամ մուտքագրեք հասցեն և զուգակցման կոդը։
-pair_resume_hint	Already paired — enter your shop PIN, or Forget this shop to pair another.
+pair_resume_hint	Արդեն զուգակցված է — մուտքագրեք ձեր խանութի PIN-ը կամ հպեք «Մոռացիր այս խանութը»՝ մեկ ուրիշը զուգակցելու համար։
 queue_waiting	Սպասում է խանութին հասնելու ({n})՝
 queue_tries	Փորձվել է {n} անգամ · վերջին պատասխան՝ {e}
 save_backup_copy	Պահել պահուստային պատճեն…
@@ -754,13 +773,18 @@ station_vps_dd	Տպիչներ այս կայանի համար
 station_vps_dd_n	{n} տպիչ · հպեք փոխելու համար
 bill_printers_dd	Տպիչներ հաշվի համար
 bill_printers_dd_n	{n} տպիչ հաշվի համար · հպեք փոխելու համար
-paper_heading	Թուղթ
+paper_heading	Վիրտուալ թուղթ
 paper_size	{w} × {h} mm
 paper_roll	{w} մմ գլան
 paper_not_set	թուղթը դեռ հայտնի չէ
-paper_length_mm	Երկարություն (mm)
-printer_paper_help	Այս տպիչի թուղթը մմ-ով։ Դատարկ Երկարությունը գլան է՝ յուրաքանչյուր կտրոն իր բովանդակության չափ երկար է։ «Գտնել տպիչներ»-ը դատարկ թուղթը լրացնում է տպիչի դրայվերից (80 մմ գլան, եթե չի կարող ասել) և երբեք չի փոխում արդեն սահմանվածը։
-preview_help	Այս կտրոնը ներքևում ընտրված տպիչի թղթի վրա, ինչպես այնտեղ տպվում է՝ իրական չափով այն վերին ձախ անկյունից, որին տպիչը հասնում է (մոխրագույն՝ եզրեր, որոնց չի հասնում), երկար կտրոնը ավելի շատ թերթերի վրա, թղթի եզրից այն կողմ ամեն ինչ կտրվում է։ Տպիչ ընտրելը փոխում է միայն նախադիտումը. յուրաքանչյուր տպիչի թուղթը սահմանվում է «Տպիչներ»-ում։
+virtual_width_mm	Վիրտուալ լայնություն (mm)
+virtual_length_mm	Վիրտուալ երկարություն (mm)
+reported_width_mm	Հաղորդված լայնություն (mm)
+reported_length_mm	Հաղորդված երկարություն (mm)
+reported_paper	Հաղորդված՝ {paper}
+virtual_paper	Վիրտուալ՝ {paper}
+printer_paper_help	Հաղորդվածն այն թուղթն է, որի վրա կարգավորված է այս տպիչի դրայվերը. հավելվածը միայն կարդում է այն, իսկ «չկա» նշանակում է, որ հարցնելու դրայվեր չկա։ Վիրտուալն այն թուղթն է, որը, ձեր ասելով, իրոք տպիչի մեջ է, mm-ով. դատարկ երկարությունը նշանակում է գլան։ Տպիչը տպում է իր սեփական թղթի վրա. վիրտուալ թուղթը հավելվածին ասում է, թե դրա որ մասն է իրական թուղթ՝ նախադիտման, էջի երկարության և կտրոնի տեղի համար։ «Գտնել տպիչներ»-ը լրացնում է դատարկ վիրտուալ թուղթը և երբեք չի փոխում ձեր սահմանածը։
+preview_help	Այս կտրոնն այնպես, ինչպես տպվում է ներքևում ընտրված տպիչով, իրական չափով՝ նրա վիրտուալ թղթի վրա։ Սպիտակն այնտեղ է, որտեղ տպվում է, մոխրագույն թղթին տպիչը չի հասնում, իսկ գունաթափ թանաքը կտրվում է։ Ինը քառակուսիները թուղթն են. հպեք այնտեղ, որտեղ պիտի լինի կտրոնը։ Երկար կտրոնը շարունակվում է հաջորդ էջերում։ Տպիչի ընտրությունը փոխում է միայն նախադիտումը։
 job_layout	Դասավորություն
 job_delivery	Ինչպես է ուղարկվում աշխատանքը
 job_delivery_help	ՕՀ փաստաթուղթ, հում բայթեր կամ ESC/POS։ Հաշիվն ու խոհանոցի թերթիկը յուրաքանչյուրը պահում է իրենը։ Աշխատանքը կարող է գնալ Որոնման պահած ցանկացած տպիչ։
@@ -1266,8 +1290,8 @@ taxable_value	Հարկվող արժեք
 gst_inside_price_note	({tax} ներառված)
 start_with_template	Սկսել մեր մենյուի կաղապարով
 template_heading	Մեր մենյուի կաղապարը
-template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
-template_download_shelf	Download photo shelf
+template_need_download	Ներբեռնեք ուտեստների լուսանկարների ընդհանուր դարակը (~1459 ուտեստ), ապա ներմուծեք բացակայող անունները ձեր մենյու։
+template_download_shelf	Ներբեռնել լուսանկարների դարակը
 template_info	{c} կատեգորիա և {d} ուտեստ լուսանկարներով, ավելացնելու պատրաստ։ Գները սկսվում են ₹0-ից — հետո դրեք ձերը։
 template_import	Ներմուծել ամբողջ կաղապարը
 template_confirm	Ավելացնե՞լ {d} ուտեստ իրենց կատեգորիաներով։ Արդեն ունեցած ուտեստները մնում են ինչպես կան։

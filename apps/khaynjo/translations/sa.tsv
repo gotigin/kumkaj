@@ -83,12 +83,12 @@ print_cancelled_kot_needed	प्रथमं रद्दीकृतव्य�
 print_cancelled_kot_none	अस्मिन् आदेशे रद्दीकृताः व्यञ्जनानि न सन्ति
 print_cancelled_kot_client	{place} प्रेषितस्य कृते मुद्रणं रद्दं ({n}) — सर्वरे पाकशालामुद्रणम्
 kot_banner	दयालु बैनर
-kot_item_prefix	मेनू मेनू मद उपसर्गः
+kot_item_prefix	मेनू मद उपसर्गः
 kot_strike	प्रहार पक्वान्न नाम
 kot_strike_note	प्रहार डिश नोट
 kot_strike_on	पर
 kot_strike_off	अफ
-bill_item_layout	मेनू मेनू मद लेआउट्
+bill_item_layout	मेनू मद लेआउट्
 bill_item_layout_columns	स्तम्भाः
 bill_item_layout_stacked	स्तम्भितम्
 bill_item_header	स्तम्भशीर्षकाः
@@ -101,6 +101,19 @@ bill_item_col_sep	स्तम्भनियमाः
 slip_columns	स्तम्भाः
 slip_col_header	शीर्षकम्
 bill_line_logo	चिह्नम्
+bill_line_shop	दुकान
+bill_line_address	पता
+bill_line_fssai	FSSAI
+bill_line_title	शीर्षकम्
+bill_line_customer	ग्राहक
+bill_line_bill_no	बिल सं.
+bill_line_time	कालः
+bill_line_cashier	कैशियर
+bill_line_table	Dining table
+bill_line_items	वस्तूनि
+bill_line_total	कुल
+bill_line_footer	पादलेखः
+bill_line_upi	UPI
 bill_logo_picture	चित्रम्
 bill_logo_choose	चित्रं वृणुत
 bill_logo_remove	चित्रम् अपनयत
@@ -128,6 +141,12 @@ bill_item_piece_off	अफ
 bill_total_qty	कुल qty
 bill_total_subtotal	उप कुल
 bill_total_grand	भव्य कुल
+bill_total_number_under	सङ्ख्या अस्य अधः
+bill_total_caption_under	लेबल अस्य अधः
+bill_total_own_line	स्वीया रेखा
+bill_total_caption_with	सङ्ख्यया सह
+bill_total_caption_none	लेबल नास्ति
+bill_total_place_help	“स्वीया रेखा” इमं योगं पृथक् मुद्रयति। स्तम्भस्य अधः चेत् तस्य सङ्ख्या तस्मिन् वस्तुस्तम्भे, अस्याः रेखायाः परिमाणेन स्थौल्येन च मुद्र्यते; यावत् कश्चित् स्तम्भः न गृह्यते तावत् योगाः एकां पङ्क्तिं विभजन्ते, ततः नवा पङ्क्तिः आरभते। लेबल सङ्ख्यया सह, अन्यस्य स्तम्भस्य अधः गच्छति, अथवा त्यज्यते। कर-सेवा-पूर्णाङ्कन-शोधनरेखाः “उप कुल” अनुसरन्ति।
 reprint_incl	मुद्रितरूपेण
 reprint_skip	त्यजतु
 reprint_skip_meta	पुनर्प्राप्तिमुद्रणं त्यजन्तु
@@ -168,9 +187,9 @@ settings_sec_brand	भवतः ब्राण्ड्
 settings_sec_units	इकाइ एवं रूपांतरण
 settings_sec_pickers	क्षेत्राणि · स्टेशनाः · करदराणि
 settings_sec_printers	मुद्रकाः
-settings_sec_bill	विधेयक एवं KOT प्रारूप
+settings_sec_bill	देयक एवं KOT प्रारूप
 settings_sec_selling	योजना एवं विक्रय
-bill_kot_tab_bill	अतिथि बिल
+bill_kot_tab_bill	देयकम्
 bill_kot_tab_kot	KOT
 settings_sec_alerts	अलर्ट्स्
 alerts_help	भवतः कृते कियत्कालं यावत् स्थितिसन्देशाः पर्दायां तिष्ठन्ति (एतत् प्रवेशः)।
@@ -178,20 +197,20 @@ snack_secs_ph	सेकण्ड् (३–६०, पूर्वनिर्�
 snack_secs_save	अलर्टसमयं रक्षतु
 snack_secs_saved	अलर्ट समय रक्षितः — {n} सेकण्ड्
 settings_sec_whatsapp	WhatsApp
-whatsapp_cloud_help	Use your own Meta WhatsApp Cloud API. Create a System User token with whatsapp_business_messaging (temporary dashboard tokens expire). Credentials stay on this Server only — never on extra tills. Accepted means Meta took the request, not that the guest received it.
-whatsapp_phone_id_ph	Phone Number ID
-whatsapp_token_ph	Access Token (leave blank to keep)
-whatsapp_template_ph	Bill template name (optional)
-whatsapp_template_lang_ph	Template language (e.g. en)
-whatsapp_enable	Enable
+whatsapp_cloud_help	स्वकीयं Meta WhatsApp Cloud API उपयुज्यताम्। whatsapp_business_messaging युक्तं System User टोकन रचयतु (डैशबोर्ड् इत्यस्य अस्थायि-टोकनानि समाप्यन्ते)। एताः सूचनाः केवलम् अस्मिन् सर्वर-यन्त्रे तिष्ठन्ति — अतिरिक्त-टिल् मध्ये कदापि न। “स्वीकृतम्” इत्यस्य अर्थः Meta अनुरोधं स्वीकृतवान् इति, न तु अतिथिः सन्देशं प्राप्तवान् इति।
+whatsapp_phone_id_ph	दूरभाषसङ्ख्या ID
+whatsapp_token_ph	प्रवेश-टोकन (तदेव रक्षितुं रिक्तं त्यजतु)
+whatsapp_template_ph	बिल-प्रारूपस्य नाम (वैकल्पिकम्)
+whatsapp_template_lang_ph	प्रारूपस्य भाषा (यथा en)
+whatsapp_enable	सक्षमं करोतु
 whatsapp_disable	Off
-whatsapp_save	Save WhatsApp
-whatsapp_test	Test connection
-whatsapp_disconnect	Disconnect
-whatsapp_send_bill	Send via WhatsApp
-whatsapp_consent	WhatsApp OK
-whatsapp_consent_help	Guest agreed to receive WhatsApp messages. A phone number alone is not consent.
-whatsapp_server_only	Configure WhatsApp on the shop Server device
+whatsapp_save	WhatsApp रक्षतु
+whatsapp_test	सम्पर्कं परीक्षताम्
+whatsapp_disconnect	सम्पर्कं विच्छिनत्तु
+whatsapp_send_bill	WhatsApp द्वारा प्रेषयतु
+whatsapp_consent	WhatsApp ठीकम्
+whatsapp_consent_help	अतिथिः WhatsApp सन्देशान् प्राप्तुं सम्मतिं दत्तवान्। केवलं दूरभाषसङ्ख्या सम्मतिः न भवति।
+whatsapp_server_only	आपणस्य सर्वर-यन्त्रे WhatsApp विन्यस्यतु
 settings_sec_backup	बैकअप & पुनर्स्थापन
 settings_sec_diag	निदानम्
 settings_sec_privacy	गोपनीयता
@@ -226,7 +245,7 @@ sidebar_hidden	गुप्तम्
 sidebar_always_on	सदा बारस्य उपरि
 sidebar_shown_hint	पार्श्वरेल / अधः ट्याब्स् इत्यत्र दर्शितम्
 sidebar_hidden_hint	बारात् निगूढम्
-sidebar_menu_items	मेनू & मेनू मेनू आइटम
+sidebar_menu_items	मेनू & मेनू आइटम
 sidebar_enable_all	सर्वं सक्षमं कुर्वन्तु
 sidebar_disable_all	सर्वं अक्षमं कुर्वन्तु
 sidebar_order_saved	पार्श्वपट्टिकाक्रमः रक्षितः
@@ -248,7 +267,7 @@ nav_settings	सेटिंग्स्
 nav_lock	ताला
 no_sale_yet	अद्यापि विक्रयः नास्ति
 favorites	प्रियाः
-favorites_help	मेनू मेनू-वस्तूनि भवन्तः बहुधा विक्रयन्ति, भवतः प्रवेशार्थं रक्षिताः । बिलमध्ये एकं योजयन्तु, अथवा अधोलिखितानां सर्वेभ्यः मेनू-वस्तूनाम् स्वसूचीं निर्मायन्तु ।
+favorites_help	मेनू-वस्तूनि भवन्तः बहुधा विक्रयन्ति, भवतः प्रवेशार्थं रक्षिताः । बिलमध्ये एकं योजयन्तु, अथवा अधोलिखितानां सर्वेभ्यः मेनू-वस्तूनाम् स्वसूचीं निर्मायन्तु ।
 your_favorites	भवतः प्रियाः
 all_items	सर्वाणि मेनू-वस्तूनि
 frequent	नित्यम्
@@ -256,7 +275,7 @@ added_items	मेनू मेन्यू आइटम् योजितम�
 added_items_empty	अस्मिन् क्रमे अद्यापि किमपि नास्ति — All menu items अथवा category इत्यस्मात् एकं dish योजयन्तु ।
 frequent_config_help	अधिकांशः पूर्णविलेभ्यः व्यञ्जनानि विक्रीतवान् । कति दिवसाः द्रष्टव्याः, कति व्यञ्जनानि दर्शयितव्यानि इति निर्धारयन्तु।
 frequent_days_ph	दिवस (१) ९.
-frequent_limit_ph	मेनू मेनू-वस्तूनि (24) .
+frequent_limit_ph	मेनू-वस्तूनि (24) .
 frequent_apply	प्रयोजयन्तु
 frequent_saved	बारम्बार: अन्तिम {d} दिवस, शीर्ष {n} — {c} व्यञ्जन
 frequent_empty	अस्मिन् काले अद्यापि कोऽपि सम्पन्नः विक्रयः नास्ति — बिलस्य निपटनं कुर्वन्तु (₹0 अनुमतं यदा सेटिंग्स् एवम् वदति) ते च अत्र दर्शयन्ति ।
@@ -290,7 +309,7 @@ kot_mark_ready	मार्क सज्जः
 kot_done_btn	कृतम्
 table_free	रिक्तम् — आदेशं आरभ्य ट्याप् कुर्वन्तु
 start_order	आदेशं आरभत
-open_bill	विधेयकं उद्घाटयतु
+open_bill	देयकं उद्घाटयतु
 collect_payment	भुगतान संग्रह करें
 table_running	धावति
 payment_pending	भुगतान लंबित
@@ -302,7 +321,7 @@ branches_org	शाखा एवं org
 credit_customers	ग्राहकाः आपूर्तिकर्ताश्च (ऋणलेखाः) २.
 customer_name_ph	ग्राहकस्य वा आपूर्तिकर्तायाः नाम
 new_customer_ph	नवीन ग्राहक अथवा आपूर्तिकर्ता नाम
-item_name_ph	मेनू मेनू मदस्य नाम (उदा. मसाला डोसा)
+item_name_ph	मेनू मदस्य नाम (उदा. मसाला डोसा)
 item_price_ph	मूल्यम्
 start_template	उत्पाद
 team	दल
@@ -517,7 +536,7 @@ goods_received	प्राप्त माल
 import_day	आयातदिवसः
 import_items_csv_plain	मेनू आइटम आयात करें CSV...
 import_parties_csv	आयात ग्राहक एवं आपूर्तिकर्ता CSV...
-item_name	मेनू मेनू मदस्य नाम
+item_name	मेनू मदस्य नाम
 kitchen_printing	मुद्रकाः
 login_id_ph	उपयोक्तृनाम
 mark_cleared	मार्कः स्वच्छः अभवत्
@@ -532,7 +551,7 @@ on_account_ap	खातेः (ए.पी.) ९.
 org_optional_ph	संगठन (वैकल्पिक) ९.
 paid_by	द्वारा भुक्त
 paid_now	अधुना भुक्तम्
-pair_now	इदानीं युग्मम्
+pair_now	इदानीं योजयतु
 pairing_code_ph	युग्मसंहिता
 party_name_selected_ph	ग्राहकस्य अथवा आपूर्तिकर्तायाः नाम (अथवा चयनितः उपयोगः)
 password_ph	गुप्तशब्दः
@@ -637,7 +656,7 @@ choose_device_use	Server अथवा Client इति चिनोतु ।
 paired_note	युग्मितम् । विक्रयणार्थं अनलॉक् कुर्वन्तु, अथवा नवीनतमस्य कृते ताजगीं कुर्वन्तु।
 last_update_at	अन्तिम अद्यतनः {time}।
 pair_intro	सर्वरं अन्वेष्टुम्, अथवा तस्य पतां युग्मनसङ्केतं च टङ्कयन्तु ।
-pair_resume_hint	Already paired — enter your shop PIN, or Forget this shop to pair another.
+pair_resume_hint	पूर्वमेव युग्मितम् — स्वस्य आपणस्य PIN लिखतु, अथवा अन्यम् आपणं योजयितुं “एतत् दुकानं विस्मरतु” नुदतु।
 queue_waiting	दुकानं प्राप्तुं प्रतीक्षमाणः ({n}):
 queue_tries	{n} वारं प्रयतितम् · अन्तिमम् उत्तरम् : {e}
 save_backup_copy	एकं बैकअप प्रतिलिपिं रक्षन्तु...
@@ -739,7 +758,7 @@ printer_format_custom_added	अस्य स्थानस्य कृते �
 add_printer	मुद्रकं योजयतु
 remove_printer	निष्कासयतु
 route_pick_ph	बिल वा पाकशालास्थानकं वा
-route_bill	अतिथि बिल
+route_bill	देयकम्
 route_default_kitchen	न स्टेशन (अनिर्दिष्टाः व्यञ्जनानि) २.
 route_kot_station	पाकशाला
 route_dont_print	न मुद्रकः
@@ -754,13 +773,18 @@ station_vps_dd	अस्य स्टेशनस्य कृते मुद�
 station_vps_dd_n	{n} मुद्रकाः · परिवर्तनार्थं ट्याप् कुर्वन्तु
 bill_printers_dd	बिलस्य कृते मुद्रकाः
 bill_printers_dd_n	{n} बिलस्य कृते मुद्रकाः · परिवर्तनार्थं ट्याप् कुर्वन्तु
-paper_heading	पत्रम्
+paper_heading	आभासीयं पत्रम्
 paper_size	{w} × {h} mm
 paper_roll	{w} mm वेष्टनम्
 paper_not_set	पत्रम् अद्यापि अज्ञातम्
-paper_length_mm	दैर्घ्यम् (mm)
-printer_paper_help	अस्य मुद्रकस्य पत्रं mm मध्ये। रिक्तं दैर्घ्यं वेष्टनम्: प्रत्येकं पत्रकं स्वविषयवस्तुवत् दीर्घं भवति। मुद्रकान् अन्वेष्टुम् रिक्तं पत्रं मुद्रकस्य चालकात् पूरयति (वक्तुं न शक्नोति चेत् 80 mm वेष्टनम्) पूर्वनिश्चितं पत्रं कदापि न परिवर्तयति।
-preview_help	अधः चितस्य मुद्रकस्य पत्रे इदं पत्रकम्, तत्र यथा मुद्र्यते: मुद्रकः यावत् प्राप्नोति तस्मात् ऊर्ध्ववामकोणात् यथार्थमाने (धूसरम्: अप्राप्याः प्रान्ताः), दीर्घं पत्रकम् अधिकेषु पृष्ठेषु, पत्रप्रान्तात् परं सर्वं छिद्यते। मुद्रकचयनेन केवलं पूर्वावलोकनं परिवर्तते; प्रत्येकस्य मुद्रकस्य पत्रं मुद्रकाः इत्यत्र निश्चीयते।
+virtual_width_mm	आभासीयः विस्तारः (mm)
+virtual_length_mm	आभासीयं दैर्घ्यम् (mm)
+reported_width_mm	निवेदितः विस्तारः (mm)
+reported_length_mm	निवेदितं दैर्घ्यम् (mm)
+reported_paper	निवेदितम्: {paper}
+virtual_paper	आभासीयम्: {paper}
+printer_paper_help	निवेदितं नाम तत् पत्रं यस्मिन् अस्य मुद्रकस्य चालकः स्थापितः; एप् तत् केवलं पठति, न/अ इत्यस्य अर्थः प्रष्टुं चालकः नास्ति इति। आभासीयं नाम तत् पत्रं यत् मुद्रके वस्तुतः अस्ति इति भवान् वदति, mm मध्ये; रिक्तं दैर्घ्यं वेष्टनम्। मुद्रकः स्वपत्रे एव मुद्रयति; आभासीयं पत्रम् एप् प्रति वदति यत् तस्य कियत् वास्तविकं पत्रम् अस्ति, पूर्वावलोकनाय, पृष्ठदैर्घ्याय, पत्रकस्य स्थानाय च। मुद्रकान् अन्वेष्टुम् रिक्तम् आभासीयं पत्रं पूरयति, भवता निश्चितं च कदापि न परिवर्तयति।
+preview_help	इदं पत्रकं यथा अधः चिते मुद्रके मुद्र्यते, तस्य आभासीये पत्रे यथार्थमाने। श्वेते स्थाने मुद्र्यते, धूसरं पत्रं मुद्रकः न प्राप्नोति, म्लाना मसी च छिद्यते। नव चतुरस्राणि पत्रम् एव: यत्र पत्रकं स्थातव्यं तत्र स्पृशतु। दीर्घं पत्रकम् अधिकेषु पृष्ठेषु गच्छति। मुद्रकचयनेन केवलं पूर्वावलोकनं परिवर्तते।
 job_layout	विन्यासः
 job_delivery	कथं कार्यं प्रेष्यते
 job_delivery_help	ओएस दस्तावेज, कच्चा बाइट्, अथवा ESC/POS। बिलम्, पाकशालायाः टिकटं च प्रत्येकं स्वकीयं धारयति। एकं कार्यं Find इत्यनेन रक्षितं कस्मिन् अपि मुद्रके गन्तुं शक्नोति ।
@@ -768,7 +792,7 @@ station_vp_attached	मुद्रकः संलग्नः
 station_vp_detached	स्टेशनतः मुद्रकः निष्कासितः
 station_print_summary	{mode} · {n} मुद्रकाः
 station_print_summary_none	अस्मिन् स्टेशने अद्यापि मुद्रकाः नास्ति — मुद्रणं न करिष्यति
-stations_none	अद्यापि कोऽपि स्टेशनः नास्ति — अधः एकं योजयन्तु । मेनू मेनू-वस्तूनि एकं स्टेशनं उपयोक्तुं शक्नुवन्ति अतः तेषां KOT तत्र मुद्रयति ।
+stations_none	अद्यापि कोऽपि स्टेशनः नास्ति — अधः एकं योजयन्तु । मेनू-वस्तूनि एकं स्टेशनं उपयोक्तुं शक्नुवन्ति अतः तेषां KOT तत्र मुद्रयति ।
 route_up	उप
 route_down	अधः
 route_remove	निष्कासयतु
@@ -926,7 +950,7 @@ wipe_schema_done	Shop setup wiped — निरन्तरं कर्तु�
 rounded_total	गोल कुल
 setup_app_khaynjo	सेट अप Khaynjo .
 shop_logo_optional	दुकानस्य लोगो (वैकल्पिकः) २.
-stock_type_help	मेनू-वस्तुनाम (तस्य भागः पर्याप्तः), परिमाणं टङ्कयन्तु, ततः समायोजयन्तु । मेनू मेनू-वस्तूनाम् ये अद्यापि न गण्यन्ते, तेषां आवश्यकता अस्ति एकवारं अनुसरणं आरभत ।
+stock_type_help	मेनू-वस्तुनाम (तस्य भागः पर्याप्तः), परिमाणं टङ्कयन्तु, ततः समायोजयन्तु । मेनू-वस्तूनाम् ये अद्यापि न गण्यन्ते, तेषां आवश्यकता अस्ति एकवारं अनुसरणं आरभत ।
 team_owner_help	कस्यचित् योजयितुं व्यक्तिं रिक्तं त्यजन्तु: नाम, कार्यं, उपयोक्तृनाम, PIN, तथा च वैकल्पिकं गुप्तशब्दं, ततः योजयन्तु । तत्सदृशं प्रपत्रं सम्पादयितुं व्यक्तिं चिनुत — नाम, उपयोक्तृनाम, गुप्तशब्दः, पटलाः, अधिकाराः च — ततः रक्षन्तु । भवतः स्वस्य PIN गुप्तशब्दः च अधः एकं प्रवेशः अस्ति । स्वामिना अन्यस्य PIN परिवर्तनं न करोति।
 staff_name_ph	कर्मचारीनाम
 staff_copy_hire_ph	(वैकल्पिकम्) इत्यस्मात् सेटअपं प्रतिलिख्यताम् ।
@@ -971,7 +995,7 @@ pin_hint_choose	4–12 अङ्काः चिनोतु · रक्षि�
 pin_hint_new	नवीन ४–१२ अङ्कीयः स्वामिः PIN · प्रविष्टं कुर्वन्तु अथवा अनलॉकं कुर्वन्तु
 pin_hint_shop_code	दुकानयन्त्रम् · युग्मसंहिता {}
 pin_hint_books	एतत् यन्त्रं लेजर् धारयति
-pin_hint_paired	अतिरिक्तं यावत् युग्मितम् — विक्रेतुं अनलॉक् कुर्वन्तु
+pin_hint_paired	अतिरिक्त-टिल् युग्मितम् — विक्रेतुं अनलॉक् कुर्वन्तु
 pin_hint_pair_first	अतिरिक्त टिल् — प्रथमं दुकानयन्त्रं प्रति युग्मम्
 unlock_to_continue	निरन्तरं कर्तुं अनलॉकं कुर्वन्तु
 no_staff_yet	अद्यापि कोऽपि कर्मचारी नास्ति — Owner इति रूपेण अनलॉक् कुर्वन्तु, ततः Team इति
@@ -983,14 +1007,14 @@ logo_default	लोगो: Kumkaj चिह्नं (पूर्वनिर�
 tmpl_current	वर्तमानः {} — {}
 tmpl_selected	चयनितम् : {} — {} .
 setup_complete	सेटअप सम्पन्न
-onboard_fresh_tmpl	ताजा · {} — सूची रिक्तं आरभ्यते; Menu menu items इत्यत्र menu items योजयन्तु, ततः Done इति ।
+onboard_fresh_tmpl	ताजा · {} — सूची रिक्तं आरभ्यते; Menu items इत्यत्र menu items योजयन्तु, ततः Done इति ।
 onboard_book_tmpl	Ledger · {} — मेनू-वस्तूनि योजयन्तु तथा च क्रेडिट् उद्घाटयन्तु, ततः Done ।
 onboard_template_tmpl	यदि इच्छति तर्हि स्थानस्य नामकरणं कुरुत, ततः कथं आरभ्यत इति चिनुत ।
 tmpl_blurb	भोजनमेजः, आदेशः, पाकशालायाः टिकटं, बिलिंग्, लेजर् च।
 tmpl_how	काउण्टरे विक्रयणं कुर्वन्तु; भोजनमेजस्य कृते भोजनालयः & KOT; दिवसस्य लेजरस्य कृते लेजर्।
 reports_facet_title	प्रतिवेदनानि
 reports_facet_help	दिवसलेखाः, ग्राहकः वा आपूर्तिकर्ता वा वृद्धावस्था, बैंकपदानि, अवधिः च पी एण्ड एल।
-against_bill_ph	उपरि # विधेयकस्य विरुद्धम् (वैकल्पिकम्)
+against_bill_ph	उपरि # देयकस्य विरुद्धम् (वैकल्पिकम्)
 aliases_ph	उपनाम — अन्ये नाम, अल्पविराम विभक्त
 amount_blank_full_ph	राशि (रिक्त = पूर्ण शेष) २.
 amount_owed_ph	ऋणी राशि
@@ -1047,13 +1071,13 @@ kitchen_empty	मुक्तटिकटं नास्ति।
 add_a_table	भोजनमेजं योजयन्तु
 add_station_heading	पाकशालास्थानकं योजयन्तु
 categories_help	तस्य वर्गस्य अधः उपरि मेनू-वस्तुं सञ्चिकां कर्तुं Use इति ट्याप् कुर्वन्तु । फोटो श्रेणीं चित्रं ददाति; एकं विना तस्य आद्याक्षराणि दर्शयति।
-dish_search_ph	मेनू मेनू-वस्तुनाम — अस्माकं व्यञ्जनानि अन्वेष्टुम् अथवा स्वकीयं टङ्कयन्तु
+dish_search_ph	मेनू-वस्तुनाम — अस्माकं व्यञ्जनानि अन्वेष्टुम् अथवा स्वकीयं टङ्कयन्तु
 tile_free	रिक्त
 tile_occupied	व्याप्तः
 tile_food_ready	भोजनं सज्जम्
-tile_bill_printed	विधेयकं मुद्रितम्
+tile_bill_printed	देयकं मुद्रितम्
 tile_paid	भुक्त
-tile_bill_btn	अतिथि बिल
+tile_bill_btn	देयकम्
 tile_occupy_btn	अतिथिं आसनं कुर्वन्तु
 tile_free_btn	भोजनमेजं रिक्तं कुर्वन्तु
 tile_ready_btn	भोजनमेजं रिक्तं कुर्वन्तु
@@ -1136,7 +1160,7 @@ add_these_tables	एतानि भोजनमेजाः योजयन्�
 remove_these_tables	एतानि भोजनमेजाः निष्कासयन्तु
 table_remove_ph	निष्कासयन्तु: T1-T24, अथवा एकस्य भोजनमेजस्य नाम
 find_server	दुकानस्य सर्वरं अन्वेष्टुम्
-bill_format	विधेयक प्रारूप
+bill_format	देयक प्रारूप
 reset_bill_format	पूर्वनिर्धारितरूपेण पुनः सेट् कुर्वन्तु
 bill_format_reset	बिल प्रारूपं पूर्वनिर्धारितरूपेण पुनः सेट् कुर्वन्तु
 reset_kot_format	पूर्वनिर्धारितरूपेण पुनः सेट् कुर्वन्तु
@@ -1205,8 +1229,8 @@ kot_footer_ph	किचन नोट (वैकल्पिकं, मूल्�
 kot_preview	पूर्वावलोकनम्
 test_kot_format	एकं परीक्षणं प्रयतस्व KOT .
 test_kot_sent	पाकशाला टिकट पूर्वावलोकनं प्रेषितम्
-test_bill_format	परीक्षणविधेयकम्
-test_bill_sent	विधेयक पूर्वावलोकनं प्रेषितम्
+test_bill_format	परीक्षणदेयकम्
+test_bill_sent	देयक पूर्वावलोकनं प्रेषितम्
 test_print_no_printer	तस्य कार्यस्य कृते मुद्रकः नास्ति — अस्मिन् पटले एकं चिनोतु
 std_print	बिल मुद्रण आकार
 std_print_help	OS / दस्तावेजमुद्रकेषु Standard Portrait तथा Landscape बिलकार्यस्य कृते फन्ट् आकारः (बिन्दून् प्रविष्टं कुर्वन्तु — लघु/सामान्य/बृहत् न)। उभयभिमुखीकरणेषु समानः आकारः । पाकशालायाः स्लिप् आकाराः KOT ट्याब् मध्ये सन्ति ।
@@ -1238,7 +1262,7 @@ on_your_menu	भवतः मेनूमध्ये
 edit	सम्पादयतु
 schemes	योजनाः / प्रस्तावाः
 schemes_help	BOGO, प्रतिशत-अवरोधः, तथा नियत-संयोजनाः। संयोजनानि Send KOT इत्यत्र पाकशालारेखासु विस्तारयन्ति; घटकाः यावत् संयोजनं अग्निना न प्रज्वलति तावत् धारिताः तिष्ठन्ति। उदाहरणम् : 2 Thali क्रीणीत 1 Chaas प्राप्नुत
-scheme_bogo_ph	Buy 2 Thali get 1 Chaas
+scheme_bogo_ph	2 थाली क्रीणातु, 1 छाछ प्राप्नोतु
 add_scheme	योजयतु BOGO .
 schedule_ph	घण्टाः / सुखसमयः — सोम-शुक्रवासरः ०७:००-११:०० अथवा HappyHour १७:००-१९:००=१५०
 upi_qr	UPI QR
@@ -1256,7 +1280,7 @@ choose_table	भोजनमेजं चिनुत
 change_table	भोजनमेजं परिवर्तयन्तु
 pick_table_banner	अस्य आदेशस्य कृते भोजनमेजं चिनुत
 items_word	मेनू-वस्तूनाम्
-items_section	मेनू मेनू वस्तूनि
+items_section	वस्तूनि
 back_to_order	क्रमं प्रति पुनः
 new_items_head	अद्यापि न प्रेषितम्
 price_ph	मूल्यम्
@@ -1266,8 +1290,8 @@ taxable_value	करयोग्य मूल्य
 gst_inside_price_note	({tax} समावेशी) २.
 start_with_template	अस्माकं मेनू टेम्पलेट् इत्यनेन आरभत
 template_heading	अस्माकं मेनू टेम्पलेट्
-template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
-template_download_shelf	Download photo shelf
+template_need_download	व्यञ्जनानां सार्वजनिकं चित्रसङ्ग्रहम् (~1,459 व्यञ्जनानि) अवतारयतु, ततः अविद्यमानानि नामानि स्वस्य मेनू मध्ये आयातयतु।
+template_download_shelf	चित्रसङ्ग्रहम् अवतारयतु
 template_info	{c} श्रेणयः तथा {d} व्यञ्जनानि फोटोभिः सह, योजयितुं सज्जाः। मूल्यानि ₹0 तः आरभ्यन्ते — पश्चात् स्वस्य सेट् कुर्वन्तु।
 template_import	सम्पूर्ण टेम्पलेट आयात करें
 template_confirm	{d} व्यञ्जनानि तेषां श्रेणीभिः सह योजयन्तु? भवतः पूर्वमेव ये व्यञ्जनानि सन्ति ते यथावत् तिष्ठन्ति।
@@ -1299,7 +1323,7 @@ kitchen_all_day_head	इदानीं पाकं कर्तुं
 kitchen_tab_live	लाइव
 kitchen_tab_recall	स्मरणं कुरुत
 kitchen_tab_stations	स्टेशनाः
-split_bill	विभक्तं विधेयकम्
+split_bill	विभक्तं देयकम्
 split_go	पृथक् बिलं कुरुत
 cancel	रद्दं कुर्वन्तु
 opening_client	क्लायन्ट् उद्घाटयन्...
@@ -1310,7 +1334,7 @@ split_help	एकः अतिथिः · {n} उद्धृतानि व�
 split_send_first	प्रथमं KOT प्रेषयन्तु — केवलं पाकशालायाः व्यञ्जनानि एव पृथक् बिलं गन्तुं शक्नुवन्ति
 split_pick_some	प्रथमं पृथक् बिलस्य कृते डिश्स् ट्याप् कुर्वन्तु
 split_done	पृथक् बिलम् निर्मितम् — अस्य भोजनमेजस्य पार्श्वे भोजनालये अस्ति
-split_marked	पृथक् विधेयक
+split_marked	पृथक् देयक
 order_empty_pick	रिक्तं आदेशयन्तु — व्यञ्जनानि चिन्वितुं उपरि व्यञ्जनानि योजयन्तु इति ट्याप् कुर्वन्तु ।
 add_dishes	व्यञ्जनानि योजयन्तु
 order_so_far	अस्मिन् क्रमे : {n} · {total} .
@@ -1350,7 +1374,7 @@ stock_empty	अद्यापि किमपि स्टॉक् मध्�
 recent_changes	अद्यतनपरिवर्तनानि
 lane_declared_label	कर चालान
 lane_owner_label	नगद ज्ञापन
-money_lane_bill	विधेयकः {lane} .
+money_lane_bill	देयकः {lane} .
 sel_copy	प्रतिलिख्यताम्
 sel_select_all	सर्वं चीयताम्
 sel_copied	प्रतिलिखितम्

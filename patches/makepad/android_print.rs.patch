@@ -1,6 +1,6 @@
 --- a/platform/src/os/linux/android/android_jni.rs
 +++ b/platform/src/os/linux/android/android_jni.rs
-@@ -1574,6 +1574,197 @@
+@@ -1620,6 +1620,238 @@
      ok != 0
  }
  
@@ -157,6 +157,47 @@
 +        arr,
 +        content_um as std::os::raw::c_int,
 +        landscape as u8 as std::os::raw::c_int
++    );
++    ok != 0
++}
++
++/// [`to_java_print_slip`] at a place on the paper, kept to the virtual
++/// paper: `place` is down × 3 + across (0 = top left); `virtual_width_um` ×
++/// `virtual_length_um` micrometres is the paper the owner says the printer
++/// holds (a length of 0 is a roll, a width of 0 none). Each page is laid on
++/// the part of the dialog's paper that it covers
++/// (MakepadActivity-print.java `printSlipPagesPlaced`, KumkajSlipLayout.java).
++pub unsafe fn to_java_print_slip_placed(
++    job_name: String,
++    png: &[u8],
++    content_um: i32,
++    landscape: bool,
++    place: i32,
++    virtual_width_um: i32,
++    virtual_length_um: i32,
++) -> bool {
++    let env = attach_jni_env();
++    let Ok(job_name) = CString::new(job_name) else {
++        return false;
++    };
++    let job_name = ((**env).NewStringUTF.unwrap())(env, job_name.as_ptr());
++    let arr = ((**env).NewByteArray.unwrap())(env, png.len() as i32);
++    if arr.is_null() {
++        return false;
++    }
++    ((**env).SetByteArrayRegion.unwrap())(env, arr, 0, png.len() as i32, png.as_ptr() as *const i8);
++    let ok = ndk_utils::call_bool_method!(
++        env,
++        get_activity(),
++        "printSlipPagesPlaced",
++        "(Ljava/lang/String;[BIZIII)Z",
++        job_name,
++        arr,
++        content_um as std::os::raw::c_int,
++        landscape as u8 as std::os::raw::c_int,
++        place as std::os::raw::c_int,
++        virtual_width_um as std::os::raw::c_int,
++        virtual_length_um as std::os::raw::c_int
 +    );
 +    ok != 0
 +}

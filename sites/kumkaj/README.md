@@ -2,26 +2,31 @@
 
 Package `kumkaj-site`. A fullpage Makepad 2 app: wasm in the browser, the
 same crate native on desktop (preview and offline presenter). Plan and
-rules: [`docs/WEBSITES.md`](../../docs/WEBSITES.md).
+rules: [`docs/WEBSITES.md`](../../docs/WEBSITES.md). Domain **kumkaj.com**
+(registered; Firebase project is an owner step before first deploy).
 
 ## Run
 
 ```bash
 ./sites/kumkaj/scripts/run-desktop.sh   # native window
-./sites/kumkaj/scripts/run-web.sh       # wasm → http://127.0.0.1:8010
+./sites/kumkaj/scripts/run-web.sh       # debug wasm → http://127.0.0.1:8010
+
+# Production-shaped tree (wasm + /privacy /terms + OG) before Firebase
+./sites/kumkaj/scripts/preview-web.sh   # http://127.0.0.1:8010
+./sites/kumkaj/scripts/deploy-firebase.sh --dry-run   # needs .firebaserc / FIREBASE_PROJECT
 ```
 
-Scroll, swipe up, tap, or press ↓ / → / PgDn / Space for the next chapter;
-↑ / ← / PgUp go back; Home / End jump; the top-bar dots jump to a chapter.
-`http://127.0.0.1:8010/#trade` (or `#2`) opens a chapter directly.
+One scrolling page (Khaynjo/Wadhu maturity): drag-select across blocks,
+Ctrl/Cmd+A, Copy / Select all menu; dots and `#trade` jump to sections.
+Footer opens `/privacy` and `/terms`.
 
-## Story (7 chapters)
+## Story (scroll sections)
 
-The promise (with a "this counter, right now" status card) → Built for
-your trade (Moklanjo / Khaynjo choice cards) → Your books live in your
-shop → **Try it offline** (cut-the-internet toy) → Free forever on your
-devices → Speaks your staff's language (Khaynjo's real "Food ready" in
-five scripts) → Made by Gotigin (brand map, the choice again).
+The promise (offline-first BOS demo card) → Built for your trade
+(Moklanjo / Khaynjo / Kirano / Tabiyat) → Your books stay with you →
+**Try it offline** → Free forever on your devices → Speaks your staff's
+language → Who makes it (Trademark → Company → Brand → Product) →
+Privacy / Terms footer.
 
 ## Files
 
@@ -29,7 +34,9 @@ five scripts) → Made by Gotigin (brand map, the choice again).
 |---|---|
 | `src/ui.rs` | The whole page: tokens, type, components, chapters (`script_mod!`) |
 | `src/main.rs` | Chrome, toy, links, responsive tiers, owner switches, tests |
-| `resources/fonts/` | Fraunces (display), IBM Plex Sans, Noto Devanagari / Gujarati / Tamil / Bengali / Arabic — all SIL OFL (`OFL-*.txt`) |
+| `PRIVACY.md` | Brand privacy — presented at `/privacy` by preview/deploy |
+| `static/terms/` | Terms page for the crawl shell |
+| `resources/fonts/` | Fraunces (display), IBM Plex Sans, Noto scripts — SIL OFL |
 
 ## Owner switches (`src/main.rs`)
 
@@ -38,9 +45,9 @@ five scripts) → Made by Gotigin (brand map, the choice again).
 
 ## Links
 
-Product cards open `https://moklanjo.com/` / `https://khaynjo.com/`. A page
-served from 127.0.0.1 / localhost opens the local product sites instead
-(:8011 / :8012); natively, `SITE_LINKS=local` does the same.
+Product cards open the public domains. A page served from 127.0.0.1 /
+localhost opens the local product sites instead (:8011 / :8012 / :8013 /
+:8014); natively, `SITE_LINKS=local` does the same.
 
 ## Native preview
 

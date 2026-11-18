@@ -67,13 +67,19 @@ bill_item_amount	Kiasi
 bill_item_note	Ujumbe wa kipengee
 bill_item_col_sep	Mistari ya safu
 slip_col_width	Upana (mm)
-paper_heading	Karatasi
+paper_heading	Karatasi pepe
 paper_size	{w} × {h} mm
 paper_roll	gombo la {w} mm
 paper_not_set	karatasi bado haijulikani
-paper_length_mm	Urefu (mm)
-printer_paper_help	Karatasi ya printa hii kwa mm. Urefu mtupu ni gombo: kila risiti ni ndefu kama maudhui yake. Tafuta printa hujaza karatasi tupu kutoka kwa dereva wa printa (gombo la 80 mm isipoweza kusema) na kamwe haibadilishi iliyokwisha wekwa.
-preview_help	Risiti hii kwenye karatasi ya printa iliyochaguliwa hapa chini, kama inavyochapishwa huko: ukubwa halisi kutoka kona ya juu kushoto ambayo printa hufikia (kijivu: kingo isizofikia), risiti ndefu kwenye kurasa zaidi, kila kitu kinachopita ukingo wa karatasi hukatwa. Kuchagua printa hubadilisha onyesho la awali tu; karatasi ya kila printa huwekwa chini ya Printa.
+na	Hakuna
+virtual_width_mm	Upana pepe (mm)
+virtual_length_mm	Urefu pepe (mm)
+reported_width_mm	Upana ulioripotiwa (mm)
+reported_length_mm	Urefu ulioripotiwa (mm)
+reported_paper	Iliyoripotiwa: {paper}
+virtual_paper	Pepe: {paper}
+printer_paper_help	Iliyoripotiwa ni karatasi ambayo dereva wa printa hii amewekewa; programu huisoma tu, na “Hakuna” inamaanisha hakuna dereva wa kuuliza. Pepe ni karatasi unayosema iko kweli ndani ya printa, kwa mm; urefu mtupu ni gombo. Printa huchapisha kwenye karatasi yake yenyewe; karatasi pepe huiambia programu ni kiasi gani chake ni karatasi halisi, kwa ajili ya onyesho la awali, urefu wa ukurasa na mahali pa risiti. Tafuta printa hujaza karatasi pepe tupu na kamwe haibadilishi uliyoiweka wewe.
+preview_help	Risiti hii kama inavyochapishwa kwenye printa iliyochaguliwa hapa chini, kwa ukubwa halisi kwenye karatasi yake pepe. Nyeupe ni mahali inapochapisha, karatasi ya kijivu haifikiwi na printa, na wino uliofifia hukatwa. Miraba tisa ni karatasi: gusa mahali risiti inapaswa kukaa. Risiti ndefu huendelea kwenye kurasa zaidi. Kuchagua printa hubadilisha onyesho la awali tu.
 slip_col_start	Nafasi ya mwanzo (px)
 slip_col_end	Nafasi ya mwisho (px)
 slip_columns_help	Upana wa kila safu wima unajumuisha nafasi yake ya mwanzo na ya mwisho. Maandishi hujikunja ndani ya safu yake; kinachozidi upana wa maudhui hukatwa, kwenye karatasi na kwenye onyesho la kukagua.
@@ -88,6 +94,12 @@ bill_item_piece_off	Zima
 bill_total_qty	Jumla idadi
 bill_total_subtotal	Jumla ndogo
 bill_total_grand	Jumla kuu
+bill_total_number_under	Nambari chini ya
+bill_total_caption_under	Lebo chini ya
+bill_total_own_line	Mstari wake
+bill_total_caption_with	Pamoja na nambari
+bill_total_caption_none	Hakuna lebo
+bill_total_place_help	Mstari wake huchapisha jumla hii peke yake. Chini ya safu wima, nambari yake huchapishwa katika safu hiyo ya bidhaa, kwa ukubwa na unene wa mstari huu; jumla hushiriki safu mlalo moja hadi safu wima ichukuliwe, kisha safu mlalo mpya huanza. Lebo huenda pamoja na nambari, chini ya safu wima nyingine, au huachwa. Mistari ya kodi, huduma, ukadiriaji na malipo hufuata Jumla ndogo.
 kot_unassigned	Haijakabidhiwa
 settings_hub_help	Fungua sehemu moja kwa wakati — kusogeza kidogo, machaguo wazi zaidi.
 settings_sec_language	Lugha na sarafu
@@ -551,11 +563,11 @@ currency_use_help	Sogeza na gusa Tumia kwa sarafu yoyote inayoungwa mkono.
 day_close_help	Kurekodi kufunga siku huhifadhi muhtasari huu (na tofauti ya droo ikiwa imehesabiwa) kwenye kumbukumbu ya ukaguzi. Haizimii mauzo.
 expenses_word	Gharama
 feature_access_help	Ufikiaji wa vipengele vya mfanyakazi aliyechaguliwa (gusa baada ya kuongeza)
-fresh_book_kirano	Printa
+fresh_book_kirano	Anza upya = katalogi tupu (ongeza bidhaa baadaye). Kitabu = andika hapa chini akiba ya kuanzia na nani anayekudaiwa.
 fresh_selected	Fresh imechaguliwa — katalogi itabaki tupu. Gusa Done ukiwa tayari.
 gross_word	Jumla kuu
 how_start	Ungependa kuanza vipi?
-later_country_pack	Printa
+later_country_pack	Baadaye: Mipangilio → tumia pakiti ya nchi kwa majina ya kodi na malipo.
 local_badge	NDANI
 mix_type_hint_kirano	Gawanya katika taslimu / UPI / kadi / mkopo ikihitajika. Mkopo unahitaji mteja hapo juu.
 money_in_sales	Pesa inayoingia (mauzo)
@@ -676,7 +688,7 @@ book_kind_today	Kitabu cha leo
 book_kind_month	Kitabu cha mwezi huu
 book_kind_aging	Inayodaiwa / debiti-krediti
 book_kind_balance	Karatasi ya mizania
-order_help	Chagua oda iliyo wazi, au chagua meza na uanze mpya. Gusa bidhaa zilizo tayari, tuma KOT, toa bili kwa bidhaa moja au zaidi, gawa bili, na ukamilishe malipo.
+order_help	Gusa bidhaa ili kuiongeza.
 categories_help	Kategoria huonyesha chakula ni cha sehemu gani ya menyu — mf. vitafunwa, chakula kikuu au biryani. Unda kategoria kwa njia yako: chagua majina tunayopendekeza, yabadilishe jina au ongeza yako.
 dish_search_ph	Tafuta vitu au msimbo mfupi...
 sizes_as_items_ph	Ukubwa kama bidhaa tofauti (hiari) — Nusu=120, Kamili=200
@@ -723,6 +735,20 @@ fssai_ph	FSSAI / leseni ya duka No. (si lazima)
 bill_footer_ph	Chini (mf. Asante, karibu tena)
 kot_field_on	onyesha
 kot_field_off	ficha
+kot_field_show	Onyesha
+kot_field_hide	Ficha
+bill_line_shop	Duka
+bill_line_address	Anwani
+bill_line_fssai	FSSAI
+bill_line_title	Kichwa
+bill_line_customer	Mteja
+bill_line_bill_no	Nambari ya bili
+bill_line_time	Wakati
+bill_line_cashier	Keshia
+bill_line_items	Bidhaa
+bill_line_total	Jumla
+bill_line_footer	Chini
+bill_line_upi	UPI
 kot_weight_light	Nyembamba
 bill_kot_panel_help	Mpangilio wa bili na upana wa maudhui. Cashier ndiye aliyetoa au kulipa bili - habari kamili ya mauzo itasalia kwenye vitabu.
 std_size_ph	k.m. 18, 20, 26…
@@ -830,10 +856,10 @@ lane_declared_label	Ankara ya kodi
 lane_owner_label	Memo ya taslimu
 money_lane_bill	Bilio: {lane}
 
-removing	Removing…
-removed	Removed
-updating_order	Updating…
-order_updated	Order updated
+removing	Inaondoa…
+removed	Imeondolewa
+updating_order	Inasasisha…
+order_updated	Oda imesasishwa
 sel_copy	Nakili
 sel_select_all	Chagua zote
 sel_copied	Imenakiliwa

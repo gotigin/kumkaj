@@ -101,6 +101,19 @@ bill_item_col_sep	ກົດລະບຽບຖັນ
 slip_columns	ຖັນ
 slip_col_header	ສ່ວນຫົວ
 bill_line_logo	ໂລໂກ້
+bill_line_shop	ຮ້ານຄ້າ
+bill_line_address	ທີ່ຢູ່
+bill_line_fssai	FSSAI
+bill_line_title	ຫົວຂໍ້
+bill_line_customer	ລູກຄ້າ
+bill_line_bill_no	ເລກໃບບິນ
+bill_line_time	ເວລາ
+bill_line_cashier	ພະນັກງານເກັບເງິນ
+bill_line_table	ໂຕະກິນເຂົ້າ
+bill_line_items	ລາຍການ
+bill_line_total	ທັງໝົດ
+bill_line_footer	ສ່ວນທ້າຍ
+bill_line_upi	UPI
 bill_logo_picture	ຮູບ
 bill_logo_choose	ເລືອກຮູບ
 bill_logo_remove	ລຶບຮູບອອກ
@@ -128,6 +141,12 @@ bill_item_piece_off	ປິດ
 bill_total_qty	ຈຳນວນທັງໝົດ
 bill_total_subtotal	ທັງໝົດຍ່ອຍ
 bill_total_grand	ຈໍານວນມະຫາສານ
+bill_total_number_under	ຕົວເລກຢູ່ກ້ອງ
+bill_total_caption_under	ປ້າຍຢູ່ກ້ອງ
+bill_total_own_line	ແຖວຂອງຕົນເອງ
+bill_total_caption_with	ພ້ອມກັບຕົວເລກ
+bill_total_caption_none	ບໍ່ມີປ້າຍ
+bill_total_place_help	“ແຖວຂອງຕົນເອງ” ພິມຍອດລວມນີ້ແຍກຕ່າງຫາກ. ຢູ່ກ້ອງຖັນ ຕົວເລກຂອງມັນຈະພິມໃນຖັນລາຍການນັ້ນ ຕາມຂະໜາດ ແລະ ຄວາມໜາຂອງແຖວນີ້; ຍອດລວມຕ່າງໆໃຊ້ແຖວດຽວກັນຈົນກວ່າຖັນໃດໜຶ່ງຈະຖືກໃຊ້ ແລ້ວແຖວໃໝ່ຈຶ່ງເລີ່ມ. ປ້າຍຢູ່ພ້ອມກັບຕົວເລກ, ຢູ່ກ້ອງຖັນອື່ນ ຫຼື ບໍ່ພິມ. ແຖວພາສີ, ຄ່າບໍລິການ, ການປັດເສດ ແລະ ການຊຳລະ ຈະຕາມ “ທັງໝົດຍ່ອຍ”.
 reprint_incl	ໃນການພິມ
 reprint_skip	ຂ້າມ
 reprint_skip_meta	ຂ້າມການກູ້ຂໍ້ມູນການພິມ
@@ -178,20 +197,20 @@ snack_secs_ph	ວິນາທີ (3–60, ຄ່າເລີ່ມຕົ້ນ 1
 snack_secs_save	ປະຢັດເວລາເຕືອນ
 snack_secs_saved	ບັນທຶກເວລາແຈ້ງເຕືອນ — {n} ວິນາທີ
 settings_sec_whatsapp	WhatsApp
-whatsapp_cloud_help	Use your own Meta WhatsApp Cloud API. Create a System User token with whatsapp_business_messaging (temporary dashboard tokens expire). Credentials stay on this Server only — never on extra tills. Accepted means Meta took the request, not that the guest received it.
-whatsapp_phone_id_ph	Phone Number ID
-whatsapp_token_ph	Access Token (leave blank to keep)
-whatsapp_template_ph	Bill template name (optional)
-whatsapp_template_lang_ph	Template language (e.g. en)
-whatsapp_enable	Enable
+whatsapp_cloud_help	ໃຊ້ Meta WhatsApp Cloud API ຂອງທ່ານເອງ. ສ້າງໂທເຄັນ System User ທີ່ມີ whatsapp_business_messaging (ໂທເຄັນຊົ່ວຄາວຈາກແດຊບອດຈະໝົດອາຍຸ). ຂໍ້ມູນຢູ່ສະເພາະເຊີບເວີນີ້ເທົ່ານັ້ນ — ບໍ່ຢູ່ເຄົາເຕີເສີມຈັກເທື່ອ. “ຍອມຮັບແລ້ວ” ໝາຍຄວາມວ່າ Meta ຮັບຄຳຂໍແລ້ວ, ບໍ່ແມ່ນວ່າແຂກໄດ້ຮັບແລ້ວ.
+whatsapp_phone_id_ph	ID ເບີໂທລະສັບ
+whatsapp_token_ph	ໂທເຄັນການເຂົ້າເຖິງ (ປະຫວ່າງໄວ້ເພື່ອໃຊ້ອັນເກົ່າ)
+whatsapp_template_ph	ຊື່ແມ່ແບບໃບບິນ (ທາງເລືອກ)
+whatsapp_template_lang_ph	ພາສາຂອງແມ່ແບບ (ເຊັ່ນ en)
+whatsapp_enable	ເປີດໃຊ້
 whatsapp_disable	Off
-whatsapp_save	Save WhatsApp
-whatsapp_test	Test connection
-whatsapp_disconnect	Disconnect
-whatsapp_send_bill	Send via WhatsApp
-whatsapp_consent	WhatsApp OK
-whatsapp_consent_help	Guest agreed to receive WhatsApp messages. A phone number alone is not consent.
-whatsapp_server_only	Configure WhatsApp on the shop Server device
+whatsapp_save	ບັນທຶກ WhatsApp
+whatsapp_test	ທົດສອບການເຊື່ອມຕໍ່
+whatsapp_disconnect	ຕັດການເຊື່ອມຕໍ່
+whatsapp_send_bill	ສົ່ງຜ່ານ WhatsApp
+whatsapp_consent	WhatsApp ຕົກລົງ
+whatsapp_consent_help	ແຂກໄດ້ຍິນຍອມຮັບຂໍ້ຄວາມ WhatsApp ແລ້ວ. ມີແຕ່ເບີໂທລະສັບຢ່າງດຽວບໍ່ແມ່ນການຍິນຍອມ.
+whatsapp_server_only	ຕັ້ງຄ່າ WhatsApp ຢູ່ອຸປະກອນເຊີບເວີຂອງຮ້ານ
 settings_sec_backup	ສຳຮອງຂໍ້ມູນ & ຟື້ນຟູ
 settings_sec_diag	ການວິນິດໄສ
 settings_sec_privacy	ຄວາມເປັນສ່ວນຕົວ
@@ -509,7 +528,7 @@ expense_heading	ຄ່າໃຊ້ຈ່າຍ
 export_day	ມື້ສົ່ງອອກ
 extra_note_bill_ph	ຫມາຍເຫດພິເສດກ່ຽວກັບບັນຊີລາຍການນີ້ / ການຂາຍ
 extra_note_expense_ph	ຫມາຍເຫດພິເສດກ່ຽວກັບຄ່າໃຊ້ຈ່າຍສຸດທ້າຍ
-extra_tills_heading	tills ພິເສດ
+extra_tills_heading	ເຄົາເຕີເສີມ
 other_devices_help_heading	ຕັ້ງຄ່າອຸປະກອນອື່ນໆ
 other_devices_help	ໃນ​ອຸ​ປະ​ກອນ​ນີ້ (ເຊີບ​ເວີ): ອຸ​ປະ​ກອນ​ອື່ນໆ → ອະ​ນຸ​ຍາດ​ໃຫ້ tills ເພີ່ມ​ເຕີມ. ສັງເກດລະຫັດການຈັບຄູ່ ແລະທີ່ຢູ່ Wi‑Fi. ແຕະອະນຸຍາດໃຫ້ອຸປະກອນອື່ນເຊື່ອມຕໍ່ຖ້າມັນປາກົດ. ໃນຄອມພິວເຕີ, ແຕະເລີ່ມຕົ້ນດ້ວຍຄອມພິວເຕີນີ້. ໃນອຸປະກອນອື່ນ: ຕິດຕັ້ງແອັບຯ, ເລືອກຮູບແບບລູກຄ້າ, ຊອກຫາເຄື່ອງແມ່ຂ່າຍຂອງຮ້ານ (ຫຼືພິມທີ່ຢູ່), ໃສ່ລະຫັດການຈັບຄູ່, ຈັບຄູ່ດຽວນີ້. ຄໍາສັ່ງລໍຖ້າຢູ່ໃນອຸປະກອນຖ້າ Wi‑Fi ຫຼຸດລົງແລະໄປເມື່ອເຄື່ອງແມ່ຂ່າຍຕອບອີກເທື່ອຫນຶ່ງ. ເຄື່ອງພິມໃນເຮືອນຄົວຖືກຕັ້ງຢູ່ໃນເຊີບເວີ (ການຕັ້ງຄ່າ → ເຄື່ອງພິມ) — ມີການສົ່ງ KOTs ພິເສດໄປທີ່ນັ້ນ.
 forget_shop	ລືມຮ້ານນີ້
@@ -637,7 +656,7 @@ choose_device_use	ເລືອກເຊີບເວີຫຼືລູກຄ້�
 paired_note	ຈັບຄູ່. ປົດລັອກເພື່ອຂາຍ, ຫຼືໂຫຼດຂໍ້ມູນໃໝ່ຫຼ້າສຸດ.
 last_update_at	ອັບເດດຫຼ້າສຸດ: {time}.
 pair_intro	ຊອກຫາເຊີບເວີ, ຫຼືພິມທີ່ຢູ່ຂອງມັນ ແລະລະຫັດການຈັບຄູ່.
-pair_resume_hint	Already paired — enter your shop PIN, or Forget this shop to pair another.
+pair_resume_hint	ຈັບຄູ່ແລ້ວ — ປ້ອນ PIN ຂອງຮ້ານທ່ານ ຫຼື ແຕະ “ລືມຮ້ານນີ້” ເພື່ອຈັບຄູ່ຮ້ານອື່ນ.
 queue_waiting	ລໍຖ້າຮອດຮ້ານ ({n}):
 queue_tries	ລອງ {n} ເທື່ອ · ຄຳຕອບສຸດທ້າຍ: {e}
 save_backup_copy	ບັນທຶກສຳເນົາສຳຮອງ...
@@ -754,13 +773,18 @@ station_vps_dd	ເຄື່ອງພິມສໍາລັບສະຖານີ�
 station_vps_dd_n	{n}ເຄື່ອງພິມ · ແຕະເພື່ອປ່ຽນ
 bill_printers_dd	ເຄື່ອງພິມສໍາລັບໃບບິນຄ່າ
 bill_printers_dd_n	{n}ເຄື່ອງພິມສຳລັບໃບບິນ · ແຕະເພື່ອປ່ຽນ
-paper_heading	ເຈ້ຍ
+paper_heading	ເຈ້ຍສະເໝືອນ
 paper_size	{w} × {h} mm
 paper_roll	ມ້ວນ {w} mm
 paper_not_set	ຍັງບໍ່ຮູ້ເຈ້ຍ
-paper_length_mm	ຄວາມຍາວ (mm)
-printer_paper_help	ເຈ້ຍຂອງເຄື່ອງພິມນີ້ເປັນ mm. ຄວາມຍາວຫວ່າງ ແມ່ນມ້ວນ: ໃບບິນແຕ່ລະໃບຍາວເທົ່າເນື້ອໃນຂອງມັນ. ຊອກຫາເຄື່ອງພິມ ຕື່ມເຈ້ຍທີ່ຫວ່າງຈາກໄດເວີຂອງເຄື່ອງພິມ (ມ້ວນ 80 mm ເມື່ອມັນບອກບໍ່ໄດ້) ແລະ ບໍ່ເຄີຍປ່ຽນເຈ້ຍທີ່ຕັ້ງໄວ້ແລ້ວ.
-preview_help	ໃບບິນນີ້ຢູ່ເທິງເຈ້ຍຂອງເຄື່ອງພິມທີ່ເລືອກຢູ່ລຸ່ມ, ຄືກັບທີ່ພິມອອກຢູ່ບ່ອນນັ້ນ: ຂະໜາດແທ້ຈາກມຸມຊ້າຍເທິງທີ່ເຄື່ອງພິມໄປເຖິງ (ສີເທົາ: ຂອບທີ່ໄປບໍ່ເຖິງ), ໃບບິນຍາວຢູ່ໃນຫຼາຍແຜ່ນ, ສ່ວນທີ່ເກີນຂອບເຈ້ຍຖືກຕັດ. ການເລືອກເຄື່ອງພິມປ່ຽນແຕ່ຕົວຢ່າງ; ເຈ້ຍຂອງແຕ່ລະເຄື່ອງພິມຕັ້ງໄວ້ໃນ ເຄື່ອງພິມ.
+virtual_width_mm	ຄວາມກວ້າງສະເໝືອນ (mm)
+virtual_length_mm	ຄວາມຍາວສະເໝືອນ (mm)
+reported_width_mm	ຄວາມກວ້າງທີ່ລາຍງານ (mm)
+reported_length_mm	ຄວາມຍາວທີ່ລາຍງານ (mm)
+reported_paper	ທີ່ລາຍງານ: {paper}
+virtual_paper	ສະເໝືອນ: {paper}
+printer_paper_help	ທີ່ລາຍງານ ແມ່ນເຈ້ຍທີ່ໄດຣເວີຂອງເຄື່ອງພິມນີ້ຖືກຕັ້ງໄວ້ ແອັບພຽງແຕ່ອ່ານມັນເທົ່ານັ້ນ ແລະ “ບໍ່ມີ” ໝາຍຄວາມວ່າບໍ່ມີໄດຣເວີໃຫ້ຖາມ. ສະເໝືອນ ແມ່ນເຈ້ຍທີ່ທ່ານບອກວ່າຢູ່ໃນເຄື່ອງພິມແທ້ໆ ເປັນ mm ຄວາມຍາວຫວ່າງເປົ່າໝາຍເຖິງມ້ວນ. ເຄື່ອງພິມພິມລົງເຈ້ຍຂອງມັນເອງ ເຈ້ຍສະເໝືອນບອກແອັບວ່າສ່ວນໃດຂອງມັນເປັນເຈ້ຍແທ້ ສຳລັບຕົວຢ່າງ ຄວາມຍາວຂອງໜ້າ ແລະຕຳແໜ່ງຂອງໃບບິນ. ຊອກຫາເຄື່ອງພິມ ຕື່ມເຈ້ຍສະເໝືອນທີ່ຫວ່າງເປົ່າ ແລະບໍ່ເຄີຍປ່ຽນອັນທີ່ທ່ານຕັ້ງໄວ້.
+preview_help	ໃບບິນນີ້ຕາມທີ່ມັນພິມອອກໃນເຄື່ອງພິມທີ່ເລືອກຂ້າງລຸ່ມ ໃນຂະໜາດຈິງເທິງເຈ້ຍສະເໝືອນຂອງມັນ. ສີຂາວແມ່ນບ່ອນທີ່ພິມ ເຈ້ຍສີເທົາແມ່ນເຄື່ອງພິມໄປບໍ່ເຖິງ ແລະໝຶກຈາງຖືກຕັດອອກ. ເກົ້າຊ່ອງແມ່ນເຈ້ຍ: ແຕະບ່ອນທີ່ໃບບິນຄວນຢູ່. ໃບບິນຍາວຈະຕໍ່ໄປໜ້າຕໍ່ໄປ. ການເລືອກເຄື່ອງພິມປ່ຽນແຕ່ຕົວຢ່າງເທົ່ານັ້ນ.
 job_layout	ແຜນຜັງ
 job_delivery	ວິທີການສົ່ງວຽກ
 job_delivery_help	ເອກະສານ OS, ໄບຕ໌ດິບ, ຫຼື ESC/POS. ໃບເກັບເງິນແລະປີ້ເຮືອນຄົວແຕ່ລະຄົນເກັບຮັກສາຂອງຕົນເອງ. ທັງສອງວຽກສາມາດໄປຫາເຄື່ອງພິມໃດກໍໄດ້ທີ່ Find ໄດ້ບັນທຶກໄວ້.
@@ -1163,7 +1187,7 @@ kot_show_station	ສະຖານີ
 kot_hide_station	ເຊື່ອງສະຖານີ
 kot_show_table	ໂຕະກິນເຂົ້າ
 kot_hide_table	ເຊື່ອງໂຕະກິນເຂົ້າ
-kot_show_kot_no	KOT ບໍ່
+kot_show_kot_no	ເລກ KOT
 kot_hide_kot_no	ເຊື່ອງ KOT ບໍ່
 kot_width	ຕົວຢ່າງ wrap (ຕັ້ງຄວາມກວ້າງຂອງເນື້ອຫາຢູ່ໃນແຖບ KOT)
 kot_width_58	58 mm
@@ -1266,8 +1290,8 @@ taxable_value	ມູນຄ່າພາສີ
 gst_inside_price_note	({tax}ລວມ)
 start_with_template	ເລີ່ມຕົ້ນດ້ວຍແມ່ແບບເມນູຂອງພວກເຮົາ
 template_heading	ແມ່ແບບເມນູຂອງພວກເຮົາ
-template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
-template_download_shelf	Download photo shelf
+template_need_download	ດາວໂຫຼດຊັ້ນວາງຮູບອາຫານສາທາລະນະ (~1,459 ອາຫານ) ແລ້ວນຳເຂົ້າຊື່ທີ່ຍັງບໍ່ມີໃສ່ເມນູຂອງທ່ານ.
+template_download_shelf	ດາວໂຫຼດຊັ້ນວາງຮູບ
 template_info	ໝວດໝູ່ {c} ແລະ {d} ຈານພ້ອມຮູບ, ພ້ອມເພີ່ມ. ລາຄາເລີ່ມຕົ້ນທີ່ ₹0 — ຕັ້ງຄ່າຕາມຫຼັງ.
 template_import	ນຳເຂົ້າແມ່ແບບທີ່ສົມບູນ
 template_confirm	ເພີ່ມອາຫານ {d} ດ້ວຍໝວດໝູ່ຂອງເຂົາເຈົ້າບໍ? ອາຫານທີ່ທ່ານມີຢູ່ແລ້ວຕາມທີ່ເຂົາເຈົ້າເປັນ.

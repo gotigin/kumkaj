@@ -101,6 +101,19 @@ bill_item_col_sep	Баганын шугам
 slip_columns	Баганууд
 slip_col_header	Гарчиг
 bill_line_logo	Лого
+bill_line_shop	Дэлгүүр
+bill_line_address	Хаяг
+bill_line_fssai	FSSAI
+bill_line_title	Гарчиг
+bill_line_customer	Үйлчлүүлэгч
+bill_line_bill_no	Тооцоо №
+bill_line_time	Цаг
+bill_line_cashier	Кассчин
+bill_line_table	Ширээ
+bill_line_items	Бараа
+bill_line_total	Нийт
+bill_line_footer	Доод хэсэг
+bill_line_upi	UPI
 bill_logo_picture	Зураг
 bill_logo_choose	Зураг сонгох
 bill_logo_remove	Зураг арилгах
@@ -128,6 +141,12 @@ bill_item_piece_off	Унтраалттай
 bill_total_qty	Нийт тоо
 bill_total_subtotal	Дэд дүн
 bill_total_grand	Эцсийн дүн
+bill_total_number_under	Тоо доор нь
+bill_total_caption_under	Шошго доор нь
+bill_total_own_line	Өөрийн мөр
+bill_total_caption_with	Тоотой хамт
+bill_total_caption_none	Шошгогүй
+bill_total_place_help	«Өөрийн мөр» нь энэ дүнг дангаар нь хэвлэнэ. Баганын доор бол тоо нь тухайн барааны баганад, энэ мөрийн хэмжээ, зузаанаар хэвлэгдэнэ; нэг багана дүүртэл дүнгүүд нэг эгнээг хуваалцаж, дараа нь шинэ эгнээ эхэлнэ. Шошго нь тоотой хамт, өөр баганын доор байрлах эсвэл хэвлэгдэхгүй. Татвар, үйлчилгээ, тоймлолт, төлбөрийн мөрүүд «Дэд дүн»-г дагана.
 reprint_incl	Хэвлэлд
 reprint_skip	Алгасах
 reprint_skip_meta	Сэргээх хэвлэлийг алгасах
@@ -178,20 +197,20 @@ snack_secs_ph	Секунд (3–60, анхдагч 10)
 snack_secs_save	Мэдэгдлийн хугацааг хадгалах
 snack_secs_saved	Мэдэгдлийн хугацаа хадгалагдлаа — {n} секунд
 settings_sec_whatsapp	WhatsApp
-whatsapp_cloud_help	Use your own Meta WhatsApp Cloud API. Create a System User token with whatsapp_business_messaging (temporary dashboard tokens expire). Credentials stay on this Server only — never on extra tills. Accepted means Meta took the request, not that the guest received it.
-whatsapp_phone_id_ph	Phone Number ID
-whatsapp_token_ph	Access Token (leave blank to keep)
-whatsapp_template_ph	Bill template name (optional)
-whatsapp_template_lang_ph	Template language (e.g. en)
-whatsapp_enable	Enable
+whatsapp_cloud_help	Өөрийн Meta WhatsApp Cloud API-г ашиглана уу. whatsapp_business_messaging бүхий System User токен үүсгэнэ үү (хяналтын самбарын түр токенуудын хугацаа дуусдаг). Мэдээлэл зөвхөн энэ Сервер дээр үлдэнэ — нэмэлт касс дээр хэзээ ч биш. «Хүлээн авсан» гэдэг нь Meta хүсэлтийг авсан гэсэн үг, зочин хүлээн авсан гэсэн үг биш.
+whatsapp_phone_id_ph	Утасны дугаарын ID
+whatsapp_token_ph	Хандах токен (хэвээр үлдээх бол хоосон орхино уу)
+whatsapp_template_ph	Тооцооны загварын нэр (заавал биш)
+whatsapp_template_lang_ph	Загварын хэл (жишээ нь en)
+whatsapp_enable	Идэвхжүүлэх
 whatsapp_disable	Off
-whatsapp_save	Save WhatsApp
-whatsapp_test	Test connection
-whatsapp_disconnect	Disconnect
-whatsapp_send_bill	Send via WhatsApp
+whatsapp_save	WhatsApp хадгалах
+whatsapp_test	Холболт шалгах
+whatsapp_disconnect	Салгах
+whatsapp_send_bill	WhatsApp-аар илгээх
 whatsapp_consent	WhatsApp OK
-whatsapp_consent_help	Guest agreed to receive WhatsApp messages. A phone number alone is not consent.
-whatsapp_server_only	Configure WhatsApp on the shop Server device
+whatsapp_consent_help	Зочин WhatsApp зурвас хүлээн авахыг зөвшөөрсөн. Зөвхөн утасны дугаар байх нь зөвшөөрөл биш.
+whatsapp_server_only	WhatsApp-г дэлгүүрийн Сервер төхөөрөмж дээр тохируулна уу
 settings_sec_backup	Нөөц хуулбар ба сэргээх
 settings_sec_diag	Оношлогоо
 settings_sec_privacy	Нууцлал
@@ -637,7 +656,7 @@ choose_device_use	Сервер эсвэл Клиент сонгоно.
 paired_note	Хослуулсан. Зарахын тулд түгжээ тайлах эсвэл сүүлийнхийг Шинэчлэх.
 last_update_at	Сүүлийн шинэчлэл: {time}.
 pair_intro	Серверийг олох эсвэл хаяг, хослуулах кодыг бичнэ.
-pair_resume_hint	Already paired — enter your shop PIN, or Forget this shop to pair another.
+pair_resume_hint	Аль хэдийн хослуулсан — дэлгүүрийнхээ PIN-г оруулах эсвэл өөр дэлгүүр хослуулахын тулд «Энэ дэлгүүрийг мартах» дээр дарна уу.
 queue_waiting	Дэлгүүрт хүрэхийг хүлээж байна ({n}):
 queue_tries	{n} удаа оролдсон · сүүлийн хариу: {e}
 save_backup_copy	Нөөц хуулбар хадгалах…
@@ -754,13 +773,18 @@ station_vps_dd	Энэ станцын принтерүүд
 station_vps_dd_n	{n} принтер · өөрчлөхийн тулд товшино
 bill_printers_dd	Тооцооны принтерүүд
 bill_printers_dd_n	тооцоонд {n} принтер · өөрчлөхийн тулд товшино
-paper_heading	Цаас
+paper_heading	Виртуал цаас
 paper_size	{w} × {h} mm
 paper_roll	{w} мм ороомог
 paper_not_set	цаас хараахан тодорхойгүй
-paper_length_mm	Урт (mm)
-printer_paper_help	Энэ принтерийн цаас мм-ээр. Хоосон Урт нь ороомог: баримт бүр агуулгынхаа хэмжээгээр урт. «Принтер олох» хоосон цаасыг принтерийн драйвераас бөглөнө (хэлж чадахгүй бол 80 мм ороомог) бөгөөд аль хэдийн тохируулсныг хэзээ ч өөрчлөхгүй.
-preview_help	Доор сонгосон принтерийн цаасан дээрх энэ баримт, тэнд хэвлэгдэх ёсоор: принтерийн хүрдэг зүүн дээд булангаас бодит хэмжээгээр (саарал: хүрдэггүй ирмэг), урт баримт олон хуудсанд, цаасны ирмэгээс хэтэрсэн бүхэн тасардана. Принтер сонгох нь зөвхөн урьдчилан харахыг өөрчилнө; принтер бүрийн цаасыг «Принтерүүд»-д тохируулна.
+virtual_width_mm	Виртуал өргөн (mm)
+virtual_length_mm	Виртуал урт (mm)
+reported_width_mm	Мэдээлсэн өргөн (mm)
+reported_length_mm	Мэдээлсэн урт (mm)
+reported_paper	Мэдээлсэн: {paper}
+virtual_paper	Виртуал: {paper}
+printer_paper_help	Мэдээлсэн гэдэг нь энэ принтерийн драйвер тохируулагдсан цаас юм; апп үүнийг зөвхөн уншдаг бөгөөд «байхгүй» нь асуух драйвер байхгүй гэсэн үг. Виртуал гэдэг нь принтерт үнэхээр байгаа гэж таны хэлж буй цаас, mm-ээр; хоосон урт нь ороомог гэсэн үг. Принтер өөрийн цаасан дээр хэвлэнэ; виртуал цаас нь түүний хэдэн хэсэг нь жинхэнэ цаас болохыг аппад хэлдэг: урьдчилан харах, хуудасны урт, баримтын байрлалд зориулж. «Принтер олох» нь хоосон виртуал цаасыг бөглөх бөгөөд таны тохируулсныг хэзээ ч өөрчлөхгүй.
+preview_help	Энэ баримт доор сонгосон принтер дээр хэрхэн хэвлэгдэхийг, түүний виртуал цаасан дээр бодит хэмжээгээр харуулна. Цагаан нь хэвлэгдэх газар, саарал цаасанд принтер хүрэхгүй, бүдэг бэх тасарна. Есөн дөрвөлжин бол цаас: баримт байх ёстой газрыг товшино уу. Урт баримт дараагийн хуудсанд үргэлжилнэ. Принтер сонгох нь зөвхөн урьдчилан харахыг өөрчилнө.
 job_layout	Байрлал
 job_delivery	Ажил хэрхэн илгээгдэх вэ
 job_delivery_help	ОС баримт, түүхий байт эсвэл ESC/POS. Тооцоо ба гал тогооны хуудас тус бүр өөрийнхийг хадгална. Ажил бүрийг Хайлт хадгалсан аль ч принтер рүү явуулж болно.
@@ -1266,8 +1290,8 @@ taxable_value	Татвар ногдох дүн
 gst_inside_price_note	({tax} багтсан)
 start_with_template	Манай цэсийн загвараар эхлэх
 template_heading	Манай цэсийн загвар
-template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
-template_download_shelf	Download photo shelf
+template_need_download	Хоолны нийтийн зургийн тавиурыг (~1459 хоол) татаж аваад, дараа нь байхгүй нэрсийг цэсдээ импортлоно уу.
+template_download_shelf	Зургийн тавиур татах
 template_info	{c} ангилал ба {d} хоол зурагтай, нэмэхэд бэлэн. Үнэ ₹0-оос эхэлнэ — дараа нь өөрийнхийг тохируулна.
 template_import	Бүтэн загвар импортлох
 template_confirm	{d} хоолыг ангилалтай нь нэмэх үү? Байгаа хоол хэвээр үлдэнэ.

@@ -101,6 +101,19 @@ bill_item_col_sep	Layukan ginshiƙai
 slip_columns	Ginshiƙai
 slip_col_header	Kan
 bill_line_logo	Tambari
+bill_line_shop	Shago
+bill_line_address	Adireshi
+bill_line_fssai	FSSAI
+bill_line_title	Take
+bill_line_customer	Abokin ciniki
+bill_line_bill_no	Lambar lissafi
+bill_line_time	Lokaci
+bill_line_cashier	Mai akwatin kuɗi
+bill_line_table	Tebur
+bill_line_items	Kayayyaki
+bill_line_total	Jimla
+bill_line_footer	Ƙasa
+bill_line_upi	UPI
 bill_logo_picture	Hoto
 bill_logo_choose	Zaɓi hoto
 bill_logo_remove	Cire hoto
@@ -128,6 +141,12 @@ bill_item_piece_off	Kashe
 bill_total_qty	Jimlar adadi
 bill_total_subtotal	Jimla ta ƙasa
 bill_total_grand	Babban jimla
+bill_total_number_under	Lamba a ƙarƙashin
+bill_total_caption_under	Alama a ƙarƙashin
+bill_total_own_line	Layinsa
+bill_total_caption_with	Tare da lambar
+bill_total_caption_none	Babu alama
+bill_total_place_help	Layinsa yana buga wannan jimla shi kaɗai. A ƙarƙashin ginshiƙi, ana buga lambarsa a wannan ginshiƙin kaya, da girma da kaurin wannan layi; jimloli suna raba jere ɗaya har sai an cika wani ginshiƙi, sannan sabon jere ya fara. Alamar tana tafiya tare da lambar, a ƙarƙashin wani ginshiƙi, ko a bar ta. Layukan haraji, sabis, daidaitawa da biya suna bin Jimla ta ƙasa.
 reprint_incl	A cikin bugu
 reprint_skip	Tsallake
 reprint_skip_meta	Tsallake sake bugu
@@ -178,20 +197,20 @@ snack_secs_ph	Daƙiƙoƙi (3–60, tsoho 10)
 snack_secs_save	Ajiye lokacin sanarwa
 snack_secs_saved	An ajiye lokacin sanarwa — daƙiƙoƙi {n}
 settings_sec_whatsapp	WhatsApp
-whatsapp_cloud_help	Use your own Meta WhatsApp Cloud API. Create a System User token with whatsapp_business_messaging (temporary dashboard tokens expire). Credentials stay on this Server only — never on extra tills. Accepted means Meta took the request, not that the guest received it.
-whatsapp_phone_id_ph	Phone Number ID
-whatsapp_token_ph	Access Token (leave blank to keep)
-whatsapp_template_ph	Bill template name (optional)
-whatsapp_template_lang_ph	Template language (e.g. en)
-whatsapp_enable	Enable
+whatsapp_cloud_help	Yi amfani da naka Meta WhatsApp Cloud API. Ƙirƙiri token na System User mai whatsapp_business_messaging (token na ɗan lokaci na dashboard suna ƙarewa). Bayanan suna zama a wannan Server kaɗai — ba a kan ƙarin akwatunan kuɗi ba har abada. “An karɓa” na nufin Meta ta karɓi buƙatar, ba wai baƙo ya karɓa ba.
+whatsapp_phone_id_ph	ID na lambar waya
+whatsapp_token_ph	Token na shiga (bar shi babu komai don a ajiye shi)
+whatsapp_template_ph	Sunan samfurin lissafi (ba dole ba)
+whatsapp_template_lang_ph	Harshen samfuri (misali en)
+whatsapp_enable	Kunna
 whatsapp_disable	Off
-whatsapp_save	Save WhatsApp
-whatsapp_test	Test connection
-whatsapp_disconnect	Disconnect
-whatsapp_send_bill	Send via WhatsApp
+whatsapp_save	Ajiye WhatsApp
+whatsapp_test	Gwada haɗi
+whatsapp_disconnect	Cire haɗi
+whatsapp_send_bill	Aika ta WhatsApp
 whatsapp_consent	WhatsApp OK
-whatsapp_consent_help	Guest agreed to receive WhatsApp messages. A phone number alone is not consent.
-whatsapp_server_only	Configure WhatsApp on the shop Server device
+whatsapp_consent_help	Baƙo ya yarda ya karɓi saƙonnin WhatsApp. Lambar waya kaɗai ba yarda ba ce.
+whatsapp_server_only	Saita WhatsApp a na'urar Server ta shago
 settings_sec_backup	Ajiyar madadin da dawowa
 settings_sec_diag	Binciken matsala
 settings_sec_privacy	Sirri
@@ -637,7 +656,7 @@ choose_device_use	Zaɓi Server ko Abokin haɗi.
 paired_note	An haɗa. Buɗe don sayarwa, ko Sabunta don sabo.
 last_update_at	Sabuntawa ta ƙarshe: {time}.
 pair_intro	Nemo server, ko rubuta adireshi da lambar haɗinsa.
-pair_resume_hint	Already paired — enter your shop PIN, or Forget this shop to pair another.
+pair_resume_hint	An riga an haɗa — shigar da PIN na shagonka, ko taɓa “Manta da wannan shago” don haɗa wani.
 queue_waiting	Yana jiran isa shago ({n}):
 queue_tries	An gwada sau {n} · amsar ƙarshe: {e}
 save_backup_copy	Ajiye kwafin ajiyar madadin…
@@ -754,13 +773,18 @@ station_vps_dd	Firintocin wannan tasha
 station_vps_dd_n	firinta {n} · taɓa don canzawa
 bill_printers_dd	Firintocin lissafi
 bill_printers_dd_n	firinta {n} na lissafi · taɓa don canzawa
-paper_heading	Takarda
+paper_heading	Takarda ta kama-da-wane
 paper_size	{w} × {h} mm
 paper_roll	nadi na {w} mm
 paper_not_set	ba a san takardar ba tukuna
-paper_length_mm	Tsawo (mm)
-printer_paper_help	Takardar wannan firinta a mm. Tsawo mara komai yana nufin nadi: kowace rasit tana da tsawon abin da ke cikinta. Nemo firintoci yana cike takarda mara komai daga direban firintar (nadi na 80 mm idan ba zai iya faɗi ba) kuma ba ya taɓa canza wadda aka riga aka saita.
-preview_help	Wannan rasit a kan takardar firintar da aka zaɓa a ƙasa, kamar yadda take bugawa a can: girman gaske daga kusurwar sama ta hagu da firintar ke kaiwa (toka: gefuna da ba ta kaiwa), dogon rasit a kan ƙarin shafuka, duk abin da ya wuce gefen takarda ana yanke shi. Zaɓar firinta yana canza samfoti kawai; ana saita takardar kowace firinta a Firintoci.
+virtual_width_mm	Faɗi na kama-da-wane (mm)
+virtual_length_mm	Tsawo na kama-da-wane (mm)
+reported_width_mm	Faɗin da aka ruwaito (mm)
+reported_length_mm	Tsawon da aka ruwaito (mm)
+reported_paper	An ruwaito: {paper}
+virtual_paper	Na kama-da-wane: {paper}
+printer_paper_help	Abin da aka ruwaito shi ne takardar da aka saita direban wannan firinta a kanta; manhajar tana karanta ta ne kawai, kuma “—” na nufin babu direban da za a tambaya. Na kama-da-wane ita ce takardar da kake cewa tana cikin firinta da gaske, a mm; tsawo marar komai nadi ne. Firinta tana bugawa a kan takardarta; takardar kama-da-wane tana gaya wa manhajar nawa ne daga ciki takarda ta gaske, domin samfoti, tsawon shafi da wurin rasit. Nemo firintoci yana cike takardar kama-da-wane marar komai kuma ba ya taɓa canza wadda ka saita.
+preview_help	Wannan rasit kamar yadda ake buga shi a firintar da aka zaɓa a ƙasa, a girmansa na gaske a kan takardarta ta kama-da-wane. Fari shi ne inda ake bugawa, takarda mai launin toka firinta ba ta kai wurin ba, kuma tawada mai dushewa ana yanke ta. Murabba'ai tara su ne takardar: taɓa inda rasit ya kamata ya zauna. Dogon rasit yana ci gaba a ƙarin shafuka. Zaɓen firinta yana canza samfoti ne kawai.
 job_layout	Tsari
 job_delivery	Yadda ake aika aikin
 job_delivery_help	Takardar tsarin, bytes ɗanyen, ko ESC/POS. Lissafi da takardar kicin kowanne yana da nasa. Kowanne aiki na iya zuwa kowane firinta da Nemo ya ajiye.
@@ -1266,8 +1290,8 @@ taxable_value	Adadin da ake caje haraji
 gst_inside_price_note	({tax} a ciki)
 start_with_template	Fara da samfurin menu namu
 template_heading	Samfurin menu namu
-template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
-template_download_shelf	Download photo shelf
+template_need_download	Sauke shiryayyen hotunan abinci na kowa (~abinci 1,459), sannan ka shigo da sunayen da ba su nan cikin menu naka.
+template_download_shelf	Sauke shiryayyen hotuna
 template_info	Rukuni {c} da abinci {d} masu hoto, a shirye don ƙarawa. Farashi yana farawa da ₹0 — sa naka daga baya.
 template_import	Shigar da duka samfurin
 template_confirm	A ƙara abinci {d} tare da rukuninsu? Abincin da kake da shi yana nan kamar yadda yake.

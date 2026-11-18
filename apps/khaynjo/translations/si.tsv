@@ -83,12 +83,12 @@ print_cancelled_kot_needed	පළමුව අවලංගු කළ කෑම �
 print_cancelled_kot_none	මෙම ඇණවුමේ අවලංගු කළ කෑම නැත
 print_cancelled_kot_client	{place} සඳහා මුද්‍රණය අවලංගු කරන ලදී ({n}) යවා ඇත — මුළුතැන්ගෙයි මුද්‍රණ සේවාදායකයේ
 kot_banner	කාරුණික බැනරය
-kot_item_prefix	මෙනු මෙනු අයිතම උපසර්ගය
+kot_item_prefix	මෙනු අයිතම උපසර්ගය
 kot_strike	වර්ජන කෑමේ නම
 kot_strike_note	පිඟන් සටහන වර්ජනය කරන්න
 kot_strike_on	ක්‍රියාත්මකයි
 kot_strike_off	අක්රියයි
-bill_item_layout	මෙනු මෙනු අයිතම පිරිසැලසුම
+bill_item_layout	මෙනු අයිතම පිරිසැලසුම
 bill_item_layout_columns	තීරු
 bill_item_layout_stacked	ගොඩගැසී ඇත
 bill_item_header	තීරු ශීර්ෂ
@@ -101,6 +101,19 @@ bill_item_col_sep	තීරු නීති
 slip_columns	තීරු
 slip_col_header	ශීර්ෂකය
 bill_line_logo	ලාංඡනය
+bill_line_shop	සාප්පුව
+bill_line_address	ලිපිනය
+bill_line_fssai	FSSAI
+bill_line_title	මාතෘකාව
+bill_line_customer	පාරිභෝගිකයා
+bill_line_bill_no	බිල් අංකය
+bill_line_time	කාලය
+bill_line_cashier	මුදල් අයකැමි
+bill_line_table	කෑම මේසය
+bill_line_items	අයිතම
+bill_line_total	මුළු
+bill_line_footer	පාදකය
+bill_line_upi	UPI
 bill_logo_picture	පින්තූරය
 bill_logo_choose	පින්තූරය තෝරන්න
 bill_logo_remove	පින්තූරය ඉවත් කරන්න
@@ -128,6 +141,12 @@ bill_item_piece_off	අක්රියයි
 bill_total_qty	මුළු qty
 bill_total_subtotal	උප එකතුව
 bill_total_grand	විශාල එකතුව
+bill_total_number_under	අංකය මෙයට යටින්
+bill_total_caption_under	ලේබලය මෙයට යටින්
+bill_total_own_line	තමන්ගේම රේඛාව
+bill_total_caption_with	අංකය සමඟ
+bill_total_caption_none	ලේබලයක් නැත
+bill_total_place_help	“තමන්ගේම රේඛාව” මෙම එකතුව තනිව මුද්‍රණය කරයි. තීරුවක් යටතේ නම් එහි අංකය එම භාණ්ඩ තීරුවේ, මෙම රේඛාවේ ප්‍රමාණයෙන් සහ ඝනකමෙන් මුද්‍රණය වේ; තීරුවක් පිරෙන තුරු එකතු එකම පේළියක් බෙදාගනී, ඉන්පසු නව පේළියක් ඇරඹේ. ලේබලය අංකය සමඟ, වෙනත් තීරුවක් යටතේ යයි, නැතහොත් අත්හැරේ. බදු, සේවා, වටැයීම සහ ගෙවීම් රේඛා “උප එකතුව” අනුගමනය කරයි.
 reprint_incl	මුද්‍රණයේ ඇත
 reprint_skip	මඟ හරින්න
 reprint_skip_meta	ප්‍රතිසාධන මුද්‍රණය මඟ හරින්න
@@ -168,9 +187,9 @@ settings_sec_brand	ඔබේ වෙළඳ නාමය
 settings_sec_units	ඒකක සහ පරිවර්තන
 settings_sec_pickers	ප්‍රදේශ · ස්ථාන · බදු අනුපාත
 settings_sec_printers	මුද්‍රණ යන්ත්‍ර
-settings_sec_bill	ආගන්තුක ආගන්තුක බිල්පත සහ KOT ආකෘතිය
+settings_sec_bill	ආගන්තුක බිල්පත සහ KOT ආකෘතිය
 settings_sec_selling	යෝජනා ක්රම සහ විකුණුම්
-bill_kot_tab_bill	ආරාධිත අමුත්තන්ගේ බිල්පත
+bill_kot_tab_bill	බිල්පත
 bill_kot_tab_kot	KOT
 settings_sec_alerts	ඇඟවීම්
 alerts_help	ඔබ වෙනුවෙන් තත්ත්‍ව පණිවිඩ කොපමණ කාලයක් තිරයේ පවතීද (මෙම පිවිසුම).
@@ -178,20 +197,20 @@ snack_secs_ph	තත්පර (3-60, පෙරනිමි 10)
 snack_secs_save	අනතුරු ඇඟවීමේ කාලය ඉතිරි කරන්න
 snack_secs_saved	අනතුරු ඇඟවීමේ කාලය ඉතිරි කර ඇත - තත්පර {n}
 settings_sec_whatsapp	WhatsApp
-whatsapp_cloud_help	Use your own Meta WhatsApp Cloud API. Create a System User token with whatsapp_business_messaging (temporary dashboard tokens expire). Credentials stay on this Server only — never on extra tills. Accepted means Meta took the request, not that the guest received it.
-whatsapp_phone_id_ph	Phone Number ID
-whatsapp_token_ph	Access Token (leave blank to keep)
-whatsapp_template_ph	Bill template name (optional)
-whatsapp_template_lang_ph	Template language (e.g. en)
-whatsapp_enable	Enable
+whatsapp_cloud_help	ඔබේම Meta WhatsApp Cloud API භාවිත කරන්න. whatsapp_business_messaging සහිත System User ටෝකනයක් සාදන්න (ඩෑෂ්බෝඩ් එකේ තාවකාලික ටෝකන කල් ඉකුත් වේ). මෙම තොරතුරු මෙම සේවාදායකයේ පමණක් පවතී — අමතර මුදල් රෙජිස්ටර්වල කිසි විටෙකත් නැත. “පිළිගත්තා” යනු Meta ඉල්ලීම භාර ගත් බවයි, අමුත්තාට පණිවිඩය ලැබුණු බව නොවේ.
+whatsapp_phone_id_ph	දුරකථන අංක ID
+whatsapp_token_ph	ප්‍රවේශ ටෝකනය (එයම තබා ගැනීමට හිස්ව තබන්න)
+whatsapp_template_ph	බිල්පත් සැකිල්ලේ නම (විකල්ප)
+whatsapp_template_lang_ph	සැකිල්ලේ භාෂාව (උදා. en)
+whatsapp_enable	සබල කරන්න
 whatsapp_disable	Off
-whatsapp_save	Save WhatsApp
-whatsapp_test	Test connection
-whatsapp_disconnect	Disconnect
-whatsapp_send_bill	Send via WhatsApp
+whatsapp_save	WhatsApp සුරකින්න
+whatsapp_test	සම්බන්ධතාවය පරීක්ෂා කරන්න
+whatsapp_disconnect	විසන්ධි කරන්න
+whatsapp_send_bill	WhatsApp හරහා යවන්න
 whatsapp_consent	WhatsApp OK
-whatsapp_consent_help	Guest agreed to receive WhatsApp messages. A phone number alone is not consent.
-whatsapp_server_only	Configure WhatsApp on the shop Server device
+whatsapp_consent_help	අමුත්තා WhatsApp පණිවිඩ ලැබීමට එකඟ විය. දුරකථන අංකයක් තිබීම පමණක් එකඟතාවයක් නොවේ.
+whatsapp_server_only	සාප්පුවේ සේවාදායක උපාංගයේ WhatsApp සකසන්න
 settings_sec_backup	උපස්ථ සහ ප්‍රතිසාධනය
 settings_sec_diag	රෝග විනිශ්චය
 settings_sec_privacy	පෞද්ගලිකත්වය
@@ -226,7 +245,7 @@ sidebar_hidden	සැඟවී ඇත
 sidebar_always_on	නිතරම බාර් එකේ
 sidebar_shown_hint	පැති රේල් / පහළ ටැබ් මත පෙන්වා ඇත
 sidebar_hidden_hint	තීරුවෙන් සැඟවී ඇත
-sidebar_menu_items	මෙනු සහ මෙනු මෙනු අයිතම
+sidebar_menu_items	මෙනු සහ මෙනු අයිතම
 sidebar_enable_all	සියල්ල සබල කරන්න
 sidebar_disable_all	සියල්ල අක්‍රිය කරන්න
 sidebar_order_saved	පැති තීරු ඇණවුම සුරකින ලදී
@@ -248,15 +267,15 @@ nav_settings	සැකසීම්
 nav_lock	අගුළු දමන්න
 no_sale_yet	තවමත් විකිණීමක් නැත
 favorites	ප්රියතම
-favorites_help	ඔබ නිතර අලෙවි කරන මෙනු මෙනු අයිතම, ඔබගේ පිවිසුම සඳහා සුරකින ලදී. අමුත්තන්ගේ බිල්පතට එකක් එක් කරන්න, නැතහොත් පහත සියලුම මෙනු අයිතම වලින් ඔබේ ලැයිස්තුව සාදන්න.
+favorites_help	ඔබ නිතර අලෙවි කරන මෙනු අයිතම, ඔබගේ පිවිසුම සඳහා සුරකින ලදී. අමුත්තන්ගේ බිල්පතට එකක් එක් කරන්න, නැතහොත් පහත සියලුම මෙනු අයිතම වලින් ඔබේ ලැයිස්තුව සාදන්න.
 your_favorites	ඔබේ ප්රියතම
 all_items	සියලුම මෙනු අයිතම
 frequent	නිතර
-added_items	මෙනු මෙනු අයිතම එකතු කරන ලදී
+added_items	මෙනු අයිතම එකතු කරන ලදී
 added_items_empty	මෙම ඇණවුමේ තවම කිසිවක් නැත - සියලුම මෙනු අයිතම වලින් හෝ ප්‍රවර්ගයකින් කෑමක් එක් කරන්න.
 frequent_config_help	සම්පුර්ණ කරන ලද අමුත්තන්ගේ බිල්පත් වලින් වැඩිපුරම අලෙවි වන කෑම වර්ග. දින කීයක් බැලිය යුතුද සහ කෑම වර්ග කීයක් පෙන්විය යුතුද යන්න සකසන්න.
 frequent_days_ph	දින (1)
-frequent_limit_ph	මෙනු මෙනු අයිතම (24)
+frequent_limit_ph	මෙනු අයිතම (24)
 frequent_apply	අයදුම් කරන්න
 frequent_saved	නිතර: පසුගිය {d} දින, ඉහළම {n} — {c} කෑම
 frequent_empty	මෙම කාල සීමාව තුළ තවමත් සම්පූර්ණ කළ විකුණුම් නොමැත — ආගන්තුක බිල්පතක් පියවන්න (සැකසීම් පවසන විට රුපියල් 00 ක් ඉඩ දෙනු ලැබේ) සහ ඒවා මෙහි පෙන්වයි.
@@ -517,7 +536,7 @@ goods_received	භාණ්ඩ ලැබුනා
 import_day	ආනයනය කරන දිනය
 import_items_csv_plain	මෙනු අයිතම CSV ආයාත කරන්න...
 import_parties_csv	පාරිභෝගිකයින් සහ සැපයුම්කරුවන් ආනයනය කරන්න CSV...
-item_name	මෙනු මෙනු අයිතමයේ නම
+item_name	මෙනු අයිතමයේ නම
 kitchen_printing	මුද්‍රණ යන්ත්‍ර
 login_id_ph	පරිශීලක නාමය
 mark_cleared	ලකුණ නිෂ්කාශනය විය
@@ -583,7 +602,7 @@ server_ip_ph	සේවාදායක IP (උදා. 192.168.1.10)
 set_credit_limit	පාරිභෝගිකයාට හෝ සැපයුම්කරුට සීමාවක් යොදන්න
 set_login_selected	තෝරාගත් වෙත පිවිසුම යොදන්න
 set_login_named	{name} වෙත පිවිසුම අයදුම් කරන්න
-shop	සාප්පු යන්න
+shop	සාප්පුව
 show	පෙන්වන්න
 spreadsheet_csv	පැතුරුම්පත (CSV)
 start_fresh	අලුතින් පටන් ගන්න
@@ -637,7 +656,7 @@ choose_device_use	සේවාදායකය හෝ සේවාලාභිය
 paired_note	යුගල කර ඇත. විකිණීමට අගුලු හරින්න, නැතහොත් නවතම දේ සඳහා නැවුම් කරන්න.
 last_update_at	අවසාන යාවත්කාලීනය: {time}.
 pair_intro	සේවාදායකය සොයන්න, නැතහොත් එහි ලිපිනය සහ යුගල කිරීමේ කේතය ටයිප් කරන්න.
-pair_resume_hint	Already paired — enter your shop PIN, or Forget this shop to pair another.
+pair_resume_hint	දැනටමත් යුගල කර ඇත — ඔබේ සාප්පුවේ PIN ඇතුළත් කරන්න, නැතහොත් වෙනත් සාප්පුවක් යුගල කිරීමට “මේ කඩේ අමතක කරන්න” ඔබන්න.
 queue_waiting	සාප්පුව වෙත ළඟා වීමට රැඳී සිටීම ({n}):
 queue_tries	{n} වරක් උත්සාහ කළා · අවසාන පිළිතුර: {e}
 save_backup_copy	උපස්ථ පිටපතක් සුරකින්න...
@@ -646,7 +665,7 @@ backup_copy_overdue	{n} දින සඳහා කිසිදු උපස්�
 backup_copy_failed	උපස්ථ පිටපත එහි සුරැකිය නොහැක - වෙනත් ස්ථානයක් තෝරන්න
 clock_off	මෙම උපාංගයේ ඔරලෝසුව සාප්පුවේ සේවාදායකයෙන් {min} මිනිත්තුවකි — මෙම උපාංගයේ නියම වේලාව සකසන්න
 printers_heading	මුද්‍රණ යන්ත්‍ර
-printers_help	මුද්‍රණ යන්ත්‍ර සොයන්න, එය තේරීමට එකක් තට්ටු කරන්න, ඉන්පසු එම උපාංගයේ පමණක් පරීක්ෂණ පිටුවක් මුද්‍රණය කරන්න. ආගන්තුක ආගන්තුක බිල්පත් මුද්‍රණ යන්ත්‍ර: ආගන්තුක ආගන්තුක බිල්පත් සහ KOT ආකෘතිය → අමුත්තන්ගේ බිල්පත්. මුළුතැන්ගෙයි මුද්‍රණ යන්ත්‍ර: මුළුතැන්ගෙය → මුළුතැන්ගෙයි ස්ථාන (පළමුව නැවතුම්පොළක් එක් කරන්න - සොයන්න ස්ථාන සාදන්නේ නැත).
+printers_help	මුද්‍රණ යන්ත්‍ර සොයන්න, එය තේරීමට එකක් තට්ටු කරන්න, ඉන්පසු එම උපාංගයේ පමණක් පරීක්ෂණ පිටුවක් මුද්‍රණය කරන්න. ආගන්තුක බිල්පත් මුද්‍රණ යන්ත්‍ර: ආගන්තුක බිල්පත් සහ KOT ආකෘතිය → අමුත්තන්ගේ බිල්පත්. මුළුතැන්ගෙයි මුද්‍රණ යන්ත්‍ර: මුළුතැන්ගෙය → මුළුතැන්ගෙයි ස්ථාන (පළමුව නැවතුම්පොළක් එක් කරන්න - සොයන්න ස්ථාන සාදන්නේ නැත).
 printers_host_only	මුද්‍රණ යන්ත්‍ර ගබඩා උපාංගයේ (සේවාදායකය) සකසා ඇත. මෙම මුදල් ලේඛනය අමුත්තන්ගේ බිල්පත් සහ KOTs එහි යවයි - සේවාදායකයේ රැඳී සිටීම සොයන්න / එකතු කරන්න / පවරන්න. පරීක්ෂණ පිටුව සහ අමුත්තන්ගේ බිල්පත් මුද්‍රණ ප්‍රමාණය සේවාදායකයට යයි.
 printers_find_heading	මුද්‍රණ යන්ත්‍ර සොයන්න
 printers_find_tip	Find මෙම උපාංගය ස්කෑන් කර ලැයිස්තුව යාවත්කාලීනව තබයි.
@@ -739,7 +758,7 @@ printer_format_custom_added	මෙම ස්ථානය සඳහා අභි�
 add_printer	මුද්රකය එක් කරන්න
 remove_printer	ඉවත් කරන්න
 route_pick_ph	අමුත්තන්ගේ බිල්පත හෝ මුළුතැන්ගෙයි ස්ථානය
-route_bill	ආරාධිත අමුත්තන්ගේ බිල්පත
+route_bill	බිල්පත
 route_default_kitchen	නැවතුම්පළක් නැත (නොපවරන ලද කෑම වර්ග)
 route_kot_station	කුස්සිය
 route_dont_print	මුද්‍රණ යන්ත්‍රයක් නැත
@@ -754,13 +773,18 @@ station_vps_dd	මෙම ස්ථානය සඳහා මුද්‍රණ �
 station_vps_dd_n	{n} මුද්‍රණ යන්ත්‍ර · වෙනස් කිරීමට තට්ටු කරන්න
 bill_printers_dd	අමුත්තන්ගේ බිල්පත සඳහා මුද්‍රණ යන්ත්‍ර
 bill_printers_dd_n	අමුත්තන්ගේ බිල්පත සඳහා {n} මුද්‍රණ යන්ත්‍ර · වෙනස් කිරීමට තට්ටු කරන්න
-paper_heading	කඩදාසි
+paper_heading	අතථ්‍ය කඩදාසිය
 paper_size	{w} × {h} mm
 paper_roll	{w} mm රෝලය
 paper_not_set	කඩදාසිය තවම නොදනී
-paper_length_mm	දිග (mm)
-printer_paper_help	මෙම මුද්‍රණ යන්ත්‍රයේ කඩදාසිය mm වලින්. හිස් දිග යනු රෝලයකි: සෑම පත්‍රිකාවක්ම එහි අන්තර්ගතය තරම් දිගය. මුද්‍රණ යන්ත්‍ර සොයන්න හිස් කඩදාසිය මුද්‍රණ යන්ත්‍රයේ ධාවකයෙන් පුරවයි (කිව නොහැකි නම් 80 mm රෝලය) සහ දැනටමත් සැකසූ එකක් කිසිදා වෙනස් නොකරයි.
-preview_help	පහතින් තෝරාගත් මුද්‍රණ යන්ත්‍රයේ කඩදාසිය මත මෙම පත්‍රිකාව, එහි මුද්‍රණය වන ආකාරයටම: යන්ත්‍රයට ළඟා විය හැකි ඉහළ වම් කෙළවරේ සිට සැබෑ ප්‍රමාණයෙන් (අළු: ළඟා නොවන දාර), දිගු පත්‍රිකාව තවත් පිටුවල, කඩදාසි දාරයෙන් ඔබ්බට ඇති සියල්ල කැපේ. මුද්‍රණ යන්ත්‍රයක් තේරීමෙන් පෙරදසුන පමණක් වෙනස් වේ; එක් එක් යන්ත්‍රයේ කඩදාසිය මුද්‍රණ යන්ත්‍ර යටතේ සැකසේ.
+virtual_width_mm	අතථ්‍ය පළල (mm)
+virtual_length_mm	අතථ්‍ය දිග (mm)
+reported_width_mm	වාර්තා කළ පළල (mm)
+reported_length_mm	වාර්තා කළ දිග (mm)
+reported_paper	වාර්තා කළ: {paper}
+virtual_paper	අතථ්‍ය: {paper}
+printer_paper_help	වාර්තා කළ යනු මෙම මුද්‍රණ යන්ත්‍රයේ ධාවකය සකසා ඇති කඩදාසියයි; යෙදුම එය කියවීම පමණක් කරයි, “නැත” යනු විමසීමට ධාවකයක් නැති බවයි. අතථ්‍ය යනු මුද්‍රණ යන්ත්‍රයේ සැබවින්ම ඇතැයි ඔබ කියන කඩදාසියයි, mm වලින්; හිස් දිග යනු රෝලයකි. මුද්‍රණ යන්ත්‍රය එහිම කඩදාසිය මත මුද්‍රණය කරයි; අතථ්‍ය කඩදාසිය යෙදුමට කියන්නේ එයින් කොපමණ සැබෑ කඩදාසිද යන්නයි, පෙරදසුන, පිටුවේ දිග සහ පත්‍රිකාවේ ස්ථානය සඳහා. මුද්‍රණ යන්ත්‍ර සොයන්න හිස් අතථ්‍ය කඩදාසියක් පුරවයි, ඔබ සැකසූ එකක් කිසිදා වෙනස් නොකරයි.
+preview_help	පහතින් තෝරාගත් මුද්‍රණ යන්ත්‍රයේ මුද්‍රණය වන ආකාරයටම මෙම පත්‍රිකාව, එහි අතථ්‍ය කඩදාසිය මත සැබෑ ප්‍රමාණයෙන්. සුදු යනු මුද්‍රණය වන තැනයි, අළු කඩදාසියට යන්ත්‍රය ළඟා නොවේ, සහ මැකී ගිය තීන්ත කැපේ. කොටු නවය කඩදාසියයි: පත්‍රිකාව තිබිය යුතු තැන තට්ටු කරන්න. දිගු පත්‍රිකාවක් තවත් පිටුවලට යයි. මුද්‍රණ යන්ත්‍රයක් තේරීමෙන් පෙරදසුන පමණක් වෙනස් වේ.
 job_layout	පිරිසැලසුම
 job_delivery	රැකියාව යවන ආකාරය
 job_delivery_help	OS ලේඛනය, අමු බයිට්, හෝ ESC/POS. අමුත්තන්ගේ බිල්පත සහ මුළුතැන්ගෙයි ටිකට් එක එක එක ඒවා තබා ගනී. ඕනෑම කාර්යයක් සොයන්න සුරකින ලද ඕනෑම මුද්‍රණ යන්ත්‍රයකට යා හැක.
@@ -768,7 +792,7 @@ station_vp_attached	මුද්‍රණ යන්ත්‍රය අමුණ�
 station_vp_detached	මුද්‍රණ යන්ත්‍රය නැවතුම්පොළෙන් ඉවත් කර ඇත
 station_print_summary	{mode} · {n} මුද්‍රණ යන්ත්‍ර
 station_print_summary_none	මෙම ස්ථානයේ තවමත් මුද්‍රණ යන්ත්‍ර නොමැත - එය මුද්‍රණය නොකෙරේ
-stations_none	තවමත් ස්ථාන නොමැත - එකක් පහතින් එක් කරන්න. මෙනු මෙනු අයිතමවලට නැවතුම්පළක් භාවිත කළ හැකි නිසා ඒවායේ KOT එහි මුද්‍රණය වේ.
+stations_none	තවමත් ස්ථාන නොමැත - එකක් පහතින් එක් කරන්න. මෙනු අයිතමවලට නැවතුම්පළක් භාවිත කළ හැකි නිසා ඒවායේ KOT එහි මුද්‍රණය වේ.
 route_up	ඉහළට
 route_down	පහළට
 route_remove	ඉවත් කරන්න
@@ -926,7 +950,7 @@ wipe_schema_done	සාප්පු පිහිටුවීම පිසදම�
 rounded_total	වටකුරු එකතුව
 setup_app_khaynjo	පිහිටුවන්න Khaynjo
 shop_logo_optional	සාප්පු ලාංඡනය (විකල්ප)
-stock_type_help	මෙනු අයිතමයේ නම (එහි කොටසක් ප්රමාණවත්ය), ප්රමාණය ටයිප් කරන්න, පසුව සකස් කරන්න. තවමත් ගණන් නොගත් මෙනු මෙනු අයිතම එක් වරක් ලුහුබැඳීම ආරම්භ කිරීමට අවශ්‍ය වේ.
+stock_type_help	මෙනු අයිතමයේ නම (එහි කොටසක් ප්රමාණවත්ය), ප්රමාණය ටයිප් කරන්න, පසුව සකස් කරන්න. තවමත් ගණන් නොගත් මෙනු අයිතම එක් වරක් ලුහුබැඳීම ආරම්භ කිරීමට අවශ්‍ය වේ.
 team_owner_help	යමෙකු එක් කිරීමට පුද්ගලයා හිස්ව තබන්න: නම, රැකියාව, පරිශීලක නාමය, PIN, සහ විකල්ප මුරපදයක්, පසුව එකතු කරන්න. නම, පරිශීලක නාමය, මුරපදය, තිර සහ අයිතිවාසිකම් - එම ආකාරයේම පෝරමය සංස්කරණය කිරීමට පුද්ගලයෙකු තෝරන්න - ඉන්පසු සුරකින්න. ඔබගේම PIN සහ මුරපදය පතුලේ එක් පුරනය වීමකි. හිමිකරු වෙනත් කිසිවෙකුගේ PIN වෙනස් නොකරයි.
 staff_name_ph	කාර්ය මණ්ඩලයේ නම
 staff_copy_hire_ph	සිට පිහිටුවීම පිටපත් කරන්න (විකල්ප)
@@ -983,7 +1007,7 @@ logo_default	ලාංඡනය: Kumkaj ලකුණ (පෙරනිමිය) 
 tmpl_current	වත්මන්: {} — {}
 tmpl_selected	තෝරාගත්: {} — {}
 setup_complete	පිහිටුවීම සම්පූර්ණයි
-onboard_fresh_tmpl	නැවුම් · {} — නාමාවලිය හිස්ව ආරම්භ වේ; මෙනු මෙනු අයිතමවල මෙනු අයිතම එක් කරන්න, පසුව නිමයි.
+onboard_fresh_tmpl	නැවුම් · {} — නාමාවලිය හිස්ව ආරම්භ වේ; මෙනු අයිතමවල මෙනු අයිතම එක් කරන්න, පසුව නිමයි.
 onboard_book_tmpl	ලෙජරය · {} — මෙනු අයිතම සහ විවෘත ණය එක් කරන්න, පසුව නිමයි.
 onboard_template_tmpl	ඔබට අවශ්‍ය නම් ස්ථානය නම් කරන්න, ඉන්පසු ආරම්භ කරන ආකාරය තෝරන්න.
 tmpl_blurb	කෑම මේස, ඇණවුම් කිරීම, මුළුතැන්ගෙයි ටිකට්පත්, බිල්පත් සහ ලෙජර්.
@@ -1005,7 +1029,7 @@ country_code_ph	රටේ කේතය උදා. IN, GB, US, AE, BR
 credit_khata_amount_ph	ණය / ණය ලෙජර් මුදල
 credit_limit_ph	ණය සීමාව (0 = කිසිවක් නැත)
 from_code_ph	කේතයෙන් (බෑගය)
-item_name_lang_ph	මෙනු මෙනු අයිතමයේ නම - එය ඔබේ භාෂාවෙන් ටයිප් කරන්න
+item_name_lang_ph	මෙනු අයිතමයේ නම - එය ඔබේ භාෂාවෙන් ටයිප් කරන්න
 login_id_opt_ph	පරිශීලක නාමය (අවශ්ය, අද්විතීය)
 manager_pin_ph	කළමනාකරු PIN අනුමත කිරීමට (ඔබට අවලංගු කළ නොහැකි නම් පමණි)
 new_branch_name_ph	නව ශාඛාවේ නම
@@ -1047,13 +1071,13 @@ kitchen_empty	විවෘත ප්රවේශපත් නොමැත.
 add_a_table	කෑම මේසයක් එකතු කරන්න
 add_station_heading	මුළුතැන්ගෙයි ස්ථානයක් එක් කරන්න
 categories_help	එම ප්‍රවර්ගය යටතේ ඉහත මෙනු අයිතමය ගොනු කිරීමට භාවිත කරන්න තට්ටු කරන්න. ඡායාරූපය කාණ්ඩයට පින්තූරයක් ලබා දෙයි; එකක් නොමැතිව එහි මුලකුරු පෙන්වයි.
-dish_search_ph	මෙනු මෙනු අයිතමයේ නම - අපගේ කෑම වර්ග සොයන්න හෝ ඔබේම ටයිප් කරන්න
+dish_search_ph	මෙනු අයිතමයේ නම - අපගේ කෑම වර්ග සොයන්න හෝ ඔබේම ටයිප් කරන්න
 tile_free	හිස්
 tile_occupied	වාඩිලාගෙන
 tile_food_ready	කෑම සූදානම්
 tile_bill_printed	ආරාධිත අමුත්තන්ගේ බිල්පත මුද්‍රණය කර ඇත
 tile_paid	ගෙවා ඇත
-tile_bill_btn	ආරාධිත අමුත්තන්ගේ බිල්පත
+tile_bill_btn	බිල්පත
 tile_occupy_btn	අමුත්තන් අසුන් ගන්න
 tile_free_btn	කෑම මේසය හිස් කරන්න
 tile_ready_btn	කෑම මේසය හිස් කරන්න
@@ -1136,9 +1160,9 @@ add_these_tables	මෙම කෑම මේස එකතු කරන්න
 remove_these_tables	මෙම කෑම මේස ඉවත් කරන්න
 table_remove_ph	ඉවත් කරන්න: T1-T24, හෝ එක් කෑම මේසයක නම
 find_server	වෙළඳසැලේ සේවාදායකය සොයා ගන්න
-bill_format	ආගන්තුක ආගන්තුක බිල්පත් ආකෘතිය
+bill_format	ආගන්තුක බිල්පත් ආකෘතිය
 reset_bill_format	පෙරනිමියට යළි පිහිටුවන්න
-bill_format_reset	ආගන්තුක ආගන්තුක බිල්පත් ආකෘතිය පෙරනිමියට යළි පිහිටුවන ලදී
+bill_format_reset	ආගන්තුක බිල්පත් ආකෘතිය පෙරනිමියට යළි පිහිටුවන ලදී
 reset_kot_format	පෙරනිමියට යළි පිහිටුවන්න
 kot_format_reset	KOT ආකෘතිය පෙරනිමියට යළි පිහිටුවයි
 kot_format	KOT ආකෘතිය
@@ -1151,7 +1175,7 @@ kot_field_on	පෙන්වන්න
 kot_field_off	සඟවන්න
 kot_field_size	අකුරු ප්රමාණය
 kot_weight_light	ආලෝකය
-bill_kot_panel_help	ආගන්තුක ආගන්තුක බිල්පත් සහ මුළුතැන්ගෙයි ස්ලිප් පිරිසැලසුම, සෑම එකක්ම එහි අන්තර්ගත පළල ඇත. ආගන්තුක ආගන්තුක බිල්පත් අයකැමි යනු ආගන්තුක බිල්පත නිකුත් කළ හෝ පියවූ අයයි; KOT වේටර් එම මුළුතැන්ගෙයි ටිකට් එක එව්වේ කවුද - සම්පූර්ණ ඇණවුම් කතාව ලෙජර්වල පවතී.
+bill_kot_panel_help	ආගන්තුක බිල්පත් සහ මුළුතැන්ගෙයි ස්ලිප් පිරිසැලසුම, සෑම එකක්ම එහි අන්තර්ගත පළල ඇත. ආගන්තුක බිල්පත් අයකැමි යනු ආගන්තුක බිල්පත නිකුත් කළ හෝ පියවූ අයයි; KOT වේටර් එම මුළුතැන්ගෙයි ටිකට් එක එව්වේ කවුද - සම්පූර්ණ ඇණවුම් කතාව ලෙජර්වල පවතී.
 std_size_ph	උදා. 18, 20, 26…
 kot_show_shop	සාප්පුවේ නම
 kot_hide_shop	සාප්පුව සඟවන්න
@@ -1185,12 +1209,12 @@ content_width	අන්තර්ගත පළල (මි.මී.)
 content_width_bill	අමුත්තන්ගේ බිල්පත් අන්තර්ගත පළල (මි.මී.)
 content_width_kot	KOT අන්තර්ගත පළල (මි.මී.)
 content_width_ph	නැතහොත් අන්තර්ගත පළලක් ටයිප් කරන්න, 40–210 mm
-content_width_help	මෙම ස්ලිප් මුද්‍රණය කෙතරම් පළලද. ආගන්තුක ආගන්තුක බිල්පත සහ KOT එක් එක් ඒවායේ පළල තබා ගන්න.
+content_width_help	මෙම ස්ලිප් මුද්‍රණය කෙතරම් පළලද. ආගන්තුක බිල්පත සහ KOT එක් එක් ඒවායේ පළල තබා ගන්න.
 content_width_bill_help	අමුත්තාගේ බිල්පත කොපමණ පළලින් මුද්‍රණය වේද, mm වලින් (40–210). එය ඕනෑම කඩදාසියක මෙම සැබෑ ප්‍රමාණයෙන් මුද්‍රණය වේ; මීට වඩා පටු කඩදාසියක මුද්‍රණ දාරයෙන් ඔබ්බට ඇති කොටස කැපේ (කඩදාසි බලන්න). කුස්සියේ ටිකට්පත්වලට KOT ටැබයේ ඒවායේම පළලක් ඇත.
 content_width_kot_help	කුස්සියේ ටිකට්පත කොපමණ පළලින් මුද්‍රණය වේද, mm වලින් (40–210). එය ඕනෑම කඩදාසියක මෙම සැබෑ ප්‍රමාණයෙන් මුද්‍රණය වේ; මීට වඩා පටු කඩදාසියක මුද්‍රණ දාරයෙන් ඔබ්බට ඇති කොටස කැපේ (කඩදාසි බලන්න). අමුත්තන්ගේ බිල්පත්වලට බිල් ටැබයේ ඒවායේම පළලක් ඇත.
 vp_paper_width	අන්තර්ගත පළල (මි.මී.)
 vp_paper_width_ph	නැතහොත් අන්තර්ගත පළලක් ටයිප් කරන්න, 40–210 mm
-vp_paper_width_help	ආගන්තුක ආගන්තුක බිල්පත සහ KOT ආකෘතිය යටතේ අන්තර්ගත පළල සකසා ඇත — අමුත්තන්ගේ බිල්පත (පෙරනිමි 210 mm) සහ මුළුතැන්ගෙයි ටිකට් (පෙරනිමිය 80 mm) සඳහා වෙන වෙනම.
+vp_paper_width_help	ආගන්තුක බිල්පත සහ KOT ආකෘතිය යටතේ අන්තර්ගත පළල සකසා ඇත — අමුත්තන්ගේ බිල්පත (පෙරනිමි 210 mm) සහ මුළුතැන්ගෙයි ටිකට් (පෙරනිමිය 80 mm) සඳහා වෙන වෙනම.
 kot_size	අකුරු ප්රමාණය
 kot_size_s	කුඩා
 kot_size_m	සාමාන්යයි
@@ -1205,7 +1229,7 @@ kot_footer_ph	මුළුතැන්ගෙයි සටහන (විකල්
 kot_preview	පෙරදසුන
 test_kot_format	පරීක්ෂණයක් උත්සාහ කරන්න KOT
 test_kot_sent	මුළුතැන්ගෙයි ටිකට් පෙරදසුන යවා ඇත
-test_bill_format	අමුත්තන්ගේ බිල්පත් පරීක්ෂා කරන්න
+test_bill_format	පරීක්ෂණ බිල්පත
 test_bill_sent	ආරාධිත අමුත්තන්ගේ බිල්පත් පෙරදසුන යවන ලදී
 test_print_no_printer	එම කාර්යය සඳහා මුද්‍රණ යන්ත්‍රයක් නොමැත - මෙම තිරයේ එකක් තෝරන්න
 std_print	අමුත්තන්ගේ බිල්පත් මුද්‍රණ ප්‍රමාණය
@@ -1238,7 +1262,7 @@ on_your_menu	ඔබේ මෙනුවේ
 edit	සංස්කරණය කරන්න
 schemes	යෝජනා ක්රම / දීමනා
 schemes_help	BOGO, සියයට අඩු, සහ ස්ථාවර සංයෝජන. සංයෝජන යවන්න KOT මත මුළුතැන්ගෙයි රේඛා දක්වා විහිදේ; කොම්බෝ ගිනි ගන්නා තෙක් සංරචක රඳවා තබා ගනී. උදාහරණය: Buy 2 Thali get 1 Chaas
-scheme_bogo_ph	Buy 2 Thali get 1 Chaas
+scheme_bogo_ph	තාලි 2ක් ගන්න, චාස් 1ක් නොමිලේ
 add_scheme	BOGO එකතු කරන්න
 schedule_ph	පැය / ප්‍රීතිමත් පැය - Mon-Fri 07:00-11:00 හෝ HappyHour 17:00-19:00=150
 upi_qr	UPI QR
@@ -1256,7 +1280,7 @@ choose_table	කෑම මේසයක් තෝරන්න
 change_table	කෑම මේසය වෙනස් කරන්න
 pick_table_banner	මෙම ඇණවුම සඳහා කෑම මේසයක් තෝරන්න
 items_word	මෙනු අයිතම
-items_section	මෙනු මෙනු අයිතම
+items_section	අයිතම
 back_to_order	නැවත පිළිවෙලට
 new_items_head	තවම යවා නැත
 price_ph	මිල
@@ -1266,8 +1290,8 @@ taxable_value	බදු ගෙවිය හැකි වටිනාකම
 gst_inside_price_note	({tax} ඇතුළුව)
 start_with_template	අපගේ මෙනු ආකෘතියෙන් ආරම්භ කරන්න
 template_heading	අපගේ මෙනු ආකෘතිය
-template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
-template_download_shelf	Download photo shelf
+template_need_download	කෑම වර්ගවල පොදු ඡායාරූප රාක්කය (~1,459 කෑම වර්ග) බාගෙන, පසුව නැති නම් ඔබේ මෙනුවට ආයාත කරන්න.
+template_download_shelf	ඡායාරූප රාක්කය බාගන්න
 template_info	{c} ප්‍රවර්ග සහ ඡායාරූප සහිත {d} කෑම වර්ග, එකතු කිරීමට සූදානම්. මිල ගණන් රුපියල් 0 කින් ආරම්භ වේ — පසුව ඔබට සකසන්න.
 template_import	සම්පූර්ණ අච්චුව ආයාත කරන්න
 template_confirm	ඒවායේ ප්‍රවර්ග සමඟ {d} කෑම එකතු කරන්නද? ඔබට දැනටමත් තිබෙන කෑම වර්ග එලෙසම පවතී.

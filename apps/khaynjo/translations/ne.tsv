@@ -101,6 +101,19 @@ bill_item_col_sep	स्तम्भ रेखा
 slip_columns	स्तम्भहरू
 slip_col_header	शीर्षक
 bill_line_logo	लोगो
+bill_line_shop	पसल
+bill_line_address	ठेगाना
+bill_line_fssai	FSSAI
+bill_line_title	शीर्षक
+bill_line_customer	ग्राहक
+bill_line_bill_no	बिल नं.
+bill_line_time	समय
+bill_line_cashier	क्यासियर
+bill_line_table	टेबल
+bill_line_items	सामान
+bill_line_total	जम्मा
+bill_line_footer	फुटर
+bill_line_upi	UPI
 bill_logo_picture	चित्र
 bill_logo_choose	चित्र छान्नुहोस्
 bill_logo_remove	चित्र हटाउनुहोस्
@@ -128,6 +141,12 @@ bill_item_piece_off	बन्द
 bill_total_qty	कुल परिमाण
 bill_total_subtotal	उप-जम्मा
 bill_total_grand	कुल जम्मा
+bill_total_number_under	सङ्ख्या यसको तल
+bill_total_caption_under	लेबल यसको तल
+bill_total_own_line	आफ्नै पङ्क्ति
+bill_total_caption_with	सङ्ख्यासँगै
+bill_total_caption_none	लेबल छैन
+bill_total_place_help	“आफ्नै पङ्क्ति” ले यो जम्मालाई एक्लै छाप्छ। स्तम्भको तल हुँदा यसको सङ्ख्या त्यही वस्तुको स्तम्भमा, यो पङ्क्तिको नाप र मोटाइमा छापिन्छ; कुनै स्तम्भ नभरिएसम्म जम्माहरूले एउटै लहर बाँड्छन्, त्यसपछि नयाँ लहर सुरु हुन्छ। लेबल सङ्ख्यासँगै, अर्को स्तम्भको तल जान्छ, वा छोडिन्छ। कर, सेवा, राउन्डिङ र भुक्तानीका पङ्क्तिहरूले “उप-जम्मा” लाई पछ्याउँछन्।
 reprint_incl	छापमा
 reprint_skip	छोड्नुहोस्
 reprint_skip_meta	पुनःप्राप्ति छाप छोड्नुहोस्
@@ -178,20 +197,20 @@ snack_secs_ph	सेकेन्ड (3–60, पूर्वनिर्धा�
 snack_secs_save	सूचना समय सुरक्षित गर्नुहोस्
 snack_secs_saved	सूचना समय सुरक्षित — {n} सेकेन्ड
 settings_sec_whatsapp	WhatsApp
-whatsapp_cloud_help	Use your own Meta WhatsApp Cloud API. Create a System User token with whatsapp_business_messaging (temporary dashboard tokens expire). Credentials stay on this Server only — never on extra tills. Accepted means Meta took the request, not that the guest received it.
-whatsapp_phone_id_ph	Phone Number ID
-whatsapp_token_ph	Access Token (leave blank to keep)
-whatsapp_template_ph	Bill template name (optional)
-whatsapp_template_lang_ph	Template language (e.g. en)
-whatsapp_enable	Enable
+whatsapp_cloud_help	आफ्नै Meta WhatsApp Cloud API प्रयोग गर्नुहोस्। whatsapp_business_messaging भएको System User टोकन बनाउनुहोस् (ड्यासबोर्डका अस्थायी टोकनको म्याद सकिन्छ)। यो जानकारी यही सर्भरमा मात्र रहन्छ — थप टिलमा कहिल्यै होइन। “स्वीकृत” भनेको Meta ले अनुरोध लियो भन्ने हो, पाहुनाले सन्देश पाए भन्ने होइन।
+whatsapp_phone_id_ph	फोन नम्बर ID
+whatsapp_token_ph	एक्सेस टोकन (उही राख्न खाली छोड्नुहोस्)
+whatsapp_template_ph	बिल टेम्प्लेटको नाम (ऐच्छिक)
+whatsapp_template_lang_ph	टेम्प्लेटको भाषा (जस्तै en)
+whatsapp_enable	चालु गर्नुहोस्
 whatsapp_disable	Off
-whatsapp_save	Save WhatsApp
-whatsapp_test	Test connection
-whatsapp_disconnect	Disconnect
-whatsapp_send_bill	Send via WhatsApp
-whatsapp_consent	WhatsApp OK
-whatsapp_consent_help	Guest agreed to receive WhatsApp messages. A phone number alone is not consent.
-whatsapp_server_only	Configure WhatsApp on the shop Server device
+whatsapp_save	WhatsApp सुरक्षित गर्नुहोस्
+whatsapp_test	जडान जाँच्नुहोस्
+whatsapp_disconnect	जडान हटाउनुहोस्
+whatsapp_send_bill	WhatsApp बाट पठाउनुहोस्
+whatsapp_consent	WhatsApp ठीक छ
+whatsapp_consent_help	पाहुनाले WhatsApp सन्देश पाउन सहमति दिनुभएको छ। फोन नम्बर मात्र हुनु सहमति होइन।
+whatsapp_server_only	WhatsApp पसलको सर्भर उपकरणमा सेट गर्नुहोस्
 settings_sec_backup	ब्याकअप र पुनर्स्थापना
 settings_sec_diag	निदान
 settings_sec_privacy	गोपनीयता
@@ -637,7 +656,7 @@ choose_device_use	सर्भर वा क्लाइन्ट छान्�
 paired_note	जोडियो। बेच्न अनलक गर्नुहोस्, वा नयाँका लागि ताजा गर्नुहोस्।
 last_update_at	पछिल्लो अपडेट: {time}।
 pair_intro	सर्भर खोज्नुहोस्, वा यसको ठेगाना र जोडा कोड लेख्नुहोस्।
-pair_resume_hint	Already paired — enter your shop PIN, or Forget this shop to pair another.
+pair_resume_hint	पहिले नै जोडिएको छ — आफ्नो पसलको PIN राख्नुहोस्, वा अर्को पसल जोड्न “यो पसल बिर्सनुहोस्” थिच्नुहोस्।
 queue_waiting	पसलमा पुग्न पर्खँदै ({n}):
 queue_tries	{n} पटक प्रयास · पछिल्लो जवाफ: {e}
 save_backup_copy	ब्याकअप प्रति सुरक्षित गर्नुहोस्…
@@ -754,13 +773,18 @@ station_vps_dd	यो स्टेसनका प्रिन्टर
 station_vps_dd_n	{n} प्रिन्टर · बदल्न थिच्नुहोस्
 bill_printers_dd	बिलका प्रिन्टर
 bill_printers_dd_n	बिलका लागि {n} प्रिन्टर · बदल्न थिच्नुहोस्
-paper_heading	कागज
+paper_heading	भर्चुअल कागज
 paper_size	{w} × {h} mm
 paper_roll	{w} mm रोल
 paper_not_set	कागज अझै थाहा छैन
-paper_length_mm	लम्बाइ (mm)
-printer_paper_help	यो प्रिन्टरको कागज mm मा। खाली लम्बाइको अर्थ रोल: हरेक पर्ची आफ्नो सामग्री जत्तिकै लामो हुन्छ। प्रिन्टर खोज्नुहोस् ले खाली कागज प्रिन्टरको ड्राइभरबाट भर्छ (भन्न नसके 80 mm रोल) र पहिले नै तोकिएको कागज कहिल्यै बदल्दैन।
-preview_help	तल छानिएको प्रिन्टरको कागजमा यो पर्ची, त्यहाँ छापिने जस्तै: प्रिन्टर पुग्ने माथिल्लो बायाँ कुनाबाट वास्तविक नापमा (खैरो: नपुग्ने किनारा), लामो पर्ची थप पानाहरूमा, कागजको किनाराभन्दा परको सबै काटिन्छ। प्रिन्टर छान्दा पूर्वावलोकन मात्र बदलिन्छ; हरेक प्रिन्टरको कागज प्रिन्टर मा तोकिन्छ।
+virtual_width_mm	भर्चुअल चौडाइ (mm)
+virtual_length_mm	भर्चुअल लम्बाइ (mm)
+reported_width_mm	रिपोर्ट गरिएको चौडाइ (mm)
+reported_length_mm	रिपोर्ट गरिएको लम्बाइ (mm)
+reported_paper	रिपोर्ट गरिएको: {paper}
+virtual_paper	भर्चुअल: {paper}
+printer_paper_help	रिपोर्ट गरिएको भनेको यो प्रिन्टरको ड्राइभर सेट गरिएको कागज हो; एपले त्यसलाई पढ्ने मात्र गर्छ, र “लागू हुँदैन” को अर्थ सोध्नलाई कुनै ड्राइभर छैन भन्ने हो। भर्चुअल भनेको प्रिन्टरमा साँच्चै छ भनेर तपाईंले भन्नुभएको कागज हो, mm मा; खाली लम्बाइ भनेको रोल हो। प्रिन्टरले आफ्नै कागजमा छाप्छ; भर्चुअल कागजले एपलाई त्यसमध्ये कति साँचो कागज हो भनेर बताउँछ, पूर्वावलोकन, पानाको लम्बाइ र पर्चीको स्थानका लागि। प्रिन्टर खोज्नुहोस् ले खाली भर्चुअल कागज भर्छ र तपाईंले सेट गरेको कहिल्यै बदल्दैन।
+preview_help	यो पर्ची तल छानिएको प्रिन्टरमा जसरी छापिन्छ, त्यसको भर्चुअल कागजमा वास्तविक नापमा। सेतो ठाउँमा छापिन्छ, खैरो कागजसम्म प्रिन्टर पुग्दैन, र फिक्का मसी काटिन्छ। नौ वटा कोठा कागज हुन्: पर्ची बस्नुपर्ने ठाउँमा ट्याप गर्नुहोस्। लामो पर्ची थप पानाहरूमा जान्छ। प्रिन्टर छान्दा पूर्वावलोकन मात्र बदलिन्छ।
 job_layout	लेआउट
 job_delivery	काम कसरी पठाइन्छ
 job_delivery_help	OS कागजात, कच्चा बाइट, वा ESC/POS। बिल र भान्सा टिकट दुवैले आफ्नै राख्छन्। कुनै पनि काम खोज्नुहोस् ले सुरक्षित गरेको कुनै पनि प्रिन्टरमा जान सक्छ।
@@ -1266,8 +1290,8 @@ taxable_value	करयोग्य मूल्य
 gst_inside_price_note	({tax} सहित)
 start_with_template	हाम्रो मेनु टेम्प्लेटबाट सुरु गर्नुहोस्
 template_heading	हाम्रो मेनु टेम्प्लेट
-template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
-template_download_shelf	Download photo shelf
+template_need_download	परिकारहरूको सार्वजनिक फोटो शेल्फ (~1,459 परिकार) डाउनलोड गर्नुहोस्, अनि नभएका नामहरू आफ्नो मेनुमा आयात गर्नुहोस्।
+template_download_shelf	फोटो शेल्फ डाउनलोड गर्नुहोस्
 template_info	{c} वर्ग र फोटोसहित {d} परिकार, थप्न तयार। मूल्य ₹0 बाट सुरु — पछि आफ्नो राख्नुहोस्।
 template_import	पूरा टेम्प्लेट आयात गर्नुहोस्
 template_confirm	{d} परिकार तिनका वर्गसहित थप्ने? तपाईंसँग भएका परिकार जस्ताको तस्तै रहन्छन्।

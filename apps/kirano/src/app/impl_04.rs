@@ -2272,8 +2272,49 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
         }
     }
 
-    /// The Bill preview's printer: the dropdown face is `name · paper` of the
-    /// printer the preview is drawn on, the ℹ says what the preview shows
+    /// The 3 × 3 grid beside the Bill preview: a picture of the paper, the
+    /// format's place lit — the square is where the slip lands (left and
+    /// right are the paper's own sides in every language; docs/PRINTER.md §
+    /// Paper and preview).
+    fn paint_place_grid(&mut self, cx: &mut Cx) {
+        let place = app_state()
+            .lock()
+            .unwrap()
+            .printer_draft
+            .format_for(print_share::RouteKey::Bill)
+            .place;
+        for (down, row) in place_cells().into_iter().enumerate() {
+            for (across, (idle, on)) in row.into_iter().enumerate() {
+                let lit = place == os_paper::Place::new(down as u8, across as u8);
+                self.paint_choice_pair(cx, idle, on, lit);
+            }
+        }
+    }
+
+    /// A square of the grid was picked: the Bill format keeps the place with
+    /// this device's printers (as portrait / landscape is), and the preview
+    /// draws it at once.
+    fn set_format_place(&mut self, cx: &mut Cx, place: os_paper::Place) {
+        let result = (|| -> Result<(), String> {
+            let mut st = app_state().lock().unwrap();
+            if st.device_role == DeviceRole::Client {
+                return Err(st.t("printers_host_only"));
+            }
+            st.printer_draft.set_job_place(true, place);
+            st.save_printer_draft()?;
+            print_share::configure(st.printer_draft.clone());
+            Ok(())
+        })();
+        if let Err(e) = result {
+            self.set_status(cx, e);
+        }
+        self.sync_bill_format_ui(cx);
+        self.paint_place_grid(cx);
+    }
+
+    /// The Bill preview's printer: the dropdown face is `name · virtual
+    /// paper` of the printer the preview is drawn on, the two lines under it
+    /// read its reported and its virtual paper, the ℹ says what the preview shows
     /// (docs/PRINTER.md § Paper and preview). Every saved printer can be
     /// picked; it changes the preview only. A picture drawn on another paper
     /// than the face names (the bill's printers changed, Find added one, a
@@ -2282,9 +2323,11 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
         thread_local! {
             static RESYNC: std::cell::Cell<bool> = const { std::cell::Cell::new(false) };
         }
-        let (face, tip, now) = {
+        let (face, tip, now, reported, virtual_line) = {
             let st = app_state().lock().unwrap();
-            let face = match st.preview_printer() {
+            let now = st.preview_paper();
+            let printer = st.preview_printer();
+            let face = match printer {
                 Some(p) => printer_paper_line(p, |k| st.t(k)),
                 None => format!(
                     "{} · {}",
@@ -2293,7 +2336,21 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
                         .replace("{w}", &os_paper::mm_text(print_share::DEFAULT_PAPER_WIDTH_MM))
                 ),
             };
-            (face, st.t("preview_help"), st.preview_paper())
+            // The picked printer's two papers, read-only: what its driver
+            // reports ("N/A" when nothing does) and the virtual paper the
+            // picture is drawn on.
+            let reported = match printer {
+                Some(p) => reported_summary(p, |k| st.t(k)),
+                None => st.t("na"),
+            };
+            (
+                face,
+                st.t("preview_help"),
+                now.clone(),
+                st.t("reported_paper").replace("{paper}", &reported),
+                st.t("virtual_paper")
+                    .replace("{paper}", &paper_text(now.virtual_paper, |k| st.t(k))),
+            )
         };
         // A dropdown face is its value only; ComboField draws ˅ / ˄.
         let btn = self.ui.button(cx, ids!(bill_preview_paper_dd));
@@ -2304,6 +2361,10 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
             .widget(cx, ids!(bill_preview_help))
             .as_info_help()
             .set_tip(&plain_display_text(&tip));
+        for (id, text) in [(ids!(bill_preview_reported), &reported), (ids!(bill_preview_virtual), &virtual_line)] {
+            self.ui.widget(cx, id).set_text(cx, &plain_display_text(text));
+        }
+        self.paint_place_grid(cx);
         let stale = self
             .ui
             .widget(cx, ids!(bill_format_preview))
@@ -2359,8 +2420,8 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
         let row_label = |kind: print_share::BillStyleField| {
             let row = draft.style(kind);
             let name = match draft.meta_pair_of(kind) {
-                Some(partner) => format!("{} + {}", kind.label(), partner.label()),
-                None => kind.label().to_string(),
+                Some(partner) => format!("{} + {}", s(kind.label_key()), s(partner.label_key())),
+                None => s(kind.label_key()),
             };
             let on_off = if row.show {
                 s("kot_field_on")
@@ -2390,7 +2451,6 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
             (ids!(bill_pick_billno), ids!(bill_pick_billno_on)),
             (ids!(bill_pick_time), ids!(bill_pick_time_on)),
             (ids!(bill_pick_cashier), ids!(bill_pick_cashier_on)),
-            (ids!(bill_pick_table), ids!(bill_pick_table_on)),
             (ids!(bill_pick_items), ids!(bill_pick_items_on)),
             (ids!(bill_pick_total), ids!(bill_pick_total_on)),
             (ids!(bill_pick_footer), ids!(bill_pick_footer_on)),
@@ -2417,7 +2477,7 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
         if let Some(kind) = order.get(open_idx) {
             self.ui
                 .widget(cx, ids!(bill_line_name))
-                .set_text(cx, &plain_display_text(kind.label()));
+                .set_text(cx, &plain_display_text(&s(kind.label_key())));
         }
         self.ui
             .widget(cx, ids!(h_bill_field_size))
@@ -2435,6 +2495,23 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
             self.ui.button(cx, idle).set_text(cx, &text);
             self.ui.button(cx, on).set_text(cx, &text);
             self.paint_choice_pair(cx, idle, on, draft.copies == n);
+        }
+        // The open line's faces in the owner's language — the same words as
+        // on the KOT tab (they were painted for selection only and stayed
+        // English here).
+        for (idle, on, key) in [
+            (ids!(bill_field_show), ids!(bill_field_show_on), "kot_field_show"),
+            (ids!(bill_field_hide), ids!(bill_field_hide_on), "kot_field_hide"),
+            (ids!(bill_w_light), ids!(bill_w_light_on), "kot_weight_light"),
+            (ids!(bill_w_reg), ids!(bill_w_reg_on), "kot_weight_regular"),
+            (ids!(bill_w_bold), ids!(bill_w_bold_on), "kot_weight_bold"),
+            (ids!(bill_a_start), ids!(bill_a_start_on), "kot_align_start"),
+            (ids!(bill_a_center), ids!(bill_a_center_on), "kot_align_center"),
+            (ids!(bill_a_end), ids!(bill_a_end_on), "kot_align_end"),
+        ] {
+            let t = s(key);
+            self.ui.button(cx, idle).set_text(cx, &t);
+            self.ui.button(cx, on).set_text(cx, &t);
         }
         self.paint_choice_pair(cx, ids!(bill_field_show), ids!(bill_field_show_on), style.show);
         self.paint_choice_pair(cx, ids!(bill_field_hide), ids!(bill_field_hide_on), !style.show);
@@ -2579,6 +2656,83 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
                     input.set_text(cx, val);
                 }
             }
+            // Where each total prints: its number under one of the item
+            // columns that print, or on its own line; then its caption.
+            // Stacked items have no columns to sit under.
+            let columns = draft.item_layout == print_share::BillItemLayout::Columns;
+            let printed = draft.ordered_item_cols();
+            let col_key = |col: print_share::BillItemCol| match col {
+                print_share::BillItemCol::Name => "bill_item_name",
+                print_share::BillItemCol::Qty => "bill_item_qty",
+                print_share::BillItemCol::Price => "bill_item_price",
+                print_share::BillItemCol::Amount => "bill_item_amount",
+            };
+            let tip = plain_display_text(&s("bill_total_place_help"));
+            for (block, kind) in BILL_TOTAL_PLACES.into_iter().zip(print_share::BillTotalKind::ALL) {
+                self.ui.view(cx, &[block]).set_visible(cx, columns);
+                if !columns {
+                    continue;
+                }
+                let place = draft.total_place(kind);
+                // Set under a column that does not print: it has its own line.
+                let number = place.number_col().filter(|col| printed.contains(col));
+                self.ui
+                    .widget(cx, &[block, id!(tp_number_h)])
+                    .set_text(cx, &plain_display_text(&s("bill_total_number_under")));
+                self.ui.widget(cx, &[block, id!(tp_help)]).as_info_help().set_tip(&tip);
+                let face = |this: &mut Self, cx: &mut Cx, idle: LiveId, on: LiveId, text: &str, selected: bool| {
+                    this.ui.button(cx, &[block, idle]).set_text(cx, text);
+                    this.ui.button(cx, &[block, on]).set_text(cx, text);
+                    this.paint_choice_pair(cx, &[block, idle], &[block, on], selected);
+                };
+                face(self, cx, id!(tp_n_own), id!(tp_n_own_on), &s("bill_total_own_line"), number.is_none());
+                for (seg, idle, on, col) in BILL_TOTAL_NUMBER_COLS {
+                    let shown = printed.contains(&col);
+                    self.ui.view(cx, &[block, seg]).set_visible(cx, shown);
+                    if shown {
+                        face(self, cx, idle, on, &s(col_key(col)), number == Some(col));
+                    }
+                }
+                self.ui.view(cx, &[block, id!(tp_caption)]).set_visible(cx, number.is_some());
+                let Some(number) = number else {
+                    continue;
+                };
+                self.ui
+                    .widget(cx, &[block, id!(tp_caption_h)])
+                    .set_text(cx, &plain_display_text(&s("bill_total_caption_under")));
+                // A caption set under the number's own column, or under one
+                // that does not print, goes with the number.
+                let caption = match place.caption_place() {
+                    print_share::BillTotalCaption::Under(col) if col != number && printed.contains(&col) => {
+                        print_share::BillTotalCaption::Under(col)
+                    }
+                    print_share::BillTotalCaption::Hidden => print_share::BillTotalCaption::Hidden,
+                    _ => print_share::BillTotalCaption::WithNumber,
+                };
+                face(
+                    self,
+                    cx,
+                    id!(tp_c_with),
+                    id!(tp_c_with_on),
+                    &s("bill_total_caption_with"),
+                    caption == print_share::BillTotalCaption::WithNumber,
+                );
+                face(
+                    self,
+                    cx,
+                    id!(tp_c_none),
+                    id!(tp_c_none_on),
+                    &s("bill_total_caption_none"),
+                    caption == print_share::BillTotalCaption::Hidden,
+                );
+                for (seg, idle, on, col) in BILL_TOTAL_CAPTION_COLS {
+                    let shown = col != number && printed.contains(&col);
+                    self.ui.view(cx, &[block, seg]).set_visible(cx, shown);
+                    if shown {
+                        face(self, cx, idle, on, &s(col_key(col)), caption == print_share::BillTotalCaption::Under(col));
+                    }
+                }
+            }
         }
         let pairable = field.is_pairable();
         self.ui.view(cx, ids!(bill_meta_pair)).set_visible(cx, pairable);
@@ -2589,11 +2743,10 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
             let partner = draft.meta_pair_of(field);
             for (idle, on, label, other) in [
                 (ids!(bill_pair_alone), ids!(bill_pair_alone_on), s("bill_pair_alone"), None),
-                (ids!(bill_pair_customer), ids!(bill_pair_customer_on), print_share::BillStyleField::Customer.label().to_string(), Some(print_share::BillStyleField::Customer)),
-                (ids!(bill_pair_billno), ids!(bill_pair_billno_on), print_share::BillStyleField::BillNo.label().to_string(), Some(print_share::BillStyleField::BillNo)),
-                (ids!(bill_pair_time), ids!(bill_pair_time_on), print_share::BillStyleField::Time.label().to_string(), Some(print_share::BillStyleField::Time)),
-                (ids!(bill_pair_cashier), ids!(bill_pair_cashier_on), print_share::BillStyleField::Cashier.label().to_string(), Some(print_share::BillStyleField::Cashier)),
-                (ids!(bill_pair_table), ids!(bill_pair_table_on), print_share::BillStyleField::Table.label().to_string(), Some(print_share::BillStyleField::Table)),
+                (ids!(bill_pair_customer), ids!(bill_pair_customer_on), s(print_share::BillStyleField::Customer.label_key()), Some(print_share::BillStyleField::Customer)),
+                (ids!(bill_pair_billno), ids!(bill_pair_billno_on), s(print_share::BillStyleField::BillNo.label_key()), Some(print_share::BillStyleField::BillNo)),
+                (ids!(bill_pair_time), ids!(bill_pair_time_on), s(print_share::BillStyleField::Time.label_key()), Some(print_share::BillStyleField::Time)),
+                (ids!(bill_pair_cashier), ids!(bill_pair_cashier_on), s(print_share::BillStyleField::Cashier.label_key()), Some(print_share::BillStyleField::Cashier)),
             ] {
                 self.ui.button(cx, idle).set_text(cx, &label);
                 self.ui.button(cx, on).set_text(cx, &label);
@@ -2672,7 +2825,8 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
             .widget(cx, ids!(bill_format_preview))
             .borrow_mut::<SlipPreview>()
         {
-            slip.show_slip_on(cx, &preview, &metrics, landscape, style.size_em as f32, &paper);
+            let lay = os_paper::Lay { landscape, place: base.place };
+            slip.show_slip_on(cx, &preview, &metrics, lay, style.size_em as f32, &paper);
         }
         self.ui.view(cx, ids!(bill_format_preview_card)).redraw(cx);
     }
@@ -3092,4 +3246,26 @@ fn note_nav_draw() {
         Some(entry) => entry.1 = ms,
         None => costs.push((screen, ms)),
     }
+}
+
+/// The 3 × 3 grid's buttons beside the Bill preview, by row (top, middle,
+/// bottom) and column (left to right): idle and picked.
+fn place_cells() -> [[(&'static [LiveId], &'static [LiveId]); 3]; 3] {
+    [
+        [
+            (ids!(bill_place_0_0), ids!(bill_place_0_0_on)),
+            (ids!(bill_place_0_1), ids!(bill_place_0_1_on)),
+            (ids!(bill_place_0_2), ids!(bill_place_0_2_on)),
+        ],
+        [
+            (ids!(bill_place_1_0), ids!(bill_place_1_0_on)),
+            (ids!(bill_place_1_1), ids!(bill_place_1_1_on)),
+            (ids!(bill_place_1_2), ids!(bill_place_1_2_on)),
+        ],
+        [
+            (ids!(bill_place_2_0), ids!(bill_place_2_0_on)),
+            (ids!(bill_place_2_1), ids!(bill_place_2_1_on)),
+            (ids!(bill_place_2_2), ids!(bill_place_2_2_on)),
+        ],
+    ]
 }

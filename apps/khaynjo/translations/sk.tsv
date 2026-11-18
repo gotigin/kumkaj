@@ -101,6 +101,19 @@ bill_item_col_sep	Pravidlá stĺpcov
 slip_columns	Stĺpce
 slip_col_header	Hlavička
 bill_line_logo	Logo
+bill_line_shop	Obchod
+bill_line_address	Adresa
+bill_line_fssai	FSSAI
+bill_line_title	Názov
+bill_line_customer	Zákazník
+bill_line_bill_no	Č. účtu
+bill_line_time	Čas
+bill_line_cashier	Pokladník
+bill_line_table	Jedálenský stôl
+bill_line_items	Položky
+bill_line_total	Celkom
+bill_line_footer	Päta
+bill_line_upi	UPI
 bill_logo_picture	Obrázok
 bill_logo_choose	Vybrať obrázok
 bill_logo_remove	Odstrániť obrázok
@@ -128,6 +141,12 @@ bill_item_piece_off	Vypnuté
 bill_total_qty	Celkové množstvo
 bill_total_subtotal	Medzisúčet
 bill_total_grand	Celkový súčet
+bill_total_number_under	Číslo pod
+bill_total_caption_under	Štítok pod
+bill_total_own_line	Vlastný riadok
+bill_total_caption_with	Pri čísle
+bill_total_caption_none	Bez štítka
+bill_total_place_help	Vlastný riadok tlačí tento súčet samostatne. Pod stĺpcom sa jeho číslo tlačí v danom stĺpci položiek, vo veľkosti a hrúbke tohto riadka; súčty zdieľajú jeden rad, kým nie je niektorý stĺpec obsadený, potom sa začne nový rad. Štítok je pri čísle, pod iným stĺpcom alebo sa vynechá. Riadky dane, obsluhy, zaokrúhlenia a platby sa riadia položkou Medzisúčet.
 reprint_incl	V tlači
 reprint_skip	Preskočiť
 reprint_skip_meta	Preskočiť tlač na obnovenie
@@ -178,20 +197,20 @@ snack_secs_ph	Sekundy (3 – 60, predvolená hodnota 10)
 snack_secs_save	Ušetrite čas upozornenia
 snack_secs_saved	Uložený čas upozornenia — {n} sekúnd
 settings_sec_whatsapp	WhatsApp
-whatsapp_cloud_help	Use your own Meta WhatsApp Cloud API. Create a System User token with whatsapp_business_messaging (temporary dashboard tokens expire). Credentials stay on this Server only — never on extra tills. Accepted means Meta took the request, not that the guest received it.
-whatsapp_phone_id_ph	Phone Number ID
-whatsapp_token_ph	Access Token (leave blank to keep)
-whatsapp_template_ph	Bill template name (optional)
-whatsapp_template_lang_ph	Template language (e.g. en)
-whatsapp_enable	Enable
+whatsapp_cloud_help	Použite vlastné Meta WhatsApp Cloud API. Vytvorte token System User s whatsapp_business_messaging (dočasné tokeny z panela vypršia). Údaje zostávajú len na tomto Serveri — nikdy na extra pokladniach. „Prijaté“ znamená, že Meta požiadavku prevzala, nie že ju hosť dostal.
+whatsapp_phone_id_ph	ID telefónneho čísla
+whatsapp_token_ph	Prístupový token (ponechajte prázdne, ak ho chcete zachovať)
+whatsapp_template_ph	Názov šablóny účtu (voliteľné)
+whatsapp_template_lang_ph	Jazyk šablóny (napr. en)
+whatsapp_enable	Povoliť
 whatsapp_disable	Off
-whatsapp_save	Save WhatsApp
-whatsapp_test	Test connection
-whatsapp_disconnect	Disconnect
-whatsapp_send_bill	Send via WhatsApp
+whatsapp_save	Uložiť WhatsApp
+whatsapp_test	Otestovať pripojenie
+whatsapp_disconnect	Odpojiť
+whatsapp_send_bill	Odoslať cez WhatsApp
 whatsapp_consent	WhatsApp OK
-whatsapp_consent_help	Guest agreed to receive WhatsApp messages. A phone number alone is not consent.
-whatsapp_server_only	Configure WhatsApp on the shop Server device
+whatsapp_consent_help	Hosť súhlasil s prijímaním správ WhatsApp. Samotné telefónne číslo nie je súhlas.
+whatsapp_server_only	Nastavte WhatsApp na zariadení Server obchodu
 settings_sec_backup	Zálohovanie a obnovenie
 settings_sec_diag	Diagnostika
 settings_sec_privacy	Súkromie
@@ -637,7 +656,7 @@ choose_device_use	Vyberte Server alebo Klient.
 paired_note	Spárované. Ak chcete predať, odomknite alebo aktualizujte na najnovšie.
 last_update_at	Posledná aktualizácia: {time}.
 pair_intro	Nájdite server alebo zadajte jeho adresu a párovací kód.
-pair_resume_hint	Already paired — enter your shop PIN, or Forget this shop to pair another.
+pair_resume_hint	Už spárované — zadajte PIN svojho obchodu, alebo ťuknite na „Zabudnite na tento obchod“ a spárujte iný.
 queue_waiting	Čaká na príchod do obchodu ({n}):
 queue_tries	Vyskúšané {n} krát · posledná odpoveď: {e}
 save_backup_copy	Uložiť záložnú kópiu…
@@ -754,13 +773,18 @@ station_vps_dd	Tlačiarne pre túto stanicu
 station_vps_dd_n	{n} tlačiarní · klepnutím zmeníte
 bill_printers_dd	Tlačiarne na účet
 bill_printers_dd_n	{n} tlačiarní na účet · klepnutím zmeníte
-paper_heading	Papier
+paper_heading	Virtuálny papier
 paper_size	{w} × {h} mm
 paper_roll	rolka {w} mm
 paper_not_set	papier zatiaľ nie je známy
-paper_length_mm	Dĺžka (mm)
-printer_paper_help	Papier tejto tlačiarne v mm. Prázdna Dĺžka je rolka: každý bloček je taký dlhý ako jeho obsah. Nájdite tlačiarne doplní prázdny papier z ovládača tlačiarne (rolka 80 mm, keď to nevie povedať) a nikdy nezmení už nastavený.
-preview_help	Tento bloček na papieri tlačiarne vybranej nižšie, ako sa na nej vytlačí: v skutočnej veľkosti od ľavého horného rohu, kam tlačiareň dosiahne (sivé: okraje, kam nedosiahne), dlhý bloček na viacerých listoch, všetko za okrajom papiera sa oreže. Výber tlačiarne mení len náhľad; papier každej tlačiarne sa nastavuje v časti Tlačiarne.
+virtual_width_mm	Virtuálna šírka (mm)
+virtual_length_mm	Virtuálna dĺžka (mm)
+reported_width_mm	Hlásená šírka (mm)
+reported_length_mm	Hlásená dĺžka (mm)
+reported_paper	Hlásený: {paper}
+virtual_paper	Virtuálny: {paper}
+printer_paper_help	Hlásený je papier, na ktorý je nastavený ovládač tejto tlačiarne; aplikácia ho iba číta a N/A znamená, že nie je ovládač, ktorého by sa dalo opýtať. Virtuálny je papier, o ktorom hovoríte, že je v tlačiarni naozaj, v mm; prázdna dĺžka je rolka. Tlačiareň tlačí na svoj vlastný papier; virtuálny papier hovorí aplikácii, koľko z neho je skutočný papier, pre náhľad, dĺžku strany a umiestnenie bločku. Nájdite tlačiarne doplní prázdny virtuálny papier a nikdy nezmení ten, ktorý ste nastavili.
+preview_help	Tento bloček tak, ako sa vytlačí na tlačiarni vybranej nižšie, v skutočnej veľkosti na jej virtuálnom papieri. Biele je miesto, kde tlačí, sivý papier je mimo dosahu tlačiarne a vyblednutý atrament sa oreže. Deväť štvorcov je papier: ťuknite tam, kde má bloček byť. Dlhý bloček pokračuje na ďalších stranách. Výber tlačiarne mení len náhľad.
 job_layout	Rozloženie
 job_delivery	Ako sa úloha odosiela
 job_delivery_help	Dokument OS, nespracované bajty alebo ESC/POS. Účet a lístok do kuchyne si ponechajú svoje. Každá úloha môže prejsť na ktorúkoľvek tlačiareň, ktorú funkcia Find uložila.
@@ -1163,7 +1187,7 @@ kot_show_station	Stanica
 kot_hide_station	Skryť stanicu
 kot_show_table	Jedálenský stôl
 kot_hide_table	Skryť jedálenský stôl
-kot_show_kot_no	KOT Nie
+kot_show_kot_no	Č. KOT
 kot_hide_kot_no	Skryť KOT Nie
 kot_width	Ukážka zalomenia (nastavte šírku obsahu na karte KOT)
 kot_width_58	58 mm
@@ -1266,8 +1290,8 @@ taxable_value	Zdaniteľná hodnota
 gst_inside_price_note	({tax} vrátane)
 start_with_template	Začnite s našou šablónou menu
 template_heading	Naša šablóna jedálneho lístka
-template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
-template_download_shelf	Download photo shelf
+template_need_download	Stiahnite verejnú policu s fotkami jedál (~1 459 jedál) a potom importujte chýbajúce názvy do svojho jedálneho lístka.
+template_download_shelf	Stiahnuť policu s fotkami
 template_info	{c} kategórií a {d} jedál s fotografiami, pripravené na pridanie. Ceny začínajú na 0 INR – nastavte si to potom.
 template_import	Importujte kompletnú šablónu
 template_confirm	Pridať {d} jedál s ich kategóriami? Jedlá, ktoré už máte, zostanú také, aké sú.
@@ -1325,7 +1349,7 @@ kot_show_title	Titulný riadok
 kot_hide_title	Skryť názov
 kot_field_cycle	Vyberte ďalšie
 kot_field_select	Vyberte ďalšie
-dishes_n	{n} riadu
+dishes_n	{n} jedál
 recipe_ph	Recept (voliteľné) – jedna porcia používa: Ryža=0,2, Paneer=0,15
 reorder_ph	Kúpte viac na
 set_reorder	Nastaviť úroveň zmeny poradia

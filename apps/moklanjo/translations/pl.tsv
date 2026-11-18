@@ -192,7 +192,7 @@ snack_secs_save	Oszczędź czas alertu
 snack_secs_saved	Zapisano czas alertu — {n} sekund
 snack_secs_bad	Wprowadź sekundy jako liczbę (3–60)
 cancelled	Anulowano
-cancelling	Cancelling…
+cancelling	Cancellingâ¦
 cancel	Anuluj
 opening_client	Otwieram klienta…
 preparing_desk	Przygotowanie biurka…
@@ -501,13 +501,18 @@ job_size	Rozmiar czcionki
 job_size_ph	np. 18, 20, 26…
 test_receipt_format	Odbiór testowy
 test_label_format	Etykieta testowa
-paper_heading	Papier
+paper_heading	Papier wirtualny
 paper_size	{w} × {h} mm
 paper_roll	rolka {w} mm
 paper_not_set	papier jeszcze nieznany
-paper_length_mm	Długość (mm)
-printer_paper_help	Papier tej drukarki w mm. Pusta Długość to rolka: każdy paragon jest tak długi jak jego treść. Znajdź drukarki uzupełnia pusty papier ze sterownika drukarki (rolka 80 mm, gdy nie potrafi powiedzieć) i nigdy nie zmienia już ustawionego.
-preview_help	Ten paragon na papierze drukarki wybranej poniżej, tak jak się na niej drukuje: w rzeczywistym rozmiarze od lewego górnego rogu, do którego sięga drukarka (szary: krawędzie, do których nie sięga), długi paragon na kilku arkuszach, wszystko poza krawędzią papieru jest obcinane. Wybór drukarki zmienia tylko podgląd; papier każdej drukarki ustawia się w Drukarki.
+virtual_width_mm	Szerokość wirtualna (mm)
+virtual_length_mm	Długość wirtualna (mm)
+reported_width_mm	Szerokość zgłoszona (mm)
+reported_length_mm	Długość zgłoszona (mm)
+reported_paper	Zgłoszony: {paper}
+virtual_paper	Wirtualny: {paper}
+printer_paper_help	Zgłoszony to papier, na który ustawiony jest sterownik tej drukarki; aplikacja tylko go odczytuje, a „Nie dotyczy” oznacza, że nie ma sterownika, którego można zapytać. Wirtualny to papier, który według Ciebie naprawdę jest w drukarce, w mm; pusta długość to rolka. Drukarka drukuje na swoim własnym papierze; papier wirtualny mówi aplikacji, ile z niego jest prawdziwym papierem, na potrzeby podglądu, długości strony i położenia paragonu. Znajdź drukarki uzupełnia pusty papier wirtualny i nigdy nie zmienia tego, który ustawisz.
+preview_help	Ten paragon tak, jak drukuje się na drukarce wybranej poniżej, w rzeczywistym rozmiarze na jej papierze wirtualnym. Białe to miejsce druku, szary papier jest poza zasięgiem drukarki, a wyblakły tusz zostaje obcięty. Dziewięć kwadratów to papier: dotknij tam, gdzie ma znaleźć się paragon. Długi paragon przechodzi na kolejne strony. Wybór drukarki zmienia tylko podgląd.
 slip_col_width	Szerokość (mm)
 no_printer_assigned	Brak drukarki
 printer_target_default	zwykła drukarka tego komputera (pusty adres)

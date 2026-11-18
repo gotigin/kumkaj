@@ -67,13 +67,19 @@ bill_item_amount	金额
 bill_item_note	项目备注
 bill_item_col_sep	列线
 slip_col_width	宽度 (mm)
-paper_heading	纸张
+paper_heading	虚拟纸张
 paper_size	{w} × {h} mm
 paper_roll	{w} mm 卷纸
 paper_not_set	纸张尚未得知
-paper_length_mm	长度 (mm)
-printer_paper_help	此打印机的纸张（mm）。长度留空即为卷纸：每张单据与其内容一样长。“查找打印机”会从打印机驱动程序填入空白纸张（无法得知时为 80 mm 卷纸），且绝不更改已设置的纸张。
-preview_help	此单据在下方所选打印机的纸张上，与在那里打印的完全相同：从打印机可达的左上角起按实际尺寸打印（灰色：无法到达的边缘），长单据打印在更多张纸上，超出纸张边缘的部分会被切掉。选择打印机只会改变预览；每台打印机的纸张在“打印机”中设置。
+na	无
+virtual_width_mm	虚拟宽度 (mm)
+virtual_length_mm	虚拟长度 (mm)
+reported_width_mm	上报宽度 (mm)
+reported_length_mm	上报长度 (mm)
+reported_paper	上报：{paper}
+virtual_paper	虚拟：{paper}
+printer_paper_help	“上报”是此打印机驱动程序所设置的纸张；应用只读取它，“无”表示没有可询问的驱动程序。“虚拟”是您指明打印机里实际放着的纸张，单位为 mm；长度留空即为卷纸。打印机在它自己的纸张上打印；虚拟纸张告诉应用其中有多少是真正的纸，用于预览、页面长度和单据的位置。“查找打印机”会填入空白的虚拟纸张，且绝不更改您已设置的纸张。
+preview_help	此单据与在下方所选打印机上打印的完全相同，按实际尺寸显示在其虚拟纸张上。白色是打印的位置，灰色纸张是打印机无法到达的地方，变淡的墨迹会被切掉。九个方格就是纸张：点按单据应放的位置。长单据会接续到更多页。选择打印机只会改变预览。
 slip_col_start	开头间距 (px)
 slip_col_end	结尾间距 (px)
 slip_columns_help	每列的宽度已包含其开头和结尾间距。文字在所属列内换行；超出内容宽度的部分，在纸上和预览中都会被裁掉。
@@ -88,6 +94,12 @@ bill_item_piece_off	关
 bill_total_qty	总数量
 bill_total_subtotal	小计
 bill_total_grand	总计
+bill_total_number_under	数字放在此列下
+bill_total_caption_under	标签放在此列下
+bill_total_own_line	单独一行
+bill_total_caption_with	与数字一起
+bill_total_caption_none	不印标签
+bill_total_place_help	“单独一行”会单独打印此合计。放在某列下方时，其数字会按本行的大小和粗细打印在该商品列内；各合计共用同一排，直到某列已被占用，才另起新排。标签可与数字一起、放在另一列下方，或不打印。税金、服务费、舍入和付款等行会跟随“小计”。
 kot_unassigned	未分配
 settings_hub_help	一次打开一个区域——少滚动，选项更清楚。
 settings_sec_language	语言与货币
@@ -551,11 +563,11 @@ currency_use_help	滚动并为任何支持的货币点击使用。
 day_close_help	记录日结会将此汇总（及盘点差异）保存到审计日志。不会停止销售。
 expenses_word	费用
 feature_access_help	所选员工的功能权限（添加后点击）
-fresh_book_kirano	打印机
+fresh_book_kirano	从头开始 = 空目录（稍后添加商品）。账本 = 在下方填写期初库存和谁欠你的钱。
 fresh_selected	已选Fresh — 目录保持为空。准备好后点击Done。
 gross_word	毛额
 how_start	您想如何开始？
-later_country_pack	打印机
+later_country_pack	稍后：设置 → 应用国家包，以使用当地的税和付款名称。
 local_badge	本地
 mix_type_hint_kirano	需要时可拆分到现金/UPI/银行卡/赊账。赊账需要在上方选择顾客。
 money_in_sales	收入（销售）
@@ -676,7 +688,7 @@ book_kind_today	今日账本
 book_kind_month	本月账本
 book_kind_aging	未结 / 借贷
 book_kind_balance	资产负债表
-order_help	选择一个未结订单，或选择桌台开始新订单。点选就绪菜品，发送 KOT，为一个或多个菜品结账，拆分账单并完成付款。
+order_help	点按一项即可添加。
 categories_help	分类显示一道菜属于菜单的哪一部分 — 如小吃、主菜或印度香饭。按您的方式创建分类：选择我们建议的名称、重命名或添加您自己的。
 dish_search_ph	搜索项目或短代码...
 sizes_as_items_ph	规格作为独立菜品（可选）— 半份=120, 整份=200
@@ -723,6 +735,20 @@ fssai_ph	FSSAI / 商店许可证号（选修的）
 bill_footer_ph	页脚（如：谢谢，欢迎再来）
 kot_field_on	显示
 kot_field_off	隐藏
+kot_field_show	显示
+kot_field_hide	隐藏
+bill_line_shop	店铺
+bill_line_address	地址
+bill_line_fssai	FSSAI
+bill_line_title	标题
+bill_line_customer	顾客
+bill_line_bill_no	账单号
+bill_line_time	时间
+bill_line_cashier	收银员
+bill_line_items	项目
+bill_line_total	总计
+bill_line_footer	页脚
+bill_line_upi	UPI
 kot_weight_light	细
 bill_kot_panel_help	票据布局和内容宽度。收银员负责开具或结算账单——完整的销售故事保留在书中。
 std_size_ph	例如 18, 20, 26…
@@ -830,10 +856,10 @@ lane_declared_label	税务发票
 lane_owner_label	现金小票
 money_lane_bill	账单：{lane}
 
-removing	Removing…
-removed	Removed
-updating_order	Updating…
-order_updated	Order updated
+removing	正在移除…
+removed	已移除
+updating_order	正在更新…
+order_updated	订单已更新
 sel_copy	复制
 sel_select_all	全选
 sel_copied	已复制

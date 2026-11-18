@@ -127,7 +127,7 @@ origin_name_ph	Anaran'ny mpandefa
 origin_phone_ph	Telefaonina mpandefa
 origin_address_ph	Adiresy alaina / fiaviana
 booking_consignor_heading	Consignor (mpanjifa / mpandefa)
-booking_consignee_heading	Consignee (receiver)
+booking_consignee_heading	Mpandray
 booking_consignor_hint	Mifidiana fety hofenoina, na avelao ho banga mba hidirana. Ilaina ny maka an-trano sy RTO.
 booking_consignee_hint	Mpandray ny entana. Avelao ho banga ho an'ny fidirana amin'ny kaontinanta.
 weight_kg_ph	Tena kg
@@ -192,7 +192,7 @@ snack_secs_save	Tehirizo ny fotoana fanairana
 snack_secs_saved	Fotoana fampandrenesana voavonjy — {n} segondra
 snack_secs_bad	Ampidiro segondra ho isa (3–60)
 cancelled	Natoana
-cancelling	Cancelling…
+cancelling	Cancellingâ¦
 cancel	Ajanony
 opening_client	Manokatra mpanjifa…
 preparing_desk	Manomana birao…
@@ -260,7 +260,7 @@ unmark	Esory ny marika
 role_both	Samy
 role_carrier	mpitatitra
 role_cashier	Mpahangy vola
-role_consignor	Consignor
+role_consignor	Mpandefa
 role_manager	Mpitantana
 role_supplier	Mpamatsy
 branch_name_sell_ph	Anaran'ny sampana hivarotana
@@ -323,7 +323,7 @@ dispatch_to_rider	Dispatch namandrika → mpitaingina
 docket_charge_ph	Fanomezana docket
 declared_value_ph	Nambara ny sanda
 contents_ph	Hevitra ato Anatiny
-eway_ph	E-way bill no.
+eway_ph	Laharana E-way bill
 insurance_label	MPIANTOKA
 yes_label	ENY
 no_label	tsy misy
@@ -352,16 +352,16 @@ item_name	Anaran'ny entana
 load_bulk_row	Ampidiro ny laharana betsaka → birao
 login_id_ph	Anaran'ny mpampiasa
 mark_delivered	Naterina i Mark
-manifest_cod_total	COD total
+manifest_cod_total	Totalin'ny COD
 manifest_received_by	Noraisin'ny
-manifest_sign	Sign
+manifest_sign	Sonia
 ndr_address_wrong	Diso adiresy
 ndr_customer_unavailable	Tsy misy
 ndr_door_locked	Voahidy ny varavarana
 ndr_other	hafa
 ndr_refused	Tsy nety
 out_for_delivery	Mivoaka ho livraison
-print_drs	Print DRS
+print_drs	Atontay ny DRS
 print_run_sheet	Soraty ny taratasy fandefasana
 reattempt	Andrana indray
 rider_cod_handed_ph	COD natolotra
@@ -501,13 +501,18 @@ job_size	Haben'ny soratra
 job_size_ph	oh: 18, 20, 26…
 test_receipt_format	Taratasy fanamarinana
 test_label_format	Label fitsapana
-paper_heading	Taratasy
+paper_heading	Taratasy virtoaly
 paper_size	{w} × {h} mm
 paper_roll	horonana {w} mm
 paper_not_set	tsy fantatra mbola ny taratasy
-paper_length_mm	Halavana (mm)
-printer_paper_help	Ny taratasin'ity mpanonta ity amin'ny mm. Horonana ny Halavana banga: mitovy halava amin'ny votoatiny ny tapakila tsirairay. Ny Mitadiava milina fanontam-pirinty dia mameno ny taratasy banga avy amin'ny mpitondra ny mpanonta (horonana 80 mm raha tsy afaka milaza izy) ary tsy manova mihitsy izay efa voapetraka.
-preview_help	Ity tapakila ity eo amin'ny taratasin'ny mpanonta voafidy etsy ambany, toy ny hanontana azy any: habe tena izy manomboka amin'ny zoro ambony havia tratran'ny mpanonta (volondavenona: sisiny tsy tratrany), tapakila lava amin'ny pejy maromaro kokoa, tapahina izay mihoatra ny sisin'ny taratasy. Ny fisafidianana mpanonta dia manova ny topi-maso ihany; apetraka ao amin'ny Mpanonta ny taratasin'ny mpanonta tsirairay.
+virtual_width_mm	Sakany virtoaly (mm)
+virtual_length_mm	Halavana virtoaly (mm)
+reported_width_mm	Sakany notaterina (mm)
+reported_length_mm	Halavana notaterina (mm)
+reported_paper	Notaterina: {paper}
+virtual_paper	Virtoaly: {paper}
+printer_paper_help	Ny notaterina dia ny taratasy nametrahana ny mpitondra an'ity mpanonta ity; vakin'ny fampiharana fotsiny izany, ary ny N/A dia midika fa tsy misy mpitondra azo anontaniana. Ny virtoaly dia ny taratasy lazainao fa tena ao amin'ny mpanonta, amin'ny mm; horonana ny halavana banga. Manonta amin'ny taratasiny manokana ny mpanonta; ny taratasy virtoaly dia milaza amin'ny fampiharana hoe firy amin'izany no tena taratasy, ho an'ny topi-maso, ny halavan'ny pejy ary ny toeran'ny tapakila. Ny Mitadiava milina fanontam-pirinty dia mameno taratasy virtoaly banga ary tsy manova mihitsy izay efa napetrakao.
+preview_help	Ity tapakila ity araka ny fanontana azy amin'ny mpanonta voafidy eto ambany, amin'ny tena habeny eo amin'ny taratasiny virtoaly. Ny fotsy no toerana anontana, ny taratasy volondavenona tsy tratran'ny mpanonta, ary tapahina ny ranomainty matroka. Ny efajoro sivy no taratasy: tsindrio ny toerana tokony hisy ny tapakila. Mitohy amin'ny pejy hafa ny tapakila lava. Ny fisafidianana mpanonta dia manova ny topi-maso ihany.
 slip_col_width	Sakany (mm)
 no_printer_assigned	Tsy misy milina fanontam-pirinty
 printer_target_default	Mpanonta mahazatra amin'ity solosaina ity (adiresy foana)
@@ -597,7 +602,7 @@ caption_outstanding	FANDOAVAM-BOLA TSY VOALOA
 caption_bank	BANKY
 paid_by	Vita ny fandoavana
 second_way	Fomba faharoa
-weight_in	Weight in
+weight_in	Lanja amin'ny
 size_in	Habe in
 goods_received	Entana voaray
 expense_heading	Fandaniana
@@ -609,7 +614,7 @@ pay_selected_heading	Vola hofidina (hanefana trosa / haka vola mialoha)
 write_off_heading	Esory (fafao tsy misy fandoavana)
 pay_ap_heading	Aloavy izay misy trosa amin'izy ireo (AP)
 country_tax	Firenena sy hetra
-extra_tills_heading	Fivarotana fanampiny
+extra_tills_heading	Kesy fanampiny
 other_devices_help_heading	Manomàna fitaovana hafa
 other_devices_help	Amin'ity fitaovana ity (Server): Fitaovana hafa → Avelao ny famafazana fanampiny. Mariho ny kaody fampiarahana sy ny adiresy Wi‑Fi. Tsindrio Avelao ny fitaovana hafa hifandray raha toa ka miseho izany. Eo amin'ny solosaina iray, tsindrio Atombohy amin'ity solosaina ity. Amin'ny fitaovana tsirairay: apetraho ny fampiharana, safidio ny Client Mode, Tadiavo ny lohamilina amin'ny fivarotana (na soraty ny adiresy), ampidiro ny kaody fampiarahana, Ampifanaraho izao. Miandry eo amin'ny fitaovana ny baiko raha latsaka ny Wi‑Fi ary mandeha rehefa mamaly indray ny Server.
 your_brand	Ny marikao (ao anaty app)
@@ -621,7 +626,7 @@ bank_reconciliation	Fifanarahana amin'ny banky
 book_add_product	Boky — ampio ny vokatra / sarany
 book_opening_credit	Boky — trosa fanombohana
 account_kind	Karazana kaonty (tsindrio iray)
-active_ledger	Active ledger
+active_ledger	Bokim-bola miasa
 actual_total_cap	TOTALY TENA
 amend_help	Mifidiana varotra hanovana, hanafoana, na hahazoana famerenam-bola. Ny fanovana dia mitahiry ny tantara feno. Ny Totaly Nofotorana dia manomboka mitovy amin'ny Applied — ovay fotsiny raha tiana ho potipoti-javatra. Ny fanafoanana sy ny famerenam-bola dia mety mitaky Tompony na Mpitantana PIN (nosoratana etsy ambony; voarakitra miaraka amin'ny anaranao).
 applied_total_cap	TOTALY NATAO
@@ -742,7 +747,7 @@ run_word	Mpitaingina mihazakazaka
 parcels_fmt	Ireo singa mifandraika amin'ny {n}
 parcel_history	FIAINANY TALOHA
 attempt_fmt	Andrana {n}
-pieces_short_fmt	{n} pcs
+pieces_short_fmt	{n} isa
 note_reason_ph	Fanamarihana na antony
 ops_pick_first	Safidio aloha ny parcels - tsindrio azy ireo na diniho
 cod_to_collect	Naterina - COD mba hanangona
@@ -766,7 +771,7 @@ amount_owed_ph	Vola tokony haloany
 amount_ph	Vola
 amount_received_ph	Vola azonay
 amount_we_pay_ph	Vola aloa
-awb_scan_ph	AWB / scan barcode
+awb_scan_ph	AWB / skaneo ny kaody bara
 bulk_csv_ph	CSV be dia be — toerana, consignee, kg, cod_paise, fanamarihana
 business_name_ph	Anaran'ny orinasa
 category_new_ph	Sokajy (tsy voatery, noforonina raha vaovao)

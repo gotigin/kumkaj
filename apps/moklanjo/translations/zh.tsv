@@ -192,7 +192,7 @@ snack_secs_save	保存提示时长
 snack_secs_saved	提示时长已保存——{n} 秒
 snack_secs_bad	请输入秒数（3–60）
 cancelled	已取消
-cancelling	Cancelling…
+cancelling	Cancellingâ¦
 cancel	取消
 opening_client	正在打开客户端…
 preparing_desk	正在准备桌面…
@@ -501,13 +501,18 @@ job_size	字号
 job_size_ph	例如 18, 20, 26…
 test_receipt_format	测试收据
 test_label_format	测试标签
-paper_heading	纸张
+paper_heading	虚拟纸张
 paper_size	{w} × {h} mm
 paper_roll	{w} mm 卷纸
 paper_not_set	纸张尚未得知
-paper_length_mm	长度 (mm)
-printer_paper_help	此打印机的纸张（mm）。长度留空即为卷纸：每张单据与其内容一样长。“查找打印机”会从打印机驱动程序填入空白纸张（无法得知时为 80 mm 卷纸），且绝不更改已设置的纸张。
-preview_help	此单据在下方所选打印机的纸张上，与在那里打印的完全相同：从打印机可达的左上角起按实际尺寸打印（灰色：无法到达的边缘），长单据打印在更多张纸上，超出纸张边缘的部分会被切掉。选择打印机只会改变预览；每台打印机的纸张在“打印机”中设置。
+virtual_width_mm	虚拟宽度 (mm)
+virtual_length_mm	虚拟长度 (mm)
+reported_width_mm	上报宽度 (mm)
+reported_length_mm	上报长度 (mm)
+reported_paper	上报：{paper}
+virtual_paper	虚拟：{paper}
+printer_paper_help	“上报”是此打印机驱动程序所设置的纸张；应用只读取它，“无”表示没有可询问的驱动程序。“虚拟”是您指明打印机里实际放着的纸张，单位为 mm；长度留空即为卷纸。打印机在它自己的纸张上打印；虚拟纸张告诉应用其中有多少是真正的纸，用于预览、页面长度和单据的位置。“查找打印机”会填入空白的虚拟纸张，且绝不更改您已设置的纸张。
+preview_help	此单据与在下方所选打印机上打印的完全相同，按实际尺寸显示在其虚拟纸张上。白色是打印的位置，灰色纸张是打印机无法到达的地方，变淡的墨迹会被切掉。九个方格就是纸张：点按单据应放的位置。长单据会接续到更多页。选择打印机只会改变预览。
 slip_col_width	宽度 (mm)
 no_printer_assigned	无打印机
 printer_target_default	默认打印机
@@ -643,11 +648,11 @@ day_close_help	记录日结会将此汇总（及盘点差异）保存到审计�
 expenses_word	费用
 feature_access_help	所选员工的功能权限（添加后再点）
 footer_local	本地SQLite · 永久免费 · 零云端
-fresh_book_moklanjo	打印机
+fresh_book_moklanjo	从头开始 = 空目录（稍后添加商品）。账本 = 在下方填写期初库存和谁欠你的钱。
 fresh_selected	已选Fresh — 目录保持为空。准备好后点击Done。
 gross_word	毛额
 how_start	您想如何开始？
-later_country_pack	打印机
+later_country_pack	稍后：设置 → 应用国家包，以使用当地的税和付款名称。
 local_badge	本地
 measures_help_moklanjo	柜台如何测量包裹。用你使用的单位填写尺寸和重量 — 标准（cm、m、in、ft · kg、g、lb、oz）或与上方cm/kg关联的自有单位（直接或通过其他单位）。账本始终记录为kg。字段留空则保留。
 mix_type_hint_moklanjo	填写每种方式的金额（现金/UPI/银行卡/赊账）。必须与账单相等。赊账需要在上方选择顾客。

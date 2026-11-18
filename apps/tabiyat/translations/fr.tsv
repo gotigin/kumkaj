@@ -79,13 +79,19 @@ bill_item_amount	Montant
 bill_item_note	Note Rx / de vente
 bill_item_col_sep	Filets de colonne
 slip_col_width	Largeur (mm)
-paper_heading	Papier
+paper_heading	Papier virtuel
 paper_size	{w} × {h} mm
 paper_roll	rouleau de {w} mm
 paper_not_set	papier encore inconnu
-paper_length_mm	Longueur (mm)
-printer_paper_help	Le papier de cette imprimante en mm. Une Longueur vide est un rouleau : chaque ticket est aussi long que son contenu. Rechercher des imprimantes remplit un papier vide d'après le pilote de l'imprimante (un rouleau de 80 mm s'il ne peut pas le dire) et ne change jamais un papier déjà défini.
-preview_help	Ce ticket sur le papier de l'imprimante choisie ci-dessous, tel qu'il s'y imprime : en taille réelle depuis le coin supérieur gauche que l'imprimante atteint (gris : bords qu'elle n'atteint pas), un long ticket sur plusieurs feuilles, tout ce qui dépasse le bord du papier est coupé. Choisir une imprimante ne change que l'aperçu ; le papier de chaque imprimante se règle dans Imprimantes.
+na	N/D
+virtual_width_mm	Largeur virtuelle (mm)
+virtual_length_mm	Longueur virtuelle (mm)
+reported_width_mm	Largeur déclarée (mm)
+reported_length_mm	Longueur déclarée (mm)
+reported_paper	Déclaré : {paper}
+virtual_paper	Virtuel : {paper}
+printer_paper_help	Déclaré est le papier sur lequel le pilote de cette imprimante est réglé ; l'app ne fait que le lire, et N/D signifie qu'il n'y a pas de pilote à interroger. Virtuel est le papier que vous dites être réellement dans l'imprimante, en mm ; une longueur vide est un rouleau. L'imprimante imprime sur son propre papier ; le papier virtuel indique à l'app quelle part en est du vrai papier, pour l'aperçu, la longueur de page et la place du ticket. Rechercher des imprimantes remplit un papier virtuel vide et ne modifie jamais celui que vous avez défini.
+preview_help	Ce ticket tel qu'il s'imprime sur l'imprimante choisie ci-dessous, en taille réelle sur son papier virtuel. Le blanc est là où elle imprime, le papier gris est hors de portée de l'imprimante, et l'encre estompée est coupée. Les neuf cases sont le papier : touchez l'endroit où le ticket doit se placer. Un long ticket continue sur d'autres pages. Choisir une imprimante ne change que l'aperçu.
 slip_col_start	Espace de début (px)
 slip_col_end	Espace de fin (px)
 slip_columns_help	La largeur de chaque colonne comprend son espace de début et de fin. Le texte passe à la ligne dans sa colonne ; ce qui dépasse la largeur du contenu est coupé, sur papier comme dans l’aperçu.
@@ -100,6 +106,12 @@ bill_item_piece_off	Non
 bill_total_qty	Qté totale
 bill_total_subtotal	Sous-total
 bill_total_grand	Total
+bill_total_number_under	Nombre sous
+bill_total_caption_under	Libellé sous
+bill_total_own_line	Ligne à part
+bill_total_caption_with	Avec le nombre
+bill_total_caption_none	Sans libellé
+bill_total_place_help	Ligne à part imprime ce total tout seul. Sous une colonne, son nombre s'imprime dans cette colonne d'articles, à la taille et à la graisse de cette ligne ; les totaux partagent une rangée jusqu'à ce qu'une colonne soit prise, puis une nouvelle rangée commence. Le libellé va avec le nombre, sous une autre colonne, ou n'est pas imprimé. Les lignes de taxe, de service, d'arrondi et de paiement suivent Sous-total.
 kot_unassigned	Non affecté
 settings_hub_help	Ouvrez une zone à la fois — moins de défilement, des choix plus clairs.
 settings_sec_language	Langue et devise
@@ -200,7 +212,7 @@ this_shop	Mode serveur
 extra_till	Mode client
 off	Non
 server	Serveur
-client	Client
+client	Mode client
 language_currency	Langue et devise
 language	Langue
 language_setup_hint	Suivez la langue de cet appareil, ou choisissez-en une vous-même.
@@ -447,7 +459,7 @@ vp_delivery_spooler	Document OS (spouleur système)
 vp_delivery_escpos	Commandes thermiques ESC/POS
 virtual_printer_new	Nouvelle imprimante virtuelle
 virtual_printer_selected	Modification de « {name} » — touchez une autre dans la liste pour changer
-config_layout_portrait	Portrait
+config_layout_portrait	Standard portrait
 config_layout_landscape	Paysage
 config_send_os	Spouleur système
 config_send_escpos	ESC/POS
@@ -563,11 +575,11 @@ currency_use_help	Faites défiler et touchez Utiliser pour toute devise prise en
 day_close_help	Enregistrer une clôture du jour sauvegarde ce résumé (et l'écart de caisse si compté) dans le journal d'audit. Cela n'arrête pas les ventes.
 expenses_word	Dépenses
 feature_access_help	Accès aux fonctions du personnel sélectionné (touchez après l'ajout)
-fresh_book_tabiyat	Imprimantes
+fresh_book_tabiyat	À neuf = catalogue vide (ajoutez les articles plus tard). Livre = saisissez ci-dessous le stock d'ouverture et qui vous doit.
 fresh_selected	Fresh choisi — le catalogue reste vide. Touchez Done quand vous êtes prêt.
 gross_word	Brut
 how_start	Comment voulez-vous commencer ?
-later_country_pack	Imprimantes
+later_country_pack	Plus tard : Réglages → appliquez votre pack pays pour les libellés de taxe et de paiement.
 local_badge	LOCAL
 mix_type_hint_tabiyat	Partagez entre espèces / UPI / carte / crédit si besoin. Le crédit nécessite un client ci-dessus.
 money_in_sales	Argent entrant (ventes)
@@ -654,7 +666,7 @@ amount_ph	Montant
 amount_received_ph	Montant reçu
 amount_we_pay_ph	Montant que nous payons
 business_name_ph	Nom de l'entreprise
-code_bag_ph	Code (bag)
+code_bag_ph	Code (sac)
 conv_factor_ph	Facteur (25 = 1 bag → 25 kg)
 country_code_ph	Code pays ex. IN, GB, US, AE, BR
 credit_khata_amount_ph	Montant crédit / compte
@@ -688,7 +700,7 @@ book_kind_today	Livre du jour
 book_kind_month	Livre de ce mois
 book_kind_aging	En suspens / débit-crédit
 book_kind_balance	Bilan
-order_help	Choisissez une commande ouverte ou une table pour en démarrer une nouvelle. Touchez les articles prêts, envoyez le KOT, facturez un ou plusieurs articles, partagez l'addition et encaissez.
+order_help	Touchez un article pour l'ajouter.
 categories_help	Une catégorie indique à quelle partie du menu appartient un plat — snacks, plat principal ou biryani. Créez vos catégories : choisissez nos noms, renommez-les ou ajoutez les vôtres.
 dish_search_ph	Chercher nom, sel ou code-barres…
 sizes_as_items_ph	Tailles en articles séparés (facultatif) — Demi=120, Entier=200
@@ -735,6 +747,20 @@ fssai_ph	N° de licence de pharmacie (facultatif — votre texte)
 bill_footer_ph	Pied (ex. Merci, à bientôt)
 kot_field_on	afficher
 kot_field_off	masquer
+kot_field_show	Afficher
+kot_field_hide	Masquer
+bill_line_shop	Boutique
+bill_line_address	Adresse
+bill_line_fssai	FSSAI
+bill_line_title	Titre
+bill_line_customer	Client
+bill_line_bill_no	N° d'addition
+bill_line_time	Heure
+bill_line_cashier	Caissier
+bill_line_items	Articles
+bill_line_total	Total
+bill_line_footer	Pied
+bill_line_upi	UPI
 kot_weight_light	Fine
 bill_kot_panel_help	Mise en page de l'addition et largeur du contenu. Le caissier est celui qui a établi ou encaissé l'addition — tout l'historique de la vente reste dans les livres.
 std_size_ph	ex. 18, 20, 26…
@@ -842,10 +868,10 @@ lane_declared_label	Facture fiscale
 lane_owner_label	Note de caisse
 money_lane_bill	Facture : {lane}
 
-removing	Removing…
-removed	Removed
-updating_order	Updating…
-order_updated	Order updated
+removing	Retrait…
+removed	Retiré
+updating_order	Mise à jour…
+order_updated	Commande mise à jour
 sel_copy	Copier
 sel_select_all	Tout sélectionner
 sel_copied	Copié

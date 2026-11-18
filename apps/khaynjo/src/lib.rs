@@ -29,6 +29,13 @@ pub mod privacy_policy;
 pub mod precise;
 pub mod os_paper;
 pub mod print_share;
+// The Windows print API, called directly (no helper process). Its plain
+// arithmetic is tested on every system.
+#[cfg(any(target_os = "windows", test))]
+pub mod print_win;
+// An OS-document job as one PDF for CUPS.
+#[cfg(any(target_os = "linux", target_os = "macos", test))]
+pub mod slip_pdf;
 #[cfg(target_os = "android")]
 pub mod print_android;
 pub mod print_bt;

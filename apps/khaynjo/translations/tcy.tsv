@@ -36,7 +36,7 @@ add_item	ಐಟಂ ಸೇರಾಲೆ
 new_item	ಪೊಸ ಐಟಂ
 adding_item	ಒಂಜಿ ಪೊಸ ಐಟಂನ್ ಸೇರಾವುನ
 editing_item	ಸಂಪಾದನೆ
-save	ಉಳಿತಾಯ ಮಲ್ಪುಲೆ
+save	ಸೇವ್ ಮಲ್ಪುಲೆ
 remove	ದೆತ್ತ್ ಪಾಡ್ಲೆ
 removed_items	ದೆತ್ತ್ ಪಾಡ್ದಿನ ಐಟಂಲು
 removed_help	ಪುನಃಸ್ಥಾಪನೆ ಐಟಂನ್ ಮೆನುಡ್ ನಿಖರವಾದ್ ದಾದ ಇತ್ತ್ಂಡ್ ಪನ್ಪಿನೆನ್ ಪಾಡುಂಡು - ಬೆಲೆ, ಫೋಟೋ ಬೊಕ್ಕ ವಿಭಾಗ. ಎಂಕಲ್ನ ಪಾತ್ರೆಲೆನ ಶೆಲ್ಫ್ ನ್ ಏಪಲಾ ದೆತ್ತ್ ಪಾಡುಜೆರ್, ಅಂಚಾದ್ ಒಂಜಿ ಪಾತ್ರೆನ್ ಯಾಪಲ ಪುನರ್ ಸೇರಾವೊಲಿ.
@@ -101,6 +101,19 @@ bill_item_col_sep	ಕಾಲಮ್ ನಿಯಮೊಲು
 slip_columns	ಕಾಲಮ್‌ಲು
 slip_col_header	ಶೀರ್ಷಿಕೆ
 bill_line_logo	ಲೋಗೋ
+bill_line_shop	ಅಂಗಡಿ
+bill_line_address	ವಿಳಾಸ
+bill_line_fssai	FSSAI
+bill_line_title	ಶೀರ್ಷಿಕೆ
+bill_line_customer	ಗ್ರಾಹಕೆರ್
+bill_line_bill_no	ಬಿಲ್ ಸಂಖ್ಯೆ
+bill_line_time	ಸಮಯ
+bill_line_cashier	ಕ್ಯಾಷಿಯರ್
+bill_line_table	ಊಟದ ಮೇಜಿ
+bill_line_items	ಐಟಂಲು
+bill_line_total	ಒಟ್ಟು
+bill_line_footer	ಅಡಿಟಿಪ್ಪಣಿ
+bill_line_upi	UPI
 bill_logo_picture	ಪಟೊ
 bill_logo_choose	ಪಟೊ ಆಯ್ಕೆ ಮಲ್ಪುಲೆ
 bill_logo_remove	ಪಟೊ ದೆಪ್ಪುಲೆ
@@ -128,6 +141,12 @@ bill_item_piece_off	ಆಫ್
 bill_total_qty	ಒಟ್ಟು ಪ್ರಮಾಣ
 bill_total_subtotal	ಉಪ ಒಟ್ಟು
 bill_total_grand	ಗ್ರ್ಯಾಂಡ್ ಒಟ್ಟು
+bill_total_number_under	ಸಂಖ್ಯೆ ಇಂದೆತ ತಿರ್ತ್
+bill_total_caption_under	ಲೇಬಲ್ ಇಂದೆತ ತಿರ್ತ್
+bill_total_own_line	ಸ್ವಂತ ಲೈನ್
+bill_total_caption_with	ಸಂಖ್ಯೆದ ಒಟ್ಟುಗು
+bill_total_caption_none	ಲೇಬಲ್ ಇಜ್ಜಿ
+bill_total_place_help	“ಸ್ವಂತ ಲೈನ್” ಈ ಒಟ್ಟುನು ಬೇತೆನೇ ಮುದ್ರಣ ಮಲ್ಪುಂಡು. ಕಾಲಮ್‌ದ ತಿರ್ತ್ ಇತ್ತ್ಂಡ ಅಯಿತ ಸಂಖ್ಯೆ ಆ ಐಟಂ ಕಾಲಮ್‌ಡ್, ಈ ಲೈನ್‌ದ ಗಾತ್ರ ಬುಕ್ಕ ದಪ್ಪೊಡು ಮುದ್ರಣ ಆಪುಂಡು; ಒಂಜಿ ಕಾಲಮ್ ದಿಂಜುನ ಮುಟ್ಟ ಒಟ್ಟುಲು ಒಂಜೇ ಸಾಲ್‌ನ್ ಪಟ್ಟೊನುವ, ಬೊಕ್ಕ ಪೊಸ ಸಾಲ್ ಸುರು ಆಪುಂಡು. ಲೇಬಲ್ ಸಂಖ್ಯೆದ ಒಟ್ಟುಗು, ಬೇತೆ ಕಾಲಮ್‌ದ ತಿರ್ತ್ ಪೋಪುಂಡು, ಇಜ್ಜಿಂಡ ಬುಡ್ಪುನ. ತೆರಿಗೆ, ಸೇವೆ, ರೌಂಡಿಂಗ್ ಬುಕ್ಕ ಪಾವತಿದ ಲೈನ್‌ಲು “ಉಪ ಒಟ್ಟು” ನ್ ಅನುಸರಿಸುವ.
 reprint_incl	ಮುದ್ರಣೊಡು
 reprint_skip	ಬುಡ್ಲೆ
 reprint_skip_meta	ರಿಕವರಿ ಪ್ರಿಂಟ್ ನ್ ಬುಡ್ಲೆ
@@ -178,20 +197,20 @@ snack_secs_ph	ಸೆಕೆಂಡ್ ಲು (3–60, ಡಿಫಾಲ್ಟ್ 10)
 snack_secs_save	ಎಚ್ಚರಿಕೆದ ಸಮಯೊನು ಉಳಿತಾಯ ಮಲ್ಪುಲೆ
 snack_secs_saved	ಎಚ್ಚರಿಕೆದ ಸಮಯ ಉಳಿತಾಯ ಆತ್ಂಡ್ — {n} ಸೆಕೆಂಡ್ ಲು
 settings_sec_whatsapp	WhatsApp
-whatsapp_cloud_help	Use your own Meta WhatsApp Cloud API. Create a System User token with whatsapp_business_messaging (temporary dashboard tokens expire). Credentials stay on this Server only — never on extra tills. Accepted means Meta took the request, not that the guest received it.
-whatsapp_phone_id_ph	Phone Number ID
-whatsapp_token_ph	Access Token (leave blank to keep)
-whatsapp_template_ph	Bill template name (optional)
-whatsapp_template_lang_ph	Template language (e.g. en)
-whatsapp_enable	Enable
+whatsapp_cloud_help	ನಿಕ್ಲೆನ ಸ್ವಂತ Meta WhatsApp Cloud API ಗಲಸ್‌ಲೆ. whatsapp_business_messaging ಉಪ್ಪುನ System User ಟೋಕನ್ ಮಲ್ಪುಲೆ (ಡ್ಯಾಶ್‌ಬೋರ್ಡ್‌ದ ತಾತ್ಕಾಲಿಕ ಟೋಕನ್‌ಲೆನ ಅವಧಿ ಮುಗಿಪುಂಡು). ಈ ವಿವರೊಲು ಈ ಸರ್ವರ್‌ಡ್ ಮಾತ್ರ ಉಪ್ಪುಂಡು — ಎಕ್ಸ್ ಟ್ರಾ ಟಿಲ್ಸ್‌ಡ್ ಏಪಲಾ ಇಜ್ಜಿ. “ಸ್ವೀಕಾರ ಆಂಡ್” ಪಂಡ Meta ವಿನಂತಿನ್ ದೆತೊಂಡುಂಡು ಪಂದ್ ಅರ್ಥ, ಅತಿಥಿಗ್ ಸಂದೇಶ ತಿಕ್ಕ್ಂಡ್ ಪಂದ್ ಅತ್ತ್.
+whatsapp_phone_id_ph	ಫೋನ್ ನಂಬರ್ ID
+whatsapp_token_ph	ಆಕ್ಸೆಸ್ ಟೋಕನ್ (ಅವೆನೇ ದೀಪೆರೆ ಖಾಲಿ ಬುಡ್ಲೆ)
+whatsapp_template_ph	ಬಿಲ್ ಟೆಂಪ್ಲೇಟ್‌ದ ಪುದರ್ (ಐಚ್ಛಿಕ)
+whatsapp_template_lang_ph	ಟೆಂಪ್ಲೇಟ್‌ದ ಬಾಸೆ (ಉದಾ. en)
+whatsapp_enable	ಆನ್ ಮಲ್ಪುಲೆ
 whatsapp_disable	Off
-whatsapp_save	Save WhatsApp
-whatsapp_test	Test connection
-whatsapp_disconnect	Disconnect
-whatsapp_send_bill	Send via WhatsApp
-whatsapp_consent	WhatsApp OK
-whatsapp_consent_help	Guest agreed to receive WhatsApp messages. A phone number alone is not consent.
-whatsapp_server_only	Configure WhatsApp on the shop Server device
+whatsapp_save	WhatsApp ಸೇವ್ ಮಲ್ಪುಲೆ
+whatsapp_test	ಕನೆಕ್ಷನ್ ಪರೀಕ್ಷೆ ಮಲ್ಪುಲೆ
+whatsapp_disconnect	ಕನೆಕ್ಷನ್ ದೆಪ್ಪುಲೆ
+whatsapp_send_bill	WhatsApp ಮೂಲಕ ಕಡಪುಡುಲೆ
+whatsapp_consent	WhatsApp ಸರಿ
+whatsapp_consent_help	ಅತಿಥಿ WhatsApp ಸಂದೇಶೊಲೆನ್ ಪಡೆಯೆರೆ ಒಪ್ಪಿಗೆ ಕೊರ್ತೆರ್. ಫೋನ್ ನಂಬರ್ ಮಾತ್ರ ಉಪ್ಪುನವು ಒಪ್ಪಿಗೆ ಅತ್ತ್.
+whatsapp_server_only	ಅಂಗಡಿದ ಸರ್ವರ್ ಸಾಧನೊಡು WhatsApp ಸೆಟ್ ಮಲ್ಪುಲೆ
 settings_sec_backup	ಬ್ಯಾಕಪ್ ಬೊಕ್ಕ ಪುನಃಸ್ಥಾಪನೆ
 settings_sec_diag	ರೋಗನಿರ್ಣಯ
 settings_sec_privacy	ಗೌಪ್ಯತೆ
@@ -574,7 +593,7 @@ rollup	ರೋಲ್-ಅಪ್
 save_brand	ಬ್ರಾಂಡ್ ನ್ ಉಳಿತಾಯ ಮಲ್ಪುಲೆ
 save_business_id	ವ್ಯವಹಾರದ ಐಡಿನ್ ಉಳಿತಾಯ ಮಲ್ಪುಲೆ
 save_business_name	ವ್ಯವಹಾರದ ಪುದರ್ ನ್ ಉಳಿತಾಯ ಮಲ್ಪುಲೆ
-save_features	ಉಳಿತಾಯ ಮಲ್ಪುಲೆ
+save_features	ಸೇವ್ ಮಲ್ಪುಲೆ
 save_features_named	{name} ಉಳಿತಾಯ ಮಲ್ಪುಲೆ
 save_features_ok	{name} ಗ್ ಸೆಟಪ್ ನ್ ಉಳಿತಾಯ ಮಲ್ತೆರ್
 save_names	ಪುದರ್ ಲೆನ್ ಉಳಿತಾಯ ಮಲ್ಪುಲೆ
@@ -637,7 +656,7 @@ choose_device_use	ಸರ್ವರ್ ಅತ್ತ್ಂಡ ಕ್ಲೈಂಟ್
 paired_note	ಜೋಡಿಯಾದ್. ಮಾರಾಟ ಮಲ್ಪೆರೆ ಅನ್ಲಾಕ್ ಮಲ್ಪುಲೆ, ಅತ್ತ್ಂಡ ಇತ್ತೆದ ಮಾಹಿತಿಗ್ ರಿಫ್ರೆಶ್ ಮಲ್ಪುಲೆ.
 last_update_at	ಕಡೆತ ಅಪ್ಡೇಟ್: {time}.
 pair_intro	ಸರ್ವರ್ ನ್ ತೂಲೆ, ಅತ್ತ್ಂಡ ಅಯಿತ ವಿಳಾಸ ಬೊಕ್ಕ ಜೋಡಿ ಕೋಡ್ ನ್ ಟೈಪ್ ಮಲ್ಪುಲೆ.
-pair_resume_hint	Already paired — enter your shop PIN, or Forget this shop to pair another.
+pair_resume_hint	ದುಂಬೇ ಜೋಡಿ ಆತ್ಂಡ್ — ನಿಕ್ಲೆನ ಅಂಗಡಿದ PIN ಪಾಡ್ಲೆ, ಅತ್ತಂಡ ಬೇತೆ ಅಂಗಡಿ ಜೋಡಿ ಮಲ್ಪೆರೆ “ಈ ಅಂಗಡಿನ್ ಮದಪುಲೆ” ಒತ್ತುಲೆ.
 queue_waiting	ಅಂಗಡಿಗ್ ಪೋಯೆರೆ ಕಾತೊಂದುಲ್ಲೆ ({n}):
 queue_tries	{n} ಸರ್ತಿ ಪ್ರಯತ್ನ ಮಲ್ತುವ · ಕಡೆತ ಉತ್ತರ: {e}
 save_backup_copy	ಒಂಜಿ ಬ್ಯಾಕಪ್ ಪ್ರತಿನ್ ಉಳಿತಾಯ ಮಲ್ಪುಲೆ...
@@ -754,13 +773,18 @@ station_vps_dd	ಈ ನಿಲ್ದಾಣೊಗು ಮುದ್ರಕೊಲು
 station_vps_dd_n	{n} ಮುದ್ರಕೊಲು · ಬದಲಾವಣೆ ಮಲ್ಪೆರೆ ಒತ್ತುಲೆ
 bill_printers_dd	ಬಿಲ್ ಗ್ ಮುದ್ರಕೊಲು
 bill_printers_dd_n	ಬಿಲ್ ಗ್ {n} ಮುದ್ರಕೊಲು · ಬದಲಾವಣೆ ಮಲ್ಪೆರೆ ಒತ್ತುಲೆ
-paper_heading	ಕಾಗದ
+paper_heading	ವರ್ಚುವಲ್ ಕಾಗದ
 paper_size	{w} × {h} mm
 paper_roll	{w} mm ರೋಲ್
 paper_not_set	ಕಾಗದ ಇಂಚಿಪ ಗೊತ್ತಿಜ್ಜಿ
-paper_length_mm	ಉದ್ದ (mm)
-printer_paper_help	ಈ ಮುದ್ರಕೊದ ಕಾಗದ mm ಡ್. ಖಾಲಿ ಉದ್ದ ಪಂಡ ರೋಲ್: ಪ್ರತಿ ಚೀಟಿ ಅಯಿತ ವಿಷಯೊದಷ್ಟೇ ಉದ್ದ. ಮುದ್ರಕೊಲೆನ್ ತೂಲೆ ಖಾಲಿ ಕಾಗದೊನು ಮುದ್ರಕೊದ ಡ್ರೈವರ್‌ಡ್ದ್ ಭರ್ತಿ ಮಲ್ಪುಂಡು (ಪಣರೆ ಆಪಂದಿನಲ್ಪ 80 mm ರೋಲ್) ಬುಕ್ಕ ದುಂಬೇ ದೀತಿನ ಕಾಗದೊನು ಒರಾಯಿಲಾ ಬದಲ್ ಮಲ್ಪುಜಿ.
-preview_help	ತಿರ್ತ್ ಆಯ್ಕೆ ಮಲ್ತಿನ ಮುದ್ರಕೊದ ಕಾಗದೊದ ಮಿತ್ತ್ ಈ ಚೀಟಿ, ಅಲ್ಪ ಮುದ್ರಣ ಆಪಿನ ಲೆಕ್ಕೊ: ಮುದ್ರಕ ಎತ್ತುನ ಮಿತ್ತ್‌ದ ಎಡತ ಮೂಲೆಡ್ದ್ ನಿಜ ಗಾತ್ರೊಡು (ಬೂದು: ಎತ್ತಂದಿನ ಅಂಚುಲು), ಉದ್ದ ಚೀಟಿ ಎಚ್ಚ ಹಾಳೆಲೆಡ್, ಕಾಗದೊದ ಅಂಚುಡ್ದ್ ಅಡೆಯಿತ್ತಿನವು ಮಾತಾ ಕತ್ತರಿಸಾವು. ಮುದ್ರಕ ಆಯ್ಕೆ ಮಲ್ತ್‌ಂಡ ಮುನ್ನೋಟ ಮಾತ್ರ ಬದಲಾಪುಂಡು; ಪ್ರತಿ ಮುದ್ರಕೊದ ಕಾಗದೊನು ಮುದ್ರಕೊಲು ಡ್ ದೀಪಿನಿ.
+virtual_width_mm	ವರ್ಚುವಲ್ ಅಗಲ (mm)
+virtual_length_mm	ವರ್ಚುವಲ್ ಉದ್ದ (mm)
+reported_width_mm	ವರದಿ ಆಯಿನ ಅಗಲ (mm)
+reported_length_mm	ವರದಿ ಆಯಿನ ಉದ್ದ (mm)
+reported_paper	ವರದಿ ಆಯಿನವು: {paper}
+virtual_paper	ವರ್ಚುವಲ್: {paper}
+printer_paper_help	ವರದಿ ಆಯಿನವು ಪಂಡ ಈ ಮುದ್ರಕೊದ ಡ್ರೈವರ್ ಸೆಟ್ ಆಯಿನ ಕಾಗದ; ಅಪ್ಲಿಕೇಶನ್ ಅವೆನ್ ಓದುನ ಮಾತ್ರ, ಬುಕ್ಕ “ಇಜ್ಜಿ” ಪಂಡ ಕೇನರೆ ಡ್ರೈವರ್ ಇಜ್ಜಿ ಪನ್ಪಿ ಅರ್ಥ. ವರ್ಚುವಲ್ ಪಂಡ ಮುದ್ರಕೊಡು ನಿಜವಾದ್ ಉಂಡು ಪಂದ್ ಈರ್ ಪನ್ಪಿ ಕಾಗದ, mm ಡ್; ಖಾಲಿ ಉದ್ದ ಪಂಡ ರೋಲ್. ಮುದ್ರಕ ಅಯಿತ ಸ್ವಂತ ಕಾಗದೊದ ಮಿತ್ತ್ ಮುದ್ರಣ ಮಲ್ಪುಂಡು; ವರ್ಚುವಲ್ ಕಾಗದ ಅಯಿಟ್ ಏತ್ ನಿಜ ಕಾಗದ ಪಂದ್ ಅಪ್ಲಿಕೇಶನ್ ಗ್ ಪನ್ಪುಂಡು, ಮುನ್ನೋಟ, ಪುಟೊದ ಉದ್ದ ಬುಕ್ಕ ಚೀಟಿದ ಜಾಗೆಗಾದ್. ಮುದ್ರಕೊಲೆನ್ ತೂಲೆ ಖಾಲಿ ವರ್ಚುವಲ್ ಕಾಗದೊನು ಭರ್ತಿ ಮಲ್ಪುಂಡು ಬುಕ್ಕ ಈರ್ ದೀತಿನ ಕಾಗದೊನು ಒರಾಯಿಲಾ ಬದಲ್ ಮಲ್ಪುಜಿ.
+preview_help	ಈ ಚೀಟಿ ತಿರ್ತ್ ಆಯ್ಕೆ ಮಲ್ತಿನ ಮುದ್ರಕೊಡು ಮುದ್ರಣ ಆಪಿನ ಲೆಕ್ಕೊ, ಅಯಿತ ವರ್ಚುವಲ್ ಕಾಗದೊದ ಮಿತ್ತ್ ನಿಜ ಗಾತ್ರೊಡು. ಬೊಳ್ದು ಜಾಗೆಡ್ ಮುದ್ರಣ ಆಪುಂಡು, ಬೂದು ಕಾಗದೊಗು ಮುದ್ರಕ ಎತ್ತುಜಿ, ಬುಕ್ಕ ಮಸುಕು ಶಾಯಿ ಕತ್ತರಿಸಾವು. ಒರ್ಂಬ ಚೌಕೊಲು ಕಾಗದ: ಚೀಟಿ ಉಪ್ಪೊಡಾಯಿನ ಜಾಗೆಡ್ ಟ್ಯಾಪ್ ಮಲ್ಪುಲೆ. ಉದ್ದ ಚೀಟಿ ಎಚ್ಚ ಪುಟೊಕುಲೆಗ್ ಪೋಪುಂಡು. ಮುದ್ರಕ ಆಯ್ಕೆ ಮಲ್ತ್‌ಂಡ ಮುನ್ನೋಟ ಮಾತ್ರ ಬದಲಾಪುಂಡು.
 job_layout	ಲೇಔಟ್
 job_delivery	ಬೇಲೆನ್ ಎಂಚ ಕಡಪುಡುವೆರ್
 job_delivery_help	ಓಎಸ್ ಡಾಕ್ಯುಮೆಂಟ್, ರಾ ಬೈಟ್ಸ್, ಅತ್ತ್ಂಡ ESC/POS. ಬಿಲ್ ಬೊಕ್ಕ ಅಡುಗೆಮನೆದ ಟಿಕೆಟ್ ಒಂಜೊಂಜಿ ತನ್ನವೇ ಆದ್ ಉಪ್ಪುಂಡು. ಒಂಜಿ ಕೆಲಸೊನು ಫೈಂಡ್ ಉಳಿತಾಯ ಮಲ್ತಿನ ಏತ್ ಪ್ರಿಂಟರ್ ಗ್ ಲಾ ಪೋವೊಲಿ.
@@ -1163,7 +1187,7 @@ kot_show_station	ನಿಲ್ದಾಣ
 kot_hide_station	ನಿಲ್ದಾಣೊನು ಮುಚ್ಚುಲೆ
 kot_show_table	ಊಟದ ಮೇಜಿ
 kot_hide_table	ಊಟದ ಮೇಜಿನ್ ಮುಚ್ಚುಲೆ
-kot_show_kot_no	KOT ಇಜ್ಜಿ
+kot_show_kot_no	KOT ಸಂಖ್ಯೆ
 kot_hide_kot_no	ಮುಚ್ಚಿಲೆ KOT ಇಜ್ಜಿ
 kot_width	ಪೂರ್ವವೀಕ್ಷಣೆ ಸುತ್ತು (KOT ಟ್ಯಾಬ್ ಡ್ ವಿಷಯದ ಅಗಲೊನು ಸೆಟ್ ಮಲ್ಪುಲೆ)
 kot_width_58	58 mm
@@ -1266,8 +1290,8 @@ taxable_value	ತೆರಿಗೆ ಪಾಡುನ ಮೌಲ್ಯ
 gst_inside_price_note	({tax} ಸೇರ್ದ್)
 start_with_template	ಎಂಕಲ್ನ ಮೆನು ಟೆಂಪ್ಲೇಟ್ ಡ್ದ್ ಸುರು ಮಲ್ಪುಲೆ
 template_heading	ಎಂಕಲೆನ ಮೆನು ಟೆಂಪ್ಲೇಟ್
-template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
-template_download_shelf	Download photo shelf
+template_need_download	ಭಕ್ಷ್ಯೊಲೆನ ಸಾರ್ವಜನಿಕ ಫೋಟೋ ಶೆಲ್ಫ್ (~1,459 ಭಕ್ಷ್ಯೊಲು) ಡೌನ್‌ಲೋಡ್ ಮಲ್ಪುಲೆ, ಬೊಕ್ಕ ಇಜ್ಜಂದಿನ ಪುದರ್‌ಲೆನ್ ನಿಕ್ಲೆನ ಮೆನುಗು ಆಮದು ಮಲ್ಪುಲೆ.
+template_download_shelf	ಫೋಟೋ ಶೆಲ್ಫ್ ಡೌನ್‌ಲೋಡ್ ಮಲ್ಪುಲೆ
 template_info	{c} ವಿಭಾಗೊಲು ಬೊಕ್ಕ {d} ಭಕ್ಷ್ಯೊಲು ಫೋಟೋಲೆನೊಟ್ಟುಗು, ಸೇರಾವರೆ ತಯಾರ್. ಬೆಲೆಲು ₹0 ಡ್ದ್ ಸುರು ಆಪುಂಡು — ನಿಕ್ಲೆನವು ನನ ದುಂಬು ಸೆಟ್ ಮಲ್ಪುಲೆ.
 template_import	ಸಂಪೂರ್ಣ ಟೆಂಪ್ಲೇಟ್ ನ್ ಆಮದು ಮಲ್ಪುಲೆ
 template_confirm	ಅಯಿಕ್ಲೆನ ವಿಭಾಗೊಲೆನೊಟ್ಟುಗು {d} ಖಾದ್ಯೊಲೆನ್ ಸೇರಾವೊಡು? ನಿಕ್ಲೆಗ್ ದುಂಬೇ ಉಪ್ಪುನ ಖಾದ್ಯೊಲು ಅವು ಇತ್ತಿಲೆಕನೆ ಉಪ್ಪುಂಡು.

@@ -50,7 +50,7 @@ restore_item	بحال کریں
 empty_catalog	ابھی دوا نہیں۔
 total	کل
 cash	نقد
-upi	यूपीआई
+upi	UPI
 card	کارڈ
 credit	پارٹیاں
 clear	صاف
@@ -79,13 +79,19 @@ bill_item_amount	رقم
 bill_item_note	Rx / فروخت نوٹ
 bill_item_col_sep	کالم لکیر
 slip_col_width	چوڑائی (mm)
-paper_heading	کاغذ
+paper_heading	ورچوئل کاغذ
 paper_size	{w} × {h} mm
 paper_roll	{w} mm رول
 paper_not_set	کاغذ ابھی معلوم نہیں
-paper_length_mm	لمبائی (mm)
-printer_paper_help	اس پرنٹر کا کاغذ mm میں۔ خالی لمبائی کا مطلب رول: ہر پرچی اپنے مواد جتنی لمبی ہوتی ہے۔ پرنٹر تلاش کریں خالی کاغذ پرنٹر کے ڈرائیور سے بھرتا ہے (نہ بتا سکے تو 80 mm رول) اور پہلے سے طے کاغذ کبھی نہیں بدلتا۔
-preview_help	نیچے چنے گئے پرنٹر کے کاغذ پر یہ پرچی، جیسے وہاں چھپتی ہے: پرنٹر جہاں تک پہنچتا ہے اس اوپری بائیں کونے سے اصل ناپ میں (سرمئی: کنارے جہاں نہیں پہنچتا)، لمبی پرچی مزید صفحات پر، کاغذ کے کنارے سے آگے کا سب کٹ جاتا ہے۔ پرنٹر چننے سے صرف پیش منظر بدلتا ہے؛ ہر پرنٹر کا کاغذ پرنٹرز میں طے ہوتا ہے۔
+na	نہیں
+virtual_width_mm	ورچوئل چوڑائی (mm)
+virtual_length_mm	ورچوئل لمبائی (mm)
+reported_width_mm	بتائی گئی چوڑائی (mm)
+reported_length_mm	بتائی گئی لمبائی (mm)
+reported_paper	بتایا گیا: {paper}
+virtual_paper	ورچوئل: {paper}
+printer_paper_help	بتایا گیا وہ کاغذ ہے جس پر اس پرنٹر کا ڈرائیور سیٹ ہے؛ ایپ اسے صرف پڑھتی ہے، اور “نہیں” کا مطلب ہے کہ پوچھنے کے لیے کوئی ڈرائیور نہیں ہے۔ ورچوئل وہ کاغذ ہے جو آپ کہتے ہیں کہ واقعی پرنٹر میں ہے، mm میں؛ خالی لمبائی کا مطلب رول ہے۔ پرنٹر اپنے کاغذ پر چھاپتا ہے؛ ورچوئل کاغذ ایپ کو بتاتا ہے کہ اس میں سے کتنا اصل کاغذ ہے، پیش منظر، صفحے کی لمبائی اور پرچی کی جگہ کے لیے۔ پرنٹر تلاش کریں خالی ورچوئل کاغذ بھرتا ہے اور آپ کا طے کیا ہوا کاغذ کبھی نہیں بدلتا۔
+preview_help	یہ پرچی جیسے نیچے چنے گئے پرنٹر پر چھپتی ہے، اس کے ورچوئل کاغذ پر اصل ناپ میں۔ سفید جگہ پر چھپتا ہے، سرمئی کاغذ تک پرنٹر نہیں پہنچتا، اور پھیکی سیاہی کٹ جاتی ہے۔ نو خانے کاغذ ہیں: جہاں پرچی ہونی چاہیے وہاں ٹیپ کریں۔ لمبی پرچی مزید صفحات پر جاتی ہے۔ پرنٹر چننے سے صرف پیش منظر بدلتا ہے۔
 slip_col_start	آغاز کی جگہ (px)
 slip_col_end	اختتام کی جگہ (px)
 slip_columns_help	ہر کالم کی چوڑائی میں اس کی آغاز اور اختتام کی جگہ شامل ہے۔ متن اپنے کالم کے اندر ہی لپٹتا ہے؛ مواد کی چوڑائی سے باہر جو ہو وہ کاغذ اور پیش نظارہ دونوں میں کٹ جاتا ہے۔
@@ -100,6 +106,12 @@ bill_item_piece_off	آف
 bill_total_qty	کل مقدار
 bill_total_subtotal	ذیلی کل
 bill_total_grand	کل
+bill_total_number_under	نمبر اس کے نیچے
+bill_total_caption_under	لیبل اس کے نیچے
+bill_total_own_line	اپنی قطار
+bill_total_caption_with	نمبر کے ساتھ
+bill_total_caption_none	لیبل نہیں
+bill_total_place_help	“اپنی قطار” اس کل کو اکیلا چھاپتا ہے۔ کالم کے نیچے ہو تو اس کا نمبر اسی آئٹم کالم میں، اس قطار کے ناپ اور موٹائی میں چھپتا ہے؛ جب تک کوئی کالم بھر نہ جائے کل ایک ہی صف بانٹتے ہیں، پھر نئی صف شروع ہوتی ہے۔ لیبل نمبر کے ساتھ، دوسرے کالم کے نیچے جاتا ہے، یا چھوڑ دیا جاتا ہے۔ ٹیکس، سروس، راؤنڈنگ اور ادائیگی کی قطاریں “ذیلی کل” کے پیچھے چلتی ہیں۔
 kot_unassigned	بغیر تفویض
 settings_hub_help	ایک وقت میں ایک حصہ کھولیں — کم اسکرول، واضح انتخاب۔
 settings_sec_language	زبان اور کرنسی
@@ -563,11 +575,11 @@ currency_use_help	اسکرول کریں اور کسی بھی معاون کرنس
 day_close_help	دن بند درج کرنے سے یہ خلاصہ (گنتی ہو تو دراز فرق سمیت) آڈٹ لاگ میں محفوظ ہوتا ہے۔ یہ فروخت نہیں روکتا۔
 expenses_word	اخراجات
 feature_access_help	منتخب عملے کی خصوصیات تک رسائی (شامل کرنے کے بعد دبائیں)
-fresh_book_tabiyat	پرنٹرز
+fresh_book_tabiyat	Fresh = خالی کیٹلاگ (آئٹم بعد میں شامل کریں)۔ Book = نیچے ابتدائی اسٹاک اور کون آپ کا مقروض ہے لکھیں۔
 fresh_selected	Fresh منتخب — کیٹلاگ خالی رہے گا۔ تیار ہونے پر Done دبائیں۔
 gross_word	مجموعی
 how_start	آپ کیسے شروع کرنا چاہتے ہیں؟
-later_country_pack	پرنٹرز
+later_country_pack	بعد میں: سیٹنگز → ٹیکس اور ادائیگی کے لیبلوں کے لیے اپنا ملکی پیک لاگو کریں۔
 local_badge	مقامی
 mix_type_hint_tabiyat	ضرورت ہو تو نقد / UPI / کارڈ / ادھار میں بانٹیں۔ ادھار کے لیے اوپر گاہک چاہیے۔
 money_in_sales	رقم آئی (فروخت)
@@ -688,7 +700,7 @@ book_kind_today	آج کی کتاب
 book_kind_month	اس مہینے کی کتاب
 book_kind_aging	بقایا / ڈیبٹ-کریڈٹ
 book_kind_balance	بیلنس شیٹ
-order_help	کھلا آرڈر منتخب کریں، یا ٹیبل منتخب کر کے نیا شروع کریں۔ تیار آئٹمز پر ٹیپ کریں، KOT بھیجیں، ایک یا زیادہ آئٹمز کا بل بنائیں، بل تقسیم کریں اور ادائیگی طے کریں۔
+order_help	شامل کرنے کے لیے آئٹم پر ٹیپ کریں۔
 categories_help	زمرہ دکھاتا ہے کہ ڈش کس مینو حصے میں آتی ہے — مثلاً اسنیکس، مین کورس یا بریانی۔ زمرے اپنی مرضی سے بنائیں: ہمارے تجویز کردہ نام منتخب کریں، ان کے نام بدلیں یا اپنا شامل کریں۔
 dish_search_ph	نام، سالٹ یا بارکوڈ تلاش کریں…
 sizes_as_items_ph	سائز الگ آئٹم کے طور پر (اختیاری) — Half=120, Full=200
@@ -735,6 +747,20 @@ fssai_ph	ڈرگ لائسنس نمبر (اختیاری — آپ کے الفاظ)
 bill_footer_ph	فوٹر (مثلاً شکریہ، پھر تشریف لائیں)
 kot_field_on	دکھائیں
 kot_field_off	چھپائیں
+kot_field_show	دکھائیں
+kot_field_hide	چھپائیں
+bill_line_shop	دکان
+bill_line_address	پتہ
+bill_line_fssai	FSSAI
+bill_line_title	عنوان
+bill_line_customer	گاہک
+bill_line_bill_no	بل نمبر
+bill_line_time	وقت
+bill_line_cashier	کیشیئر
+bill_line_items	آئٹمز
+bill_line_total	کل
+bill_line_footer	فوٹر
+bill_line_upi	UPI
 kot_weight_light	ہلکا
 bill_kot_panel_help	بل کی ترتیب اور چوڑائی۔ کیشیئر وہ ہے جس نے بل جاری کیا یا نمٹایا — فروخت کی پوری کہانی بہی میں رہتی ہے۔
 std_size_ph	جیسے 18, 20, 26…
@@ -842,10 +868,10 @@ lane_declared_label	ٹیکس انوائس
 lane_owner_label	کیش میمو
 money_lane_bill	بل: {lane}
 
-removing	Removing…
-removed	Removed
-updating_order	Updating…
-order_updated	Order updated
+removing	ہٹایا جا رہا ہے…
+removed	ہٹا دیا گیا
+updating_order	اپ ڈیٹ ہو رہا ہے…
+order_updated	آرڈر اپ ڈیٹ ہو گیا
 sel_copy	کاپی کریں
 sel_select_all	سب منتخب کریں
 sel_copied	کاپی ہو گیا

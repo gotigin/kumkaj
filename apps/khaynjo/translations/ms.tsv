@@ -36,7 +36,7 @@ add_item	Tambah item menu
 new_item	Item menu baharu
 adding_item	Menambah item menu baharu
 editing_item	Mengedit
-save	Jimat
+save	Simpan
 remove	Alih keluar
 removed_items	Item menu dialih keluar
 removed_help	Pulihkan meletakkan item menu kembali pada menu sama seperti sebelumnya — harga, foto dan kategori. Rak hidangan kami tidak pernah dikeluarkan, jadi hidangan sentiasa boleh ditambah lagi.
@@ -83,12 +83,12 @@ print_cancelled_kot_needed	Buka meja makan dengan hidangan yang dibatalkan dahul
 print_cancelled_kot_none	Tiada hidangan yang dibatalkan pada pesanan ini
 print_cancelled_kot_client	Cetakan dibatalkan ({n}) untuk {place} dihantar — cetakan dapur di Pelayan
 kot_banner	Sepanduk yang baik hati
-kot_item_prefix	Awalan item menu menu
+kot_item_prefix	Awalan item menu
 kot_strike	Nama hidangan Strike
 kot_strike_note	Nota hidangan pukul
 kot_strike_on	hidup
 kot_strike_off	Mati
-bill_item_layout	Susun atur item menu menu
+bill_item_layout	Susun atur item menu
 bill_item_layout_columns	Lajur
 bill_item_layout_stacked	Bertindan
 bill_item_header	Pengepala lajur
@@ -101,6 +101,19 @@ bill_item_col_sep	Peraturan lajur
 slip_columns	Lajur
 slip_col_header	Pengepala
 bill_line_logo	Logo
+bill_line_shop	Kedai
+bill_line_address	Alamat
+bill_line_fssai	FSSAI
+bill_line_title	Tajuk
+bill_line_customer	Pelanggan
+bill_line_bill_no	No. bil
+bill_line_time	Masa
+bill_line_cashier	Juruwang
+bill_line_table	Meja makan
+bill_line_items	Item
+bill_line_total	Jumlah
+bill_line_footer	Pengaki
+bill_line_upi	UPI
 bill_logo_picture	Gambar
 bill_logo_choose	Pilih gambar
 bill_logo_remove	Buang gambar
@@ -128,6 +141,12 @@ bill_item_piece_off	Mati
 bill_total_qty	Jumlah kuantiti
 bill_total_subtotal	Jumlah kecil
 bill_total_grand	Jumlah besar
+bill_total_number_under	Nombor di bawah
+bill_total_caption_under	Label di bawah
+bill_total_own_line	Baris sendiri
+bill_total_caption_with	Bersama nombor
+bill_total_caption_none	Tiada label
+bill_total_place_help	Baris sendiri mencetak jumlah ini secara berasingan. Di bawah lajur, nombornya dicetak dalam lajur item itu, dengan saiz dan ketebalan baris ini; jumlah berkongsi satu barisan sehingga satu lajur terisi, kemudian barisan baharu bermula. Label pergi bersama nombor, di bawah lajur lain, atau ditinggalkan. Baris cukai, perkhidmatan, pembundaran dan bayaran mengikut Jumlah kecil.
 reprint_incl	Dalam cetakan
 reprint_skip	Langkau
 reprint_skip_meta	Langkau cetakan pemulihan
@@ -170,7 +189,7 @@ settings_sec_pickers	Kawasan · stesen · kadar cukai
 settings_sec_printers	Pencetak
 settings_sec_bill	Format bil & KOT
 settings_sec_selling	Skim & jualan
-bill_kot_tab_bill	Bil tetamu
+bill_kot_tab_bill	Bil
 bill_kot_tab_kot	KOT
 settings_sec_alerts	Makluman
 alerts_help	Berapa lama mesej status kekal pada skrin untuk anda (log masuk ini).
@@ -178,20 +197,20 @@ snack_secs_ph	Saat (3–60, lalai 10)
 snack_secs_save	Jimat masa makluman
 snack_secs_saved	Masa makluman disimpan — {n} saat
 settings_sec_whatsapp	WhatsApp
-whatsapp_cloud_help	Use your own Meta WhatsApp Cloud API. Create a System User token with whatsapp_business_messaging (temporary dashboard tokens expire). Credentials stay on this Server only — never on extra tills. Accepted means Meta took the request, not that the guest received it.
-whatsapp_phone_id_ph	Phone Number ID
-whatsapp_token_ph	Access Token (leave blank to keep)
-whatsapp_template_ph	Bill template name (optional)
-whatsapp_template_lang_ph	Template language (e.g. en)
-whatsapp_enable	Enable
+whatsapp_cloud_help	Gunakan Meta WhatsApp Cloud API anda sendiri. Cipta token System User dengan whatsapp_business_messaging (token sementara papan pemuka akan tamat tempoh). Butiran hanya kekal pada Pelayan ini — tidak sekali-kali pada kaunter tambahan. “Diterima” bermaksud Meta telah mengambil permintaan itu, bukan tetamu telah menerimanya.
+whatsapp_phone_id_ph	ID nombor telefon
+whatsapp_token_ph	Token akses (biarkan kosong untuk mengekalkannya)
+whatsapp_template_ph	Nama templat bil (pilihan)
+whatsapp_template_lang_ph	Bahasa templat (cth. en)
+whatsapp_enable	Dayakan
 whatsapp_disable	Off
-whatsapp_save	Save WhatsApp
-whatsapp_test	Test connection
-whatsapp_disconnect	Disconnect
-whatsapp_send_bill	Send via WhatsApp
+whatsapp_save	Simpan WhatsApp
+whatsapp_test	Uji sambungan
+whatsapp_disconnect	Putuskan sambungan
+whatsapp_send_bill	Hantar melalui WhatsApp
 whatsapp_consent	WhatsApp OK
-whatsapp_consent_help	Guest agreed to receive WhatsApp messages. A phone number alone is not consent.
-whatsapp_server_only	Configure WhatsApp on the shop Server device
+whatsapp_consent_help	Tetamu bersetuju menerima mesej WhatsApp. Nombor telefon sahaja bukan persetujuan.
+whatsapp_server_only	Tetapkan WhatsApp pada peranti Pelayan kedai
 settings_sec_backup	Sandaran & pulihkan
 settings_sec_diag	Diagnostik
 settings_sec_privacy	Privasi
@@ -248,15 +267,15 @@ nav_settings	tetapan
 nav_lock	Kunci
 no_sale_yet	Tiada jualan lagi
 favorites	Kegemaran
-favorites_help	Item menu menu yang anda sering jual, disimpan untuk log masuk anda. Tambahkan satu pada bil atau bina senarai anda daripada semua item menu di bawah.
+favorites_help	Item menu yang anda sering jual, disimpan untuk log masuk anda. Tambahkan satu pada bil atau bina senarai anda daripada semua item menu di bawah.
 your_favorites	Kegemaran anda
 all_items	Semua item menu
 frequent	Kerap
-added_items	Menambah item menu Menu
+added_items	Menambah item menu
 added_items_empty	Tiada apa-apa pada pesanan ini lagi — tambahkan hidangan daripada Semua item menu atau kategori.
 frequent_config_help	Kebanyakan hidangan dijual daripada bil yang telah siap. Tetapkan berapa hari untuk melihat dan berapa banyak hidangan untuk ditunjukkan.
 frequent_days_ph	Hari (1)
-frequent_limit_ph	Item menu menu (24)
+frequent_limit_ph	Item menu (24)
 frequent_apply	Mohon
 frequent_saved	Kerap: {d} hari terakhir, hidangan {n} teratas — {c}
 frequent_empty	Tiada jualan lengkap dalam tempoh ini lagi — selesaikan bil (₹0 dibenarkan apabila Tetapan menyatakan demikian) dan ia dipaparkan di sini.
@@ -302,7 +321,7 @@ branches_org	Cawangan & org
 credit_customers	Pelanggan dan pembekal (akaun kredit)
 customer_name_ph	Nama pelanggan atau pembekal
 new_customer_ph	Nama pelanggan atau pembekal baharu
-item_name_ph	Nama item menu menu (cth. Masala Dosa)
+item_name_ph	Nama item menu (cth. Masala Dosa)
 item_price_ph	harga
 start_template	produk
 team	Pasukan
@@ -509,7 +528,7 @@ expense_heading	Perbelanjaan
 export_day	Hari eksport
 extra_note_bill_ph	Nota tambahan pada bil / jualan ini
 extra_note_expense_ph	Nota tambahan pada perbelanjaan terakhir
-extra_tills_heading	Tills tambahan
+extra_tills_heading	Kaunter tambahan
 other_devices_help_heading	Sediakan peranti lain
 other_devices_help	Pada peranti ini (Pelayan): Peranti lain → Benarkan tills tambahan. Perhatikan kod pasangan dan Wi‑Fi alamat. Ketik Benarkan peranti lain bersambung jika ia muncul. Pada komputer, ketik Mulakan dengan komputer ini. Pada setiap peranti lain: pasang apl, pilih Mod Pelanggan, Cari pelayan kedai (atau taip alamat), masukkan kod pasangan, Pasangkan sekarang. Pesanan menunggu pada peranti jika Wi‑Fi jatuh dan pergi apabila Pelayan menjawab semula. Pencetak dapur ditetapkan pada Pelayan (Tetapan → Pencetak) — tills tambahan menghantar KOTs ke sana.
 forget_shop	Lupakan kedai ini
@@ -517,7 +536,7 @@ goods_received	Barang diterima
 import_day	Hari import
 import_items_csv_plain	Import item menu CSV…
 import_parties_csv	Import pelanggan dan pembekal CSV…
-item_name	Nama item menu menu
+item_name	Nama item menu
 kitchen_printing	Pencetak
 login_id_ph	Nama pengguna
 mark_cleared	Mark dibersihkan
@@ -574,7 +593,7 @@ rollup	Penggulungan ringkasan
 save_brand	Jimat jenama
 save_business_id	Simpan id perniagaan
 save_business_name	Simpan nama perniagaan
-save_features	Jimat
+save_features	Simpan
 save_features_named	Jimat {name}
 save_features_ok	Persediaan disimpan untuk {name}
 save_names	Simpan nama
@@ -637,7 +656,7 @@ choose_device_use	Pilih Pelayan atau Pelanggan.
 paired_note	Berpasangan. Buka kunci untuk menjual, atau Muat semula untuk yang terkini.
 last_update_at	Kemas kini terakhir: {time}.
 pair_intro	Cari pelayan, atau taip alamat dan kod pasangannya.
-pair_resume_hint	Already paired — enter your shop PIN, or Forget this shop to pair another.
+pair_resume_hint	Sudah dipasangkan — masukkan PIN kedai anda, atau ketik “Lupakan kedai ini” untuk memasangkan kedai lain.
 queue_waiting	Menunggu untuk sampai ke kedai ({n}):
 queue_tries	Mencuba {n} kali · jawapan terakhir: {e}
 save_backup_copy	Simpan salinan sandaran…
@@ -739,7 +758,7 @@ printer_format_custom_added	Profil tersuai ditambahkan untuk tempat ini
 add_printer	Tambah pencetak
 remove_printer	Alih keluar
 route_pick_ph	Bil atau stesen dapur
-route_bill	Bil tetamu
+route_bill	Bil
 route_default_kitchen	Tiada stesen (hidangan tidak ditetapkan)
 route_kot_station	Dapur
 route_dont_print	Tiada pencetak
@@ -754,13 +773,18 @@ station_vps_dd	Pencetak untuk stesen ini
 station_vps_dd_n	{n} pencetak · ketik untuk menukar
 bill_printers_dd	Pencetak untuk bil
 bill_printers_dd_n	{n} pencetak untuk bil · ketik untuk menukar
-paper_heading	Kertas
+paper_heading	Kertas maya
 paper_size	{w} × {h} mm
 paper_roll	gulung {w} mm
 paper_not_set	kertas belum diketahui
-paper_length_mm	Panjang (mm)
-printer_paper_help	Kertas pencetak ini dalam mm. Panjang kosong ialah gulung: setiap slip sepanjang kandungannya. Cari pencetak mengisi kertas kosong daripada pemacu pencetak (gulung 80 mm apabila ia tidak dapat memberitahu) dan tidak pernah mengubah kertas yang sudah ditetapkan.
-preview_help	Slip ini pada kertas pencetak yang dipilih di bawah, seperti yang dicetak di sana: saiz sebenar dari penjuru kiri atas yang dapat dicapai pencetak (kelabu: tepi yang tidak dicapai), slip panjang pada lebih banyak helaian, apa-apa yang melepasi tepi kertas dipotong. Memilih pencetak hanya mengubah pratonton; kertas setiap pencetak ditetapkan di Pencetak.
+virtual_width_mm	Lebar maya (mm)
+virtual_length_mm	Panjang maya (mm)
+reported_width_mm	Lebar yang dilaporkan (mm)
+reported_length_mm	Panjang yang dilaporkan (mm)
+reported_paper	Dilaporkan: {paper}
+virtual_paper	Maya: {paper}
+printer_paper_help	Dilaporkan ialah kertas yang ditetapkan pada pemacu pencetak ini; apl hanya membacanya, dan T/A bermaksud tiada pemacu untuk ditanya. Maya ialah kertas yang anda katakan benar-benar ada dalam pencetak, dalam mm; panjang kosong bermaksud gulung. Pencetak mencetak pada kertasnya sendiri; kertas maya memberitahu apl berapa banyak daripadanya ialah kertas sebenar, untuk pratonton, panjang halaman dan kedudukan slip. Cari pencetak mengisi kertas maya yang kosong dan tidak sekali-kali mengubah yang telah anda tetapkan.
+preview_help	Slip ini seperti yang dicetak pada pencetak yang dipilih di bawah, dalam saiz sebenar pada kertas mayanya. Putih ialah tempat ia mencetak, kertas kelabu di luar jangkauan pencetak, dan dakwat pudar dipotong. Sembilan petak itu ialah kertas: ketik tempat slip patut berada. Slip panjang bersambung ke halaman seterusnya. Memilih pencetak hanya mengubah pratonton.
 job_layout	Susun atur
 job_delivery	Bagaimana kerja dihantar
 job_delivery_help	Dokumen OS, bait mentah atau ESC/POS. Bil dan tiket dapur masing-masing disimpan sendiri. Mana-mana kerja boleh pergi ke mana-mana pencetak yang telah disimpan oleh Cari.
@@ -768,7 +792,7 @@ station_vp_attached	Pencetak dilampirkan
 station_vp_detached	Pencetak dikeluarkan dari stesen
 station_print_summary	{mode} · {n} pencetak
 station_print_summary_none	Tiada pencetak di stesen ini lagi — ia tidak akan mencetak
-stations_none	Tiada stesen lagi — tambah satu di bawah. Item menu menu boleh menggunakan stesen supaya KOT mereka dicetak di sana.
+stations_none	Tiada stesen lagi — tambah satu di bawah. Item menu boleh menggunakan stesen supaya KOT mereka dicetak di sana.
 route_up	Naik
 route_down	Bawah
 route_remove	Alih keluar
@@ -926,7 +950,7 @@ wipe_schema_done	Persediaan kedai dipadam — pilih Pelayan atau Pelanggan untuk
 rounded_total	Jumlah Bulat
 setup_app_khaynjo	Sediakan Khaynjo
 shop_logo_optional	Logo kedai (pilihan)
-stock_type_help	Taip nama item menu (sebahagian daripadanya sudah mencukupi), kuantiti, kemudian laraskan. Item menu menu yang belum dikira lagi memerlukan Mulakan penjejakan sekali.
+stock_type_help	Taip nama item menu (sebahagian daripadanya sudah mencukupi), kuantiti, kemudian laraskan. Item menu yang belum dikira lagi memerlukan Mulakan penjejakan sekali.
 team_owner_help	Biarkan orang itu kosong untuk menambah seseorang: nama, pekerjaan, nama pengguna, PIN dan kata laluan pilihan, kemudian Tambah. Pilih orang untuk mengedit jenis borang yang sama — nama, nama pengguna, kata laluan, skrin dan hak — kemudian Simpan. PIN dan kata laluan anda sendiri adalah satu log masuk di bahagian bawah. Pemilik tidak mengubah PIN milik orang lain.
 staff_name_ph	Nama kakitangan
 staff_copy_hire_ph	Salin persediaan daripada (pilihan)
@@ -983,7 +1007,7 @@ logo_default	Logo: Kumkaj tanda (lalai) — pilih sendiri jika ada
 tmpl_current	Semasa: {} — {}
 tmpl_selected	Dipilih: {} — {}
 setup_complete	Persediaan selesai
-onboard_fresh_tmpl	Fresh · {} — katalog bermula kosong; tambah item menu dalam item menu Menu, kemudian Selesai.
+onboard_fresh_tmpl	Fresh · {} — katalog bermula kosong; tambah item menu dalam item menu, kemudian Selesai.
 onboard_book_tmpl	Lejar · {} — tambah item menu dan kredit pembukaan, kemudian Selesai.
 onboard_template_tmpl	Namakan tempat itu jika anda mahu, kemudian pilih cara untuk bermula.
 tmpl_blurb	Meja makan, tempahan, tiket dapur, pengebilan dan lejar.
@@ -1005,7 +1029,7 @@ country_code_ph	Kod negara cth. IN, GB, AS, AE, BR
 credit_khata_amount_ph	Jumlah kredit / lejar kredit
 credit_limit_ph	Had kredit (0 = tiada)
 from_code_ph	Dari kod (beg)
-item_name_lang_ph	Nama item menu menu — taipkannya dalam bahasa anda
+item_name_lang_ph	Nama item menu — taipkannya dalam bahasa anda
 login_id_opt_ph	Nama pengguna (diperlukan, unik)
 manager_pin_ph	Pengurus PIN untuk meluluskan (hanya jika anda tidak boleh membatalkan)
 new_branch_name_ph	Nama cawangan baru
@@ -1047,13 +1071,13 @@ kitchen_empty	Tiada tiket terbuka.
 add_a_table	Tambah meja makan
 add_station_heading	Tambah stesen dapur
 categories_help	Ketik Gunakan untuk memfailkan item menu di atas di bawah kategori itu. Foto memberikan kategori gambar; tanpa satu ia menunjukkan inisialnya.
-dish_search_ph	Nama item menu menu — cari hidangan kami atau taip hidangan anda sendiri
+dish_search_ph	Nama item menu — cari hidangan kami atau taip hidangan anda sendiri
 tile_free	kosong
 tile_occupied	diduduki
 tile_food_ready	Makanan siap
 tile_bill_printed	Bil dicetak
 tile_paid	Dibayar
-tile_bill_btn	Bil tetamu
+tile_bill_btn	Bil
 tile_occupy_btn	Tempat duduk tetamu
 tile_free_btn	Kosongkan meja makan
 tile_ready_btn	Kosongkan meja makan
@@ -1163,7 +1187,7 @@ kot_show_station	Stesen
 kot_hide_station	Sembunyikan stesen
 kot_show_table	Meja makan
 kot_hide_table	Sorok meja makan
-kot_show_kot_no	KOT Tidak
+kot_show_kot_no	No. KOT
 kot_hide_kot_no	Sembunyikan KOT No
 kot_width	Balut pratonton (tetapkan lebar kandungan pada tab KOT)
 kot_width_58	58 mm
@@ -1238,7 +1262,7 @@ on_your_menu	Pada menu anda
 edit	Sunting
 schemes	Skim / tawaran
 schemes_help	BOGO, potongan peratus dan kombo tetap. Kombo berkembang ke talian dapur pada Hantar KOT; komponen kekal dipegang sehingga kombo menyala. Contoh: Beli 2 Thali dapat 1 Chaas
-scheme_bogo_ph	Buy 2 Thali get 1 Chaas
+scheme_bogo_ph	Beli 2 Thali percuma 1 Chaas
 add_scheme	Tambah BOGO
 schedule_ph	Waktu / waktu riang — Isnin-Jumaat 07:00-11:00 atau HappyHour 17:00-19:00=150
 upi_qr	UPI QR
@@ -1256,7 +1280,7 @@ choose_table	Pilih meja makan
 change_table	Tukar meja makan
 pick_table_banner	Pilih meja makan untuk pesanan ini
 items_word	item menu
-items_section	Item menu menu
+items_section	Item
 back_to_order	Kembali kepada pesanan
 new_items_head	Belum dihantar lagi
 price_ph	harga
@@ -1266,8 +1290,8 @@ taxable_value	Nilai bercukai
 gst_inside_price_note	({tax} termasuk)
 start_with_template	Mulakan dengan templat menu kami
 template_heading	Templat menu kami
-template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
-template_download_shelf	Download photo shelf
+template_need_download	Muat turun rak foto hidangan awam (~1,459 hidangan), kemudian import nama yang belum ada ke dalam menu anda.
+template_download_shelf	Muat turun rak foto
 template_info	{c} kategori dan {d} hidangan dengan foto, sedia untuk ditambah. Harga bermula pada ₹0 — tetapkan harga anda selepas itu.
 template_import	Import templat lengkap
 template_confirm	Tambahkan {d} hidangan dengan kategorinya? Hidangan yang telah anda miliki kekal seperti sedia ada.

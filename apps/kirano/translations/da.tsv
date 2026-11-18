@@ -67,13 +67,19 @@ bill_item_amount	Beløb
 bill_item_note	Varenote
 bill_item_col_sep	Kolonnelinjer
 slip_col_width	Bredde (mm)
-paper_heading	Papir
+paper_heading	Virtuelt papir
 paper_size	{w} × {h} mm
 paper_roll	{w} mm-rulle
 paper_not_set	papir endnu ikke kendt
-paper_length_mm	Længde (mm)
-printer_paper_help	Denne printers papir i mm. En tom Længde er en rulle: hver bon er lige så lang som sit indhold. Find printere udfylder tomt papir fra printerens driver (en 80 mm-rulle, når den ikke kan sige det) og ændrer aldrig papir, der allerede er sat.
-preview_help	Denne bon på papiret i printeren valgt nedenfor, som den udskrives der: i virkelig størrelse fra det øverste venstre hjørne, printeren kan nå (gråt: kanter den ikke kan), en lang bon på flere ark, alt ud over papirets kant skæres af. At vælge en printer ændrer kun eksemplet; hver printers papir sættes under Printere.
+na	—
+virtual_width_mm	Virtuel bredde (mm)
+virtual_length_mm	Virtuel længde (mm)
+reported_width_mm	Rapporteret bredde (mm)
+reported_length_mm	Rapporteret længde (mm)
+reported_paper	Rapporteret: {paper}
+virtual_paper	Virtuelt: {paper}
+printer_paper_help	Rapporteret er det papir, som denne printers driver er indstillet til; appen læser det kun, og “—” betyder, at der ikke er nogen driver at spørge. Virtuelt er det papir, du siger faktisk ligger i printeren, i mm; en tom længde er en rulle. Printeren udskriver på sit eget papir; det virtuelle papir fortæller appen, hvor meget af det der er rigtigt papir, til forhåndsvisningen, sidelængden og bonens placering. Find printere udfylder et tomt virtuelt papir og ændrer aldrig et, du har indstillet.
+preview_help	Denne bon, som den udskrives på den printer, der er valgt nedenfor, i ægte størrelse på dens virtuelle papir. Hvidt er, hvor der udskrives, gråt papir er uden for printerens rækkevidde, og falmet blæk skæres væk. De ni felter er papiret: tryk der, hvor bonen skal sidde. En lang bon fortsætter på flere sider. At vælge en printer ændrer kun forhåndsvisningen.
 slip_col_start	Startafstand (px)
 slip_col_end	Slutafstand (px)
 slip_columns_help	Hver kolonnes bredde omfatter dens start- og slutafstand. Teksten ombrydes inden for sin kolonne; det, der ligger ud over indholdsbredden, skæres af – på papiret og i forhåndsvisningen.
@@ -88,6 +94,12 @@ bill_item_piece_off	Fra
 bill_total_qty	Antal i alt
 bill_total_subtotal	Subtotal
 bill_total_grand	Samlet total
+bill_total_number_under	Tal under
+bill_total_caption_under	Etiket under
+bill_total_own_line	Egen linje
+bill_total_caption_with	Ved tallet
+bill_total_caption_none	Ingen etiket
+bill_total_place_help	Egen linje udskriver denne total for sig selv. Under en kolonne udskrives tallet i den varekolonne, i denne linjes størrelse og vægt; totaler deler en række, indtil en kolonne er optaget, så begynder en ny række. Etiketten står ved tallet, under en anden kolonne eller udelades. Linjer for moms, service, afrunding og betaling følger Subtotal.
 kot_unassigned	Ikke tildelt
 settings_hub_help	Åbn ét område ad gangen — mindre rulning, tydeligere valg.
 settings_sec_language	Sprog og valuta
@@ -723,6 +735,20 @@ fssai_ph	FSSAI / butikstilladelsesnr. (valgfrit)
 bill_footer_ph	Sidefod (f.eks. Tak, kom igen)
 kot_field_on	vis
 kot_field_off	skjul
+kot_field_show	Vis
+kot_field_hide	Skjul
+bill_line_shop	Butik
+bill_line_address	Adresse
+bill_line_fssai	FSSAI
+bill_line_title	Titel
+bill_line_customer	Kunde
+bill_line_bill_no	Regningsnr.
+bill_line_time	Tid
+bill_line_cashier	Kasserer
+bill_line_items	Varer
+bill_line_total	I alt
+bill_line_footer	Sidefod
+bill_line_upi	UPI
 kot_weight_light	Let
 bill_kot_panel_help	Regningslayout og indholdsbredde. Kassereren er den, der udstedte eller afregnede regningen — hele salgshistorien bliver i bøgerne.
 std_size_ph	f.eks. 18, 20, 26…
@@ -830,10 +856,10 @@ lane_declared_label	Skattefaktura
 lane_owner_label	Kontantnota
 money_lane_bill	Regning: {lane}
 
-removing	Removing…
-removed	Removed
-updating_order	Updating…
-order_updated	Order updated
+removing	Fjerner…
+removed	Fjernet
+updating_order	Opdaterer…
+order_updated	Ordre opdateret
 sel_copy	Kopiér
 sel_select_all	Vælg alt
 sel_copied	Kopieret

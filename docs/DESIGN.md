@@ -366,7 +366,19 @@ app) fails on a 60+ character literal in a layout label; and
 every sidebar screen and Settings panel of the running app and fails on a
 long visible text whose widget is not in `apps/<app>/cert/ui-text-allowlist.txt`
 (data widgets only — totals, report rows, values). Run it before calling a
-screen clean; never add an explanation to the allowlist.
+screen clean; never add an explanation to the allowlist. (From 2026-11-15
+to 2026-11-17 it walked **no Settings panel** and still exited 0: Settings
+became one list of rows and the script still looked for the old hub
+buttons, and the screen the app opened on was skipped because its sidebar
+id had been read as selected. Both fixed 2026-11-17; a check that passes
+must also say what it walked — read its `## screen` headings. Its first
+honest Khaynjo run found one long text not in the allowlist:
+`branches_label` on Settings → Branches, a caption line saying what the
+list under it is ("This restaurant and other branches' imported days:" —
+"restaurant" in the grocery and chemist apps too). The line is gone in all
+four apps: the heading's ℹ already says how export and import work, the
+rows say their own state, and the widget — now the business name and the
+branch rows only — is listed as data.)
 
 **InfoHelp (screen / section titles):** Titled rows are **`width: Fill`** with **`WrapLabel{width: Fit}` + tip + Fill `trail`** so ℹ sits **next to** the label on every screen (never at the far end — Day book / LANGUAGE, 2026-11). Gap is `tip_btn.margin.left` (6). **Tip-only** rows hide the trail and force **Fit**. Never `Label{width: Fill, wrap}` (turtle NaN, DEV bug 7). Empty title stays **hidden**. Guarded by `info_help_layout_tests` in each app — **fix the InfoHelp face, not one screen.**
 

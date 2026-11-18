@@ -67,13 +67,19 @@ bill_item_amount	Сума
 bill_item_note	Заўвага да прадмета
 bill_item_col_sep	Лінейкі слупкоў
 slip_col_width	Шырыня (mm)
-paper_heading	Папера
+paper_heading	Віртуальная папера
 paper_size	{w} × {h} mm
 paper_roll	рулон {w} мм
 paper_not_set	папера яшчэ невядомая
-paper_length_mm	Даўжыня (mm)
-printer_paper_help	Папера гэтага прынтара ў мм. Пустая Даўжыня — гэта рулон: кожны чэк такой даўжыні, як яго змест. «Знайдзіце прынтэры» запаўняе пустую паперу з драйвера прынтара (рулон 80 мм, калі ён не можа сказаць) і ніколі не мяняе ўжо зададзеную.
-preview_help	Гэты чэк на паперы прынтара, выбранага ніжэй, як ён там друкуецца: у сапраўдным памеры ад верхняга левага кута, да якога дастае прынтар (шэрае: краі, да якіх не дастае), доўгі чэк на некалькіх аркушах, усё за краем паперы абразаецца. Выбар прынтара мяняе толькі прагляд; папера кожнага прынтара задаецца ў «Прынтары».
+na	Н/Д
+virtual_width_mm	Віртуальная шырыня (mm)
+virtual_length_mm	Віртуальная даўжыня (mm)
+reported_width_mm	Паведамленая шырыня (mm)
+reported_length_mm	Паведамленая даўжыня (mm)
+reported_paper	Паведамлена: {paper}
+virtual_paper	Віртуальная: {paper}
+printer_paper_help	Паведамленая — гэта папера, на якую настроены драйвер гэтага прынтара; праграма толькі чытае яе, а Н/Д азначае, што драйвера, які можна спытаць, няма. Віртуальная — гэта папера, якая, паводле вашых слоў, сапраўды ляжыць у прынтары, у mm; пустая даўжыня азначае рулон. Прынтар друкуе на сваёй паперы; віртуальная папера паведамляе праграме, якая яе частка — сапраўдная папера: для папярэдняга прагляду, даўжыні старонкі і месца чэка. Знайдзіце прынтэры запаўняе пустую віртуальную паперу і ніколі не мяняе зададзеную вамі.
+preview_help	Гэты чэк так, як ён друкуецца на выбраным ніжэй прынтары, у сапраўдным памеры на яго віртуальнай паперы. Белае — дзе друкуецца, шэрая папера па-за дасяжнасцю прынтара, а бляклая фарба абразаецца. Дзевяць квадратаў — гэта папера: націсніце там, дзе павінен стаяць чэк. Доўгі чэк пераходзіць на наступныя старонкі. Выбар прынтара мяняе толькі папярэдні прагляд.
 slip_col_start	Прастора ў пачатку (px)
 slip_col_end	Прастора ў канцы (px)
 slip_columns_help	Шырыня кожнага слупка ўключае прастору ў пачатку і ў канцы. Тэкст пераносіцца ўнутры свайго слупка; усё, што выходзіць за шырыню змесціва, абразаецца — на паперы і ў папярэднім праглядзе.
@@ -88,6 +94,12 @@ bill_item_piece_off	Выкл
 bill_total_qty	Агульная колькасць
 bill_total_subtotal	Прамежкавы вынік
 bill_total_grand	Агулам
+bill_total_number_under	Лік пад
+bill_total_caption_under	Подпіс пад
+bill_total_own_line	Асобны радок
+bill_total_caption_with	Разам з лікам
+bill_total_caption_none	Без подпісу
+bill_total_place_help	«Асобны радок» друкуе гэты вынік асобна. Пад слупком яго лік друкуецца ў гэтым слупку тавараў, памерам і таўшчынёй гэтага радка; вынікі дзеляць адзін рад, пакуль слупок не заняты, потым пачынаецца новы рад. Подпіс ідзе разам з лікам, пад іншым слупком або прапускаецца. Радкі падатку, абслугі, акруглення і аплаты ідуць за «Прамежкавы вынік».
 kot_unassigned	Непрызначаны
 settings_hub_help	Адкрывайце адну вобласць за раз — менш пракруткі, яснішы выбар.
 settings_sec_language	Мова і валюта
@@ -97,7 +109,7 @@ settings_sec_brand	Ваш брэнд
 settings_sec_units	Адзінкі і пералікі
 settings_sec_pickers	Стаўкі падатку
 settings_sec_printers	Прынтары
-settings_sec_bill	Bill & Slip format
+settings_sec_bill	Фармат Білла і Сліпа
 settings_sec_selling	Схемы і продажы
 settings_sec_alerts	Апавяшчэнні
 alerts_help	Колькі статусныя паведамленні трымаюцца на экране для вас (гэты ўваход).
@@ -326,7 +338,7 @@ on_account_ap	На рахунку (AP)
 org_optional_ph	Арганізацыя (неабавязкова)
 paid_by	Аплачана
 paid_now	Аплачана зараз
-pair_now	Пара зараз
+pair_now	Спалучыць зараз
 pairing_code_ph	Код спалучэння
 party_name_selected_ph	Імя кліента або пастаўшчыка (або выкарыстоўвайце выбранае)
 password_ph	Пароль
@@ -351,7 +363,7 @@ role_cashier	Касір
 role_customer	Кліент
 role_manager	Менеджэр
 history_retention	Гандлёвая гісторыя
-history_retention_help	Auto-clear old sales and old tickets. Items, staff, and settings stay. Clear now wipes all trading rows and keeps setup.
+history_retention_help	Аўтаматычна ачышчаць старыя продажы і старыя талоны. Тавары, персанал і налады застаюцца. «Ачысціць зараз» выдаляе ўсе гандлёвыя запісы і пакідае налады.
 history_off	Трымайце
 history_day_close	На дзень блізка
 history_after_hours	У непрацоўны час
@@ -723,8 +735,22 @@ fssai_ph	Нумар FSSAI / ліцэнзія крамы (па жаданні)
 bill_footer_ph	Ніжні калонтытул (напрыклад, Дзякуй, наведайце яшчэ)
 kot_field_on	паказаць
 kot_field_off	схаваць
+kot_field_show	Паказаць
+kot_field_hide	Схаваць
+bill_line_shop	Крама
+bill_line_address	Адрас
+bill_line_fssai	FSSAI
+bill_line_title	Назва
+bill_line_customer	Кліент
+bill_line_bill_no	№ рахунка
+bill_line_time	Час
+bill_line_cashier	Касір
+bill_line_items	Прадметы
+bill_line_total	Разам
+bill_line_footer	Ніжні калонтытул
+bill_line_upi	UPI
 kot_weight_light	Святло
-bill_kot_panel_help	Bill layout and content width. Cashier is who issued or settled the bill — the full sale story stays in the books.
+bill_kot_panel_help	Макет купюры і шырыня кантэнту. Касір - гэта той, хто выставіў або разлічыўся па рахунку - поўная гісторыя продажу застаецца ў кнігах.
 std_size_ph	напр. 18, 20, 26…
 kot_weight_regular	Рэгулярны
 kot_weight_bold	Тлусты
@@ -830,10 +856,10 @@ lane_declared_label	Падатковая накладная
 lane_owner_label	Касавая нататка
 money_lane_bill	Рахунак: {lane}
 
-removing	Removing…
-removed	Removed
-updating_order	Updating…
-order_updated	Order updated
+removing	Выдаленне…
+removed	Выдалена
+updating_order	Абнаўленне…
+order_updated	Заказ абноўлены
 sel_copy	Капіяваць
 sel_select_all	Вылучыць усё
 sel_copied	Скапіявана

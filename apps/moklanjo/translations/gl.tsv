@@ -24,8 +24,8 @@ reports	Libro do banco e PyG
 refresh	Actualizar
 undo	Desfacer
 start_tracking	Comezar o seguimento
-stock_minus	− Stock
-stock_plus	+ Stock
+stock_minus	− Existencias
+stock_plus	+ Existencias
 settle_cash	Pechar en efectivo
 settle_card	Pechar con tarxeta
 items	Tarifas e servizos
@@ -192,7 +192,7 @@ snack_secs_save	Gardar o tempo de aviso
 snack_secs_saved	Tempo de aviso gardado — {n} segundos
 snack_secs_bad	Introduza segundos como número (3–60)
 cancelled	Anulado
-cancelling	Cancelling…
+cancelling	Cancellingâ¦
 cancel	Anular
 opening_client	Abrindo o cliente…
 preparing_desk	Preparando o mostrador…
@@ -365,7 +365,7 @@ print_drs	Imprimir DRS
 print_run_sheet	Imprimir folla de tirada
 reattempt	Reintento
 rider_cod_handed_ph	COD entregado
-settle_rider_cod	Settle rider COD
+settle_rider_cod	Liquidar o COD do repartidor
 mode_desk	Escritorio
 mode_rider	Xinete
 waiting_office	esperando chegar á oficina
@@ -501,13 +501,18 @@ job_size	Tamaño de letra
 job_size_ph	p. ex. 18, 20, 26…
 test_receipt_format	Recibo de proba
 test_label_format	Etiqueta de proba
-paper_heading	Papel
+paper_heading	Papel virtual
 paper_size	{w} × {h} mm
 paper_roll	rolo de {w} mm
 paper_not_set	papel aínda descoñecido
-paper_length_mm	Longo (mm)
-printer_paper_help	O papel desta impresora en mm. Un Longo baleiro é un rolo: cada tíquet é tan longo coma o seu contido. Atopar impresoras enche o papel baleiro co do controlador da impresora (un rolo de 80 mm se non o pode dicir) e nunca cambia un xa definido.
-preview_help	Este tíquet sobre o papel da impresora escollida abaixo, tal como se imprime alí: a tamaño real desde a esquina superior esquerda que alcanza a impresora (gris: bordos que non alcanza), un tíquet longo en máis follas, todo o que pasa do bordo do papel recórtase. Escoller unha impresora só cambia a vista previa; o papel de cada impresora defínese en Impresoras.
+virtual_width_mm	Ancho virtual (mm)
+virtual_length_mm	Longo virtual (mm)
+reported_width_mm	Ancho informado (mm)
+reported_length_mm	Longo informado (mm)
+reported_paper	Informado: {paper}
+virtual_paper	Virtual: {paper}
+printer_paper_help	Informado é o papel ao que está axustado o controlador desta impresora; a app só o le, e N/D significa que non hai controlador ao que preguntar. Virtual é o papel que ti dis que hai realmente na impresora, en mm; un longo baleiro é un rolo. A impresora imprime no seu propio papel; o papel virtual dille á app canto del é papel real, para a vista previa, o longo da páxina e o lugar do tíquet. Atopar impresoras enche un papel virtual baleiro e nunca cambia o que ti definiches.
+preview_help	Este tíquet tal como se imprime na impresora escollida abaixo, a tamaño real sobre o seu papel virtual. O branco é onde imprime, o papel gris queda fóra do alcance da impresora e a tinta esvaecida córtase. Os nove cadros son o papel: toca onde debe ir o tíquet. Un tíquet longo continúa en máis páxinas. Escoller unha impresora só cambia a vista previa.
 slip_col_width	Ancho (mm)
 no_printer_assigned	Sen impresora
 printer_target_default	a impresora habitual deste ordenador (enderezo baleiro)
@@ -772,7 +777,7 @@ business_name_ph	Nome do negocio
 category_new_ph	Categoría (opcional, créase se é nova)
 cod_amount_ph	Cantidade de COD
 code_bag_ph	Código (bag)
-conv_factor_ph	Factor (25 = 1 bag → 25 kg)
+conv_factor_ph	Factor (25 = 1 saco → 25 kg)
 country_code_ph	Código de país, p. ex. IN, GB, US, AE, BR
 credit_khata_amount_ph	Importe de crédito / khata
 credit_limit_ph	Límite de crédito (0 = ningún)

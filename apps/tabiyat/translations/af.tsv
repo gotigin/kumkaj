@@ -79,13 +79,19 @@ bill_item_amount	Bedrag
 bill_item_note	Voorskrif / verkoopsnota
 bill_item_col_sep	Kolom reëls
 slip_col_width	Breedte (mm)
-paper_heading	Papier
+paper_heading	Virtuele papier
 paper_size	{w} × {h} mm
 paper_roll	{w} mm-rol
 paper_not_set	papier nog nie bekend nie
-paper_length_mm	Lengte (mm)
-printer_paper_help	Hierdie drukker se papier in mm. 'n Leë Lengte is 'n rol: elke strokie is so lank soos sy inhoud. Soek drukkers vul leë papier in vanaf die drukker se drywer ('n 80 mm-rol as dit nie kan sê nie) en verander nooit papier wat reeds gestel is nie.
-preview_help	Hierdie strokie op die papier van die drukker wat hieronder gekies is, soos dit daar druk: werklike grootte van die boonste linkerhoek wat die drukker kan bereik (grys: rande wat dit nie kan nie), 'n lang strokie op meer velle, alles verby die papier se rand afgesny. Om 'n drukker te kies verander net die voorskou; elke drukker se papier word onder Drukkers gestel.
+na	N/V
+virtual_width_mm	Virtuele breedte (mm)
+virtual_length_mm	Virtuele lengte (mm)
+reported_width_mm	Gerapporteerde breedte (mm)
+reported_length_mm	Gerapporteerde lengte (mm)
+reported_paper	Gerapporteer: {paper}
+virtual_paper	Virtueel: {paper}
+printer_paper_help	Gerapporteer is die papier waarop hierdie drukker se drywer gestel is; die app lees dit net, en N/V beteken daar is geen drywer om te vra nie. Virtueel is die papier wat volgens jou werklik in die drukker is, in mm; 'n leë lengte is 'n rol. Die drukker druk op sy eie papier; die virtuele papier sê vir die app hoeveel daarvan werklike papier is, vir die voorskou, die bladsylengte en die plek van die strokie. Soek drukkers vul 'n leë virtuele papier in en verander nooit een wat jy gestel het nie.
+preview_help	Hierdie strokie soos dit druk op die drukker wat hieronder gekies is, op ware grootte op sy virtuele papier. Wit is waar dit druk, grys papier is buite die drukker se bereik, en vervaagde ink word afgesny. Die nege blokkies is die papier: tik waar die strokie moet sit. 'n Lang strokie gaan oor na meer bladsye. Om 'n drukker te kies verander net die voorskou.
 slip_col_start	Beginspasie (px)
 slip_col_end	Eindspasie (px)
 slip_columns_help	Elke kolom se breedte sluit sy begin- en eindspasie in. Teks vou binne sy kolom; wat verby die inhoudbreedte lê, word afgesny, op papier en in die voorskou.
@@ -100,6 +106,12 @@ bill_item_piece_off	Uit
 bill_total_qty	Totaal aantal
 bill_total_subtotal	Subtotaal
 bill_total_grand	Grand totaal
+bill_total_number_under	Getal onder
+bill_total_caption_under	Etiket onder
+bill_total_own_line	Eie lyn
+bill_total_caption_with	By die getal
+bill_total_caption_none	Geen etiket
+bill_total_place_help	Eie lyn druk hierdie totaal op sy eie. Onder 'n kolom word sy getal in daardie itemkolom gedruk, in hierdie lyn se grootte en gewig; totale deel 'n ry totdat 'n kolom beset is, dan begin 'n nuwe ry. Die etiket gaan by die getal, onder 'n ander kolom, of word weggelaat. Belasting-, diens-, afrondings- en betalingslyne volg Subtotaal.
 kot_unassigned	Nie-toegeken nie
 settings_hub_help	Open een area op 'n slag — minder skroei, duideliker keuses.
 settings_sec_language	Taal en valuta
@@ -232,7 +244,7 @@ add_opening_balance	Voeg oopningsbalans by
 add_staff	Voeg personeel by
 add_unit	Voeg eenheid by
 add_use_name	Gebruik hierdie naam
-allow_extra_tills	Toegelaat ekstra kasregisters
+allow_extra_tills	Laat ekstra kasregisters toe
 amend	Wysig
 apply_country_pack	Landpak toepas
 datetime_appearance	Datum- en tydweergawe
@@ -317,7 +329,7 @@ drawer_count	Lade-aantal (opsioneel)
 expense_heading	Uitgawe
 export_day	Exporteer dag
 extra_note_bill_ph	Aanvullende nota op hierdie rekening / verkoop
-extra_tills_heading	Bykomende lades
+extra_tills_heading	Bykomende kasregisters
 other_devices_help_heading	Stel ander toestelle op
 other_devices_help	Op hierdie toestel (Bediener): Ander toestelle → Laat ekstra kassas toe. Let op die koppelingskode en Wi‑Fi‑adres. Tik Laat ander toestelle toe om te koppel as dit verskyn. Op 'n rekenaar, tik Begin met hierdie rekenaar. Op elke ander toestel: installeer die app, kies Kliëntmodus, Vind die winkel se bediener (of tik die adres), voer die koppelingskode in, Koppel nou. Bestellings wag op die toestel as Wi‑Fi verbreek en gaan deur wanneer die Bediener weer antwoord. Ekstra drukkers word op die Bediener ingestel (Instellings → Drukkers) — ekstra kassas stuur rekeninge daarheen.
 forget_shop	Vergeet hierdie winkel
@@ -406,7 +418,7 @@ pair_finishing	Paaringsproses voltooi… pas die winkel se boeke toe
 pair_opening	Open die kasregister…
 lan_offline_waiting	Winkel se server onbereikbaar · {n} wag
 lan_connecting	Koppel aan winkel…
-lan_live	Live
+lan_live	Regstreeks
 lan_sending	{n} stuur
 lan_sign_in_to_send	Melder weer aan om {n} te stuur
 lan_pair_again	Paar hierdie toestel weer
@@ -735,6 +747,20 @@ fssai_ph	Dwelm lisensie nr. (opsioneel — jou woordkeuse)
 bill_footer_ph	Voetstuk (bv. Dankie, besoek weer)
 kot_field_on	wys
 kot_field_off	versteek
+kot_field_show	Wys
+kot_field_hide	Versteek
+bill_line_shop	Winkel
+bill_line_address	Adres
+bill_line_fssai	FSSAI
+bill_line_title	Titel
+bill_line_customer	Klant
+bill_line_bill_no	Faktuurnr.
+bill_line_time	Tyd
+bill_line_cashier	Kasier
+bill_line_items	Items
+bill_line_total	Totaal
+bill_line_footer	Voetstuk
+bill_line_upi	UPI
 kot_weight_light	Lig
 bill_kot_panel_help	Rekening-uitleg en inhoudsbreedte. Kassier is wie die rekening uitgereik of vereffen het — die volledige verkoopsverhaal bly in die boeke.
 std_size_ph	bv. 18, 20, 26…
@@ -842,10 +868,10 @@ lane_declared_label	Belasting faktuur
 lane_owner_label	Kasnota
 money_lane_bill	Faktuur: {lane}
 
-removing	Removing…
-removed	Removed
-updating_order	Updating…
-order_updated	Order updated
+removing	Verwyder tans…
+removed	Verwyder
+updating_order	Werk by…
+order_updated	Bestelling bygewerk
 sel_copy	Kopieer
 sel_select_all	Kies alles
 sel_copied	Gekopieer

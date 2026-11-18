@@ -101,6 +101,19 @@ bill_item_col_sep	Stulpelių linijos
 slip_columns	Stulpeliai
 slip_col_header	Antraštė
 bill_line_logo	Logotipas
+bill_line_shop	Parduotuvė
+bill_line_address	Adresas
+bill_line_fssai	FSSAI
+bill_line_title	Antraštė
+bill_line_customer	Klientas
+bill_line_bill_no	Sąskaitos nr.
+bill_line_time	Laikas
+bill_line_cashier	Kasininkas
+bill_line_table	Stalas
+bill_line_items	Prekės
+bill_line_total	Iš viso
+bill_line_footer	Poraštė
+bill_line_upi	UPI
 bill_logo_picture	Paveikslėlis
 bill_logo_choose	Pasirinkti paveikslėlį
 bill_logo_remove	Pašalinti paveikslėlį
@@ -128,6 +141,12 @@ bill_item_piece_off	Išjungta
 bill_total_qty	Bendras kiekis
 bill_total_subtotal	Tarpinė suma
 bill_total_grand	Galutinė suma
+bill_total_number_under	Skaičius po
+bill_total_caption_under	Etiketė po
+bill_total_own_line	Atskira eilutė
+bill_total_caption_with	Prie skaičiaus
+bill_total_caption_none	Be etiketės
+bill_total_place_help	„Atskira eilutė“ spausdina šią sumą atskirai. Po stulpeliu jos skaičius spausdinamas tame prekių stulpelyje, šios eilutės dydžiu ir storiu; sumos dalijasi viena eile, kol kuris nors stulpelis užimamas, tada pradedama nauja eilė. Etiketė eina prie skaičiaus, po kitu stulpeliu arba praleidžiama. Mokesčio, aptarnavimo, apvalinimo ir mokėjimo eilutės seka „Tarpinė suma“.
 reprint_incl	Spausdinime
 reprint_skip	Praleisti
 reprint_skip_meta	Praleisti atkūrimo spausdinimą
@@ -178,20 +197,20 @@ snack_secs_ph	Sekundės (3–60, numatyta 10)
 snack_secs_save	Išsaugoti įspėjimo laiką
 snack_secs_saved	Įspėjimo laikas išsaugotas — {n} sekundės
 settings_sec_whatsapp	WhatsApp
-whatsapp_cloud_help	Use your own Meta WhatsApp Cloud API. Create a System User token with whatsapp_business_messaging (temporary dashboard tokens expire). Credentials stay on this Server only — never on extra tills. Accepted means Meta took the request, not that the guest received it.
-whatsapp_phone_id_ph	Phone Number ID
-whatsapp_token_ph	Access Token (leave blank to keep)
-whatsapp_template_ph	Bill template name (optional)
-whatsapp_template_lang_ph	Template language (e.g. en)
-whatsapp_enable	Enable
+whatsapp_cloud_help	Naudokite savo Meta WhatsApp Cloud API. Sukurkite System User raktą su whatsapp_business_messaging (laikini skydelio raktai nustoja galioti). Duomenys lieka tik šiame Serveryje — niekada papildomose kasose. „Priimta“ reiškia, kad Meta priėmė užklausą, o ne kad svečias ją gavo.
+whatsapp_phone_id_ph	Telefono numerio ID
+whatsapp_token_ph	Prieigos raktas (palikite tuščią, kad išliktų)
+whatsapp_template_ph	Sąskaitos šablono pavadinimas (nebūtina)
+whatsapp_template_lang_ph	Šablono kalba (pvz., en)
+whatsapp_enable	Įjungti
 whatsapp_disable	Off
-whatsapp_save	Save WhatsApp
-whatsapp_test	Test connection
-whatsapp_disconnect	Disconnect
-whatsapp_send_bill	Send via WhatsApp
+whatsapp_save	Išsaugoti WhatsApp
+whatsapp_test	Tikrinti ryšį
+whatsapp_disconnect	Atjungti
+whatsapp_send_bill	Siųsti per WhatsApp
 whatsapp_consent	WhatsApp OK
-whatsapp_consent_help	Guest agreed to receive WhatsApp messages. A phone number alone is not consent.
-whatsapp_server_only	Configure WhatsApp on the shop Server device
+whatsapp_consent_help	Svečias sutiko gauti WhatsApp žinutes. Vien telefono numeris nėra sutikimas.
+whatsapp_server_only	Nustatykite WhatsApp parduotuvės Serverio įrenginyje
 settings_sec_backup	Atsarginė kopija ir atkūrimas
 settings_sec_diag	Diagnostika
 settings_sec_privacy	Privatumas
@@ -637,7 +656,7 @@ choose_device_use	Pasirinkite Serverį arba Klientą.
 paired_note	Susieta. Atrakinkite, kad parduotumėte, arba Atnaujinkite naujausiam.
 last_update_at	Paskutinis atnaujinimas: {time}.
 pair_intro	Raskite serverį arba įveskite adresą ir susiejimo kodą.
-pair_resume_hint	Already paired — enter your shop PIN, or Forget this shop to pair another.
+pair_resume_hint	Jau susieta — įveskite savo parduotuvės PIN arba palieskite „Pamiršti šią parduotuvę“, kad susietumėte kitą.
 queue_waiting	Laukia, kol pasieks parduotuvę ({n}):
 queue_tries	Bandyta {n} kartų · paskutinis atsakymas: {e}
 save_backup_copy	Išsaugoti atsarginę kopiją…
@@ -754,13 +773,18 @@ station_vps_dd	Šios stoties spausdintuvai
 station_vps_dd_n	{n} spausdintuvas(-ai) · bakstelėkite, kad pakeistumėte
 bill_printers_dd	Sąskaitos spausdintuvai
 bill_printers_dd_n	{n} spausdintuvas(-ai) sąskaitai · bakstelėkite, kad pakeistumėte
-paper_heading	Popierius
+paper_heading	Virtualus popierius
 paper_size	{w} × {h} mm
 paper_roll	{w} mm ritinys
 paper_not_set	popierius dar nežinomas
-paper_length_mm	Ilgis (mm)
-printer_paper_help	Šio spausdintuvo popierius mm. Tuščias Ilgis reiškia ritinį: kiekvienas kvitas tokio ilgio, kaip jo turinys. „Rasti spausdintuvus“ užpildo tuščią popierių iš spausdintuvo tvarkyklės (80 mm ritinys, kai ji negali pasakyti) ir niekada nekeičia jau nustatyto.
-preview_help	Šis kvitas žemiau pasirinkto spausdintuvo popieriuje, kaip ten spausdinamas: tikru dydžiu nuo viršutinio kairiojo kampo, kurį spausdintuvas pasiekia (pilka: kraštai, kurių nepasiekia), ilgas kvitas daugiau lapų, viskas už popieriaus krašto nukerpama. Pasirinkus spausdintuvą keičiasi tik peržiūra; kiekvieno spausdintuvo popierius nustatomas skiltyje „Spausdintuvai“.
+virtual_width_mm	Virtualus plotis (mm)
+virtual_length_mm	Virtualus ilgis (mm)
+reported_width_mm	Praneštas plotis (mm)
+reported_length_mm	Praneštas ilgis (mm)
+reported_paper	Pranešta: {paper}
+virtual_paper	Virtualus: {paper}
+printer_paper_help	Praneštas – tai popierius, kuriam nustatyta šio spausdintuvo tvarkyklė; programa jį tik nuskaito, o „nėra“ reiškia, kad nėra tvarkyklės, kurios būtų galima paklausti. Virtualus – tai popierius, kuris, jūsų teigimu, iš tikrųjų yra spausdintuve, milimetrais; tuščias ilgis reiškia ritinį. Spausdintuvas spausdina ant savo popieriaus; virtualus popierius pasako programai, kiek jo yra tikras popierius – peržiūrai, puslapio ilgiui ir kvito vietai. Rasti spausdintuvus užpildo tuščią virtualų popierių ir niekada nekeičia jūsų nustatyto.
+preview_help	Šis kvitas toks, koks spausdinamas žemiau pasirinktu spausdintuvu, tikru dydžiu ant jo virtualaus popieriaus. Balta – kur spausdinama, pilko popieriaus spausdintuvas nepasiekia, o išblukęs rašalas nukerpamas. Devyni langeliai yra popierius: bakstelėkite ten, kur turi būti kvitas. Ilgas kvitas tęsiasi kituose puslapiuose. Spausdintuvo pasirinkimas keičia tik peržiūrą.
 job_layout	Išdėstymas
 job_delivery	Kaip siunčiamas darbas
 job_delivery_help	OS dokumentas, neapdoroti baitai arba ESC/POS. Sąskaita ir virtuvės lapelis kiekvienas laiko savąjį. Bet kuris darbas gali eiti į bet kurį spausdintuvą, kurį Paieška išsaugojo.
@@ -1266,8 +1290,8 @@ taxable_value	Apmokestinamoji vertė
 gst_inside_price_note	({tax} įskaičiuota)
 start_with_template	Pradėti nuo mūsų meniu šablono
 template_heading	Mūsų meniu šablonas
-template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
-template_download_shelf	Download photo shelf
+template_need_download	Atsisiųskite viešą patiekalų nuotraukų lentyną (~1459 patiekalai), tada importuokite trūkstamus pavadinimus į savo meniu.
+template_download_shelf	Atsisiųsti nuotraukų lentyną
 template_info	{c} kategorijos ir {d} patiekalai su nuotraukomis, paruošti pridėti. Kainos prasideda nuo ₹0 — tada nustatykite savas.
 template_import	Importuoti visą šabloną
 template_confirm	Pridėti {d} patiekalų su jų kategorijomis? Jau turimi patiekalai lieka kaip yra.

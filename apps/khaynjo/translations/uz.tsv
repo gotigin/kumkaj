@@ -101,6 +101,19 @@ bill_item_col_sep	Ustun chiziqlari
 slip_columns	Ustunlar
 slip_col_header	Sarlavha
 bill_line_logo	Logotip
+bill_line_shop	Doʻkon
+bill_line_address	Manzil
+bill_line_fssai	FSSAI
+bill_line_title	Sarlavha
+bill_line_customer	Mijoz
+bill_line_bill_no	Hisob №
+bill_line_time	Vaqt
+bill_line_cashier	Kassir
+bill_line_table	Stol
+bill_line_items	Mahsulotlar
+bill_line_total	Jami
+bill_line_footer	Pastki yozuv
+bill_line_upi	UPI
 bill_logo_picture	Rasm
 bill_logo_choose	Rasm tanlash
 bill_logo_remove	Rasmni olib tashlash
@@ -128,6 +141,12 @@ bill_item_piece_off	Oʻchiq
 bill_total_qty	Jami miqdor
 bill_total_subtotal	Oraliq summa
 bill_total_grand	Yakuniy summa
+bill_total_number_under	Son shuning ostida
+bill_total_caption_under	Yorliq shuning ostida
+bill_total_own_line	Oʻz qatori
+bill_total_caption_with	Son bilan birga
+bill_total_caption_none	Yorliqsiz
+bill_total_place_help	Oʻz qatori bu jamini alohida chop etadi. Ustun ostida boʻlsa, uning soni oʻsha tovar ustunida, shu qatorning oʻlchami va qalinligida chop etiladi; bir ustun band boʻlguncha jamilar bitta safni boʻlishadi, soʻng yangi saf boshlanadi. Yorliq son bilan birga, boshqa ustun ostida turadi yoki tushirib qoldiriladi. Soliq, xizmat, yaxlitlash va toʻlov qatorlari Oraliq summa oʻrniga ergashadi.
 reprint_incl	Chop etishda
 reprint_skip	Oʻtkazib yuborish
 reprint_skip_meta	Tiklash chop etishni oʻtkazish
@@ -178,20 +197,20 @@ snack_secs_ph	Soniya (3–60, odatiy 10)
 snack_secs_save	Ogohlantirish vaqtini saqlash
 snack_secs_saved	Ogohlantirish vaqti saqlandi — {n} soniya
 settings_sec_whatsapp	WhatsApp
-whatsapp_cloud_help	Use your own Meta WhatsApp Cloud API. Create a System User token with whatsapp_business_messaging (temporary dashboard tokens expire). Credentials stay on this Server only — never on extra tills. Accepted means Meta took the request, not that the guest received it.
-whatsapp_phone_id_ph	Phone Number ID
-whatsapp_token_ph	Access Token (leave blank to keep)
-whatsapp_template_ph	Bill template name (optional)
-whatsapp_template_lang_ph	Template language (e.g. en)
-whatsapp_enable	Enable
+whatsapp_cloud_help	Oʻzingizning Meta WhatsApp Cloud API’ingizdan foydalaning. whatsapp_business_messaging bilan System User tokenini yarating (boshqaruv panelidagi vaqtinchalik tokenlar muddati tugaydi). Maʼlumotlar faqat shu Serverda qoladi — qoʻshimcha kassalarda hech qachon emas. “Qabul qilindi” degani Meta soʻrovni oldi, mehmon uni oldi degani emas.
+whatsapp_phone_id_ph	Telefon raqami ID
+whatsapp_token_ph	Kirish tokeni (saqlab qolish uchun boʻsh qoldiring)
+whatsapp_template_ph	Hisob shabloni nomi (ixtiyoriy)
+whatsapp_template_lang_ph	Shablon tili (masalan, en)
+whatsapp_enable	Yoqish
 whatsapp_disable	Off
-whatsapp_save	Save WhatsApp
-whatsapp_test	Test connection
-whatsapp_disconnect	Disconnect
-whatsapp_send_bill	Send via WhatsApp
+whatsapp_save	WhatsApp’ni saqlash
+whatsapp_test	Ulanishni tekshirish
+whatsapp_disconnect	Uzish
+whatsapp_send_bill	WhatsApp orqali yuborish
 whatsapp_consent	WhatsApp OK
-whatsapp_consent_help	Guest agreed to receive WhatsApp messages. A phone number alone is not consent.
-whatsapp_server_only	Configure WhatsApp on the shop Server device
+whatsapp_consent_help	Mehmon WhatsApp xabarlarini olishga rozi boʻldi. Faqat telefon raqamining oʻzi rozilik emas.
+whatsapp_server_only	WhatsApp’ni doʻkonning Server qurilmasida sozlang
 settings_sec_backup	Zaxira nusxa va tiklash
 settings_sec_diag	Diagnostika
 settings_sec_privacy	Maxfiylik
@@ -637,7 +656,7 @@ choose_device_use	Server yoki Mijozni tanlang.
 paired_note	Juftlangan. Sotish uchun qulfni oching yoki oxirgisi uchun Yangilang.
 last_update_at	Oxirgi yangilanish: {time}.
 pair_intro	Serverni toping yoki manzil va juftlash kodini yozing.
-pair_resume_hint	Already paired — enter your shop PIN, or Forget this shop to pair another.
+pair_resume_hint	Allaqachon juftlangan — doʻkoningiz PIN kodini kiriting yoki boshqasini juftlash uchun “Bu doʻkonni unutish” tugmasini bosing.
 queue_waiting	Doʻkonga yetishni kutmoqda ({n}):
 queue_tries	{n} marta urinib koʻrildi · oxirgi javob: {e}
 save_backup_copy	Zaxira nusxa saqlash…
@@ -754,13 +773,18 @@ station_vps_dd	Shu stansiya printerlari
 station_vps_dd_n	{n} printer · oʻzgartirish uchun bosing
 bill_printers_dd	Hisob printerlari
 bill_printers_dd_n	hisob uchun {n} printer · oʻzgartirish uchun bosing
-paper_heading	Qogʻoz
+paper_heading	Virtual qogʻoz
 paper_size	{w} × {h} mm
 paper_roll	{w} mm rulon
 paper_not_set	qogʻoz hali nomaʼlum
-paper_length_mm	Uzunlik (mm)
-printer_paper_help	Bu printerning qogʻozi mm da. Boʻsh Uzunlik — rulon: har bir chek mazmuni qadar uzun. Printerlarni topish boʻsh qogʻozni printer drayveridan toʻldiradi (ayta olmasa, 80 mm rulon) va oldindan belgilanganini hech qachon oʻzgartirmaydi.
-preview_help	Pastda tanlangan printer qogʻozidagi bu chek, u yerda qanday chop etilsa shunday: printer yetadigan yuqori chap burchakdan haqiqiy oʻlchamda (kulrang: yetmaydigan chetlar), uzun chek koʻproq varaqda, qogʻoz chetidan oʻtgan hamma narsa kesiladi. Printer tanlash faqat oldindan koʻrishni oʻzgartiradi; har bir printer qogʻozi Printerlar boʻlimida belgilanadi.
+virtual_width_mm	Virtual kenglik (mm)
+virtual_length_mm	Virtual uzunlik (mm)
+reported_width_mm	Xabar qilingan kenglik (mm)
+reported_length_mm	Xabar qilingan uzunlik (mm)
+reported_paper	Xabar qilingan: {paper}
+virtual_paper	Virtual: {paper}
+printer_paper_help	Xabar qilingan — bu printer drayveri sozlangan qogʻoz; ilova uni faqat oʻqiydi, „yoʻq“ esa soʻraladigan drayver yoʻqligini bildiradi. Virtual — printerda haqiqatan bor deb siz aytgan qogʻoz, mm da; boʻsh uzunlik — rulon. Printer oʻz qogʻoziga chop etadi; virtual qogʻoz ilovaga uning qancha qismi haqiqiy qogʻoz ekanini aytadi: oldindan koʻrish, sahifa uzunligi va chek joyi uchun. Printerlarni topish boʻsh virtual qogʻozni toʻldiradi va siz belgilaganini hech qachon oʻzgartirmaydi.
+preview_help	Bu chek pastda tanlangan printerda qanday chop etilsa shunday, uning virtual qogʻozida haqiqiy oʻlchamda. Oq joy — chop etiladigan joy, kulrang qogʻozga printer yetmaydi, xira siyoh esa kesiladi. Toʻqqizta katak — qogʻoz: chek turishi kerak boʻlgan joyni bosing. Uzun chek keyingi sahifalarga oʻtadi. Printer tanlash faqat oldindan koʻrishni oʻzgartiradi.
 job_layout	Joylashuv
 job_delivery	Ish qanday yuboriladi
 job_delivery_help	OT hujjati, xom bayt yoki ESC/POS. Hisob va oshxona varaqi har biri oʻzinikini saqlaydi. Har qanday ish Qidiruv saqlagan istalgan printerga borishi mumkin.
@@ -1266,8 +1290,8 @@ taxable_value	Soliqqa tortiladigan qiymat
 gst_inside_price_note	({tax} ichida)
 start_with_template	Bizning menyu andozamiz bilan boshlash
 template_heading	Bizning menyu andozamiz
-template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
-template_download_shelf	Download photo shelf
+template_need_download	Taomlarning umumiy rasm javonini (~1459 taom) yuklab oling, soʻng yoʻq nomlarni menyuingizga import qiling.
+template_download_shelf	Rasm javonini yuklab olish
 template_info	{c} toifa va {d} taom surat bilan, qoʻshishga tayyor. Narxlar ₹0 dan boshlanadi — keyin oʻzingiznikini qoʻying.
 template_import	Toʻliq andozani import qilish
 template_confirm	{d} taomni toifalari bilan qoʻshilsinmi? Bor taomlar oʻz holicha qoladi.

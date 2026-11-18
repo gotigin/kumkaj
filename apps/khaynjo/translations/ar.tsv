@@ -101,6 +101,19 @@ bill_item_col_sep	خطوط الأعمدة
 slip_columns	الأعمدة
 slip_col_header	العنوان
 bill_line_logo	الشعار
+bill_line_shop	المتجر
+bill_line_address	عنوان المتجر
+bill_line_fssai	FSSAI
+bill_line_title	العنوان
+bill_line_customer	العميل
+bill_line_bill_no	رقم الفاتورة
+bill_line_time	الوقت
+bill_line_cashier	أمين الصندوق
+bill_line_table	الطاولة
+bill_line_items	العناصر
+bill_line_total	المجموع
+bill_line_footer	التذييل
+bill_line_upi	UPI
 bill_logo_picture	الصورة
 bill_logo_choose	اختر صورة
 bill_logo_remove	إزالة الصورة
@@ -128,6 +141,12 @@ bill_item_piece_off	إيقاف
 bill_total_qty	الكمية الكلية
 bill_total_subtotal	المجموع الفرعي
 bill_total_grand	الإجمالي
+bill_total_number_under	الرقم تحت
+bill_total_caption_under	التسمية تحت
+bill_total_own_line	سطر مستقل
+bill_total_caption_with	مع الرقم
+bill_total_caption_none	بدون تسمية
+bill_total_place_help	«سطر مستقل» يطبع هذا الإجمالي وحده. تحت عمود يُطبع رقمه في عمود الأصناف ذاك، بحجم هذا السطر وسُمكه؛ تتشارك الإجماليات صفًا واحدًا إلى أن يُشغل عمود، فيبدأ صف جديد. التسمية تكون مع الرقم أو تحت عمود آخر أو تُحذف. سطور الضريبة والخدمة والتقريب والدفع تتبع «المجموع الفرعي».
 reprint_incl	في الطباعة
 reprint_skip	تخطي
 reprint_skip_meta	خارج إعادة الطباعة
@@ -178,20 +197,20 @@ snack_secs_ph	ثوانٍ (3–60، الافتراضي 10)
 snack_secs_save	حفظ مدة التنبيه
 snack_secs_saved	حُفظت مدة التنبيه — {n} ثانية
 settings_sec_whatsapp	WhatsApp
-whatsapp_cloud_help	Use your own Meta WhatsApp Cloud API. Create a System User token with whatsapp_business_messaging (temporary dashboard tokens expire). Credentials stay on this Server only — never on extra tills. Accepted means Meta took the request, not that the guest received it.
-whatsapp_phone_id_ph	Phone Number ID
-whatsapp_token_ph	Access Token (leave blank to keep)
-whatsapp_template_ph	Bill template name (optional)
-whatsapp_template_lang_ph	Template language (e.g. en)
-whatsapp_enable	Enable
+whatsapp_cloud_help	استخدم واجهة Meta WhatsApp Cloud API الخاصة بك. أنشئ رمز System User يتضمن whatsapp_business_messaging (رموز لوحة التحكم المؤقتة تنتهي صلاحيتها). تبقى هذه البيانات على هذا الخادم فقط — وليس على الكاونترات الإضافية أبداً. “مقبول” يعني أن Meta استلمت الطلب، لا أن الضيف استلم الرسالة.
+whatsapp_phone_id_ph	معرّف رقم الهاتف
+whatsapp_token_ph	رمز الوصول (اتركه فارغاً للإبقاء عليه)
+whatsapp_template_ph	اسم قالب الفاتورة (اختياري)
+whatsapp_template_lang_ph	لغة القالب (مثلاً en)
+whatsapp_enable	تمكين
 whatsapp_disable	Off
-whatsapp_save	Save WhatsApp
-whatsapp_test	Test connection
-whatsapp_disconnect	Disconnect
-whatsapp_send_bill	Send via WhatsApp
-whatsapp_consent	WhatsApp OK
-whatsapp_consent_help	Guest agreed to receive WhatsApp messages. A phone number alone is not consent.
-whatsapp_server_only	Configure WhatsApp on the shop Server device
+whatsapp_save	حفظ WhatsApp
+whatsapp_test	اختبار الاتصال
+whatsapp_disconnect	قطع الاتصال
+whatsapp_send_bill	إرسال عبر WhatsApp
+whatsapp_consent	WhatsApp حسناً
+whatsapp_consent_help	وافق الضيف على استلام رسائل WhatsApp. رقم الهاتف وحده ليس موافقة.
+whatsapp_server_only	اضبط WhatsApp على جهاز خادم المتجر
 settings_sec_backup	النسخ الاحتياطي واستعادة البيانات
 settings_sec_diag	التشخيص
 settings_sec_privacy	الخصوصية
@@ -637,7 +656,7 @@ choose_device_use	اختر طريقة استخدام هذا الجهاز.
 paired_note	تم الاقتران. افتح القفل للبيع، أو حدّث لجلب أحدث بيانات المطعم.
 last_update_at	آخر تحديث من المطعم: {time}.
 pair_intro	ابحث عن الخادم، أو اكتب عنوانه ورمز الاقتران.
-pair_resume_hint	Already paired — enter your shop PIN, or Forget this shop to pair another.
+pair_resume_hint	مقترن مسبقاً — أدخل رمز PIN الخاص بمتجرك، أو اضغط “انسَ هذه المتجر” للاقتران بمتجر آخر.
 queue_waiting	بانتظار الوصول إلى المطعم ({n}):
 queue_tries	{n} محاولات · آخر رد: {e}
 save_backup_copy	حفظ نسخة احتياطية…
@@ -754,13 +773,18 @@ station_vps_dd	طابعات هذه المحطة
 station_vps_dd_n	{n} طابعة · انقر للتغيير
 bill_printers_dd	طابعات للفاتورة
 bill_printers_dd_n	{n} طابعة(ات) للفاتورة · اضغط للتغيير
-paper_heading	الورق
+paper_heading	الورق الافتراضي
 paper_size	{w} × {h} mm
 paper_roll	لفة {w} مم
 paper_not_set	الورق غير معروف بعد
-paper_length_mm	الطول (mm)
-printer_paper_help	ورق هذه الطابعة بالمليمتر. الطول الفارغ يعني لفة: كل إيصال بطول محتواه. «ابحث عن الطابعات» يملأ الورق الفارغ من برنامج تشغيل الطابعة (لفة 80 مم إن لم يستطع التحديد) ولا يغيّر أبدًا ورقًا محددًا من قبل.
-preview_help	هذا الإيصال على ورق الطابعة المختارة أدناه كما يُطبع عليها: بالحجم الحقيقي من أعلى اليسار الذي تبلغه الطابعة (الرمادي: حواف لا تبلغها)، والإيصال الطويل على أوراق أكثر، وكل ما يتجاوز حافة الورق يُقص. اختيار طابعة يغيّر المعاينة فقط؛ ورق كل طابعة يُضبط في «الطابعات».
+virtual_width_mm	العرض الافتراضي (mm)
+virtual_length_mm	الطول الافتراضي (mm)
+reported_width_mm	العرض المُبلَّغ (mm)
+reported_length_mm	الطول المُبلَّغ (mm)
+reported_paper	المُبلَّغ: {paper}
+virtual_paper	الافتراضي: {paper}
+printer_paper_help	المُبلَّغ هو الورق المضبوط عليه برنامج تشغيل هذه الطابعة؛ التطبيق يقرؤه فقط، و«غير متاح» تعني أنه لا يوجد برنامج تشغيل يُسأل. الافتراضي هو الورق الذي تقول إنه موجود فعلاً في الطابعة، بالمليمتر؛ الطول الفارغ يعني لفة. الطابعة تطبع على ورقها هي؛ والورق الافتراضي يخبر التطبيق كم من ذلك ورق حقيقي، للمعاينة وطول الصفحة وموضع الإيصال. «ابحث عن الطابعات» يملأ الورق الافتراضي الفارغ ولا يغيّر أبداً ما ضبطته أنت.
+preview_help	هذا الإيصال كما يُطبع على الطابعة المختارة أدناه، بالحجم الحقيقي على ورقها الافتراضي. الأبيض هو موضع الطباعة، والورق الرمادي خارج مدى الطابعة، والحبر الباهت يُقطع. المربعات التسعة هي الورقة: انقر حيث يجب أن يوضع الإيصال. الإيصال الطويل يكمل على صفحات أخرى. اختيار طابعة يغيّر المعاينة فقط.
 job_layout	التخطيط
 job_delivery	طريقة إرسال المهمة
 job_delivery_help	مستند نظام التشغيل، أو بايتات خام، أو ESC/POS. تحتفظ الفاتورة وطلب المطبخ (KOT) بكل منهما بنفسها. يمكن لأي مهمة أن تذهب إلى أي طابعة تم حفظها بواسطة Find.
@@ -1040,7 +1064,7 @@ book_kind_today	دفتر اليوم
 book_kind_month	دفتر هذا الشهر
 book_kind_aging	المستحقات / مدين-دائن
 book_kind_balance	الميزانية العمومية
-order_help	اختر طلبًا مفتوحًا، أو اختر طاولة وابدأ طلبًا جديدًا. انقر العناصر الجاهزة، أرسل KOT، فوتر عنصرًا أو أكثر، قسّم الفاتورة وسوِّ الدفع.
+order_help	اضغط على عنصر لإضافته.
 floor_help	تُظهر كل طاولة ما إذا كان الضيوف جالسين، وما فاتورتهم المفتوحة، ومن يحتاج الخدمة التالية.
 kitchen_help	تتبع الجاهز لكل نوع أو لكل عنصر — سجّله في KOT كما تريد.
 kitchen_empty	لا شيء مفتوحًا الآن.
@@ -1238,7 +1262,7 @@ on_your_menu	في قائمتك
 edit	تعديل
 schemes	عروض
 schemes_help	اشترِ X واحصل على Y — عند التحصيل. مثال Buy 2 Thali get 1 Chaas
-scheme_bogo_ph	Buy 2 Thali get 1 Chaas
+scheme_bogo_ph	اشترِ 2 ثالي واحصل على 1 تشاس
 add_scheme	أضف BOGO
 schedule_ph	الوقت / ساعة سعيدة — Mon-Fri 07:00-11:00 أو HappyHour 17:00-19:00=150
 upi_qr	UPI QR
@@ -1266,8 +1290,8 @@ taxable_value	القيمة الخاضعة
 gst_inside_price_note	({tax} شامل)
 start_with_template	ابدأ بقالب قائمتنا
 template_heading	قالب قائمتنا
-template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
-template_download_shelf	Download photo shelf
+template_need_download	نزّل رف صور الأطباق العام (~1,459 طبقاً)، ثم استورد الأسماء الناقصة إلى قائمتك.
+template_download_shelf	تنزيل رف الصور
 template_info	{c} فئات و{d} طبقًا بالصور جاهزة للإضافة. السعر يبدأ من ₹0 — حدّد أسعارك لاحقًا.
 template_import	استيراد القالب كاملًا
 template_confirm	إضافة {d} طبقًا مع فئاتها؟ أطباقك الحالية تبقى كما هي.

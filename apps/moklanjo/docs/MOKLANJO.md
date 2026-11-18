@@ -304,6 +304,13 @@ LAN pilot readiness (both apps): [`PRODUCTION_STATE_FOR_OFFLINE_USAGE.md`](../..
   from the printable top-left (no more `fit-to-page`, which printed an
   80 mm receipt page-wide); the job format shows a preview on any saved
   printer's paper (`docs/PRINTER.md` § Paper and preview, § Moklanjo).
+  *2026-11-17:* the app no longer names a page size — an OS document
+  prints the standard way on the printer's own page as its driver is set;
+  the paper typed on Printers is the *virtual* paper (how much of that page
+  is real paper), the driver's is shown read-only as the *reported* paper;
+  the receipt and the AWB label each have a place on the paper (3 × 3
+  grid); Windows printing, USB and Bluetooth call the Windows API directly
+  (no helper process).
 
 ## Lessons adopted from Khaynjo (2026-11-02)
 

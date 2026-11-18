@@ -79,13 +79,19 @@ bill_item_amount	रकम
 bill_item_note	Rx / बिक्री टिप्पणी
 bill_item_col_sep	खंभा रेखा
 slip_col_width	चौड़ाई (mm)
-paper_heading	कागज
+paper_heading	आभासी कागज
 paper_size	{w} × {h} mm
 paper_roll	{w} mm रोल
 paper_not_set	कागज अबहिन पता नाहीं
-paper_length_mm	लंबाई (mm)
-printer_paper_help	ई प्रिंटर क कागज mm मा। खाली लंबाई क मतलब रोल: हर पर्ची ओकरे सामग्री जितनी लंबी होत है। प्रिंटर खोजौ खाली कागज प्रिंटर के ड्राइवर से भर देत है (न बताय सकै तौ 80 mm रोल) अउर पहिले से तय कागज कबहूँ नाहीं बदलत।
-preview_help	ई पर्ची नीचे चुने प्रिंटर के कागज पर, जइसे उहाँ छपी: प्रिंटर जहाँ तक पहुँचत है ओह ऊपरी बाएँ कोना से असली नाप मा (स्लेटी: जहाँ नाहीं पहुँचत), लंबी पर्ची अउर पन्ना पर, कागज के किनारा से आगे क हिस्सा कटि जात है। प्रिंटर चुनै से खाली पूर्वावलोकन बदलत है; हर प्रिंटर क कागज प्रिंटर मा तय होत है।
+na	लागू नाहीं
+virtual_width_mm	आभासी चौड़ाई (mm)
+virtual_length_mm	आभासी लंबाई (mm)
+reported_width_mm	बताई गई चौड़ाई (mm)
+reported_length_mm	बताई गई लंबाई (mm)
+reported_paper	बतावा गा: {paper}
+virtual_paper	आभासी: {paper}
+printer_paper_help	बतावा गा ऊ कागज आय जेहि पर ई प्रिंटर कै ड्राइवर सेट बा; ऐप ओका खाली पढ़त है, अउर “लागू नाहीं” कै मतलब है कि पूछै बरे कौनो ड्राइवर नाहीं बा। आभासी ऊ कागज आय जौन आप कहत हैं कि प्रिंटर मा सचमुच लाग बा, mm मा; खाली लंबाई कै मतलब रोल है। प्रिंटर अपने कागज पर छापत है; आभासी कागज ऐप का बतावत है कि ओहमा केतना असली कागज बा, पूर्वावलोकन, पन्ना कै लंबाई अउर पर्ची कै जगह बरे। प्रिंटर खोजौ खाली आभासी कागज भर देत है अउर आपकै सेट कीन कबहूँ नाहीं बदलत।
+preview_help	ई पर्ची जइसे नीचे चुने गए प्रिंटर पर छपत है, ओकरे आभासी कागज पर असली नाप मा। सफेद जगह पर छपत है, धूसर कागज तक प्रिंटर नाहीं पहुँचत, अउर फीकी स्याही कट जात है। नौ खाना कागज आँय: जहाँ पर्ची बइठै चाही हुआँ टैप करा। लंबी पर्ची अउर पन्नन पर जात है। प्रिंटर चुने से खाली पूर्वावलोकन बदलत है।
 slip_col_start	सुरू कै जगह (px)
 slip_col_end	आखिरी कै जगह (px)
 slip_columns_help	हर खंभा कै चौड़ाई मा ओकर सुरू अउर आखिरी कै जगह सामिल बा। लिखावट अपने खंभा के भीतर लपेटि जात है; सामग्री कै चौड़ाई से बाहर जउन बा ऊ कागज अउर पूर्वावलोकन दूनौ मा कटि जात है।
@@ -100,6 +106,12 @@ bill_item_piece_off	बंद
 bill_total_qty	कुल मात्रा
 bill_total_subtotal	उप-जोड़
 bill_total_grand	कुल जोड़
+bill_total_number_under	संख्या एकरे नीचे
+bill_total_caption_under	लेबल एकरे नीचे
+bill_total_own_line	आपन पंक्ति
+bill_total_caption_with	संख्या के संग
+bill_total_caption_none	लेबल नाहीं
+bill_total_place_help	“आपन पंक्ति” ई जोड़ का अकेले छापत है। खंभा के नीचे होय पर एकर संख्या ओही सामान वाले खंभा मा, ई पंक्ति के नाप अउर मोटाई मा छपत है; जब तक कौनो खंभा भर न जाय जोड़ एकै कतार बाँटत हैं, फिर नई कतार सुरू होत है। लेबल संख्या के संग, दूसर खंभा के नीचे जात है, या छोड़ दीन जात है। टैक्स, सेवा, राउंडिंग अउर भुगतान वाली पंक्ति “उप-जोड़” के पीछे चलत हैं।
 kot_unassigned	बिना सौंपा
 settings_hub_help	एक बार मा एक हिस्सा खोलौ — कम स्क्रॉल, साफ चुनाव।
 settings_sec_language	भासा अउर मुद्रा
@@ -735,6 +747,20 @@ fssai_ph	दवाई लाइसेंस नं. (मर्जी कै — 
 bill_footer_ph	फुटर (जइसे धन्यवाद, फिर आयौ)
 kot_field_on	देखावौ
 kot_field_off	लुकावौ
+kot_field_show	देखावौ
+kot_field_hide	लुकावौ
+bill_line_shop	दुकान
+bill_line_address	पता
+bill_line_fssai	FSSAI
+bill_line_title	सीर्षक
+bill_line_customer	गाहक
+bill_line_bill_no	बिल नं.
+bill_line_time	समय
+bill_line_cashier	कैसियर
+bill_line_items	सामान
+bill_line_total	कुल
+bill_line_footer	फुटर
+bill_line_upi	UPI
 kot_weight_light	पातर
 bill_kot_panel_help	बिल कै बनावट अउर चौड़ाई। कैसियर ऊ हैं जे बिल जारी या निपटाइन — पूरा बिक्री कै कहानी बही मा रहत है।
 std_size_ph	जइसे 18, 20, 26…
@@ -842,10 +868,10 @@ lane_declared_label	कर चालान
 lane_owner_label	कैस मेमो
 money_lane_bill	बिल: {lane}
 
-removing	Removing…
-removed	Removed
-updating_order	Updating…
-order_updated	Order updated
+removing	हटावत हन…
+removed	हटाय दीन गवा
+updating_order	अपडेट होत बा…
+order_updated	ऑर्डर अपडेट होइ गवा
 sel_copy	कॉपी करौ
 sel_select_all	सब चुनौ
 sel_copied	कॉपी होइ गा

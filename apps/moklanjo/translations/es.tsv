@@ -24,8 +24,8 @@ reports	Informes
 refresh	Actualizar
 undo	Deshacer
 start_tracking	Empezar conteo
-stock_minus	− Stock
-stock_plus	+ Stock
+stock_minus	− Existencias
+stock_plus	+ Existencias
 settle_cash	Cobrar efectivo
 settle_card	Cobrar tarjeta
 items	Tarifas y servicios
@@ -192,7 +192,7 @@ snack_secs_save	Guardar tiempo de aviso
 snack_secs_saved	Tiempo de aviso guardado — {n} segundos
 snack_secs_bad	Escribe los segundos como número (3–60)
 cancelled	Cancelado
-cancelling	Cancelling…
+cancelling	Cancellingâ¦
 cancel	Anular
 opening_client	Abriendo cliente…
 preparing_desk	Preparando escritorio…
@@ -501,13 +501,18 @@ job_size	Tamaño de fuente
 job_size_ph	p. ej. 18, 20, 26…
 test_receipt_format	Probar recibo
 test_label_format	Probar etiqueta
-paper_heading	Papel
+paper_heading	Papel virtual
 paper_size	{w} × {h} mm
 paper_roll	rollo de {w} mm
 paper_not_set	papel aún desconocido
-paper_length_mm	Largo (mm)
-printer_paper_help	El papel de esta impresora en mm. Un Largo vacío es un rollo: cada ticket es tan largo como su contenido. Buscar impresoras rellena el papel vacío con el del controlador de la impresora (un rollo de 80 mm si no puede decirlo) y nunca cambia uno ya definido.
-preview_help	Este ticket sobre el papel de la impresora elegida abajo, tal como se imprime allí: a tamaño real desde la esquina superior izquierda que alcanza la impresora (gris: bordes que no alcanza), un ticket largo en más hojas, todo lo que pasa del borde del papel se recorta. Elegir una impresora solo cambia la vista previa; el papel de cada impresora se define en Impresoras.
+virtual_width_mm	Ancho virtual (mm)
+virtual_length_mm	Largo virtual (mm)
+reported_width_mm	Ancho informado (mm)
+reported_length_mm	Largo informado (mm)
+reported_paper	Informado: {paper}
+virtual_paper	Virtual: {paper}
+printer_paper_help	Informado es el papel al que está ajustado el controlador de esta impresora; la app solo lo lee, y N/D significa que no hay controlador al que preguntar. Virtual es el papel que tú dices que hay realmente en la impresora, en mm; un largo vacío es un rollo. La impresora imprime en su propio papel; el papel virtual le dice a la app cuánto de él es papel real, para la vista previa, el largo de página y el lugar del ticket. Buscar impresoras rellena un papel virtual vacío y nunca cambia el que tú has definido.
+preview_help	Este ticket tal como se imprime en la impresora elegida abajo, a tamaño real sobre su papel virtual. El blanco es donde imprime, el papel gris queda fuera del alcance de la impresora y la tinta atenuada se corta. Los nueve cuadros son el papel: toca donde debe ir el ticket. Un ticket largo sigue en más páginas. Elegir una impresora solo cambia la vista previa.
 slip_col_width	Ancho (mm)
 no_printer_assigned	Sin impresora
 printer_target_default	impresora predeterminada
@@ -643,11 +648,11 @@ day_close_help	Registrar un cierre del día guarda este resumen (y la diferencia
 expenses_word	Gastos
 feature_access_help	Acceso a funciones del personal elegido (pulsa después de añadir)
 footer_local	SQLite local · Gratis para siempre · Sin nube
-fresh_book_moklanjo	Impresoras
+fresh_book_moklanjo	Nuevo = catálogo vacío (añada artículos después). Libro = escriba abajo el stock inicial y quién le debe.
 fresh_selected	Fresh elegido: el catálogo queda vacío. Toca Done cuando estés listo.
 gross_word	Bruto
 how_start	¿Cómo quieres empezar?
-later_country_pack	Impresoras
+later_country_pack	Después: Ajustes → aplique el paquete de su país para las etiquetas de impuestos y pago.
 local_badge	LOCAL
 measures_help_moklanjo	Cómo se miden los paquetes en el mostrador. Escribe dimensiones y peso en las unidades que uses: estándar (cm, m, in, ft · kg, g, lb, oz) o tu propia unidad vinculada a cm / kg arriba (directamente o a través de otras unidades). Los libros siempre registran kg. Deja un campo vacío para mantenerlo.
 mix_type_hint_moklanjo	Escribe cuánto en cada uno (efectivo / UPI / tarjeta / crédito). Debe sumar la factura. El crédito necesita un cliente arriba.
@@ -772,7 +777,7 @@ business_name_ph	Nombre del negocio
 category_new_ph	Categoría (opcional, se crea si es nueva)
 cod_amount_ph	Importe COD
 code_bag_ph	Código (bag)
-conv_factor_ph	Factor (25 = 1 bag → 25 kg)
+conv_factor_ph	Factor (25 = 1 saco → 25 kg)
 country_code_ph	Código de país ej. IN, GB, US, AE, BR
 credit_khata_amount_ph	Importe a crédito / cuenta
 credit_limit_ph	Límite de crédito (0 = ninguno)

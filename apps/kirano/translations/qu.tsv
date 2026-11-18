@@ -23,8 +23,8 @@ stock_minus	− Waqay
 stock_plus	+ Waqay
 settle_cash	Qullqita allichay
 settle_card	Tarjeta de arreglo
-items	Menú nisqapi menú nisqapi kaqkuna
-nav_items	Menú nisqapi menú nisqapi kaqkuna
+items	Imakuna
+nav_items	Imakuna
 items_help	Imatapas ñit’iy chayta allichanaykipaq. Musuq imapas formulariota chuyanchan. Sutiwan utaq pisi codigowan maskay, huk chanin churay (0 allinmi), chaymanta Yanapay. Grabasqaña rantikuykunaqa cargochasqa kasqanku sutitam waqaychanku.
 add_item	Menú nisqapi kaq elementota yapay
 new_item	Musuq menú nisqapi kaq
@@ -56,24 +56,30 @@ applied	Aplicasqa
 note_ph	Qhaway (munasqa) .
 rounded	MUYUQA
 split	Rakisqa
-bill_item_layout	Menú menú nisqapi elementokuna churay
+bill_item_layout	Menú nisqapi elementokuna churay
 bill_item_layout_columns	Columnakuna
 bill_item_layout_stacked	Apilado
 bill_item_header	Sapanchasqa umalliqkuna
-bill_item_name	Menú menú nisqapi elemento suti
+bill_item_name	Menú nisqapi elemento suti
 bill_item_qty	Yupay
 bill_item_price	Precio
 bill_item_amount	Cantidad nisqa
 bill_item_note	Nota de artículo
 bill_item_col_sep	Columna kamachiykuna
 slip_col_width	Kinray (mm)
-paper_heading	Rapi
+paper_heading	Virtual rapi
 paper_size	{w} × {h} mm
 paper_roll	{w} mm muyuq
 paper_not_set	rapiqa manaraq yachasqachu
-paper_length_mm	Suni (mm)
-printer_paper_help	Kay impresorap rapin mm-pi. Ch'usaq Suni muyuqmi: sapa boletaqa ukhunpi kaqninman hina sunin. Impresorakunata maskay ch'usaq rapita impresorap driverninmanta hunt'achin (mana niyta atispaqa 80 mm muyuq) hinaspa manan hayk'appas churasqataqa tikranchu.
-preview_help	Kay boletaqa uraypi akllasqa impresorap rapinpi, chaypi imprimikusqanman hina: impresora chayasqan hanaq lluq'i k'uchumanta chiqap sayayninpi (uqi: mana chayasqan patakuna), suni boleta astawan rapikunapi, rapip patanta pasaqqa kuchusqa. Impresorata akllayqa ñawpaq qhawayllatan tikran; sapa impresorap rapinqa Impresorakuna nisqapi churakun.
+na	Mana
+virtual_width_mm	Virtual kinray (mm)
+virtual_length_mm	Virtual suni (mm)
+reported_width_mm	Willasqa kinray (mm)
+reported_length_mm	Willasqa suni (mm)
+reported_paper	Willasqa: {paper}
+virtual_paper	Virtual: {paper}
+printer_paper_help	Willasqaqa kay impresorap drivernin churasqa rapim; appqa ñawinchallanmi, “Mana” niyqa mana tapunapaq driver kanchu ninanmi. Virtualqa impresorapi chiqapta kachkan nispa nisqayki rapim, mm-pi; ch'usaq suniqa muyuqmi. Impresoraqa kikin rapinpi imprimin; virtual rapiqa appman willan hayk'a chiqap rapi kasqanta, ñawpaq qhawaypaq, rapip suninpaq, boletap kananpaqpas. Impresorakunata maskay ch'usaq virtual rapita hunt'achin, manataq hayk'appas churasqaykita tikranchu.
+preview_help	Kay boletaqa uraypi akllasqa impresorapi imprimikusqanman hina, virtual rapinpi chiqap sayayninpi. Yuraqpi imprimin, uqi rapimanqa impresora mana chayanchu, pisi rikukuq tintataq kuchusqa. Isqun t'aqakunaqa rapim: boleta kanan kaqpi ñit'iy. Suni boletaqa astawan rapikunaman rin. Impresorata akllayqa ñawpaq qhawayllatan tikran.
 slip_col_start	Qallariy chusaq (px)
 slip_col_end	Tukukuy chusaq (px)
 slip_columns_help	Sapa columnap kinraynin qallariy chusaqta tukukuy chusaqta ima hap’in. Qillqaqa columnan ukhupi muyun; contenidop kinraynin hawan kaqqa p’anqapi qhawarichiypi ima kuchusqa kanqa.
@@ -88,6 +94,12 @@ bill_item_piece_off	Wichqasqa
 bill_total_qty	Llapan yupay
 bill_total_subtotal	Uray llapan
 bill_total_grand	Gran total
+bill_total_number_under	Yupay kaypa uranpi
+bill_total_caption_under	Etiqueta kaypa uranpi
+bill_total_own_line	Kikin linea
+bill_total_caption_with	Yupaywan kuska
+bill_total_caption_none	Mana etiquetayuq
+bill_total_place_help	Kikin linea kay llapanta sapallanta imprimin. Columnap uranpi kaptinqa, yupayninqa chay imakunap columnanpi imprimikun, kay lineap sayayninpi rakhunpipas; llapankunaqa huk filallata rakinakunku huk columna hunt'akunankama, chaymantaqa musuq fila qallarin. Etiquetaqa yupaywan kuska, huk columnap uranpi rin, utaq mana churakunchu. Impuesto, servicio, redondeo, pago lineakunaqa Uray llapan nisqata qatinku.
 kot_unassigned	Mana asignasqa
 settings_hub_help	Huk kitita huk kutipi kichay — pisi kuyuy, aswan sut'i akllanakuna.
 settings_sec_language	Simi & qullqi
@@ -131,7 +143,7 @@ diag_cleared	Diagnóstico registrokuna chuyanchasqa
 sidebar_settings	Lado Barra
 sidebar_settings_help	Kikin iconokuna lado riel hina. Huk filata aysay musuqmanta ordenanaykipaq. Interruptorta tikray qawachinaykipaq utaq pakanaykipaq. Ajustes chaymanta Bloqueo sapa kuti barrapi qhipakunku.
 sidebar_always_on_short	Siempre on
-sidebar_menu_items	Menú nisqapi menú nisqapi kaqkuna
+sidebar_menu_items	Imakuna
 sidebar_enable_all	Tukuy atichiy
 sidebar_disable_all	Tukuy mana llamk'achiy
 sidebar_order_saved	Lado barra orden waqaychasqa
@@ -144,11 +156,11 @@ nav_settings	Ajustes nisqa
 nav_lock	Cerradura
 all_items	Tukuy menú nisqapi kaqkuna
 frequent	Sapa kuti
-added_items	Menú menú nisqapi kaq elementokuna yapasqa
+added_items	Menú nisqapi kaq elementokuna yapasqa
 added_items_empty	Mana imapas kay facturapi kunankama — yapay huk imata Llapan imakunamanta utaq huk categoría kaqmanta.
 frequent_config_help	Yaqa llapan rantisqa imakuna hunt’asqa facturakunamanta. Hayka punchaw qawanaykipaq hinaspa hayka imakunatapas qawachinaykipaq churay.
 frequent_days_ph	P'unchawkuna (1) .
-frequent_limit_ph	Menú menú nisqapi kaqkuna (24) .
+frequent_limit_ph	Menú nisqapi kaqkuna (24) .
 frequent_apply	Aplicay
 frequent_saved	Sapa kuti: qhipa {d} p'unchaw(kuna), pata {n} — {c} imakuna
 frequent_empty	Mana tukusqa rantiy kay pachapi kunankama — huk invitado qullqita allichay (₹0 saqisqa mayk'aq Ajustes chayta niptin) chaymanta kaypi rikuchinku.
@@ -313,7 +325,7 @@ goods_received	Chaskisqa bienes
 import_day	Punchawta yaykuchiy
 import_items_csv_plain	Menú nisqapi kaqkunata hawamanta apamuy CSV...
 import_parties_csv	Rantiqkunata hinaspa qhatuqkunata CSV yaykuchiy…
-item_name	Menú menú nisqapi elemento suti
+item_name	Menú nisqapi elemento suti
 login_id_ph	Ruraqpa sutin
 mark_cleared	Marcosqa ch’uyancharqan
 new_party_clear	Musuq rantiq utaq suministrador (ch'uya formulario) .
@@ -458,7 +470,7 @@ route_cleared	Ch'uyanchasqa {name} .
 route_tap_selected	akllasqa
 printer_target_ph	Llamkana impresora suti utaq qutu:9100
 printer_target_default	kay computadorapa sapa kuti impresora (ch'usaq dirección) .
-route_bill	Invitado invitado factura
+route_bill	Factura
 station_print_pick_first	Ñawpaqtaqa tiendapi huk t’aqata akllay
 bill_printers_dd	Invitado qullqipaq impresorakuna
 bill_printers_dd_n	{n} impresorakuna invitado qullqipaq · ñit'iy tikranaykipaq
@@ -583,7 +595,7 @@ wipe_schema_done	Tienda churay pichasqa — Servidor utaq Cliente akllay hinalla
 rounded_total	Muyuchisqa Total
 setup_app_kirano	Kiranota churay
 shop_logo_optional	Tiendapa logotipon (munasqa) .
-stock_type_help	Menú nisqapi kaqpa sutinta qillqay (huk partenmi suficiente), hayka kasqanmanta, chaymanta allichay. Menú menú kaqpi imakuna manaraq yupasqachu necesitanku Huk kuti qatiyta qallariy.
+stock_type_help	Menú nisqapi kaqpa sutinta qillqay (huk partenmi suficiente), hayka kasqanmanta, chaymanta allichay. Menú kaqpi imakuna manaraq yupasqachu necesitanku Huk kuti qatiyta qallariy.
 team_owner_help	Runata ch'usaq saqiy pitapas yapanaykipaq: suti, llamk'ana, username, PIN, chaymanta huk munasqa contraseña, chaymanta Yanapay. Huk runata akllay chay kikin laya formulariota llamk'achinanpaq — suti, username, contraseña, pantallakuna chaymanta derechokuna — chaymanta Waqaychay. Kikin PIN chaymanta contraseña huk yaykuymi uraypi. Dueñoqa manan hukpa PIN nisqataqa cambianchu.
 staff_name_ph	Llamkaqkunapa sutin
 staff_copy_hire_ph	(munasqa) nisqamanta churayta copiay.
@@ -629,7 +641,7 @@ icon_default	Icon: Kumkaj marka (ñawpaqmanta) — huk sapanchasqa akllay
 logo_yours	Logotipo: tiendaykipa logotipon — pantallakunapi chaymanta recibokunapi rikuchisqa
 logo_default	Logotipo: Kumkaj marka (ñawpaqmanta) — qampaq akllay sichus hukniyuq kanki
 setup_complete	Configuración hunt’asqa
-onboard_fresh_tmpl	Musuq · {} — catálogo ch’usaq qallarikun; menú elementokunata yapay Menú menú elementokunapi, chaymanta Ruwasqa.
+onboard_fresh_tmpl	Musuq · {} — catálogo ch’usaq qallarikun; menú elementokunata yapay Menú elementokunapi, chaymanta Ruwasqa.
 onboard_book_tmpl	Libro mayor · {} — menú elementokunata yapay chaymanta kichay crédito, chaymanta Ruwasqa.
 tmpl_blurb	Kirana contador: rantikuy, stock, khata, proveedor rantin, librokuna.
 reports_facet_title	Willakuykuna
@@ -717,12 +729,26 @@ menu_search_ph	Maskay menú elemento utaq pisi código
 customer_paid_ph	Cliente pagasqa
 tip_ph	Yuyaychay
 find_server	Tiendapa servidorninta maskay
-bill_format	Invitado invitado factura formato
+bill_format	Invitado factura formato
 bill_header_ph	Dirección | telefonowan
 fssai_ph	FSSAI / tienda licencia no. (akllanapaq)
 bill_footer_ph	Chaki qillqa (e.g. Gracias, yapamanta watukuy)
 kot_field_on	rikuchiy
 kot_field_off	pakay
+kot_field_show	Qhawachiy
+kot_field_hide	Pakakuy
+bill_line_shop	Tienda
+bill_line_address	Dirección
+bill_line_fssai	FSSAI
+bill_line_title	Titulo
+bill_line_customer	Cliente
+bill_line_bill_no	Factura N.º
+bill_line_time	Tiempo
+bill_line_cashier	Cajero
+bill_line_items	Imakuna
+bill_line_total	Llapan
+bill_line_footer	Chaki qillqa
+bill_line_upi	UPI
 kot_weight_light	K’anchay
 bill_kot_panel_help	Factura nisqapa churakuynin hinaspa contenidopa anchun. Cajeroqa pichus chay facturata qurqan utaq allicharqan — hunt'asqa rantiy willakuyqa librokunapi qhipan.
 std_size_ph	p.h. 18, 20, 26...
@@ -731,7 +757,7 @@ kot_weight_bold	Mana manchakuq
 kot_align_start	Qallariy
 kot_align_center	Chawpi
 kot_align_end	Tukuchiy
-content_width_bill	Invitado invitado factura contenido ancho (mm) .
+content_width_bill	Invitado factura contenido ancho (mm) .
 content_width_ph	Utaq huk contenido anchota qillqay, 40–210 mm .
 content_width_bill_help	Mayna anchotataq chay cliente factura imprimin. Ñawpaqmanta churasqa 210 mm (p'anqa). 58 mm k’iti llimp’iyuq, 80 mm anchoyuq llimp’iyuq, 112 mm 4 pulgadayuq, 210 mm A4 anchoyuq. Ima chanitapas qillqay 40manta 210. Boletokunaqa kikin anchoyuqmi slip tablapi.
 vp_paper_width	Contenido anchun (mm) .
@@ -742,13 +768,13 @@ kot_copies	Copiakuna
 kot_copies_1	1
 kot_copies_2	2
 kot_copies_3	3
-test_bill_format	Invitado factura prueba
-test_bill_sent	Invitado invitado factura ñawpaq qhaway apachisqa
+test_bill_format	Factura prueba
+test_bill_sent	Invitado factura ñawpaq qhaway apachisqa
 test_print_no_printer	Mana chay llamkanapaq impresora — kay pantallapi hukta akllay
-std_print	Invitado invitado factura impreso sayaynin
+std_print	Invitado factura impreso sayaynin
 std_print_help	Retrato estándar chaymanta Paisaje factura llamkanakuna OS / qillqa impresorakunapi qillqap sayaynin (puntokuna yaykuy — mana Huch'uy/Normal/Hatunchu). Iskaynin orientacionkunapi kaqlla sayayniyuq.
 save_std_print	Invitado factura impreso sayayninta waqaychay
-std_print_saved	Invitado invitado factura impreso sayay waqaychasqa
+std_print_saved	Invitado factura impreso sayay waqaychasqa
 print_brand_kit	Kit de marca de impresión
 print_brand_kit_help	Sello munasqa chaymanta qullqi quy QR siq'ikuna factura uyakunapi chaymanta LAN rantiqpa qhawayninpi. UPI QR dinámico VPA patamanta llamk'anraq mana qullqi quy QR siq'i churasqa kaqtin.
 choose_stamp	Sello akllay
@@ -828,12 +854,12 @@ stock_empty	Manaraqmi imapas stockpichu — imachus Rantinakuypi grabasqayki kay
 recent_changes	Kunan pacha tikrakuykuna
 lane_declared_label	Impuesto nisqamanta factura
 lane_owner_label	Memo de efectivo nisqa
-money_lane_bill	Invitado invitado qullqi: {lane}
+money_lane_bill	Invitado qullqi: {lane}
 
-removing	Removing…
-removed	Removed
-updating_order	Updating…
-order_updated	Order updated
+removing	Qichuchkan…
+removed	Qichusqa
+updating_order	Musuqchachkan…
+order_updated	Mañakuy musuqchasqa
 sel_copy	Copiay
 sel_select_all	Llapanta akllay
 sel_copied	Copiasqañam

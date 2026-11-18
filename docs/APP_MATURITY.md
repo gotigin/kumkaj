@@ -105,11 +105,36 @@ Read with `docs/DEV.md` (UI-thread rules, bug lists) and
   Tabiyat on the Bill tab, Moklanjo for the focused job (receipt or AWB
   label) on Settings → Printers (`SlipPicture`). Each app's 18 paper tests
   and suites green, `--tier=fast` PASS ×4, the screens checked on Xvfb.
-- **Open — Kirano / Tabiyat sample bill and Table line** (found 2026-11-16):
-  the Bill form still has Khaynjo's **Table** line, and the sample bill
-  prints "Dine In: D1" with Tea and Coffee (`render_sample`) — restaurant
-  words in a grocery / chemist app. Remove the line and use each shop's own
-  sample goods (owner rule: no restaurant code in these two, 2026-11-14).
+  **Reworked 2026-11-17, all four apps** (owner: the app must not make up
+  page sizes; "implement for all the other three apps"): an OS document
+  prints the standard way on the printer's own page as its driver is set;
+  the typed paper is the *virtual* paper and the driver's is the read-only
+  *reported* paper (`NamedPrinter::virtual_paper_*` / `reported_*`); a
+  3 × 3 **place** per format; Windows printing, the printer list, USB and
+  Bluetooth through the Windows API with no helper process
+  (`print_win.rs`); one PDF per job on CUPS (`slip_pdf.rs`). Kirano and
+  Tabiyat also got the Bill **totals placement** and translated bill line
+  names. PRINTER.md § Paper and preview, § Bill tab, lessons 25–28. The
+  engine files (`os_paper.rs`, `print_win.rs`, `slip_pdf.rs`,
+  `print_usb.rs`, `print_bt.rs`) are the same file in every app with the
+  app's name swapped — change one, copy to the others.
+- **Kirano / Tabiyat sample bill and Table line — removed 2026-11-17**
+  (found 2026-11-16). The Bill form had Khaynjo's **Table** line and the
+  sample bill printed "Dine In: D1" with Tea and Coffee. `BillStyleField`
+  has 12 lines in these two apps (no `Table`, no `table` style, no
+  `bill_line_table` text), the form has 12 rows and the pair picker no Table
+  choice; a saved format that still names `table` loads — the unknown line
+  and its pair are dropped in `clamped`. The default pair is Cashier with
+  Bill no. The sample prints Rice and Sugar (Kirano), Paracetamol and Cough
+  syrup (Tabiyat).
+- **Label/value rows stack when the value is wide (all four, 2026-11-17)** —
+  DEV.md bug 7j. Found on Moklanjo's "Where things print" at phone width.
+- **Branches caption line removed (all four, 2026-11-17)** — DESIGN.md
+  "Explanations live in ℹ".
+- **Language packs (all four, 2026-11-17)** — texts that were English in
+  every pack, the four part-filled Moklanjo packs, doubled words, wrong word
+  senses and wrong-script rows; a test against English stand-ins. DEV.md §
+  Languages says what was found and what is still unread by a native reader.
 - **All four:** `check-lock-guards.sh` now also flags `app_t(` under a live
   `app_state()` guard (the Menu template download deadlock class) — clean.
 - **Android (all apps, shared Makepad):** touch selection on the AGS2 — held

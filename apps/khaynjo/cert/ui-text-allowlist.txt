@@ -10,6 +10,7 @@ day_close_label
 shift_so_far_label
 bank_recon_label
 inventory_label
+branches_label
 kitchen_counts
 units_label
 sibling_pickers_label

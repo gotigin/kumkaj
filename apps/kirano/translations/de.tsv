@@ -67,13 +67,19 @@ bill_item_amount	Betrag
 bill_item_note	Artikelnotiz
 bill_item_col_sep	Spaltlinien
 slip_col_width	Breite (mm)
-paper_heading	Papier
+paper_heading	Virtuelles Papier
 paper_size	{w} × {h} mm
 paper_roll	{w}-mm-Rolle
 paper_not_set	Papier noch unbekannt
-paper_length_mm	Länge (mm)
-printer_paper_help	Das Papier dieses Druckers in mm. Eine leere Länge ist eine Rolle: Jeder Beleg ist so lang wie sein Inhalt. „Drucker suchen“ füllt leeres Papier aus dem Treiber des Druckers (eine 80-mm-Rolle, wenn er es nicht sagen kann) und ändert nie ein bereits gesetztes.
-preview_help	Dieser Beleg auf dem Papier des unten gewählten Druckers, so wie er dort druckt: in echter Größe ab der oberen linken Ecke, die der Drucker erreicht (grau: Ränder, die er nicht erreicht), ein langer Beleg auf weiteren Blättern, alles jenseits des Papierrands abgeschnitten. Die Druckerwahl ändert nur die Vorschau; das Papier jedes Druckers wird unter „Drucker“ gesetzt.
+na	k. A.
+virtual_width_mm	Virtuelle Breite (mm)
+virtual_length_mm	Virtuelle Länge (mm)
+reported_width_mm	Gemeldete Breite (mm)
+reported_length_mm	Gemeldete Länge (mm)
+reported_paper	Gemeldet: {paper}
+virtual_paper	Virtuell: {paper}
+printer_paper_help	Gemeldet ist das Papier, auf das der Treiber dieses Druckers eingestellt ist; die App liest es nur, und k. A. bedeutet, dass es keinen Treiber gibt, den man fragen könnte. Virtuell ist das Papier, das nach Ihrer Angabe wirklich im Drucker liegt, in mm; eine leere Länge bedeutet eine Rolle. Der Drucker druckt auf sein eigenes Papier; das virtuelle Papier sagt der App, wie viel davon echtes Papier ist – für die Vorschau, die Seitenlänge und den Platz des Belegs. Drucker suchen füllt ein leeres virtuelles Papier aus und ändert nie eines, das Sie festgelegt haben.
+preview_help	Dieser Beleg so, wie er auf dem unten gewählten Drucker gedruckt wird, in Originalgröße auf dessen virtuellem Papier. Weiß ist, wo gedruckt wird, graues Papier liegt außerhalb der Reichweite des Druckers, und blasse Tinte wird abgeschnitten. Die neun Felder sind das Papier: Tippen Sie dorthin, wo der Beleg sitzen soll. Ein langer Beleg läuft auf weitere Seiten. Die Wahl eines Druckers ändert nur die Vorschau.
 slip_col_start	Abstand am Anfang (px)
 slip_col_end	Abstand am Ende (px)
 slip_columns_help	Die Breite jeder Spalte schließt ihren Abstand am Anfang und am Ende ein. Text wird innerhalb seiner Spalte umbrochen; was über die Inhaltsbreite hinausgeht, wird abgeschnitten – auf Papier und in der Vorschau.
@@ -88,6 +94,12 @@ bill_item_piece_off	Aus
 bill_total_qty	Gesamtmenge
 bill_total_subtotal	Zwischensumme
 bill_total_grand	Gesamtsumme
+bill_total_number_under	Zahl unter
+bill_total_caption_under	Beschriftung unter
+bill_total_own_line	Eigene Zeile
+bill_total_caption_with	Bei der Zahl
+bill_total_caption_none	Keine Beschriftung
+bill_total_place_help	Eigene Zeile druckt diese Summe für sich allein. Unter einer Spalte wird ihre Zahl in dieser Artikelspalte gedruckt, in Größe und Stärke dieser Zeile; Summen teilen sich eine Reihe, bis eine Spalte belegt ist, dann beginnt eine neue Reihe. Die Beschriftung steht bei der Zahl, unter einer anderen Spalte oder entfällt. Zeilen für Steuer, Service, Rundung und Zahlung folgen Zwischensumme.
 kot_unassigned	Nicht zugeordnet
 settings_hub_help	Immer nur einen Bereich öffnen — weniger Scrollen, klarere Auswahl.
 settings_sec_language	Sprache und Währung
@@ -187,8 +199,8 @@ ok	OK
 this_shop	Servermodus
 extra_till	Clientmodus
 off	Aus
-server	Server
-client	Client
+server	Servermodus
+client	Clientmodus
 language_currency	Sprache und Währung
 language	Sprache
 language_setup_hint	Folgen Sie der Sprache dieses Geräts oder wählen Sie selbst eine.
@@ -428,7 +440,7 @@ printers_find_tip	Suchen scannt dieses Gerät und hält die Liste aktuell. Syste
 printers_pool_empty	(noch keine — unten hinzufügen)
 printer_assign_dd	Drucker für {place} wählen
 printer_assign_pick	Echten Drucker wählen
-printer_profile_heading	Layout
+printer_profile_heading	Grundriss
 vp_delivery_heading	Zustellung
 vp_delivery_help	Wie dieser virtuelle Drucker Aufträge sendet — OS-Dokument, Rohbytes oder ESC/POS. Beleginhalt (Schriftgröße, Umbruch, Ränder) entscheidet das Rechnungs- / Belegformat, nicht hier.
 vp_delivery_spooler	OS-Dokument (System-Spooler)
@@ -551,11 +563,11 @@ currency_use_help	Scrollen und für jede unterstützte Währung Verwenden tippen
 day_close_help	Das Buchen eines Tagesabschlusses speichert diese Übersicht (und Ladendifferenz, falls gezählt) im Audit-Log. Es stoppt den Verkauf nicht.
 expenses_word	Ausgaben
 feature_access_help	Funktionszugriff für gewähltes Personal (nach Hinzufügen tippen)
-fresh_book_kirano	Drucker
+fresh_book_kirano	Fresh = leerer Katalog (Artikel später hinzufügen). Book = Anfangsbestand und wer Ihnen etwas schuldet unten eintragen.
 fresh_selected	Fresh gewählt – Katalog bleibt leer. Tippen Sie auf Done, wenn Sie bereit sind.
 gross_word	Brutto
 how_start	Wie möchten Sie beginnen?
-later_country_pack	Drucker
+later_country_pack	Später: Einstellungen → Länderpaket anwenden für Steuer- und Zahlungsbezeichnungen.
 local_badge	LOKAL
 mix_type_hint_kirano	Bei Bedarf auf Bar / UPI / Karte / Kredit aufteilen. Für Kredit ist oben ein Kunde nötig.
 money_in_sales	Geld rein (Verkäufe)
@@ -676,7 +688,7 @@ book_kind_today	Heutiges Buch
 book_kind_month	Buch dieses Monats
 book_kind_aging	Offen / Soll-Haben
 book_kind_balance	Bilanz
-order_help	Offene Bestellung wählen oder Tisch wählen und neu starten. Fertige Artikel antippen, KOT senden, einen oder mehr Artikel abrechnen, Rechnung teilen und Zahlung abschließen.
+order_help	Tippe auf einen Artikel, um ihn hinzuzufügen.
 categories_help	Eine Kategorie zeigt, zu welchem Menüteil ein Gericht gehört – z. B. Snacks, Hauptgang oder Biryani. Erstelle Kategorien auf deine Art: unsere Namen wählen, umbenennen oder eigene hinzufügen.
 dish_search_ph	Artikel oder Kurzcode suchen…
 sizes_as_items_ph	Größen als eigene Artikel (optional) — Halb=120, Voll=200
@@ -723,6 +735,20 @@ fssai_ph	FSSAI- / Ladenlizenznr. (optional)
 bill_footer_ph	Fußzeile (z. B. Danke, bis bald)
 kot_field_on	anzeigen
 kot_field_off	ausblenden
+kot_field_show	Anzeigen
+kot_field_hide	Ausblenden
+bill_line_shop	Shop
+bill_line_address	Adresse
+bill_line_fssai	FSSAI
+bill_line_title	Titel
+bill_line_customer	Kunde
+bill_line_bill_no	Rechnungsnr.
+bill_line_time	Zeit
+bill_line_cashier	Kassierer
+bill_line_items	Artikel
+bill_line_total	Gesamt
+bill_line_footer	Fußzeile
+bill_line_upi	UPI
 kot_weight_light	Leicht
 bill_kot_panel_help	Rechnungslayout und Inhaltsbreite. Der Kassierer hat die Rechnung ausgestellt oder abgeschlossen — der ganze Verkauf bleibt in den Büchern.
 std_size_ph	z. B. 18, 20, 26…
@@ -830,10 +856,10 @@ lane_declared_label	Steuerrechnung
 lane_owner_label	Kassenbon
 money_lane_bill	Rechnung: {lane}
 
-removing	Removing…
-removed	Removed
-updating_order	Updating…
-order_updated	Order updated
+removing	Wird entfernt…
+removed	Entfernt
+updating_order	Wird aktualisiert…
+order_updated	Bestellung aktualisiert
 sel_copy	Kopieren
 sel_select_all	Alles auswählen
 sel_copied	Kopiert

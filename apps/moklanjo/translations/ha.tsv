@@ -192,7 +192,7 @@ snack_secs_save	Ajiye lokacin sanarwa
 snack_secs_saved	An ajiye lokacin sanarwa — daƙiƙoƙi {n}
 snack_secs_bad	Shigar da daƙiƙa a matsayin lamba (3-60)
 cancelled	An soke
-cancelling	Cancelling…
+cancelling	Cancellingâ¦
 cancel	Soke
 opening_client	Ana buɗe abokin haɗi…
 preparing_desk	Ana shirya tebur…
@@ -501,13 +501,18 @@ job_size	Girman rubutu
 job_size_ph	misali 18, 20, 26…
 test_receipt_format	Gwajin takardar shaidar
 test_label_format	Alamar gwaji
-paper_heading	Takarda
+paper_heading	Takarda ta kama-da-wane
 paper_size	{w} × {h} mm
 paper_roll	nadi na {w} mm
 paper_not_set	ba a san takardar ba tukuna
-paper_length_mm	Tsawo (mm)
-printer_paper_help	Takardar wannan firinta a mm. Tsawo mara komai yana nufin nadi: kowace rasit tana da tsawon abin da ke cikinta. Nemo firintoci yana cike takarda mara komai daga direban firintar (nadi na 80 mm idan ba zai iya faɗi ba) kuma ba ya taɓa canza wadda aka riga aka saita.
-preview_help	Wannan rasit a kan takardar firintar da aka zaɓa a ƙasa, kamar yadda take bugawa a can: girman gaske daga kusurwar sama ta hagu da firintar ke kaiwa (toka: gefuna da ba ta kaiwa), dogon rasit a kan ƙarin shafuka, duk abin da ya wuce gefen takarda ana yanke shi. Zaɓar firinta yana canza samfoti kawai; ana saita takardar kowace firinta a Firintoci.
+virtual_width_mm	Faɗi na kama-da-wane (mm)
+virtual_length_mm	Tsawo na kama-da-wane (mm)
+reported_width_mm	Faɗin da aka ruwaito (mm)
+reported_length_mm	Tsawon da aka ruwaito (mm)
+reported_paper	An ruwaito: {paper}
+virtual_paper	Na kama-da-wane: {paper}
+printer_paper_help	Abin da aka ruwaito shi ne takardar da aka saita direban wannan firinta a kanta; manhajar tana karanta ta ne kawai, kuma “—” na nufin babu direban da za a tambaya. Na kama-da-wane ita ce takardar da kake cewa tana cikin firinta da gaske, a mm; tsawo marar komai nadi ne. Firinta tana bugawa a kan takardarta; takardar kama-da-wane tana gaya wa manhajar nawa ne daga ciki takarda ta gaske, domin samfoti, tsawon shafi da wurin rasit. Nemo firintoci yana cike takardar kama-da-wane marar komai kuma ba ya taɓa canza wadda ka saita.
+preview_help	Wannan rasit kamar yadda ake buga shi a firintar da aka zaɓa a ƙasa, a girmansa na gaske a kan takardarta ta kama-da-wane. Fari shi ne inda ake bugawa, takarda mai launin toka firinta ba ta kai wurin ba, kuma tawada mai dushewa ana yanke ta. Murabba'ai tara su ne takardar: taɓa inda rasit ya kamata ya zauna. Dogon rasit yana ci gaba a ƙarin shafuka. Zaɓen firinta yana canza samfoti ne kawai.
 slip_col_width	Faɗi (mm)
 no_printer_assigned	Babu firinta
 printer_target_default	firinta na yau da kullum na wannan kwamfuta (adireshi fanko)

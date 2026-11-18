@@ -101,6 +101,19 @@ bill_item_col_sep	Liy kolòn
 slip_columns	Kolòn
 slip_col_header	Tèt
 bill_line_logo	Logo
+bill_line_shop	Boutik
+bill_line_address	Adrès
+bill_line_fssai	FSSAI
+bill_line_title	Tit
+bill_line_customer	Kliyan
+bill_line_bill_no	Nimewo kont
+bill_line_time	Lè
+bill_line_cashier	Kesye
+bill_line_table	Tab
+bill_line_items	Atik
+bill_line_total	Total
+bill_line_footer	Pye
+bill_line_upi	UPI
 bill_logo_picture	Imaj
 bill_logo_choose	Chwazi yon imaj
 bill_logo_remove	Retire imaj la
@@ -128,6 +141,12 @@ bill_item_piece_off	Eten
 bill_total_qty	Kantite total
 bill_total_subtotal	Soutotal
 bill_total_grand	Gran total
+bill_total_number_under	Nimewo anba
+bill_total_caption_under	Etikèt anba
+bill_total_own_line	Pwòp liy li
+bill_total_caption_with	Ak nimewo a
+bill_total_caption_none	San etikèt
+bill_total_place_help	Pwòp liy li enprime total sa a pou kont li. Anba yon kolòn, nimewo li enprime nan kolòn atik sa a, ak gwosè ak epesè liy sa a; total yo pataje yon ranje jiskaske yon kolòn pran, epi yon nouvo ranje kòmanse. Etikèt la ale ak nimewo a, anba yon lòt kolòn, oswa li pa enprime. Liy taks, sèvis, awondi ak peman yo swiv Soutotal.
 reprint_incl	Nan enpresyon
 reprint_skip	Sote
 reprint_skip_meta	Sote reenpresyon
@@ -178,20 +197,20 @@ snack_secs_ph	Segond (3–60, default 10)
 snack_secs_save	Anrejistre tan alèt
 snack_secs_saved	Tan alèt anrejistre — {n} segond
 settings_sec_whatsapp	WhatsApp
-whatsapp_cloud_help	Use your own Meta WhatsApp Cloud API. Create a System User token with whatsapp_business_messaging (temporary dashboard tokens expire). Credentials stay on this Server only — never on extra tills. Accepted means Meta took the request, not that the guest received it.
-whatsapp_phone_id_ph	Phone Number ID
-whatsapp_token_ph	Access Token (leave blank to keep)
-whatsapp_template_ph	Bill template name (optional)
-whatsapp_template_lang_ph	Template language (e.g. en)
-whatsapp_enable	Enable
+whatsapp_cloud_help	Sèvi ak pwòp Meta WhatsApp Cloud API ou. Kreye yon token System User ak whatsapp_business_messaging (token tanporè tablodbò a ekspire). Enfòmasyon yo rete sèlman sou Sèvè sa a — pa janm sou lòt kès yo. “Aksepte” vle di Meta te pran demann lan, se pa envite a ki te resevwa li.
+whatsapp_phone_id_ph	ID nimewo telefòn
+whatsapp_token_ph	Token aksè (kite l vid pou kenbe li)
+whatsapp_template_ph	Non modèl kont lan (opsyonèl)
+whatsapp_template_lang_ph	Lang modèl la (egzanp en)
+whatsapp_enable	Limen
 whatsapp_disable	Off
-whatsapp_save	Save WhatsApp
-whatsapp_test	Test connection
-whatsapp_disconnect	Disconnect
-whatsapp_send_bill	Send via WhatsApp
+whatsapp_save	Anrejistre WhatsApp
+whatsapp_test	Teste koneksyon an
+whatsapp_disconnect	Dekonekte
+whatsapp_send_bill	Voye pa WhatsApp
 whatsapp_consent	WhatsApp OK
-whatsapp_consent_help	Guest agreed to receive WhatsApp messages. A phone number alone is not consent.
-whatsapp_server_only	Configure WhatsApp on the shop Server device
+whatsapp_consent_help	Envite a dakò pou resevwa mesaj WhatsApp. Yon nimewo telefòn pou kont li se pa konsantman.
+whatsapp_server_only	Mete WhatsApp sou aparèy Sèvè boutik la
 settings_sec_backup	Sovgad ak retabli
 settings_sec_diag	Dyagnostik
 settings_sec_privacy	Vi prive
@@ -637,7 +656,7 @@ choose_device_use	Chwazi Sèvè oswa Kliyan.
 paired_note	Makonnen. Debloke pou vann, oswa Rafrechi pou dènye a.
 last_update_at	Dènye aktyalizasyon: {time}.
 pair_intro	Chèche sèvè a, oswa ekri adrès li ak kòd makonnen an.
-pair_resume_hint	Already paired — enter your shop PIN, or Forget this shop to pair another.
+pair_resume_hint	Deja makonnen — antre PIN boutik ou a, oswa peze “Bliye boutik sa a” pou makonnen yon lòt.
 queue_waiting	Ap tann rive nan boutik la ({n}):
 queue_tries	Eseye {n} fwa · dènye repons: {e}
 save_backup_copy	Sove yon kopi sovgad…
@@ -754,13 +773,18 @@ station_vps_dd	Enprimant pou estasyon sa a
 station_vps_dd_n	{n} enprimant · peze pou chanje
 bill_printers_dd	Enprimant pou kont lan
 bill_printers_dd_n	{n} enprimant pou kont lan · peze pou chanje
-paper_heading	Papye
+paper_heading	Papye vityèl
 paper_size	{w} × {h} mm
 paper_roll	woulo {w} mm
 paper_not_set	papye a poko konnen
-paper_length_mm	Longè (mm)
-printer_paper_help	Papye enprimant sa a an mm. Yon Longè vid se yon woulo: chak resi gen longè sa li genyen ladan l. Chèche enprimant ranpli papye vid la ak sa chofè enprimant lan di (yon woulo 80 mm lè li pa ka di) epi li pa janm chanje yon papye ki deja mete.
-preview_help	Resi sa a sou papye enprimant ou chwazi anba a, jan li enprime la: gwosè reyèl depi kwen anwo agoch enprimant lan ka rive (gri: bò li pa ka rive), yon resi long sou plis fèy, tout sa ki depase bò papye a koupe. Chwazi yon enprimant chanje sèlman apèsi a; papye chak enprimant mete nan Enprimant.
+virtual_width_mm	Lajè vityèl (mm)
+virtual_length_mm	Longè vityèl (mm)
+reported_width_mm	Lajè yo rapòte (mm)
+reported_length_mm	Longè yo rapòte (mm)
+reported_paper	Rapòte: {paper}
+virtual_paper	Vityèl: {paper}
+printer_paper_help	Rapòte se papye chofè enprimant sa a regle sou li; aplikasyon an sèlman li li, epi «Pa gen» vle di pa gen chofè pou mande. Vityèl se papye ou di ki vrèman nan enprimant lan, an mm; yon longè vid se yon woulo. Enprimant lan enprime sou pwòp papye pa l; papye vityèl la di aplikasyon an ki kantite ladan l ki se vrè papye, pou apèsi a, longè paj la ak plas resi a. Chèche enprimant ranpli yon papye vityèl vid epi li pa janm chanje youn ou te mete.
+preview_help	Resi sa a jan li enprime sou enprimant ki chwazi anba a, nan gwosè reyèl sou papye vityèl li. Blan se kote li enprime, papye gri enprimant lan pa ka rive ladan l, epi lank pal la koupe. Nèf kare yo se papye a: tape kote resi a dwe chita. Yon resi long kontinye sou plis paj. Chwazi yon enprimant chanje sèlman apèsi a.
 job_layout	Miz an paj
 job_delivery	Kijan travay la voye
 job_delivery_help	Dokiman OS, byte kri, oswa ESC/POS. Kont lan ak fich kwizin nan kenbe chak pa yo. Nenpòt travay ka ale sou nenpòt enprimant Chèche te sove.
@@ -990,7 +1014,7 @@ tmpl_blurb	Tab, kòmand, fich kwizin, kont, ak liv.
 tmpl_how	Vann nan kontwa; Sal pou tab ak KOT; Liv jounen pou liv la.
 reports_facet_title	Rapò
 reports_facet_help	Liv jounen, laj pati, ekriti labank, ak P&P peryòd.
-against_bill_ph	Kont kont # anwo a (opsyonèl)
+against_bill_ph	Kont # anwo a (opsyonèl)
 aliases_ph	Alyas — lòt non, separe ak vigil
 amount_blank_full_ph	Montan (vid = tout sold)
 amount_owed_ph	Montan dwe
@@ -1238,7 +1262,7 @@ on_your_menu	Nan meni ou
 edit	Modifye
 schemes	Pwomosyon / òf
 schemes_help	BOGO, rabè pousantaj, ak konbo fiks. Konbo yo ouvri an liy kwizin lè Voye KOT; pati yo rete kenbe jiskaske konbo a deklanche. Egzanp: Buy 2 Thali get 1 Chaas
-scheme_bogo_ph	Buy 2 Thali get 1 Chaas
+scheme_bogo_ph	Achte 2 Thali, jwenn 1 Chaas
 add_scheme	Ajoute BOGO
 schedule_ph	Lè / èdtan kè kontan — Mon-Fri 07:00-11:00 oswa HappyHour 17:00-19:00=150
 upi_qr	UPI QR
@@ -1266,8 +1290,8 @@ taxable_value	Valè taksab
 gst_inside_price_note	({tax} ladan pri)
 start_with_template	Kòmanse ak modèl meni nou an
 template_heading	Modèl meni nou an
-template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
-template_download_shelf	Download photo shelf
+template_need_download	Telechaje etajè piblik foto plat yo (~1,459 plat), epi enpòte non ki manke yo nan meni ou.
+template_download_shelf	Telechaje etajè foto yo
 template_info	{c} kategori ak {d} plat ak foto, pare pou ajoute. Pri kòmanse a ₹0 — mete pa w apre.
 template_import	Enpòte modèl konplè
 template_confirm	Ajoute {d} plat ak kategori yo? Plat ou deja genyen rete jan yo ye.

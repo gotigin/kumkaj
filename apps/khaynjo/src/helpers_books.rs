@@ -499,7 +499,12 @@ fn sync_found_printers_into_pool(st: &mut AppState) -> Result<(usize, usize), St
         }
     }
     st.printer_draft.dedupe_printers();
-    st.printer_draft.fill_missing_papers(&os_paper::answers(), true);
+    // What each found printer's driver reports replaces its reported paper;
+    // a printer with no virtual paper gets one. The saved system printers
+    // this Find did not meet are asked as well (on their own thread): their
+    // answers land the same way when they come (`main_impl`).
+    st.printer_draft.take_driver_answers(&os_paper::answers(), true);
+    ask_drivers(&st.printer_draft.printers);
     st.save_printer_draft()?;
     Ok((newly, total))
 }
@@ -533,27 +538,49 @@ fn printers_pool_rows(
         .collect()
 }
 
-/// A printer's paper for people: `80 mm roll`, `210 × 297 mm`, or that it
-/// is not known yet (docs/PRINTER.md § Paper and preview).
+/// A printer's virtual paper for people: `80 mm roll`, `210 × 297 mm`, or
+/// that it is not set yet (docs/PRINTER.md § Paper and preview).
 fn paper_summary(p: &print_share::NamedPrinter, t: impl Fn(&str) -> String) -> String {
-    let mm = os_paper::mm_text;
-    match p.paper() {
-        Some(pp) if pp.is_roll() => t("paper_roll").replace("{w}", &mm(pp.width_mm)),
-        Some(pp) => t("paper_size")
-            .replace("{w}", &mm(pp.width_mm))
-            .replace("{h}", &mm(pp.length_mm)),
+    match p.virtual_paper() {
+        Some(pp) => paper_text(pp, &t),
         None => t("paper_not_set"),
     }
 }
 
-/// Ask the driver of every printer that has no paper yet (on its own
-/// thread; the answer fills it — never one already set — and redraws, see
-/// `main_impl`). ESC/POS devices have no driver to ask.
-fn ask_drivers_for_missing_papers(printers: &[print_share::NamedPrinter]) {
+/// A virtual paper for people: `80 mm roll` or `210 × 297 mm`.
+fn paper_text(paper: os_paper::PaperMm, t: impl Fn(&str) -> String) -> String {
+    let mm = os_paper::mm_text;
+    if paper.is_roll() {
+        t("paper_roll").replace("{w}", &mm(paper.width_mm))
+    } else {
+        t("paper_size")
+            .replace("{w}", &mm(paper.width_mm))
+            .replace("{h}", &mm(paper.length_mm))
+    }
+}
+
+/// Ask the driver of every saved system printer what paper it is set to
+/// (once each, on its own thread). The answer becomes the printer's
+/// reported paper, fills a virtual paper that is still blank — never one
+/// already set — and redraws (`main_impl`). ESC/POS devices have no driver
+/// to ask.
+fn ask_drivers(printers: &[print_share::NamedPrinter]) {
     for p in printers {
-        if p.paper().is_none() && p.has_driver() {
+        if p.has_driver() {
             let _ = os_paper::papers_for(&p.target);
         }
+    }
+}
+
+/// A printer's reported paper for people — what its driver says it is set
+/// to — or "N/A" when nothing reported it.
+fn reported_summary(p: &print_share::NamedPrinter, t: impl Fn(&str) -> String) -> String {
+    let mm = os_paper::mm_text;
+    match p.reported_paper() {
+        Some(r) => t("paper_size")
+            .replace("{w}", &mm(r.width_mm))
+            .replace("{h}", &mm(r.height_mm)),
+        None => t("na"),
     }
 }
 
@@ -591,14 +618,15 @@ fn preview_paper_rows(
         .collect()
 }
 
-/// What a preview draws its slip on: the active printer's paper, how that
-/// printer is sent jobs, and what its driver said (for the edges it cannot
-/// reach). `None` driver: not asked (ESC/POS) or not answered yet.
+/// What a preview draws its slip on: the active printer's virtual paper,
+/// how that printer is sent jobs, and its own page as its driver reported
+/// it — the page an OS document prints on. `None`: nothing to ask
+/// (ESC/POS) or not reported.
 #[derive(Clone, Debug, PartialEq)]
 struct PreviewPaper {
-    paper: os_paper::PaperMm,
+    virtual_paper: os_paper::PaperMm,
     os_document: bool,
-    driver: Option<os_paper::PrinterPapers>,
+    own: Option<os_paper::Paper>,
 }
 
 /// Checklist: pool printers for test page / Test KOT. `subtitle` = printer id.

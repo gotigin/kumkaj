@@ -665,6 +665,7 @@ So “this tab is active” **cannot** be expressed by leaving a Button focused 
 7g. **Edge swipe vs a control in the edge strip** — The 48 px back/forward swipe arms on press, but after the UI handled the press `disarm_edge_swipe_if_claimed` drops it unless nothing, or the page's own scroll view, claimed it (`Event::pointer_claimed_area`). A button, field, card, list, or sideways strip at the edge wins: panning Moklanjo's booking desk or a tab strip from the edge used to also go Back/Forward.
 7h. **Row and card taps use `finger_up_is_tap`, not `was_tap()`** — `was_tap` gives up after 0.5 s or 5 px (mouse), while the page waits 8 px before scrolling: a slow press or a 6 px drift was neither a tap nor a scroll. A tap read from raw pointer events (printer rows) needs press and release on the same row within tap travel — a release alone is the end of a scroll.
 7i. **Never pre-mark a scroll handled before dispatch** — Makepad hands a wheel / trackpad delta to the innermost scroll view that can move and marks the axis handled only when it moved. Setting `handled_x` before `ui.handle_event` (`claim_hstrip_nested_scroll`, removed from Moklanjo 2026-11-02 and Khaynjo 2026-11-07) made each sideways strip move one step and then stop.
+7j. **A label/value row whose value is long (`ReportText` `Kv`) — the label wraps one letter per line** — Makepad has no flex-shrink: in a `flow: Right` row the `Fit` value keeps its own width and the `Fill` label gets what is left. A long value left the label a few px and ran off the card itself (Moklanjo Settings → Printers "Where things print" at 420 px: "Standard Portrait · No printer assigned", 2026-11-17). **Fix, in the widget, every app:** `ReportText` measures each value as drawn (`kv_value_w`) and `kv_stacks(row_w, value_w)` draws the row as `KvStack` / `KvStackRtl` — the label above, the value under it, both wrapping at the row's width — whenever the value would leave the label less than `KV_MIN_LABEL_W` (96 px); wider again, it goes back side by side. An amount beside its label is far narrower than that and stays as it was. Never "fix" one list by shortening its text or by a Fixed width. Test: `label_value_rows_stack_when_the_value_is_wide` (every app).
 7j. **Dropdown that would not close, reopened itself, and drifted (Khaynjo Floor Columns, 2026-11-08)** — Picking a number or tapping outside closed the list and the same frame reopened it (`Modal::close` → `revert_key_focus` → the field's `KeyFocus` → "focus opens the list"); the panel was placed once from the field's rect, so scrolling the Floor left a gap the size of the scroll; leaving Floor with it open left an invisible modal swallowing every press on every screen. Moklanjo had no outside-press close at all (a finger could only pick). Fixed by the rules in § Dropdowns, pick lists and tips — not by patching that one control.
 7k. **Add dishes: fast taps and the category swipe (Khaynjo, Kirano, Tabiyat — owner 2026-11-15)** — Measured on a 1,376-dish shop (debug build): every dish tap drew **all 27 category pages** (`dish_grid_draw 27×`, ~200 tiles) and ran `sync_chrome` twice, ~45 ms per tap; opening the window took a 244 ms draw. Now (1) a `ProductList` page away from the window keeps its room and draws nothing (`menu_pick_page_near`: the page in view and one each side, from `menu_pick_scroll_now`); (2) `menu_pick_card_tap` answers a dish tap at the top of `handle_actions`, before the ~7,400 lookups the rest of it makes, and `align_menu_pick_cart_page` refreshes only when the page changed — ~10 ms + 3 ms per tap, no stall on open. (3) A sideways finger swipe or mouse press-drag on the dishes turns the category page and its tab (the tabs already moved the pages): the dish list takes the press for its own up/down scroll (`capture_overload`), so `MenuPickPager::pager_swipe` reads the raw pointer (`popup_pointer`), moves the strip with it once the travel is sideways past 12 px, and on release lands one page on (a fifth of a page or a flick) or springs back; the release is never also a dish tap (`menu_pick_swipe_took_press`), and the per-frame snap waits while the swipe is held. Measure with `KUMKAJ_STALL_LOG_MS=2` (logs every event and every `stall_span`). (4) Whenever the category changes (tab, swipe, page step) the tab strip scrolls the active tab into the clear band between ‹ and › (`reveal_active_category_chip`; only on a change, so a strip scrolled by hand is not pulled back) — an active tab in the strip's hidden part looked like none was on (owner, 2026-11-15). Tests: `a_swipe_turns_one_page_or_springs_back`, `only_pages_near_the_window_draw`.
 8. **Page-scroll list rows cropped / page won’t scroll** — A `PortalList` inside a page `ScrollYView` must claim **full content height** (`list_content_height` + `page_owns_scroll`) so the page owns the wheel. Guessing a short Fixed row pitch (Khaynjo Inventory `StockList` at 62 while `StockRowView` is Fit, 2026-10) clips the last rows into the next sibling (tip-pool `ReportText`) and leaves the page with almost nothing to scroll — the “missing” rows are clipped *inside* the under-tall list, not below it. **Over-tall (empty cream band):** Fit-row lists must also **shrink** when `drawn_range_extent` is clearly shorter than the reserved walk (Order cart above Kitchen station; Moklanjo cart). Grow-only `.max(row)` left the gap forever. Kitchen `page_window` virtualization must not run on short lists (≤8) — a bad `first` became a huge `top_gap` under “To cook now”. Kitchen Live / Recall / Stations are **tabs**, not one buried scroll. **Rule for every app:** Fit-row expand-to-content lists use a **generous seed + `remember_content_row`** (same pattern as `CustomerList` / Moklanjo `SaleList`). Fixed-pitch cards (`MenuCard` 140, `DishRow` 104) keep a constant that matches the DSL. Never “fix” one screen’s crop without sweeping the same hardcoded underestimates elsewhere. Do not reintroduce nested list scroll for these lists — that eats the page wheel at the bottom edge.
@@ -790,6 +791,39 @@ shared Kumkaj i18n crate). English source of truth is `en()` in that
 `locale.rs`. Every other catalogue language is a TSV baked by
 `build.rs` (`bake_translations`). Runtime `t()` falls back to English
 only if a pack is corrupt; tests and the packaging gate forbid gaps.
+
+**What the gate does and does not check (2026-11-17).** `check-ui-translations.sh`
+and `every_catalogue_language_translates_every_key` only prove that every key
+is in every pack, in `en()` order, with the same `{placeholders}`. A row that
+still holds the English text passes. That is how the whole Khaynjo WhatsApp
+settings panel (16 texts) shipped as English in all 110 packs, four Kirano /
+Tabiyat status words and one Moklanjo word likewise, and Moklanjo's Afrikaans,
+Amharic, Belarusian and Tibetan packs kept about 145 English texts each (a
+fill that stopped part-way). Filled 2026-11-17; a third test,
+`no_text_is_left_in_english_in_most_packs` (every app), now fails when a text
+with real words is English in more than three quarters of the packs — never
+use `--standin-english` and stop there.
+
+**Pack quality (2026-11-17).** The major languages were written with care;
+the rarer ones (Georgian, Guarani, Quechua, Sinhala, Dogri, Sanskrit,
+Konkani, Rajasthani, Kashmiri, Sindhi, Pashto, Dhivehi, Tibetan, Santali,
+Manipuri, Bodo, Kokborok, Khasi, Mizo, Tulu, Turkmen, Macedonian, Serbian,
+Malay, Filipino, Zulu, Yoruba …) are machine-made and nobody who reads them has
+checked them. The classes found and corrected that day: a word the machine
+wrote twice ("menu menu items", "guest guest bill"); the wrong sense of a
+short word — Shop as "to shop", Bill as a draft law, Save as "rescue" /
+"economise", a vacant table as "free of charge", a till as "until", dishes
+as crockery; a row left in another language's script (Hindi inside ten other
+Indian packs, `UPI` in Devanagari); and, in the thirty hand-made packs, rows
+that no longer said what the English says after the English was rewritten
+(the Order tip still described tables and KOT in the grocery and chemist
+apps; the Fresh / Book line and the country-pack line read "Printers"). A
+text whose English changes needs its 110 rows rewritten, not left. Other
+wrong words remain in those packs
+and only a reader of the language can find them. Before writing a text for
+110 packs, print each pack's own words for its terms first and write against
+them (a button a sentence names must be quoted exactly as that pack shows
+it).
 
 **Adding a label / button / hint string**
 
@@ -1108,6 +1142,9 @@ First real run, 2026-11-15 (Windows 10 19045 VM, WACK 10.0.26100):
 *Blocked executables* test flags `CreateProcessW` and the strings `cmd` /
 `PowerShell` / `REG` in the exe (printing and the data dialog) — allowed for
 a `runFullTrust` desktop app, and optional tests do not decide the result.
+(Since 2026-11-17 printing starts no process on Windows — `print_win.rs`
+calls the print API; the strings left are the firewall prompt's and the
+data dialog's. The package has not been re-certified since.)
 
 `.ps1` files must parse in **Windows PowerShell 5.1**, which reads a file
 without a BOM as Windows-1252: an em dash's last UTF-8 byte becomes a curly

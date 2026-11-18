@@ -79,13 +79,19 @@ bill_item_amount	Sumă
 bill_item_note	Rx / notă de vânzare
 bill_item_col_sep	Linii coloane
 slip_col_width	Lățime (mm)
-paper_heading	Hârtie
+paper_heading	Hârtie virtuală
 paper_size	{w} × {h} mm
 paper_roll	rolă de {w} mm
 paper_not_set	hârtia încă necunoscută
-paper_length_mm	Lungime (mm)
-printer_paper_help	Hârtia acestei imprimante în mm. O Lungime goală înseamnă rolă: fiecare bon este lung cât conținutul său. Găsește imprimante completează hârtia goală din driverul imprimantei (rolă de 80 mm când nu poate spune) și nu schimbă niciodată una deja setată.
-preview_help	Acest bon pe hârtia imprimantei alese mai jos, așa cum se tipărește acolo: la dimensiune reală din colțul stânga-sus pe care îl atinge imprimanta (gri: margini pe care nu le atinge), un bon lung pe mai multe foi, tot ce trece de marginea hârtiei este tăiat. Alegerea unei imprimante schimbă doar previzualizarea; hârtia fiecărei imprimante se setează la Imprimante.
+na	N/A
+virtual_width_mm	Lățime virtuală (mm)
+virtual_length_mm	Lungime virtuală (mm)
+reported_width_mm	Lățime raportată (mm)
+reported_length_mm	Lungime raportată (mm)
+reported_paper	Raportat: {paper}
+virtual_paper	Virtual: {paper}
+printer_paper_help	Raportat este hârtia pe care este setat driverul acestei imprimante; aplicația doar o citește, iar N/A înseamnă că nu există un driver care să fie întrebat. Virtual este hârtia despre care spuneți că se află cu adevărat în imprimantă, în mm; o lungime goală înseamnă rolă. Imprimanta tipărește pe propria hârtie; hârtia virtuală îi spune aplicației cât din ea este hârtie reală, pentru previzualizare, lungimea paginii și locul bonului. Găsește imprimante completează o hârtie virtuală goală și nu schimbă niciodată una setată de dvs.
+preview_help	Acest bon așa cum se tipărește la imprimanta aleasă mai jos, la dimensiune reală pe hârtia ei virtuală. Albul este locul unde tipărește, hârtia gri este în afara razei imprimantei, iar cerneala estompată este tăiată. Cele nouă pătrate sunt hârtia: atingeți locul unde trebuie să stea bonul. Un bon lung continuă pe mai multe pagini. Alegerea unei imprimante schimbă doar previzualizarea.
 slip_col_start	Spațiu la început (px)
 slip_col_end	Spațiu la sfârșit (px)
 slip_columns_help	Lățimea fiecărei coloane include spațiul de la început și de la sfârșit. Textul se încadrează în coloana sa; ce depășește lățimea conținutului este tăiat, pe hârtie și în previzualizare.
@@ -100,6 +106,12 @@ bill_item_piece_off	Oprit
 bill_total_qty	Cant. totală
 bill_total_subtotal	Subtotal
 bill_total_grand	Total general
+bill_total_number_under	Numărul sub
+bill_total_caption_under	Eticheta sub
+bill_total_own_line	Rând propriu
+bill_total_caption_with	Lângă număr
+bill_total_caption_none	Fără etichetă
+bill_total_place_help	Rând propriu tipărește acest total separat. Sub o coloană, numărul său se tipărește în acea coloană de articole, cu mărimea și grosimea acestui rând; totalurile împart un șir până când o coloană este ocupată, apoi începe un șir nou. Eticheta stă lângă număr, sub o altă coloană sau este omisă. Rândurile de taxă, serviciu, rotunjire și plată urmează Subtotal.
 kot_unassigned	Nealocat
 settings_hub_help	Deschide câte o zonă — mai puțină derulare, alegeri mai clare.
 settings_sec_language	Limbă și monedă
@@ -735,6 +747,20 @@ fssai_ph	Nr. licență medicamente (opțional — formularea ta)
 bill_footer_ph	Subsol (ex. Mulțumim, reveniți)
 kot_field_on	afișează
 kot_field_off	ascunde
+kot_field_show	Afișează
+kot_field_hide	Ascunde
+bill_line_shop	Local
+bill_line_address	Adresă
+bill_line_fssai	FSSAI
+bill_line_title	Titlu
+bill_line_customer	Client
+bill_line_bill_no	Nr. notă
+bill_line_time	Ora
+bill_line_cashier	Casier
+bill_line_items	Articole
+bill_line_total	Total
+bill_line_footer	Subsol
+bill_line_upi	UPI
 kot_weight_light	Subțire
 bill_kot_panel_help	Așezarea notei și lățimea conținutului. Casierul este cine a emis sau a închis nota — toată povestea vânzării rămâne în registre.
 std_size_ph	ex. 18, 20, 26…
@@ -842,10 +868,10 @@ lane_declared_label	Factură fiscală
 lane_owner_label	Notă de casă
 money_lane_bill	Notă: {lane}
 
-removing	Removing…
-removed	Removed
-updating_order	Updating…
-order_updated	Order updated
+removing	Se elimină…
+removed	Eliminat
+updating_order	Se actualizează…
+order_updated	Comanda a fost actualizată
 sel_copy	Copiază
 sel_select_all	Selectează tot
 sel_copied	Copiat

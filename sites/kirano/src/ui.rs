@@ -3,6 +3,7 @@
 // Palette: docs/DESIGN.md "Color tokens — Kirano".
 // Copied from sites/khaynjo and diverged: warm cream ground, orange chrome,
 // leaf-green accents, rounded Baloo type. No Floor / Kitchen / KOT / tables.
+// One scrolling page (was a SlidesView deck); `page` is the selection root.
 script_mod! {
     use mod.prelude.widgets.*
     use mod.widgets.*
@@ -49,15 +50,43 @@ script_mod! {
 
     mod.widgets.Label.draw_text.sdf_luma_bias = 0.0
     mod.widgets.Button.draw_text.sdf_luma_bias = 0.0
+    mod.widgets.Markdown.draw_text.sdf_luma_bias = 0.0
+
+    mod.widgets.Label.draw_text.text_style.font_family = TextFont
+    mod.widgets.Button.draw_text.text_style.font_family = TextFont
+    mod.widgets.Markdown.text_style_normal.font_family = TextFont
+    mod.widgets.Markdown.text_style_italic.font_family = TextFont
+    mod.widgets.Markdown.text_style_bold.font_family = StrongFont
+    mod.widgets.Markdown.text_style_bold_italic.font_family = StrongFont
+    mod.widgets.TextFlow.text_style_normal.font_family = TextFont
+    mod.widgets.TextFlow.text_style_italic.font_family = TextFont
+    mod.widgets.TextFlow.text_style_bold.font_family = StrongFont
+    mod.widgets.TextFlow.text_style_bold_italic.font_family = StrongFont
+
+    // Selection band (#A7A536 / DESIGN.md — Kirano). draw_selection.color is
+    // what TextFlow paints (not draw_block.selection_color).
+    mod.widgets.TextFlow.draw_selection.color = #xA7A536FF
+    mod.widgets.Markdown.draw_selection.color = #xA7A536FF
+    // Text selection (DESIGN.md § Text selection & copy — same model as the
+    // app): every Markdown block selects on its own; the `page` root adds
+    // Ctrl/Cmd+A, Copy of all and the right-click Copy / Select all menu.
+    // Tap targets (bill toy, buttons) and chrome labels keep `selectable: false`.
+    mod.widgets.TextFlow.selectable = true
+    mod.widgets.Markdown.selectable = true
 
     let Eyebrow = Markdown{
         selectable: true
         height: Fit
         paragraph_spacing: 0.
         pre_code_spacing: 0.
+        draw_selection +: { color: #xA7A536FF }
         draw_block +: { selection_color: #xA7A536FF }
         width: Fill
         padding: 0.
+        font_color: Accent
+        font_size: 13.
+        text_style_normal: theme.font_bold{font_family: StrongFont font_size: 13. line_spacing: 1.2}
+        text_style_bold: theme.font_bold{font_family: StrongFont font_size: 13. line_spacing: 1.2}
         draw_text +: {
             color: Accent
             text_style: theme.font_bold{font_family: StrongFont font_size: 13. line_spacing: 1.2}
@@ -68,9 +97,14 @@ script_mod! {
         height: Fit
         paragraph_spacing: 0.
         pre_code_spacing: 0.
+        draw_selection +: { color: #xA7A536FF }
         draw_block +: { selection_color: #xA7A536FF }
         width: Fill
         padding: 0.
+        font_color: Leaf
+        font_size: 48.
+        text_style_normal: theme.font_bold{font_family: DisplayFont font_size: 48. line_spacing: 0.72}
+        text_style_bold: theme.font_bold{font_family: DisplayFont font_size: 48. line_spacing: 0.72}
         draw_text +: {
             color: Leaf
             text_style: theme.font_bold{font_family: DisplayFont font_size: 48. line_spacing: 0.72}
@@ -81,9 +115,13 @@ script_mod! {
         height: Fit
         paragraph_spacing: 0.
         pre_code_spacing: 0.
+        draw_selection +: { color: #xA7A536FF }
         draw_block +: { selection_color: #xA7A536FF }
         width: Fill
         padding: 0.
+        font_color: Hint
+        font_size: 19.
+        text_style_normal: theme.font_regular{font_family: TextFont font_size: 19. line_spacing: 1.45}
         draw_text +: {
             color: Hint
             text_style: theme.font_regular{font_family: TextFont font_size: 19. line_spacing: 1.45}
@@ -94,9 +132,13 @@ script_mod! {
         height: Fit
         paragraph_spacing: 0.
         pre_code_spacing: 0.
+        draw_selection +: { color: #xA7A536FF }
         draw_block +: { selection_color: #xA7A536FF }
         width: Fill
         padding: 0.
+        font_color: Hint
+        font_size: 15.5
+        text_style_normal: theme.font_regular{font_family: TextFont font_size: 15.5 line_spacing: 1.45}
         draw_text +: {
             color: Hint
             text_style: theme.font_regular{font_family: TextFont font_size: 15.5 line_spacing: 1.45}
@@ -107,9 +149,14 @@ script_mod! {
         height: Fit
         paragraph_spacing: 0.
         pre_code_spacing: 0.
+        draw_selection +: { color: #xA7A536FF }
         draw_block +: { selection_color: #xA7A536FF }
         width: Fill
         padding: 0.
+        font_color: Ink
+        font_size: 16.
+        text_style_normal: theme.font_bold{font_family: StrongFont font_size: 16. line_spacing: 1.25}
+        text_style_bold: theme.font_bold{font_family: StrongFont font_size: 16. line_spacing: 1.25}
         draw_text +: {
             color: Ink
             text_style: theme.font_bold{font_family: StrongFont font_size: 16. line_spacing: 1.25}
@@ -120,9 +167,13 @@ script_mod! {
         height: Fit
         paragraph_spacing: 0.
         pre_code_spacing: 0.
+        draw_selection +: { color: #xA7A536FF }
         draw_block +: { selection_color: #xA7A536FF }
         width: Fill
         padding: 0.
+        font_color: Hint
+        font_size: 13.
+        text_style_normal: theme.font_regular{font_family: TextFont font_size: 13. line_spacing: 1.4}
         draw_text +: {
             color: Hint
             text_style: theme.font_regular{font_family: TextFont font_size: 13. line_spacing: 1.4}
@@ -147,12 +198,49 @@ script_mod! {
         height: Fit
         paragraph_spacing: 0.
         pre_code_spacing: 0.
+        draw_selection +: { color: #xA7A536FF }
         draw_block +: { selection_color: #xA7A536FF }
         width: Fill
         padding: 0.
+        font_color: Ink
+        font_size: 14.
+        text_style_normal: theme.font_regular{font_family: TicketFont font_size: 14. line_spacing: 1.35}
         draw_text +: {
             color: Ink
             text_style: theme.font_regular{font_family: TicketFont font_size: 14. line_spacing: 1.35}
+        }
+    }
+
+    let GhostBtn = Button{
+        width: Fit height: Fit
+        padding: Inset{left: 16. right: 16. top: 10. bottom: 10.}
+        align: Align{x: 0.5 y: 0.5}
+        grab_key_focus: false
+        reset_hover_on_click: true
+        label_walk: Walk{width: Fit height: Fit margin: Inset{left: 2. right: 2.}}
+        icon_walk: Walk{width: 0. height: 0.}
+        draw_bg +: {
+            color: #x00000000
+            color_hover: WellDeep
+            color_down: WellWarm
+            color_focus: #x00000000
+            color_2: #x00000000
+            color_2_hover: WellDeep
+            color_2_down: WellWarm
+            color_2_focus: #x00000000
+            border_color: WellLine
+            border_color_hover: #xD9B878
+            border_color_down: #xD9B878
+            border_color_focus: WellLine
+            border_radius: 10.
+            border_size: 1.
+        }
+        draw_text +: {
+            color: Ink
+            color_hover: Ink
+            color_down: Ink
+            color_focus: Ink
+            text_style: theme.font_bold{font_family: StrongFont font_size: 13.5}
         }
     }
 
@@ -246,10 +334,10 @@ script_mod! {
     }
 
     let Chapter = View{
-        width: Fill height: Fill
+        width: Fill height: Fit
         flow: Down
         spacing: 20
-        align: Align{x: 0.0 y: 0.5}
+        align: Align{x: 0.0 y: 0.0}
         padding: Inset{left: 64. right: 64. top: 30. bottom: 36.}
         show_bg: true
         draw_bg +: {
@@ -287,12 +375,13 @@ script_mod! {
             height: Fit
             paragraph_spacing: 0.
             pre_code_spacing: 0.
+            draw_selection +: { color: #xA7A536FF }
             draw_block +: { selection_color: #xA7A536FF }
-
             padding: 0.
+            font_color: Hint
+            font_size: 12.
             body: "Example"
             draw_text +: {color: Hint text_style: theme.font_regular{font_family: TextFont font_size: 12.}}
-        
         }
     }
     let Point = View{
@@ -362,43 +451,22 @@ script_mod! {
                         align: Align{y: 0.5}
                         padding: Inset{left: 24. right: 20. top: 0. bottom: 0.}
                         draw_bg +: {color: Orange border_radius: 0.}
-                        Markdown{
-            selectable: true
-            height: Fit
-            paragraph_spacing: 0.
-            pre_code_spacing: 0.
-            draw_block +: { selection_color: #xA7A536FF }
-
-                            padding: 0.
-                            body: "Kirano"
+                        brand_name := Label{
+                            width: Fit
+                            text: "Kirano"
                             draw_text +: {color: Cream text_style: theme.font_bold{font_family: DisplayFont font_size: 25.}}
-                        
-        }
-                        tagline := Markdown{
-            selectable: true
-            height: Fit
-            paragraph_spacing: 0.
-            pre_code_spacing: 0.
-            draw_block +: { selection_color: #xA7A536FF }
-
-                            padding: 0.
-                            body: "the grocery counter"
+                        }
+                        tagline := Label{
+                            width: Fit
+                            text: "the grocery counter"
                             draw_text +: {color: WellWarm text_style: theme.font_regular{font_family: TextFont font_size: 13.}}
-                        
-        }
+                        }
                         View{width: Fill height: 1}
-                        chapter_name := Markdown{
-            selectable: true
-            height: Fit
-            paragraph_spacing: 0.
-            pre_code_spacing: 0.
-            draw_block +: { selection_color: #xA7A536FF }
-
-                            padding: 0.
-                            body: "Busy counter"
+                        chapter_name := Label{
+                            width: Fit
+                            text: "Busy counter"
                             draw_text +: {color: #xFFE8C8 text_style: theme.font_regular{font_family: TextFont font_size: 13.}}
-                        
-        }
+                        }
                         nav := View{
                             width: Fit height: Fit
                             flow: Right
@@ -413,25 +481,19 @@ script_mod! {
                             n6 := NavTile{}
                             n7 := NavTile{}
                         }
-                        counter := Markdown{
-            selectable: true
-            height: Fit
-            paragraph_spacing: 0.
-            pre_code_spacing: 0.
-            draw_block +: { selection_color: #xA7A536FF }
-
-                            padding: 0.
-                            body: "1 / 8"
+                        counter := Label{
+                            width: Fit
+                            text: "1 / 8"
                             draw_text +: {color: #xFFE8C8 text_style: theme.font_bold{font_family: StrongFont font_size: 12.5}}
-                        
-        }
+                        }
                     }
 
-                    slides := SlidesView{
+                    page := ScrollYView{
+                        selection_root: true
+                        select_from_gaps: true
                         width: Fill
                         height: Fill
-                        anim_speed: 0.86
-                        axis: Vertical
+                        flow: Down
 
                         // 1 — Brand + promise + counter bill toy
                         brand := Chapter{
@@ -477,7 +539,19 @@ script_mod! {
                                                     width: Fit height: Fit
                                                     padding: Inset{left: 8. right: 8. top: 3. bottom: 4.}
                                                     draw_bg +: {color: BillFill border_color: BillLine border_size: 1. border_radius: 8.}
-                                                    status := Markdown{padding: 0. selectable: true height: Fit paragraph_spacing: 0. pre_code_spacing: 0. body: "Ready" font_color: Ink draw_text +: {color: Ink text_style: theme.font_bold{font_family: StrongFont font_size: 12.}} draw_block +: { selection_color: #xA7A536FF }}
+                                                    status := Markdown{
+                                                        padding: 0.
+                                                        selectable: true
+                                                        height: Fit
+                                                        paragraph_spacing: 0.
+                                                        pre_code_spacing: 0.
+                                                        body: "Ready"
+                                                        font_color: Ink
+                                                        font_size: 12.
+                                                        draw_selection +: { color: #xA7A536FF }
+                                                        draw_block +: { selection_color: #xA7A536FF }
+                                                        draw_text +: {color: Ink text_style: theme.font_bold{font_family: StrongFont font_size: 12.}}
+                                                    }
                                                 }
                                             }
                                             line1 := BillLine{visible: false}
@@ -717,15 +791,31 @@ script_mod! {
                             Headline{body: "Put Kirano on the counter."}
                             Lede{body: "Download free, or WhatsApp for a walk-through with your shop type and city."}
                             close_cta := CtaPair{}
-                            RoundedView{width: Fill height: 1 draw_bg +: {color: WellLine border_radius: 0.}}
-                            footer := View{
+                            to_kumkaj := SecondaryBtn{text: "kumkaj.com  →"}
+                        }
+
+                        footer := View{
+                            width: Fill height: Fit
+                            flow: Down
+                            spacing: 14
+                            align: Align{x: 0.0 y: 0.0}
+                            padding: Inset{left: 64. right: 64. top: 24. bottom: 36.}
+                            show_bg: true
+                            draw_bg +: {color: OrangeDeep}
+                            footer_row := View{
                                 width: Fill height: Fit
                                 flow: Right
                                 spacing: 12
                                 align: Align{y: 0.5}
-                                Small{width: Fill body: "Kirano is a Kumkaj product by Gotigin. · kirano.shop"}
-                                to_kumkaj := SecondaryBtn{text: "kumkaj.com  →"}
+                                footer_links := View{
+                                    width: Fit height: Fit
+                                    flow: Right
+                                    spacing: 10
+                                    to_privacy := GhostBtn{text: "Privacy"}
+                                    to_terms := GhostBtn{text: "Terms"}
+                                }
                             }
+                            Small{body: "Gotigin · GOTIGIN SOFTWARE & HARDWARE PRIVATE LIMITED · Kumkaj · Kirano."}
                         }
                     }
                 }

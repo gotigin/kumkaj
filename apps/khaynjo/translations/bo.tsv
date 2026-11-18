@@ -101,6 +101,19 @@ bill_item_col_sep	ཀ་རིལ་ཁྲིམས་ལུགས།
 slip_columns	ཀ་རིལ།
 slip_col_header	མགོ།
 bill_line_logo	མཚོན་རྟགས།
+bill_line_shop	ཚོང་ཁང་།
+bill_line_address	ཁ་བྱང་
+bill_line_fssai	FSSAI
+bill_line_title	མཚན་བྱང་།
+bill_line_customer	ཉོ་མཁན།
+bill_line_bill_no	འཛིན་བྱང་ཨང་།
+bill_line_time	དུས་ཚོད།
+bill_line_cashier	དངུལ་འཛིན་པ།
+bill_line_table	ཟ་ཁང་གི་ཅོག་ཙེ།
+bill_line_items	དངོས་རྫས།
+bill_line_total	བསྡོམས་པ།
+bill_line_footer	མཇུག་ཡིག་
+bill_line_upi	UPI
 bill_logo_picture	པར་རིས།
 bill_logo_choose	པར་རིས་འདེམས།
 bill_logo_remove	པར་རིས་སུབ།
@@ -128,6 +141,12 @@ bill_item_piece_off	ཁ་བསྡམས།
 bill_total_qty	བསྡོམས་འབོར།
 bill_total_subtotal	བསྡོམས་རྩིས་ཆུང་བ།
 bill_total_grand	སྤྱིའི་བསྡོམས་འབོར།
+bill_total_number_under	གྲངས་ཀ་འདིའི་འོག
+bill_total_caption_under	མིང་བྱང་འདིའི་འོག
+bill_total_own_line	རང་གི་གྲལ་ཐིག
+bill_total_caption_with	གྲངས་ཀ་དང་མཉམ་དུ།
+bill_total_caption_none	མིང་བྱང་མེད།
+bill_total_place_help	“རང་གི་གྲལ་ཐིག” ཡིས་བསྡོམས་འདི་ཁེར་རྐྱང་དུ་དཔར། ཀ་རིལ་ཞིག་གི་འོག་ཏུ་བཞག་ན། དེའི་གྲངས་ཀ་དངོས་ཟོག་གི་ཀ་རིལ་དེའི་ནང་གྲལ་ཐིག་འདིའི་ཆེ་ཆུང་དང་སྦོམ་ཚད་ལྟར་དཔར། ཀ་རིལ་ཞིག་མ་ཁེངས་བར་བསྡོམས་རྣམས་ཀྱིས་གྲལ་གཅིག་མཉམ་སྤྱོད་བྱེད། དེ་ནས་གྲལ་གསར་པ་འགོ་འཛུགས། མིང་བྱང་ནི་གྲངས་ཀ་དང་མཉམ་དུའམ། ཀ་རིལ་གཞན་གྱི་འོག་ཏུ་འགྲོ་བའམ་འདོར། ཁྲལ་དང་ཞབས་ཞུ། གྲངས་སྒྲིལ། དངུལ་སྤྲོད་ཀྱི་གྲལ་ཐིག་རྣམས་ “བསྡོམས་རྩིས་ཆུང་བ།” ཡི་རྗེས་སུ་འབྲང་།
 reprint_incl	པར་སྐྲུན་ནང་དུ།
 reprint_skip	མཆོང་།
 reprint_skip_meta	སླར་གསོའི་དཔར་མ་བརྒལ།
@@ -170,7 +189,7 @@ settings_sec_pickers	ས་ཁུལ། · ས་ཚིགས། · ཁྲལ་
 settings_sec_printers	པར་ཁང་།
 settings_sec_bill	བིལ་དང་KOTརྩ་སྒྲིག
 settings_sec_selling	འཆར་གཞི་དང་ཚོང་གཉེར།
-bill_kot_tab_bill	མགྲོན་པོའི་འཛིན་བྱང་།
+bill_kot_tab_bill	འཛིན་བྱང་།
 bill_kot_tab_kot	KOT
 settings_sec_alerts	ཉེན་བརྡ།
 alerts_help	ཁྱེད་ཀྱི་ཆེད་དུ་གནས་ཚུལ་གྱི་བརྡ་འཕྲིན་དེ་གློག་བརྙན་སྟེང་དུ་དུས་ཡུན་ག་ཚོད་རིང་བསྡད་ཐུབ་བམ། (ནང་འཇུག་འདི)
@@ -178,20 +197,20 @@ snack_secs_ph	སྐར་ཆ། (3–60, སྔོན་སྒྲིག་10)
 snack_secs_save	ཉེན་བརྡའི་དུས་ཚོད་སྲུང་བ།
 snack_secs_saved	ཉེན་བརྡའི་དུས་ཚོད་ཉར་ཚགས་བྱས། {n}སྐར་ཆ།
 settings_sec_whatsapp	WhatsApp
-whatsapp_cloud_help	Use your own Meta WhatsApp Cloud API. Create a System User token with whatsapp_business_messaging (temporary dashboard tokens expire). Credentials stay on this Server only — never on extra tills. Accepted means Meta took the request, not that the guest received it.
-whatsapp_phone_id_ph	Phone Number ID
-whatsapp_token_ph	Access Token (leave blank to keep)
-whatsapp_template_ph	Bill template name (optional)
-whatsapp_template_lang_ph	Template language (e.g. en)
-whatsapp_enable	Enable
+whatsapp_cloud_help	ཁྱེད་རང་གི་ Meta WhatsApp Cloud API བེད་སྤྱོད་བྱེད། whatsapp_business_messaging ཡོད་པའི་ System User ལག་འཛིན་ཞིག་བཟོ་དགོས། (ཚོད་འཛིན་པང་ལེབ་ཀྱི་གནས་སྐབས་ལག་འཛིན་དུས་ཚོད་རྫོགས་འགྲོ) ཆ་འཕྲིན་འདི་དག་ Server འདིའི་སྟེང་ཁོ་ནར་གནས། — དངུལ་སྒམ་ཁ་སྣོན་སྟེང་ནམ་ཡང་མེད། “ངོས་ལེན་བྱས།” ཞེས་པ་ནི་ Meta ཡིས་རེ་ཞུ་བླངས་པའི་དོན་ཡིན་པ་ལས། མགྲོན་པོར་འབྱོར་བའི་དོན་མིན།
+whatsapp_phone_id_ph	ཁ་པར་ཨང་གྲངས་ ID
+whatsapp_token_ph	འཛུལ་སྤྱོད་ལག་འཛིན། (རྙིང་པ་ཉར་ན་སྟོང་པར་འཇོག)
+whatsapp_template_ph	འཛིན་བྱང་དཔེ་གཞིའི་མིང་། (འདམ་ཀ)
+whatsapp_template_lang_ph	དཔེ་གཞིའི་སྐད་ཡིག (དཔེར་ན་ en)
+whatsapp_enable	ལྕོགས་ཅན་བཟོས།
 whatsapp_disable	Off
-whatsapp_save	Save WhatsApp
-whatsapp_test	Test connection
-whatsapp_disconnect	Disconnect
-whatsapp_send_bill	Send via WhatsApp
-whatsapp_consent	WhatsApp OK
-whatsapp_consent_help	Guest agreed to receive WhatsApp messages. A phone number alone is not consent.
-whatsapp_server_only	Configure WhatsApp on the shop Server device
+whatsapp_save	WhatsApp ཉར་ཚགས་བྱེད་པ།
+whatsapp_test	འབྲེལ་མཐུད་ཚོད་ལྟ།
+whatsapp_disconnect	འབྲེལ་མཐུད་གཅོད།
+whatsapp_send_bill	WhatsApp བརྒྱུད་ནས་བཏང་།
+whatsapp_consent	WhatsApp འགྲིག་གམ།
+whatsapp_consent_help	མགྲོན་པོས་ WhatsApp ཆ་འཕྲིན་ལེན་པར་མོས་མཐུན་བྱས་ཡོད། ཁ་པར་ཨང་གྲངས་གཅིག་པུ་ནི་མོས་མཐུན་མིན།
+whatsapp_server_only	ཚོང་ཁང་གི་ Server འཕྲུལ་ཆས་སྟེང་ WhatsApp སྒྲིག་འགོད་བྱེད།
 settings_sec_backup	རྒྱབ་སྣོན་དང་སླར་གསོ།
 settings_sec_diag	ནད་རྟགས་བརྟག་དཔྱད།
 settings_sec_privacy	སྒེར་གྱི་གསང་བ།
@@ -380,7 +399,7 @@ add_station	ས་ཚིགས་ཁ་སྣོན།
 add_table	ཟ་ཁང་གི་ཅོག་ཙེ་ཁ་སྣོན།
 add_unit	ཚད་གཞི་ཁ་སྣོན།
 add_use_name	མིང་འདི་ཁ་སྣོན།
-allow_extra_tills	ས་ཞིང་ཁ་སྣོན་བྱེད་དུ་འཇུག་པ།
+allow_extra_tills	དངུལ་སྒམ་ཁ་སྣོན་ཆོག་པ།
 amend	བཟོ་བཅོས།
 apply_country_pack	རྒྱལ་ཁབ་ཀྱི་ཐུམ་སྒྲིལ་སྤྱོད་པ།
 datetime_appearance	ཚེས་གྲངས་དང་དུས་ཚོད།
@@ -509,7 +528,7 @@ expense_heading	འགྲོ་གྲོན།
 export_day	ཕྱིར་གཏོང་ཉིན་མོ།
 extra_note_bill_ph	བྱུང་འཛིན་འདིའི་ཐོག་ལ་དྲན་ཐོ་ཁ་སྣོན་/བཙོངས་པ།
 extra_note_expense_ph	མཐའ་མའི་འགྲོ་གྲོན་སྐོར་གྱི་དྲན་ཐོ།
-extra_tills_heading	ཞིང་ལས་ཁ་སྣོན།
+extra_tills_heading	དངུལ་སྒམ་ཁ་སྣོན།
 other_devices_help_heading	སྒྲིག་ཆས་གཞན་སྒྲིག་འཛུགས་བྱེད་པ།
 other_devices_help	ཐབས་འཕྲུལ་འདིའི་སྟེང་ལ་(ཞབས་ཞུ་འཕྲུལ་ཆས་):ཐབས་འཕྲུལ་གཞན་པ། ཆ་སྒྲིག་བྱེད་པའི་ཨང་རྟགས་དང་Wi‑Fiཁ་བྱང་དྲན་ཐོ་རྒྱོབ། གལ་ཏེ་དེ་མངོན་ན་ཐབས་འཕྲུལ་གཞན་པ་མཐུད་དུ་འཇུག་པར་མནན་དགོས། གློག་ཀླད་སྟེང་དུ་གློག་ཀླད་འདི་དང་མཉམ་དུ་འགོ་འཛུགས། ཐབས་འཕྲུལ་རེ་རེའི་སྟེང་ལ་མཉེན་ཆས་དེ་སྒྲིག་འཇུག་བྱེད་པ་དང་། ཚོང་ཤག་གི་ཐབས་ལམ་འདེམས། ཚོང་ཁང་གི་སར་བར་འཚོལ་བ། (ཡང་ན་ཁ་བྱང་ཡིག་འཇུག་བྱེད་པ། ) ཆ་སྒྲིག་བྱེད་པའི་གསང་གྲངས་བླུགས། ད་ལྟ་ཆ་སྒྲིག་བྱེད་དགོས། གལ་ཏེ་Wi‑Fi མར་འབབ་ན་མངགས་ཉོ་དེ་འཕྲུལ་ཆས་སྟེང་ལ་སྒུག་ནས་ཞབས་ཞུ་འཕྲུལ་ཆས་ཀྱིས་ལན་ཡང་བསྐྱར་སྤྲོད་སྐབས་འགྲོ་དགོས། ཐབ་ཚང་གི་པར་འཕྲུལ་དེ་ཚོ་སར་བར་ཐོག་ལ་སྒྲིག་ཡོད། (སྒྲིག་སྟངས་→པར་འཕྲུལ་)
 forget_shop	ཚོང་ཁང་འདི་བརྗེད།
@@ -532,7 +551,7 @@ on_account_ap	རྩིས་ཁྲའི་ཐོག་(AP)
 org_optional_ph	སྒྲིག་འཛུགས། (གདམ་ཀ།)
 paid_by	གླ་ཆ་སྤྲད་ཡོད།
 paid_now	ད་ལྟ་སྤྲད་ཟིན།
-pair_now	ད་ལྟ་ཆ་གཅིག་གཉིས།
+pair_now	ད་ལྟ་མཐུད།
 pairing_code_ph	ཆ་སྒྲིག་ཨང་རྟགས།
 party_name_selected_ph	ཚོང་ཤག་ཡང་ན་མཁོ་སྤྲོད་བྱེད་མཁན་གྱི་མིང་(ཡང་ན་བེད་སྤྱོད་འདེམས་སྒྲུག་བྱས་པ)
 password_ph	གསང་གྲངས།
@@ -637,7 +656,7 @@ choose_device_use	སར་བར་ཡང་ན་ཚོང་ཤག་འད�
 paired_note	ཆ་སྒྲིག བཙོངས་ཆེད་དུ་ལྡེ་མིག་ཕྱེ་བའམ་ཡང་ན་གསར་ཤོས་ལ་གསར་བརྗེ་བྱེད་དགོས།
 last_update_at	མཐའ་མའི་གསར་བརྗེ། {time}
 pair_intro	སར་བར་འཚོལ་བའམ་ཡང་ན་དེའི་ཁ་བྱང་དང་ཆ་སྒྲིག་ཨང་རྟགས་ཡིག་འཇུག་བྱོས།
-pair_resume_hint	Already paired — enter your shop PIN, or Forget this shop to pair another.
+pair_resume_hint	སྔོན་ནས་མཐུད་ཟིན། — ཁྱེད་ཀྱི་ཚོང་ཁང་གི་ PIN འཇུག་པའམ། ཚོང་ཁང་གཞན་མཐུད་པར “ཚོང་ཁང་འདི་བརྗེད།” མནན།
 queue_waiting	ཚོང་ཁང་ལ་སླེབས་པར་སྒུག་བཞིན་ཡོད། ({n}):
 queue_tries	{n} ཚོད་ལྟ་བྱས་ཟིན། · ལན་མཐའ་མ། {e}
 save_backup_copy	རྒྱབ་ལྗོངས་འདྲ་བཤུས་ཉར་ཚགས་བྱས།
@@ -739,7 +758,7 @@ printer_format_custom_added	ས་ཆ་འདིའི་ཆེད་དུ་�
 add_printer	དཔར་ཆས་ཁ་སྣོན།
 remove_printer	བཏོན་པ།
 route_pick_ph	བིལ་ཡང་ན་ཐབ་ཚང་གི་ས་ཚིགས།
-route_bill	མགྲོན་པོའི་འཛིན་བྱང་།
+route_bill	འཛིན་བྱང་།
 route_default_kitchen	ས་ཚིགས་མེད། (བཀོད་སྒྲིག་མ་བྱས་པའི་སྡེར་མ།)
 route_kot_station	ཐབ་ཚང་།
 route_dont_print	དཔར་འཕྲུལ་མེད།
@@ -754,13 +773,18 @@ station_vps_dd	ས་ཚིགས་འདིའི་དཔར་འཕྲུ�
 station_vps_dd_n	{n} པར་འཕྲུལ་ · བརྗེ་སྒྱུར་བྱེད་པར་རྡེབ།
 bill_printers_dd	དཔྱ་ཁྲལ་གྱི་དཔར་མཁན།
 bill_printers_dd_n	{n} དཔྱ་ཁྲལ་གྱི་དཔར་འཕྲུལ་ · བརྗེ་སྒྱུར་བྱེད་པར་རྡེབ།
-paper_heading	ཤོག་བུ།
+paper_heading	རྟོག་བཟོའི་ཤོག་བུ།
 paper_size	{w} × {h} mm
 paper_roll	{w} mm ཤོག་སྒྲིལ།
 paper_not_set	ཤོག་བུ་ད་དུང་མ་ཤེས།
-paper_length_mm	རིང་ཚད། (mm)
-printer_paper_help	དཔར་འཕྲུལ་འདིའི་ཤོག་བུ་ mm ནང་། རིང་ཚད་སྟོང་པ་ནི་ཤོག་སྒྲིལ་ཡིན། ཤོག་ཆ་རེ་རེ་ནང་དོན་ཇི་ཙམ་ཡོད་པ་ལྟར་རིང་། དཔར་འཕྲུལ་འཚོལ་བས་ཤོག་བུ་སྟོང་པ་དཔར་འཕྲུལ་གྱི་སྐུལ་ཆས་ནས་ཁ་སྐོང་བྱེད། (བཤད་མ་ཐུབ་ན་ 80 mm ཤོག་སྒྲིལ།) སྔོན་ནས་གཏན་འཁེལ་བ་ནམ་ཡང་མི་འགྱུར།
-preview_help	ཤོག་ཆ་འདི་འོག་ཏུ་འདེམས་པའི་དཔར་འཕྲུལ་གྱི་ཤོག་བུའི་སྟེང་དུ། དེར་པར་དུ་བསྐྲུན་པ་ལྟར། དཔར་འཕྲུལ་སླེབ་ཐུབ་པའི་གོང་གཡོན་ཟུར་ནས་ཚད་ངོ་མ། (སྐྱ་བོ། སླེབ་མི་ཐུབ་པའི་མཐའ།) ཤོག་ཆ་རིང་པོ་ཤོག་ལྷེ་མང་བའི་སྟེང་། ཤོག་བུའི་མཐའ་ལས་བརྒལ་བ་གཅོད། དཔར་འཕྲུལ་འདེམས་ན་སྔོན་ལྟ་ཁོ་ན་འགྱུར། དཔར་འཕྲུལ་རེ་རེའི་ཤོག་བུ་པར་ཁང་། འོག་ཏུ་གཏན་འཁེལ་བྱེད།
+virtual_width_mm	རྟོག་བཟོའི་ཞེང་ཚད། (mm)
+virtual_length_mm	རྟོག་བཟོའི་རིང་ཚད། (mm)
+reported_width_mm	བརྡ་སྦྱོར་བྱས་པའི་ཞེང་ཚད། (mm)
+reported_length_mm	བརྡ་སྦྱོར་བྱས་པའི་རིང་ཚད། (mm)
+reported_paper	བརྡ་སྦྱོར་བྱས་པ། {paper}
+virtual_paper	རྟོག་བཟོ། {paper}
+printer_paper_help	བརྡ་སྦྱོར་བྱས་པ་ནི་དཔར་འཕྲུལ་འདིའི་སྐུལ་བྱེད་མཉེན་ཆས་ཀྱིས་སྒྲིག་པའི་ཤོག་བུ་ཡིན། མཉེན་ཆས་ཀྱིས་དེ་ཀློག་པ་ཙམ་ཡིན། “མེད།” ནི་འདྲི་སའི་སྐུལ་བྱེད་མཉེན་ཆས་མེད་པའི་དོན་ཡིན། རྟོག་བཟོ་ནི་དཔར་འཕྲུལ་ནང་དངོས་སུ་ཡོད་ཅེས་ཁྱེད་ཀྱིས་བཤད་པའི་ཤོག་བུ་ཡིན། mm ཐོག རིང་ཚད་སྟོང་པ་ནི་ཤོག་སྒྲིལ་ཡིན། དཔར་འཕྲུལ་གྱིས་རང་གི་ཤོག་བུའི་སྟེང་དཔར། རྟོག་བཟོའི་ཤོག་བུས་དེའི་ནང་ནས་ཤོག་བུ་ངོ་མ་ག་ཚོད་ཡིན་པ་མཉེན་ཆས་ལ་བཤད། སྔོན་ལྟ་དང་ཤོག་ངོས་ཀྱི་རིང་ཚད། ཤོག་ཆའི་གནས་ས་བཅས་ཀྱི་ཆེད་དུ། དཔར་འཕྲུལ་འཚོལ། ཡིས་རྟོག་བཟོའི་ཤོག་བུ་སྟོང་པ་སྐོང་ཞིང་ཁྱེད་ཀྱིས་སྒྲིག་པ་ནམ་ཡང་མི་བསྒྱུར།
+preview_help	ཤོག་ཆ་འདི་འོག་ཏུ་འདེམས་པའི་དཔར་འཕྲུལ་གྱིས་དཔར་བ་ལྟར། དེའི་རྟོག་བཟོའི་ཤོག་བུའི་སྟེང་ཚད་ངོ་མར། དཀར་པོ་ནི་དཔར་ས་ཡིན། ཤོག་བུ་སྐྱ་བོར་དཔར་འཕྲུལ་མི་སླེབ། སྣག་ཚ་ཡལ་བ་ནི་གཅོད། གྲུ་བཞི་དགུ་ནི་ཤོག་བུ་ཡིན། ཤོག་ཆ་འཇོག་སར་གནོན། ཤོག་ཆ་རིང་པོ་ཤོག་ངོས་གཞན་ལ་འགྲོ། དཔར་འཕྲུལ་འདེམས་ན་སྔོན་ལྟ་ཁོ་ན་འགྱུར།
 job_layout	བཀོད་སྒྲིག།
 job_delivery	ལས་ཀ་ཇི་ལྟར་གཏོང་བ།
 job_delivery_help	OS ཡིག་ཆ་དང་། བཱའིཊ་སྔོན། ཡང་ན་ESC/POS དངུལ་འཛིན་དང་ཐབ་ཚང་གི་ལག་ཁྱེར་རེ་རེ་བཞིན་རང་ཉིད་ཀྱི་བདག་དབང་དུ་བཞག་ཡོད། ལས་ཀ་གང་རུང་ཞིག་པར་སྐྲུན་འཕྲུལ་ཆས་གང་རུང་ཞིག་ལ་འགྲོ་ཐུབ།
@@ -1053,7 +1077,7 @@ tile_occupied	བཙན་བཟུང་བྱས།
 tile_food_ready	ཟ་མ་གྲ་སྒྲིག།
 tile_bill_printed	དངུལ་འཛིན་པར་སྐྲུན་བྱས།
 tile_paid	གླ་ཆ་སྤྲད་ཡོད།
-tile_bill_btn	མགྲོན་པོའི་འཛིན་བྱང་།
+tile_bill_btn	འཛིན་བྱང་།
 tile_occupy_btn	སྐུ་མགྲོན་བཞུགས་ཁྲི།
 tile_free_btn	ཟ་ཁང་གི་ཅོག་ཙེ་སྟོང་པར་བཟོས།
 tile_ready_btn	ཟ་ཁང་གི་ཅོག་ཙེ་སྟོང་པར་བཟོས།
@@ -1163,7 +1187,7 @@ kot_show_station	ས་ཚིགས།
 kot_hide_station	ས་ཚིགས་སྦས།
 kot_show_table	ཟ་ཁང་གི་ཅོག་ཙེ།
 kot_hide_table	ཟ་ཁང་གི་ཅོག་ཙེ་སྦས་པ།
-kot_show_kot_no	KOT མེད།
+kot_show_kot_no	KOT ཨང་།
 kot_hide_kot_no	སྦས་ KOT མིན།
 kot_width	སྔོན་ལྟའི་བསྡུ་སྒྲིག (KOT མཆོང་ལྡེ་སྟེང་ནང་དོན་གྱི་ཁ་ཞེང་སྒྲིག་དགོས།)
 kot_width_58	58 mm
@@ -1238,7 +1262,7 @@ on_your_menu	ཁྱེད་རང་གི་དཀར་ཆག་སྟེང�
 edit	རྩོམ་སྒྲིག།
 schemes	འཆར་གཞི། མཁོ་སྤྲོད།
 schemes_help	BOGO བརྒྱ་ཆའི་ཆག་ཡང་དང་གཏན་འཁེལ་གྱི་མཉམ་སྡེབ། མཉམ་སྡེབ་དེ་ཚོ་ཐབ་ཚང་གི་ཐིག་ལ་རྒྱ་བསྐྱེད་བཏང་ནས་བཏང་བ་KOT; ཆ་ཤས་རྣམས་མཉམ་སྡེབ་མེ་མ་འབར་བར་དུ་བསྡད་ཡོད། དཔེར་ན། 2 Thali ཉོས་ན་ 1 Chaas ཐོབ།
-scheme_bogo_ph	Buy 2 Thali get 1 Chaas
+scheme_bogo_ph	Thali 2 ཉོས་ན་ Chaas 1 རིན་མེད།
 add_scheme	BOGO ཁ་སྣོན།
 schedule_ph	ཆུ་ཚོད་ / དགའ་སྤྲོའི་དུས་ཚོད། — གཟའ་ཟླ་བ་ནས་གཟའ་པ་སངས ༠༧:༠༠-༡༡:༠༠ ཡང་ན་དགའ་སྤྲོའི་ཆུ་ཚོད་ ༡༧:༠༠-༡༩:༠༠ = ༡༥༠
 upi_qr	UPI QR
@@ -1256,7 +1280,7 @@ choose_table	ཟ་ཁང་གི་ཅོག་ཙེ་འདེམས།
 change_table	ཟ་ཁང་གི་ཅོག་ཙེ་བརྗེ་དགོས།
 pick_table_banner	མངགས་ཉོ་འདིའི་ཆེད་དུ་ཟ་ཁང་གི་ཅོག་ཙེ་ཞིག་འདེམས།
 items_word	དཀར་ཆག་རྣམ་གྲངས།
-items_section	དཀར་ཆག་དཀར་ཆག་རྣམ་གྲངས།
+items_section	དངོས་རྫས།
 back_to_order	ཕྱིར་མངགས་ཉོ་བྱེད་པ།
 new_items_head	ད་དུང་བཏང་མེད།
 price_ph	རིན་གོང་།
@@ -1266,8 +1290,8 @@ taxable_value	ཁྲལ་འཇལ་བའི་རིན་ཐང་།
 gst_inside_price_note	({tax} བཅས)
 start_with_template	ང་ཚོའི་རེའུ་མིག་དཔེ་སྒྲོམ་ནས་འགོ་བཙུགས།
 template_heading	ང་ཚོའི་དཀར་ཆག་དཔེ་སྒྲོམ།
-template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
-template_download_shelf	Download photo shelf
+template_need_download	ཁ་ལག་གི་སྤྱི་སྤྱོད་པར་གྱི་བང་ཁྲི་ (~1,459) ཕབ་ལེན་བྱས་རྗེས། མེད་པའི་མིང་རྣམས་ཁྱེད་ཀྱི་དཀར་ཆག་ནང་ནང་འདྲེན་བྱེད།
+template_download_shelf	པར་གྱི་བང་ཁྲི་ཕབ་ལེན།
 template_info	{c} སྡེ་ཚན་དང་{d} སྡེར་མ་པར་རིས་དང་མཉམ་དུ་ཁ་སྣོན་བྱེད་པར་གྲ་སྒྲིག་ཡོད། རིན་གོང་₹0ནས་འགོ་འཛུགས། དེ་རྗེས་ཁྱེད་རང་གི་རིན་གོང་སྒྲིག་དགོས།
 template_import	དཔེ་སྒྲོམ་ཆ་ཚང་ནང་འདྲེན་བྱེད་པ།
 template_confirm	དེའི་སྡེ་ཚན་དང་མཉམ་དུ་སྡེར་མ་{d}ཁ་སྣོན་བྱེད་དགོས་སམ། ཁྱེད་ལ་ཡོད་པའི་སྡེར་མ་རྣམས་དེ་ལྟར་གནས་དགོས།

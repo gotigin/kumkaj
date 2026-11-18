@@ -101,6 +101,19 @@ bill_item_col_sep	Imirongo y'inkingi
 slip_columns	Inkingi
 slip_col_header	Umutwe
 bill_line_logo	Ikirango
+bill_line_shop	Iduka
+bill_line_address	Aderesi
+bill_line_fssai	FSSAI
+bill_line_title	Umutwe
+bill_line_customer	Umukiriya
+bill_line_bill_no	Nomero y'inyemezabuguzi
+bill_line_time	Isaha
+bill_line_cashier	Ushinzwe amafaranga
+bill_line_table	Imeza
+bill_line_items	Ibintu
+bill_line_total	Igiteranyo
+bill_line_footer	Hasi
+bill_line_upi	UPI
 bill_logo_picture	Ifoto
 bill_logo_choose	Hitamo ifoto
 bill_logo_remove	Kuraho ifoto
@@ -128,6 +141,12 @@ bill_item_piece_off	Kuzimya
 bill_total_qty	Umubare wose
 bill_total_subtotal	Igiteranyo gito
 bill_total_grand	Igiteranyo kinini
+bill_total_number_under	Umubare munsi ya
+bill_total_caption_under	Umutwe munsi ya
+bill_total_own_line	Umurongo wacyo
+bill_total_caption_with	Hamwe n'umubare
+bill_total_caption_none	Nta mutwe
+bill_total_place_help	Umurongo wacyo icapa iki giteranyo cyonyine. Munsi y'inkingi, umubare wacyo ucapwa muri iyo nkingi y'ibicuruzwa, mu bunini n'ubugari bw'uyu murongo; ibiteranyo bisangira umurongo umwe kugeza inkingi imwe ifashwe, hanyuma umurongo mushya ugatangira. Umutwe ujyana n'umubare, munsi y'indi nkingi, cyangwa ukavanwaho. Imirongo y'umusoro, serivisi, kwegeranya no kwishyura ikurikira Igiteranyo gito.
 reprint_incl	Mu gucapa
 reprint_skip	Simbuka
 reprint_skip_meta	Simbuka gucapa kongera
@@ -178,20 +197,20 @@ snack_secs_ph	Amasegonda (3–60, bisanzwe 10)
 snack_secs_save	Bika igihe cy'imenyesha
 snack_secs_saved	Igihe cy'imenyesha cyabitswe — amasegonda {n}
 settings_sec_whatsapp	WhatsApp
-whatsapp_cloud_help	Use your own Meta WhatsApp Cloud API. Create a System User token with whatsapp_business_messaging (temporary dashboard tokens expire). Credentials stay on this Server only — never on extra tills. Accepted means Meta took the request, not that the guest received it.
-whatsapp_phone_id_ph	Phone Number ID
-whatsapp_token_ph	Access Token (leave blank to keep)
-whatsapp_template_ph	Bill template name (optional)
-whatsapp_template_lang_ph	Template language (e.g. en)
-whatsapp_enable	Enable
+whatsapp_cloud_help	Koresha Meta WhatsApp Cloud API yawe bwite. Kora tokeni ya System User ifite whatsapp_business_messaging (tokeni z'agateganyo za dashboard zirarangira). Amakuru aguma kuri iyi Seriveri gusa — ntajya kuri kontwari zindi. “Byemewe” bivuze ko Meta yakiriye icyifuzo, si uko umushyitsi yakibonye.
+whatsapp_phone_id_ph	ID ya nimero ya telefone
+whatsapp_token_ph	Tokeni yo kwinjira (siga ubusa kugira ngo uyigumane)
+whatsapp_template_ph	Izina ry'inyandikorugero y'inyemezabuguzi (bitari ngombwa)
+whatsapp_template_lang_ph	Ururimi rw'inyandikorugero (urugero en)
+whatsapp_enable	Emera
 whatsapp_disable	Off
-whatsapp_save	Save WhatsApp
-whatsapp_test	Test connection
-whatsapp_disconnect	Disconnect
-whatsapp_send_bill	Send via WhatsApp
-whatsapp_consent	WhatsApp OK
-whatsapp_consent_help	Guest agreed to receive WhatsApp messages. A phone number alone is not consent.
-whatsapp_server_only	Configure WhatsApp on the shop Server device
+whatsapp_save	Bika WhatsApp
+whatsapp_test	Gerageza ihuza
+whatsapp_disconnect	Hagarika ihuza
+whatsapp_send_bill	Ohereza kuri WhatsApp
+whatsapp_consent	WhatsApp Yego
+whatsapp_consent_help	Umushyitsi yemeye kwakira ubutumwa bwa WhatsApp. Nimero ya telefone yonyine si uburenganzira.
+whatsapp_server_only	Shyiraho WhatsApp ku gikoresho cya Seriveri cy'iduka
 settings_sec_backup	Kopi y'inyuma no kugarura
 settings_sec_diag	Isuzuma
 settings_sec_privacy	Ubuzima bwite
@@ -637,7 +656,7 @@ choose_device_use	Hitamo Seriveri cyangwa Kiliya.
 paired_note	Byahujwe. Fungura kugira ngo ugurishe, cyangwa Vugurura ibiheruka.
 last_update_at	Ivugurura rya nyuma: {time}.
 pair_intro	Shaka seriveri, cyangwa wandike aderesi yayo na kode yo guhuza.
-pair_resume_hint	Already paired — enter your shop PIN, or Forget this shop to pair another.
+pair_resume_hint	Byamaze guhuzwa — andika PIN y'iduka ryawe, cyangwa ukande “Ibira iri duka” kugira ngo uhuze irindi.
 queue_waiting	Itegereje kugera ku iduka ({n}):
 queue_tries	Byageragejwe inshuro {n} · igisubizo cya nyuma: {e}
 save_backup_copy	Bika kopi y'inyuma…
@@ -754,13 +773,18 @@ station_vps_dd	Amacapyi ya iyi sitasiyo
 station_vps_dd_n	Amacapyi {n} · kanda uhindure
 bill_printers_dd	Amacapyi y'inyemezabuguzi
 bill_printers_dd_n	Amacapyi {n} y'inyemezabuguzi · kanda uhindure
-paper_heading	Impapuro
+paper_heading	Impapuro virtual
 paper_size	{w} × {h} mm
 paper_roll	umuzingo wa {w} mm
 paper_not_set	impapuro ntiramenyekana
-paper_length_mm	Uburebure (mm)
-printer_paper_help	Impapuro z'iyi capyi muri mm. Uburebure butanditse ni umuzingo: buri gapapuro kangana n'ibikarimo. Shaka amacapyi yuzuza impapuro zitanditse ikoresheje porogaramu ya capyi (umuzingo wa 80 mm iyo itabivuga) kandi ntijya ihindura izashyizweho.
-preview_help	Aka gapapuro ku mpapuro za capyi yatoranyijwe hepfo, nk'uko gacapwa aho: mu bunini nyabwo uhereye ku nguni yo hejuru ibumoso capyi igeraho (ibara ry'ivu: impande itageraho), agapapuro karekare ku mpapuro nyinshi, ibirenze inkombe y'urupapuro birakatwa. Gutoranya capyi bihindura igaragaza gusa; impapuro za buri capyi zishyirwaho muri Amacapyi.
+virtual_width_mm	Ubugari virtual (mm)
+virtual_length_mm	Uburebure virtual (mm)
+reported_width_mm	Ubugari bwatangajwe (mm)
+reported_length_mm	Uburebure bwatangajwe (mm)
+reported_paper	Ibyatangajwe: {paper}
+virtual_paper	Virtual: {paper}
+printer_paper_help	Ibyatangajwe ni impapuro porogaramu ya capyi (driver) y'iyi capyi yashyizweho; iyi porogaramu irazisoma gusa, kandi N/A bivuga ko nta driver ihari yo kubaza. Virtual ni impapuro uvuga ko ziri muri capyi koko, muri mm; uburebure butanditse ni umuzingo. Capyi icapa ku mpapuro zayo bwite; impapuro virtual zibwira iyi porogaramu ingano yazo iriho impapuro nyazo, ku bw'igaragaza, uburebure bw'urupapuro n'aho agapapuro kajya. Shaka amacapyi yuzuza impapuro virtual zitanditse kandi ntijya ihindura izo washyizeho.
+preview_help	Aka gapapuro nk'uko gacapwa kuri capyi yatoranyijwe hepfo, mu bunini nyabwo ku mpapuro zayo virtual. Umweru ni aho icapa, impapuro z'ibara ry'ivu capyi ntizigeraho, kandi wino yerurutse irakatwa. Udusanduku icyenda ni urupapuro: kanda aho agapapuro kagomba kujya. Agapapuro karekare gakomereza ku zindi mpapuro. Gutoranya capyi bihindura igaragaza gusa.
 job_layout	Imiterere
 job_delivery	Uko akazi koherezwa
 job_delivery_help	Inyandiko ya sisitemu, bytes zoroheje, cyangwa ESC/POS. Inyemezabuguzi n'itike y'igikoni buri kimwe kigira icyacyo. Akazi aka gashobora kujya kuri mucapyi wese Shaka yabitse.
@@ -1266,8 +1290,8 @@ taxable_value	Agaciro gashyirwaho umusoro
 gst_inside_price_note	({tax} iri mu giciro)
 start_with_template	Tangira n'inyandiko ya menu yacu
 template_heading	Inyandiko ya menu yacu
-template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
-template_download_shelf	Download photo shelf
+template_need_download	Kurura akabati rusange k'amafoto y'ibiryo (~ibiryo 1,459), hanyuma winjize amazina abura muri menu yawe.
+template_download_shelf	Kurura akabati k'amafoto
 template_info	Ibyiciro {c} n'ibiryo {d} bifite amafoto, biteguye kongerwaho. Ibiciro bitangira kuri ₹0 — shyira ibyawe nyuma.
 template_import	Injiza inyandiko yuzuye
 template_confirm	Ongeraho ibiryo {d} n'ibyiciro byabyo? Ibiryo usanzwe ufite biguma uko ari.

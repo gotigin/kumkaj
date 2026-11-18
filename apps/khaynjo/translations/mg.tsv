@@ -101,6 +101,19 @@ bill_item_col_sep	Fitsipika andàlana
 slip_columns	Tsanganana
 slip_col_header	Lohateny
 bill_line_logo	Logo
+bill_line_shop	Fivarotana
+bill_line_address	Adiresy
+bill_line_fssai	FSSAI
+bill_line_title	Lohateny
+bill_line_customer	Mpanjifa
+bill_line_bill_no	Laharana faktiora
+bill_line_time	Ora
+bill_line_cashier	Mpahangy vola
+bill_line_table	Latabatra
+bill_line_items	Entana
+bill_line_total	Fitambarany
+bill_line_footer	Fanamarihana farany
+bill_line_upi	UPI
 bill_logo_picture	Sary
 bill_logo_choose	Misafidiana sary
 bill_logo_remove	Esory ny sary
@@ -128,6 +141,12 @@ bill_item_piece_off	Maty
 bill_total_qty	Isan-javatra rehetra
 bill_total_subtotal	Tontalim-bokatra
 bill_total_grand	Tontaly lehibe
+bill_total_number_under	Isa eo ambanin'ny
+bill_total_caption_under	Marika eo ambanin'ny
+bill_total_own_line	Tsipika manokana
+bill_total_caption_with	Miaraka amin'ny isa
+bill_total_caption_none	Tsy misy marika
+bill_total_place_help	Ny Tsipika manokana dia manonta irery ity totaly ity. Eo ambanin'ny tsanganana, ny isany dia atonta ao amin'io tsangan'entana io, amin'ny habe sy hatevin'ity tsipika ity; mizara andalana iray ny totaly mandra-pahafeno tsanganana iray, dia manomboka andalana vaovao. Ny marika dia miaraka amin'ny isa, eo ambanin'ny tsanganana hafa, na tsy atonta. Ny tsipikan'ny hetra, serivisy, fanakaikena ary fandoavam-bola dia manaraka ny Tontalim-bokatra.
 reprint_incl	Ao anaty pirinty
 reprint_skip	Dingano
 reprint_skip_meta	Tsia ny fanontana fanarenana
@@ -178,20 +197,20 @@ snack_secs_ph	Segondra (3–60, default 10)
 snack_secs_save	Tehirizo ny fotoana fanairana
 snack_secs_saved	Fotoana fampandrenesana voavonjy — {n} segondra
 settings_sec_whatsapp	WhatsApp
-whatsapp_cloud_help	Use your own Meta WhatsApp Cloud API. Create a System User token with whatsapp_business_messaging (temporary dashboard tokens expire). Credentials stay on this Server only — never on extra tills. Accepted means Meta took the request, not that the guest received it.
-whatsapp_phone_id_ph	Phone Number ID
-whatsapp_token_ph	Access Token (leave blank to keep)
-whatsapp_template_ph	Bill template name (optional)
-whatsapp_template_lang_ph	Template language (e.g. en)
-whatsapp_enable	Enable
+whatsapp_cloud_help	Ampiasao ny Meta WhatsApp Cloud API anao manokana. Mamoròna token System User misy whatsapp_business_messaging (lany daty ny token vonjimaika avy amin'ny dashboard). Ato amin'ity Server ity ihany no mijanona ny antsipiriany — tsy any amin'ny kesy fanampiny mihitsy. Ny “Nekena” dia midika fa noraisin'i Meta ny fangatahana, fa tsy hoe voarain'ny vahiny.
+whatsapp_phone_id_ph	ID an'ny laharana finday
+whatsapp_token_ph	Token fidirana (avelao ho foana raha hitazona azy)
+whatsapp_template_ph	Anaran'ny modelin'ny faktiora (tsy voatery)
+whatsapp_template_lang_ph	Fitenin'ny modely (oh. en)
+whatsapp_enable	Alefaso
 whatsapp_disable	Off
-whatsapp_save	Save WhatsApp
-whatsapp_test	Test connection
-whatsapp_disconnect	Disconnect
-whatsapp_send_bill	Send via WhatsApp
+whatsapp_save	Tehirizo ny WhatsApp
+whatsapp_test	Andramo ny fifandraisana
+whatsapp_disconnect	Tapaho ny fifandraisana
+whatsapp_send_bill	Alefaso amin'ny WhatsApp
 whatsapp_consent	WhatsApp OK
-whatsapp_consent_help	Guest agreed to receive WhatsApp messages. A phone number alone is not consent.
-whatsapp_server_only	Configure WhatsApp on the shop Server device
+whatsapp_consent_help	Nanaiky handray hafatra WhatsApp ny vahiny. Tsy fanekena ny laharana finday irery.
+whatsapp_server_only	Amboary ny WhatsApp ao amin'ny fitaovana Server an'ny fivarotana
 settings_sec_backup	Manao backup & mamerina
 settings_sec_diag	Fanaraha-maso ara-pahasalamana
 settings_sec_privacy	Fiainana manokana
@@ -509,7 +528,7 @@ expense_heading	Fandaniana
 export_day	Andro fanondranana
 extra_note_bill_ph	Fanamarihana fanampiny momba ity faktiora / varotra ity
 extra_note_expense_ph	Fanamarihana fanampiny momba ny fandaniana farany
-extra_tills_heading	Fivarotana fanampiny
+extra_tills_heading	Kesy fanampiny
 other_devices_help_heading	Manomàna fitaovana hafa
 other_devices_help	Amin'ity fitaovana ity (Server): Fitaovana hafa → Avelao ny fivarotana fanampiny. Tazomy ny kaody fampifanampiana sy ny adiresy Wi‑Fi. Kitiho Avelao ny fitaovana hafa hifandray raha miseho izany. Amin'ny solosaina, kitiho ny Manomboka amin'ity solosaina ity. Amin'ny fitaovana tsirairay: apetraho ny app, safidio ny Mode Client, tadiavo ny server an'ny fivarotana (na soraty ny adiresy), ampidiro ny kaody fampifanampiana, Mampifandray izao. Miandry ny baiko eo amin'ny fitaovana raha midina ny Wi‑Fi ary mandeha rehefa mamaly indray ny Server. Ny mpanonta ao an-dakozia dia apetraka amin'ny Server (Fikirana → Mpanonta) — ny fivarotana fanampiny dia mandefa KOT any.
 forget_shop	Adino ity fivarotana ity
@@ -637,7 +656,7 @@ choose_device_use	Fidio Server na Client.
 paired_note	Nifandray. Sokafy mba hivarotra, na havaozy ho an'ny vaovao farany.
 last_update_at	Fanavaozam-baovao farany: {time}.
 pair_intro	Tadiavo ny mpizara, na soraty ny adiresy sy ny kaody fifandirana.
-pair_resume_hint	Already paired — enter your shop PIN, or Forget this shop to pair another.
+pair_resume_hint	Efa mifandray — ampidiro ny PIN an'ny fivarotanao, na tsindrio ny “Adino ity fivarotana ity” raha hampifandray iray hafa.
 queue_waiting	Miandry hahatratra ny fivarotana ({n}):
 queue_tries	Niezaka {n} fotoana · valiny farany: {e}
 save_backup_copy	Tehirizo ny dika mifandimby…
@@ -754,13 +773,18 @@ station_vps_dd	Milina fanontam-pirinty ho an'ity toeram-pahandroana ity
 station_vps_dd_n	{n} mpanonta · kitiho hanovàna
 bill_printers_dd	Mpanonta ho an’ny faktiora
 bill_printers_dd_n	{n} mpanonta ho an’ny faktiora · kitiho hanovàna
-paper_heading	Taratasy
+paper_heading	Taratasy virtoaly
 paper_size	{w} × {h} mm
 paper_roll	horonana {w} mm
 paper_not_set	tsy fantatra mbola ny taratasy
-paper_length_mm	Halavana (mm)
-printer_paper_help	Ny taratasin'ity mpanonta ity amin'ny mm. Horonana ny Halavana banga: mitovy halava amin'ny votoatiny ny tapakila tsirairay. Ny Mitadiava milina fanontam-pirinty dia mameno ny taratasy banga avy amin'ny mpitondra ny mpanonta (horonana 80 mm raha tsy afaka milaza izy) ary tsy manova mihitsy izay efa voapetraka.
-preview_help	Ity tapakila ity eo amin'ny taratasin'ny mpanonta voafidy etsy ambany, toy ny hanontana azy any: habe tena izy manomboka amin'ny zoro ambony havia tratran'ny mpanonta (volondavenona: sisiny tsy tratrany), tapakila lava amin'ny pejy maromaro kokoa, tapahina izay mihoatra ny sisin'ny taratasy. Ny fisafidianana mpanonta dia manova ny topi-maso ihany; apetraka ao amin'ny Mpanonta ny taratasin'ny mpanonta tsirairay.
+virtual_width_mm	Sakany virtoaly (mm)
+virtual_length_mm	Halavana virtoaly (mm)
+reported_width_mm	Sakany notaterina (mm)
+reported_length_mm	Halavana notaterina (mm)
+reported_paper	Notaterina: {paper}
+virtual_paper	Virtoaly: {paper}
+printer_paper_help	Ny notaterina dia ny taratasy nametrahana ny mpitondra an'ity mpanonta ity; vakin'ny fampiharana fotsiny izany, ary ny N/A dia midika fa tsy misy mpitondra azo anontaniana. Ny virtoaly dia ny taratasy lazainao fa tena ao amin'ny mpanonta, amin'ny mm; horonana ny halavana banga. Manonta amin'ny taratasiny manokana ny mpanonta; ny taratasy virtoaly dia milaza amin'ny fampiharana hoe firy amin'izany no tena taratasy, ho an'ny topi-maso, ny halavan'ny pejy ary ny toeran'ny tapakila. Ny Mitadiava milina fanontam-pirinty dia mameno taratasy virtoaly banga ary tsy manova mihitsy izay efa napetrakao.
+preview_help	Ity tapakila ity araka ny fanontana azy amin'ny mpanonta voafidy eto ambany, amin'ny tena habeny eo amin'ny taratasiny virtoaly. Ny fotsy no toerana anontana, ny taratasy volondavenona tsy tratran'ny mpanonta, ary tapahina ny ranomainty matroka. Ny efajoro sivy no taratasy: tsindrio ny toerana tokony hisy ny tapakila. Mitohy amin'ny pejy hafa ny tapakila lava. Ny fisafidianana mpanonta dia manova ny topi-maso ihany.
 job_layout	Endrika
 job_delivery	Ahoana ny fandefasana ny asa
 job_delivery_help	Antontan-taratasy OS, bitra mivantana, na ESC/POS. Ny faktiora sy ny tapakila ao an-dakozia dia samy mitahiry ny azy. Ny asa iray na inona na inona dia azo alefa amin’ny mpanonta izay voatahiry ao amin’ny Tadiavo.
@@ -1048,7 +1072,7 @@ add_a_table	Manampia latabatra
 add_station_heading	Manampia toby lakozia
 categories_help	Tsindrio ny Mampiasa mba hanasokajiana ny entana etsy ambony eo amin'io sokajy io. Ny Sary dia manome sary ny sokajy; raha tsy misy dia asehony ny fanafohezana.
 dish_search_ph	Anaran'ny entana — tadiavo ny sakafo ato aminay na soraty ny anao manokana
-tile_free	Maimaim-poana
+tile_free	Malalaka
 tile_occupied	Voafandrika
 tile_food_ready	Vonona ny sakafo
 tile_bill_printed	Noprinta ny kaonty
@@ -1163,7 +1187,7 @@ kot_show_station	Toerana
 kot_hide_station	Afina ny toerana
 kot_show_table	Latabatra
 kot_hide_table	Afina ny latabatra
-kot_show_kot_no	KOT Tsia
+kot_show_kot_no	Laharana KOT
 kot_hide_kot_no	Afina KOT Tsia
 kot_width	Fampisehoana mialoha ny fonosana (apetraho ny sakany votoaty amin'ny takelaka KOT)
 kot_width_58	58 mm
@@ -1238,7 +1262,7 @@ on_your_menu	Ao amin'ny meninao
 edit	Ovay
 schemes	Drafitra / tolotra
 schemes_help	BOGO, fihenam-bidy isan-jato, ary combos raikitra. Ny combos dia manitatra ho amin'ny andalana ao an-dakozia rehefa mandefa KOT; ny singa dia mijanona mihazona mandra-pipoahan'ny combo. Ohatra: Mividiana 2 Thali mahazo 1 Chaas
-scheme_bogo_ph	Buy 2 Thali get 1 Chaas
+scheme_bogo_ph	Mividiana Thali 2, mahazoa Chaas 1
 add_scheme	Ampio BOGO
 schedule_ph	Ora / ora sambatra — Alatsinainy ka hatramin'ny Zoma 07:00-11:00 na HappyHour 17:00-19:00=150
 upi_qr	UPI QR
@@ -1266,8 +1290,8 @@ taxable_value	Sandan'ny hetra azo alaina
 gst_inside_price_note	({tax} tafiditra)
 start_with_template	Manomboha amin'ny maodelim-menu anay
 template_heading	Ny maodelim-menu anay
-template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
-template_download_shelf	Download photo shelf
+template_need_download	Alaivo ny talantalana sarin-tsakafo ho an'ny daholobe (~sakafo 1 459), dia ampidiro ao amin'ny sakafonao ireo anarana tsy ampy.
+template_download_shelf	Alaivo ny talantalana sary
 template_info	Sokajy {c} ary lovia {d} misy sary, vonona hampiana. Manomboka amin'ny vidiny ₹0 — apetraho aorian'izay ny anao.
 template_import	Importo ny maodely manontolo
 template_confirm	Ampio lovia {d} miaraka amin'ny sokajiny ve? Ny lovia efa anananao dia hijanona araka ny tokony ho izy.

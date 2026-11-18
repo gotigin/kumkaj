@@ -101,6 +101,19 @@ bill_item_col_sep	Pravidla sloupců
 slip_columns	Sloupce
 slip_col_header	Záhlaví
 bill_line_logo	Logo
+bill_line_shop	Obchod
+bill_line_address	Adresa
+bill_line_fssai	FSSAI
+bill_line_title	Název
+bill_line_customer	Zákazník
+bill_line_bill_no	Č. účtu
+bill_line_time	Čas
+bill_line_cashier	Pokladník
+bill_line_table	Jídelní stůl
+bill_line_items	Položky
+bill_line_total	Celkem
+bill_line_footer	Zápatí
+bill_line_upi	UPI
 bill_logo_picture	Obrázek
 bill_logo_choose	Vybrat obrázek
 bill_logo_remove	Odebrat obrázek
@@ -128,6 +141,12 @@ bill_item_piece_off	Vypnuto
 bill_total_qty	Celkové množství
 bill_total_subtotal	Mezisoučet
 bill_total_grand	Celkový součet
+bill_total_number_under	Číslo pod
+bill_total_caption_under	Štítek pod
+bill_total_own_line	Vlastní řádek
+bill_total_caption_with	U čísla
+bill_total_caption_none	Bez štítku
+bill_total_place_help	Vlastní řádek tiskne tento součet samostatně. Pod sloupcem se jeho číslo tiskne v daném sloupci položek, ve velikosti a tloušťce tohoto řádku; součty sdílejí jeden řádek, dokud není některý sloupec obsazen, pak začne nový řádek. Štítek je u čísla, pod jiným sloupcem, nebo se vynechá. Řádky daně, obsluhy, zaokrouhlení a platby se řídí položkou Mezisoučet.
 reprint_incl	V tisku
 reprint_skip	Přeskočit
 reprint_skip_meta	Přeskočit obnovovací tisk
@@ -170,7 +189,7 @@ settings_sec_pickers	Oblasti · stanice · daňové sazby
 settings_sec_printers	Tiskárny
 settings_sec_bill	Formát účtu a KOT
 settings_sec_selling	Schémata a prodej
-bill_kot_tab_bill	Bille
+bill_kot_tab_bill	Účet
 bill_kot_tab_kot	KOT
 settings_sec_alerts	Upozornění
 alerts_help	Jak dlouho zůstávají stavové zprávy na obrazovce (toto přihlášení).
@@ -178,20 +197,20 @@ snack_secs_ph	Sekundy (3–60, výchozí 10)
 snack_secs_save	Ušetřete čas upozornění
 snack_secs_saved	Uložený čas upozornění — {n} sekund
 settings_sec_whatsapp	WhatsApp
-whatsapp_cloud_help	Use your own Meta WhatsApp Cloud API. Create a System User token with whatsapp_business_messaging (temporary dashboard tokens expire). Credentials stay on this Server only — never on extra tills. Accepted means Meta took the request, not that the guest received it.
-whatsapp_phone_id_ph	Phone Number ID
-whatsapp_token_ph	Access Token (leave blank to keep)
-whatsapp_template_ph	Bill template name (optional)
-whatsapp_template_lang_ph	Template language (e.g. en)
-whatsapp_enable	Enable
+whatsapp_cloud_help	Použijte vlastní Meta WhatsApp Cloud API. Vytvořte token System User s whatsapp_business_messaging (dočasné tokeny z panelu vyprší). Údaje zůstávají jen na tomto Serveru — nikdy na extra pokladnách. „Přijato“ znamená, že Meta požadavek převzala, ne že ho host obdržel.
+whatsapp_phone_id_ph	ID telefonního čísla
+whatsapp_token_ph	Přístupový token (ponechte prázdné pro zachování)
+whatsapp_template_ph	Název šablony účtu (volitelné)
+whatsapp_template_lang_ph	Jazyk šablony (např. en)
+whatsapp_enable	Povolit
 whatsapp_disable	Off
-whatsapp_save	Save WhatsApp
-whatsapp_test	Test connection
-whatsapp_disconnect	Disconnect
-whatsapp_send_bill	Send via WhatsApp
+whatsapp_save	Uložit WhatsApp
+whatsapp_test	Otestovat připojení
+whatsapp_disconnect	Odpojit
+whatsapp_send_bill	Odeslat přes WhatsApp
 whatsapp_consent	WhatsApp OK
-whatsapp_consent_help	Guest agreed to receive WhatsApp messages. A phone number alone is not consent.
-whatsapp_server_only	Configure WhatsApp on the shop Server device
+whatsapp_consent_help	Host souhlasil s přijímáním zpráv WhatsApp. Samotné telefonní číslo není souhlas.
+whatsapp_server_only	Nastavte WhatsApp na zařízení Server obchodu
 settings_sec_backup	Zálohování a obnovení
 settings_sec_diag	Diagnostika
 settings_sec_privacy	Soukromí
@@ -637,7 +656,7 @@ choose_device_use	Vyberte Server nebo Klient.
 paired_note	Spárováno. Chcete-li prodat, odemkněte nebo aktualizujte nejnovější.
 last_update_at	Poslední aktualizace: {time}.
 pair_intro	Najděte server nebo zadejte jeho adresu a párovací kód.
-pair_resume_hint	Already paired — enter your shop PIN, or Forget this shop to pair another.
+pair_resume_hint	Již spárováno — zadejte PIN svého obchodu, nebo klepněte na „Zapomeňte na tento obchod“ a spárujte jiný.
 queue_waiting	Čekání na příchod do obchodu ({n}):
 queue_tries	Vyzkoušeno {n} krát · poslední odpověď: {e}
 save_backup_copy	Uložit záložní kopii…
@@ -739,7 +758,7 @@ printer_format_custom_added	Pro toto místo byl přidán vlastní profil
 add_printer	Přidat tiskárnu
 remove_printer	Odebrat
 route_pick_ph	Bill nebo kuchyňská stanice
-route_bill	Bille
+route_bill	Účet
 route_default_kitchen	Žádná stanice (nepřiřazené pokrmy)
 route_kot_station	Kuchyně
 route_dont_print	Žádná tiskárna
@@ -754,13 +773,18 @@ station_vps_dd	Tiskárny pro tuto stanici
 station_vps_dd_n	{n} tiskáren · klepněte pro změnu
 bill_printers_dd	Tiskárny na účet
 bill_printers_dd_n	{n} tiskáren na účet · klepnutím změňte
-paper_heading	Papír
+paper_heading	Virtuální papír
 paper_size	{w} × {h} mm
 paper_roll	role {w} mm
 paper_not_set	papír zatím není známý
-paper_length_mm	Délka (mm)
-printer_paper_help	Papír této tiskárny v mm. Prázdná Délka je role: každá účtenka je dlouhá jako její obsah. Najděte tiskárny doplní prázdný papír z ovladače tiskárny (role 80 mm, když to nedokáže říct) a nikdy nezmění papír, který už je nastavený.
-preview_help	Tato účtenka na papíru tiskárny vybrané níže, jak se na ní vytiskne: ve skutečné velikosti od levého horního rohu, kam tiskárna dosáhne (šedě: okraje, kam nedosáhne), dlouhá účtenka na více listech, vše za okrajem papíru se ořízne. Výběr tiskárny mění jen náhled; papír každé tiskárny se nastavuje v části Tiskárny.
+virtual_width_mm	Virtuální šířka (mm)
+virtual_length_mm	Virtuální délka (mm)
+reported_width_mm	Hlášená šířka (mm)
+reported_length_mm	Hlášená délka (mm)
+reported_paper	Hlášeno: {paper}
+virtual_paper	Virtuální: {paper}
+printer_paper_help	Hlášený je papír, na který je nastaven ovladač této tiskárny; aplikace jej pouze čte a N/A znamená, že není žádný ovladač, kterého by se dalo zeptat. Virtuální je papír, o kterém říkáte, že je v tiskárně doopravdy, v mm; prázdná délka znamená roli. Tiskárna tiskne na svůj vlastní papír; virtuální papír říká aplikaci, kolik z něj je skutečný papír, pro náhled, délku stránky a umístění účtenky. Najděte tiskárny doplní prázdný virtuální papír a nikdy nezmění ten, který jste nastavili.
+preview_help	Tato účtenka tak, jak se vytiskne na tiskárně vybrané níže, ve skutečné velikosti na jejím virtuálním papíru. Bílá je místo, kde se tiskne, šedý papír je mimo dosah tiskárny a vybledlý tisk se ořízne. Devět čtverců je papír: klepněte tam, kde má účtenka být. Dlouhá účtenka pokračuje na dalších stránkách. Výběr tiskárny mění jen náhled.
 job_layout	Rozložení
 job_delivery	Jak je úloha odeslána
 job_delivery_help	Dokument OS, nezpracované bajty nebo ESC/POS. Účet a lístek do kuchyně si ponechají každý svůj. Každá úloha může přejít na jakoukoli tiskárnu, kterou funkce Find uložila.
@@ -1053,7 +1077,7 @@ tile_occupied	Obsazeno
 tile_food_ready	Jídlo připravené
 tile_bill_printed	Bill vytištěn
 tile_paid	Zaplaceno
-tile_bill_btn	Bille
+tile_bill_btn	Účet
 tile_occupy_btn	Usaďte hosty
 tile_free_btn	Prázdný jídelní stůl
 tile_ready_btn	Prázdný jídelní stůl
@@ -1163,7 +1187,7 @@ kot_show_station	stanice
 kot_hide_station	Skrýt stanici
 kot_show_table	Jídelní stůl
 kot_hide_table	Skrýt jídelní stůl
-kot_show_kot_no	KOT Ne
+kot_show_kot_no	Č. KOT
 kot_hide_kot_no	Skrýt KOT Ne
 kot_width	Náhled obtékání (nastavení šířky obsahu na kartě KOT)
 kot_width_58	58 mm
@@ -1266,8 +1290,8 @@ taxable_value	Zdanitelná hodnota
 gst_inside_price_note	({tax} včetně)
 start_with_template	Začněte s naší šablonou menu
 template_heading	Naše šablona menu
-template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
-template_download_shelf	Download photo shelf
+template_need_download	Stáhněte veřejnou polici s fotkami jídel (~1 459 jídel) a potom importujte chybějící názvy do svého menu.
+template_download_shelf	Stáhnout polici s fotkami
 template_info	{c} kategorií a {d} jídel s fotografiemi, připraveno k přidání. Ceny začínají na 0 ₹ – nastavte si své poté.
 template_import	Importujte kompletní šablonu
 template_confirm	Přidat {d} jídel s jejich kategoriemi? Pokrmy, které už máte, zůstanou tak, jak jsou.
@@ -1325,7 +1349,7 @@ kot_show_title	Titulní řádek
 kot_hide_title	Skrýt název
 kot_field_cycle	Vyberte další
 kot_field_select	Vyberte další
-dishes_n	{n} nádobí
+dishes_n	{n} jídel
 recipe_ph	Recept (volitelný) — jedna porce používá: Rýže=0,2, Paneer=0,15
 reorder_ph	Koupit více na
 set_reorder	Nastavte úroveň změny pořadí

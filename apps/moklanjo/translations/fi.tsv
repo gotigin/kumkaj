@@ -192,7 +192,7 @@ snack_secs_save	Tallenna ilmoitusaika
 snack_secs_saved	Ilmoitusaika tallennettu — {n} sekuntia
 snack_secs_bad	Syötä sekunnit numerona (3–60)
 cancelled	Peruttu
-cancelling	Cancelling…
+cancelling	Cancellingâ¦
 cancel	Peru
 opening_client	Avataan päätettä…
 preparing_desk	Valmistellaan pöytää…
@@ -501,13 +501,18 @@ job_size	Kirjasinkoko
 job_size_ph	esim. 18, 20, 26…
 test_receipt_format	Testikuitti
 test_label_format	Testitarra
-paper_heading	Paperi
+paper_heading	Virtuaalinen paperi
 paper_size	{w} × {h} mm
 paper_roll	{w} mm:n rulla
 paper_not_set	paperia ei vielä tiedetä
-paper_length_mm	Pituus (mm)
-printer_paper_help	Tämän tulostimen paperi millimetreinä. Tyhjä Pituus on rulla: jokainen kuitti on sisältönsä mittainen. Etsi tulostimet täyttää tyhjän paperin tulostimen ajurista (80 mm:n rulla, jos se ei osaa sanoa) eikä koskaan muuta jo asetettua.
-preview_help	Tämä kuitti alla valitun tulostimen paperilla, kuten se siellä tulostuu: todellisessa koossa vasemmasta yläkulmasta, johon tulostin ylettyy (harmaa: reunat, joihin se ei ylety), pitkä kuitti useammalle arkille, kaikki paperin reunan yli leikataan pois. Tulostimen valinta muuttaa vain esikatselua; kunkin tulostimen paperi asetetaan kohdassa Tulostimet.
+virtual_width_mm	Virtuaalinen leveys (mm)
+virtual_length_mm	Virtuaalinen pituus (mm)
+reported_width_mm	Ilmoitettu leveys (mm)
+reported_length_mm	Ilmoitettu pituus (mm)
+reported_paper	Ilmoitettu: {paper}
+virtual_paper	Virtuaalinen: {paper}
+printer_paper_help	Ilmoitettu on paperi, jolle tämän tulostimen ajuri on asetettu; sovellus vain lukee sen, ja “Ei ole” tarkoittaa, ettei ole ajuria, jolta kysyä. Virtuaalinen on paperi, jonka sanot olevan oikeasti tulostimessa, millimetreinä; tyhjä pituus tarkoittaa rullaa. Tulostin tulostaa omalle paperilleen; virtuaalinen paperi kertoo sovellukselle, kuinka suuri osa siitä on oikeaa paperia – esikatselua, sivun pituutta ja kuitin paikkaa varten. Etsi tulostimet täyttää tyhjän virtuaalisen paperin eikä koskaan muuta itse asettamaasi.
+preview_help	Tämä kuitti sellaisena kuin se tulostuu alla valitulla tulostimella, todellisessa koossa sen virtuaalisella paperilla. Valkoinen on kohta, johon tulostetaan, harmaa paperi on tulostimen ulottumattomissa, ja haalistunut muste leikkautuu pois. Yhdeksän ruutua ovat paperi: napauta kohtaa, johon kuitin pitää asettua. Pitkä kuitti jatkuu useammalle sivulle. Tulostimen valinta muuttaa vain esikatselua.
 slip_col_width	Leveys (mm)
 no_printer_assigned	Ei tulostinta
 printer_target_default	tämän tietokoneen tavallinen tulostin (tyhjä osoite)

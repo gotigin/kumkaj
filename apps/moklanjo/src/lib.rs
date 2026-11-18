@@ -36,7 +36,11 @@ pub mod print_share;
 pub mod print_android;
 pub mod print_bt;
 pub mod print_usb;
+#[cfg(any(target_os = "windows", test))]
+pub mod print_win;
 pub mod receipt_raster;
+#[cfg(any(target_os = "linux", target_os = "macos", test))]
+pub mod slip_pdf;
 pub mod rates;
 pub mod rider_mode;
 pub mod snack;

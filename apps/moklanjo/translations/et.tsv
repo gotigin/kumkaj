@@ -192,7 +192,7 @@ snack_secs_save	Säästke hoiatusaega
 snack_secs_saved	Hoiatuse aeg salvestatud — {n} sekundit
 snack_secs_bad	Sisestage sekundid numbrina (3–60)
 cancelled	Tühistatud
-cancelling	Cancelling…
+cancelling	Cancellingâ¦
 cancel	Tühista
 opening_client	Kliendi avamine…
 preparing_desk	Töölaua ettevalmistamine…
@@ -501,13 +501,18 @@ job_size	Fondi suurus
 job_size_ph	nt. 18, 20, 26…
 test_receipt_format	Testi kviitung
 test_label_format	Katsemärgis
-paper_heading	Paber
+paper_heading	Virtuaalne paber
 paper_size	{w} × {h} mm
 paper_roll	{w} mm rull
 paper_not_set	paber pole veel teada
-paper_length_mm	Pikkus (mm)
-printer_paper_help	Selle printeri paber millimeetrites. Tühi Pikkus on rull: iga tšekk on sama pikk kui selle sisu. „Otsige printereid“ täidab tühja paberi printeri draiveri järgi (80 mm rull, kui see ei oska öelda) ega muuda kunagi juba määratud paberit.
-preview_help	See tšekk allpool valitud printeri paberil, nagu see seal prinditakse: tegelikus suuruses ülemisest vasakust nurgast, kuhu printer ulatub (hall: servad, kuhu ei ulatu), pikk tšekk mitmel lehel, kõik üle paberi serva lõigatakse ära. Printeri valimine muudab ainult eelvaadet; iga printeri paber määratakse jaotises Printerid.
+virtual_width_mm	Virtuaalne laius (mm)
+virtual_length_mm	Virtuaalne pikkus (mm)
+reported_width_mm	Teatatud laius (mm)
+reported_length_mm	Teatatud pikkus (mm)
+reported_paper	Teatatud: {paper}
+virtual_paper	Virtuaalne: {paper}
+printer_paper_help	Teatatud on paber, millele selle printeri draiver on seadistatud; rakendus ainult loeb seda ja „Ei kehti“ tähendab, et pole draiverit, kellelt küsida. Virtuaalne on paber, mis teie sõnul on tegelikult printeris, millimeetrites; tühi pikkus tähendab rulli. Printer prindib oma paberile; virtuaalne paber ütleb rakendusele, kui suur osa sellest on päris paber – eelvaate, lehe pikkuse ja tšeki asukoha jaoks. „Otsige printereid“ täidab tühja virtuaalse paberi ega muuda kunagi teie määratut.
+preview_help	See tšekk nii, nagu see prinditakse allpool valitud printeris, tegelikus suuruses selle virtuaalsel paberil. Valge on koht, kuhu prinditakse, hall paber jääb printeri ulatusest välja ja tuhm tint lõigatakse ära. Üheksa ruutu on paber: puudutage kohta, kus tšekk peab asuma. Pikk tšekk jätkub järgmistel lehtedel. Printeri valimine muudab ainult eelvaadet.
 slip_col_width	Laius (mm)
 no_printer_assigned	Printerit pole
 printer_target_default	selle arvuti tavaline printer (tühi aadress)

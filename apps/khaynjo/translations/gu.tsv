@@ -44,7 +44,7 @@ restore_item	પાછો લાવો
 empty_catalog	હજી કોઈ આઇટમ નથી.
 total	કુલ
 cash	રોકડ
-upi	यूपीआई
+upi	UPI
 card	કાર્ડ
 credit	પાર્ટી
 clear	સાફ
@@ -78,7 +78,7 @@ reprint_kot_needed	પહેલા KOT મોકલો — પછી વાન�
 reprint_kot_none_selected	બધા મોકલેલ છોડ્યા — છાપવા «છાપમાં» દબાવો
 reprint_kot_client	{place} માટે ફરી છાપો ({n}) મોકલ્યું — રસોડું સર્વર પર છાપશે
 print_cancelled_kot	બધા રદ છાપો
-print_cancelled_kot_ok	{n} रद्द छापे · {slips} पर्ची → {kitchens}
+print_cancelled_kot_ok	{n} રદ વાનગી છપાઈ · {slips} સ્લિપ → {kitchens}
 print_cancelled_kot_needed	રદ વાનગીઓવાળું ટેબલ ખોલો
 print_cancelled_kot_none	આ ઓર્ડર પર રદ નથી
 print_cancelled_kot_client	રદ ({n}) {place} મોકલ્યું — સર્વર પર છપાશે
@@ -101,6 +101,19 @@ bill_item_col_sep	સ્તંભ રેખા
 slip_columns	સ્તંભો
 slip_col_header	શીર્ષક
 bill_line_logo	લોગો
+bill_line_shop	દુકાન
+bill_line_address	સરનામું
+bill_line_fssai	FSSAI
+bill_line_title	શીર્ષક
+bill_line_customer	ગ્રાહક
+bill_line_bill_no	બિલ નં.
+bill_line_time	સમય
+bill_line_cashier	કેશિયર
+bill_line_table	ટેબલ
+bill_line_items	વસ્તુઓ
+bill_line_total	કુલ
+bill_line_footer	ફૂટર
+bill_line_upi	UPI
 bill_logo_picture	ચિત્ર
 bill_logo_choose	ચિત્ર પસંદ કરો
 bill_logo_remove	ચિત્ર દૂર કરો
@@ -128,6 +141,12 @@ bill_item_piece_off	બંધ
 bill_total_qty	કુલ જથ્થો
 bill_total_subtotal	પેટા કુલ
 bill_total_grand	કુલ
+bill_total_number_under	સંખ્યા આની નીચે
+bill_total_caption_under	લેબલ આની નીચે
+bill_total_own_line	પોતાની પંક્તિ
+bill_total_caption_with	સંખ્યા સાથે
+bill_total_caption_none	લેબલ નહીં
+bill_total_place_help	“પોતાની પંક્તિ” આ કુલને એકલું છાપે છે. સ્તંભની નીચે હોય ત્યારે તેની સંખ્યા તે આઇટમ સ્તંભમાં, આ પંક્તિના માપ અને જાડાઈમાં છપાય છે; કોઈ સ્તંભ ભરાય ત્યાં સુધી કુલ એક જ હાર વહેંચે છે, પછી નવી હાર શરૂ થાય છે. લેબલ સંખ્યા સાથે, બીજા સ્તંભની નીચે જાય છે, અથવા છોડી દેવાય છે. ટેક્સ, સર્વિસ, રાઉન્ડિંગ અને ચુકવણીની પંક્તિઓ “પેટા કુલ” ને અનુસરે છે.
 reprint_incl	છાપમાં
 reprint_skip	છોડો
 reprint_skip_meta	રિકવરી પ્રિન્ટ છોડો
@@ -178,20 +197,20 @@ snack_secs_ph	સેકન્ડ (3–60, મૂળ 10)
 snack_secs_save	સૂચના સમય સાચવો
 snack_secs_saved	સૂચના સમય સાચવ્યો — {n} સેકન્ડ
 settings_sec_whatsapp	WhatsApp
-whatsapp_cloud_help	Use your own Meta WhatsApp Cloud API. Create a System User token with whatsapp_business_messaging (temporary dashboard tokens expire). Credentials stay on this Server only — never on extra tills. Accepted means Meta took the request, not that the guest received it.
-whatsapp_phone_id_ph	Phone Number ID
-whatsapp_token_ph	Access Token (leave blank to keep)
-whatsapp_template_ph	Bill template name (optional)
-whatsapp_template_lang_ph	Template language (e.g. en)
-whatsapp_enable	Enable
+whatsapp_cloud_help	તમારું પોતાનું Meta WhatsApp Cloud API વાપરો. whatsapp_business_messaging વાળો System User ટોકન બનાવો (ડૅશબોર્ડના કામચલાઉ ટોકનની મુદત પૂરી થઈ જાય છે). આ માહિતી ફક્ત આ સર્વર પર જ રહે છે — વધારાના ટિલ પર ક્યારેય નહીં. “સ્વીકાર્યું” એટલે Meta એ વિનંતી લીધી, મહેમાનને સંદેશ મળ્યો એમ નહીં.
+whatsapp_phone_id_ph	ફોન નંબર ID
+whatsapp_token_ph	ઍક્સેસ ટોકન (એ જ રાખવા ખાલી છોડો)
+whatsapp_template_ph	બિલ ટેમ્પ્લેટનું નામ (વૈકલ્પિક)
+whatsapp_template_lang_ph	ટેમ્પ્લેટની ભાષા (દા.ત. en)
+whatsapp_enable	ચાલુ કરો
 whatsapp_disable	Off
-whatsapp_save	Save WhatsApp
-whatsapp_test	Test connection
-whatsapp_disconnect	Disconnect
-whatsapp_send_bill	Send via WhatsApp
-whatsapp_consent	WhatsApp OK
-whatsapp_consent_help	Guest agreed to receive WhatsApp messages. A phone number alone is not consent.
-whatsapp_server_only	Configure WhatsApp on the shop Server device
+whatsapp_save	WhatsApp સાચવો
+whatsapp_test	જોડાણ તપાસો
+whatsapp_disconnect	જોડાણ તોડો
+whatsapp_send_bill	WhatsApp થી મોકલો
+whatsapp_consent	WhatsApp બરાબર
+whatsapp_consent_help	મહેમાને WhatsApp સંદેશ મેળવવાની સંમતિ આપી છે. ફક્ત ફોન નંબર હોવો એ સંમતિ નથી.
+whatsapp_server_only	WhatsApp દુકાનના સર્વર ડિવાઇસ પર સેટ કરો
 settings_sec_backup	બેકઅપ અને પુનઃસ્થાપન
 settings_sec_diag	નિદાન
 settings_sec_privacy	ગોપનીયતા
@@ -637,7 +656,7 @@ choose_device_use	આ ડિવાઇસનો ઉપયોગ કેવી ર�
 paired_note	જોડાઈ ગયું. વેચવા માટે ખોલો, અથવા દુકાનમાંથી તાજી માહિતી લેવા તાજું કરો.
 last_update_at	દુકાનમાંથી છેલ્લું અપડેટ: {time}.
 pair_intro	સર્વર શોધો, અથવા તેનું સરનામું અને પેરિંગ કોડ લખો.
-pair_resume_hint	Already paired — enter your shop PIN, or Forget this shop to pair another.
+pair_resume_hint	પહેલેથી જોડાયેલું છે — તમારી દુકાનનો PIN નાખો, અથવા બીજી દુકાન જોડવા “આ દુકાન ભૂલી જાઓ” દબાવો.
 queue_waiting	દુકાન સુધી પહોંચવાની રાહમાં ({n}):
 queue_tries	{n} વાર પ્રયાસ · છેલ્લો જવાબ: {e}
 save_backup_copy	બેકઅપની નકલ સાચવો…
@@ -754,13 +773,18 @@ station_vps_dd	આ સ્ટેશનના પ્રિન્ટર
 station_vps_dd_n	{n} પ્રિન્ટર · બદલવા ટૅપ
 bill_printers_dd	બિલ માટે પ્રિન્ટર
 bill_printers_dd_n	બિલ માટે {n} પ્રિન્ટર · બદલવા દબાવો
-paper_heading	કાગળ
+paper_heading	વર્ચ્યુઅલ કાગળ
 paper_size	{w} × {h} mm
 paper_roll	{w} mm રોલ
 paper_not_set	કાગળ હજી ખબર નથી
-paper_length_mm	લંબાઈ (mm)
-printer_paper_help	આ પ્રિન્ટરનો કાગળ mm માં. ખાલી લંબાઈ એટલે રોલ: દરેક સ્લિપ તેની સામગ્રી જેટલી લાંબી હોય છે. પ્રિન્ટર શોધો ખાલી કાગળ પ્રિન્ટરના ડ્રાઇવર પરથી ભરે છે (ન કહી શકે તો 80 mm રોલ) અને પહેલેથી નક્કી કાગળ ક્યારેય બદલતું નથી.
-preview_help	નીચે પસંદ કરેલા પ્રિન્ટરના કાગળ પર આ સ્લિપ, ત્યાં જેમ છપાય છે તેમ: પ્રિન્ટર જ્યાં સુધી પહોંચે છે તે ઉપરના ડાબા ખૂણાથી સાચા માપમાં (રાખોડી: જ્યાં નથી પહોંચતું તે કિનારીઓ), લાંબી સ્લિપ વધુ પાનાં પર, કાગળની કિનારીથી આગળનું બધું કપાઈ જાય છે. પ્રિન્ટર પસંદ કરવાથી ફક્ત પૂર્વાવલોકન બદલાય છે; દરેક પ્રિન્ટરનો કાગળ પ્રિન્ટર હેઠળ નક્કી થાય છે.
+virtual_width_mm	વર્ચ્યુઅલ પહોળાઈ (mm)
+virtual_length_mm	વર્ચ્યુઅલ લંબાઈ (mm)
+reported_width_mm	જણાવેલી પહોળાઈ (mm)
+reported_length_mm	જણાવેલી લંબાઈ (mm)
+reported_paper	જણાવેલ: {paper}
+virtual_paper	વર્ચ્યુઅલ: {paper}
+printer_paper_help	જણાવેલ એ કાગળ છે જેના પર આ પ્રિન્ટરનો ડ્રાઇવર સેટ છે; એપ તેને ફક્ત વાંચે છે, અને “નથી” નો અર્થ છે કે પૂછવા માટે કોઈ ડ્રાઇવર નથી. વર્ચ્યુઅલ એ કાગળ છે જે તમે કહો છો કે પ્રિન્ટરમાં ખરેખર છે, mm માં; ખાલી લંબાઈ એટલે રોલ. પ્રિન્ટર પોતાના કાગળ પર છાપે છે; વર્ચ્યુઅલ કાગળ એપને જણાવે છે કે તેમાંથી કેટલો સાચો કાગળ છે, પૂર્વાવલોકન, પાનાની લંબાઈ અને સ્લિપની જગ્યા માટે. પ્રિન્ટર શોધો ખાલી વર્ચ્યુઅલ કાગળ ભરે છે અને તમે સેટ કરેલો ક્યારેય બદલતું નથી.
+preview_help	આ સ્લિપ નીચે પસંદ કરેલા પ્રિન્ટર પર જેમ છપાય છે તેમ, તેના વર્ચ્યુઅલ કાગળ પર સાચા માપમાં. સફેદ ભાગમાં છપાય છે, રાખોડી કાગળ સુધી પ્રિન્ટર પહોંચતું નથી, અને ઝાંખી શાહી કપાઈ જાય છે. નવ ખાના એ કાગળ છે: સ્લિપ જ્યાં બેસવી જોઈએ ત્યાં ટૅપ કરો. લાંબી સ્લિપ વધુ પાનાં પર જાય છે. પ્રિન્ટર પસંદ કરવાથી ફક્ત પૂર્વાવલોકન બદલાય છે.
 job_layout	લેઆઉટ
 job_delivery	કામ કેવી રીતે મોકલાય છે
 job_delivery_help	OS દસ્તાવેજ, કાચા બાઇટ અથવા ESC/POS. બિલ અને રસોડાની ટિકિટ બંને પોતપોતાનું રાખે છે. કોઈ પણ કામ શોધો એ સાચવેલા કોઈ પણ પ્રિન્ટર પર જઈ શકે.
@@ -1040,7 +1064,7 @@ book_kind_today	આજનો ચોપડો
 book_kind_month	આ મહિનાનો ચોપડો
 book_kind_aging	બાકી / ડેબિટ-ક્રેડિટ
 book_kind_balance	સરવૈયું
-order_help	ખુલ્લો ઓર્ડર પસંદ કરો, અથવા ટેબલ પસંદ કરી નવો શરૂ કરો. તૈયાર વસ્તુઓ પર ટેપ કરો, KOT મોકલો, એક કે વધુ વસ્તુઓનું બિલ બનાવો, બિલ વહેંચો અને ચુકવણી પતાવો.
+order_help	ઉમેરવા માટે આઇટમ પર ટૅપ કરો.
 floor_help	દરેક ટેબલ બતાવે છે કે મહેમાનો બેઠા છે કે નહીં, તેમનું ખુલ્લું બિલ શું છે અને આગળ કોને સેવા જોઈએ છે.
 kitchen_help	દરેક વેરિએન્ટ અથવા દરેક વસ્તુ દીઠ તૈયાર જથ્થો ટ્રેક કરો — KOT માં ઇચ્છો તેમ નોંધો.
 kitchen_empty	હાલમાં કંઈ ખુલ્લું નથી.
@@ -1238,7 +1262,7 @@ on_your_menu	તમારા મેનૂમાં
 edit	બદલો
 schemes	સ્કીમ / ઓફર
 schemes_help	X ખરીદો Y મેળવો — સેટલ પર આપમેળે. દા.ત. Buy 2 Thali get 1 Chaas
-scheme_bogo_ph	Buy 2 Thali get 1 Chaas
+scheme_bogo_ph	2 થાળી ખરીદો, 1 છાશ મેળવો
 add_scheme	BOGO ઉમેરો
 schedule_ph	સમય / હૅપી અવર — Mon-Fri 07:00-11:00 અથવા HappyHour 17:00-19:00=150
 upi_qr	UPI QR
@@ -1266,8 +1290,8 @@ taxable_value	કરપાત્ર મૂલ્ય
 gst_inside_price_note	({tax} સહિત)
 start_with_template	અમારા મેનુ ટેમ્પલેટથી શરૂ કરો
 template_heading	અમારું મેનુ ટેમ્પલેટ
-template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
-template_download_shelf	Download photo shelf
+template_need_download	વાનગીઓની જાહેર ફોટો શેલ્ફ (~1,459 વાનગીઓ) ડાઉનલોડ કરો, પછી જે નામ નથી તે તમારા મેનૂમાં આયાત કરો.
+template_download_shelf	ફોટો શેલ્ફ ડાઉનલોડ કરો
 template_info	{c} શ્રેણીઓ અને {d} વાનગીઓ ફોટો સાથે તૈયાર. કિંમત ₹0 — પછી તમારી કિંમત રાખો.
 template_import	આખું ટેમ્પલેટ ઉમેરો
 template_confirm	{d} વાનગીઓ તેમની શ્રેણીઓ સાથે ઉમેરવી? તમારી હાલની વાનગીઓ એમ જ રહેશે.

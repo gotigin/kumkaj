@@ -6,8 +6,8 @@ schedule_h_on	Iskedyul H — naka-on (bandera ng may-ari)
 rx_expected_off	Inaasahan ang Rx — naka-off (bandila ng may-ari)
 rx_expected_on	Inaasahan ang Rx — naka-on (flag ng may-ari)
 rx_note_ph	Tala ng reseta (opsyonal — ang iyong mga salita)
-batch_ph	Batch no.
-expiry_ph	Expiry (YYYY-MM-DD)
+batch_ph	Batch blg.
+expiry_ph	Petsa ng pag-expire (YYYY-MM-DD)
 expiry_alerts	Mga alerto sa pag-expire (susunod na 7 araw)
 expiry_none	Walang mga batch na mag-e-expire sa susunod na 7 araw.
 rx_nudge	Na-flag ng may-ari ang Rx / Iskedyul H — magdagdag ng tala kung kinakailangan.
@@ -79,13 +79,19 @@ bill_item_amount	Halaga
 bill_item_note	Rx / tala sa pagbebenta
 bill_item_col_sep	Mga panuntunan sa hanay
 slip_col_width	Lapad (mm)
-paper_heading	Papel
+paper_heading	Virtual na papel
 paper_size	{w} × {h} mm
 paper_roll	{w} mm na rolyo
 paper_not_set	hindi pa alam ang papel
-paper_length_mm	Haba (mm)
-printer_paper_help	Ang papel ng printer na ito sa mm. Ang walang lamang Haba ay rolyo: bawat resibo ay kasinghaba ng laman nito. Pinupunan ng Maghanap ng mga printer ang walang lamang papel mula sa driver ng printer (80 mm na rolyo kapag hindi nito masabi) at hindi kailanman binabago ang naitakda na.
-preview_help	Ang resibong ito sa papel ng printer na pinili sa ibaba, gaya ng pagkaka-print doon: tunay na laki mula sa itaas na kaliwang abot ng printer (kulay abo: mga gilid na hindi nito abot), mahabang resibo sa mas maraming pahina, pinuputol ang lampas sa gilid ng papel. Ang pagpili ng printer ay preview lang ang binabago; ang papel ng bawat printer ay itinatakda sa Mga Printer.
+na	N/A
+virtual_width_mm	Virtual na lapad (mm)
+virtual_length_mm	Virtual na haba (mm)
+reported_width_mm	Iniulat na lapad (mm)
+reported_length_mm	Iniulat na haba (mm)
+reported_paper	Iniulat: {paper}
+virtual_paper	Virtual: {paper}
+printer_paper_help	Ang iniulat ay ang papel kung saan nakatakda ang driver ng printer na ito; binabasa lang ito ng app, at ang N/A ay nangangahulugang walang driver na matatanong. Ang virtual ay ang papel na sinasabi mong talagang nasa printer, sa mm; ang blangkong haba ay rolyo. Nagpi-print ang printer sa sarili nitong papel; sinasabi ng virtual na papel sa app kung gaano karami roon ang totoong papel, para sa preview, haba ng pahina at puwesto ng resibo. Pinupunan ng Maghanap ng mga printer ang blangkong virtual na papel at hindi kailanman binabago ang itinakda mo.
+preview_help	Ang resibong ito kung paano ito mapi-print sa printer na pinili sa ibaba, sa totoong laki sa virtual na papel nito. Puti ang bahaging napi-print, ang kulay-abong papel ay hindi abot ng printer, at ang maputlang tinta ay napuputol. Ang siyam na kahon ay ang papel: i-tap kung saan dapat ilagay ang resibo. Ang mahabang resibo ay tumutuloy sa mas maraming pahina. Ang pagpili ng printer ay nagbabago lang sa preview.
 slip_col_start	Espasyo sa simula (px)
 slip_col_end	Espasyo sa dulo (px)
 slip_columns_help	Kasama sa lapad ng bawat column ang espasyo nito sa simula at dulo. Bumabalot ang teksto sa loob ng column nito; ang lumalampas sa lapad ng nilalaman ay napuputol, sa papel at sa preview.
@@ -100,6 +106,12 @@ bill_item_piece_off	Naka-off
 bill_total_qty	Kabuuang dami
 bill_total_subtotal	Bahaging kabuuan
 bill_total_grand	Malaking kabuuan
+bill_total_number_under	Numero sa ilalim ng
+bill_total_caption_under	Label sa ilalim ng
+bill_total_own_line	Sariling linya
+bill_total_caption_with	Kasama ng numero
+bill_total_caption_none	Walang label
+bill_total_place_help	Ang Sariling linya ay nagpi-print ng kabuuang ito nang mag-isa. Sa ilalim ng column, ang numero nito ay naka-print sa column na iyon ng mga item, sa laki at kapal ng linyang ito; magkakasama sa isang hilera ang mga kabuuan hanggang may column na okupado na, saka magsisimula ng bagong hilera. Ang label ay kasama ng numero, nasa ilalim ng ibang column, o hindi isinasama. Ang mga linya ng buwis, serbisyo, rounding at bayad ay sumusunod sa Bahaging kabuuan.
 kot_unassigned	Hindi nakatalaga
 settings_hub_help	Buksan ang isang lugar sa isang pagkakataon — mas kaunting pag-scroll, mas malinaw na mga pagpipilian.
 settings_sec_language	Wika at pera
@@ -143,7 +155,7 @@ diag_cleared	Na-clear ang mga diagnostic log
 sidebar_settings	Gilid na bar
 sidebar_settings_help	Parehong mga icon tulad ng side rail. Mag-drag ng row para muling ayusin. I-flip ang switch para ipakita o itago. Palaging nananatili sa bar ang Mga Setting at Lock.
 sidebar_always_on_short	Laging naka-on
-sidebar_menu_items	Mga item sa menu ng menu
+sidebar_menu_items	Mga item
 sidebar_enable_all	Paganahin ang Lahat
 sidebar_disable_all	Huwag paganahin ang Lahat
 sidebar_order_saved	Na-save ang order sa sidebar
@@ -252,7 +264,7 @@ attachments_last_expense	Mga Attachment (huling gastos)
 bank	Bangko
 bank_in	Pasok sa bangko
 bank_out	Cash out sa bangko
-bank_reconciliation	Bank reconciliation
+bank_reconciliation	Pagtutugma sa bangko
 bank_to_till	Bangko → hanggang
 book_add_dish	Aklat — magdagdag ng aytem / aytem
 book_opening_credit	Ledger — pagbubukas ng kredito
@@ -317,7 +329,7 @@ drawer_count	Bilang ng drawer (opsyonal)
 expense_heading	Gastos
 export_day	Araw ng pag-export
 extra_note_bill_ph	Dagdag na tala sa bill / sale na ito
-extra_tills_heading	Mga dagdag na tills
+extra_tills_heading	Mga dagdag na kaha
 other_devices_help_heading	Mag-set up ng iba pang device
 other_devices_help	Sa device na ito (Server): Iba pang mga device → Pahintulutan ang mga karagdagang tills. Tandaan ang code ng pagpapares at Wi‑Fi address. I-tap ang Payagan ang ibang mga device na kumonekta kung lalabas ito. Sa isang computer, i-tap ang Magsimula sa computer na ito. Sa bawat isa na device: i-install ang app, piliin ang Client Mode, Hanapin ang server ng shop (o i-type ang address), ilagay ang code ng pagpapares, Ipares ngayon. Naghihintay ang mga order sa device kung bumaba ang Wi‑Fi at umalis kapag sumagot muli ang Server. Ang mga dagdag na printer ay nakatakda sa Server (Mga Setting → Mga Printer) — mga dagdag na till ay nagpapadala ng mga singil doon.
 forget_shop	Kalimutan ang tindahang ito
@@ -383,7 +395,7 @@ server_ip_ph	IP ng server (hal. 192.168.1.10)
 set_credit_limit	Ilapat ang limitasyon sa customer o supplier
 set_login_selected	Ilapat ang pag-login sa napili
 set_login_named	Ilapat ang pag-login sa {name}
-shop	Mamili
+shop	Tindahan
 show	Ipakita
 spreadsheet_csv	Talaan (CSV)
 start_fresh	Magsimula ng bago
@@ -470,7 +482,7 @@ route_cleared	Na-clear {name}
 route_tap_selected	pinili
 printer_target_ph	Pangalan o host ng system printer:9100
 printer_target_default	ang karaniwang printer ng computer na ito (blangko ang address)
-route_bill	bill ng bisita
+route_bill	Bill
 station_print_pick_first	Pumili muna ng seksyon ng dispensaryo
 bill_printers_dd	Mga printer para sa bill
 bill_printers_dd_n	{n} printer para sa bill · i-tap para baguhin
@@ -735,6 +747,20 @@ fssai_ph	Drug license no. (opsyonal - ang iyong mga salita)
 bill_footer_ph	Footer (hal. Salamat, bumisita muli)
 kot_field_on	palabas
 kot_field_off	itago
+kot_field_show	Ipakita
+kot_field_hide	Magtago
+bill_line_shop	Tindahan
+bill_line_address	Address
+bill_line_fssai	FSSAI
+bill_line_title	Pamagat
+bill_line_customer	Kostumer
+bill_line_bill_no	Blg. ng bill
+bill_line_time	Oras
+bill_line_cashier	Kahera
+bill_line_items	Mga item
+bill_line_total	Kabuuan
+bill_line_footer	Footer
+bill_line_upi	UPI
 kot_weight_light	Liwanag
 bill_kot_panel_help	Layout ng bill at lapad ng nilalaman. Ang cashier ay ang nag-isyu o nag-ayos ng bayarin — ang buong kuwento ng pagbebenta ay mananatili sa mga aklat.
 std_size_ph	hal. 18, 20, 26…
@@ -842,10 +868,10 @@ lane_declared_label	Invoice ng buwis
 lane_owner_label	Resibo ng cash
 money_lane_bill	Resibo: {lane}
 
-removing	Removing…
-removed	Removed
-updating_order	Updating…
-order_updated	Order updated
+removing	Inaalis…
+removed	Inalis
+updating_order	Ina-update…
+order_updated	Na-update ang order
 sel_copy	Kopyahin
 sel_select_all	Piliin lahat
 sel_copied	Nakopya na

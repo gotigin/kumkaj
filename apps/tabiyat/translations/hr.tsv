@@ -79,13 +79,19 @@ bill_item_amount	Iznos
 bill_item_note	Rx / napomena prodaje
 bill_item_col_sep	Crte stupaca
 slip_col_width	Širina (mm)
-paper_heading	Papir
+paper_heading	Virtualni papir
 paper_size	{w} × {h} mm
 paper_roll	rola {w} mm
 paper_not_set	papir još nije poznat
-paper_length_mm	Duljina (mm)
-printer_paper_help	Papir ovog pisača u mm. Prazna Duljina je rola: svaki račun dug je koliko i njegov sadržaj. Pronađi pisače popunjava prazan papir iz upravljačkog programa pisača (rola od 80 mm kad ne može reći) i nikad ne mijenja već postavljen.
-preview_help	Ovaj račun na papiru pisača odabranog ispod, kako se ondje ispisuje: u stvarnoj veličini od gornjeg lijevog kuta do kojeg pisač dopire (sivo: rubovi do kojih ne dopire), dug račun na više listova, sve preko ruba papira se odreže. Odabir pisača mijenja samo pregled; papir svakog pisača postavlja se pod Pisači.
+na	N/D
+virtual_width_mm	Virtualna širina (mm)
+virtual_length_mm	Virtualna duljina (mm)
+reported_width_mm	Prijavljena širina (mm)
+reported_length_mm	Prijavljena duljina (mm)
+reported_paper	Prijavljeno: {paper}
+virtual_paper	Virtualno: {paper}
+printer_paper_help	Prijavljeno je papir na koji je postavljen upravljački program ovog pisača; aplikacija ga samo čita, a N/D znači da nema upravljačkog programa koji bi se pitao. Virtualno je papir za koji vi kažete da je stvarno u pisaču, u mm; prazna duljina je rola. Pisač ispisuje na svoj papir; virtualni papir govori aplikaciji koliko je od toga stvarni papir, za pregled, duljinu stranice i mjesto računa. Pronađi pisače popunjava prazan virtualni papir i nikada ne mijenja onaj koji ste vi postavili.
+preview_help	Ovaj račun onako kako se ispisuje na pisaču odabranom ispod, u stvarnoj veličini na njegovu virtualnom papiru. Bijelo je gdje se ispisuje, sivi papir je izvan dosega pisača, a izblijedjela tinta se odrezuje. Devet kvadrata je papir: dodirnite gdje račun treba stajati. Dug račun prelazi na sljedeće stranice. Odabir pisača mijenja samo pregled.
 slip_col_start	Početni razmak (px)
 slip_col_end	Završni razmak (px)
 slip_columns_help	Širina svakog stupca uključuje njegov početni i završni razmak. Tekst se prelama unutar svog stupca; ono što prelazi širinu sadržaja odrezuje se, na papiru i u pregledu.
@@ -100,6 +106,12 @@ bill_item_piece_off	Isključeno
 bill_total_qty	Ukupna kol.
 bill_total_subtotal	Međuzbroj
 bill_total_grand	Sveukupno
+bill_total_number_under	Broj ispod
+bill_total_caption_under	Natpis ispod
+bill_total_own_line	Vlastiti redak
+bill_total_caption_with	Uz broj
+bill_total_caption_none	Bez natpisa
+bill_total_place_help	Vlastiti redak ispisuje ovaj zbroj zasebno. Ispod stupca njegov se broj ispisuje u tom stupcu stavki, u veličini i debljini ovog retka; zbrojevi dijele jedan red dok se neki stupac ne zauzme, a zatim počinje novi red. Natpis ide uz broj, ispod drugog stupca ili se izostavlja. Retci poreza, usluge, zaokruživanja i plaćanja prate Međuzbroj.
 kot_unassigned	Nedodijeljeno
 settings_hub_help	Otvorite jedno područje odjednom — manje pomicanja, jasniji izbor.
 settings_sec_language	Jezik i valuta
@@ -735,6 +747,20 @@ fssai_ph	Broj dozvole za lijekove (opcionalno — vaša formulacija)
 bill_footer_ph	Podnožje (npr. Hvala, dođite opet)
 kot_field_on	prikaži
 kot_field_off	sakrij
+kot_field_show	Prikaži
+kot_field_hide	Sakrij
+bill_line_shop	Lokal
+bill_line_address	Adresa
+bill_line_fssai	FSSAI
+bill_line_title	Naslov
+bill_line_customer	Kupac
+bill_line_bill_no	Br. računa
+bill_line_time	Vrijeme
+bill_line_cashier	Blagajnik
+bill_line_items	Stavke
+bill_line_total	Ukupno
+bill_line_footer	Podnožje
+bill_line_upi	UPI
 kot_weight_light	Tanko
 bill_kot_panel_help	Raspored računa i širina sadržaja. Blagajnik je tko je izdao ili zaključio račun — cijela priča prodaje ostaje u knjigama.
 std_size_ph	npr. 18, 20, 26…
@@ -842,10 +868,10 @@ lane_declared_label	Porezni račun
 lane_owner_label	Gotovinski listić
 money_lane_bill	Račun: {lane}
 
-removing	Removing…
-removed	Removed
-updating_order	Updating…
-order_updated	Order updated
+removing	Uklanjanje…
+removed	Uklonjeno
+updating_order	Ažuriranje…
+order_updated	Narudžba ažurirana
 sel_copy	Kopiraj
 sel_select_all	Odaberi sve
 sel_copied	Kopirano

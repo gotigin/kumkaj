@@ -1,11 +1,11 @@
 # Afrikaans — Afrikaans (af). One key<TAB>text per line, in en() order; keep {placeholders}.
 unlock	Ontgrendel
-sell	Sell
+sell	Verkoop
 buy	Koop
 books	Dagboek
-books_help	Today’s position. Sell = money in. Buy = purchases & expenses. Parties = credit customers & suppliers.
+books_help	Vandag se posisie. Verkoop = geld inkom. Koop = aankope & uitgawes. Partye = kredietkliënte & verskaffers.
 buy_help	Uitgaande bonne en verskaffer-fakture (geld uit). Op rekening bly op die party-leidraad.
-sell_money_in	Sell items
+sell_money_in	Verkoop items
 buy_money_out	Uitgawe / verskaffer-faktuur
 record_purchase	Vervang aankoop
 add_expense	Uitgawebon
@@ -25,7 +25,7 @@ settle_cash	Skik kas
 settle_card	Skik kaart
 items	Items
 nav_items	Items
-items_help	Tap an item to edit it. New item clears the form. Search by name or short code, set a price (0 is fine), then Add. Sales already recorded keep the name they were charged with.
+items_help	Tik op 'n item om dit te wysig. Nuwe item maak die vorm skoon. Soek per naam of kortkode, stel 'n prys (0 is goed), en dan Voeg by. Rekords van verkope behou die naam waarmee hulle aangerek is.
 add_item	Voeg item by
 new_item	Nuwe item
 adding_item	Voeg 'n nuwe item by
@@ -33,7 +33,7 @@ editing_item	Redigeer
 save	Stoor
 remove	Verwyder
 removed_items	Verwyderde items
-removed_help	Restore puts the item back in Items exactly as it was — price, photo and category.
+removed_help	Herstel plaas die item terug in Items presies soos dit was — prys, foto en kategorie.
 restore_item	Herstel
 empty_catalog	Nog geen items nie.
 total	Totaal
@@ -67,13 +67,19 @@ bill_item_amount	Bedrag
 bill_item_note	Itemnota
 bill_item_col_sep	Kolom reëls
 slip_col_width	Breedte (mm)
-paper_heading	Papier
+paper_heading	Virtuele papier
 paper_size	{w} × {h} mm
 paper_roll	{w} mm-rol
 paper_not_set	papier nog nie bekend nie
-paper_length_mm	Lengte (mm)
-printer_paper_help	Hierdie drukker se papier in mm. 'n Leë Lengte is 'n rol: elke strokie is so lank soos sy inhoud. Soek drukkers vul leë papier in vanaf die drukker se drywer ('n 80 mm-rol as dit nie kan sê nie) en verander nooit papier wat reeds gestel is nie.
-preview_help	Hierdie strokie op die papier van die drukker wat hieronder gekies is, soos dit daar druk: werklike grootte van die boonste linkerhoek wat die drukker kan bereik (grys: rande wat dit nie kan nie), 'n lang strokie op meer velle, alles verby die papier se rand afgesny. Om 'n drukker te kies verander net die voorskou; elke drukker se papier word onder Drukkers gestel.
+na	N/V
+virtual_width_mm	Virtuele breedte (mm)
+virtual_length_mm	Virtuele lengte (mm)
+reported_width_mm	Gerapporteerde breedte (mm)
+reported_length_mm	Gerapporteerde lengte (mm)
+reported_paper	Gerapporteer: {paper}
+virtual_paper	Virtueel: {paper}
+printer_paper_help	Gerapporteer is die papier waarop hierdie drukker se drywer gestel is; die app lees dit net, en N/V beteken daar is geen drywer om te vra nie. Virtueel is die papier wat volgens jou werklik in die drukker is, in mm; 'n leë lengte is 'n rol. Die drukker druk op sy eie papier; die virtuele papier sê vir die app hoeveel daarvan werklike papier is, vir die voorskou, die bladsylengte en die plek van die strokie. Soek drukkers vul 'n leë virtuele papier in en verander nooit een wat jy gestel het nie.
+preview_help	Hierdie strokie soos dit druk op die drukker wat hieronder gekies is, op ware grootte op sy virtuele papier. Wit is waar dit druk, grys papier is buite die drukker se bereik, en vervaagde ink word afgesny. Die nege blokkies is die papier: tik waar die strokie moet sit. 'n Lang strokie gaan oor na meer bladsye. Om 'n drukker te kies verander net die voorskou.
 slip_col_start	Beginspasie (px)
 slip_col_end	Eindspasie (px)
 slip_columns_help	Elke kolom se breedte sluit sy begin- en eindspasie in. Teks vou binne sy kolom; wat verby die inhoudbreedte lê, word afgesny, op papier en in die voorskou.
@@ -88,7 +94,13 @@ bill_item_piece_off	Uit
 bill_total_qty	Totaal aantal
 bill_total_subtotal	Subtotaal
 bill_total_grand	Grand totaal
-kot_unassigned	Unassigned
+bill_total_number_under	Getal onder
+bill_total_caption_under	Etiket onder
+bill_total_own_line	Eie lyn
+bill_total_caption_with	By die getal
+bill_total_caption_none	Geen etiket
+bill_total_place_help	Eie lyn druk hierdie totaal op sy eie. Onder 'n kolom word sy getal in daardie itemkolom gedruk, in hierdie lyn se grootte en gewig; totale deel 'n ry totdat 'n kolom beset is, dan begin 'n nuwe ry. Die etiket gaan by die getal, onder 'n ander kolom, of word weggelaat. Belasting-, diens-, afrondings- en betalingslyne volg Subtotaal.
+kot_unassigned	Nie-toegeken nie
 settings_hub_help	Open een area op 'n slag — minder skroei, duideliker keuses.
 settings_sec_language	Taal en valuta
 settings_sec_country	Land en belasting
@@ -145,7 +157,7 @@ nav_lock	Vloei
 all_items	Alle items
 frequent	Gereeld
 added_items	Toegevoegde item(s)
-added_items_empty	Nothing on this bill yet — add an item from All items or a category.
+added_items_empty	Nog niks op hierdie faktuur nie — voeg ’n item by van Alle items of ’n kategorie.
 frequent_config_help	Mees verkope items van voltooide rekeninge. Stel hoeveel dae om te kyk en hoeveel items om te wys.
 frequent_days_ph	Dae (1)
 frequent_limit_ph	Items (24)
@@ -220,7 +232,7 @@ add_opening_balance	Voeg oopningsbalans by
 add_staff	Voeg personeel by
 add_unit	Voeg eenheid by
 add_use_name	Gebruik hierdie naam
-allow_extra_tills	Toegelaat ekstra kasregisters
+allow_extra_tills	Laat ekstra kasregisters toe
 amend	Wysig
 apply_country_pack	Landpak toepas
 datetime_appearance	Datum- en tydweergawe
@@ -268,7 +280,7 @@ copy_party_ledger_csv	Kopieer partyboekhouding CSV
 copy_receipt	Kopieer bon
 share_whatsapp	Deel WhatsApp
 lan_pages_heading	Kliënt bladsye op Wi‐Fi
-lan_pages_help	On this shop’s Wi‑Fi, customer pages work for the display board and feedback. People on mobile data need Cloud later. A card terminal or payment link is optional and never blocks the counter.
+lan_pages_help	Op hierdie winkel se Wi‑Fi werk klantbladsye vir die vertoonbord en terugvoer. Mense op mobiele data het later Cloud nodig. 'n Kaartterminal of betaalskakel is opsioneel en blokkeer nooit die toonbank nie.
 diag_send_heading	Deel van hierdie toestel af
 crm_heading	Kliënte & boodskappe
 crm_help	Verjaardag, lojaliteit, onaktief en topgaste – ry SMS of WhatsApp-intensies. Gebruik {name} en {points} in die boodskap. Eienaar tik stuur; niks blaas self af nie.
@@ -305,9 +317,9 @@ drawer_count	Lade-aantal (opsioneel)
 expense_heading	Uitgawe
 export_day	Exporteer dag
 extra_note_bill_ph	Aanvullende nota op hierdie rekening / verkoop
-extra_tills_heading	Bykomende lades
+extra_tills_heading	Bykomende kasregisters
 other_devices_help_heading	Stel ander toestelle op
-other_devices_help	On this device (Server): Other devices → Allow extra tills. Note the pairing code and Wi‑Fi address. Tap Allow other devices to connect if it appears. On a computer, tap Start with this computer. On each other device: install the app, choose Client Mode, Find the shop's server (or type the address), enter the pairing code, Pair now. Orders wait on the device if Wi‑Fi drops and go when the Server answers again. Extra printers are set on the Server (Settings → Printers) — extra tills send bills there.
+other_devices_help	Op hierdie toestel (Bediener): Ander toestelle → Laat ekstra kassas toe. Let op die koppelingskode en Wi‑Fi‑adres. Tik Laat ander toestelle toe om te koppel as dit verskyn. Op 'n rekenaar, tik Begin met hierdie rekenaar. Op elke ander toestel: installeer die app, kies Kliëntmodus, Vind die winkel se bediener (of tik die adres), voer die koppelingskode in, Koppel nou. Bestellings wag op die toestel as Wi‑Fi verbreek en gaan deur wanneer die Bediener weer antwoord. Ekstra drukkers word op die Bediener ingestel (Instellings → Drukkers) — ekstra kassas stuur rekeninge daarheen.
 forget_shop	Vergeet hierdie winkel
 goods_received	Goedere ontvang
 import_day	Importeer dag
@@ -343,7 +355,7 @@ refresh_from_shop	Verskaf van winkel
 refund	Terugbetaling
 remove_selected	Verwyder geselekteerde
 request_bill	Vraag faktuur
-restaurant_name_ph	Shop name (optional)
+restaurant_name_ph	Winkelnaam (opsioneel)
 restore_backup	Herstel rugsteun
 role_both	Beide
 role_admin	Bestuurder
@@ -394,7 +406,7 @@ pair_finishing	Paaringsproses voltooi… pas die winkel se boeke toe
 pair_opening	Open die kasregister…
 lan_offline_waiting	Winkel se server onbereikbaar · {n} wag
 lan_connecting	Koppel aan winkel…
-lan_live	Live
+lan_live	Regstreeks
 lan_sending	{n} stuur
 lan_sign_in_to_send	Melder weer aan om {n} te stuur
 lan_pair_again	Paar hierdie toestel weer
@@ -422,7 +434,7 @@ backup_copy_failed	Die rugsteunkopie kon daar nie gestoor word nie — kies 'n a
 clock_off	Hierdie toestel se klok is {min} minute van die winkel se server af — stel die regte tyd op hierdie toestel in
 printers_heading	Drukkers
 printers_help	Vind drukkers, tik een om dit te kies, druk dan 'n proefblad slegs op daardie toestel. Rekeningdrukkers: Rekening & Kwitansie-formaat → Rekening.
-printers_host_only	Printers are set on the shop device (Server). This till sends bills and old tickets there — Find / add / assign stay on the Server. Test page and bill print size go to the Server.
+printers_host_only	Drukkers word op die winkeltoestel (Bediener) gestel. Hierdie register stuur rekeninge en ou kaarte daarheen — Vind / voeg by / ken toe bly op die Bediener. Testblad en faktuurdrukgrootte gaan na die Bediener.
 printers_find_heading	Soek drukkers
 printers_find_tip	Vind sken hierdie toestel en hou die lys up-to-date.
 printers_pool_empty	(nog nie nie — tik Vind)
@@ -430,7 +442,7 @@ printer_assign_dd	Egte drukker: {place}
 printer_assign_pick	Kies egte drukker
 printer_profile_heading	Opstelling
 vp_delivery_heading	Levering
-vp_delivery_help	How this virtual printer sends jobs — OS document, raw bytes, or ESC/POS. Slip content (type size, wrap, margins) is decided by the bill / Slip format, not here.
+vp_delivery_help	Hoe hierdie virtuele drukker take stuur — OS-dokument, rou bytes, of ESC/POS. Kokersiiginhoud (tipe grootte, opvou, marges) word deur die faktuur / Kokersiigformaat bepaal, nie hier nie.
 vp_delivery_spooler	OS-dokument (sistemspoeler)
 vp_delivery_escpos	ESC/POS-termostaatbevels
 virtual_printer_new	Nuwe virtuele drukers
@@ -459,7 +471,7 @@ route_tap_selected	gekies
 printer_target_ph	Stelseldrukernaam of gasheer:9100
 printer_target_default	Gewone drukker van hierdie rekenaar (leë adres)
 route_bill	Faktuur
-station_print_pick_first	Pick a shop section first
+station_print_pick_first	Kies eers ’n winkelafdeling
 bill_printers_dd	Drukkers vir die rekening
 bill_printers_dd_n	{n} drukker(s) vir die rekening · tik om te verander
 station_vp_attached	Drukker aangesluit
@@ -510,7 +522,7 @@ unmark	Onmerk
 update_my_password	Update my wagwoord
 update_my_pin	Update my aanmelding
 duress_heading	Noodontgrendelings-PIN (Eienaar alleen)
-duress_help	Optional. If this PIN is typed at unlock instead of yours, all books entries are wiped (sales, ledgers, history) and the till opens as Owner looking normal — items, prices, counters, staff and settings stay. Schema and config are not deleted. Use only if you are forced to unlock. Leave blank and save to turn off. Never the same as anyone's PIN.
+duress_help	Opsioneel. As hierdie PIN by ontsluiting in plaas van joune ingetik word, word alle boekinskrywings uitgevee (verkope, grootboeke, geskiedenis) en die kasregister maak oop as Eienaar en lyk normaal — items, pryse, toonbanke, personeel en instellings bly. Skema en konfigurasie word nie uitgevee nie. Gebruik net as jy gedwing word om te ontsluit. Laat leeg en stoor om dit af te skakel. Nooit dieselfde as enigiemand se PIN nie.
 duress_pin_ph	Nood-PIN (4–12 syfers)
 duress_confirm_ph	Tipe weer om te bevestig
 save_duress_pin	Stoor nood-PIN
@@ -539,9 +551,9 @@ logo_help	Opsionele winkelmerk op skerm in die app.
 onboard_layout	Wat jy kry
 item_photo_help	Opsioneel. Sonder 'n foto wys ons initialies van die itemnaam.
 stamp_heading	Stempel
-stamp_image_help	Optional stamp image on printed bills and the customer display.
+stamp_image_help	Opsionele stempelbeeld op gedrukte rekenings en die kliëntskerm.
 payment_qr_heading	Betaal-QR
-payment_qr_image_help	Static QR on bills and customer display; otherwise paying uses a dynamic UPI QR from the VPA above.
+payment_qr_image_help	Statiese QR op rekenings en kliëntskerm; andersins gebruik betaling 'n dinamiese UPI QR van die VPA hierbo.
 cash_in_hand	Geld in hand (kas)
 change_my_pin_heading	My aanmelding
 connect_to_server	Koppel aan die bediener
@@ -568,7 +580,7 @@ product_only_kirano	Kirano is die kruidenierswinkel / kirana bedryfstelsel: toon
 purchases_cogs	Aankope (COGS)
 restore_help	Herstel: kies 'n rugsteun. Die boeke oop soos hulle dan was; die boeke soos hulle nou is word eers gestoor, sodat dit ongedaan gemaak kan word.
 wipe_data_heading	Verwyder plaaslike data
-wipe_data_help	Owner only — same choices as Windows uninstall. Business records clears trading history but keeps items and setup (like the emergency unlock PIN). Shop setup removes the books database. Screen preferences clears window/language. Confirm with the Owner PIN. The emergency unlock PIN on Team is separate (covert wipe at unlock).
+wipe_data_help	Slegs eienaar — dieselfde keuses as Windows deïnstalleer. Besigheidsrekords vee die handelsgeskiedenis uit maar hou items en opstelling (soos die noodontsluit-PIN). Winkelopstelling verwyder die boeke-databasis. Skermvoorkeure vee venster/taal uit. Bevestig met die eienaar-PIN. Die noodontsluit-PIN op Span is apart (skelm uitvee by ontsluiting).
 wipe_trading	Bedryfsrekords
 wipe_schema	Winkelinstellings
 wipe_ui	Skermvoorkeure
@@ -581,7 +593,7 @@ wipe_nothing_selected	Kies wat eers te verwyder is.
 wipe_done	Gekoosde plaaslike data is verwyder.
 wipe_schema_done	Winkelinstellings gewis – kies Server of Kliënt om voort te gaan.
 rounded_total	Afgeronde Totaal
-setup_app_kirano	Set up Kirano
+setup_app_kirano	Stel Kirano op
 shop_logo_optional	Winkellogo (opsioneel)
 stock_type_help	Tipe die itemnaam (een deel is genoeg), 'n hoeveelheid, en pas dan aan. Items wat nog nie getel word nie, benodig Start volg een keer.
 team_owner_help	Laat die persoon leeg om iemand by te voeg: naam, werk, gebruikersnaam, PIN, en 'n opsionele wagwoord, dan Voeg. Kies 'n persoon om dieselfde vorm te redigeer – naam, gebruikersnaam, wagwoord, skermes, en regte – dan Opslaan. Jou eie PIN en wagwoord is een aanmelding onderaan. Die Eienaar verander nie iemand se PIN nie.
@@ -600,13 +612,13 @@ staff_setup_copied_edit	Gekopieer {from} se instellings na {to}
 staff_copy_need_selected	Kies wie eers te redigeer is
 staff_copy_same	Dit is dieselfde persoon – kies iemand anders
 staff_rename_need_selected	Kies wie eers hernoem moet word
-team_pick_hint	Pick who to edit — screens, money rights, and stations appear for that person only.
+team_pick_hint	Kies wie om te redigeer — skerms, geldregte en stasies verskyn slegs vir daardie persoon.
 team_features_changed	Skermes verander – Slaan instellings op vir hierdie persoon
 team_rights_changed	Regte verander – Slaan instellings op vir hierdie persoon
 they_owe_us	Hulle skuld ons
 unit_at_cap	Eenheid @
 units_help	Kode vir item-etikette (kg, stuk, sak). Elke eenheid moet direk of deur ander eenhede aan 'n standaard gekoppel word (kg · cm · ml · st), bv. 1 krate = 2 doos en 1 doos = 20 cm. Omrekenings: 1 van = faktor na. Valute is nooit eenhede nie.
-units_picker_help	Tap On/Off to show a unit in Buy and Items pickers. Off units still convert.
+units_picker_help	Tik AAN/AF om 'n eenheid in Koop- en Items-kykers te wys. Af eenhede word steeds omgeskakel.
 unit_picker_on	Aan
 unit_picker_off	Uit
 we_owe_them	Ons skuld hulle geld
@@ -697,7 +709,7 @@ expected_in_drawer	Verwag in lade
 right_discount	Gee 'n kortings
 new_category_row	Nuwe kategorie — geskep wanneer jy die item stoor
 your_category	Jou kategorie
-suggested_category	Suggested — from our items
+suggested_category	Voorgestel — van ons items
 category_search_ph	Kategorie — soek joune of tik een nuut
 cancel_item_short	Kanselleer
 return_to_customer	Terug aan die klant
@@ -723,6 +735,20 @@ fssai_ph	FSSAI / winkellisensie nr. (opsioneel)
 bill_footer_ph	Voetstuk (bv. Dankie, besoek weer)
 kot_field_on	wys
 kot_field_off	versteek
+kot_field_show	Wys
+kot_field_hide	Versteek
+bill_line_shop	Winkel
+bill_line_address	Adres
+bill_line_fssai	FSSAI
+bill_line_title	Titel
+bill_line_customer	Klant
+bill_line_bill_no	Faktuurnr.
+bill_line_time	Tyd
+bill_line_cashier	Kasier
+bill_line_items	Items
+bill_line_total	Totaal
+bill_line_footer	Voetstuk
+bill_line_upi	UPI
 kot_weight_light	Lig
 bill_kot_panel_help	Fakturering uitleg en inhoud breedte. Kasier is wie die faktuur uitgereik of vereffen het — die volle verkoop geskiedenis bly in die boeke.
 std_size_ph	bv. 18, 20, 26…
@@ -733,7 +759,7 @@ kot_align_center	Sentrum
 kot_align_end	Einde
 content_width_bill	Faktuurinhoudbreedte (mm)
 content_width_ph	Of tik 'n inhoudbreedte, 40–210 mm
-content_width_bill_help	How wide the customer bill prints. Default 210 mm (page). 58 mm narrow slip, 80 mm wide slip, 112 mm 4-inch, 210 mm A4-wide. Type any value from 40 to 210. Tickets have their own width on the slip tab.
+content_width_bill_help	Hoe wyd die kliëntrekeninge gedruk word. Standaard 210 mm (bladsy). 58 mm nou slip, 80 mm wyd slip, 112 mm 4-duim, 210 mm A4-wyd. Tik enige waarde van 40 tot 210. Kaartjies het hul eie breedte op die slip-oortjie.
 vp_paper_width	Inhoudbreedte (mm)
 vp_paper_width_ph	Of tik 'n inhoudbreedte, 40–210 mm
 vp_paper_width_help	Inhoudsbreedte is gesetel onder Rekening & Koeponsformaat — afsonderlik vir die rekening (verstek 210 mm) en die kaartjie (verstek 80 mm).
@@ -750,14 +776,14 @@ std_print_help	Lettergrootte vir Standaard Portret- en Landskap-rekeningtake op 
 save_std_print	Stoor faktuurdrukgrootte
 std_print_saved	Faktuurdrukgrootte gestoor
 print_brand_kit	Druk handelsmerk-kit
-print_brand_kit_help	Optional stamp and payment QR images on bill faces and the LAN customer display. Dynamic UPI QR from the VPA above still works when no payment QR image is set.
+print_brand_kit_help	Opsionele seël- en betaal-QR-beelde op faktuur gesigte en die LAN-klantoeur. Dinamiese UPI QR vanaf die VPA hierbo werk steeds as geen betaal-QR-beeld gestel is nie.
 choose_stamp	Kies stempel
 clear_stamp	Maak stempel leeg
-stamp_set	Stamp: on file — shown on customer display and named on printed bills
+stamp_set	Seël: op lêer — gewys op klantevertoning en benoem op gedrukte fakture
 stamp_none	Stempel: geen
 choose_payment_qr	Kies betalings-QR
 clear_payment_qr	Maak betalings-QR leeg
-payment_qr_set	Payment QR: on file — shown on customer display (replaces amount UPI QR there)
+payment_qr_set	Betaal-QR: op lêer — gewys op klantevertoning (vervang bedrag UPI QR daar)
 payment_qr_none	Betalings-QR: geen – bedrag-QR van UPI-ID wanneer betaal
 team_pick_ph	Personeel om te redigeer – naam, gebruikersnaam of kies
 select_staff	Kies hierdie personeel
@@ -782,8 +808,8 @@ price_ph	Prijs
 price_ph_gst_inside	Prijs ({tax} insluitend)
 taxable_value	Belastingbare waarde
 gst_inside_price_note	({tax} insluitend)
-template_heading	Starter items
-template_info	{c} categories and {d} items with photos, ready to add. Prices start at ₹0 — set yours after.
+template_heading	Beginitems
+template_info	{c} kategorieë en {d} items met foto's, gereed om by te voeg. Pryse begin by ₹0 — stel joune daarna.
 template_import	Importeer volledige sjabloon
 template_confirm	Voeg {d} items met hul kategorieë by? Items wat jy reeds het bly soos hulle is.
 template_yes	Ja, importeer
@@ -791,9 +817,9 @@ template_importing	Items word ingevoer...
 template_import_progress	Word geïmporteer… {d}/{t}
 template_done	Elke item van ons sjabloon is op jou items.
 template_imported	Bygevoeg {d} items en {c} kategorieë — stel hul pryse op hierdie skerm
-client_template_heading	Import catalogue
-client_template_info	{title}: {c} categories, {d} items with prices, photos, and aliases. Missing items only — names you already have stay.
-client_template_import	Import these items
+client_template_heading	Voer katalogus in
+client_template_info	{title}: {c} kategorieë, {d} items met pryse, foto's en aliase. Net ontbrekende items — name wat jy reeds het, bly.
+client_template_import	Voer hierdie items in
 client_template_confirm	Voeg {d} items van {title} by? Items wat jy reeds het bly soos hulle is.
 client_template_importing	Word geïmporteer {title}…
 client_template_done	Elke item van {title} is op jou items.
@@ -811,9 +837,9 @@ dishes_n	{n} items
 reorder_ph	Koop meer by
 set_reorder	Stel herbestellvlak in
 low_stock_alert	Baie laag — koop gou: {items}
-unpriced_note	{n} items on your items have no price yet — they bill at 0 until you set one.
-show_unpriced	Show only items without a price
-show_all_dishes	Show all items
+unpriced_note	{n} items op jou items het nog geen prys nie — hulle faktureer teen 0 totdat jy een instel.
+show_unpriced	Wys net items sonder 'n prys
+show_all_dishes	Wys alle items
 role_title_rest_ph	Roltitel (bv. Kaptein, Hoofkok)
 preset_help_rest	Kasier: verkoop. Bestuurder: verkoop + items + leegmaak/bewerk.
 kind_resale	Gekoop om te verkoop
@@ -830,10 +856,10 @@ lane_declared_label	Belasting faktuur
 lane_owner_label	Kasnota
 money_lane_bill	Faktuur: {lane}
 
-removing	Removing…
-removed	Removed
-updating_order	Updating…
-order_updated	Order updated
+removing	Verwyder tans…
+removed	Verwyder
+updating_order	Werk by…
+order_updated	Bestelling bygewerk
 sel_copy	Kopieer
 sel_select_all	Kies alles
 sel_copied	Gekopieer

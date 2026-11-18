@@ -101,6 +101,19 @@ bill_item_col_sep	列の罫線
 slip_columns	列
 slip_col_header	見出し
 bill_line_logo	ロゴ
+bill_line_shop	店舗
+bill_line_address	住所
+bill_line_fssai	FSSAI
+bill_line_title	タイトル
+bill_line_customer	顧客
+bill_line_bill_no	伝票番号
+bill_line_time	時刻
+bill_line_cashier	レジ係
+bill_line_table	テーブル
+bill_line_items	品目
+bill_line_total	合計
+bill_line_footer	フッター
+bill_line_upi	UPI
 bill_logo_picture	画像
 bill_logo_choose	画像を選ぶ
 bill_logo_remove	画像を削除
@@ -128,6 +141,12 @@ bill_item_piece_off	オフ
 bill_total_qty	合計数量
 bill_total_subtotal	小計
 bill_total_grand	合計
+bill_total_number_under	数値を置く列
+bill_total_caption_under	ラベルを置く列
+bill_total_own_line	単独の行
+bill_total_caption_with	数値と一緒
+bill_total_caption_none	ラベルなし
+bill_total_place_help	「単独の行」はこの合計を単独で印刷します。列の下に置くと、数値はその商品列に、この行のサイズと太さで印刷されます。合計は列が埋まるまで同じ段を共有し、埋まると新しい段が始まります。ラベルは数値と一緒、別の列の下、または省略を選べます。税、サービス料、端数処理、支払いの行は「小計」に従います。
 reprint_incl	印刷に含める
 reprint_skip	除外
 reprint_skip_meta	再印刷しない
@@ -178,20 +197,20 @@ snack_secs_ph	秒（3–60、既定 10）
 snack_secs_save	表示時間を保存
 snack_secs_saved	表示時間を保存しました — {n} 秒
 settings_sec_whatsapp	WhatsApp
-whatsapp_cloud_help	Use your own Meta WhatsApp Cloud API. Create a System User token with whatsapp_business_messaging (temporary dashboard tokens expire). Credentials stay on this Server only — never on extra tills. Accepted means Meta took the request, not that the guest received it.
-whatsapp_phone_id_ph	Phone Number ID
-whatsapp_token_ph	Access Token (leave blank to keep)
-whatsapp_template_ph	Bill template name (optional)
-whatsapp_template_lang_ph	Template language (e.g. en)
-whatsapp_enable	Enable
+whatsapp_cloud_help	ご自身の Meta WhatsApp Cloud API を使います。whatsapp_business_messaging を持つ System User トークンを作成してください（ダッシュボードの一時トークンは期限切れになります）。認証情報はこのサーバーにのみ保存され、追加レジには保存されません。「受理」は Meta がリクエストを受け取ったという意味で、お客様に届いたという意味ではありません。
+whatsapp_phone_id_ph	電話番号 ID
+whatsapp_token_ph	アクセストークン（そのまま使う場合は空欄）
+whatsapp_template_ph	伝票テンプレート名（任意）
+whatsapp_template_lang_ph	テンプレートの言語（例: en）
+whatsapp_enable	有効にする
 whatsapp_disable	Off
-whatsapp_save	Save WhatsApp
-whatsapp_test	Test connection
-whatsapp_disconnect	Disconnect
-whatsapp_send_bill	Send via WhatsApp
+whatsapp_save	WhatsApp を保存
+whatsapp_test	接続をテスト
+whatsapp_disconnect	切断
+whatsapp_send_bill	WhatsApp で送信
 whatsapp_consent	WhatsApp OK
-whatsapp_consent_help	Guest agreed to receive WhatsApp messages. A phone number alone is not consent.
-whatsapp_server_only	Configure WhatsApp on the shop Server device
+whatsapp_consent_help	お客様が WhatsApp メッセージの受信に同意しました。電話番号だけでは同意になりません。
+whatsapp_server_only	店舗のサーバー端末で WhatsApp を設定してください
 settings_sec_backup	バックアップとリストア
 settings_sec_diag	診断
 settings_sec_privacy	プライバシー
@@ -637,7 +656,7 @@ choose_device_use	このデバイスの使い方を選んでください。
 paired_note	ペアリング済み。ロック解除して販売するか、更新で店の最新情報を取得します。
 last_update_at	店からの最終更新: {time}。
 pair_intro	サーバーを探すか、アドレスとペアリングコードを入力してください。
-pair_resume_hint	Already paired — enter your shop PIN, or Forget this shop to pair another.
+pair_resume_hint	すでにペアリング済みです — 店舗の PIN を入力するか、別の店舗とペアリングするには「この店舗を忘れる」をタップしてください。
 queue_waiting	店への送信待ち（{n}）:
 queue_tries	{n} 回試行 · 最後の応答：{e}
 save_backup_copy	バックアップのコピーを保存…
@@ -754,13 +773,18 @@ station_vps_dd	このステーションのプリンター
 station_vps_dd_n	{n} 台のプリンター · タップして変更
 bill_printers_dd	請求書のプリンター
 bill_printers_dd_n	請求書用の {n} プリンター · タップして変更
-paper_heading	用紙
+paper_heading	仮想用紙
 paper_size	{w} × {h} mm
 paper_roll	{w} mm ロール
 paper_not_set	用紙はまだ不明です
-paper_length_mm	長さ (mm)
-printer_paper_help	このプリンターの用紙 (mm)。長さが空欄ならロール紙で、伝票は内容の長さになります。「プリンターを探す」は空欄の用紙をプリンターのドライバーから入力し (わからない場合は 80 mm ロール)、設定済みの用紙は決して変更しません。
-preview_help	下で選んだプリンターの用紙に、そこで印刷されるとおりにこの伝票を表示します。プリンターが届く左上から実寸で (灰色: 届かない余白)、長い伝票は複数の用紙に、用紙の端を越えた部分は切れます。プリンターを選んでもプレビューだけが変わります。各プリンターの用紙は「プリンター」で設定します。
+virtual_width_mm	仮想の幅 (mm)
+virtual_length_mm	仮想の長さ (mm)
+reported_width_mm	報告された幅 (mm)
+reported_length_mm	報告された長さ (mm)
+reported_paper	報告: {paper}
+virtual_paper	仮想: {paper}
+printer_paper_help	「報告」は、このプリンターのドライバーに設定されている用紙です。アプリは読み取るだけで、「なし」は問い合わせるドライバーがないことを意味します。「仮想」は、プリンターに実際に入っているとあなたが指定する用紙で、単位は mm です。長さが空欄ならロール紙です。プリンターは自分の用紙に印刷します。仮想用紙は、そのうちどこまでが実際の紙かをアプリに伝え、プレビュー、ページの長さ、伝票の位置に使われます。「プリンターを探す」は空欄の仮想用紙を埋めますが、あなたが設定したものは決して変更しません。
+preview_help	この伝票が、下で選んだプリンターで印刷されるとおりに、その仮想用紙の上に実寸で表示されます。白は印刷される範囲、灰色の紙はプリンターが届かない範囲で、薄いインクは切り落とされます。9 つのマスが用紙です。伝票を置きたい場所をタップしてください。長い伝票は次のページに続きます。プリンターを選んでも変わるのはプレビューだけです。
 job_layout	レイアウト
 job_delivery	作業の送信方法
 job_delivery_help	OS ドキュメント、生バイト、または ESC/POS。請求書と厨房チケットはそれぞれ独立して管理されます。どちらのジョブも、Find が保存したプリンターのいずれかに送信できます
@@ -1040,7 +1064,7 @@ book_kind_today	今日の帳簿
 book_kind_month	今月の帳簿
 book_kind_aging	未精算 / 借方・貸方
 book_kind_balance	貸借対照表
-order_help	開いている注文を選ぶか、テーブルを選んで新規開始。準備中のアイテムをタップし、KOT を送信、1つ以上のアイテムを請求、会計を分割して支払いを完了。
+order_help	商品をタップして追加します。
 floor_help	各テーブルは、ゲストが着席しているか、未精算の請求はいくらか、次に誰がサービスを必要としているかを表示します。
 kitchen_help	バリアント別またはアイテム別に準備量を記録 — KOT に好きな方法で記録。
 kitchen_empty	現在開いているものはありません。
@@ -1238,7 +1262,7 @@ on_your_menu	メニューに登録済み
 edit	編集
 schemes	キャンペーン
 schemes_help	X買ってY無料 — 会計時自動。例 Buy 2 Thali get 1 Chaas
-scheme_bogo_ph	Buy 2 Thali get 1 Chaas
+scheme_bogo_ph	Thali 2 つで Chaas 1 つ無料
 add_scheme	BOGOを追加
 schedule_ph	時間/ハッピーアワー — Mon-Fri 07:00-11:00 または HappyHour 17:00-19:00=150
 upi_qr	UPI QR
@@ -1266,8 +1290,8 @@ taxable_value	課税対象額
 gst_inside_price_note	（{tax}込み）
 start_with_template	メニューのテンプレートで始める
 template_heading	メニューのテンプレート
-template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
-template_download_shelf	Download photo shelf
+template_need_download	料理の公開写真棚（約 1,459 品）をダウンロードし、まだない名前をメニューに取り込みます。
+template_download_shelf	写真棚をダウンロード
 template_info	{c} カテゴリーと写真付き {d} 品を追加できます。価格は ₹0 から、後で設定。
 template_import	テンプレートを全部取り込む
 template_confirm	{d} 品をカテゴリーごと追加しますか？既存の料理はそのままです。

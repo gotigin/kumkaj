@@ -44,7 +44,7 @@ restore_item	ಮರುಸ್ಥಾಪಿಸಿ
 empty_catalog	ಇನ್ನೂ ಐಟಂಗಳಿಲ್ಲ.
 total	ಒಟ್ಟು
 cash	ನಗದು
-upi	यूपीआई
+upi	UPI
 card	ಕಾರ್ಡ್
 credit	ಪಾರ್ಟಿಗಳು
 clear	ಅಳಿಸಿ
@@ -78,7 +78,7 @@ reprint_kot_needed	ಮೊದಲು KOT ಕಳುಹಿಸಿ — ನಂತರ �
 reprint_kot_none_selected	ಕಳುಹಿಸಿದ್ದೆಲ್ಲ ಬಿಟ್ಟಿವೆ — ಮುದ್ರಿಸಲು «ಮುದ್ರಣದಲ್ಲಿ» ಒತ್ತಿ
 reprint_kot_client	{place} ಗೆ ಮತ್ತೆ ಮುದ್ರಿಸಿ ({n}) ಕಳುಹಿಸಲಾಗಿದೆ — ಅಡುಗೆಮನೆ ಸರ್ವರ್‌ನಲ್ಲಿ ಮುದ್ರಿಸುತ್ತದೆ
 print_cancelled_kot	ರದ್ದು ಎಲ್ಲಾ ಮುದ್ರಿಸಿ
-print_cancelled_kot_ok	{n} रद्द छापे · {slips} पर्ची → {kitchens}
+print_cancelled_kot_ok	{n} ರದ್ದಾದ ಖಾದ್ಯಗಳು ಮುದ್ರಿತ · {slips} ಸ್ಲಿಪ್ → {kitchens}
 print_cancelled_kot_needed	ರದ್ದು ಖಾದ್ಯಗಳ ಮೇಜು ತೆರೆಯಿರಿ
 print_cancelled_kot_none	ಈ ಆರ್ಡರ್‌ನಲ್ಲಿ ರದ್ದು ಇಲ್ಲ
 print_cancelled_kot_client	ರದ್ದು ({n}) {place} ಕಳುಹಿಸಲಾಗಿದೆ — ಸರ್ವರ್‌ನಲ್ಲಿ ಮುದ್ರಣ
@@ -101,6 +101,19 @@ bill_item_col_sep	ಕಂಭ ಗೆರೆ
 slip_columns	ಕಾಲಮ್‌ಗಳು
 slip_col_header	ಶೀರ್ಷಿಕೆ
 bill_line_logo	ಲೋಗೋ
+bill_line_shop	ಅಂಗಡಿ
+bill_line_address	ವಿಳಾಸ
+bill_line_fssai	FSSAI
+bill_line_title	ಶೀರ್ಷಿಕೆ
+bill_line_customer	ಗ್ರಾಹಕ
+bill_line_bill_no	ಬಿಲ್ ಸಂಖ್ಯೆ
+bill_line_time	ಸಮಯ
+bill_line_cashier	ಕ್ಯಾಷಿಯರ್
+bill_line_table	ಮೇಜು
+bill_line_items	ವಸ್ತುಗಳು
+bill_line_total	ಒಟ್ಟು
+bill_line_footer	ಫೂಟರ್
+bill_line_upi	UPI
 bill_logo_picture	ಚಿತ್ರ
 bill_logo_choose	ಚಿತ್ರ ಆಯ್ಕೆಮಾಡಿ
 bill_logo_remove	ಚಿತ್ರ ತೆಗೆದುಹಾಕಿ
@@ -128,6 +141,12 @@ bill_item_piece_off	ಆಫ್
 bill_total_qty	ಒಟ್ಟು ಪ್ರಮಾಣ
 bill_total_subtotal	ಉಪ ಒಟ್ಟು
 bill_total_grand	ಒಟ್ಟು
+bill_total_number_under	ಸಂಖ್ಯೆ ಇದರ ಕೆಳಗೆ
+bill_total_caption_under	ಲೇಬಲ್ ಇದರ ಕೆಳಗೆ
+bill_total_own_line	ಸ್ವಂತ ಸಾಲು
+bill_total_caption_with	ಸಂಖ್ಯೆಯ ಜೊತೆ
+bill_total_caption_none	ಲೇಬಲ್ ಇಲ್ಲ
+bill_total_place_help	“ಸ್ವಂತ ಸಾಲು” ಈ ಒಟ್ಟನ್ನು ಪ್ರತ್ಯೇಕವಾಗಿ ಮುದ್ರಿಸುತ್ತದೆ. ಕಾಲಮ್ ಕೆಳಗೆ ಇಟ್ಟರೆ ಅದರ ಸಂಖ್ಯೆ ಆ ಐಟಂ ಕಾಲಮ್‌ನಲ್ಲಿ, ಈ ಸಾಲಿನ ಗಾತ್ರ ಮತ್ತು ದಪ್ಪದಲ್ಲಿ ಮುದ್ರಣವಾಗುತ್ತದೆ; ಒಂದು ಕಾಲಮ್ ತುಂಬುವವರೆಗೆ ಒಟ್ಟುಗಳು ಒಂದೇ ಅಡ್ಡಸಾಲನ್ನು ಹಂಚಿಕೊಳ್ಳುತ್ತವೆ, ನಂತರ ಹೊಸ ಅಡ್ಡಸಾಲು ಆರಂಭವಾಗುತ್ತದೆ. ಲೇಬಲ್ ಸಂಖ್ಯೆಯ ಜೊತೆ, ಬೇರೆ ಕಾಲಮ್ ಕೆಳಗೆ ಹೋಗುತ್ತದೆ, ಅಥವಾ ಬಿಡಲಾಗುತ್ತದೆ. ತೆರಿಗೆ, ಸೇವೆ, ರೌಂಡಿಂಗ್ ಮತ್ತು ಪಾವತಿ ಸಾಲುಗಳು “ಉಪ ಒಟ್ಟು” ಅನ್ನು ಅನುಸರಿಸುತ್ತವೆ.
 reprint_incl	ಮುದ್ರಣದಲ್ಲಿ
 reprint_skip	ಬಿಟ್ಟುಬಿಡಿ
 reprint_skip_meta	ರಿಕವರಿ ಮುದ್ರಣ ಬಿಡಿ
@@ -178,20 +197,20 @@ snack_secs_ph	ಸೆಕೆಂಡುಗಳು (3–60, ಡೀಫಾಲ್ಟ್ 1
 snack_secs_save	ಎಚ್ಚರಿಕೆ ಸಮಯ ಉಳಿಸಿ
 snack_secs_saved	ಎಚ್ಚರಿಕೆ ಸಮಯ ಉಳಿಸಲಾಗಿದೆ — {n} ಸೆಕೆಂಡುಗಳು
 settings_sec_whatsapp	WhatsApp
-whatsapp_cloud_help	Use your own Meta WhatsApp Cloud API. Create a System User token with whatsapp_business_messaging (temporary dashboard tokens expire). Credentials stay on this Server only — never on extra tills. Accepted means Meta took the request, not that the guest received it.
-whatsapp_phone_id_ph	Phone Number ID
-whatsapp_token_ph	Access Token (leave blank to keep)
-whatsapp_template_ph	Bill template name (optional)
-whatsapp_template_lang_ph	Template language (e.g. en)
-whatsapp_enable	Enable
+whatsapp_cloud_help	ನಿಮ್ಮದೇ Meta WhatsApp Cloud API ಬಳಸಿ. whatsapp_business_messaging ಇರುವ System User ಟೋಕನ್ ರಚಿಸಿ (ಡ್ಯಾಶ್‌ಬೋರ್ಡ್‌ನ ತಾತ್ಕಾಲಿಕ ಟೋಕನ್‌ಗಳ ಅವಧಿ ಮುಗಿಯುತ್ತದೆ). ಈ ವಿವರಗಳು ಈ ಸರ್ವರ್‌ನಲ್ಲಿ ಮಾತ್ರ ಇರುತ್ತವೆ — ಹೆಚ್ಚುವರಿ ಟಿಲ್‌ಗಳಲ್ಲಿ ಎಂದಿಗೂ ಇಲ್ಲ. “ಸ್ವೀಕರಿಸಲಾಗಿದೆ” ಎಂದರೆ Meta ವಿನಂತಿಯನ್ನು ತೆಗೆದುಕೊಂಡಿದೆ ಎಂದರ್ಥ, ಅತಿಥಿಗೆ ಸಂದೇಶ ತಲುಪಿದೆ ಎಂದಲ್ಲ.
+whatsapp_phone_id_ph	ಫೋನ್ ಸಂಖ್ಯೆ ID
+whatsapp_token_ph	ಆಕ್ಸೆಸ್ ಟೋಕನ್ (ಅದನ್ನೇ ಇರಿಸಲು ಖಾಲಿ ಬಿಡಿ)
+whatsapp_template_ph	ಬಿಲ್ ಟೆಂಪ್ಲೇಟ್ ಹೆಸರು (ಐಚ್ಛಿಕ)
+whatsapp_template_lang_ph	ಟೆಂಪ್ಲೇಟ್ ಭಾಷೆ (ಉದಾ. en)
+whatsapp_enable	ಆನ್ ಮಾಡಿ
 whatsapp_disable	Off
-whatsapp_save	Save WhatsApp
-whatsapp_test	Test connection
-whatsapp_disconnect	Disconnect
-whatsapp_send_bill	Send via WhatsApp
-whatsapp_consent	WhatsApp OK
-whatsapp_consent_help	Guest agreed to receive WhatsApp messages. A phone number alone is not consent.
-whatsapp_server_only	Configure WhatsApp on the shop Server device
+whatsapp_save	WhatsApp ಉಳಿಸಿ
+whatsapp_test	ಸಂಪರ್ಕ ಪರೀಕ್ಷಿಸಿ
+whatsapp_disconnect	ಸಂಪರ್ಕ ಕಡಿತಗೊಳಿಸಿ
+whatsapp_send_bill	WhatsApp ಮೂಲಕ ಕಳುಹಿಸಿ
+whatsapp_consent	WhatsApp ಸರಿ
+whatsapp_consent_help	ಅತಿಥಿ WhatsApp ಸಂದೇಶಗಳನ್ನು ಪಡೆಯಲು ಒಪ್ಪಿದ್ದಾರೆ. ಫೋನ್ ಸಂಖ್ಯೆ ಇದ್ದ ಮಾತ್ರಕ್ಕೆ ಅದು ಒಪ್ಪಿಗೆಯಲ್ಲ.
+whatsapp_server_only	ಅಂಗಡಿಯ ಸರ್ವರ್ ಸಾಧನದಲ್ಲಿ WhatsApp ಹೊಂದಿಸಿ
 settings_sec_backup	ಬ್ಯಾಕಪ್ ಮತ್ತು ಮರುಸ್ಥಾಪನೆ
 settings_sec_diag	ಡಯಾಗ್ನಾಸ್ಟಿಕ್ಸ್
 settings_sec_privacy	ಗೌಪ್ಯತೆ
@@ -526,7 +545,7 @@ new_party_kind_supplier_ph	ಹೊಸ ಪಾರ್ಟಿ ವಿಧ (ಸರಬರ�
 next_country	ಮುಂದಿನ ದೇಶ
 next_order	ಮುಂದಿನ ಆರ್ಡರ್ (ಡೆಸ್ಕ್ ಖಾಲಿ)
 note_gstin_ph	ಟಿಪ್ಪಣಿ / GSTIN / ಒಪ್ಪಂದ ರಿಮೈಂಡರ್
-notes_attach_party	ટિપ್ಪણીઓ અને લગતો (આય્કેમાડિદ પાર્ટી)
+notes_attach_party	ಟಿಪ್ಪಣಿಗಳು ಮತ್ತು ಲಗತ್ತುಗಳು (ಆಯ್ಕೆಮಾಡಿದ ಪಾರ್ಟಿ)
 notes_attach_sale	ಟಿಪ್ಪಣಿಗಳು ಮತ್ತು ಲಗತ್ತುಗಳು (ಆಯ್ಕೆಮಾಡಿದ ಮಾರಾಟ)
 on_account_ap	ಖಾತೆಯ ಮೇಲೆ (AP)
 org_optional_ph	ಸಂಸ್ಥೆ (ಐಚ್ಛಿಕ)
@@ -637,7 +656,7 @@ choose_device_use	ಈ ಸಾಧನವನ್ನು ಹೇಗೆ ಬಳಸಬೇ�
 paired_note	ಜೋಡಿಸಲಾಗಿದೆ. ಮಾರಲು ಅನ್‌ಲಾಕ್ ಮಾಡಿ, ಅಥವಾ ಅಂಗಡಿಯಿಂದ ಇತ್ತೀಚಿನದನ್ನು ಪಡೆಯಲು ರಿಫ್ರೆಶ್ ಮಾಡಿ.
 last_update_at	ಅಂಗಡಿಯಿಂದ ಕೊನೆಯ ಅಪ್‌ಡೇಟ್: {time}.
 pair_intro	ಸರ್ವರ್ ಹುಡುಕಿ, ಅಥವಾ ಅದರ ವಿಳಾಸ ಮತ್ತು ಜೋಡಿ ಕೋಡ್ ಟೈಪ್ ಮಾಡಿ.
-pair_resume_hint	Already paired — enter your shop PIN, or Forget this shop to pair another.
+pair_resume_hint	ಈಗಾಗಲೇ ಜೋಡಿಸಲಾಗಿದೆ — ನಿಮ್ಮ ಅಂಗಡಿಯ PIN ನಮೂದಿಸಿ, ಅಥವಾ ಬೇರೆ ಅಂಗಡಿ ಜೋಡಿಸಲು “ಈ ಅಂಗಡಿ ಮರೆಯಿರಿ” ಒತ್ತಿ.
 queue_waiting	ಅಂಗಡಿಗೆ ತಲುಪಲು ಕಾಯುತ್ತಿವೆ ({n}):
 queue_tries	{n} ಬಾರಿ ಪ್ರಯತ್ನ · ಕೊನೆಯ ಉತ್ತರ: {e}
 save_backup_copy	ಬ್ಯಾಕಪ್ ಪ್ರತಿ ಉಳಿಸಿ…
@@ -754,13 +773,18 @@ station_vps_dd	ಈ ಸ್ಟೇಷನ್ ಮುದ್ರಕಗಳು
 station_vps_dd_n	{n} ಮುದ್ರಕಗಳು · ಬದಲಾಯಿಸಲು ಟ್ಯಾಪ್
 bill_printers_dd	ಬಿಲ್ ಮುದ್ರಕಗಳು
 bill_printers_dd_n	ಬಿಲ್‌ಗೆ {n} ಮುದ್ರಕಗಳು · ಬದಲಿಸಲು ಒತ್ತಿ
-paper_heading	ಕಾಗದ
+paper_heading	ವರ್ಚುವಲ್ ಕಾಗದ
 paper_size	{w} × {h} mm
 paper_roll	{w} mm ರೋಲ್
 paper_not_set	ಕಾಗದ ಇನ್ನೂ ತಿಳಿದಿಲ್ಲ
-paper_length_mm	ಉದ್ದ (mm)
-printer_paper_help	ಈ ಮುದ್ರಕದ ಕಾಗದ mm ನಲ್ಲಿ. ಖಾಲಿ ಉದ್ದ ಎಂದರೆ ರೋಲ್: ಪ್ರತಿ ಚೀಟಿ ಅದರ ವಿಷಯದಷ್ಟೇ ಉದ್ದ. ಮುದ್ರಕಗಳನ್ನು ಹುಡುಕಿ ಖಾಲಿ ಕಾಗದವನ್ನು ಮುದ್ರಕದ ಡ್ರೈವರ್‌ನಿಂದ ತುಂಬಿಸುತ್ತದೆ (ಹೇಳಲಾಗದಿದ್ದರೆ 80 mm ರೋಲ್) ಮತ್ತು ಈಗಾಗಲೇ ಹೊಂದಿಸಿದ ಕಾಗದವನ್ನು ಎಂದಿಗೂ ಬದಲಿಸುವುದಿಲ್ಲ.
-preview_help	ಕೆಳಗೆ ಆಯ್ಕೆ ಮಾಡಿದ ಮುದ್ರಕದ ಕಾಗದದ ಮೇಲೆ ಈ ಚೀಟಿ, ಅಲ್ಲಿ ಮುದ್ರಣವಾಗುವಂತೆ: ಮುದ್ರಕ ತಲುಪುವ ಮೇಲಿನ ಎಡ ಮೂಲೆಯಿಂದ ನಿಜ ಗಾತ್ರದಲ್ಲಿ (ಬೂದು: ತಲುಪದ ಅಂಚುಗಳು), ಉದ್ದ ಚೀಟಿ ಹೆಚ್ಚು ಹಾಳೆಗಳಲ್ಲಿ, ಕಾಗದದ ಅಂಚಿನಾಚೆಗಿನದೆಲ್ಲ ಕತ್ತರಿಸಲ್ಪಡುತ್ತದೆ. ಮುದ್ರಕ ಆಯ್ಕೆ ಮಾಡಿದರೆ ಮುನ್ನೋಟ ಮಾತ್ರ ಬದಲಾಗುತ್ತದೆ; ಪ್ರತಿ ಮುದ್ರಕದ ಕಾಗದವನ್ನು ಪ್ರಿಂಟರ್‌ಗಳು ಅಡಿಯಲ್ಲಿ ಹೊಂದಿಸಲಾಗುತ್ತದೆ.
+virtual_width_mm	ವರ್ಚುವಲ್ ಅಗಲ (mm)
+virtual_length_mm	ವರ್ಚುವಲ್ ಉದ್ದ (mm)
+reported_width_mm	ವರದಿಯಾದ ಅಗಲ (mm)
+reported_length_mm	ವರದಿಯಾದ ಉದ್ದ (mm)
+reported_paper	ವರದಿಯಾದದ್ದು: {paper}
+virtual_paper	ವರ್ಚುವಲ್: {paper}
+printer_paper_help	ವರದಿಯಾದದ್ದು ಎಂದರೆ ಈ ಮುದ್ರಕದ ಡ್ರೈವರ್ ಹೊಂದಿಸಲಾಗಿರುವ ಕಾಗದ; ಆ್ಯಪ್ ಅದನ್ನು ಓದುತ್ತದೆ ಅಷ್ಟೇ, ಮತ್ತು “ಇಲ್ಲ” ಎಂದರೆ ಕೇಳಲು ಯಾವುದೇ ಡ್ರೈವರ್ ಇಲ್ಲ. ವರ್ಚುವಲ್ ಎಂದರೆ ಮುದ್ರಕದಲ್ಲಿ ನಿಜವಾಗಿ ಇದೆ ಎಂದು ನೀವು ಹೇಳುವ ಕಾಗದ, mm ನಲ್ಲಿ; ಖಾಲಿ ಉದ್ದ ಎಂದರೆ ರೋಲ್. ಮುದ್ರಕ ತನ್ನದೇ ಕಾಗದದ ಮೇಲೆ ಮುದ್ರಿಸುತ್ತದೆ; ಅದರಲ್ಲಿ ಎಷ್ಟು ನಿಜವಾದ ಕಾಗದ ಎಂಬುದನ್ನು ವರ್ಚುವಲ್ ಕಾಗದ ಆ್ಯಪ್‌ಗೆ ತಿಳಿಸುತ್ತದೆ, ಮುನ್ನೋಟ, ಪುಟದ ಉದ್ದ ಮತ್ತು ಚೀಟಿಯ ಸ್ಥಾನಕ್ಕಾಗಿ. ಮುದ್ರಕಗಳನ್ನು ಹುಡುಕಿ ಖಾಲಿ ವರ್ಚುವಲ್ ಕಾಗದವನ್ನು ತುಂಬುತ್ತದೆ ಮತ್ತು ನೀವು ಹೊಂದಿಸಿದ್ದನ್ನು ಎಂದಿಗೂ ಬದಲಿಸುವುದಿಲ್ಲ.
+preview_help	ಈ ಚೀಟಿ ಕೆಳಗೆ ಆಯ್ಕೆ ಮಾಡಿದ ಮುದ್ರಕದಲ್ಲಿ ಮುದ್ರಣವಾಗುವಂತೆ, ಅದರ ವರ್ಚುವಲ್ ಕಾಗದದ ಮೇಲೆ ನಿಜವಾದ ಗಾತ್ರದಲ್ಲಿ. ಬಿಳಿ ಭಾಗದಲ್ಲಿ ಮುದ್ರಣವಾಗುತ್ತದೆ, ಬೂದು ಕಾಗದವನ್ನು ಮುದ್ರಕ ತಲುಪುವುದಿಲ್ಲ, ಮತ್ತು ಮಸುಕಾದ ಶಾಯಿ ಕತ್ತರಿಸಲ್ಪಡುತ್ತದೆ. ಒಂಬತ್ತು ಚೌಕಗಳೇ ಕಾಗದ: ಚೀಟಿ ಇರಬೇಕಾದ ಜಾಗವನ್ನು ಟ್ಯಾಪ್ ಮಾಡಿ. ಉದ್ದವಾದ ಚೀಟಿ ಇನ್ನಷ್ಟು ಪುಟಗಳಿಗೆ ಮುಂದುವರಿಯುತ್ತದೆ. ಮುದ್ರಕವನ್ನು ಆಯ್ಕೆ ಮಾಡಿದರೆ ಮುನ್ನೋಟ ಮಾತ್ರ ಬದಲಾಗುತ್ತದೆ.
 job_layout	ಲೇಔಟ್
 job_delivery	ಕೆಲಸ ಹೇಗೆ ಕಳುಹಿಸಲಾಗುತ್ತದೆ
 job_delivery_help	OS ದಾಖಲೆ, ಕಚ್ಚಾ ಬೈಟ್‌ಗಳು ಅಥವಾ ESC/POS. ಬಿಲ್ ಮತ್ತು ಅಡುಗೆಮನೆ ಟಿಕೆಟ್ ಎರಡೂ ತಮ್ಮದನ್ನು ಇಡುತ್ತವೆ. ಯಾವ ಕೆಲಸವೂ ಹುಡುಕು ಉಳಿಸಿದ ಯಾವುದೇ ಮುದ್ರಕಕ್ಕೆ ಹೋಗಬಹುದು.
@@ -1040,7 +1064,7 @@ book_kind_today	ಇಂದಿನ ಪುಸ್ತಕ
 book_kind_month	ಈ ತಿಂಗಳ ಪುಸ್ತಕ
 book_kind_aging	ಬಾಕಿ / ಡೆಬಿಟ್-ಕ್ರೆಡಿಟ್
 book_kind_balance	ಬ್ಯಾಲೆನ್ಸ್ ಶೀಟ್
-order_help	ತೆರೆದ ಆರ್ಡರ್ ಆಯ್ಕೆಮಾಡಿ, ಅಥವಾ ಟೇಬಲ್ ಆಯ್ಕೆಮಾಡಿ ಹೊಸದನ್ನು ಪ್ರಾರಂಭಿಸಿ. ಸಿದ್ಧ ವಸ್ತುಗಳನ್ನು ಟ್ಯಾಪ್ ಮಾಡಿ, KOT ಕಳುಹಿಸಿ, ಒಂದು ಅಥವಾ ಹೆಚ್ಚು ವಸ್ತುಗಳಿಗೆ ಬಿಲ್ ಮಾಡಿ, ಬಿಲ್ ಹಂಚಿ ಮತ್ತು ಪಾವತಿ ಇತ್ಯರ್ಥಪಡಿಸಿ.
+order_help	ಸೇರಿಸಲು ಐಟಂ ಮೇಲೆ ಟ್ಯಾಪ್ ಮಾಡಿ.
 floor_help	ಪ್ರತಿ ಟೇಬಲ್ ಅತಿಥಿಗಳು ಕುಳಿತಿದ್ದಾರೆಯೇ, ಅವರ ತೆರೆದ ಬಿಲ್ ಏನು ಮತ್ತು ಮುಂದೆ ಯಾರಿಗೆ ಸೇವೆ ಬೇಕು ಎಂಬುದನ್ನು ತೋರಿಸುತ್ತದೆ.
 kitchen_help	ಪ್ರತಿ ರೂಪಾಂತರ ಅಥವಾ ಪ್ರತಿ ವಸ್ತುವಿನಂತೆ ಸಿದ್ಧ ಪ್ರಮಾಣವನ್ನು ಟ್ರ್ಯಾಕ್ ಮಾಡಿ — KOT ನಲ್ಲಿ ಬಯಸಿದಂತೆ ದಾಖಲಿಸಿ.
 kitchen_empty	ಸದ್ಯಕ್ಕೆ ಏನೂ ತೆರೆದಿಲ್ಲ.
@@ -1238,7 +1262,7 @@ on_your_menu	ನಿಮ್ಮ ಮೆನುವಿನಲ್ಲಿ
 edit	ತಿದ್ದು
 schemes	ಸ್ಕೀಮ್ / ಆಫರ್
 schemes_help	X ಖರೀದಿಸಿ Y ಪಡೆಯಿರಿ — ಸೆಟಲ್‌ನಲ್ಲಿ ಸ್ವಯಂ. ಉದಾ. Buy 2 Thali get 1 Chaas
-scheme_bogo_ph	Buy 2 Thali get 1 Chaas
+scheme_bogo_ph	2 ಥಾಲಿ ಕೊಂಡರೆ 1 ಮಜ್ಜಿಗೆ ಉಚಿತ
 add_scheme	BOGO ಸೇರಿಸಿ
 schedule_ph	ಸಮಯ / ಹ್ಯಾಪಿ ಅವರ್ — Mon-Fri 07:00-11:00 ಅಥವಾ HappyHour 17:00-19:00=150
 upi_qr	UPI QR
@@ -1266,8 +1290,8 @@ taxable_value	ತೆರಿಗೆ ಮೌಲ್ಯ
 gst_inside_price_note	({tax} ಒಳಗೊಂಡಿದೆ)
 start_with_template	ನಮ್ಮ ಮೆನು ಟೆಂಪ್ಲೇಟ್‌ನಿಂದ ಆರಂಭಿಸಿ
 template_heading	ನಮ್ಮ ಮೆನು ಟೆಂಪ್ಲೇಟ್
-template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
-template_download_shelf	Download photo shelf
+template_need_download	ಖಾದ್ಯಗಳ ಸಾರ್ವಜನಿಕ ಫೋಟೋ ಶೆಲ್ಫ್ (~1,459 ಖಾದ್ಯಗಳು) ಡೌನ್‌ಲೋಡ್ ಮಾಡಿ, ನಂತರ ಇಲ್ಲದ ಹೆಸರುಗಳನ್ನು ನಿಮ್ಮ ಮೆನುಗೆ ಆಮದು ಮಾಡಿ.
+template_download_shelf	ಫೋಟೋ ಶೆಲ್ಫ್ ಡೌನ್‌ಲೋಡ್ ಮಾಡಿ
 template_info	{c} ವರ್ಗಗಳು ಮತ್ತು {d} ಖಾದ್ಯಗಳು ಫೋಟೋಗಳೊಂದಿಗೆ ಸಿದ್ಧ. ಬೆಲೆ ₹0 — ನಂತರ ನಿಮ್ಮ ಬೆಲೆ ಹಾಕಿ.
 template_import	ಪೂರ್ಣ ಟೆಂಪ್ಲೇಟ್ ಆಮದು
 template_confirm	{d} ಖಾದ್ಯಗಳನ್ನು ವರ್ಗಗಳೊಂದಿಗೆ ಸೇರಿಸಬೇಕೆ? ನಿಮ್ಮ ಈಗಿನವು ಹಾಗೆಯೇ ಉಳಿಯುತ್ತವೆ.

@@ -101,6 +101,19 @@ bill_item_col_sep	Правила колона
 slip_columns	Колоне
 slip_col_header	Заглавље
 bill_line_logo	Лого
+bill_line_shop	Радња
+bill_line_address	Адреса
+bill_line_fssai	FSSAI
+bill_line_title	Наслов
+bill_line_customer	Муштерија
+bill_line_bill_no	Рачун бр.
+bill_line_time	Време
+bill_line_cashier	благајник
+bill_line_table	Трпезаријски сто
+bill_line_items	Ставке менија
+bill_line_total	Укупно
+bill_line_footer	Подножје
+bill_line_upi	UPI
 bill_logo_picture	Слика
 bill_logo_choose	Изабери слику
 bill_logo_remove	Уклони слику
@@ -128,6 +141,12 @@ bill_item_piece_off	Офф
 bill_total_qty	Тотал кти
 bill_total_subtotal	Међузбир
 bill_total_grand	Укупно укупно
+bill_total_number_under	Број испод
+bill_total_caption_under	Ознака испод
+bill_total_own_line	Сопствена линија
+bill_total_caption_with	Уз број
+bill_total_caption_none	Без ознаке
+bill_total_place_help	„Сопствена линија“ штампа овај збир засебно. Испод колоне његов број се штампа у тој колони ставки, у величини и дебљини ове линије; збирови деле један ред док се нека колона не заузме, а затим почиње нови ред. Ознака иде уз број, испод друге колоне или се изоставља. Линије пореза, услуге, заокруживања и плаћања прате „Међузбир“.
 reprint_incl	У штампи
 reprint_skip	Скип
 reprint_skip_meta	Прескочи штампање за опоравак
@@ -170,7 +189,7 @@ settings_sec_pickers	Области · станице · пореске стоп
 settings_sec_printers	Штампачи
 settings_sec_bill	Формат рачуна и KOT
 settings_sec_selling	Шеме и продаја
-bill_kot_tab_bill	Рачун за госте
+bill_kot_tab_bill	Рачун
 bill_kot_tab_kot	KOT
 settings_sec_alerts	Алертс
 alerts_help	Колико дуго статусне поруке остају на екрану за вас (ова пријава).
@@ -178,20 +197,20 @@ snack_secs_ph	Секунди (3–60, подразумевано 10)
 snack_secs_save	Уштедите време упозорења
 snack_secs_saved	Сачувано време упозорења — {n} секунди
 settings_sec_whatsapp	WhatsApp
-whatsapp_cloud_help	Use your own Meta WhatsApp Cloud API. Create a System User token with whatsapp_business_messaging (temporary dashboard tokens expire). Credentials stay on this Server only — never on extra tills. Accepted means Meta took the request, not that the guest received it.
-whatsapp_phone_id_ph	Phone Number ID
-whatsapp_token_ph	Access Token (leave blank to keep)
-whatsapp_template_ph	Bill template name (optional)
-whatsapp_template_lang_ph	Template language (e.g. en)
-whatsapp_enable	Enable
+whatsapp_cloud_help	Користите сопствени Meta WhatsApp Cloud API. Направите System User токен са whatsapp_business_messaging (привремени токени са контролне табле истичу). Подаци остају само на овом Серверу — никад на додатним касама. „Прихваћено” значи да је Meta преузела захтев, а не да га је гост примио.
+whatsapp_phone_id_ph	ID броја телефона
+whatsapp_token_ph	Приступни токен (оставите празно да остане исти)
+whatsapp_template_ph	Назив шаблона рачуна (опционо)
+whatsapp_template_lang_ph	Језик шаблона (нпр. en)
+whatsapp_enable	Омогући
 whatsapp_disable	Off
-whatsapp_save	Save WhatsApp
-whatsapp_test	Test connection
-whatsapp_disconnect	Disconnect
-whatsapp_send_bill	Send via WhatsApp
-whatsapp_consent	WhatsApp OK
-whatsapp_consent_help	Guest agreed to receive WhatsApp messages. A phone number alone is not consent.
-whatsapp_server_only	Configure WhatsApp on the shop Server device
+whatsapp_save	Сачувај WhatsApp
+whatsapp_test	Тестирај везу
+whatsapp_disconnect	Прекини везу
+whatsapp_send_bill	Пошаљи преко WhatsApp-а
+whatsapp_consent	WhatsApp ОК
+whatsapp_consent_help	Гост је пристао да прима WhatsApp поруке. Сам број телефона није пристанак.
+whatsapp_server_only	Подесите WhatsApp на Сервер уређају радње
 settings_sec_backup	Прављење резервних копија и враћање
 settings_sec_diag	Дијагностика
 settings_sec_privacy	Приватност
@@ -509,7 +528,7 @@ expense_heading	Трошкови
 export_day	Дан извоза
 extra_note_bill_ph	Додатна напомена о овом рачуну / продаји
 extra_note_expense_ph	Додатна напомена о последњем трошку
-extra_tills_heading	Ектра доллс
+extra_tills_heading	Додатне касе
 other_devices_help_heading	Подесите друге уређаје
 other_devices_help	На овом уређају (серверу): Остали уређаји → Дозволи екстра касе. Забележите код за упаривање и Wi‑Fi адресу. Додирните Дозволи другим уређајима да се повежу ако се појави. На рачунару додирните Почни са овим рачунаром. На сваком другом уређају: инсталирајте апликацију, изаберите Режим клијента, пронађите сервер продавнице (или унесите адресу), унесите код за упаривање, упарите сада. Поруџбине чекају на уређају ако Wi‑Fi падне и иду када сервер поново одговори. Кухињски штампачи су постављени на серверу (Подешавања → Штампачи) — тамо се додатно шаље KOTс.
 forget_shop	Заборави ову радњу
@@ -583,7 +602,7 @@ server_ip_ph	ИП сервера (нпр. 192.168.1.10)
 set_credit_limit	Примените ограничење на купца или добављача
 set_login_selected	Примени пријаву на изабране
 set_login_named	Примени пријаву на {name}
-shop	Схоп
+shop	Радња
 show	Схов
 spreadsheet_csv	Табела (CSV)
 start_fresh	Почни изнова
@@ -637,7 +656,7 @@ choose_device_use	Изаберите Сервер или Клијент.
 paired_note	Упарено. Откључајте да бисте продали или Освежите за најновије.
 last_update_at	Последње ажурирање: {time}.
 pair_intro	Пронађите сервер или унесите његову адресу и код за упаривање.
-pair_resume_hint	Already paired — enter your shop PIN, or Forget this shop to pair another.
+pair_resume_hint	Већ упарено — унесите PIN своје радње или додирните „Заборави ову радњу” да упарите другу.
 queue_waiting	Чека се да стигне до продавнице ({n}):
 queue_tries	Пробано {n} пута · последњи одговор: {e}
 save_backup_copy	Сачувајте резервну копију…
@@ -739,7 +758,7 @@ printer_format_custom_added	Прилагођени профил је додат 
 add_printer	Додајте штампач
 remove_printer	Уклони
 route_pick_ph	Рачун или кухињска станица
-route_bill	Рачун за госте
+route_bill	Рачун
 route_default_kitchen	Нема станице (недодијељене антене)
 route_kot_station	Кухиња
 route_dont_print	Нема штампача
@@ -754,13 +773,18 @@ station_vps_dd	Штампачи за ову станицу
 station_vps_dd_n	{n} штампачи · додирните да бисте променили
 bill_printers_dd	Штампачи за рачун
 bill_printers_dd_n	{n} штампачи за рачун · додирните да бисте променили
-paper_heading	Папир
+paper_heading	Виртуелни папир
 paper_size	{w} × {h} mm
 paper_roll	ролна од {w} mm
 paper_not_set	папир још није познат
-paper_length_mm	Дужина (mm)
-printer_paper_help	Папир овог штампача у mm. Празна Дужина је ролна: сваки рачун је дуг колико и његов садржај. „Пронађите штампаче“ попуњава празан папир из драјвера штампача (ролна од 80 mm кад не може да каже) и никад не мења већ постављен.
-preview_help	Овај рачун на папиру штампача изабраног испод, онако како се тамо штампа: у стварној величини од горњег левог угла до ког штампач досеже (сиво: ивице до којих не досеже), дуг рачун на више листова, све преко ивице папира се одсеца. Избор штампача мења само преглед; папир сваког штампача поставља се у „Штампачи“.
+virtual_width_mm	Виртуелна ширина (mm)
+virtual_length_mm	Виртуелна дужина (mm)
+reported_width_mm	Пријављена ширина (mm)
+reported_length_mm	Пријављена дужина (mm)
+reported_paper	Пријављено: {paper}
+virtual_paper	Виртуелно: {paper}
+printer_paper_help	Пријављено је папир на који је подешен драјвер овог штампача; апликација га само чита, а Н/А значи да нема драјвера који би се питао. Виртуелно је папир за који ви кажете да је заиста у штампачу, у mm; празна дужина је ролна. Штампач штампа на свом папиру; виртуелни папир говори апликацији колики део тога је стварни папир, за преглед, дужину странице и место рачуна. „Пронађите штампаче“ попуњава празан виртуелни папир и никад не мења онај који сте ви поставили.
+preview_help	Овај рачун онако како се штампа на штампачу изабраном испод, у стварној величини на његовом виртуелном папиру. Бело је тамо где штампа, сиви папир је ван домашаја штампача, а избледело мастило се одсеца. Девет квадрата је папир: додирните где рачун треба да стоји. Дуг рачун се наставља на више страница. Избор штампача мења само преглед.
 job_layout	Лаиоут
 job_delivery	Како се посао шаље
 job_delivery_help	ОС документ, необрађени бајтови или ESC/POS. Рачун и улазница за кухињу чувају своје. Сваки задатак може да иде на било који штампач који је Финд сачувао.
@@ -1053,7 +1077,7 @@ tile_occupied	Заузето
 tile_food_ready	Храна спремна
 tile_bill_printed	Рачун одштампан
 tile_paid	Плаћено
-tile_bill_btn	Рачун за госте
+tile_bill_btn	Рачун
 tile_occupy_btn	Седите госте
 tile_free_btn	Ослободите трпезаријски сто
 tile_ready_btn	Ослободите трпезаријски сто
@@ -1238,7 +1262,7 @@ on_your_menu	На вашем менију
 edit	Уреди
 schemes	Шеме / понуде
 schemes_help	BOGO, проценат попуста и фиксне комбинације. Комбинације се проширују на кухињске линије на Пошаљи KOT; компоненте остају задржане док се комбинација не активира. Пример: Купите 2 Thali добијете 1 Chaas
-scheme_bogo_ph	Buy 2 Thali get 1 Chaas
+scheme_bogo_ph	Купи 2 Thali, добиј 1 Chaas
 add_scheme	Додај BOGO
 schedule_ph	Радно време / срећни сат — пон-пет 07:00-11:00 или ХаппиХоур 17:00-19:00=150
 upi_qr	UPI QR
@@ -1266,8 +1290,8 @@ taxable_value	Опорезива вредност
 gst_inside_price_note	({tax} укључујући)
 start_with_template	Почните са нашим шаблоном менија
 template_heading	Наш шаблон менија
-template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
-template_download_shelf	Download photo shelf
+template_need_download	Преузмите јавну полицу са фотографијама јела (~1.459 јела), затим у свој мени увезите називе који недостају.
+template_download_shelf	Преузми полицу са фотографијама
 template_info	{c} категорије и {d} јела са фотографијама, спремна за додавање. Цене почињу од 0 ИНР — одредите своје после.
 template_import	Увезите комплетан шаблон
 template_confirm	Додати {d} јела са њиховим категоријама? Јела која већ имате остају таква каква јесу.

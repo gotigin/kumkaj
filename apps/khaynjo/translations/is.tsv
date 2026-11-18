@@ -101,6 +101,19 @@ bill_item_col_sep	Dálkareglur
 slip_columns	Dálkar
 slip_col_header	Haus
 bill_line_logo	Merki
+bill_line_shop	Verslun
+bill_line_address	Heimilisfang
+bill_line_fssai	FSSAI
+bill_line_title	Titill
+bill_line_customer	Viðskiptavinur
+bill_line_bill_no	Reikningsnr.
+bill_line_time	Tími
+bill_line_cashier	Gjaldkeri
+bill_line_table	Borðstofuborð
+bill_line_items	Vörur
+bill_line_total	Samtals
+bill_line_footer	Fótur
+bill_line_upi	UPI
 bill_logo_picture	Mynd
 bill_logo_choose	Velja mynd
 bill_logo_remove	Fjarlægja mynd
@@ -128,6 +141,12 @@ bill_item_piece_off	Slökkt
 bill_total_qty	Samtals magn
 bill_total_subtotal	Undir heild
 bill_total_grand	Heildarsamtal
+bill_total_number_under	Tala undir
+bill_total_caption_under	Merki undir
+bill_total_own_line	Eigin lína
+bill_total_caption_with	Með tölunni
+bill_total_caption_none	Ekkert merki
+bill_total_place_help	Eigin lína prentar þessa heild eina og sér. Undir dálki er talan prentuð í þeim vörudálki, í stærð og þykkt þessarar línu; heildir deila röð þar til dálkur er upptekinn, þá byrjar ný röð. Merkið fer með tölunni, undir annan dálk eða er sleppt. Línur fyrir skatt, þjónustu, námundun og greiðslu fylgja Undir heild.
 reprint_incl	Á prenti
 reprint_skip	Sleppa
 reprint_skip_meta	Slepptu endurheimtarprentun
@@ -170,7 +189,7 @@ settings_sec_pickers	Svæði · stöðvar · skatthlutföll
 settings_sec_printers	Prentarar
 settings_sec_bill	Bill & KOT snið
 settings_sec_selling	Skipur & sala
-bill_kot_tab_bill	Gestareikningur
+bill_kot_tab_bill	Reikningur
 bill_kot_tab_kot	KOT
 settings_sec_alerts	Viðvaranir
 alerts_help	Hversu lengi stöðuskilaboð eru á skjánum fyrir þig (þessi innskráning).
@@ -178,20 +197,20 @@ snack_secs_ph	Sekúndur (3–60, sjálfgefið 10)
 snack_secs_save	Sparaðu viðvörunartíma
 snack_secs_saved	Viðvörunartími vistaður — {n} sekúndur
 settings_sec_whatsapp	WhatsApp
-whatsapp_cloud_help	Use your own Meta WhatsApp Cloud API. Create a System User token with whatsapp_business_messaging (temporary dashboard tokens expire). Credentials stay on this Server only — never on extra tills. Accepted means Meta took the request, not that the guest received it.
-whatsapp_phone_id_ph	Phone Number ID
-whatsapp_token_ph	Access Token (leave blank to keep)
-whatsapp_template_ph	Bill template name (optional)
-whatsapp_template_lang_ph	Template language (e.g. en)
-whatsapp_enable	Enable
+whatsapp_cloud_help	Notaðu þitt eigið Meta WhatsApp Cloud API. Búðu til System User-lykil með whatsapp_business_messaging (tímabundnir lyklar úr stjórnborðinu renna út). Upplýsingarnar eru aðeins á þessum miðlara — aldrei á aukakössum. „Samþykkt“ þýðir að Meta tók við beiðninni, ekki að gesturinn hafi fengið hana.
+whatsapp_phone_id_ph	Auðkenni símanúmers
+whatsapp_token_ph	Aðgangslykill (skildu eftir autt til að halda honum)
+whatsapp_template_ph	Heiti reikningssniðmáts (valfrjálst)
+whatsapp_template_lang_ph	Tungumál sniðmáts (t.d. en)
+whatsapp_enable	Virkja
 whatsapp_disable	Off
-whatsapp_save	Save WhatsApp
-whatsapp_test	Test connection
-whatsapp_disconnect	Disconnect
-whatsapp_send_bill	Send via WhatsApp
-whatsapp_consent	WhatsApp OK
-whatsapp_consent_help	Guest agreed to receive WhatsApp messages. A phone number alone is not consent.
-whatsapp_server_only	Configure WhatsApp on the shop Server device
+whatsapp_save	Vista WhatsApp
+whatsapp_test	Prófa tengingu
+whatsapp_disconnect	Aftengja
+whatsapp_send_bill	Senda með WhatsApp
+whatsapp_consent	WhatsApp Allt í lagi
+whatsapp_consent_help	Gesturinn samþykkti að fá WhatsApp-skilaboð. Símanúmer eitt og sér er ekki samþykki.
+whatsapp_server_only	Settu upp WhatsApp á miðlaratæki búðarinnar
 settings_sec_backup	Afrita og endurheimta
 settings_sec_diag	Greining
 settings_sec_privacy	Persónuvernd
@@ -637,7 +656,7 @@ choose_device_use	Veldu Server eða Client.
 paired_note	Pöruð. Opnaðu til að selja, eða endurnýjaðu til að fá það nýjasta.
 last_update_at	Síðasta uppfærsla: {time}.
 pair_intro	Finndu netþjóninn eða sláðu inn heimilisfang hans og pörunarkóða.
-pair_resume_hint	Already paired — enter your shop PIN, or Forget this shop to pair another.
+pair_resume_hint	Þegar parað — sláðu inn PIN búðarinnar, eða ýttu á „Gleymdu þessari búð“ til að para aðra.
 queue_waiting	Bíður eftir að komast í búðina ({n}):
 queue_tries	Reyndi {n} sinnum · síðasta svar: {e}
 save_backup_copy	Vista öryggisafrit...
@@ -739,7 +758,7 @@ printer_format_custom_added	Sérsniðnum prófíl bætt við fyrir þennan stað
 add_printer	Bæta við prentara
 remove_printer	Fjarlægja
 route_pick_ph	Bill eða eldhússtöð
-route_bill	Gestareikningur
+route_bill	Reikningur
 route_default_kitchen	Engin stöð (óúthlutaðir réttir)
 route_kot_station	Eldhús
 route_dont_print	Enginn prentari
@@ -754,13 +773,18 @@ station_vps_dd	Prentarar fyrir þessa stöð
 station_vps_dd_n	{n} prentarar · pikkaðu á til að breyta
 bill_printers_dd	Prentarar fyrir reikninginn
 bill_printers_dd_n	{n} prentarar fyrir reikninginn · pikkaðu á til að breyta
-paper_heading	Pappír
+paper_heading	Sýndarpappír
 paper_size	{w} × {h} mm
 paper_roll	{w} mm rúlla
 paper_not_set	pappír enn óþekktur
-paper_length_mm	Lengd (mm)
-printer_paper_help	Pappír þessa prentara í mm. Auð Lengd er rúlla: hver kvittun er jafnlöng innihaldi sínu. Finndu prentara fyllir í auðan pappír úr rekli prentarans (80 mm rúlla þegar hann getur ekki sagt til) og breytir aldrei pappír sem þegar er stilltur.
-preview_help	Þessi kvittun á pappír prentarans sem valinn er hér fyrir neðan, eins og hún prentast þar: í raunstærð frá efra vinstra horninu sem prentarinn nær (grátt: brúnir sem hann nær ekki), löng kvittun á fleiri blöðum, allt út fyrir brún pappírsins er skorið af. Að velja prentara breytir aðeins forskoðun; pappír hvers prentara er stilltur undir Prentarar.
+virtual_width_mm	Sýndarbreidd (mm)
+virtual_length_mm	Sýndarlengd (mm)
+reported_width_mm	Tilkynnt breidd (mm)
+reported_length_mm	Tilkynnt lengd (mm)
+reported_paper	Tilkynnt: {paper}
+virtual_paper	Sýndar: {paper}
+printer_paper_help	Tilkynnt er pappírinn sem rekill þessa prentara er stilltur á; appið les hann aðeins, og N/A þýðir að enginn rekill sé til að spyrja. Sýndar er pappírinn sem þú segir að sé í raun í prentaranum, í mm; auð lengd er rúlla. Prentarinn prentar á sinn eigin pappír; sýndarpappírinn segir appinu hve mikið af honum er raunverulegur pappír, fyrir forskoðun, síðulengd og staðsetningu kvittunar. Finndu prentara fyllir út auðan sýndarpappír og breytir aldrei þeim sem þú hefur stillt.
+preview_help	Þessi kvittun eins og hún prentast á prentaranum sem valinn er hér að neðan, í raunstærð á sýndarpappír hans. Hvítt er þar sem prentað er, grár pappír er utan seilingar prentarans og fölt blek er skorið af. Reitirnir níu eru pappírinn: ýttu þar sem kvittunin á að sitja. Löng kvittun heldur áfram á fleiri síðum. Val á prentara breytir aðeins forskoðuninni.
 job_layout	Skipulag
 job_delivery	Hvernig starfið er sent
 job_delivery_help	OS skjal, óunnin bæti eða ESC/POS. Seðillinn og eldhúsmiðinn halda hver sínu. Hvort verkið getur farið í hvaða prentara sem Finnur hefur vistað.
@@ -1053,7 +1077,7 @@ tile_occupied	Upptekinn
 tile_food_ready	Matur tilbúinn
 tile_bill_printed	Bill prentaður
 tile_paid	Greitt
-tile_bill_btn	Gestareikningur
+tile_bill_btn	Reikningur
 tile_occupy_btn	Sætisgestir
 tile_free_btn	Losaðu borðstofuborð
 tile_ready_btn	Losaðu borðstofuborð
@@ -1163,7 +1187,7 @@ kot_show_station	Stöð
 kot_hide_station	Fela stöð
 kot_show_table	Borðstofuborð
 kot_hide_table	Fela borðstofuborð
-kot_show_kot_no	KOT Nei
+kot_show_kot_no	KOT-nr.
 kot_hide_kot_no	Fela KOT Nei
 kot_width	Forskoðunarbrot (stilltu innihaldsbreidd á KOT flipanum)
 kot_width_58	58 mm
@@ -1238,7 +1262,7 @@ on_your_menu	Á matseðlinum þínum
 edit	Breyta
 schemes	Skipur/tilboð
 schemes_help	BOGO, prósentafsláttur og föst samsetning. Samsetningar stækka í eldhúslínur á Senda KOT; íhlutir haldast þar til samsetningin kviknar. Dæmi: Kauptu 2 Thali fáðu 1 Chaas
-scheme_bogo_ph	Buy 2 Thali get 1 Chaas
+scheme_bogo_ph	Kauptu 2 Thali, fáðu 1 Chaas
 add_scheme	Bæta við BOGO
 schedule_ph	Klukkutímar / happy hour — mán-fös 07:00-11:00 eða HappyHour 17:00-19:00=150
 upi_qr	UPI QR
@@ -1256,7 +1280,7 @@ choose_table	Veldu borðstofuborð
 change_table	Skipta um borðstofuborð
 pick_table_banner	Veldu borðstofuborð fyrir þessa pöntun
 items_word	valmyndaratriði
-items_section	Valmyndaratriði í valmyndinni
+items_section	Vörur
 back_to_order	Aftur í pöntun
 new_items_head	Ekki sent enn
 price_ph	Verð
@@ -1266,8 +1290,8 @@ taxable_value	Skattskyld verðmæti
 gst_inside_price_note	({tax} innifalið)
 start_with_template	Byrjaðu á valmyndarsniðmátinu okkar
 template_heading	Valmyndarsniðmátið okkar
-template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
-template_download_shelf	Download photo shelf
+template_need_download	Sæktu opinberu myndahilluna með réttum (~1.459 réttir) og flyttu svo inn í matseðilinn þinn nöfnin sem vantar.
+template_download_shelf	Sækja myndahillu
 template_info	{c} flokkar og {d} réttir með myndum, tilbúnir til að bæta við. Verð byrja á ₹ 0 - stilltu þitt eftir.
 template_import	Flytja inn heill sniðmát
 template_confirm	Bæta við {d} réttum með sínum flokkum? Réttir sem þú átt nú þegar haldast eins og þeir eru.

@@ -23,8 +23,8 @@ stock_minus	- Stock
 stock_plus	+ Lager
 settle_cash	Gera upp reiðufé
 settle_card	Uppgjör kort
-items	Valmyndaratriði í valmyndinni
-nav_items	Valmyndaratriði í valmyndinni
+items	Vörur
+nav_items	Vörur
 items_help	Pikkaðu á atriði til að breyta því. Nýr liður hreinsar eyðublaðið. Leitaðu eftir nafni eða stuttkóða, stilltu verð (0 er í lagi), síðan Bæta við. Sala sem þegar hefur verið skráð geymir nafnið sem þeir voru ákærðir fyrir.
 add_item	Bæta við valmyndaratriði
 new_item	Nýtt valmyndaratriði
@@ -67,13 +67,19 @@ bill_item_amount	Upphæð
 bill_item_note	Athugið atriði
 bill_item_col_sep	Dálkareglur
 slip_col_width	Breidd (mm)
-paper_heading	Pappír
+paper_heading	Sýndarpappír
 paper_size	{w} × {h} mm
 paper_roll	{w} mm rúlla
 paper_not_set	pappír enn óþekktur
-paper_length_mm	Lengd (mm)
-printer_paper_help	Pappír þessa prentara í mm. Auð Lengd er rúlla: hver kvittun er jafnlöng innihaldi sínu. Finndu prentara fyllir í auðan pappír úr rekli prentarans (80 mm rúlla þegar hann getur ekki sagt til) og breytir aldrei pappír sem þegar er stilltur.
-preview_help	Þessi kvittun á pappír prentarans sem valinn er hér fyrir neðan, eins og hún prentast þar: í raunstærð frá efra vinstra horninu sem prentarinn nær (grátt: brúnir sem hann nær ekki), löng kvittun á fleiri blöðum, allt út fyrir brún pappírsins er skorið af. Að velja prentara breytir aðeins forskoðun; pappír hvers prentara er stilltur undir Prentarar.
+na	N/A
+virtual_width_mm	Sýndarbreidd (mm)
+virtual_length_mm	Sýndarlengd (mm)
+reported_width_mm	Tilkynnt breidd (mm)
+reported_length_mm	Tilkynnt lengd (mm)
+reported_paper	Tilkynnt: {paper}
+virtual_paper	Sýndar: {paper}
+printer_paper_help	Tilkynnt er pappírinn sem rekill þessa prentara er stilltur á; appið les hann aðeins, og N/A þýðir að enginn rekill sé til að spyrja. Sýndar er pappírinn sem þú segir að sé í raun í prentaranum, í mm; auð lengd er rúlla. Prentarinn prentar á sinn eigin pappír; sýndarpappírinn segir appinu hve mikið af honum er raunverulegur pappír, fyrir forskoðun, síðulengd og staðsetningu kvittunar. Finndu prentara fyllir út auðan sýndarpappír og breytir aldrei þeim sem þú hefur stillt.
+preview_help	Þessi kvittun eins og hún prentast á prentaranum sem valinn er hér að neðan, í raunstærð á sýndarpappír hans. Hvítt er þar sem prentað er, grár pappír er utan seilingar prentarans og fölt blek er skorið af. Reitirnir níu eru pappírinn: ýttu þar sem kvittunin á að sitja. Löng kvittun heldur áfram á fleiri síðum. Val á prentara breytir aðeins forskoðuninni.
 slip_col_start	Upphafsbil (px)
 slip_col_end	Lokabil (px)
 slip_columns_help	Breidd hvers dálks inniheldur upphafs- og lokabil hans. Texti brotnar innan síns dálks; það sem nær út fyrir breidd efnisins er skorið af, á pappír og í forskoðun.
@@ -88,6 +94,12 @@ bill_item_piece_off	Slökkt
 bill_total_qty	Samtals magn
 bill_total_subtotal	Undir heild
 bill_total_grand	Heildarsamtal
+bill_total_number_under	Tala undir
+bill_total_caption_under	Merki undir
+bill_total_own_line	Eigin lína
+bill_total_caption_with	Með tölunni
+bill_total_caption_none	Ekkert merki
+bill_total_place_help	Eigin lína prentar þessa heild eina og sér. Undir dálki er talan prentuð í þeim vörudálki, í stærð og þykkt þessarar línu; heildir deila röð þar til dálkur er upptekinn, þá byrjar ný röð. Merkið fer með tölunni, undir annan dálk eða er sleppt. Línur fyrir skatt, þjónustu, námundun og greiðslu fylgja Undir heild.
 kot_unassigned	Óúthlutað
 settings_hub_help	Opnaðu eitt svæði í einu - minna fletta, skýrari valkostir.
 settings_sec_language	Tungumál og gjaldmiðill
@@ -131,7 +143,7 @@ diag_cleared	Greiningarskrár hreinsaðar
 sidebar_settings	Hliðarstika
 sidebar_settings_help	Sömu tákn og hliðargrind. Dragðu röð til að endurraða. Snúðu rofanum til að sýna eða fela. Stillingar og læsing eru alltaf á stikunni.
 sidebar_always_on_short	Alltaf á
-sidebar_menu_items	Valmyndaratriði í valmyndinni
+sidebar_menu_items	Vörur
 sidebar_enable_all	Virkja allt
 sidebar_disable_all	Slökktu á öllum
 sidebar_order_saved	Pöntun hliðarstikunnar vistuð
@@ -458,7 +470,7 @@ route_cleared	Hreinsaði {name}
 route_tap_selected	valin
 printer_target_ph	Nafn kerfisprentara eða gestgjafi: 9100
 printer_target_default	Venjulegur prentari þessarar tölvu (autt heimilisfang)
-route_bill	Gestareikningur
+route_bill	Reikningur
 station_print_pick_first	Veldu búðarhluta fyrst
 bill_printers_dd	Prentarar fyrir reikninginn
 bill_printers_dd_n	{n} prentarar fyrir reikninginn · pikkaðu á til að breyta
@@ -723,6 +735,20 @@ fssai_ph	FSSAI / verslunarleyfi nr. (valfrjálst)
 bill_footer_ph	Fótur (t.d. Þakka þér, komdu aftur)
 kot_field_on	sýna
 kot_field_off	fela sig
+kot_field_show	Sýna
+kot_field_hide	Fela
+bill_line_shop	Verslun
+bill_line_address	Heimilisfang
+bill_line_fssai	FSSAI
+bill_line_title	Titill
+bill_line_customer	Viðskiptavinur
+bill_line_bill_no	Reikningsnr.
+bill_line_time	Tími
+bill_line_cashier	Gjaldkeri
+bill_line_items	Vörur
+bill_line_total	Samtals
+bill_line_footer	Fótur
+bill_line_upi	UPI
 kot_weight_light	Ljós
 bill_kot_panel_help	Uppsetning reikninga og innihaldsbreidd. Gjaldkeri er sá sem gaf út eða gerði upp reikninginn - öll sölusagan er í bókunum.
 std_size_ph	t.d. 18, 20, 26...
@@ -830,10 +856,10 @@ lane_declared_label	Skattreikningur
 lane_owner_label	Peningabréf
 money_lane_bill	Reikningur: {lane}
 
-removing	Removing…
-removed	Removed
-updating_order	Updating…
-order_updated	Order updated
+removing	Fjarlægi…
+removed	Fjarlægt
+updating_order	Uppfæri…
+order_updated	Pöntun uppfærð
 sel_copy	Afrita
 sel_select_all	Velja allt
 sel_copied	Afritað

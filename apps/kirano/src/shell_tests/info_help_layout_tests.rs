@@ -474,5 +474,4 @@ mod info_help_layout_tests {
             "brand_title must not sit Fit in a Right peer row"
         );
     }
-
 }

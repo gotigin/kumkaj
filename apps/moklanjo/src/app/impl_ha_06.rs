@@ -744,6 +744,25 @@ impl App {
         {
             self.schedule_format_autosave(cx);
         }
+        // Where the job sits on its paper: the 3 × 3 grid under the preview's
+        // printer (owner, 2026-11-17) — a picture of the paper, so left is
+        // the paper's left in every language.
+        {
+            let mut picked = None;
+            for (down, row) in job_place_cells().into_iter().enumerate() {
+                for (across, (idle, on)) in row.into_iter().enumerate() {
+                    if self.choice_chip_clicked(cx, actions, idle, on) {
+                        picked = Some((down, across));
+                    }
+                }
+            }
+            if let Some((down, across)) = picked {
+                if let Err(e) = self.apply_focused_job_place(os_paper::Place::new(down as u8, across as u8)) {
+                    self.set_status(cx, e);
+                }
+                self.sync_chrome(cx);
+            }
+        }
         // The job preview's printer: which saved printer's paper it is drawn on.
         if self.ui.button(cx, ids!(job_preview_paper_dd)).clicked(actions) {
             {

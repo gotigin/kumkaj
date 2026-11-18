@@ -101,6 +101,19 @@ bill_item_col_sep	ကော်လံစည်းမျဉ်းများ
 slip_columns	ကော်လံများ
 slip_col_header	ခေါင်းစီး
 bill_line_logo	လိုဂို
+bill_line_shop	ဆိုင်
+bill_line_address	လိပ်စာ
+bill_line_fssai	FSSAI
+bill_line_title	ခေါင်းစဉ်
+bill_line_customer	ဖောက်သည်
+bill_line_bill_no	ဘေလ်အမှတ်
+bill_line_time	အချိန်
+bill_line_cashier	ငွေကိုင်
+bill_line_table	စားပွဲ
+bill_line_items	ပစ္စည်းများ
+bill_line_total	စုစုပေါင်း
+bill_line_footer	ဖူးတာ
+bill_line_upi	UPI
 bill_logo_picture	ပုံ
 bill_logo_choose	ပုံရွေးရန်
 bill_logo_remove	ပုံဖယ်ရန်
@@ -128,6 +141,12 @@ bill_item_piece_off	ပိတ်
 bill_total_qty	စုစုပမာဏ
 bill_total_subtotal	အပိုစုစုစုပေါင်း
 bill_total_grand	စုစုပေါင်း
+bill_total_number_under	ဂဏန်းကို အောက်တွင်ထားရန်
+bill_total_caption_under	label ကို အောက်တွင်ထားရန်
+bill_total_own_line	ကိုယ်ပိုင်လိုင်း
+bill_total_caption_with	ဂဏန်းနှင့်အတူ
+bill_total_caption_none	label မပါ
+bill_total_place_help	“ကိုယ်ပိုင်လိုင်း” သည် ဤစုစုပေါင်းကို သီးသန့်ပုံနှိပ်သည်။ ကော်လံတစ်ခုအောက်တွင်ထားလျှင် ၎င်း၏ဂဏန်းကို ထိုပစ္စည်းကော်လံထဲ၌ ဤလိုင်း၏အရွယ်အစားနှင့် အထူအတိုင်း ပုံနှိပ်သည်။ ကော်လံတစ်ခု ပြည့်သည်အထိ စုစုပေါင်းများသည် အတန်းတစ်တန်းကို မျှသုံးပြီး ထို့နောက် အတန်းအသစ် စသည်။ label သည် ဂဏန်းနှင့်အတူ၊ အခြားကော်လံအောက်တွင် ရှိနိုင်သည်၊ သို့မဟုတ် မပုံနှိပ်ပါ။ အခွန်၊ ဝန်ဆောင်ခ၊ ဂဏန်းညှိခြင်းနှင့် ငွေပေးချေမှုလိုင်းများသည် “အပိုစုစုစုပေါင်း” နောက်သို့ လိုက်သည်။
 reprint_incl	ပုံနှိပ်မှုတွင်
 reprint_skip	ကျော်မည်
 reprint_skip_meta	ပြန်လုပ်မည့်ပုံနှိပ်မှုကို မလုပ်ပါ
@@ -178,20 +197,20 @@ snack_secs_ph	စက္ကန့်များ (3–60, ပုံမှန် 1
 snack_secs_save	သတိပေးချိန်ကို သိမ်းဆည်းမည်
 snack_secs_saved	သတိပေးချိန် သိမ်းဆည်းပြီး — {n} စက္ကန့်
 settings_sec_whatsapp	WhatsApp
-whatsapp_cloud_help	Use your own Meta WhatsApp Cloud API. Create a System User token with whatsapp_business_messaging (temporary dashboard tokens expire). Credentials stay on this Server only — never on extra tills. Accepted means Meta took the request, not that the guest received it.
-whatsapp_phone_id_ph	Phone Number ID
-whatsapp_token_ph	Access Token (leave blank to keep)
-whatsapp_template_ph	Bill template name (optional)
-whatsapp_template_lang_ph	Template language (e.g. en)
-whatsapp_enable	Enable
+whatsapp_cloud_help	သင့်ကိုယ်ပိုင် Meta WhatsApp Cloud API ကို အသုံးပြုပါ။ whatsapp_business_messaging ပါသော System User တိုကင်တစ်ခု ဖန်တီးပါ (ဒက်ရှ်ဘုတ်၏ ယာယီတိုကင်များ သက်တမ်းကုန်သည်)။ အချက်အလက်များသည် ဤ Server ပေါ်တွင်သာ ရှိသည် — အပို ငွေကောင်တာများတွင် ဘယ်တော့မှ မရှိပါ။ “လက်ခံပြီး” ဆိုသည်မှာ Meta က တောင်းဆိုမှုကို လက်ခံလိုက်ခြင်းဖြစ်ပြီး ဧည့်သည်က ရရှိပြီဟု မဆိုလိုပါ။
+whatsapp_phone_id_ph	ဖုန်းနံပါတ် ID
+whatsapp_token_ph	အသုံးပြုခွင့် တိုကင် (ယခင်အတိုင်းထားရန် ကွက်လပ်ထားပါ)
+whatsapp_template_ph	ဘေလ် ပုံစံအမည် (အလိုက်သုံးနိုင်သည်)
+whatsapp_template_lang_ph	ပုံစံ၏ ဘာသာစကား (ဥပမာ en)
+whatsapp_enable	ဖွင့်ပါ
 whatsapp_disable	Off
-whatsapp_save	Save WhatsApp
-whatsapp_test	Test connection
-whatsapp_disconnect	Disconnect
-whatsapp_send_bill	Send via WhatsApp
+whatsapp_save	WhatsApp သိမ်းမည်
+whatsapp_test	ချိတ်ဆက်မှု စမ်းသပ်ပါ
+whatsapp_disconnect	ချိတ်ဆက်မှု ဖြတ်ပါ
+whatsapp_send_bill	WhatsApp ဖြင့် ပို့ပါ
 whatsapp_consent	WhatsApp OK
-whatsapp_consent_help	Guest agreed to receive WhatsApp messages. A phone number alone is not consent.
-whatsapp_server_only	Configure WhatsApp on the shop Server device
+whatsapp_consent_help	ဧည့်သည်က WhatsApp စာတိုများ လက်ခံရန် သဘောတူခဲ့သည်။ ဖုန်းနံပါတ်တစ်ခုတည်းရှိခြင်းသည် သဘောတူညီမှု မဟုတ်ပါ။
+whatsapp_server_only	ဆိုင်၏ Server စက်တွင် WhatsApp ကို သတ်မှတ်ပါ
 settings_sec_backup	မိတ္တူယူခြင်းနှင့် ပြန်လည်သုံးစွဲခြင်း
 settings_sec_diag	ရောဂါသိပ္ပံစမ်းသပ်ခြင်း
 settings_sec_privacy	ကိုယ်ရေးကိုယ်တာ
@@ -637,7 +656,7 @@ choose_device_use	Server သို့မဟုတ် Client ကိုရွေ�
 paired_note	စုံညီပြီးပါပြီ။ ရောင်းရန် ဖြေ unlock လုပ်ပါ၊ သို့မဟုတ် နောက်ဆုံးအချက်အလက်အတွက် Refresh လုပ်ပါ။
 last_update_at	နောက်ဆုံး update: {time}။
 pair_intro	ဆာဗာကို ရှာပါ၊ သို့မဟုတ် ၎င်း၏လိပ်စာနှင့် စုံညီကုဒ်ကို ရိုက်ထည့်ပါ။
-pair_resume_hint	Already paired — enter your shop PIN, or Forget this shop to pair another.
+pair_resume_hint	ချိတ်ဆက်ပြီးသားဖြစ်သည် — သင့်ဆိုင်၏ PIN ကို ထည့်ပါ၊ သို့မဟုတ် အခြားဆိုင်နှင့် ချိတ်ဆက်ရန် “ဤဆိုင်ကို မေ့ပစ်ရန်” ကို နှိပ်ပါ။
 queue_waiting	ဆိုင်ထိ ရောက်ရန် စောင့်နေခြင်း ({n}):
 queue_tries	{n} ကြိမ် ကြိုးစားခဲ့ပြီး · နောက်ဆုံးတုံ့ပြန်ချက်: {e}
 save_backup_copy	Backup မိတ္တူကို သိမ်းဆည်းပါ…
@@ -754,13 +773,18 @@ station_vps_dd	ဤစတေးရှင်းအတွက် ပရင်တာ�
 station_vps_dd_n	{n} ပရင်တာ(များ) · ပြောင်းရန် နှိပ်ပါ
 bill_printers_dd	ဘီလ်အတွက် ပရင်တာများ
 bill_printers_dd_n	ဘီလ်အတွက် {n} ပရင်တာ(များ) · ပြောင်းရန် နှိပ်ပါ
-paper_heading	စက္ကူ
+paper_heading	စိတ်ကူးစက္ကူ
 paper_size	{w} × {h} mm
 paper_roll	{w} mm လိပ်
 paper_not_set	စက္ကူကို မသိရသေးပါ
-paper_length_mm	အလျား (mm)
-printer_paper_help	ဤပရင်တာ၏ စက္ကူ (mm)။ အလျားမဖြည့်လျှင် လိပ်ဖြစ်သည်- ဘောက်ချာတိုင်းသည် ၎င်း၏အကြောင်းအရာ အရှည်အတိုင်း ရှည်သည်။ ပရင်တာတွေကို ရှာဖွေပါ သည် မဖြည့်ရသေးသော စက္ကူကို ပရင်တာ၏ ဒရိုက်ဗာမှ ဖြည့်ပေးသည် (မပြောနိုင်လျှင် 80 mm လိပ်) နှင့် သတ်မှတ်ပြီးသားကို ဘယ်တော့မှ မပြောင်းပါ။
-preview_help	အောက်တွင် ရွေးထားသော ပရင်တာ၏ စက္ကူပေါ်ရှိ ဤဘောက်ချာ၊ ထိုနေရာတွင် ပုံနှိပ်သည့်အတိုင်း- ပရင်တာ ရောက်နိုင်သော ဘယ်ဘက်အပေါ်ထောင့်မှ အရွယ်အမှန်ဖြင့် (မီးခိုး- မရောက်နိုင်သော အနားများ)၊ ရှည်သော ဘောက်ချာကို စာရွက်ပိုများပေါ်တွင်၊ စက္ကူအနားကို ကျော်သမျှ ဖြတ်ပစ်သည်။ ပရင်တာရွေးခြင်းသည် အစမ်းကြည့်ကိုသာ ပြောင်းသည်; ပရင်တာတစ်ခုစီ၏ စက္ကူကို ပရင်တာများ တွင် သတ်မှတ်သည်။
+virtual_width_mm	စိတ်ကူး အကျယ် (mm)
+virtual_length_mm	စိတ်ကူး အလျား (mm)
+reported_width_mm	အစီရင်ခံထားသော အကျယ် (mm)
+reported_length_mm	အစီရင်ခံထားသော အလျား (mm)
+reported_paper	အစီရင်ခံထားသည်- {paper}
+virtual_paper	စိတ်ကူး- {paper}
+printer_paper_help	အစီရင်ခံထားသည်ဆိုသည်မှာ ဤပရင်တာ၏ ဒရိုက်ဗာတွင် သတ်မှတ်ထားသော စက္ကူဖြစ်သည်။ အက်ပ်က ၎င်းကို ဖတ်ရုံသာဖြစ်ပြီး N/A ဆိုသည်မှာ မေးစရာ ဒရိုက်ဗာမရှိဟု ဆိုလိုသည်။ စိတ်ကူးဆိုသည်မှာ ပရင်တာထဲတွင် တကယ်ရှိသည်ဟု သင်ပြောသော စက္ကူဖြစ်သည်၊ mm ဖြင့်။ အလျားအလွတ်သည် လိပ်ဖြစ်သည်။ ပရင်တာသည် ၎င်း၏ကိုယ်ပိုင်စက္ကူပေါ်တွင် ပုံနှိပ်သည်။ စိတ်ကူးစက္ကူက ၎င်းထဲမှ မည်မျှသည် စက္ကူအစစ်ဖြစ်ကြောင်း အက်ပ်ကို ပြောပြသည်၊ အစမ်းကြည့်၊ စာမျက်နှာအလျားနှင့် ဘောက်ချာ၏နေရာအတွက်။ ပရင်တာတွေကို ရှာဖွေပါ သည် အလွတ်ဖြစ်နေသော စိတ်ကူးစက္ကူကို ဖြည့်ပေးပြီး သင်သတ်မှတ်ထားသည်ကို ဘယ်တော့မှ မပြောင်းပါ။
+preview_help	ဤဘောက်ချာကို အောက်တွင်ရွေးထားသော ပရင်တာ၌ ပုံနှိပ်မည့်အတိုင်း၊ ၎င်း၏စိတ်ကူးစက္ကူပေါ်တွင် အရွယ်အစားအစစ်ဖြင့် ပြထားသည်။ အဖြူသည် ပုံနှိပ်မည့်နေရာဖြစ်ပြီး မီးခိုးရောင်စက္ကူသည် ပရင်တာ မရောက်နိုင်သောနေရာဖြစ်ကာ မှိန်သောမင်သည် ဖြတ်တောက်ခံရသည်။ အကွက်ကိုးကွက်သည် စက္ကူဖြစ်သည်- ဘောက်ချာထားရမည့်နေရာကို တို့ပါ။ ရှည်သောဘောက်ချာသည် နောက်စာမျက်နှာများသို့ ဆက်သွားသည်။ ပရင်တာရွေးခြင်းသည် အစမ်းကြည့်ကိုသာ ပြောင်းသည်။
 job_layout	ပုံစံ
 job_delivery	အလုပ်ကို ပို့ပုံ
 job_delivery_help	OS စာတမ်း၊ စက်ရုပ် bytes သို့မဟုတ် ESC/POS။ ငွေတောင်းနှင့် မီးဖိုခန်းလက်မှတ်တိုင်းကို သက်ဆိုင်ရာကိုယ်ပိုင်ထားသည်။ အလုပ်မည်သည့် အရည်အသွေးမဆို Find မှ သိမ်းဆည်းထားသော မော်နီတာကို သို့ပို့နိုင်သည်။
@@ -1163,7 +1187,7 @@ kot_show_station	စတေးရှင်း
 kot_hide_station	စခန်းကို ဖျောက်ပါ
 kot_show_table	စားပွဲ
 kot_hide_table	စားပွဲ ဖျောက်မည်
-kot_show_kot_no	KOT မဟုတ်ပါ
+kot_show_kot_no	KOT အမှတ်
 kot_hide_kot_no	ဖျောက်ပါ KOT မဟုတ်ပါ
 kot_width	အစမ်းပတ် (အကျယ်ကို KOT တက်ဘ်တွင် သတ်မှတ်ပါ)
 kot_width_58	58 mm
@@ -1238,7 +1262,7 @@ on_your_menu	သင့်မီနူးပေါ်တွင်
 edit	ပြင်မည်
 schemes	အစီအစဉ်များ / ကမ်းလှမ်းချက်များ
 schemes_help	BOGO ရာခိုင်နှုန်းလျော့ဈေး၊ နှင့် သတ်မှတ်ထားသော ကုမ္ဘိုများ။ ကုမ္ဘိုများသည် Send KOT တွင် မီးဖိုချောင်လိုင်းများသို့ ဖွင့်ပါမည်; အစိတ်အပိုင်းများသည် ကုမ္ဘို စတင်မည်အထိ ထားရှိထားမည်။ ဥပမာ- 2 Thali ဝယ် 1 Chaas ရယူပါ
-scheme_bogo_ph	Buy 2 Thali get 1 Chaas
+scheme_bogo_ph	Thali 2 ပွဲဝယ်လျှင် Chaas 1 ခွက် အခမဲ့
 add_scheme	BOGO ထည့်ပါ
 schedule_ph	အချိန် / ပျော်စောင့်ချိန်—တနင်္လာမှ စနေ 07:00-11:00 သို့မဟုတ် HappyHour 17:00-19:00=150
 upi_qr	UPI QR
@@ -1266,8 +1290,8 @@ taxable_value	အခွန်ဝင်စျေး
 gst_inside_price_note	({tax} ပါဝင်ပြီး)
 start_with_template	ကျွန်ုပ်တို့ရဲ့ မီနူးသိမ်းဆည်းပုံစံနှင့် စတင်ပါ
 template_heading	ကျွန်ုပ်တို့ရဲ့ မီနူးသိမ်းဆည်းပုံစံ
-template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
-template_download_shelf	Download photo shelf
+template_need_download	အစားအစာများ၏ အများသုံး ဓာတ်ပုံစင် (~1,459 မျိုး) ကို ဒေါင်းလုဒ်လုပ်ပြီး မရှိသေးသော အမည်များကို သင့်မီနူးသို့ တင်သွင်းပါ။
+template_download_shelf	ဓာတ်ပုံစင်ကို ဒေါင်းလုဒ်လုပ်ပါ
 template_info	ဓာတ်ပုံပါအမျိုးအစား {c} ခုနှင့် အစားအစာ {d} ခုများ၊ ထည့်ရန်အသင့်ဖြစ်သည်။ စျေးနှုန်းများသည် ₹0 မှစတင်ပြီး — သင့်တစ်ယောက်အတွက် သတ်မှတ်ပါ။
 template_import	အပြီးသွင်းပြီး template
 template_confirm	{d} မှန်ကန်ချက်အမျိုးအစားများဖြင့် ဟင်းကြော်များ ထည့်သွင်းမလား? သင်မှာရှိပြီးသား ဟင်းများကို အနေအထားအတိုင်း ထားပါ။

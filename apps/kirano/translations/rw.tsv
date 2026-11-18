@@ -67,13 +67,19 @@ bill_item_amount	Amafaranga
 bill_item_note	Icyitonderwa
 bill_item_col_sep	Imirongo y'inkingi
 slip_col_width	Ubugari (mm)
-paper_heading	Impapuro
+paper_heading	Impapuro virtual
 paper_size	{w} × {h} mm
 paper_roll	umuzingo wa {w} mm
 paper_not_set	impapuro ntiramenyekana
-paper_length_mm	Uburebure (mm)
-printer_paper_help	Impapuro z'iyi capyi muri mm. Uburebure butanditse ni umuzingo: buri gapapuro kangana n'ibikarimo. Shaka amacapyi yuzuza impapuro zitanditse ikoresheje porogaramu ya capyi (umuzingo wa 80 mm iyo itabivuga) kandi ntijya ihindura izashyizweho.
-preview_help	Aka gapapuro ku mpapuro za capyi yatoranyijwe hepfo, nk'uko gacapwa aho: mu bunini nyabwo uhereye ku nguni yo hejuru ibumoso capyi igeraho (ibara ry'ivu: impande itageraho), agapapuro karekare ku mpapuro nyinshi, ibirenze inkombe y'urupapuro birakatwa. Gutoranya capyi bihindura igaragaza gusa; impapuro za buri capyi zishyirwaho muri Amacapyi.
+na	N/A
+virtual_width_mm	Ubugari virtual (mm)
+virtual_length_mm	Uburebure virtual (mm)
+reported_width_mm	Ubugari bwatangajwe (mm)
+reported_length_mm	Uburebure bwatangajwe (mm)
+reported_paper	Ibyatangajwe: {paper}
+virtual_paper	Virtual: {paper}
+printer_paper_help	Ibyatangajwe ni impapuro porogaramu ya capyi (driver) y'iyi capyi yashyizweho; iyi porogaramu irazisoma gusa, kandi N/A bivuga ko nta driver ihari yo kubaza. Virtual ni impapuro uvuga ko ziri muri capyi koko, muri mm; uburebure butanditse ni umuzingo. Capyi icapa ku mpapuro zayo bwite; impapuro virtual zibwira iyi porogaramu ingano yazo iriho impapuro nyazo, ku bw'igaragaza, uburebure bw'urupapuro n'aho agapapuro kajya. Shaka amacapyi yuzuza impapuro virtual zitanditse kandi ntijya ihindura izo washyizeho.
+preview_help	Aka gapapuro nk'uko gacapwa kuri capyi yatoranyijwe hepfo, mu bunini nyabwo ku mpapuro zayo virtual. Umweru ni aho icapa, impapuro z'ibara ry'ivu capyi ntizigeraho, kandi wino yerurutse irakatwa. Udusanduku icyenda ni urupapuro: kanda aho agapapuro kagomba kujya. Agapapuro karekare gakomereza ku zindi mpapuro. Gutoranya capyi bihindura igaragaza gusa.
 slip_col_start	Umwanya w’intangiriro (px)
 slip_col_end	Umwanya w’iherezo (px)
 slip_columns_help	Ubugari bwa buri nkingi burimo umwanya wayo w’intangiriro n’uw’iherezo. Umwandiko ujya ku murongo mushya imbere mu nkingi yawo; ibirenga ubugari bw’ibirimo bicibwa, ku mpapuro no mu igaragaza.
@@ -88,6 +94,12 @@ bill_item_piece_off	Kuzimya
 bill_total_qty	Umubare wose
 bill_total_subtotal	Igiteranyo gito
 bill_total_grand	Igiteranyo kinini
+bill_total_number_under	Umubare munsi ya
+bill_total_caption_under	Umutwe munsi ya
+bill_total_own_line	Umurongo wacyo
+bill_total_caption_with	Hamwe n'umubare
+bill_total_caption_none	Nta mutwe
+bill_total_place_help	Umurongo wacyo icapa iki giteranyo cyonyine. Munsi y'inkingi, umubare wacyo ucapwa muri iyo nkingi y'ibicuruzwa, mu bunini n'ubugari bw'uyu murongo; ibiteranyo bisangira umurongo umwe kugeza inkingi imwe ifashwe, hanyuma umurongo mushya ugatangira. Umutwe ujyana n'umubare, munsi y'indi nkingi, cyangwa ukavanwaho. Imirongo y'umusoro, serivisi, kwegeranya no kwishyura ikurikira Igiteranyo gito.
 kot_unassigned	Umukono
 settings_hub_help	Fungura agace kamwe ku gihe — gukurura bike, amahitamo asobanutse.
 settings_sec_language	Ururimi n'ifaranga
@@ -723,6 +735,20 @@ fssai_ph	Uruhushya rwa FSSAI / iduka no. (bidashoboka)
 bill_footer_ph	Hasi (urugero Murakoze, mugaruke)
 kot_field_on	erekana
 kot_field_off	hisha
+kot_field_show	Erekana
+kot_field_hide	Hisha
+bill_line_shop	Iduka
+bill_line_address	Aderesi
+bill_line_fssai	FSSAI
+bill_line_title	Umutwe
+bill_line_customer	Umukiriya
+bill_line_bill_no	Nomero y'inyemezabuguzi
+bill_line_time	Isaha
+bill_line_cashier	Ushinzwe amafaranga
+bill_line_items	Ibintu
+bill_line_total	Igiteranyo
+bill_line_footer	Hasi
+bill_line_upi	UPI
 kot_weight_light	Byoroheje
 bill_kot_panel_help	Imiterere yimishinga nubugari bwibirimo. Cashier ninde watanze cyangwa yakemuye fagitire - inkuru yuzuye yo kugurisha iguma mubitabo.
 std_size_ph	urugero 18, 20, 26…
@@ -830,10 +856,10 @@ lane_declared_label	Inyemezabuguzi y'umusoro
 lane_owner_label	Inyandiko y'amafaranga mu ntoki
 money_lane_bill	Inyemezabuguzi: {lane}
 
-removing	Removing…
-removed	Removed
-updating_order	Updating…
-order_updated	Order updated
+removing	Birimo gukurwaho…
+removed	Byakuweho
+updating_order	Birimo kuvugururwa…
+order_updated	Komande yavuguruwe
 sel_copy	Kopera
 sel_select_all	Hitamo byose
 sel_copied	Byakoporowe

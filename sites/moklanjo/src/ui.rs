@@ -1,8 +1,9 @@
 // moklanjo.com — one Makepad 2 `script_mod!` (included from main.rs).
 // Story: apps/moklanjo/docs/MOKLANJO_WEBSITE.md §3 ("One parcel, from
 // counter to settled"). Palette: docs/DESIGN.md "Color tokens (live)".
-// Started as a copy of sites/kumkaj and diverged: light desk ground,
-// navy chrome, orange speed streaks, a tracking-bead rail for chapters.
+// Started as a copy of sites/kumkaj and diverged: one scrolling page (was a
+// slide deck), light desk ground, navy chrome, orange speed streaks, a
+// tracking-bead rail for chapters.
 // Every feature sentence is a Ship row in MOKLANJO.md (claim ids in
 // comments); multi-device sentences wait for the LAN pilot.
 script_mod! {
@@ -53,15 +54,42 @@ script_mod! {
     // type on navy draws without faint glyph boxes (vendor shader untouched).
     mod.widgets.Label.draw_text.sdf_luma_bias = 0.0
     mod.widgets.Button.draw_text.sdf_luma_bias = 0.0
+    mod.widgets.Markdown.draw_text.sdf_luma_bias = 0.0
+
+    mod.widgets.Label.draw_text.text_style.font_family = TextFont
+    mod.widgets.Button.draw_text.text_style.font_family = TextFont
+    mod.widgets.Markdown.text_style_normal.font_family = TextFont
+    mod.widgets.Markdown.text_style_italic.font_family = TextFont
+    mod.widgets.Markdown.text_style_bold.font_family = StrongFont
+    mod.widgets.Markdown.text_style_bold_italic.font_family = StrongFont
+    mod.widgets.TextFlow.text_style_normal.font_family = TextFont
+    mod.widgets.TextFlow.text_style_italic.font_family = TextFont
+    mod.widgets.TextFlow.text_style_bold.font_family = StrongFont
+    mod.widgets.TextFlow.text_style_bold_italic.font_family = StrongFont
+
+    // Selection band under ink (#2E5BAD / DESIGN.md Moklanjo selection).
+    // draw_selection.color is what TextFlow paints (not draw_block.selection_color).
+    mod.widgets.TextFlow.draw_selection.color = #x2E5BADFF
+    mod.widgets.Markdown.draw_selection.color = #x2E5BADFF
+    // Text selection (DESIGN.md § Text selection & copy — same model as the
+    // app): every Markdown block selects on its own; the `page` root adds
+    // Ctrl/Cmd+A, Copy of all and the right-click Copy / Select all menu.
+    // Chrome marks and tap targets keep `selectable: false`.
+    mod.widgets.TextFlow.selectable = true
+    mod.widgets.Markdown.selectable = true
 
     let Eyebrow = Markdown{
         selectable: true
         height: Fit
         paragraph_spacing: 0.
         pre_code_spacing: 0.
+        draw_selection +: { color: #x2E5BADFF }
         draw_block +: { selection_color: #x2E5BADFF }
         width: Fill
         padding: 0.
+        font_color: Orange
+        text_style_normal: theme.font_bold{font_family: StrongFont font_size: 13. line_spacing: 1.2}
+        text_style_bold: theme.font_bold{font_family: StrongFont font_size: 13. line_spacing: 1.2}
         draw_text +: {
             color: Orange
             text_style: theme.font_bold{font_family: StrongFont font_size: 13. line_spacing: 1.2}
@@ -72,9 +100,13 @@ script_mod! {
         height: Fit
         paragraph_spacing: 0.
         pre_code_spacing: 0.
+        draw_selection +: { color: #x2E5BADFF }
         draw_block +: { selection_color: #x2E5BADFF }
         width: Fill
         padding: 0.
+        font_color: Navy
+        text_style_normal: theme.font_bold{font_family: DisplayFont font_size: 50. line_spacing: 0.95}
+        text_style_bold: theme.font_bold{font_family: DisplayFont font_size: 50. line_spacing: 0.95}
         draw_text +: {
             color: Navy
             text_style: theme.font_bold{font_family: DisplayFont font_size: 50. line_spacing: 0.95}
@@ -85,9 +117,13 @@ script_mod! {
         height: Fit
         paragraph_spacing: 0.
         pre_code_spacing: 0.
+        draw_selection +: { color: #x2E5BADFF }
         draw_block +: { selection_color: #x2E5BADFF }
         width: Fill
         padding: 0.
+        font_color: Muted
+        text_style_normal: theme.font_regular{font_family: TextFont font_size: 19. line_spacing: 1.45}
+        text_style_bold: theme.font_bold{font_family: StrongFont font_size: 19. line_spacing: 1.45}
         draw_text +: {
             color: Muted
             text_style: theme.font_regular{font_family: TextFont font_size: 19. line_spacing: 1.45}
@@ -98,9 +134,13 @@ script_mod! {
         height: Fit
         paragraph_spacing: 0.
         pre_code_spacing: 0.
+        draw_selection +: { color: #x2E5BADFF }
         draw_block +: { selection_color: #x2E5BADFF }
         width: Fill
         padding: 0.
+        font_color: Muted
+        text_style_normal: theme.font_regular{font_family: TextFont font_size: 15.5 line_spacing: 1.45}
+        text_style_bold: theme.font_bold{font_family: StrongFont font_size: 15.5 line_spacing: 1.45}
         draw_text +: {
             color: Muted
             text_style: theme.font_regular{font_family: TextFont font_size: 15.5 line_spacing: 1.45}
@@ -111,9 +151,13 @@ script_mod! {
         height: Fit
         paragraph_spacing: 0.
         pre_code_spacing: 0.
+        draw_selection +: { color: #x2E5BADFF }
         draw_block +: { selection_color: #x2E5BADFF }
         width: Fill
         padding: 0.
+        font_color: Ink
+        text_style_normal: theme.font_bold{font_family: StrongFont font_size: 17. line_spacing: 1.2}
+        text_style_bold: theme.font_bold{font_family: StrongFont font_size: 17. line_spacing: 1.2}
         draw_text +: {
             color: Ink
             text_style: theme.font_bold{font_family: StrongFont font_size: 17. line_spacing: 1.2}
@@ -124,9 +168,13 @@ script_mod! {
         height: Fit
         paragraph_spacing: 0.
         pre_code_spacing: 0.
+        draw_selection +: { color: #x2E5BADFF }
         draw_block +: { selection_color: #x2E5BADFF }
         width: Fill
         padding: 0.
+        font_color: Hint
+        text_style_normal: theme.font_regular{font_family: TextFont font_size: 13. line_spacing: 1.4}
+        text_style_bold: theme.font_bold{font_family: StrongFont font_size: 13. line_spacing: 1.4}
         draw_text +: {
             color: Hint
             text_style: theme.font_regular{font_family: TextFont font_size: 13. line_spacing: 1.4}
@@ -137,9 +185,13 @@ script_mod! {
         height: Fit
         paragraph_spacing: 0.
         pre_code_spacing: 0.
+        draw_selection +: { color: #x2E5BADFF }
         draw_block +: { selection_color: #x2E5BADFF }
         width: Fit
         padding: 0.
+        font_color: Ink
+        text_style_normal: theme.font_regular{font_family: MonoFont font_size: 15.}
+        text_style_bold: theme.font_bold{font_family: StrongFont font_size: 15.}
         draw_text +: {
             color: Ink
             text_style: theme.font_regular{font_family: MonoFont font_size: 15.}
@@ -271,10 +323,10 @@ script_mod! {
 
     // ---- Chapter ground: cool desk light + the icon's speed streaks ----
     let Chapter = View{
-        width: Fill height: Fill
+        width: Fill height: Fit
         flow: Down
         spacing: 20
-        align: Align{x: 0.0 y: 0.5}
+        align: Align{x: 0.0 y: 0.0}
         padding: Inset{left: 64. right: 64. top: 30. bottom: 36.}
         show_bg: true
         draw_bg +: {
@@ -343,12 +395,12 @@ script_mod! {
             height: Fit
             paragraph_spacing: 0.
             pre_code_spacing: 0.
+            draw_selection +: { color: #x2E5BADFF }
             draw_block +: { selection_color: #x2E5BADFF }
-
             padding: 0.
+            font_color: Hint
             body: "Example"
             draw_text +: {color: Hint text_style: theme.font_regular{font_family: TextFont font_size: 12.}}
-        
         }
     }
 
@@ -363,9 +415,11 @@ script_mod! {
             height: Fit
             paragraph_spacing: 0.
             pre_code_spacing: 0.
+            draw_selection +: { color: #x2E5BADFF }
             draw_block +: { selection_color: #x2E5BADFF }
             width: Fill
             padding: 0.
+            font_color: Muted
             draw_text +: {color: Muted text_style: theme.font_regular{font_family: TextFont font_size: 15.}}
             body: "Length"
         }
@@ -375,14 +429,14 @@ script_mod! {
             height: Fit
             paragraph_spacing: 0.
             pre_code_spacing: 0.
+            draw_selection +: { color: #x2E5BADFF }
             draw_block +: { selection_color: #x2E5BADFF }
-
             width: 92
             padding: 0.
             align: Align{x: 0.5}
+            font_color: Ink
             draw_text +: {color: Ink text_style: theme.font_regular{font_family: MonoFont font_size: 17.}}
             body: "30 cm"
-        
         }
         plus := StepBtn{text: "+"}
     }
@@ -420,8 +474,10 @@ script_mod! {
             height: Fit
             paragraph_spacing: 0.
             pre_code_spacing: 0.
+            draw_selection +: { color: #x2E5BADFF }
             draw_block +: { selection_color: #x2E5BADFF }
             padding: 0.
+            font_color: Ink
             draw_text +: {color: Ink text_style: theme.font_bold{font_family: StrongFont font_size: 14.}}
             body: "Step"
         }
@@ -494,43 +550,22 @@ script_mod! {
                             spacing: 12
                             align: Align{y: 0.5}
                             padding: Inset{left: 24. right: 24. top: 0. bottom: 0.}
-                            Markdown{
-            selectable: true
-            height: Fit
-            paragraph_spacing: 0.
-            pre_code_spacing: 0.
-            draw_block +: { selection_color: #x2E5BADFF }
-
+                            brand := Label{
                                 padding: 0.
-                                body: "Moklanjo"
                                 draw_text +: {color: #xFFFFFF text_style: theme.font_bold{font_family: DisplayFont font_size: 22.}}
-                            
-        }
-                            tagline := Markdown{
-            selectable: true
-            height: Fit
-            paragraph_spacing: 0.
-            pre_code_spacing: 0.
-            draw_block +: { selection_color: #x2E5BADFF }
-
+                                text: "Moklanjo"
+                            }
+                            tagline := Label{
                                 padding: 0.
-                                body: "the courier desk"
                                 draw_text +: {color: Yellow text_style: theme.font_regular{font_family: TextFont font_size: 13.}}
-                            
-        }
+                                text: "the courier desk"
+                            }
                             View{width: Fill height: 1}
-                            step_name := Markdown{
-            selectable: true
-            height: Fit
-            paragraph_spacing: 0.
-            pre_code_spacing: 0.
-            draw_block +: { selection_color: #x2E5BADFF }
-
+                            step_name := Label{
                                 padding: 0.
-                                body: "1 / 9 · Walk-in"
                                 draw_text +: {color: RailInk text_style: theme.font_regular{font_family: TextFont font_size: 13.}}
-                            
-        }
+                                text: "1 / 9 · Walk-in"
+                            }
                         }
                         // The parcel's tracking line is the chapter rail: one
                         // continuous track under evenly spaced beads.
@@ -567,11 +602,12 @@ script_mod! {
                         }
                     }
 
-                    slides := SlidesView{
+                    page := ScrollYView{
+                        selection_root: true
+                        select_from_gaps: true
                         width: Fill
                         height: Fill
-                        anim_speed: 0.84
-                        axis: Vertical
+                        flow: Down
 
                         // 1 — Walk-in (walkin-loop)
                         walkin := Chapter{
@@ -598,7 +634,7 @@ script_mod! {
                                     Fact{head.body: "Next booking" line.body: "One tap clears the desk for the next person."}
                                 }
                             }
-                            Small{body: "Scroll, swipe up, or press ↓ — the rail above follows your parcel."}
+                            Small{body: "Scroll the page — the tracking rail above follows your parcel."}
                         }
 
                         // 2 — Weigh it right (chargeable-weight, units)
@@ -634,6 +670,7 @@ script_mod! {
             height: Fit
             paragraph_spacing: 0.
             pre_code_spacing: 0.
+            draw_selection +: { color: #x2E5BADFF }
             draw_block +: { selection_color: #x2E5BADFF }
 
                                         padding: 0.
@@ -646,6 +683,7 @@ script_mod! {
             height: Fit
             paragraph_spacing: 0.
             pre_code_spacing: 0.
+            draw_selection +: { color: #x2E5BADFF }
             draw_block +: { selection_color: #x2E5BADFF }
 
                                         padding: 0.
@@ -658,6 +696,7 @@ script_mod! {
             height: Fit
             paragraph_spacing: 0.
             pre_code_spacing: 0.
+            draw_selection +: { color: #x2E5BADFF }
             draw_block +: { selection_color: #x2E5BADFF }
 
                                         width: Fill
@@ -671,6 +710,7 @@ script_mod! {
             height: Fit
             paragraph_spacing: 0.
             pre_code_spacing: 0.
+            draw_selection +: { color: #x2E5BADFF }
             draw_block +: { selection_color: #x2E5BADFF }
 
                                         width: Fill
@@ -684,6 +724,7 @@ script_mod! {
             height: Fit
             paragraph_spacing: 0.
             pre_code_spacing: 0.
+            draw_selection +: { color: #x2E5BADFF }
             draw_block +: { selection_color: #x2E5BADFF }
 
                                         width: Fill
@@ -697,6 +738,7 @@ script_mod! {
             height: Fit
             paragraph_spacing: 0.
             pre_code_spacing: 0.
+            draw_selection +: { color: #x2E5BADFF }
             draw_block +: { selection_color: #x2E5BADFF }
 
                                         width: Fill
@@ -796,6 +838,7 @@ script_mod! {
             height: Fit
             paragraph_spacing: 0.
             pre_code_spacing: 0.
+            draw_selection +: { color: #x2E5BADFF }
             draw_block +: { selection_color: #x2E5BADFF }
 
                                             width: Fill
@@ -826,6 +869,7 @@ script_mod! {
             height: Fit
             paragraph_spacing: 0.
             pre_code_spacing: 0.
+            draw_selection +: { color: #x2E5BADFF }
             draw_block +: { selection_color: #x2E5BADFF }
 
                                         width: Fill
@@ -1016,14 +1060,29 @@ script_mod! {
                             Headline{body: "One desk. Your parcels. Your books."}
                             Lede{body: "Moklanjo runs on Android, Windows and Linux. A rider uses the same app in rider mode."}
                             close_cta := CtaPair{}
-                            RoundedView{width: Fill height: 1 draw_bg +: {color: WellLine border_radius: 0.}}
-                            footer := View{
+                        }
+
+                        footer := View{
+                            width: Fill height: Fit
+                            flow: Down
+                            spacing: 14
+                            show_bg: true
+                            draw_bg +: {color: Navy}
+                            RoundedView{width: Fill height: 1 draw_bg +: {color: #x2B4C8F border_radius: 0.}}
+                            footer_row := View{
                                 width: Fill height: Fit
                                 flow: Right
                                 spacing: 12
                                 align: Align{y: 0.5}
-                                Small{width: Fill body: "Moklanjo is a Kumkaj product by Gotigin."}
-                                to_kumkaj := SecondaryBtn{text: "kumkaj.com  →"}
+                                Small{width: Fill body: "Gotigin · GOTIGIN SOFTWARE & HARDWARE PRIVATE LIMITED · Kumkaj · Moklanjo."}
+                                footer_links := View{
+                                    width: Fit height: Fit
+                                    flow: Right
+                                    spacing: 10
+                                    to_privacy := SecondaryBtn{text: "Privacy"}
+                                    to_terms := SecondaryBtn{text: "Terms"}
+                                    to_kumkaj := SecondaryBtn{text: "kumkaj.com  →"}
+                                }
                             }
                         }
                     }

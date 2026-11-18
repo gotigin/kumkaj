@@ -3,7 +3,7 @@ title = "About"
 description = "Gotigin builds concrete Kumkaj products — Moklanjo and Khaynjo — not one generic app."
 +++
 
-**Gotigin** builds the Kumkaj family of business operating systems.
+**Gotigin** is the trademark; **GOTIGIN SOFTWARE & HARDWARE PRIVATE LIMITED** is the company; **Kumkaj** is the brand for the business operating systems.
 
 We ship **concrete** products for a trade — not a single generic till that every owner must bend into shape. Today that means:
 

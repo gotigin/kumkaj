@@ -192,7 +192,7 @@ snack_secs_save	Cadw amser rhybudd
 snack_secs_saved	Amser rhybudd wedi'i gadw — {n} eiliad
 snack_secs_bad	Rhowch eiliadau fel rhif (3–60)
 cancelled	Wedi'i ganslo
-cancelling	Cancelling…
+cancelling	Cancellingâ¦
 cancel	Canslo
 opening_client	Yn agor cleient…
 preparing_desk	Yn paratoi'r desg…
@@ -501,13 +501,18 @@ job_size	Maint ffont
 job_size_ph	e.e. 18, 20, 26…
 test_receipt_format	Derbynneb brawf
 test_label_format	Label prawf
-paper_heading	Papur
+paper_heading	Papur rhithwir
 paper_size	{w} × {h} mm
 paper_roll	rholyn {w} mm
 paper_not_set	papur heb ei wybod eto
-paper_length_mm	Hyd (mm)
-printer_paper_help	Papur yr argraffydd hwn mewn mm. Mae Hyd gwag yn rholyn: mae pob slip mor hir â'i gynnwys. Mae Dewch o hyd i argraffwyr yn llenwi papur gwag o yrrwr yr argraffydd (rholyn 80 mm pan na all ddweud) a byth yn newid un sydd eisoes wedi'i osod.
-preview_help	Y slip hwn ar bapur yr argraffydd a ddewiswyd isod, fel y mae'n argraffu yno: maint go iawn o'r gornel chwith uchaf y gall yr argraffydd ei chyrraedd (llwyd: ymylon na all), slip hir ar ragor o dudalennau, popeth y tu hwnt i ymyl y papur wedi'i dorri. Mae dewis argraffydd yn newid y rhagolwg yn unig; caiff papur pob argraffydd ei osod o dan Argraffwyr.
+virtual_width_mm	Lled rhithwir (mm)
+virtual_length_mm	Hyd rhithwir (mm)
+reported_width_mm	Lled a adroddwyd (mm)
+reported_length_mm	Hyd a adroddwyd (mm)
+reported_paper	Adroddwyd: {paper}
+virtual_paper	Rhithwir: {paper}
+printer_paper_help	Adroddwyd yw'r papur y mae gyrrwr yr argraffydd hwn wedi'i osod iddo; dim ond ei ddarllen y mae'r ap, ac mae “Amh.” yn golygu nad oes gyrrwr i'w holi. Rhithwir yw'r papur rydych chi'n dweud sydd yn yr argraffydd mewn gwirionedd, mewn mm; rholyn yw hyd gwag. Mae'r argraffydd yn argraffu ar ei bapur ei hun; mae'r papur rhithwir yn dweud wrth yr ap faint ohono sy'n bapur go iawn, ar gyfer y rhagolwg, hyd y dudalen a lle'r slip. Mae Dewch o hyd i argraffwyr yn llenwi papur rhithwir gwag a byth yn newid un rydych chi wedi'i osod.
+preview_help	Y slip hwn fel y mae'n argraffu ar yr argraffydd a ddewiswyd isod, ar ei faint go iawn ar ei bapur rhithwir. Gwyn yw lle mae'n argraffu, mae papur llwyd y tu hwnt i gyrraedd yr argraffydd, ac mae inc gwelw yn cael ei dorri i ffwrdd. Y naw sgwâr yw'r papur: tapiwch lle dylai'r slip eistedd. Mae slip hir yn mynd ymlaen i ragor o dudalennau. Dim ond y rhagolwg y mae dewis argraffydd yn ei newid.
 slip_col_width	Lled (mm)
 no_printer_assigned	Dim argraffydd
 printer_target_default	argraffydd arferol y cyfrifiadur hwn (cyfeiriad gwag)

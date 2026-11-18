@@ -101,6 +101,19 @@ bill_item_col_sep	Kolomlijnen
 slip_columns	Kolommen
 slip_col_header	Kop
 bill_line_logo	Logo
+bill_line_shop	Winkel
+bill_line_address	Adres
+bill_line_fssai	FSSAI
+bill_line_title	Titel
+bill_line_customer	Klant
+bill_line_bill_no	Rekeningnr.
+bill_line_time	Tijd
+bill_line_cashier	Kassier
+bill_line_table	Tafel
+bill_line_items	Artikelen
+bill_line_total	Totaal
+bill_line_footer	Voettekst
+bill_line_upi	UPI
 bill_logo_picture	Afbeelding
 bill_logo_choose	Afbeelding kiezen
 bill_logo_remove	Afbeelding verwijderen
@@ -128,6 +141,12 @@ bill_item_piece_off	Uit
 bill_total_qty	Totaal aantal
 bill_total_subtotal	Subtotaal
 bill_total_grand	Eindtotaal
+bill_total_number_under	Getal onder
+bill_total_caption_under	Label onder
+bill_total_own_line	Eigen regel
+bill_total_caption_with	Bij het getal
+bill_total_caption_none	Geen label
+bill_total_place_help	Eigen regel drukt dit totaal apart af. Onder een kolom wordt het getal in die artikelkolom afgedrukt, in de grootte en dikte van deze regel; totalen delen een rij totdat een kolom bezet is, dan begint een nieuwe rij. Het label staat bij het getal, onder een andere kolom of wordt weggelaten. Regels voor belasting, service, afronding en betaling volgen Subtotaal.
 reprint_incl	In afdruk
 reprint_skip	Overslaan
 reprint_skip_meta	Geen herprint
@@ -167,7 +186,7 @@ settings_sec_tills	Extra kassa's en filialen
 settings_sec_brand	Uw merk
 settings_sec_units	Eenheden & conversies
 settings_sec_pickers	Gebieden · stations · belastingtarieven
-settings_sec_printers	Printers
+settings_sec_printers	Printers van dit apparaat
 settings_sec_bill	Rekening- en KOT-indeling
 settings_sec_selling	Regelingen & verkoop
 bill_kot_tab_bill	Rekening
@@ -178,20 +197,20 @@ snack_secs_ph	Seconden (3–60, standaard 10)
 snack_secs_save	Meldingstijd opslaan
 snack_secs_saved	Meldingstijd opgeslagen — {n} seconden
 settings_sec_whatsapp	WhatsApp
-whatsapp_cloud_help	Use your own Meta WhatsApp Cloud API. Create a System User token with whatsapp_business_messaging (temporary dashboard tokens expire). Credentials stay on this Server only — never on extra tills. Accepted means Meta took the request, not that the guest received it.
-whatsapp_phone_id_ph	Phone Number ID
-whatsapp_token_ph	Access Token (leave blank to keep)
-whatsapp_template_ph	Bill template name (optional)
-whatsapp_template_lang_ph	Template language (e.g. en)
-whatsapp_enable	Enable
+whatsapp_cloud_help	Gebruik je eigen Meta WhatsApp Cloud API. Maak een System User-token met whatsapp_business_messaging (tijdelijke dashboardtokens verlopen). De gegevens blijven alleen op deze Server — nooit op extra kassa's. ‘Geaccepteerd’ betekent dat Meta het verzoek heeft aangenomen, niet dat de gast het heeft ontvangen.
+whatsapp_phone_id_ph	ID van telefoonnummer
+whatsapp_token_ph	Toegangstoken (leeg laten om te behouden)
+whatsapp_template_ph	Naam rekeningsjabloon (optioneel)
+whatsapp_template_lang_ph	Taal van sjabloon (bijv. en)
+whatsapp_enable	Inschakelen
 whatsapp_disable	Off
-whatsapp_save	Save WhatsApp
-whatsapp_test	Test connection
-whatsapp_disconnect	Disconnect
-whatsapp_send_bill	Send via WhatsApp
+whatsapp_save	WhatsApp opslaan
+whatsapp_test	Verbinding testen
+whatsapp_disconnect	Verbinding verbreken
+whatsapp_send_bill	Verzenden via WhatsApp
 whatsapp_consent	WhatsApp OK
-whatsapp_consent_help	Guest agreed to receive WhatsApp messages. A phone number alone is not consent.
-whatsapp_server_only	Configure WhatsApp on the shop Server device
+whatsapp_consent_help	De gast heeft ingestemd met het ontvangen van WhatsApp-berichten. Alleen een telefoonnummer is geen toestemming.
+whatsapp_server_only	Stel WhatsApp in op het Server-apparaat van de winkel
 settings_sec_backup	Back-up en herstellen
 settings_sec_diag	Diagnose
 settings_sec_privacy	Privacy
@@ -326,8 +345,8 @@ this_shop	Servermodus
 extra_till	Clientmodus
 off	Uit
 tables_kitchen	Tafels & keuken
-server	Server
-client	Client
+server	Servermodus
+client	Clientmodus
 language_currency	Taal en valuta
 language	Taal
 choose_language	Kies je taal
@@ -637,7 +656,7 @@ choose_device_use	Kies hoe dit apparaat wordt gebruikt.
 paired_note	Gekoppeld. Ontgrendel om te verkopen, of Vernieuwen voor het laatste van de zaak.
 last_update_at	Laatste update van de zaak: {time}.
 pair_intro	Zoek de server, of typ het adres en de koppelcode.
-pair_resume_hint	Already paired — enter your shop PIN, or Forget this shop to pair another.
+pair_resume_hint	Al gekoppeld — voer de PIN van je winkel in, of tik op ‘Deze winkel vergeten’ om een andere te koppelen.
 queue_waiting	Wacht op verzending naar de zaak ({n}):
 queue_tries	{n} pogingen · laatste antwoord: {e}
 save_backup_copy	Back-upkopie opslaan…
@@ -720,7 +739,7 @@ route_tap_remove	tik om te verwijderen
 route_tap_select	tik om te kiezen
 route_tap_selected	geselecteerd
 route_pick_printer_first	Tik eerst op een printer
-route_assigned_heading	Printers
+route_assigned_heading	Printers van dit apparaat
 route_add_heading	Toewijzen
 printer_label_ph	Naam (bijv. Keuken)
 printer_target_ph	Adres of systeemnaam
@@ -754,13 +773,18 @@ station_vps_dd	Printers voor dit station
 station_vps_dd_n	{n} printer(s) · tik om te wijzigen
 bill_printers_dd	Printers voor de rekening
 bill_printers_dd_n	{n} printer(s) voor de rekening · tik om te wijzigen
-paper_heading	Papier
+paper_heading	Virtueel papier
 paper_size	{w} × {h} mm
 paper_roll	rol van {w} mm
 paper_not_set	papier nog onbekend
-paper_length_mm	Lengte (mm)
-printer_paper_help	Het papier van deze printer in mm. Een lege Lengte is een rol: elke bon is zo lang als de inhoud. Printers zoeken vult leeg papier in vanuit het stuurprogramma van de printer (een rol van 80 mm als het dat niet kan zeggen) en wijzigt nooit papier dat al is ingesteld.
-preview_help	Deze bon op het papier van de printer die hieronder gekozen is, zoals hij daar afdrukt: op ware grootte vanaf de linkerbovenhoek die de printer bereikt (grijs: randen die hij niet bereikt), een lange bon op meer vellen, alles voorbij de papierrand wordt afgesneden. Een printer kiezen verandert alleen het voorbeeld; het papier van elke printer stel je in onder Printers.
+virtual_width_mm	Virtuele breedte (mm)
+virtual_length_mm	Virtuele lengte (mm)
+reported_width_mm	Gemelde breedte (mm)
+reported_length_mm	Gemelde lengte (mm)
+reported_paper	Gemeld: {paper}
+virtual_paper	Virtueel: {paper}
+printer_paper_help	Gemeld is het papier waarop het stuurprogramma van deze printer is ingesteld; de app leest het alleen, en n.v.t. betekent dat er geen stuurprogramma is om het aan te vragen. Virtueel is het papier waarvan jij zegt dat het echt in de printer zit, in mm; een lege lengte is een rol. De printer drukt af op zijn eigen papier; het virtuele papier vertelt de app hoeveel daarvan echt papier is, voor het voorbeeld, de paginalengte en de plaats van de bon. Printers zoeken vult een leeg virtueel papier in en wijzigt nooit papier dat jij hebt ingesteld.
+preview_help	Deze bon zoals hij afdrukt op de printer die hieronder gekozen is, op ware grootte op het virtuele papier ervan. Wit is waar hij afdrukt, grijs papier ligt buiten het bereik van de printer, en vervaagde inkt wordt afgesneden. De negen vakjes zijn het papier: tik waar de bon moet staan. Een lange bon gaat verder op meer pagina's. Een printer kiezen verandert alleen het voorbeeld.
 job_layout	Indeling
 job_delivery	Hoe de taak wordt verzonden
 job_delivery_help	OS-document, ruwe bytes of ESC/POS. De rekening en het keukenticket behouden elk hun eigen. Elke taak kan naar elke printer gaan die Find heeft opgeslagen.
@@ -1000,7 +1024,7 @@ amount_we_pay_ph	Bedrag dat wij betalen
 business_name_ph	Bedrijfsnaam
 category_new_ph	Categorie (optioneel, wordt aangemaakt indien nieuw)
 code_bag_ph	Code (bag)
-conv_factor_ph	Factor (25 = 1 bag → 25 kg)
+conv_factor_ph	Factor (25 = 1 zak → 25 kg)
 country_code_ph	Landcode bijv. IN, GB, US, AE, BR
 credit_khata_amount_ph	Krediet- / rekeningbedrag
 credit_limit_ph	Kredietlimiet (0 = geen)
@@ -1040,7 +1064,7 @@ book_kind_today	Boek van vandaag
 book_kind_month	Boek van deze maand
 book_kind_aging	Openstaand / debet-credit
 book_kind_balance	Balans
-order_help	Kies een open bestelling of een tafel om nieuw te starten. Tik op gereed items, stuur KOT, factureer één of meer items, splits de rekening en reken af.
+order_help	Tik op een artikel om het toe te voegen.
 floor_help	Elke tafel toont of er gasten zitten, wat hun open rekening is en wie als volgende bediening nodig heeft.
 kitchen_help	Volg gereed per variant of per item — noteer in de KOT zoals je wilt.
 kitchen_empty	Nu niets open.
@@ -1256,7 +1280,7 @@ choose_table	Kies een tafel
 change_table	Andere tafel
 pick_table_banner	Kies een tafel voor deze bestelling
 items_word	items
-items_section	Items
+items_section	Artikelen
 back_to_order	Terug naar bestelling
 new_items_head	Nog niet verzonden
 price_ph	Prijs
@@ -1266,8 +1290,8 @@ taxable_value	Belastbare waarde
 gst_inside_price_note	({tax} inbegrepen)
 start_with_template	Begin met ons menusjabloon
 template_heading	Ons menusjabloon
-template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
-template_download_shelf	Download photo shelf
+template_need_download	Download de openbare fotoplank met gerechten (~1.459 gerechten) en importeer daarna ontbrekende namen in je menu.
+template_download_shelf	Fotoplank downloaden
 template_info	{c} categorieën en {d} gerechten met foto's, klaar om toe te voegen. Prijs ₹0 — stel later je eigen prijs in.
 template_import	Hele sjabloon importeren
 template_confirm	{d} gerechten met hun categorieën toevoegen? Wat je al hebt, blijft zoals het is.

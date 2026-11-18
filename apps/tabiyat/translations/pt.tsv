@@ -79,13 +79,19 @@ bill_item_amount	Valor
 bill_item_note	Rx/nota de venda
 bill_item_col_sep	Riscos das colunas
 slip_col_width	Largura (mm)
-paper_heading	Papel
+paper_heading	Papel virtual
 paper_size	{w} × {h} mm
 paper_roll	rolo de {w} mm
 paper_not_set	papel ainda desconhecido
-paper_length_mm	Comprimento (mm)
-printer_paper_help	O papel desta impressora em mm. Um Comprimento vazio é um rolo: cada recibo tem o comprimento do seu conteúdo. Procurar impressoras preenche o papel vazio pelo driver da impressora (um rolo de 80 mm quando ele não sabe dizer) e nunca altera um papel já definido.
-preview_help	Este recibo no papel da impressora escolhida abaixo, tal como é impresso nela: em tamanho real a partir do canto superior esquerdo que a impressora alcança (cinza: margens que não alcança), um recibo longo em mais folhas, tudo além da borda do papel é cortado. Escolher uma impressora só altera a pré-visualização; o papel de cada impressora define-se em Impressoras.
+na	N/D
+virtual_width_mm	Largura virtual (mm)
+virtual_length_mm	Comprimento virtual (mm)
+reported_width_mm	Largura informada (mm)
+reported_length_mm	Comprimento informado (mm)
+reported_paper	Informado: {paper}
+virtual_paper	Virtual: {paper}
+printer_paper_help	Informado é o papel para o qual o driver desta impressora está definido; a app apenas o lê, e N/D significa que não há driver a quem perguntar. Virtual é o papel que você diz estar realmente na impressora, em mm; um comprimento vazio é um rolo. A impressora imprime no seu próprio papel; o papel virtual diz à app quanto dele é papel real, para a pré-visualização, o comprimento da página e a posição do recibo. Procurar impressoras preenche um papel virtual vazio e nunca altera um que você definiu.
+preview_help	Este recibo tal como é impresso na impressora escolhida abaixo, em tamanho real no papel virtual dela. Branco é onde imprime, o papel cinza fica fora do alcance da impressora, e a tinta esbatida é cortada. Os nove quadrados são o papel: toque onde o recibo deve ficar. Um recibo longo continua em mais páginas. Escolher uma impressora só altera a pré-visualização.
 slip_col_start	Espaço inicial (px)
 slip_col_end	Espaço final (px)
 slip_columns_help	A largura de cada coluna inclui o seu espaço inicial e final. O texto quebra dentro da sua coluna; o que passa da largura do conteúdo é cortado, no papel e na pré-visualização.
@@ -100,6 +106,12 @@ bill_item_piece_off	Não
 bill_total_qty	Qtd total
 bill_total_subtotal	Subtotal
 bill_total_grand	Total
+bill_total_number_under	Número sob
+bill_total_caption_under	Rótulo sob
+bill_total_own_line	Linha própria
+bill_total_caption_with	Com o número
+bill_total_caption_none	Sem rótulo
+bill_total_place_help	Linha própria imprime este total sozinho. Sob uma coluna, o seu número é impresso nessa coluna de artigos, com o tamanho e a espessura desta linha; os totais partilham uma fila até uma coluna ficar ocupada, e então começa uma nova fila. O rótulo vai com o número, sob outra coluna, ou é omitido. As linhas de imposto, serviço, arredondamento e pagamento seguem Subtotal.
 kot_unassigned	Não atribuído
 settings_hub_help	Abra uma área de cada vez — menos deslocação, escolhas mais claras.
 settings_sec_language	Idioma e moeda
@@ -440,7 +452,7 @@ printers_find_tip	Procurar analisa este dispositivo e mantém a lista atualizada
 printers_pool_empty	(nenhuma ainda — adicione abaixo)
 printer_assign_dd	Escolher impressora para {place}
 printer_assign_pick	Selecionar impressora real
-printer_profile_heading	Layout
+printer_profile_heading	Planta
 vp_delivery_heading	Entrega
 vp_delivery_help	Como esta impressora virtual envia trabalhos — documento do sistema operacional, bytes brutos ou ESC/POS. O conteúdo do boleto (tamanho do tipo, envoltório, margens) é decidido pelo formato da fatura / boleto, não aqui.
 vp_delivery_spooler	Documento do SO (spooler do sistema)
@@ -511,7 +523,7 @@ supplier_name_ph	Nome do fornecedor (ou parte)
 supplier_ph	Fornecedor
 switch_device	Trocar este dispositivo
 take_payment	Receber pagamento
-tax_added_till	{tax} exclusive
+tax_added_till	{tax} excluído
 tax_inside_price	{tax} incluso
 tax_invoice	Fatura fiscal
 till_to_bank	Caixa → banco
@@ -563,11 +575,11 @@ currency_use_help	Deslize e toque Usar para qualquer moeda suportada.
 day_close_help	Registar um fecho do dia guarda este resumo (e a diferença da gaveta, se contada) no registo de auditoria. Não para as vendas.
 expenses_word	Despesas
 feature_access_help	Acesso a funções do funcionário selecionado (toque após adicionar)
-fresh_book_tabiyat	Impressoras
+fresh_book_tabiyat	Começar do zero = catálogo vazio (adicione artigos mais tarde). Livro = escreva abaixo o stock inicial e quem lhe deve.
 fresh_selected	Fresh escolhido — o catálogo fica vazio. Toque Done quando estiver pronto.
 gross_word	Bruto
 how_start	Como você quer começar?
-later_country_pack	Impressoras
+later_country_pack	Depois: Definições → aplique o pacote do país para os nomes de imposto e de pagamento.
 local_badge	LOCAL
 mix_type_hint_tabiyat	Divida entre dinheiro / UPI / cartão / crédito se preciso. O crédito precisa de um cliente acima.
 money_in_sales	Dinheiro entrante (vendas)
@@ -688,7 +700,7 @@ book_kind_today	Livro de hoje
 book_kind_month	Livro deste mês
 book_kind_aging	Pendente / débito-crédito
 book_kind_balance	Balanço patrimonial
-order_help	Escolha um pedido aberto ou uma mesa para começar um novo. Toque nos itens prontos, envie o KOT, fature um ou mais itens, divida a conta e receba.
+order_help	Toque num artigo para o adicionar.
 categories_help	Uma categoria mostra a que parte do cardápio um prato pertence — petiscos, prato principal ou biryani. Crie categorias do seu jeito: escolha nossos nomes, renomeie-os ou adicione os seus.
 dish_search_ph	Pesquise nome, sal ou código de barras…
 sizes_as_items_ph	Tamanhos como itens separados (opcional) — Meia=120, Inteira=200
@@ -735,6 +747,20 @@ fssai_ph	Licença de medicamento nº. (opcional - seu texto)
 bill_footer_ph	Rodapé (ex. Obrigado, volte sempre)
 kot_field_on	mostrar
 kot_field_off	ocultar
+kot_field_show	Mostrar
+kot_field_hide	Ocultar
+bill_line_shop	Loja
+bill_line_address	Endereço
+bill_line_fssai	FSSAI
+bill_line_title	Título
+bill_line_customer	Cliente
+bill_line_bill_no	N.º da conta
+bill_line_time	Hora
+bill_line_cashier	Caixa
+bill_line_items	Itens
+bill_line_total	Total
+bill_line_footer	Rodapé
+bill_line_upi	UPI
 kot_weight_light	Fina
 bill_kot_panel_help	Layout da fatura e largura do conteúdo. O caixa é quem emitiu ou pagou a conta – a história completa da venda permanece nos livros.
 std_size_ph	ex. 18, 20, 26…
@@ -842,10 +868,10 @@ lane_declared_label	Fatura fiscal
 lane_owner_label	Nota de caixa
 money_lane_bill	Conta: {lane}
 
-removing	Removing…
-removed	Removed
-updating_order	Updating…
-order_updated	Order updated
+removing	A remover…
+removed	Removido
+updating_order	A atualizar…
+order_updated	Pedido atualizado
 sel_copy	Copiar
 sel_select_all	Selecionar tudo
 sel_copied	Copiado

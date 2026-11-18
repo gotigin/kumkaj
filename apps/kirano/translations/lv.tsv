@@ -67,13 +67,19 @@ bill_item_amount	Summa
 bill_item_note	Vienuma piezīme
 bill_item_col_sep	Kolonnu līnijas
 slip_col_width	Platums (mm)
-paper_heading	Papīrs
+paper_heading	Virtuālais papīrs
 paper_size	{w} × {h} mm
 paper_roll	{w} mm rullis
 paper_not_set	papīrs vēl nav zināms
-paper_length_mm	Garums (mm)
-printer_paper_help	Šī printera papīrs mm. Tukšs Garums ir rullis: katrs čeks ir tik garš kā tā saturs. “Atrast printerus” aizpilda tukšu papīru no printera draivera (80 mm rullis, ja tas nevar pateikt) un nekad nemaina jau iestatītu.
-preview_help	Šis čeks zemāk izvēlētā printera papīrā, kā tas tur drukājas: īstā izmērā no augšējā kreisā stūra, kuru printeris sasniedz (pelēks: malas, kuras nesasniedz), garš čeks vairākās lapās, viss aiz papīra malas tiek nogriezts. Printera izvēle maina tikai priekšskatījumu; katra printera papīrs tiek iestatīts sadaļā Printeri.
+na	Nav
+virtual_width_mm	Virtuālais platums (mm)
+virtual_length_mm	Virtuālais garums (mm)
+reported_width_mm	Ziņotais platums (mm)
+reported_length_mm	Ziņotais garums (mm)
+reported_paper	Ziņots: {paper}
+virtual_paper	Virtuāls: {paper}
+printer_paper_help	Ziņotais ir papīrs, uz kuru ir iestatīts šī printera draiveris; lietotne to tikai nolasa, un “Nav” nozīmē, ka nav draivera, kam jautāt. Virtuālais ir papīrs, kas pēc jūsu teiktā patiešām atrodas printerī, milimetros; tukšs garums nozīmē rulli. Printeris drukā uz sava papīra; virtuālais papīrs pasaka lietotnei, cik daudz no tā ir īsts papīrs – priekšskatījumam, lapas garumam un čeka vietai. Atrast printerus aizpilda tukšu virtuālo papīru un nekad nemaina jūsu iestatīto.
+preview_help	Šis čeks tāds, kāds tas tiek drukāts ar zemāk izvēlēto printeri, īstajā izmērā uz tā virtuālā papīra. Balts ir tur, kur drukā, pelēko papīru printeris nesasniedz, un izbalējusī tinte tiek nogriezta. Deviņi kvadrāti ir papīrs: pieskarieties vietai, kur jāatrodas čekam. Garš čeks turpinās nākamajās lapās. Printera izvēle maina tikai priekšskatījumu.
 slip_col_start	Sākuma atstarpe (px)
 slip_col_end	Beigu atstarpe (px)
 slip_columns_help	Katras kolonnas platumā ietilpst tās sākuma un beigu atstarpe. Teksts tiek pārnests savas kolonnas iekšpusē; tas, kas pārsniedz satura platumu, tiek nogriezts — uz papīra un priekšskatījumā.
@@ -88,6 +94,12 @@ bill_item_piece_off	Izslēgts
 bill_total_qty	Kopējais daudzums
 bill_total_subtotal	Starpsumma
 bill_total_grand	Kopsumma
+bill_total_number_under	Skaitlis zem
+bill_total_caption_under	Etiķete zem
+bill_total_own_line	Sava rinda
+bill_total_caption_with	Pie skaitļa
+bill_total_caption_none	Bez etiķetes
+bill_total_place_help	Sava rinda drukā šo kopsummu atsevišķi. Zem kolonnas tās skaitlis tiek drukāts tajā preču kolonnā, šīs rindas izmērā un biezumā; kopsummas dala vienu rindu, līdz kāda kolonna ir aizņemta, tad sākas jauna rinda. Etiķete ir pie skaitļa, zem citas kolonnas vai tiek izlaista. Nodokļa, apkalpošanas, noapaļošanas un maksājuma rindas seko Starpsumma.
 kot_unassigned	Nav piešķirts
 settings_hub_help	Atveriet vienu zonu vienlaikus — mazāk ritināšanas, skaidrākas izvēles.
 settings_sec_language	Valoda un valūta
@@ -723,6 +735,20 @@ fssai_ph	FSSAI / veikala licence Nr. (pēc izvēles)
 bill_footer_ph	Kājene (piem. Paldies, nāciet vēl)
 kot_field_on	rādīt
 kot_field_off	slēpt
+kot_field_show	Rādīt
+kot_field_hide	Slēpt
+bill_line_shop	Veikals
+bill_line_address	Adrese
+bill_line_fssai	FSSAI
+bill_line_title	Virsraksts
+bill_line_customer	Klients
+bill_line_bill_no	Rēķina nr.
+bill_line_time	Laiks
+bill_line_cashier	Kasieris
+bill_line_items	Pozīcijas
+bill_line_total	Kopā
+bill_line_footer	Kājene
+bill_line_upi	UPI
 kot_weight_light	Plāns
 bill_kot_panel_help	Rēķinu izkārtojums un satura platums. Kasieris ir tas, kurš izrakstīja vai apmaksāja rēķinu — viss pārdošanas stāsts paliek grāmatās.
 std_size_ph	piem. 18, 20, 26…
@@ -830,10 +856,10 @@ lane_declared_label	Nodokļa rēķins
 lane_owner_label	Skaidrās naudas kvīts
 money_lane_bill	Rēķins: {lane}
 
-removing	Removing…
-removed	Removed
-updating_order	Updating…
-order_updated	Order updated
+removing	Noņem…
+removed	Noņemts
+updating_order	Atjaunina…
+order_updated	Pasūtījums atjaunināts
 sel_copy	Kopēt
 sel_select_all	Atlasīt visu
 sel_copied	Nokopēts

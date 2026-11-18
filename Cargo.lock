@@ -1271,6 +1271,7 @@ dependencies = [
  "unicode-bidi",
  "ureq",
  "uuid",
+ "windows-sys 0.61.2",
 ]
 
 [[package]]
@@ -1300,6 +1301,7 @@ dependencies = [
  "unicode-bidi",
  "ureq",
  "uuid",
+ "windows-sys 0.61.2",
 ]
 
 [[package]]
@@ -1328,6 +1330,7 @@ dependencies = [
  "unicode-bidi",
  "ureq",
  "uuid",
+ "windows-sys 0.61.2",
 ]
 
 [[package]]
@@ -1364,6 +1367,7 @@ dependencies = [
  "unicode-bidi",
  "ureq",
  "uuid",
+ "windows-sys 0.61.2",
 ]
 
 [[package]]

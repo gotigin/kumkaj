@@ -23,8 +23,8 @@ reports	Libro do banco e PyG
 refresh	Actualizar
 undo	Desfacer
 start_tracking	Comezar o seguimento
-stock_minus	− Stock
-stock_plus	+ Stock
+stock_minus	− Existencias
+stock_plus	+ Existencias
 settle_cash	Pechar en efectivo
 settle_card	Pechar con tarxeta
 items	Menú e artigos
@@ -101,6 +101,19 @@ bill_item_col_sep	Liñas de columna
 slip_columns	Columnas
 slip_col_header	Cabeceira
 bill_line_logo	Logotipo
+bill_line_shop	Tenda
+bill_line_address	Enderezo
+bill_line_fssai	FSSAI
+bill_line_title	Título
+bill_line_customer	Cliente
+bill_line_bill_no	Núm. de conta
+bill_line_time	Hora
+bill_line_cashier	Caixeiro
+bill_line_table	Mesa
+bill_line_items	Artigos
+bill_line_total	Total
+bill_line_footer	Pé
+bill_line_upi	UPI
 bill_logo_picture	Imaxe
 bill_logo_choose	Escoller imaxe
 bill_logo_remove	Quitar a imaxe
@@ -128,6 +141,12 @@ bill_item_piece_off	Desactivado
 bill_total_qty	Cant. total
 bill_total_subtotal	Subtotal
 bill_total_grand	Total xeral
+bill_total_number_under	Número baixo
+bill_total_caption_under	Etiqueta baixo
+bill_total_own_line	Liña propia
+bill_total_caption_with	Co número
+bill_total_caption_none	Sen etiqueta
+bill_total_place_help	Liña propia imprime este total por si só. Baixo unha columna, o seu número imprímese nesa columna de artigos, co tamaño e o grosor desta liña; os totais comparten unha fila ata que unha columna queda ocupada, e entón comeza unha fila nova. A etiqueta vai co número, baixo outra columna ou omítese. As liñas de imposto, servizo, redondeo e pagamento seguen a Subtotal.
 reprint_incl	Na impresión
 reprint_skip	Saltar
 reprint_skip_meta	Saltar a reimpresión
@@ -178,20 +197,20 @@ snack_secs_ph	Segundos (3–60, por defecto 10)
 snack_secs_save	Gardar o tempo de aviso
 snack_secs_saved	Tempo de aviso gardado — {n} segundos
 settings_sec_whatsapp	WhatsApp
-whatsapp_cloud_help	Use your own Meta WhatsApp Cloud API. Create a System User token with whatsapp_business_messaging (temporary dashboard tokens expire). Credentials stay on this Server only — never on extra tills. Accepted means Meta took the request, not that the guest received it.
-whatsapp_phone_id_ph	Phone Number ID
-whatsapp_token_ph	Access Token (leave blank to keep)
-whatsapp_template_ph	Bill template name (optional)
-whatsapp_template_lang_ph	Template language (e.g. en)
-whatsapp_enable	Enable
+whatsapp_cloud_help	Use a súa propia API de Meta WhatsApp Cloud. Cree un token de System User con whatsapp_business_messaging (os tokens temporais do panel caducan). As credenciais quedan só neste Servidor — nunca nas caixas extra. «Aceptado» significa que Meta recibiu a solicitude, non que o convidado a recibise.
+whatsapp_phone_id_ph	ID do número de teléfono
+whatsapp_token_ph	Token de acceso (déixeo en branco para conservalo)
+whatsapp_template_ph	Nome do modelo de conta (opcional)
+whatsapp_template_lang_ph	Lingua do modelo (p. ex. en)
+whatsapp_enable	Activar
 whatsapp_disable	Off
-whatsapp_save	Save WhatsApp
-whatsapp_test	Test connection
-whatsapp_disconnect	Disconnect
-whatsapp_send_bill	Send via WhatsApp
-whatsapp_consent	WhatsApp OK
-whatsapp_consent_help	Guest agreed to receive WhatsApp messages. A phone number alone is not consent.
-whatsapp_server_only	Configure WhatsApp on the shop Server device
+whatsapp_save	Gardar WhatsApp
+whatsapp_test	Probar a conexión
+whatsapp_disconnect	Desconectar
+whatsapp_send_bill	Enviar por WhatsApp
+whatsapp_consent	WhatsApp De acordo
+whatsapp_consent_help	O convidado aceptou recibir mensaxes de WhatsApp. Un número de teléfono por si só non é consentimento.
+whatsapp_server_only	Configure WhatsApp no dispositivo Servidor da tenda
 settings_sec_backup	Copia e restauración
 settings_sec_diag	Diagnóstico
 settings_sec_privacy	Privacidade
@@ -637,7 +656,7 @@ choose_device_use	Escolla Servidor ou Cliente.
 paired_note	Emparellado. Desbloquee para vender, ou Actualizar para ter o último.
 last_update_at	Última actualización: {time}.
 pair_intro	Atope o servidor, ou escriba o seu enderezo e o código de emparellamento.
-pair_resume_hint	Already paired — enter your shop PIN, or Forget this shop to pair another.
+pair_resume_hint	Xa emparellado — introduza o PIN da súa tenda, ou toque «Esquecer esta tenda» para emparellar outra.
 queue_waiting	En espera de chegar á tenda ({n}):
 queue_tries	Intentado {n} veces · última resposta: {e}
 save_backup_copy	Gardar unha copia de seguridade…
@@ -754,13 +773,18 @@ station_vps_dd	Impresoras desta estación
 station_vps_dd_n	{n} impresora(s) · prema para cambiar
 bill_printers_dd	Impresoras da conta
 bill_printers_dd_n	{n} impresora(s) para a conta · prema para cambiar
-paper_heading	Papel
+paper_heading	Papel virtual
 paper_size	{w} × {h} mm
 paper_roll	rolo de {w} mm
 paper_not_set	papel aínda descoñecido
-paper_length_mm	Longo (mm)
-printer_paper_help	O papel desta impresora en mm. Un Longo baleiro é un rolo: cada tíquet é tan longo coma o seu contido. Atopar impresoras enche o papel baleiro co do controlador da impresora (un rolo de 80 mm se non o pode dicir) e nunca cambia un xa definido.
-preview_help	Este tíquet sobre o papel da impresora escollida abaixo, tal como se imprime alí: a tamaño real desde a esquina superior esquerda que alcanza a impresora (gris: bordos que non alcanza), un tíquet longo en máis follas, todo o que pasa do bordo do papel recórtase. Escoller unha impresora só cambia a vista previa; o papel de cada impresora defínese en Impresoras.
+virtual_width_mm	Ancho virtual (mm)
+virtual_length_mm	Longo virtual (mm)
+reported_width_mm	Ancho informado (mm)
+reported_length_mm	Longo informado (mm)
+reported_paper	Informado: {paper}
+virtual_paper	Virtual: {paper}
+printer_paper_help	Informado é o papel ao que está axustado o controlador desta impresora; a app só o le, e N/D significa que non hai controlador ao que preguntar. Virtual é o papel que ti dis que hai realmente na impresora, en mm; un longo baleiro é un rolo. A impresora imprime no seu propio papel; o papel virtual dille á app canto del é papel real, para a vista previa, o longo da páxina e o lugar do tíquet. Atopar impresoras enche un papel virtual baleiro e nunca cambia o que ti definiches.
+preview_help	Este tíquet tal como se imprime na impresora escollida abaixo, a tamaño real sobre o seu papel virtual. O branco é onde imprime, o papel gris queda fóra do alcance da impresora e a tinta esvaecida córtase. Os nove cadros son o papel: toca onde debe ir o tíquet. Un tíquet longo continúa en máis páxinas. Escoller unha impresora só cambia a vista previa.
 job_layout	Deseño
 job_delivery	Como se envía o traballo
 job_delivery_help	Documento do SO, bytes en bruto ou ESC/POS. A conta e o tícket de cociña gardan o seu. Calquera traballo pode ir a calquera impresora que Atopar gardase.
@@ -1000,7 +1024,7 @@ amount_we_pay_ph	Importe que pagamos
 business_name_ph	Nome do negocio
 category_new_ph	Categoría (opcional, créase se é nova)
 code_bag_ph	Código (bag)
-conv_factor_ph	Factor (25 = 1 bag → 25 kg)
+conv_factor_ph	Factor (25 = 1 saco → 25 kg)
 country_code_ph	Código de país, p. ex. IN, GB, US, AE, BR
 credit_khata_amount_ph	Importe de crédito / khata
 credit_limit_ph	Límite de crédito (0 = ningún)
@@ -1238,7 +1262,7 @@ on_your_menu	No seu menú
 edit	Editar
 schemes	Promocións / ofertas
 schemes_help	BOGO, porcentaxe de desconto e combos fixos. Os combos ábrense en liñas de cociña ao Enviar KOT; os compoñentes fican retidos ata que o combo se activa. Exemplo: Buy 2 Thali get 1 Chaas
-scheme_bogo_ph	Buy 2 Thali get 1 Chaas
+scheme_bogo_ph	Compre 2 Thali e leve 1 Chaas
 add_scheme	Engadir BOGO
 schedule_ph	Horas / hora feliz — Mon-Fri 07:00-11:00 ou HappyHour 17:00-19:00=150
 upi_qr	UPI QR
@@ -1266,8 +1290,8 @@ taxable_value	Base impoñible
 gst_inside_price_note	({tax} incluído)
 start_with_template	Comezar coa nosa modelo de menú
 template_heading	A nosa modelo de menú
-template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
-template_download_shelf	Download photo shelf
+template_need_download	Descargue o andel público de fotos de pratos (~1.459 pratos) e despois importe ao seu menú os nomes que falten.
+template_download_shelf	Descargar o andel de fotos
 template_info	{c} categorías e {d} pratos con fotos, listos para engadir. Os prezos comezan en ₹0 — poña os seus despois.
 template_import	Importar a modelo completa
 template_confirm	Engadir {d} pratos coas súas categorías? Os pratos que xa ten fican como están.

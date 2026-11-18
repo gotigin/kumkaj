@@ -20,7 +20,7 @@ use std::collections::BTreeMap;
 use std::fs;
 use std::io::Write;
 use std::path::{Path, PathBuf};
-#[cfg(not(target_os = "android"))]
+#[cfg(any(target_os = "linux", target_os = "macos"))]
 use std::process::Command;
 use std::sync::{Mutex, mpsc};
 use std::time::Duration;
@@ -372,6 +372,18 @@ pub struct PrintFormat {
     pub baseline: f32,
     #[serde(default = "default_side")]
     pub side: f32,
+    /// Where the content sits on a paper bigger than it (owner,
+    /// 2026-11-17): top / middle / bottom × left / centre / right — the
+    /// paper's own sides (docs/PRINTER.md § Paper and preview). Top-left,
+    /// where content always sat, is not written.
+    #[serde(default, skip_serializing_if = "crate::os_paper::Place::is_top_left")]
+    pub place: crate::os_paper::Place,
+}
+
+/// How `format`'s slip is laid on its sheet: turned or not, and the
+/// format's place.
+pub fn slip_lay(format: &PrintFormat) -> crate::os_paper::Lay {
+    crate::os_paper::Lay { landscape: format.landscape, place: format.place }
 }
 
 fn default_true() -> bool { true }
@@ -430,6 +442,7 @@ impl PrintFormat {
             line: wrap_cols_for_paper_mm(210),
             baseline: STD_EM_NORMAL + 2.0,
             side: STD_SIDE,
+            place: Default::default(),
         }
     }
 
@@ -446,6 +459,7 @@ impl PrintFormat {
             line: wrap_cols_for_paper_mm(210),
             baseline: STD_EM_NORMAL + 2.0,
             side: STD_SIDE,
+            place: Default::default(),
         }
     }
 
@@ -462,6 +476,7 @@ impl PrintFormat {
             line: wrap_cols_for_paper_mm(80),
             baseline: (KOT_EM_LARGE as f32) + 2.0,
             side: 8.0,
+            place: Default::default(),
         }
     }
 
@@ -854,7 +869,6 @@ pub enum BillStyleField {
     BillNo,
     Time,
     Cashier,
-    Table,
     Items,
     Total,
     Footer,
@@ -862,7 +876,7 @@ pub enum BillStyleField {
 }
 
 impl BillStyleField {
-    pub const ALL: [BillStyleField; 13] = [
+    pub const ALL: [BillStyleField; 12] = [
         BillStyleField::Shop,
         BillStyleField::Header,
         BillStyleField::Fssai,
@@ -871,7 +885,6 @@ impl BillStyleField {
         BillStyleField::BillNo,
         BillStyleField::Time,
         BillStyleField::Cashier,
-        BillStyleField::Table,
         BillStyleField::Items,
         BillStyleField::Total,
         BillStyleField::Footer,
@@ -888,11 +901,28 @@ impl BillStyleField {
             BillStyleField::BillNo => "Bill no",
             BillStyleField::Time => "Time",
             BillStyleField::Cashier => "Cashier",
-            BillStyleField::Table => "Table",
             BillStyleField::Items => "Items",
             BillStyleField::Total => "Total",
             BillStyleField::Footer => "Footer",
             BillStyleField::Upi => "UPI",
+        }
+    }
+
+    /// The line's name in the owner's language: its `locale` key.
+    pub fn label_key(self) -> &'static str {
+        match self {
+            BillStyleField::Shop => "bill_line_shop",
+            BillStyleField::Header => "bill_line_address",
+            BillStyleField::Fssai => "bill_line_fssai",
+            BillStyleField::Title => "bill_line_title",
+            BillStyleField::Customer => "bill_line_customer",
+            BillStyleField::BillNo => "bill_line_bill_no",
+            BillStyleField::Time => "bill_line_time",
+            BillStyleField::Cashier => "bill_line_cashier",
+            BillStyleField::Items => "bill_line_items",
+            BillStyleField::Total => "bill_line_total",
+            BillStyleField::Footer => "bill_line_footer",
+            BillStyleField::Upi => "bill_line_upi",
         }
     }
 
@@ -908,7 +938,7 @@ impl BillStyleField {
         )
     }
 
-    /// Meta fields that may share a line as left\\tright (Date | Table, …).
+    /// Meta fields that may share a line as left\\tright (Cashier | Bill no, …).
     pub fn is_pairable(self) -> bool {
         matches!(
             self,
@@ -916,7 +946,6 @@ impl BillStyleField {
                 | BillStyleField::BillNo
                 | BillStyleField::Time
                 | BillStyleField::Cashier
-                | BillStyleField::Table
         )
     }
 
@@ -930,7 +959,6 @@ impl BillStyleField {
             BillStyleField::BillNo => "bill_no",
             BillStyleField::Time => "time",
             BillStyleField::Cashier => "cashier",
-            BillStyleField::Table => "table",
             BillStyleField::Items => "items",
             BillStyleField::Total => "total",
             BillStyleField::Footer => "footer",
@@ -1011,6 +1039,82 @@ impl BillItemCol {
     }
 }
 
+/// One of the bill's three totals.
+#[derive(Clone, Copy, Debug, PartialEq, Eq, Hash)]
+pub enum BillTotalKind {
+    Qty,
+    Subtotal,
+    Grand,
+}
+
+impl BillTotalKind {
+    pub const ALL: [BillTotalKind; 3] = [BillTotalKind::Qty, BillTotalKind::Subtotal, BillTotalKind::Grand];
+}
+
+/// Where a total's caption goes while its number sits under an item column.
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum BillTotalCaption {
+    /// Before the number, in the number's own place (`Total Qty: 3`).
+    WithNumber,
+    /// Not printed: the number alone.
+    Hidden,
+    /// Under another item column, on the number's row.
+    Under(BillItemCol),
+}
+
+/// Where one total prints. Kept as plain ids (like the column order), so a
+/// format from a newer build still reads: an id this build does not know
+/// is the total on its own line.
+#[derive(Clone, Debug, Default, PartialEq, Eq, Serialize, Deserialize)]
+pub struct BillTotalPlace {
+    /// The item column the number sits under (`name`, `qty`, `price`,
+    /// `amount`); empty = the total has its own line, as before.
+    #[serde(default, skip_serializing_if = "String::is_empty")]
+    pub number: String,
+    /// Where the caption goes while the number sits under a column: empty =
+    /// before the number, `none` = not printed, or an item column's id.
+    #[serde(default, skip_serializing_if = "String::is_empty")]
+    pub caption: String,
+}
+
+impl BillTotalPlace {
+    /// Nothing set: the total on its own line with its caption.
+    pub fn is_default(&self) -> bool {
+        self.number.is_empty() && self.caption.is_empty()
+    }
+
+    pub fn number_col(&self) -> Option<BillItemCol> {
+        BillItemCol::from_id(&self.number)
+    }
+
+    pub fn set_number_col(&mut self, col: Option<BillItemCol>) {
+        self.number = col.map(|c| c.id().to_string()).unwrap_or_default();
+    }
+
+    pub fn caption_place(&self) -> BillTotalCaption {
+        match self.caption.trim() {
+            "none" => BillTotalCaption::Hidden,
+            id => BillItemCol::from_id(id).map_or(BillTotalCaption::WithNumber, BillTotalCaption::Under),
+        }
+    }
+
+    pub fn set_caption_place(&mut self, place: BillTotalCaption) {
+        self.caption = match place {
+            BillTotalCaption::WithNumber => String::new(),
+            BillTotalCaption::Hidden => "none".into(),
+            BillTotalCaption::Under(col) => col.id().to_string(),
+        };
+    }
+
+    fn clamped(mut self) -> Self {
+        let number = self.number_col();
+        self.set_number_col(number);
+        let caption = self.caption_place();
+        self.set_caption_place(caption);
+        self
+    }
+}
+
 /// Show, size, weight, and alignment for one bill line.
 #[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
 pub struct BillFieldStyle {
@@ -1077,8 +1181,6 @@ pub struct BillSlipFormat {
     pub time: BillFieldStyle,
     #[serde(default)]
     pub cashier: BillFieldStyle,
-    #[serde(default)]
-    pub table: BillFieldStyle,
     #[serde(default)]
     pub items: BillFieldStyle,
     #[serde(default)]
@@ -1149,8 +1251,18 @@ pub struct BillSlipFormat {
     /// Caption for the settled sale total line. Empty → `Total`.
     #[serde(default = "default_bill_total_paid_label")]
     pub total_paid_label: String,
+    /// Where each total prints (owner, 2026-11-17: "Total Qty in the same
+    /// column as that of Qty", "Grand Total in the same column as Amount",
+    /// all "in single row"): on its own line, as before, or under the item
+    /// columns ([`BillTotalRows`]). Not written while it has its own line.
+    #[serde(default, skip_serializing_if = "BillTotalPlace::is_default")]
+    pub total_qty_place: BillTotalPlace,
+    #[serde(default, skip_serializing_if = "BillTotalPlace::is_default")]
+    pub total_subtotal_place: BillTotalPlace,
+    #[serde(default, skip_serializing_if = "BillTotalPlace::is_default")]
+    pub total_grand_place: BillTotalPlace,
     /// Field-id pairs printed on one row when both show. A save without it
-    /// gets the product defaults (time+table, cashier+bill_no); an empty list
+    /// gets the product default (cashier+bill_no); an empty list
     /// means no pairs — every line on its own row (the owner sets Alone).
     #[serde(default = "default_bill_meta_pairs")]
     pub meta_pairs: Vec<[String; 2]>,
@@ -1171,10 +1283,7 @@ pub struct BillSlipFormat {
 }
 
 fn default_bill_meta_pairs() -> Vec<[String; 2]> {
-    vec![
-        ["time".into(), "table".into()],
-        ["cashier".into(), "bill_no".into()],
-    ]
+    vec![["cashier".into(), "bill_no".into()]]
 }
 
 fn default_bill_copies() -> u32 {
@@ -1269,7 +1378,6 @@ impl Default for BillSlipFormat {
             bill_no: BillFieldStyle::face(14, KotFontWeight::Regular, KotAlign::Start),
             time: BillFieldStyle::face(14, KotFontWeight::Regular, KotAlign::Start),
             cashier: BillFieldStyle::face(14, KotFontWeight::Regular, KotAlign::Start),
-            table: BillFieldStyle::face(14, KotFontWeight::Regular, KotAlign::Start),
             // Body items a touch larger than meta — readable Qty/Price/Amount.
             items: BillFieldStyle::face(16, KotFontWeight::Regular, KotAlign::Start),
             total: BillFieldStyle::face(18, KotFontWeight::Bold, KotAlign::Start),
@@ -1295,6 +1403,9 @@ impl Default for BillSlipFormat {
             total_subtotal_label: default_bill_total_subtotal_label(),
             total_grand_label: default_bill_total_grand_label(),
             total_paid_label: default_bill_total_paid_label(),
+            total_qty_place: BillTotalPlace::default(),
+            total_subtotal_place: BillTotalPlace::default(),
+            total_grand_place: BillTotalPlace::default(),
             meta_pairs: default_bill_meta_pairs(),
             field_order: Vec::new(),
             copies: 1,
@@ -1431,6 +1542,107 @@ fn column_line<S: AsRef<str>>(cells: &[S]) -> String {
     out
 }
 
+/// The totals of one bill as lines, each total where the owner placed it.
+///
+/// A total with its own line prints as it always did (`Total Qty: 3`). A
+/// total set under an item column goes on a row laid out on those columns
+/// — its number in that column's box, with the column's width, spaces and
+/// alignment — in the Total line's size and weight. Totals share such a row
+/// until one needs a box that is taken; that one starts the next row. So
+/// Total qty under Qty with Grand total under Amount is one row, and Sub
+/// total and Grand total both under Amount are two.
+///
+/// Its caption sits before the number, or under another column of the same
+/// row, or is not printed ([`BillTotalCaption`]). A caption-and-amount line
+/// with no setting of its own (tax, service, rounding, a payment) follows
+/// Sub total's place, so the amounts of a bill stay in one column.
+///
+/// Only when the items print in columns, and only under a column that is
+/// shown: otherwise the total has its own line.
+pub struct BillTotalRows<'a> {
+    fmt: &'a BillSlipFormat,
+    /// The shown item columns in print order; none when items are stacked.
+    cols: Vec<BillItemCol>,
+    lines: Vec<String>,
+    /// The column row being filled, one cell per shown column; empty when
+    /// no row is open.
+    row: Vec<String>,
+}
+
+impl<'a> BillTotalRows<'a> {
+    pub fn new(fmt: &'a BillSlipFormat) -> Self {
+        let cols = if fmt.item_layout == BillItemLayout::Columns { fmt.ordered_item_cols() } else { Vec::new() };
+        Self { fmt, cols, lines: Vec::new(), row: Vec::new() }
+    }
+
+    /// One of the three totals. `joined` is the line it prints on its own
+    /// (`Total Qty: 3`); `caption` and `number` are its two parts.
+    pub fn total(&mut self, kind: BillTotalKind, caption: &str, number: &str, joined: &str) {
+        let place = self.fmt.total_place(kind).clone();
+        self.put(&place, caption, number, joined, false);
+    }
+
+    /// A caption-and-amount line with no place of its own (tax, service,
+    /// rounding, a payment): it follows Sub total's, and always keeps its
+    /// caption — an amount nobody can name is no use on a bill.
+    pub fn amount(&mut self, caption: &str, number: &str, joined: &str) {
+        let place = self.fmt.total_subtotal_place.clone();
+        self.put(&place, caption, number, joined, true);
+    }
+
+    /// A line of words (a scheme's name, a note): always its own line.
+    pub fn words(&mut self, text: &str) {
+        self.close_row();
+        if !text.trim().is_empty() {
+            self.lines.push(text.to_string());
+        }
+    }
+
+    /// The lines in print order, for the Total line's style.
+    pub fn finish(mut self) -> Vec<String> {
+        self.close_row();
+        self.lines
+    }
+
+    fn index_of(&self, col: BillItemCol) -> Option<usize> {
+        self.cols.iter().position(|c| *c == col)
+    }
+
+    fn close_row(&mut self) {
+        if self.row.iter().any(|cell| !cell.is_empty()) {
+            self.lines.push(column_line(&self.row));
+        }
+        self.row.clear();
+    }
+
+    fn put(&mut self, place: &BillTotalPlace, caption: &str, number: &str, joined: &str, keep_caption: bool) {
+        let Some(at) = place.number_col().and_then(|col| self.index_of(col)) else {
+            self.words(joined);
+            return;
+        };
+        // The caption's own box, when it has one that is shown and is not
+        // the number's.
+        let caption_at = match place.caption_place() {
+            BillTotalCaption::Under(col) => self.index_of(col).filter(|i| *i != at),
+            _ => None,
+        };
+        let with_number = caption_at.is_none() && (keep_caption || place.caption_place() != BillTotalCaption::Hidden);
+        let taken = |row: &[String], i: usize| row.get(i).is_some_and(|cell| !cell.is_empty());
+        if taken(&self.row, at) || caption_at.is_some_and(|i| taken(&self.row, i)) {
+            self.close_row();
+        }
+        if self.row.is_empty() {
+            self.row = vec![String::new(); self.cols.len()];
+        }
+        // One line a cell: a cell is laid out as its column's own text.
+        let flat = |text: &str| text.replace(['\n', '\t', '|'], " ").trim().to_string();
+        self.row[at] = flat(if with_number { joined } else { number });
+        if let Some(i) = caption_at {
+            self.row[i] = flat(caption);
+        }
+    }
+}
+
 impl BillSlipFormat {
     pub fn parse(raw: &str) -> Self {
         let trimmed = raw.trim();
@@ -1484,6 +1696,10 @@ impl BillSlipFormat {
             scrub_bill_header_label(&self.total_grand_label, "Grand Total");
         self.total_paid_label =
             scrub_bill_header_label(&self.total_paid_label, "Total");
+        for kind in BillTotalKind::ALL {
+            let place = self.total_place_mut(kind);
+            *place = std::mem::take(place).clamped();
+        }
         self.item_col_order = {
             let mut seen = std::collections::HashSet::new();
             let mut order = Vec::new();
@@ -1601,6 +1817,23 @@ impl BillSlipFormat {
         scrub_bill_header_label(&self.total_paid_label, "Total")
     }
 
+    /// Where `kind` prints.
+    pub fn total_place(&self, kind: BillTotalKind) -> &BillTotalPlace {
+        match kind {
+            BillTotalKind::Qty => &self.total_qty_place,
+            BillTotalKind::Subtotal => &self.total_subtotal_place,
+            BillTotalKind::Grand => &self.total_grand_place,
+        }
+    }
+
+    pub fn total_place_mut(&mut self, kind: BillTotalKind) -> &mut BillTotalPlace {
+        match kind {
+            BillTotalKind::Qty => &mut self.total_qty_place,
+            BillTotalKind::Subtotal => &mut self.total_subtotal_place,
+            BillTotalKind::Grand => &mut self.total_grand_place,
+        }
+    }
+
     /// Pair `field` with `partner`, or clear its pair when `partner` is None.
     pub fn set_meta_partner(&mut self, field: BillStyleField, partner: Option<BillStyleField>) {
         if !field.is_pairable() {
@@ -1656,7 +1889,6 @@ impl BillSlipFormat {
             BillStyleField::BillNo => &self.bill_no,
             BillStyleField::Time => &self.time,
             BillStyleField::Cashier => &self.cashier,
-            BillStyleField::Table => &self.table,
             BillStyleField::Items => &self.items,
             BillStyleField::Total => &self.total,
             BillStyleField::Footer => &self.footer_style,
@@ -1674,7 +1906,6 @@ impl BillSlipFormat {
             BillStyleField::BillNo => &mut self.bill_no,
             BillStyleField::Time => &mut self.time,
             BillStyleField::Cashier => &mut self.cashier,
-            BillStyleField::Table => &mut self.table,
             BillStyleField::Items => &mut self.items,
             BillStyleField::Total => &mut self.total,
             BillStyleField::Footer => &mut self.footer_style,
@@ -1755,7 +1986,6 @@ impl BillSlipFormat {
             &format!("Date: {when}"),
             false,
         );
-        append_bill_field(&mut out, self, BillStyleField::Table, "Dine In: D1", false);
         append_bill_field(&mut out, self, BillStyleField::Cashier, "Cashier: biller", false);
         append_bill_field(&mut out, self, BillStyleField::BillNo, "Bill No.: SAMPLE", false);
         append_bill_like(&mut out, self, BillStyleField::Items, "--------------------", false);
@@ -1763,55 +1993,44 @@ impl BillSlipFormat {
         if !header.is_empty() {
             append_bill_like(&mut out, self, BillStyleField::Items, &header, false);
         }
-        let tea = format_bill_item_block(
+        let first = format_bill_item_block(
             self,
             BillItemPieces {
-                name: "Tea",
+                name: "Paracetamol",
                 qty: "2",
                 price: "40.00",
                 amount: "80.00",
                 note: "",
             },
         );
-        append_bill_field(&mut out, self, BillStyleField::Items, &tea, false);
-        let coffee = format_bill_item_block(
+        append_bill_field(&mut out, self, BillStyleField::Items, &first, false);
+        let second = format_bill_item_block(
             self,
             BillItemPieces {
-                name: "Coffee",
+                name: "Cough syrup",
                 qty: "1",
                 price: "20.00",
                 amount: "20.00",
                 note: "",
             },
         );
-        append_bill_field(&mut out, self, BillStyleField::Items, &coffee, false);
+        append_bill_field(&mut out, self, BillStyleField::Items, &second, false);
         append_bill_like(&mut out, self, BillStyleField::Items, "--------------------", false);
+        let mut totals = BillTotalRows::new(self);
         if self.total_show_qty {
-            append_bill_like(
-                &mut out,
-                self,
-                BillStyleField::Total,
-                &format!("{}: 3", self.caption_total_qty()),
-                false,
-            );
+            let caption = self.caption_total_qty();
+            totals.total(BillTotalKind::Qty, &caption, "3", &format!("{caption}: 3"));
         }
         if self.total_show_subtotal {
-            append_bill_like(
-                &mut out,
-                self,
-                BillStyleField::Total,
-                &format!("{}: 100.00", self.caption_subtotal()),
-                false,
-            );
+            let caption = self.caption_subtotal();
+            totals.total(BillTotalKind::Subtotal, &caption, "100.00", &format!("{caption}: 100.00"));
         }
         if self.total_show_grand {
-            append_bill_field(
-                &mut out,
-                self,
-                BillStyleField::Total,
-                &format!("{}: 100.00", self.caption_grand_total()),
-                false,
-            );
+            let caption = self.caption_grand_total();
+            totals.total(BillTotalKind::Grand, &caption, "100.00", &format!("{caption}: 100.00"));
+        }
+        for line in totals.finish() {
+            append_bill_like(&mut out, self, BillStyleField::Total, &line, false);
         }
         append_bill_field(&mut out, self, BillStyleField::Footer, &self.footer, false);
         if !self.upi_vpa.trim().is_empty() {
@@ -1861,8 +2080,10 @@ fn append_pair(
 fn append_marked(out: &mut String, style: &BillFieldStyle, text: &str, rtl: bool) {
     let mark = bill_mark(style, rtl);
     for part in text.split(['\n', '|']) {
-        let part = part.trim();
-        if part.is_empty() {
+        // Tabs stay: on a column line an empty first or last cell is a
+        // column left blank (a totals row; a lone column's line).
+        let part = part.trim_matches(|c: char| c.is_whitespace() && c != '\t');
+        if part.trim().is_empty() {
             continue;
         }
         out.push_str(&mark);
@@ -1910,7 +2131,7 @@ pub fn bill_stage_finish(fmt: &BillSlipFormat, rtl: bool) -> String {
             continue;
         }
         // Pairable meta: one left\tright line when both partners have a
-        // single shown text (Date | Table, Cashier | Bill no).
+        // single shown text (Cashier | Bill no).
         if field.is_pairable() {
             if let Some(other) = fmt.meta_pair_of(*field) {
                 if !consumed.contains(&other)
@@ -2539,21 +2760,46 @@ pub struct NamedPrinter {
     /// Blank = system default; name = system printer; `ip` / `ip:port` = network;
     /// `bt:MAC`, `usb:VID:PID`, `android-print:`.
     pub target: String,
-    /// The paper in this printer, mm wide (owner, 2026-11-16: the printer
-    /// owns its paper; set on Settings → Printers, filled by Find while it
-    /// is 0, never changed by Find once set). docs/PRINTER.md § Paper and
-    /// preview.
+    /// The virtual paper: the paper the owner says this printer holds, mm
+    /// wide. Only the preview and the place grid use it — it is never sent
+    /// to the printer, which prints on its own paper as its driver is set
+    /// (owner, 2026-11-17). Set on Settings → Printers, filled by Find while
+    /// it is 0, never changed by Find once set. Files before 2026-11-17 call
+    /// it `paper_width_mm`.
+    #[serde(default, alias = "paper_width_mm", skip_serializing_if = "mm_unset")]
+    pub virtual_paper_width_mm: f64,
+    /// The virtual paper's length, mm; 0 = a roll (each job as long as its
+    /// content). Formerly `paper_length_mm`.
+    #[serde(default, alias = "paper_length_mm", skip_serializing_if = "mm_unset")]
+    pub virtual_paper_length_mm: f64,
+    /// The paper this printer's driver reports it is set to — its own page,
+    /// what an OS document really prints on — as the system last said
+    /// (owner, 2026-11-17). Shown read-only as *Reported* beside the virtual
+    /// paper the owner sets; never typed. Replaced whenever the driver
+    /// answers (Find asks every one afresh). 0 = not reported: an ESC/POS
+    /// device has no driver to ask, and Android asks in its print dialog.
     #[serde(default, skip_serializing_if = "mm_unset")]
-    pub paper_width_mm: f64,
-    /// Sheet length, mm; 0 = a roll (each job as long as its content).
+    pub reported_width_mm: f64,
     #[serde(default, skip_serializing_if = "mm_unset")]
-    pub paper_length_mm: f64,    /// Ignored on load (legacy); printers no longer store a mode.
+    pub reported_length_mm: f64,
+    /// The driver's own name for that paper.
+    #[serde(default, skip_serializing_if = "String::is_empty")]
+    pub reported_name: String,
+    /// The edges of that paper the printer cannot reach, mm: left, top,
+    /// right, bottom — kept so the preview need not wait for the driver.
+    #[serde(default, skip_serializing_if = "no_edges")]
+    pub reported_edges_mm: [f64; 4],
+    /// Ignored on load (legacy); printers no longer store a mode.
     #[serde(default, alias = "wire", alias = "mode", skip_serializing)]
     pub _legacy_mode: Option<String>,
 }
 
 fn mm_unset(v: &f64) -> bool {
     !(*v > 0.0)
+}
+
+fn no_edges(v: &[f64; 4]) -> bool {
+    v.iter().all(|m| !(*m > 0.0))
 }
 
 /// The default when a printer cannot say what paper it holds: the common
@@ -2570,9 +2816,42 @@ pub fn round_mm(mm: f64) -> f64 {
 }
 
 impl NamedPrinter {
-    /// The paper set for this printer, if any.
-    pub fn paper(&self) -> Option<crate::os_paper::PaperMm> {
-        crate::os_paper::PaperMm::new(self.paper_width_mm, self.paper_length_mm)
+    /// The virtual paper set for this printer, if any.
+    pub fn virtual_paper(&self) -> Option<crate::os_paper::PaperMm> {
+        crate::os_paper::PaperMm::new(self.virtual_paper_width_mm, self.virtual_paper_length_mm)
+    }
+
+    /// The printer's own page as its driver last reported it, if it did.
+    pub fn reported_paper(&self) -> Option<crate::os_paper::Paper> {
+        (self.reported_width_mm > 0.0 && self.reported_length_mm > 0.0).then(|| crate::os_paper::Paper {
+            id: self.reported_name.clone(),
+            label: self.reported_name.clone(),
+            width_mm: self.reported_width_mm,
+            height_mm: self.reported_length_mm,
+            margins_mm: self.reported_edges_mm,
+        })
+    }
+
+    /// Keep a driver's answer as this printer's reported paper: the page it
+    /// is set to, or nothing when it could not say (the screens then read
+    /// "N/A"). Never touches the virtual paper. Returns whether it changed.
+    pub fn set_reported(&mut self, driver: &Result<crate::os_paper::PrinterPapers, String>) -> bool {
+        // Hundredths of a mm: steady from one answer to the next, and finer
+        // than any printer's dot.
+        let tidy = |mm: f64| (mm.max(0.0) * 100.0).round() / 100.0;
+        let (w, l, name, edges) = match driver.as_ref().ok().and_then(|d| d.default_paper()) {
+            Some(p) => (tidy(p.width_mm), tidy(p.height_mm), p.label.trim().to_string(), p.margins_mm.map(tidy)),
+            None => (0.0, 0.0, String::new(), [0.0; 4]),
+        };
+        let changed = self.reported_width_mm != w
+            || self.reported_length_mm != l
+            || self.reported_name != name
+            || self.reported_edges_mm != edges;
+        self.reported_width_mm = w;
+        self.reported_length_mm = l;
+        self.reported_name = name;
+        self.reported_edges_mm = edges;
+        changed
     }
 
     /// A system print queue (or the system default) — the only printers
@@ -2595,12 +2874,12 @@ impl NamedPrinter {
         driver: Option<&Result<crate::os_paper::PrinterPapers, String>>,
         default_when_unanswered: bool,
     ) -> bool {
-        if self.paper().is_some() {
+        if self.virtual_paper().is_some() {
             return false;
         }
         let set = |p: &mut Self, w: f64, l: f64| {
-            p.paper_width_mm = w;
-            p.paper_length_mm = l;
+            p.virtual_paper_width_mm = w;
+            p.virtual_paper_length_mm = l;
             true
         };
         // Nothing to ask (ESC/POS devices, Android's print services — the
@@ -2733,10 +3012,18 @@ fn device_printers_from_value(value: serde_json::Value) -> DevicePrinters {
             label: String,
             #[serde(default)]
             target: String,
+            #[serde(default, alias = "paper_width_mm")]
+            virtual_paper_width_mm: f64,
+            #[serde(default, alias = "paper_length_mm")]
+            virtual_paper_length_mm: f64,
             #[serde(default)]
-            paper_width_mm: f64,
+            reported_width_mm: f64,
             #[serde(default)]
-            paper_length_mm: f64,
+            reported_length_mm: f64,
+            #[serde(default)]
+            reported_name: String,
+            #[serde(default)]
+            reported_edges_mm: [f64; 4],
         }
         #[derive(Deserialize)]
         struct New {
@@ -2768,8 +3055,12 @@ fn device_printers_from_value(value: serde_json::Value) -> DevicePrinters {
                     id: r.id,
                     label: r.label,
                     target: r.target,
-                    paper_width_mm: r.paper_width_mm,
-                    paper_length_mm: r.paper_length_mm,
+                    virtual_paper_width_mm: r.virtual_paper_width_mm,
+                    virtual_paper_length_mm: r.virtual_paper_length_mm,
+                    reported_width_mm: r.reported_width_mm,
+                    reported_length_mm: r.reported_length_mm,
+                    reported_name: r.reported_name,
+                    reported_edges_mm: r.reported_edges_mm,
                     _legacy_mode: None,
                 })
                 .collect(),
@@ -2864,6 +3155,7 @@ impl DevicePrinters {
             line: v.line,
             baseline: v.em + 2.0,
             side: v.side,
+            place: Default::default(),
         }
     }
 
@@ -3128,6 +3420,23 @@ impl DevicePrinters {
         }
     }
 
+    /// Where the bill (`standard`) or the kitchen ticket sits on a paper
+    /// bigger than it (owner, 2026-11-17): on the formats
+    /// [`Self::set_job_drive`] turns, and on the format the route uses.
+    pub fn set_job_place(&mut self, standard: bool, place: crate::os_paper::Place) {
+        let routed: Vec<String> = if standard { vec![self.format_id_for(RouteKey::Bill)] } else { Vec::new() };
+        for f in self.formats.iter_mut() {
+            let hit = if standard {
+                is_standard_document(&f.id)
+            } else {
+                f.id == FORMAT_KOT
+            };
+            if hit || routed.contains(&f.id) {
+                f.place = place;
+            }
+        }
+    }
+
     /// Toggle a real printer on a bill or kitchen route. Returns whether it is attached after.
     pub fn toggle_printer_on_route(&mut self, key: RouteKey, printer_id: &str) -> Option<bool> {
         let pid = printer_id.trim();
@@ -3250,7 +3559,7 @@ impl DevicePrinters {
                 Some(PrintDest {
                     target: parse_target(&p.target),
                     format: place_default.clone(),
-                    paper: p.paper(),
+                    virtual_paper: p.virtual_paper(),
                 })
             })
             .collect()
@@ -3266,18 +3575,40 @@ impl DevicePrinters {
         }
         match self.printers.iter_mut().find(|p| p.id == printer_id.trim()) {
             Some(p) => {
-                p.paper_width_mm = round_mm(width_mm);
-                p.paper_length_mm = round_mm(length_mm);
+                p.virtual_paper_width_mm = round_mm(width_mm);
+                p.virtual_paper_length_mm = round_mm(length_mm);
                 true
             }
             None => false,
         }
     }
 
-    /// Find's step for papers: every printer with no paper gets one from its
-    /// driver's answer in `drivers` (target → answer), or the default where
-    /// that is right (`NamedPrinter::fill_paper`). Never changes a paper
-    /// already set. Returns how many printers got one.
+    /// What the drivers answered (`drivers`: target → answer), taken into
+    /// the saved printers: each one's reported paper is replaced by its
+    /// driver's answer (`NamedPrinter::set_reported`), and a printer with no
+    /// virtual paper gets one ([`Self::fill_missing_papers`]). Returns how
+    /// many printers changed.
+    pub fn take_driver_answers(
+        &mut self,
+        drivers: &std::collections::HashMap<String, Result<crate::os_paper::PrinterPapers, String>>,
+        default_when_unanswered: bool,
+    ) -> usize {
+        let mut n = 0;
+        for p in &mut self.printers {
+            let answer = drivers.get(p.target.trim());
+            let reported = p.has_driver() && answer.is_some_and(|a| p.set_reported(a));
+            let filled = p.fill_paper(answer, default_when_unanswered);
+            if reported || filled {
+                n += 1;
+            }
+        }
+        n
+    }
+
+    /// Find's step for virtual papers: every printer with none gets one from
+    /// its driver's answer in `drivers` (target → answer), or the default
+    /// where that is right (`NamedPrinter::fill_paper`). Never changes a
+    /// paper already set. Returns how many printers got one.
     pub fn fill_missing_papers(
         &mut self,
         drivers: &std::collections::HashMap<String, Result<crate::os_paper::PrinterPapers, String>>,
@@ -3325,6 +3656,7 @@ impl DevicePrinters {
             line: base.line,
             baseline: base.baseline,
             side: base.side,
+            place: base.place,
         });
         id
     }
@@ -3358,6 +3690,7 @@ impl DevicePrinters {
             line: 40,
             baseline: STD_EM_NORMAL + 2.0,
             side: STD_SIDE,
+            place: Default::default(),
         });
         id
     }
@@ -3517,8 +3850,12 @@ impl DevicePrinters {
             id: id.clone(),
             label,
             target: tgt,
-            paper_width_mm: 0.0,
-            paper_length_mm: 0.0,
+            virtual_paper_width_mm: 0.0,
+            virtual_paper_length_mm: 0.0,
+            reported_width_mm: 0.0,
+            reported_length_mm: 0.0,
+            reported_name: String::new(),
+            reported_edges_mm: [0.0; 4],
             _legacy_mode: None,
         });
         (id, true)
@@ -3555,9 +3892,9 @@ impl DevicePrinters {
                 // The kept row takes a paper only the duplicate had: a paper
                 // once set is never lost (docs/PRINTER.md § Paper and preview).
                 if let Some(k) = kept.iter_mut().find(|k| &k.id == keep) {
-                    if k.paper().is_none() && p.paper().is_some() {
-                        k.paper_width_mm = p.paper_width_mm;
-                        k.paper_length_mm = p.paper_length_mm;
+                    if k.virtual_paper().is_none() && p.virtual_paper().is_some() {
+                        k.virtual_paper_width_mm = p.virtual_paper_width_mm;
+                        k.virtual_paper_length_mm = p.virtual_paper_length_mm;
                     }
                 }
                 remap.insert(p.id, keep.clone());
@@ -3717,9 +4054,10 @@ pub enum PrinterTarget {
 pub struct PrintDest {
     pub target: PrinterTarget,
     pub format: PrintFormat,
-    /// OS document: the paper set for the printer (`None` until known; the
-    /// send then asks the driver, as Find would). See [`NamedPrinter::fill_paper`].
-    pub paper: Option<crate::os_paper::PaperMm>,
+    /// The printer's virtual paper (Settings → Printers): where the format's
+    /// place is measured and how wide an ESC/POS roll is. Never sent to the
+    /// printer.
+    pub virtual_paper: Option<crate::os_paper::PaperMm>,
 }
 
 /// Whether this format may use OS / Android document print.
@@ -3993,7 +4331,7 @@ pub fn print_one_printer(
     let dest = PrintDest {
         target: parse_target(&p.target),
         format,
-        paper: p.paper(),
+        virtual_paper: p.virtual_paper(),
     };
     let opened = match sink() {
         PrintSink::Os => {
@@ -4265,14 +4603,7 @@ fn queue(job: Job) -> Result<(), String> {
                         RoutePrintMode::First => {
                             let mut last_err: Option<(String, String)> = None;
                             for dest in &job.dests {
-                                match send_to_printer(
-                                    &dest.format,
-                                    &dest.target,
-                                    dest.paper,
-                                    &job.path,
-                                    &job.text,
-                                    copies,
-                                ) {
+                                match send_to_printer(dest, &job.path, &job.text, copies) {
                                     Ok(()) => {
                                         last_err = None;
                                         break;
@@ -4288,14 +4619,7 @@ fn queue(job: Job) -> Result<(), String> {
                             // Every printer on the place gets the slip; each
                             // one that did not take it is named.
                             for dest in &job.dests {
-                                if let Err(e) = send_to_printer(
-                                    &dest.format,
-                                    &dest.target,
-                                    dest.paper,
-                                    &job.path,
-                                    &job.text,
-                                    copies,
-                                ) {
+                                if let Err(e) = send_to_printer(dest, &job.path, &job.text, copies) {
                                     failed.push(format!(
                                         "{} did not print: {e}",
                                         describe(&dest.target)
@@ -4348,19 +4672,13 @@ pub fn describe(target: &PrinterTarget) -> String {
     }
 }
 
-fn send_to_printer(
-    format: &PrintFormat,
-    target: &PrinterTarget,
-    paper: Option<crate::os_paper::PaperMm>,
-    path: &Path,
-    text: &str,
-    copies: u32,
-) -> Result<(), String> {
+fn send_to_printer(dest: &PrintDest, path: &Path, text: &str, copies: u32) -> Result<(), String> {
     let copies = copies.max(1);
+    let (format, target) = (&dest.format, &dest.target);
     // Delivery is the format's own flag. Bill text and kitchen text use the
     // same sender; neither one is tied to a page printer or a thermal head.
     let as_page = format.document;
-    let thermal = || replicate_escpos_copies(&escpos_job_format(format, text), copies);
+    let thermal = || replicate_escpos_copies(&escpos_job_placed(format, text, dest.virtual_paper), copies);
     match target {
         PrinterTarget::Network(addr) => print_network_bytes(addr, &thermal()),
         PrinterTarget::Bluetooth(mac) => crate::print_bt::write_bytes(mac, &thermal()),
@@ -4374,13 +4692,13 @@ fn send_to_printer(
             }
             // Document path: OS copies count when available; else repeat.
             for _ in 0..copies {
-                print_android_document(text, format, format.landscape)?;
+                print_android_document(text, format, dest.virtual_paper)?;
             }
             Ok(())
         }
         PrinterTarget::Default => {
             if as_page {
-                print_system_standard(None, path, text, format, format.landscape, copies, paper)
+                print_system_standard(None, path, text, format, copies, dest)
             } else if cfg!(target_os = "android") {
                 Err(format!(
                     "format \"{}\" on Android needs Network, Bluetooth, or USB — not the system print service",
@@ -4392,7 +4710,7 @@ fn send_to_printer(
         }
         PrinterTarget::Named(name) => {
             if as_page {
-                print_system_standard(Some(name), path, text, format, format.landscape, copies, paper)
+                print_system_standard(Some(name), path, text, format, copies, dest)
             } else if cfg!(target_os = "android") {
                 Err(format!(
                     "format \"{}\" on Android needs Network, Bluetooth, or USB — not a system printer name",
@@ -4418,174 +4736,160 @@ fn replicate_escpos_copies(one: &[u8], copies: u32) -> Vec<u8> {
     out
 }
 
-/// The paper a job goes on: the printer's own, or — not set yet — what Find
-/// would give it from the same driver answer (the driver's paper, else an
-/// 80 mm roll). Never a size of the app's choosing.
-fn job_paper(
-    paper: Option<crate::os_paper::PaperMm>,
-    driver: &Result<crate::os_paper::PrinterPapers, String>,
-) -> crate::os_paper::PaperMm {
-    if let Some(p) = paper {
-        return p;
-    }
-    let mut probe = NamedPrinter {
-        id: String::new(),
-        label: String::new(),
-        target: String::new(),
-        paper_width_mm: 0.0,
-        paper_length_mm: 0.0,
-        _legacy_mode: None,
-    };
-    probe.fill_paper(Some(driver), true);
-    probe.paper().unwrap_or(crate::os_paper::PaperMm {
-        width_mm: DEFAULT_PAPER_WIDTH_MM,
-        length_mm: 0.0,
-    })
-}
-
 /// Android: the upright slip and its real width go to the system print
-/// dialog, where the owner picks the printer and the paper; the slip is drawn
-/// at its real size from that paper's printable top-left (patches/makepad/
-/// MakepadActivity-print.java `printSlipPages`). No paper is assumed.
-fn print_android_document(text: &str, format: &PrintFormat, landscape: bool) -> Result<(), String> {
-    let (png, mm) = os_document_slip(text, format)?;
+/// dialog, where the owner picks the printer and its paper. The slip is
+/// drawn at its real size on the part of that paper the virtual paper
+/// covers, at the format's place, page after page — the same rule as
+/// `os_paper::sheet_for` / `plan_sheets`, worked out where the dialog's
+/// paper is known (patches/makepad/KumkajSlipLayout.java).
+fn print_android_document(
+    text: &str,
+    format: &PrintFormat,
+    virtual_paper: Option<crate::os_paper::PaperMm>,
+) -> Result<(), String> {
     #[cfg(target_os = "android")]
     {
-        crate::print_android::print_slip("Tabiyat", &png, mm, landscape)
+        let metrics = format.raster_metrics();
+        let (png, _, _) = slip_page_png(text, &metrics, false)?;
+        crate::print_android::print_slip(
+            "Tabiyat",
+            &png,
+            os_document_content_mm(&metrics),
+            slip_lay(format),
+            virtual_paper,
+        )
     }
     #[cfg(not(target_os = "android"))]
     {
-        let _ = (png, mm, landscape);
+        let _ = (text, format, virtual_paper);
         Err("Android print service is only on Android".into())
     }
 }
 
-/// The OS-document slip: the preview's own picture, upright, and its width
-/// on paper in mm. Landscape is the paper's business (each system turns it
-/// on the sheet), so the slip itself is never turned here.
-fn os_document_slip(text: &str, format: &PrintFormat) -> Result<(Vec<u8>, f64), String> {
+/// The OS-document slip: the preview's own picture, upright, as grey
+/// pixels (no PNG round trip), and its width on paper in mm. Landscape is
+/// the sheet's business (`os_paper::render_sheets` turns the page), so the
+/// slip itself is never turned here.
+#[cfg(not(target_os = "android"))]
+fn os_document_slip(text: &str, format: &PrintFormat) -> Result<(image::GrayImage, f64), String> {
     let metrics = format.raster_metrics();
-    let (png, _, _) = slip_page_png(text, &metrics, false)?;
-    Ok((png, os_document_content_mm(&metrics)))
+    let (px, w, h) = slip_page_gray(text, &metrics, false);
+    let slip = image::GrayImage::from_raw(w, h, px).ok_or("the slip could not be drawn")?;
+    Ok((slip, os_document_content_mm(&metrics)))
 }
 
 /// The slip's width on paper, in mm: its own dots at 7.2 per mm, so a px
-/// is 1/96 inch on paper at every content width (rule 2; docs/PRINTER.md
-/// lesson 22 — a rounded mm printed 70 mm as 71).
+/// is 1/96 inch on paper at every content width (rule 2). The rounded
+/// wrap-column count printed 70 mm as 71, 112 as 113, and a 384-dot slip
+/// at 58 mm made its text ~8 % larger (docs/PRINTER.md lesson 22).
 pub fn os_document_content_mm(metrics: &crate::receipt_raster::RasterMetrics) -> f64 {
+    // `DOTS_PER_MM` (576 / 80) in f64: 7.2 has no exact f32, and 576 dots
+    // must come out 80 mm, not 80.000002.
     metrics.page_dots().max(1) as f64 * 80.0 / 576.0
 }
 
-/// OS document: the preview's slip picture at its real size on a page that
-/// is exactly the printer's paper (Settings → Printers; docs/PRINTER.md §
-/// Paper and preview), from the top-left of its printable area. Plain UTF-8
-/// text depended on each driver's fonts (Indic became □).
+/// OS document, the standard way (owner, 2026-11-17): the job prints on the
+/// printer's own paper exactly as its driver is set — the app names no
+/// paper and makes none up. The slip is the preview's own picture at its
+/// real size, laid on the part of the printer's page that the virtual
+/// paper covers (`os_paper::Sheet`) at the format's place; a longer slip
+/// goes on to the printer's next page. Plain UTF-8 text depended on each
+/// driver's fonts (Indic became □).
 fn print_system_standard(
     name: Option<&str>,
     path: &Path,
     text: &str,
     format: &PrintFormat,
-    landscape: bool,
     copies: u32,
-    paper: Option<crate::os_paper::PaperMm>,
+    dest: &PrintDest,
 ) -> Result<(), String> {
     #[cfg(target_os = "android")]
     {
-        let _ = (name, path, paper);
+        let _ = (name, path);
         for _ in 0..copies.max(1) {
-            print_android_document(text, format, landscape)?;
+            print_android_document(text, format, dest.virtual_paper)?;
         }
         Ok(())
     }
     #[cfg(target_os = "windows")]
     {
-        // The driver lays the sheets out (its own printable area per page).
-        let (png, mm) = os_document_slip(text, format)?;
-        let slip = image::load_from_memory(&png).map_err(|e| e.to_string())?.to_luma8();
-        let (w, h) = slip.dimensions();
-        let gaps = crate::os_paper::line_gaps(slip.as_raw(), w as usize, h as usize);
-        let len = crate::os_paper::ink_end(slip.as_raw(), w as usize, h as usize).max(1);
-        let want = match paper {
-            Some(p) => p,
-            None => job_paper(paper, &crate::os_paper::query(name.unwrap_or(""))),
-        };
-        let png_path = path.with_extension("png");
-        fs::write(&png_path, &png).map_err(|e| e.to_string())?;
-        print_windows_slip(name, &png_path, mm, landscape, copies.max(1), want, &gaps, len)
+        // Through the Windows print API itself (print_win.rs): the pages are
+        // laid out for the page the printer's own device context reports.
+        let _ = path;
+        let (slip, content_mm) = os_document_slip(text, format)?;
+        crate::print_win::print_pages(name, "Tabiyat", copies.max(1), None, |own| {
+            os_document_pages(&slip, content_mm, own, format, dest.virtual_paper)
+        })
     }
     #[cfg(all(not(target_os = "android"), not(target_os = "windows")))]
     {
-        let (png, mm) = os_document_slip(text, format)?;
-        print_cups_slip(name, path, &png, mm, landscape, copies.max(1), paper)
+        let (slip, content_mm) = os_document_slip(text, format)?;
+        print_cups_pdf(name, path, &slip, content_mm, copies.max(1), format, dest.virtual_paper)
     }
 }
 
-/// CUPS (Linux, macOS): the page is the printer's paper — the driver's own
-/// size when one matches, else `Custom.<w>x<l>mm`, a roll as long as the
-/// slip (`os_paper::page_for`). The slip is cut into sheets exactly that
-/// page's printable width, fitted (1:1) into its printable area at the
-/// top-left; every sheet goes in one job with the page named. The preview
-/// is drawn from the same plan.
-#[cfg(all(not(target_os = "android"), not(target_os = "windows")))]
-fn print_cups_slip(
+/// An OS-document job's pages for the printer's own page `own` (as its
+/// driver is set): the slip cut for the part of that page the virtual
+/// paper covers, at the format's place (`os_paper::sheet_for`) — one grey
+/// picture per page, each to go at the page's printable corner — and their
+/// px per mm. A printer with no virtual paper set: its own page is all
+/// paper.
+#[cfg(not(target_os = "android"))]
+fn os_document_pages(
+    slip: &image::GrayImage,
+    content_mm: f64,
+    own: &crate::os_paper::Paper,
+    format: &PrintFormat,
+    virtual_paper: Option<crate::os_paper::PaperMm>,
+) -> (Vec<image::GrayImage>, f64) {
+    let lay = slip_lay(format);
+    let sheet = crate::os_paper::sheet_for(
+        virtual_paper.unwrap_or_else(|| own.as_virtual()),
+        Some(own),
+        slip_mm(slip, content_mm),
+        lay.landscape,
+    );
+    crate::os_paper::os_document_sheets(slip, content_mm, &sheet, lay)
+}
+
+/// CUPS (Linux, macOS): one PDF for the job, handed to `lp` on the queue
+/// the owner picked. The queue's own paper is read from its driver
+/// (`os_paper::query_cups`: its PPD and the owner's `lpoptions` default)
+/// and never named in the job, so the driver uses the paper it is set to.
+/// Each PDF page is that paper's printable area with the page picture at
+/// its real size from the top-left (`slip_pdf`). A queue whose driver
+/// cannot be read is sent nothing: without its page the slip would land
+/// wherever the system put it.
+#[cfg(any(target_os = "linux", target_os = "macos"))]
+fn print_cups_pdf(
     name: Option<&str>,
     path: &Path,
-    png: &[u8],
+    slip: &image::GrayImage,
     content_mm: f64,
-    landscape: bool,
     copies: u32,
-    paper: Option<crate::os_paper::PaperMm>,
+    format: &PrintFormat,
+    virtual_paper: Option<crate::os_paper::PaperMm>,
 ) -> Result<(), String> {
-    let slip = image::load_from_memory(png).map_err(|e| e.to_string())?.to_luma8();
-    let (queue, driver) = match crate::os_paper::query_cups(name) {
-        Ok((queue, papers)) => (Some(queue), Ok(papers)),
-        Err(why) => (None, Err(why)),
-    };
-    let want = job_paper(paper, &driver);
-    let plan = crate::os_paper::page_for(want, driver.as_ref().ok(), slip_mm(&slip, content_mm), landscape);
-    if plan.fallback {
-        let mm = crate::os_paper::mm_text;
-        let asked = if want.is_roll() {
-            format!("{} mm roll", mm(want.width_mm))
-        } else {
-            format!("{} × {} mm", mm(want.width_mm), mm(want.length_mm))
-        };
-        note_problem(format!(
-            "{}: its driver has no {asked} paper and takes no other size — printed on its own paper, {} ({} × {} mm)",
-            queue.as_deref().or(name).unwrap_or("printer"),
-            plan.page.label,
-            mm(plan.page.width_mm),
-            mm(plan.page.height_mm)
-        ));
-    }
-    if let Err(why) = &driver {
-        // Still the printer's paper, from the top-left — never centred; only
-        // the edges it cannot reach are not known (CUPS fits the page into
-        // them, a few % smaller at most).
-        note_problem(format!(
-            "{why} — printed on the printer's paper ({}) from the top-left; the edges the printer cannot reach are unknown",
-            plan.media
-        ));
-    }
-    let (sheets, px_per_mm) = crate::os_paper::os_document_sheets(&slip, content_mm, &plan.page, landscape);
-    let ppm = (px_per_mm * 1000.0).round() as u32;
-    let ppi = ((px_per_mm * 25.4).round() as u32).max(1);
-    let mut files = Vec::with_capacity(sheets.len());
-    for (i, sheet) in sheets.into_iter().enumerate() {
-        let mut buf = std::io::Cursor::new(Vec::new());
-        image::DynamicImage::ImageLuma8(sheet)
-            .write_to(&mut buf, image::ImageFormat::Png)
-            .map_err(|e| e.to_string())?;
-        let file = if i == 0 {
-            path.with_extension("png")
-        } else {
-            let stem = path.file_stem().and_then(|s| s.to_str()).unwrap_or("receipt");
-            path.with_file_name(format!("{stem}-{}.png", i + 1))
-        };
-        fs::write(&file, png_with_density(buf.into_inner(), ppm)).map_err(|e| e.to_string())?;
-        files.push(file);
-    }
-    run_lp(queue.as_deref().or(name), copies, &lp_sheet_options(&plan.media, ppi), &files)
+    let (queue, papers) = crate::os_paper::query_cups(name)?;
+    let own = papers
+        .default_paper()
+        .ok_or_else(|| format!("the driver of {queue} does not say which paper it is set to"))?;
+    let file = path.with_extension("pdf");
+    fs::write(&file, os_document_pdf(slip, content_mm, own, format, virtual_paper)).map_err(|e| e.to_string())?;
+    run_lp(Some(&queue), copies, &lp_pdf_options(), &[file])
+}
+
+/// The job's PDF for a queue whose own paper is `own` ([`print_cups_pdf`]).
+#[cfg(any(target_os = "linux", target_os = "macos", test))]
+fn os_document_pdf(
+    slip: &image::GrayImage,
+    content_mm: f64,
+    own: &crate::os_paper::Paper,
+    format: &PrintFormat,
+    virtual_paper: Option<crate::os_paper::PaperMm>,
+) -> Vec<u8> {
+    let (pages, px_per_mm) = os_document_pages(slip, content_mm, own, format, virtual_paper);
+    crate::slip_pdf::slip_pdf(own.printable_mm(), &pages, px_per_mm)
 }
 
 /// The upright slip's width and inked length on paper, mm.
@@ -4596,7 +4900,7 @@ pub fn slip_mm(slip: &image::GrayImage, content_mm: f64) -> (f64, f64) {
     (content_mm, f64::from(len) / px_per_mm)
 }
 
-/// `lp` with the given options and sheets, one job.
+/// `lp` with the given options and files, one job.
 #[cfg(any(target_os = "linux", target_os = "macos"))]
 fn run_lp(
     name: Option<&str>,
@@ -4629,159 +4933,19 @@ fn run_lp(
     }
 }
 
-/// `lp` options for one OS-document sheet: the page the sheets were cut
-/// for, named so the driver uses it; each sheet is exactly that page's
-/// printable width, so `fit` is 1:1 and `position` puts it at the printable
-/// top-left (without `position`, or with `print-scaling=none`, CUPS centres
-/// a picture — lesson 21). Portrait: landscape sheets were turned before
-/// they were written.
+/// `lp` options for an OS-document PDF. No paper is named: the job prints
+/// on the queue's own paper as its driver is set (owner, 2026-11-17). Each
+/// PDF page is that paper's printable area, so `fit` lays it there 1:1
+/// from the top-left (`slip_pdf` says why this rule and no other);
+/// `fit-to-page` says the same to filters older than `print-scaling`.
+/// Portrait: landscape pages were turned before they were written.
 #[cfg(any(target_os = "linux", target_os = "macos", test))]
-fn lp_sheet_options(media: &str, ppi: u32) -> Vec<String> {
-    [
-        format!("media={media}"),
-        "print-scaling=fit".to_string(),
-        format!("ppi={ppi}"),
-        "position=top-left".to_string(),
-        "orientation-requested=3".to_string(),
-    ]
-    .into_iter()
-    .flat_map(|o| ["-o".to_string(), o])
-    .collect()
+fn lp_pdf_options() -> Vec<String> {
+    ["print-scaling=fit", "fit-to-page", "position=top-left", "orientation-requested=3"]
+        .into_iter()
+        .flat_map(|o| ["-o".to_string(), o.to_string()])
+        .collect()
 }
-
-/// Windows: the printer's paper — the driver's own size that matches, else
-/// a custom `PaperSize` (a roll as long as the slip) — and each page drawn
-/// from the top-left of its printable area at the slip's real size; the
-/// next page starts where the last one ended, in the gap between lines.
-#[cfg(target_os = "windows")]
-#[allow(clippy::too_many_arguments)]
-fn print_windows_slip(
-    name: Option<&str>,
-    path: &Path,
-    content_mm: f64,
-    landscape: bool,
-    copies: u32,
-    paper: crate::os_paper::PaperMm,
-    gaps: &[u32],
-    len: u32,
-) -> Result<(), String> {
-    use std::os::windows::process::CommandExt;
-    const CREATE_NO_WINDOW: u32 = 0x0800_0000;
-    let script = windows_slip_script(
-        &path.display().to_string(),
-        name,
-        paper,
-        content_mm,
-        landscape,
-        copies,
-        gaps,
-        len,
-    );
-    let out = Command::new("powershell")
-        .args(["-NoProfile", "-NonInteractive", "-ExecutionPolicy", "Bypass", "-Command", &script])
-        .creation_flags(CREATE_NO_WINDOW)
-        .output()
-        .map_err(|e| format!("PowerShell did not start ({e})"))?;
-    if out.status.success() {
-        // The driver printed on a paper other than the printer's: say so.
-        for line in String::from_utf8_lossy(&out.stdout).lines() {
-            if let Some(note) = line.trim().strip_prefix("KUMKAJ-NOTE: ") {
-                note_problem(format!("{}: {note}", name.unwrap_or("printer")));
-            }
-        }
-        Ok(())
-    } else {
-        Err(first_line(&out.stderr).unwrap_or_else(|| "Windows refused the job".into()))
-    }
-}
-
-/// The PowerShell for [`print_windows_slip`]. Sizes are in hundredths of an
-/// inch (the printer Graphics' unit); the origin is the printable area's
-/// top-left (`OriginAtMargins` false). The page: the driver's size within
-/// 0.6 mm of the printer's paper, else a custom one; a roll is first set
-/// long, its printable area read, then set to the slip's length plus the
-/// edges it cannot reach. Nothing is fitted: the slip's px per hundredth of
-/// an inch come from its own mm.
-#[cfg(any(target_os = "windows", test))]
-#[allow(clippy::too_many_arguments)]
-fn windows_slip_script(
-    path: &str,
-    printer: Option<&str>,
-    paper: crate::os_paper::PaperMm,
-    content_mm: f64,
-    landscape: bool,
-    copies: u32,
-    gaps: &[u32],
-    len: u32,
-) -> String {
-    let q = |s: &str| s.replace('\'', "''");
-    let mut s = format!(
-        "Add-Type -AssemblyName System.Drawing; \
-         $img = [System.Drawing.Image]::FromFile('{}'); \
-         $doc = New-Object System.Drawing.Printing.PrintDocument; \
-         $doc.DocumentName = 'Tabiyat'; ",
-        q(path)
-    );
-    if let Some(n) = printer.map(str::trim).filter(|n| !n.is_empty()) {
-        s.push_str(&format!("$doc.PrinterSettings.PrinterName = '{}'; ", q(n)));
-    }
-    let gaps_ps = gaps.iter().map(|g| g.to_string()).collect::<Vec<_>>().join(",");
-    s.push_str(&format!(
-        "$doc.DefaultPageSettings.Landscape = {land}; \
-         $doc.PrinterSettings.Copies = [int16]{copies}; \
-         $doc.OriginAtMargins = $false; \
-         $script:img = $img; \
-         $script:per = $img.Width / ({mm:.4} / 25.4 * 100.0); \
-         $W = {w:.4}; $L = {l:.4}; \
-         if ({land}) {{ $along = {mm:.4} / 25.4 * 100.0 }} else {{ $along = {len} / $script:per }}; \
-         $script:note = ''; \
-         $own = $null; \
-         if ($L -gt 0) {{ foreach ($p in $doc.PrinterSettings.PaperSizes) {{ \
-           if ([Math]::Abs($p.Width - $W) -le 2.4 -and [Math]::Abs($p.Height - $L) -le 2.4) {{ $own = $p; break }} }} }}; \
-         $canCustom = @($doc.PrinterSettings.PaperSizes | Where-Object {{ $_.Kind -eq 'Custom' }}).Count -gt 0; \
-         if ($own) {{ $doc.DefaultPageSettings.PaperSize = $own }} elseif (-not $canCustom) {{ \
-           $script:note = 'KUMKAJ-NOTE: its driver has no such paper and takes no other size; printed on its own paper, ' + $doc.DefaultPageSettings.PaperSize.PaperName }} else {{ \
-           if ($L -gt 0) {{ $H = $L }} else {{ $H = $along + 100 }}; \
-           $doc.DefaultPageSettings.PaperSize = New-Object System.Drawing.Printing.PaperSize('Custom', [int][Math]::Round($W), [int][Math]::Ceiling($H)); \
-           if ($L -le 0) {{ \
-             $a = $doc.DefaultPageSettings.PrintableArea; $b = $doc.DefaultPageSettings.Bounds; \
-             if ({land}) {{ $edges = $a.X + ($b.Width - $a.X - $a.Width) }} else {{ $edges = $a.Y + ($b.Height - $a.Y - $a.Height) }}; \
-             if ($edges -lt 0) {{ $edges = 0 }}; \
-             $doc.DefaultPageSettings.PaperSize = New-Object System.Drawing.Printing.PaperSize('Custom', [int][Math]::Round($W), [int][Math]::Ceiling($along + $edges + 2)) }} }}; \
-         $script:gaps = @({gaps_ps}); \
-         $script:len = {len}; \
-         $script:y = 0; \
-         $doc.add_PrintPage({{ param($s,$e) \
-           $a = $e.PageSettings.PrintableArea; \
-           $room = [int][Math]::Floor($a.Height * $script:per); \
-           if ($room -lt 1) {{ $room = 1 }}; \
-           $wPx = [Math]::Min($script:img.Width, [Math]::Floor($a.Width * $script:per)); \
-           $start = $script:y; $limit = $start + $room; \
-           if ($limit -ge $script:len) {{ $end = $script:len }} else {{ \
-             $end = $limit; $floor = $start + [Math]::Floor($room / 2); \
-             foreach ($g in $script:gaps) {{ if ($g -gt $floor -and $g -le $limit) {{ $end = $g }} }} \
-           }}; \
-           $src = New-Object System.Drawing.RectangleF(0, $start, $wPx, ($end - $start)); \
-           $dst = New-Object System.Drawing.RectangleF(0, 0, ($wPx / $script:per), (($end - $start) / $script:per)); \
-           $e.Graphics.DrawImage($script:img, $dst, $src, [System.Drawing.GraphicsUnit]::Pixel); \
-           $script:y = $end; \
-           $e.HasMorePages = ($script:y -lt $script:len) }}); \
-         $doc.Print(); \
-         if ($script:note) {{ Write-Output $script:note }}; \
-         $img.Dispose(); \
-         $doc.Dispose();",
-        land = if landscape { "$true" } else { "$false" },
-        mm = content_mm,
-        w = paper.width_mm / 0.254,
-        l = paper.length_mm / 0.254,
-    ));
-    s
-}
-
-
-
-
-
 
 /// Network `:9100` — ESC/POS slip (KOT metrics by default).
 pub fn print_network(addr: &str, text: &str) -> Result<(), String> {
@@ -4833,15 +4997,41 @@ pub fn escpos_job(text: &str) -> Vec<u8> {
 }
 
 pub fn escpos_job_format(format: &PrintFormat, text: &str) -> Vec<u8> {
+    let (drawn, width) = escpos_drawn(format, text);
+    crate::receipt_raster::escpos_from_drawn(drawn, width)
+}
+
+/// The slip as a picture — the same picture as the preview — drawn 1-bit
+/// for standard ESC/POS raster (`GS v 0`), whatever the text or the
+/// printer; and its width in dots.
+fn escpos_drawn(format: &PrintFormat, text: &str) -> ((Vec<u8>, usize), usize) {
     let cleaned = text.replace('\r', "");
     let metrics = format.raster_metrics();
-    // The slip as a picture — the same picture as the preview — in standard
-    // ESC/POS raster (`GS v 0`), whatever the text or the printer.
-    if cleaned.contains(KOT_STYLE_MARK) {
-        escpos_picture_styled(&cleaned, &metrics)
+    let drawn = if cleaned.contains(KOT_STYLE_MARK) {
+        crate::receipt_raster::draw_lines(&styled_slip_lines(&cleaned, &metrics), &metrics)
     } else {
-        crate::receipt_raster::escpos_picture_metrics(&strip_kot_style_marks(&cleaned), &metrics)
+        crate::receipt_raster::draw_metrics(&strip_kot_style_marks(&cleaned), &metrics)
+    };
+    (drawn, metrics.page_dots())
+}
+
+/// [`escpos_job_format`] at the format's place across the printer's roll
+/// (`roll`: its virtual paper, when set; a roll is as long as the slip, so
+/// only across counts — `os_paper::place_in`). A slip at the left — where
+/// every slip sat before places existed, and still does unless the owner
+/// picks another — is sent byte for byte as before.
+pub fn escpos_job_placed(format: &PrintFormat, text: &str, roll: Option<crate::os_paper::PaperMm>) -> Vec<u8> {
+    let (drawn, width) = escpos_drawn(format, text);
+    let Some(roll) = roll else {
+        return crate::receipt_raster::escpos_from_drawn(drawn, width);
+    };
+    let roll_dots = (roll.width_mm as f32 * crate::receipt_raster::DOTS_PER_MM).round().max(8.0) as usize;
+    let (x, _) = crate::os_paper::place_in(format.place, width as u32, 0, roll_dots as u32, 0, false);
+    if x == 0 {
+        return crate::receipt_raster::escpos_from_drawn(drawn, width);
     }
+    let placed = crate::receipt_raster::place_drawn(drawn, width, roll_dots, x);
+    crate::receipt_raster::escpos_from_drawn(placed, roll_dots)
 }
 
 /// Millimetres across the raster. Dots at or under a 58 mm head are 58 mm.
@@ -4926,54 +5116,6 @@ fn png_pixel_size(png: &[u8]) -> Option<(u32, u32)> {
         u32::from_be_bytes([png[16], png[17], png[18], png[19]]),
         u32::from_be_bytes([png[20], png[21], png[22], png[23]]),
     ))
-}
-
-fn png_crc(data: &[u8]) -> u32 {
-    let mut c = 0xFFFF_FFFFu32;
-    for &b in data {
-        c ^= u32::from(b);
-        for _ in 0..8 {
-            if c & 1 != 0 {
-                c = (c >> 1) ^ 0xEDB8_8320;
-            } else {
-                c >>= 1;
-            }
-        }
-    }
-    !c
-}
-
-/// Store pixels-per-metre so the printer lays the slip out at `content_mm`
-/// instead of assuming 72 dpi and clipping the page down to two rules.
-fn png_with_density(png: Vec<u8>, ppm: u32) -> Vec<u8> {
-    if ppm == 0 || png.windows(4).any(|w| w == *b"pHYs") {
-        return png;
-    }
-    let Some(at) = png.windows(4).position(|w| w == *b"IHDR") else {
-        return png;
-    };
-    if at < 4 || at + 4 > png.len() {
-        return png;
-    }
-    let len = u32::from_be_bytes(png[at - 4..at].try_into().unwrap_or([0; 4])) as usize;
-    let after = at + 4 + len + 4;
-    if after > png.len() {
-        return png;
-    }
-    let mut body = Vec::with_capacity(13);
-    body.extend_from_slice(b"pHYs");
-    body.extend(ppm.to_be_bytes());
-    body.extend(ppm.to_be_bytes());
-    body.push(1);
-    let mut chunk = Vec::with_capacity(21);
-    chunk.extend((9u32).to_be_bytes());
-    chunk.extend_from_slice(&body);
-    chunk.extend(png_crc(&body).to_be_bytes());
-    let mut out = Vec::with_capacity(png.len() + chunk.len());
-    out.extend_from_slice(&png[..after]);
-    out.extend_from_slice(&chunk);
-    out.extend_from_slice(&png[after..]);
-    out
 }
 
 /// One scale for the whole print picture on screen.
@@ -5111,11 +5253,6 @@ fn raster_line_style(
     }
 }
 
-/// Raster job that keeps each line's point size, weight, and alignment.
-fn escpos_picture_styled(text: &str, default: &crate::receipt_raster::RasterMetrics) -> Vec<u8> {
-    crate::receipt_raster::escpos_picture_lines(&styled_slip_lines(text, default), default)
-}
-
 
 
 
@@ -5160,45 +5297,24 @@ fn lp_job_queued(name: Option<&str>, lp_stdout: &[u8]) -> Result<(), String> {
 
 
 /// ESC/POS to a system printer: the whole job as one raw job on the
-/// queue the owner picked (`lp -o raw`, Windows `WritePrinter`). Never
-/// routed around that queue (docs/PRINTER.md "What went wrong" 9).
+/// queue the owner picked (`lp -o raw`; on Windows a "RAW" spooler job,
+/// `print_win::print_raw`). Never routed around that queue
+/// (docs/PRINTER.md "What went wrong" 9).
 fn print_system_raw(name: Option<&str>, bytes: &[u8]) -> Result<(), String> {
-    let dir = std::env::temp_dir().join("kumkaj-kot-raw");
-    fs::create_dir_all(&dir).map_err(|e| e.to_string())?;
-    let path = dir.join(format!("{}.bin", uuid::Uuid::new_v4()));
-    fs::write(&path, bytes).map_err(|e| e.to_string())?;
-    let result = print_system_raw_path(name, &path);
-    let _ = fs::remove_file(&path);
-    result
-}
-
-/// Windows script: hand `$bytes` to WritePrinter until all of it is taken
-/// (it may take a job in parts) — one job, no pauses.
-#[cfg(any(target_os = "windows", test))]
-pub(crate) fn powershell_write_loop(class: &str) -> String {
-    format!(
-        r#"$offset = 0
-        while ($offset -lt $bytes.Length) {{
-          $written = 0
-          $ptr = [IntPtr]::Add($pinned.AddrOfPinnedObject(), $offset)
-          if (-not [{class}]::WritePrinter($h, $ptr, $bytes.Length - $offset, [ref]$written)) {{ throw "WritePrinter failed" }}
-          if ($written -le 0) {{ throw "WritePrinter wrote nothing" }}
-          $offset += $written
-        }}"#
-    )
-}
-
-fn print_system_raw_path(name: Option<&str>, path: &Path) -> Result<(), String> {
     #[cfg(any(target_os = "linux", target_os = "macos"))]
     {
+        let dir = std::env::temp_dir().join("kumkaj-kot-raw");
+        fs::create_dir_all(&dir).map_err(|e| e.to_string())?;
+        let path = dir.join(format!("{}.bin", uuid::Uuid::new_v4()));
+        fs::write(&path, bytes).map_err(|e| e.to_string())?;
         // A raw job on the picked queue: the bytes reach the device as-is.
         let mut cmd = Command::new("lp");
         cmd.args(["-o", "raw"]);
         if let Some(name) = name {
             cmd.args(["-d", name]);
         }
-        cmd.arg("--").arg(path);
-        match cmd.output() {
+        cmd.arg("--").arg(&path);
+        let result = match cmd.output() {
             Ok(out) if out.status.success() => lp_job_queued(name, &out.stdout),
             Ok(out) => {
                 let detail = first_line(&out.stderr).unwrap_or_else(|| "raw print refused".into());
@@ -5210,95 +5326,27 @@ fn print_system_raw_path(name: Option<&str>, path: &Path) -> Result<(), String> 
                 "no printing system (CUPS) — add the kitchen printer as host:9100 in Settings → Printers"
                     .into(),
             ),
-        }
+        };
+        let _ = fs::remove_file(&path);
+        result
     }
     #[cfg(target_os = "windows")]
     {
-        use std::os::windows::process::CommandExt;
-        const CREATE_NO_WINDOW: u32 = 0x0800_0000;
-        let quote = |s: &str| s.replace('\'', "''");
-        let path_s = quote(&path.display().to_string());
-        // RAW datatype via winspool — page drivers must not reinterpret the slip.
-        let script = if let Some(name) = name {
-            format!(
-                r#"
-$ErrorActionPreference = 'Stop'
-Add-Type -TypeDefinition @"
-using System;
-using System.Runtime.InteropServices;
-public class KumkajRawPrint {{
-  [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Ansi)]
-  public class DOCINFOA {{
-    [MarshalAs(UnmanagedType.LPStr)] public string pDocName;
-    [MarshalAs(UnmanagedType.LPStr)] public string pOutputFile;
-    [MarshalAs(UnmanagedType.LPStr)] public string pDataType;
-  }}
-  [DllImport("winspool.Drv", EntryPoint = "OpenPrinterA", SetLastError = true, CharSet = CharSet.Ansi)]
-  public static extern bool OpenPrinter([MarshalAs(UnmanagedType.LPStr)] string szPrinter, out IntPtr hPrinter, IntPtr pd);
-  [DllImport("winspool.Drv", EntryPoint = "ClosePrinter", SetLastError = true)]
-  public static extern bool ClosePrinter(IntPtr hPrinter);
-  [DllImport("winspool.Drv", EntryPoint = "StartDocPrinterA", SetLastError = true, CharSet = CharSet.Ansi)]
-  public static extern bool StartDocPrinter(IntPtr hPrinter, int level, [In] DOCINFOA di);
-  [DllImport("winspool.Drv", EntryPoint = "EndDocPrinter", SetLastError = true)]
-  public static extern bool EndDocPrinter(IntPtr hPrinter);
-  [DllImport("winspool.Drv", EntryPoint = "StartPagePrinter", SetLastError = true)]
-  public static extern bool StartPagePrinter(IntPtr hPrinter);
-  [DllImport("winspool.Drv", EntryPoint = "EndPagePrinter", SetLastError = true)]
-  public static extern bool EndPagePrinter(IntPtr hPrinter);
-  [DllImport("winspool.Drv", EntryPoint = "WritePrinter", SetLastError = true)]
-  public static extern bool WritePrinter(IntPtr hPrinter, IntPtr pBytes, int dwCount, out int dwWritten);
-}}
-"@
-$bytes = [IO.File]::ReadAllBytes('{path_s}')
-$h = [IntPtr]::Zero
-if (-not [KumkajRawPrint]::OpenPrinter('{name}', [ref]$h, [IntPtr]::Zero)) {{ throw "OpenPrinter failed" }}
-try {{
-  $di = New-Object KumkajRawPrint+DOCINFOA
-  $di.pDocName = 'KOT'
-  $di.pDataType = 'RAW'
-  if (-not [KumkajRawPrint]::StartDocPrinter($h, 1, $di)) {{ throw "StartDocPrinter failed" }}
-  try {{
-    if (-not [KumkajRawPrint]::StartPagePrinter($h)) {{ throw "StartPagePrinter failed" }}
-    try {{
-      $pinned = [Runtime.InteropServices.GCHandle]::Alloc($bytes, [Runtime.InteropServices.GCHandleType]::Pinned)
-      try {{
-        # One picture at a time with a pause (a head drops a burst), and each
-        # piece looped until WritePrinter took every byte of it.
-        {write_loop}
-      }} finally {{ $pinned.Free() }}
-    }} finally {{ [void][KumkajRawPrint]::EndPagePrinter($h) }}
-  }} finally {{ [void][KumkajRawPrint]::EndDocPrinter($h) }}
-}} finally {{ [void][KumkajRawPrint]::ClosePrinter($h) }}
-"#,
-                path_s = path_s,
-                name = quote(name),
-                write_loop = powershell_write_loop("KumkajRawPrint"),
-            )
-        } else {
-            // No name → default printer via Out-Printer still page-layouts; refuse
-            // with a clear fix (pick a named queue or host:9100).
+        // The bytes must reach the device as they are: a named queue takes
+        // them as a raw job. With no name there is no queue to hand them to.
+        let Some(name) = name else {
             return Err(
                 "pick the kitchen printer by name, or use a network address (host:9100) in Settings → Printers"
                     .into(),
             );
         };
-        let out = Command::new("powershell")
-            .args(["-NoProfile", "-NonInteractive", "-ExecutionPolicy", "Bypass", "-Command", &script])
-            .creation_flags(CREATE_NO_WINDOW)
-            .output()
-            .map_err(|e| format!("PowerShell did not start ({e})"))?;
-        if out.status.success() {
-            Ok(())
-        } else {
-            let detail = first_line(&out.stderr).unwrap_or_else(|| "Windows raw print failed".into());
-            Err(format!(
-                "{detail} — for kitchen tickets prefer a network address (host:9100) in Settings → Printers"
-            ))
-        }
+        crate::print_win::print_raw(name, "KOT", bytes).map_err(|detail| {
+            format!("{detail} — for kitchen tickets prefer a network address (host:9100) in Settings → Printers")
+        })
     }
     #[cfg(target_os = "android")]
     {
-        let _ = (name, path);
+        let _ = (name, bytes);
         Err(
             "Android has no system printer drivers for kitchen tickets — use a network address (host:9100) in Settings → Printers"
                 .into(),
@@ -5306,7 +5354,7 @@ try {{
     }
     #[cfg(not(any(target_os = "linux", target_os = "macos", target_os = "windows", target_os = "android")))]
     {
-        let _ = (name, path);
+        let _ = (name, bytes);
         Err("printing is not supported on this system".into())
     }
 }
@@ -5315,7 +5363,9 @@ try {{
 
 
 
-#[cfg(not(target_os = "android"))]
+
+
+#[cfg(any(target_os = "linux", target_os = "macos"))]
 fn first_line(bytes: &[u8]) -> Option<String> {
     String::from_utf8_lossy(bytes).lines().map(str::trim).find(|l| !l.is_empty()).map(str::to_string)
 }
@@ -5388,6 +5438,9 @@ pub fn find_printers_in_background() {
     // Drop the previous Find result immediately so the UI cannot keep
     // showing an old/partial list (or look like the saved pool) mid-search.
     *FOUND.lock().unwrap() = None;
+    // Every driver is asked afresh by a Find: what a printer reported
+    // before is not shown as what it reports now.
+    crate::os_paper::forget_all();
     if let Some(hook) = *NOTIFY.lock().unwrap() {
         hook();
     }
@@ -5521,29 +5574,9 @@ fn system_printers() -> Vec<String> {
     }
     #[cfg(target_os = "windows")]
     {
-        use std::os::windows::process::CommandExt;
-        const CREATE_NO_WINDOW: u32 = 0x0800_0000;
-        // Skip WorkOffline and Offline — those are removed / unplugged ghosts.
-        Command::new("powershell")
-            .args([
-                "-NoProfile",
-                "-NonInteractive",
-                "-Command",
-                "Get-Printer | Where-Object { -not $_.WorkOffline -and $_.PrinterStatus -ne 'Offline' } | ForEach-Object { $_.Name }",
-            ])
-            .creation_flags(CREATE_NO_WINDOW)
-            .output()
-            .ok()
-            .filter(|o| o.status.success())
-            .map(|o| {
-                String::from_utf8_lossy(&o.stdout)
-                    .lines()
-                    .map(str::trim)
-                    .filter(|l| !l.is_empty())
-                    .map(str::to_string)
-                    .collect()
-            })
-            .unwrap_or_default()
+        // Windows' own list; one that works offline or is reported
+        // offline is left out — a removed or unplugged ghost.
+        crate::print_win::printers()
     }
     #[cfg(not(any(target_os = "linux", target_os = "macos", target_os = "windows")))]
     {
@@ -5865,9 +5898,10 @@ mod tests {
             line: 32,
             baseline: STD_EM_NORMAL + 2.0,
             side: 4.0,
+            place: Default::default(),
         };
         let job = |addr: String| Job {
-            dests: vec![PrintDest { target: PrinterTarget::Network(addr), format: kot.clone(), paper: None }],
+            dests: vec![PrintDest { target: PrinterTarget::Network(addr), format: kot.clone(), virtual_paper: None }],
             mode: RoutePrintMode::First,
             path: PathBuf::new(),
             text: "KOT 1\n1 x Chaas".into(),
@@ -5901,6 +5935,7 @@ mod tests {
             line: 40,
             baseline: STD_EM_NORMAL + 2.0,
             side: 12.0,
+            place: Default::default(),
         }];
         PrintFormat::ensure_builtins(&mut list);
         let p = list.iter().find(|f| f.id == FORMAT_STANDARD_PORTRAIT).unwrap();
@@ -5918,15 +5953,6 @@ mod tests {
     }
 
 
-
-    /// The Windows raw writer hands the whole job to WritePrinter, no pauses.
-    #[test]
-    fn windows_raw_writer_sends_the_whole_job() {
-        let script = powershell_write_loop("KumkajRawPrint");
-        assert!(script.contains("[KumkajRawPrint]::WritePrinter"));
-        assert!(script.contains("$bytes.Length - $offset"));
-        assert!(!script.contains("Start-Sleep") && !script.contains("$pieces"));
-    }
 
     /// ESC/POS is the slip picture in standard raster, for any text: reset,
     /// `GS v 0` bands, feed, cut — no text-or-picture guess.
@@ -6009,8 +6035,12 @@ mod tests {
             id: "dup".into(),
             label: "CounterPrinter".into(),
             target: "CounterPrinter".into(),
-            paper_width_mm: 0.0,
-            paper_length_mm: 0.0,
+            virtual_paper_width_mm: 0.0,
+            virtual_paper_length_mm: 0.0,
+            reported_width_mm: 0.0,
+            reported_length_mm: 0.0,
+            reported_name: String::new(),
+            reported_edges_mm: [0.0; 4],
             _legacy_mode: None,
         });
         *cfg.route_mut(RouteKey::Bill) = vec![a.clone(), "dup".into()];
@@ -6262,9 +6292,9 @@ mod column_tests {
     fn pair_halves_sit_in_their_halves_at_their_sizes() {
         let mut fmt = BillSlipFormat::default();
         fmt.time.size_em = 20;
-        fmt.table.size_em = 40;
+        fmt.cashier.size_em = 40;
         let mut text = String::new();
-        append_pair(&mut text, (&fmt.time, "MMM"), (&fmt.table, "MMM"), false);
+        append_pair(&mut text, (&fmt.time, "MMM"), (&fmt.cashier, "MMM"), false);
         let (xs, h, side) = inked_xs(&text, 80);
         assert_eq!(
             h,
@@ -6284,11 +6314,11 @@ mod column_tests {
         use crate::receipt_raster::LineColumns;
         let mut fmt = BillSlipFormat::default();
         fmt.time.size_em = 20;
-        fmt.table.size_em = 30;
-        fmt.table.align = KotAlign::End;
+        fmt.cashier.size_em = 30;
+        fmt.cashier.align = KotAlign::End;
         let pair = |rtl: bool| {
             let mut out = String::new();
-            append_pair(&mut out, (&fmt.time, "Date: 1"), (&fmt.table, "Table: T2"), rtl);
+            append_pair(&mut out, (&fmt.time, "Date: 1"), (&fmt.cashier, "Cashier: T2"), rtl);
             let lines = styled_slip_lines(&out, &PrintFormat::standard().raster_metrics());
             assert_eq!(lines.len(), 1);
             let l = &lines[0];
@@ -6296,13 +6326,200 @@ mod column_tests {
             (l.text.clone(), l.em, half.text.clone(), half.em, half.align)
         };
         let (a, a_em, b, b_em, b_align) = pair(false);
-        assert_eq!((a.as_str(), a_em, b.as_str(), b_em), ("Date: 1", 20.0, "Table: T2", 30.0));
+        assert_eq!((a.as_str(), a_em, b.as_str(), b_em), ("Date: 1", 20.0, "Cashier: T2", 30.0));
         assert_eq!(b_align, crate::receipt_raster::LineAlign::End);
         let (a, _, b, _, _) = pair(true);
-        assert_eq!((a.as_str(), b.as_str()), ("Table: T2", "Date: 1"), "RTL: first field on the right");
+        assert_eq!((a.as_str(), b.as_str()), ("Cashier: T2", "Date: 1"), "RTL: first field on the right");
         let mut plain = String::new();
-        append_pair(&mut plain, (&fmt.time, "Date: 1"), (&fmt.table, "Table: T2"), false);
-        assert_eq!(strip_kot_style_marks(&plain).trim_end(), "Date: 1\tTable: T2");
+        append_pair(&mut plain, (&fmt.time, "Date: 1"), (&fmt.cashier, "Cashier: T2"), false);
+        assert_eq!(strip_kot_style_marks(&plain).trim_end(), "Date: 1\tCashier: T2");
+    }
+
+
+    /// The three sample totals through the rows builder.
+    fn sample_total_lines(fmt: &BillSlipFormat) -> Vec<String> {
+        let mut totals = BillTotalRows::new(fmt);
+        totals.total(BillTotalKind::Qty, "Total Qty", "3", "Total Qty: 3");
+        totals.total(BillTotalKind::Subtotal, "Sub Total", "100.00", "Sub Total: 100.00");
+        totals.total(BillTotalKind::Grand, "Grand Total", "100.00", "Grand Total: 100.00");
+        totals.finish()
+    }
+
+    fn place(number: &str, caption: &str) -> BillTotalPlace {
+        BillTotalPlace { number: number.into(), caption: caption.into() }
+    }
+
+    /// Nothing placed: every total on its own line, word for word as before.
+    #[test]
+    fn totals_keep_their_own_lines_until_the_owner_places_them() {
+        let fmt = BillSlipFormat::default();
+        assert_eq!(sample_total_lines(&fmt), ["Total Qty: 3", "Sub Total: 100.00", "Grand Total: 100.00"]);
+        let json = fmt.to_json();
+        assert!(!json.contains("total_qty_place") && !json.contains("total_grand_place"), "{json}");
+    }
+
+    /// The owner's ask (2026-11-17): Total Qty in the Qty column, Grand
+    /// Total in the Amount column, in a single row.
+    #[test]
+    fn totals_under_their_columns_share_one_row() {
+        let mut fmt = BillSlipFormat::default();
+        fmt.total_show_subtotal = false;
+        fmt.total_qty_place = place("qty", "none");
+        fmt.total_grand_place = place("amount", "name");
+        let mut totals = BillTotalRows::new(&fmt);
+        totals.total(BillTotalKind::Qty, "Total Qty", "3", "Total Qty: 3");
+        totals.total(BillTotalKind::Grand, "Grand Total", "100.00", "Grand Total: 100.00");
+        // Item | Qty | Price | Amount.
+        assert_eq!(totals.finish(), ["Grand Total\t3\t\t100.00"]);
+        // All three in one row, each under a column of its own.
+        fmt.total_show_subtotal = true;
+        fmt.total_subtotal_place = place("price", "none");
+        fmt.total_grand_place = place("amount", "none");
+        assert_eq!(sample_total_lines(&fmt), ["\t3\t100.00\t100.00"]);
+        // The places are kept with the format.
+        let back = BillSlipFormat::parse(&fmt.to_json());
+        assert_eq!(back.total_qty_place, place("qty", "none"));
+        assert_eq!(back.total_subtotal_place, place("price", "none"));
+        assert_eq!(back.total_grand_place, place("amount", "none"));
+    }
+
+    /// A box holds one total: the next one for it starts the next row.
+    #[test]
+    fn two_totals_for_one_column_take_two_rows() {
+        let mut fmt = BillSlipFormat::default();
+        fmt.total_qty_place = place("qty", "none");
+        fmt.total_subtotal_place = place("amount", "price");
+        fmt.total_grand_place = place("amount", "price");
+        assert_eq!(sample_total_lines(&fmt), ["\t3\tSub Total\t100.00", "\t\tGrand Total\t100.00"]);
+        // A caption with its number is one cell, as the line reads alone.
+        fmt.total_grand_place = place("amount", "");
+        assert_eq!(sample_total_lines(&fmt), ["\t3\tSub Total\t100.00", "\t\t\tGrand Total: 100.00"]);
+        // A caption whose own box is taken waits for the next row too.
+        fmt.total_qty_place = place("qty", "price");
+        fmt.total_subtotal_place = place("amount", "price");
+        fmt.total_show_grand = false;
+        let mut totals = BillTotalRows::new(&fmt);
+        totals.total(BillTotalKind::Qty, "Total Qty", "3", "Total Qty: 3");
+        totals.total(BillTotalKind::Subtotal, "Sub Total", "100.00", "Sub Total: 100.00");
+        assert_eq!(totals.finish(), ["\t3\tTotal Qty\t", "\t\tSub Total\t100.00"]);
+    }
+
+    /// Only under a column that prints: a hidden column, an id this build
+    /// does not know, or stacked items leave the total on its own line.
+    #[test]
+    fn a_total_with_no_column_to_sit_under_has_its_own_line() {
+        let own = ["Total Qty: 3", "Sub Total: 100.00", "Grand Total: 100.00"];
+        let mut fmt = BillSlipFormat::default();
+        fmt.total_qty_place = place("qty", "none");
+        fmt.total_subtotal_place = place("price", "");
+        fmt.total_grand_place = place("amount", "name");
+        fmt.item_layout = BillItemLayout::Stacked;
+        assert_eq!(sample_total_lines(&fmt), own);
+        fmt.item_layout = BillItemLayout::Columns;
+        fmt.item_show_qty = false;
+        fmt.item_show_price = false;
+        fmt.item_show_amount = false;
+        assert_eq!(sample_total_lines(&fmt), own);
+        // A caption set under a hidden column goes with its number.
+        fmt.item_show_amount = true;
+        fmt.item_show_name = false;
+        assert_eq!(sample_total_lines(&fmt), ["Total Qty: 3", "Sub Total: 100.00", "Grand Total: 100.00\t"]);
+        // From a newer build: an unknown id reads as "own line" and the
+        // rest of the format is kept.
+        let read = BillSlipFormat::parse(r#"{"footer":"Thanks","total_qty_place":{"number":"tray","caption":"left"}}"#);
+        assert_eq!(read.footer, "Thanks");
+        assert!(read.total_qty_place.is_default(), "{:?}", read.total_qty_place);
+    }
+
+    /// Tax, service, rounding and payments have no setting of their own:
+    /// they follow Sub total, and always keep their caption.
+    #[test]
+    fn the_other_amounts_follow_sub_total() {
+        let mut fmt = BillSlipFormat::default();
+        let lines = |fmt: &BillSlipFormat| {
+            let mut totals = BillTotalRows::new(fmt);
+            totals.total(BillTotalKind::Subtotal, "Sub Total", "100.00", "Sub Total 100.00");
+            totals.amount("CGST 2.5%", "2.50", "CGST 2.5% 2.50");
+            totals.words("(GST inclusive)");
+            totals.total(BillTotalKind::Grand, "Total", "105.00", "Total 105.00");
+            totals.amount("Cash", "105.00", "Cash 105.00");
+            totals.finish()
+        };
+        assert_eq!(
+            lines(&fmt),
+            ["Sub Total 100.00", "CGST 2.5% 2.50", "(GST inclusive)", "Total 105.00", "Cash 105.00"],
+            "as before while Sub total has its own line"
+        );
+        fmt.total_subtotal_place = place("amount", "price");
+        fmt.total_grand_place = place("amount", "price");
+        assert_eq!(
+            lines(&fmt),
+            [
+                "\t\tSub Total\t100.00",
+                "\t\tCGST 2.5%\t2.50",
+                "(GST inclusive)",
+                "\t\tTotal\t105.00",
+                "\t\tCash\t105.00",
+            ]
+        );
+        // Sub total without its caption: the others still say what they are.
+        fmt.total_subtotal_place = place("amount", "none");
+        assert_eq!(lines(&fmt)[..2], ["\t\t\t100.00", "\t\t\tCGST 2.5% 2.50"]);
+    }
+
+    /// Through the whole bill: the row keeps its empty first cells, is laid
+    /// on the item columns, and each number is drawn in its column's box.
+    #[test]
+    fn a_placed_total_is_drawn_inside_its_column() {
+        let mm = 80;
+        let mut fmt = BillSlipFormat::parse(r#"{"content_width_mm": 80}"#);
+        let mut cols = fmt.item_columns();
+        cols.name = col(30.0, KotAlign::Start);
+        cols.qty = col(10.0, KotAlign::End);
+        cols.price = col(15.0, KotAlign::End);
+        cols.amount = col(17.0, KotAlign::End);
+        fmt.item_columns = Some(cols);
+        fmt.total_show_subtotal = false;
+        fmt.total_show_grand = false;
+        fmt.total_qty_place = place("qty", "none");
+        let text = fmt.render_sample("Shop", "01/01/26 12:00");
+        let row = text
+            .lines()
+            .find(|l| take_kot_line_style(l).1.starts_with("\t3"))
+            .unwrap_or_else(|| panic!("no totals row:\n{text}"));
+        assert_eq!(take_kot_line_style(row).1, "\t3\t\t");
+        let m = PrintFormat::standard().raster_metrics();
+        let styled = styled_slip_lines(&text, &m);
+        let line = styled.iter().find(|l| l.text.starts_with("\t3")).unwrap();
+        assert!(matches!(line.tab, Some(crate::receipt_raster::LineColumns::Owner(_))), "on the item columns");
+        // The Total line's own size and weight.
+        assert_eq!(line.em, fmt.total.size_em as f32);
+        // Drawn alone under the columns' directive: all its ink in the Qty box.
+        let alone = format!("{}{row}\n", encode_slip_columns(&fmt.ordered_slip_columns(), mm, false, false));
+        let (xs, _, side) = inked_xs(&alone, mm);
+        let dpm = content_dots_per_mm(mm);
+        let (box_start, box_end) = (side + 30.0 * dpm, side + 40.0 * dpm);
+        assert!(!xs.is_empty());
+        assert!(
+            xs.iter().all(|&x| (x as f32) >= box_start.floor() && (x as f32) < box_end.ceil()),
+            "ink {}..{} outside the Qty box {box_start}..{box_end}",
+            xs.iter().min().unwrap(),
+            xs.iter().max().unwrap()
+        );
+        // End-aligned like the column's quantities: it ends at the box's end.
+        assert!((*xs.iter().max().unwrap() as f32) > box_end - 6.0);
+    }
+
+    /// A lone column's line ends in a tab; the stage keeps it, so the line
+    /// is laid out in its column and not as a plain line.
+    #[test]
+    fn a_lone_column_line_keeps_its_tab_through_the_bill() {
+        let mut fmt = BillSlipFormat::default();
+        fmt.item_show_qty = false;
+        fmt.item_show_price = false;
+        fmt.item_show_amount = false;
+        let text = strip_kot_style_marks(&fmt.render_sample("Shop", "01/01/26 12:00"));
+        assert!(text.lines().any(|l| l == "Paracetamol\t"), "{text}");
     }
 }
 
@@ -6312,34 +6529,106 @@ mod column_tests {
 mod paper_tests {
     use super::*;
 
+    /// The job is one PDF, sent the standard way: no paper named (the queue
+    /// prints on its own, as its driver is set) and its page — the printable
+    /// area — laid there 1:1 from the top-left (owner, 2026-11-17).
     #[test]
-    fn os_document_names_the_paper_and_starts_at_the_printable_top_left() {
-        let opts = lp_sheet_options("Card", 548);
+    fn os_document_names_no_paper_and_lays_its_page_on_the_printable_area() {
+        let opts = lp_pdf_options();
         let has = |o: &str| opts.windows(2).any(|w| w[0] == "-o" && w[1] == o);
-        assert!(has("media=Card"), "{opts:?}");
-        // Each sheet is the printable width, so fit is 1:1; without
-        // `position` CUPS centres a picture (PRINTER.md lesson 21).
+        assert!(!opts.iter().any(|o| o.starts_with("media=") || o.starts_with("PageSize=")), "{opts:?}");
+        // The PDF page is the printable area, so fit is 1:1.
         assert!(has("print-scaling=fit"), "{opts:?}");
+        assert!(has("fit-to-page"), "{opts:?}");
         assert!(has("position=top-left"), "{opts:?}");
-        assert!(has("ppi=548"), "{opts:?}");
-        // Never `print-scaling=none`: CUPS centres the page with it.
+        assert!(has("orientation-requested=3"), "{opts:?}");
+        // Never `none`: the filters then leave a page to the printer's
+        // corner, or shrink one the size of the paper (measured 2026-11-17).
         assert!(!opts.iter().any(|o| o == "print-scaling=none"), "{opts:?}");
     }
 
-    /// A job's paper is the printer's; not set yet, it is what Find would
-    /// give it from the same driver answer — never a size of the app's own.
+    /// A made-up driver's page: 595 × 842 pt, reachable 12 pt in from the
+    /// sides and 24 pt from top and bottom.
+    fn check_page() -> crate::os_paper::Paper {
+        let pt = crate::os_paper::PT_MM;
+        crate::os_paper::Paper {
+            id: "Sheet".into(),
+            label: "Sheet".into(),
+            width_mm: 595.0 * pt,
+            height_mm: 842.0 * pt,
+            margins_mm: [12.0 * pt, 24.0 * pt, 12.0 * pt, 24.0 * pt],
+        }
+    }
+
+    /// What CUPS is handed: every PDF page is the printable area of the
+    /// printer's own page — never the virtual paper, never a size of the
+    /// app's own — and a half-size virtual sheet only says where pages end.
     #[test]
-    fn a_job_goes_on_the_printers_paper_or_what_find_would_give_it() {
-        let ppd = "*DefaultPageSize: Letter\n\
-*PageSize Letter/Letter: \"\"\n*PaperDimension Letter/Letter: \"612 792\"\n";
-        let driver = Ok(crate::os_paper::parse_ppd(ppd));
-        let set = crate::os_paper::PaperMm { width_mm: 101.6, length_mm: 0.0 };
-        assert_eq!(job_paper(Some(set), &driver), set, "the printer's own paper wins");
-        let p = job_paper(None, &driver);
-        assert!((p.width_mm - 215.9).abs() < 0.05 && (p.length_mm - 279.4).abs() < 0.05, "{p:?}");
-        // No answer: the 80 mm roll, never A4.
-        let p = job_paper(None, &Err("down".into()));
-        assert_eq!(p, crate::os_paper::PaperMm { width_mm: 80.0, length_mm: 0.0 });
+    fn the_job_pdf_is_the_printers_own_printable_area_whatever_the_virtual_paper() {
+        let mut f = PrintFormat::standard_portrait();
+        f.line = wrap_cols_for_paper_mm(80);
+        let mut text = String::from("CASH MEMO\n");
+        for i in 0..60 {
+            text.push_str(&format!("Item number {}\t1\t80.00\t80.00\n", i + 1));
+        }
+        let (slip, mm) = os_document_slip(&text, &f).unwrap();
+        let own = check_page();
+        let pages_of = |pdf: &[u8]| String::from_utf8_lossy(pdf).matches("/Type /Page ").count();
+        // On its own page the bill is longer than one page.
+        let whole = os_document_pdf(&slip, mm, &own, &f, None);
+        let n_whole = pages_of(&whole);
+        assert!(n_whole >= 2, "{n_whole}");
+        // A half-length virtual sheet: more pages, the same PDF page size.
+        let half = crate::os_paper::PaperMm { width_mm: 105.0, length_mm: 148.0 };
+        let halved = os_document_pdf(&slip, mm, &own, &f, Some(half));
+        assert!(pages_of(&halved) > n_whole, "pages end at the real sheet's length");
+        for pdf in [&whole, &halved] {
+            let text = String::from_utf8_lossy(pdf);
+            assert_eq!(text.matches("/MediaBox [0 0 571 794]").count(), pages_of(pdf), "the printable area of the printer's own page");
+        }
+    }
+
+    /// The reported paper is what the driver says; the virtual paper is the
+    /// owner's. A driver's answer replaces the first and never the second.
+    #[test]
+    fn a_drivers_answer_is_kept_as_the_reported_paper_and_never_as_the_virtual_one() {
+        let ppd = "*DefaultPageSize: Big\n*PageSize Big/Big sheet: \"\"\n*PaperDimension Big/Big sheet: \"595 842\"\n\
+*ImageableArea Big/Big sheet: \"12 24 583 818\"\n*PageSize Small/Small card: \"\"\n*PaperDimension Small/Small card: \"288 432\"\n";
+        let mut answers = std::collections::HashMap::new();
+        answers.insert("Office".to_string(), Ok(crate::os_paper::parse_ppd(ppd)));
+        let mut d = DevicePrinters::default();
+        let (office, _) = d.ensure_printer("Office", "Office");
+        let (thermal, _) = d.ensure_printer("192.168.50.20:9100", "192.168.50.20:9100");
+        // The owner said: a half-size sheet is in the office printer.
+        assert!(d.set_printer_paper_mm(&office, 105.0, 148.0));
+        assert_eq!(d.take_driver_answers(&answers, true), 2, "the office printer's report; the thermal's default roll");
+        let p = d.printer_by_id(&office).unwrap();
+        assert_eq!(p.virtual_paper(), crate::os_paper::PaperMm::new(105.0, 148.0), "the owner's paper is kept");
+        let reported = p.reported_paper().expect("reported");
+        assert_eq!(reported.label, "Big sheet");
+        assert!((reported.width_mm - 209.9).abs() < 0.01 && (reported.height_mm - 297.04).abs() < 0.01, "{reported:?}");
+        assert!((reported.margins_mm[0] - 4.23).abs() < 0.01 && (reported.margins_mm[1] - 8.47).abs() < 0.01);
+        // A device with no driver reports nothing.
+        assert!(d.printer_by_id(&thermal).unwrap().reported_paper().is_none());
+        // The same answer again changes nothing.
+        assert_eq!(d.take_driver_answers(&answers, true), 0);
+        // It is saved with the printer, and read back.
+        let back: DevicePrinters = device_printers_from_value(serde_json::to_value(&d).unwrap());
+        assert_eq!(back.printer_by_id(&office).unwrap().reported_paper(), Some(reported));
+        let saved = serde_json::to_string(&d).unwrap();
+        assert!(saved.contains("\"reported_width_mm\""), "{saved}");
+        assert_eq!(saved.matches("reported_name").count(), 1, "nothing written for a printer that reported nothing");
+        // The driver now set to the small card: the report follows it.
+        answers.insert("Office".to_string(), Ok(crate::os_paper::parse_ppd(&ppd.replace("*DefaultPageSize: Big", "*DefaultPageSize: Small"))));
+        assert_eq!(d.take_driver_answers(&answers, true), 1);
+        let p = d.printer_by_id(&office).unwrap();
+        assert_eq!(p.reported_paper().unwrap().label, "Small card");
+        assert_eq!(p.virtual_paper(), crate::os_paper::PaperMm::new(105.0, 148.0));
+        // The driver cannot be read any more: not reported.
+        answers.insert("Office".to_string(), Err("the printing system did not answer".into()));
+        assert_eq!(d.take_driver_answers(&answers, true), 1);
+        assert!(d.printer_by_id(&office).unwrap().reported_paper().is_none());
+        assert_eq!(d.printer_by_id(&office).unwrap().virtual_paper(), crate::os_paper::PaperMm::new(105.0, 148.0));
     }
 
     /// Find fills a printer with no paper and never changes one already set,
@@ -6360,11 +6649,12 @@ mod paper_tests {
         answers.insert("Counter".to_string(), Ok(crate::os_paper::parse_ppd(ppd)));
         for _ in 0..2 {
             d.fill_missing_papers(&answers, true);
+            // A second Find adds nothing and changes nothing.
             d.ensure_printer("Office", "Office");
             d.ensure_printer("Counter", "Counter");
             d.dedupe_printers();
         }
-        let paper = |id: &str| d.printer_by_id(id).and_then(|p| p.paper());
+        let paper = |id: &str| d.printer_by_id(id).and_then(|p| p.virtual_paper());
         let o = paper(&office).unwrap();
         // Exactly what the driver says: 595 × 842 pt is 209.9 × 297.0 mm.
         assert!((o.width_mm - 209.9).abs() < 0.05 && (o.length_mm - 297.0).abs() < 0.05, "{o:?}");
@@ -6374,36 +6664,288 @@ mod paper_tests {
         // Saved and loaded again: the papers are still there.
         let json = serde_json::to_value(&d).unwrap();
         let back: DevicePrinters = serde_json::from_value(json).unwrap();
-        assert_eq!(back.printer_by_id(&set).and_then(|p| p.paper()), crate::os_paper::PaperMm::new(104.8, 0.0));
+        assert_eq!(back.printer_by_id(&set).and_then(|p| p.virtual_paper()), crate::os_paper::PaperMm::new(104.8, 0.0));
         // A screen repaint never saves a default from a silent driver.
         let mut quiet = DevicePrinters::default();
         let (q, _) = quiet.ensure_printer("Quiet", "Quiet");
         let mut silent = std::collections::HashMap::new();
         silent.insert("Quiet".to_string(), Err("down".to_string()));
         assert_eq!(quiet.fill_missing_papers(&silent, false), 0);
-        assert!(quiet.printer_by_id(&q).unwrap().paper().is_none());
+        assert!(quiet.printer_by_id(&q).unwrap().virtual_paper().is_none());
         assert_eq!(quiet.fill_missing_papers(&silent, true), 1, "Find gives the default");
     }
 
-    /// Windows: the page is the printer's paper — the driver's size that
-    /// matches, else a custom one (or, with no custom sizes, the driver's own
-    /// paper, said so) — each page at the slip's real size from the
-    /// printable area, never shrunk.
+    /// No paper is assumed: on every page a driver may be set to — a
+    /// 4-inch card, a narrow strip, a half sheet, a big sheet — the slip
+    /// keeps its own size (never fitted to the paper), starts at the
+    /// printable top-left, and is cut only past the printable edge
+    /// (docs/PRINTER.md § Paper, lesson 24).
     #[test]
-    fn windows_os_document_draws_real_size_on_the_printers_paper() {
-        let card = crate::os_paper::PaperMm { width_mm: 101.6, length_mm: 152.4 };
-        let s = windows_slip_script(r"C:\Shop's\slip.png", Some("Front desk"), card, 80.0, false, 2, &[30, 75], 120);
-        assert!(s.contains(r"FromFile('C:\Shop''s\slip.png')"), "{s}");
-        assert!(s.contains("PrinterName = 'Front desk'"), "{s}");
-        assert!(s.contains("$W = 400.0000; $L = 600.0000;"), "{s}");
-        assert!(s.contains("PrintableArea") && s.contains("OriginAtMargins = $false"), "{s}");
-        assert!(s.contains("$dst = New-Object System.Drawing.RectangleF(0, 0,"), "{s}");
-        assert!(!s.contains("PageBounds"), "never the page: the printable area");
-        assert!(s.contains("$_.Kind -eq 'Custom'") && s.contains("KUMKAJ-NOTE: "), "{s}");
-        assert!(s.contains("$img.Width / (80.0000 / 25.4 * 100.0)"), "{s}");
-        let roll = crate::os_paper::PaperMm { width_mm: 80.0, length_mm: 0.0 };
-        let r = windows_slip_script("a.png", None, roll, 80.0, true, 1, &[], 10);
-        assert!(r.contains("$L = 0.0000;") && r.contains("$along + $edges + 2"), "{r}");
+    fn os_document_keeps_its_real_size_on_paper_of_any_size() {
+        let text = "Shop\nButter Roti\t2\nTotal 100\n";
+        let mut f = PrintFormat::standard_portrait();
+        f.line = wrap_cols_for_paper_mm(80);
+        let (slip, mm) = os_document_slip(text, &f).unwrap();
+        let ink = |img: &image::GrayImage| {
+            let (w, h) = img.dimensions();
+            let xs = (0..w).filter(|&x| (0..h).any(|y| img.get_pixel(x, y).0[0] < 128));
+            let (mut lo, mut hi) = (u32::MAX, 0);
+            for x in xs {
+                lo = lo.min(x);
+                hi = hi.max(x);
+            }
+            (lo, hi)
+        };
+        let (slip_lo, slip_hi) = ink(&slip);
+        for (w, h, m) in [
+            (101.6, 152.4, [6.35, 12.7, 6.35, 12.7]),
+            (58.0, 3000.0, [1.5, 0.0, 1.5, 0.0]),
+            (148.0, 210.0, [4.2, 4.2, 4.2, 4.2]),
+            (330.0, 480.0, [5.0, 5.0, 5.0, 5.0]),
+        ] {
+            let own = crate::os_paper::Paper {
+                id: "Any".into(),
+                label: "Any".into(),
+                width_mm: w,
+                height_mm: h,
+                margins_mm: m,
+            };
+            // No virtual paper set: the printer's own page is all paper.
+            let (sheets, ppm) = os_document_pages(&slip, mm, &own, &f, None);
+            // The slip's own density: nothing scaled.
+            assert!((ppm - f64::from(slip.width()) / mm).abs() < 1e-9);
+            let (pw, _) = own.printable_mm();
+            assert_eq!(sheets[0].width(), (pw * ppm).floor() as u32, "{w} mm paper");
+            let (lo, hi) = ink(&sheets[0]);
+            assert_eq!(lo, slip_lo, "{w} mm paper: starts where the slip starts");
+            if slip.width() <= sheets[0].width() {
+                assert_eq!(hi, slip_hi, "{w} mm paper: the whole slip, its own size");
+            } else {
+                assert!(hi < sheets[0].width(), "{w} mm paper: cut at the printable edge");
+            }
+        }
+    }
+
+    /// `TABIYAT_PAPER_MM`: `<w>x<l>` (mm) for a sheet, `<w>` for a roll.
+    fn paper_mm_var(v: &str) -> crate::os_paper::PaperMm {
+        let (w, l) = v.split_once('x').unwrap_or((v, "0"));
+        crate::os_paper::PaperMm::new(w.trim().parse().unwrap_or(80.0), l.trim().parse().unwrap_or(0.0))
+            .expect("a paper width")
+    }
+
+    /// `TABIYAT_PLACE`: `<down>,<across>` (0 top / start … 2 bottom / end).
+    fn place_var(v: &str) -> crate::os_paper::Place {
+        let (d, a) = v.split_once(',').unwrap_or(("0", "0"));
+        crate::os_paper::Place::new(d.trim().parse().unwrap_or(0), a.trim().parse().unwrap_or(0))
+    }
+
+    /// The sample bill both manual checks print.
+    fn check_bill(mm: u32, lines: usize) -> (String, PrintFormat) {
+        let mut text = String::from("CASH MEMO\nBill No.: 1\n");
+        for i in 0..lines {
+            text.push_str(&format!("Item number {}\t1\t80.00\t80.00\n", i + 1));
+        }
+        text.push_str("Grand Total: 640.00\nThanks\n");
+        let mut f = PrintFormat::standard_portrait();
+        f.line = wrap_cols_for_paper_mm(mm);
+        (text, f)
+    }
+
+    /// The format of the sample bill, as the check's settings say:
+    /// `TABIYAT_BILL_MM` wide, `TABIYAT_LANDSCAPE=1`, `TABIYAT_PLACE`.
+    fn check_format(var: &dyn Fn(&str) -> String) -> (String, PrintFormat) {
+        let (text, mut f) = check_bill(
+            var("TABIYAT_BILL_MM").parse().unwrap_or(80),
+            var("TABIYAT_LINES").parse().unwrap_or(8),
+        );
+        f.landscape = var("TABIYAT_LANDSCAPE") == "1";
+        f.place = place_var(&var("TABIYAT_PLACE"));
+        (text, f)
+    }
+
+    /// The virtual paper of the check: `TABIYAT_PAPER_MM`, or none set.
+    fn check_virtual(var: &dyn Fn(&str) -> String) -> Option<crate::os_paper::PaperMm> {
+        Some(var("TABIYAT_PAPER_MM")).filter(|v| !v.trim().is_empty()).map(|v| paper_mm_var(&v))
+    }
+
+    /// What a check writes beside its print: the slip, the app's own preview
+    /// of the job on `own` (the page it printed on) and the numbers.
+    fn write_check_preview(
+        out: &std::path::Path,
+        slip: &image::GrayImage,
+        content_mm: f64,
+        own: &crate::os_paper::Paper,
+        f: &PrintFormat,
+        virtual_paper: Option<crate::os_paper::PaperMm>,
+        more: &str,
+    ) {
+        let lay = slip_lay(f);
+        let virtual_mm = virtual_paper.unwrap_or_else(|| own.as_virtual());
+        let sheet = crate::os_paper::sheet_for(virtual_mm, Some(own), slip_mm(slip, content_mm), lay.landscape);
+        let (pages, ppm) = crate::os_paper::os_document_sheets(slip, content_mm, &sheet, lay);
+        let preview = crate::os_paper::preview_picture(slip, 1, content_mm, Some(&sheet), 0.0, None, lay);
+        slip.save(out.join("slip.png")).unwrap();
+        preview.gray.save(out.join("preview.png")).unwrap();
+        // Each page's picture as the print lays it at the printable corner.
+        for (i, page) in pages.iter().enumerate() {
+            page.save(out.join(format!("page-{}.png", i + 1))).unwrap();
+        }
+        std::fs::write(
+            out.join("info.txt"),
+            format!(
+                "own_page={} {:.2}x{:.2} mm margins={:?}\nvirtual={}x{} mm\narea={:.2}x{:.2} mm\n\
+                 place={:?} landscape={}\ncontent_mm={content_mm}\npx_per_mm={ppm}\npreview_px_per_mm={}\npages={}\n{more}",
+                own.label,
+                own.width_mm,
+                own.height_mm,
+                own.margins_mm,
+                virtual_mm.width_mm,
+                virtual_mm.length_mm,
+                sheet.area_mm.0,
+                sheet.area_mm.1,
+                f.place,
+                f.landscape,
+                ppm / preview.per_px,
+                pages.len(),
+            ),
+        )
+        .unwrap();
+    }
+
+    /// Manual check, never run by `cargo test`: the PDF the app hands CUPS
+    /// for a sample bill — on a driver file's own paper (its default) and a
+    /// virtual paper — with its `lp` options and the app's preview of the
+    /// same job, written to a folder. Nothing is printed; `cupsfilter` on
+    /// the PDF shows where the printing system puts it.
+    /// `TABIYAT_PPD=<file.ppd> TABIYAT_PAPER_MM=<w>x<l> or <w> (the virtual
+    /// paper; blank = none) TABIYAT_PLACE=<down>,<across> TABIYAT_BILL_MM=<mm>
+    /// TABIYAT_LINES=<n> TABIYAT_LANDSCAPE=1 TABIYAT_CHECK_OUT=<dir> cargo
+    /// test -p kumkaj-tabiyat --lib write_os_document_pdf -- --ignored`
+    #[test]
+    #[ignore]
+    fn write_os_document_pdf() {
+        let var = |k: &str| std::env::var(k).unwrap_or_default();
+        let ppd = std::fs::read_to_string(var("TABIYAT_PPD")).expect("TABIYAT_PPD");
+        let out = std::path::PathBuf::from(var("TABIYAT_CHECK_OUT"));
+        std::fs::create_dir_all(&out).unwrap();
+        let papers = crate::os_paper::parse_ppd(&ppd);
+        let own = papers.default_paper().cloned().expect("the driver's own paper");
+        let (text, f) = check_format(&var);
+        let virtual_paper = check_virtual(&var);
+        let (slip, content_mm) = os_document_slip(&text, &f).unwrap();
+        std::fs::write(out.join("job.pdf"), os_document_pdf(&slip, content_mm, &own, &f, virtual_paper)).unwrap();
+        let more = format!("lp_options={}\n", lp_pdf_options().join(" "));
+        write_check_preview(&out, &slip, content_mm, &own, &f, virtual_paper, &more);
+    }
+
+    /// Manual check on Windows, never run by `cargo test`: a sample bill
+    /// sent through the app's own Windows print path with the driver's
+    /// output written to a FILE — only ever a file-only printer
+    /// ("Microsoft Print to PDF", the default, or the XPS writer), never a
+    /// real one — the app's preview of the same job on the page that
+    /// printer reported, and what `print_win::papers` reads from its driver.
+    /// `TABIYAT_CHECK_OUT=<dir>` and the settings of
+    /// [`write_os_document_pdf`]; `TABIYAT_COPIES=<n>`.
+    #[cfg(target_os = "windows")]
+    #[test]
+    #[ignore]
+    fn windows_print_check() {
+        let var = |k: &str| std::env::var(k).unwrap_or_default();
+        let out = std::path::PathBuf::from(var("TABIYAT_CHECK_OUT"));
+        std::fs::create_dir_all(&out).unwrap();
+        let printer = Some(var("TABIYAT_WIN_PRINTER"))
+            .filter(|p| !p.trim().is_empty())
+            .unwrap_or("Microsoft Print to PDF".into());
+        assert!(
+            ["Microsoft Print to PDF", "Microsoft XPS Document Writer"].contains(&printer.as_str()),
+            "a check prints to a file-only printer, never a real one"
+        );
+        let file = out.join(if printer.contains("XPS") { "job.oxps" } else { "job.pdf" });
+        let read = match crate::print_win::papers(Some(&printer)) {
+            Ok(p) => {
+                let mut lines = format!("default\t{}\n", p.default_id);
+                for x in &p.papers {
+                    lines.push_str(&format!(
+                        "{}\t{:.2}\t{:.2}\t{:?}\n",
+                        x.id, x.width_mm, x.height_mm, x.margins_mm
+                    ));
+                }
+                lines
+            }
+            Err(why) => format!("error\t{why}\n"),
+        };
+        std::fs::write(out.join("papers.txt"), read).unwrap();
+        let (text, f) = check_format(&var);
+        let virtual_paper = check_virtual(&var);
+        let (slip, content_mm) = os_document_slip(&text, &f).unwrap();
+        let copies: u32 = var("TABIYAT_COPIES").parse().unwrap_or(1);
+        let mut printed_on = None;
+        let result = crate::print_win::print_pages(Some(&printer), "Tabiyat check", copies, Some(&file), |own| {
+            printed_on = Some(own.clone());
+            os_document_pages(&slip, content_mm, own, &f, virtual_paper)
+        });
+        if let Some(own) = &printed_on {
+            write_check_preview(&out, &slip, content_mm, own, &f, virtual_paper, &format!("result={result:?}\n"));
+        } else {
+            std::fs::write(out.join("info.txt"), format!("result={result:?}\n")).unwrap();
+        }
+        std::fs::write(out.join("done.txt"), "done\n").unwrap();
+    }
+
+    /// The `GS v 0` bands of an ESC/POS job: width in bytes, all rows.
+    fn gs_v0_rows(job: &[u8]) -> (usize, Vec<u8>) {
+        let (mut at, mut width, mut rows) = (2, 0, Vec::new());
+        while job.len() >= at + 8 && job[at..at + 4] == [0x1D, 0x76, 0x30, 0x00] {
+            width = usize::from(job[at + 4]) | usize::from(job[at + 5]) << 8;
+            let h = usize::from(job[at + 6]) | usize::from(job[at + 7]) << 8;
+            rows.extend_from_slice(&job[at + 8..at + 8 + width * h]);
+            at += 8 + width * h;
+        }
+        (width, rows)
+    }
+
+    /// A format's place is kept with it; top-left (where content always
+    /// sat) is not written, so older files and builds read the same.
+    #[test]
+    fn a_formats_place_is_saved_and_top_left_is_not_written() {
+        let mut f = PrintFormat::standard_portrait();
+        let plain = serde_json::to_string(&f).unwrap();
+        assert!(!plain.contains("place"), "{plain}");
+        let old: PrintFormat = serde_json::from_str(&plain).unwrap();
+        assert!(old.place.is_top_left());
+        f.place = crate::os_paper::Place::new(1, 2);
+        let back: PrintFormat = serde_json::from_str(&serde_json::to_string(&f).unwrap()).unwrap();
+        assert_eq!(back.place, crate::os_paper::Place::new(1, 2));
+    }
+
+    /// ESC/POS: a roll is as long as the slip, so only across counts.
+    /// Top-start, or a roll whose width is not known, sends the slip exactly
+    /// as before; centred on a wider roll every dot moves to its middle.
+    #[test]
+    fn escpos_places_the_slip_across_a_wider_roll() {
+        let mut f = PrintFormat::kot();
+        f.line = wrap_cols_for_paper_mm(58);
+        let text = "Tea\nCoffee\n";
+        let roll = Some(crate::os_paper::PaperMm { width_mm: 80.0, length_mm: 0.0 });
+        let plain = escpos_job_format(&f, text);
+        assert_eq!(escpos_job_placed(&f, text, roll), plain, "top-start: unchanged");
+        f.place = crate::os_paper::Place::new(2, 1);
+        assert_eq!(escpos_job_placed(&f, text, None), plain, "roll not known: unchanged");
+        let (w0, rows0) = gs_v0_rows(&plain);
+        let (w1, rows1) = gs_v0_rows(&escpos_job_placed(&f, text, roll));
+        assert_eq!(w1, 576 / 8, "the 80 mm roll's width");
+        let shift = (576 - w0 * 8) / 2;
+        let dot = |rows: &[u8], w: usize, y: usize, d: usize| rows[y * w + d / 8] & (0x80 >> (d % 8)) != 0;
+        let height = rows0.len() / w0;
+        assert_eq!(rows1.len() / w1, height);
+        let mut ink = 0;
+        for y in 0..height {
+            for d in 0..w0 * 8 {
+                assert_eq!(dot(&rows1, w1, y, d + shift), dot(&rows0, w0, y, d), "row {y} dot {d}");
+                ink += usize::from(dot(&rows0, w0, y, d));
+            }
+        }
+        assert!(ink > 0, "the slip has ink");
     }
 
     /// The OS document is the slip at its own dots ÷ 7.2 mm wide, so a px is

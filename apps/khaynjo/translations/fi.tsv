@@ -101,6 +101,19 @@ bill_item_col_sep	Sarakkeiden viivat
 slip_columns	Sarakkeet
 slip_col_header	Otsikko
 bill_line_logo	Logo
+bill_line_shop	Liike
+bill_line_address	Osoite
+bill_line_fssai	FSSAI
+bill_line_title	Otsikko
+bill_line_customer	Asiakas
+bill_line_bill_no	Laskun nro
+bill_line_time	Aika
+bill_line_cashier	Kassahenkilö
+bill_line_table	Pöytä
+bill_line_items	Tuotteet
+bill_line_total	Yhteensä
+bill_line_footer	Alatunniste
+bill_line_upi	UPI
 bill_logo_picture	Kuva
 bill_logo_choose	Valitse kuva
 bill_logo_remove	Poista kuva
@@ -128,6 +141,12 @@ bill_item_piece_off	Pois
 bill_total_qty	Kokonaismäärä
 bill_total_subtotal	Välisumma
 bill_total_grand	Loppusumma
+bill_total_number_under	Luku sarakkeen alla
+bill_total_caption_under	Otsikko sarakkeen alla
+bill_total_own_line	Oma rivi
+bill_total_caption_with	Luvun yhteydessä
+bill_total_caption_none	Ei otsikkoa
+bill_total_place_help	Oma rivi tulostaa tämän summan erikseen. Sarakkeen alla sen luku tulostuu kyseiseen tuotesarakkeeseen tämän rivin koolla ja vahvuudella; summat jakavat saman rivin, kunnes jokin sarake on varattu, ja sitten alkaa uusi rivi. Otsikko on luvun yhteydessä, toisen sarakkeen alla tai jätetään pois. Veron, palvelun, pyöristyksen ja maksun rivit noudattavat kohtaa Välisumma.
 reprint_incl	Tulosteessa
 reprint_skip	Ohita
 reprint_skip_meta	Ohita palautustuloste
@@ -178,20 +197,20 @@ snack_secs_ph	Sekuntia (3–60, oletus 10)
 snack_secs_save	Tallenna ilmoitusaika
 snack_secs_saved	Ilmoitusaika tallennettu — {n} sekuntia
 settings_sec_whatsapp	WhatsApp
-whatsapp_cloud_help	Use your own Meta WhatsApp Cloud API. Create a System User token with whatsapp_business_messaging (temporary dashboard tokens expire). Credentials stay on this Server only — never on extra tills. Accepted means Meta took the request, not that the guest received it.
-whatsapp_phone_id_ph	Phone Number ID
-whatsapp_token_ph	Access Token (leave blank to keep)
-whatsapp_template_ph	Bill template name (optional)
-whatsapp_template_lang_ph	Template language (e.g. en)
-whatsapp_enable	Enable
+whatsapp_cloud_help	Käytä omaa Meta WhatsApp Cloud API:asi. Luo System User -tunnus, jossa on whatsapp_business_messaging (hallintapaneelin väliaikaiset tunnukset vanhenevat). Tiedot pysyvät vain tällä palvelimella — eivät koskaan lisäkassoilla. ”Hyväksytty” tarkoittaa, että Meta otti pyynnön vastaan, ei sitä, että vieras sai viestin.
+whatsapp_phone_id_ph	Puhelinnumeron tunnus
+whatsapp_token_ph	Käyttöoikeustunnus (jätä tyhjäksi säilyttääksesi)
+whatsapp_template_ph	Laskupohjan nimi (valinnainen)
+whatsapp_template_lang_ph	Pohjan kieli (esim. en)
+whatsapp_enable	Ota käyttöön
 whatsapp_disable	Off
-whatsapp_save	Save WhatsApp
-whatsapp_test	Test connection
-whatsapp_disconnect	Disconnect
-whatsapp_send_bill	Send via WhatsApp
+whatsapp_save	Tallenna WhatsApp
+whatsapp_test	Testaa yhteys
+whatsapp_disconnect	Katkaise yhteys
+whatsapp_send_bill	Lähetä WhatsAppilla
 whatsapp_consent	WhatsApp OK
-whatsapp_consent_help	Guest agreed to receive WhatsApp messages. A phone number alone is not consent.
-whatsapp_server_only	Configure WhatsApp on the shop Server device
+whatsapp_consent_help	Vieras on suostunut vastaanottamaan WhatsApp-viestejä. Pelkkä puhelinnumero ei ole suostumus.
+whatsapp_server_only	Määritä WhatsApp liikkeen palvelinlaitteessa
 settings_sec_backup	Varmuuskopio ja palautus
 settings_sec_diag	Diagnostiikka
 settings_sec_privacy	Yksityisyys
@@ -637,7 +656,7 @@ choose_device_use	Valitse palvelin tai pääte.
 paired_note	Paritettu. Avaa lukitus myydäksesi tai päivitä saadaksesi uusimman.
 last_update_at	Viimeisin päivitys: {time}.
 pair_intro	Etsi palvelin tai kirjoita sen osoite ja parituskoodi.
-pair_resume_hint	Already paired — enter your shop PIN, or Forget this shop to pair another.
+pair_resume_hint	Jo paritettu — anna liikkeesi PIN tai napauta ”Unohda tämä liike” parittaaksesi toisen.
 queue_waiting	Odottaa pääsyä liikkeeseen ({n}):
 queue_tries	Yritetty {n} kertaa · viimeisin vastaus: {e}
 save_backup_copy	Tallenna varmuuskopion kopio…
@@ -754,13 +773,18 @@ station_vps_dd	Tulostimet tälle asemalle
 station_vps_dd_n	{n} tulostinta · napauta vaihtaaksesi
 bill_printers_dd	Tulostimet laskulle
 bill_printers_dd_n	{n} tulostinta laskulle · napauta vaihtaaksesi
-paper_heading	Paperi
+paper_heading	Virtuaalinen paperi
 paper_size	{w} × {h} mm
 paper_roll	{w} mm:n rulla
 paper_not_set	paperia ei vielä tiedetä
-paper_length_mm	Pituus (mm)
-printer_paper_help	Tämän tulostimen paperi millimetreinä. Tyhjä Pituus on rulla: jokainen kuitti on sisältönsä mittainen. Etsi tulostimet täyttää tyhjän paperin tulostimen ajurista (80 mm:n rulla, jos se ei osaa sanoa) eikä koskaan muuta jo asetettua.
-preview_help	Tämä kuitti alla valitun tulostimen paperilla, kuten se siellä tulostuu: todellisessa koossa vasemmasta yläkulmasta, johon tulostin ylettyy (harmaa: reunat, joihin se ei ylety), pitkä kuitti useammalle arkille, kaikki paperin reunan yli leikataan pois. Tulostimen valinta muuttaa vain esikatselua; kunkin tulostimen paperi asetetaan kohdassa Tulostimet.
+virtual_width_mm	Virtuaalinen leveys (mm)
+virtual_length_mm	Virtuaalinen pituus (mm)
+reported_width_mm	Ilmoitettu leveys (mm)
+reported_length_mm	Ilmoitettu pituus (mm)
+reported_paper	Ilmoitettu: {paper}
+virtual_paper	Virtuaalinen: {paper}
+printer_paper_help	Ilmoitettu on paperi, jolle tämän tulostimen ajuri on asetettu; sovellus vain lukee sen, ja “Ei ole” tarkoittaa, ettei ole ajuria, jolta kysyä. Virtuaalinen on paperi, jonka sanot olevan oikeasti tulostimessa, millimetreinä; tyhjä pituus tarkoittaa rullaa. Tulostin tulostaa omalle paperilleen; virtuaalinen paperi kertoo sovellukselle, kuinka suuri osa siitä on oikeaa paperia – esikatselua, sivun pituutta ja kuitin paikkaa varten. Etsi tulostimet täyttää tyhjän virtuaalisen paperin eikä koskaan muuta itse asettamaasi.
+preview_help	Tämä kuitti sellaisena kuin se tulostuu alla valitulla tulostimella, todellisessa koossa sen virtuaalisella paperilla. Valkoinen on kohta, johon tulostetaan, harmaa paperi on tulostimen ulottumattomissa, ja haalistunut muste leikkautuu pois. Yhdeksän ruutua ovat paperi: napauta kohtaa, johon kuitin pitää asettua. Pitkä kuitti jatkuu useammalle sivulle. Tulostimen valinta muuttaa vain esikatselua.
 job_layout	Asettelu
 job_delivery	Miten työ lähetetään
 job_delivery_help	Käyttöjärjestelmän asiakirja, raakatavut tai ESC/POS. Lasku ja keittiölipuke pitävät kumpikin omansa. Kumpi tahansa työ voi mennä mille tahansa tulostimelle, jonka Etsi on tallentanut.
@@ -1266,8 +1290,8 @@ taxable_value	Verotettava arvo
 gst_inside_price_note	({tax} sisältyy)
 start_with_template	Aloita ruokalistamallillamme
 template_heading	Ruokalistamallimme
-template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
-template_download_shelf	Download photo shelf
+template_need_download	Lataa annosten julkinen kuvahylly (~1 459 annosta) ja tuo sitten puuttuvat nimet ruokalistaasi.
+template_download_shelf	Lataa kuvahylly
 template_info	{c} luokkaa ja {d} annosta kuvineen, valmiina lisättäväksi. Hinnat alkavat ₹0 — aseta omasi sen jälkeen.
 template_import	Tuo koko malli
 template_confirm	Lisätäänkö {d} annosta luokkineen? Annokset, jotka sinulla jo on, pysyvät ennallaan.

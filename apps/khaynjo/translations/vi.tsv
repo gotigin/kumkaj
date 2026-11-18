@@ -101,6 +101,19 @@ bill_item_col_sep	Kẻ cột
 slip_columns	Cột
 slip_col_header	Tiêu đề
 bill_line_logo	Logo
+bill_line_shop	Cửa hàng
+bill_line_address	Địa chỉ
+bill_line_fssai	FSSAI
+bill_line_title	Tiêu đề
+bill_line_customer	Khách hàng
+bill_line_bill_no	Số hóa đơn
+bill_line_time	Giờ
+bill_line_cashier	Thu ngân
+bill_line_table	Bàn
+bill_line_items	Món
+bill_line_total	Tổng
+bill_line_footer	Chân trang
+bill_line_upi	UPI
 bill_logo_picture	Hình
 bill_logo_choose	Chọn hình
 bill_logo_remove	Bỏ hình
@@ -128,6 +141,12 @@ bill_item_piece_off	Tắt
 bill_total_qty	Tổng SL
 bill_total_subtotal	Tạm tính
 bill_total_grand	Tổng cộng
+bill_total_number_under	Số nằm dưới
+bill_total_caption_under	Nhãn nằm dưới
+bill_total_own_line	Dòng riêng
+bill_total_caption_with	Cùng với số
+bill_total_caption_none	Không nhãn
+bill_total_place_help	Dòng riêng in tổng này riêng một mình. Khi nằm dưới một cột, số của nó được in trong cột hàng đó, theo cỡ và độ đậm của dòng này; các tổng dùng chung một hàng cho đến khi một cột đã có chỗ, rồi hàng mới bắt đầu. Nhãn đi cùng với số, nằm dưới cột khác, hoặc được bỏ đi. Các dòng thuế, phí dịch vụ, làm tròn và thanh toán đi theo Tạm tính.
 reprint_incl	Trong in
 reprint_skip	Bỏ qua
 reprint_skip_meta	Bỏ in lại
@@ -178,20 +197,20 @@ snack_secs_ph	Giây (3–60, mặc định 10)
 snack_secs_save	Lưu thời gian thông báo
 snack_secs_saved	Đã lưu thời gian thông báo — {n} giây
 settings_sec_whatsapp	WhatsApp
-whatsapp_cloud_help	Use your own Meta WhatsApp Cloud API. Create a System User token with whatsapp_business_messaging (temporary dashboard tokens expire). Credentials stay on this Server only — never on extra tills. Accepted means Meta took the request, not that the guest received it.
-whatsapp_phone_id_ph	Phone Number ID
-whatsapp_token_ph	Access Token (leave blank to keep)
-whatsapp_template_ph	Bill template name (optional)
-whatsapp_template_lang_ph	Template language (e.g. en)
-whatsapp_enable	Enable
+whatsapp_cloud_help	Dùng Meta WhatsApp Cloud API của riêng bạn. Tạo mã System User có whatsapp_business_messaging (mã tạm thời trên bảng điều khiển sẽ hết hạn). Thông tin chỉ nằm trên Máy chủ này — không bao giờ ở các quầy phụ. “Đã chấp nhận” nghĩa là Meta đã nhận yêu cầu, không phải khách đã nhận được.
+whatsapp_phone_id_ph	ID số điện thoại
+whatsapp_token_ph	Mã truy cập (để trống để giữ nguyên)
+whatsapp_template_ph	Tên mẫu hóa đơn (tùy chọn)
+whatsapp_template_lang_ph	Ngôn ngữ của mẫu (ví dụ en)
+whatsapp_enable	Bật
 whatsapp_disable	Off
-whatsapp_save	Save WhatsApp
-whatsapp_test	Test connection
-whatsapp_disconnect	Disconnect
-whatsapp_send_bill	Send via WhatsApp
+whatsapp_save	Lưu WhatsApp
+whatsapp_test	Kiểm tra kết nối
+whatsapp_disconnect	Ngắt kết nối
+whatsapp_send_bill	Gửi qua WhatsApp
 whatsapp_consent	WhatsApp OK
-whatsapp_consent_help	Guest agreed to receive WhatsApp messages. A phone number alone is not consent.
-whatsapp_server_only	Configure WhatsApp on the shop Server device
+whatsapp_consent_help	Khách đã đồng ý nhận tin nhắn WhatsApp. Chỉ có số điện thoại thì chưa phải là sự đồng ý.
+whatsapp_server_only	Thiết lập WhatsApp trên thiết bị Máy chủ của cửa hàng
 settings_sec_backup	Sao lưu & khôi phục
 settings_sec_diag	Chẩn đoán
 settings_sec_privacy	Quyền riêng tư
@@ -637,7 +656,7 @@ choose_device_use	Chọn cách dùng thiết bị này.
 paired_note	Đã ghép nối. Mở khóa để bán, hoặc Làm mới để lấy dữ liệu mới nhất từ quán.
 last_update_at	Cập nhật cuối từ quán: {time}.
 pair_intro	Tìm máy chủ, hoặc nhập địa chỉ và mã ghép đôi.
-pair_resume_hint	Already paired — enter your shop PIN, or Forget this shop to pair another.
+pair_resume_hint	Đã ghép đôi — nhập PIN của cửa hàng, hoặc chạm “Quên cửa hàng này” để ghép đôi cửa hàng khác.
 queue_waiting	Đang chờ gửi tới quán ({n}):
 queue_tries	Đã thử {n} lần · trả lời cuối: {e}
 save_backup_copy	Lưu bản sao lưu…
@@ -754,13 +773,18 @@ station_vps_dd	Máy in của trạm này
 station_vps_dd_n	{n} máy in · chạm để đổi
 bill_printers_dd	Máy in cho hóa đơn
 bill_printers_dd_n	{n} máy in cho hóa đơn · nhấn để thay đổi
-paper_heading	Giấy
+paper_heading	Giấy ảo
 paper_size	{w} × {h} mm
 paper_roll	cuộn {w} mm
 paper_not_set	chưa biết giấy
-paper_length_mm	Chiều dài (mm)
-printer_paper_help	Giấy của máy in này tính bằng mm. Chiều dài để trống là cuộn: mỗi phiếu dài bằng nội dung của nó. Tìm máy in điền giấy còn trống từ trình điều khiển của máy in (cuộn 80 mm khi không thể cho biết) và không bao giờ đổi giấy đã đặt.
-preview_help	Phiếu này trên giấy của máy in được chọn bên dưới, đúng như khi in ở đó: kích thước thật từ góc trên bên trái mà máy in tới được (xám: các mép không tới được), phiếu dài in trên nhiều tờ hơn, phần vượt mép giấy bị cắt. Chọn máy in chỉ đổi bản xem trước; giấy của mỗi máy in được đặt trong Máy in.
+virtual_width_mm	Chiều rộng ảo (mm)
+virtual_length_mm	Chiều dài ảo (mm)
+reported_width_mm	Chiều rộng được báo (mm)
+reported_length_mm	Chiều dài được báo (mm)
+reported_paper	Được báo: {paper}
+virtual_paper	Ảo: {paper}
+printer_paper_help	Được báo là giấy mà trình điều khiển của máy in này đang đặt; ứng dụng chỉ đọc nó, và “Không” nghĩa là không có trình điều khiển để hỏi. Ảo là giấy mà bạn cho biết thật sự đang nằm trong máy in, tính bằng mm; chiều dài để trống là cuộn. Máy in in trên giấy của chính nó; giấy ảo cho ứng dụng biết bao nhiêu phần trong đó là giấy thật, dùng cho bản xem trước, chiều dài trang và vị trí của phiếu. Tìm máy in điền giấy ảo còn trống và không bao giờ đổi giấy bạn đã đặt.
+preview_help	Phiếu này đúng như khi in trên máy in được chọn bên dưới, ở kích thước thật trên giấy ảo của máy. Phần trắng là nơi in, giấy xám nằm ngoài tầm của máy in, và mực mờ là phần bị cắt. Chín ô vuông là tờ giấy: chạm vào nơi phiếu cần nằm. Phiếu dài in tiếp sang các trang sau. Chọn máy in chỉ đổi bản xem trước.
 job_layout	Bố cục
 job_delivery	Cách công việc được gửi đi
 job_delivery_help	Tài liệu hệ điều hành, dữ liệu thô hoặc ESC/POS. Hóa đơn và vé bếp đều giữ riêng của mình. Công việc nào cũng có thể gửi đến bất kỳ máy in nào đã Tìm lưu.
@@ -1040,7 +1064,7 @@ book_kind_today	Sổ hôm nay
 book_kind_month	Sổ tháng này
 book_kind_aging	Nợ tồn / ghi nợ-có
 book_kind_balance	Bảng cân đối
-order_help	Chọn một đơn đang mở, hoặc chọn bàn và bắt đầu đơn mới. Chạm vào món sẵn sàng, gửi KOT, tính tiền một hoặc nhiều món, chia hóa đơn và thanh toán.
+order_help	Chạm vào một món để thêm.
 floor_help	Mỗi bàn cho thấy khách có đang ngồi không, hóa đơn đang mở của họ là gì và ai cần phục vụ tiếp theo.
 kitchen_help	Theo dõi số lượng đã sẵn sàng theo biến thể hoặc theo món — ghi vào KOT theo cách bạn muốn.
 kitchen_empty	Hiện không có gì đang mở.
@@ -1238,7 +1262,7 @@ on_your_menu	Có trong thực đơn
 edit	Sửa
 schemes	Ưu đãi
 schemes_help	Mua X tặng Y — khi thanh toán. VD Buy 2 Thali get 1 Chaas
-scheme_bogo_ph	Buy 2 Thali get 1 Chaas
+scheme_bogo_ph	Mua 2 Thali tặng 1 Chaas
 add_scheme	Thêm BOGO
 schedule_ph	Giờ / happy hour — Mon-Fri 07:00-11:00 hoặc HappyHour 17:00-19:00=150
 upi_qr	UPI QR
@@ -1266,8 +1290,8 @@ taxable_value	Giá trị chịu thuế
 gst_inside_price_note	(gồm {tax})
 start_with_template	Bắt đầu với mẫu thực đơn
 template_heading	Mẫu thực đơn của chúng tôi
-template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
-template_download_shelf	Download photo shelf
+template_need_download	Tải kệ ảnh món ăn công khai (~1.459 món) xuống, rồi nhập các tên còn thiếu vào thực đơn của bạn.
+template_download_shelf	Tải kệ ảnh xuống
 template_info	{c} danh mục và {d} món có ảnh, sẵn sàng thêm. Giá ₹0 — đặt giá của bạn sau.
 template_import	Nhập toàn bộ mẫu
 template_confirm	Thêm {d} món kèm danh mục? Món bạn đã có giữ nguyên.

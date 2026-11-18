@@ -101,6 +101,19 @@ bill_item_col_sep	स्तंभ रेषा
 slip_columns	स्तंभ
 slip_col_header	शीर्षक
 bill_line_logo	लोगो
+bill_line_shop	दुकान
+bill_line_address	पत्ता
+bill_line_fssai	FSSAI
+bill_line_title	शीर्षक
+bill_line_customer	ग्राहक
+bill_line_bill_no	बिल क्र.
+bill_line_time	वेळ
+bill_line_cashier	कॅशियर
+bill_line_table	टेबल
+bill_line_items	वस्तू
+bill_line_total	एकूण
+bill_line_footer	फूटर
+bill_line_upi	यूपीआई
 bill_logo_picture	चित्र
 bill_logo_choose	चित्र निवडा
 bill_logo_remove	चित्र काढा
@@ -128,6 +141,12 @@ bill_item_piece_off	बंद
 bill_total_qty	एकूण संख्या
 bill_total_subtotal	उपएकूण
 bill_total_grand	एकूण
+bill_total_number_under	संख्या याच्या खाली
+bill_total_caption_under	लेबल याच्या खाली
+bill_total_own_line	स्वतःची ओळ
+bill_total_caption_with	संख्येसोबत
+bill_total_caption_none	लेबल नाही
+bill_total_place_help	“स्वतःची ओळ” हे एकूण स्वतंत्रपणे छापते. स्तंभाखाली असल्यास त्याची संख्या त्या आयटम स्तंभात, या ओळीच्या मापात आणि जाडीत छापली जाते; एखादा स्तंभ भरेपर्यंत एकूण एकच रांग वाटून घेतात, मग नवी रांग सुरू होते. लेबल संख्येसोबत, दुसऱ्या स्तंभाखाली जाते, किंवा वगळले जाते. कर, सेवा, राउंडिंग आणि पेमेंटच्या ओळी “उपएकूण” चे अनुसरण करतात.
 reprint_incl	छापणीत
 reprint_skip	वगळा
 reprint_skip_meta	रिकव्हरी प्रिंट वगळा
@@ -178,20 +197,20 @@ snack_secs_ph	सेकंद (3–60, मूळ 10)
 snack_secs_save	सूचना वेळ जतन करा
 snack_secs_saved	सूचना वेळ जतन झाली — {n} सेकंद
 settings_sec_whatsapp	WhatsApp
-whatsapp_cloud_help	Use your own Meta WhatsApp Cloud API. Create a System User token with whatsapp_business_messaging (temporary dashboard tokens expire). Credentials stay on this Server only — never on extra tills. Accepted means Meta took the request, not that the guest received it.
-whatsapp_phone_id_ph	Phone Number ID
-whatsapp_token_ph	Access Token (leave blank to keep)
-whatsapp_template_ph	Bill template name (optional)
-whatsapp_template_lang_ph	Template language (e.g. en)
-whatsapp_enable	Enable
+whatsapp_cloud_help	तुमचा स्वतःचा Meta WhatsApp Cloud API वापरा. whatsapp_business_messaging असलेला System User टोकन तयार करा (डॅशबोर्डचे तात्पुरते टोकन कालबाह्य होतात). ही माहिती फक्त या सर्व्हरवरच राहते — अतिरिक्त टिलवर कधीच नाही. “स्वीकारले” म्हणजे Meta ने विनंती घेतली, पाहुण्याला संदेश मिळाला असे नाही.
+whatsapp_phone_id_ph	फोन नंबर ID
+whatsapp_token_ph	अ‍ॅक्सेस टोकन (तेच ठेवण्यासाठी रिकामे सोडा)
+whatsapp_template_ph	बिल टेम्पलेटचे नाव (ऐच्छिक)
+whatsapp_template_lang_ph	टेम्पलेटची भाषा (उदा. en)
+whatsapp_enable	चालू करा
 whatsapp_disable	Off
-whatsapp_save	Save WhatsApp
-whatsapp_test	Test connection
-whatsapp_disconnect	Disconnect
-whatsapp_send_bill	Send via WhatsApp
-whatsapp_consent	WhatsApp OK
-whatsapp_consent_help	Guest agreed to receive WhatsApp messages. A phone number alone is not consent.
-whatsapp_server_only	Configure WhatsApp on the shop Server device
+whatsapp_save	WhatsApp जतन करा
+whatsapp_test	जोडणी तपासा
+whatsapp_disconnect	जोडणी तोडा
+whatsapp_send_bill	WhatsApp ने पाठवा
+whatsapp_consent	WhatsApp ठीक
+whatsapp_consent_help	पाहुण्याने WhatsApp संदेश घेण्यास संमती दिली आहे. फक्त फोन नंबर असणे म्हणजे संमती नाही.
+whatsapp_server_only	WhatsApp दुकानाच्या सर्व्हर डिव्हाइसवर सेट करा
 settings_sec_backup	बॅकअप व पुनर्स्थापना
 settings_sec_diag	निदान
 settings_sec_privacy	गोपनीयता
@@ -637,7 +656,7 @@ choose_device_use	हे डिव्हाइस कसे वापराय�
 paired_note	जोडले. विक्रीसाठी उघडा, किंवा दुकानातून ताजी माहिती घेण्यासाठी ताजे करा.
 last_update_at	दुकानाकडून शेवटचे अपडेट: {time}.
 pair_intro	सर्व्हर शोधा, किंवा त्याचा पत्ता आणि जोडणी कोड टाइप करा.
-pair_resume_hint	Already paired — enter your shop PIN, or Forget this shop to pair another.
+pair_resume_hint	आधीच जोडलेले आहे — तुमच्या दुकानाचा PIN टाका, किंवा दुसरे दुकान जोडण्यासाठी “हे दुकान विसरा” दाबा.
 queue_waiting	दुकानापर्यंत पोहोचण्याच्या प्रतीक्षेत ({n}):
 queue_tries	{n} वेळा प्रयत्न · शेवटचे उत्तर: {e}
 save_backup_copy	बॅकअपची प्रत जतन करा…
@@ -754,13 +773,18 @@ station_vps_dd	या स्टेशनचे प्रिंटर
 station_vps_dd_n	{n} प्रिंटर · बदलण्यासाठी टॅप
 bill_printers_dd	बिलाचे प्रिंटर
 bill_printers_dd_n	बिलासाठी {n} प्रिंटर · बदलायला दाबा
-paper_heading	कागद
+paper_heading	व्हर्च्युअल कागद
 paper_size	{w} × {h} mm
 paper_roll	{w} mm रोल
 paper_not_set	कागद अजून माहीत नाही
-paper_length_mm	लांबी (mm)
-printer_paper_help	या प्रिंटरचा कागद mm मध्ये. रिकामी लांबी म्हणजे रोल: प्रत्येक पावती तिच्या मजकुराएवढी लांब असते. प्रिंटर शोधा रिकामा कागद प्रिंटरच्या ड्रायव्हरमधून भरते (सांगता न आल्यास 80 mm रोल) आणि आधीच ठरवलेला कागद कधीही बदलत नाही.
-preview_help	खाली निवडलेल्या प्रिंटरच्या कागदावर ही पावती, तिथे छापली जाते तशी: प्रिंटर जिथपर्यंत पोहोचतो त्या वरच्या डाव्या कोपऱ्यापासून खऱ्या मापात (करडा: जिथे पोहोचत नाही त्या कडा), लांब पावती अधिक पानांवर, कागदाच्या कडेपलीकडचे सर्व कापले जाते. प्रिंटर निवडल्याने फक्त पूर्वावलोकन बदलते; प्रत्येक प्रिंटरचा कागद प्रिंटर मध्ये ठरवला जातो.
+virtual_width_mm	व्हर्च्युअल रुंदी (mm)
+virtual_length_mm	व्हर्च्युअल लांबी (mm)
+reported_width_mm	कळवलेली रुंदी (mm)
+reported_length_mm	कळवलेली लांबी (mm)
+reported_paper	कळवलेला: {paper}
+virtual_paper	व्हर्च्युअल: {paper}
+printer_paper_help	कळवलेला म्हणजे या प्रिंटरचा ड्रायव्हर ज्या कागदावर सेट आहे तो कागद; ॲप तो फक्त वाचते, आणि “नाही” म्हणजे विचारण्यासाठी ड्रायव्हर नाही. व्हर्च्युअल म्हणजे प्रिंटरमध्ये खरोखर आहे असे तुम्ही सांगता तो कागद, mm मध्ये; रिकामी लांबी म्हणजे रोल. प्रिंटर स्वतःच्या कागदावर छापतो; व्हर्च्युअल कागद ॲपला सांगतो की त्यातील किती खरा कागद आहे, पूर्वावलोकन, पानाची लांबी आणि पावतीची जागा यांसाठी. प्रिंटर शोधा रिकामा व्हर्च्युअल कागद भरते आणि तुम्ही सेट केलेला कधीही बदलत नाही.
+preview_help	ही पावती खाली निवडलेल्या प्रिंटरवर जशी छापली जाते तशी, त्याच्या व्हर्च्युअल कागदावर खऱ्या मापात. पांढऱ्या भागात छापले जाते, राखाडी कागदापर्यंत प्रिंटर पोहोचत नाही, आणि फिकट शाई कापली जाते. नऊ चौकोन म्हणजे कागद: पावती जिथे बसायला हवी तिथे टॅप करा. लांब पावती पुढील पानांवर जाते. प्रिंटर निवडल्याने फक्त पूर्वावलोकन बदलते.
 job_layout	लेआउट
 job_delivery	काम कसे पाठवले जाते
 job_delivery_help	OS दस्तऐवज, कच्चे बाइट किंवा ESC/POS. बिल आणि स्वयंपाकघर तिकीट दोन्ही आपापले ठेवतात. कोणतेही काम शोधा ने जतन केलेल्या कोणत्याही प्रिंटरवर जाऊ शकते.
@@ -1040,7 +1064,7 @@ book_kind_today	आजची वही
 book_kind_month	या महिन्याची वही
 book_kind_aging	येणे / डेबिट-क्रेडिट
 book_kind_balance	ताळेबंद
-order_help	उघडा ऑर्डर निवडा, किंवा टेबल निवडून नवा सुरू करा. तयार वस्तूंवर टॅप करा, KOT पाठवा, एक किंवा अधिक वस्तूंचे बिल करा, बिल वाटा आणि पेमेंट निकाली काढा.
+order_help	जोडण्यासाठी आयटमवर टॅप करा.
 floor_help	प्रत्येक टेबल दाखवतो पाहुणे बसले आहेत का, त्यांचे उघडे बिल काय आहे आणि पुढे कोणाला सेवा हवी.
 kitchen_help	प्रत्येक व्हेरिएंट किंवा प्रत्येक वस्तूमागे तयार मात्रा ट्रॅक करा — KOT मध्ये हवे तसे नोंदवा.
 kitchen_empty	सध्या काही उघडे नाही.
@@ -1238,7 +1262,7 @@ on_your_menu	तुमच्या मेनूत
 edit	बदला
 schemes	स्कीम / ऑफर
 schemes_help	X विकत घ्या Y मिळवा — सेटलवर आपोआप. उदा. Buy 2 Thali get 1 Chaas
-scheme_bogo_ph	Buy 2 Thali get 1 Chaas
+scheme_bogo_ph	2 थाळी घ्या, 1 ताक मिळवा
 add_scheme	BOGO जोडा
 schedule_ph	वेळ / हॅपी अवर — Mon-Fri 07:00-11:00 किंवा HappyHour 17:00-19:00=150
 upi_qr	UPI QR
@@ -1266,8 +1290,8 @@ taxable_value	करपात्र मूल्य
 gst_inside_price_note	({tax} अंतर्भूत)
 start_with_template	आमच्या मेनू साच्याने सुरुवात
 template_heading	आमचा मेनू साचा
-template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
-template_download_shelf	Download photo shelf
+template_need_download	पदार्थांचे सार्वजनिक फोटो शेल्फ (~1,459 पदार्थ) डाउनलोड करा, मग नसलेली नावे तुमच्या मेनूत आयात करा.
+template_download_shelf	फोटो शेल्फ डाउनलोड करा
 template_info	{c} वर्ग आणि {d} पदार्थ फोटोसह तयार. किंमत ₹0 — नंतर तुमची किंमत ठेवा.
 template_import	संपूर्ण साचा आयात करा
 template_confirm	{d} पदार्थ त्यांच्या वर्गांसह जोडायचे? तुमचे आधीचे पदार्थ तसेच राहतील.

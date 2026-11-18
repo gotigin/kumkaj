@@ -101,6 +101,19 @@ bill_item_col_sep	ᱠᱷᱟᱢᱵᱟ ᱟᱹᱨᱤ
 slip_columns	ᱠᱚᱞᱟᱢ ᱠᱚ
 slip_col_header	ᱦᱮᱰᱟᱨ
 bill_line_logo	ᱪᱤᱱᱦᱟᱹ
+bill_line_shop	ᱫᱚᱠᱟᱱ
+bill_line_address	ᱴᱷᱤᱠᱟᱹᱱᱟ
+bill_line_fssai	FSSAI
+bill_line_title	ᱥᱟᱛᱟᱢ
+bill_line_customer	ᱜᱨᱟᱦᱟᱠ
+bill_line_bill_no	ᱵᱤᱞ ᱮᱞ
+bill_line_time	ᱚᱠᱛᱚ
+bill_line_cashier	ᱠᱮᱥᱤᱭᱟᱨ
+bill_line_table	ᱴᱮᱵᱩᱞ
+bill_line_items	ᱡᱤᱱᱤᱥ ᱠᱚ
+bill_line_total	ᱢᱩᱴ
+bill_line_footer	ᱯᱷᱩᱴᱟᱨ
+bill_line_upi	UPI
 bill_logo_picture	ᱪᱤᱛᱟᱹᱨ
 bill_logo_choose	ᱪᱤᱛᱟᱹᱨ ᱵᱟᱪᱷᱟᱣ ᱢᱮ
 bill_logo_remove	ᱪᱤᱛᱟᱹᱨ ᱚᱪᱚᱜ ᱢᱮ
@@ -128,6 +141,12 @@ bill_item_piece_off	ᱵᱚᱱᱫᱚ
 bill_total_qty	ᱢᱩᱴ qty
 bill_total_subtotal	ᱥᱟᱵᱽ ᱢᱩᱴ
 bill_total_grand	ᱜᱽᱨᱟᱱᱰ ᱢᱩᱴᱟᱞ
+bill_total_number_under	ᱮᱞ ᱱᱚᱶᱟ ᱞᱟᱛᱟᱨ ᱨᱮ
+bill_total_caption_under	ᱞᱮᱵᱮᱞ ᱱᱚᱶᱟ ᱞᱟᱛᱟᱨ ᱨᱮ
+bill_total_own_line	ᱟᱡᱟᱜ ᱞᱟᱭᱤᱱ
+bill_total_caption_with	ᱮᱞ ᱥᱟᱶ
+bill_total_caption_none	ᱞᱮᱵᱮᱞ ᱵᱟᱹᱱᱩᱜᱼᱟ
+bill_total_place_help	“ᱟᱡᱟᱜ ᱞᱟᱭᱤᱱ” ᱫᱚ ᱱᱚᱶᱟ ᱢᱩᱴ ᱮᱠᱞᱟ ᱜᱮ ᱪᱷᱟᱯᱟᱭᱟ᱾ ᱠᱚᱞᱟᱢ ᱞᱟᱛᱟᱨ ᱨᱮ ᱛᱟᱦᱮᱸᱱ ᱠᱷᱟᱱ ᱚᱱᱟ ᱨᱮᱭᱟᱜ ᱮᱞ ᱫᱚ ᱚᱱᱟ ᱡᱤᱱᱤᱥ ᱠᱚᱞᱟᱢ ᱨᱮ, ᱱᱚᱶᱟ ᱞᱟᱭᱤᱱ ᱨᱮᱭᱟᱜ ᱢᱟᱯ ᱟᱨ ᱢᱚᱴᱟ ᱞᱮᱠᱟ ᱪᱷᱟᱯᱟᱜᱼᱟ; ᱢᱤᱫ ᱠᱚᱞᱟᱢ ᱵᱟᱝ ᱯᱮᱨᱮᱡ ᱫᱷᱟᱹᱵᱤᱡ ᱢᱩᱴ ᱠᱚ ᱢᱤᱫ ᱛᱷᱟᱨ ᱠᱚ ᱦᱟᱹᱴᱤᱧᱟ, ᱚᱱᱟ ᱛᱟᱭᱚᱢ ᱱᱟᱶᱟ ᱛᱷᱟᱨ ᱮᱛᱚᱦᱚᱵᱚᱜᱼᱟ᱾ ᱞᱮᱵᱮᱞ ᱫᱚ ᱮᱞ ᱥᱟᱶ, ᱮᱴᱟᱜ ᱠᱚᱞᱟᱢ ᱞᱟᱛᱟᱨ ᱨᱮ ᱪᱟᱞᱟᱜᱼᱟ, ᱵᱟᱝᱠᱷᱟᱱ ᱵᱟᱹᱜᱤᱜᱼᱟ᱾ ᱠᱷᱟᱡᱱᱟ, ᱥᱮᱵᱟ, ᱨᱟᱣᱩᱱᱰᱤᱝ ᱟᱨ ᱯᱮᱢᱮᱱᱴ ᱞᱟᱭᱤᱱ ᱠᱚ “ᱥᱟᱵᱽ ᱢᱩᱴ” ᱠᱚ ᱯᱟᱧᱡᱟᱭᱟ᱾
 reprint_incl	ᱪᱷᱟᱯᱟ ᱨᱮ
 reprint_skip	ᱵᱟᱹᱜᱤ
 reprint_skip_meta	ᱨᱤᱠᱚᱵᱷᱟᱨᱤ ᱯᱨᱤᱱᱴ ᱵᱟᱹᱜᱤᱭᱟᱜ ᱢᱮ
@@ -178,20 +197,20 @@ snack_secs_ph	ᱥᱮᱠᱮᱱᱰ (3–60, ᱰᱤᱯᱷᱚᱞᱴ 10)
 snack_secs_save	ᱮᱞᱟᱨᱴ ᱚᱠᱛᱚ ᱵᱟᱧᱪᱟᱣ ᱢᱮ
 snack_secs_saved	ᱮᱞᱟᱨᱴ ᱚᱠᱛᱚ ᱵᱟᱧᱪᱟᱣ ᱮᱱᱟ — {n} ᱥᱮᱠᱮᱱᱰ
 settings_sec_whatsapp	WhatsApp
-whatsapp_cloud_help	Use your own Meta WhatsApp Cloud API. Create a System User token with whatsapp_business_messaging (temporary dashboard tokens expire). Credentials stay on this Server only — never on extra tills. Accepted means Meta took the request, not that the guest received it.
-whatsapp_phone_id_ph	Phone Number ID
-whatsapp_token_ph	Access Token (leave blank to keep)
-whatsapp_template_ph	Bill template name (optional)
-whatsapp_template_lang_ph	Template language (e.g. en)
-whatsapp_enable	Enable
+whatsapp_cloud_help	ᱟᱢᱟᱜ ᱱᱤᱡᱮᱨᱟᱜ Meta WhatsApp Cloud API ᱵᱮᱵᱷᱟᱨ ᱢᱮ᱾ whatsapp_business_messaging ᱢᱮᱱᱟᱜ System User ᱴᱚᱠᱮᱱ ᱵᱮᱱᱟᱣ ᱢᱮ (ᱰᱮᱥᱵᱚᱰ ᱨᱮᱭᱟᱜ ᱠᱟᱹᱪᱤ ᱴᱚᱠᱮᱱ ᱠᱚ ᱪᱟᱵᱟᱜᱼᱟ)᱾ ᱱᱚᱣᱟ ᱠᱷᱚᱵᱚᱨ ᱫᱚ ᱮᱠᱮᱱ ᱱᱚᱣᱟ ᱥᱮᱨᱵᱷᱟᱨ ᱨᱮ ᱛᱟᱦᱮᱱᱟ — ᱵᱟᱹᱲᱛᱤ ᱴᱤᱞᱥ ᱨᱮ ᱛᱤᱥ ᱦᱚᱸ ᱵᱟᱝ᱾ “ᱦᱟᱛᱟᱣ ᱟᱠᱟᱱᱟ” ᱢᱮᱱ ᱫᱚ Meta ᱱᱮᱦᱚᱨ ᱦᱟᱛᱟᱣ ᱠᱮᱫᱟᱭ, ᱯᱮᱲᱟ ᱥᱟᱱᱫᱮᱥ ᱧᱟᱢ ᱠᱮᱫᱟᱭ ᱚᱱᱟ ᱫᱚ ᱵᱟᱝ᱾
+whatsapp_phone_id_ph	ᱯᱷᱚᱱ ᱱᱚᱢᱵᱚᱨ ID
+whatsapp_token_ph	ᱮᱠᱥᱮᱥ ᱴᱚᱠᱮᱱ (ᱚᱱᱟ ᱜᱮ ᱫᱚᱦᱚ ᱞᱟᱹᱜᱤᱫ ᱠᱷᱟᱹᱞᱤ ᱟᱲᱟᱜ ᱢᱮ)
+whatsapp_template_ph	ᱵᱤᱞ ᱴᱮᱢᱯᱞᱮᱴ ᱨᱮᱭᱟᱜ ᱧᱩᱛᱩᱢ (ᱚᱯᱥᱚᱱᱟᱞ)
+whatsapp_template_lang_ph	ᱴᱮᱢᱯᱞᱮᱴ ᱨᱮᱭᱟᱜ ᱯᱟᱹᱨᱥᱤ (ᱡᱮᱞᱠᱟ en)
+whatsapp_enable	ᱪᱟᱹᱞᱩᱭ ᱢᱮ
 whatsapp_disable	Off
-whatsapp_save	Save WhatsApp
-whatsapp_test	Test connection
-whatsapp_disconnect	Disconnect
-whatsapp_send_bill	Send via WhatsApp
+whatsapp_save	WhatsApp ᱥᱟᱸᱪᱟᱣ ᱢᱮ
+whatsapp_test	ᱡᱚᱯᱲᱟᱣ ᱵᱤᱱᱤᱰ ᱢᱮ
+whatsapp_disconnect	ᱡᱚᱯᱲᱟᱣ ᱚᱪᱚᱜ ᱢᱮ
+whatsapp_send_bill	WhatsApp ᱛᱮ ᱵᱷᱮᱡᱟᱭ ᱢᱮ
 whatsapp_consent	WhatsApp OK
-whatsapp_consent_help	Guest agreed to receive WhatsApp messages. A phone number alone is not consent.
-whatsapp_server_only	Configure WhatsApp on the shop Server device
+whatsapp_consent_help	ᱯᱮᱲᱟ ᱫᱚ WhatsApp ᱥᱟᱱᱫᱮᱥ ᱧᱟᱢ ᱞᱟᱹᱜᱤᱫ ᱨᱮᱵᱮᱱ ᱟᱠᱟᱱᱟ᱾ ᱮᱠᱮᱱ ᱯᱷᱚᱱ ᱱᱚᱢᱵᱚᱨ ᱫᱚ ᱨᱮᱵᱮᱱ ᱵᱟᱝ ᱠᱟᱱᱟ᱾
+whatsapp_server_only	ᱫᱚᱠᱟᱱ ᱨᱮᱭᱟᱜ ᱥᱮᱨᱵᱷᱟᱨ ᱥᱟᱫᱷᱚᱱ ᱨᱮ WhatsApp ᱥᱮᱴ ᱢᱮ
 settings_sec_backup	ᱵᱮᱠᱟᱯ ᱟᱨ ᱨᱤᱥᱴᱚᱨ
 settings_sec_diag	ᱰᱟᱭᱜᱽᱱᱚᱥᱴᱤᱠᱥ
 settings_sec_privacy	ᱫᱟᱱᱟᱝ
@@ -583,7 +602,7 @@ server_ip_ph	ᱥᱮᱨᱵᱷᱟᱨ ᱟᱭᱤ ᱯᱤ (ᱡᱮᱞᱠᱟ 192.168.1.1
 set_credit_limit	ᱯᱟᱨᱴᱤ ᱨᱮ ᱥᱤᱢᱟᱹ ᱞᱟᱜᱟᱣ ᱢᱮ
 set_login_selected	ᱵᱟᱪᱷᱟᱣ ᱟᱠᱟᱱ ᱠᱚ ᱞᱟᱹᱜᱤᱫ ᱞᱚᱜᱤᱱ ᱞᱟᱹᱜᱩᱫ ᱢᱮ
 set_login_named	{name} ᱨᱮ ᱞᱚᱜᱤᱱ ᱞᱟᱹᱜᱩᱭ ᱢᱮ
-shop	ᱵᱟᱡᱟᱨᱚᱢ
+shop	ᱫᱚᱠᱟᱱ
 show	ᱩᱫᱩᱜ ᱢᱮ
 spreadsheet_csv	ᱥᱯᱨᱮᱰᱥᱤᱴ (ᱥᱤ ᱮᱥ ᱵᱤ)
 start_fresh	ᱛᱟᱜᱽᱲᱟ ᱛᱮ ᱮᱦᱚᱵᱽ ᱢᱮ
@@ -637,7 +656,7 @@ choose_device_use	ᱥᱮᱨᱵᱷᱟᱨ ᱵᱟᱝᱠᱷᱟᱱ ᱠᱞᱟᱭᱮᱱ
 paired_note	ᱡᱚᱲᱟᱣ ᱟᱠᱟᱱ᱾ ᱟᱠᱨᱤᱧ ᱞᱟᱹᱜᱤᱫ ᱠᱩᱞᱩᱯ ᱡᱷᱤᱡᱽ ᱢᱮ, ᱟᱨᱵᱟᱝ ᱱᱟᱶᱟ ᱞᱟᱹᱜᱤᱫ ᱨᱤᱯᱷᱨᱮᱥ ᱢᱮ ᱾
 last_update_at	ᱢᱩᱪᱟᱹᱫ ᱟᱯᱰᱮᱴ: {time}᱾
 pair_intro	ᱥᱮᱨᱵᱷᱟᱨ ᱯᱟᱱᱛᱮ ᱢᱮ, ᱟᱨᱵᱟᱝ ᱱᱚᱣᱟ ᱨᱮᱭᱟᱜ ᱴᱷᱤᱠᱟᱹᱱᱟ ᱟᱨ ᱡᱚᱲᱟᱣ ᱠᱚᱰ ᱴᱟᱭᱤᱯ ᱢᱮ ᱾
-pair_resume_hint	Already paired — enter your shop PIN, or Forget this shop to pair another.
+pair_resume_hint	ᱞᱟᱦᱟ ᱠᱷᱚᱱ ᱜᱮ ᱡᱚᱲᱟᱣ ᱟᱠᱟᱱᱟ — ᱟᱢᱟᱜ ᱫᱚᱠᱟᱱ ᱨᱮᱭᱟᱜ PIN ᱮᱢ ᱢᱮ, ᱵᱟᱝᱠᱷᱟᱱ ᱮᱴᱟᱜ ᱫᱚᱠᱟᱱ ᱡᱚᱲᱟᱣ ᱞᱟᱹᱜᱤᱫ “ᱱᱚᱣᱟ ᱫᱚᱠᱟᱱ ᱦᱤᱲᱤᱧ ᱠᱟᱜ ᱢᱮ” ᱚᱛᱟᱭ ᱢᱮ᱾
 queue_waiting	ᱫᱚᱠᱟᱱ ᱥᱮᱴᱮᱨᱚᱜ ᱞᱟᱹᱜᱤᱫ ᱛᱟᱺᱜᱤ ᱨᱮ ᱢᱮᱱᱟᱭᱟ ({n}):
 queue_tries	{n} ᱫᱷᱟᱣ ᱠᱩᱨᱩᱢᱩᱴᱩ · ᱢᱩᱪᱟᱹᱫ ᱛᱮᱞᱟ: {e}
 save_backup_copy	ᱢᱤᱫ ᱵᱮᱠᱚᱯ ᱱᱚᱠᱚᱞ ᱥᱟᱧᱪᱟᱣ ᱢᱮ...
@@ -754,13 +773,18 @@ station_vps_dd	ᱱᱚᱶᱟ ᱥᱴᱮᱥᱚᱱ ᱞᱟᱹᱜᱤᱫ ᱯᱨᱤᱱ�
 station_vps_dd_n	{n} ᱯᱨᱤᱱᱴᱟᱨ(ᱠᱚ) · ᱵᱚᱫᱚᱞ ᱞᱟᱹᱜᱤᱫ ᱴᱮᱯ ᱢᱮ
 bill_printers_dd	ᱵᱤᱞ ᱞᱟᱹᱜᱤᱫ ᱯᱨᱤᱱᱴᱟᱨ
 bill_printers_dd_n	ᱵᱤᱞ ᱞᱟᱹᱜᱤᱫ {n} ᱯᱨᱤᱱᱴᱟᱨ(ᱠᱚ) · ᱵᱚᱫᱚᱞ ᱞᱟᱹᱜᱤᱫ ᱴᱮᱯ ᱢᱮ
-paper_heading	ᱠᱟᱜᱚᱡ
+paper_heading	ᱵᱷᱟᱨᱪᱩᱣᱟᱞ ᱠᱟᱜᱚᱡ
 paper_size	{w} × {h} mm
 paper_roll	{w} mm ᱨᱚᱞ
 paper_not_set	ᱠᱟᱜᱚᱡ ᱱᱤᱛᱚᱜ ᱦᱚᱸ ᱵᱟᱝ ᱵᱟᱰᱟᱭ ᱠᱟᱱᱟ
-paper_length_mm	ᱡᱮᱞᱮᱧ (mm)
-printer_paper_help	ᱱᱚᱶᱟ ᱯᱨᱤᱱᱴᱟᱨ ᱨᱮᱭᱟᱜ ᱠᱟᱜᱚᱡ mm ᱨᱮ᱾ ᱠᱷᱟᱞᱤ ᱡᱮᱞᱮᱧ ᱫᱚ ᱨᱚᱞ ᱠᱟᱱᱟ: ᱡᱚᱛᱚ ᱯᱚᱨᱪᱤ ᱩᱱᱤ ᱨᱮᱭᱟᱜ ᱡᱤᱱᱤᱥ ᱞᱮᱠᱟ ᱡᱮᱞᱮᱧ ᱦᱩᱭᱩᱜ ᱠᱟᱱᱟ᱾ ᱯᱨᱤᱱᱴᱟᱨ ᱯᱟᱱᱛᱮ ᱢᱮ ᱠᱷᱟᱞᱤ ᱠᱟᱜᱚᱡ ᱯᱨᱤᱱᱴᱟᱨ ᱨᱮᱭᱟᱜ ᱰᱨᱟᱭᱣᱟᱨ ᱠᱷᱚᱱ ᱯᱮᱨᱮᱡ ᱟ (ᱞᱟᱹᱭ ᱵᱟᱝ ᱫᱟᱲᱮᱭᱟᱜ ᱠᱷᱟᱱ 80 mm ᱨᱚᱞ) ᱟᱨ ᱢᱟᱲᱟᱝ ᱠᱷᱚᱱ ᱛᱷᱤᱠ ᱠᱟᱜᱚᱡ ᱫᱚ ᱡᱟᱦᱟᱸ ᱚᱠᱛᱚ ᱵᱟᱝ ᱵᱚᱫᱚᱞᱟ᱾
-preview_help	ᱞᱟᱛᱟᱨ ᱨᱮ ᱵᱟᱪᱷᱟᱣ ᱟᱠᱟᱱ ᱯᱨᱤᱱᱴᱟᱨ ᱨᱮᱭᱟᱜ ᱠᱟᱜᱚᱡ ᱨᱮ ᱱᱚᱶᱟ ᱯᱚᱨᱪᱤ, ᱚᱱᱰᱮ ᱪᱷᱟᱯᱟ ᱞᱮᱠᱟ: ᱯᱨᱤᱱᱴᱟᱨ ᱥᱮᱴᱮᱨᱚᱜ ᱠᱟᱱ ᱪᱮᱛᱟᱱ ᱞᱮᱸᱫᱟ ᱠᱚᱬᱮ ᱠᱷᱚᱱ ᱥᱟᱹᱨᱤ ᱢᱟᱯ ᱨᱮ (ᱫᱷᱩᱥᱩᱨ: ᱵᱟᱝ ᱥᱮᱴᱮᱨᱚᱜ ᱟᱫ ᱫᱷᱟᱨᱮ), ᱡᱮᱞᱮᱧ ᱯᱚᱨᱪᱤ ᱵᱟᱹᱲᱛᱤ ᱥᱟᱦᱴᱟ ᱨᱮ, ᱠᱟᱜᱚᱡ ᱫᱷᱟᱨᱮ ᱠᱷᱚᱱ ᱥᱟᱬᱮᱥ ᱡᱚᱛᱚ ᱜᱮ ᱠᱟᱴᱤᱡᱚᱜᱼᱟ᱾ ᱯᱨᱤᱱᱴᱟᱨ ᱵᱟᱪᱷᱟᱣ ᱛᱮ ᱢᱟᱲᱟᱝ ᱧᱮᱞ ᱜᱮ ᱵᱚᱫᱚᱞᱚᱜᱼᱟ; ᱡᱚᱛᱚ ᱯᱨᱤᱱᱴᱟᱨ ᱨᱮᱭᱟᱜ ᱠᱟᱜᱚᱡ ᱯᱨᱤᱱᱴᱟᱨ ᱨᱮ ᱛᱷᱤᱠ ᱦᱩᱭᱩᱜᱼᱟ᱾
+virtual_width_mm	ᱵᱷᱟᱨᱪᱩᱣᱟᱞ ᱚᱥᱟᱨ (mm)
+virtual_length_mm	ᱵᱷᱟᱨᱪᱩᱣᱟᱞ ᱡᱮᱞᱮᱧ (mm)
+reported_width_mm	ᱨᱤᱯᱚᱨᱴ ᱟᱠᱟᱱ ᱚᱥᱟᱨ (mm)
+reported_length_mm	ᱨᱤᱯᱚᱨᱴ ᱟᱠᱟᱱ ᱡᱮᱞᱮᱧ (mm)
+reported_paper	ᱨᱤᱯᱚᱨᱴ ᱟᱠᱟᱱ: {paper}
+virtual_paper	ᱵᱷᱟᱨᱪᱩᱣᱟᱞ: {paper}
+printer_paper_help	ᱨᱤᱯᱚᱨᱴ ᱟᱠᱟᱱ ᱫᱚ ᱚᱱᱟ ᱠᱟᱜᱚᱡ ᱠᱟᱱᱟ ᱡᱟᱦᱟᱸ ᱨᱮ ᱱᱚᱶᱟ ᱯᱨᱤᱱᱴᱟᱨ ᱨᱮᱭᱟᱜ ᱰᱨᱟᱭᱣᱟᱨ ᱛᱷᱤᱠ ᱢᱮᱱᱟᱜᱼᱟ; ᱮᱯ ᱫᱚ ᱚᱱᱟ ᱮᱠᱮᱱ ᱯᱟᱲᱦᱟᱣᱟ, ᱟᱨ N/A ᱨᱮᱭᱟᱜ ᱢᱮᱱᱮᱛ ᱫᱚ ᱠᱩᱞᱤ ᱞᱟᱹᱜᱤᱫ ᱰᱨᱟᱭᱣᱟᱨ ᱵᱟᱹᱱᱩᱜᱼᱟ᱾ ᱵᱷᱟᱨᱪᱩᱣᱟᱞ ᱫᱚ ᱚᱱᱟ ᱠᱟᱜᱚᱡ ᱠᱟᱱᱟ ᱡᱟᱦᱟᱸ ᱫᱚ ᱯᱨᱤᱱᱴᱟᱨ ᱨᱮ ᱥᱟᱹᱨᱤ ᱜᱮ ᱢᱮᱱᱟᱜᱼᱟ ᱢᱮᱱᱛᱮ ᱟᱢ ᱮᱢ ᱞᱟᱹᱭᱟ, mm ᱨᱮ; ᱠᱷᱟᱞᱤ ᱡᱮᱞᱮᱧ ᱫᱚ ᱨᱚᱞ ᱠᱟᱱᱟ᱾ ᱯᱨᱤᱱᱴᱟᱨ ᱫᱚ ᱟᱡᱟᱜ ᱠᱟᱜᱚᱡ ᱨᱮ ᱪᱷᱟᱯᱟᱭᱟ; ᱵᱷᱟᱨᱪᱩᱣᱟᱞ ᱠᱟᱜᱚᱡ ᱫᱚ ᱮᱯ ᱞᱟᱹᱭᱟᱭ ᱚᱱᱟ ᱠᱷᱚᱱ ᱛᱤᱱᱟᱹᱜ ᱥᱟᱹᱨᱤ ᱠᱟᱜᱚᱡ ᱠᱟᱱᱟ, ᱢᱟᱲᱟᱝ ᱧᱮᱞ, ᱥᱟᱦᱴᱟ ᱨᱮᱭᱟᱜ ᱡᱮᱞᱮᱧ ᱟᱨ ᱯᱚᱨᱪᱤ ᱨᱮᱭᱟᱜ ᱡᱟᱭᱜᱟ ᱞᱟᱹᱜᱤᱫ᱾ ᱯᱨᱤᱱᱴᱟᱨ ᱯᱟᱱᱛᱮ ᱢᱮ ᱠᱷᱟᱞᱤ ᱵᱷᱟᱨᱪᱩᱣᱟᱞ ᱠᱟᱜᱚᱡ ᱯᱮᱨᱮᱡ ᱟ ᱟᱨ ᱟᱢᱟᱜ ᱛᱷᱤᱠ ᱟᱠᱟᱱ ᱠᱟᱜᱚᱡ ᱫᱚ ᱡᱟᱦᱟᱸ ᱚᱠᱛᱚ ᱵᱟᱝ ᱵᱚᱫᱚᱞᱟ᱾
+preview_help	ᱱᱚᱶᱟ ᱯᱚᱨᱪᱤ ᱞᱟᱛᱟᱨ ᱨᱮ ᱵᱟᱪᱷᱟᱣ ᱟᱠᱟᱱ ᱯᱨᱤᱱᱴᱟᱨ ᱨᱮ ᱪᱷᱟᱯᱟ ᱞᱮᱠᱟ, ᱩᱱᱤ ᱨᱮᱭᱟᱜ ᱵᱷᱟᱨᱪᱩᱣᱟᱞ ᱠᱟᱜᱚᱡ ᱨᱮ ᱥᱟᱹᱨᱤ ᱢᱟᱯ ᱨᱮ᱾ ᱯᱩᱸᱰ ᱡᱟᱭᱜᱟ ᱨᱮ ᱪᱷᱟᱯᱟᱜᱼᱟ, ᱫᱷᱩᱥᱩᱨ ᱠᱟᱜᱚᱡ ᱫᱷᱟᱹᱵᱤᱡ ᱯᱨᱤᱱᱴᱟᱨ ᱵᱟᱝ ᱥᱮᱴᱮᱨᱚᱜᱼᱟ, ᱟᱨ ᱯᱷᱤᱠᱟ ᱠᱟᱞᱤ ᱫᱚ ᱠᱟᱴᱤᱡᱚᱜᱼᱟ᱾ ᱟᱨᱮ ᱜᱚᱴᱟᱝ ᱠᱷᱟᱱᱟ ᱫᱚ ᱠᱟᱜᱚᱡ ᱠᱟᱱᱟ: ᱯᱚᱨᱪᱤ ᱡᱟᱦᱟᱸ ᱨᱮ ᱛᱟᱦᱮᱸᱱ ᱞᱟᱹᱠᱛᱤ ᱚᱱᱰᱮ ᱴᱮᱯ ᱢᱮ᱾ ᱡᱮᱞᱮᱧ ᱯᱚᱨᱪᱤ ᱵᱟᱹᱲᱛᱤ ᱥᱟᱦᱴᱟ ᱨᱮ ᱪᱟᱞᱟᱜᱼᱟ᱾ ᱯᱨᱤᱱᱴᱟᱨ ᱵᱟᱪᱷᱟᱣ ᱛᱮ ᱢᱟᱲᱟᱝ ᱧᱮᱞ ᱜᱮ ᱵᱚᱫᱚᱞᱚᱜᱼᱟ᱾
 job_layout	ᱞᱮᱭᱟᱣᱩᱴ
 job_delivery	ᱪᱮᱫ ᱞᱮᱠᱟ ᱪᱟᱹᱠᱨᱤ ᱠᱚ ᱠᱩᱞ ᱟᱠᱟᱱᱟ
 job_delivery_help	ᱚᱮᱥ ᱰᱚᱠᱭᱩᱢᱮᱱᱴ, ᱨᱚ ᱵᱟᱭᱤᱴᱥ, ᱵᱟᱝᱠᱷᱟᱱ ᱤᱮᱥᱤ/ᱯᱤᱳᱮᱥ᱾ ᱵᱤᱞ ᱟᱨ ᱫᱟᱠᱟ ᱚᱲᱟᱜ ᱨᱮᱭᱟᱜ ᱴᱤᱠᱤᱴ ᱥᱟᱱᱟᱢ ᱠᱚ ᱟᱯᱱᱟᱨᱟᱜ ᱠᱚ ᱫᱚᱦᱚᱭᱟ ᱾ ᱡᱟᱦᱟᱸ ᱜᱮ ᱠᱟᱹᱢᱤ ᱡᱟᱦᱟᱸ ᱜᱮ ᱯᱨᱤᱱᱴᱟᱨ ᱛᱮ ᱥᱮᱱ ᱫᱟᱲᱮᱭᱟᱜᱼᱟ ᱯᱟᱱᱛᱮ ᱥᱟᱧᱪᱟᱣ ᱟᱠᱟᱱᱟ ᱾
@@ -1048,7 +1072,7 @@ add_a_table	ᱢᱤᱫ ᱴᱮᱵᱩᱞ ᱥᱮᱞᱮᱫ ᱢᱮ
 add_station_heading	ᱢᱤᱫ ᱫᱟᱠᱟ ᱚᱲᱟᱜ ᱨᱮᱭᱟᱜ ᱥᱴᱮᱥᱚᱱ ᱥᱮᱞᱮᱫ ᱢᱮ
 categories_help	ᱚᱱᱟ ᱛᱷᱚᱠ ᱞᱟᱛᱟᱨ ᱨᱮ ᱪᱮᱛᱟᱱ ᱨᱮ ᱢᱮᱱᱟᱜ ᱡᱤᱱᱤᱥ ᱨᱮᱫ ᱞᱟᱹᱜᱤᱫ ᱵᱮᱵᱷᱟᱨ ᱨᱮ ᱴᱮᱯ ᱢᱮ ᱾ ᱯᱷᱳᱴᱳ ᱫᱚ ᱛᱷᱚᱠ ᱢᱤᱫ ᱪᱤᱛᱟᱹᱨ ᱮᱢᱚᱜ ᱠᱟᱱᱟ; ᱢᱤᱫ ᱵᱮᱜᱚᱨ ᱱᱚᱣᱟ ᱟᱡᱟᱜ ᱮᱛᱚᱦᱚᱵ ᱟᱹᱲᱟᱹ ᱩᱫᱩᱜ ᱟ᱾
 dish_search_ph	ᱡᱤᱱᱤᱥ ᱧᱩᱛᱩᱢ — ᱟᱞᱮᱭᱟᱜ ᱰᱤᱥ ᱥᱮᱸᱫᱽᱨᱟ ᱢᱮ ᱟᱨᱵᱟᱝ ᱟᱢᱟᱜ ᱴᱟᱭᱤᱯ ᱢᱮ
-tile_free	ᱯᱷᱨᱤ
+tile_free	ᱠᱷᱟᱹᱞᱤ
 tile_occupied	ᱠᱷᱟᱹᱞᱤ
 tile_food_ready	ᱡᱚᱢᱟᱜ ᱥᱟᱯᱲᱟᱣ ᱮᱱᱟ
 tile_bill_printed	ᱵᱤᱞ ᱪᱷᱟᱯᱟ ᱮᱱᱟ
@@ -1163,7 +1187,7 @@ kot_show_station	ᱥᱴᱮᱥᱚᱱ
 kot_hide_station	ᱥᱴᱮᱥᱚᱱ ᱩᱠᱩᱭ ᱢᱮ
 kot_show_table	ᱴᱮᱵᱩᱞ
 kot_hide_table	ᱴᱮᱵᱩᱞ ᱩᱠᱩᱭ ᱢᱮ
-kot_show_kot_no	KOT ᱵᱟᱝ
+kot_show_kot_no	KOT ᱮᱞ
 kot_hide_kot_no	KOT ᱵᱟᱝ ᱩᱠᱩᱭ ᱢᱮ
 kot_width	ᱢᱟᱲᱟᱝ ᱧᱮᱞ ᱵᱮᱫᱷᱟᱣ (ᱠᱚᱴ ᱴᱮᱵᱽ ᱨᱮ ᱡᱤᱱᱤᱥ ᱚᱥᱟᱨ ᱥᱮᱴ ᱢᱮ)
 kot_width_58	58 mm
@@ -1266,8 +1290,8 @@ taxable_value	ᱴᱮᱠᱥ ᱞᱮᱠᱟᱱ ᱜᱚᱱᱚᱝ
 gst_inside_price_note	({tax} ᱥᱟᱶᱛᱮ)
 start_with_template	ᱟᱞᱮᱭᱟᱜ ᱢᱮᱱᱭᱩ ᱴᱮᱢᱯᱞᱮᱴ ᱛᱮ ᱮᱦᱚᱵᱽ ᱢᱮ
 template_heading	ᱟᱞᱮᱭᱟᱜ ᱢᱮᱱᱭᱩ ᱴᱮᱢᱯᱞᱮᱴ
-template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
-template_download_shelf	Download photo shelf
+template_need_download	ᱰᱤᱥ ᱠᱚᱣᱟᱜ ᱥᱟᱱᱟᱢᱟᱜ ᱪᱤᱛᱟᱹᱨ ᱥᱮᱞᱯᱷ (~1,459 ᱰᱤᱥ) ᱰᱟᱣᱩᱱᱞᱚᱰ ᱢᱮ, ᱚᱱᱟ ᱛᱟᱭᱚᱢ ᱵᱟᱹᱱᱩᱜ ᱧᱩᱛᱩᱢ ᱠᱚ ᱟᱢᱟᱜ ᱢᱮᱱᱭᱩ ᱨᱮ ᱟᱹᱜᱩ ᱢᱮ᱾
+template_download_shelf	ᱪᱤᱛᱟᱹᱨ ᱥᱮᱞᱯᱷ ᱰᱟᱣᱩᱱᱞᱚᱰ ᱢᱮ
 template_info	{c} ᱛᱷᱚᱠ ᱠᱚ ᱟᱨ {d} ᱯᱷᱳᱴᱳ ᱥᱟᱶ ᱰᱤᱥ, ᱥᱮᱞᱮᱫ ᱞᱟᱹᱜᱤᱫ ᱥᱟᱯᱲᱟᱣ ᱢᱮᱱᱟᱜᱼᱟ ᱾ ᱜᱚᱱᱚᱝ 0 ᱠᱷᱚᱱ ᱮᱦᱚᱵᱚᱜ-ᱟ — ᱛᱟᱭᱚᱢ ᱟᱢᱟᱜ ᱥᱮᱴ ᱢᱮ ᱾
 template_import	ᱯᱩᱨᱟᱹ ᱴᱮᱢᱯᱞᱮᱴ ᱟᱹᱜᱩ ᱢᱮ
 template_confirm	ᱟᱠᱚᱣᱟᱜ ᱛᱷᱚᱠ ᱥᱟᱶ {d} ᱰᱤᱥ ᱥᱮᱞᱮᱫ ᱢᱮ? ᱟᱢ ᱴᱷᱮᱱ ᱞᱟᱦᱟ ᱠᱷᱚᱱ ᱜᱮ ᱢᱮᱱᱟᱜ ᱛᱷᱟᱹᱨᱤ ᱠᱚ ᱚᱱᱠᱟ ᱜᱮ ᱛᱟᱦᱮᱱ ᱢᱮ ᱾

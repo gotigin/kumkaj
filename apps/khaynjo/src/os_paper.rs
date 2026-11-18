@@ -1,17 +1,29 @@
-//! The paper a job prints on, and the preview of the content on it
-//! (docs/PRINTER.md § Paper and preview). Nothing in here knows a size: no
-//! A4, no Letter, no 210 mm. Each printer holds the paper set for it on
-//! Settings → Printers ([`PaperMm`]: width, and length or a roll); Find
-//! fills a blank one from the driver ([`query`]) — the driver also says how
-//! much of a sheet the printer can reach and which sizes it has names for.
+//! How a slip lands on paper, and the preview of it (docs/PRINTER.md §
+//! Paper and preview). Nothing in here knows a size: no A4, no Letter, no
+//! 210 mm.
 //!
-//! An OS document is the slip picture at its real size — its px are 1/96 inch
-//! (rule 2) — on a page exactly the printer's paper ([`page_for`]), at the
-//! top-left of its printable area. Nothing is fitted, shrunk or centred: a
-//! bill longer than the sheet goes on to the next sheet, split between lines;
-//! a bill wider than the printable area is cut at its edge, the same as a
-//! column past the content width. The preview ([`preview_picture`]) is drawn
-//! from the same sheet plan, so it is the print.
+//! **The printer's own paper.** An OS document prints the standard way: on
+//! the printer's own page exactly as its driver is set ([`query`] reads it;
+//! the screens call it the *reported* paper). The app never names, makes up
+//! or changes a page size (owner, 2026-11-17).
+//!
+//! **The virtual paper.** Each printer also holds a virtual paper on
+//! Settings → Printers ([`PaperMm`]: width, and length or a roll) — the
+//! paper the owner says is in it; Find fills a blank one from the driver.
+//! It is never sent to the printer. It says how much of the printer's page
+//! is really paper: a page is laid on the [`Sheet`]'s area — what the
+//! printer reaches of its own page, from that page's printable corner, and
+//! no further than the virtual paper.
+//!
+//! On that area the slip picture goes at its real size — its px are 1/96
+//! inch (rule 2) — at the format's [`Place`] (top-left unless the owner
+//! picked another). Nothing is fitted or shrunk: a bill longer than the
+//! area goes on to the next page, split between lines; a bill wider than it
+//! is cut at its edge, the same as a column past the content width. The
+//! preview ([`preview_picture`]) is drawn from the same plan
+//! ([`plan_sheets`]), so it is the print — and what the print cuts off is
+//! drawn past the edge, faded, so a slip wider than the paper never looks
+//! as if it fits (owner, 2026-11-17).
 
 use std::collections::HashMap;
 use std::sync::Mutex;
@@ -21,8 +33,8 @@ use std::time::Duration;
 /// One paper size a printer's driver offers.
 #[derive(Clone, Debug, PartialEq)]
 pub struct Paper {
-    /// The driver's own name for it (CUPS `PageSize` choice, Windows
-    /// `PaperName`). Sent back with every job so the driver uses it.
+    /// The driver's own name for it (CUPS `PageSize` choice, the Windows
+    /// form name).
     pub id: String,
     /// The driver's name for people ("4 x 6 in", "A5", …).
     pub label: String,
@@ -32,10 +44,8 @@ pub struct Paper {
     pub margins_mm: [f64; 4],
 }
 
-/// PostScript points (PPD sizes) to mm.
-const PT_MM: f64 = 25.4 / 72.0;
-/// Windows sizes are in hundredths of an inch.
-const HUNDREDTH_IN_MM: f64 = 0.254;
+/// PostScript points (PPD sizes, PDF pages) to mm.
+pub const PT_MM: f64 = 25.4 / 72.0;
 
 impl Paper {
     /// Width and height the printer can reach, mm.
@@ -61,6 +71,12 @@ impl Paper {
             margins_mm: [t, r, b, l],
         }
     }
+
+    /// This page as a virtual paper: all of it is paper (a printer with no
+    /// virtual paper set).
+    pub fn as_virtual(&self) -> PaperMm {
+        PaperMm { width_mm: self.width_mm, length_mm: self.height_mm }
+    }
 }
 
 /// A number of mm for people: whole when whole, else one decimal.
@@ -73,19 +89,12 @@ pub fn mm_text(mm: f64) -> String {
     }
 }
 
-/// The sizes one printer's driver offers and the one it uses now.
+/// The sizes one printer's driver offers and the one it is set to now.
 #[derive(Clone, Debug, Default, PartialEq)]
 pub struct PrinterPapers {
     /// The driver's current paper (`id` of one of `papers`).
     pub default_id: String,
     pub papers: Vec<Paper>,
-    /// Edges the printer cannot reach on a size the driver has no name for
-    /// (PPD `*HWMargins`), mm: left, top, right, bottom.
-    pub custom_margins_mm: Option<[f64; 4]>,
-    /// Whether the driver takes a size it has no name for (PPD
-    /// `*CustomPageSize True`). Without it the page is the driver's own
-    /// paper (`page_for`), in the print and the preview alike.
-    pub custom_ok: bool,
 }
 
 impl PrinterPapers {
@@ -97,29 +106,15 @@ impl PrinterPapers {
         self.papers.iter().find(|p| p.id == id)
     }
 
-    /// The driver's current paper.
+    /// The printer's own paper: the one its driver is set to now — what a
+    /// job prints on, and what the screens show as *reported*.
     pub fn default_paper(&self) -> Option<&Paper> {
         self.by_id(&self.default_id).or_else(|| self.papers.first())
     }
-
-    /// The driver's own size for `width` × `length` mm (within 0.6 mm).
-    pub fn matching(&self, width_mm: f64, length_mm: f64) -> Option<&Paper> {
-        self.papers
-            .iter()
-            .find(|p| (p.width_mm - width_mm).abs() < 0.6 && (p.height_mm - length_mm).abs() < 0.6)
-    }
-
-    /// Margins for a size the driver has no name for: its `*HWMargins`, else
-    /// those of its current paper (the same printer reaches the same edges).
-    pub fn margins_for_custom(&self) -> [f64; 4] {
-        self.custom_margins_mm
-            .or_else(|| self.default_paper().map(|p| p.margins_mm))
-            .unwrap_or([0.0; 4])
-    }
 }
 
-/// The paper set for one printer (Settings → Printers): width, and the
-/// sheet's length, mm; a length of 0 is a roll.
+/// A printer's virtual paper (Settings → Printers): width, and the sheet's
+/// length, mm; a length of 0 is a roll.
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub struct PaperMm {
     pub width_mm: f64,
@@ -140,69 +135,120 @@ impl PaperMm {
     }
 }
 
-/// The page one job is sent on: the name the system gets for it and the
-/// page with the edges the printer cannot reach.
+/// Where the content sits on a paper bigger than it (owner, 2026-11-17):
+/// one of nine places, top / middle / bottom × left / centre / right, kept
+/// per format (Bill, KOT). Left and right are the paper's own sides in
+/// every language — the screen's grid is a picture of the paper, and the
+/// picked square is where the slip lands. Top-left is where content sat
+/// before places existed, so nothing moves until the owner picks another.
+#[derive(Clone, Copy, Debug, Default, PartialEq, Eq, Hash, serde::Serialize, serde::Deserialize)]
+pub struct Place {
+    /// 0 top, 1 middle, 2 bottom.
+    #[serde(default)]
+    pub down: u8,
+    /// 0 left, 1 centre, 2 right.
+    #[serde(default)]
+    pub across: u8,
+}
+
+impl Place {
+    /// Clamped to the nine places.
+    pub fn new(down: u8, across: u8) -> Self {
+        Self { down: down.min(2), across: across.min(2) }
+    }
+
+    /// Top-left: where content sat before places existed.
+    pub fn is_top_left(&self) -> bool {
+        *self == Self::default()
+    }
+}
+
+/// How a slip is laid on its sheet: turned (landscape) or not, and its
+/// [`Place`].
+#[derive(Clone, Copy, Debug, Default, PartialEq)]
+pub struct Lay {
+    pub landscape: bool,
+    pub place: Place,
+}
+
+/// Where a `w` × `h` slip goes in an area `aw` × `ah` (px): its left edge
+/// and top, from the area's top-left. Across: at the left, the centre or
+/// the right of the area — a slip wider than the area hangs over by the
+/// same rule (left: cut at the right; right: cut at the left, a negative
+/// left edge). Down counts only when `down` (the whole slip on one sheet
+/// that has a length) and it fits.
+pub fn place_in(place: Place, w: u32, h: u32, aw: u32, ah: u32, down: bool) -> (i64, u32) {
+    let free = i64::from(aw) - i64::from(w);
+    let x = free * i64::from(place.across.min(2)) / 2;
+    let y = if down && h <= ah { (ah - h) * u32::from(place.down.min(2)) / 2 } else { 0 };
+    (x, y)
+}
+
+/// `src` laid with its left edge at `x` (negative: it starts past the left)
+/// on a white strip `w` wide, cut at the strip's edges — an ESC/POS roll.
+pub fn place_on(src: &image::GrayImage, x: i64, w: u32) -> image::GrayImage {
+    let (sw, sh) = src.dimensions();
+    let w = w.max(1);
+    let mut out = image::GrayImage::from_pixel(w, sh.max(1), image::Luma([255]));
+    let from = (-x).max(0).min(i64::from(sw)) as u32;
+    let to = x.max(0).min(i64::from(w)) as u32;
+    let n = sw.saturating_sub(from).min(w.saturating_sub(to)) as usize;
+    let raw = src.as_raw();
+    for y in 0..sh {
+        let s = (y * sw + from) as usize;
+        let d = (y * w + to) as usize;
+        out.as_mut()[d..d + n].copy_from_slice(&raw[s..s + n]);
+    }
+    out
+}
+
+/// The sheet a job lands on, upright, mm: the virtual paper (Settings →
+/// Printers — the paper the owner says the printer holds) and, on it, the
+/// area a page is laid on: what the printer reaches of its own page (as
+/// its driver is set) from that page's printable corner, and no further
+/// than the virtual paper. Pages are cut for this area, the place is
+/// measured on it and the preview draws it, so the print and the preview
+/// are one picture (owner, 2026-11-17). Never sent to the printer: a job
+/// prints on the printer's own paper.
 #[derive(Clone, Debug, PartialEq)]
-pub struct PagePlan {
-    /// The driver's own size name, or `Custom.<w>x<l>mm` (CUPS).
-    pub media: String,
-    /// Whether `media` is the driver's own size.
-    pub driver_size: bool,
-    pub page: Paper,
-    /// The driver has no size like the printer's paper and takes no other
-    /// size: `page` is the driver's own paper instead (the job says so).
-    pub fallback: bool,
+pub struct Sheet {
+    /// The virtual paper's width, mm.
+    pub width_mm: f64,
+    /// Its length, mm; 0 = a roll (each page as long as it needs).
+    pub length_mm: f64,
+    /// Edges the printer cannot reach — its own page's — mm: left, top,
+    /// right, bottom. 0 while its driver has not said.
+    pub margins_mm: [f64; 4],
+    /// Width and height of the area a page is laid on, mm.
+    pub area_mm: (f64, f64),
 }
 
-fn mm_num(mm: f64) -> String {
-    let s = format!("{:.2}", (mm * 100.0).round() / 100.0);
-    s.trim_end_matches('0').trim_end_matches('.').to_string()
-}
-
-/// The page for a slip on a printer's `paper`: exactly that paper — the
-/// driver's own size when one matches, else a custom size with the
-/// printer's margins. A roll is one page as long as the slip (`slip_mm` =
-/// its width and inked length, mm, upright) plus the margins; a landscape
-/// slip lies across it, so the roll is then as long as the slip is wide.
-/// `driver` is `None` when the driver could not be read: margins unknown (0).
-pub fn page_for(
-    paper: PaperMm,
-    driver: Option<&PrinterPapers>,
-    slip_mm: (f64, f64),
-    landscape: bool,
-) -> PagePlan {
-    let width = paper.width_mm;
-    if !paper.is_roll() {
-        if let Some(own) = driver.and_then(|d| d.matching(width, paper.length_mm)) {
-            return PagePlan { media: own.id.clone(), driver_size: true, page: own.clone(), fallback: false };
-        }
-    }
-    // A driver that takes no size it has no name for prints on its own
-    // paper whatever is asked: plan that page, so the preview shows it too.
-    if let Some(own) = driver.filter(|d| !d.custom_ok).and_then(|d| d.default_paper()) {
-        return PagePlan { media: own.id.clone(), driver_size: true, page: own.clone(), fallback: true };
-    }
-    let margins = driver.map(|d| d.margins_for_custom()).unwrap_or([0.0; 4]);
-    let length = if paper.is_roll() {
-        let along = if landscape { slip_mm.0 } else { slip_mm.1 };
+/// The [`Sheet`] for a printer's virtual paper. `own` is the printer's own
+/// page as its driver is set (`None` while it has not said: the virtual
+/// paper alone, edges unknown). `slip_mm` is the slip's width and inked
+/// length, mm, upright: a roll's page is as long as the slip needs — its
+/// length, or its width when it lies across the roll (landscape) — and
+/// never longer than the printer's own page.
+pub fn sheet_for(virtual_paper: PaperMm, own: Option<&Paper>, slip_mm: (f64, f64), landscape: bool) -> Sheet {
+    let margins = own.map(|p| p.margins_mm).unwrap_or([0.0; 4]);
+    let [l, t, r, b] = margins;
+    let virtual_w = (virtual_paper.width_mm - l - r).max(1.0);
+    let virtual_h = if virtual_paper.is_roll() {
         // Half a millimetre more than the slip, so rounding to whole rows
         // never leaves its last line for a second page.
-        along + margins[1] + margins[3] + 0.5
+        (if landscape { slip_mm.0 } else { slip_mm.1 }) + 0.5
     } else {
-        paper.length_mm
+        (virtual_paper.length_mm - t - b).max(1.0)
     };
-    let media = format!("Custom.{}x{}mm", mm_num(width), mm_num(length));
-    PagePlan {
-        media: media.clone(),
-        driver_size: false,
-        fallback: false,
-        page: Paper {
-            id: media,
-            label: String::new(),
-            width_mm: width,
-            height_mm: length,
-            margins_mm: margins,
-        },
+    let area_mm = match own.map(Paper::printable_mm) {
+        Some((w, h)) => (w.min(virtual_w), h.min(virtual_h)),
+        None => (virtual_w, virtual_h),
+    };
+    Sheet {
+        width_mm: virtual_paper.width_mm,
+        length_mm: virtual_paper.length_mm.max(0.0),
+        margins_mm: margins,
+        area_mm,
     }
 }
 
@@ -312,9 +358,7 @@ pub fn parse_ppd(ppd: &str) -> PrinterPapers {
             })
         })
         .collect();
-    let custom_margins_mm = hw.map(|[l, b, r, t]| [l, t, r, b].map(|m| (m * PT_MM).max(0.0)));
-    let custom_ok = ppd.lines().any(|l| l.trim_start().starts_with("*CustomPageSize True"));
-    PrinterPapers { default_id, papers, custom_margins_mm, custom_ok }
+    PrinterPapers { default_id, papers }
 }
 
 /// The size an `lpoptions` default names, matched to the driver's list:
@@ -448,97 +492,6 @@ pub fn query_cups(queue: Option<&str>) -> Result<(String, PrinterPapers), String
     Ok((queue, papers))
 }
 
-// ---------- Windows: the driver's PaperSizes ----------
-
-/// PowerShell that prints the driver's paper sizes, one per line:
-/// `D<TAB>default name` then `P<TAB>name<TAB>w<TAB>h<TAB>x<TAB>y<TAB>pw<TAB>ph`
-/// (hundredths of an inch; x, y, pw, ph = that paper's printable area).
-#[cfg(any(target_os = "windows", test))]
-pub fn windows_papers_script(printer: Option<&str>) -> String {
-    let set_name = match printer.map(str::trim).filter(|n| !n.is_empty()) {
-        Some(n) => format!("$ps.PrinterName = '{}';", n.replace('\'', "''")),
-        None => String::new(),
-    };
-    format!(
-        "[Console]::OutputEncoding = [System.Text.Encoding]::UTF8; \
-         Add-Type -AssemblyName System.Drawing; \
-         $ps = New-Object System.Drawing.Printing.PrinterSettings; {set_name} \
-         if (-not $ps.IsValid) {{ exit 3 }}; \
-         $t = [char]9; \
-         'D' + $t + $ps.DefaultPageSettings.PaperSize.PaperName; \
-         if (@($ps.PaperSizes | Where-Object {{ $_.Kind -eq 'Custom' }}).Count -gt 0) {{ 'C' + $t + '1' }}; \
-         foreach ($p in $ps.PaperSizes) {{ \
-           $pg = New-Object System.Drawing.Printing.PageSettings($ps); \
-           $pg.Landscape = $false; $pg.PaperSize = $p; \
-           try {{ $a = $pg.PrintableArea }} catch {{ $a = New-Object System.Drawing.RectangleF(0,0,$p.Width,$p.Height) }}; \
-           'P' + $t + $p.PaperName + $t + $p.Width + $t + $p.Height + $t + $a.X + $t + $a.Y + $t + $a.Width + $t + $a.Height \
-         }}"
-    )
-}
-
-/// Read [`windows_papers_script`]'s lines.
-pub fn parse_windows_papers(out: &str) -> PrinterPapers {
-    let mut default_id = String::new();
-    let mut custom_ok = false;
-    let mut papers: Vec<Paper> = Vec::new();
-    for line in out.lines() {
-        let f: Vec<&str> = line.trim_end_matches('\r').split('\t').collect();
-        match f.first().copied() {
-            Some("D") if f.len() >= 2 => default_id = f[1].trim().to_string(),
-            // The driver lists a user-defined ("Custom") size.
-            Some("C") => custom_ok = true,
-            Some("P") if f.len() >= 8 => {
-                let n: Vec<f64> = f[2..8]
-                    .iter()
-                    .map(|v| v.trim().replace(',', ".").parse::<f64>().unwrap_or(0.0))
-                    .collect();
-                let (w, h, x, y, pw, ph) = (n[0], n[1], n[2], n[3], n[4], n[5]);
-                let name = f[1].trim();
-                if name.is_empty() || w <= 0.0 || h <= 0.0 || papers.iter().any(|p| p.id == name) {
-                    continue;
-                }
-                let (pw, ph) = if pw > 0.0 && ph > 0.0 { (pw, ph) } else { (w, h) };
-                let margins = [x, y, (w - x - pw).max(0.0), (h - y - ph).max(0.0)];
-                papers.push(Paper {
-                    id: name.to_string(),
-                    label: name.to_string(),
-                    width_mm: w * HUNDREDTH_IN_MM,
-                    height_mm: h * HUNDREDTH_IN_MM,
-                    margins_mm: margins.map(|m| m.max(0.0) * HUNDREDTH_IN_MM),
-                });
-            }
-            _ => {}
-        }
-    }
-    PrinterPapers { default_id, papers, custom_margins_mm: None, custom_ok }
-}
-
-#[cfg(target_os = "windows")]
-pub fn query_windows(printer: Option<&str>) -> Result<PrinterPapers, String> {
-    use std::os::windows::process::CommandExt;
-    const CREATE_NO_WINDOW: u32 = 0x0800_0000;
-    let out = std::process::Command::new("powershell")
-        .args([
-            "-NoProfile",
-            "-NonInteractive",
-            "-ExecutionPolicy",
-            "Bypass",
-            "-Command",
-            &windows_papers_script(printer),
-        ])
-        .creation_flags(CREATE_NO_WINDOW)
-        .output()
-        .map_err(|e| format!("PowerShell did not start ({e})"))?;
-    if !out.status.success() {
-        return Err("Windows did not give this printer's paper sizes".into());
-    }
-    let papers = parse_windows_papers(&String::from_utf8_lossy(&out.stdout));
-    if papers.papers.is_empty() {
-        return Err("the printer's driver lists no paper sizes".into());
-    }
-    Ok(papers)
-}
-
 /// One printer's papers from this system (`target` blank = the default
 /// printer). Android has no list here: its print dialog asks for the paper.
 pub fn query(target: &str) -> Result<PrinterPapers, String> {
@@ -549,7 +502,8 @@ pub fn query(target: &str) -> Result<PrinterPapers, String> {
     }
     #[cfg(target_os = "windows")]
     {
-        query_windows(name)
+        // Through the Windows print API itself (print_win.rs).
+        crate::print_win::papers(name)
     }
     #[cfg(not(any(target_os = "linux", target_os = "macos", target_os = "windows")))]
     {
@@ -717,90 +671,125 @@ pub fn page_ends(len: u32, page_len: u32, gaps: &[u32]) -> Vec<u32> {
     ends
 }
 
-/// The slip on `paper`, one grey picture per sheet, each exactly the
-/// printable area's width at the slip's own density (`content_mm` is the
-/// slip's width on paper), the slip at its top-left. Portrait sheets are as
-/// long as their part of the slip; a landscape slip is laid on the turned
-/// sheet and turned back, filling the printable area so it lands where it
-/// was laid. Returns the sheets and the slip's px per mm.
+/// The slip on `sheet`, one grey picture per page, each the area's width at
+/// the slip's own density (`content_mm` is the slip's width on paper), the
+/// slip at its [`Place`] (`lay`; top-left by default). Portrait pages are
+/// as long as their part of the slip — the whole area's height when the
+/// slip sits lower than the top; a landscape slip is laid on the turned
+/// area and turned back, filling the area so it lands where it was laid.
+/// Each picture goes at the printable corner of the printer's own page.
+/// Returns the pages and the slip's px per mm.
 pub fn os_document_sheets(
     slip: &image::GrayImage,
     content_mm: f64,
-    paper: &Paper,
-    landscape: bool,
+    sheet: &Sheet,
+    lay: Lay,
 ) -> (Vec<image::GrayImage>, f64) {
-    let plan = plan_sheets(slip, content_mm, paper, landscape);
+    let plan = plan_sheets(slip, content_mm, sheet, lay);
     (render_sheets(slip, &plan), plan.px_per_mm)
 }
 
-/// Where a slip's sheets end on `paper` and how big each sheet is, in the
-/// slip's own pixels — the print's geometry, shared with the preview.
+/// Where a slip's pages end on a [`Sheet`], how big each page is and where
+/// the slip sits on it, in the slip's own pixels — the print's geometry,
+/// shared with the preview.
 #[derive(Clone, Debug, PartialEq)]
 pub struct SheetPlan {
     pub px_per_mm: f64,
-    /// Printable width and height of the (turned, for landscape) sheet, px.
+    /// The area a page is laid on, as the slip lies on it (turned for
+    /// landscape): width along its lines, height along its rows; mm.
+    pub area_mm: (f64, f64),
+    /// That area, px.
     pub sheet_w: u32,
     pub sheet_h: u32,
-    /// Row (in the slip) after the last row of each sheet.
+    /// Row (in the slip) after the last row of each page.
     pub ends: Vec<u32>,
-    pub landscape: bool,
+    pub lay: Lay,
+    /// A roll has no length: down does not count there.
+    pub roll: bool,
+    /// The slip's width and inked length, px.
+    pub slip_w: u32,
+    pub len: u32,
+    /// The slip's left edge and top on each page ([`place_in`]).
+    pub x: i64,
+    pub y: u32,
 }
 
-pub fn plan_sheets(slip: &image::GrayImage, content_mm: f64, paper: &Paper, landscape: bool) -> SheetPlan {
+pub fn plan_sheets(slip: &image::GrayImage, content_mm: f64, sheet: &Sheet, lay: Lay) -> SheetPlan {
     let (sw, sh) = slip.dimensions();
     let px_per_mm = f64::from(sw.max(1)) / content_mm.max(1.0);
-    let sheet = if landscape { paper.turned() } else { paper.clone() };
-    let (pw_mm, ph_mm) = sheet.printable_mm();
-    // Floor: a sheet never reaches past the printable edge.
-    let sheet_w = ((pw_mm * px_per_mm).floor() as u32).max(1);
-    let sheet_h = ((ph_mm * px_per_mm).floor() as u32).max(1);
     let raw = slip.as_raw();
     let len = ink_end(raw, sw as usize, sh as usize).max(1);
     let gaps = line_gaps(raw, sw as usize, sh as usize);
-    SheetPlan { px_per_mm, sheet_w, sheet_h, ends: page_ends(len, sheet_h, &gaps), landscape }
+    let (aw, ah) = sheet.area_mm;
+    let area_mm = if lay.landscape { (ah, aw) } else { (aw, ah) };
+    plan_on(px_per_mm, area_mm, sheet.length_mm <= 0.0, lay, sw, len, |page_len| {
+        page_ends(len, page_len, &gaps)
+    })
 }
 
 /// The plan for the same slip drawn `1 / div` the size (its dots, for the
-/// preview): the same sheets breaking at the same lines.
-fn plan_scaled(plan: &SheetPlan, paper: &Paper, div: u32) -> SheetPlan {
+/// preview): the same pages breaking at the same lines, the slip at the
+/// same place.
+fn plan_scaled(plan: &SheetPlan, div: u32) -> SheetPlan {
     let div = div.max(1);
-    let px_per_mm = plan.px_per_mm / f64::from(div);
-    let sheet = if plan.landscape { paper.turned() } else { paper.clone() };
-    let (pw_mm, ph_mm) = sheet.printable_mm();
-    SheetPlan {
-        px_per_mm,
-        sheet_w: ((pw_mm * px_per_mm).floor() as u32).max(1),
-        sheet_h: ((ph_mm * px_per_mm).floor() as u32).max(1),
-        ends: plan.ends.iter().map(|e| e.div_ceil(div)).collect(),
-        landscape: plan.landscape,
-    }
+    let ends: Vec<u32> = plan.ends.iter().map(|e| e.div_ceil(div)).collect();
+    plan_on(
+        plan.px_per_mm / f64::from(div),
+        plan.area_mm,
+        plan.roll,
+        plan.lay,
+        plan.slip_w.div_ceil(div),
+        plan.len.div_ceil(div),
+        |_| ends,
+    )
 }
 
-/// The sheets of `plan`, one grey picture each, exactly the printable width
-/// (the slip at its top-left, cut at its edge). Portrait sheets are as long
-/// as their part; a landscape slip is laid on the turned sheet and turned
-/// back, filling the printable area so it lands where it was laid.
+fn plan_on(
+    px_per_mm: f64,
+    area_mm: (f64, f64),
+    roll: bool,
+    lay: Lay,
+    slip_w: u32,
+    len: u32,
+    ends: impl FnOnce(u32) -> Vec<u32>,
+) -> SheetPlan {
+    // Floor: a page never reaches past the area's edge.
+    let sheet_w = ((area_mm.0 * px_per_mm).floor() as u32).max(1);
+    let sheet_h = ((area_mm.1 * px_per_mm).floor() as u32).max(1);
+    let ends = ends(sheet_h);
+    let (x, y) = place_in(lay.place, slip_w, len, sheet_w, sheet_h, !roll && ends.len() == 1);
+    SheetPlan { px_per_mm, area_mm, sheet_w, sheet_h, ends, lay, roll, slip_w, len, x, y }
+}
+
+/// The pages of `plan`, one grey picture each, the area's width (the slip
+/// at its place, cut at the area's edges). Portrait pages are as long as
+/// their part, or the whole area's height when the slip sits lower than
+/// the top; a landscape slip is laid on the turned area and turned back,
+/// filling the area so it lands where it was laid.
 pub fn render_sheets(slip: &image::GrayImage, plan: &SheetPlan) -> Vec<image::GrayImage> {
     let (sw, sh) = slip.dimensions();
     let raw = slip.as_raw();
     let (pw, ph) = (plan.sheet_w, plan.sheet_h);
-    let copy_w = sw.min(pw);
+    // The slip's columns that land on the page, and where they land.
+    let from = (-plan.x).max(0).min(i64::from(sw)) as u32;
+    let to = plan.x.max(0).min(i64::from(pw)) as u32;
+    let copy_w = sw.saturating_sub(from).min(pw.saturating_sub(to));
     let mut sheets = Vec::with_capacity(plan.ends.len());
     let mut start = 0u32;
     for &end in &plan.ends {
         let part = end.saturating_sub(start).max(1);
-        let tall = if plan.landscape { ph } else { part };
+        let tall = if plan.lay.landscape || plan.y > 0 { ph } else { part };
         let mut page = image::GrayImage::from_pixel(pw, tall, image::Luma([255]));
-        for y in 0..part.min(tall) {
+        for y in 0..part.min(tall.saturating_sub(plan.y)) {
             let sy = start + y;
             if sy >= sh {
                 break;
             }
-            let src = &raw[(sy * sw) as usize..(sy * sw + copy_w) as usize];
-            let dst_at = (y * pw) as usize;
+            let src = &raw[(sy * sw + from) as usize..(sy * sw + from + copy_w) as usize];
+            let dst_at = ((plan.y + y) * pw + to) as usize;
             page.as_mut()[dst_at..dst_at + copy_w as usize].copy_from_slice(src);
         }
-        sheets.push(if plan.landscape {
+        sheets.push(if plan.lay.landscape {
             image::imageops::rotate90(&page)
         } else {
             page
@@ -810,11 +799,14 @@ pub fn render_sheets(slip: &image::GrayImage, plan: &SheetPlan) -> Vec<image::Gr
     sheets
 }
 
-/// Grey of the preview's paper outline, the edges the printer cannot reach,
-/// and the space between two sheets.
+/// Grey of the preview's paper outline, the paper the printer cannot reach,
+/// and the space between two pages (also all that is not paper).
 pub const PREVIEW_EDGE: u8 = 140;
 pub const PREVIEW_UNREACHABLE: u8 = 236;
 pub const PREVIEW_BETWEEN: u8 = 200;
+/// Black ink that does not print — past the area the printer reaches —
+/// drawn half as dark ([`paste_faded`]).
+pub const PREVIEW_CUT_BLACK: u8 = 128;
 /// The preview picture's limits, px (a texture taller than ~8k fails on
 /// some GPUs; wider than the screen is wasted).
 const PREVIEW_MAX_W: u32 = 1800;
@@ -828,49 +820,96 @@ pub struct PaperPicture {
     pub per_px: f64,
 }
 
-/// The preview: the content on a printer's paper as it prints.
+/// The preview: the content on a printer's virtual paper as it prints.
 ///
 /// `slip` is the upright slip picture, `dot` how many of its pixels are one
 /// printer dot (it is drawn in whole blocks), `content_mm` its width on
-/// paper. **OS document**: `page` is [`page_for`]'s page; the sheets are
-/// [`plan_sheets`]' — the print's own plan — each drawn on the whole paper
-/// at the printable top-left, the edges it cannot reach shaded, a gap
-/// between sheets. **ESC/POS** (`page` = `None`): the roll `roll_mm` wide,
-/// the picture the printer gets (`escpos_picture`, turned when landscape)
-/// from its left edge, cut at the roll's edge. Drawn at the printer's dots,
-/// enlarged in whole blocks so it stays sharp.
+/// paper. **OS document**: `sheet` is the printer's [`Sheet`]; the pages
+/// are [`plan_sheets`]' — the print's own plan — each drawn on the virtual
+/// paper: the area the printer reaches white, the rest of the paper shaded
+/// (its edges, and all of it past the printer's own page), a gap between
+/// pages. A roll's paper is as long as each page. **ESC/POS** (`sheet` =
+/// `None`): the roll `roll_mm` wide, the picture the printer gets
+/// (`escpos_picture`, turned when landscape) at its place across the roll,
+/// cut at the roll's edges. Drawn at the printer's dots, enlarged in whole
+/// blocks so it stays sharp.
+///
+/// What the print cuts off is never hidden: the rest of a slip wider than
+/// the area is drawn where it would have gone, faded ([`paste_faded`]) —
+/// over the shaded paper and past the paper's edge, on the grey that is not
+/// paper. White paper shows only what prints.
 pub fn preview_picture(
     slip: &image::GrayImage,
     dot: u32,
     content_mm: f64,
-    page: Option<&Paper>,
-    landscape: bool,
+    sheet: Option<&Sheet>,
     roll_mm: f64,
     escpos_picture: Option<&image::GrayImage>,
+    lay: Lay,
 ) -> PaperPicture {
     let dot = dot.max(1);
     let gray = |w: u32, h: u32, v: u8| image::GrayImage::from_pixel(w.max(1), h.max(1), image::Luma([v]));
-    let canvas = match page {
-        Some(page) => {
-            let full = plan_sheets(slip, content_mm, page, landscape);
-            let plan = plan_scaled(&full, page, dot);
+    let canvas = match sheet {
+        Some(sheet) => {
+            let plan = plan_scaled(&plan_sheets(slip, content_mm, sheet, lay), dot);
             let small = dots_of(slip, dot);
-            let sheets = render_sheets(&small, &plan);
+            let pages = render_sheets(&small, &plan);
+            let wholes = whole_sheets(&small, &plan);
             let ppm = plan.px_per_mm;
-            let pw = ((page.width_mm * ppm).round() as u32).max(1);
-            let ph = ((page.height_mm * ppm).round() as u32).max(1);
-            let gap = ((4.0 * ppm).round() as u32).max(2);
-            let n = sheets.len().max(1) as u32;
-            let mut c = gray(pw, ph * n + gap * (n - 1), PREVIEW_BETWEEN);
-            let [ml, mt, mr, mb] = page.margins_mm.map(|m| (m * ppm).round() as u32);
-            for (i, sheet) in sheets.iter().enumerate() {
-                let top = i as u32 * (ph + gap);
-                fill(&mut c, 0, top, pw, ph, PREVIEW_UNREACHABLE);
-                // The printable area is the paper's own white.
-                let (aw, ah) = (pw.saturating_sub(ml + mr), ph.saturating_sub(mt + mb));
-                fill(&mut c, ml, top + mt, aw, ah, 255);
-                paste(&mut c, sheet, ml, top + mt, ml + aw, top + mt + ah);
-                outline(&mut c, 0, top, pw, ph, ((0.35 * ppm).round() as u32).max(1));
+            let px = |mm: f64| (mm * ppm).round() as u32;
+            let pw = px(sheet.width_mm).max(1);
+            let [ml, mt, _, mb] = sheet.margins_mm.map(px);
+            // The area as it lies on the upright paper.
+            let (aw, ah) = if lay.landscape {
+                (plan.sheet_h, plan.sheet_w)
+            } else {
+                (plan.sheet_w, plan.sheet_h)
+            };
+            let is_roll = sheet.length_mm <= 0.0;
+            let gap = px(4.0).max(2);
+            let line = px(0.35).max(1);
+            // Each page's paper and the area on it: a sheet's own length; a
+            // roll as long as the page, and the half millimetre a roll's
+            // page has past its last line (`sheet_for`) — so the paper's
+            // drawn edge never lies over the ink.
+            let past = px(0.5).max(line);
+            let sizes: Vec<(u32, u32)> = pages
+                .iter()
+                .map(|p| {
+                    if is_roll {
+                        (mt + p.height() + past + mb, p.height() + past)
+                    } else {
+                        (px(sheet.length_mm).max(1), ah)
+                    }
+                })
+                .collect();
+            // How far the slip reaches along its lines, from the paper's
+            // edge: past the paper before it or after it — beside an
+            // upright page, above or below a turned one. That room is
+            // drawn too, never hidden.
+            let along_from = i64::from(if lay.landscape { mt } else { ml }) + plan.x;
+            let along_to = along_from + i64::from(small.width());
+            let before = (-along_from).max(0) as u32;
+            let after = |size: u32| (along_to - i64::from(size)).max(0) as u32;
+            let slot = |paper_h: u32| if lay.landscape { before + paper_h + after(paper_h) } else { paper_h };
+            let cw = if lay.landscape { pw } else { before + pw + after(pw) };
+            let ch = sizes.iter().map(|s| slot(s.0)).sum::<u32>() + gap * (sizes.len().max(1) as u32 - 1);
+            let mut c = gray(cw, ch, PREVIEW_BETWEEN);
+            let mut next = 0u32;
+            for (i, page) in pages.iter().enumerate() {
+                let (paper_h, area_h) = sizes[i];
+                let (left, top) = if lay.landscape { (0, next + before) } else { (before, next) };
+                fill(&mut c, left, top, pw, paper_h, PREVIEW_UNREACHABLE);
+                // The area the printer reaches is the paper's own white.
+                fill(&mut c, left + ml, top + mt, aw, area_h, 255);
+                // The whole slip faded, then the printed page over the
+                // area: what stays faded is what the print cuts off.
+                if let Some((whole, wx, wy)) = wholes.get(i) {
+                    paste_faded(&mut c, whole, i64::from(left + ml) + wx, i64::from(top + mt) + wy);
+                }
+                paste(&mut c, page, left + ml, top + mt, left + ml + aw, top + mt + area_h);
+                outline(&mut c, left, top, pw, paper_h, line);
+                next += slot(paper_h) + gap;
             }
             c
         }
@@ -879,10 +918,17 @@ pub fn preview_picture(
             let small = dots_of(pic, dot);
             let ppm = f64::from(slip.width().max(1)) / content_mm.max(1.0) / f64::from(dot);
             let rw = ((roll_mm * ppm).round() as u32).max(1);
-            let rh = small.height().max(1);
-            let mut c = gray(rw, rh, 255);
-            paste(&mut c, &small, 0, 0, rw, rh);
-            outline(&mut c, 0, 0, rw, rh, ((0.35 * ppm).round() as u32).max(1));
+            let (sw, rh) = (small.width(), small.height().max(1));
+            // A roll is as long as the slip: only across counts.
+            let (x, _) = place_in(lay.place, sw, rh, rw, rh, false);
+            let before = (-x).max(0) as u32;
+            let after = (x + i64::from(sw) - i64::from(rw)).max(0) as u32;
+            // Past the roll is not paper; what the roll cuts off shows there.
+            let mut c = gray(before + rw + after, rh, PREVIEW_BETWEEN);
+            fill(&mut c, before, 0, rw, rh, 255);
+            paste_faded(&mut c, &small, i64::from(before) + x, 0);
+            paste(&mut c, &place_on(&small, x, rw), before, 0, before + rw, rh);
+            outline(&mut c, before, 0, rw, rh, ((0.35 * ppm).round() as u32).max(1));
             c
         }
     };
@@ -902,6 +948,52 @@ pub fn preview_picture(
         return PaperPicture { gray: small, per_px: f64::from(dot) * k };
     }
     PaperPicture { gray: canvas, per_px: f64::from(dot) }
+}
+
+/// Each page's rows of the slip at their whole width — what the page
+/// shows and what it cuts off — turned like the page, with where their
+/// top-left lands from the area's top-left (negative: before it).
+fn whole_sheets(slip: &image::GrayImage, plan: &SheetPlan) -> Vec<(image::GrayImage, i64, i64)> {
+    let (sw, sh) = slip.dimensions();
+    let raw = slip.as_raw();
+    let mut out = Vec::with_capacity(plan.ends.len());
+    let mut start = 0u32;
+    for &end in &plan.ends {
+        let mut rows = end.saturating_sub(start).max(1).min(sh.saturating_sub(start));
+        if plan.lay.landscape || plan.y > 0 {
+            rows = rows.min(plan.sheet_h.saturating_sub(plan.y));
+        }
+        let rows = rows.max(1);
+        let mut part = image::GrayImage::from_pixel(sw.max(1), rows, image::Luma([255]));
+        let (s, n) = ((start * sw) as usize, (rows * sw) as usize);
+        if s + n <= raw.len() {
+            part.as_mut()[..n].copy_from_slice(&raw[s..s + n]);
+        }
+        out.push(if plan.lay.landscape {
+            // A point (x, y) of the turned page lands at (tall - 1 - y, x).
+            let tall = i64::from(plan.sheet_h);
+            (image::imageops::rotate90(&part), tall - i64::from(plan.y) - i64::from(rows), plan.x)
+        } else {
+            (part, plan.x, i64::from(plan.y))
+        });
+        start = end;
+    }
+    out
+}
+
+/// `src` at (x, y) as ink that does not print: half as dark, over what is
+/// already there, so the paper's edge and the grey past it stay visible.
+fn paste_faded(c: &mut image::GrayImage, src: &image::GrayImage, x: i64, y: i64) {
+    let (cw, ch) = (i64::from(c.width()), i64::from(c.height()));
+    for (sx, sy, p) in src.enumerate_pixels() {
+        let (cx, cy) = (x + i64::from(sx), y + i64::from(sy));
+        if cx < 0 || cy < 0 || cx >= cw || cy >= ch {
+            continue;
+        }
+        let faded = 255 - (255 - p.0[0]) / 2;
+        let px = c.get_pixel_mut(cx as u32, cy as u32);
+        px.0[0] = px.0[0].min(faded);
+    }
 }
 
 /// A picture drawn in `dot` × `dot` blocks, back to one pixel per block.
@@ -993,7 +1085,6 @@ mod tests {
     /// imageable area, HWMargins for that one.
     const PPD: &str = "*PPD-Adobe: \"4.3\"\n\
 *HWMargins: 12 24 12 24\n\
-*CustomPageSize True: \"pop pop pop pop pop\"\n\
 *DefaultPageSize: Small\n\
 *PageSize Small/Small card: \"<</PageSize[288 432]>>setpagedevice\"\n\
 *PageSize Mid/Mid sheet: \"<</PageSize[420 595]>>setpagedevice\"\n\
@@ -1003,6 +1094,44 @@ mod tests {
 *PaperDimension Small/Small card: \"288 432\"\n\
 *PaperDimension Mid/Mid sheet: \"420 595\"\n\
 *PaperDimension Strip/Strip 58: \"164 800\"\n";
+
+    fn slip(w: u32, lines: &[(u32, u32)], h: u32) -> image::GrayImage {
+        let mut img = image::GrayImage::from_pixel(w, h, image::Luma([255]));
+        for &(y0, y1) in lines {
+            for y in y0..y1 {
+                for x in 0..w {
+                    img.put_pixel(x, y, image::Luma([0]));
+                }
+            }
+        }
+        img
+    }
+
+    /// A slip white but for two marks in its inked rows: at its left end and
+    /// at its right end.
+    fn marked(w: u32, h: u32, ink_rows: u32) -> image::GrayImage {
+        image::GrayImage::from_fn(w, h, |x, y| {
+            image::Luma([if y < ink_rows && (x < 10 || x >= w - 10) { 0 } else { 255 }])
+        })
+    }
+
+    fn paper(w: f64, h: f64, m: [f64; 4]) -> Paper {
+        Paper { id: "P".into(), label: "P".into(), width_mm: w, height_mm: h, margins_mm: m }
+    }
+
+    /// The sheet of a printer whose own page and virtual paper are both
+    /// `w` × `h`, with edges `m` it cannot reach.
+    fn sheet(w: f64, h: f64, m: [f64; 4]) -> Sheet {
+        sheet_for(PaperMm { width_mm: w, length_mm: h }, Some(&paper(w, h, m)), (0.0, 0.0), false)
+    }
+
+    fn turned() -> Lay {
+        Lay { landscape: true, ..Lay::default() }
+    }
+
+    fn placed(down: u8, across: u8) -> Lay {
+        Lay { place: Place::new(down, across), ..Lay::default() }
+    }
 
     #[test]
     fn a_ppd_gives_every_size_its_printable_area_and_the_default() {
@@ -1026,67 +1155,58 @@ mod tests {
         for (a, b) in strip.margins_mm.iter().zip(want) {
             assert!((a - b).abs() < 1e-6);
         }
+        // The printer's own paper is the one its driver is set to.
+        assert_eq!(p.default_paper().unwrap().id, "Small");
     }
 
+    /// Owner, 2026-11-17: a job prints on the printer's own page; the
+    /// virtual paper only says how much of that page is really paper.
     #[test]
-    fn the_page_is_the_printers_paper_named_by_the_driver_when_it_can() {
-        let p = parse_ppd(PPD);
-        // 288 × 432 pt = 101.6 × 152.4 mm: the driver's own "Small".
-        let own = page_for(PaperMm { width_mm: 101.6, length_mm: 152.4 }, Some(&p), (80.0, 50.0), false);
-        assert!(own.driver_size);
-        assert_eq!(own.media, "Small");
-        assert_eq!(own.page.margins_mm, p.by_id("Small").unwrap().margins_mm);
-        // No size of that name: a custom page with the driver's HWMargins.
-        let custom = page_for(PaperMm { width_mm: 104.8, length_mm: 241.3 }, Some(&p), (80.0, 50.0), false);
-        assert!(!custom.driver_size);
-        assert_eq!(custom.media, "Custom.104.8x241.3mm");
-        let hw = [12.0, 24.0, 12.0, 24.0].map(|v: f64| v * PT_MM);
-        for (a, b) in custom.page.margins_mm.iter().zip(hw) {
-            assert!((a - b).abs() < 1e-9);
-        }
-        // A roll: one page as long as the slip and the edges it cannot reach.
-        let roll = page_for(PaperMm { width_mm: 80.0, length_mm: 0.0 }, Some(&p), (72.0, 300.0), false);
-        let want = 300.0 + hw[1] + hw[3] + 0.5;
-        assert!((roll.page.height_mm - want).abs() < 1e-9, "{}", roll.page.height_mm);
-        assert!(roll.media.starts_with("Custom.80x"), "{}", roll.media);
+    fn a_page_is_laid_on_the_part_of_the_printers_page_that_is_paper() {
+        let big = paper(210.0, 297.0, [5.0; 4]);
+        // A half-size sheet in a printer set to the big page.
+        let half = sheet_for(PaperMm { width_mm: 105.0, length_mm: 148.0 }, Some(&big), (80.0, 50.0), false);
+        assert_eq!((half.width_mm, half.length_mm), (105.0, 148.0));
+        assert_eq!(half.margins_mm, [5.0; 4], "the printer's own edges");
+        assert_eq!(half.area_mm, (95.0, 138.0), "no further than the virtual paper");
+        // The same sizes: the printer's whole printable area.
+        let same = sheet_for(PaperMm { width_mm: 210.0, length_mm: 297.0 }, Some(&big), (80.0, 50.0), false);
+        assert_eq!(same.area_mm, (200.0, 287.0));
+        // A printer whose page is smaller than the virtual paper reaches
+        // only its own page.
+        let small = paper(148.0, 210.0, [4.0; 4]);
+        let wide = sheet_for(PaperMm { width_mm: 210.0, length_mm: 297.0 }, Some(&small), (80.0, 50.0), false);
+        assert_eq!(wide.area_mm, (140.0, 202.0));
+        assert_eq!((wide.width_mm, wide.length_mm), (210.0, 297.0), "the paper drawn is still the virtual one");
+        // A roll: as long as the slip needs, never longer than the page.
+        let roll = PaperMm { width_mm: 80.0, length_mm: 0.0 };
+        let short = sheet_for(roll, Some(&big), (72.0, 50.0), false);
+        assert_eq!(short.area_mm, (70.0, 50.5));
+        assert_eq!(short.length_mm, 0.0);
+        let long = sheet_for(roll, Some(&big), (72.0, 900.0), false);
+        assert_eq!(long.area_mm, (70.0, 287.0), "a longer slip goes on to the next page");
         // Across a roll (landscape) the slip's width runs along it.
-        let across = page_for(PaperMm { width_mm: 80.0, length_mm: 0.0 }, Some(&p), (72.0, 300.0), true);
-        assert!((across.page.height_mm - (72.0 + hw[1] + hw[3] + 0.5)).abs() < 1e-9);
-        // Driver not readable: still the printer's paper, edges unknown.
-        let blind = page_for(PaperMm { width_mm: 104.8, length_mm: 241.3 }, None, (80.0, 50.0), false);
-        assert_eq!(blind.page.margins_mm, [0.0; 4]);
-        assert_eq!(blind.media, "Custom.104.8x241.3mm");
-        assert!(!blind.fallback);
-    }
-
-    /// A driver that takes no custom size prints on its own paper whatever
-    /// is asked (Windows "Microsoft Print to PDF" put an 80 mm roll on A4,
-    /// 2026-11-16): the page — and so the preview — is that paper, flagged.
-    #[test]
-    fn a_driver_with_no_custom_sizes_puts_the_page_on_its_own_paper() {
-        let p = parse_ppd(&PPD.replace("*CustomPageSize True: \"pop pop pop pop pop\"\n", ""));
-        assert!(!p.custom_ok);
-        let roll = page_for(PaperMm { width_mm: 80.0, length_mm: 0.0 }, Some(&p), (72.0, 300.0), false);
-        assert!(roll.fallback);
-        assert_eq!(roll.media, "Small");
-        assert_eq!(roll.page, p.by_id("Small").unwrap().clone());
-        // A size it names still matches, with no fallback.
-        let own = page_for(PaperMm { width_mm: 148.2, length_mm: 209.9 }, Some(&p), (80.0, 50.0), false);
-        assert!(!own.fallback && own.media == "Mid", "{own:?}");
+        let across = sheet_for(roll, Some(&big), (72.0, 900.0), true);
+        assert_eq!(across.area_mm, (70.0, 72.5));
+        // The driver has not said: the virtual paper alone, edges unknown.
+        let blind = sheet_for(PaperMm { width_mm: 104.8, length_mm: 241.3 }, None, (80.0, 50.0), false);
+        assert_eq!(blind.margins_mm, [0.0; 4]);
+        assert_eq!(blind.area_mm, (104.8, 241.3));
+        assert_eq!(sheet_for(roll, None, (72.0, 300.0), false).area_mm, (80.0, 300.5));
     }
 
     /// The preview is the print (owner, 2026-11-16: it must never fool):
-    /// its printable areas hold exactly the printed sheets' pixels, at the
-    /// printer's margins, breaking where the print breaks.
+    /// its areas hold exactly the printed pages' pixels, at the printer's
+    /// margins, breaking where the print breaks.
     #[test]
     fn the_preview_shows_exactly_the_printed_sheets_on_the_paper() {
         // 10 px per mm, one px per dot: 30 lines of 20 px, 10 px apart.
         let lines: Vec<(u32, u32)> = (0..30).map(|i| (i * 30, i * 30 + 20)).collect();
         let s = slip(400, &lines, 900);
-        let page = paper(50.0, 40.0, [2.0, 3.0, 4.0, 5.0]);
-        let printed = os_document_sheets(&s, 40.0, &page, false).0;
+        let page = sheet(50.0, 40.0, [2.0, 3.0, 4.0, 5.0]);
+        let printed = os_document_sheets(&s, 40.0, &page, Lay::default()).0;
         assert!(printed.len() > 2, "a long slip goes on more sheets");
-        let pic = preview_picture(&s, 1, 40.0, Some(&page), false, 0.0, None);
+        let pic = preview_picture(&s, 1, 40.0, Some(&page), 0.0, None, Lay::default());
         assert_eq!(pic.per_px, 1.0);
         let (pw, ph, gap) = (500u32, 400u32, 40u32);
         assert_eq!(pic.gray.width(), pw);
@@ -1114,23 +1234,247 @@ mod tests {
         let s1 = slip(80, &[(0, 6), (10, 16)], 30);
         // The same slip drawn as 2 × 2 blocks (as the app's picture is).
         let s2 = image::GrayImage::from_fn(160, 60, |x, y| *s1.get_pixel(x / 2, y / 2));
-        let page = paper(12.0, 9.0, [1.0; 4]);
-        let one = preview_picture(&s1, 1, 8.0, Some(&page), false, 0.0, None);
-        let two = preview_picture(&s2, 2, 8.0, Some(&page), false, 0.0, None);
+        let page = sheet(12.0, 9.0, [1.0; 4]);
+        let one = preview_picture(&s1, 1, 8.0, Some(&page), 0.0, None, Lay::default());
+        let two = preview_picture(&s2, 2, 8.0, Some(&page), 0.0, None, Lay::default());
         assert_eq!(two.per_px, 1.0, "drawn back up in whole blocks");
         assert_eq!(two.gray, blocks(&one.gray, 2));
     }
 
     #[test]
     fn an_escpos_preview_is_the_roll_with_the_picture_from_its_left_edge() {
-        // A 90 mm slip on an 80 mm roll: cut at the roll's edge.
+        // A 90 mm slip on an 80 mm roll: cut at the roll's edge, and the
+        // 10 mm the roll cuts off shown past it, faded.
         let s = slip(900, &[(0, 10)], 40);
-        let pic = preview_picture(&s, 1, 90.0, None, false, 80.0, None);
-        assert_eq!(pic.gray.width(), 800);
+        let pic = preview_picture(&s, 1, 90.0, None, 80.0, None, Lay::default());
+        assert_eq!(pic.gray.width(), 900, "the roll and what it cuts off");
         assert_eq!(pic.gray.height(), 40);
         assert_eq!(pic.gray.get_pixel(5, 5).0[0], 0, "from the left edge");
         assert_eq!(pic.gray.get_pixel(790, 5).0[0], 0, "ink up to the roll's edge");
         assert_eq!(pic.gray.get_pixel(798, 5).0[0], PREVIEW_EDGE, "the roll's own edge");
+        assert_eq!(pic.gray.get_pixel(850, 5).0[0], PREVIEW_CUT_BLACK, "cut off, faded");
+        assert_eq!(pic.gray.get_pixel(850, 20).0[0], PREVIEW_BETWEEN, "past the roll is not paper");
+    }
+
+    #[test]
+    fn a_slip_that_fits_draws_nothing_past_the_paper() {
+        let s = slip(500, &[(0, 20)], 40);
+        let p = sheet(62.0, 50.0, [1.0; 4]);
+        let pic = preview_picture(&s, 1, 50.0, Some(&p), 0.0, None, Lay::default());
+        assert_eq!(pic.gray.dimensions(), (620, 500));
+    }
+
+    /// Owner, 2026-11-17: a 210 mm bill on 105 mm paper, drawn cut at the
+    /// paper's edge with nothing past it, looked as if it fit the paper.
+    #[test]
+    fn a_slip_wider_than_the_paper_shows_what_the_print_cuts_off() {
+        // 10 px/mm: a 100 mm slip on 62 mm paper (60 mm reachable).
+        let s = slip(1000, &[(0, 20)], 40);
+        let p = sheet(62.0, 50.0, [1.0; 4]);
+        let pic = preview_picture(&s, 1, 100.0, Some(&p), 0.0, None, Lay::default());
+        let c = &pic.gray;
+        assert_eq!(c.dimensions(), (1010, 500), "the paper, and the slip's whole width past it");
+        // The paper holds exactly the printed sheet.
+        let (sheets, _) = os_document_sheets(&s, 100.0, &p, Lay::default());
+        for y in 0..sheets[0].height() {
+            for x in 0..sheets[0].width() {
+                assert_eq!(c.get_pixel(10 + x, 10 + y), sheets[0].get_pixel(x, y), "({x}, {y})");
+            }
+        }
+        assert_eq!(c.get_pixel(612, 15).0[0], PREVIEW_CUT_BLACK, "cut off, in the paper's own margin");
+        assert_eq!(c.get_pixel(618, 15).0[0], PREVIEW_EDGE, "the paper's edge stays drawn");
+        assert_eq!(c.get_pixel(800, 15).0[0], PREVIEW_CUT_BLACK, "cut off, past the paper");
+        assert_eq!(c.get_pixel(800, 35).0[0], PREVIEW_BETWEEN, "past the paper is not paper");
+    }
+
+    #[test]
+    fn a_turned_slip_wider_than_the_paper_shows_the_cut_off_part_below_it() {
+        // Landscape: the slip's width runs down the paper (60 mm reachable).
+        let s = slip(1000, &[(0, 20)], 40);
+        let p = sheet(50.0, 62.0, [1.0; 4]);
+        let pic = preview_picture(&s, 1, 100.0, Some(&p), 0.0, None, turned());
+        let c = &pic.gray;
+        assert_eq!(c.dimensions(), (500, 1010), "the paper, and the rest of the slip below it");
+        // Slip (x, 5) lands at (10 + 479 - 5, 10 + x).
+        assert_eq!(c.get_pixel(484, 110).0[0], 0, "printed");
+        assert_eq!(c.get_pixel(484, 618).0[0], PREVIEW_EDGE, "the paper's bottom edge");
+        assert_eq!(c.get_pixel(484, 910).0[0], PREVIEW_CUT_BLACK, "cut off, below the paper");
+        assert_eq!(c.get_pixel(464, 910).0[0], PREVIEW_BETWEEN, "no ink there");
+    }
+
+    /// A printer whose own page is narrower than the virtual paper prints
+    /// only on its page: the rest of the paper is shaded and the ink that
+    /// would land there faded — it must not look printed.
+    #[test]
+    fn paper_past_the_printers_own_page_is_shaded_and_its_ink_faded() {
+        // 10 px/mm: an 80 mm slip; the page 62 mm (60 reachable), the
+        // virtual paper 100 mm.
+        let s = slip(800, &[(0, 20)], 40);
+        let own = paper(62.0, 50.0, [1.0; 4]);
+        let p = sheet_for(PaperMm { width_mm: 100.0, length_mm: 50.0 }, Some(&own), (80.0, 2.0), false);
+        assert_eq!(p.area_mm, (60.0, 48.0));
+        let (sheets, _) = os_document_sheets(&s, 80.0, &p, Lay::default());
+        assert_eq!(sheets[0].width(), 600, "cut for the printer's own page");
+        let pic = preview_picture(&s, 1, 80.0, Some(&p), 0.0, None, Lay::default());
+        let c = &pic.gray;
+        assert_eq!(c.dimensions(), (1000, 500), "the virtual paper");
+        assert_eq!(c.get_pixel(10 + 300, 15).0[0], 0, "printed");
+        assert_eq!(c.get_pixel(10 + 700, 15).0[0], PREVIEW_CUT_BLACK, "on paper the printer cannot reach");
+        assert_eq!(c.get_pixel(10 + 700, 35).0[0], PREVIEW_UNREACHABLE);
+        assert_eq!(c.get_pixel(900, 15).0[0], PREVIEW_UNREACHABLE, "paper, but never printed");
+        assert_eq!(c.get_pixel(10 + 300, 35).0[0], 255, "paper the printer reaches");
+    }
+
+    /// A half-size sheet in a printer set to a bigger page: pages break at
+    /// the real sheet's length, so every sheet gets a whole page and no
+    /// lines are lost off its end.
+    #[test]
+    fn a_shorter_virtual_sheet_breaks_pages_at_its_own_length() {
+        // 10 px/mm: 60 lines of 20 px, 10 px apart = 180 mm of slip.
+        let lines: Vec<(u32, u32)> = (0..60).map(|i| (i * 30, i * 30 + 20)).collect();
+        let s = slip(800, &lines, 1800);
+        let big = paper(210.0, 297.0, [4.0; 4]);
+        let half = sheet_for(PaperMm { width_mm: 105.0, length_mm: 148.0 }, Some(&big), (80.0, 180.0), false);
+        let (sheets, _) = os_document_sheets(&s, 80.0, &half, Lay::default());
+        assert!(sheets.len() >= 2, "one big page would lose the lines past the real sheet");
+        let mut total = 0;
+        for sheet in &sheets {
+            assert!(sheet.height() <= 1400, "fits the real sheet: 148 - 4 - 4 mm");
+            total += sheet.height();
+        }
+        assert_eq!(total, 60 * 30 - 10, "every row printed once");
+        // On the big page itself the whole slip is one page.
+        let whole = sheet_for(PaperMm { width_mm: 210.0, length_mm: 297.0 }, Some(&big), (80.0, 180.0), false);
+        assert_eq!(os_document_sheets(&s, 80.0, &whole, Lay::default()).0.len(), 1);
+    }
+
+    #[test]
+    fn the_nine_places_are_the_papers_own_sides() {
+        // A 40 × 50 slip in a 100 × 200 area.
+        let at = |down, across| place_in(Place::new(down, across), 40, 50, 100, 200, true);
+        assert_eq!(at(0, 0), (0, 0), "top left: where content always sat");
+        assert_eq!(at(0, 1), (30, 0), "top centre");
+        assert_eq!(at(0, 2), (60, 0), "top right");
+        assert_eq!(at(1, 0), (0, 75), "middle left");
+        assert_eq!(at(2, 2), (60, 150), "bottom right");
+        // Down only on one sheet with a length that holds the slip.
+        assert_eq!(place_in(Place::new(2, 0), 40, 50, 100, 200, false), (0, 0));
+        assert_eq!(place_in(Place::new(2, 0), 40, 250, 100, 200, true), (0, 0));
+        // Wider than the area: it hangs over by the same rule.
+        assert_eq!(place_in(Place::new(0, 0), 150, 50, 100, 200, true), (0, 0), "left: cut at the right");
+        assert_eq!(place_in(Place::new(0, 1), 150, 50, 100, 200, true), (-25, 0), "centre: cut at both");
+        assert_eq!(place_in(Place::new(0, 2), 150, 50, 100, 200, true), (-50, 0), "right: cut at the left");
+        assert!(Place::default().is_top_left());
+    }
+
+    #[test]
+    fn a_placed_slip_prints_there_and_the_preview_shows_it_there() {
+        // 10 px/mm: a 40 mm slip (20 rows of ink) on 62 × 50 mm paper.
+        let s = slip(400, &[(0, 20)], 40);
+        let p = sheet(62.0, 50.0, [1.0; 4]);
+        let (sheets, _) = os_document_sheets(&s, 40.0, &p, placed(1, 1));
+        assert_eq!(sheets.len(), 1);
+        // Placed lower than the top: the page is the whole area.
+        assert_eq!(sheets[0].dimensions(), (600, 480));
+        // Centre: (600 - 400) / 2; middle: (480 - 20) / 2.
+        assert_eq!(sheets[0].get_pixel(100, 230).0[0], 0);
+        assert_eq!(sheets[0].get_pixel(99, 230).0[0], 255);
+        assert_eq!(sheets[0].get_pixel(100, 229).0[0], 255);
+        assert_eq!(sheets[0].get_pixel(499, 249).0[0], 0);
+        assert_eq!(sheets[0].get_pixel(500, 249).0[0], 255);
+        let pic = preview_picture(&s, 1, 40.0, Some(&p), 0.0, None, placed(1, 1));
+        assert_eq!(pic.gray.dimensions(), (620, 500), "it fits: nothing past the paper");
+        for (x, y) in [(0, 0), (100, 230), (499, 249), (300, 470)] {
+            assert_eq!(pic.gray.get_pixel(10 + x, 10 + y), sheets[0].get_pixel(x, y), "({x}, {y})");
+        }
+        // Top-left is the page as it always was.
+        let (top, _) = os_document_sheets(&s, 40.0, &p, Lay::default());
+        assert_eq!(top[0].dimensions(), (600, 20));
+        assert_eq!(top[0].get_pixel(0, 0).0[0], 0);
+    }
+
+    /// The place is measured on the real sheet, not on the bigger page the
+    /// printer is set to: centre is the centre of the half-size sheet.
+    #[test]
+    fn a_place_is_measured_on_the_virtual_paper() {
+        let s = slip(400, &[(0, 20)], 40);
+        let big = paper(210.0, 297.0, [5.0; 4]);
+        let half = sheet_for(PaperMm { width_mm: 105.0, length_mm: 148.0 }, Some(&big), (40.0, 2.0), false);
+        let (sheets, _) = os_document_sheets(&s, 40.0, &half, placed(1, 1));
+        // The area: 95 × 138 mm. Centre: (950 - 400) / 2 = 275; middle:
+        // (1380 - 20) / 2 = 680.
+        assert_eq!(sheets[0].dimensions(), (950, 1380));
+        assert_eq!(sheets[0].get_pixel(275, 680).0[0], 0);
+        assert_eq!(sheets[0].get_pixel(274, 680).0[0], 255);
+        assert_eq!(sheets[0].get_pixel(275, 679).0[0], 255);
+    }
+
+    #[test]
+    fn a_roll_or_a_long_slip_starts_at_the_top_whatever_the_place() {
+        let s = slip(400, &[(0, 20)], 40);
+        let own = paper(62.0, 50.0, [1.0; 4]);
+        let roll = sheet_for(PaperMm { width_mm: 62.0, length_mm: 0.0 }, Some(&own), (40.0, 2.0), false);
+        let (sheets, _) = os_document_sheets(&s, 40.0, &roll, placed(2, 1));
+        assert_eq!(sheets.len(), 1);
+        assert_eq!(sheets[0].height(), 20, "as long as the slip");
+        assert_eq!(sheets[0].get_pixel(100, 0).0[0], 0, "centred across, at the top");
+        // The roll's paper in the preview is as long as its page.
+        let pic = preview_picture(&s, 1, 40.0, Some(&roll), 0.0, None, placed(2, 1));
+        assert_eq!(pic.gray.dimensions(), (620, 10 + 20 + 5 + 10), "and the half millimetre past its last line");
+        // 30 lines on 25 mm sheets: more than one sheet starts at the top.
+        let lines: Vec<(u32, u32)> = (0..30).map(|i| (i * 30, i * 30 + 20)).collect();
+        let long = slip(100, &lines, 900);
+        let small = sheet(12.0, 27.0, [1.0; 4]);
+        let (sheets, _) = os_document_sheets(&long, 10.0, &small, placed(2, 0));
+        assert!(sheets.len() > 1);
+        assert_eq!(sheets[0].get_pixel(0, 0).0[0], 0);
+    }
+
+    /// A roll longer than the printer's own page goes on to its next page,
+    /// as any document does; the preview shows each page on its own paper.
+    #[test]
+    fn a_roll_slip_longer_than_the_printers_page_goes_on_more_pages() {
+        let lines: Vec<(u32, u32)> = (0..30).map(|i| (i * 30, i * 30 + 20)).collect();
+        let s = slip(100, &lines, 900);
+        let own = paper(12.0, 27.0, [1.0; 4]);
+        let roll = sheet_for(PaperMm { width_mm: 12.0, length_mm: 0.0 }, Some(&own), (10.0, 89.0), false);
+        assert_eq!(roll.area_mm, (10.0, 25.0));
+        let (sheets, _) = os_document_sheets(&s, 10.0, &roll, Lay::default());
+        assert!(sheets.len() >= 4);
+        assert!(sheets.iter().all(|p| p.height() <= 250));
+        assert_eq!(sheets.iter().map(|p| p.height()).sum::<u32>(), 30 * 30 - 10);
+        let pic = preview_picture(&s, 1, 10.0, Some(&roll), 0.0, None, Lay::default());
+        let papers: u32 = sheets.iter().map(|p| 10 + p.height() + 5 + 10).sum();
+        assert_eq!(pic.gray.height(), papers + 40 * (sheets.len() as u32 - 1));
+    }
+
+    #[test]
+    fn a_right_placed_slip_wider_than_the_paper_keeps_its_right_end() {
+        // 10 px/mm: a 100 mm slip on 62 mm paper (60 mm reachable).
+        let s = marked(1000, 40, 20);
+        let p = sheet(62.0, 50.0, [1.0; 4]);
+        let (sheets, _) = os_document_sheets(&s, 100.0, &p, placed(0, 2));
+        assert_eq!(sheets[0].get_pixel(595, 5).0[0], 0, "its right end prints");
+        assert_eq!(sheets[0].get_pixel(5, 5).0[0], 255, "its left end is cut off");
+        let pic = preview_picture(&s, 1, 100.0, Some(&p), 0.0, None, placed(0, 2));
+        // 400 px cut off before the area: 390 of them past the paper.
+        assert_eq!(pic.gray.dimensions(), (1010, 500));
+        assert_eq!(pic.gray.get_pixel(5, 15).0[0], PREVIEW_CUT_BLACK, "cut off, before the paper");
+        assert_eq!(pic.gray.get_pixel(390 + 10 + 595, 15).0[0], 0, "printed");
+        // Top-left (the default) keeps its left end, as it always did.
+        let (kept, _) = os_document_sheets(&s, 100.0, &p, Lay::default());
+        assert_eq!(kept[0].get_pixel(5, 5).0[0], 0);
+    }
+
+    #[test]
+    fn an_escpos_slip_narrower_than_the_roll_goes_where_it_is_placed() {
+        // 10 px/mm: a 58 mm slip on an 80 mm roll, centred across.
+        let s = slip(580, &[(0, 10)], 40);
+        let pic = preview_picture(&s, 1, 58.0, None, 80.0, None, placed(2, 1));
+        assert_eq!(pic.gray.dimensions(), (800, 40), "the roll, nothing past it");
+        assert_eq!(pic.gray.get_pixel(50, 5).0[0], 255, "blank roll before the slip");
+        assert_eq!(pic.gray.get_pixel(150, 5).0[0], 0, "the slip from (800 - 580) / 2");
+        assert_eq!(pic.gray.get_pixel(750, 5).0[0], 255, "blank roll after it");
     }
 
     #[test]
@@ -1148,40 +1492,6 @@ mod tests {
     }
 
     #[test]
-    fn windows_paper_lines_read_in_hundredths_of_an_inch() {
-        let out = "D\tCard 4x6\r\nP\tCard 4x6\t400\t600\t16.5\t16.5\t367\t567\r\nP\tWide\t850\t1100\t0\t0\t0\t0\n";
-        let p = parse_windows_papers(out);
-        assert_eq!(p.default_id, "Card 4x6");
-        let c = p.by_id("Card 4x6").unwrap();
-        assert!((c.width_mm - 101.6).abs() < 1e-6);
-        assert!((c.margins_mm[0] - 16.5 * 0.254).abs() < 1e-6);
-        assert!((c.margins_mm[2] - (400.0 - 16.5 - 367.0) * 0.254).abs() < 1e-6);
-        // No printable area given → the whole sheet.
-        assert!(p.by_id("Wide").unwrap().margins_mm.iter().all(|m| *m == 0.0));
-        // No user-defined size listed: the driver takes none.
-        assert!(!p.custom_ok);
-        assert!(parse_windows_papers("D\tA4\nC\t1\nP\tA4\t827\t1169\t0\t0\t827\t1169\n").custom_ok);
-        // The script names the printer safely.
-        assert!(windows_papers_script(Some("O'Brien")).contains("'O''Brien'"));
-    }
-
-    fn slip(w: u32, lines: &[(u32, u32)], h: u32) -> image::GrayImage {
-        let mut img = image::GrayImage::from_pixel(w, h, image::Luma([255]));
-        for &(y0, y1) in lines {
-            for y in y0..y1 {
-                for x in 0..w {
-                    img.put_pixel(x, y, image::Luma([0]));
-                }
-            }
-        }
-        img
-    }
-
-    fn paper(w: f64, h: f64, m: [f64; 4]) -> Paper {
-        Paper { id: "P".into(), label: "P".into(), width_mm: w, height_mm: h, margins_mm: m }
-    }
-
-    #[test]
     fn a_sheet_is_the_printable_width_at_the_slips_own_size_on_any_paper() {
         // 10 px per mm: an 80 mm slip, 400 px long.
         let s = slip(800, &[(0, 30), (50, 80)], 400);
@@ -1192,10 +1502,10 @@ mod tests {
             (297.0, 420.0, [4.0, 4.0, 4.0, 4.0]),
             (57.0, 1000.0, [0.0; 4]),
         ] {
-            let p = paper(w, h, m);
-            let (sheets, ppm) = os_document_sheets(&s, 80.0, &p, false);
+            let p = sheet(w, h, m);
+            let (sheets, ppm) = os_document_sheets(&s, 80.0, &p, Lay::default());
             assert!((ppm - 10.0).abs() < 1e-9);
-            let (pw, _) = p.printable_mm();
+            let (pw, _) = paper(w, h, m).printable_mm();
             assert_eq!(sheets.len(), 1, "{w}×{h}");
             assert_eq!(sheets[0].width(), (pw * 10.0).floor() as u32, "{w}×{h}");
             // Real size: the first line starts at the sheet's top-left.
@@ -1215,8 +1525,8 @@ mod tests {
         // 30 lines of 20 px with 10 px gaps: 900 px; a sheet holds 250 px.
         let lines: Vec<(u32, u32)> = (0..30).map(|i| (i * 30, i * 30 + 20)).collect();
         let s = slip(100, &lines, 900);
-        let p = paper(10.0 + 2.0, 25.0 + 2.0, [1.0; 4]);
-        let (sheets, _) = os_document_sheets(&s, 10.0, &p, false);
+        let p = sheet(10.0 + 2.0, 25.0 + 2.0, [1.0; 4]);
+        let (sheets, _) = os_document_sheets(&s, 10.0, &p, Lay::default());
         assert!(sheets.len() >= 4);
         let mut total = 0;
         for (i, sheet) in sheets.iter().enumerate() {
@@ -1239,14 +1549,31 @@ mod tests {
         assert_eq!(ends, [250, 500, 750, 900]);
     }
 
+    /// The same numbers as patches/makepad/KumkajSlipLayoutTest.java: the
+    /// Android print dialog breaks a slip's pages exactly where the desktop
+    /// does.
+    #[test]
+    fn page_breaks_match_the_android_layout() {
+        // 30 lines of 20 px, 10 px apart, on pages that hold 250 px: each
+        // blank band's middle row is a place a page may end.
+        let gaps: Vec<u32> = (0..29).map(|i| i * 30 + 25).collect();
+        assert_eq!(page_ends(890, 250, &gaps), [235, 475, 715, 890]);
+        // No blank band: cut at the page.
+        assert_eq!(page_ends(900, 250, &[]), [250, 500, 750, 900]);
+        // Places, as KumkajSlipLayout.plan computes them.
+        assert_eq!(place_in(Place::new(1, 1), 400, 20, 950, 1380, true), (275, 680));
+        assert_eq!(place_in(Place::new(0, 2), 150, 50, 100, 200, true), (-50, 0));
+    }
+
     #[test]
     fn a_landscape_slip_fills_the_turned_printable_area_from_its_corner() {
         // 10 px/mm, slip 40 mm wide × 10 mm of ink.
         let s = slip(400, &[(0, 100)], 100);
-        let p = paper(100.0, 150.0, [3.0, 4.0, 5.0, 6.0]);
-        let (sheets, _) = os_document_sheets(&s, 40.0, &p, true);
+        let m = [3.0, 4.0, 5.0, 6.0];
+        let p = sheet(100.0, 150.0, m);
+        let (sheets, _) = os_document_sheets(&s, 40.0, &p, turned());
         assert_eq!(sheets.len(), 1);
-        let (pw, ph) = p.printable_mm();
+        let (pw, ph) = paper(100.0, 150.0, m).printable_mm();
         // Upright sheet = the printable area.
         assert_eq!(sheets[0].width(), (pw * 10.0).floor() as u32);
         assert_eq!(sheets[0].height(), (ph * 10.0).floor() as u32);

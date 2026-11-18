@@ -67,13 +67,19 @@ bill_item_amount	রাং
 bill_item_note	মানৱি নোতে
 bill_item_col_sep	কলম নি কেরং
 slip_col_width	বাগা (mm)
-paper_heading	কাগজ
+paper_heading	ভার্চুয়াল কাগজ
 paper_size	{w} × {h} mm
 paper_roll	{w} mm রোল
 paper_not_set	কাগজ তাবুক তাই নাইথি
-paper_length_mm	কালাই (mm)
-printer_paper_help	ই প্রিন্টারনি কাগজ mm ও। কালাই কুসুক অর্থ রোল: সাবকং স্লিপ বিনি সামগ্রী কাসা কালাই। পরিনতের নাইদি কুসুক কাগজ প্রিন্টারনি ড্রাইভার নি বুথুক (সাগই মান খই খা 80 mm রোল) তেই সিকাম নি থিক খলাইমানি কাগজ তাংখা সুইয়া।
-preview_help	ই স্লিপ য়াখুল নি সাইমানি প্রিন্টারনি কাগজ সাকাংও, অ'ও ছাপা খলাইজাক: প্রিন্টার থাংমানি সাকাং আগলা কোণ নি সত্যি মাপ ও (ধূসর: থাংমান য়াফুরু), কালাই স্লিপ বেসি পাতা ও, কাগজনি য়াফুরু নি উয়াংগ বাগই তান'জাক। প্রিন্টার সাইখা খা প্রিভিউ সাকসা সুইয়ই; সাবকং প্রিন্টারনি কাগজ প্রিন্টার ও থিক খলাইয়ই।
+na	N/A
+virtual_width_mm	ভার্চুয়াল বাগা (mm)
+virtual_length_mm	ভার্চুয়াল কালাই (mm)
+reported_width_mm	রিপোর্ট খলাইমানি বাগা (mm)
+reported_length_mm	রিপোর্ট খলাইমানি কালাই (mm)
+reported_paper	রিপোর্ট খলাইমানি: {paper}
+virtual_paper	ভার্চুয়াল: {paper}
+printer_paper_help	রিপোর্ট খলাইমানি অর্থ ই প্রিন্টারনি ড্রাইভার ও থিক খলাইমানি কাগজ; আপ অ'ন পড়ি সাকসা, তেই N/A অর্থ সুংনানি ড্রাইভার কুরুই। ভার্চুয়াল অর্থ প্রিন্টার ও সত্যি তংগ হিনই নুং সামানি কাগজ, mm ও; কালাই কুসুক অর্থ রোল। প্রিন্টার বিনি কাগজ সাকাংও ছাপা খলাইয়ই; ভার্চুয়াল কাগজ আপ ন সায়ই অ'নি বিসুক সত্যি কাগজ, প্রিভিউ, পাতানি কালাই তেই স্লিপনি জাগা বাগই। পরিনতের নাইদি কুসুক ভার্চুয়াল কাগজ বুথুক তেই নুং থিক খলাইমানি কাগজ তাংখা সুইয়া।
+preview_help	ই স্লিপ য়াখুল নি সাইমানি প্রিন্টার ও ছাপা খলাইজাক বাগই, বিনি ভার্চুয়াল কাগজ সাকাংও সত্যি মাপ ও। কুফুর জাগা ও ছাপা খলাইয়ই, ধূসর কাগজ প্রিন্টার থাংমান য়া, তেই ফিকা কালি তান'জাক। চুকু বাক্স কাগজ: স্লিপ তংনানি জাগা ও তাপ দি। কালাই স্লিপ বেসি পাতা ও থাংগ। প্রিন্টার সাইখা খা প্রিভিউ সাকসা সুইয়ই।
 slip_col_start	সালকসা জায়গা (px)
 slip_col_end	তামাখালনি জায়গা (px)
 slip_columns_help	খলম কাইসানি বাগা বিনি সালকসা বো তামাখালনি জায়গা সুমানি। সুংমা বিনি খলম সিনিসে সাপুইমানি; কাতারনি বাগা কাসানো বুসুক অ তাতা আছিক বো ফৗরৗননি সিনি তিকতুইমানি।
@@ -88,6 +94,12 @@ bill_item_piece_off	ওফ
 bill_total_qty	জত কুতয়
 bill_total_subtotal	সুব জত
 bill_total_grand	জত কতর
+bill_total_number_under	লেখা ইনি তিসাও
+bill_total_caption_under	মুং ইনি তিসাও
+bill_total_own_line	বিনি লিনে
+bill_total_caption_with	লেখা বাই
+bill_total_caption_none	মুং কুরুই
+bill_total_place_help	“বিনি লিনে” ই জত ন সাকসা ছাপা খলাইয়ই। খলম নি তিসাও তংখা বিনি লেখা অ' মাল নি খলম ও, ই লিনে নি মাপ তেই বাতা বাই ছাপা খলাইজাক; খলম কাইসা পুরা মান য়াফুরু জতরগ শারি কাইসা ন শারে খাইয়ই, অ'নি উলো শারি কাতাল চেংগ। মুং লেখা বাই, খলম কুবুন নি তিসাও থাংগ, য়াবা তুবুজাক য়া। খাজনা, সেবা, রাউন্ডিং তেই রাং রিমানি লিনেরগ “সুব জত” ন নাইথক।
 kot_unassigned	সামুং রৱজাকয়া
 settings_hub_help	কাইসা জরাও কাইসা জাগান খলকদি — সচরল কুরুই, কলাইজাক চংমুং.
 settings_sec_language	কক & রাং
@@ -723,6 +735,20 @@ fssai_ph	FSSAI / দুকান নি লাইসেন নো. (ওপতি
 bill_footer_ph	য়াফাঙ (এ.গ. হামবাই য়াফার, তেইসা নাইদি)
 kot_field_on	ফুনুকদি
 kot_field_off	হুকদি
+kot_field_show	পুইলা
+kot_field_hide	হুকদি
+bill_line_shop	দুকানি
+bill_line_address	আদরেস নি কক
+bill_line_fssai	FSSAI
+bill_line_title	মুং
+bill_line_customer	গ্রাহক
+bill_line_bill_no	বিল নং
+bill_line_time	জরা
+bill_line_cashier	রাং থুমনাই
+bill_line_items	মানুই
+bill_line_total	জত
+bill_line_footer	য়াফাঙ
+bill_line_upi	UPI
 kot_weight_light	পহর
 bill_kot_panel_help	বিলল নি সৱনামমুং তেই মানৱি নি কোতোরমা. চাশিএর ৱংখা বিলল রৱনাই এবা রৱনাই — ফালমানি কোকতৱমা বেবাক বোক-ও তোংৱি তোংও.
 std_size_ph	উ.গ. 18, 20, 26...
@@ -830,10 +856,10 @@ lane_declared_label	তাক্ষ নি রাং
 lane_owner_label	রাং নি মেম
 money_lane_bill	বিল: {lane}
 
-removing	Removing…
-removed	Removed
-updating_order	Updating…
-order_updated	Order updated
+removing	সিং তঙ…
+removed	সিংখা
+updating_order	আপডেট তঙ…
+order_updated	অর্ডার আপডেট জাকখা
 sel_copy	চপয় খাইদি
 sel_select_all	জত বাছায় খাইদি
 sel_copied	চপয় খাইখা

@@ -67,13 +67,19 @@ bill_item_amount	Qaddarka
 bill_item_note	Shayga note
 bill_item_col_sep	Khadadka tiirarka
 slip_col_width	Ballac (mm)
-paper_heading	Warqad
+paper_heading	Warqad virtual ah
 paper_size	{w} × {h} mm
 paper_roll	duub {w} mm ah
 paper_not_set	warqadda weli lama yaqaan
-paper_length_mm	Dherer (mm)
-printer_paper_help	Warqadda daabacahan oo mm ah. Dherer bannaan waa duub: rasiid kastaa wuxuu le'eg yahay waxa ku jira. Raadi daabacayaasha waxay ka buuxisaa warqad bannaan darawalka daabacaha (duub 80 mm ah marka uusan sheegi karin) mana beddesho mid hore loo dejiyay.
-preview_help	Rasiidkan oo saaran warqadda daabacaha hoos laga doortay, sida uu halkaas ugu daabacmo: cabbir dhab ah laga bilaabo geeska bidix ee sare ee daabacuhu gaaro (cawl: geesaha uusan gaarin), rasiid dheer oo warqado badan ah, wax kasta oo dhaafa cidhifka warqadda waa la gooyaa. Dooranka daabace wuxuu beddelaa hordhaca oo keliya; warqadda daabace kasta waxaa lagu dejiyaa Daabacayaasha.
+na	—
+virtual_width_mm	Ballac virtual ah (mm)
+virtual_length_mm	Dherer virtual ah (mm)
+reported_width_mm	Ballaca la soo sheegay (mm)
+reported_length_mm	Dhererka la soo sheegay (mm)
+reported_paper	La soo sheegay: {paper}
+virtual_paper	Virtual: {paper}
+printer_paper_help	La soo sheegay waa warqadda darawalka daabacahan loo dejiyay; app-ku wuu akhriyaa oo keliya, “—” waxay ka dhigan tahay inaanu jirin darawal la weydiiyo. Virtual waa warqadda aad adigu sheegto inay dhab ahaan ku jirto daabacaha, oo mm ah; dherer bannaan waa duub. Daabacuhu wuxuu ku daabacaa warqaddiisa; warqadda virtual-ka ahi waxay app-ka u sheegtaa inta ka mid ah ee warqad dhab ah, si loogu isticmaalo hordhaca, dhererka bogga iyo booska rasiidka. Raadi daabacayaasha waxay buuxisaa warqad virtual ah oo bannaan, weligeedna ma beddesho mid aad adigu dejisay.
+preview_help	Rasiidkan sida uu ugu daabacmo daabacaha hoos laga doortay, cabbir dhab ah oo saaran warqaddiisa virtual-ka ah. Caddaanku waa meesha uu wax ku daabaco, warqadda cawlan daabacuhu ma gaaro, khadka khafiifka ahna waa la gooyaa. Sagaalka afargees waa warqadda: taabo meesha rasiidku ku fadhiisanayo. Rasiid dheer wuxuu u gudbaa bogag kale. Dooranka daabace wuxuu beddelaa hordhaca oo keliya.
 slip_col_start	Meesha bilowga (px)
 slip_col_end	Meesha dhammaadka (px)
 slip_columns_help	Ballaca tiir kastaa wuxuu ka kooban yahay meeshiisa bilowga iyo dhammaadka. Qoraalku wuxuu ku duubmaa tiirkiisa gudihiisa; wixii dhaafa ballaca waxa ku jira waa la jaraa, warqadda iyo horudhacaba.
@@ -88,6 +94,12 @@ bill_item_piece_off	Dami
 bill_total_qty	Wadarta tirada
 bill_total_subtotal	Wadarta hoose
 bill_total_grand	Wadarta weyn
+bill_total_number_under	Tirada hoosteeda
+bill_total_caption_under	Calaamadda hoosteeda
+bill_total_own_line	Khad u gaar ah
+bill_total_caption_with	Tirada la jirta
+bill_total_caption_none	Calaamad la'aan
+bill_total_place_help	Khad u gaar ah waxay wadartan u daabacdaa keligeed. Tiir hoostiisa, tiradeeda waxaa lagu daabacaa tiirkaas alaabta, cabbirka iyo dhumucda khadkan; wadarradu waxay wadaagaan hal saf ilaa tiir la qabsado, markaas saf cusub ayaa bilaabma. Calaamaddu waxay raacdaa tirada, tiir kale hoostiisa, ama waa la dhaafaa. Khadadka canshuurta, adeegga, isku-dheellitirka iyo lacag-bixinta waxay raacaan Wadarta hoose.
 kot_unassigned	Aan la magacaabin
 settings_hub_help	Fur hal goob markiiba — rogid yar, doorasho cad.
 settings_sec_language	Luqadda iyo lacagta
@@ -723,6 +735,20 @@ fssai_ph	FSSAI / shatiga dukaanka lamr. (ikhtiyaar)
 bill_footer_ph	Hoos (tusaale Mahadsanid, mar kale soo booqo)
 kot_field_on	muuji
 kot_field_off	qari
+kot_field_show	Muuji
+kot_field_hide	Qari
+bill_line_shop	Dukaan
+bill_line_address	Cinwaanka dukaanka
+bill_line_fssai	FSSAI
+bill_line_title	Cinwaan
+bill_line_customer	Macmiil
+bill_line_bill_no	Lambarka biilka
+bill_line_time	Waqtiga
+bill_line_cashier	Khasnaji
+bill_line_items	Alaabta
+bill_line_total	Wadarta
+bill_line_footer	Hoos
+bill_line_upi	UPI
 kot_weight_light	Fudud
 bill_kot_panel_help	Qaabka biilka iyo ballaca nuxurka. Khasnaji waa kii soo saaray ama xaliyay biilka - sheekada iibka oo buuxda waxay ku sii jirtaa buugaagta.
 std_size_ph	tusaale 18, 20, 26…
@@ -830,10 +856,10 @@ lane_declared_label	Faaturo canshuur
 lane_owner_label	Warqadda lacagta caddaanka
 money_lane_bill	Biil: {lane}
 
-removing	Removing…
-removed	Removed
-updating_order	Updating…
-order_updated	Order updated
+removing	Waa laga saarayaa…
+removed	Waa laga saaray
+updating_order	Waa la cusboonaysiinayaa…
+order_updated	Dalabka waa la cusboonaysiiyay
 sel_copy	Koobi
 sel_select_all	Dooro dhammaan
 sel_copied	Waa la koobiyeeyay

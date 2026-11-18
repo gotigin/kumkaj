@@ -79,13 +79,19 @@ bill_item_amount	Sum zat
 bill_item_note	Rx / hralhna tur note
 bill_item_col_sep	Column ri
 slip_col_width	Zau (mm)
-paper_heading	Lehkha
+paper_heading	Lehkha virtual
 paper_size	{w} × {h} mm
 paper_roll	{w} mm roll
 paper_not_set	lehkha hriat a la ni lo
-paper_length_mm	A sei zawng (mm)
-printer_paper_help	He print na lehkha hi mm-in. A sei zawng awm lo chu roll a ni: slip tin chu a chhunga thil ang zelin a sei a ni. Print na zawng hian lehkha awm lo chu print na driver atangin a dah khat (a sawi thei loh chuan 80 mm roll) a, lo ruat tawh chu engtikah mah a thlak ngai lo.
-preview_help	He slip hi a hnuaia print na thlan lehkhaah, chutah a chhuah ang ngeiin: print na thlen theih chunglam vei kil atangin a lianna dik takin (dum var: a thlen theih loh kawng), slip sei chu phek tam zawkah, lehkha kawng piah lam apiang chu an tan. Print na thlan hian a hmaa en lawk chauh a thlak; print na tin lehkha chu Print na hnuaiah ruat a ni.
+na	—
+virtual_width_mm	Virtual zau (mm)
+virtual_length_mm	Virtual a sei zawng (mm)
+reported_width_mm	Hriattir zau (mm)
+reported_length_mm	Hriattir a sei zawng (mm)
+reported_paper	Hriattir: {paper}
+virtual_paper	Virtual: {paper}
+printer_paper_help	Hriattir chu he print na driver-in a set lehkha a ni; app hian a chhiar mai a ni a, “—” chuan zawh tur driver a awm lo tihna a ni. Virtual chu print na-ah a awm tak tak tia i sawi lehkha a ni, mm-in; a sei zawng a ruak chuan roll a ni. Print na chuan ama lehkhaah a chhuah a; lehkha virtual chuan chu mi zinga lehkha tak tak a nih zat app a hrilh a, a hmaa en lawk, phek sei zawng leh slip awmna tur atan. Print na zawng hian lehkha virtual ruak a dah khat a, i set tawh chu engtikah mah a thlak ngai lo.
+preview_help	He slip hi a hnuaia print na thlanah a chhuah ang ngeiin, a lehkha virtual chungah a lianna dik takin. A var chu a chhuahna hmun a ni a, lehkha dum var chu print na-in a thleng thei lo a, tui dal chu tan a ni. Bawm pakua hi lehkha a ni: slip awmna tur hmun chu hmet rawh. Slip sei chu phek dangah a kal zel. Print na thlan hian a hmaa en lawk chauh a thlak.
 slip_col_start	Tirhna awmna (px)
 slip_col_end	Tâwpna awmna (px)
 slip_columns_help	Column tin zauah a tirhna leh a tâwpna awmna a tel. Thuziak chu a column chhungah a inthlawk; thil awm zau aia zau chu lehkha ah leh hmaa enna ah a tan ang.
@@ -100,6 +106,12 @@ bill_item_piece_off	Tih
 bill_total_qty	Zat zawng
 bill_total_subtotal	Zawng te
 bill_total_grand	Zawng lian
+bill_total_number_under	Number hnuaiah
+bill_total_caption_under	Hming hnuaiah
+bill_total_own_line	Ama ri
+bill_total_caption_with	Number nen
+bill_total_caption_none	Hming awm lo
+bill_total_place_help	Ama ri chuan he belhkhawm hi amah chauhin a chhuah. Column hnuaiah chuan a number chu chu thil column-ah, he ri lenzawng leh chhah zawngin a chhuah a; column pakhat a khah hma chuan belhkhawmte chuan tlar khat an insem a, chumi hnuah tlar thar a intan. Hming chu number nen, column dang hnuaiah a kal emaw, dah loh a ni thei. Chhiah, service, rounding leh pek ri te chuan Zawng te an zui.
 kot_unassigned	Unassigned a ni lo
 settings_hub_help	Hmun pakhat chauh hawng ve ve — kal tlem, thlang chiang.
 settings_sec_language	Ṭawng leh sum hming
@@ -735,6 +747,20 @@ fssai_ph	Ruihhlo licence no. (optional — i thumal hman dan)
 bill_footer_ph	Hnuai (entir Lawm e, lo kal leh)
 kot_field_on	lantir
 kot_field_off	thup
+kot_field_show	Lantir
+kot_field_hide	Thup
+bill_line_shop	Dawr
+bill_line_address	Chenna hmun
+bill_line_fssai	FSSAI
+bill_line_title	Hming
+bill_line_customer	Customer
+bill_line_bill_no	Bill no.
+bill_line_time	Hun
+bill_line_cashier	Sum khawmtu
+bill_line_items	Thil
+bill_line_total	A zawng
+bill_line_footer	Hnuai
+bill_line_upi	UPI
 kot_weight_light	Zang
 bill_kot_panel_help	Bill layout leh content zau zawng. Cashier hi bill tichhuaktu emaw, settle tu emaw a ni — a hralhna chanchin kimchang chu lehkhabuah a awm reng a ni.
 std_size_ph	entir 18, 20, 26…
@@ -842,10 +868,10 @@ lane_declared_label	Chhiah bill
 lane_owner_label	Sum lehkha
 money_lane_bill	Bill: {lane}
 
-removing	Removing…
-removed	Removed
-updating_order	Updating…
-order_updated	Order updated
+removing	Paih mek…
+removed	Paih a ni
+updating_order	Siam that mek…
+order_updated	Order siam that a ni
 sel_copy	Copy rawh
 sel_select_all	A zavaia thlang rawh
 sel_copied	Copy a ni ta

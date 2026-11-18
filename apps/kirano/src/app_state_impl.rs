@@ -41,14 +41,21 @@ impl AppState {
             length_mm: 0.0,
         };
         let Some(p) = self.preview_printer() else {
-            return PreviewPaper { paper: roll, os_document, driver: None };
+            return PreviewPaper { virtual_paper: roll, os_document, own: None };
         };
-        let driver = if !p.has_driver() || (!os_document && p.paper().is_some()) {
-            None
-        } else {
-            os_paper::papers_for(&p.target).and_then(|r| r.ok())
-        };
-        PreviewPaper { paper: p.paper().unwrap_or(roll), os_document, driver }
+        // The printer's own page (an OS document prints on it): what its
+        // driver last reported. It is asked again here, off the screen; a
+        // new answer replaces the reported paper and redraws (`main_impl`).
+        if p.has_driver() {
+            let _ = os_paper::papers_for(&p.target);
+        }
+        let own = if os_document { p.reported_paper() } else { None };
+        // No virtual paper set yet: the printer's own page is all paper.
+        let virtual_paper = p
+            .virtual_paper()
+            .or_else(|| own.as_ref().map(os_paper::Paper::as_virtual))
+            .unwrap_or(roll);
+        PreviewPaper { virtual_paper, os_document, own }
     }
 
     fn boot() -> Self {
@@ -869,7 +876,7 @@ impl AppState {
             }
             // Every saved printer as `name · paper`; ✓ = the preview's.
             SuggestField::BillPreviewPaper => {
-                ask_drivers_for_missing_papers(&self.printer_draft.printers);
+                ask_drivers(&self.printer_draft.printers);
                 let active = self.preview_printer().map(|p| p.id.clone());
                 preview_paper_rows(&self.printer_draft.printers, active.as_deref(), |k| self.t(k))
                     .into_iter()
@@ -1194,13 +1201,10 @@ impl AppState {
         let org = store.org_name()?;
         let branches = store.list_branches()?;
         let active_id = store.active_branch_id()?;
-        // Each branch is its own restaurant (vision §5): this list is this
-        // restaurant plus other branches' imported day snapshots.
-        let mut lines = vec![
-            format!("Business: {org}"),
-            String::new(),
-            "This restaurant and other branches' imported days:".to_string(),
-        ];
+        // Each branch is its own restaurant (vision §5): the rows are these books
+        // and other branches' imported day snapshots. Data only — what the
+        // list is belongs in the heading's ℹ (docs/DESIGN.md), not in a line here.
+        let mut lines = vec![format!("Business: {org}"), String::new()];
         for b in &branches {
             let marker = if b.id == active_id { "●" } else { "○" };
             let state = if b.is_this_device || b.id == active_id {

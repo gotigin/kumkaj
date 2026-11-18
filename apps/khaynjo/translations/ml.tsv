@@ -44,7 +44,7 @@ restore_item	പുനഃസ്ഥാപിക്കുക
 empty_catalog	ഇതുവരെ ഇനങ്ങളില്ല.
 total	ആകെ
 cash	പണം
-upi	यूपीआई
+upi	UPI
 card	കാർഡ്
 credit	പാർട്ടികൾ
 clear	മായ്ക്കുക
@@ -78,7 +78,7 @@ reprint_kot_needed	ആദ്യം KOT അയയ്ക്കുക — പിന
 reprint_kot_none_selected	അയച്ചതെല്ലാം ഒഴിവാക്കി — അച്ചടിക്കാൻ «അച്ചടിയിൽ» അമർത്തുക
 reprint_kot_client	{place}-ന് വീണ്ടും അച്ചടിക്കുക ({n}) അയച്ചു — അടുക്കള സെർവറിൽ അച്ചടിക്കും
 print_cancelled_kot	റദ്ദ് എല്ലാം അച്ചടിക്കുക
-print_cancelled_kot_ok	{n} रद्द छापे · {slips} पर्ची → {kitchens}
+print_cancelled_kot_ok	{n} റദ്ദാക്കിയ വിഭവങ്ങൾ പ്രിന്റ് ചെയ്തു · {slips} സ്ലിപ്പ് → {kitchens}
 print_cancelled_kot_needed	റദ്ദ് വിഭവങ്ങളുള്ള മേശ തുറക്കുക
 print_cancelled_kot_none	ഈ ഓർഡറിൽ റദ്ദ് ഇല്ല
 print_cancelled_kot_client	റദ്ദ് ({n}) {place} അയച്ചു — സെർവറിൽ അച്ചടി
@@ -101,6 +101,19 @@ bill_item_col_sep	നിര വര
 slip_columns	കോളങ്ങൾ
 slip_col_header	തലക്കെട്ട്
 bill_line_logo	ലോഗോ
+bill_line_shop	കട
+bill_line_address	വിലാസം
+bill_line_fssai	FSSAI
+bill_line_title	തലക്കെട്ട്
+bill_line_customer	ഉപഭോക്താവ്
+bill_line_bill_no	ബിൽ നമ്പർ
+bill_line_time	സമയം
+bill_line_cashier	കാഷ്യർ
+bill_line_table	മേശ
+bill_line_items	ഇനങ്ങൾ
+bill_line_total	ആകെ
+bill_line_footer	ഫൂട്ടർ
+bill_line_upi	UPI
 bill_logo_picture	ചിത്രം
 bill_logo_choose	ചിത്രം തിരഞ്ഞെടുക്കുക
 bill_logo_remove	ചിത്രം നീക്കുക
@@ -128,6 +141,12 @@ bill_item_piece_off	ഓഫ്
 bill_total_qty	ആകെ എണ്ണം
 bill_total_subtotal	ഉപ ആകെ
 bill_total_grand	ആകെ
+bill_total_number_under	സംഖ്യ ഇതിനു താഴെ
+bill_total_caption_under	ലേബൽ ഇതിനു താഴെ
+bill_total_own_line	സ്വന്തം വരി
+bill_total_caption_with	സംഖ്യയോടൊപ്പം
+bill_total_caption_none	ലേബൽ ഇല്ല
+bill_total_place_help	“സ്വന്തം വരി” ഈ ആകെത്തുക തനിയെ അച്ചടിക്കുന്നു. ഒരു കോളത്തിനു താഴെയാണെങ്കിൽ അതിന്റെ സംഖ്യ ആ ഇനങ്ങളുടെ കോളത്തിൽ, ഈ വരിയുടെ വലുപ്പത്തിലും കനത്തിലും അച്ചടിക്കും; ഒരു കോളം നിറയുന്നതുവരെ ആകെത്തുകകൾ ഒരേ നിര പങ്കിടും, പിന്നെ പുതിയ നിര തുടങ്ങും. ലേബൽ സംഖ്യയോടൊപ്പം, മറ്റൊരു കോളത്തിനു താഴെ പോകും, അല്ലെങ്കിൽ ഒഴിവാക്കും. നികുതി, സർവീസ്, റൗണ്ടിംഗ്, പേയ്മെന്റ് വരികൾ “ഉപ ആകെ” പിന്തുടരും.
 reprint_incl	അച്ചടിയിൽ
 reprint_skip	ഒഴിവാക്കുക
 reprint_skip_meta	റിക്കവറി പ്രിന്റ് ഒഴിവാക്കുക
@@ -178,20 +197,20 @@ snack_secs_ph	സെക്കൻഡ് (3–60, ഡിഫോൾട്ട് 10)
 snack_secs_save	അറിയിപ്പ് സമയം സേവ് ചെയ്യുക
 snack_secs_saved	അറിയിപ്പ് സമയം സേവ് ചെയ്തു — {n} സെക്കൻഡ്
 settings_sec_whatsapp	WhatsApp
-whatsapp_cloud_help	Use your own Meta WhatsApp Cloud API. Create a System User token with whatsapp_business_messaging (temporary dashboard tokens expire). Credentials stay on this Server only — never on extra tills. Accepted means Meta took the request, not that the guest received it.
-whatsapp_phone_id_ph	Phone Number ID
-whatsapp_token_ph	Access Token (leave blank to keep)
-whatsapp_template_ph	Bill template name (optional)
-whatsapp_template_lang_ph	Template language (e.g. en)
-whatsapp_enable	Enable
+whatsapp_cloud_help	നിങ്ങളുടെ സ്വന്തം Meta WhatsApp Cloud API ഉപയോഗിക്കുക. whatsapp_business_messaging ഉള്ള ഒരു System User ടോക്കൺ സൃഷ്ടിക്കുക (ഡാഷ്‌ബോർഡിലെ താൽക്കാലിക ടോക്കണുകൾ കാലഹരണപ്പെടും). ഈ വിവരങ്ങൾ ഈ സെർവറിൽ മാത്രം നിൽക്കും — അധിക ടില്ലുകളിൽ ഒരിക്കലും ഇല്ല. “സ്വീകരിച്ചു” എന്നാൽ Meta അഭ്യർത്ഥന എടുത്തു എന്നാണ്, അതിഥിക്ക് സന്ദേശം കിട്ടി എന്നല്ല.
+whatsapp_phone_id_ph	ഫോൺ നമ്പർ ID
+whatsapp_token_ph	ആക്‌സസ് ടോക്കൺ (അതുതന്നെ നിലനിർത്താൻ ശൂന്യമായി വിടുക)
+whatsapp_template_ph	ബിൽ ടെംപ്ലേറ്റിന്റെ പേര് (ഓപ്ഷണൽ)
+whatsapp_template_lang_ph	ടെംപ്ലേറ്റിന്റെ ഭാഷ (ഉദാ. en)
+whatsapp_enable	ഓൺ ചെയ്യുക
 whatsapp_disable	Off
-whatsapp_save	Save WhatsApp
-whatsapp_test	Test connection
-whatsapp_disconnect	Disconnect
-whatsapp_send_bill	Send via WhatsApp
-whatsapp_consent	WhatsApp OK
-whatsapp_consent_help	Guest agreed to receive WhatsApp messages. A phone number alone is not consent.
-whatsapp_server_only	Configure WhatsApp on the shop Server device
+whatsapp_save	WhatsApp സേവ് ചെയ്യുക
+whatsapp_test	കണക്ഷൻ പരിശോധിക്കുക
+whatsapp_disconnect	കണക്ഷൻ വിച്ഛേദിക്കുക
+whatsapp_send_bill	WhatsApp വഴി അയയ്ക്കുക
+whatsapp_consent	WhatsApp ശരി
+whatsapp_consent_help	അതിഥി WhatsApp സന്ദേശങ്ങൾ സ്വീകരിക്കാൻ സമ്മതിച്ചു. ഫോൺ നമ്പർ മാത്രം ഉള്ളത് സമ്മതമല്ല.
+whatsapp_server_only	കടയുടെ സെർവർ ഉപകരണത്തിൽ WhatsApp സജ്ജമാക്കുക
 settings_sec_backup	ബാക്കപ്പും പുനഃസ്ഥാപനവും
 settings_sec_diag	ഡയഗ്നോസ്റ്റിക്സ്
 settings_sec_privacy	സ്വകാര്യത
@@ -637,7 +656,7 @@ choose_device_use	ഈ ഉപകരണം എങ്ങനെ ഉപയോഗി�
 paired_note	ജോടിയാക്കി. വിൽക്കാൻ അൺലോക്ക് ചെയ്യുക, അല്ലെങ്കിൽ കടയിൽ നിന്ന് പുതിയത് എടുക്കാൻ പുതുക്കുക.
 last_update_at	കടയിൽ നിന്നുള്ള അവസാന അപ്‌ഡേറ്റ്: {time}.
 pair_intro	സെർവർ കണ്ടെത്തുക, അല്ലെങ്കിൽ അതിന്റെ വിലാസവും പെയറിംഗ് കോഡും ടൈപ്പ് ചെയ്യുക.
-pair_resume_hint	Already paired — enter your shop PIN, or Forget this shop to pair another.
+pair_resume_hint	ഇതിനകം ജോടിയാക്കിയിട്ടുണ്ട് — നിങ്ങളുടെ കടയുടെ PIN നൽകുക, അല്ലെങ്കിൽ മറ്റൊരു കട ജോടിയാക്കാൻ “ഈ കട മറക്കുക” അമർത്തുക.
 queue_waiting	കടയിലെത്താൻ കാത്തിരിക്കുന്നു ({n}):
 queue_tries	{n} തവണ ശ്രമിച്ചു · അവസാന മറുപടി: {e}
 save_backup_copy	ബാക്കപ്പ് പകർപ്പ് സംരക്ഷിക്കുക…
@@ -754,13 +773,18 @@ station_vps_dd	ഈ സ്റ്റേഷന്റെ പ്രിന്ററു
 station_vps_dd_n	{n} പ്രിന്ററുകൾ · മാറ്റാൻ ടാപ്പ്
 bill_printers_dd	ബില്ലിനുള്ള പ്രിന്ററുകൾ
 bill_printers_dd_n	ബില്ലിന് {n} പ്രിന്ററുകൾ · മാറ്റാൻ ടാപ്പ് ചെയ്യുക
-paper_heading	പേപ്പർ
+paper_heading	വെർച്വൽ പേപ്പർ
 paper_size	{w} × {h} mm
 paper_roll	{w} mm റോൾ
 paper_not_set	പേപ്പർ ഇതുവരെ അറിയില്ല
-paper_length_mm	നീളം (mm)
-printer_paper_help	ഈ പ്രിന്ററിന്റെ പേപ്പർ mm-ൽ. ശൂന്യമായ നീളം ഒരു റോൾ ആണ്: ഓരോ സ്ലിപ്പും അതിന്റെ ഉള്ളടക്കത്തിന്റെ നീളമാണ്. പ്രിന്ററുകൾ കണ്ടെത്തുക ശൂന്യമായ പേപ്പർ പ്രിന്ററിന്റെ ഡ്രൈവറിൽ നിന്ന് പൂരിപ്പിക്കുന്നു (പറയാൻ കഴിയാത്തപ്പോൾ 80 mm റോൾ), ഇതിനകം സജ്ജമാക്കിയത് ഒരിക്കലും മാറ്റില്ല.
-preview_help	താഴെ തിരഞ്ഞെടുത്ത പ്രിന്ററിന്റെ പേപ്പറിൽ ഈ സ്ലിപ്പ്, അവിടെ അച്ചടിക്കുന്നതുപോലെ: പ്രിന്റർ എത്തുന്ന മുകളിലെ ഇടത് മൂലയിൽ നിന്ന് യഥാർത്ഥ വലുപ്പത്തിൽ (ചാരനിറം: എത്താത്ത അരികുകൾ), നീണ്ട സ്ലിപ്പ് കൂടുതൽ ഷീറ്റുകളിൽ, പേപ്പറിന്റെ അരികിനപ്പുറമുള്ളതെല്ലാം മുറിക്കപ്പെടും. പ്രിന്റർ തിരഞ്ഞെടുക്കുന്നത് പ്രിവ്യൂ മാത്രം മാറ്റുന്നു; ഓരോ പ്രിന്ററിന്റെയും പേപ്പർ പ്രിന്ററുകൾ എന്നതിൽ സജ്ജമാക്കുന്നു.
+virtual_width_mm	വെർച്വൽ വീതി (mm)
+virtual_length_mm	വെർച്വൽ നീളം (mm)
+reported_width_mm	റിപ്പോർട്ട് ചെയ്ത വീതി (mm)
+reported_length_mm	റിപ്പോർട്ട് ചെയ്ത നീളം (mm)
+reported_paper	റിപ്പോർട്ട് ചെയ്തത്: {paper}
+virtual_paper	വെർച്വൽ: {paper}
+printer_paper_help	റിപ്പോർട്ട് ചെയ്തത് എന്നത് ഈ പ്രിന്ററിന്റെ ഡ്രൈവർ സജ്ജമാക്കിയിരിക്കുന്ന പേപ്പറാണ്; ആപ്പ് അത് വായിക്കുക മാത്രം ചെയ്യുന്നു, “ഇല്ല” എന്നാൽ ചോദിക്കാൻ ഡ്രൈവർ ഇല്ല എന്നർത്ഥം. വെർച്വൽ എന്നത് പ്രിന്ററിൽ യഥാർത്ഥത്തിൽ ഉണ്ടെന്ന് നിങ്ങൾ പറയുന്ന പേപ്പറാണ്, mm-ൽ; ശൂന്യമായ നീളം റോൾ ആണ്. പ്രിന്റർ അതിന്റെ സ്വന്തം പേപ്പറിൽ അച്ചടിക്കുന്നു; അതിൽ എത്രത്തോളം യഥാർത്ഥ പേപ്പർ ആണെന്ന് വെർച്വൽ പേപ്പർ ആപ്പിനോട് പറയുന്നു, പ്രിവ്യൂ, പേജിന്റെ നീളം, സ്ലിപ്പിന്റെ സ്ഥാനം എന്നിവയ്ക്കായി. പ്രിന്ററുകൾ കണ്ടെത്തുക ശൂന്യമായ വെർച്വൽ പേപ്പർ പൂരിപ്പിക്കുന്നു, നിങ്ങൾ സജ്ജമാക്കിയത് ഒരിക്കലും മാറ്റുന്നില്ല.
+preview_help	ഈ സ്ലിപ്പ് താഴെ തിരഞ്ഞെടുത്ത പ്രിന്ററിൽ അച്ചടിക്കുന്നതുപോലെ, അതിന്റെ വെർച്വൽ പേപ്പറിൽ യഥാർത്ഥ വലുപ്പത്തിൽ. വെള്ള ഭാഗത്താണ് അച്ചടിക്കുന്നത്, ചാരനിറത്തിലുള്ള പേപ്പറിൽ പ്രിന്റർ എത്തുന്നില്ല, മങ്ങിയ മഷി മുറിച്ചുമാറ്റപ്പെടും. ഒമ്പത് ചതുരങ്ങളാണ് പേപ്പർ: സ്ലിപ്പ് ഇരിക്കേണ്ട സ്ഥലത്ത് ടാപ്പ് ചെയ്യുക. നീളമുള്ള സ്ലിപ്പ് കൂടുതൽ പേജുകളിലേക്ക് തുടരും. പ്രിന്റർ തിരഞ്ഞെടുക്കുന്നത് പ്രിവ്യൂ മാത്രം മാറ്റുന്നു.
 job_layout	ലേഔട്ട്
 job_delivery	ജോലി എങ്ങനെ അയയ്ക്കുന്നു
 job_delivery_help	OS ഡോക്യുമെന്റ്, റോ ബൈറ്റുകൾ, അല്ലെങ്കിൽ ESC/POS. ബില്ലും അടുക്കള ടിക്കറ്റും സ്വന്തം വീതം സൂക്ഷിക്കും. ഏത് ജോലിയും കണ്ടെത്തുക സേവ് ചെയ്ത ഏത് പ്രിന്ററിലേക്കും പോകാം.
@@ -1040,7 +1064,7 @@ book_kind_today	ഇന്നത്തെ ബുക്ക്
 book_kind_month	ഈ മാസത്തെ ബുക്ക്
 book_kind_aging	കുടിശ്ശിക / ഡെബിറ്റ്-ക്രെഡിറ്റ്
 book_kind_balance	ബാലൻസ് ഷീറ്റ്
-order_help	ഒരു തുറന്ന ഓർഡർ തിരഞ്ഞെടുക്കുക, അല്ലെങ്കിൽ ഒരു ടേബിൾ തിരഞ്ഞെടുത്ത് പുതിയത് തുടങ്ങുക. തയ്യാറായ ഇനങ്ങൾ ടാപ്പ് ചെയ്യുക, KOT അയയ്ക്കുക, ഒന്നോ അതിലധികമോ ഇനങ്ങൾക്ക് ബിൽ ചെയ്യുക, ബിൽ പങ്കിടുക, പേയ്‌മെന്റ് തീർക്കുക.
+order_help	ചേർക്കാൻ ഒരു ഇനത്തിൽ ടാപ്പ് ചെയ്യുക.
 floor_help	ഓരോ ടേബിളും അതിഥികൾ ഇരിക്കുന്നുണ്ടോ, അവരുടെ തുറന്ന ബിൽ എന്താണ്, അടുത്തത് ആർക്ക് സേവനം വേണം എന്ന് കാണിക്കുന്നു.
 kitchen_help	ഓരോ വകഭേദത്തിനും അല്ലെങ്കിൽ ഓരോ ഇനത്തിനും തയ്യാറായ അളവ് ട്രാക്ക് ചെയ്യുക — KOT-യിൽ ഇഷ്ടമുള്ളതുപോലെ രേഖപ്പെടുത്തുക.
 kitchen_empty	ഇപ്പോൾ ഒന്നും തുറന്നിട്ടില്ല.
@@ -1266,8 +1290,8 @@ taxable_value	നികുതി മൂല്യം
 gst_inside_price_note	({tax} ഉൾപ്പെടെ)
 start_with_template	ഞങ്ങളുടെ മെനു ടെംപ്ലേറ്റോടെ തുടങ്ങുക
 template_heading	ഞങ്ങളുടെ മെനു ടെംപ്ലേറ്റ്
-template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
-template_download_shelf	Download photo shelf
+template_need_download	വിഭവങ്ങളുടെ പൊതു ഫോട്ടോ ഷെൽഫ് (~1,459 വിഭവങ്ങൾ) ഡൗൺലോഡ് ചെയ്യുക, പിന്നീട് ഇല്ലാത്ത പേരുകൾ നിങ്ങളുടെ മെനുവിലേക്ക് ഇമ്പോർട്ട് ചെയ്യുക.
+template_download_shelf	ഫോട്ടോ ഷെൽഫ് ഡൗൺലോഡ് ചെയ്യുക
 template_info	{c} വിഭാഗങ്ങളും {d} വിഭവങ്ങളും ഫോട്ടോ സഹിതം തയ്യാർ. വില ₹0 — പിന്നീട് നിങ്ങളുടെ വില നൽകുക.
 template_import	മുഴുവൻ ടെംപ്ലേറ്റ് ഇറക്കുക
 template_confirm	{d} വിഭവങ്ങൾ വിഭാഗങ്ങളോടെ ചേർക്കണോ? നിലവിലുള്ളവ അങ്ങനെതന്നെ തുടരും.

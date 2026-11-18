@@ -101,6 +101,19 @@ bill_item_col_sep	Γραμμές στηλών
 slip_columns	Στήλες
 slip_col_header	Κεφαλίδα
 bill_line_logo	Λογότυπο
+bill_line_shop	Μαγαζί
+bill_line_address	Διεύθυνση
+bill_line_fssai	FSSAI
+bill_line_title	Τίτλος
+bill_line_customer	Πελάτης
+bill_line_bill_no	Αρ. λογαριασμού
+bill_line_time	Ώρα
+bill_line_cashier	Ταμίας
+bill_line_table	Τραπέζι
+bill_line_items	Είδη
+bill_line_total	Σύνολο
+bill_line_footer	Υποσέλιδο
+bill_line_upi	UPI
 bill_logo_picture	Εικόνα
 bill_logo_choose	Επιλογή εικόνας
 bill_logo_remove	Αφαίρεση εικόνας
@@ -128,6 +141,12 @@ bill_item_piece_off	Ανενεργό
 bill_total_qty	Συνολ. ποσ.
 bill_total_subtotal	Υποσύνολο
 bill_total_grand	Γενικό σύνολο
+bill_total_number_under	Αριθμός κάτω από
+bill_total_caption_under	Ετικέτα κάτω από
+bill_total_own_line	Δική του γραμμή
+bill_total_caption_with	Με τον αριθμό
+bill_total_caption_none	Χωρίς ετικέτα
+bill_total_place_help	«Δική του γραμμή»: το σύνολο αυτό τυπώνεται μόνο του. Κάτω από στήλη, ο αριθμός του τυπώνεται σε εκείνη τη στήλη ειδών, στο μέγεθος και το βάρος αυτής της γραμμής· τα σύνολα μοιράζονται μία σειρά μέχρι να πιαστεί μια στήλη, και τότε αρχίζει νέα σειρά. Η ετικέτα πάει με τον αριθμό, κάτω από άλλη στήλη ή παραλείπεται. Οι γραμμές φόρου, σέρβις, στρογγυλοποίησης και πληρωμής ακολουθούν το «Υποσύνολο».
 reprint_incl	Στην εκτύπωση
 reprint_skip	Παράλειψη
 reprint_skip_meta	Παράλειψη επανεκτύπωσης
@@ -178,20 +197,20 @@ snack_secs_ph	Δευτερόλεπτα (3–60, προεπιλογή 10)
 snack_secs_save	Αποθήκευση διάρκειας ειδοποίησης
 snack_secs_saved	Η διάρκεια ειδοποίησης αποθηκεύτηκε — {n} δευτερόλεπτα
 settings_sec_whatsapp	WhatsApp
-whatsapp_cloud_help	Use your own Meta WhatsApp Cloud API. Create a System User token with whatsapp_business_messaging (temporary dashboard tokens expire). Credentials stay on this Server only — never on extra tills. Accepted means Meta took the request, not that the guest received it.
-whatsapp_phone_id_ph	Phone Number ID
-whatsapp_token_ph	Access Token (leave blank to keep)
-whatsapp_template_ph	Bill template name (optional)
-whatsapp_template_lang_ph	Template language (e.g. en)
-whatsapp_enable	Enable
+whatsapp_cloud_help	Χρησιμοποιήστε το δικό σας Meta WhatsApp Cloud API. Δημιουργήστε ένα διακριτικό System User με whatsapp_business_messaging (τα προσωρινά διακριτικά του πίνακα ελέγχου λήγουν). Τα στοιχεία μένουν μόνο σε αυτόν τον Server — ποτέ στα επιπλέον ταμεία. «Έγινε αποδεκτό» σημαίνει ότι η Meta παρέλαβε το αίτημα, όχι ότι ο επισκέπτης το έλαβε.
+whatsapp_phone_id_ph	ID αριθμού τηλεφώνου
+whatsapp_token_ph	Διακριτικό πρόσβασης (αφήστε το κενό για να διατηρηθεί)
+whatsapp_template_ph	Όνομα προτύπου λογαριασμού (προαιρετικό)
+whatsapp_template_lang_ph	Γλώσσα προτύπου (π.χ. en)
+whatsapp_enable	Ενεργοποίηση
 whatsapp_disable	Off
-whatsapp_save	Save WhatsApp
-whatsapp_test	Test connection
-whatsapp_disconnect	Disconnect
-whatsapp_send_bill	Send via WhatsApp
+whatsapp_save	Αποθήκευση WhatsApp
+whatsapp_test	Δοκιμή σύνδεσης
+whatsapp_disconnect	Αποσύνδεση
+whatsapp_send_bill	Αποστολή μέσω WhatsApp
 whatsapp_consent	WhatsApp OK
-whatsapp_consent_help	Guest agreed to receive WhatsApp messages. A phone number alone is not consent.
-whatsapp_server_only	Configure WhatsApp on the shop Server device
+whatsapp_consent_help	Ο επισκέπτης συμφώνησε να λαμβάνει μηνύματα WhatsApp. Ένας αριθμός τηλεφώνου από μόνος του δεν είναι συγκατάθεση.
+whatsapp_server_only	Ρυθμίστε το WhatsApp στη συσκευή Server του μαγαζιού
 settings_sec_backup	Αντίγραφο ασφαλείας και επαναφορά
 settings_sec_diag	Διαγνωστικά
 settings_sec_privacy	Απόρρητο
@@ -637,7 +656,7 @@ choose_device_use	Διαλέξτε Server ή Client.
 paired_note	Ζευγαρώθηκε. Ξεκλειδώστε για πώληση ή Ανανέωση για τα νεότερα.
 last_update_at	Τελευταία ενημέρωση: {time}.
 pair_intro	Βρείτε τον server ή γράψτε τη διεύθυνση και τον κωδικό ζευγαρώματος.
-pair_resume_hint	Already paired — enter your shop PIN, or Forget this shop to pair another.
+pair_resume_hint	Έχει ήδη ζευγαρωθεί — πληκτρολογήστε το PIN του μαγαζιού σας ή πατήστε «Ξέχασε αυτό το μαγαζί» για να ζευγαρώσετε άλλο.
 queue_waiting	Αναμονή να φτάσει στο μαγαζί ({n}):
 queue_tries	Δοκιμές {n} φορές · τελευταία απάντηση: {e}
 save_backup_copy	Αποθήκευση αντιγράφου ασφαλείας…
@@ -754,13 +773,18 @@ station_vps_dd	Εκτυπωτές για αυτόν τον σταθμό
 station_vps_dd_n	{n} εκτυπωτής/ές · αγγίξτε για αλλαγή
 bill_printers_dd	Εκτυπωτές για τον λογαριασμό
 bill_printers_dd_n	{n} εκτυπωτής/ές για τον λογαριασμό · αγγίξτε για αλλαγή
-paper_heading	Χαρτί
+paper_heading	Εικονικό χαρτί
 paper_size	{w} × {h} mm
 paper_roll	ρολό {w} mm
 paper_not_set	το χαρτί δεν είναι ακόμη γνωστό
-paper_length_mm	Μήκος (mm)
-printer_paper_help	Το χαρτί αυτού του εκτυπωτή σε mm. Κενό Μήκος σημαίνει ρολό: κάθε απόδειξη έχει το μήκος του περιεχομένου της. Η «Εύρεση εκτυπωτών» συμπληρώνει κενό χαρτί από το πρόγραμμα οδήγησης του εκτυπωτή (ρολό 80 mm όταν δεν μπορεί να πει) και δεν αλλάζει ποτέ χαρτί που έχει ήδη οριστεί.
-preview_help	Αυτή η απόδειξη στο χαρτί του εκτυπωτή που επιλέχθηκε παρακάτω, όπως τυπώνεται εκεί: σε πραγματικό μέγεθος από την πάνω αριστερή γωνία που φτάνει ο εκτυπωτής (γκρι: άκρες που δεν φτάνει), μια μεγάλη απόδειξη σε περισσότερα φύλλα, ό,τι περνά την άκρη του χαρτιού κόβεται. Η επιλογή εκτυπωτή αλλάζει μόνο την προεπισκόπηση· το χαρτί κάθε εκτυπωτή ορίζεται στους Εκτυπωτές.
+virtual_width_mm	Εικονικό πλάτος (mm)
+virtual_length_mm	Εικονικό μήκος (mm)
+reported_width_mm	Αναφερόμενο πλάτος (mm)
+reported_length_mm	Αναφερόμενο μήκος (mm)
+reported_paper	Αναφερόμενο: {paper}
+virtual_paper	Εικονικό: {paper}
+printer_paper_help	Αναφερόμενο είναι το χαρτί στο οποίο είναι ρυθμισμένο το πρόγραμμα οδήγησης αυτού του εκτυπωτή· η εφαρμογή μόνο το διαβάζει, και Μ/Δ σημαίνει ότι δεν υπάρχει πρόγραμμα οδήγησης να ρωτηθεί. Εικονικό είναι το χαρτί που εσείς λέτε ότι βρίσκεται πραγματικά στον εκτυπωτή, σε mm· κενό μήκος σημαίνει ρολό. Ο εκτυπωτής τυπώνει στο δικό του χαρτί· το εικονικό χαρτί λέει στην εφαρμογή πόσο από αυτό είναι πραγματικό χαρτί, για την προεπισκόπηση, το μήκος της σελίδας και τη θέση της απόδειξης. Το Εύρεση εκτυπωτών συμπληρώνει ένα κενό εικονικό χαρτί και δεν αλλάζει ποτέ αυτό που έχετε ορίσει.
+preview_help	Αυτή η απόδειξη όπως τυπώνεται στον εκτυπωτή που επιλέχθηκε παρακάτω, σε πραγματικό μέγεθος πάνω στο εικονικό του χαρτί. Το λευκό είναι όπου τυπώνει, το γκρι χαρτί είναι εκτός εμβέλειας του εκτυπωτή και το ξεθωριασμένο μελάνι κόβεται. Τα εννέα τετράγωνα είναι το χαρτί: πατήστε εκεί όπου πρέπει να μπει η απόδειξη. Μια μακριά απόδειξη συνεχίζει σε περισσότερες σελίδες. Η επιλογή εκτυπωτή αλλάζει μόνο την προεπισκόπηση.
 job_layout	Διάταξη
 job_delivery	Πώς στέλνεται η εργασία
 job_delivery_help	Έγγραφο OS, ακατέργαστα byte ή ESC/POS. Ο λογαριασμός και το δελτίο κουζίνας κρατούν το καθένα το δικό του. Κάθε εργασία μπορεί να πάει σε όποιον εκτυπωτή έχει αποθηκεύσει η Εύρεση.
@@ -1266,8 +1290,8 @@ taxable_value	Φορολογητέα αξία
 gst_inside_price_note	({tax} μέσα στην τιμή)
 start_with_template	Ξεκινήστε με το πρότυπο μενού μας
 template_heading	Το πρότυπο μενού μας
-template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
-template_download_shelf	Download photo shelf
+template_need_download	Κατεβάστε το δημόσιο ράφι φωτογραφιών πιάτων (~1.459 πιάτα) και μετά εισαγάγετε στο μενού σας τα ονόματα που λείπουν.
+template_download_shelf	Λήψη ραφιού φωτογραφιών
 template_info	{c} κατηγορίες και {d} πιάτα με φωτογραφίες, έτοιμα για προσθήκη. Οι τιμές ξεκινούν από ₹0 — βάλτε τις δικές σας μετά.
 template_import	Εισαγωγή πλήρους προτύπου
 template_confirm	Να προστεθούν {d} πιάτα με τις κατηγορίες τους; Τα πιάτα που ήδη έχετε μένουν ως έχουν.

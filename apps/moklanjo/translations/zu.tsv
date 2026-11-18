@@ -192,7 +192,7 @@ snack_secs_save	Londoloza isikhathi sokuxwayisa
 snack_secs_saved	Isikhathi sesexwayiso silondoloziwe — {n} imizuzwana
 snack_secs_bad	Faka imizuzwana njengenombolo (3–60)
 cancelled	Kukhanseliwe
-cancelling	Cancelling…
+cancelling	Cancellingâ¦
 cancel	Khansela
 opening_client	Ivula iklayenti...
 preparing_desk	Ilungiselela ideski...
@@ -430,7 +430,7 @@ server_ip_ph	IP yeseva (isb. 192.168.1.10)
 set_credit_limit	Faka umkhawulo kukhasimende noma umphakeli
 set_login_selected	Faka ukungena ngemvume kokukhethiwe
 set_login_named	Faka isicelo sokungena ku-{name}
-shop	Thenga
+shop	Isitolo
 start_fresh	Qala kabusha
 stop_extra_tills	Misa amarejista emali eyengeziwe
 backup_auto	Kwenziwe isipele ngokuzenzakalela nsuku zonke · okokugcina {when} · izinsuku zokugcina eziyi-14 zigcinwa kokuthi {dir}.
@@ -501,13 +501,18 @@ job_size	Usayizi wefonti
 job_size_ph	isib. 18, 20, 26…
 test_receipt_format	Irisidi yokuhlola
 test_label_format	Ilebula yokuhlola
-paper_heading	Iphepha
+paper_heading	Iphepha le-virtual
 paper_size	{w} × {h} mm
 paper_roll	umqulu we-{w} mm
 paper_not_set	iphepha alikaziwa okwamanje
-paper_length_mm	Ubude (mm)
-printer_paper_help	Iphepha lale phrinta ku-mm. UBude obungenalutho ngumqulu: irisidi ngayinye inde njengokuqukethwe kwayo. Thola amaphrinta igcwalisa iphepha elingenalutho kusuka kumshayeli wephrinta (umqulu we-80 mm uma ingakwazi ukusho) futhi ayisoze yashintsha eselisethiwe.
-preview_help	Le risidi ephepheni lephrinta ekhethwe ngezansi, njengoba iphrinta lapho: ubukhulu bangempela kusuka ekhoneni elingaphezulu kwesobunxele elifinyelelwa yiphrinta (mpunga: imiphetho engafinyelelwa), irisidi ende emakhasini amaningi, konke okudlula umphetho wephepha kuyasikwa. Ukukhetha iphrinta kushintsha ukubuka kuqala kuphela; iphepha lephrinta ngayinye lisethwa ngaphansi kwe-Amaphrinta.
+virtual_width_mm	Ububanzi be-virtual (mm)
+virtual_length_mm	Ubude be-virtual (mm)
+reported_width_mm	Ububanzi obubikiwe (mm)
+reported_length_mm	Ubude obubikiwe (mm)
+reported_paper	Okubikiwe: {paper}
+virtual_paper	I-virtual: {paper}
+printer_paper_help	Okubikiwe yiphepha umshayeli wale phrinta osethelwe kulo; uhlelo lokusebenza luyalifunda kuphela, futhi “Ayikho” isho ukuthi awukho umshayeli ongabuzwa. I-virtual yiphepha othi wena likhona ngempela kuphrinta, ku-mm; ubude obungenalutho ngumqulu. Iphrinta iphrinta ephepheni layo; iphepha le-virtual litshela uhlelo lokusebenza ukuthi lingakanani kulo eliyiphepha langempela, ukuze kusetshenziswe ekubukeni kuqala, ebudeni bekhasi nasendaweni yerisidi. Thola amaphrinta igcwalisa iphepha le-virtual elingenalutho futhi ayisoze yashintsha olisethile wena.
+preview_help	Le risidi njengoba iphrinta kuphrinta ekhethwe ngezansi, ngobukhulu bangempela ephepheni layo le-virtual. Okumhlophe yilapho iphrinta khona, iphepha elimpunga alifinyelelwa yiphrinta, futhi uyinki ofiphele uyasikwa. Izikwele eziyisishiyagalolunye ziyiphepha: thepha lapho irisidi kufanele ihlale khona. Irisidi ende iqhubeka emakhasini amaningi. Ukukhetha iphrinta kushintsha ukubuka kuqala kuphela.
 slip_col_width	Ububanzi (mm)
 no_printer_assigned	Ayikho iphrinta
 printer_target_default	iphrinta evamile yale khompyutha (ikheli elingenalutho)

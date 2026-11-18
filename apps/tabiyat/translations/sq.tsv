@@ -79,13 +79,19 @@ bill_item_amount	Shuma
 bill_item_note	Rx / shënim shitje
 bill_item_col_sep	Vijat e kolonave
 slip_col_width	Gjerësia (mm)
-paper_heading	Letër
+paper_heading	Letër virtuale
 paper_size	{w} × {h} mm
 paper_roll	rrotull {w} mm
 paper_not_set	letra ende e panjohur
-paper_length_mm	Gjatësia (mm)
-printer_paper_help	Letra e këtij printeri në mm. Gjatësia bosh është rrotull: çdo faturë është aq e gjatë sa përmbajtja e saj. Gjej printerët plotëson letrën bosh nga drajveri i printerit (rrotull 80 mm kur nuk mund ta thotë) dhe kurrë nuk ndryshon një të vendosur tashmë.
-preview_help	Kjo faturë në letrën e printerit të zgjedhur më poshtë, siç printohet atje: në madhësi reale nga këndi i sipërm majtas që arrin printeri (gri: skajet që nuk i arrin), një faturë e gjatë në më shumë fletë, gjithçka përtej skajit të letrës pritet. Zgjedhja e printerit ndryshon vetëm pamjen paraprake; letra e çdo printeri vendoset te Printerët.
+na	Nuk ka
+virtual_width_mm	Gjerësia virtuale (mm)
+virtual_length_mm	Gjatësia virtuale (mm)
+reported_width_mm	Gjerësia e raportuar (mm)
+reported_length_mm	Gjatësia e raportuar (mm)
+reported_paper	E raportuar: {paper}
+virtual_paper	Virtuale: {paper}
+printer_paper_help	E raportuar është letra për të cilën është vendosur drajveri i këtij printeri; aplikacioni vetëm e lexon, dhe “Nuk ka” do të thotë se nuk ka drajver për ta pyetur. Virtuale është letra që ju thoni se ndodhet vërtet në printer, në mm; gjatësia bosh është rrotull. Printeri printon në letrën e vet; letra virtuale i tregon aplikacionit sa prej saj është letër e vërtetë, për pamjen paraprake, gjatësinë e faqes dhe vendin e faturës. Gjej printerët plotëson një letër virtuale bosh dhe kurrë nuk ndryshon një që e keni vendosur ju.
+preview_help	Kjo faturë siç printohet në printerin e zgjedhur më poshtë, në madhësi reale në letrën e tij virtuale. E bardha është aty ku printon, letra gri është jashtë shtrirjes së printerit, dhe boja e zbehtë pritet. Nëntë katrorët janë letra: prekni aty ku duhet të qëndrojë fatura. Një faturë e gjatë vazhdon në më shumë faqe. Zgjedhja e printerit ndryshon vetëm pamjen paraprake.
 slip_col_start	Hapësira në fillim (px)
 slip_col_end	Hapësira në fund (px)
 slip_columns_help	Gjerësia e çdo kolone përfshin hapësirën e saj në fillim dhe në fund. Teksti mbështillet brenda kolonës së tij; çfarë del përtej gjerësisë së përmbajtjes pritet, në letër dhe në pamjen paraprake.
@@ -100,6 +106,12 @@ bill_item_piece_off	Fikur
 bill_total_qty	Sasia totale
 bill_total_subtotal	Nëntotali
 bill_total_grand	Totali i përgjithshëm
+bill_total_number_under	Numri nën
+bill_total_caption_under	Etiketa nën
+bill_total_own_line	Rresht më vete
+bill_total_caption_with	Me numrin
+bill_total_caption_none	Pa etiketë
+bill_total_place_help	Rresht më vete e printon këtë total më vete. Nën një kolonë, numri i tij printohet në atë kolonë artikujsh, në madhësinë dhe trashësinë e këtij rreshti; totalet ndajnë një radhë derisa një kolonë të zihet, pastaj fillon një radhë e re. Etiketa shkon me numrin, nën një kolonë tjetër, ose lihet jashtë. Rreshtat e taksës, shërbimit, rrumbullakimit dhe pagesës ndjekin Nëntotali.
 kot_unassigned	E pacaktuar
 settings_hub_help	Hapni një zonë në herë — më pak rrëshqitje, zgjedhje më të qarta.
 settings_sec_language	Gjuha dhe monedha
@@ -735,6 +747,20 @@ fssai_ph	Licenca e barnave nr. (opsionale - formulimi juaj)
 bill_footer_ph	Fundi (p.sh. Faleminderit, ejani përsëri)
 kot_field_on	shfaq
 kot_field_off	fshih
+kot_field_show	Shfaq
+kot_field_hide	Fshih
+bill_line_shop	Dyqani
+bill_line_address	Adresa
+bill_line_fssai	FSSAI
+bill_line_title	Titulli
+bill_line_customer	Klient
+bill_line_bill_no	Nr. i faturës
+bill_line_time	Ora
+bill_line_cashier	Arkëtar
+bill_line_items	Artikujt
+bill_line_total	Totali
+bill_line_footer	Fundi
+bill_line_upi	UPI
 kot_weight_light	I lehtë
 bill_kot_panel_help	Paraqitja e faturave dhe gjerësia e përmbajtjes. Arkëtari është ai që ka lëshuar ose shlyer faturën - historia e plotë e shitjes mbetet në libra.
 std_size_ph	p.sh. 18, 20, 26…
@@ -842,10 +868,10 @@ lane_declared_label	Fatura tatimore
 lane_owner_label	Dëftesë me para
 money_lane_bill	Fatura: {lane}
 
-removing	Removing…
-removed	Removed
-updating_order	Updating…
-order_updated	Order updated
+removing	Po hiqet…
+removed	U hoq
+updating_order	Po përditësohet…
+order_updated	Porosia u përditësua
 sel_copy	Kopjo
 sel_select_all	Përzgjidh të gjitha
 sel_copied	U kopjua

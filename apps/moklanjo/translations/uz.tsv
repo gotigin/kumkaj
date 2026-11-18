@@ -192,7 +192,7 @@ snack_secs_save	Ogohlantirish vaqtini saqlash
 snack_secs_saved	Ogohlantirish vaqti saqlandi — {n} soniya
 snack_secs_bad	Soniyalarni raqam sifatida kiriting (3–60)
 cancelled	Bekor qilindi
-cancelling	Cancelling…
+cancelling	Cancellingâ¦
 cancel	Bekor qilish
 opening_client	Mijoz ochilmoqda…
 preparing_desk	Kassa tayyorlanmoqda…
@@ -501,13 +501,18 @@ job_size	Shrift oʻlchami
 job_size_ph	mas. 18, 20, 26…
 test_receipt_format	Sinov kvitansiyasi
 test_label_format	Sinov belgisi
-paper_heading	Qogʻoz
+paper_heading	Virtual qogʻoz
 paper_size	{w} × {h} mm
 paper_roll	{w} mm rulon
 paper_not_set	qogʻoz hali nomaʼlum
-paper_length_mm	Uzunlik (mm)
-printer_paper_help	Bu printerning qogʻozi mm da. Boʻsh Uzunlik — rulon: har bir chek mazmuni qadar uzun. Printerlarni topish boʻsh qogʻozni printer drayveridan toʻldiradi (ayta olmasa, 80 mm rulon) va oldindan belgilanganini hech qachon oʻzgartirmaydi.
-preview_help	Pastda tanlangan printer qogʻozidagi bu chek, u yerda qanday chop etilsa shunday: printer yetadigan yuqori chap burchakdan haqiqiy oʻlchamda (kulrang: yetmaydigan chetlar), uzun chek koʻproq varaqda, qogʻoz chetidan oʻtgan hamma narsa kesiladi. Printer tanlash faqat oldindan koʻrishni oʻzgartiradi; har bir printer qogʻozi Printerlar boʻlimida belgilanadi.
+virtual_width_mm	Virtual kenglik (mm)
+virtual_length_mm	Virtual uzunlik (mm)
+reported_width_mm	Xabar qilingan kenglik (mm)
+reported_length_mm	Xabar qilingan uzunlik (mm)
+reported_paper	Xabar qilingan: {paper}
+virtual_paper	Virtual: {paper}
+printer_paper_help	Xabar qilingan — bu printer drayveri sozlangan qogʻoz; ilova uni faqat oʻqiydi, „yoʻq“ esa soʻraladigan drayver yoʻqligini bildiradi. Virtual — printerda haqiqatan bor deb siz aytgan qogʻoz, mm da; boʻsh uzunlik — rulon. Printer oʻz qogʻoziga chop etadi; virtual qogʻoz ilovaga uning qancha qismi haqiqiy qogʻoz ekanini aytadi: oldindan koʻrish, sahifa uzunligi va chek joyi uchun. Printerlarni topish boʻsh virtual qogʻozni toʻldiradi va siz belgilaganini hech qachon oʻzgartirmaydi.
+preview_help	Bu chek pastda tanlangan printerda qanday chop etilsa shunday, uning virtual qogʻozida haqiqiy oʻlchamda. Oq joy — chop etiladigan joy, kulrang qogʻozga printer yetmaydi, xira siyoh esa kesiladi. Toʻqqizta katak — qogʻoz: chek turishi kerak boʻlgan joyni bosing. Uzun chek keyingi sahifalarga oʻtadi. Printer tanlash faqat oldindan koʻrishni oʻzgartiradi.
 slip_col_width	Kenglik (mm)
 no_printer_assigned	Printer yoʻq
 printer_target_default	shu kompyuterning odatdagi printeri (boʻsh manzil)

@@ -101,6 +101,19 @@ bill_item_col_sep	Kolonnu līnijas
 slip_columns	Kolonnas
 slip_col_header	Virsraksts
 bill_line_logo	Logotips
+bill_line_shop	Veikals
+bill_line_address	Adrese
+bill_line_fssai	FSSAI
+bill_line_title	Virsraksts
+bill_line_customer	Klients
+bill_line_bill_no	Rēķina nr.
+bill_line_time	Laiks
+bill_line_cashier	Kasieris
+bill_line_table	Galds
+bill_line_items	Pozīcijas
+bill_line_total	Kopā
+bill_line_footer	Kājene
+bill_line_upi	UPI
 bill_logo_picture	Attēls
 bill_logo_choose	Izvēlēties attēlu
 bill_logo_remove	Noņemt attēlu
@@ -128,6 +141,12 @@ bill_item_piece_off	Izslēgts
 bill_total_qty	Kopējais daudzums
 bill_total_subtotal	Starpsumma
 bill_total_grand	Kopsumma
+bill_total_number_under	Skaitlis zem
+bill_total_caption_under	Etiķete zem
+bill_total_own_line	Sava rinda
+bill_total_caption_with	Pie skaitļa
+bill_total_caption_none	Bez etiķetes
+bill_total_place_help	Sava rinda drukā šo kopsummu atsevišķi. Zem kolonnas tās skaitlis tiek drukāts tajā preču kolonnā, šīs rindas izmērā un biezumā; kopsummas dala vienu rindu, līdz kāda kolonna ir aizņemta, tad sākas jauna rinda. Etiķete ir pie skaitļa, zem citas kolonnas vai tiek izlaista. Nodokļa, apkalpošanas, noapaļošanas un maksājuma rindas seko Starpsumma.
 reprint_incl	Drukā
 reprint_skip	Izlaist
 reprint_skip_meta	Izlaist atjaunošanas druku
@@ -178,20 +197,20 @@ snack_secs_ph	Sekundes (3–60, noklusējums 10)
 snack_secs_save	Saglabāt paziņojuma laiku
 snack_secs_saved	Paziņojuma laiks saglabāts — {n} sekundes
 settings_sec_whatsapp	WhatsApp
-whatsapp_cloud_help	Use your own Meta WhatsApp Cloud API. Create a System User token with whatsapp_business_messaging (temporary dashboard tokens expire). Credentials stay on this Server only — never on extra tills. Accepted means Meta took the request, not that the guest received it.
-whatsapp_phone_id_ph	Phone Number ID
-whatsapp_token_ph	Access Token (leave blank to keep)
-whatsapp_template_ph	Bill template name (optional)
-whatsapp_template_lang_ph	Template language (e.g. en)
-whatsapp_enable	Enable
+whatsapp_cloud_help	Izmantojiet savu Meta WhatsApp Cloud API. Izveidojiet System User pilnvaru ar whatsapp_business_messaging (pagaidu pilnvarām no paneļa beidzas termiņš). Dati paliek tikai šajā Serverī — nekad papildu kasēs. “Pieņemts” nozīmē, ka Meta pieņēma pieprasījumu, nevis ka viesis to saņēma.
+whatsapp_phone_id_ph	Tālruņa numura ID
+whatsapp_token_ph	Piekļuves pilnvara (atstājiet tukšu, lai saglabātu)
+whatsapp_template_ph	Rēķina veidnes nosaukums (nav obligāts)
+whatsapp_template_lang_ph	Veidnes valoda (piem., en)
+whatsapp_enable	Ieslēgt
 whatsapp_disable	Off
-whatsapp_save	Save WhatsApp
-whatsapp_test	Test connection
-whatsapp_disconnect	Disconnect
-whatsapp_send_bill	Send via WhatsApp
-whatsapp_consent	WhatsApp OK
-whatsapp_consent_help	Guest agreed to receive WhatsApp messages. A phone number alone is not consent.
-whatsapp_server_only	Configure WhatsApp on the shop Server device
+whatsapp_save	Saglabāt WhatsApp
+whatsapp_test	Pārbaudīt savienojumu
+whatsapp_disconnect	Atvienot
+whatsapp_send_bill	Sūtīt ar WhatsApp
+whatsapp_consent	WhatsApp Labi
+whatsapp_consent_help	Viesis piekrita saņemt WhatsApp ziņas. Tālruņa numurs vien nav piekrišana.
+whatsapp_server_only	Iestatiet WhatsApp veikala Servera ierīcē
 settings_sec_backup	Dublējums un atjaunošana
 settings_sec_diag	Diagnostika
 settings_sec_privacy	Privātums
@@ -637,7 +656,7 @@ choose_device_use	Izvēlieties serveri vai termināli.
 paired_note	Savienots pārī. Atbloķējiet, lai pārdotu, vai atsvaidziniet jaunāko.
 last_update_at	Pēdējais atjauninājums: {time}.
 pair_intro	Atrodiet serveri vai ierakstiet tā adresi un pāra kodu.
-pair_resume_hint	Already paired — enter your shop PIN, or Forget this shop to pair another.
+pair_resume_hint	Jau savienots pārī — ievadiet sava veikala PIN vai pieskarieties “Aizmirst šo veikalu”, lai savienotu citu.
 queue_waiting	Gaida, lai sasniegtu veikalu ({n}):
 queue_tries	Mēģināts {n} reizes · pēdējā atbilde: {e}
 save_backup_copy	Saglabāt dublējuma kopiju…
@@ -754,13 +773,18 @@ station_vps_dd	Printeri šai stacijai
 station_vps_dd_n	{n} printeri · pieskarieties, lai mainītu
 bill_printers_dd	Printeri rēķinam
 bill_printers_dd_n	{n} printeri rēķinam · pieskarieties, lai mainītu
-paper_heading	Papīrs
+paper_heading	Virtuālais papīrs
 paper_size	{w} × {h} mm
 paper_roll	{w} mm rullis
 paper_not_set	papīrs vēl nav zināms
-paper_length_mm	Garums (mm)
-printer_paper_help	Šī printera papīrs mm. Tukšs Garums ir rullis: katrs čeks ir tik garš kā tā saturs. “Atrast printerus” aizpilda tukšu papīru no printera draivera (80 mm rullis, ja tas nevar pateikt) un nekad nemaina jau iestatītu.
-preview_help	Šis čeks zemāk izvēlētā printera papīrā, kā tas tur drukājas: īstā izmērā no augšējā kreisā stūra, kuru printeris sasniedz (pelēks: malas, kuras nesasniedz), garš čeks vairākās lapās, viss aiz papīra malas tiek nogriezts. Printera izvēle maina tikai priekšskatījumu; katra printera papīrs tiek iestatīts sadaļā Printeri.
+virtual_width_mm	Virtuālais platums (mm)
+virtual_length_mm	Virtuālais garums (mm)
+reported_width_mm	Ziņotais platums (mm)
+reported_length_mm	Ziņotais garums (mm)
+reported_paper	Ziņots: {paper}
+virtual_paper	Virtuāls: {paper}
+printer_paper_help	Ziņotais ir papīrs, uz kuru ir iestatīts šī printera draiveris; lietotne to tikai nolasa, un “Nav” nozīmē, ka nav draivera, kam jautāt. Virtuālais ir papīrs, kas pēc jūsu teiktā patiešām atrodas printerī, milimetros; tukšs garums nozīmē rulli. Printeris drukā uz sava papīra; virtuālais papīrs pasaka lietotnei, cik daudz no tā ir īsts papīrs – priekšskatījumam, lapas garumam un čeka vietai. Atrast printerus aizpilda tukšu virtuālo papīru un nekad nemaina jūsu iestatīto.
+preview_help	Šis čeks tāds, kāds tas tiek drukāts ar zemāk izvēlēto printeri, īstajā izmērā uz tā virtuālā papīra. Balts ir tur, kur drukā, pelēko papīru printeris nesasniedz, un izbalējusī tinte tiek nogriezta. Deviņi kvadrāti ir papīrs: pieskarieties vietai, kur jāatrodas čekam. Garš čeks turpinās nākamajās lapās. Printera izvēle maina tikai priekšskatījumu.
 job_layout	Izkārtojums
 job_delivery	Kā darbs tiek sūtīts
 job_delivery_help	OS dokuments, neapstrādāti baiti vai ESC/POS. Rēķins un virtuves zīme katrs patur savu. Jebkurš darbs var iet uz jebkuru printeri, ko Atrast ir saglabājis.
@@ -1266,8 +1290,8 @@ taxable_value	Ar nodokli apliekamā vērtība
 gst_inside_price_note	({tax} iekļauts)
 start_with_template	Sākt ar mūsu ēdienkartes veidni
 template_heading	Mūsu ēdienkartes veidne
-template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
-template_download_shelf	Download photo shelf
+template_need_download	Lejupielādējiet publisko ēdienu foto plauktu (~1459 ēdieni), pēc tam importējiet trūkstošos nosaukumus savā ēdienkartē.
+template_download_shelf	Lejupielādēt foto plauktu
 template_info	{c} kategorijas un {d} ēdieni ar foto, gatavi pievienošanai. Cenas sākas no ₹0 — iestatiet savas pēc tam.
 template_import	Importēt pilnu veidni
 template_confirm	Pievienot {d} ēdienus ar to kategorijām? Ēdieni, kas jums jau ir, paliek kā ir.

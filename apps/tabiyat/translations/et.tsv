@@ -79,13 +79,19 @@ bill_item_amount	Summa
 bill_item_note	Rx / müügiteatis
 bill_item_col_sep	Veeru reeglid
 slip_col_width	Laius (mm)
-paper_heading	Paber
+paper_heading	Virtuaalne paber
 paper_size	{w} × {h} mm
 paper_roll	{w} mm rull
 paper_not_set	paber pole veel teada
-paper_length_mm	Pikkus (mm)
-printer_paper_help	Selle printeri paber millimeetrites. Tühi Pikkus on rull: iga tšekk on sama pikk kui selle sisu. „Otsige printereid“ täidab tühja paberi printeri draiveri järgi (80 mm rull, kui see ei oska öelda) ega muuda kunagi juba määratud paberit.
-preview_help	See tšekk allpool valitud printeri paberil, nagu see seal prinditakse: tegelikus suuruses ülemisest vasakust nurgast, kuhu printer ulatub (hall: servad, kuhu ei ulatu), pikk tšekk mitmel lehel, kõik üle paberi serva lõigatakse ära. Printeri valimine muudab ainult eelvaadet; iga printeri paber määratakse jaotises Printerid.
+na	Ei kehti
+virtual_width_mm	Virtuaalne laius (mm)
+virtual_length_mm	Virtuaalne pikkus (mm)
+reported_width_mm	Teatatud laius (mm)
+reported_length_mm	Teatatud pikkus (mm)
+reported_paper	Teatatud: {paper}
+virtual_paper	Virtuaalne: {paper}
+printer_paper_help	Teatatud on paber, millele selle printeri draiver on seadistatud; rakendus ainult loeb seda ja „Ei kehti“ tähendab, et pole draiverit, kellelt küsida. Virtuaalne on paber, mis teie sõnul on tegelikult printeris, millimeetrites; tühi pikkus tähendab rulli. Printer prindib oma paberile; virtuaalne paber ütleb rakendusele, kui suur osa sellest on päris paber – eelvaate, lehe pikkuse ja tšeki asukoha jaoks. „Otsige printereid“ täidab tühja virtuaalse paberi ega muuda kunagi teie määratut.
+preview_help	See tšekk nii, nagu see prinditakse allpool valitud printeris, tegelikus suuruses selle virtuaalsel paberil. Valge on koht, kuhu prinditakse, hall paber jääb printeri ulatusest välja ja tuhm tint lõigatakse ära. Üheksa ruutu on paber: puudutage kohta, kus tšekk peab asuma. Pikk tšekk jätkub järgmistel lehtedel. Printeri valimine muudab ainult eelvaadet.
 slip_col_start	Algusvahe (px)
 slip_col_end	Lõpuvahe (px)
 slip_columns_help	Iga veeru laius sisaldab selle algus- ja lõpuvahet. Tekst murdub oma veeru sees; mis jääb sisu laiusest välja, lõigatakse ära – paberil ja eelvaates.
@@ -100,6 +106,12 @@ bill_item_piece_off	Väljas
 bill_total_qty	Kogus
 bill_total_subtotal	Vahesumma
 bill_total_grand	Kokkuvõttes
+bill_total_number_under	Arv veeru all
+bill_total_caption_under	Silt veeru all
+bill_total_own_line	Oma rida
+bill_total_caption_with	Koos arvuga
+bill_total_caption_none	Silti pole
+bill_total_place_help	Oma rida prindib selle kogusumma eraldi. Veeru all prinditakse selle arv sellesse kaubaveergu, selle rea suuruses ja paksuses; kogusummad jagavad üht rida, kuni mõni veerg on hõivatud, siis algab uus rida. Silt läheb koos arvuga, teise veeru alla või jäetakse ära. Maksu, teeninduse, ümardamise ja makse read järgivad kirjet Vahesumma.
 kot_unassigned	Määramata
 settings_hub_help	Avage üks ala korraga – vähem kerimist, selgemad valikud.
 settings_sec_language	Keel ja valuuta
@@ -735,6 +747,20 @@ fssai_ph	Ravimiluba nr. (valikuline – teie sõnastus)
 bill_footer_ph	Jalus (nt aitäh, külastage uuesti)
 kot_field_on	näidata
 kot_field_off	peita
+kot_field_show	Näita
+kot_field_hide	Peida
+bill_line_shop	Pood
+bill_line_address	Aadress
+bill_line_fssai	FSSAI
+bill_line_title	Pealkiri
+bill_line_customer	Klient
+bill_line_bill_no	Arve nr
+bill_line_time	Aeg
+bill_line_cashier	Kassapidaja
+bill_line_items	Üksused
+bill_line_total	Kokku
+bill_line_footer	Jalus
+bill_line_upi	UPI
 kot_weight_light	Valgus
 bill_kot_panel_help	Arve paigutus ja sisu laius. Kassa on see, kes arve väljastas või arveldas – müügilugu jääb raamatutesse alles.
 std_size_ph	nt. 18, 20, 26…
@@ -842,10 +868,10 @@ lane_declared_label	Maksuarve
 lane_owner_label	Sularaha memo
 money_lane_bill	Arve: {lane}
 
-removing	Removing…
-removed	Removed
-updating_order	Updating…
-order_updated	Order updated
+removing	Eemaldamine…
+removed	Eemaldatud
+updating_order	Uuendamine…
+order_updated	Tellimus uuendatud
 sel_copy	Kopeeri
 sel_select_all	Vali kõik
 sel_copied	Kopeeritud

@@ -101,6 +101,19 @@ bill_item_col_sep	Línies de columna
 slip_columns	Columnes
 slip_col_header	Capçalera
 bill_line_logo	Logotip
+bill_line_shop	Botiga
+bill_line_address	Adreça
+bill_line_fssai	FSSAI
+bill_line_title	Títol
+bill_line_customer	Client
+bill_line_bill_no	Núm. de compte
+bill_line_time	Hora
+bill_line_cashier	Caixer
+bill_line_table	Taula
+bill_line_items	Articles
+bill_line_total	Total
+bill_line_footer	Peu
+bill_line_upi	UPI
 bill_logo_picture	Imatge
 bill_logo_choose	Tria una imatge
 bill_logo_remove	Treu la imatge
@@ -128,6 +141,12 @@ bill_item_piece_off	Desactivat
 bill_total_qty	Qtat total
 bill_total_subtotal	Subtotal
 bill_total_grand	Total general
+bill_total_number_under	Nombre sota
+bill_total_caption_under	Etiqueta sota
+bill_total_own_line	Línia pròpia
+bill_total_caption_with	Amb el nombre
+bill_total_caption_none	Sense etiqueta
+bill_total_place_help	Línia pròpia imprimeix aquest total tot sol. Sota una columna, el seu nombre s'imprimeix en aquella columna d'articles, amb la mida i el gruix d'aquesta línia; els totals comparteixen una fila fins que una columna queda ocupada, i llavors comença una fila nova. L'etiqueta va amb el nombre, sota una altra columna o s'omet. Les línies d'impost, servei, arrodoniment i pagament segueixen Subtotal.
 reprint_incl	A la impressió
 reprint_skip	Omet
 reprint_skip_meta	Omet la reimpressió
@@ -178,20 +197,20 @@ snack_secs_ph	Segons (3–60, per defecte 10)
 snack_secs_save	Desa el temps d'avís
 snack_secs_saved	Temps d'avís desat — {n} segons
 settings_sec_whatsapp	WhatsApp
-whatsapp_cloud_help	Use your own Meta WhatsApp Cloud API. Create a System User token with whatsapp_business_messaging (temporary dashboard tokens expire). Credentials stay on this Server only — never on extra tills. Accepted means Meta took the request, not that the guest received it.
-whatsapp_phone_id_ph	Phone Number ID
-whatsapp_token_ph	Access Token (leave blank to keep)
-whatsapp_template_ph	Bill template name (optional)
-whatsapp_template_lang_ph	Template language (e.g. en)
-whatsapp_enable	Enable
+whatsapp_cloud_help	Feu servir la vostra pròpia API Meta WhatsApp Cloud. Creeu un testimoni de System User amb whatsapp_business_messaging (els testimonis temporals del tauler caduquen). Les credencials es queden només en aquest Servidor — mai a les caixes extra. «Acceptat» vol dir que Meta ha rebut la sol·licitud, no que el convidat l'hagi rebuda.
+whatsapp_phone_id_ph	ID del número de telèfon
+whatsapp_token_ph	Testimoni d'accés (deixeu-lo en blanc per conservar-lo)
+whatsapp_template_ph	Nom de la plantilla de compte (opcional)
+whatsapp_template_lang_ph	Llengua de la plantilla (p. ex. en)
+whatsapp_enable	Activa
 whatsapp_disable	Off
-whatsapp_save	Save WhatsApp
-whatsapp_test	Test connection
-whatsapp_disconnect	Disconnect
-whatsapp_send_bill	Send via WhatsApp
-whatsapp_consent	WhatsApp OK
-whatsapp_consent_help	Guest agreed to receive WhatsApp messages. A phone number alone is not consent.
-whatsapp_server_only	Configure WhatsApp on the shop Server device
+whatsapp_save	Desa WhatsApp
+whatsapp_test	Prova la connexió
+whatsapp_disconnect	Desconnecta
+whatsapp_send_bill	Envia per WhatsApp
+whatsapp_consent	WhatsApp D'acord
+whatsapp_consent_help	El convidat ha acceptat rebre missatges de WhatsApp. Un número de telèfon tot sol no és consentiment.
+whatsapp_server_only	Configureu WhatsApp al dispositiu Servidor de la botiga
 settings_sec_backup	Còpia i restauració
 settings_sec_diag	Diagnòstic
 settings_sec_privacy	Privadesa
@@ -637,7 +656,7 @@ choose_device_use	Trieu Servidor o Client.
 paired_note	Aparellat. Desbloquegeu per vendre, o Actualitza per tenir l'últim.
 last_update_at	Darrera actualització: {time}.
 pair_intro	Trobeu el servidor, o escriviu-ne l'adreça i el codi d'aparellament.
-pair_resume_hint	Already paired — enter your shop PIN, or Forget this shop to pair another.
+pair_resume_hint	Ja aparellat — introduïu el PIN de la vostra botiga, o toqueu «Oblida aquesta botiga» per aparellar-ne una altra.
 queue_waiting	En espera d'arribar a la botiga ({n}):
 queue_tries	Intentat {n} vegades · darrera resposta: {e}
 save_backup_copy	Desa una còpia de seguretat…
@@ -754,13 +773,18 @@ station_vps_dd	Impressores d'aquesta estació
 station_vps_dd_n	{n} impressora(es) · toqueu per canviar
 bill_printers_dd	Impressores del compte
 bill_printers_dd_n	{n} impressora(es) per al compte · toqueu per canviar
-paper_heading	Paper
+paper_heading	Paper virtual
 paper_size	{w} × {h} mm
 paper_roll	rotlle de {w} mm
 paper_not_set	paper encara desconegut
-paper_length_mm	Llargada (mm)
-printer_paper_help	El paper d'aquesta impressora en mm. Una Llargada buida és un rotlle: cada tiquet és tan llarg com el seu contingut. Troba impressores omple el paper buit amb el del controlador de la impressora (un rotlle de 80 mm si no ho pot dir) i mai no canvia un paper ja definit.
-preview_help	Aquest tiquet sobre el paper de la impressora triada a sota, tal com s'hi imprimeix: a mida real des de la cantonada superior esquerra que la impressora pot assolir (gris: vores que no pot), un tiquet llarg en més fulls, tot el que passa de la vora del paper es retalla. Triar una impressora només canvia la previsualització; el paper de cada impressora es defineix a Impressores.
+virtual_width_mm	Amplada virtual (mm)
+virtual_length_mm	Llargada virtual (mm)
+reported_width_mm	Amplada informada (mm)
+reported_length_mm	Llargada informada (mm)
+reported_paper	Informat: {paper}
+virtual_paper	Virtual: {paper}
+printer_paper_help	Informat és el paper al qual està ajustat el controlador d'aquesta impressora; l'app només el llegeix, i N/D vol dir que no hi ha cap controlador a qui preguntar. Virtual és el paper que tu dius que hi ha realment a la impressora, en mm; una llargada en blanc és un rotlle. La impressora imprimeix en el seu propi paper; el paper virtual diu a l'app quina part és paper real, per a la previsualització, la llargada de la pàgina i el lloc del tiquet. Troba impressores omple un paper virtual en blanc i no canvia mai el que has definit.
+preview_help	Aquest tiquet tal com s'imprimeix a la impressora triada a sota, a mida real sobre el seu paper virtual. El blanc és on imprimeix, el paper gris queda fora de l'abast de la impressora i la tinta esvaïda es talla. Els nou quadrats són el paper: toca on ha d'anar el tiquet. Un tiquet llarg continua en més pàgines. Triar una impressora només canvia la previsualització.
 job_layout	Disseny
 job_delivery	Com s'envia el treball
 job_delivery_help	Document del SO, bytes en brut o ESC/POS. El compte i el tiquet de cuina en guarden un de propi. Qualsevol treball pot anar a qualsevol impressora que Troba hagi desat.
@@ -1000,7 +1024,7 @@ amount_we_pay_ph	Import que paguem
 business_name_ph	Nom del negoci
 category_new_ph	Categoria (opcional, es crea si és nova)
 code_bag_ph	Codi (bag)
-conv_factor_ph	Factor (25 = 1 bag → 25 kg)
+conv_factor_ph	Factor (25 = 1 sac → 25 kg)
 country_code_ph	Codi de país, p. ex. IN, GB, US, AE, BR
 credit_khata_amount_ph	Import de crèdit / khata
 credit_limit_ph	Límit de crèdit (0 = cap)
@@ -1238,7 +1262,7 @@ on_your_menu	Al vostre menú
 edit	Edita
 schemes	Promocions / ofertes
 schemes_help	BOGO, percentatge de descompte i combos fixos. Els combos s'expandeixen en línies de cuina en Enviar KOT; els components queden retinguts fins que el combo s'activa. Exemple: Buy 2 Thali get 1 Chaas
-scheme_bogo_ph	Buy 2 Thali get 1 Chaas
+scheme_bogo_ph	Compreu 2 Thali i emporteu-vos 1 Chaas
 add_scheme	Afegeix BOGO
 schedule_ph	Hores / hora feliç — Mon-Fri 07:00-11:00 o HappyHour 17:00-19:00=150
 upi_qr	UPI QR
@@ -1266,8 +1290,8 @@ taxable_value	Base imposable
 gst_inside_price_note	({tax} inclòs)
 start_with_template	Comença amb la nostra plantilla de menú
 template_heading	La nostra plantilla de menú
-template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
-template_download_shelf	Download photo shelf
+template_need_download	Baixeu el prestatge públic de fotos de plats (~1.459 plats) i després importeu al vostre menú els noms que falten.
+template_download_shelf	Baixa el prestatge de fotos
 template_info	{c} categories i {d} plats amb fotos, a punt per afegir. Els preus comencen a ₹0 — poseu els vostres després.
 template_import	Importa la plantilla completa
 template_confirm	Afegir {d} plats amb les seves categories? Els plats que ja teniu es queden com són.

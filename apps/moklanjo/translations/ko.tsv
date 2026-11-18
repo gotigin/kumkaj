@@ -192,7 +192,7 @@ snack_secs_save	알림 시간 저장
 snack_secs_saved	알림 시간 저장됨 — {n}초
 snack_secs_bad	초를 숫자로 입력하세요 (3–60)
 cancelled	취소됨
-cancelling	Cancelling…
+cancelling	Cancellingâ¦
 cancel	취소
 opening_client	클라이언트 열기…
 preparing_desk	데스크 준비 중…
@@ -501,13 +501,18 @@ job_size	글꼴 크기
 job_size_ph	예: 18, 20, 26…
 test_receipt_format	테스트 영수증
 test_label_format	테스트 라벨
-paper_heading	용지
+paper_heading	가상 용지
 paper_size	{w} × {h} mm
 paper_roll	{w}mm 롤
 paper_not_set	용지를 아직 모름
-paper_length_mm	길이 (mm)
-printer_paper_help	이 프린터의 용지(mm). 길이가 비어 있으면 롤이며 각 전표는 내용만큼 깁니다. 프린터 찾기는 빈 용지를 프린터 드라이버에서 채우고(알 수 없으면 80mm 롤) 이미 정한 용지는 절대 바꾸지 않습니다.
-preview_help	아래에서 고른 프린터의 용지에 이 전표가 그곳에서 인쇄되는 그대로 보입니다. 프린터가 닿는 왼쪽 위에서부터 실제 크기로(회색: 닿지 않는 가장자리), 긴 전표는 여러 장에, 용지 가장자리를 넘는 부분은 잘립니다. 프린터를 고르면 미리보기만 바뀝니다. 각 프린터의 용지는 프린터에서 정합니다.
+virtual_width_mm	가상 너비 (mm)
+virtual_length_mm	가상 길이 (mm)
+reported_width_mm	보고된 너비 (mm)
+reported_length_mm	보고된 길이 (mm)
+reported_paper	보고됨: {paper}
+virtual_paper	가상: {paper}
+printer_paper_help	보고됨은 이 프린터의 드라이버에 설정된 용지입니다. 앱은 이를 읽기만 하며, “없음”은(는) 물어볼 드라이버가 없다는 뜻입니다. 가상은 프린터에 실제로 들어 있다고 직접 지정하는 용지이며 단위는 mm입니다. 길이를 비워 두면 롤 용지입니다. 프린터는 자기 용지에 인쇄합니다. 가상 용지는 그중 어디까지가 실제 종이인지 앱에 알려 주며, 미리보기, 페이지 길이, 전표 위치에 쓰입니다. 프린터 찾기은(는) 비어 있는 가상 용지를 채우고, 직접 설정한 용지는 절대 바꾸지 않습니다.
+preview_help	이 전표가 아래에서 선택한 프린터로 인쇄되는 모습 그대로, 그 가상 용지 위에 실제 크기로 표시됩니다. 흰색은 인쇄되는 곳이고, 회색 종이는 프린터가 닿지 않는 곳이며, 흐린 잉크는 잘려 나갑니다. 아홉 칸이 용지입니다. 전표가 놓일 자리를 누르세요. 긴 전표는 다음 페이지로 이어집니다. 프린터를 선택하면 미리보기만 바뀝니다.
 slip_col_width	너비 (mm)
 no_printer_assigned	프린터 없음
 printer_target_default	기본 프린터
@@ -643,11 +648,11 @@ day_close_help	마감을 기록하면 이 요약(실사한 경우 서랍 차이 
 expenses_word	경비
 feature_access_help	선택한 직원에 대한 기능 액세스(추가 후 탭)
 footer_local	로컬 SQLite · 영원히 무료 · 클라우드 없음
-fresh_book_moklanjo	프린터
+fresh_book_moklanjo	새로 = 빈 카탈로그(항목은 나중에 추가). 장부 = 아래에 기초 재고와 누가 빚졌는지 입력.
 fresh_selected	Fresh 선택됨 — 카탈로그가 비어 있습니다. 준비되면 Done을 누르세요.
 gross_word	총액
 how_start	어떻게 시작하시겠어요?
-later_country_pack	프린터
+later_country_pack	나중에: 설정 → 세금과 결제 이름에 국가 팩을 적용하세요.
 local_badge	로컬
 measures_help_moklanjo	창구에서 택배를 재는 방법. 사용하는 단위로 치수와 무게를 입력하세요 — 표준(cm, m, in, ft · kg, g, lb, oz) 또는 위에 cm/kg와 연결된 자체 단위(직접 또는 다른 단위를 통해). 장부는 항상 kg로 기록합니다. 필드를 비워 두면 유지됩니다.
 mix_type_hint_moklanjo	각각 얼마인지 입력하세요(현금/UPI/카드/외상). 청구액과 맞아야 합니다. 외상은 위에 고객이 필요합니다.

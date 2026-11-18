@@ -192,7 +192,7 @@ snack_secs_save	保存提示時長
 snack_secs_saved	提示時長已保存——{n} 秒
 snack_secs_bad	輸入數字形式的秒 (3–60)
 cancelled	已取消
-cancelling	Cancelling…
+cancelling	Cancellingâ¦
 cancel	取消
 opening_client	正在打開客戶端…
 preparing_desk	正在準備桌面…
@@ -501,13 +501,18 @@ job_size	字號
 job_size_ph	例如 18, 20, 26…
 test_receipt_format	測試收據
 test_label_format	測試標籤
-paper_heading	紙張
+paper_heading	虛擬紙張
 paper_size	{w} × {h} mm
 paper_roll	{w} mm 捲紙
 paper_not_set	紙張尚未得知
-paper_length_mm	長度 (mm)
-printer_paper_help	此打印機的紙張 (mm)。長度留空即為捲紙：每張單據與其內容一樣長。「查找打印機」會從打印機驅動程式填入空白紙張（無法得知時為 80 mm 捲紙），且絕不更改已設定的紙張。
-preview_help	此單據在下方所選打印機的紙張上，與在那裡列印的完全相同：從打印機可達的左上角起以實際尺寸列印（灰色：無法到達的邊緣），長單據印在更多張紙上，超出紙張邊緣的部分會被切掉。選擇打印機只會改變預覽；每台打印機的紙張在「打印機」中設定。
+virtual_width_mm	虛擬寬度 (mm)
+virtual_length_mm	虛擬長度 (mm)
+reported_width_mm	回報寬度 (mm)
+reported_length_mm	回報長度 (mm)
+reported_paper	回報：{paper}
+virtual_paper	虛擬：{paper}
+printer_paper_help	「回報」是此打印機驅動程式所設定的紙張；應用只會讀取它，「無」表示沒有可查詢的驅動程式。「虛擬」是您指明打印機內實際放著的紙張，單位為 mm；長度留空即為捲紙。打印機在它自己的紙張上列印；虛擬紙張告訴應用其中有多少是真正的紙，用於預覽、頁面長度和單據的位置。「查找打印機」會填入空白的虛擬紙張，且絕不更改您已設定的紙張。
+preview_help	此單據與在下方所選打印機上列印的完全相同，以實際尺寸顯示在其虛擬紙張上。白色是列印的位置，灰色紙張是打印機無法到達的地方，變淡的墨跡會被切掉。九個方格就是紙張：點按單據應放的位置。長單據會接續到更多頁。選擇打印機只會改變預覽。
 slip_col_width	寬度 (mm)
 no_printer_assigned	無打印機
 printer_target_default	默認打印機

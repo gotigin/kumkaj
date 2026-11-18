@@ -79,13 +79,19 @@ bill_item_amount	Bedrag
 bill_item_note	Rx- / verkoopnotitie
 bill_item_col_sep	Kolomlijnen
 slip_col_width	Breedte (mm)
-paper_heading	Papier
+paper_heading	Virtueel papier
 paper_size	{w} × {h} mm
 paper_roll	rol van {w} mm
 paper_not_set	papier nog onbekend
-paper_length_mm	Lengte (mm)
-printer_paper_help	Het papier van deze printer in mm. Een lege Lengte is een rol: elke bon is zo lang als de inhoud. Printers zoeken vult leeg papier in vanuit het stuurprogramma van de printer (een rol van 80 mm als het dat niet kan zeggen) en wijzigt nooit papier dat al is ingesteld.
-preview_help	Deze bon op het papier van de printer die hieronder gekozen is, zoals hij daar afdrukt: op ware grootte vanaf de linkerbovenhoek die de printer bereikt (grijs: randen die hij niet bereikt), een lange bon op meer vellen, alles voorbij de papierrand wordt afgesneden. Een printer kiezen verandert alleen het voorbeeld; het papier van elke printer stel je in onder Printers.
+na	n.v.t.
+virtual_width_mm	Virtuele breedte (mm)
+virtual_length_mm	Virtuele lengte (mm)
+reported_width_mm	Gemelde breedte (mm)
+reported_length_mm	Gemelde lengte (mm)
+reported_paper	Gemeld: {paper}
+virtual_paper	Virtueel: {paper}
+printer_paper_help	Gemeld is het papier waarop het stuurprogramma van deze printer is ingesteld; de app leest het alleen, en n.v.t. betekent dat er geen stuurprogramma is om het aan te vragen. Virtueel is het papier waarvan jij zegt dat het echt in de printer zit, in mm; een lege lengte is een rol. De printer drukt af op zijn eigen papier; het virtuele papier vertelt de app hoeveel daarvan echt papier is, voor het voorbeeld, de paginalengte en de plaats van de bon. Printers zoeken vult een leeg virtueel papier in en wijzigt nooit papier dat jij hebt ingesteld.
+preview_help	Deze bon zoals hij afdrukt op de printer die hieronder gekozen is, op ware grootte op het virtuele papier ervan. Wit is waar hij afdrukt, grijs papier ligt buiten het bereik van de printer, en vervaagde inkt wordt afgesneden. De negen vakjes zijn het papier: tik waar de bon moet staan. Een lange bon gaat verder op meer pagina's. Een printer kiezen verandert alleen het voorbeeld.
 slip_col_start	Beginruimte (px)
 slip_col_end	Eindruimte (px)
 slip_columns_help	De breedte van elke kolom omvat de begin- en eindruimte. Tekst loopt door binnen zijn kolom; wat buiten de inhoudsbreedte valt, wordt afgesneden – op papier en in het voorbeeld.
@@ -100,6 +106,12 @@ bill_item_piece_off	Uit
 bill_total_qty	Totaal aantal
 bill_total_subtotal	Subtotaal
 bill_total_grand	Eindtotaal
+bill_total_number_under	Getal onder
+bill_total_caption_under	Label onder
+bill_total_own_line	Eigen regel
+bill_total_caption_with	Bij het getal
+bill_total_caption_none	Geen label
+bill_total_place_help	Eigen regel drukt dit totaal apart af. Onder een kolom wordt het getal in die artikelkolom afgedrukt, in de grootte en dikte van deze regel; totalen delen een rij totdat een kolom bezet is, dan begint een nieuwe rij. Het label staat bij het getal, onder een andere kolom of wordt weggelaten. Regels voor belasting, service, afronding en betaling volgen Subtotaal.
 kot_unassigned	Niet toegewezen
 settings_hub_help	Open één onderdeel tegelijk — minder scrollen, duidelijkere keuzes.
 settings_sec_language	Taal en valuta
@@ -108,7 +120,7 @@ settings_sec_tills	Extra kassa's en filialen
 settings_sec_brand	Uw merk
 settings_sec_units	Eenheden & conversies
 settings_sec_pickers	Belastingtarieven
-settings_sec_printers	Printers
+settings_sec_printers	Printers van dit apparaat
 settings_sec_bill	Formaat rekening en bon
 settings_sec_selling	Regelingen & verkoop
 settings_sec_alerts	Meldingen
@@ -143,7 +155,7 @@ diag_cleared	Debug logs verwijderd
 sidebar_settings	Zijbalk
 sidebar_settings_help	Dezelfde iconen als de zijrail. Sleep een rij om te herschikken. Schakel de schakelaar in om te tonen of verbergen. Instellingen en Slot blijven altijd op de balk staan.
 sidebar_always_on_short	Altijd aan
-sidebar_menu_items	Items
+sidebar_menu_items	Artikelen
 sidebar_enable_all	Allemaal inschakelen
 sidebar_disable_all	Allemaal uitschakelen
 sidebar_order_saved	Zijbalk bestelling opgeslagen
@@ -199,8 +211,8 @@ ok	OK
 this_shop	Servermodus
 extra_till	Clientmodus
 off	Uit
-server	Server
-client	Client
+server	Servermodus
+client	Clientmodus
 language_currency	Taal en valuta
 language	Taal
 language_setup_hint	Volg de taal van dit apparaat of kies er zelf een.
@@ -563,11 +575,11 @@ currency_use_help	Scroll en tik Gebruiken voor elke ondersteunde valuta.
 day_close_help	Een dagsluiting boeken bewaart dit overzicht (en ladeverschil indien geteld) in het auditlog. Het stopt de verkoop niet.
 expenses_word	Kosten
 feature_access_help	Functietoegang van gekozen personeel (tik na toevoegen)
-fresh_book_tabiyat	Printers
+fresh_book_tabiyat	Fresh = lege catalogus (artikelen later toevoegen). Book = typ hieronder de beginvoorraad en wie u iets schuldig is.
 fresh_selected	Fresh gekozen – catalogus blijft leeg. Tik op Done als je klaar bent.
 gross_word	Bruto
 how_start	Hoe wilt u beginnen?
-later_country_pack	Printers
+later_country_pack	Later: Instellingen → pas uw landpakket toe voor belasting- en betaallabels.
 local_badge	LOKAAL
 mix_type_hint_tabiyat	Verdeel over contant / UPI / kaart / krediet indien nodig. Voor krediet is hierboven een klant nodig.
 money_in_sales	Geld in (verkopen)
@@ -655,7 +667,7 @@ amount_received_ph	Ontvangen bedrag
 amount_we_pay_ph	Bedrag dat wij betalen
 business_name_ph	Bedrijfsnaam
 code_bag_ph	Code (bag)
-conv_factor_ph	Factor (25 = 1 bag → 25 kg)
+conv_factor_ph	Factor (25 = 1 zak → 25 kg)
 country_code_ph	Landcode bijv. IN, GB, US, AE, BR
 credit_khata_amount_ph	Krediet- / rekeningbedrag
 credit_limit_ph	Kredietlimiet (0 = geen)
@@ -688,7 +700,7 @@ book_kind_today	Boek van vandaag
 book_kind_month	Boek van deze maand
 book_kind_aging	Openstaand / debet-credit
 book_kind_balance	Balans
-order_help	Kies een open bestelling of een tafel om nieuw te starten. Tik op gereed items, stuur KOT, factureer één of meer items, splits de rekening en reken af.
+order_help	Tik op een artikel om het toe te voegen.
 categories_help	Een categorie toont tot welk deel van het menu een gerecht behoort — bv. snacks, hoofdgerecht of biryani. Maak categorieën op jouw manier: kies onze namen, hernoem ze of voeg je eigen toe.
 dish_search_ph	Zoek naam, stof of barcode…
 sizes_as_items_ph	Maten als aparte artikelen (optioneel) — Half=120, Heel=200
@@ -735,6 +747,20 @@ fssai_ph	Geneesmiddelenvergunningsnr. (optioneel — uw formulering)
 bill_footer_ph	Voettekst (bijv. Bedankt, tot ziens)
 kot_field_on	tonen
 kot_field_off	verberg
+kot_field_show	Tonen
+kot_field_hide	Verbergen
+bill_line_shop	Winkel
+bill_line_address	Adres
+bill_line_fssai	FSSAI
+bill_line_title	Titel
+bill_line_customer	Klant
+bill_line_bill_no	Rekeningnr.
+bill_line_time	Tijd
+bill_line_cashier	Kassier
+bill_line_items	Artikelen
+bill_line_total	Totaal
+bill_line_footer	Voettekst
+bill_line_upi	UPI
 kot_weight_light	Licht
 bill_kot_panel_help	Rekeningopmaak en inhoudsbreedte. De kassier heeft de rekening uitgegeven of afgerekend — het hele verkoopverhaal blijft in de boeken.
 std_size_ph	bijv. 18, 20, 26…
@@ -842,10 +868,10 @@ lane_declared_label	Belastingfactuur
 lane_owner_label	Kassabon
 money_lane_bill	Factuur: {lane}
 
-removing	Removing…
-removed	Removed
-updating_order	Updating…
-order_updated	Order updated
+removing	Verwijderen…
+removed	Verwijderd
+updating_order	Bijwerken…
+order_updated	Bestelling bijgewerkt
 sel_copy	Kopiëren
 sel_select_all	Alles selecteren
 sel_copied	Gekopieerd

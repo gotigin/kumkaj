@@ -605,13 +605,19 @@ fn en(key: &str) -> String {
         "bill_item_note" => "Item note",
         "bill_item_col_sep" => "Column rules",
         "slip_col_width" => "Width (mm)",
-        "paper_heading" => "Paper",
+        "paper_heading" => "Virtual paper",
         "paper_size" => "{w} × {h} mm",
         "paper_roll" => "{w} mm roll",
         "paper_not_set" => "paper not known yet",
-        "paper_length_mm" => "Length (mm)",
-        "printer_paper_help" => "This printer's paper in mm. A blank Length is a roll: each slip is as long as its content. Find printers fills a blank paper from the printer's driver (an 80 mm roll when it cannot say) and never changes one already set.",
-        "preview_help" => "This slip on the paper of the printer picked below, as it prints there: real size from the top-left the printer can reach (grey: edges it cannot), a long slip on more sheets, anything past the paper's edge cut. Picking a printer changes the preview only; each printer's paper is set under Printers.",
+        "na" => "N/A",
+        "virtual_width_mm" => "Virtual width (mm)",
+        "virtual_length_mm" => "Virtual length (mm)",
+        "reported_width_mm" => "Reported width (mm)",
+        "reported_length_mm" => "Reported length (mm)",
+        "reported_paper" => "Reported: {paper}",
+        "virtual_paper" => "Virtual: {paper}",
+        "printer_paper_help" => "Reported is the paper this printer's driver is set to; the app only reads it, and N/A means there is no driver to ask. Virtual is the paper you say is really in the printer, in mm; a blank length is a roll. The printer prints on its own paper; the virtual paper tells the app how much of it is real paper, for the preview, the page length and the place of the slip. Find printers fills a blank virtual paper and never changes one you set.",
+        "preview_help" => "This slip as it prints on the printer picked below, at real size on its virtual paper. White is where it prints, grey paper is out of the printer's reach, and faded ink is cut off. The nine squares are the paper: tap where the slip should sit. A long slip goes on more pages. Picking a printer changes the preview only.",
         "slip_col_start" => "Start space (px)",
         "slip_col_end" => "End space (px)",
         "slip_columns" => "Columns",
@@ -628,6 +634,12 @@ fn en(key: &str) -> String {
         "bill_total_qty" => "Total qty",
         "bill_total_subtotal" => "Sub total",
         "bill_total_grand" => "Grand total",
+        "bill_total_number_under" => "Number under",
+        "bill_total_caption_under" => "Caption under",
+        "bill_total_own_line" => "Own line",
+        "bill_total_caption_with" => "With the number",
+        "bill_total_caption_none" => "No caption",
+        "bill_total_place_help" => "Own line prints this total by itself. Under a column, its number is printed in that item column, in this line's size and weight; totals share a row until a column is taken, then a new row starts. The caption goes with the number, under another column, or is left out. Tax, service, rounding and payment lines follow Sub total.",
         // Send slip outcomes (shop device) — the counter reads these mid-rush, in
         // the staff's language; the snack kind is set in code, not guessed
         // from English words (`kot_sent_status`).
@@ -1272,6 +1284,20 @@ fn en(key: &str) -> String {
         "bill_footer_ph" => "Footer (e.g. Thank you)",
         "kot_field_on" => "show",
         "kot_field_off" => "hide",
+        "kot_field_show" => "Show",
+        "kot_field_hide" => "Hide",
+        "bill_line_shop" => "Shop",
+        "bill_line_address" => "Address",
+        "bill_line_fssai" => "FSSAI",
+        "bill_line_title" => "Title",
+        "bill_line_customer" => "Customer",
+        "bill_line_bill_no" => "Bill no",
+        "bill_line_time" => "Time",
+        "bill_line_cashier" => "Cashier",
+        "bill_line_items" => "Items",
+        "bill_line_total" => "Total",
+        "bill_line_footer" => "Footer",
+        "bill_line_upi" => "UPI",
         "kot_weight_light" => "Light",
         "bill_kot_panel_help" => "Bill layout and content width. Cashier is who issued or settled the bill — the full sale story stays in the books.",
         "std_size_ph" => "e.g. 18, 20, 26…",
@@ -1548,6 +1574,45 @@ mod tests {
             .filter(|l| l.code != "en")
             .map(|l| table_language(l.code))
             .collect()
+    }
+
+    /// A key added with its English text in every pack (a "stand-in") passes
+    /// the test below — the key is there — and ships as English in 110
+    /// languages: the whole WhatsApp settings panel did (found 2026-11-17).
+    /// A text with real words that more than three quarters of the packs
+    /// still hold in English is not translated. Names are the exception.
+    #[test]
+    fn no_text_is_left_in_english_in_most_packs() {
+        const NAMES: &[&str] = &["Khaynjo", "Kirano", "Tabiyat", "Moklanjo", "WhatsApp"];
+        let tables: Vec<_> = needed_tables().into_iter().filter_map(loaded_table).collect();
+        assert!(tables.len() > 100, "only {} packs loaded", tables.len());
+        let mut left = Vec::new();
+        for key in english_keys() {
+            let english = en(key);
+            if NAMES.contains(&english.as_str()) {
+                continue;
+            }
+            // Real words: three lower-case letters in a row, outside {placeholders}.
+            let mut bare = english.clone();
+            for p in placeholders(&english) {
+                bare = bare.replace(p, " ");
+            }
+            let has_words = bare
+                .as_bytes()
+                .windows(3)
+                .any(|w| w.iter().all(u8::is_ascii_lowercase));
+            if !has_words {
+                continue;
+            }
+            let same = tables
+                .iter()
+                .filter(|(_, table)| table.get(key).copied() == Some(english.as_str()))
+                .count();
+            if same * 4 > tables.len() * 3 {
+                left.push(format!("{key}: “{english}” is English in {same} of {} packs", tables.len()));
+            }
+        }
+        assert!(left.is_empty(), "translate these in every pack: {left:#?}");
     }
 
     #[test]

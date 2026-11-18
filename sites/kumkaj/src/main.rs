@@ -2,16 +2,18 @@
 //! (wasm in the browser; the same crate runs native for previews and as an
 //! offline presenter). Story and rules: docs/WEBSITES.md.
 //!
-//! Scroll / swipe up / tap / ↓ → PgDn Space flip chapters; ↑ ← PgUp go back;
-//! Home / End jump. The top-bar dots jump straight to a chapter.
+//! One scrolling page: sticky top bar with chapter dots; sections hero ·
+//! trade · books · offline · free · languages · gotigin · footer.
 //!
 //! Native preview helpers (ignored in the browser):
-//! - `SITE_PREVIEW=390x844:4` opens a 390×844 window on chapter 4 (1-based).
+//! - `SITE_PREVIEW=390x844:trade` opens a 390×844 window scrolled to a
+//!   section (id, old chapter number, or nothing for the top).
 //! - `SITE_LINKS=local` sends product links to the local wasm servers.
 //!
-//! In the browser, `#trade` or `#3` in the URL opens that chapter, and a
+//! In the browser, `#trade` or `#2` in the URL opens that section, and a
 //! page served from 127.0.0.1 / localhost links to the local product sites
-//! (moklanjo :8011, khaynjo :8012, kirano :8013, tabiyat :8014) instead of the public domains.
+//! (moklanjo :8011, khaynjo :8012, kirano :8013, tabiyat :8014) instead of
+//! the public domains.
 
 pub use makepad_widgets;
 
@@ -27,6 +29,15 @@ include!("ui.rs");
 /// both product website docs). The owner flips this; agents do not.
 const LAN_PILOT_PASSED: bool = false;
 
+/// Same-host legal pages (deploy-firebase.sh stages them next to the wasm).
+const PRIVACY_PATH: &str = "/privacy";
+const TERMS_PATH: &str = "/terms/";
+const PUBLIC_HOST: &str = "https://kumkaj.com";
+
+/// App layout floor: design for ≥375 CSS px. Narrower viewports scroll
+/// horizontally (web shell CSS); native still lays out at this width.
+const MIN_WIDTH: f64 = 375.0;
+
 /// Chapter ids (URL hash) and the names shown in the top bar.
 const CHAPTERS: [(&str, &str); 7] = [
     ("hero", "The promise"),
@@ -35,17 +46,18 @@ const CHAPTERS: [(&str, &str); 7] = [
     ("offline", "Try it offline"),
     ("free", "Price"),
     ("languages", "Languages"),
-    ("gotigin", "Made by Gotigin"),
+    ("gotigin", "Who makes it"),
 ];
 
-const SLIDES: [&[LiveId]; 7] = [
-    ids!(hero),
-    ids!(trade),
-    ids!(books),
-    ids!(offline),
-    ids!(free),
-    ids!(languages),
-    ids!(gotigin),
+/// Page sections in order: (hash id, widget path).
+const SECTIONS: [(&str, &[LiveId]); 7] = [
+    ("hero", ids!(hero)),
+    ("trade", ids!(trade)),
+    ("books", ids!(books)),
+    ("offline", ids!(offline)),
+    ("free", ids!(free)),
+    ("languages", ids!(languages)),
+    ("gotigin", ids!(gotigin)),
 ];
 
 const DOTS: [[&[LiveId]; 3]; 7] = [
@@ -62,14 +74,15 @@ const DOTS: [[&[LiveId]; 3]; 7] = [
 /// this wide (px), and stack otherwise — width-based, not tier-based: a
 /// fixed prop beside a headline needs its own width plus a readable text
 /// column whatever the device.
-const ROWS: [(&[LiveId], f64); 7] = [
+const ROWS: [(&[LiveId], f64); 8] = [
     (ids!(hero.hero_row), 848.0),
     (ids!(hero.hero_ctas), 480.0),
     (ids!(trade.cards), 640.0),
     (ids!(books.tiles), 720.0),
     (ids!(offline.toy_head), 420.0),
-    (ids!(gotigin.map), 720.0),
-    (ids!(gotigin.close_ctas), 580.0),
+    (ids!(gotigin.product_row_1), 640.0),
+    (ids!(gotigin.product_row_2), 640.0),
+    (ids!(footer.footer_row), 640.0),
 ];
 /// Fixed-width props: (path, desk width, the min width of their row).
 /// When the row stacks, the prop goes full width.
@@ -77,33 +90,20 @@ const PROPS: [(&[LiveId], f64, f64); 1] = [
     (ids!(hero.status_card), 360.0, 848.0),
 ];
 
-/// Detail that a phone screen drops so each chapter still fits one screen.
-const DETAIL_WHEN_STACKED: [&[LiveId]; 4] = [
-    ids!(hero.status_card),
-    ids!(trade.trade_lede),
-    ids!(trade.mok_points),
-    ids!(trade.kha_points),
-];
-const DETAIL_ON_PHONE: [&[LiveId]; 5] = [
-    ids!(gotigin.gotigin_lede),
-    ids!(offline.offline_note),
-    ids!(books.books_lede),
-    ids!(trade.mok_kicker),
-    ids!(trade.kha_kicker),
-];
-/// Detail a short, not-wide window (under 860 px tall and 1200 px wide,
-/// e.g. a 1024 × 768 laptop) drops so the chapter's buttons stay on
-/// screen. Wider short windows (1280 × 720, 1366 × 768) fit everything.
-const DETAIL_WHEN_SHORT: [&[LiveId]; 3] = [
-    ids!(trade.trade_lede),
-    ids!(trade.mok_points),
-    ids!(trade.kha_points),
-];
-const SHORT_BELOW: f64 = 860.0;
-const SHORT_NARROWER_THAN: f64 = 1200.0;
-
 const MAX_CONTENT: f64 = 1160.0;
 const MAX_CONTENT_WIDE: f64 = 1320.0;
+
+/// Section padding targets (every chapter band plus the footer).
+const SECTION_WRAPS: [&[LiveId]; 8] = [
+    ids!(hero),
+    ids!(trade),
+    ids!(books),
+    ids!(offline),
+    ids!(free),
+    ids!(languages),
+    ids!(gotigin),
+    ids!(footer),
+];
 
 #[derive(Clone, Copy, PartialEq, Debug)]
 enum Tier {
@@ -152,7 +152,11 @@ impl Tier {
 
     /// Content never grows wider than this; wider windows get wider margins.
     fn max_content(self) -> f64 {
-        if self == Self::Wide { MAX_CONTENT_WIDE } else { MAX_CONTENT }
+        if self == Self::Wide {
+            MAX_CONTENT_WIDE
+        } else {
+            MAX_CONTENT
+        }
     }
 
     fn stacked(self) -> bool {
@@ -220,6 +224,9 @@ impl Product {
     }
 }
 
+/// Section to scroll to after layout (the Script derive wants plain types).
+type PendingSection = Option<&'static str>;
+
 #[derive(Script, ScriptHook)]
 pub struct App {
     #[live]
@@ -227,40 +234,101 @@ pub struct App {
     /// Last laid-out (tier, width, height); re-layout only when it changes.
     #[rust]
     laid_out: Option<(Tier, i64, i64)>,
-    /// Desk (DSL) font size of every label per chapter, in tree order, so
-    /// tier changes never compound. (Child refs do not carry stable uids.)
+    /// Desk (DSL) font size of every label per page, in tree order, so tier
+    /// changes never compound. (Child refs do not carry stable uids.)
     #[rust]
-    desk_font: Vec<Vec<f32>>,
+    desk_font: Vec<f32>,
     #[rust]
     chapter: usize,
     #[rust]
     internet_cut: bool,
+    /// Section to scroll to once the page has a layout (hash / preview).
     #[rust]
-    focused_deck: bool,
+    pending_section: PendingSection,
+    /// Frames left to re-apply the deep-link scroll while layout settles.
+    #[rust]
+    pending_frames: u8,
+    #[rust]
+    pending_last_y: f64,
+    #[rust]
+    pending_stable: u8,
 }
 
 impl App {
-    fn slides(&self, cx: &mut Cx) -> SlidesViewRef {
-        self.ui.slides_view(cx, ids!(slides))
+    fn page(&self, cx: &mut Cx) -> ViewRef {
+        self.ui.view(cx, ids!(page))
+    }
+
+    /// Scroll the page so `section` sits under the top bar.
+    fn scroll_to(&mut self, cx: &mut Cx, section: &str) -> f64 {
+        let Some(&(id, path)) = SECTIONS.iter().find(|(sid, _)| *sid == section) else {
+            return 0.0;
+        };
+        let page = self.page(cx);
+        let page_rect = page.area().rect(cx);
+        let target = self.ui.widget(cx, path).area().rect(cx);
+        let top = self.ui.widget(cx, ids!(hero)).area().rect(cx);
+        if page_rect.size.y <= 0.0 {
+            self.pending_section = Some(id);
+            return 0.0;
+        }
+        let y = (target.pos.y - top.pos.y).max(0.0);
+        page.set_scroll_pos(cx, dvec2(0.0, y));
+        if let Some(i) = CHAPTERS.iter().position(|(cid, _)| *cid == id) {
+            self.paint_chrome(cx, i);
+        }
+        self.ui.redraw(cx);
+        y
     }
 
     fn go_to(&mut self, cx: &mut Cx, chapter: usize) {
-        let chapter = chapter.min(SLIDES.len() - 1);
-        self.slides(cx).set_goal_slide(cx, chapter);
-        self.paint_chrome(cx, chapter);
+        let chapter = chapter.min(CHAPTERS.len() - 1);
+        let _ = self.scroll_to(cx, CHAPTERS[chapter].0);
     }
 
     fn paint_chrome(&mut self, cx: &mut Cx, chapter: usize) {
         self.chapter = chapter;
         self.ui
-            .widget(cx, ids!(chapter_name))
+            .label(cx, ids!(chapter_name))
             .set_text(cx, CHAPTERS[chapter].1);
         self.ui
-            .widget(cx, ids!(counter))
+            .label(cx, ids!(counter))
             .set_text(cx, &format!("{} / {}", chapter + 1, CHAPTERS.len()));
         for (i, [_, idle, on]) in DOTS.iter().enumerate() {
             self.ui.view(cx, idle).set_visible(cx, i != chapter);
             self.ui.view(cx, on).set_visible(cx, i == chapter);
+        }
+    }
+
+    /// Which content section owns the viewport (just under the top bar).
+    fn active_chapter(&self, cx: &Cx) -> usize {
+        let page = self.ui.view(cx, ids!(page));
+        if !page.area().is_valid(cx) {
+            return self.chapter;
+        }
+        let bar = self.ui.view(cx, ids!(top_bar));
+        let mark = if bar.area().is_valid(cx) {
+            bar.area().rect(cx).pos.y + bar.area().rect(cx).size.y + 12.0
+        } else {
+            page.area().rect(cx).pos.y + 72.0
+        };
+        let mut idx = 0usize;
+        for (i, (_, path)) in SECTIONS.iter().enumerate() {
+            let w = self.ui.widget(cx, path);
+            if !w.area().is_valid(cx) {
+                continue;
+            }
+            if w.area().rect(cx).pos.y <= mark {
+                idx = i;
+            }
+        }
+        idx
+    }
+
+    fn paint_scroll_chrome(&mut self, cx: &mut Cx) {
+        let active = self.active_chapter(cx);
+        if active != self.chapter {
+            self.paint_chrome(cx, active);
         }
     }
 
@@ -324,38 +392,30 @@ impl App {
         open_link(cx, &url);
     }
 
-    /// The chapter named by the page's `#hash` (`#trade` or `#2`), if any.
-    fn chapter_from_page(&self, cx: &Cx) -> Option<usize> {
-        let OsType::Web(page) = cx.os_type() else {
-            return None;
-        };
-        chapter_from_hash(&page.hash)
-    }
-
-    /// Re-lay the page for this window: tier type sizes, stacking, margins.
-    /// One pass over every optional detail: hidden when stacked (phone /
-    /// narrow), on the smallest tier, or on a short window — whichever rules
-    /// list it. Runs on every layout so the rules never overwrite each other.
-    fn paint_details(&mut self, cx: &mut Cx, tier: Tier, short: bool) {
-        let all = DETAIL_WHEN_STACKED
-            .iter()
-            .chain(DETAIL_ON_PHONE.iter())
-            .chain(DETAIL_WHEN_SHORT.iter());
-        for path in all {
-            let hide = (tier.stacked() && DETAIL_WHEN_STACKED.contains(path))
-                || (tier == Tier::Phone && DETAIL_ON_PHONE.contains(path))
-                || (short && DETAIL_WHEN_SHORT.contains(path));
-            self.ui.widget(cx, path).set_visible(cx, !hide);
+    fn site_url(&self, cx: &Cx, path: &str) -> String {
+        if matches!(cx.os_type(), OsType::Web(_)) {
+            path.to_string()
+        } else {
+            format!("{PUBLIC_HOST}{path}")
         }
     }
 
+    fn section_from_page(&self, cx: &Cx) -> Option<&'static str> {
+        let OsType::Web(page) = cx.os_type() else {
+            return None;
+        };
+        section_from_hash(&page.hash)
+    }
+
+    /// Re-lay the page for this window: tier type sizes, stacking, margins.
     fn apply_responsive(&mut self, cx: &mut Cx) {
         let size = self.ui.window(cx, ids!(main_window)).get_inner_size(cx);
         if size.x < 1.0 || size.y < 1.0 {
             return;
         }
-        let tier = Tier::from_size(size.x, size.y);
-        let key = (tier, size.x.round() as i64, size.y.round() as i64);
+        let layout_w = size.x.max(MIN_WIDTH);
+        let tier = Tier::from_size(layout_w, size.y);
+        let key = (tier, layout_w.round() as i64, size.y.round() as i64);
         if self.laid_out == Some(key) {
             return;
         }
@@ -363,78 +423,64 @@ impl App {
         self.laid_out = Some(key);
 
         let (min_side, pad_v, spacing) = tier.spacing();
-        let side = min_side.max((size.x - tier.max_content()) / 2.0);
-        let content_w = size.x - 2.0 * side;
+        let side = min_side.max((layout_w - tier.max_content()) / 2.0);
+        let content_w = layout_w - 2.0 * side;
         for (path, min_w) in ROWS {
             if let Some(mut view) = self.ui.view(cx, path).borrow_mut() {
-                view.layout.flow = if content_w >= min_w { Flow::right() } else { Flow::Down };
+                view.layout.flow = if content_w >= min_w {
+                    Flow::right()
+                } else {
+                    Flow::Down
+                };
             }
         }
         for (path, desk_w, row_min_w) in PROPS {
             if let Some(mut view) = self.ui.view(cx, path).borrow_mut() {
-                view.walk.width = if content_w >= row_min_w { Size::Fixed(desk_w) } else { Size::fill() };
+                view.walk.width = if content_w >= row_min_w {
+                    Size::Fixed(desk_w)
+                } else {
+                    Size::fill()
+                };
             }
         }
-        // The brand map's arrows point the way its row runs.
-        let map_across = ROWS
-            .iter()
-            .find(|(path, _)| *path == ids!(gotigin.map))
-            .is_some_and(|(_, min_w)| content_w >= *min_w);
-        for path in [ids!(gotigin.arrow_1), ids!(gotigin.arrow_2)] {
-            self.ui.widget(cx, path).set_text(cx, if map_across { "→" } else { "↓" });
-        }
-        self.paint_details(cx, tier, size.y < SHORT_BELOW && size.x < SHORT_NARROWER_THAN);
-        for path in SLIDES {
-            let slide = self.ui.view(cx, path);
-            if let Some(mut view) = slide.borrow_mut() {
+        for path in SECTION_WRAPS {
+            let band = self.ui.view(cx, path);
+            if let Some(mut view) = band.borrow_mut() {
+                let footer = path == ids!(footer);
                 view.layout.padding = Inset {
                     left: side,
                     right: side,
-                    top: pad_v,
-                    bottom: pad_v * 1.2,
+                    top: if footer { pad_v * 0.8 } else { pad_v },
+                    bottom: if footer { pad_v * 1.1 } else { pad_v * 1.2 },
                 };
-                view.layout.spacing = spacing;
+                if !footer {
+                    view.layout.spacing = spacing;
+                }
             }
         }
         let bar = self.ui.view(cx, ids!(top_bar));
         if let Some(mut view) = bar.borrow_mut() {
-            let edge = if tier.stacked() { 16.0 } else { side.min(40.0).max(20.0) };
+            let edge = if tier.stacked() {
+                16.0
+            } else {
+                side.min(40.0).max(20.0)
+            };
             view.layout.padding.left = edge;
             view.layout.padding.right = edge - 4.0;
         }
         if tier_changed {
             let stacked = tier.stacked();
             self.ui
-                .widget(cx, ids!(chapter_name))
+                .label(cx, ids!(chapter_name))
                 .set_visible(cx, !stacked);
-            self.ui
-                .widget(cx, ids!(byline))
-                .set_visible(cx, tier != Tier::Phone);
-            let first_pass = self.desk_font.is_empty();
-            for (i, path) in SLIDES.iter().enumerate() {
-                let slide = self.ui.widget(cx, path);
-                if first_pass {
-                    let mut sizes = Vec::new();
-                    collect_label_sizes(&slide, &mut sizes);
-                    self.desk_font.push(sizes);
-                }
-                let mut next = 0;
-                scale_labels(&slide, tier, &self.desk_font[i], &mut next);
+            let page = self.ui.widget(cx, ids!(page));
+            if self.desk_font.is_empty() {
+                collect_label_sizes(&page, &mut self.desk_font);
             }
+            let mut next = 0;
+            scale_labels(&page, tier, &self.desk_font, &mut next);
         }
         self.ui.redraw(cx);
-    }
-
-    /// The deck takes arrow / clicker keys without a first click.
-    fn focus_deck_once(&mut self, cx: &mut Cx) {
-        if self.focused_deck {
-            return;
-        }
-        let area = self.ui.widget(cx, ids!(slides)).area();
-        if area.is_valid(cx) {
-            cx.set_key_focus(area);
-            self.focused_deck = true;
-        }
     }
 
     #[cfg(not(target_arch = "wasm32"))]
@@ -442,15 +488,16 @@ impl App {
         let Ok(spec) = std::env::var("SITE_PREVIEW") else {
             return;
         };
-        let (size, chapter) = parse_preview(&spec);
+        let (size, section) = parse_preview(&spec);
         if let Some((w, h)) = size {
             self.ui
                 .window(cx, ids!(main_window))
                 .resize(cx, dvec2(w, h));
         }
-        if let Some(chapter) = chapter {
-            self.slides(cx).set_current_slide(cx, chapter);
-            self.paint_chrome(cx, chapter);
+        if section.is_some() {
+            self.pending_section = section;
+            self.pending_frames = 120;
+            self.pending_stable = 0;
         }
     }
 }
@@ -491,22 +538,25 @@ fn scale_labels(widget: &WidgetRef, tier: Tier, desk: &[f32], next: &mut usize) 
     });
 }
 
-/// `#trade`, `#2` (1-based) → chapter index.
-fn chapter_from_hash(hash: &str) -> Option<usize> {
-    let key = hash.trim_start_matches('#').trim();
+/// `#trade`, `#2` (1-based chapter number) → section id.
+fn section_from_hash(hash: &str) -> Option<&'static str> {
+    let key = hash.trim_start_matches('#').trim().to_ascii_lowercase();
     if key.is_empty() {
         return None;
     }
-    if let Ok(n) = key.parse::<usize>() {
-        return (1..=CHAPTERS.len()).contains(&n).then(|| n - 1);
+    if let Some((id, _)) = CHAPTERS.iter().find(|(id, _)| *id == key) {
+        return Some(id);
     }
-    CHAPTERS.iter().position(|(id, _)| *id == key)
+    let n: usize = key.parse().ok()?;
+    CHAPTERS
+        .get(n.checked_sub(1)?)
+        .map(|(id, _)| *id)
 }
 
-/// `390x844:4` → (Some((390, 844)), Some(3)); either half may be left out.
+/// `390x844:trade` → (Some((390, 844)), Some("trade")); either half may be omitted.
 #[cfg(any(test, not(target_arch = "wasm32")))]
-fn parse_preview(spec: &str) -> (Option<(f64, f64)>, Option<usize>) {
-    let (size_part, chapter_part) = match spec.split_once(':') {
+fn parse_preview(spec: &str) -> (Option<(f64, f64)>, Option<&'static str>) {
+    let (size_part, section_part) = match spec.split_once(':') {
         Some((s, c)) => (s, Some(c)),
         None if spec.contains('x') => (spec, None),
         None => ("", Some(spec)),
@@ -516,8 +566,8 @@ fn parse_preview(spec: &str) -> (Option<(f64, f64)>, Option<usize>) {
         let h = h.trim().parse::<f64>().ok()?;
         (w >= 200.0 && h >= 200.0).then_some((w, h))
     });
-    let chapter = chapter_part.and_then(|c| chapter_from_hash(c));
-    (size, chapter)
+    let section = section_part.and_then(section_from_hash);
+    (size, section)
 }
 
 /// Open a link the platform's way: the browser tab in wasm, the system
@@ -548,19 +598,16 @@ impl MatchEvent for App {
     fn handle_startup(&mut self, cx: &mut Cx) {
         self.apply_gates(cx);
         self.paint_toy(cx);
-        let start = self.chapter_from_page(cx).unwrap_or(0);
-        if start > 0 {
-            self.slides(cx).set_current_slide(cx, start);
-        }
-        self.paint_chrome(cx, start);
+        self.paint_chrome(cx, 0);
+        self.page(cx).set_key_focus(cx);
+        self.pending_section = self.section_from_page(cx);
+        self.pending_frames = 120;
+        self.pending_stable = 0;
         #[cfg(not(target_arch = "wasm32"))]
         self.apply_native_preview(cx);
     }
 
     fn handle_actions(&mut self, cx: &mut Cx, actions: &Actions) {
-        if let Some(chapter) = self.slides(cx).flipped(actions) {
-            self.paint_chrome(cx, chapter);
-        }
         for (i, [hit, _, _]) in DOTS.iter().enumerate() {
             if self.ui.button(cx, hit).clicked(actions) {
                 self.go_to(cx, i);
@@ -596,6 +643,14 @@ impl MatchEvent for App {
         if tabiyat {
             self.open_product(cx, Product::Tabiyat);
         }
+        if self.ui.button(cx, ids!(to_privacy)).clicked(actions) {
+            let url = self.site_url(cx, PRIVACY_PATH);
+            open_link(cx, &url);
+        }
+        if self.ui.button(cx, ids!(to_terms)).clicked(actions) {
+            let url = self.site_url(cx, TERMS_PATH);
+            open_link(cx, &url);
+        }
     }
 }
 
@@ -610,13 +665,29 @@ impl AppMain for App {
         self.ui.handle_event(cx, event, &mut Scope::empty());
         match event {
             Event::Startup | Event::WindowGeomChange(_) => self.apply_responsive(cx),
+            Event::Scroll(_) => self.paint_scroll_chrome(cx),
             Event::Draw(_) | Event::NextFrame(_) => {
-                // First layout can land after Startup on the web (window 0
-                // gets its size once the canvas is measured).
                 if self.laid_out.is_none() {
                     self.apply_responsive(cx);
                 }
-                self.focus_deck_once(cx);
+                self.paint_scroll_chrome(cx);
+                if let Some(section) = self.pending_section {
+                    let page_h = self.page(cx).area().rect(cx).size.y;
+                    if page_h > 0.0 {
+                        let y = self.scroll_to(cx, section);
+                        self.pending_frames = self.pending_frames.saturating_sub(1);
+                        if (y - self.pending_last_y).abs() < 0.5 {
+                            self.pending_stable += 1;
+                        } else {
+                            self.pending_stable = 0;
+                        }
+                        self.pending_last_y = y;
+                        if self.pending_frames == 0 || self.pending_stable >= 3 {
+                            self.pending_section = None;
+                        }
+                    }
+                    let _ = cx.new_next_frame();
+                }
             }
             _ => {}
         }
@@ -628,22 +699,25 @@ mod tests {
     use super::*;
 
     #[test]
-    fn hash_opens_a_chapter_by_id_or_number() {
-        assert_eq!(chapter_from_hash("#trade"), Some(1));
-        assert_eq!(chapter_from_hash("#1"), Some(0));
-        assert_eq!(chapter_from_hash("#7"), Some(6));
-        assert_eq!(chapter_from_hash("#8"), None);
-        assert_eq!(chapter_from_hash("#0"), None);
-        assert_eq!(chapter_from_hash(""), None);
-        assert_eq!(chapter_from_hash("#nope"), None);
+    fn hash_opens_a_section_by_id_or_number() {
+        assert_eq!(section_from_hash("#trade"), Some("trade"));
+        assert_eq!(section_from_hash("#1"), Some("hero"));
+        assert_eq!(section_from_hash("#7"), Some("gotigin"));
+        assert_eq!(section_from_hash("#8"), None);
+        assert_eq!(section_from_hash("#0"), None);
+        assert_eq!(section_from_hash(""), None);
+        assert_eq!(section_from_hash("#nope"), None);
     }
 
     #[test]
-    fn preview_spec_parses_size_and_chapter() {
-        assert_eq!(parse_preview("390x844:4"), (Some((390.0, 844.0)), Some(3)));
+    fn preview_spec_parses_size_and_section() {
+        assert_eq!(
+            parse_preview("390x844:trade"),
+            (Some((390.0, 844.0)), Some("trade"))
+        );
         assert_eq!(parse_preview("1280x800"), (Some((1280.0, 800.0)), None));
-        assert_eq!(parse_preview("free"), (None, Some(4)));
-        assert_eq!(parse_preview("10x10:2"), (None, Some(1)));
+        assert_eq!(parse_preview("free"), (None, Some("free")));
+        assert_eq!(parse_preview("10x10:2"), (None, Some("trade")));
     }
 
     #[test]

@@ -101,6 +101,19 @@ bill_item_col_sep	Sütun xətləri
 slip_columns	Sütunlar
 slip_col_header	Başlıq
 bill_line_logo	Loqo
+bill_line_shop	Mağaza
+bill_line_address	Ünvan
+bill_line_fssai	FSSAI
+bill_line_title	Başlıq
+bill_line_customer	Müştəri
+bill_line_bill_no	Hesab №
+bill_line_time	Vaxt
+bill_line_cashier	Kassir
+bill_line_table	Masa
+bill_line_items	Məhsullar
+bill_line_total	Cəmi
+bill_line_footer	Altlıq
+bill_line_upi	UPI
 bill_logo_picture	Şəkil
 bill_logo_choose	Şəkil seç
 bill_logo_remove	Şəkli sil
@@ -128,6 +141,12 @@ bill_item_piece_off	Bağlı
 bill_total_qty	Ümumi say
 bill_total_subtotal	Ara cəm
 bill_total_grand	Yekun
+bill_total_number_under	Rəqəm bunun altında
+bill_total_caption_under	Etiket bunun altında
+bill_total_own_line	Öz sətri
+bill_total_caption_with	Rəqəmlə birgə
+bill_total_caption_none	Etiketsiz
+bill_total_place_help	Öz sətri bu cəmi ayrıca çap edir. Sütunun altında olduqda rəqəmi həmin mal sütununda, bu sətrin ölçüsü və qalınlığı ilə çap olunur; bir sütun tutulana qədər cəmlər bir sıranı bölüşür, sonra yeni sıra başlayır. Etiket rəqəmlə birgə, başqa sütunun altında gedir və ya buraxılır. Vergi, xidmət, yuvarlaqlaşdırma və ödəniş sətirləri Ara cəm yerini izləyir.
 reprint_incl	Çapda
 reprint_skip	Keç
 reprint_skip_meta	Bərpa çapını keç
@@ -178,20 +197,20 @@ snack_secs_ph	Saniyə (3–60, susmaya görə 10)
 snack_secs_save	Xəbərdarlıq vaxtını saxla
 snack_secs_saved	Xəbərdarlıq vaxtı saxlandı — {n} saniyə
 settings_sec_whatsapp	WhatsApp
-whatsapp_cloud_help	Use your own Meta WhatsApp Cloud API. Create a System User token with whatsapp_business_messaging (temporary dashboard tokens expire). Credentials stay on this Server only — never on extra tills. Accepted means Meta took the request, not that the guest received it.
-whatsapp_phone_id_ph	Phone Number ID
-whatsapp_token_ph	Access Token (leave blank to keep)
-whatsapp_template_ph	Bill template name (optional)
-whatsapp_template_lang_ph	Template language (e.g. en)
-whatsapp_enable	Enable
+whatsapp_cloud_help	Öz Meta WhatsApp Cloud API-nizdən istifadə edin. whatsapp_business_messaging ilə System User tokeni yaradın (idarə panelinin müvəqqəti tokenlərinin vaxtı bitir). Məlumatlar yalnız bu Serverdə qalır — əlavə kassalarda heç vaxt. “Qəbul edildi” o deməkdir ki, Meta sorğunu götürdü, qonağın onu aldığı demək deyil.
+whatsapp_phone_id_ph	Telefon nömrəsinin ID-si
+whatsapp_token_ph	Giriş tokeni (saxlamaq üçün boş buraxın)
+whatsapp_template_ph	Hesab şablonunun adı (istəyə bağlı)
+whatsapp_template_lang_ph	Şablonun dili (məs. en)
+whatsapp_enable	Aktiv et
 whatsapp_disable	Off
-whatsapp_save	Save WhatsApp
-whatsapp_test	Test connection
-whatsapp_disconnect	Disconnect
-whatsapp_send_bill	Send via WhatsApp
+whatsapp_save	WhatsApp-ı saxla
+whatsapp_test	Əlaqəni yoxla
+whatsapp_disconnect	Əlaqəni kəs
+whatsapp_send_bill	WhatsApp ilə göndər
 whatsapp_consent	WhatsApp OK
-whatsapp_consent_help	Guest agreed to receive WhatsApp messages. A phone number alone is not consent.
-whatsapp_server_only	Configure WhatsApp on the shop Server device
+whatsapp_consent_help	Qonaq WhatsApp mesajları almağa razılıq verib. Təkcə telefon nömrəsi razılıq deyil.
+whatsapp_server_only	WhatsApp-ı mağazanın Server cihazında qurun
 settings_sec_backup	Ehtiyat nüsxə və bərpa
 settings_sec_diag	Diaqnostika
 settings_sec_privacy	Məxfilik
@@ -637,7 +656,7 @@ choose_device_use	Server və ya Klient seçin.
 paired_note	Qoşulub. Satış üçün kilidi açın və ya ən sonu almaq üçün Yenilə.
 last_update_at	Son yeniləmə: {time}.
 pair_intro	Serveri tapın və ya onun ünvanını və qoşulma kodunu yazın.
-pair_resume_hint	Already paired — enter your shop PIN, or Forget this shop to pair another.
+pair_resume_hint	Artıq qoşulub — mağazanızın PIN kodunu daxil edin və ya başqasına qoşulmaq üçün “Bu mağazanı unut” düyməsinə toxunun.
 queue_waiting	Mağazaya çatmağı gözləyir ({n}):
 queue_tries	{n} dəfə cəhd olundu · son cavab: {e}
 save_backup_copy	Ehtiyat nüsxə saxla…
@@ -754,13 +773,18 @@ station_vps_dd	Bu postun printerləri
 station_vps_dd_n	{n} printer · dəyişmək üçün toxunun
 bill_printers_dd	Hesabın printerləri
 bill_printers_dd_n	Hesab üçün {n} printer · dəyişmək üçün toxunun
-paper_heading	Kağız
+paper_heading	Virtual kağız
 paper_size	{w} × {h} mm
 paper_roll	{w} mm rulon
 paper_not_set	kağız hələ məlum deyil
-paper_length_mm	Uzunluq (mm)
-printer_paper_help	Bu printerin kağızı mm ilə. Boş Uzunluq rulondur: hər çek məzmunu qədər uzun olur. Printerləri tap boş kağızı printerin sürücüsündən doldurur (deyə bilmirsə 80 mm rulon) və artıq təyin olunmuş kağızı heç vaxt dəyişmir.
-preview_help	Bu çek aşağıda seçilmiş printerin kağızında, orada çap olunduğu kimi: printerin çata bildiyi yuxarı sol küncdən real ölçüdə (boz: çata bilmədiyi kənarlar), uzun çek daha çox vərəqdə, kağızın kənarından kənara çıxan hər şey kəsilir. Printer seçmək yalnız önizləməni dəyişir; hər printerin kağızı Printerlər bölməsində təyin olunur.
+virtual_width_mm	Virtual en (mm)
+virtual_length_mm	Virtual uzunluq (mm)
+reported_width_mm	Bildirilən en (mm)
+reported_length_mm	Bildirilən uzunluq (mm)
+reported_paper	Bildirilən: {paper}
+virtual_paper	Virtual: {paper}
+printer_paper_help	Bildirilən bu printerin sürücüsünün qurulduğu kağızdır; tətbiq onu yalnız oxuyur, «Yoxdur» isə soruşulacaq sürücünün olmadığını bildirir. Virtual printerdə həqiqətən olduğunu dediyiniz kağızdır, mm ilə; boş uzunluq rulon deməkdir. Printer öz kağızına çap edir; virtual kağız tətbiqə onun nə qədərinin həqiqi kağız olduğunu bildirir: önizləmə, səhifə uzunluğu və çekin yeri üçün. Printerləri tap boş virtual kağızı doldurur və sizin təyin etdiyinizi heç vaxt dəyişmir.
+preview_help	Bu çek aşağıda seçilmiş printerdə çap olunduğu kimi, onun virtual kağızında həqiqi ölçüdə. Ağ çap olunan yerdir, boz kağıza printer çatmır, solğun mürəkkəb isə kəsilir. Doqquz kvadrat kağızdır: çekin dayanmalı olduğu yerə toxunun. Uzun çek növbəti səhifələrə keçir. Printer seçmək yalnız önizləməni dəyişir.
 job_layout	Maket
 job_delivery	İş necə göndərilir
 job_delivery_help	ƏS sənədi, xam baytlar və ya ESC/POS. Hesab və mətbəx bileti hər biri özünkünü saxlayır. Hər iş Tap-ın saxladığı istənilən printerə gedə bilər.
@@ -1238,7 +1262,7 @@ on_your_menu	Menyunuzda
 edit	Redaktə et
 schemes	Sxemlər / təkliflər
 schemes_help	BOGO, faiz endirimi və sabit kombolar. Kombolar KOT göndərəndə mətbəx sətirlərinə açılır; hissələr kombo işə düşənə qədər gözlədilir. Nümunə: Buy 2 Thali get 1 Chaas
-scheme_bogo_ph	Buy 2 Thali get 1 Chaas
+scheme_bogo_ph	2 Thali al, 1 Chaas hədiyyə
 add_scheme	BOGO əlavə et
 schedule_ph	Saatlar / xoş saat — Mon-Fri 07:00-11:00 və ya HappyHour 17:00-19:00=150
 upi_qr	UPI QR
@@ -1266,8 +1290,8 @@ taxable_value	Vergiyə cəlbedilən dəyər
 gst_inside_price_note	({tax} daxil)
 start_with_template	Menyumuzun şablonu ilə başla
 template_heading	Menyumuzun şablonu
-template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
-template_download_shelf	Download photo shelf
+template_need_download	Yeməklərin ümumi şəkil rəfini (~1459 yemək) endirin, sonra çatışmayan adları menyunuza idxal edin.
+template_download_shelf	Şəkil rəfini endir
 template_info	{c} kateqoriya və şəkilli {d} yemək, əlavə etməyə hazır. Qiymətlər ₹0-dan başlayır — sonra özünüzünkünü qoyun.
 template_import	Tam şablonu idxal et
 template_confirm	{d} yeməyi kateqoriyaları ilə əlavə edilsin? Artıq sizdə olan yeməklər olduğu kimi qalır.

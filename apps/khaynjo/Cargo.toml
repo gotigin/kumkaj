@@ -65,3 +65,10 @@ libc = "0.2"
 [target.'cfg(any(target_os = "linux", target_os = "windows", target_os = "macos"))'.dependencies]
 rfd = "0.15"
 arboard = "3"
+
+# The Windows API, called directly (print_win.rs): the standard way to
+# print an OS document, to send a raw job, to list the printers, to read
+# what a printer's driver is set to, and to find and write to USB and
+# Bluetooth printers — no helper process.
+[target.'cfg(windows)'.dependencies]
+windows-sys = { version = "0.61", features = ["Win32_Devices_Communication", "Win32_Devices_DeviceAndDriverInstallation", "Win32_Foundation", "Win32_Graphics_Gdi", "Win32_Graphics_Printing", "Win32_Security", "Win32_Storage_FileSystem", "Win32_Storage_Xps", "Win32_System_IO", "Win32_System_Registry"] }

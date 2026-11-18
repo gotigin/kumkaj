@@ -79,13 +79,19 @@ bill_item_amount	Imali
 bill_item_note	Rx / inqaku lentengiso
 bill_item_col_sep	Imigca yeekholamu
 slip_col_width	Ububanzi (mm)
-paper_heading	Iphepha
+paper_heading	Iphepha le-virtual
 paper_size	{w} × {h} mm
 paper_roll	umqulu we-{w} mm
 paper_not_set	iphepha alikaziwa okwangoku
-paper_length_mm	Ubude (mm)
-printer_paper_help	Iphepha lalo mshicileli kwi-mm. UBude obungenanto ngumqulu: irisithi nganye inde njengomxholo wayo. Fumana abashicileli igcwalisa iphepha elingenanto kumqhubi womshicileli (umqulu we-80 mm xa ingakwazi ukuxela) kwaye ayize iguqule elimiselweyo.
-preview_help	Le risithi kwiphepha lomshicileli okhethwe ngezantsi, njengoko ishicilelwa apho: ubungakanani bokwenyani ukusuka kwikona ephezulu ekhohlo efikelelwa ngumshicileli (ngwevu: imiphetho engafikelelwayo), irisithi ende kumaphepha amaninzi, yonke into egqitha umphetho wephepha iyanqunyulwa. Ukukhetha umshicileli kutshintsha umboniso kuphela; iphepha lomshicileli ngamnye limiselwa phantsi kwe-Abashicileli.
+na	N/A
+virtual_width_mm	Ububanzi be-virtual (mm)
+virtual_length_mm	Ubude be-virtual (mm)
+reported_width_mm	Ububanzi obuxeliweyo (mm)
+reported_length_mm	Ubude obuxeliweyo (mm)
+reported_paper	Elixeliweyo: {paper}
+virtual_paper	I-virtual: {paper}
+printer_paper_help	Elixeliweyo liphepha umqhubi walo mshicileli omiselwe kulo; i-app iyalifunda kuphela, kwaye N/A ithetha ukuba akukho mqhubi wokubuzwa. I-virtual liphepha othi wena likho ngokwenene kumshicileli, kwi-mm; ubude obungenanto ngumqulu. Umshicileli ushicilela kwiphepha lawo; iphepha le-virtual lixelela i-app ukuba lingakanani kulo eliliphepha lokwenyani, ukwenzela umboniso, ubude bephepha kunye nendawo yerisithi. Fumana abashicileli igcwalisa iphepha le-virtual elingenanto kwaye ayize iguqule olimisele wena.
+preview_help	Le risithi njengoko ishicilelwa kumshicileli okhethwe ngezantsi, ngobungakanani bokwenyani kwiphepha lawo le-virtual. Okumhlophe kulapho ushicilela khona, iphepha elingwevu alifikelelwa ngumshicileli, kwaye i-inki ephaphathekileyo iyanqunyulwa. Izikwere ezilithoba ziliphepha: cofa apho irisithi ifanele ihlale khona. Irisithi ende iqhubeka kumaphepha amaninzi. Ukukhetha umshicileli kutshintsha umboniso kuphela.
 slip_col_start	Isithuba sokuqala (px)
 slip_col_end	Isithuba sokugqibela (px)
 slip_columns_help	Ububanzi bekholamu nganye buquka isithuba sayo sokuqala nesokugqibela. Umbhalo usongeka ngaphakathi kwikholamu yawo; oko kudlula ububanzi bomxholo kuyanqunyulwa, ephepheni nakwimbonakalo yangaphambili.
@@ -100,6 +106,12 @@ bill_item_piece_off	Icinyiwe
 bill_total_qty	Inani elipheleleyo
 bill_total_subtotal	Isixa esincinci
 bill_total_grand	Isixa esikhulu
+bill_total_number_under	Inani phantsi kwe
+bill_total_caption_under	Ileyibhile phantsi kwe
+bill_total_own_line	Umgca walo
+bill_total_caption_with	Kunye nenani
+bill_total_caption_none	Akukho leyibhile
+bill_total_place_help	Umgca walo ishicilela esi sixa sodwa. Phantsi kwekholamu, inani laso lishicilelwa kuloo kholamu yezinto, ngobukhulu nobungqingqwa balo mgca; izixa zabelana ngomqolo omnye de ikholamu ithathwe, emva koko kuqala umqolo omtsha. Ileyibhile ihamba nenani, phantsi kwenye ikholamu, okanye iyashiywa. Imigca yerhafu, yenkonzo, yokurawunda neyentlawulo ilandela Isixa esincinci.
 kot_unassigned	Akuthunyelwanga
 settings_hub_help	Vula indawo enye ngexesha — ukuskrola okuncinci, ukhetho olucacileyo.
 settings_sec_language	Ulwimi nemali
@@ -470,7 +482,7 @@ route_cleared	Kucinyiwe {name}
 route_tap_selected	kukhethiwe
 printer_target_ph	Igama lomshicileli wenkqubo okanye i-host:9100
 printer_target_default	umshicileli oqhelekileyo wale khompyutha (idilesi engenanto)
-route_bill	Ityala
+route_bill	Ibhili
 station_print_pick_first	Khetha icandelo le-dispensary kuqala
 bill_printers_dd	Abashicileli betyala
 bill_printers_dd_n	Abashicileli {n} betyala · cofa ukuze utshintshe
@@ -735,6 +747,20 @@ fssai_ph	Inombolo yelayisensi yeziyobisi. (optional — your wording)
 bill_footer_ph	Ezantsi (umz. Enkosi, buyani kwakhona)
 kot_field_on	bonisa
 kot_field_off	fihla
+kot_field_show	Bonisa
+kot_field_hide	Fihla
+bill_line_shop	Ivenkile
+bill_line_address	Idilesi
+bill_line_fssai	FSSAI
+bill_line_title	Isihloko
+bill_line_customer	Umthengi
+bill_line_bill_no	Inombolo yetyala
+bill_line_time	Ixesha
+bill_line_cashier	Umcangci
+bill_line_items	Izinto
+bill_line_total	Isixa
+bill_line_footer	Ezantsi
+bill_line_upi	UPI
 kot_weight_light	Khaphukhaphu
 bill_kot_panel_help	Uyilo lwebhili kunye nobubanzi bomxholo. UCashier nguye owakhupha okanye wahlawula ityala - ibali elipheleleyo lentengiso lihlala ezincwadini.
 std_size_ph	umz. 18, 20, 26…
@@ -819,7 +845,7 @@ add_dishes	Yongeza amayeza
 order_so_far	Kule odolo: {n} · {total}
 no_dish_match	Akukho nto ihambelana ne-"{q}"
 pick_done	Igqityiwe
-dishes_n	{n} items
+dishes_n	{n} izinto
 reorder_ph	Thenga ngakumbi ku
 set_reorder	Misa inqanaba lokuphinda uthenge
 low_stock_alert	Iyaphela — thenga ngokukhawuleza: {items}
@@ -842,10 +868,10 @@ lane_declared_label	I-invoyisi yerhafu
 lane_owner_label	Imemo yemali ephathekayo
 money_lane_bill	Ityala: {lane}
 
-removing	Removing…
-removed	Removed
-updating_order	Updating…
-order_updated	Order updated
+removing	Iyasuswa…
+removed	Isusiwe
+updating_order	Iyahlaziywa…
+order_updated	Iodolo ihlaziyiwe
 sel_copy	Kopisha
 sel_select_all	Khetha konke
 sel_copied	Ikopishiwe

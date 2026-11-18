@@ -86,7 +86,7 @@ sidebar_hidden	Pakasqa
 sidebar_always_on	Sapa kuti barpi
 sidebar_shown_hint	Lado riel / uray tablakunapi rikuchisqa
 sidebar_hidden_hint	Barramanta pakasqa
-sidebar_menu_items	Menú & Menú menú nisqapi kaqkuna
+sidebar_menu_items	Menú & Menú nisqapi kaqkuna
 sidebar_enable_all	Tukuy atichiy
 sidebar_disable_all	Tukuy mana llamk'achiy
 sidebar_order_saved	Lado barra orden waqaychasqa
@@ -95,7 +95,7 @@ amounts_hide	Pakakuy
 amounts_show	Qhawachiy
 no_sale_yet	Manaraqmi rantikunchu
 favorites	Favoritos nisqakuna
-favorites_help	Menú menú kaqmanta imakuna sapa kuti ranqhasqayki, yaykuyniykipaq waqaychasqa. Hukta invitado qullqiman yapay, utaq listaykita ruway llapa menú kaqmanta uraypi.
+favorites_help	Menú kaqmanta imakuna sapa kuti ranqhasqayki, yaykuyniykipaq waqaychasqa. Hukta invitado qullqiman yapay, utaq listaykita ruway llapa menú kaqmanta uraypi.
 your_favorites	Munasqaykikuna
 all_items	Tukuy menú nisqapi kaqkuna
 no_favorites	Manaraqmi munasqakunachu — uraypi listamanta menú nisqakunata yapay.
@@ -192,7 +192,7 @@ snack_secs_save	Alerta tiempota waqaychay
 snack_secs_saved	Alerta pacha waqaychasqa — {n} segundos
 snack_secs_bad	Segundakunata yupay hina qillqay (3–60) .
 cancelled	Cancelado
-cancelling	Cancelling…
+cancelling	Cancellingâ¦
 cancel	Cancelar
 opening_client	Kichariy cliente...
 preparing_desk	Wakichiy mesa...
@@ -348,7 +348,7 @@ use_carrier_cost	Carrier costo nisqawan yanapachikuy
 rate_carrier_ph	Carrier (ch'usaq = rantiyniyku tarifa) .
 rate_party_ph	Fiesta (ch'usaq = llapan rantiqkuna) .
 carrier_pick_ph	Carrierpaq qullqipaq (tupanachiymanta) .
-item_name	Menú menú nisqapi elemento suti
+item_name	Menú nisqapi elemento suti
 load_bulk_row	Carga a granel fila → escritorio
 login_id_ph	Ruraqpa sutin
 mark_delivered	Marcosmi entregarqa
@@ -501,13 +501,18 @@ job_size	Fuente nisqapa sayaynin
 job_size_ph	p.h. 18, 20, 26...
 test_receipt_format	Prueba chaskiy
 test_label_format	Prueba etiqueta
-paper_heading	Rapi
+paper_heading	Virtual rapi
 paper_size	{w} × {h} mm
 paper_roll	{w} mm muyuq
 paper_not_set	rapiqa manaraq yachasqachu
-paper_length_mm	Suni (mm)
-printer_paper_help	Kay impresorap rapin mm-pi. Ch'usaq Suni muyuqmi: sapa boletaqa ukhunpi kaqninman hina sunin. Impresorakunata maskay ch'usaq rapita impresorap driverninmanta hunt'achin (mana niyta atispaqa 80 mm muyuq) hinaspa manan hayk'appas churasqataqa tikranchu.
-preview_help	Kay boletaqa uraypi akllasqa impresorap rapinpi, chaypi imprimikusqanman hina: impresora chayasqan hanaq lluq'i k'uchumanta chiqap sayayninpi (uqi: mana chayasqan patakuna), suni boleta astawan rapikunapi, rapip patanta pasaqqa kuchusqa. Impresorata akllayqa ñawpaq qhawayllatan tikran; sapa impresorap rapinqa Impresorakuna nisqapi churakun.
+virtual_width_mm	Virtual kinray (mm)
+virtual_length_mm	Virtual suni (mm)
+reported_width_mm	Willasqa kinray (mm)
+reported_length_mm	Willasqa suni (mm)
+reported_paper	Willasqa: {paper}
+virtual_paper	Virtual: {paper}
+printer_paper_help	Willasqaqa kay impresorap drivernin churasqa rapim; appqa ñawinchallanmi, “Mana” niyqa mana tapunapaq driver kanchu ninanmi. Virtualqa impresorapi chiqapta kachkan nispa nisqayki rapim, mm-pi; ch'usaq suniqa muyuqmi. Impresoraqa kikin rapinpi imprimin; virtual rapiqa appman willan hayk'a chiqap rapi kasqanta, ñawpaq qhawaypaq, rapip suninpaq, boletap kananpaqpas. Impresorakunata maskay ch'usaq virtual rapita hunt'achin, manataq hayk'appas churasqaykita tikranchu.
+preview_help	Kay boletaqa uraypi akllasqa impresorapi imprimikusqanman hina, virtual rapinpi chiqap sayayninpi. Yuraqpi imprimin, uqi rapimanqa impresora mana chayanchu, pisi rikukuq tintataq kuchusqa. Isqun t'aqakunaqa rapim: boleta kanan kaqpi ñit'iy. Suni boletaqa astawan rapikunaman rin. Impresorata akllayqa ñawpaq qhawayllatan tikran.
 slip_col_width	Kinray (mm)
 no_printer_assigned	Mana impresorayuq
 printer_target_default	kay computadorapa sapa kuti impresora (ch'usaq dirección) .
@@ -680,7 +685,7 @@ wipe_schema_done	Tienda churay pichasqa — Servidor utaq Cliente akllay hinalla
 rounded_total	Muyuchisqa Total
 setup_app_moklanjo	Moklanjota churay
 shop_logo_optional	Tiendapa logotipon (munasqa) .
-stock_type_help	Menú nisqapi kaqpa sutinta qillqay (huk partenmi suficiente), hayka kasqanmanta, chaymanta allichay. Menú menú kaqpi imakuna manaraq yupasqachu necesitanku Huk kuti qatiyta qallariy.
+stock_type_help	Menú nisqapi kaqpa sutinta qillqay (huk partenmi suficiente), hayka kasqanmanta, chaymanta allichay. Menú kaqpi imakuna manaraq yupasqachu necesitanku Huk kuti qatiyta qallariy.
 team_owner_help	Contratar: huk llamk'ayta akllay (Cajero / Gerente), suti + qallariy PIN, chaymanta Yanapay. Kay runa hukniray kaqtinlla: pantallakunata kichay chaymanta derechokuna uraypi, chaymanta Waqaychay llamkana churayta. Llapa runa kikin PIN kaqninta uraypi tikran — Dueñoqa manam hukpa PIN kaqninta tikrayta atinchu.
 they_owe_us	Paykunaqa manuwanchismi
 unit_at_cap	Unidad @ .
@@ -713,7 +718,7 @@ logo_default	Logotipo: Kumkaj marka (ñawpaqmanta) — qampaq akllay sichus hukn
 tmpl_current	Kunan pacha: {} — {}
 tmpl_selected	Akllasqa: {} — {} .
 setup_complete	Configuración hunt’asqa
-onboard_fresh_tmpl	Musuq · {} — catálogo ch’usaq qallarikun; menú elementokunata yapay Menú menú elementokunapi, chaymanta Ruwasqa.
+onboard_fresh_tmpl	Musuq · {} — catálogo ch’usaq qallarikun; menú elementokunata yapay Menú elementokunapi, chaymanta Ruwasqa.
 onboard_book_tmpl	Libro mayor · {} — menú elementokunata yapay chaymanta kichay crédito, chaymanta Ruwasqa.
 onboard_template_tmpl	Munaspaqa chay sitiota sutichay, chaymanta akllay imaynata qallarinaykipaq.
 tmpl_blurb	Mensajero librokuna hinaspa reservakuna ruwana wasi: apachiqkuna, apaykachaqkuna, punchaw qillqa, AWB.
@@ -782,7 +787,7 @@ extra_per_kg_ph	Yapamanta / kg
 first_amount_ph	Ñawpaq kaq qullqi
 first_kg_ph	Ñawpaq kaq kg (losa) .
 from_code_ph	Código (bolsa) nisqamanta.
-item_name_lang_ph	Menú menú elemento suti — simiykipi qillqay
+item_name_lang_ph	Menú elemento suti — simiykipi qillqay
 login_id_opt_ph	Ruraqpa sutin (mañasqa, sapalla) .
 manager_pin_ph	Gerente PIN aprobananpaq (mana anulayta atispalla) .
 new_branch_name_ph	Musuq sucursal suti
@@ -836,7 +841,7 @@ role_help_both	Ruwaykuna: Consignador + Carrier — huk partida, AR chaymanta AP
 role_help_supplier	Ruway: Suministrador — AP rantiykunapaq.
 lane_declared_label	Cuentakuna reservay
 lane_owner_label	Qullqiwan reservakuy
-money_lane_bill	Invitado invitado qullqi: {lane}
+money_lane_bill	Invitado qullqi: {lane}
 sel_copy	Copiay
 sel_select_all	Llapanta akllay
 sel_copied	Copiasqañam

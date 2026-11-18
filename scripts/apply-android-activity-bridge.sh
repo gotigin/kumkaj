@@ -108,6 +108,7 @@ else
     echo "Removed the older print/Bluetooth/USB bridge from $JAVA"
   fi
   ensure_import 'import android.bluetooth.BluetoothAdapter;'
+  ensure_import 'import android.bluetooth.BluetoothManager;'
   ensure_import 'import android.bluetooth.BluetoothDevice;'
   ensure_import 'import android.bluetooth.BluetoothSocket;'
   ensure_import 'import android.hardware.usb.UsbConstants;'
@@ -318,6 +319,29 @@ if [[ -f "$HELPER_SRC" ]]; then
 fi
 
 COMPILE_RS="$MAKEPAD_ROOT/tools/cargo_makepad/src/android/compile.rs"
+
+# Where an OS-document slip's pages go on the paper picked in the print
+# dialog (printSlipPagesPlaced): plain arithmetic in its own class, so it
+# also runs on a desktop JVM (patches/makepad/KumkajSlipLayoutTest.java).
+LAYOUT_SRC="$ROOT/patches/makepad/KumkajSlipLayout.java"
+LAYOUT_DST="$JAVA_DIR/KumkajSlipLayout.java"
+if [[ ! -f "$LAYOUT_DST" ]] || ! cmp -s "$LAYOUT_SRC" "$LAYOUT_DST"; then
+  cp -f "$LAYOUT_SRC" "$LAYOUT_DST"
+  echo "Installed KumkajSlipLayout.java into $JAVA_DIR"
+else
+  echo "KumkajSlipLayout.java already current."
+fi
+if [[ -f "$COMPILE_RS" ]] && ! grep -qF 'KumkajSlipLayout.java' "$COMPILE_RS"; then
+  perl -0pi -e 's/(        makepad_java_classes_dir\.join\("MakepadActivity\.java"\),\n)/$1        \/\/ OS-document page layout for the print dialog (plain arithmetic).\n        makepad_java_classes_dir.join("KumkajSlipLayout.java"),\n/' "$COMPILE_RS"
+  if ! grep -qF 'KumkajSlipLayout.java' "$COMPILE_RS"; then
+    echo "MakepadActivity.java compile.rs entry not found in $COMPILE_RS" >&2
+    exit 1
+  fi
+  echo "Registered KumkajSlipLayout.java in $COMPILE_RS"
+else
+  echo "cargo-makepad already compiles KumkajSlipLayout.java."
+fi
+
 if [[ -f "$COMPILE_RS" ]] && ! grep -qF 'ImeInsetsAnimationHelper.java' "$COMPILE_RS"; then
   python3 - "$COMPILE_RS" <<'PY'
 from pathlib import Path

@@ -101,6 +101,19 @@ bill_item_col_sep	কলম নি কেরং
 slip_columns	খলমরগ
 slip_col_header	বখরক
 bill_line_logo	লগʼ
+bill_line_shop	দুকানি
+bill_line_address	আদরেস নি কক
+bill_line_fssai	FSSAI
+bill_line_title	মুং
+bill_line_customer	গ্রাহক
+bill_line_bill_no	বিল নং
+bill_line_time	জরা
+bill_line_cashier	রাং থুমনাই
+bill_line_table	মেজা
+bill_line_items	মানুই
+bill_line_total	জত
+bill_line_footer	য়াফাঙ
+bill_line_upi	UPI
 bill_logo_picture	সাকা
 bill_logo_choose	সাকা বাসাগ
 bill_logo_remove	সাকা কুফুরথক
@@ -128,6 +141,12 @@ bill_item_piece_off	ওফ
 bill_total_qty	জত কুতয়
 bill_total_subtotal	সুব জত
 bill_total_grand	জত কতর
+bill_total_number_under	লেখা ইনি তিসাও
+bill_total_caption_under	মুং ইনি তিসাও
+bill_total_own_line	বিনি লিনে
+bill_total_caption_with	লেখা বাই
+bill_total_caption_none	মুং কুরুই
+bill_total_place_help	“বিনি লিনে” ই জত ন সাকসা ছাপা খলাইয়ই। খলম নি তিসাও তংখা বিনি লেখা অ' মাল নি খলম ও, ই লিনে নি মাপ তেই বাতা বাই ছাপা খলাইজাক; খলম কাইসা পুরা মান য়াফুরু জতরগ শারি কাইসা ন শারে খাইয়ই, অ'নি উলো শারি কাতাল চেংগ। মুং লেখা বাই, খলম কুবুন নি তিসাও থাংগ, য়াবা তুবুজাক য়া। খাজনা, সেবা, রাউন্ডিং তেই রাং রিমানি লিনেরগ “সুব জত” ন নাইথক।
 reprint_incl	পরিনত উংখা
 reprint_skip	সকিপ খাইদি
 reprint_skip_meta	সকিপ খাইনানি পরিনত
@@ -178,20 +197,20 @@ snack_secs_ph	সেকনদ (3-60, সুকাংনি 10)
 snack_secs_save	আলেরত জরা মুথাংদি
 snack_secs_saved	আলেরত জরা মুথাংজাক খা — {n} সেকন
 settings_sec_whatsapp	WhatsApp
-whatsapp_cloud_help	Use your own Meta WhatsApp Cloud API. Create a System User token with whatsapp_business_messaging (temporary dashboard tokens expire). Credentials stay on this Server only — never on extra tills. Accepted means Meta took the request, not that the guest received it.
-whatsapp_phone_id_ph	Phone Number ID
-whatsapp_token_ph	Access Token (leave blank to keep)
-whatsapp_template_ph	Bill template name (optional)
-whatsapp_template_lang_ph	Template language (e.g. en)
-whatsapp_enable	Enable
+whatsapp_cloud_help	নিনি সাকনি Meta WhatsApp Cloud API ব্যবহার খ্লাইদি। whatsapp_business_messaging তঙনাই System User টোকেন সিনি খ্লাইদি (ড্যাশবোর্ডনি অস্থায়ী টোকেনরগ পাইথাকগ)। ও খবররগ ও Server অ সে তঙগ — কুবাংমা তিলসঅ বুফুরুবো নয়া। “নাজাকখা” হিনখে Meta আরজ নাখা, ফাইনাই ককতুমা মানখা হিন্নাই নয়া।
+whatsapp_phone_id_ph	ফোন নম্বর ID
+whatsapp_token_ph	এক্সেস টোকেন (অবন তনানি বাগুই খালি তনদি)
+whatsapp_template_ph	বিল টেম্পলেটনি মুং (চাজাকয়া)
+whatsapp_template_lang_ph	টেম্পলেটনি কক (যেমন en)
+whatsapp_enable	সুনামদি
 whatsapp_disable	Off
-whatsapp_save	Save WhatsApp
-whatsapp_test	Test connection
-whatsapp_disconnect	Disconnect
-whatsapp_send_bill	Send via WhatsApp
+whatsapp_save	WhatsApp মুথাংদি
+whatsapp_test	কুরুংজাক নাইদি
+whatsapp_disconnect	কুরুংজাক খকদি
+whatsapp_send_bill	WhatsApp বাই রহরদি
 whatsapp_consent	WhatsApp OK
-whatsapp_consent_help	Guest agreed to receive WhatsApp messages. A phone number alone is not consent.
-whatsapp_server_only	Configure WhatsApp on the shop Server device
+whatsapp_consent_help	ফাইনাই WhatsApp ককতুমা মাননানি বাগুই চাজাকখা। ফোন নম্বর সে তঙমানি চাজাকমা নয়া।
+whatsapp_server_only	দুকাননি Server মানুইঅ WhatsApp সেট খ্লাইদি
 settings_sec_backup	বাচকুপ তেই কিফিলুই তুবুদি
 settings_sec_diag	বেমার সাইমানমানি
 settings_sec_privacy	গোপনীয়তা
@@ -637,7 +656,7 @@ choose_device_use	Server এবা Client ন চংদি.
 paired_note	জরা উংখা. ফালনা বাগুই উনলচক খাইদি, এবা কুতাল উংনা বাগুই রেফরেশ খাইদি.
 last_update_at	পইত খলাইমানি: {time}.
 pair_intro	সেরভের ন নাইদি, এবা বিনি আদরেস তেই পাইরিং চদে ন সুইদি.
-pair_resume_hint	Already paired — enter your shop PIN, or Forget this shop to pair another.
+pair_resume_hint	সকাংনি সিমি জরা তঙগ — নিনি দুকাননি PIN রিদি, এবা কুবুন দুকান জরানানি বাগুই “ও দুকান ন পকদি” তিপদি।
 queue_waiting	দুকান সোক ফাইনা বাগুই নাইসিঙুই তংমানি ({n}):
 queue_tries	{n} জরা তরয় খাইখা · পাইথাগ আনসুএর: {e}
 save_backup_copy	কাইসা বাচকুপ চপয় নারুকদি...
@@ -754,13 +773,18 @@ station_vps_dd	ও সতাতিওন নি বাগুই পরিনত�
 station_vps_dd_n	{n} সুইজাক(রক) · সুলাইনা বাগুই চাপদি
 bill_printers_dd	বিল নি বাগুই পরিনতের
 bill_printers_dd_n	{n} বিল নি বাগুই পরিনতের(রক) · সুলাইনা বাগুই তাপদি
-paper_heading	কাগজ
+paper_heading	ভার্চুয়াল কাগজ
 paper_size	{w} × {h} mm
 paper_roll	{w} mm রোল
 paper_not_set	কাগজ তাবুক তাই নাইথি
-paper_length_mm	কালাই (mm)
-printer_paper_help	ই প্রিন্টারনি কাগজ mm ও। কালাই কুসুক অর্থ রোল: সাবকং স্লিপ বিনি সামগ্রী কাসা কালাই। পরিনতের নাইদি কুসুক কাগজ প্রিন্টারনি ড্রাইভার নি বুথুক (সাগই মান খই খা 80 mm রোল) তেই সিকাম নি থিক খলাইমানি কাগজ তাংখা সুইয়া।
-preview_help	ই স্লিপ য়াখুল নি সাইমানি প্রিন্টারনি কাগজ সাকাংও, অ'ও ছাপা খলাইজাক: প্রিন্টার থাংমানি সাকাং আগলা কোণ নি সত্যি মাপ ও (ধূসর: থাংমান য়াফুরু), কালাই স্লিপ বেসি পাতা ও, কাগজনি য়াফুরু নি উয়াংগ বাগই তান'জাক। প্রিন্টার সাইখা খা প্রিভিউ সাকসা সুইয়ই; সাবকং প্রিন্টারনি কাগজ প্রিন্টার ও থিক খলাইয়ই।
+virtual_width_mm	ভার্চুয়াল বাগা (mm)
+virtual_length_mm	ভার্চুয়াল কালাই (mm)
+reported_width_mm	রিপোর্ট খলাইমানি বাগা (mm)
+reported_length_mm	রিপোর্ট খলাইমানি কালাই (mm)
+reported_paper	রিপোর্ট খলাইমানি: {paper}
+virtual_paper	ভার্চুয়াল: {paper}
+printer_paper_help	রিপোর্ট খলাইমানি অর্থ ই প্রিন্টারনি ড্রাইভার ও থিক খলাইমানি কাগজ; আপ অ'ন পড়ি সাকসা, তেই N/A অর্থ সুংনানি ড্রাইভার কুরুই। ভার্চুয়াল অর্থ প্রিন্টার ও সত্যি তংগ হিনই নুং সামানি কাগজ, mm ও; কালাই কুসুক অর্থ রোল। প্রিন্টার বিনি কাগজ সাকাংও ছাপা খলাইয়ই; ভার্চুয়াল কাগজ আপ ন সায়ই অ'নি বিসুক সত্যি কাগজ, প্রিভিউ, পাতানি কালাই তেই স্লিপনি জাগা বাগই। পরিনতের নাইদি কুসুক ভার্চুয়াল কাগজ বুথুক তেই নুং থিক খলাইমানি কাগজ তাংখা সুইয়া।
+preview_help	ই স্লিপ য়াখুল নি সাইমানি প্রিন্টার ও ছাপা খলাইজাক বাগই, বিনি ভার্চুয়াল কাগজ সাকাংও সত্যি মাপ ও। কুফুর জাগা ও ছাপা খলাইয়ই, ধূসর কাগজ প্রিন্টার থাংমান য়া, তেই ফিকা কালি তান'জাক। চুকু বাক্স কাগজ: স্লিপ তংনানি জাগা ও তাপ দি। কালাই স্লিপ বেসি পাতা ও থাংগ। প্রিন্টার সাইখা খা প্রিভিউ সাকসা সুইয়ই।
 job_layout	নকসা
 job_delivery	সামুং বাহাই খে রহরজাক
 job_delivery_help	ওস নি সুইজাক, কুতাল বাইত, এবা ESC/POS. বিল তেই রাংচাকনি তিচকেত খরকসা খরকসা খে সাক সাকনি থানি তঙুই তঙ. জেসা ফান সামুং জেসা ফান পরিনতের ও থাঙুই মান ফিনদ সাভে খলাইজাক.
@@ -1163,7 +1187,7 @@ kot_show_station	সতাতিওন
 kot_hide_station	সতাতিওন ন খুমদি
 kot_show_table	মেজা
 kot_hide_table	মেজা ন হুই দি
-kot_show_kot_no	KOT য়া
+kot_show_kot_no	KOT নং
 kot_hide_kot_no	হুকদি KOT য়া
 kot_width	সুকাং নাইমানি উরাপ (KOT তাব ও মানুই কতরমা সেত খাই দি)
 kot_width_58	58 mm
@@ -1238,7 +1262,7 @@ on_your_menu	নিনি মেনু ও
 edit	সুনামদি
 schemes	সকিম / য়াফারমুং
 schemes_help	BOGO, 100-1000, তেই সুলাইজাক চমব. চমব রক রহর দি KOT; চমব উঙুই থাংমা জরা জরা উঙুই তংনাই. উধাহারানা: 2 Thali পাইখে 1 Chaas মানাই
-scheme_bogo_ph	Buy 2 Thali get 1 Chaas
+scheme_bogo_ph	2 থালি পাইদি, 1 ছাস মানদি
 add_scheme	BOGO চাপদি
 schedule_ph	জরা / খাকচাংমা জরা — সাল-সুম 07:00-11:00 এবা HappyHour 17:00-19:00=150
 upi_qr	UPI QR
@@ -1266,8 +1290,8 @@ taxable_value	তাক্ষ উংনাই মানুই
 gst_inside_price_note	({tax} উঙুই)
 start_with_template	চিনি মেনু নি তেমপলাতে বাই চেংদি
 template_heading	চিনি মেনু নি তেমপলাতে
-template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
-template_download_shelf	Download photo shelf
+template_need_download	থালানি সাধারণ ফত শেলফ (~1,459 থালা) ডাউনলোড খ্লাইদি, আবনি উল কুরুই মুংরগ ন নিনি মেনুঅ তুবুদি।
+template_download_shelf	ফত শেলফ ডাউনলোড খ্লাইদি
 template_info	{c} উংখা তেই {d} উংখা মাংপিলি বাই, চাপনা বাগুই তিয়ার. পরিচে ₹0 নি সিমি চেংজাক — নিনি রাং ন সেত খাই দি.
 template_import	পুইলা তেমপলাতে তুবুদি
 template_confirm	বহরকনি জাত বাই {d} চামুংরক চাপদি? দিশেস নরক সুকাংনি সিমি তংমানি আব হাই খেন তঙুই মান.

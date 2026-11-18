@@ -40,7 +40,7 @@ editing_item	Pag-edit
 save	I-save
 remove	Alisin
 empty_catalog	Wala pang rates.
-counter_sale	Counter booking
+counter_sale	Booking sa counter
 total	Kabuuan
 cash	Cash
 upi	UPI
@@ -68,7 +68,7 @@ note_ph	Tandaan (opsyonal)
 rounded	BILOG
 split	Hatiin
 counter	Kontra
-parcel	Parcel
+parcel	Parsela
 order	Order ng restaurant
 sales	Mga booking
 sales_refunds	Mga booking at refund
@@ -122,12 +122,12 @@ next_booking	Susunod na booking
 destination_ph	Destinasyon na lungsod / sona
 consignee_ph	Pangalan ng tatanggap
 consignee_phone_ph	Telepono ng tatanggap
-consignee_address_ph	Delivery address
+consignee_address_ph	Address ng paghahatid
 origin_name_ph	Pangalan ng nagpadala
 origin_phone_ph	Telepono ng nagpadala
 origin_address_ph	Address ng pickup / pinanggalingan
-booking_consignor_heading	Consignor (customer / sender)
-booking_consignee_heading	Consignee (receiver)
+booking_consignor_heading	Consignor (customer / nagpadala)
+booking_consignee_heading	Consignee (tatanggap)
 booking_consignor_hint	Pumili ng party na pupunuan, o iwanang blangko para sa walk-in. Kailangan para sa home pickup at RTO.
 booking_consignee_hint	Tagatanggap ng parsela. Iwanang blangko para sa mga walk-in counter drop-off.
 weight_kg_ph	Aktwal na kg
@@ -192,7 +192,7 @@ snack_secs_save	I-save ang oras ng alerto
 snack_secs_saved	Na-save ang oras ng alerto — {n} segundo
 snack_secs_bad	Maglagay ng mga segundo bilang numero (3–60)
 cancelled	Kinansela
-cancelling	Cancelling…
+cancelling	Cancellingâ¦
 cancel	Kanselahin
 opening_client	Binubuksan ang kliyente…
 preparing_desk	Inihahanda ang desk…
@@ -215,7 +215,7 @@ diag_send_heading	Ibahagi ang device na ito
 diag_send_help	Ang pag-apruba ay isang pakete, pagkatapos ay mag-e-expire. Pansamantala — ginagamit lang para ayusin o pagandahin ang produkto. Hindi ibinahagi sa mga third party. Gumagana sa Linux, Windows, macOS, at Android.
 optional_login_heading	Opsyonal na pag-login
 rights_heading	Mga karapatan
-booking_scope_heading	Domestic / International
+booking_scope_heading	Lokal / Internasyonal
 diag_send_approved	Naaprubahan ang pagbabahagi para sa isang pakete (malapit nang mag-expire)
 diag_export_send	Gumawa ng share package (kailangan ng pag-apruba)
 diag_export_send_done	Ibahagi ang package na handa na sa {path} — piliin kung saan magse-save, pagkatapos ay ipadala lamang sa Kumkaj na suporta
@@ -260,7 +260,7 @@ unmark	Alisin ang marka
 role_both	pareho
 role_carrier	Tagapagdala
 role_cashier	Kahera
-role_consignor	Consignor
+role_consignor	Nagpapadala
 role_manager	Tagapamahala
 role_supplier	Tagatustos
 branch_name_sell_ph	Pangalan ng branch kung saan ibebenta
@@ -297,7 +297,7 @@ cheque_no_ph	Suriin ang numero (opsyonal)
 bill_reminder_chase	Listahan ng paghabol ng paalala sa bill
 month_mix_report	Ulat ng paghahalo ng buwan
 copy_month_gst_csv	Kopyahin ang buwang GST CSV
-domestic	Domestic
+domestic	Lokal
 international	Internasyonal
 pick_logo	Pumili ng logo
 booking_scope_hint_domestic	Volumetric ÷5000 (domestic) — i-tap ang International para sa ÷6000 air
@@ -323,8 +323,8 @@ dispatch_to_rider	Naka-book ang dispatch → rider
 docket_charge_ph	singilin sa docket
 declared_value_ph	Ipinahayag na halaga
 contents_ph	Mga nilalaman
-eway_ph	E-way bill no.
-insurance_label	Insurance
+eway_ph	E-way bill blg.
+insurance_label	Seguro
 yes_label	Oo
 no_label	Hindi
 print_route_label	I-print ang ruta
@@ -365,21 +365,21 @@ print_drs	I-print ang DRS
 print_run_sheet	I-print ang run sheet
 reattempt	Muling pagtatangka
 rider_cod_handed_ph	Ipinasa ang COD
-settle_rider_cod	Settle rider COD
+settle_rider_cod	I-settle ang COD ng rider
 mode_desk	mesa
 mode_rider	sakay
 waiting_office	naghihintay na makarating sa opisina
 capture_signature	Kunin ang lagda
 incoming_manifest	Papasok na manifest
 pickup_request	Kahilingan ng pickup
-pickup_run	Pickup run
+pickup_run	Biyahe ng pickup
 auto_assign_area	Awtomatikong italaga ang lugar
 reorder_stops	Huminto ang muling pag-aayos
-settle_rider_pay	Settle rider pay
+settle_rider_pay	I-settle ang bayad ng rider
 vehicle_inspect	Inspeksyon ng sasakyan
 print_docket	I-print ang docket
 franchise_statement	Pahayag ng franchise
-tally_export	Tally voucher export
+tally_export	I-export ang voucher sa Tally
 open_whatsapp	Buksan ang WhatsApp
 copy_sms	Kopyahin ang text ng SMS
 pick_barcode_image	Pumili ng larawan upang i-scan
@@ -402,8 +402,8 @@ password_ph	Kontrasenyas
 pay_ap_card	Magbayad ng AP card
 pay_ap_cash	Magbayad ng AP cash
 pay_ap_upi	Magbayad ng AP UPI
-period_bill	Period bill
-period_bill_party	Period bill (party)
+period_bill	Bill ng panahon
+period_bill_party	Bill ng panahon (partido)
 pick_pod_photo	Pumili ng POD na larawan
 print_awb_label	I-print ang label ng AWB
 print_open	I-print / buksan
@@ -430,7 +430,7 @@ server_ip_ph	IP ng server (hal. 192.168.1.10)
 set_credit_limit	Ilapat ang limitasyon sa customer o supplier
 set_login_selected	Ilapat ang pag-login sa napili
 set_login_named	Ilapat ang pag-login sa {name}
-shop	Mamili
+shop	Tindahan
 start_fresh	Magsimula ng bago
 stop_extra_tills	Itigil ang mga extra tills
 backup_auto	Awtomatikong bina-back up araw-araw · huling {when} · ang huling 14 na araw ay pinananatili sa {dir}.
@@ -500,14 +500,19 @@ job_delivery	Paano ipinadala ang trabaho
 job_size	Laki ng font
 job_size_ph	hal. 18, 20, 26…
 test_receipt_format	Pagsubok na resibo
-test_label_format	Test label
-paper_heading	Papel
+test_label_format	Test na label
+paper_heading	Virtual na papel
 paper_size	{w} × {h} mm
 paper_roll	{w} mm na rolyo
 paper_not_set	hindi pa alam ang papel
-paper_length_mm	Haba (mm)
-printer_paper_help	Ang papel ng printer na ito sa mm. Ang walang lamang Haba ay rolyo: bawat resibo ay kasinghaba ng laman nito. Pinupunan ng Maghanap ng mga printer ang walang lamang papel mula sa driver ng printer (80 mm na rolyo kapag hindi nito masabi) at hindi kailanman binabago ang naitakda na.
-preview_help	Ang resibong ito sa papel ng printer na pinili sa ibaba, gaya ng pagkaka-print doon: tunay na laki mula sa itaas na kaliwang abot ng printer (kulay abo: mga gilid na hindi nito abot), mahabang resibo sa mas maraming pahina, pinuputol ang lampas sa gilid ng papel. Ang pagpili ng printer ay preview lang ang binabago; ang papel ng bawat printer ay itinatakda sa Mga Printer.
+virtual_width_mm	Virtual na lapad (mm)
+virtual_length_mm	Virtual na haba (mm)
+reported_width_mm	Iniulat na lapad (mm)
+reported_length_mm	Iniulat na haba (mm)
+reported_paper	Iniulat: {paper}
+virtual_paper	Virtual: {paper}
+printer_paper_help	Ang iniulat ay ang papel kung saan nakatakda ang driver ng printer na ito; binabasa lang ito ng app, at ang N/A ay nangangahulugang walang driver na matatanong. Ang virtual ay ang papel na sinasabi mong talagang nasa printer, sa mm; ang blangkong haba ay rolyo. Nagpi-print ang printer sa sarili nitong papel; sinasabi ng virtual na papel sa app kung gaano karami roon ang totoong papel, para sa preview, haba ng pahina at puwesto ng resibo. Pinupunan ng Maghanap ng mga printer ang blangkong virtual na papel at hindi kailanman binabago ang itinakda mo.
+preview_help	Ang resibong ito kung paano ito mapi-print sa printer na pinili sa ibaba, sa totoong laki sa virtual na papel nito. Puti ang bahaging napi-print, ang kulay-abong papel ay hindi abot ng printer, at ang maputlang tinta ay napuputol. Ang siyam na kahon ay ang papel: i-tap kung saan dapat ilagay ang resibo. Ang mahabang resibo ay tumutuloy sa mas maraming pahina. Ang pagpili ng printer ay nagbabago lang sa preview.
 slip_col_width	Lapad (mm)
 no_printer_assigned	Walang printer
 printer_target_default	ang karaniwang printer ng computer na ito (blangko ang address)
@@ -609,7 +614,7 @@ pay_selected_heading	Pinili ang pagbabayad (bayaran ang utang / kumuha ng advanc
 write_off_heading	I-write off (i-clear nang walang bayad)
 pay_ap_heading	Bayaran ang utang natin sa kanila (AP)
 country_tax	Bansa at buwis
-extra_tills_heading	Mga dagdag na tills
+extra_tills_heading	Mga dagdag na kaha
 other_devices_help_heading	Mag-set up ng iba pang device
 other_devices_help	Sa device na ito (Server): Iba pang mga device → Pahintulutan ang mga karagdagang tills. Tandaan ang code ng pagpapares at Wi‑Fi address. I-tap ang Payagan ang ibang mga device na kumonekta kung lalabas ito. Sa isang computer, i-tap ang Magsimula sa computer na ito. Sa bawat isa na device: i-install ang app, piliin ang Client Mode, Hanapin ang server ng shop (o i-type ang address), ilagay ang code ng pagpapares, Ipares ngayon. Naghihintay ang mga order sa device kung bumaba ang Wi‑Fi at umalis kapag sumagot muli ang Server.
 your_brand	Ang iyong brand (in-app)
@@ -617,7 +622,7 @@ units_heading	Mga yunit
 booking_measures	Mga hakbang sa pag-book
 drawer_count	Bilang ng drawer (opsyonal)
 spreadsheet_csv	Talaan (CSV)
-bank_reconciliation	Bank reconciliation
+bank_reconciliation	Pagtutugma sa bangko
 book_add_product	Book — magdagdag ng produkto / rate
 book_opening_credit	Ledger — pagbubukas ng kredito
 account_kind	Uri ng account (i-tap ang isa)
@@ -736,8 +741,8 @@ send_with_rider	Ipadala kasama ang rider
 out_again	Labas na naman
 return_to_sender	Bumalik sa nagpadala
 runs_bags_heading	Mga kamakailang pagtakbo at bag
-print_word	Print
-bag_word	Carrier bag
+print_word	I-print
+bag_word	Bag ng carrier
 run_word	Tumatakbo ang rider
 parcels_fmt	{n} na mga parcel
 parcel_history	Kasaysayan
@@ -750,7 +755,7 @@ cod_on_road	COD pa sa kalsada
 cod_owed_consignors	Nakolekta — para magbayad ng mga consignor
 cod_rto_fees	Mga bayarin sa RTO para mangolekta
 cod_to_hand_in	COD para ibigay
-parcel_one_fmt	{n} parcel
+parcel_one_fmt	{n} parsela
 facet_bank_title	Mga ulat
 facet_bank_help	Mga day ledger, customer o supplier na tumatanda, mga post sa bangko, at period P&L.
 facet_ops_title	Mga padala at pagpapadala
@@ -777,7 +782,7 @@ country_code_ph	Country code hal. SA, GB, US, AE, BR
 credit_khata_amount_ph	Halaga ng credit / credit ledger
 credit_limit_ph	Limitasyon sa kredito (0 = wala)
 dim_unit_code_ph	Code ng unit ng dimensyon (cm)
-divisor_ph	Volumetric divisor (5000)
+divisor_ph	Panghati ng volumetric (5000)
 extra_per_kg_ph	Dagdag / kg
 first_amount_ph	Unang halaga
 first_kg_ph	Unang kg (slab)
@@ -835,7 +840,7 @@ role_help_carrier	Tungkulin: Tagapagdala — AP (utang namin sa kanila). Ang par
 role_help_both	Mga Tungkulin: Consignor + Carrier — isang partido, AR at AP ledger, net sa Mga Ulat.
 role_help_supplier	Tungkulin: Supplier — AP para sa mga pagbili.
 lane_declared_label	Pagbu-book ng account
-lane_owner_label	Cash booking
+lane_owner_label	Booking na cash
 money_lane_bill	Resibo: {lane}
 sel_copy	Kopyahin
 sel_select_all	Piliin lahat

@@ -1,16 +1,21 @@
 # Kumkaj websites — Makepad 2 fullpage apps
 
-> **Status:** Phase 1 live in-tree as a local demo (2026-11-07) — three
-> Makepad 2 site crates, each running native and as wasm in the browser:
-> `sites/kumkaj` (`kumkaj-site`, 7 chapters), `sites/moklanjo`
-> (`moklanjo-site`, 9 chapters + chargeable-weight toy), `sites/khaynjo`
-> (`khaynjo-site`, 10 chapters + floor toy). Not deployed anywhere;
-> domains, hosting, WhatsApp numbers and download links are owner steps
-> (§8). Next: Phase 2 3D chapters and the Phase 3 crawl shell (§7).
-> **Scope:** Kumkaj-wide approach for kumkaj.com, moklanjo.com and
-> khaynjo.com. Product stories live with each product:
+> **Status:** Five Makepad 2 site crates — `sites/kumkaj`, `sites/moklanjo`,
+> `sites/khaynjo`, `sites/kirano`, `sites/tabiyat` — each native + wasm.
+> **Domains registered.** **Maturity (2026-11-18):** every site is a
+> **scroll SPA** (Khaynjo/Wadhu pattern) with `selection_root` /
+> `select_from_gaps`, dual-paint Markdown (`draw_selection` + `font_color`),
+> `MIN_WIDTH` 375 + site-shell.css, in-app Privacy/Terms links, and
+> preview/deploy scripts staging `/privacy` `/terms` + OG. Only
+> **khaynjo-2b2a2** exists on Firebase today; the other four need a project
+> id before first deploy (§8). WhatsApp numbers and some download switches
+> remain owner steps. Next: Phase 2 3D chapters; finish Phase 3 (Firebase
+> projects + custom domains + Analytics).
+> **Scope:** Kumkaj-wide approach for all five domains. Product stories:
 > [`MOKLANJO_WEBSITE.md`](../apps/moklanjo/docs/MOKLANJO_WEBSITE.md),
-> [`KHAYNJO_WEBSITE.md`](../apps/khaynjo/docs/KHAYNJO_WEBSITE.md).
+> [`KHAYNJO_WEBSITE.md`](../apps/khaynjo/docs/KHAYNJO_WEBSITE.md),
+> [`KIRANO_WEBSITE.md`](../apps/kirano/docs/KIRANO_WEBSITE.md),
+> [`TABIYAT_WEBSITE.md`](../apps/tabiyat/docs/TABIYAT_WEBSITE.md).
 > **Architecture:** each site **is** a Makepad 2 app (wasm in the
 > browser, the same crate native on desktop) — the whole page, not a
 > canvas inside an HTML page.
@@ -40,10 +45,12 @@ Rules (vision §1, §21, §24, §31):
    chapter). Planned work is labelled *planned*. A claim with a gate
    (`lan-pilot`) is in the page but hidden behind an owner switch (§8).
 4. **Free forever locally; cloud by usage** is the only pricing message.
-5. **Gotigin** owns the brand. Footer line:
-   "*Moklanjo / Khaynjo is a Kumkaj product by Gotigin.*" No legal
-   entity name, address or grievance contact until the owner supplies
-   them (§8).
+5. **Name order is always Trademark → Company → Brand → Product:**
+   **Gotigin** (trademark) → **GOTIGIN SOFTWARE & HARDWARE PRIVATE LIMITED**
+   (company) → **Kumkaj** (brand) → product (Moklanjo / Khaynjo / …).
+   Footer line example:
+   "*Gotigin · GOTIGIN SOFTWARE & HARDWARE PRIVATE LIMITED · Kumkaj · Khaynjo.*"
+   No grievance address until the owner supplies one (§8).
 6. **Name no competitor**, carrier or aggregator in copy or visuals;
    describe our own mechanics.
 7. **Examples say so.** Illustrative props (rate cards, labels, tickets,
@@ -51,8 +58,9 @@ Rules (vision §1, §21, §24, §31):
    carry no client names, menus, staff or real numbers. Real app
    captures replace them when device screens arrive (Phase 2).
 
-Brand map: **Gotigin** (company) → **Kumkaj** (BOS brand) →
-**Moklanjo** / **Khaynjo** (concrete products).
+Brand map: **Gotigin** (trademark) → **GOTIGIN SOFTWARE & HARDWARE PRIVATE
+LIMITED** (company) → **Kumkaj** (BOS brand) → **Moklanjo** / **Khaynjo** /
+**Kirano** / **Tabiyat** (products).
 
 ------------------------------------------------------------------------
 
@@ -71,14 +79,13 @@ preview loops and as an offline presenter. Chapters are a vertical
 `SlidesView`; 3D chapters (PBR props, glTF, 3D text) grow inside the
 same app later — not as a separate HTML page that hosts a canvas.
 
-**khaynjo.com is the exception (2026-11-12):** one scrolling page
-(`ScrollYView` bands + sticky top bar, section deep links) instead of a
-`SlidesView` deck — a product page with templates, pricing and FAQ outgrew
-"one chapter per screen" (phones and short laptops had to hide content).
-Rows still switch side-by-side / stacked by content width (`ROWS`, `PROPS`);
-nothing is clipped any more, so `DETAIL_*` hide lists are gone there.
-Sections are measured from the first band when scrolling to them (rects of
-one draw pass), so a deep link lands exactly once layout settles.
+**Every site is a scrolling page (2026-11-18; khaynjo first on 2026-11-12):**
+`ScrollYView` bands + sticky top bar, section deep links — not a
+`SlidesView` deck (phones and short laptops no longer hide body copy).
+Rows still switch side-by-side / stacked by content width (`ROWS`, `PROPS`).
+`page` is the selection root (`select_from_gaps: true`). Sections are
+measured from band rects when scrolling to them, so a deep link lands once
+layout settles.
 
 ```text
 Browser / desktop
@@ -172,14 +179,19 @@ untouched, apps unaffected):
 sites/kumkaj/      kumkaj-site    → kumkaj.com     (wasm :8010)
 sites/moklanjo/    moklanjo-site  → moklanjo.com   (wasm :8011)
 sites/khaynjo/     khaynjo-site   → khaynjo.com    (wasm :8012)
+sites/kirano/      kirano-site    → kirano.shop    (wasm :8013)
+sites/tabiyat/     tabiyat-site   → tabiyat.shop   (wasm :8014)
 
 sites/<site>/
   src/ui.rs                 the whole page: tokens, type, components, chapters (script_mod!)
   src/main.rs               chrome, toys, links, responsive tiers, owner switches, tests
-  src/weight.rs | floor.rs  toy rules copied from the app (copy, not import) + tests
+  src/weight.rs | floor.rs | counter.rs  toy rules copied from the app (copy, not import) + tests
   resources/fonts/          the faces this site draws, with their OFL licences
-  scripts/run-web.sh        wasm build + local server
+  static/                   crawl shell overlays (terms, css; catalogue on khaynjo)
+  scripts/run-web.sh        debug wasm + local server
   scripts/run-desktop.sh    native window
+  scripts/preview-web.sh    release wasm + shell on the same port (pre-deploy)
+  scripts/deploy-firebase.sh  stage public/ + firebase hosting (needs project id)
   README.md
 ```
 
@@ -200,6 +212,8 @@ sites/<site>/
 | kumkaj.com | Navy `#041534`, terracotta `#A23E18` (clay `#E8875C` for text on navy), ink `#F9F9FC` | Fraunces (display) · IBM Plex Sans | Dots + "n / 7" | Calm house for the products; navy ground with faint ledger rules and a warm glow |
 | moklanjo.com | Desk light `#D6E0EC`, navy `#072058` / `#0A3A8C`, orange `#DF5E16` / `#C44E10`, yellow `#F7B043` | Anek Latin (display) · IBM Plex Sans · Liberation Mono (AWB, weights) | The parcel's tracking line: beads passed (yellow), here (orange), ahead (hollow) | Speed and precision; the icon's motion streaks |
 | khaynjo.com | Cream `#F9F4F0`, deep red `#9A0E10`, maroon `#69090C`, gold `#F69D2C` | Baloo 2 (display) · IBM Plex Sans · Liberation Mono (KOT) · Noto scripts | Sticky red bar: section links + gold "Get it free"; visit-colour key in "How a service runs" | Warm lunch-rush energy; lamp-lit hero, cream / paper bands, deep-red offline + closing bands |
+| kirano.shop | Cream `#FDF7EA`, orange `#CD380E` / `#F96303`, leaf `#1C460E` | Baloo 2 (display) · IBM Plex Sans · Liberation Mono | Top-bar tiles | Neighbourhood grocery counter; bill toy |
+| tabiyat.shop | Cool white `#FBFCFC`, teal `#023637` / `#017B85`, lime `#37BE28` | Baloo 2 (display) · IBM Plex Sans · Liberation Mono | Top-bar tiles | Pharmacy counter; bill toy — never claims regulatory compliance |
 
 Contrast follows `DESIGN.md`: dark ink on light wells, white ink only on
 deep chrome (navy / deep red), never grey-on-grey.
@@ -237,12 +251,11 @@ deep chrome (navy / deep red), never grey-on-grey.
 6. **Props in code first.** Cards, labels, tickets and floor tiles are
    widgets and small shaders; 3D props (CSG / glTF) come in Phase 2;
    device screens show real app captures, never mock UI.
-7. **Selectable copy.** Goal remains browser-like selectable Markdown
-   ([`DESIGN.md`](DESIGN.md) § Text selection & copy). **khaynjo.com
-   currently ships `selectable: false`** after incomplete document-host
-   / per-card approaches — open: README § Remaining. Set copy with
-   `body:` (and `child.body:` on composites). Plain `Label` only inside
-   tap targets (floor tiles, nav chips, choice faces, button faces).
+7. **Selectable copy.** Browser-like selectable Markdown on every site
+   ([`DESIGN.md`](DESIGN.md) § Text selection & copy): `page` is
+   `selection_root` + `select_from_gaps`; Markdown uses `draw_selection`
+   + `font_color`. Plain `Label` / `selectable: false` only for tap
+   targets and chrome marks (top-bar brand, beads, floor tiles, buttons).
 8. **Claims check.** Before publishing, re-read each cited row; gated
    sentences stay behind the owner switch.
 
@@ -262,9 +275,15 @@ From the workspace root:
 ./sites/kumkaj/scripts/run-web.sh      # http://127.0.0.1:8010
 ./sites/moklanjo/scripts/run-web.sh    # http://127.0.0.1:8011
 ./sites/khaynjo/scripts/run-web.sh     # http://127.0.0.1:8012
+./sites/kirano/scripts/run-web.sh      # http://127.0.0.1:8013
+./sites/tabiyat/scripts/run-web.sh     # http://127.0.0.1:8014
 
-# Khaynjo: production-shaped release wasm (same tree deploy stages) before Firebase
-./sites/khaynjo/scripts/preview-web.sh # http://127.0.0.1:8012
+# Production-shaped release wasm + /privacy /terms (same tree deploy stages)
+./sites/kumkaj/scripts/preview-web.sh     # :8010
+./sites/moklanjo/scripts/preview-web.sh   # :8011
+./sites/khaynjo/scripts/preview-web.sh    # :8012
+./sites/kirano/scripts/preview-web.sh     # :8013
+./sites/tabiyat/scripts/preview-web.sh    # :8014
 ```
 
 Scroll, swipe up, tap, or press ↓ / → / PgDn / Space for the next
@@ -295,7 +314,7 @@ rustup component add rust-src --toolchain nightly
 | **0 — Brand spike** | `sites/kumkaj` SlidesView brand story; workspace member; run scripts | **Done** 2026-11-07 |
 | **1 — Product site crates** | Brand house deepened; `sites/moklanjo`, `sites/khaynjo` copied then diverged; trade palettes, type and nav; story chapters from the product docs; one toy per site; Download / WhatsApp CTAs behind owner switches | **Done as a local demo** 2026-11-07 (native + wasm) |
 | **2 — 3D chapters + budgets** | PBR / glTF / 3D text chapters inside each site; real app captures on device screens; font subsetting; `--release --brotli --split --strip` size budgets | Next |
-| **3 — Thin crawl shell + legal** | Static `/privacy` `/terms`, OG meta, `<noscript>` chapter text around the wasm; Play privacy URL; then retire the legacy static stubs | — |
+| **3 — Thin crawl shell + legal** | Static `/privacy` `/terms`, OG meta, `<noscript>` around the wasm; Play privacy URL; retire legacy zola stubs | **Partial 2026-11-18** — shell + preview/deploy scripts on all five sites; khaynjo.com already hosted; other Firebase projects + custom domains still owner |
 | **4 — Presenter + Indic** | Offline presenter after one visit (service worker / packaged native); Hindi / Gujarati copy with native review | — |
 | **5 — Growth** | Tools pages (volumetric weight, GST bill), case studies, Cloud pages when Cloud exists | — |
 
@@ -319,7 +338,7 @@ Contract: [`apps/khaynjo/docs/CATALOGUE_URLS.md`](../apps/khaynjo/docs/CATALOGUE
 |---|---|---|
 | 1 | Kumkaj mark (only product icons exist; kumkaj.com uses a typographic wordmark) | `sites/kumkaj` top bar |
 | 2 | Gotigin legal / contact / grievance details | Footers, Phase 3 legal pages |
-| 3 | Domains and where the wasm builds are published | Hosting; `product_url` / `kumkaj_url` already point at the public domains |
+| 3 | Firebase project ids (and Analytics web apps) for kumkaj / moklanjo / kirano / tabiyat; custom domains already registered | Hosting; `product_url` / `kumkaj_url` already point at the public domains. Only `khaynjo-2b2a2` exists today |
 | 4 | WhatsApp Business number per product | `WHATSAPP_NUMBER` in `sites/moklanjo/src/main.rs`, `sites/khaynjo/src/main.rs` (ship `None`, marked TODO) |
 | 5 | Installers / store listing | Khaynjo: `DOWNLOADS_LIVE` + Play URL live (`com.khaynjo`). Moklanjo: still `false` until its listing/installers ship |
 | 6 | Real-hardware LAN pilot passes | `LAN_PILOT_PASSED` in all three sites (ships `false`; shows the multi-device sentences) |
@@ -335,11 +354,11 @@ Contract: [`apps/khaynjo/docs/CATALOGUE_URLS.md`](../apps/khaynjo/docs/CATALOGUE
 | # | Chapter | Says / does | Sources |
 |---|---|---|---|
 | 1 | The promise | "The internet went down. The counter didn't." + "this counter, right now" status card; *Choose your trade* / *Watch it keep working* | vision §6, §20 |
-| 2 | Built for your trade | Moklanjo and Khaynjo choice cards — each with its spine and three shipped facts — linking to the product sites | MOKLANJO.md B rows; KHAYNJO.md §4b/§4d |
+| 2 | Built for your trade | Moklanjo, Khaynjo, Kirano and Tabiyat choice cards — each with its spine and three shipped facts — linking to the product sites | MOKLANJO.md; KHAYNJO.md; KIRANO.md; TABIYAT.md |
 | 3 | Your books live in your shop | On your device · no account with us · backup copies you keep; the extra-counters line waits for `lan-pilot` | vision §6, §21 |
 | 4 | Try it offline | Toy: cut the internet, the counter's work stays "Working" | vision §6, §20 |
 | 5 | Free forever on your devices | ₹0 on your own devices; Kumkaj Cloud *planned*, usage-based | vision §21 |
 | 6 | Speaks your staff's language | Catalogue languages (India + world), RTL; Khaynjo's real "Food ready" in Hindi, Gujarati, Tamil, Bengali, Urdu | `locale.rs` + `translations/*.tsv` |
-| 7 | Made by Gotigin | Brand map Gotigin → Kumkaj → Moklanjo / Khaynjo; the choice again | — |
+| 7 | Who makes it | Trademark → Company → Brand → Product map; the choice again | — |
 
 Code: `sites/kumkaj/src/ui.rs`, `sites/kumkaj/src/main.rs`.

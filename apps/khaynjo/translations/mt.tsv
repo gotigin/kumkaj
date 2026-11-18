@@ -101,6 +101,19 @@ bill_item_col_sep	Linji tal-kolonni
 slip_columns	Kolonni
 slip_col_header	Intestatura
 bill_line_logo	Logo
+bill_line_shop	Ħanut
+bill_line_address	Indirizz
+bill_line_fssai	FSSAI
+bill_line_title	Titolu
+bill_line_customer	Klijent
+bill_line_bill_no	Nru tal-kont
+bill_line_time	Ħin
+bill_line_cashier	Kaxxier
+bill_line_table	Mejda
+bill_line_items	Oġġetti
+bill_line_total	Totali
+bill_line_footer	Qiegħ il-paġna
+bill_line_upi	UPI
 bill_logo_picture	Stampa
 bill_logo_choose	Agħżel stampa
 bill_logo_remove	Neħħi l-istampa
@@ -128,6 +141,12 @@ bill_item_piece_off	Mitfi
 bill_total_qty	Kwantità totali
 bill_total_subtotal	Subtotal
 bill_total_grand	Total sħiħ
+bill_total_number_under	Numru taħt
+bill_total_caption_under	Tikketta taħt
+bill_total_own_line	Linja għalih
+bill_total_caption_with	Man-numru
+bill_total_caption_none	Bla tikketta
+bill_total_place_help	Linja għalih jistampa dan it-total waħdu. Taħt kolonna, in-numru tiegħu jiġi stampat f'dik il-kolonna tal-oġġetti, fid-daqs u l-ħxuna ta' din il-linja; it-totali jaqsmu ringiela waħda sakemm kolonna tkun meħuda, imbagħad tibda ringiela ġdida. It-tikketta tmur man-numru, taħt kolonna oħra, jew titħalla barra. Il-linji tat-taxxa, tas-servizz, tal-arrotondament u tal-ħlas isegwu lil Subtotal.
 reprint_incl	Fil-istampar
 reprint_skip	Aqbeż
 reprint_skip_meta	Aqbeż l-istampar mill-ġdid
@@ -178,20 +197,20 @@ snack_secs_ph	Sekondi (3–60, standard 10)
 snack_secs_save	Salva l-ħin tat-twissija
 snack_secs_saved	Ħin tat-twissija salvat — {n} sekondi
 settings_sec_whatsapp	WhatsApp
-whatsapp_cloud_help	Use your own Meta WhatsApp Cloud API. Create a System User token with whatsapp_business_messaging (temporary dashboard tokens expire). Credentials stay on this Server only — never on extra tills. Accepted means Meta took the request, not that the guest received it.
-whatsapp_phone_id_ph	Phone Number ID
-whatsapp_token_ph	Access Token (leave blank to keep)
-whatsapp_template_ph	Bill template name (optional)
-whatsapp_template_lang_ph	Template language (e.g. en)
-whatsapp_enable	Enable
+whatsapp_cloud_help	Uża l-Meta WhatsApp Cloud API tiegħek stess. Oħloq token System User b'whatsapp_business_messaging (it-tokens temporanji tad-dashboard jiskadu). Id-dettalji jibqgħu biss fuq dan is-Server — qatt fuq il-kaxxi żejda. “Aċċettat” ifisser li Meta ħadet it-talba, mhux li l-mistieden irċeviha.
+whatsapp_phone_id_ph	ID tan-numru tat-telefon
+whatsapp_token_ph	Token ta' aċċess (ħallih vojt biex iżżommu)
+whatsapp_template_ph	Isem tal-mudell tal-kont (mhux obbligatorju)
+whatsapp_template_lang_ph	Lingwa tal-mudell (eż. en)
+whatsapp_enable	Ippermetti
 whatsapp_disable	Off
-whatsapp_save	Save WhatsApp
-whatsapp_test	Test connection
-whatsapp_disconnect	Disconnect
-whatsapp_send_bill	Send via WhatsApp
+whatsapp_save	Salva WhatsApp
+whatsapp_test	Ittestja l-konnessjoni
+whatsapp_disconnect	Skonnettja
+whatsapp_send_bill	Ibgħat permezz tal-WhatsApp
 whatsapp_consent	WhatsApp OK
-whatsapp_consent_help	Guest agreed to receive WhatsApp messages. A phone number alone is not consent.
-whatsapp_server_only	Configure WhatsApp on the shop Server device
+whatsapp_consent_help	Il-mistieden qabel li jirċievi messaġġi tal-WhatsApp. Numru tat-telefon waħdu mhuwiex kunsens.
+whatsapp_server_only	Issettja WhatsApp fuq l-apparat Server tal-ħanut
 settings_sec_backup	Backup u restawr
 settings_sec_diag	Dijanjostiċi
 settings_sec_privacy	Privatezza
@@ -509,7 +528,7 @@ expense_heading	Spejjeż
 export_day	Jum l-esportazzjoni
 extra_note_bill_ph	Nota żejda fuq dan il-kont/bejgħ
 extra_note_expense_ph	Nota żejda dwar l-aħħar spiża
-extra_tills_heading	Extra sakemm
+extra_tills_heading	Kaxxi żejda
 other_devices_help_heading	Waħħal apparati oħra
 other_devices_help	Fuq dan l-apparat (Server): Apparat ieħor → Ħalli tills żejda. Innota l-kodiċi tat-tqabbil u l-indirizz tal-Wi-Fi. Tektek Ħalli tagħmir ieħor jikkonnettja jekk jidher. Fuq kompjuter, tektek Ibda b'dan il-kompjuter. Fuq kull mezz ieħor: installa l-app, agħżel Modalità Klijent, Sib is-server tal-ħanut (jew ittajpja l-indirizz), daħħal il-kodiċi ta 'tqabbil, Pair issa. L-ordnijiet jistennew fuq it-tagħmir jekk il-Wi-Fi tinżel u jmorru meta s-Server jerġa' jwieġeb. Stampaturi tal-kċina huma ssettjati fuq is-Server (Għażliet → Stampaturi) — tills żejda jibgħatu KOTs hemmhekk.
 forget_shop	Tinsa dan il-ħanut
@@ -532,7 +551,7 @@ on_account_ap	Akkont (AP)
 org_optional_ph	Organizzazzjoni (mhux obbligatorju)
 paid_by	Imħallas minn
 paid_now	Imħallas issa
-pair_now	Par issa
+pair_now	Qabbad issa
 pairing_code_ph	Kodiċi tat-tqabbil
 party_name_selected_ph	Isem il-parti (jew użu magħżul)
 password_ph	Password
@@ -637,7 +656,7 @@ choose_device_use	Agħżel Server jew Klijent.
 paired_note	Imqabbad. Iftaħ biex tbigħ, jew Aġġorna għall-aħħar.
 last_update_at	L-aħħar aġġornament: {time}.
 pair_intro	Sib is-server, jew ittajpja l-indirizz u l-kodiċi tat-tqabbil tiegħu.
-pair_resume_hint	Already paired — enter your shop PIN, or Forget this shop to pair another.
+pair_resume_hint	Diġà mqabbad — daħħal il-PIN tal-ħanut tiegħek, jew agħfas “Tinsa dan il-ħanut” biex tqabbad ieħor.
 queue_waiting	Stennija biex tilħaq il-ħanut ({n}):
 queue_tries	Ippruvajt {n} darbiet · l-aħħar tweġiba: {e}
 save_backup_copy	Issejvja kopja ta' backup...
@@ -754,13 +773,18 @@ station_vps_dd	Stampaturi għal dan l-istazzjon
 station_vps_dd_n	{n} stampatur(i) · taptap biex tbiddel
 bill_printers_dd	Stampaturi għall-kont
 bill_printers_dd_n	{n} stampatur(i) għall-kont · taptap biex tbiddel
-paper_heading	Karta
+paper_heading	Karta virtwali
 paper_size	{w} × {h} mm
 paper_roll	romblu ta' {w} mm
 paper_not_set	il-karta għadha mhix magħrufa
-paper_length_mm	Tul (mm)
-printer_paper_help	Il-karta ta' din l-istampatur f'mm. Tul vojt huwa romblu: kull riċevuta hija twila daqs il-kontenut tagħha. Sib stampaturi jimla l-karta vojta mis-sewwieq tal-istampatur (romblu ta' 80 mm meta ma jistax jgħid) u qatt ma jbiddel karta diġà ssettjata.
-preview_help	Din ir-riċevuta fuq il-karta tal-istampatur magħżul hawn taħt, kif tistampa hemm: fid-daqs reali mill-kantuniera ta' fuq ix-xellug li jilħaq l-istampatur (griż: truf li ma jilħaqx), riċevuta twila fuq aktar folji, kull ma jaqbeż it-tarf tal-karta jinqata'. L-għażla ta' stampatur tbiddel il-previżjoni biss; il-karta ta' kull stampatur tiġi ssettjata taħt Stampaturi.
+virtual_width_mm	Wisa’ virtwali (mm)
+virtual_length_mm	Tul virtwali (mm)
+reported_width_mm	Wisa’ rrappurtat (mm)
+reported_length_mm	Tul rrappurtat (mm)
+reported_paper	Irrappurtat: {paper}
+virtual_paper	Virtwali: {paper}
+printer_paper_help	Irrappurtat hija l-karta li d-driver ta' dan l-istampatur huwa ssettjat għaliha; l-app taqraha biss, u M/A tfisser li m'hemmx driver li tista' tistaqsi. Virtwali hija l-karta li inti tgħid li verament tinsab fl-istampatur, f'mm; tul vojt ifisser romblu. L-istampatur jistampa fuq il-karta tiegħu stess; il-karta virtwali tgħid lill-app kemm minnha hija karta vera, għall-previżjoni, it-tul tal-paġna u l-post tar-riċevuta. Sib stampaturi jimla karta virtwali vojta u qatt ma jbiddel waħda li ssettjajt inti.
+preview_help	Din ir-riċevuta kif tiġi stampata fuq l-istampatur magħżul hawn taħt, fid-daqs veru fuq il-karta virtwali tiegħu. L-abjad huwa fejn jistampa, il-karta griża hija barra mill-firxa tal-istampatur, u l-linka ċara tinqata'. Id-disa' kwadri huma l-karta: taptap fejn għandha toqgħod ir-riċevuta. Riċevuta twila tkompli fuq aktar paġni. L-għażla ta' stampatur tbiddel il-previżjoni biss.
 job_layout	Tqassim
 job_delivery	Kif jintbagħat ix-xogħol
 job_delivery_help	Dokument tal-OS, bytes mhux ipproċessati, jew ESC/POS. Il-kont u l-biljett tal-kċina kull wieħed iżomm tagħhom. Kwalunkwe xogħol jista' jmur għand kwalunkwe stampatur Sib li jkun salvat.
@@ -787,7 +811,7 @@ test_printer_cleared	Mhux qed jittestja fuq: {name}
 test_page_sent_n	Paġna tat-test mibgħuta lil {n} stampatur(i)
 test_kot_pick_first	Agħżel stampatur(i) għal Test KOT l-ewwel — imbagħad Test KOT
 test_kot_sent_n	Test KOT mibgħut lil {n} stampatur(i)
-cancel_pick	Mark
+cancel_pick	Marka
 cancel_pick_on	Immarkat
 cancel_pick_meta	Immarkat għall-kanċellazzjoni
 batch_cancel	Ikkanċella mmarkata
@@ -1048,7 +1072,7 @@ add_a_table	Żid mejda
 add_station_heading	Żid stazzjon tal-kċina
 categories_help	Tektek Uża biex tiffajlja l-oġġett hawn fuq taħt dik il-kategorija. Ritratt jagħti stampa lill-kategorija; mingħajr waħda turi l-inizjali tagħha.
 dish_search_ph	Isem tal-oġġett — fittex il-platti tagħna jew ittajpja tiegħek
-tile_free	Ħieles
+tile_free	Vojt
 tile_occupied	Okkupat
 tile_food_ready	Ikel lest
 tile_bill_printed	Kont stampat
@@ -1163,7 +1187,7 @@ kot_show_station	Stazzjon
 kot_hide_station	Aħbi l-istazzjon
 kot_show_table	Mejda
 kot_hide_table	Aħbi mejda
-kot_show_kot_no	CAT Nru
+kot_show_kot_no	Nru KOT
 kot_hide_kot_no	Aħbi KOT Nru
 kot_width	Preview wrap (issettja l-wisa' tal-kontenut fuq it-tab tal-KOT)
 kot_width_58	58 mm
@@ -1266,8 +1290,8 @@ taxable_value	Valur tat-taxxa
 gst_inside_price_note	({tax} inklużiv)
 start_with_template	Ibda bl- mudell tal-menu tagħna
 template_heading	It-tema tal-menu tagħna
-template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
-template_download_shelf	Download photo shelf
+template_need_download	Niżżel l-ixkaffa pubblika tar-ritratti tal-platti (~1,459 platt), imbagħad importa l-ismijiet neqsin fil-menu tiegħek.
+template_download_shelf	Niżżel l-ixkaffa tar-ritratti
 template_info	{c} kategorie u {d} platti b’ritratti, lesti biex iżżid. Il-prezzijiet jibdew minn ₹0 — issettlejhom tiegħek wara.
 template_import	Importa mudell sħiħ
 template_confirm	Żid {d} platti mal-kategoriji tagħhom? Il-platti li diġà għandek jibqgħu kif inhuma.

@@ -192,7 +192,7 @@ snack_secs_save	Fi akoko gbigbọn pamọ
 snack_secs_saved	Akoko itaniji ti fipamọ - {n} iṣẹju-aaya
 snack_secs_bad	Tẹ awọn iṣẹju-aaya sii bi nọmba (3–60)
 cancelled	fagilee
-cancelling	Cancelling…
+cancelling	Cancellingâ¦
 cancel	Fagilee
 opening_client	Nsii alabara…
 preparing_desk	Ngbaradi tabili…
@@ -501,13 +501,18 @@ job_size	Iwọn fonti
 job_size_ph	f.eks. 18, 20, 26…
 test_receipt_format	Gbigba idanwo
 test_label_format	Aami idanwo
-paper_heading	Ìwé
+paper_heading	Ìwé foju
 paper_size	{w} × {h} mm
 paper_roll	ìyípo {w} mm
 paper_not_set	a kò tíì mọ ìwé
-paper_length_mm	Gígùn (mm)
-printer_paper_help	Ìwé atẹwe yìí ní mm. Gígùn òfo jẹ́ ìyípo: rísíìtì kọ̀ọ̀kan gùn tó àkóónú rẹ̀. Wa awọn atẹwe ń kún ìwé òfo láti inú awakọ̀ atẹwe (ìyípo 80 mm nígbà tí kò lè sọ) kò sì ní yí èyí tí a ti ṣètò padà láéláé.
-preview_help	Rísíìtì yìí lórí ìwé atẹwe tí a yàn nísàlẹ̀, bí ó ṣe ń tẹ̀ níbẹ̀: ìwọ̀n gidi láti igun òkè òsì tí atẹwe dé (eérú: etí tí kò dé), rísíìtì gígùn lórí ojú-ìwé púpọ̀ sí i, gbogbo ohun tó kọjá etí ìwé ni a gé. Yíyan atẹwe kan ń yí àwòtẹ́lẹ̀ nìkan padà; a ń ṣètò ìwé atẹwe kọ̀ọ̀kan lábẹ́ Awọn ẹrọ atẹwe.
+virtual_width_mm	Fífẹ̀ foju (mm)
+virtual_length_mm	Gígùn foju (mm)
+reported_width_mm	Fífẹ̀ tí a ròyìn (mm)
+reported_length_mm	Gígùn tí a ròyìn (mm)
+reported_paper	Tí a ròyìn: {paper}
+virtual_paper	Foju: {paper}
+printer_paper_help	Tí a ròyìn ni ìwé tí a ṣètò awakọ̀ atẹwe yìí sí; ohun elo náà ń kà á nìkan, N/A sì túmọ̀ sí pé kò sí awakọ̀ láti bi. Foju ni ìwé tí o sọ pé ó wà nínú atẹwe ní tòótọ́, ní mm; gígùn òfo jẹ́ ìyípo. Atẹwe ń tẹ̀ sórí ìwé tirẹ̀; ìwé foju ń sọ fún ohun elo náà iye rẹ̀ tó jẹ́ ìwé gidi, fún àwòtẹ́lẹ̀, gígùn ojú-ìwé àti ibi tí rísíìtì wà. Wa awọn atẹwe ń kún ìwé foju òfo kò sì ní yí èyí tí o ṣètò padà láéláé.
+preview_help	Rísíìtì yìí bí ó ṣe ń tẹ̀ lórí atẹwe tí a yàn nísàlẹ̀, ní ìwọ̀n gidi lórí ìwé foju rẹ̀. Funfun ni ibi tí ó ń tẹ̀, ìwé eérú kọjá ibi tí atẹwe lè dé, a sì gé tàdáwà tó ṣá. Àwọn onígun mẹ́rin mẹ́sàn-án ni ìwé náà: tẹ ibi tí rísíìtì yẹ kó wà. Rísíìtì gígùn ń lọ sórí ojú-ìwé púpọ̀ sí i. Yíyan atẹwe kan ń yí àwòtẹ́lẹ̀ nìkan padà.
 slip_col_width	Fífẹ̀ (mm)
 no_printer_assigned	Ko si itẹwe
 printer_target_default	itẹwe igbagbogbo ti kọnputa yii (adirẹsi òfo)
@@ -609,7 +614,7 @@ pay_selected_heading	Sanwo ti a yan (yanju gbese / gba ilosiwaju)
 write_off_heading	Kọ silẹ (ko kuro laisi sisanwo)
 pay_ap_heading	San ohun ti a jẹ wọn (AP)
 country_tax	Orilẹ-ede & owo-ori
-extra_tills_heading	Afikun tills
+extra_tills_heading	Àwọn káńtà àfikún
 other_devices_help_heading	Ṣeto awọn ẹrọ miiran
 other_devices_help	Lori ẹrọ yii (Olupin): Awọn ẹrọ miiran → Gba afikun tills laaye. Ṣe akiyesi koodu sisopọ ati adirẹsi Wi-Fi. Fọwọ ba Gba awọn ẹrọ miiran laaye lati sopọ ti o ba han. Lori kọnputa, tẹ Bẹrẹ pẹlu kọnputa yii ni kia kia. Lori ẹrọ kọọkan miiran: fi ohun elo naa sori ẹrọ, yan Ipo Onibara, Wa olupin ile itaja (tabi tẹ adirẹsi naa), tẹ koodu sisopọ pọ, So pọ ni bayi. Awọn aṣẹ duro lori ẹrọ ti Wi-Fi ba lọ silẹ ki o lọ nigbati olupin naa ba dahun lẹẹkansi.
 your_brand	Aami rẹ (ninu-app)

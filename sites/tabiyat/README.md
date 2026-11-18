@@ -13,8 +13,16 @@ Never claims Drugs Act compliance on this site.
 
 ```bash
 ./sites/tabiyat/scripts/run-desktop.sh   # native window
-./sites/tabiyat/scripts/run-web.sh       # wasm → http://127.0.0.1:8014
+./sites/tabiyat/scripts/run-web.sh       # debug wasm → http://127.0.0.1:8014
+
+# Production-shaped tree (wasm + /privacy /terms + OG) before Firebase
+./sites/tabiyat/scripts/preview-web.sh   # http://127.0.0.1:8014
+./sites/tabiyat/scripts/deploy-firebase.sh --dry-run   # needs Firebase project
 ```
+
+Domain **tabiyat.shop** is registered. Firebase project id is an owner
+step. Privacy source:
+[`apps/tabiyat/docs/PRIVACY.md`](../../apps/tabiyat/docs/PRIVACY.md).
 
 Top-bar tiles jump chapters. `#search` (or `#3`) in the URL opens a chapter.
 

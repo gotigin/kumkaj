@@ -101,6 +101,19 @@ bill_item_col_sep	स्तंभाच्यो रेगो
 slip_columns	स्तंभ
 slip_col_header	शिर्षक
 bill_line_logo	लोगो
+bill_line_shop	दुकान
+bill_line_address	पत्तो
+bill_line_fssai	FSSAI
+bill_line_title	शीर्षक
+bill_line_customer	गिरायक
+bill_line_bill_no	बिल क्र.
+bill_line_time	वेळ
+bill_line_cashier	कॅशियर
+bill_line_table	मेज
+bill_line_items	वस्तू
+bill_line_total	एकूण
+bill_line_footer	तळटीप
+bill_line_upi	यूपीआई
 bill_logo_picture	चित्र
 bill_logo_choose	चित्र वेंचात
 bill_logo_remove	चित्र काडात
@@ -128,6 +141,12 @@ bill_item_piece_off	बंद
 bill_total_qty	एकूण संख्या
 bill_total_subtotal	उपबेरीज
 bill_total_grand	मुखेल बेरीज
+bill_total_number_under	संख्या हाचे सकयल
+bill_total_caption_under	लेबल हाचे सकयल
+bill_total_own_line	आपली ओळ
+bill_total_caption_with	संख्ये वांगडा
+bill_total_caption_none	लेबल ना
+bill_total_place_help	“आपली ओळ” ही बेरीज एकटीच छापता. स्तंभा सकयल आसल्यार तिची संख्या त्या वस्तूंच्या स्तंभांत, हे ओळीच्या आकारांत आनी जाडायेंत छापतात; एक स्तंभ भरसर बेरजो एकूच रांग वांटून घेतात, मागीर नवी रांग सुरू जाता. लेबल संख्ये वांगडा, दुसऱ्या स्तंभा सकयल वता, वा सोडटात. कर, सेवा, राउंडिंग आनी फारीकपणाच्यो ओळी “उपबेरीज” फाटल्यान वतात.
 reprint_incl	छापणीत
 reprint_skip	सोडात
 reprint_skip_meta	परत छापणी सोडात
@@ -178,20 +197,20 @@ snack_secs_ph	सेकंद (3–60, सामान्य 10)
 snack_secs_save	सावधानाचो वेळ सांबाळात
 snack_secs_saved	सावधानाचो वेळ सांबाळलो — {n} सेकंद
 settings_sec_whatsapp	WhatsApp
-whatsapp_cloud_help	Use your own Meta WhatsApp Cloud API. Create a System User token with whatsapp_business_messaging (temporary dashboard tokens expire). Credentials stay on this Server only — never on extra tills. Accepted means Meta took the request, not that the guest received it.
-whatsapp_phone_id_ph	Phone Number ID
-whatsapp_token_ph	Access Token (leave blank to keep)
-whatsapp_template_ph	Bill template name (optional)
-whatsapp_template_lang_ph	Template language (e.g. en)
-whatsapp_enable	Enable
+whatsapp_cloud_help	तुमचो स्वताचो Meta WhatsApp Cloud API वापरात. whatsapp_business_messaging आशिल्लो System User टोकन तयार करात (डॅशबोर्डाचे तात्पुरते टोकन सोंपतात). ही म्हायती फकत ह्या सर्वराचेर उरता — अतिरिक्त टिलांचेर केन्नाच ना. “स्वीकारलें” म्हळ्यार Meta-न विनंती घेतली, सोयऱ्याक संदेश मेळ्ळो अशें न्हय.
+whatsapp_phone_id_ph	फोन नंबर ID
+whatsapp_token_ph	ॲक्सेस टोकन (तोच दवरपाक रितो सोडात)
+whatsapp_template_ph	बिल टेम्पलेटाचें नांव (ऐच्छिक)
+whatsapp_template_lang_ph	टेम्पलेटाची भास (देखीक en)
+whatsapp_enable	चालू करात
 whatsapp_disable	Off
-whatsapp_save	Save WhatsApp
-whatsapp_test	Test connection
-whatsapp_disconnect	Disconnect
-whatsapp_send_bill	Send via WhatsApp
+whatsapp_save	WhatsApp सांबाळात
+whatsapp_test	जोडणी तपासात
+whatsapp_disconnect	जोडणी तोडात
+whatsapp_send_bill	WhatsApp वरवीं धाडात
 whatsapp_consent	WhatsApp OK
-whatsapp_consent_help	Guest agreed to receive WhatsApp messages. A phone number alone is not consent.
-whatsapp_server_only	Configure WhatsApp on the shop Server device
+whatsapp_consent_help	सोयऱ्यान WhatsApp संदेश घेवपाक मान्यताय दिल्या. फकत फोन नंबर आसप म्हळ्यार मान्यताय न्हय.
+whatsapp_server_only	WhatsApp दुकानाच्या सर्वर साधनाचेर सेट करात
 settings_sec_backup	बॅकअप & पुनर्स्थापना
 settings_sec_diag	निदान करप
 settings_sec_privacy	गुपितताय
@@ -509,7 +528,7 @@ expense_heading	खर्च करप
 export_day	निर्यात दीस
 extra_note_bill_ph	ह्या बिलाचेर / विक्रीचेर अतिरिक्त टिप
 extra_note_expense_ph	निमाण्या खर्चाचेर अतिरिक्त टिप
-extra_tills_heading	जो मेरेन अतिरिक्त
+extra_tills_heading	अतिरिक्त टिल
 other_devices_help_heading	हेर साधनां सेट करात
 other_devices_help	ह्या डिव्हायसाचेर (सर्व्हर): हेर साधनां → अतिरिक्त टिल्स परवानगी दिवची. जोडणी कोड आनी Wi‐Fi पत्तो लक्षांत घेयात. दिसल्यार हेर डिव्हायसांक जोडणी करपाक परवानगी दिवची टॅप करात. संगणकाचेर, ह्या संगणका वरवीं सुरू करात टॅप करात. एकामेकांच्या डिव्हायसाचेर: ऍप्लिकेशन स्थापीत करात, क्लायंट मोड निवडात, दुकानाचो सर्वर सोदून काडात (वा पत्तो टाइप करात), जोडणी कोड दाखयात, आतां जोडणी करात. Wi‐Fi सोडल्यार ऑर्डर डिव्हायसाचेर वाट पळयतात आनी सर्वर परतून जाप दितना वतात. किचन प्रिंटर सर्वराचेर सेट केल्यात (सेटिंगां → प्रिंटर) — अतिरिक्त टिल्स थंय KOT धाडटात.
 forget_shop	हें दुकान विसरात
@@ -637,7 +656,7 @@ choose_device_use	सर्वर वा क्लायंट निवडा�
 paired_note	जोडीदार केल्लें. विकपाक उगडात, वा नवीनतम खातीर ताजें करात.
 last_update_at	निमाणें अद्ययावत: {time}.
 pair_intro	सर्वर सोदून काडात, वा ताचो पत्तो आनी जोडणी कोड टाइप करात.
-pair_resume_hint	Already paired — enter your shop PIN, or Forget this shop to pair another.
+pair_resume_hint	पयलींच जोडिल्लें आसा — तुमच्या दुकानाचो PIN घालात, वा दुसरें दुकान जोडपाक “हें दुकान विसरात” दामात.
 queue_waiting	दुकानांत पावपाची वाट पळयतना ({n}):
 queue_tries	{n} वेळा प्रयत्न केला · निमाणी जाप: {e}
 save_backup_copy	बॅकअप प्रत जतनाय घेयात...
@@ -754,13 +773,18 @@ station_vps_dd	ह्या स्टेशनाचे प्रिंटर
 station_vps_dd_n	{n} मुद्रक (मुद्रक) · बदलपाक टॅप करात
 bill_printers_dd	बिला खातीर प्रिंटर
 bill_printers_dd_n	{n} बिला खातीर मुद्रक (मुद्रक) · बदलपाक टॅप करात
-paper_heading	कागद
+paper_heading	आभासी कागद
 paper_size	{w} × {h} mm
 paper_roll	{w} mm रोल
 paper_not_set	कागद अजून खबर ना
-paper_length_mm	लांबाय (mm)
-printer_paper_help	ह्या प्रिंटराचो कागद mm त। रिकामी लांबाय म्हळ्यार रोल: दरेक पावती तिच्या मजकुरा इतली लांब जाता। प्रिंटर सोदून काडात रिकामो कागद प्रिंटराच्या ड्रायव्हरांतल्यान भरता (सांगूंक जायना जाल्यार 80 mm रोल) आनी आदींच थारायल्लो कागद केन्नाच बदलना।
-preview_help	सकयल वेंचिल्ल्या प्रिंटराच्या कागदार ही पावती, थंय छापतात तशी: प्रिंटर पावता त्या वयल्या दाव्या कोनशांतल्यान खऱ्या मापांत (भुरको: पावना ते देग), लांब पावती चड पानांचेर, कागदाच्या देगेभायलें सगळें कातरता। प्रिंटर वेंचल्यार फकत पूर्वावलोकन बदलता; दरेक प्रिंटराचो कागद प्रिंटर हांगा थारायतात।
+virtual_width_mm	आभासी रुंदाय (mm)
+virtual_length_mm	आभासी लांबाय (mm)
+reported_width_mm	कळयिल्ली रुंदाय (mm)
+reported_length_mm	कळयिल्ली लांबाय (mm)
+reported_paper	कळयिल्लें: {paper}
+virtual_paper	आभासी: {paper}
+printer_paper_help	कळयिल्लें म्हळ्यार ह्या प्रिंटराचो ड्रायव्हर ज्या कागदाचेर सेट आसा तो कागद; ऍप तो फकत वाचता, आनी “लागू ना” म्हळ्यार विचारपाक ड्रायव्हर ना. आभासी म्हळ्यार प्रिंटरांत खरेंच आसा अशें तुमी सांगतात तो कागद, mm हातूंत; रिकामी लांबाय म्हळ्यार रोल. प्रिंटर आपल्याच कागदाचेर छापता; आभासी कागद ऍपाक सांगता तातूंतलो कितलो खरो कागद, पूर्वावलोकन, पानाची लांबाय आनी पावतीची सुवात हांचे खातीर. प्रिंटर सोदून काडात रिकामो आभासी कागद भरता आनी तुमी सेट केल्लो केन्नाच बदलना.
+preview_help	ही पावती सकयल वेंचिल्ल्या प्रिंटराचेर छापतात तशी, ताच्या आभासी कागदाचेर खऱ्या मापांत. धवें म्हळ्यार छापता ती सुवात, भुरक्या कागदामेरेन प्रिंटर पावना, आनी फिकी शाय कातरतात. णव चौकोन म्हळ्यार कागद: पावती खंय बसची थंय टॅप करात. लांब पावती चड पानांचेर वता. प्रिंटर वेंचल्यार फकत पूर्वावलोकन बदलता.
 job_layout	रचणाय
 job_delivery	नोकरी कशी धाडटात
 job_delivery_help	ओएस दस्तावेज, कच्चे बाइट, वा ईएससी/पीओएस. बिल आनी रांदचे कुडीची तिकेट दरेकीं आपलीच दवरतात. एकूय काम खंयच्याय प्रिंटरांत वचूंक शकता Find has save.
@@ -971,7 +995,7 @@ pin_hint_choose	4–12 अंक निवडात · जतनाय घेव
 pin_hint_new	नवो 4–12 अंकांचो मालक पिन · दाखयात वा उगडात
 pin_hint_shop_code	दुकान साधन · जोडणी कोड {}
 pin_hint_books	ह्या साधनांत पुस्तकां दवरतात
-pin_hint_paired	जोडी मेरेन अतिरिक्त — विकपाक उगडावप
+pin_hint_paired	अतिरिक्त टिल जोडलें — विकपाक अनलॉक करात
 pin_hint_pair_first	अतिरिक्त टिल्ल — पयलीं दुकानाच्या साधनाक जोडप
 unlock_to_continue	चालू दवरपाक उगडात
 no_staff_yet	अजून कर्मचारी ना — मालक म्हणून उगडात, मागीर पंगड
@@ -1048,7 +1072,7 @@ add_a_table	एक टेबल जोडचें
 add_station_heading	रांदचीकूड स्टेशन जोडचें
 categories_help	त्या वर्गा खाला वयर दिल्लें आयटम फायल करपाक वापरात टॅप करात. फोटो वर्गाक चित्र दिता; एक नासतना तो आपलीं आद्याक्षरां दाखयता.
 dish_search_ph	आयटमाचें नांव — आमचे पदार्थ सोदचे वा तुमचे स्वताचे टाइप करात
-tile_free	फुकट
+tile_free	रिकामें
 tile_occupied	सुवात घेतल्या
 tile_food_ready	जेवण तयार
 tile_bill_printed	बिल छापलें
@@ -1163,7 +1187,7 @@ kot_show_station	स्टेशन
 kot_hide_station	स्टेशन लिपोवप
 kot_show_table	मेज
 kot_hide_table	टेबल लिपोवप
-kot_show_kot_no	कॅट क्रमांक 1
+kot_show_kot_no	KOT क्र.
 kot_hide_kot_no	लिपोवप केओटी क्रमांक 1
 kot_width	पूर्वावलोकन रॅप (KOT टॅबचेर सामुग्री रुंदाय सेट करात)
 kot_width_58	58 mm
@@ -1266,8 +1290,8 @@ taxable_value	करपात्र मोल
 gst_inside_price_note	({tax} समावेशक)
 start_with_template	आमच्या मेनू साच्यान सुरवात करात
 template_heading	आमचो मेनू साचा
-template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
-template_download_shelf	Download photo shelf
+template_need_download	पदार्थांचो सार्वजनीक फोटो शेल्फ (~1,459 पदार्थ) डाउनलोड करात, मागीर नाशिल्लीं नांवां तुमच्या मेनूंत आयात करात.
+template_download_shelf	फोटो शेल्फ डाउनलोड करात
 template_info	{c} श्रेणी आनी {d} फोटो आशिल्ले पदार्थ, जोडपाक तयार. दर ₹0 सावन सुरू जातात — उपरांत तुमचें थारायचें.
 template_import	पुराय साचो आयात कर
 template_confirm	तांच्या वर्गांत {d} पदार्थ जोडात? तुमचे कडेन पयलींच आशिल्ले पदार्थ तशेच उरतात.
@@ -1325,7 +1349,7 @@ kot_show_title	शिर्षक ओळ
 kot_hide_title	शिर्षक लिपोवप
 kot_field_cycle	फुडलें निवडात
 kot_field_select	फुडलें निवडात
-dishes_n	0 पदार्थ {n}
+dishes_n	{n} पदार्थ
 recipe_ph	पाककृती (पर्यायी) — एक भाग वापरता: तांदूळ=0.2, पनीर=0.15
 reorder_ph	हांगा चड खरेदी करात
 set_reorder	रिऑर्डर लेव्हल सेट करात

@@ -101,6 +101,19 @@ bill_item_col_sep	Линии столбцов
 slip_columns	Столбцы
 slip_col_header	Заголовок
 bill_line_logo	Логотип
+bill_line_shop	Магазин
+bill_line_address	Адрес
+bill_line_fssai	FSSAI
+bill_line_title	Заголовок
+bill_line_customer	Клиент
+bill_line_bill_no	№ счёта
+bill_line_time	Время
+bill_line_cashier	Кассир
+bill_line_table	Стол
+bill_line_items	Позиции
+bill_line_total	Итого
+bill_line_footer	Нижняя строка
+bill_line_upi	UPI
 bill_logo_picture	Изображение
 bill_logo_choose	Выбрать изображение
 bill_logo_remove	Удалить изображение
@@ -128,6 +141,12 @@ bill_item_piece_off	Выкл
 bill_total_qty	Всего шт.
 bill_total_subtotal	Промежуточный
 bill_total_grand	Итого
+bill_total_number_under	Число под
+bill_total_caption_under	Подпись под
+bill_total_own_line	Своя строка
+bill_total_caption_with	Вместе с числом
+bill_total_caption_none	Без подписи
+bill_total_place_help	«Своя строка» печатает этот итог отдельно. Под столбцом его число печатается в этом столбце товаров, размером и жирностью этой строки; итоги делят один ряд, пока столбец не занят, затем начинается новый ряд. Подпись идёт вместе с числом, под другим столбцом или не печатается. Строки налога, сервиса, округления и оплаты следуют за «Промежуточный».
 reprint_incl	В печати
 reprint_skip	Пропустить
 reprint_skip_meta	Без повторной печати
@@ -178,20 +197,20 @@ snack_secs_ph	Секунды (3–60, по умолчанию 10)
 snack_secs_save	Сохранить время уведомлений
 snack_secs_saved	Время уведомлений сохранено — {n} с
 settings_sec_whatsapp	WhatsApp
-whatsapp_cloud_help	Use your own Meta WhatsApp Cloud API. Create a System User token with whatsapp_business_messaging (temporary dashboard tokens expire). Credentials stay on this Server only — never on extra tills. Accepted means Meta took the request, not that the guest received it.
-whatsapp_phone_id_ph	Phone Number ID
-whatsapp_token_ph	Access Token (leave blank to keep)
-whatsapp_template_ph	Bill template name (optional)
-whatsapp_template_lang_ph	Template language (e.g. en)
-whatsapp_enable	Enable
+whatsapp_cloud_help	Используйте собственный Meta WhatsApp Cloud API. Создайте токен System User с whatsapp_business_messaging (временные токены из панели истекают). Данные остаются только на этом Сервере — никогда на дополнительных кассах. «Принято» означает, что Meta приняла запрос, а не что гость его получил.
+whatsapp_phone_id_ph	ID номера телефона
+whatsapp_token_ph	Токен доступа (оставьте пустым, чтобы сохранить прежний)
+whatsapp_template_ph	Название шаблона счёта (необязательно)
+whatsapp_template_lang_ph	Язык шаблона (например, en)
+whatsapp_enable	Включить
 whatsapp_disable	Off
-whatsapp_save	Save WhatsApp
-whatsapp_test	Test connection
-whatsapp_disconnect	Disconnect
-whatsapp_send_bill	Send via WhatsApp
-whatsapp_consent	WhatsApp OK
-whatsapp_consent_help	Guest agreed to receive WhatsApp messages. A phone number alone is not consent.
-whatsapp_server_only	Configure WhatsApp on the shop Server device
+whatsapp_save	Сохранить WhatsApp
+whatsapp_test	Проверить соединение
+whatsapp_disconnect	Отключить
+whatsapp_send_bill	Отправить через WhatsApp
+whatsapp_consent	WhatsApp ОК
+whatsapp_consent_help	Гость согласился получать сообщения WhatsApp. Один лишь номер телефона — не согласие.
+whatsapp_server_only	Настройте WhatsApp на устройстве Сервер магазина
 settings_sec_backup	Резервное копирование и восстановление
 settings_sec_diag	Диагностика
 settings_sec_privacy	Конфиденциальность
@@ -637,7 +656,7 @@ choose_device_use	Выберите, как используется это ус�
 paired_note	Подключено. Разблокируйте для продаж или нажмите «Обновить», чтобы получить свежие данные.
 last_update_at	Последнее обновление от заведения: {time}.
 pair_intro	Найдите сервер или введите его адрес и код подключения.
-pair_resume_hint	Already paired — enter your shop PIN, or Forget this shop to pair another.
+pair_resume_hint	Уже подключено — введите PIN вашего магазина или нажмите «Забыть этот магазин», чтобы подключить другой.
 queue_waiting	Ждут отправки в заведение ({n}):
 queue_tries	Попыток: {n} · последний ответ: {e}
 save_backup_copy	Сохранить резервную копию…
@@ -754,13 +773,18 @@ station_vps_dd	Принтеры этой станции
 station_vps_dd_n	{n} принтер(ов) · нажмите, чтобы изменить
 bill_printers_dd	Принтеры для чека
 bill_printers_dd_n	{n} принтер(ов) для чека · коснитесь, чтобы изменить
-paper_heading	Бумага
+paper_heading	Виртуальная бумага
 paper_size	{w} × {h} mm
 paper_roll	рулон {w} мм
 paper_not_set	бумага пока неизвестна
-paper_length_mm	Длина (mm)
-printer_paper_help	Бумага этого принтера в мм. Пустая Длина — это рулон: каждый чек такой длины, как его содержимое. «Найти принтеры» заполняет пустую бумагу из драйвера принтера (рулон 80 мм, если он не может сказать) и никогда не меняет уже заданную.
-preview_help	Этот чек на бумаге принтера, выбранного ниже, так, как он там печатается: в реальном размере от верхнего левого угла, до которого достаёт принтер (серым: края, до которых не достаёт), длинный чек на нескольких листах, всё за краем бумаги обрезается. Выбор принтера меняет только предпросмотр; бумага каждого принтера задаётся в «Принтеры».
+virtual_width_mm	Виртуальная ширина (mm)
+virtual_length_mm	Виртуальная длина (mm)
+reported_width_mm	Сообщённая ширина (mm)
+reported_length_mm	Сообщённая длина (mm)
+reported_paper	Сообщено: {paper}
+virtual_paper	Виртуальная: {paper}
+printer_paper_help	Сообщённая — это бумага, на которую настроен драйвер этого принтера; приложение только читает её, а «нет» значит, что драйвера, который можно спросить, нет. Виртуальная — это бумага, которая, по вашим словам, действительно лежит в принтере, в мм; пустая длина — это рулон. Принтер печатает на своей бумаге; виртуальная бумага сообщает приложению, какая её часть — настоящая бумага: для предпросмотра, длины страницы и места чека. «Найти принтеры» заполняет пустую виртуальную бумагу и никогда не меняет заданную вами.
+preview_help	Этот чек так, как он печатается на принтере, выбранном ниже, в реальном размере на его виртуальной бумаге. Белое — там, где он печатает, серая бумага вне досягаемости принтера, а бледные чернила обрезаются. Девять квадратов — это бумага: нажмите там, где должен быть чек. Длинный чек продолжается на следующих страницах. Выбор принтера меняет только предпросмотр.
 job_layout	Макет
 job_delivery	Как отправляется задание
 job_delivery_help	Документ ОС, сырые байты или ESC/POS. Чек и кухонный тикет хранятся отдельно. Каждое задание может быть отправлено на любой найденный принтер.
@@ -1040,7 +1064,7 @@ book_kind_today	Книга за сегодня
 book_kind_month	Книга за этот месяц
 book_kind_aging	Задолженность / дебет-кредит
 book_kind_balance	Баланс
-order_help	Выберите открытый заказ или стол, чтобы начать новый. Нажимайте готовые позиции, отправляйте KOT, выставляйте счёт на одну или несколько позиций, делите счёт и принимайте оплату.
+order_help	Нажмите на позицию, чтобы добавить её.
 floor_help	Каждый стол показывает, сидят ли гости, каков их открытый счёт и кому нужно обслуживание дальше.
 kitchen_help	Отслеживайте готовность по варианту или по позиции — записывайте в KOT как удобно.
 kitchen_empty	Сейчас ничего не открыто.
@@ -1205,7 +1229,7 @@ kot_footer_ph	Кухонная заметка (необязательно, бе�
 kot_preview	Просмотр
 test_kot_format	Тест KOT
 test_kot_sent	Предпросмотр кухонного чека отправлен
-test_bill_format	Тест билла
+test_bill_format	Тестовый счёт
 test_bill_sent	Предпросмотр билла отправлен
 test_print_no_printer	Принтер для этого задания отсутствует — выберите один на этом экране
 std_print	Размер печати счёта
@@ -1238,7 +1262,7 @@ on_your_menu	Уже в вашем меню
 edit	Изменить
 schemes	Акции
 schemes_help	Купи X получи Y — при оплате. Напр. Buy 2 Thali get 1 Chaas
-scheme_bogo_ph	Buy 2 Thali get 1 Chaas
+scheme_bogo_ph	Купите 2 Thali — 1 Chaas в подарок
 add_scheme	Добавить BOGO
 schedule_ph	Часы / happy hour — Mon-Fri 07:00-11:00 или HappyHour 17:00-19:00=150
 upi_qr	UPI QR
@@ -1266,8 +1290,8 @@ taxable_value	Налогооблагаемая база
 gst_inside_price_note	({tax} включён)
 start_with_template	Начать с нашего шаблона меню
 template_heading	Наш шаблон меню
-template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
-template_download_shelf	Download photo shelf
+template_need_download	Загрузите общую полку с фото блюд (~1459 блюд), затем импортируйте недостающие названия в своё меню.
+template_download_shelf	Загрузить полку с фото
 template_info	{c} категорий и {d} блюд с фото готовы к добавлению. Цена ₹0 — укажите свою позже.
 template_import	Импортировать весь шаблон
 template_confirm	Добавить {d} блюд с категориями? Ваши блюда останутся как есть.

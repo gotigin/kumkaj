@@ -42,7 +42,7 @@ add_item	मेनू आइटम जोड़ो
 new_item	नई मेनू आइटम
 adding_item	इक नमां मेनू आइटम जोड़ना
 editing_item	संपादन करना
-save	बचाओ
+save	सेव करो
 remove	हटाओ
 removed_items	मेनू आइटम हटा दी गई
 removed_help	रिस्टोर आइटम गी वापस आइटम च ठीक उस्सै चाल्लीं रखदा ऐ जिस्सै चाल्लीं ओह् हा — कीमत, फोटो ते श्रेणी।
@@ -68,7 +68,7 @@ applied	लागू कीता
 note_ph	नोट (वैकल्पिक) ऐ।
 rounded	गोल कीता
 split	बंटवारा हो जाओ
-bill_item_layout	मेनू मेनू आइटम लेआउट
+bill_item_layout	मेनू आइटम लेआउट
 bill_item_layout_columns	स्तंभ
 bill_item_layout_stacked	ढेर हो गया
 bill_item_header	कॉलम हेडर
@@ -79,13 +79,19 @@ bill_item_amount	रकम
 bill_item_note	आरएक्स / बिक्री नोट
 bill_item_col_sep	स्तंभ नियम
 slip_col_width	चौड़ाई (mm)
-paper_heading	कागज
+paper_heading	आभासी कागज
 paper_size	{w} × {h} mm
 paper_roll	{w} mm रोल
 paper_not_set	कागज अजें पता नेईं
-paper_length_mm	लम्बाई (mm)
-printer_paper_help	इस प्रिंटर दा कागज mm च। खाली लम्बाई दा मतलब रोल: हर पर्ची अपनी सामग्री जिन्नी लम्मी होंदी ऐ। प्रिंटर ढूंढो खाली कागज प्रिंटर दे ड्राइवर थमां भरदा ऐ (नेईं दस्सी सकै तां 80 mm रोल) ते पैह्लें थमां तय कागज कदें नेईं बदलदा।
-preview_help	एह् पर्ची थल्लै चुने दे प्रिंटर दे कागज उप्पर, जियां उत्थें छपदी ऐ: प्रिंटर जित्थें तगर पुज्जदा ऐ उस उप्परले खब्बे कूने थमां असली नाप च (स्लेटी: जित्थें नेईं पुज्जदा), लम्मी पर्ची होर पन्नें उप्पर, कागज दे कंढे थमां अग्गें दा हिस्सा कट्टी जंदा ऐ। प्रिंटर चुनने कन्नै सिर्फ झलक बदलदी ऐ; हर प्रिंटर दा कागज प्रिंटर च तय होंदा ऐ।
+na	एन / ए
+virtual_width_mm	आभासी चौड़ाई (mm)
+virtual_length_mm	आभासी लम्बाई (mm)
+reported_width_mm	दस्सी गेदी चौड़ाई (mm)
+reported_length_mm	दस्सी गेदी लम्बाई (mm)
+reported_paper	दस्सेआ गेआ: {paper}
+virtual_paper	आभासी: {paper}
+printer_paper_help	दस्सेआ गेआ ओह् कागज ऐ जिस उप्पर इस प्रिंटर दा ड्राइवर सेट ऐ; ऐप उसी सिर्फ पढ़दा ऐ, ते एन / ए दा मतलब ऐ जे पुच्छने आस्तै कोई ड्राइवर नेईं ऐ। आभासी ओह् कागज ऐ जेह्ड़ा तुस आखदे ओ जे प्रिंटर च सच्चें गै लग्गे दा ऐ, mm च; खाली लम्बाई दा मतलब रोल ऐ। प्रिंटर अपने कागज उप्पर छापदा ऐ; आभासी कागज ऐप गी दसदा ऐ जे उस चा किन्ना असली कागज ऐ, झलक, पन्ने दी लम्बाई ते पर्ची दी जगह आस्तै। प्रिंटर ढूंढो खाली आभासी कागज भरी दिंदा ऐ ते तुंदा सेट कीते दा कदें नेईं बदलदा।
+preview_help	एह् पर्ची जियां थल्लै चुने दे प्रिंटर उप्पर छपदी ऐ, उसदे आभासी कागज उप्पर असली नाप च। चिट्टी जगह उप्पर छपदा ऐ, स्लेटी कागज तगर प्रिंटर नेईं पुज्जदा, ते फिक्की स्याही कट्टी जंदी ऐ। नौ खाने कागज न: जित्थें पर्ची बौह्नी चाहिदी उत्थें टैप करो। लम्मी पर्ची होर पन्नें उप्पर जंदी ऐ। प्रिंटर चुनने कन्नै सिर्फ झलक बदलदी ऐ।
 slip_col_start	शुरू दी थाह् (px)
 slip_col_end	अंत दी थाह् (px)
 slip_columns_help	हर स्तंभ दी चौड़ाई च उसदी शुरू ते अंत दी थाह् शामल ऐ। लिखत अपने स्तंभ दे अंदर लपेटोंदी ऐ; सामग्री दी चौड़ाई थमां बाह्र जो ऐ ओह् कागज ते पूर्वावलोकन दोनें च कट्टी जंदा ऐ।
@@ -100,6 +106,12 @@ bill_item_piece_off	बंद
 bill_total_qty	कुल मात्रा
 bill_total_subtotal	उप कुल
 bill_total_grand	ग्रांड टोटल
+bill_total_number_under	संख्या इसदे थल्लै
+bill_total_caption_under	लेबल इसदे थल्लै
+bill_total_own_line	अपनी लाइन
+bill_total_caption_with	संख्या कन्नै
+bill_total_caption_none	कोई लेबल नेईं
+bill_total_place_help	“अपनी लाइन” इस कुल गी इक्कला छापदा ऐ। स्तंभ दे थल्लै होने पर इसदी संख्या उस्सै आइटम स्तंभ च, इस लाइन दे नाप ते मोटाई च छपदी ऐ; जदूं तगर कोई स्तंभ भरी नेईं जंदा कुल इक्कै कतार बंडदे न, फ्ही नमीं कतार शुरू होंदी ऐ। लेबल संख्या कन्नै, दूए स्तंभ दे थल्लै जंदा ऐ, जां छड्डी दित्ता जंदा ऐ। टैक्स, सेवा, राउंडिंग ते भुगतान दियां लाइनां “उप कुल” दे पिच्छें चलदियां न।
 kot_unassigned	अनसाइन कीता गेदा
 settings_hub_help	इक बारी च इक इलाका खोलो — कम स्क्रॉल, साफ विकल्प।
 settings_sec_language	भाषा & मुद्रा
@@ -143,7 +155,7 @@ diag_cleared	डायग्नोस्टिक लॉग साफ हो ग
 sidebar_settings	साइडबार
 sidebar_settings_help	साइड रेल दे समान आइकन। फिर से क्रमबद्ध करने लेई इक पंक्ति खींचो। दिखाने या छिपाने के लिए स्विच फ्लिप करो। सेटिंग्स ते लॉक हमेशा बार पर गै रौंह्दे न।
 sidebar_always_on_short	सदा चालू
-sidebar_menu_items	मेनू मेनू आइटम
+sidebar_menu_items	आइटम
 sidebar_enable_all	सारे सक्षम करो
 sidebar_disable_all	सारे अक्षम करो
 sidebar_order_saved	साइडबार आर्डर बचाया
@@ -156,11 +168,11 @@ nav_settings	सेटिंग्स
 nav_lock	ताला लगाओ
 all_items	सारे मेनू आइटम
 frequent	बार बार
-added_items	मेनू मेनू आइटम जोड़े गए
+added_items	मेनू आइटम जोड़े गए
 added_items_empty	इस बिल पर अजें तगर किश नेईं — सारे आइटम जां इक श्रेणी थमां इक आइटम जोड़ो।
 frequent_config_help	ज्यादातर बिकने आली चीजां पूरा कीते गेदे बिलें थमां। कितने दिनें गी दिक्खना ते कितने आइटम दस्सना ऐ, सेट करो।
 frequent_days_ph	दिन (१) ऐ.
-frequent_limit_ph	मेनू मेनू आइटम (24) ऐ।
+frequent_limit_ph	मेनू आइटम (24) ऐ।
 frequent_apply	आवेदन करो
 frequent_saved	बार-बार: पिछले {d} दिन (s), शीर्ष {n} — {c} आइटम
 frequent_empty	इस अवधि च अजें तगर कोई पूरी बिक्री नेईं — इक बिल दा निपटारा करो (₹0 दी अनुमति जिसलै सेटिंग्स ऐसा आखदी ऐ) ते ओह् इत्थै दस्सदे न।
@@ -325,7 +337,7 @@ goods_received	माल मिल गया
 import_day	आयात दिवस
 import_items_csv_plain	मेनू आइटम आयात करो CSV...
 import_parties_csv	आयात ग्राहक ते आपूर्तिकर्ता CSV...
-item_name	मेनू मेनू आइटम दा नाम
+item_name	मेनू आइटम दा नाम
 login_id_ph	यूजरनेम
 mark_cleared	मार्क ने साफ कर दित्ता
 new_party_clear	नमां ग्राहक जां आपूर्तिकर्ता (साफ फार्म)
@@ -338,7 +350,7 @@ on_account_ap	खाते पर (एपी)
 org_optional_ph	संगठन (वैकल्पिक) ऐ
 paid_by	द्वारा भुगतान कीता
 paid_now	भुगतान कर दिया हुन
-pair_now	जोड़ी अब
+pair_now	हून जोड़ो
 pairing_code_ph	जोड़ी बनाना कोड
 party_name_selected_ph	ग्राहक जां आपूर्तिकर्ता दा नांऽ (जां चुनेआ गेदा इस्तेमाल)
 password_ph	पासवर्ड
@@ -374,7 +386,7 @@ history_hours_saved	इतिहास घंटे बचाया
 rollup	सारांश रोलअप करना
 save_brand	ब्रांड बचाओ
 save_business_id	बिजनेस आईडी बचाओ
-save_features	बचाओ
+save_features	सेव करो
 save_features_named	{name} बचाओ
 save_features_ok	{name} लेई सेव कीता गेदा सेटअप
 save_names	नाम बचाओ
@@ -470,7 +482,7 @@ route_cleared	साफ हो गया {name}
 route_tap_selected	चयनित कीता गेआ
 printer_target_ph	सिस्टम प्रिंटर दा नांऽ जां मेजबान:9100
 printer_target_default	इस कंप्यूटर दा सामान्य प्रिंटर (खाली पता)
-route_bill	मेहमान बिल
+route_bill	बिल
 station_print_pick_first	पैह्ले इक औषधालय दा खंड चुनो
 bill_printers_dd	बिल लेई प्रिंटर
 bill_printers_dd_n	{n} बिल लेई प्रिंटर · बदलने लेई टैप करो
@@ -595,7 +607,7 @@ wipe_schema_done	दुकान सेटअप मिटा गेआ — ज�
 rounded_total	गोल कुल
 setup_app_tabiyat	तबियात सेट कर दे
 shop_logo_optional	दुकान दा लोगो (वैकल्पिक)
-stock_type_help	मेनू आइटम दा नांऽ (इसदा इक हिस्सा काफी ऐ), इक मात्रा टाइप करो, फिर समायोजित करो। मेनू मेनू आइटम जेह् ड़े अजें तगर गिने गेदे नेईं न, उ’नेंगी इक बारी ट्रैकिंग शुरू करने दी लोड़ ऐ।
+stock_type_help	मेनू आइटम दा नांऽ (इसदा इक हिस्सा काफी ऐ), इक मात्रा टाइप करो, फिर समायोजित करो। मेनू आइटम जेह् ड़े अजें तगर गिने गेदे नेईं न, उ’नेंगी इक बारी ट्रैकिंग शुरू करने दी लोड़ ऐ।
 team_owner_help	किसे गी जोड़ने लेई व्यक्ति गी खाली छोड़ो: नांऽ, नौकरी, यूजरनेम, PIN, ते इक वैकल्पिक पासवर्ड, फिर जोड़ो. उस्सै किस्म दे फार्म गी संपादत करने आस्तै इक माह् नू चुनो — नांऽ, यूजरनेम, पासवर्ड, स्क्रीन, ते अधिकार — फिर सेव करो. तुंदा अपना PIN ते पासवर्ड थल्ले इक साइन-इन ऐ। मालिक किसे होर दा PIN नहीं बदलदा।
 staff_name_ph	स्टाफ दा नाम
 staff_copy_hire_ph	(वैकल्पिक) थमां सेटअप दी नकल करो
@@ -641,7 +653,7 @@ icon_default	आइकन: Kumkaj निशान (डिफ़ॉल्ट) —
 logo_yours	लोगो: तुंदी दुकान दा लोगो — स्क्रीन ते रसीदें पर दस्सेआ गेदा ऐ
 logo_default	लोगो: Kumkaj निशान (डिफ़ॉल्ट) — जेकर तुंदे कोल ऐ तां अपना चुनो
 setup_complete	सेटअप पूरा होई गेआ
-onboard_fresh_tmpl	ताजा · {} — कैटलॉग खाली शुरू होंदी ऐ; मेनू मेनू आइटम च मेनू आइटम जोड़ो, फिर पूरा होई गेआ।
+onboard_fresh_tmpl	ताजा · {} — कैटलॉग खाली शुरू होंदी ऐ; मेनू आइटम च मेनू आइटम जोड़ो, फिर पूरा होई गेआ।
 onboard_book_tmpl	लेजर · {} — मेनू आइटम ते ओपनिंग क्रेडिट जोड़ो, फिर पूरा होई गेआ।
 tmpl_blurb	फार्मेसी काउंटर: दवाईयां, बैच/एक्सपायरी, खाटा, किताबें।
 reports_facet_title	रिपोर्टां दी
@@ -735,6 +747,20 @@ fssai_ph	नशा लाइसेंस न. (वैकल्पिक — त�
 bill_footer_ph	पाद लेख (जैसे धन्यवाद, दोबारा दौरा करो)
 kot_field_on	दिखाओ
 kot_field_off	छुपा दे
+kot_field_show	दिखाओ
+kot_field_hide	छुपा दे
+bill_line_shop	दुकान
+bill_line_address	पता
+bill_line_fssai	FSSAI
+bill_line_title	शीर्षक
+bill_line_customer	ग्राहक
+bill_line_bill_no	बिल नं.
+bill_line_time	वक्त
+bill_line_cashier	कैशियर जी
+bill_line_items	आइटम
+bill_line_total	कुल
+bill_line_footer	पाद लेख
+bill_line_upi	UPI
 kot_weight_light	रोशनी
 bill_kot_panel_help	बिल लेआउट ते सामग्री दी चौड़ाई। कैशियर ने बिल जारी कीता जां निपटाया — पूरी बिक्री दी कहानी किताबें च गै रौंह्दी ऐ।
 std_size_ph	उदा. 18, 20, 26 ऐ...
@@ -819,7 +845,7 @@ add_dishes	दवाइयां पाओ
 order_so_far	इस आर्डर पर: {n} · {total}
 no_dish_match	कोई बी आइटम “{q}” कन्नै मेल नेईं खंदा।
 pick_done	हो गया
-dishes_n	{n} items
+dishes_n	{n} आइटम
 reorder_ph	पर और खरीदें
 set_reorder	पुनर्क्रमण स्तर सेट करो
 low_stock_alert	कम चलने — जल्द ही खरीदें: {items}
@@ -842,10 +868,10 @@ lane_declared_label	कर चालान दा
 lane_owner_label	नकद ज्ञापन
 money_lane_bill	बिल: {lane} ऐ।
 
-removing	Removing…
-removed	Removed
-updating_order	Updating…
-order_updated	Order updated
+removing	हटाया जा करदा…
+removed	हटाई दित्ता
+updating_order	अपडेट होआ करदा…
+order_updated	ऑर्डर अपडेट होई गेआ
 sel_copy	नकल करो
 sel_select_all	सब चुनो
 sel_copied	नकल होई गेई

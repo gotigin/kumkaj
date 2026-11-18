@@ -101,6 +101,19 @@ bill_item_col_sep	Garis kolom
 slip_columns	Kolom
 slip_col_header	Judul
 bill_line_logo	Logo
+bill_line_shop	Toko
+bill_line_address	Alamat
+bill_line_fssai	FSSAI
+bill_line_title	Judul
+bill_line_customer	Pelanggan
+bill_line_bill_no	No. tagihan
+bill_line_time	Waktu
+bill_line_cashier	Kasir
+bill_line_table	Meja
+bill_line_items	Item
+bill_line_total	Total
+bill_line_footer	Kaki
+bill_line_upi	UPI
 bill_logo_picture	Gambar
 bill_logo_choose	Pilih gambar
 bill_logo_remove	Hapus gambar
@@ -128,6 +141,12 @@ bill_item_piece_off	Nonaktif
 bill_total_qty	Total qty
 bill_total_subtotal	Subtotal
 bill_total_grand	Grand total
+bill_total_number_under	Angka di bawah
+bill_total_caption_under	Label di bawah
+bill_total_own_line	Baris sendiri
+bill_total_caption_with	Bersama angka
+bill_total_caption_none	Tanpa label
+bill_total_place_help	Baris sendiri mencetak total ini sendirian. Di bawah kolom, angkanya dicetak di kolom barang itu, dengan ukuran dan ketebalan baris ini; total berbagi satu baris sampai sebuah kolom terisi, lalu baris baru dimulai. Label ikut bersama angka, di bawah kolom lain, atau tidak dicetak. Baris pajak, layanan, pembulatan, dan pembayaran mengikuti Subtotal.
 reprint_incl	Dalam cetak
 reprint_skip	Lewati
 reprint_skip_meta	Lewati cetak ulang
@@ -178,20 +197,20 @@ snack_secs_ph	Detik (3–60, bawaan 10)
 snack_secs_save	Simpan waktu peringatan
 snack_secs_saved	Waktu peringatan disimpan — {n} detik
 settings_sec_whatsapp	WhatsApp
-whatsapp_cloud_help	Use your own Meta WhatsApp Cloud API. Create a System User token with whatsapp_business_messaging (temporary dashboard tokens expire). Credentials stay on this Server only — never on extra tills. Accepted means Meta took the request, not that the guest received it.
-whatsapp_phone_id_ph	Phone Number ID
-whatsapp_token_ph	Access Token (leave blank to keep)
-whatsapp_template_ph	Bill template name (optional)
-whatsapp_template_lang_ph	Template language (e.g. en)
-whatsapp_enable	Enable
+whatsapp_cloud_help	Gunakan Meta WhatsApp Cloud API milik Anda sendiri. Buat token System User dengan whatsapp_business_messaging (token sementara dari dasbor akan kedaluwarsa). Kredensial hanya tersimpan di Server ini — tidak pernah di kasir tambahan. “Diterima” berarti Meta sudah mengambil permintaan, bukan berarti tamu sudah menerimanya.
+whatsapp_phone_id_ph	ID nomor telepon
+whatsapp_token_ph	Token akses (kosongkan untuk mempertahankan)
+whatsapp_template_ph	Nama templat struk (opsional)
+whatsapp_template_lang_ph	Bahasa templat (mis. en)
+whatsapp_enable	Aktifkan
 whatsapp_disable	Off
-whatsapp_save	Save WhatsApp
-whatsapp_test	Test connection
-whatsapp_disconnect	Disconnect
-whatsapp_send_bill	Send via WhatsApp
+whatsapp_save	Simpan WhatsApp
+whatsapp_test	Uji koneksi
+whatsapp_disconnect	Putuskan sambungan
+whatsapp_send_bill	Kirim lewat WhatsApp
 whatsapp_consent	WhatsApp OK
-whatsapp_consent_help	Guest agreed to receive WhatsApp messages. A phone number alone is not consent.
-whatsapp_server_only	Configure WhatsApp on the shop Server device
+whatsapp_consent_help	Tamu setuju menerima pesan WhatsApp. Nomor telepon saja bukan persetujuan.
+whatsapp_server_only	Atur WhatsApp di perangkat Server toko
 settings_sec_backup	Cadangan & pulihkan
 settings_sec_diag	Diagnostik
 settings_sec_privacy	Privasi
@@ -326,7 +345,7 @@ this_shop	Mode server
 extra_till	Mode klien
 off	Mati
 tables_kitchen	Meja & dapur
-server	Server
+server	Mode server
 client	Klien
 language_currency	Bahasa & mata uang
 language	Bahasa
@@ -509,7 +528,7 @@ expense_heading	Biaya
 export_day	Ekspor hari
 extra_note_bill_ph	Catatan tambahan pada tagihan / penjualan ini
 extra_note_expense_ph	Catatan tambahan pada biaya terakhir
-extra_tills_heading	Til tambahan
+extra_tills_heading	Kasir tambahan
 other_devices_help_heading	Siapkan perangkat lain
 other_devices_help	Di perangkat ini (Server): Til tambahan → Izinkan til tambahan. Catat kode pasangan dan alamat Wi‑Fi. Jika muncul, ketuk Izinkan perangkat lain terhubung. Di komputer, ketuk Mulai dengan komputer ini. Di setiap perangkat lain: pasang aplikasi, pilih Mode klien, Cari server toko (atau ketik alamat), masukkan kode, Pasangkan sekarang. Jika Wi‑Fi putus, pesanan menunggu di perangkat dan dikirim saat Server menjawab.
 forget_shop	Lupakan toko ini
@@ -637,7 +656,7 @@ choose_device_use	Pilih cara perangkat ini digunakan.
 paired_note	Terpasang. Buka kunci untuk menjual, atau Segarkan untuk mengambil data terbaru dari toko.
 last_update_at	Pembaruan terakhir dari toko: {time}.
 pair_intro	Cari server, atau ketik alamat dan kode pasangannya.
-pair_resume_hint	Already paired — enter your shop PIN, or Forget this shop to pair another.
+pair_resume_hint	Sudah dipasangkan — masukkan PIN toko Anda, atau ketuk “Lupakan toko ini” untuk memasangkan toko lain.
 queue_waiting	Menunggu sampai ke toko ({n}):
 queue_tries	{n} kali dicoba · jawaban terakhir: {e}
 save_backup_copy	Simpan salinan cadangan…
@@ -754,13 +773,18 @@ station_vps_dd	Printer stasiun ini
 station_vps_dd_n	{n} printer · ketuk untuk mengubah
 bill_printers_dd	Printer untuk tagihan
 bill_printers_dd_n	{n} printer untuk tagihan · ketuk untuk mengubah
-paper_heading	Kertas
+paper_heading	Kertas virtual
 paper_size	{w} × {h} mm
 paper_roll	gulungan {w} mm
 paper_not_set	kertas belum diketahui
-paper_length_mm	Panjang (mm)
-printer_paper_help	Kertas printer ini dalam mm. Panjang kosong berarti gulungan: setiap struk sepanjang isinya. Cari printer mengisi kertas kosong dari driver printer (gulungan 80 mm bila tidak bisa memberi tahu) dan tidak pernah mengubah kertas yang sudah diatur.
-preview_help	Struk ini di kertas printer yang dipilih di bawah, seperti tercetak di sana: ukuran sebenarnya dari sudut kiri atas yang dapat dijangkau printer (abu-abu: tepi yang tidak terjangkau), struk panjang di lebih banyak lembar, semua yang melewati tepi kertas terpotong. Memilih printer hanya mengubah pratinjau; kertas tiap printer diatur di Printer.
+virtual_width_mm	Lebar virtual (mm)
+virtual_length_mm	Panjang virtual (mm)
+reported_width_mm	Lebar yang dilaporkan (mm)
+reported_length_mm	Panjang yang dilaporkan (mm)
+reported_paper	Dilaporkan: {paper}
+virtual_paper	Virtual: {paper}
+printer_paper_help	Dilaporkan adalah kertas yang diatur pada driver printer ini; aplikasi hanya membacanya, dan “Tidak ada” berarti tidak ada driver yang bisa ditanya. Virtual adalah kertas yang menurut Anda benar-benar ada di printer, dalam mm; panjang kosong berarti gulungan. Printer mencetak di kertasnya sendiri; kertas virtual memberi tahu aplikasi seberapa banyak darinya yang merupakan kertas nyata, untuk pratinjau, panjang halaman, dan letak struk. Cari printer mengisi kertas virtual yang kosong dan tidak pernah mengubah yang sudah Anda atur.
+preview_help	Struk ini seperti saat dicetak di printer yang dipilih di bawah, dalam ukuran sebenarnya di kertas virtualnya. Putih adalah tempat mencetak, kertas abu-abu di luar jangkauan printer, dan tinta pudar terpotong. Sembilan kotak itu adalah kertasnya: ketuk tempat struk seharusnya berada. Struk panjang berlanjut ke halaman berikutnya. Memilih printer hanya mengubah pratinjau.
 job_layout	Tata letak
 job_delivery	Cara pengiriman pekerjaan
 job_delivery_help	Dokumen OS, byte mentah, atau ESC/POS. Tagihan dan tiket dapur masing-masing menyimpannya sendiri. Pekerjaan mana pun dapat dikirim ke printer yang ditemukan oleh Find.
@@ -1040,7 +1064,7 @@ book_kind_today	Buku hari ini
 book_kind_month	Buku bulan ini
 book_kind_aging	Terutang / debit-kredit
 book_kind_balance	Neraca
-order_help	Pilih pesanan terbuka, atau pilih meja dan mulai yang baru. Ketuk item siap, kirim KOT, tagih satu atau lebih item, bagi tagihan, dan selesaikan pembayaran.
+order_help	Ketuk item untuk menambahkannya.
 floor_help	Setiap meja menunjukkan apakah tamu duduk, berapa tagihan terbuka mereka, dan siapa yang butuh pelayanan berikutnya.
 kitchen_help	Lacak yang siap per varian atau per item — catat di KOT sesuai keinginan.
 kitchen_empty	Belum ada yang terbuka.
@@ -1238,7 +1262,7 @@ on_your_menu	Ada di menu Anda
 edit	Ubah
 schemes	Skema
 schemes_help	Beli X dapat Y — otomatis saat bayar. Cth. Buy 2 Thali get 1 Chaas
-scheme_bogo_ph	Buy 2 Thali get 1 Chaas
+scheme_bogo_ph	Beli 2 Thali gratis 1 Chaas
 add_scheme	Tambah BOGO
 schedule_ph	Jam / happy hour — Mon-Fri 07:00-11:00 atau HappyHour 17:00-19:00=150
 upi_qr	UPI QR
@@ -1266,8 +1290,8 @@ taxable_value	Nilai kena pajak
 gst_inside_price_note	({tax} termasuk)
 start_with_template	Mulai dengan templat menu kami
 template_heading	Templat menu kami
-template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
-template_download_shelf	Download photo shelf
+template_need_download	Unduh rak foto hidangan publik (~1.459 hidangan), lalu impor nama yang belum ada ke menu Anda.
+template_download_shelf	Unduh rak foto
 template_info	{c} kategori dan {d} hidangan berfoto siap ditambahkan. Harga mulai ₹0 — atur harga Anda nanti.
 template_import	Impor seluruh templat
 template_confirm	Tambahkan {d} hidangan beserta kategorinya? Hidangan yang sudah ada tetap.

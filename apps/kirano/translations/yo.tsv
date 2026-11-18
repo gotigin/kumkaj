@@ -67,13 +67,19 @@ bill_item_amount	Iye
 bill_item_note	Akọsilẹ nkan
 bill_item_col_sep	Awọn ofin ọwọn
 slip_col_width	Fífẹ̀ (mm)
-paper_heading	Ìwé
+paper_heading	Ìwé foju
 paper_size	{w} × {h} mm
 paper_roll	ìyípo {w} mm
 paper_not_set	a kò tíì mọ ìwé
-paper_length_mm	Gígùn (mm)
-printer_paper_help	Ìwé atẹwe yìí ní mm. Gígùn òfo jẹ́ ìyípo: rísíìtì kọ̀ọ̀kan gùn tó àkóónú rẹ̀. Wa awọn atẹwe ń kún ìwé òfo láti inú awakọ̀ atẹwe (ìyípo 80 mm nígbà tí kò lè sọ) kò sì ní yí èyí tí a ti ṣètò padà láéláé.
-preview_help	Rísíìtì yìí lórí ìwé atẹwe tí a yàn nísàlẹ̀, bí ó ṣe ń tẹ̀ níbẹ̀: ìwọ̀n gidi láti igun òkè òsì tí atẹwe dé (eérú: etí tí kò dé), rísíìtì gígùn lórí ojú-ìwé púpọ̀ sí i, gbogbo ohun tó kọjá etí ìwé ni a gé. Yíyan atẹwe kan ń yí àwòtẹ́lẹ̀ nìkan padà; a ń ṣètò ìwé atẹwe kọ̀ọ̀kan lábẹ́ Awọn ẹrọ atẹwe.
+na	N/A
+virtual_width_mm	Fífẹ̀ foju (mm)
+virtual_length_mm	Gígùn foju (mm)
+reported_width_mm	Fífẹ̀ tí a ròyìn (mm)
+reported_length_mm	Gígùn tí a ròyìn (mm)
+reported_paper	Tí a ròyìn: {paper}
+virtual_paper	Foju: {paper}
+printer_paper_help	Tí a ròyìn ni ìwé tí a ṣètò awakọ̀ atẹwe yìí sí; ohun elo náà ń kà á nìkan, N/A sì túmọ̀ sí pé kò sí awakọ̀ láti bi. Foju ni ìwé tí o sọ pé ó wà nínú atẹwe ní tòótọ́, ní mm; gígùn òfo jẹ́ ìyípo. Atẹwe ń tẹ̀ sórí ìwé tirẹ̀; ìwé foju ń sọ fún ohun elo náà iye rẹ̀ tó jẹ́ ìwé gidi, fún àwòtẹ́lẹ̀, gígùn ojú-ìwé àti ibi tí rísíìtì wà. Wa awọn atẹwe ń kún ìwé foju òfo kò sì ní yí èyí tí o ṣètò padà láéláé.
+preview_help	Rísíìtì yìí bí ó ṣe ń tẹ̀ lórí atẹwe tí a yàn nísàlẹ̀, ní ìwọ̀n gidi lórí ìwé foju rẹ̀. Funfun ni ibi tí ó ń tẹ̀, ìwé eérú kọjá ibi tí atẹwe lè dé, a sì gé tàdáwà tó ṣá. Àwọn onígun mẹ́rin mẹ́sàn-án ni ìwé náà: tẹ ibi tí rísíìtì yẹ kó wà. Rísíìtì gígùn ń lọ sórí ojú-ìwé púpọ̀ sí i. Yíyan atẹwe kan ń yí àwòtẹ́lẹ̀ nìkan padà.
 slip_col_start	Àyè ìbẹ̀rẹ̀ (px)
 slip_col_end	Àyè ìparí (px)
 slip_columns_help	Fífẹ̀ ọ̀wọ̀n kọ̀ọ̀kan ní àyè ìbẹ̀rẹ̀ àti ìparí rẹ̀ nínú. Ọ̀rọ̀ máa ń ká sínú ọ̀wọ̀n rẹ̀; ohun tó bá kọjá fífẹ̀ àkóónú ni a ó gé, lórí ìwé àti nínú àwòtẹ́lẹ̀.
@@ -88,6 +94,12 @@ bill_item_piece_off	Paa
 bill_total_qty	Lapapọ qty
 bill_total_subtotal	Apapọ ipin
 bill_total_grand	Apapọ nla
+bill_total_number_under	Nọ́mbà lábẹ́
+bill_total_caption_under	Aami lábẹ́
+bill_total_own_line	Ila tirẹ̀
+bill_total_caption_with	Pẹ̀lú nọ́mbà
+bill_total_caption_none	Kò sí aami
+bill_total_place_help	Ila tirẹ̀ ń tẹ àpapọ̀ yìí lọ́tọ̀. Lábẹ́ ọ̀wọ̀n kan, a ń tẹ nọ́mbà rẹ̀ sínú ọ̀wọ̀n ọjà yẹn, ní ìwọ̀n àti ìnípọn ila yìí; àwọn àpapọ̀ ń pín ìlà kan títí tí ọ̀wọ̀n kan fi kún, lẹ́yìn náà ìlà tuntun bẹ̀rẹ̀. Aami ń bá nọ́mbà lọ, sábẹ́ ọ̀wọ̀n mìíràn, tàbí kí a fi í sílẹ̀. Àwọn ila owó-orí, iṣẹ́, ìyípo àti ìsanwó ń tẹ̀lé Apapọ ipin.
 kot_unassigned	Ti ko ni ipin
 settings_hub_help	Ṣii agbegbe kan ni akoko kan - yiyi kere si, awọn yiyan ti o mọ.
 settings_sec_language	Ede & owo
@@ -305,7 +317,7 @@ drawer_count	Iṣiro oluyaworan (aṣayan)
 expense_heading	Inawo
 export_day	Ọjọ okeere
 extra_note_bill_ph	Akọsilẹ afikun lori owo / tita yii
-extra_tills_heading	Afikun tills
+extra_tills_heading	Àwọn káńtà àfikún
 other_devices_help_heading	Ṣeto awọn ẹrọ miiran
 other_devices_help	Lori ẹrọ yii (Olupin): Awọn ẹrọ miiran → Gba afikun tills laaye. Ṣe akiyesi koodu sisopọ ati adirẹsi Wi-Fi. Fọwọ ba Gba awọn ẹrọ miiran laaye lati sopọ ti o ba han. Lori kọnputa, tẹ Bẹrẹ pẹlu kọnputa yii ni kia kia. Lori ẹrọ kọọkan miiran: fi ohun elo naa sori ẹrọ, yan Ipo Onibara, Wa olupin ile itaja (tabi tẹ adirẹsi naa), tẹ koodu sisopọ pọ, So pọ ni bayi. Awọn aṣẹ duro lori ẹrọ ti Wi-Fi ba lọ silẹ ki o lọ nigbati olupin naa ba dahun lẹẹkansi. Awọn atẹwe afikun ti ṣeto lori olupin naa (Eto → Awọn atẹwe) - afikun tills fi awọn owo ranṣẹ sibẹ.
 forget_shop	Gbagbe ile itaja yii
@@ -458,7 +470,7 @@ route_cleared	Pade {name}
 route_tap_selected	yan
 printer_target_ph	Orukọ itẹwe eto tabi agbalejo:9100
 printer_target_default	itẹwe igbagbogbo ti kọnputa yii (adirẹsi òfo)
-route_bill	Owo alejo
+route_bill	Ìwé-owó
 station_print_pick_first	Yan apakan ile itaja ni akọkọ
 bill_printers_dd	Awọn atẹwe fun owo
 bill_printers_dd_n	{n} awọn ẹrọ atẹwe fun owo naa · tẹ ni kia kia lati yipada
@@ -723,6 +735,20 @@ fssai_ph	FSSAI / iwe-aṣẹ itaja No. (aṣayan)
 bill_footer_ph	Ẹlẹsẹ (fun apẹẹrẹ, o ṣeun, ṣabẹwo lẹẹkansi)
 kot_field_on	ifihan
 kot_field_off	tọju
+kot_field_show	Fihan
+kot_field_hide	Tọju
+bill_line_shop	Itaja
+bill_line_address	Adirẹsi
+bill_line_fssai	FSSAI
+bill_line_title	Akọle
+bill_line_customer	Onibara
+bill_line_bill_no	Nọ́mbà bíìlì
+bill_line_time	Akoko
+bill_line_cashier	Olùgbowó
+bill_line_items	Awọn ohun akojọ aṣayan
+bill_line_total	Lapapọ
+bill_line_footer	Ẹlẹsẹ
+bill_line_upi	UPI
 kot_weight_light	Imọlẹ
 bill_kot_panel_help	Ifilelẹ Bill ati iwọn akoonu. Cashier ni ẹniti o funni tabi yanju owo naa - itan tita ni kikun duro ninu awọn iwe naa.
 std_size_ph	f.eks. 18, 20, 26…
@@ -830,10 +856,10 @@ lane_declared_label	risiti owo-ori
 lane_owner_label	Akọsilẹ owo
 money_lane_bill	Iwe owo: {lane}
 
-removing	Removing…
-removed	Removed
-updating_order	Updating…
-order_updated	Order updated
+removing	Ń yọ ọ́…
+removed	A ti yọ ọ́
+updating_order	Ń ṣe àtúnṣe…
+order_updated	A ti ṣe àtúnṣe àṣẹ
 sel_copy	Daakọ
 sel_select_all	Yan gbogbo rẹ̀
 sel_copied	A ti daakọ

@@ -101,6 +101,19 @@ bill_item_col_sep	የአምድ መስመሮች
 slip_columns	አምዶች
 slip_col_header	ርዕስ
 bill_line_logo	አርማ
+bill_line_shop	ሱቅ
+bill_line_address	አድራሻ
+bill_line_fssai	FSSAI
+bill_line_title	ርዕስ
+bill_line_customer	ደንበኛ
+bill_line_bill_no	የሂሳብ ቁጥር
+bill_line_time	ሰዓት
+bill_line_cashier	ገንዘብ ተቀባይ
+bill_line_table	ጠረጴዛ
+bill_line_items	እቃዎች
+bill_line_total	ድምር
+bill_line_footer	ግርጌ
+bill_line_upi	UPI
 bill_logo_picture	ሥዕል
 bill_logo_choose	ሥዕል ምረጥ
 bill_logo_remove	ሥዕል አስወግድ
@@ -128,6 +141,12 @@ bill_item_piece_off	ጠፍቷል
 bill_total_qty	ጠቅላላ ብዛት
 bill_total_subtotal	ንዑስ ድምር
 bill_total_grand	ጠቅላላ ድምር
+bill_total_number_under	ቁጥሩ ከዚህ በታች
+bill_total_caption_under	መለያው ከዚህ በታች
+bill_total_own_line	የራሱ መስመር
+bill_total_caption_with	ከቁጥሩ ጋር
+bill_total_caption_none	መለያ የለም
+bill_total_place_help	“የራሱ መስመር” ይህን ድምር ለብቻው ያትማል። በአምድ ስር ሲሆን ቁጥሩ በዚያ የዕቃ አምድ ውስጥ በዚህ መስመር መጠንና ውፍረት ይታተማል፤ አምድ እስኪያዝ ድረስ ድምሮች አንድ ረድፍ ይጋራሉ፣ ከዚያ አዲስ ረድፍ ይጀምራል። መለያው ከቁጥሩ ጋር፣ በሌላ አምድ ስር ይሄዳል ወይም ይቀራል። የግብር፣ የአገልግሎት፣ የማጠጋጋትና የክፍያ መስመሮች “ንዑስ ድምር”ን ይከተላሉ።
 reprint_incl	በህትመት ውስጥ
 reprint_skip	ዝለል
 reprint_skip_meta	የማገገሚያ ህትመት ዝለል
@@ -178,20 +197,20 @@ snack_secs_ph	ሰከንዶች (3–60፣ ነባሪ 10)
 snack_secs_save	የማንቂያ ጊዜ አስቀምጥ
 snack_secs_saved	የማንቂያ ጊዜ ተቀምጧል — {n} ሰከንድ
 settings_sec_whatsapp	WhatsApp
-whatsapp_cloud_help	Use your own Meta WhatsApp Cloud API. Create a System User token with whatsapp_business_messaging (temporary dashboard tokens expire). Credentials stay on this Server only — never on extra tills. Accepted means Meta took the request, not that the guest received it.
-whatsapp_phone_id_ph	Phone Number ID
-whatsapp_token_ph	Access Token (leave blank to keep)
-whatsapp_template_ph	Bill template name (optional)
-whatsapp_template_lang_ph	Template language (e.g. en)
-whatsapp_enable	Enable
+whatsapp_cloud_help	የራስዎን Meta WhatsApp Cloud API ይጠቀሙ። whatsapp_business_messaging ያለው System User ቶከን ይፍጠሩ (የዳሽቦርድ ጊዜያዊ ቶከኖች ጊዜያቸው ያልፋል)። መረጃው በዚህ ሰርቨር ላይ ብቻ ይቆያል — በተጨማሪ ቆጣሪዎች ላይ ፈጽሞ አይሆንም። “ተቀብሏል” ማለት Meta ጥያቄውን ወስዷል ማለት ነው፣ እንግዳው ደርሶታል ማለት አይደለም።
+whatsapp_phone_id_ph	የስልክ ቁጥር ID
+whatsapp_token_ph	የመዳረሻ ቶከን (ያለውን ለማቆየት ባዶ ይተዉት)
+whatsapp_template_ph	የሂሳብ አብነት ስም (አማራጭ)
+whatsapp_template_lang_ph	የአብነት ቋንቋ (ለምሳሌ en)
+whatsapp_enable	አንቃ
 whatsapp_disable	Off
-whatsapp_save	Save WhatsApp
-whatsapp_test	Test connection
-whatsapp_disconnect	Disconnect
-whatsapp_send_bill	Send via WhatsApp
-whatsapp_consent	WhatsApp OK
-whatsapp_consent_help	Guest agreed to receive WhatsApp messages. A phone number alone is not consent.
-whatsapp_server_only	Configure WhatsApp on the shop Server device
+whatsapp_save	WhatsApp አስቀምጥ
+whatsapp_test	ግንኙነትን ሞክር
+whatsapp_disconnect	ግንኙነት አቋርጥ
+whatsapp_send_bill	በWhatsApp ላክ
+whatsapp_consent	WhatsApp እሺ
+whatsapp_consent_help	እንግዳው የWhatsApp መልዕክቶችን ለመቀበል ተስማምቷል። የስልክ ቁጥር ብቻ መኖሩ ፈቃድ አይደለም።
+whatsapp_server_only	WhatsAppን በሱቁ ሰርቨር መሣሪያ ላይ ያዋቅሩ
 settings_sec_backup	ምትኬ እና መመለስ
 settings_sec_diag	ምርመራ
 settings_sec_privacy	ግላዊነት
@@ -637,7 +656,7 @@ choose_device_use	ሰርቨር ወይም ክላየንት ይምረጡ።
 paired_note	ተጣምሯል። ለመሸጥ ይክፈቱ፣ ወይም የቅርቡን ለማግኘት ያድሱ።
 last_update_at	የመጨረሻ ዝማኔ፦ {time}።
 pair_intro	ሰርቨሩን ያግኙ፣ ወይም አድራሻውን እና የማጣመሪያ ኮዱን ይጻፉ።
-pair_resume_hint	Already paired — enter your shop PIN, or Forget this shop to pair another.
+pair_resume_hint	አስቀድሞ ተጣምሯል — የሱቅዎን PIN ያስገቡ፣ ወይም ሌላ ለማጣመር “ይህን ሱቅ እርሳ” ይንኩ።
 queue_waiting	ሱቁን ለመድረስ በመጠባበቅ ({n})፦
 queue_tries	{n} ጊዜ ተሞክሯል · የመጨረሻ መልስ፦ {e}
 save_backup_copy	የምትኬ ቅጂ አስቀምጥ…
@@ -754,13 +773,18 @@ station_vps_dd	ለዚህ ጣቢያ ማተሚያዎች
 station_vps_dd_n	{n} ማተሚያ · ለመቀየር ይንኩ
 bill_printers_dd	ለሂሳቡ ማተሚያዎች
 bill_printers_dd_n	ለሂሳቡ {n} ማተሚያ · ለመቀየር ይንኩ
-paper_heading	ወረቀት
+paper_heading	ምናባዊ ወረቀት
 paper_size	{w} × {h} mm
 paper_roll	{w} mm ጥቅል
 paper_not_set	ወረቀቱ ገና አልታወቀም
-paper_length_mm	ርዝመት (mm)
-printer_paper_help	የዚህ ማተሚያ ወረቀት በ mm። ባዶ ርዝመት ጥቅል ነው፤ እያንዳንዱ ደረሰኝ እንደ ይዘቱ ይረዝማል። ማተሚያዎችን ፈልግ ባዶ ወረቀትን ከማተሚያው ሾፌር ይሞላል (መናገር ካልቻለ 80 mm ጥቅል) እና ቀድሞ የተዘጋጀውን በፍጹም አይቀይርም።
-preview_help	ይህ ደረሰኝ ከታች በተመረጠው ማተሚያ ወረቀት ላይ፣ እዚያ እንደሚታተመው፦ ማተሚያው ከሚደርስበት የላይኛው ግራ ጥግ በእውነተኛ መጠን (ግራጫ፦ የማይደርስባቸው ጠርዞች)፣ ረጅም ደረሰኝ በተጨማሪ ገጾች፣ ከወረቀቱ ጠርዝ ያለፈው ይቆረጣል። ማተሚያ መምረጥ ቅድመ እይታውን ብቻ ይቀይራል፤ የእያንዳንዱ ማተሚያ ወረቀት በማተሚያዎች ስር ይዘጋጃል።
+virtual_width_mm	ምናባዊ ስፋት (mm)
+virtual_length_mm	ምናባዊ ርዝመት (mm)
+reported_width_mm	የተዘገበ ስፋት (mm)
+reported_length_mm	የተዘገበ ርዝመት (mm)
+reported_paper	የተዘገበ፦ {paper}
+virtual_paper	ምናባዊ፦ {paper}
+printer_paper_help	የተዘገበ ማለት የዚህ ማተሚያ ድራይቨር የተቀናበረበት ወረቀት ነው፤ መተግበሪያው ያነበዋል ብቻ፣ “የለም” ማለት የሚጠየቅ ድራይቨር የለም ማለት ነው። ምናባዊ ማለት በማተሚያው ውስጥ በእርግጥ አለ የምትለው ወረቀት ነው፣ በ mm፤ ባዶ ርዝመት ጥቅል ነው። ማተሚያው በራሱ ወረቀት ላይ ያትማል፤ ምናባዊው ወረቀት ከዚያ ውስጥ ምን ያህሉ እውነተኛ ወረቀት እንደሆነ ለመተግበሪያው ይነግረዋል፣ ለቅድመ እይታ፣ ለገጽ ርዝመት እና ለደረሰኙ ቦታ። ማተሚያዎችን ፈልግ ባዶ ምናባዊ ወረቀትን ይሞላል፣ አንተ ያቀናበርከውን ግን ፈጽሞ አይቀይርም።
+preview_help	ይህ ደረሰኝ ከታች በተመረጠው ማተሚያ ላይ እንደሚታተመው፣ በእውነተኛ መጠን በምናባዊ ወረቀቱ ላይ። ነጭ የሚታተምበት ነው፣ ግራጫ ወረቀት ማተሚያው የማይደርስበት ነው፣ የደበዘዘ ቀለም ደግሞ ይቆረጣል። ዘጠኙ ካሬዎች ወረቀቱ ናቸው፦ ደረሰኙ የሚቀመጥበትን ንካ። ረጅም ደረሰኝ ወደ ተጨማሪ ገጾች ይሄዳል። ማተሚያ መምረጥ ቅድመ እይታውን ብቻ ይቀይራል።
 job_layout	አቀማመጥ
 job_delivery	ሥራው እንዴት እንደሚላክ
 job_delivery_help	የስርዓት ሰነድ፣ ጥሬ ባይቶች፣ ወይም ESC/POS። ሂሳቡ እና የኩሽና ትኬቱ እያንዳንዱ የራሱን ይይዛል። ማንኛውም ሥራ ፈልግ ወደ ባስቀመጠው ማንኛውም ማተሚያ ሊሄድ ይችላል።
@@ -1048,7 +1072,7 @@ add_a_table	ጠረጴዛ ጨምር
 add_station_heading	የኩሽና ጣቢያ ጨምር
 categories_help	ከላይ ያለውን እቃ በዚያ ምድብ ስር ለማስቀመጥ ተጠቀምን ይንኩ። ፎቶ ለምድቡ ምስል ይሰጣል፤ ከሌለ የመጀመሪያ ፊደላቱን ያሳያል።
 dish_search_ph	የእቃ ስም — ምግቦቻችንን ይፈልጉ ወይም የራስዎን ይጻፉ
-tile_free	ነፃ
+tile_free	ባዶ
 tile_occupied	ተይዟል
 tile_food_ready	ምግብ ዝግጁ
 tile_bill_printed	ሂሳብ ታትሟል
@@ -1266,8 +1290,8 @@ taxable_value	የሚታክስ ዋጋ
 gst_inside_price_note	({tax} በውስጥ)
 start_with_template	በሜኑ ንድፋችን ይጀምሩ
 template_heading	የሜኑ ንድፋችን
-template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
-template_download_shelf	Download photo shelf
+template_need_download	የምግቦችን ይፋዊ የፎቶ መደርደሪያ (~1,459 ምግቦች) ያውርዱ፣ ከዚያ የጎደሉትን ስሞች ወደ ሜኑዎ ያስገቡ።
+template_download_shelf	የፎቶ መደርደሪያ አውርድ
 template_info	{c} ምድቦች እና {d} ምግቦች ከፎቶ ጋር፣ ለመጨመር ዝግጁ። ዋጋዎች ከ ₹0 ይጀምራሉ — የእርስዎን በኋላ ያስቀምጡ።
 template_import	ሙሉ ንድፍ አስመጣ
 template_confirm	{d} ምግቦች ከምድቦቻቸው ጋር ይጨመሩ? አስቀድመው ያሉዎት ምግቦች እንዳሉ ይቆያሉ።

@@ -79,13 +79,19 @@ bill_item_amount	Məbləğ
 bill_item_note	Rx / satış qeydi
 bill_item_col_sep	Sütun xətləri
 slip_col_width	En (mm)
-paper_heading	Kağız
+paper_heading	Virtual kağız
 paper_size	{w} × {h} mm
 paper_roll	{w} mm rulon
 paper_not_set	kağız hələ məlum deyil
-paper_length_mm	Uzunluq (mm)
-printer_paper_help	Bu printerin kağızı mm ilə. Boş Uzunluq rulondur: hər çek məzmunu qədər uzun olur. Printerləri tap boş kağızı printerin sürücüsündən doldurur (deyə bilmirsə 80 mm rulon) və artıq təyin olunmuş kağızı heç vaxt dəyişmir.
-preview_help	Bu çek aşağıda seçilmiş printerin kağızında, orada çap olunduğu kimi: printerin çata bildiyi yuxarı sol küncdən real ölçüdə (boz: çata bilmədiyi kənarlar), uzun çek daha çox vərəqdə, kağızın kənarından kənara çıxan hər şey kəsilir. Printer seçmək yalnız önizləməni dəyişir; hər printerin kağızı Printerlər bölməsində təyin olunur.
+na	Yoxdur
+virtual_width_mm	Virtual en (mm)
+virtual_length_mm	Virtual uzunluq (mm)
+reported_width_mm	Bildirilən en (mm)
+reported_length_mm	Bildirilən uzunluq (mm)
+reported_paper	Bildirilən: {paper}
+virtual_paper	Virtual: {paper}
+printer_paper_help	Bildirilən bu printerin sürücüsünün qurulduğu kağızdır; tətbiq onu yalnız oxuyur, «Yoxdur» isə soruşulacaq sürücünün olmadığını bildirir. Virtual printerdə həqiqətən olduğunu dediyiniz kağızdır, mm ilə; boş uzunluq rulon deməkdir. Printer öz kağızına çap edir; virtual kağız tətbiqə onun nə qədərinin həqiqi kağız olduğunu bildirir: önizləmə, səhifə uzunluğu və çekin yeri üçün. Printerləri tap boş virtual kağızı doldurur və sizin təyin etdiyinizi heç vaxt dəyişmir.
+preview_help	Bu çek aşağıda seçilmiş printerdə çap olunduğu kimi, onun virtual kağızında həqiqi ölçüdə. Ağ çap olunan yerdir, boz kağıza printer çatmır, solğun mürəkkəb isə kəsilir. Doqquz kvadrat kağızdır: çekin dayanmalı olduğu yerə toxunun. Uzun çek növbəti səhifələrə keçir. Printer seçmək yalnız önizləməni dəyişir.
 slip_col_start	Başlanğıc boşluğu (px)
 slip_col_end	Son boşluq (px)
 slip_columns_help	Hər sütunun eni onun başlanğıc və son boşluğunu da əhatə edir. Mətn öz sütunu daxilində sətirlərə bölünür; məzmun enindən kənarda qalan hissə həm kağızda, həm də önizləmədə kəsilir.
@@ -100,6 +106,12 @@ bill_item_piece_off	Bağlı
 bill_total_qty	Ümumi say
 bill_total_subtotal	Ara cəm
 bill_total_grand	Yekun
+bill_total_number_under	Rəqəm bunun altında
+bill_total_caption_under	Etiket bunun altında
+bill_total_own_line	Öz sətri
+bill_total_caption_with	Rəqəmlə birgə
+bill_total_caption_none	Etiketsiz
+bill_total_place_help	Öz sətri bu cəmi ayrıca çap edir. Sütunun altında olduqda rəqəmi həmin mal sütununda, bu sətrin ölçüsü və qalınlığı ilə çap olunur; bir sütun tutulana qədər cəmlər bir sıranı bölüşür, sonra yeni sıra başlayır. Etiket rəqəmlə birgə, başqa sütunun altında gedir və ya buraxılır. Vergi, xidmət, yuvarlaqlaşdırma və ödəniş sətirləri Ara cəm yerini izləyir.
 kot_unassigned	Təyin olunmayıb
 settings_hub_help	Bir sahəni bir dəfəyə açın — daha az sürüşdürmə, daha aydın seçimlər.
 settings_sec_language	Dil və valyuta
@@ -735,6 +747,20 @@ fssai_ph	Dərman lisenziyası nömrəsi (istəyə bağlı — sizin ifadəniz)
 bill_footer_ph	Altlıq (məs. Təşəkkür edirik, yenə gəlin)
 kot_field_on	göstər
 kot_field_off	gizlət
+kot_field_show	Göstər
+kot_field_hide	Gizlət
+bill_line_shop	Mağaza
+bill_line_address	Ünvan
+bill_line_fssai	FSSAI
+bill_line_title	Başlıq
+bill_line_customer	Müştəri
+bill_line_bill_no	Hesab №
+bill_line_time	Vaxt
+bill_line_cashier	Kassir
+bill_line_items	Məhsullar
+bill_line_total	Cəmi
+bill_line_footer	Altlıq
+bill_line_upi	UPI
 kot_weight_light	Yüngül
 bill_kot_panel_help	Faktura tərtibatı və məzmunun eni. Kassaçı faktura verən və ya həll edən şəxsdir — bütün satış hekayəsi qeydiyyatda qalır.
 std_size_ph	məs. 18, 20, 26…
@@ -842,10 +868,10 @@ lane_declared_label	Vergi fakturası
 lane_owner_label	Nağd qəbz
 money_lane_bill	Hesab: {lane}
 
-removing	Removing…
-removed	Removed
-updating_order	Updating…
-order_updated	Order updated
+removing	Silinir…
+removed	Silindi
+updating_order	Yenilənir…
+order_updated	Sifariş yeniləndi
 sel_copy	Köçür
 sel_select_all	Hamısını seç
 sel_copied	Köçürüldü

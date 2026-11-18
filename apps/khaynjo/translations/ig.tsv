@@ -101,6 +101,19 @@ bill_item_col_sep	Ahịrị ogidi
 slip_columns	Kọlụm
 slip_col_header	Isi
 bill_line_logo	Akara
+bill_line_shop	Ụlọ ahịa
+bill_line_address	Adreesị
+bill_line_fssai	FSSAI
+bill_line_title	Isiokwu
+bill_line_customer	Onye ahịa
+bill_line_bill_no	Nọmba ụgwọ
+bill_line_time	Oge
+bill_line_cashier	Onye na-anakọta ego
+bill_line_table	Tebụl
+bill_line_items	Ihe
+bill_line_total	Ngụkọta
+bill_line_footer	Ala
+bill_line_upi	UPI
 bill_logo_picture	Foto
 bill_logo_choose	Họrọ foto
 bill_logo_remove	Wepụ foto
@@ -128,6 +141,12 @@ bill_item_piece_off	Gbanyụọ
 bill_total_qty	Ngụkọta ọnụọgụ
 bill_total_subtotal	Ngụkọta nta
 bill_total_grand	Ngụkọta ukwu
+bill_total_number_under	Ọnụọgụ n'okpuru
+bill_total_caption_under	Akara n'okpuru
+bill_total_own_line	Ahịrị nke ya
+bill_total_caption_with	Ya na ọnụọgụ
+bill_total_caption_none	Enweghị akara
+bill_total_place_help	Ahịrị nke ya na-ebipụta ngụkọta a naanị ya. N'okpuru kọlụm, a na-ebipụta ọnụọgụ ya na kọlụm ihe ahụ, n'ogo na ịdị arọ nke ahịrị a; ngụkọta na-ekekọrịta otu ahịrị ruo mgbe e were otu kọlụm, mgbe ahụ ahịrị ọhụrụ amalite. Akara na-eso ọnụọgụ, n'okpuru kọlụm ọzọ, ma ọ bụ a hapụ ya. Ahịrị ụtụ, ọrụ, mgbakọ na ịkwụ ụgwọ na-eso Ngụkọta nta.
 reprint_incl	Na mbipụta
 reprint_skip	Gafee
 reprint_skip_meta	Gafee mbipụta nweghachi
@@ -178,20 +197,20 @@ snack_secs_ph	Sekọnd (3–60, ndabara 10)
 snack_secs_save	Chekwaa oge ọkwa
 snack_secs_saved	Echekwara oge ọkwa — {n} sekọnd
 settings_sec_whatsapp	WhatsApp
-whatsapp_cloud_help	Use your own Meta WhatsApp Cloud API. Create a System User token with whatsapp_business_messaging (temporary dashboard tokens expire). Credentials stay on this Server only — never on extra tills. Accepted means Meta took the request, not that the guest received it.
-whatsapp_phone_id_ph	Phone Number ID
-whatsapp_token_ph	Access Token (leave blank to keep)
-whatsapp_template_ph	Bill template name (optional)
-whatsapp_template_lang_ph	Template language (e.g. en)
-whatsapp_enable	Enable
+whatsapp_cloud_help	Jiri Meta WhatsApp Cloud API nke gị. Mepụta token System User nwere whatsapp_business_messaging (token nwa oge nke dashboard na-agwụ). Ozi ndị a na-anọ naanị na Sava a — ọ dịghị mgbe ọ bụla na kaụnta ndị ọzọ. “Anabatara” pụtara na Meta nabatara arịrịọ ahụ, ọ bụghị na onye ọbịa natara ya.
+whatsapp_phone_id_ph	ID nọmba ekwentị
+whatsapp_token_ph	Token nnweta (hapụ ya efu ka ọ dịgide)
+whatsapp_template_ph	Aha ụdị ụgwọ (ọ bụghị iwu)
+whatsapp_template_lang_ph	Asụsụ ụdị (dịka en)
+whatsapp_enable	Gbanye
 whatsapp_disable	Off
-whatsapp_save	Save WhatsApp
-whatsapp_test	Test connection
-whatsapp_disconnect	Disconnect
-whatsapp_send_bill	Send via WhatsApp
+whatsapp_save	Chekwaa WhatsApp
+whatsapp_test	Nwalee njikọ
+whatsapp_disconnect	Kewapụ njikọ
+whatsapp_send_bill	Zipu site na WhatsApp
 whatsapp_consent	WhatsApp OK
-whatsapp_consent_help	Guest agreed to receive WhatsApp messages. A phone number alone is not consent.
-whatsapp_server_only	Configure WhatsApp on the shop Server device
+whatsapp_consent_help	Onye ọbịa ekwenyela ịnata ozi WhatsApp. Naanị nọmba ekwentị abụghị nkwenye.
+whatsapp_server_only	Hazie WhatsApp na ngwaọrụ Sava nke ụlọ ahịa
 settings_sec_backup	Nchekwa na nweghachi
 settings_sec_diag	Nnyocha
 settings_sec_privacy	Nzuzo
@@ -637,7 +656,7 @@ choose_device_use	Họrọ Sava ma ọ bụ Ngwa njedebe.
 paired_note	Ejikọrọ. Mepee ka ị ree, ma ọ bụ Mee ọhụrụ maka nke kacha ọhụrụ.
 last_update_at	Mmelite ikpeazụ: {time}.
 pair_intro	Chọta sava, ma ọ bụ dee adreesị ya na koodu njikọ.
-pair_resume_hint	Already paired — enter your shop PIN, or Forget this shop to pair another.
+pair_resume_hint	Ejikọọla ya — tinye PIN nke ụlọ ahịa gị, ma ọ bụ pịa “Chefuo ụlọ ahịa a” ka ijikọọ ọzọ.
 queue_waiting	Na-eche iru ụlọ ahịa ({n}):
 queue_tries	Nwalere ugboro {n} · azịza ikpeazụ: {e}
 save_backup_copy	Chekwaa oyiri nchekwa…
@@ -754,13 +773,18 @@ station_vps_dd	Igwe mbipụta maka ọdụ a
 station_vps_dd_n	Igwe mbipụta {n} · kpatụ ka ị gbanwee
 bill_printers_dd	Igwe mbipụta maka ụgwọ
 bill_printers_dd_n	Igwe mbipụta {n} maka ụgwọ · kpatụ ka ị gbanwee
-paper_heading	Akwụkwọ
+paper_heading	Akwụkwọ nke echiche
 paper_size	{w} × {h} mm
 paper_roll	mpịakọta {w} mm
 paper_not_set	a maghị akwụkwọ ahụ ugbu a
-paper_length_mm	Ogologo (mm)
-printer_paper_help	Akwụkwọ igwe mbipụta a na mm. Ogologo tọgbọ chakoo bụ mpịakọta: akwụkwọ ọ bụla dị ogologo dị ka ihe dị n'ime ya. Chọta igwe mbipụta na-ejupụta akwụkwọ tọgbọ chakoo site na draịva igwe mbipụta ahụ (mpịakọta 80 mm mgbe ọ na-enweghị ike ịkọ) ma ọ dịghị mgbe ọ na-agbanwe nke e debere ugbu a.
-preview_help	Akwụkwọ a n'elu akwụkwọ igwe mbipụta a họọrọ n'okpuru, dịka ọ na-ebipụta ebe ahụ: nha n'ezie site na nkuku elu aka ekpe igwe ahụ na-eru (ntụ: nsọtụ ọ na-anaghị eru), akwụkwọ ogologo na peeji ndị ọzọ, ihe niile gafere nsọtụ akwụkwọ ka a na-ebipụ. Ịhọrọ igwe mbipụta na-agbanwe naanị nlele; a na-edobe akwụkwọ igwe ọ bụla n'okpuru Igwe mbipụta.
+virtual_width_mm	Obosara nke echiche (mm)
+virtual_length_mm	Ogologo nke echiche (mm)
+reported_width_mm	Obosara a kọrọ (mm)
+reported_length_mm	Ogologo a kọrọ (mm)
+reported_paper	A kọrọ: {paper}
+virtual_paper	Nke echiche: {paper}
+printer_paper_help	A kọrọ bụ akwụkwọ nke e debere draịva nke igwe mbipụta a na ya; ngwa a na-agụ ya naanị, “Adịghị” pụtakwara na enweghị draịva a ga-ajụ. Nke echiche bụ akwụkwọ ị na-ekwu na ọ dị n'ezie n'ime igwe mbipụta, na mm; ogologo tọgbọ chakoo bụ mpịakọta. Igwe mbipụta na-ebipụta n'akwụkwọ nke ya; akwụkwọ nke echiche na-agwa ngwa a ole n'ime ya bụ ezigbo akwụkwọ, maka nlele, ogologo ibe na ebe akwụkwọ nnata ga-anọ. Chọta igwe mbipụta na-emeju akwụkwọ nke echiche tọgbọ chakoo, ọ dịghịkwa agbanwe nke ị debere.
+preview_help	Akwụkwọ nnata a dị ka a na-ebipụta ya n'igwe mbipụta a họọrọ n'okpuru, n'ezigbo nha n'akwụkwọ nke echiche ya. Ọcha bụ ebe ọ na-ebipụta, akwụkwọ ntụ ntụ bụ ebe igwe mbipụta anaghị eru, a na-ebipụkwa ink gbara ọchịchịrị. Igbe itoolu ahụ bụ akwụkwọ: pịa ebe akwụkwọ nnata kwesịrị ịnọ. Akwụkwọ nnata ogologo na-aga n'ihu na ibe ndị ọzọ. Ịhọrọ igwe mbipụta na-agbanwe naanị nlele.
 job_layout	Nhazi
 job_delivery	Otu a na-ezipu ọrụ
 job_delivery_help	Akwụkwọ sistemụ, bayịt ozugbo, ma ọ bụ ESC/POS. Ụgwọ na tiketi kichin nwere nke ha. Ọrụ ọ bụla nwere ike ịga na igwe mbipụta ọ bụla Chọta chekwara.
@@ -1266,8 +1290,8 @@ taxable_value	Uru a na-atụ ụtụ
 gst_inside_price_note	({tax} nọ n'ime)
 start_with_template	Malite site na ndebere ndepụta nri anyị
 template_heading	Ndebere ndepụta nri anyị
-template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
-template_download_shelf	Download photo shelf
+template_need_download	Budata shelf foto nri ọha (~nri 1,459), wee bubata aha ndị na-adịghị na ndepụta nri gị.
+template_download_shelf	Budata shelf foto
 template_info	Ụdị {c} na nri {d} nwere foto, dị njikere itinye. Ọnụahịa na-amalite na ₹0 — tinye nke gị mgbe e mesịrị.
 template_import	Bubata ndebere zuru ezu
 template_confirm	Tinye nri {d} na ụdị ha? Nri ị nweelarị na-anọ otú ha dị.

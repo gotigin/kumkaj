@@ -67,13 +67,19 @@ bill_item_amount	Suma
 bill_item_note	Prekės pastaba
 bill_item_col_sep	Stulpelių linijos
 slip_col_width	Plotis (mm)
-paper_heading	Popierius
+paper_heading	Virtualus popierius
 paper_size	{w} × {h} mm
 paper_roll	{w} mm ritinys
 paper_not_set	popierius dar nežinomas
-paper_length_mm	Ilgis (mm)
-printer_paper_help	Šio spausdintuvo popierius mm. Tuščias Ilgis reiškia ritinį: kiekvienas kvitas tokio ilgio, kaip jo turinys. „Rasti spausdintuvus“ užpildo tuščią popierių iš spausdintuvo tvarkyklės (80 mm ritinys, kai ji negali pasakyti) ir niekada nekeičia jau nustatyto.
-preview_help	Šis kvitas žemiau pasirinkto spausdintuvo popieriuje, kaip ten spausdinamas: tikru dydžiu nuo viršutinio kairiojo kampo, kurį spausdintuvas pasiekia (pilka: kraštai, kurių nepasiekia), ilgas kvitas daugiau lapų, viskas už popieriaus krašto nukerpama. Pasirinkus spausdintuvą keičiasi tik peržiūra; kiekvieno spausdintuvo popierius nustatomas skiltyje „Spausdintuvai“.
+na	nėra
+virtual_width_mm	Virtualus plotis (mm)
+virtual_length_mm	Virtualus ilgis (mm)
+reported_width_mm	Praneštas plotis (mm)
+reported_length_mm	Praneštas ilgis (mm)
+reported_paper	Pranešta: {paper}
+virtual_paper	Virtualus: {paper}
+printer_paper_help	Praneštas – tai popierius, kuriam nustatyta šio spausdintuvo tvarkyklė; programa jį tik nuskaito, o „nėra“ reiškia, kad nėra tvarkyklės, kurios būtų galima paklausti. Virtualus – tai popierius, kuris, jūsų teigimu, iš tikrųjų yra spausdintuve, milimetrais; tuščias ilgis reiškia ritinį. Spausdintuvas spausdina ant savo popieriaus; virtualus popierius pasako programai, kiek jo yra tikras popierius – peržiūrai, puslapio ilgiui ir kvito vietai. Rasti spausdintuvus užpildo tuščią virtualų popierių ir niekada nekeičia jūsų nustatyto.
+preview_help	Šis kvitas toks, koks spausdinamas žemiau pasirinktu spausdintuvu, tikru dydžiu ant jo virtualaus popieriaus. Balta – kur spausdinama, pilko popieriaus spausdintuvas nepasiekia, o išblukęs rašalas nukerpamas. Devyni langeliai yra popierius: bakstelėkite ten, kur turi būti kvitas. Ilgas kvitas tęsiasi kituose puslapiuose. Spausdintuvo pasirinkimas keičia tik peržiūrą.
 slip_col_start	Pradžios tarpas (px)
 slip_col_end	Pabaigos tarpas (px)
 slip_columns_help	Kiekvieno stulpelio plotis apima jo pradžios ir pabaigos tarpą. Tekstas laužomas savo stulpelio viduje; tai, kas išeina už turinio pločio, nukerpama – popieriuje ir peržiūroje.
@@ -88,6 +94,12 @@ bill_item_piece_off	Išjungta
 bill_total_qty	Bendras kiekis
 bill_total_subtotal	Tarpinė suma
 bill_total_grand	Galutinė suma
+bill_total_number_under	Skaičius po
+bill_total_caption_under	Etiketė po
+bill_total_own_line	Atskira eilutė
+bill_total_caption_with	Prie skaičiaus
+bill_total_caption_none	Be etiketės
+bill_total_place_help	„Atskira eilutė“ spausdina šią sumą atskirai. Po stulpeliu jos skaičius spausdinamas tame prekių stulpelyje, šios eilutės dydžiu ir storiu; sumos dalijasi viena eile, kol kuris nors stulpelis užimamas, tada pradedama nauja eilė. Etiketė eina prie skaičiaus, po kitu stulpeliu arba praleidžiama. Mokesčio, aptarnavimo, apvalinimo ir mokėjimo eilutės seka „Tarpinė suma“.
 kot_unassigned	Nepriskirta
 settings_hub_help	Atidarykite po vieną sritį — mažiau slinkimo, aiškesni pasirinkimai.
 settings_sec_language	Kalba ir valiuta
@@ -723,6 +735,20 @@ fssai_ph	FSSAI / parduotuvės licencija Nr. (neprivaloma)
 bill_footer_ph	Poraštė (pvz. Ačiū, apsilankykite dar)
 kot_field_on	rodyti
 kot_field_off	slėpti
+kot_field_show	Rodyti
+kot_field_hide	Slėpti
+bill_line_shop	Parduotuvė
+bill_line_address	Adresas
+bill_line_fssai	FSSAI
+bill_line_title	Antraštė
+bill_line_customer	Klientas
+bill_line_bill_no	Sąskaitos nr.
+bill_line_time	Laikas
+bill_line_cashier	Kasininkas
+bill_line_items	Prekės
+bill_line_total	Iš viso
+bill_line_footer	Poraštė
+bill_line_upi	UPI
 kot_weight_light	Plonas
 bill_kot_panel_help	Sąskaitos išdėstymas ir turinio plotis. Kasininkas yra tas, kuris išrašė ar apmokėjo sąskaitą – visa pardavimo istorija lieka knygose.
 std_size_ph	pvz. 18, 20, 26…
@@ -830,10 +856,10 @@ lane_declared_label	Mokesčių sąskaita faktūra
 lane_owner_label	Kasos memorandumas
 money_lane_bill	Sąskaita: {lane}
 
-removing	Removing…
-removed	Removed
-updating_order	Updating…
-order_updated	Order updated
+removing	Šalinama…
+removed	Pašalinta
+updating_order	Atnaujinama…
+order_updated	Užsakymas atnaujintas
 sel_copy	Kopijuoti
 sel_select_all	Pažymėti viską
 sel_copied	Nukopijuota

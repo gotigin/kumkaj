@@ -2,7 +2,7 @@
 app_tagline	Kotba tal-kurrier-aġenzija + booking desk. B'xejn offline.
 unlock	Iftaħ
 pin_hint	Il-PIN tas-sid jibda b'0000
-sell	Booking
+sell	Prenotazzjoni
 buy	Ħlas
 books	Ktieb tal-ġurnata
 books_help	Il-pożizzjoni tal-lum. Booking = pakketti pulzieri Ħlas = kontijiet tat-trasportatur u spejjeż. Partijiet = konsenjaturi u trasportaturi.
@@ -40,7 +40,7 @@ editing_item	Editjar
 save	Salva
 remove	Neħħi
 empty_catalog	Għadu l-ebda rati.
-counter_sale	Counter booking
+counter_sale	Prenotazzjoni fuq il-counter
 total	Totali
 cash	Kontanti
 upi	UPI
@@ -192,7 +192,7 @@ snack_secs_save	Salva l-ħin tat-twissija
 snack_secs_saved	Ħin tat-twissija salvat — {n} sekondi
 snack_secs_bad	Daħħal is-sekondi bħala numru (3–60)
 cancelled	Ikkanċellat
-cancelling	Cancelling…
+cancelling	Cancellingâ¦
 cancel	Ikkanċella
 opening_client	Qed niftħu l-klijent…
 preparing_desk	Qed nipprepara d-desk…
@@ -320,7 +320,7 @@ create_backup	Oħloq backup
 day_close_summary	Sommarju tal-għeluq tal-ġurnata
 delete_party	Ħassar il-parti magħżula
 dispatch_to_rider	Dispaċċ ibbukkjat → rikkieb
-docket_charge_ph	Docket charge
+docket_charge_ph	Ħlas tad-docket
 declared_value_ph	Valur iddikjarat
 contents_ph	Kontenut
 eway_ph	E-way kont Nru.
@@ -362,17 +362,17 @@ ndr_other	Oħrajn
 ndr_refused	Irrifjutat
 out_for_delivery	Out għall-kunsinna
 print_drs	Stampa DRS
-print_run_sheet	Print run sheet
+print_run_sheet	Ipprintja l-folja tal-ġirja
 reattempt	Ipprova mill-ġdid
 rider_cod_handed_ph	COD mgħoddi
 settle_rider_cod	Issolvi rikkieb COD
-mode_desk	Desk
+mode_desk	Skrivanija
 mode_rider	Rikkieb
 waiting_office	stennija biex tasal fl-uffiċċju
 capture_signature	Qbid firma
 incoming_manifest	Manifest deħlin
 pickup_request	Talba għall-ġbir
-pickup_run	Pickup run
+pickup_run	Ġirja tal-ġbir
 auto_assign_area	Awto-assenja żona
 reorder_stops	Ordna mill-ġdid waqfiet
 settle_rider_pay	Issolvi l-paga tar-rikkieb
@@ -396,7 +396,7 @@ on_account_ap	Akkont (AP)
 org_optional_ph	Organizzazzjoni (mhux obbligatorju)
 paid_now	Imħallas issa
 pairing_code_ph	Kodiċi tat-tqabbil
-pair_now	Par issa
+pair_now	Qabbad issa
 party_name_selected_ph	Isem il-parti (jew użu magħżul)
 password_ph	Password
 pay_ap_card	Ħlas karta AP
@@ -417,7 +417,7 @@ remove_selected	Neħħi magħżula
 restore_backup	Irrestawra l-backup
 rider_name_ph	Isem ir-rikkieb
 rider_phone_ph	Telefon rikkieb
-riders	Riders
+riders	Kurjeri
 riders_own_fleet	Riders (flotta proprja)
 rollup	Arja mtellgħa
 save_booking_measures	Ħlief miżuri ta 'prenotazzjoni
@@ -501,13 +501,18 @@ job_size	Daqs tat-tipa
 job_size_ph	eż. 18, 20, 26...
 test_receipt_format	Irċevuta tat-test
 test_label_format	Tikketta tat-test
-paper_heading	Karta
+paper_heading	Karta virtwali
 paper_size	{w} × {h} mm
 paper_roll	romblu ta' {w} mm
 paper_not_set	il-karta għadha mhix magħrufa
-paper_length_mm	Tul (mm)
-printer_paper_help	Il-karta ta' din l-istampatur f'mm. Tul vojt huwa romblu: kull riċevuta hija twila daqs il-kontenut tagħha. Sib stampaturi jimla l-karta vojta mis-sewwieq tal-istampatur (romblu ta' 80 mm meta ma jistax jgħid) u qatt ma jbiddel karta diġà ssettjata.
-preview_help	Din ir-riċevuta fuq il-karta tal-istampatur magħżul hawn taħt, kif tistampa hemm: fid-daqs reali mill-kantuniera ta' fuq ix-xellug li jilħaq l-istampatur (griż: truf li ma jilħaqx), riċevuta twila fuq aktar folji, kull ma jaqbeż it-tarf tal-karta jinqata'. L-għażla ta' stampatur tbiddel il-previżjoni biss; il-karta ta' kull stampatur tiġi ssettjata taħt Stampaturi.
+virtual_width_mm	Wisa’ virtwali (mm)
+virtual_length_mm	Tul virtwali (mm)
+reported_width_mm	Wisa’ rrappurtat (mm)
+reported_length_mm	Tul rrappurtat (mm)
+reported_paper	Irrappurtat: {paper}
+virtual_paper	Virtwali: {paper}
+printer_paper_help	Irrappurtat hija l-karta li d-driver ta' dan l-istampatur huwa ssettjat għaliha; l-app taqraha biss, u M/A tfisser li m'hemmx driver li tista' tistaqsi. Virtwali hija l-karta li inti tgħid li verament tinsab fl-istampatur, f'mm; tul vojt ifisser romblu. L-istampatur jistampa fuq il-karta tiegħu stess; il-karta virtwali tgħid lill-app kemm minnha hija karta vera, għall-previżjoni, it-tul tal-paġna u l-post tar-riċevuta. Sib stampaturi jimla karta virtwali vojta u qatt ma jbiddel waħda li ssettjajt inti.
+preview_help	Din ir-riċevuta kif tiġi stampata fuq l-istampatur magħżul hawn taħt, fid-daqs veru fuq il-karta virtwali tiegħu. L-abjad huwa fejn jistampa, il-karta griża hija barra mill-firxa tal-istampatur, u l-linka ċara tinqata'. Id-disa' kwadri huma l-karta: taptap fejn għandha toqgħod ir-riċevuta. Riċevuta twila tkompli fuq aktar paġni. L-għażla ta' stampatur tbiddel il-previżjoni biss.
 slip_col_width	Wisa’ (mm)
 no_printer_assigned	L-ebda stampatur
 printer_target_default	l-istampatur tas-soltu ta' dan il-kompjuter (indirizz vojt)
@@ -609,7 +614,7 @@ pay_selected_heading	Ħlas magħżula (issolvi d-dejn / tieħu bil-quddiem)
 write_off_heading	Tħassir (ċar mingħajr ħlas)
 pay_ap_heading	Ħlas dak li nirrispettawhom (AP)
 country_tax	Pajjiż u taxxa
-extra_tills_heading	Extra sakemm
+extra_tills_heading	Kaxxi żejda
 other_devices_help_heading	Waħħal apparati oħra
 other_devices_help	Fuq dan l-apparat (Server): Apparat ieħor → Ħalli tills żejda. Innota l-kodiċi tat-tqabbil u l-indirizz tal-Wi-Fi. Tektek Ħalli tagħmir ieħor jikkonnettja jekk jidher. Fuq kompjuter, tektek Ibda b'dan il-kompjuter. Fuq kull mezz ieħor: installa l-app, agħżel Modalità Klijent, Sib is-server tal-ħanut (jew ittajpja l-indirizz), daħħal il-kodiċi ta 'tqabbil, Pair issa. L-ordnijiet jistennew fuq it-tagħmir jekk il-Wi-Fi tinżel u jmorru meta s-Server jerġa' jwieġeb.
 your_brand	Il-marka tiegħek (fl-app)
@@ -738,11 +743,11 @@ return_to_sender	Ritorn lill-mittent
 runs_bags_heading	Runs reċenti u basktijiet
 print_word	Stampa
 bag_word	Borża tal-ġarr
-run_word	Rider run
+run_word	Ġirja tal-kurjer
 parcels_fmt	Pakketti {n}
 parcel_history	Storja
 attempt_fmt	Ipprova {n}
-pieces_short_fmt	{n} pcs
+pieces_short_fmt	{n} biċċiet
 note_reason_ph	Nota jew raġuni
 ops_pick_first	Agħżel pakketti l-ewwel — tektekhom jew skennjawhom
 cod_to_collect	Mogħtija — COD biex tinġabar
@@ -766,7 +771,7 @@ amount_owed_ph	Ammont dovut
 amount_ph	Ammont
 amount_received_ph	Ammont riċevut
 amount_we_pay_ph	Ammont li nħallsu
-awb_scan_ph	AWB / scan barcode
+awb_scan_ph	AWB / skennja l-barcode
 bulk_csv_ph	Bulk CSV — destinazzjoni,destinatarju,kg,cod_paise,nota
 business_name_ph	Isem tan-negozju
 category_new_ph	Kategorija (mhux obbligatorja, maħluqa jekk ġdida)
@@ -778,7 +783,7 @@ credit_khata_amount_ph	Ammont ta' kreditu / khata
 credit_limit_ph	Limitu tal-kreditu (0 = xejn)
 dim_unit_code_ph	Kodiċi tal-unità tad-dimensjoni (ċm)
 divisor_ph	Diviżur volumetriku (5000)
-extra_per_kg_ph	Extra / kg
+extra_per_kg_ph	Żejjed / kg
 first_amount_ph	L-ewwel ammont
 first_kg_ph	L-ewwel kg (ċangatura)
 from_code_ph	Mill-kodiċi (borża)

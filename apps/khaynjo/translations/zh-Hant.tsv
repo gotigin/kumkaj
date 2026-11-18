@@ -101,6 +101,19 @@ bill_item_col_sep	列線
 slip_columns	欄
 slip_col_header	表頭
 bill_line_logo	標誌
+bill_line_shop	店鋪
+bill_line_address	地址
+bill_line_fssai	FSSAI
+bill_line_title	標題
+bill_line_customer	顧客
+bill_line_bill_no	帳單號
+bill_line_time	時間
+bill_line_cashier	收銀員
+bill_line_table	桌臺
+bill_line_items	項目
+bill_line_total	總計
+bill_line_footer	頁腳
+bill_line_upi	UPI
 bill_logo_picture	圖片
 bill_logo_choose	選擇圖片
 bill_logo_remove	移除圖片
@@ -128,6 +141,12 @@ bill_item_piece_off	關
 bill_total_qty	總數量
 bill_total_subtotal	小計
 bill_total_grand	總計
+bill_total_number_under	數字放在此欄下
+bill_total_caption_under	標籤放在此欄下
+bill_total_own_line	獨立一行
+bill_total_caption_with	與數字一起
+bill_total_caption_none	不印標籤
+bill_total_place_help	「獨立一行」會單獨列印此合計。放在某欄下方時，其數字會以本行的大小與粗細印在該品項欄內；各合計共用同一列，直到某欄已被佔用，才另起新列。標籤可與數字一起、放在另一欄下方，或不列印。稅金、服務費、進位與付款等行會跟隨「小計」。
 reprint_incl	列入打印
 reprint_skip	跳過
 reprint_skip_meta	不重打
@@ -178,20 +197,20 @@ snack_secs_ph	秒數（3–60，默認 10）
 snack_secs_save	保存提示時長
 snack_secs_saved	提示時長已保存——{n} 秒
 settings_sec_whatsapp	WhatsApp
-whatsapp_cloud_help	Use your own Meta WhatsApp Cloud API. Create a System User token with whatsapp_business_messaging (temporary dashboard tokens expire). Credentials stay on this Server only — never on extra tills. Accepted means Meta took the request, not that the guest received it.
-whatsapp_phone_id_ph	Phone Number ID
-whatsapp_token_ph	Access Token (leave blank to keep)
-whatsapp_template_ph	Bill template name (optional)
-whatsapp_template_lang_ph	Template language (e.g. en)
-whatsapp_enable	Enable
+whatsapp_cloud_help	使用你自己的 Meta WhatsApp Cloud API。建立帶有 whatsapp_business_messaging 的 System User 權杖（控制台的臨時權杖會過期）。憑證只保存在這台服務器上 — 絕不會在額外櫃檯上。「已接受」表示 Meta 已收下請求，並不表示客人已收到。
+whatsapp_phone_id_ph	電話號碼 ID
+whatsapp_token_ph	存取權杖（留空則保持不變）
+whatsapp_template_ph	帳單範本名稱（可選）
+whatsapp_template_lang_ph	範本語言（例如 en）
+whatsapp_enable	啟用
 whatsapp_disable	Off
-whatsapp_save	Save WhatsApp
-whatsapp_test	Test connection
-whatsapp_disconnect	Disconnect
-whatsapp_send_bill	Send via WhatsApp
-whatsapp_consent	WhatsApp OK
-whatsapp_consent_help	Guest agreed to receive WhatsApp messages. A phone number alone is not consent.
-whatsapp_server_only	Configure WhatsApp on the shop Server device
+whatsapp_save	保存 WhatsApp
+whatsapp_test	測試連接
+whatsapp_disconnect	中斷連接
+whatsapp_send_bill	透過 WhatsApp 傳送
+whatsapp_consent	WhatsApp 確定
+whatsapp_consent_help	客人已同意接收 WhatsApp 訊息。僅有電話號碼並不代表同意。
+whatsapp_server_only	請在店鋪的服務器裝置上設定 WhatsApp
 settings_sec_backup	備份與恢復
 settings_sec_diag	診斷
 settings_sec_privacy	隱私
@@ -637,7 +656,7 @@ choose_device_use	選擇本設備的用途。
 paired_note	已配對。解鎖即可收款，或點刷新獲取店裡的最新數據。
 last_update_at	最後一次從店裡更新：{time}。
 pair_intro	查找服務器，或輸入其地址和配對碼。
-pair_resume_hint	Already paired — enter your shop PIN, or Forget this shop to pair another.
+pair_resume_hint	已配對 — 輸入你店鋪的 PIN，或點按「忘記此店鋪」以配對另一家。
 queue_waiting	等待發送到店裡（{n}）：
 queue_tries	已嘗試 {n} 次 · 最後回覆：{e}
 save_backup_copy	保存備份副本…
@@ -754,13 +773,18 @@ station_vps_dd	此工位的打印機
 station_vps_dd_n	{n} 臺打印機 · 點按更改
 bill_printers_dd	帳單打印機
 bill_printers_dd_n	{n} 臺帳單打印機 · 點擊以更改
-paper_heading	紙張
+paper_heading	虛擬紙張
 paper_size	{w} × {h} mm
 paper_roll	{w} mm 捲紙
 paper_not_set	紙張尚未得知
-paper_length_mm	長度 (mm)
-printer_paper_help	此打印機的紙張 (mm)。長度留空即為捲紙：每張單據與其內容一樣長。「查找打印機」會從打印機驅動程式填入空白紙張（無法得知時為 80 mm 捲紙），且絕不更改已設定的紙張。
-preview_help	此單據在下方所選打印機的紙張上，與在那裡列印的完全相同：從打印機可達的左上角起以實際尺寸列印（灰色：無法到達的邊緣），長單據印在更多張紙上，超出紙張邊緣的部分會被切掉。選擇打印機只會改變預覽；每台打印機的紙張在「打印機」中設定。
+virtual_width_mm	虛擬寬度 (mm)
+virtual_length_mm	虛擬長度 (mm)
+reported_width_mm	回報寬度 (mm)
+reported_length_mm	回報長度 (mm)
+reported_paper	回報：{paper}
+virtual_paper	虛擬：{paper}
+printer_paper_help	「回報」是此打印機驅動程式所設定的紙張；應用只會讀取它，「無」表示沒有可查詢的驅動程式。「虛擬」是您指明打印機內實際放著的紙張，單位為 mm；長度留空即為捲紙。打印機在它自己的紙張上列印；虛擬紙張告訴應用其中有多少是真正的紙，用於預覽、頁面長度和單據的位置。「查找打印機」會填入空白的虛擬紙張，且絕不更改您已設定的紙張。
+preview_help	此單據與在下方所選打印機上列印的完全相同，以實際尺寸顯示在其虛擬紙張上。白色是列印的位置，灰色紙張是打印機無法到達的地方，變淡的墨跡會被切掉。九個方格就是紙張：點按單據應放的位置。長單據會接續到更多頁。選擇打印機只會改變預覽。
 job_layout	版式
 job_delivery	任務發送方式
 job_delivery_help	OS 文檔、原始字節或 ESC/POS。帳單和廚房票據各自保留自己的設置。任一任務均可發送至“已保存的”任意打印機。
@@ -1266,8 +1290,8 @@ taxable_value	應稅金額
 gst_inside_price_note	（含{tax}）
 start_with_template	從我們的菜單模板開始
 template_heading	我們的菜單模板
-template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
-template_download_shelf	Download photo shelf
+template_need_download	下載公共菜品照片架（約 1,459 道菜），然後把缺少的名稱匯入你的菜單。
+template_download_shelf	下載照片架
 template_info	{c} 個分類、{d} 道帶圖菜品可直接添加。價格為 ₹0，之後再設置。
 template_import	導入完整模板
 template_confirm	添加 {d} 道菜及其分類？已有菜品保持不變。

@@ -1300,6 +1300,19 @@ script_mod! {
         }
     }
 
+    // One square of the 3 × 3 "where on the paper" grid beside a preview
+    // (owner, 2026-11-17): the chips' own look, idle and picked.
+    let PlaceCell = SegBtn{
+        width: 34 height: 26
+        padding: Inset{left: 0. right: 0. top: 0. bottom: 0.}
+        text: ""
+    }
+    let PlaceCellOn = SegBtnOn{
+        width: 34 height: 26
+        padding: Inset{left: 0. right: 0. top: 0. bottom: 0.}
+        text: ""
+    }
+
     // PAGE TAB — flat label + underline (Booking Items|Payment). Not a chip.
     let DeskTab = Button{
         width: Fill height: Fit
@@ -3969,6 +3982,65 @@ script_mod! {
                             margin: Inset{right: 8.}
                             font_color: #x074D3E
                             font_size: 14.
+                        }
+                    }
+                }
+                // A value too wide to sit beside its label: the label
+                // above, the value under it, both wrapping at the row's
+                // width. Makepad has no flex-shrink — the Fit value kept its
+                // width and the Fill label got what was left, a letter per
+                // line (`kv_stacks` picks this row; DEV.md bug 7j).
+                KvStack := View{
+                    width: Fill height: Fit
+                    row := View{
+                        width: Fill height: Fit
+                        padding: Inset{top: 5. bottom: 5.}
+                        flow: Down spacing: 2
+                        k := WrapLabel{
+                            body: ""
+                            margin: Inset{right: 8.}
+                            font_color: #x074D3E
+                            font_size: 14.
+                        }
+                        vrow := View{
+                            width: Fill height: Fit
+                            flow: Right spacing: 8
+                            align: Align{y: 0.5}
+                            v := WrapLabel{
+                                width: Fill
+                                body: ""
+                                margin: Inset{right: 8.}
+                                font_color: #x023637
+                                font_size: 15.
+                            }
+                            eye := EyeIconBtn{visible: false}
+                        }
+                    }
+                }
+                KvStackRtl := View{
+                    width: Fill height: Fit
+                    row := View{
+                        width: Fill height: Fit
+                        padding: Inset{top: 5. bottom: 5.}
+                        flow: Down spacing: 2
+                        k := WrapLabel{
+                            body: ""
+                            margin: Inset{right: 8.}
+                            font_color: #x074D3E
+                            font_size: 14.
+                        }
+                        vrow := View{
+                            width: Fill height: Fit
+                            flow: Right spacing: 8
+                            align: Align{y: 0.5}
+                            eye := EyeIconBtn{visible: false}
+                            v := WrapLabel{
+                                width: Fill
+                                body: ""
+                                margin: Inset{right: 8.}
+                                font_color: #x023637
+                                font_size: 15.
+                            }
                         }
                     }
                 }
@@ -7682,16 +7754,28 @@ h_units_heading := WrapLabel{body: "Units" font_color: #x023637 font_size: 20.}
                                         draw_bg.border_size: 1.5
                                         draw_bg.border_color: #x023637
                                         View{width: Fill height: Fit flow: Right spacing: 0 align: Align{y: 0.5}
-                                            h_printer_paper := WrapLabel{width: Fit body: "Paper" font_color: #x023637 font_size: 14.}
+                                            h_printer_paper := WrapLabel{width: Fit body: "Virtual paper" font_color: #x023637 font_size: 14.}
                                             printer_paper_help := InfoHelp{tip: " "}
                                         }
-                                        View{width: Fill height: Fit flow: Right spacing: 8
-                                            View{width: Fill height: Fit flow: Down spacing: 4
-                                                h_printer_paper_w := WrapLabel{width: Fill body: "Width (mm)" font_color: #x023637 font_size: 13.}
-                                                printer_paper_w_input := FieldInput{width: Fill empty_text: ""}
+                                        // Row by row — what the printer's driver reports (read-only; "N/A"
+                                        // when nothing reported it), then the virtual paper the owner sets
+                                        // (owner, 2026-11-17) — so the two boxes stay level whatever the
+                                        // labels' lengths, in any language at any width.
+                                        View{width: Fill height: Fit flow: Down spacing: 4
+                                            View{width: Fill height: Fit flow: Right spacing: 8
+                                                h_printer_reported_w := WrapLabel{width: Fill body: "Reported width (mm)" font_color: #x023637 font_size: 13.}
+                                                h_printer_reported_l := WrapLabel{width: Fill body: "Reported length (mm)" font_color: #x023637 font_size: 13.}
                                             }
-                                            View{width: Fill height: Fit flow: Down spacing: 4
-                                                h_printer_paper_l := WrapLabel{width: Fill body: "Length (mm)" font_color: #x023637 font_size: 13.}
+                                            View{width: Fill height: Fit flow: Right spacing: 8
+                                                printer_reported_w := WrapLabel{width: Fill body: "N/A" font_color: #x023637 font_size: 14.}
+                                                printer_reported_l := WrapLabel{width: Fill body: "N/A" font_color: #x023637 font_size: 14.}
+                                            }
+                                            View{width: Fill height: Fit flow: Right spacing: 8
+                                                h_printer_paper_w := WrapLabel{width: Fill body: "Virtual width (mm)" font_color: #x023637 font_size: 13.}
+                                                h_printer_paper_l := WrapLabel{width: Fill body: "Virtual length (mm)" font_color: #x023637 font_size: 13.}
+                                            }
+                                            View{width: Fill height: Fit flow: Right spacing: 8
+                                                printer_paper_w_input := FieldInput{width: Fill empty_text: ""}
                                                 printer_paper_l_input := FieldInput{width: Fill empty_text: ""}
                                             }
                                         }
@@ -8152,22 +8236,18 @@ h_units_heading := WrapLabel{body: "Units" font_color: #x023637 font_size: 20.}
                                         bill_pick_cashier_on := FieldRowBtnOn{text: "Cashier" visible: false}
                                     }
                                     bill_pick_row_8 := View{width: Fill height: Fit flow: Overlay
-                                        bill_pick_table := FieldRowBtn{text: "Table"}
-                                        bill_pick_table_on := FieldRowBtnOn{text: "Table" visible: false}
-                                    }
-                                    bill_pick_row_9 := View{width: Fill height: Fit flow: Overlay
                                         bill_pick_items := FieldRowBtn{text: "Items"}
                                         bill_pick_items_on := FieldRowBtnOn{text: "Items" visible: false}
                                     }
-                                    bill_pick_row_10 := View{width: Fill height: Fit flow: Overlay
+                                    bill_pick_row_9 := View{width: Fill height: Fit flow: Overlay
                                         bill_pick_total := FieldRowBtn{text: "Total"}
                                         bill_pick_total_on := FieldRowBtnOn{text: "Total" visible: false}
                                     }
-                                    bill_pick_row_11 := View{width: Fill height: Fit flow: Overlay
+                                    bill_pick_row_10 := View{width: Fill height: Fit flow: Overlay
                                         bill_pick_footer := FieldRowBtn{text: "Footer"}
                                         bill_pick_footer_on := FieldRowBtnOn{text: "Footer" visible: false}
                                     }
-                                    bill_pick_row_12 := View{width: Fill height: Fit flow: Overlay
+                                    bill_pick_row_11 := View{width: Fill height: Fit flow: Overlay
                                         bill_pick_upi := FieldRowBtn{text: "UPI"}
                                         bill_pick_upi_on := FieldRowBtnOn{text: "UPI" visible: false}
                                     }
@@ -8272,10 +8352,6 @@ h_units_heading := WrapLabel{body: "Units" font_color: #x023637 font_size: 20.}
                                             View{width: Fill height: Fit flow: Overlay
                                                 bill_pair_cashier := SegBtn{text: "Cashier"}
                                                 bill_pair_cashier_on := SegBtnOn{text: "Cashier" visible: false}
-                                            }
-                                            View{width: Fill height: Fit flow: Overlay
-                                                bill_pair_table := SegBtn{text: "Table"}
-                                                bill_pair_table_on := SegBtnOn{text: "Table" visible: false}
                                             }
                                         }
                                     }
@@ -8524,7 +8600,7 @@ h_units_heading := WrapLabel{body: "Units" font_color: #x023637 font_size: 20.}
                                         }
                                     }
                                     // Totals: one row each — show, and its caption (Grand total also
-                                    // holds its caption on a paid bill).
+                                    // holds its caption on a paid bill) — then where it prints.
                                     bill_total_pieces := View{
                                         width: Fill height: Fit
                                         flow: Down spacing: 8
@@ -8543,6 +8619,82 @@ h_units_heading := WrapLabel{body: "Units" font_color: #x023637 font_size: 20.}
                                             }
                                             bill_total_qty_label_input := FieldInput{width: Fill empty_text: "Total Qty"}
                                         }
+                                        // Where this total prints: its number under an item column (on a row
+                                        // shared with the other totals) or on its own line, and its caption.
+                                        // Pills as wide as their words in a strip that wraps: any width, any
+                                        // language (a wrap strip never holds a Fill child — DEV.md bug 7).
+                                        bill_total_place_qty := View{width: Fill height: Fit flow: Down spacing: 6
+                                            padding: Inset{left: 0. right: 0. top: 0. bottom: 2.}
+                                            visible: false
+                                            View{width: Fill height: Fit flow: Right spacing: 0 align: Align{y: 0.5}
+                                                tp_number_h := WrapLabel{width: Fit body: "Number under" font_color: #x023637 font_size: 14.}
+                                                tp_help := InfoHelp{tip: ""}
+                                            }
+                                            tp_number_segs := View{width: Fill height: Fit flow: Right{wrap: true} spacing: 6
+                                                tp_n_own_box := View{width: Fit height: Fit flow: Overlay
+                                                    margin: Inset{left: 0. right: 0. top: 0. bottom: 6.}
+                                                    tp_n_own := SegBtn{width: Fit text: "Own line"}
+                                                    tp_n_own_on := SegBtnOn{width: Fit text: "Own line" visible: false}
+                                                }
+                                                tp_n_name_box := View{width: Fit height: Fit flow: Overlay
+                                                    margin: Inset{left: 0. right: 0. top: 0. bottom: 6.}
+                                                    tp_n_name := SegBtn{width: Fit text: "Medicine name"}
+                                                    tp_n_name_on := SegBtnOn{width: Fit text: "Medicine name" visible: false}
+                                                }
+                                                tp_n_qty_box := View{width: Fit height: Fit flow: Overlay
+                                                    margin: Inset{left: 0. right: 0. top: 0. bottom: 6.}
+                                                    tp_n_qty := SegBtn{width: Fit text: "Qty"}
+                                                    tp_n_qty_on := SegBtnOn{width: Fit text: "Qty" visible: false}
+                                                }
+                                                tp_n_price_box := View{width: Fit height: Fit flow: Overlay
+                                                    margin: Inset{left: 0. right: 0. top: 0. bottom: 6.}
+                                                    tp_n_price := SegBtn{width: Fit text: "Price"}
+                                                    tp_n_price_on := SegBtnOn{width: Fit text: "Price" visible: false}
+                                                }
+                                                tp_n_amount_box := View{width: Fit height: Fit flow: Overlay
+                                                    margin: Inset{left: 0. right: 0. top: 0. bottom: 6.}
+                                                    tp_n_amount := SegBtn{width: Fit text: "Amount"}
+                                                    tp_n_amount_on := SegBtnOn{width: Fit text: "Amount" visible: false}
+                                                }
+                                            }
+                                            // Only while the number sits under a column.
+                                            tp_caption := View{width: Fill height: Fit flow: Down spacing: 6
+                                                visible: false
+                                                tp_caption_h := WrapLabel{width: Fill body: "Caption under" font_color: #x023637 font_size: 14.}
+                                                tp_caption_segs := View{width: Fill height: Fit flow: Right{wrap: true} spacing: 6
+                                                    tp_c_with_box := View{width: Fit height: Fit flow: Overlay
+                                                        margin: Inset{left: 0. right: 0. top: 0. bottom: 6.}
+                                                        tp_c_with := SegBtn{width: Fit text: "With the number"}
+                                                        tp_c_with_on := SegBtnOn{width: Fit text: "With the number" visible: false}
+                                                    }
+                                                    tp_c_none_box := View{width: Fit height: Fit flow: Overlay
+                                                        margin: Inset{left: 0. right: 0. top: 0. bottom: 6.}
+                                                        tp_c_none := SegBtn{width: Fit text: "No caption"}
+                                                        tp_c_none_on := SegBtnOn{width: Fit text: "No caption" visible: false}
+                                                    }
+                                                    tp_c_name_box := View{width: Fit height: Fit flow: Overlay
+                                                        margin: Inset{left: 0. right: 0. top: 0. bottom: 6.}
+                                                        tp_c_name := SegBtn{width: Fit text: "Medicine name"}
+                                                        tp_c_name_on := SegBtnOn{width: Fit text: "Medicine name" visible: false}
+                                                    }
+                                                    tp_c_qty_box := View{width: Fit height: Fit flow: Overlay
+                                                        margin: Inset{left: 0. right: 0. top: 0. bottom: 6.}
+                                                        tp_c_qty := SegBtn{width: Fit text: "Qty"}
+                                                        tp_c_qty_on := SegBtnOn{width: Fit text: "Qty" visible: false}
+                                                    }
+                                                    tp_c_price_box := View{width: Fit height: Fit flow: Overlay
+                                                        margin: Inset{left: 0. right: 0. top: 0. bottom: 6.}
+                                                        tp_c_price := SegBtn{width: Fit text: "Price"}
+                                                        tp_c_price_on := SegBtnOn{width: Fit text: "Price" visible: false}
+                                                    }
+                                                    tp_c_amount_box := View{width: Fit height: Fit flow: Overlay
+                                                        margin: Inset{left: 0. right: 0. top: 0. bottom: 6.}
+                                                        tp_c_amount := SegBtn{width: Fit text: "Amount"}
+                                                        tp_c_amount_on := SegBtnOn{width: Fit text: "Amount" visible: false}
+                                                    }
+                                                }
+                                            }
+                                        }
                                         bill_total_row_sub := View{width: Fill height: Fit flow: Right spacing: 8 align: Align{y: 0.5}
                                             h_bill_total_subtotal := WrapLabel{width: 140 body: "Sub total" font_color: #x023637 font_size: 14.}
                                             View{width: Fit height: Fit flow: Right spacing: 6
@@ -8556,6 +8708,82 @@ h_units_heading := WrapLabel{body: "Units" font_color: #x023637 font_size: 20.}
                                                 }
                                             }
                                             bill_total_subtotal_label_input := FieldInput{width: Fill empty_text: "Sub Total"}
+                                        }
+                                        // Where this total prints: its number under an item column (on a row
+                                        // shared with the other totals) or on its own line, and its caption.
+                                        // Pills as wide as their words in a strip that wraps: any width, any
+                                        // language (a wrap strip never holds a Fill child — DEV.md bug 7).
+                                        bill_total_place_sub := View{width: Fill height: Fit flow: Down spacing: 6
+                                            padding: Inset{left: 0. right: 0. top: 0. bottom: 2.}
+                                            visible: false
+                                            View{width: Fill height: Fit flow: Right spacing: 0 align: Align{y: 0.5}
+                                                tp_number_h := WrapLabel{width: Fit body: "Number under" font_color: #x023637 font_size: 14.}
+                                                tp_help := InfoHelp{tip: ""}
+                                            }
+                                            tp_number_segs := View{width: Fill height: Fit flow: Right{wrap: true} spacing: 6
+                                                tp_n_own_box := View{width: Fit height: Fit flow: Overlay
+                                                    margin: Inset{left: 0. right: 0. top: 0. bottom: 6.}
+                                                    tp_n_own := SegBtn{width: Fit text: "Own line"}
+                                                    tp_n_own_on := SegBtnOn{width: Fit text: "Own line" visible: false}
+                                                }
+                                                tp_n_name_box := View{width: Fit height: Fit flow: Overlay
+                                                    margin: Inset{left: 0. right: 0. top: 0. bottom: 6.}
+                                                    tp_n_name := SegBtn{width: Fit text: "Medicine name"}
+                                                    tp_n_name_on := SegBtnOn{width: Fit text: "Medicine name" visible: false}
+                                                }
+                                                tp_n_qty_box := View{width: Fit height: Fit flow: Overlay
+                                                    margin: Inset{left: 0. right: 0. top: 0. bottom: 6.}
+                                                    tp_n_qty := SegBtn{width: Fit text: "Qty"}
+                                                    tp_n_qty_on := SegBtnOn{width: Fit text: "Qty" visible: false}
+                                                }
+                                                tp_n_price_box := View{width: Fit height: Fit flow: Overlay
+                                                    margin: Inset{left: 0. right: 0. top: 0. bottom: 6.}
+                                                    tp_n_price := SegBtn{width: Fit text: "Price"}
+                                                    tp_n_price_on := SegBtnOn{width: Fit text: "Price" visible: false}
+                                                }
+                                                tp_n_amount_box := View{width: Fit height: Fit flow: Overlay
+                                                    margin: Inset{left: 0. right: 0. top: 0. bottom: 6.}
+                                                    tp_n_amount := SegBtn{width: Fit text: "Amount"}
+                                                    tp_n_amount_on := SegBtnOn{width: Fit text: "Amount" visible: false}
+                                                }
+                                            }
+                                            // Only while the number sits under a column.
+                                            tp_caption := View{width: Fill height: Fit flow: Down spacing: 6
+                                                visible: false
+                                                tp_caption_h := WrapLabel{width: Fill body: "Caption under" font_color: #x023637 font_size: 14.}
+                                                tp_caption_segs := View{width: Fill height: Fit flow: Right{wrap: true} spacing: 6
+                                                    tp_c_with_box := View{width: Fit height: Fit flow: Overlay
+                                                        margin: Inset{left: 0. right: 0. top: 0. bottom: 6.}
+                                                        tp_c_with := SegBtn{width: Fit text: "With the number"}
+                                                        tp_c_with_on := SegBtnOn{width: Fit text: "With the number" visible: false}
+                                                    }
+                                                    tp_c_none_box := View{width: Fit height: Fit flow: Overlay
+                                                        margin: Inset{left: 0. right: 0. top: 0. bottom: 6.}
+                                                        tp_c_none := SegBtn{width: Fit text: "No caption"}
+                                                        tp_c_none_on := SegBtnOn{width: Fit text: "No caption" visible: false}
+                                                    }
+                                                    tp_c_name_box := View{width: Fit height: Fit flow: Overlay
+                                                        margin: Inset{left: 0. right: 0. top: 0. bottom: 6.}
+                                                        tp_c_name := SegBtn{width: Fit text: "Medicine name"}
+                                                        tp_c_name_on := SegBtnOn{width: Fit text: "Medicine name" visible: false}
+                                                    }
+                                                    tp_c_qty_box := View{width: Fit height: Fit flow: Overlay
+                                                        margin: Inset{left: 0. right: 0. top: 0. bottom: 6.}
+                                                        tp_c_qty := SegBtn{width: Fit text: "Qty"}
+                                                        tp_c_qty_on := SegBtnOn{width: Fit text: "Qty" visible: false}
+                                                    }
+                                                    tp_c_price_box := View{width: Fit height: Fit flow: Overlay
+                                                        margin: Inset{left: 0. right: 0. top: 0. bottom: 6.}
+                                                        tp_c_price := SegBtn{width: Fit text: "Price"}
+                                                        tp_c_price_on := SegBtnOn{width: Fit text: "Price" visible: false}
+                                                    }
+                                                    tp_c_amount_box := View{width: Fit height: Fit flow: Overlay
+                                                        margin: Inset{left: 0. right: 0. top: 0. bottom: 6.}
+                                                        tp_c_amount := SegBtn{width: Fit text: "Amount"}
+                                                        tp_c_amount_on := SegBtnOn{width: Fit text: "Amount" visible: false}
+                                                    }
+                                                }
+                                            }
                                         }
                                         bill_total_row_grand := View{width: Fill height: Fit flow: Right spacing: 8 align: Align{y: 0.5}
                                             h_bill_total_grand := WrapLabel{width: 140 body: "Grand total" font_color: #x023637 font_size: 14.}
@@ -8572,6 +8800,82 @@ h_units_heading := WrapLabel{body: "Units" font_color: #x023637 font_size: 20.}
                                             bill_total_grand_label_input := FieldInput{width: Fill empty_text: "Grand Total"}
                                             // The same line on a paid bill.
                                             bill_total_paid_label_input := FieldInput{width: Fill empty_text: "Total"}
+                                        }
+                                        // Where this total prints: its number under an item column (on a row
+                                        // shared with the other totals) or on its own line, and its caption.
+                                        // Pills as wide as their words in a strip that wraps: any width, any
+                                        // language (a wrap strip never holds a Fill child — DEV.md bug 7).
+                                        bill_total_place_grand := View{width: Fill height: Fit flow: Down spacing: 6
+                                            padding: Inset{left: 0. right: 0. top: 0. bottom: 2.}
+                                            visible: false
+                                            View{width: Fill height: Fit flow: Right spacing: 0 align: Align{y: 0.5}
+                                                tp_number_h := WrapLabel{width: Fit body: "Number under" font_color: #x023637 font_size: 14.}
+                                                tp_help := InfoHelp{tip: ""}
+                                            }
+                                            tp_number_segs := View{width: Fill height: Fit flow: Right{wrap: true} spacing: 6
+                                                tp_n_own_box := View{width: Fit height: Fit flow: Overlay
+                                                    margin: Inset{left: 0. right: 0. top: 0. bottom: 6.}
+                                                    tp_n_own := SegBtn{width: Fit text: "Own line"}
+                                                    tp_n_own_on := SegBtnOn{width: Fit text: "Own line" visible: false}
+                                                }
+                                                tp_n_name_box := View{width: Fit height: Fit flow: Overlay
+                                                    margin: Inset{left: 0. right: 0. top: 0. bottom: 6.}
+                                                    tp_n_name := SegBtn{width: Fit text: "Medicine name"}
+                                                    tp_n_name_on := SegBtnOn{width: Fit text: "Medicine name" visible: false}
+                                                }
+                                                tp_n_qty_box := View{width: Fit height: Fit flow: Overlay
+                                                    margin: Inset{left: 0. right: 0. top: 0. bottom: 6.}
+                                                    tp_n_qty := SegBtn{width: Fit text: "Qty"}
+                                                    tp_n_qty_on := SegBtnOn{width: Fit text: "Qty" visible: false}
+                                                }
+                                                tp_n_price_box := View{width: Fit height: Fit flow: Overlay
+                                                    margin: Inset{left: 0. right: 0. top: 0. bottom: 6.}
+                                                    tp_n_price := SegBtn{width: Fit text: "Price"}
+                                                    tp_n_price_on := SegBtnOn{width: Fit text: "Price" visible: false}
+                                                }
+                                                tp_n_amount_box := View{width: Fit height: Fit flow: Overlay
+                                                    margin: Inset{left: 0. right: 0. top: 0. bottom: 6.}
+                                                    tp_n_amount := SegBtn{width: Fit text: "Amount"}
+                                                    tp_n_amount_on := SegBtnOn{width: Fit text: "Amount" visible: false}
+                                                }
+                                            }
+                                            // Only while the number sits under a column.
+                                            tp_caption := View{width: Fill height: Fit flow: Down spacing: 6
+                                                visible: false
+                                                tp_caption_h := WrapLabel{width: Fill body: "Caption under" font_color: #x023637 font_size: 14.}
+                                                tp_caption_segs := View{width: Fill height: Fit flow: Right{wrap: true} spacing: 6
+                                                    tp_c_with_box := View{width: Fit height: Fit flow: Overlay
+                                                        margin: Inset{left: 0. right: 0. top: 0. bottom: 6.}
+                                                        tp_c_with := SegBtn{width: Fit text: "With the number"}
+                                                        tp_c_with_on := SegBtnOn{width: Fit text: "With the number" visible: false}
+                                                    }
+                                                    tp_c_none_box := View{width: Fit height: Fit flow: Overlay
+                                                        margin: Inset{left: 0. right: 0. top: 0. bottom: 6.}
+                                                        tp_c_none := SegBtn{width: Fit text: "No caption"}
+                                                        tp_c_none_on := SegBtnOn{width: Fit text: "No caption" visible: false}
+                                                    }
+                                                    tp_c_name_box := View{width: Fit height: Fit flow: Overlay
+                                                        margin: Inset{left: 0. right: 0. top: 0. bottom: 6.}
+                                                        tp_c_name := SegBtn{width: Fit text: "Medicine name"}
+                                                        tp_c_name_on := SegBtnOn{width: Fit text: "Medicine name" visible: false}
+                                                    }
+                                                    tp_c_qty_box := View{width: Fit height: Fit flow: Overlay
+                                                        margin: Inset{left: 0. right: 0. top: 0. bottom: 6.}
+                                                        tp_c_qty := SegBtn{width: Fit text: "Qty"}
+                                                        tp_c_qty_on := SegBtnOn{width: Fit text: "Qty" visible: false}
+                                                    }
+                                                    tp_c_price_box := View{width: Fit height: Fit flow: Overlay
+                                                        margin: Inset{left: 0. right: 0. top: 0. bottom: 6.}
+                                                        tp_c_price := SegBtn{width: Fit text: "Price"}
+                                                        tp_c_price_on := SegBtnOn{width: Fit text: "Price" visible: false}
+                                                    }
+                                                    tp_c_amount_box := View{width: Fit height: Fit flow: Overlay
+                                                        margin: Inset{left: 0. right: 0. top: 0. bottom: 6.}
+                                                        tp_c_amount := SegBtn{width: Fit text: "Amount"}
+                                                        tp_c_amount_on := SegBtnOn{width: Fit text: "Amount" visible: false}
+                                                    }
+                                                }
+                                            }
                                         }
                                     }
                                 }
@@ -8625,10 +8929,6 @@ h_units_heading := WrapLabel{body: "Units" font_color: #x023637 font_size: 20.}
                                         bill_after_11 := FieldRowBtn{text: ""}
                                         bill_after_11_on := FieldRowBtnOn{text: "" visible: false}
                                     }
-                                    bill_after_row_12 := View{width: Fill height: Fit flow: Overlay visible: false
-                                        bill_after_12 := FieldRowBtn{text: ""}
-                                        bill_after_12_on := FieldRowBtnOn{text: "" visible: false}
-                                    }
                                 }
                                 }
                                 } // bill_form_col
@@ -8653,6 +8953,57 @@ h_units_heading := WrapLabel{body: "Units" font_color: #x023637 font_size: 20.}
                                     padding: Inset{left: 0. right: 0. top: 0. bottom: 0.}
                                 }
                                 bill_preview_paper_suggest := mod.widgets.SuggestList{field: "bill_preview_paper"}
+                                // The picked printer's two papers, read-only: what its
+                                // driver reports, and the virtual paper the preview draws.
+                                bill_preview_reported := WrapLabel{width: Fill body: " " font_color: #x023637 font_size: 12.}
+                                bill_preview_virtual := WrapLabel{width: Fill body: " " font_color: #x023637 font_size: 12.}
+                                // Where the slip sits on a paper bigger than it: a picture of
+                                // the paper in nine squares (owner, 2026-11-17); the Preview ℹ
+                                // explains them (docs/PRINTER.md § Paper and preview).
+                                bill_place_grid := View{width: Fit height: Fit flow: Down spacing: 4 margin: Inset{left: 0. right: 0. top: 2. bottom: 8.}
+                                    View{width: Fit height: Fit flow: Right spacing: 4
+                                        View{width: Fit height: Fit flow: Overlay
+                                            bill_place_0_0 := PlaceCell{}
+                                            bill_place_0_0_on := PlaceCellOn{visible: false}
+                                        }
+                                        View{width: Fit height: Fit flow: Overlay
+                                            bill_place_0_1 := PlaceCell{}
+                                            bill_place_0_1_on := PlaceCellOn{visible: false}
+                                        }
+                                        View{width: Fit height: Fit flow: Overlay
+                                            bill_place_0_2 := PlaceCell{}
+                                            bill_place_0_2_on := PlaceCellOn{visible: false}
+                                        }
+                                    }
+                                    View{width: Fit height: Fit flow: Right spacing: 4
+                                        View{width: Fit height: Fit flow: Overlay
+                                            bill_place_1_0 := PlaceCell{}
+                                            bill_place_1_0_on := PlaceCellOn{visible: false}
+                                        }
+                                        View{width: Fit height: Fit flow: Overlay
+                                            bill_place_1_1 := PlaceCell{}
+                                            bill_place_1_1_on := PlaceCellOn{visible: false}
+                                        }
+                                        View{width: Fit height: Fit flow: Overlay
+                                            bill_place_1_2 := PlaceCell{}
+                                            bill_place_1_2_on := PlaceCellOn{visible: false}
+                                        }
+                                    }
+                                    View{width: Fit height: Fit flow: Right spacing: 4
+                                        View{width: Fit height: Fit flow: Overlay
+                                            bill_place_2_0 := PlaceCell{}
+                                            bill_place_2_0_on := PlaceCellOn{visible: false}
+                                        }
+                                        View{width: Fit height: Fit flow: Overlay
+                                            bill_place_2_1 := PlaceCell{}
+                                            bill_place_2_1_on := PlaceCellOn{visible: false}
+                                        }
+                                        View{width: Fit height: Fit flow: Overlay
+                                            bill_place_2_2 := PlaceCell{}
+                                            bill_place_2_2_on := PlaceCellOn{visible: false}
+                                        }
+                                    }
+                                }
                                 bill_format_preview_card := View{
                                     width: Fill height: Fit
                                     bill_format_preview := mod.widgets.SlipPreview{}

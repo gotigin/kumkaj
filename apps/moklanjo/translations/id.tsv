@@ -158,7 +158,7 @@ ok	OK
 this_shop	Mode server
 extra_till	Mode klien
 off	Mati
-server	Server
+server	Mode server
 client	Klien
 language_currency	Bahasa & mata uang
 language	Bahasa
@@ -192,7 +192,7 @@ snack_secs_save	Simpan waktu peringatan
 snack_secs_saved	Waktu peringatan disimpan — {n} detik
 snack_secs_bad	Masukkan detik sebagai angka (3–60)
 cancelled	Dibatalkan
-cancelling	Cancelling…
+cancelling	Cancellingâ¦
 cancel	Batal
 opening_client	Membuka klien…
 preparing_desk	Mempersiapkan meja…
@@ -501,13 +501,18 @@ job_size	Ukuran font
 job_size_ph	mis. 18, 20, 26…
 test_receipt_format	Tanda terima tes
 test_label_format	Label uji
-paper_heading	Kertas
+paper_heading	Kertas virtual
 paper_size	{w} × {h} mm
 paper_roll	gulungan {w} mm
 paper_not_set	kertas belum diketahui
-paper_length_mm	Panjang (mm)
-printer_paper_help	Kertas printer ini dalam mm. Panjang kosong berarti gulungan: setiap struk sepanjang isinya. Cari printer mengisi kertas kosong dari driver printer (gulungan 80 mm bila tidak bisa memberi tahu) dan tidak pernah mengubah kertas yang sudah diatur.
-preview_help	Struk ini di kertas printer yang dipilih di bawah, seperti tercetak di sana: ukuran sebenarnya dari sudut kiri atas yang dapat dijangkau printer (abu-abu: tepi yang tidak terjangkau), struk panjang di lebih banyak lembar, semua yang melewati tepi kertas terpotong. Memilih printer hanya mengubah pratinjau; kertas tiap printer diatur di Printer.
+virtual_width_mm	Lebar virtual (mm)
+virtual_length_mm	Panjang virtual (mm)
+reported_width_mm	Lebar yang dilaporkan (mm)
+reported_length_mm	Panjang yang dilaporkan (mm)
+reported_paper	Dilaporkan: {paper}
+virtual_paper	Virtual: {paper}
+printer_paper_help	Dilaporkan adalah kertas yang diatur pada driver printer ini; aplikasi hanya membacanya, dan “Tidak ada” berarti tidak ada driver yang bisa ditanya. Virtual adalah kertas yang menurut Anda benar-benar ada di printer, dalam mm; panjang kosong berarti gulungan. Printer mencetak di kertasnya sendiri; kertas virtual memberi tahu aplikasi seberapa banyak darinya yang merupakan kertas nyata, untuk pratinjau, panjang halaman, dan letak struk. Cari printer mengisi kertas virtual yang kosong dan tidak pernah mengubah yang sudah Anda atur.
+preview_help	Struk ini seperti saat dicetak di printer yang dipilih di bawah, dalam ukuran sebenarnya di kertas virtualnya. Putih adalah tempat mencetak, kertas abu-abu di luar jangkauan printer, dan tinta pudar terpotong. Sembilan kotak itu adalah kertasnya: ketuk tempat struk seharusnya berada. Struk panjang berlanjut ke halaman berikutnya. Memilih printer hanya mengubah pratinjau.
 slip_col_width	Lebar (mm)
 no_printer_assigned	Tidak ada printer
 printer_target_default	printer default
@@ -609,7 +614,7 @@ pay_selected_heading	Bayar terpilih (lunasi utang / ambil muka)
 write_off_heading	Hapuskan (selesaikan tanpa bayar)
 pay_ap_heading	Bayar yang kita utang ke mereka (AP)
 country_tax	Negara & pajak
-extra_tills_heading	Til tambahan
+extra_tills_heading	Kasir tambahan
 other_devices_help_heading	Siapkan perangkat lain
 other_devices_help	Di perangkat ini (Server): Perangkat lain → Izinkan pemrosesan tambahan. Catat kode penyandingan dan alamat Wi-Fi. Ketuk Izinkan perangkat lain untuk terhubung jika muncul. Di komputer, ketuk Mulai dengan komputer ini. Di setiap perangkat lain: instal aplikasi, pilih Mode Klien, Temukan server toko (atau ketik alamat), masukkan kode penyandingan, Pasangkan sekarang. Pesanan menunggu di perangkat jika Wi‑Fi terputus dan dilanjutkan saat Server menjawab lagi.
 your_brand	Merek Anda (di aplikasi)
@@ -643,11 +648,11 @@ day_close_help	Mencatat tutup hari menyimpan ringkasan ini (dan selisih laci jik
 expenses_word	Biaya
 feature_access_help	Akses fitur untuk staf yang dipilih (ketuk setelah menambahkan)
 footer_local	SQLite lokal · Gratis selamanya · Tanpa cloud
-fresh_book_moklanjo	Printer
+fresh_book_moklanjo	Baru = katalog kosong (tambah item nanti). Buku = ketik stok awal dan siapa yang berutang kepada Anda di bawah.
 fresh_selected	Fresh terpilih — katalog tetap kosong. Ketuk Done saat siap.
 gross_word	Kotor
 how_start	Bagaimana Anda ingin memulai?
-later_country_pack	Printer
+later_country_pack	Nanti: Pengaturan → terapkan paket negara Anda untuk label pajak dan pembayaran.
 local_badge	LOKAL
 measures_help_moklanjo	Cara paket diukur di meja. Tulis dimensi dan berat dalam satuan yang Anda pakai — standar (cm, m, in, ft · kg, g, lb, oz) atau satuan Anda sendiri yang terhubung ke cm / kg di atas (langsung atau lewat satuan lain). Buku selalu mencatat kg. Biarkan kolom kosong untuk mempertahankannya.
 mix_type_hint_moklanjo	Tulis berapa di masing-masing (tunai / UPI / kartu / kredit). Harus sama dengan tagihan. Kredit butuh pelanggan di atas.

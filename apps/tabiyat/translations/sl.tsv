@@ -79,13 +79,19 @@ bill_item_amount	Znesek
 bill_item_note	Rx / obvestilo o prodaji
 bill_item_col_sep	Črte stolpcev
 slip_col_width	Širina (mm)
-paper_heading	Papir
+paper_heading	Navidezni papir
 paper_size	{w} × {h} mm
 paper_roll	zvitek {w} mm
 paper_not_set	papir še ni znan
-paper_length_mm	Dolžina (mm)
-printer_paper_help	Papir tega tiskalnika v mm. Prazna Dolžina je zvitek: vsak račun je dolg toliko kot njegova vsebina. Poišči tiskalnike izpolni prazen papir iz gonilnika tiskalnika (zvitek 80 mm, ko tega ne more povedati) in nikoli ne spremeni že nastavljenega.
-preview_help	Ta račun na papirju tiskalnika, izbranega spodaj, kot se tam natisne: v dejanski velikosti od zgornjega levega kota, do katerega tiskalnik seže (sivo: robovi, do katerih ne seže), dolg račun na več listih, vse čez rob papirja se odreže. Izbira tiskalnika spremeni le predogled; papir vsakega tiskalnika se nastavi pod Tiskalniki.
+na	ni podatka
+virtual_width_mm	Navidezna širina (mm)
+virtual_length_mm	Navidezna dolžina (mm)
+reported_width_mm	Sporočena širina (mm)
+reported_length_mm	Sporočena dolžina (mm)
+reported_paper	Sporočeno: {paper}
+virtual_paper	Navidezno: {paper}
+printer_paper_help	Sporočeno je papir, na katerega je nastavljen gonilnik tega tiskalnika; aplikacija ga samo prebere, »ni podatka« pa pomeni, da ni gonilnika, ki bi ga lahko vprašala. Navidezno je papir, za katerega vi pravite, da je res v tiskalniku, v mm; prazna dolžina je zvitek. Tiskalnik tiska na svoj papir; navidezni papir aplikaciji pove, koliko tega je pravi papir, za predogled, dolžino strani in mesto računa. Poišči tiskalnike izpolni prazen navidezni papir in nikoli ne spremeni tistega, ki ste ga nastavili.
+preview_help	Ta račun, kot se natisne na spodaj izbranem tiskalniku, v dejanski velikosti na njegovem navideznem papirju. Belo je tam, kjer tiska, sivi papir je zunaj dosega tiskalnika, zbledelo črnilo pa se odreže. Devet kvadratov je papir: tapnite tja, kjer naj bo račun. Dolg račun se nadaljuje na več straneh. Izbira tiskalnika spremeni le predogled.
 slip_col_start	Začetni razmik (px)
 slip_col_end	Končni razmik (px)
 slip_columns_help	Širina vsakega stolpca vključuje njegov začetni in končni razmik. Besedilo se prelomi znotraj svojega stolpca; kar sega čez širino vsebine, se odreže – na papirju in v predogledu.
@@ -100,6 +106,12 @@ bill_item_piece_off	Izklopljeno
 bill_total_qty	Skupna kol.
 bill_total_subtotal	Vmesna vsota
 bill_total_grand	Skupna vsota
+bill_total_number_under	Število pod
+bill_total_caption_under	Oznaka pod
+bill_total_own_line	Svoja vrstica
+bill_total_caption_with	Ob številu
+bill_total_caption_none	Brez oznake
+bill_total_place_help	Svoja vrstica natisne to vsoto posebej. Pod stolpcem se njeno število natisne v tistem stolpcu postavk, v velikosti in debelini te vrstice; vsote si delijo eno vrsto, dokler kateri stolpec ni zaseden, nato se začne nova vrsta. Oznaka je ob številu, pod drugim stolpcem ali se izpusti. Vrstice davka, postrežbe, zaokrožitve in plačila sledijo postavki Vmesna vsota.
 kot_unassigned	Nedodeljen
 settings_hub_help	Odprite po eno področje — manj drsenja, jasnejše izbire.
 settings_sec_language	Jezik in valuta
@@ -735,6 +747,20 @@ fssai_ph	Dovoljenje za zdravila št. (neobvezno - vaše besedilo)
 bill_footer_ph	Noga (npr. Hvala, pridite spet)
 kot_field_on	pokaži
 kot_field_off	skrij
+kot_field_show	Pokaži
+kot_field_hide	Skrij
+bill_line_shop	Lokal
+bill_line_address	Naslov lokala
+bill_line_fssai	FSSAI
+bill_line_title	Naslov
+bill_line_customer	Kupec
+bill_line_bill_no	Št. računa
+bill_line_time	Čas
+bill_line_cashier	Blagajnik
+bill_line_items	Artikli
+bill_line_total	Skupaj
+bill_line_footer	Noga
+bill_line_upi	UPI
 kot_weight_light	Lahka
 bill_kot_panel_help	Postavitev računa in širina vsebine. Blagajnik je tisti, ki je izdal ali poravnal račun - celotna zgodba o prodaji ostane v knjigah.
 std_size_ph	npr. 18, 20, 26…
@@ -842,10 +868,10 @@ lane_declared_label	Davčni račun
 lane_owner_label	Blagajniški zapis
 money_lane_bill	Račun: {lane}
 
-removing	Removing…
-removed	Removed
-updating_order	Updating…
-order_updated	Order updated
+removing	Odstranjevanje…
+removed	Odstranjeno
+updating_order	Posodabljanje…
+order_updated	Naročilo posodobljeno
 sel_copy	Kopiraj
 sel_select_all	Izberi vse
 sel_copied	Kopirano

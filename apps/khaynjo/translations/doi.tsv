@@ -36,7 +36,7 @@ add_item	मेनू आइटम जोड़ो
 new_item	नई मेनू आइटम
 adding_item	इक नमां मेनू आइटम जोड़ना
 editing_item	संपादन करना
-save	बचाओ
+save	सेव करो
 remove	हटाओ
 removed_items	मेनू आइटम हटा दी गई
 removed_help	पुनर्स्थापित मेनू आइटम गी वापस मेनू पर ठीक उस्सै चाल्लीं रखदा ऐ जिस्सै चाल्ली हा — कीमत, फोटो ते श्रेणी। साढ़ी पकवानें दी शेल्फ कदें बी नेईं हटदी, इस करी इक पकवान गी हमेशा दुबारा जोड़ेआ जाई सकदा ऐ।
@@ -83,12 +83,12 @@ print_cancelled_kot_needed	पैह्ले रद्द कीते गे�
 print_cancelled_kot_none	इस आर्डर पर कोई रद्द व्यंजन नेईं
 print_cancelled_kot_client	{place} भेजे गेदे लेई प्रिंट रद्द ({n}) — सर्वर पर रसोई प्रिंट
 kot_banner	दयालु बैनर
-kot_item_prefix	मेनू मेनू आइटम उपसर्ग
+kot_item_prefix	मेनू आइटम उपसर्ग
 kot_strike	पकवान नाम हड़ताल
 kot_strike_note	पकवान नोट हड़ताल करो
 kot_strike_on	पर
 kot_strike_off	बंद
-bill_item_layout	मेनू मेनू आइटम लेआउट
+bill_item_layout	मेनू आइटम लेआउट
 bill_item_layout_columns	स्तंभ
 bill_item_layout_stacked	ढेर हो गया
 bill_item_header	कॉलम हेडर
@@ -101,6 +101,19 @@ bill_item_col_sep	स्तंभ नियम
 slip_columns	स्तंभ
 slip_col_header	हेडर
 bill_line_logo	लोगो
+bill_line_shop	दुकान
+bill_line_address	पता
+bill_line_fssai	FSSAI
+bill_line_title	शीर्षक
+bill_line_customer	ग्राहक
+bill_line_bill_no	बिल नं.
+bill_line_time	वक्त
+bill_line_cashier	कैशियर जी
+bill_line_table	डाइनिंग टेबल
+bill_line_items	आइटम
+bill_line_total	कुल
+bill_line_footer	पाद लेख
+bill_line_upi	UPI
 bill_logo_picture	तस्वीर
 bill_logo_choose	तस्वीर चुनो
 bill_logo_remove	तस्वीर हटाओ
@@ -128,6 +141,12 @@ bill_item_piece_off	बंद
 bill_total_qty	कुल मात्रा
 bill_total_subtotal	उप कुल
 bill_total_grand	ग्रांड टोटल
+bill_total_number_under	संख्या इसदे थल्लै
+bill_total_caption_under	लेबल इसदे थल्लै
+bill_total_own_line	अपनी लाइन
+bill_total_caption_with	संख्या कन्नै
+bill_total_caption_none	कोई लेबल नेईं
+bill_total_place_help	“अपनी लाइन” इस कुल गी इक्कला छापदा ऐ। स्तंभ दे थल्लै होने पर इसदी संख्या उस्सै आइटम स्तंभ च, इस लाइन दे नाप ते मोटाई च छपदी ऐ; जदूं तगर कोई स्तंभ भरी नेईं जंदा कुल इक्कै कतार बंडदे न, फ्ही नमीं कतार शुरू होंदी ऐ। लेबल संख्या कन्नै, दूए स्तंभ दे थल्लै जंदा ऐ, जां छड्डी दित्ता जंदा ऐ। टैक्स, सेवा, राउंडिंग ते भुगतान दियां लाइनां “उप कुल” दे पिच्छें चलदियां न।
 reprint_incl	छपाई च
 reprint_skip	छोड़ दे
 reprint_skip_meta	रिकवरी प्रिंट छोड़ दे
@@ -170,7 +189,7 @@ settings_sec_pickers	इलाके · स्टेशन · कर दरे�
 settings_sec_printers	प्रिंटर
 settings_sec_bill	बिल & KOT प्रारूप च
 settings_sec_selling	योजनाएं ते बिक्री
-bill_kot_tab_bill	मेहमान बिल
+bill_kot_tab_bill	बिल
 bill_kot_tab_kot	KOT
 settings_sec_alerts	अलर्ट दे
 alerts_help	स्टेटस संदेश तुंदे आस्तै स्क्रीन पर किन्नी देर रौंह्दे न (इस लॉगिन)।
@@ -178,20 +197,20 @@ snack_secs_ph	सेकंड (3-60, डिफ़ॉल्ट 10) ऐ।
 snack_secs_save	अलर्ट टाइम बचाओ
 snack_secs_saved	अलर्ट समय बचाया — {n} सेकंड
 settings_sec_whatsapp	WhatsApp
-whatsapp_cloud_help	Use your own Meta WhatsApp Cloud API. Create a System User token with whatsapp_business_messaging (temporary dashboard tokens expire). Credentials stay on this Server only — never on extra tills. Accepted means Meta took the request, not that the guest received it.
-whatsapp_phone_id_ph	Phone Number ID
-whatsapp_token_ph	Access Token (leave blank to keep)
-whatsapp_template_ph	Bill template name (optional)
-whatsapp_template_lang_ph	Template language (e.g. en)
-whatsapp_enable	Enable
+whatsapp_cloud_help	अपना Meta WhatsApp Cloud API बरतो। whatsapp_business_messaging आह्‌ला System User टोकन बनाओ (डैशबोर्ड दे अस्थायी टोकन दी म्याद मुक्की जंदी ऐ)। एह् जानकारी सिर्फ इस्सै सर्वर उप्पर रौंह्‌दी ऐ — एक्स्ट्रा टिल उप्पर कदें नेईं। “स्वीकृत” दा मतलब ऐ जे Meta ने अनुरोध लेई लेआ, एह् नेईं जे मेहमान गी संदेश मिली गेआ।
+whatsapp_phone_id_ph	फोन नंबर ID
+whatsapp_token_ph	एक्सेस टोकन (उ'ऐ रक्खने आस्तै खाल्ली छोड़ो)
+whatsapp_template_ph	बिल टेम्पलेट दा नां (वैकल्पिक)
+whatsapp_template_lang_ph	टेम्पलेट दी भाशा (जि'यां en)
+whatsapp_enable	चालू करो
 whatsapp_disable	Off
-whatsapp_save	Save WhatsApp
-whatsapp_test	Test connection
-whatsapp_disconnect	Disconnect
-whatsapp_send_bill	Send via WhatsApp
-whatsapp_consent	WhatsApp OK
-whatsapp_consent_help	Guest agreed to receive WhatsApp messages. A phone number alone is not consent.
-whatsapp_server_only	Configure WhatsApp on the shop Server device
+whatsapp_save	WhatsApp सेव करो
+whatsapp_test	कनेक्शन जांचो
+whatsapp_disconnect	कनेक्शन हटाओ
+whatsapp_send_bill	WhatsApp राहें भेजो
+whatsapp_consent	WhatsApp ठीक ऐ
+whatsapp_consent_help	मेहमान ने WhatsApp संदेश लैने दी सैह्‌मती दित्ती ऐ। सिर्फ फोन नंबर होना सैह्‌मती नेईं ऐ।
+whatsapp_server_only	WhatsApp गी दुकान दे सर्वर डिवाइस उप्पर सेट करो
 settings_sec_backup	बैकअप & रिस्टोर करना
 settings_sec_diag	निदान करना
 settings_sec_privacy	गोपनीयता
@@ -226,7 +245,7 @@ sidebar_hidden	छिपे हुए
 sidebar_always_on	सदा बार पर
 sidebar_shown_hint	साइड रेल / नीचे टैब पर दिखाया गया
 sidebar_hidden_hint	बार से छिपे हुए
-sidebar_menu_items	मेनू & मेनू मेनू आइटम
+sidebar_menu_items	मेनू & मेनू आइटम
 sidebar_enable_all	सारे सक्षम करो
 sidebar_disable_all	सारे अक्षम करो
 sidebar_order_saved	साइडबार आर्डर बचाया
@@ -248,15 +267,15 @@ nav_settings	सेटिंग्स
 nav_lock	ताला लगाओ
 no_sale_yet	अजे तक कोई बिक्री नहीं
 favorites	पसंदीदा
-favorites_help	मेनू मेनू आइटम जेह् ड़ी तुस अक्सर बेचदे ओ, तुंदे लॉगिन आस्तै सेव कीते गेदे न। बिल च इक जोड़ो, जां निचले सारे मेनू आइटम थमां अपनी सूची बनाओ।
+favorites_help	मेनू आइटम जेह् ड़ी तुस अक्सर बेचदे ओ, तुंदे लॉगिन आस्तै सेव कीते गेदे न। बिल च इक जोड़ो, जां निचले सारे मेनू आइटम थमां अपनी सूची बनाओ।
 your_favorites	तेरे पसंदीदा
 all_items	सारे मेनू आइटम
 frequent	बार बार
-added_items	मेनू मेनू आइटम जोड़े गए
+added_items	मेनू आइटम जोड़े गए
 added_items_empty	इस आर्डर पर अजें तगर कुसै बी चाल्ली दा नेईं — सारे मेनू आइटम जां इक श्रेणी थमां इक पकवान जोड़ो।
 frequent_config_help	ज्यादातर बिकदे व्यंजन पूरा कीते गेदे बिलें थमां। सेट करो कि कितने दिन देखना ते कितने पकवान दिखाना।
 frequent_days_ph	दिन (१) ऐ.
-frequent_limit_ph	मेनू मेनू आइटम (24) ऐ।
+frequent_limit_ph	मेनू आइटम (24) ऐ।
 frequent_apply	आवेदन करो
 frequent_saved	बार-बार: पिछले {d} दिन, शीर्ष {n} — {c} व्यंजन
 frequent_empty	इस अवधि च अजें तगर कोई पूरी बिक्री नेईं — इक बिल दा निपटारा करो (₹0 दी अनुमति जिसलै सेटिंग्स ऐसा आखदी ऐ) ते ओह् इत्थै दस्सदे न।
@@ -302,7 +321,7 @@ branches_org	शाखाएं ते ऑर्ग
 credit_customers	ग्राहक ते आपूर्तिकर्ता (क्रेडिट खाते)
 customer_name_ph	ग्राहक या आपूर्तिकर्ता दा नाम
 new_customer_ph	नए ग्राहक या आपूर्तिकर्ता दा नाम
-item_name_ph	मेनू मेनू आइटम दा नांऽ (जैसे मसाला डोसा)
+item_name_ph	मेनू आइटम दा नांऽ (जैसे मसाला डोसा)
 item_price_ph	कीमत
 start_template	प्रोडक्ट
 team	टीम
@@ -517,7 +536,7 @@ goods_received	माल मिल गया
 import_day	आयात दिवस
 import_items_csv_plain	मेनू आइटम आयात करो CSV...
 import_parties_csv	आयात ग्राहक ते आपूर्तिकर्ता CSV...
-item_name	मेनू मेनू आइटम दा नाम
+item_name	मेनू आइटम दा नाम
 kitchen_printing	प्रिंटर
 login_id_ph	यूजरनेम
 mark_cleared	मार्क ने साफ कर दित्ता
@@ -532,7 +551,7 @@ on_account_ap	खाते पर (एपी)
 org_optional_ph	संगठन (वैकल्पिक) ऐ
 paid_by	द्वारा भुगतान कीता
 paid_now	भुगतान कर दिया हुन
-pair_now	जोड़ी अब
+pair_now	हून जोड़ो
 pairing_code_ph	जोड़ी बनाना कोड
 party_name_selected_ph	ग्राहक जां आपूर्तिकर्ता दा नांऽ (जां चुनेआ गेदा इस्तेमाल)
 password_ph	पासवर्ड
@@ -574,7 +593,7 @@ rollup	सारांश रोलअप करना
 save_brand	ब्रांड बचाओ
 save_business_id	बिजनेस आईडी बचाओ
 save_business_name	बिजनेस दा नाम बचाओ
-save_features	बचाओ
+save_features	सेव करो
 save_features_named	{name} बचाओ
 save_features_ok	{name} लेई सेव कीता गेदा सेटअप
 save_names	नाम बचाओ
@@ -637,7 +656,7 @@ choose_device_use	सर्वर जां क्लाइंट चुनो�
 paired_note	जोड़ी बना दी। बेचने लेई अनलॉक करो, जां नवीनतम लेई ताज़ा करो।
 last_update_at	आखिरी अपडेट: {time} ऐ।
 pair_intro	सर्वर गी ढूंढो, जां उंदा पता ते जोड़ी कोड टाइप करो.
-pair_resume_hint	Already paired — enter your shop PIN, or Forget this shop to pair another.
+pair_resume_hint	पैह्लें थमां जुड़े दा ऐ — अपनी दुकान दा PIN पाओ, जां दूई दुकान जोड़ने आस्तै “इस दुकान को भूल जाओ” दबाओ।
 queue_waiting	दुकान पर पहुंचने दा इंतजार ({n}):
 queue_tries	कोशिश कीती {n} बार · आखिरी जवाब: {e}
 save_backup_copy	इक बैकअप कॉपी बचाओ...
@@ -739,7 +758,7 @@ printer_format_custom_added	इस जगह लेई कस्टम प्र
 add_printer	प्रिंटर जोड़ो
 remove_printer	हटाओ
 route_pick_ph	बिल या कोई किचन स्टेशन
-route_bill	मेहमान बिल
+route_bill	बिल
 route_default_kitchen	कोई स्टेशन (अनसाइन कीते गेदे बर्तन)
 route_kot_station	रसोई
 route_dont_print	कोई प्रिंटर नहीं
@@ -754,13 +773,18 @@ station_vps_dd	इस स्टेशन लेई प्रिंटर
 station_vps_dd_n	{n} प्रिंटर · बदलने लेई टैप करो
 bill_printers_dd	बिल लेई प्रिंटर
 bill_printers_dd_n	{n} बिल लेई प्रिंटर · बदलने लेई टैप करो
-paper_heading	कागज
+paper_heading	आभासी कागज
 paper_size	{w} × {h} mm
 paper_roll	{w} mm रोल
 paper_not_set	कागज अजें पता नेईं
-paper_length_mm	लम्बाई (mm)
-printer_paper_help	इस प्रिंटर दा कागज mm च। खाली लम्बाई दा मतलब रोल: हर पर्ची अपनी सामग्री जिन्नी लम्मी होंदी ऐ। प्रिंटर ढूंढो खाली कागज प्रिंटर दे ड्राइवर थमां भरदा ऐ (नेईं दस्सी सकै तां 80 mm रोल) ते पैह्लें थमां तय कागज कदें नेईं बदलदा।
-preview_help	एह् पर्ची थल्लै चुने दे प्रिंटर दे कागज उप्पर, जियां उत्थें छपदी ऐ: प्रिंटर जित्थें तगर पुज्जदा ऐ उस उप्परले खब्बे कूने थमां असली नाप च (स्लेटी: जित्थें नेईं पुज्जदा), लम्मी पर्ची होर पन्नें उप्पर, कागज दे कंढे थमां अग्गें दा हिस्सा कट्टी जंदा ऐ। प्रिंटर चुनने कन्नै सिर्फ झलक बदलदी ऐ; हर प्रिंटर दा कागज प्रिंटर च तय होंदा ऐ।
+virtual_width_mm	आभासी चौड़ाई (mm)
+virtual_length_mm	आभासी लम्बाई (mm)
+reported_width_mm	दस्सी गेदी चौड़ाई (mm)
+reported_length_mm	दस्सी गेदी लम्बाई (mm)
+reported_paper	दस्सेआ गेआ: {paper}
+virtual_paper	आभासी: {paper}
+printer_paper_help	दस्सेआ गेआ ओह् कागज ऐ जिस उप्पर इस प्रिंटर दा ड्राइवर सेट ऐ; ऐप उसी सिर्फ पढ़दा ऐ, ते एन / ए दा मतलब ऐ जे पुच्छने आस्तै कोई ड्राइवर नेईं ऐ। आभासी ओह् कागज ऐ जेह्ड़ा तुस आखदे ओ जे प्रिंटर च सच्चें गै लग्गे दा ऐ, mm च; खाली लम्बाई दा मतलब रोल ऐ। प्रिंटर अपने कागज उप्पर छापदा ऐ; आभासी कागज ऐप गी दसदा ऐ जे उस चा किन्ना असली कागज ऐ, झलक, पन्ने दी लम्बाई ते पर्ची दी जगह आस्तै। प्रिंटर ढूंढो खाली आभासी कागज भरी दिंदा ऐ ते तुंदा सेट कीते दा कदें नेईं बदलदा।
+preview_help	एह् पर्ची जियां थल्लै चुने दे प्रिंटर उप्पर छपदी ऐ, उसदे आभासी कागज उप्पर असली नाप च। चिट्टी जगह उप्पर छपदा ऐ, स्लेटी कागज तगर प्रिंटर नेईं पुज्जदा, ते फिक्की स्याही कट्टी जंदी ऐ। नौ खाने कागज न: जित्थें पर्ची बौह्नी चाहिदी उत्थें टैप करो। लम्मी पर्ची होर पन्नें उप्पर जंदी ऐ। प्रिंटर चुनने कन्नै सिर्फ झलक बदलदी ऐ।
 job_layout	लेआउट
 job_delivery	नौकरी किस चाल्ली भेजी जंदी ऐ
 job_delivery_help	ओएस दस्तावेज, कच्चे बाइट्स, या ESC/POS। बिल ते रसोई दा टिकट हर इक अपना रखदा ऐ। कोई बी कम्म कुसै बी प्रिंटर च जाई सकदा ऐ Find ने सेव कीता ऐ।
@@ -768,7 +792,7 @@ station_vp_attached	प्रिंटर संलग्न ऐ
 station_vp_detached	स्टेशन से प्रिंटर हटाया
 station_print_summary	{mode} · {n} प्रिंटर ऐ
 station_print_summary_none	इस स्टेशन पर अजें तगर कोई प्रिंटर नेईं — एह् प्रिंट नेईं करग
-stations_none	अजे तक कोई स्टेशन नहीं — नीचे इक जोड़ो। मेनू मेनू आइटम इक स्टेशन दा इस्तेमाल करी सकदे न तां जे उंदा KOT उत्थें छपदा ऐ।
+stations_none	अजे तक कोई स्टेशन नहीं — नीचे इक जोड़ो। मेनू आइटम इक स्टेशन दा इस्तेमाल करी सकदे न तां जे उंदा KOT उत्थें छपदा ऐ।
 route_up	ऊपर
 route_down	नीचे
 route_remove	हटाओ
@@ -926,7 +950,7 @@ wipe_schema_done	दुकान सेटअप मिटा गेआ — ज�
 rounded_total	गोल कुल
 setup_app_khaynjo	सेट अप करो Khaynjo
 shop_logo_optional	दुकान दा लोगो (वैकल्पिक)
-stock_type_help	मेनू आइटम दा नांऽ (इसदा इक हिस्सा काफी ऐ), इक मात्रा टाइप करो, फिर समायोजित करो। मेनू मेनू आइटम जेह् ड़े अजें तगर गिने गेदे नेईं न, उ’नेंगी इक बारी ट्रैकिंग शुरू करने दी लोड़ ऐ।
+stock_type_help	मेनू आइटम दा नांऽ (इसदा इक हिस्सा काफी ऐ), इक मात्रा टाइप करो, फिर समायोजित करो। मेनू आइटम जेह् ड़े अजें तगर गिने गेदे नेईं न, उ’नेंगी इक बारी ट्रैकिंग शुरू करने दी लोड़ ऐ।
 team_owner_help	किसे गी जोड़ने लेई व्यक्ति गी खाली छोड़ो: नांऽ, नौकरी, यूजरनेम, PIN, ते इक वैकल्पिक पासवर्ड, फिर जोड़ो. उस्सै किस्म दे फार्म गी संपादत करने आस्तै इक माह् नू चुनो — नांऽ, यूजरनेम, पासवर्ड, स्क्रीन, ते अधिकार — फिर सेव करो. तुंदा अपना PIN ते पासवर्ड थल्ले इक साइन-इन ऐ। मालिक किसे होर दा PIN नहीं बदलदा।
 staff_name_ph	स्टाफ दा नाम
 staff_copy_hire_ph	(वैकल्पिक) थमां सेटअप दी नकल करो
@@ -971,7 +995,7 @@ pin_hint_choose	4–12 अंक चुनो · सेव करने ले�
 pin_hint_new	नमें 4–12 अंकें दा मालिक PIN · दर्ज करो जां अनलॉक करो
 pin_hint_shop_code	दुकान डिवाइस · जोड़ी कोड {}
 pin_hint_books	एह् उपकरण लेजरें गी पकड़दा ऐ
-pin_hint_paired	जोड़ीदार होने तक अतिरिक्त — बेचने के लिए अनलॉक
+pin_hint_paired	एक्स्ट्रा टिल जुड़ी गेआ — बेचने आस्तै अनलॉक करो
 pin_hint_pair_first	अतिरिक्त टिल्ल — पहले दुकान डिवाइस कन्नै जोड़ी
 unlock_to_continue	जारी रखने लेई अनलॉक करो
 no_staff_yet	अजे तक कोई स्टाफ नहीं — मालिक दे रूप च अनलॉक, फिर टीम
@@ -983,7 +1007,7 @@ logo_default	लोगो: Kumkaj निशान (डिफ़ॉल्ट) —
 tmpl_current	वर्तमान: {} — {} ऐ।
 tmpl_selected	चयनित: {} — {} ऐ।
 setup_complete	सेटअप पूरा होई गेआ
-onboard_fresh_tmpl	ताजा · {} — कैटलॉग खाली शुरू होंदी ऐ; मेनू मेनू आइटम च मेनू आइटम जोड़ो, फिर पूरा होई गेआ।
+onboard_fresh_tmpl	ताजा · {} — कैटलॉग खाली शुरू होंदी ऐ; मेनू आइटम च मेनू आइटम जोड़ो, फिर पूरा होई गेआ।
 onboard_book_tmpl	लेजर · {} — मेनू आइटम ते ओपनिंग क्रेडिट जोड़ो, फिर पूरा होई गेआ।
 onboard_template_tmpl	जेकर तुस चांदे ओ तां उस थाह् र दा नांऽ दस्सो, फिरी चुनो जे किस चाल्ली शुरू कीता जा।
 tmpl_blurb	डाइनिंग टेबल, ऑर्डरिंग, रसोई दी टिकट, बिलिंग, ते लेजर।
@@ -1005,7 +1029,7 @@ country_code_ph	देश कोड उदा. आईएन, जीबी, य�
 credit_khata_amount_ph	क्रेडिट / क्रेडिट लेजर दी रकम
 credit_limit_ph	क्रेडिट सीमा (0 = कोई बी नेईं)
 from_code_ph	कोड (बैग) थमां
-item_name_lang_ph	मेनू मेनू आइटम दा नांऽ — इसगी अपनी भाशा च टाइप करो
+item_name_lang_ph	मेनू आइटम दा नांऽ — इसगी अपनी भाशा च टाइप करो
 login_id_opt_ph	उपयोगकर्ता दा नांऽ (आवश्यक, अनोखा)
 manager_pin_ph	प्रबंधक PIN गी मंजूरी देना (केवल जेकर तुस शून्य नेईं करी सकदे)
 new_branch_name_ph	नई शाखा दा नाम
@@ -1047,13 +1071,13 @@ kitchen_empty	कोई खुली टिकट नहीं।
 add_a_table	डाइनिंग टेबल डाल दे
 add_station_heading	इक किचन स्टेशन जोड़ो
 categories_help	उस श्रेणी दे हेठ उपर दित्ते गेदे मेनू आइटम गी फाइल करने लेई इस्तेमाल करो टैप करो। फोटो श्रेणी गी इक तस्वीर दिंदा ऐ; इक दे बगैर एह् अपने आद्याक्षर दस्सदा ऐ।
-dish_search_ph	मेनू मेनू आइटम दा नांऽ — साढ़े व्यंजन सर्च करो जां अपना टाइप करो
+dish_search_ph	मेनू आइटम दा नांऽ — साढ़े व्यंजन सर्च करो जां अपना टाइप करो
 tile_free	खाली
 tile_occupied	कब्जा कर लेया
 tile_food_ready	खाना तैयार
 tile_bill_printed	बिल छपया
 tile_paid	भुगतान कीता
-tile_bill_btn	मेहमान बिल
+tile_bill_btn	बिल
 tile_occupy_btn	मेहमानें गी बैठाओ
 tile_free_btn	डाइनिंग टेबल खाली करो
 tile_ready_btn	डाइनिंग टेबल खाली करो
@@ -1163,7 +1187,7 @@ kot_show_station	स्टेशन
 kot_hide_station	स्टेशन छिपाओ
 kot_show_table	डाइनिंग टेबल
 kot_hide_table	डाइनिंग टेबल छुपा दे
-kot_show_kot_no	KOT न
+kot_show_kot_no	KOT नं.
 kot_hide_kot_no	छिपाओ KOT न
 kot_width	पूर्वावलोकन लपेट (KOT टैब पर सामग्री चौड़ाई सेट करो)
 kot_width_58	58 mm
@@ -1238,7 +1262,7 @@ on_your_menu	अपने मेनू पर
 edit	संपादन करो
 schemes	योजनाएं / पेशकशें
 schemes_help	BOGO, प्रतिशत-बंद, ते फिक्स्ड कॉम्बो। कॉम्बो भेजने पर रसोई लाइनें च विस्तार करदे न KOT; घटक उसलै तकर पकड़े रौंह्दे न जिसलै तकर कॉम्बो फायर नेईं करदा। उदाहरण : 2 Thali खरीदें 1 Chaas पाओ
-scheme_bogo_ph	Buy 2 Thali get 1 Chaas
+scheme_bogo_ph	2 थाली खरीदो, 1 छाछ पाओ
 add_scheme	BOGO जोड़ दे
 schedule_ph	घंटे / खुश घंटे — सोम-शुक्र 07:00-11:00 या हैप्पीहॉर 17:00-19:00=150
 upi_qr	UPI QR
@@ -1256,7 +1280,7 @@ choose_table	डाइनिंग टेबल चुनें
 change_table	डाइनिंग टेबल बदलो
 pick_table_banner	इस आर्डर लेई इक डाइनिंग टेबल चुनो
 items_word	मेनू आइटम
-items_section	मेनू मेनू आइटम
+items_section	आइटम
 back_to_order	वापस आर्डर पर
 new_items_head	अजे तक नहीं भेजा
 price_ph	कीमत
@@ -1266,8 +1290,8 @@ taxable_value	कर योग्य मूल्य
 gst_inside_price_note	({tax} समेत) ऐ।
 start_with_template	साढ़े मेनू टेम्पलेट कन्नै शुरू करो
 template_heading	साडा मेनू टेम्पलेट
-template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
-template_download_shelf	Download photo shelf
+template_need_download	पकवानें दी सार्वजनक फोटो शेल्फ (~1,459 पकवान) डाउनलोड करो, फ्ही जेह्‌ड़े नां नेईं न उ'नेंगी अपने मेनू च आयात करो।
+template_download_shelf	फोटो शेल्फ डाउनलोड करो
 template_info	{c} श्रेणियां ते {d} व्यंजन फोटो कन्नै, जोड़ने लेई तैयार। कीमतें ₹0 थमां शुरू होंदी ऐ — बाद च अपना सेट करो।
 template_import	पूरा टेम्पलेट आयात करो
 template_confirm	{d} व्यंजन अपनी श्रेणी दे कन्नै जोड़ो? व्यंजन तुहाडे कोल पहले तों ही ओ जिवें हन उवें ही रहंदे ने।

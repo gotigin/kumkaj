@@ -79,13 +79,19 @@ bill_item_amount	Beløp
 bill_item_note	Rx / salgsseddel
 bill_item_col_sep	Kolonnelinjer
 slip_col_width	Bredde (mm)
-paper_heading	Papir
+paper_heading	Virtuelt papir
 paper_size	{w} × {h} mm
 paper_roll	{w} mm-rull
 paper_not_set	papir ikke kjent ennå
-paper_length_mm	Lengde (mm)
-printer_paper_help	Papiret i denne skriveren i mm. Tom Lengde er en rull: hver kvittering er like lang som innholdet. Finn skrivere fyller inn tomt papir fra skriverdriveren (en 80 mm-rull når den ikke kan si det) og endrer aldri papir som allerede er satt.
-preview_help	Denne kvitteringen på papiret i skriveren som er valgt nedenfor, slik den skrives ut der: i ekte størrelse fra øvre venstre hjørne skriveren når (grått: kanter den ikke når), en lang kvittering på flere ark, alt utenfor papirkanten kuttes. Å velge skriver endrer bare forhåndsvisningen; papiret til hver skriver settes under Skrivere.
+na	I/A
+virtual_width_mm	Virtuell bredde (mm)
+virtual_length_mm	Virtuell lengde (mm)
+reported_width_mm	Rapportert bredde (mm)
+reported_length_mm	Rapportert lengde (mm)
+reported_paper	Rapportert: {paper}
+virtual_paper	Virtuelt: {paper}
+printer_paper_help	Rapportert er papiret driveren til denne skriveren er satt til; appen leser det bare, og I/A betyr at det ikke finnes noen driver å spørre. Virtuelt er papiret du sier faktisk ligger i skriveren, i mm; tom lengde er en rull. Skriveren skriver ut på sitt eget papir; det virtuelle papiret forteller appen hvor mye av det som er ekte papir, for forhåndsvisningen, sidelengden og plasseringen av kvitteringen. Finn skrivere fyller inn et tomt virtuelt papir og endrer aldri et du har satt.
+preview_help	Denne kvitteringen slik den skrives ut på skriveren som er valgt nedenfor, i ekte størrelse på det virtuelle papiret. Hvitt er der den skriver, grått papir er utenfor skriverens rekkevidde, og falmet blekk kuttes. De ni rutene er papiret: trykk der kvitteringen skal stå. En lang kvittering fortsetter på flere sider. Å velge skriver endrer bare forhåndsvisningen.
 slip_col_start	Startavstand (px)
 slip_col_end	Sluttavstand (px)
 slip_columns_help	Bredden på hver kolonne inkluderer start- og sluttavstanden. Teksten brytes innenfor sin kolonne; det som går utover innholdsbredden, kuttes – på papiret og i forhåndsvisningen.
@@ -100,6 +106,12 @@ bill_item_piece_off	Av
 bill_total_qty	Totalt antall
 bill_total_subtotal	Delsum
 bill_total_grand	Totalsum
+bill_total_number_under	Tall under
+bill_total_caption_under	Etikett under
+bill_total_own_line	Egen linje
+bill_total_caption_with	Ved tallet
+bill_total_caption_none	Ingen etikett
+bill_total_place_help	Egen linje skriver ut denne totalen for seg selv. Under en kolonne skrives tallet ut i den varekolonnen, i denne linjens størrelse og tykkelse; totaler deler en rad til en kolonne er opptatt, så begynner en ny rad. Etiketten står ved tallet, under en annen kolonne eller utelates. Linjer for avgift, service, avrunding og betaling følger Delsum.
 kot_unassigned	Ikke tilordnet
 settings_hub_help	Åpne ett område om gangen — mindre rulling, tydeligere valg.
 settings_sec_language	Språk og valuta
@@ -735,6 +747,20 @@ fssai_ph	Narkotikalisens nr. (valgfritt – din formulering)
 bill_footer_ph	Bunntekst (f.eks. Takk, kom igjen)
 kot_field_on	vis
 kot_field_off	skjul
+kot_field_show	Vis
+kot_field_hide	Skjul
+bill_line_shop	Butikk
+bill_line_address	Adresse
+bill_line_fssai	FSSAI
+bill_line_title	Tittel
+bill_line_customer	Kunde
+bill_line_bill_no	Regningsnr.
+bill_line_time	Tid
+bill_line_cashier	Kasserer
+bill_line_items	Varer
+bill_line_total	Totalt
+bill_line_footer	Bunntekst
+bill_line_upi	UPI
 kot_weight_light	Lett
 bill_kot_panel_help	Regningsoppsett og innholdsbredde. Kassereren er den som utstedte eller gjorde opp regningen - hele salgshistorien forblir i bøkene.
 std_size_ph	f.eks. 18, 20, 26…
@@ -842,10 +868,10 @@ lane_declared_label	Mva-faktura
 lane_owner_label	Kontantnota
 money_lane_bill	Regning: {lane}
 
-removing	Removing…
-removed	Removed
-updating_order	Updating…
-order_updated	Order updated
+removing	Fjerner…
+removed	Fjernet
+updating_order	Oppdaterer…
+order_updated	Bestilling oppdatert
 sel_copy	Kopier
 sel_select_all	Velg alt
 sel_copied	Kopiert

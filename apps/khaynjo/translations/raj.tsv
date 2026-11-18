@@ -36,7 +36,7 @@ add_item	वस्तु जोड़ो
 new_item	नयो सामान
 adding_item	एक नयो सामान जोड़णो
 editing_item	संपादन
-save	बचाओ
+save	सेव करो
 remove	हटाओ
 removed_items	हटाया गया सामान
 removed_help	पुनर्स्थापना वस्तु नै मेनू माथै बिल्कुल उणी तरै राखै है जियां पैली ही — कीमत, फोटू अर श्रेणी। म्हारै बर्तन री अलमारी कदैई नीं हटाई जावै, इण वास्तै एक बर्तन हमेशा फेरूं जोड़्यो जा सकै है।
@@ -101,6 +101,19 @@ bill_item_col_sep	स्तंभ रा नियम
 slip_columns	स्तंभ
 slip_col_header	हेडर
 bill_line_logo	लोगो
+bill_line_shop	दुकान
+bill_line_address	पतो
+bill_line_fssai	FSSAI
+bill_line_title	शीर्षक
+bill_line_customer	ग्राहक
+bill_line_bill_no	बिल नं.
+bill_line_time	बगत
+bill_line_cashier	कैशियर
+bill_line_table	भोजन री मेज
+bill_line_items	वस्तुवां
+bill_line_total	कुल
+bill_line_footer	फुटर
+bill_line_upi	UPI
 bill_logo_picture	फोटू
 bill_logo_choose	फोटू चुणो
 bill_logo_remove	फोटू हटावो
@@ -128,6 +141,12 @@ bill_item_piece_off	बंद
 bill_total_qty	कुल मात्रा
 bill_total_subtotal	उप कुल
 bill_total_grand	कुल कुल
+bill_total_number_under	संख्या इणरै नीचै
+bill_total_caption_under	लेबल इणरै नीचै
+bill_total_own_line	आपरी लाइन
+bill_total_caption_with	संख्या रै साथै
+bill_total_caption_none	लेबल कोनी
+bill_total_place_help	“आपरी लाइन” इण कुल नै एकलो छापै। स्तंभ रै नीचै होवै तो इणरी संख्या उणीज आइटम स्तंभ में, इण लाइन रै नाप अर मोटाई में छपै; जद तांई कोई स्तंभ भर नीं जावै कुल एक ही कतार बांटै, पछै नवी कतार चालू होवै। लेबल संख्या रै साथै, दूजै स्तंभ रै नीचै जावै, का छोड़ दियो जावै। टैक्स, सेवा, राउंडिंग अर भुगतान री लाइनां “उप कुल” रै लारै चालै।
 reprint_incl	छपाई रै मांय
 reprint_skip	छोड़ो
 reprint_skip_meta	रिकवरी प्रिंट नै छोड़ो
@@ -178,20 +197,20 @@ snack_secs_ph	सेकंड (3-60, डिफ़ॉल्ट 10)
 snack_secs_save	चेतावनी रो बगत बचाओ
 snack_secs_saved	चेतावनी रो बगत बचग्यो — {n} सेकंड
 settings_sec_whatsapp	WhatsApp
-whatsapp_cloud_help	Use your own Meta WhatsApp Cloud API. Create a System User token with whatsapp_business_messaging (temporary dashboard tokens expire). Credentials stay on this Server only — never on extra tills. Accepted means Meta took the request, not that the guest received it.
-whatsapp_phone_id_ph	Phone Number ID
-whatsapp_token_ph	Access Token (leave blank to keep)
-whatsapp_template_ph	Bill template name (optional)
-whatsapp_template_lang_ph	Template language (e.g. en)
-whatsapp_enable	Enable
+whatsapp_cloud_help	आपरो खुद रो Meta WhatsApp Cloud API काम में ल्यो। whatsapp_business_messaging वाळो System User टोकन बणावो (डैशबोर्ड रा अस्थायी टोकन री मियाद खतम हो जावै)। आ जाणकारी खाली इण सर्वर माथै ई रैवै — अतिरिक्त टिल माथै कदैई कोनी। “स्वीकृत” रो मतलब है कै Meta अनुरोध ले लियो, ओ कोनी कै मेहमान नै संदेश मिल ग्यो।
+whatsapp_phone_id_ph	फोन नंबर ID
+whatsapp_token_ph	एक्सेस टोकन (वो ही राखबा वास्तै खाली छोड़ो)
+whatsapp_template_ph	बिल टेम्पलेट रो नांव (वैकल्पिक)
+whatsapp_template_lang_ph	टेम्पलेट री भाषा (जियां en)
+whatsapp_enable	चालू करो
 whatsapp_disable	Off
-whatsapp_save	Save WhatsApp
-whatsapp_test	Test connection
-whatsapp_disconnect	Disconnect
-whatsapp_send_bill	Send via WhatsApp
-whatsapp_consent	WhatsApp OK
-whatsapp_consent_help	Guest agreed to receive WhatsApp messages. A phone number alone is not consent.
-whatsapp_server_only	Configure WhatsApp on the shop Server device
+whatsapp_save	WhatsApp सेव करो
+whatsapp_test	कनेक्शन जांचो
+whatsapp_disconnect	कनेक्शन हटावो
+whatsapp_send_bill	WhatsApp सूं भेजो
+whatsapp_consent	WhatsApp ठीक छै
+whatsapp_consent_help	मेहमान WhatsApp संदेश लेबा री सहमति दी है। खाली फोन नंबर होवणो सहमति कोनी है।
+whatsapp_server_only	WhatsApp नै दुकान रै सर्वर डिवाइस माथै सेट करो
 settings_sec_backup	बैकअप अर पुनर्स्थापना
 settings_sec_diag	निदान
 settings_sec_privacy	गोपनीयता
@@ -574,7 +593,7 @@ rollup	रोल-अप
 save_brand	ब्रांड बचाओ
 save_business_id	व्यापार री आईडी बचाओ
 save_business_name	व्यापार रो नांव बचाओ
-save_features	बचाओ
+save_features	सेव करो
 save_features_named	{name} बचाओ
 save_features_ok	{name} रै वास्तै सेव कर दियो गयो सेटअप
 save_names	नाम बचाओ
@@ -583,7 +602,7 @@ server_ip_ph	सर्वर आईपी (जियां 192.168.1.10)
 set_credit_limit	ग्राहक या आपूर्तिकर्ता नै सीमा लागू करो
 set_login_selected	चुणीज्योड़ा माथै लॉगिन लागू करो
 set_login_named	{name} माथै लॉगिन लागू करो
-shop	खरीदारी करो
+shop	दुकान
 show	दिखाओ
 spreadsheet_csv	स्प्रेडशीट (CSV)
 start_fresh	नूंवै सिरै सूं सरू करो
@@ -637,7 +656,7 @@ choose_device_use	सर्वर या क्लाइंट चुणो।
 paired_note	जोड़ी बणाई। बेचबा रै वास्तै ताळो खोलो, या फेर ताजा जाणकारी रै वास्तै ताजा करो।
 last_update_at	लास्ट अपडेट: {time}।
 pair_intro	सर्वर नै ढूंढो, या उणरो पतो अर जोड़ी कोड टाइप करो।
-pair_resume_hint	Already paired — enter your shop PIN, or Forget this shop to pair another.
+pair_resume_hint	पैली सूं जुड़्योड़ो है — आपरी दुकान रो PIN नाखो, या दूजी दुकान जोड़बा वास्तै “इण दुकान नै भूल जावो” दबावो।
 queue_waiting	दुकान पूगबा री उडीक ({n}):
 queue_tries	{n} बार कोशिश करी · लास्ट जवाब: {e}
 save_backup_copy	एक बैकअप प्रति बचाओ...
@@ -754,13 +773,18 @@ station_vps_dd	इण स्टेशन रै वास्तै प्रि�
 station_vps_dd_n	{n} प्रिंटर · बदलबा रै वास्तै टैप करो
 bill_printers_dd	बिल रै वास्तै प्रिंटर
 bill_printers_dd_n	बिल रै वास्तै {n} प्रिंटर · बदलबा रै वास्तै टैप करो
-paper_heading	कागद
+paper_heading	वर्चुअल कागद
 paper_size	{w} × {h} mm
 paper_roll	{w} mm रोल
 paper_not_set	कागद अबार पतो कोनी
-paper_length_mm	लंबाई (mm)
-printer_paper_help	इण प्रिंटर रो कागद mm में। खाली लंबाई रो मतलब रोल: हर पर्ची आपरी सामग्री जितरी लांबी होवै। प्रिंटर ढूंढो खाली कागद नै प्रिंटर रै ड्राइवर सूं भरै (नीं बता सकै तो 80 mm रोल) अर पैलां सूं तय कागद नै कदैई कोनी बदळै।
-preview_help	आ पर्ची नीचै चुण्योड़ा प्रिंटर रै कागद माथै, जियां उठै छपै: प्रिंटर जठै तांई पूगै उण ऊपरलै डावै कूणै सूं असली नाप में (भूरो: किनारा जठै कोनी पूगै), लांबी पर्ची बेसी पानां माथै, कागद रै किनारै सूं आगै रो सगळो कट जावै। प्रिंटर चुणण सूं फगत पूर्वावलोकन बदळै; हर प्रिंटर रो कागद प्रिंटर में तय होवै।
+virtual_width_mm	वर्चुअल चौड़ाई (mm)
+virtual_length_mm	वर्चुअल लंबाई (mm)
+reported_width_mm	बतायोड़ी चौड़ाई (mm)
+reported_length_mm	बतायोड़ी लंबाई (mm)
+reported_paper	बतायोड़ो: {paper}
+virtual_paper	वर्चुअल: {paper}
+printer_paper_help	बतायोड़ो बो कागद है जिण माथै इण प्रिंटर रो ड्राइवर सेट है; ऐप उणनै फगत पढ़ै, अर N/A रो मतलब है कै पूछण सारू कोई ड्राइवर कोनी। वर्चुअल बो कागद है जिको थे कैवो कै साचाणी प्रिंटर में है, mm में; खाली लंबाई रो मतलब रोल। प्रिंटर आपरै कागद माथै छापै; वर्चुअल कागद ऐप नै बतावै कै उण में सूं कितरो असली कागद है, पूर्वावलोकन, पानै री लंबाई अर पर्ची री जगां सारू। प्रिंटर ढूंढो खाली वर्चुअल कागद भरै अर थांरो तय करियोड़ो कदैई कोनी बदळै।
+preview_help	आ पर्ची जियां नीचै चुण्योड़ा प्रिंटर माथै छपै, उणरै वर्चुअल कागद माथै असली नाप में। धोळी जगां माथै छपै, भूरै कागद तांई प्रिंटर कोनी पूगै, अर फीकी स्याही कट जावै। नौ खाना कागद है: जठै पर्ची रैवणी चाईजै उठै टैप करो। लांबी पर्ची बेसी पानां माथै जावै। प्रिंटर चुणण सूं फगत पूर्वावलोकन बदळै।
 job_layout	लेआउट
 job_delivery	नौकरी कियां भेजी जावै है
 job_delivery_help	ओएस दस्तावेज, रॉ बाइट्स, या ESC/POS। बिल अर रसोई री टिकट हरेक आपरी राखी है। कोई भी काम किणी भी प्रिंटर माथै जा सकै है जिणनै फाइंड बचायो है।
@@ -971,7 +995,7 @@ pin_hint_choose	4-12 अंक चुणो · बचाबा रै वास�
 pin_hint_new	नयो 4-12 अंक रो मालिक PIN · दर्ज करो या अनलॉक करो
 pin_hint_shop_code	दुकान रो उपकरण · जोड़ी कोड {}
 pin_hint_books	यो उपकरण किताबां नै राखै है
-pin_hint_paired	जोड़ी बणाबा तांई अतिरिक्त — बेचबा रै वास्तै अनलॉक करो
+pin_hint_paired	अतिरिक्त टिल जुड़ग्यो — बेचबा वास्तै अनलॉक करो
 pin_hint_pair_first	अतिरिक्त टिल — पैली दुकान रै उपकरण सूं जोड़ो
 unlock_to_continue	जारी राखबा तांई ताळो खोलो
 no_staff_yet	अबार तांई कोई स्टाफ कोनी — मालिक रै रूप मांय अनलॉक करो, फेर टीम
@@ -1163,7 +1187,7 @@ kot_show_station	स्टेशन
 kot_hide_station	स्टेशन छुपाओ
 kot_show_table	भोजन री मेज
 kot_hide_table	भोजन री मेज नै छुपाओ
-kot_show_kot_no	KOT कोनी
+kot_show_kot_no	KOT नं.
 kot_hide_kot_no	छुपाओ KOT कोनी
 kot_width	पूर्वावलोकन रैप (KOT टैब माथै सामग्री री चौड़ाई सेट करो)
 kot_width_58	58 mm
@@ -1266,8 +1290,8 @@ taxable_value	कर योग्य मूल्य
 gst_inside_price_note	({tax} समावेशी)
 start_with_template	म्हारै मेनू टेम्पलेट सूं सरू करो
 template_heading	म्हारो मेनू टेम्पलेट
-template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
-template_download_shelf	Download photo shelf
+template_need_download	व्यंजनां री सार्वजनिक फोटू शेल्फ (~1,459 व्यंजन) डाउनलोड करो, पछै जिका नांव कोनी है वां नै आपरै मेनू में आयात करो।
+template_download_shelf	फोटू शेल्फ डाउनलोड करो
 template_info	{c} श्रेणियां अर {d} व्यंजन फोटूवां रै साथै, जोड़बा नै त्यार। कीमतां ₹0 सूं शुरू होवै है — आपरी कीमतां नै पछै तय करो।
 template_import	पूरो टेम्पलेट आयात करो
 template_confirm	{d} व्यंजन नै बां री श्रेणियां रै साथै जोड़ो? थारै कनै पैली सूं मौजूद व्यंजन जियां है वै ई रैवैला।

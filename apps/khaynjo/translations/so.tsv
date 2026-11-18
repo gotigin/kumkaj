@@ -101,6 +101,19 @@ bill_item_col_sep	Khadadka tiirarka
 slip_columns	Tiirarrada
 slip_col_header	Cinwaan
 bill_line_logo	Astaan
+bill_line_shop	Dukaan
+bill_line_address	Cinwaanka dukaanka
+bill_line_fssai	FSSAI
+bill_line_title	Cinwaan
+bill_line_customer	Macmiil
+bill_line_bill_no	Lambarka biilka
+bill_line_time	Waqtiga
+bill_line_cashier	Khasnaji
+bill_line_table	Miis
+bill_line_items	Alaabta
+bill_line_total	Wadarta
+bill_line_footer	Hoos
+bill_line_upi	UPI
 bill_logo_picture	Sawir
 bill_logo_choose	Dooro sawir
 bill_logo_remove	Ka saar sawirka
@@ -128,6 +141,12 @@ bill_item_piece_off	Dami
 bill_total_qty	Wadarta tirada
 bill_total_subtotal	Wadarta hoose
 bill_total_grand	Wadarta weyn
+bill_total_number_under	Tirada hoosteeda
+bill_total_caption_under	Calaamadda hoosteeda
+bill_total_own_line	Khad u gaar ah
+bill_total_caption_with	Tirada la jirta
+bill_total_caption_none	Calaamad la'aan
+bill_total_place_help	Khad u gaar ah waxay wadartan u daabacdaa keligeed. Tiir hoostiisa, tiradeeda waxaa lagu daabacaa tiirkaas alaabta, cabbirka iyo dhumucda khadkan; wadarradu waxay wadaagaan hal saf ilaa tiir la qabsado, markaas saf cusub ayaa bilaabma. Calaamaddu waxay raacdaa tirada, tiir kale hoostiisa, ama waa la dhaafaa. Khadadka canshuurta, adeegga, isku-dheellitirka iyo lacag-bixinta waxay raacaan Wadarta hoose.
 reprint_incl	Ku jira daabacaadda
 reprint_skip	Ka bood
 reprint_skip_meta	Ka bood dib u daabacaadda
@@ -178,20 +197,20 @@ snack_secs_ph	Ilbiriqsiyo (3–60, caadiga 10)
 snack_secs_save	Kaydi waqtiga digniinta
 snack_secs_saved	Waqtiga digniinta waa la kaydiyay — ilbiriqsiyo {n}
 settings_sec_whatsapp	WhatsApp
-whatsapp_cloud_help	Use your own Meta WhatsApp Cloud API. Create a System User token with whatsapp_business_messaging (temporary dashboard tokens expire). Credentials stay on this Server only — never on extra tills. Accepted means Meta took the request, not that the guest received it.
-whatsapp_phone_id_ph	Phone Number ID
-whatsapp_token_ph	Access Token (leave blank to keep)
-whatsapp_template_ph	Bill template name (optional)
-whatsapp_template_lang_ph	Template language (e.g. en)
-whatsapp_enable	Enable
+whatsapp_cloud_help	Isticmaal Meta WhatsApp Cloud API-gaaga. Samee token System User ah oo leh whatsapp_business_messaging (token-nada ku-meelgaarka ah ee dashboard-ka way dhacaan). Xogtu waxay ku jirtaa Server-kan oo keliya — weligeed kuma jirto sanduuqyada dheeraadka ah. “La aqbalay” waxay ka dhigan tahay in Meta ay codsiga qaadatay, ee ma aha in martidu heshay.
+whatsapp_phone_id_ph	Aqoonsiga lambarka taleefanka
+whatsapp_token_ph	Token-ka gelitaanka (ka tag isagoo maran si aad u haysato)
+whatsapp_template_ph	Magaca qaabka biilka (ikhtiyaari)
+whatsapp_template_lang_ph	Luqadda qaabka (tusaale en)
+whatsapp_enable	Daar
 whatsapp_disable	Off
-whatsapp_save	Save WhatsApp
-whatsapp_test	Test connection
-whatsapp_disconnect	Disconnect
-whatsapp_send_bill	Send via WhatsApp
+whatsapp_save	Kaydi WhatsApp
+whatsapp_test	Tijaabi xiriirka
+whatsapp_disconnect	Ka jar xiriirka
+whatsapp_send_bill	Ku dir WhatsApp
 whatsapp_consent	WhatsApp OK
-whatsapp_consent_help	Guest agreed to receive WhatsApp messages. A phone number alone is not consent.
-whatsapp_server_only	Configure WhatsApp on the shop Server device
+whatsapp_consent_help	Martidu waxay oggolaatay inay hesho fariimaha WhatsApp. Lambarka taleefanka oo keliya ma aha oggolaansho.
+whatsapp_server_only	Ku deji WhatsApp qalabka Server-ka ee dukaanka
 settings_sec_backup	Kaydka iyo soo celinta
 settings_sec_diag	Baaritaanka ciladda
 settings_sec_privacy	Asturnaanta
@@ -637,7 +656,7 @@ choose_device_use	Dooro Server ama Macaamiil.
 paired_note	Waa la isku xiray. Fur si aad u iibiso, ama Cusbooneysii kan ugu dambeeyay.
 last_update_at	Cusbooneysiinta u dambeysay: {time}.
 pair_intro	Raadi server-ka, ama qor cinwaankiisa iyo koodhka isku-xirka.
-pair_resume_hint	Already paired — enter your shop PIN, or Forget this shop to pair another.
+pair_resume_hint	Horey ayaa la isugu xiray — geli PIN-ka dukaankaaga, ama taabo “Iska ilow dukaankan” si aad mid kale ugu xirto.
 queue_waiting	Waxay sugayaan inay gaaraan dukaanka ({n}):
 queue_tries	Waxaa la isku dayay {n} jeer · jawaabtii u dambeysay: {e}
 save_backup_copy	Kaydi nuqul kayd…
@@ -754,13 +773,18 @@ station_vps_dd	Daabacayaasha saldhigan
 station_vps_dd_n	daabacaha {n} · taabo si aad u beddesho
 bill_printers_dd	Daabacayaasha biilka
 bill_printers_dd_n	daabacaha {n} oo biilka ah · taabo si aad u beddesho
-paper_heading	Warqad
+paper_heading	Warqad virtual ah
 paper_size	{w} × {h} mm
 paper_roll	duub {w} mm ah
 paper_not_set	warqadda weli lama yaqaan
-paper_length_mm	Dherer (mm)
-printer_paper_help	Warqadda daabacahan oo mm ah. Dherer bannaan waa duub: rasiid kastaa wuxuu le'eg yahay waxa ku jira. Raadi daabacayaasha waxay ka buuxisaa warqad bannaan darawalka daabacaha (duub 80 mm ah marka uusan sheegi karin) mana beddesho mid hore loo dejiyay.
-preview_help	Rasiidkan oo saaran warqadda daabacaha hoos laga doortay, sida uu halkaas ugu daabacmo: cabbir dhab ah laga bilaabo geeska bidix ee sare ee daabacuhu gaaro (cawl: geesaha uusan gaarin), rasiid dheer oo warqado badan ah, wax kasta oo dhaafa cidhifka warqadda waa la gooyaa. Dooranka daabace wuxuu beddelaa hordhaca oo keliya; warqadda daabace kasta waxaa lagu dejiyaa Daabacayaasha.
+virtual_width_mm	Ballac virtual ah (mm)
+virtual_length_mm	Dherer virtual ah (mm)
+reported_width_mm	Ballaca la soo sheegay (mm)
+reported_length_mm	Dhererka la soo sheegay (mm)
+reported_paper	La soo sheegay: {paper}
+virtual_paper	Virtual: {paper}
+printer_paper_help	La soo sheegay waa warqadda darawalka daabacahan loo dejiyay; app-ku wuu akhriyaa oo keliya, “—” waxay ka dhigan tahay inaanu jirin darawal la weydiiyo. Virtual waa warqadda aad adigu sheegto inay dhab ahaan ku jirto daabacaha, oo mm ah; dherer bannaan waa duub. Daabacuhu wuxuu ku daabacaa warqaddiisa; warqadda virtual-ka ahi waxay app-ka u sheegtaa inta ka mid ah ee warqad dhab ah, si loogu isticmaalo hordhaca, dhererka bogga iyo booska rasiidka. Raadi daabacayaasha waxay buuxisaa warqad virtual ah oo bannaan, weligeedna ma beddesho mid aad adigu dejisay.
+preview_help	Rasiidkan sida uu ugu daabacmo daabacaha hoos laga doortay, cabbir dhab ah oo saaran warqaddiisa virtual-ka ah. Caddaanku waa meesha uu wax ku daabaco, warqadda cawlan daabacuhu ma gaaro, khadka khafiifka ahna waa la gooyaa. Sagaalka afargees waa warqadda: taabo meesha rasiidku ku fadhiisanayo. Rasiid dheer wuxuu u gudbaa bogag kale. Dooranka daabace wuxuu beddelaa hordhaca oo keliya.
 job_layout	Qaab
 job_delivery	Sida shaqada loo diro
 job_delivery_help	Dukumentiga nidaamka, bayt cayriin, ama ESC/POS. Biilka iyo warqadda jikadu mid walba wuxuu hayaa midkiisa. Shaqo kasta waxay aadi kartaa daabacaha kasta oo Raadi kaydiyay.
@@ -1266,8 +1290,8 @@ taxable_value	Qiimaha canshuurta lagu xisaabinayo
 gst_inside_price_note	({tax} waa ku jira)
 start_with_template	Ku bilow qaabka menu-geenna
 template_heading	Qaabka menu-geenna
-template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
-template_download_shelf	Download photo shelf
+template_need_download	Soo deji khaanadda guud ee sawirrada cuntada (~1,459 cunto), ka dibna magacyada maqan ku soo deji menu-gaaga.
+template_download_shelf	Soo deji khaanadda sawirrada
 template_info	qayb {c} iyo cunto {d} oo sawir leh, diyaar in lagu daro. Qiimayaashu waxay ka bilaabmaan ₹0 — ka dib deji kuwaaga.
 template_import	Soo deji qaabka oo dhan
 template_confirm	Ku dar cunto {d} iyo qaybahooda? Cuntooyinka aad haysato way sii ahaanayaan sidii ay ahaayeen.

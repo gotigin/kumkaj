@@ -5,7 +5,7 @@ description = "Marks, screenshots and a short fact sheet for Kumkaj products."
 
 ## Fact sheet
 
-- **Brand:** Kumkaj (kumkaj.com) by Gotigin
+- **Trademark:** Gotigin · **Company:** GOTIGIN SOFTWARE & HARDWARE PRIVATE LIMITED · **Brand:** Kumkaj (kumkaj.com)
 - **Products shipping:** Moklanjo (courier desk), Khaynjo (restaurant OS)
 - **Platforms:** Android, Windows, Linux (iOS / macOS deferred)
 - **Model:** Local‑first; free forever on your devices; Cloud planned, usage‑based

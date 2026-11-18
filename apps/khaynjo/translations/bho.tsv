@@ -101,6 +101,19 @@ bill_item_col_sep	खंभा रेखा
 slip_columns	खंभा
 slip_col_header	शीर्षक
 bill_line_logo	लोगो
+bill_line_shop	दोकान
+bill_line_address	पता
+bill_line_fssai	FSSAI
+bill_line_title	शीर्षक
+bill_line_customer	ग्राहक
+bill_line_bill_no	बिल नं.
+bill_line_time	समय
+bill_line_cashier	कैशियर
+bill_line_table	टेबल
+bill_line_items	सामान
+bill_line_total	कुल
+bill_line_footer	फुटर
+bill_line_upi	UPI
 bill_logo_picture	फोटो
 bill_logo_choose	फोटो चुनीं
 bill_logo_remove	फोटो हटाईं
@@ -128,6 +141,12 @@ bill_item_piece_off	बंद
 bill_total_qty	कुल मात्रा
 bill_total_subtotal	उप-जोड़
 bill_total_grand	कुल जोड़
+bill_total_number_under	संख्या एकरा नीचे
+bill_total_caption_under	लेबल एकरा नीचे
+bill_total_own_line	आपन पंक्ति
+bill_total_caption_with	संख्या के संगे
+bill_total_caption_none	लेबल ना
+bill_total_place_help	“आपन पंक्ति” ई जोड़ के अकेले छापेला। खंभा के नीचे रहला पर एकर संख्या ओही सामान वाला खंभा में, ई पंक्ति के नाप आ मोटाई में छपेला; जब ले कवनो खंभा भर ना जाए जोड़ एके कतार बाँटेला, फेर नया कतार शुरू होला। लेबल संख्या के संगे, दोसर खंभा के नीचे जाला, चाहे छोड़ दिहल जाला। टैक्स, सेवा, राउंडिंग आ भुगतान वाला पंक्ति “उप-जोड़” के पीछे चलेला।
 reprint_incl	छाप में
 reprint_skip	छोड़ीं
 reprint_skip_meta	रिकवरी छाप छोड़ीं
@@ -178,20 +197,20 @@ snack_secs_ph	सेकेंड (3–60, पहिले से 10)
 snack_secs_save	सूचना समय सहेजीं
 snack_secs_saved	सूचना समय सहेजल — {n} सेकेंड
 settings_sec_whatsapp	WhatsApp
-whatsapp_cloud_help	Use your own Meta WhatsApp Cloud API. Create a System User token with whatsapp_business_messaging (temporary dashboard tokens expire). Credentials stay on this Server only — never on extra tills. Accepted means Meta took the request, not that the guest received it.
-whatsapp_phone_id_ph	Phone Number ID
-whatsapp_token_ph	Access Token (leave blank to keep)
-whatsapp_template_ph	Bill template name (optional)
-whatsapp_template_lang_ph	Template language (e.g. en)
-whatsapp_enable	Enable
+whatsapp_cloud_help	आपन Meta WhatsApp Cloud API इस्तेमाल करीं। whatsapp_business_messaging वाला System User टोकन बनाईं (डैशबोर्ड के अस्थायी टोकन के मियाद खतम हो जाला)। ई जानकारी खाली एही सर्वर पर रहेला — अतिरिक्त टिल पर कबो ना। “स्वीकृत” के मतलब बा कि Meta अनुरोध ले लिहलस, ई ना कि मेहमान के संदेस मिल गइल।
+whatsapp_phone_id_ph	फोन नंबर ID
+whatsapp_token_ph	एक्सेस टोकन (उहे रखे खातिर खाली छोड़ीं)
+whatsapp_template_ph	बिल टेम्पलेट के नाम (मरजी के)
+whatsapp_template_lang_ph	टेम्पलेट के भाषा (जइसे en)
+whatsapp_enable	चालू करीं
 whatsapp_disable	Off
-whatsapp_save	Save WhatsApp
-whatsapp_test	Test connection
-whatsapp_disconnect	Disconnect
-whatsapp_send_bill	Send via WhatsApp
-whatsapp_consent	WhatsApp OK
-whatsapp_consent_help	Guest agreed to receive WhatsApp messages. A phone number alone is not consent.
-whatsapp_server_only	Configure WhatsApp on the shop Server device
+whatsapp_save	WhatsApp सहेजीं
+whatsapp_test	जुड़ाव जाँचीं
+whatsapp_disconnect	जुड़ाव हटाईं
+whatsapp_send_bill	WhatsApp से भेजीं
+whatsapp_consent	WhatsApp ठीक
+whatsapp_consent_help	मेहमान WhatsApp संदेस पावे खातिर हामी भरले बाड़ें। खाली फोन नंबर होखल सहमति ना ह।
+whatsapp_server_only	WhatsApp के दोकान के सर्वर डिवाइस पर सेट करीं
 settings_sec_backup	बैकअप आ बहाली
 settings_sec_diag	जाँच
 settings_sec_privacy	गोपनीयता
@@ -637,7 +656,7 @@ choose_device_use	सर्वर भा क्लाइंट चुनीं�
 paired_note	जुड़ल। बेचे खातिर अनलॉक करीं, भा नया खातिर ताजा करीं।
 last_update_at	पिछला अपडेट: {time}।
 pair_intro	सर्वर खोजीं, भा ओकर पता आ पेयरिंग कोड लिखीं।
-pair_resume_hint	Already paired — enter your shop PIN, or Forget this shop to pair another.
+pair_resume_hint	पहिलहीं से जुड़ल बा — आपन दोकान के PIN डालीं, भा दोसर दोकान जोड़े खातिर “ई दोकान भुला जाईं” दबाईं।
 queue_waiting	दोकान ले पहुँचे के इंतजार ({n}):
 queue_tries	{n} बेर कोसिस · पिछला जवाब: {e}
 save_backup_copy	बैकअप कॉपी सहेजीं…
@@ -754,13 +773,18 @@ station_vps_dd	एह स्टेशन के प्रिंटर
 station_vps_dd_n	{n} प्रिंटर · बदले खातिर दबाईं
 bill_printers_dd	बिल के प्रिंटर
 bill_printers_dd_n	बिल खातिर {n} प्रिंटर · बदले खातिर दबाईं
-paper_heading	कागज
+paper_heading	आभासी कागज
 paper_size	{w} × {h} mm
 paper_roll	{w} mm रोल
 paper_not_set	कागज अभी पता नइखे
-paper_length_mm	लंबाई (mm)
-printer_paper_help	एह प्रिंटर के कागज mm में। खाली लंबाई के मतलब रोल: हर पर्ची ओकरा सामग्री जेतना लंबा होला। प्रिंटर खोजीं खाली कागज प्रिंटर के ड्राइवर से भर देला (ना बता सके त 80 mm रोल) आ पहिले से तय कागज कबो ना बदलेला।
-preview_help	ई पर्ची नीचे चुनल प्रिंटर के कागज पर, जइसे उहाँ छपी: प्रिंटर जहाँ ले पहुँचेला ओह ऊपर बाँया कोना से असली नाप में (धूसर: जहाँ ना पहुँचे), लंबा पर्ची अउरी पन्ना पर, कागज के किनारा से आगे के हिस्सा कट जाला। प्रिंटर चुनला से खाली पूर्वावलोकन बदलेला; हर प्रिंटर के कागज प्रिंटर में तय होला।
+virtual_width_mm	आभासी चौड़ाई (mm)
+virtual_length_mm	आभासी लंबाई (mm)
+reported_width_mm	बतावल चौड़ाई (mm)
+reported_length_mm	बतावल लंबाई (mm)
+reported_paper	बतावल गइल: {paper}
+virtual_paper	आभासी: {paper}
+printer_paper_help	बतावल गइल ऊ कागज ह जेकरा पर ई प्रिंटर के ड्राइवर सेट बा; ऐप ओकरा के खाली पढ़ेला, आ “लागू ना” के मतलब बा कि पूछे खातिर कवनो ड्राइवर नइखे। आभासी ऊ कागज ह जवन रउआ कहत बानी कि प्रिंटर में सचमुच लागल बा, mm में; खाली लंबाई के मतलब रोल ह। प्रिंटर अपना कागज पर छापेला; आभासी कागज ऐप के बतावेला कि ओह में केतना असली कागज बा, पूर्वावलोकन, पन्ना के लंबाई आ पर्ची के जगह खातिर। प्रिंटर खोजीं खाली आभासी कागज भर देला आ रउआ सेट कइल कबो ना बदलेला।
+preview_help	ई पर्ची जइसे नीचे चुनल प्रिंटर पर छपेला, ओकर आभासी कागज पर असली नाप में। उज्जर जगह पर छपेला, धूसर कागज तक प्रिंटर ना पहुँचेला, आ फीका सियाही कट जाला। नौ खाना कागज ह: जहाँ पर्ची बइठे के चाहीं उहाँ टैप करीं। लमहर पर्ची अउरी पन्ना पर जाला। प्रिंटर चुनला से खाली पूर्वावलोकन बदलेला।
 job_layout	बनावट
 job_delivery	काम कइसे भेजल जाला
 job_delivery_help	OS दस्तावेज, कच्चा बाइट, भा ESC/POS। बिल आ रसोई टिकट दुनो आपन-आपन राखेला। कवनो काम खोजीं के सहेजल कवनो प्रिंटर पर जा सकेला।
@@ -1266,8 +1290,8 @@ taxable_value	कर लागे वाला मूल्य
 gst_inside_price_note	({tax} सहित)
 start_with_template	हमनी के मेनू टेम्पलेट से शुरू करीं
 template_heading	हमनी के मेनू टेम्पलेट
-template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
-template_download_shelf	Download photo shelf
+template_need_download	बेंजन के सार्वजनिक फोटो शेल्फ (~1,459 बेंजन) डाउनलोड करीं, फेर जवन नाम नइखे ओकरा के अपना मेनू में आयात करीं।
+template_download_shelf	फोटो शेल्फ डाउनलोड करीं
 template_info	{c} श्रेणी आ फोटो के साथ {d} बेंजन, जोड़े खातिर तइयार। दाम ₹0 से शुरू — बाद में आपन राखीं।
 template_import	पूरा टेम्पलेट आयात करीं
 template_confirm	{d} बेंजन ओकर श्रेणी के साथ जोड़ीं? जवन बेंजन पहिले से बा ऊ ओइसहीं रही।

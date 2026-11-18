@@ -101,6 +101,19 @@ bill_item_col_sep	Zutabe-marra
 slip_columns	Zutabeak
 slip_col_header	Izenburua
 bill_line_logo	Logotipoa
+bill_line_shop	Denda
+bill_line_address	Helbidea
+bill_line_fssai	FSSAI
+bill_line_title	Izenburua
+bill_line_customer	Bezeroa
+bill_line_bill_no	Kontu zk.
+bill_line_time	Ordua
+bill_line_cashier	Kutxazaina
+bill_line_table	Mahaia
+bill_line_items	Artikuluak
+bill_line_total	Guztira
+bill_line_footer	Oina
+bill_line_upi	UPI
 bill_logo_picture	Irudia
 bill_logo_choose	Aukeratu irudia
 bill_logo_remove	Kendu irudia
@@ -128,6 +141,12 @@ bill_item_piece_off	Itzalita
 bill_total_qty	Guztizko kopurua
 bill_total_subtotal	Azpitotala
 bill_total_grand	Guztizko handia
+bill_total_number_under	Zenbakia honen azpian
+bill_total_caption_under	Etiketa honen azpian
+bill_total_own_line	Lerro propioa
+bill_total_caption_with	Zenbakiarekin
+bill_total_caption_none	Etiketarik ez
+bill_total_place_help	Lerro propioa aukerak guztizko hau bakarrik inprimatzen du. Zutabe baten azpian, bere zenbakia artikuluen zutabe horretan inprimatzen da, lerro honen tamainan eta lodieran; guztizkoek errenkada bat partekatzen dute zutabe bat hartuta egon arte, eta orduan errenkada berria hasten da. Etiketa zenbakiarekin doa, beste zutabe baten azpian, edo kendu egiten da. Zerga, zerbitzu, biribiltze eta ordainketa lerroek Azpitotala jarraitzen dute.
 reprint_incl	Inprimatuan
 reprint_skip	Saltatu
 reprint_skip_meta	Berreskuratze-inprimaketa saltatu
@@ -178,20 +197,20 @@ snack_secs_ph	Segundoak (3–60, lehenetsia 10)
 snack_secs_save	Gorde abisu-denbora
 snack_secs_saved	Abisu-denbora gordeta — {n} segundo
 settings_sec_whatsapp	WhatsApp
-whatsapp_cloud_help	Use your own Meta WhatsApp Cloud API. Create a System User token with whatsapp_business_messaging (temporary dashboard tokens expire). Credentials stay on this Server only — never on extra tills. Accepted means Meta took the request, not that the guest received it.
-whatsapp_phone_id_ph	Phone Number ID
-whatsapp_token_ph	Access Token (leave blank to keep)
-whatsapp_template_ph	Bill template name (optional)
-whatsapp_template_lang_ph	Template language (e.g. en)
-whatsapp_enable	Enable
+whatsapp_cloud_help	Erabili zure Meta WhatsApp Cloud API propioa. Sortu System User token bat whatsapp_business_messaging-ekin (aginte-paneleko behin-behineko tokenak iraungi egiten dira). Datuak Zerbitzari honetan bakarrik geratzen dira — inoiz ez kutxa gehigarrietan. “Onartuta” esan nahi du Metak eskaera hartu duela, ez gonbidatuak jaso duela.
+whatsapp_phone_id_ph	Telefono-zenbakiaren IDa
+whatsapp_token_ph	Sarbide-tokena (utzi hutsik mantentzeko)
+whatsapp_template_ph	Kontu-txantiloiaren izena (aukerakoa)
+whatsapp_template_lang_ph	Txantiloiaren hizkuntza (adib. en)
+whatsapp_enable	Gaitu
 whatsapp_disable	Off
-whatsapp_save	Save WhatsApp
-whatsapp_test	Test connection
-whatsapp_disconnect	Disconnect
-whatsapp_send_bill	Send via WhatsApp
+whatsapp_save	Gorde WhatsApp
+whatsapp_test	Probatu konexioa
+whatsapp_disconnect	Deskonektatu
+whatsapp_send_bill	Bidali WhatsApp bidez
 whatsapp_consent	WhatsApp OK
-whatsapp_consent_help	Guest agreed to receive WhatsApp messages. A phone number alone is not consent.
-whatsapp_server_only	Configure WhatsApp on the shop Server device
+whatsapp_consent_help	Gonbidatuak WhatsApp mezuak jasotzea onartu du. Telefono-zenbakia soilik ez da baimena.
+whatsapp_server_only	Konfiguratu WhatsApp dendaren Zerbitzari gailuan
 settings_sec_backup	Babeskopia eta leheneratzea
 settings_sec_diag	Diagnostikoak
 settings_sec_privacy	Pribatutasuna
@@ -637,7 +656,7 @@ choose_device_use	Aukeratu Zerbitzaria edo Bezeroa.
 paired_note	Parekatuta. Desblokeatu saltzeko, edo Freskatu azkena lortzeko.
 last_update_at	Azken eguneratzea: {time}.
 pair_intro	Aurkitu zerbitzaria, edo idatzi helbidea eta parekatze-kodea.
-pair_resume_hint	Already paired — enter your shop PIN, or Forget this shop to pair another.
+pair_resume_hint	Dagoeneko parekatuta — sartu zure dendaren PINa, edo sakatu “Ahaztu denda hau” beste bat parekatzeko.
 queue_waiting	Dendara iristeko zain ({n}):
 queue_tries	{n} aldiz saiatuta · azken erantzuna: {e}
 save_backup_copy	Gorde babeskopia bat…
@@ -754,13 +773,18 @@ station_vps_dd	Inprimagailuak geltoki honetarako
 station_vps_dd_n	{n} inprimagailu · sakatu aldatzeko
 bill_printers_dd	Inprimagailuak konturako
 bill_printers_dd_n	{n} inprimagailu konturako · sakatu aldatzeko
-paper_heading	Papera
+paper_heading	Paper birtuala
 paper_size	{w} × {h} mm
 paper_roll	{w} mm-ko erroilua
 paper_not_set	papera oraindik ezezaguna
-paper_length_mm	Luzera (mm)
-printer_paper_help	Inprimagailu honen papera mm-tan. Luzera hutsa erroilua da: tiket bakoitza bere edukia bezain luzea da. Aurkitu inprimagailuak aukerak paper hutsa inprimagailuaren kontrolatzailetik betetzen du (80 mm-ko erroilua ezin badu esan) eta ez du inoiz aldatzen jada ezarritakoa.
-preview_help	Tiket hau behean aukeratutako inprimagailuaren paperean, han inprimatzen den bezala: benetako tamainan inprimagailuak iristen duen goiko ezkerreko izkinatik (grisa: iristen ez dituen ertzak), tiket luzea orri gehiagotan, paperaren ertzetik haratago dagoena moztu egiten da. Inprimagailu bat aukeratzeak aurrebista bakarrik aldatzen du; inprimagailu bakoitzaren papera Inprimagailuak atalean ezartzen da.
+virtual_width_mm	Zabalera birtuala (mm)
+virtual_length_mm	Luzera birtuala (mm)
+reported_width_mm	Jakinarazitako zabalera (mm)
+reported_length_mm	Jakinarazitako luzera (mm)
+reported_paper	Jakinarazia: {paper}
+virtual_paper	Birtuala: {paper}
+printer_paper_help	Jakinarazia inprimagailu honen kontrolatzailea ezarrita dagoen papera da; aplikazioak irakurri besterik ez du egiten, eta E/A horrek esan nahi du ez dagoela galdetzeko kontrolatzailerik. Birtuala zuk inprimagailuan benetan dagoela diozun papera da, mm-tan; luzera hutsa erroilua da. Inprimagailuak bere paperean inprimatzen du; paper birtualak aplikazioari esaten dio horretatik zenbat den benetako papera, aurrebistarako, orriaren luzerarako eta tiketaren lekurako. Aurkitu inprimagailuak aukerak paper birtual hutsa betetzen du eta ez du inoiz aldatzen zuk ezarritakoa.
+preview_help	Tiket hau behean aukeratutako inprimagailuan inprimatzen den bezala, benetako tamainan bere paper birtualean. Zuria inprimatzen den lekua da, paper grisa inprimagailuaren irismenetik kanpo dago, eta tinta lausotua moztu egiten da. Bederatzi laukiak papera dira: sakatu tiketak egon behar duen lekuan. Tiket luzea orri gehiagotan jarraitzen da. Inprimagailua aukeratzeak aurrebista bakarrik aldatzen du.
 job_layout	Antolamendua
 job_delivery	Lana nola bidaltzen den
 job_delivery_help	OS dokumentua, byte gordinak edo ESC/POS. Kontuak eta sukaldeko txartelak bakoitzak berea gordetzen du. Edozein lan Bilaketak gorde duen edozein inprimagailutara joan daiteke.
@@ -1266,8 +1290,8 @@ taxable_value	Zerga-oinarria
 gst_inside_price_note	({tax} barne)
 start_with_template	Hasi gure menu-txantiloiarekin
 template_heading	Gure menu-txantiloia
-template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
-template_download_shelf	Download photo shelf
+template_need_download	Deskargatu plateren argazki-apal publikoa (~1.459 plater), eta gero inportatu falta diren izenak zure menura.
+template_download_shelf	Deskargatu argazki-apala
 template_info	{c} kategoria eta {d} plater argazkiekin, gehitzeko prest. Prezioak ₹0-n hasten dira — gero ezarri zureak.
 template_import	Inportatu txantiloi osoa
 template_confirm	Gehitu {d} plater beren kategoriekin? Dagoeneko dituzun platerak dauden bezala geratzen dira.

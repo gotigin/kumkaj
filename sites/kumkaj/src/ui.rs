@@ -1,8 +1,8 @@
 // kumkaj.com — the whole page, one Makepad 2 `script_mod!` (included from
 // main.rs so `App` is in scope). Story: docs/WEBSITES.md §9. Palette: §4.
 // Claims: only Ship / Have / Done rows of MOKLANJO.md / KHAYNJO.md.
-// Desk sizes are the DSL defaults; App::apply_responsive shrinks type,
-// stacks rows and hides detail on phones (every chapter fits one screen).
+// One scrolling page (was a SlidesView deck); App::apply_responsive shrinks
+// type and stacks rows; body copy stays visible on every tier.
 script_mod! {
     use mod.prelude.widgets.*
     use mod.widgets.*
@@ -19,6 +19,9 @@ script_mod! {
     let Terracotta = #xA23E18
     let TerracottaHover = #x8C3414
     let TerracottaDown = #x6E2A10
+    // Kumkaj mark petals — cyan stem, warm orange arm (not Gotigin amber clone).
+    let PetalCyan = #x5A8FFF
+    let PetalCyanDim = #x2A6BFF
     // Terracotta lifted for text on navy (6.9:1); the fill stays #A23E18.
     let Clay = #xE8875C
     let Good = #x6CCB94
@@ -56,17 +59,45 @@ script_mod! {
     // apps' dark-on-light faces never hit it; vendor shader untouched).
     mod.widgets.Label.draw_text.sdf_luma_bias = 0.0
     mod.widgets.Button.draw_text.sdf_luma_bias = 0.0
+    mod.widgets.Markdown.draw_text.sdf_luma_bias = 0.0
+
+    mod.widgets.Label.draw_text.text_style.font_family = TextFont
+    mod.widgets.Button.draw_text.text_style.font_family = TextFont
+    mod.widgets.Markdown.text_style_normal.font_family = TextFont
+    mod.widgets.Markdown.text_style_italic.font_family = TextFont
+    mod.widgets.Markdown.text_style_bold.font_family = StrongFont
+    mod.widgets.Markdown.text_style_bold_italic.font_family = StrongFont
+    mod.widgets.TextFlow.text_style_normal.font_family = TextFont
+    mod.widgets.TextFlow.text_style_italic.font_family = TextFont
+    mod.widgets.TextFlow.text_style_bold.font_family = StrongFont
+    mod.widgets.TextFlow.text_style_bold_italic.font_family = StrongFont
+
+    // Selection band under light ink on navy (#2E5BAD / DESIGN § selection).
+    // draw_selection.color is what TextFlow paints (not draw_block.selection_color).
+    mod.widgets.TextFlow.draw_selection.color = #x2E5BADFF
+    mod.widgets.Markdown.draw_selection.color = #x2E5BADFF
+    // Text selection (DESIGN.md § Text selection & copy — same model as the
+    // app): every Markdown block selects on its own; the `page` root adds
+    // Ctrl/Cmd+A, Copy of all and the right-click Copy / Select all menu.
+    // Chrome marks and tap targets keep `selectable: false`.
+    mod.widgets.TextFlow.selectable = true
+    mod.widgets.Markdown.selectable = true
 
     let Eyebrow = Markdown{
         selectable: true
         height: Fit
         paragraph_spacing: 0.
         pre_code_spacing: 0.
+        draw_selection +: { color: #x2E5BADFF }
         draw_block +: { selection_color: #x2E5BADFF }
         width: Fill
         padding: 0.
+        font_color: PetalCyan
+        font_size: 12.5
+        text_style_normal: theme.font_bold{font_family: StrongFont font_size: 12.5 line_spacing: 1.3}
+        text_style_bold: theme.font_bold{font_family: StrongFont font_size: 12.5 line_spacing: 1.3}
         draw_text +: {
-            color: Clay
+            color: PetalCyan
             text_style: theme.font_bold{font_family: StrongFont font_size: 12.5 line_spacing: 1.3}
         }
     }
@@ -75,9 +106,14 @@ script_mod! {
         height: Fit
         paragraph_spacing: 0.
         pre_code_spacing: 0.
+        draw_selection +: { color: #x2E5BADFF }
         draw_block +: { selection_color: #x2E5BADFF }
         width: Fill
         padding: 0.
+        font_color: Ink
+        font_size: 52.
+        text_style_normal: theme.font_bold{font_family: DisplayFont font_size: 52. line_spacing: 0.94}
+        text_style_bold: theme.font_bold{font_family: DisplayFont font_size: 52. line_spacing: 0.94}
         draw_text +: {
             color: Ink
             text_style: theme.font_bold{font_family: DisplayFont font_size: 52. line_spacing: 0.94}
@@ -88,9 +124,14 @@ script_mod! {
         height: Fit
         paragraph_spacing: 0.
         pre_code_spacing: 0.
+        draw_selection +: { color: #x2E5BADFF }
         draw_block +: { selection_color: #x2E5BADFF }
         width: Fill
         padding: 0.
+        font_color: Muted
+        font_size: 20.
+        text_style_normal: theme.font_regular{font_family: TextFont font_size: 20. line_spacing: 1.45}
+        text_style_bold: theme.font_bold{font_family: StrongFont font_size: 20. line_spacing: 1.45}
         draw_text +: {
             color: Muted
             text_style: theme.font_regular{font_family: TextFont font_size: 20. line_spacing: 1.45}
@@ -101,9 +142,14 @@ script_mod! {
         height: Fit
         paragraph_spacing: 0.
         pre_code_spacing: 0.
+        draw_selection +: { color: #x2E5BADFF }
         draw_block +: { selection_color: #x2E5BADFF }
         width: Fill
         padding: 0.
+        font_color: Muted
+        font_size: 16.
+        text_style_normal: theme.font_regular{font_family: TextFont font_size: 16. line_spacing: 1.45}
+        text_style_bold: theme.font_bold{font_family: StrongFont font_size: 16. line_spacing: 1.45}
         draw_text +: {
             color: Muted
             text_style: theme.font_regular{font_family: TextFont font_size: 16. line_spacing: 1.45}
@@ -114,9 +160,14 @@ script_mod! {
         height: Fit
         paragraph_spacing: 0.
         pre_code_spacing: 0.
+        draw_selection +: { color: #x2E5BADFF }
         draw_block +: { selection_color: #x2E5BADFF }
         width: Fill
         padding: 0.
+        font_color: Ink
+        font_size: 16.
+        text_style_normal: theme.font_bold{font_family: StrongFont font_size: 16. line_spacing: 1.3}
+        text_style_bold: theme.font_bold{font_family: StrongFont font_size: 16. line_spacing: 1.3}
         draw_text +: {
             color: Ink
             text_style: theme.font_bold{font_family: StrongFont font_size: 16. line_spacing: 1.3}
@@ -127,9 +178,14 @@ script_mod! {
         height: Fit
         paragraph_spacing: 0.
         pre_code_spacing: 0.
+        draw_selection +: { color: #x2E5BADFF }
         draw_block +: { selection_color: #x2E5BADFF }
         width: Fill
         padding: 0.
+        font_color: Faint
+        font_size: 13.
+        text_style_normal: theme.font_regular{font_family: TextFont font_size: 13. line_spacing: 1.4}
+        text_style_bold: theme.font_bold{font_family: StrongFont font_size: 13. line_spacing: 1.4}
         draw_text +: {
             color: Faint
             text_style: theme.font_regular{font_family: TextFont font_size: 13. line_spacing: 1.4}
@@ -140,9 +196,14 @@ script_mod! {
         height: Fit
         paragraph_spacing: 0.
         pre_code_spacing: 0.
+        draw_selection +: { color: #x2E5BADFF }
         draw_block +: { selection_color: #x2E5BADFF }
         width: Fill
         padding: 0.
+        font_color: Ink
+        font_size: 30.
+        text_style_normal: theme.font_bold{font_family: DisplayFont font_size: 30. line_spacing: 1.0}
+        text_style_bold: theme.font_bold{font_family: DisplayFont font_size: 30. line_spacing: 1.0}
         draw_text +: {
             color: Ink
             text_style: theme.font_bold{font_family: DisplayFont font_size: 30. line_spacing: 1.0}
@@ -196,10 +257,10 @@ script_mod! {
             color_2_hover: PanelHi
             color_2_down: Panel
             color_2_focus: #x00000000
-            border_color: #x4A64A0
-            border_color_hover: #x6E86C0
-            border_color_down: #x6E86C0
-            border_color_focus: #x4A64A0
+            border_color: #x3A5AA8
+            border_color_hover: PetalCyanDim
+            border_color_down: PetalCyanDim
+            border_color_focus: #x3A5AA8
             border_radius: 10.
             border_size: 1.5
         }
@@ -239,19 +300,70 @@ script_mod! {
             color_focus: #x00000000
         }
     }
+    // Full-tile hit (Gotigin / Khaynjo pattern): hover/press wash over the card.
+    let CardHit = Button{
+        width: Fill height: Fill
+        padding: 0.
+        text: ""
+        grab_key_focus: false
+        reset_hover_on_click: true
+        label_walk: Walk{width: 0. height: 0.}
+        icon_walk: Walk{width: 0. height: 0.}
+        draw_bg +: {
+            color: #x00000000
+            color_hover: #x5A8FFF33
+            color_down: #x5A8FFF55
+            color_focus: #x00000000
+            color_2: #x00000000
+            color_2_hover: #x5A8FFF33
+            color_2_down: #x5A8FFF55
+            color_2_focus: #x00000000
+            border_color: #x00000000
+            border_color_hover: #x5A8FFF88
+            border_color_down: #x5A8FFFCC
+            border_color_focus: #x00000000
+            border_radius: 14.
+            border_size: 1.5
+        }
+        draw_text +: {
+            color: #x00000000
+            color_hover: #x00000000
+            color_down: #x00000000
+            color_focus: #x00000000
+        }
+    }
+    let ProductCard = View{
+        width: Fill height: Fit
+        flow: Overlay
+    }
+    let CardLink = Markdown{
+        selectable: false
+        height: Fit
+        width: Fill
+        padding: 0.
+        paragraph_spacing: 0.
+        pre_code_spacing: 0.
+        font_color: Clay
+        font_size: 14.
+        text_style_normal: theme.font_bold{font_family: StrongFont font_size: 14. line_spacing: 1.3}
+        text_style_bold: theme.font_bold{font_family: StrongFont font_size: 14. line_spacing: 1.3}
+        draw_text +: { color: Clay text_style: theme.font_bold{font_family: StrongFont font_size: 14. line_spacing: 1.3} }
+        draw_selection +: { color: #x2E5BADFF }
+        draw_block +: { selection_color: #x2E5BADFF }
+    }
 
     // ---- Chapter ground: navy fall-off, a warm glow, faint ledger rules --
     let Chapter = View{
-        width: Fill height: Fill
+        width: Fill height: Fit
         flow: Down
         spacing: 22
-        align: Align{x: 0.0 y: 0.5}
+        align: Align{x: 0.0 y: 0.0}
         padding: Inset{left: 64. right: 64. top: 36. bottom: 44.}
         show_bg: true
         draw_bg +: {
             top: instance(#x041534)
             bottom: instance(#x01081A)
-            glow: instance(#xA23E18)
+            glow: instance(#x2A6BFF)
             glow_x: instance(0.92)
             glow_y: instance(0.95)
             pixel: fn() {
@@ -292,6 +404,7 @@ script_mod! {
             height: Fit
             paragraph_spacing: 0.
             pre_code_spacing: 0.
+            draw_selection +: { color: #x2E5BADFF }
             draw_block +: { selection_color: #x2E5BADFF }
 
             width: Fill
@@ -305,6 +418,7 @@ script_mod! {
             height: Fit
             paragraph_spacing: 0.
             pre_code_spacing: 0.
+            draw_selection +: { color: #x2E5BADFF }
             draw_block +: { selection_color: #x2E5BADFF }
 
             width: Fit
@@ -325,6 +439,7 @@ script_mod! {
             height: Fit
             paragraph_spacing: 0.
             pre_code_spacing: 0.
+            draw_selection +: { color: #x2E5BADFF }
             draw_block +: { selection_color: #x2E5BADFF }
 
             width: Fit
@@ -338,6 +453,7 @@ script_mod! {
             height: Fit
             paragraph_spacing: 0.
             pre_code_spacing: 0.
+            draw_selection +: { color: #x2E5BADFF }
             draw_block +: { selection_color: #x2E5BADFF }
 
             width: Fill
@@ -360,6 +476,7 @@ script_mod! {
             height: Fit
             paragraph_spacing: 0.
             pre_code_spacing: 0.
+            draw_selection +: { color: #x2E5BADFF }
             draw_block +: { selection_color: #x2E5BADFF }
 
             width: Fit
@@ -381,49 +498,13 @@ script_mod! {
         }
     }
 
-    // A node in the Gotigin → Kumkaj → products map.
-    let MapNode = RoundedView{
-        width: Fill height: Fit
-        flow: Down
-        spacing: 4
-        // Tight sides: four nodes and two arrows share 900 px at 1024 wide.
-        padding: Inset{left: 14. right: 12. top: 14. bottom: 16.}
-        draw_bg +: {color: Panel border_color: Rule border_size: 1. border_radius: 12.}
-        role := Markdown{
-            selectable: true
-            height: Fit
-            paragraph_spacing: 0.
-            pre_code_spacing: 0.
-            draw_block +: { selection_color: #x2E5BADFF }
-
-            width: Fill
-            padding: 0.
-            draw_text +: {color: Faint text_style: theme.font_bold{font_family: StrongFont font_size: 12.}}
-            body: "ROLE"
-        
-        }
-        name := Markdown{
-            selectable: true
-            height: Fit
-            paragraph_spacing: 0.
-            pre_code_spacing: 0.
-            draw_block +: { selection_color: #x2E5BADFF }
-            width: Fill
-            padding: 0.
-            draw_text +: {color: Ink text_style: theme.font_bold{font_family: DisplayFont font_size: 24.}}
-            body: "Name"
-        }
+    let AppIcon = Image{
+        width: 52 height: 52
+        fit: ImageFit.Stretch
     }
-    let MapArrow = Markdown{
-        selectable: true
-        height: Fit
-        paragraph_spacing: 0.
-        pre_code_spacing: 0.
-        draw_block +: { selection_color: #x2E5BADFF }
-        width: Fit
-        padding: Inset{left: 2. right: 2. top: 0. bottom: 0.}
-        draw_text +: {color: Clay text_style: theme.font_bold{font_family: StrongFont font_size: 22.}}
-        body: "→"
+    let BrandIcon = Image{
+        width: 36 height: 36
+        fit: ImageFit.Stretch
     }
 
     // Chapter dot in the top bar: idle dot, active pill, invisible hit.
@@ -432,7 +513,7 @@ script_mod! {
         flow: Overlay
         align: Align{x: 0.5 y: 0.5}
         idle := RoundedView{width: 7 height: 7 draw_bg +: {color: #x3A4F80 border_radius: 3.5}}
-        on := RoundedView{visible: false width: 16 height: 7 draw_bg +: {color: Clay border_radius: 3.5}}
+        on := RoundedView{visible: false width: 16 height: 7 draw_bg +: {color: PetalCyan border_radius: 3.5}}
         hit := HitBtn{}
     }
 
@@ -455,49 +536,26 @@ script_mod! {
                         padding: Inset{left: 24. right: 20. top: 0. bottom: 0.}
                         show_bg: true
                         draw_bg +: {color: NavyDeep}
-                        View{
+                        brand_mark := View{
                             width: Fit height: Fit
                             flow: Right
                             spacing: 10
-                            align: Align{y: 0.6}
-                            Markdown{
-            selectable: true
-            height: Fit
-            paragraph_spacing: 0.
-            pre_code_spacing: 0.
-            draw_block +: { selection_color: #x2E5BADFF }
-
-                                padding: 0.
-                                body: "Kumkaj"
+                            align: Align{y: 0.5}
+                            brand_icon := BrandIcon{
+                                src: crate_resource("self:resources/media/brand-logo.webp")
+                            }
+                            brand_name := Label{
+                                width: Fit
+                                text: "Kumkaj"
                                 draw_text +: {color: Ink text_style: theme.font_bold{font_family: DisplayFont font_size: 21.}}
-                            
-        }
-                            byline := Markdown{
-            selectable: true
-            height: Fit
-            paragraph_spacing: 0.
-            pre_code_spacing: 0.
-            draw_block +: { selection_color: #x2E5BADFF }
-
-                                padding: 0.
-                                body: "by Gotigin"
-                                draw_text +: {color: Faint text_style: theme.font_regular{font_family: TextFont font_size: 12.5}}
-                            
-        }
+                            }
                         }
                         View{width: Fill height: 1}
-                        chapter_name := Markdown{
-            selectable: true
-            height: Fit
-            paragraph_spacing: 0.
-            pre_code_spacing: 0.
-            draw_block +: { selection_color: #x2E5BADFF }
-
-                            padding: 0.
-                            body: "The promise"
+                        chapter_name := Label{
+                            width: Fit
+                            text: "The promise"
                             draw_text +: {color: Muted text_style: theme.font_regular{font_family: TextFont font_size: 13.5}}
-                        
-        }
+                        }
                         dots := View{
                             width: Fit height: Fit
                             flow: Right
@@ -511,25 +569,19 @@ script_mod! {
                             d5 := Dot{}
                             d6 := Dot{}
                         }
-                        counter := Markdown{
-            selectable: true
-            height: Fit
-            paragraph_spacing: 0.
-            pre_code_spacing: 0.
-            draw_block +: { selection_color: #x2E5BADFF }
-
-                            padding: 0.
-                            body: "1 / 7"
+                        counter := Label{
+                            width: Fit
+                            text: "1 / 7"
                             draw_text +: {color: Faint text_style: theme.font_bold{font_family: StrongFont font_size: 12.5}}
-                        
-        }
+                        }
                     }
 
-                    slides := SlidesView{
+                    page := ScrollYView{
+                        selection_root: true
+                        select_from_gaps: true
                         width: Fill
                         height: Fill
-                        anim_speed: 0.86
-                        axis: Vertical
+                        flow: Down
 
                         // 01 — the promise
                         hero := Chapter{
@@ -542,9 +594,9 @@ script_mod! {
                                     width: Fill height: Fit
                                     flow: Down
                                     spacing: 22
-                                    Eyebrow{body: "KUMKAJ · SOFTWARE FOR THE SHOP COUNTER"}
+                                    Eyebrow{body: "KUMKAJ · BUSINESS OPERATING SYSTEMS"}
                                     Headline{body: "The internet went down.\nThe counter didn't."}
-                                    Lede{body: "Kumkaj makes business software that runs on your own devices — courier, restaurant, grocery and pharmacy counters, each built for its trade."}
+                                    Lede{body: "Kumkaj is the brand for concrete business operating system apps — complete business management software that runs on your own devices. Each product is built for one trade: courier, restaurant, grocery, pharmacy."}
                                     hero_ctas := View{
                                         width: Fill height: Fit
                                         flow: Right
@@ -570,7 +622,7 @@ script_mod! {
                                     Small{body: "Nothing on this counter waits for the cloud."}
                                 }
                             }
-                            hint := Small{body: "Scroll, swipe up, or press ↓ to read on."}
+                            hint := Small{body: "Scroll or use the dots to jump between sections."}
                         }
 
                         // 02 — choose your trade
@@ -589,74 +641,86 @@ script_mod! {
                                     width: Fill height: Fit
                                     flow: Right
                                     spacing: 20
-                                    mok := Card{
-                                        draw_bg.border_color: #x2A4F9A
-                                        RoundedView{width: 44 height: 5 draw_bg +: {color: MokOrange border_radius: 2.5}}
-                                        mok_kicker := Small{body: "COURIER OFFICES · FRANCHISE COUNTERS · OWN RIDERS"}
-                                        CardName{body: "Moklanjo"}
-                                        Strong{body: "Book → label → hand over → track → settle."}
-                                        mok_points := View{
-                                            width: Fill height: Fit
-                                            flow: Down
-                                            spacing: 6
-                                            Bullet{line.body: "Next booking in one tap"}
-                                            Bullet{line.body: "Actual or volumetric weight, rounded your way"}
-                                            Bullet{line.body: "Rider cash on delivery: expected against handed in"}
+                                    mok := ProductCard{
+                                        Card{
+                                            draw_bg.border_color: #x2A4F9A
+                                            AppIcon{src: crate_resource("self:resources/media/moklanjo-app-icon.webp")}
+                                            mok_kicker := Small{body: "COURIER OFFICES · FRANCHISE COUNTERS · OWN RIDERS"}
+                                            CardName{body: "Moklanjo"}
+                                            Strong{body: "Book → label → hand over → track → settle."}
+                                            mok_points := View{
+                                                width: Fill height: Fit
+                                                flow: Down
+                                                spacing: 6
+                                                Bullet{line.body: "Next booking in one tap"}
+                                                Bullet{line.body: "Actual or volumetric weight, rounded your way"}
+                                                Bullet{line.body: "Rider cash on delivery: expected against handed in"}
+                                            }
+                                            CardLink{body: "Visit moklanjo.com  →"}
                                         }
-                                        to_moklanjo := GhostBtn{text: "Visit moklanjo.com  →"}
+                                        to_moklanjo := CardHit{}
                                     }
-                                    kha := Card{
-                                        draw_bg.border_color: #x7A2A2A
-                                        RoundedView{width: 44 height: 5 draw_bg +: {color: KhaGold border_radius: 2.5}}
-                                        kha_kicker := Small{body: "RESTAURANTS · CAFÉS · QUICK SERVICE · BAKERIES"}
-                                        CardName{body: "Khaynjo"}
-                                        Strong{body: "Table → kitchen → bill → day close."}
-                                        kha_points := View{
-                                            width: Fill height: Fit
-                                            flow: Down
-                                            spacing: 6
-                                            Bullet{line.body: "Every table's minutes and bill at a glance"}
-                                            Bullet{line.body: "One KOT per kitchen station — never prices"}
-                                            Bullet{line.body: "Cash, UPI, part payment, Due and tip"}
+                                    kha := ProductCard{
+                                        Card{
+                                            draw_bg.border_color: #x7A2A2A
+                                            AppIcon{src: crate_resource("self:resources/media/khaynjo-app-icon.webp")}
+                                            kha_kicker := Small{body: "RESTAURANTS · CAFÉS · QUICK SERVICE · BAKERIES"}
+                                            CardName{body: "Khaynjo"}
+                                            Strong{body: "Table → kitchen → bill → day close."}
+                                            kha_points := View{
+                                                width: Fill height: Fit
+                                                flow: Down
+                                                spacing: 6
+                                                Bullet{line.body: "Every table's minutes and bill at a glance"}
+                                                Bullet{line.body: "One KOT per kitchen station — never prices"}
+                                                Bullet{line.body: "Cash, UPI, part payment, Due and tip"}
+                                            }
+                                            CardLink{body: "Visit khaynjo.com  →"}
                                         }
-                                        to_khaynjo := GhostBtn{text: "Visit khaynjo.com  →"}
+                                        to_khaynjo := CardHit{}
                                     }
                                 }
                                 View{
                                     width: Fill height: Fit
                                     flow: Right
                                     spacing: 20
-                                    kir := Card{
-                                        draw_bg.border_color: #xCD380E
-                                        RoundedView{width: 44 height: 5 draw_bg +: {color: #xF96303 border_radius: 2.5}}
-                                        Small{body: "KIRANA · GROCERY · NEIGHBOURHOOD SHOPS"}
-                                        CardName{body: "Kirano"}
-                                        Strong{body: "Sell → khata → stock → day book."}
-                                        View{
-                                            width: Fill height: Fit
-                                            flow: Down
-                                            spacing: 6
-                                            Bullet{line.body: "Fast counter sell with short codes"}
-                                            Bullet{line.body: "Customer credit and supplier dues"}
-                                            Bullet{line.body: "Buy into stock — offline forever"}
+                                    kir := ProductCard{
+                                        Card{
+                                            draw_bg.border_color: #xCD380E
+                                            AppIcon{src: crate_resource("self:resources/media/kirano-app-icon.webp")}
+                                            Small{body: "KIRANA · GROCERY · NEIGHBOURHOOD SHOPS"}
+                                            CardName{body: "Kirano"}
+                                            Strong{body: "Sell → khata → stock → day book."}
+                                            View{
+                                                width: Fill height: Fit
+                                                flow: Down
+                                                spacing: 6
+                                                Bullet{line.body: "Fast counter sell with short codes"}
+                                                Bullet{line.body: "Customer credit and supplier dues"}
+                                                Bullet{line.body: "Buy into stock — offline forever"}
+                                            }
+                                            CardLink{body: "Visit kirano.shop  →"}
                                         }
-                                        to_kirano := GhostBtn{text: "Visit kirano.shop  →"}
+                                        to_kirano := CardHit{}
                                     }
-                                    tab := Card{
-                                        draw_bg.border_color: #x023637
-                                        RoundedView{width: 44 height: 5 draw_bg +: {color: #x37BE28 border_radius: 2.5}}
-                                        Small{body: "CHEMISTS · PHARMACY COUNTERS"}
-                                        CardName{body: "Tabiyat"}
-                                        Strong{body: "Medicine → batch → bill → day close."}
-                                        View{
-                                            width: Fill height: Fit
-                                            flow: Down
-                                            spacing: 6
-                                            Bullet{line.body: "Barcode and salt / composition search"}
-                                            Bullet{line.body: "Batch and expiry alerts on purchases"}
-                                            Bullet{line.body: "Owner Schedule H / Rx notes — not fake compliance"}
+                                    tab := ProductCard{
+                                        Card{
+                                            draw_bg.border_color: #x023637
+                                            AppIcon{src: crate_resource("self:resources/media/tabiyat-app-icon.webp")}
+                                            Small{body: "CHEMISTS · PHARMACY COUNTERS"}
+                                            CardName{body: "Tabiyat"}
+                                            Strong{body: "Medicine → batch → bill → day close."}
+                                            View{
+                                                width: Fill height: Fit
+                                                flow: Down
+                                                spacing: 6
+                                                Bullet{line.body: "Barcode and salt / composition search"}
+                                                Bullet{line.body: "Batch and expiry alerts on purchases"}
+                                                Bullet{line.body: "Owner Schedule H / Rx notes — not fake compliance"}
+                                            }
+                                            CardLink{body: "Visit tabiyat.shop  →"}
                                         }
-                                        to_tabiyat := GhostBtn{text: "Visit tabiyat.shop  →"}
+                                        to_tabiyat := CardHit{}
                                     }
                                 }
                             }
@@ -728,17 +792,18 @@ script_mod! {
                                     align: Align{y: 0.5}
                                     Strong{width: Fill body: "On your own devices"}
                                     Markdown{
-            selectable: true
-            height: Fit
-            paragraph_spacing: 0.
-            pre_code_spacing: 0.
-            draw_block +: { selection_color: #x2E5BADFF }
-
+                                        selectable: true
+                                        height: Fit
+                                        paragraph_spacing: 0.
+                                        pre_code_spacing: 0.
+                                        draw_selection +: { color: #x2E5BADFF }
+                                        draw_block +: { selection_color: #x2E5BADFF }
                                         padding: 0.
+                                        font_color: Good
+                                        font_size: 26.
                                         body: "₹0, forever"
                                         draw_text +: {color: Good text_style: theme.font_bold{font_family: DisplayFont font_size: 26.}}
-                                    
-        }
+                                    }
                                 }
                                 RoundedView{width: Fill height: 1 draw_bg +: {color: Rule border_radius: 0.}}
                                 View{
@@ -758,17 +823,18 @@ script_mod! {
                                         padding: Inset{left: 12. right: 12. top: 6. bottom: 7.}
                                         draw_bg +: {color: #x00000000 border_color: Clay border_size: 1.2 border_radius: 12.}
                                         Markdown{
-            selectable: true
-            height: Fit
-            paragraph_spacing: 0.
-            pre_code_spacing: 0.
-            draw_block +: { selection_color: #x2E5BADFF }
-
+                                            selectable: true
+                                            height: Fit
+                                            paragraph_spacing: 0.
+                                            pre_code_spacing: 0.
+                                            draw_selection +: { color: #x2E5BADFF }
+                                            draw_block +: { selection_color: #x2E5BADFF }
                                             padding: 0.
+                                            font_color: PetalCyan
+                                            font_size: 13.
                                             body: "Planned"
                                             draw_text +: {color: Clay text_style: theme.font_bold{font_family: StrongFont font_size: 13.}}
-                                        
-        }
+                                        }
                                     }
                                 }
                             }
@@ -794,41 +860,108 @@ script_mod! {
                             Small{body: "Same shaping engine as the apps, so joined letters and right-to-left lines come out right."}
                         }
 
-                        // 07 — who makes it, and the choice again
+                        // 07 — who makes it, and the product choice again
                         gotigin := Chapter{
                             Eyebrow{body: "07 · WHO MAKES IT"}
-                            Headline{body: "Made by Gotigin."}
-                            gotigin_lede := Lede{body: "Gotigin is the company. Kumkaj is its family of business software. Moklanjo and Khaynjo are the products you install."}
-                            map := View{
+                            Headline{body: "Made under Gotigin."}
+                            names := View{
                                 width: Fill height: Fit
-                                flow: Right
+                                flow: Down
                                 spacing: 10
-                                align: Align{y: 0.5}
-                                MapNode{role.body: "COMPANY" name.body: "Gotigin"}
-                                arrow_1 := MapArrow{}
-                                MapNode{role.body: "THE BRAND" name.body: "Kumkaj"}
-                                arrow_2 := MapArrow{}
-                                MapNode{
-                                    draw_bg.border_color: #x2A4F9A
-                                    role.body: "FOR COURIER OFFICES"
-                                    name.body: "Moklanjo"
+                                Body{body: "Trademark: Gotigin — Memon for 'find it' (go-tee-geen). Slogan: Where Technology Meets Discovery."}
+                                Body{body: "Company: GOTIGIN SOFTWARE & HARDWARE PRIVATE LIMITED · mearaj@gotigin.com"}
+                                Body{body: "Brand: Kumkaj — concrete business operating system apps; complete business management software."}
+                                Body{body: "Products: Moklanjo · Khaynjo · Kirano · Tabiyat."}
+                            }
+                            product_grid := View{
+                                width: Fill height: Fit
+                                flow: Down
+                                spacing: 16
+                                product_row_1 := View{
+                                    width: Fill height: Fit
+                                    flow: Right
+                                    spacing: 16
+                                    pick_mok := ProductCard{
+                                        Card{
+                                            draw_bg.border_color: #x2A4F9A
+                                            AppIcon{src: crate_resource("self:resources/media/moklanjo-app-icon.webp")}
+                                            CardName{body: "Moklanjo"}
+                                            Body{body: "Courier desk — book, label, hand over, settle."}
+                                            CardLink{body: "Visit moklanjo.com  →"}
+                                        }
+                                        close_moklanjo := CardHit{}
+                                    }
+                                    pick_kha := ProductCard{
+                                        Card{
+                                            draw_bg.border_color: #x7A2A2A
+                                            AppIcon{src: crate_resource("self:resources/media/khaynjo-app-icon.webp")}
+                                            CardName{body: "Khaynjo"}
+                                            Body{body: "Restaurant system — table, kitchen, bill, day close."}
+                                            CardLink{body: "Visit khaynjo.com  →"}
+                                        }
+                                        close_khaynjo := CardHit{}
+                                    }
                                 }
-                                MapNode{
-                                    draw_bg.border_color: #x7A2A2A
-                                    role.body: "FOR RESTAURANTS"
-                                    name.body: "Khaynjo"
+                                product_row_2 := View{
+                                    width: Fill height: Fit
+                                    flow: Right
+                                    spacing: 16
+                                    pick_kir := ProductCard{
+                                        Card{
+                                            draw_bg.border_color: #xCD380E
+                                            AppIcon{src: crate_resource("self:resources/media/kirano-app-icon.webp")}
+                                            CardName{body: "Kirano"}
+                                            Body{body: "Grocery counter — sell, khata, stock, day book."}
+                                            CardLink{body: "Visit kirano.shop  →"}
+                                        }
+                                        close_kirano := CardHit{}
+                                    }
+                                    pick_tab := ProductCard{
+                                        Card{
+                                            draw_bg.border_color: #x023637
+                                            AppIcon{src: crate_resource("self:resources/media/tabiyat-app-icon.webp")}
+                                            CardName{body: "Tabiyat"}
+                                            Body{body: "Pharmacy counter — batch, expiry, bill, day close."}
+                                            CardLink{body: "Visit tabiyat.shop  →"}
+                                        }
+                                        close_tabiyat := CardHit{}
+                                    }
                                 }
                             }
-                            close_ctas := View{
+                        }
+
+                        footer := View{
+                            width: Fill height: Fit
+                            flow: Down
+                            spacing: 0
+                            align: Align{x: 0.0 y: 0.0}
+                            show_bg: true
+                            draw_bg +: {color: NavyDeep}
+                            footer_row := View{
                                 width: Fill height: Fit
                                 flow: Right
-                                spacing: 12
-                                close_moklanjo := PrimaryBtn{text: "Moklanjo — courier desk  →"}
-                                close_khaynjo := PrimaryBtn{text: "Khaynjo — restaurant system  →"}
-                                close_kirano := PrimaryBtn{text: "Kirano — grocery counter  →"}
-                                close_tabiyat := PrimaryBtn{text: "Tabiyat — pharmacy counter  →"}
+                                spacing: 14
+                                align: Align{y: 0.5}
+                                footer_brand := View{
+                                    width: Fill height: Fit
+                                    flow: Right
+                                    spacing: 10
+                                    align: Align{y: 0.5}
+                                    footer_icon := BrandIcon{
+                                        src: crate_resource("self:resources/media/brand-logo.webp")
+                                    }
+                                    footer_attribution := Small{
+                                        body: "© GOTIGIN SOFTWARE & HARDWARE PRIVATE LIMITED · Trademark Gotigin · Brand Kumkaj"
+                                    }
+                                }
+                                footer_links := View{
+                                    width: Fit height: Fit
+                                    flow: Right
+                                    spacing: 10
+                                    to_privacy := GhostBtn{text: "Privacy"}
+                                    to_terms := GhostBtn{text: "Terms"}
+                                }
                             }
-                            Small{body: "Moklanjo and Khaynjo are Kumkaj products by Gotigin."}
                         }
                     }
                 }

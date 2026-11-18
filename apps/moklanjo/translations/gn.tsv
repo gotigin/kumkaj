@@ -192,7 +192,7 @@ snack_secs_save	Eñongatu tiempo de alerta
 snack_secs_saved	Tiempo de alerta oñeñongatúva — {n} segundos
 snack_secs_bad	Emoinge segundo papapy ramo (3–60) .
 cancelled	Oñembogue
-cancelling	Cancelling…
+cancelling	Cancellingâ¦
 cancel	Ombogue
 opening_client	Oipe'ávo cliente...
 preparing_desk	Oñembosako'ívo escritorio...
@@ -403,7 +403,7 @@ pay_ap_card	Paga tarjeta AP rehegua
 pay_ap_cash	Ojepaga AP-pe efectivo-pe
 pay_ap_upi	Ojepaga AP UPI .
 period_bill	Factura periodo rehegua
-period_bill_party	Proyecto de ley periodo rehegua (partido) .
+period_bill_party	Factura periodo rehegua (partido) .
 pick_pod_photo	Eiporavo ta'anga POD rehegua
 print_awb_label	Imprimi etiqueta AWB rehegua
 print_open	Oñeimprimi / ojepe’a
@@ -501,13 +501,18 @@ job_size	Fuente tuichakue
 job_size_ph	p.e. 18, 20, 26 rehegua...
 test_receipt_format	Prueba recibo rehegua
 test_label_format	Etiqueta de prueba rehegua
-paper_heading	Kuatia
+paper_heading	Kuatia virtual
 paper_size	{w} × {h} mm
 paper_roll	{w} mm jere
 paper_not_set	kuatia ndojekuaái gueteri
-paper_length_mm	Puku (mm)
-printer_paper_help	Ko impresora kuatia mm-pe. Puku nandi ha'e jere: opa comprobante ipuku ijehupyrukuéicha. Eheka umi impresora omyenyhẽ kuatia nandi impresora driver-gui (80 mm jere ndaikatúiramo he'i) ha araka'eve ndomoambuéi oñemboguapýmava.
-preview_help	Ko comprobante impresora oñeiporavóva yvy gotyo kuatiápe, upépe oñeimprimi haguéicha: tuichakue añetete yvate asu gotyo impresora ohupytývagui (hũngy: henda ndohupytýiva), comprobante ipukúva hoja hetavépe, kuatia rembe'y rapykuéri oĩva oñekytĩ. Impresora jeporavo omoambue vista previa añoite; opa impresora kuatia oñemboguapy Impresora-kuéra-pe.
+virtual_width_mm	Pe virtual (mm)
+virtual_length_mm	Puku virtual (mm)
+reported_width_mm	Pe oñemombe'úva (mm)
+reported_length_mm	Puku oñemombe'úva (mm)
+reported_paper	Oñemombe'úva: {paper}
+virtual_paper	Virtual: {paper}
+printer_paper_help	Oñemombe'úva ha'e pe kuatia ko impresora driver oñemboguapyhápe; app omoñe'ẽnte upéva, ha N/A he'ise ndaipóri driver oñeporandu hag̃ua. Virtual ha'e pe kuatia nde eréva oĩha añetehápe impresora-pe, mm-pe; puku nandi ha'e jere. Impresora oimprimi ikuatia teépe; kuatia virtual omombe'u app-pe mboýpa upévagui kuatia añetegua, vista previa, togue pukukue ha comprobante renda rehehápe. Eheka umi impresora omyenyhẽ kuatia virtual nandi ha araka'eve nomoambuéi pe nde remboguapy va'ekue.
+preview_help	Ko comprobante oñeimprimiháicha impresora oñeiporavóva yvy gotyo, tuichakue añetépe ikuatia virtual ári. Morotĩ ha'e oñeimprimihápe, kuatia hũngy impresora ndohupytýi, ha tinta hesakãva oñekytĩ. Umi nueve cuadro ha'e pe kuatia: epoko comprobante opyta vaerãhápe. Comprobante ipukúva oho hetave toguépe. Impresora jeporavo omoambue vista previa añoite.
 slip_col_width	Pe (mm)
 no_printer_assigned	Ndaipóri impresora
 printer_target_default	ko komputadóra impresora jepivegua (dirección en blanco) .
@@ -836,7 +841,7 @@ role_help_both	Rols: Consignador + Portador — peteĩ parte, libro mayor AR ha 
 role_help_supplier	Papel: Proveedor — AP ojejogua hag̃ua.
 lane_declared_label	Reserva cuenta rehegua
 lane_owner_label	Reserva efectivo rehegua
-money_lane_bill	Proyecto de ley: {lane} .
+money_lane_bill	Factura: {lane} .
 sel_copy	Ekopia
 sel_select_all	Eiporavo opavave
 sel_copied	Okopiáma

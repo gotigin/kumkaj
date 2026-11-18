@@ -159,7 +159,7 @@ this_shop	Mode serveur
 extra_till	Mode client
 off	Non
 server	Serveur
-client	Client
+client	Mode client
 language_currency	Langue et devise
 language	Langue
 choose_language	Choisissez votre langue
@@ -192,7 +192,7 @@ snack_secs_save	Enregistrer la durée des alertes
 snack_secs_saved	Durée des alertes enregistrée — {n} secondes
 snack_secs_bad	Saisissez les secondes en chiffres (3–60)
 cancelled	Annulé
-cancelling	Cancelling…
+cancelling	Cancellingâ¦
 cancel	Annuler
 opening_client	Ouverture du client…
 preparing_desk	Préparation du bureau…
@@ -501,13 +501,18 @@ job_size	Taille de police
 job_size_ph	ex. 18, 20, 26…
 test_receipt_format	Tester le reçu
 test_label_format	Tester l'étiquette
-paper_heading	Papier
+paper_heading	Papier virtuel
 paper_size	{w} × {h} mm
 paper_roll	rouleau de {w} mm
 paper_not_set	papier encore inconnu
-paper_length_mm	Longueur (mm)
-printer_paper_help	Le papier de cette imprimante en mm. Une Longueur vide est un rouleau : chaque ticket est aussi long que son contenu. Rechercher des imprimantes remplit un papier vide d'après le pilote de l'imprimante (un rouleau de 80 mm s'il ne peut pas le dire) et ne change jamais un papier déjà défini.
-preview_help	Ce ticket sur le papier de l'imprimante choisie ci-dessous, tel qu'il s'y imprime : en taille réelle depuis le coin supérieur gauche que l'imprimante atteint (gris : bords qu'elle n'atteint pas), un long ticket sur plusieurs feuilles, tout ce qui dépasse le bord du papier est coupé. Choisir une imprimante ne change que l'aperçu ; le papier de chaque imprimante se règle dans Imprimantes.
+virtual_width_mm	Largeur virtuelle (mm)
+virtual_length_mm	Longueur virtuelle (mm)
+reported_width_mm	Largeur déclarée (mm)
+reported_length_mm	Longueur déclarée (mm)
+reported_paper	Déclaré : {paper}
+virtual_paper	Virtuel : {paper}
+printer_paper_help	Déclaré est le papier sur lequel le pilote de cette imprimante est réglé ; l'app ne fait que le lire, et N/D signifie qu'il n'y a pas de pilote à interroger. Virtuel est le papier que vous dites être réellement dans l'imprimante, en mm ; une longueur vide est un rouleau. L'imprimante imprime sur son propre papier ; le papier virtuel indique à l'app quelle part en est du vrai papier, pour l'aperçu, la longueur de page et la place du ticket. Rechercher des imprimantes remplit un papier virtuel vide et ne modifie jamais celui que vous avez défini.
+preview_help	Ce ticket tel qu'il s'imprime sur l'imprimante choisie ci-dessous, en taille réelle sur son papier virtuel. Le blanc est là où elle imprime, le papier gris est hors de portée de l'imprimante, et l'encre estompée est coupée. Les neuf cases sont le papier : touchez l'endroit où le ticket doit se placer. Un long ticket continue sur d'autres pages. Choisir une imprimante ne change que l'aperçu.
 slip_col_width	Largeur (mm)
 no_printer_assigned	Aucune imprimante
 printer_target_default	imprimante par défaut
@@ -524,7 +529,7 @@ printer_mode_heading	Format de la route choisie
 printer_mode_standard	Standard portrait
 printer_mode_landscape	Standard paysage
 printer_mode_thermal	Thermique
-printer_mode_standard_short	Portrait
+printer_mode_standard_short	Standard portrait
 printer_mode_landscape_short	Paysage
 printer_mode_thermal_short	Thermique
 printer_format_custom	Nouveau format personnalisé
@@ -643,11 +648,11 @@ day_close_help	Enregistrer une clôture du jour sauvegarde ce résumé (et l'éc
 expenses_word	Dépenses
 feature_access_help	Accès aux fonctions du personnel choisi (appuyez après l'ajout)
 footer_local	SQLite local · Gratuit pour toujours · Zéro cloud
-fresh_book_moklanjo	Imprimantes
+fresh_book_moklanjo	À neuf = catalogue vide (ajoutez les articles plus tard). Livre = saisissez ci-dessous le stock d'ouverture et qui vous doit.
 fresh_selected	Fresh choisi — le catalogue reste vide. Touchez Done quand vous êtes prêt.
 gross_word	Brut
 how_start	Comment voulez-vous commencer ?
-later_country_pack	Imprimantes
+later_country_pack	Plus tard : Réglages → appliquez votre pack pays pour les libellés de taxe et de paiement.
 local_badge	LOCAL
 measures_help_moklanjo	Comment les colis sont mesurés au comptoir. Écrivez dimensions et poids dans les unités que vous utilisez — standard (cm, m, in, ft · kg, g, lb, oz) ou votre propre unité liée à cm / kg ci-dessus (directement ou via d'autres unités). Les livres enregistrent toujours en kg. Laissez un champ vide pour le conserver.
 mix_type_hint_moklanjo	Écrivez combien dans chaque (espèces / UPI / carte / crédit). Doit égaler la facture. Le crédit nécessite un client ci-dessus.
@@ -771,7 +776,7 @@ bulk_csv_ph	CSV en lot — destination,consignee,kg,cod_paise,note
 business_name_ph	Nom de l'entreprise
 category_new_ph	Catégorie (facultatif, créée si nouvelle)
 cod_amount_ph	Montant COD
-code_bag_ph	Code (bag)
+code_bag_ph	Code (sac)
 conv_factor_ph	Facteur (25 = 1 bag → 25 kg)
 country_code_ph	Code pays ex. IN, GB, US, AE, BR
 credit_khata_amount_ph	Montant crédit / compte

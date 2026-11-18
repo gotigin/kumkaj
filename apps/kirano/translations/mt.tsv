@@ -67,13 +67,19 @@ bill_item_amount	Ammont
 bill_item_note	Nota tal-oġġett
 bill_item_col_sep	Linji tal-kolonni
 slip_col_width	Wisa’ (mm)
-paper_heading	Karta
+paper_heading	Karta virtwali
 paper_size	{w} × {h} mm
 paper_roll	romblu ta' {w} mm
 paper_not_set	il-karta għadha mhix magħrufa
-paper_length_mm	Tul (mm)
-printer_paper_help	Il-karta ta' din l-istampatur f'mm. Tul vojt huwa romblu: kull riċevuta hija twila daqs il-kontenut tagħha. Sib stampaturi jimla l-karta vojta mis-sewwieq tal-istampatur (romblu ta' 80 mm meta ma jistax jgħid) u qatt ma jbiddel karta diġà ssettjata.
-preview_help	Din ir-riċevuta fuq il-karta tal-istampatur magħżul hawn taħt, kif tistampa hemm: fid-daqs reali mill-kantuniera ta' fuq ix-xellug li jilħaq l-istampatur (griż: truf li ma jilħaqx), riċevuta twila fuq aktar folji, kull ma jaqbeż it-tarf tal-karta jinqata'. L-għażla ta' stampatur tbiddel il-previżjoni biss; il-karta ta' kull stampatur tiġi ssettjata taħt Stampaturi.
+na	M/A
+virtual_width_mm	Wisa’ virtwali (mm)
+virtual_length_mm	Tul virtwali (mm)
+reported_width_mm	Wisa’ rrappurtat (mm)
+reported_length_mm	Tul rrappurtat (mm)
+reported_paper	Irrappurtat: {paper}
+virtual_paper	Virtwali: {paper}
+printer_paper_help	Irrappurtat hija l-karta li d-driver ta' dan l-istampatur huwa ssettjat għaliha; l-app taqraha biss, u M/A tfisser li m'hemmx driver li tista' tistaqsi. Virtwali hija l-karta li inti tgħid li verament tinsab fl-istampatur, f'mm; tul vojt ifisser romblu. L-istampatur jistampa fuq il-karta tiegħu stess; il-karta virtwali tgħid lill-app kemm minnha hija karta vera, għall-previżjoni, it-tul tal-paġna u l-post tar-riċevuta. Sib stampaturi jimla karta virtwali vojta u qatt ma jbiddel waħda li ssettjajt inti.
+preview_help	Din ir-riċevuta kif tiġi stampata fuq l-istampatur magħżul hawn taħt, fid-daqs veru fuq il-karta virtwali tiegħu. L-abjad huwa fejn jistampa, il-karta griża hija barra mill-firxa tal-istampatur, u l-linka ċara tinqata'. Id-disa' kwadri huma l-karta: taptap fejn għandha toqgħod ir-riċevuta. Riċevuta twila tkompli fuq aktar paġni. L-għażla ta' stampatur tbiddel il-previżjoni biss.
 slip_col_start	Spazju tal-bidu (px)
 slip_col_end	Spazju tat-tmiem (px)
 slip_columns_help	Il-wisa’ ta’ kull kolonna tinkludi l-ispazju tal-bidu u tat-tmiem tagħha. It-test jitgeżwer ġewwa l-kolonna tiegħu; dak li jaqbeż il-wisa’ tal-kontenut jinqata’, fuq il-karta u fil-preview.
@@ -88,6 +94,12 @@ bill_item_piece_off	Mitfi
 bill_total_qty	Kwantità totali
 bill_total_subtotal	Subtotal
 bill_total_grand	Total sħiħ
+bill_total_number_under	Numru taħt
+bill_total_caption_under	Tikketta taħt
+bill_total_own_line	Linja għalih
+bill_total_caption_with	Man-numru
+bill_total_caption_none	Bla tikketta
+bill_total_place_help	Linja għalih jistampa dan it-total waħdu. Taħt kolonna, in-numru tiegħu jiġi stampat f'dik il-kolonna tal-oġġetti, fid-daqs u l-ħxuna ta' din il-linja; it-totali jaqsmu ringiela waħda sakemm kolonna tkun meħuda, imbagħad tibda ringiela ġdida. It-tikketta tmur man-numru, taħt kolonna oħra, jew titħalla barra. Il-linji tat-taxxa, tas-servizz, tal-arrotondament u tal-ħlas isegwu lil Subtotal.
 kot_unassigned	Mhux assenjat
 settings_hub_help	Iftaħ qasam wieħed kull darba — inqas scrolling, għażliet aktar ċari.
 settings_sec_language	Lingwa u munita
@@ -305,7 +317,7 @@ drawer_count	Għadd tal-kxaxen (mhux obbligatorju)
 expense_heading	Spejjeż
 export_day	Jum l-esportazzjoni
 extra_note_bill_ph	Nota żejda fuq dan il-kont/bejgħ
-extra_tills_heading	Extra sakemm
+extra_tills_heading	Kaxxi żejda
 other_devices_help_heading	Waħħal apparati oħra
 other_devices_help	Fuq dan l-apparat (Server): Apparat ieħor → Ħalli tills żejda. Innota l-kodiċi tat-tqabbil u l-indirizz tal-Wi-Fi. Tektek Ħalli tagħmir ieħor jikkonnettja jekk jidher. Fuq kompjuter, tektek Ibda b'dan il-kompjuter. Fuq kull mezz ieħor: installa l-app, agħżel Modalità Klijent, Sib is-server tal-ħanut (jew ittajpja l-indirizz), daħħal il-kodiċi ta 'tqabbil, Pair issa. L-ordnijiet jistennew fuq it-tagħmir jekk il-Wi-Fi tinżel u jmorru meta s-Server jerġa' jwieġeb. Printers żejda huma ssettjati fuq is-Server (Settings → Printers) — tills żejda jibagħtu kontijiet hemmhekk.
 forget_shop	Tinsa dan il-ħanut
@@ -326,7 +338,7 @@ on_account_ap	Akkont (AP)
 org_optional_ph	Organizzazzjoni (mhux obbligatorju)
 paid_by	Imħallas minn
 paid_now	Imħallas issa
-pair_now	Par issa
+pair_now	Qabbad issa
 pairing_code_ph	Kodiċi tat-tqabbil
 party_name_selected_ph	Isem il-parti (jew użu magħżul)
 password_ph	Password
@@ -723,6 +735,20 @@ fssai_ph	FSSAI / liċenzja tal-ħanut Nru. (mhux obbligatorju)
 bill_footer_ph	Footer (eż. Grazzi, erġa' żur)
 kot_field_on	juru
 kot_field_off	ħabi
+kot_field_show	Uri
+kot_field_hide	Aħbi
+bill_line_shop	Ħanut
+bill_line_address	Indirizz
+bill_line_fssai	FSSAI
+bill_line_title	Titolu
+bill_line_customer	Klijent
+bill_line_bill_no	Nru tal-kont
+bill_line_time	Ħin
+bill_line_cashier	Kaxxier
+bill_line_items	Oġġetti
+bill_line_total	Totali
+bill_line_footer	Qiegħ il-paġna
+bill_line_upi	UPI
 kot_weight_light	Dawl
 bill_kot_panel_help	It-tqassim tal-kont u l-wisa' tal-kontenut. Kaxxier huwa min ħareġ jew ħallas il-kont - l-istorja tal-bejgħ sħiħa tibqa 'fil-kotba.
 std_size_ph	eż. 18, 20, 26...
@@ -830,10 +856,10 @@ lane_declared_label	Fattura tat-taxxa
 lane_owner_label	Memo ta' flus
 money_lane_bill	Kont: {lane}
 
-removing	Removing…
-removed	Removed
-updating_order	Updating…
-order_updated	Order updated
+removing	Qed jitneħħa…
+removed	Imneħħi
+updating_order	Qed jiġi aġġornat…
+order_updated	L-ordni ġiet aġġornata
 sel_copy	Ikkopja
 sel_select_all	Agħżel kollox
 sel_copied	Ikkupjat

@@ -1,8 +1,9 @@
 # kirano.shop — website plan
 
-> **Status:** Phase 1 Makepad site crate planned in `sites/kirano`
-> (copy-then-diverge from `sites/khaynjo`). Not deployed; domain
-> **kirano.shop** is an owner hosting step.
+> **Status:** Phase 1 Makepad site live in-tree (`sites/kirano`,
+> `kirano-site`). Domain **kirano.shop** is registered. Crawl shell
+> (`preview-web.sh` / `deploy-firebase.sh`, `/privacy` `/terms`) ready;
+> Firebase project id is the remaining owner hosting step.
 > **Scope:** Kirano's instantiation of
 > [`docs/WEBSITES.md`](../../../docs/WEBSITES.md).
 > **Code:** `sites/kirano/` — Makepad crate only; no shared site engine.
@@ -36,4 +37,4 @@ cashiers who will bill; owners leaving cloud-only billing apps.
 8. Download / WhatsApp CTAs (owner switches)
 
 Claim only Ship / Have rows from [`KIRANO.md`](KIRANO.md). Footer:
-*Kirano is a Kumkaj product by Gotigin.*
+*Gotigin · GOTIGIN SOFTWARE & HARDWARE PRIVATE LIMITED · Kumkaj · Kirano.*

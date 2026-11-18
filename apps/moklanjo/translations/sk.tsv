@@ -192,7 +192,7 @@ snack_secs_save	Ušetrite čas upozornenia
 snack_secs_saved	Uložený čas upozornenia — {n} sekúnd
 snack_secs_bad	Zadajte sekundy ako číslo (3–60)
 cancelled	Zrušené
-cancelling	Cancelling…
+cancelling	Cancellingâ¦
 cancel	Zrušiť
 opening_client	Otvára sa klient…
 preparing_desk	Pripravuje sa stôl…
@@ -501,13 +501,18 @@ job_size	Veľkosť písma
 job_size_ph	napr. 18, 20, 26…
 test_receipt_format	Skúšobný doklad
 test_label_format	Testovací štítok
-paper_heading	Papier
+paper_heading	Virtuálny papier
 paper_size	{w} × {h} mm
 paper_roll	rolka {w} mm
 paper_not_set	papier zatiaľ nie je známy
-paper_length_mm	Dĺžka (mm)
-printer_paper_help	Papier tejto tlačiarne v mm. Prázdna Dĺžka je rolka: každý bloček je taký dlhý ako jeho obsah. Nájdite tlačiarne doplní prázdny papier z ovládača tlačiarne (rolka 80 mm, keď to nevie povedať) a nikdy nezmení už nastavený.
-preview_help	Tento bloček na papieri tlačiarne vybranej nižšie, ako sa na nej vytlačí: v skutočnej veľkosti od ľavého horného rohu, kam tlačiareň dosiahne (sivé: okraje, kam nedosiahne), dlhý bloček na viacerých listoch, všetko za okrajom papiera sa oreže. Výber tlačiarne mení len náhľad; papier každej tlačiarne sa nastavuje v časti Tlačiarne.
+virtual_width_mm	Virtuálna šírka (mm)
+virtual_length_mm	Virtuálna dĺžka (mm)
+reported_width_mm	Hlásená šírka (mm)
+reported_length_mm	Hlásená dĺžka (mm)
+reported_paper	Hlásený: {paper}
+virtual_paper	Virtuálny: {paper}
+printer_paper_help	Hlásený je papier, na ktorý je nastavený ovládač tejto tlačiarne; aplikácia ho iba číta a N/A znamená, že nie je ovládač, ktorého by sa dalo opýtať. Virtuálny je papier, o ktorom hovoríte, že je v tlačiarni naozaj, v mm; prázdna dĺžka je rolka. Tlačiareň tlačí na svoj vlastný papier; virtuálny papier hovorí aplikácii, koľko z neho je skutočný papier, pre náhľad, dĺžku strany a umiestnenie bločku. Nájdite tlačiarne doplní prázdny virtuálny papier a nikdy nezmení ten, ktorý ste nastavili.
+preview_help	Tento bloček tak, ako sa vytlačí na tlačiarni vybranej nižšie, v skutočnej veľkosti na jej virtuálnom papieri. Biele je miesto, kde tlačí, sivý papier je mimo dosahu tlačiarne a vyblednutý atrament sa oreže. Deväť štvorcov je papier: ťuknite tam, kde má bloček byť. Dlhý bloček pokračuje na ďalších stranách. Výber tlačiarne mení len náhľad.
 slip_col_width	Šírka (mm)
 no_printer_assigned	Žiadna tlačiareň
 printer_target_default	bežná tlačiareň tohto počítača (prázdna adresa)

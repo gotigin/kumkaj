@@ -44,7 +44,7 @@ restore_item	ਵਾਪਸ ਲਿਆਓ
 empty_catalog	ਅਜੇ ਕੋਈ ਆਈਟਮ ਨਹੀਂ।
 total	ਕੁੱਲ
 cash	ਨਕਦ
-upi	यूपीआई
+upi	UPI
 card	ਕਾਰਡ
 credit	ਪਾਰਟੀਆਂ
 clear	ਸਾਫ਼
@@ -78,7 +78,7 @@ reprint_kot_needed	ਪਹਿਲਾਂ KOT ਭੇਜੋ — ਫਿਰ ਪਕਵ�
 reprint_kot_none_selected	ਸਾਰੇ ਭੇਜੇ ਛੱਡੇ — ਛਾਪਣ ਲਈ «ਛਪਾਈ ਵਿੱਚ» ਦਬਾਓ
 reprint_kot_client	{place} ਲਈ ਮੁੜ ਛਾਪੋ ({n}) ਭੇਜਿਆ — ਰਸੋਈ ਸਰਵਰ 'ਤੇ ਛਾਪੇਗੀ
 print_cancelled_kot	ਸਾਰੇ ਰੱਦ ਛਾਪੋ
-print_cancelled_kot_ok	{n} रद्द छापे · {slips} पर्ची → {kitchens}
+print_cancelled_kot_ok	{n} ਰੱਦ ਪਕਵਾਨ ਛਪੇ · {slips} ਪਰਚੀ → {kitchens}
 print_cancelled_kot_needed	ਰੱਦ ਪਕਵਾਨਾਂ ਵਾਲੀ ਮੇਜ਼ ਖੋਲ੍ਹੋ
 print_cancelled_kot_none	ਇਸ ਆਰਡਰ ਉੱਤੇ ਰੱਦ ਨਹੀਂ
 print_cancelled_kot_client	ਰੱਦ ({n}) {place} ਭੇਜਿਆ — ਸਰਵਰ ਉੱਤੇ ਛਪੇਗਾ
@@ -101,6 +101,19 @@ bill_item_col_sep	ਕਾਲਮ ਰੇਖਾ
 slip_columns	ਕਾਲਮ
 slip_col_header	ਸਿਰਲੇਖ
 bill_line_logo	ਲੋਗੋ
+bill_line_shop	ਦੁਕਾਨ
+bill_line_address	ਪਤਾ
+bill_line_fssai	FSSAI
+bill_line_title	ਸਿਰਲੇਖ
+bill_line_customer	ਗਾਹਕ
+bill_line_bill_no	ਬਿੱਲ ਨੰ.
+bill_line_time	ਸਮਾਂ
+bill_line_cashier	ਕੈਸ਼ੀਅਰ
+bill_line_table	ਮੇਜ਼
+bill_line_items	ਆਈਟਮ
+bill_line_total	ਕੁੱਲ
+bill_line_footer	ਫੁੱਟਰ
+bill_line_upi	UPI
 bill_logo_picture	ਤਸਵੀਰ
 bill_logo_choose	ਤਸਵੀਰ ਚੁਣੋ
 bill_logo_remove	ਤਸਵੀਰ ਹਟਾਓ
@@ -128,6 +141,12 @@ bill_item_piece_off	ਬੰਦ
 bill_total_qty	ਕੁੱਲ ਮਾਤਰਾ
 bill_total_subtotal	ਉਪ ਕੁੱਲ
 bill_total_grand	ਕੁੱਲ
+bill_total_number_under	ਗਿਣਤੀ ਇਸ ਦੇ ਹੇਠਾਂ
+bill_total_caption_under	ਲੇਬਲ ਇਸ ਦੇ ਹੇਠਾਂ
+bill_total_own_line	ਆਪਣੀ ਕਤਾਰ
+bill_total_caption_with	ਗਿਣਤੀ ਦੇ ਨਾਲ
+bill_total_caption_none	ਲੇਬਲ ਨਹੀਂ
+bill_total_place_help	“ਆਪਣੀ ਕਤਾਰ” ਇਸ ਕੁੱਲ ਨੂੰ ਇਕੱਲਾ ਛਾਪਦਾ ਹੈ। ਕਾਲਮ ਦੇ ਹੇਠਾਂ ਹੋਣ 'ਤੇ ਇਸ ਦੀ ਗਿਣਤੀ ਉਸੇ ਆਈਟਮ ਕਾਲਮ ਵਿੱਚ, ਇਸ ਕਤਾਰ ਦੇ ਨਾਪ ਅਤੇ ਮੋਟਾਈ ਵਿੱਚ ਛਪਦੀ ਹੈ; ਜਦੋਂ ਤੱਕ ਕੋਈ ਕਾਲਮ ਭਰ ਨਾ ਜਾਵੇ ਕੁੱਲ ਇੱਕੋ ਲੜੀ ਵੰਡਦੇ ਹਨ, ਫਿਰ ਨਵੀਂ ਲੜੀ ਸ਼ੁਰੂ ਹੁੰਦੀ ਹੈ। ਲੇਬਲ ਗਿਣਤੀ ਦੇ ਨਾਲ, ਦੂਜੇ ਕਾਲਮ ਦੇ ਹੇਠਾਂ ਜਾਂਦਾ ਹੈ, ਜਾਂ ਛੱਡ ਦਿੱਤਾ ਜਾਂਦਾ ਹੈ। ਟੈਕਸ, ਸੇਵਾ, ਰਾਊਂਡਿੰਗ ਅਤੇ ਭੁਗਤਾਨ ਦੀਆਂ ਕਤਾਰਾਂ “ਉਪ ਕੁੱਲ” ਦੇ ਪਿੱਛੇ ਚੱਲਦੀਆਂ ਹਨ।
 reprint_incl	ਛਪਾਈ ਵਿੱਚ
 reprint_skip	ਛੱਡੋ
 reprint_skip_meta	ਰਿਕਵਰੀ ਪ੍ਰਿੰਟ ਛੱਡੋ
@@ -178,20 +197,20 @@ snack_secs_ph	ਸਕਿੰਟ (3–60, ਮੂਲ 10)
 snack_secs_save	ਸੂਚਨਾ ਸਮਾਂ ਸੰਭਾਲੋ
 snack_secs_saved	ਸੂਚਨਾ ਸਮਾਂ ਸੰਭਾਲਿਆ — {n} ਸਕਿੰਟ
 settings_sec_whatsapp	WhatsApp
-whatsapp_cloud_help	Use your own Meta WhatsApp Cloud API. Create a System User token with whatsapp_business_messaging (temporary dashboard tokens expire). Credentials stay on this Server only — never on extra tills. Accepted means Meta took the request, not that the guest received it.
-whatsapp_phone_id_ph	Phone Number ID
-whatsapp_token_ph	Access Token (leave blank to keep)
-whatsapp_template_ph	Bill template name (optional)
-whatsapp_template_lang_ph	Template language (e.g. en)
-whatsapp_enable	Enable
+whatsapp_cloud_help	ਆਪਣਾ ਖੁਦ ਦਾ Meta WhatsApp Cloud API ਵਰਤੋ। whatsapp_business_messaging ਵਾਲਾ System User ਟੋਕਨ ਬਣਾਓ (ਡੈਸ਼ਬੋਰਡ ਦੇ ਆਰਜ਼ੀ ਟੋਕਨਾਂ ਦੀ ਮਿਆਦ ਮੁੱਕ ਜਾਂਦੀ ਹੈ)। ਇਹ ਜਾਣਕਾਰੀ ਸਿਰਫ਼ ਇਸੇ ਸਰਵਰ ਉੱਤੇ ਰਹਿੰਦੀ ਹੈ — ਵਾਧੂ ਟਿੱਲਾਂ ਉੱਤੇ ਕਦੇ ਨਹੀਂ। “ਮਨਜ਼ੂਰ” ਦਾ ਮਤਲਬ ਹੈ ਕਿ Meta ਨੇ ਬੇਨਤੀ ਲੈ ਲਈ, ਇਹ ਨਹੀਂ ਕਿ ਮਹਿਮਾਨ ਨੂੰ ਸੁਨੇਹਾ ਮਿਲ ਗਿਆ।
+whatsapp_phone_id_ph	ਫ਼ੋਨ ਨੰਬਰ ID
+whatsapp_token_ph	ਐਕਸੈਸ ਟੋਕਨ (ਪਹਿਲਾ ਰੱਖਣ ਲਈ ਖਾਲੀ ਛੱਡੋ)
+whatsapp_template_ph	ਬਿੱਲ ਟੈਂਪਲੇਟ ਦਾ ਨਾਮ (ਵਿਕਲਪਿਕ)
+whatsapp_template_lang_ph	ਟੈਂਪਲੇਟ ਦੀ ਭਾਸ਼ਾ (ਜਿਵੇਂ en)
+whatsapp_enable	ਚਾਲੂ ਕਰੋ
 whatsapp_disable	Off
-whatsapp_save	Save WhatsApp
-whatsapp_test	Test connection
-whatsapp_disconnect	Disconnect
-whatsapp_send_bill	Send via WhatsApp
-whatsapp_consent	WhatsApp OK
-whatsapp_consent_help	Guest agreed to receive WhatsApp messages. A phone number alone is not consent.
-whatsapp_server_only	Configure WhatsApp on the shop Server device
+whatsapp_save	WhatsApp ਸੇਵ ਕਰੋ
+whatsapp_test	ਕਨੈਕਸ਼ਨ ਜਾਂਚੋ
+whatsapp_disconnect	ਕਨੈਕਸ਼ਨ ਹਟਾਓ
+whatsapp_send_bill	WhatsApp ਰਾਹੀਂ ਭੇਜੋ
+whatsapp_consent	WhatsApp ਠੀਕ
+whatsapp_consent_help	ਮਹਿਮਾਨ ਨੇ WhatsApp ਸੁਨੇਹੇ ਲੈਣ ਦੀ ਸਹਿਮਤੀ ਦਿੱਤੀ ਹੈ। ਸਿਰਫ਼ ਫ਼ੋਨ ਨੰਬਰ ਹੋਣਾ ਸਹਿਮਤੀ ਨਹੀਂ ਹੈ।
+whatsapp_server_only	WhatsApp ਨੂੰ ਦੁਕਾਨ ਦੇ ਸਰਵਰ ਡਿਵਾਈਸ ਉੱਤੇ ਸੈੱਟ ਕਰੋ
 settings_sec_backup	ਬੈਕਅੱਪ ਤੇ ਬਹਾਲੀ
 settings_sec_diag	ਡਾਇਗਨੌਸਟਿਕਸ
 settings_sec_privacy	ਪਰਦੇਦਾਰੀ
@@ -637,7 +656,7 @@ choose_device_use	ਚੁਣੋ ਕਿ ਇਹ ਡਿਵਾਈਸ ਕਿਵੇਂ 
 paired_note	ਜੁੜ ਗਿਆ। ਵੇਚਣ ਲਈ ਖੋਲ੍ਹੋ, ਜਾਂ ਦੁਕਾਨ ਤੋਂ ਤਾਜ਼ਾ ਜਾਣਕਾਰੀ ਲਈ ਤਾਜ਼ਾ ਕਰੋ।
 last_update_at	ਦੁਕਾਨ ਤੋਂ ਆਖ਼ਰੀ ਅੱਪਡੇਟ: {time}।
 pair_intro	ਸਰਵਰ ਲੱਭੋ, ਜਾਂ ਉਸ ਦਾ ਪਤਾ ਅਤੇ ਜੋੜੀ ਕੋਡ ਲਿਖੋ।
-pair_resume_hint	Already paired — enter your shop PIN, or Forget this shop to pair another.
+pair_resume_hint	ਪਹਿਲਾਂ ਹੀ ਜੁੜਿਆ ਹੋਇਆ ਹੈ — ਆਪਣੀ ਦੁਕਾਨ ਦਾ PIN ਪਾਓ, ਜਾਂ ਹੋਰ ਦੁਕਾਨ ਜੋੜਨ ਲਈ “ਇਹ ਦੁਕਾਨ ਭੁੱਲੋ” ਦਬਾਓ।
 queue_waiting	ਦੁਕਾਨ ਤੱਕ ਪਹੁੰਚਣ ਦੀ ਉਡੀਕ ਵਿੱਚ ({n}):
 queue_tries	{n} ਵਾਰ ਕੋਸ਼ਿਸ਼ · ਆਖਰੀ ਜਵਾਬ: {e}
 save_backup_copy	ਬੈਕਅੱਪ ਦੀ ਕਾਪੀ ਸੰਭਾਲੋ…
@@ -754,13 +773,18 @@ station_vps_dd	ਇਸ ਸਟੇਸ਼ਨ ਦੇ ਪ੍ਰਿੰਟਰ
 station_vps_dd_n	{n} ਪ੍ਰਿੰਟਰ · ਬਦਲਣ ਲਈ ਟੈਪ
 bill_printers_dd	ਬਿੱਲ ਦੇ ਪ੍ਰਿੰਟਰ
 bill_printers_dd_n	ਬਿੱਲ ਲਈ {n} ਪ੍ਰਿੰਟਰ · ਬਦਲਣ ਲਈ ਦਬਾਓ
-paper_heading	ਕਾਗਜ਼
+paper_heading	ਵਰਚੁਅਲ ਕਾਗਜ਼
 paper_size	{w} × {h} mm
 paper_roll	{w} mm ਰੋਲ
 paper_not_set	ਕਾਗਜ਼ ਅਜੇ ਪਤਾ ਨਹੀਂ
-paper_length_mm	ਲੰਬਾਈ (mm)
-printer_paper_help	ਇਸ ਪ੍ਰਿੰਟਰ ਦਾ ਕਾਗਜ਼ mm ਵਿੱਚ। ਖਾਲੀ ਲੰਬਾਈ ਦਾ ਮਤਲਬ ਰੋਲ: ਹਰ ਪਰਚੀ ਆਪਣੀ ਸਮੱਗਰੀ ਜਿੰਨੀ ਲੰਮੀ ਹੁੰਦੀ ਹੈ। ਪ੍ਰਿੰਟਰ ਲੱਭੋ ਖਾਲੀ ਕਾਗਜ਼ ਨੂੰ ਪ੍ਰਿੰਟਰ ਦੇ ਡਰਾਈਵਰ ਤੋਂ ਭਰਦਾ ਹੈ (ਨਾ ਦੱਸ ਸਕੇ ਤਾਂ 80 mm ਰੋਲ) ਅਤੇ ਪਹਿਲਾਂ ਤੋਂ ਤੈਅ ਕਾਗਜ਼ ਕਦੇ ਨਹੀਂ ਬਦਲਦਾ।
-preview_help	ਹੇਠਾਂ ਚੁਣੇ ਪ੍ਰਿੰਟਰ ਦੇ ਕਾਗਜ਼ ਉੱਤੇ ਇਹ ਪਰਚੀ, ਜਿਵੇਂ ਉੱਥੇ ਛਪਦੀ ਹੈ: ਪ੍ਰਿੰਟਰ ਜਿੱਥੇ ਤੱਕ ਪਹੁੰਚਦਾ ਹੈ ਉਸ ਉੱਪਰਲੇ ਖੱਬੇ ਕੋਨੇ ਤੋਂ ਅਸਲ ਨਾਪ ਵਿੱਚ (ਸਲੇਟੀ: ਕਿਨਾਰੇ ਜਿੱਥੇ ਨਹੀਂ ਪਹੁੰਚਦਾ), ਲੰਮੀ ਪਰਚੀ ਹੋਰ ਪੰਨਿਆਂ ਉੱਤੇ, ਕਾਗਜ਼ ਦੇ ਕਿਨਾਰੇ ਤੋਂ ਅੱਗੇ ਦਾ ਸਭ ਕੱਟਿਆ ਜਾਂਦਾ ਹੈ। ਪ੍ਰਿੰਟਰ ਚੁਣਨ ਨਾਲ ਸਿਰਫ਼ ਝਲਕ ਬਦਲਦੀ ਹੈ; ਹਰ ਪ੍ਰਿੰਟਰ ਦਾ ਕਾਗਜ਼ ਪ੍ਰਿੰਟਰ ਵਿੱਚ ਤੈਅ ਹੁੰਦਾ ਹੈ।
+virtual_width_mm	ਵਰਚੁਅਲ ਚੌੜਾਈ (mm)
+virtual_length_mm	ਵਰਚੁਅਲ ਲੰਬਾਈ (mm)
+reported_width_mm	ਦੱਸੀ ਗਈ ਚੌੜਾਈ (mm)
+reported_length_mm	ਦੱਸੀ ਗਈ ਲੰਬਾਈ (mm)
+reported_paper	ਦੱਸਿਆ ਗਿਆ: {paper}
+virtual_paper	ਵਰਚੁਅਲ: {paper}
+printer_paper_help	ਦੱਸਿਆ ਗਿਆ ਉਹ ਕਾਗਜ਼ ਹੈ ਜਿਸ ਉੱਤੇ ਇਸ ਪ੍ਰਿੰਟਰ ਦਾ ਡਰਾਈਵਰ ਸੈੱਟ ਹੈ; ਐਪ ਇਸਨੂੰ ਸਿਰਫ਼ ਪੜ੍ਹਦੀ ਹੈ, ਅਤੇ “ਨਹੀਂ” ਦਾ ਮਤਲਬ ਹੈ ਕਿ ਪੁੱਛਣ ਲਈ ਕੋਈ ਡਰਾਈਵਰ ਨਹੀਂ ਹੈ। ਵਰਚੁਅਲ ਉਹ ਕਾਗਜ਼ ਹੈ ਜੋ ਤੁਸੀਂ ਕਹਿੰਦੇ ਹੋ ਕਿ ਅਸਲ ਵਿੱਚ ਪ੍ਰਿੰਟਰ ਵਿੱਚ ਹੈ, mm ਵਿੱਚ; ਖਾਲੀ ਲੰਬਾਈ ਦਾ ਮਤਲਬ ਰੋਲ ਹੈ। ਪ੍ਰਿੰਟਰ ਆਪਣੇ ਕਾਗਜ਼ ਉੱਤੇ ਛਾਪਦਾ ਹੈ; ਵਰਚੁਅਲ ਕਾਗਜ਼ ਐਪ ਨੂੰ ਦੱਸਦਾ ਹੈ ਕਿ ਉਸ ਵਿੱਚੋਂ ਕਿੰਨਾ ਅਸਲੀ ਕਾਗਜ਼ ਹੈ, ਝਲਕ, ਪੰਨੇ ਦੀ ਲੰਬਾਈ ਅਤੇ ਪਰਚੀ ਦੀ ਥਾਂ ਲਈ। ਪ੍ਰਿੰਟਰ ਲੱਭੋ ਖਾਲੀ ਵਰਚੁਅਲ ਕਾਗਜ਼ ਭਰਦਾ ਹੈ ਅਤੇ ਤੁਹਾਡਾ ਤੈਅ ਕੀਤਾ ਕਾਗਜ਼ ਕਦੇ ਨਹੀਂ ਬਦਲਦਾ।
+preview_help	ਇਹ ਪਰਚੀ ਜਿਵੇਂ ਹੇਠਾਂ ਚੁਣੇ ਪ੍ਰਿੰਟਰ ਉੱਤੇ ਛਪਦੀ ਹੈ, ਉਸਦੇ ਵਰਚੁਅਲ ਕਾਗਜ਼ ਉੱਤੇ ਅਸਲ ਨਾਪ ਵਿੱਚ। ਚਿੱਟੀ ਥਾਂ ਉੱਤੇ ਛਪਦਾ ਹੈ, ਸਲੇਟੀ ਕਾਗਜ਼ ਤੱਕ ਪ੍ਰਿੰਟਰ ਨਹੀਂ ਪਹੁੰਚਦਾ, ਅਤੇ ਫਿੱਕੀ ਸਿਆਹੀ ਕੱਟੀ ਜਾਂਦੀ ਹੈ। ਨੌਂ ਖਾਨੇ ਕਾਗਜ਼ ਹਨ: ਜਿੱਥੇ ਪਰਚੀ ਹੋਣੀ ਚਾਹੀਦੀ ਹੈ ਉੱਥੇ ਟੈਪ ਕਰੋ। ਲੰਮੀ ਪਰਚੀ ਹੋਰ ਪੰਨਿਆਂ ਉੱਤੇ ਜਾਂਦੀ ਹੈ। ਪ੍ਰਿੰਟਰ ਚੁਣਨ ਨਾਲ ਸਿਰਫ਼ ਝਲਕ ਬਦਲਦੀ ਹੈ।
 job_layout	ਲੇਆਉਟ
 job_delivery	ਕੰਮ ਕਿਵੇਂ ਭੇਜਿਆ ਜਾਂਦਾ ਹੈ
 job_delivery_help	OS ਦਸਤਾਵੇਜ਼, ਕੱਚੇ ਬਾਈਟ ਜਾਂ ESC/POS। ਬਿੱਲ ਤੇ ਰਸੋਈ ਟਿਕਟ ਦੋਵੇਂ ਆਪੋ-ਆਪਣਾ ਰੱਖਦੇ ਹਨ। ਕੋਈ ਵੀ ਕੰਮ ਲੱਭੋ ਦੇ ਸਾਂਭੇ ਕਿਸੇ ਵੀ ਪ੍ਰਿੰਟਰ 'ਤੇ ਜਾ ਸਕਦਾ ਹੈ।
@@ -1040,7 +1064,7 @@ book_kind_today	ਅੱਜ ਦੀ ਬਹੀ
 book_kind_month	ਇਸ ਮਹੀਨੇ ਦੀ ਬਹੀ
 book_kind_aging	ਬਕਾਇਆ / ਡੈਬਿਟ-ਕ੍ਰੈਡਿਟ
 book_kind_balance	ਬੈਲੈਂਸ ਸ਼ੀਟ
-order_help	ਖੁੱਲ੍ਹਾ ਆਰਡਰ ਚੁਣੋ, ਜਾਂ ਟੇਬਲ ਚੁਣ ਕੇ ਨਵਾਂ ਸ਼ੁਰੂ ਕਰੋ। ਤਿਆਰ ਚੀਜ਼ਾਂ ’ਤੇ ਟੈਪ ਕਰੋ, KOT ਭੇਜੋ, ਇੱਕ ਜਾਂ ਵੱਧ ਚੀਜ਼ਾਂ ਦਾ ਬਿਲ ਬਣਾਓ, ਬਿਲ ਵੰਡੋ ਅਤੇ ਭੁਗਤਾਨ ਨਿਪਟਾਓ।
+order_help	ਜੋੜਨ ਲਈ ਆਈਟਮ 'ਤੇ ਟੈਪ ਕਰੋ।
 floor_help	ਹਰ ਟੇਬਲ ਦਿਖਾਉਂਦਾ ਹੈ ਕਿ ਮਹਿਮਾਨ ਬੈਠੇ ਹਨ ਜਾਂ ਨਹੀਂ, ਉਨ੍ਹਾਂ ਦਾ ਖੁੱਲ੍ਹਾ ਬਿਲ ਕੀ ਹੈ ਅਤੇ ਅੱਗੇ ਕਿਸਨੂੰ ਸੇਵਾ ਚਾਹੀਦੀ ਹੈ।
 kitchen_help	ਹਰ ਵੈਰੀਐਂਟ ਜਾਂ ਹਰ ਚੀਜ਼ ਅਨੁਸਾਰ ਤਿਆਰ ਮਾਤਰਾ ਟ੍ਰੈਕ ਕਰੋ — KOT ਵਿੱਚ ਜਿਵੇਂ ਚਾਹੋ ਦਰਜ ਕਰੋ।
 kitchen_empty	ਫ਼ਿਲਹਾਲ ਕੁਝ ਖੁੱਲ੍ਹਾ ਨਹੀਂ।
@@ -1238,7 +1262,7 @@ on_your_menu	ਤੁਹਾਡੇ ਮੀਨੂ ਵਿੱਚ
 edit	ਬਦਲੋ
 schemes	ਸਕੀਮ / ਆਫਰ
 schemes_help	X ਖਰੀਦੋ Y ਲਵੋ — ਸੈਟਲ ਤੇ ਆਪਣੇ ਆਪ. ਉਦਾ. Buy 2 Thali get 1 Chaas
-scheme_bogo_ph	Buy 2 Thali get 1 Chaas
+scheme_bogo_ph	2 ਥਾਲੀ ਖਰੀਦੋ, 1 ਛਾਛ ਪਾਓ
 add_scheme	BOGO ਜੋੜੋ
 schedule_ph	ਸਮਾਂ / ਹੈਪੀ ਆਵਰ — Mon-Fri 07:00-11:00 ਜਾਂ HappyHour 17:00-19:00=150
 upi_qr	UPI QR
@@ -1266,8 +1290,8 @@ taxable_value	ਟੈਕਸਯੋਗ ਮੁੱਲ
 gst_inside_price_note	({tax} ਸਮੇਤ)
 start_with_template	ਸਾਡੇ ਮੀਨੂ ਟੈਂਪਲੇਟ ਨਾਲ ਸ਼ੁਰੂ ਕਰੋ
 template_heading	ਸਾਡਾ ਮੀਨੂ ਟੈਂਪਲੇਟ
-template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
-template_download_shelf	Download photo shelf
+template_need_download	ਪਕਵਾਨਾਂ ਦੀ ਜਨਤਕ ਫੋਟੋ ਸ਼ੈਲਫ (~1,459 ਪਕਵਾਨ) ਡਾਊਨਲੋਡ ਕਰੋ, ਫਿਰ ਜਿਹੜੇ ਨਾਮ ਨਹੀਂ ਹਨ ਉਹ ਆਪਣੇ ਮੀਨੂ ਵਿੱਚ ਆਯਾਤ ਕਰੋ।
+template_download_shelf	ਫੋਟੋ ਸ਼ੈਲਫ ਡਾਊਨਲੋਡ ਕਰੋ
 template_info	{c} ਸ਼੍ਰੇਣੀਆਂ ਅਤੇ {d} ਪਕਵਾਨ ਫੋਟੋਆਂ ਸਮੇਤ ਤਿਆਰ। ਕੀਮਤ ₹0 — ਬਾਅਦ ਵਿੱਚ ਆਪਣੀ ਕੀਮਤ ਰੱਖੋ।
 template_import	ਪੂਰਾ ਟੈਂਪਲੇਟ ਜੋੜੋ
 template_confirm	{d} ਪਕਵਾਨ ਸ਼੍ਰੇਣੀਆਂ ਸਮੇਤ ਜੋੜਨੇ ਹਨ? ਤੁਹਾਡੇ ਮੌਜੂਦਾ ਪਕਵਾਨ ਉਵੇਂ ਹੀ ਰਹਿਣਗੇ।

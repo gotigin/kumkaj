@@ -9,8 +9,16 @@ rules: [`docs/WEBSITES.md`](../../docs/WEBSITES.md).
 
 ```bash
 ./sites/moklanjo/scripts/run-desktop.sh   # native window
-./sites/moklanjo/scripts/run-web.sh       # wasm → http://127.0.0.1:8011
+./sites/moklanjo/scripts/run-web.sh       # debug wasm → http://127.0.0.1:8011
+
+# Production-shaped tree (wasm + /privacy /terms + OG) before Firebase
+./sites/moklanjo/scripts/preview-web.sh   # http://127.0.0.1:8011
+./sites/moklanjo/scripts/deploy-firebase.sh --dry-run   # needs Firebase project
 ```
+
+Domain **moklanjo.com** is registered. Firebase project id is an owner
+step (`FIREBASE_PROJECT` or `sites/moklanjo/.firebaserc`). Privacy source:
+[`apps/moklanjo/docs/PRIVACY.md`](../../apps/moklanjo/docs/PRIVACY.md).
 
 The tracking rail under the top bar is the chapter nav: beads behind the
 parcel turn yellow, the current one orange. `#weigh` (or `#2`) in the URL

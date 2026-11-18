@@ -101,6 +101,19 @@ bill_item_col_sep	列线
 slip_columns	列
 slip_col_header	表头
 bill_line_logo	标志
+bill_line_shop	店铺
+bill_line_address	地址
+bill_line_fssai	FSSAI
+bill_line_title	标题
+bill_line_customer	顾客
+bill_line_bill_no	账单号
+bill_line_time	时间
+bill_line_cashier	收银员
+bill_line_table	桌台
+bill_line_items	项目
+bill_line_total	总计
+bill_line_footer	页脚
+bill_line_upi	UPI
 bill_logo_picture	图片
 bill_logo_choose	选择图片
 bill_logo_remove	移除图片
@@ -128,6 +141,12 @@ bill_item_piece_off	关
 bill_total_qty	总数量
 bill_total_subtotal	小计
 bill_total_grand	总计
+bill_total_number_under	数字放在此列下
+bill_total_caption_under	标签放在此列下
+bill_total_own_line	单独一行
+bill_total_caption_with	与数字一起
+bill_total_caption_none	不印标签
+bill_total_place_help	“单独一行”会单独打印此合计。放在某列下方时，其数字会按本行的大小和粗细打印在该商品列内；各合计共用同一排，直到某列已被占用，才另起新排。标签可与数字一起、放在另一列下方，或不打印。税金、服务费、舍入和付款等行会跟随“小计”。
 reprint_incl	列入打印
 reprint_skip	跳过
 reprint_skip_meta	不重打
@@ -178,20 +197,20 @@ snack_secs_ph	秒数（3–60，默认 10）
 snack_secs_save	保存提示时长
 snack_secs_saved	提示时长已保存——{n} 秒
 settings_sec_whatsapp	WhatsApp
-whatsapp_cloud_help	Use your own Meta WhatsApp Cloud API. Create a System User token with whatsapp_business_messaging (temporary dashboard tokens expire). Credentials stay on this Server only — never on extra tills. Accepted means Meta took the request, not that the guest received it.
-whatsapp_phone_id_ph	Phone Number ID
-whatsapp_token_ph	Access Token (leave blank to keep)
-whatsapp_template_ph	Bill template name (optional)
-whatsapp_template_lang_ph	Template language (e.g. en)
-whatsapp_enable	Enable
+whatsapp_cloud_help	使用你自己的 Meta WhatsApp Cloud API。创建带有 whatsapp_business_messaging 的 System User 令牌（控制台的临时令牌会过期）。凭据只保存在这台服务器上 — 绝不会在额外柜台上。“已接受”表示 Meta 已收下请求，并不表示客人已收到。
+whatsapp_phone_id_ph	电话号码 ID
+whatsapp_token_ph	访问令牌（留空则保持不变）
+whatsapp_template_ph	账单模板名称（可选）
+whatsapp_template_lang_ph	模板语言（例如 en）
+whatsapp_enable	启用
 whatsapp_disable	Off
-whatsapp_save	Save WhatsApp
-whatsapp_test	Test connection
-whatsapp_disconnect	Disconnect
-whatsapp_send_bill	Send via WhatsApp
-whatsapp_consent	WhatsApp OK
-whatsapp_consent_help	Guest agreed to receive WhatsApp messages. A phone number alone is not consent.
-whatsapp_server_only	Configure WhatsApp on the shop Server device
+whatsapp_save	保存 WhatsApp
+whatsapp_test	测试连接
+whatsapp_disconnect	断开连接
+whatsapp_send_bill	通过 WhatsApp 发送
+whatsapp_consent	WhatsApp 确定
+whatsapp_consent_help	客人已同意接收 WhatsApp 消息。仅有电话号码并不代表同意。
+whatsapp_server_only	请在店铺的服务器设备上设置 WhatsApp
 settings_sec_backup	备份与恢复
 settings_sec_diag	诊断
 settings_sec_privacy	隐私
@@ -637,7 +656,7 @@ choose_device_use	选择本设备的用途。
 paired_note	已配对。解锁即可收款，或点刷新获取店里的最新数据。
 last_update_at	最后一次从店里更新：{time}。
 pair_intro	查找服务器，或输入其地址和配对码。
-pair_resume_hint	Already paired — enter your shop PIN, or Forget this shop to pair another.
+pair_resume_hint	已配对 — 输入你店铺的 PIN，或点按“忘记此店铺”以配对另一家。
 queue_waiting	等待发送到店里（{n}）：
 queue_tries	已尝试 {n} 次 · 最后回复：{e}
 save_backup_copy	保存备份副本…
@@ -754,13 +773,18 @@ station_vps_dd	此工位的打印机
 station_vps_dd_n	{n} 台打印机 · 点按更改
 bill_printers_dd	账单打印机
 bill_printers_dd_n	{n} 台账单打印机 · 点击以更改
-paper_heading	纸张
+paper_heading	虚拟纸张
 paper_size	{w} × {h} mm
 paper_roll	{w} mm 卷纸
 paper_not_set	纸张尚未得知
-paper_length_mm	长度 (mm)
-printer_paper_help	此打印机的纸张（mm）。长度留空即为卷纸：每张单据与其内容一样长。“查找打印机”会从打印机驱动程序填入空白纸张（无法得知时为 80 mm 卷纸），且绝不更改已设置的纸张。
-preview_help	此单据在下方所选打印机的纸张上，与在那里打印的完全相同：从打印机可达的左上角起按实际尺寸打印（灰色：无法到达的边缘），长单据打印在更多张纸上，超出纸张边缘的部分会被切掉。选择打印机只会改变预览；每台打印机的纸张在“打印机”中设置。
+virtual_width_mm	虚拟宽度 (mm)
+virtual_length_mm	虚拟长度 (mm)
+reported_width_mm	上报宽度 (mm)
+reported_length_mm	上报长度 (mm)
+reported_paper	上报：{paper}
+virtual_paper	虚拟：{paper}
+printer_paper_help	“上报”是此打印机驱动程序所设置的纸张；应用只读取它，“无”表示没有可询问的驱动程序。“虚拟”是您指明打印机里实际放着的纸张，单位为 mm；长度留空即为卷纸。打印机在它自己的纸张上打印；虚拟纸张告诉应用其中有多少是真正的纸，用于预览、页面长度和单据的位置。“查找打印机”会填入空白的虚拟纸张，且绝不更改您已设置的纸张。
+preview_help	此单据与在下方所选打印机上打印的完全相同，按实际尺寸显示在其虚拟纸张上。白色是打印的位置，灰色纸张是打印机无法到达的地方，变淡的墨迹会被切掉。九个方格就是纸张：点按单据应放的位置。长单据会接续到更多页。选择打印机只会改变预览。
 job_layout	版式
 job_delivery	任务发送方式
 job_delivery_help	OS 文档、原始字节或 ESC/POS。账单和厨房票据各自保留自己的设置。任一任务均可发送至“已保存的”任意打印机。
@@ -1040,7 +1064,7 @@ book_kind_today	今日账本
 book_kind_month	本月账本
 book_kind_aging	未结 / 借贷
 book_kind_balance	资产负债表
-order_help	选择一个未结订单，或选择桌台开始新订单。点选就绪菜品，发送 KOT，为一个或多个菜品结账，拆分账单并完成付款。
+order_help	点按一项即可添加。
 floor_help	每张桌子都显示客人是否就座、他们的未结账单以及接下来谁需要服务。
 kitchen_help	按变体或按菜品跟踪出餐量 — 在 KOT 中按您想要的方式记录。
 kitchen_empty	现在没有打开的订单。
@@ -1238,7 +1262,7 @@ on_your_menu	已在您的菜单中
 edit	编辑
 schemes	优惠方案
 schemes_help	买 X 送 Y — 结账自动。例：Buy 2 Thali get 1 Chaas
-scheme_bogo_ph	Buy 2 Thali get 1 Chaas
+scheme_bogo_ph	买 2 份 Thali 送 1 份 Chaas
 add_scheme	添加买赠
 schedule_ph	时段/欢乐时光 — Mon-Fri 07:00-11:00 或 HappyHour 17:00-19:00=150
 upi_qr	UPI QR
@@ -1266,8 +1290,8 @@ taxable_value	应税金额
 gst_inside_price_note	（含{tax}）
 start_with_template	从我们的菜单模板开始
 template_heading	我们的菜单模板
-template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
-template_download_shelf	Download photo shelf
+template_need_download	下载公共菜品照片架（约 1,459 道菜），然后把缺少的名称导入你的菜单。
+template_download_shelf	下载照片架
 template_info	{c} 个分类、{d} 道带图菜品可直接添加。价格为 ₹0，之后再设置。
 template_import	导入完整模板
 template_confirm	添加 {d} 道菜及其分类？已有菜品保持不变。

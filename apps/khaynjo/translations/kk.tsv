@@ -101,6 +101,19 @@ bill_item_col_sep	Баған сызықтары
 slip_columns	Бағандар
 slip_col_header	Тақырып
 bill_line_logo	Логотип
+bill_line_shop	Дүкен
+bill_line_address	Мекенжай
+bill_line_fssai	FSSAI
+bill_line_title	Тақырып
+bill_line_customer	Клиент
+bill_line_bill_no	Шот №
+bill_line_time	Уақыт
+bill_line_cashier	Кассир
+bill_line_table	Үстел
+bill_line_items	Тауарлар
+bill_line_total	Барлығы
+bill_line_footer	Төменгі жазу
+bill_line_upi	UPI
 bill_logo_picture	Сурет
 bill_logo_choose	Сурет таңдау
 bill_logo_remove	Суретті жою
@@ -128,6 +141,12 @@ bill_item_piece_off	Өшірулі
 bill_total_qty	Жалпы сан
 bill_total_subtotal	Аралық сома
 bill_total_grand	Жалпы сома
+bill_total_number_under	Сан мынаның астында
+bill_total_caption_under	Белгі мынаның астында
+bill_total_own_line	Өз жолы
+bill_total_caption_with	Санмен бірге
+bill_total_caption_none	Белгісіз
+bill_total_place_help	«Өз жолы» бұл жиынды жеке басады. Бағанның астында оның саны сол тауар бағанында, осы жолдың өлшемі мен қалыңдығымен басылады; бір баған толғанша жиындар бір қатарды бөліседі, содан кейін жаңа қатар басталады. Белгі санмен бірге, басқа бағанның астында тұрады немесе қалдырылады. Салық, қызмет, дөңгелектеу және төлем жолдары «Аралық сома» орнына ереді.
 reprint_incl	Басылымда
 reprint_skip	Өткізу
 reprint_skip_meta	Қалпына басуды өткізу
@@ -178,20 +197,20 @@ snack_secs_ph	Секунд (3–60, әдепкі 10)
 snack_secs_save	Ескерту уақытын сақтау
 snack_secs_saved	Ескерту уақыты сақталды — {n} секунд
 settings_sec_whatsapp	WhatsApp
-whatsapp_cloud_help	Use your own Meta WhatsApp Cloud API. Create a System User token with whatsapp_business_messaging (temporary dashboard tokens expire). Credentials stay on this Server only — never on extra tills. Accepted means Meta took the request, not that the guest received it.
-whatsapp_phone_id_ph	Phone Number ID
-whatsapp_token_ph	Access Token (leave blank to keep)
-whatsapp_template_ph	Bill template name (optional)
-whatsapp_template_lang_ph	Template language (e.g. en)
-whatsapp_enable	Enable
+whatsapp_cloud_help	Өзіңіздің Meta WhatsApp Cloud API-іңізді пайдаланыңыз. whatsapp_business_messaging бар System User токенін жасаңыз (басқару тақтасының уақытша токендерінің мерзімі бітеді). Деректер тек осы Серверде қалады — қосымша кассаларда ешқашан емес. «Қабылданды» дегеніміз — Meta сұрауды қабылдады, қонақ оны алды деген сөз емес.
+whatsapp_phone_id_ph	Телефон нөмірінің ID-і
+whatsapp_token_ph	Қатынау токені (сақтап қалу үшін бос қалдырыңыз)
+whatsapp_template_ph	Шот үлгісінің атауы (міндетті емес)
+whatsapp_template_lang_ph	Үлгі тілі (мысалы, en)
+whatsapp_enable	Қосу
 whatsapp_disable	Off
-whatsapp_save	Save WhatsApp
-whatsapp_test	Test connection
-whatsapp_disconnect	Disconnect
-whatsapp_send_bill	Send via WhatsApp
+whatsapp_save	WhatsApp сақтау
+whatsapp_test	Қосылымды тексеру
+whatsapp_disconnect	Ажырату
+whatsapp_send_bill	WhatsApp арқылы жіберу
 whatsapp_consent	WhatsApp OK
-whatsapp_consent_help	Guest agreed to receive WhatsApp messages. A phone number alone is not consent.
-whatsapp_server_only	Configure WhatsApp on the shop Server device
+whatsapp_consent_help	Қонақ WhatsApp хабарларын алуға келісті. Телефон нөмірінің өзі ғана келісім емес.
+whatsapp_server_only	WhatsApp-ты дүкеннің Сервер құрылғысында баптаңыз
 settings_sec_backup	Сақтық көшірме және қалпына келтіру
 settings_sec_diag	Диагностика
 settings_sec_privacy	Құпиялық
@@ -637,7 +656,7 @@ choose_device_use	Сервер немесе Клиент таңдаңыз.
 paired_note	Жұпталған. Сату үшін құлыпты ашыңыз немесе соңғысын Жаңартыңыз.
 last_update_at	Соңғы жаңарту: {time}.
 pair_intro	Серверді табыңыз немесе мекенжай мен жұптау кодын жазыңыз.
-pair_resume_hint	Already paired — enter your shop PIN, or Forget this shop to pair another.
+pair_resume_hint	Жұпталып қойған — дүкеніңіздің PIN кодын енгізіңіз немесе басқасын жұптау үшін «Осы дүкенді ұмыту» түймесін басыңыз.
 queue_waiting	Дүкенге жетуді күтуде ({n}):
 queue_tries	{n} рет қайталанды · соңғы жауап: {e}
 save_backup_copy	Сақтық көшірме сақтау…
@@ -754,13 +773,18 @@ station_vps_dd	Осы станцияның принтерлері
 station_vps_dd_n	{n} принтер · өзгерту үшін түртіңіз
 bill_printers_dd	Шот принтерлері
 bill_printers_dd_n	шотқа {n} принтер · өзгерту үшін түртіңіз
-paper_heading	Қағаз
+paper_heading	Виртуалды қағаз
 paper_size	{w} × {h} mm
 paper_roll	{w} мм орам
 paper_not_set	қағаз әлі белгісіз
-paper_length_mm	Ұзындығы (mm)
-printer_paper_help	Осы принтердің қағазы мм-мен. Бос Ұзындық — орам: әр чек мазмұнындай ұзын. «Принтерлерді табу» бос қағазды принтер драйверінен толтырады (айта алмаса, 80 мм орам) және бұрыннан орнатылғанды ешқашан өзгертпейді.
-preview_help	Төменде таңдалған принтердің қағазындағы осы чек, сонда басылатындай: принтер жететін жоғарғы сол бұрыштан нақты өлшемде (сұр: жетпейтін шеттер), ұзын чек көбірек парақта, қағаз шетінен асқанның бәрі кесіледі. Принтер таңдау тек алдын ала қарауды өзгертеді; әр принтердің қағазы «Принтерлер» бөлімінде орнатылады.
+virtual_width_mm	Виртуалды ені (mm)
+virtual_length_mm	Виртуалды ұзындығы (mm)
+reported_width_mm	Хабарланған ені (mm)
+reported_length_mm	Хабарланған ұзындығы (mm)
+reported_paper	Хабарланған: {paper}
+virtual_paper	Виртуалды: {paper}
+printer_paper_help	Хабарланған — осы принтердің драйвері орнатылған қағаз; қолданба оны тек оқиды, ал «жоқ» сұрайтын драйвер жоқ дегенді білдіреді. Виртуалды — принтерде шынымен жатыр деп сіз айтатын қағаз, mm-мен; бос ұзындық орам дегенді білдіреді. Принтер өз қағазына басады; виртуалды қағаз қолданбаға оның қанша бөлігі нақты қағаз екенін айтады: алдын ала қарау, бет ұзындығы және чектің орны үшін. Принтерлерді табу бос виртуалды қағазды толтырады және сіз орнатқанды ешқашан өзгертпейді.
+preview_help	Бұл чек төменде таңдалған принтерде қалай басылса, солай, оның виртуалды қағазында нақты өлшемде. Ақ — басылатын жер, сұр қағазға принтер жетпейді, ал солғын сия кесіледі. Тоғыз шаршы — қағаз: чек тұруы керек жерді түртіңіз. Ұзын чек келесі беттерге өтеді. Принтерді таңдау тек алдын ала қарауды өзгертеді.
 job_layout	Орналасу
 job_delivery	Тапсырма қалай жіберіледі
 job_delivery_help	ОЖ құжаты, шикі байт немесе ESC/POS. Шот пен асүй фиші әрқайсысы өзін сақтайды. Кез келген тапсырма Іздеу сақтаған кез келген принтерге бара алады.
@@ -1266,8 +1290,8 @@ taxable_value	Салық салынатын құн
 gst_inside_price_note	({tax} ішінде)
 start_with_template	Біздің мәзір үлгісімен бастау
 template_heading	Біздің мәзір үлгісі
-template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
-template_download_shelf	Download photo shelf
+template_need_download	Тағамдардың ортақ фото сөресін (~1459 тағам) жүктеп алыңыз, содан кейін жоқ атауларды мәзіріңізге импорттаңыз.
+template_download_shelf	Фото сөресін жүктеп алу
 template_info	{c} санат және {d} тағам фотосымен, қосуға дайын. Бағалар ₹0-ден басталады — содан өзіңіздікін қойыңыз.
 template_import	Толық үлгіні импорттау
 template_confirm	{d} тағамды санаттарымен қосу керек пе? Бар тағамдар сол қалпында қалады.

@@ -44,7 +44,7 @@ restore_item	بحال کریں
 empty_catalog	ابھی کوئی آئٹم نہیں۔
 total	کل
 cash	نقد
-upi	यूपीआई
+upi	UPI
 card	کارڈ
 credit	پارٹیاں
 clear	صاف
@@ -78,7 +78,7 @@ reprint_kot_needed	پہلے KOT بھیجیں — پھر پکوان شامل کر
 reprint_kot_none_selected	سب بھیجے ہوئے چھوڑے — پرنٹ کے لیے «پرنٹ میں» دبائیں
 reprint_kot_client	{place} کے لیے دوبارہ چھاپیں ({n}) بھیجا — باورچی خانہ سرور پر چھاپے گا
 print_cancelled_kot	تمام منسوخ پرنٹ
-print_cancelled_kot_ok	{n} रद्द छापे · {slips} पर्ची → {kitchens}
+print_cancelled_kot_ok	{n} منسوخ ڈشیں چھپ گئیں · {slips} پرچی → {kitchens}
 print_cancelled_kot_needed	منسوخ پکوان والی میز کھولیں
 print_cancelled_kot_none	اس آرڈر پر منسوخ نہیں
 print_cancelled_kot_client	منسوخ ({n}) {place} بھیجا — سرور پر چھپے گا
@@ -101,6 +101,19 @@ bill_item_col_sep	کالم لکیر
 slip_columns	کالم
 slip_col_header	سرخی
 bill_line_logo	لوگو
+bill_line_shop	دکان
+bill_line_address	پتہ
+bill_line_fssai	FSSAI
+bill_line_title	عنوان
+bill_line_customer	گاہک
+bill_line_bill_no	بل نمبر
+bill_line_time	وقت
+bill_line_cashier	کیشیئر
+bill_line_table	میز
+bill_line_items	آئٹمز
+bill_line_total	کل
+bill_line_footer	فوٹر
+bill_line_upi	UPI
 bill_logo_picture	تصویر
 bill_logo_choose	تصویر چنیں
 bill_logo_remove	تصویر ہٹائیں
@@ -128,6 +141,12 @@ bill_item_piece_off	آف
 bill_total_qty	کل مقدار
 bill_total_subtotal	ذیلی کل
 bill_total_grand	کل
+bill_total_number_under	نمبر اس کے نیچے
+bill_total_caption_under	لیبل اس کے نیچے
+bill_total_own_line	اپنی قطار
+bill_total_caption_with	نمبر کے ساتھ
+bill_total_caption_none	لیبل نہیں
+bill_total_place_help	“اپنی قطار” اس کل کو اکیلا چھاپتا ہے۔ کالم کے نیچے ہو تو اس کا نمبر اسی آئٹم کالم میں، اس قطار کے ناپ اور موٹائی میں چھپتا ہے؛ جب تک کوئی کالم بھر نہ جائے کل ایک ہی صف بانٹتے ہیں، پھر نئی صف شروع ہوتی ہے۔ لیبل نمبر کے ساتھ، دوسرے کالم کے نیچے جاتا ہے، یا چھوڑ دیا جاتا ہے۔ ٹیکس، سروس، راؤنڈنگ اور ادائیگی کی قطاریں “ذیلی کل” کے پیچھے چلتی ہیں۔
 reprint_incl	پرنٹ میں
 reprint_skip	چھوڑیں
 reprint_skip_meta	ریکوری پرنٹ چھوڑیں
@@ -178,20 +197,20 @@ snack_secs_ph	سیکنڈ (3–60، طے شدہ 10)
 snack_secs_save	اطلاع کا وقت محفوظ کریں
 snack_secs_saved	اطلاع کا وقت محفوظ ہو گیا — {n} سیکنڈ
 settings_sec_whatsapp	WhatsApp
-whatsapp_cloud_help	Use your own Meta WhatsApp Cloud API. Create a System User token with whatsapp_business_messaging (temporary dashboard tokens expire). Credentials stay on this Server only — never on extra tills. Accepted means Meta took the request, not that the guest received it.
-whatsapp_phone_id_ph	Phone Number ID
-whatsapp_token_ph	Access Token (leave blank to keep)
-whatsapp_template_ph	Bill template name (optional)
-whatsapp_template_lang_ph	Template language (e.g. en)
-whatsapp_enable	Enable
+whatsapp_cloud_help	اپنا Meta WhatsApp Cloud API استعمال کریں۔ whatsapp_business_messaging والا System User ٹوکن بنائیں (ڈیش بورڈ کے عارضی ٹوکن کی میعاد ختم ہو جاتی ہے)۔ یہ معلومات صرف اسی سرور پر رہتی ہیں — اضافی ٹل پر کبھی نہیں۔ “قبول” کا مطلب ہے کہ Meta نے درخواست لے لی، یہ نہیں کہ مہمان کو پیغام مل گیا۔
+whatsapp_phone_id_ph	فون نمبر ID
+whatsapp_token_ph	ایکسیس ٹوکن (وہی رکھنے کے لیے خالی چھوڑیں)
+whatsapp_template_ph	بل ٹیمپلیٹ کا نام (اختیاری)
+whatsapp_template_lang_ph	ٹیمپلیٹ کی زبان (مثلاً en)
+whatsapp_enable	آن کریں
 whatsapp_disable	Off
-whatsapp_save	Save WhatsApp
-whatsapp_test	Test connection
-whatsapp_disconnect	Disconnect
-whatsapp_send_bill	Send via WhatsApp
-whatsapp_consent	WhatsApp OK
-whatsapp_consent_help	Guest agreed to receive WhatsApp messages. A phone number alone is not consent.
-whatsapp_server_only	Configure WhatsApp on the shop Server device
+whatsapp_save	WhatsApp محفوظ کریں
+whatsapp_test	کنکشن جانچیں
+whatsapp_disconnect	کنکشن ختم کریں
+whatsapp_send_bill	WhatsApp سے بھیجیں
+whatsapp_consent	WhatsApp ٹھیک
+whatsapp_consent_help	مہمان نے WhatsApp پیغامات وصول کرنے پر رضامندی دی ہے۔ صرف فون نمبر ہونا رضامندی نہیں ہے۔
+whatsapp_server_only	WhatsApp کو دکان کے سرور ڈیوائس پر سیٹ کریں
 settings_sec_backup	بیک اپ اور بحالی
 settings_sec_diag	تشخیص
 settings_sec_privacy	رازداری
@@ -637,7 +656,7 @@ choose_device_use	منتخب کریں کہ یہ ڈیوائس کیسے استعم
 paired_note	جڑ گیا۔ بیچنے کے لیے کھولیں، یا دکان سے تازہ ترین لینے کے لیے تازہ کریں۔
 last_update_at	دکان سے آخری اپ ڈیٹ: {time}۔
 pair_intro	سرور تلاش کریں، یا اس کا پتا اور پیئرنگ کوڈ لکھیں۔
-pair_resume_hint	Already paired — enter your shop PIN, or Forget this shop to pair another.
+pair_resume_hint	پہلے سے جڑا ہوا ہے — اپنی دکان کا PIN درج کریں، یا دوسری دکان جوڑنے کے لیے “یہ دکان بھول جائیں” دبائیں۔
 queue_waiting	دکان تک پہنچنے کے انتظار میں ({n}):
 queue_tries	{n} بار کوشش · آخری جواب: {e}
 save_backup_copy	بیک اپ کی کاپی محفوظ کریں…
@@ -754,13 +773,18 @@ station_vps_dd	اس اسٹیشن کے پرنٹر
 station_vps_dd_n	{n} پرنٹر · بدلنے کے لیے ٹیپ
 bill_printers_dd	بل کے پرنٹر
 bill_printers_dd_n	بل کے لیے {n} پرنٹر · بدلنے کے لیے دبائیں
-paper_heading	کاغذ
+paper_heading	ورچوئل کاغذ
 paper_size	{w} × {h} mm
 paper_roll	{w} mm رول
 paper_not_set	کاغذ ابھی معلوم نہیں
-paper_length_mm	لمبائی (mm)
-printer_paper_help	اس پرنٹر کا کاغذ mm میں۔ خالی لمبائی کا مطلب رول: ہر پرچی اپنے مواد جتنی لمبی ہوتی ہے۔ پرنٹر تلاش کریں خالی کاغذ پرنٹر کے ڈرائیور سے بھرتا ہے (نہ بتا سکے تو 80 mm رول) اور پہلے سے طے کاغذ کبھی نہیں بدلتا۔
-preview_help	نیچے چنے گئے پرنٹر کے کاغذ پر یہ پرچی، جیسے وہاں چھپتی ہے: پرنٹر جہاں تک پہنچتا ہے اس اوپری بائیں کونے سے اصل ناپ میں (سرمئی: کنارے جہاں نہیں پہنچتا)، لمبی پرچی مزید صفحات پر، کاغذ کے کنارے سے آگے کا سب کٹ جاتا ہے۔ پرنٹر چننے سے صرف پیش منظر بدلتا ہے؛ ہر پرنٹر کا کاغذ پرنٹرز میں طے ہوتا ہے۔
+virtual_width_mm	ورچوئل چوڑائی (mm)
+virtual_length_mm	ورچوئل لمبائی (mm)
+reported_width_mm	بتائی گئی چوڑائی (mm)
+reported_length_mm	بتائی گئی لمبائی (mm)
+reported_paper	بتایا گیا: {paper}
+virtual_paper	ورچوئل: {paper}
+printer_paper_help	بتایا گیا وہ کاغذ ہے جس پر اس پرنٹر کا ڈرائیور سیٹ ہے؛ ایپ اسے صرف پڑھتی ہے، اور “نہیں” کا مطلب ہے کہ پوچھنے کے لیے کوئی ڈرائیور نہیں ہے۔ ورچوئل وہ کاغذ ہے جو آپ کہتے ہیں کہ واقعی پرنٹر میں ہے، mm میں؛ خالی لمبائی کا مطلب رول ہے۔ پرنٹر اپنے کاغذ پر چھاپتا ہے؛ ورچوئل کاغذ ایپ کو بتاتا ہے کہ اس میں سے کتنا اصل کاغذ ہے، پیش منظر، صفحے کی لمبائی اور پرچی کی جگہ کے لیے۔ پرنٹر تلاش کریں خالی ورچوئل کاغذ بھرتا ہے اور آپ کا طے کیا ہوا کاغذ کبھی نہیں بدلتا۔
+preview_help	یہ پرچی جیسے نیچے چنے گئے پرنٹر پر چھپتی ہے، اس کے ورچوئل کاغذ پر اصل ناپ میں۔ سفید جگہ پر چھپتا ہے، سرمئی کاغذ تک پرنٹر نہیں پہنچتا، اور پھیکی سیاہی کٹ جاتی ہے۔ نو خانے کاغذ ہیں: جہاں پرچی ہونی چاہیے وہاں ٹیپ کریں۔ لمبی پرچی مزید صفحات پر جاتی ہے۔ پرنٹر چننے سے صرف پیش منظر بدلتا ہے۔
 job_layout	لے آؤٹ
 job_delivery	کام کیسے بھیجا جاتا ہے
 job_delivery_help	OS دستاویز، خام بائٹس یا ESC/POS۔ بل اور باورچی خانے کا ٹکٹ دونوں اپنا اپنا رکھتے ہیں۔ کوئی بھی کام تلاش کے محفوظ کیے کسی بھی پرنٹر پر جا سکتا ہے۔
@@ -1040,7 +1064,7 @@ book_kind_today	آج کی کتاب
 book_kind_month	اس مہینے کی کتاب
 book_kind_aging	بقایا / ڈیبٹ-کریڈٹ
 book_kind_balance	بیلنس شیٹ
-order_help	کھلا آرڈر منتخب کریں، یا ٹیبل منتخب کر کے نیا شروع کریں۔ تیار آئٹمز پر ٹیپ کریں، KOT بھیجیں، ایک یا زیادہ آئٹمز کا بل بنائیں، بل تقسیم کریں اور ادائیگی طے کریں۔
+order_help	شامل کرنے کے لیے آئٹم پر ٹیپ کریں۔
 floor_help	ہر ٹیبل دکھاتی ہے کہ مہمان بیٹھے ہیں یا نہیں، ان کا کھلا بل کیا ہے اور اگلی خدمت کسے چاہیے۔
 kitchen_help	ہر ویرینٹ یا ہر آئٹم کے حساب سے تیار مقدار پر نظر رکھیں — KOT میں جیسے چاہیں درج کریں۔
 kitchen_empty	فی الحال کچھ کھلا نہیں۔
@@ -1266,8 +1290,8 @@ taxable_value	قابلِ ٹیکس قیمت
 gst_inside_price_note	({tax} شامل)
 start_with_template	ہمارے مینو ٹیمپلیٹ سے شروع کریں
 template_heading	ہمارا مینو ٹیمپلیٹ
-template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
-template_download_shelf	Download photo shelf
+template_need_download	ڈشوں کی عوامی فوٹو شیلف (~1,459 ڈشیں) ڈاؤن لوڈ کریں، پھر جو نام موجود نہیں وہ اپنے مینو میں درآمد کریں۔
+template_download_shelf	فوٹو شیلف ڈاؤن لوڈ کریں
 template_info	{c} زمرے اور {d} ڈشیں تصاویر کے ساتھ تیار۔ قیمت ₹0 — بعد میں اپنی قیمت رکھیں۔
 template_import	مکمل ٹیمپلیٹ شامل کریں
 template_confirm	{d} ڈشیں ان کے زمروں سمیت شامل کریں؟ آپ کی موجودہ ڈشیں ویسی ہی رہیں گی۔

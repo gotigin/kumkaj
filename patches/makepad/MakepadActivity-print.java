@@ -4,10 +4,18 @@
     private static final UUID KUMKAJ_SPP_UUID =
             UUID.fromString("00001101-0000-1000-8000-00805F9B34FB");
 
+    // The phone's Bluetooth adapter from its BluetoothManager: the same adapter
+    // BluetoothAdapter.getDefaultAdapter() gave, without that deprecated call
+    // (deprecated from API 31; BluetoothManager is on every API this runs on).
+    private BluetoothAdapter kumkajBluetoothAdapter() {
+        BluetoothManager manager = (BluetoothManager) getSystemService(Context.BLUETOOTH_SERVICE);
+        return manager == null ? null : manager.getAdapter();
+    }
+
 
     public String[] listBluetoothPrinters() {
         try {
-            BluetoothAdapter adapter = BluetoothAdapter.getDefaultAdapter();
+            BluetoothAdapter adapter = kumkajBluetoothAdapter();
             if (adapter == null) {
                 return new String[0];
             }
@@ -39,7 +47,7 @@
         }
         BluetoothSocket socket = null;
         try {
-            BluetoothAdapter adapter = BluetoothAdapter.getDefaultAdapter();
+            BluetoothAdapter adapter = kumkajBluetoothAdapter();
             if (adapter == null) {
                 return false;
             }
@@ -303,16 +311,31 @@
     }
 
     /**
-     * OS document slip on any paper (docs/PRINTER.md § Paper). The slip is
-     * upright and {@code contentUm} micrometres wide on paper; the print
-     * dialog picks the printer and its paper. Each page draws the slip at
-     * its real size from that paper's printable top-left (the printer's own
-     * minimum margins). Nothing is fitted: a longer slip goes on to more
-     * pages, split in the blank band between two lines; a wider one is cut
-     * at the printable edge. {@code landscape} only turns the sheet.
+     * OS document slip, top-left on the paper picked in the print dialog:
+     * {@link #printSlipPagesPlaced} with no place and no virtual paper.
      */
     public boolean printSlipPages(
             final String jobName, final byte[] pngBytes, final int contentUm, final boolean landscape) {
+        return printSlipPagesPlaced(jobName, pngBytes, contentUm, landscape, 0, 0, 0);
+    }
+
+    /**
+     * OS document slip on any paper (docs/PRINTER.md § Paper). The slip is
+     * upright and {@code contentUm} micrometres wide on paper; the print
+     * dialog picks the printer and its paper. Each page draws the slip at
+     * its real size on the part of that paper the printer reaches (its own
+     * minimum margins) and the virtual paper covers ({@code virtualWidthUm}
+     * × {@code virtualLengthUm} micrometres; a length of 0 is a roll, a
+     * width of 0 no virtual paper), at the format's place: {@code place} is
+     * down × 3 + across (0 = top left). Nothing is fitted: a longer slip
+     * goes on to more pages, split in the blank band between two lines; a
+     * wider one is cut at the area's edge. Where every page goes is worked
+     * out by {@link KumkajSlipLayout} — the same rule as the desktop apps.
+     * {@code landscape} only turns the sheet.
+     */
+    public boolean printSlipPagesPlaced(
+            final String jobName, final byte[] pngBytes, final int contentUm, final boolean landscape,
+            final int place, final int virtualWidthUm, final int virtualLengthUm) {
         final byte[] body = pngBytes == null ? new byte[0] : pngBytes;
         final String title = (jobName == null || jobName.length() == 0) ? "Slip" : jobName;
         try {
@@ -334,7 +357,7 @@
                         final int bh = bmp.getHeight();
                         // Blank bands between lines (a page may end in one) and
                         // the last row with ink (nothing after it is printed).
-                        final java.util.ArrayList<Integer> gaps = new java.util.ArrayList<>();
+                        final java.util.ArrayList<Integer> gapList = new java.util.ArrayList<>();
                         int inkEnd = 0;
                         int gapStart = -1;
                         final int[] row = new int[bw];
@@ -351,7 +374,7 @@
                             }
                             if (ink) {
                                 if (gapStart >= 0) {
-                                    gaps.add((gapStart + y) / 2);
+                                    gapList.add((gapStart + y) / 2);
                                     gapStart = -1;
                                 }
                                 inkEnd = y + 1;
@@ -359,12 +382,17 @@
                                 gapStart = y;
                             }
                         }
+                        final int[] gaps = new int[gapList.size()];
+                        for (int i = 0; i < gaps.length; i++) {
+                            gaps[i] = gapList.get(i);
+                        }
                         final int len = Math.max(1, inkEnd);
                         // PDF points per slip pixel: the slip's own mm on paper.
                         final float ptPerPx = (contentUm / 25400f * 72f) / bw;
-                        final java.util.ArrayList<int[]> slices = new java.util.ArrayList<>();
+                        final float ptPerUm = 72f / 25400f;
                         // page width, height, left, top, right, bottom (points)
                         final float[] page = new float[6];
+                        final KumkajSlipLayout[] laid = new KumkajSlipLayout[1];
                         PrintAttributes attrs = new PrintAttributes.Builder()
                                 .setMediaSize(landscape
                                         ? PrintAttributes.MediaSize.UNKNOWN_LANDSCAPE
@@ -395,28 +423,23 @@
                                 page[3] = m == null ? 0f : m.getTopMils() * 72f / 1000f;
                                 page[4] = m == null ? 0f : m.getRightMils() * 72f / 1000f;
                                 page[5] = m == null ? 0f : m.getBottomMils() * 72f / 1000f;
-                                int room = Math.max(1, (int) Math.floor((page[1] - page[3] - page[5]) / ptPerPx));
-                                slices.clear();
-                                int start = 0;
-                                while (start < len) {
-                                    int limit = start + room;
-                                    if (limit >= len) {
-                                        slices.add(new int[]{start, len});
-                                        break;
-                                    }
-                                    int floor = start + room / 2;
-                                    int end = limit;
-                                    for (int g : gaps) {
-                                        if (g > floor && g <= limit) {
-                                            end = g;
-                                        }
-                                    }
-                                    slices.add(new int[]{start, end});
-                                    start = end;
-                                }
+                                // The virtual paper as the slip lies on the
+                                // dialog's page: turned with it for landscape.
+                                // 0 that way = no limit (none set, or a roll's
+                                // length).
+                                float vAlong = (landscape ? virtualLengthUm : virtualWidthUm) * ptPerUm;
+                                float vDown = (landscape ? virtualWidthUm : virtualLengthUm) * ptPerUm;
+                                boolean roll = virtualWidthUm > 0 && virtualLengthUm <= 0;
+                                laid[0] = KumkajSlipLayout.plan(
+                                        bw, len, gaps,
+                                        (page[0] - page[2] - page[4]) / ptPerPx,
+                                        (page[1] - page[3] - page[5]) / ptPerPx,
+                                        vAlong > 0f ? (vAlong - page[2] - page[4]) / ptPerPx : 0.0,
+                                        vDown > 0f ? (vDown - page[3] - page[5]) / ptPerPx : 0.0,
+                                        roll, place);
                                 PrintDocumentInfo info = new PrintDocumentInfo.Builder(title)
                                         .setContentType(PrintDocumentInfo.CONTENT_TYPE_DOCUMENT)
-                                        .setPageCount(slices.size())
+                                        .setPageCount(laid[0].pages.length)
                                         .build();
                                 callback.onLayoutFinished(info, true);
                             }
@@ -430,9 +453,14 @@
                                 android.graphics.pdf.PdfDocument pdf =
                                         new android.graphics.pdf.PdfDocument();
                                 try {
+                                    final KumkajSlipLayout plan = laid[0];
+                                    if (plan == null) {
+                                        callback.onWriteFailed("No layout");
+                                        return;
+                                    }
                                     int pw = Math.max(1, Math.round(page[0]));
                                     int ph = Math.max(1, Math.round(page[1]));
-                                    for (int i = 0; i < slices.size(); i++) {
+                                    for (int i = 0; i < plan.pages.length; i++) {
                                         boolean wanted = false;
                                         for (android.print.PageRange r : pages) {
                                             if (i >= r.getStart() && i <= r.getEnd()) {
@@ -450,13 +478,20 @@
                                         android.graphics.pdf.PdfDocument.Page p = pdf.startPage(
                                                 new android.graphics.pdf.PdfDocument.PageInfo.Builder(pw, ph, i).create());
                                         android.graphics.Canvas canvas = p.getCanvas();
-                                        int[] s = slices.get(i);
+                                        int[] s = plan.pages[i];
                                         canvas.save();
-                                        canvas.clipRect(page[2], page[3], page[0] - page[4], page[1] - page[5]);
-                                        android.graphics.Rect src = new android.graphics.Rect(0, s[0], bw, s[1]);
-                                        android.graphics.RectF dst = new android.graphics.RectF(
+                                        // Nothing lands outside the area: not on
+                                        // the edges the printer cannot reach, not
+                                        // past the virtual paper.
+                                        canvas.clipRect(
                                                 page[2], page[3],
-                                                page[2] + bw * ptPerPx, page[3] + (s[1] - s[0]) * ptPerPx);
+                                                page[2] + plan.areaW * ptPerPx, page[3] + plan.areaH * ptPerPx);
+                                        android.graphics.Rect src = new android.graphics.Rect(0, s[0], bw, s[1]);
+                                        float left = page[2] + plan.x * ptPerPx;
+                                        float top = page[3] + plan.y * ptPerPx;
+                                        android.graphics.RectF dst = new android.graphics.RectF(
+                                                left, top,
+                                                left + bw * ptPerPx, top + (s[1] - s[0]) * ptPerPx);
                                         canvas.drawBitmap(bmp, src, dst, null);
                                         canvas.restore();
                                         pdf.finishPage(p);

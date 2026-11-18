@@ -1,6 +1,7 @@
 //! Bluetooth SPP raw write for ESC/POS printers (`bt:AA:BB:CC:DD:EE:FF`).
 
-// File::write_all on Linux/macOS RFCOMM/serial paths only — Windows uses PowerShell.
+// File::write_all on Linux/macOS RFCOMM/serial paths only — Windows goes
+// through print_win (the printer's own COM port).
 #[cfg(any(target_os = "linux", target_os = "macos"))]
 use std::io::Write;
 
@@ -182,108 +183,21 @@ fn write_linux_rfcomm(mac: &str, channel: u8, bytes: &[u8]) -> Result<(), String
     file.flush().map_err(|e| e.to_string())
 }
 
+/// The paired Bluetooth devices Windows lists (print_win::bluetooth_devices).
 #[cfg(target_os = "windows")]
 fn list_windows() -> Vec<String> {
-    use std::os::windows::process::CommandExt;
-    use std::process::Command;
-    const CREATE_NO_WINDOW: u32 = 0x0800_0000;
-    // Paired Bluetooth devices with a MAC in InstanceId / BlindAddress.
-    let script = r#"
-Get-PnpDevice -Class Bluetooth -Status OK -ErrorAction SilentlyContinue |
-  ForEach-Object {
-    $id = $_.InstanceId
-    if ($id -match '([0-9A-Fa-f]{2})([0-9A-Fa-f]{2})([0-9A-Fa-f]{2})([0-9A-Fa-f]{2})([0-9A-Fa-f]{2})([0-9A-Fa-f]{2})') {
-      $m = ($Matches[1..6] -join ':').ToUpper()
-      "bt:$m"
-    }
-  } | Select-Object -Unique
-"#;
-    Command::new("powershell")
-        .args([
-            "-NoProfile",
-            "-NonInteractive",
-            "-ExecutionPolicy",
-            "Bypass",
-            "-Command",
-            script,
-        ])
-        .creation_flags(CREATE_NO_WINDOW)
-        .output()
-        .ok()
-        .filter(|o| o.status.success())
-        .map(|o| {
-            String::from_utf8_lossy(&o.stdout)
-                .lines()
-                .map(str::trim)
-                .filter(|l| l.starts_with("bt:"))
-                .map(str::to_string)
-                .collect()
-        })
-        .unwrap_or_default()
+    crate::print_win::bluetooth_devices().into_iter().map(|mac| format!("bt:{mac}")).collect()
 }
 
+/// Out of the COM port Windows gave this printer (its device id names the
+/// address) — never another Bluetooth serial port when this one is
+/// missing. The whole job in one go, then wait until the port has sent it.
 #[cfg(target_os = "windows")]
 fn write_windows(mac: &str, bytes: &[u8]) -> Result<(), String> {
-    use std::os::windows::process::CommandExt;
-    use std::process::Command;
-    const CREATE_NO_WINDOW: u32 = 0x0800_0000;
-
-    let dir = std::env::temp_dir().join("kumkaj-bt-raw");
-    std::fs::create_dir_all(&dir).map_err(|e| e.to_string())?;
-    let path = dir.join(format!("{}.bin", uuid::Uuid::new_v4()));
-    std::fs::write(&path, bytes).map_err(|e| e.to_string())?;
-    let path_s = path.display().to_string().replace('\'', "''");
-    let mac_s = mac.replace('\'', "''");
-    // The COM port of this printer (its device id names the MAC) — never
-    // another Bluetooth serial port when this one is missing.
-    let script = format!(
-        r#"
-$ErrorActionPreference = 'Stop'
-$mac = '{mac_s}'.Replace(':','').ToUpper()
-$ports = Get-CimInstance Win32_SerialPort -ErrorAction SilentlyContinue |
-  Where-Object {{ $_.PNPDeviceID -and ($_.PNPDeviceID.ToUpper() -like "*$mac*") }}
-if (-not $ports) {{ throw "no Bluetooth COM port for {mac_s} — pair the printer and enable a serial port" }}
-$portName = $ports | Select-Object -First 1 -ExpandProperty DeviceID
-$bytes = [IO.File]::ReadAllBytes('{path_s}')
-$p = New-Object System.IO.Ports.SerialPort $portName, 9600, None, 8, One
-$p.WriteTimeout = 15000
-$p.Open()
-try {{
-  # The whole job (no pieces, no pauses).
-  $p.Write($bytes, 0, $bytes.Length)
-  # Close discards what the driver has not sent yet: wait for it to drain.
-  $deadline = (Get-Date).AddSeconds(20)
-  while ($p.BytesToWrite -gt 0 -and (Get-Date) -lt $deadline) {{ Start-Sleep -Milliseconds 50 }}
-  if ($p.BytesToWrite -gt 0) {{ throw "the Bluetooth printer did not take the whole slip" }}
-}} finally {{ $p.Close() }}
-"#,
-        mac_s = mac_s,
-        path_s = path_s,
-    );
-    let out = Command::new("powershell")
-        .args([
-            "-NoProfile",
-            "-NonInteractive",
-            "-ExecutionPolicy",
-            "Bypass",
-            "-Command",
-            &script,
-        ])
-        .creation_flags(CREATE_NO_WINDOW)
-        .output()
-        .map_err(|e| format!("PowerShell did not start ({e})"))?;
-    let _ = std::fs::remove_file(&path);
-    if out.status.success() {
-        Ok(())
-    } else {
-        let detail = String::from_utf8_lossy(&out.stderr);
-        let line = detail
-            .lines()
-            .map(str::trim)
-            .find(|l| !l.is_empty())
-            .unwrap_or("Bluetooth write failed");
-        Err(line.into())
-    }
+    let Some(port) = crate::print_win::bluetooth_port(mac) else {
+        return Err(format!("no Bluetooth COM port for {mac} — pair the printer and enable a serial port"));
+    };
+    crate::print_win::serial_write(&port, "the Bluetooth printer", bytes)
 }
 
 #[cfg(target_os = "macos")]

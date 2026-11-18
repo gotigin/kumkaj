@@ -192,7 +192,7 @@ snack_secs_save	Uyarı süresini kaydet
 snack_secs_saved	Uyarı süresi kaydedildi — {n} saniye
 snack_secs_bad	Saniyeyi sayı olarak girin (3–60)
 cancelled	İptal edildi
-cancelling	Cancelling…
+cancelling	Cancellingâ¦
 cancel	İptal
 opening_client	Müşteri açılıyor…
 preparing_desk	Masa hazırlanıyor…
@@ -501,13 +501,18 @@ job_size	Yazı tipi boyutu
 job_size_ph	örn. 18, 20, 26…
 test_receipt_format	Test makbuzu
 test_label_format	Test etiketi
-paper_heading	Kâğıt
+paper_heading	Sanal kâğıt
 paper_size	{w} × {h} mm
 paper_roll	{w} mm rulo
 paper_not_set	kâğıt henüz bilinmiyor
-paper_length_mm	Uzunluk (mm)
-printer_paper_help	Bu yazıcının kâğıdı mm cinsinden. Boş Uzunluk rulodur: her fiş içeriği kadar uzundur. Yazıcıları bul, boş kâğıdı yazıcının sürücüsünden doldurur (söyleyemezse 80 mm rulo) ve önceden ayarlanmış olanı asla değiştirmez.
-preview_help	Bu fiş, aşağıda seçilen yazıcının kâğıdında, orada basıldığı gibi: yazıcının ulaştığı sol üst köşeden gerçek boyutta (gri: ulaşamadığı kenarlar), uzun fiş daha çok sayfada, kâğıt kenarını aşan her şey kesilir. Yazıcı seçmek yalnızca önizlemeyi değiştirir; her yazıcının kâğıdı Yazıcılar altında ayarlanır.
+virtual_width_mm	Sanal genişlik (mm)
+virtual_length_mm	Sanal uzunluk (mm)
+reported_width_mm	Bildirilen genişlik (mm)
+reported_length_mm	Bildirilen uzunluk (mm)
+reported_paper	Bildirilen: {paper}
+virtual_paper	Sanal: {paper}
+printer_paper_help	Bildirilen, bu yazıcının sürücüsünün ayarlı olduğu kâğıttır; uygulama onu yalnızca okur ve “Yok”, sorulacak bir sürücü olmadığı anlamına gelir. Sanal, yazıcıda gerçekten bulunduğunu söylediğiniz kâğıttır, mm cinsinden; boş uzunluk rulodur. Yazıcı kendi kâğıdına basar; sanal kâğıt uygulamaya bunun ne kadarının gerçek kâğıt olduğunu söyler: önizleme, sayfa uzunluğu ve fişin yeri için. Yazıcıları bul, boş sanal kâğıdı doldurur ve sizin ayarladığınızı asla değiştirmez.
+preview_help	Bu fiş, aşağıda seçilen yazıcıda basıldığı gibi, yazıcının sanal kâğıdında gerçek boyutta. Beyaz, basılan yerdir; gri kâğıt yazıcının ulaşamadığı yerdir ve soluk mürekkep kesilir. Dokuz kare kâğıdın kendisidir: fişin durması gereken yere dokunun. Uzun fiş sonraki sayfalara devam eder. Yazıcı seçmek yalnızca önizlemeyi değiştirir.
 slip_col_width	Genişlik (mm)
 no_printer_assigned	Yazıcı yok
 printer_target_default	varsayılan yazıcı
@@ -643,11 +648,11 @@ day_close_help	Gün kapanışını kaydetmek bu özeti (sayıldıysa çekmece fa
 expenses_word	Giderler
 feature_access_help	Seçilen personel için özellik erişimi (ekledikten sonra dokunun)
 footer_local	Yerel SQLite · Sonsuza dek ücretsiz · Bulut yok
-fresh_book_moklanjo	Yazıcılar
+fresh_book_moklanjo	Sıfırdan = boş katalog (ürünleri sonra ekleyin). Defter = aşağıya açılış stokunu ve size borcu olanı yazın.
 fresh_selected	Fresh seçili — katalog boş kalacak. Hazır olduğunuzda Done'a dokunun.
 gross_word	Brüt
 how_start	Nasıl başlamak istersiniz?
-later_country_pack	Yazıcılar
+later_country_pack	Sonra: Ayarlar → vergi ve ödeme etiketleri için ülke paketinizi uygulayın.
 local_badge	YEREL
 measures_help_moklanjo	Paketlerin masada nasıl ölçüldüğü. Boyutları ve ağırlığı kullandığınız birimlerle yazın — standart (cm, m, in, ft · kg, g, lb, oz) veya yukarıda cm / kg'ye bağlı kendi biriminiz (doğrudan veya diğer birimler yoluyla). Defterler her zaman kg kaydeder. Bir alanı boş bırakırsanız korunur.
 mix_type_hint_moklanjo	Her birine ne kadar yazın (nakit / UPI / kart / veresiye). Faturaya eşit olmalı. Veresiye için yukarıda müşteri gerekir.

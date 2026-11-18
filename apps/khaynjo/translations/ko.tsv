@@ -101,6 +101,19 @@ bill_item_col_sep	열 구분선
 slip_columns	열
 slip_col_header	머리글
 bill_line_logo	로고
+bill_line_shop	매장
+bill_line_address	주소
+bill_line_fssai	FSSAI
+bill_line_title	제목
+bill_line_customer	고객
+bill_line_bill_no	계산서 번호
+bill_line_time	시간
+bill_line_cashier	캐셔
+bill_line_table	테이블
+bill_line_items	항목
+bill_line_total	합계
+bill_line_footer	하단 문구
+bill_line_upi	UPI
 bill_logo_picture	그림
 bill_logo_choose	그림 선택
 bill_logo_remove	그림 제거
@@ -128,6 +141,12 @@ bill_item_piece_off	끄기
 bill_total_qty	총 수량
 bill_total_subtotal	소계
 bill_total_grand	합계
+bill_total_number_under	숫자를 둘 열
+bill_total_caption_under	라벨을 둘 열
+bill_total_own_line	단독 줄
+bill_total_caption_with	숫자와 함께
+bill_total_caption_none	라벨 없음
+bill_total_place_help	‘단독 줄’은(는) 이 합계를 단독으로 인쇄합니다. 열 아래에 두면 숫자가 해당 품목 열에 이 줄의 크기와 굵기로 인쇄됩니다. 합계들은 열이 찰 때까지 한 행을 함께 쓰고, 차면 새 행이 시작됩니다. 라벨은 숫자와 함께 두거나 다른 열 아래에 두거나 생략할 수 있습니다. 세금, 봉사료, 반올림, 결제 줄은 ‘소계’을(를) 따릅니다.
 reprint_incl	인쇄 포함
 reprint_skip	건너뛰기
 reprint_skip_meta	재인쇄 제외
@@ -178,20 +197,20 @@ snack_secs_ph	초 (3–60, 기본 10)
 snack_secs_save	알림 시간 저장
 snack_secs_saved	알림 시간 저장됨 — {n}초
 settings_sec_whatsapp	WhatsApp
-whatsapp_cloud_help	Use your own Meta WhatsApp Cloud API. Create a System User token with whatsapp_business_messaging (temporary dashboard tokens expire). Credentials stay on this Server only — never on extra tills. Accepted means Meta took the request, not that the guest received it.
-whatsapp_phone_id_ph	Phone Number ID
-whatsapp_token_ph	Access Token (leave blank to keep)
-whatsapp_template_ph	Bill template name (optional)
-whatsapp_template_lang_ph	Template language (e.g. en)
-whatsapp_enable	Enable
+whatsapp_cloud_help	직접 만든 Meta WhatsApp Cloud API를 사용하세요. whatsapp_business_messaging 권한이 있는 System User 토큰을 만드세요(대시보드의 임시 토큰은 만료됩니다). 인증 정보는 이 서버에만 저장되며 추가 계산대에는 저장되지 않습니다. “수락됨”은 Meta가 요청을 받았다는 뜻이며, 손님이 받았다는 뜻이 아닙니다.
+whatsapp_phone_id_ph	전화번호 ID
+whatsapp_token_ph	액세스 토큰(유지하려면 비워 두세요)
+whatsapp_template_ph	영수증 템플릿 이름(선택)
+whatsapp_template_lang_ph	템플릿 언어(예: en)
+whatsapp_enable	사용
 whatsapp_disable	Off
-whatsapp_save	Save WhatsApp
-whatsapp_test	Test connection
-whatsapp_disconnect	Disconnect
-whatsapp_send_bill	Send via WhatsApp
-whatsapp_consent	WhatsApp OK
-whatsapp_consent_help	Guest agreed to receive WhatsApp messages. A phone number alone is not consent.
-whatsapp_server_only	Configure WhatsApp on the shop Server device
+whatsapp_save	WhatsApp 저장
+whatsapp_test	연결 테스트
+whatsapp_disconnect	연결 끊기
+whatsapp_send_bill	WhatsApp으로 보내기
+whatsapp_consent	WhatsApp 확인
+whatsapp_consent_help	손님이 WhatsApp 메시지 수신에 동의했습니다. 전화번호만으로는 동의가 아닙니다.
+whatsapp_server_only	매장의 서버 기기에서 WhatsApp을 설정하세요
 settings_sec_backup	백업 및 복원
 settings_sec_diag	진단
 settings_sec_privacy	개인정보
@@ -637,7 +656,7 @@ choose_device_use	이 기기를 어떻게 쓸지 고르세요.
 paired_note	페어링됨. 잠금을 풀어 판매하거나, 새로고침으로 매장의 최신 내용을 받으세요.
 last_update_at	매장에서 마지막 업데이트: {time}.
 pair_intro	서버를 찾거나 주소와 페어링 코드를 입력하세요.
-pair_resume_hint	Already paired — enter your shop PIN, or Forget this shop to pair another.
+pair_resume_hint	이미 페어링됨 — 매장 PIN을 입력하거나, 다른 매장을 페어링하려면 “이 매장 지우기”을(를) 누르세요.
 queue_waiting	매장으로 전송 대기 ({n}):
 queue_tries	{n}번 시도 · 마지막 응답: {e}
 save_backup_copy	백업 사본 저장…
@@ -754,13 +773,18 @@ station_vps_dd	이 스테이션의 프린터
 station_vps_dd_n	{n}대 프린터 · 탭하여 변경
 bill_printers_dd	영수증용 프린터
 bill_printers_dd_n	영수증용 {n} 개의 프린터 · 변경하려면 탭하세요
-paper_heading	용지
+paper_heading	가상 용지
 paper_size	{w} × {h} mm
 paper_roll	{w}mm 롤
 paper_not_set	용지를 아직 모름
-paper_length_mm	길이 (mm)
-printer_paper_help	이 프린터의 용지(mm). 길이가 비어 있으면 롤이며 각 전표는 내용만큼 깁니다. 프린터 찾기는 빈 용지를 프린터 드라이버에서 채우고(알 수 없으면 80mm 롤) 이미 정한 용지는 절대 바꾸지 않습니다.
-preview_help	아래에서 고른 프린터의 용지에 이 전표가 그곳에서 인쇄되는 그대로 보입니다. 프린터가 닿는 왼쪽 위에서부터 실제 크기로(회색: 닿지 않는 가장자리), 긴 전표는 여러 장에, 용지 가장자리를 넘는 부분은 잘립니다. 프린터를 고르면 미리보기만 바뀝니다. 각 프린터의 용지는 프린터에서 정합니다.
+virtual_width_mm	가상 너비 (mm)
+virtual_length_mm	가상 길이 (mm)
+reported_width_mm	보고된 너비 (mm)
+reported_length_mm	보고된 길이 (mm)
+reported_paper	보고됨: {paper}
+virtual_paper	가상: {paper}
+printer_paper_help	보고됨은 이 프린터의 드라이버에 설정된 용지입니다. 앱은 이를 읽기만 하며, “없음”은(는) 물어볼 드라이버가 없다는 뜻입니다. 가상은 프린터에 실제로 들어 있다고 직접 지정하는 용지이며 단위는 mm입니다. 길이를 비워 두면 롤 용지입니다. 프린터는 자기 용지에 인쇄합니다. 가상 용지는 그중 어디까지가 실제 종이인지 앱에 알려 주며, 미리보기, 페이지 길이, 전표 위치에 쓰입니다. 프린터 찾기은(는) 비어 있는 가상 용지를 채우고, 직접 설정한 용지는 절대 바꾸지 않습니다.
+preview_help	이 전표가 아래에서 선택한 프린터로 인쇄되는 모습 그대로, 그 가상 용지 위에 실제 크기로 표시됩니다. 흰색은 인쇄되는 곳이고, 회색 종이는 프린터가 닿지 않는 곳이며, 흐린 잉크는 잘려 나갑니다. 아홉 칸이 용지입니다. 전표가 놓일 자리를 누르세요. 긴 전표는 다음 페이지로 이어집니다. 프린터를 선택하면 미리보기만 바뀝니다.
 job_layout	레이아웃
 job_delivery	작업 전송 방식
 job_delivery_help	OS 문서, 원본 바이트 또는 ESC/POS. 영수증과 주방 티켓은 각각 독립적으로 관리됩니다. 두 작업 모두 찾은 프린터 중 어느 곳으로든 보낼 수 있습니다.
@@ -1040,7 +1064,7 @@ book_kind_today	오늘 장부
 book_kind_month	이번 달 장부
 book_kind_aging	미결제 / 차변-대변
 book_kind_balance	대차대조표
-order_help	열린 주문을 선택하거나 테이블을 선택해 새로 시작하세요. 준비된 항목을 탭하고 KOT를 보내고, 하나 이상의 항목을 청구하고, 계산서를 나눠 결제를 완료하세요.
+order_help	항목을 눌러 추가하세요.
 floor_help	각 테이블은 손님이 앉아 있는지, 열린 계산서가 무엇인지, 다음으로 누가 서비스를 필요로 하는지 보여줍니다.
 kitchen_help	변형별 또는 항목별로 준비된 수량을 추적하세요 — 원하는 대로 KOT에 기록하세요.
 kitchen_empty	지금 열린 주문이 없습니다.
@@ -1238,7 +1262,7 @@ on_your_menu	내 메뉴에 있음
 edit	편집
 schemes	할인/세트
 schemes_help	X 구매 시 Y — 결제 시 자동. 예: Buy 2 Thali get 1 Chaas
-scheme_bogo_ph	Buy 2 Thali get 1 Chaas
+scheme_bogo_ph	Thali 2개 구매 시 Chaas 1개 증정
 add_scheme	BOGO 추가
 schedule_ph	시간/해피아워 — Mon-Fri 07:00-11:00 또는 HappyHour 17:00-19:00=150
 upi_qr	UPI QR
@@ -1266,8 +1290,8 @@ taxable_value	과세 금액
 gst_inside_price_note	({tax} 포함)
 start_with_template	메뉴 템플릿으로 시작
 template_heading	메뉴 템플릿
-template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
-template_download_shelf	Download photo shelf
+template_need_download	요리 공개 사진 선반(약 1,459개)을 다운로드한 다음, 없는 이름을 내 메뉴로 가져오세요.
+template_download_shelf	사진 선반 다운로드
 template_info	{c}개 분류와 사진 있는 요리 {d}개를 추가할 수 있습니다. 가격은 ₹0 — 나중에 설정하세요.
 template_import	전체 템플릿 가져오기
 template_confirm	요리 {d}개를 분류와 함께 추가할까요? 기존 요리는 그대로 둡니다.

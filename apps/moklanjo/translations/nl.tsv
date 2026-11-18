@@ -158,8 +158,8 @@ ok	OK
 this_shop	Servermodus
 extra_till	Clientmodus
 off	Uit
-server	Server
-client	Client
+server	Servermodus
+client	Clientmodus
 language_currency	Taal en valuta
 language	Taal
 choose_language	Kies je taal
@@ -192,7 +192,7 @@ snack_secs_save	Meldingstijd opslaan
 snack_secs_saved	Meldingstijd opgeslagen — {n} seconden
 snack_secs_bad	Voer seconden in als getal (3–60)
 cancelled	Geannuleerd
-cancelling	Cancelling…
+cancelling	Cancellingâ¦
 cancel	Annuleren
 opening_client	Client openen…
 preparing_desk	Bureau voorbereiden…
@@ -501,13 +501,18 @@ job_size	Lettergrootte
 job_size_ph	bijv. 18, 20, 26…
 test_receipt_format	Testkwitantie
 test_label_format	Testlabel
-paper_heading	Papier
+paper_heading	Virtueel papier
 paper_size	{w} × {h} mm
 paper_roll	rol van {w} mm
 paper_not_set	papier nog onbekend
-paper_length_mm	Lengte (mm)
-printer_paper_help	Het papier van deze printer in mm. Een lege Lengte is een rol: elke bon is zo lang als de inhoud. Printers zoeken vult leeg papier in vanuit het stuurprogramma van de printer (een rol van 80 mm als het dat niet kan zeggen) en wijzigt nooit papier dat al is ingesteld.
-preview_help	Deze bon op het papier van de printer die hieronder gekozen is, zoals hij daar afdrukt: op ware grootte vanaf de linkerbovenhoek die de printer bereikt (grijs: randen die hij niet bereikt), een lange bon op meer vellen, alles voorbij de papierrand wordt afgesneden. Een printer kiezen verandert alleen het voorbeeld; het papier van elke printer stel je in onder Printers.
+virtual_width_mm	Virtuele breedte (mm)
+virtual_length_mm	Virtuele lengte (mm)
+reported_width_mm	Gemelde breedte (mm)
+reported_length_mm	Gemelde lengte (mm)
+reported_paper	Gemeld: {paper}
+virtual_paper	Virtueel: {paper}
+printer_paper_help	Gemeld is het papier waarop het stuurprogramma van deze printer is ingesteld; de app leest het alleen, en n.v.t. betekent dat er geen stuurprogramma is om het aan te vragen. Virtueel is het papier waarvan jij zegt dat het echt in de printer zit, in mm; een lege lengte is een rol. De printer drukt af op zijn eigen papier; het virtuele papier vertelt de app hoeveel daarvan echt papier is, voor het voorbeeld, de paginalengte en de plaats van de bon. Printers zoeken vult een leeg virtueel papier in en wijzigt nooit papier dat jij hebt ingesteld.
+preview_help	Deze bon zoals hij afdrukt op de printer die hieronder gekozen is, op ware grootte op het virtuele papier ervan. Wit is waar hij afdrukt, grijs papier ligt buiten het bereik van de printer, en vervaagde inkt wordt afgesneden. De negen vakjes zijn het papier: tik waar de bon moet staan. Een lange bon gaat verder op meer pagina's. Een printer kiezen verandert alleen het voorbeeld.
 slip_col_width	Breedte (mm)
 no_printer_assigned	Geen printer
 printer_target_default	standaardprinter
@@ -516,7 +521,7 @@ test_receipt_sent	Voorbeeldkwitantie verzonden
 test_label_sent	Voorbeeldlabel verzonden
 test_print_no_printer	Geen printer voor die taak — voeg er een toe onder deze plek
 printers_host_only	Printers worden ingesteld op het apparaat van de zaak (Server). Deze kassa stuurt taken daarheen — Zoeken / toevoegen / toewijzen blijven op de Server. De testpagina gaat naar de Server.
-printers_pool_heading	Printers
+printers_pool_heading	Printers van dit apparaat
 printers_routes_heading	Waar afdrukken
 printer_label_ph	Naam (bijv. loket)
 printer_target_ph	host:9100 · bt:MAC · usb:VID:PID · systeemnaam
@@ -643,11 +648,11 @@ day_close_help	Een dagsluiting boeken bewaart dit overzicht (en ladeverschil ind
 expenses_word	Kosten
 feature_access_help	Functietoegang voor gekozen personeel (tik na het toevoegen)
 footer_local	Lokale SQLite · Voor altijd gratis · Geen cloud
-fresh_book_moklanjo	Printers
+fresh_book_moklanjo	Fresh = lege catalogus (artikelen later toevoegen). Book = typ hieronder de beginvoorraad en wie u iets schuldig is.
 fresh_selected	Fresh gekozen – catalogus blijft leeg. Tik op Done als je klaar bent.
 gross_word	Bruto
 how_start	Hoe wilt u beginnen?
-later_country_pack	Printers
+later_country_pack	Later: Instellingen → pas uw landpakket toe voor belasting- en betaallabels.
 local_badge	LOKAAL
 measures_help_moklanjo	Hoe pakketten aan de balie worden gemeten. Typ afmetingen en gewicht in de eenheden die je gebruikt – standaard (cm, m, in, ft · kg, g, lb, oz) of je eigen eenheid gekoppeld aan cm / kg hierboven (direct of via andere eenheden). Boeken registreren altijd kg. Laat een veld leeg om het te behouden.
 mix_type_hint_moklanjo	Typ hoeveel in elk (contant / UPI / kaart / krediet). Moet gelijk zijn aan de factuur. Voor krediet is hierboven een klant nodig.
@@ -772,7 +777,7 @@ business_name_ph	Bedrijfsnaam
 category_new_ph	Categorie (optioneel, wordt aangemaakt indien nieuw)
 cod_amount_ph	COD-bedrag
 code_bag_ph	Code (bag)
-conv_factor_ph	Factor (25 = 1 bag → 25 kg)
+conv_factor_ph	Factor (25 = 1 zak → 25 kg)
 country_code_ph	Landcode bijv. IN, GB, US, AE, BR
 credit_khata_amount_ph	Krediet- / rekeningbedrag
 credit_limit_ph	Kredietlimiet (0 = geen)

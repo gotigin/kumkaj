@@ -79,13 +79,19 @@ bill_item_amount	Jumlah
 bill_item_note	Rx / catatan penjualan
 bill_item_col_sep	Garis kolom
 slip_col_width	Lebar (mm)
-paper_heading	Kertas
+paper_heading	Kertas virtual
 paper_size	{w} × {h} mm
 paper_roll	gulungan {w} mm
 paper_not_set	kertas belum diketahui
-paper_length_mm	Panjang (mm)
-printer_paper_help	Kertas printer ini dalam mm. Panjang kosong berarti gulungan: setiap struk sepanjang isinya. Cari printer mengisi kertas kosong dari driver printer (gulungan 80 mm bila tidak bisa memberi tahu) dan tidak pernah mengubah kertas yang sudah diatur.
-preview_help	Struk ini di kertas printer yang dipilih di bawah, seperti tercetak di sana: ukuran sebenarnya dari sudut kiri atas yang dapat dijangkau printer (abu-abu: tepi yang tidak terjangkau), struk panjang di lebih banyak lembar, semua yang melewati tepi kertas terpotong. Memilih printer hanya mengubah pratinjau; kertas tiap printer diatur di Printer.
+na	Tidak ada
+virtual_width_mm	Lebar virtual (mm)
+virtual_length_mm	Panjang virtual (mm)
+reported_width_mm	Lebar yang dilaporkan (mm)
+reported_length_mm	Panjang yang dilaporkan (mm)
+reported_paper	Dilaporkan: {paper}
+virtual_paper	Virtual: {paper}
+printer_paper_help	Dilaporkan adalah kertas yang diatur pada driver printer ini; aplikasi hanya membacanya, dan “Tidak ada” berarti tidak ada driver yang bisa ditanya. Virtual adalah kertas yang menurut Anda benar-benar ada di printer, dalam mm; panjang kosong berarti gulungan. Printer mencetak di kertasnya sendiri; kertas virtual memberi tahu aplikasi seberapa banyak darinya yang merupakan kertas nyata, untuk pratinjau, panjang halaman, dan letak struk. Cari printer mengisi kertas virtual yang kosong dan tidak pernah mengubah yang sudah Anda atur.
+preview_help	Struk ini seperti saat dicetak di printer yang dipilih di bawah, dalam ukuran sebenarnya di kertas virtualnya. Putih adalah tempat mencetak, kertas abu-abu di luar jangkauan printer, dan tinta pudar terpotong. Sembilan kotak itu adalah kertasnya: ketuk tempat struk seharusnya berada. Struk panjang berlanjut ke halaman berikutnya. Memilih printer hanya mengubah pratinjau.
 slip_col_start	Spasi awal (px)
 slip_col_end	Spasi akhir (px)
 slip_columns_help	Lebar setiap kolom sudah termasuk spasi awal dan akhirnya. Teks dibungkus di dalam kolomnya; bagian yang melewati lebar konten terpotong, di kertas maupun di pratinjau.
@@ -100,6 +106,12 @@ bill_item_piece_off	Nonaktif
 bill_total_qty	Total qty
 bill_total_subtotal	Subtotal
 bill_total_grand	Grand total
+bill_total_number_under	Angka di bawah
+bill_total_caption_under	Label di bawah
+bill_total_own_line	Baris sendiri
+bill_total_caption_with	Bersama angka
+bill_total_caption_none	Tanpa label
+bill_total_place_help	Baris sendiri mencetak total ini sendirian. Di bawah kolom, angkanya dicetak di kolom barang itu, dengan ukuran dan ketebalan baris ini; total berbagi satu baris sampai sebuah kolom terisi, lalu baris baru dimulai. Label ikut bersama angka, di bawah kolom lain, atau tidak dicetak. Baris pajak, layanan, pembulatan, dan pembayaran mengikuti Subtotal.
 kot_unassigned	Belum ditetapkan
 settings_hub_help	Buka satu bagian sekaligus — lebih sedikit gulir, pilihan lebih jelas.
 settings_sec_language	Bahasa & mata uang
@@ -199,7 +211,7 @@ ok	OK
 this_shop	Mode server
 extra_till	Mode klien
 off	Mati
-server	Server
+server	Mode server
 client	Klien
 language_currency	Bahasa & mata uang
 language	Bahasa
@@ -317,7 +329,7 @@ drawer_count	Hitung laci (opsional)
 expense_heading	Biaya
 export_day	Ekspor hari
 extra_note_bill_ph	Catatan tambahan pada tagihan / penjualan ini
-extra_tills_heading	Til tambahan
+extra_tills_heading	Kasir tambahan
 other_devices_help_heading	Siapkan perangkat lain
 other_devices_help	Di perangkat ini (Server): Perangkat lain → Izinkan pemrosesan tambahan. Catat kode penyandingan dan alamat Wi-Fi. Ketuk Izinkan perangkat lain untuk terhubung jika muncul. Di komputer, ketuk Mulai dengan komputer ini. Di setiap perangkat lain: instal aplikasi, pilih Mode Klien, Temukan server toko (atau ketik alamat), masukkan kode penyandingan, Pasangkan sekarang. Pesanan menunggu di perangkat jika Wi‑Fi terputus dan dilanjutkan saat Server menjawab lagi. Printer tambahan diatur di Server (Pengaturan → Printer) — mesin tambahan mengirim tagihan ke sana.
 forget_shop	Lupakan toko ini
@@ -563,11 +575,11 @@ currency_use_help	Gulir dan ketuk Gunakan untuk mata uang yang didukung.
 day_close_help	Mencatat tutup hari menyimpan ringkasan ini (dan selisih laci jika dihitung) ke log audit. Tidak menghentikan penjualan.
 expenses_word	Biaya
 feature_access_help	Akses fitur staf terpilih (ketuk setelah menambah)
-fresh_book_tabiyat	Printer
+fresh_book_tabiyat	Baru = katalog kosong (tambah item nanti). Buku = ketik stok awal dan siapa yang berutang kepada Anda di bawah.
 fresh_selected	Fresh terpilih — katalog tetap kosong. Ketuk Done saat siap.
 gross_word	Kotor
 how_start	Bagaimana Anda ingin memulai?
-later_country_pack	Printer
+later_country_pack	Nanti: Pengaturan → terapkan paket negara Anda untuk label pajak dan pembayaran.
 local_badge	LOKAL
 mix_type_hint_tabiyat	Bagi ke tunai / UPI / kartu / kredit jika perlu. Kredit butuh pelanggan di atas.
 money_in_sales	Uang masuk (penjualan)
@@ -688,7 +700,7 @@ book_kind_today	Buku hari ini
 book_kind_month	Buku bulan ini
 book_kind_aging	Terutang / debit-kredit
 book_kind_balance	Neraca
-order_help	Pilih pesanan terbuka, atau pilih meja dan mulai yang baru. Ketuk item siap, kirim KOT, tagih satu atau lebih item, bagi tagihan, dan selesaikan pembayaran.
+order_help	Ketuk item untuk menambahkannya.
 categories_help	Kategori menunjukkan bagian menu mana suatu hidangan berasal — mis. camilan, hidangan utama, atau biryani. Buat kategori dengan cara Anda: pilih nama saran kami, ganti namanya, atau tambahkan sendiri.
 dish_search_ph	Cari nama, garam atau kode batang…
 sizes_as_items_ph	Ukuran sebagai item terpisah (opsional) — Half=120, Full=200
@@ -735,6 +747,20 @@ fssai_ph	Lisensi obat no. (opsional — kata-kata Anda)
 bill_footer_ph	Kaki (mis. Terima kasih, datang lagi)
 kot_field_on	tampil
 kot_field_off	sembunyi
+kot_field_show	Tampilkan
+kot_field_hide	Sembunyikan
+bill_line_shop	Toko
+bill_line_address	Alamat
+bill_line_fssai	FSSAI
+bill_line_title	Judul
+bill_line_customer	Pelanggan
+bill_line_bill_no	No. tagihan
+bill_line_time	Waktu
+bill_line_cashier	Kasir
+bill_line_items	Item
+bill_line_total	Total
+bill_line_footer	Kaki
+bill_line_upi	UPI
 kot_weight_light	Tipis
 bill_kot_panel_help	Tata letak tagihan dan lebar konten. Kasir adalah orang yang menerbitkan atau melunasi tagihan — kisah penjualan selengkapnya tetap tercatat.
 std_size_ph	mis. 18, 20, 26…
@@ -842,10 +868,10 @@ lane_declared_label	Faktur pajak
 lane_owner_label	Memo tunai
 money_lane_bill	Tagihan: {lane}
 
-removing	Removing…
-removed	Removed
-updating_order	Updating…
-order_updated	Order updated
+removing	Menghapus…
+removed	Dihapus
+updating_order	Memperbarui…
+order_updated	Pesanan diperbarui
 sel_copy	Salin
 sel_select_all	Pilih semua
 sel_copied	Disalin

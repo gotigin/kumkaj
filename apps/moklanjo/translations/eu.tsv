@@ -192,7 +192,7 @@ snack_secs_save	Gorde abisu-denbora
 snack_secs_saved	Abisu-denbora gordeta — {n} segundo
 snack_secs_bad	Idatzi segundoak zenbaki gisa (3-60)
 cancelled	Ezeztatuta
-cancelling	Cancelling…
+cancelling	Cancellingâ¦
 cancel	Ezeztatu
 opening_client	Bezeroa irekitzen…
 preparing_desk	Mahaia prestatzen…
@@ -501,13 +501,18 @@ job_size	Letra-neurria
 job_size_ph	adib. 18, 20, 26…
 test_receipt_format	Proba ordainagiria
 test_label_format	Proba-etiketa
-paper_heading	Papera
+paper_heading	Paper birtuala
 paper_size	{w} × {h} mm
 paper_roll	{w} mm-ko erroilua
 paper_not_set	papera oraindik ezezaguna
-paper_length_mm	Luzera (mm)
-printer_paper_help	Inprimagailu honen papera mm-tan. Luzera hutsa erroilua da: tiket bakoitza bere edukia bezain luzea da. Aurkitu inprimagailuak aukerak paper hutsa inprimagailuaren kontrolatzailetik betetzen du (80 mm-ko erroilua ezin badu esan) eta ez du inoiz aldatzen jada ezarritakoa.
-preview_help	Tiket hau behean aukeratutako inprimagailuaren paperean, han inprimatzen den bezala: benetako tamainan inprimagailuak iristen duen goiko ezkerreko izkinatik (grisa: iristen ez dituen ertzak), tiket luzea orri gehiagotan, paperaren ertzetik haratago dagoena moztu egiten da. Inprimagailu bat aukeratzeak aurrebista bakarrik aldatzen du; inprimagailu bakoitzaren papera Inprimagailuak atalean ezartzen da.
+virtual_width_mm	Zabalera birtuala (mm)
+virtual_length_mm	Luzera birtuala (mm)
+reported_width_mm	Jakinarazitako zabalera (mm)
+reported_length_mm	Jakinarazitako luzera (mm)
+reported_paper	Jakinarazia: {paper}
+virtual_paper	Birtuala: {paper}
+printer_paper_help	Jakinarazia inprimagailu honen kontrolatzailea ezarrita dagoen papera da; aplikazioak irakurri besterik ez du egiten, eta E/A horrek esan nahi du ez dagoela galdetzeko kontrolatzailerik. Birtuala zuk inprimagailuan benetan dagoela diozun papera da, mm-tan; luzera hutsa erroilua da. Inprimagailuak bere paperean inprimatzen du; paper birtualak aplikazioari esaten dio horretatik zenbat den benetako papera, aurrebistarako, orriaren luzerarako eta tiketaren lekurako. Aurkitu inprimagailuak aukerak paper birtual hutsa betetzen du eta ez du inoiz aldatzen zuk ezarritakoa.
+preview_help	Tiket hau behean aukeratutako inprimagailuan inprimatzen den bezala, benetako tamainan bere paper birtualean. Zuria inprimatzen den lekua da, paper grisa inprimagailuaren irismenetik kanpo dago, eta tinta lausotua moztu egiten da. Bederatzi laukiak papera dira: sakatu tiketak egon behar duen lekuan. Tiket luzea orri gehiagotan jarraitzen da. Inprimagailua aukeratzeak aurrebista bakarrik aldatzen du.
 slip_col_width	Zabalera (mm)
 no_printer_assigned	Inprimagailurik ez
 printer_target_default	ordenagailu honen ohiko inprimagailua (helbide hutsa)

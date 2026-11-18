@@ -12,7 +12,7 @@
 #
 # Launches the debug binary on a private Xvfb with --remote (never :0 /
 # Wayland), opens the books as Server, unlocks with PIN (default 1234), walks
-# every sidebar screen and Settings panel, prints "## screen" then
+# every sidebar screen and every Settings row's panel, prints "## screen" then
 # "id<TAB>type<TAB>text" for each visible non-ℹ text of MIN+ chars (default
 # 30), and quits with /gq. With apps/<app>/cert/ui-text-allowlist.txt (one
 # widget id per line, `#` comments) any other id is NEW and the exit code is
@@ -81,18 +81,31 @@ r "click?x=600&y=284&wait=1" >/dev/null; r "t?t=$PIN" >/dev/null; sleep 0.3; clk
   rails=$(widgets | awk -F'\t' '$1 ~ /^rail_/ && $2 == "Button" {print $1 "\t" $7}')
   while IFS=$'\t' read -r id label; do
     [[ -z "$id" || "$label" =~ ^[[:space:]]*(Lock)$ ]] && continue
-    clk "$id" || continue; sleep 1.5
+    # The id was read while one screen was selected ("_on"); after the first
+    # click another one is, so try both forms (the app opens on the screen
+    # used last, and that one was skipped until 2026-11-17).
+    clk "${id%_on}" || clk "${id%_on}_on" || continue; sleep 1.5
     echo "## $label"; dump
-    on_hub() { widgets | awk -F'\t' '$1 ~ /^settings_hub_/ && $2 == "Button" {f=1} END {exit !f}'; }
-    if on_hub; then
-      for hub in $(widgets | awk -F'\t' '$1 ~ /^settings_hub_/ && $2 == "Button" {print $1}'); do
-        for _ in 1 2 3; do on_hub && break; clk header_back; sleep 1; done
+    # Settings is one list of rows (2026-11-15: it holds the sidebar): each
+    # row's face opens its screen or panel. Rows that are sidebar screens
+    # were walked above; every other row is a Settings panel. (Until
+    # 2026-11-17 this looked for the old `settings_hub_*` buttons, found
+    # none, and silently walked no panel.)
+    on_list() { widgets | awk -F'\t' '$1 == "sidebar_enable_all" {f=1} END {exit !f}'; }
+    if on_list; then
+      faces=$(widgets | awk -F'\t' '$1 == "face" && $2 == "Button" {print $3 "\t" $4 "\t" $6 "\t" $7}')
+      while IFS=$'\t' read -r fx fy fh name; do
+        [[ -z "$name" ]] && continue
+        awk -F'\t' -v n="$name" '$2 == n {f=1} END {exit !f}' <<<"$rails" && continue
+        for _ in 1 2 3; do on_list && break; clk header_back; sleep 1; done
         # Back can be hidden on a panel; the Settings rail item (plain or
-        # selected "_on") opens the hub again.
-        on_hub || { clk "${id%_on}_on" || clk "${id%_on}"; sleep 1.2; }
-        clk "$hub" || continue; sleep 1.5
-        echo "## $label / ${hub#settings_hub_}"; dump
-      done
+        # selected "_on") opens the list again.
+        on_list || { clk "${id%_on}_on" || clk "${id%_on}"; sleep 1.2; }
+        on_list || continue
+        # The row's left part: its ↑ / ↓ sit on the right.
+        r "click?x=$(( ${fx%.*} + 60 ))&y=$(( ${fy%.*} + ${fh%.*} / 2 ))&wait=1" >/dev/null; sleep 1.5
+        echo "## $label / $name"; dump
+      done <<<"$faces"
     fi
   done <<<"$rails"
 } | tee "$OUT/inventory.txt"

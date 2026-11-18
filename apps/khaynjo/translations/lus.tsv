@@ -101,6 +101,19 @@ bill_item_col_sep	Column ri
 slip_columns	Column-te
 slip_col_header	Hming
 bill_line_logo	Logo
+bill_line_shop	Dawr
+bill_line_address	Chenna hmun
+bill_line_fssai	FSSAI
+bill_line_title	Hming
+bill_line_customer	Customer
+bill_line_bill_no	Bill no.
+bill_line_time	Hun
+bill_line_cashier	Sum khawmtu
+bill_line_table	Dawhkan
+bill_line_items	Thil
+bill_line_total	A zawng
+bill_line_footer	Hnuai
+bill_line_upi	UPI
 bill_logo_picture	Thlalak
 bill_logo_choose	Thlalak thlang rawh
 bill_logo_remove	Thlalak paih rawh
@@ -128,6 +141,12 @@ bill_item_piece_off	Tih
 bill_total_qty	Zat zawng
 bill_total_subtotal	Zawng te
 bill_total_grand	Zawng lian
+bill_total_number_under	Number hnuaiah
+bill_total_caption_under	Hming hnuaiah
+bill_total_own_line	Ama ri
+bill_total_caption_with	Number nen
+bill_total_caption_none	Hming awm lo
+bill_total_place_help	Ama ri chuan he belhkhawm hi amah chauhin a chhuah. Column hnuaiah chuan a number chu chu thil column-ah, he ri lenzawng leh chhah zawngin a chhuah a; column pakhat a khah hma chuan belhkhawmte chuan tlar khat an insem a, chumi hnuah tlar thar a intan. Hming chu number nen, column dang hnuaiah a kal emaw, dah loh a ni thei. Chhiah, service, rounding leh pek ri te chuan Zawng te an zui.
 reprint_incl	Print-ah telh
 reprint_skip	Kaltlang
 reprint_skip_meta	Print leh kaltlang
@@ -178,20 +197,20 @@ snack_secs_ph	Second (3–60, dan 10)
 snack_secs_save	Hriattir hun dah tha
 snack_secs_saved	Hriattir hun dah tha a ni — second {n}
 settings_sec_whatsapp	WhatsApp
-whatsapp_cloud_help	Use your own Meta WhatsApp Cloud API. Create a System User token with whatsapp_business_messaging (temporary dashboard tokens expire). Credentials stay on this Server only — never on extra tills. Accepted means Meta took the request, not that the guest received it.
-whatsapp_phone_id_ph	Phone Number ID
-whatsapp_token_ph	Access Token (leave blank to keep)
-whatsapp_template_ph	Bill template name (optional)
-whatsapp_template_lang_ph	Template language (e.g. en)
-whatsapp_enable	Enable
+whatsapp_cloud_help	Nangma Meta WhatsApp Cloud API hmang rawh. whatsapp_business_messaging nei System User token siam rawh (dashboard-a token rei lo te chu an tawp ṭhin). Thu hriatte hi he Server-ah chauh a awm — dawhkan dangah a awm ngai lo. “Pawm a ni” tih awmzia chu Meta-in dilna a la tihna a ni a, khualin a dawng tihna a ni lo.
+whatsapp_phone_id_ph	Phone number ID
+whatsapp_token_ph	Access token (vawn reng tur chuan ruak in dah rawh)
+whatsapp_template_ph	Bill template hming (duh chuan)
+whatsapp_template_lang_ph	Template ṭawng (entirnan en)
+whatsapp_enable	Hawng rawh
 whatsapp_disable	Off
-whatsapp_save	Save WhatsApp
-whatsapp_test	Test connection
-whatsapp_disconnect	Disconnect
-whatsapp_send_bill	Send via WhatsApp
+whatsapp_save	WhatsApp dah tha
+whatsapp_test	Zawmna enfiah rawh
+whatsapp_disconnect	Zawmna titawp rawh
+whatsapp_send_bill	WhatsApp hmangin thawn rawh
 whatsapp_consent	WhatsApp OK
-whatsapp_consent_help	Guest agreed to receive WhatsApp messages. A phone number alone is not consent.
-whatsapp_server_only	Configure WhatsApp on the shop Server device
+whatsapp_consent_help	Khual chuan WhatsApp thu dawng turin a remti. Phone number chauh hi remtihna a ni lo.
+whatsapp_server_only	Dawr Server device-ah WhatsApp siam rawh
 settings_sec_backup	Backup leh kir leh
 settings_sec_diag	Harsatna en
 settings_sec_privacy	Thuruk
@@ -637,7 +656,7 @@ choose_device_use	Server emaw Dawr dang thlang.
 paired_note	Pair a ni. Hawng la, zuar turin, emaw Thar leh, tawp ber atan.
 last_update_at	Thar leh tawp: {time}.
 pair_intro	Server zawng, emaw a address leh pair code ziak.
-pair_resume_hint	Already paired — enter your shop PIN, or Forget this shop to pair another.
+pair_resume_hint	Pair tawh a ni — i dawr PIN chu ziak lut rawh, a nih loh leh dawr dang pair turin “He dawr hreh” hmet rawh.
 queue_waiting	Dawr thlen nghak ({n}):
 queue_tries	Vawi {n} tih tawh · chhanna tawp: {e}
 save_backup_copy	Backup copy dah tha…
@@ -754,13 +773,18 @@ station_vps_dd	He hmun print na
 station_vps_dd_n	print na {n} · khawih la, thlak turin
 bill_printers_dd	Bill print na
 bill_printers_dd_n	bill print na {n} · khawih la, thlak turin
-paper_heading	Lehkha
+paper_heading	Lehkha virtual
 paper_size	{w} × {h} mm
 paper_roll	{w} mm roll
 paper_not_set	lehkha hriat a la ni lo
-paper_length_mm	A sei zawng (mm)
-printer_paper_help	He print na lehkha hi mm-in. A sei zawng awm lo chu roll a ni: slip tin chu a chhunga thil ang zelin a sei a ni. Print na zawng hian lehkha awm lo chu print na driver atangin a dah khat (a sawi thei loh chuan 80 mm roll) a, lo ruat tawh chu engtikah mah a thlak ngai lo.
-preview_help	He slip hi a hnuaia print na thlan lehkhaah, chutah a chhuah ang ngeiin: print na thlen theih chunglam vei kil atangin a lianna dik takin (dum var: a thlen theih loh kawng), slip sei chu phek tam zawkah, lehkha kawng piah lam apiang chu an tan. Print na thlan hian a hmaa en lawk chauh a thlak; print na tin lehkha chu Print na hnuaiah ruat a ni.
+virtual_width_mm	Virtual zau (mm)
+virtual_length_mm	Virtual a sei zawng (mm)
+reported_width_mm	Hriattir zau (mm)
+reported_length_mm	Hriattir a sei zawng (mm)
+reported_paper	Hriattir: {paper}
+virtual_paper	Virtual: {paper}
+printer_paper_help	Hriattir chu he print na driver-in a set lehkha a ni; app hian a chhiar mai a ni a, “—” chuan zawh tur driver a awm lo tihna a ni. Virtual chu print na-ah a awm tak tak tia i sawi lehkha a ni, mm-in; a sei zawng a ruak chuan roll a ni. Print na chuan ama lehkhaah a chhuah a; lehkha virtual chuan chu mi zinga lehkha tak tak a nih zat app a hrilh a, a hmaa en lawk, phek sei zawng leh slip awmna tur atan. Print na zawng hian lehkha virtual ruak a dah khat a, i set tawh chu engtikah mah a thlak ngai lo.
+preview_help	He slip hi a hnuaia print na thlanah a chhuah ang ngeiin, a lehkha virtual chungah a lianna dik takin. A var chu a chhuahna hmun a ni a, lehkha dum var chu print na-in a thleng thei lo a, tui dal chu tan a ni. Bawm pakua hi lehkha a ni: slip awmna tur hmun chu hmet rawh. Slip sei chu phek dangah a kal zel. Print na thlan hian a hmaa en lawk chauh a thlak.
 job_layout	Rem dan
 job_delivery	Hna thawn dan
 job_delivery_help	System lehkha, byte raw, emaw ESC/POS. Bill leh buh chhumna lehkha chuan an mahni an vawng. Hna tin chu Zawng dah tha print na eng pawh a kal thei.
@@ -1266,8 +1290,8 @@ taxable_value	Chhiah man
 gst_inside_price_note	({tax} chhung)
 start_with_template	Kan menu template in tan
 template_heading	Kan menu template
-template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
-template_download_shelf	Download photo shelf
+template_need_download	Chaw thlalak vantlang shelf (~chaw 1,459) download la, chumi hnuah hming awm lo te chu i menu-ah import rawh.
+template_download_shelf	Thlalak shelf download rawh
 template_info	Pawl {c} leh chaw {d} thlalak tel, telh turin inpe. Man chu ₹0 atangin a tan — nakinah i ta dah.
 template_import	Template kim lut
 template_confirm	Chaw {d} an pawl nen telh? I neih tawh chaw chu an nih dan a awm.

@@ -101,6 +101,19 @@ bill_item_col_sep	Imigca yeekholamu
 slip_columns	Iikholamu
 slip_col_header	Intloko
 bill_line_logo	Ilogo
+bill_line_shop	Ivenkile
+bill_line_address	Idilesi
+bill_line_fssai	FSSAI
+bill_line_title	Isihloko
+bill_line_customer	Umthengi
+bill_line_bill_no	Inombolo yetyala
+bill_line_time	Ixesha
+bill_line_cashier	Umcangci
+bill_line_table	Itafile
+bill_line_items	Izinto
+bill_line_total	Isixa
+bill_line_footer	Ezantsi
+bill_line_upi	UPI
 bill_logo_picture	Umfanekiso
 bill_logo_choose	Khetha umfanekiso
 bill_logo_remove	Susa umfanekiso
@@ -128,6 +141,12 @@ bill_item_piece_off	Icinyiwe
 bill_total_qty	Inani elipheleleyo
 bill_total_subtotal	Isixa esincinci
 bill_total_grand	Isixa esikhulu
+bill_total_number_under	Inani phantsi kwe
+bill_total_caption_under	Ileyibhile phantsi kwe
+bill_total_own_line	Umgca walo
+bill_total_caption_with	Kunye nenani
+bill_total_caption_none	Akukho leyibhile
+bill_total_place_help	Umgca walo ishicilela esi sixa sodwa. Phantsi kwekholamu, inani laso lishicilelwa kuloo kholamu yezinto, ngobukhulu nobungqingqwa balo mgca; izixa zabelana ngomqolo omnye de ikholamu ithathwe, emva koko kuqala umqolo omtsha. Ileyibhile ihamba nenani, phantsi kwenye ikholamu, okanye iyashiywa. Imigca yerhafu, yenkonzo, yokurawunda neyentlawulo ilandela Isixa esincinci.
 reprint_incl	Ekushicilelweni
 reprint_skip	Tsiba
 reprint_skip_meta	Tsiba ukushicilela kwakhona
@@ -170,7 +189,7 @@ settings_sec_pickers	Iindawo · izikhululo · amaxabiso erhafu
 settings_sec_printers	Abashicileli
 settings_sec_bill	Ufomathi wetyala ne-KOT
 settings_sec_selling	Iinkqubo neentengiso
-bill_kot_tab_bill	Ityala
+bill_kot_tab_bill	Ibhili
 bill_kot_tab_kot	KOT
 settings_sec_alerts	Izilumkiso
 alerts_help	Ixesha imiyalezo yesimo ihlala esikrini sakho (olu ngeno).
@@ -178,20 +197,20 @@ snack_secs_ph	Imizuzwana (3–60, esisiseko 10)
 snack_secs_save	Gcina ixesha lesilumkiso
 snack_secs_saved	Ixesha lesilumkiso ligciniwe — imizuzwana {n}
 settings_sec_whatsapp	WhatsApp
-whatsapp_cloud_help	Use your own Meta WhatsApp Cloud API. Create a System User token with whatsapp_business_messaging (temporary dashboard tokens expire). Credentials stay on this Server only — never on extra tills. Accepted means Meta took the request, not that the guest received it.
-whatsapp_phone_id_ph	Phone Number ID
-whatsapp_token_ph	Access Token (leave blank to keep)
-whatsapp_template_ph	Bill template name (optional)
-whatsapp_template_lang_ph	Template language (e.g. en)
-whatsapp_enable	Enable
+whatsapp_cloud_help	Sebenzisa eyakho i-Meta WhatsApp Cloud API. Yenza ithokheni ye-System User ene-whatsapp_business_messaging (iithokheni zexeshana zedeshibhodi ziyaphelelwa). Iinkcukacha zihlala kule seva kuphela — azize zibe kwezinye iikhawuntara. “Yamkelwe” kuthetha ukuba i-Meta isithathile isicelo, hayi ukuba undwendwe lusifumene.
+whatsapp_phone_id_ph	I-ID yenombolo yefowuni
+whatsapp_token_ph	Ithokheni yofikelelo (shiya ingenanto ukuze uyigcine)
+whatsapp_template_ph	Igama letemplate yebhili (akuyomfuneko)
+whatsapp_template_lang_ph	Ulwimi lwetemplate (umz. en)
+whatsapp_enable	Vumela
 whatsapp_disable	Off
-whatsapp_save	Save WhatsApp
-whatsapp_test	Test connection
-whatsapp_disconnect	Disconnect
-whatsapp_send_bill	Send via WhatsApp
-whatsapp_consent	WhatsApp OK
-whatsapp_consent_help	Guest agreed to receive WhatsApp messages. A phone number alone is not consent.
-whatsapp_server_only	Configure WhatsApp on the shop Server device
+whatsapp_save	Gcina i-WhatsApp
+whatsapp_test	Vavanya uqhagamshelo
+whatsapp_disconnect	Qhawula uqhagamshelo
+whatsapp_send_bill	Thumela nge-WhatsApp
+whatsapp_consent	WhatsApp Kulungile
+whatsapp_consent_help	Undwendwe luvumile ukufumana imiyalezo ye-WhatsApp. Inombolo yefowuni yodwa ayiyomvume.
+whatsapp_server_only	Seta i-WhatsApp kwisixhobo seseva sevenkile
 settings_sec_backup	Ugcino lwasemva nokubuyisela
 settings_sec_diag	Uvavanyo
 settings_sec_privacy	Ubumfihlo
@@ -637,7 +656,7 @@ choose_device_use	Khetha iSeva okanye iKlayenti.
 paired_note	Kudityanisiwe. Vula ukuze uthengise, okanye Hlaziya okutsha.
 last_update_at	Uhlaziyo lokugqibela: {time}.
 pair_intro	Fumana iseva, okanye chwetheza idilesi yayo ngekhowudi yokudibanisa.
-pair_resume_hint	Already paired — enter your shop PIN, or Forget this shop to pair another.
+pair_resume_hint	Sele idityanisiwe — faka i-PIN yevenkile yakho, okanye uchukumise “Libala le venkile” ukuze udibanise enye.
 queue_waiting	Kulindwe ukufikelela evenkileni ({n}):
 queue_tries	Kuzanywe amaxesha {n} · impendulo yokugqibela: {e}
 save_backup_copy	Gcina ikopi yogcino lwasemva…
@@ -739,7 +758,7 @@ printer_format_custom_added	Iprofayile eyakho yongezwe kule ndawo
 add_printer	Yongeza umshicileli
 remove_printer	Susa
 route_pick_ph	Ityala okanye isikhululo sekhithini
-route_bill	Ityala
+route_bill	Ibhili
 route_default_kitchen	Akukho sikhululo (ukutya okungabelwanga)
 route_kot_station	Ikhithini
 route_dont_print	Akukho mshicileli
@@ -754,13 +773,18 @@ station_vps_dd	Abashicileli balesi sikhululo
 station_vps_dd_n	Abashicileli {n} · cofa ukuze utshintshe
 bill_printers_dd	Abashicileli betyala
 bill_printers_dd_n	Abashicileli {n} betyala · cofa ukuze utshintshe
-paper_heading	Iphepha
+paper_heading	Iphepha le-virtual
 paper_size	{w} × {h} mm
 paper_roll	umqulu we-{w} mm
 paper_not_set	iphepha alikaziwa okwangoku
-paper_length_mm	Ubude (mm)
-printer_paper_help	Iphepha lalo mshicileli kwi-mm. UBude obungenanto ngumqulu: irisithi nganye inde njengomxholo wayo. Fumana abashicileli igcwalisa iphepha elingenanto kumqhubi womshicileli (umqulu we-80 mm xa ingakwazi ukuxela) kwaye ayize iguqule elimiselweyo.
-preview_help	Le risithi kwiphepha lomshicileli okhethwe ngezantsi, njengoko ishicilelwa apho: ubungakanani bokwenyani ukusuka kwikona ephezulu ekhohlo efikelelwa ngumshicileli (ngwevu: imiphetho engafikelelwayo), irisithi ende kumaphepha amaninzi, yonke into egqitha umphetho wephepha iyanqunyulwa. Ukukhetha umshicileli kutshintsha umboniso kuphela; iphepha lomshicileli ngamnye limiselwa phantsi kwe-Abashicileli.
+virtual_width_mm	Ububanzi be-virtual (mm)
+virtual_length_mm	Ubude be-virtual (mm)
+reported_width_mm	Ububanzi obuxeliweyo (mm)
+reported_length_mm	Ubude obuxeliweyo (mm)
+reported_paper	Elixeliweyo: {paper}
+virtual_paper	I-virtual: {paper}
+printer_paper_help	Elixeliweyo liphepha umqhubi walo mshicileli omiselwe kulo; i-app iyalifunda kuphela, kwaye N/A ithetha ukuba akukho mqhubi wokubuzwa. I-virtual liphepha othi wena likho ngokwenene kumshicileli, kwi-mm; ubude obungenanto ngumqulu. Umshicileli ushicilela kwiphepha lawo; iphepha le-virtual lixelela i-app ukuba lingakanani kulo eliliphepha lokwenyani, ukwenzela umboniso, ubude bephepha kunye nendawo yerisithi. Fumana abashicileli igcwalisa iphepha le-virtual elingenanto kwaye ayize iguqule olimisele wena.
+preview_help	Le risithi njengoko ishicilelwa kumshicileli okhethwe ngezantsi, ngobungakanani bokwenyani kwiphepha lawo le-virtual. Okumhlophe kulapho ushicilela khona, iphepha elingwevu alifikelelwa ngumshicileli, kwaye i-inki ephaphathekileyo iyanqunyulwa. Izikwere ezilithoba ziliphepha: cofa apho irisithi ifanele ihlale khona. Irisithi ende iqhubeka kumaphepha amaninzi. Ukukhetha umshicileli kutshintsha umboniso kuphela.
 job_layout	Uyilo
 job_delivery	Indlela umsebenzi othunyelwa ngayo
 job_delivery_help	Uxwebhu lwenkqubo, iibhayithi ezimsulwa, okanye i-ESC/POS. Ityala netikiti yekhithini nganye igcina eyayo. Nawuphi na umsebenzi unokuya kuwo nawuphi na umshicileli uFumana awugcinileyo.
@@ -1053,7 +1077,7 @@ tile_occupied	Ihlaliwe
 tile_food_ready	Ukutya kulungile
 tile_bill_printed	Ityala lishicilelwe
 tile_paid	Ihlawulwe
-tile_bill_btn	Ityala
+tile_bill_btn	Ibhili
 tile_occupy_btn	Hlalisa iindwendwe
 tile_free_btn	Khulula itafile
 tile_ready_btn	Khulula itafile
@@ -1266,8 +1290,8 @@ taxable_value	Ixabiso elirhafiswayo
 gst_inside_price_note	({tax} ngaphakathi)
 start_with_template	Qala ngitemplate yoluhlu lwethu
 template_heading	Itemplate yoluhlu lwethu
-template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
-template_download_shelf	Download photo shelf
+template_need_download	Khuphela ishelufa yoluntu yeefoto zokutya (~ukutya okuyi-1,459), uze ungenise amagama angekhoyo kuluhlu lwakho.
+template_download_shelf	Khuphela ishelufa yeefoto
 template_info	Iindidi {c} nokutya {d} okuneefoto, kulungele ukongeza. Amaxabiso aqala kwi-₹0 — misa awakho emva koko.
 template_import	Ngenisa itemplate epheleleyo
 template_confirm	Yongeza ukutya {d} neendidi zako? Ukutya oselenakho kuhlala kunjalo.

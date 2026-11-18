@@ -180,4 +180,30 @@ mod ux_rules_tests {
         drop(store);
         let _ = std::fs::remove_file(path);
     }
+
+    /// A label/value row whose value is too wide for the row goes label
+    /// above, value under it — Makepad has no flex-shrink, so the value kept
+    /// its width and the label wrapped one letter per line (Moklanjo "Where
+    /// things print" at 420 px, 2026-11-17). An amount beside its label
+    /// stays where it was. DEV.md bug 7j.
+    #[test]
+    fn label_value_rows_stack_when_the_value_is_wide() {
+        // A phone card is about 315 px wide inside its padding.
+        assert!(kv_stacks(315.0, 330.0), "a value wider than the row");
+        assert!(kv_stacks(315.0, 230.0), "a value that leaves the label under 96 px");
+        assert!(!kv_stacks(315.0, 120.0), "an amount beside its label");
+        assert!(!kv_stacks(1200.0, 330.0), "the same value on a desk");
+        assert!(!kv_stacks(315.0, 0.0), "a value not measured yet");
+        assert!(!kv_stacks(0.0, 330.0), "a row not measured yet");
+        let ui = include_str!("../ui_script.rs");
+        for face in ["KvStack := View{", "KvStackRtl := View{"] {
+            let at = ui.find(face).unwrap_or_else(|| panic!("{face} is missing"));
+            let end = ui[at..].find("\n                Line := View{").map_or(ui.len(), |e| at + e);
+            let block = &ui[at..end];
+            assert!(block.contains("flow: Down"), "{face} the label sits above the value");
+            let v = &block[block.find("v := WrapLabel{").unwrap_or_else(|| panic!("{face} has no value"))..];
+            let v = &v[..v.find('}').unwrap_or(v.len())];
+            assert!(v.contains("width: Fill"), "{face} the value wraps at the row's width");
+        }
+    }
 }

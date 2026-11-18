@@ -101,6 +101,19 @@ bill_item_col_sep	د کالم قواعد
 slip_columns	ستنې
 slip_col_header	سرلیک
 bill_line_logo	لوګو
+bill_line_shop	هټۍ
+bill_line_address	پته
+bill_line_fssai	FSSAI
+bill_line_title	عنوان
+bill_line_customer	پیرودونکي
+bill_line_bill_no	د بل شمیره
+bill_line_time	وخت
+bill_line_cashier	کیشیر
+bill_line_table	میز
+bill_line_items	توکي
+bill_line_total	ټول
+bill_line_footer	فوټر
+bill_line_upi	UPI
 bill_logo_picture	انځور
 bill_logo_choose	انځور وټاکئ
 bill_logo_remove	انځور لرې کړئ
@@ -128,6 +141,12 @@ bill_item_piece_off	بند
 bill_total_qty	ټول مقدار
 bill_total_subtotal	فرعي مجموعه
 bill_total_grand	ستره مجموعه
+bill_total_number_under	شمېره د دې لاندې
+bill_total_caption_under	لیبل د دې لاندې
+bill_total_own_line	خپله کرښه
+bill_total_caption_with	له شمېرې سره
+bill_total_caption_none	بې لیبله
+bill_total_place_help	«خپله کرښه» دا مجموعه یوازې چاپوي. د ستنې لاندې یې شمېره د توکو په هماغه ستنه کې، د دې کرښې په اندازه او پنډوالي چاپېږي؛ مجموعې یو کتار شریکوي تر هغو چې یوه ستنه ونیول شي، بیا نوی کتار پیلېږي. لیبل له شمېرې سره، د بلې ستنې لاندې ځي، یا پرېښودل کېږي. د مالیې، خدمت، ګردولو او تادیې کرښې د «فرعي مجموعه» پیروي کوي.
 reprint_incl	په چاپ کې
 reprint_skip	پریږده
 reprint_skip_meta	د بیا رغونې چاپ پریږدئ
@@ -178,20 +197,20 @@ snack_secs_ph	ثانیې (3-60، ډیفالټ 10)
 snack_secs_save	د خبرتیا وخت خوندي کړئ
 snack_secs_saved	د خبرتیا وخت خوندي شوی — {n} ثانیې
 settings_sec_whatsapp	WhatsApp
-whatsapp_cloud_help	Use your own Meta WhatsApp Cloud API. Create a System User token with whatsapp_business_messaging (temporary dashboard tokens expire). Credentials stay on this Server only — never on extra tills. Accepted means Meta took the request, not that the guest received it.
-whatsapp_phone_id_ph	Phone Number ID
-whatsapp_token_ph	Access Token (leave blank to keep)
-whatsapp_template_ph	Bill template name (optional)
-whatsapp_template_lang_ph	Template language (e.g. en)
-whatsapp_enable	Enable
+whatsapp_cloud_help	خپل Meta WhatsApp Cloud API وکاروئ. د whatsapp_business_messaging سره یو System User ټوکن جوړ کړئ (د ډشبورډ لنډمهاله ټوکنونه پای ته رسېږي). دا معلومات یوازې په همدې سرور کې پاتې کېږي — هېڅکله په اضافي ټیلونو کې نه. “ومنل شو” په دې مانا چې Meta غوښتنه واخیسته، نه دا چې میلمه پیغام ترلاسه کړ.
+whatsapp_phone_id_ph	د تلیفون شمېرې ID
+whatsapp_token_ph	د لاسرسي ټوکن (د همدې ساتلو لپاره یې تش پرېږدئ)
+whatsapp_template_ph	د بل د کينډۍ نوم (اختیاري)
+whatsapp_template_lang_ph	د کينډۍ ژبه (لکه en)
+whatsapp_enable	فعال کړئ
 whatsapp_disable	Off
-whatsapp_save	Save WhatsApp
-whatsapp_test	Test connection
-whatsapp_disconnect	Disconnect
-whatsapp_send_bill	Send via WhatsApp
+whatsapp_save	WhatsApp خوندي کړئ
+whatsapp_test	اړیکه وازمویئ
+whatsapp_disconnect	اړیکه پرې کړئ
+whatsapp_send_bill	د WhatsApp له لارې ولېږئ
 whatsapp_consent	WhatsApp OK
-whatsapp_consent_help	Guest agreed to receive WhatsApp messages. A phone number alone is not consent.
-whatsapp_server_only	Configure WhatsApp on the shop Server device
+whatsapp_consent_help	میلمه د WhatsApp پیغامونو ترلاسه کولو سره موافقه کړې ده. یوازې د تلیفون شمېره درلودل رضایت نه دی.
+whatsapp_server_only	WhatsApp د هټۍ په سرور وسیله کې تنظیم کړئ
 settings_sec_backup	بیک اپ او بیا رغونه
 settings_sec_diag	تشخیص
 settings_sec_privacy	محرميت
@@ -509,7 +528,7 @@ expense_heading	لګښت
 export_day	د صادراتو ورځ
 extra_note_bill_ph	په دې بل / پلور کې اضافي یادښت
 extra_note_expense_ph	په وروستي لګښت کې اضافي یادښت
-extra_tills_heading	تر هغه پورې اضافي
+extra_tills_heading	اضافي ټیلونه
 other_devices_help_heading	نور وسایل تنظیم کړئ
 other_devices_help	ي پرنټرونه په سرور کې تنظیم شوي (ترتیبات → چاپګر) — اضافي ټیلس هلته KOTs لیږي.
 forget_shop	دا هټۍ هېر کړئ
@@ -637,7 +656,7 @@ choose_device_use	سرور یا کلاینټ غوره کړئ.
 paired_note	جوړه شوې. د پلور لپاره خلاص کړئ، یا د وروستي لپاره تازه کړئ.
 last_update_at	وروستی تازه: {time}.
 pair_intro	سرور ومومئ، یا د هغې پته او جوړه کوډ ټایپ کړئ.
-pair_resume_hint	Already paired — enter your shop PIN, or Forget this shop to pair another.
+pair_resume_hint	له مخکې جوړه شوې ده — د خپلې هټۍ PIN ولیکئ، یا د بلې هټۍ سره د جوړېدو لپاره “دا هټۍ هېر کړئ” کېکاږئ.
 queue_waiting	هټۍ ته د رسیدو انتظار ({n}):
 queue_tries	{n} ځله هڅه شوې · وروستی ځواب: {e}
 save_backup_copy	یو بیک اپ کاپي خوندي کړئ ...
@@ -754,13 +773,18 @@ station_vps_dd	د دې سټیشن لپاره چاپګر
 station_vps_dd_n	{n} چاپګر · د بدلولو لپاره ټایپ کړئ
 bill_printers_dd	د بل لپاره چاپګر
 bill_printers_dd_n	د بیل لپاره {n} پرنټر · د بدلون لپاره ټایپ کړئ
-paper_heading	کاغذ
+paper_heading	مجازي کاغذ
 paper_size	{w} × {h} mm
 paper_roll	{w} mm رول
 paper_not_set	کاغذ لا معلوم نه دی
-paper_length_mm	اوږدوالی (mm)
-printer_paper_help	د دې چاپګر کاغذ په mm. خالي اوږدوالی رول دی: هره رسید د خپل محتوا په اندازه اوږده ده. «چاپګر ومومئ» خالي کاغذ د چاپګر له ډرایور ډکوي (که ونه شي ویلای، 80 mm رول) او هېڅکله مخکې ټاکل شوی نه بدلوي.
-preview_help	دا رسید لاندې ټاکل شوي چاپګر په کاغذ، لکه څنګه چې هلته چاپېږي: د هغه پورته کیڼ کونج څخه چې چاپګر ورته رسېږي په ریښتیني اندازه (خړ: هغه څنډې چې نه رسېږي)، اوږده رسید په ډېرو پاڼو، د کاغذ له څنډې هاخوا هرڅه پرې کېږي. د چاپګر ټاکل یوازې مخکتنه بدلوي؛ د هر چاپګر کاغذ په «چاپګر» کې ټاکل کېږي.
+virtual_width_mm	مجازي سور (mm)
+virtual_length_mm	مجازي اوږدوالی (mm)
+reported_width_mm	راپور شوی سور (mm)
+reported_length_mm	راپور شوی اوږدوالی (mm)
+reported_paper	راپور شوی: {paper}
+virtual_paper	مجازي: {paper}
+printer_paper_help	راپور شوی هغه کاغذ دی چې د دې چاپګر ډرایور پرې تنظیم دی؛ اپلیکیشن یې یوازې لولي، او N/A مانا لري چې د پوښتلو لپاره ډرایور نشته. مجازي هغه کاغذ دی چې تاسو وایئ په رښتیا په چاپګر کې دی، په mm؛ خالي اوږدوالی رول دی. چاپګر په خپل کاغذ چاپ کوي؛ مجازي کاغذ اپلیکیشن ته وایي چې له هغه څخه څومره ریښتینی کاغذ دی، د مخکتنې، د پاڼې اوږدوالي او د رسید ځای لپاره. «چاپګر ومومئ» خالي مجازي کاغذ ډکوي او هېڅکله هغه نه بدلوي چې تاسو ټاکلی وي.
+preview_help	دا رسید لکه څنګه چې لاندې ټاکل شوي چاپګر کې چاپېږي، د هغه په مجازي کاغذ په ریښتیني اندازه. سپین هغه ځای دی چې چاپېږي، خړ کاغذ ته چاپګر نه رسېږي، او کمرنګه رنګ پرې کېږي. نهه خانې کاغذ دی: هلته ټک وکړئ چې رسید باید وي. اوږد رسید نورو پاڼو ته ځي. د چاپګر ټاکل یوازې مخکتنه بدلوي.
 job_layout	ترتیب
 job_delivery	څنګه دنده لیږل کیږي
 job_delivery_help	ر یو خپل ځان ساتي. یا هم دنده کولی شي هر پرنټر ته الړ شي چې موندل یې خوندي کړي.
@@ -1048,7 +1072,7 @@ add_a_table	یو میز اضافه کړئ
 add_station_heading	د پخلنځي سټیشن اضافه کړئ
 categories_help	ولو لپاره وکاروئ. عکس کټګورۍ ته انځور ورکوي؛ پرته له دې چې دا خپل ابتدايي ښیي.
 dish_search_ph	د توکي نوم - زموږ خواړه وپلټئ یا خپل ځان ولیکئ
-tile_free	وړيا
+tile_free	خالي
 tile_occupied	نیول شوی
 tile_food_ready	خواړه چمتو دي
 tile_bill_printed	بل چاپ شوی
@@ -1163,7 +1187,7 @@ kot_show_station	سټیشن
 kot_hide_station	سټیشن پټ کړئ
 kot_show_table	میز
 kot_hide_table	میز پټ کړئ
-kot_show_kot_no	شمیره CAT
+kot_show_kot_no	شمیره KOT
 kot_hide_kot_no	د KOT نمبر پټ کړئ
 kot_width	د مخکتنې لفاف (د KOT ټب کې د مینځپانګې چوکۍ تنظیم کړئ)
 kot_width_58	58 mm
@@ -1266,8 +1290,8 @@ taxable_value	د مالیې وړ ارزښت
 gst_inside_price_note	({tax} ټول شموله)
 start_with_template	زموږ د مینو ټیمپلیټ سره پیل کړئ
 template_heading	زموږ د مینو ټیمپلیټ
-template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
-template_download_shelf	Download photo shelf
+template_need_download	د خوړو د انځورونو عامه المارۍ (~1,459 خواړه) ډاونلوډ کړئ، بیا هغه نومونه چې نشته خپل مینو ته راوړئ.
+template_download_shelf	د انځورونو المارۍ ډاونلوډ کړئ
 template_info	{d} {c} ره خواړه، اضافه کولو ته چمتو دي. نرخونه له ₹0 پیل کیږي - وروسته خپل ترتیب کړئ.
 template_import	بشپړ ټیمپلیټ وارد کړئ
 template_confirm	{d} د دوی کټګوریو سره اضافه کړئ؟ هغه لوښي چې تاسو یې دمخه لرئ لکه څنګه چې دوی دي.

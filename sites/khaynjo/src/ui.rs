@@ -1579,7 +1579,7 @@ script_mod! {
                                                 draw_selection +: { color: #xCFE3FFFF }
                                                 draw_block +: { selection_color: #xCFE3FFFF }
                                             }
-                                            OnRedBody{body: "Khaynjo is a Kumkaj product by Gotigin."}
+                                            OnRedBody{body: "Gotigin · GOTIGIN SOFTWARE & HARDWARE PRIVATE LIMITED · Kumkaj · Khaynjo."}
                                         }
                                     }
                                     footer_links := View{

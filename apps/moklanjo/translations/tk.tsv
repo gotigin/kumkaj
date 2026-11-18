@@ -86,7 +86,7 @@ sidebar_hidden	Gizlenen
 sidebar_always_on	Elmydama barda
 sidebar_shown_hint	Gapdal demir / aşaky belliklerde görkezilýär
 sidebar_hidden_hint	Bardan gizlenen
-sidebar_menu_items	Menýu we menýu menýu elementleri
+sidebar_menu_items	Menýu we menýu elementleri
 sidebar_enable_all	Hemmesini işlet
 sidebar_disable_all	Hemmesini öçüriň
 sidebar_order_saved	Gapdal paneli tertibi saklandy
@@ -95,7 +95,7 @@ amounts_hide	Gizle
 amounts_show	Görkez
 no_sale_yet	Entek satuw ýok
 favorites	Halanýanlar
-favorites_help	Oftenygy-ýygydan satýan menýu menýu elementleri, girişiňiz üçin saklanýar. Hasaba birini goşuň ýa-da aşakdaky menýu elementlerinden sanawyňyzy guruň.
+favorites_help	Oftenygy-ýygydan satýan menýu elementleri, girişiňiz üçin saklanýar. Hasaba birini goşuň ýa-da aşakdaky menýu elementlerinden sanawyňyzy guruň.
 your_favorites	Halaýanlaryňyz
 all_items	Menýu elementleriniň hemmesi
 no_favorites	Entek halanýanlar ýok - aşakdaky sanawdan menýu elementlerini goşuň.
@@ -192,7 +192,7 @@ snack_secs_save	Duýduryş wagtyny tygşytlaň
 snack_secs_saved	Duýduryş wagty tygşytlandy - {n} sekunt
 snack_secs_bad	San hökmünde sanlary giriziň (3–60)
 cancelled	Atyryldy
-cancelling	Cancelling…
+cancelling	Cancellingâ¦
 cancel	Elatyr
 opening_client	Müşderi açmak…
 preparing_desk	Stol taýýarlamak…
@@ -501,13 +501,18 @@ job_size	Şriftiň ululygy
 job_size_ph	meselem 18, 20, 26…
 test_receipt_format	Synag kwitansiýasy
 test_label_format	Synag belligi
-paper_heading	Kagyz
+paper_heading	Wirtual kagyz
 paper_size	{w} × {h} mm
 paper_roll	{w} mm rulon
 paper_not_set	kagyz entek belli däl
-paper_length_mm	Uzynlyk (mm)
-printer_paper_help	Bu printeriň kagyzy mm-de. Boş Uzynlyk rulondyr: her çek mazmuny ýaly uzyn bolýar. Printerleri tapyň boş kagyzy printeriň draýwerinden doldurýar (aýdyp bilmese, 80 mm rulon) we eýýäm bellenen kagyzy hiç haçan üýtgetmeýär.
-preview_help	Aşakda saýlanan printeriň kagyzyndaky bu çek, ol ýerde çap edilişi ýaly: printeriň ýetýän ýokarky çep burçundan hakyky ölçegde (çal: ýetmeýän gyralary), uzyn çek has köp sahypada, kagyzyň gyrasyndan aşýan ähli zat kesilýär. Printer saýlamak diňe deslapky görnüşi üýtgedýär; her printeriň kagyzy Çap edijiler bölüminde bellenýär.
+virtual_width_mm	Wirtual ini (mm)
+virtual_length_mm	Wirtual uzynlyk (mm)
+reported_width_mm	Habar berlen ini (mm)
+reported_length_mm	Habar berlen uzynlyk (mm)
+reported_paper	Habar berlen: {paper}
+virtual_paper	Wirtual: {paper}
+printer_paper_help	Habar berlen — bu printeriň draýweriniň sazlanan kagyzy; programma ony diňe okaýar, “N / A.” bolsa soralmaly draýweriň ýokdugyny aňladýar. Wirtual — printerde hakykatdan bar diýip siziň aýdýan kagyzyňyz, mm-de; boş uzynlyk rulondyr. Printer öz kagyzyna çap edýär; wirtual kagyz programma onuň näçesiniň hakyky kagyzdygyny aýdýar: deslapky görnüş, sahypanyň uzynlygy we çegiň ýeri üçin. Printerleri tapyň boş wirtual kagyzy doldurýar we siziň bellän kagyzyňyzy hiç haçan üýtgetmeýär.
+preview_help	Bu çek aşakda saýlanan printerde çap edilişi ýaly, onuň wirtual kagyzynda hakyky ölçegde. Ak ýer — çap edilýän ýer, çal kagyza printer ýetmeýär, solgun syýa bolsa kesilýär. Dokuz inedördül — kagyz: çegiň durmaly ýerine degiň. Uzyn çek indiki sahypalara geçýär. Printer saýlamak diňe deslapky görnüşi üýtgedýär.
 slip_col_width	Ini (mm)
 no_printer_assigned	Printer ýok
 printer_target_default	bu kompýuteriň adaty printeri (boş salgy)
@@ -609,7 +614,7 @@ pay_selected_heading	Saýlanan tölegi (karzy üzüň / öňünden alyň)
 write_off_heading	Hasaplaň (tölegsiz aýdyň)
 pay_ap_heading	Biziň bergimizi töläň (AP)
 country_tax	& Urt we salgyt
-extra_tills_heading	Goşmaça tölegler
+extra_tills_heading	Goşmaça kassalar
 other_devices_help_heading	Beýleki enjamlary guruň
 other_devices_help	Bu enjamda (Serwer): Beýleki enjamlar extra Goşmaça işlemäge rugsat beriň. Jübütleme kody we Wi - Fi adresine üns beriň. Görkezilse, beýleki enjamlaryň birikmegine rugsat beriň. Kompýuterde, Bu kompýuterden Başlamak düwmesine basyň. Birek-birege enjamda: programmany guruň, Müşderi reodeimini saýlaň, dükanyň serwerini tapyň (ýa-da adresi ýazyň), jübütleme koduny giriziň, Indi jübütläň. Serwer täzeden jogap bereninde Wi - Fi düşse we buýruklar enjamda garaşýar.
 your_brand	Siziň markaňyz (programmada)
@@ -680,7 +685,7 @@ wipe_schema_done	Dükany gurnamak süpürildi - Dowam etmek üçin Serwer ýa-da
 rounded_total	Jemi jemlenen
 setup_app_moklanjo	Moklanjo guruň
 shop_logo_optional	Dükanyň nyşany (islege görä)
-stock_type_help	Menýu elementiniň adyny (onuň bir bölegi ýeterlik), mukdaryny ýazyň, soňra sazlaň. Entek sanalmadyk menýu menýu elementleri bir gezek yzarlamaga başlamaly.
+stock_type_help	Menýu elementiniň adyny (onuň bir bölegi ýeterlik), mukdaryny ýazyň, soňra sazlaň. Entek sanalmadyk menýu elementleri bir gezek yzarlamaga başlamaly.
 team_owner_help	Işe alyň: iş saýlaň (Kassir / Dolandyryjy), ady + PIN-i başlaň, soňra Goşuň. Diňe bu adam tapawutlanýan bolsa: aşakdaky ekranlary we hukuklary açyň, iş ýerini ýazdyryň. Her kim aşaky böleginde öz PIN-i üýtgedýär - eýesi başga biriniňkini üýtgedip bilmez.
 they_owe_us	Olar bize bergili
 unit_at_cap	Bölüm @
@@ -713,7 +718,7 @@ logo_default	Logotip: Kumkaj belligi (deslapky) - bar bolsa özüňizi saýlaň
 tmpl_current	Häzirki: {} - {}
 tmpl_selected	Saýlanan: {} - {}
 setup_complete	Gurnama tamamlandy
-onboard_fresh_tmpl	Taze · {} - katalog boş başlaýar; menýu menýu elementlerine menýu elementlerini goşuň, soňra ýerine ýetirildi.
+onboard_fresh_tmpl	Taze · {} - katalog boş başlaýar; menýu elementlerine menýu elementlerini goşuň, soňra ýerine ýetirildi.
 onboard_book_tmpl	Ledger · {} - menýu elementlerini goşuň we karz açyň, soňra ýerine ýetirildi.
 onboard_template_tmpl	Isleseňiz ýeriň adyny aýdyň, soň nädip başlamalydygyny saýlaň.
 tmpl_blurb	Kurýer kitaplary we bron ediş stoly: iberijiler, daşaýjylar, gündelik kitap, AWB.

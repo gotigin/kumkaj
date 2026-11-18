@@ -67,13 +67,19 @@ bill_item_amount	Kwota
 bill_item_note	Uwaga dotycząca przedmiotu
 bill_item_col_sep	Reguły kolumnowe
 slip_col_width	Szerokość (mm)
-paper_heading	Papier
+paper_heading	Papier wirtualny
 paper_size	{w} × {h} mm
 paper_roll	rolka {w} mm
 paper_not_set	papier jeszcze nieznany
-paper_length_mm	Długość (mm)
-printer_paper_help	Papier tej drukarki w mm. Pusta Długość to rolka: każdy paragon jest tak długi jak jego treść. Znajdź drukarki uzupełnia pusty papier ze sterownika drukarki (rolka 80 mm, gdy nie potrafi powiedzieć) i nigdy nie zmienia już ustawionego.
-preview_help	Ten paragon na papierze drukarki wybranej poniżej, tak jak się na niej drukuje: w rzeczywistym rozmiarze od lewego górnego rogu, do którego sięga drukarka (szary: krawędzie, do których nie sięga), długi paragon na kilku arkuszach, wszystko poza krawędzią papieru jest obcinane. Wybór drukarki zmienia tylko podgląd; papier każdej drukarki ustawia się w Drukarki.
+na	Nie dotyczy
+virtual_width_mm	Szerokość wirtualna (mm)
+virtual_length_mm	Długość wirtualna (mm)
+reported_width_mm	Szerokość zgłoszona (mm)
+reported_length_mm	Długość zgłoszona (mm)
+reported_paper	Zgłoszony: {paper}
+virtual_paper	Wirtualny: {paper}
+printer_paper_help	Zgłoszony to papier, na który ustawiony jest sterownik tej drukarki; aplikacja tylko go odczytuje, a „Nie dotyczy” oznacza, że nie ma sterownika, którego można zapytać. Wirtualny to papier, który według Ciebie naprawdę jest w drukarce, w mm; pusta długość to rolka. Drukarka drukuje na swoim własnym papierze; papier wirtualny mówi aplikacji, ile z niego jest prawdziwym papierem, na potrzeby podglądu, długości strony i położenia paragonu. Znajdź drukarki uzupełnia pusty papier wirtualny i nigdy nie zmienia tego, który ustawisz.
+preview_help	Ten paragon tak, jak drukuje się na drukarce wybranej poniżej, w rzeczywistym rozmiarze na jej papierze wirtualnym. Białe to miejsce druku, szary papier jest poza zasięgiem drukarki, a wyblakły tusz zostaje obcięty. Dziewięć kwadratów to papier: dotknij tam, gdzie ma znaleźć się paragon. Długi paragon przechodzi na kolejne strony. Wybór drukarki zmienia tylko podgląd.
 slip_col_start	Odstęp na początku (px)
 slip_col_end	Odstęp na końcu (px)
 slip_columns_help	Szerokość każdej kolumny obejmuje jej odstęp na początku i na końcu. Tekst zawija się w obrębie swojej kolumny; to, co wykracza poza szerokość treści, jest obcinane – na papierze i w podglądzie.
@@ -88,6 +94,12 @@ bill_item_piece_off	Wyłączone
 bill_total_qty	Całkowita ilość
 bill_total_subtotal	Suma podrzędna
 bill_total_grand	Wielka suma
+bill_total_number_under	Liczba pod
+bill_total_caption_under	Etykieta pod
+bill_total_own_line	Własna linia
+bill_total_caption_with	Przy liczbie
+bill_total_caption_none	Bez etykiety
+bill_total_place_help	Własna linia drukuje tę sumę osobno. Pod kolumną jej liczba jest drukowana w tej kolumnie pozycji, w rozmiarze i grubości tej linii; sumy dzielą jeden rząd, dopóki któraś kolumna nie zostanie zajęta, potem zaczyna się nowy rząd. Etykieta stoi przy liczbie, pod inną kolumną albo jest pomijana. Linie podatku, obsługi, zaokrąglenia i płatności idą za pozycją Suma podrzędna.
 kot_unassigned	Nieprzypisany
 settings_hub_help	Otwieraj jeden obszar na raz — mniej przewijania, wyraźniejsze wybory.
 settings_sec_language	Język i waluta
@@ -723,6 +735,20 @@ fssai_ph	FSSAI / licencja sklepu nr. (fakultatywny)
 bill_footer_ph	Stopka (np. Dziękuję, odwiedź ponownie)
 kot_field_on	pokaż
 kot_field_off	ukryć
+kot_field_show	Pokaż
+kot_field_hide	Ukryj
+bill_line_shop	Sklep
+bill_line_address	Adres
+bill_line_fssai	FSSAI
+bill_line_title	Tytuł
+bill_line_customer	Klient
+bill_line_bill_no	Nr rachunku
+bill_line_time	Czas
+bill_line_cashier	Kasjer
+bill_line_items	Przedmioty
+bill_line_total	Razem
+bill_line_footer	Stopka
+bill_line_upi	UPI
 kot_weight_light	Światło
 bill_kot_panel_help	Układ rachunku i szerokość treści. Kasjer wystawił lub uregulował rachunek — pełna historia sprzedaży pozostaje w księgach.
 std_size_ph	np. 18, 20, 26…
@@ -830,10 +856,10 @@ lane_declared_label	Faktura VAT
 lane_owner_label	Notatka gotówkowa
 money_lane_bill	Rachunek: {lane}
 
-removing	Removing…
-removed	Removed
-updating_order	Updating…
-order_updated	Order updated
+removing	Usuwanie…
+removed	Usunięto
+updating_order	Aktualizowanie…
+order_updated	Zamówienie zaktualizowane
 sel_copy	Kopiuj
 sel_select_all	Zaznacz wszystko
 sel_copied	Skopiowano

@@ -67,13 +67,19 @@ bill_item_amount	Iznos
 bill_item_note	Napomena o artiklu
 bill_item_col_sep	Linije kolona
 slip_col_width	Širina (mm)
-paper_heading	Papir
+paper_heading	Virtuelni papir
 paper_size	{w} × {h} mm
 paper_roll	rolna {w} mm
 paper_not_set	papir još nije poznat
-paper_length_mm	Dužina (mm)
-printer_paper_help	Papir ovog štampača u mm. Prazna Dužina je rolna: svaki račun je dug koliko i njegov sadržaj. Pronađi štampače popunjava prazan papir iz drajvera štampača (rolna od 80 mm kad ne može reći) i nikad ne mijenja već postavljen.
-preview_help	Ovaj račun na papiru štampača odabranog ispod, kako se tamo štampa: u stvarnoj veličini od gornjeg lijevog ugla do kojeg štampač dopire (sivo: rubovi do kojih ne dopire), dug račun na više listova, sve preko ruba papira se odsijeca. Odabir štampača mijenja samo pregled; papir svakog štampača postavlja se pod Štampači.
+na	N/D
+virtual_width_mm	Virtuelna širina (mm)
+virtual_length_mm	Virtuelna dužina (mm)
+reported_width_mm	Prijavljena širina (mm)
+reported_length_mm	Prijavljena dužina (mm)
+reported_paper	Prijavljeno: {paper}
+virtual_paper	Virtuelno: {paper}
+printer_paper_help	Prijavljeno je papir na koji je podešen drajver ovog štampača; aplikacija ga samo čita, a N/D znači da nema drajvera koji bi se pitao. Virtuelno je papir za koji vi kažete da je stvarno u štampaču, u mm; prazna dužina je rolna. Štampač štampa na svom papiru; virtuelni papir govori aplikaciji koliko je od toga stvarni papir, za pregled, dužinu stranice i mjesto računa. Pronađi štampače popunjava prazan virtuelni papir i nikada ne mijenja onaj koji ste vi postavili.
+preview_help	Ovaj račun onako kako se štampa na štampaču odabranom ispod, u stvarnoj veličini na njegovom virtuelnom papiru. Bijelo je gdje se štampa, sivi papir je van dometa štampača, a izblijedjela tinta se odsijeca. Devet kvadrata su papir: dodirnite gdje račun treba stajati. Dug račun prelazi na naredne stranice. Odabir štampača mijenja samo pregled.
 slip_col_start	Početni razmak (px)
 slip_col_end	Završni razmak (px)
 slip_columns_help	Širina svake kolone uključuje njen početni i završni razmak. Tekst se prelama unutar svoje kolone; ono što prelazi širinu sadržaja odsijeca se na papiru i u pregledu.
@@ -88,6 +94,12 @@ bill_item_piece_off	Isključeno
 bill_total_qty	Ukupna kol.
 bill_total_subtotal	Međuzbir
 bill_total_grand	Sveukupno
+bill_total_number_under	Broj ispod
+bill_total_caption_under	Natpis ispod
+bill_total_own_line	Vlastiti red
+bill_total_caption_with	Uz broj
+bill_total_caption_none	Bez natpisa
+bill_total_place_help	Vlastiti red štampa ovaj zbir zasebno. Ispod kolone njegov broj se štampa u toj koloni stavki, u veličini i debljini ovog reda; zbirovi dijele jedan red dok se neka kolona ne zauzme, a zatim počinje novi red. Natpis ide uz broj, ispod druge kolone ili se izostavlja. Redovi poreza, usluge, zaokruživanja i plaćanja prate Međuzbir.
 kot_unassigned	Nedodijeljeno
 settings_hub_help	Otvorite jedno područje odjednom — manje listanja, jasniji izbor.
 settings_sec_language	Jezik i valuta
@@ -723,6 +735,20 @@ fssai_ph	FSSAI / licenca radnje br. (opciono)
 bill_footer_ph	Podnožje (npr. Hvala, dođite opet)
 kot_field_on	prikaži
 kot_field_off	sakrij
+kot_field_show	Prikaži
+kot_field_hide	Sakrij
+bill_line_shop	Lokal
+bill_line_address	Adresa
+bill_line_fssai	FSSAI
+bill_line_title	Naslov
+bill_line_customer	Mušterija
+bill_line_bill_no	Br. računa
+bill_line_time	Vrijeme
+bill_line_cashier	Blagajnik
+bill_line_items	Stavke
+bill_line_total	Ukupno
+bill_line_footer	Podnožje
+bill_line_upi	UPI
 kot_weight_light	Tanko
 bill_kot_panel_help	Izgled računa i širina sadržaja. Blagajnik je taj koji je izdao ili izmirio račun — cijela priča o prodaji ostaje u knjigama.
 std_size_ph	npr. 18, 20, 26…
@@ -830,10 +856,10 @@ lane_declared_label	Porezni račun
 lane_owner_label	Gotovinski listić
 money_lane_bill	Račun: {lane}
 
-removing	Removing…
-removed	Removed
-updating_order	Updating…
-order_updated	Order updated
+removing	Uklanjanje…
+removed	Uklonjeno
+updating_order	Ažuriranje…
+order_updated	Narudžba ažurirana
 sel_copy	Kopiraj
 sel_select_all	Odaberi sve
 sel_copied	Kopirano

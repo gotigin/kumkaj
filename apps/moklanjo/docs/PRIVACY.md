@@ -4,9 +4,9 @@ _Last updated: 16 November 2026_
 
 ## Who we are
 
-Moklanjo is a courier and logistics-agency operating app from Gotigin under
-the Kumkaj brand. Application id on Google Play: `com.moklanjo`. Website:
-[moklanjo.com](https://moklanjo.com).
+**Trademark:** Gotigin. **Company:** GOTIGIN SOFTWARE & HARDWARE PRIVATE LIMITED.
+**Brand:** Kumkaj. **Product:** Moklanjo — courier and logistics-agency operating app.
+Application id on Google Play: `com.moklanjo`. Website: [moklanjo.com](https://moklanjo.com).
 
 ## Local-first — what stays on your device
 

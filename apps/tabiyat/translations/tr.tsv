@@ -79,13 +79,19 @@ bill_item_amount	Tutar
 bill_item_note	Rx / satış notu
 bill_item_col_sep	Sütun çizgileri
 slip_col_width	Genişlik (mm)
-paper_heading	Kâğıt
+paper_heading	Sanal kâğıt
 paper_size	{w} × {h} mm
 paper_roll	{w} mm rulo
 paper_not_set	kâğıt henüz bilinmiyor
-paper_length_mm	Uzunluk (mm)
-printer_paper_help	Bu yazıcının kâğıdı mm cinsinden. Boş Uzunluk rulodur: her fiş içeriği kadar uzundur. Yazıcıları bul, boş kâğıdı yazıcının sürücüsünden doldurur (söyleyemezse 80 mm rulo) ve önceden ayarlanmış olanı asla değiştirmez.
-preview_help	Bu fiş, aşağıda seçilen yazıcının kâğıdında, orada basıldığı gibi: yazıcının ulaştığı sol üst köşeden gerçek boyutta (gri: ulaşamadığı kenarlar), uzun fiş daha çok sayfada, kâğıt kenarını aşan her şey kesilir. Yazıcı seçmek yalnızca önizlemeyi değiştirir; her yazıcının kâğıdı Yazıcılar altında ayarlanır.
+na	Yok
+virtual_width_mm	Sanal genişlik (mm)
+virtual_length_mm	Sanal uzunluk (mm)
+reported_width_mm	Bildirilen genişlik (mm)
+reported_length_mm	Bildirilen uzunluk (mm)
+reported_paper	Bildirilen: {paper}
+virtual_paper	Sanal: {paper}
+printer_paper_help	Bildirilen, bu yazıcının sürücüsünün ayarlı olduğu kâğıttır; uygulama onu yalnızca okur ve “Yok”, sorulacak bir sürücü olmadığı anlamına gelir. Sanal, yazıcıda gerçekten bulunduğunu söylediğiniz kâğıttır, mm cinsinden; boş uzunluk rulodur. Yazıcı kendi kâğıdına basar; sanal kâğıt uygulamaya bunun ne kadarının gerçek kâğıt olduğunu söyler: önizleme, sayfa uzunluğu ve fişin yeri için. Yazıcıları bul, boş sanal kâğıdı doldurur ve sizin ayarladığınızı asla değiştirmez.
+preview_help	Bu fiş, aşağıda seçilen yazıcıda basıldığı gibi, yazıcının sanal kâğıdında gerçek boyutta. Beyaz, basılan yerdir; gri kâğıt yazıcının ulaşamadığı yerdir ve soluk mürekkep kesilir. Dokuz kare kâğıdın kendisidir: fişin durması gereken yere dokunun. Uzun fiş sonraki sayfalara devam eder. Yazıcı seçmek yalnızca önizlemeyi değiştirir.
 slip_col_start	Başlangıç boşluğu (px)
 slip_col_end	Bitiş boşluğu (px)
 slip_columns_help	Her sütunun genişliği başlangıç ve bitiş boşluğunu da içerir. Metin kendi sütunu içinde kaydırılır; içerik genişliğini aşan kısım kâğıtta ve önizlemede kesilir.
@@ -100,6 +106,12 @@ bill_item_piece_off	Kapalı
 bill_total_qty	Toplam adet
 bill_total_subtotal	Ara toplam
 bill_total_grand	Genel toplam
+bill_total_number_under	Sayı şunun altında
+bill_total_caption_under	Etiket şunun altında
+bill_total_own_line	Kendi satırı
+bill_total_caption_with	Sayıyla birlikte
+bill_total_caption_none	Etiket yok
+bill_total_place_help	Kendi satırı bu toplamı tek başına basar. Sütun altındayken sayısı o ürün sütununda, bu satırın boyutu ve kalınlığıyla basılır; bir sütun dolana kadar toplamlar aynı sırayı paylaşır, sonra yeni sıra başlar. Etiket sayıyla birlikte, başka bir sütunun altında durur ya da basılmaz. Vergi, servis, yuvarlama ve ödeme satırları Ara toplam yerini izler.
 kot_unassigned	Atanmamış
 settings_hub_help	Her seferinde bir bölüm açın — daha az kaydırma, daha net seçenekler.
 settings_sec_language	Dil ve para
@@ -563,11 +575,11 @@ currency_use_help	Kaydırın ve desteklenen her para birimi için Kullan'a dokun
 day_close_help	Gün kapanışını kaydetmek bu özeti (sayıldıysa çekmece farkıyla) denetim günlüğüne kaydeder. Satışı durdurmaz.
 expenses_word	Giderler
 feature_access_help	Seçili personelin özellik erişimi (ekledikten sonra dokunun)
-fresh_book_tabiyat	Yazıcılar
+fresh_book_tabiyat	Sıfırdan = boş katalog (ürünleri sonra ekleyin). Defter = aşağıya açılış stokunu ve size borcu olanı yazın.
 fresh_selected	Fresh seçili — katalog boş kalacak. Hazır olduğunuzda Done'a dokunun.
 gross_word	Brüt
 how_start	Nasıl başlamak istersiniz?
-later_country_pack	Yazıcılar
+later_country_pack	Sonra: Ayarlar → vergi ve ödeme etiketleri için ülke paketinizi uygulayın.
 local_badge	YEREL
 mix_type_hint_tabiyat	Gerekirse nakit / UPI / kart / veresiye olarak bölün. Veresiye için yukarıda müşteri gerekir.
 money_in_sales	Gelen para (satışlar)
@@ -688,7 +700,7 @@ book_kind_today	Bugünün defteri
 book_kind_month	Bu ayın defteri
 book_kind_aging	Bakiye / borç-alacak
 book_kind_balance	Bilanço
-order_help	Açık bir sipariş seçin veya bir masa seçip yeni başlatın. Hazır ürünlere dokunun, KOT gönderin, bir veya daha fazla ürünü faturalandırın, hesabı bölün ve ödemeyi tamamlayın.
+order_help	Eklemek için bir ürüne dokunun.
 categories_help	Kategori, bir yemeğin menünün hangi bölümüne ait olduğunu gösterir — örn. atıştırmalıklar, ana yemek veya biryani. Kategorileri kendi tarzınızda oluşturun: önerdiğimiz isimleri seçin, yeniden adlandırın veya kendi isminizi ekleyin.
 dish_search_ph	Ad, etken madde veya barkod ara…
 sizes_as_items_ph	Boyutlar ayrı ürün (isteğe bağlı) — Yarım=120, Tam=200
@@ -735,6 +747,20 @@ fssai_ph	İlaç ruhsat no. (isteğe bağlı — sizin ifadeniz)
 bill_footer_ph	Alt bilgi (ör. Teşekkürler, yine bekleriz)
 kot_field_on	göster
 kot_field_off	gizle
+kot_field_show	Göster
+kot_field_hide	Gizle
+bill_line_shop	Dükkan
+bill_line_address	Adres
+bill_line_fssai	FSSAI
+bill_line_title	Başlık
+bill_line_customer	Müşteri
+bill_line_bill_no	Fiş no
+bill_line_time	Saat
+bill_line_cashier	Kasiyer
+bill_line_items	Ürünler
+bill_line_total	Toplam
+bill_line_footer	Alt bilgi
+bill_line_upi	UPI
 kot_weight_light	İnce
 bill_kot_panel_help	Hesap düzeni ve içerik genişliği. Kasiyer hesabı kesen veya tahsil edendir — satışın tamamı defterlerde kalır.
 std_size_ph	örn. 18, 20, 26…
@@ -842,10 +868,10 @@ lane_declared_label	Vergi faturası
 lane_owner_label	Nakit fiş
 money_lane_bill	Fatura: {lane}
 
-removing	Removing…
-removed	Removed
-updating_order	Updating…
-order_updated	Order updated
+removing	Kaldırılıyor…
+removed	Kaldırıldı
+updating_order	Güncelleniyor…
+order_updated	Sipariş güncellendi
 sel_copy	Kopyala
 sel_select_all	Tümünü seç
 sel_copied	Kopyalandı

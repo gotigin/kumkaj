@@ -6,7 +6,7 @@ schedule_h_on	Fandaharam-potoana H — mandeha (fanevan'ny tompony)
 rx_expected_off	Rx antenaina — maty (fanevan'ny tompony)
 rx_expected_on	Rx antenaina — mandeha (fanevan'ny tompony)
 rx_note_ph	Fanamarihana momba ny prescription (tsy voatery - ny teninao)
-batch_ph	Batch no.
+batch_ph	Laharana andiany
 expiry_ph	Lany daty (YYYY-MM-DD)
 expiry_alerts	Fampandrenesana lany daty (7 andro manaraka)
 expiry_none	Tsy misy andiany lany daty ao anatin'ny 7 andro manaraka.
@@ -79,13 +79,19 @@ bill_item_amount	Vola
 bill_item_note	Rx / naoty varotra
 bill_item_col_sep	Fitsipika andàlana
 slip_col_width	Sakany (mm)
-paper_heading	Taratasy
+paper_heading	Taratasy virtoaly
 paper_size	{w} × {h} mm
 paper_roll	horonana {w} mm
 paper_not_set	tsy fantatra mbola ny taratasy
-paper_length_mm	Halavana (mm)
-printer_paper_help	Ny taratasin'ity mpanonta ity amin'ny mm. Horonana ny Halavana banga: mitovy halava amin'ny votoatiny ny tapakila tsirairay. Ny Mitadiava milina fanontam-pirinty dia mameno ny taratasy banga avy amin'ny mpitondra ny mpanonta (horonana 80 mm raha tsy afaka milaza izy) ary tsy manova mihitsy izay efa voapetraka.
-preview_help	Ity tapakila ity eo amin'ny taratasin'ny mpanonta voafidy etsy ambany, toy ny hanontana azy any: habe tena izy manomboka amin'ny zoro ambony havia tratran'ny mpanonta (volondavenona: sisiny tsy tratrany), tapakila lava amin'ny pejy maromaro kokoa, tapahina izay mihoatra ny sisin'ny taratasy. Ny fisafidianana mpanonta dia manova ny topi-maso ihany; apetraka ao amin'ny Mpanonta ny taratasin'ny mpanonta tsirairay.
+na	N/A
+virtual_width_mm	Sakany virtoaly (mm)
+virtual_length_mm	Halavana virtoaly (mm)
+reported_width_mm	Sakany notaterina (mm)
+reported_length_mm	Halavana notaterina (mm)
+reported_paper	Notaterina: {paper}
+virtual_paper	Virtoaly: {paper}
+printer_paper_help	Ny notaterina dia ny taratasy nametrahana ny mpitondra an'ity mpanonta ity; vakin'ny fampiharana fotsiny izany, ary ny N/A dia midika fa tsy misy mpitondra azo anontaniana. Ny virtoaly dia ny taratasy lazainao fa tena ao amin'ny mpanonta, amin'ny mm; horonana ny halavana banga. Manonta amin'ny taratasiny manokana ny mpanonta; ny taratasy virtoaly dia milaza amin'ny fampiharana hoe firy amin'izany no tena taratasy, ho an'ny topi-maso, ny halavan'ny pejy ary ny toeran'ny tapakila. Ny Mitadiava milina fanontam-pirinty dia mameno taratasy virtoaly banga ary tsy manova mihitsy izay efa napetrakao.
+preview_help	Ity tapakila ity araka ny fanontana azy amin'ny mpanonta voafidy eto ambany, amin'ny tena habeny eo amin'ny taratasiny virtoaly. Ny fotsy no toerana anontana, ny taratasy volondavenona tsy tratran'ny mpanonta, ary tapahina ny ranomainty matroka. Ny efajoro sivy no taratasy: tsindrio ny toerana tokony hisy ny tapakila. Mitohy amin'ny pejy hafa ny tapakila lava. Ny fisafidianana mpanonta dia manova ny topi-maso ihany.
 slip_col_start	Elanelana fanombohana (px)
 slip_col_end	Elanelana fiafarana (px)
 slip_columns_help	Ny sakan’ny tsanganana tsirairay dia ahitana ny elanelana fanombohana sy fiafarany. Mivalona ao anatin’ny tsanganany ny soratra; ny mihoatra ny sakan’ny votoaty dia tapahina, eo amin’ny taratasy sy amin’ny topi-maso.
@@ -100,6 +106,12 @@ bill_item_piece_off	Maty
 bill_total_qty	Isan-javatra rehetra
 bill_total_subtotal	Tontalim-bokatra
 bill_total_grand	Tontaly lehibe
+bill_total_number_under	Isa eo ambanin'ny
+bill_total_caption_under	Marika eo ambanin'ny
+bill_total_own_line	Tsipika manokana
+bill_total_caption_with	Miaraka amin'ny isa
+bill_total_caption_none	Tsy misy marika
+bill_total_place_help	Ny Tsipika manokana dia manonta irery ity totaly ity. Eo ambanin'ny tsanganana, ny isany dia atonta ao amin'io tsangan'entana io, amin'ny habe sy hatevin'ity tsipika ity; mizara andalana iray ny totaly mandra-pahafeno tsanganana iray, dia manomboka andalana vaovao. Ny marika dia miaraka amin'ny isa, eo ambanin'ny tsanganana hafa, na tsy atonta. Ny tsipikan'ny hetra, serivisy, fanakaikena ary fandoavam-bola dia manaraka ny Tontalim-bokatra.
 kot_unassigned	notendrena
 settings_hub_help	Sokafy ny faritra iray isaky ny fotoana — kely kokoa ny mitete, mazava kokoa ny safidy.
 settings_sec_language	Fiteny & vola
@@ -317,7 +329,7 @@ drawer_count	Fandaharana ny boaty (tsy voatery)
 expense_heading	Fandaniana
 export_day	Andro fanondranana
 extra_note_bill_ph	Fanamarihana fanampiny momba ity faktiora / varotra ity
-extra_tills_heading	Fivarotana fanampiny
+extra_tills_heading	Kesy fanampiny
 other_devices_help_heading	Manomàna fitaovana hafa
 other_devices_help	Amin'ity fitaovana ity (Server): Fitaovana hafa → Avelao ny famafazana fanampiny. Mariho ny kaody fampiarahana sy ny adiresy Wi‑Fi. Tsindrio Avelao ny fitaovana hafa hifandray raha toa ka miseho izany. Eo amin'ny solosaina iray, tsindrio Atombohy amin'ity solosaina ity. Amin'ny fitaovana tsirairay: apetraho ny fampiharana, safidio ny Client Mode, Tadiavo ny lohamilina amin'ny fivarotana (na soraty ny adiresy), ampidiro ny kaody fampiarahana, Ampifanaraho izao. Miandry eo amin'ny fitaovana ny baiko raha latsaka ny Wi‑Fi ary mandeha rehefa mamaly indray ny Server. Ny mpanonta fanampiny dia apetraka ao amin'ny Server (Settings → Printers) - fandefasana faktiora fanampiny any.
 forget_shop	Adino ity fivarotana ity
@@ -735,6 +747,20 @@ fssai_ph	Fahazoan-dalana momba ny zava-mahadomelina no. (tsy voatery - ny tenina
 bill_footer_ph	Fanamarihana farany (oh: Misaotra, mitsidika indray)
 kot_field_on	aseho
 kot_field_off	afeno
+kot_field_show	Asehoy
+kot_field_hide	Afeno
+bill_line_shop	Fivarotana
+bill_line_address	Adiresy
+bill_line_fssai	FSSAI
+bill_line_title	Lohateny
+bill_line_customer	Mpanjifa
+bill_line_bill_no	Laharana faktiora
+bill_line_time	Ora
+bill_line_cashier	Mpahangy vola
+bill_line_items	Entana
+bill_line_total	Fitambarany
+bill_line_footer	Fanamarihana farany
+bill_line_upi	UPI
 kot_weight_light	Mazava
 bill_kot_panel_help	Fametrahana volavolan-dalàna sy sakan'ny atiny. Cashier no namoaka na nandamina ny volavolan-dalàna - ny tantara momba ny fivarotana feno dia mijanona ao anaty boky.
 std_size_ph	oh: 18, 20, 26…
@@ -842,10 +868,10 @@ lane_declared_label	Faktioran-ketra
 lane_owner_label	Faktiora amin'ny vola
 money_lane_bill	Paositra: {lane}
 
-removing	Removing…
-removed	Removed
-updating_order	Updating…
-order_updated	Order updated
+removing	Manala…
+removed	Nesorina
+updating_order	Manavao…
+order_updated	Novaozina ny kaomandy
 sel_copy	Adikao
 sel_select_all	Fidio daholo
 sel_copied	Voadika

@@ -101,6 +101,19 @@ bill_item_col_sep	קווי עמודות
 slip_columns	עמודות
 slip_col_header	כותרת
 bill_line_logo	לוגו
+bill_line_shop	חנות
+bill_line_address	כתובת
+bill_line_fssai	FSSAI
+bill_line_title	כותרת
+bill_line_customer	לקוח
+bill_line_bill_no	מס׳ חשבון
+bill_line_time	שעה
+bill_line_cashier	קופאי
+bill_line_table	שולחן
+bill_line_items	פריטים
+bill_line_total	סה״כ
+bill_line_footer	כותרת תחתונה
+bill_line_upi	UPI
 bill_logo_picture	תמונה
 bill_logo_choose	בחירת תמונה
 bill_logo_remove	הסרת תמונה
@@ -128,6 +141,12 @@ bill_item_piece_off	כבוי
 bill_total_qty	כמות כוללת
 bill_total_subtotal	ביניים
 bill_total_grand	סה״כ
+bill_total_number_under	המספר מתחת ל
+bill_total_caption_under	התווית מתחת ל
+bill_total_own_line	שורה משלו
+bill_total_caption_with	עם המספר
+bill_total_caption_none	ללא תווית
+bill_total_place_help	„שורה משלו“ מדפיס את הסכום הזה לבדו. מתחת לעמודה, המספר שלו מודפס באותה עמודת פריטים, בגודל ובעובי של השורה הזו; סכומים חולקים שורה אחת עד שעמודה נתפסת, ואז מתחילה שורה חדשה. התווית באה עם המספר, מתחת לעמודה אחרת, או מושמטת. שורות המס, השירות, העיגול והתשלום הולכות אחרי „ביניים“.
 reprint_incl	בהדפסה
 reprint_skip	דלג
 reprint_skip_meta	דלג על הדפסת שחזור
@@ -178,20 +197,20 @@ snack_secs_ph	שניות (3–60, ברירת מחדל 10)
 snack_secs_save	שמור זמן התראה
 snack_secs_saved	זמן ההתראה נשמר — {n} שניות
 settings_sec_whatsapp	WhatsApp
-whatsapp_cloud_help	Use your own Meta WhatsApp Cloud API. Create a System User token with whatsapp_business_messaging (temporary dashboard tokens expire). Credentials stay on this Server only — never on extra tills. Accepted means Meta took the request, not that the guest received it.
-whatsapp_phone_id_ph	Phone Number ID
-whatsapp_token_ph	Access Token (leave blank to keep)
-whatsapp_template_ph	Bill template name (optional)
-whatsapp_template_lang_ph	Template language (e.g. en)
-whatsapp_enable	Enable
+whatsapp_cloud_help	השתמש ב-Meta WhatsApp Cloud API משלך. צור אסימון System User עם whatsapp_business_messaging (אסימונים זמניים מלוח הבקרה פגים). הפרטים נשארים בשרת הזה בלבד — לעולם לא בקופות נוספות. “התקבל” פירושו ש-Meta קיבלה את הבקשה, לא שהאורח קיבל את ההודעה.
+whatsapp_phone_id_ph	מזהה מספר הטלפון
+whatsapp_token_ph	אסימון גישה (השאר ריק כדי לשמור את הקיים)
+whatsapp_template_ph	שם תבנית החשבון (לא חובה)
+whatsapp_template_lang_ph	שפת התבנית (למשל en)
+whatsapp_enable	הפעל
 whatsapp_disable	Off
-whatsapp_save	Save WhatsApp
-whatsapp_test	Test connection
-whatsapp_disconnect	Disconnect
-whatsapp_send_bill	Send via WhatsApp
+whatsapp_save	שמור WhatsApp
+whatsapp_test	בדוק חיבור
+whatsapp_disconnect	נתק
+whatsapp_send_bill	שלח ב-WhatsApp
 whatsapp_consent	WhatsApp OK
-whatsapp_consent_help	Guest agreed to receive WhatsApp messages. A phone number alone is not consent.
-whatsapp_server_only	Configure WhatsApp on the shop Server device
+whatsapp_consent_help	האורח הסכים לקבל הודעות WhatsApp. מספר טלפון לבדו אינו הסכמה.
+whatsapp_server_only	הגדר את WhatsApp במכשיר השרת של החנות
 settings_sec_backup	גיבוי ושחזור
 settings_sec_diag	אבחון
 settings_sec_privacy	פרטיות
@@ -637,7 +656,7 @@ choose_device_use	בחרו שרת או מסוף.
 paired_note	מזווג. פתחו כדי למכור, או רעננו לעדכני.
 last_update_at	עדכון אחרון: {time}.
 pair_intro	מצאו את השרת, או הקלידו את הכתובת ואת קוד הזיווג.
-pair_resume_hint	Already paired — enter your shop PIN, or Forget this shop to pair another.
+pair_resume_hint	כבר מזווג — הזן את ה-PIN של החנות שלך, או לחץ על “שכח את החנות הזו” כדי לזווג חנות אחרת.
 queue_waiting	ממתין להגיע לחנות ({n}):
 queue_tries	נוסה {n} פעמים · תשובה אחרונה: {e}
 save_backup_copy	שמור עותק גיבוי…
@@ -754,13 +773,18 @@ station_vps_dd	מדפסות לעמדה הזו
 station_vps_dd_n	{n} מדפסות · הקישו לשינוי
 bill_printers_dd	מדפסות לחשבון
 bill_printers_dd_n	{n} מדפסות לחשבון · הקישו לשינוי
-paper_heading	נייר
+paper_heading	נייר וירטואלי
 paper_size	{w} × {h} mm
 paper_roll	גליל {w} מ״מ
 paper_not_set	הנייר עדיין לא ידוע
-paper_length_mm	אורך (mm)
-printer_paper_help	הנייר של מדפסת זו במ״מ. אורך ריק הוא גליל: כל קבלה ארוכה כמו התוכן שלה. „מצא מדפסות” ממלא נייר ריק ממנהל ההתקן של המדפסת (גליל 80 מ״מ כשאינו יכול לומר) ולעולם אינו משנה נייר שכבר הוגדר.
-preview_help	הקבלה הזו על הנייר של המדפסת שנבחרה למטה, כפי שהיא מודפסת שם: בגודל אמיתי מהפינה השמאלית העליונה שהמדפסת מגיעה אליה (אפור: שוליים שאינה מגיעה אליהם), קבלה ארוכה על יותר דפים, כל מה שעובר את קצה הנייר נחתך. בחירת מדפסת משנה רק את התצוגה המקדימה; הנייר של כל מדפסת מוגדר תחת „מדפסות”.
+virtual_width_mm	רוחב וירטואלי (mm)
+virtual_length_mm	אורך וירטואלי (mm)
+reported_width_mm	רוחב מדווח (mm)
+reported_length_mm	אורך מדווח (mm)
+reported_paper	מדווח: {paper}
+virtual_paper	וירטואלי: {paper}
+printer_paper_help	מדווח הוא הנייר שמנהל ההתקן של המדפסת הזו מוגדר אליו; היישום רק קורא אותו, ו־“לא רלוונטי” פירושו שאין מנהל התקן שאפשר לשאול. וירטואלי הוא הנייר שלדבריך נמצא באמת במדפסת, במ"מ; אורך ריק הוא גליל. המדפסת מדפיסה על הנייר שלה; הנייר הווירטואלי אומר ליישום כמה ממנו הוא נייר אמיתי, עבור התצוגה המקדימה, אורך העמוד ומיקום הקבלה. מצא מדפסות ממלא נייר וירטואלי ריק ולעולם אינו משנה נייר שהגדרת.
+preview_help	הקבלה הזו כפי שהיא מודפסת במדפסת שנבחרה למטה, בגודל אמיתי על הנייר הווירטואלי שלה. לבן הוא המקום שבו מודפס, נייר אפור נמצא מחוץ להישג המדפסת, ודיו דהוי נחתך. תשעת הריבועים הם הנייר: הקש במקום שבו הקבלה צריכה לשבת. קבלה ארוכה ממשיכה לעמודים נוספים. בחירת מדפסת משנה רק את התצוגה המקדימה.
 job_layout	פריסה
 job_delivery	איך העבודה נשלחת
 job_delivery_help	מסמך OS, בתים גולמיים, או ESC/POS. החשבון ופתק המטבח שומרים כל אחד את שלו. כל עבודה יכולה ללכת לכל מדפסת שמצא שמר.
@@ -1266,8 +1290,8 @@ taxable_value	ערך חייב במס
 gst_inside_price_note	({tax} כלול)
 start_with_template	התחילו עם תבנית התפריט שלנו
 template_heading	תבנית התפריט שלנו
-template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
-template_download_shelf	Download photo shelf
+template_need_download	הורד את מדף התמונות הציבורי של המנות (~1,459 מנות), ואז ייבא לתפריט שלך את השמות החסרים.
+template_download_shelf	הורד את מדף התמונות
 template_info	{c} קטגוריות ו־{d} מנות עם תמונות, מוכנות להוספה. המחירים מתחילים מ־₹0 — קבעו את שלכם אחר כך.
 template_import	ייבא תבנית מלאה
 template_confirm	להוסיף {d} מנות עם הקטגוריות שלהן? מנות שכבר יש לכם נשארות כפי שהן.

@@ -101,6 +101,19 @@ bill_item_col_sep	Линии на колони
 slip_columns	Колони
 slip_col_header	Заглавие
 bill_line_logo	Лого
+bill_line_shop	Заведение
+bill_line_address	Адрес
+bill_line_fssai	FSSAI
+bill_line_title	Заглавие
+bill_line_customer	Клиент
+bill_line_bill_no	Сметка №
+bill_line_time	Час
+bill_line_cashier	Касиер
+bill_line_table	Маса
+bill_line_items	Артикули
+bill_line_total	Общо
+bill_line_footer	Долен колонтитул
+bill_line_upi	UPI
 bill_logo_picture	Изображение
 bill_logo_choose	Избери изображение
 bill_logo_remove	Премахни изображението
@@ -128,6 +141,12 @@ bill_item_piece_off	Изкл.
 bill_total_qty	Общо кол.
 bill_total_subtotal	Междинна сума
 bill_total_grand	Крайна сума
+bill_total_number_under	Числото под
+bill_total_caption_under	Етикетът под
+bill_total_own_line	Собствен ред
+bill_total_caption_with	С числото
+bill_total_caption_none	Без етикет
+bill_total_place_help	„Собствен ред“ печата тази сума отделно. Под колона числото ѝ се печата в тази колона на артикулите, с размера и дебелината на този ред; сумите делят един ред, докато някоя колона се заеме, после започва нов ред. Етикетът върви с числото, под друга колона или се пропуска. Редовете за данък, обслужване, закръгляне и плащане следват „Междинна сума“.
 reprint_incl	В печат
 reprint_skip	Пропусни
 reprint_skip_meta	Пропусни повторния печат
@@ -178,20 +197,20 @@ snack_secs_ph	Секунди (3–60, по подразбиране 10)
 snack_secs_save	Запази времето за известие
 snack_secs_saved	Времето за известие е запазено — {n} секунди
 settings_sec_whatsapp	WhatsApp
-whatsapp_cloud_help	Use your own Meta WhatsApp Cloud API. Create a System User token with whatsapp_business_messaging (temporary dashboard tokens expire). Credentials stay on this Server only — never on extra tills. Accepted means Meta took the request, not that the guest received it.
-whatsapp_phone_id_ph	Phone Number ID
-whatsapp_token_ph	Access Token (leave blank to keep)
-whatsapp_template_ph	Bill template name (optional)
-whatsapp_template_lang_ph	Template language (e.g. en)
-whatsapp_enable	Enable
+whatsapp_cloud_help	Използвайте собствения си Meta WhatsApp Cloud API. Създайте System User токен с whatsapp_business_messaging (временните токени от таблото изтичат). Данните остават само на този Сървър — никога на допълнителните каси. „Прието“ означава, че Meta е приела заявката, а не че гостът я е получил.
+whatsapp_phone_id_ph	ID на телефонния номер
+whatsapp_token_ph	Токен за достъп (оставете празно, за да се запази)
+whatsapp_template_ph	Име на шаблона за сметка (по избор)
+whatsapp_template_lang_ph	Език на шаблона (напр. en)
+whatsapp_enable	Включи
 whatsapp_disable	Off
-whatsapp_save	Save WhatsApp
-whatsapp_test	Test connection
-whatsapp_disconnect	Disconnect
-whatsapp_send_bill	Send via WhatsApp
+whatsapp_save	Запази WhatsApp
+whatsapp_test	Тествай връзката
+whatsapp_disconnect	Прекъсни връзката
+whatsapp_send_bill	Изпрати през WhatsApp
 whatsapp_consent	WhatsApp OK
-whatsapp_consent_help	Guest agreed to receive WhatsApp messages. A phone number alone is not consent.
-whatsapp_server_only	Configure WhatsApp on the shop Server device
+whatsapp_consent_help	Гостът се съгласи да получава съобщения в WhatsApp. Само телефонен номер не е съгласие.
+whatsapp_server_only	Настройте WhatsApp на устройството Сървър на заведението
 settings_sec_backup	Резервно копие и възстановяване
 settings_sec_diag	Диагностика
 settings_sec_privacy	Поверителност
@@ -637,7 +656,7 @@ choose_device_use	Изберете Сървър или Клиент.
 paired_note	Свързано. Отключете, за да продавате, или Обновете за последното.
 last_update_at	Последно обновяване: {time}.
 pair_intro	Намерете сървъра или въведете адреса и кода за свързване.
-pair_resume_hint	Already paired — enter your shop PIN, or Forget this shop to pair another.
+pair_resume_hint	Вече е сдвоено — въведете PIN на вашето заведение или докоснете „Забрави това заведение“, за да сдвоите друго.
 queue_waiting	Чака да стигне до заведението ({n}):
 queue_tries	Опитано {n} пъти · последен отговор: {e}
 save_backup_copy	Запази резервно копие…
@@ -754,13 +773,18 @@ station_vps_dd	Принтери за тази станция
 station_vps_dd_n	{n} принтер(а) · докоснете за промяна
 bill_printers_dd	Принтери за сметката
 bill_printers_dd_n	{n} принтер(а) за сметката · докоснете за промяна
-paper_heading	Хартия
+paper_heading	Виртуална хартия
 paper_size	{w} × {h} mm
 paper_roll	ролка {w} мм
 paper_not_set	хартията още не е известна
-paper_length_mm	Дължина (mm)
-printer_paper_help	Хартията на този принтер в мм. Празна Дължина означава ролка: всяка бележка е дълга колкото съдържанието ѝ. „Намери принтери“ попълва празната хартия от драйвера на принтера (ролка 80 мм, ако не може да каже) и никога не променя вече зададена.
-preview_help	Тази бележка върху хартията на принтера, избран по-долу, както се печата там: в реален размер от горния ляв ъгъл, до който принтерът стига (сиво: ръбове, до които не стига), дълга бележка на повече листове, всичко след ръба на хартията се отрязва. Изборът на принтер променя само прегледа; хартията на всеки принтер се задава в „Принтери“.
+virtual_width_mm	Виртуална ширина (mm)
+virtual_length_mm	Виртуална дължина (mm)
+reported_width_mm	Отчетена ширина (mm)
+reported_length_mm	Отчетена дължина (mm)
+reported_paper	Отчетена: {paper}
+virtual_paper	Виртуална: {paper}
+printer_paper_help	Отчетена е хартията, на която е настроен драйверът на този принтер; приложението само я чете, а н/п означава, че няма драйвер, който да бъде попитан. Виртуална е хартията, която според вас наистина е в принтера, в mm; празна дължина означава ролка. Принтерът печата на своята хартия; виртуалната хартия казва на приложението каква част от нея е истинска хартия — за прегледа, дължината на страницата и мястото на бележката. Намери принтери попълва празна виртуална хартия и никога не променя зададената от вас.
+preview_help	Тази бележка така, както се печата на избрания по-долу принтер, в реален размер върху неговата виртуална хартия. Бялото е където се печата, сивата хартия е извън обсега на принтера, а избледнялото мастило се отрязва. Деветте квадрата са хартията: докоснете там, където трябва да стои бележката. Дълга бележка продължава на следващи страници. Изборът на принтер променя само прегледа.
 job_layout	Подредба
 job_delivery	Как се изпраща задачата
 job_delivery_help	Документ на ОС, сурови байтове или ESC/POS. Сметката и кухненският фиш пазят всеки своето. Всяка задача може да отиде към всеки принтер, който Търсенето е запазило.
@@ -1266,8 +1290,8 @@ taxable_value	Данъчна основа
 gst_inside_price_note	({tax} включен)
 start_with_template	Започни с нашия шаблон за меню
 template_heading	Нашият шаблон за меню
-template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
-template_download_shelf	Download photo shelf
+template_need_download	Изтеглете публичния рафт със снимки на ястия (~1459 ястия), след това импортирайте липсващите имена в менюто си.
+template_download_shelf	Изтегли рафта със снимки
 template_info	{c} категории и {d} ястия със снимки, готови за добавяне. Цените започват от ₹0 — после задайте вашите.
 template_import	Внеси целия шаблон
 template_confirm	Да се добавят ли {d} ястия с техните категории? Ястията, които вече имате, остават както са.

@@ -101,6 +101,19 @@ bill_item_col_sep	Righe di colonna
 slip_columns	Colonne
 slip_col_header	Intestazione
 bill_line_logo	Logo
+bill_line_shop	Negozio
+bill_line_address	Indirizzo
+bill_line_fssai	FSSAI
+bill_line_title	Titolo
+bill_line_customer	Cliente
+bill_line_bill_no	N. conto
+bill_line_time	Ora
+bill_line_cashier	Cassiere
+bill_line_table	Tavolo
+bill_line_items	Articoli
+bill_line_total	Totale
+bill_line_footer	Piè di pagina
+bill_line_upi	UPI
 bill_logo_picture	Immagine
 bill_logo_choose	Scegli immagine
 bill_logo_remove	Rimuovi immagine
@@ -128,6 +141,12 @@ bill_item_piece_off	No
 bill_total_qty	Qtà totale
 bill_total_subtotal	Subtotale
 bill_total_grand	Totale
+bill_total_number_under	Numero sotto
+bill_total_caption_under	Etichetta sotto
+bill_total_own_line	Riga propria
+bill_total_caption_with	Con il numero
+bill_total_caption_none	Nessuna etichetta
+bill_total_place_help	Riga propria stampa questo totale da solo. Sotto una colonna, il suo numero viene stampato in quella colonna degli articoli, con la dimensione e lo spessore di questa riga; i totali condividono una fila finché una colonna non è occupata, poi inizia una nuova fila. L'etichetta va con il numero, sotto un'altra colonna, oppure viene omessa. Le righe di imposta, servizio, arrotondamento e pagamento seguono Subtotale.
 reprint_incl	In stampa
 reprint_skip	Salta
 reprint_skip_meta	Escludi ristampa
@@ -178,20 +197,20 @@ snack_secs_ph	Secondi (3–60, predefinito 10)
 snack_secs_save	Salva durata avvisi
 snack_secs_saved	Durata avvisi salvata — {n} secondi
 settings_sec_whatsapp	WhatsApp
-whatsapp_cloud_help	Use your own Meta WhatsApp Cloud API. Create a System User token with whatsapp_business_messaging (temporary dashboard tokens expire). Credentials stay on this Server only — never on extra tills. Accepted means Meta took the request, not that the guest received it.
-whatsapp_phone_id_ph	Phone Number ID
-whatsapp_token_ph	Access Token (leave blank to keep)
-whatsapp_template_ph	Bill template name (optional)
-whatsapp_template_lang_ph	Template language (e.g. en)
-whatsapp_enable	Enable
+whatsapp_cloud_help	Usa la tua API Meta WhatsApp Cloud. Crea un token System User con whatsapp_business_messaging (i token temporanei della dashboard scadono). Le credenziali restano solo su questo Server — mai sulle casse extra. «Accettato» significa che Meta ha preso la richiesta, non che l'ospite l'abbia ricevuta.
+whatsapp_phone_id_ph	ID del numero di telefono
+whatsapp_token_ph	Token di accesso (lascia vuoto per mantenerlo)
+whatsapp_template_ph	Nome del modello di conto (facoltativo)
+whatsapp_template_lang_ph	Lingua del modello (es. en)
+whatsapp_enable	Abilita
 whatsapp_disable	Off
-whatsapp_save	Save WhatsApp
-whatsapp_test	Test connection
-whatsapp_disconnect	Disconnect
-whatsapp_send_bill	Send via WhatsApp
+whatsapp_save	Salva WhatsApp
+whatsapp_test	Prova connessione
+whatsapp_disconnect	Disconnetti
+whatsapp_send_bill	Invia con WhatsApp
 whatsapp_consent	WhatsApp OK
-whatsapp_consent_help	Guest agreed to receive WhatsApp messages. A phone number alone is not consent.
-whatsapp_server_only	Configure WhatsApp on the shop Server device
+whatsapp_consent_help	L'ospite ha accettato di ricevere messaggi WhatsApp. Un numero di telefono da solo non è un consenso.
+whatsapp_server_only	Configura WhatsApp sul dispositivo Server del negozio
 settings_sec_backup	Backup e ripristino
 settings_sec_diag	Diagnostica
 settings_sec_privacy	Privacy
@@ -326,8 +345,8 @@ this_shop	Modalità server
 extra_till	Modalità client
 off	No
 tables_kitchen	Tavoli e cucina
-server	Server
-client	Client
+server	Modalità server
+client	Modalità client
 language_currency	Lingua e valuta
 language	Lingua
 choose_language	Scegli la lingua
@@ -637,7 +656,7 @@ choose_device_use	Scegli come usare questo dispositivo.
 paired_note	Abbinato. Sblocca per vendere, oppure Aggiorna per avere gli ultimi dati del locale.
 last_update_at	Ultimo aggiornamento dal locale: {time}.
 pair_intro	Trova il server, oppure scrivi il suo indirizzo e il codice di abbinamento.
-pair_resume_hint	Already paired — enter your shop PIN, or Forget this shop to pair another.
+pair_resume_hint	Già abbinato — inserisci il PIN del tuo negozio, oppure tocca «Dimentica questo negozio» per abbinarne un altro.
 queue_waiting	In attesa di arrivare al locale ({n}):
 queue_tries	{n} tentativi · ultima risposta: {e}
 save_backup_copy	Salva una copia di backup…
@@ -656,7 +675,7 @@ printers_pool_empty	(nessuna ancora — aggiungi sotto)
 printers_routes_help	Scegli un posto, poi Seleziona stampante. Spunta Nome (KOT), (Standard Portrait) o (Standard Landscape). ↑↓ ordine (il primo è massimo). Togli per rimuovere. Poi Done.
 printer_assign_dd	Scegli stampante per {place}
 printer_assign_pick	Seleziona stampante reale
-printer_profile_heading	Layout
+printer_profile_heading	Pianta
 printer_send_heading	Invio
 vp_delivery_heading	Invio
 vp_delivery_help	Come questa stampante virtuale invia i lavori — documento OS, byte grezzi o ESC/POS. Il contenuto dello scontrino (corpo, a capo, margini) lo decide il formato conto / KOT, non qui.
@@ -754,14 +773,19 @@ station_vps_dd	Stampanti di questa stazione
 station_vps_dd_n	{n} stampante/i · tocca per cambiare
 bill_printers_dd	Stampanti per il conto
 bill_printers_dd_n	{n} stampante/i per il conto · tocca per cambiare
-paper_heading	Carta
+paper_heading	Carta virtuale
 paper_size	{w} × {h} mm
 paper_roll	rotolo da {w} mm
 paper_not_set	carta non ancora nota
-paper_length_mm	Lunghezza (mm)
-printer_paper_help	La carta di questa stampante in mm. Una Lunghezza vuota è un rotolo: ogni scontrino è lungo quanto il suo contenuto. Trova stampanti riempie la carta vuota dal driver della stampante (un rotolo da 80 mm quando non sa dirlo) e non cambia mai una carta già impostata.
-preview_help	Questo scontrino sulla carta della stampante scelta sotto, come vi si stampa: a grandezza reale dall'angolo in alto a sinistra che la stampante raggiunge (grigio: bordi che non raggiunge), uno scontrino lungo su più fogli, tutto oltre il bordo della carta viene tagliato. Scegliere una stampante cambia solo l'anteprima; la carta di ogni stampante si imposta in Stampanti.
-job_layout	Layout
+virtual_width_mm	Larghezza virtuale (mm)
+virtual_length_mm	Lunghezza virtuale (mm)
+reported_width_mm	Larghezza dichiarata (mm)
+reported_length_mm	Lunghezza dichiarata (mm)
+reported_paper	Dichiarata: {paper}
+virtual_paper	Virtuale: {paper}
+printer_paper_help	Dichiarata è la carta su cui è impostato il driver di questa stampante; l'app la legge soltanto, e N/D significa che non c'è un driver a cui chiedere. Virtuale è la carta che tu dici essere davvero nella stampante, in mm; una lunghezza vuota è un rotolo. La stampante stampa sulla propria carta; la carta virtuale dice all'app quanta di essa è carta reale, per l'anteprima, la lunghezza della pagina e la posizione dello scontrino. Trova stampanti compila una carta virtuale vuota e non cambia mai quella che hai impostato tu.
+preview_help	Questo scontrino come viene stampato sulla stampante scelta qui sotto, a grandezza reale sulla sua carta virtuale. Il bianco è dove stampa, la carta grigia è fuori dalla portata della stampante e l'inchiostro sbiadito viene tagliato. I nove riquadri sono la carta: tocca dove deve stare lo scontrino. Uno scontrino lungo prosegue su altre pagine. Scegliere una stampante cambia solo l'anteprima.
+job_layout	Pianta
 job_delivery	Come viene inviato il lavoro
 job_delivery_help	Documento OS, byte grezzi o ESC/POS. Il conto e lo scontrino della cucina mantengono ciascuno i propri. Ogni lavoro può essere inviato a qualsiasi stampante trovata da Find.
 station_vp_attached	Stampante collegata
@@ -1040,7 +1064,7 @@ book_kind_today	Libro di oggi
 book_kind_month	Libro di questo mese
 book_kind_aging	In sospeso / dare-avere
 book_kind_balance	Bilancio
-order_help	Scegli un ordine aperto o un tavolo per iniziarne uno nuovo. Tocca gli articoli pronti, invia il KOT, fattura uno o più articoli, dividi il conto e incassa.
+order_help	Tocca un articolo per aggiungerlo.
 floor_help	Ogni tavolo mostra se gli ospiti sono seduti, qual è il loro conto aperto e chi ha bisogno di servizio.
 kitchen_help	Traccia il pronto per variante o per articolo — registralo nel KOT come vuoi.
 kitchen_empty	Niente di aperto ora.
@@ -1266,8 +1290,8 @@ taxable_value	Imponibile
 gst_inside_price_note	({tax} incluso)
 start_with_template	Inizia con il nostro modello di menu
 template_heading	Il nostro modello di menu
-template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
-template_download_shelf	Download photo shelf
+template_need_download	Scarica lo scaffale pubblico di foto dei piatti (~1.459 piatti), poi importa nel tuo menu i nomi mancanti.
+template_download_shelf	Scarica lo scaffale di foto
 template_info	{c} categorie e {d} piatti con foto, pronti da aggiungere. Prezzo ₹0 — imposta il tuo dopo.
 template_import	Importa tutto il modello
 template_confirm	Aggiungere {d} piatti con le loro categorie? Quelli che hai restano come sono.

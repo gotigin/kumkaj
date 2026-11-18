@@ -42,7 +42,7 @@ add_item	Tambah item menu
 new_item	Item menu baharu
 adding_item	Menambah item menu baharu
 editing_item	Mengedit
-save	Jimat
+save	Simpan
 remove	Alih keluar
 removed_items	Item menu dialih keluar
 removed_help	Pulihkan meletakkan item kembali dalam Item sama seperti sebelumnya — harga, foto dan kategori.
@@ -68,7 +68,7 @@ applied	Digunakan
 note_ph	Nota (pilihan)
 rounded	MEMBULAT
 split	Berpisah
-bill_item_layout	Susun atur item menu menu
+bill_item_layout	Susun atur item menu
 bill_item_layout_columns	Lajur
 bill_item_layout_stacked	Bertindan
 bill_item_header	Pengepala lajur
@@ -79,13 +79,19 @@ bill_item_amount	Jumlah
 bill_item_note	Rx / nota jualan
 bill_item_col_sep	Peraturan lajur
 slip_col_width	Lebar (mm)
-paper_heading	Kertas
+paper_heading	Kertas maya
 paper_size	{w} × {h} mm
 paper_roll	gulung {w} mm
 paper_not_set	kertas belum diketahui
-paper_length_mm	Panjang (mm)
-printer_paper_help	Kertas pencetak ini dalam mm. Panjang kosong ialah gulung: setiap slip sepanjang kandungannya. Cari pencetak mengisi kertas kosong daripada pemacu pencetak (gulung 80 mm apabila ia tidak dapat memberitahu) dan tidak pernah mengubah kertas yang sudah ditetapkan.
-preview_help	Slip ini pada kertas pencetak yang dipilih di bawah, seperti yang dicetak di sana: saiz sebenar dari penjuru kiri atas yang dapat dicapai pencetak (kelabu: tepi yang tidak dicapai), slip panjang pada lebih banyak helaian, apa-apa yang melepasi tepi kertas dipotong. Memilih pencetak hanya mengubah pratonton; kertas setiap pencetak ditetapkan di Pencetak.
+na	T/A
+virtual_width_mm	Lebar maya (mm)
+virtual_length_mm	Panjang maya (mm)
+reported_width_mm	Lebar yang dilaporkan (mm)
+reported_length_mm	Panjang yang dilaporkan (mm)
+reported_paper	Dilaporkan: {paper}
+virtual_paper	Maya: {paper}
+printer_paper_help	Dilaporkan ialah kertas yang ditetapkan pada pemacu pencetak ini; apl hanya membacanya, dan T/A bermaksud tiada pemacu untuk ditanya. Maya ialah kertas yang anda katakan benar-benar ada dalam pencetak, dalam mm; panjang kosong bermaksud gulung. Pencetak mencetak pada kertasnya sendiri; kertas maya memberitahu apl berapa banyak daripadanya ialah kertas sebenar, untuk pratonton, panjang halaman dan kedudukan slip. Cari pencetak mengisi kertas maya yang kosong dan tidak sekali-kali mengubah yang telah anda tetapkan.
+preview_help	Slip ini seperti yang dicetak pada pencetak yang dipilih di bawah, dalam saiz sebenar pada kertas mayanya. Putih ialah tempat ia mencetak, kertas kelabu di luar jangkauan pencetak, dan dakwat pudar dipotong. Sembilan petak itu ialah kertas: ketik tempat slip patut berada. Slip panjang bersambung ke halaman seterusnya. Memilih pencetak hanya mengubah pratonton.
 slip_col_start	Ruang permulaan (px)
 slip_col_end	Ruang penghujung (px)
 slip_columns_help	Lebar setiap lajur termasuk ruang permulaan dan penghujungnya. Teks dibalut di dalam lajurnya; apa-apa yang melepasi lebar kandungan dipotong, di atas kertas dan dalam pratonton.
@@ -100,6 +106,12 @@ bill_item_piece_off	Mati
 bill_total_qty	Jumlah kuantiti
 bill_total_subtotal	Jumlah kecil
 bill_total_grand	Jumlah besar
+bill_total_number_under	Nombor di bawah
+bill_total_caption_under	Label di bawah
+bill_total_own_line	Baris sendiri
+bill_total_caption_with	Bersama nombor
+bill_total_caption_none	Tiada label
+bill_total_place_help	Baris sendiri mencetak jumlah ini secara berasingan. Di bawah lajur, nombornya dicetak dalam lajur item itu, dengan saiz dan ketebalan baris ini; jumlah berkongsi satu barisan sehingga satu lajur terisi, kemudian barisan baharu bermula. Label pergi bersama nombor, di bawah lajur lain, atau ditinggalkan. Baris cukai, perkhidmatan, pembundaran dan bayaran mengikut Jumlah kecil.
 kot_unassigned	Tidak ditugaskan
 settings_hub_help	Buka satu kawasan pada satu masa — kurang menatal, pilihan yang lebih jelas.
 settings_sec_language	Bahasa & mata wang
@@ -143,7 +155,7 @@ diag_cleared	Log diagnostik dikosongkan
 sidebar_settings	Bar sisi
 sidebar_settings_help	Ikon yang sama seperti rel sisi. Seret baris untuk menyusun semula. Balikkan suis untuk menunjukkan atau menyembunyikan. Tetapan dan Kunci sentiasa kekal pada bar.
 sidebar_always_on_short	Sentiasa hidup
-sidebar_menu_items	Item menu menu
+sidebar_menu_items	Item
 sidebar_enable_all	Dayakan Semua
 sidebar_disable_all	Lumpuhkan Semua
 sidebar_order_saved	Pesanan bar sisi disimpan
@@ -156,11 +168,11 @@ nav_settings	tetapan
 nav_lock	Kunci
 all_items	Semua item menu
 frequent	Kerap
-added_items	Menambah item menu Menu
+added_items	Menambah item menu
 added_items_empty	Tiada apa-apa pada bil ini lagi — tambahkan item daripada Semua item atau kategori.
 frequent_config_help	Kebanyakan barang terjual daripada bil yang telah siap. Tetapkan berapa hari untuk melihat dan berapa banyak item untuk ditunjukkan.
 frequent_days_ph	Hari (1)
-frequent_limit_ph	Item menu menu (24)
+frequent_limit_ph	Item menu (24)
 frequent_apply	Mohon
 frequent_saved	Kerap: {d} hari lepas, item {n} teratas — {c}
 frequent_empty	Tiada jualan lengkap dalam tempoh ini lagi — selesaikan bil (₹0 dibenarkan apabila Tetapan menyatakan demikian) dan ia dipaparkan di sini.
@@ -317,7 +329,7 @@ drawer_count	Kiraan laci (pilihan)
 expense_heading	Perbelanjaan
 export_day	Hari eksport
 extra_note_bill_ph	Nota tambahan pada bil / jualan ini
-extra_tills_heading	Tills tambahan
+extra_tills_heading	Kaunter tambahan
 other_devices_help_heading	Sediakan peranti lain
 other_devices_help	Pada peranti ini (Pelayan): Peranti lain → Benarkan tills tambahan. Perhatikan kod pasangan dan alamat Wi‑Fi. Ketik Benarkan peranti lain bersambung jika ia muncul. Pada komputer, ketik Mulakan dengan komputer ini. Pada setiap peranti lain: pasang apl, pilih Mod Pelanggan, Cari pelayan kedai (atau taip alamat), masukkan kod pasangan, Pasangkan sekarang. Pesanan menunggu pada peranti jika Wi‑Fi terputus dan hilang apabila Pelayan menjawab semula. Pencetak tambahan ditetapkan pada Pelayan (Tetapan → Pencetak) — sehingga tambahan menghantar bil ke sana.
 forget_shop	Lupakan kedai ini
@@ -325,7 +337,7 @@ goods_received	Barang diterima
 import_day	Hari import
 import_items_csv_plain	Import item menu CSV…
 import_parties_csv	Import pelanggan dan pembekal CSV…
-item_name	Nama item menu menu
+item_name	Nama item menu
 login_id_ph	Nama pengguna
 mark_cleared	Mark dibersihkan
 new_party_clear	Pelanggan atau pembekal baharu (borang jelas)
@@ -374,7 +386,7 @@ history_hours_saved	Jam sejarah disimpan
 rollup	Penggulungan ringkasan
 save_brand	Jimat jenama
 save_business_id	Simpan id perniagaan
-save_features	Jimat
+save_features	Simpan
 save_features_named	Jimat {name}
 save_features_ok	Persediaan disimpan untuk {name}
 save_names	Simpan nama
@@ -470,7 +482,7 @@ route_cleared	Dikosongkan {name}
 route_tap_selected	dipilih
 printer_target_ph	Nama pencetak sistem atau hos:9100
 printer_target_default	pencetak biasa komputer ini (alamat kosong)
-route_bill	Bil tetamu
+route_bill	Bil
 station_print_pick_first	Pilih bahagian dispensari dahulu
 bill_printers_dd	Pencetak untuk bil
 bill_printers_dd_n	{n} pencetak untuk bil · ketik untuk menukar
@@ -595,7 +607,7 @@ wipe_schema_done	Persediaan kedai dipadam — pilih Pelayan atau Pelanggan untuk
 rounded_total	Jumlah Bulat
 setup_app_tabiyat	Sediakan Tabiyat
 shop_logo_optional	Logo kedai (pilihan)
-stock_type_help	Taip nama item menu (sebahagian daripadanya sudah mencukupi), kuantiti, kemudian laraskan. Item menu menu yang belum dikira lagi memerlukan Mulakan penjejakan sekali.
+stock_type_help	Taip nama item menu (sebahagian daripadanya sudah mencukupi), kuantiti, kemudian laraskan. Item menu yang belum dikira lagi memerlukan Mulakan penjejakan sekali.
 team_owner_help	Biarkan orang itu kosong untuk menambah seseorang: nama, pekerjaan, nama pengguna, PIN dan kata laluan pilihan, kemudian Tambah. Pilih orang untuk mengedit jenis borang yang sama — nama, nama pengguna, kata laluan, skrin dan hak — kemudian Simpan. PIN dan kata laluan anda sendiri adalah satu log masuk di bahagian bawah. Pemilik tidak mengubah PIN milik orang lain.
 staff_name_ph	Nama kakitangan
 staff_copy_hire_ph	Salin persediaan daripada (pilihan)
@@ -641,7 +653,7 @@ icon_default	Ikon: Kumkaj tanda (lalai) — pilih yang tersuai
 logo_yours	Logo: logo kedai anda — ditunjukkan pada skrin dan resit
 logo_default	Logo: Kumkaj tanda (lalai) — pilih sendiri jika ada
 setup_complete	Persediaan selesai
-onboard_fresh_tmpl	Fresh · {} — katalog bermula kosong; tambah item menu dalam item menu Menu, kemudian Selesai.
+onboard_fresh_tmpl	Fresh · {} — katalog bermula kosong; tambah item menu dalam item menu, kemudian Selesai.
 onboard_book_tmpl	Lejar · {} — tambah item menu dan kredit pembukaan, kemudian Selesai.
 tmpl_blurb	Kaunter farmasi: ubat-ubatan, kelompok/luput, khata, buku.
 reports_facet_title	Laporan
@@ -735,6 +747,20 @@ fssai_ph	Lesen dadah no. (pilihan - perkataan anda)
 bill_footer_ph	Pengaki (cth. Terima kasih, lawati lagi)
 kot_field_on	tunjuk
 kot_field_off	bersembunyi
+kot_field_show	Tunjukkan
+kot_field_hide	Sembunyi
+bill_line_shop	Kedai
+bill_line_address	Alamat
+bill_line_fssai	FSSAI
+bill_line_title	Tajuk
+bill_line_customer	Pelanggan
+bill_line_bill_no	No. bil
+bill_line_time	Masa
+bill_line_cashier	Juruwang
+bill_line_items	Item
+bill_line_total	Jumlah
+bill_line_footer	Pengaki
+bill_line_upi	UPI
 kot_weight_light	Cahaya
 bill_kot_panel_help	Susun atur bil dan lebar kandungan. Juruwang ialah yang mengeluarkan atau menyelesaikan bil — kisah jualan penuh kekal dalam buku.
 std_size_ph	cth. 18, 20, 26…
@@ -842,10 +868,10 @@ lane_declared_label	Invois cukai
 lane_owner_label	Memo tunai
 money_lane_bill	Bil: {lane}
 
-removing	Removing…
-removed	Removed
-updating_order	Updating…
-order_updated	Order updated
+removing	Membuang…
+removed	Dibuang
+updating_order	Mengemas kini…
+order_updated	Pesanan dikemas kini
 sel_copy	Salin
 sel_select_all	Pilih semua
 sel_copied	Disalin

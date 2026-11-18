@@ -140,4 +140,4 @@ owner-facing copy or code.
 | MSI | `apps/kirano/scripts/msi.sh` | `msi.sh dev` |
 | Dev | `cargo kirano-dev` | |
 
-Footer line for sites: *Kirano is a Kumkaj product by Gotigin.*
+Footer line for sites: *Gotigin · GOTIGIN SOFTWARE & HARDWARE PRIVATE LIMITED · Kumkaj · Kirano.*

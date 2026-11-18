@@ -67,13 +67,19 @@ bill_item_amount	Ka jingbun
 bill_item_note	Jingpynkynmaw
 bill_item_col_sep	Ki kyndon jong ki kolom
 slip_col_width	Ka jingshah (mm)
-paper_heading	Ka shla
+paper_heading	Ka shla virtual
 paper_size	{w} × {h} mm
 paper_roll	ka roll {w} mm
 paper_not_set	ka shla bym pat tip shuh
-paper_length_mm	Ka jingjrong (mm)
-printer_paper_help	Ka shla jong kane ka nongpynmih kot ha mm. Ka jingjrong ba khlem don ka long roll: kawei pa kawei ka slip ka jrong kumba ka jingdon ha ka. Wad ia ki nongpynmih kot ka pynpura ia ka shla ba khlem don na ka driver jong ka nongpynmih kot (roll 80 mm lada kam lah ban ong) bad kam pynkylla ei ei ia kaba la pynbeit.
-preview_help	Kane ka slip ha ka shla jong ka nongpynmih kot ba la jied hapoh, kumba ka pynmih hangta: ha ka jingheh shisha na ka kona khlieh kadiang ba ka nongpynmih kot ka poi (saw-iong: ki kyndon ba kam poi), ka slip ba jrong ha ki sla kiba kham bun, kiei kiei ba palat ia ka kyndon ka shla la ot. Ban jied ka nongpynmih kot ka pynkylla tang ia ka jingpeit lypa; ka shla jong man ka nongpynmih kot la pynbeit hapoh Ki nongpynmih kot.
+na	Ym don
+virtual_width_mm	Ka jingshah virtual (mm)
+virtual_length_mm	Ka jingjrong virtual (mm)
+reported_width_mm	Ka jingshah ba la pyntip (mm)
+reported_length_mm	Ka jingjrong ba la pyntip (mm)
+reported_paper	La pyntip: {paper}
+virtual_paper	Virtual: {paper}
+printer_paper_help	Ba la pyntip ka dei ka shla ba la buh ha ka driver jong kane ka nongpynmih kot; ka app ka pule tang ia ka, bad “Ym don” ka mut ba ym don driver ban kylli. Virtual ka dei ka shla ba phi ong ba ka don shisha ha ka nongpynmih kot, ha ka mm; ka jingjrong ba khlem don ka dei ka roll. Ka nongpynmih kot ka pynmih ha la ka jong ka shla; ka shla virtual ka iathuh ia ka app katno na ka ka dei ka shla shisha, na ka bynta ka jingpeit lypa, ka jingjrong ka sla bad ka jaka jong ka slip. Wad ia ki nongpynmih kot ka pynpura ia ka shla virtual ba khlem don bad kam ju pynkylla ia kaba phi la buh.
+preview_help	Kane ka slip kumba ka pynmih ha ka nongpynmih kot ba la jied hapoh, ha ka jingheh shisha ha ka shla virtual jong ka. Ba lieh ka dei ka jaka ba ka pynmih, ka shla saw-iong ka nongpynmih kot kam poi, bad ka ink ba jem rong la ot noh. Ki khyndai tylli ki kyntien-saw-dong ki dei ka shla: tap ha ka jaka ba ka slip ka dei ban shong. Ka slip ba jrong ka leit sha kiwei pat ki sla. Ban jied ka nongpynmih kot ka pynkylla tang ia ka jingpeit lypa.
 slip_col_start	Ka jaka ha kaba sdang (px)
 slip_col_end	Ka jaka ha kaba kut (px)
 slip_columns_help	Ka jingshah jong man la ka kolom ka kynthup ia ka jaka ha kaba sdang bad ha kaba kut. Ka jingthoh ka kynthup hapoh ka kolom jong ka; kaei kaba palat ia ka jingshah ka jingdon ka sait, ha ka shla bad ha ka jingpeit shuwa.
@@ -88,6 +94,12 @@ bill_item_piece_off	Lip
 bill_total_qty	Ka jingbun baroh
 bill_total_subtotal	Ka jingkhein baroh
 bill_total_grand	Ka jingkhein kyllum
+bill_total_number_under	Ka nombar hapoh
+bill_total_caption_under	Ka label hapoh
+bill_total_own_line	Ka lain lajong
+bill_total_caption_with	Bad ka nombar
+bill_total_caption_none	Khlem label
+bill_total_place_help	Ka lain lajong ka pynmih ia kane ka jingkhein marwei. Hapoh ka kolom, ka nombar jong ka la pynmih ha kata ka kolom ki mar, ha ka jingheh bad ka jingrben jong kane ka lain; ki jingkhein ki iasam ia kawei ka row haduh ba la shim ia kawei ka kolom, nangta ka sdang ka row ba thymmai. Ka label ka leit bad ka nombar, hapoh kawei pat ka kolom, lane la ieh noh. Ki lain jong ka khajna, ka jingshakri, ka rounding bad ka jingsiew ki bud ia Ka jingkhein baroh.
 kot_unassigned	Bym shym la aiti
 settings_hub_help	Plie ia kawei ka jaka ha ka shisien — kham duna ka jingpynkylla, ki jingjied kiba kham shai.
 settings_sec_language	Ka ktien & ka pisa
@@ -723,6 +735,20 @@ fssai_ph	FSSAI / laisen dukan no. (ba lah ban jied)
 bill_footer_ph	Hapoh (e.g. Khublei, leit jngoh biang)
 kot_field_on	pyni
 kot_field_off	buhrieh
+kot_field_show	Pyni
+kot_field_hide	Burieh
+bill_line_shop	Dukan
+bill_line_address	Ka jaka sah
+bill_line_fssai	FSSAI
+bill_line_title	Kyrteng
+bill_line_customer	U nongthied
+bill_line_bill_no	Nombor bill
+bill_line_time	Ka por
+bill_line_cashier	Nonglum pisa
+bill_line_items	Ki tiar
+bill_line_total	Baroh
+bill_line_footer	Hapoh
+bill_line_upi	UPI
 kot_weight_light	Ka jingshai
 bill_kot_panel_help	Ka jingpynbeit ia ka bill bad ka jingheh jong ka jingdon. U Cashier u dei uba la pynmih ne pynbeit ia ka bill — ka jingiathuhkhana ba pura jong ka jingdie ka sah ha ki kot.
 std_size_ph	kum 18, 20, 26...
@@ -830,10 +856,10 @@ lane_declared_label	Ka jingkhein khajna
 lane_owner_label	Ka jingkynmaw pisa
 money_lane_bill	Ka jingsiew: {lane}
 
-removing	Removing…
-removed	Removed
-updating_order	Updating…
-order_updated	Order updated
+removing	Dang weng…
+removed	La weng
+updating_order	Dang pynthymmai…
+order_updated	La pynthymmai ia ka order
 sel_copy	Kopi
 sel_select_all	Jied baroh
 sel_copied	La kopi

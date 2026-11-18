@@ -192,7 +192,7 @@ snack_secs_save	Ruaj kohën e njoftimit
 snack_secs_saved	Koha e njoftimit u ruajt — {n} sekonda
 snack_secs_bad	Fut sekondat si numër (3–60)
 cancelled	E anuluar
-cancelling	Cancelling…
+cancelling	Cancellingâ¦
 cancel	Anulo
 opening_client	Po hapet terminali…
 preparing_desk	Po përgatitet tavolina…
@@ -501,13 +501,18 @@ job_size	Madhësia e gërmës
 job_size_ph	p.sh. 18, 20, 26…
 test_receipt_format	Fatura e testimit
 test_label_format	Etiketa e provës
-paper_heading	Letër
+paper_heading	Letër virtuale
 paper_size	{w} × {h} mm
 paper_roll	rrotull {w} mm
 paper_not_set	letra ende e panjohur
-paper_length_mm	Gjatësia (mm)
-printer_paper_help	Letra e këtij printeri në mm. Gjatësia bosh është rrotull: çdo faturë është aq e gjatë sa përmbajtja e saj. Gjej printerët plotëson letrën bosh nga drajveri i printerit (rrotull 80 mm kur nuk mund ta thotë) dhe kurrë nuk ndryshon një të vendosur tashmë.
-preview_help	Kjo faturë në letrën e printerit të zgjedhur më poshtë, siç printohet atje: në madhësi reale nga këndi i sipërm majtas që arrin printeri (gri: skajet që nuk i arrin), një faturë e gjatë në më shumë fletë, gjithçka përtej skajit të letrës pritet. Zgjedhja e printerit ndryshon vetëm pamjen paraprake; letra e çdo printeri vendoset te Printerët.
+virtual_width_mm	Gjerësia virtuale (mm)
+virtual_length_mm	Gjatësia virtuale (mm)
+reported_width_mm	Gjerësia e raportuar (mm)
+reported_length_mm	Gjatësia e raportuar (mm)
+reported_paper	E raportuar: {paper}
+virtual_paper	Virtuale: {paper}
+printer_paper_help	E raportuar është letra për të cilën është vendosur drajveri i këtij printeri; aplikacioni vetëm e lexon, dhe “Nuk ka” do të thotë se nuk ka drajver për ta pyetur. Virtuale është letra që ju thoni se ndodhet vërtet në printer, në mm; gjatësia bosh është rrotull. Printeri printon në letrën e vet; letra virtuale i tregon aplikacionit sa prej saj është letër e vërtetë, për pamjen paraprake, gjatësinë e faqes dhe vendin e faturës. Gjej printerët plotëson një letër virtuale bosh dhe kurrë nuk ndryshon një që e keni vendosur ju.
+preview_help	Kjo faturë siç printohet në printerin e zgjedhur më poshtë, në madhësi reale në letrën e tij virtuale. E bardha është aty ku printon, letra gri është jashtë shtrirjes së printerit, dhe boja e zbehtë pritet. Nëntë katrorët janë letra: prekni aty ku duhet të qëndrojë fatura. Një faturë e gjatë vazhdon në më shumë faqe. Zgjedhja e printerit ndryshon vetëm pamjen paraprake.
 slip_col_width	Gjerësia (mm)
 no_printer_assigned	Pa printer
 printer_target_default	printeri i zakonshëm i këtij kompjuteri (adresë bosh)

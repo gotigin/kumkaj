@@ -101,6 +101,19 @@ bill_item_col_sep	Mga panuntunan sa hanay
 slip_columns	Mga column
 slip_col_header	Header
 bill_line_logo	Logo
+bill_line_shop	Tindahan
+bill_line_address	Address
+bill_line_fssai	FSSAI
+bill_line_title	Pamagat
+bill_line_customer	Kostumer
+bill_line_bill_no	Blg. ng bill
+bill_line_time	Oras
+bill_line_cashier	Kahera
+bill_line_table	Dining table
+bill_line_items	Mga item
+bill_line_total	Kabuuan
+bill_line_footer	Footer
+bill_line_upi	UPI
 bill_logo_picture	Larawan
 bill_logo_choose	Pumili ng larawan
 bill_logo_remove	Alisin ang larawan
@@ -128,6 +141,12 @@ bill_item_piece_off	Naka-off
 bill_total_qty	Kabuuang dami
 bill_total_subtotal	Bahaging kabuuan
 bill_total_grand	Malaking kabuuan
+bill_total_number_under	Numero sa ilalim ng
+bill_total_caption_under	Label sa ilalim ng
+bill_total_own_line	Sariling linya
+bill_total_caption_with	Kasama ng numero
+bill_total_caption_none	Walang label
+bill_total_place_help	Ang Sariling linya ay nagpi-print ng kabuuang ito nang mag-isa. Sa ilalim ng column, ang numero nito ay naka-print sa column na iyon ng mga item, sa laki at kapal ng linyang ito; magkakasama sa isang hilera ang mga kabuuan hanggang may column na okupado na, saka magsisimula ng bagong hilera. Ang label ay kasama ng numero, nasa ilalim ng ibang column, o hindi isinasama. Ang mga linya ng buwis, serbisyo, rounding at bayad ay sumusunod sa Bahaging kabuuan.
 reprint_incl	Sa print
 reprint_skip	Laktawan
 reprint_skip_meta	Laktawan ang pag-print sa pagbawi
@@ -170,7 +189,7 @@ settings_sec_pickers	Mga lugar · istasyon · mga rate ng buwis
 settings_sec_printers	Mga Printer
 settings_sec_bill	Bill at KOT na format
 settings_sec_selling	Mga scheme at benta
-bill_kot_tab_bill	bill ng bisita
+bill_kot_tab_bill	Bill
 bill_kot_tab_kot	KOT
 settings_sec_alerts	Mga alerto
 alerts_help	Gaano katagal nananatili ang mga status message sa screen para sa iyo (pag-login na ito).
@@ -178,20 +197,20 @@ snack_secs_ph	Segundo (3–60, default 10)
 snack_secs_save	I-save ang oras ng alerto
 snack_secs_saved	Na-save ang oras ng alerto — {n} segundo
 settings_sec_whatsapp	WhatsApp
-whatsapp_cloud_help	Use your own Meta WhatsApp Cloud API. Create a System User token with whatsapp_business_messaging (temporary dashboard tokens expire). Credentials stay on this Server only — never on extra tills. Accepted means Meta took the request, not that the guest received it.
-whatsapp_phone_id_ph	Phone Number ID
-whatsapp_token_ph	Access Token (leave blank to keep)
-whatsapp_template_ph	Bill template name (optional)
-whatsapp_template_lang_ph	Template language (e.g. en)
-whatsapp_enable	Enable
+whatsapp_cloud_help	Gamitin ang sarili mong Meta WhatsApp Cloud API. Gumawa ng System User token na may whatsapp_business_messaging (nag-e-expire ang mga pansamantalang token ng dashboard). Nananatili lamang ang mga detalye sa Server na ito — hindi kailanman sa mga dagdag na kaha. Ang “Tinanggap” ay nangangahulugang kinuha ng Meta ang kahilingan, hindi na natanggap ito ng bisita.
+whatsapp_phone_id_ph	ID ng numero ng telepono
+whatsapp_token_ph	Access token (iwanang blangko para panatilihin)
+whatsapp_template_ph	Pangalan ng template ng resibo (opsyonal)
+whatsapp_template_lang_ph	Wika ng template (hal. en)
+whatsapp_enable	Paganahin
 whatsapp_disable	Off
-whatsapp_save	Save WhatsApp
-whatsapp_test	Test connection
-whatsapp_disconnect	Disconnect
-whatsapp_send_bill	Send via WhatsApp
+whatsapp_save	I-save ang WhatsApp
+whatsapp_test	Subukin ang koneksyon
+whatsapp_disconnect	Idiskonekta
+whatsapp_send_bill	Ipadala sa WhatsApp
 whatsapp_consent	WhatsApp OK
-whatsapp_consent_help	Guest agreed to receive WhatsApp messages. A phone number alone is not consent.
-whatsapp_server_only	Configure WhatsApp on the shop Server device
+whatsapp_consent_help	Pumayag ang bisita na tumanggap ng mga mensahe sa WhatsApp. Hindi pahintulot ang numero ng telepono lamang.
+whatsapp_server_only	I-set up ang WhatsApp sa Server device ng tindahan
 settings_sec_backup	I-backup at i-restore
 settings_sec_diag	Mga diagnostic
 settings_sec_privacy	Privacy
@@ -400,7 +419,7 @@ attachments_last_expense	Mga Attachment (huling gastos)
 bank	Bangko
 bank_in	Pasok sa bangko
 bank_out	Cash out sa bangko
-bank_reconciliation	Bank reconciliation
+bank_reconciliation	Pagtutugma sa bangko
 bank_to_till	Bangko → hanggang
 book_add_dish	Ledger — magdagdag ng ulam / item sa menu
 book_opening_credit	Ledger — pagbubukas ng kredito
@@ -509,7 +528,7 @@ expense_heading	Gastos
 export_day	Araw ng pag-export
 extra_note_bill_ph	Dagdag na tala sa bill / sale na ito
 extra_note_expense_ph	Dagdag na tala sa huling gastos
-extra_tills_heading	Mga dagdag na tills
+extra_tills_heading	Mga dagdag na kaha
 other_devices_help_heading	Mag-set up ng iba pang device
 other_devices_help	Sa device na ito (Server): Iba pang mga device → Pahintulutan ang mga karagdagang tills. Tandaan ang code ng pagpapares at Wi‑Fi address. I-tap ang Payagan ang ibang mga device na kumonekta kung lalabas ito. Sa isang computer, i-tap ang Magsimula sa computer na ito. Sa bawat isa na device: i-install ang app, piliin ang Client Mode, Hanapin ang server ng shop (o i-type ang address), ilagay ang code ng pagpapares, Ipares ngayon. Maghihintay ang mga order sa device kung bumaba ang Wi‑Fi at umalis kapag sumagot muli ang Server. Ang mga printer sa kusina ay nakatakda sa Server (Mga Setting → Mga Printer) — ang mga dagdag na till ay nagpapadala ng KOTs doon.
 forget_shop	Kalimutan ang tindahang ito
@@ -583,7 +602,7 @@ server_ip_ph	IP ng server (hal. 192.168.1.10)
 set_credit_limit	Ilapat ang limitasyon sa customer o supplier
 set_login_selected	Ilapat ang pag-login sa napili
 set_login_named	Ilapat ang pag-login sa {name}
-shop	Mamili
+shop	Tindahan
 show	Ipakita
 spreadsheet_csv	Talaan (CSV)
 start_fresh	Magsimula ng bago
@@ -637,7 +656,7 @@ choose_device_use	Piliin ang Server o Kliyente.
 paired_note	Ipinares. I-unlock para ibenta, o I-refresh para sa pinakabago.
 last_update_at	Huling update: {time}.
 pair_intro	Hanapin ang server, o i-type ang address at code ng pagpapares nito.
-pair_resume_hint	Already paired — enter your shop PIN, or Forget this shop to pair another.
+pair_resume_hint	Naipares na — ilagay ang PIN ng iyong tindahan, o i-tap ang “Kalimutan ang tindahang ito” para magpares ng iba.
 queue_waiting	Naghihintay na makarating sa tindahan ({n}):
 queue_tries	Sinubukan {n} beses · huling sagot: {e}
 save_backup_copy	Mag-save ng backup na kopya...
@@ -739,7 +758,7 @@ printer_format_custom_added	Idinagdag ang custom na profile para sa lugar na ito
 add_printer	Magdagdag ng printer
 remove_printer	Alisin
 route_pick_ph	Bill o isang istasyon ng kusina
-route_bill	bill ng bisita
+route_bill	Bill
 route_default_kitchen	Walang istasyon (hindi nakatalagang mga pagkain)
 route_kot_station	Kusina
 route_dont_print	Walang printer
@@ -754,13 +773,18 @@ station_vps_dd	Mga printer para sa istasyong ito
 station_vps_dd_n	{n} printer · i-tap para baguhin
 bill_printers_dd	Mga printer para sa bill
 bill_printers_dd_n	{n} printer para sa bill · i-tap para baguhin
-paper_heading	Papel
+paper_heading	Virtual na papel
 paper_size	{w} × {h} mm
 paper_roll	{w} mm na rolyo
 paper_not_set	hindi pa alam ang papel
-paper_length_mm	Haba (mm)
-printer_paper_help	Ang papel ng printer na ito sa mm. Ang walang lamang Haba ay rolyo: bawat resibo ay kasinghaba ng laman nito. Pinupunan ng Maghanap ng mga printer ang walang lamang papel mula sa driver ng printer (80 mm na rolyo kapag hindi nito masabi) at hindi kailanman binabago ang naitakda na.
-preview_help	Ang resibong ito sa papel ng printer na pinili sa ibaba, gaya ng pagkaka-print doon: tunay na laki mula sa itaas na kaliwang abot ng printer (kulay abo: mga gilid na hindi nito abot), mahabang resibo sa mas maraming pahina, pinuputol ang lampas sa gilid ng papel. Ang pagpili ng printer ay preview lang ang binabago; ang papel ng bawat printer ay itinatakda sa Mga Printer.
+virtual_width_mm	Virtual na lapad (mm)
+virtual_length_mm	Virtual na haba (mm)
+reported_width_mm	Iniulat na lapad (mm)
+reported_length_mm	Iniulat na haba (mm)
+reported_paper	Iniulat: {paper}
+virtual_paper	Virtual: {paper}
+printer_paper_help	Ang iniulat ay ang papel kung saan nakatakda ang driver ng printer na ito; binabasa lang ito ng app, at ang N/A ay nangangahulugang walang driver na matatanong. Ang virtual ay ang papel na sinasabi mong talagang nasa printer, sa mm; ang blangkong haba ay rolyo. Nagpi-print ang printer sa sarili nitong papel; sinasabi ng virtual na papel sa app kung gaano karami roon ang totoong papel, para sa preview, haba ng pahina at puwesto ng resibo. Pinupunan ng Maghanap ng mga printer ang blangkong virtual na papel at hindi kailanman binabago ang itinakda mo.
+preview_help	Ang resibong ito kung paano ito mapi-print sa printer na pinili sa ibaba, sa totoong laki sa virtual na papel nito. Puti ang bahaging napi-print, ang kulay-abong papel ay hindi abot ng printer, at ang maputlang tinta ay napuputol. Ang siyam na kahon ay ang papel: i-tap kung saan dapat ilagay ang resibo. Ang mahabang resibo ay tumutuloy sa mas maraming pahina. Ang pagpili ng printer ay nagbabago lang sa preview.
 job_layout	Ayos
 job_delivery	Paano ipinadala ang trabaho
 job_delivery_help	Dokumento ng OS, raw byte, o ESC/POS. Ang bill at ang tiket sa kusina ay may kanya-kanyang hawak. Maaaring mapunta ang alinmang trabaho sa anumang printer na na-save ng Find.
@@ -1053,7 +1077,7 @@ tile_occupied	Okupado
 tile_food_ready	Handa na ang pagkain
 tile_bill_printed	Naka-print ang bill
 tile_paid	Binayaran
-tile_bill_btn	bill ng bisita
+tile_bill_btn	Bill
 tile_occupy_btn	Paupuin ang mga bisita
 tile_free_btn	Iwanan ang hapag kainan
 tile_ready_btn	Iwanan ang hapag kainan
@@ -1163,7 +1187,7 @@ kot_show_station	Istasyon
 kot_hide_station	Itago ang istasyon
 kot_show_table	Dining table
 kot_hide_table	Itago ang hapag kainan
-kot_show_kot_no	KOT Hindi
+kot_show_kot_no	Blg. ng KOT
 kot_hide_kot_no	Itago ang KOT Hindi
 kot_width	I-preview ang wrap (itakda ang lapad ng nilalaman sa tab na KOT)
 kot_width_58	58 mm
@@ -1238,7 +1262,7 @@ on_your_menu	Sa iyong menu
 edit	I-edit
 schemes	Mga scheme / alok
 schemes_help	BOGO, percent-off, at fixed combos. Lumalawak ang mga combo sa mga linya ng kusina sa Send KOT; ang mga bahagi ay mananatiling hawak hanggang sa sunog ang combo. Halimbawa: Bumili ng 2 Thali makakuha ng 1 Chaas
-scheme_bogo_ph	Buy 2 Thali get 1 Chaas
+scheme_bogo_ph	Bumili ng 2 Thali, libre ang 1 Chaas
 add_scheme	Magdagdag ng BOGO
 schedule_ph	Oras / happy hour — Lun-Biy 07:00-11:00 o HappyHour 17:00-19:00=150
 upi_qr	UPI QR
@@ -1256,7 +1280,7 @@ choose_table	Pumili ng hapag kainan
 change_table	Baguhin ang hapag kainan
 pick_table_banner	Pumili ng hapag kainan para sa order na ito
 items_word	mga item sa menu
-items_section	Mga item sa menu ng menu
+items_section	Mga item
 back_to_order	Bumalik sa order
 new_items_head	Hindi pa naipadala
 price_ph	Presyo
@@ -1266,8 +1290,8 @@ taxable_value	Nabubuwisan na halaga
 gst_inside_price_note	({tax} kasama)
 start_with_template	Magsimula sa aming template ng menu
 template_heading	Ang aming template ng menu
-template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
-template_download_shelf	Download photo shelf
+template_need_download	I-download ang pampublikong estante ng larawan ng mga putahe (~1,459 putahe), pagkatapos ay i-import sa iyong menu ang mga pangalang wala pa.
+template_download_shelf	I-download ang estante ng larawan
 template_info	{c} kategorya at {d} dish na may mga larawan, handa nang idagdag. Magsisimula ang mga presyo sa ₹0 — itakda ang sa iyo pagkatapos.
 template_import	Mag-import ng kumpletong template
 template_confirm	Magdagdag ng {d} dish sa kanilang mga kategorya? Ang mga pagkaing mayroon ka nang manatili sa kung ano sila.
@@ -1325,7 +1349,7 @@ kot_show_title	linya ng pamagat
 kot_hide_title	Itago ang pamagat
 kot_field_cycle	Piliin ang susunod
 kot_field_select	Piliin ang susunod
-dishes_n	{n} pinggan
+dishes_n	{n} putahe
 recipe_ph	Recipe (opsyonal) — isang bahagi ay gumagamit ng: Rice=0.2, Paneer=0.15
 reorder_ph	Bumili ng higit pa sa
 set_reorder	Itakda ang antas ng muling pagkakaayos

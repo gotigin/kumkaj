@@ -44,7 +44,7 @@ restore_item	ପୁନରୁଦ୍ଧାର କରନ୍ତୁ
 empty_catalog	ଏପର୍ଯ୍ୟନ୍ତ କୌଣସି ଆଇଟମ୍ ନାହିଁ।
 total	ମୋଟ
 cash	ନଗଦ
-upi	यूपीआई
+upi	UPI
 card	କାର୍ଡ
 credit	ପାର୍ଟି
 clear	ସଫା
@@ -78,7 +78,7 @@ reprint_kot_needed	ପ୍ରଥମେ KOT ପଠାନ୍ତୁ — ପରେ �
 reprint_kot_none_selected	ସବୁ ପଠାଯାଇଥିବା ଛାଡ଼ା — ଛାପିବାକୁ «ପ୍ରିଣ୍ଟରେ» ଦବାନ୍ତୁ
 reprint_kot_client	{place} ପାଇଁ ପୁଣି ଛାପନ୍ତୁ ({n}) ପଠାଗଲା — ରୋଷେଇ ସର୍ଭରରେ ଛାପିବ
 print_cancelled_kot	ସବୁ ବାତିଲ୍ ଛାପ
-print_cancelled_kot_ok	{n} रद्द छापे · {slips} पर्ची → {kitchens}
+print_cancelled_kot_ok	{n}ଟି ବାତିଲ୍ ଖାଦ୍ୟ ଛପା ହେଲା · {slips}ଟି ସ୍ଲିପ୍ → {kitchens}
 print_cancelled_kot_needed	ବାତିଲ୍ ଖାଦ୍ୟ ଥିବା ଟେବୁଲ ଖୋଲନ୍ତୁ
 print_cancelled_kot_none	ଏହି ଅର୍ଡରରେ ବାତିଲ୍ ନାହିଁ
 print_cancelled_kot_client	ବାତିଲ୍ ({n}) {place} ପଠାଗଲା — ସର୍ଭରରେ ଛପିବ
@@ -101,6 +101,19 @@ bill_item_col_sep	ସ୍ତମ୍ଭ ରେଖା
 slip_columns	ସ୍ତମ୍ଭଗୁଡ଼ିକ
 slip_col_header	ଶୀର୍ଷକ
 bill_line_logo	ଲୋଗୋ
+bill_line_shop	ଦୋକାନ
+bill_line_address	ଠିକଣା
+bill_line_fssai	FSSAI
+bill_line_title	ଶୀର୍ଷକ
+bill_line_customer	ଗ୍ରାହକ
+bill_line_bill_no	ବିଲ୍ ନଂ
+bill_line_time	ସମୟ
+bill_line_cashier	କ୍ୟାସିୟର
+bill_line_table	ଟେବୁଲ
+bill_line_items	ଜିନିଷ
+bill_line_total	ମୋଟ
+bill_line_footer	ଫୁଟର୍
+bill_line_upi	UPI
 bill_logo_picture	ଚିତ୍ର
 bill_logo_choose	ଚିତ୍ର ବାଛନ୍ତୁ
 bill_logo_remove	ଚିତ୍ର ହଟାନ୍ତୁ
@@ -128,6 +141,12 @@ bill_item_piece_off	ବନ୍ଦ
 bill_total_qty	ମୋଟ ପରିମାଣ
 bill_total_subtotal	ଉପ ମୋଟ
 bill_total_grand	ମୋଟ
+bill_total_number_under	ସଂଖ୍ୟା ଏହା ତଳେ
+bill_total_caption_under	ଲେବଲ ଏହା ତଳେ
+bill_total_own_line	ନିଜ ଧାଡ଼ି
+bill_total_caption_with	ସଂଖ୍ୟା ସହ
+bill_total_caption_none	ଲେବଲ ନାହିଁ
+bill_total_place_help	“ନିଜ ଧାଡ଼ି” ଏହି ମୋଟକୁ ଅଲଗା ଛାପେ। ସ୍ତମ୍ଭ ତଳେ ଥିଲେ ଏହାର ସଂଖ୍ୟା ସେହି ଆଇଟମ୍ ସ୍ତମ୍ଭରେ, ଏହି ଧାଡ଼ିର ମାପ ଓ ମୋଟେଇରେ ଛପାଯାଏ; କୌଣସି ସ୍ତମ୍ଭ ଭରିବା ପର୍ଯ୍ୟନ୍ତ ମୋଟଗୁଡ଼ିକ ଗୋଟିଏ ଧାଡ଼ି ବାଣ୍ଟନ୍ତି, ତା'ପରେ ନୂଆ ଧାଡ଼ି ଆରମ୍ଭ ହୁଏ। ଲେବଲ ସଂଖ୍ୟା ସହ, ଅନ୍ୟ ସ୍ତମ୍ଭ ତଳେ ଯାଏ, କିମ୍ବା ଛାଡ଼ି ଦିଆଯାଏ। କର, ସେବା, ରାଉଣ୍ଡିଂ ଓ ପେମେଣ୍ଟ ଧାଡ଼ିଗୁଡ଼ିକ “ଉପ ମୋଟ” କୁ ଅନୁସରଣ କରନ୍ତି।
 reprint_incl	ପ୍ରିଣ୍ଟରେ
 reprint_skip	ଛାଡ଼ନ୍ତୁ
 reprint_skip_meta	ରିକଭରି ପ୍ରିଣ୍ଟ ଛାଡ଼ନ୍ତୁ
@@ -178,20 +197,20 @@ snack_secs_ph	ସେକେଣ୍ଡ (3–60, ଡିଫଲ୍ଟ 10)
 snack_secs_save	ସୂଚନା ସମୟ ସେଭ୍ କରନ୍ତୁ
 snack_secs_saved	ସୂଚନା ସମୟ ସେଭ୍ ହେଲା — {n} ସେକେଣ୍ଡ
 settings_sec_whatsapp	WhatsApp
-whatsapp_cloud_help	Use your own Meta WhatsApp Cloud API. Create a System User token with whatsapp_business_messaging (temporary dashboard tokens expire). Credentials stay on this Server only — never on extra tills. Accepted means Meta took the request, not that the guest received it.
-whatsapp_phone_id_ph	Phone Number ID
-whatsapp_token_ph	Access Token (leave blank to keep)
-whatsapp_template_ph	Bill template name (optional)
-whatsapp_template_lang_ph	Template language (e.g. en)
-whatsapp_enable	Enable
+whatsapp_cloud_help	ଆପଣଙ୍କ ନିଜର Meta WhatsApp Cloud API ବ୍ୟବହାର କରନ୍ତୁ। whatsapp_business_messaging ଥିବା ଏକ System User ଟୋକନ୍ ତିଆରି କରନ୍ତୁ (ଡ୍ୟାସବୋର୍ଡର ଅସ୍ଥାୟୀ ଟୋକନର ମିଆଦ ସରିଯାଏ)। ଏହି ତଥ୍ୟ କେବଳ ଏହି ସର୍ଭରରେ ରହେ — ଅତିରିକ୍ତ ଟିଲ୍‌ରେ କେବେ ନୁହେଁ। “ଗୃହୀତ” ମାନେ Meta ଅନୁରୋଧ ନେଇଛି, ଅତିଥି ସନ୍ଦେଶ ପାଇଛନ୍ତି ବୋଲି ନୁହେଁ।
+whatsapp_phone_id_ph	ଫୋନ୍ ନମ୍ବର ID
+whatsapp_token_ph	ଆକ୍ସେସ୍ ଟୋକନ୍ (ପୂର୍ବଟି ରଖିବାକୁ ଖାଲି ଛାଡ଼ନ୍ତୁ)
+whatsapp_template_ph	ବିଲ୍ ଟେମ୍ପଲେଟର ନାମ (ଇଚ୍ଛାଧୀନ)
+whatsapp_template_lang_ph	ଟେମ୍ପଲେଟର ଭାଷା (ଯେପରି en)
+whatsapp_enable	ଚାଲୁ କରନ୍ତୁ
 whatsapp_disable	Off
-whatsapp_save	Save WhatsApp
-whatsapp_test	Test connection
-whatsapp_disconnect	Disconnect
-whatsapp_send_bill	Send via WhatsApp
-whatsapp_consent	WhatsApp OK
-whatsapp_consent_help	Guest agreed to receive WhatsApp messages. A phone number alone is not consent.
-whatsapp_server_only	Configure WhatsApp on the shop Server device
+whatsapp_save	WhatsApp ସେଭ କରନ୍ତୁ
+whatsapp_test	ସଂଯୋଗ ପରୀକ୍ଷା କରନ୍ତୁ
+whatsapp_disconnect	ସଂଯୋଗ ବିଚ୍ଛିନ୍ନ କରନ୍ତୁ
+whatsapp_send_bill	WhatsApp ଦ୍ୱାରା ପଠାନ୍ତୁ
+whatsapp_consent	WhatsApp ଠିକ
+whatsapp_consent_help	ଅତିଥି WhatsApp ସନ୍ଦେଶ ପାଇବାକୁ ସମ୍ମତି ଦେଇଛନ୍ତି। କେବଳ ଫୋନ୍ ନମ୍ବର ଥିବା ସମ୍ମତି ନୁହେଁ।
+whatsapp_server_only	ଦୋକାନର ସର୍ଭର ଡିଭାଇସରେ WhatsApp ସେଟ୍ କରନ୍ତୁ
 settings_sec_backup	ବ୍ୟାକଅପ୍ ଓ ପୁନଃସ୍ଥାପନ
 settings_sec_diag	ଡାଇଗ୍ନୋଷ୍ଟିକ୍ସ
 settings_sec_privacy	ଗୋପନୀୟତା
@@ -637,7 +656,7 @@ choose_device_use	ଏହି ଡିଭାଇସ କିପରି ବ୍ୟବହ�
 paired_note	ଯୋଡ଼ିହେଲା। ବିକ୍ରି ପାଇଁ ଅନଲକ୍ କରନ୍ତୁ, କିମ୍ବା ଦୋକାନରୁ ନୂଆ ତଥ୍ୟ ପାଇଁ ରିଫ୍ରେଶ କରନ୍ତୁ।
 last_update_at	ଦୋକାନରୁ ଶେଷ ଅପଡେଟ୍: {time}।
 pair_intro	ସର୍ଭର ଖୋଜନ୍ତୁ, କିମ୍ବା ତାର ଠିକଣା ଓ ପେୟାରିଂ କୋଡ୍ ଲେଖନ୍ତୁ।
-pair_resume_hint	Already paired — enter your shop PIN, or Forget this shop to pair another.
+pair_resume_hint	ଆଗରୁ ଯୋଡ଼ା ହୋଇଛି — ଆପଣଙ୍କ ଦୋକାନର PIN ଦିଅନ୍ତୁ, କିମ୍ବା ଅନ୍ୟ ଦୋକାନ ଯୋଡ଼ିବାକୁ “ଏହି ଦୋକାନ ଭୁଲନ୍ତୁ” ଦବାନ୍ତୁ।
 queue_waiting	ଦୋକାନରେ ପହଞ୍ଚିବା ପାଇଁ ଅପେକ୍ଷାରେ ({n}):
 queue_tries	{n} ଥର ଚେଷ୍ଟା · ଶେଷ ଉତ୍ତର: {e}
 save_backup_copy	ବ୍ୟାକଅପ୍ କପି ସଞ୍ଚୟ କରନ୍ତୁ…
@@ -754,13 +773,18 @@ station_vps_dd	ଏହି ଷ୍ଟେସନ୍ ପ୍ରିଣ୍ଟର
 station_vps_dd_n	{n} ପ୍ରିଣ୍ଟର · ବଦଳାଇବାକୁ ଟ୍ୟାପ୍
 bill_printers_dd	ବିଲ ପାଇଁ ପ୍ରିଣ୍ଟର
 bill_printers_dd_n	ବିଲ ପାଇଁ {n}ଟି ପ୍ରିଣ୍ଟର · ବଦଳାଇବାକୁ ଦବାନ୍ତୁ
-paper_heading	କାଗଜ
+paper_heading	ଭର୍ଚୁଆଲ୍ କାଗଜ
 paper_size	{w} × {h} mm
 paper_roll	{w} mm ରୋଲ
 paper_not_set	କାଗଜ ଏପର୍ଯ୍ୟନ୍ତ ଜଣା ନାହିଁ
-paper_length_mm	ଲମ୍ବ (mm)
-printer_paper_help	ଏହି ପ୍ରିଣ୍ଟରର କାଗଜ mm ରେ। ଖାଲି ଲମ୍ବ ଅର୍ଥ ରୋଲ: ପ୍ରତ୍ୟେକ ସ୍ଲିପ୍ ତାହାର ବିଷୟବସ୍ତୁ ଯେତିକି ଲମ୍ବା। ପ୍ରିଣ୍ଟର ଖୋଜନ୍ତୁ ଖାଲି କାଗଜକୁ ପ୍ରିଣ୍ଟରର ଡ୍ରାଇଭରରୁ ଭରେ (କହିପାରୁନଥିଲେ 80 mm ରୋଲ) ଏବଂ ପୂର୍ବରୁ ସ୍ଥିର କାଗଜକୁ କେବେ ବଦଳାଏ ନାହିଁ।
-preview_help	ତଳେ ବଛାଯାଇଥିବା ପ୍ରିଣ୍ଟରର କାଗଜ ଉପରେ ଏହି ସ୍ଲିପ୍, ସେଠାରେ ଯେପରି ଛପାଯାଏ: ପ୍ରିଣ୍ଟର ପହଞ୍ଚୁଥିବା ଉପର ବାମ କୋଣରୁ ପ୍ରକୃତ ମାପରେ (ଧୂସର: ପହଞ୍ଚୁନଥିବା ଧାର), ଲମ୍ବା ସ୍ଲିପ୍ ଅଧିକ ପୃଷ୍ଠାରେ, କାଗଜ ଧାର ବାହାରର ସବୁ କଟିଯାଏ। ପ୍ରିଣ୍ଟର ବାଛିଲେ କେବଳ ପୂର୍ବାବଲୋକନ ବଦଳେ; ପ୍ରତ୍ୟେକ ପ୍ରିଣ୍ଟରର କାଗଜ ପ୍ରିଣ୍ଟର ରେ ସ୍ଥିର ହୁଏ।
+virtual_width_mm	ଭର୍ଚୁଆଲ୍ ପ୍ରସ୍ଥ (mm)
+virtual_length_mm	ଭର୍ଚୁଆଲ୍ ଲମ୍ବ (mm)
+reported_width_mm	ରିପୋର୍ଟ ହୋଇଥିବା ପ୍ରସ୍ଥ (mm)
+reported_length_mm	ରିପୋର୍ଟ ହୋଇଥିବା ଲମ୍ବ (mm)
+reported_paper	ରିପୋର୍ଟ ହୋଇଛି: {paper}
+virtual_paper	ଭର୍ଚୁଆଲ୍: {paper}
+printer_paper_help	ରିପୋର୍ଟ ହୋଇଥିବା ହେଉଛି ଏହି ପ୍ରିଣ୍ଟରର ଡ୍ରାଇଭର ଯେଉଁ କାଗଜରେ ସେଟ୍ ହୋଇଛି; ଆପ୍ ତାହାକୁ କେବଳ ପଢ଼େ, ଏବଂ “ନାହିଁ” ଅର୍ଥ ପଚାରିବାକୁ କୌଣସି ଡ୍ରାଇଭର ନାହିଁ। ଭର୍ଚୁଆଲ୍ ହେଉଛି ପ୍ରିଣ୍ଟରରେ ପ୍ରକୃତରେ ଅଛି ବୋଲି ଆପଣ କହୁଥିବା କାଗଜ, mm ରେ; ଖାଲି ଲମ୍ବ ଅର୍ଥ ରୋଲ। ପ୍ରିଣ୍ଟର ନିଜ କାଗଜ ଉପରେ ଛାପେ; ଭର୍ଚୁଆଲ୍ କାଗଜ ଆପ୍ କୁ କହେ ତା ମଧ୍ୟରୁ କେତେ ପ୍ରକୃତ କାଗଜ, ପୂର୍ବାବଲୋକନ, ପୃଷ୍ଠାର ଲମ୍ବ ଏବଂ ସ୍ଲିପ୍ ର ସ୍ଥାନ ପାଇଁ। ପ୍ରିଣ୍ଟର ଖୋଜନ୍ତୁ ଖାଲି ଭର୍ଚୁଆଲ୍ କାଗଜକୁ ଭରେ ଏବଂ ଆପଣ ସ୍ଥିର କରିଥିବା କାଗଜକୁ କେବେ ବଦଳାଏ ନାହିଁ।
+preview_help	ତଳେ ବଛାଯାଇଥିବା ପ୍ରିଣ୍ଟରରେ ଏହି ସ୍ଲିପ୍ ଯେପରି ଛପାଯାଏ, ତାହାର ଭର୍ଚୁଆଲ୍ କାଗଜ ଉପରେ ପ୍ରକୃତ ମାପରେ। ଧଳା ସ୍ଥାନରେ ଛପାଯାଏ, ଧୂସର କାଗଜ ପର୍ଯ୍ୟନ୍ତ ପ୍ରିଣ୍ଟର ପହଞ୍ଚେ ନାହିଁ, ଏବଂ ଫିକା କାଳି କଟିଯାଏ। ନଅଟି ବର୍ଗ ହେଉଛି କାଗଜ: ସ୍ଲିପ୍ ଯେଉଁଠି ରହିବା ଉଚିତ ସେଠାରେ ଟ୍ୟାପ୍ କରନ୍ତୁ। ଲମ୍ବା ସ୍ଲିପ୍ ଅଧିକ ପୃଷ୍ଠାକୁ ଯାଏ। ପ୍ରିଣ୍ଟର ବାଛିଲେ କେବଳ ପୂର୍ବାବଲୋକନ ବଦଳେ।
 job_layout	ଲେଆଉଟ୍
 job_delivery	କାମ କିପରି ପଠାଯାଏ
 job_delivery_help	OS ଡକ୍ୟୁମେଣ୍ଟ, କଞ୍ଚା ବାଇଟ୍ କିମ୍ବା ESC/POS। ବିଲ ଓ ରୋଷେଇ ଟିକେଟ ଦୁହେଁ ନିଜ ନିଜର ରଖନ୍ତି। ଯେକୌଣସି କାମ ଖୋଜନ୍ତୁ ସଞ୍ଚୟ କରିଥିବା ଯେକୌଣସି ପ୍ରିଣ୍ଟରକୁ ଯାଇପାରେ।
@@ -1040,7 +1064,7 @@ book_kind_today	ଆଜିର ବହି
 book_kind_month	ଏହି ମାସର ବହି
 book_kind_aging	ବକେୟା / ଡେବିଟ-କ୍ରେଡିଟ
 book_kind_balance	ବାଲାନ୍ସ ସିଟ୍
-order_help	ଖୋଲା ଅର୍ଡର ବାଛନ୍ତୁ, କିମ୍ବା ଟେବୁଲ୍ ବାଛି ନୂଆ ଆରମ୍ଭ କରନ୍ତୁ। ପ୍ରସ୍ତୁତ ଆଇଟମ୍ ଉପରେ ଟାପ୍ କରନ୍ତୁ, KOT ପଠାନ୍ତୁ, ଗୋଟିଏ ବା ଅଧିକ ଆଇଟମ୍ ବିଲ୍ କରନ୍ତୁ, ବିଲ୍ ବାଣ୍ଟନ୍ତୁ ଏବଂ ଦେୟ ମେଟାନ୍ତୁ।
+order_help	ଯୋଡ଼ିବାକୁ ଏକ ଆଇଟମ୍ ଉପରେ ଟ୍ୟାପ୍ କରନ୍ତୁ।
 floor_help	ପ୍ରତ୍ୟେକ ଟେବୁଲ୍ ଦେଖାଏ ଅତିଥିମାନେ ବସିଛନ୍ତି କି ନାହିଁ, ସେମାନଙ୍କ ଖୋଲା ବିଲ୍ କ’ଣ ଏବଂ ପରବର୍ତ୍ତୀ ସେବା କାହାକୁ ଦରକାର।
 kitchen_help	ପ୍ରତି ଭାରିଆଣ୍ଟ କିମ୍ବା ପ୍ରତି ଆଇଟମ୍ ଅନୁଯାୟୀ ପ୍ରସ୍ତୁତ ପରିମାଣ ଟ୍ରାକ୍ କରନ୍ତୁ — KOT ରେ ଇଚ୍ଛା ଅନୁଯାୟୀ ରେକର୍ଡ କରନ୍ତୁ।
 kitchen_empty	ବର୍ତ୍ତମାନ କିଛି ଖୋଲା ନାହିଁ।
@@ -1238,7 +1262,7 @@ on_your_menu	ଆପଣଙ୍କ ମେନୁରେ
 edit	ସମ୍ପାଦନା
 schemes	ସ୍କିମ / ଅଫର
 schemes_help	X କିଣନ୍ତୁ Y ପାଆନ୍ତୁ — ସେଟଲରେ ଅଟୋ। ଉଦା. Buy 2 Thali get 1 Chaas
-scheme_bogo_ph	Buy 2 Thali get 1 Chaas
+scheme_bogo_ph	2ଟି ଥାଳି କିଣନ୍ତୁ, 1ଟି ଛାଛ ପାଆନ୍ତୁ
 add_scheme	BOGO ଯୋଡ଼ନ୍ତୁ
 schedule_ph	ସମୟ / ହ୍ୟାପି ଆୱାର — Mon-Fri 07:00-11:00 ବା HappyHour 17:00-19:00=150
 upi_qr	UPI QR
@@ -1266,8 +1290,8 @@ taxable_value	କରଯୋଗ୍ୟ ମୂଲ୍ୟ
 gst_inside_price_note	({tax} ସହିତ)
 start_with_template	ଆମ ମେନୁ ଟେମ୍ପଲେଟ୍ ସହ ଆରମ୍ଭ
 template_heading	ଆମ ମେନୁ ଟେମ୍ପଲେଟ୍
-template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
-template_download_shelf	Download photo shelf
+template_need_download	ଖାଦ୍ୟର ସାର୍ବଜନୀନ ଫଟୋ ସେଲ୍ଫ (~1,459ଟି ଖାଦ୍ୟ) ଡାଉନଲୋଡ୍ କରନ୍ତୁ, ତା'ପରେ ନଥିବା ନାମଗୁଡ଼ିକୁ ଆପଣଙ୍କ ମେନୁକୁ ଆମଦାନି କରନ୍ତୁ।
+template_download_shelf	ଫଟୋ ସେଲ୍ଫ ଡାଉନଲୋଡ୍ କରନ୍ତୁ
 template_info	{c} ବର୍ଗ ଓ {d} ଖାଦ୍ୟ ଫଟୋ ସହ ପ୍ରସ୍ତୁତ। ଦାମ ₹0 — ପରେ ନିଜ ଦାମ ଦିଅନ୍ତୁ।
 template_import	ସମ୍ପୂର୍ଣ୍ଣ ଟେମ୍ପଲେଟ୍ ଆଣନ୍ତୁ
 template_confirm	{d} ଖାଦ୍ୟ ବର୍ଗ ସହ ଯୋଡ଼ିବେ? ଆପଣଙ୍କ ପୂର୍ବ ଖାଦ୍ୟ ସେପରି ରହିବ।

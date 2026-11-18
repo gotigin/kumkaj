@@ -101,6 +101,19 @@ bill_item_col_sep	Ki kyndon jong ki kolom
 slip_columns	Ki kolom
 slip_col_header	Ka khlieh
 bill_line_logo	Logo
+bill_line_shop	Dukan
+bill_line_address	Ka jaka sah
+bill_line_fssai	FSSAI
+bill_line_title	Kyrteng
+bill_line_customer	U nongthied
+bill_line_bill_no	Nombor bill
+bill_line_time	Ka por
+bill_line_cashier	Nonglum pisa
+bill_line_table	Miej bam
+bill_line_items	Ki tiar
+bill_line_total	Baroh
+bill_line_footer	Hapoh
+bill_line_upi	UPI
 bill_logo_picture	Dur
 bill_logo_choose	Jied dur
 bill_logo_remove	Weng ïa ka dur
@@ -128,6 +141,12 @@ bill_item_piece_off	Lip
 bill_total_qty	Ka jingbun baroh
 bill_total_subtotal	Ka jingkhein baroh
 bill_total_grand	Ka jingkhein kyllum
+bill_total_number_under	Ka nombar hapoh
+bill_total_caption_under	Ka label hapoh
+bill_total_own_line	Ka lain lajong
+bill_total_caption_with	Bad ka nombar
+bill_total_caption_none	Khlem label
+bill_total_place_help	Ka lain lajong ka pynmih ia kane ka jingkhein marwei. Hapoh ka kolom, ka nombar jong ka la pynmih ha kata ka kolom ki mar, ha ka jingheh bad ka jingrben jong kane ka lain; ki jingkhein ki iasam ia kawei ka row haduh ba la shim ia kawei ka kolom, nangta ka sdang ka row ba thymmai. Ka label ka leit bad ka nombar, hapoh kawei pat ka kolom, lane la ieh noh. Ki lain jong ka khajna, ka jingshakri, ka rounding bad ka jingsiew ki bud ia Ka jingkhein baroh.
 reprint_incl	Ha ka jingpynmih
 reprint_skip	Kynthih
 reprint_skip_meta	Skip ia ka jingpynmih biang
@@ -178,20 +197,20 @@ snack_secs_ph	Ki sekhon (3-60, ka jingpynkylla 10)
 snack_secs_save	Pynsah ia ka por jingpynbna
 snack_secs_saved	Ka por pyntip ba la pynduna — {n} sekhon .
 settings_sec_whatsapp	WhatsApp
-whatsapp_cloud_help	Use your own Meta WhatsApp Cloud API. Create a System User token with whatsapp_business_messaging (temporary dashboard tokens expire). Credentials stay on this Server only — never on extra tills. Accepted means Meta took the request, not that the guest received it.
-whatsapp_phone_id_ph	Phone Number ID
-whatsapp_token_ph	Access Token (leave blank to keep)
-whatsapp_template_ph	Bill template name (optional)
-whatsapp_template_lang_ph	Template language (e.g. en)
-whatsapp_enable	Enable
+whatsapp_cloud_help	Pyndonkam ia ka Meta WhatsApp Cloud API jong phi hi. Shna ia ka System User token ba don whatsapp_business_messaging (ki token shipor jong ka dashboard ki kut por). Ki jingtip ki sah tang ha kane ka Server — ym ju ha ki till ba la pyndap. “La pdiang” ka mut ba Meta ka la shim ia ka jingkyrpad, ym ba u nongwan u la ioh.
+whatsapp_phone_id_ph	ID jong ka nombor phone
+whatsapp_token_ph	Access token (ieh lyngkhuh ban pynneh)
+whatsapp_template_ph	Kyrteng jong ka template bill (jied)
+whatsapp_template_lang_ph	Ka ktien jong ka template (nuksa en)
+whatsapp_enable	Pynlong
 whatsapp_disable	Off
-whatsapp_save	Save WhatsApp
-whatsapp_test	Test connection
-whatsapp_disconnect	Disconnect
-whatsapp_send_bill	Send via WhatsApp
+whatsapp_save	Pynsah WhatsApp
+whatsapp_test	Test ia ka jingpyniasoh
+whatsapp_disconnect	Pynkhlad ia ka jingpyniasoh
+whatsapp_send_bill	Phah da WhatsApp
 whatsapp_consent	WhatsApp OK
-whatsapp_consent_help	Guest agreed to receive WhatsApp messages. A phone number alone is not consent.
-whatsapp_server_only	Configure WhatsApp on the shop Server device
+whatsapp_consent_help	U nongwan u la mynjur ban ioh ia ki khubor WhatsApp. Ka nombor phone marwei kam dei ka jingmynjur.
+whatsapp_server_only	Buh WhatsApp ha ka tiar Server jong ka dukan
 settings_sec_backup	Ka jingpynkylla bad pynphai biang
 settings_sec_diag	Ka jingpeit bniah
 settings_sec_privacy	Ka jingshimet
@@ -637,7 +656,7 @@ choose_device_use	Jied Server lane Client.
 paired_note	Ka jingpyniadei. Plie ban die, lane Refresh na ka bynta kaba thymmai.
 last_update_at	Ka jingpynkylla kaba khatduh: {time}.
 pair_intro	Peit ia u server, lane type ia ka address bad pairing code jong u.
-pair_resume_hint	Already paired — enter your shop PIN, or Forget this shop to pair another.
+pair_resume_hint	La pair lypa — thoh ia ka PIN jong ka dukan jong phi, lane nion “Klet noh ia kane ka dukan .” ban pair ia kawei pat.
 queue_waiting	Ka jingap ban poi ha ka dukan ({n}):
 queue_tries	La pyrshang {n} sien · ka jubab ba khatduh: {e}
 save_backup_copy	Save ia ka kopi ba la buh...
@@ -754,13 +773,18 @@ station_vps_dd	Ki nongpynmih kot na ka bynta kane ka steshon
 station_vps_dd_n	Ki nongpynmih kot {n} · tap ban pynkylla
 bill_printers_dd	Ki nongpynmih kot na ka bynta ka bill
 bill_printers_dd_n	{n} ki nongpynmih kot na ka bynta ka bill · tap ban pynkylla .
-paper_heading	Ka shla
+paper_heading	Ka shla virtual
 paper_size	{w} × {h} mm
 paper_roll	ka roll {w} mm
 paper_not_set	ka shla bym pat tip shuh
-paper_length_mm	Ka jingjrong (mm)
-printer_paper_help	Ka shla jong kane ka nongpynmih kot ha mm. Ka jingjrong ba khlem don ka long roll: kawei pa kawei ka slip ka jrong kumba ka jingdon ha ka. Wad ia ki nongpynmih kot ka pynpura ia ka shla ba khlem don na ka driver jong ka nongpynmih kot (roll 80 mm lada kam lah ban ong) bad kam pynkylla ei ei ia kaba la pynbeit.
-preview_help	Kane ka slip ha ka shla jong ka nongpynmih kot ba la jied hapoh, kumba ka pynmih hangta: ha ka jingheh shisha na ka kona khlieh kadiang ba ka nongpynmih kot ka poi (saw-iong: ki kyndon ba kam poi), ka slip ba jrong ha ki sla kiba kham bun, kiei kiei ba palat ia ka kyndon ka shla la ot. Ban jied ka nongpynmih kot ka pynkylla tang ia ka jingpeit lypa; ka shla jong man ka nongpynmih kot la pynbeit hapoh Ki nongpynmih kot.
+virtual_width_mm	Ka jingshah virtual (mm)
+virtual_length_mm	Ka jingjrong virtual (mm)
+reported_width_mm	Ka jingshah ba la pyntip (mm)
+reported_length_mm	Ka jingjrong ba la pyntip (mm)
+reported_paper	La pyntip: {paper}
+virtual_paper	Virtual: {paper}
+printer_paper_help	Ba la pyntip ka dei ka shla ba la buh ha ka driver jong kane ka nongpynmih kot; ka app ka pule tang ia ka, bad “Ym don” ka mut ba ym don driver ban kylli. Virtual ka dei ka shla ba phi ong ba ka don shisha ha ka nongpynmih kot, ha ka mm; ka jingjrong ba khlem don ka dei ka roll. Ka nongpynmih kot ka pynmih ha la ka jong ka shla; ka shla virtual ka iathuh ia ka app katno na ka ka dei ka shla shisha, na ka bynta ka jingpeit lypa, ka jingjrong ka sla bad ka jaka jong ka slip. Wad ia ki nongpynmih kot ka pynpura ia ka shla virtual ba khlem don bad kam ju pynkylla ia kaba phi la buh.
+preview_help	Kane ka slip kumba ka pynmih ha ka nongpynmih kot ba la jied hapoh, ha ka jingheh shisha ha ka shla virtual jong ka. Ba lieh ka dei ka jaka ba ka pynmih, ka shla saw-iong ka nongpynmih kot kam poi, bad ka ink ba jem rong la ot noh. Ki khyndai tylli ki kyntien-saw-dong ki dei ka shla: tap ha ka jaka ba ka slip ka dei ban shong. Ka slip ba jrong ka leit sha kiwei pat ki sla. Ban jied ka nongpynmih kot ka pynkylla tang ia ka jingpeit lypa.
 job_layout	Ka jingpynbeit
 job_delivery	Kumno la phah ia ka kam .
 job_delivery_help	Ka kot OS, ki byte ba thymmai, lane ESC/POS. Ka bill bad ka tiket bam kawei pa kawei ka buh la ka jong ka jong ka jong ka. Kawei na ki kam ka lah ban leit sha kano kano ka printer kaba ka Find ka la save.
@@ -1163,7 +1187,7 @@ kot_show_station	Steshon
 kot_hide_station	Burieh ia ka steshon
 kot_show_table	Miej bam
 kot_hide_table	Pynrieh ia ka miej bam
-kot_show_kot_no	KOT Em
+kot_show_kot_no	Nombor KOT
 kot_hide_kot_no	Ka buhrieh KOT Em
 kot_width	Ka jingpeit lypa (buh ia ka jingheh jong ka jingdon ha ka tab KOT)
 kot_width_58	58 mm
@@ -1266,8 +1290,8 @@ taxable_value	Ka dor ba lah ban siew khajna
 gst_inside_price_note	({tax} kynthup lang)
 start_with_template	Sdang da ka rukom menu jong ngi
 template_heading	Ka rukom menu jong ngi
-template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
-template_download_shelf	Download photo shelf
+template_need_download	Download ia ka shelf dur jong ki jingbam ba paidbah (~1,459 ki jingbam), nangta import ia ki kyrteng ba ym don sha ka menu jong phi.
+template_download_shelf	Download ia ka shelf dur
 template_info	{c} ki jait bad {d} ki jingbam ryngkat bad ki dur, ba la pynkhreh ban pyndap. Ki dor ki sdang naduh ₹0 — buh ia ka jong phi hadien.
 template_import	Pynrung ia ka template ba pura
 template_confirm	Pyndap {d} ki jingbam ryngkat bad ki kyrdan jong ki? Ki jingbam kiba phi la don lypa ki sah kumjuh.

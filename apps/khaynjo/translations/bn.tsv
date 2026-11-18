@@ -44,7 +44,7 @@ restore_item	ফিরিয়ে আনুন
 empty_catalog	এখনও কোনো আইটেম নেই।
 total	মোট
 cash	নগদ
-upi	यूपीआई
+upi	UPI
 card	কার্ড
 credit	পার্টি
 clear	মুছুন
@@ -78,7 +78,7 @@ reprint_kot_needed	আগে KOT পাঠান — পরে খাবার �
 reprint_kot_none_selected	সব পাঠানো বাদ — প্রিন্ট করতে «প্রিন্টে» চাপুন
 reprint_kot_client	{place}-এর জন্য আবার ছাপুন ({n}) পাঠানো হলো — রান্নাঘর সার্ভারে ছাপবে
 print_cancelled_kot	সব বাতিল প্রিন্ট
-print_cancelled_kot_ok	{n} रद्द छापे · {slips} पर्ची → {kitchens}
+print_cancelled_kot_ok	{n}টি বাতিল পদ ছাপা হয়েছে · {slips}টি স্লিপ → {kitchens}
 print_cancelled_kot_needed	বাতিল খাবারের টেবিল খুলুন
 print_cancelled_kot_none	এই অর্ডারে বাতিল নেই
 print_cancelled_kot_client	বাতিল ({n}) {place} পাঠানো — সার্ভারে ছাপা
@@ -101,6 +101,19 @@ bill_item_col_sep	কলামের রেখা
 slip_columns	কলাম
 slip_col_header	শিরোনাম
 bill_line_logo	লোগো
+bill_line_shop	দোকান
+bill_line_address	ঠিকানা
+bill_line_fssai	FSSAI
+bill_line_title	শিরোনাম
+bill_line_customer	গ্রাহক
+bill_line_bill_no	বিল নং
+bill_line_time	সময়
+bill_line_cashier	ক্যাশিয়ার
+bill_line_table	টেবিল
+bill_line_items	আইটেম
+bill_line_total	মোট
+bill_line_footer	ফুটার
+bill_line_upi	UPI
 bill_logo_picture	ছবি
 bill_logo_choose	ছবি বেছে নিন
 bill_logo_remove	ছবি সরান
@@ -128,6 +141,12 @@ bill_item_piece_off	বন্ধ
 bill_total_qty	মোট পরিমাণ
 bill_total_subtotal	উপমোট
 bill_total_grand	মোট
+bill_total_number_under	সংখ্যা যার নিচে
+bill_total_caption_under	লেবেল যার নিচে
+bill_total_own_line	নিজের সারি
+bill_total_caption_with	সংখ্যার সাথে
+bill_total_caption_none	লেবেল নেই
+bill_total_place_help	“নিজের সারি” এই মোটটি আলাদা করে ছাপে। কোনো কলামের নিচে দিলে এর সংখ্যা সেই আইটেম কলামে, এই সারির মাপ ও গাঢ়ত্বে ছাপা হয়; কোনো কলাম ভরে না যাওয়া পর্যন্ত মোটগুলো একই সারি ভাগ করে, তারপর নতুন সারি শুরু হয়। লেবেল সংখ্যার সাথে থাকে, অন্য কলামের নিচে যায়, অথবা বাদ পড়ে। কর, সার্ভিস, রাউন্ডিং ও পেমেন্টের সারিগুলো “উপমোট” অনুসরণ করে।
 reprint_incl	প্রিন্টে
 reprint_skip	বাদ
 reprint_skip_meta	রিকভারি প্রিন্ট বাদ
@@ -178,20 +197,20 @@ snack_secs_ph	সেকেন্ড (3–60, ডিফল্ট 10)
 snack_secs_save	সতর্কবার্তার সময় সংরক্ষণ
 snack_secs_saved	সতর্কবার্তার সময় সংরক্ষিত — {n} সেকেন্ড
 settings_sec_whatsapp	WhatsApp
-whatsapp_cloud_help	Use your own Meta WhatsApp Cloud API. Create a System User token with whatsapp_business_messaging (temporary dashboard tokens expire). Credentials stay on this Server only — never on extra tills. Accepted means Meta took the request, not that the guest received it.
-whatsapp_phone_id_ph	Phone Number ID
-whatsapp_token_ph	Access Token (leave blank to keep)
-whatsapp_template_ph	Bill template name (optional)
-whatsapp_template_lang_ph	Template language (e.g. en)
-whatsapp_enable	Enable
+whatsapp_cloud_help	আপনার নিজের Meta WhatsApp Cloud API ব্যবহার করুন। whatsapp_business_messaging সহ একটি System User টোকেন তৈরি করুন (ড্যাশবোর্ডের অস্থায়ী টোকেনের মেয়াদ শেষ হয়ে যায়)। এই তথ্য শুধু এই সার্ভারেই থাকে — অতিরিক্ত টিলে কখনো নয়। “গৃহীত” মানে Meta অনুরোধটি নিয়েছে, অতিথি বার্তা পেয়েছেন তা নয়।
+whatsapp_phone_id_ph	ফোন নম্বর ID
+whatsapp_token_ph	অ্যাক্সেস টোকেন (আগেরটি রাখতে ফাঁকা রাখুন)
+whatsapp_template_ph	বিল টেমপ্লেটের নাম (ঐচ্ছিক)
+whatsapp_template_lang_ph	টেমপ্লেটের ভাষা (যেমন en)
+whatsapp_enable	চালু করুন
 whatsapp_disable	Off
-whatsapp_save	Save WhatsApp
-whatsapp_test	Test connection
-whatsapp_disconnect	Disconnect
-whatsapp_send_bill	Send via WhatsApp
-whatsapp_consent	WhatsApp OK
-whatsapp_consent_help	Guest agreed to receive WhatsApp messages. A phone number alone is not consent.
-whatsapp_server_only	Configure WhatsApp on the shop Server device
+whatsapp_save	WhatsApp সেভ করুন
+whatsapp_test	সংযোগ পরীক্ষা করুন
+whatsapp_disconnect	সংযোগ বিচ্ছিন্ন করুন
+whatsapp_send_bill	WhatsApp-এ পাঠান
+whatsapp_consent	WhatsApp ঠিক
+whatsapp_consent_help	অতিথি WhatsApp বার্তা পেতে সম্মতি দিয়েছেন। শুধু ফোন নম্বর থাকা মানে সম্মতি নয়।
+whatsapp_server_only	দোকানের সার্ভার ডিভাইসে WhatsApp সেট করুন
 settings_sec_backup	ব্যাকআপ ও পুনরুদ্ধার
 settings_sec_diag	ডায়াগনস্টিক্স
 settings_sec_privacy	গোপনীয়তা
@@ -637,7 +656,7 @@ choose_device_use	এই ডিভাইস কীভাবে ব্যবহ�
 paired_note	যুক্ত হয়েছে। বিক্রি করতে খুলুন, অথবা দোকান থেকে সর্বশেষ আনতে রিফ্রেশ করুন।
 last_update_at	দোকান থেকে শেষ হালনাগাদ: {time}।
 pair_intro	সার্ভার খুঁজুন, অথবা তার ঠিকানা ও পেয়ারিং কোড লিখুন।
-pair_resume_hint	Already paired — enter your shop PIN, or Forget this shop to pair another.
+pair_resume_hint	আগেই জোড়া লাগানো আছে — আপনার দোকানের PIN দিন, অথবা অন্য দোকান জুড়তে “এই দোকান ভুলে যান” চাপুন।
 queue_waiting	দোকানে পৌঁছানোর অপেক্ষায় ({n}):
 queue_tries	{n} বার চেষ্টা · শেষ উত্তর: {e}
 save_backup_copy	ব্যাকআপের কপি সংরক্ষণ…
@@ -754,13 +773,18 @@ station_vps_dd	এই স্টেশনের প্রিন্টার
 station_vps_dd_n	{n} প্রিন্টার · বদলাতে ট্যাপ
 bill_printers_dd	বিলের প্রিন্টার
 bill_printers_dd_n	বিলের জন্য {n}টি প্রিন্টার · বদলাতে চাপুন
-paper_heading	কাগজ
+paper_heading	ভার্চুয়াল কাগজ
 paper_size	{w} × {h} mm
 paper_roll	{w} mm রোল
 paper_not_set	কাগজ এখনও জানা নেই
-paper_length_mm	দৈর্ঘ্য (mm)
-printer_paper_help	এই প্রিন্টারের কাগজ mm-এ। খালি দৈর্ঘ্য মানে রোল: প্রতিটি স্লিপ তার বিষয়বস্তুর সমান লম্বা। প্রিন্টার খুঁজুন খালি কাগজ প্রিন্টারের ড্রাইভার থেকে পূরণ করে (বলতে না পারলে 80 mm রোল) এবং আগে থেকে ঠিক করা কাগজ কখনও বদলায় না।
-preview_help	নিচে বেছে নেওয়া প্রিন্টারের কাগজে এই স্লিপ, সেখানে যেমন ছাপা হয়: প্রিন্টার যে উপরের বাঁ কোণ পর্যন্ত পৌঁছায় সেখান থেকে আসল মাপে (ধূসর: যে কিনারায় পৌঁছায় না), লম্বা স্লিপ আরও পাতায়, কাগজের কিনারার বাইরের অংশ কেটে যায়। প্রিন্টার বাছলে শুধু প্রিভিউ বদলায়; প্রতিটি প্রিন্টারের কাগজ প্রিন্টার-এ ঠিক করা হয়।
+virtual_width_mm	ভার্চুয়াল প্রস্থ (mm)
+virtual_length_mm	ভার্চুয়াল দৈর্ঘ্য (mm)
+reported_width_mm	জানানো প্রস্থ (mm)
+reported_length_mm	জানানো দৈর্ঘ্য (mm)
+reported_paper	জানানো: {paper}
+virtual_paper	ভার্চুয়াল: {paper}
+printer_paper_help	জানানো মানে এই প্রিন্টারের ড্রাইভার যে কাগজে সেট করা আছে; অ্যাপ সেটি শুধু পড়ে, আর “নেই” মানে জিজ্ঞেস করার মতো কোনো ড্রাইভার নেই। ভার্চুয়াল মানে প্রিন্টারে সত্যিই আছে বলে আপনি যে কাগজের কথা বলেন, mm-এ; খালি দৈর্ঘ্য মানে রোল। প্রিন্টার নিজের কাগজেই ছাপে; ভার্চুয়াল কাগজ অ্যাপকে জানায় তার কতটা আসল কাগজ — প্রিভিউ, পৃষ্ঠার দৈর্ঘ্য ও স্লিপের জায়গার জন্য। প্রিন্টার খুঁজুন খালি ভার্চুয়াল কাগজ পূরণ করে এবং আপনার সেট করা কাগজ কখনো বদলায় না।
+preview_help	এই স্লিপ নিচে বাছাই করা প্রিন্টারে যেমন ছাপা হয়, তার ভার্চুয়াল কাগজে আসল মাপে। সাদা অংশে ছাপা হয়, ধূসর কাগজে প্রিন্টার পৌঁছায় না, আর ফিকে কালি কেটে যায়। নয়টি ঘর হলো কাগজটি: স্লিপ যেখানে বসবে সেখানে ট্যাপ করুন। লম্বা স্লিপ আরও পৃষ্ঠায় যায়। প্রিন্টার বাছলে শুধু প্রিভিউ বদলায়।
 job_layout	লেআউট
 job_delivery	কাজ কীভাবে পাঠানো হয়
 job_delivery_help	OS ডকুমেন্ট, কাঁচা বাইট বা ESC/POS। বিল ও রান্নাঘরের টিকিট দুটোই নিজেরটা রাখে। যেকোনো কাজ খুঁজুন-এর রাখা যেকোনো প্রিন্টারে যেতে পারে।
@@ -1040,7 +1064,7 @@ book_kind_today	আজকের খাতা
 book_kind_month	এই মাসের খাতা
 book_kind_aging	বকেয়া / ডেবিট-ক্রেডিট
 book_kind_balance	ব্যালেন্স শিট
-order_help	একটি খোলা অর্ডার বেছে নিন, অথবা টেবিল বেছে নতুন শুরু করুন। তৈরি আইটেমে ট্যাপ করুন, KOT পাঠান, এক বা একাধিক আইটেমের বিল করুন, বিল ভাগ করুন এবং পেমেন্ট মেটান।
+order_help	যোগ করতে একটি আইটেমে ট্যাপ করুন।
 floor_help	প্রতিটি টেবিল দেখায় অতিথিরা বসে আছেন কিনা, তাদের খোলা বিল কী এবং কার পরবর্তী পরিবেশন দরকার।
 kitchen_help	প্রতি ভ্যারিয়েন্ট বা প্রতি আইটেমে তৈরি পরিমাণ ট্র্যাক করুন — KOT-তে যেভাবে চান রেকর্ড করুন।
 kitchen_empty	এখন কিছু খোলা নেই।
@@ -1238,7 +1262,7 @@ on_your_menu	আপনার মেনুতে
 edit	সম্পাদনা
 schemes	স্কিম / অফার
 schemes_help	X কিনুন Y পান — সেটেল-এ অটো। উদা. Buy 2 Thali get 1 Chaas
-scheme_bogo_ph	Buy 2 Thali get 1 Chaas
+scheme_bogo_ph	2টি থালি কিনুন, 1টি ছাস পান
 add_scheme	BOGO যোগ
 schedule_ph	সময় / হ্যাপি আওয়ার — Mon-Fri 07:00-11:00 বা HappyHour 17:00-19:00=150
 upi_qr	UPI QR
@@ -1266,8 +1290,8 @@ taxable_value	করযোগ্য মূল্য
 gst_inside_price_note	({tax} সহ)
 start_with_template	আমাদের মেনু টেমপ্লেট দিয়ে শুরু
 template_heading	আমাদের মেনু টেমপ্লেট
-template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
-template_download_shelf	Download photo shelf
+template_need_download	পদের পাবলিক ছবির শেলফ (~1,459টি পদ) ডাউনলোড করুন, তারপর যে নামগুলো নেই সেগুলো আপনার মেনুতে ইমপোর্ট করুন।
+template_download_shelf	ছবির শেলফ ডাউনলোড করুন
 template_info	{c}টি বিভাগ ও {d}টি পদ ছবিসহ যোগের জন্য প্রস্তুত। দাম ₹0 থেকে — পরে নিজের দাম দিন।
 template_import	পুরো টেমপ্লেট আনুন
 template_confirm	{d}টি পদ বিভাগসহ যোগ করবেন? আপনার আগের পদ যেমন আছে তেমনই থাকবে।

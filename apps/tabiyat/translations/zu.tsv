@@ -79,13 +79,19 @@ bill_item_amount	Inani
 bill_item_note	I-Rx / inothi lokuthengisa
 bill_item_col_sep	Imithetho yekholomu
 slip_col_width	Ububanzi (mm)
-paper_heading	Iphepha
+paper_heading	Iphepha le-virtual
 paper_size	{w} × {h} mm
 paper_roll	umqulu we-{w} mm
 paper_not_set	iphepha alikaziwa okwamanje
-paper_length_mm	Ubude (mm)
-printer_paper_help	Iphepha lale phrinta ku-mm. UBude obungenalutho ngumqulu: irisidi ngayinye inde njengokuqukethwe kwayo. Thola amaphrinta igcwalisa iphepha elingenalutho kusuka kumshayeli wephrinta (umqulu we-80 mm uma ingakwazi ukusho) futhi ayisoze yashintsha eselisethiwe.
-preview_help	Le risidi ephepheni lephrinta ekhethwe ngezansi, njengoba iphrinta lapho: ubukhulu bangempela kusuka ekhoneni elingaphezulu kwesobunxele elifinyelelwa yiphrinta (mpunga: imiphetho engafinyelelwa), irisidi ende emakhasini amaningi, konke okudlula umphetho wephepha kuyasikwa. Ukukhetha iphrinta kushintsha ukubuka kuqala kuphela; iphepha lephrinta ngayinye lisethwa ngaphansi kwe-Amaphrinta.
+na	Ayikho
+virtual_width_mm	Ububanzi be-virtual (mm)
+virtual_length_mm	Ubude be-virtual (mm)
+reported_width_mm	Ububanzi obubikiwe (mm)
+reported_length_mm	Ubude obubikiwe (mm)
+reported_paper	Okubikiwe: {paper}
+virtual_paper	I-virtual: {paper}
+printer_paper_help	Okubikiwe yiphepha umshayeli wale phrinta osethelwe kulo; uhlelo lokusebenza luyalifunda kuphela, futhi “Ayikho” isho ukuthi awukho umshayeli ongabuzwa. I-virtual yiphepha othi wena likhona ngempela kuphrinta, ku-mm; ubude obungenalutho ngumqulu. Iphrinta iphrinta ephepheni layo; iphepha le-virtual litshela uhlelo lokusebenza ukuthi lingakanani kulo eliyiphepha langempela, ukuze kusetshenziswe ekubukeni kuqala, ebudeni bekhasi nasendaweni yerisidi. Thola amaphrinta igcwalisa iphepha le-virtual elingenalutho futhi ayisoze yashintsha olisethile wena.
+preview_help	Le risidi njengoba iphrinta kuphrinta ekhethwe ngezansi, ngobukhulu bangempela ephepheni layo le-virtual. Okumhlophe yilapho iphrinta khona, iphepha elimpunga alifinyelelwa yiphrinta, futhi uyinki ofiphele uyasikwa. Izikwele eziyisishiyagalolunye ziyiphepha: thepha lapho irisidi kufanele ihlale khona. Irisidi ende iqhubeka emakhasini amaningi. Ukukhetha iphrinta kushintsha ukubuka kuqala kuphela.
 slip_col_start	Isikhala sokuqala (px)
 slip_col_end	Isikhala sokugcina (px)
 slip_columns_help	Ububanzi bekholomu ngayinye bufaka isikhala sayo sokuqala nesokugcina. Umbhalo usongeka ngaphakathi kwekholomu yawo; okudlula ububanzi bokuqukethwe kuyanqunywa, ephepheni nasekubukeni kuqala.
@@ -100,6 +106,12 @@ bill_item_piece_off	Valiwe
 bill_total_qty	Isamba se-qty
 bill_total_subtotal	Isamba esincane
 bill_total_grand	Isamba esikhulu
+bill_total_number_under	Inombolo ngaphansi kwe
+bill_total_caption_under	Ilebula ngaphansi kwe
+bill_total_own_line	Umugqa walo
+bill_total_caption_with	Kanye nenombolo
+bill_total_caption_none	Ayikho ilebula
+bill_total_place_help	Umugqa walo iphrinta lesi samba sodwa. Ngaphansi kwekholomu, inombolo yaso iphrintwa kuleyo kholomu yezinto, ngosayizi nobukhulu balo mugqa; izamba zabelana ngomugqa owodwa kuze kuthathwe ikholomu, bese kuqala umugqa omusha. Ilebula ihamba nenombolo, ngaphansi kwenye ikholomu, noma ishiywe. Imigqa yentela, yesevisi, yokuzungeza neyenkokhelo ilandela Isamba esincane.
 kot_unassigned	Akunikeziwe
 settings_hub_help	Vula indawo eyodwa ngesikhathi — ukuskrola okuncane, ukukhetha okucacile.
 settings_sec_language	Ulimi nemali
@@ -383,7 +395,7 @@ server_ip_ph	IP yeseva (isb. 192.168.1.10)
 set_credit_limit	Faka umkhawulo kukhasimende noma umphakeli
 set_login_selected	Faka ukungena ngemvume kokukhethiwe
 set_login_named	Faka isicelo sokungena ku-{name}
-shop	Thenga
+shop	Isitolo
 show	Bonisa
 spreadsheet_csv	Isipredishithi (CSV)
 start_fresh	Qala kabusha
@@ -470,7 +482,7 @@ route_cleared	Suliwe {name}
 route_tap_selected	kukhethiwe
 printer_target_ph	Igama lephrinta yesistimu noma umsingathi:9100
 printer_target_default	iphrinta evamile yale khompyutha (ikheli elingenalutho)
-route_bill	Ibhili yesivakashi sesivakashi
+route_bill	Ibhili
 station_print_pick_first	Khetha ingxenye ye-dispensary kuqala
 bill_printers_dd	Amaphrinta webhili yesivakashi
 bill_printers_dd_n	{n} amaphrinta webhili yesivakashi · thepha ukuze ushintshe
@@ -735,6 +747,20 @@ fssai_ph	Inombolo yelayisensi yezidakamizwa. (uma uthanda - amagama akho)
 bill_footer_ph	Unyaweni (isb. Ngiyabonga, vakashela futhi)
 kot_field_on	umbukiso
 kot_field_off	fihla
+kot_field_show	Bonisa
+kot_field_hide	Fihla
+bill_line_shop	Isitolo
+bill_line_address	Ikheli
+bill_line_fssai	FSSAI
+bill_line_title	Isihloko
+bill_line_customer	Ikhasimende
+bill_line_bill_no	Inombolo yebhili
+bill_line_time	Isikhathi
+bill_line_cashier	Ukheshi
+bill_line_items	Izinto zemenyu
+bill_line_total	Ingqikithi
+bill_line_footer	Unyaweni
+bill_line_upi	UPI
 kot_weight_light	Ukukhanya
 bill_kot_panel_help	Isakhiwo sebhili nobubanzi bokuqukethwe. UCashier nguyena okhiphe noma okhokhele ibhili — indaba yokuthengisa ephelele ihlala ezincwadini.
 std_size_ph	isib. 18, 20, 26…
@@ -754,7 +780,7 @@ kot_copies	Amakhophi
 kot_copies_1	1
 kot_copies_2	2
 kot_copies_3	3
-test_bill_format	Hlola ibhili yesivakashi
+test_bill_format	Ibhili yokuhlola
 test_bill_sent	Ukuhlola kuqala kwebhili yesivakashi sesivakashi kuthunyelwe
 test_print_no_printer	Ayikho iphrinta yalowo msebenzi — khetha eyodwa kulesi sikrini
 std_print	Usayizi wokuphrinta webhili yesivakashi sesivakashi
@@ -819,7 +845,7 @@ add_dishes	Engeza imithi
 order_so_far	Kuleli oda: {n} · {total}
 no_dish_match	Ayikho into efana ne-“{q}”
 pick_done	Kwenziwe
-dishes_n	{n} items
+dishes_n	{n} izinto
 reorder_ph	Thenga okuningi ku-
 set_reorder	Setha ileveli yokuhlela kabusha
 low_stock_alert	Iyaphela — thenga maduze: {items}
@@ -842,10 +868,10 @@ lane_declared_label	I-invoyisi yentela
 lane_owner_label	Imemo yemali
 money_lane_bill	Ibhili yesivakashi sesivakashi: {lane}
 
-removing	Removing…
-removed	Removed
-updating_order	Updating…
-order_updated	Order updated
+removing	Kuyasuswa…
+removed	Kususiwe
+updating_order	Kuyabuyekezwa…
+order_updated	I-oda libuyekeziwe
 sel_copy	Kopisha
 sel_select_all	Khetha konke
 sel_copied	Kukopishiwe

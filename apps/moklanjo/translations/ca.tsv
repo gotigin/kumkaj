@@ -192,7 +192,7 @@ snack_secs_save	Desa el temps d'avís
 snack_secs_saved	Temps d'avís desat — {n} segons
 snack_secs_bad	Introdueix els segons com un número (3–60)
 cancelled	Anul·lat
-cancelling	Cancelling…
+cancelling	Cancellingâ¦
 cancel	Anul·la
 opening_client	S'obre el client…
 preparing_desk	Es prepara el taulell…
@@ -365,7 +365,7 @@ print_drs	Imprimeix DRS
 print_run_sheet	Imprimeix el full de tirada
 reattempt	Tornar a intentar
 rider_cod_handed_ph	COD lliurat
-settle_rider_cod	Settle rider COD
+settle_rider_cod	Liquida el COD del repartidor
 mode_desk	Escriptori
 mode_rider	Genet
 waiting_office	esperant arribar a l'oficina
@@ -501,13 +501,18 @@ job_size	Mida de lletra
 job_size_ph	p. ex. 18, 20, 26…
 test_receipt_format	Rebut de prova
 test_label_format	Etiqueta de prova
-paper_heading	Paper
+paper_heading	Paper virtual
 paper_size	{w} × {h} mm
 paper_roll	rotlle de {w} mm
 paper_not_set	paper encara desconegut
-paper_length_mm	Llargada (mm)
-printer_paper_help	El paper d'aquesta impressora en mm. Una Llargada buida és un rotlle: cada tiquet és tan llarg com el seu contingut. Troba impressores omple el paper buit amb el del controlador de la impressora (un rotlle de 80 mm si no ho pot dir) i mai no canvia un paper ja definit.
-preview_help	Aquest tiquet sobre el paper de la impressora triada a sota, tal com s'hi imprimeix: a mida real des de la cantonada superior esquerra que la impressora pot assolir (gris: vores que no pot), un tiquet llarg en més fulls, tot el que passa de la vora del paper es retalla. Triar una impressora només canvia la previsualització; el paper de cada impressora es defineix a Impressores.
+virtual_width_mm	Amplada virtual (mm)
+virtual_length_mm	Llargada virtual (mm)
+reported_width_mm	Amplada informada (mm)
+reported_length_mm	Llargada informada (mm)
+reported_paper	Informat: {paper}
+virtual_paper	Virtual: {paper}
+printer_paper_help	Informat és el paper al qual està ajustat el controlador d'aquesta impressora; l'app només el llegeix, i N/D vol dir que no hi ha cap controlador a qui preguntar. Virtual és el paper que tu dius que hi ha realment a la impressora, en mm; una llargada en blanc és un rotlle. La impressora imprimeix en el seu propi paper; el paper virtual diu a l'app quina part és paper real, per a la previsualització, la llargada de la pàgina i el lloc del tiquet. Troba impressores omple un paper virtual en blanc i no canvia mai el que has definit.
+preview_help	Aquest tiquet tal com s'imprimeix a la impressora triada a sota, a mida real sobre el seu paper virtual. El blanc és on imprimeix, el paper gris queda fora de l'abast de la impressora i la tinta esvaïda es talla. Els nou quadrats són el paper: toca on ha d'anar el tiquet. Un tiquet llarg continua en més pàgines. Triar una impressora només canvia la previsualització.
 slip_col_width	Amplada (mm)
 no_printer_assigned	Sense impressora
 printer_target_default	la impressora habitual d'aquest ordinador (adreça buida)
@@ -772,7 +777,7 @@ business_name_ph	Nom del negoci
 category_new_ph	Categoria (opcional, es crea si és nova)
 cod_amount_ph	Import de pagament contra reemborsament
 code_bag_ph	Codi (bag)
-conv_factor_ph	Factor (25 = 1 bag → 25 kg)
+conv_factor_ph	Factor (25 = 1 sac → 25 kg)
 country_code_ph	Codi de país, p. ex. IN, GB, US, AE, BR
 credit_khata_amount_ph	Import de crèdit / khata
 credit_limit_ph	Límit de crèdit (0 = cap)

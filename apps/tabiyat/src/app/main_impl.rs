@@ -129,7 +129,7 @@ impl App {
             startup::set_notify(|| makepad_widgets::makepad_platform::thread::SignalToUI::set_ui_signal());
             phone::set_notify(|| makepad_widgets::makepad_platform::thread::SignalToUI::set_ui_signal());
             print_share::set_notify(|| makepad_widgets::makepad_platform::thread::SignalToUI::set_ui_signal());
-            // A printer's paper sizes are read on a worker (CUPS / PowerShell).
+            // A printer's paper is read on a worker (CUPS / the Windows print API).
             os_paper::set_notify(|| makepad_widgets::makepad_platform::thread::SignalToUI::set_ui_signal());
             // Printer Find is Settings → Find printers only (never at startup).
             net::set_books_changed_hook(|| {
@@ -153,14 +153,15 @@ impl App {
             }
         }
         if matches!(event, Event::Signal) && os_paper::take_ready() {
-            // A driver answered: a printer with no paper gets its driver's
-            // (never changing one already set), then every face that shows a
-            // printer's paper and the preview (the edges the printer cannot
-            // reach) are drawn again (docs/PRINTER.md § Paper and preview).
+            // A driver answered: what it reports replaces the printer's
+            // reported paper, and a printer with no virtual paper gets its
+            // driver's (never changing one already set); then every face
+            // that shows a printer's paper and the preview are drawn again
+            // (docs/PRINTER.md § Paper and preview).
             let open = {
                 let mut st = app_state().lock().unwrap();
                 if st.device_role != DeviceRole::Client
-                    && st.printer_draft.fill_missing_papers(&os_paper::answers(), false) > 0
+                    && st.printer_draft.take_driver_answers(&os_paper::answers(), false) > 0
                 {
                     if let Err(e) = st.save_printer_draft() {
                         log!("printer papers not saved: {e}");

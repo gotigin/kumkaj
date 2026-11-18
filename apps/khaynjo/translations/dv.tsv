@@ -101,6 +101,19 @@ bill_item_col_sep	ކޮލަމް އުސޫލުތައް
 slip_columns	ކޮލަމްތައް
 slip_col_header	ހެޑަރ
 bill_line_logo	ލޯގޯ
+bill_line_shop	ފިހާރަ
+bill_line_address	އެޑްރެސް
+bill_line_fssai	FSSAI
+bill_line_title	ސުރުހީ
+bill_line_customer	ކަސްޓަމަރ
+bill_line_bill_no	ބިލް ނަންބަރު
+bill_line_time	ގަޑި
+bill_line_cashier	ކެޝަރ
+bill_line_table	މޭޒު
+bill_line_items	ތަކެތި
+bill_line_total	ޖުމްލަ
+bill_line_footer	ފޫޓަރ
+bill_line_upi	ޔޫޕީއައި
 bill_logo_picture	ފޮޓޯ
 bill_logo_choose	ފޮޓޯ ހޮވާ
 bill_logo_remove	ފޮޓޯ ފުހެލާ
@@ -128,6 +141,12 @@ bill_item_piece_off	އޮފް
 bill_total_qty	ޖުމްލަ ކިއުޓީ
 bill_total_subtotal	ސަބް ޓޯޓަލް
 bill_total_grand	ގްރޭންޑް ޓޯޓަލް
+bill_total_number_under	ނަންބަރު މީގެ ދަށުގައި
+bill_total_caption_under	ލޭބަލް މީގެ ދަށުގައި
+bill_total_own_line	އަމިއްލަ ލައިން
+bill_total_caption_with	ނަންބަރާއެކު
+bill_total_caption_none	ލޭބަލް ނެތް
+bill_total_place_help	“އަމިއްލަ ލައިން” އިން މި ޖުމްލަ ވަކިން ޗާޕުކުރެއެވެ. ކޮލަމެއްގެ ދަށުގައި ނަމަ، އޭގެ ނަންބަރު އެ އައިޓަމް ކޮލަމުގައި، މި ލައިންގެ ސައިޒާއި ބޯމިނުގައި ޗާޕުވެއެވެ؛ ކޮލަމެއް ފުރެންދެން ޖުމްލަތައް އެއް ސަފެއް ހިއްސާކުރެއެވެ، އޭގެ ފަހުން އާ ސަފެއް ފެށެއެވެ. ލޭބަލް ނަންބަރާއެކު، އެހެން ކޮލަމެއްގެ ދަށުގައި ދެއެވެ، ނުވަތަ ދޫކޮށްލެވެއެވެ. ޓެކްސް، ސާވިސް، ރައުންޑިން އަދި ޕޭމަންޓް ލައިންތައް “ސަބް ޓޯޓަލް” އާ ތަބާވެއެވެ.
 reprint_incl	ޗާޕުކޮށްގެންނެވެ
 reprint_skip	ދޫކޮށްލުން
 reprint_skip_meta	ރިކަވަރީ ޕްރިންޓް ދޫކޮށްލާށެވެ
@@ -178,20 +197,20 @@ snack_secs_ph	ސިކުންތު (3–60، ޑިފޯލްޓް 10)
 snack_secs_save	އެލާޓް ވަގުތު ސަލާމަތްކުރުން
 snack_secs_saved	އެލާޓް ވަގުތު ސަލާމަތް ކުރެވިއްޖެ — {n} ސިކުންތު
 settings_sec_whatsapp	WhatsApp
-whatsapp_cloud_help	Use your own Meta WhatsApp Cloud API. Create a System User token with whatsapp_business_messaging (temporary dashboard tokens expire). Credentials stay on this Server only — never on extra tills. Accepted means Meta took the request, not that the guest received it.
-whatsapp_phone_id_ph	Phone Number ID
-whatsapp_token_ph	Access Token (leave blank to keep)
-whatsapp_template_ph	Bill template name (optional)
-whatsapp_template_lang_ph	Template language (e.g. en)
-whatsapp_enable	Enable
+whatsapp_cloud_help	ތިބާގެ އަމިއްލަ Meta WhatsApp Cloud API ބޭނުން ކުރާށެވެ. whatsapp_business_messaging ހިމެނޭ System User ޓޯކަނެއް ހަދާށެވެ (ޑޭޝްބޯޑުގެ ވަގުތީ ޓޯކަންތައް މުއްދަތު ހަމަވެއެވެ). މި މައުލޫމާތު ހުންނާނީ ހަމައެކަނި މި ސަރވަރގައެވެ — އިތުރު ކެޝް ކައުންޓަރުތަކުގައި ދުވަހަކުވެސް ނުހުންނާނެއެވެ. “ގަބޫލުކުރެވިއްޖެ” މާނައަކީ Meta އިން ރިކުއެސްޓް ނެގިކަމެވެ، ގެސްޓަށް މެސެޖު ލިބުނުކަމެއް ނޫނެވެ.
+whatsapp_phone_id_ph	ފޯނު ނަންބަރު ID
+whatsapp_token_ph	އެކްސެސް ޓޯކަން (ހަމަ އެ ބެހެއްޓުމަށް ހުސްކޮށް ދޫކޮށްލާށެވެ)
+whatsapp_template_ph	ބިލް ޓެމްޕްލޭޓްގެ ނަން (އިޚްތިޔާރީ)
+whatsapp_template_lang_ph	ޓެމްޕްލޭޓްގެ ބަސް (މިސާލު en)
+whatsapp_enable	އެނެބަލް ކުރާށެވެ
 whatsapp_disable	Off
-whatsapp_save	Save WhatsApp
-whatsapp_test	Test connection
-whatsapp_disconnect	Disconnect
-whatsapp_send_bill	Send via WhatsApp
-whatsapp_consent	WhatsApp OK
-whatsapp_consent_help	Guest agreed to receive WhatsApp messages. A phone number alone is not consent.
-whatsapp_server_only	Configure WhatsApp on the shop Server device
+whatsapp_save	WhatsApp ރައްކާކުރުން
+whatsapp_test	ގުޅުން ޗެކް ކުރާށެވެ
+whatsapp_disconnect	ގުޅުން ކަނޑާލާށެވެ
+whatsapp_send_bill	WhatsApp މެދުވެރިކޮށް ފޮނުވާށެވެ
+whatsapp_consent	WhatsApp އެންމެ ރަނގަޅު
+whatsapp_consent_help	ގެސްޓް WhatsApp މެސެޖު ލިބުމަށް އެއްބަސްވެއްޖެއެވެ. ހަމައެކަނި ފޯނު ނަންބަރެއް އޮތުމަކީ ރުހުމެއް ނޫނެވެ.
+whatsapp_server_only	ފިހާރައިގެ ސަރވަރ ޑިވައިސްގައި WhatsApp ސެޓް ކުރާށެވެ
 settings_sec_backup	ބެކަޕް އެންޑް ރިސްޓޯރ ކުރުން
 settings_sec_diag	ޑައިގްނޯސްޓިކްސް
 settings_sec_privacy	ޕްރައިވެސީ
@@ -509,7 +528,7 @@ expense_heading	ހަރަދު
 export_day	އެކްސްޕޯޓް ދުވަސް
 extra_note_bill_ph	މި ބިލް / ވިއްކުމުގައި އިތުރު ނޯޓެއް
 extra_note_expense_ph	އެންމެ ފަހުގެ ހަރަދަށް އިތުރު ނޯޓެއް
-extra_tills_heading	އިތުރަށް ދާންދެން
+extra_tills_heading	އިތުރު ކެޝް ކައުންޓަރުތައް
 other_devices_help_heading	އެހެން ޑިވައިސްތައް ސެޓްއަޕް ކުރުން
 other_devices_help	އެވެ. ބަދިގެ ޕްރިންޓަރުތައް ސެޓްކޮށްފައިވަނީ ސަރވަރ (ސެޓިންގސް → ޕްރިންޓަރސް) ގައި — އިތުރު ޓިލްސް އިން އެތަނަށް ކޭއޯޓީ ފޮނުވައެވެ.
 forget_shop	މި ފިހާރަ ހަނދާން ނައްތާލާށެވެ
@@ -637,7 +656,7 @@ choose_device_use	ސަރވަރ ނުވަތަ ކްލައިންޓް ހޮވާށެވ�
 paired_note	ޖޯޑުޖޯޑަށް. ވިއްކުމަށް އަންލޮކް ކުރާށެވެ، ނުވަތަ އެންމެ ފަހުގެ މައުލޫމާތު ހޯދުމަށް ރިފްރެޝް ކޮށްލާށެވެ.
 last_update_at	އެންމެ ފަހުން އަޕްޑޭޓް ކުރި: {time}.
 pair_intro	ސަރވަރ ހޯދާ، ނުވަތަ އޭގެ އެޑްރެހާއި ޕެއަރިންގ ކޯޑް ޓައިޕް ކުރާށެވެ.
-pair_resume_hint	Already paired — enter your shop PIN, or Forget this shop to pair another.
+pair_resume_hint	ކުރިންވެސް ޖޯޑު ކުރެވިފައި — ތިބާގެ ފިހާރައިގެ PIN ޖަހާށެވެ، ނުވަތަ އެހެން ފިހާރައަކާ ޖޯޑު ކުރުމަށް “މި ފިހާރަ ހަނދާން ނައްތާލާށެވެ” އަށް ފިތާށެވެ.
 queue_waiting	ފިހާރައަށް ވާސިލްވުމަށް އިންތިޒާރު ކުރަމުން ({n}):
 queue_tries	ޓްރައިޑް {n} ފަހަރު · އެންމެ ފަހުގެ ޖަވާބު: {e}
 save_backup_copy	ބެކަޕް ކޮޕީއެއް ސޭވް ކޮށްލައްވާ...
@@ -754,13 +773,18 @@ station_vps_dd	މި ސްޓޭޝަނަށް ޕްރިންޓަރުތައް
 station_vps_dd_n	{n} ޕްރިންޓަރ(ތަކެއް) · ބަދަލުކުރުމަށް ޓެޕް ކުރާށެވެ
 bill_printers_dd	ބިލަށް ޕްރިންޓަރުން
 bill_printers_dd_n	{n} ބިލަށް ޕްރިންޓަރ(ތަކެއް) · ބަދަލުކުރުމަށް ޓެޕް ކުރާށެވެ
-paper_heading	ކަރުދާސް
+paper_heading	ވާޗުއަލް ކަރުދާސް
 paper_size	{w} × {h} mm
 paper_roll	{w} mm ރޯލު
 paper_not_set	ކަރުދާސް އަދި ނޭނގެ
-paper_length_mm	ދިގުމިން (mm)
-printer_paper_help	މި ޕްރިންޓަރުގެ ކަރުދާސް mm އިން. ހުސް ދިގުމިނަކީ ރޯލެކެވެ: ކޮންމެ ސްލިޕެއް އެއީގެ ތެރޭގައިވާ އެއްޗެހި ވަރަށް ދިގު ވާނެއެވެ. ޕްރިންޓަރުތައް ހޯދުމުން ހުސް ކަރުދާސް ޕްރިންޓަރުގެ ޑްރައިވަރުން ފުރާލައެވެ (ބުނެވޭނެ ނުވާނަމަ 80 mm ރޯލެއް) އަދި ކުރިން ކަނޑައަޅާފައިވާ ކަރުދާހެއް ދުވަހަކުވެސް ނުބަދަލުކުރެއެވެ.
-preview_help	ތިރީގައި ހޮވާފައިވާ ޕްރިންޓަރުގެ ކަރުދާހުގެ މަތީގައި މި ސްލިޕް، އެތަނުގައި ޗާޕުވާ ގޮތަށް: ޕްރިންޓަރަށް ދެވޭ މަތީ ވާތް ކަނުން ހަގީގީ ސައިޒުގައި (އަޅި: ނުދެވޭ ކައިރިތައް)، ދިގު ސްލިޕް އިތުރު ޝީޓުތަކުގައި، ކަރުދާހުގެ ކައިރިން ބޭރުވާ ބައި ކެނޑިގެންދެއެވެ. ޕްރިންޓަރެއް ހޮވުމުން ބަދަލުވަނީ ޕްރިވިއު އެކަނިއެވެ؛ ކޮންމެ ޕްރިންޓަރެއްގެ ކަރުދާސް ކަނޑައަޅަނީ ޕްރިންޓަރުތަކެވެ ގެ ދަށުންނެވެ.
+virtual_width_mm	ވާޗުއަލް ފުޅާމިން (mm)
+virtual_length_mm	ވާޗުއަލް ދިގުމިން (mm)
+reported_width_mm	ރިޕޯޓުކުރި ފުޅާމިން (mm)
+reported_length_mm	ރިޕޯޓުކުރި ދިގުމިން (mm)
+reported_paper	ރިޕޯޓުކުރި: {paper}
+virtual_paper	ވާޗުއަލް: {paper}
+printer_paper_help	ރިޕޯޓުކުރި އަކީ މި ޕްރިންޓަރުގެ ޑްރައިވަރު ސެޓުކޮށްފައިވާ ކަރުދާހެވެ؛ އެޕް އެ ކިޔަނީ އެކަނިއެވެ، އަދި “ނެތް” ގެ މާނައަކީ އަހާނެ ޑްރައިވަރެއް ނެތުމެވެ. ވާޗުއަލް އަކީ ޕްރިންޓަރުގައި ހަގީގަތުގައި ހުރި ކަމަށް ތިބާ ބުނާ ކަރުދާހެވެ، mm އިން؛ ހުސް ދިގުމިނަކީ ރޯލެކެވެ. ޕްރިންޓަރު ޗާޕުކުރަނީ އޭގެ އަމިއްލަ ކަރުދާހުގައެވެ؛ ވާޗުއަލް ކަރުދާސް އެޕަށް ބުނެދެނީ އޭގެ ކިހާ ބައެއް ހަގީގީ ކަރުދާސްކަމެވެ، ޕްރިވިއު، ޞަފްޙާގެ ދިގުމިން އަދި ސްލިޕްގެ ތަނަށްޓަކައެވެ. ޕްރިންޓަރުތައް ހޯދުން ހުސް ވާޗުއަލް ކަރުދާސް ފުރާއިރު ތިބާ ސެޓުކުރި އެއްޗެއް ދުވަހަކުވެސް ބަދަލެއް ނުކުރެއެވެ.
+preview_help	ތިރީގައި ހޮވާފައިވާ ޕްރިންޓަރުގައި މި ސްލިޕް ޗާޕުވާ ގޮތަށް، އޭގެ ވާޗުއަލް ކަރުދާހުގައި ހަގީގީ ސައިޒުގައި. ހުދު ތަނަކީ ޗާޕުވާ ތަނެވެ، އަޅި ކަރުދާހަށް ޕްރިންޓަރަށް ނުދެވެއެވެ، އަދި ފަނޑު ދެލި ކެނޑިގެންދެއެވެ. ނުވަ ގޮޅިއަކީ ކަރުދާހެވެ: ސްލިޕް ހުންނަންވީ ތަނަށް ފިއްތާށެވެ. ދިގު ސްލިޕް އިތުރު ޞަފްޙާތަކަށް ދެއެވެ. ޕްރިންޓަރެއް ހޮވުމުން ބަދަލުވަނީ ޕްރިވިއު އެކަނިއެވެ.
 job_layout	ލޭއައުޓް
 job_delivery	ވަޒީފާ ފޮނުވަނީ ކިހިނެއް
 job_delivery_help	ކޮންމެ މީހަކުވެސް އަމިއްލައަށް ގެންގުޅެއެވެ. އެއިން ކޮންމެ ވަޒީފާއެއް ވެސް ކޮންމެ ޕްރިންޓަރަކަށް ވެސް ފައިންޑް ސޭވްކޮށްފައި ހުރެދާނެ އެވެ.
@@ -1048,7 +1072,7 @@ add_a_table	މޭޒެއް އަޅާށެވެ
 add_station_heading	ބަދިގެ ސްޓޭޝަނެއް އިތުރުކޮށްލާށެވެ
 categories_help	އެ ކެޓަގަރީގެ ދަށުން މަތީގައިވާ އެއްޗެއް ފައިލް ކުރުމަށް ބޭނުން ކުރުމަށް ފިތާލާށެވެ. ފޮޓޯއިން ކެޓަގަރީއަށް ތަސްވީރެއް ލިބެއެވެ؛ އެއްޗެއް ނެތި އޭގެ ފުރަތަމަ އަކުރުތައް ދައްކައެވެ.
 dish_search_ph	އައިޓަމް ނަން — އަޅުގަނޑުމެންގެ ކެއުންތައް ހޯދާ ނުވަތަ އަމިއްލައަށް ޓައިޕް ކުރާށެވެ
-tile_free	ހިލޭ
+tile_free	ހުސް
 tile_occupied	މަޝްޢޫލުވެފައިވުން
 tile_food_ready	ކާނާ ތައްޔާރު
 tile_bill_printed	ބިލް ޗާޕްކޮށްފި އެވެ
@@ -1266,8 +1290,8 @@ taxable_value	ޓެކްސް ނެގޭ އަގު
 gst_inside_price_note	({tax} ހިމެނޭ ގޮތަށް)
 start_with_template	އަޅުގަނޑުމެންގެ މެނޫ ޓެމްޕްލޭޓުން ފަށާށެވެ
 template_heading	އަޅުގަނޑުމެންގެ މެނޫ ޓެމްޕްލޭޓް
-template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
-template_download_shelf	Download photo shelf
+template_need_download	ޑިޝްތަކުގެ އާންމު ފޮޓޯ ޝެލްފް (~1,459 ޑިޝް) ޑައުންލޯޑް ކުރާށެވެ، އޭގެ ފަހުން ނެތް ނަންތައް ތިބާގެ މެނޫއަށް އިމްޕޯޓް ކުރާށެވެ.
+template_download_shelf	ފޮޓޯ ޝެލްފް ޑައުންލޯޑް ކުރާށެވެ
 template_info	{c} ކެޓަގަރީތަކާއި {d} ކެއުންތައް ފޮޓޯތަކާއެކު، އިތުރުކުރަން ތައްޔާރަށް. އަގުތައް ފެށެނީ ₹0 އިން — އޭގެ ފަހުން ތިމާގެ އަގު ސެޓް ކުރާށެވެ.
 template_import	ފުރިހަމަ ޓެމްޕްލޭޓެއް އިމްޕޯޓްކުރުން
 template_confirm	އެމީހުންގެ ކެޓަގަރީތަކާއެކު {d} ކެއުންތައް އިތުރުކުރުން؟ މިހާރުވެސް ތިބާގެ އަތުގައި ހުރި ކެއުންތައް އެގޮތުގައި ހުރެއެވެ.

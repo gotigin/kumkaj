@@ -101,6 +101,19 @@ bill_item_col_sep	Mistari ya safu
 slip_columns	Safu wima
 slip_col_header	Kichwa
 bill_line_logo	Nembo
+bill_line_shop	Duka
+bill_line_address	Anwani
+bill_line_fssai	FSSAI
+bill_line_title	Kichwa
+bill_line_customer	Mteja
+bill_line_bill_no	Nambari ya bili
+bill_line_time	Wakati
+bill_line_cashier	Keshia
+bill_line_table	Meza
+bill_line_items	Bidhaa
+bill_line_total	Jumla
+bill_line_footer	Chini
+bill_line_upi	UPI
 bill_logo_picture	Picha
 bill_logo_choose	Chagua picha
 bill_logo_remove	Ondoa picha
@@ -128,6 +141,12 @@ bill_item_piece_off	Zima
 bill_total_qty	Jumla idadi
 bill_total_subtotal	Jumla ndogo
 bill_total_grand	Jumla kuu
+bill_total_number_under	Nambari chini ya
+bill_total_caption_under	Lebo chini ya
+bill_total_own_line	Mstari wake
+bill_total_caption_with	Pamoja na nambari
+bill_total_caption_none	Hakuna lebo
+bill_total_place_help	Mstari wake huchapisha jumla hii peke yake. Chini ya safu wima, nambari yake huchapishwa katika safu hiyo ya bidhaa, kwa ukubwa na unene wa mstari huu; jumla hushiriki safu mlalo moja hadi safu wima ichukuliwe, kisha safu mlalo mpya huanza. Lebo huenda pamoja na nambari, chini ya safu wima nyingine, au huachwa. Mistari ya kodi, huduma, ukadiriaji na malipo hufuata Jumla ndogo.
 reprint_incl	Katika chapa
 reprint_skip	Ruka
 reprint_skip_meta	Ruka chapa ya kuokoa
@@ -178,20 +197,20 @@ snack_secs_ph	Sekunde (3–60, chaguo-msingi 10)
 snack_secs_save	Hifadhi muda wa arifa
 snack_secs_saved	Muda wa arifa umehifadhiwa — sekunde {n}
 settings_sec_whatsapp	WhatsApp
-whatsapp_cloud_help	Use your own Meta WhatsApp Cloud API. Create a System User token with whatsapp_business_messaging (temporary dashboard tokens expire). Credentials stay on this Server only — never on extra tills. Accepted means Meta took the request, not that the guest received it.
-whatsapp_phone_id_ph	Phone Number ID
-whatsapp_token_ph	Access Token (leave blank to keep)
-whatsapp_template_ph	Bill template name (optional)
-whatsapp_template_lang_ph	Template language (e.g. en)
-whatsapp_enable	Enable
+whatsapp_cloud_help	Tumia Meta WhatsApp Cloud API yako mwenyewe. Unda tokeni ya System User yenye whatsapp_business_messaging (tokeni za muda za dashibodi huisha muda). Taarifa hubaki kwenye Seva hii pekee — kamwe si kwenye kaunta za ziada. “Imekubaliwa” inamaanisha Meta imepokea ombi, si kwamba mgeni amelipokea.
+whatsapp_phone_id_ph	Kitambulisho cha nambari ya simu
+whatsapp_token_ph	Tokeni ya ufikiaji (acha tupu ili kuibakiza)
+whatsapp_template_ph	Jina la kiolezo cha bili (si lazima)
+whatsapp_template_lang_ph	Lugha ya kiolezo (k.m. en)
+whatsapp_enable	Wezesha
 whatsapp_disable	Off
-whatsapp_save	Save WhatsApp
-whatsapp_test	Test connection
-whatsapp_disconnect	Disconnect
-whatsapp_send_bill	Send via WhatsApp
-whatsapp_consent	WhatsApp OK
-whatsapp_consent_help	Guest agreed to receive WhatsApp messages. A phone number alone is not consent.
-whatsapp_server_only	Configure WhatsApp on the shop Server device
+whatsapp_save	Hifadhi WhatsApp
+whatsapp_test	Jaribu muunganisho
+whatsapp_disconnect	Tenganisha
+whatsapp_send_bill	Tuma kwa WhatsApp
+whatsapp_consent	WhatsApp Sawa
+whatsapp_consent_help	Mgeni amekubali kupokea ujumbe wa WhatsApp. Nambari ya simu pekee si idhini.
+whatsapp_server_only	Weka WhatsApp kwenye kifaa cha Seva cha duka
 settings_sec_backup	Backup na kurudisha tena
 settings_sec_diag	Uchunguzi
 settings_sec_privacy	Faragha
@@ -637,7 +656,7 @@ choose_device_use	Chagua jinsi kifaa hiki kinavyotumika.
 paired_note	Imeoanishwa. Fungua ili kuuza, au Onyesha upya kupata taarifa mpya kutoka dukani.
 last_update_at	Sasisho la mwisho kutoka dukani: {time}.
 pair_intro	Tafuta seva, au andika anwani yake na msimbo wa kuoanisha.
-pair_resume_hint	Already paired — enter your shop PIN, or Forget this shop to pair another.
+pair_resume_hint	Tayari imeoanishwa — weka PIN ya duka lako, au gusa “Sahau duka hili” ili kuoanisha jingine.
 queue_waiting	Zinasubiri kufika dukani ({n}):
 queue_tries	Majaribio {n} · jibu la mwisho: {e}
 save_backup_copy	Hifadhi nakala ya akiba…
@@ -754,13 +773,18 @@ station_vps_dd	Printa za kituo hiki
 station_vps_dd_n	{n} printa · gusa kubadili
 bill_printers_dd	Vifaa vya kuvunja kwa fursa
 bill_printers_dd_n	{n} vifaa vya kuvunja kwa fursa · bonyeza ili kubadilisha
-paper_heading	Karatasi
+paper_heading	Karatasi pepe
 paper_size	{w} × {h} mm
 paper_roll	gombo la {w} mm
 paper_not_set	karatasi bado haijulikani
-paper_length_mm	Urefu (mm)
-printer_paper_help	Karatasi ya printa hii kwa mm. Urefu mtupu ni gombo: kila risiti ni ndefu kama maudhui yake. Tafuta printa hujaza karatasi tupu kutoka kwa dereva wa printa (gombo la 80 mm isipoweza kusema) na kamwe haibadilishi iliyokwisha wekwa.
-preview_help	Risiti hii kwenye karatasi ya printa iliyochaguliwa hapa chini, kama inavyochapishwa huko: ukubwa halisi kutoka kona ya juu kushoto ambayo printa hufikia (kijivu: kingo isizofikia), risiti ndefu kwenye kurasa zaidi, kila kitu kinachopita ukingo wa karatasi hukatwa. Kuchagua printa hubadilisha onyesho la awali tu; karatasi ya kila printa huwekwa chini ya Printa.
+virtual_width_mm	Upana pepe (mm)
+virtual_length_mm	Urefu pepe (mm)
+reported_width_mm	Upana ulioripotiwa (mm)
+reported_length_mm	Urefu ulioripotiwa (mm)
+reported_paper	Iliyoripotiwa: {paper}
+virtual_paper	Pepe: {paper}
+printer_paper_help	Iliyoripotiwa ni karatasi ambayo dereva wa printa hii amewekewa; programu huisoma tu, na “Hakuna” inamaanisha hakuna dereva wa kuuliza. Pepe ni karatasi unayosema iko kweli ndani ya printa, kwa mm; urefu mtupu ni gombo. Printa huchapisha kwenye karatasi yake yenyewe; karatasi pepe huiambia programu ni kiasi gani chake ni karatasi halisi, kwa ajili ya onyesho la awali, urefu wa ukurasa na mahali pa risiti. Tafuta printa hujaza karatasi pepe tupu na kamwe haibadilishi uliyoiweka wewe.
+preview_help	Risiti hii kama inavyochapishwa kwenye printa iliyochaguliwa hapa chini, kwa ukubwa halisi kwenye karatasi yake pepe. Nyeupe ni mahali inapochapisha, karatasi ya kijivu haifikiwi na printa, na wino uliofifia hukatwa. Miraba tisa ni karatasi: gusa mahali risiti inapaswa kukaa. Risiti ndefu huendelea kwenye kurasa zaidi. Kuchagua printa hubadilisha onyesho la awali tu.
 job_layout	Mpangilio
 job_delivery	Jinsi kazi inavyoandikwa
 job_delivery_help	Dola la OS, mabano ya asili, au ESC/POS. Fursa na tiketi za kituo kila moja hubaki zake. Kazi yoyote inaweza kwenda kwenye vifaa vilivyopatikana Find ilivyohifadhiwa.
@@ -1040,7 +1064,7 @@ book_kind_today	Kitabu cha leo
 book_kind_month	Kitabu cha mwezi huu
 book_kind_aging	Inayodaiwa / debiti-krediti
 book_kind_balance	Karatasi ya mizania
-order_help	Chagua oda iliyo wazi, au chagua meza na uanze mpya. Gusa bidhaa zilizo tayari, tuma KOT, toa bili kwa bidhaa moja au zaidi, gawa bili, na ukamilishe malipo.
+order_help	Gusa bidhaa ili kuiongeza.
 floor_help	Kila meza huonyesha kama wageni wameketi, bili yao iliyo wazi ni ipi, na nani anahitaji huduma inayofuata.
 kitchen_help	Fuatilia kilicho tayari kwa kila aina au bidhaa — rekodi katika KOT unavyopenda.
 kitchen_empty	Hakuna kilichowazi sasa.
@@ -1238,7 +1262,7 @@ on_your_menu	Kwenye menyu yako
 edit	Hariri
 schemes	Ofa
 schemes_help	Nunua X pata Y — kiotomatiki maliponi. Mf. Buy 2 Thali get 1 Chaas
-scheme_bogo_ph	Buy 2 Thali get 1 Chaas
+scheme_bogo_ph	Nunua Thali 2, pata Chaas 1
 add_scheme	Ongeza BOGO
 schedule_ph	Saa / happy hour — Mon-Fri 07:00-11:00 au HappyHour 17:00-19:00=150
 upi_qr	UPI QR
@@ -1266,8 +1290,8 @@ taxable_value	Thamani inayotozwa kodi
 gst_inside_price_note	({tax} imejumuishwa)
 start_with_template	Anza na kiolezo chetu cha menyu
 template_heading	Kiolezo chetu cha menyu
-template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
-template_download_shelf	Download photo shelf
+template_need_download	Pakua rafu ya umma ya picha za vyakula (~vyakula 1,459), kisha leta majina yanayokosekana kwenye menyu yako.
+template_download_shelf	Pakua rafu ya picha
 template_info	Aina {c} na vyakula {d} vyenye picha, tayari kuongezwa. Bei ₹0 — weka bei zako baadaye.
 template_import	Leta kiolezo chote
 template_confirm	Ongeza vyakula {d} pamoja na aina zake? Vilivyopo vitabaki kama vilivyo.

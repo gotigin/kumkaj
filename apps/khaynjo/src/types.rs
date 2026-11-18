@@ -527,6 +527,23 @@ const FLOOR_SLOT_IDS: [&[LiveId]; FLOOR_ROW_SLOTS] = [
 
 /// Bill format: one row per item column, in print order.
 const BILL_COL_ROWS: [LiveId; 4] = [id!(bill_col_row_0), id!(bill_col_row_1), id!(bill_col_row_2), id!(bill_col_row_3)];
+/// Bill format: where each total prints, one block a total in
+/// `print_share::BillTotalKind::ALL` order (Total qty, Sub total, Grand total).
+const BILL_TOTAL_PLACES: [LiveId; 3] = [id!(bill_total_place_qty), id!(bill_total_place_sub), id!(bill_total_place_grand)];
+/// A total's place block: the item column each of its segments stands for
+/// (segment box, idle face, lit face) — for the number, then the caption.
+const BILL_TOTAL_NUMBER_COLS: [(LiveId, LiveId, LiveId, print_share::BillItemCol); 4] = [
+    (id!(tp_n_name_box), id!(tp_n_name), id!(tp_n_name_on), print_share::BillItemCol::Name),
+    (id!(tp_n_qty_box), id!(tp_n_qty), id!(tp_n_qty_on), print_share::BillItemCol::Qty),
+    (id!(tp_n_price_box), id!(tp_n_price), id!(tp_n_price_on), print_share::BillItemCol::Price),
+    (id!(tp_n_amount_box), id!(tp_n_amount), id!(tp_n_amount_on), print_share::BillItemCol::Amount),
+];
+const BILL_TOTAL_CAPTION_COLS: [(LiveId, LiveId, LiveId, print_share::BillItemCol); 4] = [
+    (id!(tp_c_name_box), id!(tp_c_name), id!(tp_c_name_on), print_share::BillItemCol::Name),
+    (id!(tp_c_qty_box), id!(tp_c_qty), id!(tp_c_qty_on), print_share::BillItemCol::Qty),
+    (id!(tp_c_price_box), id!(tp_c_price), id!(tp_c_price_on), print_share::BillItemCol::Price),
+    (id!(tp_c_amount_box), id!(tp_c_amount), id!(tp_c_amount_on), print_share::BillItemCol::Amount),
+];
 /// Bill format: the row wrappers before the open line (print order).
 const BILL_PICK_ROWS: [&[LiveId]; 14] = [ids!(bill_pick_row_0), ids!(bill_pick_row_1), ids!(bill_pick_row_2), ids!(bill_pick_row_3), ids!(bill_pick_row_4), ids!(bill_pick_row_5), ids!(bill_pick_row_6), ids!(bill_pick_row_7), ids!(bill_pick_row_8), ids!(bill_pick_row_9), ids!(bill_pick_row_10), ids!(bill_pick_row_11), ids!(bill_pick_row_12), ids!(bill_pick_row_13)];
 /// Bill format: the row buttons before the open line. Slot i shows the i-th

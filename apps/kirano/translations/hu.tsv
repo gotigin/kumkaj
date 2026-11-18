@@ -67,13 +67,19 @@ bill_item_amount	Összeg
 bill_item_note	Tétel megjegyzés
 bill_item_col_sep	Oszlopszabályok
 slip_col_width	Szélesség (mm)
-paper_heading	Papír
+paper_heading	Virtuális papír
 paper_size	{w} × {h} mm
 paper_roll	{w} mm-es tekercs
 paper_not_set	a papír még nem ismert
-paper_length_mm	Hossz (mm)
-printer_paper_help	A nyomtató papírja mm-ben. Az üres Hossz tekercset jelent: minden blokk olyan hosszú, mint a tartalma. A Keressen nyomtatókat kitölti az üres papírt a nyomtató illesztőprogramjából (80 mm-es tekercs, ha az nem tudja megmondani), és soha nem módosítja a már beállítottat.
-preview_help	Ez a blokk a lent kiválasztott nyomtató papírján, ahogy ott nyomtatódik: valós méretben attól a bal felső saroktól, ameddig a nyomtató elér (szürke: szélek, ahová nem ér el), a hosszú blokk több lapon, ami túlnyúlik a papír szélén, levágódik. A nyomtató kiválasztása csak az előnézetet módosítja; minden nyomtató papírját a Nyomtatók alatt kell beállítani.
+na	N/A
+virtual_width_mm	Virtuális szélesség (mm)
+virtual_length_mm	Virtuális hossz (mm)
+reported_width_mm	Jelentett szélesség (mm)
+reported_length_mm	Jelentett hossz (mm)
+reported_paper	Jelentett: {paper}
+virtual_paper	Virtuális: {paper}
+printer_paper_help	A jelentett az a papír, amelyre ennek a nyomtatónak az illesztőprogramja be van állítva; az alkalmazás csak olvassa, a(z) N/A pedig azt jelenti, hogy nincs megkérdezhető illesztőprogram. A virtuális az a papír, amelyről Ön azt mondja, hogy valóban a nyomtatóban van, mm-ben; az üres hossz tekercset jelent. A nyomtató a saját papírjára nyomtat; a virtuális papír megmondja az alkalmazásnak, hogy ebből mennyi a valódi papír, az előnézethez, az oldalhosszhoz és a blokk helyéhez. A(z) Keressen nyomtatókat kitölti az üres virtuális papírt, és soha nem módosítja azt, amelyet Ön állított be.
+preview_help	Ez a blokk úgy, ahogy az alább kiválasztott nyomtatón nyomtatódik, valós méretben a virtuális papírján. A fehér az, ahová nyomtat, a szürke papír a nyomtató hatókörén kívül esik, a halvány festék pedig levágódik. A kilenc négyzet a papír: koppintson oda, ahol a blokknak lennie kell. A hosszú blokk további oldalakon folytatódik. A nyomtató kiválasztása csak az előnézetet változtatja meg.
 slip_col_start	Kezdő térköz (px)
 slip_col_end	Záró térköz (px)
 slip_columns_help	Minden oszlop szélessége tartalmazza a kezdő és záró térközét. A szöveg az oszlopán belül tördelődik; ami túlnyúlik a tartalom szélességén, levágódik – papíron és az előnézetben is.
@@ -88,6 +94,12 @@ bill_item_piece_off	Ki
 bill_total_qty	Teljes mennyiség
 bill_total_subtotal	Részösszeg
 bill_total_grand	Végösszeg
+bill_total_number_under	Szám ez alatt
+bill_total_caption_under	Címke ez alatt
+bill_total_own_line	Saját sor
+bill_total_caption_with	A számmal együtt
+bill_total_caption_none	Nincs címke
+bill_total_place_help	Saját sor: ez az összeg külön sorban nyomtatódik. Oszlop alatt a száma abban a tételoszlopban nyomtatódik, ennek a sornak a méretével és vastagságával; az összegek egy sort osztanak meg, amíg egy oszlop foglalt nem lesz, akkor új sor kezdődik. A címke a számmal együtt, egy másik oszlop alatt áll, vagy kimarad. Az adó, a szervizdíj, a kerekítés és a fizetés sorai a(z) Részösszeg helyét követik.
 kot_unassigned	Nincs hozzárendelve
 settings_hub_help	Egyszerre csak egy területet nyisson meg – kevesebb görgetés, egyértelműbb választási lehetőségek.
 settings_sec_language	Nyelv és pénznem
@@ -723,6 +735,20 @@ fssai_ph	FSSAI / bolti engedély sz. (választható)
 bill_footer_ph	Lábléc (pl. Köszönöm, látogassa meg újra)
 kot_field_on	megmutat
 kot_field_off	elrejteni
+kot_field_show	Megjelenítés
+kot_field_hide	Elrejtés
+bill_line_shop	Bolt
+bill_line_address	Bolt címe
+bill_line_fssai	FSSAI
+bill_line_title	Cím
+bill_line_customer	Ügyfél
+bill_line_bill_no	Számla sz.
+bill_line_time	Idő
+bill_line_cashier	Pénztáros
+bill_line_items	Tételek
+bill_line_total	Összesen
+bill_line_footer	Lábléc
+bill_line_upi	UPI
 kot_weight_light	Fény
 bill_kot_panel_help	Számla elrendezése és tartalom szélessége. A pénztáros az, aki kiállította vagy kiegyenlítette a számlát – a teljes eladási történet a könyvekben marad.
 std_size_ph	például 18, 20, 26…
@@ -830,10 +856,10 @@ lane_declared_label	Adószámla
 lane_owner_label	Készpénzes feljegyzés
 money_lane_bill	Számla: {lane}
 
-removing	Removing…
-removed	Removed
-updating_order	Updating…
-order_updated	Order updated
+removing	Eltávolítás…
+removed	Eltávolítva
+updating_order	Frissítés…
+order_updated	Rendelés frissítve
 sel_copy	Másolás
 sel_select_all	Az összes kijelölése
 sel_copied	Másolva

@@ -37,7 +37,7 @@ add_item	Tambah kadar
 new_item	Kadar baru
 adding_item	Menambah kadar baharu
 editing_item	Mengedit
-save	Jimat
+save	Simpan
 remove	Alih keluar
 empty_catalog	Tiada kadar lagi.
 counter_sale	Tempahan kaunter
@@ -95,7 +95,7 @@ amounts_hide	Sembunyi
 amounts_show	Tunjukkan
 no_sale_yet	Tiada jualan lagi
 favorites	Kegemaran
-favorites_help	Item menu menu yang anda sering jual, disimpan untuk log masuk anda. Tambahkan satu pada bil atau bina senarai anda daripada semua item menu di bawah.
+favorites_help	Item menu yang anda sering jual, disimpan untuk log masuk anda. Tambahkan satu pada bil atau bina senarai anda daripada semua item menu di bawah.
 your_favorites	Kegemaran anda
 all_items	Semua item menu
 no_favorites	Tiada kegemaran lagi — tambah item menu daripada senarai di bawah.
@@ -192,7 +192,7 @@ snack_secs_save	Jimat masa makluman
 snack_secs_saved	Masa makluman disimpan — {n} saat
 snack_secs_bad	Masukkan saat sebagai nombor (3–60)
 cancelled	Dibatalkan
-cancelling	Cancelling…
+cancelling	Cancellingâ¦
 cancel	Batal
 opening_client	Membuka pelanggan…
 preparing_desk	Menyediakan meja…
@@ -348,7 +348,7 @@ use_carrier_cost	Gunakan kos pembawa
 rate_carrier_ph	Pembawa (kosong = kadar jualan kami)
 rate_party_ph	Parti (kosong = semua pelanggan)
 carrier_pick_ph	Pembawa untuk kos (daripada perbandingan)
-item_name	Nama item menu menu
+item_name	Nama item menu
 load_bulk_row	Muatkan baris pukal → meja
 login_id_ph	Nama pengguna
 mark_delivered	Mark dihantar
@@ -365,7 +365,7 @@ print_drs	Cetak DRS
 print_run_sheet	Cetak helaian larian
 reattempt	Percubaan semula
 rider_cod_handed_ph	COD diserahkan
-settle_rider_cod	Settle rider COD
+settle_rider_cod	Selesaikan COD penghantar
 mode_desk	Meja
 mode_rider	penunggang
 waiting_office	menunggu untuk sampai ke pejabat
@@ -501,13 +501,18 @@ job_size	Saiz fon
 job_size_ph	cth. 18, 20, 26…
 test_receipt_format	Resit ujian
 test_label_format	Label ujian
-paper_heading	Kertas
+paper_heading	Kertas maya
 paper_size	{w} × {h} mm
 paper_roll	gulung {w} mm
 paper_not_set	kertas belum diketahui
-paper_length_mm	Panjang (mm)
-printer_paper_help	Kertas pencetak ini dalam mm. Panjang kosong ialah gulung: setiap slip sepanjang kandungannya. Cari pencetak mengisi kertas kosong daripada pemacu pencetak (gulung 80 mm apabila ia tidak dapat memberitahu) dan tidak pernah mengubah kertas yang sudah ditetapkan.
-preview_help	Slip ini pada kertas pencetak yang dipilih di bawah, seperti yang dicetak di sana: saiz sebenar dari penjuru kiri atas yang dapat dicapai pencetak (kelabu: tepi yang tidak dicapai), slip panjang pada lebih banyak helaian, apa-apa yang melepasi tepi kertas dipotong. Memilih pencetak hanya mengubah pratonton; kertas setiap pencetak ditetapkan di Pencetak.
+virtual_width_mm	Lebar maya (mm)
+virtual_length_mm	Panjang maya (mm)
+reported_width_mm	Lebar yang dilaporkan (mm)
+reported_length_mm	Panjang yang dilaporkan (mm)
+reported_paper	Dilaporkan: {paper}
+virtual_paper	Maya: {paper}
+printer_paper_help	Dilaporkan ialah kertas yang ditetapkan pada pemacu pencetak ini; apl hanya membacanya, dan T/A bermaksud tiada pemacu untuk ditanya. Maya ialah kertas yang anda katakan benar-benar ada dalam pencetak, dalam mm; panjang kosong bermaksud gulung. Pencetak mencetak pada kertasnya sendiri; kertas maya memberitahu apl berapa banyak daripadanya ialah kertas sebenar, untuk pratonton, panjang halaman dan kedudukan slip. Cari pencetak mengisi kertas maya yang kosong dan tidak sekali-kali mengubah yang telah anda tetapkan.
+preview_help	Slip ini seperti yang dicetak pada pencetak yang dipilih di bawah, dalam saiz sebenar pada kertas mayanya. Putih ialah tempat ia mencetak, kertas kelabu di luar jangkauan pencetak, dan dakwat pudar dipotong. Sembilan petak itu ialah kertas: ketik tempat slip patut berada. Slip panjang bersambung ke halaman seterusnya. Memilih pencetak hanya mengubah pratonton.
 slip_col_width	Lebar (mm)
 no_printer_assigned	Tiada pencetak
 printer_target_default	pencetak biasa komputer ini (alamat kosong)
@@ -609,7 +614,7 @@ pay_selected_heading	Bayar dipilih (selesaikan hutang / ambil pendahuluan)
 write_off_heading	Hapus kira (jelas tanpa bayaran)
 pay_ap_heading	Bayar apa yang kita berhutang kepada mereka (AP)
 country_tax	Negara & cukai
-extra_tills_heading	Tills tambahan
+extra_tills_heading	Kaunter tambahan
 other_devices_help_heading	Sediakan peranti lain
 other_devices_help	Pada peranti ini (Pelayan): Peranti lain → Benarkan tills tambahan. Perhatikan kod pasangan dan alamat Wi‑Fi. Ketik Benarkan peranti lain bersambung jika ia muncul. Pada komputer, ketik Mulakan dengan komputer ini. Pada setiap peranti lain: pasang apl, pilih Mod Pelanggan, Cari pelayan kedai (atau taip alamat), masukkan kod pasangan, Pasangkan sekarang. Pesanan menunggu pada peranti jika Wi‑Fi terputus dan hilang apabila Pelayan menjawab semula.
 your_brand	Jenama anda (dalam apl)
@@ -680,7 +685,7 @@ wipe_schema_done	Persediaan kedai dipadam — pilih Pelayan atau Pelanggan untuk
 rounded_total	Jumlah Bulat
 setup_app_moklanjo	Sediakan Moklanjo
 shop_logo_optional	Logo kedai (pilihan)
-stock_type_help	Taip nama item menu (sebahagian daripadanya sudah mencukupi), kuantiti, kemudian laraskan. Item menu menu yang belum dikira lagi memerlukan Mulakan penjejakan sekali.
+stock_type_help	Taip nama item menu (sebahagian daripadanya sudah mencukupi), kuantiti, kemudian laraskan. Item menu yang belum dikira lagi memerlukan Mulakan penjejakan sekali.
 team_owner_help	Sewa: pilih kerja (Juruwang / Pengurus), nama + PIN permulaan, kemudian Tambah. Hanya jika orang ini berbeza: buka skrin dan hak di bawah, kemudian Simpan persediaan kerja. Semua orang menukar PIN mereka sendiri di bahagian bawah — Pemilik tidak boleh menukar PIN orang lain.
 they_owe_us	Mereka berhutang dengan kita
 unit_at_cap	Unit @
@@ -713,7 +718,7 @@ logo_default	Logo: Kumkaj tanda (lalai) — pilih sendiri jika ada
 tmpl_current	Semasa: {} — {}
 tmpl_selected	Dipilih: {} — {}
 setup_complete	Persediaan selesai
-onboard_fresh_tmpl	Fresh · {} — katalog bermula kosong; tambah item menu dalam item menu Menu, kemudian Selesai.
+onboard_fresh_tmpl	Fresh · {} — katalog bermula kosong; tambah item menu dalam item menu, kemudian Selesai.
 onboard_book_tmpl	Lejar · {} — tambah item menu dan kredit pembukaan, kemudian Selesai.
 onboard_template_tmpl	Namakan tempat itu jika anda mahu, kemudian pilih cara untuk bermula.
 tmpl_blurb	Buku kurier dan meja tempahan: konsainor, pembawa, buku harian, AWB.
@@ -782,7 +787,7 @@ extra_per_kg_ph	Tambahan / kg
 first_amount_ph	Jumlah pertama
 first_kg_ph	kg pertama (slab)
 from_code_ph	Dari kod (beg)
-item_name_lang_ph	Nama item menu menu — taipkannya dalam bahasa anda
+item_name_lang_ph	Nama item menu — taipkannya dalam bahasa anda
 login_id_opt_ph	Nama pengguna (diperlukan, unik)
 manager_pin_ph	Pengurus PIN untuk meluluskan (hanya jika anda tidak boleh membatalkan)
 new_branch_name_ph	Nama cawangan baru

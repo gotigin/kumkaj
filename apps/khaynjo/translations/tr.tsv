@@ -101,6 +101,19 @@ bill_item_col_sep	Sütun çizgileri
 slip_columns	Sütunlar
 slip_col_header	Başlık
 bill_line_logo	Logo
+bill_line_shop	Dükkan
+bill_line_address	Adres
+bill_line_fssai	FSSAI
+bill_line_title	Başlık
+bill_line_customer	Müşteri
+bill_line_bill_no	Fiş no
+bill_line_time	Saat
+bill_line_cashier	Kasiyer
+bill_line_table	Masa
+bill_line_items	Ürünler
+bill_line_total	Toplam
+bill_line_footer	Alt bilgi
+bill_line_upi	UPI
 bill_logo_picture	Resim
 bill_logo_choose	Resim seç
 bill_logo_remove	Resmi kaldır
@@ -128,6 +141,12 @@ bill_item_piece_off	Kapalı
 bill_total_qty	Toplam adet
 bill_total_subtotal	Ara toplam
 bill_total_grand	Genel toplam
+bill_total_number_under	Sayı şunun altında
+bill_total_caption_under	Etiket şunun altında
+bill_total_own_line	Kendi satırı
+bill_total_caption_with	Sayıyla birlikte
+bill_total_caption_none	Etiket yok
+bill_total_place_help	Kendi satırı bu toplamı tek başına basar. Sütun altındayken sayısı o ürün sütununda, bu satırın boyutu ve kalınlığıyla basılır; bir sütun dolana kadar toplamlar aynı sırayı paylaşır, sonra yeni sıra başlar. Etiket sayıyla birlikte, başka bir sütunun altında durur ya da basılmaz. Vergi, servis, yuvarlama ve ödeme satırları Ara toplam yerini izler.
 reprint_incl	Yazdırmada
 reprint_skip	Atla
 reprint_skip_meta	Yeniden yazdırmaya alma
@@ -178,20 +197,20 @@ snack_secs_ph	Saniye (3–60, varsayılan 10)
 snack_secs_save	Uyarı süresini kaydet
 snack_secs_saved	Uyarı süresi kaydedildi — {n} saniye
 settings_sec_whatsapp	WhatsApp
-whatsapp_cloud_help	Use your own Meta WhatsApp Cloud API. Create a System User token with whatsapp_business_messaging (temporary dashboard tokens expire). Credentials stay on this Server only — never on extra tills. Accepted means Meta took the request, not that the guest received it.
-whatsapp_phone_id_ph	Phone Number ID
-whatsapp_token_ph	Access Token (leave blank to keep)
-whatsapp_template_ph	Bill template name (optional)
-whatsapp_template_lang_ph	Template language (e.g. en)
-whatsapp_enable	Enable
+whatsapp_cloud_help	Kendi Meta WhatsApp Cloud API'nizi kullanın. whatsapp_business_messaging içeren bir System User belirteci oluşturun (panodaki geçici belirteçlerin süresi dolar). Bilgiler yalnızca bu Sunucuda kalır — ek kasalarda asla. “Kabul edildi”, Meta'nın isteği aldığı anlamına gelir; misafirin mesajı aldığı anlamına gelmez.
+whatsapp_phone_id_ph	Telefon numarası kimliği
+whatsapp_token_ph	Erişim belirteci (korumak için boş bırakın)
+whatsapp_template_ph	Fiş şablonu adı (isteğe bağlı)
+whatsapp_template_lang_ph	Şablon dili (ör. en)
+whatsapp_enable	Etkinleştir
 whatsapp_disable	Off
-whatsapp_save	Save WhatsApp
-whatsapp_test	Test connection
-whatsapp_disconnect	Disconnect
-whatsapp_send_bill	Send via WhatsApp
-whatsapp_consent	WhatsApp OK
-whatsapp_consent_help	Guest agreed to receive WhatsApp messages. A phone number alone is not consent.
-whatsapp_server_only	Configure WhatsApp on the shop Server device
+whatsapp_save	WhatsApp'ı kaydet
+whatsapp_test	Bağlantıyı sına
+whatsapp_disconnect	Bağlantıyı kes
+whatsapp_send_bill	WhatsApp ile gönder
+whatsapp_consent	WhatsApp Tamam
+whatsapp_consent_help	Misafir WhatsApp mesajları almayı kabul etti. Tek başına telefon numarası onay değildir.
+whatsapp_server_only	WhatsApp'ı dükkanın Sunucu cihazında ayarlayın
 settings_sec_backup	Yedekleme ve geri yükleme
 settings_sec_diag	Tanılama
 settings_sec_privacy	Gizlilik
@@ -637,7 +656,7 @@ choose_device_use	Bu cihazın nasıl kullanılacağını seçin.
 paired_note	Eşleşti. Satış için kilidi açın ya da dükkândan en güncel hâli almak için Yenile'ye dokunun.
 last_update_at	Dükkândan son güncelleme: {time}.
 pair_intro	Sunucuyu bulun ya da adresini ve eşleştirme kodunu yazın.
-pair_resume_hint	Already paired — enter your shop PIN, or Forget this shop to pair another.
+pair_resume_hint	Zaten eşleştirildi — dükkanınızın PIN'ini girin veya başka birini eşleştirmek için “Bu dükkanı unut” düğmesine dokunun.
 queue_waiting	Dükkâna ulaşmayı bekleyenler ({n}):
 queue_tries	{n} deneme · son yanıt: {e}
 save_backup_copy	Yedek kopyasını kaydet…
@@ -754,13 +773,18 @@ station_vps_dd	Bu istasyonun yazıcıları
 station_vps_dd_n	{n} yazıcı · değiştirmek için dokunun
 bill_printers_dd	Fatura için yazıcılar
 bill_printers_dd_n	Fatura için {n} yazıcı(alar) · değiştirmek için dokunun
-paper_heading	Kâğıt
+paper_heading	Sanal kâğıt
 paper_size	{w} × {h} mm
 paper_roll	{w} mm rulo
 paper_not_set	kâğıt henüz bilinmiyor
-paper_length_mm	Uzunluk (mm)
-printer_paper_help	Bu yazıcının kâğıdı mm cinsinden. Boş Uzunluk rulodur: her fiş içeriği kadar uzundur. Yazıcıları bul, boş kâğıdı yazıcının sürücüsünden doldurur (söyleyemezse 80 mm rulo) ve önceden ayarlanmış olanı asla değiştirmez.
-preview_help	Bu fiş, aşağıda seçilen yazıcının kâğıdında, orada basıldığı gibi: yazıcının ulaştığı sol üst köşeden gerçek boyutta (gri: ulaşamadığı kenarlar), uzun fiş daha çok sayfada, kâğıt kenarını aşan her şey kesilir. Yazıcı seçmek yalnızca önizlemeyi değiştirir; her yazıcının kâğıdı Yazıcılar altında ayarlanır.
+virtual_width_mm	Sanal genişlik (mm)
+virtual_length_mm	Sanal uzunluk (mm)
+reported_width_mm	Bildirilen genişlik (mm)
+reported_length_mm	Bildirilen uzunluk (mm)
+reported_paper	Bildirilen: {paper}
+virtual_paper	Sanal: {paper}
+printer_paper_help	Bildirilen, bu yazıcının sürücüsünün ayarlı olduğu kâğıttır; uygulama onu yalnızca okur ve “Yok”, sorulacak bir sürücü olmadığı anlamına gelir. Sanal, yazıcıda gerçekten bulunduğunu söylediğiniz kâğıttır, mm cinsinden; boş uzunluk rulodur. Yazıcı kendi kâğıdına basar; sanal kâğıt uygulamaya bunun ne kadarının gerçek kâğıt olduğunu söyler: önizleme, sayfa uzunluğu ve fişin yeri için. Yazıcıları bul, boş sanal kâğıdı doldurur ve sizin ayarladığınızı asla değiştirmez.
+preview_help	Bu fiş, aşağıda seçilen yazıcıda basıldığı gibi, yazıcının sanal kâğıdında gerçek boyutta. Beyaz, basılan yerdir; gri kâğıt yazıcının ulaşamadığı yerdir ve soluk mürekkep kesilir. Dokuz kare kâğıdın kendisidir: fişin durması gereken yere dokunun. Uzun fiş sonraki sayfalara devam eder. Yazıcı seçmek yalnızca önizlemeyi değiştirir.
 job_layout	Yerleşim
 job_delivery	İşin nasıl gönderildiği
 job_delivery_help	OS belgesi, ham bayt veya ESC/POS. Fatura ve mutfak bileti her birinin kendiğini korur. Her iki iş de Bul'un kaydettiği herhangi bir yazıcıya gidebilir.
@@ -1040,7 +1064,7 @@ book_kind_today	Bugünün defteri
 book_kind_month	Bu ayın defteri
 book_kind_aging	Bakiye / borç-alacak
 book_kind_balance	Bilanço
-order_help	Açık bir sipariş seçin veya bir masa seçip yeni başlatın. Hazır ürünlere dokunun, KOT gönderin, bir veya daha fazla ürünü faturalandırın, hesabı bölün ve ödemeyi tamamlayın.
+order_help	Eklemek için bir ürüne dokunun.
 floor_help	Her masa, misafirlerin oturup oturmadığını, açık hesaplarının ne olduğunu ve sıradaki hizmetin kime gerektiğini gösterir.
 kitchen_help	Her varyant veya ürün için hazır olanı takip edin — KOT'a istediğiniz gibi kaydedin.
 kitchen_empty	Şu an açık bir şey yok.
@@ -1266,8 +1290,8 @@ taxable_value	Vergiye tabi tutar
 gst_inside_price_note	({tax} dahil)
 start_with_template	Menü şablonumuzla başla
 template_heading	Menü şablonumuz
-template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
-template_download_shelf	Download photo shelf
+template_need_download	Yemeklerin ortak fotoğraf rafını (~1.459 yemek) indirin, ardından eksik adları menünüze içe aktarın.
+template_download_shelf	Fotoğraf rafını indir
 template_info	{c} kategori ve fotoğraflı {d} yemek eklenmeye hazır. Fiyat ₹0 — sonra kendi fiyatınızı girin.
 template_import	Şablonun tamamını içe aktar
 template_confirm	{d} yemek kategorileriyle eklensin mi? Mevcut yemekleriniz olduğu gibi kalır.

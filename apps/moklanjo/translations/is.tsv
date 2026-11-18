@@ -192,7 +192,7 @@ snack_secs_save	Sparaðu viðvörunartíma
 snack_secs_saved	Viðvörunartími vistaður — {n} sekúndur
 snack_secs_bad	Sláðu inn sekúndur sem tölu (3–60)
 cancelled	Hætt við
-cancelling	Cancelling…
+cancelling	Cancellingâ¦
 cancel	Hætta við
 opening_client	Opnar viðskiptavin...
 preparing_desk	Undirbýr skrifborð...
@@ -501,13 +501,18 @@ job_size	Leturstærð
 job_size_ph	t.d. 18, 20, 26...
 test_receipt_format	Prófkvittun
 test_label_format	Prófunarmerki
-paper_heading	Pappír
+paper_heading	Sýndarpappír
 paper_size	{w} × {h} mm
 paper_roll	{w} mm rúlla
 paper_not_set	pappír enn óþekktur
-paper_length_mm	Lengd (mm)
-printer_paper_help	Pappír þessa prentara í mm. Auð Lengd er rúlla: hver kvittun er jafnlöng innihaldi sínu. Finndu prentara fyllir í auðan pappír úr rekli prentarans (80 mm rúlla þegar hann getur ekki sagt til) og breytir aldrei pappír sem þegar er stilltur.
-preview_help	Þessi kvittun á pappír prentarans sem valinn er hér fyrir neðan, eins og hún prentast þar: í raunstærð frá efra vinstra horninu sem prentarinn nær (grátt: brúnir sem hann nær ekki), löng kvittun á fleiri blöðum, allt út fyrir brún pappírsins er skorið af. Að velja prentara breytir aðeins forskoðun; pappír hvers prentara er stilltur undir Prentarar.
+virtual_width_mm	Sýndarbreidd (mm)
+virtual_length_mm	Sýndarlengd (mm)
+reported_width_mm	Tilkynnt breidd (mm)
+reported_length_mm	Tilkynnt lengd (mm)
+reported_paper	Tilkynnt: {paper}
+virtual_paper	Sýndar: {paper}
+printer_paper_help	Tilkynnt er pappírinn sem rekill þessa prentara er stilltur á; appið les hann aðeins, og N/A þýðir að enginn rekill sé til að spyrja. Sýndar er pappírinn sem þú segir að sé í raun í prentaranum, í mm; auð lengd er rúlla. Prentarinn prentar á sinn eigin pappír; sýndarpappírinn segir appinu hve mikið af honum er raunverulegur pappír, fyrir forskoðun, síðulengd og staðsetningu kvittunar. Finndu prentara fyllir út auðan sýndarpappír og breytir aldrei þeim sem þú hefur stillt.
+preview_help	Þessi kvittun eins og hún prentast á prentaranum sem valinn er hér að neðan, í raunstærð á sýndarpappír hans. Hvítt er þar sem prentað er, grár pappír er utan seilingar prentarans og fölt blek er skorið af. Reitirnir níu eru pappírinn: ýttu þar sem kvittunin á að sitja. Löng kvittun heldur áfram á fleiri síðum. Val á prentara breytir aðeins forskoðuninni.
 slip_col_width	Breidd (mm)
 no_printer_assigned	Enginn prentari
 printer_target_default	Venjulegur prentari þessarar tölvu (autt heimilisfang)

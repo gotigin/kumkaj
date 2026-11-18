@@ -79,13 +79,19 @@ bill_item_amount	Import
 bill_item_note	Rx / nota de venda
 bill_item_col_sep	Línies de columna
 slip_col_width	Amplada (mm)
-paper_heading	Paper
+paper_heading	Paper virtual
 paper_size	{w} × {h} mm
 paper_roll	rotlle de {w} mm
 paper_not_set	paper encara desconegut
-paper_length_mm	Llargada (mm)
-printer_paper_help	El paper d'aquesta impressora en mm. Una Llargada buida és un rotlle: cada tiquet és tan llarg com el seu contingut. Troba impressores omple el paper buit amb el del controlador de la impressora (un rotlle de 80 mm si no ho pot dir) i mai no canvia un paper ja definit.
-preview_help	Aquest tiquet sobre el paper de la impressora triada a sota, tal com s'hi imprimeix: a mida real des de la cantonada superior esquerra que la impressora pot assolir (gris: vores que no pot), un tiquet llarg en més fulls, tot el que passa de la vora del paper es retalla. Triar una impressora només canvia la previsualització; el paper de cada impressora es defineix a Impressores.
+na	N/D
+virtual_width_mm	Amplada virtual (mm)
+virtual_length_mm	Llargada virtual (mm)
+reported_width_mm	Amplada informada (mm)
+reported_length_mm	Llargada informada (mm)
+reported_paper	Informat: {paper}
+virtual_paper	Virtual: {paper}
+printer_paper_help	Informat és el paper al qual està ajustat el controlador d'aquesta impressora; l'app només el llegeix, i N/D vol dir que no hi ha cap controlador a qui preguntar. Virtual és el paper que tu dius que hi ha realment a la impressora, en mm; una llargada en blanc és un rotlle. La impressora imprimeix en el seu propi paper; el paper virtual diu a l'app quina part és paper real, per a la previsualització, la llargada de la pàgina i el lloc del tiquet. Troba impressores omple un paper virtual en blanc i no canvia mai el que has definit.
+preview_help	Aquest tiquet tal com s'imprimeix a la impressora triada a sota, a mida real sobre el seu paper virtual. El blanc és on imprimeix, el paper gris queda fora de l'abast de la impressora i la tinta esvaïda es talla. Els nou quadrats són el paper: toca on ha d'anar el tiquet. Un tiquet llarg continua en més pàgines. Triar una impressora només canvia la previsualització.
 slip_col_start	Espai inicial (px)
 slip_col_end	Espai final (px)
 slip_columns_help	L’amplada de cada columna inclou el seu espai inicial i final. El text s’ajusta dins la seva columna; el que sobrepassa l’amplada del contingut es retalla, en paper i a la previsualització.
@@ -100,6 +106,12 @@ bill_item_piece_off	Desactivat
 bill_total_qty	Qtat total
 bill_total_subtotal	Subtotal
 bill_total_grand	Total general
+bill_total_number_under	Nombre sota
+bill_total_caption_under	Etiqueta sota
+bill_total_own_line	Línia pròpia
+bill_total_caption_with	Amb el nombre
+bill_total_caption_none	Sense etiqueta
+bill_total_place_help	Línia pròpia imprimeix aquest total tot sol. Sota una columna, el seu nombre s'imprimeix en aquella columna d'articles, amb la mida i el gruix d'aquesta línia; els totals comparteixen una fila fins que una columna queda ocupada, i llavors comença una fila nova. L'etiqueta va amb el nombre, sota una altra columna o s'omet. Les línies d'impost, servei, arrodoniment i pagament segueixen Subtotal.
 kot_unassigned	Sense assignar
 settings_hub_help	Obriu una àrea cada vegada — menys desplaçament, tries més clares.
 settings_sec_language	Llengua i moneda
@@ -655,7 +667,7 @@ amount_received_ph	Import rebut
 amount_we_pay_ph	Import que paguem
 business_name_ph	Nom del negoci
 code_bag_ph	Codi (bag)
-conv_factor_ph	Factor (25 = 1 bag → 25 kg)
+conv_factor_ph	Factor (25 = 1 sac → 25 kg)
 country_code_ph	Codi de país, p. ex. IN, GB, US, AE, BR
 credit_khata_amount_ph	Import de crèdit / khata
 credit_limit_ph	Límit de crèdit (0 = cap)
@@ -735,6 +747,20 @@ fssai_ph	Número de llicència de drogues (opcional — com tu vulguis)
 bill_footer_ph	Peu (p. ex. Gràcies, torneu)
 kot_field_on	mostra
 kot_field_off	amaga
+kot_field_show	Mostra
+kot_field_hide	Amaga
+bill_line_shop	Botiga
+bill_line_address	Adreça
+bill_line_fssai	FSSAI
+bill_line_title	Títol
+bill_line_customer	Client
+bill_line_bill_no	Núm. de compte
+bill_line_time	Hora
+bill_line_cashier	Caixer
+bill_line_items	Articles
+bill_line_total	Total
+bill_line_footer	Peu
+bill_line_upi	UPI
 kot_weight_light	Prima
 bill_kot_panel_help	Disseny de la factura i amplada del contingut. El caixer és qui ha emès o liquidat la factura — tota la història de la venda es manté en els registres.
 std_size_ph	p. ex. 18, 20, 26…
@@ -842,10 +868,10 @@ lane_declared_label	Factura fiscal
 lane_owner_label	Nota d'efectiu
 money_lane_bill	Compte: {lane}
 
-removing	Removing…
-removed	Removed
-updating_order	Updating…
-order_updated	Order updated
+removing	S'està eliminant…
+removed	Eliminat
+updating_order	S'està actualitzant…
+order_updated	Comanda actualitzada
 sel_copy	Copia
 sel_select_all	Selecciona-ho tot
 sel_copied	Copiat

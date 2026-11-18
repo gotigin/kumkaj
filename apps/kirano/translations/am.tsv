@@ -1,11 +1,11 @@
 # Amharic — አማርኛ (am). One key<TAB>text per line, in en() order; keep {placeholders}.
 unlock	ክፈት
-sell	Sell
+sell	ይሽጡ
 buy	ግዢ
 books	የቀን መዝገብ
-books_help	Today’s position. Sell = money in. Buy = purchases & expenses. Parties = credit customers & suppliers.
+books_help	የዛሬው አቋም. መሸጥ = ገንዘብ ግዢ = ግዢዎች እና ወጪዎች. ፓርቲዎች = ብድር ደንበኞች እና አቅራቢዎች.
 buy_help	የወጪ ደረሰኞች እና የአቅራቢ ሂሳቦች (የወጣ ገንዘብ)። በሂሳብ ላይ የቆየ በተዋዋይ መዝገብ ይቆያል።
-sell_money_in	Sell items
+sell_money_in	እቃዎችን ሽጥ
 buy_money_out	ወጪ / የአቅራቢ ሂሳብ
 record_purchase	ግዢ መዝግብ
 add_expense	የወጪ ደረሰኝ
@@ -25,7 +25,7 @@ settle_cash	በጥሬ ገንዘብ ዝጋ
 settle_card	በካርድ ዝጋ
 items	እቃዎች
 nav_items	እቃዎች
-items_help	Tap an item to edit it. New item clears the form. Search by name or short code, set a price (0 is fine), then Add. Sales already recorded keep the name they were charged with.
+items_help	እሱን ለማርትዕ አንድን ንጥል ይንኩ። አዲስ ንጥል ቅጹን ያጸዳል። በስም ወይም በአጭር ኮድ ይፈልጉ፣ ዋጋ ያዘጋጁ (0 ጥሩ ነው)፣ ከዚያ አክል። ሽያጮች አስቀድመው የተመዘገቡት የተከሰሱበትን ስም ይይዛሉ።
 add_item	እቃ ጨምር
 new_item	አዲስ እቃ
 adding_item	አዲስ እቃ በመጨመር ላይ
@@ -33,7 +33,7 @@ editing_item	በማስተካከል ላይ
 save	አስቀምጥ
 remove	አስወግድ
 removed_items	የተወገዱ እቃዎች
-removed_help	Restore puts the item back in Items exactly as it was — price, photo and category.
+removed_help	እነበረበት መልስ እቃውን ልክ እንደነበረው ወደ እቃዎች ያስቀምጣል - ዋጋ፣ ፎቶ እና ምድብ።
 restore_item	መልስ
 empty_catalog	እስካሁን ምንም እቃዎች የሉም።
 total	ድምር
@@ -67,13 +67,19 @@ bill_item_amount	መጠን
 bill_item_note	የንጥል ማስታወሻ
 bill_item_col_sep	የአምድ መስመሮች
 slip_col_width	ስፋት (mm)
-paper_heading	ወረቀት
+paper_heading	ምናባዊ ወረቀት
 paper_size	{w} × {h} mm
 paper_roll	{w} mm ጥቅል
 paper_not_set	ወረቀቱ ገና አልታወቀም
-paper_length_mm	ርዝመት (mm)
-printer_paper_help	የዚህ ማተሚያ ወረቀት በ mm። ባዶ ርዝመት ጥቅል ነው፤ እያንዳንዱ ደረሰኝ እንደ ይዘቱ ይረዝማል። ማተሚያዎችን ፈልግ ባዶ ወረቀትን ከማተሚያው ሾፌር ይሞላል (መናገር ካልቻለ 80 mm ጥቅል) እና ቀድሞ የተዘጋጀውን በፍጹም አይቀይርም።
-preview_help	ይህ ደረሰኝ ከታች በተመረጠው ማተሚያ ወረቀት ላይ፣ እዚያ እንደሚታተመው፦ ማተሚያው ከሚደርስበት የላይኛው ግራ ጥግ በእውነተኛ መጠን (ግራጫ፦ የማይደርስባቸው ጠርዞች)፣ ረጅም ደረሰኝ በተጨማሪ ገጾች፣ ከወረቀቱ ጠርዝ ያለፈው ይቆረጣል። ማተሚያ መምረጥ ቅድመ እይታውን ብቻ ይቀይራል፤ የእያንዳንዱ ማተሚያ ወረቀት በማተሚያዎች ስር ይዘጋጃል።
+na	የለም
+virtual_width_mm	ምናባዊ ስፋት (mm)
+virtual_length_mm	ምናባዊ ርዝመት (mm)
+reported_width_mm	የተዘገበ ስፋት (mm)
+reported_length_mm	የተዘገበ ርዝመት (mm)
+reported_paper	የተዘገበ፦ {paper}
+virtual_paper	ምናባዊ፦ {paper}
+printer_paper_help	የተዘገበ ማለት የዚህ ማተሚያ ድራይቨር የተቀናበረበት ወረቀት ነው፤ መተግበሪያው ያነበዋል ብቻ፣ “የለም” ማለት የሚጠየቅ ድራይቨር የለም ማለት ነው። ምናባዊ ማለት በማተሚያው ውስጥ በእርግጥ አለ የምትለው ወረቀት ነው፣ በ mm፤ ባዶ ርዝመት ጥቅል ነው። ማተሚያው በራሱ ወረቀት ላይ ያትማል፤ ምናባዊው ወረቀት ከዚያ ውስጥ ምን ያህሉ እውነተኛ ወረቀት እንደሆነ ለመተግበሪያው ይነግረዋል፣ ለቅድመ እይታ፣ ለገጽ ርዝመት እና ለደረሰኙ ቦታ። ማተሚያዎችን ፈልግ ባዶ ምናባዊ ወረቀትን ይሞላል፣ አንተ ያቀናበርከውን ግን ፈጽሞ አይቀይርም።
+preview_help	ይህ ደረሰኝ ከታች በተመረጠው ማተሚያ ላይ እንደሚታተመው፣ በእውነተኛ መጠን በምናባዊ ወረቀቱ ላይ። ነጭ የሚታተምበት ነው፣ ግራጫ ወረቀት ማተሚያው የማይደርስበት ነው፣ የደበዘዘ ቀለም ደግሞ ይቆረጣል። ዘጠኙ ካሬዎች ወረቀቱ ናቸው፦ ደረሰኙ የሚቀመጥበትን ንካ። ረጅም ደረሰኝ ወደ ተጨማሪ ገጾች ይሄዳል። ማተሚያ መምረጥ ቅድመ እይታውን ብቻ ይቀይራል።
 slip_col_start	የመጀመሪያ ክፍተት (px)
 slip_col_end	የመጨረሻ ክፍተት (px)
 slip_columns_help	የእያንዳንዱ አምድ ስፋት የመጀመሪያና የመጨረሻ ክፍተቱን ያካትታል። ጽሑፉ በአምዱ ውስጥ ይጠቀለላል፤ ከይዘቱ ስፋት በላይ ያለው በወረቀትም በቅድመ እይታም ይቆረጣል።
@@ -88,7 +94,13 @@ bill_item_piece_off	ጠፍቷል
 bill_total_qty	ጠቅላላ ብዛት
 bill_total_subtotal	ንዑስ ድምር
 bill_total_grand	ጠቅላላ ድምር
-kot_unassigned	Unassigned
+bill_total_number_under	ቁጥሩ ከዚህ በታች
+bill_total_caption_under	መለያው ከዚህ በታች
+bill_total_own_line	የራሱ መስመር
+bill_total_caption_with	ከቁጥሩ ጋር
+bill_total_caption_none	መለያ የለም
+bill_total_place_help	“የራሱ መስመር” ይህን ድምር ለብቻው ያትማል። በአምድ ስር ሲሆን ቁጥሩ በዚያ የዕቃ አምድ ውስጥ በዚህ መስመር መጠንና ውፍረት ይታተማል፤ አምድ እስኪያዝ ድረስ ድምሮች አንድ ረድፍ ይጋራሉ፣ ከዚያ አዲስ ረድፍ ይጀምራል። መለያው ከቁጥሩ ጋር፣ በሌላ አምድ ስር ይሄዳል ወይም ይቀራል። የግብር፣ የአገልግሎት፣ የማጠጋጋትና የክፍያ መስመሮች “ንዑስ ድምር”ን ይከተላሉ።
+kot_unassigned	ያልተመደበ
 settings_hub_help	በአንድ ጊዜ አንድ ክፍል ይክፈቱ — ያነሰ ማሸብለል፣ ግልጽ ምርጫ።
 settings_sec_language	ቋንቋ እና ገንዘብ
 settings_sec_country	ሀገር እና ግብር
@@ -145,7 +157,7 @@ nav_lock	ቆልፍ
 all_items	ሁሉም እቃዎች
 frequent	ተደጋጋሚ
 added_items	የተጨመሩ እቃዎች
-added_items_empty	Nothing on this bill yet — add an item from All items or a category.
+added_items_empty	በዚህ ሂሳብ ላይ እስካሁን ምንም ነገር የለም - ከሁሉም እቃዎች ወይም ምድብ ንጥል ያክሉ።
 frequent_config_help	ከተጠናቀቁ ሂሳቦች በብዛት የተሸጡ ዕቃዎች። ምን ያህል ቀናት እንደሚታዩ እና ምን ያህል እቃዎች እንደሚታዩ ያዘጋጁ።
 frequent_days_ph	ቀናት (1)
 frequent_limit_ph	እቃዎች (24)
@@ -268,7 +280,7 @@ copy_party_ledger_csv	የተዋዋይ መዝገብ CSV ቅዳ
 copy_receipt	ደረሰኝ ቅዳ
 share_whatsapp	በ WhatsApp አጋራ
 lan_pages_heading	የደንበኛ ገጾች በWi-Fi ላይ
-lan_pages_help	On this shop’s Wi‑Fi, customer pages work for the display board and feedback. People on mobile data need Cloud later. A card terminal or payment link is optional and never blocks the counter.
+lan_pages_help	በዚህ ሱቅ ዋይ ፋይ ላይ የደንበኛ ገፆች ለማሳያ ሰሌዳ እና ግብረመልስ ይሰራሉ። በሞባይል ውሂብ ላይ ያሉ ሰዎች በኋላ ደመና ያስፈልጋቸዋል። የካርድ ተርሚናል ወይም የክፍያ ማገናኛ አማራጭ ነው እና ቆጣሪውን በጭራሽ አያግድም።
 diag_send_heading	ከዚህ መሣሪያ ውጭ አጋራ
 crm_heading	ደንበኞች እና መልዕክቶች
 crm_help	የልደት ቀን፣ ታማኝነት፣ የቦዘኑ እና ከፍተኛ እንግዶች — የ SMS ወይም WhatsApp ፍላጎት ወረፋ ያድርጉ። በመልዕክቱ ውስጥ {name} እና {points} ይጠቀሙ። ባለቤቱ ላክ ይንካል፤ ምንም በራሱ አይበተንም።
@@ -307,7 +319,7 @@ export_day	ቀን ላክ
 extra_note_bill_ph	በዚህ ሂሳብ / ሽያጭ ላይ ተጨማሪ ማስታወሻ
 extra_tills_heading	ተጨማሪ ቆጣሪዎች
 other_devices_help_heading	ሌሎች መሣሪያዎችን አዘጋጅ
-other_devices_help	On this device (Server): Other devices → Allow extra tills. Note the pairing code and Wi‑Fi address. Tap Allow other devices to connect if it appears. On a computer, tap Start with this computer. On each other device: install the app, choose Client Mode, Find the shop's server (or type the address), enter the pairing code, Pair now. Orders wait on the device if Wi‑Fi drops and go when the Server answers again. Extra printers are set on the Server (Settings → Printers) — extra tills send bills there.
+other_devices_help	በዚህ መሳሪያ (አገልጋይ) ላይ ሌሎች መሳሪያዎች → ተጨማሪ እርሻዎችን ይፍቀዱ። የማጣመሪያ ኮዱን እና የWi-Fi አድራሻውን ያስተውሉ። ከታየ ሌሎች መሳሪያዎች እንዲገናኙ ፍቀድ የሚለውን ይንኩ። በኮምፒተር ላይ በዚህ ኮምፒውተር ጀምርን ይንኩ። እርስ በእርስ በሌላው መሳሪያ ላይ መተግበሪያውን ይጫኑ፣ የደንበኛ ሁነታን ይምረጡ፣ የሱቁን አገልጋይ ይፈልጉ (ወይም አድራሻውን ይተይቡ)፣ የማጣመሪያ ኮዱን ያስገቡ እና ከዚያ አሁን አጣምርን ይንኩ። ዋይ ፋይ ከተቋረጠ እና አገልጋዩ እንደገና ምላሽ ሲሰጥ ትዕዛዞች በመሳሪያው ላይ ይቀራሉ። ተጨማሪ አታሚዎች በአገልጋዩ ላይ ተዘጋጅተዋል (ቅንጅቶች → አታሚዎች) - ተጨማሪ እርሻዎች ሂሳቦችን ወደዚያ ይልካሉ።
 forget_shop	ይህን ሱቅ እርሳ
 goods_received	የተቀበሉ እቃዎች
 import_day	ቀን አስመጣ
@@ -343,7 +355,7 @@ refresh_from_shop	ከሱቅ አድስ
 refund	ተመላሽ
 remove_selected	የተመረጠውን አስወግድ
 request_bill	ሂሳብ ጠይቅ
-restaurant_name_ph	Shop name (optional)
+restaurant_name_ph	የሱቅ ስም (አማራጭ)
 restore_backup	ምትኬ መልስ
 role_both	ሁለቱም
 role_admin	አስተዳዳሪ
@@ -422,7 +434,7 @@ backup_copy_failed	የምትኬ ቅጂው እዚያ ሊቀመጥ አልቻለም
 clock_off	የዚህ መሣሪያ ሰዓት ከሱቁ ሰርቨር {min} ደቂቃ ተለይቷል — በዚህ መሣሪያ ትክክለኛውን ሰዓት ያስቀምጡ
 printers_heading	ማተሚያዎች
 printers_help	አታሚዎችን ይፈልጉ፣ እሱን ለመምረጥ አንዱን ይንኩ እና ከዚያ በዚያ መሳሪያ ላይ ብቻ የሙከራ ገጽ ያትሙ። የቢል አታሚዎች የቢል እና ተንሸራታች ቅርጸት → ቢል።
-printers_host_only	Printers are set on the shop device (Server). This till sends bills and old tickets there — Find / add / assign stay on the Server. Test page and bill print size go to the Server.
+printers_host_only	አታሚዎች በሱቅ መሳሪያ (አገልጋይ) ላይ ተዋቅረዋል። ይህ ሂሳቦችን እና የቆዩ ትኬቶችን ወደዚያ እስኪልክ ድረስ - በአገልጋዩ ላይ ይቆዩ / ይጨምሩ / ይመድቡ። የሙከራ ገጽ እና የሂሳብ ማተሚያ መጠን በአገልጋዩ ላይ ይተዳደራሉ።
 printers_find_heading	ማተሚያዎችን ፈልግ
 printers_find_tip	ፈልግ ይህን መሣሪያ ይቃኛል እና ዝርዝሩን ወቅታዊ ያደርጋል።
 printers_pool_empty	(ገና የለም — ፈልግን ይንኩ)
@@ -430,7 +442,7 @@ printer_assign_dd	እውነተኛ ማተሚያ፦ {place}
 printer_assign_pick	እውነተኛ ማተሚያ ምረጥ
 printer_profile_heading	አቀማመጥ
 vp_delivery_heading	ማድረስ
-vp_delivery_help	How this virtual printer sends jobs — OS document, raw bytes, or ESC/POS. Slip content (type size, wrap, margins) is decided by the bill / Slip format, not here.
+vp_delivery_help	ይህ ምናባዊ አታሚ ስራዎችን እንዴት እንደሚልክ - የስርዓተ ክወና ሰነድ፣ ጥሬ ባይት ወይም ESC/POS። የተንሸራታች ይዘት (አይነት መጠን፣ መጠቅለያ፣ ህዳጎች) የሚወሰነው በሂሳብ/ተንሸራታች ቅርጸት እንጂ እዚህ አይደለም።
 vp_delivery_spooler	የስርዓት ሰነድ (የስርዓት ስፑለር)
 vp_delivery_escpos	ESC/POS የሙቀት ትዕዛዞች
 virtual_printer_new	አዲስ ምናባዊ ማተሚያ
@@ -459,7 +471,7 @@ route_tap_selected	ተመርጧል
 printer_target_ph	የስርዓት ማተሚያ ስም ወይም host:9100
 printer_target_default	የዚህ ኮምፒውተር የተለመደ ማተሚያ (ባዶ አድራሻ)
 route_bill	ሂሳብ
-station_print_pick_first	Pick a shop section first
+station_print_pick_first	መጀመሪያ የሱቅ ክፍል ይምረጡ
 bill_printers_dd	ለሂሳቡ ማተሚያዎች
 bill_printers_dd_n	ለሂሳቡ {n} ማተሚያ · ለመቀየር ይንኩ
 station_vp_attached	ማተሚያ ተያይዟል
@@ -510,7 +522,7 @@ unmark	ምልክት አንሳ
 update_my_password	የይለፍ ቃሌን አዘምን
 update_my_pin	መግቢያዬን አዘምን
 duress_heading	የአደጋ ጊዜ መክፈቻ ፒን (ባለቤት ብቻ)
-duress_help	Optional. If this PIN is typed at unlock instead of yours, all books entries are wiped (sales, ledgers, history) and the till opens as Owner looking normal — items, prices, counters, staff and settings stay. Schema and config are not deleted. Use only if you are forced to unlock. Leave blank and save to turn off. Never the same as anyone's PIN.
+duress_help	አማራጭ። በመክፈቻ ጊዜ ከእርስዎ PIN ይልቅ ይህ PIN ከተጻፈ፣ ሁሉም የመዝገብ ግቤቶች ይጠፋሉ (ሽያጮች፣ ደብተሮች፣ ታሪክ) እና ቆጣሪው እንደ ባለቤት በመደበኛ መልክ ይከፈታል — እቃዎች፣ ዋጋዎች፣ ቆጣሪዎች፣ ሰራተኞች እና ቅንብሮች ይቆያሉ። መዋቅር እና ውቅር አይሰረዙም። እንዲከፍቱ ከተገደዱ ብቻ ይጠቀሙበት። ለማጥፋት ባዶ ይተዉት እና ያስቀምጡ። ከማንም PIN ጋር ፈጽሞ አንድ አይሁን።
 duress_pin_ph	የአደጋ ጊዜ ፒን (4–12 አሃዝ)
 duress_confirm_ph	ለማረጋገጥ እንደገና ይጻፉ
 save_duress_pin	የአደጋ ጊዜ ፒን አስቀምጥ
@@ -539,9 +551,9 @@ logo_help	በመተግበሪያው ማያዎች ላይ አማራጭ የሱቅ �
 onboard_layout	የሚያገኙት
 item_photo_help	አማራጭ። ፎቶ ከሌለ ከእቃው ስም የመጀመሪያ ፊደላት እናሳያለን።
 stamp_heading	ማህተም
-stamp_image_help	Optional stamp image on printed bills and the customer display.
+stamp_image_help	በታተሙ ሂሳቦች እና በደንበኛ ማሳያ ላይ አማራጭ የማህተም ምስል።
 payment_qr_heading	የክፍያ QR
-payment_qr_image_help	Static QR on bills and customer display; otherwise paying uses a dynamic UPI QR from the VPA above.
+payment_qr_image_help	በሂሳቦች እና በደንበኛ ማሳያ ላይ የማይንቀሳቀስ QR; አለበለዚያ መክፈል ከላይ ካለው VPA ተለዋዋጭ UPI QR ይጠቀማል።
 cash_in_hand	በእጅ ያለ ጥሬ ገንዘብ (ቆጣሪ)
 change_my_pin_heading	መግቢያዬ
 connect_to_server	ከሰርቨር ጋር ተገናኝ
@@ -568,7 +580,7 @@ product_only_kirano	ኪራኖ የግሮሰሪ/ኪራና ኦፕሬቲንግ ሲ�
 purchases_cogs	ግዢዎች (COGS)
 restore_help	መመለስ፦ ምትኬ ይምረጡ። መዝገቦቹ እንደዚያን ጊዜ ይከፈታሉ፤ አሁን ያሉት መዝገቦች መጀመሪያ ይቀመጣሉ፣ ስለዚህ ይህ ሊቀለበስ ይችላል።
 wipe_data_heading	የአካባቢ ውሂብ ሰርዝ
-wipe_data_help	Owner only — same choices as Windows uninstall. Business records clears trading history but keeps items and setup (like the emergency unlock PIN). Shop setup removes the books database. Screen preferences clears window/language. Confirm with the Owner PIN. The emergency unlock PIN on Team is separate (covert wipe at unlock).
+wipe_data_help	ባለቤት ብቻ - እንደ ዊንዶውስ ማራገፍ ተመሳሳይ ምርጫዎች። የንግድ መዝገቦች የንግድ ታሪክን ያጸዳሉ ነገር ግን እቃዎችን እና ማዋቀርን ያስቀምጣል (እንደ የአደጋ ጊዜ መክፈቻ ፒን)። የሱቅ ማዋቀር የመጽሃፍትን ዳታቤዝ ያስወግዳል። የስክሪን ምርጫዎች መስኮት/ቋንቋን ያጸዳል። በባለቤቱ ፒን ያረጋግጡ። በቡድን ላይ ያለው የአደጋ ጊዜ መክፈቻ ፒን የተለየ ነው (በመክፈቻ ጊዜ ስውር መጥረግ)።
 wipe_trading	የንግድ መዝገቦች
 wipe_schema	የሱቅ ዝግጅት
 wipe_ui	የማያ ምርጫዎች
@@ -581,7 +593,7 @@ wipe_nothing_selected	መጀመሪያ ምን እንደሚሰረዝ ይምረጡ�
 wipe_done	የተመረጠው የአካባቢ ውሂብ ተሰርዟል።
 wipe_schema_done	የሱቅ ዝግጅት ጠፍቷል — ለመቀጠል ሰርቨር ወይም ክላየንት ይምረጡ።
 rounded_total	የተጠጋጋ ድምር
-setup_app_kirano	Set up Kirano
+setup_app_kirano	Kirano አዘጋጅ
 shop_logo_optional	የሱቅ አርማ (አማራጭ)
 stock_type_help	የእቃውን ስም ይጻፉ (ከፊሉ በቂ ነው)፣ ብዛት፣ ከዚያ ያስተካክሉ። ገና ያልተቆጠሩ እቃዎች አንድ ጊዜ ክትትል ጀምር ይፈልጋሉ።
 team_owner_help	ሰው ለመጨመር ሰውየውን ባዶ ይተዉ፦ ስም፣ ሥራ፣ የተጠቃሚ ስም፣ ፒን፣ እና አማራጭ የይለፍ ቃል፣ ከዚያ ይጨምሩ። ሰው ለማስተካከል ይምረጡ — ስም፣ የተጠቃሚ ስም፣ የይለፍ ቃል፣ ማያዎች እና መብቶች — ከዚያ ያስቀምጡ። የራስዎ ፒን እና የይለፍ ቃል ከታች አንድ መግቢያ ናቸው። ባለቤቱ የሌላ ሰው ፒን አይቀይርም።
@@ -600,13 +612,13 @@ staff_setup_copied_edit	የ {from} ዝግጅት በ {to} ላይ ተቀድቷል
 staff_copy_need_selected	መጀመሪያ ማን እንደሚስተካከል ይምረጡ
 staff_copy_same	ያው ሰው ነው — ሌላ ሰው ይምረጡ
 staff_rename_need_selected	መጀመሪያ ማን እንደሚሰየም ይምረጡ
-team_pick_hint	Pick who to edit — screens, money rights, and stations appear for that person only.
+team_pick_hint	ማንን እንደሚያርትዑ ይምረጡ - ስክሪኖች፣ የገንዘብ መብቶች እና ጣቢያዎች ለዚያ ሰው ብቻ ይታያሉ።
 team_features_changed	ማያዎች ተቀይረዋል — ለዚህ ሰው ዝግጅት ያስቀምጡ
 team_rights_changed	መብቶች ተቀይረዋል — ለዚህ ሰው ዝግጅት ያስቀምጡ
 they_owe_us	እነሱ ይበድሩናል
 unit_at_cap	መለኪያ @
 units_help	ለእቃ መለያዎች ኮዶች (ኪግ፣ ቁራጭ፣ ከረጢት)። እያንዳንዱ መለኪያ — በቀጥታ ወይም በሌሎች መለኪያዎች — ወደ መለኪያ ደረጃ መያያዝ አለበት (ኪግ · ሴሜ · ሚሊ · ቁራጭ)፣ ለምሳሌ 1 crate = 2 box እና 1 box = 20 cm። ቅየራዎች፦ 1 from = factor to። ገንዘቦች በፍጹም መለኪያ አይደሉም።
-units_picker_help	Tap On/Off to show a unit in Buy and Items pickers. Off units still convert.
+units_picker_help	በግዢ እና እቃዎች መራጮች ውስጥ አንድ ክፍል ለማሳየት አብራ/አጥፋ የሚለውን መታ ያድርጉ። የጠፉ ክፍሎች አሁንም ይለወጣሉ።
 unit_picker_on	በርቷል
 unit_picker_off	ጠፍቷል
 we_owe_them	እኛ እንበድራቸዋለን
@@ -697,7 +709,7 @@ expected_in_drawer	በመሳቢያው ውስጥ የሚጠበቅ
 right_discount	ቅናሽ ስጥ
 new_category_row	አዲስ ምድብ — እቃውን ሲያስቀምጡ ይፈጠራል
 your_category	የእርስዎ ምድብ
-suggested_category	Suggested — from our items
+suggested_category	የተጠቆመ - ከዕቃዎቻችን
 category_search_ph	ምድብ — የእርስዎን ይፈልጉ ወይም አዲስ ይጻፉ
 cancel_item_short	ሰርዝ
 return_to_customer	ለደንበኛ መልስ
@@ -723,6 +735,20 @@ fssai_ph	FSSAI / የሱቅ ፈቃድ ቁጥር (አማራጭ)
 bill_footer_ph	ግርጌ (ለምሳሌ አመሰግናለሁ፣ እንደገና ይምጡ)
 kot_field_on	አሳይ
 kot_field_off	ደብቅ
+kot_field_show	አሳይ
+kot_field_hide	ደብቅ
+bill_line_shop	ሱቅ
+bill_line_address	አድራሻ
+bill_line_fssai	FSSAI
+bill_line_title	ርዕስ
+bill_line_customer	ደንበኛ
+bill_line_bill_no	የሂሳብ ቁጥር
+bill_line_time	ሰዓት
+bill_line_cashier	ገንዘብ ተቀባይ
+bill_line_items	እቃዎች
+bill_line_total	ድምር
+bill_line_footer	ግርጌ
+bill_line_upi	UPI
 kot_weight_light	ቀጭን
 bill_kot_panel_help	የሂሳብ አቀማመጥ እና የይዘት ስፋት። ገንዘብ ተቀባይ ሂሳቡን ያወጣ ወይም ያስስተካከለው ሰው ነው - ሙሉው የሽያጭ መዝገብ በመጽሃፍቱ ውስጥ ይቆያል።
 std_size_ph	ለምሳሌ 18፣ 20፣ 26…
@@ -733,7 +759,7 @@ kot_align_center	መሃል
 kot_align_end	መጨረሻ
 content_width_bill	የሂሳብ ይዘት ስፋት (ሚሜ)
 content_width_ph	ወይም የይዘት ስፋት ይጻፉ፣ 40–210 ሚሜ
-content_width_bill_help	How wide the customer bill prints. Default 210 mm (page). 58 mm narrow slip, 80 mm wide slip, 112 mm 4-inch, 210 mm A4-wide. Type any value from 40 to 210. Tickets have their own width on the slip tab.
+content_width_bill_help	የደንበኛ ሂሳቡ ምን ያህል ሰፊ ነው. ነባሪ 210 ሚሜ (ገጽ)። 58 ሚሜ ጠባብ ሸርተቴ፣ 80 ሚሜ ስፋት ያለው ሸርተቴ፣ 112 ሚሜ 4-ኢንች፣ 210 ሚሜ A4-ወርድ። ማንኛውንም እሴት ከ 40 እስከ 210 ይተይቡ. ቲኬቶች በተንሸራታች ትሩ ላይ የራሳቸው ስፋት አላቸው.
 vp_paper_width	የይዘት ስፋት (ሚሜ)
 vp_paper_width_ph	ወይም የይዘት ስፋት ይጻፉ፣ 40–210 ሚሜ
 vp_paper_width_help	የይዘት ስፋት በቢል እና ተንሸራታች ቅርጸት ስር ተቀናብሯል - በተናጠል ለሂሳቡ (ነባሪ 210 ሚሜ) እና ለቲኬቱ (ነባሪ 80 ሚሜ) ።
@@ -750,14 +776,14 @@ std_print_help	በስርዓተ ክወና/ሰነድ አታሚዎች ላይ ለመ
 save_std_print	የሂሳብ የህትመት መጠን አስቀምጥ
 std_print_saved	የሂሳብ የህትመት መጠን ተቀምጧል
 print_brand_kit	የህትመት ምልክት ኪት
-print_brand_kit_help	Optional stamp and payment QR images on bill faces and the LAN customer display. Dynamic UPI QR from the VPA above still works when no payment QR image is set.
+print_brand_kit_help	አማራጭ ማህተም እና የክፍያ QR ምስሎች በቢል ፊቶች ላይ እና የ LAN ደንበኛ ማሳያ። ተለዋዋጭ UPI QR ከላይ ካለው ቪፒኤ ምንም አይነት የክፍያ QR ምስል ሲዘጋጅ አሁንም ይሰራል።
 choose_stamp	ማህተም ምረጥ
 clear_stamp	ማህተም አጽዳ
-stamp_set	Stamp: on file — shown on customer display and named on printed bills
+stamp_set	ማህተም፡ በፋይል - በደንበኛ ማሳያ ላይ የሚታየው እና በታተሙ ሂሳቦች ላይ የተሰየመ
 stamp_none	ማህተም፦ የለም
 choose_payment_qr	የክፍያ QR ምረጥ
 clear_payment_qr	የክፍያ QR አጽዳ
-payment_qr_set	Payment QR: on file — shown on customer display (replaces amount UPI QR there)
+payment_qr_set	ክፍያ QR: በፋይል ላይ - በደንበኛ ማሳያ ላይ የሚታየው (የ UPI QR መጠንን እዚያ ይተካዋል)
 payment_qr_none	የክፍያ QR፦ የለም — በሚከፈልበት ጊዜ ከ UPI መታወቂያ የመጠን QR
 team_pick_ph	የሚስተካከል ሰራተኛ — ስም፣ የተጠቃሚ ስም፣ ወይም ይምረጡ
 select_staff	ይህን ሰራተኛ ምረጥ
@@ -782,8 +808,8 @@ price_ph	ዋጋ
 price_ph_gst_inside	ዋጋ ({tax} በውስጥ)
 taxable_value	የሚታክስ ዋጋ
 gst_inside_price_note	({tax} በውስጥ)
-template_heading	Starter items
-template_info	{c} categories and {d} items with photos, ready to add. Prices start at ₹0 — set yours after.
+template_heading	የማስጀመሪያ እቃዎች
+template_info	{c} ምድቦች እና {d} ንጥሎች ከፎቶዎች ጋር፣ ለመታከል ዝግጁ። ዋጋዎች በ$0 ይጀምራሉ — የእርስዎን በኋላ ያዘጋጁ።
 template_import	ሙሉ ንድፍ አስመጣ
 template_confirm	{d} እቃዎችን ከምድቦቻቸው ጋር ያክሉ? ያለዎት እቃዎች እንደነበሩ ይቆያሉ።
 template_yes	አዎ፣ አስመጣ
@@ -791,9 +817,9 @@ template_importing	እቃዎች በማስመጣት ላይ...
 template_import_progress	በማስመጣት ላይ… {d}/{t}
 template_done	ከአብነታችን ውስጥ ያለው እያንዳንዱ ንጥል በእርስዎ እቃዎች ላይ ነው።
 template_imported	ታክለዋል {d} እቃዎች እና {c} ምድቦች - ዋጋቸውን በዚህ ስክሪን ላይ ያዘጋጁ
-client_template_heading	Import catalogue
-client_template_info	{title}: {c} categories, {d} items with prices, photos, and aliases. Missing items only — names you already have stay.
-client_template_import	Import these items
+client_template_heading	ካታሎግ አስመጣ
+client_template_info	{title}፡ {c} ምድቦች፣ {d} እቃዎች ከዋጋ፣ ፎቶዎች እና ተለዋጭ ስሞች ጋር። የሚጎድሉ ንጥሎች ብቻ - አስቀድመው የሚቆዩባቸው ስሞች።
+client_template_import	እነዚህን እቃዎች አስመጣ
 client_template_confirm	{d} ንጥሎችን ከ{title} ያክሉ? ያለዎት እቃዎች እንደነበሩ ይቆያሉ.
 client_template_importing	{title} በማስመጣት ላይ…
 client_template_done	ከ{title} የመጣ እያንዳንዱ ንጥል በእርስዎ እቃዎች ውስጥ ነው።
@@ -807,13 +833,13 @@ add_dishes	ንጥሎችን ያክሉ
 order_so_far	በዚህ ትዕዛዝ፦ {n} · {total}
 no_dish_match	ከ"{q}" ጋር የሚዛመድ ምንም ንጥል የለም
 pick_done	ጨርስ
-dishes_n	{n} items
+dishes_n	{n} ንጥሎች
 reorder_ph	ተጨማሪ ግዛ በ
 set_reorder	የድጋሚ ትዕዛዝ ደረጃ አስቀምጥ
 low_stock_alert	እየቀነሰ ነው — በቅርቡ ይግዙ፦ {items}
-unpriced_note	{n} items on your items have no price yet — they bill at 0 until you set one.
-show_unpriced	Show only items without a price
-show_all_dishes	Show all items
+unpriced_note	የ{n} እቃዎች በንጥሎችዎ ላይ እስካሁን ምንም ዋጋ የላቸውም - አንድ እስኪያዘጋጁ ድረስ በ 0 ይከፍላሉ።
+show_unpriced	ያለ ዋጋ እቃዎችን ብቻ አሳይ
+show_all_dishes	ሁሉንም እቃዎች አሳይ
 role_title_rest_ph	የሚና ርዕስ (ለምሳሌ ካፒቴን፣ ዋና ምግብ አብሳይ)
 preset_help_rest	ገንዘብ ተቀባይ፦ ይሽጣል። ሥራ አስኪያጅ፦ ይሽጣል + እቃዎች + መሰረዝ/ማስተካከል።
 kind_resale	ለመሸጥ ተገዝቷል
@@ -830,10 +856,10 @@ lane_declared_label	የግብር ደረሰኝ
 lane_owner_label	የጥሬ ገንዘብ ማስታወሻ
 money_lane_bill	ሂሳብ፦ {lane}
 
-removing	Removing…
-removed	Removed
-updating_order	Updating…
-order_updated	Order updated
+removing	በማስወገድ ላይ…
+removed	ተወግዷል
+updating_order	በማዘመን ላይ…
+order_updated	ትዕዛዙ ተዘምኗል
 sel_copy	ቅዳ
 sel_select_all	ሁሉንም ምረጥ
 sel_copied	ተቀድቷል

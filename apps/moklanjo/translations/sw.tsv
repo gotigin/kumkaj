@@ -192,7 +192,7 @@ snack_secs_save	Hifadhi muda wa arifa
 snack_secs_saved	Muda wa arifa umehifadhiwa — sekunde {n}
 snack_secs_bad	Weka sekunde kama namba (3–60)
 cancelled	Imeghairiwa
-cancelling	Cancelling…
+cancelling	Cancellingâ¦
 cancel	Ghairi
 opening_client	Kupanua mteja…
 preparing_desk	Kuanzisha meza…
@@ -501,13 +501,18 @@ job_size	Ukubwa wa fonti
 job_size_ph	k.m. 18, 20, 26…
 test_receipt_format	Risiti ya majaribio
 test_label_format	Lebo ya majaribio
-paper_heading	Karatasi
+paper_heading	Karatasi pepe
 paper_size	{w} × {h} mm
 paper_roll	gombo la {w} mm
 paper_not_set	karatasi bado haijulikani
-paper_length_mm	Urefu (mm)
-printer_paper_help	Karatasi ya printa hii kwa mm. Urefu mtupu ni gombo: kila risiti ni ndefu kama maudhui yake. Tafuta printa hujaza karatasi tupu kutoka kwa dereva wa printa (gombo la 80 mm isipoweza kusema) na kamwe haibadilishi iliyokwisha wekwa.
-preview_help	Risiti hii kwenye karatasi ya printa iliyochaguliwa hapa chini, kama inavyochapishwa huko: ukubwa halisi kutoka kona ya juu kushoto ambayo printa hufikia (kijivu: kingo isizofikia), risiti ndefu kwenye kurasa zaidi, kila kitu kinachopita ukingo wa karatasi hukatwa. Kuchagua printa hubadilisha onyesho la awali tu; karatasi ya kila printa huwekwa chini ya Printa.
+virtual_width_mm	Upana pepe (mm)
+virtual_length_mm	Urefu pepe (mm)
+reported_width_mm	Upana ulioripotiwa (mm)
+reported_length_mm	Urefu ulioripotiwa (mm)
+reported_paper	Iliyoripotiwa: {paper}
+virtual_paper	Pepe: {paper}
+printer_paper_help	Iliyoripotiwa ni karatasi ambayo dereva wa printa hii amewekewa; programu huisoma tu, na “Hakuna” inamaanisha hakuna dereva wa kuuliza. Pepe ni karatasi unayosema iko kweli ndani ya printa, kwa mm; urefu mtupu ni gombo. Printa huchapisha kwenye karatasi yake yenyewe; karatasi pepe huiambia programu ni kiasi gani chake ni karatasi halisi, kwa ajili ya onyesho la awali, urefu wa ukurasa na mahali pa risiti. Tafuta printa hujaza karatasi pepe tupu na kamwe haibadilishi uliyoiweka wewe.
+preview_help	Risiti hii kama inavyochapishwa kwenye printa iliyochaguliwa hapa chini, kwa ukubwa halisi kwenye karatasi yake pepe. Nyeupe ni mahali inapochapisha, karatasi ya kijivu haifikiwi na printa, na wino uliofifia hukatwa. Miraba tisa ni karatasi: gusa mahali risiti inapaswa kukaa. Risiti ndefu huendelea kwenye kurasa zaidi. Kuchagua printa hubadilisha onyesho la awali tu.
 slip_col_width	Upana (mm)
 no_printer_assigned	Hakuna printa
 printer_target_default	printa chaguo-msingi
@@ -643,11 +648,11 @@ day_close_help	Kurekodi kufunga siku huhifadhi muhtasari huu (na tofauti ya droo
 expenses_word	Gharama
 feature_access_help	Ufikiaji wa kipengele kwa wafanyikazi waliochaguliwa (gonga baada ya kuongeza)
 footer_local	SQLite ya ndani · Bure milele · Hakuna wingu
-fresh_book_moklanjo	Printa
+fresh_book_moklanjo	Anza upya = katalogi tupu (ongeza bidhaa baadaye). Kitabu = andika hapa chini akiba ya kuanzia na nani anayekudaiwa.
 fresh_selected	Fresh imechaguliwa — katalogi itabaki tupu. Gusa Done ukiwa tayari.
 gross_word	Jumla kuu
 how_start	Ungependa kuanza vipi?
-later_country_pack	Printa
+later_country_pack	Baadaye: Mipangilio → tumia pakiti ya nchi kwa majina ya kodi na malipo.
 local_badge	NDANI
 measures_help_moklanjo	Jinsi mizigo inapimwa kwenye dawati. Andika vipimo na uzito kwa vitengo unavyotumia — vya kawaida (cm, m, in, ft · kg, g, lb, oz) au kitengo chako mwenyewe kilichounganishwa na cm / kg hapo juu (moja kwa moja au kupitia vitengo vingine). Vitabu hunakili kg kila mara. Acha sehemu tupu ili ibaki.
 mix_type_hint_moklanjo	Andika ni kiasi gani katika kila moja (taslimu / UPI / kadi / mkopo). Lazima ilingane na bili. Mkopo unahitaji mteja hapo juu.

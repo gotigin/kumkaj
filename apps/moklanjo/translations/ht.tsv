@@ -192,7 +192,7 @@ snack_secs_save	Anrejistre tan alèt
 snack_secs_saved	Tan alèt anrejistre — {n} segond
 snack_secs_bad	Antre segonn kòm yon nimewo (3–60)
 cancelled	Anile
-cancelling	Cancelling…
+cancelling	Cancellingâ¦
 cancel	Anile
 opening_client	Ap louvri kliyan…
 preparing_desk	Ap pare kontwa…
@@ -501,13 +501,18 @@ job_size	Gwosè lèt
 job_size_ph	pa egzanp 18, 20, 26…
 test_receipt_format	resi tès la
 test_label_format	Etikèt tès la
-paper_heading	Papye
+paper_heading	Papye vityèl
 paper_size	{w} × {h} mm
 paper_roll	woulo {w} mm
 paper_not_set	papye a poko konnen
-paper_length_mm	Longè (mm)
-printer_paper_help	Papye enprimant sa a an mm. Yon Longè vid se yon woulo: chak resi gen longè sa li genyen ladan l. Chèche enprimant ranpli papye vid la ak sa chofè enprimant lan di (yon woulo 80 mm lè li pa ka di) epi li pa janm chanje yon papye ki deja mete.
-preview_help	Resi sa a sou papye enprimant ou chwazi anba a, jan li enprime la: gwosè reyèl depi kwen anwo agoch enprimant lan ka rive (gri: bò li pa ka rive), yon resi long sou plis fèy, tout sa ki depase bò papye a koupe. Chwazi yon enprimant chanje sèlman apèsi a; papye chak enprimant mete nan Enprimant.
+virtual_width_mm	Lajè vityèl (mm)
+virtual_length_mm	Longè vityèl (mm)
+reported_width_mm	Lajè yo rapòte (mm)
+reported_length_mm	Longè yo rapòte (mm)
+reported_paper	Rapòte: {paper}
+virtual_paper	Vityèl: {paper}
+printer_paper_help	Rapòte se papye chofè enprimant sa a regle sou li; aplikasyon an sèlman li li, epi «Pa gen» vle di pa gen chofè pou mande. Vityèl se papye ou di ki vrèman nan enprimant lan, an mm; yon longè vid se yon woulo. Enprimant lan enprime sou pwòp papye pa l; papye vityèl la di aplikasyon an ki kantite ladan l ki se vrè papye, pou apèsi a, longè paj la ak plas resi a. Chèche enprimant ranpli yon papye vityèl vid epi li pa janm chanje youn ou te mete.
+preview_help	Resi sa a jan li enprime sou enprimant ki chwazi anba a, nan gwosè reyèl sou papye vityèl li. Blan se kote li enprime, papye gri enprimant lan pa ka rive ladan l, epi lank pal la koupe. Nèf kare yo se papye a: tape kote resi a dwe chita. Yon resi long kontinye sou plis paj. Chwazi yon enprimant chanje sèlman apèsi a.
 slip_col_width	Lajè (mm)
 no_printer_assigned	Pa gen enprimant
 printer_target_default	enprimant abitye òdinatè sa a (adrès vid)
@@ -759,7 +764,7 @@ facet_cod_title	COD anrejistre
 facet_cod_help	Ranmase sou livrezon, Lè sa a, remèt bay expéditeur la.
 facet_riders_title	Pasaje (pwòp flòt)
 facet_riders_help	Ajoute pasaje yo, epi voye AWB ki te rezève yo nan Ops.
-against_bill_ph	Kont kont # anwo a (opsyonèl)
+against_bill_ph	Kont # anwo a (opsyonèl)
 aliases_ph	Alyas — lòt non, separe ak vigil
 amount_blank_full_ph	Montan (vid = tout sold)
 amount_owed_ph	Montan dwe

@@ -44,7 +44,7 @@ restore_item	পুনৰুদ্ধাৰ কৰক
 empty_catalog	এতিয়াও কোনো বস্তু নাই।
 total	মুঠ
 cash	নগদ
-upi	यूपीआई
+upi	UPI
 card	কাৰ্ড
 credit	পাৰ্টি
 clear	মচক
@@ -78,7 +78,7 @@ reprint_kot_needed	প্ৰথমে KOT পঠিয়াওক — পাছ
 reprint_kot_none_selected	সকলো পঠোৱা এৰা — ছপা কৰিবলৈ «ছপাত» টিপক
 reprint_kot_client	{place} ৰ বাবে পুনৰ ছপাওক ({n}) পঠিওৱা হ’ল — পাকঘৰে চাৰ্ভাৰত ছপাব
 print_cancelled_kot	সকলো বাতিল ছপা
-print_cancelled_kot_ok	{n} रद्द छापे · {slips} पर्ची → {kitchens}
+print_cancelled_kot_ok	{n}টা বাতিল ব্যঞ্জন ছপা হ'ল · {slips}টা স্লিপ → {kitchens}
 print_cancelled_kot_needed	বাতিল খাদ্য থকা মেজ খোলক
 print_cancelled_kot_none	এই অৰ্ডাৰত বাতিল নাই
 print_cancelled_kot_client	বাতিল ({n}) {place} পঠোৱা — চাৰ্ভাৰত ছপা
@@ -101,6 +101,19 @@ bill_item_col_sep	স্তম্ভৰ ৰেখা
 slip_columns	স্তম্ভসমূহ
 slip_col_header	শিৰোনাম
 bill_line_logo	ল'গ'
+bill_line_shop	দোকান
+bill_line_address	ঠিকনা
+bill_line_fssai	FSSAI
+bill_line_title	শিৰোনাম
+bill_line_customer	গ্ৰাহক
+bill_line_bill_no	বিল নং
+bill_line_time	সময়
+bill_line_cashier	কেশ্বিয়াৰ
+bill_line_table	মেজ
+bill_line_items	বস্তু
+bill_line_total	মুঠ
+bill_line_footer	ফুটাৰ
+bill_line_upi	UPI
 bill_logo_picture	ছবি
 bill_logo_choose	ছবি বাছক
 bill_logo_remove	ছবি আঁতৰাওক
@@ -128,6 +141,12 @@ bill_item_piece_off	বন্ধ
 bill_total_qty	মুঠ পৰিমাণ
 bill_total_subtotal	উপমুঠ
 bill_total_grand	মুঠ
+bill_total_number_under	সংখ্যা ইয়াৰ তলত
+bill_total_caption_under	লেবেল ইয়াৰ তলত
+bill_total_own_line	নিজৰ শাৰী
+bill_total_caption_with	সংখ্যাৰ লগত
+bill_total_caption_none	লেবেল নাই
+bill_total_place_help	“নিজৰ শাৰী”-এ এই মুঠটো অকলে ছপা কৰে। এটা স্তম্ভৰ তলত দিলে ইয়াৰ সংখ্যা সেই বস্তুৰ স্তম্ভত, এই শাৰীৰ আকাৰ আৰু গাঢ়তাত ছপা হয়; এটা স্তম্ভ ভৰি নোযোৱালৈকে মুঠবোৰে একেটা শাৰী ভাগ কৰে, তাৰ পিছত নতুন শাৰী আৰম্ভ হয়। লেবেল সংখ্যাৰ লগত, আন স্তম্ভৰ তলত যায়, বা বাদ পৰে। কৰ, সেৱা, ৰাউণ্ডিং আৰু পৰিশোধৰ শাৰীবোৰে “উপমুঠ” অনুসৰণ কৰে।
 reprint_incl	ছপাত
 reprint_skip	এৰক
 reprint_skip_meta	ৰিকভাৰি প্ৰিণ্ট এৰক
@@ -178,20 +197,20 @@ snack_secs_ph	ছেকেণ্ড (3–60, ডিফল্ট 10)
 snack_secs_save	সতৰ্কবাণীৰ সময় সাঁচক
 snack_secs_saved	সতৰ্কবাণীৰ সময় সাঁচা হ'ল — {n} ছেকেণ্ড
 settings_sec_whatsapp	WhatsApp
-whatsapp_cloud_help	Use your own Meta WhatsApp Cloud API. Create a System User token with whatsapp_business_messaging (temporary dashboard tokens expire). Credentials stay on this Server only — never on extra tills. Accepted means Meta took the request, not that the guest received it.
-whatsapp_phone_id_ph	Phone Number ID
-whatsapp_token_ph	Access Token (leave blank to keep)
-whatsapp_template_ph	Bill template name (optional)
-whatsapp_template_lang_ph	Template language (e.g. en)
-whatsapp_enable	Enable
+whatsapp_cloud_help	আপোনাৰ নিজৰ Meta WhatsApp Cloud API ব্যৱহাৰ কৰক। whatsapp_business_messaging থকা এটা System User ট'কেন বনাওক (ডেশ্বব'ৰ্ডৰ অস্থায়ী ট'কেনৰ ম্যাদ উকলি যায়)। এই তথ্য কেৱল এই চাৰ্ভাৰতে থাকে — অতিৰিক্ত টিলত কেতিয়াও নহয়। “গৃহীত” মানে Meta-ই অনুৰোধটো ল'লে, অতিথিয়ে বাৰ্তা পালে বুলি নহয়।
+whatsapp_phone_id_ph	ফোন নম্বৰ ID
+whatsapp_token_ph	এক্সেছ ট'কেন (আগৰটো ৰাখিবলৈ খালী এৰক)
+whatsapp_template_ph	বিল টেমপ্লেটৰ নাম (ঐচ্ছিক)
+whatsapp_template_lang_ph	টেমপ্লেটৰ ভাষা (যেনে en)
+whatsapp_enable	অন কৰক
 whatsapp_disable	Off
-whatsapp_save	Save WhatsApp
-whatsapp_test	Test connection
-whatsapp_disconnect	Disconnect
-whatsapp_send_bill	Send via WhatsApp
-whatsapp_consent	WhatsApp OK
-whatsapp_consent_help	Guest agreed to receive WhatsApp messages. A phone number alone is not consent.
-whatsapp_server_only	Configure WhatsApp on the shop Server device
+whatsapp_save	WhatsApp সংৰক্ষণ কৰক
+whatsapp_test	সংযোগ পৰীক্ষা কৰক
+whatsapp_disconnect	সংযোগ বিচ্ছিন্ন কৰক
+whatsapp_send_bill	WhatsApp-ৰে পঠিয়াওক
+whatsapp_consent	WhatsApp ঠিক
+whatsapp_consent_help	অতিথিয়ে WhatsApp বাৰ্তা পাবলৈ সন্মতি দিছে। কেৱল ফোন নম্বৰ থকাটোৱেই সন্মতি নহয়।
+whatsapp_server_only	দোকানৰ চাৰ্ভাৰ ডিভাইচত WhatsApp ছেট কৰক
 settings_sec_backup	বেকআপ আৰু পুনৰুদ্ধাৰ
 settings_sec_diag	ডায়গনষ্টিক্স
 settings_sec_privacy	গোপনীয়তা
@@ -637,7 +656,7 @@ choose_device_use	এই ডিভাইচ কেনেকৈ ব্যৱহ�
 paired_note	সংযুক্ত হ'ল। বিক্ৰী কৰিবলৈ খোলক, নাইবা দোকানৰ পৰা শেহতীয়া আনিবলৈ সতেজ কৰক।
 last_update_at	দোকানৰ পৰা শেষ আপডেট: {time}।
 pair_intro	চাৰ্ভাৰ বিচাৰক, নহয় ইয়াৰ ঠিকনা আৰু যোৰ কোড লিখক।
-pair_resume_hint	Already paired — enter your shop PIN, or Forget this shop to pair another.
+pair_resume_hint	আগতেই যোৰ কৰা আছে — আপোনাৰ দোকানৰ PIN দিয়ক, বা আন দোকান যোৰ কৰিবলৈ “এই দোকান পাহৰক” টিপক।
 queue_waiting	দোকানত পাবলৈ অপেক্ষাত ({n}):
 queue_tries	{n} বাৰ চেষ্টা · শেষ উত্তৰ: {e}
 save_backup_copy	বেকআপৰ কপি সংৰক্ষণ কৰক…
@@ -754,13 +773,18 @@ station_vps_dd	এই ষ্টেচনৰ প্ৰিণ্টাৰ
 station_vps_dd_n	{n} প্ৰিণ্টাৰ · সলনি কৰিবলৈ টেপ
 bill_printers_dd	বিলৰ প্ৰিণ্টাৰ
 bill_printers_dd_n	বিলৰ বাবে {n}টা প্ৰিণ্টাৰ · সলনি কৰিবলৈ টিপক
-paper_heading	কাগজ
+paper_heading	ভাৰ্চুৱেল কাগজ
 paper_size	{w} × {h} mm
 paper_roll	{w} mm ৰোল
 paper_not_set	কাগজ এতিয়াও জনা নাই
-paper_length_mm	দৈৰ্ঘ্য (mm)
-printer_paper_help	এই প্ৰিণ্টাৰৰ কাগজ mm ত। খালী দৈৰ্ঘ্য মানে ৰোল: প্ৰতিখন ৰচিদ তাৰ সমলৰ সমান দীঘল। প্ৰিণ্টাৰ বিচাৰকে খালী কাগজ প্ৰিণ্টাৰৰ ড্ৰাইভাৰৰ পৰা পূৰণ কৰে (ক'ব নোৱাৰিলে 80 mm ৰোল) আৰু আগতে ঠিক কৰা কাগজ কেতিয়াও সলনি নকৰে।
-preview_help	তলত বাছি লোৱা প্ৰিণ্টাৰৰ কাগজত এই ৰচিদখন, তাত যেনেকৈ ছপা হয়: প্ৰিণ্টাৰে পাব পৰা ওপৰৰ বাওঁফালৰ পৰা প্ৰকৃত আকাৰত (ধূসৰ: পাব নোৱাৰা কিনাৰ), দীঘল ৰচিদ অধিক পৃষ্ঠাত, কাগজৰ কিনাৰৰ বাহিৰৰ অংশ কাটি পেলোৱা হয়। প্ৰিণ্টাৰ বাছিলে কেৱল পূৰ্বদৰ্শন সলনি হয়; প্ৰতিটো প্ৰিণ্টাৰৰ কাগজ প্ৰিণ্টাৰৰ তলত ঠিক কৰা হয়।
+virtual_width_mm	ভাৰ্চুৱেল প্ৰস্থ (mm)
+virtual_length_mm	ভাৰ্চুৱেল দৈৰ্ঘ্য (mm)
+reported_width_mm	জনোৱা প্ৰস্থ (mm)
+reported_length_mm	জনোৱা দৈৰ্ঘ্য (mm)
+reported_paper	জনোৱা: {paper}
+virtual_paper	ভাৰ্চুৱেল: {paper}
+printer_paper_help	জনোৱা মানে এই প্ৰিণ্টাৰৰ ড্ৰাইভাৰ যি কাগজত ছেট কৰা আছে; এপে সেয়া কেৱল পঢ়ে, আৰু “নাই” মানে সুধিবলৈ কোনো ড্ৰাইভাৰ নাই। ভাৰ্চুৱেল মানে প্ৰিণ্টাৰত সঁচাকৈ থকা বুলি আপুনি কোৱা কাগজ, mm ত; খালী দৈৰ্ঘ্য মানে ৰোল। প্ৰিণ্টাৰে নিজৰ কাগজতে ছপায়; ভাৰ্চুৱেল কাগজে এপক কয় তাৰ কিমানখিনি সঁচা কাগজ, পূৰ্বদৰ্শন, পৃষ্ঠাৰ দৈৰ্ঘ্য আৰু ৰচিদৰ স্থানৰ বাবে। প্ৰিণ্টাৰ বিচাৰক য়ে খালী ভাৰ্চুৱেল কাগজ পূৰায় আৰু আপুনি ছেট কৰাটো কেতিয়াও সলনি নকৰে।
+preview_help	এই ৰচিদ তলত বাছনি কৰা প্ৰিণ্টাৰত যেনেকৈ ছপা হয়, তাৰ ভাৰ্চুৱেল কাগজত আচল আকাৰত। বগা অংশত ছপা হয়, ধূসৰ কাগজ প্ৰিণ্টাৰে ঢুকি নাপায়, আৰু পাতল চিয়াঁহী কাটি পেলোৱা হয়। নটা বৰ্গই হৈছে কাগজখন: ৰচিদ ক'ত থাকিব লাগে তাত টিপক। দীঘল ৰচিদ অধিক পৃষ্ঠালৈ যায়। প্ৰিণ্টাৰ বাছিলে কেৱল পূৰ্বদৰ্শন সলনি হয়।
 job_layout	লেআউট
 job_delivery	কাম কেনেকৈ পঠিওৱা হয়
 job_delivery_help	OS নথি, কেঁচা বাইট বা ESC/POS। বিল আৰু পাকঘৰৰ টিকট দুয়োটাই নিজৰ নিজৰ ৰাখে। যিকোনো কাম বিচাৰক-এ সাঁচা যিকোনো প্ৰিণ্টাৰলৈ যাব পাৰে।
@@ -1040,7 +1064,7 @@ book_kind_today	আজিৰ বহী
 book_kind_month	এই মাহৰ বহী
 book_kind_aging	বাকী / ডেবিট-ক্ৰেডিট
 book_kind_balance	বেলেন্স শ্বীট
-order_help	খোলা অৰ্ডাৰ বাছক, বা টেবুল বাছি নতুন আৰম্ভ কৰক। সাজু বস্তুত টেপ কৰক, KOT পঠাওক, এটা বা অধিক বস্তুৰ বিল কৰক, বিল ভাগ কৰক আৰু পৰিশোধ নিষ্পত্তি কৰক।
+order_help	যোগ কৰিবলৈ এটা আইটেমত টিপক।
 floor_help	প্ৰতিখন টেবুলে দেখুৱায় অতিথিসকল বহি আছে নে নাই, তেওঁলোকৰ খোলা বিল কি আৰু পৰৱৰ্তী সেৱা কাক লাগে।
 kitchen_help	প্ৰতি ভেৰিয়েণ্ট বা প্ৰতি বস্তু অনুসৰি সাজু পৰিমাণ ট্ৰেক কৰক — KOT ত যেনেকৈ বিচাৰে ৰেকৰ্ড কৰক।
 kitchen_empty	এতিয়া একো খোলা নাই।
@@ -1266,8 +1290,8 @@ taxable_value	কৰযোগ্য মূল্য
 gst_inside_price_note	({tax} সৈতে)
 start_with_template	আমাৰ মেনু টেমপ্লেটেৰে আৰম্ভ
 template_heading	আমাৰ মেনু টেমপ্লেট
-template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
-template_download_shelf	Download photo shelf
+template_need_download	ব্যঞ্জনৰ ৰাজহুৱা ফটো শ্বেল্ফ (~1,459টা ব্যঞ্জন) ডাউনল'ড কৰক, তাৰ পিছত নথকা নামবোৰ আপোনাৰ মেনুত আমদানি কৰক।
+template_download_shelf	ফটো শ্বেল্ফ ডাউনল'ড কৰক
 template_info	{c}টা শ্ৰেণী আৰু {d}টা ব্যঞ্জন ফটোসহ সাজু। দাম ₹0 — পিছত নিজৰ দাম দিয়ক।
 template_import	সম্পূৰ্ণ টেমপ্লেট আনক
 template_confirm	{d}টা ব্যঞ্জন শ্ৰেণীসহ যোগ কৰিব নেকি? আপোনাৰ আগৰবোৰ তেনেকৈয়ে থাকিব।

@@ -101,6 +101,19 @@ bill_item_col_sep	Лінії стовпців
 slip_columns	Стовпці
 slip_col_header	Заголовок
 bill_line_logo	Логотип
+bill_line_shop	Крамниця
+bill_line_address	Адреса
+bill_line_fssai	FSSAI
+bill_line_title	Заголовок
+bill_line_customer	Клієнт
+bill_line_bill_no	№ рахунку
+bill_line_time	Час
+bill_line_cashier	Касир
+bill_line_table	Стіл
+bill_line_items	Позиції
+bill_line_total	Разом
+bill_line_footer	Підвал
+bill_line_upi	UPI
 bill_logo_picture	Зображення
 bill_logo_choose	Вибрати зображення
 bill_logo_remove	Прибрати зображення
@@ -128,6 +141,12 @@ bill_item_piece_off	Вимк.
 bill_total_qty	Загальна кількість
 bill_total_subtotal	Проміжний підсумок
 bill_total_grand	Загальна сума
+bill_total_number_under	Число під
+bill_total_caption_under	Підпис під
+bill_total_own_line	Окремий рядок
+bill_total_caption_with	Разом із числом
+bill_total_caption_none	Без підпису
+bill_total_place_help	«Окремий рядок» друкує цей підсумок окремо. Під стовпцем його число друкується в цьому стовпці товарів, розміром і товщиною цього рядка; підсумки ділять один ряд, доки стовпець не зайнято, потім починається новий ряд. Підпис іде разом із числом, під іншим стовпцем або пропускається. Рядки податку, сервісу, округлення й оплати йдуть за «Проміжний підсумок».
 reprint_incl	У друці
 reprint_skip	Пропустити
 reprint_skip_meta	Пропустити повторний друк
@@ -178,20 +197,20 @@ snack_secs_ph	Секунди (3–60, типово 10)
 snack_secs_save	Зберегти час сповіщення
 snack_secs_saved	Час сповіщення збережено — {n} секунд
 settings_sec_whatsapp	WhatsApp
-whatsapp_cloud_help	Use your own Meta WhatsApp Cloud API. Create a System User token with whatsapp_business_messaging (temporary dashboard tokens expire). Credentials stay on this Server only — never on extra tills. Accepted means Meta took the request, not that the guest received it.
-whatsapp_phone_id_ph	Phone Number ID
-whatsapp_token_ph	Access Token (leave blank to keep)
-whatsapp_template_ph	Bill template name (optional)
-whatsapp_template_lang_ph	Template language (e.g. en)
-whatsapp_enable	Enable
+whatsapp_cloud_help	Використовуйте власний Meta WhatsApp Cloud API. Створіть токен System User із whatsapp_business_messaging (тимчасові токени з панелі спливають). Дані залишаються лише на цьому Сервері — ніколи на додаткових касах. «Прийнято» означає, що Meta прийняла запит, а не що гість його отримав.
+whatsapp_phone_id_ph	ID номера телефону
+whatsapp_token_ph	Токен доступу (залиште порожнім, щоб зберегти)
+whatsapp_template_ph	Назва шаблону рахунку (необов'язково)
+whatsapp_template_lang_ph	Мова шаблону (наприклад, en)
+whatsapp_enable	Увімкнути
 whatsapp_disable	Off
-whatsapp_save	Save WhatsApp
-whatsapp_test	Test connection
-whatsapp_disconnect	Disconnect
-whatsapp_send_bill	Send via WhatsApp
+whatsapp_save	Зберегти WhatsApp
+whatsapp_test	Перевірити з'єднання
+whatsapp_disconnect	Від'єднати
+whatsapp_send_bill	Надіслати через WhatsApp
 whatsapp_consent	WhatsApp OK
-whatsapp_consent_help	Guest agreed to receive WhatsApp messages. A phone number alone is not consent.
-whatsapp_server_only	Configure WhatsApp on the shop Server device
+whatsapp_consent_help	Гість погодився отримувати повідомлення WhatsApp. Сам лише номер телефону — не згода.
+whatsapp_server_only	Налаштуйте WhatsApp на пристрої Сервер крамниці
 settings_sec_backup	Резервна копія й відновлення
 settings_sec_diag	Діагностика
 settings_sec_privacy	Конфіденційність
@@ -637,7 +656,7 @@ choose_device_use	Оберіть Сервер або Клієнт.
 paired_note	З'єднано. Розблокуйте, щоб продавати, або Оновити для найновішого.
 last_update_at	Останнє оновлення: {time}.
 pair_intro	Знайдіть сервер або впишіть його адресу й код з'єднання.
-pair_resume_hint	Already paired — enter your shop PIN, or Forget this shop to pair another.
+pair_resume_hint	Уже з'єднано — введіть PIN вашої крамниці або натисніть «Забути цю крамницю», щоб з'єднати іншу.
 queue_waiting	Очікує крамниці ({n}):
 queue_tries	Спроб {n} · остання відповідь: {e}
 save_backup_copy	Зберегти копію резервної копії…
@@ -754,13 +773,18 @@ station_vps_dd	Принтери цієї станції
 station_vps_dd_n	{n} принтер(ів) · торкніться, щоб змінити
 bill_printers_dd	Принтери для рахунку
 bill_printers_dd_n	{n} принтер(ів) для рахунку · торкніться, щоб змінити
-paper_heading	Папір
+paper_heading	Віртуальний папір
 paper_size	{w} × {h} mm
 paper_roll	рулон {w} мм
 paper_not_set	папір поки невідомий
-paper_length_mm	Довжина (mm)
-printer_paper_help	Папір цього принтера в мм. Порожня Довжина — це рулон: кожен чек такої довжини, як його вміст. «Знайти принтери» заповнює порожній папір із драйвера принтера (рулон 80 мм, якщо він не може сказати) і ніколи не змінює вже заданий.
-preview_help	Цей чек на папері принтера, вибраного нижче, так, як він там друкується: у справжньому розмірі від верхнього лівого кута, до якого сягає принтер (сірим: краї, до яких не сягає), довгий чек на кількох аркушах, усе за краєм паперу обрізається. Вибір принтера змінює лише попередній перегляд; папір кожного принтера задається в «Принтери».
+virtual_width_mm	Віртуальна ширина (mm)
+virtual_length_mm	Віртуальна довжина (mm)
+reported_width_mm	Повідомлена ширина (mm)
+reported_length_mm	Повідомлена довжина (mm)
+reported_paper	Повідомлено: {paper}
+virtual_paper	Віртуальний: {paper}
+printer_paper_help	Повідомлений — це папір, на який налаштовано драйвер цього принтера; застосунок лише читає його, а Н/Д означає, що немає драйвера, якого можна запитати. Віртуальний — це папір, який, за вашими словами, справді лежить у принтері, в мм; порожня довжина — це рулон. Принтер друкує на своєму папері; віртуальний папір каже застосунку, яка його частина — справжній папір: для попереднього перегляду, довжини сторінки та місця чека. «Знайти принтери» заповнює порожній віртуальний папір і ніколи не змінює заданий вами.
+preview_help	Цей чек так, як він друкується на принтері, вибраному нижче, у справжньому розмірі на його віртуальному папері. Біле — там, де він друкує, сірий папір поза досяжністю принтера, а бліде чорнило обрізається. Дев'ять квадратів — це папір: торкніться там, де має бути чек. Довгий чек продовжується на наступних сторінках. Вибір принтера змінює лише попередній перегляд.
 job_layout	Макет
 job_delivery	Як надсилається завдання
 job_delivery_help	Документ ОС, сирі байти або ESC/POS. Рахунок і кухонний талон зберігають кожен своє. Будь-яке завдання може йти на будь-який принтер, який зберегло Знайти.
@@ -1238,7 +1262,7 @@ on_your_menu	У вашому меню
 edit	Редагувати
 schemes	Акції / пропозиції
 schemes_help	BOGO, відсоткова знижка й фіксовані комбо. Комбо розгортаються в рядки кухні під час Надіслати KOT; складники лишаються утриманими, доки комбо не спрацює. Приклад: Buy 2 Thali get 1 Chaas
-scheme_bogo_ph	Buy 2 Thali get 1 Chaas
+scheme_bogo_ph	Купіть 2 Thali — 1 Chaas у подарунок
 add_scheme	Додати BOGO
 schedule_ph	Години / щаслива година — Mon-Fri 07:00-11:00 або HappyHour 17:00-19:00=150
 upi_qr	UPI QR
@@ -1266,8 +1290,8 @@ taxable_value	База оподаткування
 gst_inside_price_note	({tax} у ціні)
 start_with_template	Почати з нашого шаблону меню
 template_heading	Наш шаблон меню
-template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
-template_download_shelf	Download photo shelf
+template_need_download	Завантажте загальну полицю з фото страв (~1459 страв), потім імпортуйте відсутні назви у своє меню.
+template_download_shelf	Завантажити полицю з фото
 template_info	{c} категорій і {d} страв із фото, готові до додавання. Ціни починаються з ₹0 — поставте свої потім.
 template_import	Імпортувати повний шаблон
 template_confirm	Додати {d} страв з їхніми категоріями? Страви, які ви вже маєте, лишаються як є.

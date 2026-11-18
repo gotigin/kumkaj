@@ -79,13 +79,19 @@ bill_item_amount	Zenbatekoa
 bill_item_note	Rx / salmenta oharra
 bill_item_col_sep	Zutabe-marra
 slip_col_width	Zabalera (mm)
-paper_heading	Papera
+paper_heading	Paper birtuala
 paper_size	{w} × {h} mm
 paper_roll	{w} mm-ko erroilua
 paper_not_set	papera oraindik ezezaguna
-paper_length_mm	Luzera (mm)
-printer_paper_help	Inprimagailu honen papera mm-tan. Luzera hutsa erroilua da: tiket bakoitza bere edukia bezain luzea da. Aurkitu inprimagailuak aukerak paper hutsa inprimagailuaren kontrolatzailetik betetzen du (80 mm-ko erroilua ezin badu esan) eta ez du inoiz aldatzen jada ezarritakoa.
-preview_help	Tiket hau behean aukeratutako inprimagailuaren paperean, han inprimatzen den bezala: benetako tamainan inprimagailuak iristen duen goiko ezkerreko izkinatik (grisa: iristen ez dituen ertzak), tiket luzea orri gehiagotan, paperaren ertzetik haratago dagoena moztu egiten da. Inprimagailu bat aukeratzeak aurrebista bakarrik aldatzen du; inprimagailu bakoitzaren papera Inprimagailuak atalean ezartzen da.
+na	E/A
+virtual_width_mm	Zabalera birtuala (mm)
+virtual_length_mm	Luzera birtuala (mm)
+reported_width_mm	Jakinarazitako zabalera (mm)
+reported_length_mm	Jakinarazitako luzera (mm)
+reported_paper	Jakinarazia: {paper}
+virtual_paper	Birtuala: {paper}
+printer_paper_help	Jakinarazia inprimagailu honen kontrolatzailea ezarrita dagoen papera da; aplikazioak irakurri besterik ez du egiten, eta E/A horrek esan nahi du ez dagoela galdetzeko kontrolatzailerik. Birtuala zuk inprimagailuan benetan dagoela diozun papera da, mm-tan; luzera hutsa erroilua da. Inprimagailuak bere paperean inprimatzen du; paper birtualak aplikazioari esaten dio horretatik zenbat den benetako papera, aurrebistarako, orriaren luzerarako eta tiketaren lekurako. Aurkitu inprimagailuak aukerak paper birtual hutsa betetzen du eta ez du inoiz aldatzen zuk ezarritakoa.
+preview_help	Tiket hau behean aukeratutako inprimagailuan inprimatzen den bezala, benetako tamainan bere paper birtualean. Zuria inprimatzen den lekua da, paper grisa inprimagailuaren irismenetik kanpo dago, eta tinta lausotua moztu egiten da. Bederatzi laukiak papera dira: sakatu tiketak egon behar duen lekuan. Tiket luzea orri gehiagotan jarraitzen da. Inprimagailua aukeratzeak aurrebista bakarrik aldatzen du.
 slip_col_start	Hasierako tartea (px)
 slip_col_end	Amaierako tartea (px)
 slip_columns_help	Zutabe bakoitzaren zabalerak hasierako eta amaierako tartea barne hartzen ditu. Testua bere zutabearen barruan egokitzen da; edukiaren zabaleratik kanpo geratzen dena moztu egiten da, paperean eta aurrebistan.
@@ -100,6 +106,12 @@ bill_item_piece_off	Itzalita
 bill_total_qty	Guztizko kopurua
 bill_total_subtotal	Azpitotala
 bill_total_grand	Guztizko handia
+bill_total_number_under	Zenbakia honen azpian
+bill_total_caption_under	Etiketa honen azpian
+bill_total_own_line	Lerro propioa
+bill_total_caption_with	Zenbakiarekin
+bill_total_caption_none	Etiketarik ez
+bill_total_place_help	Lerro propioa aukerak guztizko hau bakarrik inprimatzen du. Zutabe baten azpian, bere zenbakia artikuluen zutabe horretan inprimatzen da, lerro honen tamainan eta lodieran; guztizkoek errenkada bat partekatzen dute zutabe bat hartuta egon arte, eta orduan errenkada berria hasten da. Etiketa zenbakiarekin doa, beste zutabe baten azpian, edo kendu egiten da. Zerga, zerbitzu, biribiltze eta ordainketa lerroek Azpitotala jarraitzen dute.
 kot_unassigned	Esleitu gabe
 settings_hub_help	Ireki eremu bat aldi bakoitzean — gutxiago korritu, aukera argiagoak.
 settings_sec_language	Hizkuntza eta moneta
@@ -735,6 +747,20 @@ fssai_ph	Drogen lizentzia zk. (aukerakoa - zure hitza)
 bill_footer_ph	Oina (adib. Eskerrik asko, etorri berriro)
 kot_field_on	erakutsi
 kot_field_off	ezkutatu
+kot_field_show	Erakutsi
+kot_field_hide	Ezkutatu
+bill_line_shop	Denda
+bill_line_address	Helbidea
+bill_line_fssai	FSSAI
+bill_line_title	Izenburua
+bill_line_customer	Bezeroa
+bill_line_bill_no	Kontu zk.
+bill_line_time	Ordua
+bill_line_cashier	Kutxazaina
+bill_line_items	Artikuluak
+bill_line_total	Guztira
+bill_line_footer	Oina
+bill_line_upi	UPI
 kot_weight_light	Arina
 bill_kot_panel_help	Fakturaren diseinua eta edukiaren zabalera. Kutxazaina da faktura igorri edo likidatu duena; salmentaren istorio osoa liburuetan geratzen da.
 std_size_ph	adib. 18, 20, 26…
@@ -842,10 +868,10 @@ lane_declared_label	Zerga-faktura
 lane_owner_label	Diru-oharra
 money_lane_bill	Kontua: {lane}
 
-removing	Removing…
-removed	Removed
-updating_order	Updating…
-order_updated	Order updated
+removing	Kentzen…
+removed	Kenduta
+updating_order	Eguneratzen…
+order_updated	Eskaera eguneratuta
 sel_copy	Kopiatu
 sel_select_all	Hautatu guztiak
 sel_copied	Kopiatuta

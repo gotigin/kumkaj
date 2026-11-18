@@ -101,6 +101,19 @@ bill_item_col_sep	เส้นคอลัมน์
 slip_columns	คอลัมน์
 slip_col_header	หัวข้อ
 bill_line_logo	โลโก้
+bill_line_shop	ร้าน
+bill_line_address	ที่อยู่
+bill_line_fssai	FSSAI
+bill_line_title	ชื่อเรื่อง
+bill_line_customer	ลูกค้า
+bill_line_bill_no	เลขที่บิล
+bill_line_time	เวลา
+bill_line_cashier	แคชเชียร์
+bill_line_table	โต๊ะ
+bill_line_items	รายการ
+bill_line_total	รวม
+bill_line_footer	ท้ายบิล
+bill_line_upi	UPI
 bill_logo_picture	รูปภาพ
 bill_logo_choose	เลือกรูปภาพ
 bill_logo_remove	นำรูปภาพออก
@@ -128,6 +141,12 @@ bill_item_piece_off	ปิด
 bill_total_qty	จำนวนรวม
 bill_total_subtotal	ยอดย่อย
 bill_total_grand	ยอดรวม
+bill_total_number_under	ตัวเลขอยู่ใต้
+bill_total_caption_under	ป้ายอยู่ใต้
+bill_total_own_line	บรรทัดของตัวเอง
+bill_total_caption_with	พร้อมตัวเลข
+bill_total_caption_none	ไม่มีป้าย
+bill_total_place_help	“บรรทัดของตัวเอง” พิมพ์ยอดรวมนี้แยกต่างหาก เมื่ออยู่ใต้คอลัมน์ ตัวเลขจะพิมพ์ในคอลัมน์รายการนั้น ตามขนาดและความหนาของบรรทัดนี้ ยอดรวมต่าง ๆ ใช้แถวเดียวกันจนกว่าคอลัมน์ใดจะถูกใช้ แล้วจึงขึ้นแถวใหม่ ป้ายอยู่พร้อมตัวเลข อยู่ใต้คอลัมน์อื่น หรือไม่พิมพ์ บรรทัดภาษี ค่าบริการ การปัดเศษ และการชำระเงิน จะตาม “ยอดย่อย”
 reprint_incl	ในการพิมพ์
 reprint_skip	ข้าม
 reprint_skip_meta	ข้ามพิมพ์ซ้ำ
@@ -178,20 +197,20 @@ snack_secs_ph	วินาที (3–60 ค่าเริ่มต้น 10)
 snack_secs_save	บันทึกเวลาแจ้งเตือน
 snack_secs_saved	บันทึกเวลาแจ้งเตือนแล้ว — {n} วินาที
 settings_sec_whatsapp	WhatsApp
-whatsapp_cloud_help	Use your own Meta WhatsApp Cloud API. Create a System User token with whatsapp_business_messaging (temporary dashboard tokens expire). Credentials stay on this Server only — never on extra tills. Accepted means Meta took the request, not that the guest received it.
-whatsapp_phone_id_ph	Phone Number ID
-whatsapp_token_ph	Access Token (leave blank to keep)
-whatsapp_template_ph	Bill template name (optional)
-whatsapp_template_lang_ph	Template language (e.g. en)
-whatsapp_enable	Enable
+whatsapp_cloud_help	ใช้ Meta WhatsApp Cloud API ของคุณเอง สร้างโทเค็น System User ที่มี whatsapp_business_messaging (โทเค็นชั่วคราวจากแดชบอร์ดจะหมดอายุ) ข้อมูลจะอยู่บนเซิร์ฟเวอร์นี้เท่านั้น — ไม่อยู่บนเคาน์เตอร์เสริมเด็ดขาด “ยอมรับแล้ว” หมายความว่า Meta รับคำขอแล้ว ไม่ได้หมายความว่าแขกได้รับแล้ว
+whatsapp_phone_id_ph	ID หมายเลขโทรศัพท์
+whatsapp_token_ph	โทเค็นการเข้าถึง (เว้นว่างไว้เพื่อใช้ของเดิม)
+whatsapp_template_ph	ชื่อเทมเพลตบิล (ไม่บังคับ)
+whatsapp_template_lang_ph	ภาษาของเทมเพลต (เช่น en)
+whatsapp_enable	เปิดใช้งาน
 whatsapp_disable	Off
-whatsapp_save	Save WhatsApp
-whatsapp_test	Test connection
-whatsapp_disconnect	Disconnect
-whatsapp_send_bill	Send via WhatsApp
-whatsapp_consent	WhatsApp OK
-whatsapp_consent_help	Guest agreed to receive WhatsApp messages. A phone number alone is not consent.
-whatsapp_server_only	Configure WhatsApp on the shop Server device
+whatsapp_save	บันทึก WhatsApp
+whatsapp_test	ทดสอบการเชื่อมต่อ
+whatsapp_disconnect	ตัดการเชื่อมต่อ
+whatsapp_send_bill	ส่งผ่าน WhatsApp
+whatsapp_consent	WhatsApp ตกลง
+whatsapp_consent_help	แขกยินยอมรับข้อความ WhatsApp แล้ว การมีแค่เบอร์โทรศัพท์ไม่ถือเป็นการยินยอม
+whatsapp_server_only	ตั้งค่า WhatsApp บนอุปกรณ์เซิร์ฟเวอร์ของร้าน
 settings_sec_backup	สำรองข้อมูลและกู้คืน
 settings_sec_diag	การวินิจฉัย
 settings_sec_privacy	ความเป็นส่วนตัว
@@ -637,7 +656,7 @@ choose_device_use	เลือกวิธีใช้อุปกรณ์น�
 paired_note	จับคู่แล้ว ปลดล็อกเพื่อขาย หรือรีเฟรชเพื่อดึงข้อมูลล่าสุดจากร้าน
 last_update_at	อัปเดตล่าสุดจากร้าน: {time}
 pair_intro	ค้นหาเซิร์ฟเวอร์ หรือพิมพ์ที่อยู่และรหัสจับคู่
-pair_resume_hint	Already paired — enter your shop PIN, or Forget this shop to pair another.
+pair_resume_hint	จับคู่แล้ว — ป้อน PIN ของร้านคุณ หรือแตะ “ลืมร้านนี้” เพื่อจับคู่ร้านอื่น
 queue_waiting	รอส่งถึงร้าน ({n}):
 queue_tries	ลอง {n} ครั้ง · คำตอบล่าสุด: {e}
 save_backup_copy	บันทึกสำเนาข้อมูลสำรอง…
@@ -754,13 +773,18 @@ station_vps_dd	เครื่องพิมพ์ของสถานีน�
 station_vps_dd_n	{n} เครื่องพิมพ์ · แตะเพื่อเปลี่ยน
 bill_printers_dd	เครื่องพิมพ์สำหรับบิล
 bill_printers_dd_n	{n} เครื่องพิมพ์สำหรับบิล · แตะเพื่อเปลี่ยน
-paper_heading	กระดาษ
+paper_heading	กระดาษเสมือน
 paper_size	{w} × {h} mm
 paper_roll	ม้วน {w} mm
 paper_not_set	ยังไม่ทราบกระดาษ
-paper_length_mm	ความยาว (mm)
-printer_paper_help	กระดาษของเครื่องพิมพ์นี้เป็น mm ความยาวว่างคือม้วน: ใบเสร็จแต่ละใบยาวเท่าเนื้อหา ค้นหาเครื่องพิมพ์ จะเติมกระดาษที่ว่างจากไดรเวอร์ของเครื่องพิมพ์ (ม้วน 80 mm เมื่อบอกไม่ได้) และไม่เปลี่ยนกระดาษที่ตั้งไว้แล้ว
-preview_help	ใบเสร็จนี้บนกระดาษของเครื่องพิมพ์ที่เลือกด้านล่าง ตามที่พิมพ์ออกมาที่นั่น: ขนาดจริงจากมุมซ้ายบนที่เครื่องพิมพ์พิมพ์ถึง (สีเทา: ขอบที่พิมพ์ไม่ถึง) ใบเสร็จยาวอยู่หลายแผ่น ส่วนที่เกินขอบกระดาษถูกตัด การเลือกเครื่องพิมพ์เปลี่ยนแค่ตัวอย่าง กระดาษของแต่ละเครื่องตั้งใน เครื่องพิมพ์
+virtual_width_mm	ความกว้างเสมือน (mm)
+virtual_length_mm	ความยาวเสมือน (mm)
+reported_width_mm	ความกว้างที่รายงาน (mm)
+reported_length_mm	ความยาวที่รายงาน (mm)
+reported_paper	ที่รายงาน: {paper}
+virtual_paper	เสมือน: {paper}
+printer_paper_help	ที่รายงานคือกระดาษที่ไดรเวอร์ของเครื่องพิมพ์นี้ตั้งไว้ แอปเพียงอ่านค่าเท่านั้น และ “ไม่มี” หมายความว่าไม่มีไดรเวอร์ให้ถาม เสมือนคือกระดาษที่คุณบอกว่าอยู่ในเครื่องพิมพ์จริง ๆ เป็น mm ความยาวว่างคือม้วน เครื่องพิมพ์พิมพ์บนกระดาษของตัวเอง กระดาษเสมือนบอกแอปว่าส่วนไหนเป็นกระดาษจริง สำหรับตัวอย่าง ความยาวหน้า และตำแหน่งของใบเสร็จ ค้นหาเครื่องพิมพ์ จะเติมกระดาษเสมือนที่ว่าง และไม่เปลี่ยนกระดาษที่คุณตั้งไว้
+preview_help	ใบเสร็จนี้ตามที่พิมพ์ออกมาบนเครื่องพิมพ์ที่เลือกด้านล่าง ในขนาดจริงบนกระดาษเสมือนของเครื่อง สีขาวคือส่วนที่พิมพ์ กระดาษสีเทาคือส่วนที่เครื่องพิมพ์พิมพ์ไม่ถึง และหมึกจางคือส่วนที่ถูกตัด ช่องเก้าช่องคือกระดาษ: แตะตำแหน่งที่ต้องการวางใบเสร็จ ใบเสร็จยาวจะต่อไปยังหน้าถัดไป การเลือกเครื่องพิมพ์เปลี่ยนแค่ตัวอย่าง
 job_layout	เลย์เอาต์
 job_delivery	วิธีการส่งงาน
 job_delivery_help	เอกสาร OS, ไบต์ดิบ หรือ ESC/POS บิลและใบสั่งครัวแต่ละใบมีของตัวเอง งานใดก็ได้สามารถส่งไปยังเครื่องพิมพ์ที่ Find บันทึกไว้ได้
@@ -1040,7 +1064,7 @@ book_kind_today	สมุดวันนี้
 book_kind_month	สมุดเดือนนี้
 book_kind_aging	ค้างชำระ / เดบิต-เครดิต
 book_kind_balance	งบดุล
-order_help	เลือกออเดอร์ที่เปิดอยู่ หรือเลือกโต๊ะเพื่อเริ่มใหม่ แตะรายการที่พร้อม ส่ง KOT ออกบิลหนึ่งรายการหรือมากกว่า แยกบิล และชำระเงิน
+order_help	แตะรายการเพื่อเพิ่ม
 floor_help	แต่ละโต๊ะแสดงว่าแขกนั่งอยู่หรือไม่ บิลที่เปิดอยู่คืออะไร และใครต้องการบริการต่อไป
 kitchen_help	ติดตามจำนวนที่พร้อมตามตัวแปรหรือตามรายการ — บันทึกใน KOT ตามต้องการ
 kitchen_empty	ตอนนี้ไม่มีรายการเปิดอยู่
@@ -1238,7 +1262,7 @@ on_your_menu	อยู่ในเมนูของคุณ
 edit	แก้ไข
 schemes	โปรโมชัน
 schemes_help	ซื้อ X ได้ Y — ตอนเก็บเงิน เช่น Buy 2 Thali get 1 Chaas
-scheme_bogo_ph	Buy 2 Thali get 1 Chaas
+scheme_bogo_ph	ซื้อ Thali 2 แถม Chaas 1
 add_scheme	เพิ่ม BOGO
 schedule_ph	เวลา / Happy Hour — Mon-Fri 07:00-11:00 หรือ HappyHour 17:00-19:00=150
 upi_qr	UPI QR
@@ -1266,8 +1290,8 @@ taxable_value	มูลค่าที่ต้องเสียภาษี
 gst_inside_price_note	(รวม{tax})
 start_with_template	เริ่มด้วยเทมเพลตเมนูของเรา
 template_heading	เทมเพลตเมนูของเรา
-template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
-template_download_shelf	Download photo shelf
+template_need_download	ดาวน์โหลดชั้นวางรูปภาพอาหารสาธารณะ (~1,459 รายการ) แล้วนำเข้าชื่อที่ยังไม่มีลงในเมนูของคุณ
+template_download_shelf	ดาวน์โหลดชั้นวางรูปภาพ
 template_info	{c} หมวด และ {d} เมนูพร้อมรูป พร้อมเพิ่ม ราคาเริ่ม ₹0 — ตั้งราคาเองภายหลัง
 template_import	นำเข้าเทมเพลตทั้งหมด
 template_confirm	เพิ่ม {d} เมนูพร้อมหมวด? เมนูที่มีอยู่จะคงเดิม

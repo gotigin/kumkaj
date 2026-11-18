@@ -44,7 +44,7 @@ restore_item	மீட்டமை
 empty_catalog	இன்னும் பொருட்கள் இல்லை.
 total	மொத்தம்
 cash	ரொக்கம்
-upi	यूपीआई
+upi	UPI
 card	அட்டை
 credit	தரப்புகள்
 clear	அழி
@@ -78,7 +78,7 @@ reprint_kot_needed	முதலில் KOT அனுப்பு — பிற
 reprint_kot_none_selected	அனுப்பிய அனைத்தும் தவிர்க்கப்பட்டன — அச்சிட «அச்சில்» அழுத்தவும்
 reprint_kot_client	{place}-க்கு மீண்டும் அச்சிடு ({n}) அனுப்பப்பட்டது — சமையலறை சேவையகத்தில் அச்சிடும்
 print_cancelled_kot	ரத்து அனைத்தும் அச்சிடு
-print_cancelled_kot_ok	{n} रद्द छापे · {slips} पर्ची → {kitchens}
+print_cancelled_kot_ok	{n} ரத்தான உணவுகள் அச்சிடப்பட்டன · {slips} சீட்டு → {kitchens}
 print_cancelled_kot_needed	ரத்து உணவுள்ள மேசையைத் திற
 print_cancelled_kot_none	இந்த ஆர்டரில் ரத்து இல்லை
 print_cancelled_kot_client	ரத்து ({n}) {place} அனுப்பப்பட்டது — சர்வரில் அச்சிடும்
@@ -101,6 +101,19 @@ bill_item_col_sep	நெடுவரிசை கோடு
 slip_columns	நெடுவரிசைகள்
 slip_col_header	தலைப்பு
 bill_line_logo	சின்னம்
+bill_line_shop	கடை
+bill_line_address	முகவரி
+bill_line_fssai	FSSAI
+bill_line_title	தலைப்பு
+bill_line_customer	வாடிக்கையாளர்
+bill_line_bill_no	பில் எண்
+bill_line_time	நேரம்
+bill_line_cashier	காசாளர்
+bill_line_table	மேசை
+bill_line_items	பொருட்கள்
+bill_line_total	மொத்தம்
+bill_line_footer	அடிக்குறிப்பு
+bill_line_upi	UPI
 bill_logo_picture	படம்
 bill_logo_choose	படத்தைத் தேர்க
 bill_logo_remove	படத்தை நீக்கு
@@ -128,6 +141,12 @@ bill_item_piece_off	ஆஃப்
 bill_total_qty	மொத்த எண்ணிக்கை
 bill_total_subtotal	துணை மொத்தம்
 bill_total_grand	மொத்தம்
+bill_total_number_under	எண் இதன் கீழ்
+bill_total_caption_under	லேபிள் இதன் கீழ்
+bill_total_own_line	தனி வரி
+bill_total_caption_with	எண்ணுடன்
+bill_total_caption_none	லேபிள் இல்லை
+bill_total_place_help	“தனி வரி” இந்த மொத்தத்தைத் தனியாக அச்சிடும். நெடுவரிசையின் கீழ் என்றால் அதன் எண் அந்தப் பொருள் நெடுவரிசையில், இந்த வரியின் அளவிலும் தடிமனிலும் அச்சாகும்; ஒரு நெடுவரிசை நிரம்பும் வரை மொத்தங்கள் ஒரே கிடைவரிசையைப் பகிரும், பிறகு புதிய கிடைவரிசை தொடங்கும். லேபிள் எண்ணுடன், வேறு நெடுவரிசையின் கீழ் செல்லும், அல்லது விடப்படும். வரி, சேவை, முழுமையாக்கல், கட்டண வரிகள் “துணை மொத்தம்” ஐப் பின்பற்றும்.
 reprint_incl	அச்சில்
 reprint_skip	தவிர்
 reprint_skip_meta	மீட்பு அச்சு தவிர்
@@ -178,20 +197,20 @@ snack_secs_ph	விநாடிகள் (3–60, இயல்பு 10)
 snack_secs_save	அறிவிப்பு நேரத்தைச் சேமி
 snack_secs_saved	அறிவிப்பு நேரம் சேமிக்கப்பட்டது — {n} விநாடிகள்
 settings_sec_whatsapp	WhatsApp
-whatsapp_cloud_help	Use your own Meta WhatsApp Cloud API. Create a System User token with whatsapp_business_messaging (temporary dashboard tokens expire). Credentials stay on this Server only — never on extra tills. Accepted means Meta took the request, not that the guest received it.
-whatsapp_phone_id_ph	Phone Number ID
-whatsapp_token_ph	Access Token (leave blank to keep)
-whatsapp_template_ph	Bill template name (optional)
-whatsapp_template_lang_ph	Template language (e.g. en)
-whatsapp_enable	Enable
+whatsapp_cloud_help	உங்கள் சொந்த Meta WhatsApp Cloud API-ஐப் பயன்படுத்தவும். whatsapp_business_messaging உள்ள System User டோக்கனை உருவாக்கவும் (டாஷ்போர்டின் தற்காலிக டோக்கன்கள் காலாவதியாகும்). இந்த விவரங்கள் இந்தச் சேவையகத்தில் மட்டுமே இருக்கும் — கூடுதல் கவுண்டர்களில் ஒருபோதும் இல்லை. “ஏற்கப்பட்டது” என்றால் Meta கோரிக்கையை எடுத்துக்கொண்டது என்று பொருள்; விருந்தினருக்குச் செய்தி கிடைத்தது என்று அல்ல.
+whatsapp_phone_id_ph	தொலைபேசி எண் ID
+whatsapp_token_ph	அணுகல் டோக்கன் (அதையே வைத்திருக்க காலியாக விடவும்)
+whatsapp_template_ph	பில் வார்ப்புருவின் பெயர் (விருப்பம்)
+whatsapp_template_lang_ph	வார்ப்புருவின் மொழி (எ.கா. en)
+whatsapp_enable	இயக்கு
 whatsapp_disable	Off
-whatsapp_save	Save WhatsApp
-whatsapp_test	Test connection
-whatsapp_disconnect	Disconnect
-whatsapp_send_bill	Send via WhatsApp
-whatsapp_consent	WhatsApp OK
-whatsapp_consent_help	Guest agreed to receive WhatsApp messages. A phone number alone is not consent.
-whatsapp_server_only	Configure WhatsApp on the shop Server device
+whatsapp_save	WhatsApp-ஐச் சேமி
+whatsapp_test	இணைப்பைச் சோதி
+whatsapp_disconnect	இணைப்பைத் துண்டி
+whatsapp_send_bill	WhatsApp வழியாக அனுப்பு
+whatsapp_consent	WhatsApp சரி
+whatsapp_consent_help	விருந்தினர் WhatsApp செய்திகளைப் பெற ஒப்புக்கொண்டார். தொலைபேசி எண் மட்டும் இருப்பது ஒப்புதல் அல்ல.
+whatsapp_server_only	கடையின் சேவையக சாதனத்தில் WhatsApp-ஐ அமைக்கவும்
 settings_sec_backup	காப்புப்பிரதி & மீட்பு
 settings_sec_diag	கண்டறிதல்
 settings_sec_privacy	தனியுரிமை
@@ -637,7 +656,7 @@ choose_device_use	இந்தச் சாதனம் எப்படிப்
 paired_note	இணைக்கப்பட்டது. விற்க திறக்கவும், அல்லது கடையிலிருந்து சமீபத்தியதைப் பெற புதுப்பிக்கவும்.
 last_update_at	கடையிலிருந்து கடைசி புதுப்பிப்பு: {time}.
 pair_intro	சர்வரைக் கண்டுபிடிக்கவும், அல்லது அதன் முகவரியும் இணைப்பு குறியீடும் தட்டச்சு செய்யவும்.
-pair_resume_hint	Already paired — enter your shop PIN, or Forget this shop to pair another.
+pair_resume_hint	ஏற்கனவே இணைக்கப்பட்டுள்ளது — உங்கள் கடையின் PIN-ஐ உள்ளிடவும், அல்லது வேறு கடையை இணைக்க “இந்தக் கடையை மற” என்பதைத் தட்டவும்.
 queue_waiting	கடையை அடையக் காத்திருக்கிறது ({n}):
 queue_tries	{n} முறை முயற்சி · கடைசி பதில்: {e}
 save_backup_copy	காப்புப்பிரதியின் நகலைச் சேமி…
@@ -754,13 +773,18 @@ station_vps_dd	இந்த நிலையத்தின் அச்சுப
 station_vps_dd_n	{n} அச்சுப்பொறி · மாற்ற தட்டவும்
 bill_printers_dd	பில் அச்சுப்பொறிகள்
 bill_printers_dd_n	பில்லுக்கு {n} அச்சுப்பொறிகள் · மாற்றத் தட்டவும்
-paper_heading	தாள்
+paper_heading	மெய்நிகர் தாள்
 paper_size	{w} × {h} mm
 paper_roll	{w} mm சுருள்
 paper_not_set	தாள் இன்னும் தெரியவில்லை
-paper_length_mm	நீளம் (mm)
-printer_paper_help	இந்த அச்சுப்பொறியின் தாள் mm இல். வெற்று நீளம் என்பது சுருள்: ஒவ்வொரு சீட்டும் அதன் உள்ளடக்கத்தின் நீளம். அச்சுப்பொறிகளைக் கண்டுபிடி வெற்று தாளை அச்சுப்பொறியின் இயக்கியிலிருந்து நிரப்பும் (சொல்ல முடியாதபோது 80 mm சுருள்), ஏற்கனவே அமைத்ததை ஒருபோதும் மாற்றாது.
-preview_help	கீழே தேர்ந்த அச்சுப்பொறியின் தாளில் இந்தச் சீட்டு, அங்கே அச்சாவது போலவே: அச்சுப்பொறி எட்டும் மேல் இடது மூலையிலிருந்து உண்மை அளவில் (சாம்பல்: எட்டாத ஓரங்கள்), நீண்ட சீட்டு கூடுதல் தாள்களில், தாள் ஓரத்தைத் தாண்டியவை வெட்டப்படும். அச்சுப்பொறியைத் தேர்ந்தால் முன்னோட்டம் மட்டுமே மாறும்; ஒவ்வொரு அச்சுப்பொறியின் தாளும் அச்சுப்பொறிகள் இல் அமைக்கப்படும்.
+virtual_width_mm	மெய்நிகர் அகலம் (mm)
+virtual_length_mm	மெய்நிகர் நீளம் (mm)
+reported_width_mm	தெரிவிக்கப்பட்ட அகலம் (mm)
+reported_length_mm	தெரிவிக்கப்பட்ட நீளம் (mm)
+reported_paper	தெரிவிக்கப்பட்டது: {paper}
+virtual_paper	மெய்நிகர்: {paper}
+printer_paper_help	தெரிவிக்கப்பட்டது என்பது இந்த அச்சுப்பொறியின் இயக்கி அமைக்கப்பட்டுள்ள தாள்; ஆப் அதைப் படிக்க மட்டுமே செய்யும், “இல்லை” என்றால் கேட்க இயக்கி இல்லை என்று பொருள். மெய்நிகர் என்பது அச்சுப்பொறியில் உண்மையில் இருப்பதாக நீங்கள் சொல்லும் தாள், mm இல்; வெற்று நீளம் என்பது சுருள். அச்சுப்பொறி தன் சொந்தத் தாளில் அச்சிடும்; அதில் எவ்வளவு உண்மையான தாள் என்பதை மெய்நிகர் தாள் ஆப்புக்குச் சொல்கிறது, முன்னோட்டம், பக்க நீளம், சீட்டின் இடம் ஆகியவற்றுக்காக. அச்சுப்பொறிகளைக் கண்டுபிடி வெற்று மெய்நிகர் தாளை நிரப்பும், நீங்கள் அமைத்ததை ஒருபோதும் மாற்றாது.
+preview_help	கீழே தேர்ந்த அச்சுப்பொறியில் அச்சாவது போலவே இந்தச் சீட்டு, அதன் மெய்நிகர் தாளில் உண்மை அளவில். வெள்ளைப் பகுதியில் அச்சாகும், சாம்பல் தாளை அச்சுப்பொறி எட்டாது, மங்கிய மை வெட்டப்படும். ஒன்பது கட்டங்களே தாள்: சீட்டு இருக்க வேண்டிய இடத்தைத் தட்டவும். நீண்ட சீட்டு கூடுதல் பக்கங்களுக்குச் செல்லும். அச்சுப்பொறியைத் தேர்ந்தால் முன்னோட்டம் மட்டுமே மாறும்.
 job_layout	லேஅவுட்
 job_delivery	வேலை எப்படி அனுப்பப்படுகிறது
 job_delivery_help	OS ஆவணம், மூல பைட்டுகள் அல்லது ESC/POS. பில்லும் சமையலறைச் சீட்டும் தங்களுடையதை வைத்திருக்கும். எந்த வேலையும் தேடு சேமித்த எந்த அச்சுப்பொறிக்கும் செல்லலாம்.
@@ -1040,7 +1064,7 @@ book_kind_today	இன்றைய புத்தகம்
 book_kind_month	இந்த மாத புத்தகம்
 book_kind_aging	நிலுவை / பற்று-வரவு
 book_kind_balance	இருப்புநிலைக் குறிப்பு
-order_help	திறந்த ஆர்டரைத் தேர்ந்தெடுக்கவும், அல்லது மேசையைத் தேர்ந்தெடுத்து புதியதைத் தொடங்கவும். தயார் பொருட்களைத் தட்டவும், KOT அனுப்பவும், ஒன்று அல்லது அதற்கு மேற்பட்ட பொருட்களுக்கு பில் போடவும், பில்லைப் பிரிக்கவும், பணம் செலுத்தவும்.
+order_help	சேர்க்க ஒரு பொருளைத் தட்டவும்.
 floor_help	ஒவ்வொரு மேசையும் விருந்தினர்கள் அமர்ந்துள்ளார்களா, அவர்களின் திறந்த பில் என்ன, அடுத்து யாருக்கு சேவை தேவை என்பதைக் காட்டுகிறது.
 kitchen_help	ஒவ்வொரு வகைக்கும் அல்லது பொருளுக்கும் தயார் அளவைக் கண்காணிக்கவும் — KOT இல் விரும்பியபடி பதியவும்.
 kitchen_empty	இப்போது திறந்தது எதுவும் இல்லை.
@@ -1238,7 +1262,7 @@ on_your_menu	உங்கள் மெனுவில்
 edit	திருத்து
 schemes	திட்டங்கள் / சலுகைகள்
 schemes_help	X வாங்கி Y பெறுங்கள் — பில் போடும்போது. எ.கா. Buy 2 Thali get 1 Chaas
-scheme_bogo_ph	Buy 2 Thali get 1 Chaas
+scheme_bogo_ph	2 தாலி வாங்கினால் 1 மோர் இலவசம்
 add_scheme	BOGO சேர்
 schedule_ph	நேரம் / ஹேப்பி அவர் — Mon-Fri 07:00-11:00 அல்லது HappyHour 17:00-19:00=150
 upi_qr	UPI QR
@@ -1266,8 +1290,8 @@ taxable_value	வரி விதிப்பு மதிப்பு
 gst_inside_price_note	({tax} உட்பட)
 start_with_template	எங்கள் மெனு வார்ப்புருவுடன் தொடங்கு
 template_heading	எங்கள் மெனு வார்ப்புரு
-template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
-template_download_shelf	Download photo shelf
+template_need_download	உணவுகளின் பொது புகைப்பட அலமாரியை (~1,459 உணவுகள்) பதிவிறக்கி, பின்னர் இல்லாத பெயர்களை உங்கள் மெனுவில் இறக்குமதி செய்யவும்.
+template_download_shelf	புகைப்பட அலமாரியைப் பதிவிறக்கு
 template_info	{c} வகைகள், {d} உணவுகள் படங்களுடன் சேர்க்கத் தயார். விலை ₹0 — பிறகு உங்கள் விலையை அமைக்கவும்.
 template_import	முழு வார்ப்புருவை இறக்கு
 template_confirm	{d} உணவுகளை வகைகளுடன் சேர்க்கவா? உங்களிடம் உள்ளவை அப்படியே இருக்கும்.

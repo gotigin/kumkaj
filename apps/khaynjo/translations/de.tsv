@@ -101,6 +101,19 @@ bill_item_col_sep	Spaltlinien
 slip_columns	Spalten
 slip_col_header	Kopf
 bill_line_logo	Logo
+bill_line_shop	Shop
+bill_line_address	Adresse
+bill_line_fssai	FSSAI
+bill_line_title	Titel
+bill_line_customer	Kunde
+bill_line_bill_no	Rechnungsnr.
+bill_line_time	Zeit
+bill_line_cashier	Kassierer
+bill_line_table	Tisch
+bill_line_items	Artikel
+bill_line_total	Gesamt
+bill_line_footer	Fußzeile
+bill_line_upi	UPI
 bill_logo_picture	Bild
 bill_logo_choose	Bild wählen
 bill_logo_remove	Bild entfernen
@@ -128,6 +141,12 @@ bill_item_piece_off	Aus
 bill_total_qty	Gesamtmenge
 bill_total_subtotal	Zwischensumme
 bill_total_grand	Gesamtsumme
+bill_total_number_under	Zahl unter
+bill_total_caption_under	Beschriftung unter
+bill_total_own_line	Eigene Zeile
+bill_total_caption_with	Bei der Zahl
+bill_total_caption_none	Keine Beschriftung
+bill_total_place_help	Eigene Zeile druckt diese Summe für sich allein. Unter einer Spalte wird ihre Zahl in dieser Artikelspalte gedruckt, in Größe und Stärke dieser Zeile; Summen teilen sich eine Reihe, bis eine Spalte belegt ist, dann beginnt eine neue Reihe. Die Beschriftung steht bei der Zahl, unter einer anderen Spalte oder entfällt. Zeilen für Steuer, Service, Rundung und Zahlung folgen Zwischensumme.
 reprint_incl	Im Druck
 reprint_skip	Auslassen
 reprint_skip_meta	Kein Nachdruck
@@ -178,20 +197,20 @@ snack_secs_ph	Sekunden (3–60, Standard 10)
 snack_secs_save	Hinweisdauer speichern
 snack_secs_saved	Hinweisdauer gespeichert — {n} Sekunden
 settings_sec_whatsapp	WhatsApp
-whatsapp_cloud_help	Use your own Meta WhatsApp Cloud API. Create a System User token with whatsapp_business_messaging (temporary dashboard tokens expire). Credentials stay on this Server only — never on extra tills. Accepted means Meta took the request, not that the guest received it.
-whatsapp_phone_id_ph	Phone Number ID
-whatsapp_token_ph	Access Token (leave blank to keep)
-whatsapp_template_ph	Bill template name (optional)
-whatsapp_template_lang_ph	Template language (e.g. en)
-whatsapp_enable	Enable
+whatsapp_cloud_help	Nutze deine eigene Meta WhatsApp Cloud API. Erstelle ein System-User-Token mit whatsapp_business_messaging (temporäre Dashboard-Tokens laufen ab). Die Zugangsdaten bleiben nur auf diesem Server — nie auf Extra-Kassen. „Akzeptiert“ heißt, dass Meta die Anfrage angenommen hat, nicht dass der Gast sie erhalten hat.
+whatsapp_phone_id_ph	ID der Telefonnummer
+whatsapp_token_ph	Zugriffstoken (leer lassen, um es zu behalten)
+whatsapp_template_ph	Name der Rechnungsvorlage (optional)
+whatsapp_template_lang_ph	Sprache der Vorlage (z. B. en)
+whatsapp_enable	Aktivieren
 whatsapp_disable	Off
-whatsapp_save	Save WhatsApp
-whatsapp_test	Test connection
-whatsapp_disconnect	Disconnect
-whatsapp_send_bill	Send via WhatsApp
+whatsapp_save	WhatsApp speichern
+whatsapp_test	Verbindung testen
+whatsapp_disconnect	Trennen
+whatsapp_send_bill	Per WhatsApp senden
 whatsapp_consent	WhatsApp OK
-whatsapp_consent_help	Guest agreed to receive WhatsApp messages. A phone number alone is not consent.
-whatsapp_server_only	Configure WhatsApp on the shop Server device
+whatsapp_consent_help	Der Gast hat zugestimmt, WhatsApp-Nachrichten zu erhalten. Eine Telefonnummer allein ist keine Einwilligung.
+whatsapp_server_only	WhatsApp auf dem Server-Gerät des Shops einrichten
 settings_sec_backup	Sicherung & Wiederherstellung
 settings_sec_diag	Diagnose
 settings_sec_privacy	Datenschutz
@@ -326,8 +345,8 @@ this_shop	Servermodus
 extra_till	Clientmodus
 off	Aus
 tables_kitchen	Tische & Küche
-server	Server
-client	Client
+server	Servermodus
+client	Clientmodus
 language_currency	Sprache und Währung
 language	Sprache
 choose_language	Wähle deine Sprache
@@ -637,7 +656,7 @@ choose_device_use	Wählen Sie, wie dieses Gerät genutzt wird.
 paired_note	Gekoppelt. Entsperren zum Verkaufen, oder Aktualisieren für den neuesten Stand des Lokals.
 last_update_at	Letzte Aktualisierung vom Lokal: {time}.
 pair_intro	Server suchen oder seine Adresse und den Kopplungscode eingeben.
-pair_resume_hint	Already paired — enter your shop PIN, or Forget this shop to pair another.
+pair_resume_hint	Bereits gekoppelt — gib die PIN deines Shops ein oder tippe auf „Diesen Shop vergessen“, um einen anderen zu koppeln.
 queue_waiting	Wartet auf das Lokal ({n}):
 queue_tries	{n} Versuche · letzte Antwort: {e}
 save_backup_copy	Sicherungskopie speichern…
@@ -656,7 +675,7 @@ printers_pool_empty	(noch keine — unten hinzufügen)
 printers_routes_help	Ort wählen, dann Drucker wählen. Name (KOT), (Standard Portrait) oder (Standard Landscape) anhaken. ↑↓ Reihenfolge (erster = höchste). Abhaken zum Entfernen. Fertig mit Done.
 printer_assign_dd	Drucker für {place} wählen
 printer_assign_pick	Echten Drucker wählen
-printer_profile_heading	Layout
+printer_profile_heading	Grundriss
 printer_send_heading	Zustellung
 vp_delivery_heading	Zustellung
 vp_delivery_help	Wie dieser virtuelle Drucker Aufträge sendet — OS-Dokument, Rohbytes oder ESC/POS. Inhalt des Bons (Schriftgröße, Umbruch, Ränder) bestimmt das Rechnungs-/KOT-Format, nicht hier.
@@ -754,14 +773,19 @@ station_vps_dd	Drucker für diese Station
 station_vps_dd_n	{n} Drucker · tippen zum Ändern
 bill_printers_dd	Druckgeräte für die Rechnung
 bill_printers_dd_n	{n} Druckgerät(e) für die Rechnung · tippen zum Ändern
-paper_heading	Papier
+paper_heading	Virtuelles Papier
 paper_size	{w} × {h} mm
 paper_roll	{w}-mm-Rolle
 paper_not_set	Papier noch unbekannt
-paper_length_mm	Länge (mm)
-printer_paper_help	Das Papier dieses Druckers in mm. Eine leere Länge ist eine Rolle: Jeder Beleg ist so lang wie sein Inhalt. „Drucker suchen“ füllt leeres Papier aus dem Treiber des Druckers (eine 80-mm-Rolle, wenn er es nicht sagen kann) und ändert nie ein bereits gesetztes.
-preview_help	Dieser Beleg auf dem Papier des unten gewählten Druckers, so wie er dort druckt: in echter Größe ab der oberen linken Ecke, die der Drucker erreicht (grau: Ränder, die er nicht erreicht), ein langer Beleg auf weiteren Blättern, alles jenseits des Papierrands abgeschnitten. Die Druckerwahl ändert nur die Vorschau; das Papier jedes Druckers wird unter „Drucker“ gesetzt.
-job_layout	Layout
+virtual_width_mm	Virtuelle Breite (mm)
+virtual_length_mm	Virtuelle Länge (mm)
+reported_width_mm	Gemeldete Breite (mm)
+reported_length_mm	Gemeldete Länge (mm)
+reported_paper	Gemeldet: {paper}
+virtual_paper	Virtuell: {paper}
+printer_paper_help	Gemeldet ist das Papier, auf das der Treiber dieses Druckers eingestellt ist; die App liest es nur, und k. A. bedeutet, dass es keinen Treiber gibt, den man fragen könnte. Virtuell ist das Papier, das nach Ihrer Angabe wirklich im Drucker liegt, in mm; eine leere Länge bedeutet eine Rolle. Der Drucker druckt auf sein eigenes Papier; das virtuelle Papier sagt der App, wie viel davon echtes Papier ist – für die Vorschau, die Seitenlänge und den Platz des Belegs. Drucker suchen füllt ein leeres virtuelles Papier aus und ändert nie eines, das Sie festgelegt haben.
+preview_help	Dieser Beleg so, wie er auf dem unten gewählten Drucker gedruckt wird, in Originalgröße auf dessen virtuellem Papier. Weiß ist, wo gedruckt wird, graues Papier liegt außerhalb der Reichweite des Druckers, und blasse Tinte wird abgeschnitten. Die neun Felder sind das Papier: Tippen Sie dorthin, wo der Beleg sitzen soll. Ein langer Beleg läuft auf weitere Seiten. Die Wahl eines Druckers ändert nur die Vorschau.
+job_layout	Grundriss
 job_delivery	Wie der Auftrag gesendet wird
 job_delivery_help	OS-Dokument, rohe Bytes oder ESC/POS. Die Rechnung und das Küchenticket behalten jeweils ihre eigenen Einstellungen. Jeder Auftrag kann an jedes von Find gespeicherte Druckgerät gesendet werden.
 station_vp_attached	Drucker angehängt
@@ -1040,7 +1064,7 @@ book_kind_today	Heutiges Buch
 book_kind_month	Buch dieses Monats
 book_kind_aging	Offen / Soll-Haben
 book_kind_balance	Bilanz
-order_help	Offene Bestellung wählen oder Tisch wählen und neu starten. Fertige Artikel antippen, KOT senden, einen oder mehr Artikel abrechnen, Rechnung teilen und Zahlung abschließen.
+order_help	Tippe auf einen Artikel, um ihn hinzuzufügen.
 floor_help	Jeder Tisch zeigt, ob Gäste sitzen, ihre offene Rechnung und wer als Nächstes bedient werden muss.
 kitchen_help	Verfolge Bereit pro Variante oder pro Artikel – im KOT erfassen, wie du willst.
 kitchen_empty	Gerade nichts offen.
@@ -1238,7 +1262,7 @@ on_your_menu	Auf Ihrer Karte
 edit	Bearbeiten
 schemes	Angebote
 schemes_help	Kauf X erhalt Y — beim Kassieren. Z. B. Buy 2 Thali get 1 Chaas
-scheme_bogo_ph	Buy 2 Thali get 1 Chaas
+scheme_bogo_ph	2 Thali kaufen, 1 Chaas gratis
 add_scheme	BOGO hinzufügen
 schedule_ph	Zeiten / Happy Hour — Mon-Fri 07:00-11:00 oder HappyHour 17:00-19:00=150
 upi_qr	UPI QR
@@ -1266,8 +1290,8 @@ taxable_value	Steuerbemessungsgrundlage
 gst_inside_price_note	({tax} inklusive)
 start_with_template	Mit unserer Menüvorlage starten
 template_heading	Unsere Menüvorlage
-template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
-template_download_shelf	Download photo shelf
+template_need_download	Lade das öffentliche Fotoregal der Gerichte herunter (~1.459 Gerichte) und importiere dann fehlende Namen in dein Menü.
+template_download_shelf	Fotoregal herunterladen
 template_info	{c} Kategorien und {d} Gerichte mit Fotos, bereit zum Hinzufügen. Preise ab ₹0 — danach eigene setzen.
 template_import	Ganze Vorlage importieren
 template_confirm	{d} Gerichte mit Kategorien hinzufügen? Vorhandene Gerichte bleiben, wie sie sind.

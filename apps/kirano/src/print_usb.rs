@@ -1,6 +1,7 @@
 //! USB host ESC/POS write (`usb:VID:PID` or `usb:VID:PID:serial`).
 
-// File::write_all on Linux usblp paths only — Windows uses winspool WritePrinter.
+// File::write_all on Linux usblp paths only — Windows goes through print_win
+// (the device's own queue, or the device itself).
 #[cfg(target_os = "linux")]
 use std::io::Write;
 
@@ -272,156 +273,24 @@ fn find_usblp_path(id: &UsbId) -> Option<std::path::PathBuf> {
     None
 }
 
+/// The printers Windows' own USB printer-class driver runs — the same list
+/// the kernel gives on Linux, with no guess from a device's name.
 #[cfg(target_os = "windows")]
 fn list_windows() -> Vec<String> {
-    use std::os::windows::process::CommandExt;
-    use std::process::Command;
-    const CREATE_NO_WINDOW: u32 = 0x0800_0000;
-    let script = r#"
-Get-PnpDevice -Class USB -Status OK -ErrorAction SilentlyContinue |
-  Where-Object { $_.InstanceId -match 'VID_([0-9A-Fa-f]{4}).*PID_([0-9A-Fa-f]{4})' } |
-  ForEach-Object {
-    if ($_.InstanceId -match 'VID_([0-9A-Fa-f]{4}).*PID_([0-9A-Fa-f]{4})') {
-      $vid = $Matches[1].ToLower(); $pid = $Matches[2].ToLower()
-      # Heuristic: printer-ish friendly name
-      if ($_.FriendlyName -match 'Print|POS|Receipt|Thermal|EPSON|Star|Citizen|Bixolon') {
-        "usb:${vid}:${pid}"
-      }
-    }
-  } | Select-Object -Unique
-"#;
-    Command::new("powershell")
-        .args([
-            "-NoProfile",
-            "-NonInteractive",
-            "-ExecutionPolicy",
-            "Bypass",
-            "-Command",
-            script,
-        ])
-        .creation_flags(CREATE_NO_WINDOW)
-        .output()
-        .ok()
-        .filter(|o| o.status.success())
-        .map(|o| {
-            String::from_utf8_lossy(&o.stdout)
-                .lines()
-                .map(str::trim)
-                .filter(|l| l.starts_with("usb:"))
-                .map(str::to_string)
-                .collect()
-        })
-        .unwrap_or_default()
+    let mut out: Vec<String> = crate::print_win::usb_printers()
+        .into_iter()
+        .map(|p| format_id(&UsbId { vid: p.vid, pid: p.pid, serial: p.serial }))
+        .collect();
+    out.sort();
+    out.dedup();
+    out
 }
 
+/// The printer that was picked, or an error: never whichever USB printer
+/// comes first (print_win::usb_write).
 #[cfg(target_os = "windows")]
 fn write_windows(id: &UsbId, bytes: &[u8]) -> Result<(), String> {
-    use std::os::windows::process::CommandExt;
-    use std::process::Command;
-    const CREATE_NO_WINDOW: u32 = 0x0800_0000;
-    let dir = std::env::temp_dir().join("kumkaj-usb-raw");
-    std::fs::create_dir_all(&dir).map_err(|e| e.to_string())?;
-    let path = dir.join(format!("{}.bin", uuid::Uuid::new_v4()));
-    std::fs::write(&path, bytes).map_err(|e| e.to_string())?;
-    let path_s = path.display().to_string().replace('\'', "''");
-    let vid = format!("{:04X}", id.vid);
-    let pid = format!("{:04X}", id.pid);
-    // Find a Winspool queue whose port is USB00n and whose PnP id matches VID/PID,
-    // then WritePrinter RAW (same path as system raw KOT).
-    let script = format!(
-        r#"
-$ErrorActionPreference = 'Stop'
-$vid = '{vid}'; $pid = '{pid}'
-$printers = Get-Printer -ErrorAction SilentlyContinue
-$match = $null
-foreach ($p in $printers) {{
-  $port = Get-PrinterPort -Name $p.PortName -ErrorAction SilentlyContinue
-  $inst = (Get-PnpDevice -FriendlyName $p.Name -ErrorAction SilentlyContinue | Select-Object -First 1).InstanceId
-  if (-not $inst) {{ $inst = $p.DeviceID }}
-  if ($inst -and $inst.ToUpper().Contains("VID_$vid") -and $inst.ToUpper().Contains("PID_$pid")) {{
-    $match = $p.Name; break
-  }}
-}}
-if (-not $match) {{
-  # Fall back: any USB00 printer
-  $match = ($printers | Where-Object {{ $_.PortName -like 'USB*' }} | Select-Object -First 1).Name
-}}
-if (-not $match) {{ throw "USB printer VID_$vid PID_$pid not found as a Windows printer — install it or use host:9100" }}
-Add-Type -TypeDefinition @"
-using System;
-using System.Runtime.InteropServices;
-public class KumkajUsbRaw {{
-  [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Ansi)]
-  public class DOCINFOA {{
-    [MarshalAs(UnmanagedType.LPStr)] public string pDocName;
-    [MarshalAs(UnmanagedType.LPStr)] public string pOutputFile;
-    [MarshalAs(UnmanagedType.LPStr)] public string pDataType;
-  }}
-  [DllImport("winspool.Drv", EntryPoint = "OpenPrinterA", SetLastError = true, CharSet = CharSet.Ansi)]
-  public static extern bool OpenPrinter([MarshalAs(UnmanagedType.LPStr)] string szPrinter, out IntPtr hPrinter, IntPtr pd);
-  [DllImport("winspool.Drv", EntryPoint = "ClosePrinter", SetLastError = true)]
-  public static extern bool ClosePrinter(IntPtr hPrinter);
-  [DllImport("winspool.Drv", EntryPoint = "StartDocPrinterA", SetLastError = true, CharSet = CharSet.Ansi)]
-  public static extern bool StartDocPrinter(IntPtr hPrinter, int level, [In] DOCINFOA di);
-  [DllImport("winspool.Drv", EntryPoint = "EndDocPrinter", SetLastError = true)]
-  public static extern bool EndDocPrinter(IntPtr hPrinter);
-  [DllImport("winspool.Drv", EntryPoint = "StartPagePrinter", SetLastError = true)]
-  public static extern bool StartPagePrinter(IntPtr hPrinter);
-  [DllImport("winspool.Drv", EntryPoint = "EndPagePrinter", SetLastError = true)]
-  public static extern bool EndPagePrinter(IntPtr hPrinter);
-  [DllImport("winspool.Drv", EntryPoint = "WritePrinter", SetLastError = true)]
-  public static extern bool WritePrinter(IntPtr hPrinter, IntPtr pBytes, int dwCount, out int dwWritten);
-}}
-"@
-$bytes = [IO.File]::ReadAllBytes('{path_s}')
-$h = [IntPtr]::Zero
-if (-not [KumkajUsbRaw]::OpenPrinter($match, [ref]$h, [IntPtr]::Zero)) {{ throw "OpenPrinter failed for $match" }}
-try {{
-  $di = New-Object KumkajUsbRaw+DOCINFOA
-  $di.pDocName = 'KUMKAJ'
-  $di.pDataType = 'RAW'
-  if (-not [KumkajUsbRaw]::StartDocPrinter($h, 1, $di)) {{ throw "StartDocPrinter failed" }}
-  try {{
-    if (-not [KumkajUsbRaw]::StartPagePrinter($h)) {{ throw "StartPagePrinter failed" }}
-    try {{
-      $pinned = [Runtime.InteropServices.GCHandle]::Alloc($bytes, [Runtime.InteropServices.GCHandleType]::Pinned)
-      try {{
-        # The whole job (WritePrinter may take it in parts; no pauses).
-        {write_loop}
-      }} finally {{ $pinned.Free() }}
-    }} finally {{ [void][KumkajUsbRaw]::EndPagePrinter($h) }}
-  }} finally {{ [void][KumkajUsbRaw]::EndDocPrinter($h) }}
-}} finally {{ [void][KumkajUsbRaw]::ClosePrinter($h) }}
-"#,
-        vid = vid,
-        pid = pid,
-        path_s = path_s,
-        write_loop = crate::print_share::powershell_write_loop("KumkajUsbRaw"),
-    );
-    let out = Command::new("powershell")
-        .args([
-            "-NoProfile",
-            "-NonInteractive",
-            "-ExecutionPolicy",
-            "Bypass",
-            "-Command",
-            &script,
-        ])
-        .creation_flags(CREATE_NO_WINDOW)
-        .output()
-        .map_err(|e| format!("PowerShell did not start ({e})"))?;
-    let _ = std::fs::remove_file(&path);
-    if out.status.success() {
-        Ok(())
-    } else {
-        let detail = String::from_utf8_lossy(&out.stderr);
-        let line = detail
-            .lines()
-            .map(str::trim)
-            .find(|l| !l.is_empty())
-            .unwrap_or("USB write failed");
-        Err(line.into())
-    }
+    crate::print_win::usb_write(id.vid, id.pid, id.serial.as_deref(), "KUMKAJ", bytes)
 }
 
 #[cfg(target_os = "macos")]
@@ -545,7 +414,7 @@ mod tests {
     /// is a relative link to the interface, whose parent is the device.
     #[test]
     fn a_usblp_node_is_traced_to_its_usb_device_through_usbmisc() {
-        let root = crate::test_dirs::run_root().join(format!("khaynjo-sysfs-{}", uuid::Uuid::new_v4()));
+        let root = crate::test_dirs::run_root().join(format!("kirano-sysfs-{}", uuid::Uuid::new_v4()));
         let dev = root.join("devices/usb7/7-3");
         let iface = dev.join("7-3:1.0");
         std::fs::create_dir_all(&iface).unwrap();

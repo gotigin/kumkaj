@@ -101,6 +101,19 @@ bill_item_col_sep	کالم اصول
 slip_columns	کالَم
 slip_col_header	ہیڈر
 bill_line_logo	لوگو
+bill_line_shop	دُکان
+bill_line_address	ایڈریس
+bill_line_fssai	FSSAI
+bill_line_title	عنوان
+bill_line_customer	گاہَک
+bill_line_bill_no	بِل نمبر
+bill_line_time	وَکھ
+bill_line_cashier	کیشیئر
+bill_line_table	میز
+bill_line_items	چیز
+bill_line_total	کُل
+bill_line_footer	فوٹر
+bill_line_upi	UPI
 bill_logo_picture	تصویر
 bill_logo_choose	تصویر ژارِو
 bill_logo_remove	تصویر کڈِو
@@ -128,6 +141,12 @@ bill_item_piece_off	بند
 bill_total_qty	کل qty
 bill_total_subtotal	سب ٹوٹل
 bill_total_grand	گرینڈ ٹوٹل
+bill_total_number_under	نمبر یَتھ تَل
+bill_total_caption_under	لیبل یَتھ تَل
+bill_total_own_line	پَنٕنۍ لایِن
+bill_total_caption_with	نمبرس سٟتۍ
+bill_total_caption_none	لیبل نہٕ
+bill_total_place_help	“پَنٕنۍ لایِن” چھُ یہِ ٹوٹل کُنُے چھاپان۔ کالَمس تَل چھُ اَمیُک نمبر تَتھ آئٹم کالَمس مَنٛز، یمہِ لایِنہٕ کِس سائزس تہٕ موٹٲیی مَنٛز چھپان؛ ٹوٹل چھِ اَکھ قطار بٲگراوان یوٚتام نہٕ کانٛہہ کالَم بَرنہٕ یِیہِ، تَمہِ پَتہٕ چھِ نٔو قطار شروع گژھان۔ لیبل چھُ نمبرس سٟتۍ، بیٚیِس کالَمس تَل گژھان، یا ترٛاونہٕ یِوان۔ ٹیکس، سروس، راؤنڈنگ تہٕ ادائیگی ہٕنٛز لایِنہٕ چھِ “سب ٹوٹل” پَتہٕ پَکان۔
 reprint_incl	پرنٹس منٛز
 reprint_skip	ترٛاوُن
 reprint_skip_meta	ریکوری پرنٹ کٔرِو سِکِپ
@@ -178,20 +197,20 @@ snack_secs_ph	سیکنڈ (3–60، ڈیفالٹ 10)
 snack_secs_save	الرٹ ٹایِم بچٲوِو
 snack_secs_saved	الرٹ ٹایِم محفوظ — {n} سیکنڈ
 settings_sec_whatsapp	WhatsApp
-whatsapp_cloud_help	Use your own Meta WhatsApp Cloud API. Create a System User token with whatsapp_business_messaging (temporary dashboard tokens expire). Credentials stay on this Server only — never on extra tills. Accepted means Meta took the request, not that the guest received it.
-whatsapp_phone_id_ph	Phone Number ID
-whatsapp_token_ph	Access Token (leave blank to keep)
-whatsapp_template_ph	Bill template name (optional)
-whatsapp_template_lang_ph	Template language (e.g. en)
-whatsapp_enable	Enable
+whatsapp_cloud_help	پنُن Meta WhatsApp Cloud API ورتٲوِو۔ whatsapp_business_messaging وول System User ٹوکن بنٲوِو (ڈیش بورڈٕکۍ عارضی ٹوکن چھِ ختم گژھان)۔ یہِ معلومات چھِ صِرف یَتھ Server پٮ۪ٹھ روزان — اضٲفی کَش کاؤنٹرَن پٮ۪ٹھ نہٕ زانٛہہ۔ “قبول” گو زِ Meta ہَن رٔٹ درخواست، یہِ نہٕ زِ مہمانَس میوٗل پیغام۔
+whatsapp_phone_id_ph	فون نمبر ID
+whatsapp_token_ph	ایکسیس ٹوکن (سُے تھاونہٕ خٲطرٕ خٲلی ترٲوِو)
+whatsapp_template_ph	بِل ٹیمپلیٹُک ناو (اختیاری)
+whatsapp_template_lang_ph	ٹیمپلیٹٕچ زبان (مثلاً en)
+whatsapp_enable	فعال کٔرِو
 whatsapp_disable	Off
-whatsapp_save	Save WhatsApp
-whatsapp_test	Test connection
-whatsapp_disconnect	Disconnect
-whatsapp_send_bill	Send via WhatsApp
+whatsapp_save	WhatsApp محفوظ کٔرِو
+whatsapp_test	کنیکشن جانچ کٔرِو
+whatsapp_disconnect	کنیکشن ژھٮ۪نِو
+whatsapp_send_bill	WhatsApp ذٔریعہٕ سوٗزِو
 whatsapp_consent	WhatsApp OK
-whatsapp_consent_help	Guest agreed to receive WhatsApp messages. A phone number alone is not consent.
-whatsapp_server_only	Configure WhatsApp on the shop Server device
+whatsapp_consent_help	مہمانَن دِژ WhatsApp پیغام رَٹنٕچ رضامندی۔ صِرف فون نمبر آسُن چھُ نہٕ رضامندی۔
+whatsapp_server_only	WhatsApp دُکانٕچ Server ڈیوایسَس پٮ۪ٹھ سیٹ کٔرِو
 settings_sec_backup	بیک اپ اینڈ ریسٹور کٔرِو
 settings_sec_diag	تشخیصی
 settings_sec_privacy	رازداری
@@ -583,7 +602,7 @@ server_ip_ph	Server IP (مثلاً 192.168.1.10)
 set_credit_limit	پارٹی پیٹھ کٔرِو حد لاگو
 set_login_selected	سلیکٹس پیٹھ کٔرِو لاگ اِن لاگو
 set_login_named	لاگ اِن کٔرِو لاگو {name}
-shop	خٔریٖدٲری کٔرِو
+shop	دُکان
 show	ہاوُن
 spreadsheet_csv	سپریڈ شیٹ (CSV)
 start_fresh	تازٕ شروٗع کٔرِو
@@ -637,7 +656,7 @@ choose_device_use	Server یا Client ژٲرِو۔
 paired_note	جورۍ۔ کٕننہٕ خٲطرٕ کٔرِو ان لاک یا تازٕ ترین خٲطرٕ ریفریش۔
 last_update_at	آخری اپ ڈیٹ: {time}۔
 pair_intro	سرور ژھانٛڑِو، یا کٔرِو اَمیُک پتہ تہٕ پیئرِنٛگ کوڈ ٹایپ ۔
-pair_resume_hint	Already paired — enter your shop PIN, or Forget this shop to pair another.
+pair_resume_hint	گۄڈٕ پٮ۪ٹھے جوڑ چھُ — پننہِ دُکانُک PIN دِیِو، نَتہٕ بیٚیہِ دُکان جوڑنہٕ خٲطرٕ “یہِ دُکان مٔشِد کٔرِو” دَبٲیِو۔
 queue_waiting	دُکانس تام واتنُک انتظار ({n}):
 queue_tries	کوٗشِش کٔرِتھ {n} لٹہِ · ٲخری جواب: {e}
 save_backup_copy	بیک اپ کاپی کٔرِو محفوظ...
@@ -754,13 +773,18 @@ station_vps_dd	امہ سٹیشنک پرنٹر
 station_vps_dd_n	{n} پرنٹر · بدلاونہٕ خٲطرٕ ٹیپ کٔرِو
 bill_printers_dd	بلہٕ خٲطرٕ پرنٹر
 bill_printers_dd_n	{n} بِلہِ خٲطرٕ پرنٹر · بدلاونہٕ خٲطرٕ ٹیپ کٔرِو
-paper_heading	کاغز
+paper_heading	ورچوئل کاغز
 paper_size	{w} × {h} mm
 paper_roll	{w} mm رول
 paper_not_set	کاغز چھُ نہٕ وُنہِ تام معلوٗم
-paper_length_mm	ڈیگھٕر (mm)
-printer_paper_help	یمہِ پرنٹرُک کاغز mm مَنٛز۔ خٲلی ڈیگھٕر چھُ رول: پرٛتھ پرچہٕ چھُ پننہِ مواد کِس حسابہٕ ڈیگھ۔ پرنٹر ژھانڈِو چھُ خٲلی کاغز پرنٹرٕچہِ ڈرایورٕ پیٹھٕ بَران (وَنِتھ ہیٚکہِ نہٕ تیٚلہِ 80 mm رول) تہٕ گۄڈٕے مقرر کاغز چھُ نہٕ زانٛہہ بدلاوان۔
-preview_help	یہ پرچہٕ بۄنہٕ ژارنہٕ آمت پرنٹرٕچہِ کاغزس پیٹھ، یِتھہٕ پٲٹھۍ تَتہِ چھپان چھُ: پرنٹر یتھ ہیٚرِم کھوٚوُر کۄنس تام واتان چھُ تَتہِ پیٹھٕ اصلی ناپس مَنٛز (سۄرمٕے: کنارٕ یِم نہٕ واتان چھِ)، ڈیگھ پرچہٕ زیادٕ ورقن پیٹھ، کاغزٕکہِ کنارٕ نیبر سورُے چھُ ژٹنہٕ یِوان۔ پرنٹر ژارنہٕ سٟتۍ چھُ صرف پیش منظر بدلان؛ پرٛتھ پرنٹرُک کاغز چھُ پرنٹر مَنٛز مقرر سپدان۔
+virtual_width_mm	ورچوئل چوڑٲے (mm)
+virtual_length_mm	ورچوئل ڈیگھٕر (mm)
+reported_width_mm	رپورٹ کرنہٕ آمٕژ چوڑٲے (mm)
+reported_length_mm	رپورٹ کرنہٕ آمٕژ ڈیگھٕر (mm)
+reported_paper	رپورٹ کرنہٕ آمُت: {paper}
+virtual_paper	ورچوئل: {paper}
+printer_paper_help	رپورٹ کرنہٕ آمُت چھُ سُہ کاغز یتھ پیٹھ یمہِ پرنٹرُک ڈرایور سیٹ چھُ؛ ایپ چھُ یہِ صرف پران، تہٕ N/A مطلب چھُ زِ پرژھنہٕ خٲطرٕ چھُ نہٕ کانٛہہ ڈرایور۔ ورچوئل چھُ سُہ کاغز یُس توٚہۍ ونان چھِو زِ پرنٹرس مَنٛز چھُ پٔزۍ پٲٹھۍ، mm مَنٛز؛ خٲلی ڈیگھٕر مطلب رول۔ پرنٹر چھُ پننِس کاغزس پیٹھ چھپان؛ ورچوئل کاغز چھُ ایپس ونان زِ تَتھ مَنٛز کوتاہ چھُ اصلی کاغز، پیش منظر، ورقٕچ ڈیگھٕر تہٕ پرچہٕ ہٕنٛز جاے خٲطرٕ۔ پرنٹر ژھانڈِو چھُ خٲلی ورچوئل کاغز بران تہٕ توٚہۍ سیٹ کوٚرمُت چھُ نہٕ زانٛہہ بدلاوان۔
+preview_help	یہ پرچہٕ یِتھہٕ پٲٹھۍ بۄنہٕ ژارنہٕ آمتِس پرنٹرس پیٹھ چھپان چھُ، تمہِ کِس ورچوئل کاغزس پیٹھ اصلی ناپس مَنٛز۔ سفید چھُ یتہِ چھپان چھُ، سۄرمٕے کاغزس تام چھُ نہٕ پرنٹر واتان، تہٕ پھِکہٕ سیٲہی چھِ ژٹنہٕ یِوان۔ نَو خانہٕ چھِ کاغز: یتہِ پرچہٕ بِہُن گژھہِ تَتہِ ٹیپ کٔرِو۔ ڈیگھ پرچہٕ چھُ زیادٕ ورقن پیٹھ گژھان۔ پرنٹر ژارنہٕ سٟتۍ چھُ صرف پیش منظر بدلان۔
 job_layout	خاکہ
 job_delivery	نوکری کِتھٕ کٔنۍ چھِ سوزنہٕ یِوان
 job_delivery_help	او ایس ڈاکیومینٹ، را بایٹس، یا ESC/POS۔ بِل تہٕ کچنچ ٹکٹ چھِ پرٮ۪تھ کانٛہہ پنُن پنُن تھاوان۔ کُنہِ تہِ نوکری ہیکہِ کُنہِ تہِ پرنٹرَس پیٹھ گٔژھِتھ یُس فایِنڈَن محفوظ کوٚرمُت چھُ۔
@@ -1048,7 +1072,7 @@ add_a_table	ٹیبل کٔرِو شٲمِل
 add_station_heading	کچن سٹیشن کٔر ایڈ
 categories_help	اَتھ زمرَس تَحَت کَرنہٕ خٲطرٕ کٔرِو اِستِمال کَرنہٕ خٲطرٕ۔ فوٹو چھُ زمرَس اکھ تصویر دِوان۔ اکہِ ورٲے چھُ یہِ امِکۍ ابتدٲیی حروف ہاوان۔
 dish_search_ph	چیٖزُک ناو — سٲنۍ پکوان ژھٲرِو یا پنٕنۍ ٹایپ کٔرِو
-tile_free	مُفت
+tile_free	خٲلی
 tile_occupied	قبضہٕ
 tile_food_ready	کھٮ۪ن تیار
 tile_bill_printed	بل چھاپنہٕ آمُت
@@ -1163,7 +1187,7 @@ kot_show_station	سٹیشن
 kot_hide_station	ہایِڈ سٹیشن
 kot_show_table	میز
 kot_hide_table	ٹیبل کٔرِو ہٲوِو
-kot_show_kot_no	KOT نہٕ
+kot_show_kot_no	KOT نمبر
 kot_hide_kot_no	ہٲوِو KOT نہٕ
 kot_width	پریویو ریپ (سیٹ کْریو کنٹینٹ ویڈتھ KOT ٹیبس پیٹھ)
 kot_width_58	58 mm
@@ -1238,7 +1262,7 @@ on_your_menu	تُہنٛدِس مینوَس پیٹھ
 edit	درست کٔرِو
 schemes	سکیمَن / پیشکشَن ہٕنز
 schemes_help	BOGO، فیصد آف تہٕ فکسڈ کومبوس۔ کومبوس چُھ سینڈ KOT پیٹھ کچن لائنن تام بڑاوان؛ کمپونینٹ چِھ اتھ وقتس تام رٔٹتھ روزان یوٚت تام کومبو فائر گژھہِ۔ مِثالَن: 2 Thali گٔژھِو 1 Chaas
-scheme_bogo_ph	Buy 2 Thali get 1 Chaas
+scheme_bogo_ph	2 تھٲلی ہیٚیِو، 1 چھاچھ پرٲوِو
 add_scheme	BOGO شٲمِل کٔرِو
 schedule_ph	گھنٹہٕ / ہیپی آور — پیر-جمعہ 07:00-11:00 یا HappyHour 17:00-19:00=150
 upi_qr	UPI QR
@@ -1266,8 +1290,8 @@ taxable_value	قٲبل ٹیکس ویلیو
 gst_inside_price_note	({tax} شمولیت)
 start_with_template	سٲنِس مینو ٹیمپلیٹ سۭتۍ کٔرِو شروٗع
 template_heading	سون مینو ٹیمپلیٹ
-template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
-template_download_shelf	Download photo shelf
+template_need_download	ڈِشَن ہُنٛد عوٲمی فوٹو شیلف (~1,459 ڈِش) ڈاؤن لوڈ کٔرِو، پَتہٕ یِم ناو چھِ نہٕ تِم پننِس مینوہَس مَنٛز درآمد کٔرِو۔
+template_download_shelf	فوٹو شیلف ڈاؤن لوڈ کٔرِو
 template_info	{c} زمرٕ تہٕ {d} فوٹو سۭتۍ پکوان، شٲمل کرنہٕ خٲطرٕ تیار۔ قۭمتھ چھِ ₹0 پٮ۪ٹھٕ شروع گژھان — پَنُن کٔرِو پتہٕ سیٹ۔
 template_import	مُکمل ٹیمپلیٹ کٔرِو اَمَلَد ک
 template_confirm	{d} ڈِش کٔرِو تِمن ہٕندِس زٲژ سٍتۍ شٲمِل؟ پکوان یِم تۄہہِ گۄڈَے روزان چھِو۔

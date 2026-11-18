@@ -79,13 +79,19 @@ bill_item_amount	Suim
 bill_item_note	Rx / nóta díola
 bill_item_col_sep	Rialacha colúin
 slip_col_width	Leithead (mm)
-paper_heading	Páipéar
+paper_heading	Páipéar fíorúil
 paper_size	{w} × {h} mm
 paper_roll	rolla {w} mm
 paper_not_set	páipéar nach eol fós
-paper_length_mm	Fad (mm)
-printer_paper_help	Páipéar an phrintéara seo i mm. Is rolla é Fad folamh: tá gach duillín chomh fada lena ábhar. Líonann Faigh priontálaithe páipéar folamh ó thiománaí an phrintéara (rolla 80 mm mura féidir leis a rá) agus ní athraíonn sé riamh páipéar atá socraithe cheana.
-preview_help	An duillín seo ar pháipéar an phrintéara a roghnaíodh thíos, mar a phriontálann sé ansin: fíormhéid ón gcúinne uachtarach clé is féidir leis an bprintéir a shroicheadh (liath: imill nach féidir), duillín fada ar níos mó leathanach, gearrtar gach rud thar imeall an pháipéir. Ní athraíonn roghnú printéara ach an réamhamharc; socraítear páipéar gach printéara faoi Printéirí.
+na	N/B
+virtual_width_mm	Leithead fíorúil (mm)
+virtual_length_mm	Fad fíorúil (mm)
+reported_width_mm	Leithead tuairiscithe (mm)
+reported_length_mm	Fad tuairiscithe (mm)
+reported_paper	Tuairiscithe: {paper}
+virtual_paper	Fíorúil: {paper}
+printer_paper_help	Is é Tuairiscithe an páipéar a bhfuil tiománaí an phrintéara seo socraithe dó; ní dhéanann an aip ach é a léamh, agus ciallaíonn N/B nach bhfuil tiománaí ann le ceistiú. Is é Fíorúil an páipéar a deir tusa atá sa phrintéir dáiríre, i mm; is rolla é fad folamh. Priontálann an printéir ar a pháipéar féin; insíonn an páipéar fíorúil don aip cé mhéad de atá ina fhíorpháipéar, don réamhamharc, d'fhad an leathanaigh agus d'áit an duillín. Líonann Faigh priontálaithe páipéar fíorúil folamh agus ní athraíonn sé riamh ceann atá socraithe agat.
+preview_help	An duillín seo mar a phriontáiltear é ar an bprintéir a roghnaíodh thíos, ar a fhíormhéid ar a pháipéar fíorúil. Is bán an áit a bpriontáiltear, tá páipéar liath lasmuigh de raon an phrintéara, agus gearrtar dúch tréigthe. Is iad na naoi gcearnóg an páipéar: tapáil an áit ar chóir don duillín suí. Leanann duillín fada ar aghaidh ar thuilleadh leathanach. Ní athraíonn roghnú printéara ach an réamhamharc.
 slip_col_start	Spás tosaigh (px)
 slip_col_end	Spás deiridh (px)
 slip_columns_help	Áirítear spás tosaigh agus deiridh gach colúin ina leithead. Timfhillteann an téacs taobh istigh dá cholún; gearrtar aon rud thar leithead an ábhair, ar pháipéar agus sa réamhamharc.
@@ -100,6 +106,12 @@ bill_item_piece_off	As
 bill_total_qty	Iomlán qty
 bill_total_subtotal	Fo-iomlán
 bill_total_grand	Móriomlán
+bill_total_number_under	Uimhir faoi
+bill_total_caption_under	Lipéad faoi
+bill_total_own_line	Líne féin
+bill_total_caption_with	Leis an uimhir
+bill_total_caption_none	Gan lipéad
+bill_total_place_help	Priontálann Líne féin an t-iomlán seo leis féin. Faoi cholún, priontáiltear a uimhir sa cholún earraí sin, i méid agus i meáchan na líne seo; roinneann iomláin sraith go dtí go mbíonn colún tógtha, ansin tosaíonn sraith nua. Téann an lipéad leis an uimhir, faoi cholún eile, nó fágtar ar lár é. Leanann línte cánach, seirbhíse, slánaithe agus íocaíochta Fo-iomlán.
 kot_unassigned	Neamhshannta
 settings_hub_help	Oscail réimse amháin ag an am — roghanna níos lú scrollaithe, níos soiléire.
 settings_sec_language	& Airgeadra teanga
@@ -317,7 +329,7 @@ drawer_count	Comhaireamh tarraiceán (roghnach)
 expense_heading	Costas
 export_day	Lá easpórtála
 extra_note_bill_ph	Nóta breise faoin mbille / díolachán seo
-extra_tills_heading	Till breise
+extra_tills_heading	Scipéid bhreise
 other_devices_help_heading	Socraigh gléasanna eile
 other_devices_help	Ar an ngléas seo (Freastalaí): Gléasanna eile → Ceadaigh slad breise. Tabhair faoi deara an cód péireála agus an seoladh Wi-Fi. Tap Ceadaigh gléasanna eile chun nascadh má dhealraíonn sé. Ar ríomhaire, tapáil Tosaigh leis an ríomhaire seo. Ar gach feiste eile: shuiteáil an app, roghnaigh Mód Cliant, Faigh freastalaí an tsiopa (nó clóscríobh an seoladh), cuir isteach an cód péireála, Péireáil anois. Fanann orduithe ar an ngléas má thiteann Wi-Fi agus má théann sé nuair a fhreagraíonn an Freastalaí arís. Socraítear clódóirí breise ar an bhFreastalaí (Socruithe → Printéirí) - seolann tilleanna breise billí ansin.
 forget_shop	Déan dearmad ar an siopa seo
@@ -338,7 +350,7 @@ on_account_ap	Ar chúis (AP)
 org_optional_ph	Eagraíocht (roghnach)
 paid_by	Íocta ag
 paid_now	Íocta anois
-pair_now	Péire anois
+pair_now	Péireáil anois
 pairing_code_ph	Cód péireála
 party_name_selected_ph	Ainm pháirtí (nó bain úsáid as an gceann roghnaithe)
 password_ph	Pasfhocal
@@ -735,6 +747,20 @@ fssai_ph	Ceadúnas drugaí uimh. (roghnach - d'fhoclaíocht)
 bill_footer_ph	Bunleathanach (m.sh. Go raibh maith agat, tabhair cuairt arís)
 kot_field_on	taispeáin
 kot_field_off	folú
+kot_field_show	Taispeáin
+kot_field_hide	Folaigh
+bill_line_shop	Siopa
+bill_line_address	Seoladh
+bill_line_fssai	FSSAI
+bill_line_title	Teideal
+bill_line_customer	Custaiméir
+bill_line_bill_no	Uimh. an bhille
+bill_line_time	Am
+bill_line_cashier	Airgeadóir
+bill_line_items	Míreanna
+bill_line_total	Iomlán
+bill_line_footer	Bunleathanach
+bill_line_upi	UPI
 kot_weight_light	Solas
 bill_kot_panel_help	Leagan amach an bhille agus leithead an ábhair. Is é airgeadóir a d'eisigh nó a shocraigh an bille - fanann an scéal iomlán díola sna leabhair.
 std_size_ph	m.sh. 18, 20, 26…
@@ -842,10 +868,10 @@ lane_declared_label	Sonras cánach
 lane_owner_label	Míoicíní airgid
 money_lane_bill	Billi: {lane}
 
-removing	Removing…
-removed	Removed
-updating_order	Updating…
-order_updated	Order updated
+removing	Á bhaint…
+removed	Bainte
+updating_order	Á nuashonrú…
+order_updated	Ordú nuashonraithe
 sel_copy	Cóipeáil
 sel_select_all	Roghnaigh gach rud
 sel_copied	Cóipeáilte

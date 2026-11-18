@@ -101,6 +101,19 @@ bill_item_col_sep	Vijat e kolonave
 slip_columns	Kolonat
 slip_col_header	Titulli
 bill_line_logo	Logo
+bill_line_shop	Dyqani
+bill_line_address	Adresa
+bill_line_fssai	FSSAI
+bill_line_title	Titulli
+bill_line_customer	Klient
+bill_line_bill_no	Nr. i faturës
+bill_line_time	Ora
+bill_line_cashier	Arkëtar
+bill_line_table	Tavolina
+bill_line_items	Artikujt
+bill_line_total	Totali
+bill_line_footer	Fundi
+bill_line_upi	UPI
 bill_logo_picture	Figurë
 bill_logo_choose	Zgjidh figurë
 bill_logo_remove	Hiq figurën
@@ -128,6 +141,12 @@ bill_item_piece_off	Fikur
 bill_total_qty	Sasia totale
 bill_total_subtotal	Nëntotali
 bill_total_grand	Totali i përgjithshëm
+bill_total_number_under	Numri nën
+bill_total_caption_under	Etiketa nën
+bill_total_own_line	Rresht më vete
+bill_total_caption_with	Me numrin
+bill_total_caption_none	Pa etiketë
+bill_total_place_help	Rresht më vete e printon këtë total më vete. Nën një kolonë, numri i tij printohet në atë kolonë artikujsh, në madhësinë dhe trashësinë e këtij rreshti; totalet ndajnë një radhë derisa një kolonë të zihet, pastaj fillon një radhë e re. Etiketa shkon me numrin, nën një kolonë tjetër, ose lihet jashtë. Rreshtat e taksës, shërbimit, rrumbullakimit dhe pagesës ndjekin Nëntotali.
 reprint_incl	Në shtypje
 reprint_skip	Anashkalo
 reprint_skip_meta	Anashkalo shtypjen e rikuperimit
@@ -178,20 +197,20 @@ snack_secs_ph	Sekonda (3–60, parazgjedhja 10)
 snack_secs_save	Ruaj kohën e njoftimit
 snack_secs_saved	Koha e njoftimit u ruajt — {n} sekonda
 settings_sec_whatsapp	WhatsApp
-whatsapp_cloud_help	Use your own Meta WhatsApp Cloud API. Create a System User token with whatsapp_business_messaging (temporary dashboard tokens expire). Credentials stay on this Server only — never on extra tills. Accepted means Meta took the request, not that the guest received it.
-whatsapp_phone_id_ph	Phone Number ID
-whatsapp_token_ph	Access Token (leave blank to keep)
-whatsapp_template_ph	Bill template name (optional)
-whatsapp_template_lang_ph	Template language (e.g. en)
-whatsapp_enable	Enable
+whatsapp_cloud_help	Përdor Meta WhatsApp Cloud API tënden. Krijo një token System User me whatsapp_business_messaging (tokenat e përkohshëm të panelit skadojnë). Të dhënat mbeten vetëm në këtë Server — asnjëherë në kasat shtesë. “U pranua” do të thotë që Meta e mori kërkesën, jo që mysafiri e mori.
+whatsapp_phone_id_ph	ID e numrit të telefonit
+whatsapp_token_ph	Token i qasjes (lëre bosh për ta mbajtur)
+whatsapp_template_ph	Emri i shabllonit të faturës (opsional)
+whatsapp_template_lang_ph	Gjuha e shabllonit (p.sh. en)
+whatsapp_enable	Aktivizo
 whatsapp_disable	Off
-whatsapp_save	Save WhatsApp
-whatsapp_test	Test connection
-whatsapp_disconnect	Disconnect
-whatsapp_send_bill	Send via WhatsApp
+whatsapp_save	Ruaj WhatsApp
+whatsapp_test	Testo lidhjen
+whatsapp_disconnect	Shkëput
+whatsapp_send_bill	Dërgo me WhatsApp
 whatsapp_consent	WhatsApp OK
-whatsapp_consent_help	Guest agreed to receive WhatsApp messages. A phone number alone is not consent.
-whatsapp_server_only	Configure WhatsApp on the shop Server device
+whatsapp_consent_help	Mysafiri pranoi të marrë mesazhe WhatsApp. Vetëm numri i telefonit nuk është pëlqim.
+whatsapp_server_only	Konfiguro WhatsApp në pajisjen Server të dyqanit
 settings_sec_backup	Kopje rezervë dhe rikthim
 settings_sec_diag	Diagnostika
 settings_sec_privacy	Privatësia
@@ -637,7 +656,7 @@ choose_device_use	Zgjidhni Server ose Terminal.
 paired_note	I çiftuar. Zhbllokoni për të shitur, ose Rifresko për të fundit.
 last_update_at	Përditësimi i fundit: {time}.
 pair_intro	Gjeni serverin, ose shkruani adresën dhe kodin e çiftimit.
-pair_resume_hint	Already paired — enter your shop PIN, or Forget this shop to pair another.
+pair_resume_hint	Tashmë i çiftuar — fut PIN-in e dyqanit tënd, ose prek “Harro këtë dyqan” për të çiftuar një tjetër.
 queue_waiting	Në pritje për të arritur dyqanin ({n}):
 queue_tries	U provua {n} herë · përgjigjja e fundit: {e}
 save_backup_copy	Ruaj një kopje rezervë…
@@ -754,13 +773,18 @@ station_vps_dd	Printerët për këtë stacion
 station_vps_dd_n	{n} printerë · prekni për të ndryshuar
 bill_printers_dd	Printerët për faturën
 bill_printers_dd_n	{n} printerë për faturën · prekni për të ndryshuar
-paper_heading	Letër
+paper_heading	Letër virtuale
 paper_size	{w} × {h} mm
 paper_roll	rrotull {w} mm
 paper_not_set	letra ende e panjohur
-paper_length_mm	Gjatësia (mm)
-printer_paper_help	Letra e këtij printeri në mm. Gjatësia bosh është rrotull: çdo faturë është aq e gjatë sa përmbajtja e saj. Gjej printerët plotëson letrën bosh nga drajveri i printerit (rrotull 80 mm kur nuk mund ta thotë) dhe kurrë nuk ndryshon një të vendosur tashmë.
-preview_help	Kjo faturë në letrën e printerit të zgjedhur më poshtë, siç printohet atje: në madhësi reale nga këndi i sipërm majtas që arrin printeri (gri: skajet që nuk i arrin), një faturë e gjatë në më shumë fletë, gjithçka përtej skajit të letrës pritet. Zgjedhja e printerit ndryshon vetëm pamjen paraprake; letra e çdo printeri vendoset te Printerët.
+virtual_width_mm	Gjerësia virtuale (mm)
+virtual_length_mm	Gjatësia virtuale (mm)
+reported_width_mm	Gjerësia e raportuar (mm)
+reported_length_mm	Gjatësia e raportuar (mm)
+reported_paper	E raportuar: {paper}
+virtual_paper	Virtuale: {paper}
+printer_paper_help	E raportuar është letra për të cilën është vendosur drajveri i këtij printeri; aplikacioni vetëm e lexon, dhe “Nuk ka” do të thotë se nuk ka drajver për ta pyetur. Virtuale është letra që ju thoni se ndodhet vërtet në printer, në mm; gjatësia bosh është rrotull. Printeri printon në letrën e vet; letra virtuale i tregon aplikacionit sa prej saj është letër e vërtetë, për pamjen paraprake, gjatësinë e faqes dhe vendin e faturës. Gjej printerët plotëson një letër virtuale bosh dhe kurrë nuk ndryshon një që e keni vendosur ju.
+preview_help	Kjo faturë siç printohet në printerin e zgjedhur më poshtë, në madhësi reale në letrën e tij virtuale. E bardha është aty ku printon, letra gri është jashtë shtrirjes së printerit, dhe boja e zbehtë pritet. Nëntë katrorët janë letra: prekni aty ku duhet të qëndrojë fatura. Një faturë e gjatë vazhdon në më shumë faqe. Zgjedhja e printerit ndryshon vetëm pamjen paraprake.
 job_layout	Paraqitja
 job_delivery	Si dërgohet puna
 job_delivery_help	Dokument OS, bajte të papërpunuara, ose ESC/POS. Fatura dhe fleta e kuzhinës e mbajnë secila të vetën. Çdo punë mund të shkojë te çdo printer që Gjej ka ruajtur.
@@ -1266,8 +1290,8 @@ taxable_value	Vlera e tatueshme
 gst_inside_price_note	({tax} i përfshirë)
 start_with_template	Fillo me shabllonin tonë të menusë
 template_heading	Shablloni ynë i menusë
-template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
-template_download_shelf	Download photo shelf
+template_need_download	Shkarko raftin publik të fotove të pjatave (~1.459 pjata), pastaj importo në menunë tënde emrat që mungojnë.
+template_download_shelf	Shkarko raftin e fotove
 template_info	{c} kategori dhe {d} pjata me foto, gati për t’u shtuar. Çmimet fillojnë nga ₹0 — vendosni tuajat pastaj.
 template_import	Importo shabllonin e plotë
 template_confirm	Të shtohen {d} pjata me kategoritë e tyre? Pjatat që i keni tashmë qëndrojnë siç janë.

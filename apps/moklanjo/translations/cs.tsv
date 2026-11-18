@@ -192,7 +192,7 @@ snack_secs_save	Ušetřete čas upozornění
 snack_secs_saved	Uložený čas upozornění — {n} sekund
 snack_secs_bad	Zadejte sekundy jako číslo (3–60)
 cancelled	Zrušeno
-cancelling	Cancelling…
+cancelling	Cancellingâ¦
 cancel	Zrušit
 opening_client	Otevírání klienta…
 preparing_desk	Příprava stolu…
@@ -501,13 +501,18 @@ job_size	Velikost písma
 job_size_ph	např. 18, 20, 26…
 test_receipt_format	Testovací účtenka
 test_label_format	Testovací štítek
-paper_heading	Papír
+paper_heading	Virtuální papír
 paper_size	{w} × {h} mm
 paper_roll	role {w} mm
 paper_not_set	papír zatím není známý
-paper_length_mm	Délka (mm)
-printer_paper_help	Papír této tiskárny v mm. Prázdná Délka je role: každá účtenka je dlouhá jako její obsah. Najděte tiskárny doplní prázdný papír z ovladače tiskárny (role 80 mm, když to nedokáže říct) a nikdy nezmění papír, který už je nastavený.
-preview_help	Tato účtenka na papíru tiskárny vybrané níže, jak se na ní vytiskne: ve skutečné velikosti od levého horního rohu, kam tiskárna dosáhne (šedě: okraje, kam nedosáhne), dlouhá účtenka na více listech, vše za okrajem papíru se ořízne. Výběr tiskárny mění jen náhled; papír každé tiskárny se nastavuje v části Tiskárny.
+virtual_width_mm	Virtuální šířka (mm)
+virtual_length_mm	Virtuální délka (mm)
+reported_width_mm	Hlášená šířka (mm)
+reported_length_mm	Hlášená délka (mm)
+reported_paper	Hlášeno: {paper}
+virtual_paper	Virtuální: {paper}
+printer_paper_help	Hlášený je papír, na který je nastaven ovladač této tiskárny; aplikace jej pouze čte a N/A znamená, že není žádný ovladač, kterého by se dalo zeptat. Virtuální je papír, o kterém říkáte, že je v tiskárně doopravdy, v mm; prázdná délka znamená roli. Tiskárna tiskne na svůj vlastní papír; virtuální papír říká aplikaci, kolik z něj je skutečný papír, pro náhled, délku stránky a umístění účtenky. Najděte tiskárny doplní prázdný virtuální papír a nikdy nezmění ten, který jste nastavili.
+preview_help	Tato účtenka tak, jak se vytiskne na tiskárně vybrané níže, ve skutečné velikosti na jejím virtuálním papíru. Bílá je místo, kde se tiskne, šedý papír je mimo dosah tiskárny a vybledlý tisk se ořízne. Devět čtverců je papír: klepněte tam, kde má účtenka být. Dlouhá účtenka pokračuje na dalších stránkách. Výběr tiskárny mění jen náhled.
 slip_col_width	Šířka (mm)
 no_printer_assigned	Žádná tiskárna
 printer_target_default	obvyklá tiskárna tohoto počítače (prázdná adresa)

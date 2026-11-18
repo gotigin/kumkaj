@@ -101,6 +101,19 @@ bill_item_col_sep	Linije kolona
 slip_columns	Kolone
 slip_col_header	Zaglavlje
 bill_line_logo	Logo
+bill_line_shop	Lokal
+bill_line_address	Adresa
+bill_line_fssai	FSSAI
+bill_line_title	Naslov
+bill_line_customer	Mušterija
+bill_line_bill_no	Br. računa
+bill_line_time	Vrijeme
+bill_line_cashier	Blagajnik
+bill_line_table	Sto
+bill_line_items	Stavke
+bill_line_total	Ukupno
+bill_line_footer	Podnožje
+bill_line_upi	UPI
 bill_logo_picture	Slika
 bill_logo_choose	Odaberi sliku
 bill_logo_remove	Ukloni sliku
@@ -128,6 +141,12 @@ bill_item_piece_off	Isključeno
 bill_total_qty	Ukupna kol.
 bill_total_subtotal	Međuzbir
 bill_total_grand	Sveukupno
+bill_total_number_under	Broj ispod
+bill_total_caption_under	Natpis ispod
+bill_total_own_line	Vlastiti red
+bill_total_caption_with	Uz broj
+bill_total_caption_none	Bez natpisa
+bill_total_place_help	Vlastiti red štampa ovaj zbir zasebno. Ispod kolone njegov broj se štampa u toj koloni stavki, u veličini i debljini ovog reda; zbirovi dijele jedan red dok se neka kolona ne zauzme, a zatim počinje novi red. Natpis ide uz broj, ispod druge kolone ili se izostavlja. Redovi poreza, usluge, zaokruživanja i plaćanja prate Međuzbir.
 reprint_incl	U štampi
 reprint_skip	Preskoči
 reprint_skip_meta	Preskoči ponovnu štampu
@@ -178,20 +197,20 @@ snack_secs_ph	Sekunde (3–60, zadato 10)
 snack_secs_save	Sačuvaj trajanje upozorenja
 snack_secs_saved	Trajanje upozorenja sačuvano — {n} sekundi
 settings_sec_whatsapp	WhatsApp
-whatsapp_cloud_help	Use your own Meta WhatsApp Cloud API. Create a System User token with whatsapp_business_messaging (temporary dashboard tokens expire). Credentials stay on this Server only — never on extra tills. Accepted means Meta took the request, not that the guest received it.
-whatsapp_phone_id_ph	Phone Number ID
-whatsapp_token_ph	Access Token (leave blank to keep)
-whatsapp_template_ph	Bill template name (optional)
-whatsapp_template_lang_ph	Template language (e.g. en)
-whatsapp_enable	Enable
+whatsapp_cloud_help	Koristite vlastiti Meta WhatsApp Cloud API. Napravite System User token s whatsapp_business_messaging (privremeni tokeni s kontrolne ploče ističu). Podaci ostaju samo na ovom Serveru — nikad na dodatnim kasama. „Prihvaćeno” znači da je Meta preuzela zahtjev, a ne da ga je gost primio.
+whatsapp_phone_id_ph	ID broja telefona
+whatsapp_token_ph	Pristupni token (ostavite prazno da ostane isti)
+whatsapp_template_ph	Naziv šablona računa (nije obavezno)
+whatsapp_template_lang_ph	Jezik šablona (npr. en)
+whatsapp_enable	Uključi
 whatsapp_disable	Off
-whatsapp_save	Save WhatsApp
-whatsapp_test	Test connection
-whatsapp_disconnect	Disconnect
-whatsapp_send_bill	Send via WhatsApp
-whatsapp_consent	WhatsApp OK
-whatsapp_consent_help	Guest agreed to receive WhatsApp messages. A phone number alone is not consent.
-whatsapp_server_only	Configure WhatsApp on the shop Server device
+whatsapp_save	Sačuvaj WhatsApp
+whatsapp_test	Testiraj vezu
+whatsapp_disconnect	Prekini vezu
+whatsapp_send_bill	Pošalji putem WhatsAppa
+whatsapp_consent	WhatsApp U redu
+whatsapp_consent_help	Gost je pristao da prima WhatsApp poruke. Sam broj telefona nije pristanak.
+whatsapp_server_only	Podesite WhatsApp na uređaju Server lokala
 settings_sec_backup	Rezervna kopija i povrat
 settings_sec_diag	Dijagnostika
 settings_sec_privacy	Privatnost
@@ -637,7 +656,7 @@ choose_device_use	Odaberite Server ili Klijent.
 paired_note	Upareno. Otključajte za prodaju ili Osvježi za najnovije.
 last_update_at	Zadnje ažuriranje: {time}.
 pair_intro	Pronađite server ili upišite adresu i kod uparivanja.
-pair_resume_hint	Already paired — enter your shop PIN, or Forget this shop to pair another.
+pair_resume_hint	Već upareno — unesite PIN svog lokala ili dodirnite „Zaboravi ovaj lokal” da uparite drugi.
 queue_waiting	Čeka da stigne do lokala ({n}):
 queue_tries	Pokušano {n} puta · zadnji odgovor: {e}
 save_backup_copy	Sačuvaj kopiju rezervne kopije…
@@ -754,13 +773,18 @@ station_vps_dd	Štampači za ovu stanicu
 station_vps_dd_n	{n} štampač/a · dodirnite za promjenu
 bill_printers_dd	Štampači za račun
 bill_printers_dd_n	{n} štampač/a za račun · dodirnite za promjenu
-paper_heading	Papir
+paper_heading	Virtuelni papir
 paper_size	{w} × {h} mm
 paper_roll	rolna {w} mm
 paper_not_set	papir još nije poznat
-paper_length_mm	Dužina (mm)
-printer_paper_help	Papir ovog štampača u mm. Prazna Dužina je rolna: svaki račun je dug koliko i njegov sadržaj. Pronađi štampače popunjava prazan papir iz drajvera štampača (rolna od 80 mm kad ne može reći) i nikad ne mijenja već postavljen.
-preview_help	Ovaj račun na papiru štampača odabranog ispod, kako se tamo štampa: u stvarnoj veličini od gornjeg lijevog ugla do kojeg štampač dopire (sivo: rubovi do kojih ne dopire), dug račun na više listova, sve preko ruba papira se odsijeca. Odabir štampača mijenja samo pregled; papir svakog štampača postavlja se pod Štampači.
+virtual_width_mm	Virtuelna širina (mm)
+virtual_length_mm	Virtuelna dužina (mm)
+reported_width_mm	Prijavljena širina (mm)
+reported_length_mm	Prijavljena dužina (mm)
+reported_paper	Prijavljeno: {paper}
+virtual_paper	Virtuelno: {paper}
+printer_paper_help	Prijavljeno je papir na koji je podešen drajver ovog štampača; aplikacija ga samo čita, a N/D znači da nema drajvera koji bi se pitao. Virtuelno je papir za koji vi kažete da je stvarno u štampaču, u mm; prazna dužina je rolna. Štampač štampa na svom papiru; virtuelni papir govori aplikaciji koliko je od toga stvarni papir, za pregled, dužinu stranice i mjesto računa. Pronađi štampače popunjava prazan virtuelni papir i nikada ne mijenja onaj koji ste vi postavili.
+preview_help	Ovaj račun onako kako se štampa na štampaču odabranom ispod, u stvarnoj veličini na njegovom virtuelnom papiru. Bijelo je gdje se štampa, sivi papir je van dometa štampača, a izblijedjela tinta se odsijeca. Devet kvadrata su papir: dodirnite gdje račun treba stajati. Dug račun prelazi na naredne stranice. Odabir štampača mijenja samo pregled.
 job_layout	Raspored
 job_delivery	Kako se posao šalje
 job_delivery_help	Dokument OS-a, sirovi bajtovi ili ESC/POS. Račun i kuhinjski listić čuvaju svaki svoje. Bilo koji posao može ići na bilo koji štampač koji je Pronađi sačuvao.
@@ -1266,8 +1290,8 @@ taxable_value	Oporeziva vrijednost
 gst_inside_price_note	({tax} u cijeni)
 start_with_template	Krenite s našim šablonom menija
 template_heading	Naš šablon menija
-template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
-template_download_shelf	Download photo shelf
+template_need_download	Preuzmite javnu policu s fotografijama jela (~1.459 jela), zatim u svoj meni uvezite nazive koji nedostaju.
+template_download_shelf	Preuzmi policu s fotografijama
 template_info	{c} kategorija i {d} jela s fotografijama, spremno za dodavanje. Cijene počinju od ₹0 — postavite svoje poslije.
 template_import	Uvezi cijeli šablon
 template_confirm	Dodati {d} jela s njihovim kategorijama? Jela koja već imate ostaju kakva jesu.

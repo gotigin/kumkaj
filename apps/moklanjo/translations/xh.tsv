@@ -192,7 +192,7 @@ snack_secs_save	Gcina ixesha lesilumkiso
 snack_secs_saved	Ixesha lesilumkiso ligciniwe — imizuzwana {n}
 snack_secs_bad	Faka imizuzwana njengenani (3–60)
 cancelled	Kurhoxisiwe
-cancelling	Cancelling…
+cancelling	Cancellingâ¦
 cancel	Rhoxisa
 opening_client	Ivula iklayenti…
 preparing_desk	Ilungisa ideski…
@@ -501,13 +501,18 @@ job_size	Ubukhulu befonti
 job_size_ph	umz. 18, 20, 26…
 test_receipt_format	Irisithi yovavanyo
 test_label_format	Ileyibhile yovavanyo
-paper_heading	Iphepha
+paper_heading	Iphepha le-virtual
 paper_size	{w} × {h} mm
 paper_roll	umqulu we-{w} mm
 paper_not_set	iphepha alikaziwa okwangoku
-paper_length_mm	Ubude (mm)
-printer_paper_help	Iphepha lalo mshicileli kwi-mm. UBude obungenanto ngumqulu: irisithi nganye inde njengomxholo wayo. Fumana abashicileli igcwalisa iphepha elingenanto kumqhubi womshicileli (umqulu we-80 mm xa ingakwazi ukuxela) kwaye ayize iguqule elimiselweyo.
-preview_help	Le risithi kwiphepha lomshicileli okhethwe ngezantsi, njengoko ishicilelwa apho: ubungakanani bokwenyani ukusuka kwikona ephezulu ekhohlo efikelelwa ngumshicileli (ngwevu: imiphetho engafikelelwayo), irisithi ende kumaphepha amaninzi, yonke into egqitha umphetho wephepha iyanqunyulwa. Ukukhetha umshicileli kutshintsha umboniso kuphela; iphepha lomshicileli ngamnye limiselwa phantsi kwe-Abashicileli.
+virtual_width_mm	Ububanzi be-virtual (mm)
+virtual_length_mm	Ubude be-virtual (mm)
+reported_width_mm	Ububanzi obuxeliweyo (mm)
+reported_length_mm	Ubude obuxeliweyo (mm)
+reported_paper	Elixeliweyo: {paper}
+virtual_paper	I-virtual: {paper}
+printer_paper_help	Elixeliweyo liphepha umqhubi walo mshicileli omiselwe kulo; i-app iyalifunda kuphela, kwaye N/A ithetha ukuba akukho mqhubi wokubuzwa. I-virtual liphepha othi wena likho ngokwenene kumshicileli, kwi-mm; ubude obungenanto ngumqulu. Umshicileli ushicilela kwiphepha lawo; iphepha le-virtual lixelela i-app ukuba lingakanani kulo eliliphepha lokwenyani, ukwenzela umboniso, ubude bephepha kunye nendawo yerisithi. Fumana abashicileli igcwalisa iphepha le-virtual elingenanto kwaye ayize iguqule olimisele wena.
+preview_help	Le risithi njengoko ishicilelwa kumshicileli okhethwe ngezantsi, ngobungakanani bokwenyani kwiphepha lawo le-virtual. Okumhlophe kulapho ushicilela khona, iphepha elingwevu alifikelelwa ngumshicileli, kwaye i-inki ephaphathekileyo iyanqunyulwa. Izikwere ezilithoba ziliphepha: cofa apho irisithi ifanele ihlale khona. Irisithi ende iqhubeka kumaphepha amaninzi. Ukukhetha umshicileli kutshintsha umboniso kuphela.
 slip_col_width	Ububanzi (mm)
 no_printer_assigned	Akukho mshicileli
 printer_target_default	umshicileli oqhelekileyo wale khompyutha (idilesi engenanto)

@@ -151,6 +151,36 @@ pub fn escpos_label(text: &str, awb: &str, m: &RasterMetrics) -> Vec<u8> {
     pack_escpos_picture(drawn, m.page_dots())
 }
 
+/// ESC/POS raster of drawn 1-bit rows `width_dots` wide ([`draw_lines`],
+/// [`draw_metrics`]).
+pub fn escpos_from_drawn(drawn: (Vec<u8>, usize), width_dots: usize) -> Vec<u8> {
+    pack_escpos_picture(drawn, width_dots)
+}
+
+/// Drawn 1-bit rows `width` dots wide, laid with their left edge at dot `x`
+/// (negative: starting past the left) on a line `roll` dots wide and cut at
+/// its edges — a format's place across a wider or narrower ESC/POS roll.
+pub fn place_drawn(drawn: (Vec<u8>, usize), width: usize, roll: usize, x: i64) -> (Vec<u8>, usize) {
+    let (rows, height) = drawn;
+    let rb = (width.max(8) & !7) / 8;
+    let ob = (roll.max(8) & !7) / 8;
+    let mut out = vec![0u8; ob * height];
+    for y in 0..height {
+        for d in 0..rb * 8 {
+            if rows.get(y * rb + d / 8).is_none_or(|b| b & (0x80 >> (d % 8)) == 0) {
+                continue;
+            }
+            let t = x + d as i64;
+            if t < 0 || t >= (ob * 8) as i64 {
+                continue;
+            }
+            let t = t as usize;
+            out[y * ob + t / 8] |= 0x80 >> (t % 8);
+        }
+    }
+    (out, height)
+}
+
 fn pack_escpos_picture(drawn: (Vec<u8>, usize), width_dots: usize) -> Vec<u8> {
     let (rows, height) = drawn;
     let row_bytes = (width_dots.max(8) & !7) / 8;

@@ -7,7 +7,7 @@ _Last updated: 2026-11-06_
 
 ## Website
 
-This site describes Kumkaj products from Gotigin. Copy and screenshots are provided for information. Features described as **planned** are not yet available.
+Gotigin (trademark) · GOTIGIN SOFTWARE & HARDWARE PRIVATE LIMITED (company) · Kumkaj (brand) and its products. Copy and screenshots are provided for information. Features described as **planned** are not yet available.
 
 ## Software
 

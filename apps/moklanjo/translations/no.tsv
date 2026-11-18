@@ -192,7 +192,7 @@ snack_secs_save	Lagre varseltid
 snack_secs_saved	Varseltid lagret — {n} sekunder
 snack_secs_bad	Skriv inn sekunder som et tall (3–60)
 cancelled	Avbestilt
-cancelling	Cancelling…
+cancelling	Cancellingâ¦
 cancel	Avbestill
 opening_client	Åpner klient…
 preparing_desk	Klargjør disken…
@@ -501,13 +501,18 @@ job_size	Skriftstørrelse
 job_size_ph	f.eks. 18, 20, 26…
 test_receipt_format	Testkvittering
 test_label_format	Testetikett
-paper_heading	Papir
+paper_heading	Virtuelt papir
 paper_size	{w} × {h} mm
 paper_roll	{w} mm-rull
 paper_not_set	papir ikke kjent ennå
-paper_length_mm	Lengde (mm)
-printer_paper_help	Papiret i denne skriveren i mm. Tom Lengde er en rull: hver kvittering er like lang som innholdet. Finn skrivere fyller inn tomt papir fra skriverdriveren (en 80 mm-rull når den ikke kan si det) og endrer aldri papir som allerede er satt.
-preview_help	Denne kvitteringen på papiret i skriveren som er valgt nedenfor, slik den skrives ut der: i ekte størrelse fra øvre venstre hjørne skriveren når (grått: kanter den ikke når), en lang kvittering på flere ark, alt utenfor papirkanten kuttes. Å velge skriver endrer bare forhåndsvisningen; papiret til hver skriver settes under Skrivere.
+virtual_width_mm	Virtuell bredde (mm)
+virtual_length_mm	Virtuell lengde (mm)
+reported_width_mm	Rapportert bredde (mm)
+reported_length_mm	Rapportert lengde (mm)
+reported_paper	Rapportert: {paper}
+virtual_paper	Virtuelt: {paper}
+printer_paper_help	Rapportert er papiret driveren til denne skriveren er satt til; appen leser det bare, og I/A betyr at det ikke finnes noen driver å spørre. Virtuelt er papiret du sier faktisk ligger i skriveren, i mm; tom lengde er en rull. Skriveren skriver ut på sitt eget papir; det virtuelle papiret forteller appen hvor mye av det som er ekte papir, for forhåndsvisningen, sidelengden og plasseringen av kvitteringen. Finn skrivere fyller inn et tomt virtuelt papir og endrer aldri et du har satt.
+preview_help	Denne kvitteringen slik den skrives ut på skriveren som er valgt nedenfor, i ekte størrelse på det virtuelle papiret. Hvitt er der den skriver, grått papir er utenfor skriverens rekkevidde, og falmet blekk kuttes. De ni rutene er papiret: trykk der kvitteringen skal stå. En lang kvittering fortsetter på flere sider. Å velge skriver endrer bare forhåndsvisningen.
 slip_col_width	Bredde (mm)
 no_printer_assigned	Ingen skriver
 printer_target_default	den vanlige skriveren på denne datamaskinen (tom adresse)

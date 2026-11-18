@@ -158,8 +158,8 @@ ok	OK
 this_shop	Servermodus
 extra_till	Clientmodus
 off	Aus
-server	Server
-client	Client
+server	Servermodus
+client	Clientmodus
 language_currency	Sprache und Währung
 language	Sprache
 choose_language	Wähle deine Sprache
@@ -192,7 +192,7 @@ snack_secs_save	Hinweisdauer speichern
 snack_secs_saved	Hinweisdauer gespeichert — {n} Sekunden
 snack_secs_bad	Sekunden als Zahl eingeben (3–60)
 cancelled	Abgebrochen
-cancelling	Cancelling…
+cancelling	Cancellingâ¦
 cancel	Stornieren
 opening_client	Client wird geöffnet…
 preparing_desk	Schreibtisch wird vorbereitet…
@@ -495,19 +495,24 @@ printers_heading	Drucker auf diesem Gerät
 printers_help	Fügen Sie jeden Drucker einmal hinzu und wählen Sie, wo Belege und AWB-Etiketten drucken — der Erste in der Liste wird zuerst versucht; bei Fehler der Nächste. Leere Route = diese Funktion nicht drucken. Ziel leer (Standard), Systemname oder Netzwerkadresse (z. B. 192.168.1.50). Jedes Gerät behält seine Drucker.
 job_width	Inhaltsbreite (mm)
 job_width_ph	Oder eine Breite eingeben, 40–210 mm
-job_layout	Layout
+job_layout	Grundriss
 job_delivery	Wie der Auftrag gesendet wird
 job_size	Schriftgröße
 job_size_ph	z. B. 18, 20, 26…
 test_receipt_format	Testquittung
 test_label_format	Testetikett
-paper_heading	Papier
+paper_heading	Virtuelles Papier
 paper_size	{w} × {h} mm
 paper_roll	{w}-mm-Rolle
 paper_not_set	Papier noch unbekannt
-paper_length_mm	Länge (mm)
-printer_paper_help	Das Papier dieses Druckers in mm. Eine leere Länge ist eine Rolle: Jeder Beleg ist so lang wie sein Inhalt. „Drucker suchen“ füllt leeres Papier aus dem Treiber des Druckers (eine 80-mm-Rolle, wenn er es nicht sagen kann) und ändert nie ein bereits gesetztes.
-preview_help	Dieser Beleg auf dem Papier des unten gewählten Druckers, so wie er dort druckt: in echter Größe ab der oberen linken Ecke, die der Drucker erreicht (grau: Ränder, die er nicht erreicht), ein langer Beleg auf weiteren Blättern, alles jenseits des Papierrands abgeschnitten. Die Druckerwahl ändert nur die Vorschau; das Papier jedes Druckers wird unter „Drucker“ gesetzt.
+virtual_width_mm	Virtuelle Breite (mm)
+virtual_length_mm	Virtuelle Länge (mm)
+reported_width_mm	Gemeldete Breite (mm)
+reported_length_mm	Gemeldete Länge (mm)
+reported_paper	Gemeldet: {paper}
+virtual_paper	Virtuell: {paper}
+printer_paper_help	Gemeldet ist das Papier, auf das der Treiber dieses Druckers eingestellt ist; die App liest es nur, und k. A. bedeutet, dass es keinen Treiber gibt, den man fragen könnte. Virtuell ist das Papier, das nach Ihrer Angabe wirklich im Drucker liegt, in mm; eine leere Länge bedeutet eine Rolle. Der Drucker druckt auf sein eigenes Papier; das virtuelle Papier sagt der App, wie viel davon echtes Papier ist – für die Vorschau, die Seitenlänge und den Platz des Belegs. Drucker suchen füllt ein leeres virtuelles Papier aus und ändert nie eines, das Sie festgelegt haben.
+preview_help	Dieser Beleg so, wie er auf dem unten gewählten Drucker gedruckt wird, in Originalgröße auf dessen virtuellem Papier. Weiß ist, wo gedruckt wird, graues Papier liegt außerhalb der Reichweite des Druckers, und blasse Tinte wird abgeschnitten. Die neun Felder sind das Papier: Tippen Sie dorthin, wo der Beleg sitzen soll. Ein langer Beleg läuft auf weitere Seiten. Die Wahl eines Druckers ändert nur die Vorschau.
 slip_col_width	Breite (mm)
 no_printer_assigned	Kein Drucker
 printer_target_default	Standarddrucker
@@ -643,11 +648,11 @@ day_close_help	Das Buchen eines Tagesabschlusses speichert diese Übersicht (und
 expenses_word	Ausgaben
 feature_access_help	Funktionszugriff für gewähltes Personal (nach dem Hinzufügen antippen)
 footer_local	Lokales SQLite · Für immer kostenlos · Keine Cloud
-fresh_book_moklanjo	Drucker
+fresh_book_moklanjo	Fresh = leerer Katalog (Artikel später hinzufügen). Book = Anfangsbestand und wer Ihnen etwas schuldet unten eintragen.
 fresh_selected	Fresh gewählt – Katalog bleibt leer. Tippen Sie auf Done, wenn Sie bereit sind.
 gross_word	Brutto
 how_start	Wie möchten Sie beginnen?
-later_country_pack	Drucker
+later_country_pack	Später: Einstellungen → Länderpaket anwenden für Steuer- und Zahlungsbezeichnungen.
 local_badge	LOKAL
 measures_help_moklanjo	Wie Pakete am Schalter gemessen werden. Maße und Gewicht in Ihren Einheiten eintragen – Standard (cm, m, in, ft · kg, g, lb, oz) oder eigene, oben mit cm / kg verknüpfte Einheit (direkt oder über andere Einheiten). Bücher erfassen immer kg. Ein Feld leer lassen, um es zu behalten.
 mix_type_hint_moklanjo	Tragen Sie ein, wie viel je Art (Bar / UPI / Karte / Kredit). Muss der Rechnung entsprechen. Für Kredit ist oben ein Kunde nötig.

@@ -79,13 +79,19 @@ bill_item_amount	Monto rehegua
 bill_item_note	Rx / nota de venta rehegua
 bill_item_col_sep	Umi regla columna rehegua
 slip_col_width	Pe (mm)
-paper_heading	Kuatia
+paper_heading	Kuatia virtual
 paper_size	{w} × {h} mm
 paper_roll	{w} mm jere
 paper_not_set	kuatia ndojekuaái gueteri
-paper_length_mm	Puku (mm)
-printer_paper_help	Ko impresora kuatia mm-pe. Puku nandi ha'e jere: opa comprobante ipuku ijehupyrukuéicha. Eheka umi impresora omyenyhẽ kuatia nandi impresora driver-gui (80 mm jere ndaikatúiramo he'i) ha araka'eve ndomoambuéi oñemboguapýmava.
-preview_help	Ko comprobante impresora oñeiporavóva yvy gotyo kuatiápe, upépe oñeimprimi haguéicha: tuichakue añetete yvate asu gotyo impresora ohupytývagui (hũngy: henda ndohupytýiva), comprobante ipukúva hoja hetavépe, kuatia rembe'y rapykuéri oĩva oñekytĩ. Impresora jeporavo omoambue vista previa añoite; opa impresora kuatia oñemboguapy Impresora-kuéra-pe.
+na	N/A
+virtual_width_mm	Pe virtual (mm)
+virtual_length_mm	Puku virtual (mm)
+reported_width_mm	Pe oñemombe'úva (mm)
+reported_length_mm	Puku oñemombe'úva (mm)
+reported_paper	Oñemombe'úva: {paper}
+virtual_paper	Virtual: {paper}
+printer_paper_help	Oñemombe'úva ha'e pe kuatia ko impresora driver oñemboguapyhápe; app omoñe'ẽnte upéva, ha N/A he'ise ndaipóri driver oñeporandu hag̃ua. Virtual ha'e pe kuatia nde eréva oĩha añetehápe impresora-pe, mm-pe; puku nandi ha'e jere. Impresora oimprimi ikuatia teépe; kuatia virtual omombe'u app-pe mboýpa upévagui kuatia añetegua, vista previa, togue pukukue ha comprobante renda rehehápe. Eheka umi impresora omyenyhẽ kuatia virtual nandi ha araka'eve nomoambuéi pe nde remboguapy va'ekue.
+preview_help	Ko comprobante oñeimprimiháicha impresora oñeiporavóva yvy gotyo, tuichakue añetépe ikuatia virtual ári. Morotĩ ha'e oñeimprimihápe, kuatia hũngy impresora ndohupytýi, ha tinta hesakãva oñekytĩ. Umi nueve cuadro ha'e pe kuatia: epoko comprobante opyta vaerãhápe. Comprobante ipukúva oho hetave toguépe. Impresora jeporavo omoambue vista previa añoite.
 slip_col_start	Ñepyrũha pa’ũ (px)
 slip_col_end	Pahaha pa’ũ (px)
 slip_columns_help	Peteĩteĩ columna pe oguereko ipype iñepyrũha ha ipahaha pa’ũ. Moñe’ẽrã oñembojere icolumna ryepýpe; contenido pe rehasáva oñeikytĩ kuatiápe ha jehechaukápe.
@@ -100,6 +106,12 @@ bill_item_piece_off	Oguehápe
 bill_total_qty	Hetakue total
 bill_total_subtotal	Sub total rehegua
 bill_total_grand	Gran total
+bill_total_number_under	Papapy iguýpe
+bill_total_caption_under	Etiqueta iguýpe
+bill_total_own_line	Línea ijeheguáva
+bill_total_caption_with	Papapy ndive
+bill_total_caption_none	Etiqueta'ỹre
+bill_total_place_help	Línea ijeheguáva oimprimi ko total ha'eño. Peteĩ columna guýpe, ipapapy oñeimprimi upe columna mba'e rehegua-pe, ko línea tuichakue ha ipoguasukuépe; umi total okomparti peteĩ fila peteĩ columna henyhẽ peve, upéi oñepyrũ fila pyahu. Etiqueta oho papapy ndive, ambue columna guýpe, térã noñemoĩri. Umi línea impuesto, servicio, redondeo ha pago rehegua ohapykuerereka Sub total rehegua.
 kot_unassigned	Noñeasignaiva’ekue
 settings_hub_help	Eipe’a peteĩ área peteĩ jeýpe — sa’ive desplazamiento, jeporavo hesakãvéva.
 settings_sec_language	Ñe’ẽ & viru rehegua
@@ -470,7 +482,7 @@ route_cleared	Oñemopotî {name} .
 route_tap_selected	ojeporavóva
 printer_target_ph	Sistema impresora réra térã karameg̃ua:9100
 printer_target_default	ko komputadóra impresora jepivegua (dirección en blanco) .
-route_bill	Proyecto de Ley
+route_bill	Factura
 station_print_pick_first	Eiporavo raẽ peteĩ sección dispensario rehegua
 bill_printers_dd	Impresora-kuéra pe factura-pe guarã
 bill_printers_dd_n	{n} impresorakuéra factura-pe g̃uarã · epoko emoambue hag̃ua
@@ -729,12 +741,26 @@ menu_search_ph	Eheka mba’e térã código mbykymi
 customer_paid_ph	Cliente opaga
 tip_ph	Consejo
 find_server	Eheka pe tenda servidor
-bill_format	Formato de proyecto de ley rehegua
+bill_format	Formato de factura rehegua
 bill_header_ph	Dirección | teléfono rupive
 fssai_ph	Licencia de droga rehegua no. (opcional — nde ñe’ẽ)
 bill_footer_ph	Footer (e.g. Aguyje, evisita jey)
 kot_field_on	ohechauka
 kot_field_off	okañy
+kot_field_show	Ohechauka
+kot_field_hide	Oñomi
+bill_line_shop	Tenda
+bill_line_address	Dirección
+bill_line_fssai	FSSAI
+bill_line_title	Título
+bill_line_customer	Cliente rehegua
+bill_line_bill_no	Factura N.º
+bill_line_time	Aravo
+bill_line_cashier	Cajero rehegua
+bill_line_items	Umi mba’e
+bill_line_total	Total rehegua
+bill_line_footer	Footer
+bill_line_upi	UPI
 kot_weight_light	Tesapeha
 bill_kot_panel_help	Factura ñemohenda ha contenido ipekue. Cajero ha'e pe ome'êva térã omohendava'ekue factura — tembiasa venta completa opyta umi arandukápe.
 std_size_ph	p.e. 18, 20, 26 rehegua...
@@ -840,12 +866,12 @@ stock_empty	Ndaipóri gueteri mba’eve en stock — pe regravava’ekue Buy-pe 
 recent_changes	Umi ñemoambue nda’aréi ojejapóva
 lane_declared_label	Factura tributaria rehegua
 lane_owner_label	Memo efectivo rehegua
-money_lane_bill	Proyecto de ley: {lane} .
+money_lane_bill	Factura: {lane} .
 
-removing	Removing…
-removed	Removed
-updating_order	Updating…
-order_updated	Order updated
+removing	Oñembogue hína…
+removed	Oñembogue
+updating_order	Oñembopyahu hína…
+order_updated	Jerure oñembopyahúma
 sel_copy	Ekopia
 sel_select_all	Eiporavo opavave
 sel_copied	Okopiáma

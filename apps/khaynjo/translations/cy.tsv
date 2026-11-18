@@ -101,6 +101,19 @@ bill_item_col_sep	Llinellau colofn
 slip_columns	Colofnau
 slip_col_header	Pennawd
 bill_line_logo	Logo
+bill_line_shop	Siop
+bill_line_address	Cyfeiriad
+bill_line_fssai	FSSAI
+bill_line_title	Teitl
+bill_line_customer	Cwsmer
+bill_line_bill_no	Rhif y bil
+bill_line_time	Amser
+bill_line_cashier	Ariannwr
+bill_line_table	Bwrdd
+bill_line_items	Eitemau
+bill_line_total	Cyfanswm
+bill_line_footer	Troedyn
+bill_line_upi	UPI
 bill_logo_picture	Llun
 bill_logo_choose	Dewis llun
 bill_logo_remove	Tynnu'r llun
@@ -128,6 +141,12 @@ bill_item_piece_off	I ffwrdd
 bill_total_qty	Cyfanswm nifer
 bill_total_subtotal	Is-gyfanswm
 bill_total_grand	Cyfanswm mawr
+bill_total_number_under	Rhif o dan
+bill_total_caption_under	Label o dan
+bill_total_own_line	Llinell ei hun
+bill_total_caption_with	Gyda'r rhif
+bill_total_caption_none	Dim label
+bill_total_place_help	Mae Llinell ei hun yn argraffu'r cyfanswm hwn ar ei ben ei hun. O dan golofn, mae ei rif yn cael ei argraffu yn y golofn eitemau honno, ym maint a phwysau'r llinell hon; mae cyfansymiau'n rhannu rhes nes bod colofn wedi'i llenwi, yna mae rhes newydd yn dechrau. Mae'r label yn mynd gyda'r rhif, o dan golofn arall, neu'n cael ei hepgor. Mae llinellau treth, gwasanaeth, talgrynnu a thalu yn dilyn Is-gyfanswm.
 reprint_incl	Mewn print
 reprint_skip	Hepgor
 reprint_skip_meta	Hepgor print adfer
@@ -178,20 +197,20 @@ snack_secs_ph	Eiliadau (3–60, rhagosodiad 10)
 snack_secs_save	Cadw amser rhybudd
 snack_secs_saved	Amser rhybudd wedi'i gadw — {n} eiliad
 settings_sec_whatsapp	WhatsApp
-whatsapp_cloud_help	Use your own Meta WhatsApp Cloud API. Create a System User token with whatsapp_business_messaging (temporary dashboard tokens expire). Credentials stay on this Server only — never on extra tills. Accepted means Meta took the request, not that the guest received it.
-whatsapp_phone_id_ph	Phone Number ID
-whatsapp_token_ph	Access Token (leave blank to keep)
-whatsapp_template_ph	Bill template name (optional)
-whatsapp_template_lang_ph	Template language (e.g. en)
-whatsapp_enable	Enable
+whatsapp_cloud_help	Defnyddiwch eich Meta WhatsApp Cloud API eich hun. Crëwch docyn System User gyda whatsapp_business_messaging (mae tocynnau dros dro'r dangosfwrdd yn dod i ben). Mae'r manylion yn aros ar y Gweinydd hwn yn unig — byth ar diliau ychwanegol. Mae “Derbyniwyd” yn golygu bod Meta wedi cymryd y cais, nid bod y gwestai wedi'i dderbyn.
+whatsapp_phone_id_ph	ID y rhif ffôn
+whatsapp_token_ph	Tocyn mynediad (gadewch yn wag i'w gadw)
+whatsapp_template_ph	Enw templed y bil (dewisol)
+whatsapp_template_lang_ph	Iaith y templed (e.e. en)
+whatsapp_enable	Galluogi
 whatsapp_disable	Off
-whatsapp_save	Save WhatsApp
-whatsapp_test	Test connection
-whatsapp_disconnect	Disconnect
-whatsapp_send_bill	Send via WhatsApp
+whatsapp_save	Cadw WhatsApp
+whatsapp_test	Profi'r cysylltiad
+whatsapp_disconnect	Datgysylltu
+whatsapp_send_bill	Anfon drwy WhatsApp
 whatsapp_consent	WhatsApp OK
-whatsapp_consent_help	Guest agreed to receive WhatsApp messages. A phone number alone is not consent.
-whatsapp_server_only	Configure WhatsApp on the shop Server device
+whatsapp_consent_help	Cytunodd y gwestai i dderbyn negeseuon WhatsApp. Nid yw rhif ffôn ar ei ben ei hun yn gydsyniad.
+whatsapp_server_only	Gosodwch WhatsApp ar ddyfais Gweinydd y siop
 settings_sec_backup	Copi wrth gefn ac adfer
 settings_sec_diag	Diagnosteg
 settings_sec_privacy	Preifatrwydd
@@ -637,7 +656,7 @@ choose_device_use	Dewiswch Weinydd neu Gleient.
 paired_note	Wedi'i baru. Datgloi i werthu, neu Adnewyddu ar gyfer y diweddaraf.
 last_update_at	Diweddariad olaf: {time}.
 pair_intro	Dewch o hyd i'r gweinydd, neu teipiwch ei gyfeiriad a'r cod paru.
-pair_resume_hint	Already paired — enter your shop PIN, or Forget this shop to pair another.
+pair_resume_hint	Wedi paru eisoes — rhowch PIN eich siop, neu tapiwch “Anghofio'r siop hon” i baru un arall.
 queue_waiting	Yn aros i gyrraedd y siop ({n}):
 queue_tries	Wedi ceisio {n} gwaith · ateb olaf: {e}
 save_backup_copy	Cadw copi wrth gefn…
@@ -754,13 +773,18 @@ station_vps_dd	Argraffwyr ar gyfer y orsaf hon
 station_vps_dd_n	{n} argraffydd · tapiwch i newid
 bill_printers_dd	Argraffwyr ar gyfer y bil
 bill_printers_dd_n	{n} argraffydd ar gyfer y bil · tapiwch i newid
-paper_heading	Papur
+paper_heading	Papur rhithwir
 paper_size	{w} × {h} mm
 paper_roll	rholyn {w} mm
 paper_not_set	papur heb ei wybod eto
-paper_length_mm	Hyd (mm)
-printer_paper_help	Papur yr argraffydd hwn mewn mm. Mae Hyd gwag yn rholyn: mae pob slip mor hir â'i gynnwys. Mae Dewch o hyd i argraffwyr yn llenwi papur gwag o yrrwr yr argraffydd (rholyn 80 mm pan na all ddweud) a byth yn newid un sydd eisoes wedi'i osod.
-preview_help	Y slip hwn ar bapur yr argraffydd a ddewiswyd isod, fel y mae'n argraffu yno: maint go iawn o'r gornel chwith uchaf y gall yr argraffydd ei chyrraedd (llwyd: ymylon na all), slip hir ar ragor o dudalennau, popeth y tu hwnt i ymyl y papur wedi'i dorri. Mae dewis argraffydd yn newid y rhagolwg yn unig; caiff papur pob argraffydd ei osod o dan Argraffwyr.
+virtual_width_mm	Lled rhithwir (mm)
+virtual_length_mm	Hyd rhithwir (mm)
+reported_width_mm	Lled a adroddwyd (mm)
+reported_length_mm	Hyd a adroddwyd (mm)
+reported_paper	Adroddwyd: {paper}
+virtual_paper	Rhithwir: {paper}
+printer_paper_help	Adroddwyd yw'r papur y mae gyrrwr yr argraffydd hwn wedi'i osod iddo; dim ond ei ddarllen y mae'r ap, ac mae “Amh.” yn golygu nad oes gyrrwr i'w holi. Rhithwir yw'r papur rydych chi'n dweud sydd yn yr argraffydd mewn gwirionedd, mewn mm; rholyn yw hyd gwag. Mae'r argraffydd yn argraffu ar ei bapur ei hun; mae'r papur rhithwir yn dweud wrth yr ap faint ohono sy'n bapur go iawn, ar gyfer y rhagolwg, hyd y dudalen a lle'r slip. Mae Dewch o hyd i argraffwyr yn llenwi papur rhithwir gwag a byth yn newid un rydych chi wedi'i osod.
+preview_help	Y slip hwn fel y mae'n argraffu ar yr argraffydd a ddewiswyd isod, ar ei faint go iawn ar ei bapur rhithwir. Gwyn yw lle mae'n argraffu, mae papur llwyd y tu hwnt i gyrraedd yr argraffydd, ac mae inc gwelw yn cael ei dorri i ffwrdd. Y naw sgwâr yw'r papur: tapiwch lle dylai'r slip eistedd. Mae slip hir yn mynd ymlaen i ragor o dudalennau. Dim ond y rhagolwg y mae dewis argraffydd yn ei newid.
 job_layout	Cynllun
 job_delivery	Sut mae'r swydd yn cael ei hanfon
 job_delivery_help	Dogfen OS, beitiau crai, neu ESC/POS. Mae'r bil a thocyn y gegin yn cadw eu rhai eu hunain. Gall y naill swydd neu'r llall fynd at unrhyw argraffydd y mae Chwilio wedi'i gadw.
@@ -1048,7 +1072,7 @@ add_a_table	Ychwanegu bwrdd
 add_station_heading	Ychwanegu gorsaf gegin
 categories_help	Tapiwch Defnyddio i ffeilio'r eitem uchod o dan y categori honno. Mae llun yn rhoi llun i'r categori; heb un mae'n dangos ei lythrennau cyntaf.
 dish_search_ph	Enw eitem — chwiliwch ein prydau neu teipiwch eich un chi
-tile_free	Rhydd
+tile_free	Gwag
 tile_occupied	Yn eistedd
 tile_food_ready	Bwyd yn barod
 tile_bill_printed	Bil wedi'i argraffu
@@ -1266,8 +1290,8 @@ taxable_value	Gwerth trethadwy
 gst_inside_price_note	({tax} wedi'i gynnwys)
 start_with_template	Dechrau gyda'n templed dewislen
 template_heading	Ein templed dewislen
-template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
-template_download_shelf	Download photo shelf
+template_need_download	Llwythwch y silff luniau gyhoeddus o brydau i lawr (~1,459 pryd), yna mewnforiwch yr enwau sydd ar goll i'ch dewislen.
+template_download_shelf	Llwytho'r silff luniau i lawr
 template_info	{c} categori a {d} pryd gyda lluniau, yn barod i'w hychwanegu. Mae prisiau'n dechrau ar ₹0 — gosodwch eich rhai chi wedyn.
 template_import	Mewnforio templed cyflawn
 template_confirm	Ychwanegu {d} pryd gyda'u categorïau? Mae prydau sydd gennych eisoes yn aros fel y maent.

@@ -42,7 +42,7 @@ add_item	वस्तु जोड़ो
 new_item	नयो सामान
 adding_item	एक नयो सामान जोड़णो
 editing_item	संपादन
-save	बचाओ
+save	सेव करो
 remove	हटाओ
 removed_items	हटाया गया सामान
 removed_help	पुनर्स्थापना वस्तु नै वस्तुवां रै मांय बिल्कुल उणी तरै राखै है जियां पैली ही — कीमत, फोटू अर श्रेणी।
@@ -79,13 +79,19 @@ bill_item_amount	रकम
 bill_item_note	आरएक्स / बिक्री नोट
 bill_item_col_sep	स्तंभ रा नियम
 slip_col_width	चौड़ाई (mm)
-paper_heading	कागद
+paper_heading	वर्चुअल कागद
 paper_size	{w} × {h} mm
 paper_roll	{w} mm रोल
 paper_not_set	कागद अबार पतो कोनी
-paper_length_mm	लंबाई (mm)
-printer_paper_help	इण प्रिंटर रो कागद mm में। खाली लंबाई रो मतलब रोल: हर पर्ची आपरी सामग्री जितरी लांबी होवै। प्रिंटर ढूंढो खाली कागद नै प्रिंटर रै ड्राइवर सूं भरै (नीं बता सकै तो 80 mm रोल) अर पैलां सूं तय कागद नै कदैई कोनी बदळै।
-preview_help	आ पर्ची नीचै चुण्योड़ा प्रिंटर रै कागद माथै, जियां उठै छपै: प्रिंटर जठै तांई पूगै उण ऊपरलै डावै कूणै सूं असली नाप में (भूरो: किनारा जठै कोनी पूगै), लांबी पर्ची बेसी पानां माथै, कागद रै किनारै सूं आगै रो सगळो कट जावै। प्रिंटर चुणण सूं फगत पूर्वावलोकन बदळै; हर प्रिंटर रो कागद प्रिंटर में तय होवै।
+na	N/A
+virtual_width_mm	वर्चुअल चौड़ाई (mm)
+virtual_length_mm	वर्चुअल लंबाई (mm)
+reported_width_mm	बतायोड़ी चौड़ाई (mm)
+reported_length_mm	बतायोड़ी लंबाई (mm)
+reported_paper	बतायोड़ो: {paper}
+virtual_paper	वर्चुअल: {paper}
+printer_paper_help	बतायोड़ो बो कागद है जिण माथै इण प्रिंटर रो ड्राइवर सेट है; ऐप उणनै फगत पढ़ै, अर N/A रो मतलब है कै पूछण सारू कोई ड्राइवर कोनी। वर्चुअल बो कागद है जिको थे कैवो कै साचाणी प्रिंटर में है, mm में; खाली लंबाई रो मतलब रोल। प्रिंटर आपरै कागद माथै छापै; वर्चुअल कागद ऐप नै बतावै कै उण में सूं कितरो असली कागद है, पूर्वावलोकन, पानै री लंबाई अर पर्ची री जगां सारू। प्रिंटर ढूंढो खाली वर्चुअल कागद भरै अर थांरो तय करियोड़ो कदैई कोनी बदळै।
+preview_help	आ पर्ची जियां नीचै चुण्योड़ा प्रिंटर माथै छपै, उणरै वर्चुअल कागद माथै असली नाप में। धोळी जगां माथै छपै, भूरै कागद तांई प्रिंटर कोनी पूगै, अर फीकी स्याही कट जावै। नौ खाना कागद है: जठै पर्ची रैवणी चाईजै उठै टैप करो। लांबी पर्ची बेसी पानां माथै जावै। प्रिंटर चुणण सूं फगत पूर्वावलोकन बदळै।
 slip_col_start	सरुआत री जगां (px)
 slip_col_end	छेहली जगां (px)
 slip_columns_help	हर स्तंभ री चौड़ाई में उणरी सरुआत अर छेहली जगां सामल है। लिखावट आपरै स्तंभ रै मांय लिपटै; सामग्री री चौड़ाई सूं बारै जको है वो कागज अर पूर्वावलोकन दोनूं में कट जावै।
@@ -100,6 +106,12 @@ bill_item_piece_off	बंद
 bill_total_qty	कुल मात्रा
 bill_total_subtotal	उप कुल
 bill_total_grand	कुल कुल
+bill_total_number_under	संख्या इणरै नीचै
+bill_total_caption_under	लेबल इणरै नीचै
+bill_total_own_line	आपरी लाइन
+bill_total_caption_with	संख्या रै साथै
+bill_total_caption_none	लेबल कोनी
+bill_total_place_help	“आपरी लाइन” इण कुल नै एकलो छापै। स्तंभ रै नीचै होवै तो इणरी संख्या उणीज आइटम स्तंभ में, इण लाइन रै नाप अर मोटाई में छपै; जद तांई कोई स्तंभ भर नीं जावै कुल एक ही कतार बांटै, पछै नवी कतार चालू होवै। लेबल संख्या रै साथै, दूजै स्तंभ रै नीचै जावै, का छोड़ दियो जावै। टैक्स, सेवा, राउंडिंग अर भुगतान री लाइनां “उप कुल” रै लारै चालै।
 kot_unassigned	अनिर्धारित
 settings_hub_help	एक बार मांय एक क्षेत्र नै खोलो — कम स्क्रॉलिंग, साफ विकल्प।
 settings_sec_language	भाषा अर मुद्रा
@@ -374,7 +386,7 @@ history_hours_saved	इतिहास रा घंटा बचाया ग�
 rollup	रोल-अप
 save_brand	ब्रांड बचाओ
 save_business_id	व्यापार री आईडी बचाओ
-save_features	बचाओ
+save_features	सेव करो
 save_features_named	{name} बचाओ
 save_features_ok	{name} रै वास्तै सेव कर दियो गयो सेटअप
 save_names	नाम बचाओ
@@ -383,7 +395,7 @@ server_ip_ph	सर्वर आईपी (जियां 192.168.1.10)
 set_credit_limit	ग्राहक या आपूर्तिकर्ता नै सीमा लागू करो
 set_login_selected	चुणीज्योड़ा माथै लॉगिन लागू करो
 set_login_named	{name} माथै लॉगिन लागू करो
-shop	खरीदारी करो
+shop	दुकान
 show	दिखाओ
 spreadsheet_csv	स्प्रेडशीट (CSV)
 start_fresh	नूंवै सिरै सूं सरू करो
@@ -735,6 +747,20 @@ fssai_ph	दवा लाइसेंस संख्या (वैकल्प�
 bill_footer_ph	फुटर (जियां कै धन्यवाद, फेरूं जावो)
 kot_field_on	दिखाओ
 kot_field_off	लुकणो
+kot_field_show	दिखाओ
+kot_field_hide	छुपाओ
+bill_line_shop	दुकान
+bill_line_address	पतो
+bill_line_fssai	FSSAI
+bill_line_title	शीर्षक
+bill_line_customer	ग्राहक
+bill_line_bill_no	बिल नं.
+bill_line_time	बगत
+bill_line_cashier	कैशियर
+bill_line_items	वस्तुवां
+bill_line_total	कुल
+bill_line_footer	फुटर
+bill_line_upi	UPI
 kot_weight_light	उजास
 bill_kot_panel_help	बिल लेआउट अर सामग्री री चौड़ाई। कैशियर वो है जिणनै बिल जारी करियो है या निपटाया है - पूरी बिक्री री कहाणी किताबां रै मांय ही रैवै है।
 std_size_ph	जियां कै 18, 20, 26…
@@ -819,7 +845,7 @@ add_dishes	दवाईयां मिलाओ
 order_so_far	इण क्रम माथै: {n} · {total}
 no_dish_match	कोई भी वस्तु “{q}” सूं मेल कोनी खावै
 pick_done	होग्यो
-dishes_n	{n} items
+dishes_n	{n} वस्तुवां
 reorder_ph	और खरीदो
 set_reorder	पुनर्क्रमण स्तर तय करो
 low_stock_alert	कम चाल रैयो है — जल्द ही खरीदो: {items}
@@ -842,10 +868,10 @@ lane_declared_label	कर चालान
 lane_owner_label	कैश मेमो
 money_lane_bill	बिल: {lane}
 
-removing	Removing…
-removed	Removed
-updating_order	Updating…
-order_updated	Order updated
+removing	हटाय रिया हां…
+removed	हटा दियो
+updating_order	अपडेट हो रियो है…
+order_updated	ऑर्डर अपडेट हो ग्यो
 sel_copy	कॉपी करो
 sel_select_all	सगळो चुणो
 sel_copied	कॉपी होयग्यो

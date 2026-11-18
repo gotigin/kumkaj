@@ -101,6 +101,19 @@ bill_item_col_sep	ڪالمن جون ضابطيون
 slip_columns	ڪالم
 slip_col_header	هيڊر
 bill_line_logo	لوگو
+bill_line_shop	دڪان
+bill_line_address	پتو
+bill_line_fssai	FSSAI
+bill_line_title	عنوان
+bill_line_customer	گراهڪ
+bill_line_bill_no	بل نمبر
+bill_line_time	وقت
+bill_line_cashier	ڪيشيئر
+bill_line_table	ٽيبل
+bill_line_items	شيون
+bill_line_total	ڪل
+bill_line_footer	فوٽر
+bill_line_upi	UPI
 bill_logo_picture	تصوير
 bill_logo_choose	تصوير چونڊيو
 bill_logo_remove	تصوير هٽايو
@@ -128,6 +141,12 @@ bill_item_piece_off	بند
 bill_total_qty	ڪل مقدار
 bill_total_subtotal	ذيلي ڪل
 bill_total_grand	مڪمل ڪل
+bill_total_number_under	نمبر هن جي هيٺان
+bill_total_caption_under	ليبل هن جي هيٺان
+bill_total_own_line	پنهنجي لائن
+bill_total_caption_with	نمبر سان گڏ
+bill_total_caption_none	ليبل ناهي
+bill_total_place_help	“پنهنجي لائن” هي ڪل اڪيلو ڇاپي ٿو. ڪالم جي هيٺان هجي ته ان جو نمبر ان ئي شين واري ڪالم ۾، هن لائن جي ماپ ۽ ٿولهه ۾ ڇپجي ٿو؛ جيستائين ڪو ڪالم ڀرجي نه وڃي ڪل هڪ ئي قطار ورهائين ٿا، پوءِ نئين قطار شروع ٿئي ٿي. ليبل نمبر سان گڏ، ٻئي ڪالم جي هيٺان وڃي ٿو، يا ڇڏيو وڃي ٿو. ٽيڪس، سروس، راؤنڊنگ ۽ ادائگي جون لائنون “ذيلي ڪل” جي پٺيان هلن ٿيون.
 reprint_incl	ڇپائي ۾
 reprint_skip	ڇڏيو
 reprint_skip_meta	بحالي ڇپائي کي ڇڏي ڏيو
@@ -178,20 +197,20 @@ snack_secs_ph	سيڪنڊ (3–60، ڊيفالٽ 10)
 snack_secs_save	خبردار وقت محفوظ ڪريو
 snack_secs_saved	خبردار وقت محفوظ ٿيو — {n} سيڪنڊ
 settings_sec_whatsapp	WhatsApp
-whatsapp_cloud_help	Use your own Meta WhatsApp Cloud API. Create a System User token with whatsapp_business_messaging (temporary dashboard tokens expire). Credentials stay on this Server only — never on extra tills. Accepted means Meta took the request, not that the guest received it.
-whatsapp_phone_id_ph	Phone Number ID
-whatsapp_token_ph	Access Token (leave blank to keep)
-whatsapp_template_ph	Bill template name (optional)
-whatsapp_template_lang_ph	Template language (e.g. en)
-whatsapp_enable	Enable
+whatsapp_cloud_help	پنهنجو Meta WhatsApp Cloud API استعمال ڪريو. whatsapp_business_messaging سان هڪ System User ٽوڪن ٺاهيو (ڊيش بورڊ جا عارضي ٽوڪن ختم ٿي ويندا آهن). هي معلومات رڳو هن Server تي رهي ٿي — اضافي ڪيش ڪائونٽرن تي ڪڏهن به نه. “قبول” جو مطلب آهي ته Meta درخواست ورتي، اهو نه ته مهمان کي پيغام ملي ويو.
+whatsapp_phone_id_ph	فون نمبر ID
+whatsapp_token_ph	رسائي ٽوڪن (ساڳيو رکڻ لاءِ خالي ڇڏيو)
+whatsapp_template_ph	بل ٽيمپليٽ جو نالو (اختياري)
+whatsapp_template_lang_ph	ٽيمپليٽ جي ٻولي (مثال en)
+whatsapp_enable	چالو ڪريو
 whatsapp_disable	Off
-whatsapp_save	Save WhatsApp
-whatsapp_test	Test connection
-whatsapp_disconnect	Disconnect
-whatsapp_send_bill	Send via WhatsApp
+whatsapp_save	WhatsApp محفوظ ڪريو
+whatsapp_test	ڳانڍاپو جاچيو
+whatsapp_disconnect	ڳانڍاپو ختم ڪريو
+whatsapp_send_bill	WhatsApp ذريعي موڪليو
 whatsapp_consent	WhatsApp OK
-whatsapp_consent_help	Guest agreed to receive WhatsApp messages. A phone number alone is not consent.
-whatsapp_server_only	Configure WhatsApp on the shop Server device
+whatsapp_consent_help	مهمان WhatsApp پيغام وصول ڪرڻ تي راضي ٿيو آهي. رڳو فون نمبر هجڻ رضامندي ناهي.
+whatsapp_server_only	WhatsApp کي دڪان جي Server ڊوائيس تي سيٽ ڪريو
 settings_sec_backup	بيڪ اپ ۽ بحالي
 settings_sec_diag	تشخيص
 settings_sec_privacy	رازداري
@@ -637,7 +656,7 @@ choose_device_use	Server يا Client چونڊيو.
 paired_note	جوڙو ٿيل. وڪرو ڪرڻ لاءِ آنلاڪ ڪريو، يا تازو ڪرڻ لاءِ ريفريش ڪريو.
 last_update_at	آخري تازه ڪاري: {time}.
 pair_intro	سرور ڳوليو، يا انجو پتو ۽ پئيرنگ ڪوڊ لکو.
-pair_resume_hint	Already paired — enter your shop PIN, or Forget this shop to pair another.
+pair_resume_hint	اڳ ۾ ئي جڙيل آهي — پنهنجي دڪان جو PIN داخل ڪريو، يا ٻئي دڪان سان جوڙڻ لاءِ “ھن دڪان کي وساريو” دٻايو.
 queue_waiting	دوڪان تائين پهچڻ جو انتظار ({n}):
 queue_tries	ڪوشش ڪئي {n} ڀيرا · آخري جواب: {e}
 save_backup_copy	بيڪ اپ ڪاپي محفوظ ڪريو...
@@ -754,13 +773,18 @@ station_vps_dd	هن اسٽيشن جا پرِنٽر
 station_vps_dd_n	{n} پرنٽر(س) · تبديل ڪرڻ لاءِ ٽيپ ڪريو
 bill_printers_dd	بل لاءِ پرنٽر
 bill_printers_dd_n	{n} پرنٽر(ز) بل لاءِ · تبديل ڪرڻ لاءِ ٽيپ ڪريو
-paper_heading	ڪاغذ
+paper_heading	ورچوئل ڪاغذ
 paper_size	{w} × {h} mm
 paper_roll	{w} mm رول
 paper_not_set	ڪاغذ اڃا معلوم ناهي
-paper_length_mm	ڊيگهه (mm)
-printer_paper_help	هن پرنٽر جو ڪاغذ mm ۾. خالي ڊيگهه جو مطلب رول: هر پرچي پنهنجي مواد جيتري ڊگهي ٿيندي آهي. پرنٽر ڳوليو خالي ڪاغذ پرنٽر جي ڊرائيور مان ڀري ٿو (نه ٻڌائي سگهي ته 80 mm رول) ۽ اڳ ۾ مقرر ڪاغذ ڪڏهن به نه بدلائيندو آهي.
-preview_help	هيٺ چونڊيل پرنٽر جي ڪاغذ تي هيءَ پرچي، جيئن اتي ڇپجي ٿي: پرنٽر جتي پهچي ٿو ان مٿئين کاٻي ڪنڊ کان اصل ماپ ۾ (ڀورو: ڪنارا جتي نٿو پهچي)، ڊگهي پرچي وڌيڪ صفحن تي، ڪاغذ جي ڪناري کان اڳتي سڀ ڪٽجي وڃي ٿو. پرنٽر چونڊڻ سان رڳو اڳ-نظارو بدلجي ٿو؛ هر پرنٽر جو ڪاغذ پرنٽر ۾ مقرر ٿئي ٿو.
+virtual_width_mm	ورچوئل ويڪر (mm)
+virtual_length_mm	ورچوئل ڊيگهه (mm)
+reported_width_mm	ٻڌايل ويڪر (mm)
+reported_length_mm	ٻڌايل ڊيگهه (mm)
+reported_paper	ٻڌايل: {paper}
+virtual_paper	ورچوئل: {paper}
+printer_paper_help	ٻڌايل اهو ڪاغذ آهي جنهن تي هن پرنٽر جو ڊرائيور مقرر آهي؛ ايپ ان کي رڳو پڙهي ٿي، ۽ N/A جو مطلب آهي ته پڇڻ لاءِ ڪو ڊرائيور ناهي. ورچوئل اهو ڪاغذ آهي جيڪو توهان چئو ٿا ته واقعي پرنٽر ۾ آهي، mm ۾؛ خالي ڊيگهه جو مطلب رول آهي. پرنٽر پنهنجي ڪاغذ تي ڇاپي ٿو؛ ورچوئل ڪاغذ ايپ کي ٻڌائي ٿو ته ان مان ڪيترو اصل ڪاغذ آهي، اڳ-نظاري، صفحي جي ڊيگهه ۽ پرچي جي جاءِ لاءِ. پرنٽر ڳوليو خالي ورچوئل ڪاغذ ڀري ٿو ۽ توهان جو مقرر ڪيل ڪڏهن به نه بدلائيندو آهي.
+preview_help	هيءَ پرچي جيئن هيٺ چونڊيل پرنٽر تي ڇپجي ٿي، ان جي ورچوئل ڪاغذ تي اصل ماپ ۾. اڇي جاءِ تي ڇپجي ٿو، ڀوري ڪاغذ تائين پرنٽر نٿو پهچي، ۽ ڦڪي مس ڪٽجي وڃي ٿي. نو خانا ڪاغذ آهن: جتي پرچي هجڻ گهرجي اتي ٽيپ ڪريو. ڊگهي پرچي وڌيڪ صفحن تي وڃي ٿي. پرنٽر چونڊڻ سان رڳو اڳ-نظارو بدلجي ٿو.
 job_layout	خاڪو
 job_delivery	نوڪري ڪيئن موڪلي وڃي ٿي
 job_delivery_help	او ايس دستاويز، را بائيٽس، يا ESC/POS. بل ۽ باورچی خانه جو ٽڪيٽ هر هڪ پنهنجو رکندا آهن. ڪنهن به نوڪري کي ڪنهن به پرنٽر تي موڪلي سگهجي ٿو جيڪو Find محفوظ ڪيو آهي.
@@ -1048,7 +1072,7 @@ add_a_table	هڪ ٽيبل شامل ڪريو
 add_station_heading	هڪ باورچی خانه اسٽيشن شامل ڪريو
 categories_help	مٿين شئي کي ان درجي هيٺ داخل ڪرڻ لاءِ استعمال تي ٽيپ ڪريو. فوٽو درجي کي تصوير ڏئي ٿو؛ جيڪڏهن تصوير نه هجي ته اها ان جا ابتدا ڏيکاري ٿي.
 dish_search_ph	شئي جو نالو — اسان جا کاڌا ڳوليو يا پنهنجو ٽائيپ ڪريو
-tile_free	مفت
+tile_free	خالي
 tile_occupied	مصروف
 tile_food_ready	کاڌو تيار آهي
 tile_bill_printed	بل ڇپيل
@@ -1163,7 +1187,7 @@ kot_show_station	اسٽیشن
 kot_hide_station	اسٽیشن لڪاءِ
 kot_show_table	ٽيبل
 kot_hide_table	ٽيبل لڪاءِ
-kot_show_kot_no	KOT ناهي
+kot_show_kot_no	KOT نمبر
 kot_hide_kot_no	لڪائيندڙ KOT ناهي
 kot_width	پريوئو لپيٽو (مواد جي ويڪر کي KOT ٽيب تي سيٽ ڪريو)
 kot_width_58	58 mm
@@ -1238,7 +1262,7 @@ on_your_menu	توهان جي مينيو تي
 edit	سنواريو
 schemes	رٿائون / آڇون
 schemes_help	BOGO، سيڪڙو-رعايت، ۽ مقرر ڪيل ڪامبوز۔ ڪامبوز تيار ڪچن لائينن ڏانهن وڌن ٿا جڏهن موڪليو وڃي KOT؛ جزا رکيا ويندا آهن جيستائين ڪامبو عمل ۾ اچي. مثال: 2 Thali خريد ڪريو 1 Chaas حاصل ڪريو
-scheme_bogo_ph	Buy 2 Thali get 1 Chaas
+scheme_bogo_ph	2 ٿالهي خريد ڪريو، 1 ڇاڇ حاصل ڪريو
 add_scheme	شامل ڪريو BOGO
 schedule_ph	ڪلاڪ / خوشي جو وقت — سومر-جمعو 07:00-11:00 يا HappyHour 17:00-19:00=150
 upi_qr	UPI QR
@@ -1266,8 +1290,8 @@ taxable_value	ٽيڪس لائق قيمت
 gst_inside_price_note	({tax} سميت)
 start_with_template	اسان جي مينيو ٽيمپليٽ سان شروع ڪريو
 template_heading	اسان جو مينيو ٽيمپليٽ
-template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
-template_download_shelf	Download photo shelf
+template_need_download	ڊشز جي عوامي فوٽو شيلف (~1,459 ڊشز) ڊائون لوڊ ڪريو، پوءِ جيڪي نالا ناهن اهي پنهنجي مينيو ۾ درآمد ڪريو.
+template_download_shelf	فوٽو شيلف ڊائون لوڊ ڪريو
 template_info	{c} ڪيٽيگريون ۽ {d} ڊشون فوٽوز سان، شامل ڪرڻ لاءِ تيار. قيمتون ₹0 کان شروع ٿين ٿيون — پنهنجي قيمت پوءِ مقرر ڪريو.
 template_import	مڪمل ٽيمپليٽ درآمد ڪريو
 template_confirm	{d} ڊشز انهن جي قسمن سان شامل ڪريو؟ جيڪي ڊشز توهان وٽ اڳ ۾ آهن، اهي جيئن آهن تيئن رهنديون.

@@ -192,7 +192,7 @@ snack_secs_save	Takarítson meg riasztási időt
 snack_secs_saved	Mentett riasztási idő — {n} másodperc
 snack_secs_bad	Írja be a másodperceket számként (3–60)
 cancelled	Törölve
-cancelling	Cancelling…
+cancelling	Cancellingâ¦
 cancel	Mégsem
 opening_client	Ügyfél megnyitása…
 preparing_desk	Asztal előkészítése…
@@ -501,13 +501,18 @@ job_size	Betűméret
 job_size_ph	például 18, 20, 26…
 test_receipt_format	Teszt nyugta
 test_label_format	Tesztcímke
-paper_heading	Papír
+paper_heading	Virtuális papír
 paper_size	{w} × {h} mm
 paper_roll	{w} mm-es tekercs
 paper_not_set	a papír még nem ismert
-paper_length_mm	Hossz (mm)
-printer_paper_help	A nyomtató papírja mm-ben. Az üres Hossz tekercset jelent: minden blokk olyan hosszú, mint a tartalma. A Keressen nyomtatókat kitölti az üres papírt a nyomtató illesztőprogramjából (80 mm-es tekercs, ha az nem tudja megmondani), és soha nem módosítja a már beállítottat.
-preview_help	Ez a blokk a lent kiválasztott nyomtató papírján, ahogy ott nyomtatódik: valós méretben attól a bal felső saroktól, ameddig a nyomtató elér (szürke: szélek, ahová nem ér el), a hosszú blokk több lapon, ami túlnyúlik a papír szélén, levágódik. A nyomtató kiválasztása csak az előnézetet módosítja; minden nyomtató papírját a Nyomtatók alatt kell beállítani.
+virtual_width_mm	Virtuális szélesség (mm)
+virtual_length_mm	Virtuális hossz (mm)
+reported_width_mm	Jelentett szélesség (mm)
+reported_length_mm	Jelentett hossz (mm)
+reported_paper	Jelentett: {paper}
+virtual_paper	Virtuális: {paper}
+printer_paper_help	A jelentett az a papír, amelyre ennek a nyomtatónak az illesztőprogramja be van állítva; az alkalmazás csak olvassa, a(z) N/A pedig azt jelenti, hogy nincs megkérdezhető illesztőprogram. A virtuális az a papír, amelyről Ön azt mondja, hogy valóban a nyomtatóban van, mm-ben; az üres hossz tekercset jelent. A nyomtató a saját papírjára nyomtat; a virtuális papír megmondja az alkalmazásnak, hogy ebből mennyi a valódi papír, az előnézethez, az oldalhosszhoz és a blokk helyéhez. A(z) Keressen nyomtatókat kitölti az üres virtuális papírt, és soha nem módosítja azt, amelyet Ön állított be.
+preview_help	Ez a blokk úgy, ahogy az alább kiválasztott nyomtatón nyomtatódik, valós méretben a virtuális papírján. A fehér az, ahová nyomtat, a szürke papír a nyomtató hatókörén kívül esik, a halvány festék pedig levágódik. A kilenc négyzet a papír: koppintson oda, ahol a blokknak lennie kell. A hosszú blokk további oldalakon folytatódik. A nyomtató kiválasztása csak az előnézetet változtatja meg.
 slip_col_width	Szélesség (mm)
 no_printer_assigned	Nincs nyomtató
 printer_target_default	a számítógép szokásos nyomtatója (üres cím)

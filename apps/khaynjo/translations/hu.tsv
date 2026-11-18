@@ -101,6 +101,19 @@ bill_item_col_sep	Oszlopszabályok
 slip_columns	Oszlopok
 slip_col_header	Fejléc
 bill_line_logo	Logó
+bill_line_shop	Bolt
+bill_line_address	Bolt címe
+bill_line_fssai	FSSAI
+bill_line_title	Cím
+bill_line_customer	Ügyfél
+bill_line_bill_no	Számla sz.
+bill_line_time	Idő
+bill_line_cashier	Pénztáros
+bill_line_table	Étkezőasztal
+bill_line_items	Tételek
+bill_line_total	Összesen
+bill_line_footer	Lábléc
+bill_line_upi	UPI
 bill_logo_picture	Kép
 bill_logo_choose	Kép kiválasztása
 bill_logo_remove	Kép eltávolítása
@@ -128,6 +141,12 @@ bill_item_piece_off	Ki
 bill_total_qty	Teljes mennyiség
 bill_total_subtotal	Részösszeg
 bill_total_grand	Végösszeg
+bill_total_number_under	Szám ez alatt
+bill_total_caption_under	Címke ez alatt
+bill_total_own_line	Saját sor
+bill_total_caption_with	A számmal együtt
+bill_total_caption_none	Nincs címke
+bill_total_place_help	Saját sor: ez az összeg külön sorban nyomtatódik. Oszlop alatt a száma abban a tételoszlopban nyomtatódik, ennek a sornak a méretével és vastagságával; az összegek egy sort osztanak meg, amíg egy oszlop foglalt nem lesz, akkor új sor kezdődik. A címke a számmal együtt, egy másik oszlop alatt áll, vagy kimarad. Az adó, a szervizdíj, a kerekítés és a fizetés sorai a(z) Részösszeg helyét követik.
 reprint_incl	Nyomtatásban
 reprint_skip	Kihagyás
 reprint_skip_meta	A helyreállítási nyomtatás kihagyása
@@ -178,20 +197,20 @@ snack_secs_ph	Másodpercek (3–60, alapértelmezett 10)
 snack_secs_save	Takarítson meg riasztási időt
 snack_secs_saved	Mentett riasztási idő — {n} másodperc
 settings_sec_whatsapp	WhatsApp
-whatsapp_cloud_help	Use your own Meta WhatsApp Cloud API. Create a System User token with whatsapp_business_messaging (temporary dashboard tokens expire). Credentials stay on this Server only — never on extra tills. Accepted means Meta took the request, not that the guest received it.
-whatsapp_phone_id_ph	Phone Number ID
-whatsapp_token_ph	Access Token (leave blank to keep)
-whatsapp_template_ph	Bill template name (optional)
-whatsapp_template_lang_ph	Template language (e.g. en)
-whatsapp_enable	Enable
+whatsapp_cloud_help	Használja saját Meta WhatsApp Cloud API-ját. Hozzon létre System User tokent whatsapp_business_messaging jogosultsággal (az irányítópult ideiglenes tokenjei lejárnak). Az adatok csak ezen a Szerveren maradnak — az extra kasszákon soha. Az „Elfogadva” azt jelenti, hogy a Meta átvette a kérést, nem azt, hogy a vendég megkapta.
+whatsapp_phone_id_ph	Telefonszám-azonosító
+whatsapp_token_ph	Hozzáférési token (hagyja üresen a megtartáshoz)
+whatsapp_template_ph	Számlasablon neve (nem kötelező)
+whatsapp_template_lang_ph	Sablon nyelve (pl. en)
+whatsapp_enable	Engedélyezés
 whatsapp_disable	Off
-whatsapp_save	Save WhatsApp
-whatsapp_test	Test connection
-whatsapp_disconnect	Disconnect
-whatsapp_send_bill	Send via WhatsApp
+whatsapp_save	WhatsApp mentése
+whatsapp_test	Kapcsolat tesztelése
+whatsapp_disconnect	Leválasztás
+whatsapp_send_bill	Küldés WhatsAppon
 whatsapp_consent	WhatsApp OK
-whatsapp_consent_help	Guest agreed to receive WhatsApp messages. A phone number alone is not consent.
-whatsapp_server_only	Configure WhatsApp on the shop Server device
+whatsapp_consent_help	A vendég beleegyezett, hogy WhatsApp-üzeneteket kapjon. A telefonszám önmagában nem beleegyezés.
+whatsapp_server_only	Állítsa be a WhatsAppot a bolt Szerver eszközén
 settings_sec_backup	Biztonsági mentés és visszaállítás
 settings_sec_diag	Diagnosztika
 settings_sec_privacy	Adatvédelem
@@ -637,7 +656,7 @@ choose_device_use	Válassza a Szerver vagy a Kliens lehetőséget.
 paired_note	Párosítva. Oldja fel az eladáshoz, vagy frissítse a legújabbat.
 last_update_at	Utolsó frissítés: {time}.
 pair_intro	Keresse meg a szervert, vagy írja be a címét és a párosítási kódot.
-pair_resume_hint	Already paired — enter your shop PIN, or Forget this shop to pair another.
+pair_resume_hint	Már párosítva — adja meg a boltja PIN-kódját, vagy koppintson a(z) „Felejtsd el ezt a boltot” gombra másik párosításához.
 queue_waiting	Várakozás az üzletbe ({n}):
 queue_tries	{n} alkalommal próbálva · utolsó válasz: {e}
 save_backup_copy	Biztonsági másolat mentése…
@@ -754,13 +773,18 @@ station_vps_dd	Nyomtatók ehhez az állomáshoz
 station_vps_dd_n	{n} nyomtatók · érintse meg a módosításhoz
 bill_printers_dd	Nyomtatók a számlához
 bill_printers_dd_n	{n} nyomtatók a számlához · érintse meg a módosításhoz
-paper_heading	Papír
+paper_heading	Virtuális papír
 paper_size	{w} × {h} mm
 paper_roll	{w} mm-es tekercs
 paper_not_set	a papír még nem ismert
-paper_length_mm	Hossz (mm)
-printer_paper_help	A nyomtató papírja mm-ben. Az üres Hossz tekercset jelent: minden blokk olyan hosszú, mint a tartalma. A Keressen nyomtatókat kitölti az üres papírt a nyomtató illesztőprogramjából (80 mm-es tekercs, ha az nem tudja megmondani), és soha nem módosítja a már beállítottat.
-preview_help	Ez a blokk a lent kiválasztott nyomtató papírján, ahogy ott nyomtatódik: valós méretben attól a bal felső saroktól, ameddig a nyomtató elér (szürke: szélek, ahová nem ér el), a hosszú blokk több lapon, ami túlnyúlik a papír szélén, levágódik. A nyomtató kiválasztása csak az előnézetet módosítja; minden nyomtató papírját a Nyomtatók alatt kell beállítani.
+virtual_width_mm	Virtuális szélesség (mm)
+virtual_length_mm	Virtuális hossz (mm)
+reported_width_mm	Jelentett szélesség (mm)
+reported_length_mm	Jelentett hossz (mm)
+reported_paper	Jelentett: {paper}
+virtual_paper	Virtuális: {paper}
+printer_paper_help	A jelentett az a papír, amelyre ennek a nyomtatónak az illesztőprogramja be van állítva; az alkalmazás csak olvassa, a(z) N/A pedig azt jelenti, hogy nincs megkérdezhető illesztőprogram. A virtuális az a papír, amelyről Ön azt mondja, hogy valóban a nyomtatóban van, mm-ben; az üres hossz tekercset jelent. A nyomtató a saját papírjára nyomtat; a virtuális papír megmondja az alkalmazásnak, hogy ebből mennyi a valódi papír, az előnézethez, az oldalhosszhoz és a blokk helyéhez. A(z) Keressen nyomtatókat kitölti az üres virtuális papírt, és soha nem módosítja azt, amelyet Ön állított be.
+preview_help	Ez a blokk úgy, ahogy az alább kiválasztott nyomtatón nyomtatódik, valós méretben a virtuális papírján. A fehér az, ahová nyomtat, a szürke papír a nyomtató hatókörén kívül esik, a halvány festék pedig levágódik. A kilenc négyzet a papír: koppintson oda, ahol a blokknak lennie kell. A hosszú blokk további oldalakon folytatódik. A nyomtató kiválasztása csak az előnézetet változtatja meg.
 job_layout	Elrendezés
 job_delivery	Hogyan küldik el a munkát
 job_delivery_help	OS dokumentum, nyers bájtok vagy ESC/POS. The bill and the kitchen ticket each keep their own. Bármelyik feladat elküldhető bármely olyan nyomtatóra, amelyet a Find elmentett.
@@ -1163,7 +1187,7 @@ kot_show_station	Állomás
 kot_hide_station	Állomás elrejtése
 kot_show_table	Étkezőasztal
 kot_hide_table	Az étkezőasztal elrejtése
-kot_show_kot_no	KOT Nem
+kot_show_kot_no	KOT sz.
 kot_hide_kot_no	Elrejtés KOT Nem
 kot_width	Előnézet tördelése (a tartalom szélességének beállítása a KOT lapon)
 kot_width_58	58 mm
@@ -1266,8 +1290,8 @@ taxable_value	Adóköteles érték
 gst_inside_price_note	({tax} beleértve)
 start_with_template	Kezdje menüsablonunkkal
 template_heading	Menüsablonunk
-template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
-template_download_shelf	Download photo shelf
+template_need_download	Töltse le az ételek nyilvános fotópolcát (~1459 étel), majd importálja a hiányzó neveket a menüjébe.
+template_download_shelf	Fotópolc letöltése
 template_info	{c} kategóriák és {d} ételek fotókkal, készen a hozzáadásra. Az árak 0 ₹-tól kezdődnek – állítsa be később.
 template_import	Teljes sablon importálása
 template_confirm	Hozzáad {d} ételeket a kategóriáikkal? A már elkészített ételek olyanok maradnak, amilyenek.

@@ -192,7 +192,7 @@ snack_secs_save	Xəbərdarlıq vaxtını saxla
 snack_secs_saved	Xəbərdarlıq vaxtı saxlandı — {n} saniyə
 snack_secs_bad	Saniyələri rəqəm olaraq daxil edin (3–60)
 cancelled	Ləğv olundu
-cancelling	Cancelling…
+cancelling	Cancellingâ¦
 cancel	Ləğv
 opening_client	Klient açılır…
 preparing_desk	Masa hazırlanır…
@@ -501,13 +501,18 @@ job_size	Şrift ölçüsü
 job_size_ph	məs. 18, 20, 26…
 test_receipt_format	Sınaq qəbz
 test_label_format	Sınaq etiket
-paper_heading	Kağız
+paper_heading	Virtual kağız
 paper_size	{w} × {h} mm
 paper_roll	{w} mm rulon
 paper_not_set	kağız hələ məlum deyil
-paper_length_mm	Uzunluq (mm)
-printer_paper_help	Bu printerin kağızı mm ilə. Boş Uzunluq rulondur: hər çek məzmunu qədər uzun olur. Printerləri tap boş kağızı printerin sürücüsündən doldurur (deyə bilmirsə 80 mm rulon) və artıq təyin olunmuş kağızı heç vaxt dəyişmir.
-preview_help	Bu çek aşağıda seçilmiş printerin kağızında, orada çap olunduğu kimi: printerin çata bildiyi yuxarı sol küncdən real ölçüdə (boz: çata bilmədiyi kənarlar), uzun çek daha çox vərəqdə, kağızın kənarından kənara çıxan hər şey kəsilir. Printer seçmək yalnız önizləməni dəyişir; hər printerin kağızı Printerlər bölməsində təyin olunur.
+virtual_width_mm	Virtual en (mm)
+virtual_length_mm	Virtual uzunluq (mm)
+reported_width_mm	Bildirilən en (mm)
+reported_length_mm	Bildirilən uzunluq (mm)
+reported_paper	Bildirilən: {paper}
+virtual_paper	Virtual: {paper}
+printer_paper_help	Bildirilən bu printerin sürücüsünün qurulduğu kağızdır; tətbiq onu yalnız oxuyur, «Yoxdur» isə soruşulacaq sürücünün olmadığını bildirir. Virtual printerdə həqiqətən olduğunu dediyiniz kağızdır, mm ilə; boş uzunluq rulon deməkdir. Printer öz kağızına çap edir; virtual kağız tətbiqə onun nə qədərinin həqiqi kağız olduğunu bildirir: önizləmə, səhifə uzunluğu və çekin yeri üçün. Printerləri tap boş virtual kağızı doldurur və sizin təyin etdiyinizi heç vaxt dəyişmir.
+preview_help	Bu çek aşağıda seçilmiş printerdə çap olunduğu kimi, onun virtual kağızında həqiqi ölçüdə. Ağ çap olunan yerdir, boz kağıza printer çatmır, solğun mürəkkəb isə kəsilir. Doqquz kvadrat kağızdır: çekin dayanmalı olduğu yerə toxunun. Uzun çek növbəti səhifələrə keçir. Printer seçmək yalnız önizləməni dəyişir.
 slip_col_width	En (mm)
 no_printer_assigned	Printer yoxdur
 printer_target_default	bu kompüterin adi printeri (ünvan boş)

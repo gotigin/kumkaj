@@ -101,6 +101,19 @@ bill_item_col_sep	បន្ទាត់ជួរឈរ
 slip_columns	ជួរឈរ
 slip_col_header	ក្បាល
 bill_line_logo	ឡូហ្គោ
+bill_line_shop	ហាង
+bill_line_address	អាសយដ្ឋាន
+bill_line_fssai	FSSAI
+bill_line_title	ចំណងជើង
+bill_line_customer	អតិថិជន
+bill_line_bill_no	លេខវិក្កយបត្រ
+bill_line_time	ម៉ោង
+bill_line_cashier	អ្នកគិតលុយ
+bill_line_table	តុ
+bill_line_items	ទំនិញ
+bill_line_total	សរុប
+bill_line_footer	បាត
+bill_line_upi	UPI
 bill_logo_picture	រូបភាព
 bill_logo_choose	ជ្រើសរូបភាព
 bill_logo_remove	ដករូបភាពចេញ
@@ -128,6 +141,12 @@ bill_item_piece_off	បិទ
 bill_total_qty	សរុបបរិមាណ
 bill_total_subtotal	សរុបរង
 bill_total_grand	សរុបធំ
+bill_total_number_under	លេខនៅក្រោម
+bill_total_caption_under	ស្លាកនៅក្រោម
+bill_total_own_line	បន្ទាត់ផ្ទាល់ខ្លួន
+bill_total_caption_with	ជាមួយលេខ
+bill_total_caption_none	គ្មានស្លាក
+bill_total_place_help	“បន្ទាត់ផ្ទាល់ខ្លួន” បោះពុម្ពសរុបនេះដាច់តែឯង។ នៅក្រោមជួរឈរ លេខរបស់វាត្រូវបោះពុម្ពក្នុងជួរឈរមុខទំនិញនោះ តាមទំហំ និងកម្រាស់របស់បន្ទាត់នេះ សរុបទាំងឡាយចែកជួរដេកតែមួយរហូតដល់ជួរឈរណាមួយត្រូវបានប្រើ រួចជួរដេកថ្មីចាប់ផ្ដើម។ ស្លាកទៅជាមួយលេខ នៅក្រោមជួរឈរផ្សេង ឬមិនបោះពុម្ព។ បន្ទាត់ពន្ធ សេវា ការបង្គត់ និងការបង់ប្រាក់ ធ្វើតាម “សរុបរង”។
 reprint_incl	រួមក្នុងការបោះពុម្ព
 reprint_skip	រំលង
 reprint_skip_meta	រំលងការបោះពុម្ពម្ដងទៀត
@@ -178,20 +197,20 @@ snack_secs_ph	វិនាទី (3–60 លំនាំដើម 10)
 snack_secs_save	រក្សាទុករយៈពេលជូនដំណឹង
 snack_secs_saved	រយៈពេលជូនដំណឹងបានរក្សាទុក — {n} វិនាទី
 settings_sec_whatsapp	WhatsApp
-whatsapp_cloud_help	Use your own Meta WhatsApp Cloud API. Create a System User token with whatsapp_business_messaging (temporary dashboard tokens expire). Credentials stay on this Server only — never on extra tills. Accepted means Meta took the request, not that the guest received it.
-whatsapp_phone_id_ph	Phone Number ID
-whatsapp_token_ph	Access Token (leave blank to keep)
-whatsapp_template_ph	Bill template name (optional)
-whatsapp_template_lang_ph	Template language (e.g. en)
-whatsapp_enable	Enable
+whatsapp_cloud_help	ប្រើ Meta WhatsApp Cloud API ផ្ទាល់ខ្លួនរបស់អ្នក។ បង្កើតថូខឹន System User ដែលមាន whatsapp_business_messaging (ថូខឹនបណ្ដោះអាសន្នពីផ្ទាំងគ្រប់គ្រងនឹងផុតកំណត់)។ ព័ត៌មាននៅតែលើ Server នេះប៉ុណ្ណោះ — មិនដែលនៅលើបញ្ជរបន្ថែមទេ។ “បានទទួលយក” មានន័យថា Meta បានទទួលសំណើ មិនមែនថាភ្ញៀវបានទទួលទេ។
+whatsapp_phone_id_ph	ID លេខទូរស័ព្ទ
+whatsapp_token_ph	ថូខឹនចូលប្រើ (ទុកទទេដើម្បីរក្សាដដែល)
+whatsapp_template_ph	ឈ្មោះគំរូវិក្កយបត្រ (ស្រេចចិត្ត)
+whatsapp_template_lang_ph	ភាសាគំរូ (ឧ. en)
+whatsapp_enable	បើក
 whatsapp_disable	Off
-whatsapp_save	Save WhatsApp
-whatsapp_test	Test connection
-whatsapp_disconnect	Disconnect
-whatsapp_send_bill	Send via WhatsApp
+whatsapp_save	រក្សាទុក WhatsApp
+whatsapp_test	សាកការភ្ជាប់
+whatsapp_disconnect	ផ្ដាច់ការភ្ជាប់
+whatsapp_send_bill	ផ្ញើតាម WhatsApp
 whatsapp_consent	WhatsApp OK
-whatsapp_consent_help	Guest agreed to receive WhatsApp messages. A phone number alone is not consent.
-whatsapp_server_only	Configure WhatsApp on the shop Server device
+whatsapp_consent_help	ភ្ញៀវបានយល់ព្រមទទួលសារ WhatsApp។ មានតែលេខទូរស័ព្ទមិនមែនជាការយល់ព្រមទេ។
+whatsapp_server_only	កំណត់ WhatsApp នៅលើឧបករណ៍ Server របស់ហាង
 settings_sec_backup	ច្បាប់ចម្លង និងស្ដារ
 settings_sec_diag	ពិនិត្យបញ្ហា
 settings_sec_privacy	ឯកជនភាព
@@ -637,7 +656,7 @@ choose_device_use	ជ្រើស Server ឬម៉ាស៊ីនភ្ញៀវ
 paired_note	បានផ្គូផ្គង។ ដោះសោដើម្បីលក់ ឬធ្វើឱ្យស្រស់សម្រាប់ថ្មីបំផុត។
 last_update_at	ធ្វើបច្ចុប្បន្នភាពចុងក្រោយ៖ {time}។
 pair_intro	ស្វែងរក server ឬវាយអាសយដ្ឋាន និងកូដផ្គូផ្គងរបស់វា។
-pair_resume_hint	Already paired — enter your shop PIN, or Forget this shop to pair another.
+pair_resume_hint	បានផ្គូផ្គងរួចហើយ — បញ្ចូល PIN ហាងរបស់អ្នក ឬចុច “ភ្លេចហាងនេះ” ដើម្បីផ្គូផ្គងហាងផ្សេង។
 queue_waiting	កំពុងរង់ចាំដល់ហាង ({n})៖
 queue_tries	បានសាក {n} ដង · ចម្លើយចុងក្រោយ៖ {e}
 save_backup_copy	រក្សាទុកច្បាប់ចម្លង…
@@ -754,13 +773,18 @@ station_vps_dd	ម៉ាស៊ីនសម្រាប់ស្ថានីយ�
 station_vps_dd_n	ម៉ាស៊ីន {n} · ប៉ះដើម្បីប្ដូរ
 bill_printers_dd	ម៉ាស៊ីនសម្រាប់វិក្កយបត្រ
 bill_printers_dd_n	ម៉ាស៊ីន {n} សម្រាប់វិក្កយបត្រ · ប៉ះដើម្បីប្ដូរ
-paper_heading	ក្រដាស
+paper_heading	ក្រដាសនិម្មិត
 paper_size	{w} × {h} mm
 paper_roll	រមូល {w} mm
 paper_not_set	មិនទាន់ដឹងក្រដាសនៅឡើយ
-paper_length_mm	ប្រវែង (mm)
-printer_paper_help	ក្រដាសរបស់ម៉ាស៊ីនបោះពុម្ពនេះជា mm។ ប្រវែងទទេ គឺជារមូល៖ វិក្កយបត្រនីមួយៗវែងស្មើខ្លឹមសាររបស់វា។ ស្វែងរកម៉ាស៊ីនបោះពុម្ព បំពេញក្រដាសទទេពីកម្មវិធីបញ្ជារបស់ម៉ាស៊ីនបោះពុម្ព (រមូល 80 mm ពេលវាមិនអាចប្រាប់បាន) ហើយមិនដែលប្តូរក្រដាសដែលបានកំណត់រួចទេ។
-preview_help	វិក្កយបត្រនេះនៅលើក្រដាសនៃម៉ាស៊ីនបោះពុម្ពដែលបានជ្រើសខាងក្រោម ដូចដែលវាបោះពុម្ពនៅទីនោះ៖ ទំហំពិតពីជ្រុងខាងលើឆ្វេងដែលម៉ាស៊ីនទៅដល់ (ប្រផេះ៖ គែមដែលវាមិនទៅដល់) វិក្កយបត្រវែងនៅលើសន្លឹកច្រើនទៀត អ្វីដែលហួសគែមក្រដាសត្រូវកាត់ចោល។ ការជ្រើសម៉ាស៊ីនបោះពុម្ពប្តូរតែការមើលជាមុនប៉ុណ្ណោះ; ក្រដាសរបស់ម៉ាស៊ីនបោះពុម្ពនីមួយៗកំណត់នៅក្រោម ម៉ាស៊ីនបោះពុម្ព។
+virtual_width_mm	ទទឹងនិម្មិត (mm)
+virtual_length_mm	ប្រវែងនិម្មិត (mm)
+reported_width_mm	ទទឹងដែលបានរាយការណ៍ (mm)
+reported_length_mm	ប្រវែងដែលបានរាយការណ៍ (mm)
+reported_paper	បានរាយការណ៍៖ {paper}
+virtual_paper	និម្មិត៖ {paper}
+printer_paper_help	បានរាយការណ៍ គឺជាក្រដាសដែលកម្មវិធីបញ្ជារបស់ម៉ាស៊ីនបោះពុម្ពនេះត្រូវបានកំណត់ កម្មវិធីគ្រាន់តែអានវាប៉ុណ្ណោះ ហើយ “—” មានន័យថាគ្មានកម្មវិធីបញ្ជាសម្រាប់សួរទេ។ និម្មិត គឺជាក្រដាសដែលអ្នកនិយាយថាពិតជាមាននៅក្នុងម៉ាស៊ីនបោះពុម្ព គិតជា mm ប្រវែងទទេមានន័យថារមូល។ ម៉ាស៊ីនបោះពុម្ពបោះពុម្ពលើក្រដាសរបស់វាផ្ទាល់ ក្រដាសនិម្មិតប្រាប់កម្មវិធីថាតើប៉ុន្មានផ្នែកនៃវាជាក្រដាសពិត សម្រាប់ការមើលជាមុន ប្រវែងទំព័រ និងទីតាំងរបស់វិក្កយបត្រ។ ស្វែងរកម៉ាស៊ីនបោះពុម្ព បំពេញក្រដាសនិម្មិតទទេ ហើយមិនដែលផ្លាស់ប្ដូរក្រដាសដែលអ្នកបានកំណត់ឡើយ។
+preview_help	វិក្កយបត្រនេះដូចដែលវាបោះពុម្ពលើម៉ាស៊ីនបោះពុម្ពដែលបានជ្រើសខាងក្រោម ក្នុងទំហំពិតលើក្រដាសនិម្មិតរបស់វា។ ពណ៌សជាកន្លែងដែលបោះពុម្ព ក្រដាសពណ៌ប្រផេះគឺម៉ាស៊ីនបោះពុម្ពទៅមិនដល់ ហើយទឹកថ្នាំស្រាលត្រូវកាត់ចេញ។ ប្រអប់ទាំងប្រាំបួនគឺជាក្រដាស៖ ចុចកន្លែងដែលវិក្កយបត្រគួរស្ថិតនៅ។ វិក្កយបត្រវែងបន្តទៅទំព័របន្ថែម។ ការជ្រើសម៉ាស៊ីនបោះពុម្ពផ្លាស់ប្ដូរតែការមើលជាមុនប៉ុណ្ណោះ។
 job_layout	ប្លង់
 job_delivery	របៀបផ្ញើការងារ
 job_delivery_help	ឯកសារប្រព័ន្ធ បៃឆៅ ឬ ESC/POS។ វិក្កយបត្រ និងសន្លឹកផ្ទះបាយរក្សារបស់ខ្លួន។ ការងារនីមួយៗអាចទៅម៉ាស៊ីនណាដែលស្វែងរកបានរក្សាទុក។
@@ -1266,8 +1290,8 @@ taxable_value	តម្លៃជាប់ពន្ធ
 gst_inside_price_note	({tax} ក្នុងតម្លៃ)
 start_with_template	ចាប់ផ្ដើមដោយគំរូម៉ឺនុយរបស់យើង
 template_heading	គំរូម៉ឺនុយរបស់យើង
-template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
-template_download_shelf	Download photo shelf
+template_need_download	ទាញយកធ្នើររូបថតម្ហូបសាធារណៈ (~1,459 មុខ) រួចនាំចូលឈ្មោះដែលមិនទាន់មានទៅក្នុងម៉ឺនុយរបស់អ្នក។
+template_download_shelf	ទាញយកធ្នើររូបថត
 template_info	ប្រភេទ {c} និងម្ហូប {d} មានរូប រួចរាល់ដើម្បីបន្ថែម។ តម្លៃចាប់ផ្ដើមពី ₹0 — កំណត់របស់អ្នកក្រោយ។
 template_import	នាំចូលគំរូពេញ
 template_confirm	បន្ថែមម្ហូប {d} ជាមួយប្រភេទរបស់វា? ម្ហូបដែលអ្នកមានរួចនៅដដែល។

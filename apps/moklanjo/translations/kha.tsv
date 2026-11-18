@@ -192,7 +192,7 @@ snack_secs_save	Pynsah ia ka por jingpynbna
 snack_secs_saved	Ka por pyntip ba la pynduna — {n} sekhon .
 snack_secs_bad	Pynrung ia ki sekhon kum u nombar (3–60) .
 cancelled	La weng noh
-cancelling	Cancelling…
+cancelling	Cancellingâ¦
 cancel	Pynsangeh
 opening_client	Ka jingplie ia u kliant...
 preparing_desk	Ka jingpynkhreh ia ka miej...
@@ -501,13 +501,18 @@ job_size	Ka jingheh jong ka font
 job_size_ph	kum 18, 20, 26...
 test_receipt_format	Ka jingpdiang test
 test_label_format	Ka jingpynbna test
-paper_heading	Ka shla
+paper_heading	Ka shla virtual
 paper_size	{w} × {h} mm
 paper_roll	ka roll {w} mm
 paper_not_set	ka shla bym pat tip shuh
-paper_length_mm	Ka jingjrong (mm)
-printer_paper_help	Ka shla jong kane ka nongpynmih kot ha mm. Ka jingjrong ba khlem don ka long roll: kawei pa kawei ka slip ka jrong kumba ka jingdon ha ka. Wad ia ki nongpynmih kot ka pynpura ia ka shla ba khlem don na ka driver jong ka nongpynmih kot (roll 80 mm lada kam lah ban ong) bad kam pynkylla ei ei ia kaba la pynbeit.
-preview_help	Kane ka slip ha ka shla jong ka nongpynmih kot ba la jied hapoh, kumba ka pynmih hangta: ha ka jingheh shisha na ka kona khlieh kadiang ba ka nongpynmih kot ka poi (saw-iong: ki kyndon ba kam poi), ka slip ba jrong ha ki sla kiba kham bun, kiei kiei ba palat ia ka kyndon ka shla la ot. Ban jied ka nongpynmih kot ka pynkylla tang ia ka jingpeit lypa; ka shla jong man ka nongpynmih kot la pynbeit hapoh Ki nongpynmih kot.
+virtual_width_mm	Ka jingshah virtual (mm)
+virtual_length_mm	Ka jingjrong virtual (mm)
+reported_width_mm	Ka jingshah ba la pyntip (mm)
+reported_length_mm	Ka jingjrong ba la pyntip (mm)
+reported_paper	La pyntip: {paper}
+virtual_paper	Virtual: {paper}
+printer_paper_help	Ba la pyntip ka dei ka shla ba la buh ha ka driver jong kane ka nongpynmih kot; ka app ka pule tang ia ka, bad “Ym don” ka mut ba ym don driver ban kylli. Virtual ka dei ka shla ba phi ong ba ka don shisha ha ka nongpynmih kot, ha ka mm; ka jingjrong ba khlem don ka dei ka roll. Ka nongpynmih kot ka pynmih ha la ka jong ka shla; ka shla virtual ka iathuh ia ka app katno na ka ka dei ka shla shisha, na ka bynta ka jingpeit lypa, ka jingjrong ka sla bad ka jaka jong ka slip. Wad ia ki nongpynmih kot ka pynpura ia ka shla virtual ba khlem don bad kam ju pynkylla ia kaba phi la buh.
+preview_help	Kane ka slip kumba ka pynmih ha ka nongpynmih kot ba la jied hapoh, ha ka jingheh shisha ha ka shla virtual jong ka. Ba lieh ka dei ka jaka ba ka pynmih, ka shla saw-iong ka nongpynmih kot kam poi, bad ka ink ba jem rong la ot noh. Ki khyndai tylli ki kyntien-saw-dong ki dei ka shla: tap ha ka jaka ba ka slip ka dei ban shong. Ka slip ba jrong ka leit sha kiwei pat ki sla. Ban jied ka nongpynmih kot ka pynkylla tang ia ka jingpeit lypa.
 slip_col_width	Ka jingshah (mm)
 no_printer_assigned	Ka kor shon
 printer_target_default	Ka jingpynmih kot ba ju pyndonkam jong kane ka kompiwtor (ka jaka sah ba thylli)

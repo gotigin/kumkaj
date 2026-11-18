@@ -61,7 +61,7 @@ These were explained in chat many times; they are the requirements.
    ever do it for single size screen — we are supporting all the sizes
    screens with responsive approach." (Lesson 20.)
 9. **The printer owns its paper; the preview shows the content on it**
-   (2026-11-16). Paper width (and length for sheets) is set per printer on
+   (2026-11-16; since 2026-11-17 that paper is the *virtual* paper, rule 11). Paper width (and length for sheets) is set per printer on
    the Printers screen, filled by Find when blank and never lost by a later
    Find. The Bill and KOT screens own the content width only; their
    preview shows the content on the paper of any printer picked above it
@@ -72,7 +72,38 @@ These were explained in chat many times; they are the requirements.
     flexible, bug free in showing the preview and it shouldn't fool user in
     any way, it should show the real expected preview." A wrong value is
     the owner's; a preview or print that differs from the real result is
-    a bug in the app.
+    a bug in the app. **A cut must be seen** (2026-11-17): a 210 mm bill
+    previewed on a 105 mm paper was drawn cut at the paper's edge with
+    nothing past it, so it looked as if the content fit — "showing him
+    that content width perfectly fits inside that paper size". What the
+    print cuts off is drawn past the paper's edge, faded.
+11. **An OS document prints the standard way; the paper typed in the app
+    is virtual** (2026-11-17). The model of the 16th (rule 9) had the app
+    name a page size for every job; prints came out cropped on Windows and
+    the same settings printed differently on Windows and Linux. The app
+    never names, makes up or changes a page size: a job prints on the
+    printer's own page exactly as its driver is set, as from every other
+    app. What the owner types on Printers is the **virtual paper** ("rename
+    paper-width as virtual-paper-width to avoid this sort of confusion
+    again") — what he says is really in the printer; it is never sent to
+    the printer. What the driver says is the **reported paper**, shown
+    read-only ("N/A" when nothing reports it). § Paper and preview.
+12. **The content can be placed on the paper** (2026-11-17): "positioning
+    the content on top/right/left/bottom/top-right/bottom-right/etc" — a
+    3 × 3 grid, one place per format, the paper's own sides.
+13. **Configurable means every element can be placed** (2026-11-17):
+    "why … we aren't allowed to place [Total Qty, Sub Total, Grand Total]
+    in single row ? Why the client won't be able to get Total Qty in the
+    same column as that of Qty ? Grand Total in the same column as Amount ?
+    … All these and such similar things are common sense, why aren't we
+    actually providing the full flexibility and just claiming it?" A
+    restriction the owner hits on the format screen is a bug: lift it, look
+    for its neighbours, and name the ones left. § Bill tab.
+14. **Nothing concrete, nothing made up, nothing unasked** (2026-11-17):
+    "Please do not hardcore anything. Please do not violate anything.
+    Please do not make it concrete to my setup." A new setting or control
+    is discussed first (a Save as PDF button was proposed and not
+    approved — it is not in the app).
 
 ## Printer
 
@@ -80,10 +111,12 @@ Settings → **Printers** is the device list **and** each device’s send method
 
 - **Find printers** reads the OS list (system queues, then network, USB, and
   Bluetooth) and saves it to this shop’s `printers.json` and the running app.
-- **Since 2026-11-16 (owner) each printer also holds its paper**: the list
-  reads `name · paper` (`80 mm roll`, `210 × 297 mm`); tapping a printer
-  opens Width and Length (mm, blank length = roll) where it sits. Find
-  fills a blank paper and never changes one already set (§ Paper and
+- **Each printer holds two papers** (owner, 2026-11-16 / 17): the list
+  reads `name · virtual paper` (`80 mm roll`, `210 × 297 mm`); tapping a
+  printer opens it where it sits — **Reported width / length** (what its
+  driver says it is set to: read-only, "N/A" when nothing reports it) over
+  **Virtual width / length** (mm, typed; blank length = roll). Find fills
+  a blank virtual paper and never changes one already set (§ Paper and
   preview).
 - **Since 2026-11-13 (owner): the screen is Find + the saved list only** —
   names (and, since 2026-11-16, each printer's paper), nothing else. The per-printer send-method chips and the test-page
@@ -240,8 +273,8 @@ Tests: `logo_*` in `print_share.rs`.
 
 | Choice | What the device receives |
 |---|---|
-| **OS document** | A picture of the slip (the preview's picture, bundled fonts), given to the system print queue at its **real size on the printer's paper** (the width × length set for that printer), from the top-left of that paper's printable area (§ Paper and preview). CUPS: one picture per sheet, each exactly the printable width, sent with that paper named (the driver's matching size or `Custom.<w>x<l>mm`; `lp_sheet_options`). Windows: the matching or a custom `PaperSize`, each page drawn from the printable top-left (`windows_slip_script`). Android: the paper picked in the print dialog (`printSlipPages`). |
-| **ESC/POS** | The slip picture (the same picture as the preview) in standard ESC/POS raster: `ESC @`, `GS v 0` bands, feed, cut (`escpos_job_format`). The whole job goes to the picked destination in one go: network `host:port` (connect, send, close), USB, Bluetooth, or the picked system queue as one raw job (`lp -o raw` / `WritePrinter`). |
+| **OS document** | A picture of the slip (the preview's picture, bundled fonts), printed the standard way: on the printer's **own page exactly as its driver is set** — the app names no paper and makes none up. The slip sits at its real size, at the format's place, on the part of that page the printer's virtual paper covers; a longer slip goes on to the next page (§ Paper and preview). CUPS: one PDF per job, each page the printable area of the queue's own paper (`print_cups_pdf`, `slip_pdf.rs`, `lp_pdf_options`). Windows: the print API itself, pages drawn for the page the printer's device context reports (`print_win::print_pages`). Android: the system print dialog; the pages are laid out for the paper picked there (`printSlipPagesPlaced`, `KumkajSlipLayout.java`). |
+| **ESC/POS** | The slip picture (the same picture as the preview) in standard ESC/POS raster: `ESC @`, `GS v 0` bands, feed, cut (`escpos_job_format`) — at the left of the roll, unless the format's place is centre or right and the printer's virtual paper is wider than the slip (`escpos_job_placed`). The whole job goes to the picked destination in one go: network `host:port` (connect, send, close), USB, Bluetooth, or the picked system queue as one raw job (`lp -o raw`; Windows: a RAW job handed to the spooler, `print_win::print_raw`). |
 
 Kitchen-ticket style marks (size, weight, Start / Center / End) are drawn
 in that picture for both the OS document and the ESC/POS raster. Do not
@@ -253,7 +286,7 @@ queue that can print a page. The app does not silently
 swap How, and must not silently drop that printer from a multi-printer
 route without a status note.
 
-### Paper and preview (owner's decision, 2026-11-16)
+### Paper and preview (owner's decisions, 2026-11-16 and 2026-11-17)
 
 **The issue.** OS-document bills came out cut or misplaced because the page
 the app sent did not match the paper in the printer. Until 2026-11-15
@@ -263,8 +296,16 @@ put one **Paper** dropdown for every printer on the Bill / KOT screen, with
 a paragraph of text under it. That was wrong: nobody asked for it. It sat
 on the wrong screen, it looked like one paper for all printers, and it put
 explanations on the screen. It also kept CUPS's `print-scaling=none`
-fallback, which centres the page (lesson 21). It was replaced by the
-model below.
+fallback, which centres the page (lesson 21).
+
+**The second issue (2026-11-17).** The model of the 16th sent each job on a
+page the app named itself: the driver's size that matched the typed paper,
+else `Custom.<w>x<l>mm` or a custom Windows `PaperSize`. A driver that did
+not take the made-up size cropped the print, the same settings printed
+differently on Windows and on Linux, and the typed paper was easy to take
+for the paper the printer would really use. Every other app prints on the
+printer's own page as its driver is set; this app does the same now
+(lesson 25). The model below is the one in the code of all four apps.
 
 **The owner's model** (his words: "the printer could have papers of any
 size"; "it's a global app and the printer would not be known"; "user doing
@@ -272,129 +313,182 @@ mistakes is his responsibility but our app should be very accurate,
 flexible, bug free in showing the preview and it shouldn't fool user in any
 way, it should show the real expected preview"):
 
-1. **The printer owns its paper.** Each printer has a paper width in mm and,
-   for sheets, a length (blank = a roll: each job is as long as its
-   content). It is set in one place only: **Settings → Printers**, by
-   opening that printer where it sits in the list
-   (`NamedPrinter::paper_width_mm` / `paper_length_mm`). Any job can go to
-   any printer (a KOT on an office printer, a bill on a thermal head), so
-   whatever prints there lands on that printer's paper.
-2. **Find printers fills it in, and never takes it away.**
-   - A printer with no paper gets its driver's current paper (CUPS PPD +
-     `lpoptions`, Windows `PaperSizes`).
+1. **An OS document prints the standard way.** The job goes to the queue
+   the owner picked and prints on that printer's own page exactly as its
+   driver is set. The app never names a paper, never makes a size up and
+   never changes the driver's setting. To print on another paper the owner
+   sets the printer's driver to it, as for every other app.
+2. **Each printer has a virtual paper** — what the owner says is really in
+   the printer: a width in mm and, for sheets, a length (blank = a roll:
+   each job is as long as its content). It is typed in one place only,
+   **Settings → Printers**, by opening that printer where it sits
+   (`NamedPrinter::virtual_paper_width_mm` / `virtual_paper_length_mm`;
+   files saved before 2026-11-17 call them `paper_width_mm` /
+   `paper_length_mm` and still load). It is **never sent to the printer**.
+   It tells the app how much of the printer's page is real paper: where
+   pages end, where the place is measured, what the preview draws, and how
+   wide an ESC/POS roll is. Only the owner knows when the paper in the tray
+   is not what the driver is set to (a half sheet in a full-sheet tray).
+3. **Each printer has a reported paper** — what its driver says it is set
+   to: its own page, the one an OS document really prints on
+   (`reported_width_mm`, `reported_length_mm`, `reported_name`,
+   `reported_edges_mm`). Read-only on screen and never typed. It is
+   replaced whenever the driver answers (`NamedPrinter::set_reported`); a
+   Find asks every driver afresh (`os_paper::forget_all`). "N/A" when
+   nothing reports it: an ESC/POS device has no driver to ask, Android asks
+   in its own print dialog, and a driver that cannot be read reports
+   nothing.
+4. **The area a page is laid on** (`os_paper::sheet_for` → `Sheet`): what
+   the printer reaches of its own page, from that page's printable corner,
+   and no further than the virtual paper. Pages are cut for this area, the
+   place is measured on it and the preview draws it, so the print and the
+   preview are one picture. A printer with no virtual paper set: its own
+   page is all paper.
+5. **Find printers fills a blank virtual paper, and never takes one away.**
+   - A printer with none gets its driver's current paper (CUPS: its PPD and
+     the owner's `lpoptions`; Windows: the printer's own device settings).
    - ESC/POS devices (network raw, USB, Bluetooth) and anything that cannot
      say get an 80 mm roll. Never A4 or any other silent guess.
-   - A paper already set is never changed by Find, even when the driver now
-     says something else; the driver's setting is the owner's to correct.
+   - A virtual paper already set is never changed by Find, whatever the
+     driver says now; only the reported paper follows the driver
+     (`DevicePrinters::take_driver_answers`).
    - Printers are matched by their target (queue name, `ip:port`,
      `usb:VID:PID:serial`, `bt:MAC`), so a second Find keeps every paper
      (test `find_twice_keeps_every_paper`).
-   - A paper name saved by the 2026-11-16 draft (`"paper": "Env10"`) is read
-     once and turned into width × length from the driver's list.
-3. **Bill and KOT screens own the content only:** content width, lines,
-   sizes. No paper setting there.
-4. **The preview shows the content on a printer's paper.**
+6. **Bill and KOT screens own the content only:** content width, lines,
+   sizes, and the place (7). No paper is set there.
+7. **The place: where the content sits on a paper bigger than it.** A
+   3 × 3 grid under the preview's printer — a picture of the paper: top /
+   middle / bottom × left / centre / right. One place **per format** (Bill,
+   KOT; in Moklanjo the receipt and the AWB label), kept with this device's
+   printers like portrait / landscape (`PrintFormat::place`,
+   `os_paper::Place`, `DevicePrinters::set_job_place`). Left and right are
+   the paper's own sides in every language: the grid is not mirrored for
+   right-to-left languages. Top-left is where content always sat; it is the
+   default and is not written to the file, so nothing moves until the owner
+   picks another square. Limits, all shown by the preview: on a roll only
+   across counts; a slip longer than one page starts at the top; a slip
+   wider than the area hangs over by the same rule (left: cut at the right;
+   right: cut at the left) — `os_paper::place_in`.
+8. **The preview shows the content on a printer's virtual paper.**
    - A dropdown above the preview lists **every** saved printer as "name ·
-     paper". Picking one only changes the preview: it does not choose who
-     prints, their order, or First / All. The pick is remembered while the
-     app runs. With no printer saved, the preview shows an 80 mm roll.
-   - The picture is made by the **same code that makes the printed sheets**
-     (`os_paper::preview_picture` over `os_document_sheets`). The paper is
-     drawn whole: the content at real size from the printable top-left,
-     the edges the printer cannot reach shaded, a long slip continued on
-     the next sheet where the print breaks it, a slip wider than the paper
-     cut where the print cuts it.
-   - ESC/POS shows the roll the printer's width wide, the content from its
-     left edge. ESC/POS printing itself is unchanged.
+     virtual paper". Picking one only changes the preview: it does not
+     choose who prints, their order, or First / All. The pick is remembered
+     while the app runs. With no printer saved, the preview shows an 80 mm
+     roll.
+   - Under the dropdown two read-only lines give the picked printer's
+     papers — `Reported: 209.9 × 297 mm` (or `Reported: N/A`) and
+     `Virtual: 105 × 148 mm` — then the place grid.
+   - The picture is made by the **same code that makes the printed pages**
+     (`os_paper::preview_picture` over `plan_sheets` /
+     `os_document_sheets`). The virtual paper is drawn whole: white where
+     the printer prints, the rest of the paper shaded (the edges it cannot
+     reach, and all of the paper past the printer's own page), the content
+     at real size at its place, a long slip continued on the next page
+     where the print breaks it — and **what the print cuts off is drawn
+     where it would have gone, faded** (`paste_faded`). A slip wider than
+     the paper must never look as if it fits (rule 10).
+   - ESC/POS shows the roll the virtual paper's width wide and the content
+     at its place across it; what the roll cuts off shows past its edge
+     the same way.
    - Nothing is explained on the screen; the ℹ beside Preview says it.
-5. **Sending (OS document): a page exactly the printer's paper.** The
-   content goes at real size from the printable top-left, with no scaling
-   and nothing centred. A long slip goes on more sheets.
-   - **CUPS:** the driver's own size when one matches width × length, else
-     `Custom.<w>x<l>mm`. A roll is one page as long as the slip. Sent with
-     `print-scaling=fit` (1:1, since each sheet is exactly the printable
-     width), `position=top-left`, portrait (`lp_sheet_options`).
-   - **Windows:** the driver's paper that matches, else a custom
-     `PaperSize`, each page drawn from the printable top-left.
-   - **Android:** the system print dialog chooses the paper (it opens on
-     the printer's own); pick the printer's paper there.
-   - **Driver unreadable:** the page is still the printer's paper, named
-     `Custom.<w>x<l>mm`, from the top-left with the driver's margins
-     unknown. The status says so; it is never centred.
-   - **ESC/POS:** unchanged.
-
-**TODO, decision not made: where the content sits on the paper.** The owner
-wants to place the content on a bigger paper (e.g. 105 mm content on A4):
-nine places (top / middle / bottom × left / centre / right), remembered.
-Not decided: **one position per format** (Bill, KOT; "centre" is centred on
-every printer's paper) or **one per printer**. Known limits: on a roll only
-across counts; a slip longer than one sheet starts at the top; content
-wider than the paper starts at the left so its beginning is never lost.
-Until decided, content sits at the printable top-left.
+9. **Sending (OS document).** The slip is the preview's own picture at its
+   real size (7.2 dots per mm; never fitted to the paper).
+   - **CUPS (Linux, macOS):** one PDF per job. The queue's own paper is
+     read from its driver (`os_paper::query_cups`) and never named in the
+     job. Each PDF page is that paper's printable area with the page
+     picture at its real size from the top-left (`print_cups_pdf`,
+     `os_document_pdf`, `slip_pdf.rs`), sent with `print-scaling=fit`,
+     `fit-to-page`, `position=top-left`, `orientation-requested=3`
+     (`lp_pdf_options`): the page is exactly the printable area, so fit is
+     1:1. A queue whose driver cannot be read is sent nothing, and the
+     status says so — without its page the slip would land wherever the
+     system put it.
+   - **Windows:** the print API itself (`print_win::print_pages`): the
+     pages are laid out for the page the printer's own device context
+     reports (its size, printable area and resolution) and drawn there. No
+     helper process, no script, no paper named.
+   - **Android:** the system print dialog picks the printer and its paper;
+     the pages are laid out there by the same rule (`printSlipPagesPlaced`,
+     `KumkajSlipLayout.java`; test `page_breaks_match_the_android_layout`
+     holds the two page plans together).
+   - **ESC/POS:** the bytes are the same as before unless the format's
+     place is centre or right **and** the virtual paper is wider than the
+     slip; then the same picture is laid at its place across the roll
+     (`escpos_job_placed`, `receipt_raster::place_drawn`).
 
 **More about the model:**
 - Settings → Printers opens **any number** of printers where they sit (owner,
   2026-11-16: "this shouldn't be restricted"): one list in two parts around
-  the open printer's Width / Length (`PrinterPaperRows`, `part: "before"` /
+  the open printer's papers (`PrinterPaperRows`, `part: "before"` /
   `"after"`; only the rows on screen draw). No slots, no read-only tail.
+- The open printer's editor is laid out **row by row** — the two Reported
+  labels, their values, the two Virtual labels, the two boxes — so the
+  boxes stay level whatever the labels' lengths, in any language at any
+  width (two columns of label-over-box went crooked at phone width when one
+  label wrapped).
 - The picture always follows the face. The dropdown names the printer
   whose paper the picture is drawn on; when that printer changes without a
   pick (the tab's printers changed, Find added one, a paper was typed, a
   driver answered), the picture is drawn again, not only the face
   (`sync_preview_paper_ui` compares `KotSlipPreview::shown_paper` /
-  `SlipPreview::shown_paper` with `preview_paper` — before 2026-11-16 the
-  face could name the new printer over the old printer's picture).
-- A driver that takes **no custom sizes** (CUPS without
-  `*CustomPageSize True`, Windows with no `PaperSize` of `Kind` Custom — e.g.
-  "Microsoft Print to PDF") cannot have a page made to the printer's paper:
-  the job goes on the driver's own paper, from the top-left, and the status
-  says so (`PrinterPapers::custom_ok`, `PagePlan::fallback`, the Windows
-  script's `KUMKAJ-NOTE:` line). The preview draws the same page.
-- A printer with no paper is asked for it whenever it is listed (Printers,
-  the preview's dropdown, a preview, a job): its driver answers on its own
-  thread and the answer fills it and is saved. Only Find gives the 80 mm
-  default to a driver that does not answer; a screen repaint never saves
-  one (`fill_paper`'s `default_when_unanswered`).
-- Each paper is what the driver says (A4 is 595 × 842 pt = 209.9 × 297.0
-  mm); a typed 210 still uses the driver's A4 (sizes within 0.6 mm match).
+  `SlipPreview::shown_paper` with `preview_paper`).
+- A system printer's driver is asked what it is set to whenever the printer
+  is listed (Printers, the preview's dropdown, a preview): it answers on
+  its own thread; the answer becomes the reported paper, fills a blank
+  virtual paper, is saved and redraws (`ask_drivers`,
+  `take_driver_answers`). Only Find gives the 80 mm default to a driver
+  that does not answer; a screen repaint never saves one (`fill_paper`'s
+  `default_when_unanswered`).
+- Each reported paper is what the driver says (A4 is 595 × 842 pt = 209.9 ×
+  297.0 mm). Nothing is matched or rounded to a "nearest" size any more.
+- Not built: a **Save as PDF** button (proposed 2026-11-17, not approved).
 
-**Checked without printing (2026-11-16)** — do it again after any change:
-- Tests: `the_preview_shows_exactly_the_printed_sheets_on_the_paper` (the
-  preview's printable areas hold the printed sheets' pixels, breaking where
-  the print breaks), `the_page_is_the_printers_paper_named_by_the_driver_
-  when_it_can`, `a_preview_in_printer_dots_is_the_same_picture_at_any_dot_
-  size`, `an_escpos_preview_is_the_roll_with_the_picture_from_its_left_
-  edge`, `find_twice_keeps_every_paper`, `a_draft_paper_name_loads_and_is_
-  kept`, `a_job_goes_on_the_printers_paper_or_what_find_would_give_it`.
-- CUPS, through this machine's own filters up to the PDF the driver gets:
-  `write_os_document_sheets` (ignored test; `KHAYNJO_PPD`,
-  `KHAYNJO_PAPER_MM=<w>x<l>` or `<w>` for a roll, `KHAYNJO_BILL_MM`,
-  `KHAYNJO_LINES`, `KHAYNJO_SHEETS_OUT`), then `cupsfilter -p <ppd> -m
-  application/vnd.cups-pdf <its lp options>` and measure the PDF (72 dpi):
-  a generic PCL driver's Envelope #10 (105 mm bill) → 297 × 684 pt page,
-  `media=Env10`, ink at 25, 39 pt (the driver's 18, 36 pt margins + the
-  bill's own 2.2 mm side), cut at the 92.1 mm printable width; a 4 in roll
-  (80 mm bill, 30 lines) → `Custom.101.6x443.26mm`, one page as long as the
-  bill; Letter → 612 × 792 pt; a custom 4 × 6 in sheet with a long bill → 4
-  pages, each from 25 pt. The 80 mm bill is 213–214 pt (75.1–75.5 mm) wide
-  on every paper. Never centred.
-- Screens on a private Xvfb (`--remote`, the neutral `visual_seed` shop,
-  made-up printers and driver files served by a throwaway local server as
-  `CUPS_SERVER`): Printers list `name · paper`, a printer opened in place,
-  Width / Length typed and saved, the preview on a 4 × 6 in sheet, A4, an
-  80 mm ESC/POS roll and an A5 filled from its driver, at 1440 and 420 px.
-- Windows, in the Windows VM (`write_windows_os_document_check`, printing
-  only to "Microsoft Print to PDF" with PrintToFile): an A5 paper → 5 pages
-  of 419.52 × 595.32 pt, the bill 213 pt wide from 7 pt; an 80 mm roll on
-  that driver (no custom sizes) → its own A4, from the top-left, with
-  "KUMKAJ-NOTE: its driver has no such paper and takes no other size;
-  printed on its own paper, A4". Android was checked for the earlier draft
-  only.
-- The same model in Kirano and Tabiyat (Bill) and Moklanjo (receipt and AWB
-  label, § Moklanjo), 2026-11-16: each app's paper tests (18) and suites
-  green; on Xvfb the Printers list `name · paper`, a printer opened in
-  place, and the preview on an A4 driver paper, a 101.6 mm roll and an
-  80 mm ESC/POS roll.
+**Checked without printing (2026-11-17)** — do it again after any change.
+Never on a real printer: made-up drivers and file output only.
+- Tests (`os_paper`): `a_page_is_laid_on_the_part_of_the_printers_page_
+  that_is_paper`, `the_preview_shows_exactly_the_printed_sheets_on_the_
+  paper`, `paper_past_the_printers_own_page_is_shaded_and_its_ink_faded`,
+  `a_shorter_virtual_sheet_breaks_pages_at_its_own_length`, `the_nine_
+  places_are_the_papers_own_sides`, `a_placed_slip_prints_there_and_the_
+  preview_shows_it_there`, `a_place_is_measured_on_the_virtual_paper`,
+  `a_roll_or_a_long_slip_starts_at_the_top_whatever_the_place`,
+  `page_breaks_match_the_android_layout`. Tests (`print_share`):
+  `os_document_names_no_paper_and_lays_its_page_on_the_printable_area`,
+  `the_job_pdf_is_the_printers_own_printable_area_whatever_the_virtual_
+  paper`, `a_drivers_answer_is_kept_as_the_reported_paper_and_never_as_
+  the_virtual_one`, `find_twice_keeps_every_paper`, `a_formats_place_is_
+  saved_and_top_left_is_not_written`, `escpos_places_the_slip_across_a_
+  wider_roll`.
+- **CUPS**, through this machine's own filters up to the PDF the driver
+  gets: `write_os_document_pdf` (ignored test; `KHAYNJO_PPD`,
+  `KHAYNJO_PAPER_MM=<w>x<l>` or `<w>` for a roll or blank for none,
+  `KHAYNJO_PLACE=<down>,<across>`, `KHAYNJO_BILL_MM`, `KHAYNJO_LINES`,
+  `KHAYNJO_LANDSCAPE`, `KHAYNJO_CHECK_OUT`; the other apps use their own
+  name) writes the job's PDF, its `lp` options, each page's picture and
+  the preview; `cupsfilter -p <ppd> -i application/pdf -m
+  application/vnd.cups-pdf <those options>` makes what the driver gets,
+  and the ink on every output page is measured against where the app laid
+  it. Four made-up cases (a half sheet in the middle, landscape at the
+  bottom-right, a long roll, a wide bill on a 105 mm paper): the same page
+  count, every page within 0.05–0.18 mm.
+- **Windows**, in the Windows VM, printing only to "Microsoft Print to PDF"
+  with the output written to a file (`windows_print_check`, ignored): three
+  cases within 0.08–0.09 mm of the app's own page plan. A RAW job
+  (`print_win::tests::windows_raw_check`): held in the spooler, read back
+  byte for byte (16,906 and 179,200 bytes), deleted — nothing printed. The
+  printer list equals Windows' own. `windows_devices_check`: the serial
+  writer's bytes left the VM's COM port unchanged (33,290 bytes); the
+  device lists were read; a missing USB or Bluetooth device gives a clear
+  error.
+- **Screens** on a private Xvfb (`--remote`, a neutral shop, made-up
+  printers and driver files served by a throwaway local server as
+  `CUPS_SERVER`), all four apps at 1440 and 420 px: the Printers list, a
+  printer opened in place with its Reported and Virtual papers, the
+  preview's two lines, the place grid (a tap lights the square, saves the
+  place and moves the picture).
+- **Not proven** (2026-11-17, nothing attached to try them on): a real USB
+  or Bluetooth printer on Windows; Android on a device.
 
 ### How the Bill and KOT tabs are laid out (2026-11-15)
 
@@ -426,9 +520,11 @@ the same Bill form):
 - Which real printers may print the bill, and with several of them **First
   that works** or **Print on all** (the same choice as a kitchen station,
   shown above Printers for the bill).
-- **Preview** on a printer's paper: the dropdown above it lists every saved
-  printer (`name · paper`); picking one shows the bill on that paper only
-  (§ Paper and preview). No paper is set here. The KOT tab has the same.
+- **Preview** on a printer's virtual paper: the dropdown above it lists
+  every saved printer (`name · virtual paper`); picking one shows the bill
+  on that paper only. Under it: the printer's Reported and Virtual papers
+  (read-only) and the 3 × 3 **place** grid (§ Paper and preview). No paper
+  is set here. The KOT tab has the same.
 - The list of bill lines; the open line has show or hide, size (px),
   weight, and alignment (Start / Center / End), plus typed text where the
   line has it (address, FSSAI, title, footer, UPI). Lines include **logo**
@@ -438,6 +534,13 @@ the same Bill form):
   per field (product default: time with table, cashier with bill no), or be
   **Alone** on their own row — with every line Alone there are no pairs.
   A closed line that shares a row names its partner (`Bill no + Cashier`).
+  Line names, and the open line's Show / Hide, weight and alignment faces,
+  are in the owner's language (`BillStyleField::label_key`, `bill_line_*`;
+  until 2026-11-17 they were English in every language).
+  **Kirano and Tabiyat have no table line** (removed 2026-11-17 — a shop
+  counter has no tables): twelve lines, the product default pairs cashier
+  with bill no, and their sample bill prints each shop's own goods. A saved
+  format that still names `table` loads; the line and its pair are dropped.
 - When **Items** is open: **Columns** or **Stacked**, Column headers,
   Column rules and Dish note switches, then **one row per column** (Dish
   name, Qty, Price, Amount) in print order: ↑ / ↓, On / Off, its header
@@ -445,7 +548,28 @@ the same Bill form):
   alignment (see Item columns).
 - When **Total** is open: one row each for **Total qty**, **Sub total** and
   **Grand total** — On / Off and its caption; the Grand total row also holds
-  the caption a **paid** bill prints instead.
+  the caption a **paid** bill prints instead. Under each row, **where that
+  total prints** (owner, 2026-11-17, rule 13):
+  - **Number under**: *Own line* (as it always printed) or one of the item
+    columns that print. Under a column, the total goes on a row laid out
+    on the item columns: its number in that column's box, with the column's
+    width, spaces and alignment, in the Total line's size and weight.
+  - Totals **share a row** until one needs a box that is taken; that one
+    starts the next row. Total qty under Qty with Grand total under Amount
+    is one row; Sub total and Grand total both under Amount are two.
+  - **Caption under** (shown while the number sits under a column): *With
+    the number*, under another column, or *No caption*.
+  - Tax, service, rounding and payment lines have no setting of their own:
+    they follow Sub total's place and always keep their caption (our
+    choice, not the owner's words — he may want them placeable too).
+  - Stacked items have no columns, so every total keeps its own line; so
+    does a total set under a column that does not print.
+  - `BillTotalPlace` (saved only when it is not the default; an id from a
+    newer build reads as Own line), `BillTotalRows` — one builder for the
+    sample, the running bill and the settled bill. Pills as wide as their
+    words in a strip that wraps (never a `Fill` child in a wrap strip).
+  Kirano and Tabiyat have the same (their bills have no running-bill
+  builder); Moklanjo has no Bill form.
 
 Copies (1–3) are one queued job, not a pause between each copy. This is
 configuration to compose bills in that family (and denser ones) — not a
@@ -719,8 +843,8 @@ Ownership model (non-negotiable):
     inputs (address, FSSAI, UPI ×2, footer) that nothing read — removed with
     their five placeholder strings (lesson 20: no hidden legacy blocks).
     Still open: (1)
-    the bill line names other than Logo are English on the Bill tab in
-    every language (`BillStyleField::label`); (2) the Stamp and Payment
+    ~~the bill line names are English~~ — translated 2026-11-17 (lesson
+    28); (2) the Stamp and Payment
     QR pictures print as the words `[Stamp]` / `[Payment QR]` — the
     picture line can print the real pictures; (3) a Client device does not
     get the Server's bill styles (only address, FSSAI, footer and UPI), so
@@ -765,18 +889,73 @@ Ownership model (non-negotiable):
     margins, so an 80 mm receipt came out page-wide); all three now use
     `os_paper.rs`, the printer's paper and the preview on it.
 
+25. **The app made up page sizes** (2026-11-16, replaced 2026-11-17). To
+    put a job "on the printer's paper" the app named a page for it: the
+    driver's size that matched the typed width × length, else
+    `Custom.<w>x<l>mm` (CUPS) or a custom `PaperSize` (Windows). Drivers
+    that do not take a custom size cropped the print or fell back to their
+    own paper; Windows and Linux differed for the same settings; and the
+    typed "paper" read as the paper the printer would use when it was only
+    what the app asked for. Fix: the standard way — the job prints on the
+    printer's own page as its driver is set, and the typed paper is the
+    *virtual* paper that only says how much of that page is real paper
+    (§ Paper and preview, rule 11). Removed with it: `job_paper`,
+    `lp_sheet_options`, `page_for`, the sheet PNGs with a density chunk
+    (`png_with_density`), `PrinterPapers::custom_ok`. Lesson 17's "true-size
+    PDF" was rejected for a PDF the *paper's* size; the PDF now is the
+    *printable area's* size, measured through the real CUPS filters
+    (within 0.2 mm), which is why it works.
+26. **A helper process for every Windows print** (removed 2026-11-17). An
+    OS document, a raw job, the printer list, USB and Bluetooth each
+    started a hidden PowerShell with a script built from strings: slow to
+    start, unreadable when it failed, and open to quoting mistakes. All of
+    it is the Windows API called directly now (`print_win.rs`, the
+    `windows-sys` crate): GDI pages, a RAW spooler job (`OpenPrinter` …
+    `WritePrinter`, `AbortPrinter` on failure), `EnumPrinters` for the
+    list, SetupAPI to find USB printers and Bluetooth serial ports, the
+    comm API to write to a port. Proven without a printer by holding a RAW
+    job in the spooler and reading it back, and by reading a COM port's
+    output on the VM host. PowerShell is left only in the firewall prompt
+    (`net.rs`), which is not printing.
+27. **"Fully configurable" that was not** (2026-11-17). The three totals
+    could only print on their own lines, one under the other; the owner
+    could not put Total qty under Qty or Grand total under Amount, or have
+    them in one row. Fix: § Bill tab (each total's number under an item
+    column, its caption with it, elsewhere or left out). Found on the way:
+    `append_marked` trimmed tabs, so a line with an empty first or last
+    cell lost its column layout (a lone column printed as a plain line).
+    Note for the next change here: bill lines print **grouped by their
+    line** in the owner's line order (`BILL_STAGE`), not in the order the
+    code appends them — a Cashier line appended between two Total lines
+    still prints with the Cashier line.
+28. **Words on the screen that nobody read** (2026-11-17). (a) The Bill
+    tab's Show / Hide, weight and alignment faces were painted for
+    selection only and stayed English in every language; the bill line
+    names (Shop, Address, Total …) were English too. Both are translated
+    now, from each pack's own words. (b) New texts were first written for
+    70 languages before reading how each pack already says slip, driver,
+    roll, preview and app, and about 43 packs had to be redone: read the
+    pack's own words first. (c) Reading the packs showed machine-made
+    mistakes in the rarer languages — "KOT No" as the word *no* / *not* in
+    28 packs (fixed), "Bill" as a draft law, "Shop" as the verb. The
+    110 packs are not all at the same quality; a native reader has not
+    checked them.
+
 ### Working approaches (keep)
 
 - ESC/POS on a named queue → `print_system_raw`: the whole job as one
-  raw job on that queue (`lp -o raw` / Windows `WritePrinter`); `lp`
+  raw job on that queue (`lp -o raw` / Windows `print_win::print_raw`); `lp`
   accepting it means it is queued — the app does not watch or cancel it.
   Never route around the queue the owner picked ("What went wrong" 9, 14).
 - Network `host:port` → connect, the whole job, close.
-- OS document = the same picture as the Settings preview (`slip_page_png`),
-  at its real size on the printer's paper (width × length set on Printers),
-  from the printable top-left, one sheet per printable height (§ Paper and
-  preview, lesson 24). The preview is made from the same sheets. Never a
-  size the app assumed, never `print-scaling=none` (it centres).
+- OS document = the same picture as the Settings preview, at its real size
+  on the printer's **own page as its driver is set**, at the format's place
+  on the part of that page the virtual paper covers, one page per printable
+  height (§ Paper and preview, lessons 24 and 25). The preview is made from
+  the same pages. Never a paper the app named or assumed, never
+  `print-scaling=none` (it centres).
+- Windows printing, device lookup and serial writing = the Windows API
+  called directly (`print_win.rs`); never a helper process (lesson 26).
 - A picture on a slip (the Logo) is a `\u{E001}P` line in the slip text and
   a `LineColumns::Picture` row in the raster — one path for preview,
   OS document and ESC/POS (§ Logo).
@@ -838,9 +1017,10 @@ the barcode. They do not share a content width.
 
 Settings → **Printers** is still only real devices: **Find printers**, then
 attach those devices to Receipt or AWB label. Each saved printer is listed as
-`name · paper` and opens where it sits for its Width / Length (§ Paper and
-preview); Find fills a blank paper from the driver (an 80 mm roll when it
-cannot say) and never changes one already set. When a label or run sheet had
+`name · virtual paper` and opens where it sits: its Reported width / length
+(read-only) over its Virtual width / length (§ Paper and preview); Find
+fills a blank virtual paper from the driver (an 80 mm roll when it cannot
+say) and never changes one already set. When a label or run sheet had
 no printer, its warning's **Find printers** opens the Printers sheet: Find
 there saves what it found, and tapping a printer gives it that job
 (receipt or AWB label) — no trip to Settings. There is no manual rename and
@@ -861,10 +1041,13 @@ Under the Receipt | AWB label choice:
   the one Test receipt / Test label prints — on the paper of the printer
   picked in the dropdown above it. Every saved printer is listed; the pick
   changes the preview only; with none picked it is that job's first
-  printer. OS document: the whole paper, the content at real size from the
-  printable top-left. ESC/POS: the roll the printer's width wide, the
-  picture from its left edge — a 100 mm label on an 80 mm roll is drawn
-  cut at the roll's edge, as it prints (`SlipPicture`, `slip_gray`: the
+  printer. Under the dropdown: the printer's Reported and Virtual papers
+  and the 3 × 3 place grid — the receipt and the AWB label each keep their
+  own place (`set_job_place`). OS document: the virtual paper whole, the
+  content at real size at its place. ESC/POS: the roll the virtual paper's
+  width wide, the picture at its place across it — a 100 mm label on an
+  80 mm roll is drawn cut at the roll's edge, as it prints, with the 20 mm
+  the roll cuts off drawn past it, faded (`SlipPicture`, `slip_gray`: the
   job's own dots, no PNG round trip).
 - **Test receipt** or **Test label**, under the save button, prints a
   sample of that job with the width, layout, delivery, and size on screen.

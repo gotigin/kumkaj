@@ -79,13 +79,19 @@ bill_item_amount	金額
 bill_item_note	受信/販売メモ
 bill_item_col_sep	列の罫線
 slip_col_width	幅 (mm)
-paper_heading	用紙
+paper_heading	仮想用紙
 paper_size	{w} × {h} mm
 paper_roll	{w} mm ロール
 paper_not_set	用紙はまだ不明です
-paper_length_mm	長さ (mm)
-printer_paper_help	このプリンターの用紙 (mm)。長さが空欄ならロール紙で、伝票は内容の長さになります。「プリンターを探す」は空欄の用紙をプリンターのドライバーから入力し (わからない場合は 80 mm ロール)、設定済みの用紙は決して変更しません。
-preview_help	下で選んだプリンターの用紙に、そこで印刷されるとおりにこの伝票を表示します。プリンターが届く左上から実寸で (灰色: 届かない余白)、長い伝票は複数の用紙に、用紙の端を越えた部分は切れます。プリンターを選んでもプレビューだけが変わります。各プリンターの用紙は「プリンター」で設定します。
+na	なし
+virtual_width_mm	仮想の幅 (mm)
+virtual_length_mm	仮想の長さ (mm)
+reported_width_mm	報告された幅 (mm)
+reported_length_mm	報告された長さ (mm)
+reported_paper	報告: {paper}
+virtual_paper	仮想: {paper}
+printer_paper_help	「報告」は、このプリンターのドライバーに設定されている用紙です。アプリは読み取るだけで、「なし」は問い合わせるドライバーがないことを意味します。「仮想」は、プリンターに実際に入っているとあなたが指定する用紙で、単位は mm です。長さが空欄ならロール紙です。プリンターは自分の用紙に印刷します。仮想用紙は、そのうちどこまでが実際の紙かをアプリに伝え、プレビュー、ページの長さ、伝票の位置に使われます。「プリンターを探す」は空欄の仮想用紙を埋めますが、あなたが設定したものは決して変更しません。
+preview_help	この伝票が、下で選んだプリンターで印刷されるとおりに、その仮想用紙の上に実寸で表示されます。白は印刷される範囲、灰色の紙はプリンターが届かない範囲で、薄いインクは切り落とされます。9 つのマスが用紙です。伝票を置きたい場所をタップしてください。長い伝票は次のページに続きます。プリンターを選んでも変わるのはプレビューだけです。
 slip_col_start	先頭の余白 (px)
 slip_col_end	末尾の余白 (px)
 slip_columns_help	各列の幅には先頭と末尾の余白が含まれます。文字は列の中で折り返し、内容の幅からはみ出した部分は用紙でもプレビューでも切り取られます。
@@ -100,6 +106,12 @@ bill_item_piece_off	オフ
 bill_total_qty	合計数量
 bill_total_subtotal	小計
 bill_total_grand	合計
+bill_total_number_under	数値を置く列
+bill_total_caption_under	ラベルを置く列
+bill_total_own_line	単独の行
+bill_total_caption_with	数値と一緒
+bill_total_caption_none	ラベルなし
+bill_total_place_help	「単独の行」はこの合計を単独で印刷します。列の下に置くと、数値はその商品列に、この行のサイズと太さで印刷されます。合計は列が埋まるまで同じ段を共有し、埋まると新しい段が始まります。ラベルは数値と一緒、別の列の下、または省略を選べます。税、サービス料、端数処理、支払いの行は「小計」に従います。
 kot_unassigned	未割り当て
 settings_hub_help	一度に一つの項目を開きます — スクロールが減り、選びやすくなります。
 settings_sec_language	言語と通貨
@@ -563,11 +575,11 @@ currency_use_help	スクロールして、対応通貨の「使う」をタッ�
 day_close_help	日次締めを記録すると、この概要（実査した場合はレジ差異も）が監査ログに保存されます。販売は止まりません。
 expenses_word	経費
 feature_access_help	選択したスタッフの機能アクセス（追加後にタップ）
-fresh_book_tabiyat	プリンター
+fresh_book_tabiyat	最初から = 空のカタログ（商品はあとで追加）。帳簿 = 下に期首在庫と、売掛の相手を入力。
 fresh_selected	Freshを選択中 — カタログは空のままです。準備ができたらDoneをタップ。
 gross_word	粗利益
 how_start	どのように始めますか？
-later_country_pack	プリンター
+later_country_pack	あとで：設定 → 税と支払いの表示名に国パックを適用。
 local_badge	ローカル
 mix_type_hint_tabiyat	必要に応じて現金／UPI／カード／掛けに分割してください。掛けには上の顧客が必要です。
 money_in_sales	入金（売上）
@@ -688,7 +700,7 @@ book_kind_today	今日の帳簿
 book_kind_month	今月の帳簿
 book_kind_aging	未精算 / 借方・貸方
 book_kind_balance	貸借対照表
-order_help	開いている注文を選ぶか、テーブルを選んで新規開始。準備中のアイテムをタップし、KOT を送信、1つ以上のアイテムを請求、会計を分割して支払いを完了。
+order_help	商品をタップして追加します。
 categories_help	カテゴリは料理がメニューのどの部分に属するかを示します — 例：スナック、メインコース、ビリヤニ。カテゴリは自由に作成できます：提案した名前を選ぶ、名前を変更する、独自のものを追加する。
 dish_search_ph	名前、塩、バーコードを検索…
 sizes_as_items_ph	サイズを別品目に（任意）— ハーフ=120, フル=200
@@ -735,6 +747,20 @@ fssai_ph	医薬品販売許可番号(オプション - あなたの言葉遣い)
 bill_footer_ph	フッター（例：ありがとうございました）
 kot_field_on	表示
 kot_field_off	非表示
+kot_field_show	表示
+kot_field_hide	非表示
+bill_line_shop	店舗
+bill_line_address	住所
+bill_line_fssai	FSSAI
+bill_line_title	タイトル
+bill_line_customer	顧客
+bill_line_bill_no	伝票番号
+bill_line_time	時刻
+bill_line_cashier	レジ係
+bill_line_items	品目
+bill_line_total	合計
+bill_line_footer	フッター
+bill_line_upi	UPI
 kot_weight_light	細
 bill_kot_panel_help	請求書のレイアウトとコンテンツの幅。レジ担当者は、請求書を発行または決済した人です。販売の全容は帳簿に残ります。
 std_size_ph	例: 18, 20, 26…
@@ -842,10 +868,10 @@ lane_declared_label	税金請求書
 lane_owner_label	現金メモ
 money_lane_bill	請求書：{lane}
 
-removing	Removing…
-removed	Removed
-updating_order	Updating…
-order_updated	Order updated
+removing	削除中…
+removed	削除しました
+updating_order	更新中…
+order_updated	注文を更新しました
 sel_copy	コピー
 sel_select_all	すべて選択
 sel_copied	コピーしました

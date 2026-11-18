@@ -67,13 +67,19 @@ bill_item_amount	Belopp
 bill_item_note	Objekt anmärkning
 bill_item_col_sep	Kolumnlinjer
 slip_col_width	Bredd (mm)
-paper_heading	Papper
+paper_heading	Virtuellt papper
 paper_size	{w} × {h} mm
 paper_roll	{w} mm-rulle
 paper_not_set	papper ännu okänt
-paper_length_mm	Längd (mm)
-printer_paper_help	Den här skrivarens papper i mm. Tom Längd är en rulle: varje kvitto är lika långt som sitt innehåll. Hitta skrivare fyller i tomt papper från skrivarens drivrutin (en 80 mm-rulle när den inte kan säga) och ändrar aldrig ett papper som redan är satt.
-preview_help	Det här kvittot på papperet i skrivaren som valts nedan, så som det skrivs ut där: i verklig storlek från det övre vänstra hörnet skrivaren når (grått: kanter den inte når), ett långt kvitto på fler ark, allt bortom papperskanten skärs av. Att välja skrivare ändrar bara förhandsvisningen; varje skrivares papper ställs in under Skrivare.
+na	E/T
+virtual_width_mm	Virtuell bredd (mm)
+virtual_length_mm	Virtuell längd (mm)
+reported_width_mm	Rapporterad bredd (mm)
+reported_length_mm	Rapporterad längd (mm)
+reported_paper	Rapporterat: {paper}
+virtual_paper	Virtuellt: {paper}
+printer_paper_help	Rapporterat är det papper som den här skrivarens drivrutin är inställd på; appen läser det bara, och E/T betyder att det inte finns någon drivrutin att fråga. Virtuellt är det papper du säger verkligen ligger i skrivaren, i mm; tom längd är en rulle. Skrivaren skriver ut på sitt eget papper; det virtuella papperet talar om för appen hur mycket av det som är riktigt papper, för förhandsvisningen, sidlängden och kvittots placering. Hitta skrivare fyller i ett tomt virtuellt papper och ändrar aldrig ett som du har ställt in.
+preview_help	Det här kvittot så som det skrivs ut på skrivaren som valts nedan, i verklig storlek på dess virtuella papper. Vitt är där den skriver, grått papper är utom skrivarens räckhåll, och blekt bläck skärs av. De nio rutorna är papperet: tryck där kvittot ska sitta. Ett långt kvitto fortsätter på fler sidor. Att välja skrivare ändrar bara förhandsvisningen.
 slip_col_start	Startavstånd (px)
 slip_col_end	Slutavstånd (px)
 slip_columns_help	Varje kolumns bredd inkluderar dess start- och slutavstånd. Texten radbryts inom sin kolumn; det som går utanför innehållsbredden klipps bort – på papper och i förhandsvisningen.
@@ -88,6 +94,12 @@ bill_item_piece_off	Av
 bill_total_qty	Totalt antal
 bill_total_subtotal	Delsumma
 bill_total_grand	Totalsumma
+bill_total_number_under	Tal under
+bill_total_caption_under	Etikett under
+bill_total_own_line	Egen rad
+bill_total_caption_with	Vid talet
+bill_total_caption_none	Ingen etikett
+bill_total_place_help	Egen rad skriver ut den här summan för sig. Under en kolumn skrivs talet ut i den artikelkolumnen, i den här radens storlek och vikt; summor delar en rad tills en kolumn är upptagen, sedan börjar en ny rad. Etiketten står vid talet, under en annan kolumn eller utelämnas. Rader för skatt, service, avrundning och betalning följer Delsumma.
 kot_unassigned	Otilldelad
 settings_hub_help	Öppna ett område i taget — mindre scrollning, tydligare val.
 settings_sec_language	Språk och valuta
@@ -371,7 +383,7 @@ server_ip_ph	Server-IP (t.ex. 192.168.1.10)
 set_credit_limit	Tillämpa gräns för fest
 set_login_selected	Använd inloggning på valda
 set_login_named	Ansök inloggning på {name}
-shop	Handla
+shop	Butik
 show	Visa
 spreadsheet_csv	Kalkylblad (CSV)
 start_fresh	Börja fräscht
@@ -723,6 +735,20 @@ fssai_ph	FSSAI / butikslicens nr. (frivillig)
 bill_footer_ph	Sidfot (t.ex. Tack, besök igen)
 kot_field_on	visa
 kot_field_off	gömma sig
+kot_field_show	Visa
+kot_field_hide	Göm
+bill_line_shop	Butik
+bill_line_address	Adress
+bill_line_fssai	FSSAI
+bill_line_title	Titel
+bill_line_customer	Kund
+bill_line_bill_no	Notanr
+bill_line_time	Tid
+bill_line_cashier	Kassör
+bill_line_items	Föremål
+bill_line_total	Totalt
+bill_line_footer	Sidfot
+bill_line_upi	UPI
 kot_weight_light	Ljus
 bill_kot_panel_help	Billlayout och innehållsbredd. Kassören är den som utfärdade eller betalade räkningen - hela försäljningsberättelsen finns kvar i böckerna.
 std_size_ph	t.ex. 18, 20, 26...
@@ -830,10 +856,10 @@ lane_declared_label	Skattefaktura
 lane_owner_label	Kontantmemo
 money_lane_bill	Nota: {lane}
 
-removing	Removing…
-removed	Removed
-updating_order	Updating…
-order_updated	Order updated
+removing	Tar bort…
+removed	Borttaget
+updating_order	Uppdaterar…
+order_updated	Beställningen uppdaterad
 sel_copy	Kopiera
 sel_select_all	Markera allt
 sel_copied	Kopierat

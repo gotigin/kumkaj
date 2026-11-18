@@ -79,13 +79,19 @@ bill_item_amount	金額
 bill_item_note	處方/銷售單
 bill_item_col_sep	列線
 slip_col_width	寬度 (mm)
-paper_heading	紙張
+paper_heading	虛擬紙張
 paper_size	{w} × {h} mm
 paper_roll	{w} mm 捲紙
 paper_not_set	紙張尚未得知
-paper_length_mm	長度 (mm)
-printer_paper_help	此打印機的紙張 (mm)。長度留空即為捲紙：每張單據與其內容一樣長。「查找打印機」會從打印機驅動程式填入空白紙張（無法得知時為 80 mm 捲紙），且絕不更改已設定的紙張。
-preview_help	此單據在下方所選打印機的紙張上，與在那裡列印的完全相同：從打印機可達的左上角起以實際尺寸列印（灰色：無法到達的邊緣），長單據印在更多張紙上，超出紙張邊緣的部分會被切掉。選擇打印機只會改變預覽；每台打印機的紙張在「打印機」中設定。
+na	無
+virtual_width_mm	虛擬寬度 (mm)
+virtual_length_mm	虛擬長度 (mm)
+reported_width_mm	回報寬度 (mm)
+reported_length_mm	回報長度 (mm)
+reported_paper	回報：{paper}
+virtual_paper	虛擬：{paper}
+printer_paper_help	「回報」是此打印機驅動程式所設定的紙張；應用只會讀取它，「無」表示沒有可查詢的驅動程式。「虛擬」是您指明打印機內實際放著的紙張，單位為 mm；長度留空即為捲紙。打印機在它自己的紙張上列印；虛擬紙張告訴應用其中有多少是真正的紙，用於預覽、頁面長度和單據的位置。「查找打印機」會填入空白的虛擬紙張，且絕不更改您已設定的紙張。
+preview_help	此單據與在下方所選打印機上列印的完全相同，以實際尺寸顯示在其虛擬紙張上。白色是列印的位置，灰色紙張是打印機無法到達的地方，變淡的墨跡會被切掉。九個方格就是紙張：點按單據應放的位置。長單據會接續到更多頁。選擇打印機只會改變預覽。
 slip_col_start	開頭間距 (px)
 slip_col_end	結尾間距 (px)
 slip_columns_help	每欄的寬度已包含其開頭與結尾間距。文字在所屬欄內換行；超出內容寬度的部分，在紙上和預覽中都會被裁掉。
@@ -100,6 +106,12 @@ bill_item_piece_off	關
 bill_total_qty	總數量
 bill_total_subtotal	小計
 bill_total_grand	總計
+bill_total_number_under	數字放在此欄下
+bill_total_caption_under	標籤放在此欄下
+bill_total_own_line	獨立一行
+bill_total_caption_with	與數字一起
+bill_total_caption_none	不印標籤
+bill_total_place_help	「獨立一行」會單獨列印此合計。放在某欄下方時，其數字會以本行的大小與粗細印在該品項欄內；各合計共用同一列，直到某欄已被佔用，才另起新列。標籤可與數字一起、放在另一欄下方，或不列印。稅金、服務費、進位與付款等行會跟隨「小計」。
 kot_unassigned	未分配
 settings_hub_help	一次打開一個區域——少滾動，選項更清楚。
 settings_sec_language	語言與貨幣
@@ -735,6 +747,20 @@ fssai_ph	藥品許可證號（可選－你的措詞）
 bill_footer_ph	頁腳（如：謝謝，歡迎再來）
 kot_field_on	顯示
 kot_field_off	隱藏
+kot_field_show	顯示
+kot_field_hide	隱藏
+bill_line_shop	店鋪
+bill_line_address	地址
+bill_line_fssai	FSSAI
+bill_line_title	標題
+bill_line_customer	顧客
+bill_line_bill_no	帳單號
+bill_line_time	時間
+bill_line_cashier	收銀員
+bill_line_items	項目
+bill_line_total	總計
+bill_line_footer	頁腳
+bill_line_upi	UPI
 kot_weight_light	細
 bill_kot_panel_help	票據佈局和內容寬度。收銀員負責開立或結算帳單——完整的銷售故事保留在書中。
 std_size_ph	例如 18, 20, 26…
@@ -842,10 +868,10 @@ lane_declared_label	稅務發票
 lane_owner_label	現金小票
 money_lane_bill	帳單：{lane}
 
-removing	Removing…
-removed	Removed
-updating_order	Updating…
-order_updated	Order updated
+removing	正在移除…
+removed	已移除
+updating_order	正在更新…
+order_updated	訂單已更新
 sel_copy	複製
 sel_select_all	全選
 sel_copied	已複製

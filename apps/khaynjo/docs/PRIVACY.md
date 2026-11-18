@@ -4,7 +4,8 @@ _Last updated: 9 November 2026_
 
 ## Who we are
 
-Khaynjo is a restaurant operating app from Gotigin under the Kumkaj brand.
+**Trademark:** Gotigin. **Company:** GOTIGIN SOFTWARE & HARDWARE PRIVATE LIMITED.
+**Brand:** Kumkaj. **Product:** Khaynjo — restaurant operating app.
 Application id on Google Play: `com.khaynjo`. Website: [khaynjo.com](https://khaynjo.com).
 
 ## Local-first — what stays on your device

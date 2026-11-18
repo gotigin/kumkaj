@@ -2207,44 +2207,30 @@ impl Store {
             rtl,
         );
         let subtotal = order.total_paise();
+        // Each total where the owner placed it: its own line, or under the
+        // item columns (print_share::BillTotalRows).
+        use crate::print_share::BillTotalKind;
+        let mut totals = crate::print_share::BillTotalRows::new(&fmt);
         if fmt.total_show_qty {
             let qty_label = crate::domain::format_qty_display(total_qty_milli, 0, "");
             let qty_n = qty_label.strip_prefix('x').unwrap_or(qty_label.as_str());
-            crate::print_share::append_bill_like(
-                &mut out,
-                &fmt,
-                crate::print_share::BillStyleField::Total,
-                &format!("{}: {qty_n}", fmt.caption_total_qty()),
-                rtl,
-            );
+            let caption = fmt.caption_total_qty();
+            totals.total(BillTotalKind::Qty, &caption, qty_n, &format!("{caption}: {qty_n}"));
         }
         if fmt.total_show_subtotal {
-            crate::print_share::append_bill_like(
-                &mut out,
-                &fmt,
-                crate::print_share::BillStyleField::Total,
-                &format!("{}: {}", fmt.caption_subtotal(), money(subtotal)),
-                rtl,
-            );
+            let (caption, amount) = (fmt.caption_subtotal(), money(subtotal));
+            totals.total(BillTotalKind::Subtotal, &caption, &amount, &format!("{caption}: {amount}"));
         }
         let (draft, scheme_notes) = self.order_bill_draft_schemed(order);
         for name in &scheme_notes {
-            crate::print_share::append_bill_like(
-                &mut out,
-                &fmt,
-                crate::print_share::BillStyleField::Total,
-                &format!("Scheme: {name}"),
-                rtl,
-            );
+            totals.words(&format!("Scheme: {name}"));
         }
-        if let Some(draft) = draft {
-            let total = self.preview_sale_total(&draft)?;
-            if total != subtotal {
-                crate::print_share::append_bill_like(
-                    &mut out,
-                    &fmt,
-                    crate::print_share::BillStyleField::Total,
-                    &format!(
+        let grand = match draft {
+            Some(draft) => {
+                let total = self.preview_sale_total(&draft)?;
+                if total != subtotal {
+                    // A sentence about the tax, not a caption: its own line.
+                    totals.words(&format!(
                         "{}: {}",
                         if fiscal.tax_pricing.is_inside_price() {
                             format!("{} inclusive in this total", fiscal.tax_label())
@@ -2252,25 +2238,22 @@ impl Store {
                             format!("{} exclusive + charges", fiscal.tax_label())
                         },
                         money(total - subtotal)
-                    ),
-                    rtl,
-                );
+                    ));
+                }
+                total
             }
-            if fmt.total_show_grand {
-                crate::print_share::append_bill_field(
-                    &mut out,
-                    &fmt,
-                    crate::print_share::BillStyleField::Total,
-                    &format!("{}: {}", fmt.caption_grand_total(), money(total)),
-                    rtl,
-                );
-            }
-        } else if fmt.total_show_grand {
-            crate::print_share::append_bill_field(
+            None => 0,
+        };
+        if fmt.total_show_grand {
+            let (caption, amount) = (fmt.caption_grand_total(), money(grand));
+            totals.total(BillTotalKind::Grand, &caption, &amount, &format!("{caption}: {amount}"));
+        }
+        for line in totals.finish() {
+            crate::print_share::append_bill_like(
                 &mut out,
                 &fmt,
                 crate::print_share::BillStyleField::Total,
-                &format!("{}: {}", fmt.caption_grand_total(), money(0)),
+                &line,
                 rtl,
             );
         }
@@ -2839,6 +2822,41 @@ mod tests {
         );
         assert!(text.contains("Total Qty"), "total qty line, got:\n{text}");
         assert!(text.contains("Grand Total"), "grand total, got:\n{text}");
+    }
+
+    /// The owner's ask (2026-11-17): Total Qty in the Qty column and Grand
+    /// Total in the Amount column, in a single row — on the real bill.
+    #[test]
+    fn the_running_bill_prints_its_totals_where_the_owner_placed_them() {
+        let shop = shop();
+        shop.kot("D1", &[(&shop.thali, 2), (&shop.chaas, 1)]);
+        let mut fmt = shop.store.bill_slip_format().unwrap();
+        fmt.total_show_subtotal = false;
+        fmt.total_qty_place.set_number_col(Some(crate::print_share::BillItemCol::Qty));
+        fmt.total_qty_place.set_caption_place(crate::print_share::BillTotalCaption::Hidden);
+        fmt.total_grand_place.set_number_col(Some(crate::print_share::BillItemCol::Amount));
+        fmt.total_grand_place
+            .set_caption_place(crate::print_share::BillTotalCaption::Under(crate::print_share::BillItemCol::Name));
+        shop.store.set_bill_slip_format(&fmt).unwrap();
+        let order = shop.store.running_order(&shop.table("D1").id).unwrap().unwrap();
+        let text = crate::print_share::strip_kot_style_marks(
+            &shop.store.format_running_bill_text(&order, &shop.cashier.name).unwrap(),
+        );
+        // Item | Qty | Price | Amount: one row, each number under its column.
+        assert!(
+            text.lines().any(|l| l == "Grand Total\t3\t\t₹430.00"),
+            "the totals row, got:\n{text}"
+        );
+        assert!(!text.contains("Total Qty"), "no caption was asked for:\n{text}");
+        // Back on their own lines: word for word as before.
+        fmt.total_qty_place = Default::default();
+        fmt.total_grand_place = Default::default();
+        shop.store.set_bill_slip_format(&fmt).unwrap();
+        let text = crate::print_share::strip_kot_style_marks(
+            &shop.store.format_running_bill_text(&order, &shop.cashier.name).unwrap(),
+        );
+        assert!(text.lines().any(|l| l == "Total Qty: 3"), "{text}");
+        assert!(text.lines().any(|l| l == "Grand Total: ₹430.00"), "{text}");
     }
 
     /// Punch pending on D1, open D2, reopen D1 — pending still there; Send KOT
