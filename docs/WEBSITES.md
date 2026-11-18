@@ -258,6 +258,24 @@ deep chrome (navy / deep red), never grey-on-grey.
    targets and chrome marks (top-bar brand, beads, floor tiles, buttons).
 8. **Claims check.** Before publishing, re-read each cited row; gated
    sentences stay behind the owner switch.
+9. **Wasm scroll / chrome — do not ghost text.** On Makepad wasm,
+   rewriting labels or mutating `walk.width` every `NextFrame` / `Draw`
+   while `scroll_pos` is moving leaves previous glyphs visible for a
+   beat. Moklanjo’s viewport page-steps
+   ([`sites/moklanjo/README.md`](../sites/moklanjo/README.md) § Scroll)
+   are the worked example:
+   - Claim the wheel (`handled_y`) **before** `ui.handle_event` if the
+     site owns paging; ignore trackpad `Momentum`.
+   - Animate with a **timed** ease (~0.5 s), not a perpetual rail-fill
+     lerp that schedules `NextFrame` forever.
+   - Mid-anim: `set_scroll_pos` + optional rail width snap only — **no**
+     `set_text` on beads / nav every tick.
+   - Full nav chrome (`paint_chrome`) on settle or when the active
+     section actually changes — not on every `Event::Draw`.
+   - Short last sections need an `at_page_end` (or mid-viewport) promote
+     so the last nav item lights when the footer is already on screen.
+   - After a wasm rebuild, hard-refresh; stale `?v=` tabs can keep an old
+     binary (`RuntimeError: unreachable`).
 
 ------------------------------------------------------------------------
 
@@ -338,7 +356,7 @@ Contract: [`apps/khaynjo/docs/CATALOGUE_URLS.md`](../apps/khaynjo/docs/CATALOGUE
 |---|---|---|
 | 1 | Kumkaj mark (only product icons exist; kumkaj.com uses a typographic wordmark) | `sites/kumkaj` top bar |
 | 2 | Gotigin legal / contact / grievance details | Footers, Phase 3 legal pages |
-| 3 | Firebase project ids (and Analytics web apps) for kumkaj / moklanjo / kirano / tabiyat; custom domains already registered | Hosting; `product_url` / `kumkaj_url` already point at the public domains. Only `khaynjo-2b2a2` exists today |
+| 3 | Firebase project ids (and Analytics web apps) for kumkaj / moklanjo / kirano / tabiyat; custom domains already registered | Hosting; `product_url` / `kumkaj_url` already point at the public domains. Shipped: `khaynjo-2b2a2`, `kumkaj-b32abc`, `moklanjo-com`. Attach **moklanjo.com** in Console → Hosting (prefer custom domain over `*.web.app`) |
 | 4 | WhatsApp Business number per product | `WHATSAPP_NUMBER` in `sites/moklanjo/src/main.rs`, `sites/khaynjo/src/main.rs` (ship `None`, marked TODO) |
 | 5 | Installers / store listing | Khaynjo: `DOWNLOADS_LIVE` + Play URL live (`com.khaynjo`). Moklanjo: still `false` until its listing/installers ship |
 | 6 | Real-hardware LAN pilot passes | `LAN_PILOT_PASSED` in all three sites (ships `false`; shows the multi-device sentences) |

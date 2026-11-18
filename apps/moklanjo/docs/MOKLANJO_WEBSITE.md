@@ -1,13 +1,17 @@
 # moklanjo.com — website plan
 
-> **Status:** Phase 1 live in-tree as a local demo (2026-11-07) —
-> `sites/moklanjo` (package `moklanjo-site`), copied from `sites/kumkaj`
-> and diverged: the §3 parcel story as 9 Makepad chapters, the tracking
-> line as chapter nav, a working chargeable-weight toy (§4), and
-> Download / WhatsApp CTAs behind owner switches (WhatsApp number:
-> **TODO owner**). Run `./sites/moklanjo/scripts/run-web.sh` →
-> http://127.0.0.1:8011 (native: `run-desktop.sh`). Not deployed; 3D
-> props and real app captures are Phase 2 ([`docs/WEBSITES.md`](../../../docs/WEBSITES.md) §7).
+> **Status:** Phase 1 site crate mature (2026-11-18) — `sites/moklanjo`
+> (package `moklanjo-site`), copied from `sites/kumkaj` and diverged: the
+> §3 parcel story as **one scrolling page** (9 chapters + tracking-bead
+> rail), viewport page-step scroll synced to the orange rail (not chapter
+> snap; see [`sites/moklanjo/README.md`](../../../sites/moklanjo/README.md)
+> § Scroll — wasm ghosting rules), chargeable-weight toy (§4), courier-OS
+> copy (not “desk”), Trademark→Company→Brand→Product on Start, Download /
+> WhatsApp CTAs behind owner switches (WhatsApp number: **TODO owner**).
+> Preview: `./sites/moklanjo/scripts/preview-web.sh` →
+> http://127.0.0.1:8011. Deploy: `./sites/moklanjo/scripts/deploy-firebase.sh`.
+> 3D props and real app captures remain Phase 2
+> ([`docs/WEBSITES.md`](../../../docs/WEBSITES.md) §7).
 > **Scope:** Moklanjo's instantiation of
 > [`docs/WEBSITES.md`](../../../docs/WEBSITES.md) (Makepad 2 fullpage).
 > This file holds audience, story chapters, tools and claim sources.

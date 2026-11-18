@@ -85,7 +85,7 @@ if [[ "$DO_BUILD" -eq 1 ]]; then
         <meta property="og:description" content="Book. Label. Hand over. Track. Settle. One desk, internet or not.">
         <meta property="og:url" content="https://moklanjo.com/">
         <meta property="og:type" content="website">'
-  BODY_INJECT='        <noscript><p>Moklanjo — courier desk OS. <a href="/privacy">Privacy</a> · <a href="/terms/">Terms</a> · <a href="/download">Download</a></p></noscript>
+  BODY_INJECT='        <noscript><p>Moklanjo — courier operating system. <a href="/privacy">Privacy</a> · <a href="/terms/">Terms</a> · <a href="/download">Download</a></p></noscript>
     </body>'
   awk -v head="$HEAD_INJECT" -v body="$BODY_INJECT" -v bid="$BUILD_ID" '
     BEGIN { done_title=0; done_body=0 }

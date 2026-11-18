@@ -320,6 +320,41 @@ script_mod! {
             color_focus: #x00000000
         }
     }
+    let CardHit = Button{
+        width: Fill height: Fill
+        padding: 0.
+        text: ""
+        grab_key_focus: false
+        reset_hover_on_click: true
+        label_walk: Walk{width: 0. height: 0.}
+        icon_walk: Walk{width: 0. height: 0.}
+        draw_bg +: {
+            color: #x00000000
+            color_hover: #xFFFFFF12
+            color_down: #xFFFFFF22
+            color_focus: #x00000000
+            color_2: #x00000000
+            color_2_hover: #xFFFFFF12
+            color_2_down: #xFFFFFF22
+            color_2_focus: #x00000000
+            border_color: #x00000000
+            border_color_hover: #xF7B04366
+            border_color_down: #xF7B04399
+            border_color_focus: #x00000000
+            border_radius: 10.
+            border_size: 1.
+        }
+        draw_text +: {
+            color: #x00000000
+            color_hover: #x00000000
+            color_down: #x00000000
+            color_focus: #x00000000
+        }
+    }
+    let BrandIcon = Image{
+        width: 36 height: 36
+        fit: ImageFit.Stretch
+    }
 
     // ---- Chapter ground: cool desk light + the icon's speed streaks ----
     let Chapter = View{
@@ -327,7 +362,7 @@ script_mod! {
         flow: Down
         spacing: 20
         align: Align{x: 0.0 y: 0.0}
-        padding: Inset{left: 64. right: 64. top: 30. bottom: 36.}
+        padding: Inset{left: 64. right: 64. top: 36. bottom: 44.}
         show_bg: true
         draw_bg +: {
             top: instance(#xE3EAF3)
@@ -358,13 +393,33 @@ script_mod! {
     let WellCard = RoundedView{
         width: Fill height: Fit
         flow: Down
-        spacing: 10
-        padding: Inset{left: 20. right: 20. top: 18. bottom: 20.}
+        spacing: 12
+        padding: Inset{left: 22. right: 22. top: 20. bottom: 22.}
         draw_bg +: {
             color: Well
             border_color: WellLine
             border_size: 1.
-            border_radius: 12.
+            border_radius: 14.
+        }
+    }
+    let PropCard = RoundedView{
+        width: Fill height: Fit
+        flow: Down
+        spacing: 14
+        padding: Inset{left: 22. right: 22. top: 20. bottom: 22.}
+        show_bg: true
+        draw_bg +: {
+            color: Well
+            border_color: #xA8BDD4
+            border_size: 1.25
+            border_radius: 14.
+            accent: instance(#xDF5E16)
+            pixel: fn() {
+                let y = self.pos.y * self.rect_size.y
+                let bar = 1.0 - smoothstep(3.5, 0.0, y)
+                let c = mix(self.color.xyz, self.accent.xyz, bar * 0.10)
+                return vec4(c, 1.0)
+            }
         }
     }
     // A key fact: orange bar (painted), bold line, plain line. `head` and
@@ -462,55 +517,97 @@ script_mod! {
         hit := HitBtn{}
     }
 
-    // Tracking timeline bead (chapter 6 prop): dot + status word.
-    let TrackStep = View{
-        width: Fit height: Fit
+    // Chapter 6 timeline: equal Fill columns. Labels are Fit + no-wrap —
+    // Label defaults to right_wrap, which stacked glyphs when a column
+    // was too narrow (Booked / With carrier looking vertical).
+    let TrackCol = View{
+        width: Fill height: Fit
         flow: Down
-        spacing: 6
+        spacing: 8
         align: Align{x: 0.5}
         dot := RoundedView{width: 18 height: 18 draw_bg +: {color: Navy border_radius: 9.}}
-        word := Markdown{
-            selectable: true
-            height: Fit
-            paragraph_spacing: 0.
-            pre_code_spacing: 0.
-            draw_selection +: { color: #x2E5BADFF }
-            draw_block +: { selection_color: #x2E5BADFF }
+        word := Label{
+            width: Fit
+            flow: Right
             padding: 0.
-            font_color: Ink
-            draw_text +: {color: Ink text_style: theme.font_bold{font_family: StrongFont font_size: 14.}}
-            body: "Step"
+            align: Align{x: 0.5}
+            draw_text +: {
+                color: Ink
+                text_style: theme.font_bold{font_family: StrongFont font_size: 13.5}
+            }
+            text: "Step"
         }
     }
-    let TrackLine = RoundedView{width: Fill height: 3 margin: Inset{top: 8. bottom: 0. left: 0. right: 0.} draw_bg +: {color: Navy border_radius: 1.5}}
 
-    // Chapter rail bead: hollow (ahead), yellow (passed), orange (here).
+    // Chapter rail bead: equal Fill columns. Name is Fit + no-wrap.
     let Bead = View{
-        width: 78 height: 42
+        width: Fill height: 58
         flow: Overlay
         col := View{
             width: Fill height: Fit
             flow: Down
-            spacing: 5
+            spacing: 7
             align: Align{x: 0.5}
-            padding: Inset{top: 3. bottom: 0. left: 0. right: 0.}
-            face := View{
-                width: 16 height: 16
+            padding: Inset{top: 2. bottom: 0. left: 2. right: 2.}
+            dot_row := View{
+                width: Fill height: 26
                 flow: Overlay
                 align: Align{x: 0.5 y: 0.5}
-                ahead := RoundedView{width: 12 height: 12 draw_bg +: {color: Navy border_color: #x6F8AC4 border_size: 2. border_radius: 6.}}
-                passed := RoundedView{visible: false width: 12 height: 12 draw_bg +: {color: Yellow border_radius: 6.}}
-                here := RoundedView{visible: false width: 16 height: 16 draw_bg +: {color: OrangeLogo border_color: #xFFFFFF border_size: 2. border_radius: 8.}}
+                ring := RoundedView{
+                    visible: false
+                    width: 26 height: 26
+                    draw_bg +: {
+                        color: #x00000000
+                        border_color: #xF7B043CC
+                        border_size: 2.
+                        border_radius: 13.
+                    }
+                }
+                ahead := RoundedView{
+                    width: 11 height: 11
+                    draw_bg +: {
+                        color: #x030A1C
+                        border_color: #x5A7DB5
+                        border_size: 2.
+                        border_radius: 5.5
+                    }
+                }
+                passed := RoundedView{
+                    visible: false
+                    width: 13 height: 13
+                    draw_bg +: {color: Yellow border_color: #x072058 border_size: 0. border_radius: 6.5}
+                }
+                here := RoundedView{
+                    visible: false
+                    width: 20 height: 20
+                    draw_bg +: {
+                        color: OrangeLogo
+                        border_color: #xFFFFFF
+                        border_size: 2.5
+                        border_radius: 10.
+                    }
+                }
+                parcel_chip := RoundedView{
+                    visible: false
+                    width: 8 height: 8
+                    margin: Inset{top: 6.}
+                    draw_bg +: {color: #xFFFFFF border_radius: 2.}
+                }
             }
             name := Label{
+                width: Fit
+                flow: Right
                 padding: 0.
-                draw_text +: {color: RailInk text_style: theme.font_regular{font_family: TextFont font_size: 11.5}}
+                align: Align{x: 0.5}
+                draw_text +: {
+                    color: #x6F8AC4
+                    text_style: theme.font_bold{font_family: StrongFont font_size: 12.5}
+                }
                 text: "Step"
             }
         }
         hit := HitBtn{}
     }
-    let RailGap = View{width: Fill height: 1}
 
     // Download / WhatsApp pair + the note that answers them.
     let CtaPair = View{
@@ -530,7 +627,7 @@ script_mod! {
     startup() do #(App::script_component(vm)){
         ui: Root{
             main_window := Window{
-                window.title: "Moklanjo — the courier desk"
+                window.title: "Moklanjo — courier operating system"
                 window.inner_size: vec2(1280, 800)
                 pass.clear_color: Surface
                 body +: {
@@ -545,59 +642,91 @@ script_mod! {
                         flow: Down
                         draw_bg +: {color: Navy border_radius: 0.}
                         brand_row := View{
-                            width: Fill height: 50
+                            width: Fill height: 54
                             flow: Right
                             spacing: 12
                             align: Align{y: 0.5}
                             padding: Inset{left: 24. right: 24. top: 0. bottom: 0.}
-                            brand := Label{
-                                padding: 0.
-                                draw_text +: {color: #xFFFFFF text_style: theme.font_bold{font_family: DisplayFont font_size: 22.}}
-                                text: "Moklanjo"
+                            brand_mark := View{
+                                width: Fit height: Fit
+                                flow: Right
+                                spacing: 10
+                                align: Align{y: 0.5}
+                                BrandIcon{
+                                    src: crate_resource("self:resources/media/app-icon.webp")
+                                }
+                                brand := Label{
+                                    padding: 0.
+                                    draw_text +: {color: #xFFFFFF text_style: theme.font_bold{font_family: DisplayFont font_size: 23.}}
+                                    text: "Moklanjo"
+                                }
                             }
                             tagline := Label{
                                 padding: 0.
-                                draw_text +: {color: Yellow text_style: theme.font_regular{font_family: TextFont font_size: 13.}}
-                                text: "the courier desk"
+                                draw_text +: {color: Yellow text_style: theme.font_bold{font_family: StrongFont font_size: 12.5}}
+                                text: "courier operating system"
                             }
                             View{width: Fill height: 1}
-                            step_name := Label{
-                                padding: 0.
-                                draw_text +: {color: RailInk text_style: theme.font_regular{font_family: TextFont font_size: 13.}}
-                                text: "1 / 9 · Walk-in"
+                            step_pill := RoundedView{
+                                width: Fit height: Fit
+                                padding: Inset{left: 12. right: 12. top: 5. bottom: 6.}
+                                draw_bg +: {
+                                    color: #x0A2860
+                                    border_color: #x3A6BB8
+                                    border_size: 1.
+                                    border_radius: 20.
+                                }
+                                step_name := Label{
+                                    padding: 0.
+                                    draw_text +: {
+                                        color: #xFFFFFF
+                                        text_style: theme.font_bold{font_family: MonoFont font_size: 12.5}
+                                    }
+                                    text: "1 / 9 · Walk-in"
+                                }
                             }
                         }
-                        // The parcel's tracking line is the chapter rail: one
-                        // continuous track under evenly spaced beads.
+                        RoundedView{width: Fill height: 1 draw_bg +: {color: #x1E3D7A border_radius: 0.}}
+                        // Parcel journey rail: track, progress fill, chapter beads.
                         rail := View{
                             width: Fill height: Fit
-                            flow: Overlay
-                            padding: Inset{left: 20. right: 20. top: 2. bottom: 8.}
-                            rail_line := RoundedView{
-                                width: Fill height: 2
-                                margin: Inset{left: 39. right: 39. top: 10. bottom: 0.}
-                                draw_bg +: {color: #x2B4C8F border_radius: 1.}
+                            flow: Down
+                            padding: Inset{left: 20. right: 20. top: 8. bottom: 12.}
+                            rail_hint := Label{
+                                padding: Inset{left: 4. bottom: 6.}
+                                draw_text +: {
+                                    color: #x8FA8D8
+                                    text_style: theme.font_bold{font_family: StrongFont font_size: 11.}
+                                }
+                                text: "PARCEL JOURNEY"
                             }
-                            beads := View{
+                            track_row := View{
                                 width: Fill height: Fit
-                                flow: Right
-                                b0 := Bead{col.name.text: "Walk-in"}
-                                RailGap{}
-                                b1 := Bead{col.name.text: "Weigh"}
-                                RailGap{}
-                                b2 := Bead{col.name.text: "Price"}
-                                RailGap{}
-                                b3 := Bead{col.name.text: "Label"}
-                                RailGap{}
-                                b4 := Bead{col.name.text: "Hand over"}
-                                RailGap{}
-                                b5 := Bead{col.name.text: "Track"}
-                                RailGap{}
-                                b6 := Bead{col.name.text: "COD"}
-                                RailGap{}
-                                b7 := Bead{col.name.text: "Offline"}
-                                RailGap{}
-                                b8 := Bead{col.name.text: "Start"}
+                                flow: Overlay
+                                rail_track := RoundedView{
+                                    width: Fill height: 3
+                                    margin: Inset{left: 44. right: 44. top: 12. bottom: 0.}
+                                    draw_bg +: {color: #x1A3568 border_radius: 1.5}
+                                }
+                                rail_prog := RoundedView{
+                                    width: 120 height: 3
+                                    margin: Inset{left: 44. top: 12. bottom: 0.}
+                                    draw_bg +: {color: OrangeLogo border_radius: 1.5}
+                                }
+                                beads := View{
+                                    width: Fill height: Fit
+                                    flow: Right
+                                    spacing: 0
+                                    b0 := Bead{col.name.text: "Walk-in"}
+                                    b1 := Bead{col.name.text: "Weigh"}
+                                    b2 := Bead{col.name.text: "Price"}
+                                    b3 := Bead{col.name.text: "Label"}
+                                    b4 := Bead{col.name.text: "Hand over"}
+                                    b5 := Bead{col.name.text: "Track"}
+                                    b6 := Bead{col.name.text: "COD"}
+                                    b7 := Bead{col.name.text: "Offline"}
+                                    b8 := Bead{col.name.text: "Start"}
+                                }
                             }
                         }
                     }
@@ -620,21 +749,22 @@ script_mod! {
                                     width: Fill height: Fit
                                     flow: Down
                                     spacing: 20
-                                    Eyebrow{body: "MOKLANJO · A COURIER DESK, NOT A CASH REGISTER"}
-                                    Headline{body: "Book a parcel before the next customer reaches the counter."}
-                                    Lede{body: "Book, label, hand over, track and settle — one desk on your own devices, internet or not."}
+                                    Eyebrow{body: "MOKLANJO · COURIER OPERATING SYSTEM"}
+                                    Headline{body: "Book, move and settle every parcel — one courier OS on your own devices."}
+                                    Lede{body: "Parties, books, COD, labels, AWB pools, tracking, riders and billing — the full counter-to-settled loop, with or without the internet. Free on your devices."}
                                     hero_cta := CtaPair{}
                                 }
-                                loop_card := WellCard{
-                                    width: 340
+                                loop_card := PropCard{
+                                    width: 360
                                     spacing: 14
+                                    RoundedView{width: 48 height: 4 draw_bg +: {color: OrangeLogo border_radius: 2.}}
                                     Small{body: "THE WALK-IN LOOP"}
                                     Fact{head.body: "Weigh" line.body: "Actual and volumetric, side by side."}
                                     Fact{head.body: "Charge" line.body: "Your rate card, cash or account."}
-                                    Fact{head.body: "Next booking" line.body: "One tap clears the desk for the next person."}
+                                    Fact{head.body: "Next booking" line.body: "One tap clears the counter for the next walk-in."}
                                 }
                             }
-                            Small{body: "Scroll the page — the tracking rail above follows your parcel."}
+                            Small{body: "Scroll — the parcel journey rail above tracks where you are in the story."}
                         }
 
                         // 2 — Weigh it right (chargeable-weight, units)
@@ -896,7 +1026,7 @@ script_mod! {
                         // 5 — Two roads (manifest, rider-runs)
                         roads := Chapter{
                             Eyebrow{body: "5 · HAND OVER"}
-                            Headline{body: "Hand it to a carrier, or send your own rider. Same desk."}
+                            Headline{body: "Hand it to a carrier, or send your own rider. Same system."}
                             roads_row := View{
                                 width: Fill height: Fit
                                 flow: Right
@@ -924,15 +1054,21 @@ script_mod! {
                                 spacing: 16
                                 track_line := View{
                                     width: Fill height: Fit
-                                    flow: Right
-                                    align: Align{y: 0.0}
-                                    TrackStep{word.body: "Booked"}
-                                    TrackLine{}
-                                    TrackStep{word.body: "With carrier"}
-                                    TrackLine{}
-                                    TrackStep{word.body: "Out for delivery"}
-                                    TrackLine{}
-                                    TrackStep{dot.draw_bg.color: GoodInk word.body: "Delivered"}
+                                    flow: Overlay
+                                    ruler := RoundedView{
+                                        width: Fill height: 3
+                                        margin: Inset{left: 28. right: 28. top: 7.5 bottom: 0.}
+                                        draw_bg +: {color: Navy border_radius: 1.5}
+                                    }
+                                    track_cols := View{
+                                        width: Fill height: Fit
+                                        flow: Right
+                                        spacing: 0
+                                        tc0 := TrackCol{word.text: "Booked"}
+                                        tc1 := TrackCol{word.text: "With carrier"}
+                                        tc2 := TrackCol{word.text: "Out for delivery"}
+                                        tc3 := TrackCol{dot.draw_bg.color: GoodInk word.text: "Delivered"}
+                                    }
                                 }
                                 // Phones: the four steps as one line (no room for beads).
                                 track_compact := Strong{visible: false body: "Booked → With carrier → Out for delivery → Delivered"}
@@ -1016,7 +1152,7 @@ script_mod! {
                         offline := Chapter{
                             Eyebrow{body: "8 · INTERNET DOWN?"}
                             Headline{body: "Keep booking."}
-                            Lede{body: "Booking, labels, scanning, COD and the books all run on the desk itself. When the internet drops, nothing at the counter waits for it."}
+                            Lede{body: "Booking, labels, scanning, COD and the books all run on your devices. When the internet drops, nothing at the counter waits for it."}
                             offline_row := View{
                                 width: Fill height: Fit
                                 flow: Right
@@ -1054,27 +1190,81 @@ script_mod! {
                             }
                         }
 
-                        // 9 — Start (free-local)
+                        // 9 — Start (free-local) + who makes it
                         start := Chapter{
                             Eyebrow{body: "9 · START"}
-                            Headline{body: "One desk. Your parcels. Your books."}
-                            Lede{body: "Moklanjo runs on Android, Windows and Linux. A rider uses the same app in rider mode."}
+                            Headline{body: "One courier OS. Your parcels. Your books."}
+                            Lede{body: "Moklanjo is a complete courier operating system under Kumkaj — Android, Windows and Linux. Riders use the same app in rider mode."}
+                            names := View{
+                                width: Fill height: Fit
+                                flow: Down
+                                spacing: 16
+                                View{
+                                    width: Fill height: Fit
+                                    flow: Down
+                                    spacing: 4
+                                    Eyebrow{body: "TRADEMARK"}
+                                    Strong{body: "Gotigin"}
+                                    Small{body: "Memon for “find it” · pronounced go-tee-geen"}
+                                    Small{body: "Where Technology Meets Discovery"}
+                                }
+                                View{
+                                    width: Fill height: Fit
+                                    flow: Down
+                                    spacing: 4
+                                    Eyebrow{body: "COMPANY"}
+                                    Strong{body: "GOTIGIN SOFTWARE & HARDWARE PRIVATE LIMITED"}
+                                    Small{body: "mearaj@gotigin.com"}
+                                }
+                                View{
+                                    width: Fill height: Fit
+                                    flow: Down
+                                    spacing: 4
+                                    Eyebrow{body: "BRAND"}
+                                    Strong{body: "Kumkaj"}
+                                    Small{body: "Concrete business operating system apps"}
+                                }
+                                View{
+                                    width: Fill height: Fit
+                                    flow: Down
+                                    spacing: 4
+                                    Eyebrow{body: "PRODUCT"}
+                                    Strong{body: "Moklanjo"}
+                                    Small{body: "Courier operating system under Kumkaj"}
+                                }
+                            }
                             close_cta := CtaPair{}
                         }
 
                         footer := View{
                             width: Fill height: Fit
                             flow: Down
-                            spacing: 14
+                            spacing: 16
+                            padding: Inset{top: 18. bottom: 22.}
                             show_bg: true
-                            draw_bg +: {color: Navy}
+                            draw_bg +: {color: NavyBlack}
                             RoundedView{width: Fill height: 1 draw_bg +: {color: #x2B4C8F border_radius: 0.}}
                             footer_row := View{
                                 width: Fill height: Fit
                                 flow: Right
                                 spacing: 12
                                 align: Align{y: 0.5}
-                                Small{width: Fill body: "Gotigin · GOTIGIN SOFTWARE & HARDWARE PRIVATE LIMITED · Kumkaj · Moklanjo."}
+                                footer_brand := View{
+                                    width: Fill height: Fit
+                                    flow: Right
+                                    spacing: 10
+                                    align: Align{y: 0.5}
+                                    BrandIcon{
+                                        src: crate_resource("self:resources/media/app-icon.webp")
+                                    }
+                                    View{
+                                        width: Fill height: Fit
+                                        flow: Down
+                                        spacing: 2
+                                        Small{width: Fill body: "© 2026 GOTIGIN SOFTWARE & HARDWARE PRIVATE LIMITED"}
+                                        Small{width: Fill body: "Gotigin · Kumkaj · Moklanjo"}
+                                    }
+                                }
                                 footer_links := View{
                                     width: Fit height: Fit
                                     flow: Right

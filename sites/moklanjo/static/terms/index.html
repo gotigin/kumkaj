@@ -10,14 +10,46 @@
     body { font-family: "IBM Plex Sans", system-ui, sans-serif; max-width: 40rem; margin: 2rem auto; padding: 0 1rem; line-height: 1.5; color: #0B1220; background: #D6E0EC; }
     a { color: #072058; }
     .muted { color: #3A4554; }
+
+    .identity { margin: 1rem 0; }
+    .identity div { margin: 0.55rem 0; }
+    .identity .label { display: block; font-size: 0.75rem; letter-spacing: 0.06em; text-transform: uppercase; color: #6B4A3F; font-weight: 600; }
+    .identity .value { display: block; font-weight: 600; margin-top: 0.1rem; }
+    .identity .note { display: block; color: #6B4A3F; font-size: 0.92rem; margin-top: 0.15rem; }
+    .legal-foot { margin-top: 2rem; display: flex; flex-direction: column; gap: 0.2rem; color: #6B4A3F; font-size: 0.85rem; }
+    .legal-foot-company { color: #260B08; font-weight: 600; }
   </style>
 </head>
 <body>
   <p><a href="/">← Moklanjo</a></p>
   <h1>Terms</h1>
   <p class="muted">Last updated: 2026-11-18</p>
-  <p>Gotigin (trademark) · GOTIGIN SOFTWARE &amp; HARDWARE PRIVATE LIMITED (company) · Kumkaj (brand) · Moklanjo (product). Features labelled <strong>planned</strong> are not available yet. Hardware-specific claims wait for a real-office pilot.</p>
+    <div class="identity">
+    <div>
+      <span class="label">Trademark</span>
+      <span class="value">Gotigin</span>
+      <span class="note">Memon for “find it” · pronounced go-tee-geen</span>
+    </div>
+    <div>
+      <span class="label">Company</span>
+      <span class="value">GOTIGIN SOFTWARE &amp; HARDWARE PRIVATE LIMITED</span>
+    </div>
+    <div>
+      <span class="label">Brand</span>
+      <span class="value">Kumkaj</span>
+    </div>
+    <div>
+      <span class="label">Product</span>
+      <span class="value">Moklanjo</span>
+    </div>
+  </div>
+  <p>Features labelled <strong>planned</strong> are not available yet. Hardware-specific claims wait for a real-office pilot.</p>
+  
   <p>The app licence is stated in its package (<code>MIT OR Apache-2.0</code> in the workspace crate unless noted). Tax, statutory filing and carrier contracts remain your responsibility.</p>
   <p>Contact: _(to be filled when Gotigin supplies official details)_</p>
+  <p class="legal-foot">
+    <span class="legal-foot-company">GOTIGIN SOFTWARE &amp; HARDWARE PRIVATE LIMITED</span>
+    <span>Gotigin · Kumkaj · Moklanjo</span>
+  </p>
 </body>
 </html>

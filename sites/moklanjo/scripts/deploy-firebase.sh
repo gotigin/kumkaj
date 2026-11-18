@@ -114,7 +114,7 @@ HEAD_INJECT='        <title>Moklanjo</title>
         <meta property="og:description" content="Book. Label. Hand over. Track. Settle. One desk, internet or not.">
         <meta property="og:url" content="https://moklanjo.com/">
         <meta property="og:type" content="website">'
-BODY_INJECT='        <noscript><p>Moklanjo — courier desk OS. <a href="/privacy">Privacy</a> · <a href="/terms/">Terms</a> · <a href="/download">Download</a></p></noscript>
+BODY_INJECT='        <noscript><p>Moklanjo — courier operating system. <a href="/privacy">Privacy</a> · <a href="/terms/">Terms</a> · <a href="/download">Download</a></p></noscript>
     </body>'
 # Optional Analytics bundle if the owner added client/firebase-init.js later.
 ANALYTICS_LINE=""
