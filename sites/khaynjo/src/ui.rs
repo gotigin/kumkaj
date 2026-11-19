@@ -658,6 +658,15 @@ script_mod! {
             draw_block +: { selection_color: #xCFE3FFFF }
         }
     }
+    // Disc + heading on one row (body stays below in the step column).
+    let StepHead = View{
+        width: Fill height: Fit
+        flow: Right
+        spacing: 12
+        align: Align{y: 0.5}
+        disc := StepDisc{}
+        title := H3{width: Fill}
+    }
     // A point: gold dot, bold line, plain line (direct children for overrides).
     let Point = View{
         width: Fill height: Fit
@@ -828,12 +837,14 @@ script_mod! {
         amt := Ticket{width: Fit body: "0"}
     }
 
-    // World shelf card (pager). Text and photo come from world_shelf.rs at
-    // runtime: photo, or an honest "photo coming" tile.
+    // World shelf card (parade). Fixed outer shell so every card is the same
+    // height — long native lines / missing native row must not change the
+    // strip pitch or the scroll looks like a flicker.
     let ShelfCard = WarmCard{
         width: Fill
+        height: Fill
         spacing: 5
-        padding: Inset{left: 10. right: 10. top: 10. bottom: 11.}
+        padding: Inset{left: 10. right: 10. top: 10. bottom: 10.}
         pic_frame := RoundedView{
             width: Fill height: 96
             flow: Overlay
@@ -843,9 +854,21 @@ script_mod! {
                 border_size: 1.
                 border_radius: 10.
             }
+            // CropToFill alone is a sharp rect — without an SDF radius the
+            // top corners poke past pic_frame's 10px round. Same trick as the
+            // app ProductCard thumb.
             photo := Image{
                 width: Fill height: Fill
                 fit: ImageFit.CropToFill
+                draw_bg +: {
+                    radius: uniform(10.0)
+                    pixel: fn() {
+                        let sdf = Sdf2d.viewport(self.pos * self.rect_size)
+                        sdf.box(0., 0., self.rect_size.x, self.rect_size.y, self.radius)
+                        sdf.fill(self.get_color())
+                        return sdf.result
+                    }
+                }
             }
             soon := RoundedView{
                 visible: false
@@ -866,44 +889,59 @@ script_mod! {
                 }
             }
         }
-        country := Strong{body: "Country"}
-        // TextFlow paints text_style_normal — pin both, on WorldFont. In a View:
-        // Markdown ignores set_visible, and some countries have no native line.
-        native_wrap := View{
-        width: Fill height: Fit
-        native := Markdown{
-            selectable: true
-            height: Fit
-            paragraph_spacing: 0.
-            pre_code_spacing: 0.
-            draw_selection +: { color: #xCFE3FFFF }
-        draw_block +: { selection_color: #xCFE3FFFF }
-            width: Fill
-            padding: 0.
-            font_color: Maroon
-            font_size: 12.
-            text_style_normal: theme.font_regular{font_family: WorldFont font_size: 12. line_spacing: 1.2}
-            text_style_bold: theme.font_bold{font_family: WorldFont font_size: 12. line_spacing: 1.2}
-            draw_text +: {
-                color: Muted
-                text_style: theme.font_regular{font_family: WorldFont font_size: 12. line_spacing: 1.2}
+        // One-line country title band.
+        country_wrap := View{
+            width: Fill height: 22
+            country := Strong{
+                body: "Country"
+                font_size: 15.
+                text_style_normal: theme.font_bold{font_family: StrongFont font_size: 15. line_spacing: 1.1}
+                text_style_bold: theme.font_bold{font_family: StrongFont font_size: 15. line_spacing: 1.1}
+                draw_text +: {
+                    color: Ink
+                    text_style: theme.font_bold{font_family: StrongFont font_size: 15. line_spacing: 1.1}
+                }
             }
-            body: "Local name"
         }
+        // Always reserved (even when empty) so cards without a native line
+        // stay the same height as those with two script lines.
+        native_wrap := View{
+            width: Fill height: 34
+            native := Markdown{
+                selectable: true
+                width: Fill height: Fill
+                paragraph_spacing: 0.
+                pre_code_spacing: 0.
+                draw_selection +: { color: #xCFE3FFFF }
+                draw_block +: { selection_color: #xCFE3FFFF }
+                padding: 0.
+                font_color: Maroon
+                font_size: 12.
+                text_style_normal: theme.font_regular{font_family: WorldFont font_size: 12. line_spacing: 1.15}
+                text_style_bold: theme.font_bold{font_family: WorldFont font_size: 12. line_spacing: 1.15}
+                draw_text +: {
+                    color: Muted
+                    text_style: theme.font_regular{font_family: WorldFont font_size: 12. line_spacing: 1.15}
+                }
+                body: "Local name"
+            }
         }
-        dish := Body{
-            body: "Famous dish"
-            font_size: 14.
-            text_style_normal: theme.font_regular{font_family: TextFont font_size: 14. line_spacing: 1.25}
-            draw_text +: {
-                color: Ink
-                text_style: theme.font_regular{font_family: TextFont font_size: 14. line_spacing: 1.25}
+        dish_wrap := View{
+            width: Fill height: 36
+            dish := Body{
+                body: "Famous dish"
+                font_size: 14.
+                text_style_normal: theme.font_regular{font_family: TextFont font_size: 14. line_spacing: 1.2}
+                draw_text +: {
+                    color: Ink
+                    text_style: theme.font_regular{font_family: TextFont font_size: 14. line_spacing: 1.2}
+                }
             }
         }
     }
-    // Keeps its Fill share of the row when its card hides (last page).
+    // Fixed shell = max parade card height (photo + text bands + pad).
     let ShelfSlot = View{
-        width: Fill height: Fit
+        width: 200 height: 248
         card := ShelfCard{}
     }
 
@@ -1084,8 +1122,7 @@ script_mod! {
                                         width: Fill height: Fit
                                         flow: Down
                                         spacing: 14
-                                        StepDisc{num.body: "1"}
-                                        H3{body: "Seat the table, take the order"}
+                                        StepHead{disc.num.body: "1" title.body: "Seat the table, take the order"}
                                         Body{body: "Mark the table Occupied the moment guests sit. Add dishes, pick a size, add extras, and type a note for the kitchen — right at the table."}
                                         View{
                                             width: Fill height: Fit
@@ -1118,8 +1155,7 @@ script_mod! {
                                         width: Fill height: Fit
                                         flow: Down
                                         spacing: 14
-                                        StepDisc{num.body: "2"}
-                                        H3{body: "One ticket per kitchen station"}
+                                        StepHead{disc.num.body: "2" title.body: "One ticket per kitchen station"}
                                         Body{body: "Send the order and each station gets only its own dishes — numbered per day, with the table, the waiter and every note. Never a price: the kitchen cooks, the counter bills."}
                                         // Shown only after the owner's real-hardware LAN pilot passes.
                                         kot_lan := Point{visible: false head.body: "Prints itself" line.body: "Send, and the ticket prints at the right station — nobody carries it."}
@@ -1157,8 +1193,7 @@ script_mod! {
                                             width: Fill height: Fit
                                             flow: Down
                                             spacing: 14
-                                            StepDisc{num.body: "3"}
-                                            H3{body: "The kitchen sees what to cook now"}
+                                            StepHead{disc.num.body: "3" title.body: "The kitchen sees what to cook now"}
                                             Body{body: "On the kitchen screen tickets move New → Preparing → Ready with one tap. Older tickets warm in colour, “To cook now” counts every dish waiting, and mains can hold until the starters go."}
                                         }
                                         View{width: 1 height: 1}
@@ -1195,8 +1230,7 @@ script_mod! {
                                         width: Fill height: Fit
                                         flow: Down
                                         spacing: 14
-                                        StepDisc{num.body: "4"}
-                                        H3{body: "Settle any way the guest pays"}
+                                        StepHead{disc.num.body: "4" title.body: "Settle any way the guest pays"}
                                         Body{body: "Cash with change to return, UPI with the amount already in the QR, part payment, or Due on the customer's khata. Split by item, by seat or evenly. The table frees only when its bill is paid."}
                                         Point{head.body: "Tips stay apart" line.body: "A tip is recorded on its own — never mixed into sales."}
                                     }
@@ -1222,8 +1256,7 @@ script_mod! {
                                         width: Fill height: Fit
                                         flow: Down
                                         spacing: 14
-                                        StepDisc{num.body: "5"}
-                                        H3{body: "Close the day you can trust"}
+                                        StepHead{disc.num.body: "5" title.body: "Close the day you can trust"}
                                         Body{body: "Count the drawer against the float, cash taken, tips and cash paid out — short or over is named. Print the shift slip, then open the day report by staff, order type, hour and dish, with cancels, comps and tips."}
                                     }
                                     drawer := WarmCard{
@@ -1332,59 +1365,75 @@ script_mod! {
                                 world_head := SecHead{
                                     padding: Inset{top: 12.}
                                     H3{body: "Every country at your counter"}
-                                    Body{body: "One famous dish from every country — the English name, the name in their own script, and the dish in English. Put those words on your menu."}
+                                    Body{body: "One famous dish from every country — the English name, the name in their own script, and the dish in English. Put those words on your menu. The world keeps moving past; pause or search when you want to look."}
                                 }
-                                // World shelf pager (world_shelf.rs, 199 countries): 8 cards
-                                // a page in a 4 × 2 grid when wide, 4 (2 × 2) when narrow.
+                                // Living parade (not a pager): cards flow past the counter.
                                 shelf_bar := View{
                                     width: Fill height: Fit
                                     flow: Right
-                                    spacing: 10
+                                    spacing: 8
                                     align: Align{y: 0.5}
-                                    shelf_nav := View{
-                                        width: Fit height: Fit
-                                        flow: Right
-                                        spacing: 8
-                                        align: Align{y: 0.5}
-                                        shelf_prev := PagerBtn{text: "‹ Prev"}
-                                        shelf_page := Markdown{
-                                            selectable: true
-                                            width: Fit height: Fit
-                                            padding: 0.
-                                            paragraph_spacing: 0.
-                                            pre_code_spacing: 0.
-                                            body: "1 / 1"
-                                            font_color: Muted
-                                            font_size: 14.
-                                            text_style_normal: theme.font_bold{font_family: StrongFont font_size: 14.}
-                                            text_style_bold: theme.font_bold{font_family: StrongFont font_size: 14.}
-                                            draw_text +: {color: Muted text_style: theme.font_bold{font_family: StrongFont font_size: 14.}}
-                                            draw_selection +: { color: #xCFE3FFFF }
-                                            draw_block +: { selection_color: #xCFE3FFFF }
-                                        }
-                                        shelf_next := PagerBtn{text: "Next ›"}
-                                    }
+                                    shelf_flow_left := PagerBtn{text: "←"}
+                                    shelf_flow_right := PagerBtn{text: "→"}
+                                    shelf_play := PagerBtn{text: "Pause"}
+                                    shelf_speed_down := PagerBtn{text: "−"}
+                                    shelf_speed := PagerBtn{text: "Speed 2"}
+                                    shelf_speed_up := PagerBtn{text: "+"}
                                 }
-                                shelf_grid := View{
+                                // Own row so placeholder / typed text stay readable.
+                                shelf_find := TextInput{
                                     width: Fill height: Fit
-                                    flow: Down
-                                    spacing: 12
-                                    shelf_q0 := View{
-                                        width: Fill height: Fit
-                                        flow: Right
-                                        spacing: 12
-                                        View{width: Fill height: Fit flow: Right spacing: 12 s0 := ShelfSlot{} s1 := ShelfSlot{}}
-                                        View{width: Fill height: Fit flow: Right spacing: 12 s2 := ShelfSlot{} s3 := ShelfSlot{}}
+                                    empty_text: "Find a country or dish — e.g. India, biryani, Japan"
+                                    padding: Inset{left: 14. right: 14. top: 12. bottom: 12.}
+                                    draw_bg +: {
+                                        color: Well
+                                        color_hover: WellWarm
+                                        color_focus: Well
+                                        color_empty: Well
+                                        border_color: WellLine
+                                        border_color_hover: #xC9A58C
+                                        border_color_focus: Maroon
+                                        border_radius: 12.
+                                        border_size: 1.
                                     }
-                                    shelf_q1 := View{
-                                        width: Fill height: Fit
-                                        flow: Right
-                                        spacing: 12
-                                        View{width: Fill height: Fit flow: Right spacing: 12 s4 := ShelfSlot{} s5 := ShelfSlot{}}
-                                        View{width: Fill height: Fit flow: Right spacing: 12 s6 := ShelfSlot{} s7 := ShelfSlot{}}
+                                    draw_cursor +: {color: Maroon}
+                                    draw_text +: {
+                                        color: Ink
+                                        color_hover: Ink
+                                        color_focus: Ink
+                                        color_down: Ink
+                                        color_empty: Hint
+                                        color_empty_hover: Muted
+                                        color_empty_focus: Muted
+                                        text_style: theme.font_regular{font_family: TextFont font_size: 15.}
                                     }
                                 }
-                                menu_note := View{width: Fill height: Fit menu_note_text := Small{body: "One famous dish per country."}}
+                                // Clipped stage: each slot is abs-positioned and wraps on its
+                                // own so only one card rebinds when it leaves — no full-strip hitch.
+                                shelf_parade := ScrollXView{
+                                    width: Fill height: 248
+                                    scroll_bars: {
+                                        show_scroll_x: true
+                                        show_scroll_y: false
+                                        ignore_scroll_input: true
+                                        scroll_bar_x: {bar_size: 0. drag_scrolling: false axis_lock: true}
+                                    }
+                                    shelf_strip := View{
+                                        width: Fill height: 248
+                                        flow: Overlay
+                                        s0 := ShelfSlot{}
+                                        s1 := ShelfSlot{}
+                                        s2 := ShelfSlot{}
+                                        s3 := ShelfSlot{}
+                                        s4 := ShelfSlot{}
+                                        s5 := ShelfSlot{}
+                                        s6 := ShelfSlot{}
+                                        s7 := ShelfSlot{}
+                                        s8 := ShelfSlot{}
+                                        s9 := ShelfSlot{}
+                                    }
+                                }
+                                menu_note := View{width: Fill height: Fit menu_note_text := Small{body: "One famous dish per country — the parade loops the whole world."}}
                             }
                         }
 

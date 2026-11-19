@@ -141,7 +141,7 @@ const MIN_WIDTH: f64 = 375.0;
 
 /// Rows that sit side by side only when the content column is at least
 /// this wide (px), and stack otherwise.
-const ROWS: [(&[LiveId], f64); 26] = [
+const ROWS: [(&[LiveId], f64); 24] = [
     (ids!(hero_row), 900.0),
     (ids!(hero_cta), 420.0),
     (ids!(visit_key), 760.0),
@@ -157,8 +157,6 @@ const ROWS: [(&[LiveId], f64); 26] = [
     (ids!(feat_r2), 640.0),
     (ids!(feat_r3), 640.0),
     (ids!(tmpl_row), 760.0),
-    (ids!(menus.shelf_q0), SHELF_WIDE),
-    (ids!(menus.shelf_q1), SHELF_WIDE),
     (ids!(menus.shelf_bar), 520.0),
     (ids!(offline_row), 860.0),
     (ids!(price_row), 720.0),
@@ -185,11 +183,28 @@ const NAV_LINKS_FROM: f64 = 1000.0;
 const MAX_CONTENT: f64 = 1160.0;
 const MAX_CONTENT_WIDE: f64 = 1280.0;
 
-/// Content width from which the world shelf shows 8 cards (4 × 2) a page;
-/// narrower shows 4 (2 × 2) so a phone page stays short.
-const SHELF_WIDE: f64 = 700.0;
-/// World shelf card slots, in reading order (s4–s7 live in `shelf_q1`).
-const SHELF_CARDS: [&[LiveId]; 8] = [
+/// Fixed card width + gap for the world parade (must match ShelfSlot / spacing).
+const SHELF_CARD_W: f64 = 200.0;
+const SHELF_GAP: f64 = 12.0;
+const SHELF_PITCH: f64 = SHELF_CARD_W + SHELF_GAP;
+/// Parade speed: level 0 = still, then +SHELF_SPEED_STEP px/s per click (cap high).
+const SHELF_SPEED_STEP: f64 = 28.0;
+const SHELF_SPEED_MAX_LEVEL: u8 = 12;
+const SHELF_SPEED_DEFAULT_LEVEL: u8 = 2;
+/// Parade slots (abs-positioned shells) and the card path under each.
+const SHELF_SLOTS: [&[LiveId]; 10] = [
+    ids!(menus.s0),
+    ids!(menus.s1),
+    ids!(menus.s2),
+    ids!(menus.s3),
+    ids!(menus.s4),
+    ids!(menus.s5),
+    ids!(menus.s6),
+    ids!(menus.s7),
+    ids!(menus.s8),
+    ids!(menus.s9),
+];
+const SHELF_CARDS: [&[LiveId]; 10] = [
     ids!(menus.s0.card),
     ids!(menus.s1.card),
     ids!(menus.s2.card),
@@ -198,7 +213,11 @@ const SHELF_CARDS: [&[LiveId]; 8] = [
     ids!(menus.s5.card),
     ids!(menus.s6.card),
     ids!(menus.s7.card),
+    ids!(menus.s8.card),
+    ids!(menus.s9.card),
 ];
+const SHELF_SLOT_COUNT: usize = 10;
+const SHELF_TRACK: f64 = SHELF_PITCH * SHELF_SLOT_COUNT as f64;
 
 /// Countries on the shelf that have a photo.
 #[cfg(test)]
@@ -206,9 +225,21 @@ fn world_photo_count() -> usize {
     WORLD.iter().filter(|d| d.photo.is_some()).count()
 }
 
-/// Every country on the shelf (photos optional — cards show “Photo coming”).
-fn shelf_entries() -> Vec<&'static WorldDish> {
-    WORLD.iter().collect()
+/// Countries matching a search (country / native / dish); empty query = all.
+fn shelf_filter_hits(query: &str) -> Vec<&'static WorldDish> {
+    let q = query.trim().to_lowercase();
+    if q.is_empty() {
+        return WORLD.iter().collect();
+    }
+    WORLD
+        .iter()
+        .filter(|d| {
+            d.country.to_lowercase().contains(&q)
+                || d.country_native.to_lowercase().contains(&q)
+                || d.dish.to_lowercase().contains(&q)
+                || d.dish_native.to_lowercase().contains(&q)
+        })
+        .collect()
 }
 
 /// (never repeat the English dish twice).
@@ -228,11 +259,12 @@ fn shelf_native_line(d: &WorldDish) -> Option<String> {
 }
 
 
-/// (page index, page count) for the first card shown and the page size.
-fn shelf_page_of(first: usize, per_page: usize, len: usize) -> (usize, usize) {
-    let per = per_page.max(1);
-    let pages = len.div_ceil(per).max(1);
-    ((first / per).min(pages - 1), pages)
+fn shelf_wrap_index(i: isize, len: usize) -> usize {
+    if len == 0 {
+        return 0;
+    }
+    let n = len as isize;
+    (((i % n) + n) % n) as usize
 }
 
 /// Web path of a world photo inside the Makepad package
@@ -334,6 +366,17 @@ impl Tier {
     }
 }
 
+/// Script derive wants plain field type names (not inline generics / arrays).
+type PhotoBytes = std::collections::HashMap<String, std::rc::Rc<Vec<u8>>>;
+type PendingSection = Option<&'static str>;
+type PhotoPending = Vec<(LiveId, String)>;
+type ShelfHits = Vec<&'static WorldDish>;
+type ShelfSlotTags = [Option<&'static str>; 10];
+type ShelfSlotXs = [f64; 10];
+type ShelfSlotItems = [usize; 10];
+/// Deferred photo binds: (slot, file) — one decode per frame keeps motion smooth.
+type ShelfPhotoQueue = Vec<(usize, &'static str)>;
+
 #[derive(Script, ScriptHook)]
 pub struct App {
     #[live]
@@ -356,12 +399,52 @@ pub struct App {
     pending_last_y: f64,
     #[rust]
     pending_stable: u8,
-    /// World shelf: index of the first card on the page (kept across
-    /// resizes so the same countries stay in view), page size.
+    /// Playing the continuous flow (search always forces pause).
     #[rust]
-    shelf_first: usize,
+    shelf_playing: bool,
+    /// Last play/pause choice to restore when search is cleared.
     #[rust]
-    shelf_per_page: usize,
+    shelf_want_playing: bool,
+    /// True = world flows left (default); false = flows right.
+    #[rust]
+    shelf_flow_left: bool,
+    /// Speed level 0..=SHELF_SPEED_MAX_LEVEL (0 = no motion).
+    #[rust]
+    shelf_speed_level: u8,
+    /// Active search text (empty = full world).
+    #[rust]
+    shelf_query: String,
+    /// Cached hits for the current query — rebuilt only when search changes.
+    #[rust]
+    shelf_hits: ShelfHits,
+    /// Per-slot X (abs) and hit index — each card wraps alone.
+    #[rust]
+    shelf_slot_x: ShelfSlotXs,
+    #[rust]
+    shelf_slot_item: ShelfSlotItems,
+    /// Next hit index to assign when a card wraps off the left / right.
+    #[rust]
+    shelf_next_item: usize,
+    #[rust]
+    shelf_prev_item: usize,
+    /// Country currently painted in each parade slot (skip photo reload if same).
+    #[rust]
+    shelf_slot_country: ShelfSlotTags,
+    /// Photo file already decoded into that slot (avoid re-decode on backspace).
+    #[rust]
+    shelf_slot_photo: ShelfSlotTags,
+    #[rust]
+    shelf_photo_queue: ShelfPhotoQueue,
+    /// Search text changed — wait for typing to settle before painting cards.
+    #[rust]
+    shelf_search_dirty: bool,
+    /// NextFrame time when a dirty search may paint (0 = arm on next tick).
+    #[rust]
+    shelf_search_quiet_until: f64,
+    #[rust]
+    shelf_anim_frame: NextFrame,
+    #[rust]
+    shelf_last_t: f64,
     /// Top-bar nav section currently in view (scroll spy).
     #[rust]
     nav_active: PendingSection,
@@ -372,13 +455,6 @@ pub struct App {
     #[rust]
     photo_pending: PhotoPending,
 }
-
-/// World photo bytes by file name (the Script derive wants plain field types).
-type PhotoBytes = std::collections::HashMap<String, std::rc::Rc<Vec<u8>>>;
-/// Section to scroll to after layout (the Script derive wants plain types).
-type PendingSection = Option<&'static str>;
-/// In-flight photo fetches: (request id, file name).
-type PhotoPending = Vec<(LiveId, String)>;
 
 impl App {
     /// Scroll the page so `section` sits under the top bar.
@@ -568,14 +644,9 @@ impl App {
             let pad = if tier == Tier::Phone { 14.0 } else { 24.0 };
             bar.layout.padding = Inset { left: pad, right: pad.min(20.0), top: 0.0, bottom: 0.0 };
         }
-        // World shelf page size follows the width; the first card stays put.
-        let per_page = if content_w >= SHELF_WIDE { 8 } else { 4 };
-        self.ui
-            .view(cx, ids!(menus.shelf_q1))
-            .set_visible(cx, per_page == 8);
-        if per_page != self.shelf_per_page {
-            self.shelf_per_page = per_page;
-            self.paint_shelf(cx);
+        // Parade keeps its own width; restart the NextFrame pump after layout.
+        if self.shelf_playing {
+            self.shelf_arm_anim(cx);
         }
         if tier_changed {
             let page = self.ui.widget(cx, ids!(page));
@@ -652,59 +723,404 @@ impl App {
         }
     }
 
-    fn paint_shelf(&mut self, cx: &mut Cx) {
-        let list = shelf_entries();
-        let per = self.shelf_per_page.clamp(1, SHELF_CARDS.len());
-        let (page, pages) = shelf_page_of(self.shelf_first, per, list.len());
-        self.shelf_first = page * per;
+    fn shelf_speed_px(&self) -> f64 {
+        SHELF_SPEED_STEP * f64::from(self.shelf_speed_level)
+    }
+
+    fn paint_shelf_chrome(&mut self, cx: &mut Cx) {
+        // While searching, the parade is forced paused; the button still
+        // shows the remembered choice that comes back when search clears.
+        let playing = if self.shelf_query.trim().is_empty() {
+            self.shelf_playing
+        } else {
+            self.shelf_want_playing
+        };
+        let play = if playing { "Pause" } else { "Play" };
         self.ui
-            .widget(cx, ids!(menus.shelf_page))
-            .set_text(cx, &format!("{} / {}", page + 1, pages));
-        for (i, path) in SHELF_CARDS.iter().enumerate() {
-            let entry = (i < per).then(|| list.get(self.shelf_first + i)).flatten();
-            let card = self.ui.widget(cx, path);
-            self.ui.view(cx, path).set_visible(cx, entry.is_some());
-            let Some(d) = entry else { continue };
-            card.widget(cx, ids!(country)).set_text(cx, d.country);
-            let native = card.widget(cx, ids!(native));
-            let line = shelf_native_line(d);
-            native.set_text(cx, line.as_deref().unwrap_or(""));
-            card.view(cx, ids!(native_wrap)).set_visible(cx, line.is_some());
-            card.widget(cx, ids!(dish)).set_text(cx, d.dish);
-            let photo = card.image(cx, ids!(photo));
-            photo.set_visible(cx, d.photo.is_some());
-            let soon = card.view(cx, ids!(soon));
-            soon.set_visible(cx, d.photo.is_none());
-            if let Some(file) = d.photo {
-                self.show_world_photo(cx, &photo, file);
+            .button(cx, ids!(menus.shelf_play))
+            .set_text(cx, play);
+        self.ui.button(cx, ids!(menus.shelf_speed)).set_text(
+            cx,
+            &format!("Speed {}", self.shelf_speed_level),
+        );
+    }
+
+    fn shelf_arm_anim(&mut self, cx: &mut Cx) {
+        self.shelf_last_t = 0.0;
+        self.shelf_anim_frame = cx.new_next_frame();
+    }
+
+    fn rebuild_shelf_hits(&mut self) {
+        self.shelf_hits = shelf_filter_hits(&self.shelf_query);
+    }
+
+    /// Lay slots out in a row and assign consecutive hits (call after hits change).
+    fn reset_shelf_slots(&mut self) {
+        let len = self.shelf_hits.len();
+        self.shelf_slot_country = [None; 10];
+        self.shelf_slot_photo = [None; 10];
+        if len == 0 {
+            self.shelf_slot_x = [0.0; 10];
+            self.shelf_slot_item = [0; 10];
+            self.shelf_next_item = 0;
+            self.shelf_prev_item = 0;
+            return;
+        }
+        for i in 0..SHELF_SLOT_COUNT {
+            self.shelf_slot_x[i] = i as f64 * SHELF_PITCH;
+            self.shelf_slot_item[i] = i % len;
+        }
+        self.shelf_next_item = SHELF_SLOT_COUNT % len;
+        self.shelf_prev_item = len.saturating_sub(1);
+    }
+
+    fn place_shelf_slot(&mut self, cx: &mut Cx, slot: usize) {
+        // Overlay + margin.left acts like abs X (this Makepad has no walk.abs_pos).
+        if let Some(mut view) = self.ui.view(cx, SHELF_SLOTS[slot]).borrow_mut() {
+            view.walk.margin.left = self.shelf_slot_x[slot];
+            view.walk.margin.top = 0.0;
+            view.walk.margin.right = 0.0;
+            view.walk.margin.bottom = 0.0;
+        }
+    }
+
+    fn place_all_shelf_slots(&mut self, cx: &mut Cx) {
+        for i in 0..SHELF_SLOT_COUNT {
+            self.place_shelf_slot(cx, i);
+        }
+    }
+
+    /// Bind one slot's card to `shelf_slot_item[slot]`.
+    /// `defer_photo`: queue WebP bind for a later frame (wrap path); false = load now.
+    /// On wrap we keep the previous texture visible until the new file is ready —
+    /// blanking the Image (or `set_texture(None)` while HTTP is in flight) is what
+    /// showed as black frames in the parade.
+    fn paint_shelf_slot(&mut self, cx: &mut Cx, slot: usize, defer_photo: bool) {
+        let len = self.shelf_hits.len();
+        if len == 0 {
+            self.ui.view(cx, SHELF_SLOTS[slot]).set_visible(cx, false);
+            return;
+        }
+        let item = self.shelf_slot_item[slot] % len;
+        let d = self.shelf_hits[item];
+        self.ui.view(cx, SHELF_SLOTS[slot]).set_visible(cx, true);
+        let card = self.ui.widget(cx, SHELF_CARDS[slot]);
+        if self.shelf_slot_country[slot] == Some(d.country) {
+            return;
+        }
+        self.shelf_slot_country[slot] = Some(d.country);
+        card.widget(cx, ids!(country)).set_text(cx, d.country);
+        let line = shelf_native_line(d);
+        card.widget(cx, ids!(native))
+            .set_text(cx, line.as_deref().unwrap_or(""));
+        card.widget(cx, ids!(dish)).set_text(cx, d.dish);
+        let photo = card.image(cx, ids!(photo));
+        let soon = card.view(cx, ids!(soon));
+        if let Some(file) = d.photo {
+            if self.shelf_slot_photo[slot] == Some(file) {
+                photo.set_visible(cx, true);
+                soon.set_visible(cx, false);
+                return;
+            }
+            if defer_photo {
+                // Keep whatever texture is already on the Image; swap next idle frame.
+                self.shelf_photo_queue.retain(|(s, _)| *s != slot);
+                self.shelf_photo_queue.push((slot, file));
+                self.ensure_world_photo_bytes(cx, file);
+            } else if self.bind_world_photo(cx, &photo, file) {
+                self.shelf_slot_photo[slot] = Some(file);
+                photo.set_visible(cx, true);
+                soon.set_visible(cx, false);
+            } else {
+                // First paint, bytes not ready yet — placeholder until fetch lands.
+                photo.set_visible(cx, false);
+                soon.set_visible(cx, true);
+                self.shelf_photo_queue.retain(|(s, _)| *s != slot);
+                self.shelf_photo_queue.push((slot, file));
+            }
+        } else {
+            photo.set_visible(cx, false);
+            soon.set_visible(cx, true);
+            if self.shelf_slot_photo[slot].is_some() {
+                photo.set_texture(cx, None);
+                self.shelf_slot_photo[slot] = None;
             }
         }
-        self.ui.redraw(cx);
+    }
+
+    /// Bind at most one queued photo when bytes are already cached.
+    /// Never clears the Image while a fetch is still in flight.
+    fn flush_one_shelf_photo(&mut self, cx: &mut Cx) {
+        let Some(qi) = self.shelf_photo_queue.iter().position(|(slot, file)| {
+            if *slot >= SHELF_SLOT_COUNT {
+                return false;
+            }
+            let len = self.shelf_hits.len();
+            if len == 0 {
+                return false;
+            }
+            let want = self.shelf_hits[self.shelf_slot_item[*slot] % len].photo;
+            want == Some(*file) && self.photo_bytes.contains_key(*file)
+        }) else {
+            // Still waiting on HTTP — kick prefetch, leave textures alone.
+            if let Some((_, file)) = self.shelf_photo_queue.first().copied() {
+                self.ensure_world_photo_bytes(cx, file);
+            }
+            return;
+        };
+        let (slot, file) = self.shelf_photo_queue.remove(qi);
+        let card = self.ui.widget(cx, SHELF_CARDS[slot]);
+        let photo = card.image(cx, ids!(photo));
+        let soon = card.view(cx, ids!(soon));
+        if self.bind_world_photo(cx, &photo, file) {
+            self.shelf_slot_photo[slot] = Some(file);
+            photo.set_visible(cx, true);
+            soon.set_visible(cx, false);
+        }
+    }
+
+    /// Ask for the next few dishes' photos so a wrap rarely hits an empty cache.
+    fn prefetch_shelf_photos(&mut self, cx: &mut Cx) {
+        let len = self.shelf_hits.len();
+        if len == 0 {
+            return;
+        }
+        let start = if self.shelf_flow_left {
+            self.shelf_next_item
+        } else {
+            self.shelf_prev_item
+        };
+        for k in 0..SHELF_SLOT_COUNT {
+            let idx = if self.shelf_flow_left {
+                (start + k) % len
+            } else {
+                shelf_wrap_index(start as isize - k as isize, len)
+            };
+            if let Some(file) = self.shelf_hits[idx].photo {
+                self.ensure_world_photo_bytes(cx, file);
+            }
+        }
+    }
+
+    fn paint_shelf(&mut self, cx: &mut Cx) {
+        if self.shelf_hits.is_empty() && self.shelf_query.trim().is_empty() {
+            self.rebuild_shelf_hits();
+            self.reset_shelf_slots();
+        }
+        let list_len = self.shelf_hits.len();
+        if list_len == 0 {
+            for path in SHELF_SLOTS {
+                self.ui.view(cx, path).set_visible(cx, false);
+            }
+            self.ui
+                .widget(cx, ids!(menus.menu_note_text))
+                .set_text(cx, "No country or dish matches that search.");
+            self.paint_shelf_chrome(cx);
+            self.ui.view(cx, ids!(menus.shelf_parade)).redraw(cx);
+            return;
+        }
+        let note = if self.shelf_query.trim().is_empty() {
+            "One famous dish per country — the parade loops the whole world."
+        } else {
+            "Search pauses the parade; clear it to resume or stay paused as you left it."
+        };
+        self.ui
+            .widget(cx, ids!(menus.menu_note_text))
+            .set_text(cx, note);
+        for i in 0..SHELF_SLOT_COUNT {
+            self.paint_shelf_slot(cx, i, false);
+            self.place_shelf_slot(cx, i);
+        }
+        self.prefetch_shelf_photos(cx);
+        self.ui
+            .view(cx, ids!(menus.shelf_parade))
+            .set_scroll_pos(cx, dvec2(0.0, 0.0));
+        self.paint_shelf_chrome(cx);
+        self.ui.view(cx, ids!(menus.shelf_parade)).redraw(cx);
+    }
+
+    /// Backspace / clear: rebuild hits immediately, paint cards after a short quiet.
+    fn flush_shelf_search_paint(&mut self, cx: &mut Cx, time: f64) -> bool {
+        if !self.shelf_search_dirty {
+            return false;
+        }
+        const QUIET: f64 = 0.14;
+        if self.shelf_search_quiet_until <= 0.0 {
+            self.shelf_search_quiet_until = time + QUIET;
+            self.shelf_anim_frame = cx.new_next_frame();
+            return true;
+        }
+        if time < self.shelf_search_quiet_until {
+            self.shelf_anim_frame = cx.new_next_frame();
+            return true;
+        }
+        self.shelf_search_dirty = false;
+        self.shelf_search_quiet_until = 0.0;
+        self.paint_shelf(cx);
+        if self.shelf_playing {
+            self.shelf_arm_anim(cx);
+        }
+        true
+    }
+
+    fn tick_shelf_anim(&mut self, cx: &mut Cx, time: f64) {
+        // While the search field is being edited (backspace/clear), only flush
+        // the deferred card paint — do not also scroll the parade this frame.
+        if self.shelf_search_dirty {
+            self.flush_shelf_search_paint(cx, time);
+            return;
+        }
+        if !self.shelf_playing || self.shelf_speed_level == 0 {
+            return;
+        }
+        let list_len = self.shelf_hits.len();
+        if list_len < 2 {
+            return;
+        }
+        if self.shelf_last_t <= 0.0 {
+            self.shelf_last_t = time;
+            self.shelf_anim_frame = cx.new_next_frame();
+            return;
+        }
+        let dt = (time - self.shelf_last_t).clamp(0.0, 0.05);
+        self.shelf_last_t = time;
+        let step = self.shelf_speed_px() * dt;
+        // Move each card; when one leaves, wrap it alone and rebind only that card.
+        let mut wrapped: Option<usize> = None;
+        if self.shelf_flow_left {
+            for i in 0..SHELF_SLOT_COUNT {
+                self.shelf_slot_x[i] -= step;
+                if self.shelf_slot_x[i] <= -SHELF_PITCH {
+                    self.shelf_slot_x[i] += SHELF_TRACK;
+                    self.shelf_slot_item[i] = self.shelf_next_item;
+                    self.shelf_next_item = (self.shelf_next_item + 1) % list_len;
+                    self.shelf_prev_item = shelf_wrap_index(
+                        self.shelf_slot_item[i] as isize - 1,
+                        list_len,
+                    );
+                    wrapped = Some(i);
+                }
+            }
+        } else {
+            for i in 0..SHELF_SLOT_COUNT {
+                self.shelf_slot_x[i] += step;
+                if self.shelf_slot_x[i] >= SHELF_TRACK - SHELF_PITCH {
+                    self.shelf_slot_x[i] -= SHELF_TRACK;
+                    self.shelf_slot_item[i] = self.shelf_prev_item;
+                    self.shelf_prev_item = shelf_wrap_index(
+                        self.shelf_prev_item as isize - 1,
+                        list_len,
+                    );
+                    self.shelf_next_item = shelf_wrap_index(
+                        self.shelf_slot_item[i] as isize + SHELF_SLOT_COUNT as isize,
+                        list_len,
+                    );
+                    wrapped = Some(i);
+                }
+            }
+        }
+        if let Some(slot) = wrapped {
+            // Rebind labels; keep the old texture until the new file is cached.
+            self.shelf_slot_country[slot] = None;
+            self.paint_shelf_slot(cx, slot, true);
+            self.prefetch_shelf_photos(cx);
+        } else {
+            // Idle frame: bind at most one deferred photo (never on a wrap frame).
+            self.flush_one_shelf_photo(cx);
+            self.prefetch_shelf_photos(cx);
+        }
+        self.place_all_shelf_slots(cx);
+        self.ui.view(cx, ids!(menus.shelf_parade)).redraw(cx);
+        self.shelf_anim_frame = cx.new_next_frame();
+    }
+
+    fn set_shelf_playing(&mut self, cx: &mut Cx, playing: bool) {
+        self.shelf_playing = playing;
+        if self.shelf_query.trim().is_empty() {
+            self.shelf_want_playing = playing;
+        }
+        self.paint_shelf_chrome(cx);
+        if playing {
+            self.shelf_arm_anim(cx);
+        }
+    }
+
+    fn set_shelf_speed(&mut self, cx: &mut Cx, level: u8) {
+        self.shelf_speed_level = level.min(SHELF_SPEED_MAX_LEVEL);
+        self.paint_shelf_chrome(cx);
+        if self.shelf_playing && self.shelf_speed_level > 0 {
+            self.shelf_arm_anim(cx);
+        }
+    }
+
+    fn set_shelf_query(&mut self, cx: &mut Cx, query: String) {
+        if query == self.shelf_query {
+            return;
+        }
+        let was_searching = !self.shelf_query.trim().is_empty();
+        let searching = !query.trim().is_empty();
+        if searching && !was_searching {
+            self.shelf_want_playing = self.shelf_playing;
+            self.shelf_playing = false;
+        } else if !searching && was_searching {
+            self.shelf_playing = self.shelf_want_playing;
+        } else if searching {
+            self.shelf_playing = false;
+        }
+        self.shelf_query = query;
+        self.rebuild_shelf_hits();
+        self.reset_shelf_slots();
+        self.shelf_photo_queue.clear();
+        // Paint after typing settles (flush_shelf_search_paint).
+        self.shelf_search_dirty = true;
+        self.shelf_search_quiet_until = 0.0;
+        let note = if self.shelf_hits.is_empty() {
+            "No country or dish matches that search."
+        } else if searching {
+            "Search pauses the parade; clear it to resume or stay paused as you left it."
+        } else {
+            "One famous dish per country — the parade loops the whole world."
+        };
+        self.ui
+            .widget(cx, ids!(menus.menu_note_text))
+            .set_text(cx, note);
+        self.paint_shelf_chrome(cx);
+        self.shelf_anim_frame = cx.new_next_frame();
     }
 
     /// Put `file` into a card's Image: decode cached bytes now, else clear
-    /// the slot (never the previous country's photo) and fetch the bytes.
+    /// Decode `file` into `image` when bytes are already cached. Returns false
+    /// if the bytes are still missing (caller must not blank the Image).
     /// Synchronous WebP decode on purpose — Makepad's async image path
     /// decodes on a thread pool, which the `--no-threads` wasm build lacks
     /// (cards stayed black in the browser).
-    fn show_world_photo(&mut self, cx: &mut Cx, image: &ImageRef, file: &'static str) {
-        if let Some(bytes) = self.photo_bytes.get(file).cloned() {
-            if let Err(err) = image.load_webp_from_data(cx, &bytes) {
-                log!("khaynjo-site: world photo {file}: {err:?}");
-            }
+    fn bind_world_photo(&mut self, cx: &mut Cx, image: &ImageRef, file: &'static str) -> bool {
+        self.ensure_world_photo_bytes(cx, file);
+        let Some(bytes) = self.photo_bytes.get(file).cloned() else {
+            return false;
+        };
+        if let Err(err) = image.load_webp_from_data(cx, &bytes) {
+            log!("khaynjo-site: world photo {file}: {err:?}");
+            return false;
+        }
+        true
+    }
+
+    /// Load disk / start HTTP for `file` without touching any Image texture.
+    fn ensure_world_photo_bytes(&mut self, cx: &mut Cx, file: &'static str) {
+        if self.photo_bytes.contains_key(file) {
             return;
         }
-        image.set_texture(cx, None);
         #[cfg(not(target_arch = "wasm32"))]
         {
+            let _ = cx;
             let path = std::path::Path::new(env!("CARGO_MANIFEST_DIR"))
                 .join("resources/dishes/world")
                 .join(file);
             match std::fs::read(&path) {
                 Ok(bytes) => {
-                    let bytes = std::rc::Rc::new(bytes);
-                    self.photo_bytes.insert(file.to_string(), bytes.clone());
-                    let _ = image.load_webp_from_data(cx, &bytes);
+                    self.photo_bytes
+                        .insert(file.to_string(), std::rc::Rc::new(bytes));
                 }
                 Err(err) => log!("khaynjo-site: {}: {err}", path.display()),
             }
@@ -727,9 +1143,9 @@ impl App {
         }
     }
 
-    /// Fetched photo bytes land here; repaint the photos of the page shown.
+    /// Fetched photo bytes land here; bind only slots that still want that file.
     fn handle_photo_responses(&mut self, cx: &mut Cx, responses: &NetworkResponsesEvent) {
-        let mut landed = false;
+        let mut landed: Vec<String> = Vec::new();
         for response in responses {
             let (request_id, body) = match response {
                 NetworkResponse::HttpResponse { request_id, response } => (
@@ -748,31 +1164,38 @@ impl App {
             let (_, file) = self.photo_pending.remove(pos);
             match body {
                 Some(bytes) => {
-                    self.photo_bytes.insert(file, std::rc::Rc::new(bytes));
-                    landed = true;
+                    self.photo_bytes
+                        .insert(file.clone(), std::rc::Rc::new(bytes));
+                    landed.push(file);
                 }
                 None => log!("khaynjo-site: world photo {file} did not load"),
             }
         }
-        if landed {
-            self.paint_shelf(cx);
+        if landed.is_empty() {
+            return;
         }
+        // Queue every visible slot that needs a just-landed file, then flush one.
+        let len = self.shelf_hits.len();
+        if len == 0 {
+            return;
+        }
+        for slot in 0..SHELF_SLOT_COUNT {
+            let want = self.shelf_hits[self.shelf_slot_item[slot] % len].photo;
+            let Some(file) = want else {
+                continue;
+            };
+            if !landed.iter().any(|f| f == file) {
+                continue;
+            }
+            if self.shelf_slot_photo[slot] == Some(file) {
+                continue;
+            }
+            self.shelf_photo_queue.retain(|(s, _)| *s != slot);
+            self.shelf_photo_queue.push((slot, file));
+        }
+        self.flush_one_shelf_photo(cx);
+        self.ui.view(cx, ids!(menus.shelf_parade)).redraw(cx);
     }
-
-    fn shelf_step(&mut self, cx: &mut Cx, forward: bool) {
-        let len = shelf_entries().len();
-        let per = self.shelf_per_page.max(1);
-        let (page, pages) = shelf_page_of(self.shelf_first, per, len);
-        // Wraps at both ends — the shelf is a carousel, not a dead end.
-        let next = if forward {
-            (page + 1) % pages
-        } else {
-            (page + pages - 1) % pages
-        };
-        self.shelf_first = next * per;
-        self.paint_shelf(cx);
-    }
-
 
 }
 
@@ -861,8 +1284,16 @@ fn open_link(cx: &mut Cx, url: &str) {
 
 impl MatchEvent for App {
     fn handle_startup(&mut self, cx: &mut Cx) {
+        // Script #[rust] bools/u8 default to false/0 — set parade defaults here.
+        self.shelf_playing = true;
+        self.shelf_want_playing = true;
+        self.shelf_flow_left = true;
+        self.shelf_speed_level = SHELF_SPEED_DEFAULT_LEVEL;
+        self.rebuild_shelf_hits();
+        self.reset_shelf_slots();
         self.apply_gates(cx);
         self.paint_floor(cx);
+        self.paint_shelf(cx);
         self.paint_nav_active(cx);
         // Keys go to the page from the start (the `page` selection root also
         // answers Ctrl/Cmd+A with nothing focused).
@@ -870,6 +1301,9 @@ impl MatchEvent for App {
         self.pending_section = self.section_from_page(cx);
         self.pending_frames = 120;
         self.pending_stable = 0;
+        if self.shelf_playing {
+            self.shelf_arm_anim(cx);
+        }
         #[cfg(not(target_arch = "wasm32"))]
         self.apply_native_preview(cx);
     }
@@ -884,11 +1318,38 @@ impl MatchEvent for App {
             let _ = self.scroll_to(cx, "top");
         }
         self.handle_floor(cx, actions);
-        if self.ui.button(cx, ids!(menus.shelf_prev)).clicked(actions) {
-            self.shelf_step(cx, false);
+        if self.ui.button(cx, ids!(menus.shelf_flow_left)).clicked(actions) {
+            // ← — world flows left (default).
+            self.shelf_flow_left = true;
+            if self.shelf_playing {
+                self.shelf_arm_anim(cx);
+            }
         }
-        if self.ui.button(cx, ids!(menus.shelf_next)).clicked(actions) {
-            self.shelf_step(cx, true);
+        if self.ui.button(cx, ids!(menus.shelf_flow_right)).clicked(actions) {
+            // → — world flows right.
+            self.shelf_flow_left = false;
+            if self.shelf_playing {
+                self.shelf_arm_anim(cx);
+            }
+        }
+        if self.ui.button(cx, ids!(menus.shelf_play)).clicked(actions) {
+            if !self.shelf_query.trim().is_empty() {
+                self.shelf_want_playing = !self.shelf_want_playing;
+                self.paint_shelf_chrome(cx);
+            } else {
+                self.set_shelf_playing(cx, !self.shelf_playing);
+            }
+        }
+        if self.ui.button(cx, ids!(menus.shelf_speed_down)).clicked(actions) {
+            let next = self.shelf_speed_level.saturating_sub(1);
+            self.set_shelf_speed(cx, next);
+        }
+        if self.ui.button(cx, ids!(menus.shelf_speed_up)).clicked(actions) {
+            let next = self.shelf_speed_level.saturating_add(1);
+            self.set_shelf_speed(cx, next);
+        }
+        if let Some(text) = self.ui.text_input(cx, ids!(menus.shelf_find)).changed(actions) {
+            self.set_shelf_query(cx, text);
         }
         let download = self.ui.button(cx, ids!(bar_cta)).clicked(actions)
             || self.ui.button(cx, ids!(hero_cta.download)).clicked(actions)
@@ -934,12 +1395,38 @@ impl AppMain for App {
             Event::Scroll(_) => {
                 self.paint_nav_active(cx);
             }
-            Event::Draw(_) | Event::NextFrame(_) => {
+            Event::NextFrame(ne) => {
                 if self.laid_out.is_none() {
                     self.apply_responsive(cx);
                 }
                 self.paint_nav_active(cx);
+                if ne.set.contains(&self.shelf_anim_frame) {
+                    self.tick_shelf_anim(cx, ne.time);
+                }
                 // Deep link (#menus) once the page has drawn and has a size.
+                if let Some(section) = self.pending_section {
+                    let page_h = self.ui.view(cx, ids!(page)).area().rect(cx).size.y;
+                    if page_h > 0.0 {
+                        let y = self.scroll_to(cx, section);
+                        self.pending_frames = self.pending_frames.saturating_sub(1);
+                        if (y - self.pending_last_y).abs() < 0.5 {
+                            self.pending_stable += 1;
+                        } else {
+                            self.pending_stable = 0;
+                        }
+                        self.pending_last_y = y;
+                        if self.pending_frames == 0 || self.pending_stable >= 3 {
+                            self.pending_section = None;
+                        }
+                    }
+                    let _ = cx.new_next_frame();
+                }
+            }
+            Event::Draw(_) => {
+                if self.laid_out.is_none() {
+                    self.apply_responsive(cx);
+                }
+                self.paint_nav_active(cx);
                 if let Some(section) = self.pending_section {
                     let page_h = self.ui.view(cx, ids!(page)).area().rect(cx).size.y;
                     if page_h > 0.0 {
@@ -1093,20 +1580,20 @@ mod tests {
     }
 
     #[test]
-    fn shelf_pages_cover_every_country_once() {
-        let list = shelf_entries();
+    fn shelf_parade_wraps_the_whole_world() {
+        let list = shelf_filter_hits("");
         assert_eq!(list.len(), WORLD.len());
-        for per in [4, 8] {
-            let (_, pages) = shelf_page_of(0, per, list.len());
-            let mut shown = 0;
-            for p in 0..pages {
-                let first = p * per;
-                assert_eq!(shelf_page_of(first, per, list.len()).0, p);
-                shown += list.len().saturating_sub(first).min(per);
-            }
-            assert_eq!(shown, list.len());
+        let mut seen = std::collections::HashSet::new();
+        let mut i = 0isize;
+        for _ in 0..list.len() {
+            let idx = shelf_wrap_index(i, list.len());
+            assert!(seen.insert(list[idx].country));
+            i += 1;
         }
-        assert_eq!(shelf_page_of(10_000, 8, 199), (24, 25));
+        assert_eq!(seen.len(), list.len());
+        assert_eq!(shelf_wrap_index(-1, 199), 198);
+        assert_eq!(shelf_filter_hits("india").len(), 1);
+        assert!(shelf_filter_hits("zzzz-nope").is_empty());
     }
 
     #[test]
