@@ -16,8 +16,17 @@ rules: [`docs/WEBSITES.md`](../../docs/WEBSITES.md).
 ./sites/moklanjo/scripts/deploy-firebase.sh --dry-run   # needs Firebase project
 ```
 
-Domain **moklanjo.com** is registered. Firebase project id is an owner
-step (`FIREBASE_PROJECT` or `sites/moklanjo/.firebaserc`). Privacy source:
+Domain **moklanjo.com** is registered. Firebase Hosting project:
+
+- Project id: **`moklanjo-com`** (display name Moklanjo) — see
+  `sites/moklanjo/.firebaserc`
+- Canonical public URL: **`https://moklanjo.com`** (and paths under it)
+- Do **not** use `moklanjo-com.web.app` / `*.firebaseapp.com` in OAuth
+  redirect URIs, Auth authorized domains, Play / store privacy links,
+  canonicals, or any callback we publish — attach `moklanjo.com` in
+  Firebase Console → Hosting, then use the custom domain everywhere
+
+Privacy source:
 [`apps/moklanjo/docs/PRIVACY.md`](../../apps/moklanjo/docs/PRIVACY.md).
 
 The tracking rail under the top bar is the chapter nav: beads behind the
