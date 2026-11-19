@@ -1,0 +1,43 @@
+---
+description: Client/app templates configure a shop’s face — never hardcode one client’s setup into the product
+alwaysApply: true
+---
+
+# Templates configure; they do not make the app “that client”
+
+Canonical: `docs/CLIENT_TEMPLATES_AND_SETUP.md`. Read it **before**
+implementing UI, onboarding, Settings toggles, or “this client needs…”
+work in any Kumkaj app (Moklanjo, Khaynjo, Kirano, Tabiyat).
+
+## Fact
+
+- Each app is a **concrete trade product** (see `generic-concrete.mdc`) —
+  courier desk, food floor, kirana, pharmacy — **not** a shared Kumkaj core.
+- Inside that product, **client / app templates and Settings** are how
+  different shops of the **same** business get different chrome: hide
+  Kitchen when counter and kitchen are adjacent, cash-only pay chips,
+  no tax face, no Floor, etc.
+- A client engagement means **configure and hide**, not fork the app into
+  a one-client binary or delete capability other shops still need.
+
+## Do
+
+- Implement capability once in the product; expose show/hide and defaults
+  via Settings, Team rights, and template `shop_defaults` / packs.
+- Prefer progressive depth: unused surfaces stay out of the way until
+  enabled.
+- For multi-person rush / status boards, follow the product model in
+  `docs/CLIENT_TEMPLATES_AND_SETUP.md` §3 (Khaynjo Floor/Parcel vs
+  Moklanjo Next booking + Ops) — do not invent the sibling’s board.
+
+## Do not
+
+- Hardcode one client’s layout, pay mix, or hidden peers as the only
+  permanent face of the app.
+- Remove Floor / Kitchen / Account booking / COD / etc. “because this
+  client never uses them” without a Settings/template path to bring
+  them back.
+- Treat “concrete product” as permission to bake one shop’s setup into
+  code forever.
+- Assume every food shop needs full KDS chrome, or every courier desk
+  needs the same Ops depth on screen day one.

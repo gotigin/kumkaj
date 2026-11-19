@@ -50,6 +50,7 @@ He was shown a **generic till + books** shell with courier *labels*. He expected
 | He asked about | What it is | Product response |
 |----------------|------------|------------------|
 | Many walk-ins, each with their own parcels | Fast **new booking** loop (next person → weigh → charge → receipt → next) | Core desk UX — not “pick shop SKUs” |
+| Several people in line / status without inventing a “Floor” | Finish person 1 → **Take payment** → **Next booking** → person 2. Pay-later freight → Account + Credit/khata (party), not nameless open carts. After commit, **Ops** lanes are the parcel status board. Do **not** copy Khaynjo Parcel tiles here — see [`CLIENT_TEMPLATES_AND_SETUP.md`](../../../docs/CLIENT_TEMPLATES_AND_SETUP.md) §3 | Booking desk; Ops |
 | Barcoding / labels | AWB/CN on booking + print/scan barcode | Ops capability on the same booking document |
 | Tracking details | Status on that AWB (booked → handed over / out for delivery → …) | Ops capability; deep carrier-network track may stay with carrier portal until we integrate |
 

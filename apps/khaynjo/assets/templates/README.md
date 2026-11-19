@@ -1,5 +1,11 @@
 # Menu templates (`assets/templates/`)
 
+> **Why templates exist:** they **configure** a shop’s face (menu,
+> `shop_defaults`, which chrome is on/off) for the **same** Khaynjo app —
+> not a fork per client. Agents: read
+> [`docs/CLIENT_TEMPLATES_AND_SETUP.md`](../../../docs/CLIENT_TEMPLATES_AND_SETUP.md)
+> before changing template import, onboarding, or “this client needs…” UI.
+
 Optional **demo** menu JSON folders for local experiments. They are
 **not** DeviceSetup chips and **not** offered on Menu (the Café / Khaynjo
 starter chips were removed 2026-11-13). Menu → Item templates offers the

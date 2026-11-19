@@ -16,6 +16,10 @@ Canonical product text: `docs/KUMKAJ_PRODUCT_VISION_AND_REQUIREMENTS.md` §1–2
 - Reuse by **copy-then-diverge**: copy a sibling app's proven code as a starting point, then change the copy freely for that trade.
 - Treat party / line / unit / charge / ledger / day book / document as common **concepts and vocabulary** (see `docs/BUSINESS_BOOKS.md`) that each app implements in its own code — not as shared primitives to extract.
 - Hide unused capability inside each product; progressive depth per product.
+- Configure each **shop** via templates / Settings / rights — do **not**
+  hardcode one client’s layout as the only face of that product. See
+  `docs/CLIENT_TEMPLATES_AND_SETUP.md` and
+  `templates-configure-not-hardcode.mdc`.
 
 ## Do not
 

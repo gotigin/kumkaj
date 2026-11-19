@@ -174,8 +174,9 @@ Fill destination, zone, weight (and customer if account / credit)
 |-----------|-------------|
 | One person, one parcel | One **ADD**, then pay with **Take payment** |
 | One person, several charge lines | Several **ADD**s on the **same** cart, then **Take payment** |
-| Several people in line | Finish person 1 → **Next booking** → person 2 |
+| Several people in line | Finish person 1 → **Next booking** → person 2 (no nameless “hold eight unpaid carts” board — that is Khaynjo Floor/Parcel; Moklanjo status after booking is **Ops**) |
 | Named account / credit | Customer on Active ledger · **Account booking** · put the bill (or part) in **Credit / khata amount** · **Take payment** |
+| Configure this desk vs another | Same Moklanjo app; Settings / future templates hide unused chrome — do not hardcode one client’s face ([`CLIENT_TEMPLATES_AND_SETUP.md`](../../../docs/CLIENT_TEMPLATES_AND_SETUP.md)) |
 
 ### 3.2 Booking layout (as shipped)
 

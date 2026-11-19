@@ -47,6 +47,11 @@ and one Makepad platform — **not** shared product code.
 
 Canonical doctrine: [`KUMKAJ_PRODUCT_VISION_AND_REQUIREMENTS.md`](KUMKAJ_PRODUCT_VISION_AND_REQUIREMENTS.md) §1–2; concepts checklist: [`BUSINESS_BOOKS.md`](BUSINESS_BOOKS.md).
 
+**Client templates / shop setup (agents — read before “this client needs…”):**
+[`CLIENT_TEMPLATES_AND_SETUP.md`](CLIENT_TEMPLATES_AND_SETUP.md) and
+`.cursor/rules/templates-configure-not-hardcode.mdc`. Concrete **product**
+≠ hardcoded **client** face.
+
 ## Test harness (copy-paste — do not rely on memory)
 
 From the **workspace root**. Never opens on your desktop `:0` / Wayland session.

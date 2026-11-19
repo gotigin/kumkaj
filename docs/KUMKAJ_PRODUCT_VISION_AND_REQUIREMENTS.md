@@ -160,6 +160,16 @@ booking). Templates and defaults **never pre-load sample catalogue or
 parties** — the owner adds their own. A generic / unset face may still
 offer **None** (bare minimal) as default (`custom`) for experimentation.
 
+**Client / app templates configure; they do not make the app that
+client.** Authored packs, Export template, Settings, and Team rights are
+how one product (e.g. Khaynjo) serves many shop layouts — hide Kitchen
+when counter and kitchen sit together, cash-only pay chips, no Floor,
+etc. — without forking a one-client binary. Agents must not hardcode one
+client’s face into the product. Doctrine, desk-rush models (Khaynjo
+Floor/Parcel vs Moklanjo Next booking + Ops), and an implementation
+checklist: [`CLIENT_TEMPLATES_AND_SETUP.md`](CLIENT_TEMPLATES_AND_SETUP.md).
+Cursor: `.cursor/rules/templates-configure-not-hardcode.mdc`.
+
 ------------------------------------------------------------------------
 
 ## 3. Minimal sell and credit path

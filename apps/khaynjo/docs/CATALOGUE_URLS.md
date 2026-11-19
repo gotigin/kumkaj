@@ -1,5 +1,9 @@
 # Khaynjo catalogue URLs (`/v1/catalogue`)
 
+> Packs **configure** a shop (menu + `shop_defaults`) for the same Khaynjo
+> app — they do not justify hardcoding one client’s face into the binary.
+> Agents: [`docs/CLIENT_TEMPLATES_AND_SETUP.md`](../../../docs/CLIENT_TEMPLATES_AND_SETUP.md).
+
 Remote shop starters (menus + optional shop defaults) live on the **product
 base**, not inside the install binary. Fonts stay packaged; catalogue photos
 and named templates download after Server is chosen on first onboard.
