@@ -58,12 +58,12 @@ visit colour of its chapter. `#kot` (or `#3`) in the URL opens a chapter.
 ## Page (one scroll, 2026-11-12 redesign)
 
 Sticky top bar (section links ≥ 1000 px, gold **Get it free**) over bands:
-**hero** (CTAs, trust lines, floor toy) → **how** (seat → KOT → kitchen →
-settle → day close, Example props) → **features** → **menus** (catalogue
-templates + 199-country world shelf) → **offline** → **pricing** → **faq** →
-**closing** + footer. Deep links `#how` … `#faq`, `#start`; old chapter
-links (`#kot`, `#3`) still land. `SITE_PREVIEW=390x844:menus` previews a
-section natively.
+**hero** (CTAs, trust lines, floor toy) → **menus** (199-country world
+parade) → **how** (seat → KOT → kitchen → settle → day close, Example
+props) → **features** → starter menu / photo-shelf cards → **offline** →
+**pricing** → **faq** → **closing** + footer. Deep links `#menus`, `#how`
+… `#faq`, `#start`; old chapter links (`#kot`, `#3`) still land.
+`SITE_PREVIEW=390x844:menus` previews a section natively.
 
 The floor toy uses Khaynjo's own visit words and tile colours, copied into
 `src/floor.rs` (Free → Occupied → In kitchen → Food ready → Served → Bill

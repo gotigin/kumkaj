@@ -5,8 +5,8 @@
 //! site engine).
 //!
 //! One scrolling page (redesign 2026-11-12; was a 10-slide deck): sticky
-//! top bar with section links and the Play CTA; sections hero · how ·
-//! features · menus · offline · pricing · faq · closing · footer.
+//! top bar with section links and the Play CTA; sections hero · menus ·
+//! how · features · offline · pricing · faq · closing · footer.
 //!
 //! Native preview helpers (ignored in the browser):
 //! - `SITE_PREVIEW=390x844:menus` opens a 390×844 window scrolled to a
@@ -61,9 +61,9 @@ const PUBLIC_HOST: &str = "https://khaynjo.com";
 /// Page sections in order: (hash id, widget path).
 const SECTIONS: [(&str, &[LiveId]); 8] = [
     ("top", ids!(hero)),
+    ("menus", ids!(menus)),
     ("how", ids!(how)),
     ("features", ids!(features)),
-    ("menus", ids!(menus)),
     ("offline", ids!(offline)),
     ("pricing", ids!(pricing)),
     ("faq", ids!(faq)),
@@ -86,20 +86,21 @@ const OLD_CHAPTERS: [(&str, &str); 10] = [
 
 /// Top-bar links → section ids.
 const NAV_LINKS: [(&[LiveId], &str); 6] = [
+    (ids!(go_menus), "menus"),
     (ids!(go_how), "how"),
     (ids!(go_features), "features"),
-    (ids!(go_menus), "menus"),
     (ids!(go_offline), "offline"),
     (ids!(go_pricing), "pricing"),
     (ids!(go_faq), "faq"),
 ];
 
 /// Each band's content column; side padding / max width set per tier.
-const WRAPS: [&[LiveId]; 9] = [
+const WRAPS: [&[LiveId]; 10] = [
     ids!(hero_wrap),
+    ids!(menus_wrap),
     ids!(how_wrap),
     ids!(features_wrap),
-    ids!(menus_wrap),
+    ids!(menu_starters_wrap),
     ids!(offline_wrap),
     ids!(pricing_wrap),
     ids!(faq_wrap),

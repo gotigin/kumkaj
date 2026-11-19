@@ -1,7 +1,7 @@
 // khaynjo.com — one Makepad 2 `script_mod!` (included from main.rs).
 // A scrolling product page (2026-11-12 redesign; was a 10-slide deck):
-// hero with the live floor toy → how a service runs (5 steps, the app's
-// visit colours) → features → menus (catalogue templates + world shelf) →
+// hero with the live floor toy → menus (world parade) → how a service runs
+// (5 steps, the app's visit colours) → features → menu starters →
 // offline → pricing → FAQ → closing CTA + footer. Story and claims:
 // apps/khaynjo/docs/KHAYNJO_WEBSITE.md (claim ids in comments); palette:
 // docs/DESIGN.md "Color tokens — Khaynjo"; `lan-pilot` sentences stay
@@ -1000,9 +1000,9 @@ script_mod! {
                             flow: Right
                             spacing: 2
                             align: Align{y: 0.5}
+                            go_menus := NavLink{text: "Menus"}
                             go_how := NavLink{text: "How it works"}
                             go_features := NavLink{text: "Features"}
-                            go_menus := NavLink{text: "Menus"}
                             go_offline := NavLink{text: "Offline"}
                             go_pricing := NavLink{text: "Pricing"}
                             go_faq := NavLink{text: "FAQ"}
@@ -1090,7 +1090,85 @@ script_mod! {
                             }
                         }
 
-                        // ---- 2. How a service runs ----------------------------------
+                        // ---- 2. Menus: world parade ------------------------------------
+                        menus := PaperBand{
+                            menus_wrap := Wrap{
+                                world_head := SecHead{
+                                    Eyebrow{body: "EVERY COUNTRY"}
+                                    H2{body: "Every country at your counter"}
+                                    Lede{body: "One famous dish from every country — the English name, the name in their own script, and the dish in English. Put those words on your menu. The world keeps moving past; pause or search when you want to look."}
+                                }
+                                // Living parade (not a pager): cards flow past the counter.
+                                shelf_bar := View{
+                                    width: Fill height: Fit
+                                    flow: Right
+                                    spacing: 8
+                                    align: Align{y: 0.5}
+                                    shelf_flow_left := PagerBtn{text: "←"}
+                                    shelf_flow_right := PagerBtn{text: "→"}
+                                    shelf_play := PagerBtn{text: "Pause"}
+                                    shelf_speed_down := PagerBtn{text: "−"}
+                                    shelf_speed := PagerBtn{text: "Speed 2"}
+                                    shelf_speed_up := PagerBtn{text: "+"}
+                                }
+                                // Own row so placeholder / typed text stay readable.
+                                shelf_find := TextInput{
+                                    width: Fill height: Fit
+                                    empty_text: "Find a country or dish — e.g. India, biryani, Japan"
+                                    padding: Inset{left: 14. right: 14. top: 12. bottom: 12.}
+                                    draw_bg +: {
+                                        color: Well
+                                        color_hover: WellWarm
+                                        color_focus: Well
+                                        color_empty: Well
+                                        border_color: WellLine
+                                        border_color_hover: #xC9A58C
+                                        border_color_focus: Maroon
+                                        border_radius: 12.
+                                        border_size: 1.
+                                    }
+                                    draw_cursor +: {color: Maroon}
+                                    draw_text +: {
+                                        color: Ink
+                                        color_hover: Ink
+                                        color_focus: Ink
+                                        color_down: Ink
+                                        color_empty: Hint
+                                        color_empty_hover: Muted
+                                        color_empty_focus: Muted
+                                        text_style: theme.font_regular{font_family: TextFont font_size: 15.}
+                                    }
+                                }
+                                // Clipped stage: each slot is abs-positioned and wraps on its
+                                // own so only one card rebinds when it leaves — no full-strip hitch.
+                                shelf_parade := ScrollXView{
+                                    width: Fill height: 248
+                                    scroll_bars: {
+                                        show_scroll_x: true
+                                        show_scroll_y: false
+                                        ignore_scroll_input: true
+                                        scroll_bar_x: {bar_size: 0. drag_scrolling: false axis_lock: true}
+                                    }
+                                    shelf_strip := View{
+                                        width: Fill height: 248
+                                        flow: Overlay
+                                        s0 := ShelfSlot{}
+                                        s1 := ShelfSlot{}
+                                        s2 := ShelfSlot{}
+                                        s3 := ShelfSlot{}
+                                        s4 := ShelfSlot{}
+                                        s5 := ShelfSlot{}
+                                        s6 := ShelfSlot{}
+                                        s7 := ShelfSlot{}
+                                        s8 := ShelfSlot{}
+                                        s9 := ShelfSlot{}
+                                    }
+                                }
+                                menu_note := View{width: Fill height: Fit menu_note_text := Small{body: "One famous dish per country — the parade loops the whole world."}}
+                            }
+                        }
+
+                        // ---- 3. How a service runs ----------------------------------
                         how := PaperBand{
                             how_wrap := Wrap{
                                 spacing: 56
@@ -1277,7 +1355,7 @@ script_mod! {
                             }
                         }
 
-                        // ---- 3. Features grid ------------------------------------------
+                        // ---- 4. Features grid ------------------------------------------
                         features := CreamBand{
                             features_wrap := Wrap{
                                 SecHead{
@@ -1325,9 +1403,9 @@ script_mod! {
                             }
                         }
 
-                        // ---- 4. Menus: shop templates + world shelf -----------------
-                        menus := PaperBand{
-                            menus_wrap := Wrap{
+                        // ---- 5. Menu starters / photo shelf ---------------------------
+                        menu_starters := PaperBand{
+                            menu_starters_wrap := Wrap{
                                 SecHead{
                                     Eyebrow{body: "START WITH A MENU"}
                                     H2{body: "Your menu, ready in minutes."}
@@ -1361,83 +1439,10 @@ script_mod! {
                                     }
                                 }
 
-                                Rule{}
-                                world_head := SecHead{
-                                    padding: Inset{top: 12.}
-                                    H3{body: "Every country at your counter"}
-                                    Body{body: "One famous dish from every country — the English name, the name in their own script, and the dish in English. Put those words on your menu. The world keeps moving past; pause or search when you want to look."}
-                                }
-                                // Living parade (not a pager): cards flow past the counter.
-                                shelf_bar := View{
-                                    width: Fill height: Fit
-                                    flow: Right
-                                    spacing: 8
-                                    align: Align{y: 0.5}
-                                    shelf_flow_left := PagerBtn{text: "←"}
-                                    shelf_flow_right := PagerBtn{text: "→"}
-                                    shelf_play := PagerBtn{text: "Pause"}
-                                    shelf_speed_down := PagerBtn{text: "−"}
-                                    shelf_speed := PagerBtn{text: "Speed 2"}
-                                    shelf_speed_up := PagerBtn{text: "+"}
-                                }
-                                // Own row so placeholder / typed text stay readable.
-                                shelf_find := TextInput{
-                                    width: Fill height: Fit
-                                    empty_text: "Find a country or dish — e.g. India, biryani, Japan"
-                                    padding: Inset{left: 14. right: 14. top: 12. bottom: 12.}
-                                    draw_bg +: {
-                                        color: Well
-                                        color_hover: WellWarm
-                                        color_focus: Well
-                                        color_empty: Well
-                                        border_color: WellLine
-                                        border_color_hover: #xC9A58C
-                                        border_color_focus: Maroon
-                                        border_radius: 12.
-                                        border_size: 1.
-                                    }
-                                    draw_cursor +: {color: Maroon}
-                                    draw_text +: {
-                                        color: Ink
-                                        color_hover: Ink
-                                        color_focus: Ink
-                                        color_down: Ink
-                                        color_empty: Hint
-                                        color_empty_hover: Muted
-                                        color_empty_focus: Muted
-                                        text_style: theme.font_regular{font_family: TextFont font_size: 15.}
-                                    }
-                                }
-                                // Clipped stage: each slot is abs-positioned and wraps on its
-                                // own so only one card rebinds when it leaves — no full-strip hitch.
-                                shelf_parade := ScrollXView{
-                                    width: Fill height: 248
-                                    scroll_bars: {
-                                        show_scroll_x: true
-                                        show_scroll_y: false
-                                        ignore_scroll_input: true
-                                        scroll_bar_x: {bar_size: 0. drag_scrolling: false axis_lock: true}
-                                    }
-                                    shelf_strip := View{
-                                        width: Fill height: 248
-                                        flow: Overlay
-                                        s0 := ShelfSlot{}
-                                        s1 := ShelfSlot{}
-                                        s2 := ShelfSlot{}
-                                        s3 := ShelfSlot{}
-                                        s4 := ShelfSlot{}
-                                        s5 := ShelfSlot{}
-                                        s6 := ShelfSlot{}
-                                        s7 := ShelfSlot{}
-                                        s8 := ShelfSlot{}
-                                        s9 := ShelfSlot{}
-                                    }
-                                }
-                                menu_note := View{width: Fill height: Fit menu_note_text := Small{body: "One famous dish per country — the parade loops the whole world."}}
                             }
                         }
 
-                        // ---- 5. Offline (offline-lan; the multi-device half is gated) ---
+                        // ---- 6. Offline (offline-lan; the multi-device half is gated) ---
                         offline := RedBand{
                             offline_wrap := Wrap{
                                 offline_row := View{
@@ -1499,7 +1504,7 @@ script_mod! {
                             }
                         }
 
-                        // ---- 6. Pricing (free-local; vision §21) ------------------------
+                        // ---- 7. Pricing (free-local; vision §21) ------------------------
                         pricing := CreamBand{
                             pricing_wrap := Wrap{
                                 SecHead{
@@ -1534,7 +1539,7 @@ script_mod! {
                             }
                         }
 
-                        // ---- 7. FAQ ---------------------------------------------------
+                        // ---- 8. FAQ ---------------------------------------------------
                         faq := PaperBand{
                             faq_wrap := Wrap{
                                 SecHead{
@@ -1570,7 +1575,7 @@ script_mod! {
                             }
                         }
 
-                        // ---- 8. Closing CTA + footer -------------------------------------
+                        // ---- 9. Closing CTA + footer -------------------------------------
                         closing := RedBand{
                             closing_wrap := Wrap{
                                 spacing: 20

@@ -3,10 +3,10 @@
 > **Redesign (2026-11-12):** khaynjo.com is now **one scrolling page**, not a
 > 10-slide deck: sticky red top bar (section links on wide windows, gold
 > **Get it free** CTA), then hero (headline, Play + WhatsApp CTAs, trust
-> lines, the live **floor toy** as the hero visual) → **How a service runs**
-> (5 steps with Example props in the visit colours) → **Features** (app's own
-> sidebar icons) → **Menus** (optional Khaynjo Full Template + private
-> client packs + the 199-country world shelf) → **Offline** (red band) → **Pricing** (₹0 forever;
+> lines, the live **floor toy** as the hero visual) → **Menus** (199-country
+> world parade) → **How a service runs** (5 steps with Example props in the
+> visit colours) → **Features** (app's own sidebar icons) → starter menu /
+> photo-shelf cards → **Offline** (red band) → **Pricing** (₹0 forever;
 > Kumkaj Cloud planned, usage-based) → **FAQ** → closing CTA + footer
 > (Privacy · Terms · Google Play · kumkaj.com). Why: the deck clipped every
 > chapter to one screen (phones and short laptops lost content) and flipped
