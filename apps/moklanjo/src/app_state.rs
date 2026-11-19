@@ -5,6 +5,8 @@ struct AppState {
     /// Editable copy of the selected sale for owner/manager amend.
     amend_cart: Cart,
     amend_pay: PayMethod,
+    /// ODA / packing / other for Sales → Bill later.
+    bill_later_extra_kind: String,
     sale_revisions: Vec<SaleRevision>,
     selected_customer_id: Option<String>,
     customers: Vec<Customer>,
@@ -60,6 +62,10 @@ struct AppState {
     extra_tills_allowed: bool,
     /// False until Owner finishes first-run PIN setup (Server shop).
     owner_setup_complete: bool,
+    /// DeviceSetup: Shop templates offer before Owner PIN (Khaynjo-shaped).
+    awaiting_app_template: bool,
+    /// Selected bundled app template id while the offer is open.
+    app_template_selected_id: Option<String>,
     /// False until Fresh/Book onboarding finishes.
     onboarding_complete: bool,
     client_paired: bool,
@@ -193,6 +199,15 @@ struct AppState {
     booking_pieces: String,
     /// Carrier party name/id for AWB pool + cost compare.
     booking_carrier_pick: String,
+    /// Open parked draft on the booking desk (resume), if any.
+    active_draft_id: Option<String>,
+    /// Cached Board cards (drafts + today's sales).
+    today_board_rows: Vec<TodayBoardCard>,
+    today_board_filter: TodayBoardFilter,
+    /// Grid columns on Board (`0` → 3).
+    today_board_columns: u8,
+    /// Bulk CSV preview line under the paste field ("N ready · M bad").
+    booking_bulk_preview_line: String,
     /// Last carrier-bill reconcile report (Reports → copy).
     last_carrier_bill_report: String,
     /// Last carrier compare rows from the booking desk (for "Use carrier cost").
@@ -257,6 +272,8 @@ struct AppState {
     ops_reason: Option<manifest::NdrReason>,
     /// Which bank-books report chip is selected (must match `day_close_text` body).
     books_report_kind: BooksReportKind,
+    /// Reports “Today” view lens (day-close vs midnight) — not shop meta.
+    report_day_lens: ReportDayLens,
     /// The field whose "type or pick" list is open, and its rows.
     suggest_open: Option<SuggestField>,
     /// Open Copy / Select all menu (selection_menu.rs), read at draw time.

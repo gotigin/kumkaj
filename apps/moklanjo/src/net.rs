@@ -5,8 +5,8 @@
 
 use crate::diag::{self, Cat};
 use crate::domain::{
-    Category, CreditLedgerEntry, Customer, DayTotals, PayMethod, Product, Right, Sale, SaleDraft,
-    StaffMember, TaxRate,
+    BookingDeskSnapshot, BookingDraft, Category, CreditLedgerEntry, Customer, DayTotals, PayMethod,
+    Product, Right, Sale, SaleDraft, StaffMember, TaxRate,
 };
 use crate::fiscal::FiscalSettings;
 use crate::store::Store;
@@ -82,6 +82,8 @@ pub struct SyncSnapshot {
     /// what it has).
     #[serde(default, skip_serializing_if = "Option::is_none")]
     pub shop_prefs: Option<std::collections::BTreeMap<String, Option<String>>>,
+    #[serde(default)]
+    pub booking_drafts: Vec<BookingDraft>,
 }
 
 fn is_zero_u64(v: &u64) -> bool {
@@ -119,6 +121,27 @@ pub struct RemoteSaleRequest {
     /// Split tenders. Empty means a single tender in `pay`.
     #[serde(default)]
     pub payments: Vec<RemoteTender>,
+    /// Open booking-draft row to close when this sale commits.
+    #[serde(default)]
+    pub booking_draft_id: Option<String>,
+}
+
+#[derive(Clone, Debug, Serialize, Deserialize)]
+pub struct RemoteParkDraftRequest {
+    #[serde(default)]
+    pub id: Option<String>,
+    pub snapshot: BookingDeskSnapshot,
+}
+
+#[derive(Clone, Debug, Serialize, Deserialize)]
+pub struct RemoteBookingDraftCloseRequest {
+    pub draft_id: String,
+    pub sale_id: String,
+}
+
+#[derive(Clone, Debug, Serialize, Deserialize)]
+pub struct RemoteBookingDraftDiscardRequest {
+    pub id: String,
 }
 
 #[derive(Clone, Debug, Serialize, Deserialize)]
@@ -851,6 +874,7 @@ fn build_snapshot(store: &Store) -> Result<SyncSnapshot, String> {
         rev: String::new(),
         seq: 0,
         shop_prefs: Some(store.shop_prefs_for_sync()?),
+        booking_drafts: store.list_open_booking_drafts()?,
     })
 }
 
@@ -1558,6 +1582,28 @@ fn write(store: &Store, route: &str, body: &str, actor: &StaffMember) -> Result<
             let message = store.apply_books_op(op, actor)?;
             Ok(Reply::json(serde_json::json!({ "ok": true, "message": message })))
         }
+        "/booking_draft" => {
+            let req: RemoteParkDraftRequest =
+                serde_json::from_str(body).map_err(|e| format!("booking_draft json: {e}"))?;
+            let draft = store.park_booking_draft_from_snapshot(
+                req.id.as_deref(),
+                req.snapshot,
+                actor,
+            )?;
+            Reply::of(&draft)
+        }
+        "/booking_draft_close" => {
+            let req: RemoteBookingDraftCloseRequest =
+                serde_json::from_str(body).map_err(|e| format!("booking_draft_close json: {e}"))?;
+            store.close_booking_draft_as_sale(&req.draft_id, &req.sale_id)?;
+            Ok(Reply::done())
+        }
+        "/booking_draft_discard" => {
+            let req: RemoteBookingDraftDiscardRequest =
+                serde_json::from_str(body).map_err(|e| format!("booking_draft_discard json: {e}"))?;
+            store.discard_booking_draft(&req.id, actor)?;
+            Ok(Reply::done())
+        }
         _ => Ok(Reply::refuse(404, "not found", "")),
     }
 }
@@ -1586,10 +1632,10 @@ fn remote_sale(
                 None => Err(format!("{what} needs a customer")),
             }
         };
-    if req.payments.is_empty() {
+    let sale = if req.payments.is_empty() {
         let customer_id = customer_for(store, pay.is_credit(), "Credit sale")?;
-        return store.finalize_sale(&req.draft, pay, customer_id.as_deref(), actor);
-    }
+        store.finalize_sale(&req.draft, pay, customer_id.as_deref(), actor)?
+    } else {
     // Mixed Cash/UPI/Card/Credit (and legacy split) — amounts in `payments`.
     if !pay.is_split() && req.payments.len() > 1 {
         return Err("Multi-tender sale must use pay method split".into());
@@ -1600,9 +1646,19 @@ fn remote_sale(
             .ok_or_else(|| format!("bad pay method {}", tender.pay))?;
         parts.push((method, tender.amount_paise));
     }
-    let needs_credit = parts.iter().any(|(m, _)| m.is_credit());
-    let customer_id = customer_for(store, needs_credit, "Credit part")?;
-    store.finalize_sale_tenders(&req.draft, &parts, customer_id.as_deref(), actor)
+        let needs_credit = parts.iter().any(|(m, _)| m.is_credit());
+        let customer_id = customer_for(store, needs_credit, "Credit part")?;
+        store.finalize_sale_tenders(&req.draft, &parts, customer_id.as_deref(), actor)?
+    };
+    if let Some(did) = req
+        .booking_draft_id
+        .as_deref()
+        .map(str::trim)
+        .filter(|s| !s.is_empty())
+    {
+        let _ = store.close_booking_draft_as_sale(did, &sale.id);
+    }
+    Ok(sale)
 }
 
 /// `/photo?kind=item|party&file=<id>.webp`: one rate photo or party logo as
@@ -2114,6 +2170,7 @@ pub fn apply_snapshot(store: &Store, snap: &SyncSnapshot) -> Result<(), String> 
         if let Some(prefs) = &snap.shop_prefs {
             store.apply_shop_prefs_from_sync(prefs)?;
         }
+        store.replace_booking_drafts_from_sync(&snap.booking_drafts)?;
         Ok(())
     })
 }
@@ -2402,6 +2459,7 @@ mod tests {
             customer_id: None,
             customer_name: None,
             payments: Vec::new(),
+            booking_draft_id: None,
         })
         .unwrap()
     }
@@ -3065,6 +3123,7 @@ mod tests {
                                 customer_id: None,
                                 customer_name: None,
                                 payments: Vec::new(),
+                                booking_draft_id: None,
                             };
                             let body = serde_json::to_string(&sale).unwrap();
                             let id = format!("device{d}-{i}");
@@ -3167,6 +3226,7 @@ mod tests {
                 customer_id: None,
                 customer_name: None,
                 payments: Vec::new(),
+                booking_draft_id: None,
             })
             .unwrap()
         };

@@ -212,6 +212,37 @@ A **shift close** hands one drawer from one person to the next mid-day;
 a **day close** locks the business day across all tenders. Both print a
 slip under the closing person's name.
 
+### Business day (“what is Today?”) — every Kumkaj app
+
+Owners are **not** forced to cut the day at the clock. Late counters often
+keep selling past local midnight and still want one continuous Day book until
+they choose to close.
+
+| Mode | Meaning | When to use |
+|------|---------|-------------|
+| **Until Day close** (default on a new shop) | “Today” runs from the last **Record day close** (or shop open) until the next day close — **keeps going after 12:00 am** | Usual agency / café / shop habit |
+| **Calendar midnight** | “Today” is local `00:00` → next midnight | Owner wants a hard clock cut |
+| **At hour** (optional depth) | Rolls at a fixed local hour (e.g. 04:00) | Night shift / late kitchen |
+
+Each app implements this in its own code (`business_day` + shop meta
+`business_day_mode`) — **no shared books crate**. Day book, day-close
+summary, and “today” money chips must use the same window. Templates /
+Settings may preset a mode; the owner can always switch. See also vision
+day/period books and each app’s Day close screen.
+
+#### Shop default vs report lens
+
+| Layer | What it controls | Where |
+|-------|------------------|--------|
+| **Shop business day** | Operational “Today” for till chips and **Record day close** | Day close chips; meta `business_day_mode` |
+| **Report day lens** | How Reports **views** Today — **By Day close** or **By midnight** | Reports screen chips; session only |
+
+The shop default does **not** lock Reports. An owner whose shop keeps going past
+midnight can still open Reports and switch **By midnight** for a clock cut of
+the same books, and the reverse. Changing the lens never writes
+`business_day_mode`. Lens defaults from the shop mode on unlock / when the
+Owner changes the shop day, then stays free to flip.
+
 ------------------------------------------------------------------------
 
 ## Moklanjo agency — product is Moklanjo

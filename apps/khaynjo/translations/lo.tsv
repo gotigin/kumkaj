@@ -115,6 +115,7 @@ bill_line_total	ທັງໝົດ
 bill_line_footer	ສ່ວນທ້າຍ
 bill_line_upi	UPI
 bill_logo_picture	ຮູບ
+bill_logo_help	ຄວາມກວ້າງ ແລະ ຄວາມສູງເປັນ px. ຫວ່າງໄວ້ຈະຕາມຮູບ: ຫວ່າງອັນໜຶ່ງຮັກສາຮູບຮ່າງ, ຫວ່າງທັງສອງໃຊ້ຂະໜາດຂອງຮູບເອງ; ໃສ່ທັງສອງຈະໃສ່ພາຍໃນ, ບໍ່ດຶງຢືດຈັກເທື່ອ. ບໍ່ມີຮູບ: ໂລໂກ້ທີ່ສະແດງຮັກສາຄວາມສູງເປັນບ່ອນຫວ່າງ; ເຊື່ອງຈະລຶບອອກ.
 bill_logo_choose	ເລືອກຮູບ
 bill_logo_remove	ລຶບຮູບອອກ
 bill_logo_none	ບໍ່ມີຮູບ
@@ -122,10 +123,9 @@ bill_logo_unreadable	ບໍ່ແມ່ນຮູບທີ່ແອັບອ່�
 bill_logo_width	ຄວາມກວ້າງ (px)
 bill_logo_height	ຄວາມສູງ (px)
 bill_logo_tones	ສີເທົາ
+bill_logo_tones_help	ທຶບ: ແຕ່ລະຈຸດດຳ ຫຼື ຂາວ, ສຳລັບໂລໂກ້ຄົມຊັດ. ມີເງົາ: ສີເທົາກາຍເປັນລາຍຈຸດລະອຽດ, ສຳລັບຮູບຖ່າຍ ແລະ ເງົາອ່ອນ.
 bill_logo_solid	ທຶບ
 bill_logo_shaded	ມີເງົາ
-bill_logo_help	ຄວາມກວ້າງ ແລະ ຄວາມສູງເປັນ px. ຫວ່າງໄວ້ຈະຕາມຮູບ: ຫວ່າງອັນໜຶ່ງຮັກສາຮູບຮ່າງ, ຫວ່າງທັງສອງໃຊ້ຂະໜາດຂອງຮູບເອງ; ໃສ່ທັງສອງຈະໃສ່ພາຍໃນ, ບໍ່ດຶງຢືດຈັກເທື່ອ. ບໍ່ມີຮູບ: ໂລໂກ້ທີ່ສະແດງຮັກສາຄວາມສູງເປັນບ່ອນຫວ່າງ; ເຊື່ອງຈະລຶບອອກ.
-bill_logo_tones_help	ທຶບ: ແຕ່ລະຈຸດດຳ ຫຼື ຂາວ, ສຳລັບໂລໂກ້ຄົມຊັດ. ມີເງົາ: ສີເທົາກາຍເປັນລາຍຈຸດລະອຽດ, ສຳລັບຮູບຖ່າຍ ແລະ ເງົາອ່ອນ.
 slip_col_width	ຄວາມກວ້າງ (mm)
 slip_col_start	ຊ່ອງວ່າງຕົ້ນ (px)
 slip_col_end	ຊ່ອງວ່າງທ້າຍ (px)
@@ -566,6 +566,15 @@ print_open	ພິມ / ເປີດ
 reason_amend_ph	ເຫດຜົນສໍາລັບການດັດແກ້ / void / refund
 reason_note_ph	ເຫດຜົນ / ຫມາຍເຫດ (ເສຍ, ນັບ, ... )
 record_day_close	ບັນທຶກມື້ປິດ
+business_day	When does Today reset?
+business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
+biz_day_until_close	Until Day close
+biz_day_midnight	Calendar midnight
+business_day_saved	Business day saved
+report_day_lens	View Today as
+report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
+report_lens_day_close	By Day close
+report_lens_midnight	By midnight
 refresh_from_shop	ໂຫຼດຂໍ້ມູນໃໝ່ຈາກຮ້ານຄ້າ
 refund	ເງິນຄືນ
 remove_selected	ລຶບທີ່ເລືອກອອກ

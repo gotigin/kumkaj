@@ -632,11 +632,11 @@ pub fn add_rider_line(
     Ok(format!("Rider added: {}", r.name))
 }
 
-pub fn period_bill_party(
+pub fn create_period_bill_for_party_name(
     store: &Store,
     party_name: &str,
     actor: &StaffMember,
-) -> Result<String, String> {
+) -> Result<crate::consignments::PeriodBill, String> {
     let party_name = party_name.trim();
     if party_name.is_empty() {
         return Err("Type a party name".into());
@@ -650,13 +650,25 @@ pub fn period_bill_party(
     // Broad window: last ~90 days of unbilled account dockets.
     let from = chrono::Local::now() - chrono::Duration::days(90);
     let from_s = from.format("%Y-%m-%d").to_string();
-    let bill = store.create_period_bill(&party.id, &from_s, &today, "Period bill", actor)?;
-    Ok(format!(
+    store.create_period_bill(&party.id, &from_s, &today, "Period bill", actor)
+}
+
+pub fn period_bill_summary(bill: &crate::consignments::PeriodBill, store: &Store) -> String {
+    format!(
         "Period bill {} · {} · {}",
         bill.invoice_no,
         bill.party_name,
         store.money_display(bill.total_paise)
-    ))
+    )
+}
+
+pub fn period_bill_party(
+    store: &Store,
+    party_name: &str,
+    actor: &StaffMember,
+) -> Result<String, String> {
+    let bill = create_period_bill_for_party_name(store, party_name, actor)?;
+    Ok(period_bill_summary(&bill, store))
 }
 
 pub fn set_credit_limit(

@@ -115,6 +115,7 @@ bill_line_total	Kopā
 bill_line_footer	Kājene
 bill_line_upi	UPI
 bill_logo_picture	Attēls
+bill_logo_help	Platums un augstums px. Tukšais seko attēlam: viens tukšs saglabā formu, abi tukši izmanto tā izmēru; abi norādīti ievieto to iekšā, nekad neizstiepjot. Bez attēla: rādītais logotips patur savu augstumu kā tukšu vietu; Paslēpt to noņem.
 bill_logo_choose	Izvēlēties attēlu
 bill_logo_remove	Noņemt attēlu
 bill_logo_none	Nav attēla
@@ -122,10 +123,9 @@ bill_logo_unreadable	Tas nav attēls, ko lietotne var nolasīt
 bill_logo_width	Platums (px)
 bill_logo_height	Augstums (px)
 bill_logo_tones	Pelēkie toņi
+bill_logo_tones_help	Vienlaidu: katrs punkts melns vai balts, skaidriem logotipiem. Ēnots: pelēkie toņi kļūst par smalku punktu rakstu, fotoattēliem un maigām ēnām.
 bill_logo_solid	Vienlaidu
 bill_logo_shaded	Ēnots
-bill_logo_help	Platums un augstums px. Tukšais seko attēlam: viens tukšs saglabā formu, abi tukši izmanto tā izmēru; abi norādīti ievieto to iekšā, nekad neizstiepjot. Bez attēla: rādītais logotips patur savu augstumu kā tukšu vietu; Paslēpt to noņem.
-bill_logo_tones_help	Vienlaidu: katrs punkts melns vai balts, skaidriem logotipiem. Ēnots: pelēkie toņi kļūst par smalku punktu rakstu, fotoattēliem un maigām ēnām.
 slip_col_width	Platums (mm)
 slip_col_start	Sākuma atstarpe (px)
 slip_col_end	Beigu atstarpe (px)
@@ -566,6 +566,15 @@ print_open	Drukāt / atvērt
 reason_amend_ph	Iemesls labojumam / anulēšanai / atmaksai
 reason_note_ph	Iemesls / piezīme (zudumi, skaits, …)
 record_day_close	Ierakstīt dienas slēgšanu
+business_day	When does Today reset?
+business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
+biz_day_until_close	Until Day close
+biz_day_midnight	Calendar midnight
+business_day_saved	Business day saved
+report_day_lens	View Today as
+report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
+report_lens_day_close	By Day close
+report_lens_midnight	By midnight
 refresh_from_shop	Atsvaidzināt no veikala
 refund	Atmaksa
 remove_selected	Noņemt atlasīto

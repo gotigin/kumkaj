@@ -94,6 +94,8 @@ printer_paper_help	Okubikiwe yiphepha umshayeli wale phrinta osethelwe kulo; uhl
 preview_help	Le risidi njengoba iphrinta kuphrinta ekhethwe ngezansi, ngobukhulu bangempela ephepheni layo le-virtual. Okumhlophe yilapho iphrinta khona, iphepha elimpunga alifinyelelwa yiphrinta, futhi uyinki ofiphele uyasikwa. Izikwele eziyisishiyagalolunye ziyiphepha: thepha lapho irisidi kufanele ihlale khona. Irisidi ende iqhubeka emakhasini amaningi. Ukukhetha iphrinta kushintsha ukubuka kuqala kuphela.
 slip_col_start	Isikhala sokuqala (px)
 slip_col_end	Isikhala sokugcina (px)
+slip_columns	Amakholomu
+slip_col_header	Isihloko
 slip_columns_help	Ububanzi bekholomu ngayinye bufaka isikhala sayo sokuqala nesokugcina. Umbhalo usongeka ngaphakathi kwekholomu yawo; okudlula ububanzi bokuqukethwe kuyanqunywa, ephepheni nasekubukeni kuqala.
 bill_total_qty_label	Isamba selebula ye-qty
 bill_total_subtotal_label	Isamba selebula engaphansi
@@ -363,6 +365,15 @@ print_open	Phrinta / vula
 reason_amend_ph	Isizathu sokuchibiyela / ukungasebenzi / ukubuyiselwa imali
 reason_note_ph	Isizathu / inothi (ukumosha, ukubala, ...)
 record_day_close	Londoloza usuku eduze
+business_day	When does Today reset?
+business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
+biz_day_until_close	Until Day close
+biz_day_midnight	Calendar midnight
+business_day_saved	Business day saved
+report_day_lens	View Today as
+report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
+report_lens_day_close	By Day close
+report_lens_midnight	By midnight
 refresh_from_shop	Vuselela esitolo
 refund	Imbuyiselo
 remove_selected	Susa okukhethiwe
@@ -486,6 +497,8 @@ route_bill	Ibhili
 station_print_pick_first	Khetha ingxenye ye-dispensary kuqala
 bill_printers_dd	Amaphrinta webhili yesivakashi
 bill_printers_dd_n	{n} amaphrinta webhili yesivakashi · thepha ukuze ushintshe
+printer_mode_first	Okokuqala kuyasebenza
+printer_mode_all	Phrinta kukho konke
 station_vp_attached	Iphrinta inamathiselwe
 station_vp_detached	Iphrinta ikhishiwe esiteshini
 print_test_page	Phrinta ikhasi lokuhlola
@@ -837,6 +850,10 @@ client_template_importing	Ingenisa {title}…
 client_template_done	Yonke into esuka ku-{title} isezintweni zakho.
 client_template_imported	Kwengezwe izinto ze-{d} kanye nezigaba ze-{c} ukusuka ku-{title}
 cancel	Khansela
+removing	Kuyasuswa…
+removed	Kususiwe
+updating_order	Kuyabuyekezwa…
+order_updated	I-oda libuyekeziwe
 opening_client	Ivula iklayenti...
 preparing_desk	Ilungiselela ideski...
 opening_server	Ivula iseva...
@@ -867,16 +884,7 @@ recent_changes	Izinguquko zakamuva
 lane_declared_label	I-invoyisi yentela
 lane_owner_label	Imemo yemali
 money_lane_bill	Ibhili yesivakashi sesivakashi: {lane}
-
-removing	Kuyasuswa…
-removed	Kususiwe
-updating_order	Kuyabuyekezwa…
-order_updated	I-oda libuyekeziwe
 sel_copy	Kopisha
 sel_select_all	Khetha konke
 sel_copied	Kukopishiwe
 nav_loading	Iyalayisha…
-printer_mode_first	Okokuqala kuyasebenza
-printer_mode_all	Phrinta kukho konke
-slip_columns	Amakholomu
-slip_col_header	Isihloko

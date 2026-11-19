@@ -94,6 +94,8 @@ printer_paper_help	Oñemombe'úva ha'e pe kuatia ko impresora driver oñemboguap
 preview_help	Ko comprobante oñeimprimiháicha impresora oñeiporavóva yvy gotyo, tuichakue añetépe ikuatia virtual ári. Morotĩ ha'e oñeimprimihápe, kuatia hũngy impresora ndohupytýi, ha tinta hesakãva oñekytĩ. Umi nueve cuadro ha'e pe kuatia: epoko comprobante opyta vaerãhápe. Comprobante ipukúva oho hetave toguépe. Impresora jeporavo omoambue vista previa añoite.
 slip_col_start	Ñepyrũha pa’ũ (px)
 slip_col_end	Pahaha pa’ũ (px)
+slip_columns	Columna-kuéra
+slip_col_header	Iñakãrapu’ãva
 slip_columns_help	Peteĩteĩ columna pe oguereko ipype iñepyrũha ha ipahaha pa’ũ. Moñe’ẽrã oñembojere icolumna ryepýpe; contenido pe rehasáva oñeikytĩ kuatiápe ha jehechaukápe.
 bill_total_qty_label	Total qty etiqueta rehegua
 bill_total_subtotal_label	Sub etiqueta total rehegua
@@ -363,6 +365,15 @@ print_open	Oñeimprimi / ojepe’a
 reason_amend_ph	Motivo oñemoambue haguã / anulado / devolución
 reason_note_ph	Motivo / nota (desperdicio, conteo, ...) .
 record_day_close	Record ára oñemboty
+business_day	When does Today reset?
+business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
+biz_day_until_close	Until Day close
+biz_day_midnight	Calendar midnight
+business_day_saved	Business day saved
+report_day_lens	View Today as
+report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
+report_lens_day_close	By Day close
+report_lens_midnight	By midnight
 refresh_from_shop	Refrescar tenda guive
 refund	Reembolso rehegua
 remove_selected	Ojepe’a ojeporavóva
@@ -486,6 +497,8 @@ route_bill	Factura
 station_print_pick_first	Eiporavo raẽ peteĩ sección dispensario rehegua
 bill_printers_dd	Impresora-kuéra pe factura-pe guarã
 bill_printers_dd_n	{n} impresorakuéra factura-pe g̃uarã · epoko emoambue hag̃ua
+printer_mode_first	Primero upéva osẽ porã
+printer_mode_all	Eimprimi opavave ári
 station_vp_attached	Impresora oñembojoajúva
 station_vp_detached	Impresora ojeipe'a estación-gui
 print_test_page	Eimprimi peteĩ página prueba rehegua
@@ -837,6 +850,10 @@ client_template_importing	Ojegueru {title}...
 client_template_done	Opaite mba’e {title}-gui oĩ nde mba’e’oka ári.
 client_template_imported	Oñemoĩve {d} mbaꞌe ha {c} categoría {title}-gui
 cancel	Ombogue
+removing	Oñembogue hína…
+removed	Oñembogue
+updating_order	Oñembopyahu hína…
+order_updated	Jerure oñembopyahúma
 opening_client	Oipe'ávo cliente...
 preparing_desk	Oñembosako'ívo escritorio...
 opening_server	Oipe'ávo servidor...
@@ -867,16 +884,7 @@ recent_changes	Umi ñemoambue nda’aréi ojejapóva
 lane_declared_label	Factura tributaria rehegua
 lane_owner_label	Memo efectivo rehegua
 money_lane_bill	Factura: {lane} .
-
-removing	Oñembogue hína…
-removed	Oñembogue
-updating_order	Oñembopyahu hína…
-order_updated	Jerure oñembopyahúma
 sel_copy	Ekopia
 sel_select_all	Eiporavo opavave
 sel_copied	Okopiáma
 nav_loading	Henyhẽhína…
-printer_mode_first	Primero upéva osẽ porã
-printer_mode_all	Eimprimi opavave ári
-slip_columns	Columna-kuéra
-slip_col_header	Iñakãrapu’ãva

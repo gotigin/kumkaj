@@ -94,6 +94,8 @@ printer_paper_help	Հաղորդվածն այն թուղթն է, որի վրա կ
 preview_help	Այս կտրոնն այնպես, ինչպես տպվում է ներքևում ընտրված տպիչով, իրական չափով՝ նրա վիրտուալ թղթի վրա։ Սպիտակն այնտեղ է, որտեղ տպվում է, մոխրագույն թղթին տպիչը չի հասնում, իսկ գունաթափ թանաքը կտրվում է։ Ինը քառակուսիները թուղթն են. հպեք այնտեղ, որտեղ պիտի լինի կտրոնը։ Երկար կտրոնը շարունակվում է հաջորդ էջերում։ Տպիչի ընտրությունը փոխում է միայն նախադիտումը։
 slip_col_start	Սկզբի տարածք (px)
 slip_col_end	Վերջի տարածք (px)
+slip_columns	Սյունակներ
+slip_col_header	Վերնագիր
 slip_columns_help	Յուրաքանչյուր սյունակի լայնությունը ներառում է դրա սկզբի և վերջի տարածքը։ Տեքստը փաթաթվում է իր սյունակի ներսում. բովանդակության լայնությունից դուրս մնացածը կտրվում է՝ թղթի վրա և նախադիտման մեջ։
 bill_total_qty_label	Ընդհանուր քանակի պիտակ
 bill_total_subtotal_label	Ենթագումարի պիտակ
@@ -363,6 +365,15 @@ print_open	Տպել / բացել
 reason_amend_ph	Պատճառ ուղղման / չեղարկման / վերադարձի
 reason_note_ph	Պատճառ / նշում (կորուստ, հաշվարկ, …)
 record_day_close	Գրանցել օրվա փակումը
+business_day	When does Today reset?
+business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
+biz_day_until_close	Until Day close
+biz_day_midnight	Calendar midnight
+business_day_saved	Business day saved
+report_day_lens	View Today as
+report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
+report_lens_day_close	By Day close
+report_lens_midnight	By midnight
 refresh_from_shop	Թարմացնել խանութից
 refund	Վերադարձ
 remove_selected	Հեռացնել ընտրվածը
@@ -486,6 +497,8 @@ route_bill	Հաշիվ
 station_print_pick_first	Նախ ընտրեք դիսպանսերի բաժինը
 bill_printers_dd	Տպիչներ հաշվի համար
 bill_printers_dd_n	{n} տպիչ հաշվի համար · հպեք փոխելու համար
+printer_mode_first	Առաջինը, որ աշխատում է
+printer_mode_all	Տպել բոլորում
 station_vp_attached	Տպիչը կցվել է
 station_vp_detached	Տպիչը հեռացվել է կայանից
 print_test_page	Տպել փորձնական էջ
@@ -837,6 +850,10 @@ client_template_importing	{title} ներմուծում…
 client_template_done	{title}-ի յուրաքանչյուր տարր ձեր իրերի վրա է:
 client_template_imported	Ավելացվել են {d} տարրեր և {c} կատեգորիաներ {title}-ից
 cancel	Չեղարկել
+removing	Հեռացվում է…
+removed	Հեռացված է
+updating_order	Թարմացվում է…
+order_updated	Պատվերը թարմացվեց
 opening_client	Կլիենտի բացում…
 preparing_desk	Սեղանի պատրաստում…
 opening_server	Սերվերի բացում…
@@ -867,16 +884,7 @@ recent_changes	Վերջին փոփոխություններ
 lane_declared_label	Հարկային հաշիվ
 lane_owner_label	Կանխիկ հուշագիր
 money_lane_bill	Հաշիվ՝ {lane}
-
-removing	Հեռացվում է…
-removed	Հեռացված է
-updating_order	Թարմացվում է…
-order_updated	Պատվերը թարմացվեց
 sel_copy	Պատճենել
 sel_select_all	Ընտրել բոլորը
 sel_copied	Պատճենվեց
 nav_loading	Բեռնվում է…
-printer_mode_first	Առաջինը, որ աշխատում է
-printer_mode_all	Տպել բոլորում
-slip_columns	Սյունակներ
-slip_col_header	Վերնագիր

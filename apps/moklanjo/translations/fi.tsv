@@ -3,6 +3,25 @@ app_tagline	Kuriiritoimisto kirjat + varauspöytä. Ilmainen offline-tilassa.
 unlock	Avaa lukitus
 pin_hint	Omistajan PIN on aluksi 0000
 sell	Varaus
+nav_board	Board
+board	Board
+park_draft	Park
+board_park_nothing	Nothing to park — add charges or booking details
+board_parked	Parked on Board — desk is clear
+board_draft	Draft
+board_booked	Booked
+board_filter_all	All
+board_filter_draft	Draft
+board_filter_booked	Booked
+board_cols_fmt	{n} col
+board_summary_fmt	{total} cards · {drafts} draft · {booked} booked
+board_card_no_charges	No charges yet
+board_card_charges	charges
+board_card_booked	Booking
+board_draft_gone	That draft is no longer on the Board
+board_draft_closed	That draft was already finished or discarded
+board_discard	Discard
+board_discarded	Draft discarded
 buy	Maksaa
 books	Päiväkirja
 books_help	Tämän päivän asema. Varaus = paketit sisään. Maksa ulos = kuljetuslaskut ja -kulut. Osapuolet = lähettäjät ja kuljettajat.
@@ -183,6 +202,13 @@ device_setup_help	Palvelin pitää kirjat täällä. Pääte paritetaan palvelim
 currency	Valuutta
 backup	Varmuuskopio
 settings_sec_diag	Diagnostiikka
+settings_sec_privacy	Tietosuoja
+privacy_policy_help	Yksityisyys · PRIVACY.md · moklanjo.com/privacy
+dont_use	Älä käytä
+receipt_printers_dd	Tämän laitteen tulostimet · Kuitti
+receipt_printers_dd_n	{n} · Tämän laitteen tulostimet · Kuitti
+label_printers_dd	Tämän laitteen tulostimet · AWB etiketti
+label_printers_dd_n	{n} · Tämän laitteen tulostimet · AWB etiketti
 settings_hub_help	Avaa yksi alue kerrallaan — vähemmän vieritystä, selvemmät valinnat.
 settings_sec_devices	Muut laitteet
 settings_sec_alerts	Ilmoitukset
@@ -315,6 +341,16 @@ copy_party_ledger_csv	Kopioi osapuolen reskontran CSV
 copy_receipt	Kopioi kuitti
 copy_report	Kopioi raportti
 counted_cash_ph	Laskettu käteinen laatikossa
+close_shift_print	Close shift and print slip
+shift_handover	Shift handover
+shift_counted_ph	Cash counted at handover
+shift_since	This shift since
+expected_in_drawer	Expected in drawer
+lock_books_through_month	Lock books through month
+books_lock_month_ph	YYYY-MM
+lock_books_month_btn	Lock through this month
+books_locked_none	No month lock yet
+books_locked_through	Locked through
 counter_agency_ph	Myyjän/toimiston nimi (valinnainen)
 create_backup	Luo varmuuskopio
 day_close_summary	Päivän sulun yhteenveto
@@ -404,6 +440,9 @@ pay_ap_cash	Maksa AP käteisellä
 pay_ap_upi	Maksa AP UPI:lla
 period_bill	Kauden lasku
 period_bill_party	Kausilasku (juhla)
+period_bill_generate	Generate bill
+period_bill_generate_print	Generate & print
+booking_bulk_preview	{ok} ready · {bad} bad
 pick_pod_photo	Valitse POD-kuva
 print_awb_label	Tulosta AWB-tarra
 print_open	Tulosta / avaa
@@ -612,6 +651,19 @@ attachments_last_expense	Liitteet (viimeisin kulu)
 credit_limit_heading	Luottoraja (valittu / nimetty osapuoli)
 pay_selected_heading	Maksa valittu (kuittaa velka / ota ennakko)
 write_off_heading	Kirjaa pois (tyhjennä ilman maksua)
+adjustment_notes_heading	Adjustment notes
+adj_note_amount_ph	Amount
+adj_note_reason_ph	Reason (required)
+adj_note_awb_ph	Related AWB (optional)
+credit_note_btn	Credit note
+debit_note_btn	Debit note
+bill_later_heading	Bill later (post-booking extra)
+bill_later_amount_ph	Extra amount
+bill_later_party_ph	Party (only if booking has none)
+bill_later_btn	Bill later
+bill_later_extra_oda	ODA
+bill_later_extra_packing	Packing
+bill_later_extra_other	Other
 pay_ap_heading	Maksa mitä olemme heille velkaa (AP)
 country_tax	Maa ja vero
 extra_tills_heading	Lisäkassat
@@ -723,6 +775,23 @@ onboard_book_tmpl	Kirja · {} — lisää tuotteet ja alkuluotto, sitten Valmis.
 onboard_template_tmpl	Nimeä paikka jos haluat, ja valitse sitten miten aloitat.
 tmpl_blurb	Kuriirikirjat ja varauspöytä: lähettäjät, kuljettajat, päiväkirja, AWB.
 tmpl_how	Varaa paketit pöydän ääressä; Päiväkirja tälle päivälle; välilehdet hintoja, juhlia ja raportteja varten.
+app_template_heading	Shop templates
+app_template_blurb	Pick a starter desk. Skip leaves parties empty.
+app_template_skip	Skip for now
+app_template_status	Server ready — import a template, or skip
+app_template_importing	Applying {title}…
+app_template_public_hdr	Templates
+app_template_import_selected	Import selected
+public_tmpl_help	Bundled agency packs for this shop. No download needed.
+business_day	When does Today reset?
+business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
+biz_day_until_close	Until Day close
+biz_day_midnight	Calendar midnight
+business_day_saved	Business day saved
+report_day_lens	View Today as
+report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
+report_lens_day_close	By Day close
+report_lens_midnight	By midnight
 trk_booked	Varattu
 trk_picked_up	Poimittu
 trk_in_transit	Kuljetuksessa
@@ -846,10 +915,3 @@ sel_copy	Kopioi
 sel_select_all	Valitse kaikki
 sel_copied	Kopioitu
 nav_loading	Ladataan…
-settings_sec_privacy	Tietosuoja
-privacy_policy_help	Yksityisyys · PRIVACY.md · moklanjo.com/privacy
-dont_use	Älä käytä
-receipt_printers_dd	Tämän laitteen tulostimet · Kuitti
-receipt_printers_dd_n	{n} · Tämän laitteen tulostimet · Kuitti
-label_printers_dd	Tämän laitteen tulostimet · AWB etiketti
-label_printers_dd_n	{n} · Tämän laitteen tulostimet · AWB etiketti

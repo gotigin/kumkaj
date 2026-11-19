@@ -115,6 +115,7 @@ bill_line_total	ਕੁੱਲ
 bill_line_footer	ਫੁੱਟਰ
 bill_line_upi	UPI
 bill_logo_picture	ਤਸਵੀਰ
+bill_logo_help	ਚੌੜਾਈ ਅਤੇ ਉਚਾਈ px ਵਿੱਚ। ਖਾਲੀ ਰਹੇ ਤਾਂ ਤਸਵੀਰ ਮੁਤਾਬਕ: ਇੱਕ ਖਾਲੀ ਤਾਂ ਆਕਾਰ ਬਣਿਆ ਰਹਿੰਦਾ, ਦੋਵੇਂ ਖਾਲੀ ਤਾਂ ਉਸਦਾ ਆਪਣਾ ਨਾਪ; ਦੋਵੇਂ ਭਰੇ ਤਾਂ ਅੰਦਰ ਸਮਾ ਜਾਂਦੀ, ਕਦੇ ਨਹੀਂ ਖਿੱਚਦੀ। ਤਸਵੀਰ ਨਹੀਂ: ਦਿਖਾਇਆ ਲੋਗੋ ਆਪਣੀ ਉਚਾਈ ਖਾਲੀ ਥਾਂ ਵਜੋਂ ਰੱਖਦਾ ਹੈ; ਲੁਕਾਓ ਇਸਨੂੰ ਹਟਾ ਦਿੰਦਾ ਹੈ।
 bill_logo_choose	ਤਸਵੀਰ ਚੁਣੋ
 bill_logo_remove	ਤਸਵੀਰ ਹਟਾਓ
 bill_logo_none	ਕੋਈ ਤਸਵੀਰ ਨਹੀਂ
@@ -122,10 +123,9 @@ bill_logo_unreadable	ਇਹ ਐਪ ਪੜ੍ਹ ਸਕਣ ਵਾਲੀ ਤਸਵ
 bill_logo_width	ਚੌੜਾਈ (px)
 bill_logo_height	ਉਚਾਈ (px)
 bill_logo_tones	ਸਲੇਟੀ
+bill_logo_tones_help	ਠੋਸ: ਹਰ ਬਿੰਦੀ ਕਾਲੀ ਜਾਂ ਚਿੱਟੀ, ਸਾਫ਼ ਲੋਗੋ ਲਈ। ਛਾਂਦਾਰ: ਸਲੇਟੀ ਬਰੀਕ ਬਿੰਦੀਆਂ ਦਾ ਨਮੂਨਾ ਬਣ ਜਾਂਦਾ, ਫ਼ੋਟੋ ਅਤੇ ਹਲਕੀ ਛਾਂ ਲਈ।
 bill_logo_solid	ਠੋਸ
 bill_logo_shaded	ਛਾਂਦਾਰ
-bill_logo_help	ਚੌੜਾਈ ਅਤੇ ਉਚਾਈ px ਵਿੱਚ। ਖਾਲੀ ਰਹੇ ਤਾਂ ਤਸਵੀਰ ਮੁਤਾਬਕ: ਇੱਕ ਖਾਲੀ ਤਾਂ ਆਕਾਰ ਬਣਿਆ ਰਹਿੰਦਾ, ਦੋਵੇਂ ਖਾਲੀ ਤਾਂ ਉਸਦਾ ਆਪਣਾ ਨਾਪ; ਦੋਵੇਂ ਭਰੇ ਤਾਂ ਅੰਦਰ ਸਮਾ ਜਾਂਦੀ, ਕਦੇ ਨਹੀਂ ਖਿੱਚਦੀ। ਤਸਵੀਰ ਨਹੀਂ: ਦਿਖਾਇਆ ਲੋਗੋ ਆਪਣੀ ਉਚਾਈ ਖਾਲੀ ਥਾਂ ਵਜੋਂ ਰੱਖਦਾ ਹੈ; ਲੁਕਾਓ ਇਸਨੂੰ ਹਟਾ ਦਿੰਦਾ ਹੈ।
-bill_logo_tones_help	ਠੋਸ: ਹਰ ਬਿੰਦੀ ਕਾਲੀ ਜਾਂ ਚਿੱਟੀ, ਸਾਫ਼ ਲੋਗੋ ਲਈ। ਛਾਂਦਾਰ: ਸਲੇਟੀ ਬਰੀਕ ਬਿੰਦੀਆਂ ਦਾ ਨਮੂਨਾ ਬਣ ਜਾਂਦਾ, ਫ਼ੋਟੋ ਅਤੇ ਹਲਕੀ ਛਾਂ ਲਈ।
 slip_col_width	ਚੌੜਾਈ (mm)
 slip_col_start	ਸ਼ੁਰੂਆਤੀ ਥਾਂ (px)
 slip_col_end	ਅੰਤਲੀ ਥਾਂ (px)
@@ -566,6 +566,15 @@ print_open	ਛਾਪੋ / ਖੋਲ੍ਹੋ
 reason_amend_ph	ਸੋਧ / ਰੱਦ / ਵਾਪਸੀ ਦਾ ਕਾਰਨ
 reason_note_ph	ਕਾਰਨ / ਨੋਟ (ਖਰਾਬੀ, ਗਿਣਤੀ, …)
 record_day_close	ਦਿਨ ਬੰਦ ਦਰਜ ਕਰੋ
+business_day	When does Today reset?
+business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
+biz_day_until_close	Until Day close
+biz_day_midnight	Calendar midnight
+business_day_saved	Business day saved
+report_day_lens	View Today as
+report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
+report_lens_day_close	By Day close
+report_lens_midnight	By midnight
 refresh_from_shop	ਦੁਕਾਨ ਤੋਂ ਤਾਜ਼ਾ ਕਰੋ
 refund	ਵਾਪਸੀ
 remove_selected	ਚੁਣਿਆ ਹਟਾਓ

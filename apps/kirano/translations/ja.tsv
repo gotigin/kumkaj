@@ -82,6 +82,8 @@ printer_paper_help	「報告」は、このプリンターのドライバーに�
 preview_help	この伝票が、下で選んだプリンターで印刷されるとおりに、その仮想用紙の上に実寸で表示されます。白は印刷される範囲、灰色の紙はプリンターが届かない範囲で、薄いインクは切り落とされます。9 つのマスが用紙です。伝票を置きたい場所をタップしてください。長い伝票は次のページに続きます。プリンターを選んでも変わるのはプレビューだけです。
 slip_col_start	先頭の余白 (px)
 slip_col_end	末尾の余白 (px)
+slip_columns	列
+slip_col_header	見出し
 slip_columns_help	各列の幅には先頭と末尾の余白が含まれます。文字は列の中で折り返し、内容の幅からはみ出した部分は用紙でもプレビューでも切り取られます。
 bill_total_qty_label	合計数量ラベル
 bill_total_subtotal_label	小計ラベル
@@ -351,6 +353,15 @@ print_open	印刷／開く
 reason_amend_ph	修正／取消／返金の理由
 reason_note_ph	理由／メモ（廃棄、棚卸…）
 record_day_close	日次締めを記録
+business_day	When does Today reset?
+business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
+biz_day_until_close	Until Day close
+biz_day_midnight	Calendar midnight
+business_day_saved	Business day saved
+report_day_lens	View Today as
+report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
+report_lens_day_close	By Day close
+report_lens_midnight	By midnight
 refresh_from_shop	店舗から更新
 refund	返金
 remove_selected	選択を削除
@@ -474,6 +485,8 @@ route_bill	伝票
 station_print_pick_first	最初にショップセクションを選択してください
 bill_printers_dd	請求書のプリンター
 bill_printers_dd_n	請求書用の {n} プリンター · タップして変更
+printer_mode_first	最初に動作するもの
+printer_mode_all	すべてで印刷
 station_vp_attached	プリンターを付けました
 station_vp_detached	ステーションからプリンターを外しました
 print_test_page	テストページを印刷
@@ -825,6 +838,10 @@ client_template_importing	{title} を取り込み中…
 client_template_done	{title} のすべてのアイテムはあなたのアイテムにあります。
 client_template_imported	{title} から {d} アイテムと {c} カテゴリを追加
 cancel	キャンセル
+removing	削除中…
+removed	削除しました
+updating_order	更新中…
+order_updated	注文を更新しました
 opening_client	クライアントを開いています…
 preparing_desk	デスクを準備しています…
 opening_server	サーバーを開いています…
@@ -855,16 +872,7 @@ recent_changes	最近の変更
 lane_declared_label	税金請求書
 lane_owner_label	現金メモ
 money_lane_bill	請求書：{lane}
-
-removing	削除中…
-removed	削除しました
-updating_order	更新中…
-order_updated	注文を更新しました
 sel_copy	コピー
 sel_select_all	すべて選択
 sel_copied	コピーしました
 nav_loading	読み込み中…
-printer_mode_first	最初に動作するもの
-printer_mode_all	すべてで印刷
-slip_columns	列
-slip_col_header	見出し

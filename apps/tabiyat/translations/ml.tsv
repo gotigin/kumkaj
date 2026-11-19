@@ -94,6 +94,8 @@ printer_paper_help	റിപ്പോർട്ട് ചെയ്തത് എ�
 preview_help	ഈ സ്ലിപ്പ് താഴെ തിരഞ്ഞെടുത്ത പ്രിന്ററിൽ അച്ചടിക്കുന്നതുപോലെ, അതിന്റെ വെർച്വൽ പേപ്പറിൽ യഥാർത്ഥ വലുപ്പത്തിൽ. വെള്ള ഭാഗത്താണ് അച്ചടിക്കുന്നത്, ചാരനിറത്തിലുള്ള പേപ്പറിൽ പ്രിന്റർ എത്തുന്നില്ല, മങ്ങിയ മഷി മുറിച്ചുമാറ്റപ്പെടും. ഒമ്പത് ചതുരങ്ങളാണ് പേപ്പർ: സ്ലിപ്പ് ഇരിക്കേണ്ട സ്ഥലത്ത് ടാപ്പ് ചെയ്യുക. നീളമുള്ള സ്ലിപ്പ് കൂടുതൽ പേജുകളിലേക്ക് തുടരും. പ്രിന്റർ തിരഞ്ഞെടുക്കുന്നത് പ്രിവ്യൂ മാത്രം മാറ്റുന്നു.
 slip_col_start	തുടക്കത്തിലെ ഇടം (px)
 slip_col_end	അവസാനത്തെ ഇടം (px)
+slip_columns	കോളങ്ങൾ
+slip_col_header	തലക്കെട്ട്
 slip_columns_help	ഓരോ കോളത്തിന്റെയും വീതിയിൽ അതിന്റെ തുടക്കത്തിലെയും അവസാനത്തെയും ഇടം ഉൾപ്പെടുന്നു. ടെക്സ്റ്റ് സ്വന്തം കോളത്തിനുള്ളിൽ പൊതിയുന്നു; ഉള്ളടക്കത്തിന്റെ വീതിക്ക് പുറത്തുള്ളത് കടലാസിലും പ്രിവ്യൂവിലും മുറിഞ്ഞുപോകും.
 bill_total_qty_label	ആകെ എണ്ണം ലേബൽ
 bill_total_subtotal_label	ഉപമൊത്തം ലേബൽ
@@ -363,6 +365,15 @@ print_open	അച്ചടിക്കുക / തുറക്കുക
 reason_amend_ph	ഭേദഗതി / റദ്ദാക്കൽ / റീഫണ്ട് കാരണം
 reason_note_ph	കാരണം / കുറിപ്പ് (പാഴ്, എണ്ണം, …)
 record_day_close	ദിവസം അടയ്ക്കൽ രേഖപ്പെടുത്തുക
+business_day	When does Today reset?
+business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
+biz_day_until_close	Until Day close
+biz_day_midnight	Calendar midnight
+business_day_saved	Business day saved
+report_day_lens	View Today as
+report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
+report_lens_day_close	By Day close
+report_lens_midnight	By midnight
 refresh_from_shop	കടയിൽ നിന്ന് പുതുക്കുക
 refund	റീഫണ്ട്
 remove_selected	തിരഞ്ഞെടുത്തത് മാറ്റുക
@@ -486,6 +497,8 @@ route_bill	ബിൽ
 station_print_pick_first	ആദ്യം ഡിസ്പെൻസറി വിഭാഗം തിരഞ്ഞെടുക്കുക
 bill_printers_dd	ബില്ലിനുള്ള പ്രിന്ററുകൾ
 bill_printers_dd_n	ബില്ലിന് {n} പ്രിന്ററുകൾ · മാറ്റാൻ ടാപ്പ് ചെയ്യുക
+printer_mode_first	ആദ്യം പ്രവർത്തിക്കുന്നത്
+printer_mode_all	എല്ലാറ്റിലും അച്ചടിക്കുക
 station_vp_attached	പ്രിന്റർ അറ്റാച്ച് ചെയ്തു
 station_vp_detached	സ്റ്റേഷനിൽ നിന്ന് പ്രിന്റർ നീക്കം ചെയ്തു
 print_test_page	ടെസ്റ്റ് പേജ് അച്ചടിക്കുക
@@ -837,6 +850,10 @@ client_template_importing	{title} ഇമ്പോർട്ട്…
 client_template_done	{title}-ലെ ഓരോ ഇനവും നിങ്ങളുടെ ഇനങ്ങളിലുണ്ട്.
 client_template_imported	{title}-ൽ നിന്ന് {d} ഇനങ്ങളും {c} വിഭാഗങ്ങളും ചേർത്തു
 cancel	റദ്ദാക്കുക
+removing	നീക്കം ചെയ്യുന്നു…
+removed	നീക്കം ചെയ്തു
+updating_order	പുതുക്കുന്നു…
+order_updated	ഓർഡർ പുതുക്കി
 opening_client	ക്ലയന്റ് തുറക്കുന്നു…
 preparing_desk	ഡെസ്ക് തയ്യാറാക്കുന്നു…
 opening_server	സെർവർ തുറക്കുന്നു…
@@ -867,16 +884,7 @@ recent_changes	സമീപകാല മാറ്റങ്ങൾ
 lane_declared_label	നികുതി ഇൻവോയ്‌സ്
 lane_owner_label	ക്യാഷ് മെമ്മോ
 money_lane_bill	ബിൽ: {lane}
-
-removing	നീക്കം ചെയ്യുന്നു…
-removed	നീക്കം ചെയ്തു
-updating_order	പുതുക്കുന്നു…
-order_updated	ഓർഡർ പുതുക്കി
 sel_copy	പകർത്തുക
 sel_select_all	എല്ലാം തിരഞ്ഞെടുക്കുക
 sel_copied	പകർത്തി
 nav_loading	ലോഡ് ചെയ്യുന്നു…
-printer_mode_first	ആദ്യം പ്രവർത്തിക്കുന്നത്
-printer_mode_all	എല്ലാറ്റിലും അച്ചടിക്കുക
-slip_columns	കോളങ്ങൾ
-slip_col_header	തലക്കെട്ട്

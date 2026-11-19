@@ -94,6 +94,8 @@ printer_paper_help	Dilaporkan adalah kertas yang diatur pada driver printer ini;
 preview_help	Struk ini seperti saat dicetak di printer yang dipilih di bawah, dalam ukuran sebenarnya di kertas virtualnya. Putih adalah tempat mencetak, kertas abu-abu di luar jangkauan printer, dan tinta pudar terpotong. Sembilan kotak itu adalah kertasnya: ketuk tempat struk seharusnya berada. Struk panjang berlanjut ke halaman berikutnya. Memilih printer hanya mengubah pratinjau.
 slip_col_start	Spasi awal (px)
 slip_col_end	Spasi akhir (px)
+slip_columns	Kolom
+slip_col_header	Judul
 slip_columns_help	Lebar setiap kolom sudah termasuk spasi awal dan akhirnya. Teks dibungkus di dalam kolomnya; bagian yang melewati lebar konten terpotong, di kertas maupun di pratinjau.
 bill_total_qty_label	Label jumlah total
 bill_total_subtotal_label	Label subtotal
@@ -363,6 +365,15 @@ print_open	Cetak / buka
 reason_amend_ph	Alasan ubah / batal / refund
 reason_note_ph	Alasan / catatan (susut, hitung, …)
 record_day_close	Catat tutup hari
+business_day	When does Today reset?
+business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
+biz_day_until_close	Until Day close
+biz_day_midnight	Calendar midnight
+business_day_saved	Business day saved
+report_day_lens	View Today as
+report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
+report_lens_day_close	By Day close
+report_lens_midnight	By midnight
 refresh_from_shop	Segarkan dari toko
 refund	Refund
 remove_selected	Hapus terpilih
@@ -486,6 +497,8 @@ route_bill	Struk
 station_print_pick_first	Pilih bagian apotik terlebih dahulu
 bill_printers_dd	Printer untuk tagihan
 bill_printers_dd_n	{n} printer untuk tagihan · ketuk untuk mengubah
+printer_mode_first	Yang pertama yang berfungsi
+printer_mode_all	Cetak di semua
 station_vp_attached	Printer dipasang
 station_vp_detached	Printer dilepas dari stasiun
 print_test_page	Cetak halaman uji
@@ -837,6 +850,10 @@ client_template_importing	Mengimpor {title}…
 client_template_done	Setiap item dari {title} ada di item Anda.
 client_template_imported	Menambahkan item {d} dan kategori {c} dari {title}
 cancel	Batal
+removing	Menghapus…
+removed	Dihapus
+updating_order	Memperbarui…
+order_updated	Pesanan diperbarui
 opening_client	Membuka klien…
 preparing_desk	Mempersiapkan meja…
 opening_server	Membuka pelayan…
@@ -867,16 +884,7 @@ recent_changes	Perubahan terbaru
 lane_declared_label	Faktur pajak
 lane_owner_label	Memo tunai
 money_lane_bill	Tagihan: {lane}
-
-removing	Menghapus…
-removed	Dihapus
-updating_order	Memperbarui…
-order_updated	Pesanan diperbarui
 sel_copy	Salin
 sel_select_all	Pilih semua
 sel_copied	Disalin
 nav_loading	Memuat…
-printer_mode_first	Yang pertama yang berfungsi
-printer_mode_all	Cetak di semua
-slip_columns	Kolom
-slip_col_header	Judul

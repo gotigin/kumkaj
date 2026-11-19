@@ -3,6 +3,25 @@ app_tagline	མྱུར་སྐྱེལ་ལས་ཚབ་ཀྱི་ད�
 unlock	ལྡེ་མིག་ཕྱེ་བ།
 pin_hint	བདག་པོ་PIN 0000 ནས་འགོ་འཛུགས།
 sell	སྔོན་མངག་བྱས་པ།
+nav_board	Board
+board	Board
+park_draft	Park
+board_park_nothing	Nothing to park — add charges or booking details
+board_parked	Parked on Board — desk is clear
+board_draft	Draft
+board_booked	Booked
+board_filter_all	All
+board_filter_draft	Draft
+board_filter_booked	Booked
+board_cols_fmt	{n} col
+board_summary_fmt	{total} cards · {drafts} draft · {booked} booked
+board_card_no_charges	No charges yet
+board_card_charges	charges
+board_card_booked	Booking
+board_draft_gone	That draft is no longer on the Board
+board_draft_closed	That draft was already finished or discarded
+board_discard	Discard
+board_discarded	Draft discarded
 buy	དངུལ་སྤྲོད།
 books	ཉིན་མོའི་རྩིས་ཁྲ།
 books_help	དེ་རིང་གི་གནས་སྟངས། སྔོན་མངག་ = ནང་དུ་འབྱོར་བའི་ཐུམ་སྒྲིལ། དངུལ་སྤྲོད་ = སྐྱེལ་འདྲེན་བྱེད་མཁན་གྱི་འཛིན་བྱང་དང་འགྲོ་གྲོན། ཚོང་འབྲེལ་པ་ = དངོས་ཟོག་སྐྱེལ་མཁན་དང་སྐྱེལ་འདྲེན་བྱེད་མཁན།
@@ -183,6 +202,13 @@ device_setup_help	སར་བར་གྱིས་རྩིས་ཁྲ་འ�
 currency	དངུལ་ལོར།
 backup	རྒྱབ་སྣོན།
 settings_sec_diag	ནད་རྟགས་བརྟག་དཔྱད།
+settings_sec_privacy	སྒེར་གྱི་གསང་བ།
+privacy_policy_help	སྒེར་གྱི་གསང་བ། · PRIVACY.md · moklanjo.com/privacy
+dont_use	བེད་སྤྱོད་མི་བྱེད་པ།
+receipt_printers_dd	སྒྲིག་ཆས་འདིའི་སྟེང་གི་དཔར་འཕྲུལ། · བྱུང་འཛིན།
+receipt_printers_dd_n	{n} · སྒྲིག་ཆས་འདིའི་སྟེང་གི་དཔར་འཕྲུལ། · བྱུང་འཛིན།
+label_printers_dd	སྒྲིག་ཆས་འདིའི་སྟེང་གི་དཔར་འཕྲུལ། · AWB ཤོག་བྱང་།
+label_printers_dd_n	{n} · སྒྲིག་ཆས་འདིའི་སྟེང་གི་དཔར་འཕྲུལ། · AWB ཤོག་བྱང་།
 settings_hub_help	དུས་གཅིག་ཏུ་ས་ཁུལ་གཅིག་ཁ་ཕྱེ། བཤུད་སྒྲིལ་ཉུང་བ་དང་། གདམ་ག་གསལ་པོ།
 settings_sec_devices	ཡོ་བྱད་གཞན།
 settings_sec_alerts	ཉེན་བརྡ།
@@ -315,6 +341,16 @@ copy_party_ledger_csv	ཚོང་ཤག་གི་རྩིས་ཁྲ་CSV 
 copy_receipt	བྱུང་འཛིན་ངོ་བཤུས།
 copy_report	སྙན་ཞུའི་འདྲ་བཤུས།
 counted_cash_ph	ཤུད་སྒམ་ནང་དུ་དངུལ་རྩིས་བརྒྱབ་ཡོད།
+close_shift_print	Close shift and print slip
+shift_handover	Shift handover
+shift_counted_ph	Cash counted at handover
+shift_since	This shift since
+expected_in_drawer	Expected in drawer
+lock_books_through_month	Lock books through month
+books_lock_month_ph	YYYY-MM
+lock_books_month_btn	Lock through this month
+books_locked_none	No month lock yet
+books_locked_through	Locked through
 counter_agency_ph	Counter / ལས་ཚབ་ཀྱི་མིང་། (གདམ་གསེས་)
 create_backup	རྒྱབ་ལྗོངས་གསར་བཟོ།
 day_close_summary	ཉིན་མཇུག་བསྡུས་པ།
@@ -404,6 +440,9 @@ pay_ap_cash	APདངུལ་སྤྲོད་དགོས།
 pay_ap_upi	AP UPI སྤྲོད་དགོས།
 period_bill	དུས་ཡུན་འཛིན་བྱང་།
 period_bill_party	དུས་ཡུན་འཛིན་བྱང་། (ཚོང་འབྲེལ་པ)
+period_bill_generate	Generate bill
+period_bill_generate_print	Generate & print
+booking_bulk_preview	{ok} ready · {bad} bad
 pick_pod_photo	POD པར་འདེམས།
 print_awb_label	AWB ཤོག་བྱང་དཔར།
 print_open	པར་སྐྲུན།/ཁ་ཕྱེ།
@@ -612,6 +651,19 @@ attachments_last_expense	ཟུར་སྣོན་ (མཐའ་མའི་�
 credit_limit_heading	བུ་ལོན་ཚད་གཞི། (འདེམས་སྒྲུག་བྱས་པའི་ཚོང་ཤག་ཡང་ན་མཁོ་སྤྲོད་བྱེད་མཁན།)
 pay_selected_heading	འདེམས་སྒྲུག་བྱས་པའི་གླ་ཆ་སྤྲོད་དགོས།
 write_off_heading	རྩིས་མེད་གཏོང་དགོས། (དངུལ་སྤྲོད་མི་དགོས་པར་གཙང་བཟོ།)
+adjustment_notes_heading	Adjustment notes
+adj_note_amount_ph	Amount
+adj_note_reason_ph	Reason (required)
+adj_note_awb_ph	Related AWB (optional)
+credit_note_btn	Credit note
+debit_note_btn	Debit note
+bill_later_heading	Bill later (post-booking extra)
+bill_later_amount_ph	Extra amount
+bill_later_party_ph	Party (only if booking has none)
+bill_later_btn	Bill later
+bill_later_extra_oda	ODA
+bill_later_extra_packing	Packing
+bill_later_extra_other	Other
 pay_ap_heading	ང་ཚོས་ཁོ་ཚོར་བུ་ལོན་སྤྲོད་དགོས།
 country_tax	རྒྱལ་ཁབ་དང་དཔྱ་ཁྲལ།
 extra_tills_heading	དངུལ་སྒམ་ཁ་སྣོན།
@@ -723,6 +775,23 @@ onboard_book_tmpl	རྩིས་ཁྲ། · {} — རེའུ་མིག་
 onboard_template_tmpl	གལ་ཏེ་ཁྱེད་ལ་དགོས་ན་ས་ཆ་དེ་ལ་མིང་བཏགས་ནས་འགོ་འཛུགས་སྟངས་འདེམས།
 tmpl_blurb	མྱུར་སྐྱེལ་རྩིས་ཐོ་དང་སྔོན་མངག་སྟེགས་བུ། དངོས་ཟོག་སྐྱེལ་མཁན། སྐྱེལ་འདྲེན་བྱེད་མཁན། ཉིན་དེབ། AWB.
 tmpl_how	ཅོག་ཙེའི་སྟེང་གི་དཔེ་དེབ་འབོག་སྒྲིལ།དེ་རིང་གི་ཉིན་མོའི་དེབ་དེབ།གོང་ཚད་དང་། འདུ་ཚོགས། སྙན་ཞུ་བཅས་ཀྱི་ཤོག་བྱང་།
+app_template_heading	Shop templates
+app_template_blurb	Pick a starter desk. Skip leaves parties empty.
+app_template_skip	Skip for now
+app_template_status	Server ready — import a template, or skip
+app_template_importing	Applying {title}…
+app_template_public_hdr	Templates
+app_template_import_selected	Import selected
+public_tmpl_help	Bundled agency packs for this shop. No download needed.
+business_day	When does Today reset?
+business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
+biz_day_until_close	Until Day close
+biz_day_midnight	Calendar midnight
+business_day_saved	Business day saved
+report_day_lens	View Today as
+report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
+report_lens_day_close	By Day close
+report_lens_midnight	By midnight
 trk_booked	སྔོན་མངག་བྱས་པ།
 trk_picked_up	བླངས་ཟིན།
 trk_in_transit	སྐྱེལ་འདྲེན་བྱེད་རིང་།
@@ -846,10 +915,3 @@ sel_copy	འདྲ་བཤུས།
 sel_select_all	ཚང་མ་འདེམས།
 sel_copied	འདྲ་བཤུས་ཟིན།
 nav_loading	ནང་འཇུག་བྱེད་བཞིན་པ…
-settings_sec_privacy	སྒེར་གྱི་གསང་བ།
-privacy_policy_help	སྒེར་གྱི་གསང་བ། · PRIVACY.md · moklanjo.com/privacy
-dont_use	བེད་སྤྱོད་མི་བྱེད་པ།
-receipt_printers_dd	སྒྲིག་ཆས་འདིའི་སྟེང་གི་དཔར་འཕྲུལ། · བྱུང་འཛིན།
-receipt_printers_dd_n	{n} · སྒྲིག་ཆས་འདིའི་སྟེང་གི་དཔར་འཕྲུལ། · བྱུང་འཛིན།
-label_printers_dd	སྒྲིག་ཆས་འདིའི་སྟེང་གི་དཔར་འཕྲུལ། · AWB ཤོག་བྱང་།
-label_printers_dd_n	{n} · སྒྲིག་ཆས་འདིའི་སྟེང་གི་དཔར་འཕྲུལ། · AWB ཤོག་བྱང་།

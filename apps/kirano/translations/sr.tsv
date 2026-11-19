@@ -82,6 +82,8 @@ printer_paper_help	Пријављено је папир на који је по�
 preview_help	Овај рачун онако како се штампа на штампачу изабраном испод, у стварној величини на његовом виртуелном папиру. Бело је тамо где штампа, сиви папир је ван домашаја штампача, а избледело мастило се одсеца. Девет квадрата је папир: додирните где рачун треба да стоји. Дуг рачун се наставља на више страница. Избор штампача мења само преглед.
 slip_col_start	Почетни размак (px)
 slip_col_end	Завршни размак (px)
+slip_columns	Колоне
+slip_col_header	Заглавље
 slip_columns_help	Ширина сваке колоне укључује њен почетни и завршни размак. Текст се прелама унутар своје колоне; оно што прелази ширину садржаја одсеца се, на папиру и у прегледу.
 bill_total_qty_label	Ознака укупне количине
 bill_total_subtotal_label	Ознака суб тотал
@@ -351,6 +353,15 @@ print_open	Штампај / отвори
 reason_amend_ph	Разлог за измену / поништење / повраћај
 reason_note_ph	Разлог / напомена (расипање, бројање, …)
 record_day_close	Сачувајте дан близу
+business_day	When does Today reset?
+business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
+biz_day_until_close	Until Day close
+biz_day_midnight	Calendar midnight
+business_day_saved	Business day saved
+report_day_lens	View Today as
+report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
+report_lens_day_close	By Day close
+report_lens_midnight	By midnight
 refresh_from_shop	Освежите из продавнице
 refund	Рефунд
 remove_selected	Уклони изабрано
@@ -474,6 +485,8 @@ route_bill	Рачун
 station_print_pick_first	Прво изаберите део продавнице
 bill_printers_dd	Штампачи за рачун
 bill_printers_dd_n	{n} штампачи за рачун · додирните да бисте променили
+printer_mode_first	Прво то ради
+printer_mode_all	Штампајте на свим
 station_vp_attached	Штампач у прилогу
 station_vp_detached	Штампач је уклоњен са станице
 print_test_page	Одштампајте пробну страницу
@@ -825,6 +838,10 @@ client_template_importing	Увоз {title}…
 client_template_done	Свака ставка од {title} је на вашим ставкама.
 client_template_imported	Додато {d} ставки и {c} категорије од {title}
 cancel	Откажи
+removing	Уклањање…
+removed	Уклоњено
+updating_order	Ажурирање…
+order_updated	Поруџбина ажурирана
 opening_client	Отварање клијента…
 preparing_desk	Припрема стола…
 opening_server	Отварање сервера…
@@ -855,16 +872,7 @@ recent_changes	Недавне промене
 lane_declared_label	Пореска фактура
 lane_owner_label	Новац
 money_lane_bill	Рачун: {lane}
-
-removing	Уклањање…
-removed	Уклоњено
-updating_order	Ажурирање…
-order_updated	Поруџбина ажурирана
 sel_copy	Копирај
 sel_select_all	Изабери све
 sel_copied	Копирано
 nav_loading	Учитавање…
-printer_mode_first	Прво то ради
-printer_mode_all	Штампајте на свим
-slip_columns	Колоне
-slip_col_header	Заглавље

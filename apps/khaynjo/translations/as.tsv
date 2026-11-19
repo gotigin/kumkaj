@@ -115,6 +115,7 @@ bill_line_total	মুঠ
 bill_line_footer	ফুটাৰ
 bill_line_upi	UPI
 bill_logo_picture	ছবি
+bill_logo_help	বহল আৰু উচ্চতা px-ত। খালী থাকিলে ছবিক অনুসৰণ কৰে: এটা খালী হ'লে আকৃতি ৰাখে, দুয়োটা খালী হ'লে নিজৰ আকাৰ লয়; দুয়োটা দিলে ভিতৰত খাপ খায়, কেতিয়াও টানি দীঘল নকৰে। ছবি নাথাকিলে: দেখুওৱা ল'গ'ই নিজৰ উচ্চতা খালী ঠাই হিচাপে ৰাখে; লুকুৱাওকে আঁতৰায়।
 bill_logo_choose	ছবি বাছক
 bill_logo_remove	ছবি আঁতৰাওক
 bill_logo_none	ছবি নাই
@@ -122,10 +123,9 @@ bill_logo_unreadable	এই এপে পঢ়িব পৰা ছবি নহ
 bill_logo_width	বহল (px)
 bill_logo_height	উচ্চতা (px)
 bill_logo_tones	ধূসৰ
+bill_logo_tones_help	নিৰেট: প্ৰতিটো বিন্দু ক'লা বা বগা, স্পষ্ট ল'গ'ৰ বাবে। ছাঁযুক্ত: ধূসৰ সূক্ষ্ম বিন্দুৰ আৰ্হি হয়, ফটো আৰু কোমল ছাঁৰ বাবে।
 bill_logo_solid	নিৰেট
 bill_logo_shaded	ছাঁযুক্ত
-bill_logo_help	বহল আৰু উচ্চতা px-ত। খালী থাকিলে ছবিক অনুসৰণ কৰে: এটা খালী হ'লে আকৃতি ৰাখে, দুয়োটা খালী হ'লে নিজৰ আকাৰ লয়; দুয়োটা দিলে ভিতৰত খাপ খায়, কেতিয়াও টানি দীঘল নকৰে। ছবি নাথাকিলে: দেখুওৱা ল'গ'ই নিজৰ উচ্চতা খালী ঠাই হিচাপে ৰাখে; লুকুৱাওকে আঁতৰায়।
-bill_logo_tones_help	নিৰেট: প্ৰতিটো বিন্দু ক'লা বা বগা, স্পষ্ট ল'গ'ৰ বাবে। ছাঁযুক্ত: ধূসৰ সূক্ষ্ম বিন্দুৰ আৰ্হি হয়, ফটো আৰু কোমল ছাঁৰ বাবে।
 slip_col_width	প্ৰস্থ (mm)
 slip_col_start	আৰম্ভণিৰ ঠাই (px)
 slip_col_end	শেষৰ ঠাই (px)
@@ -566,6 +566,15 @@ print_open	ছাপাওক / খোলক
 reason_amend_ph	সংশোধন / বাতিল / ঘূৰাইৰ কাৰণ
 reason_note_ph	কাৰণ / টোকা (নষ্ট, গণনা, …)
 record_day_close	দিন বন্ধ লিপিবদ্ধ কৰক
+business_day	When does Today reset?
+business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
+biz_day_until_close	Until Day close
+biz_day_midnight	Calendar midnight
+business_day_saved	Business day saved
+report_day_lens	View Today as
+report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
+report_lens_day_close	By Day close
+report_lens_midnight	By midnight
 refresh_from_shop	দোকানৰ পৰা সতেজ কৰক
 refund	ঘূৰাই
 remove_selected	বাছনি কৰা আঁতৰাওক

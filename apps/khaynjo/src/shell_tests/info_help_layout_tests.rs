@@ -287,6 +287,41 @@ mod info_help_layout_tests {
         );
     }
 
+    /// Day close / Reports section tips: titled InfoHelp so ℹ hugs the label.
+    /// A Down-flow WrapLabel + tip-only InfoHelp put ℹ on the next line
+    /// ("When does Today reset?" / "View Today as", 2026-11).
+    #[test]
+    fn business_day_and_report_lens_are_titled_infohelp() {
+        let ui = include_str!("../ui_script.rs");
+        assert!(
+            !ui.contains("h_business_day := WrapLabel{"),
+            "business_day must not use a separate WrapLabel (ℹ lands on next line)"
+        );
+        assert!(
+            !ui.contains("h_report_day_lens := WrapLabel{"),
+            "report_day_lens must not use a separate WrapLabel (ℹ lands on next line)"
+        );
+        assert!(
+            ui.contains("business_day_help := InfoHelp{"),
+            "business_day_help must be a titled InfoHelp"
+        );
+        assert!(
+            ui.contains("report_day_lens_help := InfoHelp{"),
+            "report_day_lens_help must be a titled InfoHelp"
+        );
+        let paint = include_str!("../app/impl_04.rs");
+        assert!(
+            paint.contains("ids!(business_day_help)")
+                && paint.contains("set_title(cx, &s(\"business_day\"))"),
+            "paint must set_title on business_day_help"
+        );
+        assert!(
+            paint.contains("ids!(report_day_lens_help)")
+                && paint.contains("set_title(cx, &s(\"report_day_lens\"))"),
+            "paint must set_title on report_day_lens_help"
+        );
+    }
+
     /// Lock tip rows (DEV.md InfoHelp): Fit caption + tip-only InfoHelp.
     /// Fill caption parks/crops ℹ at the far edge. 12pt + short PIN copy so
     /// tip-only Fit ℹ still hugs on 375 (15pt PASSCODE overflowed).

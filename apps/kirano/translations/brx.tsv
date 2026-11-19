@@ -82,6 +82,8 @@ printer_paper_help	फोरमायनाया बे प्रिन्ट�
 preview_help	बे रसिदखौ गाहायाव सायखनाय प्रिन्टारआव छापा जानाय बादि, बेनि भार्चुवेल कागजआव थार महराव। गुफुर जायगायाव छापा जायो, गोमो कागजआव प्रिन्टारा सौथो हाया, आरो गोबां नङै कालिया दानजायो। गुबै खोनानि नथि खोनाया कागज: रसिदा थानो नांगौ जायगायाव नारसिन। गुलाव रसिदा बांसिन बिलाइआव थाङो। प्रिन्टार सायखनाया सिगां नुथायखौल' सोलायो।
 slip_col_start	जागायनायनि जायगा (px)
 slip_col_end	जोबनायनि जायगा (px)
+slip_columns	खाम्फाफोर
+slip_col_header	मुं
 slip_columns_help	खाम्फा फोरनि गुवारआव बेनि जागायनाय आरो जोबनायनि जायगा दं। लिरा बेनि खाम्फानि सिङाव खोसायो; बिबुंथि गुवारनिफ्राय बायजोआव थानाय बाहागोआ कागजआव आरो सिगाङाव नुनायाव खावनाय जायो।
 bill_total_qty_label	गासै बिबांनि लेबेल
 bill_total_subtotal_label	खाव गासैनि लेबेल
@@ -351,6 +353,15 @@ print_open	प्रिन्ट / खेव
 reason_amend_ph	सुधाय / भोइड / फिन होनायनि जाहोन
 reason_note_ph	जाहोन / नोट (खहा, साननाय, …)
 record_day_close	सान बन्द' लिर
+business_day	When does Today reset?
+business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
+biz_day_until_close	Until Day close
+biz_day_midnight	Calendar midnight
+business_day_saved	Business day saved
+report_day_lens	View Today as
+report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
+report_lens_day_close	By Day close
+report_lens_midnight	By midnight
 refresh_from_shop	दोकाननिफ्राय फिन नुजा
 refund	फिन हो
 remove_selected	सायखजानाय बोखार
@@ -474,6 +485,8 @@ route_bill	बिल
 station_print_pick_first	गिबियाव मोनसे दखान खोन्दो सायख'
 bill_printers_dd	बिलनि प्रिन्टार
 bill_printers_dd_n	बिलनि थाखाय {n} प्रिन्टार · सोलायनो सुदुं
+printer_mode_first	गिबि जाखां
+printer_mode_all	गासैआव प्रिन्ट
 station_vp_attached	प्रिन्टार नांजाबबाय
 station_vp_detached	स्टेसननिफ्राय प्रिन्टार बोखारबाय
 print_test_page	टेस्ट पेग प्रिन्ट खालाम
@@ -825,6 +838,10 @@ client_template_importing	{title} लाबो गासिनो…
 client_template_done	{title} नि मोनफ्रोमबो आइटेमफोरा नोंथांनि आइटेमफोराव दं।
 client_template_imported	{title} निफ्राय {d} आइटेमफोर आरो {c} थाखोफोरखौ दाजाबदेरनाय
 cancel	केन्सेल
+removing	बोखारगासिनो…
+removed	बोखारनाय जाबाय
+updating_order	आपडेट जागासिनो…
+order_updated	अर्डार आपडेट जाबाय
 opening_client	क्लाइन्ट खेव गासिनो…
 preparing_desk	डेस्क साजा गासिनो…
 opening_server	सर्वर खेव गासिनो…
@@ -855,16 +872,7 @@ recent_changes	दाबाव सोलायनाय
 lane_declared_label	कर इनभइस
 lane_owner_label	नगद मेमो
 money_lane_bill	बिल: {lane}
-
-removing	बोखारगासिनो…
-removed	बोखारनाय जाबाय
-updating_order	आपडेट जागासिनो…
-order_updated	अर्डार आपडेट जाबाय
 sel_copy	कपि खालाम
 sel_select_all	गासैखौ सायख
 sel_copied	कपि जादों
 nav_loading	लड जागासिनो दं…
-printer_mode_first	गिबि जाखां
-printer_mode_all	गासैआव प्रिन्ट
-slip_columns	खाम्फाफोर
-slip_col_header	मुं

@@ -330,6 +330,12 @@ Also **Inventory & stock adjust** when you need stock.
 
 Tab **Day close** (also from Day book shortcut) — count drawer vs books.
 
+**When does Today reset?** (Owner) — by default **Until Day close**: Day book
+keeps going past midnight until you tap **Record day close**. Prefer a hard
+clock cut? Choose **Calendar midnight** (local 12:00 am). Same choice on every
+Kumkaj app; see [`BUSINESS_BOOKS.md`](../../../docs/BUSINESS_BOOKS.md)
+§ Business day.
+
 ### 6.4 Reports (screen title: Bank book & P&L)
 
 | Need | Chip / control |

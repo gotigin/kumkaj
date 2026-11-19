@@ -82,6 +82,8 @@ printer_paper_help	నివేదించినది అంటే ఈ ప్�
 preview_help	ఈ స్లిప్ కింద ఎంచుకున్న ప్రింటర్‌పై ముద్రించినట్లే, దాని వర్చువల్ కాగితంపై నిజమైన పరిమాణంలో. తెలుపు చోట ముద్రిస్తుంది, బూడిద కాగితాన్ని ప్రింటర్ చేరదు, మరియు వెలిసిన సిరా కత్తిరించబడుతుంది. తొమ్మిది గడులే కాగితం: స్లిప్ ఉండాల్సిన చోట ట్యాప్ చేయండి. పొడవైన స్లిప్ మరిన్ని పేజీలకు వెళుతుంది. ప్రింటర్‌ను ఎంచుకుంటే ప్రివ్యూ మాత్రమే మారుతుంది.
 slip_col_start	ప్రారంభ స్థలం (px)
 slip_col_end	ముగింపు స్థలం (px)
+slip_columns	నిలువు వరుసలు
+slip_col_header	శీర్షిక
 slip_columns_help	ప్రతి నిలువు వరుస వెడల్పులో దాని ప్రారంభ, ముగింపు స్థలం కలిసి ఉంటాయి. వచనం తన నిలువు వరుసలోనే చుట్టుకుంటుంది; కంటెంట్ వెడల్పు దాటినది కాగితంపైనా ప్రివ్యూలోనూ కత్తిరించబడుతుంది.
 bill_total_qty_label	మొత్తం సంఖ్య లేబుల్
 bill_total_subtotal_label	ఉప మొత్తం లేబుల్
@@ -351,6 +353,15 @@ print_open	ముద్రించు / తెరువు
 reason_amend_ph	సవరణ / రద్దు / వాపసు కారణం
 reason_note_ph	కారణం / గమనిక (నష్టం, లెక్క, …)
 record_day_close	రోజు ముగింపు నమోదు చేయి
+business_day	When does Today reset?
+business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
+biz_day_until_close	Until Day close
+biz_day_midnight	Calendar midnight
+business_day_saved	Business day saved
+report_day_lens	View Today as
+report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
+report_lens_day_close	By Day close
+report_lens_midnight	By midnight
 refresh_from_shop	షాప్ నుండి రిఫ్రెష్
 refund	వాపసు
 remove_selected	ఎంచుకున్నది తొలగించు
@@ -474,6 +485,8 @@ route_bill	బిల్
 station_print_pick_first	ముందు దుకాణంలో ఒక విభాగం ఎంచుకోండి
 bill_printers_dd	బిల్లు ప్రింటర్లు
 bill_printers_dd_n	బిల్లు కోసం {n} ప్రింటర్లు · మార్చడానికి నొక్కండి
+printer_mode_first	మొదట పనిచేసేది
+printer_mode_all	అన్నింటిపై ముద్రించు
 station_vp_attached	ప్రింటర్ జోడించబడింది
 station_vp_detached	స్టేషన్ నుండి ప్రింటర్ తొలగించబడింది
 print_test_page	టెస్ట్ పేజీ ముద్రించు
@@ -825,6 +838,10 @@ client_template_importing	{title} దిగుమతి…
 client_template_done	{title}లోని ప్రతి ఐటమ్ మీ ఐటమ్‌లలో ఉంది.
 client_template_imported	{title} నుండి {d} ఐటమ్‌లు, {c} వర్గాలు జోడించారు
 cancel	రద్దు
+removing	తీసివేస్తోంది…
+removed	తీసివేయబడింది
+updating_order	నవీకరిస్తోంది…
+order_updated	ఆర్డర్ నవీకరించబడింది
 opening_client	క్లయింట్ తెరుస్తోంది…
 preparing_desk	డెస్క్ సిద్ధం చేస్తోంది…
 opening_server	సర్వర్ తెరుస్తోంది…
@@ -855,16 +872,7 @@ recent_changes	ఇటీవలి మార్పులు
 lane_declared_label	పన్ను ఇన్‌వాయిస్
 lane_owner_label	క్యాష్ మెమో
 money_lane_bill	బిల్లు: {lane}
-
-removing	తీసివేస్తోంది…
-removed	తీసివేయబడింది
-updating_order	నవీకరిస్తోంది…
-order_updated	ఆర్డర్ నవీకరించబడింది
 sel_copy	కాపీ
 sel_select_all	అన్నీ ఎంచుకోండి
 sel_copied	కాపీ అయింది
 nav_loading	లోడ్ అవుతోంది…
-printer_mode_first	మొదట పనిచేసేది
-printer_mode_all	అన్నింటిపై ముద్రించు
-slip_columns	నిలువు వరుసలు
-slip_col_header	శీర్షిక

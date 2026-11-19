@@ -191,6 +191,45 @@ impl App {
     /// COD desk (collect a parcel's COD, pay a consignor out, period bill)
     /// and Riders desk (settle what a rider hands in, add a rider).
     fn handle_cod_riders_desks(&mut self, cx: &mut Cx, actions: &Actions) {
+        if self
+            .ui
+            .button(cx, ids!(ops_period_bill_print))
+            .clicked(actions)
+        {
+            let party = self.ui.text_input(cx, ids!(ops_party_input)).text();
+            let result = (|| -> Result<(String, String), String> {
+                let mut st = app_state().lock().unwrap();
+                let msg = st.books_op(BooksOp::PeriodBill {
+                    party_name: party.clone(),
+                })?;
+                if st.device_role != DeviceRole::Client {
+                    st.refresh_reports_facet()?;
+                }
+                let store = st
+                    .store
+                    .as_ref()
+                    .ok_or_else(|| "No store".to_string())?;
+                let party_row = store
+                    .list_customers()?
+                    .into_iter()
+                    .find(|c| c.name.eq_ignore_ascii_case(party.trim()))
+                    .ok_or_else(|| "Party not found".to_string())?;
+                let bill = store
+                    .latest_period_bill_for_party(&party_row.id)?
+                    .ok_or_else(|| "Period bill not found".to_string())?;
+                let text = store.format_period_bill_text(&bill)?;
+                Ok((msg, text))
+            })();
+            match result {
+                Ok((msg, text)) => {
+                    self.print_or_share_receipt(cx, &text);
+                    self.set_status(cx, msg);
+                }
+                Err(e) => self.set_status(cx, e),
+            }
+            self.sync_chrome(cx);
+            return;
+        }
         let collect = self.ui.button(cx, ids!(cod_collect)).clicked(actions)
             || self.ui.text_input(cx, ids!(cod_awb_input)).returned(actions).is_some();
         let remit = self.ui.button(cx, ids!(ops_cod_remit)).clicked(actions);

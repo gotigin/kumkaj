@@ -61,7 +61,7 @@ He was shown a **generic till + books** shell with courier *labels*. He expected
 | He asked about | What it is | Product response |
 |----------------|------------|------------------|
 | Many walk-ins, each with their own parcels | Fast **new booking** loop (next person → weigh → charge → receipt → next) | Core desk UX — not “pick shop SKUs” |
-| Several people in line / status without inventing a “Floor” | Finish person 1 → **Take payment** → **Next booking** → person 2. Pay-later freight → Account + Credit/khata (party), not nameless open carts. After commit, **Ops** lanes are the parcel status board. Do **not** copy Khaynjo Parcel tiles here — see [`CLIENT_TEMPLATES_AND_SETUP.md`](../../../docs/CLIENT_TEMPLATES_AND_SETUP.md) §3 | Booking desk; Ops |
+| Several people in line / status without inventing a “Floor” | **Park** mid-booking → desk clears → serve person 2 → **Board** shows drafts + today’s bookings; tap draft to **resume**. Finish with **Take payment** (draft closes). Pay-later → Account + Credit/khata (party). After commit, **Ops** lanes are parcel status — not Khaynjo Parcel tiles — see [`CLIENT_TEMPLATES_AND_SETUP.md`](../../../docs/CLIENT_TEMPLATES_AND_SETUP.md) §3 | Booking desk; **Board**; Ops |
 | Barcoding / labels | AWB/CN on booking + print/scan barcode | Ops capability on the same booking document |
 | Tracking details | Status on that AWB (booked → handed over / out for delivery → …) | Ops capability; deep carrier-network track may stay with carrier portal until we integrate |
 
@@ -104,6 +104,7 @@ Supplier.
 |---------|--------|--------|
 | Consignment / docket booking | Party, destination, weight, service + receipt | **Ship** — Booking desk |
 | Walk-in flood | Clear cart / “new booking” every customer | **Ship** — Next booking |
+| Mid-booking interrupt | Park unfinished desk → next customer → resume | **Ship** — **Park** + **Board** (dynamic draft/booked cards; not Floor tiles) |
 | Rate master (zone × service × slab) | ₹/kg, first/extra slab | **Ship** — zone master + first/extra kg on Rates |
 | Chargeable weight | Actual / volumetric / slab | **Ship** — Domestic default L×B×H ÷ 5000 (shop setting); Booking desk **Domestic / International** chip switches ÷6000 air for that booking without rewriting Settings; round up 0.5 kg |
 | Measurement units | User-chosen entry units, standard + custom conversions | **Ship** — Moklanjo defaults: booking desk cm + kg, volumetric ÷ 5000, round up to 0.5 kg (Settings → Booking measures / Units). Canonical units doctrine (standard units, chained custom units, anchor recording) for all apps: [`UNITS_AND_CONVERSIONS.md`](../../../docs/UNITS_AND_CONVERSIONS.md) |
@@ -148,7 +149,7 @@ Supplier.
 | COD register + remittance | **Ship** — COD entries + remit batch |
 | Carrier cost / margin on docket | **Ship** — `carrier_cost_paise` + margin helper + bill CSV reconcile |
 | Period party bill | **Ship** — unbilled account dockets → one invoice |
-| Generate bill vs Generate & print | Dual CTA on period bill | **Gap** — UX (C Trunk) |
+| Generate bill vs Generate & print | Dual CTA on period bill | **Ship** — Credit + Ops desks |
 | Bill-reminder / unpaid invoices list | Chase view beyond aging | **Ship** (2026-10-29) — Reports + Parties |
 | Settlement TDS / discount / cheque on party pay | Record cut + instrument | **Ship** (2026-10-29) — Pay selected fields |
 | Print stamp + payment QR (with logo) | Franchise bill face | **Ship** (2026-10-29) — Settings + receipt face |
@@ -184,7 +185,7 @@ Prioritize in this order for Moklanjo:
 
 | Tab | Moklanjo meaning |
 |-----|-----------------|
-| Day book | Today’s position (Owner/Sales home; limited roles unlock onto their first permitted peer) |
+| Day book | Today’s position (Owner/Sales home; limited roles unlock onto their first permitted peer). **Today** follows business day: default **Until Day close** (keeps going past midnight); Owner may pick **Calendar midnight** on Day close — [`BUSINESS_BOOKS.md`](../../../docs/BUSINESS_BOOKS.md) § Business day |
 | Booking | Money in — book parcels |
 | Pay out | Money out — carrier bills & expenses |
 | Rates · Ops · COD · Riders · Bookings · Day close · Reports · Parties · Team · Settings · Lock | Bottom/rail peers (scrollable, role-gated) |
@@ -258,8 +259,9 @@ Courier market comparison (offline tags): [`COURIER_RESEARCH.md`](COURIER_RESEAR
 LAN pilot readiness (both apps): [`PRODUCTION_STATE_FOR_OFFLINE_USAGE.md`](../../../docs/PRODUCTION_STATE_FOR_OFFLINE_USAGE.md).
 Moklanjo pilot sheet: [`LAN_PILOT.md`](LAN_PILOT.md). Store: [`PUBLISH_PLAY_STORE.md`](PUBLISH_PLAY_STORE.md), [`PUBLISH_WINDOWS_STORE.md`](PUBLISH_WINDOWS_STORE.md).
 
-- Per day report · kg + credit/debit · party outstanding · bank posting · monthly · P&L / BS · invoice format  
-- Named carriers & consignors as **parties** (owner enters their own names — never seeded as sample catalogue)
+- Per day report · kg + credit/debit · party outstanding · bank posting · monthly · P&L / BS · invoice format
+- **Shift handover + month lock (2026-11-19):** Day close records mid-day drawer handovers (`shift_closes`, slip print) and lets the Owner set `books_locked_through` (`YYYY-MM`) so finalize / amend / void / expense / purchase / bank posts in locked months are refused. Tax-invoice numbers stay one gap-free per-branch series (`INV-{branch}-{seq}`) in meta — FY-prefixed series is a later option when rollover is designed; month lock does not change numbering.
+- Named carriers & consignors as **parties** (default Moklanjo template stays empty; **Global Pkg App Template** seeds the discovery desk list when applied)
 
 ------------------------------------------------------------------------
 

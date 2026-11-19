@@ -82,6 +82,8 @@ printer_paper_help	အစီရင်ခံထားသည်ဆိုသည်�
 preview_help	ဤဘောက်ချာကို အောက်တွင်ရွေးထားသော ပရင်တာ၌ ပုံနှိပ်မည့်အတိုင်း၊ ၎င်း၏စိတ်ကူးစက္ကူပေါ်တွင် အရွယ်အစားအစစ်ဖြင့် ပြထားသည်။ အဖြူသည် ပုံနှိပ်မည့်နေရာဖြစ်ပြီး မီးခိုးရောင်စက္ကူသည် ပရင်တာ မရောက်နိုင်သောနေရာဖြစ်ကာ မှိန်သောမင်သည် ဖြတ်တောက်ခံရသည်။ အကွက်ကိုးကွက်သည် စက္ကူဖြစ်သည်- ဘောက်ချာထားရမည့်နေရာကို တို့ပါ။ ရှည်သောဘောက်ချာသည် နောက်စာမျက်နှာများသို့ ဆက်သွားသည်။ ပရင်တာရွေးခြင်းသည် အစမ်းကြည့်ကိုသာ ပြောင်းသည်။
 slip_col_start	အစ နေရာလွတ် (px)
 slip_col_end	အဆုံး နေရာလွတ် (px)
+slip_columns	ကော်လံများ
+slip_col_header	ခေါင်းစီး
 slip_columns_help	ကော်လံတစ်ခုစီ၏ အကျယ်တွင် ၎င်း၏ အစနှင့် အဆုံး နေရာလွတ် ပါဝင်သည်။ စာသားသည် မိမိကော်လံအတွင်း ကြောင်းဆင်းသည်; အကြောင်းအရာ အကျယ်ထက် ကျော်လွန်သည့်အပိုင်းကို စက္ကူပေါ်နှင့် အစမ်းကြည့်ရှုမှုတွင် ဖြတ်ထားမည်။
 bill_total_qty_label	စုစုပမာဏတပ်ဆင်ခြင်း label
 bill_total_subtotal_label	အပိုစုစုပမာဏ label
@@ -351,6 +353,15 @@ print_open	ပုံနှိပ် / ဖွင့်ပါ
 reason_amend_ph	ပြင်ဆင်ရန် / ငျွှန်းရန် / ပြန်အမ်းရန် အကြောင်းရင်း
 reason_note_ph	အကြောင်းရင်း / မှတ်စု (ပျက်စီးမှု, အရေအတွက်, …)
 record_day_close	နေ့စွဲပိတ်သိမ်းမှုကိုမှတ်တမ်းတင်မည်
+business_day	When does Today reset?
+business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
+biz_day_until_close	Until Day close
+biz_day_midnight	Calendar midnight
+business_day_saved	Business day saved
+report_day_lens	View Today as
+report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
+report_lens_day_close	By Day close
+report_lens_midnight	By midnight
 refresh_from_shop	ဆိုင်မှပြန်လည်သင့်စွမ်းမော်
 refund	ပြန်အမ်း
 remove_selected	ရွေးထားကိုဖယ်ရှားမည်
@@ -474,6 +485,8 @@ route_bill	ဘေလ်
 station_print_pick_first	ဆိုင်ခန်းကို အရင်ရွေးပါ။
 bill_printers_dd	ဘီလ်အတွက် ပရင်တာများ
 bill_printers_dd_n	ဘီလ်အတွက် {n} ပရင်တာ(များ) · ပြောင်းရန် နှိပ်ပါ
+printer_mode_first	အလုပ်ဖြစ်နေတဲ့ ပရင်တာကို ပထမဆုံး
+printer_mode_all	အားလုံးမှာပုံနှိပ်ပါ
 station_vp_attached	ပရင်တာ ချိတ်ဆက်ပြီး
 station_vp_detached	ပရင်တာကို စတေးရှင်းမှ ဖယ်ရှားပြီး
 print_test_page	စမ်းသပ်စာမျက်နှာကို ပုံနှိပ်မည်
@@ -825,6 +838,10 @@ client_template_importing	{title} ကို တင်သွင်းနေသည
 client_template_done	{title} မှ ပစ္စည်းတိုင်းသည် သင့်ပစ္စည်းများပေါ်တွင် ရှိသည်။
 client_template_imported	{d} ပစ္စည်းများနှင့် {c} အမျိုးအစားများကို {title} မှ ထည့်ထားသည်။
 cancel	ပယ်ဖျက်
+removing	ဖယ်ရှားနေသည်…
+removed	ဖယ်ရှားပြီး
+updating_order	အပ်ဒိတ်လုပ်နေသည်…
+order_updated	အော်ဒါကို အပ်ဒိတ်လုပ်ပြီး
 opening_client	ဖောက်သည်ကိုဖွင့်နေသည်…
 preparing_desk	မယ်ဇာတ်ကောင်ပြင်ဆင်နေသည်…
 opening_server	ဆာဗာကိုဖွင့်နေသည်…
@@ -855,16 +872,7 @@ recent_changes	မကြာသေးမီပြောင်းလဲမှု�
 lane_declared_label	အခွန်ငွေတောင်းခံလွှာ
 lane_owner_label	ငွေသားလက်မှတ်
 money_lane_bill	ဘီးလ်: {lane}
-
-removing	ဖယ်ရှားနေသည်…
-removed	ဖယ်ရှားပြီး
-updating_order	အပ်ဒိတ်လုပ်နေသည်…
-order_updated	အော်ဒါကို အပ်ဒိတ်လုပ်ပြီး
 sel_copy	ကူးယူရန်
 sel_select_all	အားလုံးရွေးရန်
 sel_copied	ကူးယူပြီး
 nav_loading	ဖွင့်နေသည်…
-printer_mode_first	အလုပ်ဖြစ်နေတဲ့ ပရင်တာကို ပထမဆုံး
-printer_mode_all	အားလုံးမှာပုံနှိပ်ပါ
-slip_columns	ကော်လံများ
-slip_col_header	ခေါင်းစီး

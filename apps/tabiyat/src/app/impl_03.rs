@@ -277,6 +277,22 @@ fn fit_inside_system_bars(&mut self, cx: &mut Cx) {
             ids!(reports_today_on),
             books_report_kind == BooksReportKind::Today,
         );
+        let report_day_lens = {
+            let st = app_state().lock().unwrap();
+            st.report_day_lens
+        };
+        self.paint_choice_pair(
+            cx,
+            ids!(report_lens_day_close),
+            ids!(report_lens_day_close_on),
+            matches!(report_day_lens, ReportDayLens::ByDayClose),
+        );
+        self.paint_choice_pair(
+            cx,
+            ids!(report_lens_midnight),
+            ids!(report_lens_midnight_on),
+            matches!(report_day_lens, ReportDayLens::ByCalendarMidnight),
+        );
         self.paint_choice_pair(
             cx,
             ids!(reports_month),

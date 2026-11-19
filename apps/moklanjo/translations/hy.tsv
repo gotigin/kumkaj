@@ -3,6 +3,25 @@ app_tagline	Սուրհանդակային-գործակալական գրքեր + �
 unlock	Ապակողպել
 pin_hint	Սեփականատիրոջ PIN-ը սկսվում է 0000-ով
 sell	Ամրագրում
+nav_board	Board
+board	Board
+park_draft	Park
+board_park_nothing	Nothing to park — add charges or booking details
+board_parked	Parked on Board — desk is clear
+board_draft	Draft
+board_booked	Booked
+board_filter_all	All
+board_filter_draft	Draft
+board_filter_booked	Booked
+board_cols_fmt	{n} col
+board_summary_fmt	{total} cards · {drafts} draft · {booked} booked
+board_card_no_charges	No charges yet
+board_card_charges	charges
+board_card_booked	Booking
+board_draft_gone	That draft is no longer on the Board
+board_draft_closed	That draft was already finished or discarded
+board_discard	Discard
+board_discarded	Draft discarded
 buy	Վճարեք
 books	Օրվա մատյան
 books_help	Այսօրվա դիրքորոշումը. Ամրագրում = ծանրոցներ: Վճարում = փոխադրողի հաշիվներ և ծախսեր: Կողմեր ​​= առաքիչներ և փոխադրողներ:
@@ -183,6 +202,13 @@ device_setup_help	Սերվերը մատյանները պահում է այստե
 currency	Արժույթ
 backup	Պահուստ
 settings_sec_diag	Ախտորոշում
+settings_sec_privacy	Գաղտնիություն
+privacy_policy_help	Գաղտնիություն · PRIVACY.md · moklanjo.com/privacy
+dont_use	Չօգտագործել
+receipt_printers_dd	Տպիչներ այս սարքի վրա · Անդորրագիր
+receipt_printers_dd_n	{n} · Տպիչներ այս սարքի վրա · Անդորրագիր
+label_printers_dd	Տպիչներ այս սարքի վրա · AWB պիտակ
+label_printers_dd_n	{n} · Տպիչներ այս սարքի վրա · AWB պիտակ
 settings_hub_help	Բացեք մեկ բաժին միանգամից — ավելի քիչ ոլորում, ավելի պարզ ընտրություն։
 settings_sec_devices	Այլ սարքեր
 settings_sec_alerts	Ծանուցումներ
@@ -315,6 +341,16 @@ copy_party_ledger_csv	Պատճենել գործընկերոջ մատյանը CSV
 copy_receipt	Պատճենել կտրոնը
 copy_report	Պատճենել հաշվետվությունը
 counted_cash_ph	Հաշված կանխիկը դարակում
+close_shift_print	Close shift and print slip
+shift_handover	Shift handover
+shift_counted_ph	Cash counted at handover
+shift_since	This shift since
+expected_in_drawer	Expected in drawer
+lock_books_through_month	Lock books through month
+books_lock_month_ph	YYYY-MM
+lock_books_month_btn	Lock through this month
+books_locked_none	No month lock yet
+books_locked_through	Locked through
 counter_agency_ph	Հաշվիչ / գործակալության անվանումը (ըստ ցանկության)
 create_backup	Ստեղծել պահուստ
 day_close_summary	Օրվա փակման ամփոփում
@@ -404,6 +440,9 @@ pay_ap_cash	Վճարիր AP կանխիկ
 pay_ap_upi	Վճարիր AP UPI-ով
 period_bill	Ժամանակահատվածի հաշիվ
 period_bill_party	Ժամկետային հաշիվ (կուսակցություն)
+period_bill_generate	Generate bill
+period_bill_generate_print	Generate & print
+booking_bulk_preview	{ok} ready · {bad} bad
 pick_pod_photo	Ընտրեք POD լուսանկարը
 print_awb_label	Տպել AWB պիտակը
 print_open	Տպել / բացել
@@ -612,6 +651,19 @@ attachments_last_expense	Կցորդներ (վերջին ծախս)
 credit_limit_heading	Վարկի սահման (ընտրված / անվանված գործընկեր)
 pay_selected_heading	Վճարիր ընտրվածը (մարիր պարտքը / վերցրու կանխավճար)
 write_off_heading	Դուրս գրում (մաքրել առանց վճարման)
+adjustment_notes_heading	Adjustment notes
+adj_note_amount_ph	Amount
+adj_note_reason_ph	Reason (required)
+adj_note_awb_ph	Related AWB (optional)
+credit_note_btn	Credit note
+debit_note_btn	Debit note
+bill_later_heading	Bill later (post-booking extra)
+bill_later_amount_ph	Extra amount
+bill_later_party_ph	Party (only if booking has none)
+bill_later_btn	Bill later
+bill_later_extra_oda	ODA
+bill_later_extra_packing	Packing
+bill_later_extra_other	Other
 pay_ap_heading	Վճարիր ինչ պարտք ենք նրանց (AP)
 country_tax	Երկիր և հարկ
 extra_tills_heading	Լրացուցիչ դրամարկղներ
@@ -723,6 +775,23 @@ onboard_book_tmpl	Book · {} — ավելացրեք ապրանքներ և սկզ
 onboard_template_tmpl	Ցանկության դեպքում անվանեք տեղը, ապա ընտրեք ինչպես սկսել։
 tmpl_blurb	Սուրհանդակային գրքեր և ամրագրման գրասեղան՝ առաքիչներ, փոխադրողներ, օրվա գիրք, AWB:
 tmpl_how	Գրանցեք ծանրոցներ գրասեղանի վրա; Օրվա գիրք այսօրվա համար; ներդիրներ դրույքաչափերի, կուսակցությունների, հաշվետվությունների համար:
+app_template_heading	Shop templates
+app_template_blurb	Pick a starter desk. Skip leaves parties empty.
+app_template_skip	Skip for now
+app_template_status	Server ready — import a template, or skip
+app_template_importing	Applying {title}…
+app_template_public_hdr	Templates
+app_template_import_selected	Import selected
+public_tmpl_help	Bundled agency packs for this shop. No download needed.
+business_day	When does Today reset?
+business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
+biz_day_until_close	Until Day close
+biz_day_midnight	Calendar midnight
+business_day_saved	Business day saved
+report_day_lens	View Today as
+report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
+report_lens_day_close	By Day close
+report_lens_midnight	By midnight
 trk_booked	Ամրագրված
 trk_picked_up	Վերցրեց
 trk_in_transit	Տրանզիտում
@@ -846,10 +915,3 @@ sel_copy	Պատճենել
 sel_select_all	Ընտրել բոլորը
 sel_copied	Պատճենվեց
 nav_loading	Բեռնվում է…
-settings_sec_privacy	Գաղտնիություն
-privacy_policy_help	Գաղտնիություն · PRIVACY.md · moklanjo.com/privacy
-dont_use	Չօգտագործել
-receipt_printers_dd	Տպիչներ այս սարքի վրա · Անդորրագիր
-receipt_printers_dd_n	{n} · Տպիչներ այս սարքի վրա · Անդորրագիր
-label_printers_dd	Տպիչներ այս սարքի վրա · AWB պիտակ
-label_printers_dd_n	{n} · Տպիչներ այս սարքի վրա · AWB պիտակ

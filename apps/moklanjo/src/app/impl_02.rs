@@ -110,6 +110,9 @@ impl App {
                             let _ = st.refresh_reports_facet();
                         }
                     }
+                    Screen::Board => {
+                        let _ = st.refresh_today_board();
+                    }
                     _ => {}
                 }
             }
@@ -775,6 +778,7 @@ impl App {
             } else {
                 format!("AWB {} — stick label, then Next booking", st.last_awb)
             };
+            let bulk_preview = st.booking_bulk_preview_line.clone();
             let show_next = !st.last_awb.is_empty();
             drop(st);
             self.ui
@@ -795,6 +799,9 @@ impl App {
             self.ui
                 .widget(cx, ids!(last_awb_label))
                 .set_text(cx, &plain_display_text(&awb_line));
+            self.ui
+                .widget(cx, ids!(booking_bulk_preview))
+                .set_text(cx, &plain_display_text(&bulk_preview));
             self.ui
                 .button(cx, ids!(next_booking_btn))
                 .set_visible(cx, show_next);
@@ -1206,6 +1213,25 @@ impl App {
             self.set_report_rows(cx, ids!(payable_open_bills), ap_rows);
         }
         {
+            let rows = {
+                let st = app_state().lock().unwrap();
+                match (&st.selected_customer_id, st.store.as_ref()) {
+                    (Some(id), Some(store)) => {
+                        let text = store
+                            .adjustment_notes_text_for_party(id)
+                            .unwrap_or_else(|e| e);
+                        text.lines()
+                            .map(|l| ReportRow::Line(l.to_string()))
+                            .collect::<Vec<_>>()
+                    }
+                    _ => vec![ReportRow::Line(
+                        "(pick a party for adjustment notes)".into(),
+                    )],
+                }
+            };
+            self.set_report_rows(cx, ids!(adjustment_notes_list), rows);
+        }
+        {
             // Bank reconciliation: book vs statement-cleared, plus the
             // uncleared movements numbered for the tick-off input.
             let recon_rows = {
@@ -1491,7 +1517,11 @@ impl App {
                 .and_then(|s| s.saved_org_name().ok())
                 .unwrap_or_default();
             let tmpl = entity_template::resolve(&st.entity_template_id);
-            let tmpl_line = tmpl.title.to_string();
+            let tmpl_line = if tmpl.blurb.is_empty() {
+                tmpl.title.to_string()
+            } else {
+                format!("{} — {}", tmpl.title, tmpl.blurb)
+            };
             let onboard_status = if st.onboarding_complete {
                 st.t("setup_complete")
             } else {
@@ -1503,7 +1533,11 @@ impl App {
             };
             let cust_ph = st.t("customer_name_ph");
             let new_cust_ph = st.t("new_customer_ph");
-            let tmpl_blurb_s = st.t("tmpl_blurb");
+            let tmpl_blurb_s = if tmpl.id == entity_template::MOKLANJO.id {
+                st.t("tmpl_blurb")
+            } else {
+                tmpl.blurb.to_string()
+            };
             drop(st);
             self.ui
                 .widget(cx, ids!(more_mode_hint))
@@ -1565,6 +1599,55 @@ impl App {
             {
                 // Raw rows — ReportText paints per-Kv eyes + masks at draw time.
                 self.set_report_rows(cx, ids!(day_close_label), parse_report(&day_close));
+            }
+            {
+                let rows = {
+                    let st = app_state().lock().unwrap();
+                    match (st.screen, st.store.as_ref(), st.session.as_ref()) {
+                        (Screen::DayClose, Some(store), Some(actor)) => store
+                            .shift_so_far(actor)
+                            .map(|s| {
+                                vec![
+                                    ReportRow::Head(format!(
+                                        "{} {}",
+                                        st.t("shift_since"),
+                                        s.started_at.get(11..16).unwrap_or("")
+                                    )),
+                                    ReportRow::Kv(st.t("sales"), s.bills.to_string()),
+                                    ReportRow::Kv(st.t("cash"), st.money(Money(s.cash_paise))),
+                                    ReportRow::Kv(
+                                        st.t("expected_in_drawer"),
+                                        st.money(Money(s.expected_paise)),
+                                    ),
+                                ]
+                            })
+                            .unwrap_or_default(),
+                        _ => Vec::new(),
+                    }
+                };
+                self.set_report_rows(cx, ids!(shift_so_far_label), rows);
+            }
+            {
+                let rows = {
+                    let st = app_state().lock().unwrap();
+                    match (st.screen, st.store.as_ref()) {
+                        (Screen::DayClose, Some(store)) => {
+                            if let Ok(Some(m)) = store.books_locked_through() {
+                                vec![ReportRow::Kv(
+                                    st.t("books_locked_through"),
+                                    m,
+                                )]
+                            } else {
+                                vec![ReportRow::Kv(
+                                    st.t("books_locked_through"),
+                                    st.t("books_locked_none"),
+                                )]
+                            }
+                        }
+                        _ => Vec::new(),
+                    }
+                };
+                self.set_report_rows(cx, ids!(books_locked_through_label), rows);
             }
             // Books home: each figure has its own eye (persisted).
             {
@@ -1720,6 +1803,19 @@ impl App {
                 .set_visible(cx, reports_nav == ReportsNav::Riders);
             if ops && screen == Screen::Reports {
                 self.paint_ops_board(cx);
+            }
+            if screen == Screen::Board {
+                self.paint_today_board(cx);
+            }
+            if screen == Screen::Pos {
+                let (dirty, label) = {
+                    let st = app_state().lock().unwrap();
+                    (st.booking_desk_is_dirty(), st.t("park_draft"))
+                };
+                self.ui.button(cx, ids!(park_draft_btn)).set_text(cx, &label);
+                self.ui
+                    .button(cx, ids!(park_draft_btn))
+                    .set_enabled(cx, dirty);
             }
             self.ui
                 .widget(cx, ids!(inventory_label))

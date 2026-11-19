@@ -3,6 +3,25 @@ app_tagline	कूरियर एजेंसी के बही + बुक�
 unlock	खोलीं
 pin_hint	मालिक के PIN शुरू में 0000 बा
 sell	बुकिंग
+nav_board	Board
+board	Board
+park_draft	Park
+board_park_nothing	Nothing to park — add charges or booking details
+board_parked	Parked on Board — desk is clear
+board_draft	Draft
+board_booked	Booked
+board_filter_all	All
+board_filter_draft	Draft
+board_filter_booked	Booked
+board_cols_fmt	{n} col
+board_summary_fmt	{total} cards · {drafts} draft · {booked} booked
+board_card_no_charges	No charges yet
+board_card_charges	charges
+board_card_booked	Booking
+board_draft_gone	That draft is no longer on the Board
+board_draft_closed	That draft was already finished or discarded
+board_discard	Discard
+board_discarded	Draft discarded
 buy	भुगतान
 books	रोज के बही
 books_help	आज के हालत। बुकिंग = आइल पार्सल। भुगतान = ढोवे वाला के बिल आ खरचा। पार्टी = भेजे वाला आ ढोवे वाला।
@@ -183,6 +202,13 @@ device_setup_help	सर्वर बही इहें राखेला। �
 currency	मुद्रा
 backup	बैकअप
 settings_sec_diag	जाँच
+settings_sec_privacy	गोपनीयता
+privacy_policy_help	गोपनीयता · PRIVACY.md · moklanjo.com/privacy
+dont_use	इस्तेमाल मत करीं
+receipt_printers_dd	एह डिवाइस के प्रिंटर · रसीद
+receipt_printers_dd_n	{n} · एह डिवाइस के प्रिंटर · रसीद
+label_printers_dd	एह डिवाइस के प्रिंटर · AWB लेबल
+label_printers_dd_n	{n} · एह डिवाइस के प्रिंटर · AWB लेबल
 settings_hub_help	एक बेर में एगो हिस्सा खोलीं — कम स्क्रॉल, साफ चुनाव।
 settings_sec_devices	दोसर डिवाइस
 settings_sec_alerts	सूचना
@@ -315,6 +341,16 @@ copy_party_ledger_csv	पार्टी खाता CSV कॉपी करी
 copy_receipt	रसीद कॉपी करीं
 copy_report	रिपोर्ट कॉपी करीं
 counted_cash_ph	दराज में गिनल नकद
+close_shift_print	Close shift and print slip
+shift_handover	Shift handover
+shift_counted_ph	Cash counted at handover
+shift_since	This shift since
+expected_in_drawer	Expected in drawer
+lock_books_through_month	Lock books through month
+books_lock_month_ph	YYYY-MM
+lock_books_month_btn	Lock through this month
+books_locked_none	No month lock yet
+books_locked_through	Locked through
 counter_agency_ph	काउंटर / एजेंसी के नाम (मरजी के)
 create_backup	बैकअप बनाईं
 day_close_summary	दिन बंद के सारांश
@@ -404,6 +440,9 @@ pay_ap_cash	AP नकद से दीं
 pay_ap_upi	AP UPI से दीं
 period_bill	समय के बिल
 period_bill_party	समय के बिल (पार्टी)
+period_bill_generate	Generate bill
+period_bill_generate_print	Generate & print
+booking_bulk_preview	{ok} ready · {bad} bad
 pick_pod_photo	POD फोटो चुनीं
 print_awb_label	AWB लेबल छापीं
 print_open	छापीं / खोलीं
@@ -612,6 +651,19 @@ attachments_last_expense	संलग्न (पिछला खरचा)
 credit_limit_heading	उधार सीमा (चुनल / नाम दिहल पार्टी)
 pay_selected_heading	चुनल के भुगतान (करजा मिलाईं / अगाऊ लीं)
 write_off_heading	माफी (बिना भुगतान साफ)
+adjustment_notes_heading	Adjustment notes
+adj_note_amount_ph	Amount
+adj_note_reason_ph	Reason (required)
+adj_note_awb_ph	Related AWB (optional)
+credit_note_btn	Credit note
+debit_note_btn	Debit note
+bill_later_heading	Bill later (post-booking extra)
+bill_later_amount_ph	Extra amount
+bill_later_party_ph	Party (only if booking has none)
+bill_later_btn	Bill later
+bill_later_extra_oda	ODA
+bill_later_extra_packing	Packing
+bill_later_extra_other	Other
 pay_ap_heading	जवन हमनी के देवे के बा ऊ दीं (AP)
 country_tax	देस आ कर
 extra_tills_heading	अतिरिक्त टिल
@@ -723,6 +775,23 @@ onboard_book_tmpl	बही · {} — सामान आ शुरू के �
 onboard_template_tmpl	चाहीं त जगह के नाम राखीं, फेर कइसे शुरू करब ई चुनीं।
 tmpl_blurb	कूरियर बही आ बुकिंग डेस्क: भेजे वाला, ढोवे वाला, रोज के बही, AWB।
 tmpl_how	डेस्क पर पार्सल बुक करीं; आज खातिर रोज के बही; दर, पार्टी, रिपोर्ट के टैब।
+app_template_heading	Shop templates
+app_template_blurb	Pick a starter desk. Skip leaves parties empty.
+app_template_skip	Skip for now
+app_template_status	Server ready — import a template, or skip
+app_template_importing	Applying {title}…
+app_template_public_hdr	Templates
+app_template_import_selected	Import selected
+public_tmpl_help	Bundled agency packs for this shop. No download needed.
+business_day	When does Today reset?
+business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
+biz_day_until_close	Until Day close
+biz_day_midnight	Calendar midnight
+business_day_saved	Business day saved
+report_day_lens	View Today as
+report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
+report_lens_day_close	By Day close
+report_lens_midnight	By midnight
 trk_booked	बुक भइल
 trk_picked_up	उठावल
 trk_in_transit	रास्ता में
@@ -846,10 +915,3 @@ sel_copy	कॉपी करीं
 sel_select_all	सभ चुनीं
 sel_copied	कॉपी हो गइल
 nav_loading	लोड हो रहल बा…
-settings_sec_privacy	गोपनीयता
-privacy_policy_help	गोपनीयता · PRIVACY.md · moklanjo.com/privacy
-dont_use	इस्तेमाल मत करीं
-receipt_printers_dd	एह डिवाइस के प्रिंटर · रसीद
-receipt_printers_dd_n	{n} · एह डिवाइस के प्रिंटर · रसीद
-label_printers_dd	एह डिवाइस के प्रिंटर · AWB लेबल
-label_printers_dd_n	{n} · एह डिवाइस के प्रिंटर · AWB लेबल

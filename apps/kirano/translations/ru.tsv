@@ -82,6 +82,8 @@ printer_paper_help	Сообщённая — это бумага, на котор
 preview_help	Этот чек так, как он печатается на принтере, выбранном ниже, в реальном размере на его виртуальной бумаге. Белое — там, где он печатает, серая бумага вне досягаемости принтера, а бледные чернила обрезаются. Девять квадратов — это бумага: нажмите там, где должен быть чек. Длинный чек продолжается на следующих страницах. Выбор принтера меняет только предпросмотр.
 slip_col_start	Отступ в начале (px)
 slip_col_end	Отступ в конце (px)
+slip_columns	Столбцы
+slip_col_header	Заголовок
 slip_columns_help	Ширина каждого столбца включает его отступы в начале и в конце. Текст переносится внутри своего столбца; всё, что выходит за ширину содержимого, обрезается — на бумаге и в предпросмотре.
 bill_total_qty_label	Подпись итога кол-ва
 bill_total_subtotal_label	Подпись подытога
@@ -351,6 +353,15 @@ print_open	Печать / открыть
 reason_amend_ph	Причина исправления / аннуляции / возврата
 reason_note_ph	Причина / заметка (списание, учёт, …)
 record_day_close	Записать закрытие дня
+business_day	When does Today reset?
+business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
+biz_day_until_close	Until Day close
+biz_day_midnight	Calendar midnight
+business_day_saved	Business day saved
+report_day_lens	View Today as
+report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
+report_lens_day_close	By Day close
+report_lens_midnight	By midnight
 refresh_from_shop	Обновить из магазина
 refund	Возврат
 remove_selected	Удалить выбранное
@@ -474,6 +485,8 @@ route_bill	Счёт
 station_print_pick_first	Сначала выберите секцию магазина
 bill_printers_dd	Принтеры для чека
 bill_printers_dd_n	{n} принтер(ов) для чека · коснитесь, чтобы изменить
+printer_mode_first	Первый рабочий
+printer_mode_all	Печать на всех
 station_vp_attached	Принтер прикреплён
 station_vp_detached	Принтер снят со станции
 print_test_page	Печать пробной страницы
@@ -825,6 +838,10 @@ client_template_importing	Импорт {title}…
 client_template_done	Каждый товар из {title} уже в ваших товарах.
 client_template_imported	Добавлено {d} товаров и {c} категорий из {title}
 cancel	Отмена
+removing	Удаление…
+removed	Удалено
+updating_order	Обновление…
+order_updated	Заказ обновлён
 opening_client	Открытие клиента…
 preparing_desk	Подготовка стола…
 opening_server	Открытие сервера…
@@ -855,16 +872,7 @@ recent_changes	Последние изменения
 lane_declared_label	Налоговый счёт
 lane_owner_label	Кассовый чек
 money_lane_bill	Билл: {lane}
-
-removing	Удаление…
-removed	Удалено
-updating_order	Обновление…
-order_updated	Заказ обновлён
 sel_copy	Копировать
 sel_select_all	Выделить всё
 sel_copied	Скопировано
 nav_loading	Загрузка…
-printer_mode_first	Первый рабочий
-printer_mode_all	Печать на всех
-slip_columns	Столбцы
-slip_col_header	Заголовок

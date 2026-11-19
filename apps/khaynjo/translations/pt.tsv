@@ -115,6 +115,7 @@ bill_line_total	Total
 bill_line_footer	Rodapé
 bill_line_upi	UPI
 bill_logo_picture	Imagem
+bill_logo_help	Largura e altura em px. Vazio segue a imagem: um vazio mantém a forma, ambos vazios usam o tamanho dela; ambos definidos encaixam-na dentro, nunca esticada. Sem imagem: um logotipo visível mantém a sua altura como espaço em branco; Ocultar remove-o.
 bill_logo_choose	Escolher imagem
 bill_logo_remove	Remover imagem
 bill_logo_none	Sem imagem
@@ -122,10 +123,9 @@ bill_logo_unreadable	Não é uma imagem que a app consiga ler
 bill_logo_width	Largura (px)
 bill_logo_height	Altura (px)
 bill_logo_tones	Cinzas
+bill_logo_tones_help	Sólido: cada ponto preto ou branco, para logotipos nítidos. Sombreado: os cinzas tornam-se padrões de pontos finos, para fotos e sombras suaves.
 bill_logo_solid	Sólido
 bill_logo_shaded	Sombreado
-bill_logo_help	Largura e altura em px. Vazio segue a imagem: um vazio mantém a forma, ambos vazios usam o tamanho dela; ambos definidos encaixam-na dentro, nunca esticada. Sem imagem: um logotipo visível mantém a sua altura como espaço em branco; Ocultar remove-o.
-bill_logo_tones_help	Sólido: cada ponto preto ou branco, para logotipos nítidos. Sombreado: os cinzas tornam-se padrões de pontos finos, para fotos e sombras suaves.
 slip_col_width	Largura (mm)
 slip_col_start	Espaço inicial (px)
 slip_col_end	Espaço final (px)
@@ -566,6 +566,15 @@ print_open	Imprimir / abrir
 reason_amend_ph	Motivo de alteração / anulação / reembolso
 reason_note_ph	Motivo / nota (perda, contagem, …)
 record_day_close	Registar fecho do dia
+business_day	When does Today reset?
+business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
+biz_day_until_close	Until Day close
+biz_day_midnight	Calendar midnight
+business_day_saved	Business day saved
+report_day_lens	View Today as
+report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
+report_lens_day_close	By Day close
+report_lens_midnight	By midnight
 refresh_from_shop	Atualizar da loja
 refund	Reembolso
 remove_selected	Remover selecionado

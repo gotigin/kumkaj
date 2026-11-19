@@ -69,14 +69,14 @@ Same product also covers booking desk, rates × kg, tracking / POD, COD, carrier
 
 ------------------------------------------------------------------------
 
-## Example party kinds (illustrative — not seeded)
+## Example party kinds
 
-Owners enter their own names. Typical shapes:
+Owners enter their own names on the empty **Moklanjo** start template. Typical shapes:
 
 - **Carriers:** national / regional courier brands the agency hands bags to  
 - **Consignors:** shops and traders who give parcels to the agency  
 
-Do **not** ship sample party lists in the app.
+Authored shop pack **Global Pkg App Template** (`entity_template::GLOBAL_PKG`) seeds the desk list from discovery when the owner applies it in Settings → Product — not as the default empty agency face.
 
 ------------------------------------------------------------------------
 

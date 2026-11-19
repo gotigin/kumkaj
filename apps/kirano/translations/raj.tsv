@@ -82,6 +82,8 @@ printer_paper_help	बतायोड़ो बो कागद है जिण
 preview_help	आ पर्ची जियां नीचै चुण्योड़ा प्रिंटर माथै छपै, उणरै वर्चुअल कागद माथै असली नाप में। धोळी जगां माथै छपै, भूरै कागद तांई प्रिंटर कोनी पूगै, अर फीकी स्याही कट जावै। नौ खाना कागद है: जठै पर्ची रैवणी चाईजै उठै टैप करो। लांबी पर्ची बेसी पानां माथै जावै। प्रिंटर चुणण सूं फगत पूर्वावलोकन बदळै।
 slip_col_start	सरुआत री जगां (px)
 slip_col_end	छेहली जगां (px)
+slip_columns	स्तंभ
+slip_col_header	हेडर
 slip_columns_help	हर स्तंभ री चौड़ाई में उणरी सरुआत अर छेहली जगां सामल है। लिखावट आपरै स्तंभ रै मांय लिपटै; सामग्री री चौड़ाई सूं बारै जको है वो कागज अर पूर्वावलोकन दोनूं में कट जावै।
 bill_total_qty_label	कुल लेबल री मात्रा
 bill_total_subtotal_label	उप कुल लेबल
@@ -351,6 +353,15 @@ print_open	छापो/खोलो
 reason_amend_ph	संशोधन / शून्य / वापसी रो कारण
 reason_note_ph	कारण / नोट (बर्बादी, गिणती, ...)
 record_day_close	रिकॉर्ड दिन बंद
+business_day	When does Today reset?
+business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
+biz_day_until_close	Until Day close
+biz_day_midnight	Calendar midnight
+business_day_saved	Business day saved
+report_day_lens	View Today as
+report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
+report_lens_day_close	By Day close
+report_lens_midnight	By midnight
 refresh_from_shop	दुकान सूं ताजा करो
 refund	रिफंड
 remove_selected	चुणीज्योड़ा नै हटाओ
@@ -474,6 +485,8 @@ route_bill	बिल
 station_print_pick_first	पैली एक दुकान रो खंड चुणो
 bill_printers_dd	बिल रै वास्तै प्रिंटर
 bill_printers_dd_n	बिल रै वास्तै {n} प्रिंटर · बदलबा रै वास्तै टैप करो
+printer_mode_first	पैली ओ काम करै है
+printer_mode_all	सगळा माथै प्रिंट करो
 station_vp_attached	प्रिंटर लगायोड़ो है
 station_vp_detached	स्टेशन सूं प्रिंटर हटा दियो गयो
 print_test_page	एक परीक्षण पन्ना छापो
@@ -825,6 +838,10 @@ client_template_importing	{title} आयात कर रिया हां...
 client_template_done	{title} री हरेक चीज थारी चीजां माथै है।
 client_template_imported	{title} सूं {d} आइटम अर {c} श्रेणियां जोड़ी गई
 cancel	रद्द करो
+removing	हटाय रिया हां…
+removed	हटा दियो
+updating_order	अपडेट हो रियो है…
+order_updated	ऑर्डर अपडेट हो ग्यो
 opening_client	क्लाइंट खोल रियो है...
 preparing_desk	डेस्क तैयार कर री है...
 opening_server	सर्वर खोल रियो है...
@@ -855,16 +872,7 @@ recent_changes	हाल रा बदळाव
 lane_declared_label	कर चालान
 lane_owner_label	कैश मेमो
 money_lane_bill	बिल: {lane}
-
-removing	हटाय रिया हां…
-removed	हटा दियो
-updating_order	अपडेट हो रियो है…
-order_updated	ऑर्डर अपडेट हो ग्यो
 sel_copy	कॉपी करो
 sel_select_all	सगळो चुणो
 sel_copied	कॉपी होयग्यो
 nav_loading	लोड हो रह्यो है…
-printer_mode_first	पैली ओ काम करै है
-printer_mode_all	सगळा माथै प्रिंट करो
-slip_columns	स्तंभ
-slip_col_header	हेडर

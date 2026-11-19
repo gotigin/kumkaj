@@ -261,6 +261,19 @@ fn paint_static_texts(&mut self, cx: &mut Cx) {
             help.set_nav_icon(cx, NavTab::DayClose);
             help.set_tip(&plain_display_text(&s("day_close_help")));
         }
+        {
+            let help = self.ui.widget(cx, ids!(business_day_help)).as_info_help();
+            help.set_title(cx, &s("business_day"));
+            help.set_tip(&plain_display_text(&s("business_day_help")));
+        }
+        for path in [ids!(biz_day_until_close), ids!(biz_day_until_close_on)] {
+            self.ui
+                .button(cx, path)
+                .set_text(cx, &s("biz_day_until_close"));
+        }
+        for path in [ids!(biz_day_midnight), ids!(biz_day_midnight_on)] {
+            self.ui.button(cx, path).set_text(cx, &s("biz_day_midnight"));
+        }
         self.ui
             .widget(cx, ids!(h_book_add_product))
             .set_text(cx, &plain_display_text(&s("book_add_product")));
@@ -704,10 +717,61 @@ fn paint_static_texts(&mut self, cx: &mut Cx) {
             .set_text(cx, &s("set_credit_limit"));
         self.ui
             .button(cx, ids!(credit_period_bill))
-            .set_text(cx, &s("period_bill"));
+            .set_text(cx, &s("period_bill_generate"));
+        self.ui
+            .button(cx, ids!(credit_period_bill_print))
+            .set_text(cx, &s("period_bill_generate_print"));
         self.ui
             .button(cx, ids!(credit_writeoff))
             .set_text(cx, &s("write_off_nil"));
+        self.ui
+            .widget(cx, ids!(h_adjustment_notes_heading))
+            .set_text(cx, &plain_display_text(&s("adjustment_notes_heading")));
+        self.ui
+            .text_input(cx, ids!(adj_note_amount_input))
+            .set_empty_text(cx, s("adj_note_amount_ph"));
+        self.ui
+            .text_input(cx, ids!(adj_note_reason_input))
+            .set_empty_text(cx, s("adj_note_reason_ph"));
+        self.ui
+            .text_input(cx, ids!(adj_note_awb_input))
+            .set_empty_text(cx, s("adj_note_awb_ph"));
+        self.ui
+            .button(cx, ids!(credit_note_btn))
+            .set_text(cx, &s("credit_note_btn"));
+        self.ui
+            .button(cx, ids!(debit_note_btn))
+            .set_text(cx, &s("debit_note_btn"));
+        self.ui
+            .widget(cx, ids!(h_bill_later_heading))
+            .set_text(cx, &plain_display_text(&s("bill_later_heading")));
+        self.ui
+            .text_input(cx, ids!(bill_later_amount_input))
+            .set_empty_text(cx, s("bill_later_amount_ph"));
+        self.ui
+            .text_input(cx, ids!(sale_extra_party_input))
+            .set_empty_text(cx, s("bill_later_party_ph"));
+        self.ui
+            .button(cx, ids!(bill_later_oda))
+            .set_text(cx, &s("bill_later_extra_oda"));
+        self.ui
+            .button(cx, ids!(bill_later_oda_on))
+            .set_text(cx, &s("bill_later_extra_oda"));
+        self.ui
+            .button(cx, ids!(bill_later_packing))
+            .set_text(cx, &s("bill_later_extra_packing"));
+        self.ui
+            .button(cx, ids!(bill_later_packing_on))
+            .set_text(cx, &s("bill_later_extra_packing"));
+        self.ui
+            .button(cx, ids!(bill_later_other))
+            .set_text(cx, &s("bill_later_extra_other"));
+        self.ui
+            .button(cx, ids!(bill_later_other_on))
+            .set_text(cx, &s("bill_later_extra_other"));
+        self.ui
+            .button(cx, ids!(bill_later_btn))
+            .set_text(cx, &s("bill_later_btn"));
         self.ui
             .button(cx, ids!(csv_copy_day))
             .set_text(cx, &s("copy_day_book_csv"));
@@ -747,14 +811,32 @@ fn paint_static_texts(&mut self, cx: &mut Cx) {
             .button(cx, ids!(customer_use))
             .set_text(cx, &s("add_use_name"));
         self.ui
+            .button(cx, ids!(shift_close_btn))
+            .set_text(cx, &s("close_shift_print"));
+        self.ui
+            .button(cx, ids!(books_lock_month_btn))
+            .set_text(cx, &s("lock_books_month_btn"));
+        self.ui
             .button(cx, ids!(day_close_commit))
             .set_text(cx, &s("record_day_close"));
         self.ui
             .button(cx, ids!(day_close_copy))
             .set_text(cx, &s("copy_day_close"));
         self.ui
+            .text_input(cx, ids!(shift_counted_input))
+            .set_empty_text(cx, s("shift_counted_ph"));
+        self.ui
+            .text_input(cx, ids!(books_lock_month_input))
+            .set_empty_text(cx, s("books_lock_month_ph"));
+        self.ui
             .text_input(cx, ids!(day_close_counted_input))
             .set_empty_text(cx, s("counted_cash_ph"));
+        self.ui
+            .widget(cx, ids!(h_shift_close))
+            .set_text(cx, &plain_display_text(&s("shift_handover")));
+        self.ui
+            .widget(cx, ids!(h_books_lock))
+            .set_text(cx, &plain_display_text(&s("lock_books_through_month")));
         self.ui
             .button(cx, ids!(day_close_from_sales))
             .set_text(cx, &s("day_close_summary"));
@@ -1004,7 +1086,10 @@ fn paint_static_texts(&mut self, cx: &mut Cx) {
             .set_text(cx, &s("settle_rider_cod"));
         self.ui
             .button(cx, ids!(ops_period_bill))
-            .set_text(cx, &s("period_bill_party"));
+            .set_text(cx, &s("period_bill_generate"));
+        self.ui
+            .button(cx, ids!(ops_period_bill_print))
+            .set_text(cx, &s("period_bill_generate_print"));
         self.ui
             .button(cx, ids!(ops_pod_pick))
             .set_text(cx, &s("pick_pod_photo"));

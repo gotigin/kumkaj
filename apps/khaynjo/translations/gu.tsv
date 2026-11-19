@@ -115,6 +115,7 @@ bill_line_total	કુલ
 bill_line_footer	ફૂટર
 bill_line_upi	UPI
 bill_logo_picture	ચિત્ર
+bill_logo_help	પહોળાઈ અને ઊંચાઈ px માં. ખાલી રાખો તો ચિત્ર મુજબ: એક ખાલી હોય તો આકાર જળવાય, બંને ખાલી હોય તો તેનું પોતાનું માપ; બંને ભરેલાં હોય તો અંદર સમાઈ જાય, ક્યારેય ખેંચાય નહીં. ચિત્ર ન હોય તો: બતાવેલો લોગો તેની ઊંચાઈ ખાલી જગ્યા તરીકે રાખે; છુપાવો તેને દૂર કરે.
 bill_logo_choose	ચિત્ર પસંદ કરો
 bill_logo_remove	ચિત્ર દૂર કરો
 bill_logo_none	કોઈ ચિત્ર નથી
@@ -122,10 +123,9 @@ bill_logo_unreadable	આ એપ વાંચી શકે એવું ચિત
 bill_logo_width	પહોળાઈ (px)
 bill_logo_height	ઊંચાઈ (px)
 bill_logo_tones	ભૂખરા
+bill_logo_tones_help	ઘટ્ટ: દરેક બિંદુ કાળું કે સફેદ, સ્પષ્ટ લોગો માટે. છાયાવાળું: ભૂખરા રંગ ઝીણા બિંદુઓની ભાતમાં બદલાય, ફોટા અને હળવી છાયા માટે.
 bill_logo_solid	ઘટ્ટ
 bill_logo_shaded	છાયાવાળું
-bill_logo_help	પહોળાઈ અને ઊંચાઈ px માં. ખાલી રાખો તો ચિત્ર મુજબ: એક ખાલી હોય તો આકાર જળવાય, બંને ખાલી હોય તો તેનું પોતાનું માપ; બંને ભરેલાં હોય તો અંદર સમાઈ જાય, ક્યારેય ખેંચાય નહીં. ચિત્ર ન હોય તો: બતાવેલો લોગો તેની ઊંચાઈ ખાલી જગ્યા તરીકે રાખે; છુપાવો તેને દૂર કરે.
-bill_logo_tones_help	ઘટ્ટ: દરેક બિંદુ કાળું કે સફેદ, સ્પષ્ટ લોગો માટે. છાયાવાળું: ભૂખરા રંગ ઝીણા બિંદુઓની ભાતમાં બદલાય, ફોટા અને હળવી છાયા માટે.
 slip_col_width	પહોળાઈ (mm)
 slip_col_start	શરૂઆતની જગ્યા (px)
 slip_col_end	અંતની જગ્યા (px)
@@ -566,6 +566,15 @@ print_open	છાપો / ખોલો
 reason_amend_ph	સુધારો / રદ / પરતનું કારણ
 reason_note_ph	કારણ / નોંધ (બગાડ, ગણતરી, …)
 record_day_close	દિવસ બંધ નોંધો
+business_day	When does Today reset?
+business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
+biz_day_until_close	Until Day close
+biz_day_midnight	Calendar midnight
+business_day_saved	Business day saved
+report_day_lens	View Today as
+report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
+report_lens_day_close	By Day close
+report_lens_midnight	By midnight
 refresh_from_shop	દુકાનમાંથી તાજું કરો
 refund	પરત
 remove_selected	પસંદ કરેલ દૂર કરો

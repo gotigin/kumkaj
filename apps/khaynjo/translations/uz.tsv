@@ -115,6 +115,7 @@ bill_line_total	Jami
 bill_line_footer	Pastki yozuv
 bill_line_upi	UPI
 bill_logo_picture	Rasm
+bill_logo_help	Kenglik va balandlik px’da. Boʻsh rasmga ergashadi: bittasi boʻsh boʻlsa shakli saqlanadi, ikkalasi boʻsh boʻlsa oʻz oʻlchami; ikkalasi berilsa ichiga sigʻdiriladi, hech qachon choʻzilmaydi. Rasm yoʻq: koʻrsatilgan logotip balandligini boʻsh joy sifatida saqlaydi; Yashirish uni olib tashlaydi.
 bill_logo_choose	Rasm tanlash
 bill_logo_remove	Rasmni olib tashlash
 bill_logo_none	Rasm yoʻq
@@ -122,10 +123,9 @@ bill_logo_unreadable	Bu ilova oʻqiy oladigan rasm emas
 bill_logo_width	Kenglik (px)
 bill_logo_height	Balandlik (px)
 bill_logo_tones	Kulrang tuslar
+bill_logo_tones_help	Yaxlit: har bir nuqta qora yoki oq, aniq logotiplar uchun. Soyali: kulrang mayda nuqtali naqshga aylanadi, suratlar va yumshoq soya uchun.
 bill_logo_solid	Yaxlit
 bill_logo_shaded	Soyali
-bill_logo_help	Kenglik va balandlik px’da. Boʻsh rasmga ergashadi: bittasi boʻsh boʻlsa shakli saqlanadi, ikkalasi boʻsh boʻlsa oʻz oʻlchami; ikkalasi berilsa ichiga sigʻdiriladi, hech qachon choʻzilmaydi. Rasm yoʻq: koʻrsatilgan logotip balandligini boʻsh joy sifatida saqlaydi; Yashirish uni olib tashlaydi.
-bill_logo_tones_help	Yaxlit: har bir nuqta qora yoki oq, aniq logotiplar uchun. Soyali: kulrang mayda nuqtali naqshga aylanadi, suratlar va yumshoq soya uchun.
 slip_col_width	Kenglik (mm)
 slip_col_start	Boshlanish oralig‘i (px)
 slip_col_end	Oxirgi oraliq (px)
@@ -566,6 +566,15 @@ print_open	Chop etish / ochish
 reason_amend_ph	Tuzatish / bekor / qaytarish sababi
 reason_note_ph	Sabab / izoh (isrof, sanoq, …)
 record_day_close	Kun yopishni yozish
+business_day	When does Today reset?
+business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
+biz_day_until_close	Until Day close
+biz_day_midnight	Calendar midnight
+business_day_saved	Business day saved
+report_day_lens	View Today as
+report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
+report_lens_day_close	By Day close
+report_lens_midnight	By midnight
 refresh_from_shop	Doʻkondan yangilash
 refund	Qaytarish
 remove_selected	Tanlanganni olib tashlash

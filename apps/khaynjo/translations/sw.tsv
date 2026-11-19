@@ -115,6 +115,7 @@ bill_line_total	Jumla
 bill_line_footer	Chini
 bill_line_upi	UPI
 bill_logo_picture	Picha
+bill_logo_help	Upana na urefu kwa px. Tupu hufuata picha: moja tupu huhifadhi umbo, zote mbili tupu hutumia ukubwa wake; zote mbili zikiwekwa huitosheleza ndani, kamwe haivutwi. Hakuna picha: nembo inayoonyeshwa huhifadhi urefu wake kama nafasi tupu; Ficha huiondoa.
 bill_logo_choose	Chagua picha
 bill_logo_remove	Ondoa picha
 bill_logo_none	Hakuna picha
@@ -122,10 +123,9 @@ bill_logo_unreadable	Si picha ambayo programu inaweza kusoma
 bill_logo_width	Upana (px)
 bill_logo_height	Urefu (px)
 bill_logo_tones	Rangi za kijivu
+bill_logo_tones_help	Thabiti: kila nukta nyeusi au nyeupe, kwa nembo zilizo wazi. Yenye kivuli: kijivu huwa michoro ya nukta ndogo, kwa picha na kivuli laini.
 bill_logo_solid	Thabiti
 bill_logo_shaded	Yenye kivuli
-bill_logo_help	Upana na urefu kwa px. Tupu hufuata picha: moja tupu huhifadhi umbo, zote mbili tupu hutumia ukubwa wake; zote mbili zikiwekwa huitosheleza ndani, kamwe haivutwi. Hakuna picha: nembo inayoonyeshwa huhifadhi urefu wake kama nafasi tupu; Ficha huiondoa.
-bill_logo_tones_help	Thabiti: kila nukta nyeusi au nyeupe, kwa nembo zilizo wazi. Yenye kivuli: kijivu huwa michoro ya nukta ndogo, kwa picha na kivuli laini.
 slip_col_width	Upana (mm)
 slip_col_start	Nafasi ya mwanzo (px)
 slip_col_end	Nafasi ya mwisho (px)
@@ -566,6 +566,15 @@ print_open	Chapisha / fungua
 reason_amend_ph	Sababu ya kurekebisha / kufuta / kurejesha
 reason_note_ph	Sababu / kumbuka (uharibifu, kuhesabu, …)
 record_day_close	Rekodi kufunga siku
+business_day	When does Today reset?
+business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
+biz_day_until_close	Until Day close
+biz_day_midnight	Calendar midnight
+business_day_saved	Business day saved
+report_day_lens	View Today as
+report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
+report_lens_day_close	By Day close
+report_lens_midnight	By midnight
 refresh_from_shop	Onyesha upya kutoka dukani
 refund	Kurejesha
 remove_selected	Ondoa aliyechaguliwa

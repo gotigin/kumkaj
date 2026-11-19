@@ -94,6 +94,8 @@ printer_paper_help	Ilmoitettu on paperi, jolle tämän tulostimen ajuri on asete
 preview_help	Tämä kuitti sellaisena kuin se tulostuu alla valitulla tulostimella, todellisessa koossa sen virtuaalisella paperilla. Valkoinen on kohta, johon tulostetaan, harmaa paperi on tulostimen ulottumattomissa, ja haalistunut muste leikkautuu pois. Yhdeksän ruutua ovat paperi: napauta kohtaa, johon kuitin pitää asettua. Pitkä kuitti jatkuu useammalle sivulle. Tulostimen valinta muuttaa vain esikatselua.
 slip_col_start	Alkuväli (px)
 slip_col_end	Loppuväli (px)
+slip_columns	Sarakkeet
+slip_col_header	Otsikko
 slip_columns_help	Kunkin sarakkeen leveys sisältää sen alku- ja loppuvälin. Teksti rivittyy oman sarakkeensa sisällä; sisällön leveyden yli menevä osa leikkautuu pois – paperilla ja esikatselussa.
 bill_total_qty_label	Kokonaismäärän otsikko
 bill_total_subtotal_label	Välisumman otsikko
@@ -363,6 +365,15 @@ print_open	Tulosta / avaa
 reason_amend_ph	Syy oikaisulle / mitätöinnille / hyvitykselle
 reason_note_ph	Syy / huomautus (hävikki, laskenta, …)
 record_day_close	Kirjaa päivän sulku
+business_day	When does Today reset?
+business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
+biz_day_until_close	Until Day close
+biz_day_midnight	Calendar midnight
+business_day_saved	Business day saved
+report_day_lens	View Today as
+report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
+report_lens_day_close	By Day close
+report_lens_midnight	By midnight
 refresh_from_shop	Päivitä liikkeestä
 refund	Hyvitä
 remove_selected	Poista valittu
@@ -486,6 +497,8 @@ route_bill	Lasku
 station_print_pick_first	Valitse ensin lääkeosasto
 bill_printers_dd	Tulostimet laskulle
 bill_printers_dd_n	{n} tulostinta laskulle · napauta vaihtaaksesi
+printer_mode_first	Ensimmäinen joka toimii
+printer_mode_all	Tulosta kaikille
 station_vp_attached	Tulostin liitetty
 station_vp_detached	Tulostin poistettu asemalta
 print_test_page	Tulosta testisivu
@@ -837,6 +850,10 @@ client_template_importing	Tuodaan {title}…
 client_template_done	Jokainen {title}:n tuote on tuotteissasi.
 client_template_imported	Lisätty {d}-tuotteet ja {c}-luokat {title}:stä
 cancel	Peru
+removing	Poistetaan…
+removed	Poistettu
+updating_order	Päivitetään…
+order_updated	Tilaus päivitetty
 opening_client	Avataan päätettä…
 preparing_desk	Valmistellaan pöytää…
 opening_server	Avataan palvelinta…
@@ -867,16 +884,7 @@ recent_changes	Viimeisimmät muutokset
 lane_declared_label	Verolasku
 lane_owner_label	Käteiskuitti
 money_lane_bill	Lasku: {lane}
-
-removing	Poistetaan…
-removed	Poistettu
-updating_order	Päivitetään…
-order_updated	Tilaus päivitetty
 sel_copy	Kopioi
 sel_select_all	Valitse kaikki
 sel_copied	Kopioitu
 nav_loading	Ladataan…
-printer_mode_first	Ensimmäinen joka toimii
-printer_mode_all	Tulosta kaikille
-slip_columns	Sarakkeet
-slip_col_header	Otsikko

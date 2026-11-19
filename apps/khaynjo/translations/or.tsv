@@ -115,6 +115,7 @@ bill_line_total	ମୋଟ
 bill_line_footer	ଫୁଟର୍
 bill_line_upi	UPI
 bill_logo_picture	ଚିତ୍ର
+bill_logo_help	ଓସାର ଓ ଉଚ୍ଚତା px ରେ। ଖାଲି ରଖିଲେ ଚିତ୍ର ଅନୁସାରେ: ଗୋଟିଏ ଖାଲି ହେଲେ ଆକାର ରହେ, ଦୁଇଟି ଖାଲି ହେଲେ ନିଜ ମାପ; ଦୁଇଟି ଦେଲେ ଭିତରେ ଖାପ ଖାଏ, କେବେ ବି ଟାଣି ଲମ୍ବା ହୁଏ ନାହିଁ। ଚିତ୍ର ନଥିଲେ: ଦେଖାଯାଉଥିବା ଲୋଗୋ ନିଜ ଉଚ୍ଚତାକୁ ଖାଲି ସ୍ଥାନ ଭାବେ ରଖେ; ଲୁଚାନ୍ତୁ ଏହାକୁ ହଟାଏ।
 bill_logo_choose	ଚିତ୍ର ବାଛନ୍ତୁ
 bill_logo_remove	ଚିତ୍ର ହଟାନ୍ତୁ
 bill_logo_none	କୌଣସି ଚିତ୍ର ନାହିଁ
@@ -122,10 +123,9 @@ bill_logo_unreadable	ଏହି ଆପ୍ ପଢ଼ିପାରୁଥିବା �
 bill_logo_width	ଓସାର (px)
 bill_logo_height	ଉଚ୍ଚତା (px)
 bill_logo_tones	ଧୂସର
+bill_logo_tones_help	ଘନ: ପ୍ରତ୍ୟେକ ବିନ୍ଦୁ କଳା ବା ଧଳା, ସ୍ପଷ୍ଟ ଲୋଗୋ ପାଇଁ। ଛାୟାଯୁକ୍ତ: ଧୂସର ସୂକ୍ଷ୍ମ ବିନ୍ଦୁର ନମୁନା ହୁଏ, ଫଟୋ ଓ କୋମଳ ଛାୟା ପାଇଁ।
 bill_logo_solid	ଘନ
 bill_logo_shaded	ଛାୟାଯୁକ୍ତ
-bill_logo_help	ଓସାର ଓ ଉଚ୍ଚତା px ରେ। ଖାଲି ରଖିଲେ ଚିତ୍ର ଅନୁସାରେ: ଗୋଟିଏ ଖାଲି ହେଲେ ଆକାର ରହେ, ଦୁଇଟି ଖାଲି ହେଲେ ନିଜ ମାପ; ଦୁଇଟି ଦେଲେ ଭିତରେ ଖାପ ଖାଏ, କେବେ ବି ଟାଣି ଲମ୍ବା ହୁଏ ନାହିଁ। ଚିତ୍ର ନଥିଲେ: ଦେଖାଯାଉଥିବା ଲୋଗୋ ନିଜ ଉଚ୍ଚତାକୁ ଖାଲି ସ୍ଥାନ ଭାବେ ରଖେ; ଲୁଚାନ୍ତୁ ଏହାକୁ ହଟାଏ।
-bill_logo_tones_help	ଘନ: ପ୍ରତ୍ୟେକ ବିନ୍ଦୁ କଳା ବା ଧଳା, ସ୍ପଷ୍ଟ ଲୋଗୋ ପାଇଁ। ଛାୟାଯୁକ୍ତ: ଧୂସର ସୂକ୍ଷ୍ମ ବିନ୍ଦୁର ନମୁନା ହୁଏ, ଫଟୋ ଓ କୋମଳ ଛାୟା ପାଇଁ।
 slip_col_width	ପ୍ରସ୍ଥ (mm)
 slip_col_start	ଆରମ୍ଭ ସ୍ଥାନ (px)
 slip_col_end	ଶେଷ ସ୍ଥାନ (px)
@@ -566,6 +566,15 @@ print_open	ଛାପନ୍ତୁ / ଖୋଲନ୍ତୁ
 reason_amend_ph	ସଂଶୋଧନ / ବାତିଲ / ଫେରସ୍ତର କାରଣ
 reason_note_ph	କାରଣ / ନୋଟ୍ (ନଷ୍ଟ, ଗଣନା, …)
 record_day_close	ଦିନ ବନ୍ଦ ରେକର୍ଡ କରନ୍ତୁ
+business_day	When does Today reset?
+business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
+biz_day_until_close	Until Day close
+biz_day_midnight	Calendar midnight
+business_day_saved	Business day saved
+report_day_lens	View Today as
+report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
+report_lens_day_close	By Day close
+report_lens_midnight	By midnight
 refresh_from_shop	ଦୋକାନରୁ ରିଫ୍ରେଶ କରନ୍ତୁ
 refund	ଫେରସ୍ତ
 remove_selected	ବଛା ହଟାନ୍ତୁ

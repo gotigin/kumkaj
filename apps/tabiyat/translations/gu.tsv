@@ -94,6 +94,8 @@ printer_paper_help	જણાવેલ એ કાગળ છે જેના પ�
 preview_help	આ સ્લિપ નીચે પસંદ કરેલા પ્રિન્ટર પર જેમ છપાય છે તેમ, તેના વર્ચ્યુઅલ કાગળ પર સાચા માપમાં. સફેદ ભાગમાં છપાય છે, રાખોડી કાગળ સુધી પ્રિન્ટર પહોંચતું નથી, અને ઝાંખી શાહી કપાઈ જાય છે. નવ ખાના એ કાગળ છે: સ્લિપ જ્યાં બેસવી જોઈએ ત્યાં ટૅપ કરો. લાંબી સ્લિપ વધુ પાનાં પર જાય છે. પ્રિન્ટર પસંદ કરવાથી ફક્ત પૂર્વાવલોકન બદલાય છે.
 slip_col_start	શરૂઆતની જગ્યા (px)
 slip_col_end	અંતની જગ્યા (px)
+slip_columns	સ્તંભો
+slip_col_header	શીર્ષક
 slip_columns_help	દરેક સ્તંભની પહોળાઈમાં તેની શરૂઆત અને અંતની જગ્યા સામેલ છે. લખાણ પોતાના સ્તંભની અંદર જ વીંટાય છે; સામગ્રીની પહોળાઈ બહારનું કાગળ પર અને પૂર્વાવલોકનમાં કપાઈ જાય છે.
 bill_total_qty_label	કુલ સંખ્યા લેબલ
 bill_total_subtotal_label	પેટા સરવાળો લેબલ
@@ -363,6 +365,15 @@ print_open	છાપો / ખોલો
 reason_amend_ph	સુધારો / રદ / પરતનું કારણ
 reason_note_ph	કારણ / નોંધ (બગાડ, ગણતરી, …)
 record_day_close	દિવસ બંધ નોંધો
+business_day	When does Today reset?
+business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
+biz_day_until_close	Until Day close
+biz_day_midnight	Calendar midnight
+business_day_saved	Business day saved
+report_day_lens	View Today as
+report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
+report_lens_day_close	By Day close
+report_lens_midnight	By midnight
 refresh_from_shop	દુકાનમાંથી તાજું કરો
 refund	પરત
 remove_selected	પસંદ કરેલ દૂર કરો
@@ -486,6 +497,8 @@ route_bill	બિલ
 station_print_pick_first	પહેલાં દવાખાનાનો વિભાગ પસંદ કરો
 bill_printers_dd	બિલ માટે પ્રિન્ટર
 bill_printers_dd_n	બિલ માટે {n} પ્રિન્ટર · બદલવા દબાવો
+printer_mode_first	જે પહેલાં ચાલે
+printer_mode_all	બધા પર છાપો
 station_vp_attached	પ્રિન્ટર જોડાયું
 station_vp_detached	સ્ટેશનમાંથી પ્રિન્ટર કાઢ્યું
 print_test_page	ટેસ્ટ પેજ છાપો
@@ -837,6 +850,10 @@ client_template_importing	{title} આયાત…
 client_template_done	{title} ની દરેક આઇટમ તમારી આઇટમમાં છે.
 client_template_imported	{title} માંથી {d} આઇટમ અને {c} શ્રેણીઓ ઉમેરી
 cancel	રદ કરો
+removing	દૂર કરી રહ્યાં છીએ…
+removed	દૂર કર્યું
+updating_order	અપડેટ થઈ રહ્યું છે…
+order_updated	ઓર્ડર અપડેટ થયો
 opening_client	ક્લાયન્ટ ખુલી રહ્યું છે…
 preparing_desk	ડેસ્ક તૈયાર થઈ રહ્યું છે…
 opening_server	સર્વર ખુલી રહ્યું છે…
@@ -867,16 +884,7 @@ recent_changes	તાજેતરના ફેરફારો
 lane_declared_label	કર ઇન્વૉઇસ
 lane_owner_label	કેશ મેમો
 money_lane_bill	બિલ: {lane}
-
-removing	દૂર કરી રહ્યાં છીએ…
-removed	દૂર કર્યું
-updating_order	અપડેટ થઈ રહ્યું છે…
-order_updated	ઓર્ડર અપડેટ થયો
 sel_copy	કૉપી કરો
 sel_select_all	બધું પસંદ કરો
 sel_copied	કૉપી થયું
 nav_loading	લોડ થઈ રહ્યું છે…
-printer_mode_first	જે પહેલાં ચાલે
-printer_mode_all	બધા પર છાપો
-slip_columns	સ્તંભો
-slip_col_header	શીર્ષક

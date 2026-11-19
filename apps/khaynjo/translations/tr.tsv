@@ -115,6 +115,7 @@ bill_line_total	Toplam
 bill_line_footer	Alt bilgi
 bill_line_upi	UPI
 bill_logo_picture	Resim
+bill_logo_help	Genişlik ve yükseklik px cinsinden. Boş olan resmi izler: biri boşsa biçimi korunur, ikisi de boşsa kendi boyutu kullanılır; ikisi de verilirse içine sığdırılır, asla gerilmez. Resim yok: gösterilen logo yüksekliğini boş alan olarak tutar; Gizle onu kaldırır.
 bill_logo_choose	Resim seç
 bill_logo_remove	Resmi kaldır
 bill_logo_none	Resim yok
@@ -122,10 +123,9 @@ bill_logo_unreadable	Uygulamanın okuyabildiği bir resim değil
 bill_logo_width	Genişlik (px)
 bill_logo_height	Yükseklik (px)
 bill_logo_tones	Griler
+bill_logo_tones_help	Düz: her nokta siyah ya da beyaz, net logolar için. Gölgeli: griler ince nokta desenine dönüşür, fotoğraflar ve yumuşak gölgeler için.
 bill_logo_solid	Düz
 bill_logo_shaded	Gölgeli
-bill_logo_help	Genişlik ve yükseklik px cinsinden. Boş olan resmi izler: biri boşsa biçimi korunur, ikisi de boşsa kendi boyutu kullanılır; ikisi de verilirse içine sığdırılır, asla gerilmez. Resim yok: gösterilen logo yüksekliğini boş alan olarak tutar; Gizle onu kaldırır.
-bill_logo_tones_help	Düz: her nokta siyah ya da beyaz, net logolar için. Gölgeli: griler ince nokta desenine dönüşür, fotoğraflar ve yumuşak gölgeler için.
 slip_col_width	Genişlik (mm)
 slip_col_start	Başlangıç boşluğu (px)
 slip_col_end	Bitiş boşluğu (px)
@@ -566,6 +566,15 @@ print_open	Yazdır / aç
 reason_amend_ph	Düzeltme / iptal / iade nedeni
 reason_note_ph	Neden / not (fire, sayım, …)
 record_day_close	Gün kapanışını kaydet
+business_day	When does Today reset?
+business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
+biz_day_until_close	Until Day close
+biz_day_midnight	Calendar midnight
+business_day_saved	Business day saved
+report_day_lens	View Today as
+report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
+report_lens_day_close	By Day close
+report_lens_midnight	By midnight
 refresh_from_shop	Dükkandan yenile
 refund	İade
 remove_selected	Seçili olanı kaldır

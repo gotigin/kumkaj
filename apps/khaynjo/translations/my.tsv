@@ -115,6 +115,7 @@ bill_line_total	စုစုပေါင်း
 bill_line_footer	ဖူးတာ
 bill_line_upi	UPI
 bill_logo_picture	ပုံ
+bill_logo_help	အကျယ်နှင့်အမြင့်ကို px ဖြင့်။ ကွက်လပ်ထားလျှင် ပုံကိုလိုက်သည် - တစ်ခုကွက်လပ်ဆိုလျှင် ပုံသဏ္ဌာန်ထိန်းသည်၊ နှစ်ခုလုံးကွက်လပ်ဆိုလျှင် မူလအရွယ်ကိုသုံးသည်၊ နှစ်ခုလုံးထည့်လျှင် အထဲတွင်ကွက်တိထည့်ပြီး ဘယ်တော့မှ မဆွဲဆန့်ပါ။ ပုံမရှိလျှင် - ပြထားသော လိုဂိုသည် အမြင့်ကို နေရာလွတ်အဖြစ် ထားသည်၊ ဖျောက်ရန်က ဖယ်ရှားသည်။
 bill_logo_choose	ပုံရွေးရန်
 bill_logo_remove	ပုံဖယ်ရန်
 bill_logo_none	ပုံမရှိ
@@ -122,10 +123,9 @@ bill_logo_unreadable	ဤအက်ပ်ဖတ်နိုင်သောပု�
 bill_logo_width	အကျယ် (px)
 bill_logo_height	အမြင့် (px)
 bill_logo_tones	မီးခိုးရောင်များ
+bill_logo_tones_help	ပြည့် - အစက်တိုင်း အမည်း သို့မဟုတ် အဖြူ၊ ပြတ်သားသော လိုဂိုအတွက်။ အရိပ်ပါ - မီးခိုးရောင်များ သေးငယ်သော အစက်ပုံစံဖြစ်လာသည်၊ ဓာတ်ပုံနှင့် နူးညံ့သောအရိပ်အတွက်။
 bill_logo_solid	ပြည့်
 bill_logo_shaded	အရိပ်ပါ
-bill_logo_help	အကျယ်နှင့်အမြင့်ကို px ဖြင့်။ ကွက်လပ်ထားလျှင် ပုံကိုလိုက်သည် - တစ်ခုကွက်လပ်ဆိုလျှင် ပုံသဏ္ဌာန်ထိန်းသည်၊ နှစ်ခုလုံးကွက်လပ်ဆိုလျှင် မူလအရွယ်ကိုသုံးသည်၊ နှစ်ခုလုံးထည့်လျှင် အထဲတွင်ကွက်တိထည့်ပြီး ဘယ်တော့မှ မဆွဲဆန့်ပါ။ ပုံမရှိလျှင် - ပြထားသော လိုဂိုသည် အမြင့်ကို နေရာလွတ်အဖြစ် ထားသည်၊ ဖျောက်ရန်က ဖယ်ရှားသည်။
-bill_logo_tones_help	ပြည့် - အစက်တိုင်း အမည်း သို့မဟုတ် အဖြူ၊ ပြတ်သားသော လိုဂိုအတွက်။ အရိပ်ပါ - မီးခိုးရောင်များ သေးငယ်သော အစက်ပုံစံဖြစ်လာသည်၊ ဓာတ်ပုံနှင့် နူးညံ့သောအရိပ်အတွက်။
 slip_col_width	အကျယ် (mm)
 slip_col_start	အစ နေရာလွတ် (px)
 slip_col_end	အဆုံး နေရာလွတ် (px)
@@ -566,6 +566,15 @@ print_open	ပုံနှိပ် / ဖွင့်ပါ
 reason_amend_ph	ပြင်ဆင်ရန် / ငျွှန်းရန် / ပြန်အမ်းရန် အကြောင်းရင်း
 reason_note_ph	အကြောင်းရင်း / မှတ်စု (ပျက်စီးမှု, အရေအတွက်, …)
 record_day_close	နေ့စွဲပိတ်သိမ်းမှုကိုမှတ်တမ်းတင်မည်
+business_day	When does Today reset?
+business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
+biz_day_until_close	Until Day close
+biz_day_midnight	Calendar midnight
+business_day_saved	Business day saved
+report_day_lens	View Today as
+report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
+report_lens_day_close	By Day close
+report_lens_midnight	By midnight
 refresh_from_shop	ဆိုင်မှပြန်လည်သင့်စွမ်းမော်
 refund	ပြန်အမ်း
 remove_selected	ရွေးထားကိုဖယ်ရှားမည်

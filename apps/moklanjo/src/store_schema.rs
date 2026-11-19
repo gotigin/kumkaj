@@ -582,4 +582,51 @@ CREATE INDEX IF NOT EXISTS idx_expenses_day ON expenses(created_at COLLATE NOCAS
 CREATE INDEX IF NOT EXISTS idx_money_movements_like ON money_movements(created_at COLLATE NOCASE);
 CREATE INDEX IF NOT EXISTS idx_credit_ledger_day ON credit_ledger(created_at COLLATE NOCASE);
 CREATE INDEX IF NOT EXISTS idx_payable_ledger_day ON payable_ledger(created_at COLLATE NOCASE);
+
+CREATE TABLE IF NOT EXISTS adjustment_notes (
+    id TEXT PRIMARY KEY,
+    kind TEXT NOT NULL,
+    party_id TEXT NOT NULL,
+    related_sale_id TEXT NOT NULL DEFAULT '',
+    amount_paise INTEGER NOT NULL,
+    reason TEXT NOT NULL DEFAULT '',
+    invoice_no TEXT NOT NULL DEFAULT '',
+    created_at TEXT NOT NULL,
+    user_at TEXT NOT NULL DEFAULT '',
+    device_at TEXT NOT NULL DEFAULT '',
+    server_at TEXT NOT NULL DEFAULT '',
+    actor_id TEXT NOT NULL DEFAULT '',
+    actor_name TEXT NOT NULL DEFAULT '',
+    ledger_id TEXT NOT NULL DEFAULT ''
+);
+CREATE INDEX IF NOT EXISTS idx_adjustment_notes_party ON adjustment_notes(party_id, created_at);
+CREATE INDEX IF NOT EXISTS idx_adjustment_notes_created ON adjustment_notes(created_at);
+
+CREATE TABLE IF NOT EXISTS booking_drafts (
+    id TEXT PRIMARY KEY,
+    status TEXT NOT NULL DEFAULT 'draft',
+    opened_at TEXT NOT NULL,
+    updated_at TEXT NOT NULL,
+    opened_by TEXT NOT NULL DEFAULT '',
+    title TEXT NOT NULL DEFAULT '',
+    payload_json TEXT NOT NULL,
+    sale_id TEXT NOT NULL DEFAULT ''
+);
+CREATE INDEX IF NOT EXISTS idx_booking_drafts_status ON booking_drafts(status, updated_at);
+
+CREATE TABLE IF NOT EXISTS shift_closes (
+    id TEXT PRIMARY KEY,
+    started_at TEXT NOT NULL,
+    ended_at TEXT NOT NULL,
+    closed_by TEXT NOT NULL,
+    bills INTEGER NOT NULL,
+    cash_paise INTEGER NOT NULL,
+    upi_paise INTEGER NOT NULL,
+    card_paise INTEGER NOT NULL,
+    cash_tips_paise INTEGER NOT NULL,
+    cash_out_paise INTEGER NOT NULL,
+    float_paise INTEGER NOT NULL,
+    expected_paise INTEGER NOT NULL,
+    counted_paise INTEGER NOT NULL
+);
 "#;

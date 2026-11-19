@@ -115,6 +115,7 @@ bill_line_total	Totalt
 bill_line_footer	Bunntekst
 bill_line_upi	UPI
 bill_logo_picture	Bilde
+bill_logo_help	Bredde og høyde i px. Tomt følger bildet: ett tomt beholder formen, begge tomme bruker bildets egen størrelse; begge satt passer det inni, aldri strukket. Ingen bilde: en vist logo beholder høyden sin som tom plass; Skjul fjerner den.
 bill_logo_choose	Velg bilde
 bill_logo_remove	Fjern bilde
 bill_logo_none	Ingen bilde
@@ -122,10 +123,9 @@ bill_logo_unreadable	Ikke et bilde appen kan lese
 bill_logo_width	Bredde (px)
 bill_logo_height	Høyde (px)
 bill_logo_tones	Gråtoner
+bill_logo_tones_help	Heldekkende: hver prikk svart eller hvit, for skarpe logoer. Skyggelagt: grått blir fine prikkmønstre, for bilder og myk skygge.
 bill_logo_solid	Heldekkende
 bill_logo_shaded	Skyggelagt
-bill_logo_help	Bredde og høyde i px. Tomt følger bildet: ett tomt beholder formen, begge tomme bruker bildets egen størrelse; begge satt passer det inni, aldri strukket. Ingen bilde: en vist logo beholder høyden sin som tom plass; Skjul fjerner den.
-bill_logo_tones_help	Heldekkende: hver prikk svart eller hvit, for skarpe logoer. Skyggelagt: grått blir fine prikkmønstre, for bilder og myk skygge.
 slip_col_width	Bredde (mm)
 slip_col_start	Startavstand (px)
 slip_col_end	Sluttavstand (px)
@@ -566,6 +566,15 @@ print_open	Skriv ut / åpne
 reason_amend_ph	Grunn til endring / annullering / refusjon
 reason_note_ph	Grunn / merknad (svinn, telling, …)
 record_day_close	Registrer dagsavslutning
+business_day	When does Today reset?
+business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
+biz_day_until_close	Until Day close
+biz_day_midnight	Calendar midnight
+business_day_saved	Business day saved
+report_day_lens	View Today as
+report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
+report_lens_day_close	By Day close
+report_lens_midnight	By midnight
 refresh_from_shop	Oppdater fra butikken
 refund	Refusjon
 remove_selected	Fjern valgt

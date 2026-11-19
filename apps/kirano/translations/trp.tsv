@@ -82,6 +82,8 @@ printer_paper_help	রিপোর্ট খলাইমানি অর্থ �
 preview_help	ই স্লিপ য়াখুল নি সাইমানি প্রিন্টার ও ছাপা খলাইজাক বাগই, বিনি ভার্চুয়াল কাগজ সাকাংও সত্যি মাপ ও। কুফুর জাগা ও ছাপা খলাইয়ই, ধূসর কাগজ প্রিন্টার থাংমান য়া, তেই ফিকা কালি তান'জাক। চুকু বাক্স কাগজ: স্লিপ তংনানি জাগা ও তাপ দি। কালাই স্লিপ বেসি পাতা ও থাংগ। প্রিন্টার সাইখা খা প্রিভিউ সাকসা সুইয়ই।
 slip_col_start	সালকসা জায়গা (px)
 slip_col_end	তামাখালনি জায়গা (px)
+slip_columns	খলমরগ
+slip_col_header	বখরক
 slip_columns_help	খলম কাইসানি বাগা বিনি সালকসা বো তামাখালনি জায়গা সুমানি। সুংমা বিনি খলম সিনিসে সাপুইমানি; কাতারনি বাগা কাসানো বুসুক অ তাতা আছিক বো ফৗরৗননি সিনি তিকতুইমানি।
 bill_total_qty_label	জত কুতয় মুং
 bill_total_subtotal_label	সুব জত লাবেল
@@ -351,6 +353,15 @@ print_open	পরিনত / ফিয়কদি
 reason_amend_ph	সুলাইমানি কারন / ভইদ / রাং কিফিলুই রুমানি
 reason_note_ph	কাহাম / ককতুমা (কুমাজাক, লেখাজাক, ...)
 record_day_close	রেচরদ সাল উংখা
+business_day	When does Today reset?
+business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
+biz_day_until_close	Until Day close
+biz_day_midnight	Calendar midnight
+business_day_saved	Business day saved
+report_day_lens	View Today as
+report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
+report_lens_day_close	By Day close
+report_lens_midnight	By midnight
 refresh_from_shop	দুকান নি কুতাল তুবুদি
 refund	রাং কিফিলুই রুদি
 remove_selected	চংজাকরকন সুকাকদি
@@ -474,6 +485,8 @@ route_bill	বিল
 station_print_pick_first	পুইলা কাইসা দুকান নি জাগা চোংদি
 bill_printers_dd	বিল নি বাগুই পরিনতের
 bill_printers_dd_n	{n} বিল নি বাগুই পরিনতের(রক) · সুলাইনা বাগুই তাপদি
+printer_mode_first	পুইলা আব সামুং তাংনাই
+printer_mode_all	জতন পরিনত খাইদি
 station_vp_attached	পরিনতের চাপজাক
 station_vp_detached	পরিনতের ন সতাতিওন নি সুকাকজাক খা
 print_test_page	তেসত পাগে পরিনত খাইদি
@@ -825,6 +838,10 @@ client_template_importing	ফাইমানি {title}...
 client_template_done	{title} নি জোতো মানৱি নো নিনি মানৱি রোক নি সাকাও তোংও.
 client_template_imported	{title} নি {d} মানৱিরোক তেই {c} জাতরোক চাপজাক খা
 cancel	চানচেল খাইদি
+removing	সিং তঙ…
+removed	সিংখা
+updating_order	আপডেট তঙ…
+order_updated	অর্ডার আপডেট জাকখা
 opening_client	চলিএনত খুলকজাক...
 preparing_desk	দেসক তিয়ার খলাইউই তঙ...
 opening_server	সেরভের খুলাইজাক...
@@ -855,16 +872,7 @@ recent_changes	তাবুকনি সুলাইজাকমা
 lane_declared_label	তাক্ষ নি রাং
 lane_owner_label	রাং নি মেম
 money_lane_bill	বিল: {lane}
-
-removing	সিং তঙ…
-removed	সিংখা
-updating_order	আপডেট তঙ…
-order_updated	অর্ডার আপডেট জাকখা
 sel_copy	চপয় খাইদি
 sel_select_all	জত বাছায় খাইদি
 sel_copied	চপয় খাইখা
 nav_loading	Load khlaiwi tongo…
-printer_mode_first	পুইলা আব সামুং তাংনাই
-printer_mode_all	জতন পরিনত খাইদি
-slip_columns	খলমরগ
-slip_col_header	বখরক

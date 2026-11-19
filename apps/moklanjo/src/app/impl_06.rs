@@ -798,6 +798,12 @@ fn dismiss_soft_keyboard(&mut self, cx: &mut Cx) {
                 ids!(setup_role_body),
                 "this_device",
             ),
+            (
+                "public_templates",
+                ids!(setup_public_tmpl_hdr),
+                ids!(setup_public_tmpl_body),
+                "app_template_public_hdr",
+            ),
         ];
         for (key, hdr, body, caption_key) in sections {
             let open = is_open(key);
@@ -1223,7 +1229,11 @@ fn dismiss_soft_keyboard(&mut self, cx: &mut Cx) {
             st.language_follow_platform = chosen.0;
             st.locale.language = chosen.1;
             Self::persist_setup_language(&mut st);
-            self.finish_as_server(&mut st, true);
+            if Self::should_offer_app_template(&st) {
+                self.enter_app_template_offer(&mut st, true);
+            } else {
+                self.finish_as_server(&mut st, true);
+            }
             old
         };
         drop_store_off_ui(old);
@@ -1231,5 +1241,138 @@ fn dismiss_soft_keyboard(&mut self, cx: &mut Cx) {
         end_role_open_busy();
         self.paint_role_open_busy_chrome(cx);
         self.maybe_smoke_auto_unlock(cx);
+    }
+
+    /// Brand-new Server before Owner PIN — bundled Shop templates offer.
+    fn should_offer_app_template(st: &AppState) -> bool {
+        if matches!(
+            std::env::var("KUMKAJ_SMOKE_AUTO_SERVER").ok().as_deref(),
+            Some("1" | "true" | "yes" | "on")
+        ) || std::env::var("KUMKAJ_SMOKE_AUTO_UNLOCK").is_ok()
+        {
+            return false;
+        }
+        !st.owner_setup_complete
+            && !st
+                .store
+                .as_ref()
+                .and_then(|s| s.app_template_offer_done().ok())
+                .unwrap_or(false)
+    }
+
+    /// DeviceSetup card before Lock — same Server attach as `finish_as_server`, no PIN yet.
+    fn enter_app_template_offer(&mut self, st: &mut AppState, switching_in: bool) {
+        st.device_role = DeviceRole::Server;
+        st.must_confirm_device_role = false;
+        st.picking_server = false;
+        st.awaiting_app_template = true;
+        st.app_template_selected_id = Some(entity_template::GLOBAL_PKG.id.into());
+        st.device_setup_sections_open = vec!["role".into(), "public_templates".into()];
+        st.pin_buffer.clear();
+        st.nav_back.clear();
+        st.nav_forward.clear();
+        if let Some(store) = st.store.as_ref() {
+            let _ = store.set_device_role(DeviceRole::Server.as_str());
+            if switching_in {
+                if let Ok(Some(owner)) = store
+                    .list_staff()
+                    .map(|s| s.into_iter().find(|m| m.is_owner()))
+                {
+                    let _ = store.set_extra_tills_allowed(false, &owner);
+                }
+                st.extra_tills_allowed = false;
+                net::stop_server();
+            } else if st.extra_tills_allowed {
+                let path = store.db_path().to_path_buf();
+                if net::ensure_server(path).is_ok() {
+                    firewall_job(|| Ok(net::firewall_allows_phones()));
+                }
+            }
+        }
+        st.screen = Screen::DeviceSetup;
+        st.status = locale::t(&st.locale.language, "app_template_status");
+    }
+
+    /// Continue to Owner PIN. `mark_done` after Import; Skip leaves clear so re-offer.
+    fn finish_app_template_to_lock(&mut self, cx: &mut Cx, mark_done: bool) {
+        {
+            let mut st = app_state().lock().unwrap();
+            st.awaiting_app_template = false;
+            st.app_template_selected_id = None;
+            if let Some(store) = st.store.as_ref() {
+                if mark_done {
+                    let _ = store.set_app_template_offer_done();
+                }
+            }
+            self.finish_as_server(&mut st, false);
+        }
+        self.paint_role_open_busy_chrome(cx);
+        self.sync_chrome(cx);
+    }
+
+    /// Idle: Templates + Skip. Import applies the bundled Global Pkg pack.
+    fn paint_app_template_chrome(&mut self, cx: &mut Cx, visible: bool) {
+        self.ui
+            .view(cx, ids!(app_template_section))
+            .set_visible(cx, visible);
+        if !visible {
+            return;
+        }
+        let (heading, skip, import, help, public_help, sel, title) = {
+            let st = app_state().lock().unwrap();
+            (
+                st.t("app_template_heading"),
+                st.t("app_template_skip"),
+                st.t("app_template_import_selected"),
+                st.t("app_template_blurb"),
+                st.t("public_tmpl_help"),
+                st.app_template_selected_id.clone(),
+                entity_template::GLOBAL_PKG.title.to_string(),
+            )
+        };
+        self.ui
+            .widget(cx, ids!(app_template_heading))
+            .set_text(cx, &plain_display_text(&heading));
+        self.ui
+            .widget(cx, ids!(app_template_blurb))
+            .set_visible(cx, false);
+        for (id, tip) in [
+            (ids!(app_template_help), help.as_str()),
+            (ids!(setup_public_tmpl_help), public_help.as_str()),
+        ] {
+            self.ui
+                .widget(cx, id)
+                .as_info_help()
+                .set_tip(&plain_display_text(tip));
+        }
+        let on = sel.as_deref() == Some(entity_template::GLOBAL_PKG.id);
+        self.ui
+            .button(cx, ids!(public_tmpl_0))
+            .set_text(cx, &title);
+        self.ui
+            .button(cx, ids!(public_tmpl_0_on))
+            .set_text(cx, &title);
+        self.ui
+            .button(cx, ids!(public_tmpl_0))
+            .set_visible(cx, !on);
+        self.ui
+            .button(cx, ids!(public_tmpl_0_on))
+            .set_visible(cx, on);
+        self.ui
+            .button(cx, ids!(public_tmpl_import))
+            .set_text(cx, &import);
+        self.ui
+            .button(cx, ids!(public_tmpl_import))
+            .set_visible(cx, on);
+        self.ui
+            .view(cx, ids!(app_template_busy))
+            .set_visible(cx, false);
+        self.ui
+            .button(cx, ids!(app_template_skip))
+            .set_text(cx, &skip);
+        self.ui
+            .button(cx, ids!(app_template_skip))
+            .set_visible(cx, true);
+        self.sync_device_setup_sections(cx);
     }
 }

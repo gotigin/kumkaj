@@ -115,6 +115,7 @@ bill_line_total	Baroh
 bill_line_footer	Hapoh
 bill_line_upi	UPI
 bill_logo_picture	Dur
+bill_logo_help	Jingshabar bad jingjrong ha px. Ba thylliej ka bud ïa ka dur: kawei ba thylliej ka bat ïa ka rukom, baroh ar ba thylliej ki pyndonkam ïa ka jingkhraw jong ka; lada baroh ar ki don, ka shong hapoh, ym pat sait. Ym don dur: ka logo ba pyni ka bat ïa ka jingjrong kum ka jaka ba thylliej; Buh rieh ka weng ïa ka.
 bill_logo_choose	Jied dur
 bill_logo_remove	Weng ïa ka dur
 bill_logo_none	Ym don dur
@@ -122,10 +123,9 @@ bill_logo_unreadable	Kam dei ka dur ba ka app ka lah ban pule
 bill_logo_width	Ka jingshabar (px)
 bill_logo_height	Ka jingjrong (px)
 bill_logo_tones	Ki rong grey
+bill_logo_tones_help	Kyrkhu: man la ka shirong ka long iong ne lieh, na ka bynta ki logo ba shai. Ba don dyngkhong: ki rong grey ki long ki dur shirong ba rit, na ka bynta ki dur bad ka dyngkhong ba jem.
 bill_logo_solid	Kyrkhu
 bill_logo_shaded	Ba don dyngkhong
-bill_logo_help	Jingshabar bad jingjrong ha px. Ba thylliej ka bud ïa ka dur: kawei ba thylliej ka bat ïa ka rukom, baroh ar ba thylliej ki pyndonkam ïa ka jingkhraw jong ka; lada baroh ar ki don, ka shong hapoh, ym pat sait. Ym don dur: ka logo ba pyni ka bat ïa ka jingjrong kum ka jaka ba thylliej; Buh rieh ka weng ïa ka.
-bill_logo_tones_help	Kyrkhu: man la ka shirong ka long iong ne lieh, na ka bynta ki logo ba shai. Ba don dyngkhong: ki rong grey ki long ki dur shirong ba rit, na ka bynta ki dur bad ka dyngkhong ba jem.
 slip_col_width	Ka jingshah (mm)
 slip_col_start	Ka jaka ha kaba sdang (px)
 slip_col_end	Ka jaka ha kaba kut (px)
@@ -566,6 +566,15 @@ print_open	Pynmih / plie
 reason_amend_ph	Ka daw jong ka jingpynkylla / jingpyndam / jingpynphai pisa
 reason_note_ph	Ka daw / jingthoh (jingpynlut kai, jingkhein, ...)
 record_day_close	Ka sngi rekod
+business_day	When does Today reset?
+business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
+biz_day_until_close	Until Day close
+biz_day_midnight	Calendar midnight
+business_day_saved	Business day saved
+report_day_lens	View Today as
+report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
+report_lens_day_close	By Day close
+report_lens_midnight	By midnight
 refresh_from_shop	Pynthymmai na ka dukan
 refund	Jingpynphai pisa
 remove_selected	Pynduh ia kaba la jied

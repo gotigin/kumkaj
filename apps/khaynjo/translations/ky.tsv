@@ -115,6 +115,7 @@ bill_line_total	Бардыгы
 bill_line_footer	Колонтитул
 bill_line_upi	UPI
 bill_logo_picture	Сүрөт
+bill_logo_help	Туурасы жана бийиктиги px менен. Бош калса сүрөткө ылайыкташат: бирөө бош болсо формасы сакталат, экөө тең бош болсо өз өлчөмү; экөө тең берилсе ичине батырат, эч качан чоймолобойт. Сүрөт жок: көрсөтүлгөн логотип бийиктигин бош орун катары сактайт; Жашыруу аны алып салат.
 bill_logo_choose	Сүрөт тандоо
 bill_logo_remove	Сүрөттү алып салуу
 bill_logo_none	Сүрөт жок
@@ -122,10 +123,9 @@ bill_logo_unreadable	Бул колдонмо окуй ала турган сүр
 bill_logo_width	Туурасы (px)
 bill_logo_height	Бийиктиги (px)
 bill_logo_tones	Боз түстөр
+bill_logo_tones_help	Бүтүн: ар бир чекит кара же ак, так логотиптер үчүн. Көлөкөлүү: боз түстөр майда чекит оймосуна айланат, сүрөт жана жумшак көлөкө үчүн.
 bill_logo_solid	Бүтүн
 bill_logo_shaded	Көлөкөлүү
-bill_logo_help	Туурасы жана бийиктиги px менен. Бош калса сүрөткө ылайыкташат: бирөө бош болсо формасы сакталат, экөө тең бош болсо өз өлчөмү; экөө тең берилсе ичине батырат, эч качан чоймолобойт. Сүрөт жок: көрсөтүлгөн логотип бийиктигин бош орун катары сактайт; Жашыруу аны алып салат.
-bill_logo_tones_help	Бүтүн: ар бир чекит кара же ак, так логотиптер үчүн. Көлөкөлүү: боз түстөр майда чекит оймосуна айланат, сүрөт жана жумшак көлөкө үчүн.
 slip_col_width	Туурасы (mm)
 slip_col_start	Башталыш аралыгы (px)
 slip_col_end	Аяк аралыгы (px)
@@ -566,6 +566,15 @@ print_open	Басып чыгаруу / ачуу
 reason_amend_ph	Түзөтүүнүн / жокко чыгаруунун / кайтарып берүүнүн себеби
 reason_note_ph	Себеп / эскертүү (ысырап, эсептөө, ...)
 record_day_close	Жакын күндү сактаңыз
+business_day	When does Today reset?
+business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
+biz_day_until_close	Until Day close
+biz_day_midnight	Calendar midnight
+business_day_saved	Business day saved
+report_day_lens	View Today as
+report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
+report_lens_day_close	By Day close
+report_lens_midnight	By midnight
 refresh_from_shop	Дүкөндөн жаңыртуу
 refund	Төлөмдү кайтаруу
 remove_selected	Тандалган алып салуу

@@ -115,6 +115,7 @@ bill_line_total	कुल
 bill_line_footer	फुटर
 bill_line_upi	UPI
 bill_logo_picture	फोटो
+bill_logo_help	चौड़ाई आ ऊँचाई px में। खाली रहे त फोटो के हिसाब से: एगो खाली त आकार बनल रहेला, दूनो खाली त आपन असली नाप; दूनो भरल त ओकरा भीतर समा जाला, कबो खींचाला ना। फोटो ना: देखाई देत लोगो आपन ऊँचाई खाली जगह के रूप में रखेला; छुपाईं से हट जाला।
 bill_logo_choose	फोटो चुनीं
 bill_logo_remove	फोटो हटाईं
 bill_logo_none	कवनो फोटो ना
@@ -122,10 +123,9 @@ bill_logo_unreadable	ई ऐप पढ़ सके अइसन फोटो �
 bill_logo_width	चौड़ाई (px)
 bill_logo_height	ऊँचाई (px)
 bill_logo_tones	धूसर
+bill_logo_tones_help	ठोस: हर बिंदु करिया भा उज्जर, साफ लोगो खातिर। छायादार: धूसर बारीक बिंदु के नमूना बन जाला, फोटो आ हलुक छाया खातिर।
 bill_logo_solid	ठोस
 bill_logo_shaded	छायादार
-bill_logo_help	चौड़ाई आ ऊँचाई px में। खाली रहे त फोटो के हिसाब से: एगो खाली त आकार बनल रहेला, दूनो खाली त आपन असली नाप; दूनो भरल त ओकरा भीतर समा जाला, कबो खींचाला ना। फोटो ना: देखाई देत लोगो आपन ऊँचाई खाली जगह के रूप में रखेला; छुपाईं से हट जाला।
-bill_logo_tones_help	ठोस: हर बिंदु करिया भा उज्जर, साफ लोगो खातिर। छायादार: धूसर बारीक बिंदु के नमूना बन जाला, फोटो आ हलुक छाया खातिर।
 slip_col_width	चौड़ाई (mm)
 slip_col_start	सुरुआत के जगह (px)
 slip_col_end	आखिर के जगह (px)
@@ -566,6 +566,15 @@ print_open	छापीं / खोलीं
 reason_amend_ph	सुधार / रद्द / वापसी के कारन
 reason_note_ph	कारन / टिप्पणी (बरबादी, गिनती, …)
 record_day_close	दिन बंद दर्ज करीं
+business_day	When does Today reset?
+business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
+biz_day_until_close	Until Day close
+biz_day_midnight	Calendar midnight
+business_day_saved	Business day saved
+report_day_lens	View Today as
+report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
+report_lens_day_close	By Day close
+report_lens_midnight	By midnight
 refresh_from_shop	दोकान से ताजा करीं
 refund	वापसी
 remove_selected	चुनल हटाईं

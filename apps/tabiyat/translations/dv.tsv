@@ -94,6 +94,8 @@ printer_paper_help	ރިޕޯޓުކުރި އަކީ މި ޕްރިންޓަރުގެ �
 preview_help	ތިރީގައި ހޮވާފައިވާ ޕްރިންޓަރުގައި މި ސްލިޕް ޗާޕުވާ ގޮތަށް، އޭގެ ވާޗުއަލް ކަރުދާހުގައި ހަގީގީ ސައިޒުގައި. ހުދު ތަނަކީ ޗާޕުވާ ތަނެވެ، އަޅި ކަރުދާހަށް ޕްރިންޓަރަށް ނުދެވެއެވެ، އަދި ފަނޑު ދެލި ކެނޑިގެންދެއެވެ. ނުވަ ގޮޅިއަކީ ކަރުދާހެވެ: ސްލިޕް ހުންނަންވީ ތަނަށް ފިއްތާށެވެ. ދިގު ސްލިޕް އިތުރު ޞަފްޙާތަކަށް ދެއެވެ. ޕްރިންޓަރެއް ހޮވުމުން ބަދަލުވަނީ ޕްރިވިއު އެކަނިއެވެ.
 slip_col_start	ފެށުމުގެ ޖާގަ (px)
 slip_col_end	ނިމުމުގެ ޖާގަ (px)
+slip_columns	ކޮލަމްތައް
+slip_col_header	ހެޑަރ
 slip_columns_help	ކޮންމެ ކޮލަމެއްގެ ފުޅާމިނުގައި އޭގެ ފެށުމާއި ނިމުމުގެ ޖާގަ ހިމެނެއެވެ. ލިޔުން އޭގެ ކޮލަމުގެ ތެރޭގައި ބަދަލުވެއެވެ. ކޮންޓެންޓްގެ ފުޅާމިނުން ބޭރުގައިވާ ބައި ކަރުދާހުގައްޔާއި ޕްރީވިއުގައި ކެނޑިގެންދެއެވެ.
 bill_total_qty_label	ޖުމްލަ ކިއުޓީ ލޭބަލް
 bill_total_subtotal_label	ސަބް ޓޯޓަލް ލޭބަލް
@@ -363,6 +365,15 @@ print_open	ޕްރިންޓް / ހުޅުވުން
 reason_amend_ph	އިސްލާހު / ބާތިލް / ރިފަންޑް ކުރަން ޖެހޭ ސަބަބު
 reason_note_ph	ސަބަބު / ނޯޓް (އިސްރާފުކުރުން، ގުނާލުން، ...)
 record_day_close	ރެކޯޑް ދުވަސް ބަންދު
+business_day	When does Today reset?
+business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
+biz_day_until_close	Until Day close
+biz_day_midnight	Calendar midnight
+business_day_saved	Business day saved
+report_day_lens	View Today as
+report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
+report_lens_day_close	By Day close
+report_lens_midnight	By midnight
 refresh_from_shop	ފިހާރައިން ރިފްރެޝް ކޮށްލާށެވެ
 refund	ރީފަންޑް
 remove_selected	ހޮވާފައި ހުންނަނީ ނައްތާލާށެވެ
@@ -486,6 +497,8 @@ route_bill	ބިލް
 station_print_pick_first	ފުރަތަމަ ޑިސްޕެންސަރީ ސެކްޝަނެއް ހޮވާށެވެ
 bill_printers_dd	ބިލަށް ޕްރިންޓަރުން
 bill_printers_dd_n	{n} ބިލަށް ޕްރިންޓަރ(ތަކެއް) · ބަދަލުކުރުމަށް ޓެޕް ކުރާށެވެ
+printer_mode_first	ފުރަތަމަ ކާމިޔާބުވާ އެއް
+printer_mode_all	ހުރިހާ އެއްޗަކަށް ޕްރިންޓްކުރޭ
 station_vp_attached	ޕްރިންޓަރ އެޓޭޗްކޮށްފައި ހުރެއެވެ
 station_vp_detached	ސްޓޭޝަނުން ޕްރިންޓަރު ނަގާފައި
 print_test_page	ޓެސްޓް ޕޭޖެއް ޕްރިންޓް ކުރާށެވެ
@@ -837,6 +850,10 @@ client_template_importing	އިމްޕޯޓް ކުރަނީ {title}...
 client_template_done	{title} އިން ފެށިގެން ކޮންމެ އެއްޗެއް ތިބާގެ ތަކެތީގެ މަތީގައި ހުރެއެވެ.
 client_template_imported	{title} އިން {d} ތަކެއްޗާއި {c} ކެޓަގަރީތައް އިތުރުކޮށްފި
 cancel	ކެންސަލް
+removing	ނައްތަނީ…
+removed	ނައްތާލެވިއްޖެ
+updating_order	އަޕްޑޭޓް ކުރަނީ…
+order_updated	އޯޑަރު އަޕްޑޭޓް ކުރެވިއްޖެ
 opening_client	ކްލައިންޓް ހުޅުވަނީ…
 preparing_desk	ޑެސްކް ތައްޔާރުކުރަނީ…
 opening_server	ސަރވަރ ހުޅުވަނީ…
@@ -867,16 +884,7 @@ recent_changes	ފަހުގެ ބަދަލުތައް
 lane_declared_label	ޓެކްސް އިންވޮއިސް
 lane_owner_label	ކޭޝް މެމޯ
 money_lane_bill	ބިލް: {lane}
-
-removing	ނައްތަނީ…
-removed	ނައްތާލެވިއްޖެ
-updating_order	އަޕްޑޭޓް ކުރަނީ…
-order_updated	އޯޑަރު އަޕްޑޭޓް ކުރެވިއްޖެ
 sel_copy	ކޮޕީ
 sel_select_all	ހުރިހާ ކަމެއް ޚިޔާރުކުރޭ
 sel_copied	ކޮޕީ ކުރެވިއްޖެ
 nav_loading	ލޯޑުވަނީ…
-printer_mode_first	ފުރަތަމަ ކާމިޔާބުވާ އެއް
-printer_mode_all	ހުރިހާ އެއްޗަކަށް ޕްރިންޓްކުރޭ
-slip_columns	ކޮލަމްތައް
-slip_col_header	ހެޑަރ

@@ -115,6 +115,7 @@ bill_line_total	कुल
 bill_line_footer	फुटर
 bill_line_upi	UPI
 bill_logo_picture	फोटो
+bill_logo_help	चौड़ाई आ ऊँचाई px मे। खाली रहला पर फोटोक अनुसार: एक खाली तँ आकार बनल रहैत अछि, दुनू खाली तँ अपन असली नाप; दुनू भरल तँ भीतर समा जाइत अछि, कहियो खिंचाइत नहि। फोटो नहि: देखाओल लोगो अपन ऊँचाई खाली जगहक रूपमे रखैत अछि; नुकाउ ओकरा हटा दैत अछि।
 bill_logo_choose	फोटो चुनू
 bill_logo_remove	फोटो हटाउ
 bill_logo_none	कोनो फोटो नहि
@@ -122,10 +123,9 @@ bill_logo_unreadable	ई ऐप पढ़ि सकय एहन फोटो �
 bill_logo_width	चौड़ाई (px)
 bill_logo_height	ऊँचाई (px)
 bill_logo_tones	धूसर
+bill_logo_tones_help	ठोस: प्रत्येक बिंदु कारी वा उज्जर, साफ लोगो लेल। छायादार: धूसर महीन बिंदुक नमूना बनि जाइत अछि, फोटो आ हल्लुक छाया लेल।
 bill_logo_solid	ठोस
 bill_logo_shaded	छायादार
-bill_logo_help	चौड़ाई आ ऊँचाई px मे। खाली रहला पर फोटोक अनुसार: एक खाली तँ आकार बनल रहैत अछि, दुनू खाली तँ अपन असली नाप; दुनू भरल तँ भीतर समा जाइत अछि, कहियो खिंचाइत नहि। फोटो नहि: देखाओल लोगो अपन ऊँचाई खाली जगहक रूपमे रखैत अछि; नुकाउ ओकरा हटा दैत अछि।
-bill_logo_tones_help	ठोस: प्रत्येक बिंदु कारी वा उज्जर, साफ लोगो लेल। छायादार: धूसर महीन बिंदुक नमूना बनि जाइत अछि, फोटो आ हल्लुक छाया लेल।
 slip_col_width	चौड़ाइ (mm)
 slip_col_start	शुरुआतक जगह (px)
 slip_col_end	अंतक जगह (px)
@@ -566,6 +566,15 @@ print_open	छापू / खोलू
 reason_amend_ph	संशोधन / रद्द / वापसीक कारण
 reason_note_ph	कारण / टिप्पणी (बर्बादी, गिनती, …)
 record_day_close	दिन बंद दर्ज करू
+business_day	When does Today reset?
+business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
+biz_day_until_close	Until Day close
+biz_day_midnight	Calendar midnight
+business_day_saved	Business day saved
+report_day_lens	View Today as
+report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
+report_lens_day_close	By Day close
+report_lens_midnight	By midnight
 refresh_from_shop	दोकानसँ ताजा करू
 refund	वापसी
 remove_selected	चुनल हटाउ

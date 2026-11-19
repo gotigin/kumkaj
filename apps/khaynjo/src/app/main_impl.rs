@@ -845,6 +845,22 @@ impl App {
                 *deferred_till_sync_frame().lock().unwrap() = None;
                 self.sync_chrome(cx);
             }
+            let settings_paint_ours = deferred_settings_paint_frame()
+                .lock()
+                .unwrap()
+                .map(|frame| e.set.contains(&frame))
+                .unwrap_or(false);
+            if settings_paint_ours {
+                *deferred_settings_paint_frame().lock().unwrap() = None;
+                let on_settings = app_state().lock().unwrap().screen == Screen::Settings;
+                if on_settings {
+                    // Second pass after the visibility flip — hub rows / InfoHelp
+                    // that missed the first draw land without waiting for hover.
+                    self.ui.view(cx, ids!(settings_screen)).redraw(cx);
+                    self.ui.widget(cx, ids!(sidebar_nav_list)).redraw(cx);
+                    cx.redraw_all();
+                }
+            }
             self.tick_smoke_script(cx);
         }
         // Dropdowns first (popup.rs): an outside press closes the open list,

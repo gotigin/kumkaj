@@ -115,6 +115,7 @@ bill_line_total	Fitambarany
 bill_line_footer	Fanamarihana farany
 bill_line_upi	UPI
 bill_logo_picture	Sary
+bill_logo_help	Sakany sy haavony amin'ny px. Ny banga dia manaraka ny sary: iray banga mitazona ny endriny, samy banga mampiasa ny habeny manokana; samy voafaritra dia ampidirina ao anatiny, tsy hitarina mihitsy. Tsy misy sary: ny logo aseho dia mitazona ny haavony ho toerana banga; Afeno no manala azy.
 bill_logo_choose	Misafidiana sary
 bill_logo_remove	Esory ny sary
 bill_logo_none	Tsy misy sary
@@ -122,10 +123,9 @@ bill_logo_unreadable	Tsy sary azon'ny fampiharana vakiana
 bill_logo_width	Sakany (px)
 bill_logo_height	Haavony (px)
 bill_logo_tones	Volon-davenona
+bill_logo_tones_help	Mafy: teboka tsirairay mainty na fotsy, ho an'ny logo mazava. Misy aloka: ny volon-davenona lasa lamina teboka madinika, ho an'ny sary sy aloka malefaka.
 bill_logo_solid	Mafy
 bill_logo_shaded	Misy aloka
-bill_logo_help	Sakany sy haavony amin'ny px. Ny banga dia manaraka ny sary: iray banga mitazona ny endriny, samy banga mampiasa ny habeny manokana; samy voafaritra dia ampidirina ao anatiny, tsy hitarina mihitsy. Tsy misy sary: ny logo aseho dia mitazona ny haavony ho toerana banga; Afeno no manala azy.
-bill_logo_tones_help	Mafy: teboka tsirairay mainty na fotsy, ho an'ny logo mazava. Misy aloka: ny volon-davenona lasa lamina teboka madinika, ho an'ny sary sy aloka malefaka.
 slip_col_width	Sakany (mm)
 slip_col_start	Elanelana fanombohana (px)
 slip_col_end	Elanelana fiafarana (px)
@@ -566,6 +566,15 @@ print_open	Printy / sokafy
 reason_amend_ph	Antony hanitsiana / hanafoanana / hamerenana vola
 reason_note_ph	Antony / fanamarihana (fandaniam-potoana, fanisana, ...)
 record_day_close	Raketo ny fanakatonana andro
+business_day	When does Today reset?
+business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
+biz_day_until_close	Until Day close
+biz_day_midnight	Calendar midnight
+business_day_saved	Business day saved
+report_day_lens	View Today as
+report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
+report_lens_day_close	By Day close
+report_lens_midnight	By midnight
 refresh_from_shop	Manao fanavaozana avy amin'ny fivarotana
 refund	Famerenam-bola
 remove_selected	Esory voafantina

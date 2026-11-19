@@ -791,6 +791,38 @@ impl MatchEvent for App {
             }
             self.sync_chrome(cx);
         }
+        for (chip, chip_on, mode) in [
+            (
+                ids!(biz_day_until_close),
+                ids!(biz_day_until_close_on),
+                business_day::BusinessDayMode::UntilDayClose,
+            ),
+            (
+                ids!(biz_day_midnight),
+                ids!(biz_day_midnight_on),
+                business_day::BusinessDayMode::CalendarMidnight,
+            ),
+        ] {
+            if self.choice_chip_clicked(cx, actions, chip, chip_on) {
+                let result = (|| -> Result<String, String> {
+                    let mut st = app_state().lock().unwrap();
+                    let actor = st.actor()?;
+                    if !actor.is_owner() {
+                        return Err("Only the Owner can change the business day".into());
+                    }
+                    let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
+                    store.set_business_day_mode(mode)?;
+                    let _ = st.reload_all();
+                    st.sync_report_day_lens_from_shop();
+                    Ok(st.t("business_day_saved"))
+                })();
+                match result {
+                    Ok(msg) => self.set_status(cx, msg),
+                    Err(e) => self.set_status(cx, e),
+                }
+                self.sync_chrome(cx);
+            }
+        }
         if self.ui.button(cx, ids!(day_close_commit)).clicked(actions) {
             let counted_text = self.ui.text_input(cx, ids!(day_close_counted_input)).text();
             let result = (|| -> Result<String, String> {
@@ -5735,6 +5767,33 @@ impl MatchEvent for App {
                 self.set_status(cx, "Open Day close first");
             } else {
                 self.copy_text_to_clipboard(cx, &text);
+            }
+        }
+        for (chip, chip_on, lens) in [
+            (
+                ids!(report_lens_day_close),
+                ids!(report_lens_day_close_on),
+                ReportDayLens::ByDayClose,
+            ),
+            (
+                ids!(report_lens_midnight),
+                ids!(report_lens_midnight_on),
+                ReportDayLens::ByCalendarMidnight,
+            ),
+        ] {
+            if self.choice_chip_clicked(cx, actions, chip, chip_on) {
+                let result = (|| -> Result<(), String> {
+                    let mut st = app_state().lock().unwrap();
+                    st.report_day_lens = lens;
+                    st.books_report_kind = BooksReportKind::Today;
+                    st.load_books_report()?;
+                    st.screen = Screen::Reports;
+                    Ok(())
+                })();
+                if let Err(e) = result {
+                    self.set_status(cx, e);
+                }
+                self.sync_chrome(cx);
             }
         }
         {

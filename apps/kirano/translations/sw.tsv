@@ -82,6 +82,8 @@ printer_paper_help	Iliyoripotiwa ni karatasi ambayo dereva wa printa hii ameweke
 preview_help	Risiti hii kama inavyochapishwa kwenye printa iliyochaguliwa hapa chini, kwa ukubwa halisi kwenye karatasi yake pepe. Nyeupe ni mahali inapochapisha, karatasi ya kijivu haifikiwi na printa, na wino uliofifia hukatwa. Miraba tisa ni karatasi: gusa mahali risiti inapaswa kukaa. Risiti ndefu huendelea kwenye kurasa zaidi. Kuchagua printa hubadilisha onyesho la awali tu.
 slip_col_start	Nafasi ya mwanzo (px)
 slip_col_end	Nafasi ya mwisho (px)
+slip_columns	Safu wima
+slip_col_header	Kichwa
 slip_columns_help	Upana wa kila safu wima unajumuisha nafasi yake ya mwanzo na ya mwisho. Maandishi hujikunja ndani ya safu yake; kinachozidi upana wa maudhui hukatwa, kwenye karatasi na kwenye onyesho la kukagua.
 bill_total_qty_label	Lebo ya idadi yote
 bill_total_subtotal_label	Lebo ya jumla ndogo
@@ -351,6 +353,15 @@ print_open	Chapisha / fungua
 reason_amend_ph	Sababu ya kurekebisha / kufuta / kurejesha
 reason_note_ph	Sababu / kumbuka (uharibifu, kuhesabu, …)
 record_day_close	Rekodi kufunga siku
+business_day	When does Today reset?
+business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
+biz_day_until_close	Until Day close
+biz_day_midnight	Calendar midnight
+business_day_saved	Business day saved
+report_day_lens	View Today as
+report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
+report_lens_day_close	By Day close
+report_lens_midnight	By midnight
 refresh_from_shop	Onyesha upya kutoka dukani
 refund	Kurejesha
 remove_selected	Ondoa aliyechaguliwa
@@ -474,6 +485,8 @@ route_bill	Bili
 station_print_pick_first	Chagua sehemu ya duka kwanza
 bill_printers_dd	Vifaa vya kuvunja kwa fursa
 bill_printers_dd_n	{n} vifaa vya kuvunja kwa fursa · bonyeza ili kubadilisha
+printer_mode_first	Yake ya kwanza inayofanya kazi
+printer_mode_all	Piga kwa wote
 station_vp_attached	Printa imeambatishwa
 station_vp_detached	Printa imeondolewa kutoka kituo
 print_test_page	Chapisha ukurasa wa majaribio
@@ -825,6 +838,10 @@ client_template_importing	Inaingiza {title}…
 client_template_done	Kila bidhaa kutoka {title} iko kwenye vipengee vyako.
 client_template_imported	Vipengee vya {d} vilivyoongezwa na kategoria za {c} kutoka {title}
 cancel	Ghairi
+removing	Inaondoa…
+removed	Imeondolewa
+updating_order	Inasasisha…
+order_updated	Oda imesasishwa
 opening_client	Kupanua mteja…
 preparing_desk	Kuanzisha meza…
 opening_server	Kupanua mtendaji…
@@ -855,16 +872,7 @@ recent_changes	Mabadiliko ya karibuni
 lane_declared_label	Ankara ya kodi
 lane_owner_label	Memo ya taslimu
 money_lane_bill	Bilio: {lane}
-
-removing	Inaondoa…
-removed	Imeondolewa
-updating_order	Inasasisha…
-order_updated	Oda imesasishwa
 sel_copy	Nakili
 sel_select_all	Chagua zote
 sel_copied	Imenakiliwa
 nav_loading	Inapakia…
-printer_mode_first	Yake ya kwanza inayofanya kazi
-printer_mode_all	Piga kwa wote
-slip_columns	Safu wima
-slip_col_header	Kichwa

@@ -82,6 +82,8 @@ printer_paper_help	Αναφερόμενο είναι το χαρτί στο οπ
 preview_help	Αυτή η απόδειξη όπως τυπώνεται στον εκτυπωτή που επιλέχθηκε παρακάτω, σε πραγματικό μέγεθος πάνω στο εικονικό του χαρτί. Το λευκό είναι όπου τυπώνει, το γκρι χαρτί είναι εκτός εμβέλειας του εκτυπωτή και το ξεθωριασμένο μελάνι κόβεται. Τα εννέα τετράγωνα είναι το χαρτί: πατήστε εκεί όπου πρέπει να μπει η απόδειξη. Μια μακριά απόδειξη συνεχίζει σε περισσότερες σελίδες. Η επιλογή εκτυπωτή αλλάζει μόνο την προεπισκόπηση.
 slip_col_start	Κενό αρχής (px)
 slip_col_end	Κενό τέλους (px)
+slip_columns	Στήλες
+slip_col_header	Κεφαλίδα
 slip_columns_help	Το πλάτος κάθε στήλης περιλαμβάνει το κενό αρχής και τέλους της. Το κείμενο αναδιπλώνεται μέσα στη στήλη του· ό,τι ξεπερνά το πλάτος περιεχομένου κόβεται, στο χαρτί και στην προεπισκόπηση.
 bill_total_qty_label	Ετικέτα συνολ. ποσ.
 bill_total_subtotal_label	Ετικέτα υποσυνόλου
@@ -351,6 +353,15 @@ print_open	Εκτύπωση / άνοιγμα
 reason_amend_ph	Αιτία διόρθωσης / ακύρωσης / επιστροφής
 reason_note_ph	Αιτία / σημείωση (φύρα, μέτρημα, …)
 record_day_close	Καταχώριση κλεισίματος ημέρας
+business_day	When does Today reset?
+business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
+biz_day_until_close	Until Day close
+biz_day_midnight	Calendar midnight
+business_day_saved	Business day saved
+report_day_lens	View Today as
+report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
+report_lens_day_close	By Day close
+report_lens_midnight	By midnight
 refresh_from_shop	Ανανέωση από το μαγαζί
 refund	Επιστροφή
 remove_selected	Αφαίρεση επιλεγμένου
@@ -474,6 +485,8 @@ route_bill	Λογαριασμός
 station_print_pick_first	Επιλέξτε πρώτα ένα τμήμα καταστήματος
 bill_printers_dd	Εκτυπωτές για τον λογαριασμό
 bill_printers_dd_n	{n} εκτυπωτής/ές για τον λογαριασμό · αγγίξτε για αλλαγή
+printer_mode_first	Ο πρώτος που δουλεύει
+printer_mode_all	Εκτύπωση σε όλους
 station_vp_attached	Ο εκτυπωτής συνδέθηκε
 station_vp_detached	Ο εκτυπωτής αφαιρέθηκε από τον σταθμό
 print_test_page	Εκτύπωση δοκιμαστικής σελίδας
@@ -825,6 +838,10 @@ client_template_importing	Εισαγωγή {title}…
 client_template_done	Κάθε στοιχείο από το {title} βρίσκεται στα στοιχεία σας.
 client_template_imported	Προστέθηκαν στοιχεία {d} και κατηγορίες {c} από το {title}
 cancel	Ακύρωση
+removing	Αφαίρεση…
+removed	Αφαιρέθηκε
+updating_order	Ενημέρωση…
+order_updated	Η παραγγελία ενημερώθηκε
 opening_client	Άνοιγμα client…
 preparing_desk	Ετοιμασία γραφείου…
 opening_server	Άνοιγμα server…
@@ -855,16 +872,7 @@ recent_changes	Πρόσφατες αλλαγές
 lane_declared_label	Φορολογικό τιμολόγιο
 lane_owner_label	Απόδειξη μετρητών
 money_lane_bill	Λογαριασμός: {lane}
-
-removing	Αφαίρεση…
-removed	Αφαιρέθηκε
-updating_order	Ενημέρωση…
-order_updated	Η παραγγελία ενημερώθηκε
 sel_copy	Αντιγραφή
 sel_select_all	Επιλογή όλων
 sel_copied	Αντιγράφηκε
 nav_loading	Φόρτωση…
-printer_mode_first	Ο πρώτος που δουλεύει
-printer_mode_all	Εκτύπωση σε όλους
-slip_columns	Στήλες
-slip_col_header	Κεφαλίδα

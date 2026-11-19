@@ -82,6 +82,8 @@ printer_paper_help	La soo sheegay waa warqadda darawalka daabacahan loo dejiyay;
 preview_help	Rasiidkan sida uu ugu daabacmo daabacaha hoos laga doortay, cabbir dhab ah oo saaran warqaddiisa virtual-ka ah. Caddaanku waa meesha uu wax ku daabaco, warqadda cawlan daabacuhu ma gaaro, khadka khafiifka ahna waa la gooyaa. Sagaalka afargees waa warqadda: taabo meesha rasiidku ku fadhiisanayo. Rasiid dheer wuxuu u gudbaa bogag kale. Dooranka daabace wuxuu beddelaa hordhaca oo keliya.
 slip_col_start	Meesha bilowga (px)
 slip_col_end	Meesha dhammaadka (px)
+slip_columns	Tiirarrada
+slip_col_header	Cinwaan
 slip_columns_help	Ballaca tiir kastaa wuxuu ka kooban yahay meeshiisa bilowga iyo dhammaadka. Qoraalku wuxuu ku duubmaa tiirkiisa gudihiisa; wixii dhaafa ballaca waxa ku jira waa la jaraa, warqadda iyo horudhacaba.
 bill_total_qty_label	Calaamadda wadarta tirada
 bill_total_subtotal_label	Calaamadda wadarta hoose
@@ -351,6 +353,15 @@ print_open	Daabac / fur
 reason_amend_ph	Sababta saxitaanka / burinta / celinta
 reason_note_ph	Sabab / qoraal (khasaare, tirin, …)
 record_day_close	Diiwaan geli xiritaanka maalinta
+business_day	When does Today reset?
+business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
+biz_day_until_close	Until Day close
+biz_day_midnight	Calendar midnight
+business_day_saved	Business day saved
+report_day_lens	View Today as
+report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
+report_lens_day_close	By Day close
+report_lens_midnight	By midnight
 refresh_from_shop	Ka cusbooneysii dukaanka
 refund	Celi lacag
 remove_selected	Ka saar kan la doortay
@@ -474,6 +485,8 @@ route_bill	Biil
 station_print_pick_first	Marka hore dooro qaybta dukaanka
 bill_printers_dd	Daabacayaasha biilka
 bill_printers_dd_n	daabacaha {n} oo biilka ah · taabo si aad u beddesho
+printer_mode_first	Kan ugu horreeya ee shaqeeya
+printer_mode_all	Ku daabac dhammaan
 station_vp_attached	Daabacaha waa la xiray
 station_vp_detached	Daabacaha waa laga saaray saldhigga
 print_test_page	Daabac bog tijaabo ah
@@ -825,6 +838,10 @@ client_template_importing	{title} ayaa la soo dejinayaa…
 client_template_done	Shay kasta oo ka yimid {title} wuxuu saaran yahay alaabtaada.
 client_template_imported	Waxyaabaha lagu daray {d} iyo qaybaha {c} ee {title}
 cancel	Jooji
+removing	Waa laga saarayaa…
+removed	Waa laga saaray
+updating_order	Waa la cusboonaysiinayaa…
+order_updated	Dalabka waa la cusboonaysiiyay
 opening_client	Macaamiilka ayaa la furayaa…
 preparing_desk	Miiska ayaa la diyaarinayaa…
 opening_server	Server-ka ayaa la furayaa…
@@ -855,16 +872,7 @@ recent_changes	Isbeddelladii dhawaa
 lane_declared_label	Faaturo canshuur
 lane_owner_label	Warqadda lacagta caddaanka
 money_lane_bill	Biil: {lane}
-
-removing	Waa laga saarayaa…
-removed	Waa laga saaray
-updating_order	Waa la cusboonaysiinayaa…
-order_updated	Dalabka waa la cusboonaysiiyay
 sel_copy	Koobi
 sel_select_all	Dooro dhammaan
 sel_copied	Waa la koobiyeeyay
 nav_loading	Waa la soo shubayaa…
-printer_mode_first	Kan ugu horreeya ee shaqeeya
-printer_mode_all	Ku daabac dhammaan
-slip_columns	Tiirarrada
-slip_col_header	Cinwaan

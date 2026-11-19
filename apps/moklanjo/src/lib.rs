@@ -10,6 +10,7 @@ pub use makepad_widgets;
 pub mod barcode_scan;
 pub mod books_op;
 pub mod booking;
+pub mod business_day;
 pub mod cod;
 pub mod consignments;
 pub mod courier_ops_view;

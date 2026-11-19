@@ -115,6 +115,7 @@ bill_line_total	एकूण
 bill_line_footer	तळटीप
 bill_line_upi	यूपीआई
 bill_logo_picture	चित्र
+bill_logo_help	रुंदाय आनी उंचाय px त. रितें दवरल्यार चित्रा प्रमाण: एक रितें जाल्यार आकार उरता, दोनूय रितीं जाल्यार ताचो स्वताचो आकार; दोनूय भरल्यार भितर बसता, केन्नाच ओडून व्हड जायना. चित्र ना जाल्यार: दाखयल्लो लोगो आपली उंचाय रिती सुवात म्हूण दवरता; लिपय तो काडटा.
 bill_logo_choose	चित्र वेंचात
 bill_logo_remove	चित्र काडात
 bill_logo_none	चित्र ना
@@ -122,10 +123,9 @@ bill_logo_unreadable	हें ऍप वाचूंक शकता असल�
 bill_logo_width	रुंदाय (px)
 bill_logo_height	उंचाय (px)
 bill_logo_tones	धुंवट
+bill_logo_tones_help	घट: दर एक बिंदू काळो वा धवो, स्पश्ट लोगोंखातीर. सावळ्याचें: धुंवट बारीक बिंदूंचो नमुनो जाता, फोटो आनी मोव सावळ्याखातीर.
 bill_logo_solid	घट
 bill_logo_shaded	सावळ्याचें
-bill_logo_help	रुंदाय आनी उंचाय px त. रितें दवरल्यार चित्रा प्रमाण: एक रितें जाल्यार आकार उरता, दोनूय रितीं जाल्यार ताचो स्वताचो आकार; दोनूय भरल्यार भितर बसता, केन्नाच ओडून व्हड जायना. चित्र ना जाल्यार: दाखयल्लो लोगो आपली उंचाय रिती सुवात म्हूण दवरता; लिपय तो काडटा.
-bill_logo_tones_help	घट: दर एक बिंदू काळो वा धवो, स्पश्ट लोगोंखातीर. सावळ्याचें: धुंवट बारीक बिंदूंचो नमुनो जाता, फोटो आनी मोव सावळ्याखातीर.
 slip_col_width	रुंदाय (mm)
 slip_col_start	सुरवेची सुवात (px)
 slip_col_end	निमाणी सुवात (px)
@@ -566,6 +566,15 @@ print_open	छापप / उगडप
 reason_amend_ph	दुरुस्ती / रद्द / परतावो करपाचें कारण
 reason_note_ph	कारण / टिप (वाया घालप, गणना, ...)
 record_day_close	विक्रमी दीस बंद
+business_day	When does Today reset?
+business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
+biz_day_until_close	Until Day close
+biz_day_midnight	Calendar midnight
+business_day_saved	Business day saved
+report_day_lens	View Today as
+report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
+report_lens_day_close	By Day close
+report_lens_midnight	By midnight
 refresh_from_shop	दुकानांतल्यान ताजें करचें
 refund	रिफंड
 remove_selected	निवडिल्लें काडून उडोवचें

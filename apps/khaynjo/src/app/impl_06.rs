@@ -1807,6 +1807,7 @@ impl App {
                     }
                     st.session = Some(member.clone());
                     st.reload_amount_visibility();
+                    st.sync_report_day_lens_from_shop();
                     st.pin_buffer.clear();
                     st.pin_visible = false;
                     st.failed_unlocks = 0;
@@ -3379,6 +3380,28 @@ impl App {
             self.ui.text_input(cx, id).set_text(cx, "");
         }
         self.sync_chrome(cx);
+    }
+
+    fn paint_business_day_chrome(&mut self, cx: &mut Cx) {
+        let biz_day = {
+            let st = app_state().lock().unwrap();
+            st.store
+                .as_ref()
+                .and_then(|s| s.business_day_mode().ok())
+                .unwrap_or(business_day::BusinessDayMode::UntilDayClose)
+        };
+        self.paint_choice_pair(
+            cx,
+            ids!(biz_day_until_close),
+            ids!(biz_day_until_close_on),
+            matches!(biz_day, business_day::BusinessDayMode::UntilDayClose),
+        );
+        self.paint_choice_pair(
+            cx,
+            ids!(biz_day_midnight),
+            ids!(biz_day_midnight_on),
+            matches!(biz_day, business_day::BusinessDayMode::CalendarMidnight),
+        );
     }
 
     fn paint_history_retention_chrome(&mut self, cx: &mut Cx) {

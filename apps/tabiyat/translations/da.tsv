@@ -94,6 +94,8 @@ printer_paper_help	Rapporteret er det papir, som denne printers driver er indsti
 preview_help	Denne bon, som den udskrives på den printer, der er valgt nedenfor, i ægte størrelse på dens virtuelle papir. Hvidt er, hvor der udskrives, gråt papir er uden for printerens rækkevidde, og falmet blæk skæres væk. De ni felter er papiret: tryk der, hvor bonen skal sidde. En lang bon fortsætter på flere sider. At vælge en printer ændrer kun forhåndsvisningen.
 slip_col_start	Startafstand (px)
 slip_col_end	Slutafstand (px)
+slip_columns	Kolonner
+slip_col_header	Overskrift
 slip_columns_help	Hver kolonnes bredde omfatter dens start- og slutafstand. Teksten ombrydes inden for sin kolonne; det, der ligger ud over indholdsbredden, skæres af – på papiret og i forhåndsvisningen.
 bill_total_qty_label	Etiket for antal i alt
 bill_total_subtotal_label	Etiket for subtotal
@@ -363,6 +365,15 @@ print_open	Udskriv / åbn
 reason_amend_ph	Årsag til rettelse / annullering / refundering
 reason_note_ph	Årsag / note (spild, optælling, …)
 record_day_close	Bogfør dagsafslutning
+business_day	When does Today reset?
+business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
+biz_day_until_close	Until Day close
+biz_day_midnight	Calendar midnight
+business_day_saved	Business day saved
+report_day_lens	View Today as
+report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
+report_lens_day_close	By Day close
+report_lens_midnight	By midnight
 refresh_from_shop	Opdater fra butikken
 refund	Refundér
 remove_selected	Fjern valgte
@@ -486,6 +497,8 @@ route_bill	Regning
 station_print_pick_first	Vælg først en apoteksektion
 bill_printers_dd	Printere til regningen
 bill_printers_dd_n	{n} printer(e) til regningen · tryk for at ændre
+printer_mode_first	Første der virker
+printer_mode_all	Udskriv på alle
 station_vp_attached	Printer tilknyttet
 station_vp_detached	Printer fjernet fra station
 print_test_page	Udskriv en testside
@@ -837,6 +850,10 @@ client_template_importing	Importerer {title}…
 client_template_done	Alle varer fra {title} er på dine varer.
 client_template_imported	Tilføjede {d} varer og {c} kategorier fra {title}
 cancel	Annuller
+removing	Fjerner…
+removed	Fjernet
+updating_order	Opdaterer…
+order_updated	Ordre opdateret
 opening_client	Åbner klient…
 preparing_desk	Gør bordet klar…
 opening_server	Åbner server…
@@ -867,16 +884,7 @@ recent_changes	Seneste ændringer
 lane_declared_label	Skattefaktura
 lane_owner_label	Kontantnota
 money_lane_bill	Regning: {lane}
-
-removing	Fjerner…
-removed	Fjernet
-updating_order	Opdaterer…
-order_updated	Ordre opdateret
 sel_copy	Kopiér
 sel_select_all	Vælg alt
 sel_copied	Kopieret
 nav_loading	Indlæser…
-printer_mode_first	Første der virker
-printer_mode_all	Udskriv på alle
-slip_columns	Kolonner
-slip_col_header	Overskrift

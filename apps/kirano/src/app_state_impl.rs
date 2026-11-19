@@ -219,6 +219,7 @@ impl AppState {
             rail_width: RAIL_WIDTH_DEFAULT,
             rail_collapsed: false,
             books_report_kind: BooksReportKind::Today,
+            report_day_lens: ReportDayLens::ByDayClose,
         };
         // Tests never open this machine's books or printers, and never
         // print. The library's own "capture under cargo test" does not
@@ -1179,11 +1180,22 @@ impl AppState {
         Ok(())
     }
 
+    /// Align Reports day lens with shop business-day default (view can still override).
+    fn sync_report_day_lens_from_shop(&mut self) {
+        let mode = self
+            .store
+            .as_ref()
+            .and_then(|s| s.business_day_mode().ok())
+            .unwrap_or(business_day::BusinessDayMode::UntilDayClose);
+        self.report_day_lens = ReportDayLens::from_shop_mode(mode);
+    }
+
     /// Load the bank-books body for [`Self::books_report_kind`] into `day_close_text`.
     fn load_books_report(&mut self) -> Result<(), String> {
         let store = self.store.as_ref().ok_or_else(|| "No store".to_string())?;
+        let lens = self.report_day_lens;
         self.day_close_text = match self.books_report_kind {
-            BooksReportKind::Today => store.books_report_text("today")?,
+            BooksReportKind::Today => store.books_report_today_for_mode(lens.as_mode())?,
             BooksReportKind::Month => store.books_report_text("month")?,
             BooksReportKind::Aging => store.outstanding_pack_text()?,
             BooksReportKind::BalanceSheet => store.balance_sheet_text()?,

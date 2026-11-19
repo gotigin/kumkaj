@@ -94,6 +94,8 @@ printer_paper_help	Мэдээлсэн гэдэг нь энэ принтерий�
 preview_help	Энэ баримт доор сонгосон принтер дээр хэрхэн хэвлэгдэхийг, түүний виртуал цаасан дээр бодит хэмжээгээр харуулна. Цагаан нь хэвлэгдэх газар, саарал цаасанд принтер хүрэхгүй, бүдэг бэх тасарна. Есөн дөрвөлжин бол цаас: баримт байх ёстой газрыг товшино уу. Урт баримт дараагийн хуудсанд үргэлжилнэ. Принтер сонгох нь зөвхөн урьдчилан харахыг өөрчилнө.
 slip_col_start	Эхлэлийн зай (px)
 slip_col_end	Төгсгөлийн зай (px)
+slip_columns	Баганууд
+slip_col_header	Гарчиг
 slip_columns_help	Багана бүрийн өргөнд түүний эхлэл ба төгсгөлийн зай багтана. Текст өөрийн баганын дотор мөр шилжинэ; агуулгын өргөнөөс хэтэрсэн хэсэг цаасан дээр болон урьдчилан харахад тасарна.
 bill_total_qty_label	Нийт тооны шошго
 bill_total_subtotal_label	Дэд дүнгийн шошго
@@ -363,6 +365,15 @@ print_open	Хэвлэх / нээх
 reason_amend_ph	Засах / хүчингүй болгох / буцаах шалтгаан
 reason_note_ph	Шалтгаан / тэмдэглэл (хорогдол, тооллого, …)
 record_day_close	Өдөр хаалтыг бүртгэх
+business_day	When does Today reset?
+business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
+biz_day_until_close	Until Day close
+biz_day_midnight	Calendar midnight
+business_day_saved	Business day saved
+report_day_lens	View Today as
+report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
+report_lens_day_close	By Day close
+report_lens_midnight	By midnight
 refresh_from_shop	Дэлгүүрээс шинэчлэх
 refund	Буцаалт
 remove_selected	Сонгосныг хасах
@@ -486,6 +497,8 @@ route_bill	Тооцоо
 station_print_pick_first	Эхлээд диспансерийн хэсгийг сонго
 bill_printers_dd	Тооцооны принтерүүд
 bill_printers_dd_n	тооцоонд {n} принтер · өөрчлөхийн тулд товшино
+printer_mode_first	Эхний ажилладаг нь
+printer_mode_all	Бүгдэд хэвлэх
 station_vp_attached	Принтер холбогдлоо
 station_vp_detached	Принтер станцаас хасагдлаа
 print_test_page	Туршилтын хуудас хэвлэх
@@ -837,6 +850,10 @@ client_template_importing	{title} импортлож байна…
 client_template_done	{title}-н бүх зүйл таны зүйлс дээр байна.
 client_template_imported	{title}-ээс {d} зүйлс болон {c} ангиллыг нэмсэн
 cancel	Цуцлах
+removing	Хасаж байна…
+removed	Хасагдлаа
+updating_order	Шинэчилж байна…
+order_updated	Захиалга шинэчлэгдлээ
 opening_client	Клиент нээгдэж байна…
 preparing_desk	Ширээ бэлтгэж байна…
 opening_server	Сервер нээгдэж байна…
@@ -867,16 +884,7 @@ recent_changes	Сүүлийн өөрчлөлт
 lane_declared_label	Татварын нэхэмжлэл
 lane_owner_label	Бэлэн тэмдэглэл
 money_lane_bill	Тооцоо: {lane}
-
-removing	Хасаж байна…
-removed	Хасагдлаа
-updating_order	Шинэчилж байна…
-order_updated	Захиалга шинэчлэгдлээ
 sel_copy	Хуулах
 sel_select_all	Бүгдийг сонгох
 sel_copied	Хуулагдлаа
 nav_loading	Ачаалж байна…
-printer_mode_first	Эхний ажилладаг нь
-printer_mode_all	Бүгдэд хэвлэх
-slip_columns	Баганууд
-slip_col_header	Гарчиг

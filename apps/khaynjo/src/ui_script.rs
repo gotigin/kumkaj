@@ -12222,6 +12222,22 @@ h_backup := WrapLabel{body: "Backup" font_color: #x260B08 font_size: 16.}
                                 day_close_help := InfoHelp{
                                     tip: "Recording a day close saves this summary (and drawer variance if counted) to the audit log. It does not stop selling."
                                 }
+                                // Titled InfoHelp (not WrapLabel + tip-only): ℹ beside the label.
+                                business_day_help := InfoHelp{
+                                    tip: "Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local."
+                                }
+                                View{
+                                    width: Fill height: Fit
+                                    flow: Right{wrap: true} spacing: 8
+                                    View{width: Fit height: Fit flow: Overlay
+                                        biz_day_until_close := SegBtn{text: "Until Day close"}
+                                        biz_day_until_close_on := SegBtnOn{text: "Until Day close" visible: false}
+                                    }
+                                    View{width: Fit height: Fit flow: Overlay
+                                        biz_day_midnight := SegBtn{text: "Calendar midnight"}
+                                        biz_day_midnight_on := SegBtnOn{text: "Calendar midnight" visible: false}
+                                    }
+                                }
                                 day_close_label := mod.widgets.ReportText{}
                                 // Morning float, then drawer handovers between billers
                                 // (BUSINESS_BOOKS.md § Shift and day-end cash).
@@ -12249,6 +12265,22 @@ h_backup := WrapLabel{body: "Backup" font_color: #x260B08 font_size: 16.}
                                 padding: Inset{left: 16. right: 16. top: 8. bottom: 120.}
                                 reports_help := InfoHelp{
                                     tip: "Day books, party aging, bank posts, and period P&L — same books for every entity."
+                                }
+                                // Titled InfoHelp (not WrapLabel + tip-only): ℹ beside the label.
+                                report_day_lens_help := InfoHelp{
+                                    tip: "View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am."
+                                }
+                                View{
+                                    width: Fill height: Fit
+                                    flow: Right{wrap: true} spacing: 8
+                                    View{width: Fit height: Fit flow: Overlay
+                                        report_lens_day_close := SegBtn{text: "By Day close"}
+                                        report_lens_day_close_on := SegBtnOn{text: "By Day close" visible: false}
+                                    }
+                                    View{width: Fit height: Fit flow: Overlay
+                                        report_lens_midnight := SegBtn{text: "By midnight"}
+                                        report_lens_midnight_on := SegBtnOn{text: "By midnight" visible: false}
+                                    }
                                 }
                                 // Which report: one segmented row, not four big buttons.
                                 reports_books_btns := View{

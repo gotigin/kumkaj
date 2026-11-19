@@ -115,6 +115,7 @@ bill_line_total	Барлығы
 bill_line_footer	Төменгі жазу
 bill_line_upi	UPI
 bill_logo_picture	Сурет
+bill_logo_help	Ені мен биіктігі px-пен. Бос қалса суретке ереді: біреуі бос болса пішіні сақталады, екеуі де бос болса өз өлшемі; екеуі де берілсе ішіне сыйғызады, ешқашан созбайды. Сурет жоқ: көрсетілген логотип биіктігін бос орын ретінде сақтайды; Жасыру оны алып тастайды.
 bill_logo_choose	Сурет таңдау
 bill_logo_remove	Суретті жою
 bill_logo_none	Сурет жоқ
@@ -122,10 +123,9 @@ bill_logo_unreadable	Бұл қолданба оқи алатын сурет ем
 bill_logo_width	Ені (px)
 bill_logo_height	Биіктігі (px)
 bill_logo_tones	Сұр реңктер
+bill_logo_tones_help	Тұтас: әр нүкте қара немесе ақ, анық логотиптер үшін. Көлеңкелі: сұр реңктер ұсақ нүкте өрнегіне айналады, фото және жұмсақ көлеңке үшін.
 bill_logo_solid	Тұтас
 bill_logo_shaded	Көлеңкелі
-bill_logo_help	Ені мен биіктігі px-пен. Бос қалса суретке ереді: біреуі бос болса пішіні сақталады, екеуі де бос болса өз өлшемі; екеуі де берілсе ішіне сыйғызады, ешқашан созбайды. Сурет жоқ: көрсетілген логотип биіктігін бос орын ретінде сақтайды; Жасыру оны алып тастайды.
-bill_logo_tones_help	Тұтас: әр нүкте қара немесе ақ, анық логотиптер үшін. Көлеңкелі: сұр реңктер ұсақ нүкте өрнегіне айналады, фото және жұмсақ көлеңке үшін.
 slip_col_width	Ені (mm)
 slip_col_start	Бастапқы аралық (px)
 slip_col_end	Соңғы аралық (px)
@@ -566,6 +566,15 @@ print_open	Басу / ашу
 reason_amend_ph	Түзету / жою / қайтару себебі
 reason_note_ph	Себеп / ескертпе (ысырап, санау, …)
 record_day_close	Күнді жабуды жазу
+business_day	When does Today reset?
+business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
+biz_day_until_close	Until Day close
+biz_day_midnight	Calendar midnight
+business_day_saved	Business day saved
+report_day_lens	View Today as
+report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
+report_lens_day_close	By Day close
+report_lens_midnight	By midnight
 refresh_from_shop	Дүкеннен жаңарту
 refund	Қайтару
 remove_selected	Таңдалғанды алып тастау

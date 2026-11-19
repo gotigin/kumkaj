@@ -3,6 +3,25 @@ app_tagline	Mga aklat ng courier-agency + booking desk. Libreng offline.
 unlock	I-unlock
 pin_hint	Ang may-ari PIN ay nagsisimula bilang 0000
 sell	Pagbu-book
+nav_board	Board
+board	Board
+park_draft	Park
+board_park_nothing	Nothing to park — add charges or booking details
+board_parked	Parked on Board — desk is clear
+board_draft	Draft
+board_booked	Booked
+board_filter_all	All
+board_filter_draft	Draft
+board_filter_booked	Booked
+board_cols_fmt	{n} col
+board_summary_fmt	{total} cards · {drafts} draft · {booked} booked
+board_card_no_charges	No charges yet
+board_card_charges	charges
+board_card_booked	Booking
+board_draft_gone	That draft is no longer on the Board
+board_draft_closed	That draft was already finished or discarded
+board_discard	Discard
+board_discarded	Draft discarded
 buy	Magbayad
 books	Day ledger
 books_help	Posisyon ngayon. Pagbu-book = papasok na mga parsela. Magbayad = mga bayarin at gastos sa carrier. Mga partido = consignors at carrier.
@@ -183,6 +202,13 @@ device_setup_help	Pinapanatili ng server ang mga ledger dito. Nagpares ang kliye
 currency	Pera
 backup	Reserbang kopya
 settings_sec_diag	Mga diagnostic
+settings_sec_privacy	Privacy
+privacy_policy_help	Privacy · PRIVACY.md · moklanjo.com/privacy
+dont_use	Huwag gumamit
+receipt_printers_dd	Mga printer sa device na ito · Resibo
+receipt_printers_dd_n	{n} · Mga printer sa device na ito · Resibo
+label_printers_dd	Mga printer sa device na ito · Label ng AWB
+label_printers_dd_n	{n} · Mga printer sa device na ito · Label ng AWB
 settings_hub_help	Buksan ang isang lugar sa isang pagkakataon — mas kaunting pag-scroll, mas malinaw na mga pagpipilian.
 settings_sec_devices	Iba pang mga device
 settings_sec_alerts	Mga alerto
@@ -315,6 +341,16 @@ copy_party_ledger_csv	Kopyahin ang ledger ng customer CSV
 copy_receipt	Kopyahin ang resibo
 copy_report	Kopyahin ang ulat
 counted_cash_ph	Nagbilang ng cash sa drawer
+close_shift_print	Close shift and print slip
+shift_handover	Shift handover
+shift_counted_ph	Cash counted at handover
+shift_since	This shift since
+expected_in_drawer	Expected in drawer
+lock_books_through_month	Lock books through month
+books_lock_month_ph	YYYY-MM
+lock_books_month_btn	Lock through this month
+books_locked_none	No month lock yet
+books_locked_through	Locked through
 counter_agency_ph	Counter / pangalan ng ahensya (opsyonal)
 create_backup	Gumawa ng backup
 day_close_summary	Buod ng malapit na araw
@@ -404,6 +440,9 @@ pay_ap_cash	Magbayad ng AP cash
 pay_ap_upi	Magbayad ng AP UPI
 period_bill	Bill ng panahon
 period_bill_party	Bill ng panahon (partido)
+period_bill_generate	Generate bill
+period_bill_generate_print	Generate & print
+booking_bulk_preview	{ok} ready · {bad} bad
 pick_pod_photo	Pumili ng POD na larawan
 print_awb_label	I-print ang label ng AWB
 print_open	I-print / buksan
@@ -612,6 +651,19 @@ attachments_last_expense	Mga Attachment (huling gastos)
 credit_limit_heading	Limitasyon sa kredito (piling customer o supplier)
 pay_selected_heading	Pinili ang pagbabayad (bayaran ang utang / kumuha ng advance)
 write_off_heading	I-write off (i-clear nang walang bayad)
+adjustment_notes_heading	Adjustment notes
+adj_note_amount_ph	Amount
+adj_note_reason_ph	Reason (required)
+adj_note_awb_ph	Related AWB (optional)
+credit_note_btn	Credit note
+debit_note_btn	Debit note
+bill_later_heading	Bill later (post-booking extra)
+bill_later_amount_ph	Extra amount
+bill_later_party_ph	Party (only if booking has none)
+bill_later_btn	Bill later
+bill_later_extra_oda	ODA
+bill_later_extra_packing	Packing
+bill_later_extra_other	Other
 pay_ap_heading	Bayaran ang utang natin sa kanila (AP)
 country_tax	Bansa at buwis
 extra_tills_heading	Mga dagdag na kaha
@@ -723,6 +775,23 @@ onboard_book_tmpl	Ledger · {} — magdagdag ng mga item sa menu at pambungad na
 onboard_template_tmpl	Pangalanan ang lugar kung gusto mo, pagkatapos ay piliin kung paano magsisimula.
 tmpl_blurb	Mga courier book at booking desk: mga consignor, carrier, day book, AWB.
 tmpl_how	Book parcels sa desk; Day book para sa araw na ito; mga tab para sa mga rate, party, ulat.
+app_template_heading	Shop templates
+app_template_blurb	Pick a starter desk. Skip leaves parties empty.
+app_template_skip	Skip for now
+app_template_status	Server ready — import a template, or skip
+app_template_importing	Applying {title}…
+app_template_public_hdr	Templates
+app_template_import_selected	Import selected
+public_tmpl_help	Bundled agency packs for this shop. No download needed.
+business_day	When does Today reset?
+business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
+biz_day_until_close	Until Day close
+biz_day_midnight	Calendar midnight
+business_day_saved	Business day saved
+report_day_lens	View Today as
+report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
+report_lens_day_close	By Day close
+report_lens_midnight	By midnight
 trk_booked	Naka-book
 trk_picked_up	Pinulot
 trk_in_transit	Nasa transit
@@ -846,10 +915,3 @@ sel_copy	Kopyahin
 sel_select_all	Piliin lahat
 sel_copied	Nakopya na
 nav_loading	Naglo-load…
-settings_sec_privacy	Privacy
-privacy_policy_help	Privacy · PRIVACY.md · moklanjo.com/privacy
-dont_use	Huwag gumamit
-receipt_printers_dd	Mga printer sa device na ito · Resibo
-receipt_printers_dd_n	{n} · Mga printer sa device na ito · Resibo
-label_printers_dd	Mga printer sa device na ito · Label ng AWB
-label_printers_dd_n	{n} · Mga printer sa device na ito · Label ng AWB

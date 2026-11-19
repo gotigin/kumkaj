@@ -3,6 +3,25 @@ app_tagline	कुरियर एजेन्सीको खाता + बु
 unlock	खोल्नुहोस्
 pin_hint	मालिकको PIN सुरुमा 0000 हुन्छ
 sell	बुकिङ
+nav_board	Board
+board	Board
+park_draft	Park
+board_park_nothing	Nothing to park — add charges or booking details
+board_parked	Parked on Board — desk is clear
+board_draft	Draft
+board_booked	Booked
+board_filter_all	All
+board_filter_draft	Draft
+board_filter_booked	Booked
+board_cols_fmt	{n} col
+board_summary_fmt	{total} cards · {drafts} draft · {booked} booked
+board_card_no_charges	No charges yet
+board_card_charges	charges
+board_card_booked	Booking
+board_draft_gone	That draft is no longer on the Board
+board_draft_closed	That draft was already finished or discarded
+board_discard	Discard
+board_discarded	Draft discarded
 buy	भुक्तानी
 books	दैनिक खाता
 books_help	आजको स्थिति। बुकिङ = आएका पार्सल। भुक्तानी = वाहकका बिल र खर्च। पार्टी = पठाउने र वाहक।
@@ -183,6 +202,13 @@ device_setup_help	सर्भरले खाता यहीँ राख्�
 currency	मुद्रा
 backup	ब्याकअप
 settings_sec_diag	निदान
+settings_sec_privacy	गोपनीयता
+privacy_policy_help	गोपनीयता · PRIVACY.md · moklanjo.com/privacy
+dont_use	प्रयोग नगर्नुहोस्
+receipt_printers_dd	यो उपकरणका प्रिन्टर · रसिद
+receipt_printers_dd_n	{n} · यो उपकरणका प्रिन्टर · रसिद
+label_printers_dd	यो उपकरणका प्रिन्टर · AWB लेबल
+label_printers_dd_n	{n} · यो उपकरणका प्रिन्टर · AWB लेबल
 settings_hub_help	एकपटकमा एउटा भाग खोल्नुहोस् — कम स्क्रोल, स्पष्ट छनोट।
 settings_sec_devices	अन्य उपकरण
 settings_sec_alerts	सूचना
@@ -315,6 +341,16 @@ copy_party_ledger_csv	पार्टी खाता CSV कपी गर्न
 copy_receipt	रसिद कपी गर्नुहोस्
 copy_report	रिपोर्ट कपी गर्नुहोस्
 counted_cash_ph	दराजमा गनेको नगद
+close_shift_print	Close shift and print slip
+shift_handover	Shift handover
+shift_counted_ph	Cash counted at handover
+shift_since	This shift since
+expected_in_drawer	Expected in drawer
+lock_books_through_month	Lock books through month
+books_lock_month_ph	YYYY-MM
+lock_books_month_btn	Lock through this month
+books_locked_none	No month lock yet
+books_locked_through	Locked through
 counter_agency_ph	काउन्टर / एजेन्सीको नाम (ऐच्छिक)
 create_backup	ब्याकअप बनाउनुहोस्
 day_close_summary	दिन बन्दको सारांश
@@ -404,6 +440,9 @@ pay_ap_cash	AP नगदले तिर्नुहोस्
 pay_ap_upi	AP UPI ले तिर्नुहोस्
 period_bill	अवधिको बिल
 period_bill_party	अवधिको बिल (पार्टी)
+period_bill_generate	Generate bill
+period_bill_generate_print	Generate & print
+booking_bulk_preview	{ok} ready · {bad} bad
 pick_pod_photo	POD फोटो छान्नुहोस्
 print_awb_label	AWB लेबल छाप्नुहोस्
 print_open	छाप्नुहोस् / खोल्नुहोस्
@@ -612,6 +651,19 @@ attachments_last_expense	संलग्न (पछिल्लो खर्च)
 credit_limit_heading	उधारो सीमा (छानिएको / नाम दिइएको पार्टी)
 pay_selected_heading	छानिएको तिर्नुहोस् (ऋण मिलाउने / अग्रिम लिने)
 write_off_heading	मिनाहा (भुक्तानीबिना खाली)
+adjustment_notes_heading	Adjustment notes
+adj_note_amount_ph	Amount
+adj_note_reason_ph	Reason (required)
+adj_note_awb_ph	Related AWB (optional)
+credit_note_btn	Credit note
+debit_note_btn	Debit note
+bill_later_heading	Bill later (post-booking extra)
+bill_later_amount_ph	Extra amount
+bill_later_party_ph	Party (only if booking has none)
+bill_later_btn	Bill later
+bill_later_extra_oda	ODA
+bill_later_extra_packing	Packing
+bill_later_extra_other	Other
 pay_ap_heading	हामीले तिर्नुपर्ने तिर्नुहोस् (AP)
 country_tax	देश र कर
 extra_tills_heading	थप टिल
@@ -723,6 +775,23 @@ onboard_book_tmpl	खाता · {} — सामान र सुरुको 
 onboard_template_tmpl	चाहे ठाउँको नाम राख्नुहोस्, अनि कसरी सुरु गर्ने छान्नुहोस्।
 tmpl_blurb	कुरियरको खाता र बुकिङ डेस्क: पठाउने, वाहक, दैनिक खाता, AWB।
 tmpl_how	डेस्कमा पार्सल बुक गर्नुहोस्; आजका लागि दैनिक खाता; दर, पार्टी, रिपोर्टका ट्याब।
+app_template_heading	Shop templates
+app_template_blurb	Pick a starter desk. Skip leaves parties empty.
+app_template_skip	Skip for now
+app_template_status	Server ready — import a template, or skip
+app_template_importing	Applying {title}…
+app_template_public_hdr	Templates
+app_template_import_selected	Import selected
+public_tmpl_help	Bundled agency packs for this shop. No download needed.
+business_day	When does Today reset?
+business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
+biz_day_until_close	Until Day close
+biz_day_midnight	Calendar midnight
+business_day_saved	Business day saved
+report_day_lens	View Today as
+report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
+report_lens_day_close	By Day close
+report_lens_midnight	By midnight
 trk_booked	बुक भयो
 trk_picked_up	उठाइयो
 trk_in_transit	बाटोमा
@@ -846,10 +915,3 @@ sel_copy	कपी गर्नुहोस्
 sel_select_all	सबै छान्नुहोस्
 sel_copied	कपी भयो
 nav_loading	लोड हुँदैछ…
-settings_sec_privacy	गोपनीयता
-privacy_policy_help	गोपनीयता · PRIVACY.md · moklanjo.com/privacy
-dont_use	प्रयोग नगर्नुहोस्
-receipt_printers_dd	यो उपकरणका प्रिन्टर · रसिद
-receipt_printers_dd_n	{n} · यो उपकरणका प्रिन्टर · रसिद
-label_printers_dd	यो उपकरणका प्रिन्टर · AWB लेबल
-label_printers_dd_n	{n} · यो उपकरणका प्रिन्टर · AWB लेबल

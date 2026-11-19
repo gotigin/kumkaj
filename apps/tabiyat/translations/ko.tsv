@@ -94,6 +94,8 @@ printer_paper_help	보고됨은 이 프린터의 드라이버에 설정된 용�
 preview_help	이 전표가 아래에서 선택한 프린터로 인쇄되는 모습 그대로, 그 가상 용지 위에 실제 크기로 표시됩니다. 흰색은 인쇄되는 곳이고, 회색 종이는 프린터가 닿지 않는 곳이며, 흐린 잉크는 잘려 나갑니다. 아홉 칸이 용지입니다. 전표가 놓일 자리를 누르세요. 긴 전표는 다음 페이지로 이어집니다. 프린터를 선택하면 미리보기만 바뀝니다.
 slip_col_start	시작 여백 (px)
 slip_col_end	끝 여백 (px)
+slip_columns	열
+slip_col_header	머리글
 slip_columns_help	각 열의 너비에는 시작 여백과 끝 여백이 포함됩니다. 텍스트는 자기 열 안에서 줄 바꿈되고, 내용 너비를 넘는 부분은 종이와 미리보기 모두에서 잘립니다.
 bill_total_qty_label	총수량 라벨
 bill_total_subtotal_label	소계 라벨
@@ -363,6 +365,15 @@ print_open	인쇄 / 열기
 reason_amend_ph	수정/취소/환불 사유
 reason_note_ph	사유 / 메모(폐기, 실사…)
 record_day_close	마감 기록
+business_day	When does Today reset?
+business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
+biz_day_until_close	Until Day close
+biz_day_midnight	Calendar midnight
+business_day_saved	Business day saved
+report_day_lens	View Today as
+report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
+report_lens_day_close	By Day close
+report_lens_midnight	By midnight
 refresh_from_shop	매장에서 새로고침
 refund	환불
 remove_selected	선택 제거
@@ -486,6 +497,8 @@ route_bill	영수증
 station_print_pick_first	진료실을 먼저 선택하세요
 bill_printers_dd	영수증용 프린터
 bill_printers_dd_n	영수증용 {n} 개의 프린터 · 변경하려면 탭하세요
+printer_mode_first	작동하는 첫 번째 프린터
+printer_mode_all	모두 인쇄
 station_vp_attached	프린터 연결됨
 station_vp_detached	스테이션에서 프린터 제거됨
 print_test_page	테스트 페이지 인쇄
@@ -837,6 +850,10 @@ client_template_importing	{title} 가져오는 중…
 client_template_done	{title}의 모든 항목이 귀하의 항목에 있습니다.
 client_template_imported	{title}에서 {d} 항목 및 {c} 카테고리를 추가했습니다.
 cancel	취소
+removing	제거 중…
+removed	제거됨
+updating_order	업데이트 중…
+order_updated	주문이 업데이트되었습니다
 opening_client	클라이언트 열기…
 preparing_desk	데스크 준비 중…
 opening_server	서버 열기…
@@ -867,16 +884,7 @@ recent_changes	최근 변경
 lane_declared_label	세금 계산서
 lane_owner_label	현금 메모
 money_lane_bill	영수증: {lane}
-
-removing	제거 중…
-removed	제거됨
-updating_order	업데이트 중…
-order_updated	주문이 업데이트되었습니다
 sel_copy	복사
 sel_select_all	모두 선택
 sel_copied	복사됨
 nav_loading	불러오는 중…
-printer_mode_first	작동하는 첫 번째 프린터
-printer_mode_all	모두 인쇄
-slip_columns	열
-slip_col_header	머리글

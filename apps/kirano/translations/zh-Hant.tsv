@@ -82,6 +82,8 @@ printer_paper_help	「回報」是此打印機驅動程式所設定的紙張；�
 preview_help	此單據與在下方所選打印機上列印的完全相同，以實際尺寸顯示在其虛擬紙張上。白色是列印的位置，灰色紙張是打印機無法到達的地方，變淡的墨跡會被切掉。九個方格就是紙張：點按單據應放的位置。長單據會接續到更多頁。選擇打印機只會改變預覽。
 slip_col_start	開頭間距 (px)
 slip_col_end	結尾間距 (px)
+slip_columns	欄
+slip_col_header	表頭
 slip_columns_help	每欄的寬度已包含其開頭與結尾間距。文字在所屬欄內換行；超出內容寬度的部分，在紙上和預覽中都會被裁掉。
 bill_total_qty_label	總數量標籤
 bill_total_subtotal_label	小計標籤
@@ -351,6 +353,15 @@ print_open	打印/打開
 reason_amend_ph	修改/作廢/退款原因
 reason_note_ph	原因/備註（損耗、盤點…）
 record_day_close	記錄日結
+business_day	When does Today reset?
+business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
+biz_day_until_close	Until Day close
+biz_day_midnight	Calendar midnight
+business_day_saved	Business day saved
+report_day_lens	View Today as
+report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
+report_lens_day_close	By Day close
+report_lens_midnight	By midnight
 refresh_from_shop	從店鋪刷新
 refund	退款
 remove_selected	刪除所選
@@ -474,6 +485,8 @@ route_bill	帳單
 station_print_pick_first	首先選擇一個商店區域
 bill_printers_dd	帳單打印機
 bill_printers_dd_n	{n} 臺帳單打印機 · 點擊以更改
+printer_mode_first	第一個可用的
+printer_mode_all	全部打印
 station_vp_attached	已掛接打印機
 station_vp_detached	已從工位移除打印機
 print_test_page	打印測試頁
@@ -825,6 +838,10 @@ client_template_importing	正在導入{title}…
 client_template_done	{title} 中的每件物品都在您的物品上。
 client_template_imported	從 {title} 新增了 {d} 項目和 {c} 類別
 cancel	取消
+removing	正在移除…
+removed	已移除
+updating_order	正在更新…
+order_updated	訂單已更新
 opening_client	正在打開客戶端…
 preparing_desk	正在準備桌面…
 opening_server	正在打開服務員…
@@ -855,16 +872,7 @@ recent_changes	最近變動
 lane_declared_label	稅務發票
 lane_owner_label	現金小票
 money_lane_bill	帳單：{lane}
-
-removing	正在移除…
-removed	已移除
-updating_order	正在更新…
-order_updated	訂單已更新
 sel_copy	複製
 sel_select_all	全選
 sel_copied	已複製
 nav_loading	載入中…
-printer_mode_first	第一個可用的
-printer_mode_all	全部打印
-slip_columns	欄
-slip_col_header	表頭

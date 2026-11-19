@@ -94,6 +94,8 @@ printer_paper_help	Dichiarata è la carta su cui è impostato il driver di quest
 preview_help	Questo scontrino come viene stampato sulla stampante scelta qui sotto, a grandezza reale sulla sua carta virtuale. Il bianco è dove stampa, la carta grigia è fuori dalla portata della stampante e l'inchiostro sbiadito viene tagliato. I nove riquadri sono la carta: tocca dove deve stare lo scontrino. Uno scontrino lungo prosegue su altre pagine. Scegliere una stampante cambia solo l'anteprima.
 slip_col_start	Spazio iniziale (px)
 slip_col_end	Spazio finale (px)
+slip_columns	Colonne
+slip_col_header	Intestazione
 slip_columns_help	La larghezza di ogni colonna comprende il suo spazio iniziale e finale. Il testo va a capo all’interno della sua colonna; ciò che supera la larghezza del contenuto viene tagliato, su carta e nell’anteprima.
 bill_total_qty_label	Etichetta qtà totale
 bill_total_subtotal_label	Etichetta subtotale
@@ -363,6 +365,15 @@ print_open	Stampa / apri
 reason_amend_ph	Motivo modifica / annullo / rimborso
 reason_note_ph	Motivo / nota (scarto, conteggio, …)
 record_day_close	Registra chiusura giorno
+business_day	When does Today reset?
+business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
+biz_day_until_close	Until Day close
+biz_day_midnight	Calendar midnight
+business_day_saved	Business day saved
+report_day_lens	View Today as
+report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
+report_lens_day_close	By Day close
+report_lens_midnight	By midnight
 refresh_from_shop	Aggiorna dal negozio
 refund	Rimborso
 remove_selected	Rimuovi selezionato
@@ -486,6 +497,8 @@ route_bill	Conto
 station_print_pick_first	Scegli prima una sezione della farmacia
 bill_printers_dd	Stampanti per il conto
 bill_printers_dd_n	{n} stampante/i per il conto · tocca per cambiare
+printer_mode_first	Prima che funzioni
+printer_mode_all	Stampa su tutti
 station_vp_attached	Stampante collegata
 station_vp_detached	Stampante rimossa dalla stazione
 print_test_page	Stampa pagina di prova
@@ -837,6 +850,10 @@ client_template_importing	Importazione di {title}…
 client_template_done	Ogni articolo di {title} è già nei tuoi articoli.
 client_template_imported	Aggiunti {d} articoli e {c} categorie da {title}
 cancel	Annulla
+removing	Rimozione…
+removed	Rimosso
+updating_order	Aggiornamento…
+order_updated	Ordine aggiornato
 opening_client	Apertura cliente…
 preparing_desk	Preparazione bancone…
 opening_server	Apertura cameriere…
@@ -867,16 +884,7 @@ recent_changes	Modifiche recenti
 lane_declared_label	Fattura fiscale
 lane_owner_label	Scontrino
 money_lane_bill	Fattura: {lane}
-
-removing	Rimozione…
-removed	Rimosso
-updating_order	Aggiornamento…
-order_updated	Ordine aggiornato
 sel_copy	Copia
 sel_select_all	Seleziona tutto
 sel_copied	Copiato
 nav_loading	Caricamento…
-printer_mode_first	Prima che funzioni
-printer_mode_all	Stampa su tutti
-slip_columns	Colonne
-slip_col_header	Intestazione

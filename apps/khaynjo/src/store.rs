@@ -998,6 +998,8 @@ impl Store {
             ("pin_reset_required", "0"),
             ("entity_template", "khaynjo_restaurant"),
             ("app", APP_MARK),
+            // Keep Day book going past midnight until Record day close.
+            ("business_day_mode", "until_day_close"),
         ] {
             self.conn
                 .execute(
@@ -2733,7 +2735,14 @@ impl Store {
     pub fn current_business_day_window(
         &self,
     ) -> Result<crate::business_day::BusinessDayWindow, String> {
-        let mode = self.business_day_mode()?;
+        self.business_day_window_for(self.business_day_mode()?)
+    }
+
+    /// Business-day window for an explicit mode (Reports lens may differ from shop meta).
+    pub fn business_day_window_for(
+        &self,
+        mode: crate::business_day::BusinessDayMode,
+    ) -> Result<crate::business_day::BusinessDayWindow, String> {
         let last = self.last_day_close_at()?;
         Ok(crate::business_day::business_day_window(
             mode,
@@ -5107,9 +5116,25 @@ impl Store {
 
     /// Books for an inclusive date range (`YYYY-MM-DD` … `YYYY-MM-DD`).
     pub fn period_books(&self, from_day: &str, to_day: &str) -> Result<PeriodBooks, String> {
+        self.period_books_range(
+            &format!("{from_day}T00:00:00"),
+            &format!("{to_day}T23:59:59.999999999"),
+            from_day,
+            to_day,
+        )
+    }
+
+    /// Books for an explicit created_at window (RFC3339 / store timestamps).
+    pub fn period_books_range(
+        &self,
+        from: &str,
+        to: &str,
+        label_from: &str,
+        label_to: &str,
+    ) -> Result<PeriodBooks, String> {
+        let from_day = label_from;
+        let to_day = label_to;
         let branch = self.active_branch_id()?;
-        let from = format!("{from_day}T00:00:00");
-        let to = format!("{to_day}T23:59:59.999999999");
         let mut day = DayTotals::default();
         let mut stmt = self
             .conn
@@ -5233,6 +5258,15 @@ impl Store {
 
     pub fn period_books_text(&self, from_day: &str, to_day: &str) -> Result<String, String> {
         let books = self.period_books(from_day, to_day)?;
+        self.format_period_books(&books, from_day, to_day)
+    }
+
+    fn format_period_books(
+        &self,
+        books: &PeriodBooks,
+        from_day: &str,
+        to_day: &str,
+    ) -> Result<String, String> {
         let currency = self.locale_settings()?.currency;
         let fiscal = self.fiscal_settings()?;
         let tmpl = self.entity_template()?;
@@ -5282,19 +5316,8 @@ impl Store {
         ))
     }
 
-    /// Full books pack for Reports: ops + aging + recent bank posts.
-    pub fn books_report_text(&self, period: &str) -> Result<String, String> {
-        let today = Local::now().format("%Y-%m-%d").to_string();
-        let (from, to, title) = match period {
-            "month" => {
-                let from = Local::now().format("%Y-%m-01").to_string();
-                (from, today.clone(), "This month")
-            }
-            _ => (today.clone(), today.clone(), "Today"),
-        };
-        let mut out = format!("=== {title} ===\n");
-        out.push_str(&self.period_books_text(&from, &to)?);
-        out.push('\n');
+    fn books_report_tail(&self) -> Result<String, String> {
+        let mut out = String::new();
         out.push_str(&self.debit_credit_report_text()?);
         out.push('\n');
         out.push_str(&self.party_aging_text()?);
@@ -5324,6 +5347,41 @@ impl Store {
                 ));
             }
         }
+        Ok(out)
+    }
+
+    /// Reports “Today” for an explicit business-day mode (view lens — not shop meta).
+    pub fn books_report_today_for_mode(
+        &self,
+        mode: crate::business_day::BusinessDayMode,
+    ) -> Result<String, String> {
+        let win = self.business_day_window_for(mode)?;
+        let title = match mode {
+            crate::business_day::BusinessDayMode::UntilDayClose => "Today (by Day close)",
+            _ => "Today (by midnight)",
+        };
+        let mut out = format!("=== {title} ===\n");
+        let books = self.period_books_range(&win.start, &win.end, &win.label_date, &win.label_date)?;
+        out.push_str(&self.format_period_books(&books, &win.label_date, &win.label_date)?);
+        out.push('\n');
+        out.push_str(&self.books_report_tail()?);
+        Ok(out)
+    }
+
+    /// Full books pack for Reports: ops + aging + recent bank posts.
+    pub fn books_report_text(&self, period: &str) -> Result<String, String> {
+        let today = Local::now().format("%Y-%m-%d").to_string();
+        let (from, to, title) = match period {
+            "month" => {
+                let from = Local::now().format("%Y-%m-01").to_string();
+                (from, today.clone(), "This month")
+            }
+            _ => (today.clone(), today.clone(), "Today"),
+        };
+        let mut out = format!("=== {title} ===\n");
+        out.push_str(&self.period_books_text(&from, &to)?);
+        out.push('\n');
+        out.push_str(&self.books_report_tail()?);
         Ok(out)
     }
 
@@ -14307,6 +14365,22 @@ mod tests {
 
     /// Every backup on the one device that holds the books is lost with
     /// it: after a week with no copy off the device, the owner is told —
+    #[test]
+    fn report_today_lens_titles_differ_by_mode() {
+        let home = crate::test_dirs::run_root().join(format!("kumkaj-report-lens-{}", new_id()));
+        fs::create_dir_all(&home).unwrap();
+        let store = Store::open_path(&home.join("books.sqlite3")).unwrap();
+        let by_close = store
+            .books_report_today_for_mode(crate::business_day::BusinessDayMode::UntilDayClose)
+            .unwrap();
+        let by_mid = store
+            .books_report_today_for_mode(crate::business_day::BusinessDayMode::CalendarMidnight)
+            .unwrap();
+        assert!(by_close.contains("by Day close"), "{by_close}");
+        assert!(by_mid.contains("by midnight"), "{by_mid}");
+        let _ = fs::remove_dir_all(home);
+    }
+
     /// until a copy leaves (the second folder, or "Save a backup copy").
     #[test]
     fn a_week_without_a_copy_off_the_device_is_said() {

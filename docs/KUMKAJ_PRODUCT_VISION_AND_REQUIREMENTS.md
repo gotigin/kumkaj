@@ -684,6 +684,9 @@ display charts. See also [`BUSINESS_BOOKS.md`](BUSINESS_BOOKS.md).
 Local reports can include:
 
 -   daily sales and **day close** (tenders, credit taken, expenses, bank moves);
+-   **business day** for “Today”: default **Until Day close** (keeps going past
+    midnight) with optional **Calendar midnight** — owner chooses on Day close;
+    see [`BUSINESS_BOOKS.md`](BUSINESS_BOOKS.md) § Business day;
 -   payment-method totals (cash / UPI / card / credit);
 -   **lines Actual / Applied vs Rounded totals vs rounding adjustments**
     (so line overrides and bill round-offs remain reconcilable);

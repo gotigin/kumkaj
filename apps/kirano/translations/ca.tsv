@@ -82,6 +82,8 @@ printer_paper_help	Informat és el paper al qual està ajustat el controlador d'
 preview_help	Aquest tiquet tal com s'imprimeix a la impressora triada a sota, a mida real sobre el seu paper virtual. El blanc és on imprimeix, el paper gris queda fora de l'abast de la impressora i la tinta esvaïda es talla. Els nou quadrats són el paper: toca on ha d'anar el tiquet. Un tiquet llarg continua en més pàgines. Triar una impressora només canvia la previsualització.
 slip_col_start	Espai inicial (px)
 slip_col_end	Espai final (px)
+slip_columns	Columnes
+slip_col_header	Capçalera
 slip_columns_help	L’amplada de cada columna inclou el seu espai inicial i final. El text s’ajusta dins la seva columna; el que sobrepassa l’amplada del contingut es retalla, en paper i a la previsualització.
 bill_total_qty_label	Etiqueta de qtat total
 bill_total_subtotal_label	Etiqueta de subtotal
@@ -351,6 +353,15 @@ print_open	Imprimeix / obre
 reason_amend_ph	Motiu d'esmena / anul·lació / devolució
 reason_note_ph	Motiu / nota (minva, recompte, …)
 record_day_close	Registra el tancament del dia
+business_day	When does Today reset?
+business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
+biz_day_until_close	Until Day close
+biz_day_midnight	Calendar midnight
+business_day_saved	Business day saved
+report_day_lens	View Today as
+report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
+report_lens_day_close	By Day close
+report_lens_midnight	By midnight
 refresh_from_shop	Actualitza des de la botiga
 refund	Devolució
 remove_selected	Treu la selecció
@@ -474,6 +485,8 @@ route_bill	Compte
 station_print_pick_first	Trieu primer una secció de botiga
 bill_printers_dd	Impressores del compte
 bill_printers_dd_n	{n} impressora(es) per al compte · toqueu per canviar
+printer_mode_first	La primera que funcioni
+printer_mode_all	Imprimeix a totes
 station_vp_attached	Impressora acoblada
 station_vp_detached	Impressora treta de l'estació
 print_test_page	Imprimeix una pàgina de prova
@@ -825,6 +838,10 @@ client_template_importing	S'importa {title}…
 client_template_done	Tots els articles de {title} estan als vostres articles.
 client_template_imported	S'han afegit elements {d} i categories {c} de {title}
 cancel	Anul·la
+removing	S'està eliminant…
+removed	Eliminat
+updating_order	S'està actualitzant…
+order_updated	Comanda actualitzada
 opening_client	S'obre el client…
 preparing_desk	Es prepara el taulell…
 opening_server	S'obre el servidor…
@@ -855,16 +872,7 @@ recent_changes	Canvis recents
 lane_declared_label	Factura fiscal
 lane_owner_label	Nota d'efectiu
 money_lane_bill	Compte: {lane}
-
-removing	S'està eliminant…
-removed	Eliminat
-updating_order	S'està actualitzant…
-order_updated	Comanda actualitzada
 sel_copy	Copia
 sel_select_all	Selecciona-ho tot
 sel_copied	Copiat
 nav_loading	S'està carregant…
-printer_mode_first	La primera que funcioni
-printer_mode_all	Imprimeix a totes
-slip_columns	Columnes
-slip_col_header	Capçalera

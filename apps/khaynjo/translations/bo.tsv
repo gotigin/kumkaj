@@ -115,6 +115,7 @@ bill_line_total	བསྡོམས་པ།
 bill_line_footer	མཇུག་ཡིག་
 bill_line_upi	UPI
 bill_logo_picture	པར་རིས།
+bill_logo_help	ཞེང་དང་མཐོ་ཚད་px ཐོག་ཡིན། སྟོང་པ་ཡིན་ན་པར་རིས་ལྟར་འགྲོ། གཅིག་སྟོང་ན་དབྱིབས་སྲུང་། གཉིས་ཀ་སྟོང་ན་རང་གི་ཚད་བེད་སྤྱོད། གཉིས་ཀ་བཀོད་ན་ནང་དུ་འཚམ་པར་འཇུག་ལ་ནམ་ཡང་འཐེན་མི་བྱེད། པར་རིས་མེད་ན། མངོན་པའི་མཚོན་རྟགས་ཀྱིས་མཐོ་ཚད་བར་སྟོང་དུ་ཉར། སྦས་ན་སུབ།
 bill_logo_choose	པར་རིས་འདེམས།
 bill_logo_remove	པར་རིས་སུབ།
 bill_logo_none	པར་རིས་མེད།
@@ -122,10 +123,9 @@ bill_logo_unreadable	མཉེན་ཆས་འདིས་ཀློག་ཐ�
 bill_logo_width	ཞེང་། (px)
 bill_logo_height	མཐོ་ཚད། (px)
 bill_logo_tones	ཐལ་མདོག
+bill_logo_tones_help	སྲ་བ། ཐིག་ལེ་རེ་རེ་ནག་པོའམ་དཀར་པོ། གསལ་བའི་མཚོན་རྟགས་ཆེད། གྲིབ་ཅན། ཐལ་མདོག་ཐིག་ལེ་ཕྲ་མོའི་རི་མོར་འགྱུར། པར་དང་གྲིབ་མ་འཇམ་པོའི་ཆེད།
 bill_logo_solid	སྲ་བ།
 bill_logo_shaded	གྲིབ་ཅན།
-bill_logo_help	ཞེང་དང་མཐོ་ཚད་px ཐོག་ཡིན། སྟོང་པ་ཡིན་ན་པར་རིས་ལྟར་འགྲོ། གཅིག་སྟོང་ན་དབྱིབས་སྲུང་། གཉིས་ཀ་སྟོང་ན་རང་གི་ཚད་བེད་སྤྱོད། གཉིས་ཀ་བཀོད་ན་ནང་དུ་འཚམ་པར་འཇུག་ལ་ནམ་ཡང་འཐེན་མི་བྱེད། པར་རིས་མེད་ན། མངོན་པའི་མཚོན་རྟགས་ཀྱིས་མཐོ་ཚད་བར་སྟོང་དུ་ཉར། སྦས་ན་སུབ།
-bill_logo_tones_help	སྲ་བ། ཐིག་ལེ་རེ་རེ་ནག་པོའམ་དཀར་པོ། གསལ་བའི་མཚོན་རྟགས་ཆེད། གྲིབ་ཅན། ཐལ་མདོག་ཐིག་ལེ་ཕྲ་མོའི་རི་མོར་འགྱུར། པར་དང་གྲིབ་མ་འཇམ་པོའི་ཆེད།
 slip_col_width	ཞེང་ཚད། (mm)
 slip_col_start	འགོའི་བར་སྟོང་། (px)
 slip_col_end	མཇུག་གི་བར་སྟོང་། (px)
@@ -566,6 +566,15 @@ print_open	པར་སྐྲུན།/ཁ་ཕྱེ།
 reason_amend_ph	བཟོ་བཅོས་བྱེད་དགོས་པའི་རྒྱུ་མཚན།
 reason_note_ph	རྒྱུ་མཚན། དྲན་ཐོ། (འཕྲོ་བརླག་དང་། གྲངས་འབོར།...)
 record_day_close	ཉིན་མོ་སྲུང་སྐྱོབ།
+business_day	When does Today reset?
+business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
+biz_day_until_close	Until Day close
+biz_day_midnight	Calendar midnight
+business_day_saved	Business day saved
+report_day_lens	View Today as
+report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
+report_lens_day_close	By Day close
+report_lens_midnight	By midnight
 refresh_from_shop	ཚོང་ཁང་ནས་གསར་བརྗེ།
 refund	དངུལ་ཕྱིར་སློབ།
 remove_selected	བདམས་པ་མེད་པར་བཟོས།

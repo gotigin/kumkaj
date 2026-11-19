@@ -3,6 +3,25 @@ app_tagline	快遞代理商書籍+訂票台。離線免費。
 unlock	解鎖
 pin_hint	店主PIN初始為0000
 sell	預訂
+nav_board	Board
+board	Board
+park_draft	Park
+board_park_nothing	Nothing to park — add charges or booking details
+board_parked	Parked on Board — desk is clear
+board_draft	Draft
+board_booked	Booked
+board_filter_all	All
+board_filter_draft	Draft
+board_filter_booked	Booked
+board_cols_fmt	{n} col
+board_summary_fmt	{total} cards · {drafts} draft · {booked} booked
+board_card_no_charges	No charges yet
+board_card_charges	charges
+board_card_booked	Booking
+board_draft_gone	That draft is no longer on the Board
+board_draft_closed	That draft was already finished or discarded
+board_discard	Discard
+board_discarded	Draft discarded
 buy	付出
 books	日記帳
 books_help	今天的位置。預訂 = 包裹進來。付款 = 承運人帳單和費用。當事人 = 發貨人和承運人。
@@ -183,6 +202,13 @@ device_setup_help	服務器在此保存帳簿。客戶端與服務器配對。
 currency	貨幣
 backup	備份
 settings_sec_diag	診斷
+settings_sec_privacy	隱私
+privacy_policy_help	與 https://moklanjo.com/privacy 相同的 PRIVACY.md — 不是另存副本。
+dont_use	不使用
+receipt_printers_dd	此裝置上的印表機 · 收據
+receipt_printers_dd_n	{n} · 此裝置上的印表機 · 收據
+label_printers_dd	此裝置上的印表機 · 運單標籤
+label_printers_dd_n	{n} · 此裝置上的印表機 · 運單標籤
 settings_hub_help	一次打開一個區域——少滾動，選項更清楚。
 settings_sec_devices	額外櫃檯與分店
 settings_sec_alerts	提示
@@ -315,6 +341,16 @@ copy_party_ledger_csv	複製往來方帳本CSV
 copy_receipt	複製小票
 copy_report	複製報表
 counted_cash_ph	抽屜裡點清的現金
+close_shift_print	Close shift and print slip
+shift_handover	Shift handover
+shift_counted_ph	Cash counted at handover
+shift_since	This shift since
+expected_in_drawer	Expected in drawer
+lock_books_through_month	Lock books through month
+books_lock_month_ph	YYYY-MM
+lock_books_month_btn	Lock through this month
+books_locked_none	No month lock yet
+books_locked_through	Locked through
 counter_agency_ph	櫃檯/仲介名稱（可選）
 create_backup	創建備份
 day_close_summary	日結匯總
@@ -404,6 +440,9 @@ pay_ap_cash	用現金付AP
 pay_ap_upi	用UPI付AP
 period_bill	期間帳單
 period_bill_party	期間帳單（一方）
+period_bill_generate	Generate bill
+period_bill_generate_print	Generate & print
+booking_bulk_preview	{ok} ready · {bad} bad
 pick_pod_photo	選擇 POD 照片
 print_awb_label	列印運單標籤
 print_open	打印/打開
@@ -612,6 +651,19 @@ attachments_last_expense	附件（上一筆費用）
 credit_limit_heading	信用額度（所選/指定往來方）
 pay_selected_heading	支付所選（結清欠款/預付）
 write_off_heading	核銷（無付款結清）
+adjustment_notes_heading	Adjustment notes
+adj_note_amount_ph	Amount
+adj_note_reason_ph	Reason (required)
+adj_note_awb_ph	Related AWB (optional)
+credit_note_btn	Credit note
+debit_note_btn	Debit note
+bill_later_heading	Bill later (post-booking extra)
+bill_later_amount_ph	Extra amount
+bill_later_party_ph	Party (only if booking has none)
+bill_later_btn	Bill later
+bill_later_extra_oda	ODA
+bill_later_extra_packing	Packing
+bill_later_extra_other	Other
 pay_ap_heading	支付我們欠他們的(AP)
 country_tax	國家與稅務
 extra_tills_heading	額外櫃檯
@@ -723,6 +775,23 @@ onboard_book_tmpl	帳本 · {} — 添加物品和期初賒帳，然後點完成
 onboard_template_tmpl	可先為店鋪命名，然後選擇開始方式。
 tmpl_blurb	快遞簿和訂艙台：發貨人、承運人、日簿、航空運單。
 tmpl_how	在櫃檯預訂包裹；今天的日簿；費率、派對、報告選項卡。
+app_template_heading	Shop templates
+app_template_blurb	Pick a starter desk. Skip leaves parties empty.
+app_template_skip	Skip for now
+app_template_status	Server ready — import a template, or skip
+app_template_importing	Applying {title}…
+app_template_public_hdr	Templates
+app_template_import_selected	Import selected
+public_tmpl_help	Bundled agency packs for this shop. No download needed.
+business_day	When does Today reset?
+business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
+biz_day_until_close	Until Day close
+biz_day_midnight	Calendar midnight
+business_day_saved	Business day saved
+report_day_lens	View Today as
+report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
+report_lens_day_close	By Day close
+report_lens_midnight	By midnight
 trk_booked	已預訂
 trk_picked_up	已接
 trk_in_transit	在途中
@@ -846,10 +915,3 @@ sel_copy	複製
 sel_select_all	全選
 sel_copied	已複製
 nav_loading	載入中…
-settings_sec_privacy	隱私
-privacy_policy_help	與 https://moklanjo.com/privacy 相同的 PRIVACY.md — 不是另存副本。
-dont_use	不使用
-receipt_printers_dd	此裝置上的印表機 · 收據
-receipt_printers_dd_n	{n} · 此裝置上的印表機 · 收據
-label_printers_dd	此裝置上的印表機 · 運單標籤
-label_printers_dd_n	{n} · 此裝置上的印表機 · 運單標籤

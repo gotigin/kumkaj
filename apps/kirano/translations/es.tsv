@@ -82,6 +82,8 @@ printer_paper_help	Informado es el papel al que está ajustado el controlador de
 preview_help	Este ticket tal como se imprime en la impresora elegida abajo, a tamaño real sobre su papel virtual. El blanco es donde imprime, el papel gris queda fuera del alcance de la impresora y la tinta atenuada se corta. Los nueve cuadros son el papel: toca donde debe ir el ticket. Un ticket largo sigue en más páginas. Elegir una impresora solo cambia la vista previa.
 slip_col_start	Espacio inicial (px)
 slip_col_end	Espacio final (px)
+slip_columns	Columnas
+slip_col_header	Encabezado
 slip_columns_help	El ancho de cada columna incluye su espacio inicial y final. El texto se ajusta dentro de su columna; lo que sobrepasa el ancho del contenido se recorta, en papel y en la vista previa.
 bill_total_qty_label	Etiqueta cant. total
 bill_total_subtotal_label	Etiqueta subtotal
@@ -351,6 +353,15 @@ print_open	Imprimir / abrir
 reason_amend_ph	Motivo de modificación / anulación / reembolso
 reason_note_ph	Motivo / nota (merma, conteo, …)
 record_day_close	Registrar cierre del día
+business_day	When does Today reset?
+business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
+biz_day_until_close	Until Day close
+biz_day_midnight	Calendar midnight
+business_day_saved	Business day saved
+report_day_lens	View Today as
+report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
+report_lens_day_close	By Day close
+report_lens_midnight	By midnight
 refresh_from_shop	Actualizar desde la tienda
 refund	Reembolso
 remove_selected	Quitar seleccionado
@@ -474,6 +485,8 @@ route_bill	Cuenta
 station_print_pick_first	Elige primero una sección de la tienda
 bill_printers_dd	Impresoras para la cuenta
 bill_printers_dd_n	{n} impresora(s) para la cuenta · toque para cambiar
+printer_mode_first	La primera que funcione
+printer_mode_all	Imprimir en todas
 station_vp_attached	Impresora adjunta
 station_vp_detached	Impresora quitada de la estación
 print_test_page	Imprimir página de prueba
@@ -825,6 +838,10 @@ client_template_importing	Importando {title}…
 client_template_done	Todos los artículos de {title} ya están en tus artículos.
 client_template_imported	Se añadieron {d} artículos y {c} categorías de {title}
 cancel	Cancelar
+removing	Eliminando…
+removed	Eliminado
+updating_order	Actualizando…
+order_updated	Pedido actualizado
 opening_client	Abriendo cliente…
 preparing_desk	Preparando escritorio…
 opening_server	Abriendo camarero…
@@ -855,16 +872,7 @@ recent_changes	Cambios recientes
 lane_declared_label	Factura fiscal
 lane_owner_label	Nota de caja
 money_lane_bill	Factura: {lane}
-
-removing	Eliminando…
-removed	Eliminado
-updating_order	Actualizando…
-order_updated	Pedido actualizado
 sel_copy	Copiar
 sel_select_all	Seleccionar todo
 sel_copied	Copiado
 nav_loading	Cargando…
-printer_mode_first	La primera que funcione
-printer_mode_all	Imprimir en todas
-slip_columns	Columnas
-slip_col_header	Encabezado

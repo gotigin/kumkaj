@@ -94,6 +94,8 @@ printer_paper_help	Zgłoszony to papier, na który ustawiony jest sterownik tej 
 preview_help	Ten paragon tak, jak drukuje się na drukarce wybranej poniżej, w rzeczywistym rozmiarze na jej papierze wirtualnym. Białe to miejsce druku, szary papier jest poza zasięgiem drukarki, a wyblakły tusz zostaje obcięty. Dziewięć kwadratów to papier: dotknij tam, gdzie ma znaleźć się paragon. Długi paragon przechodzi na kolejne strony. Wybór drukarki zmienia tylko podgląd.
 slip_col_start	Odstęp na początku (px)
 slip_col_end	Odstęp na końcu (px)
+slip_columns	Kolumny
+slip_col_header	Nagłówek
 slip_columns_help	Szerokość każdej kolumny obejmuje jej odstęp na początku i na końcu. Tekst zawija się w obrębie swojej kolumny; to, co wykracza poza szerokość treści, jest obcinane – na papierze i w podglądzie.
 bill_total_qty_label	Etykieta z całkowitą ilością
 bill_total_subtotal_label	Etykieta sumy częściowej
@@ -363,6 +365,15 @@ print_open	Wydrukuj / otwórz
 reason_amend_ph	Powód zmiany / unieważnienia / zwrotu pieniędzy
 reason_note_ph	Powód/uwaga (marnotrawstwo, liczba,…)
 record_day_close	Zapisz zamknięcie dnia
+business_day	When does Today reset?
+business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
+biz_day_until_close	Until Day close
+biz_day_midnight	Calendar midnight
+business_day_saved	Business day saved
+report_day_lens	View Today as
+report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
+report_lens_day_close	By Day close
+report_lens_midnight	By midnight
 refresh_from_shop	Odśwież ze sklepu
 refund	Zwrot pieniędzy
 remove_selected	Usuń wybrane
@@ -486,6 +497,8 @@ route_bill	Rachunek
 station_print_pick_first	Najpierw wybierz sekcję przychodni
 bill_printers_dd	Drukarki za rachunek
 bill_printers_dd_n	{n} drukarki do rachunku · dotknij, aby zmienić
+printer_mode_first	Po pierwsze, to działa
+printer_mode_all	Drukuj na wszystkim
 station_vp_attached	Drukarka podłączona
 station_vp_detached	Drukarka usunięta ze stacji
 print_test_page	Wydrukuj stronę testową
@@ -837,6 +850,10 @@ client_template_importing	Importowanie {title}…
 client_template_done	Każdy przedmiot z {title} znajduje się na Twoich przedmiotach.
 client_template_imported	Dodano elementy {d} i kategorie {c} z {title}
 cancel	Anuluj
+removing	Usuwanie…
+removed	Usunięto
+updating_order	Aktualizowanie…
+order_updated	Zamówienie zaktualizowane
 opening_client	Otwieram klienta…
 preparing_desk	Przygotowanie biurka…
 opening_server	Otwieram serwer…
@@ -867,16 +884,7 @@ recent_changes	Ostatnie zmiany
 lane_declared_label	Faktura VAT
 lane_owner_label	Notatka gotówkowa
 money_lane_bill	Rachunek: {lane}
-
-removing	Usuwanie…
-removed	Usunięto
-updating_order	Aktualizowanie…
-order_updated	Zamówienie zaktualizowane
 sel_copy	Kopiuj
 sel_select_all	Zaznacz wszystko
 sel_copied	Skopiowano
 nav_loading	Wczytywanie…
-printer_mode_first	Po pierwsze, to działa
-printer_mode_all	Drukuj na wszystkim
-slip_columns	Kolumny
-slip_col_header	Nagłówek

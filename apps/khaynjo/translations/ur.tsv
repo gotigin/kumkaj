@@ -115,6 +115,7 @@ bill_line_total	کل
 bill_line_footer	فوٹر
 bill_line_upi	UPI
 bill_logo_picture	تصویر
+bill_logo_help	چوڑائی اور اونچائی px میں۔ خالی رہے تو تصویر کے مطابق: ایک خالی ہو تو شکل برقرار رہتی ہے، دونوں خالی ہوں تو اس کا اپنا ناپ؛ دونوں بھریں تو اندر سما جاتی ہے، کبھی کھنچتی نہیں۔ تصویر نہ ہو تو: دکھایا گیا لوگو اپنی اونچائی خالی جگہ کے طور پر رکھتا ہے؛ چھپائیں اسے ہٹا دیتا ہے۔
 bill_logo_choose	تصویر چنیں
 bill_logo_remove	تصویر ہٹائیں
 bill_logo_none	کوئی تصویر نہیں
@@ -122,10 +123,9 @@ bill_logo_unreadable	یہ ایسی تصویر نہیں جو ایپ پڑھ سکے
 bill_logo_width	چوڑائی (px)
 bill_logo_height	اونچائی (px)
 bill_logo_tones	سرمئی رنگ
+bill_logo_tones_help	ٹھوس: ہر نقطہ کالا یا سفید، صاف لوگو کے لیے۔ سایہ دار: سرمئی باریک نقطوں کا نمونہ بن جاتا ہے، تصاویر اور ہلکے سائے کے لیے۔
 bill_logo_solid	ٹھوس
 bill_logo_shaded	سایہ دار
-bill_logo_help	چوڑائی اور اونچائی px میں۔ خالی رہے تو تصویر کے مطابق: ایک خالی ہو تو شکل برقرار رہتی ہے، دونوں خالی ہوں تو اس کا اپنا ناپ؛ دونوں بھریں تو اندر سما جاتی ہے، کبھی کھنچتی نہیں۔ تصویر نہ ہو تو: دکھایا گیا لوگو اپنی اونچائی خالی جگہ کے طور پر رکھتا ہے؛ چھپائیں اسے ہٹا دیتا ہے۔
-bill_logo_tones_help	ٹھوس: ہر نقطہ کالا یا سفید، صاف لوگو کے لیے۔ سایہ دار: سرمئی باریک نقطوں کا نمونہ بن جاتا ہے، تصاویر اور ہلکے سائے کے لیے۔
 slip_col_width	چوڑائی (mm)
 slip_col_start	آغاز کی جگہ (px)
 slip_col_end	اختتام کی جگہ (px)
@@ -566,6 +566,15 @@ print_open	چھاپیں / کھولیں
 reason_amend_ph	ترمیم / منسوخی / واپسی کی وجہ
 reason_note_ph	وجہ / نوٹ (ضیاع، گنتی، …)
 record_day_close	دن بند درج کریں
+business_day	When does Today reset?
+business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
+biz_day_until_close	Until Day close
+biz_day_midnight	Calendar midnight
+business_day_saved	Business day saved
+report_day_lens	View Today as
+report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
+report_lens_day_close	By Day close
+report_lens_midnight	By midnight
 refresh_from_shop	دکان سے تازہ کریں
 refund	واپسی
 remove_selected	منتخب ہٹائیں

@@ -15,6 +15,9 @@ use crate::store::{StaffHire, Store};
 use serde::{Deserialize, Serialize};
 use std::path::{Path, PathBuf};
 
+/// Splits a shift-close reply into the status line and the handover slip.
+pub const SHIFT_SLIP_MARK: &str = "\n---slip---\n";
+
 /// Splits an expense reply into the status line and the new expense id.
 pub const EXPENSE_ID_MARK: &str = "\n---expense---\n";
 
@@ -24,6 +27,13 @@ pub const HIRED_STAFF_MARK: &str = "\n---hired---\n";
 pub fn hired_staff_parts(message: &str) -> (&str, Option<&str>) {
     match message.split_once(HIRED_STAFF_MARK) {
         Some((status, id)) => (status, Some(id.trim())),
+        None => (message, None),
+    }
+}
+
+pub fn shift_slip_parts(message: &str) -> (&str, Option<&str>) {
+    match message.split_once(SHIFT_SLIP_MARK) {
+        Some((status, slip)) => (status, Some(slip)),
         None => (message, None),
     }
 }
@@ -38,6 +48,12 @@ pub enum BooksOp {
     },
     SetCurrency {
         code: String,
+    },
+    CloseShift {
+        counted_paise: i64,
+    },
+    LockBooksMonth {
+        yyyy_mm: String,
     },
     CommitDayClose {
         counted_cash_paise: Option<i64>,
@@ -343,6 +359,8 @@ impl BooksOp {
             Self::SetPlatformLanguage | Self::SetUserLanguage { .. } | Self::SetCurrency { .. } => {
                 "Change language"
             }
+            Self::CloseShift { .. } => "Close the shift",
+            Self::LockBooksMonth { .. } => "Lock books through month",
             Self::CommitDayClose { .. } => "Record the day close",
             Self::UpdateParty { .. }
             | Self::SetPartyField { .. }
@@ -410,6 +428,8 @@ impl BooksOp {
             Self::SetPlatformLanguage => "Language follows this device".into(),
             Self::SetUserLanguage { code } => format!("Language: {code}"),
             Self::SetCurrency { code } => format!("Currency: {code}"),
+            Self::CloseShift { .. } => "Shift closed".into(),
+            Self::LockBooksMonth { .. } => "Books locked".into(),
             Self::CommitDayClose { .. } => "Day close recorded".into(),
             Self::UpdateParty { name, .. } => format!("Party updated: {}", name.trim()),
             Self::AddParty { name, .. } => format!("Added {}", name.trim()),
@@ -723,6 +743,25 @@ impl Store {
                 settings.currency = code.clone();
                 self.set_locale_settings(&settings)?;
                 Ok(format!("Currency: {code}"))
+            }
+            BooksOp::CloseShift { counted_paise } => {
+                if !actor.is_owner() && !actor.can_access_sales() {
+                    return Err("Not allowed to close the shift".into());
+                }
+                let (shift, slip) = self.close_shift(actor, counted_paise)?;
+                let v = shift.variance_paise();
+                let status = if v == 0 {
+                    "Shift closed — drawer matches".to_string()
+                } else if v < 0 {
+                    format!("Shift closed — short {}", self.money_display(-v))
+                } else {
+                    format!("Shift closed — over {}", self.money_display(v))
+                };
+                Ok(format!("{status}{SHIFT_SLIP_MARK}{slip}"))
+            }
+            BooksOp::LockBooksMonth { yyyy_mm } => {
+                self.lock_month(&yyyy_mm, actor)?;
+                Ok(format!("Books locked through {}", yyyy_mm.trim()))
             }
             BooksOp::CommitDayClose { counted_cash_paise } => {
                 if !actor.is_owner() && !actor.can_access_sales() {

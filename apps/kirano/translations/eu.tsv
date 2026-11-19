@@ -82,6 +82,8 @@ printer_paper_help	Jakinarazia inprimagailu honen kontrolatzailea ezarrita dagoe
 preview_help	Tiket hau behean aukeratutako inprimagailuan inprimatzen den bezala, benetako tamainan bere paper birtualean. Zuria inprimatzen den lekua da, paper grisa inprimagailuaren irismenetik kanpo dago, eta tinta lausotua moztu egiten da. Bederatzi laukiak papera dira: sakatu tiketak egon behar duen lekuan. Tiket luzea orri gehiagotan jarraitzen da. Inprimagailua aukeratzeak aurrebista bakarrik aldatzen du.
 slip_col_start	Hasierako tartea (px)
 slip_col_end	Amaierako tartea (px)
+slip_columns	Zutabeak
+slip_col_header	Izenburua
 slip_columns_help	Zutabe bakoitzaren zabalerak hasierako eta amaierako tartea barne hartzen ditu. Testua bere zutabearen barruan egokitzen da; edukiaren zabaleratik kanpo geratzen dena moztu egiten da, paperean eta aurrebistan.
 bill_total_qty_label	Guztizko kopuru etiketa
 bill_total_subtotal_label	Azpitotal etiketa
@@ -351,6 +353,15 @@ print_open	Inprimatu / ireki
 reason_amend_ph	Zuzendu / baliogabetu / itzultzeko arrazoia
 reason_note_ph	Arrazoia / oharra (galera, zenbaketa, …)
 record_day_close	Erregistratu egunaren itxiera
+business_day	When does Today reset?
+business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
+biz_day_until_close	Until Day close
+biz_day_midnight	Calendar midnight
+business_day_saved	Business day saved
+report_day_lens	View Today as
+report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
+report_lens_day_close	By Day close
+report_lens_midnight	By midnight
 refresh_from_shop	Freskatu dendatik
 refund	Itzuli
 remove_selected	Kendu hautatua
@@ -474,6 +485,8 @@ route_bill	Kontua
 station_print_pick_first	Aukeratu dendaren atal bat lehenik
 bill_printers_dd	Inprimagailuak konturako
 bill_printers_dd_n	{n} inprimagailu konturako · sakatu aldatzeko
+printer_mode_first	Lehena funtzionatzen duena
+printer_mode_all	Inprimatu guztietan
 station_vp_attached	Inprimagailua erantsita
 station_vp_detached	Inprimagailua geltokitik kenduta
 print_test_page	Inprimatu proba-orri bat
@@ -825,6 +838,10 @@ client_template_importing	{title} inportatzen…
 client_template_done	{title}-ko elementu guztiak zure elementuetan daude.
 client_template_imported	{d} elementuak eta {c} kategoria gehitu dira {title}-tik
 cancel	Ezeztatu
+removing	Kentzen…
+removed	Kenduta
+updating_order	Eguneratzen…
+order_updated	Eskaera eguneratuta
 opening_client	Bezeroa irekitzen…
 preparing_desk	Mahaia prestatzen…
 opening_server	Zerbitzaria irekitzen…
@@ -855,16 +872,7 @@ recent_changes	Azken aldaketak
 lane_declared_label	Zerga-faktura
 lane_owner_label	Diru-oharra
 money_lane_bill	Kontua: {lane}
-
-removing	Kentzen…
-removed	Kenduta
-updating_order	Eguneratzen…
-order_updated	Eskaera eguneratuta
 sel_copy	Kopiatu
 sel_select_all	Hautatu guztiak
 sel_copied	Kopiatuta
 nav_loading	Kargatzen…
-printer_mode_first	Lehena funtzionatzen duena
-printer_mode_all	Inprimatu guztietan
-slip_columns	Zutabeak
-slip_col_header	Izenburua

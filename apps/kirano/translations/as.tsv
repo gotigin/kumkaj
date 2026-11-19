@@ -82,6 +82,8 @@ printer_paper_help	জনোৱা মানে এই প্ৰিণ্টা�
 preview_help	এই ৰচিদ তলত বাছনি কৰা প্ৰিণ্টাৰত যেনেকৈ ছপা হয়, তাৰ ভাৰ্চুৱেল কাগজত আচল আকাৰত। বগা অংশত ছপা হয়, ধূসৰ কাগজ প্ৰিণ্টাৰে ঢুকি নাপায়, আৰু পাতল চিয়াঁহী কাটি পেলোৱা হয়। নটা বৰ্গই হৈছে কাগজখন: ৰচিদ ক'ত থাকিব লাগে তাত টিপক। দীঘল ৰচিদ অধিক পৃষ্ঠালৈ যায়। প্ৰিণ্টাৰ বাছিলে কেৱল পূৰ্বদৰ্শন সলনি হয়।
 slip_col_start	আৰম্ভণিৰ ঠাই (px)
 slip_col_end	শেষৰ ঠাই (px)
+slip_columns	স্তম্ভসমূহ
+slip_col_header	শিৰোনাম
 slip_columns_help	প্ৰতিটো স্তম্ভৰ প্ৰস্থত ইয়াৰ আৰম্ভণি আৰু শেষৰ ঠাই অন্তৰ্ভুক্ত। লিখনি নিজৰ স্তম্ভৰ ভিতৰতে মেৰিয়াই যায়; সমলৰ প্ৰস্থৰ বাহিৰৰ অংশ কাগজত আৰু পূৰ্বদৰ্শনত কটা যায়।
 bill_total_qty_label	মুঠ সংখ্যা লেবেল
 bill_total_subtotal_label	উপযোগ লেবেল
@@ -351,6 +353,15 @@ print_open	ছাপাওক / খোলক
 reason_amend_ph	সংশোধন / বাতিল / ঘূৰাইৰ কাৰণ
 reason_note_ph	কাৰণ / টোকা (নষ্ট, গণনা, …)
 record_day_close	দিন বন্ধ লিপিবদ্ধ কৰক
+business_day	When does Today reset?
+business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
+biz_day_until_close	Until Day close
+biz_day_midnight	Calendar midnight
+business_day_saved	Business day saved
+report_day_lens	View Today as
+report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
+report_lens_day_close	By Day close
+report_lens_midnight	By midnight
 refresh_from_shop	দোকানৰ পৰা সতেজ কৰক
 refund	ঘূৰাই
 remove_selected	বাছনি কৰা আঁতৰাওক
@@ -474,6 +485,8 @@ route_bill	বিল
 station_print_pick_first	প্ৰথমে দোকানৰ এটা অংশ বাছক
 bill_printers_dd	বিলৰ প্ৰিণ্টাৰ
 bill_printers_dd_n	বিলৰ বাবে {n}টা প্ৰিণ্টাৰ · সলনি কৰিবলৈ টিপক
+printer_mode_first	যিটো প্ৰথমে চলে
+printer_mode_all	সকলোতে ছপাওক
 station_vp_attached	প্ৰিণ্টাৰ যোগ হ’ল
 station_vp_detached	ষ্টেচনৰ পৰা প্ৰিণ্টাৰ আঁতৰোৱা হ’ল
 print_test_page	পৰীক্ষা পৃষ্ঠা ছপা কৰক
@@ -825,6 +838,10 @@ client_template_importing	{title} আমদানি…
 client_template_done	{title} ৰ প্ৰতিটো বস্তু আপোনাৰ বস্তুত আছে।
 client_template_imported	{title} ৰ পৰা {d}টা বস্তু আৰু {c}টা শ্ৰেণী যোগ কৰা হ’ল
 cancel	বাতিল
+removing	আঁতৰোৱা হৈছে…
+removed	আঁতৰোৱা হ'ল
+updating_order	আপডেট হৈ আছে…
+order_updated	অৰ্ডাৰ আপডেট হ'ল
 opening_client	ক্লায়েণ্ট খোল খাইছে…
 preparing_desk	ডেস্ক সাজু হৈছে…
 opening_server	চাৰ্ভাৰ খোল খাইছে…
@@ -855,16 +872,7 @@ recent_changes	শেহতীয়া সলনি
 lane_declared_label	কৰ চালান
 lane_owner_label	কেশ মেমো
 money_lane_bill	বিল: {lane}
-
-removing	আঁতৰোৱা হৈছে…
-removed	আঁতৰোৱা হ'ল
-updating_order	আপডেট হৈ আছে…
-order_updated	অৰ্ডাৰ আপডেট হ'ল
 sel_copy	কপি কৰক
 sel_select_all	সকলো বাছনি কৰক
 sel_copied	কপি কৰা হ'ল
 nav_loading	ল'ড হৈ আছে…
-printer_mode_first	যিটো প্ৰথমে চলে
-printer_mode_all	সকলোতে ছপাওক
-slip_columns	স্তম্ভসমূহ
-slip_col_header	শিৰোনাম

@@ -115,6 +115,7 @@ bill_line_total	মোট
 bill_line_footer	ফুটার
 bill_line_upi	UPI
 bill_logo_picture	ছবি
+bill_logo_help	প্রস্থ ও উচ্চতা px-এ। ফাঁকা থাকলে ছবি অনুসরণ করে: একটি ফাঁকা হলে আকৃতি থাকে, দুটোই ফাঁকা হলে নিজের মাপ; দুটোই দিলে ভেতরে মানিয়ে বসে, কখনো টেনে লম্বা হয় না। ছবি না থাকলে: দেখানো লোগো তার উচ্চতা ফাঁকা জায়গা হিসেবে রাখে; লুকান সরিয়ে দেয়।
 bill_logo_choose	ছবি বেছে নিন
 bill_logo_remove	ছবি সরান
 bill_logo_none	কোনো ছবি নেই
@@ -122,10 +123,9 @@ bill_logo_unreadable	এই অ্যাপ পড়তে পারে এম�
 bill_logo_width	প্রস্থ (px)
 bill_logo_height	উচ্চতা (px)
 bill_logo_tones	ধূসর
+bill_logo_tones_help	নিরেট: প্রতিটি বিন্দু কালো বা সাদা, স্পষ্ট লোগোর জন্য। ছায়াযুক্ত: ধূসর সূক্ষ্ম বিন্দুর নকশা হয়, ছবি ও নরম ছায়ার জন্য।
 bill_logo_solid	নিরেট
 bill_logo_shaded	ছায়াযুক্ত
-bill_logo_help	প্রস্থ ও উচ্চতা px-এ। ফাঁকা থাকলে ছবি অনুসরণ করে: একটি ফাঁকা হলে আকৃতি থাকে, দুটোই ফাঁকা হলে নিজের মাপ; দুটোই দিলে ভেতরে মানিয়ে বসে, কখনো টেনে লম্বা হয় না। ছবি না থাকলে: দেখানো লোগো তার উচ্চতা ফাঁকা জায়গা হিসেবে রাখে; লুকান সরিয়ে দেয়।
-bill_logo_tones_help	নিরেট: প্রতিটি বিন্দু কালো বা সাদা, স্পষ্ট লোগোর জন্য। ছায়াযুক্ত: ধূসর সূক্ষ্ম বিন্দুর নকশা হয়, ছবি ও নরম ছায়ার জন্য।
 slip_col_width	প্রস্থ (mm)
 slip_col_start	শুরুর ফাঁকা স্থান (px)
 slip_col_end	শেষের ফাঁকা স্থান (px)
@@ -566,6 +566,15 @@ print_open	ছাপুন / খুলুন
 reason_amend_ph	সংশোধন / বাতিল / ফেরতের কারণ
 reason_note_ph	কারণ / নোট (নষ্ট, গণনা, …)
 record_day_close	দিন শেষ রেকর্ড করুন
+business_day	When does Today reset?
+business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
+biz_day_until_close	Until Day close
+biz_day_midnight	Calendar midnight
+business_day_saved	Business day saved
+report_day_lens	View Today as
+report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
+report_lens_day_close	By Day close
+report_lens_midnight	By midnight
 refresh_from_shop	দোকান থেকে রিফ্রেশ
 refund	ফেরত
 remove_selected	বাছাই করা সরান

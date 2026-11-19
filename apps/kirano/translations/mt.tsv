@@ -82,6 +82,8 @@ printer_paper_help	Irrappurtat hija l-karta li d-driver ta' dan l-istampatur huw
 preview_help	Din ir-riċevuta kif tiġi stampata fuq l-istampatur magħżul hawn taħt, fid-daqs veru fuq il-karta virtwali tiegħu. L-abjad huwa fejn jistampa, il-karta griża hija barra mill-firxa tal-istampatur, u l-linka ċara tinqata'. Id-disa' kwadri huma l-karta: taptap fejn għandha toqgħod ir-riċevuta. Riċevuta twila tkompli fuq aktar paġni. L-għażla ta' stampatur tbiddel il-previżjoni biss.
 slip_col_start	Spazju tal-bidu (px)
 slip_col_end	Spazju tat-tmiem (px)
+slip_columns	Kolonni
+slip_col_header	Intestatura
 slip_columns_help	Il-wisa’ ta’ kull kolonna tinkludi l-ispazju tal-bidu u tat-tmiem tagħha. It-test jitgeżwer ġewwa l-kolonna tiegħu; dak li jaqbeż il-wisa’ tal-kontenut jinqata’, fuq il-karta u fil-preview.
 bill_total_qty_label	Tikketta tal-kwantità totali
 bill_total_subtotal_label	Tikketta tas-subtotal
@@ -351,6 +353,15 @@ print_open	Stampa / tiftaħ
 reason_amend_ph	Raġuni għall-emenda / null / rifużjoni
 reason_note_ph	Raġuni / nota (ħela, għadd, ...)
 record_day_close	Irreġistra l-għeluq tal-ġurnata
+business_day	When does Today reset?
+business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
+biz_day_until_close	Until Day close
+biz_day_midnight	Calendar midnight
+business_day_saved	Business day saved
+report_day_lens	View Today as
+report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
+report_lens_day_close	By Day close
+report_lens_midnight	By midnight
 refresh_from_shop	Aġġorna mill-ħanut
 refund	Rifużjoni
 remove_selected	Neħħi magħżula
@@ -474,6 +485,8 @@ route_bill	Kont
 station_print_pick_first	Agħżel sezzjoni tal-ħanut l-ewwel
 bill_printers_dd	Stampaturi għall-kont
 bill_printers_dd_n	{n} stampatur(i) għall-kont · taptap biex tbiddel
+printer_mode_first	L-ewwel li taħdem
+printer_mode_all	Ippprintja fuq kollox
 station_vp_attached	Stampatur imwaħħal
 station_vp_detached	Stampatur imneħħi mill-istazzjon
 print_test_page	Stampa paġna tat-test
@@ -825,6 +838,10 @@ client_template_importing	Qed jitħalla {title}…
 client_template_done	Kull oġġett minn {title} jinsab fuq l-oġġetti tiegħek.
 client_template_imported	Oġġetti {d} miżjuda u kategoriji {c} minn {title}
 cancel	Ikkanċella
+removing	Qed jitneħħa…
+removed	Imneħħi
+updating_order	Qed jiġi aġġornat…
+order_updated	L-ordni ġiet aġġornata
 opening_client	Qed niftħu l-klijent…
 preparing_desk	Qed nipprepara d-desk…
 opening_server	Qed infetaħ is-server…
@@ -855,16 +872,7 @@ recent_changes	Bidliet riċenti
 lane_declared_label	Fattura tat-taxxa
 lane_owner_label	Memo ta' flus
 money_lane_bill	Kont: {lane}
-
-removing	Qed jitneħħa…
-removed	Imneħħi
-updating_order	Qed jiġi aġġornat…
-order_updated	L-ordni ġiet aġġornata
 sel_copy	Ikkopja
 sel_select_all	Agħżel kollox
 sel_copied	Ikkupjat
 nav_loading	Qed jitgħabba…
-printer_mode_first	L-ewwel li taħdem
-printer_mode_all	Ippprintja fuq kollox
-slip_columns	Kolonni
-slip_col_header	Intestatura

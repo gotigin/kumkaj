@@ -914,6 +914,7 @@ mod tests {
             customer_id: None,
             customer_name: None,
             payments: Vec::new(),
+            booking_draft_id: None,
         })
         .unwrap();
         Job {

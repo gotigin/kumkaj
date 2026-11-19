@@ -94,6 +94,8 @@ printer_paper_help	Ibyatangajwe ni impapuro porogaramu ya capyi (driver) y'iyi c
 preview_help	Aka gapapuro nk'uko gacapwa kuri capyi yatoranyijwe hepfo, mu bunini nyabwo ku mpapuro zayo virtual. Umweru ni aho icapa, impapuro z'ibara ry'ivu capyi ntizigeraho, kandi wino yerurutse irakatwa. Udusanduku icyenda ni urupapuro: kanda aho agapapuro kagomba kujya. Agapapuro karekare gakomereza ku zindi mpapuro. Gutoranya capyi bihindura igaragaza gusa.
 slip_col_start	Umwanya w’intangiriro (px)
 slip_col_end	Umwanya w’iherezo (px)
+slip_columns	Inkingi
+slip_col_header	Umutwe
 slip_columns_help	Ubugari bwa buri nkingi burimo umwanya wayo w’intangiriro n’uw’iherezo. Umwandiko ujya ku murongo mushya imbere mu nkingi yawo; ibirenga ubugari bw’ibirimo bicibwa, ku mpapuro no mu igaragaza.
 bill_total_qty_label	Umutwe w'umubare wose
 bill_total_subtotal_label	Umutwe w'igiteranyo gito
@@ -363,6 +365,15 @@ print_open	Capa / fungura
 reason_amend_ph	Impamvu yo gukosora / guhagarika / gusubiza
 reason_note_ph	Impamvu / icyitonderwa (ibyangiritse, kubara, …)
 record_day_close	Andika gufunga umunsi
+business_day	When does Today reset?
+business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
+biz_day_until_close	Until Day close
+biz_day_midnight	Calendar midnight
+business_day_saved	Business day saved
+report_day_lens	View Today as
+report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
+report_lens_day_close	By Day close
+report_lens_midnight	By midnight
 refresh_from_shop	Vugurura uhereye ku iduka
 refund	Subiza
 remove_selected	Kuraho byahiswemo
@@ -486,6 +497,8 @@ route_bill	Inyemezabuguzi
 station_print_pick_first	Tora igice cya dispanseri
 bill_printers_dd	Amacapyi y'inyemezabuguzi
 bill_printers_dd_n	Amacapyi {n} y'inyemezabuguzi · kanda uhindure
+printer_mode_first	Iya mbere ikora
+printer_mode_all	Capa kuri byose
 station_vp_attached	Mucapyi yashyizweho
 station_vp_detached	Mucapyi yakuweho sitasiyo
 print_test_page	Capa urupapuro rw'igerageza
@@ -837,6 +850,10 @@ client_template_importing	Irimo kwinjiza {title}…
 client_template_done	Ikintu cyose kuva {title} kiri kubintu byawe.
 client_template_imported	Wongeyeho ibintu bya {d} nibyiciro bya {c} kuva {title}
 cancel	Hagarika
+removing	Birimo gukurwaho…
+removed	Byakuweho
+updating_order	Birimo kuvugururwa…
+order_updated	Komande yavuguruwe
 opening_client	Irimo gufungura kiliya…
 preparing_desk	Irimo gutegura ameza y'akazi…
 opening_server	Irimo gufungura seriveri…
@@ -867,16 +884,7 @@ recent_changes	Impinduka ziheruka
 lane_declared_label	Inyemezabuguzi y'umusoro
 lane_owner_label	Inyandiko y'amafaranga mu ntoki
 money_lane_bill	Inyemezabuguzi: {lane}
-
-removing	Birimo gukurwaho…
-removed	Byakuweho
-updating_order	Birimo kuvugururwa…
-order_updated	Komande yavuguruwe
 sel_copy	Kopera
 sel_select_all	Hitamo byose
 sel_copied	Byakoporowe
 nav_loading	Biriguma gufunguka…
-printer_mode_first	Iya mbere ikora
-printer_mode_all	Capa kuri byose
-slip_columns	Inkingi
-slip_col_header	Umutwe

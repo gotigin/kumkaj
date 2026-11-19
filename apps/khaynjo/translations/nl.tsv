@@ -115,6 +115,7 @@ bill_line_total	Totaal
 bill_line_footer	Voettekst
 bill_line_upi	UPI
 bill_logo_picture	Afbeelding
+bill_logo_help	Breedte en hoogte in px. Leeg volgt de afbeelding: één leeg behoudt de vorm, beide leeg gebruiken de eigen grootte; beide ingesteld passen hem erin, nooit uitgerekt. Geen afbeelding: een getoond logo houdt zijn hoogte als lege ruimte; Verbergen haalt het weg.
 bill_logo_choose	Afbeelding kiezen
 bill_logo_remove	Afbeelding verwijderen
 bill_logo_none	Geen afbeelding
@@ -122,10 +123,9 @@ bill_logo_unreadable	Geen afbeelding die de app kan lezen
 bill_logo_width	Breedte (px)
 bill_logo_height	Hoogte (px)
 bill_logo_tones	Grijstinten
+bill_logo_tones_help	Vol: elke punt zwart of wit, voor scherpe logo's. Gearceerd: grijs wordt een fijn puntpatroon, voor foto's en zachte schaduw.
 bill_logo_solid	Vol
 bill_logo_shaded	Gearceerd
-bill_logo_help	Breedte en hoogte in px. Leeg volgt de afbeelding: één leeg behoudt de vorm, beide leeg gebruiken de eigen grootte; beide ingesteld passen hem erin, nooit uitgerekt. Geen afbeelding: een getoond logo houdt zijn hoogte als lege ruimte; Verbergen haalt het weg.
-bill_logo_tones_help	Vol: elke punt zwart of wit, voor scherpe logo's. Gearceerd: grijs wordt een fijn puntpatroon, voor foto's en zachte schaduw.
 slip_col_width	Breedte (mm)
 slip_col_start	Beginruimte (px)
 slip_col_end	Eindruimte (px)
@@ -566,6 +566,15 @@ print_open	Printen / openen
 reason_amend_ph	Reden voor wijzigen / annuleren / terugbetaling
 reason_note_ph	Reden / notitie (derving, telling, …)
 record_day_close	Dagsluiting boeken
+business_day	When does Today reset?
+business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
+biz_day_until_close	Until Day close
+biz_day_midnight	Calendar midnight
+business_day_saved	Business day saved
+report_day_lens	View Today as
+report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
+report_lens_day_close	By Day close
+report_lens_midnight	By midnight
 refresh_from_shop	Vernieuwen uit winkel
 refund	Terugbetaling
 remove_selected	Geselecteerde verwijderen

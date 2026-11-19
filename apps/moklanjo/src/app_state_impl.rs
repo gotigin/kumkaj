@@ -67,6 +67,7 @@ impl AppState {
             cart: Cart::default(),
             amend_cart: Cart::default(),
             amend_pay: PayMethod::Cash,
+            bill_later_extra_kind: "oda".into(),
             sale_revisions: Vec::new(),
             selected_customer_id: None,
             customers: Vec::new(),
@@ -98,6 +99,8 @@ impl AppState {
             label_preview_printer: None,
             printer_paper_open: None,
             owner_setup_complete: false,
+            awaiting_app_template: false,
+            app_template_selected_id: None,
             onboarding_complete: false,
             client_paired: false,
             extra_tills_allowed: false,
@@ -176,6 +179,11 @@ impl AppState {
             booking_zone: String::new(),
             booking_pieces: String::new(),
             booking_carrier_pick: String::new(),
+            active_draft_id: None,
+            today_board_rows: Vec::new(),
+            today_board_filter: TodayBoardFilter::default(),
+            today_board_columns: 0,
+            booking_bulk_preview_line: String::new(),
             last_carrier_bill_report: String::new(),
             last_carrier_compare: Vec::new(),
             measure_dim_unit: "cm".into(),
@@ -207,6 +215,7 @@ impl AppState {
             ops_history: Vec::new(),
             ops_reason: None,
             books_report_kind: BooksReportKind::Today,
+            report_day_lens: ReportDayLens::ByDayClose,
             suggest_open: None,
             sel_menu: None,
             suggest_rows: Vec::new(),
@@ -776,11 +785,22 @@ impl AppState {
         Ok(())
     }
 
+    /// Align Reports day lens with shop business-day default (view can still override).
+    fn sync_report_day_lens_from_shop(&mut self) {
+        let mode = self
+            .store
+            .as_ref()
+            .and_then(|s| s.business_day_mode().ok())
+            .unwrap_or(business_day::BusinessDayMode::UntilDayClose);
+        self.report_day_lens = ReportDayLens::from_shop_mode(mode);
+    }
+
     /// Load the bank-books body for [`Self::books_report_kind`] into `day_close_text`.
     fn load_books_report(&mut self) -> Result<(), String> {
         let store = self.store.as_ref().ok_or_else(|| "No store".to_string())?;
+        let lens = self.report_day_lens;
         self.day_close_text = match self.books_report_kind {
-            BooksReportKind::Today => store.books_report_text("today")?,
+            BooksReportKind::Today => store.books_report_today_for_mode(lens.as_mode())?,
             BooksReportKind::Month => store.books_report_text("month")?,
             BooksReportKind::Aging => store.outstanding_pack_text()?,
             BooksReportKind::BalanceSheet => store.balance_sheet_text()?,
@@ -1133,7 +1153,222 @@ impl AppState {
         };
     }
 
+    fn capture_booking_desk_snapshot(&self) -> BookingDeskSnapshot {
+        BookingDeskSnapshot {
+            cart: self.cart.clone(),
+            selected_customer_id: self.selected_customer_id.clone(),
+            booking_scope_international: self.booking_scope_international,
+            origin_name: self.booking_origin_name.clone(),
+            origin_phone: self.booking_origin_phone.clone(),
+            origin_address: self.booking_origin_address.clone(),
+            destination: self.booking_destination.clone(),
+            consignee: self.booking_consignee.clone(),
+            consignee_phone: self.booking_consignee_phone.clone(),
+            consignee_address: self.booking_consignee_address.clone(),
+            actual_kg: self.booking_actual_kg.clone(),
+            length_cm: self.booking_length_cm.clone(),
+            breadth_cm: self.booking_breadth_cm.clone(),
+            height_cm: self.booking_height_cm.clone(),
+            cod: self.booking_cod.clone(),
+            carrier_cost: self.booking_carrier_cost.clone(),
+            declared: self.booking_declared.clone(),
+            contents: self.booking_contents.clone(),
+            eway: self.booking_eway.clone(),
+            insurance: self.booking_insurance,
+            notify_phone: self.booking_notify_phone.clone(),
+            fuel: self.booking_fuel.clone(),
+            docket: self.booking_docket.clone(),
+            zone: self.booking_zone.clone(),
+            pieces: self.booking_pieces.clone(),
+            carrier_pick: self.booking_carrier_pick.clone(),
+        }
+    }
+
+    fn apply_booking_desk_snapshot(&mut self, snap: &BookingDeskSnapshot) {
+        self.cart = snap.cart.clone();
+        self.money_lane = snap.cart.money_lane;
+        self.selected_customer_id = snap.selected_customer_id.clone();
+        self.booking_scope_international = snap.booking_scope_international;
+        self.booking_origin_name = snap.origin_name.clone();
+        self.booking_origin_phone = snap.origin_phone.clone();
+        self.booking_origin_address = snap.origin_address.clone();
+        self.booking_destination = snap.destination.clone();
+        self.booking_consignee = snap.consignee.clone();
+        self.booking_consignee_phone = snap.consignee_phone.clone();
+        self.booking_consignee_address = snap.consignee_address.clone();
+        self.booking_actual_kg = snap.actual_kg.clone();
+        self.booking_length_cm = snap.length_cm.clone();
+        self.booking_breadth_cm = snap.breadth_cm.clone();
+        self.booking_height_cm = snap.height_cm.clone();
+        self.booking_cod = snap.cod.clone();
+        self.booking_carrier_cost = snap.carrier_cost.clone();
+        self.booking_declared = snap.declared.clone();
+        self.booking_contents = snap.contents.clone();
+        self.booking_eway = snap.eway.clone();
+        self.booking_insurance = snap.insurance;
+        self.booking_notify_phone = snap.notify_phone.clone();
+        self.booking_fuel = snap.fuel.clone();
+        self.booking_docket = snap.docket.clone();
+        self.booking_zone = snap.zone.clone();
+        self.booking_pieces = snap.pieces.clone();
+        self.booking_carrier_pick = snap.carrier_pick.clone();
+    }
+
+    fn booking_desk_is_dirty(&self) -> bool {
+        !self.capture_booking_desk_snapshot().is_empty()
+    }
+
+    fn refresh_today_board(&mut self) -> Result<(), String> {
+        let store = self.store.as_ref().ok_or_else(|| "No store".to_string())?;
+        let limit = 200i64;
+        let mut cards = Vec::new();
+        for d in store.list_open_booking_drafts()? {
+            let snap = &d.snapshot;
+            let line2 = if snap.destination.trim().is_empty() {
+                snap.consignee.trim().to_string()
+            } else {
+                snap.destination.trim().to_string()
+            };
+            let line3 = if snap.cart.lines.is_empty() {
+                self.t("board_card_no_charges")
+            } else {
+                format!(
+                    "{} {}",
+                    snap.cart.lines.len(),
+                    self.t("board_card_charges")
+                )
+            };
+            cards.push(TodayBoardCard {
+                id: d.id.clone(),
+                is_draft: true,
+                title: d.title.clone(),
+                line2,
+                line3,
+                amount_paise: snap.cart.rounded_total().paise(),
+                at: d.updated_at.clone(),
+            });
+        }
+        for sale in store.list_sales_in_business_day(limit)? {
+            if sale.status != "completed" {
+                continue;
+            }
+            let mut title = sale.origin_name.trim().to_string();
+            if title.is_empty() {
+                title = sale.consignee_name.trim().to_string();
+            }
+            if title.is_empty() && !sale.awb_no.is_empty() {
+                title = sale.awb_no.clone();
+            }
+            if title.is_empty() {
+                title = self.t("board_card_booked");
+            }
+            let line2 = sale.destination.trim().to_string();
+            let mut line3 = Vec::new();
+            if !sale.awb_no.is_empty() {
+                line3.push(sale.awb_no.clone());
+            }
+            if !sale.pay_method.is_empty() {
+                line3.push(sale.pay_method.clone());
+            }
+            let at = if sale.user_at.trim().is_empty() {
+                sale.created_at.clone()
+            } else {
+                sale.user_at.clone()
+            };
+            cards.push(TodayBoardCard {
+                id: sale.id.clone(),
+                is_draft: false,
+                title,
+                line2,
+                line3: line3.join(" · "),
+                amount_paise: sale.total_paise,
+                at,
+            });
+        }
+        cards.sort_by(|a, b| b.at.cmp(&a.at));
+        self.today_board_rows = cards;
+        Ok(())
+    }
+
+    fn park_booking_desk(&mut self) -> Result<(), String> {
+        let snap = self.capture_booking_desk_snapshot();
+        if snap.is_empty() {
+            return Err(self.t("board_park_nothing"));
+        }
+        let actor = self.actor()?;
+        let existing = self.active_draft_id.clone();
+        if self.device_role == DeviceRole::Client {
+            let req = net::RemoteParkDraftRequest {
+                id: existing,
+                snapshot: snap,
+            };
+            let done = self.t("board_parked");
+            self.lan_job(
+                "/booking_draft",
+                &req,
+                self.t("park_draft"),
+                done,
+                phone::Follow::Refresh,
+                false,
+            )?;
+            self.active_draft_id = None;
+            self.pull_from_server();
+            return Ok(());
+        }
+        let store = self.store.as_mut().ok_or_else(|| "No store".to_string())?;
+        let draft = store.park_booking_draft_from_snapshot(existing.as_deref(), snap, &actor)?;
+        self.active_draft_id = None;
+        let _ = draft;
+        Ok(())
+    }
+
+    fn resume_booking_draft(&mut self, id: &str) -> Result<(), String> {
+        let store = self.store.as_ref().ok_or_else(|| "No store".to_string())?;
+        let draft = store
+            .get_booking_draft(id)?
+            .ok_or_else(|| self.t("board_draft_gone"))?;
+        if draft.status != "draft" {
+            return Err(self.t("board_draft_closed"));
+        }
+        self.apply_booking_desk_snapshot(&draft.snapshot);
+        self.active_draft_id = Some(draft.id);
+        Ok(())
+    }
+
+    /// Drop a parked draft from Board (not books — never posted).
+    fn discard_today_board_draft(&mut self, id: &str) -> Result<String, String> {
+        let actor = self.actor()?;
+        if self.device_role == DeviceRole::Client {
+            let req = net::RemoteBookingDraftDiscardRequest {
+                id: id.to_string(),
+            };
+            let done = self.t("board_discarded");
+            self.lan_job(
+                "/booking_draft_discard",
+                &req,
+                self.t("board_discard"),
+                done.clone(),
+                phone::Follow::Refresh,
+                false,
+            )?;
+            if self.active_draft_id.as_deref() == Some(id) {
+                self.clear_booking_desk();
+            }
+            self.pull_from_server();
+            let _ = self.refresh_today_board();
+            return Ok(done);
+        }
+        let store = self.store.as_ref().ok_or_else(|| "No store".to_string())?;
+        store.discard_booking_draft(id, &actor)?;
+        if self.active_draft_id.as_deref() == Some(id) {
+            self.clear_booking_desk();
+        }
+        self.refresh_today_board()?;
+        Ok(self.t("board_discarded"))
+    }
+
     fn clear_booking_desk(&mut self) {
+        self.active_draft_id = None;
         self.cart.clear();
         self.booking_origin_name.clear();
         self.booking_origin_phone.clear();
@@ -1158,6 +1393,7 @@ impl AppState {
         self.booking_zone.clear();
         self.booking_pieces.clear();
         self.booking_carrier_pick.clear();
+        self.booking_bulk_preview_line.clear();
         self.last_awb.clear();
         self.selected_customer_id = None;
     }

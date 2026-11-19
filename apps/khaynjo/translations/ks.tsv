@@ -115,6 +115,7 @@ bill_line_total	کُل
 bill_line_footer	فوٹر
 bill_line_upi	UPI
 bill_logo_picture	تصویر
+bill_logo_help	کھولہٕ تہٕ تھوٗد px منٛز۔ خٲلی تھاوِو تہٕ تصویرِ مطابق: اکھ خٲلی تہٕ شکل رَوان، دۄنوے خٲلی تہٕ پنُن ناپ؛ دۄنوے بھٲرِو تہٕ اندر سماوان، کُنہِ ساتھ نہ کھینچان۔ تصویر نہ: ہاونہٕ آمُت لوگو تھاوان پنٕنۍ تھوٗد خٲلی جاے ہِنٛز پٲٹھۍ؛ چھپاوُن کڈان۔
 bill_logo_choose	تصویر ژارِو
 bill_logo_remove	تصویر کڈِو
 bill_logo_none	کانہہ تصویر نہ
@@ -122,10 +123,9 @@ bill_logo_unreadable	یہ ایپ ہیکہِ نہ یہ تصویر پرٕنِتھ
 bill_logo_width	کھولہٕ (px)
 bill_logo_height	تھوٗد (px)
 bill_logo_tones	سَرمَیی
+bill_logo_tones_help	ٹھوس: پرٛتھ بِندۍ کالہٕ یا سفید، صاف لوگوہن خٲطرٕ۔ سایہٕ دار: سَرمَیی بنان بارٕکہٕ بِندیَن ہُند نمونہٕ، فوٹوہن تہٕ ہلکہِ سایہٕ خٲطرٕ۔
 bill_logo_solid	ٹھوس
 bill_logo_shaded	سایہٕ دار
-bill_logo_help	کھولہٕ تہٕ تھوٗد px منٛز۔ خٲلی تھاوِو تہٕ تصویرِ مطابق: اکھ خٲلی تہٕ شکل رَوان، دۄنوے خٲلی تہٕ پنُن ناپ؛ دۄنوے بھٲرِو تہٕ اندر سماوان، کُنہِ ساتھ نہ کھینچان۔ تصویر نہ: ہاونہٕ آمُت لوگو تھاوان پنٕنۍ تھوٗد خٲلی جاے ہِنٛز پٲٹھۍ؛ چھپاوُن کڈان۔
-bill_logo_tones_help	ٹھوس: پرٛتھ بِندۍ کالہٕ یا سفید، صاف لوگوہن خٲطرٕ۔ سایہٕ دار: سَرمَیی بنان بارٕکہٕ بِندیَن ہُند نمونہٕ، فوٹوہن تہٕ ہلکہِ سایہٕ خٲطرٕ۔
 slip_col_width	چوڑٲے (mm)
 slip_col_start	شروعاتُک جاے (px)
 slip_col_end	آخرُک جاے (px)
@@ -566,6 +566,15 @@ print_open	پرنٹ / اوپن
 reason_amend_ph	ترمیم کرنُک وجہ / کالعدم / واپسی
 reason_note_ph	وجہ / نوٹ (ضایع، گنتی ، ...)
 record_day_close	ریکارڈُک دۄہ بند
+business_day	When does Today reset?
+business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
+biz_day_until_close	Until Day close
+biz_day_midnight	Calendar midnight
+business_day_saved	Business day saved
+report_day_lens	View Today as
+report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
+report_lens_day_close	By Day close
+report_lens_midnight	By midnight
 refresh_from_shop	دُکانہٕ پٮ۪ٹھٕ کٔرِو تازٕ
 refund	واپسی
 remove_selected	سِلیکٹَن ہٹاو

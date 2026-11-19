@@ -1448,6 +1448,13 @@ fn deferred_till_sync_frame() -> &'static Mutex<Option<NextFrame>> {
     F.get_or_init(|| Mutex::new(None))
 }
 
+/// Settings hub after a peer jump: one follow-up full redraw once layout has
+/// the newly visible ScrollYView sized (blank body until hover otherwise).
+fn deferred_settings_paint_frame() -> &'static Mutex<Option<NextFrame>> {
+    static F: OnceLock<Mutex<Option<NextFrame>>> = OnceLock::new();
+    F.get_or_init(|| Mutex::new(None))
+}
+
 fn menu_pick_scroll_programmatic() -> bool {
     menu_pick_scroll_anim().lock().unwrap().is_some()
 }

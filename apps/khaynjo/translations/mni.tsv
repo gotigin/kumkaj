@@ -115,6 +115,7 @@ bill_line_total	ꯑꯄꯨꯟꯕ
 bill_line_footer	ꯃꯈꯥ ꯋꯥꯍꯩ
 bill_line_upi	UPI
 bill_logo_picture	ꯃꯃꯤ
+bill_logo_help	ꯄꯥꯛ ꯑꯃꯁꯨꯡ ꯑꯋꯥꯡ px ꯗꯥ꯫ ꯑꯍꯥꯡꯕꯥ ꯊꯃꯂꯕꯗꯤ ꯃꯃꯤꯒꯤ ꯃꯇꯨꯡ ꯏꯟꯅꯥ: ꯑꯃꯥ ꯑꯍꯥꯡꯕꯥ ꯑꯣꯏꯔꯕꯗꯤ ꯃꯑꯣꯡ ꯊꯝꯃꯤ, ꯑꯅꯤꯃꯛ ꯑꯍꯥꯡꯕꯥ ꯑꯣꯏꯔꯕꯗꯤ ꯃꯁꯥꯒꯤ ꯆꯥꯡ; ꯑꯅꯤꯃꯛ ꯊꯃꯂꯕꯗꯤ ꯃꯅꯨꯡꯗꯥ ꯆꯨꯅꯕꯥ ꯊꯝꯃꯤ, ꯀꯩꯗꯧꯉꯩꯗꯁꯨ ꯁꯥꯡꯍꯟꯗꯦ꯫ ꯃꯃꯤ ꯂꯩꯇꯔꯕꯗꯤ: ꯎꯠꯂꯤꯕꯥ ꯂꯣꯒꯣꯅꯥ ꯃꯁꯥꯒꯤ ꯑꯋꯥꯡ ꯑꯍꯥꯡꯕꯥ ꯃꯐꯝ ꯑꯣꯏꯅꯥ ꯊꯝꯃꯤ; ꯂꯣꯠꯄꯅꯥ ꯂꯧꯊꯣꯛꯏ꯫
 bill_logo_choose	ꯃꯃꯤ ꯈꯟꯕꯤꯌꯨ
 bill_logo_remove	ꯃꯃꯤ ꯂꯧꯊꯣꯛꯄꯤꯌꯨ
 bill_logo_none	ꯃꯃꯤ ꯂꯩꯇꯦ
@@ -122,10 +123,9 @@ bill_logo_unreadable	ꯑꯦꯞ ꯑꯁꯤꯅꯥ ꯄꯥꯕꯥ ꯉꯝꯕꯥ ꯃꯃ�
 bill_logo_width	ꯄꯥꯛ (px)
 bill_logo_height	ꯑꯋꯥꯡ (px)
 bill_logo_tones	ꯃꯨꯕꯨ
+bill_logo_tones_help	ꯀꯟꯕꯥ: ꯃꯆꯤꯟ ꯈꯨꯗꯤꯡꯃꯛ ꯑꯃꯨꯕꯥ ꯅꯠꯔꯒꯥ ꯑꯉꯧꯕꯥ, ꯃꯌꯦꯛ ꯁꯦꯡꯕꯥ ꯂꯣꯒꯣꯒꯤꯗꯃꯛ꯫ ꯑꯃꯝꯕꯥ ꯌꯥꯎꯕꯥ: ꯃꯨꯕꯨ ꯑꯁꯤ ꯃꯆꯤꯟ ꯃꯆꯥꯒꯤ ꯃꯑꯣꯡ ꯑꯣꯏꯔꯛꯏ, ꯐꯣꯇꯣ ꯑꯃꯁꯨꯡ ꯇꯞꯄꯥ ꯑꯃꯝꯕꯒꯤꯗꯃꯛ꯫
 bill_logo_solid	ꯀꯟꯕꯥ
 bill_logo_shaded	ꯑꯃꯝꯕꯥ ꯌꯥꯎꯕꯥ
-bill_logo_help	ꯄꯥꯛ ꯑꯃꯁꯨꯡ ꯑꯋꯥꯡ px ꯗꯥ꯫ ꯑꯍꯥꯡꯕꯥ ꯊꯃꯂꯕꯗꯤ ꯃꯃꯤꯒꯤ ꯃꯇꯨꯡ ꯏꯟꯅꯥ: ꯑꯃꯥ ꯑꯍꯥꯡꯕꯥ ꯑꯣꯏꯔꯕꯗꯤ ꯃꯑꯣꯡ ꯊꯝꯃꯤ, ꯑꯅꯤꯃꯛ ꯑꯍꯥꯡꯕꯥ ꯑꯣꯏꯔꯕꯗꯤ ꯃꯁꯥꯒꯤ ꯆꯥꯡ; ꯑꯅꯤꯃꯛ ꯊꯃꯂꯕꯗꯤ ꯃꯅꯨꯡꯗꯥ ꯆꯨꯅꯕꯥ ꯊꯝꯃꯤ, ꯀꯩꯗꯧꯉꯩꯗꯁꯨ ꯁꯥꯡꯍꯟꯗꯦ꯫ ꯃꯃꯤ ꯂꯩꯇꯔꯕꯗꯤ: ꯎꯠꯂꯤꯕꯥ ꯂꯣꯒꯣꯅꯥ ꯃꯁꯥꯒꯤ ꯑꯋꯥꯡ ꯑꯍꯥꯡꯕꯥ ꯃꯐꯝ ꯑꯣꯏꯅꯥ ꯊꯝꯃꯤ; ꯂꯣꯠꯄꯅꯥ ꯂꯧꯊꯣꯛꯏ꯫
-bill_logo_tones_help	ꯀꯟꯕꯥ: ꯃꯆꯤꯟ ꯈꯨꯗꯤꯡꯃꯛ ꯑꯃꯨꯕꯥ ꯅꯠꯔꯒꯥ ꯑꯉꯧꯕꯥ, ꯃꯌꯦꯛ ꯁꯦꯡꯕꯥ ꯂꯣꯒꯣꯒꯤꯗꯃꯛ꯫ ꯑꯃꯝꯕꯥ ꯌꯥꯎꯕꯥ: ꯃꯨꯕꯨ ꯑꯁꯤ ꯃꯆꯤꯟ ꯃꯆꯥꯒꯤ ꯃꯑꯣꯡ ꯑꯣꯏꯔꯛꯏ, ꯐꯣꯇꯣ ꯑꯃꯁꯨꯡ ꯇꯞꯄꯥ ꯑꯃꯝꯕꯒꯤꯗꯃꯛ꯫
 slip_col_width	ꯄꯥꯛ (mm)
 slip_col_start	ꯍꯧꯔꯛꯐꯝꯒꯤ ꯃꯐꯝ (px)
 slip_col_end	ꯂꯣꯏꯔꯛꯐꯝꯒꯤ ꯃꯐꯝ (px)
@@ -566,6 +566,15 @@ print_open	ꯄ꯭ꯔꯤꯟꯇ / ꯍꯥꯡꯗꯣꯛꯎ
 reason_amend_ph	ꯁꯦꯝꯕ / ꯇꯣꯛꯄ / ꯍꯟꯕꯤꯔꯛꯄꯒꯤ ꯔꯤꯖꯟ
 reason_note_ph	ꯔꯤꯖꯟ / ꯋꯥꯍꯩ (ꯃꯥꯡꯈꯤ, ꯂꯤꯁꯤꯡ, …)
 record_day_close	ꯅꯨꯃꯤꯠ ꯊꯤꯡꯕ ꯏꯕꯤꯌꯨ
+business_day	When does Today reset?
+business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
+biz_day_until_close	Until Day close
+biz_day_midnight	Calendar midnight
+business_day_saved	Business day saved
+report_day_lens	View Today as
+report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
+report_lens_day_close	By Day close
+report_lens_midnight	By midnight
 refresh_from_shop	ꯀꯦꯟꯐꯝꯗꯒꯤ ꯑꯅꯧ ꯇꯧꯕꯤꯌꯨ
 refund	ꯁꯦꯟ ꯍꯟꯕꯤꯔꯛꯎ
 remove_selected	ꯈꯟꯈꯤꯕ ꯂꯣꯠꯎ

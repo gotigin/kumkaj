@@ -82,6 +82,8 @@ printer_paper_help	Gemeld is het papier waarop het stuurprogramma van deze print
 preview_help	Deze bon zoals hij afdrukt op de printer die hieronder gekozen is, op ware grootte op het virtuele papier ervan. Wit is waar hij afdrukt, grijs papier ligt buiten het bereik van de printer, en vervaagde inkt wordt afgesneden. De negen vakjes zijn het papier: tik waar de bon moet staan. Een lange bon gaat verder op meer pagina's. Een printer kiezen verandert alleen het voorbeeld.
 slip_col_start	Beginruimte (px)
 slip_col_end	Eindruimte (px)
+slip_columns	Kolommen
+slip_col_header	Kop
 slip_columns_help	De breedte van elke kolom omvat de begin- en eindruimte. Tekst loopt door binnen zijn kolom; wat buiten de inhoudsbreedte valt, wordt afgesneden – op papier en in het voorbeeld.
 bill_total_qty_label	Label totaal aantal
 bill_total_subtotal_label	Label subtotaal
@@ -351,6 +353,15 @@ print_open	Printen / openen
 reason_amend_ph	Reden voor wijzigen / annuleren / terugbetaling
 reason_note_ph	Reden / notitie (derving, telling, …)
 record_day_close	Dagsluiting boeken
+business_day	When does Today reset?
+business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
+biz_day_until_close	Until Day close
+biz_day_midnight	Calendar midnight
+business_day_saved	Business day saved
+report_day_lens	View Today as
+report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
+report_lens_day_close	By Day close
+report_lens_midnight	By midnight
 refresh_from_shop	Vernieuwen uit winkel
 refund	Terugbetaling
 remove_selected	Geselecteerde verwijderen
@@ -474,6 +485,8 @@ route_bill	Rekening
 station_print_pick_first	Kies eerst een winkelsectie
 bill_printers_dd	Printers voor de rekening
 bill_printers_dd_n	{n} printer(s) voor de rekening · tik om te wijzigen
+printer_mode_first	Eerste die werkt
+printer_mode_all	Afdrukken op alle
 station_vp_attached	Printer gekoppeld
 station_vp_detached	Printer van station verwijderd
 print_test_page	Testpagina afdrukken
@@ -825,6 +838,10 @@ client_template_importing	{title} wordt geïmporteerd…
 client_template_done	Elk artikel uit {title} staat bij uw artikelen.
 client_template_imported	{d} artikelen en {c} categorieën uit {title} toegevoegd
 cancel	Annuleren
+removing	Verwijderen…
+removed	Verwijderd
+updating_order	Bijwerken…
+order_updated	Bestelling bijgewerkt
 opening_client	Client openen…
 preparing_desk	Bureau voorbereiden…
 opening_server	Bediende openen…
@@ -855,16 +872,7 @@ recent_changes	Recente wijzigingen
 lane_declared_label	Belastingfactuur
 lane_owner_label	Kassabon
 money_lane_bill	Factuur: {lane}
-
-removing	Verwijderen…
-removed	Verwijderd
-updating_order	Bijwerken…
-order_updated	Bestelling bijgewerkt
 sel_copy	Kopiëren
 sel_select_all	Alles selecteren
 sel_copied	Gekopieerd
 nav_loading	Laden…
-printer_mode_first	Eerste die werkt
-printer_mode_all	Afdrukken op alle
-slip_columns	Kolommen
-slip_col_header	Kop

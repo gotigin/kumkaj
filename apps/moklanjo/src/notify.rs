@@ -68,27 +68,41 @@ pub fn draft_booking_alert(
     }
 }
 
+#[derive(Clone, Debug, Default)]
+pub struct BulkCsvPreview {
+    pub ok: Vec<BulkBookingRow>,
+    pub errors: Vec<String>,
+}
+
 /// Parse bulk CSV booking rows: `destination,consignee,actual_kg,cod_paise,note`
-pub fn parse_bulk_booking_csv(raw: &str) -> Result<Vec<BulkBookingRow>, String> {
-    let mut out = Vec::new();
+/// Collects per-line errors instead of stopping at the first bad row.
+pub fn parse_bulk_booking_csv_preview(raw: &str) -> BulkCsvPreview {
+    let mut ok = Vec::new();
+    let mut errors = Vec::new();
+    let mut header_skipped = false;
     for (i, line) in raw.lines().enumerate() {
+        let line_no = i + 1;
         let line = line.trim();
         if line.is_empty() || line.starts_with('#') {
             continue;
         }
-        if i == 0 && line.to_lowercase().contains("destination") {
+        if !header_skipped && line.to_lowercase().contains("destination") {
+            header_skipped = true;
             continue;
         }
         let cols: Vec<&str> = line.split(',').map(|s| s.trim()).collect();
         if cols.len() < 2 {
-            return Err(format!("Line {}: need at least destination,consignee", i + 1));
+            errors.push(format!(
+                "Line {line_no}: need at least destination,consignee"
+            ));
+            continue;
         }
         let actual_kg = cols
             .get(2)
             .and_then(|s| crate::precise::parse_non_negative(s))
             .unwrap_or(crate::precise::ZERO);
         let cod_paise: i64 = cols.get(3).and_then(|s| s.parse().ok()).unwrap_or(0);
-        out.push(BulkBookingRow {
+        ok.push(BulkBookingRow {
             destination: cols[0].into(),
             consignee: cols[1].into(),
             actual_kg,
@@ -96,7 +110,17 @@ pub fn parse_bulk_booking_csv(raw: &str) -> Result<Vec<BulkBookingRow>, String> 
             note: cols.get(4).unwrap_or(&"").to_string(),
         });
     }
-    Ok(out)
+    BulkCsvPreview { ok, errors }
+}
+
+/// Parse bulk CSV — succeeds only when every data line is valid.
+pub fn parse_bulk_booking_csv(raw: &str) -> Result<Vec<BulkBookingRow>, String> {
+    let preview = parse_bulk_booking_csv_preview(raw);
+    if preview.errors.is_empty() {
+        Ok(preview.ok)
+    } else {
+        Err(preview.errors.join("\n"))
+    }
 }
 
 #[derive(Clone, Debug, Default)]
@@ -179,6 +203,18 @@ mod tests {
         assert_eq!(rows.len(), 1);
         assert_eq!(rows[0].destination, "Pune");
         assert_eq!(rows[0].actual_kg, "2.5".parse().unwrap());
+    }
+
+    #[test]
+    fn parse_bulk_preview_mixed_lines() {
+        let csv = "destination,consignee\nPune,Riya\nbad-line-only\nDelhi,Amit,2,0\n";
+        let preview = parse_bulk_booking_csv_preview(csv);
+        assert_eq!(preview.ok.len(), 2);
+        assert_eq!(preview.ok[0].destination, "Pune");
+        assert_eq!(preview.ok[1].destination, "Delhi");
+        assert_eq!(preview.errors.len(), 1);
+        assert!(preview.errors[0].contains("destination,consignee"));
+        assert!(parse_bulk_booking_csv(csv).is_err());
     }
 
     #[test]

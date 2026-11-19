@@ -1288,7 +1288,7 @@ impl Product {
     }
 }
 
-#[derive(Clone, Debug, Default)]
+#[derive(Clone, Debug, Default, Serialize, Deserialize)]
 pub struct CartLine {
     pub product_id: String,
     pub name: String,
@@ -1385,7 +1385,7 @@ impl CartLine {
     }
 }
 
-#[derive(Clone, Debug, Default)]
+#[derive(Clone, Debug, Default, Serialize, Deserialize)]
 pub struct Cart {
     pub lines: Vec<CartLine>,
     /// Optional charged total for this open cart (e.g. round ₹52 → ₹50).
@@ -1904,6 +1904,131 @@ impl SaleDraft {
         }
         Ok(())
     }
+}
+
+/// Unfinished booking desk: cart + form fields. Not books until finalize.
+#[derive(Clone, Debug, Serialize, Deserialize)]
+pub struct BookingDeskSnapshot {
+    pub cart: Cart,
+    #[serde(default)]
+    pub selected_customer_id: Option<String>,
+    #[serde(default)]
+    pub booking_scope_international: bool,
+    #[serde(default)]
+    pub origin_name: String,
+    #[serde(default)]
+    pub origin_phone: String,
+    #[serde(default)]
+    pub origin_address: String,
+    #[serde(default)]
+    pub destination: String,
+    #[serde(default)]
+    pub consignee: String,
+    #[serde(default)]
+    pub consignee_phone: String,
+    #[serde(default)]
+    pub consignee_address: String,
+    #[serde(default)]
+    pub actual_kg: String,
+    #[serde(default)]
+    pub length_cm: String,
+    #[serde(default)]
+    pub breadth_cm: String,
+    #[serde(default)]
+    pub height_cm: String,
+    #[serde(default)]
+    pub cod: String,
+    #[serde(default)]
+    pub carrier_cost: String,
+    #[serde(default)]
+    pub declared: String,
+    #[serde(default)]
+    pub contents: String,
+    #[serde(default)]
+    pub eway: String,
+    #[serde(default)]
+    pub insurance: bool,
+    #[serde(default)]
+    pub notify_phone: String,
+    #[serde(default)]
+    pub fuel: String,
+    #[serde(default)]
+    pub docket: String,
+    #[serde(default)]
+    pub zone: String,
+    #[serde(default)]
+    pub pieces: String,
+    #[serde(default)]
+    pub carrier_pick: String,
+}
+
+impl BookingDeskSnapshot {
+    pub fn display_title(&self) -> String {
+        for s in [
+            self.origin_name.trim(),
+            self.consignee.trim(),
+            self.destination.trim(),
+        ] {
+            if !s.is_empty() {
+                return s.to_string();
+            }
+        }
+        "Draft".into()
+    }
+
+    pub fn is_empty(&self) -> bool {
+        if !self.cart.lines.is_empty() {
+            return false;
+        }
+        if self.selected_customer_id.is_some() {
+            return false;
+        }
+        if self.booking_scope_international || self.insurance {
+            return false;
+        }
+        for s in [
+            &self.origin_name,
+            &self.origin_phone,
+            &self.origin_address,
+            &self.destination,
+            &self.consignee,
+            &self.consignee_phone,
+            &self.consignee_address,
+            &self.actual_kg,
+            &self.length_cm,
+            &self.breadth_cm,
+            &self.height_cm,
+            &self.cod,
+            &self.carrier_cost,
+            &self.declared,
+            &self.contents,
+            &self.eway,
+            &self.notify_phone,
+            &self.fuel,
+            &self.docket,
+            &self.zone,
+            &self.pieces,
+            &self.carrier_pick,
+        ] {
+            if !s.trim().is_empty() {
+                return false;
+            }
+        }
+        true
+    }
+}
+
+#[derive(Clone, Debug, Serialize, Deserialize)]
+pub struct BookingDraft {
+    pub id: String,
+    pub status: String,
+    pub opened_at: String,
+    pub updated_at: String,
+    pub opened_by: String,
+    pub title: String,
+    pub snapshot: BookingDeskSnapshot,
+    #[serde(default)]
+    pub sale_id: String,
 }
 
 #[derive(Clone, Debug, Default, Serialize, Deserialize)]

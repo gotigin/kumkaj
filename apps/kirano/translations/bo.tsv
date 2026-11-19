@@ -82,6 +82,8 @@ printer_paper_help	བརྡ་སྦྱོར་བྱས་པ་ནི་ད�
 preview_help	ཤོག་ཆ་འདི་འོག་ཏུ་འདེམས་པའི་དཔར་འཕྲུལ་གྱིས་དཔར་བ་ལྟར། དེའི་རྟོག་བཟོའི་ཤོག་བུའི་སྟེང་ཚད་ངོ་མར། དཀར་པོ་ནི་དཔར་ས་ཡིན། ཤོག་བུ་སྐྱ་བོར་དཔར་འཕྲུལ་མི་སླེབ། སྣག་ཚ་ཡལ་བ་ནི་གཅོད། གྲུ་བཞི་དགུ་ནི་ཤོག་བུ་ཡིན། ཤོག་ཆ་འཇོག་སར་གནོན། ཤོག་ཆ་རིང་པོ་ཤོག་ངོས་གཞན་ལ་འགྲོ། དཔར་འཕྲུལ་འདེམས་ན་སྔོན་ལྟ་ཁོ་ན་འགྱུར།
 slip_col_start	འགོའི་བར་སྟོང་། (px)
 slip_col_end	མཇུག་གི་བར་སྟོང་། (px)
+slip_columns	ཀ་རིལ།
+slip_col_header	མགོ།
 slip_columns_help	ཀ་རིལ་རེ་རེའི་ཞེང་ཚད་ནང་དུ་འགོ་དང་མཇུག་གི་བར་སྟོང་ཚུད་ཡོད། ཡི་གེ་རང་གི་ཀ་རིལ་ནང་དུ་འཁྱིལ་ཡོང་། ནང་དོན་གྱི་ཞེང་ཚད་ལས་བརྒལ་བ་ནི་ཤོག་བུ་དང་སྔོན་ལྟ་གཉིས་ཀར་བཅད་ཡོང་།
 bill_total_qty_label	ཁྱོན་བསྡོམས་འབོར་ཚད་ཀྱི་མིང་བྱང་།
 bill_total_subtotal_label	ཡན་ལག་བསྡོམས་རྩིས་མིང་རྟགས།
@@ -351,6 +353,15 @@ print_open	པར་སྐྲུན།/ཁ་ཕྱེ།
 reason_amend_ph	བཟོ་བཅོས་བྱེད་དགོས་པའི་རྒྱུ་མཚན།
 reason_note_ph	རྒྱུ་མཚན། དྲན་ཐོ། (འཕྲོ་བརླག་དང་། གྲངས་འབོར།...)
 record_day_close	ཉིན་མོ་སྲུང་སྐྱོབ།
+business_day	When does Today reset?
+business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
+biz_day_until_close	Until Day close
+biz_day_midnight	Calendar midnight
+business_day_saved	Business day saved
+report_day_lens	View Today as
+report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
+report_lens_day_close	By Day close
+report_lens_midnight	By midnight
 refresh_from_shop	ཚོང་ཁང་ནས་གསར་བརྗེ།
 refund	དངུལ་ཕྱིར་སློབ།
 remove_selected	བདམས་པ་མེད་པར་བཟོས།
@@ -474,6 +485,8 @@ route_bill	འཛིན་བྱང་།
 station_print_pick_first	དང་པོ་ཚོང་ཁང་གི་སྡེ་ཚན་ཞིག་འདེམས།
 bill_printers_dd	དཔྱ་ཁྲལ་གྱི་དཔར་མཁན།
 bill_printers_dd_n	{n} དཔྱ་ཁྲལ་གྱི་དཔར་འཕྲུལ་ · བརྗེ་སྒྱུར་བྱེད་པར་རྡེབ།
+printer_mode_first	དང་པོ་དེ་ལས་ཀ་བྱེད་ཀྱི་ཡོད།
+printer_mode_all	ཚང་མར་དཔར་བསྐྲུན།
 station_vp_attached	པར་འཕྲུལ་སྦྱར་ཡོད།
 station_vp_detached	པར་འཕྲུལ་ས་ཚིགས་ནས་ཕྱིར་འཐེན་བྱས།
 print_test_page	ཚོད་ལྟའི་ཤོག་བུ་དཔར་བསྐྲུན།
@@ -825,6 +838,10 @@ client_template_importing	ནང་འདྲེན་བྱེད་བཞིན
 client_template_done	{title}ཡི་རྣམ་གྲངས་ཚང་མ་ཁྱོད་ཀྱི་རྣམ་གྲངས་ནང་ཡོད།
 client_template_imported	{title}ནས་{d} རྣམ་གྲངས་དང་{c} རིགས་ཁ་སྣོན་བྱས་པ།
 cancel	ཆ་མེད་གཏོང་བ།
+removing	སུབ་བཞིན་ཡོད།…
+removed	བསུབས་ཟིན།
+updating_order	གསར་བསྒྱུར་བྱེད་བཞིན་ཡོད།…
+order_updated	བཀའ་ཐོ་གསར་བསྒྱུར་བྱས་ཟིན།
 opening_client	ཚོང་ཤག་ཁ་ཕྱེ་བ།
 preparing_desk	ཡིག་ཅོག་གྲ་སྒྲིག་བྱེད་བཞིན་ཡོད།
 opening_server	སར་བར་ཁ་ཕྱེ་བཞིན་ཡོད།
@@ -855,16 +872,7 @@ recent_changes	ཉེ་ཆར་གྱི་འགྱུར་བ།
 lane_declared_label	དཔྱ་ཁྲལ་འཛིན་བྱང་།
 lane_owner_label	དངུལ་འཛིན་དྲན་ཐོ།
 money_lane_bill	བིལ་: {lane}
-
-removing	སུབ་བཞིན་ཡོད།…
-removed	བསུབས་ཟིན།
-updating_order	གསར་བསྒྱུར་བྱེད་བཞིན་ཡོད།…
-order_updated	བཀའ་ཐོ་གསར་བསྒྱུར་བྱས་ཟིན།
 sel_copy	འདྲ་བཤུས།
 sel_select_all	ཚང་མ་འདེམས།
 sel_copied	འདྲ་བཤུས་ཟིན།
 nav_loading	ནང་འཇུག་བྱེད་བཞིན་པ…
-printer_mode_first	དང་པོ་དེ་ལས་ཀ་བྱེད་ཀྱི་ཡོད།
-printer_mode_all	ཚང་མར་དཔར་བསྐྲུན།
-slip_columns	ཀ་རིལ།
-slip_col_header	མགོ།

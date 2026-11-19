@@ -78,6 +78,7 @@ owner-facing copy.
 | User need | Tabiyat call |
 |---|---|
 | Counter sell + khata + GST | **In** |
+| Business day past midnight **or** calendar 12:00 am | **In** — default Until Day close; Owner switches on Day close ([`BUSINESS_BOOKS.md`](../../../docs/BUSINESS_BOOKS.md) § Business day) |
 | Barcode / salt search | **In** |
 | Schedule H / Rx flags + note | **In** (owner-controlled) |
 | Buy batch + expiry alerts | **In** |

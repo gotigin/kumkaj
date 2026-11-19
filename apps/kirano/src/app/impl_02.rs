@@ -532,7 +532,20 @@ fn paint_submit_busy_chrome(&mut self, cx: &mut Cx) {
                 self.paint_header_back_chrome(cx);
                 self.fit_inside_system_bars(cx);
                 self.repair_focused_carets(cx);
-                self.ui.redraw(cx);
+                // Peer land on the hub: top of the list (same as open_settings_panel).
+                if app_state().lock().unwrap().settings_panel.is_none() {
+                    self.ui
+                        .view(cx, ids!(settings_screen))
+                        .set_scroll_pos(cx, dvec2(0.0, 0.0));
+                }
+                // settings_screen was hidden on other peers. Its own redraw can
+                // miss the hub body (cream page, no rows) until the next pointer
+                // event forces a full repaint — hover/click "fixed" it. Escalate
+                // like View::set_visible does for Area::Empty (vendor view.rs).
+                self.ui.view(cx, ids!(settings_screen)).redraw(cx);
+                self.ui.widget(cx, ids!(sidebar_nav_list)).redraw(cx);
+                cx.redraw_all();
+                *deferred_settings_paint_frame().lock().unwrap() = Some(cx.new_next_frame());
                 return;
             }
         }
@@ -2463,6 +2476,7 @@ fn paint_submit_busy_chrome(&mut self, cx: &mut Cx) {
                 // Raw rows — ReportText paints per-Kv eyes + masks at draw time.
                 self.set_report_rows(cx, ids!(day_close_label), parse_report(&day_close));
             }
+            self.paint_business_day_chrome(cx);
             // Books home stat cards from cache (filled in refresh_books_overview).
             if screen == Screen::Books {
                 let (overview, till) = {

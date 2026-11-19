@@ -82,6 +82,8 @@ printer_paper_help	ವರದಿ ಆಯಿನವು ಪಂಡ ಈ ಮುದ್ರ
 preview_help	ಈ ಚೀಟಿ ತಿರ್ತ್ ಆಯ್ಕೆ ಮಲ್ತಿನ ಮುದ್ರಕೊಡು ಮುದ್ರಣ ಆಪಿನ ಲೆಕ್ಕೊ, ಅಯಿತ ವರ್ಚುವಲ್ ಕಾಗದೊದ ಮಿತ್ತ್ ನಿಜ ಗಾತ್ರೊಡು. ಬೊಳ್ದು ಜಾಗೆಡ್ ಮುದ್ರಣ ಆಪುಂಡು, ಬೂದು ಕಾಗದೊಗು ಮುದ್ರಕ ಎತ್ತುಜಿ, ಬುಕ್ಕ ಮಸುಕು ಶಾಯಿ ಕತ್ತರಿಸಾವು. ಒರ್ಂಬ ಚೌಕೊಲು ಕಾಗದ: ಚೀಟಿ ಉಪ್ಪೊಡಾಯಿನ ಜಾಗೆಡ್ ಟ್ಯಾಪ್ ಮಲ್ಪುಲೆ. ಉದ್ದ ಚೀಟಿ ಎಚ್ಚ ಪುಟೊಕುಲೆಗ್ ಪೋಪುಂಡು. ಮುದ್ರಕ ಆಯ್ಕೆ ಮಲ್ತ್‌ಂಡ ಮುನ್ನೋಟ ಮಾತ್ರ ಬದಲಾಪುಂಡು.
 slip_col_start	ಸುರುತ ಜಾಗೆ (px)
 slip_col_end	ಅಕೇರಿದ ಜಾಗೆ (px)
+slip_columns	ಕಾಲಮ್‌ಲು
+slip_col_header	ಶೀರ್ಷಿಕೆ
 slip_columns_help	ಪ್ರತಿ ಕಾಲಮ್‌ದ ಅಗಲೊಡು ಅಯಿತ ಸುರುತ ಬುಕ್ಕ ಅಕೇರಿದ ಜಾಗೆ ಸೇರ್ದುಂಡು. ಬರವು ಅಯಿತ ಕಾಲಮ್‌ದುಳಯಿನೇ ಸುತ್ತುಂಡು; ವಿಷಯದ ಅಗಲೊಡ್ದು ಪಿದಾಯಿ ಇತ್ತಿನವು ಕಾಗದೊಡು ಬುಕ್ಕ ಮುನ್ನೋಟೊಡು ಕತ್ತರಿಪುಂಡು.
 bill_total_qty_label	ಒಟ್ಟು ಪ್ರಮಾಣದ ಲೇಬಲ್
 bill_total_subtotal_label	ಉಪ ಒಟ್ಟು ಲೇಬಲ್
@@ -351,6 +353,15 @@ print_open	ಮುದ್ರಣ / ತೆರೆ
 reason_amend_ph	ತಿದ್ದುಪಡಿ / ರದ್ದು / ಮರುಪಾವತಿ ಮಲ್ಪುನ ಕಾರಣ
 reason_note_ph	ಕಾರಣ / ಟಿಪ್ಪಣಿ (ವ್ಯರ್ಥ, ಲೆಕ್ಕ, …)
 record_day_close	ದಾಖಲೆ ದಿನ ಮುಚ್ಚುನ
+business_day	When does Today reset?
+business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
+biz_day_until_close	Until Day close
+biz_day_midnight	Calendar midnight
+business_day_saved	Business day saved
+report_day_lens	View Today as
+report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
+report_lens_day_close	By Day close
+report_lens_midnight	By midnight
 refresh_from_shop	ಅಂಗಡಿಡ್ದ್ ರಿಫ್ರೆಶ್ ಮಲ್ಪುಲೆ
 refund	ರಿಫಂಡ್
 remove_selected	ಆಯ್ಕೆ ಮಲ್ತಿನವುಲೆನ್ ತೆಗೆತ್ ಪಾಡ್ಲೆ
@@ -474,6 +485,8 @@ route_bill	ಬಿಲ್
 station_print_pick_first	ಸುರುಕು ಒಂಜಿ ಅಂಗಡಿ ವಿಭಾಗೊನು ಆಯ್ಕೆ ಮಲ್ಪುಲೆ
 bill_printers_dd	ಬಿಲ್ ಗ್ ಮುದ್ರಕೊಲು
 bill_printers_dd_n	ಬಿಲ್ ಗ್ {n} ಮುದ್ರಕೊಲು · ಬದಲಾವಣೆ ಮಲ್ಪೆರೆ ಒತ್ತುಲೆ
+printer_mode_first	ಸುರುಕು ಅಯಿನ್ ಕೆಲಸ ಮಲ್ಪುಂಡು
+printer_mode_all	ಮಾತಾ ಮುದ್ರಣ ಮಲ್ಪುಲೆ
 station_vp_attached	ಮುದ್ರಕೊನು ಲಗತ್ತಿಸವೊಂಡುಂಡು
 station_vp_detached	ನಿಲ್ದಾಣೊಡ್ದ್ ಮುದ್ರಕೊನು ದೆತ್ತ್ ಪಾಡ್ದೆರ್
 print_test_page	ಒಂಜಿ ಪರೀಕ್ಷಾ ಪುಟೊನು ಮುದ್ರಿಸಲೆ
@@ -825,6 +838,10 @@ client_template_importing	{title} ಆಮದು ಮಲ್ಪುನ...
 client_template_done	{title} ಡ್ದ್ ಪ್ರತಿಯೊಂಜಿ ಐಟಂ ನಿಕ್ಲೆನ ಐಟಂಲೆಡ್ ಉಂಡು.
 client_template_imported	{title} ಡ್ದ್ {d} ಐಟಂಲೆನ್ ಬೊಕ್ಕ {c} ವಿಭಾಗೊಲೆನ್ ಸೇರ್ಸೊಂಡು
 cancel	ರದ್ದು ಮಲ್ಪುಲೆ
+removing	ದೆಪ್ಪೊಂದುಂಡು…
+removed	ದೆಪ್ಪಾಯಿನ
+updating_order	ಅಪ್‌ಡೇಟ್ ಆವೊಂದುಂಡು…
+order_updated	ಆರ್ಡರ್ ಅಪ್‌ಡೇಟ್ ಆಂಡ್
 opening_client	ಕ್ಲೈಂಟ್ ನ್ ತೆರೆಯೊಂದುಲ್ಲೆರ್...
 preparing_desk	ಮೇಜಿನ್ ತಯಾರ್ ಮಲ್ತೊಂದುಲ್ಲೆ...
 opening_server	ಸರ್ವರ್ ತೆರೆಯೊಂದುಂಡು...
@@ -855,16 +872,7 @@ recent_changes	ಇತ್ತೆದ ಬದಲಾವಣೆಲು
 lane_declared_label	ತೆರಿಗೆ ಬಿಲೆಪತ್ರ
 lane_owner_label	ನಗದು ಮೆಮೊ
 money_lane_bill	ಬಿಲ್: {lane}
-
-removing	ದೆಪ್ಪೊಂದುಂಡು…
-removed	ದೆಪ್ಪಾಯಿನ
-updating_order	ಅಪ್‌ಡೇಟ್ ಆವೊಂದುಂಡು…
-order_updated	ಆರ್ಡರ್ ಅಪ್‌ಡೇಟ್ ಆಂಡ್
 sel_copy	ನಕಲ್ ಮಲ್ಪುಲೆ
 sel_select_all	ಮಾತಾ ಆಯ್ಕೆ ಮಲ್ಪುಲೆ
 sel_copied	ನಕಲ್ ಆಂಡ್
 nav_loading	ಲೋಡ್ ಆವೊಂದುಂಡು…
-printer_mode_first	ಸುರುಕು ಅಯಿನ್ ಕೆಲಸ ಮಲ್ಪುಂಡು
-printer_mode_all	ಮಾತಾ ಮುದ್ರಣ ಮಲ್ಪುಲೆ
-slip_columns	ಕಾಲಮ್‌ಲು
-slip_col_header	ಶೀರ್ಷಿಕೆ

@@ -659,6 +659,8 @@ impl App {
             (ids!(setup_lang_hdr_ext), "language"),
             (ids!(setup_role_hdr), "role"),
             (ids!(setup_role_hdr_ext), "role"),
+            (ids!(setup_public_tmpl_hdr), "public_templates"),
+            (ids!(setup_public_tmpl_hdr_ext), "public_templates"),
         ] {
             if self.ui.button(cx, hdr).clicked(actions) {
                 self.toggle_device_setup_section(cx, key);
@@ -860,6 +862,84 @@ impl App {
             }
             self.sync_chrome(cx);
         }
+        for (chip, chip_on, mode) in [
+            (
+                ids!(biz_day_until_close),
+                ids!(biz_day_until_close_on),
+                business_day::BusinessDayMode::UntilDayClose,
+            ),
+            (
+                ids!(biz_day_midnight),
+                ids!(biz_day_midnight_on),
+                business_day::BusinessDayMode::CalendarMidnight,
+            ),
+        ] {
+            if self.choice_chip_clicked(cx, actions, chip, chip_on) {
+                let result = (|| -> Result<String, String> {
+                    let mut st = app_state().lock().unwrap();
+                    let actor = st.actor()?;
+                    if !actor.is_owner() {
+                        return Err("Only the Owner can change the business day".into());
+                    }
+                    let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
+                    store.set_business_day_mode(mode)?;
+                    let _ = st.reload_all();
+                    st.sync_report_day_lens_from_shop();
+                    Ok(st.t("business_day_saved"))
+                })();
+                match result {
+                    Ok(msg) => self.set_status(cx, msg),
+                    Err(e) => self.set_status(cx, e),
+                }
+                self.sync_chrome(cx);
+            }
+        }
+        if self.ui.button(cx, ids!(shift_close_btn)).clicked(actions) {
+            let counted = self.ui.text_input(cx, ids!(shift_counted_input)).text();
+            let result = (|| -> Result<(), String> {
+                let currency = {
+                    let st = app_state().lock().unwrap();
+                    st.locale.currency.clone()
+                };
+                let paise = locale::parse_major_input(counted.trim(), &currency)
+                    .map_err(|_| "Count the drawer and type the cash".to_string())?;
+                let msg = {
+                    let mut st = app_state().lock().unwrap();
+                    st.books_op(BooksOp::CloseShift { counted_paise: paise })?
+                };
+                let (status, slip) = books_op::shift_slip_parts(&msg);
+                if let Some(slip) = slip {
+                    self.print_or_share_receipt(cx, slip);
+                }
+                self.set_status(cx, status);
+                self.ui
+                    .text_input(cx, ids!(shift_counted_input))
+                    .set_text(cx, "");
+                self.sync_chrome(cx);
+                Ok(())
+            })();
+            if let Err(e) = result {
+                self.set_status(cx, e);
+                self.sync_chrome(cx);
+            }
+        }
+        if self.ui.button(cx, ids!(books_lock_month_btn)).clicked(actions) {
+            let yyyy_mm = self.ui.text_input(cx, ids!(books_lock_month_input)).text();
+            let result = (|| -> Result<String, String> {
+                let mut st = app_state().lock().unwrap();
+                if !st.actor()?.is_owner() {
+                    return Err("Only the Owner can lock books".into());
+                }
+                st.books_op(BooksOp::LockBooksMonth {
+                    yyyy_mm: yyyy_mm.trim().to_string(),
+                })
+            })();
+            match result {
+                Ok(msg) => self.set_status(cx, msg),
+                Err(e) => self.set_status(cx, e),
+            }
+            self.sync_chrome(cx);
+        }
         if self.ui.button(cx, ids!(day_close_commit)).clicked(actions) {
             let counted_text = self.ui.text_input(cx, ids!(day_close_counted_input)).text();
             let result = (|| -> Result<String, String> {
@@ -999,6 +1079,45 @@ impl App {
         {
             app_state().lock().unwrap().picking_server = false;
             self.sync_chrome(cx);
+        }
+        // Shop templates offer — chip / Import / Skip → Owner PIN.
+        if self.ui.button(cx, ids!(public_tmpl_0)).clicked(actions)
+            || self.ui.button(cx, ids!(public_tmpl_0_on)).clicked(actions)
+        {
+            {
+                let mut st = app_state().lock().unwrap();
+                if st.awaiting_app_template {
+                    st.app_template_selected_id =
+                        Some(entity_template::GLOBAL_PKG.id.into());
+                }
+            }
+            self.paint_app_template_chrome(cx, true);
+        }
+        if self.ui.button(cx, ids!(public_tmpl_import)).clicked(actions) {
+            let result = (|| -> Result<(), String> {
+                let mut st = app_state().lock().unwrap();
+                if !st.awaiting_app_template {
+                    return Err("App template is not offered now".into());
+                }
+                let id = st
+                    .app_template_selected_id
+                    .clone()
+                    .ok_or_else(|| "Pick a template".to_string())?;
+                let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
+                let tmpl = store.apply_entity_template(&id)?;
+                st.entity_template_id = tmpl.id.to_string();
+                let _ = st.reload_all();
+                Ok(())
+            })();
+            match result {
+                Ok(()) => self.finish_app_template_to_lock(cx, true),
+                Err(e) => self.set_status(cx, e),
+            }
+        }
+        if self.ui.button(cx, ids!(app_template_skip)).clicked(actions) {
+            if app_state().lock().unwrap().awaiting_app_template {
+                self.finish_app_template_to_lock(cx, false);
+            }
         }
         {
             let widget = self.ui.widget(cx, ids!(setup_server_list));
@@ -1431,6 +1550,7 @@ impl App {
                                 amount_paise: *amount,
                             })
                             .collect(),
+                        booking_draft_id: st.active_draft_id.clone(),
                     };
                     // Saved on this device first, then sent: a Wi‑Fi drop
                     // delays the booking (and its AWB), it never loses it.
@@ -1442,16 +1562,24 @@ impl App {
                         phone::Follow::Sale,
                         true,
                     )?;
+                    st.active_draft_id = None;
                     st.cart.clear();
                     st.status = format!(
                         "{amount} · {summary} saved — the AWB comes when the office is reachable"
                     );
                     return Ok(Pending::Queued);
                 }
+                let draft_id = st.active_draft_id.clone();
                 let sale = {
                     let store = st.store.as_mut().ok_or_else(|| "No store".to_string())?;
                     store.finalize_sale_tenders(&draft, &parts, customer_id.as_deref(), &actor)?
                 };
+                if let Some(did) = draft_id {
+                    if let Some(store) = st.store.as_ref() {
+                        let _ = store.close_booking_draft_as_sale(&did, &sale.id);
+                    }
+                    st.active_draft_id = None;
+                }
                 let amount = st.money(Money(sale.total_paise));
                 let full = st
                     .store

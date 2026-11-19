@@ -82,6 +82,8 @@ printer_paper_help	ವರದಿಯಾದದ್ದು ಎಂದರೆ ಈ ಮು�
 preview_help	ಈ ಚೀಟಿ ಕೆಳಗೆ ಆಯ್ಕೆ ಮಾಡಿದ ಮುದ್ರಕದಲ್ಲಿ ಮುದ್ರಣವಾಗುವಂತೆ, ಅದರ ವರ್ಚುವಲ್ ಕಾಗದದ ಮೇಲೆ ನಿಜವಾದ ಗಾತ್ರದಲ್ಲಿ. ಬಿಳಿ ಭಾಗದಲ್ಲಿ ಮುದ್ರಣವಾಗುತ್ತದೆ, ಬೂದು ಕಾಗದವನ್ನು ಮುದ್ರಕ ತಲುಪುವುದಿಲ್ಲ, ಮತ್ತು ಮಸುಕಾದ ಶಾಯಿ ಕತ್ತರಿಸಲ್ಪಡುತ್ತದೆ. ಒಂಬತ್ತು ಚೌಕಗಳೇ ಕಾಗದ: ಚೀಟಿ ಇರಬೇಕಾದ ಜಾಗವನ್ನು ಟ್ಯಾಪ್ ಮಾಡಿ. ಉದ್ದವಾದ ಚೀಟಿ ಇನ್ನಷ್ಟು ಪುಟಗಳಿಗೆ ಮುಂದುವರಿಯುತ್ತದೆ. ಮುದ್ರಕವನ್ನು ಆಯ್ಕೆ ಮಾಡಿದರೆ ಮುನ್ನೋಟ ಮಾತ್ರ ಬದಲಾಗುತ್ತದೆ.
 slip_col_start	ಆರಂಭದ ಜಾಗ (px)
 slip_col_end	ಕೊನೆಯ ಜಾಗ (px)
+slip_columns	ಕಾಲಮ್‌ಗಳು
+slip_col_header	ಶೀರ್ಷಿಕೆ
 slip_columns_help	ಪ್ರತಿ ಕಾಲಮ್‌ನ ಅಗಲದಲ್ಲಿ ಅದರ ಆರಂಭ ಮತ್ತು ಕೊನೆಯ ಜಾಗ ಸೇರಿದೆ. ಪಠ್ಯ ತನ್ನ ಕಾಲಮ್ ಒಳಗೇ ಸುತ್ತುತ್ತದೆ; ವಿಷಯದ ಅಗಲವನ್ನು ಮೀರಿದ್ದು ಕಾಗದದಲ್ಲೂ ಪೂರ್ವವೀಕ್ಷಣೆಯಲ್ಲೂ ಕತ್ತರಿಸಲ್ಪಡುತ್ತದೆ.
 bill_total_qty_label	ಒಟ್ಟು ಸಂಖ್ಯೆ ಲೇಬಲ್
 bill_total_subtotal_label	ಉಪಮೊತ್ತ ಲೇಬಲ್
@@ -351,6 +353,15 @@ print_open	ಮುದ್ರಿಸಿ / ತೆರೆಯಿರಿ
 reason_amend_ph	ತಿದ್ದುಪಡಿ / ರದ್ದು / ಹಿಂತಿರುಗಿಸುವ ಕಾರಣ
 reason_note_ph	ಕಾರಣ / ಟಿಪ್ಪಣಿ (ಹಾಳು, ಎಣಿಕೆ, …)
 record_day_close	ದಿನ ಮುಗಿಸುವಿಕೆ ದಾಖಲಿಸಿ
+business_day	When does Today reset?
+business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
+biz_day_until_close	Until Day close
+biz_day_midnight	Calendar midnight
+business_day_saved	Business day saved
+report_day_lens	View Today as
+report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
+report_lens_day_close	By Day close
+report_lens_midnight	By midnight
 refresh_from_shop	ಅಂಗಡಿಯಿಂದ ರಿಫ್ರೆಶ್ ಮಾಡಿ
 refund	ಹಿಂತಿರುಗಿಸುವಿಕೆ
 remove_selected	ಆಯ್ಕೆಮಾಡಿದ ತೆಗೆಯಿರಿ
@@ -474,6 +485,8 @@ route_bill	ಬಿಲ್
 station_print_pick_first	ಮೊದಲು ಅಂಗಡಿಯ ವಿಭಾಗ ಆಯ್ಕೆಮಾಡಿ
 bill_printers_dd	ಬಿಲ್ ಮುದ್ರಕಗಳು
 bill_printers_dd_n	ಬಿಲ್‌ಗೆ {n} ಮುದ್ರಕಗಳು · ಬದಲಿಸಲು ಒತ್ತಿ
+printer_mode_first	ಮೊದಲು ಕೆಲಸ ಮಾಡುವುದು
+printer_mode_all	ಎಲ್ಲದರಲ್ಲೂ ಮುದ್ರಿಸಿ
 station_vp_attached	ಮುದ್ರಕ ಲಗತ್ತಿಸಲಾಗಿದೆ
 station_vp_detached	ಸ್ಟೇಷನ್‌ನಿಂದ ಮುದ್ರಕ ತೆಗೆಯಲಾಗಿದೆ
 print_test_page	ಪರೀಕ್ಷಾ ಪುಟ ಮುದ್ರಿಸಿ
@@ -825,6 +838,10 @@ client_template_importing	{title} ಆಮದು…
 client_template_done	{title} ನ ಪ್ರತಿ ಐಟಂ ನಿಮ್ಮ ಐಟಂಗಳಲ್ಲಿದೆ.
 client_template_imported	{title} ನಿಂದ {d} ಐಟಂಗಳು ಮತ್ತು {c} ವರ್ಗಗಳನ್ನು ಸೇರಿಸಲಾಗಿದೆ
 cancel	ರದ್ದು
+removing	ತೆಗೆದುಹಾಕಲಾಗುತ್ತಿದೆ…
+removed	ತೆಗೆದುಹಾಕಲಾಗಿದೆ
+updating_order	ನವೀಕರಿಸಲಾಗುತ್ತಿದೆ…
+order_updated	ಆರ್ಡರ್ ನವೀಕರಿಸಲಾಗಿದೆ
 opening_client	ಕ್ಲೈಂಟ್ ತೆರೆಯಲಾಗುತ್ತಿದೆ…
 preparing_desk	ಡೆಸ್ಕ್ ಸಿದ್ಧಪಡಿಸಲಾಗುತ್ತಿದೆ…
 opening_server	ಸರ್ವರ್ ತೆರೆಯಲಾಗುತ್ತಿದೆ…
@@ -855,16 +872,7 @@ recent_changes	ಇತ್ತೀಚಿನ ಬದಲಾವಣೆಗಳು
 lane_declared_label	ತೆರಿಗೆ ಇನ್‌ವಾಯ್ಸ್
 lane_owner_label	ಕ್ಯಾಶ್ ಮೆಮೊ
 money_lane_bill	ಬಿಲ್: {lane}
-
-removing	ತೆಗೆದುಹಾಕಲಾಗುತ್ತಿದೆ…
-removed	ತೆಗೆದುಹಾಕಲಾಗಿದೆ
-updating_order	ನವೀಕರಿಸಲಾಗುತ್ತಿದೆ…
-order_updated	ಆರ್ಡರ್ ನವೀಕರಿಸಲಾಗಿದೆ
 sel_copy	ನಕಲಿಸಿ
 sel_select_all	ಎಲ್ಲವನ್ನೂ ಆಯ್ಕೆಮಾಡಿ
 sel_copied	ನಕಲಿಸಲಾಗಿದೆ
 nav_loading	ಲೋಡ್ ಆಗುತ್ತಿದೆ…
-printer_mode_first	ಮೊದಲು ಕೆಲಸ ಮಾಡುವುದು
-printer_mode_all	ಎಲ್ಲದರಲ್ಲೂ ಮುದ್ರಿಸಿ
-slip_columns	ಕಾಲಮ್‌ಗಳು
-slip_col_header	ಶೀರ್ಷಿಕೆ

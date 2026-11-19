@@ -82,6 +82,8 @@ printer_paper_help	ରିପୋର୍ଟ ହୋଇଥିବା ହେଉଛି �
 preview_help	ତଳେ ବଛାଯାଇଥିବା ପ୍ରିଣ୍ଟରରେ ଏହି ସ୍ଲିପ୍ ଯେପରି ଛପାଯାଏ, ତାହାର ଭର୍ଚୁଆଲ୍ କାଗଜ ଉପରେ ପ୍ରକୃତ ମାପରେ। ଧଳା ସ୍ଥାନରେ ଛପାଯାଏ, ଧୂସର କାଗଜ ପର୍ଯ୍ୟନ୍ତ ପ୍ରିଣ୍ଟର ପହଞ୍ଚେ ନାହିଁ, ଏବଂ ଫିକା କାଳି କଟିଯାଏ। ନଅଟି ବର୍ଗ ହେଉଛି କାଗଜ: ସ୍ଲିପ୍ ଯେଉଁଠି ରହିବା ଉଚିତ ସେଠାରେ ଟ୍ୟାପ୍ କରନ୍ତୁ। ଲମ୍ବା ସ୍ଲିପ୍ ଅଧିକ ପୃଷ୍ଠାକୁ ଯାଏ। ପ୍ରିଣ୍ଟର ବାଛିଲେ କେବଳ ପୂର୍ବାବଲୋକନ ବଦଳେ।
 slip_col_start	ଆରମ୍ଭ ସ୍ଥାନ (px)
 slip_col_end	ଶେଷ ସ୍ଥାନ (px)
+slip_columns	ସ୍ତମ୍ଭଗୁଡ଼ିକ
+slip_col_header	ଶୀର୍ଷକ
 slip_columns_help	ପ୍ରତ୍ୟେକ ସ୍ତମ୍ଭର ପ୍ରସ୍ଥରେ ଏହାର ଆରମ୍ଭ ଓ ଶେଷ ସ୍ଥାନ ଅନ୍ତର୍ଭୁକ୍ତ। ଲେଖା ନିଜ ସ୍ତମ୍ଭ ଭିତରେ ଗୁଡ଼ାଇ ହୁଏ; ବିଷୟବସ୍ତୁର ପ୍ରସ୍ଥ ବାହାରେ ଥିବା ଅଂଶ କାଗଜରେ ଓ ପୂର୍ବାବଲୋକନରେ କଟିଯାଏ।
 bill_total_qty_label	ମୋଟ ସଂଖ୍ୟା ଲେବଲ
 bill_total_subtotal_label	ଉପଯୋଗ ଲେବଲ
@@ -351,6 +353,15 @@ print_open	ଛାପନ୍ତୁ / ଖୋଲନ୍ତୁ
 reason_amend_ph	ସଂଶୋଧନ / ବାତିଲ / ଫେରସ୍ତର କାରଣ
 reason_note_ph	କାରଣ / ନୋଟ୍ (ନଷ୍ଟ, ଗଣନା, …)
 record_day_close	ଦିନ ବନ୍ଦ ରେକର୍ଡ କରନ୍ତୁ
+business_day	When does Today reset?
+business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
+biz_day_until_close	Until Day close
+biz_day_midnight	Calendar midnight
+business_day_saved	Business day saved
+report_day_lens	View Today as
+report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
+report_lens_day_close	By Day close
+report_lens_midnight	By midnight
 refresh_from_shop	ଦୋକାନରୁ ରିଫ୍ରେଶ କରନ୍ତୁ
 refund	ଫେରସ୍ତ
 remove_selected	ବଛା ହଟାନ୍ତୁ
@@ -474,6 +485,8 @@ route_bill	ବିଲ୍
 station_print_pick_first	ପ୍ରଥମେ ଦୋକାନର ଏକ ବିଭାଗ ବାଛନ୍ତୁ
 bill_printers_dd	ବିଲ ପାଇଁ ପ୍ରିଣ୍ଟର
 bill_printers_dd_n	ବିଲ ପାଇଁ {n}ଟି ପ୍ରିଣ୍ଟର · ବଦଳାଇବାକୁ ଦବାନ୍ତୁ
+printer_mode_first	ଯାହା ପ୍ରଥମେ ଚାଲେ
+printer_mode_all	ସବୁଥିରେ ଛାପନ୍ତୁ
 station_vp_attached	ପ୍ରିଣ୍ଟର ଯୋଡ଼ାଗଲା
 station_vp_detached	ଷ୍ଟେସନରୁ ପ୍ରିଣ୍ଟର କାଢ଼ାଗଲା
 print_test_page	ପରୀକ୍ଷା ପୃଷ୍ଠା ଛାପନ୍ତୁ
@@ -825,6 +838,10 @@ client_template_importing	{title} ଆମଦାନି…
 client_template_done	{title} ର ପ୍ରତି ଆଇଟମ୍ ଆପଣଙ୍କ ଆଇଟମ୍‌ରେ ଅଛି।
 client_template_imported	{title} ରୁ {d}ଟି ଆଇଟମ୍ ଓ {c}ଟି ବର୍ଗ ଯୋଡ଼ାଗଲା
 cancel	ବାତିଲ୍
+removing	ହଟାଯାଉଛି…
+removed	ହଟାଗଲା
+updating_order	ଅପଡେଟ୍ ହେଉଛି…
+order_updated	ଅର୍ଡର ଅପଡେଟ୍ ହେଲା
 opening_client	କ୍ଲାଏଣ୍ଟ ଖୋଲୁଛି…
 preparing_desk	ଡେସ୍କ ପ୍ରସ୍ତୁତ ହେଉଛି…
 opening_server	ସର୍ଭର ଖୋଲୁଛି…
@@ -855,16 +872,7 @@ recent_changes	ସାମ୍ପ୍ରତିକ ପରିବର୍ତ୍ତନ
 lane_declared_label	ଟିକସ ଇନଭଏସ୍
 lane_owner_label	କ୍ୟାସ୍ ମେମୋ
 money_lane_bill	ବିଲ: {lane}
-
-removing	ହଟାଯାଉଛି…
-removed	ହଟାଗଲା
-updating_order	ଅପଡେଟ୍ ହେଉଛି…
-order_updated	ଅର୍ଡର ଅପଡେଟ୍ ହେଲା
 sel_copy	କପି କରନ୍ତୁ
 sel_select_all	ସବୁ ବାଛନ୍ତୁ
 sel_copied	କପି ହେଲା
 nav_loading	ଲୋଡ୍ ହେଉଛି…
-printer_mode_first	ଯାହା ପ୍ରଥମେ ଚାଲେ
-printer_mode_all	ସବୁଥିରେ ଛାପନ୍ତୁ
-slip_columns	ସ୍ତମ୍ଭଗୁଡ଼ିକ
-slip_col_header	ଶୀର୍ଷକ

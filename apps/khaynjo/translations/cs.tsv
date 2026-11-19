@@ -115,6 +115,7 @@ bill_line_total	Celkem
 bill_line_footer	Zápatí
 bill_line_upi	UPI
 bill_logo_picture	Obrázek
+bill_logo_help	Šířka a výška v px. Prázdné se řídí obrázkem: jedno prázdné zachová tvar, obě prázdná použijí jeho velikost; obě zadaná jej vloží dovnitř, nikdy roztažený. Bez obrázku: zobrazené logo ponechá svou výšku jako prázdné místo; Skrýt jej odstraní.
 bill_logo_choose	Vybrat obrázek
 bill_logo_remove	Odebrat obrázek
 bill_logo_none	Žádný obrázek
@@ -122,10 +123,9 @@ bill_logo_unreadable	Není to obrázek, který aplikace umí přečíst
 bill_logo_width	Šířka (px)
 bill_logo_height	Výška (px)
 bill_logo_tones	Šedé tóny
+bill_logo_tones_help	Plné: každá tečka černá nebo bílá, pro ostrá loga. Stínované: šedé tóny se změní v jemný vzor teček, pro fotky a jemné stíny.
 bill_logo_solid	Plné
 bill_logo_shaded	Stínované
-bill_logo_help	Šířka a výška v px. Prázdné se řídí obrázkem: jedno prázdné zachová tvar, obě prázdná použijí jeho velikost; obě zadaná jej vloží dovnitř, nikdy roztažený. Bez obrázku: zobrazené logo ponechá svou výšku jako prázdné místo; Skrýt jej odstraní.
-bill_logo_tones_help	Plné: každá tečka černá nebo bílá, pro ostrá loga. Stínované: šedé tóny se změní v jemný vzor teček, pro fotky a jemné stíny.
 slip_col_width	Šířka (mm)
 slip_col_start	Mezera na začátku (px)
 slip_col_end	Mezera na konci (px)
@@ -566,6 +566,15 @@ print_open	Vytisknout / otevřít
 reason_amend_ph	Důvod změny / neplatné / vrácení peněz
 reason_note_ph	Důvod / poznámka (plýtvání, počet, …)
 record_day_close	Uzavření rekordního dne
+business_day	When does Today reset?
+business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
+biz_day_until_close	Until Day close
+biz_day_midnight	Calendar midnight
+business_day_saved	Business day saved
+report_day_lens	View Today as
+report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
+report_lens_day_close	By Day close
+report_lens_midnight	By midnight
 refresh_from_shop	Obnovit z obchodu
 refund	Vrácení peněz
 remove_selected	Odebrat vybrané

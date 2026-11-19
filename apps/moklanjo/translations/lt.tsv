@@ -3,6 +3,25 @@ app_tagline	Kurjerių agentūros knygos + rezervavimo stalas. Nemokamai neprisij
 unlock	Atrakinti
 pin_hint	Savininko PIN prasideda 0000
 sell	Užsakymas
+nav_board	Board
+board	Board
+park_draft	Park
+board_park_nothing	Nothing to park — add charges or booking details
+board_parked	Parked on Board — desk is clear
+board_draft	Draft
+board_booked	Booked
+board_filter_all	All
+board_filter_draft	Draft
+board_filter_booked	Booked
+board_cols_fmt	{n} col
+board_summary_fmt	{total} cards · {drafts} draft · {booked} booked
+board_card_no_charges	No charges yet
+board_card_charges	charges
+board_card_booked	Booking
+board_draft_gone	That draft is no longer on the Board
+board_draft_closed	That draft was already finished or discarded
+board_discard	Discard
+board_discarded	Draft discarded
 buy	Išmokėkite
 books	Dienos knyga
 books_help	Šios dienos pozicija. Užsakymas = siuntiniai. Išmokėkite = vežėjo sąskaitos ir išlaidos. Šalys = siuntėjai ir vežėjai.
@@ -183,6 +202,13 @@ device_setup_help	Serveris knygas laiko čia. Klientas susiporuoja su Serveriu.
 currency	Valiuta
 backup	Atsarginė kopija
 settings_sec_diag	Diagnostika
+settings_sec_privacy	Privatumas
+privacy_policy_help	Privatumas · PRIVACY.md · moklanjo.com/privacy
+dont_use	Nenaudoti
+receipt_printers_dd	Šio įrenginio spausdintuvai · Kvitas
+receipt_printers_dd_n	{n} · Šio įrenginio spausdintuvai · Kvitas
+label_printers_dd	Šio įrenginio spausdintuvai · AWB etiketė
+label_printers_dd_n	{n} · Šio įrenginio spausdintuvai · AWB etiketė
 settings_hub_help	Atidarykite po vieną sritį — mažiau slinkimo, aiškesni pasirinkimai.
 settings_sec_devices	Kiti įrenginiai
 settings_sec_alerts	Įspėjimai
@@ -315,6 +341,16 @@ copy_party_ledger_csv	Kopijuoti šalies knygą CSV
 copy_receipt	Kopijuoti kvitą
 copy_report	Kopijuoti ataskaitą
 counted_cash_ph	Suskaičiuoti grynieji stalčiuje
+close_shift_print	Close shift and print slip
+shift_handover	Shift handover
+shift_counted_ph	Cash counted at handover
+shift_since	This shift since
+expected_in_drawer	Expected in drawer
+lock_books_through_month	Lock books through month
+books_lock_month_ph	YYYY-MM
+lock_books_month_btn	Lock through this month
+books_locked_none	No month lock yet
+books_locked_through	Locked through
 counter_agency_ph	Prekystalio / agentūros pavadinimas (neprivaloma)
 create_backup	Sukurti atsarginę kopiją
 day_close_summary	Dienos uždarymo suvestinė
@@ -404,6 +440,9 @@ pay_ap_cash	Mokėti AP grynais
 pay_ap_upi	Mokėti AP per UPI
 period_bill	Laikotarpio sąskaita
 period_bill_party	Laikotarpio sąskaita (vakarėlis)
+period_bill_generate	Generate bill
+period_bill_generate_print	Generate & print
+booking_bulk_preview	{ok} ready · {bad} bad
 pick_pod_photo	Pasirinkite POD nuotrauką
 print_awb_label	Spausdinkite AWB etiketę
 print_open	Spausdinti / atidaryti
@@ -612,6 +651,19 @@ attachments_last_expense	Priedai (paskutinė išlaida)
 credit_limit_heading	Kredito riba (pasirinkta / įvardyta šalis)
 pay_selected_heading	Mokėti pasirinktą (padengti skolą / imti avansą)
 write_off_heading	Nurašymas (išvalyti be mokėjimo)
+adjustment_notes_heading	Adjustment notes
+adj_note_amount_ph	Amount
+adj_note_reason_ph	Reason (required)
+adj_note_awb_ph	Related AWB (optional)
+credit_note_btn	Credit note
+debit_note_btn	Debit note
+bill_later_heading	Bill later (post-booking extra)
+bill_later_amount_ph	Extra amount
+bill_later_party_ph	Party (only if booking has none)
+bill_later_btn	Bill later
+bill_later_extra_oda	ODA
+bill_later_extra_packing	Packing
+bill_later_extra_other	Other
 pay_ap_heading	Mokėti, ką jiems skolingi (AP)
 country_tax	Šalis ir mokestis
 extra_tills_heading	Papildomos kasos
@@ -723,6 +775,23 @@ onboard_book_tmpl	Book · {} — pridėkite prekes ir pradinį kreditą, tada At
 onboard_template_tmpl	Jei norite, pavadinkite vietą, tada pasirinkite, kaip pradėti.
 tmpl_blurb	Kurjerių knygos ir rezervavimo stalas: siuntėjai, vežėjai, dienos knyga, AWB.
 tmpl_how	Užsakyti siuntinius prie rašomojo stalo; Dienos knyga šiandienai; tarifų, vakarėlių, ataskaitų skirtukai.
+app_template_heading	Shop templates
+app_template_blurb	Pick a starter desk. Skip leaves parties empty.
+app_template_skip	Skip for now
+app_template_status	Server ready — import a template, or skip
+app_template_importing	Applying {title}…
+app_template_public_hdr	Templates
+app_template_import_selected	Import selected
+public_tmpl_help	Bundled agency packs for this shop. No download needed.
+business_day	When does Today reset?
+business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
+biz_day_until_close	Until Day close
+biz_day_midnight	Calendar midnight
+business_day_saved	Business day saved
+report_day_lens	View Today as
+report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
+report_lens_day_close	By Day close
+report_lens_midnight	By midnight
 trk_booked	Užsakyta
 trk_picked_up	Paėmė
 trk_in_transit	Tranzitu
@@ -846,10 +915,3 @@ sel_copy	Kopijuoti
 sel_select_all	Pažymėti viską
 sel_copied	Nukopijuota
 nav_loading	Įkeliama…
-settings_sec_privacy	Privatumas
-privacy_policy_help	Privatumas · PRIVACY.md · moklanjo.com/privacy
-dont_use	Nenaudoti
-receipt_printers_dd	Šio įrenginio spausdintuvai · Kvitas
-receipt_printers_dd_n	{n} · Šio įrenginio spausdintuvai · Kvitas
-label_printers_dd	Šio įrenginio spausdintuvai · AWB etiketė
-label_printers_dd_n	{n} · Šio įrenginio spausdintuvai · AWB etiketė

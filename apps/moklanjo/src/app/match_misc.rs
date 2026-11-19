@@ -129,6 +129,7 @@ impl MatchEvent for App {
         self.handle_actions_desk_menu(cx, actions);
         self.handle_actions_settings_client(cx, actions);
         self.handle_actions_ops(cx, actions);
+        self.handle_today_board_actions(cx, actions);
         self.handle_actions_reports_backup(cx, actions);
     }
 }

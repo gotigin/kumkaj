@@ -82,6 +82,8 @@ printer_paper_help	Rapportert er papiret driveren til denne skriveren er satt ti
 preview_help	Denne kvitteringen slik den skrives ut på skriveren som er valgt nedenfor, i ekte størrelse på det virtuelle papiret. Hvitt er der den skriver, grått papir er utenfor skriverens rekkevidde, og falmet blekk kuttes. De ni rutene er papiret: trykk der kvitteringen skal stå. En lang kvittering fortsetter på flere sider. Å velge skriver endrer bare forhåndsvisningen.
 slip_col_start	Startavstand (px)
 slip_col_end	Sluttavstand (px)
+slip_columns	Kolonner
+slip_col_header	Overskrift
 slip_columns_help	Bredden på hver kolonne inkluderer start- og sluttavstanden. Teksten brytes innenfor sin kolonne; det som går utover innholdsbredden, kuttes – på papiret og i forhåndsvisningen.
 bill_total_qty_label	Etikett totalt antall
 bill_total_subtotal_label	Etikett delsumn
@@ -351,6 +353,15 @@ print_open	Skriv ut / åpne
 reason_amend_ph	Grunn til endring / annullering / refusjon
 reason_note_ph	Grunn / merknad (svinn, telling, …)
 record_day_close	Registrer dagsavslutning
+business_day	When does Today reset?
+business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
+biz_day_until_close	Until Day close
+biz_day_midnight	Calendar midnight
+business_day_saved	Business day saved
+report_day_lens	View Today as
+report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
+report_lens_day_close	By Day close
+report_lens_midnight	By midnight
 refresh_from_shop	Oppdater fra butikken
 refund	Refusjon
 remove_selected	Fjern valgt
@@ -474,6 +485,8 @@ route_bill	Regning
 station_print_pick_first	Velg en butikkdel først
 bill_printers_dd	Skrivere for regningen
 bill_printers_dd_n	{n} skriver(e) for regningen · trykk for å endre
+printer_mode_first	Første som virker
+printer_mode_all	Skriv ut på alle
 station_vp_attached	Skriver knyttet
 station_vp_detached	Skriver fjernet fra stasjonen
 print_test_page	Skriv ut en testside
@@ -825,6 +838,10 @@ client_template_importing	Importerer {title}…
 client_template_done	Hver vare fra {title} er på varene dine.
 client_template_imported	Lagt til {d}-elementer og {c}-kategorier fra {title}
 cancel	Avbestill
+removing	Fjerner…
+removed	Fjernet
+updating_order	Oppdaterer…
+order_updated	Bestilling oppdatert
 opening_client	Åpner klient…
 preparing_desk	Klargjør disken…
 opening_server	Åpner server…
@@ -855,16 +872,7 @@ recent_changes	Nylige endringer
 lane_declared_label	Mva-faktura
 lane_owner_label	Kontantnota
 money_lane_bill	Regning: {lane}
-
-removing	Fjerner…
-removed	Fjernet
-updating_order	Oppdaterer…
-order_updated	Bestilling oppdatert
 sel_copy	Kopier
 sel_select_all	Velg alt
 sel_copied	Kopiert
 nav_loading	Laster inn…
-printer_mode_first	Første som virker
-printer_mode_all	Skriv ut på alle
-slip_columns	Kolonner
-slip_col_header	Overskrift

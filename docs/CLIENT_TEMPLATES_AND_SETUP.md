@@ -81,18 +81,23 @@ a finish-this-ticket path. Many unpaid waits belong on **Floor slots**.
 Kitchen (if enabled) advances tickets; Floor stays the glance board.
 Templates may hide Floor/Kitchen entirely for a counter-only shop.
 
-### Moklanjo (courier) — finish booking, then Ops for status
+### Moklanjo (courier) — Park draft + Board, then Ops for status
 
-Rush is **not** eight open unpaid nameless carts:
+Rush at the desk is **not** Khaynjo Parcel tiles:
 
-1. Destination → weigh → **ADD** → Cash or Account → **Take payment** →
-   **Next booking**.
-2. Pay-later freight → **Account booking** + **Credit / khata** (needs a
+1. Destination → weigh → **ADD**. Mid-work → **Park** (cart + parcel form
+   saved as a **draft**, not books) → desk clears for the next customer.
+2. **Board** shows **dynamic cards** only: open drafts + **today's
+   completed bookings** (business-day window). Filter All | Draft | Booked;
+   column density 2/3/4; tap a draft → **resume** on Booking.
+3. Finish → Cash or Account → **Take payment** → **Next booking** (closes the
+   draft if you resumed one).
+4. Pay-later freight → **Account booking** + **Credit / khata** (needs a
    party), not an anonymous hold board.
-3. Parcel **ops** status after commit → **Ops** lanes
+5. Parcel **ops** status after commit → **Ops** lanes
    (To dispatch → With carrier → Out for delivery → Failed → Done).
-4. COD is collected around delivery; it is not a Floor of unpaid desk
-   drafts.
+6. Day close discards open drafts; **Ops** is post-commit tracking — not a
+   queue of unpaid desk work.
 
 Detail: [`apps/moklanjo/docs/MOKLANJO_APP_TUTORIAL.md`](../apps/moklanjo/docs/MOKLANJO_APP_TUTORIAL.md)
 §3 and §7; Ops board: [`MOKLANJO.md`](../apps/moklanjo/docs/MOKLANJO.md).
@@ -113,6 +118,7 @@ Detail: [`apps/moklanjo/docs/MOKLANJO_APP_TUTORIAL.md`](../apps/moklanjo/docs/MO
 | Menu **Item templates** | Items only from the same catalogue grammar |
 | **Export template** | Capture a live shop as a pack for another device / catalogue |
 | Settings + Team rights | Day-to-day show/hide and who may use money / Kitchen / Floor |
+| Day close · business day | Shop meta `business_day_mode`: default **Until Day close** (keeps going past midnight); optional **Calendar midnight**. Owner switches on Day close — not hardcoded per client. See [`BUSINESS_BOOKS.md`](BUSINESS_BOOKS.md) § Business day |
 | Product code | Always implements the full capability set the trade needs |
 
 Catalogue / publish: [`apps/khaynjo/docs/CATALOGUE_URLS.md`](../apps/khaynjo/docs/CATALOGUE_URLS.md).

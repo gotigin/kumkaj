@@ -115,6 +115,7 @@ bill_line_total	總計
 bill_line_footer	頁腳
 bill_line_upi	UPI
 bill_logo_picture	圖片
+bill_logo_help	寬度和高度以 px 計。留空就跟隨圖片：留空一項保持比例，兩項都留空用圖片原尺寸；兩項都填就放進框內，絕不拉伸。沒有圖片：顯示中的標誌保留其高度作為空白；隱藏則移除。
 bill_logo_choose	選擇圖片
 bill_logo_remove	移除圖片
 bill_logo_none	沒有圖片
@@ -122,10 +123,9 @@ bill_logo_unreadable	這不是本應用程式能讀取的圖片
 bill_logo_width	寬度 (px)
 bill_logo_height	高度 (px)
 bill_logo_tones	灰階
+bill_logo_tones_help	實心：每個點非黑即白，適合清晰的標誌。網點：灰色變成細密的點狀紋理，適合照片和柔和陰影。
 bill_logo_solid	實心
 bill_logo_shaded	網點
-bill_logo_help	寬度和高度以 px 計。留空就跟隨圖片：留空一項保持比例，兩項都留空用圖片原尺寸；兩項都填就放進框內，絕不拉伸。沒有圖片：顯示中的標誌保留其高度作為空白；隱藏則移除。
-bill_logo_tones_help	實心：每個點非黑即白，適合清晰的標誌。網點：灰色變成細密的點狀紋理，適合照片和柔和陰影。
 slip_col_width	寬度 (mm)
 slip_col_start	開頭間距 (px)
 slip_col_end	結尾間距 (px)
@@ -566,6 +566,15 @@ print_open	打印/打開
 reason_amend_ph	修改/作廢/退款原因
 reason_note_ph	原因/備註（損耗、盤點…）
 record_day_close	記錄日結
+business_day	When does Today reset?
+business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
+biz_day_until_close	Until Day close
+biz_day_midnight	Calendar midnight
+business_day_saved	Business day saved
+report_day_lens	View Today as
+report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
+report_lens_day_close	By Day close
+report_lens_midnight	By midnight
 refresh_from_shop	從店鋪刷新
 refund	退款
 remove_selected	刪除所選

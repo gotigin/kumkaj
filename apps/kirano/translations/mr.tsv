@@ -82,6 +82,8 @@ printer_paper_help	कळवलेला म्हणजे या प्रि�
 preview_help	ही पावती खाली निवडलेल्या प्रिंटरवर जशी छापली जाते तशी, त्याच्या व्हर्च्युअल कागदावर खऱ्या मापात. पांढऱ्या भागात छापले जाते, राखाडी कागदापर्यंत प्रिंटर पोहोचत नाही, आणि फिकट शाई कापली जाते. नऊ चौकोन म्हणजे कागद: पावती जिथे बसायला हवी तिथे टॅप करा. लांब पावती पुढील पानांवर जाते. प्रिंटर निवडल्याने फक्त पूर्वावलोकन बदलते.
 slip_col_start	सुरुवातीची जागा (px)
 slip_col_end	शेवटची जागा (px)
+slip_columns	स्तंभ
+slip_col_header	शीर्षक
 slip_columns_help	प्रत्येक स्तंभाच्या रुंदीत त्याची सुरुवातीची आणि शेवटची जागा समाविष्ट आहे. मजकूर आपल्या स्तंभातच गुंडाळला जातो; मजकुराच्या रुंदीबाहेरचे कागदावर आणि पूर्वावलोकनात कापले जाते.
 bill_total_qty_label	एकूण संख्या लेबल
 bill_total_subtotal_label	उपबेरीज लेबल
@@ -351,6 +353,15 @@ print_open	छापा / उघडा
 reason_amend_ph	दुरुस्ती / रद्द / परताव्याचे कारण
 reason_note_ph	कारण / नोंद (नुकसान, मोजणी, …)
 record_day_close	दिवस बंद नोंदवा
+business_day	When does Today reset?
+business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
+biz_day_until_close	Until Day close
+biz_day_midnight	Calendar midnight
+business_day_saved	Business day saved
+report_day_lens	View Today as
+report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
+report_lens_day_close	By Day close
+report_lens_midnight	By midnight
 refresh_from_shop	दुकानातून ताजे करा
 refund	परतावा
 remove_selected	निवडलेले काढा
@@ -474,6 +485,8 @@ route_bill	बिल
 station_print_pick_first	आधी दुकानाचा विभाग निवडा
 bill_printers_dd	बिलाचे प्रिंटर
 bill_printers_dd_n	बिलासाठी {n} प्रिंटर · बदलायला दाबा
+printer_mode_first	आधी चालणारा
+printer_mode_all	सर्वांवर छापा
 station_vp_attached	प्रिंटर जोडले
 station_vp_detached	स्टेशनवरून प्रिंटर काढले
 print_test_page	चाचणी पान छापा
@@ -825,6 +838,10 @@ client_template_importing	{title} आयात…
 client_template_done	{title} मधील प्रत्येक आयटम तुमच्या आयटममध्ये आहे.
 client_template_imported	{title} मधून {d} आयटम आणि {c} वर्ग जोडले
 cancel	रद्द
+removing	काढत आहे…
+removed	काढले
+updating_order	अपडेट होत आहे…
+order_updated	ऑर्डर अपडेट झाली
 opening_client	क्लायंट उघडत आहे…
 preparing_desk	डेस्क तयार होत आहे…
 opening_server	सर्व्हर उघडत आहे…
@@ -855,16 +872,7 @@ recent_changes	अलीकडील बदल
 lane_declared_label	कर चलन
 lane_owner_label	कॅश मेमो
 money_lane_bill	बिल: {lane}
-
-removing	काढत आहे…
-removed	काढले
-updating_order	अपडेट होत आहे…
-order_updated	ऑर्डर अपडेट झाली
 sel_copy	कॉपी करा
 sel_select_all	सर्व निवडा
 sel_copied	कॉपी झाले
 nav_loading	लोड होत आहे…
-printer_mode_first	आधी चालणारा
-printer_mode_all	सर्वांवर छापा
-slip_columns	स्तंभ
-slip_col_header	शीर्षक

@@ -82,6 +82,8 @@ printer_paper_help	ਦੱਸਿਆ ਗਿਆ ਉਹ ਕਾਗਜ਼ ਹੈ ਜ�
 preview_help	ਇਹ ਪਰਚੀ ਜਿਵੇਂ ਹੇਠਾਂ ਚੁਣੇ ਪ੍ਰਿੰਟਰ ਉੱਤੇ ਛਪਦੀ ਹੈ, ਉਸਦੇ ਵਰਚੁਅਲ ਕਾਗਜ਼ ਉੱਤੇ ਅਸਲ ਨਾਪ ਵਿੱਚ। ਚਿੱਟੀ ਥਾਂ ਉੱਤੇ ਛਪਦਾ ਹੈ, ਸਲੇਟੀ ਕਾਗਜ਼ ਤੱਕ ਪ੍ਰਿੰਟਰ ਨਹੀਂ ਪਹੁੰਚਦਾ, ਅਤੇ ਫਿੱਕੀ ਸਿਆਹੀ ਕੱਟੀ ਜਾਂਦੀ ਹੈ। ਨੌਂ ਖਾਨੇ ਕਾਗਜ਼ ਹਨ: ਜਿੱਥੇ ਪਰਚੀ ਹੋਣੀ ਚਾਹੀਦੀ ਹੈ ਉੱਥੇ ਟੈਪ ਕਰੋ। ਲੰਮੀ ਪਰਚੀ ਹੋਰ ਪੰਨਿਆਂ ਉੱਤੇ ਜਾਂਦੀ ਹੈ। ਪ੍ਰਿੰਟਰ ਚੁਣਨ ਨਾਲ ਸਿਰਫ਼ ਝਲਕ ਬਦਲਦੀ ਹੈ।
 slip_col_start	ਸ਼ੁਰੂਆਤੀ ਥਾਂ (px)
 slip_col_end	ਅੰਤਲੀ ਥਾਂ (px)
+slip_columns	ਕਾਲਮ
+slip_col_header	ਸਿਰਲੇਖ
 slip_columns_help	ਹਰ ਕਾਲਮ ਦੀ ਚੌੜਾਈ ਵਿੱਚ ਉਸਦੀ ਸ਼ੁਰੂਆਤੀ ਅਤੇ ਅੰਤਲੀ ਥਾਂ ਸ਼ਾਮਲ ਹੈ। ਲਿਖਤ ਆਪਣੇ ਕਾਲਮ ਦੇ ਅੰਦਰ ਹੀ ਲਪੇਟੀ ਜਾਂਦੀ ਹੈ; ਸਮੱਗਰੀ ਦੀ ਚੌੜਾਈ ਤੋਂ ਬਾਹਰ ਵਾਲਾ ਹਿੱਸਾ ਕਾਗਜ਼ ਅਤੇ ਝਲਕ ਦੋਵਾਂ ਵਿੱਚ ਕੱਟਿਆ ਜਾਂਦਾ ਹੈ।
 bill_total_qty_label	ਕੁੱਲ ਗਿਣਤੀ ਲੇਬਲ
 bill_total_subtotal_label	ਉਪ-ਜੋੜ ਲੇਬਲ
@@ -351,6 +353,15 @@ print_open	ਛਾਪੋ / ਖੋਲ੍ਹੋ
 reason_amend_ph	ਸੋਧ / ਰੱਦ / ਵਾਪਸੀ ਦਾ ਕਾਰਨ
 reason_note_ph	ਕਾਰਨ / ਨੋਟ (ਖਰਾਬੀ, ਗਿਣਤੀ, …)
 record_day_close	ਦਿਨ ਬੰਦ ਦਰਜ ਕਰੋ
+business_day	When does Today reset?
+business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
+biz_day_until_close	Until Day close
+biz_day_midnight	Calendar midnight
+business_day_saved	Business day saved
+report_day_lens	View Today as
+report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
+report_lens_day_close	By Day close
+report_lens_midnight	By midnight
 refresh_from_shop	ਦੁਕਾਨ ਤੋਂ ਤਾਜ਼ਾ ਕਰੋ
 refund	ਵਾਪਸੀ
 remove_selected	ਚੁਣਿਆ ਹਟਾਓ
@@ -474,6 +485,8 @@ route_bill	ਬਿੱਲ
 station_print_pick_first	ਪਹਿਲਾਂ ਦੁਕਾਨ ਦਾ ਹਿੱਸਾ ਚੁਣੋ
 bill_printers_dd	ਬਿੱਲ ਦੇ ਪ੍ਰਿੰਟਰ
 bill_printers_dd_n	ਬਿੱਲ ਲਈ {n} ਪ੍ਰਿੰਟਰ · ਬਦਲਣ ਲਈ ਦਬਾਓ
+printer_mode_first	ਜੋ ਪਹਿਲਾਂ ਚੱਲੇ
+printer_mode_all	ਸਭ 'ਤੇ ਛਾਪੋ
 station_vp_attached	ਪ੍ਰਿੰਟਰ ਜੋੜਿਆ
 station_vp_detached	ਸਟੇਸ਼ਨ ਤੋਂ ਪ੍ਰਿੰਟਰ ਹਟਾਇਆ
 print_test_page	ਟੈਸਟ ਪੰਨਾ ਛਾਪੋ
@@ -825,6 +838,10 @@ client_template_importing	{title} ਆਯਾਤ…
 client_template_done	{title} ਦੀ ਹਰ ਆਈਟਮ ਤੁਹਾਡੀਆਂ ਆਈਟਮਾਂ ਵਿੱਚ ਹੈ।
 client_template_imported	{title} ਤੋਂ {d} ਆਈਟਮਾਂ ਤੇ {c} ਸ਼੍ਰੇਣੀਆਂ ਜੋੜੀਆਂ
 cancel	ਰੱਦ ਕਰੋ
+removing	ਹਟਾਇਆ ਜਾ ਰਿਹਾ ਹੈ…
+removed	ਹਟਾਇਆ ਗਿਆ
+updating_order	ਅੱਪਡੇਟ ਹੋ ਰਿਹਾ ਹੈ…
+order_updated	ਆਰਡਰ ਅੱਪਡੇਟ ਹੋਇਆ
 opening_client	ਕਲਾਇੰਟ ਖੁੱਲ੍ਹ ਰਿਹਾ ਹੈ…
 preparing_desk	ਡੈਸਕ ਤਿਆਰ ਹੋ ਰਿਹਾ ਹੈ…
 opening_server	ਸਰਵਰ ਖੁੱਲ੍ਹ ਰਿਹਾ ਹੈ…
@@ -855,16 +872,7 @@ recent_changes	ਤਾਜ਼ਾ ਬਦਲਾਅ
 lane_declared_label	ਟੈਕਸ ਇਨਵੌਇਸ
 lane_owner_label	ਕੈਸ਼ ਮੀਮੋ
 money_lane_bill	ਬਿੱਲ: {lane}
-
-removing	ਹਟਾਇਆ ਜਾ ਰਿਹਾ ਹੈ…
-removed	ਹਟਾਇਆ ਗਿਆ
-updating_order	ਅੱਪਡੇਟ ਹੋ ਰਿਹਾ ਹੈ…
-order_updated	ਆਰਡਰ ਅੱਪਡੇਟ ਹੋਇਆ
 sel_copy	ਕਾਪੀ ਕਰੋ
 sel_select_all	ਸਭ ਚੁਣੋ
 sel_copied	ਕਾਪੀ ਹੋ ਗਿਆ
 nav_loading	ਲੋਡ ਹੋ ਰਿਹਾ ਹੈ…
-printer_mode_first	ਜੋ ਪਹਿਲਾਂ ਚੱਲੇ
-printer_mode_all	ਸਭ 'ਤੇ ਛਾਪੋ
-slip_columns	ਕਾਲਮ
-slip_col_header	ਸਿਰਲੇਖ

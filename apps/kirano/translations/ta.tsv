@@ -82,6 +82,8 @@ printer_paper_help	தெரிவிக்கப்பட்டது என்
 preview_help	கீழே தேர்ந்த அச்சுப்பொறியில் அச்சாவது போலவே இந்தச் சீட்டு, அதன் மெய்நிகர் தாளில் உண்மை அளவில். வெள்ளைப் பகுதியில் அச்சாகும், சாம்பல் தாளை அச்சுப்பொறி எட்டாது, மங்கிய மை வெட்டப்படும். ஒன்பது கட்டங்களே தாள்: சீட்டு இருக்க வேண்டிய இடத்தைத் தட்டவும். நீண்ட சீட்டு கூடுதல் பக்கங்களுக்குச் செல்லும். அச்சுப்பொறியைத் தேர்ந்தால் முன்னோட்டம் மட்டுமே மாறும்.
 slip_col_start	தொடக்க இடம் (px)
 slip_col_end	முடிவு இடம் (px)
+slip_columns	நெடுவரிசைகள்
+slip_col_header	தலைப்பு
 slip_columns_help	ஒவ்வொரு நெடுவரிசையின் அகலத்திலும் அதன் தொடக்க மற்றும் முடிவு இடம் அடங்கும். உரை தன் நெடுவரிசைக்குள்ளேயே மடிகிறது; உள்ளடக்க அகலத்தைத் தாண்டியது காகிதத்திலும் முன்னோட்டத்திலும் வெட்டப்படும்.
 bill_total_qty_label	மொத்த எண் லேபிள்
 bill_total_subtotal_label	துணை மொத்த லேபிள்
@@ -351,6 +353,15 @@ print_open	அச்சிடு / திற
 reason_amend_ph	திருத்தம் / ரத்து / திரும்ப காரணம்
 reason_note_ph	காரணம் / குறிப்பு (சேதம், எண்ணிக்கை, …)
 record_day_close	நாள் முடிவைப் பதிவு செய்
+business_day	When does Today reset?
+business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
+biz_day_until_close	Until Day close
+biz_day_midnight	Calendar midnight
+business_day_saved	Business day saved
+report_day_lens	View Today as
+report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
+report_lens_day_close	By Day close
+report_lens_midnight	By midnight
 refresh_from_shop	கடையிலிருந்து புதுப்பி
 refund	திரும்ப
 remove_selected	தேர்ந்ததை அகற்று
@@ -474,6 +485,8 @@ route_bill	பில்
 station_print_pick_first	முதலில் கடைப் பிரிவைத் தேர்வுசெய்யவும்
 bill_printers_dd	பில் அச்சுப்பொறிகள்
 bill_printers_dd_n	பில்லுக்கு {n} அச்சுப்பொறிகள் · மாற்றத் தட்டவும்
+printer_mode_first	முதலில் வேலை செய்வது
+printer_mode_all	அனைத்திலும் அச்சிடு
 station_vp_attached	அச்சுப்பொறி இணைக்கப்பட்டது
 station_vp_detached	நிலையத்திலிருந்து அச்சுப்பொறி நீக்கப்பட்டது
 print_test_page	சோதனைப் பக்கம் அச்சிடு
@@ -825,6 +838,10 @@ client_template_importing	{title} இறக்குமதி…
 client_template_done	{title}-இன் ஒவ்வொரு பொருளும் உங்கள் பொருட்களில் உள்ளது.
 client_template_imported	{title}-இலிருந்து {d} பொருட்கள், {c} வகைகள் சேர்க்கப்பட்டன
 cancel	ரத்து
+removing	நீக்கப்படுகிறது…
+removed	நீக்கப்பட்டது
+updating_order	புதுப்பிக்கப்படுகிறது…
+order_updated	ஆர்டர் புதுப்பிக்கப்பட்டது
 opening_client	கிளையன்ட் திறக்கப்படுகிறது…
 preparing_desk	மேசை தயாராகிறது…
 opening_server	சேவையகம் திறக்கப்படுகிறது…
@@ -855,16 +872,7 @@ recent_changes	சமீபத்திய மாற்றங்கள்
 lane_declared_label	வரி விலைப்பட்டியல்
 lane_owner_label	ரொக்க மெமோ
 money_lane_bill	பில்: {lane}
-
-removing	நீக்கப்படுகிறது…
-removed	நீக்கப்பட்டது
-updating_order	புதுப்பிக்கப்படுகிறது…
-order_updated	ஆர்டர் புதுப்பிக்கப்பட்டது
 sel_copy	நகலெடு
 sel_select_all	அனைத்தையும் தேர்ந்தெடு
 sel_copied	நகலெடுக்கப்பட்டது
 nav_loading	ஏற்றுகிறது…
-printer_mode_first	முதலில் வேலை செய்வது
-printer_mode_all	அனைத்திலும் அச்சிடு
-slip_columns	நெடுவரிசைகள்
-slip_col_header	தலைப்பு

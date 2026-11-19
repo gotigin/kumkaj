@@ -3,6 +3,25 @@ app_tagline	Шуудангийн агентлагийн ном + захиалг�
 unlock	Түгжээ тайлах
 pin_hint	Эзэмшигчийн PIN 0000-оос эхэлнэ
 sell	Захиалга
+nav_board	Board
+board	Board
+park_draft	Park
+board_park_nothing	Nothing to park — add charges or booking details
+board_parked	Parked on Board — desk is clear
+board_draft	Draft
+board_booked	Booked
+board_filter_all	All
+board_filter_draft	Draft
+board_filter_booked	Booked
+board_cols_fmt	{n} col
+board_summary_fmt	{total} cards · {drafts} draft · {booked} booked
+board_card_no_charges	No charges yet
+board_card_charges	charges
+board_card_booked	Booking
+board_draft_gone	That draft is no longer on the Board
+board_draft_closed	That draft was already finished or discarded
+board_discard	Discard
+board_discarded	Draft discarded
 buy	Төлнө
 books	Өдрийн дэвтэр
 books_help	Өнөөдрийн байр суурь. Захиалга = илгээмж. Төлбөр = тээвэрлэгчийн төлбөр, зардал. Талууд = ачаа илгээгч ба тээвэрлэгчид.
@@ -183,6 +202,13 @@ device_setup_help	Сервер дэвтрээ энд хадгална. Клие�
 currency	Валют
 backup	Нөөц хуулбар
 settings_sec_diag	Оношлогоо
+settings_sec_privacy	Нууцлал
+privacy_policy_help	Нууцлал · PRIVACY.md · moklanjo.com/privacy
+dont_use	Бүү ашигла
+receipt_printers_dd	Энэ төхөөрөмж дээрх принтерүүд · Баримт
+receipt_printers_dd_n	{n} · Энэ төхөөрөмж дээрх принтерүүд · Баримт
+label_printers_dd	Энэ төхөөрөмж дээрх принтерүүд · AWB шошго
+label_printers_dd_n	{n} · Энэ төхөөрөмж дээрх принтерүүд · AWB шошго
 settings_hub_help	Нэг хэсгийг нэг нэгээр нээнэ — бага гүйлгэлт, тодорхой сонголт.
 settings_sec_devices	Бусад төхөөрөмж
 settings_sec_alerts	Мэдэгдэл
@@ -315,6 +341,16 @@ copy_party_ledger_csv	Харилцагчийн дэвтрийг CSV хуулах
 copy_receipt	Баримтыг хуулах
 copy_report	Тайланг хуулах
 counted_cash_ph	Шүүгээнд тоолсон бэлэн
+close_shift_print	Close shift and print slip
+shift_handover	Shift handover
+shift_counted_ph	Cash counted at handover
+shift_since	This shift since
+expected_in_drawer	Expected in drawer
+lock_books_through_month	Lock books through month
+books_lock_month_ph	YYYY-MM
+lock_books_month_btn	Lock through this month
+books_locked_none	No month lock yet
+books_locked_through	Locked through
 counter_agency_ph	Тоолуур / агентлагийн нэр (заавал биш)
 create_backup	Нөөц хуулбар үүсгэх
 day_close_summary	Өдөр хаалтын хураангуй
@@ -404,6 +440,9 @@ pay_ap_cash	AP бэлнээр төлех
 pay_ap_upi	AP UPI-аар төлех
 period_bill	Хугацаа
 period_bill_party	Хугацааны тооцоо (тал)
+period_bill_generate	Generate bill
+period_bill_generate_print	Generate & print
+booking_bulk_preview	{ok} ready · {bad} bad
 pick_pod_photo	POD зургийг сонгоно уу
 print_awb_label	AWB шошгыг хэвлэх
 print_open	Хэвлэх / нээх
@@ -612,6 +651,19 @@ attachments_last_expense	Хавсралт (сүүлийн зарлага)
 credit_limit_heading	Зээлийн хязгаар (сонгосон / нэрлэсэн харилцагч)
 pay_selected_heading	Сонгосныг төлех (өр барагдуулах / урьдчилгаа авах)
 write_off_heading	Хасалт (төлбөргүй цэвэрлэх)
+adjustment_notes_heading	Adjustment notes
+adj_note_amount_ph	Amount
+adj_note_reason_ph	Reason (required)
+adj_note_awb_ph	Related AWB (optional)
+credit_note_btn	Credit note
+debit_note_btn	Debit note
+bill_later_heading	Bill later (post-booking extra)
+bill_later_amount_ph	Extra amount
+bill_later_party_ph	Party (only if booking has none)
+bill_later_btn	Bill later
+bill_later_extra_oda	ODA
+bill_later_extra_packing	Packing
+bill_later_extra_other	Other
 pay_ap_heading	Тэдэнд өртэйгээ төлех (AP)
 country_tax	Улс ба татвар
 extra_tills_heading	Нэмэлт касс
@@ -723,6 +775,23 @@ onboard_book_tmpl	Book · {} — бараа ба эхлэх зээл нэмээ�
 onboard_template_tmpl	Хүсвэл газрыг нэрлээд яаж эхлэхээ сонгоно.
 tmpl_blurb	Шуудангийн ном, захиалгын ширээ: ачаа илгээгч, тээвэрлэгч, өдрийн ном, AWB.
 tmpl_how	Ширээн дээр илгээмж захиалах; Өнөөдрийн өдрийн ном; ханш, үдэшлэг, тайлангийн таб.
+app_template_heading	Shop templates
+app_template_blurb	Pick a starter desk. Skip leaves parties empty.
+app_template_skip	Skip for now
+app_template_status	Server ready — import a template, or skip
+app_template_importing	Applying {title}…
+app_template_public_hdr	Templates
+app_template_import_selected	Import selected
+public_tmpl_help	Bundled agency packs for this shop. No download needed.
+business_day	When does Today reset?
+business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
+biz_day_until_close	Until Day close
+biz_day_midnight	Calendar midnight
+business_day_saved	Business day saved
+report_day_lens	View Today as
+report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
+report_lens_day_close	By Day close
+report_lens_midnight	By midnight
 trk_booked	Захиалагдсан
 trk_picked_up	Татаж авсан
 trk_in_transit	Дамжин явж байна
@@ -846,10 +915,3 @@ sel_copy	Хуулах
 sel_select_all	Бүгдийг сонгох
 sel_copied	Хуулагдлаа
 nav_loading	Ачаалж байна…
-settings_sec_privacy	Нууцлал
-privacy_policy_help	Нууцлал · PRIVACY.md · moklanjo.com/privacy
-dont_use	Бүү ашигла
-receipt_printers_dd	Энэ төхөөрөмж дээрх принтерүүд · Баримт
-receipt_printers_dd_n	{n} · Энэ төхөөрөмж дээрх принтерүүд · Баримт
-label_printers_dd	Энэ төхөөрөмж дээрх принтерүүд · AWB шошго
-label_printers_dd_n	{n} · Энэ төхөөрөмж дээрх принтерүүд · AWB шошго

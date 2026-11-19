@@ -115,6 +115,7 @@ bill_line_total	Нийт
 bill_line_footer	Доод хэсэг
 bill_line_upi	UPI
 bill_logo_picture	Зураг
+bill_logo_help	Өргөн, өндрийг px-ээр. Хоосон бол зургийг дагана: нэг нь хоосон бол хэлбэрээ хадгална, хоёулаа хоосон бол өөрийн хэмжээг; хоёулааг өгвөл дотор нь багтаана, хэзээ ч сунгахгүй. Зураггүй: харагдаж буй лого өндрөө хоосон зай болгон хадгална; Нуух нь арилгана.
 bill_logo_choose	Зураг сонгох
 bill_logo_remove	Зураг арилгах
 bill_logo_none	Зураг байхгүй
@@ -122,10 +123,9 @@ bill_logo_unreadable	Энэ апп уншиж чадах зураг биш
 bill_logo_width	Өргөн (px)
 bill_logo_height	Өндөр (px)
 bill_logo_tones	Саарал өнгө
+bill_logo_tones_help	Битүү: цэг бүр хар эсвэл цагаан, тод логонд. Сүүдэртэй: саарал нарийн цэгэн хээ болно, зураг болон зөөлөн сүүдэрт.
 bill_logo_solid	Битүү
 bill_logo_shaded	Сүүдэртэй
-bill_logo_help	Өргөн, өндрийг px-ээр. Хоосон бол зургийг дагана: нэг нь хоосон бол хэлбэрээ хадгална, хоёулаа хоосон бол өөрийн хэмжээг; хоёулааг өгвөл дотор нь багтаана, хэзээ ч сунгахгүй. Зураггүй: харагдаж буй лого өндрөө хоосон зай болгон хадгална; Нуух нь арилгана.
-bill_logo_tones_help	Битүү: цэг бүр хар эсвэл цагаан, тод логонд. Сүүдэртэй: саарал нарийн цэгэн хээ болно, зураг болон зөөлөн сүүдэрт.
 slip_col_width	Өргөн (mm)
 slip_col_start	Эхлэлийн зай (px)
 slip_col_end	Төгсгөлийн зай (px)
@@ -566,6 +566,15 @@ print_open	Хэвлэх / нээх
 reason_amend_ph	Засах / хүчингүй болгох / буцаах шалтгаан
 reason_note_ph	Шалтгаан / тэмдэглэл (хорогдол, тооллого, …)
 record_day_close	Өдөр хаалтыг бүртгэх
+business_day	When does Today reset?
+business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
+biz_day_until_close	Until Day close
+biz_day_midnight	Calendar midnight
+business_day_saved	Business day saved
+report_day_lens	View Today as
+report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
+report_lens_day_close	By Day close
+report_lens_midnight	By midnight
 refresh_from_shop	Дэлгүүрээс шинэчлэх
 refund	Буцаалт
 remove_selected	Сонгосныг хасах

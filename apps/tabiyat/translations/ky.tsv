@@ -94,6 +94,8 @@ printer_paper_help	Кабарланган — бул принтердин дра
 preview_help	Бул чек төмөндө тандалган принтерде кандай басылса, ошондой, анын виртуалдык кагазында чыныгы өлчөмдө. Ак — басылган жер, боз кагазга принтер жетпейт, ал эми өңү өчкөн сыя кесилет. Тогуз чарчы — кагаз: чек турушу керек жерди таптаңыз. Узун чек кийинки барактарга өтөт. Принтерди тандоо алдын ала көрүүнү гана өзгөртөт.
 slip_col_start	Башталыш аралыгы (px)
 slip_col_end	Аяк аралыгы (px)
+slip_columns	Мамычалар
+slip_col_header	Аталыш
 slip_columns_help	Ар бир мамычанын туурасы анын башталыш жана аяк аралыгын камтыйт. Текст өз мамычасынын ичинде которулат; мазмундун туурасынан чыккан бөлүгү кагазда да, алдын ала көрүүдө да кесилет.
 bill_total_qty_label	Жалпы сан энбелгиси
 bill_total_subtotal_label	Кошумча жалпы энбелги
@@ -363,6 +365,15 @@ print_open	Басып чыгаруу / ачуу
 reason_amend_ph	Түзөтүүнүн / жокко чыгаруунун / кайтарып берүүнүн себеби
 reason_note_ph	Себеп / эскертүү (ысырап, эсептөө, ...)
 record_day_close	Жакын күндү сактаңыз
+business_day	When does Today reset?
+business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
+biz_day_until_close	Until Day close
+biz_day_midnight	Calendar midnight
+business_day_saved	Business day saved
+report_day_lens	View Today as
+report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
+report_lens_day_close	By Day close
+report_lens_midnight	By midnight
 refresh_from_shop	Дүкөндөн жаңыртуу
 refund	Төлөмдү кайтаруу
 remove_selected	Тандалган алып салуу
@@ -486,6 +497,8 @@ route_bill	Эсеп
 station_print_pick_first	Алгач диспансердик бөлүмдү тандаңыз
 bill_printers_dd	Конок эсеби үчүн принтерлер
 bill_printers_dd_n	{n} конок эсеби үчүн принтерлер · өзгөртүү үчүн таптаңыз
+printer_mode_first	Биринчи бул иштейт
+printer_mode_all	Баарына басып чыгаруу
 station_vp_attached	Принтер тиркелген
 station_vp_detached	Принтер станциядан өчүрүлдү
 print_test_page	Сыноо барагын басып чыгарыңыз
@@ -837,6 +850,10 @@ client_template_importing	{title} импорттолууда…
 client_template_done	{title}'тен ар бир нерсе сиздин нерселериңизде.
 client_template_imported	{title}тен {d} элементтери жана {c} категориялары кошулду
 cancel	Жокко чыгаруу
+removing	Өчүрүлүүдө…
+removed	Өчүрүлдү
+updating_order	Жаңыртылууда…
+order_updated	Буйрутма жаңыртылды
 opening_client	кардар ачылууда…
 preparing_desk	Үстөл даярдалууда…
 opening_server	Сервер ачылууда…
@@ -867,16 +884,7 @@ recent_changes	Акыркы өзгөрүүлөр
 lane_declared_label	Салык эсеп-фактурасы
 lane_owner_label	Накталай эсеп
 money_lane_bill	Коноктун эсеби: {lane}
-
-removing	Өчүрүлүүдө…
-removed	Өчүрүлдү
-updating_order	Жаңыртылууда…
-order_updated	Буйрутма жаңыртылды
 sel_copy	Көчүрүү
 sel_select_all	Баарын тандоо
 sel_copied	Көчүрүлдү
 nav_loading	Жүктөлүүдө…
-printer_mode_first	Биринчи бул иштейт
-printer_mode_all	Баарына басып чыгаруу
-slip_columns	Мамычалар
-slip_col_header	Аталыш

@@ -115,6 +115,7 @@ bill_line_total	Totaal
 bill_line_footer	Voetstuk
 bill_line_upi	UPI
 bill_logo_picture	Prent
+bill_logo_help	Breedte en hoogte in px. Leeg volg die prent: een leeg behou sy vorm, albei leeg gebruik sy eie grootte; albei gestel pas dit binne-in, nooit gerek nie. Geen prent: 'n gewysde logo hou sy hoogte as leë spasie; Versteek verwyder dit.
 bill_logo_choose	Kies prent
 bill_logo_remove	Verwyder prent
 bill_logo_none	Geen prent
@@ -122,10 +123,9 @@ bill_logo_unreadable	Nie 'n prent wat hierdie toep kan lees nie
 bill_logo_width	Breedte (px)
 bill_logo_height	Hoogte (px)
 bill_logo_tones	Grys
+bill_logo_tones_help	Solied: elke kol swart of wit, vir skerp logo's. Geskakeer: grys word fyn kolpatrone, vir foto's en sagte skakering.
 bill_logo_solid	Solied
 bill_logo_shaded	Geskakeer
-bill_logo_help	Breedte en hoogte in px. Leeg volg die prent: een leeg behou sy vorm, albei leeg gebruik sy eie grootte; albei gestel pas dit binne-in, nooit gerek nie. Geen prent: 'n gewysde logo hou sy hoogte as leë spasie; Versteek verwyder dit.
-bill_logo_tones_help	Solied: elke kol swart of wit, vir skerp logo's. Geskakeer: grys word fyn kolpatrone, vir foto's en sagte skakering.
 slip_col_width	Breedte (mm)
 slip_col_start	Beginspasie (px)
 slip_col_end	Eindspasie (px)
@@ -566,6 +566,15 @@ print_open	Druk / oop
 reason_amend_ph	Rede vir wysig / ongeldig / terugbetaling
 reason_note_ph	Rede / nota (verlies, telling, …)
 record_day_close	Reken afsluiting opneem
+business_day	When does Today reset?
+business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
+biz_day_until_close	Until Day close
+biz_day_midnight	Calendar midnight
+business_day_saved	Business day saved
+report_day_lens	View Today as
+report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
+report_lens_day_close	By Day close
+report_lens_midnight	By midnight
 refresh_from_shop	Verskaf van winkel
 refund	Terugbetaling
 remove_selected	Verwyder geselekteerde

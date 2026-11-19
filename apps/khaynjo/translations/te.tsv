@@ -115,6 +115,7 @@ bill_line_total	మొత్తం
 bill_line_footer	ఫుటర్
 bill_line_upi	UPI
 bill_logo_picture	చిత్రం
+bill_logo_help	వెడల్పు, ఎత్తు px లో. ఖాళీగా ఉంటే చిత్రాన్ని అనుసరిస్తుంది: ఒకటి ఖాళీ అయితే ఆకారం నిలుస్తుంది, రెండూ ఖాళీ అయితే దాని సొంత పరిమాణం; రెండూ ఇస్తే లోపల అమరుతుంది, ఎప్పుడూ సాగదీయదు. చిత్రం లేకపోతే: చూపిన లోగో తన ఎత్తును ఖాళీ స్థలంగా ఉంచుతుంది; దాచు దాన్ని తీసివేస్తుంది.
 bill_logo_choose	చిత్రం ఎంచుకోండి
 bill_logo_remove	చిత్రం తీసివేయండి
 bill_logo_none	చిత్రం లేదు
@@ -122,10 +123,9 @@ bill_logo_unreadable	ఈ యాప్ చదవగల చిత్రం కా�
 bill_logo_width	వెడల్పు (px)
 bill_logo_height	ఎత్తు (px)
 bill_logo_tones	బూడిద
+bill_logo_tones_help	ఘన: ప్రతి చుక్క నలుపు లేదా తెలుపు, స్పష్టమైన లోగోలకు. నీడతో: బూడిద సన్నని చుక్కల నమూనా అవుతుంది, ఫోటోలు మరియు మృదువైన నీడకు.
 bill_logo_solid	ఘన
 bill_logo_shaded	నీడతో
-bill_logo_help	వెడల్పు, ఎత్తు px లో. ఖాళీగా ఉంటే చిత్రాన్ని అనుసరిస్తుంది: ఒకటి ఖాళీ అయితే ఆకారం నిలుస్తుంది, రెండూ ఖాళీ అయితే దాని సొంత పరిమాణం; రెండూ ఇస్తే లోపల అమరుతుంది, ఎప్పుడూ సాగదీయదు. చిత్రం లేకపోతే: చూపిన లోగో తన ఎత్తును ఖాళీ స్థలంగా ఉంచుతుంది; దాచు దాన్ని తీసివేస్తుంది.
-bill_logo_tones_help	ఘన: ప్రతి చుక్క నలుపు లేదా తెలుపు, స్పష్టమైన లోగోలకు. నీడతో: బూడిద సన్నని చుక్కల నమూనా అవుతుంది, ఫోటోలు మరియు మృదువైన నీడకు.
 slip_col_width	వెడల్పు (mm)
 slip_col_start	ప్రారంభ స్థలం (px)
 slip_col_end	ముగింపు స్థలం (px)
@@ -566,6 +566,15 @@ print_open	ముద్రించు / తెరువు
 reason_amend_ph	సవరణ / రద్దు / వాపసు కారణం
 reason_note_ph	కారణం / గమనిక (నష్టం, లెక్క, …)
 record_day_close	రోజు ముగింపు నమోదు చేయి
+business_day	When does Today reset?
+business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
+biz_day_until_close	Until Day close
+biz_day_midnight	Calendar midnight
+business_day_saved	Business day saved
+report_day_lens	View Today as
+report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
+report_lens_day_close	By Day close
+report_lens_midnight	By midnight
 refresh_from_shop	షాప్ నుండి రిఫ్రెష్
 refund	వాపసు
 remove_selected	ఎంచుకున్నది తొలగించు

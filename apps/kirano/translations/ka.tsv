@@ -82,6 +82,8 @@ printer_paper_help	შეტყობინებული არის ქა�
 preview_help	ეს ჩეკი ისე, როგორც იბეჭდება ქვემოთ არჩეულ პრინტერზე, რეალური ზომით მის ვირტუალურ ქაღალდზე. თეთრია იქ, სადაც იბეჭდება, ნაცრისფერ ქაღალდს პრინტერი ვერ სწვდება, ხოლო გაფერმკრთალებული მელანი იჭრება. ცხრა კვადრატი ქაღალდია: შეეხეთ იქ, სადაც ჩეკი უნდა იდოს. გრძელი ჩეკი მომდევნო გვერდებზე გრძელდება. პრინტერის არჩევა მხოლოდ გადახედვას ცვლის.
 slip_col_start	საწყისი სივრცე (px)
 slip_col_end	ბოლო სივრცე (px)
+slip_columns	სვეტები
+slip_col_header	სათაური
 slip_columns_help	თითოეული სვეტის სიგანე მოიცავს მის საწყის და ბოლო სივრცეს. ტექსტი საკუთარ სვეტში გადადის ახალ ხაზზე; რაც შიგთავსის სიგანეს სცდება, იჭრება — ქაღალდზეც და გადახედვაშიც.
 bill_total_qty_label	სრული რაოდენობის წარწერა
 bill_total_subtotal_label	შუალედური ჯამის წარწერა
@@ -351,6 +353,15 @@ print_open	დაბეჭდვა / გახსნა
 reason_amend_ph	შესწორების / ბათილობის / თანხის დაბრუნების მიზეზი
 reason_note_ph	მიზეზი / შენიშვნა (გაფლანგვა, რაოდენობა, ...)
 record_day_close	შეინახეთ დღე დახურულ მდგომარეობაში
+business_day	When does Today reset?
+business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
+biz_day_until_close	Until Day close
+biz_day_midnight	Calendar midnight
+business_day_saved	Business day saved
+report_day_lens	View Today as
+report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
+report_lens_day_close	By Day close
+report_lens_midnight	By midnight
 refresh_from_shop	განაახლეთ მაღაზიიდან
 refund	თანხის დაბრუნება
 remove_selected	არჩეულის წაშლა
@@ -474,6 +485,8 @@ route_bill	ანგარიში
 station_print_pick_first	ჯერ აირჩიეთ მაღაზიის განყოფილება
 bill_printers_dd	პრინტერები სტუმრის ანგარიშისთვის
 bill_printers_dd_n	{n} პრინტერები სტუმრის ანგარიშისთვის · შეეხეთ შესაცვლელად
+printer_mode_first	ჯერ ეს მუშაობს
+printer_mode_all	ბეჭდვა ყველაზე
 station_vp_attached	მიმაგრებულია პრინტერი
 station_vp_detached	პრინტერი ამოღებულია სადგურიდან
 print_test_page	დაბეჭდეთ სატესტო გვერდი
@@ -825,6 +838,10 @@ client_template_importing	მიმდინარეობს {title} იმპ
 client_template_done	{title}-ის ყველა ელემენტი თქვენს ერთეულებზეა.
 client_template_imported	დამატებულია {d} ელემენტები და {c} კატეგორიები {title}-დან
 cancel	გაუქმება
+removing	იშლება…
+removed	წაიშალა
+updating_order	ახლდება…
+order_updated	შეკვეთა განახლდა
 opening_client	კლიენტის გახსნა…
 preparing_desk	მაგიდის მომზადება…
 opening_server	სერვერის გახსნა…
@@ -855,16 +872,7 @@ recent_changes	ბოლო ცვლილებები
 lane_declared_label	საგადასახადო ინვოისი
 lane_owner_label	ფულადი მემორანდუმი
 money_lane_bill	სტუმრის ანგარიში: {lane}
-
-removing	იშლება…
-removed	წაიშალა
-updating_order	ახლდება…
-order_updated	შეკვეთა განახლდა
 sel_copy	კოპირება
 sel_select_all	ყველაფრის მონიშვნა
 sel_copied	დაკოპირდა
 nav_loading	იტვირთება…
-printer_mode_first	ჯერ ეს მუშაობს
-printer_mode_all	ბეჭდვა ყველაზე
-slip_columns	სვეტები
-slip_col_header	სათაური

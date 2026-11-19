@@ -115,6 +115,7 @@ bill_line_total	Iomlán
 bill_line_footer	Bunleathanach
 bill_line_upi	UPI
 bill_logo_picture	Pictiúr
+bill_logo_help	Leithead agus airde i px. Leanann bán an pictiúr: coimeádann ceann bán an cruth, úsáideann an dá cheann bána a mhéid féin; nuair a shocraítear an dá cheann cuirtear isteach é, gan síneadh riamh. Gan pictiúr: coimeádann lógó taispeánta a airde mar spás bán; baineann Folaigh é.
 bill_logo_choose	Roghnaigh pictiúr
 bill_logo_remove	Bain an pictiúr
 bill_logo_none	Gan pictiúr
@@ -122,10 +123,9 @@ bill_logo_unreadable	Ní pictiúr é ar féidir leis an aip a léamh
 bill_logo_width	Leithead (px)
 bill_logo_height	Airde (px)
 bill_logo_tones	Liathanna
+bill_logo_tones_help	Soladach: gach ponc dubh nó bán, do lógónna glana. Scáthaithe: éiríonn na liathanna ina bpatrúin poncanna míne, do ghrianghraif agus scáthú bog.
 bill_logo_solid	Soladach
 bill_logo_shaded	Scáthaithe
-bill_logo_help	Leithead agus airde i px. Leanann bán an pictiúr: coimeádann ceann bán an cruth, úsáideann an dá cheann bána a mhéid féin; nuair a shocraítear an dá cheann cuirtear isteach é, gan síneadh riamh. Gan pictiúr: coimeádann lógó taispeánta a airde mar spás bán; baineann Folaigh é.
-bill_logo_tones_help	Soladach: gach ponc dubh nó bán, do lógónna glana. Scáthaithe: éiríonn na liathanna ina bpatrúin poncanna míne, do ghrianghraif agus scáthú bog.
 slip_col_width	Leithead (mm)
 slip_col_start	Spás tosaigh (px)
 slip_col_end	Spás deiridh (px)
@@ -566,6 +566,15 @@ print_open	Priontáil / oscail
 reason_amend_ph	Cúis le leasú / neamhbhailí / aisíocaíocht
 reason_note_ph	Cúis / nóta (caiteachas, comhaireamh, …)
 record_day_close	Dúnadh lae taifead
+business_day	When does Today reset?
+business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
+biz_day_until_close	Until Day close
+biz_day_midnight	Calendar midnight
+business_day_saved	Business day saved
+report_day_lens	View Today as
+report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
+report_lens_day_close	By Day close
+report_lens_midnight	By midnight
 refresh_from_shop	Athnuaigh ón siopa
 refund	Aisíocaíocht
 remove_selected	Bain an roghnaithe

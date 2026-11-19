@@ -191,6 +191,7 @@ impl SyncPatch {
             rev: self.rev,
             seq: self.seq,
             shop_prefs: self.shop_prefs,
+            booking_drafts: Vec::new(),
         })
     }
 }

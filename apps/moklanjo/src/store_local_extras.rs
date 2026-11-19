@@ -440,10 +440,102 @@ impl Store {
         Ok(out)
     }
 
+    /// Post-booking extra (ODA / packing / …) billed later on the consignor AR.
+    /// Does not change the original sale total — only `credit_ledger`.
+    pub fn post_booking_bill_later(
+        &self,
+        sale_id: &str,
+        extra_kind: &str,
+        amount_paise: i64,
+        note: &str,
+        party_id_override: Option<&str>,
+        actor: &StaffMember,
+    ) -> Result<i64, String> {
+        use crate::rates::ExtraChargeKind;
+        self.assert_server_writer("Bill later extra")?;
+        if amount_paise <= 0 {
+            return Err("Extra amount must be greater than zero".into());
+        }
+        let sale = self
+            .get_sale(sale_id)?
+            .ok_or_else(|| "Sale not found".to_string())?;
+        if sale.status != "completed" {
+            return Err("Only completed bookings can get a bill-later extra".into());
+        }
+        let party_id = sale
+            .customer_id
+            .as_deref()
+            .map(str::trim)
+            .filter(|s| !s.is_empty())
+            .map(str::to_string)
+            .or_else(|| {
+                party_id_override
+                    .map(str::trim)
+                    .filter(|s| !s.is_empty())
+                    .map(str::to_string)
+            })
+            .ok_or_else(|| "Pick the consignor party (booking has no party)".to_string())?;
+        let kind = ExtraChargeKind::parse(extra_kind);
+        let awb = sale.awb_no.trim();
+        let awb_txt = if awb.is_empty() {
+            sale_id.chars().take(8).collect::<String>()
+        } else {
+            awb.to_string()
+        };
+        let note = note.trim();
+        let detail = if note.is_empty() {
+            format!("{} on AWB {}", kind.label(), awb_txt)
+        } else {
+            format!("{} on AWB {} · {}", kind.label(), awb_txt, note)
+        };
+        let times = EventTimes::capture(None);
+        self.conn
+            .execute(
+                "INSERT INTO credit_ledger(
+                    id, customer_id, created_at, kind, amount_paise,
+                    sale_id, pay_method, actor_id, actor_name, detail,
+                    user_at, device_at, server_at
+                 ) VALUES(?1, ?2, ?3, 'post_booking_extra', ?4, ?5, NULL, ?6, ?7, ?8, ?9, ?10, ?11)",
+                params![
+                    new_id(),
+                    party_id,
+                    times.user_at,
+                    amount_paise,
+                    sale_id,
+                    actor.id,
+                    actor.name,
+                    detail,
+                    times.user_at,
+                    times.device_at,
+                    times.server_at
+                ],
+            )
+            .map_err(|e| e.to_string())?;
+        let mut extras: Vec<crate::rates::BookingExtra> =
+            serde_json::from_str(&sale.extras_json).unwrap_or_default();
+        if !extras.iter().any(|e| e.kind == kind.as_str()) {
+            extras.push(crate::rates::BookingExtra::from_kind(kind, amount_paise));
+            let json = serde_json::to_string(&extras).unwrap_or_else(|_| "[]".into());
+            self.conn
+                .execute(
+                    "UPDATE sales SET extras_json = ?1 WHERE id = ?2",
+                    params![json, sale_id],
+                )
+                .map_err(|e| e.to_string())?;
+        }
+        self.audit(
+            actor,
+            "sale.bill_later_extra",
+            &format!("{sale_id} {amount_paise} {}", kind.as_str()),
+        )?;
+        Ok(amount_paise)
+    }
+
     pub fn pending_bills_chase_text(&self) -> Result<String, String> {
         let rows = self.pending_bills_chase()?;
         let mut out = String::from("Unpaid invoices — chase list\n");
-        out.push_str("Open → Parties (Pay selected) or Period bill for unbilled.\n\n");
+        out.push_str("Open → Parties (Pay selected) or Period bill for unbilled.\n");
+        out.push_str("Includes post-booking extras (ODA / packing) on the AWB.\n\n");
         if rows.is_empty() {
             out.push_str("(none)\n");
             return Ok(out);

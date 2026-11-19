@@ -82,6 +82,8 @@ printer_paper_help	Abin da aka ruwaito shi ne takardar da aka saita direban wann
 preview_help	Wannan rasit kamar yadda ake buga shi a firintar da aka zaɓa a ƙasa, a girmansa na gaske a kan takardarta ta kama-da-wane. Fari shi ne inda ake bugawa, takarda mai launin toka firinta ba ta kai wurin ba, kuma tawada mai dushewa ana yanke ta. Murabba'ai tara su ne takardar: taɓa inda rasit ya kamata ya zauna. Dogon rasit yana ci gaba a ƙarin shafuka. Zaɓen firinta yana canza samfoti ne kawai.
 slip_col_start	Sararin farko (px)
 slip_col_end	Sararin ƙarshe (px)
+slip_columns	Ginshiƙai
+slip_col_header	Kan
 slip_columns_help	Faɗin kowane ginshiƙi ya haɗa da sararin farkonsa da na ƙarshensa. Rubutu yana naɗewa a cikin ginshiƙinsa; abin da ya wuce faɗin abun ciki ana yanke shi, a takarda da kuma a samfoti.
 bill_total_qty_label	Alamar jimlar adadi
 bill_total_subtotal_label	Alamar jimla ta ƙasa
@@ -351,6 +353,15 @@ print_open	Buga / buɗe
 reason_amend_ph	Dalilin gyara / soke / mayar da kuɗi
 reason_note_ph	Dalili / bayani (ɓarna, ƙidaya, …)
 record_day_close	Rubuta rufe yini
+business_day	When does Today reset?
+business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
+biz_day_until_close	Until Day close
+biz_day_midnight	Calendar midnight
+business_day_saved	Business day saved
+report_day_lens	View Today as
+report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
+report_lens_day_close	By Day close
+report_lens_midnight	By midnight
 refresh_from_shop	Sabunta daga shago
 refund	Mayar da kuɗi
 remove_selected	Cire wanda aka zaɓa
@@ -474,6 +485,8 @@ route_bill	Lissafi
 station_print_pick_first	Zabi sashin shago da farko
 bill_printers_dd	Firintocin lissafi
 bill_printers_dd_n	firinta {n} na lissafi · taɓa don canzawa
+printer_mode_first	Na farko da ya yi aiki
+printer_mode_all	Buga a duka
 station_vp_attached	An haɗa firinta
 station_vp_detached	An cire firinta daga tasha
 print_test_page	Buga shafin gwaji
@@ -825,6 +838,10 @@ client_template_importing	Ana shigar da {title}…
 client_template_done	Kowane abu daga {title} yana kan abubuwan ku.
 client_template_imported	Ƙara abubuwan {d} da nau'ikan {c} daga {title}
 cancel	Soke
+removing	Ana cirewa…
+removed	An cire
+updating_order	Ana sabuntawa…
+order_updated	An sabunta oda
 opening_client	Ana buɗe abokin haɗi…
 preparing_desk	Ana shirya tebur…
 opening_server	Ana buɗe server…
@@ -855,16 +872,7 @@ recent_changes	Canje-canje na baya-bayan nan
 lane_declared_label	Lissafin haraji
 lane_owner_label	Takardar tsabar kuɗi
 money_lane_bill	Lissafi: {lane}
-
-removing	Ana cirewa…
-removed	An cire
-updating_order	Ana sabuntawa…
-order_updated	An sabunta oda
 sel_copy	Kwafi
 sel_select_all	Zaɓi duka
 sel_copied	An kwafa
 nav_loading	Ana lodawa…
-printer_mode_first	Na farko da ya yi aiki
-printer_mode_all	Buga a duka
-slip_columns	Ginshiƙai
-slip_col_header	Kan

@@ -1,13 +1,17 @@
 //! Business-day window and history retention (shop meta).
 //!
 //! "Today" for books / day close follows this window — not always calendar midnight.
+//! Default for a new shop: [`BusinessDayMode::UntilDayClose`] — keeps going past
+//! local midnight until Day close. Owners who want a hard clock cut pick
+//! [`BusinessDayMode::CalendarMidnight`] on Day close. Canonical:
+//! `docs/BUSINESS_BOOKS.md` § Business day.
 
 use chrono::{Duration, Local, NaiveTime, Timelike};
 
 /// How the shop draws the current business day.
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 pub enum BusinessDayMode {
-    /// Local calendar date 00:00 → next midnight (legacy).
+    /// Local calendar date 00:00 → next midnight.
     CalendarMidnight,
     /// From last day close (or start of time) until the next day close.
     UntilDayClose,
@@ -21,6 +25,9 @@ impl BusinessDayMode {
         if s == "until_day_close" || s == "day_close" {
             return Self::UntilDayClose;
         }
+        if s == "calendar_midnight" || s == "midnight" || s == "calendar" {
+            return Self::CalendarMidnight;
+        }
         if let Some(rest) = s.strip_prefix("at_hour:") {
             if let Ok(h) = rest.trim().parse::<u32>() {
                 return Self::AtHour(h.min(23));
@@ -30,7 +37,8 @@ impl BusinessDayMode {
             let h = rest.trim().trim_start_matches(':').parse::<u32>().unwrap_or(4);
             return Self::AtHour(h.min(23));
         }
-        Self::CalendarMidnight
+        // Empty / unknown → keep going past midnight (usual counter habit).
+        Self::UntilDayClose
     }
 
     pub fn as_str(self) -> String {
@@ -163,11 +171,13 @@ mod tests {
             BusinessDayMode::parse("until_day_close"),
             BusinessDayMode::UntilDayClose
         );
-        assert_eq!(BusinessDayMode::parse("at_hour:4"), BusinessDayMode::AtHour(4));
         assert_eq!(
-            BusinessDayMode::parse("nope"),
+            BusinessDayMode::parse("calendar_midnight"),
             BusinessDayMode::CalendarMidnight
         );
+        assert_eq!(BusinessDayMode::parse("at_hour:4"), BusinessDayMode::AtHour(4));
+        assert_eq!(BusinessDayMode::parse(""), BusinessDayMode::UntilDayClose);
+        assert_eq!(BusinessDayMode::parse("nope"), BusinessDayMode::UntilDayClose);
     }
 
     #[test]

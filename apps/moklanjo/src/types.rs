@@ -7,6 +7,8 @@ enum Screen {
     /// Books home — today's position (money in/out, owed, cash vs bank).
     Books,
     Pos,
+    /// Today's parked drafts + completed bookings (desk interrupt board).
+    Board,
     /// Money out — purchase + expense.
     Buy,
     /// Rate cards / services (courier catalogue — not a food menu).
@@ -27,6 +29,7 @@ enum Screen {
 enum NavTab {
     Books,
     Sell,
+    Board,
     Buy,
     Rates,
     Ops,
@@ -60,6 +63,36 @@ enum NavTab {
 /// Checklist row that opens the Printers sheet when the pool is empty.
 const FIND_PRINTERS_ROW: &str = "@find_printers";
 
+/// Board status filter — open drafts vs today's booked sales.
+#[derive(Clone, Copy, Debug, PartialEq, Eq, Default)]
+enum TodayBoardFilter {
+    #[default]
+    All,
+    Draft,
+    Booked,
+}
+
+/// One row on the Board peer (parked draft or a sale in the business day).
+#[derive(Clone, Debug)]
+struct TodayBoardCard {
+    id: String,
+    is_draft: bool,
+    title: String,
+    line2: String,
+    line3: String,
+    amount_paise: i64,
+    at: String,
+}
+
+/// Column count for the Board grid (`0` → three columns).
+fn today_board_column_count(cols: u8) -> usize {
+    match cols {
+        2 => 2,
+        4 => 4,
+        _ => 3,
+    }
+}
+
 /// Which Reports-screen facet is open (ops/COD/riders share `Screen::Reports`).
 #[derive(Clone, Copy, PartialEq, Eq, Default)]
 enum ReportsNav {
@@ -78,6 +111,34 @@ enum BooksReportKind {
     Month,
     Aging,
     BalanceSheet,
+}
+
+/// View-only Reports “Today” window — independent of shop `business_day_mode`.
+/// Shop default still drives Day close / till; this only changes how Reports reads.
+#[derive(Clone, Copy, PartialEq, Eq, Default)]
+enum ReportDayLens {
+    /// From last day close until now (keeps going past midnight).
+    #[default]
+    ByDayClose,
+    /// Local calendar midnight → next midnight.
+    ByCalendarMidnight,
+}
+
+impl ReportDayLens {
+    fn from_shop_mode(mode: business_day::BusinessDayMode) -> Self {
+        match mode {
+            business_day::BusinessDayMode::UntilDayClose => Self::ByDayClose,
+            business_day::BusinessDayMode::CalendarMidnight
+            | business_day::BusinessDayMode::AtHour(_) => Self::ByCalendarMidnight,
+        }
+    }
+
+    fn as_mode(self) -> business_day::BusinessDayMode {
+        match self {
+            Self::ByDayClose => business_day::BusinessDayMode::UntilDayClose,
+            Self::ByCalendarMidnight => business_day::BusinessDayMode::CalendarMidnight,
+        }
+    }
 }
 
 /// A field whose value is usually something the counter already has. Each
@@ -311,7 +372,7 @@ impl SuggestField {
 /// positions; which tab a slot shows comes from `AppState.nav_order`). The
 /// app's own default order is the names in dictionary order
 /// ([`default_nav_order`]); sections start hidden on the bars.
-const NAV_TABS: [NavTab; 28] = [
+const NAV_TABS: [NavTab; 29] = [
     NavTab::SetLanguage,
     NavTab::SetCountry,
     NavTab::SetBrand,
@@ -326,6 +387,7 @@ const NAV_TABS: [NavTab; 28] = [
     NavTab::SetPrivacy,
     NavTab::Books,
     NavTab::Sell,
+    NavTab::Board,
     NavTab::Buy,
     NavTab::Rates,
     NavTab::Ops,
@@ -382,6 +444,7 @@ fn nav_tab_label(tab: NavTab, lang: &str) -> String {
         NavTab::Cod => return "COD".into(),
         NavTab::Books => "books",
         NavTab::Sell => "sell",
+        NavTab::Board => "nav_board",
         NavTab::Buy => "buy",
         NavTab::Rates => "nav_items",
         NavTab::Riders => "riders",
@@ -414,6 +477,7 @@ fn nav_tab_key(tab: NavTab) -> &'static str {
     match tab {
         NavTab::Books => "books",
         NavTab::Sell => "sell",
+        NavTab::Board => "nav_board",
         NavTab::Buy => "buy",
         NavTab::Rates => "rates",
         NavTab::Ops => "ops",
@@ -449,6 +513,7 @@ fn nav_tab_icon_bytes(tab: NavTab) -> &'static [u8] {
     match tab {
         NavTab::Books => include_bytes!("../resources/nav/books.webp").as_slice(),
         NavTab::Sell => include_bytes!("../resources/nav/sell.webp").as_slice(),
+        NavTab::Board => include_bytes!("../resources/nav/floor.webp").as_slice(),
         NavTab::Buy => include_bytes!("../resources/nav/buy.webp").as_slice(),
         NavTab::Rates => include_bytes!("../resources/nav/rates.webp").as_slice(),
         NavTab::Ops => include_bytes!("../resources/nav/ops.webp").as_slice(),
@@ -679,7 +744,7 @@ fn nav_tab_permitted(tab: NavTab, caps: NavCaps) -> bool {
         NavTab::Lock => true,
         // Shop-admin rows stay gated inside Settings; chrome opens for My PIN too.
         NavTab::Settings => caps.signed_in,
-        NavTab::Sell => caps.sell,
+        NavTab::Sell | NavTab::Board => caps.sell,
         NavTab::Books => caps.books_ok(),
         NavTab::Buy => caps.buy_ok(),
         NavTab::Rates => caps.items,
@@ -737,6 +802,7 @@ fn screen_for_nav_tab(tab: NavTab) -> Screen {
     match tab {
         NavTab::Books => Screen::Books,
         NavTab::Sell => Screen::Pos,
+        NavTab::Board => Screen::Board,
         NavTab::Buy => Screen::Buy,
         NavTab::Rates => Screen::Rates,
         NavTab::Ops => Screen::Reports, // painted with ReportsNav::Ops
@@ -824,7 +890,7 @@ fn session_may_stay_on(screen: Screen, st: &AppState) -> bool {
     };
     let caps = nav_caps_from(st);
     match screen {
-        Screen::Pos => caps.sell,
+        Screen::Pos | Screen::Board => caps.sell,
         Screen::Rates | Screen::More => caps.items,
         Screen::Books => caps.books_ok(),
         Screen::Buy => caps.buy_ok(),

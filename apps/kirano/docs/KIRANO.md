@@ -111,6 +111,7 @@ owner-facing copy or code.
 | Khata credit + later settle | **In** | Credit / Parties |
 | Buy from supplier → stock + AP | **In** | Buy |
 | Day book: cash vs UPI, who owes | **In** | Books / Day close |
+| Business day past midnight **or** calendar 12:00 am | **In** — default Until Day close; Owner switches on Day close | Day close; [`BUSINESS_BOOKS.md`](../../../docs/BUSINESS_BOOKS.md) § Business day |
 | GST Tax invoice / Cash memo | **In** | Bill lanes |
 | UPI QR on bill | **In** | Settle |
 | Low-stock visibility | **In** | Inventory |

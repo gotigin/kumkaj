@@ -94,6 +94,8 @@ printer_paper_help	Tilkynnt er pappírinn sem rekill þessa prentara er stilltur
 preview_help	Þessi kvittun eins og hún prentast á prentaranum sem valinn er hér að neðan, í raunstærð á sýndarpappír hans. Hvítt er þar sem prentað er, grár pappír er utan seilingar prentarans og fölt blek er skorið af. Reitirnir níu eru pappírinn: ýttu þar sem kvittunin á að sitja. Löng kvittun heldur áfram á fleiri síðum. Val á prentara breytir aðeins forskoðuninni.
 slip_col_start	Upphafsbil (px)
 slip_col_end	Lokabil (px)
+slip_columns	Dálkar
+slip_col_header	Haus
 slip_columns_help	Breidd hvers dálks inniheldur upphafs- og lokabil hans. Texti brotnar innan síns dálks; það sem nær út fyrir breidd efnisins er skorið af, á pappír og í forskoðun.
 bill_total_qty_label	Heildarmagn merki
 bill_total_subtotal_label	Undir heildarmerki
@@ -363,6 +365,15 @@ print_open	Prenta / opna
 reason_amend_ph	Ástæða fyrir breytingu / ógildingu / endurgreiðslu
 reason_note_ph	Ástæða / athugasemd (sóun, talning, ...)
 record_day_close	Bjargaðu deginum nálægt
+business_day	When does Today reset?
+business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
+biz_day_until_close	Until Day close
+biz_day_midnight	Calendar midnight
+business_day_saved	Business day saved
+report_day_lens	View Today as
+report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
+report_lens_day_close	By Day close
+report_lens_midnight	By midnight
 refresh_from_shop	Endurhlaða úr búð
 refund	Endurgreiðsla
 remove_selected	Fjarlægja valið
@@ -486,6 +497,8 @@ route_bill	Reikningur
 station_print_pick_first	Veldu afgreiðsluhluta fyrst
 bill_printers_dd	Prentarar fyrir reikninginn
 bill_printers_dd_n	{n} prentarar fyrir reikninginn · pikkaðu á til að breyta
+printer_mode_first	Fyrst sem virkar
+printer_mode_all	Prenta á alla
 station_vp_attached	Prentari tengdur
 station_vp_detached	Prentari fjarlægður af stöð
 print_test_page	Prentaðu prófunarsíðu
@@ -837,6 +850,10 @@ client_template_importing	Flytur inn {title}…
 client_template_done	Sérhver hlutur frá {title} er á hlutunum þínum.
 client_template_imported	Bætt við {d} hlutum og {c} flokkum frá {title}
 cancel	Hætta við
+removing	Fjarlægi…
+removed	Fjarlægt
+updating_order	Uppfæri…
+order_updated	Pöntun uppfærð
 opening_client	Opnar viðskiptavin...
 preparing_desk	Undirbýr skrifborð...
 opening_server	Opnar þjón...
@@ -867,16 +884,7 @@ recent_changes	Nýlegar breytingar
 lane_declared_label	Skattreikningur
 lane_owner_label	Peningabréf
 money_lane_bill	Reikningur: {lane}
-
-removing	Fjarlægi…
-removed	Fjarlægt
-updating_order	Uppfæri…
-order_updated	Pöntun uppfærð
 sel_copy	Afrita
 sel_select_all	Velja allt
 sel_copied	Afritað
 nav_loading	Hleður…
-printer_mode_first	Fyrst sem virkar
-printer_mode_all	Prenta á alla
-slip_columns	Dálkar
-slip_col_header	Haus

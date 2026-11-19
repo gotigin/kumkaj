@@ -94,6 +94,8 @@ printer_paper_help	رپورٹ کرنہٕ آمُت چھُ سُہ کاغز یتھ 
 preview_help	یہ پرچہٕ یِتھہٕ پٲٹھۍ بۄنہٕ ژارنہٕ آمتِس پرنٹرس پیٹھ چھپان چھُ، تمہِ کِس ورچوئل کاغزس پیٹھ اصلی ناپس مَنٛز۔ سفید چھُ یتہِ چھپان چھُ، سۄرمٕے کاغزس تام چھُ نہٕ پرنٹر واتان، تہٕ پھِکہٕ سیٲہی چھِ ژٹنہٕ یِوان۔ نَو خانہٕ چھِ کاغز: یتہِ پرچہٕ بِہُن گژھہِ تَتہِ ٹیپ کٔرِو۔ ڈیگھ پرچہٕ چھُ زیادٕ ورقن پیٹھ گژھان۔ پرنٹر ژارنہٕ سٟتۍ چھُ صرف پیش منظر بدلان۔
 slip_col_start	شروعاتُک جاے (px)
 slip_col_end	آخرُک جاے (px)
+slip_columns	کالَم
+slip_col_header	ہیڈر
 slip_columns_help	پرٛتھ کالمُک چوڑٲے منٛز چھےٚ تمیٚک شروعات تہٕ آخرُک جاے شامل۔ متن چھُ پنٕنِس کالمس اندر لپیٹنہٕ یِوان؛ مواد کہِ چوڑٲے نیٚبر یُس چھُ سُہ چھُ کاغزس پؠٹھ تہٕ پیش نظارس منٛز کٹنہٕ یِوان۔
 bill_total_qty_label	کل qty لیبل
 bill_total_subtotal_label	ذیلی کُل لیبل
@@ -363,6 +365,15 @@ print_open	پرنٹ / اوپن
 reason_amend_ph	ترمیم کرنُک وجہ / کالعدم / واپسی
 reason_note_ph	وجہ / نوٹ (ضایع، گنتی ، ...)
 record_day_close	ریکارڈُک دۄہ بند
+business_day	When does Today reset?
+business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
+biz_day_until_close	Until Day close
+biz_day_midnight	Calendar midnight
+business_day_saved	Business day saved
+report_day_lens	View Today as
+report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
+report_lens_day_close	By Day close
+report_lens_midnight	By midnight
 refresh_from_shop	دُکانہٕ پٮ۪ٹھٕ کٔرِو تازٕ
 refund	واپسی
 remove_selected	سِلیکٹَن ہٹاو
@@ -486,6 +497,8 @@ route_bill	بِل
 station_print_pick_first	گۄڈٕ اکھ ڈسپنسری شعبہ ژٲرِو
 bill_printers_dd	بلہٕ خٲطرٕ پرنٹر
 bill_printers_dd_n	{n} بِلہِ خٲطرٕ پرنٹر · بدلاونہٕ خٲطرٕ ٹیپ کٔرِو
+printer_mode_first	گۄڈٕ یُس کٲم کران چھُ
+printer_mode_all	سارنی پیٹھ چھاپ
 station_vp_attached	پرنٹر منسلک
 station_vp_detached	پرنٹر آو سٹیشنہٕ پیٹھٕ ہٹاونہٕ
 print_test_page	اکھ ٹیسٹ پیج کٔرِو پرنٹ
@@ -837,6 +850,10 @@ client_template_importing	درآمد کَرُن {title}...
 client_template_done	{title} منٛز پرٮ۪تھ چیٖز چھُ تُہنٛدِس چیٖزَن پٮ۪ٹھ۔
 client_template_imported	{title} منٛز {d} چیٖز تہٕ {c} زَمرہٕ شٲمِل
 cancel	منسوخ
+removing	ہٹاونہٕ یِوان…
+removed	ہٹاونہٕ آو
+updating_order	اپڈیٹ گژھان…
+order_updated	آرڈر آو اپڈیٹ کرنہٕ
 opening_client	اوپننگ کلائنٹ...
 preparing_desk	ڈیسک تیار کران...
 opening_server	اوپننگ سْروَر...
@@ -867,16 +884,7 @@ recent_changes	حالٕے تبدیلیہٕ
 lane_declared_label	ٹیکس انوائس
 lane_owner_label	کیش میمو
 money_lane_bill	بل: {lane}
-
-removing	ہٹاونہٕ یِوان…
-removed	ہٹاونہٕ آو
-updating_order	اپڈیٹ گژھان…
-order_updated	آرڈر آو اپڈیٹ کرنہٕ
 sel_copy	کاپی کٔرِو
 sel_select_all	سۄری ژارِو
 sel_copied	کاپی گَو
 nav_loading	لوڈ گژھان…
-printer_mode_first	گۄڈٕ یُس کٲم کران چھُ
-printer_mode_all	سارنی پیٹھ چھاپ
-slip_columns	کالَم
-slip_col_header	ہیڈر

@@ -82,6 +82,8 @@ printer_paper_help	Gerapporteer is die papier waarop hierdie drukker se drywer g
 preview_help	Hierdie strokie soos dit druk op die drukker wat hieronder gekies is, op ware grootte op sy virtuele papier. Wit is waar dit druk, grys papier is buite die drukker se bereik, en vervaagde ink word afgesny. Die nege blokkies is die papier: tik waar die strokie moet sit. 'n Lang strokie gaan oor na meer bladsye. Om 'n drukker te kies verander net die voorskou.
 slip_col_start	Beginspasie (px)
 slip_col_end	Eindspasie (px)
+slip_columns	Kolomme
+slip_col_header	Kop
 slip_columns_help	Elke kolom se breedte sluit sy begin- en eindspasie in. Teks vou binne sy kolom; wat verby die inhoudbreedte lê, word afgesny, op papier en in die voorskou.
 bill_total_qty_label	Totaal aantal etiket
 bill_total_subtotal_label	Subtotaal etiket
@@ -351,6 +353,15 @@ print_open	Druk / oop
 reason_amend_ph	Rede vir wysig / ongeldig / terugbetaling
 reason_note_ph	Rede / nota (verlies, telling, …)
 record_day_close	Reken afsluiting opneem
+business_day	When does Today reset?
+business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
+biz_day_until_close	Until Day close
+biz_day_midnight	Calendar midnight
+business_day_saved	Business day saved
+report_day_lens	View Today as
+report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
+report_lens_day_close	By Day close
+report_lens_midnight	By midnight
 refresh_from_shop	Verskaf van winkel
 refund	Terugbetaling
 remove_selected	Verwyder geselekteerde
@@ -474,6 +485,8 @@ route_bill	Faktuur
 station_print_pick_first	Kies eers ’n winkelafdeling
 bill_printers_dd	Drukkers vir die rekening
 bill_printers_dd_n	{n} drukker(s) vir die rekening · tik om te verander
+printer_mode_first	Eers wat werk
+printer_mode_all	Druk op almal
 station_vp_attached	Drukker aangesluit
 station_vp_detached	Drukker verwyder van stasie
 print_test_page	Druk 'n toetsblad
@@ -825,6 +838,10 @@ client_template_importing	Word geïmporteer {title}…
 client_template_done	Elke item van {title} is op jou items.
 client_template_imported	Het {d} items en {c} kategorieë van {title} bygevoeg
 cancel	Kanselleer
+removing	Verwyder tans…
+removed	Verwyder
+updating_order	Werk by…
+order_updated	Bestelling bygewerk
 opening_client	Opening kliënt…
 preparing_desk	Berei skrifbord voor…
 opening_server	Opening bedienaar…
@@ -855,16 +872,7 @@ recent_changes	Onlangse veranderinge
 lane_declared_label	Belasting faktuur
 lane_owner_label	Kasnota
 money_lane_bill	Faktuur: {lane}
-
-removing	Verwyder tans…
-removed	Verwyder
-updating_order	Werk by…
-order_updated	Bestelling bygewerk
 sel_copy	Kopieer
 sel_select_all	Kies alles
 sel_copied	Gekopieer
 nav_loading	Laai tans…
-printer_mode_first	Eers wat werk
-printer_mode_all	Druk op almal
-slip_columns	Kolomme
-slip_col_header	Kop

@@ -94,6 +94,8 @@ printer_paper_help	Паведамленая — гэта папера, на як
 preview_help	Гэты чэк так, як ён друкуецца на выбраным ніжэй прынтары, у сапраўдным памеры на яго віртуальнай паперы. Белае — дзе друкуецца, шэрая папера па-за дасяжнасцю прынтара, а бляклая фарба абразаецца. Дзевяць квадратаў — гэта папера: націсніце там, дзе павінен стаяць чэк. Доўгі чэк пераходзіць на наступныя старонкі. Выбар прынтара мяняе толькі папярэдні прагляд.
 slip_col_start	Прастора ў пачатку (px)
 slip_col_end	Прастора ў канцы (px)
+slip_columns	Слупкі
+slip_col_header	Загаловак
 slip_columns_help	Шырыня кожнага слупка ўключае прастору ў пачатку і ў канцы. Тэкст пераносіцца ўнутры свайго слупка; усё, што выходзіць за шырыню змесціва, абразаецца — на паперы і ў папярэднім праглядзе.
 bill_total_qty_label	Подпіс агульнай колькасці
 bill_total_subtotal_label	Подпіс прамежкавага выніку
@@ -363,6 +365,15 @@ print_open	Раздрукаваць / адкрыць
 reason_amend_ph	Прычына змены / анулявання / вяртання грошай
 reason_note_ph	Прычына / заўвага (трата, колькасць, ...)
 record_day_close	Закрыццё дня запісу
+business_day	When does Today reset?
+business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
+biz_day_until_close	Until Day close
+biz_day_midnight	Calendar midnight
+business_day_saved	Business day saved
+report_day_lens	View Today as
+report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
+report_lens_day_close	By Day close
+report_lens_midnight	By midnight
 refresh_from_shop	Абнавіць з крамы
 refund	Вяртанне грошай
 remove_selected	Выдаліць выбранае
@@ -486,6 +497,8 @@ route_bill	Рахунак
 station_print_pick_first	Спачатку абярыце дыспансерны ўчастак
 bill_printers_dd	Прынтэры для рахункаў
 bill_printers_dd_n	{n} прынтэры для рахунку · націсніце, каб змяніць
+printer_mode_first	Першае, што працуе
+printer_mode_all	Друк на ўсіх
 station_vp_attached	Прынтэр падлучаны
 station_vp_detached	Прынтэр выдалены са станцыі
 print_test_page	Раздрукаваць пробную старонку
@@ -837,6 +850,10 @@ client_template_importing	Імпарт {title}…
 client_template_done	Кожны тавар з {title} знаходзіцца ў вашых таварах.
 client_template_imported	Дададзены {d} тавары і {c} катэгорыі з {title}
 cancel	Адмяніць
+removing	Выдаленне…
+removed	Выдалена
+updating_order	Абнаўленне…
+order_updated	Заказ абноўлены
 opening_client	Адкрыццё кліента…
 preparing_desk	Падрыхтоўка стала…
 opening_server	Адкрыццё сервера…
@@ -867,16 +884,7 @@ recent_changes	Апошнія змены
 lane_declared_label	Падатковая накладная
 lane_owner_label	Касавая нататка
 money_lane_bill	Рахунак: {lane}
-
-removing	Выдаленне…
-removed	Выдалена
-updating_order	Абнаўленне…
-order_updated	Заказ абноўлены
 sel_copy	Капіяваць
 sel_select_all	Вылучыць усё
 sel_copied	Скапіявана
 nav_loading	Загрузка…
-printer_mode_first	Першае, што працуе
-printer_mode_all	Друк на ўсіх
-slip_columns	Слупкі
-slip_col_header	Загаловак

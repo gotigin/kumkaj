@@ -82,6 +82,8 @@ printer_paper_help	Bildirilen, bu yazıcının sürücüsünün ayarlı olduğu 
 preview_help	Bu fiş, aşağıda seçilen yazıcıda basıldığı gibi, yazıcının sanal kâğıdında gerçek boyutta. Beyaz, basılan yerdir; gri kâğıt yazıcının ulaşamadığı yerdir ve soluk mürekkep kesilir. Dokuz kare kâğıdın kendisidir: fişin durması gereken yere dokunun. Uzun fiş sonraki sayfalara devam eder. Yazıcı seçmek yalnızca önizlemeyi değiştirir.
 slip_col_start	Başlangıç boşluğu (px)
 slip_col_end	Bitiş boşluğu (px)
+slip_columns	Sütunlar
+slip_col_header	Başlık
 slip_columns_help	Her sütunun genişliği başlangıç ve bitiş boşluğunu da içerir. Metin kendi sütunu içinde kaydırılır; içerik genişliğini aşan kısım kâğıtta ve önizlemede kesilir.
 bill_total_qty_label	Toplam adet etiketi
 bill_total_subtotal_label	Ara toplam etiketi
@@ -351,6 +353,15 @@ print_open	Yazdır / aç
 reason_amend_ph	Düzeltme / iptal / iade nedeni
 reason_note_ph	Neden / not (fire, sayım, …)
 record_day_close	Gün kapanışını kaydet
+business_day	When does Today reset?
+business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
+biz_day_until_close	Until Day close
+biz_day_midnight	Calendar midnight
+business_day_saved	Business day saved
+report_day_lens	View Today as
+report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
+report_lens_day_close	By Day close
+report_lens_midnight	By midnight
 refresh_from_shop	Dükkandan yenile
 refund	İade
 remove_selected	Seçili olanı kaldır
@@ -474,6 +485,8 @@ route_bill	Fiş
 station_print_pick_first	Önce bir dükkân bölümü seçin
 bill_printers_dd	Fatura için yazıcılar
 bill_printers_dd_n	Fatura için {n} yazıcı(alar) · değiştirmek için dokunun
+printer_mode_first	Çalışanı olan ilkini
+printer_mode_all	Hepsi üzerinde baskı al
 station_vp_attached	Yazıcı eklendi
 station_vp_detached	Yazıcı istasyondan kaldırıldı
 print_test_page	Test sayfası yazdır
@@ -825,6 +838,10 @@ client_template_importing	{title} içe aktarılıyor…
 client_template_done	{title} içindeki her ürün zaten sizin ürünlerinizde.
 client_template_imported	{title} kaynağından {d} ürün ve {c} kategori eklendi
 cancel	İptal
+removing	Kaldırılıyor…
+removed	Kaldırıldı
+updating_order	Güncelleniyor…
+order_updated	Sipariş güncellendi
 opening_client	Müşteri açılıyor…
 preparing_desk	Masa hazırlanıyor…
 opening_server	Sunucu açılıyor…
@@ -855,16 +872,7 @@ recent_changes	Son değişiklikler
 lane_declared_label	Vergi faturası
 lane_owner_label	Nakit fiş
 money_lane_bill	Fatura: {lane}
-
-removing	Kaldırılıyor…
-removed	Kaldırıldı
-updating_order	Güncelleniyor…
-order_updated	Sipariş güncellendi
 sel_copy	Kopyala
 sel_select_all	Tümünü seç
 sel_copied	Kopyalandı
 nav_loading	Yükleniyor…
-printer_mode_first	Çalışanı olan ilkini
-printer_mode_all	Hepsi üzerinde baskı al
-slip_columns	Sütunlar
-slip_col_header	Başlık

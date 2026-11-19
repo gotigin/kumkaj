@@ -94,6 +94,8 @@ printer_paper_help	E raportuar është letra për të cilën është vendosur dr
 preview_help	Kjo faturë siç printohet në printerin e zgjedhur më poshtë, në madhësi reale në letrën e tij virtuale. E bardha është aty ku printon, letra gri është jashtë shtrirjes së printerit, dhe boja e zbehtë pritet. Nëntë katrorët janë letra: prekni aty ku duhet të qëndrojë fatura. Një faturë e gjatë vazhdon në më shumë faqe. Zgjedhja e printerit ndryshon vetëm pamjen paraprake.
 slip_col_start	Hapësira në fillim (px)
 slip_col_end	Hapësira në fund (px)
+slip_columns	Kolonat
+slip_col_header	Titulli
 slip_columns_help	Gjerësia e çdo kolone përfshin hapësirën e saj në fillim dhe në fund. Teksti mbështillet brenda kolonës së tij; çfarë del përtej gjerësisë së përmbajtjes pritet, në letër dhe në pamjen paraprake.
 bill_total_qty_label	Etiketa e sasisë totale
 bill_total_subtotal_label	Etiketa e nëntotalit
@@ -363,6 +365,15 @@ print_open	Shtyp / hap
 reason_amend_ph	Arsyeja e ndryshimit / anulimit / rimbursimit
 reason_note_ph	Arsye / shënim (humbje, numërim, …)
 record_day_close	Regjistro mbylljen e ditës
+business_day	When does Today reset?
+business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
+biz_day_until_close	Until Day close
+biz_day_midnight	Calendar midnight
+business_day_saved	Business day saved
+report_day_lens	View Today as
+report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
+report_lens_day_close	By Day close
+report_lens_midnight	By midnight
 refresh_from_shop	Rifresko nga dyqani
 refund	Rimbursim
 remove_selected	Hiq të zgjedhurën
@@ -486,6 +497,8 @@ route_bill	Fatura
 station_print_pick_first	Zgjidhni fillimisht një seksion dispancerie
 bill_printers_dd	Printerët për faturën
 bill_printers_dd_n	{n} printerë për faturën · prekni për të ndryshuar
+printer_mode_first	I pari që punon
+printer_mode_all	Shtyp te të gjithë
 station_vp_attached	Printeri u bashkëngjit
 station_vp_detached	Printeri u hoq nga stacioni
 print_test_page	Shtyp një faqe prove
@@ -837,6 +850,10 @@ client_template_importing	Po importohet {title}…
 client_template_done	Çdo artikull nga {title} është në artikujt tuaj.
 client_template_imported	Shtuar artikuj {d} dhe kategori {c} nga {title}
 cancel	Anulo
+removing	Po hiqet…
+removed	U hoq
+updating_order	Po përditësohet…
+order_updated	Porosia u përditësua
 opening_client	Po hapet terminali…
 preparing_desk	Po përgatitet tavolina…
 opening_server	Po hapet serveri…
@@ -867,16 +884,7 @@ recent_changes	Ndryshimet e fundit
 lane_declared_label	Fatura tatimore
 lane_owner_label	Dëftesë me para
 money_lane_bill	Fatura: {lane}
-
-removing	Po hiqet…
-removed	U hoq
-updating_order	Po përditësohet…
-order_updated	Porosia u përditësua
 sel_copy	Kopjo
 sel_select_all	Përzgjidh të gjitha
 sel_copied	U kopjua
 nav_loading	Po ngarkohet…
-printer_mode_first	I pari që punon
-printer_mode_all	Shtyp te të gjithë
-slip_columns	Kolonat
-slip_col_header	Titulli

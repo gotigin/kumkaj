@@ -356,6 +356,22 @@ fn fit_inside_system_bars(&mut self, cx: &mut Cx) {
         self.ui
             .widget(cx, ids!(datetime_example_label))
             .set_text(cx, &plain_display_text(&example));
+        let report_day_lens = {
+            let st = app_state().lock().unwrap();
+            st.report_day_lens
+        };
+        self.paint_choice_pair(
+            cx,
+            ids!(report_lens_day_close),
+            ids!(report_lens_day_close_on),
+            matches!(report_day_lens, ReportDayLens::ByDayClose),
+        );
+        self.paint_choice_pair(
+            cx,
+            ids!(report_lens_midnight),
+            ids!(report_lens_midnight_on),
+            matches!(report_day_lens, ReportDayLens::ByCalendarMidnight),
+        );
         self.paint_choice_pair(
             cx,
             ids!(reports_today),
@@ -441,6 +457,25 @@ fn fit_inside_system_bars(&mut self, cx: &mut Cx) {
         ] {
             self.paint_choice_pair(cx, idle, on, amend_pay == m);
         }
+        let bill_later_kind = app_state().lock().unwrap().bill_later_extra_kind.clone();
+        self.paint_choice_pair(
+            cx,
+            ids!(bill_later_oda),
+            ids!(bill_later_oda_on),
+            bill_later_kind == "oda",
+        );
+        self.paint_choice_pair(
+            cx,
+            ids!(bill_later_packing),
+            ids!(bill_later_packing_on),
+            bill_later_kind == "packing",
+        );
+        self.paint_choice_pair(
+            cx,
+            ids!(bill_later_other),
+            ids!(bill_later_other_on),
+            bill_later_kind == "other",
+        );
         self.paint_choice_pair(
             cx,
             ids!(lang_setup_platform),
@@ -562,6 +597,42 @@ fn fit_inside_system_bars(&mut self, cx: &mut Cx) {
             ids!(buy_kind_carrier),
             ids!(buy_kind_carrier_on),
             buy_kind.eq_ignore_ascii_case("Carrier"),
+        );
+        let tmpl_id = {
+            let st = app_state().lock().unwrap();
+            st.entity_template_id.clone()
+        };
+        let tmpl = entity_template::resolve(&tmpl_id);
+        self.paint_choice_pair(
+            cx,
+            ids!(tmpl_pick_moklanjo),
+            ids!(tmpl_pick_moklanjo_on),
+            tmpl.id == entity_template::MOKLANJO.id,
+        );
+        self.paint_choice_pair(
+            cx,
+            ids!(tmpl_pick_global_pkg),
+            ids!(tmpl_pick_global_pkg_on),
+            tmpl.id == entity_template::GLOBAL_PKG.id,
+        );
+        let biz_day = {
+            let st = app_state().lock().unwrap();
+            st.store
+                .as_ref()
+                .and_then(|s| s.business_day_mode().ok())
+                .unwrap_or(business_day::BusinessDayMode::UntilDayClose)
+        };
+        self.paint_choice_pair(
+            cx,
+            ids!(biz_day_until_close),
+            ids!(biz_day_until_close_on),
+            matches!(biz_day, business_day::BusinessDayMode::UntilDayClose),
+        );
+        self.paint_choice_pair(
+            cx,
+            ids!(biz_day_midnight),
+            ids!(biz_day_midnight_on),
+            matches!(biz_day, business_day::BusinessDayMode::CalendarMidnight),
         );
         self.paint_choice_pair(
             cx,
@@ -884,6 +955,7 @@ fn fit_inside_system_bars(&mut self, cx: &mut Cx) {
         self.align_label(cx, ids!(table_chip), rtl);
         self.align_label(cx, ids!(session_chip), rtl);
         self.align_label(cx, ids!(chargeable_kg_label), rtl);
+        self.align_label(cx, ids!(booking_bulk_preview), rtl);
         self.align_label(cx, ids!(last_awb_label), rtl);
         self.align_label(cx, ids!(staff_label), rtl);
         self.align_label(cx, ids!(locale_label), rtl);
@@ -1044,6 +1116,10 @@ fn fit_inside_system_bars(&mut self, cx: &mut Cx) {
         self.align_input(cx, ids!(printer_target_input), rtl);
         self.align_input(cx, ids!(route_add_printer_input), rtl);
         self.align_label(cx, ids!(h_drawer_count), rtl);
+        self.align_label(cx, ids!(h_shift_close), rtl);
+        self.align_label(cx, ids!(h_books_lock), rtl);
+        self.align_label(cx, ids!(shift_so_far_label), rtl);
+        self.align_label(cx, ids!(books_locked_through_label), rtl);
         self.align_label(cx, ids!(h_paid_by_2), rtl);
         self.align_label(cx, ids!(h_second_way_2), rtl);
         self.align_label(cx, ids!(h_attachments_last_expense), rtl);
@@ -1178,6 +1254,11 @@ fn fit_inside_system_bars(&mut self, cx: &mut Cx) {
         self.align_input(cx, ids!(party_custom_key), rtl);
         self.align_input(cx, ids!(party_custom_value), rtl);
         self.align_input(cx, ids!(credit_limit_input), rtl);
+        self.align_input(cx, ids!(adj_note_amount_input), rtl);
+        self.align_input(cx, ids!(adj_note_reason_input), rtl);
+        self.align_input(cx, ids!(adj_note_awb_input), rtl);
+        self.align_input(cx, ids!(bill_later_amount_input), rtl);
+        self.align_input(cx, ids!(sale_extra_party_input), rtl);
         self.align_input(cx, ids!(writeoff_amount_input), rtl);
         self.align_input(cx, ids!(writeoff_reason_input), rtl);
         self.align_input(cx, ids!(payable_amount_input), rtl);

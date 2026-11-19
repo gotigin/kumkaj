@@ -82,6 +82,8 @@ printer_paper_help	बताओल गेल ओ कागज अछि जा�
 preview_help	ई पर्ची जेना नीचाँ चुनल प्रिंटर पर छपैत अछि, ओकर आभासी कागज पर असली नाप मे। उज्जर जगह पर छपैत अछि, धूसर कागज धरि प्रिंटर नहि पहुँचैत अछि, आ फीका सियाही कटि जाइत अछि। नौ खाना कागज अछि: जतय पर्ची बैसबाक चाही ओतय टैप करू। नमगर पर्ची आर पन्ना पर जाइत अछि। प्रिंटर चुनला सँ मात्र पूर्वावलोकन बदलैत अछि।
 slip_col_start	शुरुआतक जगह (px)
 slip_col_end	अंतक जगह (px)
+slip_columns	स्तंभ
+slip_col_header	शीर्षक
 slip_columns_help	प्रत्येक स्तंभक चौड़ाइमे ओकर शुरुआत आ अंतक जगह सम्मिलित अछि। लिखावट अपन स्तंभक भीतर लपेटाइत अछि; सामग्रीक चौड़ाइसँ बाहर जे अछि से कागज आ पूर्वावलोकन दुनूमे कटि जाइत अछि।
 bill_total_qty_label	कुल मात्रा लेबल
 bill_total_subtotal_label	उप-जोड़ लेबल
@@ -351,6 +353,15 @@ print_open	छापू / खोलू
 reason_amend_ph	संशोधन / रद्द / वापसीक कारण
 reason_note_ph	कारण / टिप्पणी (बर्बादी, गिनती, …)
 record_day_close	दिन बंद दर्ज करू
+business_day	When does Today reset?
+business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
+biz_day_until_close	Until Day close
+biz_day_midnight	Calendar midnight
+business_day_saved	Business day saved
+report_day_lens	View Today as
+report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
+report_lens_day_close	By Day close
+report_lens_midnight	By midnight
 refresh_from_shop	दोकानसँ ताजा करू
 refund	वापसी
 remove_selected	चुनल हटाउ
@@ -474,6 +485,8 @@ route_bill	बिल
 station_print_pick_first	पहिने दोकानक भाग चुनू
 bill_printers_dd	बिलक प्रिंटर
 bill_printers_dd_n	बिल लेल {n} प्रिंटर · बदलबाक लेल दबाउ
+printer_mode_first	जे पहिने चलए
+printer_mode_all	सभपर छापू
 station_vp_attached	प्रिंटर लागल
 station_vp_detached	स्टेशनसँ प्रिंटर हटल
 print_test_page	टेस्ट पेज छापू
@@ -825,6 +838,10 @@ client_template_importing	{title} आयात कऽ रहल छी…
 client_template_done	{title} क प्रत्येक सामान अहाँक सामानमे अछि।
 client_template_imported	{title} सँ {d} सामान आ {c} श्रेणी जोड़ल
 cancel	रद्द
+removing	हटाओल जा रहल अछि…
+removed	हटाओल गेल
+updating_order	अपडेट भ' रहल अछि…
+order_updated	ऑर्डर अपडेट भ' गेल
 opening_client	क्लाइंट खुजि रहल अछि…
 preparing_desk	डेस्क तैयार भऽ रहल अछि…
 opening_server	सर्वर खुजि रहल अछि…
@@ -855,16 +872,7 @@ recent_changes	हालिया बदलाव
 lane_declared_label	कर चालान
 lane_owner_label	कैश मेमो
 money_lane_bill	बिल: {lane}
-
-removing	हटाओल जा रहल अछि…
-removed	हटाओल गेल
-updating_order	अपडेट भ' रहल अछि…
-order_updated	ऑर्डर अपडेट भ' गेल
 sel_copy	कॉपी करू
 sel_select_all	सभ चुनू
 sel_copied	कॉपी भ' गेल
 nav_loading	लोड भ' रहल अछि…
-printer_mode_first	जे पहिने चलए
-printer_mode_all	सभपर छापू
-slip_columns	स्तंभ
-slip_col_header	शीर्षक

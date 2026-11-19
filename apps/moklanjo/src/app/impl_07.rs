@@ -31,7 +31,12 @@ impl App {
             st.language_follow_platform = chosen.0;
             st.locale.language = chosen.1;
             Self::persist_setup_language(&mut st);
-            self.finish_as_server(&mut st, switching_in);
+            // Unfinished new shop (killed before PIN) re-offers until applied/skipped.
+            if Self::should_offer_app_template(&st) {
+                self.enter_app_template_offer(&mut st, switching_in);
+            } else {
+                self.finish_as_server(&mut st, switching_in);
+            }
             old
         };
         drop_store_off_ui(old);
@@ -305,14 +310,22 @@ impl App {
             .unwrap()
             .clone()
             .unwrap_or_else(|| app_t("opening_client"));
+        let awaiting_tmpl = app_state()
+            .try_lock()
+            .map(|st| st.awaiting_app_template)
+            .unwrap_or(false);
         // Offline LAN: no multi-server pick UI (cloud-only later).
         let show_pick = false;
+        // Hide Server/Client while opening or while Shop templates is offered.
         self.ui
             .view(cx, ids!(device_role_actions))
-            .set_visible(cx, !busy && !show_pick);
+            .set_visible(cx, !busy && !show_pick && !awaiting_tmpl);
         self.ui
             .view(cx, ids!(server_pick_section))
             .set_visible(cx, show_pick);
+        self.ui
+            .view(cx, ids!(app_template_section))
+            .set_visible(cx, awaiting_tmpl && !busy);
         self.ui
             .widget(cx, ids!(device_role_busy_label))
             .set_text(cx, &plain_display_text(&status));
@@ -1092,6 +1105,7 @@ impl App {
                     }
                     st.session = Some(member.clone());
                     st.reload_amount_visibility();
+                    st.sync_report_day_lens_from_shop();
                     st.pin_buffer.clear();
                     st.pin_visible = false;
                     st.failed_unlocks = 0;
@@ -1453,6 +1467,8 @@ impl App {
             ids!(booking_height_cm_input),
             ids!(booking_cod_input),
             ids!(booking_carrier_cost_input),
+            ids!(booking_pieces_input),
+            ids!(booking_carrier_pick_input),
             ids!(booking_declared_input),
             ids!(booking_contents_input),
             ids!(booking_eway_input),
@@ -1461,6 +1477,40 @@ impl App {
             ids!(booking_notify_input),
         ] {
             self.ui.text_input(cx, id).set_text(cx, "");
+        }
+    }
+
+    /// After resuming a parked draft — push every booking field to the widgets.
+    fn fill_booking_desk_ui(&mut self, cx: &mut Cx) {
+        let pairs: [(&[LiveId], String); 22] = {
+            let st = app_state().lock().unwrap();
+            [
+                (ids!(booking_origin_name_input), st.booking_origin_name.clone()),
+                (ids!(booking_origin_phone_input), st.booking_origin_phone.clone()),
+                (ids!(booking_origin_address_input), st.booking_origin_address.clone()),
+                (ids!(booking_destination_input), st.booking_destination.clone()),
+                (ids!(booking_zone_input), st.booking_zone.clone()),
+                (ids!(booking_consignee_input), st.booking_consignee.clone()),
+                (ids!(booking_consignee_phone_input), st.booking_consignee_phone.clone()),
+                (ids!(booking_consignee_address_input), st.booking_consignee_address.clone()),
+                (ids!(booking_actual_kg_input), st.booking_actual_kg.clone()),
+                (ids!(booking_length_cm_input), st.booking_length_cm.clone()),
+                (ids!(booking_breadth_cm_input), st.booking_breadth_cm.clone()),
+                (ids!(booking_height_cm_input), st.booking_height_cm.clone()),
+                (ids!(booking_cod_input), st.booking_cod.clone()),
+                (ids!(booking_carrier_cost_input), st.booking_carrier_cost.clone()),
+                (ids!(booking_pieces_input), st.booking_pieces.clone()),
+                (ids!(booking_carrier_pick_input), st.booking_carrier_pick.clone()),
+                (ids!(booking_declared_input), st.booking_declared.clone()),
+                (ids!(booking_contents_input), st.booking_contents.clone()),
+                (ids!(booking_eway_input), st.booking_eway.clone()),
+                (ids!(booking_fuel_input), st.booking_fuel.clone()),
+                (ids!(booking_docket_input), st.booking_docket.clone()),
+                (ids!(booking_notify_input), st.booking_notify_phone.clone()),
+            ]
+        };
+        for (id, text) in pairs {
+            self.ui.text_input(cx, id).set_text(cx, &text);
         }
     }
 

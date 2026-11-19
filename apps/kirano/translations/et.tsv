@@ -82,6 +82,8 @@ printer_paper_help	Teatatud on paber, millele selle printeri draiver on seadista
 preview_help	See tšekk nii, nagu see prinditakse allpool valitud printeris, tegelikus suuruses selle virtuaalsel paberil. Valge on koht, kuhu prinditakse, hall paber jääb printeri ulatusest välja ja tuhm tint lõigatakse ära. Üheksa ruutu on paber: puudutage kohta, kus tšekk peab asuma. Pikk tšekk jätkub järgmistel lehtedel. Printeri valimine muudab ainult eelvaadet.
 slip_col_start	Algusvahe (px)
 slip_col_end	Lõpuvahe (px)
+slip_columns	Veerud
+slip_col_header	Päis
 slip_columns_help	Iga veeru laius sisaldab selle algus- ja lõpuvahet. Tekst murdub oma veeru sees; mis jääb sisu laiusest välja, lõigatakse ära – paberil ja eelvaates.
 bill_total_qty_label	Kogukoguse silt
 bill_total_subtotal_label	Alasumma silt
@@ -351,6 +353,15 @@ print_open	Prindi / ava
 reason_amend_ph	Muudatuse / tühine / raha tagastamise põhjus
 reason_note_ph	Põhjus/märkus (raiskamine, arv jne)
 record_day_close	Rekordipäev on lähedal
+business_day	When does Today reset?
+business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
+biz_day_until_close	Until Day close
+biz_day_midnight	Calendar midnight
+business_day_saved	Business day saved
+report_day_lens	View Today as
+report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
+report_lens_day_close	By Day close
+report_lens_midnight	By midnight
 refresh_from_shop	Värskenda poest
 refund	Tagasimakse
 remove_selected	Eemalda valitud
@@ -474,6 +485,8 @@ route_bill	Arve
 station_print_pick_first	Valige esmalt poe osa
 bill_printers_dd	Printerid arve jaoks
 bill_printers_dd_n	{n} printerid arve jaoks · puudutage muutmiseks
+printer_mode_first	Esiteks see töötab
+printer_mode_all	Trüki kõigile
 station_vp_attached	Printer lisatud
 station_vp_detached	Printer jaamast eemaldatud
 print_test_page	Printige testleht
@@ -825,6 +838,10 @@ client_template_importing	{title} importimine…
 client_template_done	Kõik {title} üksused on teie kaupade peal.
 client_template_imported	Lisatud {d} üksused ja {c} kategooriad {title}-st
 cancel	Tühista
+removing	Eemaldamine…
+removed	Eemaldatud
+updating_order	Uuendamine…
+order_updated	Tellimus uuendatud
 opening_client	Kliendi avamine…
 preparing_desk	Töölaua ettevalmistamine…
 opening_server	Serveri avamine…
@@ -855,16 +872,7 @@ recent_changes	Viimased muudatused
 lane_declared_label	Maksuarve
 lane_owner_label	Sularaha memo
 money_lane_bill	Arve: {lane}
-
-removing	Eemaldamine…
-removed	Eemaldatud
-updating_order	Uuendamine…
-order_updated	Tellimus uuendatud
 sel_copy	Kopeeri
 sel_select_all	Vali kõik
 sel_copied	Kopeeritud
 nav_loading	Laadimine…
-printer_mode_first	Esiteks see töötab
-printer_mode_all	Trüki kõigile
-slip_columns	Veerud
-slip_col_header	Päis

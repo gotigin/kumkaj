@@ -356,6 +356,7 @@ fn nav_tab_for(screen: Screen, reports_nav: ReportsNav) -> Option<NavTab> {
     match screen {
         Screen::Books => Some(NavTab::Books),
         Screen::Pos => Some(NavTab::Sell),
+        Screen::Board => Some(NavTab::Board),
         Screen::Buy => Some(NavTab::Buy),
         Screen::Rates | Screen::More => Some(NavTab::Rates),
         Screen::Sales => Some(NavTab::Sales),

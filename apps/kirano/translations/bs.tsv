@@ -82,6 +82,8 @@ printer_paper_help	Prijavljeno je papir na koji je podešen drajver ovog štampa
 preview_help	Ovaj račun onako kako se štampa na štampaču odabranom ispod, u stvarnoj veličini na njegovom virtuelnom papiru. Bijelo je gdje se štampa, sivi papir je van dometa štampača, a izblijedjela tinta se odsijeca. Devet kvadrata su papir: dodirnite gdje račun treba stajati. Dug račun prelazi na naredne stranice. Odabir štampača mijenja samo pregled.
 slip_col_start	Početni razmak (px)
 slip_col_end	Završni razmak (px)
+slip_columns	Kolone
+slip_col_header	Zaglavlje
 slip_columns_help	Širina svake kolone uključuje njen početni i završni razmak. Tekst se prelama unutar svoje kolone; ono što prelazi širinu sadržaja odsijeca se na papiru i u pregledu.
 bill_total_qty_label	Natpis ukupne kol.
 bill_total_subtotal_label	Natpis međuzbira
@@ -351,6 +353,15 @@ print_open	Odštampaj / otvori
 reason_amend_ph	Razlog ispravka / storna / povrata
 reason_note_ph	Razlog / napomena (kalo, brojanje, …)
 record_day_close	Upiši zaključenje dana
+business_day	When does Today reset?
+business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
+biz_day_until_close	Until Day close
+biz_day_midnight	Calendar midnight
+business_day_saved	Business day saved
+report_day_lens	View Today as
+report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
+report_lens_day_close	By Day close
+report_lens_midnight	By midnight
 refresh_from_shop	Osvježi s lokala
 refund	Povrat
 remove_selected	Ukloni odabrano
@@ -474,6 +485,8 @@ route_bill	Račun
 station_print_pick_first	Prvo odaberite dio trgovine
 bill_printers_dd	Štampači za račun
 bill_printers_dd_n	{n} štampač/a za račun · dodirnite za promjenu
+printer_mode_first	Prvi koji radi
+printer_mode_all	Štampaj na sve
 station_vp_attached	Štampač priključen
 station_vp_detached	Štampač uklonjen sa stanice
 print_test_page	Odštampaj probnu stranicu
@@ -825,6 +838,10 @@ client_template_importing	Uvoz {title}…
 client_template_done	Svaki artikal iz {title} nalazi se na vašim artiklima.
 client_template_imported	Dodane {d} stavke i {c} kategorije iz {title}
 cancel	Otkaži
+removing	Uklanjanje…
+removed	Uklonjeno
+updating_order	Ažuriranje…
+order_updated	Narudžba ažurirana
 opening_client	Otvaram klijenta…
 preparing_desk	Pripremam pult…
 opening_server	Otvaram server…
@@ -855,16 +872,7 @@ recent_changes	Nedavne promjene
 lane_declared_label	Porezni račun
 lane_owner_label	Gotovinski listić
 money_lane_bill	Račun: {lane}
-
-removing	Uklanjanje…
-removed	Uklonjeno
-updating_order	Ažuriranje…
-order_updated	Narudžba ažurirana
 sel_copy	Kopiraj
 sel_select_all	Odaberi sve
 sel_copied	Kopirano
 nav_loading	Učitavanje…
-printer_mode_first	Prvi koji radi
-printer_mode_all	Štampaj na sve
-slip_columns	Kolone
-slip_col_header	Zaglavlje

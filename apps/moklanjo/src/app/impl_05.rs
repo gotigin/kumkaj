@@ -8,6 +8,7 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
         let sell = s("sell");
         let buy = s("buy");
         let rates = s("nav_items");
+        let board = s("nav_board");
         let sales = s("sales");
         let day_close = s("day_close");
         let reports = s("nav_reports");
@@ -24,6 +25,7 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
             match tab {
                 NavTab::Books => &books,
                 NavTab::Sell => &sell,
+                NavTab::Board => &board,
                 NavTab::Buy => &buy,
                 NavTab::Rates => &rates,
                 NavTab::Ops => "Ops",
@@ -347,10 +349,38 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
             help.set_tip(&plain_display_text(&s("day_close_help")));
         }
         {
+            let help = self.ui.widget(cx, ids!(business_day_help)).as_info_help();
+            help.set_title(cx, &s("business_day"));
+            help.set_tip(&plain_display_text(&s("business_day_help")));
+        }
+        for path in [ids!(biz_day_until_close), ids!(biz_day_until_close_on)] {
+            self.ui
+                .button(cx, path)
+                .set_text(cx, &s("biz_day_until_close"));
+        }
+        for path in [ids!(biz_day_midnight), ids!(biz_day_midnight_on)] {
+            self.ui.button(cx, path).set_text(cx, &s("biz_day_midnight"));
+        }
+        {
             let help = self.ui.widget(cx, ids!(reports_help)).as_info_help();
             help.set_title(cx, &s("nav_reports"));
             help.set_nav_icon(cx, NavTab::Reports);
             help.set_tip(&plain_display_text(&s("reports_help")));
+        }
+        {
+            let help = self.ui.widget(cx, ids!(report_day_lens_help)).as_info_help();
+            help.set_title(cx, &s("report_day_lens"));
+            help.set_tip(&plain_display_text(&s("report_day_lens_help")));
+        }
+        for path in [ids!(report_lens_day_close), ids!(report_lens_day_close_on)] {
+            self.ui
+                .button(cx, path)
+                .set_text(cx, &s("report_lens_day_close"));
+        }
+        for path in [ids!(report_lens_midnight), ids!(report_lens_midnight_on)] {
+            self.ui
+                .button(cx, path)
+                .set_text(cx, &s("report_lens_midnight"));
         }
         for path in [ids!(reports_today), ids!(reports_today_on)] {
             self.ui.button(cx, path).set_text(cx, &s("reports_today"));
@@ -447,6 +477,12 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
         self.ui
             .view(cx, ids!(server_pick_section))
             .set_visible(cx, false);
+        let awaiting_app_template = {
+            let st = app_state().lock().unwrap();
+            st.awaiting_app_template
+                && !role_open_busy().load(std::sync::atomic::Ordering::SeqCst)
+        };
+        self.paint_app_template_chrome(cx, awaiting_app_template);
         // Device-role chip visibility (idle/active pair) is owned by paint_choice_state.
         self.ui
             .button(cx, ids!(lang_setup_platform))
@@ -505,6 +541,7 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
             Screen::ClientPair => ids!(client_pair_screen),
             Screen::Books => ids!(books_screen),
             Screen::Pos => ids!(pos_catalog_scroll),
+            Screen::Board => ids!(board_screen),
             Screen::Buy => ids!(buy_screen),
             Screen::Rates => ids!(menu_screen),
             Screen::More => ids!(more_screen),
@@ -588,6 +625,7 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
             (ids!(client_pair_screen), screen == Screen::ClientPair),
             (ids!(books_screen), screen == Screen::Books),
             (ids!(pos_screen), screen == Screen::Pos),
+            (ids!(board_screen), screen == Screen::Board),
             (ids!(buy_screen), screen == Screen::Buy),
             (ids!(menu_screen), screen == Screen::Rates),
             (ids!(more_screen), screen == Screen::More),
@@ -771,6 +809,7 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
         [
             (ids!(nav_books), ids!(nav_books_on)),
             (ids!(nav_sell), ids!(nav_sell_on)),
+            (ids!(nav_board), ids!(nav_board_on)),
             (ids!(nav_buy), ids!(nav_buy_on)),
             (ids!(nav_rates), ids!(nav_rates_on)),
             (ids!(nav_ops), ids!(nav_ops_on)),
@@ -804,6 +843,7 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
         [
             (ids!(rail_books), ids!(rail_books_on)),
             (ids!(rail_sell), ids!(rail_sell_on)),
+            (ids!(rail_board), ids!(rail_board_on)),
             (ids!(rail_buy), ids!(rail_buy_on)),
             (ids!(rail_rates), ids!(rail_rates_on)),
             (ids!(rail_ops), ids!(rail_ops_on)),
@@ -837,6 +877,7 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
         [
             ids!(nav_books_icon),
             ids!(nav_sell_icon),
+            ids!(nav_board_icon),
             ids!(nav_buy_icon),
             ids!(nav_rates_icon),
             ids!(nav_ops_icon),
@@ -870,6 +911,7 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
         [
             ids!(rail_books_icon),
             ids!(rail_sell_icon),
+            ids!(rail_board_icon),
             ids!(rail_buy_icon),
             ids!(rail_rates_icon),
             ids!(rail_ops_icon),
@@ -937,6 +979,7 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
             [
                 ids!(rail_books_slot),
                 ids!(rail_sell_slot),
+                ids!(rail_board_slot),
                 ids!(rail_buy_slot),
                 ids!(rail_rates_slot),
                 ids!(rail_ops_slot),
@@ -968,6 +1011,7 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
             [
                 ids!(nav_books_slot),
                 ids!(nav_sell_slot),
+                ids!(nav_board_slot),
                 ids!(nav_buy_slot),
                 ids!(nav_rates_slot),
                 ids!(nav_ops_slot),
@@ -1942,6 +1986,9 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
             if st.must_confirm_device_role && screen != Screen::DeviceSetup {
                 st.status = st.t("device_use_q");
                 self.set_screen(&mut st, Screen::DeviceSetup, false);
+            } else if st.awaiting_app_template && screen != Screen::DeviceSetup {
+                st.status = st.t("app_template_status");
+                self.set_screen(&mut st, Screen::DeviceSetup, false);
             } else if st.device_role == DeviceRole::Client
                 && !st.client_paired
                 && !matches!(
@@ -2043,6 +2090,18 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
             Some(NavTab::Sell) => {
                 cx.set_key_focus(Area::Empty);
                 self.go_peer_if_allowed(cx, Screen::Pos, |s| s.can_access_sell());
+            }
+            Some(NavTab::Board) => {
+                let result = (|| -> Result<(), String> {
+                    let mut st = app_state().lock().unwrap();
+                    st.refresh_today_board()
+                })();
+                if let Err(e) = result {
+                    self.set_status(cx, e);
+                } else {
+                    cx.set_key_focus(Area::Empty);
+                    self.go_peer_if_allowed(cx, Screen::Board, |s| s.can_access_sell());
+                }
             }
             Some(NavTab::Buy) => {
                 cx.set_key_focus(Area::Empty);

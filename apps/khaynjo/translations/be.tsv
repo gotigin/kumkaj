@@ -115,6 +115,7 @@ bill_line_total	Разам
 bill_line_footer	Ніжні калонтытул
 bill_line_upi	UPI
 bill_logo_picture	Малюнак
+bill_logo_help	Шырыня і вышыня ў px. Пустое ідзе за малюнкам: адно пустое захоўвае форму, абодва пустыя — уласны памер; абодва зададзеныя — малюнак змяшчаецца ўнутры, ніколі не расцягваецца. Без малюнка: паказаны лагатып пакідае сваю вышыню пустым месцам; «Схаваць» прыбірае яго.
 bill_logo_choose	Выбраць малюнак
 bill_logo_remove	Выдаліць малюнак
 bill_logo_none	Няма малюнка
@@ -122,10 +123,9 @@ bill_logo_unreadable	Гэта не малюнак, які праграма мо�
 bill_logo_width	Шырыня (px)
 bill_logo_height	Вышыня (px)
 bill_logo_tones	Шэрыя
+bill_logo_tones_help	Суцэльна: кожная кропка чорная або белая, для выразных лагатыпаў. З адценнямі: шэрае становіцца дробным узорам кропак, для фота і мяккіх ценяў.
 bill_logo_solid	Суцэльна
 bill_logo_shaded	З адценнямі
-bill_logo_help	Шырыня і вышыня ў px. Пустое ідзе за малюнкам: адно пустое захоўвае форму, абодва пустыя — уласны памер; абодва зададзеныя — малюнак змяшчаецца ўнутры, ніколі не расцягваецца. Без малюнка: паказаны лагатып пакідае сваю вышыню пустым месцам; «Схаваць» прыбірае яго.
-bill_logo_tones_help	Суцэльна: кожная кропка чорная або белая, для выразных лагатыпаў. З адценнямі: шэрае становіцца дробным узорам кропак, для фота і мяккіх ценяў.
 slip_col_width	Шырыня (mm)
 slip_col_start	Прастора ў пачатку (px)
 slip_col_end	Прастора ў канцы (px)
@@ -566,6 +566,15 @@ print_open	Раздрукаваць / адкрыць
 reason_amend_ph	Прычына змены / анулявання / вяртання грошай
 reason_note_ph	Прычына / заўвага (трата, колькасць, ...)
 record_day_close	Закрыццё дня запісу
+business_day	When does Today reset?
+business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
+biz_day_until_close	Until Day close
+biz_day_midnight	Calendar midnight
+business_day_saved	Business day saved
+report_day_lens	View Today as
+report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
+report_lens_day_close	By Day close
+report_lens_midnight	By midnight
 refresh_from_shop	Абнавіць з крамы
 refund	Вяртанне грошай
 remove_selected	Выдаліць выбранае

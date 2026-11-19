@@ -115,6 +115,7 @@ bill_line_total	कुल
 bill_line_footer	पादलेखः
 bill_line_upi	UPI
 bill_logo_picture	चित्रम्
+bill_logo_help	विस्तारः उन्नतिः च px मध्ये। रिक्तं चित्रम् अनुसरति: एकं रिक्तम् आकारं रक्षति, उभे रिक्ते स्वमानं प्रयुङ्क्तः; उभे निर्दिष्टे अन्तः स्थापयतः, कदापि न विस्तारयतः। चित्रं नास्ति चेत्: दर्शितं चिह्नं स्वोन्नतिं रिक्तस्थानरूपेण रक्षति; गोपयतु तद् अपनयति।
 bill_logo_choose	चित्रं वृणुत
 bill_logo_remove	चित्रम् अपनयत
 bill_logo_none	चित्रं नास्ति
@@ -122,10 +123,9 @@ bill_logo_unreadable	एतत् एप् पठितुं शक्नो�
 bill_logo_width	विस्तारः (px)
 bill_logo_height	उन्नतिः (px)
 bill_logo_tones	धूसराः
+bill_logo_tones_help	घनम्: प्रत्येकं बिन्दुः कृष्णः श्वेतो वा, स्पष्टचिह्नेभ्यः। छायायुक्तम्: धूसराः सूक्ष्मबिन्दुरचनाः भवन्ति, चित्रेभ्यः मृदुच्छायायै च।
 bill_logo_solid	घनम्
 bill_logo_shaded	छायायुक्तम्
-bill_logo_help	विस्तारः उन्नतिः च px मध्ये। रिक्तं चित्रम् अनुसरति: एकं रिक्तम् आकारं रक्षति, उभे रिक्ते स्वमानं प्रयुङ्क्तः; उभे निर्दिष्टे अन्तः स्थापयतः, कदापि न विस्तारयतः। चित्रं नास्ति चेत्: दर्शितं चिह्नं स्वोन्नतिं रिक्तस्थानरूपेण रक्षति; गोपयतु तद् अपनयति।
-bill_logo_tones_help	घनम्: प्रत्येकं बिन्दुः कृष्णः श्वेतो वा, स्पष्टचिह्नेभ्यः। छायायुक्तम्: धूसराः सूक्ष्मबिन्दुरचनाः भवन्ति, चित्रेभ्यः मृदुच्छायायै च।
 slip_col_width	विस्तारः (mm)
 slip_col_start	आरम्भावकाशः (px)
 slip_col_end	अन्तावकाशः (px)
@@ -566,6 +566,15 @@ print_open	मुद्रयतु / उद्घाटयतु
 reason_amend_ph	संशोधनस्य कारणम् / शून्यीकरणस्य / धनवापसी
 reason_note_ph	कारण / टिप्पणी (अपव्यय, गणना, ...) .
 record_day_close	दिनं निकटं रक्षतु
+business_day	When does Today reset?
+business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
+biz_day_until_close	Until Day close
+biz_day_midnight	Calendar midnight
+business_day_saved	Business day saved
+report_day_lens	View Today as
+report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
+report_lens_day_close	By Day close
+report_lens_midnight	By midnight
 refresh_from_shop	दुकानतः ताजगीं कुर्वन्तु
 refund	धनवापसी
 remove_selected	चयनितं निष्कासयन्तु

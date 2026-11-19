@@ -201,10 +201,38 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
             help.set_tip(&plain_display_text(&s("day_close_help")));
         }
         {
+            let help = self.ui.widget(cx, ids!(business_day_help)).as_info_help();
+            help.set_title(cx, &s("business_day"));
+            help.set_tip(&plain_display_text(&s("business_day_help")));
+        }
+        for path in [ids!(biz_day_until_close), ids!(biz_day_until_close_on)] {
+            self.ui
+                .button(cx, path)
+                .set_text(cx, &s("biz_day_until_close"));
+        }
+        for path in [ids!(biz_day_midnight), ids!(biz_day_midnight_on)] {
+            self.ui.button(cx, path).set_text(cx, &s("biz_day_midnight"));
+        }
+        {
             let help = self.ui.widget(cx, ids!(reports_help)).as_info_help();
             help.set_title(cx, &s("nav_reports"));
             help.set_nav_icon(cx, NavTab::Reports);
             help.set_tip(&plain_display_text(&s("reports_help")));
+        }
+        {
+            let help = self.ui.widget(cx, ids!(report_day_lens_help)).as_info_help();
+            help.set_title(cx, &s("report_day_lens"));
+            help.set_tip(&plain_display_text(&s("report_day_lens_help")));
+        }
+        for path in [ids!(report_lens_day_close), ids!(report_lens_day_close_on)] {
+            self.ui
+                .button(cx, path)
+                .set_text(cx, &s("report_lens_day_close"));
+        }
+        for path in [ids!(report_lens_midnight), ids!(report_lens_midnight_on)] {
+            self.ui
+                .button(cx, path)
+                .set_text(cx, &s("report_lens_midnight"));
         }
         for path in [ids!(reports_today), ids!(reports_today_on)] {
             self.ui.button(cx, path).set_text(cx, &s("reports_today"));
@@ -817,13 +845,20 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
             }
         }
         let order = app_state().lock().unwrap().nav_order.clone();
-        let list = self
-            .ui
-            .widget(cx, ids!(sidebar_nav_list))
-            .portal_list(cx, ids!(list));
+        let host = self.ui.widget(cx, ids!(sidebar_nav_list));
+        let list = host.portal_list(cx, ids!(list));
+        if let Some(mut inner) = list.borrow_mut() {
+            inner.set_item_range(cx, 0, order.len());
+        }
+        let mut fresh = false;
         for (i, tab) in order.iter().enumerate() {
             let item = list.item(cx, i, id!(Item));
-            load_nav_icon_once(cx, &item.image(cx, ids!(icon)), *tab);
+            if load_nav_icon_once(cx, &item.image(cx, ids!(icon)), *tab) {
+                fresh = true;
+            }
+        }
+        if fresh {
+            host.redraw(cx);
         }
     }
 

@@ -2163,6 +2163,61 @@ script_mod! {
         }
     }
 
+    let BoardCard = RoundedView{
+        cursor: MouseCursor.Hand
+        width: Fill height: Fit
+        padding: Inset{left: 12. right: 12. top: 12. bottom: 12.}
+        flow: Down spacing: 6
+        draw_bg.color: #xffffff
+        draw_bg.border_radius: 14.
+        draw_bg.border_size: 2.
+        draw_bg.border_color: #x4A5568
+        kind := Label{
+            text: "Draft"
+            align: Align{x: 0.0}
+            draw_text.color: #x072058
+            draw_text.text_style.font_size: 11.
+        }
+        title := Label{
+            width: Fill
+            text: "Title"
+            align: Align{x: 0.0}
+            flow: Right{wrap: true}
+            draw_text.color: #x0B1220
+            draw_text.text_style.font_size: 14.
+        }
+        line2 := WrapLabel{
+            width: Fill
+            body: ""
+            font_color: #x3A4554
+            font_size: 12.
+        }
+        line3 := WrapLabel{
+            width: Fill
+            body: ""
+            font_color: #x3A4554
+            font_size: 11.
+        }
+        amount := Label{
+            width: Fill
+            text: "0"
+            align: Align{x: 0.0}
+            draw_text.color: #xC44E10
+            draw_text.text_style.font_size: 15.
+        }
+        time := Label{
+            width: Fill
+            text: ""
+            align: Align{x: 0.0}
+            draw_text.color: #x6B7A8C
+            draw_text.text_style.font_size: 11.
+        }
+        discard_draft := QuietFitBtn{
+            text: "Discard"
+            visible: false
+        }
+    }
+
     // Sell token: Fit height — list row estimate must stay >= natural size.
     let ProductCard = RoundedView{
         width: Fill height: Fit
@@ -2971,6 +3026,30 @@ script_mod! {
                 c0 := ProductCard{}
                 c1 := ProductCard{}
                 c2 := ProductCard{}
+            }
+        }
+    }
+
+    mod.widgets.TodayBoardListBase = #(TodayBoardList::register_widget(vm))
+    mod.widgets.TodayBoardList = set_type_default() do mod.widgets.TodayBoardListBase{
+        width: Fill height: Fit
+        list := PortalList{
+            width: Fill height: Fill
+            spacing: 10
+            drag_scrolling: false
+            bounce_at_start: false
+            bounce_at_end: false
+            capture_overload: false
+            scroll_bar: ScrollBar{bar_size: 0.}
+            Item := View{
+                width: Fill height: Fit
+                flow: Right spacing: 12
+                padding: Inset{bottom: 8.}
+                texture_caching: false
+                c0 := BoardCard{}
+                c1 := BoardCard{}
+                c2 := BoardCard{}
+                c3 := BoardCard{}
             }
         }
     }
@@ -3858,6 +3937,21 @@ script_mod! {
                                         }
                                     }
                                 }
+                                rail_board_slot := View{
+                                    width: Fill height: Fit
+                                    flow: Overlay
+                                    rail_board := TabBtn{text: "Board"}
+                                    rail_board_on := TabBtnActive{text: "Board" visible: false}
+                                    View{
+                                        width: Fit height: 40
+                                        align: Align{x: 0.0 y: 0.5}
+                                        padding: Inset{left: 10. right: 0. top: 0. bottom: 0.}
+                                        rail_board_icon := Image{
+                                            width: 22 height: 22
+                                            fit: ImageFit.Stretch
+                                        }
+                                    }
+                                }
                                 rail_buy_slot := View{
                                     width: Fill height: Fit
                                     flow: Overlay
@@ -4599,6 +4693,79 @@ script_mod! {
                                                 }
                                                 setup_server_list := mod.widgets.ServerList{}
                                                 server_pick_cancel := BackBtn{text: "Back"}
+                                            }
+                                            // One-shot after Server open — before Owner PIN
+                                            // (same shape as Khaynjo Shop templates).
+                                            app_template_section := View{
+                                                width: Fill height: Fit
+                                                flow: Down spacing: 12
+                                                visible: false
+                                                View{
+                                                    width: Fill height: Fit
+                                                    flow: Right spacing: 0
+                                                    align: Align{y: 0.5}
+                                                    app_template_heading := WrapLabel{
+                                                        width: Fit
+                                                        body: "Shop templates"
+                                                        font_color: #x0B1220
+                                                        font_size: 17.
+                                                    }
+                                                    app_template_help := InfoHelp{
+                                                        tip: "Pick a starter desk. Skip leaves parties empty."
+                                                    }
+                                                }
+                                                app_template_blurb := WrapLabel{
+                                                    body: " "
+                                                    font_color: #x3A4554
+                                                    font_size: 13.
+                                                    visible: false
+                                                }
+                                                RoundedView{
+                                                    width: Fill height: Fit
+                                                    padding: Inset{left: 10. right: 10. top: 8. bottom: 8.}
+                                                    flow: Down spacing: 8
+                                                    draw_bg.color: #xffffff
+                                                    draw_bg.border_radius: 12.
+                                                    View{
+                                                        width: Fill height: Fit
+                                                        flow: Right spacing: 0
+                                                        align: Align{y: 0.5}
+                                                        setup_public_tmpl_hdr := AccordionHdrHitBtn{width: Fit text: "TEMPLATES"}
+                                                        setup_public_tmpl_help := InfoHelp{
+                                                            tip: "Bundled agency packs for this shop. No download needed."
+                                                        }
+                                                        setup_public_tmpl_hdr_ext := AccordionHdrHitBtn{text: ""}
+                                                    }
+                                                    setup_public_tmpl_body := View{
+                                                        width: Fill height: Fit
+                                                        flow: Down spacing: 8
+                                                        visible: true
+                                                        setup_public_tmpl_status := WrapLabel{
+                                                            body: ""
+                                                            font_color: #x3A4554
+                                                            font_size: 12.
+                                                        }
+                                                        View{
+                                                            width: Fill height: Fit
+                                                            flow: Right{wrap: true} spacing: 8
+                                                            public_tmpl_0 := ChipBtn{text: "Global Pkg App Template"}
+                                                            public_tmpl_0_on := ChipBtnActive{text: "Global Pkg App Template" visible: false}
+                                                        }
+                                                        public_tmpl_import := NavBtn{text: "Import selected" visible: false}
+                                                    }
+                                                }
+                                                app_template_busy := View{
+                                                    width: Fill height: Fit
+                                                    visible: false
+                                                    flow: Down spacing: 6
+                                                    app_template_status := WrapLabel{
+                                                        body: "Importing…"
+                                                        font_color: #x0B1220
+                                                        font_size: 15.
+                                                    }
+                                                    app_template_cancel := QuietFitBtn{text: "Cancel" visible: false}
+                                                }
+                                                app_template_skip := QuietFitBtn{text: "Skip for now"}
                                             }
                                             device_setup_status := WrapLabel{
                                                 body: " "
@@ -5563,6 +5730,11 @@ script_mod! {
                                     empty_text: "Bulk CSV — destination,consignee,kg,cod_paise,note"
                                 }
                                 booking_bulk_load := RowSecondaryBtn{text: "Load bulk row → desk"}
+                                booking_bulk_preview := WrapLabel{
+                                    body: ""
+                                    font_color: #x0B1220
+                                    font_size: 13.
+                                }
                                 chargeable_kg_label := WrapLabel{
                                     body: "Chargeable kg: —"
                                     font_color: #x0B1220
@@ -5607,6 +5779,7 @@ script_mod! {
                                         font_color: #x3A4554
                                         font_size: 13.
                                     }
+                                    park_draft_btn := QuietFitBtn{text: "Park"}
                                     clear_cart := Button{
                                         text: "Clear"
                                         width: Fit height: 32
@@ -5901,6 +6074,48 @@ script_mod! {
                             }
                         }
 
+                        board_screen := ScrollYView{
+                            width: Fill height: Fill
+                            visible: false
+                            View{
+                                width: Fill height: Fit
+                                flow: Down spacing: 12
+                                padding: Inset{left: 16. right: 16. top: 8. bottom: 120.}
+                                board_help := InfoHelp{
+                                    tip: "Open drafts and today's bookings. Park mid-work to serve the next customer; tap a draft to resume on the booking desk."
+                                }
+                                View{
+                                    width: Fill height: Fit
+                                    flow: Right{wrap: true} spacing: 8
+                                    board_filter_all := ChipBtn{text: "All"}
+                                    board_filter_all_on := ChipBtnActive{text: "All" visible: false}
+                                    board_filter_draft := ChipBtn{text: "Draft"}
+                                    board_filter_draft_on := ChipBtnActive{text: "Draft" visible: false}
+                                    board_filter_booked := ChipBtn{text: "Booked"}
+                                    board_filter_booked_on := ChipBtnActive{text: "Booked" visible: false}
+                                    View{width: Fill height: 1}
+                                    board_refresh := QuietFitBtn{text: "Refresh"}
+                                }
+                                View{
+                                    width: Fill height: Fit
+                                    flow: Right{wrap: true} spacing: 8
+                                    board_col_2 := ChipBtn{text: "2 col"}
+                                    board_col_2_on := ChipBtnActive{text: "2 col" visible: false}
+                                    board_col_3 := ChipBtn{text: "3 col"}
+                                    board_col_3_on := ChipBtnActive{text: "3 col" visible: false}
+                                    board_col_4 := ChipBtn{text: "4 col"}
+                                    board_col_4_on := ChipBtnActive{text: "4 col" visible: false}
+                                }
+                                board_summary := WrapLabel{
+                                    width: Fill
+                                    body: ""
+                                    font_color: #x3A4554
+                                    font_size: 13.
+                                }
+                                today_board_list := mod.widgets.TodayBoardList{}
+                            }
+                        }
+
                         // Money out — purchase + expense (peer of Sell).
                         buy_screen := ScrollYView{
                             width: Fill height: Fill
@@ -6152,6 +6367,31 @@ script_mod! {
                                     font_size: 12.
                                 }
                                 sale_attach_list := mod.widgets.ReportText{}
+                                FormCard{
+                                h_bill_later_heading := WrapLabel{body: "Bill later (post-booking extra)" font_color: #x0B1220 font_size: 15.}
+                                bill_later_help := InfoHelp{
+                                    tip: "Adds AR on the consignor without changing the original booking total. Use after ODA, packing, or other charges found at delivery."
+                                }
+                                bill_later_amount_input := FieldInput{empty_text: "Extra amount"}
+                                sale_extra_party_input := FieldInput{empty_text: "Party (only if booking has none)"}
+                                View{
+                                    width: Fill height: Fit
+                                    flow: Right spacing: 6
+                                    View{width: Fill height: Fit flow: Overlay
+                                        bill_later_oda := SegBtn{text: "ODA"}
+                                        bill_later_oda_on := SegBtnOn{text: "ODA" visible: false}
+                                    }
+                                    View{width: Fill height: Fit flow: Overlay
+                                        bill_later_packing := SegBtn{text: "Packing"}
+                                        bill_later_packing_on := SegBtnOn{text: "Packing" visible: false}
+                                    }
+                                    View{width: Fill height: Fit flow: Overlay
+                                        bill_later_other := SegBtn{text: "Other"}
+                                        bill_later_other_on := SegBtnOn{text: "Other" visible: false}
+                                    }
+                                }
+                                bill_later_btn := NavBtn{text: "Bill later"}
+                                }
                                 sale_list := mod.widgets.SaleList{}
                             }
                         }
@@ -6279,7 +6519,8 @@ script_mod! {
                                 credit_party_suggest := mod.widgets.SuggestList{field: "credit_party"}
                                 ActionStack{
                                     credit_limit_set := RowSecondaryBtn{text: "Apply limit to party"}
-                                    credit_period_bill := RowSecondaryBtn{text: "Period bill"}
+                                    credit_period_bill := RowSecondaryBtn{text: "Generate bill"}
+                                    credit_period_bill_print := RowPrimaryBtn{text: "Generate & print"}
                                 }
                                 }
                                 FormCard{
@@ -6298,6 +6539,18 @@ script_mod! {
                                 settle_open_bills := mod.widgets.ReportText{}
                                 settle_bill_input := FieldInput{empty_text: "Against bill # above (optional)"}
                                 credit_bill_chase := RowSecondaryBtn{text: "Bill reminder chase list"}
+                                h_adjustment_notes_heading := WrapLabel{body: "Adjustment notes" font_color: #x0B1220 font_size: 15.}
+                                adjustment_note_help := InfoHelp{
+                                    tip: "Credit note reduces what they owe; debit note adds a charge. Optional AWB links the note to one booking. Posts to AR for Consignor, AP for Carrier/Supplier."
+                                }
+                                adj_note_amount_input := FieldInput{empty_text: "Amount"}
+                                adj_note_reason_input := FieldInput{empty_text: "Reason (required)"}
+                                adj_note_awb_input := FieldInput{empty_text: "Related AWB (optional)"}
+                                ActionStack{
+                                    credit_note_btn := RowSecondaryBtn{text: "Credit note"}
+                                    debit_note_btn := RowPrimaryBtn{text: "Debit note"}
+                                }
+                                adjustment_notes_list := mod.widgets.ReportText{}
                                 h_write_off_heading := WrapLabel{body: "Write off (clear without payment)" font_color: #x0B1220 font_size: 15.}
                                 writeoff_amount_input := FieldInput{empty_text: "Amount (blank = full balance)"}
                                 writeoff_reason_input := FieldInput{empty_text: "Reason (required)"}
@@ -6700,6 +6953,19 @@ script_mod! {
                                         font_color: #x3A4554
                                         font_size: 13.
                                     }
+                                    // Re-apply after DeviceSetup Skip (primary offer is on Server open).
+                                    View{
+                                        width: Fill height: Fit
+                                        flow: Right{wrap: true} spacing: 8
+                                        View{width: Fit height: Fit flow: Overlay
+                                            tmpl_pick_moklanjo := SegBtn{text: "Moklanjo"}
+                                            tmpl_pick_moklanjo_on := SegBtnOn{text: "Moklanjo" visible: false}
+                                        }
+                                        View{width: Fit height: Fit flow: Overlay
+                                            tmpl_pick_global_pkg := SegBtn{text: "Global Pkg App Template"}
+                                            tmpl_pick_global_pkg_on := SegBtnOn{text: "Global Pkg App Template" visible: false}
+                                        }
+                                    }
                                     h_product_only_moklanjo := WrapLabel{
                                         width: Fill
                                         body: ""
@@ -6770,7 +7036,7 @@ script_mod! {
                                     // Printers belong to this device (any OS): a system
                                     // printer by name, or a network receipt printer's address.
                                     FormCard{
-                                    h_printers := WrapLabel{body: "Printers on this device" font_color: #x0B1220 font_size: 20.}
+                                    h_printers := WrapLabel{body: "Printers" font_color: #x0B1220 font_size: 20.}
                                     h_printers_help := WrapLabel{
                                         width: Fill
                                         body: " "
@@ -7381,7 +7647,31 @@ script_mod! {
                                 day_close_help := InfoHelp{
                                     tip: "Recording a day close saves this summary (and drawer variance if counted) to the audit log. It does not stop selling."
                                 }
+                                // Titled InfoHelp (not WrapLabel + tip-only): ℹ beside the label.
+                                business_day_help := InfoHelp{
+                                    tip: "Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local."
+                                }
+                                View{
+                                    width: Fill height: Fit
+                                    flow: Right{wrap: true} spacing: 8
+                                    View{width: Fit height: Fit flow: Overlay
+                                        biz_day_until_close := SegBtn{text: "Until Day close"}
+                                        biz_day_until_close_on := SegBtnOn{text: "Until Day close" visible: false}
+                                    }
+                                    View{width: Fit height: Fit flow: Overlay
+                                        biz_day_midnight := SegBtn{text: "Calendar midnight"}
+                                        biz_day_midnight_on := SegBtnOn{text: "Calendar midnight" visible: false}
+                                    }
+                                }
                                 day_close_label := mod.widgets.ReportText{}
+                                h_shift_close := WrapLabel{body: "Shift handover" font_color: #x0B1220 font_size: 15.}
+                                shift_so_far_label := mod.widgets.ReportText{}
+                                shift_counted_input := FieldInput{empty_text: "Cash counted at handover"}
+                                shift_close_btn := StackPrimaryBtn{text: "Close shift and print slip"}
+                                h_books_lock := WrapLabel{body: "Lock books through month" font_color: #x0B1220 font_size: 15.}
+                                books_locked_through_label := mod.widgets.ReportText{}
+                                books_lock_month_input := FieldInput{empty_text: "YYYY-MM"}
+                                books_lock_month_btn := StackSecondaryBtn{text: "Lock through this month"}
                                 h_drawer_count := WrapLabel{ width: Fit
                                                     body: "Drawer count (optional)" font_color: #x0B1220 font_size: 15.}
                                 day_close_counted_input := FieldInput{empty_text: "Counted cash in drawer"}
@@ -7399,6 +7689,22 @@ script_mod! {
                                 padding: Inset{left: 16. right: 16. top: 8. bottom: 120.}
                                 reports_help := InfoHelp{
                                     tip: "Day books, party aging, bank posts, and period P&L — same books for every entity."
+                                }
+                                // Titled InfoHelp (not WrapLabel + tip-only): ℹ beside the label.
+                                report_day_lens_help := InfoHelp{
+                                    tip: "View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am."
+                                }
+                                View{
+                                    width: Fill height: Fit
+                                    flow: Right{wrap: true} spacing: 8
+                                    View{width: Fit height: Fit flow: Overlay
+                                        report_lens_day_close := SegBtn{text: "By Day close"}
+                                        report_lens_day_close_on := SegBtnOn{text: "By Day close" visible: false}
+                                    }
+                                    View{width: Fit height: Fit flow: Overlay
+                                        report_lens_midnight := SegBtn{text: "By midnight"}
+                                        report_lens_midnight_on := SegBtnOn{text: "By midnight" visible: false}
+                                    }
                                 }
                                 reports_books_btns := ActionStack{
                                     reports_today := RowSecondaryBtn{text: "Today books"}
@@ -7572,7 +7878,8 @@ script_mod! {
                                     ops_party_suggest := mod.widgets.SuggestList{field: "ops_party"}
                                     ActionStack{
                                         ops_cod_remit := RowPrimaryBtn{text: "Pay out COD to consignor"}
-                                        ops_period_bill := RowSecondaryBtn{text: "Period bill (party)"}
+                                        ops_period_bill := RowSecondaryBtn{text: "Generate bill"}
+                                        ops_period_bill_print := RowPrimaryBtn{text: "Generate & print"}
                                     }
                                 }
                                 // Riders: settle what each rider hands in; add a rider.
@@ -8010,6 +8317,21 @@ script_mod! {
                                             align: Align{x: 0.0 y: 0.5}
                                             padding: Inset{left: 10. right: 0. top: 0. bottom: 0.}
                                             nav_sell_icon := Image{
+                                                width: 22 height: 22
+                                                fit: ImageFit.Stretch
+                                            }
+                                        }
+                                    }
+                                    nav_board_slot := View{
+                                        width: Fit{min: FitBound.Abs(72.)} height: Fit
+                                        flow: Overlay
+                                        nav_board := NavChip{text: "Board"}
+                                        nav_board_on := NavChipActive{text: "Board" visible: false}
+                                        View{
+                                            width: Fit height: Fill
+                                            align: Align{x: 0.0 y: 0.5}
+                                            padding: Inset{left: 10. right: 0. top: 0. bottom: 0.}
+                                            nav_board_icon := Image{
                                                 width: 22 height: 22
                                                 fit: ImageFit.Stretch
                                             }
@@ -8495,7 +8817,7 @@ script_mod! {
                                     align: Align{x: 0.0 y: 0.5}
                                     pm_title := WrapLabel{
                                         width: Fit
-                                        body: "Printers on this device" font_color: #x0B1220 font_size: 16.}
+                                        body: "Printers" font_color: #x0B1220 font_size: 16.}
                                     pm_title_help := InfoHelp{tip: " "}
                                 }
                                 ActionStack{

@@ -3,6 +3,25 @@ app_tagline	Vitabu vya usafirishaji + dawati la kutuma. Bure nje ya mtandao.
 unlock	Fungua
 pin_hint	PIN ya mmiliki huanza 0000
 sell	Uhifadhi
+nav_board	Board
+board	Board
+park_draft	Park
+board_park_nothing	Nothing to park — add charges or booking details
+board_parked	Parked on Board — desk is clear
+board_draft	Draft
+board_booked	Booked
+board_filter_all	All
+board_filter_draft	Draft
+board_filter_booked	Booked
+board_cols_fmt	{n} col
+board_summary_fmt	{total} cards · {drafts} draft · {booked} booked
+board_card_no_charges	No charges yet
+board_card_charges	charges
+board_card_booked	Booking
+board_draft_gone	That draft is no longer on the Board
+board_draft_closed	That draft was already finished or discarded
+board_discard	Discard
+board_discarded	Draft discarded
 buy	Malipo
 books	Kitabu cha siku
 books_help	Hali ya leo. Uhifadhi = mizigo inayoingia. Malipo = bili za wasafirishaji na gharama. Wahusika = watumaji na wasafirishaji.
@@ -183,6 +202,13 @@ device_setup_help	Seva huhifadhi vitabu hapa. Mteja huoanishwa na seva.
 currency	Sarafu
 backup	Hifadhi nakala
 settings_sec_diag	Uchunguzi
+settings_sec_privacy	Faragha
+privacy_policy_help	PRIVACY.md ile ile ya https://moklanjo.com/privacy — si nakala tofauti.
+dont_use	Usitumie
+receipt_printers_dd	Printa kwenye kifaa hiki · Risiti
+receipt_printers_dd_n	{n} · Printa kwenye kifaa hiki · Risiti
+label_printers_dd	Printa kwenye kifaa hiki · Lebo la AWB
+label_printers_dd_n	{n} · Printa kwenye kifaa hiki · Lebo la AWB
 settings_hub_help	Fungua sehemu moja kwa wakati — kusogeza kidogo, machaguo wazi zaidi.
 settings_sec_devices	Kaunta za ziada na matawi
 settings_sec_alerts	Arifa
@@ -315,6 +341,16 @@ copy_party_ledger_csv	Nakili CSV ya daftari la mhusika
 copy_receipt	Nakili risiti
 copy_report	Nakili ripoti
 counted_cash_ph	Taslimu iliyohesabiwa kwenye droo
+close_shift_print	Close shift and print slip
+shift_handover	Shift handover
+shift_counted_ph	Cash counted at handover
+shift_since	This shift since
+expected_in_drawer	Expected in drawer
+lock_books_through_month	Lock books through month
+books_lock_month_ph	YYYY-MM
+lock_books_month_btn	Lock through this month
+books_locked_none	No month lock yet
+books_locked_through	Locked through
 counter_agency_ph	Jina la kaunta / wakala (si lazima)
 create_backup	Tengeneza hifadhi
 day_close_summary	Muhtasari wa kufunga siku
@@ -404,6 +440,9 @@ pay_ap_cash	Lipa AP taslimu
 pay_ap_upi	Lipa AP kwa UPI
 period_bill	Bili ya kipindi
 period_bill_party	Bili ya kipindi (mhusika)
+period_bill_generate	Generate bill
+period_bill_generate_print	Generate & print
+booking_bulk_preview	{ok} ready · {bad} bad
 pick_pod_photo	Chagua picha ya POD
 print_awb_label	Chapisha lebo ya AWB
 print_open	Chapisha / fungua
@@ -612,6 +651,19 @@ attachments_last_expense	Viambatisho (gharama ya mwisho)
 credit_limit_heading	Kikomo cha mkopo (mhusika aliyechaguliwa / aliyetajwa)
 pay_selected_heading	Lipa aliyechaguliwa (maliza deni / chukua mapema)
 write_off_heading	Futa (maliza bila malipo)
+adjustment_notes_heading	Adjustment notes
+adj_note_amount_ph	Amount
+adj_note_reason_ph	Reason (required)
+adj_note_awb_ph	Related AWB (optional)
+credit_note_btn	Credit note
+debit_note_btn	Debit note
+bill_later_heading	Bill later (post-booking extra)
+bill_later_amount_ph	Extra amount
+bill_later_party_ph	Party (only if booking has none)
+bill_later_btn	Bill later
+bill_later_extra_oda	ODA
+bill_later_extra_packing	Packing
+bill_later_extra_other	Other
 pay_ap_heading	Lipa tunachodaiwa nao (AP)
 country_tax	Nchi na kodi
 extra_tills_heading	Kaunta za ziada
@@ -723,6 +775,23 @@ onboard_book_tmpl	Kitabu · {} — ongeza bidhaa na mkopo wa mwanzo, kisha gusa 
 onboard_template_tmpl	Ipe mahali jina ukitaka, kisha chagua jinsi ya kuanza.
 tmpl_blurb	Vitabu vya usafirishaji na dawati la kupokea: watumaji, wasafirishaji, daftari la siku, AWB.
 tmpl_how	Andikisha vifurushi dawatini; daftari la siku kwa leo; vichupo vya viwango, wahusika, ripoti.
+app_template_heading	Shop templates
+app_template_blurb	Pick a starter desk. Skip leaves parties empty.
+app_template_skip	Skip for now
+app_template_status	Server ready — import a template, or skip
+app_template_importing	Applying {title}…
+app_template_public_hdr	Templates
+app_template_import_selected	Import selected
+public_tmpl_help	Bundled agency packs for this shop. No download needed.
+business_day	When does Today reset?
+business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
+biz_day_until_close	Until Day close
+biz_day_midnight	Calendar midnight
+business_day_saved	Business day saved
+report_day_lens	View Today as
+report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
+report_lens_day_close	By Day close
+report_lens_midnight	By midnight
 trk_booked	Imesajiliwa
 trk_picked_up	Imechukuliwa
 trk_in_transit	Njiani
@@ -846,10 +915,3 @@ sel_copy	Nakili
 sel_select_all	Chagua zote
 sel_copied	Imenakiliwa
 nav_loading	Inapakia…
-settings_sec_privacy	Faragha
-privacy_policy_help	PRIVACY.md ile ile ya https://moklanjo.com/privacy — si nakala tofauti.
-dont_use	Usitumie
-receipt_printers_dd	Printa kwenye kifaa hiki · Risiti
-receipt_printers_dd_n	{n} · Printa kwenye kifaa hiki · Risiti
-label_printers_dd	Printa kwenye kifaa hiki · Lebo la AWB
-label_printers_dd_n	{n} · Printa kwenye kifaa hiki · Lebo la AWB

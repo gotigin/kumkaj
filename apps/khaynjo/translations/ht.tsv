@@ -115,6 +115,7 @@ bill_line_total	Total
 bill_line_footer	Pye
 bill_line_upi	UPI
 bill_logo_picture	Imaj
+bill_logo_help	Lajè ak wotè an px. Vid swiv imaj la: youn vid kenbe fòm li, tou de vid itilize pwòp gwosè li; tou de mete fè l antre anndan, jamè etire. Pa gen imaj: yon logo ki parèt kenbe wotè li kòm espas vid; Kache retire l.
 bill_logo_choose	Chwazi yon imaj
 bill_logo_remove	Retire imaj la
 bill_logo_none	Pa gen imaj
@@ -122,10 +123,9 @@ bill_logo_unreadable	Se pa yon imaj aplikasyon an ka li
 bill_logo_width	Lajè (px)
 bill_logo_height	Wotè (px)
 bill_logo_tones	Gri
+bill_logo_tones_help	Solid: chak pwen nwa oswa blan, pou logo klè. Lonbraj: gri yo tounen ti modèl pwen fen, pou foto ak lonbraj dous.
 bill_logo_solid	Solid
 bill_logo_shaded	Lonbraj
-bill_logo_help	Lajè ak wotè an px. Vid swiv imaj la: youn vid kenbe fòm li, tou de vid itilize pwòp gwosè li; tou de mete fè l antre anndan, jamè etire. Pa gen imaj: yon logo ki parèt kenbe wotè li kòm espas vid; Kache retire l.
-bill_logo_tones_help	Solid: chak pwen nwa oswa blan, pou logo klè. Lonbraj: gri yo tounen ti modèl pwen fen, pou foto ak lonbraj dous.
 slip_col_width	Lajè (mm)
 slip_col_start	Espas kòmansman (px)
 slip_col_end	Espas fen (px)
@@ -566,6 +566,15 @@ print_open	Enprime / louvri
 reason_amend_ph	Rezon pou korije / anile / ranbouse
 reason_note_ph	Rezon / nòt (pèt, konte, …)
 record_day_close	Anrejistre fèmti jounen
+business_day	When does Today reset?
+business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
+biz_day_until_close	Until Day close
+biz_day_midnight	Calendar midnight
+business_day_saved	Business day saved
+report_day_lens	View Today as
+report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
+report_lens_day_close	By Day close
+report_lens_midnight	By midnight
 refresh_from_shop	Rafrechi depi boutik
 refund	Ranbousman
 remove_selected	Retire sa ki chwazi

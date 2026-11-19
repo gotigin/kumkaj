@@ -115,6 +115,7 @@ bill_line_total	මුළු
 bill_line_footer	පාදකය
 bill_line_upi	UPI
 bill_logo_picture	පින්තූරය
+bill_logo_help	පළල සහ උස px වලින්. හිස් නම් පින්තූරය අනුගමනය කරයි: එකක් හිස් නම් හැඩය රැකේ, දෙකම හිස් නම් එහිම ප්‍රමාණය; දෙකම දුන්නොත් ඇතුළට ගැළපේ, කිසිදා ඇදෙන්නේ නැත. පින්තූරයක් නැත්නම්: පෙන්වන ලාංඡනය එහි උස හිස් ඉඩක් ලෙස තබයි; සඟවන්න එය ඉවත් කරයි.
 bill_logo_choose	පින්තූරය තෝරන්න
 bill_logo_remove	පින්තූරය ඉවත් කරන්න
 bill_logo_none	පින්තූරයක් නැත
@@ -122,10 +123,9 @@ bill_logo_unreadable	මෙම යෙදුමට කියවිය හැක�
 bill_logo_width	පළල (px)
 bill_logo_height	උස (px)
 bill_logo_tones	අළු පැහැ
+bill_logo_tones_help	ඝන: සෑම තිතක්ම කළු හෝ සුදු, පැහැදිලි ලාංඡන සඳහා. සෙවණැලි සහිත: අළු පැහැය සියුම් තිත් රටාවක් වේ, ඡායාරූප සහ මෘදු සෙවණැලි සඳහා.
 bill_logo_solid	ඝන
 bill_logo_shaded	සෙවණැලි සහිත
-bill_logo_help	පළල සහ උස px වලින්. හිස් නම් පින්තූරය අනුගමනය කරයි: එකක් හිස් නම් හැඩය රැකේ, දෙකම හිස් නම් එහිම ප්‍රමාණය; දෙකම දුන්නොත් ඇතුළට ගැළපේ, කිසිදා ඇදෙන්නේ නැත. පින්තූරයක් නැත්නම්: පෙන්වන ලාංඡනය එහි උස හිස් ඉඩක් ලෙස තබයි; සඟවන්න එය ඉවත් කරයි.
-bill_logo_tones_help	ඝන: සෑම තිතක්ම කළු හෝ සුදු, පැහැදිලි ලාංඡන සඳහා. සෙවණැලි සහිත: අළු පැහැය සියුම් තිත් රටාවක් වේ, ඡායාරූප සහ මෘදු සෙවණැලි සඳහා.
 slip_col_width	පළල (mm)
 slip_col_start	ආරම්භක ඉඩ (px)
 slip_col_end	අවසාන ඉඩ (px)
@@ -566,6 +566,15 @@ print_open	මුද්‍රණය / විවෘත කරන්න
 reason_amend_ph	සංශෝධන / අවලංගු / ආපසු ගෙවීමට හේතුව
 reason_note_ph	හේතුව / සටහන (නාස්තිය, ගණන් කිරීම, ...)
 record_day_close	දවස කිට්ටුවෙන් ඉතිරි කරන්න
+business_day	When does Today reset?
+business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
+biz_day_until_close	Until Day close
+biz_day_midnight	Calendar midnight
+business_day_saved	Business day saved
+report_day_lens	View Today as
+report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
+report_lens_day_close	By Day close
+report_lens_midnight	By midnight
 refresh_from_shop	සාප්පුවෙන් නැවුම් කරන්න
 refund	ආපසු ගෙවීම
 remove_selected	තෝරාගත් ඉවත් කරන්න

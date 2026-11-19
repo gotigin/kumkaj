@@ -94,6 +94,8 @@ printer_paper_help	रिपोर्ट गरिएको भनेको य�
 preview_help	यो पर्ची तल छानिएको प्रिन्टरमा जसरी छापिन्छ, त्यसको भर्चुअल कागजमा वास्तविक नापमा। सेतो ठाउँमा छापिन्छ, खैरो कागजसम्म प्रिन्टर पुग्दैन, र फिक्का मसी काटिन्छ। नौ वटा कोठा कागज हुन्: पर्ची बस्नुपर्ने ठाउँमा ट्याप गर्नुहोस्। लामो पर्ची थप पानाहरूमा जान्छ। प्रिन्टर छान्दा पूर्वावलोकन मात्र बदलिन्छ।
 slip_col_start	सुरुको ठाउँ (px)
 slip_col_end	अन्त्यको ठाउँ (px)
+slip_columns	स्तम्भहरू
+slip_col_header	शीर्षक
 slip_columns_help	प्रत्येक स्तम्भको चौडाइमा यसको सुरु र अन्त्यको ठाउँ समावेश हुन्छ। पाठ आफ्नै स्तम्भभित्र बेरिन्छ; सामग्रीको चौडाइभन्दा बाहिर भएको भाग कागजमा र पूर्वावलोकनमा काटिन्छ।
 bill_total_qty_label	कुल परिमाण लेबल
 bill_total_subtotal_label	उप-जम्मा लेबल
@@ -363,6 +365,15 @@ print_open	छाप्नुहोस् / खोल्नुहोस्
 reason_amend_ph	संशोधन / रद्द / फिर्ताको कारण
 reason_note_ph	कारण / टिप्पणी (खेर, गणना, …)
 record_day_close	दिन बन्द दर्ता गर्नुहोस्
+business_day	When does Today reset?
+business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
+biz_day_until_close	Until Day close
+biz_day_midnight	Calendar midnight
+business_day_saved	Business day saved
+report_day_lens	View Today as
+report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
+report_lens_day_close	By Day close
+report_lens_midnight	By midnight
 refresh_from_shop	पसलबाट ताजा गर्नुहोस्
 refund	फिर्ता
 remove_selected	छानिएको हटाउनुहोस्
@@ -486,6 +497,8 @@ route_bill	बिल
 station_print_pick_first	पहिले औषधालयको भाग छान्नुहोस्
 bill_printers_dd	बिलका प्रिन्टर
 bill_printers_dd_n	बिलका लागि {n} प्रिन्टर · बदल्न थिच्नुहोस्
+printer_mode_first	पहिले चल्ने
+printer_mode_all	सबैमा छाप्नुहोस्
 station_vp_attached	प्रिन्टर जोडियो
 station_vp_detached	स्टेसनबाट प्रिन्टर हटाइयो
 print_test_page	परीक्षण पृष्ठ छाप्नुहोस्
@@ -837,6 +850,10 @@ client_template_importing	{title} आयात गर्दै…
 client_template_done	{title} का सबै सामान तपाईंका सामानमा छन्।
 client_template_imported	{title} बाट {d} सामान र {c} वर्ग थपिए
 cancel	रद्द
+removing	हटाउँदै…
+removed	हटाइयो
+updating_order	अपडेट हुँदैछ…
+order_updated	अर्डर अपडेट भयो
 opening_client	क्लाइन्ट खुल्दै…
 preparing_desk	डेस्क तयार हुँदै…
 opening_server	सर्भर खुल्दै…
@@ -867,16 +884,7 @@ recent_changes	हालका परिवर्तन
 lane_declared_label	कर बिजक
 lane_owner_label	नगद मेमो
 money_lane_bill	बिल: {lane}
-
-removing	हटाउँदै…
-removed	हटाइयो
-updating_order	अपडेट हुँदैछ…
-order_updated	अर्डर अपडेट भयो
 sel_copy	कपी गर्नुहोस्
 sel_select_all	सबै छान्नुहोस्
 sel_copied	कपी भयो
 nav_loading	लोड हुँदैछ…
-printer_mode_first	पहिले चल्ने
-printer_mode_all	सबैमा छाप्नुहोस्
-slip_columns	स्तम्भहरू
-slip_col_header	शीर्षक

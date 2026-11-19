@@ -3,6 +3,25 @@ app_tagline	Boky iraka + birao famandrihana. Maimaim-poana ivelan'ny aterineto.
 unlock	Manokatra
 pin_hint	Ny PIN an'ny tompony dia manomboka amin'ny 0000
 sell	Famandrihana
+nav_board	Board
+board	Board
+park_draft	Park
+board_park_nothing	Nothing to park — add charges or booking details
+board_parked	Parked on Board — desk is clear
+board_draft	Draft
+board_booked	Booked
+board_filter_all	All
+board_filter_draft	Draft
+board_filter_booked	Booked
+board_cols_fmt	{n} col
+board_summary_fmt	{total} cards · {drafts} draft · {booked} booked
+board_card_no_charges	No charges yet
+board_card_charges	charges
+board_card_booked	Booking
+board_draft_gone	That draft is no longer on the Board
+board_draft_closed	That draft was already finished or discarded
+board_discard	Discard
+board_discarded	Draft discarded
 buy	Mandoa vola
 books	Bokin'ny andro
 books_help	Ny toerana anio. Famandrihana = entana miditra. Mandoa = faktioran'ny mpitatitra sy fandaniana. Antoko = mpitatitra & mpitatitra.
@@ -183,6 +202,13 @@ device_setup_help	Server mitazona ny boky eto. Client mifandray amin'ny Server.
 currency	Vola
 backup	Kopia
 settings_sec_diag	Fanaraha-maso ara-pahasalamana
+settings_sec_privacy	Tsiambaratelo
+privacy_policy_help	Fiainana manokana · PRIVACY.md · moklanjo.com/privacy
+dont_use	Aza ampiasaina
+receipt_printers_dd	Mpanonta printy amin'ity fitaovana ity · rosia
+receipt_printers_dd_n	{n} · Mpanonta printy amin'ity fitaovana ity · rosia
+label_printers_dd	Mpanonta printy amin'ity fitaovana ity · Etikety AWB
+label_printers_dd_n	{n} · Mpanonta printy amin'ity fitaovana ity · Etikety AWB
 settings_hub_help	Sokafy ny faritra iray isaky ny fotoana — kely kokoa ny mitete, mazava kokoa ny safidy.
 settings_sec_devices	Fitaovana hafa
 settings_sec_alerts	Fampandrenesana
@@ -315,6 +341,16 @@ copy_party_ledger_csv	Adika ny boky fitantanam-bola CSV
 copy_receipt	Adika ny fandraisana
 copy_report	Dika mitovy amin'ny tatitra
 counted_cash_ph	Vola voisan'ny trosa ao anaty vatasary
+close_shift_print	Close shift and print slip
+shift_handover	Shift handover
+shift_counted_ph	Cash counted at handover
+shift_since	This shift since
+expected_in_drawer	Expected in drawer
+lock_books_through_month	Lock books through month
+books_lock_month_ph	YYYY-MM
+lock_books_month_btn	Lock through this month
+books_locked_none	No month lock yet
+books_locked_through	Locked through
 counter_agency_ph	Anaran'ny kaontera / masoivoho (tsy voatery)
 create_backup	Mametraha backup
 day_close_summary	Famintinana ny andro rehefa mifarana
@@ -404,6 +440,9 @@ pay_ap_cash	Aloavy vola AP
 pay_ap_upi	Aloavy AP UPI
 period_bill	Faktiora fe-potoana
 period_bill_party	Volavolan-potoana (antoko)
+period_bill_generate	Generate bill
+period_bill_generate_print	Generate & print
+booking_bulk_preview	{ok} ready · {bad} bad
 pick_pod_photo	Mifidiana sary POD
 print_awb_label	Manonta etikety AWB
 print_open	Printy / sokafy
@@ -612,6 +651,19 @@ attachments_last_expense	Fampidirana (fandaniana farany)
 credit_limit_heading	Fetra amin'ny kredita (partie voafidy / voatonona)
 pay_selected_heading	Vola hofidina (hanefana trosa / haka vola mialoha)
 write_off_heading	Esory (fafao tsy misy fandoavana)
+adjustment_notes_heading	Adjustment notes
+adj_note_amount_ph	Amount
+adj_note_reason_ph	Reason (required)
+adj_note_awb_ph	Related AWB (optional)
+credit_note_btn	Credit note
+debit_note_btn	Debit note
+bill_later_heading	Bill later (post-booking extra)
+bill_later_amount_ph	Extra amount
+bill_later_party_ph	Party (only if booking has none)
+bill_later_btn	Bill later
+bill_later_extra_oda	ODA
+bill_later_extra_packing	Packing
+bill_later_extra_other	Other
 pay_ap_heading	Aloavy izay misy trosa amin'izy ireo (AP)
 country_tax	Firenena sy hetra
 extra_tills_heading	Kesy fanampiny
@@ -723,6 +775,23 @@ onboard_book_tmpl	Boky · {} — ampio zavatra sy fitomboan'ny loka, avy eo Vita
 onboard_template_tmpl	Anarano ny toerana raha tianao, avy eo safidio ny fomba hanombohana.
 tmpl_blurb	Boky iraka sy birao famandrihana: consignor, mpitatitra, boky andro, AWB.
 tmpl_how	Fonosana boky amin'ny birao; Boky andro anio; tabilao ho an'ny sarany, fety, tatitra.
+app_template_heading	Shop templates
+app_template_blurb	Pick a starter desk. Skip leaves parties empty.
+app_template_skip	Skip for now
+app_template_status	Server ready — import a template, or skip
+app_template_importing	Applying {title}…
+app_template_public_hdr	Templates
+app_template_import_selected	Import selected
+public_tmpl_help	Bundled agency packs for this shop. No download needed.
+business_day	When does Today reset?
+business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
+biz_day_until_close	Until Day close
+biz_day_midnight	Calendar midnight
+business_day_saved	Business day saved
+report_day_lens	View Today as
+report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
+report_lens_day_close	By Day close
+report_lens_midnight	By midnight
 trk_booked	namandrika
 trk_picked_up	Noraisina
 trk_in_transit	Eny an-dàlana
@@ -846,10 +915,3 @@ sel_copy	Adikao
 sel_select_all	Fidio daholo
 sel_copied	Voadika
 nav_loading	Mampiditra…
-settings_sec_privacy	Tsiambaratelo
-privacy_policy_help	Fiainana manokana · PRIVACY.md · moklanjo.com/privacy
-dont_use	Aza ampiasaina
-receipt_printers_dd	Mpanonta printy amin'ity fitaovana ity · rosia
-receipt_printers_dd_n	{n} · Mpanonta printy amin'ity fitaovana ity · rosia
-label_printers_dd	Mpanonta printy amin'ity fitaovana ity · Etikety AWB
-label_printers_dd_n	{n} · Mpanonta printy amin'ity fitaovana ity · Etikety AWB

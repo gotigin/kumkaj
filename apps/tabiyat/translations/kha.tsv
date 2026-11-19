@@ -94,6 +94,8 @@ printer_paper_help	Ba la pyntip ka dei ka shla ba la buh ha ka driver jong kane 
 preview_help	Kane ka slip kumba ka pynmih ha ka nongpynmih kot ba la jied hapoh, ha ka jingheh shisha ha ka shla virtual jong ka. Ba lieh ka dei ka jaka ba ka pynmih, ka shla saw-iong ka nongpynmih kot kam poi, bad ka ink ba jem rong la ot noh. Ki khyndai tylli ki kyntien-saw-dong ki dei ka shla: tap ha ka jaka ba ka slip ka dei ban shong. Ka slip ba jrong ka leit sha kiwei pat ki sla. Ban jied ka nongpynmih kot ka pynkylla tang ia ka jingpeit lypa.
 slip_col_start	Ka jaka ha kaba sdang (px)
 slip_col_end	Ka jaka ha kaba kut (px)
+slip_columns	Ki kolom
+slip_col_header	Ka khlieh
 slip_columns_help	Ka jingshah jong man la ka kolom ka kynthup ia ka jaka ha kaba sdang bad ha kaba kut. Ka jingthoh ka kynthup hapoh ka kolom jong ka; kaei kaba palat ia ka jingshah ka jingdon ka sait, ha ka shla bad ha ka jingpeit shuwa.
 bill_total_qty_label	Ka jingdon jingem baroh
 bill_total_subtotal_label	Ka jingthoh baroh
@@ -363,6 +365,15 @@ print_open	Pynmih / plie
 reason_amend_ph	Ka daw jong ka jingpynkylla / jingpyndam / jingpynphai pisa
 reason_note_ph	Ka daw / jingthoh (jingpynlut kai, jingkhein, ...)
 record_day_close	Ka sngi rekod
+business_day	When does Today reset?
+business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
+biz_day_until_close	Until Day close
+biz_day_midnight	Calendar midnight
+business_day_saved	Business day saved
+report_day_lens	View Today as
+report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
+report_lens_day_close	By Day close
+report_lens_midnight	By midnight
 refresh_from_shop	Pynthymmai na ka dukan
 refund	Jingpynphai pisa
 remove_selected	Pynduh ia kaba la jied
@@ -486,6 +497,8 @@ route_bill	Ka bill
 station_print_pick_first	Jied shwa ia ka bynta jong ka jaka ai dawai
 bill_printers_dd	Ki nongpynmih kot na ka bynta ka bill
 bill_printers_dd_n	{n} ki nongpynmih kot na ka bynta ka bill · tap ban pynkylla .
+printer_mode_first	Nyngkong kata ka treikam
+printer_mode_all	Pynmih ha baroh
 station_vp_attached	La pyndait ia ka printer
 station_vp_detached	La weng noh ia ka printer na steshon
 print_test_page	Pynmih ia ka sla test
@@ -837,6 +850,10 @@ client_template_importing	Ka jingwanrah {title}...
 client_template_done	Kawei pa kawei ka tiar na ka {title} ka don ha ki tiar jong phi.
 client_template_imported	La pynrung ia ki tiar {d} bad ki jait {c} na ka {title} .
 cancel	Pynsangeh
+removing	Dang weng…
+removed	La weng
+updating_order	Dang pynthymmai…
+order_updated	La pynthymmai ia ka order
 opening_client	Ka jingplie ia u kliant...
 preparing_desk	Ka jingpynkhreh ia ka miej...
 opening_server	Ka jingplie ia ka server...
@@ -867,16 +884,7 @@ recent_changes	Ki jingkylla ba dang shen
 lane_declared_label	Ka jingkhein khajna
 lane_owner_label	Ka jingkynmaw pisa
 money_lane_bill	Ka jingsiew: {lane}
-
-removing	Dang weng…
-removed	La weng
-updating_order	Dang pynthymmai…
-order_updated	La pynthymmai ia ka order
 sel_copy	Kopi
 sel_select_all	Jied baroh
 sel_copied	La kopi
 nav_loading	Dang load…
-printer_mode_first	Nyngkong kata ka treikam
-printer_mode_all	Pynmih ha baroh
-slip_columns	Ki kolom
-slip_col_header	Ka khlieh

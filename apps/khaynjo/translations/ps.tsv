@@ -115,6 +115,7 @@ bill_line_total	ټول
 bill_line_footer	فوټر
 bill_line_upi	UPI
 bill_logo_picture	انځور
+bill_logo_help	پلنوالی او لوړوالی په px. تش انځور تعقیبوي: یو تش وي نو بڼه ساتي، دواړه تش وي نو خپله اندازه کاروي؛ دواړه وټاکل شي نو دننه ځای کېږي، هېڅکله نه غځول کېږي. انځور نشته: ښودل شوی لوګو خپل لوړوالی د تش ځای په توګه ساتي؛ پټول یې لرې کوي.
 bill_logo_choose	انځور وټاکئ
 bill_logo_remove	انځور لرې کړئ
 bill_logo_none	انځور نشته
@@ -122,10 +123,9 @@ bill_logo_unreadable	دا داسې انځور نه دی چې اپ یې ولوس�
 bill_logo_width	پلنوالی (px)
 bill_logo_height	لوړوالی (px)
 bill_logo_tones	خړ رنګونه
+bill_logo_tones_help	ټینګ: هر ټکی تور یا سپین، د روښانه لوګوګانو لپاره. سیوري لرونکی: خړ رنګونه د وړو ټکو نقش جوړوي، د انځورونو او نرم سیوري لپاره.
 bill_logo_solid	ټینګ
 bill_logo_shaded	سیوري لرونکی
-bill_logo_help	پلنوالی او لوړوالی په px. تش انځور تعقیبوي: یو تش وي نو بڼه ساتي، دواړه تش وي نو خپله اندازه کاروي؛ دواړه وټاکل شي نو دننه ځای کېږي، هېڅکله نه غځول کېږي. انځور نشته: ښودل شوی لوګو خپل لوړوالی د تش ځای په توګه ساتي؛ پټول یې لرې کوي.
-bill_logo_tones_help	ټینګ: هر ټکی تور یا سپین، د روښانه لوګوګانو لپاره. سیوري لرونکی: خړ رنګونه د وړو ټکو نقش جوړوي، د انځورونو او نرم سیوري لپاره.
 slip_col_width	سور (mm)
 slip_col_start	د پیل واټن (px)
 slip_col_end	د پای واټن (px)
@@ -566,6 +566,15 @@ print_open	چاپ / خلاص کړئ
 reason_amend_ph	د تعدیل / باطل / بیرته ستنیدو دلیل
 reason_note_ph	دلیل / یادښت (ضایع، شمیرل، ...)
 record_day_close	د ورځې بند ثبت کړئ
+business_day	When does Today reset?
+business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
+biz_day_until_close	Until Day close
+biz_day_midnight	Calendar midnight
+business_day_saved	Business day saved
+report_day_lens	View Today as
+report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
+report_lens_day_close	By Day close
+report_lens_midnight	By midnight
 refresh_from_shop	له هټۍ څخه تازه کړئ
 refund	بیرته ورکول
 remove_selected	غوره شوی لرې کړئ

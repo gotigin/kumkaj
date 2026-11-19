@@ -3,6 +3,25 @@ app_tagline	택배 장부 + 접수 창구. 무료 오프라인.
 unlock	잠금 해제
 pin_hint	점주 PIN은 0000으로 시작합니다
 sell	접수
+nav_board	Board
+board	Board
+park_draft	Park
+board_park_nothing	Nothing to park — add charges or booking details
+board_parked	Parked on Board — desk is clear
+board_draft	Draft
+board_booked	Booked
+board_filter_all	All
+board_filter_draft	Draft
+board_filter_booked	Booked
+board_cols_fmt	{n} col
+board_summary_fmt	{total} cards · {drafts} draft · {booked} booked
+board_card_no_charges	No charges yet
+board_card_charges	charges
+board_card_booked	Booking
+board_draft_gone	That draft is no longer on the Board
+board_draft_closed	That draft was already finished or discarded
+board_discard	Discard
+board_discarded	Draft discarded
 buy	지급
 books	일계장
 books_help	오늘 현황. 접수 = 택배 입고. 지급 = 운송사 청구와 경비. 거래처 = 발송인과 운송사.
@@ -183,6 +202,13 @@ device_setup_help	서버는 장부를 여기에 보관합니다. 클라이언트
 currency	통화
 backup	백업
 settings_sec_diag	진단
+settings_sec_privacy	개인정보
+privacy_policy_help	https://moklanjo.com/privacy 와 같은 PRIVACY.md — 별도 사본이 아닙니다.
+dont_use	사용 안 함
+receipt_printers_dd	이 장치의 프린터 · 영수증
+receipt_printers_dd_n	{n} · 이 장치의 프린터 · 영수증
+label_printers_dd	이 장치의 프린터 · AWB 라벨
+label_printers_dd_n	{n} · 이 장치의 프린터 · AWB 라벨
 settings_hub_help	한 번에 한 영역만 엽니다 — 스크롤은 줄고 선택은 분명해집니다.
 settings_sec_devices	추가 계산대와 지점
 settings_sec_alerts	알림
@@ -315,6 +341,16 @@ copy_party_ledger_csv	거래처 원장 CSV 복사
 copy_receipt	영수증 복사
 copy_report	보고서 복사
 counted_cash_ph	서랍에 센 현금
+close_shift_print	Close shift and print slip
+shift_handover	Shift handover
+shift_counted_ph	Cash counted at handover
+shift_since	This shift since
+expected_in_drawer	Expected in drawer
+lock_books_through_month	Lock books through month
+books_lock_month_ph	YYYY-MM
+lock_books_month_btn	Lock through this month
+books_locked_none	No month lock yet
+books_locked_through	Locked through
 counter_agency_ph	창구 / 대리점 이름(선택)
 create_backup	백업 만들기
 day_close_summary	마감 요약
@@ -404,6 +440,9 @@ pay_ap_cash	AP 현금 결제
 pay_ap_upi	AP UPI 결제
 period_bill	기간 청구서
 period_bill_party	기간 청구서(거래처)
+period_bill_generate	Generate bill
+period_bill_generate_print	Generate & print
+booking_bulk_preview	{ok} ready · {bad} bad
 pick_pod_photo	POD 사진 선택
 print_awb_label	운송장 라벨 인쇄
 print_open	인쇄 / 열기
@@ -612,6 +651,19 @@ attachments_last_expense	첨부(마지막 경비)
 credit_limit_heading	신용 한도(선택/지정한 거래처)
 pay_selected_heading	선택한 것 결제(부채 정산/선금)
 write_off_heading	상각(결제 없이 정산)
+adjustment_notes_heading	Adjustment notes
+adj_note_amount_ph	Amount
+adj_note_reason_ph	Reason (required)
+adj_note_awb_ph	Related AWB (optional)
+credit_note_btn	Credit note
+debit_note_btn	Debit note
+bill_later_heading	Bill later (post-booking extra)
+bill_later_amount_ph	Extra amount
+bill_later_party_ph	Party (only if booking has none)
+bill_later_btn	Bill later
+bill_later_extra_oda	ODA
+bill_later_extra_packing	Packing
+bill_later_extra_other	Other
 pay_ap_heading	우리가 그들에게 줄 것(AP)
 country_tax	국가와 세금
 extra_tills_heading	추가 계산대
@@ -723,6 +775,23 @@ onboard_book_tmpl	장부 · {} — 품목과 기초 외상을 추가한 뒤 완�
 onboard_template_tmpl	원하면 매장 이름을 정한 뒤 시작 방법을 고르세요.
 tmpl_blurb	택배 장부와 접수 창구: 발송인, 운송사, 일일 장부, 운송장.
 tmpl_how	창구에서 소포 접수, 오늘은 일일 장부, 요금·거래처·보고서는 탭에서.
+app_template_heading	Shop templates
+app_template_blurb	Pick a starter desk. Skip leaves parties empty.
+app_template_skip	Skip for now
+app_template_status	Server ready — import a template, or skip
+app_template_importing	Applying {title}…
+app_template_public_hdr	Templates
+app_template_import_selected	Import selected
+public_tmpl_help	Bundled agency packs for this shop. No download needed.
+business_day	When does Today reset?
+business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
+biz_day_until_close	Until Day close
+biz_day_midnight	Calendar midnight
+business_day_saved	Business day saved
+report_day_lens	View Today as
+report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
+report_lens_day_close	By Day close
+report_lens_midnight	By midnight
 trk_booked	접수됨
 trk_picked_up	픽업됨
 trk_in_transit	운송 중
@@ -846,10 +915,3 @@ sel_copy	복사
 sel_select_all	모두 선택
 sel_copied	복사됨
 nav_loading	불러오는 중…
-settings_sec_privacy	개인정보
-privacy_policy_help	https://moklanjo.com/privacy 와 같은 PRIVACY.md — 별도 사본이 아닙니다.
-dont_use	사용 안 함
-receipt_printers_dd	이 장치의 프린터 · 영수증
-receipt_printers_dd_n	{n} · 이 장치의 프린터 · 영수증
-label_printers_dd	이 장치의 프린터 · AWB 라벨
-label_printers_dd_n	{n} · 이 장치의 프린터 · AWB 라벨

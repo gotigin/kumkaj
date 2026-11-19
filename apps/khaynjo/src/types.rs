@@ -1106,6 +1106,34 @@ enum BooksReportKind {
     BalanceSheet,
 }
 
+/// View-only Reports “Today” window — independent of shop `business_day_mode`.
+/// Shop default still drives Day close / till; this only changes how Reports reads.
+#[derive(Clone, Copy, PartialEq, Eq, Default)]
+enum ReportDayLens {
+    /// From last day close until now (keeps going past midnight).
+    #[default]
+    ByDayClose,
+    /// Local calendar midnight → next midnight.
+    ByCalendarMidnight,
+}
+
+impl ReportDayLens {
+    fn from_shop_mode(mode: business_day::BusinessDayMode) -> Self {
+        match mode {
+            business_day::BusinessDayMode::UntilDayClose => Self::ByDayClose,
+            business_day::BusinessDayMode::CalendarMidnight
+            | business_day::BusinessDayMode::AtHour(_) => Self::ByCalendarMidnight,
+        }
+    }
+
+    fn as_mode(self) -> business_day::BusinessDayMode {
+        match self {
+            Self::ByDayClose => business_day::BusinessDayMode::UntilDayClose,
+            Self::ByCalendarMidnight => business_day::BusinessDayMode::CalendarMidnight,
+        }
+    }
+}
+
 /// Every nav item in its default order — the Settings list and the rail /
 /// bottom bar (slots are positions; which tab a slot shows comes from
 /// `AppState.nav_order`). Settings sections come first, as on the Settings

@@ -3,6 +3,25 @@ app_tagline	Llyfrau asiantaeth negesydd + desg archebu. Am ddim all-lein.
 unlock	Datgloi
 pin_hint	PIN y perchennog yn dechrau fel 0000
 sell	Archebu
+nav_board	Board
+board	Board
+park_draft	Park
+board_park_nothing	Nothing to park — add charges or booking details
+board_parked	Parked on Board — desk is clear
+board_draft	Draft
+board_booked	Booked
+board_filter_all	All
+board_filter_draft	Draft
+board_filter_booked	Booked
+board_cols_fmt	{n} col
+board_summary_fmt	{total} cards · {drafts} draft · {booked} booked
+board_card_no_charges	No charges yet
+board_card_charges	charges
+board_card_booked	Booking
+board_draft_gone	That draft is no longer on the Board
+board_draft_closed	That draft was already finished or discarded
+board_discard	Discard
+board_discarded	Draft discarded
 buy	Talu allan
 books	Llyfr y dydd
 books_help	Sefyllfa heddiw. Archebu = parseli i mewn. Talu allan = biliau cludwyr a threuliau. Partïon = anfonwyr a chludwyr.
@@ -183,6 +202,13 @@ device_setup_help	Mae'r Gweinydd yn cadw'r llyfrau yma. Mae Cleient yn paru â G
 currency	Arian cyfred
 backup	Copi wrth gefn
 settings_sec_diag	Diagnosteg
+settings_sec_privacy	Preifatrwydd
+privacy_policy_help	Preifatrwydd · PRIVACY.md · moklanjo.com/privacy
+dont_use	Peidiwch â defnyddio
+receipt_printers_dd	Argraffwyr ar y ddyfais hon · Derbynneb
+receipt_printers_dd_n	{n} · Argraffwyr ar y ddyfais hon · Derbynneb
+label_printers_dd	Argraffwyr ar y ddyfais hon · Label AWB
+label_printers_dd_n	{n} · Argraffwyr ar y ddyfais hon · Label AWB
 settings_hub_help	Agorwch un ardal ar y tro — llai o sgrolio, dewisiadau cliriach.
 settings_sec_devices	Dyfeisiau eraill
 settings_sec_alerts	Rhybuddion
@@ -315,6 +341,16 @@ copy_party_ledger_csv	Copïo llyfr y parti CSV
 copy_receipt	Copïo derbynneb
 copy_report	Copïo adroddiad
 counted_cash_ph	Arian parod a gyfrifwyd yn y drôr
+close_shift_print	Close shift and print slip
+shift_handover	Shift handover
+shift_counted_ph	Cash counted at handover
+shift_since	This shift since
+expected_in_drawer	Expected in drawer
+lock_books_through_month	Lock books through month
+books_lock_month_ph	YYYY-MM
+lock_books_month_btn	Lock through this month
+books_locked_none	No month lock yet
+books_locked_through	Locked through
 counter_agency_ph	Enw cownter / asiantaeth (dewisol)
 create_backup	Creu copi wrth gefn
 day_close_summary	Crynodeb cau diwrnod
@@ -404,6 +440,9 @@ pay_ap_cash	Talu AP arian parod
 pay_ap_upi	Talu AP UPI
 period_bill	Bil cyfnod
 period_bill_party	Bil cyfnod (parti)
+period_bill_generate	Generate bill
+period_bill_generate_print	Generate & print
+booking_bulk_preview	{ok} ready · {bad} bad
 pick_pod_photo	Dewis llun POD
 print_awb_label	Argraffu label AWB
 print_open	Argraffu / agor
@@ -612,6 +651,19 @@ attachments_last_expense	Atodiadau (gwariant olaf)
 credit_limit_heading	Terfyn credyd (parti a ddewiswyd / a enwyd)
 pay_selected_heading	Talu'r dewisedig (setlo dyled / cymryd rhagdaliad)
 write_off_heading	Diddymu (clirio heb dalu)
+adjustment_notes_heading	Adjustment notes
+adj_note_amount_ph	Amount
+adj_note_reason_ph	Reason (required)
+adj_note_awb_ph	Related AWB (optional)
+credit_note_btn	Credit note
+debit_note_btn	Debit note
+bill_later_heading	Bill later (post-booking extra)
+bill_later_amount_ph	Extra amount
+bill_later_party_ph	Party (only if booking has none)
+bill_later_btn	Bill later
+bill_later_extra_oda	ODA
+bill_later_extra_packing	Packing
+bill_later_extra_other	Other
 pay_ap_heading	Talu'r hyn rydyn ni'n eu dyled (AP)
 country_tax	Gwlad a threth
 extra_tills_heading	Tiliau ychwanegol
@@ -723,6 +775,23 @@ onboard_book_tmpl	Book · {} — ychwanegwch eitemau a chredyd agoriadol, yna We
 onboard_template_tmpl	Enwch y lle os dymunwch, yna dewiswch sut i ddechrau.
 tmpl_blurb	Llyfrau negesydd a desg archebu: anfonwyr, cludwyr, llyfr y dydd, AWB.
 tmpl_how	Archebwch barseli wrth y ddesg; Llyfr y dydd ar gyfer heddiw; tabiau ar gyfer cyfraddau, partïon, adroddiadau.
+app_template_heading	Shop templates
+app_template_blurb	Pick a starter desk. Skip leaves parties empty.
+app_template_skip	Skip for now
+app_template_status	Server ready — import a template, or skip
+app_template_importing	Applying {title}…
+app_template_public_hdr	Templates
+app_template_import_selected	Import selected
+public_tmpl_help	Bundled agency packs for this shop. No download needed.
+business_day	When does Today reset?
+business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
+biz_day_until_close	Until Day close
+biz_day_midnight	Calendar midnight
+business_day_saved	Business day saved
+report_day_lens	View Today as
+report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
+report_lens_day_close	By Day close
+report_lens_midnight	By midnight
 trk_booked	Wedi'i archebu
 trk_picked_up	Wedi'i gasglu
 trk_in_transit	Ar y ffordd
@@ -846,10 +915,3 @@ sel_copy	Copïo
 sel_select_all	Dewis y cyfan
 sel_copied	Wedi copïo
 nav_loading	Yn llwytho…
-settings_sec_privacy	Preifatrwydd
-privacy_policy_help	Preifatrwydd · PRIVACY.md · moklanjo.com/privacy
-dont_use	Peidiwch â defnyddio
-receipt_printers_dd	Argraffwyr ar y ddyfais hon · Derbynneb
-receipt_printers_dd_n	{n} · Argraffwyr ar y ddyfais hon · Derbynneb
-label_printers_dd	Argraffwyr ar y ddyfais hon · Label AWB
-label_printers_dd_n	{n} · Argraffwyr ar y ddyfais hon · Label AWB

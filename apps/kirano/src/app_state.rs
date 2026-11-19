@@ -310,6 +310,8 @@ struct AppState {
     rail_collapsed: bool,
     /// Which bank-books report chip is selected (must match `day_close_text` body).
     books_report_kind: BooksReportKind,
+    /// Reports “Today” view lens (day-close vs midnight) — not shop meta.
+    report_day_lens: ReportDayLens,
 }
 
 /// Wrong PINs tolerated before [`UNLOCK_BLOCK`] kicks in.

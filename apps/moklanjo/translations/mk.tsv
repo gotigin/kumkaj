@@ -3,6 +3,25 @@ app_tagline	Курирско-агенциски книги + резерваци�
 unlock	Отклучи
 pin_hint	Сопственикот PIN започнува како 0000
 sell	Резервација
+nav_board	Board
+board	Board
+park_draft	Park
+board_park_nothing	Nothing to park — add charges or booking details
+board_parked	Parked on Board — desk is clear
+board_draft	Draft
+board_booked	Booked
+board_filter_all	All
+board_filter_draft	Draft
+board_filter_booked	Booked
+board_cols_fmt	{n} col
+board_summary_fmt	{total} cards · {drafts} draft · {booked} booked
+board_card_no_charges	No charges yet
+board_card_charges	charges
+board_card_booked	Booking
+board_draft_gone	That draft is no longer on the Board
+board_draft_closed	That draft was already finished or discarded
+board_discard	Discard
+board_discarded	Draft discarded
 buy	Исплати
 books	Дневна книга
 books_help	Денешниот став. Резервација = пакети. Исплати = сметки и трошоци на превозникот. Страни = испраќачи и превозници.
@@ -183,6 +202,13 @@ device_setup_help	Серверот ги чува книгите овде. Пар
 currency	Валута
 backup	Резервна копија
 settings_sec_diag	Дијагностика
+settings_sec_privacy	Приватност
+privacy_policy_help	Приватност · PRIVACY.md · moklanjo.com/privacy
+dont_use	Не користете
+receipt_printers_dd	Принтери на овој уред · Потврда
+receipt_printers_dd_n	{n} · Принтери на овој уред · Потврда
+label_printers_dd	Принтери на овој уред · AWB етикета
+label_printers_dd_n	{n} · Принтери на овој уред · AWB етикета
 settings_hub_help	Отворете една област во исто време - помалку лизгање, појасни избори.
 settings_sec_devices	Други уреди
 settings_sec_alerts	Известувања
@@ -315,6 +341,16 @@ copy_party_ledger_csv	Копирај ја книгата за клиенти CSV
 copy_receipt	Копирај ја потврдата
 copy_report	Копирај извештај
 counted_cash_ph	Избројана готовина во фиока
+close_shift_print	Close shift and print slip
+shift_handover	Shift handover
+shift_counted_ph	Cash counted at handover
+shift_since	This shift since
+expected_in_drawer	Expected in drawer
+lock_books_through_month	Lock books through month
+books_lock_month_ph	YYYY-MM
+lock_books_month_btn	Lock through this month
+books_locked_none	No month lock yet
+books_locked_through	Locked through
 counter_agency_ph	Бројач / име на агенција (изборно)
 create_backup	Направете резервна копија
 day_close_summary	Краток преглед на денот
@@ -404,6 +440,9 @@ pay_ap_cash	Платете АП готовина
 pay_ap_upi	Плати АП UPI
 period_bill	Сметката за период
 period_bill_party	Сметката за период (партија)
+period_bill_generate	Generate bill
+period_bill_generate_print	Generate & print
+booking_bulk_preview	{ok} ready · {bad} bad
 pick_pod_photo	Изберете POD фотографија
 print_awb_label	Печатете ја етикетата AWB
 print_open	Печати / отвори
@@ -612,6 +651,19 @@ attachments_last_expense	Прилози (последен трошок)
 credit_limit_heading	Кредитен лимит (избран клиент или добавувач)
 pay_selected_heading	Исплати избраното (подмири долг / земи однапред)
 write_off_heading	Отпиши (исчисти без плаќање)
+adjustment_notes_heading	Adjustment notes
+adj_note_amount_ph	Amount
+adj_note_reason_ph	Reason (required)
+adj_note_awb_ph	Related AWB (optional)
+credit_note_btn	Credit note
+debit_note_btn	Debit note
+bill_later_heading	Bill later (post-booking extra)
+bill_later_amount_ph	Extra amount
+bill_later_party_ph	Party (only if booking has none)
+bill_later_btn	Bill later
+bill_later_extra_oda	ODA
+bill_later_extra_packing	Packing
+bill_later_extra_other	Other
 pay_ap_heading	Платете го она што им го должиме (АП)
 country_tax	Земја и данок
 extra_tills_heading	Дополнителни каси
@@ -723,6 +775,23 @@ onboard_book_tmpl	Леџер · {} — додајте ставки од мени
 onboard_template_tmpl	Именувајте го местото ако сакате, а потоа изберете како да започнете.
 tmpl_blurb	Курирски книги и биро за резервации: испраќачи, превозници, дневник, AWB.
 tmpl_how	Резервирајте пакети на бирото; Дневна книга за денес; јазичиња за стапки, забави, извештаи.
+app_template_heading	Shop templates
+app_template_blurb	Pick a starter desk. Skip leaves parties empty.
+app_template_skip	Skip for now
+app_template_status	Server ready — import a template, or skip
+app_template_importing	Applying {title}…
+app_template_public_hdr	Templates
+app_template_import_selected	Import selected
+public_tmpl_help	Bundled agency packs for this shop. No download needed.
+business_day	When does Today reset?
+business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
+biz_day_until_close	Until Day close
+biz_day_midnight	Calendar midnight
+business_day_saved	Business day saved
+report_day_lens	View Today as
+report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
+report_lens_day_close	By Day close
+report_lens_midnight	By midnight
 trk_booked	Резервирано
 trk_picked_up	Собрано
 trk_in_transit	Во транзит
@@ -846,10 +915,3 @@ sel_copy	Копирај
 sel_select_all	Избери сè
 sel_copied	Копирано
 nav_loading	Се вчитува…
-settings_sec_privacy	Приватност
-privacy_policy_help	Приватност · PRIVACY.md · moklanjo.com/privacy
-dont_use	Не користете
-receipt_printers_dd	Принтери на овој уред · Потврда
-receipt_printers_dd_n	{n} · Принтери на овој уред · Потврда
-label_printers_dd	Принтери на овој уред · AWB етикета
-label_printers_dd_n	{n} · Принтери на овој уред · AWB етикета

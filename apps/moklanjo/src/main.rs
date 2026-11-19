@@ -11,21 +11,21 @@ pub use makepad_widgets;
 // links the same package's library as `kumkaj_moklanjo`.
 #[cfg(target_os = "android")]
 use crate::{
-    books_op, booking, courier_ops_view, diag, domain, entity_template, fiscal, labels, lan_images,
-    local_servers, locale, manifest, menu_images, net, notify, os_paper, phone, precise, privacy_policy,
-    print_share, rates, snack, startup, store, suggest, thumbs,
+    books_op, booking, business_day, courier_ops_view, diag, domain, entity_template, fiscal, labels,
+    lan_images, local_servers, locale, manifest, menu_images, net, notify, os_paper, phone, precise,
+    privacy_policy, print_share, rates, snack, startup, store, suggest, thumbs,
 };
 #[cfg(not(target_os = "android"))]
 use kumkaj_moklanjo::{
-    books_op, booking, courier_ops_view, diag, domain, entity_template, fiscal, labels, lan_images,
-    local_servers, locale, manifest, menu_images, net, notify, os_paper, phone, precise, privacy_policy,
-    print_share, rates, snack, startup, store, suggest, thumbs, uninstall_wipe,
+    books_op, booking, business_day, courier_ops_view, diag, domain, entity_template, fiscal, labels,
+    lan_images, local_servers, locale, manifest, menu_images, net, notify, os_paper, phone, precise,
+    privacy_policy, print_share, rates, snack, startup, store, suggest, thumbs, uninstall_wipe,
 };
 use snack::SnackKind;
 
 use domain::{
-    AttachmentEntity, Cart, Customer, Money, MoneyLane, MoneyMoveKind, PayMethod, Product, Sale,
-    SaleRevision, StaffFeatures, StaffMember, StaffRole, new_id,
+    AttachmentEntity, BookingDeskSnapshot, Cart, Customer, Money, MoneyLane, MoneyMoveKind,
+    PayMethod, Product, Sale, SaleRevision, StaffFeatures, StaffMember, StaffRole, new_id,
 };
 use books_op::BooksOp;
 use fiscal::{FiscalSettings, TaxPricing};
@@ -106,6 +106,7 @@ include!("popup.rs");
 include!("selection_menu.rs");
 include!("widgets/misc_lists.rs");
 include!("widgets/ops_board.rs");
+include!("widgets/today_board.rs");
 include!("widgets/report_sidebar.rs");
 include!("info_help.rs");
 include!("app/defs.rs");
@@ -126,6 +127,7 @@ include!("app/impl_ha_03.rs");
 include!("app/impl_ha_04.rs");
 include!("app/impl_ha_05.rs");
 include!("app/ops_board.rs");
+include!("app/today_board.rs");
 include!("app/impl_ha_06.rs");
 include!("app/match_misc.rs");
 include!("smoke_script.rs");

@@ -94,6 +94,8 @@ printer_paper_help	“上报”是此打印机驱动程序所设置的纸张；�
 preview_help	此单据与在下方所选打印机上打印的完全相同，按实际尺寸显示在其虚拟纸张上。白色是打印的位置，灰色纸张是打印机无法到达的地方，变淡的墨迹会被切掉。九个方格就是纸张：点按单据应放的位置。长单据会接续到更多页。选择打印机只会改变预览。
 slip_col_start	开头间距 (px)
 slip_col_end	结尾间距 (px)
+slip_columns	列
+slip_col_header	表头
 slip_columns_help	每列的宽度已包含其开头和结尾间距。文字在所属列内换行；超出内容宽度的部分，在纸上和预览中都会被裁掉。
 bill_total_qty_label	总数量标签
 bill_total_subtotal_label	小计标签
@@ -363,6 +365,15 @@ print_open	打印/打开
 reason_amend_ph	修改/作废/退款原因
 reason_note_ph	原因/备注（损耗、盘点…）
 record_day_close	记录日结
+business_day	When does Today reset?
+business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
+biz_day_until_close	Until Day close
+biz_day_midnight	Calendar midnight
+business_day_saved	Business day saved
+report_day_lens	View Today as
+report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
+report_lens_day_close	By Day close
+report_lens_midnight	By midnight
 refresh_from_shop	从店铺刷新
 refund	退款
 remove_selected	删除所选
@@ -486,6 +497,8 @@ route_bill	账单
 station_print_pick_first	请先选择一个药房分区
 bill_printers_dd	账单打印机
 bill_printers_dd_n	{n} 台账单打印机 · 点击以更改
+printer_mode_first	第一个可用的
+printer_mode_all	全部打印
 station_vp_attached	已挂接打印机
 station_vp_detached	已从工位移除打印机
 print_test_page	打印测试页
@@ -837,6 +850,10 @@ client_template_importing	正在导入{title}…
 client_template_done	{title} 里的每个商品都已在你的商品中。
 client_template_imported	已从 {title} 添加 {d} 个商品和 {c} 个分类
 cancel	取消
+removing	正在移除…
+removed	已移除
+updating_order	正在更新…
+order_updated	订单已更新
 opening_client	正在打开客户端…
 preparing_desk	正在准备桌面…
 opening_server	正在打开服务员…
@@ -867,16 +884,7 @@ recent_changes	最近变动
 lane_declared_label	税务发票
 lane_owner_label	现金小票
 money_lane_bill	账单：{lane}
-
-removing	正在移除…
-removed	已移除
-updating_order	正在更新…
-order_updated	订单已更新
 sel_copy	复制
 sel_select_all	全选
 sel_copied	已复制
 nav_loading	加载中…
-printer_mode_first	第一个可用的
-printer_mode_all	全部打印
-slip_columns	列
-slip_col_header	表头

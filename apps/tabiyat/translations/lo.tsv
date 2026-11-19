@@ -94,6 +94,8 @@ printer_paper_help	ທີ່ລາຍງານ ແມ່ນເຈ້ຍທີ່
 preview_help	ໃບບິນນີ້ຕາມທີ່ມັນພິມອອກໃນເຄື່ອງພິມທີ່ເລືອກຂ້າງລຸ່ມ ໃນຂະໜາດຈິງເທິງເຈ້ຍສະເໝືອນຂອງມັນ. ສີຂາວແມ່ນບ່ອນທີ່ພິມ ເຈ້ຍສີເທົາແມ່ນເຄື່ອງພິມໄປບໍ່ເຖິງ ແລະໝຶກຈາງຖືກຕັດອອກ. ເກົ້າຊ່ອງແມ່ນເຈ້ຍ: ແຕະບ່ອນທີ່ໃບບິນຄວນຢູ່. ໃບບິນຍາວຈະຕໍ່ໄປໜ້າຕໍ່ໄປ. ການເລືອກເຄື່ອງພິມປ່ຽນແຕ່ຕົວຢ່າງເທົ່ານັ້ນ.
 slip_col_start	ຊ່ອງວ່າງຕົ້ນ (px)
 slip_col_end	ຊ່ອງວ່າງທ້າຍ (px)
+slip_columns	ຖັນ
+slip_col_header	ສ່ວນຫົວ
 slip_columns_help	ຄວາມກວ້າງຂອງແຕ່ລະຖັນລວມທັງຊ່ອງວ່າງຕົ້ນ ແລະ ທ້າຍຂອງມັນ. ຂໍ້ຄວາມຈະຕັດແຖວພາຍໃນຖັນຂອງມັນ; ສ່ວນທີ່ເກີນຄວາມກວ້າງເນື້ອຫາຈະຖືກຕັດອອກ ທັງໃນເຈ້ຍ ແລະ ໃນການເບິ່ງຕົວຢ່າງ.
 bill_total_qty_label	ປ້າຍຈຳນວນທັງໝົດ
 bill_total_subtotal_label	ປ້າຍທັງໝົດຍ່ອຍ
@@ -363,6 +365,15 @@ print_open	ພິມ / ເປີດ
 reason_amend_ph	ເຫດຜົນສໍາລັບການດັດແກ້ / void / refund
 reason_note_ph	ເຫດຜົນ / ຫມາຍເຫດ (ເສຍ, ນັບ, ... )
 record_day_close	ບັນທຶກມື້ປິດ
+business_day	When does Today reset?
+business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
+biz_day_until_close	Until Day close
+biz_day_midnight	Calendar midnight
+business_day_saved	Business day saved
+report_day_lens	View Today as
+report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
+report_lens_day_close	By Day close
+report_lens_midnight	By midnight
 refresh_from_shop	ໂຫຼດຂໍ້ມູນໃໝ່ຈາກຮ້ານຄ້າ
 refund	ເງິນຄືນ
 remove_selected	ລຶບທີ່ເລືອກອອກ
@@ -486,6 +497,8 @@ route_bill	ໃບບິນ
 station_print_pick_first	ເລືອກ​ເອົາ​ພາກ​ສ່ວນ​ຢາ​ກ່ອນ​
 bill_printers_dd	ເຄື່ອງພິມສໍາລັບໃບບິນຄ່າ
 bill_printers_dd_n	{n}ເຄື່ອງພິມສຳລັບໃບບິນ · ແຕະເພື່ອປ່ຽນ
+printer_mode_first	ທໍາອິດທີ່ເຮັດວຽກ
+printer_mode_all	ພິມທັງໝົດ
 station_vp_attached	ຕິດເຄື່ອງພິມ
 station_vp_detached	ເອົາເຄື່ອງພິມອອກຈາກສະຖານີ
 print_test_page	ພິມໜ້າທົດສອບ
@@ -837,6 +850,10 @@ client_template_importing	ກຳລັງນຳເຂົ້າ {title}…
 client_template_done	ທຸກໆລາຍການຈາກ {title} ແມ່ນຢູ່ໃນລາຍການຂອງທ່ານ.
 client_template_imported	ເພີ່ມລາຍການ {d} ແລະໝວດໝູ່ {c} ຈາກ {title}
 cancel	ຍົກເລີກ
+removing	ກຳລັງລຶບອອກ…
+removed	ລຶບອອກແລ້ວ
+updating_order	ກຳລັງອັບເດດ…
+order_updated	ອັບເດດອໍເດີແລ້ວ
 opening_client	ກຳລັງເປີດລູກຄ້າ...
 preparing_desk	ກຳລັງກະກຽມໂຕະ...
 opening_server	ກຳລັງເປີດເຊີບເວີ...
@@ -867,16 +884,7 @@ recent_changes	ການປ່ຽນແປງທີ່ຜ່ານມາ
 lane_declared_label	ໃບເກັບພາສີ
 lane_owner_label	ບັນທຶກເງິນສົດ
 money_lane_bill	ໃບບິນ: {lane}
-
-removing	ກຳລັງລຶບອອກ…
-removed	ລຶບອອກແລ້ວ
-updating_order	ກຳລັງອັບເດດ…
-order_updated	ອັບເດດອໍເດີແລ້ວ
 sel_copy	ສຳເນົາ
 sel_select_all	ເລືອກທັງໝົດ
 sel_copied	ສຳເນົາແລ້ວ
 nav_loading	ກຳລັງໂຫຼດ…
-printer_mode_first	ທໍາອິດທີ່ເຮັດວຽກ
-printer_mode_all	ພິມທັງໝົດ
-slip_columns	ຖັນ
-slip_col_header	ສ່ວນຫົວ

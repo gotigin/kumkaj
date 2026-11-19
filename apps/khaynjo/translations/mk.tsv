@@ -115,6 +115,7 @@ bill_line_total	Вкупно
 bill_line_footer	Подножје
 bill_line_upi	UPI
 bill_logo_picture	Слика
+bill_logo_help	Ширина и висина во px. Празното ја следи сликата: едно празно ја чува формата, двете празни ја користат нејзината големина; двете зададени ја сместуваат внатре, никогаш растегната. Без слика: прикажаното лого ја чува својата висина како празен простор; Скриј го отстранува.
 bill_logo_choose	Избери слика
 bill_logo_remove	Отстрани ја сликата
 bill_logo_none	Нема слика
@@ -122,10 +123,9 @@ bill_logo_unreadable	Не е слика што апликацијата може
 bill_logo_width	Ширина (px)
 bill_logo_height	Висина (px)
 bill_logo_tones	Сиви тонови
+bill_logo_tones_help	Полно: секоја точка црна или бела, за остри логоа. Засенчено: сивото станува фин шаблон од точки, за фотографии и меки сенки.
 bill_logo_solid	Полно
 bill_logo_shaded	Засенчено
-bill_logo_help	Ширина и висина во px. Празното ја следи сликата: едно празно ја чува формата, двете празни ја користат нејзината големина; двете зададени ја сместуваат внатре, никогаш растегната. Без слика: прикажаното лого ја чува својата висина како празен простор; Скриј го отстранува.
-bill_logo_tones_help	Полно: секоја точка црна или бела, за остри логоа. Засенчено: сивото станува фин шаблон од точки, за фотографии и меки сенки.
 slip_col_width	Ширина (mm)
 slip_col_start	Почетно растојание (px)
 slip_col_end	Крајно растојание (px)
@@ -566,6 +566,15 @@ print_open	Печати / отвори
 reason_amend_ph	Причина за измена/неважење/рефундирање
 reason_note_ph	Причина / забелешка (трошење, броење, ...)
 record_day_close	Зачувајте го денот затворен
+business_day	When does Today reset?
+business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
+biz_day_until_close	Until Day close
+biz_day_midnight	Calendar midnight
+business_day_saved	Business day saved
+report_day_lens	View Today as
+report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
+report_lens_day_close	By Day close
+report_lens_midnight	By midnight
 refresh_from_shop	Освежете се од продавница
 refund	Рефундирање
 remove_selected	Отстранете го избраното

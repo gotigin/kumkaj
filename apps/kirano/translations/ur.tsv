@@ -82,6 +82,8 @@ printer_paper_help	بتایا گیا وہ کاغذ ہے جس پر اس پرنٹ�
 preview_help	یہ پرچی جیسے نیچے چنے گئے پرنٹر پر چھپتی ہے، اس کے ورچوئل کاغذ پر اصل ناپ میں۔ سفید جگہ پر چھپتا ہے، سرمئی کاغذ تک پرنٹر نہیں پہنچتا، اور پھیکی سیاہی کٹ جاتی ہے۔ نو خانے کاغذ ہیں: جہاں پرچی ہونی چاہیے وہاں ٹیپ کریں۔ لمبی پرچی مزید صفحات پر جاتی ہے۔ پرنٹر چننے سے صرف پیش منظر بدلتا ہے۔
 slip_col_start	آغاز کی جگہ (px)
 slip_col_end	اختتام کی جگہ (px)
+slip_columns	کالم
+slip_col_header	سرخی
 slip_columns_help	ہر کالم کی چوڑائی میں اس کی آغاز اور اختتام کی جگہ شامل ہے۔ متن اپنے کالم کے اندر ہی لپٹتا ہے؛ مواد کی چوڑائی سے باہر جو ہو وہ کاغذ اور پیش نظارہ دونوں میں کٹ جاتا ہے۔
 bill_total_qty_label	کل تعداد لیبل
 bill_total_subtotal_label	ذیلی کل لیبل
@@ -351,6 +353,15 @@ print_open	چھاپیں / کھولیں
 reason_amend_ph	ترمیم / منسوخی / واپسی کی وجہ
 reason_note_ph	وجہ / نوٹ (ضیاع، گنتی، …)
 record_day_close	دن بند درج کریں
+business_day	When does Today reset?
+business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
+biz_day_until_close	Until Day close
+biz_day_midnight	Calendar midnight
+business_day_saved	Business day saved
+report_day_lens	View Today as
+report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
+report_lens_day_close	By Day close
+report_lens_midnight	By midnight
 refresh_from_shop	دکان سے تازہ کریں
 refund	واپسی
 remove_selected	منتخب ہٹائیں
@@ -474,6 +485,8 @@ route_bill	بل
 station_print_pick_first	پہلے دکان کا حصہ چنیں
 bill_printers_dd	بل کے پرنٹر
 bill_printers_dd_n	بل کے لیے {n} پرنٹر · بدلنے کے لیے دبائیں
+printer_mode_first	جو پہلے چلے
+printer_mode_all	سب پر چھاپیں
 station_vp_attached	پرنٹر منسلک
 station_vp_detached	اسٹیشن سے پرنٹر ہٹا دیا
 print_test_page	ٹیسٹ صفحہ چھاپیں
@@ -825,6 +838,10 @@ client_template_importing	{title} درآمد…
 client_template_done	{title} کا ہر آئٹم آپ کے آئٹمز میں ہے۔
 client_template_imported	{title} سے {d} آئٹمز اور {c} زمرے شامل کیے
 cancel	منسوخ
+removing	ہٹایا جا رہا ہے…
+removed	ہٹا دیا گیا
+updating_order	اپ ڈیٹ ہو رہا ہے…
+order_updated	آرڈر اپ ڈیٹ ہو گیا
 opening_client	کلائنٹ کھل رہا ہے…
 preparing_desk	ڈیسک تیار ہو رہا ہے…
 opening_server	سرور کھل رہا ہے…
@@ -855,16 +872,7 @@ recent_changes	حالیہ تبدیلیاں
 lane_declared_label	ٹیکس انوائس
 lane_owner_label	کیش میمو
 money_lane_bill	بل: {lane}
-
-removing	ہٹایا جا رہا ہے…
-removed	ہٹا دیا گیا
-updating_order	اپ ڈیٹ ہو رہا ہے…
-order_updated	آرڈر اپ ڈیٹ ہو گیا
 sel_copy	کاپی کریں
 sel_select_all	سب منتخب کریں
 sel_copied	کاپی ہو گیا
 nav_loading	لوڈ ہو رہا ہے…
-printer_mode_first	جو پہلے چلے
-printer_mode_all	سب پر چھاپیں
-slip_columns	کالم
-slip_col_header	سرخی

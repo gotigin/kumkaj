@@ -115,6 +115,7 @@ bill_line_total	ᱢᱩᱴ
 bill_line_footer	ᱯᱷᱩᱴᱟᱨ
 bill_line_upi	UPI
 bill_logo_picture	ᱪᱤᱛᱟᱹᱨ
+bill_logo_help	ᱳᱥᱟᱨ ᱟᱨ ᱩᱥᱩᱞ px ᱨᱮ᱾ ᱠᱷᱟᱹᱞᱤ ᱫᱚ ᱪᱤᱛᱟᱹᱨ ᱛᱟᱭᱚᱢ ᱛᱮ: ᱢᱤᱫ ᱠᱷᱟᱹᱞᱤ ᱛᱤᱱ ᱫᱚ ᱧᱮᱞ ᱫᱚᱦᱚᱭᱟᱭ, ᱵᱟᱨᱭᱟ ᱠᱷᱟᱹᱞᱤ ᱛᱤᱱ ᱫᱚ ᱟᱡᱟᱜ ᱢᱟᱯ; ᱵᱟᱨᱭᱟ ᱮᱢ ᱠᱟᱱ ᱛᱤᱱ ᱫᱚ ᱵᱷᱤᱛᱤᱨ ᱫᱚᱦᱚᱭᱟᱭ, ᱡᱟᱦᱟᱸ ᱡᱷᱚᱜ ᱵᱟᱝ ᱚᱨᱜᱚᱫᱚᱜᱼᱟ᱾ ᱪᱤᱛᱟᱹᱨ ᱵᱟᱹᱱᱩᱜ ᱠᱷᱟᱱ: ᱩᱫᱩᱜ ᱪᱤᱱᱦᱟᱹ ᱫᱚ ᱟᱡᱟᱜ ᱩᱥᱩᱞ ᱠᱷᱟᱹᱞᱤ ᱡᱟᱭᱜᱟ ᱞᱮᱠᱟ ᱫᱚᱦᱚᱭᱟᱭ; ᱩᱠᱩ ᱫᱚ ᱚᱪᱚᱜᱼᱟᱭ᱾
 bill_logo_choose	ᱪᱤᱛᱟᱹᱨ ᱵᱟᱪᱷᱟᱣ ᱢᱮ
 bill_logo_remove	ᱪᱤᱛᱟᱹᱨ ᱚᱪᱚᱜ ᱢᱮ
 bill_logo_none	ᱪᱤᱛᱟᱹᱨ ᱵᱟᱹᱱᱩᱜᱼᱟ
@@ -122,10 +123,9 @@ bill_logo_unreadable	ᱱᱚᱶᱟ ᱮᱯ ᱯᱟᱲᱦᱟᱣ ᱫᱟᱲᱮᱭᱟ�
 bill_logo_width	ᱳᱥᱟᱨ (px)
 bill_logo_height	ᱩᱥᱩᱞ (px)
 bill_logo_tones	ᱯᱩᱸᱰ ᱦᱮᱸᱫᱮ
+bill_logo_tones_help	ᱠᱮᱴᱮᱡ: ᱡᱚᱛᱚ ᱴᱩᱯᱩᱞ ᱦᱮᱸᱫᱮ ᱥᱮ ᱯᱩᱸᱰ, ᱯᱚᱨᱥᱟᱞ ᱪᱤᱱᱦᱟᱹ ᱞᱟᱹᱜᱤᱫ᱾ ᱪᱷᱟᱭᱟᱱ: ᱯᱩᱸᱰ ᱦᱮᱸᱫᱮ ᱫᱚ ᱦᱩᱰᱤᱧ ᱴᱩᱯᱩᱞ ᱨᱮᱭᱟᱜ ᱧᱮᱞ ᱦᱩᱭᱩᱜᱼᱟ, ᱪᱤᱛᱟᱹᱨ ᱟᱨ ᱞᱚᱞᱚᱢ ᱪᱷᱟᱭᱟ ᱞᱟᱹᱜᱤᱫ᱾
 bill_logo_solid	ᱠᱮᱴᱮᱡ
 bill_logo_shaded	ᱪᱷᱟᱭᱟᱱ
-bill_logo_help	ᱳᱥᱟᱨ ᱟᱨ ᱩᱥᱩᱞ px ᱨᱮ᱾ ᱠᱷᱟᱹᱞᱤ ᱫᱚ ᱪᱤᱛᱟᱹᱨ ᱛᱟᱭᱚᱢ ᱛᱮ: ᱢᱤᱫ ᱠᱷᱟᱹᱞᱤ ᱛᱤᱱ ᱫᱚ ᱧᱮᱞ ᱫᱚᱦᱚᱭᱟᱭ, ᱵᱟᱨᱭᱟ ᱠᱷᱟᱹᱞᱤ ᱛᱤᱱ ᱫᱚ ᱟᱡᱟᱜ ᱢᱟᱯ; ᱵᱟᱨᱭᱟ ᱮᱢ ᱠᱟᱱ ᱛᱤᱱ ᱫᱚ ᱵᱷᱤᱛᱤᱨ ᱫᱚᱦᱚᱭᱟᱭ, ᱡᱟᱦᱟᱸ ᱡᱷᱚᱜ ᱵᱟᱝ ᱚᱨᱜᱚᱫᱚᱜᱼᱟ᱾ ᱪᱤᱛᱟᱹᱨ ᱵᱟᱹᱱᱩᱜ ᱠᱷᱟᱱ: ᱩᱫᱩᱜ ᱪᱤᱱᱦᱟᱹ ᱫᱚ ᱟᱡᱟᱜ ᱩᱥᱩᱞ ᱠᱷᱟᱹᱞᱤ ᱡᱟᱭᱜᱟ ᱞᱮᱠᱟ ᱫᱚᱦᱚᱭᱟᱭ; ᱩᱠᱩ ᱫᱚ ᱚᱪᱚᱜᱼᱟᱭ᱾
-bill_logo_tones_help	ᱠᱮᱴᱮᱡ: ᱡᱚᱛᱚ ᱴᱩᱯᱩᱞ ᱦᱮᱸᱫᱮ ᱥᱮ ᱯᱩᱸᱰ, ᱯᱚᱨᱥᱟᱞ ᱪᱤᱱᱦᱟᱹ ᱞᱟᱹᱜᱤᱫ᱾ ᱪᱷᱟᱭᱟᱱ: ᱯᱩᱸᱰ ᱦᱮᱸᱫᱮ ᱫᱚ ᱦᱩᱰᱤᱧ ᱴᱩᱯᱩᱞ ᱨᱮᱭᱟᱜ ᱧᱮᱞ ᱦᱩᱭᱩᱜᱼᱟ, ᱪᱤᱛᱟᱹᱨ ᱟᱨ ᱞᱚᱞᱚᱢ ᱪᱷᱟᱭᱟ ᱞᱟᱹᱜᱤᱫ᱾
 slip_col_width	ᱚᱥᱟᱨ (mm)
 slip_col_start	ᱮᱛᱦᱚᱵ ᱡᱟᱭᱜᱟ (px)
 slip_col_end	ᱢᱩᱪᱟᱹᱫ ᱡᱟᱭᱜᱟ (px)
@@ -566,6 +566,15 @@ print_open	ᱪᱷᱟᱯᱟ/ ᱡᱷᱤᱡᱽ ᱢᱮ
 reason_amend_ph	ᱥᱚᱫᱚᱨ ᱨᱮᱭᱟᱜ ᱠᱟᱨᱚᱱ/ᱵᱟᱝ/ᱯᱩᱭᱥᱟᱹ ᱨᱩᱣᱟᱹᱲ
 reason_note_ph	ᱠᱟᱨᱚᱱ/ᱱᱚᱴ (ᱵᱟᱹᱲᱤᱡ, ᱞᱮᱠᱷᱟ,...)
 record_day_close	ᱢᱟᱦᱟ ᱵᱚᱸᱫᱚ ᱚᱞ ᱢᱮ
+business_day	When does Today reset?
+business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
+biz_day_until_close	Until Day close
+biz_day_midnight	Calendar midnight
+business_day_saved	Business day saved
+report_day_lens	View Today as
+report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
+report_lens_day_close	By Day close
+report_lens_midnight	By midnight
 refresh_from_shop	ᱫᱩᱠᱟᱹᱱ ᱠᱷᱚᱱ ᱛᱟᱹᱯᱤᱥ ᱢᱮ
 refund	ᱯᱩᱭᱥᱟᱹ ᱨᱩᱣᱟᱹᱲ
 remove_selected	ᱵᱟᱪᱷᱟᱣ ᱟᱠᱟᱱ ᱚᱪᱚᱜᱽ ᱢᱮ

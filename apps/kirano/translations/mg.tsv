@@ -82,6 +82,8 @@ printer_paper_help	Ny notaterina dia ny taratasy nametrahana ny mpitondra an'ity
 preview_help	Ity tapakila ity araka ny fanontana azy amin'ny mpanonta voafidy eto ambany, amin'ny tena habeny eo amin'ny taratasiny virtoaly. Ny fotsy no toerana anontana, ny taratasy volondavenona tsy tratran'ny mpanonta, ary tapahina ny ranomainty matroka. Ny efajoro sivy no taratasy: tsindrio ny toerana tokony hisy ny tapakila. Mitohy amin'ny pejy hafa ny tapakila lava. Ny fisafidianana mpanonta dia manova ny topi-maso ihany.
 slip_col_start	Elanelana fanombohana (px)
 slip_col_end	Elanelana fiafarana (px)
+slip_columns	Tsanganana
+slip_col_header	Lohateny
 slip_columns_help	Ny sakan’ny tsanganana tsirairay dia ahitana ny elanelana fanombohana sy fiafarany. Mivalona ao anatin’ny tsanganany ny soratra; ny mihoatra ny sakan’ny votoaty dia tapahina, eo amin’ny taratasy sy amin’ny topi-maso.
 bill_total_qty_label	Marika isan-jato totalin'ny habetsahana
 bill_total_subtotal_label	Marika totalina
@@ -351,6 +353,15 @@ print_open	Printy / sokafy
 reason_amend_ph	Antony hanitsiana / hanafoanana / hamerenana vola
 reason_note_ph	Antony / fanamarihana (fandaniam-potoana, fanisana, ...)
 record_day_close	Raketo ny fanakatonana andro
+business_day	When does Today reset?
+business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
+biz_day_until_close	Until Day close
+biz_day_midnight	Calendar midnight
+business_day_saved	Business day saved
+report_day_lens	View Today as
+report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
+report_lens_day_close	By Day close
+report_lens_midnight	By midnight
 refresh_from_shop	Manao fanavaozana avy amin'ny fivarotana
 refund	Famerenam-bola
 remove_selected	Esory voafantina
@@ -474,6 +485,8 @@ route_bill	Faktiora
 station_print_pick_first	Mifidiana fizarana fivarotana aloha
 bill_printers_dd	Mpanonta ho an’ny faktiora
 bill_printers_dd_n	{n} mpanonta ho an’ny faktiora · kitiho hanovàna
+printer_mode_first	Voalohany miasa
+printer_mode_all	Pirinty amin'ny rehetra
 station_vp_attached	Mpanonta mifandray
 station_vp_detached	Nesorina tamin'ny toby ny mpanonta
 print_test_page	Manonta pejy fitsapana
@@ -825,6 +838,10 @@ client_template_importing	Fampidirana {title}…
 client_template_done	Ny singa rehetra avy amin'ny {title} dia ao amin'ny entanao.
 client_template_imported	Nampiana singa {d} sy sokajy {c} avy amin'ny {title}
 cancel	Ajanony
+removing	Manala…
+removed	Nesorina
+updating_order	Manavao…
+order_updated	Novaozina ny kaomandy
 opening_client	Manokatra mpanjifa…
 preparing_desk	Manomana birao…
 opening_server	Manokatra mpizara…
@@ -855,16 +872,7 @@ recent_changes	Fanovana farany
 lane_declared_label	Faktioran-ketra
 lane_owner_label	Faktiora amin'ny vola
 money_lane_bill	Paositra: {lane}
-
-removing	Manala…
-removed	Nesorina
-updating_order	Manavao…
-order_updated	Novaozina ny kaomandy
 sel_copy	Adikao
 sel_select_all	Fidio daholo
 sel_copied	Voadika
 nav_loading	Mampiditra…
-printer_mode_first	Voalohany miasa
-printer_mode_all	Pirinty amin'ny rehetra
-slip_columns	Tsanganana
-slip_col_header	Lohateny

@@ -5,7 +5,8 @@ use crate::domain::{
     BranchSnapshot, Category, CreditLedgerEntry, Customer, DayTotals, EntryAttachment, EventTimes,
     Money, MoneyLane, MoneyMoveKind, MoneyMovement, OpenBill, OpsReport, OrgConsolidatedReport,
     PartyAgingRow, PartyPositionRow, PayMethod, PeriodBooks, Product, Purchase, PurchaseLine,
-    Right, RightLevel, Rights, STOCK_UNTRACKED, Sale, SaleDraft, SaleLine, SaleRevision,
+    BookingDraft, BookingDeskSnapshot, Right, RightLevel, Rights, STOCK_UNTRACKED, Sale,
+    SaleDraft, SaleLine, SaleRevision,
     StaffFeatures, StaffMember, StaffRole, StockMovement, TaxRate, UnitConversion, UnitDef,
     format_qty_display, milli_to_whole_qty, new_id, normalize_party_roles,
 };
@@ -135,6 +136,14 @@ mod store_courier_ops;
 pub use store_courier_ops::LanSelfBooking;
 #[path = "store_local_extras.rs"]
 mod store_local_extras;
+#[path = "store_adjustment_notes.rs"]
+mod store_adjustment_notes;
+#[path = "store_booking_drafts.rs"]
+mod store_booking_drafts;
+#[path = "store_service.rs"]
+mod service;
+
+pub use service::ShiftClose;
 
 /// Everything needed to create one staff member. Kept together so the hire
 /// call stays readable instead of an eight-argument list.
@@ -163,6 +172,7 @@ pub const SHOP_PREF_KEYS: &[&str] = &[
     "booking_volumetric_divisor",
     "booking_weight_unit",
     "ndr_max_attempts",
+    "business_day_mode",
 ];
 
 impl Store {
@@ -296,6 +306,10 @@ impl Store {
             ("entity_template", "moklanjo_agency"),
             ("app", APP_MARK),
             ("next_awb_seq", "1"),
+            ("next_cn_seq", "1"),
+            ("next_dn_seq", "1"),
+            // Keep Day book going past midnight until Record day close.
+            ("business_day_mode", "until_day_close"),
         ] {
             self.conn
                 .execute(
@@ -410,6 +424,7 @@ impl Store {
             "expenses",
             "money_movements",
             "stock_movements",
+            "adjustment_notes",
         ] {
             self.install_event_times_trigger(table)?;
         }
@@ -585,6 +600,18 @@ impl Store {
             .unwrap_or(true))
     }
 
+    /// One-shot DeviceSetup catalogue offer before Owner PIN.
+    pub fn app_template_offer_done(&self) -> Result<bool, String> {
+        Ok(self
+            .meta_get("app_template_offer_done")?
+            .map(|v| v.trim() == "1")
+            .unwrap_or(false))
+    }
+
+    pub fn set_app_template_offer_done(&self) -> Result<(), String> {
+        self.meta_set("app_template_offer_done", "1")
+    }
+
     /// First-run on Server: Owner chooses their PIN. Marks setup complete and
     /// returns the Owner so the session can start. Does **not** mark onboarding
     /// complete — that happens after Fresh/Book wizard.
@@ -672,20 +699,25 @@ impl Store {
     }
 
     pub fn entity_template_id(&self) -> Result<String, String> {
-        Ok(entity_template::MOKLANJO.id.into())
+        Ok(self
+            .meta_get("entity_template")?
+            .filter(|s| !s.trim().is_empty())
+            .map(|s| entity_template::resolve(&s).id.to_string())
+            .unwrap_or_else(|| entity_template::MOKLANJO.id.into()))
     }
 
     pub fn entity_template(&self) -> Result<&'static EntityTemplate, String> {
-        Ok(&entity_template::MOKLANJO)
+        Ok(entity_template::resolve(&self.entity_template_id()?))
     }
 
-    /// Lock this binary to Moklanjo (ignores other template ids).
+    /// Apply a Moklanjo shop start template (default agency or authored pack).
+    /// Unknown ids fall back to [`entity_template::MOKLANJO`].
     pub fn apply_entity_template(
         &self,
-        _template_id: &str,
+        template_id: &str,
     ) -> Result<&'static EntityTemplate, String> {
         self.assert_server_writer("Apply start template")?;
-        let tmpl = &entity_template::MOKLANJO;
+        let tmpl = entity_template::resolve(template_id);
         self.meta_set("entity_template", tmpl.id)?;
         self.meta_set("qty_unit_hint", tmpl.qty_unit_hint)?;
         self.meta_set("lane_declared_label", tmpl.lane_declared_label)?;
@@ -726,19 +758,21 @@ impl Store {
         if tmpl.seed_parties.is_empty() {
             return Ok(0);
         }
-        let count: i64 = self
-            .conn
-            .query_row("SELECT COUNT(*) FROM customers WHERE active = 1", [], |r| {
-                r.get(0)
-            })
-            .map_err(|e| e.to_string())?;
-        if count > 0 {
-            return Ok(0);
-        }
+        let existing: Vec<String> = self
+            .list_customers()?
+            .into_iter()
+            .map(|p| p.name.to_ascii_lowercase())
+            .collect();
+        let mut added = 0usize;
         for party in tmpl.seed_parties {
+            let key = party.name.to_ascii_lowercase();
+            if existing.iter().any(|n| n == &key) {
+                continue;
+            }
             self.add_customer_kind(party.name, "", party.kind_label)?;
+            added += 1;
         }
-        Ok(tmpl.seed_parties.len())
+        Ok(added)
     }
 
     /// No sample catalogue — owners add their own rates/items.
@@ -1368,10 +1402,23 @@ impl Store {
             venue.trim()
         };
         let tmpl = self.entity_template()?;
-        let today = Local::now().format("%Y-%m-%d").to_string();
-        let bank_net = self.money_movements_net_for_prefix(&format!("{today}%"))?;
+        let win = self.current_business_day_window()?;
+        let bank_net = self.money_movements_net_in_window(&win.start, &win.end)?;
+        let mode = self.business_day_mode()?;
+        let mode_note = match mode {
+            crate::business_day::BusinessDayMode::UntilDayClose => {
+                "continues until Record day close".to_string()
+            }
+            crate::business_day::BusinessDayMode::CalendarMidnight => {
+                "resets at local midnight".to_string()
+            }
+            crate::business_day::BusinessDayMode::AtHour(h) => {
+                format!("rolls at {h:02}:00 local")
+            }
+        };
         Ok(format!(
-            "{venue} — day close\n\
+            "{venue} — day close ({})\n\
+             Business day: {} · {}\n\
              Sales: {}\n\
              Lines: {}\n\
              Cash: {}\n\
@@ -1386,6 +1433,9 @@ impl Store {
              Bank balance: {}\n\
              Cash in hand (till, all recorded): {}\n\
              Rounding: {}\n",
+            win.label_date,
+            mode.as_str(),
+            mode_note,
             t.sale_count,
             t.lines_total()
                 .format_localized(&currency, &fiscal_settings),
@@ -1430,8 +1480,9 @@ impl Store {
         let mut summary = self.day_close_summary()?;
         // Expected drawer movement today: cash tenders in, minus cash
         // that left (cash expenses, cash payable settlements, till→bank).
-        let today = Local::now().format("%Y-%m-%d").to_string();
-        let expected_cash = self.today_totals()?.cash_paise - self.cash_out_paise(Some(&today))?;
+        let win = self.current_business_day_window()?;
+        let expected_cash =
+            self.today_totals()?.cash_paise - self.cash_out_in_window(&win.start, &win.end)?;
         if let Some(counted) = counted_cash_paise {
             let variance = counted - expected_cash;
             let currency = self.locale_settings()?.currency;
@@ -1454,6 +1505,7 @@ impl Store {
             .collect::<Vec<_>>()
             .join(" · ");
         self.audit(actor, "day.close", &detail)?;
+        let _ = self.discard_all_open_booking_drafts()?;
         Ok(now)
     }
 
@@ -1462,6 +1514,41 @@ impl Store {
         Ok(self
             .meta_get("last_day_close_at")?
             .filter(|s| !s.trim().is_empty()))
+    }
+
+    pub fn business_day_mode(&self) -> Result<crate::business_day::BusinessDayMode, String> {
+        Ok(crate::business_day::BusinessDayMode::parse(
+            &self
+                .meta_get("business_day_mode")?
+                .unwrap_or_default(),
+        ))
+    }
+
+    pub fn set_business_day_mode(
+        &self,
+        mode: crate::business_day::BusinessDayMode,
+    ) -> Result<(), String> {
+        self.assert_server_writer("Change business day")?;
+        self.meta_set("business_day_mode", &mode.as_str())
+    }
+
+    pub fn current_business_day_window(
+        &self,
+    ) -> Result<crate::business_day::BusinessDayWindow, String> {
+        self.business_day_window_for(self.business_day_mode()?)
+    }
+
+    /// Business-day window for an explicit mode (Reports lens may differ from shop meta).
+    pub fn business_day_window_for(
+        &self,
+        mode: crate::business_day::BusinessDayMode,
+    ) -> Result<crate::business_day::BusinessDayWindow, String> {
+        let last = self.last_day_close_at()?;
+        Ok(crate::business_day::business_day_window(
+            mode,
+            last.as_deref(),
+            Local::now(),
+        ))
     }
 
     /// Day-report tax line: inclusive → “GST inclusive in sales”; exclusive
@@ -1920,6 +2007,7 @@ impl Store {
             if c.is_empty() { "misc" } else { c }
         };
         let times = EventTimes::capture(None);
+        self.assert_not_month_locked(&times.user_at)?;
         let id = new_id();
         self.conn
             .execute(
@@ -2084,6 +2172,7 @@ impl Store {
             return Err("Not allowed to post bank movements".into());
         }
         let times = EventTimes::capture(None);
+        self.assert_not_month_locked(&times.user_at)?;
         self.conn
             .execute(
                 "INSERT INTO money_movements(
@@ -3327,9 +3416,25 @@ impl Store {
 
     /// Books for an inclusive date range (`YYYY-MM-DD` … `YYYY-MM-DD`).
     pub fn period_books(&self, from_day: &str, to_day: &str) -> Result<PeriodBooks, String> {
+        self.period_books_range(
+            &format!("{from_day}T00:00:00"),
+            &format!("{to_day}T23:59:59.999999999"),
+            from_day,
+            to_day,
+        )
+    }
+
+    /// Books for an explicit created_at window (RFC3339 / store timestamps).
+    pub fn period_books_range(
+        &self,
+        from: &str,
+        to: &str,
+        label_from: &str,
+        label_to: &str,
+    ) -> Result<PeriodBooks, String> {
+        let from_day = label_from;
+        let to_day = label_to;
         let branch = self.active_branch_id()?;
-        let from = format!("{from_day}T00:00:00");
-        let to = format!("{to_day}T23:59:59.999999999");
         let mut day = DayTotals::default();
         let mut stmt = self
             .conn
@@ -3455,6 +3560,15 @@ impl Store {
 
     pub fn period_books_text(&self, from_day: &str, to_day: &str) -> Result<String, String> {
         let books = self.period_books(from_day, to_day)?;
+        self.format_period_books(&books, from_day, to_day)
+    }
+
+    fn format_period_books(
+        &self,
+        books: &PeriodBooks,
+        from_day: &str,
+        to_day: &str,
+    ) -> Result<String, String> {
         let currency = self.locale_settings()?.currency;
         let fiscal = self.fiscal_settings()?;
         let tmpl = self.entity_template()?;
@@ -3504,19 +3618,8 @@ impl Store {
         ))
     }
 
-    /// Full books pack for Reports: ops + aging + recent bank posts.
-    pub fn books_report_text(&self, period: &str) -> Result<String, String> {
-        let today = Local::now().format("%Y-%m-%d").to_string();
-        let (from, to, title) = match period {
-            "month" => {
-                let from = Local::now().format("%Y-%m-01").to_string();
-                (from, today.clone(), "This month")
-            }
-            _ => (today.clone(), today.clone(), "Today"),
-        };
-        let mut out = format!("=== {title} ===\n");
-        out.push_str(&self.period_books_text(&from, &to)?);
-        out.push('\n');
+    fn books_report_tail(&self) -> Result<String, String> {
+        let mut out = String::new();
         out.push_str(&self.debit_credit_report_text()?);
         out.push('\n');
         out.push_str(&self.party_aging_text()?);
@@ -3546,6 +3649,41 @@ impl Store {
                 ));
             }
         }
+        Ok(out)
+    }
+
+    /// Reports “Today” for an explicit business-day mode (view lens — not shop meta).
+    pub fn books_report_today_for_mode(
+        &self,
+        mode: crate::business_day::BusinessDayMode,
+    ) -> Result<String, String> {
+        let win = self.business_day_window_for(mode)?;
+        let title = match mode {
+            crate::business_day::BusinessDayMode::UntilDayClose => "Today (by Day close)",
+            _ => "Today (by midnight)",
+        };
+        let mut out = format!("=== {title} ===\n");
+        let books = self.period_books_range(&win.start, &win.end, &win.label_date, &win.label_date)?;
+        out.push_str(&self.format_period_books(&books, &win.label_date, &win.label_date)?);
+        out.push('\n');
+        out.push_str(&self.books_report_tail()?);
+        Ok(out)
+    }
+
+    /// Full books pack for Reports: ops + aging + recent bank posts.
+    pub fn books_report_text(&self, period: &str) -> Result<String, String> {
+        let today = Local::now().format("%Y-%m-%d").to_string();
+        let (from, to, title) = match period {
+            "month" => {
+                let from = Local::now().format("%Y-%m-01").to_string();
+                (from, today.clone(), "This month")
+            }
+            _ => (today.clone(), today.clone(), "Today"),
+        };
+        let mut out = format!("=== {title} ===\n");
+        out.push_str(&self.period_books_text(&from, &to)?);
+        out.push('\n');
+        out.push_str(&self.books_report_tail()?);
         Ok(out)
     }
 
@@ -4810,6 +4948,7 @@ impl Store {
         let branch_id = self.active_branch_id()?;
         let times = EventTimes::capture(None);
         let created_at = times.user_at.clone();
+        self.assert_not_month_locked(&created_at)?;
         let purchase_id = new_id();
         let mut built = Vec::with_capacity(lines.len());
         for (product_id, qty_milli, unit_cost_paise) in lines {
@@ -5917,6 +6056,7 @@ impl Store {
         let sale_id = new_id();
         let branch_code = self.active_branch()?.code;
         let times = EventTimes::capture(draft.user_at.as_deref());
+        self.assert_not_month_locked(&times.user_at)?;
         let created_at = times.user_at.clone(); // books day = user time
 
         // Carrier AWB pool (or shop-wide seq), inside this booking's unit.
@@ -6406,6 +6546,12 @@ impl Store {
         if previous.status != "completed" {
             return Err("Only completed sales can be amended".into());
         }
+        let sale_at = if previous.user_at.trim().is_empty() {
+            previous.created_at.as_str()
+        } else {
+            previous.user_at.as_str()
+        };
+        self.assert_not_month_locked(sale_at)?;
 
         // Re-price the amended bill through the same country pack the till
         // uses, so an exclusive-tax shop's corrected total still carries tax.
@@ -6645,6 +6791,20 @@ impl Store {
         if reason.is_empty() {
             return Err("Void reason required".into());
         }
+        let (user_at, created_at): (String, String) = self
+            .conn
+            .query_row(
+                "SELECT COALESCE(user_at, ''), created_at FROM sales WHERE id = ?1",
+                params![sale_id],
+                |r| Ok((r.get(0)?, r.get(1)?)),
+            )
+            .map_err(|e| e.to_string())?;
+        let sale_at = if user_at.trim().is_empty() {
+            created_at.as_str()
+        } else {
+            user_at.as_str()
+        };
+        self.assert_not_month_locked(sale_at)?;
         let tx = self.begin()?;
         let updated = tx
             .execute(
@@ -6912,8 +7072,9 @@ impl Store {
     }
 
     pub fn today_totals(&self) -> Result<DayTotals, String> {
-        let today = Local::now().format("%Y-%m-%d").to_string();
-        let prefix = format!("{today}%");
+        let win = self.current_business_day_window()?;
+        let start = win.start.as_str();
+        let end = win.end.as_str();
         let branch = self.active_branch_id()?;
         let mut totals = DayTotals::default();
         let mut stmt = self
@@ -6925,12 +7086,13 @@ impl Store {
                         COALESCE(tax_paise, 0),
                         COALESCE(money_lane, 'declared')
                  FROM sales
-                 WHERE status = 'completed' AND created_at LIKE ?1
-                   AND (branch_id = ?2 OR branch_id = '')",
+                 WHERE status = 'completed'
+                   AND created_at >= ?1 AND created_at < ?2
+                   AND (branch_id = ?3 OR branch_id = '')",
             )
             .map_err(|e| e.to_string())?;
         let rows = stmt
-            .query_map(params![prefix, branch], |row| {
+            .query_map(params![start, end, branch], |row| {
                 Ok((
                     row.get::<_, String>(0)?,
                     row.get::<_, i64>(1)?,
@@ -6972,13 +7134,14 @@ impl Store {
                     "SELECT p.pay_method, p.amount_paise
                      FROM sale_payments p
                      JOIN sales s ON s.id = p.sale_id
-                     WHERE s.status = 'completed' AND s.created_at LIKE ?1
-                       AND (s.branch_id = ?2 OR s.branch_id = '')
+                     WHERE s.status = 'completed'
+                       AND s.created_at >= ?1 AND s.created_at < ?2
+                       AND (s.branch_id = ?3 OR s.branch_id = '')
                        AND s.pay_method = 'split'",
                 )
                 .map_err(|e| e.to_string())?;
             let rows = stmt
-                .query_map(params![prefix, branch], |row| {
+                .query_map(params![start, end, branch], |row| {
                     Ok((row.get::<_, String>(0)?, row.get::<_, i64>(1)?))
                 })
                 .map_err(|e| e.to_string())?;
@@ -7001,13 +7164,13 @@ impl Store {
                     "SELECT pay_method, ABS(amount_paise)
                      FROM credit_ledger
                      WHERE kind IN ('settle', 'advance')
-                       AND created_at LIKE ?1
+                       AND created_at >= ?1 AND created_at < ?2
                        AND amount_paise < 0
                        AND pay_method IS NOT NULL",
                 )
                 .map_err(|e| e.to_string())?;
             let rows = stmt
-                .query_map(params![prefix], |row| {
+                .query_map(params![start, end], |row| {
                     Ok((row.get::<_, String>(0)?, row.get::<_, i64>(1)?))
                 })
                 .map_err(|e| e.to_string())?;
@@ -7022,6 +7185,57 @@ impl Store {
             }
         }
         Ok(totals)
+    }
+
+    /// Cash that left the till inside a business-day window.
+    fn cash_out_in_window(&self, start: &str, end: &str) -> Result<i64, String> {
+        let branch = self.active_branch_id()?;
+        let one = |sql: &str| -> Result<i64, String> {
+            self.conn
+                .query_row(sql, params![start, end, branch], |r| r.get::<_, i64>(0))
+                .map_err(|e| e.to_string())
+        };
+        let expenses = one(
+            "SELECT COALESCE(SUM(p.amount_paise), 0) FROM expense_payments p
+             JOIN expenses e ON e.id = p.expense_id
+             WHERE p.pay_method = 'cash'
+               AND e.created_at >= ?1 AND e.created_at < ?2
+               AND (e.branch_id = ?3 OR e.branch_id = '')",
+        )?;
+        let payable: i64 = self
+            .conn
+            .query_row(
+                "SELECT COALESCE(SUM(ABS(amount_paise)), 0) FROM payable_ledger
+                 WHERE kind = 'settle' AND pay_method = 'cash' AND amount_paise < 0
+                   AND created_at >= ?1 AND created_at < ?2",
+                params![start, end],
+                |r| r.get::<_, i64>(0),
+            )
+            .map_err(|e| e.to_string())?;
+        let to_bank = one(
+            "SELECT COALESCE(SUM(amount_paise), 0) FROM money_movements
+             WHERE kind = 'till_to_bank'
+               AND created_at >= ?1 AND created_at < ?2
+               AND (branch_id = ?3 OR branch_id = '')",
+        )?;
+        Ok(expenses + payable + to_bank)
+    }
+
+    fn money_movements_net_in_window(&self, start: &str, end: &str) -> Result<i64, String> {
+        let branch = self.active_branch_id()?;
+        self.conn
+            .query_row(
+                "SELECT COALESCE(SUM(CASE
+                    WHEN kind IN ('bank_in', 'till_to_bank') THEN amount_paise
+                    WHEN kind IN ('bank_out', 'bank_to_till') THEN -amount_paise
+                    ELSE 0 END), 0)
+                 FROM money_movements
+                 WHERE created_at >= ?1 AND created_at < ?2
+                   AND (branch_id = ?3 OR branch_id = '')",
+                params![start, end, branch],
+                |r| r.get::<_, i64>(0),
+            )
+            .map_err(|e| e.to_string())
     }
 
     /// Cash that physically left the till in a period (`None` = all
@@ -7113,6 +7327,30 @@ impl Store {
             .map_err(|e| e.to_string())?;
         let sales = stmt
             .query_map(params![branch, limit], row_to_sale)
+            .map_err(|e| e.to_string())?
+            .collect::<Result<Vec<_>, _>>()
+            .map_err(|e| e.to_string())?;
+        Ok(sales)
+    }
+
+    /// Completed bookings in the current business-day window (Board peer).
+    pub fn list_sales_in_business_day(&self, limit: i64) -> Result<Vec<Sale>, String> {
+        let win = self.current_business_day_window()?;
+        let branch = self.active_branch_id()?;
+        let mut stmt = self
+            .conn
+            .prepare(&format!(
+                "SELECT {SALE_COLUMNS} FROM sales
+                 WHERE status = 'completed'
+                   AND (branch_id = ?1 OR branch_id = '')
+                   AND COALESCE(NULLIF(user_at, ''), created_at) >= ?2
+                   AND COALESCE(NULLIF(user_at, ''), created_at) < ?3
+                 ORDER BY COALESCE(NULLIF(user_at, ''), created_at) DESC
+                 LIMIT ?4"
+            ))
+            .map_err(|e| e.to_string())?;
+        let sales = stmt
+            .query_map(params![branch, win.start, win.end, limit], row_to_sale)
             .map_err(|e| e.to_string())?
             .collect::<Result<Vec<_>, _>>()
             .map_err(|e| e.to_string())?;
@@ -7767,11 +8005,20 @@ impl Store {
             "DELETE FROM lan_refused",
             "DELETE FROM lan_replies",
             "DELETE FROM lan_sessions",
+            "DELETE FROM adjustment_notes",
+            "DELETE FROM booking_drafts",
+            "DELETE FROM shift_closes",
             "DELETE FROM meta WHERE key IN (
                 'last_day_close_at', 'opening_float_paise', 'shift_opened_at',
-                'shift_opened_by', 'opening_cash_paise'
+                'shift_opened_by', 'opening_cash_paise', 'last_shift_close_at',
+                'books_locked_through'
              )",
+            "DELETE FROM meta WHERE key LIKE 'opening_float_%'",
             "INSERT INTO meta(key, value) VALUES('next_invoice_seq', '1')
+             ON CONFLICT(key) DO UPDATE SET value = excluded.value",
+            "INSERT INTO meta(key, value) VALUES('next_cn_seq', '1')
+             ON CONFLICT(key) DO UPDATE SET value = excluded.value",
+            "INSERT INTO meta(key, value) VALUES('next_dn_seq', '1')
              ON CONFLICT(key) DO UPDATE SET value = excluded.value",
         ] {
             match tx.execute(sql, []) {
@@ -7821,12 +8068,21 @@ impl Store {
             "DELETE FROM lan_refused",
             "DELETE FROM lan_replies",
             "DELETE FROM lan_sessions",
+            "DELETE FROM adjustment_notes",
+            "DELETE FROM booking_drafts",
+            "DELETE FROM shift_closes",
             "DELETE FROM meta WHERE key IN (
                 'last_day_close_at', 'opening_float_paise', 'shift_opened_at',
-                'shift_opened_by', 'opening_cash_paise'
+                'shift_opened_by', 'opening_cash_paise', 'last_shift_close_at',
+                'books_locked_through'
              )",
+            "DELETE FROM meta WHERE key LIKE 'opening_float_%'",
             "DELETE FROM meta WHERE key LIKE 'lan_session:%'",
             "INSERT INTO meta(key, value) VALUES('next_invoice_seq', '1')
+             ON CONFLICT(key) DO UPDATE SET value = excluded.value",
+            "INSERT INTO meta(key, value) VALUES('next_cn_seq', '1')
+             ON CONFLICT(key) DO UPDATE SET value = excluded.value",
+            "INSERT INTO meta(key, value) VALUES('next_dn_seq', '1')
              ON CONFLICT(key) DO UPDATE SET value = excluded.value",
         ] {
             match tx.execute(sql, []) {
@@ -8787,7 +9043,9 @@ impl Store {
             .conn
             .prepare(
                 "SELECT sale_id, MIN(created_at), SUM(amount_paise) FROM credit_ledger
-                 WHERE customer_id = ?1 AND kind IN ('sale', 'apply') AND sale_id IS NOT NULL
+                 WHERE customer_id = ?1
+                   AND kind IN ('sale', 'apply', 'rto_fee', 'post_booking_extra', 'debit_note')
+                   AND sale_id IS NOT NULL
                  GROUP BY sale_id ORDER BY MIN(created_at), sale_id",
             )
             .map_err(|e| e.to_string())?;
@@ -8819,7 +9077,7 @@ impl Store {
                 .conn
                 .query_row(
                     "SELECT COALESCE(SUM(ABS(amount_paise)), 0) FROM credit_ledger
-                     WHERE customer_id = ?1 AND kind IN ('settle', 'write_off')
+                     WHERE customer_id = ?1 AND kind IN ('settle', 'write_off', 'credit_note')
                        AND sale_id = ?2",
                     params![customer_id, bill.bill_id],
                     |r| r.get(0),
@@ -11051,6 +11309,111 @@ impl Store {
         })
     }
 
+    pub fn latest_period_bill_for_party(
+        &self,
+        party_id: &str,
+    ) -> Result<Option<crate::consignments::PeriodBill>, String> {
+        Ok(self
+            .list_period_bills(32)?
+            .into_iter()
+            .find(|b| b.party_id == party_id))
+    }
+
+    /// Printable consolidated invoice for a period bill (receipt printers).
+    pub fn format_period_bill_text(
+        &self,
+        bill: &crate::consignments::PeriodBill,
+    ) -> Result<String, String> {
+        let venue = self.venue_title()?;
+        let venue = if venue.trim().is_empty() {
+            "Your shop"
+        } else {
+            venue.trim()
+        };
+        let currency = self.locale_settings()?.currency;
+        let fiscal = self.fiscal_settings()?;
+        let mut out = String::new();
+        out.push_str(venue);
+        out.push('\n');
+        out.push_str("PERIOD BILL / CONSOLIDATED INVOICE\n");
+        let business_id = fiscal.business_tax_id.trim();
+        if !business_id.is_empty() {
+            out.push_str(&format!(
+                "{} {business_id}\n",
+                fiscal.business_id_label
+            ));
+        }
+        if !bill.invoice_no.trim().is_empty() {
+            out.push_str("Invoice no: ");
+            out.push_str(bill.invoice_no.trim());
+            out.push('\n');
+        }
+        out.push_str(&fiscal.format_datetime(&bill.created_at));
+        out.push('\n');
+        out.push_str(&format!(
+            "Period: {} → {}\n",
+            bill.from_date.trim(),
+            bill.to_date.trim()
+        ));
+        if let Some(party) = self.get_customer(&bill.party_id)? {
+            out.push_str("Bill to: ");
+            out.push_str(&party.name);
+            if !party.kind_label.trim().is_empty() {
+                out.push_str(" (");
+                out.push_str(party.kind_label.trim());
+                out.push(')');
+            }
+            out.push('\n');
+            if !party.phone.trim().is_empty() {
+                out.push_str("Phone: ");
+                out.push_str(party.phone.trim());
+                out.push('\n');
+            }
+        } else if !bill.party_name.trim().is_empty() {
+            out.push_str("Bill to: ");
+            out.push_str(bill.party_name.trim());
+            out.push('\n');
+        }
+        let brand_faces = self.print_brand_face_lines().unwrap_or_default();
+        if !brand_faces.is_empty() {
+            out.push_str(&brand_faces);
+        }
+        out.push_str("--------------------\n\n");
+        let mut line_count = 0usize;
+        for sid in bill.sale_ids() {
+            let Some(sale) = self.get_sale(&sid)? else {
+                continue;
+            };
+            let day = sale.created_at.get(..10).unwrap_or(&sale.created_at);
+            let total = Money(sale.total_paise).format_localized(&currency, &fiscal);
+            let awb = if sale.awb_no.trim().is_empty() {
+                sale.bill_no()
+            } else {
+                sale.awb_no.trim().to_string()
+            };
+            let dest = sale.destination.trim();
+            if dest.is_empty() {
+                out.push_str(&format!("{day}  {awb}  {total}\n"));
+            } else {
+                out.push_str(&format!("{day}  {awb}  {dest}  {total}\n"));
+            }
+            line_count += 1;
+        }
+        if line_count == 0 {
+            out.push_str("(No docket lines)\n");
+        }
+        out.push_str("\n--------------------\n");
+        out.push_str(&format!(
+            "Dockets billed: {line_count}\nTotal {}\n",
+            Money(bill.total_paise).format_localized(&currency, &fiscal)
+        ));
+        if !bill.note.trim().is_empty() {
+            out.push_str(&format!("Note: {}\n", bill.note.trim()));
+        }
+        out.push_str("— End of period bill —\n");
+        Ok(out)
+    }
+
     pub fn list_period_bills(
         &self,
         limit: i64,
@@ -12288,6 +12651,22 @@ mod tests {
     /// Every backup on the one device that holds the books is lost with
     /// it: after a week with no copy off the device, the owner is told —
     /// until a copy leaves (the second folder, or "Save a backup copy").
+    #[test]
+    fn report_today_lens_titles_differ_by_mode() {
+        let home = crate::test_dirs::run_root().join(format!("kumkaj-report-lens-{}", new_id()));
+        fs::create_dir_all(&home).unwrap();
+        let store = Store::open_path(&home.join("books.sqlite3")).unwrap();
+        let by_close = store
+            .books_report_today_for_mode(crate::business_day::BusinessDayMode::UntilDayClose)
+            .unwrap();
+        let by_mid = store
+            .books_report_today_for_mode(crate::business_day::BusinessDayMode::CalendarMidnight)
+            .unwrap();
+        assert!(by_close.contains("by Day close"), "{by_close}");
+        assert!(by_mid.contains("by midnight"), "{by_mid}");
+        let _ = fs::remove_dir_all(home);
+    }
+
     #[test]
     fn a_week_without_a_copy_off_the_device_is_said() {
         let home = crate::test_dirs::run_root().join(format!("kumkaj-copy-due-{}", new_id()));
@@ -13724,6 +14103,40 @@ mod tests {
         assert!(store.list_products(false).unwrap().is_empty());
         assert!(store.list_customers().unwrap().is_empty());
         let _ = std::fs::remove_file(path);
+    }
+
+    #[test]
+    fn global_pkg_app_template_seeds_named_parties() {
+        let path = temp_db();
+        let store = Store::open_path(&path).unwrap();
+        let tmpl = store.apply_entity_template("global_pkg").unwrap();
+        assert_eq!(tmpl.id, "global_pkg");
+        assert_eq!(tmpl.title, "Global Pkg App Template");
+        assert_eq!(store.entity_template_id().unwrap(), "global_pkg");
+        assert!(store.list_products(false).unwrap().is_empty());
+        let parties = store.list_customers().unwrap();
+        assert_eq!(parties.len(), entity_template::GLOBAL_PKG.seed_parties.len());
+        let carriers: Vec<_> = parties.iter().filter(|p| p.is_carrier()).collect();
+        let consignors: Vec<_> = parties.iter().filter(|p| p.is_consignor()).collect();
+        assert_eq!(carriers.len(), 5);
+        assert_eq!(consignors.len(), 5);
+        assert!(parties.iter().any(|p| p.name == "Delhivery" && p.is_carrier()));
+        assert!(parties
+            .iter()
+            .any(|p| p.name == "Sumit International" && p.is_consignor()));
+        // Re-apply must not duplicate.
+        store.apply_entity_template("global_pkg").unwrap();
+        assert_eq!(
+            store.list_customers().unwrap().len(),
+            entity_template::GLOBAL_PKG.seed_parties.len()
+        );
+        // Default agency still has no seeds when selected on a fresh DB path.
+        let path2 = temp_db();
+        let store2 = Store::open_path(&path2).unwrap();
+        store2.apply_entity_template("moklanjo_agency").unwrap();
+        assert!(store2.list_customers().unwrap().is_empty());
+        let _ = std::fs::remove_file(path);
+        let _ = std::fs::remove_file(path2);
     }
 
     thread_local! {

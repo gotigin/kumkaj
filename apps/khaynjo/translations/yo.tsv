@@ -115,6 +115,7 @@ bill_line_total	Lapapọ
 bill_line_footer	Ẹlẹsẹ
 bill_line_upi	UPI
 bill_logo_picture	Àwòrán
+bill_logo_help	Ìbú àti gíga ní px. Òfo ń tẹ̀lé àwòrán: ọ̀kan òfo ń pa ìrísí rẹ̀ mọ́, méjèèjì òfo ń lo ìwọ̀n tirẹ̀; tí a bá ṣètò méjèèjì, ó ń wọ inú rẹ̀, a kì í fà á gùn. Kò sí àwòrán: àmì tí a fihàn ń pa gíga rẹ̀ mọ́ bí àyè òfo; Fipamọ́ ń yọ ọ́ kúrò.
 bill_logo_choose	Yan àwòrán
 bill_logo_remove	Yọ àwòrán kúrò
 bill_logo_none	Kò sí àwòrán
@@ -122,10 +123,9 @@ bill_logo_unreadable	Kì í ṣe àwòrán tí áàpù yìí lè kà
 bill_logo_width	Ìbú (px)
 bill_logo_height	Gíga (px)
 bill_logo_tones	Àwọ̀ eérú
+bill_logo_tones_help	Líle: àmì kọ̀ọ̀kan dúdú tàbí funfun, fún àmì tó mọ́. Ẹlẹ́ji: àwọ̀ eérú di àpẹẹrẹ àmì kéékèèké, fún fọ́tò àti ìji rírọ̀.
 bill_logo_solid	Líle
 bill_logo_shaded	Ẹlẹ́ji
-bill_logo_help	Ìbú àti gíga ní px. Òfo ń tẹ̀lé àwòrán: ọ̀kan òfo ń pa ìrísí rẹ̀ mọ́, méjèèjì òfo ń lo ìwọ̀n tirẹ̀; tí a bá ṣètò méjèèjì, ó ń wọ inú rẹ̀, a kì í fà á gùn. Kò sí àwòrán: àmì tí a fihàn ń pa gíga rẹ̀ mọ́ bí àyè òfo; Fipamọ́ ń yọ ọ́ kúrò.
-bill_logo_tones_help	Líle: àmì kọ̀ọ̀kan dúdú tàbí funfun, fún àmì tó mọ́. Ẹlẹ́ji: àwọ̀ eérú di àpẹẹrẹ àmì kéékèèké, fún fọ́tò àti ìji rírọ̀.
 slip_col_width	Fífẹ̀ (mm)
 slip_col_start	Àyè ìbẹ̀rẹ̀ (px)
 slip_col_end	Àyè ìparí (px)
@@ -566,6 +566,15 @@ print_open	Tẹjade / ṣii
 reason_amend_ph	Idi fun atunṣe / ofo / agbapada
 reason_note_ph	Idi / akọsilẹ (egbin, kika,…)
 record_day_close	Fi ọjọ sunmọ
+business_day	When does Today reset?
+business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
+biz_day_until_close	Until Day close
+biz_day_midnight	Calendar midnight
+business_day_saved	Business day saved
+report_day_lens	View Today as
+report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
+report_lens_day_close	By Day close
+report_lens_midnight	By midnight
 refresh_from_shop	Sọ lati itaja
 refund	agbapada
 remove_selected	Yọ ti o yan kuro

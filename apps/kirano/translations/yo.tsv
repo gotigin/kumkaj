@@ -82,6 +82,8 @@ printer_paper_help	Tí a ròyìn ni ìwé tí a ṣètò awakọ̀ atẹwe yìí
 preview_help	Rísíìtì yìí bí ó ṣe ń tẹ̀ lórí atẹwe tí a yàn nísàlẹ̀, ní ìwọ̀n gidi lórí ìwé foju rẹ̀. Funfun ni ibi tí ó ń tẹ̀, ìwé eérú kọjá ibi tí atẹwe lè dé, a sì gé tàdáwà tó ṣá. Àwọn onígun mẹ́rin mẹ́sàn-án ni ìwé náà: tẹ ibi tí rísíìtì yẹ kó wà. Rísíìtì gígùn ń lọ sórí ojú-ìwé púpọ̀ sí i. Yíyan atẹwe kan ń yí àwòtẹ́lẹ̀ nìkan padà.
 slip_col_start	Àyè ìbẹ̀rẹ̀ (px)
 slip_col_end	Àyè ìparí (px)
+slip_columns	Àwọn ọ̀wọ̀n
+slip_col_header	Akọle
 slip_columns_help	Fífẹ̀ ọ̀wọ̀n kọ̀ọ̀kan ní àyè ìbẹ̀rẹ̀ àti ìparí rẹ̀ nínú. Ọ̀rọ̀ máa ń ká sínú ọ̀wọ̀n rẹ̀; ohun tó bá kọjá fífẹ̀ àkóónú ni a ó gé, lórí ìwé àti nínú àwòtẹ́lẹ̀.
 bill_total_qty_label	Lapapọ qty aami
 bill_total_subtotal_label	Iha lapapọ aami
@@ -351,6 +353,15 @@ print_open	Tẹjade / ṣii
 reason_amend_ph	Idi fun atunṣe / ofo / agbapada
 reason_note_ph	Idi / akọsilẹ (egbin, kika,…)
 record_day_close	Fi ọjọ sunmọ
+business_day	When does Today reset?
+business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
+biz_day_until_close	Until Day close
+biz_day_midnight	Calendar midnight
+business_day_saved	Business day saved
+report_day_lens	View Today as
+report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
+report_lens_day_close	By Day close
+report_lens_midnight	By midnight
 refresh_from_shop	Sọ lati itaja
 refund	agbapada
 remove_selected	Yọ ti o yan kuro
@@ -474,6 +485,8 @@ route_bill	Ìwé-owó
 station_print_pick_first	Yan apakan ile itaja ni akọkọ
 bill_printers_dd	Awọn atẹwe fun owo
 bill_printers_dd_n	{n} awọn ẹrọ atẹwe fun owo naa · tẹ ni kia kia lati yipada
+printer_mode_first	Akọkọ ti o ṣiṣẹ
+printer_mode_all	Tẹjade lori gbogbo
 station_vp_attached	Itẹwe so
 station_vp_detached	Itẹwe kuro lati ibudo
 print_test_page	Tẹjade oju-iwe idanwo kan
@@ -825,6 +838,10 @@ client_template_importing	Nkowọle {title}…
 client_template_done	Gbogbo nkan lati {title} wa lori awọn nkan rẹ.
 client_template_imported	Awọn ohun {d} ti a ṣafikun ati awọn ẹka {c} lati {title}
 cancel	Fagilee
+removing	Ń yọ ọ́…
+removed	A ti yọ ọ́
+updating_order	Ń ṣe àtúnṣe…
+order_updated	A ti ṣe àtúnṣe àṣẹ
 opening_client	Nsii alabara…
 preparing_desk	Ngbaradi tabili…
 opening_server	Nsii olupin…
@@ -855,16 +872,7 @@ recent_changes	Awọn ayipada to ṣẹṣẹ
 lane_declared_label	risiti owo-ori
 lane_owner_label	Akọsilẹ owo
 money_lane_bill	Iwe owo: {lane}
-
-removing	Ń yọ ọ́…
-removed	A ti yọ ọ́
-updating_order	Ń ṣe àtúnṣe…
-order_updated	A ti ṣe àtúnṣe àṣẹ
 sel_copy	Daakọ
 sel_select_all	Yan gbogbo rẹ̀
 sel_copied	A ti daakọ
 nav_loading	Ń gbé e wọlé…
-printer_mode_first	Akọkọ ti o ṣiṣẹ
-printer_mode_all	Tẹjade lori gbogbo
-slip_columns	Àwọn ọ̀wọ̀n
-slip_col_header	Akọle

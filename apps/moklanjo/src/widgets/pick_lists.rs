@@ -37,15 +37,19 @@ impl Widget for SuggestList {
                 st.locale.language.clone(),
             )
         };
-        if open && !rows.is_empty() {
+        // hold_rows is only for the *close* height tween. While open, always
+        // follow live `suggest_rows` — including empty (no matches). Keeping
+        // the last unfiltered set when the query matches nothing made typing
+        // look broken (Consignor "asde" still showed every party).
+        if open {
             self.hold_rows = rows.clone();
         }
-        let draw_rows = if open && !rows.is_empty() {
+        let draw_rows = if open {
             &rows
         } else {
             &self.hold_rows
         };
-        let logic_open = open && !draw_rows.is_empty();
+        let logic_open = open && !rows.is_empty();
         let row_h = *suggest_row_height().lock().unwrap();
         let n = draw_rows.len();
         let full_h = if n == 0 {
@@ -240,15 +244,19 @@ impl Widget for StationCheckList {
                 st.locale.language.clone(),
             )
         };
-        if open && !rows.is_empty() {
+        // hold_rows is only for the *close* height tween. While open, always
+        // follow live `suggest_rows` — including empty (no matches). Keeping
+        // the last unfiltered set when the query matches nothing made typing
+        // look broken (Consignor "asde" still showed every party).
+        if open {
             self.hold_rows = rows.clone();
         }
-        let draw_rows = if open && !rows.is_empty() {
+        let draw_rows = if open {
             &rows
         } else {
             &self.hold_rows
         };
-        let logic_open = open && !draw_rows.is_empty();
+        let logic_open = open && !rows.is_empty();
         let row_h = *suggest_row_height().lock().unwrap();
         let n = draw_rows.len();
         let full_h = if n == 0 {

@@ -94,6 +94,8 @@ printer_paper_help	निवेदितं नाम तत् पत्रं 
 preview_help	इदं पत्रकं यथा अधः चिते मुद्रके मुद्र्यते, तस्य आभासीये पत्रे यथार्थमाने। श्वेते स्थाने मुद्र्यते, धूसरं पत्रं मुद्रकः न प्राप्नोति, म्लाना मसी च छिद्यते। नव चतुरस्राणि पत्रम् एव: यत्र पत्रकं स्थातव्यं तत्र स्पृशतु। दीर्घं पत्रकम् अधिकेषु पृष्ठेषु गच्छति। मुद्रकचयनेन केवलं पूर्वावलोकनं परिवर्तते।
 slip_col_start	आरम्भावकाशः (px)
 slip_col_end	अन्तावकाशः (px)
+slip_columns	स्तम्भाः
+slip_col_header	शीर्षकम्
 slip_columns_help	प्रत्येकस्य स्तम्भस्य विस्तारे तस्य आरम्भावकाशः अन्तावकाशः च अन्तर्भवतः। पाठः स्वस्तम्भस्य अन्तः एव आवेष्ट्यते; विषयविस्तारात् बहिः यत् अस्ति तत् पत्रे पूर्वावलोकने च छिद्यते।
 bill_total_qty_label	कुल qty लेबल
 bill_total_subtotal_label	उप कुल लेबल
@@ -363,6 +365,15 @@ print_open	मुद्रयतु / उद्घाटयतु
 reason_amend_ph	संशोधनस्य कारणम् / शून्यीकरणस्य / धनवापसी
 reason_note_ph	कारण / टिप्पणी (अपव्यय, गणना, ...) .
 record_day_close	दिनं निकटं रक्षतु
+business_day	When does Today reset?
+business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
+biz_day_until_close	Until Day close
+biz_day_midnight	Calendar midnight
+business_day_saved	Business day saved
+report_day_lens	View Today as
+report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
+report_lens_day_close	By Day close
+report_lens_midnight	By midnight
 refresh_from_shop	दुकानतः ताजगीं कुर्वन्तु
 refund	धनवापसी
 remove_selected	चयनितं निष्कासयन्तु
@@ -486,6 +497,8 @@ route_bill	देयकम्
 station_print_pick_first	प्रथमं औषधालयस्य विभागं चिनुत
 bill_printers_dd	बिलस्य कृते मुद्रकाः
 bill_printers_dd_n	{n} बिलस्य कृते मुद्रकाः · परिवर्तनार्थं ट्याप् कुर्वन्तु
+printer_mode_first	प्रथमं तत् कार्यं करोति
+printer_mode_all	सर्वेषु मुद्रयन्तु
 station_vp_attached	मुद्रकः संलग्नः
 station_vp_detached	स्टेशनतः मुद्रकः निष्कासितः
 print_test_page	परीक्षणपृष्ठं मुद्रयन्तु
@@ -837,6 +850,10 @@ client_template_importing	आयात {title}...
 client_template_done	{title} इत्यस्य प्रत्येकं द्रव्यं भवतः वस्तूनाम् उपरि अस्ति।
 client_template_imported	{title} तः {d} वस्तूनि {c} श्रेणयः च योजिताः
 cancel	रद्दं कुर्वन्तु
+removing	अपाक्रियते…
+removed	अपाकृतम्
+updating_order	नवीक्रियते…
+order_updated	आदेशः नवीकृतः
 opening_client	क्लायन्ट् उद्घाटयन्...
 preparing_desk	मेजस्य सज्जीकरणम्...
 opening_server	सर्वरं उद्घाटयन्...
@@ -867,16 +884,7 @@ recent_changes	अद्यतनपरिवर्तनानि
 lane_declared_label	कर चालान
 lane_owner_label	नगद ज्ञापन
 money_lane_bill	देयकः {lane} .
-
-removing	अपाक्रियते…
-removed	अपाकृतम्
-updating_order	नवीक्रियते…
-order_updated	आदेशः नवीकृतः
 sel_copy	प्रतिलिख्यताम्
 sel_select_all	सर्वं चीयताम्
 sel_copied	प्रतिलिखितम्
 nav_loading	आरोप्यते…
-printer_mode_first	प्रथमं तत् कार्यं करोति
-printer_mode_all	सर्वेषु मुद्रयन्तु
-slip_columns	स्तम्भाः
-slip_col_header	शीर्षकम्

@@ -420,6 +420,116 @@ impl App {
             }
             self.sync_chrome(cx);
         }
+        if self
+            .ui
+            .button(cx, ids!(credit_period_bill_print))
+            .clicked(actions)
+        {
+            let named = self.ui.text_input(cx, ids!(credit_limit_party)).text();
+            let result = (|| -> Result<(String, String), String> {
+                let mut st = app_state().lock().unwrap();
+                let party_name = if !named.trim().is_empty() {
+                    named
+                } else {
+                    let id = st
+                        .selected_customer_id
+                        .clone()
+                        .ok_or_else(|| "Pick a party or type a name".to_string())?;
+                    st.customers
+                        .iter()
+                        .find(|c| c.id == id)
+                        .map(|c| c.name.clone())
+                        .ok_or_else(|| "Party not found".to_string())?
+                };
+                let msg = st.books_op(BooksOp::PeriodBill {
+                    party_name: party_name.clone(),
+                })?;
+                let store = st
+                    .store
+                    .as_ref()
+                    .ok_or_else(|| "No store".to_string())?;
+                let party = store
+                    .list_customers()?
+                    .into_iter()
+                    .find(|c| c.name.eq_ignore_ascii_case(party_name.trim()))
+                    .ok_or_else(|| "Party not found".to_string())?;
+                let bill = store
+                    .latest_period_bill_for_party(&party.id)?
+                    .ok_or_else(|| "Period bill not found".to_string())?;
+                let text = store.format_period_bill_text(&bill)?;
+                Ok((msg, text))
+            })();
+            match result {
+                Ok((msg, text)) => {
+                    self.print_or_share_receipt(cx, &text);
+                    self.set_status(cx, msg);
+                }
+                Err(e) => self.set_status(cx, e),
+            }
+            self.sync_chrome(cx);
+        }
+        for (btn, credit) in [(ids!(credit_note_btn), true), (ids!(debit_note_btn), false)] {
+            if self.ui.button(cx, btn).clicked(actions) {
+                let amount_text = self.ui.text_input(cx, ids!(adj_note_amount_input)).text();
+                let reason = self.ui.text_input(cx, ids!(adj_note_reason_input)).text();
+                let awb = self.ui.text_input(cx, ids!(adj_note_awb_input)).text();
+                let result = (|| -> Result<String, String> {
+                    let mut st = app_state().lock().unwrap();
+                    let party_id = st
+                        .selected_customer_id
+                        .clone()
+                        .ok_or_else(|| "Pick a party first".to_string())?;
+                    let actor = st.actor()?;
+                    let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
+                    let currency = st.locale.currency.clone();
+                    let amount = locale::parse_major_input(&amount_text, &currency)?;
+                    let awb_hint = awb.trim();
+                    let awb_opt = if awb_hint.is_empty() {
+                        None
+                    } else {
+                        Some(awb_hint)
+                    };
+                    let note = if credit {
+                        store.create_credit_note(
+                            &party_id,
+                            amount,
+                            &reason,
+                            None,
+                            awb_opt,
+                            &actor,
+                        )?
+                    } else {
+                        store.create_debit_note(
+                            &party_id,
+                            amount,
+                            &reason,
+                            None,
+                            awb_opt,
+                            &actor,
+                        )?
+                    };
+                    let _ = st.refresh_books_overview();
+                    Ok(format!(
+                        "{} {} · balance updated",
+                        note.invoice_no,
+                        st.money(crate::domain::Money(note.amount_paise))
+                    ))
+                })();
+                match result {
+                    Ok(msg) => {
+                        self.ui
+                            .text_input(cx, ids!(adj_note_amount_input))
+                            .set_text(cx, "");
+                        self.ui
+                            .text_input(cx, ids!(adj_note_reason_input))
+                            .set_text(cx, "");
+                        self.set_status(cx, msg);
+                    }
+                    Err(e) => self.set_status(cx, e),
+                }
+                self.sync_chrome(cx);
+            }
+        }
         if self.ui.button(cx, ids!(credit_writeoff)).clicked(actions) {
             let amount_text = self.ui.text_input(cx, ids!(writeoff_amount_input)).text();
             let reason = self.ui.text_input(cx, ids!(writeoff_reason_input)).text();

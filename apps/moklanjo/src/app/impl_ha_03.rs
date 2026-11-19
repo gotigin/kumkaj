@@ -89,75 +89,116 @@ impl App {
         }
         if self.ui.button(cx, ids!(booking_bulk_load)).clicked(actions) {
             let raw = self.ui.text_input(cx, ids!(booking_bulk_input)).text();
-            match notify::parse_bulk_booking_csv(&raw) {
-                Ok(rows) if rows.is_empty() => {
-                    self.set_status(cx, "Bulk CSV is empty — paste destination,consignee,…");
+            let preview = notify::parse_bulk_booking_csv_preview(&raw);
+            if preview.ok.is_empty() && preview.errors.is_empty() {
+                self.set_status(cx, "Bulk CSV is empty — paste destination,consignee,…");
+                {
+                    let mut st = app_state().lock().unwrap();
+                    st.booking_bulk_preview_line.clear();
                 }
-                Ok(rows) => {
-                    let first = &rows[0];
-                    let n = rows.len();
-                    {
-                        let mut st = app_state().lock().unwrap();
-                        st.booking_destination = first.destination.clone();
-                        st.booking_consignee = first.consignee.clone();
-                        st.booking_actual_kg = if first.actual_kg > precise::ZERO {
+                self.sync_chrome(cx);
+            } else if preview.ok.is_empty() {
+                let err_tail = preview.errors.iter().take(3).cloned().collect::<Vec<_>>().join(" · ");
+                let msg = format!(
+                    "Bulk preview: 0 ok, {} bad. {}",
+                    preview.errors.len(),
+                    err_tail
+                );
+                self.set_status(cx, msg);
+                {
+                    let mut st = app_state().lock().unwrap();
+                    st.booking_bulk_preview_line = st
+                        .t("booking_bulk_preview")
+                        .replace("{ok}", "0")
+                        .replace("{bad}", &preview.errors.len().to_string());
+                }
+                self.sync_chrome(cx);
+            } else {
+                let first = &preview.ok[0];
+                let n_ok = preview.ok.len();
+                let n_bad = preview.errors.len();
+                let err_note = if n_bad == 0 {
+                    String::new()
+                } else {
+                    let err_tail = preview
+                        .errors
+                        .iter()
+                        .take(3)
+                        .cloned()
+                        .collect::<Vec<_>>()
+                        .join(" · ");
+                    format!(" Bad: {err_tail}")
+                };
+                {
+                    let mut st = app_state().lock().unwrap();
+                    st.booking_destination = first.destination.clone();
+                    st.booking_consignee = first.consignee.clone();
+                    st.booking_actual_kg = if first.actual_kg > precise::ZERO {
+                        precise::format_kg(first.actual_kg)
+                    } else {
+                        String::new()
+                    };
+                    st.booking_cod = if first.cod_paise > 0 {
+                        locale::format_major_input(first.cod_paise, &st.locale.currency)
+                    } else {
+                        String::new()
+                    };
+                    st.booking_bulk_preview_line = st
+                        .t("booking_bulk_preview")
+                        .replace("{ok}", &n_ok.to_string())
+                        .replace("{bad}", &n_bad.to_string());
+                    st.status = format!(
+                        "Bulk preview: {n_ok} ok, {n_bad} bad. Desk loaded with row 1 — pick rate & book, then load next.{err_note}"
+                    );
+                }
+                self.ui
+                    .text_input(cx, ids!(booking_destination_input))
+                    .set_text(cx, &first.destination);
+                self.ui
+                    .text_input(cx, ids!(booking_consignee_input))
+                    .set_text(cx, &first.consignee);
+                let (kg_text, cod_text) = {
+                    let st = app_state().lock().unwrap();
+                    (
+                        if first.actual_kg > precise::ZERO {
                             precise::format_kg(first.actual_kg)
                         } else {
                             String::new()
-                        };
-                        st.booking_cod = if first.cod_paise > 0 {
+                        },
+                        if first.cod_paise > 0 {
                             locale::format_major_input(first.cod_paise, &st.locale.currency)
                         } else {
                             String::new()
+                        },
+                    )
+                };
+                self.ui
+                    .text_input(cx, ids!(booking_actual_kg_input))
+                    .set_text(cx, &kg_text);
+                self.ui
+                    .text_input(cx, ids!(booking_cod_input))
+                    .set_text(cx, &cod_text);
+                // Drop the loaded row so the next tap advances through the paste.
+                let rest: Vec<String> = preview
+                    .ok
+                    .iter()
+                    .skip(1)
+                    .map(|r| {
+                        let kg = if r.actual_kg > precise::ZERO {
+                            precise::format_kg(r.actual_kg)
+                        } else {
+                            String::new()
                         };
-                        st.status = format!(
-                            "Bulk: {n} row(s). Desk loaded with row 1 — pick rate & book, then load next."
-                        );
-                    }
-                    self.ui
-                        .text_input(cx, ids!(booking_destination_input))
-                        .set_text(cx, &first.destination);
-                    self.ui
-                        .text_input(cx, ids!(booking_consignee_input))
-                        .set_text(cx, &first.consignee);
-                    let (kg_text, cod_text) = {
-                        let st = app_state().lock().unwrap();
-                        (
-                            if first.actual_kg > precise::ZERO {
-                                precise::format_kg(first.actual_kg)
-                            } else {
-                                String::new()
-                            },
-                            if first.cod_paise > 0 {
-                                locale::format_major_input(first.cod_paise, &st.locale.currency)
-                            } else {
-                                String::new()
-                            },
+                        format!(
+                            "{},{},{},{},{}",
+                            r.destination, r.consignee, kg, r.cod_paise, r.note
                         )
-                    };
-                    self.ui
-                        .text_input(cx, ids!(booking_actual_kg_input))
-                        .set_text(cx, &kg_text);
-                    self.ui
-                        .text_input(cx, ids!(booking_cod_input))
-                        .set_text(cx, &cod_text);
-                    // Drop the loaded row so the next tap advances through the paste.
-                    let rest: Vec<String> = rows
-                        .iter()
-                        .skip(1)
-                        .map(|r| {
-                            format!(
-                                "{},{},{},{},{}",
-                                r.destination, r.consignee, r.actual_kg, r.cod_paise, r.note
-                            )
-                        })
-                        .collect();
-                    self.ui
-                        .text_input(cx, ids!(booking_bulk_input))
-                        .set_text(cx, &rest.join("\n"));
-                    self.sync_chrome(cx);
-                }
-                Err(e) => self.set_status(cx, e),
+                    })
+                    .collect();
+                self.ui
+                    .text_input(cx, ids!(booking_bulk_input))
+                    .set_text(cx, &rest.join("\n"));
+                self.sync_chrome(cx);
             }
         }
 
@@ -465,6 +506,24 @@ impl App {
             self.handle_modifier_chips(cx, actions, &item, item_id, true);
         }
 
+        if self.choice_chip_clicked(cx, actions, ids!(bill_later_oda), ids!(bill_later_oda_on)) {
+            app_state().lock().unwrap().bill_later_extra_kind = "oda".into();
+            self.sync_chrome(cx);
+        }
+        if self.choice_chip_clicked(
+            cx,
+            actions,
+            ids!(bill_later_packing),
+            ids!(bill_later_packing_on),
+        ) {
+            app_state().lock().unwrap().bill_later_extra_kind = "packing".into();
+            self.sync_chrome(cx);
+        }
+        if self.choice_chip_clicked(cx, actions, ids!(bill_later_other), ids!(bill_later_other_on))
+        {
+            app_state().lock().unwrap().bill_later_extra_kind = "other".into();
+            self.sync_chrome(cx);
+        }
         if self.choice_chip_clicked(cx, actions, ids!(amend_pay_cash), ids!(amend_pay_cash_on)) {
             app_state().lock().unwrap().amend_pay = PayMethod::Cash;
             self.sync_chrome(cx);
@@ -504,6 +563,60 @@ impl App {
             self.sync_chrome(cx);
         }
 
+        if self.ui.button(cx, ids!(bill_later_btn)).clicked(actions) {
+            let amount_text = self.ui.text_input(cx, ids!(bill_later_amount_input)).text();
+            let party_name = self.ui.text_input(cx, ids!(sale_extra_party_input)).text();
+            let result = (|| -> Result<String, String> {
+                let mut st = app_state().lock().unwrap();
+                let actor = st.actor()?;
+                let sale_id = st
+                    .selected_sale_id
+                    .clone()
+                    .ok_or_else(|| "Select a sale first".to_string())?;
+                let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
+                let currency = st.locale.currency.clone();
+                let amount = locale::parse_major_input(&amount_text, &currency)?;
+                let kind = st.bill_later_extra_kind.clone();
+                let party_override = {
+                    let name = party_name.trim();
+                    if name.is_empty() {
+                        None
+                    } else {
+                        let id = store
+                            .list_customers()?
+                            .into_iter()
+                            .find(|c| c.name.eq_ignore_ascii_case(name))
+                            .map(|c| c.id)
+                            .ok_or_else(|| "Party name not found".to_string())?;
+                        Some(id)
+                    }
+                };
+                let posted = store.post_booking_bill_later(
+                    &sale_id,
+                    &kind,
+                    amount,
+                    "",
+                    party_override.as_deref(),
+                    &actor,
+                )?;
+                let _ = st.refresh_books_overview();
+                Ok(format!(
+                    "Bill-later {} posted to AR · {}",
+                    st.money(crate::domain::Money(posted)),
+                    kind.to_uppercase()
+                ))
+            })();
+            match result {
+                Ok(msg) => {
+                    self.ui
+                        .text_input(cx, ids!(bill_later_amount_input))
+                        .set_text(cx, "");
+                    self.set_status(cx, msg);
+                }
+                Err(e) => self.set_status(cx, e),
+            }
+            self.sync_chrome(cx);
+        }
         if self.ui.button(cx, ids!(amend_btn)).clicked(actions) {
             let reason = self.ui.text_input(cx, ids!(reason_input)).text();
             let pin = self.ui.text_input(cx, ids!(approval_pin_input)).text();

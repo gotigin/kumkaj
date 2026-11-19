@@ -1,5 +1,37 @@
 impl App {
     fn handle_actions_settings_client(&mut self, cx: &mut Cx, actions: &Actions) {
+        for (chip, chip_on, template_id) in [
+            (
+                ids!(tmpl_pick_moklanjo),
+                ids!(tmpl_pick_moklanjo_on),
+                entity_template::MOKLANJO.id,
+            ),
+            (
+                ids!(tmpl_pick_global_pkg),
+                ids!(tmpl_pick_global_pkg_on),
+                entity_template::GLOBAL_PKG.id,
+            ),
+        ] {
+            if self.choice_chip_clicked(cx, actions, chip, chip_on) {
+                let result = (|| -> Result<String, String> {
+                    let mut st = app_state().lock().unwrap();
+                    let actor = st.actor()?;
+                    if !actor.is_owner() {
+                        return Err("Only the Owner can change the start template".into());
+                    }
+                    let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
+                    let tmpl = store.apply_entity_template(template_id)?;
+                    st.entity_template_id = tmpl.id.to_string();
+                    let _ = st.reload_all();
+                    Ok(format!("Applied {} — {}", tmpl.title, tmpl.blurb))
+                })();
+                match result {
+                    Ok(msg) => self.set_status(cx, msg),
+                    Err(e) => self.set_status(cx, e),
+                }
+                self.sync_chrome(cx);
+            }
+        }
         if self.ui.button(cx, ids!(country_apply)).clicked(actions) {
             let code = self.ui.text_input(cx, ids!(country_code_input)).text();
             let result = (|| -> Result<String, String> {
@@ -445,6 +477,34 @@ impl App {
             }
         }
         {
+            for (chip, chip_on, lens) in [
+                (
+                    ids!(report_lens_day_close),
+                    ids!(report_lens_day_close_on),
+                    ReportDayLens::ByDayClose,
+                ),
+                (
+                    ids!(report_lens_midnight),
+                    ids!(report_lens_midnight_on),
+                    ReportDayLens::ByCalendarMidnight,
+                ),
+            ] {
+                if self.choice_chip_clicked(cx, actions, chip, chip_on) {
+                    let result = (|| -> Result<(), String> {
+                        let mut st = app_state().lock().unwrap();
+                        st.report_day_lens = lens;
+                        st.books_report_kind = BooksReportKind::Today;
+                        st.reports_nav = ReportsNav::Bank;
+                        st.load_books_report()?;
+                        st.screen = Screen::Reports;
+                        Ok(())
+                    })();
+                    if let Err(e) = result {
+                        self.set_status(cx, e);
+                    }
+                    self.sync_chrome(cx);
+                }
+            }
             let today =
                 self.choice_chip_clicked(cx, actions, ids!(reports_today), ids!(reports_today_on));
             let month =

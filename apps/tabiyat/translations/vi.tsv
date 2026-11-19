@@ -94,6 +94,8 @@ printer_paper_help	Được báo là giấy mà trình điều khiển của má
 preview_help	Phiếu này đúng như khi in trên máy in được chọn bên dưới, ở kích thước thật trên giấy ảo của máy. Phần trắng là nơi in, giấy xám nằm ngoài tầm của máy in, và mực mờ là phần bị cắt. Chín ô vuông là tờ giấy: chạm vào nơi phiếu cần nằm. Phiếu dài in tiếp sang các trang sau. Chọn máy in chỉ đổi bản xem trước.
 slip_col_start	Khoảng đầu (px)
 slip_col_end	Khoảng cuối (px)
+slip_columns	Cột
+slip_col_header	Tiêu đề
 slip_columns_help	Chiều rộng mỗi cột đã gồm khoảng đầu và khoảng cuối của nó. Chữ xuống dòng trong cột của nó; phần vượt quá chiều rộng nội dung bị cắt, trên giấy và trong bản xem trước.
 bill_total_qty_label	Nhãn tổng SL
 bill_total_subtotal_label	Nhãn tạm tính
@@ -363,6 +365,15 @@ print_open	In / mở
 reason_amend_ph	Lý do sửa / hủy / hoàn tiền
 reason_note_ph	Lý do / ghi chú (hao hụt, đếm, …)
 record_day_close	Ghi chốt ngày
+business_day	When does Today reset?
+business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
+biz_day_until_close	Until Day close
+biz_day_midnight	Calendar midnight
+business_day_saved	Business day saved
+report_day_lens	View Today as
+report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
+report_lens_day_close	By Day close
+report_lens_midnight	By midnight
 refresh_from_shop	Làm mới từ cửa hàng
 refund	Hoàn tiền
 remove_selected	Xóa đã chọn
@@ -486,6 +497,8 @@ route_bill	Hóa đơn
 station_print_pick_first	Chọn khu vực trạm y tế trước
 bill_printers_dd	Máy in cho hóa đơn
 bill_printers_dd_n	{n} máy in cho hóa đơn · nhấn để thay đổi
+printer_mode_first	Máy đầu tiên hoạt động
+printer_mode_all	In trên tất cả
 station_vp_attached	Đã gắn máy in
 station_vp_detached	Đã gỡ máy in khỏi trạm
 print_test_page	In trang thử
@@ -837,6 +850,10 @@ client_template_importing	Đang nhập {title}…
 client_template_done	Mọi vật phẩm từ {title} đều có trên vật phẩm của bạn.
 client_template_imported	Đã thêm các mục {d} và danh mục {c} từ {title}
 cancel	Hủy
+removing	Đang xóa…
+removed	Đã xóa
+updating_order	Đang cập nhật…
+order_updated	Đã cập nhật đơn
 opening_client	Đang mở khách hàng…
 preparing_desk	Đang chuẩn bị bàn…
 opening_server	Đang mở nhân viên phục vụ…
@@ -867,16 +884,7 @@ recent_changes	Thay đổi gần đây
 lane_declared_label	Hóa đơn thuế
 lane_owner_label	Phiếu tiền mặt
 money_lane_bill	Bill: {lane}
-
-removing	Đang xóa…
-removed	Đã xóa
-updating_order	Đang cập nhật…
-order_updated	Đã cập nhật đơn
 sel_copy	Sao chép
 sel_select_all	Chọn tất cả
 sel_copied	Đã sao chép
 nav_loading	Đang tải…
-printer_mode_first	Máy đầu tiên hoạt động
-printer_mode_all	In trên tất cả
-slip_columns	Cột
-slip_col_header	Tiêu đề

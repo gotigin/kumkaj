@@ -115,6 +115,7 @@ bill_line_total	ڪل
 bill_line_footer	فوٽر
 bill_line_upi	UPI
 bill_logo_picture	تصوير
+bill_logo_help	ويڪر ۽ اوچائي px ۾. خالي تصوير جي پيروي ڪري ٿو: هڪ خالي هجي ته شڪل برقرار رهي، ٻئي خالي هجن ته پنهنجي ماپ؛ ٻئي ڏنل هجن ته اندر سمائجي، ڪڏهن به نه ڇڪجي. تصوير ناهي: ڏيکاريل لوگو پنهنجي اوچائي خالي جاءِ طور رکي ٿو؛ لڪايو ان کي هٽائي ٿو.
 bill_logo_choose	تصوير چونڊيو
 bill_logo_remove	تصوير هٽايو
 bill_logo_none	ڪا تصوير ناهي
@@ -122,10 +123,9 @@ bill_logo_unreadable	اها اهڙي تصوير ناهي جيڪا ايپ پڙه�
 bill_logo_width	ويڪر (px)
 bill_logo_height	اوچائي (px)
 bill_logo_tones	ڀورا رنگ
+bill_logo_tones_help	ٺوس: هر نقطو ڪارو يا اڇو، صاف لوگو لاءِ. ڇانوَ وارو: ڀورا رنگ سنهن نقطن جو نمونو بڻجن ٿا، فوٽن ۽ نرم ڇانوَ لاءِ.
 bill_logo_solid	ٺوس
 bill_logo_shaded	ڇانوَ وارو
-bill_logo_help	ويڪر ۽ اوچائي px ۾. خالي تصوير جي پيروي ڪري ٿو: هڪ خالي هجي ته شڪل برقرار رهي، ٻئي خالي هجن ته پنهنجي ماپ؛ ٻئي ڏنل هجن ته اندر سمائجي، ڪڏهن به نه ڇڪجي. تصوير ناهي: ڏيکاريل لوگو پنهنجي اوچائي خالي جاءِ طور رکي ٿو؛ لڪايو ان کي هٽائي ٿو.
-bill_logo_tones_help	ٺوس: هر نقطو ڪارو يا اڇو، صاف لوگو لاءِ. ڇانوَ وارو: ڀورا رنگ سنهن نقطن جو نمونو بڻجن ٿا، فوٽن ۽ نرم ڇانوَ لاءِ.
 slip_col_width	ويڪر (mm)
 slip_col_start	شروعاتي جاءِ (px)
 slip_col_end	آخري جاءِ (px)
@@ -566,6 +566,15 @@ print_open	پرنٽ / کوليو
 reason_amend_ph	ترميم / رد / رقم واپس ڪرڻ جو سبب
 reason_note_ph	سبب / نوٽ (فضول، ڳڻپ، ...)
 record_day_close	ڏينهن جو رڪارڊ بند ڪريو
+business_day	When does Today reset?
+business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
+biz_day_until_close	Until Day close
+biz_day_midnight	Calendar midnight
+business_day_saved	Business day saved
+report_day_lens	View Today as
+report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
+report_lens_day_close	By Day close
+report_lens_midnight	By midnight
 refresh_from_shop	دوڪان مان تازو ڪريو
 refund	واپسي
 remove_selected	منتخب ڪيل هٽايو

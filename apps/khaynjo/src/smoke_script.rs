@@ -546,8 +546,10 @@ impl App {
                 false
             }
             7 => {
+                // Hub only first — no second sync_chrome / panel open. That used
+                // to hide a blank Settings body until hover (early sync path).
                 self.go_peer(cx, Screen::Settings);
-                self.sync_chrome(cx);
+                self.smoke_mark(cx, "104_settings_hub");
                 for (panel, tag) in [
                     ("printers", "104a_settings_printers"),
                     ("bill", "104b_settings_bill"),
