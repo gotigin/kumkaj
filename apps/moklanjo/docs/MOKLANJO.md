@@ -26,14 +26,25 @@ Companions: [`MOKLANJO_APP_TUTORIAL.md`](MOKLANJO_APP_TUTORIAL.md) (learn busine
 
 ------------------------------------------------------------------------
 
-## Product shape (agency + own fleet)
+## Product shape — complete courier OS
 
-A **complete** courier BOS for this audience covers both operating modes on one spine:
+Moklanjo is a **complete courier operating system** (books + booking desk +
+rates + AWB/labels + Ops + carriers **and** own-fleet riders + COD + Team +
+Extra tills on LAN) — not a thin till with courier labels, and not separate
+apps for “franchise vs solo vs tie-ups.”
 
-| Mode | What the owner does | In Kumkaj |
+Shops run many styles on that **same spine** (franchise / agency counter,
+own-fleet solo, hybrid own vans + carrier handover, carrier-only, and other
+approaches). Style is **config**: Settings, Team rights, and template
+`shop_defaults` / packs show or hide depth so each desk feels theirs — never
+a one-client binary or style SKU. Doctrine:
+[`CLIENT_TEMPLATES_AND_SETUP.md`](../../../docs/CLIENT_TEMPLATES_AND_SETUP.md).
+
+| Example face (not a product SKU) | What the owner does | Same OS capability |
 |------|---------------------|-----------|
-| **Agency / franchise counter** | Book parcels, hand bags to Delhivery / DTDC / … | Rates, booking, carrier manifest, period bills, COD |
-| **Own last-mile** | Same booking desk, assign AWBs to **own riders / vans** | Riders master, own-fleet dispatch, out-for-delivery → POD |
+| **Agency / franchise counter** | Book parcels, hand bags to named carriers | Rates, booking, carrier manifest, period bills, COD |
+| **Own last-mile** | Same desk, assign AWBs to **own riders / vans** | Riders master, own-fleet dispatch, out-for-delivery → POD |
+| **Hybrid** | Both carrier bags and own riders | Both surfaces; unused peers can stay hidden |
 
 Live GPS maps and AI route optimisation are **progressive depth** on the same dispatch document — not a separate product. Building a second *national carrier network* that replaces Delhivery stays out of scope; running *your* vans is in scope.
 
@@ -245,9 +256,10 @@ Credit limit + period bill also sit on Parties.
 Canonical sanitized tracker: [`MOKLANJO_CLIENTS_REQUIREMENTS.md`](MOKLANJO_CLIENTS_REQUIREMENTS.md).
 Courier market comparison (offline tags): [`COURIER_RESEARCH.md`](COURIER_RESEARCH.md).
 LAN pilot readiness (both apps): [`PRODUCTION_STATE_FOR_OFFLINE_USAGE.md`](../../../docs/PRODUCTION_STATE_FOR_OFFLINE_USAGE.md).
+Moklanjo pilot sheet: [`LAN_PILOT.md`](LAN_PILOT.md). Store: [`PUBLISH_PLAY_STORE.md`](PUBLISH_PLAY_STORE.md), [`PUBLISH_WINDOWS_STORE.md`](PUBLISH_WINDOWS_STORE.md).
 
 - Per day report · kg + credit/debit · party outstanding · bank posting · monthly · P&L / BS · invoice format  
-- Named carriers & consignors as **parties** (owner enters their own names)
+- Named carriers & consignors as **parties** (owner enters their own names — never seeded as sample catalogue)
 
 ------------------------------------------------------------------------
 

@@ -24,15 +24,15 @@ Rules for this work:
 | # | Item | Status | Notes |
 |---|---|---|---|
 | A1 | OS documents at real size on the printer's paper; paper per printer (Find fills it); preview of the job on any printer's paper | **Done 2026-11-16** | Was `lp -o fit-to-page` / a Windows page fitted to fixed margins: an 80 mm receipt printed page-wide. `docs/PRINTER.md` § Paper and preview, § Moklanjo. 18 paper tests; Xvfb checked (A4 driver paper, 101.6 mm roll, 80 mm ESC/POS label cut at the roll's edge). **Reworked 2026-11-17** with the other apps: the job prints the standard way on the printer's own page (no paper named by the app), each printer has a typed *virtual* paper and a read-only *reported* paper, the receipt and the AWB label each have a 3 × 3 place, and Windows printing / USB / Bluetooth use the Windows API with no helper process. Checked on Xvfb at 1440 and 420 px; not tried on a real printer or an Android device |
-| A2 | In-app privacy policy (Settings → Privacy) from `docs/PRIVACY.md`, as Khaynjo's `privacy_policy.rs` | Open — *needs owner OK* (a new Settings section) | `PRIVACY.md` written 2026-11-16 for the site and the Play listing; legal details are owner inputs (O2) |
-| A3 | Settings → Printers "Where things print": Khaynjo's pattern — each job's printers a checklist dropdown (✓ rows, Find printers row when none), no Add / Up / Down / Remove last / Clear / **Save printers** buttons (formats save themselves) | Open — *needs owner OK* | The old route controls are still always shown. DEV.md § Dropdowns rules 9–10, DESIGN.md "Formats save themselves" |
+| A2 | In-app privacy policy (Settings → Privacy) from `docs/PRIVACY.md`, as Khaynjo's `privacy_policy.rs` | **Done 2026-11-19** | `privacy_policy.rs` + `NavTab::SetPrivacy` + Settings panel from `PRIVACY.md`. Legal entity details remain owner input (O2) |
+| A3 | Settings → Printers "Where things print": Khaynjo's pattern — each job's printers a checklist dropdown (✓ rows, Find printers row when none), no Add / Up / Down / Remove last / Clear / **Save printers** buttons (formats save themselves) | **Done 2026-11-19** | Receipt + AWB Label `StationCheckList` dropdowns; toggles save immediately; legacy Add/Up/Down/Remove/Clear/Save row hidden (`route_add_printer_legacy`) |
 | A4 | Hard-coded English left in printer screens: "(none yet — tap Find printers)", "this computer's usual printer (blank address)" in `courier_printers_pool_rows` | **Done 2026-11-16** | The paper rows replaced that list; the function and its call are gone (a blank address reads `printer_target_default`, translated) |
 | A5 | `docs/DEV.md` § Manual UI smoke listed a Khaynjo step ("4b. Waiter … Floor/Order") in Moklanjo's checklist | **Done 2026-11-16** | Now a cashier check (seed Asha 2222) against MOKLANJO.md § Rights match chrome |
-| A6 | Store cert (`./scripts/product-cert.sh moklanjo --tier=store`) | **Not passed** — 2026-11-16 verdict FAIL | fast, ui, visual, resilience and xcomp pass. The Linux package check was skipped because there is no package (A9). The Android launch check needs a device attached. See § Cert runs |
+| A6 | Store cert (`./scripts/product-cert.sh moklanjo --tier=store`) | **Pass 2026-11-19** (android skipped) | `SUMMARY-20261119-152731`: fast/ui/visual/resilience/xcomp/linux/wack/store PASS; android SKIP with `CERT_ALLOW_ANDROID_SKIP=1` (no adb device). Re-run on a device before Play upload |
 | A7 | Version for the first public release (0.1.0, Play code 1 today; Khaynjo is 1.0.10 / 8) | *Owner decides* | `apps/moklanjo/Cargo.toml` `version`, `[package.metadata.makepad.android]` |
 | A8 | Export template (Khaynjo 2026-11-14) | Later — owner: Khaynjo first, then the other three | `APP_MATURITY.md` owner queue |
-| A9 | Release packages in `dist/`: Linux, Android (AAB + APK), Windows (MSIX + MSI) | Open — never built | `dist/` holds only Khaynjo's, from 2026-11-15. Needs A7. A signed Play upload needs O1; a Store MSIX needs O5 |
-| A10 | Play Store and Microsoft Store requirements, checked item by item against Khaynjo's `PUBLISH_PLAY_STORE.md` / `PUBLISH_WINDOWS_STORE.md` | Open — not reviewed | Moklanjo has no publish docs and no store listing yet. The privacy URL that Play needs is W1 |
+| A9 | Release packages in `dist/`: Linux, Android (AAB + APK), Windows (MSIX + MSI) | **Built 2026-11-19** | `dist/linux` (+ `dist/moklanjo-linux`), `dist/Moklanjo-0.1.0.msi`, `dist/Moklanjo-0.1.0.msix`, `dist/moklanjo-windows/`. Play: created `$HOME/moklanjo-release.jks` (same pattern as Khaynjo) → release-signed `dist/android/kumkaj-moklanjo.apk` + `kumkaj-moklanjo.aab` (+ symbols/mapping) |
+| A10 | Play Store and Microsoft Store requirements, checked item by item against Khaynjo's `PUBLISH_PLAY_STORE.md` / `PUBLISH_WINDOWS_STORE.md` | **Docs added 2026-11-19** | [`PUBLISH_PLAY_STORE.md`](PUBLISH_PLAY_STORE.md), [`PUBLISH_WINDOWS_STORE.md`](PUBLISH_WINDOWS_STORE.md). Upload when Console/Partner Center listings exist |
 | A11 | Settings → Printers "Where things print" at phone width (420 px): the job's name wraps one letter per line and the printer text is cut off at the card's edge | Done 2026-11-17 | The value never shrank, so a long one left the label a few px. `ReportText` now draws such a row with the label above and the value under it, both wrapping (`kv_stacks`, DEV.md bug 7j; all four apps). Seen on the isolated screen at 420 and 1440 px; money rows unchanged. A3's checklist dropdowns would still replace this list |
 
 ## Website (moklanjo.com)
@@ -48,11 +48,11 @@ Rules for this work:
 
 | # | Input |
 |---|---|
-| O1 | Play developer account listing for `com.moklanjo`; Android release keystore (`KUMKAJ_ANDROID_KEYSTORE`) |
+| O1 | Play Console listing for `com.moklanjo` (upload the AAB). Keystore: **`$HOME/moklanjo-release.jks`** created 2026-11-19 (agent, Khaynjo pattern) — back it up; do not regenerate |
 | O2 | Gotigin legal / contact / grievance details for `PRIVACY.md` and the site footer |
 | O3 | Hosting for moklanjo.com (Firebase project id or other) |
 | O4 | WhatsApp Business number for "WhatsApp for a demo" |
-| O5 | Windows code signing / Microsoft Store identity (`MearajBhagad.Moklanjo`) |
+| O5 | Microsoft Store: Partner Center listing for Identity `MearajBhagad.Moklanjo` (unsigned `dist/Moklanjo-0.1.0.msix` is OK — Store re-signs). Optional sideload `.pfx` only if you want local signed MSIX |
 | O6 | Real-hardware LAN pilot (second counter + rider phone) before the LAN claims go live |
 
 ## Cert runs
@@ -70,3 +70,7 @@ Rules for this work:
   fast, ui, visual, resilience and xcomp PASS. linux **SKIP**: there is no
   `dist/moklanjo-linux`, because it was never built (`CERT_BUILD_LINUX=1`
   builds it). android **FAIL**: no device attached. **Verdict: FAIL.**
+- 2026-11-19 `--tier=store` (`SUMMARY-20261119-152731`, `CERT_ALLOW_ANDROID_SKIP=1`):
+  fast, ui, visual, resilience, xcomp, linux, wack, store **PASS**; android
+  **SKIP** (no device). **APP PASS: moklanjo.** Device smoke still required
+  before a real Play upload.

@@ -86,7 +86,7 @@ sidebar_hidden	Skrito
 sidebar_always_on	Vedno na vrstici
 sidebar_shown_hint	Prikazano na stranskem tiru / spodnjih zavihkih
 sidebar_hidden_hint	Skrito z vrstice
-sidebar_menu_items	Meni in artikli
+sidebar_menu_items	Stopnje
 sidebar_enable_all	Omogoči vse
 sidebar_disable_all	Onemogoči vse
 sidebar_order_saved	Vrstni red stranske vrstice shranjen
@@ -846,3 +846,10 @@ sel_copy	Kopiraj
 sel_select_all	Izberi vse
 sel_copied	Kopirano
 nav_loading	Nalaganje…
+settings_sec_privacy	Zasebnost
+privacy_policy_help	Zasebnost · PRIVACY.md · moklanjo.com/privacy
+dont_use	Ne uporabi
+receipt_printers_dd	Tiskalniki v tej napravi · potrdilo o prejemu
+receipt_printers_dd_n	{n} · Tiskalniki v tej napravi · potrdilo o prejemu
+label_printers_dd	Tiskalniki v tej napravi · Oznaka AWB
+label_printers_dd_n	{n} · Tiskalniki v tej napravi · Oznaka AWB

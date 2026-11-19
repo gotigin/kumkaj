@@ -86,7 +86,7 @@ sidebar_hidden	Пинҳон шуд
 sidebar_always_on	Ҳамеша дар навор
 sidebar_shown_hint	Дар навори канор / варақаҳои поён нишон дода мешавад
 sidebar_hidden_hint	Аз навор пинҳон шуд
-sidebar_menu_items	Меню ва молҳо
+sidebar_menu_items	Нархҳо
 sidebar_enable_all	Фаъол кардани ҳама
 sidebar_disable_all	Хомӯш кардани ҳама
 sidebar_order_saved	Тартиби канор захира шуд
@@ -846,3 +846,10 @@ sel_copy	Нусха бардоштан
 sel_select_all	Ҳамаро интихоб кардан
 sel_copied	Нусха бардошта шуд
 nav_loading	Боркунӣ…
+settings_sec_privacy	Махфият
+privacy_policy_help	Махфият · PRIVACY.md · moklanjo.com/privacy
+dont_use	Истифода накунед
+receipt_printers_dd	Принтерҳо дар ин дастгоҳ · Квитансия
+receipt_printers_dd_n	{n} · Принтерҳо дар ин дастгоҳ · Квитансия
+label_printers_dd	Принтерҳо дар ин дастгоҳ · Нишони AWB
+label_printers_dd_n	{n} · Принтерҳо дар ин дастгоҳ · Нишони AWB

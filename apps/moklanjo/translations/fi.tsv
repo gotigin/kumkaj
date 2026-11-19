@@ -86,7 +86,7 @@ sidebar_hidden	Piilotettu
 sidebar_always_on	Aina palkissa
 sidebar_shown_hint	Näkyy sivukiskossa / alavälilehdissä
 sidebar_hidden_hint	Piilotettu palkista
-sidebar_menu_items	Ruokalista ja tuotteet
+sidebar_menu_items	Hinnat
 sidebar_enable_all	Ota kaikki käyttöön
 sidebar_disable_all	Poista kaikki käytöstä
 sidebar_order_saved	Sivupalkin järjestys tallennettu
@@ -846,3 +846,10 @@ sel_copy	Kopioi
 sel_select_all	Valitse kaikki
 sel_copied	Kopioitu
 nav_loading	Ladataan…
+settings_sec_privacy	Tietosuoja
+privacy_policy_help	Yksityisyys · PRIVACY.md · moklanjo.com/privacy
+dont_use	Älä käytä
+receipt_printers_dd	Tämän laitteen tulostimet · Kuitti
+receipt_printers_dd_n	{n} · Tämän laitteen tulostimet · Kuitti
+label_printers_dd	Tämän laitteen tulostimet · AWB etiketti
+label_printers_dd_n	{n} · Tämän laitteen tulostimet · AWB etiketti

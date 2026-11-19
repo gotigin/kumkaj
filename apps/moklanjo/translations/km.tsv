@@ -86,7 +86,7 @@ sidebar_hidden	បានលាក់
 sidebar_always_on	នៅលើរបារជានិច្ច
 sidebar_shown_hint	បង្ហាញនៅរបារចំហៀង / ផ្ទាំងខាងក្រោម
 sidebar_hidden_hint	បានលាក់ពីរបារ
-sidebar_menu_items	ម៉ឺនុយ និងទំនិញ
+sidebar_menu_items	អត្រា
 sidebar_enable_all	បើកទាំងអស់
 sidebar_disable_all	បិទទាំងអស់
 sidebar_order_saved	លំដាប់ចំហៀងបានរក្សាទុក
@@ -846,3 +846,10 @@ sel_copy	ចម្លង
 sel_select_all	ជ្រើសរើសទាំងអស់
 sel_copied	បានចម្លង
 nav_loading	កំពុងផ្ទុក…
+settings_sec_privacy	ឯកជនភាព
+privacy_policy_help	ឯកជនភាព · PRIVACY.md · moklanjo.com/privacy
+dont_use	កុំប្រើ
+receipt_printers_dd	ម៉ាស៊ីនបោះពុម្ពនៅលើឧបករណ៍នេះ។ · បង្កាន់ដៃ
+receipt_printers_dd_n	{n} · ម៉ាស៊ីនបោះពុម្ពនៅលើឧបករណ៍នេះ។ · បង្កាន់ដៃ
+label_printers_dd	ម៉ាស៊ីនបោះពុម្ពនៅលើឧបករណ៍នេះ។ · ស្លាក AWB
+label_printers_dd_n	{n} · ម៉ាស៊ីនបោះពុម្ពនៅលើឧបករណ៍នេះ។ · ស្លាក AWB

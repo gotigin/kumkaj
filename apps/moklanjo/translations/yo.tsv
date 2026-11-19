@@ -86,7 +86,7 @@ sidebar_hidden	Farasin
 sidebar_always_on	Nigbagbogbo lori igi
 sidebar_shown_hint	Ti o han lori iṣinipopada ẹgbẹ / awọn taabu isalẹ
 sidebar_hidden_hint	Farasin lati awọn igi
-sidebar_menu_items	Akojọ aṣyn & Akojọ awọn ohun akojọ
+sidebar_menu_items	Awọn oṣuwọn
 sidebar_enable_all	Jeki Gbogbo
 sidebar_disable_all	Mu Gbogbo
 sidebar_order_saved	Ibere legbe ti o ti fipamọ
@@ -846,3 +846,10 @@ sel_copy	Daakọ
 sel_select_all	Yan gbogbo rẹ̀
 sel_copied	A ti daakọ
 nav_loading	Ń gbé e wọlé…
+settings_sec_privacy	Asiri
+privacy_policy_help	Àṣírí · PRIVACY.md · moklanjo.com/privacy
+dont_use	Maṣe lo
+receipt_printers_dd	Awọn atẹwe lori ẹrọ yii · gbigba
+receipt_printers_dd_n	{n} · Awọn atẹwe lori ẹrọ yii · gbigba
+label_printers_dd	Awọn atẹwe lori ẹrọ yii · AWB aami
+label_printers_dd_n	{n} · Awọn atẹwe lori ẹrọ yii · AWB aami

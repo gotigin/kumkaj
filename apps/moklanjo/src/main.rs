@@ -12,14 +12,14 @@ pub use makepad_widgets;
 #[cfg(target_os = "android")]
 use crate::{
     books_op, booking, courier_ops_view, diag, domain, entity_template, fiscal, labels, lan_images,
-    local_servers, locale, manifest, menu_images, net, notify, os_paper, phone, precise, print_share, rates,
-    snack, startup, store, suggest, thumbs,
+    local_servers, locale, manifest, menu_images, net, notify, os_paper, phone, precise, privacy_policy,
+    print_share, rates, snack, startup, store, suggest, thumbs,
 };
 #[cfg(not(target_os = "android"))]
 use kumkaj_moklanjo::{
     books_op, booking, courier_ops_view, diag, domain, entity_template, fiscal, labels, lan_images,
-    local_servers, locale, manifest, menu_images, net, notify, os_paper, phone, precise, print_share, rates,
-    snack, startup, store, suggest, thumbs, uninstall_wipe,
+    local_servers, locale, manifest, menu_images, net, notify, os_paper, phone, precise, privacy_policy,
+    print_share, rates, snack, startup, store, suggest, thumbs, uninstall_wipe,
 };
 use snack::SnackKind;
 

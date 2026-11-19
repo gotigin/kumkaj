@@ -86,7 +86,7 @@ sidebar_hidden	गुप्तम्
 sidebar_always_on	सदा बारस्य उपरि
 sidebar_shown_hint	पार्श्वरेल / अधः ट्याब्स् इत्यत्र दर्शितम्
 sidebar_hidden_hint	बारात् निगूढम्
-sidebar_menu_items	मेनू & मेनू आइटम
+sidebar_menu_items	शुल्कानि
 sidebar_enable_all	सर्वं सक्षमं कुर्वन्तु
 sidebar_disable_all	सर्वं अक्षमं कुर्वन्तु
 sidebar_order_saved	पार्श्वपट्टिकाक्रमः रक्षितः
@@ -846,3 +846,10 @@ sel_copy	प्रतिलिख्यताम्
 sel_select_all	सर्वं चीयताम्
 sel_copied	प्रतिलिखितम्
 nav_loading	आरोप्यते…
+settings_sec_privacy	गोपनीयता
+privacy_policy_help	गोपनीयता · PRIVACY.md · moklanjo.com/privacy
+dont_use	न प्रयुञ्जीत
+receipt_printers_dd	अस्मिन् यन्त्रे मुद्रकाः · रसीद्
+receipt_printers_dd_n	{n} · अस्मिन् यन्त्रे मुद्रकाः · रसीद्
+label_printers_dd	अस्मिन् यन्त्रे मुद्रकाः · AWB नामपत्रम्
+label_printers_dd_n	{n} · अस्मिन् यन्त्रे मुद्रकाः · AWB नामपत्रम्

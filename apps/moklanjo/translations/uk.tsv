@@ -86,7 +86,7 @@ sidebar_hidden	Сховано
 sidebar_always_on	Завжди на панелі
 sidebar_shown_hint	Показано на бічній рейці / нижніх вкладках
 sidebar_hidden_hint	Сховано з панелі
-sidebar_menu_items	Меню й позиції
+sidebar_menu_items	Ставки
 sidebar_enable_all	Увімкнути все
 sidebar_disable_all	Вимкнути все
 sidebar_order_saved	Порядок бічної панелі збережено
@@ -846,3 +846,10 @@ sel_copy	Копіювати
 sel_select_all	Виділити все
 sel_copied	Скопійовано
 nav_loading	Завантаження…
+settings_sec_privacy	Конфіденційність
+privacy_policy_help	Конфіденційність · PRIVACY.md · moklanjo.com/privacy
+dont_use	Не використовувати
+receipt_printers_dd	Принтери на цьому пристрої · розписка
+receipt_printers_dd_n	{n} · Принтери на цьому пристрої · розписка
+label_printers_dd	Принтери на цьому пристрої · Мітка AWB
+label_printers_dd_n	{n} · Принтери на цьому пристрої · Мітка AWB

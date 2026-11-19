@@ -54,7 +54,7 @@ owed	pendente
 round_word	arredondamento
 back	Atrás
 sold_out	Non dispoñible
-restock	Repor stock
+restock	Mark available
 not_tracked	Sen seguimento
 in_stock	en stock
 marked_sold_out	Marcado como non dispoñible
@@ -86,7 +86,7 @@ sidebar_hidden	Agochado
 sidebar_always_on	Sempre na barra
 sidebar_shown_hint	Visible no raíl lateral / pestanas de abaixo
 sidebar_hidden_hint	Agochado da barra
-sidebar_menu_items	Menú e artigos
+sidebar_menu_items	Tarifas
 sidebar_enable_all	Activar todo
 sidebar_disable_all	Desactivar todo
 sidebar_order_saved	Orde da barra lateral gardada
@@ -846,3 +846,10 @@ sel_copy	Copiar
 sel_select_all	Seleccionar todo
 sel_copied	Copiado
 nav_loading	Cargando…
+settings_sec_privacy	Privacidade
+privacy_policy_help	Privacidade · PRIVACY.md · moklanjo.com/privacy
+dont_use	Non usar
+receipt_printers_dd	Impresoras neste dispositivo · Recibo
+receipt_printers_dd_n	{n} · Impresoras neste dispositivo · Recibo
+label_printers_dd	Impresoras neste dispositivo · Etiqueta AWB
+label_printers_dd_n	{n} · Impresoras neste dispositivo · Etiqueta AWB

@@ -53,11 +53,11 @@ today_mid	ఈరోజు
 owed	బాకీ
 round_word	రౌండ్
 back	వెనుకకు
-sold_out	అమ్ముడైంది
-restock	తిరిగి పెట్టు
+sold_out	అందుబాటులో లేదు
+restock	అందుబాటులో ఉందని గుర్తు
 not_tracked	లెక్క లేదు
 in_stock	నిల్వలో
-marked_sold_out	అమ్ముడైందని గుర్తు
+marked_sold_out	అందుబాటులో లేదని గుర్తు
 add_upper	జోడించు
 na	లేదు
 qty	సంఖ్య
@@ -86,7 +86,7 @@ sidebar_hidden	దాచబడింది
 sidebar_always_on	ఎప్పుడూ పట్టీపై
 sidebar_shown_hint	పక్క పట్టీ / కింది ట్యాబ్‌లలో చూపబడుతుంది
 sidebar_hidden_hint	పట్టీ నుండి దాచబడింది
-sidebar_menu_items	మెనూ & ఐటమ్‌లు
+sidebar_menu_items	రేట్లు
 sidebar_enable_all	అన్నీ ఆన్ చేయి
 sidebar_disable_all	అన్నీ ఆఫ్ చేయి
 sidebar_order_saved	సైడ్‌బార్ క్రమం సేవ్ అయింది
@@ -846,3 +846,10 @@ sel_copy	కాపీ
 sel_select_all	అన్నీ ఎంచుకోండి
 sel_copied	కాపీ అయింది
 nav_loading	లోడ్ అవుతోంది…
+settings_sec_privacy	గోప్యత
+privacy_policy_help	https://moklanjo.com/privacy లోని అదే PRIVACY.md — వేరు కాపీ కాదు.
+dont_use	ఉపయోగించవద్దు
+receipt_printers_dd	ఈ పరికరంలోని ప్రింటర్లు · రసీదు
+receipt_printers_dd_n	{n} · ఈ పరికరంలోని ప్రింటర్లు · రసీదు
+label_printers_dd	ఈ పరికరంలోని ప్రింటర్లు · AWB లేబుల్
+label_printers_dd_n	{n} · ఈ పరికరంలోని ప్రింటర్లు · AWB లేబుల్

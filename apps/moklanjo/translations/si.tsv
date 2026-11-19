@@ -86,7 +86,7 @@ sidebar_hidden	සැඟවී ඇත
 sidebar_always_on	නිතරම බාර් එකේ
 sidebar_shown_hint	පැති රේල් / පහළ ටැබ් මත පෙන්වා ඇත
 sidebar_hidden_hint	තීරුවෙන් සැඟවී ඇත
-sidebar_menu_items	මෙනු සහ මෙනු අයිතම
+sidebar_menu_items	ගාස්තු
 sidebar_enable_all	සියල්ල සබල කරන්න
 sidebar_disable_all	සියල්ල අක්‍රිය කරන්න
 sidebar_order_saved	පැති තීරු ඇණවුම සුරකින ලදී
@@ -846,3 +846,10 @@ sel_copy	පිටපත් කරන්න
 sel_select_all	සියල්ල තෝරන්න
 sel_copied	පිටපත් කළා
 nav_loading	පූරණය වෙමින්…
+settings_sec_privacy	රහස්‍යතාව
+privacy_policy_help	පෞද්ගලිකත්වය · PRIVACY.md · moklanjo.com/privacy
+dont_use	පාවිච්චි කරන්න එපා
+receipt_printers_dd	මෙම උපාංගයේ මුද්‍රණ යන්ත්‍ර · රිසිට්පත
+receipt_printers_dd_n	{n} · මෙම උපාංගයේ මුද්‍රණ යන්ත්‍ර · රිසිට්පත
+label_printers_dd	මෙම උපාංගයේ මුද්‍රණ යන්ත්‍ර · AWB ලේබලය
+label_printers_dd_n	{n} · මෙම උපාංගයේ මුද්‍රණ යන්ත්‍ර · AWB ලේබලය

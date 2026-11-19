@@ -86,7 +86,7 @@ sidebar_hidden	ଲୁଚା
 sidebar_always_on	ସବୁବେଳେ ପଟିରେ
 sidebar_shown_hint	ପାର୍ଶ୍ୱ ପଟି / ତଳ ଟ୍ୟାବରେ ଦେଖାଯାଏ
 sidebar_hidden_hint	ପଟିରୁ ଲୁଚା
-sidebar_menu_items	ମେନୁ ଓ ଆଇଟମ୍
+sidebar_menu_items	ହାର
 sidebar_enable_all	ସବୁ ଚାଲୁ କରନ୍ତୁ
 sidebar_disable_all	ସବୁ ବନ୍ଦ କରନ୍ତୁ
 sidebar_order_saved	ସାଇଡବାର୍ କ୍ରମ ସଞ୍ଚୟ ହେଲା
@@ -846,3 +846,10 @@ sel_copy	କପି କରନ୍ତୁ
 sel_select_all	ସବୁ ବାଛନ୍ତୁ
 sel_copied	କପି ହେଲା
 nav_loading	ଲୋଡ୍ ହେଉଛି…
+settings_sec_privacy	ଗୋପନୀୟତା
+privacy_policy_help	ଗୋପନୀୟତା · PRIVACY.md · moklanjo.com/privacy
+dont_use	ବ୍ୟବହାର କରନ୍ତୁ ନାହିଁ
+receipt_printers_dd	ଏହି ଡିଭାଇସର ପ୍ରିଣ୍ଟର · ରସିଦ
+receipt_printers_dd_n	{n} · ଏହି ଡିଭାଇସର ପ୍ରିଣ୍ଟର · ରସିଦ
+label_printers_dd	ଏହି ଡିଭାଇସର ପ୍ରିଣ୍ଟର · AWB ଲେବଲ
+label_printers_dd_n	{n} · ଏହି ଡିଭାଇସର ପ୍ରିଣ୍ଟର · AWB ଲେବଲ

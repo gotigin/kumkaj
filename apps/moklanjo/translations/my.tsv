@@ -86,7 +86,7 @@ sidebar_hidden	ဖျောက်ထားသည်
 sidebar_always_on	ဘားပေါ်တွင်အမြဲ
 sidebar_shown_hint	ဘက်ဘား / အောက်ဆုံးတပ်များတွင်ပြသထားသည်
 sidebar_hidden_hint	ဘားမှ ဖျောက်ထားသည်
-sidebar_menu_items	မီနူးနှင့်အချက်အလက်များ
+sidebar_menu_items	နှုန်းထားများ
 sidebar_enable_all	အားလုံးဖွင့်ပါ
 sidebar_disable_all	အားလုံးပိတ်ပါ
 sidebar_order_saved	ဘက်ဘားမှာအမှာစာအစီအစဉ်သိမ်းပြီးပြီ
@@ -846,3 +846,10 @@ sel_copy	ကူးယူရန်
 sel_select_all	အားလုံးရွေးရန်
 sel_copied	ကူးယူပြီး
 nav_loading	ဖွင့်နေသည်…
+settings_sec_privacy	ကိုယ်ရေးကိုယ်တာ
+privacy_policy_help	ကိုယ်ရေးကိုယ်တာ · PRIVACY.md · moklanjo.com/privacy
+dont_use	မသုံးပါ
+receipt_printers_dd	ဤစက်ပစ္စည်းပေါ်ရှိ ပရင်တာများ · ပြေစာ
+receipt_printers_dd_n	{n} · ဤစက်ပစ္စည်းပေါ်ရှိ ပရင်တာများ · ပြေစာ
+label_printers_dd	ဤစက်ပစ္စည်းပေါ်ရှိ ပရင်တာများ · AWB တံဆိပ်
+label_printers_dd_n	{n} · ဤစက်ပစ္စည်းပေါ်ရှိ ပရင်တာများ · AWB တံဆိပ်

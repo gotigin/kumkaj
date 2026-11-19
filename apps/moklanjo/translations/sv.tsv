@@ -86,7 +86,7 @@ sidebar_hidden	Dold
 sidebar_always_on	Alltid på baren
 sidebar_shown_hint	Visas på sidostången / nedre flikarna
 sidebar_hidden_hint	Gömd från baren
-sidebar_menu_items	Meny & objekt
+sidebar_menu_items	Priser
 sidebar_enable_all	Aktivera alla
 sidebar_disable_all	Inaktivera alla
 sidebar_order_saved	Beställningen i sidofältet har sparats
@@ -846,3 +846,10 @@ sel_copy	Kopiera
 sel_select_all	Markera allt
 sel_copied	Kopierat
 nav_loading	Läser in…
+settings_sec_privacy	Integritet
+privacy_policy_help	Integritet · PRIVACY.md · moklanjo.com/privacy
+dont_use	Använd inte
+receipt_printers_dd	Skrivare på den här enheten · Mottagande
+receipt_printers_dd_n	{n} · Skrivare på den här enheten · Mottagande
+label_printers_dd	Skrivare på den här enheten · AWB-etikett
+label_printers_dd_n	{n} · Skrivare på den här enheten · AWB-etikett

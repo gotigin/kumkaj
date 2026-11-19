@@ -86,7 +86,7 @@ sidebar_hidden	An ɓoye
 sidebar_always_on	Koyaushe a kan sandar
 sidebar_shown_hint	Ana nuna a sandar gefe / shafukan ƙasa
 sidebar_hidden_hint	An ɓoye daga sandar
-sidebar_menu_items	Menu da kayayyaki
+sidebar_menu_items	Farashin
 sidebar_enable_all	Kunna duka
 sidebar_disable_all	Kashe duka
 sidebar_order_saved	An ajiye tsarin gefen allo
@@ -846,3 +846,10 @@ sel_copy	Kwafi
 sel_select_all	Zaɓi duka
 sel_copied	An kwafa
 nav_loading	Ana lodawa…
+settings_sec_privacy	Keɓantawa
+privacy_policy_help	Sirri · PRIVACY.md · moklanjo.com/privacy
+dont_use	Kada a yi amfani
+receipt_printers_dd	Masu bugawa akan wannan na'urar · Rasit
+receipt_printers_dd_n	{n} · Masu bugawa akan wannan na'urar · Rasit
+label_printers_dd	Masu bugawa akan wannan na'urar · Farashin AWB
+label_printers_dd_n	{n} · Masu bugawa akan wannan na'urar · Farashin AWB

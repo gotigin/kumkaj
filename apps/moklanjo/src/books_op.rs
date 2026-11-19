@@ -358,7 +358,7 @@ impl BooksOp {
             Self::SaveItem { updating: true, .. } => "Change items",
             Self::SaveItem { .. } => "Add items",
             Self::ArchiveProduct { .. } => "Remove items",
-            Self::SetProductAvailable { .. } => "Mark items sold out",
+            Self::SetProductAvailable { .. } => "Mark rates unavailable",
             Self::ImportCsv { .. } => "Import from CSV",
             Self::AdjustStock { .. } => "Adjust stock",
             Self::StartStockTracking { .. } => "Start stock tracking",
@@ -432,9 +432,9 @@ impl BooksOp {
             Self::ArchiveProduct { name, .. } => format!("Removed {name}"),
             Self::SetProductAvailable { name, available, .. } => {
                 if *available {
-                    format!("{name} restocked")
+                    format!("{name} marked available")
                 } else {
-                    format!("{name} marked sold out")
+                    format!("{name} marked unavailable")
                 }
             }
             Self::ImportCsv { kind, .. } => match kind.as_str() {
@@ -948,9 +948,9 @@ impl Store {
                 }
                 self.set_product_available(&id, available)?;
                 Ok(if available {
-                    format!("{name} restocked")
+                    format!("{name} marked available")
                 } else {
-                    format!("{name} marked sold out")
+                    format!("{name} marked unavailable")
                 })
             }
             BooksOp::ImportCsv { kind, bytes, .. } => {

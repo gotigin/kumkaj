@@ -86,7 +86,7 @@ sidebar_hidden	Amagat
 sidebar_always_on	Sempre a la barra
 sidebar_shown_hint	Visible al rail lateral / pestanyes inferiors
 sidebar_hidden_hint	Amagat de la barra
-sidebar_menu_items	Menú i articles
+sidebar_menu_items	Tarifes
 sidebar_enable_all	Activa-ho tot
 sidebar_disable_all	Desactiva-ho tot
 sidebar_order_saved	Ordre de la barra lateral desat
@@ -846,3 +846,10 @@ sel_copy	Copia
 sel_select_all	Selecciona-ho tot
 sel_copied	Copiat
 nav_loading	S'està carregant…
+settings_sec_privacy	Privadesa
+privacy_policy_help	Privadesa · PRIVACY.md · moklanjo.com/privacy
+dont_use	No ho facis servir
+receipt_printers_dd	Impressores en aquest dispositiu · Rebut
+receipt_printers_dd_n	{n} · Impressores en aquest dispositiu · Rebut
+label_printers_dd	Impressores en aquest dispositiu · Etiqueta AWB
+label_printers_dd_n	{n} · Impressores en aquest dispositiu · Etiqueta AWB

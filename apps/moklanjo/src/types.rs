@@ -9,7 +9,8 @@ enum Screen {
     Pos,
     /// Money out — purchase + expense.
     Buy,
-    Menu,
+    /// Rate cards / services (courier catalogue — not a food menu).
+    Rates,
     More,
     Sales,
     Credit,
@@ -53,7 +54,11 @@ enum NavTab {
     SetAlerts,
     SetBackup,
     SetDiag,
+    SetPrivacy,
 }
+
+/// Checklist row that opens the Printers sheet when the pool is empty.
+const FIND_PRINTERS_ROW: &str = "@find_printers";
 
 /// Which Reports-screen facet is open (ops/COD/riders share `Screen::Reports`).
 #[derive(Clone, Copy, PartialEq, Eq, Default)]
@@ -115,10 +120,14 @@ enum SuggestField {
     PartyPincode,
     /// Settings → Printers: the printer whose paper the job preview is drawn on.
     JobPreviewPaper,
+    /// Settings → Printers: checklist for Receipt route printers.
+    ReceiptPrinters,
+    /// Settings → Printers: checklist for AWB Label route printers.
+    LabelPrinters,
 }
 
 impl SuggestField {
-    const ALL: [SuggestField; 33] = [
+    const ALL: [SuggestField; 35] = [
         SuggestField::BookingDestination,
         SuggestField::BookingZone,
         SuggestField::BookingCarrier,
@@ -152,6 +161,8 @@ impl SuggestField {
         SuggestField::PartyState,
         SuggestField::PartyPincode,
         SuggestField::JobPreviewPaper,
+        SuggestField::ReceiptPrinters,
+        SuggestField::LabelPrinters,
     ];
 
     fn key(self) -> &'static str {
@@ -189,6 +200,8 @@ impl SuggestField {
             SuggestField::PartyState => "party_state",
             SuggestField::PartyPincode => "party_pincode",
             SuggestField::JobPreviewPaper => "job_preview_paper",
+            SuggestField::ReceiptPrinters => "receipt_printers",
+            SuggestField::LabelPrinters => "label_printers",
         }
     }
 
@@ -227,6 +240,8 @@ impl SuggestField {
             SuggestField::PartyState => ids!(party_state_input),
             SuggestField::PartyPincode => ids!(party_pincode_input),
             SuggestField::JobPreviewPaper => ids!(job_preview_paper_input),
+            SuggestField::ReceiptPrinters => ids!(receipt_printers_input),
+            SuggestField::LabelPrinters => ids!(label_printers_input),
         }
     }
 
@@ -265,6 +280,8 @@ impl SuggestField {
             SuggestField::PartyState => ids!(party_state_suggest),
             SuggestField::PartyPincode => ids!(party_pincode_suggest),
             SuggestField::JobPreviewPaper => ids!(job_preview_paper_suggest),
+            SuggestField::ReceiptPrinters => ids!(receipt_printers_suggest),
+            SuggestField::LabelPrinters => ids!(label_printers_suggest),
         }
     }
 
@@ -275,8 +292,18 @@ impl SuggestField {
     fn opener(self) -> Option<&'static [LiveId]> {
         match self {
             SuggestField::JobPreviewPaper => Some(ids!(job_preview_paper_dd)),
+            SuggestField::ReceiptPrinters => Some(ids!(receipt_printers_dd)),
+            SuggestField::LabelPrinters => Some(ids!(label_printers_dd)),
             _ => None,
         }
+    }
+
+    /// Printer route checklists (and Find printers when the pool is empty).
+    fn is_printer_pick(self) -> bool {
+        matches!(
+            self,
+            SuggestField::ReceiptPrinters | SuggestField::LabelPrinters
+        )
     }
 }
 
@@ -284,7 +311,7 @@ impl SuggestField {
 /// positions; which tab a slot shows comes from `AppState.nav_order`). The
 /// app's own default order is the names in dictionary order
 /// ([`default_nav_order`]); sections start hidden on the bars.
-const NAV_TABS: [NavTab; 27] = [
+const NAV_TABS: [NavTab; 28] = [
     NavTab::SetLanguage,
     NavTab::SetCountry,
     NavTab::SetBrand,
@@ -296,6 +323,7 @@ const NAV_TABS: [NavTab; 27] = [
     NavTab::SetAlerts,
     NavTab::SetBackup,
     NavTab::SetDiag,
+    NavTab::SetPrivacy,
     NavTab::Books,
     NavTab::Sell,
     NavTab::Buy,
@@ -328,6 +356,7 @@ fn nav_tab_settings_panel(tab: NavTab) -> Option<&'static str> {
         NavTab::SetAlerts => "alerts",
         NavTab::SetBackup => "backup",
         NavTab::SetDiag => "diag",
+        NavTab::SetPrivacy => "privacy",
         _ => return None,
     })
 }
@@ -354,7 +383,7 @@ fn nav_tab_label(tab: NavTab, lang: &str) -> String {
         NavTab::Books => "books",
         NavTab::Sell => "sell",
         NavTab::Buy => "buy",
-        NavTab::Rates => "sidebar_menu_items",
+        NavTab::Rates => "nav_items",
         NavTab::Riders => "riders",
         NavTab::Sales => "sales",
         NavTab::DayClose => "day_close",
@@ -376,6 +405,7 @@ fn nav_tab_label(tab: NavTab, lang: &str) -> String {
         NavTab::SetAlerts => "settings_sec_alerts",
         NavTab::SetBackup => "backup",
         NavTab::SetDiag => "settings_sec_diag",
+        NavTab::SetPrivacy => "settings_sec_privacy",
     };
     locale::t(lang, key)
 }
@@ -409,6 +439,7 @@ fn nav_tab_key(tab: NavTab) -> &'static str {
         NavTab::SetAlerts => "set_alerts",
         NavTab::SetBackup => "set_backup",
         NavTab::SetDiag => "set_diag",
+        NavTab::SetPrivacy => "set_privacy",
     }
 }
 
@@ -443,6 +474,7 @@ fn nav_tab_icon_bytes(tab: NavTab) -> &'static [u8] {
         NavTab::SetAlerts => include_bytes!("../resources/settings/alerts.webp").as_slice(),
         NavTab::SetBackup => include_bytes!("../resources/settings/backup.webp").as_slice(),
         NavTab::SetDiag => include_bytes!("../resources/settings/diag.webp").as_slice(),
+        NavTab::SetPrivacy => include_bytes!("../resources/settings/privacy.webp").as_slice(),
     }
 }
 
@@ -668,7 +700,8 @@ fn nav_tab_permitted(tab: NavTab, caps: NavCaps) -> bool {
         | NavTab::SetDevices
         | NavTab::SetAlerts
         | NavTab::SetBackup
-        | NavTab::SetDiag => caps.shop_settings,
+        | NavTab::SetDiag
+        | NavTab::SetPrivacy => caps.shop_settings,
     }
 }
 
@@ -705,7 +738,7 @@ fn screen_for_nav_tab(tab: NavTab) -> Screen {
         NavTab::Books => Screen::Books,
         NavTab::Sell => Screen::Pos,
         NavTab::Buy => Screen::Buy,
-        NavTab::Rates => Screen::Menu,
+        NavTab::Rates => Screen::Rates,
         NavTab::Ops => Screen::Reports, // painted with ReportsNav::Ops
         NavTab::Cod => Screen::Reports,
         NavTab::Riders => Screen::Reports,
@@ -792,7 +825,7 @@ fn session_may_stay_on(screen: Screen, st: &AppState) -> bool {
     let caps = nav_caps_from(st);
     match screen {
         Screen::Pos => caps.sell,
-        Screen::Menu | Screen::More => caps.items,
+        Screen::Rates | Screen::More => caps.items,
         Screen::Books => caps.books_ok(),
         Screen::Buy => caps.buy_ok(),
         Screen::Sales => caps.sales,

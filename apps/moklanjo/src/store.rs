@@ -1785,7 +1785,7 @@ impl Store {
     }
 
     pub fn set_product_available(&self, product_id: &str, available: bool) -> Result<(), String> {
-        self.assert_server_writer("Mark items sold out")?;
+        self.assert_server_writer("Mark rates unavailable")?;
         let n = self
             .conn
             .execute(

@@ -10,6 +10,7 @@ impl App {
             let mut typed = false;
             let mut needs_chrome = false;
             let mut picked: Option<(SuggestField, String)> = None;
+            let mut find_printers: Option<SuggestField> = None;
             for field in SuggestField::ALL {
                 let input = self.ui.text_input(cx, field.input());
                 // A tap on the field opens its list (`route_popup_input`);
@@ -23,26 +24,107 @@ impl App {
                 }
                 if open == Some(field) {
                     let widget = self.ui.widget(cx, field.list());
-                    let list = widget.portal_list(cx, ids!(list));
-                    for (item_id, item) in list.items_with_actions(actions) {
-                        let row_tap = item.button(cx, ids!(hit)).clicked(actions)
-                            || item
-                                .view(cx, ids!(row))
+                    let item_actions: Vec<(usize, _)> =
+                        widget.portal_list(cx, ids!(list)).items_with_actions(actions);
+                    for (item_id, item) in item_actions {
+                        if field.is_printer_pick()
+                            && item.button(cx, ids!(find_printers_row)).clicked(actions)
+                        {
+                            find_printers = Some(field);
+                            continue;
+                        }
+                        if field.is_printer_pick() {
+                            let up = item.button(cx, ids!(prio_up));
+                            let down = item.button(cx, ids!(prio_down));
+                            if up.clicked(actions) {
+                                let to = {
+                                    let st = app_state().lock().unwrap();
+                                    let clear_l = st.t("dont_use");
+                                    (0..item_id).rev().find(|&i| {
+                                        st.suggest_rows
+                                            .get(i)
+                                            .is_some_and(|r| r.action == clear_l)
+                                    })
+                                };
+                                if let Some(to) = to {
+                                    let mut st = app_state().lock().unwrap();
+                                    if reorder_courier_route_priority(&mut st, field, item_id, to) {
+                                        st.open_suggest(field, "");
+                                        drop(st);
+                                        self.sync_printer_fields(cx);
+                                        self.ui.widget(cx, field.list()).redraw(cx);
+                                    }
+                                }
+                                continue;
+                            }
+                            if down.clicked(actions) {
+                                let to = {
+                                    let st = app_state().lock().unwrap();
+                                    let clear_l = st.t("dont_use");
+                                    let n = st.suggest_rows.len();
+                                    ((item_id + 1)..n).find(|&i| {
+                                        st.suggest_rows
+                                            .get(i)
+                                            .is_some_and(|r| r.action == clear_l)
+                                    })
+                                };
+                                if let Some(to) = to {
+                                    let mut st = app_state().lock().unwrap();
+                                    if reorder_courier_route_priority(&mut st, field, item_id, to) {
+                                        st.open_suggest(field, "");
+                                        drop(st);
+                                        self.sync_printer_fields(cx);
+                                        self.ui.widget(cx, field.list()).redraw(cx);
+                                    }
+                                }
+                                continue;
+                            }
+                            if up.pressed(actions)
+                                || down.pressed(actions)
+                                || up.released(actions)
+                                || down.released(actions)
+                            {
+                                continue;
+                            }
+                        }
+                        let row_tap = if field.is_printer_pick() {
+                            item.view(cx, ids!(row))
                                 .finger_up(actions)
-                                .is_some_and(finger_up_is_tap);
+                                .is_some_and(finger_up_is_tap)
+                        } else {
+                            item.button(cx, ids!(hit)).clicked(actions)
+                                || item
+                                    .view(cx, ids!(row))
+                                    .finger_up(actions)
+                                    .is_some_and(finger_up_is_tap)
+                        };
                         if row_tap {
                             let value = app_state()
                                 .lock()
                                 .unwrap()
                                 .suggest_rows
                                 .get(item_id)
-                                .map(|r| r.value.clone());
+                                .map(|r| {
+                                    if field.is_printer_pick() {
+                                        r.subtitle.clone()
+                                    } else {
+                                        r.value.clone()
+                                    }
+                                });
                             if let Some(v) = value {
                                 picked = Some((field, v));
                             }
                         }
                     }
                 }
+            }
+            if let Some(field) = find_printers {
+                *printers_modal_return().lock().unwrap() = Some(field);
+                let route = match field {
+                    SuggestField::LabelPrinters => print_share::RouteKey::Label,
+                    _ => print_share::RouteKey::Receipt,
+                };
+                self.open_printers_modal(cx, route);
             }
             if let Some(field) = open
                 && !typed
@@ -141,7 +223,25 @@ impl App {
                         Err(e) => self.set_status(cx, e),
                     }
                 }
-                needs_chrome = true;
+                if field.is_printer_pick() {
+                    let msg = {
+                        let mut st = app_state().lock().unwrap();
+                        let out = toggle_courier_route_printer(&mut st, field, &value);
+                        if out.is_ok() {
+                            st.open_suggest(field, "");
+                        }
+                        out
+                    };
+                    match msg {
+                        Ok(m) => self.set_status(cx, m),
+                        Err(e) => self.set_status(cx, e),
+                    }
+                    self.sync_printer_fields(cx);
+                    self.ui.widget(cx, field.list()).redraw(cx);
+                    needs_chrome = false;
+                } else {
+                    needs_chrome = true;
+                }
             }
             if needs_chrome {
                 self.sync_chrome(cx);

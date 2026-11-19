@@ -172,6 +172,8 @@ Same build on Server + every Client. Wire shape: [`DEV.md`](DEV.md) § LAN
 - [ ] Book / settle / status change on counter → second device shows the same day book without waiting for the 20s safety pull
 - [ ] Offline queue then reconnect: ordered outbox, header Sending → Live
 
+Owner-facing Moklanjo sheet (same bullets + rider / firewall): [`apps/moklanjo/docs/LAN_PILOT.md`](../apps/moklanjo/docs/LAN_PILOT.md).
+
 **AP / sleep / mixed path**
 
 - [ ] Flip AP “client isolation” on briefly: Clients go Offline; off again → Live (or manual IP still works)

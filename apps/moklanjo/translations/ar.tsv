@@ -53,11 +53,11 @@ today_mid	اليوم
 owed	مستحق
 round_word	تقريب
 back	رجوع
-sold_out	نفد
-restock	إعادة
+sold_out	غير متاح
+restock	وضع كمتاح
 not_tracked	غير محسوب
 in_stock	في المخزون
-marked_sold_out	مُعلَّم نافد
+marked_sold_out	عُلّم غير متاح
 add_upper	أضف
 na	غير متاح
 qty	كمية
@@ -86,7 +86,7 @@ sidebar_hidden	مخفي
 sidebar_always_on	دائماً على البار
 sidebar_shown_hint	معروض على الشريط الجانبي / التبويبات السفلية
 sidebar_hidden_hint	مخفي عن البار
-sidebar_menu_items	القائمة والعناصر
+sidebar_menu_items	الأسعار
 sidebar_enable_all	تمكين الكل
 sidebar_disable_all	تعطيل الكل
 sidebar_order_saved	تم حفظ ترتيب الشريط الجانبي
@@ -846,3 +846,10 @@ sel_copy	نسخ
 sel_select_all	تحديد الكل
 sel_copied	تم النسخ
 nav_loading	جارٍ التحميل…
+settings_sec_privacy	الخصوصية
+privacy_policy_help	نفس PRIVACY.md على https://moklanjo.com/privacy — ليست نسخة منفصلة.
+dont_use	لا تستخدم
+receipt_printers_dd	الطابعات على هذا الجهاز · إيصال
+receipt_printers_dd_n	{n} · الطابعات على هذا الجهاز · إيصال
+label_printers_dd	الطابعات على هذا الجهاز · ملصق AWB
+label_printers_dd_n	{n} · الطابعات على هذا الجهاز · ملصق AWB

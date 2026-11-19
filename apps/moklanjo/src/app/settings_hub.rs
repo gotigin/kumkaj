@@ -3,7 +3,7 @@
 /// routes, AWB pools, backup, diagnostics — and scroll for ever (Khaynjo's
 /// shop trials settled on a hub, 2026-10-31). Each row: section key, hub
 /// row, its panel, the locale key of the row's label.
-const SETTINGS_SECTIONS: [(&str, &[LiveId], &[LiveId], &str); 11] = [
+const SETTINGS_SECTIONS: [(&str, &[LiveId], &[LiveId], &str); 12] = [
     ("language", ids!(settings_hub_language), ids!(settings_panel_language), "language_currency"),
     ("country", ids!(settings_hub_country), ids!(settings_panel_country), "country_tax"),
     ("brand", ids!(settings_hub_brand), ids!(settings_panel_brand), "your_brand"),
@@ -15,6 +15,7 @@ const SETTINGS_SECTIONS: [(&str, &[LiveId], &[LiveId], &str); 11] = [
     ("alerts", ids!(settings_hub_alerts), ids!(settings_panel_alerts), "settings_sec_alerts"),
     ("backup", ids!(settings_hub_backup), ids!(settings_panel_backup), "backup"),
     ("diag", ids!(settings_hub_diag), ids!(settings_panel_diag), "settings_sec_diag"),
+    ("privacy", ids!(settings_hub_privacy), ids!(settings_panel_privacy), "settings_sec_privacy"),
 ];
 
 /// Back on Settings: an open section closes to the hub first; only the hub
@@ -65,9 +66,13 @@ impl App {
                 field.set_text(cx, &format!("{}", st.snack_secs.round() as i64));
             }
         }
-        // paint_header_back_chrome locks app_state itself: let go first, or
-        // every Settings section open hangs on this thread (DEV.md bug 7a).
+        let paint_privacy = panel == Some("privacy");
+        // paint_header_back_chrome / paint_privacy_panel lock app_state: let go
+        // first, or every Settings section open hangs (DEV.md bug 7a).
         drop(st);
+        if paint_privacy {
+            self.paint_privacy_panel(cx);
+        }
         // Hub ↔ section: always refresh ‹ (do not rely on a later full sync_chrome).
         self.paint_header_back_chrome(cx);
     }
@@ -128,5 +133,16 @@ impl App {
                 .set_text(cx, &format!("{}", secs.round() as i64));
             self.sync_chrome(cx);
         }
+    }
+
+    /// Settings → Privacy: same `PRIVACY.md` as the website, rendered as Markdown.
+    fn paint_privacy_panel(&mut self, cx: &mut Cx) {
+        let title = app_state().lock().unwrap().t("settings_sec_privacy");
+        self.ui
+            .widget(cx, ids!(h_privacy))
+            .set_text(cx, &plain_display_text(&title));
+        self.ui
+            .widget(cx, ids!(privacy_body))
+            .set_text(cx, privacy_policy::PRIVACY_MD);
     }
 }

@@ -86,7 +86,7 @@ sidebar_hidden	Waa la qariyay
 sidebar_always_on	Had iyo jeer birta saaran
 sidebar_shown_hint	Waxaa lagu muujiyaa birta dhinaca / tabaha hoose
 sidebar_hidden_hint	Birta waa laga qariyay
-sidebar_menu_items	Menu iyo alaabta
+sidebar_menu_items	Heerarka
 sidebar_enable_all	Daar dhammaan
 sidebar_disable_all	Dami dhammaan
 sidebar_order_saved	Habka dhinaca waa la kaydiyay
@@ -846,3 +846,10 @@ sel_copy	Koobi
 sel_select_all	Dooro dhammaan
 sel_copied	Waa la koobiyeeyay
 nav_loading	Waa la soo shubayaa…
+settings_sec_privacy	Asturnaanta
+privacy_policy_help	Asturnaanta · PRIVACY.md · moklanjo.com/privacy
+dont_use	Ha isticmaalin
+receipt_printers_dd	Daabacadaha qalabkan · Rasiidka
+receipt_printers_dd_n	{n} · Daabacadaha qalabkan · Rasiidka
+label_printers_dd	Daabacadaha qalabkan · sumadda AWB
+label_printers_dd_n	{n} · Daabacadaha qalabkan · sumadda AWB

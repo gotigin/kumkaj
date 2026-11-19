@@ -86,7 +86,7 @@ sidebar_hidden	Ascuns
 sidebar_always_on	Mereu pe bară
 sidebar_shown_hint	Afișat pe șina laterală / filele de jos
 sidebar_hidden_hint	Ascuns de pe bară
-sidebar_menu_items	Meniu și articole
+sidebar_menu_items	Tarife
 sidebar_enable_all	Activează tot
 sidebar_disable_all	Dezactivează tot
 sidebar_order_saved	Ordinea barei laterale salvată
@@ -846,3 +846,10 @@ sel_copy	Copiază
 sel_select_all	Selectează tot
 sel_copied	Copiat
 nav_loading	Se încarcă…
+settings_sec_privacy	Confidențialitate
+privacy_policy_help	Confidențialitate · PRIVACY.md · moklanjo.com/privacy
+dont_use	Nu folosi
+receipt_printers_dd	Imprimante pe acest dispozitiv · Chitanță
+receipt_printers_dd_n	{n} · Imprimante pe acest dispozitiv · Chitanță
+label_printers_dd	Imprimante pe acest dispozitiv · Etichetă AWB
+label_printers_dd_n	{n} · Imprimante pe acest dispozitiv · Etichetă AWB

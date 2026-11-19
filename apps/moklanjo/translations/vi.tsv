@@ -53,11 +53,11 @@ today_mid	hôm nay
 owed	nợ
 round_word	làm tròn
 back	Quay lại
-sold_out	Hết hàng
-restock	Nhập lại
+sold_out	Không có
+restock	Đánh dấu có sẵn
 not_tracked	Không đếm
 in_stock	trong kho
-marked_sold_out	Đánh dấu hết
+marked_sold_out	Đã đánh dấu không có
 add_upper	Thêm
 na	Không
 qty	SL
@@ -86,7 +86,7 @@ sidebar_hidden	Đã ẩn
 sidebar_always_on	Luôn hiển thị trên quầy bar
 sidebar_shown_hint	Hiển thị trên thanh bên / tab dưới cùng
 sidebar_hidden_hint	Ẩn khỏi quầy bar
-sidebar_menu_items	Menu & Món ăn
+sidebar_menu_items	Giá
 sidebar_enable_all	Bật tất cả
 sidebar_disable_all	Tắt tất cả
 sidebar_order_saved	Đơn hàng trên thanh bên đã được lưu
@@ -846,3 +846,10 @@ sel_copy	Sao chép
 sel_select_all	Chọn tất cả
 sel_copied	Đã sao chép
 nav_loading	Đang tải…
+settings_sec_privacy	Quyền riêng tư
+privacy_policy_help	Cùng PRIVACY.md như https://moklanjo.com/privacy — không phải bản riêng.
+dont_use	Không dùng
+receipt_printers_dd	Máy in trên thiết bị này · Biên nhận
+receipt_printers_dd_n	{n} · Máy in trên thiết bị này · Biên nhận
+label_printers_dd	Máy in trên thiết bị này · Nhãn AWB
+label_printers_dd_n	{n} · Máy in trên thiết bị này · Nhãn AWB

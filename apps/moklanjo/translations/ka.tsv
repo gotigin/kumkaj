@@ -86,7 +86,7 @@ sidebar_hidden	დამალული
 sidebar_always_on	ყოველთვის ზოლზე
 sidebar_shown_hint	ნაჩვენებია გვერდით რელსზე / ქვედა ჩანართებზე
 sidebar_hidden_hint	დამალულია ზოლიდან
-sidebar_menu_items	მენიუ და პოზიციები
+sidebar_menu_items	განაკვეთები
 sidebar_enable_all	ყველას ჩართვა
 sidebar_disable_all	ყველას გამორთვა
 sidebar_order_saved	გვერდითი ზოლის რიგი შენახულია
@@ -846,3 +846,10 @@ sel_copy	კოპირება
 sel_select_all	ყველაფრის მონიშვნა
 sel_copied	დაკოპირდა
 nav_loading	იტვირთება…
+settings_sec_privacy	კონფიდენციალურობა
+privacy_policy_help	კონფიდენციალურობა · PRIVACY.md · moklanjo.com/privacy
+dont_use	არ გამოიყენოთ
+receipt_printers_dd	პრინტერები ამ მოწყობილობაზე · ქვითარი
+receipt_printers_dd_n	{n} · პრინტერები ამ მოწყობილობაზე · ქვითარი
+label_printers_dd	პრინტერები ამ მოწყობილობაზე · AWB ეტიკეტი
+label_printers_dd_n	{n} · პრინტერები ამ მოწყობილობაზე · AWB ეტიკეტი

@@ -86,7 +86,7 @@ sidebar_hidden	Skjult
 sidebar_always_on	Altid på linjen
 sidebar_shown_hint	Vist på sideskinnen / bundfanerne
 sidebar_hidden_hint	Skjult fra linjen
-sidebar_menu_items	Menu og varer
+sidebar_menu_items	Takster
 sidebar_enable_all	Slå alle til
 sidebar_disable_all	Slå alle fra
 sidebar_order_saved	Sidepanelrækkefølge gemt
@@ -846,3 +846,10 @@ sel_copy	Kopiér
 sel_select_all	Vælg alt
 sel_copied	Kopieret
 nav_loading	Indlæser…
+settings_sec_privacy	Privatliv
+privacy_policy_help	Privatliv · PRIVACY.md · moklanjo.com/privacy
+dont_use	Brug ikke
+receipt_printers_dd	Printere på denne enhed · Kvittering
+receipt_printers_dd_n	{n} · Printere på denne enhed · Kvittering
+label_printers_dd	Printere på denne enhed · AWB-etiket
+label_printers_dd_n	{n} · Printere på denne enhed · AWB-etiket

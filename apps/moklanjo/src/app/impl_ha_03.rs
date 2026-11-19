@@ -229,7 +229,7 @@ impl App {
                 }
             }
         }
-        // Items list: sold out / archive
+        // Rates list: unavailable / archive
         {
             let widget = self.ui.widget(cx, ids!(product_list_menu));
             let list = widget.portal_list(cx, ids!(list));

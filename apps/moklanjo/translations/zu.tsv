@@ -86,7 +86,7 @@ sidebar_hidden	Kufihliwe
 sidebar_always_on	Njalo kubha
 sidebar_shown_hint	Kuboniswa kumathebhu ohlangothini wesitimela / phansi
 sidebar_hidden_hint	Kufihliwe kubha
-sidebar_menu_items	Izinto zemenyu nezemenyu
+sidebar_menu_items	Amanani
 sidebar_enable_all	Vumela Konke
 sidebar_disable_all	Khubaza Konke
 sidebar_order_saved	I-oda lebha eseceleni lilondoloziwe
@@ -846,3 +846,10 @@ sel_copy	Kopisha
 sel_select_all	Khetha konke
 sel_copied	Kukopishiwe
 nav_loading	Iyalayisha…
+settings_sec_privacy	Ubumfihlo
+privacy_policy_help	Ubumfihlo · PRIVACY.md · moklanjo.com/privacy
+dont_use	Ungasebenzisi
+receipt_printers_dd	Amaphrinta kule divayisi · Irisidi
+receipt_printers_dd_n	{n} · Amaphrinta kule divayisi · Irisidi
+label_printers_dd	Amaphrinta kule divayisi · Ilebula ye-AWB
+label_printers_dd_n	{n} · Amaphrinta kule divayisi · Ilebula ye-AWB

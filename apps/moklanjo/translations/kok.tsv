@@ -86,7 +86,7 @@ sidebar_hidden	लिपिल्लें
 sidebar_always_on	सदांच बाराचेर
 sidebar_shown_hint	बाजूच्या रेल्वे / सकयल्या टॅबांचेर दाखयलां
 sidebar_hidden_hint	बारांतल्यान लिपलां
-sidebar_menu_items	मेनू आनी आयटम
+sidebar_menu_items	दर
 sidebar_enable_all	सगळे सक्षम करात
 sidebar_disable_all	सगळें अक्षम करचें
 sidebar_order_saved	सायडबार ऑर्डर जतनाय घेतली
@@ -846,3 +846,10 @@ sel_copy	प्रत करात
 sel_select_all	सगळें वेंचात
 sel_copied	प्रत केली
 nav_loading	लोड जाता…
+settings_sec_privacy	गोपनीयता
+privacy_policy_help	गुपितताय · PRIVACY.md · moklanjo.com/privacy
+dont_use	वापरूंक नाकात
+receipt_printers_dd	ह्या डिव्हायसाचेर प्रिंटर · पावती
+receipt_printers_dd_n	{n} · ह्या डिव्हायसाचेर प्रिंटर · पावती
+label_printers_dd	ह्या डिव्हायसाचेर प्रिंटर · AWB लेबल
+label_printers_dd_n	{n} · ह्या डिव्हायसाचेर प्रिंटर · AWB लेबल

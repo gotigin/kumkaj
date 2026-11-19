@@ -86,7 +86,7 @@ sidebar_hidden	מוסתר
 sidebar_always_on	תמיד בסרגל
 sidebar_shown_hint	מוצג במסילה הצדדית / בלשוניות התחתונות
 sidebar_hidden_hint	מוסתר מהסרגל
-sidebar_menu_items	תפריט ופריטים
+sidebar_menu_items	תעריפים
 sidebar_enable_all	הפעל הכול
 sidebar_disable_all	כבה הכול
 sidebar_order_saved	סדר סרגל הצד נשמר
@@ -846,3 +846,10 @@ sel_copy	העתק
 sel_select_all	בחר הכול
 sel_copied	הועתק
 nav_loading	טוען…
+settings_sec_privacy	פרטיות
+privacy_policy_help	פרטיות · PRIVACY.md · moklanjo.com/privacy
+dont_use	אל תשתמש
+receipt_printers_dd	מדפסות במכשיר זה · קַבָּלָה
+receipt_printers_dd_n	{n} · מדפסות במכשיר זה · קַבָּלָה
+label_printers_dd	מדפסות במכשיר זה · תווית AWB
+label_printers_dd_n	{n} · מדפסות במכשיר זה · תווית AWB

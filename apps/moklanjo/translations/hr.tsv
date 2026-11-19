@@ -86,7 +86,7 @@ sidebar_hidden	Skriveno
 sidebar_always_on	Uvijek na traci
 sidebar_shown_hint	Prikazano na bočnoj letvici / donjim karticama
 sidebar_hidden_hint	Skriveno s trake
-sidebar_menu_items	Jelovnik i stavke
+sidebar_menu_items	Tarife
 sidebar_enable_all	Uključi sve
 sidebar_disable_all	Isključi sve
 sidebar_order_saved	Redoslijed bočne trake spremljen
@@ -846,3 +846,10 @@ sel_copy	Kopiraj
 sel_select_all	Odaberi sve
 sel_copied	Kopirano
 nav_loading	Učitavanje…
+settings_sec_privacy	Privatnost
+privacy_policy_help	Privatnost · PRIVACY.md · moklanjo.com/privacy
+dont_use	Ne koristi
+receipt_printers_dd	Pisači na ovom uređaju · Priznanica
+receipt_printers_dd_n	{n} · Pisači na ovom uređaju · Priznanica
+label_printers_dd	Pisači na ovom uređaju · AWB naljepnica
+label_printers_dd_n	{n} · Pisači na ovom uređaju · AWB naljepnica

@@ -53,11 +53,11 @@ today_mid	आज
 owed	बाकी
 round_word	राउंड
 back	वापस
-sold_out	बिक गया
-restock	फिर रखें
+sold_out	अनुपलब्ध
+restock	उपलब्ध चिह्नित करें
 not_tracked	गिनती नहीं
 in_stock	स्टॉक में
-marked_sold_out	बिक चुका चिह्न
+marked_sold_out	अनुपलब्ध चिह्नित
 add_upper	जोड़ें
 na	उपलब्ध नहीं
 qty	संख्या
@@ -86,7 +86,7 @@ sidebar_hidden	छिपा
 sidebar_always_on	हमेशा पट्टी पर
 sidebar_shown_hint	साइड पट्टी / नीचे के टैब पर दिखता है
 sidebar_hidden_hint	पट्टी से छिपा
-sidebar_menu_items	मेनू व आइटम
+sidebar_menu_items	दरें
 sidebar_enable_all	सब चालू करें
 sidebar_disable_all	सब बंद करें
 sidebar_order_saved	साइडबार का क्रम सहेजा
@@ -846,3 +846,10 @@ sel_copy	कॉपी करें
 sel_select_all	सब चुनें
 sel_copied	कॉपी हो गया
 nav_loading	लोड हो रहा है…
+settings_sec_privacy	गोपनीयता
+privacy_policy_help	वही PRIVACY.md जो https://moklanjo.com/privacy पर है — अलग प्रति नहीं।
+dont_use	इस्तेमाल न करें
+receipt_printers_dd	रसीद के लिए प्रिंटर
+receipt_printers_dd_n	{n} · रसीद के लिए प्रिंटर
+label_printers_dd	इस डिवाइस के प्रिंटर · AWB लेबल
+label_printers_dd_n	{n} · इस डिवाइस के प्रिंटर · AWB लेबल

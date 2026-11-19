@@ -86,7 +86,7 @@ sidebar_hidden	হুকজাক
 sidebar_always_on	জরা জরা বার ও
 sidebar_shown_hint	সিদে নি রাইল ও ফুনুকজাক/তউই তাবস
 sidebar_hidden_hint	বার নি থানি চুকজাক
-sidebar_menu_items	মেনু তেই মানুইরক
+sidebar_menu_items	রাতেস
 sidebar_enable_all	জতন সুনামদি
 sidebar_disable_all	জত ন সুকাক দি
 sidebar_order_saved	সিদেবার নি দাগিমুং মুথাংজাক খা
@@ -846,3 +846,10 @@ sel_copy	চপয় খাইদি
 sel_select_all	জত বাছায় খাইদি
 sel_copied	চপয় খাইখা
 nav_loading	Load khlaiwi tongo…
+settings_sec_privacy	गोपनीयता
+privacy_policy_help	গোপনীয়তা · PRIVACY.md · moklanjo.com/privacy
+dont_use	তা উসে খাইদি
+receipt_printers_dd	ও মানৱি নি পরিনতের রোক · বিলল
+receipt_printers_dd_n	{n} · ও মানৱি নি পরিনতের রোক · বিলল
+label_printers_dd	ও মানৱি নি পরিনতের রোক · AWB মুং
+label_printers_dd_n	{n} · ও মানৱি নি পরিনতের রোক · AWB মুং

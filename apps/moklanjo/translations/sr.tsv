@@ -86,7 +86,7 @@ sidebar_hidden	Скривено
 sidebar_always_on	Увек на шанку
 sidebar_shown_hint	Приказано на бочној шини / доњим језичцима
 sidebar_hidden_hint	Сакривен од бара
-sidebar_menu_items	Мени и ставке менија
+sidebar_menu_items	Тарифе
 sidebar_enable_all	Омогући све
 sidebar_disable_all	Онемогући све
 sidebar_order_saved	Редослед бочне траке је сачуван
@@ -846,3 +846,10 @@ sel_copy	Копирај
 sel_select_all	Изабери све
 sel_copied	Копирано
 nav_loading	Учитавање…
+settings_sec_privacy	Приватност
+privacy_policy_help	Приватност · PRIVACY.md · moklanjo.com/privacy
+dont_use	Немојте користити
+receipt_printers_dd	Штампачи на овом уређају · Признаница
+receipt_printers_dd_n	{n} · Штампачи на овом уређају · Признаница
+label_printers_dd	Штампачи на овом уређају · АВБ ознака
+label_printers_dd_n	{n} · Штампачи на овом уређају · АВБ ознака

@@ -53,11 +53,11 @@ today_mid	今日
 owed	未収
 round_word	端数
 back	戻る
-sold_out	売切
-restock	再入荷
+sold_out	利用不可
+restock	利用可にする
 not_tracked	未管理
 in_stock	在庫
-marked_sold_out	売切表示
+marked_sold_out	利用不可に設定
 add_upper	追加
 na	なし
 qty	数量
@@ -86,7 +86,7 @@ sidebar_hidden	非表示
 sidebar_always_on	バー常時表示
 sidebar_shown_hint	サイドレールまたは下部タブに表示
 sidebar_hidden_hint	バーから非表示
-sidebar_menu_items	メニューとアイテム
+sidebar_menu_items	料金
 sidebar_enable_all	すべて有効化
 sidebar_disable_all	すべて無効化
 sidebar_order_saved	サイドバーの注文が保存されました
@@ -846,3 +846,10 @@ sel_copy	コピー
 sel_select_all	すべて選択
 sel_copied	コピーしました
 nav_loading	読み込み中…
+settings_sec_privacy	プライバシー
+privacy_policy_help	https://moklanjo.com/privacy と同じ PRIVACY.md — 別コピーではありません。
+dont_use	使わない
+receipt_printers_dd	このデバイス上のプリンター · レシート
+receipt_printers_dd_n	{n} · このデバイス上のプリンター · レシート
+label_printers_dd	このデバイス上のプリンター · AWBラベル
+label_printers_dd_n	{n} · このデバイス上のプリンター · AWBラベル

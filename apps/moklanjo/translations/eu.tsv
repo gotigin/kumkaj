@@ -86,7 +86,7 @@ sidebar_hidden	Ezkutatuta
 sidebar_always_on	Beti barran
 sidebar_shown_hint	Alboko errailean / beheko fitxetan erakutsita
 sidebar_hidden_hint	Barretik ezkutatuta
-sidebar_menu_items	Menua eta artikuluak
+sidebar_menu_items	Tarifak
 sidebar_enable_all	Gaitu guztiak
 sidebar_disable_all	Desgaitu guztiak
 sidebar_order_saved	Alboko barraren ordena gordeta
@@ -846,3 +846,10 @@ sel_copy	Kopiatu
 sel_select_all	Hautatu guztiak
 sel_copied	Kopiatuta
 nav_loading	Kargatzen…
+settings_sec_privacy	Pribatutasuna
+privacy_policy_help	Pribatutasuna · PRIVACY.md · moklanjo.com/privacy
+dont_use	Ez erabili
+receipt_printers_dd	Gailu honetako inprimagailuak · Ordainagiria
+receipt_printers_dd_n	{n} · Gailu honetako inprimagailuak · Ordainagiria
+label_printers_dd	Gailu honetako inprimagailuak · AWB etiketa
+label_printers_dd_n	{n} · Gailu honetako inprimagailuak · AWB etiketa

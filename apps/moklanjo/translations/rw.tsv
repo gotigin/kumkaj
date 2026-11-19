@@ -86,7 +86,7 @@ sidebar_hidden	Byahishe
 sidebar_always_on	Buri gihe ku murongo
 sidebar_shown_hint	Byerekanwe ku rubavu / udushushanyo two hasi
 sidebar_hidden_hint	Byahishe ku murongo
-sidebar_menu_items	Menu n'ibintu
+sidebar_menu_items	Ibiciro
 sidebar_enable_all	Emera byose
 sidebar_disable_all	Hagarika byose
 sidebar_order_saved	Urutonde rw'urubavu rwabitswe
@@ -846,3 +846,10 @@ sel_copy	Kopera
 sel_select_all	Hitamo byose
 sel_copied	Byakoporowe
 nav_loading	Biriguma gufunguka…
+settings_sec_privacy	Ibanga
+privacy_policy_help	Ubuzima bwite · PRIVACY.md · moklanjo.com/privacy
+dont_use	Ntukoreshe
+receipt_printers_dd	Mucapyi kuri iki gikoresho · Inyemezabwishyu
+receipt_printers_dd_n	{n} · Mucapyi kuri iki gikoresho · Inyemezabwishyu
+label_printers_dd	Mucapyi kuri iki gikoresho · Ikirango cya AWB
+label_printers_dd_n	{n} · Mucapyi kuri iki gikoresho · Ikirango cya AWB

@@ -53,11 +53,11 @@ today_mid	hari ini
 owed	utang
 round_word	pembulatan
 back	Kembali
-sold_out	Habis
-restock	Isi lagi
+sold_out	Tidak tersedia
+restock	Tandai tersedia
 not_tracked	Tidak dihitung
 in_stock	stok
-marked_sold_out	Ditandai habis
+marked_sold_out	Ditandai tidak tersedia
 add_upper	Tambah
 na	Tidak ada
 qty	Jml
@@ -86,7 +86,7 @@ sidebar_hidden	Disembunyikan
 sidebar_always_on	Selalu di bar
 sidebar_shown_hint	Ditampilkan pada rel samping / tab bawah
 sidebar_hidden_hint	disembunyikan dari bar
-sidebar_menu_items	Menu & Item
+sidebar_menu_items	Tarif
 sidebar_enable_all	Aktifkan Semua
 sidebar_disable_all	Nonaktifkan Semua
 sidebar_order_saved	Pesanan sidebar tersimpan
@@ -846,3 +846,10 @@ sel_copy	Salin
 sel_select_all	Pilih semua
 sel_copied	Disalin
 nav_loading	Memuat…
+settings_sec_privacy	Privasi
+privacy_policy_help	PRIVACY.md yang sama dengan https://moklanjo.com/privacy — bukan salinan terpisah.
+dont_use	Jangan pakai
+receipt_printers_dd	Printer pada perangkat ini · Struk
+receipt_printers_dd_n	{n} · Printer pada perangkat ini · Struk
+label_printers_dd	Printer pada perangkat ini · Label AWB
+label_printers_dd_n	{n} · Printer pada perangkat ini · Label AWB

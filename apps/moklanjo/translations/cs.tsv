@@ -86,7 +86,7 @@ sidebar_hidden	Skrytá
 sidebar_always_on	Vždy na baru
 sidebar_shown_hint	Zobrazeno na boční liště / spodních záložkách
 sidebar_hidden_hint	Skrytá před barem
-sidebar_menu_items	Nabídka a položky
+sidebar_menu_items	Sazby
 sidebar_enable_all	Povolit vše
 sidebar_disable_all	Zakázat vše
 sidebar_order_saved	Pořadí postranního panelu bylo uloženo
@@ -846,3 +846,10 @@ sel_copy	Kopírovat
 sel_select_all	Vybrat vše
 sel_copied	Zkopírováno
 nav_loading	Načítání…
+settings_sec_privacy	Soukromí
+privacy_policy_help	Soukromí · PRIVACY.md · moklanjo.com/privacy
+dont_use	Nepoužívat
+receipt_printers_dd	Tiskárny na tomto zařízení · Příjem
+receipt_printers_dd_n	{n} · Tiskárny na tomto zařízení · Příjem
+label_printers_dd	Tiskárny na tomto zařízení · štítek AWB
+label_printers_dd_n	{n} · Tiskárny na tomto zařízení · štítek AWB

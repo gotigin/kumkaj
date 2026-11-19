@@ -86,7 +86,7 @@ sidebar_hidden	Folaite
 sidebar_always_on	I gcónaí ar an mbarra
 sidebar_shown_hint	Taispeántar ar an ráil thaobh / cluaisíní íochtaracha
 sidebar_hidden_hint	Folaithe ón mbeár
-sidebar_menu_items	Roghchlár & Míreanna
+sidebar_menu_items	Rátaí
 sidebar_enable_all	Cumas Gach Rud
 sidebar_disable_all	Múch Gach Rud
 sidebar_order_saved	Ordú barra taobh sábháilte
@@ -846,3 +846,10 @@ sel_copy	Cóipeáil
 sel_select_all	Roghnaigh gach rud
 sel_copied	Cóipeáilte
 nav_loading	Á lódáil…
+settings_sec_privacy	Príobháideacht
+privacy_policy_help	Príobháideacht · PRIVACY.md · moklanjo.com/privacy
+dont_use	Ná húsáid
+receipt_printers_dd	Printéirí ar an ngléas seo · Admháil
+receipt_printers_dd_n	{n} · Printéirí ar an ngléas seo · Admháil
+label_printers_dd	Printéirí ar an ngléas seo · Lipéad AWB
+label_printers_dd_n	{n} · Printéirí ar an ngléas seo · Lipéad AWB

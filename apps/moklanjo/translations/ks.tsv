@@ -86,7 +86,7 @@ sidebar_hidden	پوشیدہ
 sidebar_always_on	ہمیشہٕ بارس پیٹھ
 sidebar_shown_hint	سایڈ ریل/ بۄن ٹیبس پیٹھ ہاونہٕ آمُت
 sidebar_hidden_hint	شراب خانہٕ نش پوشیدٕ
-sidebar_menu_items	مینو &آئٹم
+sidebar_menu_items	ریٹ
 sidebar_enable_all	سٲری کٔرِو فعال
 sidebar_disable_all	سٲری کْریو ڈیسیبْل
 sidebar_order_saved	سایڈ بار آرڈر آو محفوظ کرنہٕ
@@ -846,3 +846,10 @@ sel_copy	کاپی کٔرِو
 sel_select_all	سۄری ژارِو
 sel_copied	کاپی گَو
 nav_loading	لوڈ گژھان…
+settings_sec_privacy	رازداری
+privacy_policy_help	رازداری · PRIVACY.md · moklanjo.com/privacy
+dont_use	اِستِمال کٔرِو نہٕ
+receipt_printers_dd	یَتھ آلہٕ پؠٹھ پرنٹر · رَسیٖد
+receipt_printers_dd_n	{n} · یَتھ آلہٕ پؠٹھ پرنٹر · رَسیٖد
+label_printers_dd	یَتھ آلہٕ پؠٹھ پرنٹر · AWB لیبل
+label_printers_dd_n	{n} · یَتھ آلہٕ پؠٹھ پرنٹر · AWB لیبل

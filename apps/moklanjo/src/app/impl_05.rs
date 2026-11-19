@@ -506,7 +506,7 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
             Screen::Books => ids!(books_screen),
             Screen::Pos => ids!(pos_catalog_scroll),
             Screen::Buy => ids!(buy_screen),
-            Screen::Menu => ids!(menu_screen),
+            Screen::Rates => ids!(menu_screen),
             Screen::More => ids!(more_screen),
             Screen::Sales => ids!(sales_screen),
             Screen::Credit => ids!(credit_screen),
@@ -589,7 +589,7 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
             (ids!(books_screen), screen == Screen::Books),
             (ids!(pos_screen), screen == Screen::Pos),
             (ids!(buy_screen), screen == Screen::Buy),
-            (ids!(menu_screen), screen == Screen::Menu),
+            (ids!(menu_screen), screen == Screen::Rates),
             (ids!(more_screen), screen == Screen::More),
             (ids!(sales_screen), screen == Screen::Sales),
             (ids!(credit_screen), screen == Screen::Credit),
@@ -796,6 +796,7 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
             (ids!(nav_x24), ids!(nav_x24_on)),
             (ids!(nav_x25), ids!(nav_x25_on)),
             (ids!(nav_x26), ids!(nav_x26_on)),
+            (ids!(nav_x27), ids!(nav_x27_on)),
         ]
     }
 
@@ -828,6 +829,7 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
             (ids!(rail_x24), ids!(rail_x24_on)),
             (ids!(rail_x25), ids!(rail_x25_on)),
             (ids!(rail_x26), ids!(rail_x26_on)),
+            (ids!(rail_x27), ids!(rail_x27_on)),
         ]
     }
 
@@ -860,6 +862,7 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
             ids!(nav_x24_icon),
             ids!(nav_x25_icon),
             ids!(nav_x26_icon),
+            ids!(nav_x27_icon),
         ]
     }
 
@@ -892,6 +895,7 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
             ids!(rail_x24_icon),
             ids!(rail_x25_icon),
             ids!(rail_x26_icon),
+            ids!(rail_x27_icon),
         ]
     }
 
@@ -958,6 +962,7 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
                 ids!(rail_x24_slot),
                 ids!(rail_x25_slot),
                 ids!(rail_x26_slot),
+                ids!(rail_x27_slot),
             ]
         } else {
             [
@@ -988,6 +993,7 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
                 ids!(nav_x24_slot),
                 ids!(nav_x25_slot),
                 ids!(nav_x26_slot),
+                ids!(nav_x27_slot),
             ]
         }
     }
@@ -1233,6 +1239,36 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
         }
         self.show_found_printers(cx);
         self.sync_job_format_ui(cx);
+        // Receipt / AWB Label checklist faces — formats already save themselves.
+        {
+            let st = app_state().lock().unwrap();
+            let receipt_n = st
+                .printer_draft
+                .route_for(print_share::RouteKey::Receipt)
+                .len();
+            let label_n = st
+                .printer_draft
+                .route_for(print_share::RouteKey::Label)
+                .len();
+            let receipt_face = if receipt_n == 0 {
+                st.t("receipt_printers_dd")
+            } else {
+                st.t("receipt_printers_dd_n")
+                    .replace("{n}", &receipt_n.to_string())
+            };
+            let label_face = if label_n == 0 {
+                st.t("label_printers_dd")
+            } else {
+                st.t("label_printers_dd_n")
+                    .replace("{n}", &label_n.to_string())
+            };
+            self.ui
+                .button(cx, ids!(receipt_printers_dd))
+                .set_text(cx, &receipt_face);
+            self.ui
+                .button(cx, ids!(label_printers_dd))
+                .set_text(cx, &label_face);
+        }
         let is_client = app_state().lock().unwrap().device_role == DeviceRole::Client;
         self.ui
             .widget(cx, ids!(printers_found_label))
@@ -1897,7 +1933,7 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
     fn go_with_now(&mut self, cx: &mut Cx, screen: Screen, is_peer: bool) {
         // More hub removed — its destinations are chrome peers.
         let screen = if screen == Screen::More {
-            Screen::Menu
+            Screen::Rates
         } else {
             screen
         };
@@ -2016,7 +2052,7 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
             }
             Some(NavTab::Rates) => {
                 cx.set_key_focus(Area::Empty);
-                self.go_peer_if_allowed(cx, Screen::Menu, |s| s.can_access_items());
+                self.go_peer_if_allowed(cx, Screen::Rates, |s| s.can_access_items());
             }
             Some(NavTab::Sales) => {
                 cx.set_key_focus(Area::Empty);

@@ -529,6 +529,12 @@ fn printers_sheet_route() -> &'static Mutex<Option<print_share::RouteKey>> {
     SLOT.get_or_init(|| Mutex::new(None))
 }
 
+/// Printer checklist whose Find printers row opened the sheet — closing reopens it.
+fn printers_modal_return() -> &'static Mutex<Option<SuggestField>> {
+    static SLOT: OnceLock<Mutex<Option<SuggestField>>> = OnceLock::new();
+    SLOT.get_or_init(|| Mutex::new(None))
+}
+
 /// Set by a Find printers tap (sheet or panel). The scan wakes the UI once,
 /// when it is done, so the Signal hook cannot see it running; this flag
 /// says a scan was started and its end is still to be acted on.

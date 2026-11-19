@@ -86,7 +86,7 @@ sidebar_hidden	Versteek
 sidebar_always_on	Altyd op die balk
 sidebar_shown_hint	Gewys op die sybalk / onderliggende tabblaaie
 sidebar_hidden_hint	Versteek van die balk
-sidebar_menu_items	Menu & Items
+sidebar_menu_items	Tariewe
 sidebar_enable_all	Aktiveer Alle
 sidebar_disable_all	Deaktiveer Alle
 sidebar_order_saved	Sybalk volgorde opgeslaan
@@ -846,3 +846,10 @@ sel_copy	Kopieer
 sel_select_all	Kies alles
 sel_copied	Gekopieer
 nav_loading	Laai tans…
+settings_sec_privacy	Privaatheid
+privacy_policy_help	Privaatheid · PRIVACY.md · moklanjo.com/privacy
+dont_use	Gebruik nie
+receipt_printers_dd	Drukkers op hierdie toestel · Kwitansie
+receipt_printers_dd_n	{n} · Drukkers op hierdie toestel · Kwitansie
+label_printers_dd	Drukkers op hierdie toestel · AWB etiket
+label_printers_dd_n	{n} · Drukkers op hierdie toestel · AWB etiket

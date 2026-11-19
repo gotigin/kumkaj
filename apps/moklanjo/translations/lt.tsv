@@ -86,7 +86,7 @@ sidebar_hidden	Paslėpta
 sidebar_always_on	Visada juostoje
 sidebar_shown_hint	Rodoma šoniniame bėgelyje / apatinėse kortelėse
 sidebar_hidden_hint	Paslėpta nuo juostos
-sidebar_menu_items	Meniu ir prekės
+sidebar_menu_items	Kainos
 sidebar_enable_all	Įjungti visus
 sidebar_disable_all	Išjungti visus
 sidebar_order_saved	Šoninės juostos tvarka išsaugota
@@ -846,3 +846,10 @@ sel_copy	Kopijuoti
 sel_select_all	Pažymėti viską
 sel_copied	Nukopijuota
 nav_loading	Įkeliama…
+settings_sec_privacy	Privatumas
+privacy_policy_help	Privatumas · PRIVACY.md · moklanjo.com/privacy
+dont_use	Nenaudoti
+receipt_printers_dd	Šio įrenginio spausdintuvai · Kvitas
+receipt_printers_dd_n	{n} · Šio įrenginio spausdintuvai · Kvitas
+label_printers_dd	Šio įrenginio spausdintuvai · AWB etiketė
+label_printers_dd_n	{n} · Šio įrenginio spausdintuvai · AWB etiketė

@@ -86,7 +86,7 @@ sidebar_hidden	Жашырылган
 sidebar_always_on	Ар дайым барда
 sidebar_shown_hint	Капталда / астыңкы өтмөктө көрсөтүлгөн
 sidebar_hidden_hint	Бардан жашырылган
-sidebar_menu_items	Меню & Меню пункттары
+sidebar_menu_items	Баалар
 sidebar_enable_all	Баарын иштетүү
 sidebar_disable_all	Баарын өчүрүү
 sidebar_order_saved	Капталдагы буйрутма сакталды
@@ -846,3 +846,10 @@ sel_copy	Көчүрүү
 sel_select_all	Баарын тандоо
 sel_copied	Көчүрүлдү
 nav_loading	Жүктөлүүдө…
+settings_sec_privacy	Купуялык
+privacy_policy_help	Купуялык · PRIVACY.md · moklanjo.com/privacy
+dont_use	Колдонбо
+receipt_printers_dd	Бул түзмөктөгү принтерлер · Квитанция
+receipt_printers_dd_n	{n} · Бул түзмөктөгү принтерлер · Квитанция
+label_printers_dd	Бул түзмөктөгү принтерлер · AWB энбелгиси
+label_printers_dd_n	{n} · Бул түзмөктөгү принтерлер · AWB энбелгиси

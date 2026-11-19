@@ -86,7 +86,7 @@ sidebar_hidden	Nakatago
 sidebar_always_on	Laging nasa bar
 sidebar_shown_hint	Ipinapakita sa gilid ng riles / ilalim na mga tab
 sidebar_hidden_hint	Nakatago sa bar
-sidebar_menu_items	Mga item sa menu ng Menu at Menu
+sidebar_menu_items	Mga rate
 sidebar_enable_all	Paganahin ang Lahat
 sidebar_disable_all	Huwag paganahin ang Lahat
 sidebar_order_saved	Na-save ang order sa sidebar
@@ -846,3 +846,10 @@ sel_copy	Kopyahin
 sel_select_all	Piliin lahat
 sel_copied	Nakopya na
 nav_loading	Naglo-load…
+settings_sec_privacy	Privacy
+privacy_policy_help	Privacy · PRIVACY.md · moklanjo.com/privacy
+dont_use	Huwag gumamit
+receipt_printers_dd	Mga printer sa device na ito · Resibo
+receipt_printers_dd_n	{n} · Mga printer sa device na ito · Resibo
+label_printers_dd	Mga printer sa device na ito · Label ng AWB
+label_printers_dd_n	{n} · Mga printer sa device na ito · Label ng AWB

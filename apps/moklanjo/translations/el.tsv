@@ -86,7 +86,7 @@ sidebar_hidden	Κρυφό
 sidebar_always_on	Πάντα στη γραμμή
 sidebar_shown_hint	Εμφανές στην πλευρική ράγα / κάτω καρτέλες
 sidebar_hidden_hint	Κρυφό από τη γραμμή
-sidebar_menu_items	Μενού και είδη
+sidebar_menu_items	Τιμές
 sidebar_enable_all	Ενεργοποίηση όλων
 sidebar_disable_all	Απενεργοποίηση όλων
 sidebar_order_saved	Η σειρά της πλευρικής στήλης αποθηκεύτηκε
@@ -846,3 +846,10 @@ sel_copy	Αντιγραφή
 sel_select_all	Επιλογή όλων
 sel_copied	Αντιγράφηκε
 nav_loading	Φόρτωση…
+settings_sec_privacy	Απόρρητο
+privacy_policy_help	Απόρρητο · PRIVACY.md · moklanjo.com/privacy
+dont_use	Όχι χρήση
+receipt_printers_dd	Εκτυπωτές σε αυτήν τη συσκευή · Παραλαβή
+receipt_printers_dd_n	{n} · Εκτυπωτές σε αυτήν τη συσκευή · Παραλαβή
+label_printers_dd	Εκτυπωτές σε αυτήν τη συσκευή · Ετικέτα AWB
+label_printers_dd_n	{n} · Εκτυπωτές σε αυτήν τη συσκευή · Ετικέτα AWB

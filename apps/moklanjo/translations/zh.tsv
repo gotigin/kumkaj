@@ -53,11 +53,11 @@ today_mid	今天
 owed	未收
 round_word	舍入
 back	返回
-sold_out	售罄
-restock	补货
+sold_out	不可用
+restock	标为可用
 not_tracked	未计数
 in_stock	有库存
-marked_sold_out	已标售罄
+marked_sold_out	已标为不可用
 add_upper	加入
 na	无
 qty	数量
@@ -86,7 +86,7 @@ sidebar_hidden	已隐藏
 sidebar_always_on	始终显示在吧台
 sidebar_shown_hint	显示在侧边栏/底部标签页
 sidebar_hidden_hint	隐藏吧台
-sidebar_menu_items	菜单与项目
+sidebar_menu_items	费率
 sidebar_enable_all	启用全部
 sidebar_disable_all	禁用全部
 sidebar_order_saved	侧边栏订单已保存
@@ -846,3 +846,10 @@ sel_copy	复制
 sel_select_all	全选
 sel_copied	已复制
 nav_loading	加载中…
+settings_sec_privacy	隐私
+privacy_policy_help	与 https://moklanjo.com/privacy 相同的 PRIVACY.md — 不是另存副本。
+dont_use	不使用
+receipt_printers_dd	本设备上的打印机 · 收据
+receipt_printers_dd_n	{n} · 本设备上的打印机 · 收据
+label_printers_dd	本设备上的打印机 · AWB 标签
+label_printers_dd_n	{n} · 本设备上的打印机 · AWB 标签

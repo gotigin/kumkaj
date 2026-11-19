@@ -342,7 +342,7 @@ impl App {
                     Screen::Books
                         | Screen::Pos
                         | Screen::Buy
-                        | Screen::Menu
+                        | Screen::Rates
                         | Screen::More
                         | Screen::Sales
                         | Screen::Credit

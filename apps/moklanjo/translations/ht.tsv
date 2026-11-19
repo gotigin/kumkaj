@@ -86,7 +86,7 @@ sidebar_hidden	Kache
 sidebar_always_on	Toujou sou ba a
 sidebar_shown_hint	Montre sou ray bò a / onglet anba yo
 sidebar_hidden_hint	Kache sou ba a
-sidebar_menu_items	Meni ak atik
+sidebar_menu_items	Pousantaj
 sidebar_enable_all	Limen tout
 sidebar_disable_all	Eten tout
 sidebar_order_saved	Lòd bò kote a anrejistre
@@ -846,3 +846,10 @@ sel_copy	Kopye
 sel_select_all	Chwazi tout
 sel_copied	Kopye fèt
 nav_loading	Chajman…
+settings_sec_privacy	Vi prive
+privacy_policy_help	Vi prive · PRIVACY.md · moklanjo.com/privacy
+dont_use	Pa sèvi
+receipt_printers_dd	Enprimant sou aparèy sa a · resi
+receipt_printers_dd_n	{n} · Enprimant sou aparèy sa a · resi
+label_printers_dd	Enprimant sou aparèy sa a · Etikèt AWB
+label_printers_dd_n	{n} · Enprimant sou aparèy sa a · Etikèt AWB

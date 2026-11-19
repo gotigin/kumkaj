@@ -86,7 +86,7 @@ sidebar_hidden	ເຊື່ອງໄວ້
 sidebar_always_on	ຢູ່ແຖບນັ້ນສະເໝີ
 sidebar_shown_hint	ສະແດງໃຫ້ເຫັນຢູ່ໃນແຖບຂ້າງທາງລົດໄຟ / ລຸ່ມ
 sidebar_hidden_hint	ເຊື່ອງໄວ້ຈາກແຖບ
-sidebar_menu_items	ເມນູ & ລາຍການ
+sidebar_menu_items	ອັດຕາ
 sidebar_enable_all	ເປີດໃຊ້ທັງໝົດ
 sidebar_disable_all	ປິດໃຊ້ງານທັງໝົດ
 sidebar_order_saved	ບັນທຶກຄຳສັ່ງແຖບດ້ານຂ້າງແລ້ວ
@@ -846,3 +846,10 @@ sel_copy	ສຳເນົາ
 sel_select_all	ເລືອກທັງໝົດ
 sel_copied	ສຳເນົາແລ້ວ
 nav_loading	ກຳລັງໂຫຼດ…
+settings_sec_privacy	ຄວາມເປັນສ່ວນຕົວ
+privacy_policy_help	ຄວາມເປັນສ່ວນຕົວ · PRIVACY.md · moklanjo.com/privacy
+dont_use	ຢ່າໃຊ້
+receipt_printers_dd	ເຄື່ອງພິມໃນອຸປະກອນນີ້ · ໃບຮັບເງິນ
+receipt_printers_dd_n	{n} · ເຄື່ອງພິມໃນອຸປະກອນນີ້ · ໃບຮັບເງິນ
+label_printers_dd	ເຄື່ອງພິມໃນອຸປະກອນນີ້ · ປ້າຍ AWB
+label_printers_dd_n	{n} · ເຄື່ອງພິມໃນອຸປະກອນນີ້ · ປ້າຍ AWB

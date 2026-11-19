@@ -86,7 +86,7 @@ sidebar_hidden	Ukryty
 sidebar_always_on	Zawsze na pasku
 sidebar_shown_hint	Pokazane na szynie bocznej / dolnych zakładkach
 sidebar_hidden_hint	Ukryty przed barem
-sidebar_menu_items	Menu i pozycje
+sidebar_menu_items	Stawki
 sidebar_enable_all	Włącz wszystko
 sidebar_disable_all	Wyłącz wszystko
 sidebar_order_saved	Zapisano zamówienie na pasku bocznym
@@ -846,3 +846,10 @@ sel_copy	Kopiuj
 sel_select_all	Zaznacz wszystko
 sel_copied	Skopiowano
 nav_loading	Wczytywanie…
+settings_sec_privacy	Prywatność
+privacy_policy_help	Prywatność · PRIVACY.md · moklanjo.com/privacy
+dont_use	Nie używaj
+receipt_printers_dd	Drukarki na tym urządzeniu · Paragon
+receipt_printers_dd_n	{n} · Drukarki na tym urządzeniu · Paragon
+label_printers_dd	Drukarki na tym urządzeniu · Etykieta AWB
+label_printers_dd_n	{n} · Drukarki na tym urządzeniu · Etykieta AWB

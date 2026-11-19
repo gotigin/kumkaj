@@ -658,6 +658,12 @@ fn fit_inside_system_bars(&mut self, cx: &mut Cx) {
     fn close_printers_modal(&mut self, cx: &mut Cx) {
         self.ui.modal(cx, ids!(printers_modal)).close(cx);
         *printers_sheet_route().lock().unwrap() = None;
+        if let Some(field) = printers_modal_return().lock().unwrap().take() {
+            let mut st = app_state().lock().unwrap();
+            st.open_suggest(field, "");
+            drop(st);
+            self.redraw_suggest_lists(cx);
+        }
         self.sync_chrome(cx);
     }
 

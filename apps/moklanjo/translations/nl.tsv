@@ -53,11 +53,11 @@ today_mid	vandaag
 owed	openstaand
 round_word	afronding
 back	Terug
-sold_out	Uitverkocht
-restock	Aanvullen
+sold_out	Niet beschikbaar
+restock	Markeer beschikbaar
 not_tracked	Niet geteld
 in_stock	op voorraad
-marked_sold_out	Gemarkeerd uitverkocht
+marked_sold_out	Gemarkeerd niet beschikbaar
 add_upper	Toevoegen
 na	n.v.t.
 qty	Aantal
@@ -86,7 +86,7 @@ sidebar_hidden	Verborgen
 sidebar_always_on	Altijd aan de bar
 sidebar_shown_hint	Getoond in de zijbalk / onderste tabs
 sidebar_hidden_hint	Verborgen van de bar
-sidebar_menu_items	Menu & Artikelen
+sidebar_menu_items	Tarieven
 sidebar_enable_all	Allemaal inschakelen
 sidebar_disable_all	Allemaal uitschakelen
 sidebar_order_saved	Zijbalk bestelling opgeslagen
@@ -846,3 +846,10 @@ sel_copy	Kopiëren
 sel_select_all	Alles selecteren
 sel_copied	Gekopieerd
 nav_loading	Laden…
+settings_sec_privacy	Privacy
+privacy_policy_help	Dezelfde PRIVACY.md als op https://moklanjo.com/privacy — geen aparte kopie.
+dont_use	Niet gebruiken
+receipt_printers_dd	Printers op dit apparaat · Bon
+receipt_printers_dd_n	{n} · Printers op dit apparaat · Bon
+label_printers_dd	Printers op dit apparaat · AWB-label
+label_printers_dd_n	{n} · Printers op dit apparaat · AWB-label

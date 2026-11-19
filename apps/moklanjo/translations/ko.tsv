@@ -53,11 +53,11 @@ today_mid	오늘
 owed	미수
 round_word	반올림
 back	뒤로
-sold_out	품절
-restock	다시 입고
+sold_out	불가
+restock	가능으로 표시
 not_tracked	수량 없음
 in_stock	재고
-marked_sold_out	품절 표시
+marked_sold_out	불가로 표시됨
 add_upper	담기
 na	없음
 qty	수량
@@ -86,7 +86,7 @@ sidebar_hidden	숨김
 sidebar_always_on	바에 항상 표시됨
 sidebar_shown_hint	사이드 레일 또는 하단 탭에서 표시됨
 sidebar_hidden_hint	바에서 숨김
-sidebar_menu_items	메뉴 및 항목
+sidebar_menu_items	요금
 sidebar_enable_all	모두 활성화
 sidebar_disable_all	모두 비활성화
 sidebar_order_saved	사이드바 주문 저장됨
@@ -846,3 +846,10 @@ sel_copy	복사
 sel_select_all	모두 선택
 sel_copied	복사됨
 nav_loading	불러오는 중…
+settings_sec_privacy	개인정보
+privacy_policy_help	https://moklanjo.com/privacy 와 같은 PRIVACY.md — 별도 사본이 아닙니다.
+dont_use	사용 안 함
+receipt_printers_dd	이 장치의 프린터 · 영수증
+receipt_printers_dd_n	{n} · 이 장치의 프린터 · 영수증
+label_printers_dd	이 장치의 프린터 · AWB 라벨
+label_printers_dd_n	{n} · 이 장치의 프린터 · AWB 라벨

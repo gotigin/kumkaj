@@ -53,11 +53,11 @@ today_mid	ഇന്ന്
 owed	കുടിശ്ശിക
 round_word	റൗണ്ട്
 back	പിന്നോട്ട്
-sold_out	വിറ്റു തീർന്നു
-restock	തിരികെ വയ്ക്കുക
+sold_out	ലഭ്യമല്ല
+restock	ലഭ്യമാണ് എന്ന് അടയാളപ്പെടുത്തുക
 not_tracked	എണ്ണുന്നില്ല
 in_stock	സ്റ്റോക്കിൽ
-marked_sold_out	വിറ്റു തീർന്നു എന്ന് അടയാളം
+marked_sold_out	ലഭ്യമല്ല എന്ന് അടയാളപ്പെടുത്തി
 add_upper	ചേർക്കുക
 na	ഇല്ല
 qty	എണ്ണം
@@ -86,7 +86,7 @@ sidebar_hidden	മറച്ചു
 sidebar_always_on	എപ്പോഴും ബാറിൽ
 sidebar_shown_hint	വശത്തെ ബാർ / താഴത്തെ ടാബുകളിൽ കാണിക്കും
 sidebar_hidden_hint	ബാറിൽ നിന്ന് മറച്ചു
-sidebar_menu_items	മെനുവും ഇനങ്ങളും
+sidebar_menu_items	നിരക്കുകൾ
 sidebar_enable_all	എല്ലാം ഓൺ ചെയ്യുക
 sidebar_disable_all	എല്ലാം ഓഫ് ചെയ്യുക
 sidebar_order_saved	സൈഡ്‌ബാർ ക്രമം സേവ് ചെയ്തു
@@ -846,3 +846,10 @@ sel_copy	പകർത്തുക
 sel_select_all	എല്ലാം തിരഞ്ഞെടുക്കുക
 sel_copied	പകർത്തി
 nav_loading	ലോഡ് ചെയ്യുന്നു…
+settings_sec_privacy	സ്വകാര്യത
+privacy_policy_help	https://moklanjo.com/privacy ലെ അതേ PRIVACY.md — പ്രത്യേക പകർപ്പല്ല.
+dont_use	ഉപയോഗിക്കരുത്
+receipt_printers_dd	ഈ ഉപകരണത്തിലെ പ്രിന്ററുകൾ · രസീത്
+receipt_printers_dd_n	{n} · ഈ ഉപകരണത്തിലെ പ്രിന്ററുകൾ · രസീത്
+label_printers_dd	ഈ ഉപകരണത്തിലെ പ്രിന്ററുകൾ · AWB ലേബൽ
+label_printers_dd_n	{n} · ഈ ഉപകരണത്തിലെ പ്രിന്ററുകൾ · AWB ലേബൽ

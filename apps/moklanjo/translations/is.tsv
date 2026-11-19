@@ -86,7 +86,7 @@ sidebar_hidden	Falinn
 sidebar_always_on	Alltaf á barnum
 sidebar_shown_hint	Sýnt á hliðarteinum / neðri flipunum
 sidebar_hidden_hint	Falið frá barnum
-sidebar_menu_items	Valmynd & Valmynd valmyndaratriði
+sidebar_menu_items	Verð
 sidebar_enable_all	Virkja allt
 sidebar_disable_all	Slökktu á öllum
 sidebar_order_saved	Pöntun hliðarstikunnar vistuð
@@ -846,3 +846,10 @@ sel_copy	Afrita
 sel_select_all	Velja allt
 sel_copied	Afritað
 nav_loading	Hleður…
+settings_sec_privacy	Persónuvernd
+privacy_policy_help	Persónuvernd · PRIVACY.md · moklanjo.com/privacy
+dont_use	Ekki nota
+receipt_printers_dd	Prentarar á þessu tæki · Kvittun
+receipt_printers_dd_n	{n} · Prentarar á þessu tæki · Kvittun
+label_printers_dd	Prentarar á þessu tæki · AWB merki
+label_printers_dd_n	{n} · Prentarar á þessu tæki · AWB merki

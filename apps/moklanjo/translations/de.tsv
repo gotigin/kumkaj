@@ -53,11 +53,11 @@ today_mid	heute
 owed	offen
 round_word	Rundung
 back	Zurück
-sold_out	Ausverkauft
-restock	Nachfüllen
+sold_out	Nicht verfügbar
+restock	Als verfügbar markieren
 not_tracked	Nicht gezählt
 in_stock	auf Lager
-marked_sold_out	Als ausverkauft markiert
+marked_sold_out	Als nicht verfügbar markiert
 add_upper	Hinzufügen
 na	k. A.
 qty	Menge
@@ -86,7 +86,7 @@ sidebar_hidden	Ausgeblendet
 sidebar_always_on	Immer am Bar
 sidebar_shown_hint	Auf der Seitenleiste oder unten in den Tabs angezeigt
 sidebar_hidden_hint	Vom Bar aus ausgeblendet
-sidebar_menu_items	Menü & Artikel
+sidebar_menu_items	Tarife
 sidebar_enable_all	Alle aktivieren
 sidebar_disable_all	Alle deaktivieren
 sidebar_order_saved	Seitenleistenbestellung gespeichert
@@ -846,3 +846,10 @@ sel_copy	Kopieren
 sel_select_all	Alles auswählen
 sel_copied	Kopiert
 nav_loading	Wird geladen…
+settings_sec_privacy	Datenschutz
+privacy_policy_help	Dieselbe PRIVACY.md wie auf https://moklanjo.com/privacy — keine separate Kopie.
+dont_use	Nicht verwenden
+receipt_printers_dd	Drucker auf diesem Gerät · Beleg
+receipt_printers_dd_n	{n} · Drucker auf diesem Gerät · Beleg
+label_printers_dd	Drucker auf diesem Gerät · AWB-Etikett
+label_printers_dd_n	{n} · Drucker auf diesem Gerät · AWB-Etikett

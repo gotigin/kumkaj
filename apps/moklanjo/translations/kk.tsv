@@ -86,7 +86,7 @@ sidebar_hidden	Жасырылған
 sidebar_always_on	Әрқашан тақтада
 sidebar_shown_hint	Бүйір рельсте / төменгі қойындыларда көрсетілген
 sidebar_hidden_hint	Тақтадан жасырылған
-sidebar_menu_items	Мәзір және тауарлар
+sidebar_menu_items	Тарифтер
 sidebar_enable_all	Барлығын қосу
 sidebar_disable_all	Барлығын өшіру
 sidebar_order_saved	Бүйір тақта реті сақталды
@@ -846,3 +846,10 @@ sel_copy	Көшіру
 sel_select_all	Барлығын таңдау
 sel_copied	Көшірілді
 nav_loading	Жүктелуде…
+settings_sec_privacy	Құпиялылық
+privacy_policy_help	Құпиялық · PRIVACY.md · moklanjo.com/privacy
+dont_use	Қолданбау
+receipt_printers_dd	Осы құрылғыдағы принтерлер · Түбіртек
+receipt_printers_dd_n	{n} · Осы құрылғыдағы принтерлер · Түбіртек
+label_printers_dd	Осы құрылғыдағы принтерлер · AWB белгісі
+label_printers_dd_n	{n} · Осы құрылғыдағы принтерлер · AWB белгісі

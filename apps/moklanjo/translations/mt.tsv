@@ -86,7 +86,7 @@ sidebar_hidden	Moħbija
 sidebar_always_on	Dejjem fuq il-bar
 sidebar_shown_hint	Muri fuq il-binarji tal-ġenb/tal-qiegħ
 sidebar_hidden_hint	Moħbi mill-bar
-sidebar_menu_items	Menu u Oġġetti
+sidebar_menu_items	Rati
 sidebar_enable_all	Ippermetti Kollha
 sidebar_disable_all	Itfi Kollha
 sidebar_order_saved	Ordni tal-Istrixxa tal-ġenb salvata
@@ -846,3 +846,10 @@ sel_copy	Ikkopja
 sel_select_all	Agħżel kollox
 sel_copied	Ikkupjat
 nav_loading	Qed jitgħabba…
+settings_sec_privacy	Privatezza
+privacy_policy_help	Privatezza · PRIVACY.md · moklanjo.com/privacy
+dont_use	Tużax
+receipt_printers_dd	Printers fuq dan l-apparat · Irċevuta
+receipt_printers_dd_n	{n} · Printers fuq dan l-apparat · Irċevuta
+label_printers_dd	Printers fuq dan l-apparat · Tikketta AWB
+label_printers_dd_n	{n} · Printers fuq dan l-apparat · Tikketta AWB

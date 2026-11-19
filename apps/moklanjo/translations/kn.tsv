@@ -53,11 +53,11 @@ today_mid	ಇಂದು
 owed	ಬಾಕಿ
 round_word	ರೌಂಡ್
 back	ಹಿಂದೆ
-sold_out	ಮಾರಾಟವಾಯಿತು
-restock	ಮತ್ತೆ ಇಡಿ
+sold_out	ಲಭ್ಯವಿಲ್ಲ
+restock	ಲಭ್ಯವಿದೆ ಎಂದು ಗುರುತು
 not_tracked	ಎಣಿಕೆ ಇಲ್ಲ
 in_stock	ದಾಸ್ತಾನು
-marked_sold_out	ಮಾರಾಟವಾಯಿತು ಎಂದು ಗುರುತು
+marked_sold_out	ಲಭ್ಯವಿಲ್ಲ ಎಂದು ಗುರುತು
 add_upper	ಸೇರಿಸಿ
 na	ಇಲ್ಲ
 qty	ಸಂಖ್ಯೆ
@@ -86,7 +86,7 @@ sidebar_hidden	ಮರೆಮಾಡಲಾಗಿದೆ
 sidebar_always_on	ಯಾವಾಗಲೂ ಪಟ್ಟಿಯಲ್ಲಿ
 sidebar_shown_hint	ಪಕ್ಕದ ಪಟ್ಟಿ / ಕೆಳಗಿನ ಟ್ಯಾಬ್‌ಗಳಲ್ಲಿ ತೋರಿಸಲಾಗುತ್ತದೆ
 sidebar_hidden_hint	ಪಟ್ಟಿಯಿಂದ ಮರೆಮಾಡಲಾಗಿದೆ
-sidebar_menu_items	ಮೆನು ಮತ್ತು ಐಟಂಗಳು
+sidebar_menu_items	ದರಗಳು
 sidebar_enable_all	ಎಲ್ಲವನ್ನೂ ಆನ್ ಮಾಡಿ
 sidebar_disable_all	ಎಲ್ಲವನ್ನೂ ಆಫ್ ಮಾಡಿ
 sidebar_order_saved	ಸೈಡ್‌ಬಾರ್ ಕ್ರಮ ಉಳಿಸಲಾಗಿದೆ
@@ -846,3 +846,10 @@ sel_copy	ನಕಲಿಸಿ
 sel_select_all	ಎಲ್ಲವನ್ನೂ ಆಯ್ಕೆಮಾಡಿ
 sel_copied	ನಕಲಿಸಲಾಗಿದೆ
 nav_loading	ಲೋಡ್ ಆಗುತ್ತಿದೆ…
+settings_sec_privacy	ಗೌಪ್ಯತೆ
+privacy_policy_help	https://moklanjo.com/privacy ನಲ್ಲಿರುವ ಅದೇ PRIVACY.md — ಪ್ರತ್ಯೇಕ ಪ್ರತಿ ಅಲ್ಲ.
+dont_use	ಬಳಸಬೇಡಿ
+receipt_printers_dd	ಈ ಸಾಧನದ ಮುದ್ರಕಗಳು · ರಸೀದಿ
+receipt_printers_dd_n	{n} · ಈ ಸಾಧನದ ಮುದ್ರಕಗಳು · ರಸೀದಿ
+label_printers_dd	ಈ ಸಾಧನದ ಮುದ್ರಕಗಳು · AWB ಲೇಬಲ್
+label_printers_dd_n	{n} · ಈ ಸಾಧನದ ಮುದ್ರಕಗಳು · AWB ಲೇಬಲ್

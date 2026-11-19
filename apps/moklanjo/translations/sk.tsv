@@ -86,7 +86,7 @@ sidebar_hidden	Skryté
 sidebar_always_on	Vždy na bare
 sidebar_shown_hint	Zobrazené na bočnej koľajničke / spodných úchytoch
 sidebar_hidden_hint	Skryté pred barom
-sidebar_menu_items	Menu a položky
+sidebar_menu_items	sadzby
 sidebar_enable_all	Povoliť všetko
 sidebar_disable_all	Zakázať všetko
 sidebar_order_saved	Poradie bočného panela bolo uložené
@@ -846,3 +846,10 @@ sel_copy	Kopírovať
 sel_select_all	Vybrať všetko
 sel_copied	Skopírované
 nav_loading	Načítava sa…
+settings_sec_privacy	Súkromie
+privacy_policy_help	Súkromie · PRIVACY.md · moklanjo.com/privacy
+dont_use	Nepoužívať
+receipt_printers_dd	Tlačiarne na tomto zariadení · Potvrdenie
+receipt_printers_dd_n	{n} · Tlačiarne na tomto zariadení · Potvrdenie
+label_printers_dd	Tlačiarne na tomto zariadení · štítok AWB
+label_printers_dd_n	{n} · Tlačiarne na tomto zariadení · štítok AWB

@@ -86,7 +86,7 @@ sidebar_hidden	Afina
 sidebar_always_on	Foana eo amin'ny bara
 sidebar_shown_hint	Aseho eo amin'ny valan-tsofiny / takelaka ambany
 sidebar_hidden_hint	Afina amin'ny bar
-sidebar_menu_items	Karazan-tsakafo & zavatra
+sidebar_menu_items	sarany
 sidebar_enable_all	Alefaso ny Rehetra
 sidebar_disable_all	Vonoy Daholo
 sidebar_order_saved	Voatahiry ny filaharan'ny sidebar
@@ -846,3 +846,10 @@ sel_copy	Adikao
 sel_select_all	Fidio daholo
 sel_copied	Voadika
 nav_loading	Mampiditra…
+settings_sec_privacy	Tsiambaratelo
+privacy_policy_help	Fiainana manokana · PRIVACY.md · moklanjo.com/privacy
+dont_use	Aza ampiasaina
+receipt_printers_dd	Mpanonta printy amin'ity fitaovana ity · rosia
+receipt_printers_dd_n	{n} · Mpanonta printy amin'ity fitaovana ity · rosia
+label_printers_dd	Mpanonta printy amin'ity fitaovana ity · Etikety AWB
+label_printers_dd_n	{n} · Mpanonta printy amin'ity fitaovana ity · Etikety AWB

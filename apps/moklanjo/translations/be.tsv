@@ -86,7 +86,7 @@ sidebar_hidden	Схаваны
 sidebar_always_on	Заўсёды на бары
 sidebar_shown_hint	Паказана на бакавой планцы / ніжніх выступах
 sidebar_hidden_hint	Схаваны ад бара
-sidebar_menu_items	Меню і пункты
+sidebar_menu_items	Тарыфы
 sidebar_enable_all	Уключыць усе
 sidebar_disable_all	Адключыць усе
 sidebar_order_saved	Парадак бакавой панэлі захаваны
@@ -846,3 +846,10 @@ sel_copy	Капіяваць
 sel_select_all	Вылучыць усё
 sel_copied	Скапіявана
 nav_loading	Загрузка…
+settings_sec_privacy	Прыватнасць
+privacy_policy_help	Прыватнасць · PRIVACY.md · moklanjo.com/privacy
+dont_use	Не выкарыстоўвайце
+receipt_printers_dd	Прынтары на гэтай прыладзе · Квітанцыя
+receipt_printers_dd_n	{n} · Прынтары на гэтай прыладзе · Квітанцыя
+label_printers_dd	Прынтары на гэтай прыладзе · Этыкетка AWB
+label_printers_dd_n	{n} · Прынтары на гэтай прыладзе · Этыкетка AWB

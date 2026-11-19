@@ -31,6 +31,7 @@ pub mod ops_local;
 pub mod os_paper;
 pub mod phone;
 pub mod precise;
+pub mod privacy_policy;
 pub mod print_share;
 #[cfg(target_os = "android")]
 pub mod print_android;

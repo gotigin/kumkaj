@@ -3165,6 +3165,121 @@ script_mod! {
             }
         }
     }
+    let StationPrioBtn = Button{
+        width: 28 height: 28
+        padding: Inset{left: 0. right: 0. top: 0. bottom: 0.}
+        align: Align{x: 0.5 y: 0.5}
+        grab_key_focus: false
+        reset_hover_on_click: true
+        text: ""
+        label_walk: Walk{width: Fit height: Fit}
+        icon_walk: Walk{width: 0. height: 0.}
+        draw_bg +: {
+            color: #xF7EFE8
+            color_hover: #xF4E8E0
+            color_down: #xE8D6CA
+            color_focus: #xF7EFE8
+            color_2: #xF7EFE8
+            color_2_hover: #xF4E8E0
+            color_2_down: #xE8D6CA
+            color_2_focus: #xF7EFE8
+            border_radius: 8.
+            border_size: 0.
+        }
+        draw_text +: {
+            color: #x8A5A48
+            color_hover: #x8A5A48
+            color_down: #x8A5A48
+            color_focus: #x8A5A48
+            ink_centered: true
+            text_style +: {font_size: 16.}
+        }
+    }
+    let StationCheckRow = RoundedView{
+        cursor: MouseCursor.Hand
+        width: Fill height: Fit
+        padding: Inset{left: 8. right: 8. top: 10. bottom: 10.}
+        flow: Right spacing: 8
+        align: Align{y: 0.5}
+        draw_bg.color: #xffffff
+        draw_bg.border_radius: 10.
+        draw_bg.border_size: 1.
+        draw_bg.border_color: #xE3D3C8
+        View{
+            width: 22 height: 22
+            flow: Overlay
+            align: Align{x: 0.5 y: 0.5}
+            check_off := RoundedView{
+                width: 18 height: 18
+                draw_bg.color: #xffffff
+                draw_bg.border_radius: 3.
+                draw_bg.border_size: 1.5
+                draw_bg.border_color: #x8A5A48
+            }
+            check_on := RoundedView{
+                width: 18 height: 18
+                visible: false
+                flow: Overlay
+                align: Align{x: 0.5 y: 0.5}
+                draw_bg.color: #x9A0E10
+                draw_bg.border_radius: 3.
+                draw_bg.border_size: 0.
+                Label{
+                    text: "\u{2713}"
+                    draw_text.color: #xffffff
+                    draw_text.text_style.font_size: 12.
+                }
+            }
+        }
+        prio := Label{
+            width: Fit
+            text: ""
+            draw_text.color: #x8A5A48
+            draw_text.text_style.font_size: 13.
+        }
+        title := Label{
+            width: Fill
+            text: ""
+            flow: Right{wrap: true}
+            draw_text.color: #x260B08
+            draw_text.text_style.font_size: 15.
+        }
+        subtitle := Label{
+            width: Fit
+            text: ""
+            visible: false
+            flow: Right{wrap: true}
+            draw_text.color: #x6B4A3F
+            draw_text.text_style.font_size: 13.
+        }
+        prio_up := StationPrioBtn{text: "\u{2191}"}
+        prio_down := StationPrioBtn{text: "\u{2193}"}
+    }
+    mod.widgets.StationCheckListBase = #(StationCheckList::register_widget(vm))
+    mod.widgets.StationCheckList = set_type_default() do mod.widgets.StationCheckListBase{
+        width: Fill height: Fit
+        list := PortalList{
+            width: Fill height: Fill
+            spacing: 6
+            drag_scrolling: true
+            mouse_drag_scrolling: true
+            bounce_at_start: false
+            bounce_at_end: false
+            capture_overload: true
+            scroll_bar: ScrollBar{bar_size: 6.}
+            Item := View{
+                width: Fill height: Fit
+                texture_caching: false
+                row := StationCheckRow{}
+            }
+            FindItem := View{
+                width: Fill height: Fit
+                texture_caching: false
+                padding: Inset{top: 2. bottom: 2.}
+                find_printers_row := StackSecondaryBtn{text: "Find printers"}
+            }
+        }
+    }
     mod.widgets.SuggestListBase = #(SuggestList::register_widget(vm))
     mod.widgets.SuggestList = set_type_default() do mod.widgets.SuggestListBase{
         width: Fill height: Fit
@@ -4125,6 +4240,22 @@ script_mod! {
                                         align: Align{x: 0.0 y: 0.5}
                                         padding: Inset{left: 10. right: 0. top: 0. bottom: 0.}
                                         rail_x26_icon := Image{
+                                            width: 22 height: 22
+                                            fit: ImageFit.Stretch
+                                        }
+                                    }
+                                }
+                                rail_x27_slot := View{
+                                    visible: false
+                                    width: Fill height: Fit
+                                    flow: Overlay
+                                    rail_x27 := TabBtn{text: ""}
+                                    rail_x27_on := TabBtnActive{text: "" visible: false}
+                                    View{
+                                        width: Fit height: 40
+                                        align: Align{x: 0.0 y: 0.5}
+                                        padding: Inset{left: 10. right: 0. top: 0. bottom: 0.}
+                                        rail_x27_icon := Image{
                                             width: 22 height: 22
                                             fit: ImageFit.Stretch
                                         }
@@ -6744,7 +6875,27 @@ script_mod! {
                                     printer_add_cancel := QuietFitBtn{text: "Cancel" visible: false}
                                     }
                                     h_printers_routes := WrapLabel{body: "Where things print" font_color: #x0B1220 font_size: 16.}
-                                    printer_routes_label := mod.widgets.ReportText{}
+                                    printer_routes_label := mod.widgets.ReportText{visible: false}
+                                    mod.widgets.ComboField{field: "receipt_printers"
+                                        receipt_printers_dd := ComboFace{text: "Printers for receipt"}
+                                    }
+                                    receipt_printers_input := FieldInput{
+                                        height: 0.
+                                        margin: Inset{left: 0. right: 0. top: 0. bottom: 0.}
+                                        padding: Inset{left: 0. right: 0. top: 0. bottom: 0.}
+                                        empty_text: ""
+                                    }
+                                    receipt_printers_suggest := mod.widgets.StationCheckList{field: "receipt_printers"}
+                                    mod.widgets.ComboField{field: "label_printers"
+                                        label_printers_dd := ComboFace{text: "Printers for AWB label"}
+                                    }
+                                    label_printers_input := FieldInput{
+                                        height: 0.
+                                        margin: Inset{left: 0. right: 0. top: 0. bottom: 0.}
+                                        padding: Inset{left: 0. right: 0. top: 0. bottom: 0.}
+                                        empty_text: ""
+                                    }
+                                    label_printers_suggest := mod.widgets.StationCheckList{field: "label_printers"}
                                     h_route_pick := Label{
                                         text: "Print route"
                                         draw_text.color: #x3A4554
@@ -6879,21 +7030,25 @@ script_mod! {
                                         job_preview := mod.widgets.SlipPicture{}
                                     }
                                     job_format_test := StackSecondaryBtn{text: "Test print"}
-                                    mod.widgets.ComboField{field: "route_add_printer"
-                                        route_add_printer_input := ComboInput{empty_text: "Add printer to this route"}
+                                    route_add_printer_legacy := View{
+                                        width: Fill height: Fit
+                                        visible: false
+                                        mod.widgets.ComboField{field: "route_add_printer"
+                                            route_add_printer_input := ComboInput{empty_text: "Add printer to this route"}
+                                        }
+                                        route_add_printer_suggest := mod.widgets.SuggestList{field: "route_add_printer"}
+                                        ActionStack{
+                                            route_add := RowSecondaryBtn{text: "Add to route"}
+                                            route_up := RowSecondaryBtn{text: "Up"}
+                                            route_down := RowSecondaryBtn{text: "Down"}
+                                            route_remove := RowSecondaryBtn{text: "Remove last"}
+                                            route_clear := RowSecondaryBtn{text: "Clear printers for this place"}
+                                        }
+                                        ActionStack{
+                                            printers_save := StackPrimaryBtn{text: "Save printers"}
+                                        }
                                     }
-                                    route_add_printer_suggest := mod.widgets.SuggestList{field: "route_add_printer"}
-                                    ActionStack{
-                                        route_add := RowSecondaryBtn{text: "Add to route"}
-                                        route_up := RowSecondaryBtn{text: "Up"}
-                                        route_down := RowSecondaryBtn{text: "Down"}
-                                        route_remove := RowSecondaryBtn{text: "Remove last"}
-                                        route_clear := RowSecondaryBtn{text: "Clear printers for this place"}
-                                    }
-                                    ActionStack{
-                                        printers_save := StackPrimaryBtn{text: "Save printers"}
-                                        print_test_btn := RowSecondaryBtn{text: "Print a test page" visible: false}
-                                    }
+                                    print_test_btn := RowSecondaryBtn{text: "Print a test page" visible: false}
                                     }
                                 }
                                 settings_panel_awb := View{
@@ -7118,6 +7273,31 @@ script_mod! {
                                         is_password: true
                                     }
                                     wipe_data_btn := DangerBtn{text: "Delete selected"}
+                                }
+                                settings_panel_privacy := View{
+                                    width: Fill height: Fit
+                                    flow: Down spacing: 12
+                                    visible: false
+                                    View{
+                                        width: Fill height: Fit
+                                        flow: Right spacing: 0
+                                        align: Align{y: 0.5}
+                                        h_privacy := WrapLabel{
+                                            width: Fit
+                                            body: "Privacy"
+                                            font_color: #x0B1220
+                                            font_size: 20.
+                                        }
+                                        privacy_help := InfoHelp{
+                                            tip: "Formatted from the same PRIVACY.md as https://moklanjo.com/privacy — not a separate copy."
+                                        }
+                                    }
+                                    privacy_body := WrapLabel{
+                                        width: Fill
+                                        body: ""
+                                        font_color: #x0B1220
+                                        font_size: 14.
+                                    }
                                 }
                                 settings_panel_diag := View{
                                     width: Fill height: Fit
@@ -8217,6 +8397,22 @@ script_mod! {
                                             align: Align{x: 0.0 y: 0.5}
                                             padding: Inset{left: 10. right: 0. top: 0. bottom: 0.}
                                             nav_x26_icon := Image{
+                                                width: 22 height: 22
+                                                fit: ImageFit.Stretch
+                                            }
+                                        }
+                                    }
+                                    nav_x27_slot := View{
+                                        visible: false
+                                        width: Fit{min: FitBound.Abs(72.)} height: Fit
+                                        flow: Overlay
+                                        nav_x27 := NavChip{text: ""}
+                                        nav_x27_on := NavChipActive{text: "" visible: false}
+                                        View{
+                                            width: Fit height: Fill
+                                            align: Align{x: 0.0 y: 0.5}
+                                            padding: Inset{left: 10. right: 0. top: 0. bottom: 0.}
+                                            nav_x27_icon := Image{
                                                 width: 22 height: 22
                                                 fit: ImageFit.Stretch
                                             }

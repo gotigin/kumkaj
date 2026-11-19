@@ -86,7 +86,7 @@ sidebar_hidden	Ezoro
 sidebar_always_on	Na-anọ na ogwe mgbe niile
 sidebar_shown_hint	Egosiri na ụzọ akụkụ / taabụ ala
 sidebar_hidden_hint	Ezoro na ogwe
-sidebar_menu_items	Ndepụta nri na ihe
+sidebar_menu_items	Ọnụ ego
 sidebar_enable_all	Gbanye ha niile
 sidebar_disable_all	Gbanyụọ ha niile
 sidebar_order_saved	Echekwara usoro ogwe akụkụ
@@ -846,3 +846,10 @@ sel_copy	Detuo
 sel_select_all	Họrọ ihe niile
 sel_copied	E detuola
 nav_loading	Na-ebugo…
+settings_sec_privacy	Nzuzo
+privacy_policy_help	Nzuzo · PRIVACY.md · moklanjo.com/privacy
+dont_use	Ejila
+receipt_printers_dd	Ndị na-ebi akwụkwọ na ngwaọrụ a · Nnata
+receipt_printers_dd_n	{n} · Ndị na-ebi akwụkwọ na ngwaọrụ a · Nnata
+label_printers_dd	Ndị na-ebi akwụkwọ na ngwaọrụ a · AWB akara
+label_printers_dd_n	{n} · Ndị na-ebi akwụkwọ na ngwaọrụ a · AWB akara

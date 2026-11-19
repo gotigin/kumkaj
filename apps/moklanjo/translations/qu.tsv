@@ -54,7 +54,7 @@ owed	pendiente
 round_word	muyu
 back	Kutiy
 sold_out	Mana tarikuq
-restock	Restock nisqa
+restock	Mark available
 not_tracked	Mana qatipasqachu
 in_stock	en stock
 marked_sold_out	Mana tarikuq nispa markasqa
@@ -86,7 +86,7 @@ sidebar_hidden	Pakasqa
 sidebar_always_on	Sapa kuti barpi
 sidebar_shown_hint	Lado riel / uray tablakunapi rikuchisqa
 sidebar_hidden_hint	Barramanta pakasqa
-sidebar_menu_items	Menú & Menú nisqapi kaqkuna
+sidebar_menu_items	Tarifakuna
 sidebar_enable_all	Tukuy atichiy
 sidebar_disable_all	Tukuy mana llamk'achiy
 sidebar_order_saved	Lado barra orden waqaychasqa
@@ -846,3 +846,10 @@ sel_copy	Copiay
 sel_select_all	Llapanta akllay
 sel_copied	Copiasqañam
 nav_loading	Cargachkan…
+settings_sec_privacy	Sapalla kay
+privacy_policy_help	Pakasqa kay · PRIVACY.md · moklanjo.com/privacy
+dont_use	Ama llamk'achiychu
+receipt_printers_dd	Kay aparatopi impresorakuna · Chaskiy
+receipt_printers_dd_n	{n} · Kay aparatopi impresorakuna · Chaskiy
+label_printers_dd	Kay aparatopi impresorakuna · AWB nisqa etiqueta
+label_printers_dd_n	{n} · Kay aparatopi impresorakuna · AWB nisqa etiqueta

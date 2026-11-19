@@ -86,7 +86,7 @@ sidebar_hidden	Gizli
 sidebar_always_on	Həmişə paneldə
 sidebar_shown_hint	Yan relsdə / alt tablarda göstərilir
 sidebar_hidden_hint	Paneldən gizli
-sidebar_menu_items	Menyu və məhsullar
+sidebar_menu_items	Tariflər
 sidebar_enable_all	Hamısını aç
 sidebar_disable_all	Hamısını bağla
 sidebar_order_saved	Yan panel sırası saxlandı
@@ -846,3 +846,10 @@ sel_copy	Köçür
 sel_select_all	Hamısını seç
 sel_copied	Köçürüldü
 nav_loading	Yüklənir…
+settings_sec_privacy	Məxfilik
+privacy_policy_help	Məxfilik · PRIVACY.md · moklanjo.com/privacy
+dont_use	İstifadə etmə
+receipt_printers_dd	Bu cihazdakı printerlər · Qəbz
+receipt_printers_dd_n	{n} · Bu cihazdakı printerlər · Qəbz
+label_printers_dd	Bu cihazdakı printerlər · AWB etiketi
+label_printers_dd_n	{n} · Bu cihazdakı printerlər · AWB etiketi

@@ -86,7 +86,7 @@ sidebar_hidden	छुपायोड़ो
 sidebar_always_on	हमेशा बार माथै
 sidebar_shown_hint	साइड रेल / नीचै रै टैब माथै दिखायो गयो है
 sidebar_hidden_hint	बार सूं छुप्योड़ो
-sidebar_menu_items	मेनू अर आइटम
+sidebar_menu_items	दर
 sidebar_enable_all	सगळा नै सक्षम करो
 sidebar_disable_all	सगळा नै अक्षम करो
 sidebar_order_saved	साइडबार रो आदेश बचायो गयो
@@ -846,3 +846,10 @@ sel_copy	कॉपी करो
 sel_select_all	सगळो चुणो
 sel_copied	कॉपी होयग्यो
 nav_loading	लोड हो रह्यो है…
+settings_sec_privacy	गोपनीयता
+privacy_policy_help	गोपनीयता · PRIVACY.md · moklanjo.com/privacy
+dont_use	प्रयोग मत करो
+receipt_printers_dd	आ डिवाइस रा प्रिंटर · रसीद
+receipt_printers_dd_n	{n} · आ डिवाइस रा प्रिंटर · रसीद
+label_printers_dd	आ डिवाइस रा प्रिंटर · AWB लेबल
+label_printers_dd_n	{n} · आ डिवाइस रा प्रिंटर · AWB लेबल

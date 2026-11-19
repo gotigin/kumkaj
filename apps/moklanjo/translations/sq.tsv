@@ -86,7 +86,7 @@ sidebar_hidden	E fshehur
 sidebar_always_on	Gjithmonë në shirit
 sidebar_shown_hint	E shfaqur në shinën anësore / skedat e poshtme
 sidebar_hidden_hint	E fshehur nga shiriti
-sidebar_menu_items	Menuja dhe artikujt
+sidebar_menu_items	Tarifat
 sidebar_enable_all	Aktivizo të gjitha
 sidebar_disable_all	Çaktivizo të gjitha
 sidebar_order_saved	Renditja e shiritit anësor u ruajt
@@ -846,3 +846,10 @@ sel_copy	Kopjo
 sel_select_all	Përzgjidh të gjitha
 sel_copied	U kopjua
 nav_loading	Po ngarkohet…
+settings_sec_privacy	Privatësia
+privacy_policy_help	Privatësia · PRIVACY.md · moklanjo.com/privacy
+dont_use	Mos e përdor
+receipt_printers_dd	Printerë në këtë pajisje · Fatura
+receipt_printers_dd_n	{n} · Printerë në këtë pajisje · Fatura
+label_printers_dd	Printerë në këtë pajisje · Etiketa AWB
+label_printers_dd_n	{n} · Printerë në këtë pajisje · Etiketa AWB

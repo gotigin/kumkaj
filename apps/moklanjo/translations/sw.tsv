@@ -53,11 +53,11 @@ today_mid	leo
 owed	deni
 round_word	kuzungusha
 back	Rudi
-sold_out	Imeisha
-restock	Rudisha
+sold_out	Haipatikani
+restock	Weka inapatikana
 not_tracked	Haihesabiwi
 in_stock	dukani
-marked_sold_out	Imewekwa imeisha
+marked_sold_out	Imewekwa haipatikani
 add_upper	Ongeza
 na	Hakuna
 qty	Idadi
@@ -86,7 +86,7 @@ sidebar_hidden	Imefichwa
 sidebar_always_on	Daima kwenye bar
 sidebar_shown_hint	Iliyonyeshwa kwenye rail ya upande / vitabu vya chini
 sidebar_hidden_hint	Imeyashindwa kutoka bar
-sidebar_menu_items	Menyu na Vifaa
+sidebar_menu_items	Viwango
 sidebar_enable_all	Wezesha Zote
 sidebar_disable_all	Ondoa Uwezo wa Zote
 sidebar_order_saved	Utaratibu wa upande ulipatikana
@@ -846,3 +846,10 @@ sel_copy	Nakili
 sel_select_all	Chagua zote
 sel_copied	Imenakiliwa
 nav_loading	Inapakia…
+settings_sec_privacy	Faragha
+privacy_policy_help	PRIVACY.md ile ile ya https://moklanjo.com/privacy — si nakala tofauti.
+dont_use	Usitumie
+receipt_printers_dd	Printa kwenye kifaa hiki · Risiti
+receipt_printers_dd_n	{n} · Printa kwenye kifaa hiki · Risiti
+label_printers_dd	Printa kwenye kifaa hiki · Lebo la AWB
+label_printers_dd_n	{n} · Printa kwenye kifaa hiki · Lebo la AWB

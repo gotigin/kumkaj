@@ -86,7 +86,7 @@ sidebar_hidden	Tersembunyi
 sidebar_always_on	Sentiasa di bar
 sidebar_shown_hint	Ditunjukkan pada rel sisi / tab bawah
 sidebar_hidden_hint	Tersembunyi dari bar
-sidebar_menu_items	Menu & Menu item menu
+sidebar_menu_items	Kadar
 sidebar_enable_all	Dayakan Semua
 sidebar_disable_all	Lumpuhkan Semua
 sidebar_order_saved	Pesanan bar sisi disimpan
@@ -846,3 +846,10 @@ sel_copy	Salin
 sel_select_all	Pilih semua
 sel_copied	Disalin
 nav_loading	Memuatkan…
+settings_sec_privacy	Privasi
+privacy_policy_help	Privasi · PRIVACY.md · moklanjo.com/privacy
+dont_use	jangan guna
+receipt_printers_dd	Pencetak pada peranti ini · resit
+receipt_printers_dd_n	{n} · Pencetak pada peranti ini · resit
+label_printers_dd	Pencetak pada peranti ini · Label AWB
+label_printers_dd_n	{n} · Pencetak pada peranti ini · Label AWB

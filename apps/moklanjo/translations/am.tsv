@@ -86,7 +86,7 @@ sidebar_hidden	ተደብቋል
 sidebar_always_on	ሁልጊዜ በአሞሌው ላይ
 sidebar_shown_hint	በጎን አሞሌ / በታች ትሮች ላይ ይታያል
 sidebar_hidden_hint	ከአሞሌው ተደብቋል
-sidebar_menu_items	ሜኑ እና እቃዎች
+sidebar_menu_items	ታሪፎች
 sidebar_enable_all	ሁሉንም አንቃ
 sidebar_disable_all	ሁሉንም አሰናክል
 sidebar_order_saved	የጎን አሞሌ ቅደም ተከተል ተቀምጧል
@@ -846,3 +846,10 @@ sel_copy	ቅዳ
 sel_select_all	ሁሉንም ምረጥ
 sel_copied	ተቀድቷል
 nav_loading	በመጫን ላይ…
+settings_sec_privacy	ግላዊነት
+privacy_policy_help	ግላዊነት · PRIVACY.md · moklanjo.com/privacy
+dont_use	አትጠቀም
+receipt_printers_dd	በዚህ መሣሪያ ላይ ያሉ ማተሚያዎች · ደረሰኝ
+receipt_printers_dd_n	{n} · በዚህ መሣሪያ ላይ ያሉ ማተሚያዎች · ደረሰኝ
+label_printers_dd	በዚህ መሣሪያ ላይ ያሉ ማተሚያዎች · የ AWB መለያ
+label_printers_dd_n	{n} · በዚህ መሣሪያ ላይ ያሉ ማተሚያዎች · የ AWB መለያ

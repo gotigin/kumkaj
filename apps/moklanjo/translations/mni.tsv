@@ -86,7 +86,7 @@ sidebar_hidden	ꯂꯥꯞꯈꯤ
 sidebar_always_on	ꯕꯥꯔꯗ ꯂꯩꯔꯣꯝꯃꯤ
 sidebar_shown_hint	ꯃꯄꯥꯟꯒꯤ ꯕꯥꯔ / ꯃꯈꯥꯒꯤ ꯇꯦꯕꯗ ꯎꯠꯏ
 sidebar_hidden_hint	ꯕꯥꯔꯗꯒꯤ ꯂꯥꯞꯈꯤ
-sidebar_menu_items	ꯃꯦꯅꯨ ꯑꯃꯁꯨꯡ ꯄꯣꯠ
+sidebar_menu_items	ꯔꯦꯠꯁꯤꯡ꯫
 sidebar_enable_all	ꯄꯨꯝꯅꯃꯛ ꯍꯥꯡꯗꯣꯛꯎ
 sidebar_disable_all	ꯄꯨꯝꯅꯃꯛ ꯊꯤꯡꯕꯤꯌꯨ
 sidebar_order_saved	ꯃꯄꯥꯟꯒꯤ ꯃꯇꯥꯡ ꯊꯝꯂꯦ
@@ -846,3 +846,10 @@ sel_copy	ꯀꯣꯄꯤ ꯇꯧ
 sel_select_all	ꯄꯨꯝꯅꯃꯛ ꯈꯟꯕ
 sel_copied	ꯀꯣꯄꯤ ꯇꯧꯔꯦ
 nav_loading	ꯂꯣꯗ ꯇꯧꯔꯤ…
+settings_sec_privacy	ꯑꯃꯨꯛꯇꯥꯏ꯫
+privacy_policy_help	ꯃꯁꯥꯒꯤ ꯑꯣꯏꯕꯥ · PRIVACY.md · moklanjo.com/privacy
+dont_use	ꯁꯤꯖꯤꯟꯅꯗꯕꯤꯌꯨ
+receipt_printers_dd	ꯗꯤꯚꯥꯏꯁ ꯑꯁꯤꯒꯤ ꯄ꯭ꯔꯤꯟꯇꯔꯁꯤꯡ꯫ · ꯆꯦꯅꯤꯡ
+receipt_printers_dd_n	{n} · ꯗꯤꯚꯥꯏꯁ ꯑꯁꯤꯒꯤ ꯄ꯭ꯔꯤꯟꯇꯔꯁꯤꯡ꯫ · ꯆꯦꯅꯤꯡ
+label_printers_dd	ꯗꯤꯚꯥꯏꯁ ꯑꯁꯤꯒꯤ ꯄ꯭ꯔꯤꯟꯇꯔꯁꯤꯡ꯫ · ꯑꯦ.ꯗꯕ꯭ꯜꯌꯨ.ꯕꯤ.ꯒꯤ ꯂꯦꯕꯦꯜ꯫
+label_printers_dd_n	{n} · ꯗꯤꯚꯥꯏꯁ ꯑꯁꯤꯒꯤ ꯄ꯭ꯔꯤꯟꯇꯔꯁꯤꯡ꯫ · ꯑꯦ.ꯗꯕ꯭ꯜꯌꯨ.ꯕꯤ.ꯒꯤ ꯂꯦꯕꯦꯜ꯫

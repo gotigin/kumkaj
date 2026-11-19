@@ -85,7 +85,7 @@ impl RasterMetrics {
 pub enum SlipStyle {
     /// Bill / office-like: slightly wider side margin, tighter line pitch.
     Standard,
-    /// Kitchen ticket: larger type, taller line pitch.
+    /// Ops / label slip: larger type, taller line pitch.
     Kot,
 }
 

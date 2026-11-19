@@ -86,7 +86,7 @@ sidebar_hidden	Thup
 sidebar_always_on	Bar-ah awm reng
 sidebar_shown_hint	Sir bar / hnuai tab-ah lantir
 sidebar_hidden_hint	Bar atanga thup
-sidebar_menu_items	Menu leh thil
+sidebar_menu_items	Rates a awm bawk
 sidebar_enable_all	Zawng zawng hawng
 sidebar_disable_all	Zawng zawng tih
 sidebar_order_saved	Sir indawr dan dah tha a ni
@@ -846,3 +846,10 @@ sel_copy	Copy rawh
 sel_select_all	A zavaia thlang rawh
 sel_copied	Copy a ni ta
 nav_loading	Load mek mek a ni…
+settings_sec_privacy	Privacy
+privacy_policy_help	Thuruk · PRIVACY.md · moklanjo.com/privacy
+dont_use	Hmang suh
+receipt_printers_dd	He device ah hian printer te a awm · Dawng
+receipt_printers_dd_n	{n} · He device ah hian printer te a awm · Dawng
+label_printers_dd	He device ah hian printer te a awm · AWB label a ni
+label_printers_dd_n	{n} · He device ah hian printer te a awm · AWB label a ni

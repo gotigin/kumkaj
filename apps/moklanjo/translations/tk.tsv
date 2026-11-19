@@ -86,7 +86,7 @@ sidebar_hidden	Gizlenen
 sidebar_always_on	Elmydama barda
 sidebar_shown_hint	Gapdal demir / aşaky belliklerde görkezilýär
 sidebar_hidden_hint	Bardan gizlenen
-sidebar_menu_items	Menýu we menýu elementleri
+sidebar_menu_items	Nyrhlar
 sidebar_enable_all	Hemmesini işlet
 sidebar_disable_all	Hemmesini öçüriň
 sidebar_order_saved	Gapdal paneli tertibi saklandy
@@ -846,3 +846,10 @@ sel_copy	Göçür
 sel_select_all	Hemmesini saýla
 sel_copied	Göçürildi
 nav_loading	Ýüklenýär…
+settings_sec_privacy	Gizlinlik
+privacy_policy_help	Gizlinlik · PRIVACY.md · moklanjo.com/privacy
+dont_use	Ulanmaň
+receipt_printers_dd	Bu enjamdaky printerler · Kwitansiýa
+receipt_printers_dd_n	{n} · Bu enjamdaky printerler · Kwitansiýa
+label_printers_dd	Bu enjamdaky printerler · AWB belligi
+label_printers_dd_n	{n} · Bu enjamdaky printerler · AWB belligi

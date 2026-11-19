@@ -86,7 +86,7 @@ sidebar_hidden	La buhrieh
 sidebar_always_on	Baroh shi katta ha ka bar
 sidebar_shown_hint	La pyni ha ka rel ba shadien / ki tab ba shapoh
 sidebar_hidden_hint	La buhrieh na ka bar .
-sidebar_menu_items	Menu bad ki tiar
+sidebar_menu_items	Ki dor
 sidebar_enable_all	Pynlong ia baroh
 sidebar_disable_all	Pynsangeh ia baroh
 sidebar_order_saved	La buh ia ka jingpynbeit jong ka sidebar
@@ -846,3 +846,10 @@ sel_copy	Kopi
 sel_select_all	Jied baroh
 sel_copied	La kopi
 nav_loading	Dang load…
+settings_sec_privacy	Ka jingshimet
+privacy_policy_help	Ka jingshimet · PRIVACY.md · moklanjo.com/privacy
+dont_use	Wat pyndonkam
+receipt_printers_dd	Ki nongpynmih kot ha kane ka tiar · Jiingioh
+receipt_printers_dd_n	{n} · Ki nongpynmih kot ha kane ka tiar · Jiingioh
+label_printers_dd	Ki nongpynmih kot ha kane ka tiar · Ka dak AWB
+label_printers_dd_n	{n} · Ki nongpynmih kot ha kane ka tiar · Ka dak AWB

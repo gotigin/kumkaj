@@ -53,11 +53,11 @@ today_mid	今天
 owed	未收
 round_word	舍入
 back	返回
-sold_out	售罄
-restock	補貨
+sold_out	不可用
+restock	標為可用
 not_tracked	未計數
 in_stock	有庫存
-marked_sold_out	已標售罄
+marked_sold_out	已標為不可用
 add_upper	加入
 na	無
 qty	數量
@@ -86,7 +86,7 @@ sidebar_hidden	已隱藏
 sidebar_always_on	始終顯示在吧檯
 sidebar_shown_hint	顯示在側邊欄/底部標籤頁
 sidebar_hidden_hint	隱藏吧檯
-sidebar_menu_items	菜單與項目
+sidebar_menu_items	價格
 sidebar_enable_all	啟用全部
 sidebar_disable_all	禁用全部
 sidebar_order_saved	側邊欄訂單已保存
@@ -846,3 +846,10 @@ sel_copy	複製
 sel_select_all	全選
 sel_copied	已複製
 nav_loading	載入中…
+settings_sec_privacy	隱私
+privacy_policy_help	與 https://moklanjo.com/privacy 相同的 PRIVACY.md — 不是另存副本。
+dont_use	不使用
+receipt_printers_dd	此裝置上的印表機 · 收據
+receipt_printers_dd_n	{n} · 此裝置上的印表機 · 收據
+label_printers_dd	此裝置上的印表機 · 運單標籤
+label_printers_dd_n	{n} · 此裝置上的印表機 · 運單標籤

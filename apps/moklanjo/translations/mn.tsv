@@ -86,7 +86,7 @@ sidebar_hidden	Нуусан
 sidebar_always_on	Үргэлж самбар дээр
 sidebar_shown_hint	Хажуугийн төмөр / доод таб дээр харуулсан
 sidebar_hidden_hint	Самбараас нуусан
-sidebar_menu_items	Цэс ба бараа
+sidebar_menu_items	Үнэ
 sidebar_enable_all	Бүгдийг идэвхжүүлэх
 sidebar_disable_all	Бүгдийг унтраах
 sidebar_order_saved	Хажуугийн самбарын дараалал хадгалагдлаа
@@ -846,3 +846,10 @@ sel_copy	Хуулах
 sel_select_all	Бүгдийг сонгох
 sel_copied	Хуулагдлаа
 nav_loading	Ачаалж байна…
+settings_sec_privacy	Нууцлал
+privacy_policy_help	Нууцлал · PRIVACY.md · moklanjo.com/privacy
+dont_use	Бүү ашигла
+receipt_printers_dd	Энэ төхөөрөмж дээрх принтерүүд · Баримт
+receipt_printers_dd_n	{n} · Энэ төхөөрөмж дээрх принтерүүд · Баримт
+label_printers_dd	Энэ төхөөрөмж дээрх принтерүүд · AWB шошго
+label_printers_dd_n	{n} · Энэ төхөөрөмж дээрх принтерүүд · AWB шошго

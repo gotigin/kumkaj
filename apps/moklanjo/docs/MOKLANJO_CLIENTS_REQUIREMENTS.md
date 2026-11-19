@@ -12,6 +12,12 @@ in root `BUSINESS_BOOKS.md`; do not copy this checklist into another
 app's docs, and do not treat a courier client's asks as another app's
 requirements without that app's own discovery.
 
+**Client implementation rule:** fulfil these asks on the **complete courier
+OS** via product capability once, then **Settings / templates / rights** for
+each shop's face — never fork Moklanjo into a one-client or one-style app.
+See [`CLIENT_TEMPLATES_AND_SETUP.md`](../../../docs/CLIENT_TEMPLATES_AND_SETUP.md)
+and [`MOKLANJO.md`](MOKLANJO.md) § Product shape.
+
 Voice messages in the source chat were **ignored**; only typed requirements are tracked here.
 
 ------------------------------------------------------------------------

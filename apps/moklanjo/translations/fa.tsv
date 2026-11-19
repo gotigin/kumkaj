@@ -86,7 +86,7 @@ sidebar_hidden	پنهان
 sidebar_always_on	همیشه روی نوار
 sidebar_shown_hint	روی ریل کناری / زبانه‌های پایین دیده می‌شود
 sidebar_hidden_hint	از نوار پنهان است
-sidebar_menu_items	منو و کالاها
+sidebar_menu_items	نرخ ها
 sidebar_enable_all	روشن کردن همه
 sidebar_disable_all	خاموش کردن همه
 sidebar_order_saved	ترتیب نوار کناری ذخیره شد
@@ -846,3 +846,10 @@ sel_copy	رونوشت
 sel_select_all	انتخاب همه
 sel_copied	رونوشت شد
 nav_loading	در حال بارگیری…
+settings_sec_privacy	حریم خصوصی
+privacy_policy_help	حریم خصوصی · PRIVACY.md · moklanjo.com/privacy
+dont_use	استفاده نکن
+receipt_printers_dd	چاپگرهای این دستگاه · رسید
+receipt_printers_dd_n	{n} · چاپگرهای این دستگاه · رسید
+label_printers_dd	چاپگرهای این دستگاه · برچسب AWB
+label_printers_dd_n	{n} · چاپگرهای این دستگاه · برچسب AWB

@@ -86,7 +86,7 @@ sidebar_hidden	Rejtett
 sidebar_always_on	Mindig a bárban
 sidebar_shown_hint	Az oldalsó korláton / alsó füleken látható
 sidebar_hidden_hint	A bár elől elrejtve
-sidebar_menu_items	Menü és tételek
+sidebar_menu_items	Árak
 sidebar_enable_all	Összes engedélyezése
 sidebar_disable_all	Összes letiltása
 sidebar_order_saved	Az oldalsáv sorrendje mentve
@@ -846,3 +846,10 @@ sel_copy	Másolás
 sel_select_all	Az összes kijelölése
 sel_copied	Másolva
 nav_loading	Betöltés…
+settings_sec_privacy	Adatvédelem
+privacy_policy_help	Adatvédelem · PRIVACY.md · moklanjo.com/privacy
+dont_use	Ne használd
+receipt_printers_dd	Nyomtatók ezen az eszközön · Nyugta
+receipt_printers_dd_n	{n} · Nyomtatók ezen az eszközön · Nyugta
+label_printers_dd	Nyomtatók ezen az eszközön · AWB címke
+label_printers_dd_n	{n} · Nyomtatók ezen az eszközön · AWB címke

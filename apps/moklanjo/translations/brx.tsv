@@ -86,7 +86,7 @@ sidebar_hidden	दोनखोमाबाय
 sidebar_always_on	जेब्लाबो बारआव
 sidebar_shown_hint	साइड रेल / गाहायनि टेबआव दिन्थिफुंबाय
 sidebar_hidden_hint	बारनिफ्राय दोनखोमाबाय
-sidebar_menu_items	मेनु आरो आइटम
+sidebar_menu_items	रां
 sidebar_enable_all	गासैखौ अन खालाम
 sidebar_disable_all	गासैखौ अफ खालाम
 sidebar_order_saved	साइडबारनि फारि थिना दोनबाय
@@ -846,3 +846,10 @@ sel_copy	कपि खालाम
 sel_select_all	गासैखौ सायख
 sel_copied	कपि जादों
 nav_loading	लड जागासिनो दं…
+settings_sec_privacy	गोपनीयता
+privacy_policy_help	गुमुरनाय · PRIVACY.md · moklanjo.com/privacy
+dont_use	बाहायनो नाङा
+receipt_printers_dd	बे डिभाइसआव प्रिन्टारफोर · रिसिप्ट
+receipt_printers_dd_n	{n} · बे डिभाइसआव प्रिन्टारफोर · रिसिप्ट
+label_printers_dd	बे डिभाइसआव प्रिन्टारफोर · AWB लेबेल
+label_printers_dd_n	{n} · बे डिभाइसआव प्रिन्टारफोर · AWB लेबेल

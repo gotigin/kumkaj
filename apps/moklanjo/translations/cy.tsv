@@ -86,7 +86,7 @@ sidebar_hidden	Wedi'i guddio
 sidebar_always_on	Bob amser ar y bar
 sidebar_shown_hint	Wedi'i ddangos ar y rheilffordd ochr / tabiau gwaelod
 sidebar_hidden_hint	Wedi'i guddio o'r bar
-sidebar_menu_items	Dewislen ac Eitemau
+sidebar_menu_items	Cyfraddau
 sidebar_enable_all	Galluogi popeth
 sidebar_disable_all	Analluogi popeth
 sidebar_order_saved	Trefn y bar ochr wedi'i chadw
@@ -846,3 +846,10 @@ sel_copy	Copïo
 sel_select_all	Dewis y cyfan
 sel_copied	Wedi copïo
 nav_loading	Yn llwytho…
+settings_sec_privacy	Preifatrwydd
+privacy_policy_help	Preifatrwydd · PRIVACY.md · moklanjo.com/privacy
+dont_use	Peidiwch â defnyddio
+receipt_printers_dd	Argraffwyr ar y ddyfais hon · Derbynneb
+receipt_printers_dd_n	{n} · Argraffwyr ar y ddyfais hon · Derbynneb
+label_printers_dd	Argraffwyr ar y ddyfais hon · Label AWB
+label_printers_dd_n	{n} · Argraffwyr ar y ddyfais hon · Label AWB

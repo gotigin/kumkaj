@@ -54,7 +54,7 @@ owed	ojehecharamovéva
 round_word	redondo rehegua
 back	Ojevy jey
 sold_out	Ndojeguerekói
-restock	Restock rehegua
+restock	Mark available
 not_tracked	Ndojejapói seguimiento
 in_stock	oĩva stock-pe
 marked_sold_out	Ojemarka ndojeguerekóiha
@@ -86,7 +86,7 @@ sidebar_hidden	Oñomi
 sidebar_always_on	Akóinte pe bar ári
 sidebar_shown_hint	Ojehechauka riel lateral / fichas inferiores-pe
 sidebar_hidden_hint	Oñomi pe bar-gui
-sidebar_menu_items	Menú & Artículos rehegua
+sidebar_menu_items	Tasas rehegua
 sidebar_enable_all	Emboguata Opavave
 sidebar_disable_all	Embogue Opavave
 sidebar_order_saved	Orden de barra lateral oñeñongatu
@@ -846,3 +846,10 @@ sel_copy	Ekopia
 sel_select_all	Eiporavo opavave
 sel_copied	Okopiáma
 nav_loading	Henyhẽhína…
+settings_sec_privacy	Ñemiháva
+privacy_policy_help	Ñemiguáva · PRIVACY.md · moklanjo.com/privacy
+dont_use	Ani reiporu
+receipt_printers_dd	Umi impresora oĩva ko tembipuru’ípe · Virume'ẽhare
+receipt_printers_dd_n	{n} · Umi impresora oĩva ko tembipuru’ípe · Virume'ẽhare
+label_printers_dd	Umi impresora oĩva ko tembipuru’ípe · Etiqueta AWB rehegua
+label_printers_dd_n	{n} · Umi impresora oĩva ko tembipuru’ípe · Etiqueta AWB rehegua

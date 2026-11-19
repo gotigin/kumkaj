@@ -86,7 +86,7 @@ sidebar_hidden	Paslēpts
 sidebar_always_on	Vienmēr joslā
 sidebar_shown_hint	Redzams sānu sliedē / apakšējās cilnēs
 sidebar_hidden_hint	Paslēpts no joslas
-sidebar_menu_items	Ēdienkarte un pozīcijas
+sidebar_menu_items	Likmes
 sidebar_enable_all	Ieslēgt visu
 sidebar_disable_all	Izslēgt visu
 sidebar_order_saved	Sānu joslas secība saglabāta
@@ -846,3 +846,10 @@ sel_copy	Kopēt
 sel_select_all	Atlasīt visu
 sel_copied	Nokopēts
 nav_loading	Ielādē…
+settings_sec_privacy	Privātums
+privacy_policy_help	Privātums · PRIVACY.md · moklanjo.com/privacy
+dont_use	Nelietot
+receipt_printers_dd	Printeri šajā ierīcē · Kvīts
+receipt_printers_dd_n	{n} · Printeri šajā ierīcē · Kvīts
+label_printers_dd	Printeri šajā ierīcē · AWB etiķete
+label_printers_dd_n	{n} · Printeri šajā ierīcē · AWB etiķete

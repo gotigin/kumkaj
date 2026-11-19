@@ -38,7 +38,7 @@ fn set_status(&mut self, cx: &mut Cx, msg: impl Into<String>) {
             st.status = msg.to_string();
             if matches!(
                 st.screen,
-                Screen::Pos | Screen::Credit | Screen::Sales | Screen::Menu
+                Screen::Pos | Screen::Credit | Screen::Sales | Screen::Rates
             ) {
                 st.last_receipt = msg.to_string();
             }

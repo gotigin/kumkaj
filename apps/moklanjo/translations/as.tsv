@@ -86,7 +86,7 @@ sidebar_hidden	লুকুওৱা
 sidebar_always_on	সদায় পটিত
 sidebar_shown_hint	কাষৰ পটি / তলৰ টেবত দেখা যায়
 sidebar_hidden_hint	পটিৰ পৰা লুকুওৱা
-sidebar_menu_items	মেনু আৰু বস্তু
+sidebar_menu_items	হাৰ
 sidebar_enable_all	সকলো অন কৰক
 sidebar_disable_all	সকলো অফ কৰক
 sidebar_order_saved	ছাইডবাৰৰ ক্ৰম সাঁচা হ’ল
@@ -846,3 +846,10 @@ sel_copy	কপি কৰক
 sel_select_all	সকলো বাছনি কৰক
 sel_copied	কপি কৰা হ'ল
 nav_loading	ল'ড হৈ আছে…
+settings_sec_privacy	গোপনীয়তা
+privacy_policy_help	গোপনীয়তা · PRIVACY.md · moklanjo.com/privacy
+dont_use	ব্যৱহাৰ নকৰিব
+receipt_printers_dd	এই ডিভাইচৰ প্ৰিণ্টাৰ · ৰছিদ
+receipt_printers_dd_n	{n} · এই ডিভাইচৰ প্ৰিণ্টাৰ · ৰছিদ
+label_printers_dd	এই ডিভাইচৰ প্ৰিণ্টাৰ · AWB লেবেল
+label_printers_dd_n	{n} · এই ডিভাইচৰ প্ৰিণ্টাৰ · AWB লেবেল

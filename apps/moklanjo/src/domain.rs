@@ -1451,7 +1451,7 @@ impl Cart {
     /// fail at the till.
     pub fn add_or_bump_in_stock(&mut self, product: &Product) -> Result<(), String> {
         if !product.available || product.archived {
-            return Err(format!("{} is marked sold out", product.name));
+            return Err(format!("{} is marked unavailable", product.name));
         }
         if product.price.paise() <= 0 {
             return Err(format!("{} has no price yet", product.name));

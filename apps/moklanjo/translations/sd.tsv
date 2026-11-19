@@ -86,7 +86,7 @@ sidebar_hidden	لڪل
 sidebar_always_on	هميشه بار تي
 sidebar_shown_hint	پاسي واري ريل / هيٺين ٽيبز تي ڏيکاريل
 sidebar_hidden_hint	بار کان لڪل
-sidebar_menu_items	مينيو ۽ شيون
+sidebar_menu_items	قيمتون
 sidebar_enable_all	سڀ کي چالو ڪريو
 sidebar_disable_all	سڀ کي غير فعال ڪريو
 sidebar_order_saved	سائيڊبار جو ترتيب محفوظ ٿي وئي
@@ -846,3 +846,10 @@ sel_copy	ڪاپي ڪريو
 sel_select_all	سڀ چونڊيو
 sel_copied	ڪاپي ٿي وئي
 nav_loading	لوڊ ٿي رهيو آهي…
+settings_sec_privacy	رازداري
+privacy_policy_help	رازداري · PRIVACY.md · moklanjo.com/privacy
+dont_use	استعمال نه ڪريو
+receipt_printers_dd	هن ڊوائيس تي پرنٽر · رسيد
+receipt_printers_dd_n	{n} · هن ڊوائيس تي پرنٽر · رسيد
+label_printers_dd	هن ڊوائيس تي پرنٽر · AWB ليبل
+label_printers_dd_n	{n} · هن ڊوائيس تي پرنٽر · AWB ليبل

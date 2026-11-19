@@ -86,7 +86,7 @@ sidebar_hidden	ಗುಪ್ತವಾದ್ ಉಪ್ಪುನ
 sidebar_always_on	ಯಾಪಲ ಬಾರ್ ಡ್ ಉಪ್ಪುವೆರ್
 sidebar_shown_hint	ಸೈಡ್ ರೈಲ್ / ಕೆಳ್ತ ಟ್ಯಾಬ್ ಲೆಡ್ ತೋಜಾವೊಲಿ
 sidebar_hidden_hint	ಬಾರ್ ಡ್ದ್ ಮುಚ್ಚಿದ್ ಉಂಡು
-sidebar_menu_items	ಮೆನು ಬೊಕ್ಕ ಐಟಂಲು
+sidebar_menu_items	ದರೊಕುಲು
 sidebar_enable_all	ಮಾತ ಸಕ್ರಿಯ ಮಲ್ಪುಲೆ
 sidebar_disable_all	ಮಾತ ನಿಷ್ಕ್ರಿಯ ಮಲ್ಪುಲೆ
 sidebar_order_saved	ಸೈಡ್ಬಾರ್ ಆದೇಶ ಉಳಿತಾಯ ಆತ್ಂಡ್
@@ -846,3 +846,10 @@ sel_copy	ನಕಲ್ ಮಲ್ಪುಲೆ
 sel_select_all	ಮಾತಾ ಆಯ್ಕೆ ಮಲ್ಪುಲೆ
 sel_copied	ನಕಲ್ ಆಂಡ್
 nav_loading	ಲೋಡ್ ಆವೊಂದುಂಡು…
+settings_sec_privacy	ಗೌಪ್ಯತೆ
+privacy_policy_help	ಗೌಪ್ಯತೆ · PRIVACY.md · moklanjo.com/privacy
+dont_use	ಬಳಕೆ ಮಲ್ಪುಜೆರ್
+receipt_printers_dd	ಈ ಸಾಧನೊಡು ಉಪ್ಪುನ ಪ್ರಿಂಟರ್ ಲು · ರಸೀದಿ
+receipt_printers_dd_n	{n} · ಈ ಸಾಧನೊಡು ಉಪ್ಪುನ ಪ್ರಿಂಟರ್ ಲು · ರಸೀದಿ
+label_printers_dd	ಈ ಸಾಧನೊಡು ಉಪ್ಪುನ ಪ್ರಿಂಟರ್ ಲು · ಎಡಬ್ಲ್ಯೂಬಿ ಲೇಬಲ್
+label_printers_dd_n	{n} · ಈ ಸಾಧನೊಡು ಉಪ್ಪುನ ಪ್ರಿಂಟರ್ ಲು · ಎಡಬ್ಲ್ಯೂಬಿ ಲೇಬಲ್

@@ -833,6 +833,22 @@ impl DevicePrinters {
             RouteKey::Label => &mut self.routes.label,
         }
     }
+
+    /// Toggle a pool printer on a receipt or label route. Returns whether it is attached after.
+    pub fn toggle_printer_on_route(&mut self, key: RouteKey, printer_id: &str) -> Option<bool> {
+        let pid = printer_id.trim();
+        if pid.is_empty() || self.printer_by_id(pid).is_none() {
+            return None;
+        }
+        let route = self.route_mut(key);
+        if let Some(i) = route.iter().position(|id| id == pid) {
+            route.remove(i);
+            Some(false)
+        } else {
+            route.push(pid.to_string());
+            Some(true)
+        }
+    }
 }
 
 /// Where one job goes.

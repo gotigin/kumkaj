@@ -86,7 +86,7 @@ sidebar_hidden	Թաքնված
 sidebar_always_on	Միշտ վահանակում
 sidebar_shown_hint	Ցուցադրված է կողային ռելսում / ներքևի ներդիրներում
 sidebar_hidden_hint	Թաքնված է վահանակից
-sidebar_menu_items	Մենյու և ապրանքներ
+sidebar_menu_items	Գները
 sidebar_enable_all	Միացնել բոլորը
 sidebar_disable_all	Անջատել բոլորը
 sidebar_order_saved	Կողային վահանակի կարգը պահվել է
@@ -846,3 +846,10 @@ sel_copy	Պատճենել
 sel_select_all	Ընտրել բոլորը
 sel_copied	Պատճենվեց
 nav_loading	Բեռնվում է…
+settings_sec_privacy	Գաղտնիություն
+privacy_policy_help	Գաղտնիություն · PRIVACY.md · moklanjo.com/privacy
+dont_use	Չօգտագործել
+receipt_printers_dd	Տպիչներ այս սարքի վրա · Անդորրագիր
+receipt_printers_dd_n	{n} · Տպիչներ այս սարքի վրա · Անդորրագիր
+label_printers_dd	Տպիչներ այս սարքի վրա · AWB պիտակ
+label_printers_dd_n	{n} · Տպիչներ այս սարքի վրա · AWB պիտակ

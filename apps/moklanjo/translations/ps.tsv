@@ -86,7 +86,7 @@ sidebar_hidden	پټ
 sidebar_always_on	تل په بار کې
 sidebar_shown_hint	د غاړې ریل / لاندې ټبونو کې ښودل شوي
 sidebar_hidden_hint	د بار څخه پټ شوی
-sidebar_menu_items	مینو او توکي
+sidebar_menu_items	نرخونه
 sidebar_enable_all	ټول فعال کړئ
 sidebar_disable_all	ټول غیر فعال کړئ
 sidebar_order_saved	د غاړې امر خوندي شو
@@ -846,3 +846,10 @@ sel_copy	کاپي
 sel_select_all	ټول وټاکئ
 sel_copied	کاپي شو
 nav_loading	بارېږي…
+settings_sec_privacy	محرمیت
+privacy_policy_help	محرميت · PRIVACY.md · moklanjo.com/privacy
+dont_use	مه کاروئ
+receipt_printers_dd	په دې وسیله چاپګر · رسید
+receipt_printers_dd_n	{n} · په دې وسیله چاپګر · رسید
+label_printers_dd	په دې وسیله چاپګر · د AWB لیبل
+label_printers_dd_n	{n} · په دې وسیله چاپګر · د AWB لیبل

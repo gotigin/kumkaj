@@ -86,7 +86,7 @@ sidebar_hidden	Peidetud
 sidebar_always_on	Alati baaris
 sidebar_shown_hint	Näidatud külgmisel siinil / alumistel sakidel
 sidebar_hidden_hint	Baari eest peidetud
-sidebar_menu_items	Menüü ja üksused
+sidebar_menu_items	Hinnad
 sidebar_enable_all	Luba kõik
 sidebar_disable_all	Keela kõik
 sidebar_order_saved	Külgriba järjekord salvestatud
@@ -846,3 +846,10 @@ sel_copy	Kopeeri
 sel_select_all	Vali kõik
 sel_copied	Kopeeritud
 nav_loading	Laadimine…
+settings_sec_privacy	Privaatsus
+privacy_policy_help	Privaatsus · PRIVACY.md · moklanjo.com/privacy
+dont_use	Ärge kasutage
+receipt_printers_dd	Selle seadme printerid · Kviitung
+receipt_printers_dd_n	{n} · Selle seadme printerid · Kviitung
+label_printers_dd	Selle seadme printerid · AWB silt
+label_printers_dd_n	{n} · Selle seadme printerid · AWB silt

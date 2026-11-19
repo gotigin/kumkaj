@@ -86,7 +86,7 @@ sidebar_hidden	Скриени
 sidebar_always_on	Секогаш на шанкот
 sidebar_shown_hint	Прикажано на страничната шина / долните јазичиња
 sidebar_hidden_hint	Скриен од барот
-sidebar_menu_items	Мени и ставки од менито
+sidebar_menu_items	Стапки
 sidebar_enable_all	Овозможи ги сите
 sidebar_disable_all	Оневозможи ги сите
 sidebar_order_saved	Нарачката на страничната лента е зачувана
@@ -846,3 +846,10 @@ sel_copy	Копирај
 sel_select_all	Избери сè
 sel_copied	Копирано
 nav_loading	Се вчитува…
+settings_sec_privacy	Приватност
+privacy_policy_help	Приватност · PRIVACY.md · moklanjo.com/privacy
+dont_use	Не користете
+receipt_printers_dd	Принтери на овој уред · Потврда
+receipt_printers_dd_n	{n} · Принтери на овој уред · Потврда
+label_printers_dd	Принтери на овој уред · AWB етикета
+label_printers_dd_n	{n} · Принтери на овој уред · AWB етикета

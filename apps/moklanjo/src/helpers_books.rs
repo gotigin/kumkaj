@@ -305,6 +305,107 @@ fn printer_paper_line(p: &print_share::NamedPrinter, t: impl Fn(&str) -> String)
     format!("{} · {}", printer_paper_name(p, &t), paper_summary(p, &t))
 }
 
+/// Checklist rows for Receipt / Label routes. `subtitle` = printer id.
+fn courier_route_printer_suggest_rows(
+    draft: &print_share::DevicePrinters,
+    key: print_share::RouteKey,
+    t: impl Fn(&str) -> String,
+) -> Vec<suggest::SuggestRow> {
+    use suggest::SuggestRow;
+    let attached: Vec<String> = draft
+        .route_for(key)
+        .iter()
+        .map(|s| s.trim().to_string())
+        .filter(|s| !s.is_empty())
+        .collect();
+    let use_l = t("use");
+    let clear_l = t("dont_use");
+    let mut rows = Vec::new();
+    for pid in &attached {
+        if let Some(p) = draft.printer_by_id(pid) {
+            rows.push(
+                SuggestRow::new(printer_paper_name(p, &t), p.id.clone()).with_action(clear_l.clone()),
+            );
+        }
+    }
+    for p in &draft.printers {
+        if attached.iter().any(|id| id == &p.id) {
+            continue;
+        }
+        rows.push(
+            SuggestRow::new(printer_paper_name(p, &t), p.id.clone()).with_action(use_l.clone()),
+        );
+    }
+    if rows.is_empty() {
+        rows.push(SuggestRow::new(t("find_printers"), FIND_PRINTERS_ROW.to_string()));
+    }
+    rows
+}
+
+fn route_key_for_suggest(field: SuggestField) -> print_share::RouteKey {
+    match field {
+        SuggestField::LabelPrinters => print_share::RouteKey::Label,
+        _ => print_share::RouteKey::Receipt,
+    }
+}
+
+/// Toggle a pool printer on Receipt or Label; saves when changed.
+fn toggle_courier_route_printer(st: &mut AppState, field: SuggestField, printer_id: &str) -> Result<String, String> {
+    if st.device_role == DeviceRole::Client {
+        return Err(st.t("printers_host_only"));
+    }
+    let key = route_key_for_suggest(field);
+    match st.printer_draft.toggle_printer_on_route(key, printer_id) {
+        Some(true) => {
+            if let Some(base) = st.data_base.clone() {
+                print_share::save_device_printers(&base, &st.printer_draft)?;
+            }
+            Ok(st.t("printers_saved"))
+        }
+        Some(false) => {
+            if let Some(base) = st.data_base.clone() {
+                print_share::save_device_printers(&base, &st.printer_draft)?;
+            }
+            Ok(st.t("printers_saved"))
+        }
+        None => Err(st.t("printers_tap_find")),
+    }
+}
+
+fn reorder_courier_route_priority(st: &mut AppState, field: SuggestField, from_row: usize, to_row: usize) -> bool {
+    if st.device_role == DeviceRole::Client {
+        return false;
+    }
+    let clear_l = st.t("dont_use");
+    let from_id = st
+        .suggest_rows
+        .get(from_row)
+        .filter(|r| r.action == clear_l)
+        .map(|r| r.subtitle.clone());
+    let to_id = st
+        .suggest_rows
+        .get(to_row)
+        .filter(|r| r.action == clear_l)
+        .map(|r| r.subtitle.clone());
+    let (Some(from_id), Some(to_id)) = (from_id, to_id) else {
+        return false;
+    };
+    let key = route_key_for_suggest(field);
+    let route = st.printer_draft.route_mut(key);
+    let from = route.iter().position(|id| id == &from_id);
+    let to = route.iter().position(|id| id == &to_id);
+    let (Some(from), Some(to)) = (from, to) else {
+        return false;
+    };
+    let entry = route.remove(from);
+    let to = if to >= route.len() { route.len() } else { to };
+    route.insert(to, entry);
+    if let Some(base) = st.data_base.clone() {
+        let _ = print_share::save_device_printers(&base, &st.printer_draft);
+    }
+    true
+}
+
 /// One row of the preview's printer dropdown: every saved printer is listed;
 /// picking one only changes the preview.
 struct PreviewPaperRow {

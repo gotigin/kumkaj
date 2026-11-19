@@ -53,11 +53,11 @@ today_mid	сегодня
 owed	долг
 round_word	округление
 back	Назад
-sold_out	Нет в наличии
-restock	Вернуть
+sold_out	Недоступно
+restock	Отметить доступным
 not_tracked	Без учёта
 in_stock	в наличии
-marked_sold_out	Отмечено нет в наличии
+marked_sold_out	Отмечено недоступным
 add_upper	Добавить
 na	нет
 qty	Кол-во
@@ -86,7 +86,7 @@ sidebar_hidden	Скрыто
 sidebar_always_on	Всегда на барной стойке
 sidebar_shown_hint	Показано в боковой панели / нижних вкладках
 sidebar_hidden_hint	Скрыто от барной стойки
-sidebar_menu_items	Меню и позиции
+sidebar_menu_items	Тарифы
 sidebar_enable_all	Включить все
 sidebar_disable_all	Отключить все
 sidebar_order_saved	Заказ в боковой панели сохранён
@@ -846,3 +846,10 @@ sel_copy	Копировать
 sel_select_all	Выделить всё
 sel_copied	Скопировано
 nav_loading	Загрузка…
+settings_sec_privacy	Конфиденциальность
+privacy_policy_help	Тот же PRIVACY.md, что на https://moklanjo.com/privacy — не отдельная копия.
+dont_use	Не использовать
+receipt_printers_dd	Принтеры на этом устройстве · Квитанция
+receipt_printers_dd_n	{n} · Принтеры на этом устройстве · Квитанция
+label_printers_dd	Принтеры на этом устройстве · Этикетка AWB
+label_printers_dd_n	{n} · Принтеры на этом устройстве · Этикетка AWB

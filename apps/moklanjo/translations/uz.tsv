@@ -86,7 +86,7 @@ sidebar_hidden	Yashirilgan
 sidebar_always_on	Har doim panelda
 sidebar_shown_hint	Yon rels / pastki yorliqlarda koʻrsatilgan
 sidebar_hidden_hint	Paneldan yashirilgan
-sidebar_menu_items	Menyu va mahsulotlar
+sidebar_menu_items	Tariflar
 sidebar_enable_all	Hammasini yoqish
 sidebar_disable_all	Hammasini oʻchirish
 sidebar_order_saved	Yon panel tartibi saqlandi
@@ -846,3 +846,10 @@ sel_copy	Nusxalash
 sel_select_all	Hammasini tanlash
 sel_copied	Nusxalandi
 nav_loading	Yuklanmoqda…
+settings_sec_privacy	Maxfiylik
+privacy_policy_help	Maxfiylik · PRIVACY.md · moklanjo.com/privacy
+dont_use	Foydalanmang
+receipt_printers_dd	Ushbu qurilmadagi printerlar · Kvitansiya
+receipt_printers_dd_n	{n} · Ushbu qurilmadagi printerlar · Kvitansiya
+label_printers_dd	Ushbu qurilmadagi printerlar · AWB yorlig'i
+label_printers_dd_n	{n} · Ushbu qurilmadagi printerlar · AWB yorlig'i

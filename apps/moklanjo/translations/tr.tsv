@@ -53,11 +53,11 @@ today_mid	bugün
 owed	borç
 round_word	yuvarlama
 back	Geri
-sold_out	Tükendi
-restock	Yeniden koy
+sold_out	Yok
+restock	Uygun işaretle
 not_tracked	Sayılmıyor
 in_stock	stokta
-marked_sold_out	Tükendi işaretli
+marked_sold_out	Uygun değil işaretli
 add_upper	Ekle
 na	Yok
 qty	Adet
@@ -86,7 +86,7 @@ sidebar_hidden	Gizleniyor
 sidebar_always_on	Her zaman bar üzerinde
 sidebar_shown_hint	Yan rayda veya alt sekmelerde gösteriliyor
 sidebar_hidden_hint	Bar'dan gizli
-sidebar_menu_items	Menü ve Ürünler
+sidebar_menu_items	Oranlar
 sidebar_enable_all	Hepsi Etkinleştir
 sidebar_disable_all	Hepsi Devre Dışı Bırak
 sidebar_order_saved	Yan panel siparişi kaydedildi
@@ -846,3 +846,10 @@ sel_copy	Kopyala
 sel_select_all	Tümünü seç
 sel_copied	Kopyalandı
 nav_loading	Yükleniyor…
+settings_sec_privacy	Gizlilik
+privacy_policy_help	https://moklanjo.com/privacy adresindeki aynı PRIVACY.md — ayrı bir kopya değil.
+dont_use	Kullanma
+receipt_printers_dd	Bu cihazdaki yazıcılar · Makbuz
+receipt_printers_dd_n	{n} · Bu cihazdaki yazıcılar · Makbuz
+label_printers_dd	Bu cihazdaki yazıcılar · AWB etiketi
+label_printers_dd_n	{n} · Bu cihazdaki yazıcılar · AWB etiketi

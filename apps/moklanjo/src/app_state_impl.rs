@@ -1164,6 +1164,12 @@ impl AppState {
 
     /// What a "type or pick" field can offer, before narrowing.
     fn suggest_candidates(&self, field: SuggestField) -> Vec<suggest::SuggestRow> {
+        if field.is_printer_pick() && self.printer_draft.printers.is_empty() {
+            return vec![suggest::SuggestRow::new(
+                self.t("find_printers"),
+                FIND_PRINTERS_ROW.to_string(),
+            )];
+        }
         use suggest::SuggestRow;
         let parties = |filter: fn(&Customer) -> bool| {
             self.customers
@@ -1334,6 +1340,16 @@ impl AppState {
                 .iter()
                 .map(|p| SuggestRow::new(p.label.clone(), p.target.clone()))
                 .collect(),
+            SuggestField::ReceiptPrinters => courier_route_printer_suggest_rows(
+                &self.printer_draft,
+                print_share::RouteKey::Receipt,
+                |k| self.t(k),
+            ),
+            SuggestField::LabelPrinters => courier_route_printer_suggest_rows(
+                &self.printer_draft,
+                print_share::RouteKey::Label,
+                |k| self.t(k),
+            ),
             SuggestField::OpsRider | SuggestField::SettleRider => self
                 .store
                 .as_ref()

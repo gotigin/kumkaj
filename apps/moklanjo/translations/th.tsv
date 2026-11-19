@@ -53,11 +53,11 @@ today_mid	วันนี้
 owed	ค้าง
 round_word	ปัดเศษ
 back	กลับ
-sold_out	หมด
-restock	เติม
+sold_out	ไม่มี
+restock	ทำเครื่องหมายว่ามี
 not_tracked	ไม่นับ
 in_stock	ในสต็อก
-marked_sold_out	ทำเครื่องหมายหมด
+marked_sold_out	ทำเครื่องหมายว่าไม่มี
 add_upper	เพิ่ม
 na	ไม่มี
 qty	จำนวน
@@ -86,7 +86,7 @@ sidebar_hidden	ซ่อน
 sidebar_always_on	เสมอที่บาร์
 sidebar_shown_hint	แสดงที่แถบด้านข้าง / แท็บด้านล่าง
 sidebar_hidden_hint	ซ่อนจากบาร์
-sidebar_menu_items	เมนูและรายการ
+sidebar_menu_items	อัตรา
 sidebar_enable_all	เปิดใช้งานทั้งหมด
 sidebar_disable_all	ปิดใช้งานทั้งหมด
 sidebar_order_saved	คำสั่งซื้อในแถบด้านข้างบันทึกแล้ว
@@ -846,3 +846,10 @@ sel_copy	คัดลอก
 sel_select_all	เลือกทั้งหมด
 sel_copied	คัดลอกแล้ว
 nav_loading	กำลังโหลด…
+settings_sec_privacy	ความเป็นส่วนตัว
+privacy_policy_help	PRIVACY.md เดียวกับ https://moklanjo.com/privacy — ไม่ใช่สำเนาแยก
+dont_use	ไม่ใช้
+receipt_printers_dd	เครื่องพิมพ์บนอุปกรณ์นี้ · ใบเสร็จ
+receipt_printers_dd_n	{n} · เครื่องพิมพ์บนอุปกรณ์นี้ · ใบเสร็จ
+label_printers_dd	เครื่องพิมพ์บนอุปกรณ์นี้ · ป้าย AWB
+label_printers_dd_n	{n} · เครื่องพิมพ์บนอุปกรณ์นี้ · ป้าย AWB
