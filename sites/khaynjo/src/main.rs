@@ -188,9 +188,10 @@ const MAX_CONTENT_WIDE: f64 = 1280.0;
 const SHELF_CARD_W: f64 = 200.0;
 const SHELF_GAP: f64 = 12.0;
 const SHELF_PITCH: f64 = SHELF_CARD_W + SHELF_GAP;
-/// Parade speed: level 0 = still, then +SHELF_SPEED_STEP px/s per click (cap high).
-const SHELF_SPEED_STEP: f64 = 28.0;
-const SHELF_SPEED_MAX_LEVEL: u8 = 12;
+/// Parade speed: level 0 = still, then +SHELF_SPEED_STEP px/s per click.
+/// Cap is high so a long press of + can race the strip; default stays gentle.
+const SHELF_SPEED_STEP: f64 = 40.0;
+const SHELF_SPEED_MAX_LEVEL: u8 = 24;
 const SHELF_SPEED_DEFAULT_LEVEL: u8 = 2;
 /// Parade slots (abs-positioned shells) and the card path under each.
 const SHELF_SLOTS: [&[LiveId]; 10] = [
