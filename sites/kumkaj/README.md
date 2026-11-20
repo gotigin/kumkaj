@@ -13,7 +13,7 @@ rules: [`docs/WEBSITES.md`](../../docs/WEBSITES.md). Domain **kumkaj.com**
 
 # Production-shaped tree (wasm + /privacy /terms + OG) before Firebase
 ./sites/kumkaj/scripts/preview-web.sh   # http://127.0.0.1:8010
-./sites/kumkaj/scripts/deploy-firebase.sh --dry-run   # needs .firebaserc / FIREBASE_PROJECT
+./sites/kumkaj/scripts/deploy-firebase.sh --dry-run   # project: the default in .firebaserc
 ```
 
 One scrolling page (Khaynjo/Wadhu maturity): drag-select across blocks,

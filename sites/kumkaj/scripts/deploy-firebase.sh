@@ -3,9 +3,8 @@
 # and deploy ONE tree to Firebase Hosting → kumkaj.com.
 #
 # One-time: npm i -g firebase-tools && firebase login
-# Create a Firebase project, then either:
-#   echo '{ "projects": { "default": "YOUR_PROJECT_ID" } }' > sites/kumkaj/.firebaserc
-#   or: FIREBASE_PROJECT=YOUR_PROJECT_ID ./sites/kumkaj/scripts/deploy-firebase.sh
+# The Firebase project is the default in sites/kumkaj/.firebaserc, and only
+# that: the script reads it and always passes it to firebase.
 # Domain: Firebase Console → Hosting → add kumkaj.com
 #
 #   ./sites/kumkaj/scripts/deploy-firebase.sh
@@ -16,8 +15,21 @@ ROOT="$(cd "$(dirname "$0")/../../.." && pwd)"
 SITE="$ROOT/sites/kumkaj"
 OUT="$SITE/public"
 WASM_PKG="$ROOT/target/makepad-wasm-app/release/kumkaj-site"
-PROJECT="${FIREBASE_PROJECT:-}"
 DRY=0
+
+# This site's own Firebase project: the default in .firebaserc, read here and
+# always passed to firebase. Without --project the CLI uses whatever
+# `firebase use` last set for this folder — on 2026-11-21 that was a sibling
+# site's project on four of the five Kumkaj sites.
+PROJECT="$(sed -n 's/.*"default"[[:space:]]*:[[:space:]]*"\([^"]*\)".*/\1/p' "$SITE/.firebaserc" 2>/dev/null | head -1)"
+if [[ -z "$PROJECT" ]]; then
+  echo "error: no default project in ${SITE#"$ROOT"/}/.firebaserc" >&2
+  exit 1
+fi
+if [[ -n "${FIREBASE_PROJECT:-}" && "$FIREBASE_PROJECT" != "$PROJECT" ]]; then
+  echo "error: FIREBASE_PROJECT=$FIREBASE_PROJECT is not this site's project ($PROJECT)" >&2
+  exit 1
+fi
 
 for arg in "$@"; do
   case "$arg" in
@@ -42,16 +54,6 @@ fi
 if ! command -v firebase >/dev/null 2>&1; then
   echo "error: firebase CLI not found (npm i -g firebase-tools)" >&2
   exit 1
-fi
-if [[ -z "$PROJECT" ]]; then
-  if [[ -f "$SITE/.firebaserc" ]] && grep -q '"default"' "$SITE/.firebaserc" 2>/dev/null; then
-    :
-  else
-    echo "error: no Firebase project configured for kumkaj.com." >&2
-    echo "  Create a project, then set sites/kumkaj/.firebaserc default" >&2
-    echo "  or pass FIREBASE_PROJECT=… (owner step — domains are registered)." >&2
-    exit 1
-  fi
 fi
 
 echo "1/3 Build Makepad wasm (kumkaj-site, release, --no-threads)"
@@ -149,11 +151,8 @@ mv "$TMP" "$INDEX"
 printf '%s\n' "$BUILD_ID" > "$OUT/build-id.txt"
 echo "Patched $INDEX (title/OG + noscript + cache-bust v=$BUILD_ID)"
 
-echo "3/3 firebase deploy --only hosting"
-FB_ARGS=(deploy --only hosting)
-if [[ -n "$PROJECT" ]]; then
-  FB_ARGS+=(--project "$PROJECT")
-fi
+echo "3/3 firebase deploy --only hosting → $PROJECT"
+FB_ARGS=(deploy --only hosting --project "$PROJECT")
 (
   cd "$SITE"
   if [[ "$DRY" -eq 1 ]]; then

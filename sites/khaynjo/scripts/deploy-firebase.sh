@@ -13,8 +13,21 @@ ROOT="$(cd "$(dirname "$0")/../../.." && pwd)"
 SITE="$ROOT/sites/khaynjo"
 OUT="$SITE/public"
 WASM_PKG="$ROOT/target/makepad-wasm-app/release/khaynjo-site"
-PROJECT="${FIREBASE_PROJECT:-}"
 DRY=0
+
+# This site's own Firebase project: the default in .firebaserc, read here and
+# always passed to firebase. Without --project the CLI uses whatever
+# `firebase use` last set for this folder — on 2026-11-21 that was a sibling
+# site's project on four of the five Kumkaj sites.
+PROJECT="$(sed -n 's/.*"default"[[:space:]]*:[[:space:]]*"\([^"]*\)".*/\1/p' "$SITE/.firebaserc" 2>/dev/null | head -1)"
+if [[ -z "$PROJECT" ]]; then
+  echo "error: no default project in ${SITE#"$ROOT"/}/.firebaserc" >&2
+  exit 1
+fi
+if [[ -n "${FIREBASE_PROJECT:-}" && "$FIREBASE_PROJECT" != "$PROJECT" ]]; then
+  echo "error: FIREBASE_PROJECT=$FIREBASE_PROJECT is not this site's project ($PROJECT)" >&2
+  exit 1
+fi
 
 for arg in "$@"; do
   case "$arg" in
@@ -160,11 +173,8 @@ mv "$TMP" "$INDEX"
 printf '%s\n' "$BUILD_ID" > "$OUT/build-id.txt"
 echo "Patched $INDEX (title/OG + Analytics + noscript + cache-bust v=$BUILD_ID)"
 
-echo "4/4 firebase deploy --only hosting"
-FB_ARGS=(deploy --only hosting)
-if [[ -n "$PROJECT" ]]; then
-  FB_ARGS+=(--project "$PROJECT")
-fi
+echo "4/4 firebase deploy --only hosting → $PROJECT"
+FB_ARGS=(deploy --only hosting --project "$PROJECT")
 (
   cd "$SITE"
   if [[ "$DRY" -eq 1 ]]; then
