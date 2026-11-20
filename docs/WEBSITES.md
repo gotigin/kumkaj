@@ -5,7 +5,7 @@
 > **Domains registered.** **Maturity (2026-11-18):** every site is a
 > **scroll SPA** (Khaynjo/Wadhu pattern) with `selection_root` /
 > `select_from_gaps`, dual-paint Markdown (`draw_selection` + `font_color`),
-> `MIN_WIDTH` 375 + site-shell.css, in-app Privacy/Terms links, and
+> `MIN_WIDTH` 320 + site-shell.css, in-app Privacy/Terms links, and
 > preview/deploy scripts staging `/privacy` `/terms` + OG. Only
 > **khaynjo-2b2a2** exists on Firebase today; the other four need a project
 > id before first deploy (§8). WhatsApp numbers and some download switches
@@ -232,9 +232,24 @@ deep chrome (navy / deep red), never grey-on-grey.
 3. **See every tier.** `SITE_PREVIEW=390x844:4 cargo run -p <site>` opens
    a phone-sized window on chapter 4. On a headless box run it under
    Xvfb with `WAYLAND_DISPLAY` unset (else the window opens on the
-   desktop) and grab the window by pid. Check 390×844, 820×1180,
-   1280×720 and 1280×800: every chapter must fit one screen — a slide
-   does not scroll, overflow is clipped.
+   desktop) and grab the window by pid. Check **320, 360, 390, 600, 820,
+   1280 and 1920** wide, scrolled top to bottom: nothing may touch or run
+   off a side edge, and no word may break into letters. 360 is the common
+   Android phone; the layout floor is 320 (`MIN_WIDTH` and
+   `static/css/site-shell.css` — it was 375 until 2026-11-21, so every
+   360 px phone scrolled sideways with the top bar cut off).
+   Three faults that passed `cargo check` and tests and only a screenshot
+   showed (2026-11-21):
+   - **A `Markdown` ignores `visible`.** `x := Body{visible: false …}` logs
+     "property visible not defined" and stays on screen. An owner switch or a
+     width rule must hide a `View` around the text. kumkaj.com showed its
+     LAN-pilot sentence this way while `LAN_PILOT_PASSED` was false.
+   - **A `Markdown` with no `width` inside a `Fit` container draws nothing.**
+     Give it `width: Fit`. The "Planned" and "Example" pills were empty.
+   - **A fixed-width child beside a `Fill` text starves the text.** Two chips
+     beside a title left the title 20 px and it broke one letter a line.
+     Stack the row under a content width (`ROWS`), or narrow the fixed
+     columns on phones.
 4. **Responsive in Rust, not CSS.** `App::apply_responsive` picks a tier
    for type (480 / 720 / 1024 widths, `Wide` from 1600 × 900; short
    windows step down) and scales each label from its DSL desk size.

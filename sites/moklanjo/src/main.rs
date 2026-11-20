@@ -201,10 +201,12 @@ const BEADS: [[&[LiveId]; 8]; 9] = [
 /// this wide (px), and stack otherwise — width-based, not tier-based: a
 /// fixed prop beside a headline needs its own width plus a readable text
 /// column whatever the device.
-const ROWS: [(&[LiveId], f64); 11] = [
+const ROWS: [(&[LiveId], f64); 13] = [
     (ids!(walkin.hero_row), 844.0),
     (ids!(walkin.hero_cta.buttons), 400.0),
     (ids!(weigh.weigh_row), 820.0),
+    // "Try a box" beside the two chips needs the whole card.
+    (ids!(weigh.toy_head), 400.0),
     (ids!(price.price_row), 820.0),
     (ids!(labels.label_row), 808.0),
     (ids!(roads.roads_row), 640.0),
@@ -213,7 +215,40 @@ const ROWS: [(&[LiveId], f64); 11] = [
     (ids!(offline.offline_row), 640.0),
     (ids!(start.close_cta.buttons), 400.0),
     (ids!(footer.footer_row), 480.0),
+    // Privacy · Terms · kumkaj.com overflow a phone content column.
+    (ids!(footer.footer_links), 420.0),
 ];
+/// The weigh toy's four steppers: the name sits above − value + when the
+/// card has no room for a label column (under 340 px of content).
+const STEPPERS: [&[LiveId]; 4] = [
+    ids!(weigh.len),
+    ids!(weigh.bre),
+    ids!(weigh.hei),
+    ids!(weigh.act),
+];
+const STEPPERS_ROW_FROM: f64 = 340.0;
+/// Number columns of the rate card and the rider-cash table:
+/// (path, desk width, phone width). Under 420 px of content they take the
+/// phone width so the first column keeps whole words ("Within state ·
+/// Express" broke inside "Express" at 360). The rider-cash amounts are
+/// longer ("₹ 4,250"), so that table keeps 88.
+const NUM_COLS: [(&[LiveId], f64, f64); 14] = [
+    (ids!(price.rc_h1), 96.0, 72.0),
+    (ids!(price.rc_h2), 100.0, 72.0),
+    (ids!(price.rc_a1), 96.0, 72.0),
+    (ids!(price.rc_a2), 100.0, 72.0),
+    (ids!(price.rc_b1), 96.0, 72.0),
+    (ids!(price.rc_b2), 100.0, 72.0),
+    (ids!(price.rc_c1), 96.0, 72.0),
+    (ids!(price.rc_c2), 100.0, 72.0),
+    (ids!(cod.cod_h1), 96.0, 88.0),
+    (ids!(cod.cod_h2), 96.0, 88.0),
+    (ids!(cod.cod_a1), 96.0, 88.0),
+    (ids!(cod.cod_a2), 96.0, 88.0),
+    (ids!(cod.cod_b1), 96.0, 88.0),
+    (ids!(cod.cod_b2), 96.0, 88.0),
+];
+const NUM_COLS_FULL_FROM: f64 = 420.0;
 /// Fixed-width props: (path, desk width, the min width of their row).
 /// When the row stacks, the prop goes full width.
 const PROPS: [(&[LiveId], f64, f64); 2] = [
@@ -221,8 +256,8 @@ const PROPS: [(&[LiveId], f64, f64); 2] = [
     (ids!(labels.awb_label), 380.0, 808.0),
 ];
 
-/// App layout floor: design for ≥375 CSS px.
-const MIN_WIDTH: f64 = 375.0;
+/// App layout floor: design for ≥320 CSS px (360 is the common Android phone width).
+const MIN_WIDTH: f64 = 320.0;
 
 const MAX_CONTENT: f64 = 1140.0;
 const MAX_CONTENT_WIDE: f64 = 1320.0;
@@ -924,6 +959,19 @@ impl App {
                 view.walk.width = if content_w >= row_min_w { Size::Fixed(desk_w) } else { Size::fill() };
             }
         }
+        let stepper_row = content_w >= STEPPERS_ROW_FROM;
+        for path in STEPPERS {
+            if let Some(mut view) = self.ui.view(cx, path).borrow_mut() {
+                view.layout.flow = if stepper_row { Flow::right() } else { Flow::Down };
+                view.layout.spacing = if stepper_row { 10.0 } else { 6.0 };
+            }
+        }
+        for (path, desk_w, phone_w) in NUM_COLS {
+            if let Some(mut view) = self.ui.view(cx, path).borrow_mut() {
+                view.walk.width =
+                    Size::Fixed(if content_w >= NUM_COLS_FULL_FROM { desk_w } else { phone_w });
+            }
+        }
         for (_, path) in SECTIONS {
             if let Some(mut view) = self.ui.view(cx, path).borrow_mut() {
                 view.layout.padding = Inset {
@@ -973,7 +1021,7 @@ impl App {
                 .set_visible(cx, tier != Tier::Phone && tier != Tier::Narrow);
             self.ui
                 .label(cx, ids!(tagline))
-                .set_visible(cx, tier != Tier::Phone);
+                .set_visible(cx, !matches!(tier, Tier::Phone | Tier::Narrow));
             self.ui
                 .widget(cx, ids!(step_pill))
                 .set_visible(cx, tier != Tier::Phone);

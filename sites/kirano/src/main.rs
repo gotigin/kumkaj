@@ -49,9 +49,9 @@ const PRIVACY_PATH: &str = "/privacy";
 const TERMS_PATH: &str = "/terms/";
 const PUBLIC_HOST: &str = "https://kirano.shop";
 
-/// App layout floor: design for ≥375 CSS px. Narrower viewports scroll
+/// App layout floor: design for ≥320 CSS px (360 is the common Android phone width). Narrower viewports scroll
 /// horizontally (web shell CSS); native still lays out at this width.
-const MIN_WIDTH: f64 = 375.0;
+const MIN_WIDTH: f64 = 320.0;
 
 // ---- Sections (KIRANO_WEBSITE.md §2 Phase 1) ---------------------------
 
@@ -61,7 +61,7 @@ const CHAPTERS: [(&str, &str); 8] = [
     ("khata", "Khata"),
     ("buy", "Buy & stock"),
     ("daybook", "Day book"),
-    ("lan", "Extra till"),
+    ("lan", if LAN_PILOT_PASSED { "Extra till" } else { "Offline" }),
     ("free", "Free forever"),
     ("start", "Start"),
 ];
@@ -124,6 +124,18 @@ const SECTION_WRAPS: [&[LiveId]; 9] = [
     ids!(free),
     ids!(start),
     ids!(footer),
+];
+
+/// The eight top-bar tiles (their width shrinks on the narrowest phones).
+const NAV_TILES: [&[LiveId]; 8] = [
+    ids!(nav.n0),
+    ids!(nav.n1),
+    ids!(nav.n2),
+    ids!(nav.n3),
+    ids!(nav.n4),
+    ids!(nav.n5),
+    ids!(nav.n6),
+    ids!(nav.n7),
 ];
 
 const MAX_CONTENT: f64 = 1160.0;
@@ -406,6 +418,15 @@ impl App {
         for path in [ids!(lan.lan_extra), ids!(lan.lan_devices)] {
             self.ui.widget(cx, path).set_visible(cx, LAN_PILOT_PASSED);
         }
+        // The chapter's own title is part of the gated claim.
+        if LAN_PILOT_PASSED {
+            self.ui
+                .widget(cx, ids!(lan.lan_eyebrow))
+                .set_text(cx, "6 · EXTRA TILL");
+            self.ui
+                .widget(cx, ids!(lan.lan_headline))
+                .set_text(cx, "Another till on the shop Wi‑Fi.");
+        }
     }
 
     fn section_from_page(&self, cx: &Cx) -> Option<&'static str> {
@@ -413,6 +434,22 @@ impl App {
             return None;
         };
         section_from_hash(&page.hash)
+    }
+
+    /// Receipt lines are up to 25 columns of a mono face. Under 360 px the
+    /// paper is narrower than that at desk size (each line broke before its
+    /// amount at 320), so the lines step down and stay whole.
+    fn fit_ticket_lines(&mut self, cx: &mut Cx, layout_w: f64) {
+        let size: f32 = if layout_w < 360.0 { 12.0 } else { 14.0 };
+        let lines = self.ui.widget(cx, ids!(sell.ticket.lines));
+        lines.children(&mut |_, child| {
+            if let Some(mut md) = child.borrow_mut::<Markdown>() {
+                md.font_size = size;
+                md.draw_text.text_style.font_size = size;
+                md.text_style_normal.font_size = size;
+                md.text_style_bold.font_size = size;
+            }
+        });
     }
 
     fn apply_responsive(&mut self, cx: &mut Cx) {
@@ -489,14 +526,30 @@ impl App {
             };
             view.layout.padding.left = edge;
             view.layout.padding.right = edge - 4.0;
+            // Phone: brand + eight tiles must fit in 375. Drop the gaps.
+            view.layout.spacing = if tier == Tier::Phone { 6.0 } else { 12.0 };
+        }
+        if let Some(mut nav) = self.ui.view(cx, ids!(nav)).borrow_mut() {
+            nav.layout.spacing = if tier == Tier::Phone { 0.0 } else { 2.0 };
+        }
+        // Under 360 px the brand and eight 22 px tiles are wider than the bar:
+        // the last tile was cut off at 320.
+        let tile_w = if layout_w < 360.0 { 18.0 } else { 22.0 };
+        for path in NAV_TILES {
+            if let Some(mut tile) = self.ui.view(cx, path).borrow_mut() {
+                tile.walk.width = Size::Fixed(tile_w);
+            }
         }
         if tier_changed {
             let stacked = tier.stacked();
             let phone = tier == Tier::Phone;
-            self.ui.label(cx, ids!(tagline)).set_visible(cx, !phone);
+            // Tagline plus the chapter name overflow the fixed 58px bar
+            // from 480px through the rest of Narrow.
+            self.ui.label(cx, ids!(tagline)).set_visible(cx, !stacked);
             self.ui
                 .label(cx, ids!(chapter_name))
                 .set_visible(cx, !stacked);
+            self.ui.label(cx, ids!(counter)).set_visible(cx, !phone);
             let page = self.ui.widget(cx, ids!(page));
             if self.desk_font.is_empty() {
                 collect_label_sizes(&page, &mut self.desk_font);
@@ -504,6 +557,7 @@ impl App {
             let mut next = 0;
             scale_labels(&page, tier, &self.desk_font, &mut next);
         }
+        self.fit_ticket_lines(cx, layout_w);
         self.ui.redraw(cx);
     }
 
@@ -772,7 +826,7 @@ mod tests {
 
     #[test]
     fn min_width_matches_app_floor() {
-        assert_eq!(MIN_WIDTH, 375.0);
+        assert_eq!(MIN_WIDTH, 320.0);
         assert_eq!(Tier::from_size(MIN_WIDTH, 800.0), Tier::Phone);
     }
 }

@@ -1302,16 +1302,23 @@ script_mod! {
                                         spacing: 4
                                         padding: Inset{left: 20. right: 20. top: 18. bottom: 20.}
                                         draw_bg +: {color: Paper border_color: #xD9CBBE border_size: 1. border_radius: 4.}
-                                        Ticket{body: "KOT 27 · HOT KITCHEN"}
-                                        Ticket{body: "Table T4 · by Captain 1"}
-                                        Ticket{body: "12:42"}
-                                        TicketRule{}
-                                        Ticket{body: "1  Paneer tikka (Full)"}
-                                        Ticket{body: "   + extra mint chutney"}
-                                        Ticket{body: "2  Masala chaas"}
-                                        Ticket{body: "   note: less salt"}
-                                        Ticket{body: "4  Butter naan"}
-                                        TicketRule{}
+                                        // The mono lines sit in their own View: main.rs steps their size
+                                        // down under 360 px, where the paper is narrower than 25 columns.
+                                        lines := View{
+                                            width: Fill height: Fit
+                                            flow: Down
+                                            spacing: 4
+                                            Ticket{body: "KOT 27 · HOT KITCHEN"}
+                                            Ticket{body: "Table T4 · by Captain 1"}
+                                            Ticket{body: "12:42"}
+                                            TicketRule{}
+                                            Ticket{body: "1  Paneer tikka (Full)"}
+                                            Ticket{body: "   + extra mint chutney"}
+                                            Ticket{body: "2  Masala chaas"}
+                                            Ticket{body: "   note: less salt"}
+                                            Ticket{body: "4  Butter naan"}
+                                            TicketRule{}
+                                        }
                                         Small{body: "Example ticket"}
                                     }
                                 }

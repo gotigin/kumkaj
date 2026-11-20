@@ -136,9 +136,9 @@ const TILE_LAYERS: [LiveId; 7] = [
     live_id!(bg_paid),
 ];
 
-/// App layout floor: design for ≥375 CSS px. Narrower viewports scroll
+/// App layout floor: design for ≥320 CSS px (360 is the common Android phone width). Narrower viewports scroll
 /// horizontally (web shell CSS); native still lays out at this width.
-const MIN_WIDTH: f64 = 375.0;
+const MIN_WIDTH: f64 = 320.0;
 
 /// Rows that sit side by side only when the content column is at least
 /// this wide (px), and stack otherwise.
@@ -147,7 +147,9 @@ const MIN_WIDTH: f64 = 375.0;
 /// turns each button into its own row (phone screenshot 2026-11-20).
 const ROWS: [(&[LiveId], f64); 23] = [
     (ids!(hero_row), 900.0),
-    (ids!(hero_cta), 420.0),
+    // Both labels ("Get it on Google Play" + "WhatsApp for a demo") need
+    // about 480 px plus slack; 420 left them overlapping on a narrow phone.
+    (ids!(hero_cta), 560.0),
     (ids!(visit_key), 760.0),
     (ids!(key_r0), 0.0),
     (ids!(step_order), 820.0),
@@ -166,9 +168,10 @@ const ROWS: [(&[LiveId], f64); 23] = [
     (ids!(faq_r0), 720.0),
     (ids!(faq_r1), 720.0),
     (ids!(faq_r2), 720.0),
-    (ids!(close_cta), 420.0),
+    (ids!(close_cta), 560.0),
     (ids!(footer_row), 640.0),
-    (ids!(footer_links), 0.0),
+    // Privacy · Terms · Google Play · kumkaj.com do not fit one row on a phone.
+    (ids!(footer_links), 520.0),
 ];
 /// Fixed-width props: (path, desk width, the min width of their row).
 /// When the row stacks, the prop goes full width.
@@ -180,8 +183,9 @@ const PROPS: [(&[LiveId], f64, f64); 6] = [
     (ids!(drawer), 380.0, 820.0),
     (ids!(status_card), 400.0, 860.0),
 ];
-/// Top-bar section links need this much bar width.
-const NAV_LINKS_FROM: f64 = 1000.0;
+/// Top-bar section links (six labels + brand + Get it free) need this width
+/// or the last links slide under the CTA.
+const NAV_LINKS_FROM: f64 = 1100.0;
 
 const MAX_CONTENT: f64 = 1160.0;
 const MAX_CONTENT_WIDE: f64 = 1280.0;
@@ -391,6 +395,9 @@ pub struct App {
     desk_font: Vec<f32>,
     #[rust]
     tables: Option<[Visit; 6]>,
+    /// Floor tiles are under 150 px wide: minutes and bill on two lines.
+    #[rust]
+    floor_narrow: bool,
     /// Section to scroll to once the page has a layout (hash / preview).
     #[rust]
     pending_section: PendingSection,
@@ -494,7 +501,15 @@ impl App {
                 tile.view(cx, &[*layer]).set_visible(cx, i == visit.index());
             }
             tile.widget(cx, ids!(word)).set_text(cx, visit.word());
-            tile.widget(cx, ids!(meta)).set_text(cx, &floor::meta(visit, *amount));
+            // A narrow tile cannot hold "26 min · ₹ 1,560" on one line (it was
+            // cut at the tile edge on 360 px phones): minutes, then the bill.
+            let meta = floor::meta(visit, *amount);
+            let meta = if self.floor_narrow {
+                meta.replace(" · ", "\n\n")
+            } else {
+                meta
+            };
+            tile.widget(cx, ids!(meta)).set_text(cx, &meta);
         }
         self.ui.redraw(cx);
     }
@@ -588,15 +603,39 @@ impl App {
         let inner = card_w - 40.0;
         let per_row = if inner >= 3.0 * 112.0 + 16.0 { 3 } else { 2 };
         let tile_w = ((inner - (per_row as f64 - 1.0) * 8.0) / per_row as f64).clamp(100.0, 170.0);
+        // Under 150 px a tile stacks its minutes and bill (see paint_floor),
+        // so it is one text line taller.
+        let narrow = tile_w < 150.0;
+        let tile_h = if narrow { 126.0 } else { 108.0 };
         for (path, _) in TABLES {
             if let Some(mut view) = self.ui.view(cx, path).borrow_mut() {
                 view.walk.width = Size::Fixed(tile_w);
-                view.walk.height = Size::Fixed(108.0);
+                view.walk.height = Size::Fixed(tile_h);
             }
         }
         for path in [ids!(floor.t3), ids!(floor.t6)] {
             self.ui.widget(cx, path).set_visible(cx, per_row == 3);
         }
+        if narrow != self.floor_narrow {
+            self.floor_narrow = narrow;
+            self.paint_floor(cx);
+        }
+    }
+
+    /// Receipt lines are up to 25 columns of a mono face. Under 360 px the
+    /// paper is narrower than that at desk size (each line broke before its
+    /// amount at 320), so the lines step down and stay whole.
+    fn fit_ticket_lines(&mut self, cx: &mut Cx, layout_w: f64) {
+        let size: f32 = if layout_w < 360.0 { 12.0 } else { 14.0 };
+        let lines = self.ui.widget(cx, ids!(ticket.lines));
+        lines.children(&mut |_, child| {
+            if let Some(mut md) = child.borrow_mut::<Markdown>() {
+                md.font_size = size;
+                md.draw_text.text_style.font_size = size;
+                md.text_style_normal.font_size = size;
+                md.text_style_bold.font_size = size;
+            }
+        });
     }
 
     fn apply_responsive(&mut self, cx: &mut Cx) {
@@ -644,9 +683,22 @@ impl App {
         self.ui
             .widget(cx, ids!(nav_links))
             .set_visible(cx, layout_w >= NAV_LINKS_FROM);
+        // Under 360 px the brand and "Get it free" do not both fit at desk
+        // size: the button ran off the right edge at 320.
+        let compact_bar = layout_w < 360.0;
         if let Some(mut bar) = self.ui.view(cx, ids!(top_bar)).borrow_mut() {
-            let pad = if tier == Tier::Phone { 14.0 } else { 24.0 };
-            bar.layout.padding = Inset { left: pad, right: pad.min(20.0), top: 0.0, bottom: 0.0 };
+            let pad = if compact_bar {
+                12.0
+            } else if tier == Tier::Phone {
+                16.0
+            } else {
+                20.0
+            };
+            bar.layout.padding = Inset { left: pad, right: pad, top: 0.0, bottom: 0.0 };
+            bar.layout.spacing = if compact_bar { 6.0 } else { 10.0 };
+        }
+        if let Some(mut name) = self.ui.label(cx, ids!(brand_name)).borrow_mut() {
+            name.draw_text.text_style.font_size = if compact_bar { 21.0 } else { 25.0 };
         }
         // Parade keeps its own width; restart the NextFrame pump after layout.
         if self.shelf_playing {
@@ -660,6 +712,7 @@ impl App {
             let mut next = 0;
             scale_labels(&page, tier, &self.desk_font, &mut next);
         }
+        self.fit_ticket_lines(cx, layout_w);
         self.ui.redraw(cx);
     }
 
@@ -1512,7 +1565,7 @@ mod tests {
 
     #[test]
     fn layout_floor_is_phone_width() {
-        assert_eq!(MIN_WIDTH, 375.0);
+        assert_eq!(MIN_WIDTH, 320.0);
         assert!(Tier::from_size(MIN_WIDTH, 800.0) == Tier::Phone);
     }
 

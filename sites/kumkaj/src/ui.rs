@@ -682,7 +682,7 @@ script_mod! {
                                 width: Fill height: Fit
                                 flow: Down
                                 spacing: 20
-                                View{
+                                pair_top := View{
                                     width: Fill height: Fit
                                     flow: Right
                                     spacing: 20
@@ -725,7 +725,7 @@ script_mod! {
                                         to_khaynjo := CardHit{}
                                     }
                                 }
-                                View{
+                                pair_bot := View{
                                     width: Fill height: Fit
                                     flow: Right
                                     spacing: 20
@@ -794,7 +794,13 @@ script_mod! {
                                 }
                             }
                             // Shown only after the owner's real-hardware LAN pilot passes (main.rs LAN_PILOT_PASSED).
-                            books_lan := Body{visible: false body: "Extra counters and tablets join over your own Wi‑Fi — with no internet in between."}
+                            // The gate is the View: a Markdown has no `visible`, so on the
+                            // block itself the switch did nothing and the sentence was live.
+                            books_lan := View{
+                                visible: false
+                                width: Fill height: Fit
+                                Body{body: "Extra counters and tablets join over your own Wi‑Fi — with no internet in between."}
+                            }
                         }
 
                         // 04 — the toy: cut the internet
@@ -836,9 +842,11 @@ script_mod! {
                                     spacing: 16
                                     align: Align{y: 0.5}
                                     Strong{width: Fill body: "On your own devices"}
+                                    // Fit: the price sits at the right edge of the row.
+                                    // With no width it took half the row and started mid-card.
                                     Markdown{
                                         selectable: true
-                                        height: Fit
+                                        width: Fit height: Fit
                                         paragraph_spacing: 0.
                                         pre_code_spacing: 0.
                                         draw_selection +: { color: #x2E5BADFF }
@@ -869,7 +877,9 @@ script_mod! {
                                         draw_bg +: {color: #x00000000 border_color: Clay border_size: 1.2 border_radius: 12.}
                                         Markdown{
                                             selectable: true
-                                            height: Fit
+                                            // Fit, like the pill around it: with no width the text took Fill
+                                            // inside a Fit pill and collapsed to an empty sliver.
+                                            width: Fit height: Fit
                                             paragraph_spacing: 0.
                                             pre_code_spacing: 0.
                                             draw_selection +: { color: #x2E5BADFF }
@@ -890,7 +900,7 @@ script_mod! {
                         languages := Chapter{
                             Eyebrow{body: "06 · LANGUAGES"}
                             Headline{body: "Speaks your staff's language."}
-                            Lede{body: "29 languages on screen, with Arabic and Urdu right to left. One floor word — “Food ready” — as Khaynjo shows it:"}
+                            Lede{body: "115 languages on screen, with Arabic and Urdu right to left. One floor word — “Food ready” — as Khaynjo shows it:"}
                             words := View{
                                 width: Fill height: Fit
                                 flow: Right{wrap: true}

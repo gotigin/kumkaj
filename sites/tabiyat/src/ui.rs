@@ -377,7 +377,9 @@ script_mod! {
         draw_bg +: {color: WellWarm border_radius: 10.}
         Markdown{
             selectable: true
-            height: Fit
+            // Fit, like the pill around it: with no width the text took Fill
+            // inside a Fit pill and collapsed to an empty sliver.
+            width: Fit height: Fit
             paragraph_spacing: 0.
             pre_code_spacing: 0.
             draw_selection +: { color: #x37BE28FF }
@@ -547,7 +549,9 @@ script_mod! {
                                                     status := Markdown{
                                                         padding: 0.
                                                         selectable: true
-                                                        height: Fit
+                                                        // Fit, like the pill around it: with no width the text took Fill
+                                                        // inside a Fit pill and collapsed to an empty sliver.
+                                                        width: Fit height: Fit
                                                         paragraph_spacing: 0.
                                                         pre_code_spacing: 0.
                                                         body: "Ready"
@@ -579,7 +583,7 @@ script_mod! {
                                         }
                                         hit := HitBtn{}
                                     }
-                                    bill_note := Small{body: "Example pharmacy lines — not a live till. Sell → settle → day book."}
+                                    bill_note := Small{body: "Example pharmacy lines, not a live till. Tabiyat follows the same path: sell → settle → day book."}
                                 }
                             }
                         }
@@ -599,16 +603,23 @@ script_mod! {
                                     spacing: 4
                                     padding: Inset{left: 20. right: 20. top: 18. bottom: 20.}
                                     draw_bg +: {color: Paper border_color: WellLine border_size: 1. border_radius: 4.}
-                                    Ticket{body: "SELL · COUNTER"}
-                                    Ticket{body: "Cash memo · 12:42"}
-                                    TicketRule{}
-                                    Ticket{body: "1  Paracetamol 500     28"}
-                                    Ticket{body: "1  Amoxicillin 250     86"}
-                                    Ticket{body: "4  ORS sachets         48"}
-                                    TicketRule{}
-                                    Ticket{body: "Total               162"}
-                                    Ticket{body: "UPI QR ready"}
-                                    TicketRule{}
+                                    // The mono lines sit in their own View: main.rs steps their size
+                                    // down under 360 px, where the paper is narrower than 25 columns.
+                                    lines := View{
+                                        width: Fill height: Fit
+                                        flow: Down
+                                        spacing: 4
+                                        Ticket{body: "SELL · COUNTER"}
+                                        Ticket{body: "Cash memo · 12:42"}
+                                        TicketRule{}
+                                        Ticket{body: "1  Paracetamol 500     28"}
+                                        Ticket{body: "1  Amoxicillin 250     86"}
+                                        Ticket{body: "4  ORS sachets         48"}
+                                        TicketRule{}
+                                        Ticket{body: "Total               162"}
+                                        Ticket{body: "UPI QR ready"}
+                                        TicketRule{}
+                                    }
                                     Small{body: "Example bill"}
                                 }
                                 sell_points := View{
@@ -728,8 +739,11 @@ script_mod! {
 
                         // 6 — Extra till / offline
                         lan := Chapter{
-                            Eyebrow{body: "6 · EXTRA TILL"}
-                            Headline{body: "Another till on the shop Wi‑Fi."}
+                            // Offline is true today; the second till is a LAN-pilot claim.
+                            // main.rs swaps in "6 · EXTRA TILL" / "Another till on the shop
+                            // Wi‑Fi." once LAN_PILOT_PASSED is true.
+                            lan_eyebrow := Eyebrow{body: "6 · INTERNET DOWN?"}
+                            lan_headline := Headline{body: "The internet drops. The counter keeps selling."}
                             lan_row := View{
                                 width: Fill height: Fit
                                 flow: Right
@@ -768,7 +782,6 @@ script_mod! {
                                     spacing: 14
                                     Point{head.body: "Books live on the shop devices" line.body: "When the internet drops, nothing at the pharmacy counter waits for it."}
                                     lan_extra := Point{visible: false head.body: "One Server, LAN Clients" line.body: "Extra tills share the same books over the shop network."}
-                                    lan_note := Small{body: "Multi-device lines show after the owner's LAN pilot."}
                                 }
                             }
                         }

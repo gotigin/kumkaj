@@ -492,7 +492,9 @@ script_mod! {
         draw_bg +: {color: WellSoft border_color: WellLine border_size: 1. border_radius: 10.}
         Markdown{
             selectable: true
-            height: Fit
+            // Fit, like the pill around it: with no width the text took Fill
+            // inside a Fit pill and collapsed to an empty sliver.
+            width: Fit height: Fit
             paragraph_spacing: 0.
             pre_code_spacing: 0.
             draw_selection +: { color: #x2E5BADFF }
@@ -505,6 +507,12 @@ script_mod! {
     }
 
     // Weight toy: name, −, value, +.
+    // A fixed-width number column of a small table (rate card, rider cash).
+    // main.rs narrows these on phones so the first column keeps whole words.
+    let NumCol = View{
+        width: 96 height: Fit
+        flow: Down
+    }
     let Stepper = View{
         width: Fill height: Fit
         flow: Right
@@ -523,22 +531,30 @@ script_mod! {
             draw_text +: {color: Muted text_style: theme.font_regular{font_family: TextFont font_size: 15.}}
             body: "Length"
         }
-        minus := StepBtn{text: "−"}
-        value := Markdown{
-            selectable: true
-            height: Fit
-            paragraph_spacing: 0.
-            pre_code_spacing: 0.
-            draw_selection +: { color: #x2E5BADFF }
-            draw_block +: { selection_color: #x2E5BADFF }
-            width: 92
-            padding: 0.
-            align: Align{x: 0.5}
-            font_color: Ink
-            draw_text +: {color: Ink text_style: theme.font_regular{font_family: MonoFont font_size: 17.}}
-            body: "30 cm"
+        // The −, value and + stay together; main.rs stacks the name above
+        // them when the card is too narrow for a label column.
+        controls := View{
+            width: Fit height: Fit
+            flow: Right
+            spacing: 10
+            align: Align{y: 0.5}
+            minus := StepBtn{text: "−"}
+            value := Markdown{
+                selectable: true
+                height: Fit
+                paragraph_spacing: 0.
+                pre_code_spacing: 0.
+                draw_selection +: { color: #x2E5BADFF }
+                draw_block +: { selection_color: #x2E5BADFF }
+                width: 92
+                padding: 0.
+                align: Align{x: 0.5}
+                font_color: Ink
+                draw_text +: {color: Ink text_style: theme.font_regular{font_family: MonoFont font_size: 17.}}
+                body: "30 cm"
+            }
+            plus := StepBtn{text: "+"}
         }
-        plus := StepBtn{text: "+"}
     }
     // Two-way choice: painted off/on faces, invisible hit on top.
     let Choice = View{
@@ -822,14 +838,22 @@ script_mod! {
                                 spacing: 20
                                 WellCard{
                                     spacing: 12
-                                    View{
+                                    // Stacks under 400 px (main.rs ROWS): beside the two
+                                    // chips the title had 20 px on a 360 px phone and broke
+                                    // into one letter a line.
+                                    toy_head := View{
                                         width: Fill height: Fit
                                         flow: Right
                                         spacing: 10
                                         align: Align{y: 0.5}
                                         toy_title := Strong{width: Fill body: "Try a box"}
-                                        dom := Choice{off.txt.text: "Domestic" on.txt.text: "Domestic"}
-                                        intl := Choice{off.txt.text: "International" on.txt.text: "International"}
+                                        toy_chips := View{
+                                            width: Fit height: Fit
+                                            flow: Right
+                                            spacing: 10
+                                            dom := Choice{off.txt.text: "Domestic" on.txt.text: "Domestic"}
+                                            intl := Choice{off.txt.text: "International" on.txt.text: "International"}
+                                        }
                                     }
                                     len := Stepper{name.body: "Length"}
                                     bre := Stepper{name.body: "Breadth"}
@@ -949,8 +973,8 @@ script_mod! {
                                         flow: Right
                                         spacing: 8
                                         Small{width: Fill body: "Zone · service"}
-                                        Small{width: 96 body: "First 0.5 kg"}
-                                        Small{width: 100 body: "Each 0.5 kg"}
+                                        rc_h1 := NumCol{Small{width: Fill body: "First 0.5 kg"}}
+                                        rc_h2 := NumCol{width: 100 Small{width: Fill body: "Each 0.5 kg"}}
                                     }
                                     RoundedView{width: Fill height: 1 draw_bg +: {color: WellLine border_radius: 0.}}
                                     View{
@@ -958,24 +982,24 @@ script_mod! {
                                         flow: Right
                                         spacing: 8
                                         Body{width: Fill body: "Local · Surface"}
-                                        Mono{width: 96 body: "₹ 40"}
-                                        Mono{width: 100 body: "₹ 20"}
+                                        rc_a1 := NumCol{Mono{width: Fill body: "₹ 40"}}
+                                        rc_a2 := NumCol{width: 100 Mono{width: Fill body: "₹ 20"}}
                                     }
                                     View{
                                         width: Fill height: Fit
                                         flow: Right
                                         spacing: 8
                                         Body{width: Fill body: "Within state · Express"}
-                                        Mono{width: 96 body: "₹ 60"}
-                                        Mono{width: 100 body: "₹ 35"}
+                                        rc_b1 := NumCol{Mono{width: Fill body: "₹ 60"}}
+                                        rc_b2 := NumCol{width: 100 Mono{width: Fill body: "₹ 35"}}
                                     }
                                     View{
                                         width: Fill height: Fit
                                         flow: Right
                                         spacing: 8
                                         Body{width: Fill body: "Metro · Air"}
-                                        Mono{width: 96 body: "₹ 95"}
-                                        Mono{width: 100 body: "₹ 60"}
+                                        rc_c1 := NumCol{Mono{width: Fill body: "₹ 95"}}
+                                        rc_c2 := NumCol{width: 100 Mono{width: Fill body: "₹ 60"}}
                                     }
                                 }
                                 price_facts := View{
@@ -1116,7 +1140,13 @@ script_mod! {
                                     }
                                 }
                                 // Phones: the four steps as one line (no room for beads).
-                                track_compact := Strong{visible: false body: "Booked → With carrier → Out for delivery → Delivered"}
+                                // The switch is the View: a Markdown has no `visible`, so on
+                                // the block itself the line showed at every width.
+                                track_compact := View{
+                                    visible: false
+                                    width: Fill height: Fit
+                                    Strong{body: "Booked → With carrier → Out for delivery → Delivered"}
+                                }
                                 RoundedView{width: Fill height: 1 draw_bg +: {color: WellLine border_radius: 0.}}
                                 branch := View{
                                     width: Fill height: Fit
@@ -1160,8 +1190,8 @@ script_mod! {
                                         flow: Right
                                         spacing: 8
                                         Small{width: Fill body: "Rider"}
-                                        Small{width: 96 body: "Expected"}
-                                        Small{width: 96 body: "Handed in"}
+                                        cod_h1 := NumCol{Small{width: Fill body: "Expected"}}
+                                        cod_h2 := NumCol{Small{width: Fill body: "Handed in"}}
                                     }
                                     RoundedView{width: Fill height: 1 draw_bg +: {color: WellLine border_radius: 0.}}
                                     View{
@@ -1169,16 +1199,16 @@ script_mod! {
                                         flow: Right
                                         spacing: 8
                                         Body{width: Fill body: "Rider A · 14 drops"}
-                                        Mono{width: 96 body: "₹ 4,250"}
-                                        Mono{width: 96 body: "₹ 4,250"}
+                                        cod_a1 := NumCol{Mono{width: Fill body: "₹ 4,250"}}
+                                        cod_a2 := NumCol{Mono{width: Fill body: "₹ 4,250"}}
                                     }
                                     View{
                                         width: Fill height: Fit
                                         flow: Right
                                         spacing: 8
                                         Body{width: Fill body: "Rider B · 9 drops"}
-                                        Mono{width: 96 body: "₹ 3,100"}
-                                        Mono{width: 96 draw_text.color: BadInk body: "₹ 2,900"}
+                                        cod_b1 := NumCol{Mono{width: Fill body: "₹ 3,100"}}
+                                        cod_b2 := NumCol{Mono{width: Fill draw_text.color: BadInk body: "₹ 2,900"}}
                                     }
                                     Small{body: "Short ₹ 200 on Rider B — named, not lost in a total."}
                                 }

@@ -4,7 +4,7 @@
 # (kumkaj.com runs on :8010; served locally, each site links to the others'
 # local ports instead of the public domains.)
 #
-# Builds debug wasm, injects the 375px min-width shell CSS, then serves.
+# Builds debug wasm, injects the 320px min-width shell CSS, then serves.
 # For a production-shaped release tree use ./preview-web.sh instead.
 #
 # Uses cargo-makepad from vendor/makepad-full so packaging matches the
@@ -24,7 +24,7 @@ if [[ ! -f "$PKG/index.html" ]]; then
   exit 1
 fi
 
-# Overlay static CSS + link it (min-width 375, overflow-x when narrower).
+# Overlay static CSS + link it (min-width 320, overflow-x when narrower).
 mkdir -p "$PKG/css"
 rsync -a "$SITE/static/css/" "$PKG/css/" 2>/dev/null || true
 "$SITE/scripts/patch-web-shell.sh" "$PKG/index.html"

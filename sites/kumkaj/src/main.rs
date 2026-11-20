@@ -34,9 +34,9 @@ const PRIVACY_PATH: &str = "/privacy";
 const TERMS_PATH: &str = "/terms/";
 const PUBLIC_HOST: &str = "https://kumkaj.com";
 
-/// App layout floor: design for ≥375 CSS px. Narrower viewports scroll
+/// App layout floor: design for ≥320 CSS px (360 is the common Android phone width). Narrower viewports scroll
 /// horizontally (web shell CSS); native still lays out at this width.
-const MIN_WIDTH: f64 = 375.0;
+const MIN_WIDTH: f64 = 320.0;
 
 /// Chapter ids (URL hash) and the names shown in the top bar.
 const CHAPTERS: [(&str, &str); 7] = [
@@ -70,14 +70,28 @@ const DOTS: [[&[LiveId]; 3]; 7] = [
     [ids!(dots.d6.hit), ids!(dots.d6.idle), ids!(dots.d6.on)],
 ];
 
+/// The seven dot slots themselves (their width shrinks on a phone).
+const DOT_SLOTS: [&[LiveId]; 7] = [
+    ids!(dots.d0),
+    ids!(dots.d1),
+    ids!(dots.d2),
+    ids!(dots.d3),
+    ids!(dots.d4),
+    ids!(dots.d5),
+    ids!(dots.d6),
+];
+
 /// Rows that sit side by side only when the content column is at least
 /// this wide (px), and stack otherwise — width-based, not tier-based: a
 /// fixed prop beside a headline needs its own width plus a readable text
 /// column whatever the device.
-const ROWS: [(&[LiveId], f64); 8] = [
+const ROWS: [(&[LiveId], f64); 9] = [
     (ids!(hero.hero_row), 848.0),
     (ids!(hero.hero_ctas), 480.0),
-    (ids!(trade.cards), 640.0),
+    // `trade.cards` stays Down (two pairs). Targeting it used to lay the
+    // pairs side by side, and the unnamed pair rows never stacked on a phone.
+    (ids!(trade.cards.pair_top), 640.0),
+    (ids!(trade.cards.pair_bot), 640.0),
     (ids!(books.tiles), 720.0),
     (ids!(offline.toy_head), 420.0),
     (ids!(gotigin.product_row_1), 640.0),
@@ -473,6 +487,16 @@ impl App {
             self.ui
                 .label(cx, ids!(chapter_name))
                 .set_visible(cx, !stacked);
+            // Brand + seven dots + "1 / 7" is 395 px: the counter was cut off
+            // on a phone. The dots already say where you are.
+            self.ui.label(cx, ids!(counter)).set_visible(cx, !stacked);
+            // 14 px dots on a phone so brand + dots fit 320.
+            let dot_w = if tier == Tier::Phone { 14.0 } else { 20.0 };
+            for path in DOT_SLOTS {
+                if let Some(mut dot) = self.ui.view(cx, path).borrow_mut() {
+                    dot.walk.width = Size::Fixed(dot_w);
+                }
+            }
             let page = self.ui.widget(cx, ids!(page));
             if self.desk_font.is_empty() {
                 collect_label_sizes(&page, &mut self.desk_font);
