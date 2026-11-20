@@ -23,6 +23,9 @@ use std::collections::BTreeMap;
 use std::fs;
 use std::path::{Path, PathBuf};
 
+#[path = "store_template.rs"]
+mod store_template;
+
 pub struct Store {
     conn: Connection,
     path: PathBuf,
@@ -5103,6 +5106,100 @@ impl Store {
                     p.set_aliases(&item.aliases);
                 }
                 if let Some(path) = tmpl.resolve_image(&item.image) {
+                    if let Ok(key) = self.import_item_image(&p.id, &path) {
+                        p.image_key = Some(key);
+                    }
+                }
+                self.upsert_product(&p)?;
+                summary.items_added += 1;
+                step += 1;
+                report_import_progress(step.min(total), total)?;
+            }
+        }
+        report_import_progress(total, total)?;
+        Ok(summary)
+    }
+
+    /// Like [`Self::import_menu_template`] but resolves photos under `pack_dir`.
+    pub fn import_menu_template_from_dir(
+        &self,
+        tmpl: &crate::menu_templates::MenuTemplate,
+        pack_dir: &Path,
+    ) -> Result<CatalogueImport, String> {
+        self.assert_server_writer("Import a menu template")?;
+        let mut summary = CatalogueImport::default();
+        let total = tmpl
+            .categories
+            .iter()
+            .map(|c| c.items.len().saturating_add(1))
+            .sum::<usize>()
+            .max(1);
+        let mut step = 0usize;
+        report_import_progress(0, total)?;
+        let mut categories = self.list_categories()?;
+        let existing: std::collections::HashSet<String> = self
+            .list_products(true)?
+            .into_iter()
+            .map(|p| p.name.trim().to_lowercase())
+            .collect();
+        let mut seen = existing;
+        for cat_spec in &tmpl.categories {
+            import_cancelled()?;
+            let cat_name = cat_spec.name.trim();
+            if cat_name.is_empty() {
+                continue;
+            }
+            let cat_id = match categories
+                .iter()
+                .find(|c| c.name.trim().eq_ignore_ascii_case(cat_name))
+            {
+                Some(c) => {
+                    let _ = self.set_category_aliases_if_empty(&c.id, &cat_spec.aliases);
+                    if c.image_key.is_empty() {
+                        if let Some(path) = tmpl.resolve_image_in(pack_dir, &cat_spec.image) {
+                            let _ = self.set_category_photo_if_missing(&c.id, &path);
+                        }
+                    }
+                    c.id.clone()
+                }
+                None => {
+                    let mut c = self.add_category(cat_name)?;
+                    let _ = self.set_category_aliases_if_empty(&c.id, &cat_spec.aliases);
+                    if let Some(path) = tmpl.resolve_image_in(pack_dir, &cat_spec.image) {
+                        if let Ok(key) = self.import_category_image(&c.id, &path) {
+                            self.set_category_image(&c.id, &key)?;
+                            c.image_key = key;
+                        }
+                    }
+                    summary.categories_added += 1;
+                    let id = c.id.clone();
+                    categories.push(c);
+                    id
+                }
+            };
+            step += 1;
+            report_import_progress(step.min(total), total)?;
+            for item in &cat_spec.items {
+                let name = item.name.trim();
+                if name.is_empty() {
+                    step += 1;
+                    report_import_progress(step.min(total), total)?;
+                    continue;
+                }
+                if !seen.insert(name.to_lowercase()) {
+                    summary.items_kept += 1;
+                    step += 1;
+                    report_import_progress(step.min(total), total)?;
+                    continue;
+                }
+                let mut p = Product::new_resale_stock(name, item.unit.trim());
+                p.id = new_id();
+                p.price = Money::from_rupees(item.price.max(0));
+                p.category_id = cat_id.clone();
+                if !item.aliases.is_empty() {
+                    p.set_aliases(&item.aliases);
+                }
+                if let Some(path) = tmpl.resolve_image_in(pack_dir, &item.image) {
                     if let Ok(key) = self.import_item_image(&p.id, &path) {
                         p.image_key = Some(key);
                     }

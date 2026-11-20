@@ -1116,6 +1116,9 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
         if !cx.has_key_focus(org_field.area()) && org_field.text() != saved_org {
             org_field.set_text(cx, &saved_org);
         }
+        if app_state().lock().unwrap().settings_panel == Some("brand") {
+            self.paint_settings_app_templates(cx);
+        }
     }
 
     fn save_venue_brand(&mut self, cx: &mut Cx) {

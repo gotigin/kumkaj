@@ -1,6 +1,6 @@
 //! Named catalogue templates (`assets/templates/<id>/template.json`).
 //!
-//! Tabiyat ships `chemist-counter/` — a starter generic list with Hindi
+//! Tabiyat ships `chemist-counter/` — a starter generic chemist list with Hindi
 //! aliases, example prices, and `shelf:` photos. Discovery is automatic.
 
 use std::path::{Path, PathBuf};
@@ -8,6 +8,63 @@ use std::path::{Path, PathBuf};
 use serde::Deserialize;
 
 use crate::menu_images::{self, SHELF_KEY_PREFIX};
+
+pub const PACK_APP: &str = "tabiyat";
+pub const PACK_FORMAT: u32 = 2;
+
+/// Extra meta keys a pack may set besides [`crate::store::SHOP_PREF_KEYS`].
+pub fn template_pref_extra_keys() -> &'static [&'static str] {
+    &[
+        "country_code",
+        "tax_pricing",
+        "tax_label",
+        "business_tax_id",
+        "business_id_label",
+        "digital_pay_label",
+        "credit_label",
+        "date_order",
+        "time_format",
+        "decimal_sep",
+        "thousands_sep",
+        "service_charge_bps",
+        "org_name",
+        "show_tax_chrome",
+        "show_tax_invoice",
+        "pay_methods",
+    ]
+}
+
+pub fn check_pack_header(format: u32, app: &str) -> Result<(), String> {
+    let app = app.trim();
+    if !app.is_empty() && !app.eq_ignore_ascii_case(PACK_APP) {
+        return Err(format!("This template is for {app}, not Tabiyat"));
+    }
+    if format > PACK_FORMAT {
+        return Err("This template needs a newer Tabiyat — update the app first".into());
+    }
+    Ok(())
+}
+
+pub fn read_from_dir(dir: &Path) -> Result<MenuTemplate, String> {
+    let path = dir.join("template.json");
+    let raw = std::fs::read_to_string(&path).map_err(|e| format!("template.json: {e}"))?;
+    let mut tmpl: MenuTemplate =
+        serde_json::from_str(&raw).map_err(|e| format!("template.json: {e}"))?;
+    if tmpl.id.trim().is_empty() {
+        tmpl.id = dir
+            .file_name()
+            .map(|s| s.to_string_lossy().into_owned())
+            .unwrap_or_default();
+    }
+    if tmpl.title.trim().is_empty() {
+        tmpl.title = menu_images::title_from_kebab(&tmpl.id);
+    }
+    Ok(tmpl)
+}
+
+pub fn load_from_dir(dir: &Path) -> Option<MenuTemplate> {
+    read_from_dir(dir).ok()
+}
 
 #[derive(Clone, Debug, Deserialize)]
 pub struct MenuTemplate {
@@ -41,7 +98,7 @@ pub struct TemplateItem {
     pub price: i64,
     #[serde(default)]
     pub image: String,
-    /// Sell unit (`pc`, `ml`, `g`). Empty = each.
+    /// Sell unit (`kg`, `g`, `L`, `ml`, `pc`). Empty = each.
     #[serde(default)]
     pub unit: String,
 }
@@ -58,6 +115,10 @@ impl MenuTemplate {
     /// Resolve a template-relative or shelf image key to a file on disk.
     pub fn resolve_image(&self, image: &str) -> Option<PathBuf> {
         resolve_template_image(&self.id, image)
+    }
+
+    pub fn resolve_image_in(&self, pack_dir: &Path, image: &str) -> Option<PathBuf> {
+        resolve_template_image_in(pack_dir, &self.id, image)
     }
 }
 
@@ -126,6 +187,15 @@ pub fn find(id: &str) -> Option<&'static MenuTemplate> {
 
 /// Turn an image field into a readable file path.
 pub fn resolve_template_image(template_id: &str, image: &str) -> Option<PathBuf> {
+    let root = templates_root()?.join(template_id);
+    resolve_template_image_in(&root, template_id, image)
+}
+
+pub fn resolve_template_image_in(
+    pack_dir: &Path,
+    _template_id: &str,
+    image: &str,
+) -> Option<PathBuf> {
     let image = image.trim();
     if image.is_empty() {
         return None;
@@ -135,13 +205,19 @@ pub fn resolve_template_image(template_id: &str, image: &str) -> Option<PathBuf>
         let path = root.join(rel);
         return path.is_file().then_some(path);
     }
-    let root = templates_root()?.join(template_id);
     let path = if Path::new(image).is_absolute() {
         PathBuf::from(image)
     } else {
-        root.join(image)
+        pack_dir.join(image)
     };
     path.is_file().then_some(path)
+}
+
+/// Pack dir for a bundled template id.
+pub fn bundled_pack_dir(id: &str) -> Option<PathBuf> {
+    let root = templates_root()?;
+    let dir = root.join(id);
+    dir.is_dir().then_some(dir)
 }
 
 #[cfg(test)]
@@ -149,7 +225,7 @@ mod tests {
     use super::*;
 
     #[test]
-    fn only_the_chemist_starter_ships() {
+    fn only_the_grocery_starter_ships() {
         let ids: Vec<&str> = all().iter().map(|t| t.id.as_str()).collect();
         assert_eq!(ids, vec!["chemist-counter"]);
     }

@@ -837,6 +837,19 @@ client_template_confirm	{title}-ko {d} elementuak gehitu nahi dituzu? Dagoeneko 
 client_template_importing	{title} inportatzen…
 client_template_done	{title}-ko elementu guztiak zure elementuetan daude.
 client_template_imported	{d} elementuak eta {c} kategoria gehitu dira {title}-tik
+app_template_heading	Shop templates
+app_template_blurb	Pick a starter catalogue and shop settings. Skip leaves the shelf empty.
+app_template_skip	Skip for now
+app_template_status	Server ready — import a template, or skip
+app_template_importing	Applying {title}…
+app_template_import_selected	Import selected
+app_template_wipe_warn	This clears books trading data (sales, ledgers) and applies the template’s shop settings. Continue?
+app_template_wipe_continue	Continue
+app_template_wipe_cancel	Cancel
+app_template_from_device	Import from this device
+app_template_from_device_help	Pick a folder that contains template.json (and optional shop_defaults.json).
+settings_app_tmpl_note	Full shop packs (menu + settings). Item-only templates stay under Menu → Item templates. Cloud download = later.
+app_tmpl_named	{name} shop template
 cancel	Ezeztatu
 removing	Kentzen…
 removed	Kenduta

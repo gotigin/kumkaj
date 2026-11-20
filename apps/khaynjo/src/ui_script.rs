@@ -6189,6 +6189,10 @@ script_mod! {
                                                         public_tmpl_import := NavBtn{text: "Import selected" visible: false}
                                                     }
                                                 }
+                                                app_template_from_device := NavBtn{text: "Import from this device"}
+                                                app_template_from_device_help := InfoHelp{
+                                                    tip: "Pick a folder that contains template.json (and optional shop_defaults.json)."
+                                                }
                                                 // Ids kept so a later paid gate can return. Hidden: templates are one public list.
                                                 setup_private_card := RoundedView{
                                                     width: Fill height: Fit
@@ -9578,7 +9582,7 @@ script_mod! {
                                         font_size: 15.
                                     }
                                     h_duress_help := InfoHelp{
-                                        tip: "Optional. If this PIN is typed at unlock instead of yours, trading history is cleared the same way as Settings → Backup → Clear history now: sales, ledgers and open work gone; stock, loyalty, wallet and till back to zero — menu, prices, parties, tables, staff and settings stay. Opens as Owner looking normal. Use only if you are forced to unlock. Leave blank and save to turn off. Never the same as anyone's PIN."
+                                        tip: "Offline Server/Client LAN only — not cloud. Off by default: Owner turns it on once by saving this PIN (Team, including on a Client till). At unlock, if this PIN is typed instead of a real staff PIN, books are wiped on the Server (same as Clear history now) and the till opens as Owner looking normal — menu, prices, parties, tables, staff and settings stay. Never the same as anyone's PIN."
                                     }
                                 }
                                 duress_status := WrapLabel{
@@ -10014,6 +10018,69 @@ h_your_brand := WrapLabel{body: "Your brand (in-app)" font_color: #x260B08 font_
                                     venue_icon_clear := RowSecondaryBtn{text: "Clear icon"}
                                 }
                                 venue_brand_save := StackPrimaryBtn{text: "Save brand"}
+                                }
+                                FormCard{
+                                    View{
+                                        width: Fill height: Fit
+                                        flow: Right spacing: 0
+                                        align: Align{y: 0.5}
+                                        settings_app_tmpl_heading := WrapLabel{
+                                            width: Fit
+                                            body: "Shop templates"
+                                            font_color: #x260B08
+                                            font_size: 16.
+                                        }
+                                        settings_app_tmpl_help := InfoHelp{
+                                            tip: "Full shop packs (menu + settings). Item-only templates stay under Menu → Item templates."
+                                        }
+                                    }
+                                    settings_app_tmpl_note := WrapLabel{
+                                        body: " "
+                                        font_color: #x6B4A3F
+                                        font_size: 12.
+                                    }
+                                    settings_app_tmpl_status := WrapLabel{
+                                        body: ""
+                                        font_color: #x6B4A3F
+                                        font_size: 12.
+                                    }
+                                    View{
+                                        width: Fill height: Fit
+                                        flow: Right{wrap: true} spacing: 8
+                                        settings_public_tmpl_0 := ChipBtn{text: " " visible: false}
+                                        settings_public_tmpl_0_on := ChipBtnActive{text: " " visible: false}
+                                        settings_public_tmpl_1 := ChipBtn{text: " " visible: false}
+                                        settings_public_tmpl_1_on := ChipBtnActive{text: " " visible: false}
+                                        settings_public_tmpl_2 := ChipBtn{text: " " visible: false}
+                                        settings_public_tmpl_2_on := ChipBtnActive{text: " " visible: false}
+                                        settings_public_tmpl_3 := ChipBtn{text: " " visible: false}
+                                        settings_public_tmpl_3_on := ChipBtnActive{text: " " visible: false}
+                                        settings_public_tmpl_4 := ChipBtn{text: " " visible: false}
+                                        settings_public_tmpl_4_on := ChipBtnActive{text: " " visible: false}
+                                    }
+                                    settings_public_tmpl_import := NavBtn{text: "Import selected" visible: false}
+                                    settings_app_template_from_device := NavBtn{text: "Import from this device"}
+                                    settings_app_tmpl_wipe_warn := WrapLabel{
+                                        body: " "
+                                        font_color: #x260B08
+                                        font_size: 14.
+                                        visible: false
+                                    }
+                                    ActionStack{
+                                        settings_app_tmpl_wipe_continue := StackPrimaryBtn{text: "Continue" visible: false}
+                                        settings_app_tmpl_wipe_cancel := StackSecondaryBtn{text: "Cancel" visible: false}
+                                    }
+                                    settings_app_tmpl_busy := View{
+                                        width: Fill height: Fit
+                                        visible: false
+                                        flow: Down spacing: 6
+                                        settings_app_tmpl_progress := WrapLabel{
+                                            body: "Importing…"
+                                            font_color: #x260B08
+                                            font_size: 15.
+                                        }
+                                        settings_app_tmpl_cancel := QuietFitBtn{text: "Cancel"}
+                                    }
                                 }
                                 FormCard{
                                 View{

@@ -106,6 +106,7 @@ impl AppState {
             extra_tills_allowed: false,
             onboard_step: 1,
             entity_template_id: "moklanjo_agency".into(),
+            pending_entity_template_apply: None,
             money_lane: MoneyLane::Declared,
             buy_on_account: false,
             buy_party_kind: "Supplier".into(),

@@ -341,6 +341,10 @@ impl App {
             }
             // Menu import completion (progress is painted above while busy).
             if let Some(outcome) = menu_import_once().lock().unwrap().take() {
+                let awaiting_tmpl = {
+                    let st = app_state().lock().unwrap();
+                    st.awaiting_app_template
+                };
                 let msg = match outcome.result {
                     Ok(done) => {
                         let reload = app_state().lock().unwrap().reload_all();
@@ -358,6 +362,11 @@ impl App {
                                     .replace("{d}", &done.items_added.to_string())
                                     .replace("{c}", &done.categories_added.to_string())
                                     .replace("{title}", title),
+                                MenuImportKind::AppTemplate { title, .. } => st
+                                    .t("client_template_imported")
+                                    .replace("{d}", &done.items_added.to_string())
+                                    .replace("{c}", &done.categories_added.to_string())
+                                    .replace("{title}", title),
                             })
                         }
                     }
@@ -367,9 +376,21 @@ impl App {
                     let mut st = app_state().lock().unwrap();
                     st.template_confirm = false;
                     st.client_template_confirm = None;
+                    if matches!(&outcome.kind, MenuImportKind::AppTemplate { .. })
+                        && st.app_template_settings_import
+                    {
+                        st.app_template_settings_import = false;
+                    }
+                    st.app_template_wipe_pending = None;
                 }
+                let finish_onboarding = awaiting_tmpl
+                    && matches!(&outcome.kind, MenuImportKind::AppTemplate { .. })
+                    && msg.is_ok();
                 match msg {
                     Ok(m) => {
+                        if finish_onboarding {
+                            self.finish_app_template_to_lock(cx, true);
+                        }
                         self.set_status(cx, m);
                         self.sync_chrome(cx);
                     }

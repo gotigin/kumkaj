@@ -42,6 +42,10 @@ any mirror with the same layout) so the app reads files without HTTP.
 ## One public list
 
 Nothing is forced — DeviceSetup **Skip for now** leaves an empty shop.
+After the shop exists, **Settings → Brand → Shop templates** re-import asks
+**Continue/Cancel** (wipe trading + apply defaults). **Import from this device**
+expects a pack folder with `template.json` (optional `shop_defaults.json`).
+Cloud account login to download private packs is **not** in the app yet.
 
 | Template | What | Where |
 |---|---|---|

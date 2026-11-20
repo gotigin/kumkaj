@@ -148,6 +148,47 @@ Demo folders: [`apps/khaynjo/assets/templates/README.md`](../apps/khaynjo/assets
 Moklanjo / Kirano / Tabiyat get the same **configure, don’t hardcode**
 rule even where Export template is not shipped yet.
 
+## 4a. App Template import — when, from where, wipe prompt (every app)
+
+Same rule in every Kumkaj product (Khaynjo, Moklanjo, Kirano, Tabiyat).
+
+### Before Server creation (first-time DeviceSetup offer)
+
+No books yet — **do not** show a wipe Continue/Cancel prompt.
+
+The owner may:
+
+1. **Public** — pick a published App Template and import (or Skip).
+2. **This device** — import a pack folder they already have
+   (`template.json` + optional `shop_defaults.json`).
+3. **Cloud (paid) — future** — sign in and download a pack from Gotigin’s
+   server. **Not implemented yet**; do not build login here until the paid
+   catalogue path is specified. Leave UI/docs hooks only.
+
+### After the shop exists (anytime)
+
+Importing an **App Template** (public, this-device pack, or later cloud)
+**always** shows **Continue / Cancel** first:
+
+- **Books trading data will be cleared** (sales / bookings / ledgers that
+  count as books entries — not a silent merge).
+- **Shop settings / config from the pack will be applied** (chrome, pay,
+  tax face, staff without PINs, etc. as that product’s pack defines).
+
+**Continue** runs wipe then apply. **Cancel** leaves the shop untouched.
+
+Item-only Menu imports (add dishes / rates without replacing shop face)
+keep their own lighter confirm; they are **not** a substitute for App
+Template re-import.
+
+```text
+❌ Wipe prompt on first-time empty Server offer
+❌ Re-applying an App Template after create with no Continue/Cancel
+❌ Cloud login UI pretending to work before the paid path ships
+✅ First-time: public + this-device (+ cloud later) with no wipe prompt
+✅ Anytime later: same sources + mandatory wipe/settings warning
+```
+
 ## 5. Agent checklist (before coding)
 
 1. Is this a **new trade capability** (belongs in the product), or a

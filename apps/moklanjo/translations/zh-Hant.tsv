@@ -784,6 +784,9 @@ app_template_status	Server ready — import a template, or skip
 app_template_importing	Applying {title}…
 app_template_public_hdr	Templates
 app_template_import_selected	Import selected
+app_template_wipe_warn	This clears books trading data (bookings, ledgers) and applies the template’s shop settings. Continue?
+app_template_wipe_continue	Continue
+app_template_wipe_cancel	Cancel
 public_tmpl_help	Bundled agency packs for this shop. No download needed.
 business_day	When does Today reset?
 business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.

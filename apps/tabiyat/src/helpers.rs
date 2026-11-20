@@ -722,3 +722,23 @@ fn pad_view_over_base(cx: &mut Cx, view: &ViewRef, key: LiveId, extra: Inset) {
 /// ghost, column dropdowns) are left out: they place themselves.
 /// `nav_order_tests::every_modal_is_an_inset_sheet_or_anchored` checks this.
 const INSET_SHEETS: &[&str] = &["menu_modal", "lock_staff_modal", "upi_qr_modal", "printers_modal"];
+
+fn template_client_name(title: &str) -> String {
+    let t = title.trim();
+    let lower = t.to_lowercase();
+    for suffix in [
+        " app template",
+        " menu template",
+        " items template",
+        " full template",
+        " template",
+        " menu",
+    ] {
+        if let Some(head) = lower.strip_suffix(suffix) {
+            if !head.is_empty() {
+                return t[..head.len()].trim().to_string();
+            }
+        }
+    }
+    t.to_string()
+}

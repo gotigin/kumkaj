@@ -374,7 +374,11 @@ impl App {
             st.language_follow_platform = chosen.0;
             st.locale.language = chosen.1;
             Self::persist_setup_language(&mut st);
-            self.finish_as_server(&mut st, true);
+            if Self::should_offer_app_template(&st) {
+                self.enter_app_template_offer(&mut st, true);
+            } else {
+                self.finish_as_server(&mut st, true);
+            }
             old
         };
         drop_store_off_ui(old);
@@ -397,7 +401,11 @@ impl App {
             st.language_follow_platform = chosen.0;
             st.locale.language = chosen.1;
             Self::persist_setup_language(&mut st);
-            self.finish_as_server(&mut st, switching_in);
+            if Self::should_offer_app_template(&st) {
+                self.enter_app_template_offer(&mut st, switching_in);
+            } else {
+                self.finish_as_server(&mut st, switching_in);
+            }
             old
         };
         drop_store_off_ui(old);
@@ -676,13 +684,20 @@ impl App {
             .unwrap_or_else(|| app_t("opening_client"));
         // Offline LAN: no multi-server pick UI (cloud-only later).
         let show_pick = false;
-        // Hide Server/Client while creating or opening.
+        let awaiting_tmpl = app_state()
+            .try_lock()
+            .map(|st| st.awaiting_app_template)
+            .unwrap_or(false);
+        // Hide Server/Client while creating/opening or while templates are offered.
         self.ui
             .view(cx, ids!(device_role_actions))
-            .set_visible(cx, !busy && !show_pick);
+            .set_visible(cx, !busy && !show_pick && !awaiting_tmpl);
         self.ui
             .view(cx, ids!(server_pick_section))
             .set_visible(cx, show_pick);
+        self.ui
+            .view(cx, ids!(app_template_section))
+            .set_visible(cx, awaiting_tmpl && !busy);
         self.ui
             .widget(cx, ids!(device_role_busy_label))
             .set_text(cx, &plain_display_text(&status));

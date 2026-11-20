@@ -598,9 +598,14 @@ fn fit_inside_system_bars(&mut self, cx: &mut Cx) {
             ids!(buy_kind_carrier_on),
             buy_kind.eq_ignore_ascii_case("Carrier"),
         );
-        let tmpl_id = {
+        let (tmpl_id, pending) = {
             let st = app_state().lock().unwrap();
-            st.entity_template_id.clone()
+            (
+                st.pending_entity_template_apply
+                    .clone()
+                    .unwrap_or_else(|| st.entity_template_id.clone()),
+                st.pending_entity_template_apply.is_some(),
+            )
         };
         let tmpl = entity_template::resolve(&tmpl_id);
         self.paint_choice_pair(
@@ -615,6 +620,34 @@ fn fit_inside_system_bars(&mut self, cx: &mut Cx) {
             ids!(tmpl_pick_global_pkg_on),
             tmpl.id == entity_template::GLOBAL_PKG.id,
         );
+        let (warn, cont, abort) = {
+            let st = app_state().lock().unwrap();
+            (
+                st.t("app_template_wipe_warn"),
+                st.t("app_template_wipe_continue"),
+                st.t("app_template_wipe_cancel"),
+            )
+        };
+        self.ui
+            .widget(cx, ids!(app_template_wipe_warn))
+            .set_visible(cx, pending);
+        if pending {
+            self.ui
+                .widget(cx, ids!(app_template_wipe_warn))
+                .set_text(cx, &plain_display_text(&warn));
+        }
+        self.ui
+            .button(cx, ids!(app_template_wipe_continue))
+            .set_text(cx, &plain_display_text(&cont));
+        self.ui
+            .button(cx, ids!(app_template_wipe_cancel))
+            .set_text(cx, &plain_display_text(&abort));
+        self.ui
+            .button(cx, ids!(app_template_wipe_continue))
+            .set_visible(cx, pending);
+        self.ui
+            .button(cx, ids!(app_template_wipe_cancel))
+            .set_visible(cx, pending);
         let biz_day = {
             let st = app_state().lock().unwrap();
             st.store

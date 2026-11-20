@@ -77,6 +77,33 @@ pub fn image_bytes_to_webp(bytes: &[u8]) -> Result<Vec<u8>, String> {
     Ok(out)
 }
 
+/// Standard base64 for template pack embedded images (`shop_defaults.json`).
+pub fn decode_base64(text: &str) -> Result<Vec<u8>, String> {
+    let mut out = Vec::with_capacity(text.len() / 4 * 3);
+    let mut acc: u32 = 0;
+    let mut bits = 0u32;
+    for c in text.bytes() {
+        let v = match c {
+            b'A'..=b'Z' => c - b'A',
+            b'a'..=b'z' => c - b'a' + 26,
+            b'0'..=b'9' => c - b'0' + 52,
+            b'+' => 62,
+            b'/' => 63,
+            b'=' => break,
+            b' ' | b'\n' | b'\r' | b'\t' => continue,
+            _ => return Err("Not base64".into()),
+        } as u32;
+        acc = (acc << 6) | v;
+        bits += 6;
+        if bits >= 8 {
+            bits -= 8;
+            out.push((acc >> bits) as u8);
+            acc &= (1 << bits) - 1;
+        }
+    }
+    Ok(out)
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;

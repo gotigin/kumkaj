@@ -13,24 +13,61 @@ impl App {
             ),
         ] {
             if self.choice_chip_clicked(cx, actions, chip, chip_on) {
-                let result = (|| -> Result<String, String> {
+                let result = (|| -> Result<(), String> {
                     let mut st = app_state().lock().unwrap();
                     let actor = st.actor()?;
                     if !actor.is_owner() {
                         return Err("Only the Owner can change the start template".into());
                     }
-                    let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
-                    let tmpl = store.apply_entity_template(template_id)?;
-                    st.entity_template_id = tmpl.id.to_string();
-                    let _ = st.reload_all();
-                    Ok(format!("Applied {} — {}", tmpl.title, tmpl.blurb))
+                    st.require_server_host("Change the start template")?;
+                    st.pending_entity_template_apply = Some(template_id.into());
+                    Ok(())
                 })();
                 match result {
-                    Ok(msg) => self.set_status(cx, msg),
+                    Ok(()) => self.sync_chrome(cx),
                     Err(e) => self.set_status(cx, e),
                 }
-                self.sync_chrome(cx);
             }
+        }
+        if self
+            .ui
+            .button(cx, ids!(app_template_wipe_continue))
+            .clicked(actions)
+        {
+            let template_id = app_state()
+                .lock()
+                .unwrap()
+                .pending_entity_template_apply
+                .clone();
+            let result = (|| -> Result<String, String> {
+                let mut st = app_state().lock().unwrap();
+                let actor = st.actor()?;
+                if !actor.is_owner() {
+                    return Err("Only the Owner can change the start template".into());
+                }
+                let template_id = template_id
+                    .ok_or_else(|| "Pick a template".to_string())?;
+                let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
+                store.wipe_trading_data_keep_structure()?;
+                let tmpl = store.apply_entity_template(&template_id)?;
+                st.entity_template_id = tmpl.id.to_string();
+                st.pending_entity_template_apply = None;
+                let _ = st.reload_all();
+                Ok(format!("Applied {} — {}", tmpl.title, tmpl.blurb))
+            })();
+            match result {
+                Ok(msg) => self.set_status(cx, msg),
+                Err(e) => self.set_status(cx, e),
+            }
+            self.sync_chrome(cx);
+        }
+        if self
+            .ui
+            .button(cx, ids!(app_template_wipe_cancel))
+            .clicked(actions)
+        {
+            app_state().lock().unwrap().pending_entity_template_apply = None;
+            self.sync_chrome(cx);
         }
         if self.ui.button(cx, ids!(country_apply)).clicked(actions) {
             let code = self.ui.text_input(cx, ids!(country_code_input)).text();

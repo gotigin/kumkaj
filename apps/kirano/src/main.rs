@@ -115,6 +115,7 @@ include!("app/impl_03.rs");
 include!("app/impl_04.rs");
 include!("app/impl_05.rs");
 include!("app/impl_06.rs");
+include!("app/app_template.rs");
 include!("app/impl_07.rs");
 include!("app/impl_08.rs");
 include!("helpers_image.rs");

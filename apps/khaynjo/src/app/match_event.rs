@@ -142,19 +142,28 @@ impl MatchEvent for App {
         for action in actions.iter() {
             if let Some(fd) = action.downcast_ref::<FileDialogAction>() {
                 match fd {
-                    // The only folder picker: the second place for backups.
                     FileDialogAction::FolderSelected(dir) => {
-                        let result = (|| -> Result<String, String> {
-                            let st = app_state().lock().unwrap();
-                            st.require_server_host("Choose where backups go")?;
-                            let store = st.store.as_ref().ok_or("No store")?;
-                            store.set_backup_copy_dir(Some(dir))?;
-                            Ok(st.t("backup_copy_to").replace("{dir}", &dir.display().to_string()))
-                        })();
-                        match result {
-                            Ok(msg) | Err(msg) => self.set_status(cx, msg),
+                        let for_template = {
+                            let mut st = app_state().lock().unwrap();
+                            let t = st.folder_pick_for_app_template;
+                            st.folder_pick_for_app_template = false;
+                            t
+                        };
+                        if for_template {
+                            self.on_app_template_folder_selected(cx, dir.as_path());
+                        } else {
+                            let result = (|| -> Result<String, String> {
+                                let st = app_state().lock().unwrap();
+                                st.require_server_host("Choose where backups go")?;
+                                let store = st.store.as_ref().ok_or("No store")?;
+                                store.set_backup_copy_dir(Some(dir))?;
+                                Ok(st.t("backup_copy_to").replace("{dir}", &dir.display().to_string()))
+                            })();
+                            match result {
+                                Ok(msg) | Err(msg) => self.set_status(cx, msg),
+                            }
+                            self.sync_chrome(cx);
                         }
-                        self.sync_chrome(cx);
                     }
                     FileDialogAction::FileSelected { id, paths }
                         if *id == live_id!(restore_pick) =>
@@ -1193,6 +1202,70 @@ impl MatchEvent for App {
             }
         }
         {
+            let chips = [
+                (ids!(settings_public_tmpl_0), ids!(settings_public_tmpl_0_on), 0usize),
+                (ids!(settings_public_tmpl_1), ids!(settings_public_tmpl_1_on), 1),
+                (ids!(settings_public_tmpl_2), ids!(settings_public_tmpl_2_on), 2),
+                (ids!(settings_public_tmpl_3), ids!(settings_public_tmpl_3_on), 3),
+                (ids!(settings_public_tmpl_4), ids!(settings_public_tmpl_4_on), 4),
+            ];
+            for (idle, active, idx) in chips {
+                if self.ui.button(cx, idle).clicked(actions)
+                    || self.ui.button(cx, active).clicked(actions)
+                {
+                    let entries = App::filter_public_app_templates(
+                        &app_state().lock().unwrap().catalogue_public,
+                    );
+                    if let Some((id, _, _)) = entries.get(idx).cloned() {
+                        let mut st = app_state().lock().unwrap();
+                        if st.settings_app_template_selected_id.as_deref() == Some(id.as_str()) {
+                            st.settings_app_template_selected_id = None;
+                        } else {
+                            st.settings_app_template_selected_id = Some(id);
+                        }
+                        st.app_template_wipe_pending = None;
+                    }
+                    self.paint_settings_app_templates(cx);
+                }
+            }
+        }
+        if self.ui.button(cx, ids!(settings_public_tmpl_import)).clicked(actions)
+            && !menu_import_busy().load(std::sync::atomic::Ordering::SeqCst)
+            && !catalogue_fetch_busy().load(std::sync::atomic::Ordering::SeqCst)
+        {
+            match self.arm_settings_app_template_public(cx) {
+                Ok(()) => {
+                    let _ = self.paint_settings_app_templates(cx);
+                }
+                Err(e) => self.set_status(cx, e),
+            }
+        }
+        if self.ui.button(cx, ids!(settings_app_template_from_device)).clicked(actions)
+            && !menu_import_busy().load(std::sync::atomic::Ordering::SeqCst)
+            && !catalogue_fetch_busy().load(std::sync::atomic::Ordering::SeqCst)
+        {
+            if cfg!(target_os = "android") {
+                self.set_status(cx, app_t("app_template_from_device_help"));
+            } else {
+                self.open_app_template_folder_pick(cx, true);
+            }
+        }
+        if self.ui.button(cx, ids!(settings_app_tmpl_wipe_continue)).clicked(actions) {
+            self.run_settings_app_template_continue(cx);
+        }
+        if self.ui.button(cx, ids!(settings_app_tmpl_wipe_cancel)).clicked(actions) {
+            app_state().lock().unwrap().app_template_wipe_pending = None;
+            self.paint_settings_app_templates(cx);
+        }
+        if self.ui.button(cx, ids!(settings_app_tmpl_cancel)).clicked(actions)
+            && (menu_import_busy().load(std::sync::atomic::Ordering::SeqCst)
+                || catalogue_fetch_busy().load(std::sync::atomic::Ordering::SeqCst))
+        {
+            request_books_job_cancel();
+            self.paint_import_progress_chrome(cx);
+            self.paint_settings_app_templates(cx);
+        }
+        {
             let widget = self.ui.widget(cx, ids!(setup_server_list));
             let list = widget.portal_list(cx, ids!(list));
             for (item_id, item) in list.items_with_actions(actions) {
@@ -1238,8 +1311,19 @@ impl MatchEvent for App {
             if cfg!(target_os = "android") {
                 self.save_backup_copy(cx);
             } else {
+                app_state().lock().unwrap().folder_pick_for_app_template = false;
                 let title = app_state().lock().unwrap().t("backup_copy_btn");
                 cx.open_select_folder_dialog(FileDialog::new().set_title(title));
+            }
+        }
+        if self.ui.button(cx, ids!(app_template_from_device)).clicked(actions)
+            && !menu_import_busy().load(std::sync::atomic::Ordering::SeqCst)
+            && !catalogue_fetch_busy().load(std::sync::atomic::Ordering::SeqCst)
+        {
+            if cfg!(target_os = "android") {
+                self.set_status(cx, app_t("app_template_from_device_help"));
+            } else {
+                self.open_app_template_folder_pick(cx, false);
             }
         }
         if self.ui.button(cx, ids!(copy_pair_code)).clicked(actions) {

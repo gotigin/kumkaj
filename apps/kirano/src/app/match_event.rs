@@ -141,19 +141,28 @@ impl MatchEvent for App {
         for action in actions.iter() {
             if let Some(fd) = action.downcast_ref::<FileDialogAction>() {
                 match fd {
-                    // The only folder picker: the second place for backups.
                     FileDialogAction::FolderSelected(dir) => {
-                        let result = (|| -> Result<String, String> {
-                            let st = app_state().lock().unwrap();
-                            st.require_server_host("Choose where backups go")?;
-                            let store = st.store.as_ref().ok_or("No store")?;
-                            store.set_backup_copy_dir(Some(dir))?;
-                            Ok(st.t("backup_copy_to").replace("{dir}", &dir.display().to_string()))
-                        })();
-                        match result {
-                            Ok(msg) | Err(msg) => self.set_status(cx, msg),
+                        let for_template = {
+                            let mut st = app_state().lock().unwrap();
+                            let t = st.folder_pick_for_app_template;
+                            st.folder_pick_for_app_template = false;
+                            t
+                        };
+                        if for_template {
+                            self.on_app_template_folder_selected(cx, dir.as_path());
+                        } else {
+                            let result = (|| -> Result<String, String> {
+                                let st = app_state().lock().unwrap();
+                                st.require_server_host("Choose where backups go")?;
+                                let store = st.store.as_ref().ok_or("No store")?;
+                                store.set_backup_copy_dir(Some(dir))?;
+                                Ok(st.t("backup_copy_to").replace("{dir}", &dir.display().to_string()))
+                            })();
+                            match result {
+                                Ok(msg) | Err(msg) => self.set_status(cx, msg),
+                            }
+                            self.sync_chrome(cx);
                         }
-                        self.sync_chrome(cx);
                     }
                     FileDialogAction::FileSelected { id, paths }
                         if *id == live_id!(restore_pick) =>
@@ -941,6 +950,7 @@ impl MatchEvent for App {
             self.set_status(cx, app_t("cancelled"));
             self.paint_role_open_busy_chrome(cx);
         }
+        self.handle_app_template_setup_actions(cx, actions);
         if self.ui.button(cx, ids!(server_create_new)).clicked(actions) {
             let name = self.ui.text_input(cx, ids!(server_name_input)).text();
             if let Err(e) = self.activate_new_server(cx, &name) {
@@ -6444,6 +6454,7 @@ impl MatchEvent for App {
             }
             self.sync_chrome(cx);
         }
+        self.handle_app_template_settings_actions(cx, actions);
         if self.ui.button(cx, ids!(venue_brand_save)).clicked(actions) {
             self.save_venue_brand(cx);
         }

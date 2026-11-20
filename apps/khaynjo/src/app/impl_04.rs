@@ -1864,6 +1864,16 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
         if panel == Some("backup") {
             self.paint_backup_status(cx);
         }
+        if panel == Some("brand") {
+            if app_state().lock().unwrap().catalogue_public.is_empty()
+                && app_state().lock().unwrap().catalogue_public_error.is_empty()
+            {
+                if let Ok(base) = store::data_dir() {
+                    catalogue_fetch_job(CatalogueFetchKind::PublicIndex, base);
+                }
+            }
+            self.paint_settings_app_templates(cx);
+        }
         if panel == Some("privacy") {
             self.paint_privacy_panel(cx);
         }

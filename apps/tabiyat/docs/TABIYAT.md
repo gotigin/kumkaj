@@ -33,6 +33,13 @@ Sell + credit + day totals
 
 Venue is **Counter**: no restaurant floor or kitchen tickets. The pharmacy operating system stays complete — medicine sell, buy with batch and expiry, stock alerts, khata, GST bills, reports, team, backup, and extra tills. Small, medium, and large pharmacies use the same product.
 
+**App templates:** same Kumkaj rule as siblings (`docs/CLIENT_TEMPLATES_AND_SETUP.md`
+§4a). **Have** — DeviceSetup after first Server (before Owner PIN): bundled
+`assets/templates/chemist-counter` + **Import from this device** + **Skip** (no
+wipe). Settings → Brand → **Shop templates**: same sources; **Continue/Cancel**
+wipe then full pack apply. Medicines → Import starter shelf stays items-only.
+Public catalogue / cloud login download = later (no fake UI).
+
 ------------------------------------------------------------------------
 
 ## 2. Compliance posture (hard rule)

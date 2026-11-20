@@ -1,3 +1,10 @@
+/// Settings / post-setup full app-template import waiting on Owner wipe confirm.
+#[derive(Clone, Debug)]
+pub(crate) enum AppTemplateImportPending {
+    Public { id: String },
+    PackDir { dir: std::path::PathBuf, title: String },
+}
+
 struct AppState {
     store: Option<Store>,
     products: Vec<Product>,
@@ -65,6 +72,14 @@ struct AppState {
     catalogue_pending_defaults: String,
     /// Selected public template id (chip), if any.
     catalogue_selected_public_id: Option<String>,
+    /// Settings → Brand: selected public app-template id (full shop import).
+    settings_app_template_selected_id: Option<String>,
+    /// Next folder dialog is for an app-template pack, not backup dir.
+    folder_pick_for_app_template: bool,
+    /// Settings import armed — Continue/Cancel before wipe + apply (`None` = idle).
+    app_template_wipe_pending: Option<AppTemplateImportPending>,
+    /// Settings → Brand full app-template import in flight (not Menu items-only).
+    app_template_settings_import: bool,
     /// Registry rows (offline: at most one active shop server).
     local_servers: Vec<LocalServerInfo>,
     /// Settings → Backup wipe checkboxes (Owner; same categories as Windows uninstall).

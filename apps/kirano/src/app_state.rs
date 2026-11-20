@@ -1,3 +1,10 @@
+/// Settings full app-template import waiting on Owner wipe confirm.
+#[derive(Clone, Debug)]
+pub(crate) enum AppTemplateImportPending {
+    Bundled { id: String, title: String },
+    PackDir { dir: std::path::PathBuf, title: String },
+}
+
 struct AppState {
     store: Option<Store>,
     products: Vec<Product>,
@@ -40,6 +47,18 @@ struct AppState {
     language_follow_platform: bool,
     /// Legacy flag; offline LAN never shows multi-server pick (kept false).
     picking_server: bool,
+    /// Brand-new server before Owner PIN — shop template offer.
+    awaiting_app_template: bool,
+    /// DeviceSetup offer: selected bundled template id.
+    app_template_selected_id: Option<String>,
+    /// Settings → Brand: selected bundled template id.
+    settings_app_template_selected_id: Option<String>,
+    /// Next folder dialog is for an app-template pack, not backup dir.
+    folder_pick_for_app_template: bool,
+    /// Settings import armed — Continue/Cancel before wipe + apply.
+    app_template_wipe_pending: Option<AppTemplateImportPending>,
+    /// Settings → Brand full app-template import in flight.
+    app_template_settings_import: bool,
     /// Registry rows (offline: at most one active shop server).
     local_servers: Vec<LocalServerInfo>,
     /// Settings → Backup wipe checkboxes (Owner; same categories as Windows uninstall).

@@ -510,6 +510,12 @@ fn shelf_materialize_job(db_path: PathBuf) {
 enum MenuImportKind {
     Shelf,
     Client { id: String, title: String },
+    AppTemplate {
+        title: String,
+        pack_dir: PathBuf,
+        apply_shop_defaults: bool,
+        wipe_trading_first: bool,
+    },
 }
 
 struct MenuImportOutcome {
@@ -578,6 +584,15 @@ fn menu_import_job(db_path: PathBuf, kind: MenuImportKind) {
                 })
                 .unwrap_or(1)
         }
+        MenuImportKind::AppTemplate { pack_dir, .. } => menu_templates::load_from_dir(pack_dir)
+            .map(|t| {
+                t.categories
+                    .iter()
+                    .map(|c| c.items.len().saturating_add(1))
+                    .sum::<usize>()
+                    .max(1)
+            })
+            .unwrap_or(1),
     };
     *menu_import_progress().lock().unwrap() = (0, known_total);
     *menu_import_once().lock().unwrap() = None;
@@ -599,6 +614,17 @@ fn menu_import_job(db_path: PathBuf, kind: MenuImportKind) {
                         let tmpl = menu_templates::find(id)
                             .ok_or_else(|| format!("Unknown menu template '{id}'"))?;
                         store.import_menu_template(tmpl)
+                    }
+                    MenuImportKind::AppTemplate {
+                        pack_dir,
+                        apply_shop_defaults,
+                        wipe_trading_first,
+                        ..
+                    } => {
+                        if *wipe_trading_first {
+                            store.wipe_trading_data_keep_structure()?;
+                        }
+                        store.apply_app_template_pack(pack_dir, *apply_shop_defaults)
                     }
                 }
             })();

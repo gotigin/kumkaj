@@ -591,6 +591,25 @@ impl App {
         self.ui
             .button(cx, ids!(public_tmpl_import))
             .set_visible(cx, sel_id.is_some() && !app_busy);
+        {
+            let (from_dev, from_help) = {
+                let st = app_state().lock().unwrap();
+                (
+                    st.t("app_template_from_device"),
+                    st.t("app_template_from_device_help"),
+                )
+            };
+            self.ui
+                .button(cx, ids!(app_template_from_device))
+                .set_text(cx, &plain_display_text(&from_dev));
+            self.ui
+                .button(cx, ids!(app_template_from_device))
+                .set_visible(cx, !app_busy);
+            self.ui
+                .widget(cx, ids!(app_template_from_device_help))
+                .as_info_help()
+                .set_tip(&plain_display_text(&from_help));
+        }
         let chips = [
             (ids!(public_tmpl_0), ids!(public_tmpl_0_on)),
             (ids!(public_tmpl_1), ids!(public_tmpl_1_on)),
@@ -3535,6 +3554,305 @@ impl App {
             self.paint_wipe_data_chrome(cx);
             self.sync_chrome(cx);
             Ok(app_t("wipe_done"))
+        }
+    }
+
+    /// DeviceSetup / Settings: open a folder picker for a full app-template pack.
+    fn open_app_template_folder_pick(&mut self, cx: &mut Cx, for_settings: bool) {
+        if for_settings {
+            let ok = (|| -> Result<(), String> {
+                let st = app_state().lock().unwrap();
+                let actor = st.actor()?;
+                if !actor.is_owner() {
+                    return Err(st.t("wipe_owner_only"));
+                }
+                st.require_server_host(&st.t("app_template_from_device"))?;
+                Ok(())
+            })();
+            if let Err(e) = ok {
+                self.set_status(cx, e);
+                return;
+            }
+        }
+        {
+            let mut st = app_state().lock().unwrap();
+            st.folder_pick_for_app_template = true;
+        }
+        let title = app_t("app_template_from_device");
+        cx.open_select_folder_dialog(FileDialog::new().set_title(title));
+    }
+
+    /// Folder pick result — onboarding applies immediately; Settings arms wipe confirm.
+    fn on_app_template_folder_selected(&mut self, cx: &mut Cx, dir: &std::path::Path) {
+        let pending = (|| -> Result<Option<(PathBuf, String)>, String> {
+            let st = app_state().lock().unwrap();
+            let tmpl = menu_templates::read_from_dir(dir)?;
+            let name = template_client_name(&tmpl.title);
+            let title = st.t("app_tmpl_named").replace("{name}", &name);
+            if st.awaiting_app_template {
+                let store = st
+                    .store
+                    .as_ref()
+                    .ok_or_else(|| "No store".to_string())?;
+                let db = store.db_path().to_path_buf();
+                return Ok(Some((db, title)));
+            }
+            if st.actor()?.is_owner() {
+                st.require_server_host(&st.t("app_template_from_device"))?;
+            } else {
+                return Err(st.t("wipe_owner_only"));
+            }
+            drop(st);
+            let mut st = app_state().lock().unwrap();
+            st.app_template_wipe_pending = Some(AppTemplateImportPending::PackDir {
+                dir: dir.to_path_buf(),
+                title,
+            });
+            Ok(None)
+        })();
+        match pending {
+            Ok(Some((db, title))) => {
+                menu_import_job(
+                    db,
+                    MenuImportKind::AppTemplate {
+                        title,
+                        pack_dir: dir.to_path_buf(),
+                        apply_shop_defaults: true,
+                        wipe_trading_first: false,
+                    },
+                );
+                self.paint_import_progress_chrome(cx);
+                self.paint_app_template_chrome(cx, true);
+            }
+            Ok(None) => {
+                self.paint_settings_app_templates(cx);
+                self.sync_chrome(cx);
+            }
+            Err(e) => self.set_status(cx, e),
+        }
+    }
+
+    fn filter_public_app_templates(entries: &[(String, String, String)]) -> Vec<(String, String, String)> {
+        entries
+            .iter()
+            .filter(|(id, _, _)| id != catalogue_remote::PUBLIC_ITEMS_TEMPLATE_ID)
+            .take(5)
+            .cloned()
+            .collect()
+    }
+
+    /// Settings → Brand: public shop-template chips, wipe confirm, busy line.
+    pub(crate) fn paint_settings_app_templates(&mut self, cx: &mut Cx) -> String {
+        let import_busy = matches!(
+            menu_import_running().lock().unwrap().as_ref(),
+            Some(MenuImportKind::AppTemplate { .. })
+        ) && app_state().lock().unwrap().app_template_settings_import;
+        let fetch_busy = catalogue_fetch_busy().load(std::sync::atomic::Ordering::SeqCst)
+            && app_state().lock().unwrap().app_template_settings_import;
+        let busy = import_busy || fetch_busy;
+        let (
+            heading,
+            help,
+            note,
+            status,
+            sel_id,
+            entries,
+            wipe_armed,
+            progress,
+            cancel,
+            cont,
+            abort,
+            warn,
+            import_l,
+            from_dev,
+        ) = {
+            let st = app_state().lock().unwrap();
+            let entries = Self::filter_public_app_templates(&st.catalogue_public);
+            let progress = if busy {
+                if fetch_busy {
+                    catalogue_download_progress_text(&st.t("app_template_download_progress"))
+                        .unwrap_or_else(|| st.t("app_template_downloading"))
+                } else {
+                    let (done, total) = *menu_import_progress().lock().unwrap();
+                    if total > 0 {
+                        st.t("template_import_progress")
+                            .replace("{d}", &done.to_string())
+                            .replace("{t}", &total.to_string())
+                    } else {
+                        st.t("app_template_importing").replace("{title}", "…")
+                    }
+                }
+            } else {
+                String::new()
+            };
+            let status = if !st.catalogue_public_error.is_empty() && entries.is_empty() {
+                st.catalogue_public_error.clone()
+            } else if entries.is_empty() && !busy {
+                st.t("app_template_public_hint")
+            } else {
+                String::new()
+            };
+            (
+                st.t("app_template_heading"),
+                st.t("settings_app_tmpl_note"),
+                st.t("settings_app_tmpl_note"),
+                status,
+                st.settings_app_template_selected_id.clone(),
+                entries,
+                st.app_template_wipe_pending.is_some(),
+                progress,
+                st.t("cancel"),
+                st.t("app_template_wipe_continue"),
+                st.t("app_template_wipe_cancel"),
+                st.t("app_template_wipe_warn"),
+                st.t("app_template_import_selected"),
+                st.t("app_template_from_device"),
+            )
+        };
+        self.ui
+            .widget(cx, ids!(settings_app_tmpl_heading))
+            .set_text(cx, &plain_display_text(&heading));
+        self.ui
+            .widget(cx, ids!(settings_app_tmpl_help))
+            .as_info_help()
+            .set_tip(&plain_display_text(&note));
+        self.ui
+            .widget(cx, ids!(settings_app_tmpl_note))
+            .set_text(cx, &plain_display_text(&help));
+        self.ui
+            .widget(cx, ids!(settings_app_tmpl_status))
+            .set_text(cx, &plain_display_text(&status));
+        let chips = [
+            (ids!(settings_public_tmpl_0), ids!(settings_public_tmpl_0_on)),
+            (ids!(settings_public_tmpl_1), ids!(settings_public_tmpl_1_on)),
+            (ids!(settings_public_tmpl_2), ids!(settings_public_tmpl_2_on)),
+            (ids!(settings_public_tmpl_3), ids!(settings_public_tmpl_3_on)),
+            (ids!(settings_public_tmpl_4), ids!(settings_public_tmpl_4_on)),
+        ];
+        for (i, (idle, active)) in chips.iter().enumerate() {
+            if let Some((id, title, _)) = entries.get(i) {
+                let on = sel_id.as_ref() == Some(id);
+                let label = app_t("app_tmpl_named").replace("{name}", &template_client_name(title));
+                self.ui.button(cx, *idle).set_text(cx, &label);
+                self.ui.button(cx, *active).set_text(cx, &label);
+                let show = !busy && !wipe_armed;
+                self.ui.button(cx, *idle).set_visible(cx, show && !on);
+                self.ui.button(cx, *active).set_visible(cx, show && on);
+            } else {
+                self.ui.button(cx, *idle).set_visible(cx, false);
+                self.ui.button(cx, *active).set_visible(cx, false);
+            }
+        }
+        let idle = !busy && !wipe_armed;
+        self.ui
+            .button(cx, ids!(settings_public_tmpl_import))
+            .set_text(cx, &plain_display_text(&import_l));
+        self.ui
+            .button(cx, ids!(settings_public_tmpl_import))
+            .set_visible(cx, idle && sel_id.is_some());
+        self.ui
+            .button(cx, ids!(settings_app_template_from_device))
+            .set_text(cx, &plain_display_text(&from_dev));
+        self.ui
+            .button(cx, ids!(settings_app_template_from_device))
+            .set_visible(cx, idle);
+        self.ui
+            .widget(cx, ids!(settings_app_tmpl_wipe_warn))
+            .set_visible(cx, wipe_armed && !busy);
+        if wipe_armed {
+            self.ui
+                .widget(cx, ids!(settings_app_tmpl_wipe_warn))
+                .set_text(cx, &plain_display_text(&warn));
+        }
+        self.ui
+            .button(cx, ids!(settings_app_tmpl_wipe_continue))
+            .set_text(cx, &plain_display_text(&cont));
+        self.ui
+            .button(cx, ids!(settings_app_tmpl_wipe_cancel))
+            .set_text(cx, &plain_display_text(&abort));
+        self.ui
+            .button(cx, ids!(settings_app_tmpl_wipe_continue))
+            .set_visible(cx, wipe_armed && !busy);
+        self.ui
+            .button(cx, ids!(settings_app_tmpl_wipe_cancel))
+            .set_visible(cx, wipe_armed && !busy);
+        self.ui
+            .view(cx, ids!(settings_app_tmpl_busy))
+            .set_visible(cx, busy);
+        if busy {
+            self.ui
+                .widget(cx, ids!(settings_app_tmpl_progress))
+                .set_text(cx, &plain_display_text(&progress));
+            self.ui
+                .button(cx, ids!(settings_app_tmpl_cancel))
+                .set_text(cx, &plain_display_text(&cancel));
+        }
+        progress
+    }
+
+    fn arm_settings_app_template_public(&mut self, _cx: &mut Cx) -> Result<(), String> {
+        let mut st = app_state().lock().unwrap();
+        let actor = st.actor()?;
+        if !actor.is_owner() {
+            return Err(st.t("wipe_owner_only"));
+        }
+        st.require_server_host(&st.t("app_template_import_selected"))?;
+        let id = st
+            .settings_app_template_selected_id
+            .clone()
+            .ok_or_else(|| "Pick a template".to_string())?;
+        st.app_template_wipe_pending = Some(AppTemplateImportPending::Public { id });
+        Ok(())
+    }
+
+    fn run_settings_app_template_continue(&mut self, cx: &mut Cx) {
+        let pending = app_state().lock().unwrap().app_template_wipe_pending.clone();
+        let Some(pending) = pending else {
+            return;
+        };
+        {
+            let mut st = app_state().lock().unwrap();
+            st.app_template_wipe_pending = None;
+            st.app_template_settings_import = true;
+        }
+        match pending {
+            AppTemplateImportPending::Public { id } => match store::data_dir() {
+                Ok(base) => {
+                    catalogue_fetch_job(CatalogueFetchKind::DownloadPublic { id }, base);
+                    self.paint_import_progress_chrome(cx);
+                    self.paint_settings_app_templates(cx);
+                }
+                Err(e) => {
+                    app_state().lock().unwrap().app_template_settings_import = false;
+                    self.set_status(cx, e.to_string());
+                    self.paint_settings_app_templates(cx);
+                }
+            },
+            AppTemplateImportPending::PackDir { dir, title } => {
+                let db = {
+                    let st = app_state().lock().unwrap();
+                    st.store
+                        .as_ref()
+                        .map(|s| s.db_path().to_path_buf())
+                };
+                let Some(db) = db else {
+                    app_state().lock().unwrap().app_template_settings_import = false;
+                    self.set_status(cx, "No store");
+                    self.paint_settings_app_templates(cx);
+                    return;
+                };
+                menu_import_job(
+                    db,
+                    MenuImportKind::AppTemplate {
+                        title,
+                        pack_dir: dir,
+                        apply_shop_defaults: true,
+                        wipe_trading_first: true,
+                    },
+                );
+                self.paint_import_progress_chrome(cx);
+                self.paint_settings_app_templates(cx);
+            }
         }
     }
 }

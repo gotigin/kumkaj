@@ -73,6 +73,8 @@ struct AppState {
     onboard_step: u8,
     /// Active start template id (`custom`, `moklanjo_agency`, …).
     entity_template_id: String,
+    /// Settings Product chips: armed re-apply waiting on wipe confirm.
+    pending_entity_template_apply: Option<String>,
     /// Bill type for the open cart (Account booking / Tax invoice vs Cash booking / Cash memo).
     money_lane: MoneyLane,
     /// Buy tab: purchase posts to AP when true.

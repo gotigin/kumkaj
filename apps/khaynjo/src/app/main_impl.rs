@@ -249,9 +249,14 @@ impl App {
                         )
                     )
                 {
-                    let awaiting = app_state().lock().unwrap().awaiting_app_template;
+                    let (awaiting, settings_import) = {
+                        let st = app_state().lock().unwrap();
+                        (st.awaiting_app_template, st.app_template_settings_import)
+                    };
                     if awaiting {
                         self.paint_app_template_chrome(cx, true);
+                    } else if settings_import {
+                        self.paint_settings_app_templates(cx);
                     }
                 }
             } else if print_share::is_finding_printers()
@@ -383,7 +388,7 @@ impl App {
             if let Some(outcome) = catalogue_fetch_once().lock().unwrap().take() {
                 match outcome.result {
                     Ok(CatalogueFetchOk::PublicIndex(index)) => {
-                        let awaiting = {
+                        let (awaiting, settings_import) = {
                             let mut st = app_state().lock().unwrap();
                             st.catalogue_public = index
                                 .templates
@@ -391,10 +396,14 @@ impl App {
                                 .map(|e| (e.id, e.title, e.blurb))
                                 .collect();
                             st.catalogue_public_error.clear();
-                            st.awaiting_app_template
+                            (st.awaiting_app_template, st.app_template_settings_import)
                         };
                         if awaiting {
                             self.paint_app_template_chrome(cx, true);
+                        } else if settings_import
+                            || app_state().lock().unwrap().settings_panel == Some("brand")
+                        {
+                            self.paint_settings_app_templates(cx);
                         } else {
                             self.paint_menu_public_card(cx);
                         }
@@ -456,15 +465,21 @@ impl App {
                             // Menu imports add items only. Onboarding (before Owner PIN)
                             // also applies the pack's shop settings.
                             let onboarding = st.awaiting_app_template;
-                            let apply_defaults = onboarding
-                                && (manifest.applies_shop_defaults
+                            let settings_import = st.app_template_settings_import;
+                            let apply_defaults = if settings_import {
+                                true
+                            } else if onboarding {
+                                manifest.applies_shop_defaults
                                     || !manifest.shop_defaults.trim().is_empty()
-                                    || pack_dir.join("shop_defaults.json").is_file());
-                            let name = template_client_name(&manifest.title);
-                            let title = if !onboarding {
-                                st.t("items_tmpl_named").replace("{name}", &name)
+                                    || pack_dir.join("shop_defaults.json").is_file()
                             } else {
+                                false
+                            };
+                            let name = template_client_name(&manifest.title);
+                            let title = if settings_import || onboarding {
                                 st.t("app_tmpl_named").replace("{name}", &name)
+                            } else {
+                                st.t("items_tmpl_named").replace("{name}", &name)
                             };
                             Ok((
                                 db,
@@ -472,16 +487,22 @@ impl App {
                                     title,
                                     pack_dir,
                                     apply_shop_defaults: apply_defaults,
+                                    wipe_trading_first: settings_import,
                                 },
                             ))
                         })();
                         match job {
                             Ok((db, kind)) => {
-                                let awaiting = app_state().lock().unwrap().awaiting_app_template;
+                                let (awaiting, settings_import) = {
+                                    let st = app_state().lock().unwrap();
+                                    (st.awaiting_app_template, st.app_template_settings_import)
+                                };
                                 menu_import_job(db, kind);
                                 self.paint_import_progress_chrome(cx);
                                 if awaiting {
                                     self.paint_app_template_chrome(cx, true);
+                                } else if settings_import {
+                                    self.paint_settings_app_templates(cx);
                                 } else {
                                     self.paint_menu_public_card(cx);
                                 }
@@ -548,10 +569,18 @@ impl App {
                 // Only the onboarding offer finishes to Lock; the same imports started
                 // from the Menu screen (public shelf download, private items template)
                 // stay on Menu.
-                let was_app_template = matches!(
-                    &outcome.kind,
-                    MenuImportKind::AppTemplate { .. } | MenuImportKind::ShelfFromDir { .. }
-                ) && app_state().lock().unwrap().awaiting_app_template;
+                let (was_onboarding, was_settings_app) = {
+                    let st = app_state().lock().unwrap();
+                    let onboarding = st.awaiting_app_template
+                        && matches!(
+                            &outcome.kind,
+                            MenuImportKind::AppTemplate { .. }
+                                | MenuImportKind::ShelfFromDir { .. }
+                        );
+                    let settings = st.app_template_settings_import
+                        && matches!(&outcome.kind, MenuImportKind::AppTemplate { .. });
+                    (onboarding, settings)
+                };
                 let msg = match outcome.result {
                     Ok(done) => {
                         let reload = app_state().lock().unwrap().reload_all();
@@ -579,6 +608,11 @@ impl App {
                     let mut st = app_state().lock().unwrap();
                     st.template_confirm = false;
                     st.menu_selected_id = None;
+                    if was_settings_app {
+                        st.app_template_settings_import = false;
+                        st.settings_app_template_selected_id = None;
+                        st.app_template_wipe_pending = None;
+                    }
                     let menu_priv = std::mem::take(&mut st.menu_priv_origin);
                     if menu_priv && msg.is_ok() {
                         // Imported: the card goes back to a fresh code entry.
@@ -596,7 +630,7 @@ impl App {
                 match msg {
                     Ok(m) => {
                         self.set_status(cx, m);
-                        if was_app_template {
+                        if was_onboarding {
                             // Cash memo by default — tax invoice is opt-in with tax off.
                             app_state().lock().unwrap().money_lane = MoneyLane::Owner;
                             // The pack may carry the shop's logo: the mark on
@@ -611,6 +645,18 @@ impl App {
                                 invalidate_image_loads_for_path(&dir.join("venue_icon.webp"));
                             }
                             self.finish_app_template_to_lock(cx, true);
+                        } else if was_settings_app {
+                            let brand = app_state()
+                                .lock()
+                                .unwrap()
+                                .store
+                                .as_ref()
+                                .and_then(|s| s.brand_images_dir().ok());
+                            if let Some(dir) = brand {
+                                invalidate_image_loads_for_path(&dir.join("venue_icon.webp"));
+                            }
+                            self.paint_settings_app_templates(cx);
+                            self.sync_chrome(cx);
                         } else {
                             self.sync_chrome(cx);
                         }

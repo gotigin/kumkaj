@@ -6766,7 +6766,7 @@ script_mod! {
                                         font_size: 15.
                                     }
                                     h_duress_help := InfoHelp{
-                                        tip: "Optional. If this PIN is typed at unlock instead of yours, all books entries are wiped (bookings, ledgers, history) and the desk opens as Owner looking normal — rates, parties, zones, staff and settings stay. Schema and config are not deleted. Use only if you are forced to unlock. Leave blank and save to turn off. Never the same as anyone's PIN."
+                                        tip: "Offline Server/Client LAN only — not cloud. Off by default: Owner turns it on once by saving this PIN (Team, including on a Client till). At unlock, if this PIN is typed instead of a real staff PIN, books are wiped on the Server and the desk opens as Owner looking normal — rates, parties, zones, staff and settings stay. Never the same as anyone's PIN."
                                     }
                                 }
                                 duress_status := WrapLabel{
@@ -6981,6 +6981,16 @@ script_mod! {
                                             tmpl_pick_global_pkg := SegBtn{text: "Global Pkg App Template"}
                                             tmpl_pick_global_pkg_on := SegBtnOn{text: "Global Pkg App Template" visible: false}
                                         }
+                                    }
+                                    app_template_wipe_warn := WrapLabel{
+                                        body: " "
+                                        font_color: #x0B1220
+                                        font_size: 14.
+                                        visible: false
+                                    }
+                                    ActionStack{
+                                        app_template_wipe_continue := StackPrimaryBtn{text: "Continue" visible: false}
+                                        app_template_wipe_cancel := StackSecondaryBtn{text: "Cancel" visible: false}
                                     }
                                     h_product_only_moklanjo := WrapLabel{
                                         width: Fill

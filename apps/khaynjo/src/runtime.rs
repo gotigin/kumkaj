@@ -517,6 +517,7 @@ enum MenuImportKind {
         title: String,
         pack_dir: PathBuf,
         apply_shop_defaults: bool,
+        wipe_trading_first: bool,
     },
 }
 
@@ -639,8 +640,14 @@ fn menu_import_job(db_path: PathBuf, kind: MenuImportKind) {
                     MenuImportKind::AppTemplate {
                         pack_dir,
                         apply_shop_defaults,
+                        wipe_trading_first,
                         ..
-                    } => store.apply_app_template_pack(pack_dir, *apply_shop_defaults),
+                    } => {
+                        if *wipe_trading_first {
+                            store.wipe_trading_data_keep_structure()?;
+                        }
+                        store.apply_app_template_pack(pack_dir, *apply_shop_defaults)
+                    }
                 }
             })();
             store::set_import_progress_notify(None);

@@ -195,6 +195,35 @@ gate Counter park).
 (table/Floor running order, etc.) before settle. Still not a sale until
 finalize.
 
+### Clear books entries (not schema) — every app
+
+Owner can clear **trading / books entry values** while keeping menu or rates,
+staff, settings, and schema:
+
+| Path | What it clears | What stays |
+|------|----------------|------------|
+| Settings → Backup → **Business records** (Owner PIN) | Sales / bookings / ledgers / history (trading rows) | Setup, catalogue structure, staff, screen prefs |
+| Settings → Backup → **Clear history now** (where present) | Same purge as above | Same |
+| **Emergency unlock PIN** (below) | Same books wipe at unlock | Same; unlock looks like a normal Owner login |
+
+**Shop setup** wipe is different — it removes the books database and returns
+to DeviceSetup. Do not confuse with Business records.
+
+### Emergency unlock PIN (duress) — offline Server/Client LAN only
+
+Common to **every** Kumkaj app. **Not** a cloud-account feature.
+
+| Rule | Detail |
+|------|--------|
+| When | Offline **Server / Client LAN** shops only |
+| Default | **Off** — Owner must enable once by saving a PIN on Team |
+| Setup | Owner only; may set/clear from Server **or** a paired Client till (change is written on the Server over LAN) |
+| At unlock | Login always checks this PIN first (Server local unlock and Client → Server `/login`). Match → wipe books entries on the Server → open as Owner looking normal |
+| Does not | Delete schema, config, catalogue, staff, or the local server |
+| Turn off | Owner clears the PIN on Team |
+
+Vision §17; Design.md DeviceSetup / wipe row. Separate from Backup wipe UI.
+
 ### Open orders are not books yet
 
 Many trades hold an order open before it is settled — a restaurant

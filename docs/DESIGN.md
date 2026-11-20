@@ -72,7 +72,7 @@ Offline / LAN Server–Client: **one shop server per install**. Server Mode crea
 | **No local server yet** | Server Mode **creates** the server and continues to Lock / Owner PIN. |
 | **Server already exists** | Server Mode **opens** it (no list). |
 | **Wipe local data** | **Owner** in Settings → Backup: same categories as Windows uninstall (**business records** / **shop setup** / **screen preferences**) + Owner PIN. Shop setup wipe returns to DeviceSetup. |
-| **Emergency unlock PIN (duress)** | **Offline cloudless LAN only** (not a cloud-account feature). Separate from Backup wipe. Owner sets an optional second PIN on Team. Typing it at unlock wipes **books entries only** (sales/ledgers/history/open floor work) and opens as Owner looking normal — **menu/prices/tables/staff/settings/schema stay**. Does not delete the shop server. Vision §17. |
+| **Emergency unlock PIN (duress)** | **Offline Server/Client LAN only** (not cloud). **Off by default** — Owner enables once by saving a PIN on Team (Server or Client till; written on the Server). Unlock (local or Client→Server login) always checks it first; match wipes **books entries only** and opens as Owner looking normal — **catalogue/staff/settings/schema stay**. Separate from Backup → Business records. Vision §17; [`BUSINESS_BOOKS.md`](BUSINESS_BOOKS.md). |
 
 **Another outlet offline** = another device (or OS user profile) with its own install — not a second server inside this app. **Multi-server on one install** is reserved for a **future cloud** plan, not offline LAN.
 

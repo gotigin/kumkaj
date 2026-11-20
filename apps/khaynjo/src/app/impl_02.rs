@@ -26,6 +26,13 @@ fn paint_import_progress_chrome(&mut self, cx: &mut Cx) {
         };
         let work = books_work_status().lock().unwrap().clone();
         self.show_work_status(cx, work.unwrap_or_else(|| progress.clone()));
+        if app_state().lock().unwrap().app_template_settings_import {
+            let line = self.paint_settings_app_templates(cx);
+            let work = books_work_status().lock().unwrap().clone();
+            self.show_work_status(cx, work.unwrap_or(line));
+            self.paint_submit_busy_chrome(cx);
+            return;
+        }
         let kind = menu_import_running().lock().unwrap().clone();
         match kind {
             Some(MenuImportKind::Shelf) => {

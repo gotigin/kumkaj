@@ -27,6 +27,18 @@ fn paint_import_progress_chrome(&mut self, cx: &mut Cx) {
                     .label(cx, ids!(template_info))
                     .set_text(cx, &app_state().lock().unwrap().t("template_importing"));
             }
+            Some(MenuImportKind::AppTemplate { title, .. }) => {
+                let st = app_state().lock().unwrap();
+                let awaiting = st.awaiting_app_template;
+                let settings = st.app_template_settings_import;
+                drop(st);
+                if awaiting {
+                    self.paint_app_template_chrome(cx, true);
+                } else if settings {
+                    self.paint_settings_app_templates(cx);
+                }
+                let _ = title;
+            }
             Some(MenuImportKind::Client { title, .. }) => {
                 self.ui
                     .view(cx, ids!(client_template_confirm))
@@ -2343,6 +2355,10 @@ fn paint_submit_busy_chrome(&mut self, cx: &mut Cx) {
         }
         self.hide_docs_and_debug_chrome(cx);
         self.sync_device_setup_sections(cx);
+        {
+            let awaiting = app_state().lock().unwrap().awaiting_app_template;
+            self.paint_app_template_chrome(cx, awaiting);
+        }
         {
             let st = app_state().lock().unwrap();
             // Pairing digits live in `pairing_code_value`; this label is status only

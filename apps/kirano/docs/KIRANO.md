@@ -92,6 +92,13 @@ owner-facing copy or code.
 
 - Locked product face: `kirano_kirana` (`src/entity_template.rs`,
   Tax invoice / Cash memo). A new shop stays empty until the owner imports the neighbourhood shelf (`assets/items`, `assets/templates/neighbourhood`).
+- **Full shop App Templates** (`docs/CLIENT_TEMPLATES_AND_SETUP.md` §4a):
+  **Have** — DeviceSetup after first Server (before Owner PIN): bundled
+  `assets/templates/neighbourhood` + **Import from this device** + **Skip** (no
+  wipe). Settings → Brand → **Shop templates**: same sources; **Continue/Cancel**
+  wipe (`wipe_trading_data_keep_structure`) then `apply_app_template_pack`.
+  Menu → Item templates stays items-only additive. Public catalogue / cloud login
+  download = later (no fake UI).
 - Parties: **Customer** (khata/AR) and **Supplier** / wholesaler (AP) —
   role labels on one party UUID.
 - Shell: **Books · Sell · Buy · Items · Sales · Inventory · Credit ·
