@@ -9,13 +9,13 @@
   "shop_defaults_id": "",
   "shop_defaults": "shop_defaults.json",
   "template": "template.json",
-  "bytes": 12285816,
-  "sha256": "37ffda3bce8add4e26812104870ff6f0ccf366dd03b188869a7c65c3e16712b1",
+  "bytes": 6264118,
+  "sha256": "3903cf2743846ecf05ff6df6127d4adaabc0f14e6aa89e8d5329fa0a916fc4f6",
   "files": [
     {
       "path": "template.json",
-      "bytes": 30282,
-      "sha256": "37ffda3bce8add4e26812104870ff6f0ccf366dd03b188869a7c65c3e16712b1"
+      "bytes": 29966,
+      "sha256": "3903cf2743846ecf05ff6df6127d4adaabc0f14e6aa89e8d5329fa0a916fc4f6"
     },
     {
       "path": "shop_defaults.json",
@@ -23,39 +23,19 @@
       "sha256": "6e820b6eb7016b7dfe49c890a77b1dc3b67129385809b10dd59c9968437f1843"
     },
     {
-      "path": "images/bakery-cafe/egg-puff.webp",
-      "bytes": 70574,
-      "sha256": "d5b2e635fff0ed3320c6dd5374dcc6fab6baca6742fd9e7b976561d08d1b527d"
-    },
-    {
-      "path": "images/bakery-cafe/egg-tart.webp",
-      "bytes": 156774,
-      "sha256": "2e61fe07a18f88bb5ca2edd511229cd3573b0886e732178947298abd9197e5d7"
-    },
-    {
       "path": "images/bakery-cafe/pav-bun.webp",
       "bytes": 97760,
       "sha256": "9725d92054c103cdb9c7f2c52eec9127f25cd5669ff43acde042a82662f53453"
     },
     {
+      "path": "images/breakfast/boiled-eggs.webp",
+      "bytes": 43168,
+      "sha256": "47bc45955446314e18e71df39bd21ffd4bbe0011680743aa6b6134d2081fee21"
+    },
+    {
       "path": "images/breakfast/cheese-omelette.webp",
       "bytes": 129120,
       "sha256": "978c2ac53eb915062936dd69042f6b7d63f528be0a758524f26f781a9cb524fe"
-    },
-    {
-      "path": "images/breakfast/egg-bhurji-toast.webp",
-      "bytes": 78488,
-      "sha256": "f732555a78e73c57e4bec74adcbdd6fab122ff7a090cbbdc0d62498560e56287"
-    },
-    {
-      "path": "images/breakfast/eggs-benedict.webp",
-      "bytes": 52620,
-      "sha256": "b0b8212b63fc277e5535cae7389fd961d48f2d8e582aec0c2d268edc2f4285db"
-    },
-    {
-      "path": "images/breakfast/eggs-florentine.webp",
-      "bytes": 152588,
-      "sha256": "0c8fe3c66adaf502e42edd6c6f42f1aa19894e8588a4af9f9d6756145faf4637"
     },
     {
       "path": "images/breakfast/fried-egg.webp",
@@ -68,39 +48,14 @@
       "sha256": "532d7bb54b4e20d0e4df0d98015ee87e5a6a525ab42423b3d86552bcf8530463"
     },
     {
-      "path": "images/breakfast/omelette.webp",
-      "bytes": 64036,
-      "sha256": "59ba0ef1d152f7e29158f6e8795ec9279313cf781cdc848439850a2f2b9b6a68"
+      "path": "images/breakfast/shakshuka.webp",
+      "bytes": 89380,
+      "sha256": "ce0c82de26892ba58dcdba285b43100ed521c256a83275a445ec71ec18524848"
     },
     {
-      "path": "images/breakfast/poached-egg.webp",
-      "bytes": 60914,
-      "sha256": "0b389f8bee56439c570ced119eca26581cb74bd956f1139fc07c57230255b328"
-    },
-    {
-      "path": "images/breakfast/scrambled-eggs.webp",
-      "bytes": 70712,
-      "sha256": "09151ca24122a34795cb8077a1125599d78c635d1ca492582f98ea06b8ca6cd0"
-    },
-    {
-      "path": "images/chinese/chinese-stir-fry-vegetables.webp",
-      "bytes": 81348,
-      "sha256": "12be8ee8614c4cf5ddd3c96045e9921afbb263b63af91184275639d95bf87c13"
-    },
-    {
-      "path": "images/chinese/egg-foo-young.webp",
-      "bytes": 100250,
-      "sha256": "67de9d57f008b30d1bc9b8a45a924e82c4e18ca2d8f8115cdd5a33ef33f84dd8"
-    },
-    {
-      "path": "images/chinese/hainan-chicken-rice.webp",
-      "bytes": 49808,
-      "sha256": "f68261006e906585106d5c5d3e6a3f37ebb83d6141eac6e4ab33aa6373032f2b"
-    },
-    {
-      "path": "images/chinese/tea-eggs.webp",
-      "bytes": 55942,
-      "sha256": "45ffc98c6e7dca37a22999c42b46efd79cab2ec194e55f55bc58395aad8ee494"
+      "path": "images/chicken-gravy-rice.webp",
+      "bytes": 143720,
+      "sha256": "34e20e96e2ad097cf9e55fc8da487cb5ec11c9825ea3ed0f18854f635be7a701"
     },
     {
       "path": "images/cold-beverages/masala-chaas.webp",
@@ -113,11 +68,6 @@
       "sha256": "9a0833c548d8c06053f219ace0cdc1a6d4c7dd359a4db8fd90857c436ed47fa9"
     },
     {
-      "path": "images/continental/fish-pie.webp",
-      "bytes": 84424,
-      "sha256": "832fe6179230288e07c63ba42956c51cece4e832f0273438f1ed643ae06958f0"
-    },
-    {
       "path": "images/continental/grilled-fish.webp",
       "bytes": 100954,
       "sha256": "69b962ba4dc1afc4e7e33024850118de2fc6038d072227a28ae18a29353c0e23"
@@ -128,69 +78,9 @@
       "sha256": "0328c0f4b2ae2754a80af1c37f373378dd885f614fa482a42a9bffde96212361"
     },
     {
-      "path": "images/continental/rack-of-lamb.webp",
-      "bytes": 59442,
-      "sha256": "885147417a5c61483bdc6f8e858f3ac7b13e289a89cd47a4c10e53c41379d3ae"
-    },
-    {
-      "path": "images/continental/roast-chicken.webp",
-      "bytes": 94528,
-      "sha256": "19bdd7f4b4ccc72f27b398273f16338f9bacebe8ad2a865d1ceab0dabaebd62a"
-    },
-    {
-      "path": "images/continental/scotch-egg.webp",
-      "bytes": 57840,
-      "sha256": "2980bb1eab757b18f4fdb17fc3292dfac11978b70ae081a0b1495965c04cdf6d"
-    },
-    {
-      "path": "images/continental/shrimp-scampi.webp",
-      "bytes": 133544,
-      "sha256": "3acc5f1c9621f9bdbfaaff1c3fa511a82643aa4cf7f53654308f3388b677e204"
-    },
-    {
-      "path": "images/continental/spanish-omelette.webp",
-      "bytes": 51236,
-      "sha256": "43788c5171266d86cfcdb4c47c4c99afce38d5d8dc2e4c7ffe57a5e36c1ef526"
-    },
-    {
-      "path": "images/fast-food/chicken-bucket.webp",
-      "bytes": 68792,
-      "sha256": "bfecb5b8968b52ee2edff073d1bba9e194772a702c05d813407827182655edbc"
-    },
-    {
-      "path": "images/fast-food/chicken-burger.webp",
-      "bytes": 76834,
-      "sha256": "ac9d8543b743fe699b8f63ab6e9ddbf93499956d9c919e48052db649f4a9ad37"
-    },
-    {
-      "path": "images/fast-food/chicken-nuggets.webp",
-      "bytes": 35816,
-      "sha256": "1d224cb46bfb23627bd401572fecf0017bc52e2c6d32390c424cf641408eb4c2"
-    },
-    {
-      "path": "images/fast-food/chicken-strips.webp",
-      "bytes": 60942,
-      "sha256": "66dcad014b0a86c75c1cdc42125cfeb47e43ca7a4ab52984e44a3947675c48ac"
-    },
-    {
-      "path": "images/fast-food/chicken-wrap.webp",
-      "bytes": 83596,
-      "sha256": "9898c9188c71be47c6049b3be42039ddcd0fb90799458cfdfc7481fed23ae1d7"
-    },
-    {
-      "path": "images/fast-food/egg-sandwich.webp",
-      "bytes": 155806,
-      "sha256": "0d8addc82fbcc281df33234044a6f2ff7e61674b2e439a4700d463de9dca7fd5"
-    },
-    {
-      "path": "images/fast-food/fish-and-chips.webp",
-      "bytes": 96426,
-      "sha256": "2b0ce92b4338ef7fdb63606417c9e8af03b60cea98ad7a2ddbd13ea8f173e657"
-    },
-    {
-      "path": "images/fast-food/fish-burger.webp",
-      "bytes": 91984,
-      "sha256": "0e9c5a0d152eccfb3a173a9a020602e54239fa171dcd8089be17066cf6ca7db1"
+      "path": "images/egg-masala.webp",
+      "bytes": 101608,
+      "sha256": "f7ef78f9b9cc116144222d48a3500114a7aa8678b0bbf6b73c743a3df6579dd0"
     },
     {
       "path": "images/fast-food/fried-chicken.webp",
@@ -198,14 +88,19 @@
       "sha256": "d401971af5b68e49a28ebdf32622734557222acdd64df7a59bf5344a63b3c54e"
     },
     {
-      "path": "images/fast-food/popcorn-chicken.webp",
-      "bytes": 81508,
-      "sha256": "8a0c64501293f6da9d780795eb90e3ee0bf731f21471a0494c17b18c9e15aa4a"
+      "path": "images/fish-biryani.webp",
+      "bytes": 126752,
+      "sha256": "851c7292f412c848d5cb44a7320596bab3998f9a1f3bbd89212c237dc29fd881"
     },
     {
-      "path": "images/hot-beverages/egg-coffee.webp",
-      "bytes": 38298,
-      "sha256": "39138af6f9a126ff638e3110297997edb8038e05ad1f20abd6fb89879ee9d4e9"
+      "path": "images/fish-fried-rice.webp",
+      "bytes": 89402,
+      "sha256": "a3b96964870f8b19b053508427ef9e5e3b0efd30ce02eff49c2dc020bb9e3061"
+    },
+    {
+      "path": "images/grilled-eggs.webp",
+      "bytes": 96212,
+      "sha256": "a619069321a4d11e1ba9728b78e1fd7a5e6145443775699b6d0692b91f42bf57"
     },
     {
       "path": "images/indian-breads/butter-naan.webp",
@@ -213,34 +108,19 @@
       "sha256": "fc1954da3cb03770b853194c7161bf5fe6bf87ff8d2b2b27af11fe4316dfa2a5"
     },
     {
+      "path": "images/indian-breads/chapati.webp",
+      "bytes": 48078,
+      "sha256": "5cbdf4b8b00b548e333f166541eca2260be672d12c07c16ddcc793d9e03900e8"
+    },
+    {
       "path": "images/indian-mains/amritsari-fish.webp",
       "bytes": 76356,
       "sha256": "a6f133be7e085ef3144a96c151de4cd35ec2a0ac592b2a55ba803b8b86429e20"
     },
     {
-      "path": "images/indian-mains/bhindi-masala.webp",
-      "bytes": 81966,
-      "sha256": "552bfaa298f48985e14cdd32b798204680147eb510f5a2f8183a5cc72aa8741f"
-    },
-    {
       "path": "images/indian-mains/butter-chicken.webp",
       "bytes": 141262,
       "sha256": "e250a48e1fa0fd38c2f929d95d640783d0dcd204d6138a7018de62d6e81229e2"
-    },
-    {
-      "path": "images/indian-mains/chana-masala.webp",
-      "bytes": 99228,
-      "sha256": "0a82f01380d5951c5f2917ffafe31d612d0fbaf346ef8aebb8b03f2d18b4b037"
-    },
-    {
-      "path": "images/indian-mains/chicken-changezi.webp",
-      "bytes": 78844,
-      "sha256": "8b744ed6085fec4c8786dd993ddfb42130c4fbef66649a0b955c4785502f016c"
-    },
-    {
-      "path": "images/indian-mains/chicken-chettinad.webp",
-      "bytes": 115030,
-      "sha256": "8955e232db974c667070650c6f719f47dca8519e435301206c1df6a436a65057"
     },
     {
       "path": "images/indian-mains/chicken-curry.webp",
@@ -263,29 +143,9 @@
       "sha256": "00c6dbded5a17061ca1c1e02bdeb11d6c598ca103406046a5b0d34efcd528dae"
     },
     {
-      "path": "images/indian-mains/chicken-tikka-masala.webp",
-      "bytes": 118368,
-      "sha256": "2bdac3a5b9bf1cd0455f3bf68170ed4501009d31b9878871879043059413a510"
-    },
-    {
       "path": "images/indian-mains/chicken-tikka.webp",
       "bytes": 39698,
       "sha256": "3e4affb380a0e2d676434f08ffe8133cd72e9e805704973e84aef4b180136c6c"
-    },
-    {
-      "path": "images/indian-mains/chicken-vindaloo.webp",
-      "bytes": 132770,
-      "sha256": "6487d19b7459d696aa820c5e58ada4bd35f1d6d329df472003100b8d661ffbb3"
-    },
-    {
-      "path": "images/indian-mains/chicken-xacuti.webp",
-      "bytes": 112290,
-      "sha256": "ef1f1c307cfb5bba15868b3b375c6174fbb70667ebf5346ca37e27366cceb931"
-    },
-    {
-      "path": "images/indian-mains/dal-fry.webp",
-      "bytes": 49070,
-      "sha256": "1675a518bfddf4244ab74cd1bd49b292b2caf807cda1b2f0f8961c8fd1761a05"
     },
     {
       "path": "images/indian-mains/egg-bhurji.webp",
@@ -294,38 +154,33 @@
     },
     {
       "path": "images/indian-mains/egg-curry.webp",
-      "bytes": 38834,
-      "sha256": "0a7e39991b4383f3e80f8faca5987e53f6949c346d03835dcebf29dcce85dc9f"
-    },
-    {
-      "path": "images/indian-mains/fish-tikka.webp",
-      "bytes": 53108,
-      "sha256": "95d6a26a831312ae2ede6106c66512c5f3fb9f4c83a98ef940038e6bd7454aa6"
-    },
-    {
-      "path": "images/indian-mains/goan-fish-curry.webp",
-      "bytes": 79794,
-      "sha256": "b74c7bec3af8e1c4288b7371dedee90d13c56cfc7c383c5f8fd12bc396caecf8"
+      "bytes": 104958,
+      "sha256": "4585cace538ab946155d14ebb9972a5c27c5ba01dd4c66ac7bfa654c95a4456c"
     },
     {
       "path": "images/indian-mains/kadai-chicken.webp",
-      "bytes": 71778,
-      "sha256": "cca8d98a8be94af699019df90beb4b2687a78b448a8a67c52b4bb2f4580cd1ce"
+      "bytes": 164706,
+      "sha256": "4ca3e5847432e77be8ea64479b0134db8af7c68744d13c3e12a582c3a208eb4b"
     },
     {
       "path": "images/indian-mains/keema-matar.webp",
-      "bytes": 80106,
-      "sha256": "8cbcbdc1b822716394ea5632ae216926f5603c849df5b27a4494d0555e865e42"
+      "bytes": 83956,
+      "sha256": "f0322def06247d99b68a0c2359e8cc6a0db3190d3ba77f5adb5e0344cd9c1701"
     },
     {
       "path": "images/indian-mains/kolhapuri-chicken.webp",
-      "bytes": 167082,
-      "sha256": "9100c32c47d8e78ac16e7811f5c8b7ed905b6503c1988c57ef20bf297833df69"
+      "bytes": 164864,
+      "sha256": "314add04ccead2b62948741cd5a1c78e382b6f7a6e206d3538b816430515fe3e"
     },
     {
-      "path": "images/indian-mains/mushroom-masala.webp",
-      "bytes": 130616,
-      "sha256": "eb444405aeb22b49df1fe2e1a856de0bfa725083612e160f9c83127d25bf15ff"
+      "path": "images/indian-mains/kosha-mangsho.webp",
+      "bytes": 92244,
+      "sha256": "c76b6ac66c03f2c0b9fae451db1deae9bcb0394ca775f1eb76029e059373f81c"
+    },
+    {
+      "path": "images/indian-mains/macher-jhol.webp",
+      "bytes": 206792,
+      "sha256": "b54b64a9fc9976a0b9722a16e53627685971ce4c8e4b2ce98c1e82b2263c2fd2"
     },
     {
       "path": "images/indian-mains/mutton-curry.webp",
@@ -338,24 +193,19 @@
       "sha256": "d4f14c0bb66a49703eb95870abc379ae3a553ce6d50a95e05cad1b4ba3ec9b3e"
     },
     {
-      "path": "images/indian-mains/navratan-korma.webp",
-      "bytes": 136182,
-      "sha256": "324876f9cbd92d0f0503bcfd36aa91d083616a303092f1cb46daf9a90e0dd626"
-    },
-    {
       "path": "images/indian-mains/prawn-curry.webp",
       "bytes": 46824,
       "sha256": "0934c1ba6261f1809d7164c298d87e267e817ce7ed2770622f22ce7f1fa0f2f8"
     },
     {
-      "path": "images/indian-mains/rajma-masala.webp",
-      "bytes": 81146,
-      "sha256": "436a416ce68e79f07657862ecd23d2b741cf5b5a1805b2e5683f28c631595034"
-    },
-    {
       "path": "images/indian-mains/tandoori-chicken.webp",
       "bytes": 80104,
       "sha256": "d34af76a1ceaee495499ef972d4704d4dbcc02523991fba1fa194cfce7da9bc0"
+    },
+    {
+      "path": "images/indian-mains/tandoori-prawns.webp",
+      "bytes": 102676,
+      "sha256": "be80cc4bdcad1cf1e94ee1fc7ea6c28d913176fbf098a85dbf2af1ae51f4ad43"
     },
     {
       "path": "images/indian-rice/chicken-biryani.webp",
@@ -369,8 +219,8 @@
     },
     {
       "path": "images/indian-rice/jeera-rice.webp",
-      "bytes": 44154,
-      "sha256": "73d2ceb0a497a9df954d9569bf218151297bf2740611620c9183612b99564898"
+      "bytes": 129816,
+      "sha256": "b9ec73eb8e5d9bb7f95eb4480c6f9fa5c4a48ed0dc9e624b471d61a66ceba333"
     },
     {
       "path": "images/indian-rice/lucknowi-biryani.webp",
@@ -384,28 +234,8 @@
     },
     {
       "path": "images/indian-rice/prawn-biryani.webp",
-      "bytes": 96886,
-      "sha256": "db1e52a5a7dcea128a59b7fcd718741cbeef7afe5f6f91338778ef5d64bf4f16"
-    },
-    {
-      "path": "images/indian-rice/sindhi-biryani.webp",
-      "bytes": 207032,
-      "sha256": "a8f9d1431d2414e0d5341e6bcbb40231d407184feffb7e45895faf23192e7607"
-    },
-    {
-      "path": "images/indian-rice/tawa-pulao.webp",
-      "bytes": 40574,
-      "sha256": "ab3b054d42fb54ecc8245b821c42c76682eaff5d747cbc2168f6801a526bb50c"
-    },
-    {
-      "path": "images/indian-rice/thalassery-biryani.webp",
-      "bytes": 149702,
-      "sha256": "cd4e119c493e0a8b68ca4863ba5e69c2b1c5804b0b20a50a7c2562c9b89442ef"
-    },
-    {
-      "path": "images/indian-rice/tomato-rice.webp",
-      "bytes": 89044,
-      "sha256": "2a3005d23cf5c9279e9887e3763ff852551ffba675c1e057e1acfd407574dcab"
+      "bytes": 76240,
+      "sha256": "0a9308aeb7261b283bc40c211fae9e642961fc1a5bc45cf3ed2d9eb2df244d05"
     },
     {
       "path": "images/indo-chinese/chicken-65.webp",
@@ -423,19 +253,9 @@
       "sha256": "a7d0b8886263ac1ed3efb4934fed8788e58519145310c6e12ac834711c23bd5b"
     },
     {
-      "path": "images/indo-chinese/chicken-manchurian.webp",
-      "bytes": 59378,
-      "sha256": "159d6b9d147739122c24d2ad0d86bf5d872d22140aed562db35626c6272be043"
-    },
-    {
       "path": "images/indo-chinese/chilli-chicken.webp",
       "bytes": 57984,
       "sha256": "73fa916143aedfc53660252af8ad4399748aa57d9f218cd9d952861b9dfa7769"
-    },
-    {
-      "path": "images/indo-chinese/dragon-chicken.webp",
-      "bytes": 169352,
-      "sha256": "d2190c81b436d7287e1f09cd2ea6bd02a8669d92236c137820a9b9613817d41d"
     },
     {
       "path": "images/indo-chinese/egg-fried-rice.webp",
@@ -443,234 +263,59 @@
       "sha256": "de2f30010d254e3ac7a64301e060d02ecc272f9b4fdece2322f361454c27a0a8"
     },
     {
-      "path": "images/indo-chinese/schezwan-noodles.webp",
-      "bytes": 106864,
-      "sha256": "b2fb4f591fdab4b507da6282f69ad23d41885d656d1ce4960c0c22e6294c3040"
+      "path": "images/mutton-bheja-fry.webp",
+      "bytes": 137402,
+      "sha256": "d44cec93d49134517b851d62f30ca7f22ccac28953890c3e8109aab2eed5abba"
     },
     {
-      "path": "images/japanese/chicken-karaage.webp",
-      "bytes": 122792,
-      "sha256": "a42500488580cc02f51e8cc4029c3c5bcb9368b15de664d86f8a063f755f02e0"
+      "path": "images/mutton-fried-rice.webp",
+      "bytes": 120624,
+      "sha256": "e3d0be158b855403c8c53460cec90c8daee7d5c389d5510dce68b8a82f7aa599"
     },
     {
-      "path": "images/japanese/chicken-katsu.webp",
-      "bytes": 86992,
-      "sha256": "b4478533e38f4a3182a4f5070506b331feb52a59203de751eaa5ac51800d8778"
+      "path": "images/mutton-green-masala.webp",
+      "bytes": 66986,
+      "sha256": "cc0ab8458b66f25daa932cdf04bf53cc3cb8bdefdf867548879a9361768be332"
     },
     {
-      "path": "images/japanese/ebi-fry.webp",
-      "bytes": 81580,
-      "sha256": "333b305258ad11a4304461f4e30195565e79996043249efd2a267235f1a20e65"
+      "path": "images/mutton-kaleji-fry.webp",
+      "bytes": 160556,
+      "sha256": "08723c99c716dfe11f13c41ae6a4c84db84164e0bb37a656127fe7e197bc0bc8"
     },
     {
-      "path": "images/japanese/hayashi-rice.webp",
-      "bytes": 61170,
-      "sha256": "9c9c89500447e237ff4eb745d1e005d851a6f8ef1b0515a1f56865ec0c6d2704"
+      "path": "images/mutton-raan.webp",
+      "bytes": 121602,
+      "sha256": "1967b5dbc9964974b6988767c34d0f894210d7dc13fd9425c88e440adf25c7f5"
     },
     {
-      "path": "images/japanese/teriyaki-chicken.webp",
-      "bytes": 71060,
-      "sha256": "8f64079e2ac97b5cea6fc13be762a8a2b7e7ab57a5cdbdbe91e6415772308d1b"
+      "path": "images/mutton-schezwan.webp",
+      "bytes": 53844,
+      "sha256": "1247d39073f5b90ae61aef846302856c6df2e520f74e1a76ad32bde41eac8af7"
     },
     {
-      "path": "images/mexican/chicken-quesadilla.webp",
-      "bytes": 153932,
-      "sha256": "4b7b6a1f947d91049fca4f909ba6a0d6f9f709bfea64497980bbbde8a1832693"
+      "path": "images/pomfret-fry.webp",
+      "bytes": 126236,
+      "sha256": "148e05b61a2c8e5ec6b8e16a791a57407e0623481bedef41faa1ba50a29b2e42"
     },
     {
-      "path": "images/mexican/fish-tacos.webp",
-      "bytes": 141296,
-      "sha256": "2e5c542d2a390c37b40ccbbe7508efcc7aa237246482da9647d2af763a0b51f9"
+      "path": "images/prawn-fried-rice.webp",
+      "bytes": 60194,
+      "sha256": "906da7a925763f01e45430147c33182e2f64e329f89293a7c442f150ad7a0a5c"
     },
     {
-      "path": "images/mexican/mexican-rice.webp",
-      "bytes": 167394,
-      "sha256": "5eedf2055ab4acbd5176be4372de727f50ce83086202d71b58130b0098b237af"
+      "path": "images/prawns-fry.webp",
+      "bytes": 160734,
+      "sha256": "8434acecde61079084fedf12f4124e9d0e7087a45a729494ec7d5002dc6c5cb6"
     },
     {
-      "path": "images/middle-eastern/chicken-mandi.webp",
-      "bytes": 208804,
-      "sha256": "962c8356e363b65523b8f66910530832ae7df55addfda287317d72b770b496de"
-    },
-    {
-      "path": "images/middle-eastern/chicken-tagine.webp",
-      "bytes": 132060,
-      "sha256": "2fd8f1c68b8a2183c056c77b761437b123c00d23f3afbaf7f4ed2c8f9b1541fc"
-    },
-    {
-      "path": "images/middle-eastern/kofta-kebab.webp",
-      "bytes": 192942,
-      "sha256": "98765aba704420f5634da446d024c68d29237e9ff574c7468a616e5ae3b7cbcc"
-    },
-    {
-      "path": "images/middle-eastern/shish-kebab.webp",
-      "bytes": 100560,
-      "sha256": "dd4bebb7476466b95152292a4e01ab20cbb15aa470bccd84b4f5de3a134a231b"
-    },
-    {
-      "path": "images/pizza-pasta/chicken-parmesan.webp",
-      "bytes": 82070,
-      "sha256": "b6efd5e5055834380f172165cfecf2d75f8b1b8bd3b14d2fc9d119c62cb3de35"
-    },
-    {
-      "path": "images/pizza-pasta/chicken-tikka-pizza.webp",
-      "bytes": 66118,
-      "sha256": "2de003cefdef58e3d8295c3a902aaa6888cea1d0a0fb9d6cb04f3e7790f58937"
-    },
-    {
-      "path": "images/sides-dips/gravy.webp",
-      "bytes": 52650,
-      "sha256": "13268193f15d6129828d6dd8ea33b9df686ec3ea09d9c98e79b88ee018b05f03"
-    },
-    {
-      "path": "images/snacks/chicken-cutlet.webp",
-      "bytes": 64300,
-      "sha256": "7b238c4fb2c87da3f20371e35afb05cefcf2ed786756b3083496550aae5ea7ba"
-    },
-    {
-      "path": "images/snacks/fish-fry.webp",
-      "bytes": 79492,
-      "sha256": "84f17a527bb218dbebcb468b06d3cd0c910442717aa2825f51d5bf36d378012e"
+      "path": "images/rice-and-rassa.webp",
+      "bytes": 65792,
+      "sha256": "06c506473226b22ed63b461a128d0b9deb51f69d87ff1820607350413663a77a"
     },
     {
       "path": "images/snacks/masala-papad.webp",
       "bytes": 101770,
       "sha256": "97b0e8a86ccb9bd2c9d3a4e55c29b74af4b0ff5616d82fc44588f2c5676960fc"
-    },
-    {
-      "path": "images/snacks/masala-peanuts.webp",
-      "bytes": 179130,
-      "sha256": "e9b779dd6591a687fff971cef193b50fffd9f8b802e270be57e3340d0ede1660"
-    },
-    {
-      "path": "images/soups-salads/chicken-salad.webp",
-      "bytes": 82974,
-      "sha256": "c3d455d3229aa799d541d12c038a32e6ca5390793cdfae413f5da1fdd2126f00"
-    },
-    {
-      "path": "images/soups-salads/chicken-soup.webp",
-      "bytes": 72412,
-      "sha256": "f183692df08280876c350bba5d01dea7dfa7f8e11a449a28abbdfc632220dfb3"
-    },
-    {
-      "path": "images/soups-salads/egg-drop-soup.webp",
-      "bytes": 73102,
-      "sha256": "729cba4da2f1d9fb19eab19c386402a55f24dcb9ae61810d9e42d7cf237515f3"
-    },
-    {
-      "path": "images/soups-salads/egg-salad.webp",
-      "bytes": 36894,
-      "sha256": "939fbd0096d6eb692b328a5bdd84528df306312256ee5d6e9ebec3d16e704be5"
-    },
-    {
-      "path": "images/soups-salads/tom-yum-prawn-soup.webp",
-      "bytes": 119154,
-      "sha256": "f06b501a03ee62bfdb1743861e78dc3d0b4b3701ac6ee7f5c5c71083aa76347a"
-    },
-    {
-      "path": "images/south-indian/chettinad-mutton-curry.webp",
-      "bytes": 76560,
-      "sha256": "991ef9bca1865f8113c16e730d3bbcc6de6a4130eb25325ac5fb3cbc5752bd72"
-    },
-    {
-      "path": "images/south-indian/kerala-beef-fry.webp",
-      "bytes": 80920,
-      "sha256": "844389c11ada0c85fc485d0cf02698953745306436c880bad6a73220f7ec4fbe"
-    },
-    {
-      "path": "images/south-indian/kerala-fish-curry.webp",
-      "bytes": 61728,
-      "sha256": "a92a5e268dc2cca2f8610b2db3de4385843d7eadaa9e9b8ec32854025dcc6d26"
-    },
-    {
-      "path": "images/south-indian/masala-dosa.webp",
-      "bytes": 40906,
-      "sha256": "a4ede98a0f996dcc3429f50371f2a95ecf9ef0f67ee5ecec648bbe34d6434d97"
-    },
-    {
-      "path": "images/south-indian/masala-vada.webp",
-      "bytes": 255486,
-      "sha256": "a8301de20206fd6c7ee727276dd988ac1788a28dabdccd58e7066cbec4090c29"
-    },
-    {
-      "path": "images/street-food-chaat/baida-roti.webp",
-      "bytes": 75548,
-      "sha256": "1b1be7ac093801890717b6321ac76a60a346894bf85a16a29feeaa678b3f5774"
-    },
-    {
-      "path": "images/street-food-chaat/chicken-momos.webp",
-      "bytes": 39186,
-      "sha256": "8ff5f5f26ecc257d6914ee543a590fd8217c4fca6c1b4ec6f1a5ac1ac393f5b6"
-    },
-    {
-      "path": "images/street-food-chaat/egg-roll.webp",
-      "bytes": 68616,
-      "sha256": "734f7f1d1a4e616c20fa8c33f5ac083f31b0710f7427f93f330bf74f128993f3"
-    },
-    {
-      "path": "images/street-food-chaat/keema-pav.webp",
-      "bytes": 44642,
-      "sha256": "dea2ad9b951c3e0ddd0b06f74211259a79b50bbe31b62b65ef85446372599ed6"
-    },
-    {
-      "path": "images/street-food-chaat/tandoori-momos.webp",
-      "bytes": 80924,
-      "sha256": "fa278cf86f48ea523faf779ea88acb2c92b4bab77ac778a46139efe448c442e5"
-    },
-    {
-      "path": "images/thai-asian/chicken-adobo.webp",
-      "bytes": 52754,
-      "sha256": "121aa278e1db6586207d5642ff2fd028e665d4f254952df6f7cd3dcd87dc8a83"
-    },
-    {
-      "path": "images/thai-asian/chicken-satay.webp",
-      "bytes": 179092,
-      "sha256": "2d6cda658b3e301fad36631725a83b54e621d614c0828c4dd9a8f4f741988db6"
-    },
-    {
-      "path": "images/thai-asian/kottu-roti.webp",
-      "bytes": 74582,
-      "sha256": "f0d4f7e9b8e24d3af657fbe23df15b305ffb1a39ff0ee32b13b209871dff45c1"
-    },
-    {
-      "path": "images/thai-asian/roti-canai.webp",
-      "bytes": 43914,
-      "sha256": "99a34e7a5e01988ee81ef016a081a182800db70cb246c062dde3d56eef635031"
-    },
-    {
-      "path": "images/thai-asian/thai-green-curry.webp",
-      "bytes": 101716,
-      "sha256": "8cb60e4e001557ecdb2e35c38374bd8ae73b91829b68c2f66a3f5added370488"
-    },
-    {
-      "path": "images/thai-asian/thai-red-curry.webp",
-      "bytes": 90152,
-      "sha256": "29f761e2b67af26dc4cce3a31f4db356c36a3667f09244560d68769c5a9ee1f1"
-    },
-    {
-      "path": "images/thai-asian/thai-yellow-curry.webp",
-      "bytes": 37984,
-      "sha256": "8c4da7865390a48ce52daadc437b4460e2f16b560d2c619153a134565d65b247"
-    },
-    {
-      "path": "images/thai-asian/thukpa.webp",
-      "bytes": 76130,
-      "sha256": "03f280e20077ffedfec7dfdcc2ad80facbd4ca8e029dd40f4a707f1041ad5c0b"
-    },
-    {
-      "path": "images/thai-asian/tom-kha-gai.webp",
-      "bytes": 100110,
-      "sha256": "542a08797b6dc83fb10e00ee8d640dc6d46d79cd89ba72aa81464510a301a76e"
-    },
-    {
-      "path": "images/thai-asian/tom-yum-soup.webp",
-      "bytes": 45872,
-      "sha256": "4df8e35198dda316c94af1fcb7734fbed8ac3d3cbddf0c34791edb734439bdc9"
-    },
-    {
-      "path": "images/thai-asian/tteokbokki.webp",
-      "bytes": 49956,
-      "sha256": "127091961ba36132ef7f687bc8f8f92e1f1f2a6b26b4625136cae4c7a8debadc"
     }
   ]
 }

@@ -58,6 +58,24 @@ Rajdhani is **not** shipped under `assets/templates/`. Authoring lives in
 Rajdhani menu or Zahir/Asif/Nawaz names — those come from the downloaded
 pack's `template.json` + `shop_defaults.json`.
 
+Menu photos are chosen by looking at the picture, not by a shared word in
+the filename. The decisions are one table in
+`apps/khaynjo/scripts/fix-rajdhani-images.sh` (bash + jq): English alias →
+a shelf photo (`shelf:folder/file.webp`), a photo that ships with the pack
+(`images/file.webp`, kept in `catalogue/private-src/rajdhani/images/`), or
+nothing. A dish with no honest photo keeps an empty `image` so the tile shows
+initials instead of the wrong food. After a menu edit: add the rows to the
+table, run the script (`--check` only reports), then `--public-rajdhani`.
+
+State on 2026-11-21: 121 dishes, 117 with a photo, 4 without (Inda Schezwan,
+Inda Tawa Tikka, Fry Rice Gravy, Inda Gravy Rice). Fifteen photos ship with
+the pack. Twelve shelf files whose pictures were wrong (empty pans as kadai
+chicken, a raw egg as egg curry, a landscape as tehri, …) were replaced in
+place. Authors and licences: `catalogue/private-src/rajdhani/images/SOURCES.md`
+and `assets/items/SOURCES.md`; `publish-catalogue.sh` copies both beside the
+published files. The rest of the shelf has not been checked picture by
+picture and has no source record yet.
+
 ## Layout
 
 ```text
@@ -89,7 +107,7 @@ pack's `template.json` + `shop_defaults.json`.
       "title": "Khaynjo Full Template",
       "blurb": "Full public dish photo shelf (~1459 dishes). Optional — Skip leaves an empty shop.",
       "kind": "shelf",
-      "bytes": 134302948
+      "bytes": 134542458
     },
     {
       "id": "rajdhani",
@@ -191,10 +209,16 @@ open (owner, 2026-11-14), so today the export runs on our side from their books
   [sites/khaynjo/static/v1/catalogue/public/templates/<id>]
 ./apps/khaynjo/scripts/publish-catalogue.sh --public=<client>
 # before deploying: download → apply → export must give back the same pack
-PACK_CDN=sites/khaynjo/static/v1/catalogue PACK_ID=<id> \
-PACK_SOURCE=apps/khaynjo/catalogue/private-src/<client> \
+# (absolute paths: cargo runs the test from apps/khaynjo)
+PACK_CDN="$PWD/sites/khaynjo/static/v1/catalogue" PACK_ID=<id> \
+PACK_SOURCE="$PWD/apps/khaynjo/catalogue/private-src/<client>" \
   cargo test -p kumkaj-khaynjo --lib published_pack -- --ignored
 ```
+
+That last check is for **exported** packs (format 2). The hand-written
+Rajdhani pack cannot pass it: its rows name shelf photos (`shelf:…`), which
+an export renames by content, and its `shop_defaults.json` is the older
+shape — every row with a photo and most settings read as changed.
 
 **Format 2.** Exported packs carry `"format": 2, "app": "khaynjo"` in both
 files (`menu_templates::PACK_FORMAT`). Every new field is optional, so a

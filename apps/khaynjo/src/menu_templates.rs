@@ -357,13 +357,170 @@ mod tests {
         assert!(path.extension().and_then(|e| e.to_str()) == Some("webp"));
     }
 
+    /// The decisions live in `scripts/fix-rajdhani-images.sh`; this pins the
+    /// ones that went wrong before, so a re-match by filename cannot return.
+    #[test]
+    fn rajdhani_photos_match_the_dish() {
+        let tmpl = load_from_dir(&rajdhani_authoring()).unwrap();
+        // Shelf files that are a different food. (Seven shelf files whose own
+        // names lied — kadai chicken, egg curry, keema matar, Kolhapuri
+        // chicken, prawn biryani, rack of lamb, Kerala fish curry — were
+        // replaced with honest photos on 2026-11-21 and are fine to use.)
+        let banned = [
+            "pizza",
+            "dosa",
+            "quesadilla",
+            "momos",
+            "satay",
+            "adobo",
+            "parmesan",
+            "tagine",
+            "mandi",
+            "noodles",
+            "tteokbokki",
+            "tea-eggs",
+            "mexican-rice",
+            "masala-vada",
+            "chicken-soup",
+            "chicken-salad",
+            "fish-burger",
+            "chicken-burger",
+            "chicken-wrap",
+            "chicken-nuggets",
+            "chicken-bucket",
+            "tom-yum",
+            "tom-kha",
+            "scotch-egg",
+            "egg-coffee",
+            "dal-fry",
+            "baida-roti",
+            "kottu-roti",
+            "roti-canai",
+            "ebi-fry",
+            "teriyaki",
+            "chicken-katsu",
+            "fish-tacos",
+            "fish-pie",
+            "hayashi-rice",
+            "eggs-benedict",
+            "eggs-florentine",
+            "egg-tart",
+            "egg-puff",
+            "tawa-pulao",
+            "rajma-masala",
+            "chana-masala",
+            "bhindi-masala",
+            "mushroom-masala",
+            "navratan-korma",
+            "masala-peanuts",
+            "kerala-beef",
+            "dragon-chicken",
+            "chicken-karaage",
+            "popcorn-chicken",
+            "shrimp-scampi",
+            // Shows prawns, not chicken tikka masala.
+            "chicken-tikka-masala",
+        ];
+        let mut by_alias = std::collections::HashMap::new();
+        for cat in &tmpl.categories {
+            let key = cat.aliases.first().map(String::as_str).unwrap_or("");
+            by_alias.insert(key.to_string(), cat.image.clone());
+            for item in &cat.items {
+                let key = item.aliases.first().map(String::as_str).unwrap_or("");
+                let image = item.image.clone();
+                for bad in banned {
+                    assert!(
+                        !image.contains(bad),
+                        "{} still uses unrelated photo {}",
+                        key,
+                        image
+                    );
+                }
+                by_alias.insert(key.to_string(), image);
+            }
+        }
+        let expect = [
+            ("Chicken Tandoori", "shelf:indian-mains/tandoori-chicken.webp"),
+            ("Chicken Lollipop", "shelf:indo-chinese/chicken-lollipop.webp"),
+            ("Chicken 65", "shelf:indo-chinese/chicken-65.webp"),
+            // Raan is the leg, chaap is chops.
+            ("Mutton Raan Roasted", "images/mutton-raan.webp"),
+            ("Mutton Chaap Roasted", "shelf:continental/lamb-chops.webp"),
+            ("Mutton Bhuna Masala", "shelf:indian-mains/kosha-mangsho.webp"),
+            ("Mutton Keema Fry", "shelf:indian-mains/keema-matar.webp"),
+            ("Mutton Bheja Fry", "images/mutton-bheja-fry.webp"),
+            // A fried pomfret, not a fish-curry thali.
+            ("Paplet Fry", "images/pomfret-fry.webp"),
+            ("Fry Jinga", "images/prawns-fry.webp"),
+            ("Jinga Roasted", "shelf:indian-mains/tandoori-prawns.webp"),
+            ("Plain Roti", "shelf:indian-breads/chapati.webp"),
+            ("Inda Bhurji 2 Number", "shelf:indian-mains/egg-bhurji.webp"),
+            ("Jeera Rice", "shelf:indian-rice/jeera-rice.webp"),
+            ("Mutton Biryani", "shelf:indian-rice/mutton-biryani.webp"),
+            ("Fish Biryani", "images/fish-biryani.webp"),
+            ("Jinga Biryani", "shelf:indian-rice/prawn-biryani.webp"),
+        ];
+        for (alias, image) in expect {
+            assert_eq!(by_alias.get(alias).map(String::as_str), Some(image), "{alias}");
+        }
+        // No honest photo found yet: the tile shows initials.
+        for alias in [
+            "Inda Schezwan 5 Number",
+            "Inda Tawa Tikka 5 Number",
+            "Fry Rice Gravy",
+            "Inda Gravy Rice",
+        ] {
+            assert_eq!(
+                by_alias.get(alias).map(String::as_str),
+                Some(""),
+                "{alias} should have no photo rather than a wrong one"
+            );
+        }
+    }
+
+    /// A photo that ships with the pack must say whose it is: CC BY and
+    /// CC BY-SA ask for the author and licence to be named.
+    #[test]
+    fn every_rajdhani_pack_photo_names_its_source() {
+        let images = rajdhani_authoring().join("images");
+        let sources = std::fs::read_to_string(images.join("SOURCES.md"))
+            .expect("catalogue/private-src/rajdhani/images/SOURCES.md");
+        let tmpl = load_from_dir(&rajdhani_authoring()).unwrap();
+        let mut used = std::collections::BTreeSet::new();
+        for cat in &tmpl.categories {
+            let photos = std::iter::once(&cat.image).chain(cat.items.iter().map(|i| &i.image));
+            for image in photos {
+                if let Some(name) = image.strip_prefix("images/") {
+                    used.insert(name.to_string());
+                }
+            }
+        }
+        assert!(!used.is_empty(), "the pack has photos of its own");
+        for name in &used {
+            assert!(
+                sources.contains(&format!("| `{name}` |")),
+                "{name} has no row in images/SOURCES.md"
+            );
+        }
+        // A photo nothing uses would be committed and never published.
+        for entry in std::fs::read_dir(&images).unwrap() {
+            let name = entry.unwrap().file_name().to_string_lossy().into_owned();
+            if name.ends_with(".webp") {
+                assert!(used.contains(&name), "images/{name} is not used by any row");
+            }
+        }
+    }
+
     #[test]
     fn every_rajdhani_image_resolves() {
-        let tmpl = load_from_dir(&rajdhani_authoring()).unwrap();
+        // Resolved against the pack folder: `shelf:…` on the photo shelf,
+        // `images/…` beside this pack's template.json.
+        let pack = rajdhani_authoring();
+        let tmpl = load_from_dir(&pack).unwrap();
         for cat in &tmpl.categories {
             if !cat.image.is_empty() {
                 assert!(
-                    tmpl.resolve_image(&cat.image).is_some(),
+                    tmpl.resolve_image_in(&pack, &cat.image).is_some(),
                     "category {} image {}",
                     cat.name,
                     cat.image
@@ -374,7 +531,7 @@ mod tests {
                     continue;
                 }
                 assert!(
-                    tmpl.resolve_image(&item.image).is_some(),
+                    tmpl.resolve_image_in(&pack, &item.image).is_some(),
                     "item {} image {}",
                     item.name,
                     item.image

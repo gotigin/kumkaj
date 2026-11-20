@@ -6,14 +6,14 @@
       "title": "Khaynjo Full Template",
       "blurb": "Full public dish photo shelf (~1459 dishes). Optional — Skip leaves an empty shop.",
       "kind": "shelf",
-      "bytes": 134302948
+      "bytes": 134542458
     },
     {
       "id": "rajdhani",
       "title": "Rajdhani Menu Template",
       "blurb": "Non-veg caterers menu — Gujarati names, English aliases, listed prices, photos.",
       "kind": "app_template",
-      "bytes": 12285816
+      "bytes": 6264118
     }
   ]
 }

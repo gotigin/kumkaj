@@ -84,6 +84,10 @@ listing_json() {
 # ---------------------------------------------------------------------------
 echo "1/4 Sync public/items from assets/items …"
 rsync -a --delete --include='*/' --include='*.webp' --exclude='*' "$SHELF/" "$CDN/public/items/"
+# Authors and licences of the shelf photos travel with them (CC BY / BY-SA).
+if [[ -f "$SHELF/SOURCES.md" ]]; then
+  cp -p "$SHELF/SOURCES.md" "$CDN/public/items/SOURCES.md"
+fi
 
 (cd "$CDN/public/items" && find . -mindepth 2 -maxdepth 2 -type f -name '*.webp') \
   | sed 's|^\./||' | LC_ALL=C sort | listing_json "$CDN/public/items" \
@@ -181,6 +185,11 @@ build_pack() {
   if [[ -f "$src_dir/shop_defaults.json" ]]; then
     cp -p "$src_dir/shop_defaults.json" "$dest/shop_defaults.json"
     defaults_file="shop_defaults.json"
+  fi
+  # Authors and licences of the pack's own photos, beside the pack on the
+  # web. Not in the manifest: a device has no use for it.
+  if [[ -f "$src_dir/images/SOURCES.md" ]]; then
+    cp -p "$src_dir/images/SOURCES.md" "$dest/SOURCES.md"
   fi
 
   # Listing goes through stdin — a 1,000-photo pack overflows argv.

@@ -1967,11 +1967,14 @@ mod tests {
     /// the result must equal the pack the client sent.
     ///
     /// ```text
-    /// PACK_CDN=sites/khaynjo/static/v1/catalogue PACK_ID=rajdhani \
-    /// PACK_SOURCE=apps/khaynjo/catalogue/private-src/rajdhani \
+    /// PACK_CDN="$PWD/sites/khaynjo/static/v1/catalogue" PACK_ID=<id> \
+    /// PACK_SOURCE="$PWD/apps/khaynjo/catalogue/private-src/<client>" \
     ///   cargo test -p kumkaj-khaynjo --lib published_pack -- --ignored
     /// ```
-    /// `PACK_ID` defaults to `id` in the source `template.json`.
+    /// `PACK_ID` defaults to `id` in the source `template.json`. The paths
+    /// are absolute because cargo runs this from `apps/khaynjo`. For exported
+    /// packs (format 2): a hand-written pack such as Rajdhani's names shelf
+    /// photos (`shelf:…`), which the export renames, so it always differs.
     #[test]
     #[ignore]
     fn published_pack_downloads_applies_and_exports_unchanged() {

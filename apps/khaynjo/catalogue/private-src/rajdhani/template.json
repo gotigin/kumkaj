@@ -8,7 +8,7 @@
       "aliases": [
         "Chicken Roasted"
       ],
-      "image": "shelf:indo-chinese/chicken-65.webp",
+      "image": "shelf:indian-mains/tandoori-chicken.webp",
       "items": [
         {
           "name": "ચીકન તંદુરી સીના",
@@ -24,7 +24,7 @@
             "Chicken Tandoori"
           ],
           "price": 150,
-          "image": "shelf:thai-asian/chicken-satay.webp"
+          "image": "shelf:indian-mains/tandoori-chicken.webp"
         },
         {
           "name": "ચીકન વિન્ટર તંદુરી",
@@ -32,7 +32,7 @@
             "Chicken Winter Tandoori"
           ],
           "price": 250,
-          "image": "shelf:thai-asian/chicken-adobo.webp"
+          "image": "shelf:indian-mains/tandoori-chicken.webp"
         },
         {
           "name": "ચીકન સેજવાન તંદુરી",
@@ -40,7 +40,7 @@
             "Chicken Schezwan Tandoori"
           ],
           "price": 250,
-          "image": "shelf:street-food-chaat/chicken-momos.webp"
+          "image": "shelf:indian-mains/tandoori-chicken.webp"
         },
         {
           "name": "ચીકન B.B.Q. તંદુરી",
@@ -48,7 +48,7 @@
             "Chicken B.B.Q. Tandoori"
           ],
           "price": 250,
-          "image": "shelf:soups-salads/chicken-soup.webp"
+          "image": "shelf:indian-mains/tandoori-chicken.webp"
         },
         {
           "name": "ચીકન સ્પેશ્યલ તંદુરી",
@@ -56,7 +56,7 @@
             "Chicken Special Tandoori"
           ],
           "price": 250,
-          "image": "shelf:soups-salads/chicken-salad.webp"
+          "image": "shelf:indian-mains/tandoori-chicken.webp"
         },
         {
           "name": "ચીકન તવા ટીક્કા",
@@ -80,7 +80,7 @@
             "Chicken Jafrani Tikka"
           ],
           "price": 400,
-          "image": "shelf:pizza-pasta/chicken-tikka-pizza.webp"
+          "image": "shelf:indian-mains/chicken-tikka.webp"
         },
         {
           "name": "ચીકન સેજવાન ટીક્કા",
@@ -88,7 +88,7 @@
             "Chicken Schezwan Tikka"
           ],
           "price": 280,
-          "image": "shelf:indian-mains/chicken-tikka-masala.webp"
+          "image": "shelf:indian-mains/chicken-tikka.webp"
         },
         {
           "name": "ચીકન B.B.Q. ટીક્કા",
@@ -96,7 +96,7 @@
             "Chicken B.B.Q. Tikka"
           ],
           "price": 290,
-          "image": "shelf:snacks/chicken-cutlet.webp"
+          "image": "shelf:indian-mains/chicken-tikka.webp"
         },
         {
           "name": "ચીકન સીજલર ટીક્કા",
@@ -112,7 +112,7 @@
             "Spe. Chicken Tangdi Red 3 Piece"
           ],
           "price": 290,
-          "image": "shelf:pizza-pasta/chicken-parmesan.webp"
+          "image": "shelf:indian-mains/tandoori-chicken.webp"
         },
         {
           "name": "ચીકન વિન્ટર ટંગડી ૩ પીસ",
@@ -120,7 +120,7 @@
             "Chicken Winter Tangdi 3 Piece"
           ],
           "price": 290,
-          "image": "shelf:middle-eastern/chicken-tagine.webp"
+          "image": "shelf:indian-mains/tandoori-chicken.webp"
         },
         {
           "name": "ચીકન B.B.Q. ટંગડી ૩ પીસ",
@@ -128,7 +128,7 @@
             "Chicken B.B.Q. Tangdi 3 Piece"
           ],
           "price": 310,
-          "image": "shelf:middle-eastern/chicken-mandi.webp"
+          "image": "shelf:indian-mains/tandoori-chicken.webp"
         },
         {
           "name": "ચીકન સેજવાન ટંગડી ૩ પીસ",
@@ -136,7 +136,7 @@
             "Chicken Schezwan Tangdi 3 Piece"
           ],
           "price": 290,
-          "image": "shelf:mexican/chicken-quesadilla.webp"
+          "image": "shelf:indian-mains/tandoori-chicken.webp"
         },
         {
           "name": "ચીકન પઠાણી",
@@ -144,7 +144,7 @@
             "Chicken Pathani"
           ],
           "price": 280,
-          "image": "shelf:japanese/teriyaki-chicken.webp"
+          "image": "shelf:indian-mains/chicken-malai-tikka.webp"
         },
         {
           "name": "ચીકન લોલીપોપ",
@@ -168,7 +168,7 @@
             "Chicken Peri Peri Tikka"
           ],
           "price": 290,
-          "image": "shelf:japanese/chicken-katsu.webp"
+          "image": "shelf:indian-mains/chicken-tikka.webp"
         },
         {
           "name": "ચીઝ + બટર તંદુરી",
@@ -176,7 +176,7 @@
             "Cheese + Butter Tandoori"
           ],
           "price": 200,
-          "image": "shelf:street-food-chaat/tandoori-momos.webp"
+          "image": "shelf:indian-mains/tandoori-chicken.webp"
         }
       ]
     },
@@ -185,7 +185,7 @@
       "aliases": [
         "Chicken Gravy"
       ],
-      "image": "shelf:japanese/chicken-karaage.webp",
+      "image": "shelf:indian-mains/butter-chicken.webp",
       "items": [
         {
           "name": "ચીકન મસાલા",
@@ -193,7 +193,7 @@
             "Chicken Masala"
           ],
           "price": 150,
-          "image": "shelf:indo-chinese/dragon-chicken.webp"
+          "image": "shelf:indian-mains/chicken-curry.webp"
         },
         {
           "name": "ચીકન મસાલા ગ્રીન",
@@ -201,7 +201,7 @@
             "Chicken Masala Green"
           ],
           "price": 280,
-          "image": "shelf:indo-chinese/chicken-manchurian.webp"
+          "image": "shelf:indian-mains/chicken-saag.webp"
         },
         {
           "name": "ચીકન તવા કોરમા",
@@ -217,7 +217,7 @@
             "Chicken Boneless"
           ],
           "price": 140,
-          "image": "shelf:indian-rice/chicken-biryani.webp"
+          "image": "shelf:indian-mains/butter-chicken.webp"
         },
         {
           "name": "ચીકન ટીક્કા મસાલા",
@@ -225,7 +225,7 @@
             "Chicken Tikka Masala"
           ],
           "price": 300,
-          "image": "shelf:indian-mains/kolhapuri-chicken.webp"
+          "image": "shelf:indian-mains/butter-chicken.webp"
         },
         {
           "name": "ચીકન તવા મસાલા",
@@ -241,7 +241,7 @@
             "Chicken Angara"
           ],
           "price": 320,
-          "image": "shelf:indian-mains/chicken-xacuti.webp"
+          "image": "shelf:indian-mains/kolhapuri-chicken.webp"
         },
         {
           "name": "ચીકન ટંગડી મસાલા",
@@ -249,7 +249,7 @@
             "Chicken Tangdi Masala"
           ],
           "price": 340,
-          "image": "shelf:indian-mains/chicken-vindaloo.webp"
+          "image": "shelf:indian-mains/butter-chicken.webp"
         },
         {
           "name": "ચીકન તંદુરી મસાલા",
@@ -257,7 +257,7 @@
             "Chicken Tandoori Masala"
           ],
           "price": 280,
-          "image": "shelf:indian-mains/chicken-saag.webp"
+          "image": "shelf:indian-mains/butter-chicken.webp"
         },
         {
           "name": "ચીકન લાઈવ મસાલા",
@@ -273,7 +273,7 @@
             "Chicken Moglai Masala"
           ],
           "price": 480,
-          "image": "shelf:indian-mains/chicken-chettinad.webp"
+          "image": "shelf:indian-mains/butter-chicken.webp"
         },
         {
           "name": "ચીકન તવા ચીલ્લી",
@@ -281,7 +281,7 @@
             "Chicken Tawa Chilli"
           ],
           "price": 290,
-          "image": "shelf:indian-mains/chicken-changezi.webp"
+          "image": "shelf:indo-chinese/chilli-chicken.webp"
         },
         {
           "name": "ચીકન ગ્રેવી લોલીપોપ",
@@ -289,7 +289,7 @@
             "Chicken Gravy Lollipop"
           ],
           "price": 390,
-          "image": "shelf:indian-mains/butter-chicken.webp"
+          "image": "shelf:indo-chinese/chicken-lollipop.webp"
         }
       ]
     },
@@ -298,7 +298,7 @@
       "aliases": [
         "Chicken Fry"
       ],
-      "image": "shelf:fast-food/popcorn-chicken.webp",
+      "image": "shelf:fast-food/fried-chicken.webp",
       "items": [
         {
           "name": "ચીકન દાના",
@@ -306,7 +306,7 @@
             "Chicken Dana"
           ],
           "price": 190,
-          "image": "shelf:fast-food/fried-chicken.webp"
+          "image": "shelf:indo-chinese/chicken-65.webp"
         },
         {
           "name": "ચીકન 65",
@@ -314,7 +314,7 @@
             "Chicken 65"
           ],
           "price": 280,
-          "image": "shelf:fast-food/chicken-wrap.webp"
+          "image": "shelf:indo-chinese/chicken-65.webp"
         },
         {
           "name": "ચીકન કરંચી",
@@ -322,7 +322,7 @@
             "Chicken Crunchy"
           ],
           "price": 290,
-          "image": "shelf:fast-food/chicken-strips.webp"
+          "image": "shelf:fast-food/fried-chicken.webp"
         }
       ]
     },
@@ -331,7 +331,7 @@
       "aliases": [
         "Mutton Roasted"
       ],
-      "image": "shelf:indian-rice/mutton-biryani.webp",
+      "image": "shelf:continental/lamb-chops.webp",
       "items": [
         {
           "name": "મટન રાન રોસ્ટેડ",
@@ -339,7 +339,7 @@
             "Mutton Raan Roasted"
           ],
           "price": 1400,
-          "image": "shelf:indian-mains/mutton-curry.webp"
+          "image": "images/mutton-raan.webp"
         },
         {
           "name": "મટન B.B.Q. રાન",
@@ -347,7 +347,7 @@
             "Mutton B.B.Q. Raan"
           ],
           "price": 1800,
-          "image": "shelf:south-indian/chettinad-mutton-curry.webp"
+          "image": "images/mutton-raan.webp"
         },
         {
           "name": "મટન તવા રાન",
@@ -355,7 +355,7 @@
             "Mutton Tawa Raan"
           ],
           "price": 1900,
-          "image": "shelf:indian-mains/mutton-rogan-josh.webp"
+          "image": "images/mutton-raan.webp"
         },
         {
           "name": "મટન ચાપ રોસ્ટેડ",
@@ -363,7 +363,7 @@
             "Mutton Chaap Roasted"
           ],
           "price": 650,
-          "image": "shelf:continental/rack-of-lamb.webp"
+          "image": "shelf:continental/lamb-chops.webp"
         },
         {
           "name": "મટન B.B.Q. રોસ્ટેડ",
@@ -379,7 +379,7 @@
             "Mutton Fry Roasted"
           ],
           "price": 650,
-          "image": "shelf:japanese/ebi-fry.webp"
+          "image": "shelf:continental/lamb-chops.webp"
         },
         {
           "name": "મટન સેજવાન",
@@ -387,7 +387,7 @@
             "Mutton Schezwan"
           ],
           "price": 700,
-          "image": "shelf:indo-chinese/schezwan-noodles.webp"
+          "image": "images/mutton-schezwan.webp"
         },
         {
           "name": "મટન તવા રોસ્ટેડ",
@@ -395,7 +395,7 @@
             "Mutton Tawa Roasted"
           ],
           "price": 700,
-          "image": "shelf:indian-rice/tawa-pulao.webp"
+          "image": "shelf:continental/lamb-chops.webp"
         },
         {
           "name": "મટન ડ્રાય ચોકી",
@@ -403,7 +403,7 @@
             "Mutton Dry Choki"
           ],
           "price": 1600,
-          "image": "shelf:middle-eastern/shish-kebab.webp"
+          "image": "shelf:continental/lamb-chops.webp"
         }
       ]
     },
@@ -412,7 +412,7 @@
       "aliases": [
         "Mutton Gravy"
       ],
-      "image": "shelf:sides-dips/gravy.webp",
+      "image": "shelf:indian-mains/mutton-curry.webp",
       "items": [
         {
           "name": "મટન રાન કોરમા મસાલા",
@@ -420,7 +420,7 @@
             "Mutton Raan Korma Masala"
           ],
           "price": 1900,
-          "image": "shelf:south-indian/masala-vada.webp"
+          "image": "shelf:indian-mains/mutton-rogan-josh.webp"
         },
         {
           "name": "મટન તવા રાન મસાલા",
@@ -428,7 +428,7 @@
             "Mutton Tawa Raan Masala"
           ],
           "price": 1900,
-          "image": "shelf:south-indian/masala-dosa.webp"
+          "image": "shelf:indian-mains/mutton-curry.webp"
         },
         {
           "name": "મટન તવા ફ્રાય મસાલા",
@@ -436,7 +436,7 @@
             "Mutton Tawa Fry Masala"
           ],
           "price": 750,
-          "image": "shelf:snacks/masala-peanuts.webp"
+          "image": "shelf:indian-mains/kosha-mangsho.webp"
         },
         {
           "name": "મટન તવા કોરમા",
@@ -444,7 +444,7 @@
             "Mutton Tawa Korma"
           ],
           "price": 770,
-          "image": "shelf:indian-mains/navratan-korma.webp"
+          "image": "shelf:indian-mains/mutton-rogan-josh.webp"
         },
         {
           "name": "મટન ટીક્કા મસાલા બોટા",
@@ -452,7 +452,7 @@
             "Mutton Tikka Masala Bota"
           ],
           "price": 770,
-          "image": "shelf:snacks/masala-papad.webp"
+          "image": "shelf:indian-mains/mutton-curry.webp"
         },
         {
           "name": "મટન મસાલા",
@@ -460,7 +460,7 @@
             "Mutton Masala"
           ],
           "price": 290,
-          "image": "shelf:indian-mains/rajma-masala.webp"
+          "image": "shelf:indian-mains/mutton-curry.webp"
         },
         {
           "name": "મટન કોરમા મસાલા",
@@ -468,7 +468,7 @@
             "Mutton Korma Masala"
           ],
           "price": 320,
-          "image": "shelf:indian-mains/mushroom-masala.webp"
+          "image": "shelf:indian-mains/mutton-rogan-josh.webp"
         },
         {
           "name": "મટન ભુના મસાલા",
@@ -476,7 +476,7 @@
             "Mutton Bhuna Masala"
           ],
           "price": 320,
-          "image": "shelf:indian-mains/chana-masala.webp"
+          "image": "shelf:indian-mains/kosha-mangsho.webp"
         },
         {
           "name": "મટન અંગારા",
@@ -484,7 +484,7 @@
             "Mutton Angara"
           ],
           "price": 390,
-          "image": "shelf:thai-asian/tteokbokki.webp"
+          "image": "shelf:indian-mains/mutton-rogan-josh.webp"
         },
         {
           "name": "મટન ગ્રીન મસાલા",
@@ -492,7 +492,7 @@
             "Mutton Green Masala"
           ],
           "price": 390,
-          "image": "shelf:indian-mains/bhindi-masala.webp"
+          "image": "images/mutton-green-masala.webp"
         },
         {
           "name": "મટન કલેજી ફ્રાય",
@@ -500,7 +500,7 @@
             "Mutton Kaleji Fry"
           ],
           "price": 350,
-          "image": "shelf:south-indian/kerala-beef-fry.webp"
+          "image": "images/mutton-kaleji-fry.webp"
         },
         {
           "name": "મટન ભેજા ફ્રાય",
@@ -508,7 +508,7 @@
             "Mutton Bheja Fry"
           ],
           "price": 350,
-          "image": "shelf:chinese/chinese-stir-fry-vegetables.webp"
+          "image": "images/mutton-bheja-fry.webp"
         },
         {
           "name": "મટન કીમો ફ્રાય",
@@ -516,7 +516,7 @@
             "Mutton Keema Fry"
           ],
           "price": 350,
-          "image": "shelf:street-food-chaat/keema-pav.webp"
+          "image": "shelf:indian-mains/keema-matar.webp"
         },
         {
           "name": "મટન ચોકી",
@@ -524,7 +524,7 @@
             "Mutton Choki"
           ],
           "price": 1800,
-          "image": "shelf:middle-eastern/kofta-kebab.webp"
+          "image": "shelf:indian-mains/mutton-curry.webp"
         }
       ]
     },
@@ -533,7 +533,7 @@
       "aliases": [
         "Fish & Prawns"
       ],
-      "image": "shelf:snacks/fish-fry.webp",
+      "image": "shelf:indian-mains/macher-jhol.webp",
       "items": [
         {
           "name": "પાપલેટ ફ્રાય",
@@ -541,7 +541,7 @@
             "Paplet Fry"
           ],
           "price": 0,
-          "image": "shelf:mexican/fish-tacos.webp"
+          "image": "images/pomfret-fry.webp"
         },
         {
           "name": "પાપલેટ રોસ્ટેડ",
@@ -549,7 +549,7 @@
             "Paplet Roasted"
           ],
           "price": 0,
-          "image": "shelf:indian-mains/fish-tikka.webp"
+          "image": "shelf:continental/grilled-fish.webp"
         },
         {
           "name": "ફીશ મસાલા",
@@ -557,7 +557,7 @@
             "Fish Masala"
           ],
           "price": 270,
-          "image": "shelf:indian-mains/amritsari-fish.webp"
+          "image": "shelf:indian-mains/macher-jhol.webp"
         },
         {
           "name": "જીંગા મસાલા",
@@ -565,7 +565,7 @@
             "Jinga Masala"
           ],
           "price": 380,
-          "image": "shelf:indian-rice/prawn-biryani.webp"
+          "image": "shelf:indian-mains/prawn-curry.webp"
         },
         {
           "name": "ફીશ ફ્રાય ગ્રેવી",
@@ -573,7 +573,7 @@
             "Fish Fry Gravy"
           ],
           "price": 360,
-          "image": "shelf:fast-food/fish-burger.webp"
+          "image": "shelf:indian-mains/macher-jhol.webp"
         },
         {
           "name": "જીંગા ફ્રાય ગ્રેવી",
@@ -589,7 +589,7 @@
             "Fish Live Masala"
           ],
           "price": 360,
-          "image": "shelf:fast-food/fish-and-chips.webp"
+          "image": "shelf:indian-mains/macher-jhol.webp"
         },
         {
           "name": "જીંગા લાઈવ મસાલા",
@@ -597,7 +597,7 @@
             "Jinga Live Masala"
           ],
           "price": 430,
-          "image": "shelf:soups-salads/tom-yum-prawn-soup.webp"
+          "image": "shelf:indian-mains/prawn-curry.webp"
         },
         {
           "name": "રોસ્ટેડ ફીશ",
@@ -613,7 +613,7 @@
             "Jinga Roasted"
           ],
           "price": 400,
-          "image": "shelf:continental/shrimp-scampi.webp"
+          "image": "shelf:indian-mains/tandoori-prawns.webp"
         },
         {
           "name": "ફ્રાય ફીશ",
@@ -621,7 +621,7 @@
             "Fry Fish"
           ],
           "price": 280,
-          "image": "shelf:continental/fish-pie.webp"
+          "image": "shelf:indian-mains/amritsari-fish.webp"
         },
         {
           "name": "ફ્રાય જીંગા",
@@ -629,7 +629,7 @@
             "Fry Jinga"
           ],
           "price": 380,
-          "image": "shelf:thai-asian/tom-yum-soup.webp"
+          "image": "images/prawns-fry.webp"
         }
       ]
     },
@@ -638,7 +638,7 @@
       "aliases": [
         "Roti-Pav-Papad"
       ],
-      "image": "shelf:thai-asian/roti-canai.webp",
+      "image": "shelf:indian-breads/chapati.webp",
       "items": [
         {
           "name": "પ્લેન રોટી",
@@ -646,7 +646,7 @@
             "Plain Roti"
           ],
           "price": 10,
-          "image": "shelf:thai-asian/kottu-roti.webp"
+          "image": "shelf:indian-breads/chapati.webp"
         },
         {
           "name": "બટર રોટી",
@@ -654,7 +654,7 @@
             "Butter Roti"
           ],
           "price": 20,
-          "image": "shelf:street-food-chaat/baida-roti.webp"
+          "image": "shelf:indian-breads/butter-naan.webp"
         },
         {
           "name": "પ્લેન પાવ",
@@ -670,7 +670,7 @@
             "Butter Pav"
           ],
           "price": 20,
-          "image": "shelf:indian-breads/butter-naan.webp"
+          "image": "shelf:bakery-cafe/pav-bun.webp"
         },
         {
           "name": "ફ્રાય પાપડ",
@@ -678,7 +678,7 @@
             "Fry Papad"
           ],
           "price": 30,
-          "image": "shelf:indian-mains/dal-fry.webp"
+          "image": "shelf:snacks/masala-papad.webp"
         },
         {
           "name": "રોસ્ટેડ પાપડ",
@@ -686,7 +686,7 @@
             "Roasted Papad"
           ],
           "price": 30,
-          "image": "shelf:thai-asian/tom-kha-gai.webp"
+          "image": "shelf:snacks/masala-papad.webp"
         },
         {
           "name": "છાશ",
@@ -703,7 +703,7 @@
       "aliases": [
         "Eggs"
       ],
-      "image": "shelf:chinese/tea-eggs.webp",
+      "image": "shelf:indian-mains/egg-curry.webp",
       "items": [
         {
           "name": "ઈંડા કળી",
@@ -711,7 +711,7 @@
             "Inda Kali"
           ],
           "price": 80,
-          "image": "shelf:indian-mains/egg-curry.webp"
+          "image": "shelf:breakfast/shakshuka.webp"
         },
         {
           "name": "ઈંડા કીમો",
@@ -719,7 +719,7 @@
             "Inda Keema"
           ],
           "price": 80,
-          "image": "shelf:street-food-chaat/egg-roll.webp"
+          "image": "shelf:indian-mains/egg-bhurji.webp"
         },
         {
           "name": "લાઈવ કળી",
@@ -727,7 +727,7 @@
             "Live Kali"
           ],
           "price": 100,
-          "image": "shelf:thai-asian/thai-red-curry.webp"
+          "image": "shelf:breakfast/shakshuka.webp"
         },
         {
           "name": "લાઈવ કીમો",
@@ -735,7 +735,7 @@
             "Live Keema"
           ],
           "price": 100,
-          "image": "shelf:indian-mains/keema-matar.webp"
+          "image": "shelf:indian-mains/egg-bhurji.webp"
         },
         {
           "name": "ઈંડા મીકચર ૫ નંગ",
@@ -743,7 +743,7 @@
             "Inda Mixture 5 Number"
           ],
           "price": 280,
-          "image": "shelf:soups-salads/egg-salad.webp"
+          "image": "shelf:indian-mains/egg-bhurji.webp"
         },
         {
           "name": "ઈંડા મસાલા બોઈલ ફ્રાય ૪ નંગ",
@@ -751,7 +751,7 @@
             "Inda Masala Boil Fry 4 Number"
           ],
           "price": 220,
-          "image": "shelf:breakfast/masala-omelette.webp"
+          "image": "images/egg-masala.webp"
         },
         {
           "name": "ઈંડા ગોટાળો ૧૦ નંગ",
@@ -767,7 +767,7 @@
             "Inda Moglai 8 Number"
           ],
           "price": 440,
-          "image": "shelf:indian-rice/egg-biryani.webp"
+          "image": "shelf:breakfast/shakshuka.webp"
         },
         {
           "name": "ઈંડા મોટી હંગામા ૧૦ નંગ",
@@ -775,7 +775,7 @@
             "Inda Moti Hangama 10 Number"
           ],
           "price": 440,
-          "image": "shelf:breakfast/egg-bhurji-toast.webp"
+          "image": "shelf:indian-mains/egg-bhurji.webp"
         },
         {
           "name": "મસાલા હાફ ફ્રાય ૨ નંગ",
@@ -791,7 +791,7 @@
             "Half Fry Simple 2 Number"
           ],
           "price": 80,
-          "image": "shelf:indo-chinese/egg-fried-rice.webp"
+          "image": "shelf:breakfast/fried-egg.webp"
         },
         {
           "name": "સુરતી કળી",
@@ -799,7 +799,7 @@
             "Surati Kali"
           ],
           "price": 90,
-          "image": "shelf:thai-asian/thai-green-curry.webp"
+          "image": "shelf:breakfast/shakshuka.webp"
         },
         {
           "name": "ઈંડા ભુરજી ૨ નંગ",
@@ -807,7 +807,7 @@
             "Inda Bhurji 2 Number"
           ],
           "price": 80,
-          "image": "shelf:hot-beverages/egg-coffee.webp"
+          "image": "shelf:indian-mains/egg-bhurji.webp"
         },
         {
           "name": "ઈંડા ભુરજી ગ્રેવી ૨ નંગ",
@@ -815,7 +815,7 @@
             "Inda Bhurji Gravy 2 Number"
           ],
           "price": 160,
-          "image": "shelf:fast-food/egg-sandwich.webp"
+          "image": "shelf:breakfast/shakshuka.webp"
         },
         {
           "name": "આમલેટ ૨ નંગ",
@@ -823,7 +823,7 @@
             "Omlet 2 Number"
           ],
           "price": 80,
-          "image": "shelf:breakfast/omelette.webp"
+          "image": "shelf:breakfast/masala-omelette.webp"
         },
         {
           "name": "સ્પેશ્યલ આમલેટ ૨ નંગ",
@@ -831,7 +831,7 @@
             "Special Omlet 2 Number"
           ],
           "price": 160,
-          "image": "shelf:continental/spanish-omelette.webp"
+          "image": "shelf:breakfast/masala-omelette.webp"
         },
         {
           "name": "ઈંડા બોઈલ ૧ નંગ",
@@ -839,7 +839,7 @@
             "Inda Boil 1 Number"
           ],
           "price": 20,
-          "image": "shelf:continental/scotch-egg.webp"
+          "image": "shelf:breakfast/boiled-eggs.webp"
         },
         {
           "name": "ઈંડા સેજવાન પ નંગ",
@@ -847,7 +847,7 @@
             "Inda Schezwan 5 Number"
           ],
           "price": 260,
-          "image": "shelf:breakfast/poached-egg.webp"
+          "image": ""
         },
         {
           "name": "ઈંડા તવા ટીક્કા પ નંગ",
@@ -855,7 +855,7 @@
             "Inda Tawa Tikka 5 Number"
           ],
           "price": 270,
-          "image": "shelf:bakery-cafe/egg-tart.webp"
+          "image": ""
         },
         {
           "name": "ઈંડા તવા ફ્રાય ચીઝ પ નંગ",
@@ -871,7 +871,7 @@
             "Inda B.B.Q. 5 Number"
           ],
           "price": 270,
-          "image": "shelf:bakery-cafe/egg-puff.webp"
+          "image": "images/grilled-eggs.webp"
         },
         {
           "name": "લસણીયા બોઈલ ૪ નંગ",
@@ -879,7 +879,7 @@
             "Lasaniya Boil 4 Number"
           ],
           "price": 180,
-          "image": "shelf:soups-salads/egg-drop-soup.webp"
+          "image": "shelf:breakfast/boiled-eggs.webp"
         },
         {
           "name": "ઈંડા બોઈલ ફ્રાય સાદા ૩ નંગ",
@@ -887,7 +887,7 @@
             "Inda Boil Fry Sada 3 Number"
           ],
           "price": 100,
-          "image": "shelf:chinese/egg-foo-young.webp"
+          "image": "shelf:breakfast/boiled-eggs.webp"
         }
       ]
     },
@@ -896,7 +896,7 @@
       "aliases": [
         "Rice"
       ],
-      "image": "shelf:mexican/mexican-rice.webp",
+      "image": "shelf:indian-rice/chicken-biryani.webp",
       "items": [
         {
           "name": "ચીકન બોમ્બે બીરીયાની",
@@ -904,7 +904,7 @@
             "Chicken Bombay Biryani"
           ],
           "price": 210,
-          "image": "shelf:fast-food/chicken-nuggets.webp"
+          "image": "shelf:indian-rice/chicken-biryani.webp"
         },
         {
           "name": "ચીકન દમ બીરીયાની",
@@ -912,7 +912,7 @@
             "Chicken Dum Biryani"
           ],
           "price": 210,
-          "image": "shelf:fast-food/chicken-burger.webp"
+          "image": "shelf:indian-rice/lucknowi-biryani.webp"
         },
         {
           "name": "ચીકન ટીક્કા બીરીયાની",
@@ -920,7 +920,7 @@
             "Chicken Tikka Biryani"
           ],
           "price": 260,
-          "image": "shelf:fast-food/chicken-bucket.webp"
+          "image": "shelf:indian-rice/chicken-biryani.webp"
         },
         {
           "name": "ચીકન તંદુરી બીરીયાની",
@@ -928,7 +928,7 @@
             "Chicken Tandoori Biryani"
           ],
           "price": 330,
-          "image": "shelf:continental/roast-chicken.webp"
+          "image": "shelf:indian-rice/lucknowi-biryani.webp"
         },
         {
           "name": "ચીકન તવા રાઈસ",
@@ -944,7 +944,7 @@
             "Mutton Tawa Rice"
           ],
           "price": 460,
-          "image": "shelf:thai-asian/thukpa.webp"
+          "image": "images/mutton-fried-rice.webp"
         },
         {
           "name": "મટન ટીક્કા બીરીયાની",
@@ -952,7 +952,7 @@
             "Mutton Tikka Biryani"
           ],
           "price": 380,
-          "image": "shelf:indian-rice/thalassery-biryani.webp"
+          "image": "shelf:indian-rice/mutton-biryani.webp"
         },
         {
           "name": "મટન બીરીયાની",
@@ -960,7 +960,7 @@
             "Mutton Biryani"
           ],
           "price": 340,
-          "image": "shelf:indian-rice/sindhi-biryani.webp"
+          "image": "shelf:indian-rice/mutton-biryani.webp"
         },
         {
           "name": "ફીશ બીરીયાની",
@@ -968,7 +968,7 @@
             "Fish Biryani"
           ],
           "price": 250,
-          "image": "shelf:south-indian/kerala-fish-curry.webp"
+          "image": "images/fish-biryani.webp"
         },
         {
           "name": "જીંગા બીરીયાની",
@@ -976,7 +976,7 @@
             "Jinga Biryani"
           ],
           "price": 350,
-          "image": "shelf:indian-rice/lucknowi-biryani.webp"
+          "image": "shelf:indian-rice/prawn-biryani.webp"
         },
         {
           "name": "ફીશ તવા રાઈસ",
@@ -984,7 +984,7 @@
             "Fish Tawa Rice"
           ],
           "price": 210,
-          "image": "shelf:indian-mains/goan-fish-curry.webp"
+          "image": "images/fish-fried-rice.webp"
         },
         {
           "name": "જીંગા તવા રાઈસ",
@@ -992,7 +992,7 @@
             "Jinga Tawa Rice"
           ],
           "price": 360,
-          "image": "shelf:thai-asian/thai-yellow-curry.webp"
+          "image": "images/prawn-fried-rice.webp"
         },
         {
           "name": "ઈંડા બીરીયાની",
@@ -1000,7 +1000,7 @@
             "Inda Biryani"
           ],
           "price": 190,
-          "image": "shelf:breakfast/scrambled-eggs.webp"
+          "image": "shelf:indian-rice/egg-biryani.webp"
         },
         {
           "name": "ઈંડા તવા રાઈસ",
@@ -1008,7 +1008,7 @@
             "Inda Tawa Rice"
           ],
           "price": 190,
-          "image": "shelf:breakfast/eggs-florentine.webp"
+          "image": "shelf:indo-chinese/egg-fried-rice.webp"
         },
         {
           "name": "ફ્રાય રાઈસ ગ્રેવી",
@@ -1016,7 +1016,7 @@
             "Fry Rice Gravy"
           ],
           "price": 130,
-          "image": "shelf:japanese/hayashi-rice.webp"
+          "image": ""
         },
         {
           "name": "ચીકન ગ્રેવી રાઈસ",
@@ -1024,7 +1024,7 @@
             "Chicken Gravy Rice"
           ],
           "price": 170,
-          "image": "shelf:chinese/hainan-chicken-rice.webp"
+          "image": "images/chicken-gravy-rice.webp"
         },
         {
           "name": "ઈંડા ગ્રેવી રાઈસ",
@@ -1032,7 +1032,7 @@
             "Inda Gravy Rice"
           ],
           "price": 150,
-          "image": "shelf:breakfast/eggs-benedict.webp"
+          "image": ""
         },
         {
           "name": "જીરા રાઈસ",
@@ -1048,7 +1048,7 @@
             "Rasawara Rice"
           ],
           "price": 70,
-          "image": "shelf:indian-rice/tomato-rice.webp"
+          "image": "images/rice-and-rassa.webp"
         }
       ]
     }

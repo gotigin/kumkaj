@@ -1,0 +1,41 @@
+# Photo shelf — sources
+
+The shelf is the public dish photo set (`khaynjo-items`, the Khaynjo Full
+Template). A file's name becomes a dish name, so the picture must be that
+dish.
+
+## Replaced 2026-11-21
+
+Twelve files were replaced, same file name, so the shelf count and every
+`shelf:` reference stay as they were: eleven whose names lied, and the jeera
+rice, which was the dish but shaped into a face. Each new photo is under a
+free licence (public domain / CC0, CC BY, CC BY-SA), resized to at most
+1024 px and saved as WebP.
+
+| File | The old photo showed | Original title | Author | Licence | Source | Changes |
+|---|---|---|---|---|---|---|
+| `continental/rack-of-lamb.webp` | a raw rack in plastic wrap | rack of lamb presentation II | waferboard | [CC BY 2.0](https://creativecommons.org/licenses/by/2.0/) | https://www.flickr.com/photos/60944931@N00/4340921954 | resized, WebP |
+| `indian-mains/dal-tadka.webp` | piles of raw lentils | Dal Tadka-Delhi | AugustineKajur | [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) | https://commons.wikimedia.org/w/index.php?curid=102245001 | resized, WebP |
+| `indian-mains/egg-curry.webp` | a raw cracked egg | Aaloo Anda Curry (Potato with Eggs).JPG | Miansari66 | [CC0 1.0](http://creativecommons.org/publicdomain/zero/1.0/deed.en) | https://commons.wikimedia.org/w/index.php?curid=20373095 | resized, WebP |
+| `indian-mains/kadai-chicken.webp` | two empty pans | Kadai Chicken - The Indismart Hotel - Salt Lake City - Kolkata 2023-08-13 3316 | Biswarup Ganguly | [CC BY 3.0](https://creativecommons.org/licenses/by/3.0/) | https://commons.wikimedia.org/w/index.php?curid=135888007 | resized, WebP |
+| `indian-mains/keema-matar.webp` | sausage making | Keema Matar | ravimadhuscooking | [CC BY 2.0](https://creativecommons.org/licenses/by/2.0/) | https://www.flickr.com/photos/153337965@N04/38460041161 | resized, WebP |
+| `indian-mains/kolhapuri-chicken.webp` | a biryani | Kolhapuri Chicken | Miansari66 | [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/deed.en/) | https://commons.wikimedia.org/w/index.php?curid=28980362 | resized, WebP |
+| `indian-mains/navratan-korma.webp` | a red curry, not the creamy vegetable korma | Navratan korma | Joyyy2000 | [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) | https://commons.wikimedia.org/w/index.php?curid=103399639 | resized, WebP |
+| `indian-rice/jeera-rice.webp` | rice shaped into a face | Jeera Rice Recipe - A Main Course Recipe From Indian Cuisine By Sonia Goyal | Sonia Goyal Jaipur | [CC BY-SA 2.0](https://creativecommons.org/licenses/by-sa/2.0/) | https://www.flickr.com/photos/115727405@N06/28906288345 | resized, WebP |
+| `indian-rice/prawn-biryani.webp` | bone-in meat and potato, no prawn | Prawn Biryani, Hyderabad | Abhinaba Basu | [CC BY 2.0](https://creativecommons.org/licenses/by/2.0/) | https://commons.wikimedia.org/w/index.php?curid=86947751 | resized, WebP |
+| `indian-rice/tehri.webp` | a mountain landscape (Tehri, the town) | Tehri.JPG | Miansari66 | [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/deed.en) | https://commons.wikimedia.org/w/index.php?curid=17602141 | resized, WebP |
+| `indian-rice/thalassery-biryani.webp` | a fruit dessert | Thalassery biryani -1 | Sheetal | [CC BY 2.5](https://creativecommons.org/licenses/by/2.5/) | https://commons.wikimedia.org/w/index.php?curid=27570690 | resized, WebP |
+| `south-indian/kerala-fish-curry.webp` | a red meat gravy, not fish | A traditional Kerala fish curry with tomatoes, and coconut milk, served in a black pot with a spoon, on a kitchen counter. | Ajith R N | [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/) | https://wordpress.org/photos/photo/7016637de7/ | resized, WebP |
+
+## Not recorded
+
+The other files on the shelf have no source recorded here. Only the
+`indian-mains` and `indian-rice` folders (and the few files the Rajdhani menu
+uses from other folders) have been looked at picture by picture; the other
+folders may hold more wrong photos. Still doubtful in the two folders that
+were looked at: `indian-mains/chicken-tikka-masala.webp` (looks like prawns),
+`indian-mains/ker-sangri.webp` (the raw beans, not the cooked dish),
+`indian-rice/lemon-rice.webp` (looks like noodles).
+
+When a folder is reviewed, add its sources here: CC BY and CC BY-SA photos
+need the author and licence named.
