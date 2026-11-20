@@ -12,9 +12,8 @@ Courier-agency books + booking desk — offline-first on your device.
 
 Full description
 ----------------
-Moklanjo (moklanjo.com) is a local-first courier-agency business operating system
-under the Kumkaj brand: party ledgers, day book, and a booking desk for walk-ins,
-AWB/barcode, and tracking.
+Moklanjo (moklanjo.com) is a local-first courier-agency business operating system:
+party ledgers, day book, and a booking desk for walk-ins, AWB/barcode, and tracking.
 
 • Books: parties, charges, day book, payouts
 • Booking desk for counter walk-ins
@@ -23,6 +22,11 @@ AWB/barcode, and tracking.
 Website: https://moklanjo.com
 Privacy: https://moklanjo.com/privacy
 
+Gotigin is the trademark of GOTIGIN SOFTWARE & HARDWARE PRIVATE LIMITED. Kumkaj is
+its brand for business apps, and Moklanjo is the Kumkaj product for courier agencies.
+
+(end of the public description)
+
 Set the Owner PIN on first run (install guide / in-app Team). Do not publish
 default PINs on the public listing.
 
@@ -30,6 +34,7 @@ Category: Business / Productivity
 Content rating: Everyone
 Privacy: no accounts required for local use; data stored on device SQLite.
 
-Build artifacts: see repo packaging scripts → dist/android/
-Play AAB: cargo-makepad android … build-aab -p kumkaj-moklanjo --release (with upload keystore)
+Build: ./apps/moklanjo/scripts/package-android.sh → dist/android/kumkaj-moklanjo.apk
+(and kumkaj-moklanjo.aab for Play when the upload key $HOME/moklanjo-release.jks exists).
+Steps: apps/moklanjo/docs/PUBLISH_PLAY_STORE.md
 iOS / macOS: deferred until Mac signing host.

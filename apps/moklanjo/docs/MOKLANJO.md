@@ -1,14 +1,16 @@
 # Moklanjo — Courier / logistics-agency Operating System
 
-> **Brand / domain:** Moklanjo · moklanjo.com ("Moklanjo" = to send / act of sending in Memoni)
+> **Product / domain:** Moklanjo · moklanjo.com ("Moklanjo" = to send / act of sending in Memoni).
+> Gotigin is the trademark; GOTIGIN SOFTWARE & HARDWARE PRIVATE LIMITED
+> is the company; Kumkaj is the brand; Moklanjo is the product.
 > **What ships:** the Kumkaj courier-agency product — a concrete business
 > operating system for courier and logistics agencies, under the
-> Kumkaj brand alongside Khaynjo.
+> Kumkaj brand alongside Khaynjo, Kirano and Tabiyat.
 > **Platform ids:** production `com.moklanjo` · development
 > `com.moklanjo.debug`
 > **Naming:** Moklanjo belongs to the Kumkaj brand, but its domain is
 > its own — **moklanjo.com**, not a path under kumkaj.com. Its id root
-> is simply `com.moklanjo` (the product *is* the brand), with `.debug`
+> is simply `com.moklanjo` (the package id follows the product domain), with `.debug`
 > for dev exactly like Khaynjo's split. Data dirs, Android application
 > id, iOS/macOS bundle id (when signed), and the desktop packager
 > identifier all use this root. Do not re-tie Moklanjo ids to

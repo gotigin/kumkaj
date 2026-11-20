@@ -158,7 +158,7 @@ claim ids sit in comments above each chapter in `sites/moklanjo/src/ui.rs`.
 | `track-link` | Customers can check an AWB on the office Wi-Fi | C "Public track-by-AWB" — **LAN only; say so** |
 | `whatsapp-receipt` | One-tap WhatsApp receipt | C "One-tap WhatsApp receipt" |
 | `offline-lan` | Works with no internet; extra counters on the office Wi-Fi | "Doctrine follow-ups → Offline office + devices"; vision §6, §20 — the extra-counters half is gated `lan-pilot` (`WEBSITES.md` §7 launch gates, §8 item 6 — `LAN_PILOT_PASSED`); see §6 below |
-| `languages` | 29 languages, Arabic/Urdu right-to-left | "Languages & RTL" |
+| `languages` | 115 languages, Arabic/Urdu right-to-left | "Languages & RTL" |
 | `free-local` | Free forever on your devices | vision §21 |
 
 ------------------------------------------------------------------------

@@ -62,7 +62,7 @@ Publisher in the manifest must match Partner Center **Package/Identity/Publisher
 
 1. Partner Center → Khaynjo → Packages
 2. Upload the signed `.msix`
-3. Complete Store listing, age rating, privacy policy, capabilities review (`runFullTrust`, network)
+3. Complete Store listing, age rating, privacy policy **https://khaynjo.com/privacy** (same page as Play; source `docs/PRIVACY.md`), capabilities review (`runFullTrust`, network)
 4. Submit for certification
 
 ## Sideload / USB (not Store)

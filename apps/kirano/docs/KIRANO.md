@@ -1,7 +1,9 @@
 # Kirano — Grocery / Kirana Shop Operating System
 
-> **Brand / domain:** Kirano · kirano.shop (kirana counter — grocery &
-> neighbourhood shop)
+> **Product / domain:** Kirano · kirano.shop (kirana counter — grocery &
+> neighbourhood shop). Gotigin is the trademark; GOTIGIN SOFTWARE &
+> HARDWARE PRIVATE LIMITED is the company; Kumkaj is the brand; Kirano
+> is the product.
 > **What ships:** the Kumkaj grocery product — a concrete business
 > operating system for kirana / grocery / general stores, under the
 > Kumkaj brand alongside Moklanjo, Khaynjo and Tabiyat.

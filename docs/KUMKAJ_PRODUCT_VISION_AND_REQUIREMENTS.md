@@ -1278,7 +1278,7 @@ Notes:
     coding in Cursor, `cargo moklanjo-dev` is the more convenient path.
 -   There is also a Cursor/VS Code task: **Kumkaj: live (--hot --remote)**.
 
-Makepad Studio is tooling; **Kumkaj is the product**.
+Makepad Studio is tooling. **Kumkaj is the brand**; Moklanjo, Khaynjo, Kirano and Tabiyat are the products.
 
 The product architecture should not be distorted merely to accommodate a
 development-tool issue.

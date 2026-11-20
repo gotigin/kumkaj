@@ -1,15 +1,17 @@
 # Khaynjo — Restaurant Operating System
 
-> **Brand / domain:** Khaynjo · khaynjo.com ("Khaynjo" = food in Memoni)
+> **Product / domain:** Khaynjo · khaynjo.com ("Khaynjo" = food in Memoni).
+> Gotigin is the trademark; GOTIGIN SOFTWARE & HARDWARE PRIVATE LIMITED
+> is the company; Kumkaj is the brand; Khaynjo is the product.
 > **What ships:** the Kumkaj restaurant product — a concrete business
 > operating system for restaurants and like food businesses, under the
-> Kumkaj brand alongside Moklanjo.
+> Kumkaj brand alongside Moklanjo, Kirano and Tabiyat.
 > **Platform ids:** production `com.khaynjo` · development
 > `com.khaynjo.debug`
 > **Naming:** Khaynjo belongs to the Kumkaj brand, but its domain is
 > its own — **khaynjo.com**, not a path under kumkaj.com. Moklanjo
 > likewise uses **moklanjo.com** / `com.moklanjo`. Khaynjo's id root is
-> simply `com.khaynjo` (its own domain; the product *is* the brand),
+> simply `com.khaynjo` (the package id follows the product domain),
 > with `.debug` for dev exactly like Moklanjo's split. Data dirs,
 > Android application id, iOS/macOS bundle id (when signed), and the
 > desktop packager identifier all use this root. Do not re-tie

@@ -1,6 +1,8 @@
 # Tabiyat — Pharmacy Operating System
 
-> **Brand / domain:** Tabiyat · tabiyat.shop ("tabiyat" ≈ nature / wellness)
+> **Product / domain:** Tabiyat · tabiyat.shop ("tabiyat" ≈ nature / wellness).
+> Gotigin is the trademark; GOTIGIN SOFTWARE & HARDWARE PRIVATE LIMITED
+> is the company; Kumkaj is the brand; Tabiyat is the product.
 > **What ships:** the Kumkaj pharmacy product — a concrete business
 > operating system for chemist / pharmacy counters, under the Kumkaj
 > brand alongside Moklanjo, Khaynjo and Kirano.

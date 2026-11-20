@@ -872,7 +872,7 @@ Same `KUMKAJ_APP_ID` / `KUMKAJ_APP_LABEL` on every OS. How each platform surface
 | **Windows** (Win10 + Win11 x86_64) | `cargo moklanjo-windows-dev` → `dist/moklanjo-windows-dev/` (exe + resources) | `./apps/moklanjo/scripts/package-windows.sh` → `dist/moklanjo-windows/` |
 | **macOS** binary (when built on Mac) | `cargo moklanjo-dev` | package script / packager |
 | **Desktop packager** (`Cargo.toml` `[package.metadata.packager]`) | Dev installs ignore this; scripts pass `--package-name` / env | `identifier = "com.moklanjo"`, `product_name = "Moklanjo"` |
-| **Web** | local `cargo moklanjo-dev` / wasm as configured | **moklanjo.com** (`apps/moklanjo/web/`, `./apps/moklanjo/scripts/package-web.sh` → `dist/web/moklanjo/`); brand **kumkaj.com** (`web/kumkaj/`); **khaynjo.com** (`apps/khaynjo/web/`) — build any site with `KUMKAJ_SITE_DIR=… ./scripts/build-site.sh` |
+| **Web** | `./sites/<site>/scripts/run-web.sh` | Live sites are the Makepad crates under `sites/` — kumkaj.com, moklanjo.com, khaynjo.com, kirano.shop, tabiyat.shop. Deploy with `sites/<site>/scripts/deploy-firebase.sh`. Privacy URL is `https://<domain>/privacy`. The zola trees under `web/` and `apps/*/web/` are not the public sites. |
 | **Play Store** listing | side-load / internal only | application id `com.moklanjo` (`apps/moklanjo/web/static/play-store-listing.txt`); privacy **https://moklanjo.com/privacy** |
 
 ### Data directories (keyed by `KUMKAJ_APP_ID`)

@@ -198,7 +198,7 @@ claim held back until the owner's real-hardware pilot passes
 | `area-prices` | A dearer price in the AC room | §4d "Area-wise prices" | — |
 | `menu-timings` | Breakfast menus and happy-hour prices | §4d "Menu timings / happy hour" | — |
 | `rights` | Per-person rights: allowed / with manager PIN / not allowed | §4d "User rights matrix…" | — |
-| `languages` | 29 languages, Arabic/Urdu right-to-left | §4c | — |
+| `languages` | 115 languages, Arabic/Urdu right-to-left | §4c | — |
 | `offline-lan` | Works with no internet; devices work together on the shop Wi-Fi | §4b "Orders and kitchen keep working with no internet"; vision §6, §20 | `lan-pilot` for the multi-device half |
 | `free-local` | Free forever on your devices | vision §21 | — |
 
