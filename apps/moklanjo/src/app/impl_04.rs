@@ -1654,5 +1654,8 @@ fn paint_static_texts(&mut self, cx: &mut Cx) {
             help.set_nav_icon(cx, NavTab::Sell);
             help.set_tip(&plain_display_text(&s("booking_help")));
         }
+        for path in [ids!(park_draft_btn), ids!(park_draft_top)] {
+            self.ui.button(cx, path).set_text(cx, &s("park_draft"));
+        }
     }
 }

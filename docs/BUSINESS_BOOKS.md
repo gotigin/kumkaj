@@ -182,6 +182,19 @@ needed. Never slang or moral labels for a settlement, and never
 gatekeeping copy (“bill required”, “bank proof required”) on a money
 form.
 
+### Desk drafts vs open orders
+
+**Desk draft** (Moklanjo Park/Board; Khaynjo Counter Park/Drafts): unfinished
+cart work paused mid-entry. Not books, not a sale, not an open Floor ticket.
+Survives restart; kept until Discard or Take payment — not wiped by day
+close. Same idea may appear on more than one surface in one app (Khaynjo
+Floor tickets *and* Counter drafts are independent; Floor on/off does not
+gate Counter park).
+
+**Open order** (below): work already on the Server as a live ticket
+(table/Floor running order, etc.) before settle. Still not a sale until
+finalize.
+
 ### Open orders are not books yet
 
 Many trades hold an order open before it is settled — a restaurant

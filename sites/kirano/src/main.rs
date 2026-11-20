@@ -654,7 +654,9 @@ impl MatchEvent for App {
         if whatsapp {
             self.whatsapp(cx);
         }
-        if self.ui.button(cx, ids!(start.to_kumkaj)).clicked(actions) {
+        if self.ui.button(cx, ids!(start.to_kumkaj)).clicked(actions)
+            || self.ui.button(cx, ids!(foot_kumkaj)).clicked(actions)
+        {
             let url = self.kumkaj_url(cx);
             open_link(cx, &url);
         }
@@ -664,6 +666,13 @@ impl MatchEvent for App {
         }
         if self.ui.button(cx, ids!(to_terms)).clicked(actions) {
             let url = self.site_url(cx, TERMS_PATH);
+            open_link(cx, &url);
+        }
+        if self.ui.button(cx, ids!(foot_gotigin)).clicked(actions) {
+            open_link(cx, "https://gotigin.com/");
+        }
+        if self.ui.button(cx, ids!(foot_product)).clicked(actions) {
+            let url = self.site_url(cx, "/");
             open_link(cx, &url);
         }
     }

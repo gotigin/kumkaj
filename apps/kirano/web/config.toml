@@ -14,6 +14,7 @@ highlight_code = false
 brand = "Kirano"
 product_line = "kirano"
 gotigin_line = "Gotigin · GOTIGIN SOFTWARE & HARDWARE PRIVATE LIMITED · Kumkaj · Kirano."
+gotigin_url = "https://gotigin.com"
 contact_email = "TODO_OWNER@gotigin.example"
 whatsapp_url = "https://wa.me/TODO_OWNER?text=Kirano%20demo%20%E2%80%94%20grocery%20shop%2C%20city"
 grievance_contact = "TODO_OWNER — grievance officer details pending"

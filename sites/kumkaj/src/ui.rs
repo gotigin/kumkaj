@@ -240,6 +240,51 @@ script_mod! {
             text_style: theme.font_bold{font_family: StrongFont font_size: 15.}
         }
     }
+    // Footer brand names: same face as Small on the navy band.
+    let FooterBrandMark = Button{
+        width: Fit height: Fit
+        padding: 0.
+        align: Align{x: 0.0 y: 0.5}
+        grab_key_focus: false
+        reset_hover_on_click: true
+        label_walk: Walk{width: Fit height: Fit}
+        icon_walk: Walk{width: 0. height: 0.}
+        draw_bg +: {
+            color: #x00000000
+            color_hover: #x00000000
+            color_down: #x00000000
+            color_focus: #x00000000
+            color_2: #x00000000
+            color_2_hover: #x00000000
+            color_2_down: #x00000000
+            color_2_focus: #x00000000
+            border_color: #x00000000
+            border_radius: 0.
+            border_size: 0.
+        }
+        draw_text +: {
+            color: Faint
+            color_hover: #xFFFFFF
+            color_down: #xFFFFFF
+            color_focus: Faint
+            text_style: theme.font_regular{font_family: TextFont font_size: 13. line_spacing: 1.4}
+        }
+    }
+    let FooterBrandSep = Markdown{
+        selectable: false
+        width: Fit height: Fit
+        padding: 0.
+        paragraph_spacing: 0.
+        pre_code_spacing: 0.
+        body: " · "
+        font_color: Faint
+        font_size: 13.
+        text_style_normal: theme.font_regular{font_family: TextFont font_size: 13. line_spacing: 1.4}
+        draw_text +: {
+            color: Faint
+            text_style: theme.font_regular{font_family: TextFont font_size: 13. line_spacing: 1.4}
+        }
+    }
     let GhostBtn = Button{
         width: Fit height: Fit
         padding: Inset{left: 20. right: 20. top: 13. bottom: 13.}
@@ -987,7 +1032,15 @@ script_mod! {
                                             width: Fill
                                             body: "© 2026 GOTIGIN SOFTWARE & HARDWARE PRIVATE LIMITED"
                                         }
-                                        Small{width: Fill body: "Gotigin · Kumkaj"}
+                                        View{
+                                            width: Fit height: Fit
+                                            flow: Right
+                                            spacing: 0
+                                            align: Align{y: 0.5}
+                                            foot_gotigin := FooterBrandMark{text: "Gotigin"}
+                                            FooterBrandSep{}
+                                            foot_kumkaj := FooterBrandMark{text: "Kumkaj"}
+                                        }
                                     }
                                 }
                                 footer_links := View{

@@ -2491,7 +2491,7 @@ impl CartLine {
     }
 }
 
-#[derive(Clone, Debug, Default)]
+#[derive(Clone, Debug, Default, Serialize, Deserialize)]
 pub struct Cart {
     pub lines: Vec<CartLine>,
     /// Optional charged total for this open cart (e.g. round ₹52 → ₹50).
@@ -2516,7 +2516,7 @@ pub struct Cart {
 }
 
 /// How much off the bill.
-#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq, Serialize, Deserialize)]
 pub enum DiscountKind {
     /// Percent in basis points (1000 = 10 %).
     Percent(i64),
@@ -2526,7 +2526,7 @@ pub enum DiscountKind {
 
 /// A discount on the whole bill — a right (vision §17): reason always,
 /// a manager's PIN when the person's right says "with approval".
-#[derive(Clone, Debug, PartialEq, Eq)]
+#[derive(Clone, Debug, PartialEq, Eq, Serialize, Deserialize)]
 pub struct BillDiscount {
     pub kind: DiscountKind,
     pub reason: String,
@@ -4549,6 +4549,61 @@ pub struct OrgConsolidatedReport {
 
 pub fn new_id() -> String {
     Uuid::new_v4().to_string()
+}
+
+/// Unfinished counter desk: cart snapshot. Not books until Take payment.
+#[derive(Clone, Debug, Serialize, Deserialize)]
+pub struct CounterDeskSnapshot {
+    pub cart: Cart,
+    #[serde(default)]
+    pub selected_customer_id: Option<String>,
+    /// Guest label at park time (party name or counter note).
+    #[serde(default)]
+    pub customer_label: String,
+}
+
+impl CounterDeskSnapshot {
+    pub fn display_title(&self) -> String {
+        let label = self.customer_label.trim();
+        if !label.is_empty() {
+            return label.to_string();
+        }
+        if let Some(id) = self.selected_customer_id.as_deref() {
+            if !id.trim().is_empty() {
+                return id.to_string();
+            }
+        }
+        if let Some(line) = self.cart.lines.first() {
+            let name = line.name.trim();
+            if !name.is_empty() {
+                return name.to_string();
+            }
+        }
+        "Draft".into()
+    }
+
+    pub fn is_empty(&self) -> bool {
+        if !self.cart.lines.is_empty() {
+            return false;
+        }
+        if self.selected_customer_id.is_some() {
+            return false;
+        }
+        !self.customer_label.trim().is_empty()
+    }
+}
+
+#[derive(Clone, Debug, Serialize, Deserialize)]
+pub struct CounterDraft {
+    pub id: String,
+    pub status: String,
+    pub opened_at: String,
+    pub updated_at: String,
+    pub opened_by: String,
+    pub title: String,
+    pub snapshot: CounterDeskSnapshot,
+    #[serde(default)]
+    pub sale_id: String,
 }
 
 #[cfg(test)]

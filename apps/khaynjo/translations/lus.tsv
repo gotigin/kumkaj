@@ -544,6 +544,22 @@ new_party_clear	Mi thar (form thianghlim)
 new_party_kind_supplier_ph	Mi thar khop (Pek tu)
 next_country	Ram dawt
 next_order	Order dawt (dawhkan thianghlim)
+nav_drafts	Drafts
+park_draft	Park draft
+drafts_help	Open counter carts you parked mid-order — not books until Take payment. Tap a card to resume on Order; Discard drops the draft. Day close does not clear these.
+drafts_park_nothing	Nothing to park — add items to the cart
+drafts_park_counter_only	Park draft is for the counter desk only — leave the table order or use Floor
+drafts_parked	Parked in Drafts — desk is clear
+drafts_discard	Discard draft
+drafts_discarded	Draft discarded
+drafts_gone	That draft is no longer on the list
+drafts_closed	That draft was already paid or discarded
+drafts_empty	No drafts yet. On Counter, add dishes and tap Park draft.
+drafts_card_kind	Draft
+drafts_card_no_lines	No lines
+drafts_card_lines	lines
+drafts_summary_fmt	{n} open drafts
+drafts_cols_fmt	{n} col
 note_gstin_ph	Lehkha / GSTIN / thuthlung hriat reng
 notes_attach_party	Lehkha leh thlun (mi thlan)
 notes_attach_sale	Lehkha leh thlun (zuar thlan)

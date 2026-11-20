@@ -453,6 +453,51 @@ script_mod! {
             color_focus: #xFFFFFF
         }
     }
+    // Footer brand/product names: same face as OnRedBody, clickable, no chrome.
+    let FooterBrandMark = Button{
+        width: Fit height: Fit
+        padding: 0.
+        align: Align{x: 0.0 y: 0.5}
+        grab_key_focus: false
+        reset_hover_on_click: true
+        label_walk: Walk{width: Fit height: Fit}
+        icon_walk: Walk{width: 0. height: 0.}
+        draw_bg +: {
+            color: #x00000000
+            color_hover: #x00000000
+            color_down: #x00000000
+            color_focus: #x00000000
+            color_2: #x00000000
+            color_2_hover: #x00000000
+            color_2_down: #x00000000
+            color_2_focus: #x00000000
+            border_color: #x00000000
+            border_radius: 0.
+            border_size: 0.
+        }
+        draw_text +: {
+            color: #xF6DCCB
+            color_hover: #xFFFFFF
+            color_down: #xFFFFFF
+            color_focus: #xF6DCCB
+            text_style: theme.font_regular{font_family: TextFont font_size: 15.5 line_spacing: 1.45}
+        }
+    }
+    let FooterBrandSep = Markdown{
+        selectable: false
+        width: Fit height: Fit
+        padding: 0.
+        paragraph_spacing: 0.
+        pre_code_spacing: 0.
+        body: " · "
+        font_color: #xF6DCCB
+        font_size: 15.5
+        text_style_normal: theme.font_regular{font_family: TextFont font_size: 15.5 line_spacing: 1.45}
+        draw_text +: {
+            color: #xF6DCCB
+            text_style: theme.font_regular{font_family: TextFont font_size: 15.5 line_spacing: 1.45}
+        }
+    }
     // Top-bar section link: quiet text on the red bar.
     let NavLink = Button{
         width: Fit height: Fit
@@ -1098,18 +1143,31 @@ script_mod! {
                                     H2{body: "Every country at your counter"}
                                     Lede{body: "One famous dish from every country — the English name, the name in their own script, and the dish in English. Put those words on your menu. The world keeps moving past; pause or search when you want to look."}
                                 }
-                                // Living parade (not a pager): cards flow past the counter.
+                                // Living parade controls — two Fit rows, always Right.
+                                // Never put this in ROWS: stacking to Down makes each
+                                // chip its own column on phone.
                                 shelf_bar := View{
                                     width: Fill height: Fit
-                                    flow: Right
+                                    flow: Down
                                     spacing: 8
-                                    align: Align{y: 0.5}
-                                    shelf_flow_left := PagerBtn{text: "←"}
-                                    shelf_flow_right := PagerBtn{text: "→"}
-                                    shelf_play := PagerBtn{text: "Pause"}
-                                    shelf_speed_down := PagerBtn{text: "−"}
-                                    shelf_speed := PagerBtn{text: "Speed 2"}
-                                    shelf_speed_up := PagerBtn{text: "+"}
+                                    shelf_dir := View{
+                                        width: Fill height: Fit
+                                        flow: Right
+                                        spacing: 8
+                                        align: Align{y: 0.5}
+                                        shelf_flow_left := PagerBtn{text: "←"}
+                                        shelf_flow_right := PagerBtn{text: "→"}
+                                        shelf_play := PagerBtn{text: "Pause"}
+                                    }
+                                    shelf_spd := View{
+                                        width: Fill height: Fit
+                                        flow: Right
+                                        spacing: 8
+                                        align: Align{y: 0.5}
+                                        shelf_speed_down := PagerBtn{text: "−"}
+                                        shelf_speed := PagerBtn{text: "Speed 2"}
+                                        shelf_speed_up := PagerBtn{text: "+"}
+                                    }
                                 }
                                 // Own row so placeholder / typed text stay readable.
                                 shelf_find := TextInput{
@@ -1633,7 +1691,17 @@ script_mod! {
                                                 draw_block +: { selection_color: #xCFE3FFFF }
                                             }
                                             OnRedBody{body: "© 2026 GOTIGIN SOFTWARE & HARDWARE PRIVATE LIMITED"}
-                                            OnRedBody{body: "Gotigin · Kumkaj · Khaynjo"}
+                                            View{
+                                                width: Fit height: Fit
+                                                flow: Right
+                                                spacing: 0
+                                                align: Align{y: 0.5}
+                                                foot_gotigin := FooterBrandMark{text: "Gotigin"}
+                                                FooterBrandSep{}
+                                                foot_kumkaj := FooterBrandMark{text: "Kumkaj"}
+                                                FooterBrandSep{}
+                                                foot_product := FooterBrandMark{text: "Khaynjo"}
+                                            }
                                         }
                                     }
                                     footer_links := View{

@@ -605,6 +605,7 @@ impl MatchEvent for App {
         if self.ui.button(cx, ids!(header_back)).clicked(actions) {
             self.navigate_back(cx);
         }
+        self.handle_counter_drafts_actions(cx, actions);
         self.handle_sidebar_nav_list_actions(cx, actions);
         if std::mem::take(&mut *sidebar_order_dirty().lock().unwrap()) {
             let msg = app_state().lock().unwrap().t("sidebar_order_saved");
@@ -1641,6 +1642,7 @@ impl MatchEvent for App {
                     ));
                 }
                 let is_client = st.device_role == DeviceRole::Client;
+                let counter_draft_id = st.active_counter_draft_id.clone();
                 // Loyalty / wallet / voucher: discount already on the cart;
                 // Server till debits inside finalize's transaction (same as
                 // Client /sale redeem fields on the Server).
@@ -1738,6 +1740,7 @@ impl MatchEvent for App {
                         redeem_wallet_paise: pending_wallet,
                         redeem_voucher_code: pending_v_code,
                         redeem_voucher_paise: pending_v_paise,
+                        counter_draft_id: counter_draft_id.clone(),
                     };
                     // Saved on this device first, then sent: a Wi‑Fi drop
                     // delays the bill, it never loses it.
@@ -1753,6 +1756,7 @@ impl MatchEvent for App {
                     st.cart.clear();
                     st.open_cart_line = None;
                     st.selected_table_id = None;
+                    st.active_counter_draft_id = None;
                     st.status = format!("{amount} · {summary} saved — sending to the counter");
                     return Ok(Pending::Queued);
                 }
@@ -1778,6 +1782,11 @@ impl MatchEvent for App {
                     let change = (tendered - cash - tip).max(0);
                     store.record_settlement(&sale.id, tendered, change, tip, "cash", &actor)?;
                 }
+                if let Some(did) = counter_draft_id {
+                    if let Some(store) = st.store.as_ref() {
+                        let _ = store.close_counter_draft_as_sale(&did, &sale.id);
+                    }
+                }
                 let amount = st.money(Money(sale.total_paise));
                 let full = st
                     .store
@@ -1787,6 +1796,7 @@ impl MatchEvent for App {
                 st.cart.clear();
                 st.open_cart_line = None;
                 st.selected_table_id = None;
+                st.active_counter_draft_id = None;
                 st.pending_loyalty_points = 0;
                 st.pending_wallet_paise = 0;
                 st.pending_voucher_code.clear();

@@ -544,6 +544,22 @@ new_party_clear	ភាគីថ្មី (សម្អាតទម្រង់)
 new_party_kind_supplier_ph	ប្រភេទភាគីថ្មី (អ្នកផ្គត់ផ្គង់)
 next_country	ប្រទេសបន្ទាប់
 next_order	ការកុម្ម៉ង់បន្ទាប់ (សម្អាតតុ)
+nav_drafts	Drafts
+park_draft	Park draft
+drafts_help	Open counter carts you parked mid-order — not books until Take payment. Tap a card to resume on Order; Discard drops the draft. Day close does not clear these.
+drafts_park_nothing	Nothing to park — add items to the cart
+drafts_park_counter_only	Park draft is for the counter desk only — leave the table order or use Floor
+drafts_parked	Parked in Drafts — desk is clear
+drafts_discard	Discard draft
+drafts_discarded	Draft discarded
+drafts_gone	That draft is no longer on the list
+drafts_closed	That draft was already paid or discarded
+drafts_empty	No drafts yet. On Counter, add dishes and tap Park draft.
+drafts_card_kind	Draft
+drafts_card_no_lines	No lines
+drafts_card_lines	lines
+drafts_summary_fmt	{n} open drafts
+drafts_cols_fmt	{n} col
 note_gstin_ph	កំណត់ចំណាំ / GSTIN / រំលឹកកិច្ចព្រមព្រៀង
 notes_attach_party	កំណត់ចំណាំ និងឯកសារភ្ជាប់ (ភាគីដែលបានជ្រើស)
 notes_attach_sale	កំណត់ចំណាំ និងឯកសារភ្ជាប់ (ការលក់ដែលបានជ្រើស)

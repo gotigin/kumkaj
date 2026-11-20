@@ -1291,10 +1291,10 @@ impl AppState {
     }
 
     fn park_booking_desk(&mut self) -> Result<(), String> {
-        let snap = self.capture_booking_desk_snapshot();
-        if snap.is_empty() {
+        if !self.booking_desk_is_dirty() {
             return Err(self.t("board_park_nothing"));
         }
+        let snap = self.capture_booking_desk_snapshot();
         let actor = self.actor()?;
         let existing = self.active_draft_id.clone();
         if self.device_role == DeviceRole::Client {

@@ -10,6 +10,9 @@ impl AppState {
             selected_table_id: None,
             floor_focus_table_id: None,
             selected_customer_id: None,
+            active_counter_draft_id: None,
+            counter_drafts_rows: Vec::new(),
+            counter_drafts_columns: 0,
             crm_segment: store::CrmSegment::BirthdayThisWeek,
             pending_loyalty_points: 0,
             pending_wallet_paise: 0,
@@ -2471,5 +2474,143 @@ impl AppState {
             }
             None => format!("{}: —", self.t("today_prefix")),
         }
+    }
+
+    fn capture_counter_desk_snapshot(&self) -> CounterDeskSnapshot {
+        let customer_label = self
+            .selected_customer_id
+            .as_ref()
+            .and_then(|id| {
+                self.customers
+                    .iter()
+                    .find(|c| &c.id == id)
+                    .map(|c| c.name.clone())
+            })
+            .unwrap_or_default();
+        CounterDeskSnapshot {
+            cart: self.cart.clone(),
+            selected_customer_id: self.selected_customer_id.clone(),
+            customer_label,
+        }
+    }
+
+    fn apply_counter_desk_snapshot(&mut self, snap: &CounterDeskSnapshot) {
+        self.cart = snap.cart.clone();
+        self.money_lane = snap.cart.money_lane;
+        self.selected_customer_id = snap.selected_customer_id.clone();
+        self.selected_table_id = None;
+        self.open_cart_line = None;
+    }
+
+    fn refresh_counter_drafts(&mut self) -> Result<(), String> {
+        let store = self.store.as_ref().ok_or_else(|| "No store".to_string())?;
+        let mut cards = Vec::new();
+        for d in store.list_open_counter_drafts()? {
+            let snap = &d.snapshot;
+            let line2 = self.t(match snap.cart.order_type {
+                OrderType::DineIn => "dine_in",
+                OrderType::Takeaway => "takeaway",
+                OrderType::Delivery => "delivery",
+                OrderType::Counter => "counter",
+            });
+            let line3 = if snap.cart.lines.is_empty() {
+                self.t("drafts_card_no_lines")
+            } else {
+                format!(
+                    "{} {}",
+                    snap.cart.lines.len(),
+                    self.t("drafts_card_lines")
+                )
+            };
+            cards.push(CounterDraftCard {
+                id: d.id.clone(),
+                title: d.title.clone(),
+                line2,
+                line3,
+                amount_paise: snap.cart.rounded_total().paise(),
+                at: d.updated_at.clone(),
+            });
+        }
+        self.counter_drafts_rows = cards;
+        Ok(())
+    }
+
+    fn park_counter_desk(&mut self) -> Result<(), String> {
+        if self.selected_table_id.is_some() {
+            return Err(self.t("drafts_park_counter_only"));
+        }
+        let snap = self.capture_counter_desk_snapshot();
+        if snap.cart.lines.is_empty() {
+            return Err(self.t("drafts_park_nothing"));
+        }
+        let actor = self.actor()?;
+        let existing = self.active_counter_draft_id.clone();
+        if self.device_role == DeviceRole::Client {
+            let req = net::RemoteParkCounterDraftRequest {
+                id: existing,
+                snapshot: snap,
+            };
+            self.lan_job(
+                "/counter_draft",
+                &req,
+                self.t("park_draft"),
+                self.t("drafts_parked"),
+                phone::Follow::Refresh,
+                false,
+            )?;
+            self.active_counter_draft_id = None;
+            self.pull_from_server();
+            return Ok(());
+        }
+        let store = self.store.as_mut().ok_or_else(|| "No store".to_string())?;
+        let _draft = store.park_counter_draft_from_snapshot(existing.as_deref(), snap, &actor)?;
+        self.active_counter_draft_id = None;
+        Ok(())
+    }
+
+    fn resume_counter_draft(&mut self, id: &str) -> Result<(), String> {
+        let store = self.store.as_ref().ok_or_else(|| "No store".to_string())?;
+        let draft = store
+            .get_counter_draft(id)?
+            .ok_or_else(|| self.t("drafts_gone"))?;
+        if draft.status != "draft" {
+            return Err(self.t("drafts_closed"));
+        }
+        self.apply_counter_desk_snapshot(&draft.snapshot);
+        self.active_counter_draft_id = Some(draft.id);
+        Ok(())
+    }
+
+    fn discard_counter_draft(&mut self, id: &str) -> Result<String, String> {
+        let actor = self.actor()?;
+        if self.device_role == DeviceRole::Client {
+            let req = net::RemoteCounterDraftDiscardRequest {
+                id: id.to_string(),
+            };
+            let done = self.t("drafts_discarded");
+            self.lan_job(
+                "/counter_draft_discard",
+                &req,
+                self.t("drafts_discard"),
+                done.clone(),
+                phone::Follow::Refresh,
+                false,
+            )?;
+            if self.active_counter_draft_id.as_deref() == Some(id) {
+                self.clear_order_desk();
+                self.active_counter_draft_id = None;
+            }
+            self.pull_from_server();
+            let _ = self.refresh_counter_drafts();
+            return Ok(done);
+        }
+        let store = self.store.as_ref().ok_or_else(|| "No store".to_string())?;
+        store.discard_counter_draft(id, &actor)?;
+        if self.active_counter_draft_id.as_deref() == Some(id) {
+            self.clear_order_desk();
+            self.active_counter_draft_id = None;
+        }
+        self.refresh_counter_drafts()?;
+        Ok(self.t("drafts_discarded"))
     }
 }

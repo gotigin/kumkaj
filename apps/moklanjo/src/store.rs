@@ -1505,7 +1505,8 @@ impl Store {
             .collect::<Vec<_>>()
             .join(" · ");
         self.audit(actor, "day.close", &detail)?;
-        let _ = self.discard_all_open_booking_drafts()?;
+        // Open booking drafts stay until the desk discards or finishes them —
+        // day close must not wipe unfinished work overnight.
         Ok(now)
     }
 

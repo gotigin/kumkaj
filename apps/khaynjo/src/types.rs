@@ -1043,6 +1043,8 @@ enum Screen {
     /// Books home — today's position (money in/out, owed, cash vs bank).
     Books,
     Pos,
+    /// Counter desk drafts parked mid-order (not books).
+    Drafts,
     /// Dining floor — tables grid; tap a table to open its order.
     Floor,
     /// Kitchen display — open KOTs, advance New → Preparing → Ready → Done.
@@ -1065,6 +1067,7 @@ enum Screen {
 enum NavTab {
     Books,
     Sell,
+    Drafts,
     Buy,
     Menu,
     Floor,
@@ -1138,7 +1141,26 @@ impl ReportDayLens {
 /// bottom bar (slots are positions; which tab a slot shows comes from
 /// `AppState.nav_order`). Settings sections come first, as on the Settings
 /// list; they start hidden on the bars ([`nav_tab_default_hidden`]).
-const NAV_TABS: [NavTab; 29] = [
+/// One row on the Drafts screen (open counter desk draft).
+#[derive(Clone, Debug)]
+struct CounterDraftCard {
+    id: String,
+    title: String,
+    line2: String,
+    line3: String,
+    amount_paise: i64,
+    at: String,
+}
+
+fn counter_drafts_column_count(cols: u8) -> usize {
+    match cols {
+        2 => 2,
+        4 => 4,
+        _ => 3,
+    }
+}
+
+const NAV_TABS: [NavTab; 30] = [
     NavTab::SetLanguage,
     NavTab::SetCountry,
     NavTab::SetTills,
@@ -1156,6 +1178,7 @@ const NAV_TABS: [NavTab; 29] = [
     NavTab::SetPrivacy,
     NavTab::Books,
     NavTab::Sell,
+    NavTab::Drafts,
     NavTab::Buy,
     NavTab::Menu,
     NavTab::Floor,
@@ -1211,6 +1234,7 @@ fn nav_tab_label_key(tab: NavTab, my_pin_only: bool) -> &'static str {
     match tab {
         NavTab::Books => "books",
         NavTab::Sell => "sell",
+        NavTab::Drafts => "nav_drafts",
         NavTab::Buy => "buy",
         NavTab::Menu => "sidebar_menu_items",
         NavTab::Floor => "floor",
@@ -1246,6 +1270,7 @@ fn nav_tab_key(tab: NavTab) -> &'static str {
     match tab {
         NavTab::Books => "books",
         NavTab::Sell => "sell",
+        NavTab::Drafts => "drafts",
         NavTab::Buy => "buy",
         NavTab::Menu => "menu",
         NavTab::Floor => "floor",
@@ -1282,6 +1307,7 @@ fn nav_tab_icon_bytes(tab: NavTab) -> &'static [u8] {
     match tab {
         NavTab::Books => include_bytes!("../resources/nav/books.webp").as_slice(),
         NavTab::Sell => include_bytes!("../resources/nav/sell.webp").as_slice(),
+        NavTab::Drafts => include_bytes!("../resources/nav/favorites.webp").as_slice(),
         NavTab::Buy => include_bytes!("../resources/nav/buy.webp").as_slice(),
         NavTab::Menu => include_bytes!("../resources/nav/menu.webp").as_slice(),
         NavTab::Floor => include_bytes!("../resources/nav/floor.webp").as_slice(),

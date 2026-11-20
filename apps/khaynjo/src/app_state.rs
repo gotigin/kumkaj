@@ -11,6 +11,12 @@ struct AppState {
     /// to focus; Open / Print / View use this without needing Order open.
     floor_focus_table_id: Option<String>,
     selected_customer_id: Option<String>,
+    /// Open counter-desk draft being edited (resume or re-park updates this row).
+    active_counter_draft_id: Option<String>,
+    /// Drafts screen cards (open counter drafts only).
+    counter_drafts_rows: Vec<CounterDraftCard>,
+    /// Drafts grid column preference (`0` → three columns).
+    counter_drafts_columns: u8,
     customers: Vec<Customer>,
     /// Parties → Guests & messages: which CRM segment is previewed.
     crm_segment: store::CrmSegment,

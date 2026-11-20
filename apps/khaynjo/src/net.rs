@@ -5,9 +5,9 @@
 
 use crate::diag::{self, Cat};
 use crate::domain::{
-    Category, CreditLedgerEntry, Customer, DayTotals, DiningTable,
-    KitchenStation, KotTicket, PayMethod, Product, RunningOrder, Sale, SaleDraft, StaffMember,
-    TaxRate,
+    Category, CounterDeskSnapshot, CounterDraft, CreditLedgerEntry, Customer, DayTotals,
+    DiningTable, KitchenStation, KotTicket, PayMethod, Product, RunningOrder, Sale, SaleDraft,
+    StaffMember, TaxRate,
 };
 use crate::fiscal::FiscalSettings;
 use crate::store::Store;
@@ -81,6 +81,8 @@ pub struct SyncSnapshot {
     /// what each table has and the counter can bill it.
     #[serde(default)]
     pub running_orders: Vec<RunningOrder>,
+    #[serde(default)]
+    pub counter_drafts: Vec<CounterDraft>,
     /// The Server's own id (kept in its books): a device that lost the
     /// Server's address finds it again by this, never by its name.
     #[serde(default)]
@@ -345,6 +347,27 @@ pub struct RemoteSaleRequest {
     pub redeem_voucher_code: String,
     #[serde(default)]
     pub redeem_voucher_paise: i64,
+    /// Open counter draft to close when this sale commits.
+    #[serde(default)]
+    pub counter_draft_id: Option<String>,
+}
+
+#[derive(Clone, Debug, Serialize, Deserialize)]
+pub struct RemoteParkCounterDraftRequest {
+    #[serde(default)]
+    pub id: Option<String>,
+    pub snapshot: CounterDeskSnapshot,
+}
+
+#[derive(Clone, Debug, Serialize, Deserialize)]
+pub struct RemoteCounterDraftCloseRequest {
+    pub draft_id: String,
+    pub sale_id: String,
+}
+
+#[derive(Clone, Debug, Serialize, Deserialize)]
+pub struct RemoteCounterDraftDiscardRequest {
+    pub id: String,
 }
 
 #[derive(Clone, Debug, Serialize, Deserialize)]
@@ -1252,6 +1275,7 @@ fn build_snapshot(store: &Store) -> Result<SyncSnapshot, String> {
         fiscal: store.fiscal_settings()?,
         tax_rates: store.list_tax_rates()?,
         running_orders: store.list_running_orders()?,
+        counter_drafts: store.list_open_counter_drafts()?,
         server_id: store.lan_server_id()?,
         rev: String::new(),
         seq: 0,
@@ -2556,6 +2580,30 @@ fn write(store: &Store, route: &str, body: &str, actor: &StaffMember, after: &mu
             let message = store.apply_books_op(op, actor)?;
             Ok(Reply::json(serde_json::json!({ "ok": true, "message": message })))
         }
+        "/counter_draft" => {
+            let req: RemoteParkCounterDraftRequest =
+                serde_json::from_str(body).map_err(|e| format!("counter_draft json: {e}"))?;
+            let draft = store.park_counter_draft_from_snapshot(
+                req.id.as_deref(),
+                req.snapshot,
+                actor,
+            )?;
+            Ok(Reply::json(
+                serde_json::to_value(&draft).map_err(|e| e.to_string())?,
+            ))
+        }
+        "/counter_draft_close" => {
+            let req: RemoteCounterDraftCloseRequest = serde_json::from_str(body)
+                .map_err(|e| format!("counter_draft_close json: {e}"))?;
+            store.close_counter_draft_as_sale(&req.draft_id, &req.sale_id)?;
+            Ok(Reply::done())
+        }
+        "/counter_draft_discard" => {
+            let req: RemoteCounterDraftDiscardRequest = serde_json::from_str(body)
+                .map_err(|e| format!("counter_draft_discard json: {e}"))?;
+            store.discard_counter_draft(&req.id, actor)?;
+            Ok(Reply::done())
+        }
         _ => Ok(Reply::refuse(404, "not found", "")),
     }
 }
@@ -2637,6 +2685,9 @@ fn remote_sale(store: &Store, req: &RemoteSaleRequest, actor: &StaffMember) -> R
         };
         let change = (req.tendered_paise - cash - req.tip_paise).max(0);
         store.record_settlement(&sale.id, req.tendered_paise, change, req.tip_paise, "cash", actor)?;
+    }
+    if let Some(did) = req.counter_draft_id.as_deref().filter(|s| !s.is_empty()) {
+        let _ = store.close_counter_draft_as_sale(did, &sale.id);
     }
     Ok(sale)
 }
@@ -3263,6 +3314,7 @@ pub fn apply_snapshot(store: &Store, snap: &SyncSnapshot) -> Result<(), String> 
         store.replace_sales_cache_from_sync(&snap.recent_sales)?;
         store.replace_kots_from_sync(&snap.open_kots)?;
         store.replace_running_from_sync(&snap.running_orders)?;
+        store.replace_counter_drafts_from_sync(&snap.counter_drafts)?;
         // Full replace — never leave another shop's people on Lock.
         store.replace_staff_cache_from_sync(&snap.staff)?;
         // Always write — empty title/org/logo means this shop has none (do not
@@ -4023,6 +4075,7 @@ mod tests {
             redeem_wallet_paise: 0,
             redeem_voucher_code: String::new(),
             redeem_voucher_paise: 0,
+            counter_draft_id: None,
         })
         .unwrap();
         let draft = cart.to_sale_draft().unwrap();
@@ -4789,6 +4842,7 @@ mod tests {
                                     redeem_wallet_paise: 0,
                                     redeem_voucher_code: String::new(),
                                     redeem_voucher_paise: 0,
+                                    counter_draft_id: None,
                                 };
                                 ("/sale", serde_json::to_string(&sale).unwrap())
                             };

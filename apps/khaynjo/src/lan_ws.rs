@@ -257,6 +257,7 @@ impl SyncPatch {
             fiscal: self.fiscal.unwrap_or_default(),
             tax_rates: self.tax_rates.unwrap_or_default(),
             running_orders: self.running_orders.unwrap_or_default(),
+            counter_drafts: Vec::new(),
             server_id: self.server_id.unwrap_or_default(),
             rev: self.rev,
             seq: self.seq,

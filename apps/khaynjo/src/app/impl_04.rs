@@ -397,6 +397,7 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
             Screen::ClientPair => ids!(client_pair_screen),
             Screen::Books => ids!(books_screen),
             Screen::Pos => ids!(pos_scroll),
+            Screen::Drafts => ids!(drafts_screen),
             Screen::Buy => ids!(buy_screen),
             Screen::Floor => ids!(floor_screen),
             Screen::Kitchen => ids!(kitchen_screen),
@@ -552,6 +553,7 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
             (ids!(client_pair_screen), screen == Screen::ClientPair),
             (ids!(books_screen), screen == Screen::Books),
             (ids!(pos_screen), screen == Screen::Pos),
+            (ids!(drafts_screen), screen == Screen::Drafts),
             (ids!(buy_screen), screen == Screen::Buy),
             (ids!(floor_screen), screen == Screen::Floor),
             (ids!(kitchen_screen), screen == Screen::Kitchen),
@@ -813,6 +815,7 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
             (ids!(nav_x26), ids!(nav_x26_on)),
             (ids!(nav_x27), ids!(nav_x27_on)),
             (ids!(nav_x28), ids!(nav_x28_on)),
+            (ids!(nav_x29), ids!(nav_x29_on)),
         ]
     }
 
@@ -847,6 +850,7 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
             (ids!(rail_x26), ids!(rail_x26_on)),
             (ids!(rail_x27), ids!(rail_x27_on)),
             (ids!(rail_x28), ids!(rail_x28_on)),
+            (ids!(rail_x29), ids!(rail_x29_on)),
         ]
     }
 
@@ -881,6 +885,7 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
             ids!(nav_x26_icon),
             ids!(nav_x27_icon),
             ids!(nav_x28_icon),
+            ids!(nav_x29_icon),
         ]
     }
 
@@ -915,6 +920,7 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
             ids!(rail_x26_icon),
             ids!(rail_x27_icon),
             ids!(rail_x28_icon),
+            ids!(rail_x29_icon),
         ]
     }
 
@@ -990,6 +996,7 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
                 ids!(rail_x26_slot),
                 ids!(rail_x27_slot),
                 ids!(rail_x28_slot),
+                ids!(rail_x29_slot),
             ]
         } else {
             [
@@ -1022,6 +1029,7 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
                 ids!(nav_x26_slot),
                 ids!(nav_x27_slot),
                 ids!(nav_x28_slot),
+                ids!(nav_x29_slot),
             ]
         }
     }
@@ -3980,6 +3988,18 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
             Some(NavTab::Sell) => {
                 cx.set_key_focus(Area::Empty);
                 self.go_peer_if_allowed(cx, Screen::Pos, |s| s.can_access_sell());
+            }
+            Some(NavTab::Drafts) => {
+                cx.set_key_focus(Area::Empty);
+                let result = (|| -> Result<(), String> {
+                    let mut st = app_state().lock().unwrap();
+                    st.refresh_counter_drafts()
+                })();
+                if let Err(e) = result {
+                    self.set_status(cx, e);
+                } else {
+                    self.go_peer_if_allowed(cx, Screen::Drafts, |s| s.can_access_sell());
+                }
             }
             Some(NavTab::Buy) => {
                 cx.set_key_focus(Area::Empty);

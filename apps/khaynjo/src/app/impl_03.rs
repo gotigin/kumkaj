@@ -2130,6 +2130,13 @@ fn fit_inside_system_bars(&mut self, cx: &mut Cx) {
             .widget(cx, ids!(sibling_pickers_help))
             .set_text(cx, &plain_display_text(&s("sibling_pickers_help")));
         {
+            let help = self.ui.widget(cx, ids!(drafts_help)).as_info_help();
+            help.set_title(cx, &s("nav_drafts"));
+            help.set_nav_icon(cx, NavTab::Drafts);
+            help.set_tip(&plain_display_text(&s("drafts_help")));
+        }
+        self.ui.button(cx, ids!(park_draft_btn)).set_text(cx, &s("park_draft"));
+        {
             let help = self.ui.widget(cx, ids!(floor_help)).as_info_help();
             help.set_title(cx, &s("floor"));
             help.set_nav_icon(cx, NavTab::Floor);

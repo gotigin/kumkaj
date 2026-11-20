@@ -272,7 +272,7 @@ fn nav_tab_permitted(tab: NavTab, caps: NavCaps) -> bool {
         // Signed-in → Settings shell (My PIN at minimum). Shop-admin hub rows
         // stay gated by can_access_settings inside the screen.
         NavTab::Settings => caps.signed_in,
-        NavTab::Sell => caps.sell,
+        NavTab::Sell | NavTab::Drafts => caps.sell,
         NavTab::Books => caps.books_ok(),
         NavTab::Buy => caps.buy_ok(),
         NavTab::Menu => caps.items,
@@ -338,6 +338,7 @@ fn screen_for_nav_tab(tab: NavTab) -> Screen {
     match tab {
         NavTab::Books => Screen::Books,
         NavTab::Sell => Screen::Pos,
+        NavTab::Drafts => Screen::Drafts,
         NavTab::Buy => Screen::Buy,
         NavTab::Menu => Screen::Menu,
         NavTab::Floor => Screen::Floor,
@@ -409,7 +410,7 @@ fn session_may_stay_on(screen: Screen, st: &AppState) -> bool {
     };
     let caps = nav_caps_from(st);
     match screen {
-        Screen::Pos => caps.sell,
+        Screen::Pos | Screen::Drafts => caps.sell,
         Screen::Menu => caps.items,
         Screen::Books => caps.books_ok(),
         Screen::Buy => caps.buy_ok(),
@@ -690,6 +691,7 @@ fn nav_tab_for(screen: Screen) -> Option<NavTab> {
     match screen {
         Screen::Books => Some(NavTab::Books),
         Screen::Pos => Some(NavTab::Sell),
+        Screen::Drafts => Some(NavTab::Drafts),
         Screen::Floor => Some(NavTab::Floor),
         Screen::Kitchen => Some(NavTab::Kitchen),
         Screen::Buy => Some(NavTab::Buy),

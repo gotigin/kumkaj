@@ -651,6 +651,13 @@ impl MatchEvent for App {
             let url = self.site_url(cx, TERMS_PATH);
             open_link(cx, &url);
         }
+        if self.ui.button(cx, ids!(foot_gotigin)).clicked(actions) {
+            open_link(cx, "https://gotigin.com/");
+        }
+        if self.ui.button(cx, ids!(foot_kumkaj)).clicked(actions) {
+            let url = self.site_url(cx, "/");
+            open_link(cx, &url);
+        }
     }
 }
 

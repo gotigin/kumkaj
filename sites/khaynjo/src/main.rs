@@ -142,7 +142,10 @@ const MIN_WIDTH: f64 = 375.0;
 
 /// Rows that sit side by side only when the content column is at least
 /// this wide (px), and stack otherwise.
-const ROWS: [(&[LiveId], f64); 24] = [
+/// Rows that may stack Down on a narrow content column. Toolbars of small
+/// Fit chips (shelf play/speed) must NOT be listed — under ~520 px that
+/// turns each button into its own row (phone screenshot 2026-11-20).
+const ROWS: [(&[LiveId], f64); 23] = [
     (ids!(hero_row), 900.0),
     (ids!(hero_cta), 420.0),
     (ids!(visit_key), 760.0),
@@ -158,7 +161,6 @@ const ROWS: [(&[LiveId], f64); 24] = [
     (ids!(feat_r2), 640.0),
     (ids!(feat_r3), 640.0),
     (ids!(tmpl_row), 760.0),
-    (ids!(menus.shelf_bar), 520.0),
     (ids!(offline_row), 860.0),
     (ids!(price_row), 720.0),
     (ids!(faq_r0), 720.0),
@@ -1373,8 +1375,17 @@ impl MatchEvent for App {
             let url = self.site_url(cx, TERMS_PATH);
             open_link(cx, &url);
         }
-        if self.ui.button(cx, ids!(to_kumkaj)).clicked(actions) {
+        if self.ui.button(cx, ids!(to_kumkaj)).clicked(actions)
+            || self.ui.button(cx, ids!(foot_kumkaj)).clicked(actions)
+        {
             let url = self.kumkaj_url(cx);
+            open_link(cx, &url);
+        }
+        if self.ui.button(cx, ids!(foot_gotigin)).clicked(actions) {
+            open_link(cx, "https://gotigin.com/");
+        }
+        if self.ui.button(cx, ids!(foot_product)).clicked(actions) {
+            let url = self.site_url(cx, "/");
             open_link(cx, &url);
         }
     }

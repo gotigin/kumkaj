@@ -3,9 +3,10 @@
 use crate::domain::{
     format_qty_display, milli_to_whole_qty, new_id, normalize_birthday, normalize_party_roles,
     AttachmentEntity, AttachmentKind, AuditEvent, BooksOverview, Branch, BranchSnapshot, Category,
-    CreditLedgerEntry, Customer, DayTotals, DiningTable, EntryAttachment, EventTimes,
-    KitchenStation, KotStatus, KotTicket, Money, MoneyLane, MoneyMoveKind, MoneyMovement, OpenBill,
-    OpsReport, OrderType, OrgConsolidatedReport, Cart, PartyAgingRow, PartyPositionRow, PayMethod,
+    CounterDeskSnapshot, CounterDraft, CreditLedgerEntry, Customer, DayTotals, DiningTable,
+    EntryAttachment, EventTimes, KitchenStation, KotStatus, KotTicket, Money, MoneyLane,
+    MoneyMoveKind, MoneyMovement, OpenBill, OpsReport, OrderType, OrgConsolidatedReport, Cart,
+    PartyAgingRow, PartyPositionRow, PayMethod,
     PeriodBooks, Product, Purchase, PurchaseLine, Sale, SaleDraft, SaleLine, SaleRevision,
     StaffFeatures, StaffMember, StaffRights, StaffRole, StockMovement, TableStatus, TaxRate, UnitConversion,
     UnitDef, VenueMode, STOCK_UNTRACKED,
@@ -148,6 +149,8 @@ mod ops;
 mod whatsapp;
 #[path = "store_template.rs"]
 mod template;
+#[path = "store_counter_drafts.rs"]
+mod store_counter_drafts;
 pub use template::{
     diff_packs, lint_pack, slug as template_slug, template_pref_keys, AreaSpec, ConversionSpec,
     SchemeSpec, ShopDefaultsFile, ShopDefaultsStaff, StationSpec, TableSpec, TaxRateSpec,
@@ -736,6 +739,17 @@ impl Store {
                     body TEXT NOT NULL,
                     created_at TEXT NOT NULL
                 );
+                CREATE TABLE IF NOT EXISTS counter_drafts (
+                    id TEXT PRIMARY KEY,
+                    status TEXT NOT NULL,
+                    opened_at TEXT NOT NULL,
+                    updated_at TEXT NOT NULL,
+                    opened_by TEXT NOT NULL,
+                    title TEXT NOT NULL,
+                    payload_json TEXT NOT NULL,
+                    sale_id TEXT NOT NULL DEFAULT ''
+                );
+                CREATE INDEX IF NOT EXISTS idx_counter_drafts_status ON counter_drafts(status, updated_at);
                 CREATE TABLE IF NOT EXISTS lan_outbox (
                     id TEXT PRIMARY KEY,
                     seq INTEGER NOT NULL,

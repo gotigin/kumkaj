@@ -1808,14 +1808,14 @@ impl App {
                 self.paint_today_board(cx);
             }
             if screen == Screen::Pos {
-                let (dirty, label) = {
-                    let st = app_state().lock().unwrap();
-                    (st.booking_desk_is_dirty(), st.t("park_draft"))
-                };
-                self.ui.button(cx, ids!(park_draft_btn)).set_text(cx, &label);
-                self.ui
-                    .button(cx, ids!(park_draft_btn))
-                    .set_enabled(cx, dirty);
+                // Always enabled: typed fields live in the widgets until
+                // Park/Take payment syncs them. Gating on AppState dirty left
+                // the button dead after typing (only worked after ADD/pick).
+                let label = app_state().lock().unwrap().t("park_draft");
+                for path in [ids!(park_draft_btn), ids!(park_draft_top)] {
+                    self.ui.button(cx, path).set_text(cx, &label);
+                    self.ui.button(cx, path).set_enabled(cx, true);
+                }
             }
             self.ui
                 .widget(cx, ids!(inventory_label))

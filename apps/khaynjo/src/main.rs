@@ -26,9 +26,9 @@ use kumkaj_khaynjo::{
 use snack::SnackKind;
 
 use domain::{
-    new_id, AttachmentEntity, Cart, CartLine, Customer, DiningTable, KotStatus, Money, MoneyLane,
-    MoneyMoveKind, OrderType, PayMethod, Product, Sale, SaleRevision, StaffFeatures, StaffMember,
-    StaffRole, VenueMode,
+    new_id, AttachmentEntity, Cart, CartLine, CounterDeskSnapshot, Customer, DiningTable, KotStatus,
+    Money, MoneyLane, MoneyMoveKind, OrderType, PayMethod, Product, Sale, SaleRevision,
+    StaffFeatures, StaffMember, StaffRole, VenueMode,
 };
 use fiscal::{FiscalSettings, TaxPricing};
 use locale::{LanguageSource, LocaleSettings, CURRENCIES, LANGUAGES};
@@ -113,6 +113,7 @@ include!("popup.rs");
 include!("selection_menu.rs");
 include!("helpers_books.rs");
 include!("widgets/catalog_cart.rs");
+include!("widgets/counter_drafts_list.rs");
 include!("widgets/sales_people.rs");
 include!("widgets/misc_lists.rs");
 include!("app/defs.rs");
@@ -126,6 +127,7 @@ include!("app/impl_07.rs");
 include!("app/impl_08.rs");
 include!("helpers_image.rs");
 include!("app/chevrons.rs");
+include!("app/counter_drafts.rs");
 include!("app/match_event.rs");
 include!("smoke_script.rs");
 include!("app/main_impl.rs");

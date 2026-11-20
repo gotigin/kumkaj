@@ -131,9 +131,13 @@ impl App {
         st.open_suggest(field, text);
     }
 
-    /// Open a list from a tap on its field or ↓ — never from focus alone.
+    /// Open a list from a tap on its field / ˅, or ↓ — never from focus alone.
+    /// A second tap on the same field / ˄ closes (toggle).
     fn open_suggest_from_user(&mut self, cx: &mut Cx, field: SuggestField) {
         if app_state().lock().unwrap().suggest_open == Some(field) {
+            self.close_open_suggest(cx);
+            self.redraw_suggest_lists(cx);
+            self.ui.redraw(cx);
             return;
         }
         let text = self.ui.text_input(cx, field.input()).text();
@@ -188,7 +192,11 @@ impl App {
                 if let Some(field) = open
                     && !self.suggest_owns_point(cx, field, abs)
                 {
+                    // Close + UI redraw so the height tween and ComboField
+                    // ˅/˄ update (list-only redraw left the chevron stale).
                     self.close_open_suggest(cx);
+                    self.redraw_suggest_lists(cx);
+                    self.ui.redraw(cx);
                 }
                 *popup_press().lock().unwrap() = self
                     .suggest_field_at(cx, abs)

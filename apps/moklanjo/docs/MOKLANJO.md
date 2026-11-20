@@ -61,7 +61,7 @@ He was shown a **generic till + books** shell with courier *labels*. He expected
 | He asked about | What it is | Product response |
 |----------------|------------|------------------|
 | Many walk-ins, each with their own parcels | Fast **new booking** loop (next person → weigh → charge → receipt → next) | Core desk UX — not “pick shop SKUs” |
-| Several people in line / status without inventing a “Floor” | **Park** mid-booking → desk clears → serve person 2 → **Board** shows drafts + today’s bookings; tap draft to **resume**. Finish with **Take payment** (draft closes). Pay-later → Account + Credit/khata (party). After commit, **Ops** lanes are parcel status — not Khaynjo Parcel tiles — see [`CLIENT_TEMPLATES_AND_SETUP.md`](../../../docs/CLIENT_TEMPLATES_AND_SETUP.md) §3 | Booking desk; **Board**; Ops |
+| Several people in line / status without inventing a “Floor” | **Park** mid-booking → desk clears → serve person 2 → **Board** shows drafts (kept until Discard / Take payment, not wiped by day close) + today’s bookings; tap draft to **resume**. Finish with **Take payment** (draft closes). Pay-later → Account + Credit/khata (party). After commit, **Ops** lanes are parcel status — not Khaynjo Parcel tiles — see [`CLIENT_TEMPLATES_AND_SETUP.md`](../../../docs/CLIENT_TEMPLATES_AND_SETUP.md) §3 | Booking desk; **Board**; Ops |
 | Barcoding / labels | AWB/CN on booking + print/scan barcode | Ops capability on the same booking document |
 | Tracking details | Status on that AWB (booked → handed over / out for delivery → …) | Ops capability; deep carrier-network track may stay with carrier portal until we integrate |
 

@@ -3009,6 +3009,18 @@ fn paint_submit_busy_chrome(&mut self, cx: &mut Cx) {
                 self.set_report_rows(cx, ids!(sibling_pickers_label), sibling_rows);
             }
             } // Settings units / siblings when those panels are open
+            if screen == Screen::Drafts {
+                self.paint_counter_drafts(cx);
+            }
+            if screen == Screen::Pos {
+                let (label, counter) = {
+                    let st = app_state().lock().unwrap();
+                    (st.t("park_draft"), st.selected_table_id.is_none())
+                };
+                self.ui.button(cx, ids!(park_draft_btn)).set_text(cx, &label);
+                self.ui.button(cx, ids!(park_draft_btn)).set_enabled(cx, true);
+                self.ui.button(cx, ids!(park_draft_btn)).set_visible(cx, counter);
+            }
             if screen == Screen::Floor {
                 let filter = self.ui.text_input(cx, ids!(floor_waiter_filter)).text();
                 let ops = {

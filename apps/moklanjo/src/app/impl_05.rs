@@ -406,6 +406,12 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
             .widget(cx, ids!(reports_bank_heading))
             .set_text(cx, &plain_display_text(&s("bank_book")));
         {
+            let help = self.ui.widget(cx, ids!(board_help)).as_info_help();
+            help.set_title(cx, &s("nav_board"));
+            help.set_nav_icon(cx, NavTab::Board);
+            help.set_tip(&plain_display_text(&s("board_help")));
+        }
+        {
             let help = self.ui.widget(cx, ids!(inventory_help)).as_info_help();
             help.set_title(cx, &s("inventory"));
             help.set_nav_icon(cx, NavTab::Inventory);

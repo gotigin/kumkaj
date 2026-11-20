@@ -6,6 +6,8 @@ sell	Boos dhigashada
 nav_board	Board
 board	Board
 park_draft	Park
+board_help	Open drafts and today's bookings. On Booking, tap Park draft mid-work (saved here, not books); tap a draft card to resume. Day close drops open drafts.
+board_empty	No cards yet. On Booking, fill a customer mid-way and tap Park draft — it appears here so you can serve someone else, then resume.
 board_park_nothing	Nothing to park — add charges or booking details
 board_parked	Parked on Board — desk is clear
 board_draft	Draft

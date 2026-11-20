@@ -61,25 +61,44 @@ real client setups.
 
 ## 3. Desk rush: same “many people waiting,” different products
 
+**Shared idea (every Kumkaj app):** mid-work can **pause** one customer,
+serve another, then **resume** — unfinished desk work is a **draft** (not
+books until Take payment / settle). The *shape* of that interrupt surface
+is per product, and **one app may expose more than one surface** (e.g.
+Khaynjo Floor *and* Counter drafts). Templates / Settings show or hide
+each surface; they must not remove the ability to handle more than one
+open customer.
+
 Agents often invent the wrong board. Use the product’s real model.
 
-### Khaynjo (food) — open tickets, pay when ready
+### Khaynjo (food) — Floor slots **and** Counter drafts (independent)
 
-When several people order **without paying yet**, and the counter only
-wants **status** (not names):
+Two interrupt faces for the same pause/resume idea. **Floor on/off does
+not gate Counter drafts** — each surface is its own Settings/template
+toggle. A shop may run Floor only, Drafts only, both, or (poorly) neither.
 
-1. Use **Floor → Parcel** (or any free slots), not a nameless draft cart pile.
+**A. Floor / Parcel (table-shaped open tickets)** — when Floor is shown:
+
+1. Put each wait on a **Floor** slot (Parcel **P1…** is usual for walk-ins).
 2. Punch → **Send KOT** → leave payment alone.
-3. Floor tiles show **name (e.g. P3), amount, status · minutes**
-   (In kitchen → Food ready → Served → Bill printed).
+3. Tiles show **name (e.g. P3), amount, status · minutes**.
 4. Settle when handed over; the slot frees on pay.
-5. Customer name is optional; **P-number + status + amount + time** is enough.
 
-Pure **Counter** order type is weaker for “eight unpaid waits” — that is
-a finish-this-ticket path. Many unpaid waits belong on **Floor slots**.
+**B. Counter drafts** — always available on the Order desk when Drafts is
+shown (Floor may be on or off; that does not matter):
 
-Kitchen (if enabled) advances tickets; Floor stays the glance board.
-Templates may hide Floor/Kitchen entirely for a counter-only shop.
+1. Mid-order → **Park draft** (cart saved, not books) → desk clears for the
+   next person.
+2. **Drafts** nav shows dynamic cards of open counter drafts (kept until
+   Discard or pay — not wiped by day close); tap → resume on Counter.
+3. Take payment closes that draft.
+
+Floor is for seated/parcel status; Drafts is for counter interrupt. They
+can coexist in one shop. Hiding Floor must not remove Park/Drafts; hiding
+Drafts must not remove Floor.
+
+Kitchen (if enabled) advances Floor tickets; it is not a substitute for
+Counter park/resume.
 
 ### Moklanjo (courier) — Park draft + Board, then Ops for status
 
@@ -87,7 +106,8 @@ Rush at the desk is **not** Khaynjo Parcel tiles:
 
 1. Destination → weigh → **ADD**. Mid-work → **Park** (cart + parcel form
    saved as a **draft**, not books) → desk clears for the next customer.
-2. **Board** shows **dynamic cards** only: open drafts + **today's
+2. **Board** shows **dynamic cards** only: open drafts (kept until the desk
+   **Discard**s or finishes them — not cleared by day close) + **today's
    completed bookings** (business-day window). Filter All | Draft | Booked;
    column density 2/3/4; tap a draft → **resume** on Booking.
 3. Finish → Cash or Account → **Take payment** → **Next booking** (closes the
@@ -96,8 +116,7 @@ Rush at the desk is **not** Khaynjo Parcel tiles:
    party), not an anonymous hold board.
 5. Parcel **ops** status after commit → **Ops** lanes
    (To dispatch → With carrier → Out for delivery → Failed → Done).
-6. Day close discards open drafts; **Ops** is post-commit tracking — not a
-   queue of unpaid desk work.
+6. **Ops** is post-commit tracking — not a queue of unpaid desk drafts.
 
 Detail: [`apps/moklanjo/docs/MOKLANJO_APP_TUTORIAL.md`](../apps/moklanjo/docs/MOKLANJO_APP_TUTORIAL.md)
 §3 and §7; Ops board: [`MOKLANJO.md`](../apps/moklanjo/docs/MOKLANJO.md).
@@ -106,8 +125,10 @@ Detail: [`apps/moklanjo/docs/MOKLANJO_APP_TUTORIAL.md`](../apps/moklanjo/docs/MO
 
 ```text
 ❌ Parcel Floor tiles inside Moklanjo for walk-in queue
-❌ Khaynjo “Next booking” clearing the only open unpaid ticket board
-✅ Each trade’s desk model + templates to hide what that shop skips
+❌ Forcing walk-in rush onto Floor because “Counter has no park”
+❌ Gating Counter Park/Drafts on Floor being off (or on)
+✅ Same pause/resume idea; Floor and Drafts independent in Khaynjo; Board in Moklanjo
+✅ Templates show/hide each surface — capability stays in the product
 ```
 
 ## 4. Where configuration lives (Khaynjo today; siblings follow)

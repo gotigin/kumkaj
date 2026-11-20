@@ -3362,6 +3362,10 @@ script_mod! {
     mod.widgets.SuggestListBase = #(SuggestList::register_widget(vm))
     mod.widgets.SuggestList = set_type_default() do mod.widgets.SuggestListBase{
         width: Fill height: Fit
+        // Same width as the ComboField above (parent pane padding insets both).
+        // Do not margin the list alone — that made rows look narrower than the
+        // input. Close via ˅/˄ toggle, Escape/Back, or press outside field+list.
+        margin: Inset{top: 4. bottom: 8.}
         // Capped viewport (not expand-to-content): mouse press-drag scrolls
         // the list when there is no wheel (page still owns full-height lists).
         list := PortalList{
@@ -5502,9 +5506,11 @@ script_mod! {
                                         draw_text.color: #x9A6206
                                         draw_text.text_style.font_size: 10.
                                     }
+                                    // Sticky Park — always visible without scrolling the cart pane.
+                                    park_draft_top := RowSecondaryBtn{text: "Park draft"}
                                 }
                                 booking_help := InfoHelp{
-                                    tip: "Consignor + consignee (blank OK) → destination → weigh → pick rate → Account/Cash → pay. AWB prints on the receipt. Next booking clears the desk. Rounded starts equal to Applied — edit only to round the bill."
+                                    tip: "Consignor + consignee (blank OK) → destination → weigh → pick rate → Account/Cash → pay. Mid-work interrupt: Park draft (saves to Board, not books) then serve the next customer. AWB prints on the receipt. Next booking clears the desk."
                                 }
                             }
 
@@ -5528,7 +5534,10 @@ script_mod! {
                                     pos_catalog := View{
                                         width: Fill height: Fit
                                         flow: Down spacing: 10
-                                        padding: Inset{bottom: 48.}
+                                        // Side padding on the pane — field and
+                                        // SuggestList stay equal width with room
+                                        // beside the dropdown to dismiss / scroll.
+                                        padding: Inset{left: 12. right: 12. bottom: 48.}
                                 // Address blocks always on the form (structure
                                 // required); values may stay empty for walk-ins.
                                 // Consignor = customer / sender — same party.
@@ -5760,7 +5769,7 @@ script_mod! {
                                     pos_cart_col := View{
                                         width: Fill height: Fit
                                         flow: Down spacing: 10
-                                        padding: Inset{bottom: 48.}
+                                        padding: Inset{left: 12. right: 12. bottom: 48.}
                                 View{
                                     width: Fill height: Fit
                                     flow: Right spacing: 12
@@ -5779,7 +5788,7 @@ script_mod! {
                                         font_color: #x3A4554
                                         font_size: 13.
                                     }
-                                    park_draft_btn := QuietFitBtn{text: "Park"}
+                                    park_draft_btn := RowSecondaryBtn{text: "Park draft"}
                                     clear_cart := Button{
                                         text: "Clear"
                                         width: Fit height: 32
@@ -6082,7 +6091,7 @@ script_mod! {
                                 flow: Down spacing: 12
                                 padding: Inset{left: 16. right: 16. top: 8. bottom: 120.}
                                 board_help := InfoHelp{
-                                    tip: "Open drafts and today's bookings. Park mid-work to serve the next customer; tap a draft to resume on the booking desk."
+                                    tip: "Open drafts (kept until you Discard or Take payment) and today's booked sales. On Booking, tap Park draft mid-work (saved here, not books); tap a draft to resume."
                                 }
                                 View{
                                     width: Fill height: Fit
@@ -6111,6 +6120,13 @@ script_mod! {
                                     body: ""
                                     font_color: #x3A4554
                                     font_size: 13.
+                                }
+                                board_empty := WrapLabel{
+                                    width: Fill
+                                    body: "No cards yet. On Booking, fill a customer mid-way and tap Park draft — it appears here so you can serve someone else, then resume."
+                                    font_color: #x3A4554
+                                    font_size: 14.
+                                    visible: false
                                 }
                                 today_board_list := mod.widgets.TodayBoardList{}
                             }

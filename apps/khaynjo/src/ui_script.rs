@@ -1071,6 +1071,57 @@ script_mod! {
         draw_bg.border_size: 1.
         draw_bg.border_color: #xE3D3C8
     }
+    let DraftDeskCard = RoundedView{
+        cursor: MouseCursor.Hand
+        width: Fill height: Fit
+        padding: Inset{left: 12. right: 12. top: 12. bottom: 12.}
+        flow: Down spacing: 6
+        draw_bg.color: #xffffff
+        draw_bg.border_radius: 14.
+        draw_bg.border_size: 2.
+        draw_bg.border_color: #x4A5568
+        kind := Label{
+            text: "Draft"
+            align: Align{x: 0.0}
+            draw_text.color: #x072058
+            draw_text.text_style.font_size: 11.
+        }
+        title := Label{
+            width: Fill
+            text: "Title"
+            align: Align{x: 0.0}
+            flow: Right{wrap: true}
+            draw_text.color: #x0B1220
+            draw_text.text_style.font_size: 14.
+        }
+        line2 := WrapLabel{
+            width: Fill
+            body: ""
+            font_color: #x3A4554
+            font_size: 12.
+        }
+        line3 := WrapLabel{
+            width: Fill
+            body: ""
+            font_color: #x3A4554
+            font_size: 11.
+        }
+        amount := Label{
+            width: Fill
+            text: "0"
+            align: Align{x: 0.0}
+            draw_text.color: #xC44E10
+            draw_text.text_style.font_size: 15.
+        }
+        time := Label{
+            width: Fill
+            text: ""
+            align: Align{x: 0.0}
+            draw_text.color: #x3A4554
+            draw_text.text_style.font_size: 11.
+        }
+        discard_draft := StackLightBtn{text: "Discard"}
+    }
     // Equal Fill fields only. Max two FieldInputs — a third long placeholder
     // wraps and makes the row look stair-stepped on Settings widths.
     let FormFieldRow = View{
@@ -3886,6 +3937,30 @@ script_mod! {
         }
     }
 
+    mod.widgets.CounterDraftsListBase = #(CounterDraftsList::register_widget(vm))
+    mod.widgets.CounterDraftsList = set_type_default() do mod.widgets.CounterDraftsListBase{
+        width: Fill height: Fit
+        list := PortalList{
+            width: Fill height: Fill
+            spacing: 10
+            drag_scrolling: false
+            bounce_at_start: false
+            bounce_at_end: false
+            capture_overload: false
+            scroll_bar: ScrollBar{bar_size: 0.}
+            Item := View{
+                width: Fill height: Fit
+                flow: Right spacing: 12
+                padding: Inset{bottom: 8.}
+                texture_caching: false
+                c0 := DraftDeskCard{}
+                c1 := DraftDeskCard{}
+                c2 := DraftDeskCard{}
+                c3 := DraftDeskCard{}
+            }
+        }
+    }
+
     mod.widgets.SaleListBase = #(SaleList::register_widget(vm))
     mod.widgets.SaleList = set_type_default() do mod.widgets.SaleListBase{
         width: Fill height: Fit
@@ -5679,6 +5754,22 @@ script_mod! {
                                         }
                                     }
                                 }
+                                rail_x29_slot := View{
+                                    visible: false
+                                    width: Fill height: Fit
+                                    flow: Overlay
+                                    rail_x29 := TabBtn{text: ""}
+                                    rail_x29_on := TabBtnActive{text: "" visible: false}
+                                    View{
+                                        width: Fit height: 40
+                                        align: Align{x: 0.0 y: 0.5}
+                                        padding: Inset{left: 10. right: 0. top: 0. bottom: 0.}
+                                        rail_x29_icon := Image{
+                                            width: 22 height: 22
+                                            fit: ImageFit.Stretch
+                                        }
+                                    }
+                                }
                             }
                         }
                     }
@@ -7114,6 +7205,7 @@ script_mod! {
                                                 batch_cancel_btn := StackLightBtn{text: "Cancel marked" visible: false}
                                                 print_cancelled_kot_btn := StackLightBtn{text: "Print all cancelled" visible: false}
                                                 next_order_btn := StackLightBtn{text: "Next order (clear desk)" visible: false}
+                                                park_draft_btn := StackSecondaryBtn{text: "Park draft"}
                                             }
                                         }
                                         // Foot of the ticket column: Print bill · Move /
@@ -7588,6 +7680,45 @@ script_mod! {
                                 } // pos_ticket_row
                             } // pos_ticket
                         } // pos_screen
+
+                        drafts_screen := ScrollYView{
+                            width: Fill height: Fill
+                            visible: false
+                            View{
+                                width: Fill height: Fit
+                                flow: Down spacing: 12
+                                padding: Inset{left: 16. right: 16. top: 8. bottom: 120.}
+                                drafts_help := InfoHelp{
+                                    tip: "Parked counter carts — not books until Take payment. Tap a card to resume on Order; Discard drops the draft. Day close does not clear these."
+                                }
+                                View{
+                                    width: Fill height: Fit
+                                    flow: Right{wrap: true} spacing: 8
+                                    drafts_col_2 := ChipBtn{text: "2 col"}
+                                    drafts_col_2_on := ChipBtnActive{text: "2 col" visible: false}
+                                    drafts_col_3 := ChipBtn{text: "3 col"}
+                                    drafts_col_3_on := ChipBtnActive{text: "3 col" visible: false}
+                                    drafts_col_4 := ChipBtn{text: "4 col"}
+                                    drafts_col_4_on := ChipBtnActive{text: "4 col" visible: false}
+                                    View{width: Fill height: 1}
+                                    drafts_refresh := QuietFitBtn{text: "Refresh"}
+                                }
+                                drafts_summary := WrapLabel{
+                                    width: Fill
+                                    body: ""
+                                    font_color: #x3A4554
+                                    font_size: 13.
+                                }
+                                drafts_empty := WrapLabel{
+                                    width: Fill
+                                    body: "No drafts yet. On Counter, add dishes and tap Park draft — then serve the next guest."
+                                    font_color: #x3A4554
+                                    font_size: 14.
+                                    visible: false
+                                }
+                                counter_drafts_list := mod.widgets.CounterDraftsList{}
+                            }
+                        }
 
                         floor_screen := ScrollYView{
                             width: Fill height: Fill
@@ -13116,6 +13247,22 @@ h_backup := WrapLabel{body: "Backup" font_color: #x260B08 font_size: 16.}
                                             align: Align{x: 0.0 y: 0.5}
                                             padding: Inset{left: 10. right: 0. top: 0. bottom: 0.}
                                             nav_x28_icon := Image{
+                                                width: 22 height: 22
+                                                fit: ImageFit.Stretch
+                                            }
+                                        }
+                                    }
+                                    nav_x29_slot := View{
+                                        visible: false
+                                        width: Fit{min: FitBound.Abs(72.)} height: Fit
+                                        flow: Overlay
+                                        nav_x29 := NavChip{text: ""}
+                                        nav_x29_on := NavChipActive{text: "" visible: false}
+                                        View{
+                                            width: Fit height: Fill
+                                            align: Align{x: 0.0 y: 0.5}
+                                            padding: Inset{left: 10. right: 0. top: 0. bottom: 0.}
+                                            nav_x29_icon := Image{
                                                 width: 22 height: 22
                                                 fit: ImageFit.Stretch
                                             }

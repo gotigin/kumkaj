@@ -43,22 +43,25 @@ impl App {
             self.sync_chrome(cx);
             return;
         }
-        if self.ui.button(cx, ids!(park_draft_btn)).clicked(actions) {
+        if self.ui.button(cx, ids!(park_draft_btn)).clicked(actions)
+            || self.ui.button(cx, ids!(park_draft_top)).clicked(actions)
+        {
+            // Pull every typed field into AppState before dirty/park — otherwise
+            // mid-entry text never counted and Park looked flaky.
             self.sync_booking_desk_from_ui(cx);
             let result = {
                 let mut st = app_state().lock().unwrap();
-                if !st.booking_desk_is_dirty() {
-                    Err(st.t("board_park_nothing"))
-                } else {
-                    st.park_booking_desk().map(|_| st.t("board_parked"))
-                }
+                st.park_booking_desk().map(|_| st.t("board_parked"))
             };
-            if result.is_ok() {
-                {
-                    let mut st = app_state().lock().unwrap();
-                    st.clear_booking_desk();
+            match &result {
+                Ok(_) => {
+                    {
+                        let mut st = app_state().lock().unwrap();
+                        st.clear_booking_desk();
+                    }
+                    self.clear_booking_desk_ui(cx);
                 }
-                self.clear_booking_desk_ui(cx);
+                Err(_) => {}
             }
             self.set_status_as(cx, result);
             self.sync_chrome(cx);
@@ -202,6 +205,14 @@ impl App {
         self.ui
             .widget(cx, ids!(board_summary))
             .set_text(cx, &plain_display_text(&summary));
+        let empty = rows.0 == 0;
+        self.ui.widget(cx, ids!(board_empty)).set_visible(cx, empty);
+        if empty {
+            self.ui.widget(cx, ids!(board_empty)).set_text(
+                cx,
+                &plain_display_text(&t("board_empty")),
+            );
+        }
         let _ = (currency, fiscal);
     }
 }
