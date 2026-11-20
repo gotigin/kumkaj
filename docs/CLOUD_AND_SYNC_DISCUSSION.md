@@ -1,0 +1,168 @@
+# Cloud, sync, Auth — discussion notes (continue here)
+
+**Status:** discussion / working notes (2026-11-20). Not a finished
+implementation plan. Captured so we do not re-argue the same points.
+
+Canonical product doctrine still wins on conflict:
+[`KUMKAJ_PRODUCT_VISION_AND_REQUIREMENTS.md`](KUMKAJ_PRODUCT_VISION_AND_REQUIREMENTS.md)
+§20–21 (optional cloud, free local forever, usage-based cloud).
+Website Auth how-to: [`FIREBASE_AUTH_SETUP.md`](FIREBASE_AUTH_SETUP.md).
+
+---
+
+## 1. What is already decided (product shape)
+
+### Auth (person)
+
+- **Global** products. Do not narrow geography or invent regional-only
+  billing/product scope.
+- Auth is **per product domain**, not brand-level Gotigin/Kumkaj login.
+  (Unlike Wadhu: Wadhu’s apps do **not** each have their own domain;
+  Auth lives on the Wadhu site. Kumkaj products each have their own.)
+- Website Auth (email, Google, Phone, GitHub, Microsoft; Apple postponed)
+  is enabled per product Firebase project. App login with the **same**
+  product Auth is next — not done yet.
+- Auth = who the person is. Cloud books sync = a separate concern after
+  login / connect.
+
+### Offline LAN (non‑negotiable)
+
+- Free **Server / Client** on the local network forever.
+- Subscription lapse, payment failure, sync errors, or cloud outage must
+  **never** stop or bug the offline till. Cloud features pause; local
+  SQLite + LAN pairing keep working as if nothing happened.
+- Duress / emergency unlock stays offline-LAN-only (not a cloud feature).
+
+### One logical shop database + optional sync
+
+- The offline Server’s **SQLite is the shop’s database**.
+- Cloud does **not** invent a second independent “cloud shop” the user
+  lives in. When they connect, they use the **same** books identity:
+  local replica + cloud replica of that same DB.
+- **Sync is one cloud service** the user can enable/disable. Not the
+  existence of the database.
+- **Local → cloud:** login/connect turns sync on; same DB, now also
+  replicated. Seamless.
+- **Unsubscribe / disable sync / “back to local”:** same SQLite stays on
+  the Server. No migrate-to-a-different-product-DB. Till keeps the same
+  data.
+- Still two *places* bytes live (device + cloud) when sync is on; one
+  *logical* shop DB.
+
+---
+
+## 2. Sync as a service — scenarios to handle carefully
+
+Sync must never silently destroy cloud history with an empty new Server.
+
+| Local | Cloud | Safe default |
+| --- | --- | --- |
+| Empty / new Server | Has data | **Restore cloud → local** (or explicit confirm). Never auto-upload empty local. |
+| Has data | Empty | **Seed local → cloud**, then sync. |
+| Both meaningful | Both meaningful | **Ask** (restore / keep local & replace cloud / cancel). No silent overwrite. |
+| Sync off / plan ended | — | Local only; cloud replica frozen until they reconnect with a conflict check if both changed. |
+
+Other cases to design for:
+
+- Uninstall → reinstall → new Server → login: restore from cloud, don’t
+  create a competing empty shop and push.
+- Offline while sync was on: queue local writes; sync on reconnect.
+- Partial sync / crash mid-restore: resume; don’t mark healthy until
+  verified.
+- User is unaware local could overwrite cloud → product must **prevent**
+  that by default (orientation step on first connect), not only warn
+  after the fact.
+
+---
+
+## 3. Cloud hosting shape (discussion preference)
+
+Two services (roles):
+
+1. **API / app server** — talks to clients, checks Auth tokens, runs
+   sync protocol, reads/writes the cloud DB.
+2. **Database server** — holds cloud-side replica / sync metadata.
+
+**Preference:** put the **database on its own host from the beginning**
+(not API+DB packed on one VM). Keeps the DB neat; API talks to it in a
+controlled way.
+
+**Obvious rule — plan assumes it:** clients (website, app, Server/Client
+tills) **never** talk to the cloud database directly. Only the **API
+server** opens DB connections. Users and devices use HTTPS (or equivalent)
+to the API; credentials, quotas, sync rules, and metering all sit there.
+DB host stays private (VPC / security groups; no public DB for end users).
+
+Local till SQLite stays on the device — never “the only copy lives only
+on cloud.”
+
+### Provider split (working decision, 2026-11-20)
+
+| Piece | Direction |
+| --- | --- |
+| **Auth** | **Firebase** for almost all products (already per product site). |
+| **DB (+ sync API for now)** | **Not locked** forever to GCP or AWS. **Near term:** use **AWS** (Activate credits cover RDS + compute such as EC2/App Runner/ECS, etc.) so we can build the stack, **see real expense patterns**, and learn how to charge users fairly. |
+| **GCP** | **Not ignored.** Keep using it (Firebase Auth/Hosting today; deploy apps / other workloads there as needed). |
+
+Path of a cloud user: **app → API → database**. Some users will burn more
+bandwidth / data / ops than others. Metering and isolation must reflect
+that (quotas, usage lines, fair scheduling) so one heavy user does not
+trample others — without inventing multi-shop product chrome.
+
+Commercial frame (vision §21): free local; pay for cloud resources /
+services used — sync is one such service among others. Plans/services
+stay flexible (bundles and à la carte). Billing gateway under watch
+includes Stripe; alternatives OK if better globally. Do not lock
+geography.
+
+AWS credits = **delay the bill** while we learn cost → price. After
+credits, revisit AWS vs GCP (or split) for API/DB on **numbers**, not
+loyalty. Auth can stay on Firebase either way.
+
+---
+
+## 4. Explicitly out of this discussion (do not re-inject)
+
+- India-only or region-locked product/billing assumptions.
+- “Multi-shop” UI / org trees as the default mental model for v1 connect.
+- Claiming Firebase (or any one vendor) is the only possible cloud
+  **database/API** backend — Auth on Firebase is fine; DB/API vendor is
+  open.
+- Making cloud required for normal till use.
+- Two independent unrelated databases (local shop vs separate cloud shop)
+  as the long-term story — superseded by **one logical DB + sync service**.
+- Treating “AWS vs GCP” as migrating whole Kumkaj products; only the
+  optional sync API+DB (and where we choose to deploy other apps) moves.
+
+---
+
+## 5. Rollout order and non‑negotiables (2026-11-20)
+
+- **Start with Khaynjo first.** Prove Auth → connect → sync → metering /
+  charging shape on one product; only then decide what to copy to
+  Moklanjo / Kirano / Tabiyat.
+- **Grow and scale** without redesigning from scratch: API and DB as
+  separate hosts; clear contracts; metering from day one so heavy users
+  don’t define the architecture later.
+- **User data never corrupted** by our silly changes: migrations must be
+  additive/safe; sync must be idempotent; empty local must never wipe
+  cloud; restore/seed orientation before blind push; no destructive
+  schema experiments on live books.
+- **Future‑proof:** one logical shop DB + optional sync service; offline
+  LAN always works if plan/cloud dies; Auth stays on Firebase; AWS for
+  near-term API+DB learning costs; GCP remains in play for Auth/Hosting
+  and other app deploys. Don’t paint into a corner that forces a second
+  unrelated “cloud shop” database.
+
+## 6. Open for the next discussion
+
+- First paid cloud SKUs / catalog (sync and what else) — Khaynjo first.
+- Concrete AWS layout for v1 (e.g. App Runner/EC2 + RDS) and what to
+  meter (bandwidth, storage, sync ops, …).
+- Khaynjo app Auth (Firebase `khaynjo-2b2a2`) + “connect / restore / seed”
+  UX.
+- Billing gateway final pick and entitlement model.
+- How GCP (Firebase) and AWS API/DB talk cleanly (token verify on the API).
+
+When continuing, start from this file and the vision §20–21; update this
+doc as decisions firm up.

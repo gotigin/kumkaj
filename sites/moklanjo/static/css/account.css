@@ -1,0 +1,144 @@
+/* Account / auth — light palette matching /terms */
+.account-main {
+  max-width: 26rem;
+  margin: 0 auto;
+  padding: 1.5rem 1.25rem 3rem;
+  font-family: system-ui, sans-serif;
+  color: #260b08;
+  line-height: 1.5;
+}
+.account-main h1 {
+  font-size: 1.75rem;
+  margin: 0 0 0.35rem;
+}
+.account-lede {
+  color: #6b4a3f;
+  margin: 0 0 1.25rem;
+  font-size: 0.95rem;
+}
+.account-status {
+  font-weight: 600;
+  margin: 0 0 1rem;
+}
+.auth-error {
+  background: #fde8ea;
+  color: #9a0e10;
+  padding: 0.65rem 0.85rem;
+  border-radius: 0.45rem;
+  margin: 0 0 1rem;
+  font-size: 0.9rem;
+}
+.auth-card {
+  background: #faf6f4;
+  border: 1px solid #e8dcd6;
+  border-radius: 0.55rem;
+  padding: 1rem 1.1rem 1.15rem;
+  margin: 0 0 1rem;
+}
+.auth-card h2 {
+  font-size: 1rem;
+  margin: 0 0 0.75rem;
+}
+.auth-card label {
+  display: block;
+  font-size: 0.8rem;
+  color: #6b4a3f;
+  margin: 0.55rem 0 0.25rem;
+}
+.auth-card input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0.65rem 0.75rem;
+  border-radius: 0.4rem;
+  border: 1px solid #d4c4bc;
+  background: #fff;
+  color: #260b08;
+  font: inherit;
+}
+.auth-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.85rem;
+}
+.btn {
+  display: inline-block;
+  padding: 0.55rem 0.9rem;
+  border-radius: 0.45rem;
+  border: none;
+  font: inherit;
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  text-decoration: none;
+  color: #260b08;
+  background: #eee4df;
+}
+.btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+.btn-primary {
+  background: #9a0e10;
+  color: #fff;
+}
+.btn-ghost {
+  background: transparent;
+  border: 1px solid #d4c4bc;
+}
+.btn-provider {
+  width: 100%;
+  text-align: center;
+  background: #fff;
+  border: 1px solid #d4c4bc;
+  margin: 0.35rem 0 0;
+}
+.btn-provider:hover {
+  border-color: #9a0e10;
+  color: #9a0e10;
+}
+.auth-or {
+  text-align: center;
+  color: #6b4a3f;
+  font-size: 0.8rem;
+  margin: 0.85rem 0;
+}
+.session-meta {
+  font-size: 0.85rem;
+  color: #6b4a3f;
+  word-break: break-all;
+}
+.session-meta strong {
+  color: #260b08;
+  display: block;
+  margin-top: 0.65rem;
+}
+.legal-nav {
+  margin-top: 2rem;
+  font-size: 0.9rem;
+}
+.legal-nav a {
+  color: #9a0e10;
+}
+.legal-foot {
+  margin-top: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  color: #6b4a3f;
+  font-size: 0.85rem;
+}
+.legal-foot-company {
+  color: #260b08;
+  font-weight: 600;
+}
+.account-back {
+  margin: 0 0 1rem;
+}
+.account-back a {
+  color: #9a0e10;
+  text-decoration: none;
+}
+.account-back a:hover {
+  text-decoration: underline;
+}

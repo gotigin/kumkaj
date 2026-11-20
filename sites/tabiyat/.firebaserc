@@ -1,4 +1,7 @@
 {
   "projects": {
-  }
+    "default": "tabiyat-shop"
+  },
+  "targets": {},
+  "etags": {}
 }

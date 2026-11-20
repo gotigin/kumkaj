@@ -14,13 +14,16 @@ Kitchen, KOT or tables. Domain **kirano.shop** (not kirano.com).
 ./sites/kirano/scripts/run-desktop.sh   # native window
 ./sites/kirano/scripts/run-web.sh       # debug wasm → http://127.0.0.1:8013
 
-# Production-shaped tree (wasm + /privacy /terms + OG) before Firebase
+# Production-shaped tree (wasm + /privacy /terms /account + OG) before Firebase
 ./sites/kirano/scripts/preview-web.sh   # http://127.0.0.1:8013
-./sites/kirano/scripts/deploy-firebase.sh --dry-run   # needs Firebase project
+./sites/kirano/scripts/deploy-firebase.sh --dry-run
 ```
 
-Domain **kirano.shop** is registered. Firebase project id is an owner
-step. Privacy source:
+Auth: email + Google on `/account` (project **`kirano-shop`**) — see
+`docs/FIREBASE_AUTH_SETUP.md`. Add Hosting custom domain `kirano.shop`
+in Firebase Console, then Auth authorized domains.
+
+Domain **kirano.shop** is registered. Privacy source:
 [`apps/kirano/docs/PRIVACY.md`](../../apps/kirano/docs/PRIVACY.md).
 
 Top-bar tiles jump chapters. `#sell` (or `#2`) in the URL opens a chapter.

@@ -1,5 +1,7 @@
 {
   "projects": {
     "default": "khaynjo-2b2a2"
-  }
+  },
+  "targets": {},
+  "etags": {}
 }

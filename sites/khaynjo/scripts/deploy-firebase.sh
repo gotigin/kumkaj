@@ -41,13 +41,13 @@ if ! command -v firebase >/dev/null 2>&1; then
   exit 1
 fi
 
-echo "1/4 Bundle Firebase Analytics → static/js/firebase-init.js"
+echo "1/4 Bundle Firebase Analytics + Auth → static/js/firebase-init.js + account.js"
 (
   cd "$SITE"
   if [[ ! -d node_modules/firebase ]]; then
     npm install
   fi
-  npm run build:firebase
+  npm run build
 )
 
 echo "2/4 Build Makepad wasm (khaynjo-site, release, --no-threads)"
@@ -102,6 +102,14 @@ if [[ ! -f "$OUT/v1/catalogue/public/index.json" ]]; then
 fi
 if [[ ! -f "$OUT/js/firebase-init.js" ]]; then
   echo "error: missing $OUT/js/firebase-init.js" >&2
+  exit 1
+fi
+if [[ ! -f "$OUT/js/account.js" ]]; then
+  echo "error: missing $OUT/js/account.js" >&2
+  exit 1
+fi
+if [[ ! -f "$OUT/account/index.html" ]]; then
+  echo "error: missing $OUT/account/index.html" >&2
   exit 1
 fi
 if [[ ! -f "$OUT/privacy/index.html" ]]; then

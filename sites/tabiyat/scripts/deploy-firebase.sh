@@ -54,7 +54,16 @@ if [[ -z "$PROJECT" ]]; then
   fi
 fi
 
-echo "1/3 Build Makepad wasm (tabiyat-site, release, --no-threads)"
+echo "1/4 Bundle Firebase Auth → static/js/firebase-init.js + account.js"
+(
+  cd "$SITE"
+  if [[ ! -d node_modules/firebase ]]; then
+    npm install
+  fi
+  npm run build
+)
+
+echo "2/4 Build Makepad wasm (tabiyat-site, release, --no-threads)"
 (
   cd "$ROOT"
   cargo run -q --manifest-path vendor/makepad-full/tools/cargo_makepad/Cargo.toml -- \
@@ -66,7 +75,7 @@ if [[ ! -f "$WASM_PKG/index.html" || ! -f "$WASM_PKG/tabiyat-site.wasm" ]]; then
   exit 1
 fi
 
-echo "2/3 Stage Firebase public/ = wasm package + static shell"
+echo "3/4 Stage Firebase public/ = wasm package + static shell"
 rm -rf "$OUT"
 mkdir -p "$OUT"
 rsync -a --delete "$WASM_PKG/" "$OUT/"
@@ -102,6 +111,18 @@ if [[ ! -f "$OUT/terms/index.html" ]]; then
   echo "error: missing $OUT/terms/index.html" >&2
   exit 1
 fi
+if [[ ! -f "$OUT/js/firebase-init.js" ]]; then
+  echo "error: missing $OUT/js/firebase-init.js" >&2
+  exit 1
+fi
+if [[ ! -f "$OUT/js/account.js" ]]; then
+  echo "error: missing $OUT/js/account.js" >&2
+  exit 1
+fi
+if [[ ! -f "$OUT/account/index.html" ]]; then
+  echo "error: missing $OUT/account/index.html" >&2
+  exit 1
+fi
 
 BUILD_ID="$(date -u +%Y%m%d%H%M%S)-$(git -C "$ROOT" rev-parse --short HEAD 2>/dev/null || echo local)"
 INDEX="$OUT/index.html"
@@ -116,13 +137,8 @@ HEAD_INJECT='        <title>Tabiyat</title>
         <meta property="og:type" content="website">'
 BODY_INJECT='        <noscript><p>Tabiyat — pharmacy counter OS. <a href="/privacy">Privacy</a> · <a href="/terms/">Terms</a> · <a href="/download">Download</a></p></noscript>
     </body>'
-# Optional Analytics bundle if the owner added client/firebase-init.js later.
-ANALYTICS_LINE=""
-if [[ -f "$OUT/js/firebase-init.js" ]]; then
-  ANALYTICS_LINE='        <script src="./js/firebase-init.js?v='"$BUILD_ID"'" defer></script>'
-  BODY_INJECT="$ANALYTICS_LINE
-$BODY_INJECT"
-fi
+BODY_INJECT='        <script src="./js/firebase-init.js?v='"$BUILD_ID"'" defer></script>
+'"$BODY_INJECT"
 awk -v head="$HEAD_INJECT" -v body="$BODY_INJECT" -v bid="$BUILD_ID" '
   BEGIN { done_title=0; done_body=0 }
   /<title>tabiyat-site<\/title>/ && !done_title {
@@ -149,7 +165,7 @@ mv "$TMP" "$INDEX"
 printf '%s\n' "$BUILD_ID" > "$OUT/build-id.txt"
 echo "Patched $INDEX (title/OG + noscript + cache-bust v=$BUILD_ID)"
 
-echo "3/3 firebase deploy --only hosting"
+echo "4/4 firebase deploy --only hosting"
 FB_ARGS=(deploy --only hosting)
 if [[ -n "$PROJECT" ]]; then
   FB_ARGS+=(--project "$PROJECT")

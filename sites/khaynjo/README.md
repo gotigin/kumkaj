@@ -14,7 +14,8 @@ rules: [`docs/WEBSITES.md`](../../docs/WEBSITES.md).
 
 ## Deploy (khaynjo.com — Firebase)
 
-One tree: Makepad wasm + `/privacy` `/terms` `/v1/catalogue/` + Analytics.
+One tree: Makepad wasm + `/privacy` `/terms` `/account` `/v1/catalogue/` + Analytics + Auth.
+See `docs/FIREBASE_AUTH_SETUP.md`.
 
 ```bash
 ./sites/khaynjo/scripts/deploy-firebase.sh

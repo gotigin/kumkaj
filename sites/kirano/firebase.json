@@ -10,76 +10,149 @@
       {
         "source": "**/*.wasm",
         "headers": [
-          { "key": "Content-Type", "value": "application/wasm" },
-          { "key": "Cache-Control", "value": "public, max-age=0, must-revalidate" }
+          {
+            "key": "Content-Type",
+            "value": "application/wasm"
+          },
+          {
+            "key": "Cache-Control",
+            "value": "public, max-age=0, must-revalidate"
+          }
         ]
       },
       {
         "source": "/makepad_platform/**",
         "headers": [
-          { "key": "Cache-Control", "value": "public, max-age=0, must-revalidate" }
+          {
+            "key": "Cache-Control",
+            "value": "public, max-age=0, must-revalidate"
+          }
         ]
       },
       {
         "source": "/makepad_widgets/**",
         "headers": [
-          { "key": "Cache-Control", "value": "public, max-age=0, must-revalidate" }
+          {
+            "key": "Cache-Control",
+            "value": "public, max-age=0, must-revalidate"
+          }
         ]
       },
       {
         "source": "/makepad_wasm_bridge/**",
         "headers": [
-          { "key": "Cache-Control", "value": "public, max-age=0, must-revalidate" }
+          {
+            "key": "Cache-Control",
+            "value": "public, max-age=0, must-revalidate"
+          }
         ]
       },
       {
         "source": "/kirano_site/**",
         "headers": [
-          { "key": "Cache-Control", "value": "public, max-age=0, must-revalidate" }
+          {
+            "key": "Cache-Control",
+            "value": "public, max-age=0, must-revalidate"
+          }
         ]
       },
       {
         "source": "**/*.html",
         "headers": [
-          { "key": "Cache-Control", "value": "public, max-age=0, must-revalidate" }
+          {
+            "key": "Cache-Control",
+            "value": "public, max-age=0, must-revalidate"
+          }
         ]
       },
       {
         "source": "/privacy",
         "headers": [
-          { "key": "Cache-Control", "value": "public, max-age=300, must-revalidate" }
+          {
+            "key": "Cache-Control",
+            "value": "public, max-age=300, must-revalidate"
+          }
         ]
       },
       {
         "source": "/privacy/**",
         "headers": [
-          { "key": "Cache-Control", "value": "public, max-age=300, must-revalidate" }
+          {
+            "key": "Cache-Control",
+            "value": "public, max-age=300, must-revalidate"
+          }
         ]
       },
       {
         "source": "/privacy.md",
         "headers": [
-          { "key": "Content-Type", "value": "text/markdown; charset=utf-8" },
-          { "key": "Cache-Control", "value": "public, max-age=300, must-revalidate" }
+          {
+            "key": "Content-Type",
+            "value": "text/markdown; charset=utf-8"
+          },
+          {
+            "key": "Cache-Control",
+            "value": "public, max-age=300, must-revalidate"
+          }
+        ]
+      },
+      {
+        "source": "/account",
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "public, max-age=300, must-revalidate"
+          }
+        ]
+      },
+      {
+        "source": "/account/**",
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "public, max-age=300, must-revalidate"
+          }
         ]
       },
       {
         "source": "/terms/**",
         "headers": [
-          { "key": "Cache-Control", "value": "public, max-age=300, must-revalidate" }
+          {
+            "key": "Cache-Control",
+            "value": "public, max-age=300, must-revalidate"
+          }
         ]
       },
       {
         "source": "/css/**",
         "headers": [
-          { "key": "Cache-Control", "value": "public, max-age=3600, must-revalidate" }
+          {
+            "key": "Cache-Control",
+            "value": "public, max-age=3600, must-revalidate"
+          }
         ]
       }
     ],
     "cleanUrls": true,
     "trailingSlash": false,
     "rewrites": [
-      { "source": "/", "destination": "/index.html" }
+      {
+        "source": "/",
+        "destination": "/index.html"
+      }
     ]
+  },
+  "auth": {
+    "providers": {
+      "emailPassword": true,
+      "googleSignIn": {
+        "oAuthBrandDisplayName": "Kirano",
+        "supportEmail": "mearaj@gotigin.com",
+        "authorizedRedirectUris": [
+          "https://kirano.shop/__/auth/handler",
+          "https://kirano-shop.firebaseapp.com/__/auth/handler"
+        ]
+      }
+    }
   }
 }

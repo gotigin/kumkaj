@@ -1,4 +1,7 @@
 {
   "projects": {
-  }
+    "default": "kirano-shop"
+  },
+  "targets": {},
+  "etags": {}
 }

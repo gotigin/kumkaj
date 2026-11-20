@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Account — Kirano</title>
+  <meta name="description" content="Create a Kirano account or sign in." />
+  <link rel="canonical" href="https://kirano.shop/account" />
+  <meta property="og:site_name" content="Kirano" />
+  <meta property="og:title" content="Account — Kirano" />
+  <meta property="og:description" content="Create a Kirano account or sign in." />
+  <meta property="og:url" content="https://kirano.shop/account" />
+  <meta property="og:type" content="website" />
+  <link rel="stylesheet" href="/css/account.css" />
+  <script src="/js/account.js" defer></script>
+</head>
+<body>
+  <main class="account-main">
+    <p class="account-back"><a href="/">← Kirano</a></p>
+    <h1>Account</h1>
+    <p class="account-lede">One account for the site and apps — same form whether you’re new or returning.</p>
+    <p class="account-status" id="auth-status">Continue with email, a provider, or phone.</p>
+    <p class="auth-error" id="auth-error" hidden></p>
+
+    <div id="auth-gate">
+      <section class="auth-card" aria-labelledby="email-heading">
+        <h2 id="email-heading">Email</h2>
+        <form id="form-email">
+          <label for="auth-display-name">Name (optional)</label>
+          <input id="auth-display-name" name="name" type="text" autocomplete="name" />
+          <label for="auth-email">Email</label>
+          <input id="auth-email" name="email" type="email" autocomplete="email" required />
+          <label for="auth-password">Password</label>
+          <input id="auth-password" name="password" type="password" autocomplete="current-password" required minlength="6" />
+          <div class="auth-actions">
+            <button type="submit" class="btn btn-primary" id="btn-continue">Continue</button>
+          </div>
+        </form>
+      </section>
+
+      <p class="auth-or">or continue with</p>
+      <section class="auth-card" aria-label="Federated sign-in">
+        <button type="button" class="btn btn-provider" id="btn-google">Google</button>
+        <button type="button" class="btn btn-provider" id="btn-microsoft">Microsoft</button>
+        <button type="button" class="btn btn-provider" id="btn-github">GitHub</button>
+      </section>
+
+      <section class="auth-card" aria-labelledby="phone-heading">
+        <h2 id="phone-heading">Phone</h2>
+        <div id="auth-phone-step">
+          <form id="form-phone">
+            <label for="auth-phone">Mobile number</label>
+            <input id="auth-phone" name="phone" type="tel" autocomplete="tel" placeholder="+91…" />
+            <div class="auth-actions">
+              <button type="submit" class="btn btn-primary">Send SMS code</button>
+            </div>
+          </form>
+        </div>
+        <div id="auth-sms-step" hidden>
+          <form id="form-sms">
+            <label for="auth-sms-code">SMS code</label>
+            <input id="auth-sms-code" name="code" type="text" inputmode="numeric" autocomplete="one-time-code" />
+            <div class="auth-actions">
+              <button type="submit" class="btn btn-primary">Confirm code</button>
+            </div>
+          </form>
+        </div>
+        <div id="recaptcha-container"></div>
+      </section>
+    </div>
+
+    <div id="auth-session" hidden>
+      <section class="auth-card">
+        <h2>Signed in</h2>
+        <div class="session-meta">
+          <strong>Signed in as</strong>
+          <span id="session-email"></span>
+          <strong>Status</strong>
+          <span id="session-verified"></span>
+        </div>
+        <div class="auth-actions">
+          <button type="button" class="btn btn-ghost" id="btn-resend-verify">Resend verification email</button>
+          <button type="button" class="btn btn-primary" id="btn-signout">Sign out</button>
+        </div>
+      </section>
+    </div>
+
+    <p class="legal-nav">
+      <a href="/privacy">Privacy</a> ·
+      <a href="/terms">Terms</a>
+    </p>
+    <p class="legal-foot">
+      <span class="legal-foot-company">GOTIGIN SOFTWARE &amp; HARDWARE PRIVATE LIMITED</span>
+      <span>Gotigin · Kumkaj · Kirano · kirano.shop</span>
+    </p>
+  </main>
+</body>
+</html>

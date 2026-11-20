@@ -10,99 +10,172 @@
       {
         "source": "**/*.wasm",
         "headers": [
-          { "key": "Content-Type", "value": "application/wasm" },
-          { "key": "Cache-Control", "value": "public, max-age=0, must-revalidate" }
+          {
+            "key": "Content-Type",
+            "value": "application/wasm"
+          },
+          {
+            "key": "Cache-Control",
+            "value": "public, max-age=0, must-revalidate"
+          }
         ]
       },
       {
         "source": "/makepad_platform/**",
         "headers": [
-          { "key": "Cache-Control", "value": "public, max-age=0, must-revalidate" }
+          {
+            "key": "Cache-Control",
+            "value": "public, max-age=0, must-revalidate"
+          }
         ]
       },
       {
         "source": "/makepad_widgets/**",
         "headers": [
-          { "key": "Cache-Control", "value": "public, max-age=0, must-revalidate" }
+          {
+            "key": "Cache-Control",
+            "value": "public, max-age=0, must-revalidate"
+          }
         ]
       },
       {
         "source": "/makepad_wasm_bridge/**",
         "headers": [
-          { "key": "Cache-Control", "value": "public, max-age=0, must-revalidate" }
+          {
+            "key": "Cache-Control",
+            "value": "public, max-age=0, must-revalidate"
+          }
         ]
       },
       {
         "source": "/khaynjo_site/**",
         "headers": [
-          { "key": "Cache-Control", "value": "public, max-age=0, must-revalidate" }
+          {
+            "key": "Cache-Control",
+            "value": "public, max-age=0, must-revalidate"
+          }
         ]
       },
       {
         "source": "/privacy",
         "headers": [
-          { "key": "Cache-Control", "value": "public, max-age=300, must-revalidate" }
+          {
+            "key": "Cache-Control",
+            "value": "public, max-age=300, must-revalidate"
+          }
         ]
       },
       {
         "source": "/privacy/**",
         "headers": [
-          { "key": "Cache-Control", "value": "public, max-age=300, must-revalidate" }
+          {
+            "key": "Cache-Control",
+            "value": "public, max-age=300, must-revalidate"
+          }
         ]
       },
       {
+        "source": "/account",
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "public, max-age=300, must-revalidate"
+          }
+        ]
+      },
+      {
+        "source": "/account/**",
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "public, max-age=300, must-revalidate"
+          }
+        ]
+      },
+
+      {
         "source": "/privacy.md",
         "headers": [
-          { "key": "Content-Type", "value": "text/markdown; charset=utf-8" },
-          { "key": "Cache-Control", "value": "public, max-age=300, must-revalidate" }
+          {
+            "key": "Content-Type",
+            "value": "text/markdown; charset=utf-8"
+          },
+          {
+            "key": "Cache-Control",
+            "value": "public, max-age=300, must-revalidate"
+          }
         ]
       },
       {
         "source": "/v1/catalogue/public/index.json",
         "headers": [
-          { "key": "Cache-Control", "value": "public, max-age=300, must-revalidate" }
+          {
+            "key": "Cache-Control",
+            "value": "public, max-age=300, must-revalidate"
+          }
         ]
       },
       {
         "source": "/v1/catalogue/public/templates/**",
         "headers": [
-          { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+          {
+            "key": "Cache-Control",
+            "value": "public, max-age=31536000, immutable"
+          }
         ]
       },
       {
         "source": "/v1/catalogue/public/items/index.json",
         "headers": [
-          { "key": "Cache-Control", "value": "public, max-age=300, must-revalidate" }
+          {
+            "key": "Cache-Control",
+            "value": "public, max-age=300, must-revalidate"
+          }
         ]
       },
       {
         "source": "/v1/catalogue/public/items/**",
         "headers": [
-          { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+          {
+            "key": "Cache-Control",
+            "value": "public, max-age=31536000, immutable"
+          }
         ]
       },
       {
         "source": "/v1/catalogue/private/**",
         "headers": [
-          { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+          {
+            "key": "Cache-Control",
+            "value": "public, max-age=31536000, immutable"
+          }
         ]
       },
       {
         "source": "/media/**",
         "headers": [
-          { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+          {
+            "key": "Cache-Control",
+            "value": "public, max-age=31536000, immutable"
+          }
         ]
       },
       {
         "source": "/js/**",
         "headers": [
-          { "key": "Cache-Control", "value": "public, max-age=0, must-revalidate" }
+          {
+            "key": "Cache-Control",
+            "value": "public, max-age=0, must-revalidate"
+          }
         ]
       },
       {
         "source": "**/*.html",
         "headers": [
-          { "key": "Cache-Control", "value": "public, max-age=0, must-revalidate" }
+          {
+            "key": "Cache-Control",
+            "value": "public, max-age=0, must-revalidate"
+          }
         ]
       }
     ],
@@ -114,5 +187,18 @@
         "destination": "/index.html"
       }
     ]
+  },
+  "auth": {
+    "providers": {
+      "emailPassword": true,
+      "googleSignIn": {
+        "oAuthBrandDisplayName": "Khaynjo",
+        "supportEmail": "mearaj@gotigin.com",
+        "authorizedRedirectUris": [
+          "https://khaynjo.com/__/auth/handler",
+          "https://khaynjo-2b2a2.firebaseapp.com/__/auth/handler"
+        ]
+      }
+    }
   }
 }

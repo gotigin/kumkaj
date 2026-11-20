@@ -11,10 +11,12 @@ rules: [`docs/WEBSITES.md`](../../docs/WEBSITES.md).
 ./sites/moklanjo/scripts/run-desktop.sh   # native window
 ./sites/moklanjo/scripts/run-web.sh       # debug wasm → http://127.0.0.1:8011
 
-# Production-shaped tree (wasm + /privacy /terms + OG) before Firebase
+# Production-shaped tree (wasm + /privacy /terms /account + OG) before Firebase
 ./sites/moklanjo/scripts/preview-web.sh   # http://127.0.0.1:8011
-./sites/moklanjo/scripts/deploy-firebase.sh --dry-run   # needs Firebase project
+./sites/moklanjo/scripts/deploy-firebase.sh --dry-run
 ```
+
+Auth: email + Google on `/account` — see `docs/FIREBASE_AUTH_SETUP.md`.
 
 Domain **moklanjo.com** is registered. Firebase Hosting project:
 
