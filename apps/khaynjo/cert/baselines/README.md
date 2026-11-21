@@ -19,3 +19,5 @@ anything bigger is a real change — look at `visual/diff-<name>.png` and the
 old/new pair before copying a new shot in.
 
 **2026-11-15:** `000_unlocked`, `000a_rail_collapsed`, `000b_rail_expanded` and `012_peer_Settings` re-pinned — the nav default order is now the names in dictionary order (rail alphabetical, unlock lands on the first screen by name) and Settings is one list of nav items (docs/DEV.md § Nav order).
+
+**2026-11-21:** baselines re-pinned after transparent-corner app icons (`879ddd4f`); peers from product-cert `20261121-152216`.

@@ -28,10 +28,10 @@ Rules for this work:
 | A3 | Settings → Printers "Where things print": Khaynjo's pattern — each job's printers a checklist dropdown (✓ rows, Find printers row when none), no Add / Up / Down / Remove last / Clear / **Save printers** buttons (formats save themselves) | **Done 2026-11-19** | Receipt + AWB Label `StationCheckList` dropdowns; toggles save immediately; legacy Add/Up/Down/Remove/Clear/Save row hidden (`route_add_printer_legacy`) |
 | A4 | Hard-coded English left in printer screens: "(none yet — tap Find printers)", "this computer's usual printer (blank address)" in `courier_printers_pool_rows` | **Done 2026-11-16** | The paper rows replaced that list; the function and its call are gone (a blank address reads `printer_target_default`, translated) |
 | A5 | `docs/DEV.md` § Manual UI smoke listed a Khaynjo step ("4b. Waiter … Floor/Order") in Moklanjo's checklist | **Done 2026-11-16** | Now a cashier check (seed Asha 2222) against MOKLANJO.md § Rights match chrome |
-| A6 | Store cert (`./scripts/product-cert.sh moklanjo --tier=store`) | **Pass 2026-11-19** (android skipped) | `SUMMARY-20261119-152731`: fast/ui/visual/resilience/xcomp/linux/wack/store PASS; android SKIP with `CERT_ALLOW_ANDROID_SKIP=1` (no adb device). Re-run on a device before Play upload |
+| A6 | Store cert (`./scripts/product-cert.sh moklanjo --tier=store`) | **Pass 2026-11-21** (android device still pending) | Latest green store run at `9367e5f2`: `SUMMARY-20261121-141209` (android SKIP — no phone then). Visual re-check PASS on `879ddd4f` (`SUMMARY-20261121-152216`). Emulator launch checks PASS; **real phone (vivo V2311) still needed** before Play upload. Android packages rebuilt into `dist/moklanjo-android/` 2026-11-21 15:05. |
 | A7 | Version for the first public release (0.1.0, Play code 1 today; Khaynjo is 1.0.10 / 8) | *Owner decides* | `apps/moklanjo/Cargo.toml` `version`, `[package.metadata.makepad.android]` |
 | A8 | Export template (Khaynjo 2026-11-14) | Later — owner: Khaynjo first, then the other three | `APP_MATURITY.md` owner queue |
-| A9 | Release packages in `dist/`: Linux, Android (AAB + APK), Windows (MSIX + MSI) | **Built 2026-11-19** | `dist/linux` (+ `dist/moklanjo-linux`), `dist/Moklanjo-0.1.0.msi`, `dist/Moklanjo-0.1.0.msix`, `dist/moklanjo-windows/`. Play: created `$HOME/moklanjo-release.jks` (same pattern as Khaynjo) → release-signed `dist/android/kumkaj-moklanjo.apk` + `kumkaj-moklanjo.aab` (+ symbols/mapping) |
+| A9 | Release packages in `dist/`: Linux, Android (AAB + APK), Windows (MSIX + MSI) | **Android rebuilt 2026-11-21**; Linux/Windows rebuild in progress on `879ddd4f` | Play: `$HOME/moklanjo-release.jks` → release-signed `dist/moklanjo-android/kumkaj-moklanjo.apk` + `.aab` (+ symbols/mapping), rebuilt 15:05 on 2026-11-21 (`879ddd4f`, new tile + tall-screen fill). Linux/Windows in `dist/` were last from the 14:12 store run on `9367e5f2` (old icons) — store-tier rebuild with `CERT_BUILD_LINUX=1` started 2026-11-21 15:48 to refresh them. |
 | A10 | Play Store and Microsoft Store requirements, checked item by item against Khaynjo's `PUBLISH_PLAY_STORE.md` / `PUBLISH_WINDOWS_STORE.md` | **Docs added 2026-11-19** | [`PUBLISH_PLAY_STORE.md`](PUBLISH_PLAY_STORE.md), [`PUBLISH_WINDOWS_STORE.md`](PUBLISH_WINDOWS_STORE.md). Upload when Console/Partner Center listings exist |
 | A11 | Settings → Printers "Where things print" at phone width (420 px): the job's name wraps one letter per line and the printer text is cut off at the card's edge | Done 2026-11-17 | The value never shrank, so a long one left the label a few px. `ReportText` now draws such a row with the label above and the value under it, both wrapping (`kv_stacks`, DEV.md bug 7j; all four apps). Seen on the isolated screen at 420 and 1440 px; money rows unchanged. A3's checklist dropdowns would still replace this list |
 
@@ -74,3 +74,9 @@ Rules for this work:
   fast, ui, visual, resilience, xcomp, linux, wack, store **PASS**; android
   **SKIP** (no device). **APP PASS: moklanjo.** Device smoke still required
   before a real Play upload.
+- 2026-11-21 `--tier=store` at `9367e5f2` (`SUMMARY-20261121-141209`,
+  `CERT_ALLOW_ANDROID_SKIP=1`): **APP PASS ×4** including moklanjo; android
+  SKIP. Later the same day: `879ddd4f` (tall phones + current tile); visual
+  PASS (`SUMMARY-20261121-152216`); release Android packages in
+  `dist/moklanjo-android/`; emulator launch PASS; **phone pending** (device
+  not attached at handover).

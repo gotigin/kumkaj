@@ -17,3 +17,5 @@ The gate fails a shot whose AE (pixels that differ) is above
 number (size mismatch). The random shop id in the header and clock times differ per run (~120–250 AE);
 anything bigger is a real change — look at `visual/diff-<name>.png` and the
 old/new pair before copying a new shot in.
+
+**2026-11-21:** baselines re-pinned after transparent-corner app icons (`879ddd4f`); peers from product-cert `20261121-152216`.
