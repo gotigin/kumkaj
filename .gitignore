@@ -74,3 +74,4 @@ apps/khaynjo/web/public/
 sites/*/static/v1/catalogue/private/
 # Synced from apps/*/assets/items by publish-catalogue.sh (do not duplicate in git)
 sites/*/static/v1/catalogue/public/items/
+local/

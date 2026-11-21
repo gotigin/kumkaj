@@ -11,6 +11,8 @@ pub mod barcode_scan;
 pub mod books_op;
 pub mod booking;
 pub mod business_day;
+pub mod cloud_api;
+pub mod cloud_auth;
 pub mod cod;
 pub mod consignments;
 pub mod courier_ops_view;

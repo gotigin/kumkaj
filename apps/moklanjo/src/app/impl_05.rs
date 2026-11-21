@@ -459,14 +459,46 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
             help.set_tip(&plain_display_text(&s("choose_server_hint")));
         }
         self.ui
+            .widget(cx, ids!(lock_cloud_title))
+            .set_text(cx, &plain_display_text(&s("cloud_account_title")));
+        {
+            let help = self.ui.widget(cx, ids!(lock_cloud_help)).as_info_help();
+            help.set_title(cx, "");
+            help.set_tip(&plain_display_text(&s("cloud_account_help")));
+        }
+        self.ui
+            .text_input(cx, ids!(lock_cloud_name))
+            .set_empty_text(cx, s("cloud_name_ph"));
+        self.ui
+            .text_input(cx, ids!(lock_cloud_email))
+            .set_empty_text(cx, s("cloud_email_ph"));
+        self.ui
+            .text_input(cx, ids!(lock_cloud_password))
+            .set_empty_text(cx, s("cloud_password_ph"));
+        self.ui
+            .button(cx, ids!(lock_cloud_ok))
+            .set_text(cx, &s("cloud_continue"));
+        self.ui
+            .button(cx, ids!(lock_cloud_forgot))
+            .set_text(cx, &s("cloud_forgot"));
+        self.ui
+            .button(cx, ids!(lock_cloud_web))
+            .set_text(cx, &s("cloud_web_methods"));
+        self.ui
+            .button(cx, ids!(lock_cloud_cancel))
+            .set_text(cx, &s("cloud_cancel"));
+        self.ui
+            .widget(cx, ids!(lock_cloud_progress))
+            .set_text(cx, &plain_display_text(&s("cloud_signing_in")));
+        self.ui
             .widget(cx, ids!(lock_login_title))
-            .set_text(cx, &plain_display_text(&s("or_unlock_login")));
+            .set_text(cx, &plain_display_text(&s("or_unlock_shop_login")));
         {
             let help = self.ui.widget(cx, ids!(lock_login_help)).as_info_help();
             help.set_title(cx, "");
-            // Tip for unlock-with-login (not Team's "optional login" essay).
-            help.set_tip(&plain_display_text(&s("or_unlock_login")));
+            help.set_tip(&plain_display_text(&s("shop_login_help")));
         }
+        self.paint_cloud_auth_busy_chrome(cx);
         self.ui
             .button(cx, ids!(server_create_new))
             .set_text(cx, &s("create_new_server"));

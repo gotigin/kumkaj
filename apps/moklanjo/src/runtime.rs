@@ -109,6 +109,32 @@ fn lan_once() -> &'static Mutex<Option<LanOnce>> {
     SLOT.get_or_init(|| Mutex::new(None))
 }
 
+/// Firebase Auth + cloud `/v1/me` off the UI thread.
+enum CloudOnce {
+    Continue(Result<cloud_api::CloudBootstrap, String>),
+    Forgot(Result<(), String>),
+}
+
+fn cloud_once() -> &'static Mutex<Option<CloudOnce>> {
+    static SLOT: OnceLock<Mutex<Option<CloudOnce>>> = OnceLock::new();
+    SLOT.get_or_init(|| Mutex::new(None))
+}
+
+fn cloud_auth_busy() -> &'static std::sync::atomic::AtomicBool {
+    static BUSY: OnceLock<std::sync::atomic::AtomicBool> = OnceLock::new();
+    BUSY.get_or_init(|| std::sync::atomic::AtomicBool::new(false))
+}
+
+fn cloud_auth_cancel() -> &'static std::sync::atomic::AtomicBool {
+    static CANCEL: OnceLock<std::sync::atomic::AtomicBool> = OnceLock::new();
+    CANCEL.get_or_init(|| std::sync::atomic::AtomicBool::new(false))
+}
+
+fn cloud_auth_progress() -> &'static Mutex<String> {
+    static SLOT: OnceLock<Mutex<String>> = OnceLock::new();
+    SLOT.get_or_init(|| Mutex::new(String::new()))
+}
+
 /// The name a Server lists this device under.
 fn device_name() -> String {
     if cfg!(target_os = "android") {

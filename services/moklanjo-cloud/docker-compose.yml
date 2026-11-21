@@ -1,0 +1,21 @@
+# Local DB only for Moklanjo cloud. API runs on the host (cargo run) or add an api service later.
+services:
+  db:
+    image: postgres:16-alpine
+    container_name: moklanjo-cloud-db
+    environment:
+      POSTGRES_USER: moklanjo
+      POSTGRES_PASSWORD: moklanjo_dev
+      POSTGRES_DB: moklanjo_cloud
+    ports:
+      - "5434:5432"
+    volumes:
+      - moklanjo_cloud_pg:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U moklanjo -d moklanjo_cloud"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+volumes:
+  moklanjo_cloud_pg:

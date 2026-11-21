@@ -793,8 +793,9 @@ impl App {
         } else {
             self.shelf_want_playing
         };
-        // Media pause / play (U+23F8 / U+25B6).
-        let play = if playing { "⏸" } else { "▶" };
+        // FA solid pause / play (f04c / f04b). Not Unicode ⏸/▶ — those
+        // paint .notdef tofu on Baloo/Plex (live khaynjo.com 2026-11-21).
+        let play = if playing { "\u{f04c}" } else { "\u{f04b}" };
         self.ui
             .button(cx, ids!(menus.shelf_play))
             .set_text(cx, play);

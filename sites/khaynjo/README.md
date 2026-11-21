@@ -22,6 +22,16 @@ See `docs/FIREBASE_AUTH_SETUP.md`.
 ./sites/khaynjo/scripts/deploy-firebase.sh --dry-run
 ```
 
+## Fonts (icon chips)
+
+Shelf play/pause (and other UI symbols) use **Font Awesome** via the same
+`icons` fallthrough as the apps (`resources/fonts/fa-solid-900.ttf`). Do not
+paint bare Unicode ⏸/▶ — those missing glyphs show as empty boxes.
+
+```bash
+./scripts/fetch-ui-fonts.sh sites/khaynjo
+```
+
 ## Local preview (before deploy)
 
 ```bash

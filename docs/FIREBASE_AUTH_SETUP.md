@@ -42,6 +42,39 @@ Per site under `sites/<product>/`:
 Console snippet) so popups/redirects use `https://<domain>/__/auth/handler`.
 Google redirect URIs list the custom handler first.
 
+### Auth UX covered (Firebase; Apple still postponed)
+
+| Flow | How |
+| --- | --- |
+| Register / sign-in (email) | One Continue form (`create` then fall back to `signIn`) |
+| Federated | Google, Microsoft, GitHub popups |
+| Phone | SMS + invisible reCAPTCHA |
+| Email verification | Sent on signup; resend when signed in |
+| Forgot password | `sendPasswordResetEmail` (soft copy; no account enumeration) |
+| Change password | Re-auth (password or linked OAuth) then `updatePassword` |
+| Add password | `linkWithCredential` when account has only OAuth/phone |
+| Link more methods | `linkWithPopup` / `linkWithPhoneNumber` while signed in |
+| Existing email, other method | Friendly `account-exists-with-different-credential` + `fetchSignInMethodsForEmail` |
+| Sign out | `signOut` |
+
+### Native apps (Lock screen)
+
+Each Makepad app owns a copy of Identity Toolkit REST + cloud API client
+(`apps/<product>/src/cloud_auth.rs`, `cloud_api.rs`) — same Firebase project
+as that product’s site. Lock screen:
+
+- **Continue** — email register-then-sign-in (same as site), then
+  `GET /v1/me` (ensure account) + subscription/plans.
+- **Forgot password?** — `sendOobCode` PASSWORD_RESET (soft success).
+- **Google and other methods on the website** — opens
+  `https://<domain>/account` in the system browser (no in-app OAuth popup).
+- Tokens in sidecar `cloud_auth.secret` next to the books DB (wiped with
+  uninstall); non-secret `cloud_*` meta in SQLite.
+- Override API host: `<PRODUCT>_CLOUD_API_BASE` (Fargate task IPs change).
+- Local PIN + shop staff username unlock stay offline forever.
+
+Do not invent a second auth system.
+
 ## Owner steps
 
 1. **OAuth callbacks** — on the Gotigin GitHub and Microsoft OAuth apps, add

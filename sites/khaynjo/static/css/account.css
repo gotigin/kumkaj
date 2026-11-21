@@ -28,6 +28,32 @@
   margin: 0 0 1rem;
   font-size: 0.9rem;
 }
+.auth-ok {
+  background: #e8f5ee;
+  color: #0d5c34;
+  padding: 0.65rem 0.85rem;
+  border-radius: 0.45rem;
+  margin: 0 0 1rem;
+  font-size: 0.9rem;
+}
+.auth-hint {
+  margin: 0 0 0.65rem;
+  font-size: 0.85rem;
+  color: #6b4a3f;
+}
+.link-phone {
+  margin-top: 0.85rem;
+}
+.auth-link-row {
+  flex-direction: column;
+}
+.auth-link-row .btn-provider {
+  margin: 0;
+}
+.btn[hidden],
+.auth-card [hidden] {
+  display: none !important;
+}
 .auth-card {
   background: #faf6f4;
   border: 1px solid #e8dcd6;

@@ -5451,18 +5451,50 @@ script_mod! {
                                         }
                                     }
 
+                                    // Cloud account (same Firebase project as kirano.shop/account).
+                                    View{
+                                        width: Fill height: Fit
+                                        flow: Right spacing: 0
+                                        align: Align{y: 0.5}
+                                        lock_cloud_title := WrapLabel{
+                                            width: Fit
+                                            body: "Kirano account"
+                                            font_color: #x031303
+                                            font_size: 14.
+                                            selectable: false
+                                        }
+                                        lock_cloud_help := InfoHelp{
+                                            tip: "Register or sign in with the same account as kirano.shop/account. Creates your cloud id and free plan."
+                                        }
+                                    }
+                                    lock_cloud_name := FieldInput{empty_text: "Name (optional)"}
+                                    lock_cloud_email := FieldInput{empty_text: "Email"}
+                                    lock_cloud_password := FieldInput{
+                                        empty_text: "Password"
+                                        is_password: true
+                                    }
+                                    lock_cloud_ok := StackPrimaryBtn{text: "Continue"}
+                                    lock_cloud_progress := WrapLabel{
+                                        visible: false
+                                        body: "Signing in…"
+                                        font_color: #x031303
+                                        font_size: 15.
+                                    }
+                                    lock_cloud_cancel := QuietFitBtn{text: "Cancel" visible: false}
+                                    lock_cloud_forgot := QuietFitBtn{text: "Forgot password?"}
+                                    lock_cloud_web := QuietFitBtn{text: "Google and other methods on the website"}
                                     View{
                                         width: Fill height: Fit
                                         flow: Right spacing: 0
                                         align: Align{y: 0.5}
                                         lock_login_title := WrapLabel{
                                             width: Fit
-                                            body: "Or unlock with login"
+                                            body: "Or unlock with shop login"
                                             font_color: #x031303
                                             font_size: 14.
                                         }
                                         lock_login_help := InfoHelp{
-                                            tip: "Optional: unlock with login id and password instead of PIN."
+                                            tip: "Optional: unlock with this shop's staff username and password instead of PIN (works offline)."
                                         }
                                     }
                                     lock_login_id := FieldInput{empty_text: "Username"}

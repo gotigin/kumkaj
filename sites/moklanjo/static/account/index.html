@@ -11,7 +11,7 @@
   <meta property="og:image:type" content="image/jpeg" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
-  <meta property="og:image:alt" content="The moklanjo.com home page: Book, move and settle every parcel — one courier OS on your own devices." />
+  <meta property="og:image:alt" content="The moklanjo.com home page: Courier desk. Offline. Yours." />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:image" content="https://moklanjo.com/media/link-preview.jpg" />
   <link rel="icon" href="/favicon.png" type="image/png" />
@@ -30,6 +30,7 @@
     <h1>Account</h1>
     <p class="account-lede">One account for the site and apps — same form whether you’re new or returning.</p>
     <p class="account-status" id="auth-status">Continue with email, a provider, or phone.</p>
+    <p class="auth-ok" id="auth-ok" hidden></p>
     <p class="auth-error" id="auth-error" hidden></p>
 
     <div id="auth-gate">
@@ -44,8 +45,20 @@
           <input id="auth-password" name="password" type="password" autocomplete="current-password" required minlength="6" />
           <div class="auth-actions">
             <button type="submit" class="btn btn-primary" id="btn-continue">Continue</button>
+            <button type="button" class="btn btn-ghost" id="btn-forgot-toggle">Forgot password?</button>
           </div>
         </form>
+        <div id="forgot-panel" hidden>
+          <p class="auth-hint">We’ll email a reset link. Use the same address you signed up with.</p>
+          <form id="form-forgot">
+            <label for="auth-forgot-email">Email</label>
+            <input id="auth-forgot-email" name="forgot-email" type="email" autocomplete="email" required />
+            <div class="auth-actions">
+              <button type="submit" class="btn btn-primary">Send reset link</button>
+              <button type="button" class="btn btn-ghost" id="btn-forgot-cancel">Cancel</button>
+            </div>
+          </form>
+        </div>
       </section>
 
       <p class="auth-or">or continue with</p>
@@ -87,11 +100,66 @@
           <span id="session-email"></span>
           <strong>Status</strong>
           <span id="session-verified"></span>
+          <strong>Sign-in methods</strong>
+          <span id="session-providers"></span>
+          <strong>Cloud username</strong>
+          <span id="session-cloud-user">—</span>
+          <strong>Plan</strong>
+          <span id="session-cloud-plan">—</span>
         </div>
         <div class="auth-actions">
           <button type="button" class="btn btn-ghost" id="btn-resend-verify">Resend verification email</button>
           <button type="button" class="btn btn-primary" id="btn-signout">Sign out</button>
         </div>
+      </section>
+
+      <section class="auth-card" id="card-password" aria-labelledby="password-heading">
+        <h2 id="password-heading">Password</h2>
+        <p class="auth-hint" id="password-hint"></p>
+        <form id="form-password">
+          <div id="password-current-wrap">
+            <label for="auth-current-password">Current password</label>
+            <input id="auth-current-password" type="password" autocomplete="current-password" minlength="6" />
+          </div>
+          <div id="password-email-wrap" hidden>
+            <label for="auth-set-email">Email for password sign-in</label>
+            <input id="auth-set-email" type="email" autocomplete="email" />
+          </div>
+          <label for="auth-new-password">New password</label>
+          <input id="auth-new-password" type="password" autocomplete="new-password" required minlength="6" />
+          <label for="auth-new-password2">Confirm new password</label>
+          <input id="auth-new-password2" type="password" autocomplete="new-password" required minlength="6" />
+          <div class="auth-actions">
+            <button type="submit" class="btn btn-primary" id="btn-password-save">Save password</button>
+          </div>
+        </form>
+      </section>
+
+      <section class="auth-card" aria-labelledby="link-heading">
+        <h2 id="link-heading">Add another way to sign in</h2>
+        <p class="auth-hint">Link methods to the same account so you can recover access if one fails.</p>
+        <div class="auth-actions auth-link-row">
+          <button type="button" class="btn btn-provider" id="btn-link-google">Link Google</button>
+          <button type="button" class="btn btn-provider" id="btn-link-microsoft">Link Microsoft</button>
+          <button type="button" class="btn btn-provider" id="btn-link-github">Link GitHub</button>
+        </div>
+        <div id="link-phone-wrap" class="link-phone">
+          <form id="form-link-phone">
+            <label for="auth-link-phone">Link phone</label>
+            <input id="auth-link-phone" type="tel" autocomplete="tel" placeholder="+91…" />
+            <div class="auth-actions">
+              <button type="submit" class="btn btn-primary">Send SMS to link</button>
+            </div>
+          </form>
+          <form id="form-link-sms" hidden>
+            <label for="auth-link-sms-code">SMS code</label>
+            <input id="auth-link-sms-code" type="text" inputmode="numeric" autocomplete="one-time-code" />
+            <div class="auth-actions">
+              <button type="submit" class="btn btn-primary">Confirm &amp; link phone</button>
+            </div>
+          </form>
+        </div>
+        <div id="recaptcha-link-container"></div>
       </section>
     </div>
 

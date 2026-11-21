@@ -113,6 +113,9 @@ impl App {
             ids!(client_code_input),
             ids!(client_name_input),
             ids!(lock_pin_input),
+            ids!(lock_cloud_name),
+            ids!(lock_cloud_email),
+            ids!(lock_cloud_password),
             ids!(lock_login_id),
             ids!(lock_login_password),
             ids!(onboard_venue_input),
@@ -182,6 +185,9 @@ impl App {
                 &self.ui,
                 &[
                     ids!(lock_pin_input),
+                    ids!(lock_cloud_name),
+                    ids!(lock_cloud_email),
+                    ids!(lock_cloud_password),
                     ids!(lock_login_id),
                     ids!(lock_login_password),
                 ],
@@ -271,7 +277,20 @@ impl App {
                 ],
             ),
             Screen::Lock => {
-                if self
+                // PIN Done still unlocks (handled elsewhere). Cloud password
+                // last → Continue; shop login id → password → Unlock.
+                if advance_focus_after_returned(
+                    cx,
+                    &self.ui,
+                    actions,
+                    &[
+                        ids!(lock_cloud_name),
+                        ids!(lock_cloud_email),
+                        ids!(lock_cloud_password),
+                    ],
+                ) {
+                    true
+                } else if self
                     .ui
                     .text_input(cx, ids!(lock_login_id))
                     .returned(actions)

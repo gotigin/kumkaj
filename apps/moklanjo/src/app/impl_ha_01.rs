@@ -1280,6 +1280,24 @@ impl App {
         if self.ui.text_input(cx, ids!(lock_login_password)).returned(actions).is_some() {
             self.try_unlock_with_login(cx);
         }
+        if self.ui.text_input(cx, ids!(lock_cloud_password)).returned(actions).is_some() {
+            self.start_cloud_continue(cx);
+        }
+        if self.ui.button(cx, ids!(lock_cloud_ok)).clicked(actions) {
+            self.start_cloud_continue(cx);
+        }
+        if self.ui.button(cx, ids!(lock_cloud_cancel)).clicked(actions) {
+            self.abandon_cloud_auth(cx);
+        }
+        if self.ui.button(cx, ids!(lock_cloud_forgot)).clicked(actions) {
+            self.start_cloud_forgot(cx);
+        }
+        if self.ui.button(cx, ids!(lock_cloud_web)).clicked(actions) {
+            match cloud_auth::open_account_in_browser() {
+                Ok(()) => self.set_status(cx, app_t("cloud_web_methods")),
+                Err(e) => self.set_status(cx, e),
+            }
+        }
         if self.choice_chip_clicked(cx, actions, ids!(role_owner), ids!(role_owner_on)) {
             {
                 let mut st = app_state().lock().unwrap();

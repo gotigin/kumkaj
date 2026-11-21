@@ -1,15 +1,16 @@
 #!/usr/bin/env bash
-# Fetch OFL Noto script fonts + Font Awesome into the app's
-# resources/fonts/ for WorldFonts fallback (language names + UI
-# symbols). Each app carries its own copy. Safe to re-run.
-#   ./scripts/fetch-ui-fonts.sh apps/khaynjo   # one app
-#   ./scripts/fetch-ui-fonts.sh                # every app under apps/
+# Fetch OFL Noto script fonts + Font Awesome into an app or site
+# resources/fonts/ for WorldFonts / icon fallthrough. Each crate carries
+# its own copy. Safe to re-run.
+#   ./scripts/fetch-ui-fonts.sh apps/khaynjo    # one app
+#   ./scripts/fetch-ui-fonts.sh sites/khaynjo   # one Makepad site
+#   ./scripts/fetch-ui-fonts.sh                 # every app under apps/
 # Uses curl + jq (no Python).
 #
 # fa-solid-900.ttf is required on every desktop package (Windows MSI /
-# Linux): WorldFonts loads icons from self:resources/fonts/ only — not
-# from makepad_widgets. Missing FA → empty Floor/header icon boxes.
-# See docs/DEV.md § WorldFonts / packaged icon fonts.
+# Linux) and on product sites that paint FA icon chips (shelf play/pause):
+# fonts load from self:resources/fonts/ only — not makepad_widgets.
+# Missing FA → empty / tofu icon boxes. See docs/DEV.md § WorldFonts.
 set -euo pipefail
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 APP="${1:-${KUMKAJ_APP_DIR:-}}"

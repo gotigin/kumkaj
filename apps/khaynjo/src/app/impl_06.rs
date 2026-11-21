@@ -1957,6 +1957,206 @@ impl App {
         self.sync_chrome(cx);
     }
 
+    fn paint_cloud_auth_busy_chrome(&mut self, cx: &mut Cx) {
+        let busy = cloud_auth_busy().load(std::sync::atomic::Ordering::SeqCst);
+        let status = cloud_auth_progress().lock().unwrap().clone();
+        self.ui.button(cx, ids!(lock_cloud_ok)).set_visible(cx, !busy);
+        self.ui
+            .widget(cx, ids!(lock_cloud_progress))
+            .set_visible(cx, busy);
+        if busy && !status.is_empty() {
+            self.ui
+                .widget(cx, ids!(lock_cloud_progress))
+                .set_text(cx, &plain_display_text(&status));
+        }
+        self.ui
+            .button(cx, ids!(lock_cloud_cancel))
+            .set_visible(cx, busy);
+        self.ui
+            .button(cx, ids!(lock_cloud_forgot))
+            .set_visible(cx, !busy);
+        self.ui
+            .button(cx, ids!(lock_cloud_web))
+            .set_visible(cx, !busy);
+        if busy {
+            if let Ok(st) = app_state().try_lock() {
+                let cancel = st.t("cloud_cancel");
+                drop(st);
+                self.ui
+                    .button(cx, ids!(lock_cloud_cancel))
+                    .set_text(cx, &cancel);
+            }
+        }
+    }
+
+    fn abandon_cloud_auth(&mut self, cx: &mut Cx) {
+        if !cloud_auth_busy().load(std::sync::atomic::Ordering::SeqCst) {
+            return;
+        }
+        cloud_auth_cancel().store(true, std::sync::atomic::Ordering::SeqCst);
+        cloud_auth_busy().store(false, std::sync::atomic::Ordering::SeqCst);
+        cloud_auth_progress().lock().unwrap().clear();
+        self.paint_cloud_auth_busy_chrome(cx);
+        self.clear_stale_work_status(cx);
+        self.set_status(cx, app_t("cancelled"));
+    }
+
+    /// Register-or-sign-in with Firebase, then ensure cloud account via `/v1/me`.
+    fn start_cloud_continue(&mut self, cx: &mut Cx) {
+        if cloud_auth_busy().swap(true, std::sync::atomic::Ordering::SeqCst) {
+            return;
+        }
+        cloud_auth_cancel().store(false, std::sync::atomic::Ordering::SeqCst);
+        let email = self.ui.text_input(cx, ids!(lock_cloud_email)).text();
+        let password = self.ui.text_input(cx, ids!(lock_cloud_password)).text();
+        let name = self.ui.text_input(cx, ids!(lock_cloud_name)).text();
+        let progress = app_t("cloud_signing_in");
+        *cloud_auth_progress().lock().unwrap() = progress.clone();
+        self.show_work_status(cx, progress);
+        self.paint_cloud_auth_busy_chrome(cx);
+        std::thread::spawn(move || {
+            let result = cloud_api::continue_and_ensure(
+                &email,
+                &password,
+                Some(name.as_str()).filter(|s| !s.trim().is_empty()),
+            );
+            if cloud_auth_cancel().load(std::sync::atomic::Ordering::SeqCst) {
+                cloud_auth_busy().store(false, std::sync::atomic::Ordering::SeqCst);
+                return;
+            }
+            *cloud_once().lock().unwrap() = Some(CloudOnce::Continue(result));
+            cloud_auth_busy().store(false, std::sync::atomic::Ordering::SeqCst);
+            cloud_auth_progress().lock().unwrap().clear();
+            makepad_widgets::makepad_platform::thread::SignalToUI::set_ui_signal();
+        });
+    }
+
+    fn start_cloud_forgot(&mut self, cx: &mut Cx) {
+        if cloud_auth_busy().swap(true, std::sync::atomic::Ordering::SeqCst) {
+            return;
+        }
+        cloud_auth_cancel().store(false, std::sync::atomic::Ordering::SeqCst);
+        let email = self.ui.text_input(cx, ids!(lock_cloud_email)).text();
+        let progress = app_t("cloud_sending_reset");
+        *cloud_auth_progress().lock().unwrap() = progress.clone();
+        self.show_work_status(cx, progress);
+        self.paint_cloud_auth_busy_chrome(cx);
+        std::thread::spawn(move || {
+            let result = cloud_auth::send_password_reset(&email);
+            if cloud_auth_cancel().load(std::sync::atomic::Ordering::SeqCst) {
+                cloud_auth_busy().store(false, std::sync::atomic::Ordering::SeqCst);
+                return;
+            }
+            *cloud_once().lock().unwrap() = Some(CloudOnce::Forgot(result));
+            cloud_auth_busy().store(false, std::sync::atomic::Ordering::SeqCst);
+            cloud_auth_progress().lock().unwrap().clear();
+            makepad_widgets::makepad_platform::thread::SignalToUI::set_ui_signal();
+        });
+    }
+
+    fn take_cloud_answers(&mut self, cx: &mut Cx) {
+        let once = cloud_once().lock().unwrap().take();
+        match once {
+            Some(CloudOnce::Continue(reply)) => self.finish_cloud_continue(cx, reply),
+            Some(CloudOnce::Forgot(reply)) => {
+                self.paint_cloud_auth_busy_chrome(cx);
+                self.clear_stale_work_status(cx);
+                match reply {
+                    Ok(()) => self.set_status(cx, app_t("cloud_forgot_sent")),
+                    Err(e) => self.set_status(cx, e),
+                }
+            }
+            None => {}
+        }
+    }
+
+    fn finish_cloud_continue(
+        &mut self,
+        cx: &mut Cx,
+        reply: Result<cloud_api::CloudBootstrap, String>,
+    ) {
+        self.paint_cloud_auth_busy_chrome(cx);
+        self.clear_stale_work_status(cx);
+        let bootstrap = match reply {
+            Ok(b) => b,
+            Err(e) => {
+                self.set_status(cx, e);
+                return;
+            }
+        };
+        let created = bootstrap.created_auth;
+        let plan_title = bootstrap
+            .subscription
+            .as_ref()
+            .map(|s| s.title.clone())
+            .unwrap_or_else(|| "Free forever".into());
+        let status_msg = {
+            let st = app_state().lock().unwrap();
+            let base = st
+                .t("cloud_welcome")
+                .replace("{user}", &bootstrap.me.username)
+                .replace("{plan}", &plan_title);
+            if created {
+                format!("{} — {}", st.t("cloud_created"), base)
+            } else {
+                base
+            }
+        };
+        let apply = (|| -> Result<(), String> {
+            let mut st = app_state().lock().unwrap();
+            if st.pin_reset_required {
+                return Err("Owner must set a new PIN first".into());
+            }
+            let db_path = st
+                .store
+                .as_ref()
+                .map(|s| s.db_path().to_path_buf())
+                .ok_or_else(|| "No store".to_string())?;
+            cloud_auth::save_session(&db_path, &bootstrap.session)?;
+            if let Some(store) = st.store.as_ref() {
+                store.save_cloud_account_meta(
+                    &bootstrap.me.account_id,
+                    &bootstrap.me.username,
+                    &bootstrap.session.local_id,
+                    bootstrap
+                        .me
+                        .email
+                        .as_deref()
+                        .or(bootstrap.session.email.as_deref()),
+                )?;
+            }
+            // Cloud account unlocks as Owner when the shop already has one.
+            let owner = st
+                .store
+                .as_ref()
+                .and_then(|s| s.list_staff().ok())
+                .and_then(|staff| staff.into_iter().find(|m| m.is_owner()));
+            if let Some(member) = owner {
+                if let Some(store) = st.store.as_ref() {
+                    let _ = store.set_active_session_staff_id(Some(&member.id));
+                }
+                st.session = Some(member);
+                st.reload_amount_visibility();
+                st.screen = if st.device_role.is_host() && !st.onboarding_complete {
+                    Screen::Onboard
+                } else {
+                    unlocked_home_from(&mut st)
+                };
+                let _ = st.reload_all();
+                if st.screen == Screen::Books {
+                    let _ = st.refresh_books_overview();
+                }
+            }
+            st.status = status_msg.clone();
+            Ok(())
+        })();
+        match apply {
+            Ok(()) => self.set_status(cx, status_msg),
+            Err(e) => self.set_status(cx, e),
+        }
+        self.sync_chrome(cx);
+    }
+
     /// Fill Lock → Choose staff modal slots from non-owner people (max 12).
     fn paint_lock_staff_sheet(&mut self, cx: &mut Cx) {
         let (staff, selected) = {

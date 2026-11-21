@@ -18,6 +18,8 @@ pub mod local_servers;
 pub mod lan_images;
 pub mod media;
 pub mod catalogue_remote;
+pub mod cloud_api;
+pub mod cloud_auth;
 pub mod menu_images;
 pub mod menu_templates;
 pub mod lan_ws;

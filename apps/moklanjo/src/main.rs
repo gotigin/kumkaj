@@ -11,13 +11,13 @@ pub use makepad_widgets;
 // links the same package's library as `kumkaj_moklanjo`.
 #[cfg(target_os = "android")]
 use crate::{
-    books_op, booking, business_day, courier_ops_view, diag, domain, entity_template, fiscal, labels,
+    books_op, booking, business_day, cloud_api, cloud_auth, courier_ops_view, diag, domain, entity_template, fiscal, labels,
     lan_images, local_servers, locale, manifest, menu_images, net, notify, os_paper, phone, precise,
     privacy_policy, print_share, rates, snack, startup, store, suggest, thumbs,
 };
 #[cfg(not(target_os = "android"))]
 use kumkaj_moklanjo::{
-    books_op, booking, business_day, courier_ops_view, diag, domain, entity_template, fiscal, labels,
+    books_op, booking, business_day, cloud_api, cloud_auth, courier_ops_view, diag, domain, entity_template, fiscal, labels,
     lan_images, local_servers, locale, manifest, menu_images, net, notify, os_paper, phone, precise,
     privacy_policy, print_share, rates, snack, startup, store, suggest, thumbs, uninstall_wipe,
 };

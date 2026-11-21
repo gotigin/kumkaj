@@ -67,6 +67,9 @@ script_mod! {
         arabic := FontMember{res: crate_resource("self:resources/fonts/NotoSansArabic-Regular.ttf") asc: 0.0 desc: 0.0}
         hebrew := FontMember{res: crate_resource("self:resources/fonts/NotoSansHebrew-Regular.ttf") asc: 0.0 desc: 0.0}
         thai := FontMember{res: crate_resource("self:resources/fonts/NotoSansThai-Regular.ttf") asc: 0.0 desc: 0.0}
+        // Same pattern as apps WorldFonts: FA fills UI symbols Plex/Noto lack
+        // (play/pause, etc.). Missing fa-solid → empty/tofu icon chips.
+        icons := FontMember{res: crate_resource("self:resources/fonts/fa-solid-900.ttf") asc: 0.0 desc: 0.0}
     }
     let TextFont = FontFamily{
         latin := FontMember{res: crate_resource("self:resources/fonts/IBMPlexSans-Text.ttf") asc: -0.1 desc: 0.0}
@@ -77,6 +80,7 @@ script_mod! {
         arabic := FontMember{res: crate_resource("self:resources/fonts/NotoSansArabic-Regular.ttf") asc: 0.0 desc: 0.0}
         hebrew := FontMember{res: crate_resource("self:resources/fonts/NotoSansHebrew-Regular.ttf") asc: 0.0 desc: 0.0}
         thai := FontMember{res: crate_resource("self:resources/fonts/NotoSansThai-Regular.ttf") asc: 0.0 desc: 0.0}
+        icons := FontMember{res: crate_resource("self:resources/fonts/fa-solid-900.ttf") asc: 0.0 desc: 0.0}
     }
     // World shelf (chapter 8) native names: TextFont plus every script the
     // 199-country list needs. Its own family so these fonts load only when
@@ -1165,12 +1169,15 @@ script_mod! {
                                         flow: Right
                                         spacing: 8
                                         align: Align{y: 0.5}
-                                        shelf_flow_left := PagerBtn{text: "←"}
-                                        shelf_flow_right := PagerBtn{text: "→"}
-                                        shelf_play := PagerBtn{text: "⏸"}
-                                        shelf_speed_down := PagerBtn{text: "−"}
+                                        // Shelf chips: FA solid via StrongFont `icons`
+                                        // fallthrough (same as apps WorldFonts). Do not use
+                                        // Unicode ⏸/▶ — missing in Plex → .notdef tofu.
+                                        shelf_flow_left := PagerBtn{text: "\u{f053}"}
+                                        shelf_flow_right := PagerBtn{text: "\u{f054}"}
+                                        shelf_play := PagerBtn{text: "\u{f04c}"}
+                                        shelf_speed_down := PagerBtn{text: "\u{f068}"}
                                         shelf_speed := PagerBtn{text: "2"}
-                                        shelf_speed_up := PagerBtn{text: "+"}
+                                        shelf_speed_up := PagerBtn{text: "\u{f067}"}
                                     }
                                 }
                                 // Own row so placeholder / typed text stay readable.

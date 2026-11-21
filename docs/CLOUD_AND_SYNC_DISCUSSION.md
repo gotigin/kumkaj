@@ -106,6 +106,11 @@ on cloud.”
 | **DB (+ sync API for now)** | **Not locked** forever to GCP or AWS. **Near term:** use **AWS** (Activate credits cover RDS + compute such as EC2/App Runner/ECS, etc.) so we can build the stack, **see real expense patterns**, and learn how to charge users fairly. |
 | **GCP** | **Not ignored.** Keep using it (Firebase Auth/Hosting today; deploy apps / other workloads there as needed). |
 
+**Per product on AWS:** each product has its **own** API service and **own**
+RDS — never one shared cloud for Khaynjo + Moklanjo. Ops account:
+`mearaj@gotigin.com` (Gotigin / Activate). Local scaffolds:
+`services/khaynjo-cloud/`, `services/moklanjo-cloud/`.
+
 Path of a cloud user: **app → API → database**. Some users will burn more
 bandwidth / data / ops than others. Metering and isolation must reflect
 that (quotas, usage lines, fair scheduling) so one heavy user does not
@@ -138,11 +143,22 @@ loyalty. Auth can stay on Firebase either way.
 
 ---
 
-## 5. Rollout order and non‑negotiables (2026-11-20)
+## 5. Rollout order and non‑negotiables (2026-11-20; updated 2026-11-21)
 
-- **Start with Khaynjo first.** Prove Auth → connect → sync → metering /
-  charging shape on one product; only then decide what to copy to
-  Moklanjo / Kirano / Tabiyat.
+- **Never share cloud stacks across products.** Each of Khaynjo, Moklanjo,
+  Kirano, and Tabiyat owns a separate **API service** + separate
+  **database**. Copy-then-diverge only — no shared cloud crate, no shared
+  user table, no one API more than one app calls.
+- **Milestone 1 (API+DB + Auth clients 2026-11-21):** per-product AWS API
+  + RDS; Lock-screen Firebase email Continue + forgot + website federated
+  link; site `/account` calls `/v1/me` + subscription after sign-in;
+  ensure cloud account (`account_id` + unique `username`);
+  `GET /v1/plans` + `GET /v1/me/subscription`. **Not yet:** HTTPS/DNS for
+  stable `api.<domain>` (site HTTPS→HTTP API is mixed-content blocked until
+  then — native apps OK on HTTP), in-app OAuth/phone, shop connect,
+  restore/seed, `sync_outbox` drain, billing checkout.
+- Code lives under `services/{khaynjo,moklanjo,kirano,tabiyat}-cloud/`
+  (standalone Cargo projects — not Makepad app members).
 - **Grow and scale** without redesigning from scratch: API and DB as
   separate hosts; clear contracts; metering from day one so heavy users
   don’t define the architecture later.
@@ -150,11 +166,17 @@ loyalty. Auth can stay on Firebase either way.
   additive/safe; sync must be idempotent; empty local must never wipe
   cloud; restore/seed orientation before blind push; no destructive
   schema experiments on live books.
-- **Future‑proof:** one logical shop DB + optional sync service; offline
-  LAN always works if plan/cloud dies; Auth stays on Firebase; AWS for
-  near-term API+DB learning costs; GCP remains in play for Auth/Hosting
-  and other app deploys. Don’t paint into a corner that forces a second
-  unrelated “cloud shop” database.
+- **API / DB compatibility:** path version (`/v1`); additive cloud schema
+  migrations (`migrate_N_to_N+1`); never reuse a version; older clients keep
+  working when fields are only added.
+- **Future‑proof identity (hooks only):** each product account has
+  `account_id` (UUID), product-scoped `username`, `firebase_uid`, and an
+  empty `account_external_links` table for a later Kumkaj-brand /
+  Gotigin graph. Do **not** merge Auth or DBs across products now.
+- **Future‑proof product:** one logical shop DB + optional sync service;
+  offline LAN always works if plan/cloud dies; Auth stays on Firebase; AWS
+  for near-term API+DB learning costs; GCP remains in play for
+  Auth/Hosting. Don’t invent a second unrelated “cloud shop” database.
 
 ## 6. Cloud plans (decided 2026-11-21)
 
@@ -168,14 +190,27 @@ only (no device caps, no connection-interval tiers). Yearly INR list
 ends: 1 month grace (13 months cloud run), retrieve until +2 months, then
 delete eligible; weekly cancellable notices in that window.
 
+Plan catalog is **seeded in each product’s cloud DB** and returned by the
+API — apps display what the API returns (so copy can change without an
+app-store release when possible). Purchase / subscribe mutations come
+after billing is wired.
+
 ## 7. Open for the next discussion
 
 - Concrete bandwidth cap numbers (Steady / Swift / Priority).
-- Concrete AWS layout for v1 (e.g. App Runner/EC2 + RDS) and meters.
-- Khaynjo app Auth (Firebase `khaynjo-2b2a2`) + connect / restore / seed UX.
+- **AWS v1 live (2026-11-21):** all four products — private RDS + ECS
+  Fargate API in `ap-south-1` (Gotigin `mearaj@gotigin.com`). App Runner
+  create was blocked on the account — Fargate used instead. Local smoke
+  must pass before recreate. Task public IPs change on redeploy — add
+  DNS/ALB later. Ops ids: gitignored `local/aws-gotigin/ap-south-1.env`.
+- **Next ops:** HTTPS + DNS (`api.<product-domain>`) so site `/account`
+  cloud sync is not mixed-content blocked; ALB or equivalent. In-app
+  Google/phone later. Keep local PIN / staff username unlock for offline
+  till.
 - Billing gateway final pick.
-- How GCP (Firebase) and AWS API/DB talk cleanly (token verify on the API).
 - Other paid services that require Steady+ membership.
+- Later (not now): Kumkaj brand “my products” / Gotigin brand tree via
+  `account_external_links` — still separate product Auth + DBs.
 
 When continuing, start from [`CLOUD_PLANS.md`](CLOUD_PLANS.md), this file,
 and vision §20–22.

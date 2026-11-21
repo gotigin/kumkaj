@@ -327,6 +327,7 @@ impl App {
                 }
             }
             self.take_lan_answers(cx);
+            self.take_cloud_answers(cx);
             // A printer that did not print says so where people look; newly
             // found printers show in Settings.
             if let Some(problem) = print_share::take_problems().pop() {

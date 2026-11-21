@@ -11,13 +11,13 @@ pub use makepad_widgets;
 // links the same package's library as `kumkaj_kirano`.
 #[cfg(target_os = "android")]
 use crate::{
-    books_op, business_day, diag, domain, entity_template, fiscal, locale, local_servers,
+    books_op, business_day, cloud_api, cloud_auth, diag, domain, entity_template, fiscal, locale, local_servers,
     lan_images, menu_images, menu_templates, net, notify, phone, os_paper, precise, print_share, receipt_raster, schemes,
     snack, startup, store, suggest, thumbs, upi_qr,
 };
 #[cfg(not(target_os = "android"))]
 use kumkaj_kirano::{
-    books_op, business_day, diag, domain, entity_template, fiscal, locale, local_servers,
+    books_op, business_day, cloud_api, cloud_auth, diag, domain, entity_template, fiscal, locale, local_servers,
     lan_images, menu_images, menu_templates, net, notify, phone, os_paper, precise, print_share, receipt_raster, schemes,
     snack, startup, store, suggest, thumbs, uninstall_wipe, upi_qr,
 };

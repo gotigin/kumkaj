@@ -11,17 +11,17 @@ pub use makepad_widgets;
 // links the same package's library as `kumkaj_khaynjo`.
 #[cfg(target_os = "android")]
 use crate::{
-    books_op, business_day, catalogue_remote, diag, domain, entity_template, fiscal, locale,
-    local_servers, lan_images, menu_images, menu_templates, net, notify, os_paper, phone,
-    precise, privacy_policy, print_share, receipt_raster, schemes, snack, startup, store, suggest, thumbs,
-    upi_qr,
+    books_op, business_day, catalogue_remote, cloud_api, cloud_auth, diag, domain, entity_template,
+    fiscal, locale, local_servers, lan_images, menu_images, menu_templates, net, notify, os_paper,
+    phone, precise, privacy_policy, print_share, receipt_raster, schemes, snack, startup, store,
+    suggest, thumbs, upi_qr,
 };
 #[cfg(not(target_os = "android"))]
 use kumkaj_khaynjo::{
-    books_op, business_day, catalogue_remote, diag, domain, entity_template, fiscal, locale,
-    local_servers, lan_images, menu_images, menu_templates, net, notify, os_paper, phone,
-    precise, privacy_policy, print_share, receipt_raster, schemes, snack, startup, store, suggest, thumbs,
-    uninstall_wipe, upi_qr,
+    books_op, business_day, catalogue_remote, cloud_api, cloud_auth, diag, domain, entity_template,
+    fiscal, locale, local_servers, lan_images, menu_images, menu_templates, net, notify, os_paper,
+    phone, precise, privacy_policy, print_share, receipt_raster, schemes, snack, startup, store,
+    suggest, thumbs, uninstall_wipe, upi_qr,
 };
 use snack::SnackKind;
 

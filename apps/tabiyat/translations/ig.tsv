@@ -600,6 +600,22 @@ net_word	Net
 offline_badge	ANỌGHỊ N'ỊNTANETỊ
 optional_login_help	Nbanye nhọrọ (njirimara + okwuntughe). Onye nwe na-etinye otu ugboro; naanị onye ọrụ nwere ike ịgbanwe okwuntughe ma emechaa.
 or_unlock_login	Ma ọ bụ mepee site na njirimara nbanye + okwuntughe
+or_unlock_shop_login	Or unlock with shop login
+shop_login_help	Optional: unlock with this shop's staff username and password instead of PIN (works offline).
+cloud_account_title	Tabiyat account
+cloud_account_help	Register or sign in with the same account as tabiyat.shop/account. Creates your cloud id and free plan.
+cloud_name_ph	Name (optional)
+cloud_email_ph	Email
+cloud_password_ph	Password
+cloud_continue	Continue
+cloud_forgot	Forgot password?
+cloud_web_methods	Google and other methods on the website
+cloud_signing_in	Signing in…
+cloud_sending_reset	Sending reset link…
+cloud_forgot_sent	If that email has an account, a reset link is on the way.
+cloud_welcome	Signed in as {user} · {plan}
+cloud_created	Account created. Check your email to verify when you can.
+cloud_cancel	Cancel
 permission_preset	Ọrụ
 product_only_tabiyat	Tabiyat bụ sistemụ arụ ọrụ ụlọ ahịa ọgwụ: ire ọgwụ, ogbe / idebe akwụkwọ, kredit na akwụkwọ — na-anọghị n'ịntanetị na ngwaọrụ gị. Ọkọlọtọ H / Rx nhazi oge bụ ndetu onye nwe, ọ bụghị nnabata.
 purchases_cogs	Ịzụta (COGS)

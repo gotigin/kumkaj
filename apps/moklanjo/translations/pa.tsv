@@ -716,6 +716,22 @@ net_word	ਨੈੱਟ
 offline_badge	ਆਫ਼ਲਾਈਨ
 optional_login_help	ਵਿਕਲਪਿਕ ਲਾਗਇਨ (ਆਈਡੀ + ਪਾਸਵਰਡ)। ਮਾਲਕ ਇੱਕ ਵਾਰ ਲਗਾਉਂਦਾ ਹੈ; ਬਾਅਦ ਵਿੱਚ ਸਿਰਫ਼ ਵਰਤੋਂਕਾਰ ਹੀ ਪਾਸਵਰਡ ਬਦਲ ਸਕਦਾ ਹੈ।
 or_unlock_login	ਜਾਂ ਲਾਗਇਨ ਆਈਡੀ + ਪਾਸਵਰਡ ਨਾਲ ਅਨਲਾਕ ਕਰੋ
+or_unlock_shop_login	Or unlock with shop login
+shop_login_help	Optional: unlock with this shop's staff username and password instead of PIN (works offline).
+cloud_account_title	Moklanjo account
+cloud_account_help	Register or sign in with the same account as moklanjo.com/account. Creates your cloud id and free plan.
+cloud_name_ph	Name (optional)
+cloud_email_ph	Email
+cloud_password_ph	Password
+cloud_continue	Continue
+cloud_forgot	Forgot password?
+cloud_web_methods	Google and other methods on the website
+cloud_signing_in	Signing in…
+cloud_sending_reset	Sending reset link…
+cloud_forgot_sent	If that email has an account, a reset link is on the way.
+cloud_welcome	Signed in as {user} · {plan}
+cloud_created	Account created. Check your email to verify when you can.
+cloud_cancel	Cancel
 permission_preset	ਕੰਮ
 preset_help_moklanjo	ਕੈਸ਼ੀਅਰ: ਵੇਚੋ। ਮੈਨੇਜਰ: ਵੇਚੋ + ਆਈਟਮਾਂ + ਰੱਦ/ਸੋਧ।
 product_locked_moklanjo	Moklanjo

@@ -10,6 +10,8 @@ pub use makepad_widgets;
 pub mod barcode_scan;
 pub mod books_op;
 pub mod business_day;
+pub mod cloud_api;
+pub mod cloud_auth;
 pub mod diag;
 pub mod domain;
 pub mod entity_template;

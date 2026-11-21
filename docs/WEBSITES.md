@@ -281,6 +281,10 @@ sites/<site>/
   src/main.rs               chrome, toys, links, responsive tiers, owner switches, tests
   src/weight.rs | floor.rs | counter.rs  toy rules copied from the app (copy, not import) + tests
   resources/fonts/          the faces this site draws, with their OFL licences
+                            (include **fa-solid-900.ttf** — same WorldFonts `icons`
+                            fallthrough as the apps; shelf play/pause etc. use FA
+                            codepoints, never bare Unicode ⏸/▶ which paint tofu.
+                            Populate with `./scripts/fetch-ui-fonts.sh sites/<product>`)
   shell/                    start-up screen + head tags inlined into index.html
   static/                   crawl shell overlays (terms, css; catalogue on khaynjo)
   scripts/run-web.sh        debug wasm + local server

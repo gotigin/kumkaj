@@ -38,6 +38,12 @@ default-members = [
 ]
 exclude = [
     "vendor/makepad",
+    # Cloud APIs are standalone (own Cargo.lock each). Never a shared
+    # Kumkaj cloud crate — see services/*/README.md.
+    "services/khaynjo-cloud",
+    "services/moklanjo-cloud",
+    "services/kirano-cloud",
+    "services/tabiyat-cloud",
 ]
 resolver = "2"
 

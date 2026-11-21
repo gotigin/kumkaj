@@ -1,0 +1,21 @@
+# Local DB only for Khaynjo cloud. API runs on the host (cargo run) or add an api service later.
+services:
+  db:
+    image: postgres:16-alpine
+    container_name: khaynjo-cloud-db
+    environment:
+      POSTGRES_USER: khaynjo
+      POSTGRES_PASSWORD: khaynjo_dev
+      POSTGRES_DB: khaynjo_cloud
+    ports:
+      - "5433:5432"
+    volumes:
+      - khaynjo_cloud_pg:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U khaynjo -d khaynjo_cloud"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+volumes:
+  khaynjo_cloud_pg:

@@ -1,0 +1,21 @@
+# Local DB only for Kirano cloud. API runs on the host (cargo run) or add an api service later.
+services:
+  db:
+    image: postgres:16-alpine
+    container_name: kirano-cloud-db
+    environment:
+      POSTGRES_USER: kirano
+      POSTGRES_PASSWORD: kirano_dev
+      POSTGRES_DB: kirano_cloud
+    ports:
+      - "5435:5432"
+    volumes:
+      - kirano_cloud_pg:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U kirano -d kirano_cloud"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+volumes:
+  kirano_cloud_pg:

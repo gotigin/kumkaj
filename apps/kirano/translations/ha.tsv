@@ -588,6 +588,22 @@ net_word	Tsantsa
 offline_badge	BA INTANET
 optional_login_help	Shiga na zaɓi (lamba + kalmar sirri). Mamallaki yana saita sau ɗaya; mai amfani kaɗai ne zai iya canza kalmar sirri daga baya.
 or_unlock_login	Ko buɗe da lambar shiga + kalmar sirri
+or_unlock_shop_login	Or unlock with shop login
+shop_login_help	Optional: unlock with this shop's staff username and password instead of PIN (works offline).
+cloud_account_title	Kirano account
+cloud_account_help	Register or sign in with the same account as kirano.shop/account. Creates your cloud id and free plan.
+cloud_name_ph	Name (optional)
+cloud_email_ph	Email
+cloud_password_ph	Password
+cloud_continue	Continue
+cloud_forgot	Forgot password?
+cloud_web_methods	Google and other methods on the website
+cloud_signing_in	Signing in…
+cloud_sending_reset	Sending reset link…
+cloud_forgot_sent	If that email has an account, a reset link is on the way.
+cloud_welcome	Signed in as {user} · {plan}
+cloud_created	Account created. Check your email to verify when you can.
+cloud_cancel	Cancel
 permission_preset	Aiki
 product_only_kirano	Kirano shine tsarin sarrafa kayan abinci / kirana: siyar da kayan masarufi, hannun jari, kiredit da littattafai - layi akan na'urorinku.
 purchases_cogs	Sayayya (farashin kaya)

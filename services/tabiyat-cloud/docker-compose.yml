@@ -1,0 +1,21 @@
+# Local DB only for Tabiyat cloud. API runs on the host (cargo run) or add an api service later.
+services:
+  db:
+    image: postgres:16-alpine
+    container_name: tabiyat-cloud-db
+    environment:
+      POSTGRES_USER: tabiyat
+      POSTGRES_PASSWORD: tabiyat_dev
+      POSTGRES_DB: tabiyat_cloud
+    ports:
+      - "5436:5432"
+    volumes:
+      - tabiyat_cloud_pg:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U tabiyat -d tabiyat_cloud"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+volumes:
+  tabiyat_cloud_pg:

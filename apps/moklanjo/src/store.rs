@@ -8104,7 +8104,55 @@ impl Store {
                 [],
             )
             .map_err(|e| e.to_string())?;
+        if let Some(dir) = self.path.parent() {
+            let _ = std::fs::remove_file(dir.join("cloud_auth.secret"));
+        }
+        let _ = self.conn.execute(
+            "DELETE FROM meta WHERE key IN (
+                'cloud_account_id', 'cloud_username', 'cloud_firebase_uid', 'cloud_email'
+             )",
+            [],
+        );
         Ok(())
+    }
+
+    /// Persist non-secret cloud account labels after Firebase + `/v1/me`.
+    pub fn save_cloud_account_meta(
+        &self,
+        account_id: &str,
+        username: &str,
+        firebase_uid: &str,
+        email: Option<&str>,
+    ) -> Result<(), String> {
+        self.meta_set("cloud_account_id", account_id)?;
+        self.meta_set("cloud_username", username)?;
+        self.meta_set("cloud_firebase_uid", firebase_uid)?;
+        if let Some(email) = email.map(str::trim).filter(|s| !s.is_empty()) {
+            self.meta_set("cloud_email", email)?;
+        }
+        Ok(())
+    }
+
+    pub fn clear_cloud_account_meta(&self) -> Result<(), String> {
+        for key in [
+            "cloud_account_id",
+            "cloud_username",
+            "cloud_firebase_uid",
+            "cloud_email",
+        ] {
+            let _ = self
+                .conn
+                .execute("DELETE FROM meta WHERE key = ?1", params![key]);
+        }
+        Ok(())
+    }
+
+    pub fn cloud_account_id(&self) -> Result<Option<String>, String> {
+        self.meta_get("cloud_account_id")
+    }
+
+    pub fn cloud_username(&self) -> Result<Option<String>, String> {
+        self.meta_get("cloud_username")
     }
 
     pub fn authenticate_owner_pin(&self, pin: &str) -> Result<Option<StaffMember>, String> {
