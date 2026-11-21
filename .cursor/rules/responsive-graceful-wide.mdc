@@ -28,23 +28,22 @@ Empty horizontal space beside a forever-`Down` toolbar on desk is a bug.
 ✅ Check 320, 360, 390 **and** 1280, 1920
 ```
 
-## Exception — user-owned density (do **not** “fix”)
+## Exceptions (judge intent — do **not** blindly “fix”)
 
-This law is for **chrome / Fit toolbars**, not for grids whose
-**columns-per-row the user (or an explicit product pick) owns**.
+Law targets **chrome / Fit toolbars** with empty desk space. Other
+stacks may be intentional. Many exceptions are obvious; still take care —
+if unsure, leave it and check docs / owner intent.
 
 ```text
+❌ Flatten every Down stack on a wide window “because responsive”
 ❌ Force more Floor / board / bill columns just because the window is wide
 ❌ Rewrite floor_columns / *_column_count so a user pick loses to width
-❌ Treat a sparse user-chosen N-per-row grid as the Pause/−/Speed bug
+❌ Treat intentional form stacks / full-width ActionStack CTAs as the bug
 
-✅ User pick wins (phone and desk) when non-zero
-✅ Auto / Fit screen / 0 may still grow with measured width
 ✅ Fix forever-Down Fit chip toolbars (play/speed, pagers, short pairs)
+✅ User-owned density: pick wins; Auto/Fit/0 may still grow with width
+✅ When unsure → leave alone
 ```
-
-Examples: Khaynjo Floor Columns, counter drafts / Today board column picks,
-bill/slip Columns segments.
 
 ## Known failure (2026-11-21)
 
